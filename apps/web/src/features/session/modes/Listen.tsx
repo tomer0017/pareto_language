@@ -2,12 +2,9 @@ import { useEffect, useMemo, useState } from 'react';
 import type { ContentItem, Outcome, ReviewEvent } from '@ready/content-schema';
 import { useAppStore } from '../../../shared/stores/appStore.js';
 import { playItem } from '../../../shared/audio/tts.js';
+import { t } from '../../../shared/i18n/strings.js';
 
-/**
- * Mode 4 — Understand the Answer (PDF §9): natural-speed audio of a likely reply → choose the
- * meaning from 3 options. Distractors are plausible same-situation replies. Slow replay is
- * available but logged (usedSlowAudio) — mastery requires success without it.
- */
+/** Mode 4 — Listening: natural-speed reply → pick the meaning. Slow replay is logged. */
 export function Listen({
   item,
   onDone,
@@ -32,7 +29,8 @@ export function Listen({
         (i.kind === 'reply' || i.kind === 'phrase') &&
         i.situationIds.some((sid) => item.situationIds.includes(sid)),
     );
-    const pool = sameSituation.length >= 2 ? sameSituation : (app.pack?.items ?? []).filter((i) => i.id !== item.id);
+    const pool =
+      sameSituation.length >= 2 ? sameSituation : (app.pack?.items ?? []).filter((i) => i.id !== item.id);
     const distractors = [...pool].sort(() => Math.random() - 0.5).slice(0, 2);
     return [...distractors.map((d) => d.meaning), item.meaning].sort(() => Math.random() - 0.5);
   }, [item, app.pack]);
@@ -47,8 +45,8 @@ export function Listen({
   return (
     <>
       <div className="drill-card">
-        <p className="drill-prompt-label">What did they say?</p>
-        <p style={{ fontSize: '2.4rem' }}>🔊</p>
+        <p className="drill-label">{t('whatDidTheySay')}</p>
+        <p style={{ fontSize: '2.5rem' }}>👂</p>
         {picked && (
           <p className="drill-meaning fade-in">
             “{item.text}” — {item.meaning}
@@ -58,23 +56,17 @@ export function Listen({
       <div className="action-zone">
         {options.map((meaning) => {
           const isCorrect = meaning === item.meaning;
-          const style =
-            picked === null
-              ? undefined
-              : isCorrect
-                ? { outline: '2px solid var(--accent)' }
-                : picked === meaning
-                  ? { outline: '2px solid var(--danger)' }
-                  : undefined;
+          const cls =
+            picked === null ? '' : isCorrect ? 'option-correct' : picked === meaning ? 'option-wrong' : '';
           return (
-            <button key={meaning} className="btn-secondary" style={style} onClick={() => choose(meaning)}>
+            <button key={meaning} className={`btn-secondary ${cls}`} onClick={() => choose(meaning)}>
               {meaning}
             </button>
           );
         })}
         <div className="btn-row">
           <button className="btn-ghost" onClick={() => void playItem(item)}>
-            🔊 Again
+            🔊 {t('playAgain')}
           </button>
           <button
             className="btn-ghost"
@@ -83,7 +75,7 @@ export function Listen({
               void playItem(item, { slow: true });
             }}
           >
-            🐢 Slow
+            🐢 {t('playSlow')}
           </button>
         </div>
       </div>

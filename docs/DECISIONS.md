@@ -103,3 +103,29 @@ Every non-obvious technical decision, with one line of reasoning. Referenced by 
   weighting. Regression-tested against the real it-IT pack.
 - **D028 — selectTier caps at the pack's deepest authored tier.** A Tier-0/1-only pack must
   report Tier 1, not a vacuous Tier 3.
+
+## M5 — UX overhaul: multi-language platform + mission-first game feel
+
+- **D029 — The app is designed around a language registry, not a language.** Five learning
+  languages (en/es/fr/it/ar) each carry flag, native name, accent color and script direction;
+  selecting one re-themes the whole UI via CSS custom properties. RTL (Arabic learning, Hebrew
+  UI) is first-class: `document.dir` switches and layout mirrors.
+- **D030 — Only shipped packs are selectable; the rest show "coming soon".** PDF R1 verbatim:
+  "start with 1 language done superbly, not 5 done adequately." Italian is that language; the
+  platform (registry, selector, pipeline, packs-by-lang) is multi-language from day one, and the
+  user's multilingual vocabulary bank (fr/es/en/he) seeds the next packs' recognition words.
+- **D031 — UI strings behind a t() dictionary (en + he shipped).** Adding an interface language
+  is one dictionary file, zero screen changes — proving the "no redesign per language" bar.
+- **D032 — Today's Mission is the product surface; all tabs support it.** The Mission card
+  previews the exact scheduler output (review/new/phrases/sprint/scenario + honest estimated
+  minutes) so the user never decides what to study; one breathing Start button carries the whole
+  loop. Bottom nav gives Words/Phrases/Situations/Practice equal, one-tap standing.
+- **D033 — Practice = six single-skill mini-games reusing the session runtime.** Focused
+  sessions (swipe deck, recall run, listening round, 60s sprint, simulator replay, echo) — same
+  event log, same honest evidence weights; practice sessions don't trigger re-planning.
+- **D034 — Game feel without gamification.** Micro-interactions only: check-pop on pass, gentle
+  haptics, staggered card entrances, breathing CTA, animated confidence rings. Still zero XP,
+  coins, streaks, or confetti (P6); `prefers-reduced-motion` collapses all motion.
+- **D035 — Travel Confidence % is derived from readiness detail** (55% solid phrases, 30%
+  replies understood, 15% scenario done) — a visual read of demonstrated evidence, never
+  exposure counts (P3). Badges keep the four honest states on top of the ring.

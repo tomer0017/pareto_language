@@ -12,11 +12,13 @@ import { useAppStore } from './appStore.js';
 
 /**
  * Session runtime (PDF §10.2): fixed rhythm Warm-up → Learn → Integrate → Close, adaptive
- * content from the deadline-aware scheduler. Every drill persists its event immediately, so
- * closing the app mid-session loses nothing (interruptibility bar).
+ * content from the deadline-aware scheduler. Every drill persists its event immediately —
+ * closing the app mid-session loses nothing. Today's Mission IS the product; the same
+ * machinery also powers the Practice mini-games (single-mode focused sessions).
  */
 
 export type BlockKind = 'warmup' | 'learn' | 'integrate';
+export type PracticeGame = 'swipe' | 'flashRecall' | 'listen' | 'numberSprint' | 'simulator' | 'echo';
 
 export interface DrillStep {
   item: ContentItem;
@@ -24,18 +26,229 @@ export interface DrillStep {
   block: BlockKind;
 }
 
+export interface MissionPreview {
+  reviewCount: number;
+  newCount: number;
+  phraseCount: number;
+  hasSprint: boolean;
+  scenarioName: string | null;
+  estMinutes: number;
+  empty: boolean;
+}
+
+interface ComputedSession {
+  steps: DrillStep[];
+  simulatorSituation: Situation | null;
+  estSeconds: number;
+}
+
+function priorityFor(item: ContentItem): { p: number; e: boolean } {
+  const { situationById } = useAppStore.getState();
+  for (const sid of item.situationIds) {
+    const s = situationById.get(sid);
+    if (s) return { p: s.priorityDefault, e: s.isEmergency };
+  }
+  return { p: 0, e: item.tier === 0 };
+}
+
+/** The mission builder — shared by the runtime and the Mission-card preview. */
+function computeSession(preset: 'full' | 'five'): ComputedSession {
+  const app = useAppStore.getState();
+  const { pack, plan, states, itemsById } = app;
+  if (!pack || !plan) return { steps: [], simulatorSituation: null, estSeconds: 0 };
+  const nowMs = Date.now();
+  const departureMs = Date.parse(plan.departureAt);
+  const five = preset === 'five';
+
+  const candidates: SchedulableItem[] = [];
+  for (const st of states.values()) {
+    if (!isDue(st, nowMs, 0.95)) continue;
+    const item = itemsById.get(st.itemId);
+    if (!item) continue;
+    const { p, e } = priorityFor(item);
+    candidates.push({ item, state: st, situationPriority: p, isEmergency: e });
+  }
+
+  const today = new Date().toISOString().slice(0, 10);
+  const planDay =
+    plan.days.find((d) => d.date.slice(0, 10) === today) ??
+    plan.days.find((d) => d.newItemIds.some((id) => !states.has(id)));
+  const newQueue: SchedulableItem[] = five
+    ? []
+    : (planDay?.newItemIds ?? [])
+        .filter((id) => !states.has(id))
+        .map((id) => itemsById.get(id))
+        .filter((it): it is ContentItem => it !== undefined)
+        .map((item) => {
+          const { p, e } = priorityFor(item);
+          return { item, state: null, situationPriority: p, isEmergency: e };
+        });
+
+  const schedule = scheduleSession({
+    candidates,
+    newQueue,
+    departureMs,
+    nowMs,
+    minutesBudget: five ? 5 : plan.minutesPerDay,
+  });
+
+  const steps: DrillStep[] = [];
+  let reviewsSeen = 0;
+  for (const s of schedule.steps) {
+    const item = itemsById.get(s.itemId);
+    if (!item) continue;
+    if (s.kind === 'new') {
+      if (item.kind === 'phrase') {
+        steps.push({ item, mode: 'echo', block: 'learn' });
+        steps.push({ item, mode: 'flashRecall', block: 'learn' });
+      } else {
+        steps.push({ item, mode: s.mode, block: 'learn' });
+      }
+    } else {
+      steps.push({ item, mode: s.mode, block: reviewsSeen < 8 ? 'warmup' : 'integrate' });
+      reviewsSeen++;
+    }
+  }
+
+  const numberItems = pack.items.filter((i) => i.kind === 'number');
+  const anyNumbers =
+    numberItems.some((i) => states.has(i.id)) || steps.some((s) => s.item.kind === 'number');
+  if (!five && anyNumbers && numberItems.length >= 4 && numberItems[0]) {
+    steps.push({ item: numberItems[0], mode: 'numberSprint', block: 'integrate' });
+  }
+
+  let simulatorSituation: Situation | null = null;
+  if (!five) {
+    for (const situation of pack.situations) {
+      const unlocked =
+        situation.corePhraseIds.length > 0 &&
+        situation.corePhraseIds.every((id) => (states.get(id)?.level ?? 0) >= 2);
+      const done = situation.corePhraseIds.some((id) => (states.get(id)?.level ?? 0) >= 4);
+      if (unlocked && !done) {
+        simulatorSituation = situation;
+        break;
+      }
+    }
+  }
+
+  const estSeconds =
+    schedule.estTotalSeconds + (simulatorSituation ? 75 : 0);
+  return { steps, simulatorSituation, estSeconds };
+}
+
+/** What the Mission card shows before the user presses Start. */
+export function previewMission(): MissionPreview {
+  const { steps, simulatorSituation, estSeconds } = computeSession('full');
+  const seenNew = new Set<string>();
+  let reviewCount = 0;
+  let phraseCount = 0;
+  let hasSprint = false;
+  for (const s of steps) {
+    if (s.mode === 'numberSprint') {
+      hasSprint = true;
+      continue;
+    }
+    if (s.block === 'learn') {
+      seenNew.add(s.item.id);
+      if (s.item.kind === 'phrase') phraseCount++;
+    } else {
+      reviewCount++;
+    }
+  }
+  return {
+    reviewCount,
+    newCount: seenNew.size,
+    phraseCount: Math.ceil(phraseCount / 2), // echo+recall pairs count once
+    hasSprint,
+    scenarioName: simulatorSituation?.name ?? null,
+    estMinutes: Math.max(1, Math.round(estSeconds / 60)),
+    empty: steps.length === 0 && !simulatorSituation,
+  };
+}
+
+/** Focused single-skill sessions for the Practice hub — mini-games, not flashcards. */
+function computePractice(game: PracticeGame): ComputedSession {
+  const app = useAppStore.getState();
+  const { pack, states, itemsById } = app;
+  if (!pack) return { steps: [], simulatorSituation: null, estSeconds: 0 };
+  const seen = [...states.values()]
+    .map((st) => itemsById.get(st.itemId))
+    .filter((i): i is ContentItem => i !== undefined);
+
+  const pick = (items: ContentItem[], mode: PracticeMode, cap: number): DrillStep[] =>
+    items.slice(0, cap).map((item) => ({ item, mode, block: 'integrate' as const }));
+
+  switch (game) {
+    case 'swipe':
+      return { steps: pick(shuffle(seen), 'swipe', 12), simulatorSituation: null, estSeconds: 45 };
+    case 'flashRecall':
+      return {
+        steps: pick(shuffle(seen.filter((i) => i.kind === 'phrase')), 'flashRecall', 10),
+        simulatorSituation: null,
+        estSeconds: 80,
+      };
+    case 'echo':
+      return {
+        steps: pick(shuffle(seen.filter((i) => i.kind === 'phrase')), 'echo', 8),
+        simulatorSituation: null,
+        estSeconds: 80,
+      };
+    case 'listen': {
+      // Replies of situations the learner has started — the anti-freeze muscle.
+      const startedSituations = new Set(seen.flatMap((i) => i.situationIds));
+      const replies = pack.items.filter(
+        (i) => i.kind === 'reply' && i.situationIds.some((s) => startedSituations.has(s)),
+      );
+      return { steps: pick(shuffle(replies), 'listen', 10), simulatorSituation: null, estSeconds: 70 };
+    }
+    case 'numberSprint': {
+      const anchor = pack.items.find((i) => i.kind === 'number');
+      return {
+        steps: anchor ? [{ item: anchor, mode: 'numberSprint', block: 'integrate' }] : [],
+        simulatorSituation: null,
+        estSeconds: 70,
+      };
+    }
+    case 'simulator': {
+      // Replay allowed: pick the first unlocked situation, preferring not-yet-done ones.
+      let fallback: Situation | null = null;
+      for (const s of pack.situations) {
+        const unlocked =
+          s.corePhraseIds.length > 0 &&
+          s.corePhraseIds.every((id) => (states.get(id)?.level ?? 0) >= 2);
+        if (!unlocked) continue;
+        const done = s.corePhraseIds.some((id) => (states.get(id)?.level ?? 0) >= 4);
+        if (!done) return { steps: [], simulatorSituation: s, estSeconds: 80 };
+        fallback = fallback ?? s;
+      }
+      return { steps: [], simulatorSituation: fallback, estSeconds: 80 };
+    }
+  }
+}
+
+function shuffle<T>(arr: T[]): T[] {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const tmp = a[i] as T;
+    a[i] = a[j] as T;
+    a[j] = tmp;
+  }
+  return a;
+}
+
 interface SessionState {
   steps: DrillStep[];
   index: number;
   startedAt: number;
   failCounts: Map<string, number>;
-  /** Item ids that produced at least one pass this session, for the Close summary. */
   passedItems: Set<string>;
   simulatorSituation: Situation | null;
   finished: boolean;
-  fiveMinutePreset: boolean;
+  isPractice: boolean;
 
   build(preset?: 'full' | 'five'): void;
+  buildPractice(game: PracticeGame): void;
   current(): DrillStep | null;
   submit(outcome: Outcome, extras?: Partial<ReviewEvent>): Promise<void>;
   recordExtraEvents(events: ReviewEvent[]): Promise<void>;
@@ -57,104 +270,10 @@ export const useSessionStore = create<SessionState>((set, get) => ({
   passedItems: new Set(),
   simulatorSituation: null,
   finished: false,
-  fiveMinutePreset: false,
+  isPractice: false,
 
   build(preset = 'full') {
-    const app = useAppStore.getState();
-    const { pack, plan, states, itemsById, situationById } = app;
-    if (!pack || !plan) return;
-    const nowMs = Date.now();
-    const departureMs = Date.parse(plan.departureAt);
-    const five = preset === 'five';
-    const minutesBudget = five ? 5 : plan.minutesPerDay;
-
-    const priorityFor = (item: ContentItem): { p: number; e: boolean } => {
-      for (const sid of item.situationIds) {
-        const s = situationById.get(sid);
-        if (s) return { p: s.priorityDefault, e: s.isEmergency };
-      }
-      return { p: 0, e: item.tier === 0 };
-    };
-
-    const candidates: SchedulableItem[] = [];
-    for (const st of states.values()) {
-      if (!isDue(st, nowMs, 0.95)) continue;
-      const item = itemsById.get(st.itemId);
-      if (!item) continue;
-      const { p, e } = priorityFor(item);
-      candidates.push({ item, state: st, situationPriority: p, isEmergency: e });
-    }
-
-    // Today's (or the next unfinished) plan day supplies new items; 5-min preset reviews only.
-    const today = new Date().toISOString().slice(0, 10);
-    const planDay =
-      plan.days.find((d) => d.date.slice(0, 10) === today) ??
-      plan.days.find((d) => d.newItemIds.some((id) => !states.has(id)));
-    const newQueue: SchedulableItem[] = five
-      ? []
-      : (planDay?.newItemIds ?? [])
-          .filter((id) => !states.has(id))
-          .map((id) => itemsById.get(id))
-          .filter((it): it is ContentItem => it !== undefined)
-          .map((item) => {
-            const { p, e } = priorityFor(item);
-            return { item, state: null, situationPriority: p, isEmergency: e };
-          });
-
-    const schedule = scheduleSession({
-      candidates,
-      newQueue,
-      departureMs,
-      nowMs,
-      minutesBudget,
-    });
-
-    // Map scheduler steps into the session rhythm. New phrases expand to Echo → Flash Recall
-    // (PDF §9.1); reviews keep their recommended mode. First review burst = warm-up.
-    const steps: DrillStep[] = [];
-    let reviewsSeen = 0;
-    for (const s of schedule.steps) {
-      const item = itemsById.get(s.itemId);
-      if (!item) continue;
-      if (s.kind === 'new') {
-        if (item.kind === 'phrase') {
-          steps.push({ item, mode: 'echo', block: 'learn' });
-          steps.push({ item, mode: 'flashRecall', block: 'learn' });
-        } else {
-          steps.push({ item, mode: s.mode, block: 'learn' });
-        }
-      } else {
-        const block: BlockKind = reviewsSeen < 8 ? 'warmup' : 'integrate';
-        reviewsSeen++;
-        steps.push({ item, mode: s.mode, block });
-      }
-    }
-
-    // Integrate: one Number Sprint round if any numbers are in play (PDF §10.2).
-    const numberItems = pack.items.filter((i) => i.kind === 'number');
-    const anyNumbersSeen =
-      numberItems.some((i) => states.has(i.id)) ||
-      steps.some((s) => s.item.kind === 'number');
-    if (!five && anyNumbersSeen && numberItems.length >= 4) {
-      const anchor = numberItems[0];
-      if (anchor) steps.push({ item: anchor, mode: 'numberSprint', block: 'integrate' });
-    }
-
-    // Integrate: Situation Simulator once its core phrases reach L2 and it isn't done (PDF §9.1).
-    let simulatorSituation: Situation | null = null;
-    if (!five) {
-      for (const situation of pack.situations) {
-        const unlocked =
-          situation.corePhraseIds.length > 0 &&
-          situation.corePhraseIds.every((id) => (states.get(id)?.level ?? 0) >= 2);
-        const done = situation.corePhraseIds.some((id) => (states.get(id)?.level ?? 0) >= 4);
-        if (unlocked && !done) {
-          simulatorSituation = situation;
-          break;
-        }
-      }
-    }
-
+    const { steps, simulatorSituation } = computeSession(preset);
     set({
       steps,
       index: 0,
@@ -163,7 +282,21 @@ export const useSessionStore = create<SessionState>((set, get) => ({
       passedItems: new Set(),
       simulatorSituation,
       finished: steps.length === 0 && !simulatorSituation,
-      fiveMinutePreset: five,
+      isPractice: false,
+    });
+  },
+
+  buildPractice(game) {
+    const { steps, simulatorSituation } = computePractice(game);
+    set({
+      steps,
+      index: 0,
+      startedAt: Date.now(),
+      failCounts: new Map(),
+      passedItems: new Set(),
+      simulatorSituation,
+      finished: steps.length === 0 && !simulatorSituation,
+      isPractice: true,
     });
   },
 
@@ -197,7 +330,7 @@ export const useSessionStore = create<SessionState>((set, get) => ({
     if (outcome === 'fail') {
       const count = (fails.get(step.item.id) ?? 0) + 1;
       fails.set(step.item.id, count);
-      // 3-strike relearn loop (PDF §8.2): immediate corrective retrieval + end-of-session check.
+      // 3-strike relearn loop (PDF §8.2).
       if (shouldRequeue(count)) {
         nextSteps.splice(index + 2, 0, { ...step });
         nextSteps.push({ ...step, block: 'integrate' });
@@ -215,7 +348,6 @@ export const useSessionStore = create<SessionState>((set, get) => ({
     });
   },
 
-  /** For modes that generate their own event batches (Number Sprint, Simulator). */
   async recordExtraEvents(events) {
     const app = useAppStore.getState();
     if (!app.user) return;
@@ -253,7 +385,7 @@ export const useSessionStore = create<SessionState>((set, get) => ({
 
   async finish() {
     const app = useAppStore.getState();
-    const { steps, startedAt, passedItems } = get();
+    const { steps, startedAt, isPractice } = get();
     if (!app.user) return;
     const byBlock = (kind: BlockKind): string[] =>
       [...new Set(steps.filter((s) => s.block === kind).map((s) => s.item.id))];
@@ -270,9 +402,8 @@ export const useSessionStore = create<SessionState>((set, get) => ({
       capabilitySummary: get().capabilitySummary(),
     };
     await app.saveSessionLog(log);
-    await app.replanAfterSession();
+    if (!isPractice) await app.replanAfterSession();
     set({ finished: true });
-    void passedItems;
   },
 
   reset() {
@@ -284,7 +415,7 @@ export const useSessionStore = create<SessionState>((set, get) => ({
       passedItems: new Set(),
       simulatorSituation: null,
       finished: false,
-      fiveMinutePreset: false,
+      isPractice: false,
     });
   },
 }));

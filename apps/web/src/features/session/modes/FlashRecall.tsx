@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import type { ContentItem, Outcome, ReviewEvent } from '@ready/content-schema';
 import { playItem } from '../../../shared/audio/tts.js';
+import { t } from '../../../shared/i18n/strings.js';
+import { languageInfo } from '../../../shared/i18n/languages.js';
+import { useAppStore } from '../../../shared/stores/appStore.js';
 
-/**
- * Mode 2 — Flash Recall (PDF §9): English prompt → say it aloud → reveal → self-grade against
- * the visible answer. Latency to reveal is the fluency evidence (<3s target, §9.1).
- */
+/** Mode 2 — Flash Recall: say it aloud → reveal → self-grade. Latency = fluency evidence. */
 export function FlashRecall({
   item,
   onDone,
@@ -13,6 +13,7 @@ export function FlashRecall({
   item: ContentItem;
   onDone: (o: Outcome, extras?: Partial<ReviewEvent>) => void;
 }) {
+  const learningLang = useAppStore((s) => s.learningLang);
   const [revealed, setRevealed] = useState(false);
   const shownAt = useRef(Date.now());
   const latency = useRef<number | undefined>(undefined);
@@ -31,30 +32,29 @@ export function FlashRecall({
   return (
     <>
       <div className="drill-card">
-        <p className="drill-prompt-label">Say it in Italian</p>
+        <p className="drill-label">{t('sayIt', { language: languageInfo(learningLang).name })}</p>
         <p className="drill-phrase">{item.meaning}</p>
-        {revealed && (
-          <p className="drill-meaning fade-in" style={{ color: 'var(--accent)', fontSize: '1.4rem' }}>
-            {item.text}
-          </p>
+        {revealed ? (
+          <p className="reveal-answer fade-in">{item.text}</p>
+        ) : (
+          <p className="faint small">{t('speakAloud')}</p>
         )}
-        {!revealed && <p className="dim small">speak aloud, then reveal</p>}
       </div>
       <div className="action-zone">
         {!revealed ? (
           <button className="btn-primary" onClick={reveal}>
-            Reveal
+            {t('reveal')}
           </button>
         ) : (
           <div className="btn-row">
             <button className="btn-danger-soft" onClick={() => onDone('fail', { latencyMs: latency.current })}>
-              No
+              {t('no')}
             </button>
             <button className="btn-secondary" onClick={() => onDone('partial', { latencyMs: latency.current })}>
-              Almost
+              {t('almost')}
             </button>
-            <button className="btn-primary" onClick={() => onDone('pass', { latencyMs: latency.current })}>
-              Got it
+            <button className="btn-accent" onClick={() => onDone('pass', { latencyMs: latency.current })}>
+              {t('gotIt')}
             </button>
           </div>
         )}

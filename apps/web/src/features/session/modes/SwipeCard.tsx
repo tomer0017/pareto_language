@@ -1,14 +1,16 @@
 import { useEffect, useRef, useState } from 'react';
 import type { ContentItem, Outcome } from '@ready/content-schema';
 import { playItem } from '../../../shared/audio/tts.js';
+import { t } from '../../../shared/i18n/strings.js';
 
-/** Mode 1 — Swipe Triage (PDF §9): fast self-report; weak prior only, never sole evidence. */
+/** Mode 1 — Swipe (PDF §9): fast triage; weak prior only, never sole evidence. */
 export function SwipeCard({ item, onDone }: { item: ContentItem; onDone: (o: Outcome) => void }) {
   const [flipped, setFlipped] = useState(false);
   const startX = useRef<number | null>(null);
   const [dx, setDx] = useState(0);
 
   useEffect(() => {
+    setFlipped(false);
     void playItem(item);
   }, [item]);
 
@@ -31,22 +33,25 @@ export function SwipeCard({ item, onDone }: { item: ContentItem; onDone: (o: Out
         onPointerUp={() => settle(dx)}
         onClick={() => setFlipped(true)}
       >
-        <p className="drill-prompt-label">Do you know this?</p>
+        <p className="drill-label">{t('swipeTriage')}</p>
         <p className="drill-phrase">{item.text}</p>
-        {flipped && <p className="drill-meaning fade-in">{item.meaning}</p>}
-        {!flipped && <p className="dim small">tap to flip · 🔊 auto-plays</p>}
+        {flipped ? (
+          <p className="drill-meaning fade-in">{item.meaning}</p>
+        ) : (
+          <p className="faint small">{t('tapToFlip')}</p>
+        )}
       </div>
       <div className="swipe-hint">
-        <span>← don’t know</span>
-        <span>know →</span>
+        <span>← {t('dontKnow')}</span>
+        <span>{t('know')} →</span>
       </div>
       <div className="action-zone">
         <div className="btn-row">
           <button className="btn-secondary" onClick={() => onDone('fail')}>
-            Don’t know
+            {t('dontKnow')}
           </button>
-          <button className="btn-primary" onClick={() => onDone('pass')}>
-            Know it
+          <button className="btn-accent" onClick={() => onDone('pass')}>
+            {t('know')}
           </button>
         </div>
       </div>

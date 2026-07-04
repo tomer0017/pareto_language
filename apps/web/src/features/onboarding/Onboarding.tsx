@@ -2,16 +2,18 @@ import { useMemo, useState } from 'react';
 import type { SituationPriority } from '@ready/content-schema';
 import { selectTier, DAY_MS } from '@ready/engine';
 import { useAppStore } from '../../shared/stores/appStore.js';
-
-/**
- * Onboarding — 60 seconds, zero friction, no account (PDF §10.1):
- * destination → date → minutes/day → rank situations → plan preview.
- */
+import { LEARNING_LANGUAGES, languageInfo } from '../../shared/i18n/languages.js';
+import { t } from '../../shared/i18n/strings.js';
+import { tap } from '../../shared/ui/haptics.js';
 
 const MINUTE_CHOICES = [10, 20, 30, 45];
 
+/**
+ * Onboarding — 60 seconds, zero friction, no account (PDF §10.1), now language-first:
+ * trip language → date → minutes/day → rank situations → plan preview (the aha-moment).
+ */
 export function Onboarding() {
-  const { pack, createPlan } = useAppStore();
+  const app = useAppStore();
   const [step, setStep] = useState(0);
   const [departure, setDeparture] = useState(() =>
     new Date(Date.now() + 7 * DAY_MS).toISOString().slice(0, 10),
@@ -21,16 +23,13 @@ export function Onboarding() {
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const situations = useMemo(() => pack?.situations ?? [], [pack]);
+  const situations = useMemo(() => app.pack?.situations ?? [], [app.pack]);
   const orderedRanking = ranking.length > 0 ? ranking : situations.map((s) => s.id);
+  const lang = languageInfo(app.learningLang);
 
-  const departureAtIso = useMemo(() => {
-    const d = new Date(`${departure}T09:00:00`);
-    return d.toISOString();
-  }, [departure]);
-
+  const departureAtIso = useMemo(() => new Date(`${departure}T09:00:00`).toISOString(), [departure]);
   const previewDays = Math.max(1, Math.ceil((Date.parse(departureAtIso) - Date.now()) / DAY_MS));
-  const previewTier = pack ? selectTier(pack, previewDays, minutes) : 0;
+  const previewTier = app.pack ? selectTier(app.pack, previewDays, minutes) : 0;
 
   const moveUp = (id: string) => {
     const arr = [...orderedRanking];
@@ -50,67 +49,62 @@ export function Onboarding() {
     setSaving(true);
     setError(null);
     try {
-      const priorities: SituationPriority[] = orderedRanking.map((situationId, rank) => ({
-        situationId,
-        rank,
-      }));
-      await createPlan({ departureAt: departureAtIso, minutesPerDay: minutes, situationPriorities: priorities });
+      const priorities: SituationPriority[] = orderedRanking.map((situationId, rank) => ({ situationId, rank }));
+      await app.createPlan({ departureAt: departureAtIso, minutesPerDay: minutes, situationPriorities: priorities });
     } catch (err) {
       console.error('[onboarding] createPlan failed', err);
-      setError('Could not save your plan. Please try again.');
+      setError(t('planSaveError'));
       setSaving(false);
     }
   };
 
-  if (!pack) return null;
-
   return (
     <div className="screen">
-      <div className="screen-scroll fade-in" key={step}>
+      <div className="screen-scroll no-nav fade-in" key={step}>
         {step === 0 && (
           <>
-            <h1>Where are you going?</h1>
-            <p className="dim" style={{ margin: '8px 0 20px' }}>
-              READY prepares you for real conversations before you land.
-            </p>
-            <div className="card">
-              <h3>Destination</h3>
-              <p style={{ fontSize: '1.3rem', marginTop: 6 }}>🇮🇹 Italy — Italian</p>
-              <p className="small dim" style={{ marginTop: 6 }}>
-                More languages arrive after the Italian pack is native-approved.
-              </p>
+            <h1>{t('chooseLanguage')}</h1>
+            <p className="dim" style={{ margin: '8px 0 18px' }}>{t('chooseLanguageSub')}</p>
+            <div className="lang-grid stagger">
+              {LEARNING_LANGUAGES.map((l) => (
+                <button
+                  key={l.code}
+                  className={`lang-card card-press ${l.code === app.learningLang ? 'selected' : ''} ${l.available ? '' : 'locked'}`}
+                  onClick={() => {
+                    if (!l.available) return;
+                    tap();
+                    void app.setLearningLang(l.code);
+                  }}
+                >
+                  <span className="lang-flag">{l.flag}</span>
+                  <span className="lang-native" style={{ color: l.accent }}>{l.nativeName}</span>
+                  {!l.available && <span className="badge badge-notStarted">{t('comingSoon')}</span>}
+                </button>
+              ))}
             </div>
           </>
         )}
         {step === 1 && (
           <>
-            <h1>When do you fly?</h1>
-            <p className="dim" style={{ margin: '8px 0 20px' }}>
-              Your whole plan is built backwards from this date.
-            </p>
+            <h1>{t('whenFly')}</h1>
+            <p className="dim" style={{ margin: '8px 0 18px' }}>{t('whenFlySub')}</p>
             <input
               type="date"
               value={departure}
               min={new Date(Date.now() + DAY_MS).toISOString().slice(0, 10)}
               onChange={(e) => setDeparture(e.target.value)}
-              aria-label="Departure date"
+              aria-label={t('departureDate')}
             />
           </>
         )}
         {step === 2 && (
           <>
-            <h1>Minutes per day?</h1>
-            <p className="dim" style={{ margin: '8px 0 20px' }}>
-              Honest budgets beat heroic ones. You can change this later.
-            </p>
+            <h1>{t('minutesQ')}</h1>
+            <p className="dim" style={{ margin: '8px 0 18px' }}>{t('minutesSub')}</p>
             <div className="keypad">
               {MINUTE_CHOICES.map((m) => (
-                <button
-                  key={m}
-                  className={m === minutes ? 'btn-primary' : 'btn-secondary'}
-                  onClick={() => setMinutes(m)}
-                >
-                  {m} min
+                <button key={m} className={m === minutes ? 'btn-accent' : 'btn-secondary'} onClick={() => setMinutes(m)}>
+                  {m} {t('min')}
                 </button>
               ))}
             </div>
@@ -118,19 +112,17 @@ export function Onboarding() {
         )}
         {step === 3 && (
           <>
-            <h1>What matters most?</h1>
-            <p className="dim" style={{ margin: '8px 0 20px' }}>
-              Tap ↑ to pull a situation earlier in your plan.
-            </p>
+            <h1>{t('rankQ')}</h1>
+            <p className="dim" style={{ margin: '8px 0 18px' }}>{t('rankSub')}</p>
             {orderedRanking.map((id, i) => {
               const s = situations.find((x) => x.id === id);
               if (!s) return null;
               return (
-                <div className="situation-row" key={id}>
+                <div className="card" key={id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 16px', marginBottom: 8 }}>
                   <span>
-                    <span className="dim small">{i + 1}.</span> {s.name}
+                    <span className="faint small">{i + 1}.</span> <strong>{s.name}</strong>
                   </span>
-                  <button className="btn-ghost" onClick={() => moveUp(id)} aria-label={`Move ${s.name} up`}>
+                  <button className="btn-ghost" onClick={() => moveUp(id)} aria-label={`↑ ${s.name}`}>
                     ↑
                   </button>
                 </div>
@@ -140,20 +132,18 @@ export function Onboarding() {
         )}
         {step === 4 && (
           <>
-            <h1>Your plan</h1>
-            <div className="card" style={{ marginTop: 16 }}>
-              <p className="countdown">{previewDays} days</p>
-              <p className="dim">until departure</p>
+            <h1>{t('yourPlan')}</h1>
+            <div className="card card-accent center pop-in" style={{ marginTop: 16 }}>
+              <p style={{ fontSize: '2.8rem', fontWeight: 800, color: 'var(--accent)' }}>
+                {lang.flag} {previewDays}
+              </p>
+              <p className="dim">{previewDays === 1 ? t('dayToGo') : t('daysToGo')}</p>
             </div>
             <div className="card">
               <p>
-                <strong>{minutes} min/evening</strong> · Tier {previewTier}{' '}
-                {previewTier === 0 ? '· Survival essentials' : '· Core 180'}
+                <strong>{minutes} {t('min')}/day</strong> · Tier {previewTier}
               </p>
-              <p className="dim small" style={{ marginTop: 8 }}>
-                Emergency phrases and politeness glue are front-loaded. The final two days
-                consolidate — no cramming.
-              </p>
+              <p className="dim small" style={{ marginTop: 8 }}>{t('planPreviewNote')}</p>
             </div>
             {error && <div className="error-box">{error}</div>}
           </>
@@ -162,16 +152,16 @@ export function Onboarding() {
       <div className="action-zone">
         {step < 4 ? (
           <button className="btn-primary" onClick={() => setStep(step + 1)}>
-            Continue
+            {t('continue')}
           </button>
         ) : (
-          <button className="btn-primary" onClick={start} disabled={saving}>
-            {saving ? 'Building your plan…' : 'Start training'}
+          <button className="btn-primary breathe" onClick={start} disabled={saving}>
+            {saving ? t('buildingPlan') : t('startTraining')}
           </button>
         )}
         {step > 0 && (
           <button className="btn-ghost" onClick={() => setStep(step - 1)}>
-            Back
+            {t('back')}
           </button>
         )}
       </div>

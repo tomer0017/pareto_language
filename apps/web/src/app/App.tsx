@@ -1,13 +1,33 @@
 import { useEffect } from 'react';
-import { useAppStore } from '../shared/stores/appStore.js';
+import { useAppStore, type View } from '../shared/stores/appStore.js';
+import { t } from '../shared/i18n/strings.js';
 import { ErrorBoundary } from '../shared/ui/ErrorBoundary.js';
+import { BottomNav } from '../shared/ui/BottomNav.js';
 import { Onboarding } from '../features/onboarding/Onboarding.js';
-import { Home } from '../features/home/Home.js';
+import { Mission } from '../features/mission/Mission.js';
+import { Words } from '../features/phrasebook/Words.js';
+import { Phrases } from '../features/phrasebook/Phrases.js';
+import { Situations } from '../features/readiness/Situations.js';
+import { PracticeHub } from '../features/practice/PracticeHub.js';
 import { SessionPlayer } from '../features/session/SessionPlayer.js';
-import { ReadinessBoard } from '../features/readiness/ReadinessBoard.js';
-import { Phrasebook } from '../features/phrasebook/Phrasebook.js';
 import { EmergencyCard } from '../features/emergency/EmergencyCard.js';
 import { PlanSettings } from '../features/plan/PlanSettings.js';
+import { LanguageSelect } from '../features/languages/LanguageSelect.js';
+
+const TAB_VIEWS: View[] = ['mission', 'words', 'phrases', 'situations', 'practice'];
+
+const SCREENS: Partial<Record<View, { feature: string; el: () => JSX.Element | null }>> = {
+  onboarding: { feature: 'Onboarding', el: Onboarding },
+  mission: { feature: 'Mission', el: Mission },
+  words: { feature: 'Words', el: Words },
+  phrases: { feature: 'Phrases', el: Phrases },
+  situations: { feature: 'Situations', el: Situations },
+  practice: { feature: 'Practice', el: PracticeHub },
+  session: { feature: 'Session', el: SessionPlayer },
+  emergency: { feature: 'Emergency Card', el: EmergencyCard },
+  plan: { feature: 'Plan', el: PlanSettings },
+  languages: { feature: 'Languages', el: LanguageSelect },
+};
 
 export function App() {
   const { view, loading, fatalError, init } = useAppStore();
@@ -20,7 +40,7 @@ export function App() {
   if (loading) {
     return (
       <div className="screen" style={{ justifyContent: 'center', textAlign: 'center' }}>
-        <p className="dim">READY</p>
+        <p className="dim pop-in" style={{ fontWeight: 800, letterSpacing: '0.3em' }}>READY</p>
       </div>
     );
   }
@@ -29,58 +49,25 @@ export function App() {
     return (
       <div className="screen" style={{ justifyContent: 'center' }}>
         <div className="error-box">
-          <p>{fatalError}</p>
+          <p>{t('loadError')}</p>
           <button className="btn-secondary" style={{ marginTop: 12 }} onClick={() => void init()}>
-            Retry
+            {t('retry')}
           </button>
         </div>
       </div>
     );
   }
 
-  switch (view) {
-    case 'onboarding':
-      return (
-        <ErrorBoundary feature="Onboarding">
-          <Onboarding />
-        </ErrorBoundary>
-      );
-    case 'session':
-      return (
-        <ErrorBoundary feature="Session">
-          <SessionPlayer />
-        </ErrorBoundary>
-      );
-    case 'readiness':
-      return (
-        <ErrorBoundary feature="Readiness">
-          <ReadinessBoard />
-        </ErrorBoundary>
-      );
-    case 'phrasebook':
-      return (
-        <ErrorBoundary feature="Phrasebook">
-          <Phrasebook />
-        </ErrorBoundary>
-      );
-    case 'emergency':
-      return (
-        <ErrorBoundary feature="Emergency Card">
-          <EmergencyCard />
-        </ErrorBoundary>
-      );
-    case 'plan':
-      return (
-        <ErrorBoundary feature="Plan">
-          <PlanSettings />
-        </ErrorBoundary>
-      );
-    case 'home':
-    default:
-      return (
-        <ErrorBoundary feature="Home">
-          <Home />
-        </ErrorBoundary>
-      );
-  }
+  const screen = SCREENS[view] ?? SCREENS.mission;
+  if (!screen) return null;
+  const Screen = screen.el;
+
+  return (
+    <>
+      <ErrorBoundary feature={screen.feature}>
+        <Screen />
+      </ErrorBoundary>
+      {TAB_VIEWS.includes(view) && <BottomNav />}
+    </>
+  );
 }

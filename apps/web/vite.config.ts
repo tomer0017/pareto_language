@@ -20,8 +20,8 @@ export default defineConfig({
         name: 'READY — Travel Language Trainer',
         short_name: 'READY',
         description: 'Be demonstrably capable in the 10 situations every traveler faces.',
-        theme_color: '#0f2233',
-        background_color: '#0f2233',
+        theme_color: '#f4f3fb',
+        background_color: '#f4f3fb',
         display: 'standalone',
         start_url: '/',
         icons: [

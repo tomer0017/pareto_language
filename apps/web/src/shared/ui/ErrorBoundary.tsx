@@ -1,4 +1,5 @@
 import { Component, type ErrorInfo, type ReactNode } from 'react';
+import { t } from '../i18n/strings.js';
 
 interface Props {
   feature: string;
@@ -25,11 +26,11 @@ export class ErrorBoundary extends Component<Props, State> {
       return (
         <div className="error-box" role="alert">
           <p>
-            <strong>Something went wrong in {this.props.feature}.</strong>
+            <strong>{t('errorIn', { feature: this.props.feature })}</strong>
           </p>
-          <p className="small dim">Your progress is saved locally — nothing is lost.</p>
+          <p className="small dim">{t('progressSafe')}</p>
           <button className="btn-secondary" style={{ marginTop: 12 }} onClick={() => this.setState({ error: null })}>
-            Try again
+            {t('tryAgain')}
           </button>
         </div>
       );

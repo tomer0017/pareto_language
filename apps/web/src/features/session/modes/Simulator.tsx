@@ -2,6 +2,8 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import type { DialogueNode, ReviewEvent, Situation } from '@ready/content-schema';
 import { useAppStore } from '../../../shared/stores/appStore.js';
 import { speak } from '../../../shared/audio/tts.js';
+import { t } from '../../../shared/i18n/strings.js';
+import { useAppStore as useApp2 } from '../../../shared/stores/appStore.js';
 
 /**
  * Mode 6 — Situation Simulator (PDF §9): a 60–90s scripted branching dialogue. Deterministic,
@@ -32,7 +34,7 @@ export function Simulator({
     if (!node) return;
     if (node.speaker === 'npc') {
       setTranscript((t) => [...t, { who: 'npc', text: node.text }]);
-      void speak(node.text);
+      void speak(node.text, useApp2.getState().learningLang);
       if (node.next) {
         const nextId = node.next;
         const timer = setTimeout(() => setNodeId(nextId), 900);
@@ -96,7 +98,7 @@ export function Simulator({
   return (
     <>
       <div className="drill-card" style={{ justifyContent: 'flex-start', textAlign: 'left', gap: 10, maxHeight: '50vh', overflowY: 'auto' }}>
-        <p className="drill-prompt-label">{situation.name} — live</p>
+        <p className="drill-label">{situation.name} — live</p>
         {transcript.map((line, i) => (
           <p key={i} className={line.who === 'npc' ? 'dim' : ''} style={{ fontWeight: line.who === 'user' ? 700 : 400 }}>
             {line.who === 'npc' ? '🗣 ' : 'You: '}
@@ -106,8 +108,8 @@ export function Simulator({
       </div>
       <div className="action-zone">
         {done ? (
-          <button className="btn-primary" onClick={complete}>
-            {correctChoices.current.length > wrongCount.current ? 'You handled it 🎯' : 'Finish'}
+          <button className="btn-accent" onClick={complete}>
+            {correctChoices.current.length > wrongCount.current ? t('youHandledIt') : t('finish')}
           </button>
         ) : node.speaker === 'user' && node.options ? (
           node.options.map((opt, i) => (

@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type { ContentItem, ReviewEvent } from '@ready/content-schema';
 import { useAppStore } from '../../../shared/stores/appStore.js';
 import { playItem } from '../../../shared/audio/tts.js';
+import { t } from '../../../shared/i18n/strings.js';
 
 const SPRINT_SECONDS = 60;
 
@@ -81,14 +82,14 @@ export function NumberSprint({ onFinish }: { onFinish: (events: ReviewEvent[]) =
     return (
       <>
         <div className="drill-card">
-          <p className="drill-prompt-label">Number Sprint</p>
+          <p className="drill-label">{t('speedChallenge')}</p>
           <p className="drill-phrase">60 seconds</p>
           <p className="drill-meaning">Hear the number, tap its value. Speed builds automaticity.</p>
-          {best.current > 0 && <p className="dim small">Personal best: {best.current}</p>}
+          {best.current > 0 && <p className="dim small">{t('personalBest', { n: best.current })}</p>}
         </div>
         <div className="action-zone">
           <button
-            className="btn-primary"
+            className="btn-accent"
             onClick={() => {
               setRunning(true);
               setScore(0);
@@ -96,10 +97,10 @@ export function NumberSprint({ onFinish }: { onFinish: (events: ReviewEvent[]) =
               nextPrompt();
             }}
           >
-            Start sprint
+            {t('startSprint')}
           </button>
           <button className="btn-ghost" onClick={() => onFinish([])}>
-            Skip
+            {t('skip')}
           </button>
         </div>
       </>
@@ -109,12 +110,12 @@ export function NumberSprint({ onFinish }: { onFinish: (events: ReviewEvent[]) =
   return (
     <>
       <div className="drill-card" style={{ minHeight: 200 }}>
-        <p className="drill-prompt-label">
+        <p className="drill-label">
           {secondsLeft}s · score {score}
         </p>
         <p style={{ fontSize: '2.4rem' }}>🔊</p>
         <button className="btn-ghost" onClick={() => current && void playItem(current)}>
-          Play again
+          {t('playAgain')}
         </button>
       </div>
       <div className="action-zone">

@@ -13,20 +13,34 @@ import type {
 } from '@ready/content-schema';
 import { ApiProvider, LocalProvider, type DataProvider } from '@ready/data';
 import { buildPlan, computeReadiness, DAY_MS } from '@ready/engine';
+import { applyLanguageTheme, applyUiDirection, languageInfo } from '../i18n/languages.js';
+import { setUiLangDict } from '../i18n/strings.js';
 
 export type View =
   | 'onboarding'
-  | 'home'
+  | 'mission'
+  | 'words'
+  | 'phrases'
+  | 'situations'
+  | 'practice'
   | 'session'
-  | 'readiness'
-  | 'phrasebook'
   | 'emergency'
-  | 'plan';
+  | 'plan'
+  | 'languages';
 
 export interface OnboardingInput {
   departureAt: string;
   minutesPerDay: number;
   situationPriorities: SituationPriority[];
+}
+
+/** Honest per-situation confidence: weighted blend of the readiness detail (P3 — derived from
+ *  demonstrated evidence, never from exposure). */
+export function confidencePct(snap: ReadinessSnapshot): number {
+  const d = snap.detail;
+  const phrasePart = d.phrasesTotal > 0 ? d.phrasesSolid / d.phrasesTotal : 0;
+  const pct = 0.55 * phrasePart + 0.3 * d.repliesPct + 0.15 * (d.simulatorDone ? 1 : 0);
+  return Math.round(pct * 100);
 }
 
 interface AppState {
@@ -40,8 +54,12 @@ interface AppState {
   states: Map<string, MemoryState>;
   itemsById: Map<string, ContentItem>;
   situationById: Map<string, Situation>;
+  uiLang: string;
+  learningLang: string;
 
   navigate(view: View): void;
+  setUiLang(lang: string): void;
+  setLearningLang(lang: string): Promise<void>;
   init(): Promise<void>;
   createPlan(input: OnboardingInput): Promise<void>;
   updatePlanSettings(input: OnboardingInput): Promise<void>;
@@ -70,6 +88,10 @@ function makeProvider(): DataProvider {
   return API_BASE ? new ApiProvider(local, { baseUrl: API_BASE }) : local;
 }
 
+const storedUiLang = localStorage.getItem('ready.uiLang') ?? 'en';
+const storedLearningLang = localStorage.getItem('ready.lang') ?? 'it';
+setUiLangDict(storedUiLang);
+
 export const useAppStore = create<AppState>((set, get) => ({
   provider: makeProvider(),
   view: 'onboarding',
@@ -81,16 +103,35 @@ export const useAppStore = create<AppState>((set, get) => ({
   states: new Map(),
   itemsById: new Map(),
   situationById: new Map(),
+  uiLang: storedUiLang,
+  learningLang: storedLearningLang,
 
   navigate(view) {
     set({ view });
   },
 
+  setUiLang(lang) {
+    localStorage.setItem('ready.uiLang', lang);
+    setUiLangDict(lang);
+    applyUiDirection(lang);
+    set({ uiLang: lang });
+  },
+
+  async setLearningLang(lang) {
+    if (!languageInfo(lang).available) return; // only shipped packs are selectable (R1)
+    localStorage.setItem('ready.lang', lang);
+    applyLanguageTheme(lang);
+    set({ learningLang: lang });
+    await get().init();
+  },
+
   async init() {
-    const { provider } = get();
+    const { provider, learningLang, uiLang } = get();
+    applyLanguageTheme(learningLang);
+    applyUiDirection(uiLang);
     try {
       const user = await provider.ensureAnonymousUser();
-      const pack = await provider.getContentPack('it');
+      const pack = await provider.getContentPack(learningLang);
       const plan = await provider.getTripPlan(user.id);
       const stateList = await provider.getMemoryStates(user.id);
       set({
@@ -99,17 +140,13 @@ export const useAppStore = create<AppState>((set, get) => ({
         plan,
         states: new Map(stateList.map((s) => [s.itemId, s])),
         ...toMaps(pack),
-        view: plan ? 'home' : 'onboarding',
+        view: plan ? 'mission' : 'onboarding',
         loading: false,
         fatalError: null,
       });
     } catch (err) {
       console.error('[app] init failed', err);
-      set({
-        loading: false,
-        fatalError:
-          'Could not load your content pack. Check your connection once — after that READY works fully offline.',
-      });
+      set({ loading: false, fatalError: 'loadError' });
     }
   },
 
@@ -126,7 +163,7 @@ export const useAppStore = create<AppState>((set, get) => ({
       version: 1,
     });
     await provider.saveTripPlan(plan);
-    set({ plan, view: 'home' });
+    set({ plan, view: 'mission' });
   },
 
   async updatePlanSettings(input) {
@@ -181,7 +218,6 @@ export const useAppStore = create<AppState>((set, get) => ({
     if (!pack) return [];
     const departureMs = plan ? Date.parse(plan.departureAt) : Date.now() + 7 * DAY_MS;
     return pack.situations.map((situation) => {
-      // The Simulator confers L4 on core phrases; any L4 core item = simulator completed.
       const simulatorDone = situation.corePhraseIds.some(
         (id) => (states.get(id)?.level ?? 0) >= 4,
       );

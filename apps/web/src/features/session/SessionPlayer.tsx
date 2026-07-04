@@ -2,6 +2,9 @@ import { useEffect, useState } from 'react';
 import type { Outcome, ReviewEvent } from '@ready/content-schema';
 import { useAppStore } from '../../shared/stores/appStore.js';
 import { useSessionStore } from '../../shared/stores/sessionStore.js';
+import { t } from '../../shared/i18n/strings.js';
+import { CheckPop } from '../../shared/ui/CheckPop.js';
+import { success, tap } from '../../shared/ui/haptics.js';
 import { SwipeCard } from './modes/SwipeCard.js';
 import { FlashRecall } from './modes/FlashRecall.js';
 import { Echo } from './modes/Echo.js';
@@ -10,14 +13,16 @@ import { NumberSprint } from './modes/NumberSprint.js';
 import { Simulator } from './modes/Simulator.js';
 
 /**
- * Session Player (PDF §10.3): one consistent interaction shell — card center, primary action
- * bottom, progress dots top — hosting all modes. Warm-up → Learn → Integrate → Close (§10.2).
+ * Session Player — one consistent interaction shell for all modes (PDF §10.3): progress on top,
+ * card in the center, actions in the thumb zone. Passing feels satisfying (check pop + haptic);
+ * failing feels like information, not punishment.
  */
 export function SessionPlayer() {
   const app = useAppStore();
   const session = useSessionStore();
   const [phase, setPhase] = useState<'drill' | 'simulator' | 'close'>('drill');
   const [summary, setSummary] = useState<string[]>([]);
+  const [checkTrigger, setCheckTrigger] = useState(0);
 
   const step = session.current();
 
@@ -37,30 +42,38 @@ export function SessionPlayer() {
   };
 
   const submit = (outcome: Outcome, extras?: Partial<ReviewEvent>) => {
+    if (outcome === 'pass') {
+      success();
+      setCheckTrigger((n) => n + 1);
+    } else {
+      tap();
+    }
     void session.submit(outcome, extras);
   };
 
   const exit = () => {
     session.reset();
-    app.navigate('home');
+    app.navigate(session.isPractice ? 'practice' : 'mission');
   };
 
-  const BLOCK_LABEL = { warmup: 'Warm-up', learn: 'Learn', integrate: 'Integrate' } as const;
+  const BLOCK_LABEL = { warmup: t('warmup'), learn: t('learn'), integrate: t('integrate') } as const;
+  const progressPct = session.steps.length > 0 ? Math.round((session.index / session.steps.length) * 100) : 0;
 
   return (
     <div className="screen">
+      <CheckPop trigger={checkTrigger} />
       <div className="topbar">
         <button className="btn-ghost" onClick={phase === 'close' ? exit : () => void closeSession()}>
-          {phase === 'close' ? 'Home' : 'End early'}
+          {phase === 'close' ? t('home') : t('endEarly')}
         </button>
-        <span className="dim small">{step ? BLOCK_LABEL[step.block] : phase === 'simulator' ? 'Integrate' : 'Close'}</span>
-        <span style={{ width: 64 }} />
+        <span className="chip">
+          {step ? BLOCK_LABEL[step.block] : phase === 'simulator' ? t('integrate') : t('closeBlock')}
+        </span>
+        <span style={{ width: 44 }} />
       </div>
 
-      <div className="progress-dots" aria-hidden>
-        {session.steps.slice(0, 60).map((_, i) => (
-          <span key={i} className={`dot ${i < session.index ? 'done' : i === session.index ? 'now' : ''}`} />
-        ))}
+      <div className="progress-track" aria-hidden style={{ marginBottom: 6 }}>
+        <div className="progress-fill brand" style={{ width: `${phase === 'close' ? 100 : progressPct}%` }} />
       </div>
 
       {phase === 'drill' && step && (
@@ -97,19 +110,22 @@ export function SessionPlayer() {
       )}
 
       {phase === 'close' && (
-        <div className="fade-in">
-          <div className="drill-card" style={{ minHeight: 200 }}>
-            <p className="drill-prompt-label">Session complete</p>
+        <div className="pop-in">
+          <div className="drill-card" style={{ minHeight: 220 }}>
+            <p className="drill-label">{t('sessionComplete')}</p>
+            <p style={{ fontSize: '2.6rem' }}>🏁</p>
             {summary.map((line, i) => (
-              <p key={i} className={i === 0 ? 'drill-meaning' : 'dim small'}>
+              <p key={i} className={i === 0 ? 'drill-meaning' : 'faint small'}>
                 {line}
               </p>
             ))}
-            <p className="dim small">{app.daysLeft()} days to departure.</p>
+            <p className="faint small">
+              ✈ {app.daysLeft()} {app.daysLeft() === 1 ? t('dayToGo') : t('daysToGo')}
+            </p>
           </div>
           <div className="action-zone">
             <button className="btn-primary" onClick={exit}>
-              Done
+              {t('done')}
             </button>
           </div>
         </div>
@@ -117,7 +133,7 @@ export function SessionPlayer() {
 
       {phase === 'drill' && !step && !session.simulatorSituation && (
         <div className="drill-card" style={{ minHeight: 160 }}>
-          <p className="drill-meaning">Nothing due right now — you’re on plan.</p>
+          <p className="drill-meaning">{t('nothingDue')}</p>
         </div>
       )}
     </div>
