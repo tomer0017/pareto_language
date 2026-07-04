@@ -92,3 +92,27 @@ coverage   ✓ engine ~98% stmts / 91% branches (bar 85%)
 build      ✓ packages + content pack + PWA (precache 13 entries) + server dist
 smoke      ✓ 15/15 checks (plan → session → persistence → readiness → offline reload)
 ```
+
+---
+
+## M5 — UX overhaul (2026-07-05)
+
+Rebuilt the presentation layer as a complete ecosystem per the founder's UI/UX refinement brief.
+The engine, data providers, server and tests are untouched and still green.
+
+- **Multi-language platform**: language registry (🇺🇸 🇪🇸 🇫🇷 🇮🇹 🇸🇦) with per-language accent
+  themes, native names and RTL; dynamic UI language (en + he shipped) — adding a language is a
+  dictionary + a content pack, zero screen changes. Italian is the first shipped pack (R1);
+  the founder's fr/es/en/he vocabulary bank seeds the next packs.
+- **Mission-first**: Today's Mission card previews the scheduler's real output with estimated
+  minutes and a single Start button; the whole app funnels into it.
+- **Equal content surfaces**: bottom nav — Mission · Words · Phrases · Situations · Practice.
+- **Travel Confidence**: per-situation rings + the four honest badges; detail view with
+  projected recall at departure.
+- **Practice hub**: six mini-games (Swipe, Recall, Listening, Speed Challenge, Simulator, Echo)
+  reusing the session runtime and the honest evidence model.
+- **Micro-interactions**: check-pop, haptics, staggered entrances, breathing CTA, animated
+  rings/progress — no XP/coins/streaks/confetti anywhere (P6).
+
+Verification after M5: 74/74 tests, typecheck + lint clean, PWA production build (13 precache
+entries), engine untouched at ~98% coverage.
