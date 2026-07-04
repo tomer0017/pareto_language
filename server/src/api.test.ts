@@ -130,10 +130,11 @@ describe('API v1', () => {
     expect(states.has('notStarted')).toBe(true);
   });
 
-  it('POST /auth/google fails cleanly when unconfigured', async () => {
+  it('POST /auth/google fails cleanly with a bad/unconfigured credential', async () => {
     const res = await request(app).post('/api/v1/auth/google').send({ credential: 'x'.repeat(20) });
-    expect(res.status).toBe(503);
-    expect(res.body.error.code).toBe('google_not_configured');
+    // 503 when GOOGLE_CLIENT_ID is unset; 401 when it is set and the token is invalid.
+    expect([401, 503]).toContain(res.status);
+    expect(['google_not_configured', 'invalid_google_token']).toContain(res.body.error.code);
   });
 
   it('unknown routes return a typed 404', async () => {

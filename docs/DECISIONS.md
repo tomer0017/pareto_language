@@ -129,3 +129,28 @@ Every non-obvious technical decision, with one line of reasoning. Referenced by 
 - **D035 — Travel Confidence % is derived from readiness detail** (55% solid phrases, 30%
   replies understood, 15% scenario done) — a visual read of demonstrated evidence, never
   exposure counts (P3). Badges keep the four honest states on top of the ring.
+
+## M6 — Real MongoDB-backed data
+
+- **D036 — MongoDB is the authoritative content store for the API; static packs stay as the
+  offline fallback.** One authoring source (YAML + vocabulary bank) feeds both: seeds upsert
+  words/phrases/situations/contentPacks into Mongo, and the active pack's canonical engine
+  payload is stored on its contentPacks row and served at /content/packs/:lang/full. Not a
+  parallel system — one source, two delivery paths (API online, static/IDB offline, P7).
+- **D037 — MONGO_URI (server/.env) is canonical; MONGODB_URI kept as alias.** Config loads
+  server/.env then root .env explicitly (CWD-independent). The URI is never logged.
+- **D038 — The simplified practice API is a facade over the engine, not a second SRS.** POST
+  /review-events maps result/sourceGame onto engine ReviewEvents (append-only log unchanged);
+  GET /memory-states derives status (new/learning/known/weak/mastered) and nextReviewAt
+  (t where R(t)=0.9) from the FSRS-style state. The requested fixed intervals (24h/72h/7d) are
+  superseded by the engine's adaptive spacing, which already satisfies their intent: failures
+  come back within hours, mastered items return rarely, nothing is ever hidden forever.
+- **D039 — Anonymous, no-login progress via resolveActor.** JWT if present, else a
+  client-format anonymousId (anon-<uuid>) creates/reuses the same user id the PWA generates
+  locally — no id-mapping, no login wall.
+- **D040 — Bank rows generate one Word doc per learning language present (fr/es/en).**
+  translations carry the other columns (incl. he); it/ar are absent from the bank and are
+  reported by the importer rather than silently ignored. Bank words alone do NOT activate a
+  pack — phrases/replies/situations are still required (packs stay coming_soon).
+- **D041 — Seed idempotency = upsert by stable _id.** Re-running inserts 0; "updated" counts
+  reflect $set touching timestamps, not duplicates.

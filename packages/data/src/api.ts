@@ -138,7 +138,21 @@ export class ApiProvider implements DataProvider {
     return user;
   }
 
-  getContentPack(lang: string, version?: string): Promise<ContentPack> {
+  /**
+   * Content is API-first (the server's MongoDB-backed pack payload) with the local/static pack
+   * as fallback — the app never breaks when the backend is down (P7, local-first).
+   */
+  async getContentPack(lang: string, version?: string): Promise<ContentPack> {
+    try {
+      const res = await this.call(`/content/packs/${lang}/full`);
+      if (res.ok) {
+        const pack = (await res.json()) as ContentPack;
+        await this.local.cachePack(pack);
+        return pack;
+      }
+    } catch (err) {
+      console.warn('[content] API pack unavailable; using local/static pack', err);
+    }
     return this.local.getContentPack(lang, version);
   }
 

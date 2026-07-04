@@ -27,7 +27,12 @@
     "smoke": "tsx scripts/smoke.ts",
     "verify": "npm run typecheck && npm run lint && npm run test && npm run build",
     "dev:web": "npm run dev -w @ready/web",
-    "dev:server": "npm run dev -w @ready/server"
+    "dev:server": "npm run dev -w @ready/server",
+    "seed:all": "tsx server/src/seed/cli.ts all",
+    "seed:words": "tsx server/src/seed/cli.ts words",
+    "seed:phrases": "tsx server/src/seed/cli.ts phrases",
+    "seed:situations": "tsx server/src/seed/cli.ts situations",
+    "seed:content-packs": "tsx server/src/seed/cli.ts content-packs"
   },
   "devDependencies": {
     "@eslint/js": "^9.12.0",

@@ -70,3 +70,29 @@ Copy `.env.example` → `.env` (repo root; the server loads it via dotenv):
 - Audio: items resolve `audio/it/<itemId>.mp3` first; missing assets fall back to the Web
   Speech API automatically. Drop real recordings into `apps/web/public/audio/it/` to upgrade
   per-item with zero client changes.
+
+## MongoDB & seeding (M6)
+
+- **Where MONGO_URI lives**: `server/.env` (git-ignored). `MONGODB_URI` works as an alias;
+  root `.env` is read as fallback. The server never prints the URI.
+- **Run the server**: `npm run dev:server` → logs `MongoDB connected` + `listening on :4000`.
+  Without MONGO_URI it exits with a clear message; the PWA keeps working local-first.
+- **Test the connection**: `curl http://localhost:4000/api/v1/health` → `{"ok":true,"mongo":"connected"}`.
+- **Seed**: `npm run seed:all` (or `seed:words` / `seed:phrases` / `seed:situations` /
+  `seed:content-packs`). Idempotent — rerun any time; prints inserted/updated/unchanged plus
+  the vocabulary-bank import report (invalid rows, duplicate English, suspicious rows, missing
+  translations). Prerequisite: `npm run build:content` (the Italian pack JSON is a seed source).
+- **Reset/reseed**: drop the `words`/`phrases`/`situations`/`contentPacks` collections in
+  MongoDB (Compass/mongosh), then `npm run seed:all`. User-state collections are untouched.
+- **Verify the frontend reads the API**: set `VITE_API_BASE=http://localhost:4000/api/v1` in
+  `.env`, run `npm run dev:web`, open DevTools → Network: the pack loads from
+  `/content/packs/it/full` (server) and is cached to IndexedDB; kill the server and reload —
+  the app keeps working from the cache/static pack.
+- **Adding the next language pack**: author `content/<lang>/pack.yaml` (situations, phrases,
+  replies — the bank already seeds its recognition words), add the language to
+  `content/build.ts` LANGS, run `npm run build:content` + extend the seeders' active list,
+  then flip its contentPacks row to `active` and mark it available in the web registry
+  (`apps/web/src/shared/i18n/languages.ts`).
+- **Google Auth — still missing (only you can create these)**: `GOOGLE_CLIENT_ID` +
+  `VITE_GOOGLE_CLIENT_ID` (+ `JWT_SECRET`, `CLIENT_ORIGIN` already supported).
+  `GOOGLE_CLIENT_SECRET` is not needed for the Google Identity Services ID-token flow we use.

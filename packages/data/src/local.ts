@@ -95,6 +95,13 @@ export class LocalProvider implements DataProvider {
     return pack;
   }
 
+  /** Persist a pack fetched elsewhere (e.g. from the API) into the offline cache. */
+  async cachePack(pack: ContentPack): Promise<void> {
+    const db = await this.db();
+    await db.put('packs', { lang: pack.lang, pack, cachedAt: new Date().toISOString() });
+    this.indexItems(pack);
+  }
+
   /** Ensure the item index is populated so projection can run offline. */
   private async ensureItems(): Promise<void> {
     if (this.itemsById.size > 0) return;

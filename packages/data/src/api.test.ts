@@ -87,3 +87,39 @@ describe('ApiProvider — local-first with background sync (PDF §11.4)', () => 
     expect((await api.getMemoryStates(user.id)).length).toBe(2);
   });
 });
+
+describe('ApiProvider — content is API-first with local fallback (M6)', () => {
+  it('serves the pack from the API and caches it locally', async () => {
+    globalThis.indexedDB = new IDBFactory();
+    const local = new LocalProvider(async () => {
+      throw new Error('static content unreachable');
+    });
+    const apiPack = { ...testPack, version: '9.9.9' };
+    const fetchFn = vi.fn(async (url: RequestInfo | URL) => {
+      if (String(url).endsWith('/content/packs/it/full')) return okJson(apiPack);
+      return okJson({ ok: true });
+    });
+    const api = new ApiProvider(local, { baseUrl: 'http://x/api/v1', fetchFn: fetchFn as typeof fetch });
+    const pack = await api.getContentPack('it');
+    expect(pack.version).toBe('9.9.9');
+    // Cached: a second call served locally even if the API dies now.
+    const offline = new ApiProvider(local, {
+      baseUrl: 'http://x/api/v1',
+      fetchFn: (async () => {
+        throw new Error('offline');
+      }) as unknown as typeof fetch,
+    });
+    expect((await offline.getContentPack('it')).version).toBe('9.9.9');
+  });
+
+  it('falls back to the local/static pack when the API is unavailable', async () => {
+    globalThis.indexedDB = new IDBFactory();
+    const local = new LocalProvider(async () => testPack);
+    const fetchFn = vi.fn(async () => {
+      throw new Error('server down');
+    });
+    const api = new ApiProvider(local, { baseUrl: 'http://x/api/v1', fetchFn: fetchFn as unknown as typeof fetch });
+    const pack = await api.getContentPack('it');
+    expect(pack.version).toBe(testPack.version); // app keeps working — no crash
+  });
+});

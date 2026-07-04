@@ -116,3 +116,26 @@ The engine, data providers, server and tests are untouched and still green.
 
 Verification after M5: 74/74 tests, typecheck + lint clean, PWA production build (13 precache
 entries), engine untouched at ~98% coverage.
+
+---
+
+## M6 — Real MongoDB-backed data (2026-07-05)
+
+- **Connected to the real cluster** via `MONGO_URI` in `server/.env` (never logged);
+  `npm run seed:all` populated: it words 51 · it phrases 131 · it situations 10 · bank words
+  3,000 (from the 1,000-row fr/es/en/he vocabulary bank, full import report printed) ·
+  5 contentPacks rows. Re-run inserts 0 (idempotent).
+- **Live API verified** against real Mongo: /health {mongo:"connected"}, /content/languages
+  (5 languages with counts), /words?languageCode=fr → 1000, /content/packs/it/full → full
+  engine payload (58 KB).
+- **New API surface** (Routes → Controllers → Services → DAL): health, content/languages,
+  content/packs(+/:lang, /:lang/full), words, phrases, situations, review-events,
+  memory-states, practice-sessions(+end), readiness — all zod-validated, anonymous-friendly.
+- **Frontend**: ApiProvider now fetches the pack API-first and caches it into IndexedDB;
+  falls back to the static pack when the server is down (tested).
+- **Languages**: it = active (pipeline-validated; native review still pending) · en/es/fr =
+  coming_soon (bank words seeded; need travel phrases + situations) · ar = coming_soon
+  (needs full pack + RTL review).
+- **Google Auth**: implementation already present; still needs your `GOOGLE_CLIENT_ID`
+  (+ VITE_ vars). GOOGLE_CLIENT_SECRET is NOT required for the ID-token button flow.
+- Verification: 92/92 tests, typecheck/lint clean, prod builds, SMOKE PASS.

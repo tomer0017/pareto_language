@@ -1,12 +1,7 @@
 import { Router, type Response } from 'express';
 import { z } from 'zod';
 import { OAuth2Client } from 'google-auth-library';
-import {
-  ReviewEventSchema,
-  SessionLogSchema,
-  TripPlanSchema,
-  computeReadinessInputSituations,
-} from './apiSchemas.js';
+import { ReviewEventSchema, SessionLogSchema, TripPlanSchema } from './apiSchemas.js';
 import {
   MemoryStateModel,
   ReviewEventModel,
@@ -17,10 +12,10 @@ import {
 import { requireAuth, setAuthCookie, signToken, tryGetUserId, type AuthedRequest } from '../middleware/auth.js';
 import { AppError } from '../middleware/error.js';
 import { config } from '../config.js';
-import { loadManifest, loadPack } from '../services/content.js';
+import { loadManifest } from '../services/content.js';
 import { reprojectUser } from '../services/projection.js';
-import { computeReadiness, DAY_MS } from '@ready/engine';
-import type { MemoryState, UserProfile } from '@ready/content-schema';
+import { readinessForUser } from '../services/readiness.js';
+import type { UserProfile } from '@ready/content-schema';
 import { randomUUID } from 'node:crypto';
 
 export const api = Router();
@@ -193,15 +188,5 @@ api.post('/me/sessions', requireAuth, ah(async (req: AuthedRequest, res) => {
 }));
 
 api.get('/me/readiness', requireAuth, ah(async (req: AuthedRequest, res) => {
-  const plan = await TripPlanModel.findOne({ userId: req.userId }).lean();
-  const lang = plan?.lang ?? 'it';
-  const pack = loadPack(lang);
-  const stateList = (await MemoryStateModel.find({ userId: req.userId }).lean()) as unknown as MemoryState[];
-  const states = new Map(stateList.map((s) => [s.itemId, s]));
-  const departureMs = plan ? Date.parse(plan.departureAt) : Date.now() + 7 * DAY_MS;
-  const snapshots = computeReadinessInputSituations(pack).map((situation) => {
-    const simulatorDone = situation.corePhraseIds.some((id) => (states.get(id)?.level ?? 0) >= 4);
-    return computeReadiness({ situation, statesByItem: states, simulatorDone, departureMs, nowMs: Date.now() });
-  });
-  res.json({ readiness: snapshots });
+  res.json({ readiness: await readinessForUser(req.userId as string) });
 }));
