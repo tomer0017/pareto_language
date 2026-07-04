@@ -1,0 +1,498 @@
+# READY — Italian content pack (it-IT) v0.1.0
+# Tier 0 (Survival) + Tier 1 (Core). Authored per PDF §7.
+# needsNativeReview: this content must be validated by a native Italian speaker (PDF §7.4, R1).
+lang: it
+version: 0.1.0
+needsNativeReview: true
+
+numbersCurriculum:
+  - { id: ns.0-20, label: '0–20', kind: integer, min: 0, max: 20 }
+  - { id: ns.tens, label: 'Tens (20–100)', kind: integer, min: 20, max: 100 }
+  - { id: ns.hundreds, label: 'Hundreds (100–1000)', kind: integer, min: 100, max: 1000 }
+  - { id: ns.prices, label: 'Prices (€)', kind: price, min: 1, max: 100 }
+  - { id: ns.time, label: 'Telling time', kind: time, min: 0, max: 24 }
+
+# Politeness & social glue — overtrained to fluency (PDF §6.3). Global, not tied to a situation.
+glue:
+  - { id: grazie, text: 'Grazie', meaning: 'Thank you', tier: 0 }
+  - { id: prego, text: 'Prego', meaning: "You're welcome / Go ahead", tier: 0 }
+  - { id: perfavore, text: 'Per favore', meaning: 'Please', tier: 0 }
+  - { id: scusi, text: 'Scusi', meaning: 'Excuse me (formal)', tier: 0 }
+  - { id: mi-dispiace, text: 'Mi dispiace', meaning: "I'm sorry", tier: 0 }
+  - { id: si, text: 'Sì', meaning: 'Yes', tier: 0 }
+  - { id: no, text: 'No', meaning: 'No', tier: 0 }
+  - { id: buongiorno, text: 'Buongiorno', meaning: 'Good morning / Hello', tier: 0 }
+  - { id: buonasera, text: 'Buonasera', meaning: 'Good evening', tier: 0 }
+  - { id: arrivederci, text: 'Arrivederci', meaning: 'Goodbye', tier: 0 }
+  - { id: non-parlo, text: 'Non parlo italiano', meaning: "I don't speak Italian", tier: 0 }
+  - { id: parla-inglese, text: 'Parla inglese?', meaning: 'Do you speak English?', tier: 0 }
+  - { id: non-capito, text: 'Non ho capito', meaning: "I didn't understand", tier: 0 }
+  - { id: piu-lento, text: 'Può parlare più lentamente?', meaning: 'Can you speak more slowly?', tier: 0 }
+
+# Numbers, prices, time — trained to comprehension at speed (PDF §6.3, Number Sprint).
+numbers:
+  - { id: zero, text: 'zero', meaning: '0' }
+  - { id: uno, text: 'uno', meaning: '1' }
+  - { id: due, text: 'due', meaning: '2' }
+  - { id: tre, text: 'tre', meaning: '3' }
+  - { id: quattro, text: 'quattro', meaning: '4' }
+  - { id: cinque, text: 'cinque', meaning: '5' }
+  - { id: sei, text: 'sei', meaning: '6' }
+  - { id: sette, text: 'sette', meaning: '7' }
+  - { id: otto, text: 'otto', meaning: '8' }
+  - { id: nove, text: 'nove', meaning: '9' }
+  - { id: dieci, text: 'dieci', meaning: '10' }
+  - { id: undici, text: 'undici', meaning: '11' }
+  - { id: dodici, text: 'dodici', meaning: '12' }
+  - { id: tredici, text: 'tredici', meaning: '13' }
+  - { id: quattordici, text: 'quattordici', meaning: '14' }
+  - { id: quindici, text: 'quindici', meaning: '15' }
+  - { id: sedici, text: 'sedici', meaning: '16' }
+  - { id: diciassette, text: 'diciassette', meaning: '17' }
+  - { id: diciotto, text: 'diciotto', meaning: '18' }
+  - { id: diciannove, text: 'diciannove', meaning: '19' }
+  - { id: venti, text: 'venti', meaning: '20' }
+  - { id: trenta, text: 'trenta', meaning: '30' }
+  - { id: quaranta, text: 'quaranta', meaning: '40' }
+  - { id: cinquanta, text: 'cinquanta', meaning: '50' }
+  - { id: cento, text: 'cento', meaning: '100' }
+  - { id: mille, text: 'mille', meaning: '1000' }
+
+situations:
+  # 1 ───────────────────────────────────────────────────────────
+  - id: restaurant
+    name: 'Café & Restaurant'
+    icon: utensils
+    priorityDefault: 100
+    cultureTips:
+      - 'Al bar, un caffè preso al banco costa meno che seduti al tavolo.'
+      - 'Il coperto è un piccolo costo fisso per il servizio al tavolo — è normale.'
+    corePhrases:
+      - { id: table-two, text: 'Un tavolo per due, per favore', meaning: 'A table for two, please' }
+      - { id: menu, text: 'Il menù, per favore', meaning: 'The menu, please' }
+      - { id: coffee, text: 'Un caffè, per favore', meaning: 'A coffee, please', tier: 0 }
+      - { id: water, text: "Una bottiglia d'acqua, per favore", meaning: 'A bottle of water, please' }
+      - { id: order-this, text: 'Vorrei questo, per favore', meaning: "I'd like this, please" }
+      - { id: bill, text: 'Il conto, per favore', meaning: 'The bill, please', tier: 0 }
+      - { id: card, text: 'Posso pagare con la carta?', meaning: 'Can I pay by card?' }
+      - { id: delicious, text: 'Era tutto buonissimo', meaning: 'It was all delicious' }
+    replies:
+      - { id: to-drink, text: 'Da bere?', meaning: 'Anything to drink?' }
+      - { id: here-away, text: 'Qui o da portare via?', meaning: 'Here or to take away?' }
+      - { id: cash-card, text: 'Contanti o carta?', meaning: 'Cash or card?' }
+      - { id: reserved, text: 'Ha prenotato?', meaning: 'Do you have a reservation?' }
+      - { id: anything-else, text: 'Desidera altro?', meaning: 'Anything else?' }
+    words:
+      - { id: menu-w, text: 'il menù', meaning: 'menu' }
+      - { id: bill-w, text: 'il conto', meaning: 'the bill' }
+      - { id: table-w, text: 'il tavolo', meaning: 'table' }
+    dialogue:
+      startNodeId: n1
+      nodes:
+        - { id: n1, speaker: npc, text: 'Buonasera, ha prenotato?', meaning: 'Good evening, do you have a reservation?', next: n2 }
+        - id: n2
+          speaker: user
+          text: 'No, un tavolo per due, per favore'
+          meaning: 'No, a table for two, please'
+          options:
+            - { text: 'No, un tavolo per due, per favore', meaning: 'No, a table for two, please', next: n3, correct: true }
+            - { text: 'Il conto, per favore', meaning: 'The bill, please', next: n3, correct: false }
+        - { id: n3, speaker: npc, text: 'Certo. Da bere?', meaning: 'Of course. Anything to drink?', next: n4 }
+        - id: n4
+          speaker: user
+          text: "Una bottiglia d'acqua, per favore"
+          meaning: 'A bottle of water, please'
+          options:
+            - { text: "Una bottiglia d'acqua, per favore", meaning: 'A bottle of water, please', next: n5, correct: true }
+            - { text: 'Arrivederci', meaning: 'Goodbye', next: n5, correct: false }
+        - { id: n5, speaker: npc, text: 'Perfetto, arrivo subito.', meaning: "Perfect, I'll be right there." }
+
+  # 2 ───────────────────────────────────────────────────────────
+  - id: transport
+    name: 'Getting Around'
+    icon: train
+    priorityDefault: 90
+    cultureTips:
+      - 'Convalida sempre il biglietto nella macchinetta gialla prima di salire.'
+    corePhrases:
+      - { id: to-address, text: 'Mi porti a questo indirizzo, per favore', meaning: 'Take me to this address, please' }
+      - { id: how-much-centre, text: 'Quanto costa fino al centro?', meaning: 'How much is it to the centre?' }
+      - { id: one-ticket, text: 'Un biglietto, per favore', meaning: 'One ticket, please', tier: 0 }
+      - { id: two-tickets, text: 'Due biglietti per il centro', meaning: 'Two tickets to the centre' }
+      - { id: which-platform, text: 'Da quale binario parte?', meaning: 'Which platform does it leave from?' }
+      - { id: does-stop, text: 'Ferma a San Marco?', meaning: 'Does it stop at San Marco?' }
+      - { id: next-stop, text: "Qual è la prossima fermata?", meaning: "What's the next stop?" }
+      - { id: stop-here, text: 'Può fermarsi qui, per favore', meaning: 'Can you stop here, please', tier: 0 }
+    replies:
+      - { id: cash-only, text: 'Solo contanti', meaning: 'Cash only' }
+      - { id: platform-three, text: 'Binario tre', meaning: 'Platform three' }
+      - { id: next-at-ten, text: 'Il prossimo è alle dieci', meaning: 'The next one is at ten' }
+      - { id: get-off-next, text: 'Deve scendere alla prossima', meaning: 'You need to get off at the next stop' }
+      - { id: straight-reply, text: 'È sempre dritto', meaning: "It's straight ahead" }
+    words:
+      - { id: exit-w, text: 'uscita', meaning: 'exit' }
+      - { id: platform-w, text: 'binario', meaning: 'platform (track)' }
+      - { id: ticket-w, text: 'biglietto', meaning: 'ticket' }
+    dialogue:
+      startNodeId: n1
+      nodes:
+        - { id: n1, speaker: npc, text: 'Buongiorno, dove va?', meaning: 'Good morning, where to?', next: n2 }
+        - id: n2
+          speaker: user
+          text: 'Mi porti a questo indirizzo, per favore'
+          meaning: 'Take me to this address, please'
+          options:
+            - { text: 'Mi porti a questo indirizzo, per favore', meaning: 'Take me to this address, please', next: n3, correct: true }
+            - { text: 'Il menù, per favore', meaning: 'The menu, please', next: n3, correct: false }
+        - { id: n3, speaker: npc, text: 'Va bene. Sono quindici euro.', meaning: "Alright. That's fifteen euros.", next: n4 }
+        - id: n4
+          speaker: user
+          text: 'Posso pagare con la carta?'
+          meaning: 'Can I pay by card?'
+          options:
+            - { text: 'Posso pagare con la carta?', meaning: 'Can I pay by card?', next: n5, correct: true }
+            - { text: 'Sono allergico', meaning: "I'm allergic", next: n5, correct: false }
+        - { id: n5, speaker: npc, text: 'Mi dispiace, solo contanti.', meaning: 'Sorry, cash only.' }
+
+  # 3 ───────────────────────────────────────────────────────────
+  - id: shopping
+    name: 'Shopping & Paying'
+    icon: bag
+    priorityDefault: 80
+    cultureTips:
+      - "Conserva lo scontrino finché non esci dal negozio."
+    corePhrases:
+      - { id: how-much, text: 'Quanto costa?', meaning: 'How much is it?', tier: 0 }
+      - { id: just-looking, text: 'Sto solo guardando, grazie', meaning: "I'm just looking, thanks" }
+      - { id: try-on, text: 'Posso provarlo?', meaning: 'Can I try it on?' }
+      - { id: bigger-size, text: 'Avete una taglia più grande?', meaning: 'Do you have a bigger size?' }
+      - { id: too-expensive, text: 'È troppo caro', meaning: "It's too expensive" }
+      - { id: take-it, text: 'Lo prendo', meaning: "I'll take it" }
+      - { id: pay-card, text: 'Posso pagare con la carta?', meaning: 'Can I pay by card?' }
+      - { id: receipt, text: 'Mi dà lo scontrino, per favore?', meaning: 'Can I have the receipt, please?' }
+    replies:
+      - { id: can-help, text: 'Posso aiutarla?', meaning: 'Can I help you?' }
+      - { id: which-size, text: 'Che taglia?', meaning: 'What size?' }
+      - { id: sold-out, text: 'È esaurito', meaning: "It's sold out" }
+      - { id: how-pay, text: 'Come paga?', meaning: 'How are you paying?' }
+      - { id: else-shop, text: 'Desidera altro?', meaning: 'Anything else?' }
+    words:
+      - { id: sale-w, text: 'saldi', meaning: 'sale (discounts)' }
+      - { id: open-w, text: 'aperto', meaning: 'open' }
+      - { id: closed-w, text: 'chiuso', meaning: 'closed' }
+    dialogue:
+      startNodeId: n1
+      nodes:
+        - { id: n1, speaker: npc, text: 'Buongiorno, posso aiutarla?', meaning: 'Good morning, can I help you?', next: n2 }
+        - id: n2
+          speaker: user
+          text: 'Sto solo guardando, grazie'
+          meaning: "I'm just looking, thanks"
+          options:
+            - { text: 'Sto solo guardando, grazie', meaning: "I'm just looking, thanks", next: n3, correct: true }
+            - { text: 'Un caffè, per favore', meaning: 'A coffee, please', next: n3, correct: false }
+        - { id: n3, speaker: npc, text: 'Certo, faccia con calma.', meaning: 'Of course, take your time.', next: n4 }
+        - id: n4
+          speaker: user
+          text: 'Quanto costa?'
+          meaning: 'How much is it?'
+          options:
+            - { text: 'Quanto costa?', meaning: 'How much is it?', next: n5, correct: true }
+            - { text: "Dov'è il bagno?", meaning: 'Where is the toilet?', next: n5, correct: false }
+        - { id: n5, speaker: npc, text: 'Venti euro.', meaning: 'Twenty euros.' }
+
+  # 4 ───────────────────────────────────────────────────────────
+  - id: directions
+    name: 'Directions & Navigation'
+    icon: compass
+    priorityDefault: 85
+    cultureTips: []
+    corePhrases:
+      - { id: where-is, text: "Dov'è la stazione?", meaning: 'Where is the station?', tier: 0 }
+      - { id: how-get-to, text: 'Come arrivo al Colosseo?', meaning: 'How do I get to the Colosseum?' }
+      - { id: is-it-far, text: 'È lontano?', meaning: 'Is it far?' }
+      - { id: im-lost, text: 'Mi sono perso', meaning: "I'm lost" }
+      - { id: on-map, text: 'Può mostrarmelo sulla mappa?', meaning: 'Can you show me on the map?' }
+      - { id: toilet, text: "Dov'è il bagno?", meaning: 'Where is the toilet?', tier: 0 }
+      - { id: near-here, text: "C'è una farmacia qui vicino?", meaning: 'Is there a pharmacy near here?' }
+    replies:
+      - { id: turn-right, text: 'Giri a destra', meaning: 'Turn right' }
+      - { id: turn-left, text: 'Giri a sinistra', meaning: 'Turn left' }
+      - { id: go-straight, text: 'Vada sempre dritto', meaning: 'Go straight ahead' }
+      - { id: its-near, text: 'È qui vicino', meaning: "It's nearby" }
+      - { id: its-far, text: "È un po' lontano", meaning: "It's a bit far" }
+      - { id: five-minutes, text: 'Sono cinque minuti a piedi', meaning: "It's five minutes on foot" }
+    words:
+      - { id: right-w, text: 'destra', meaning: 'right' }
+      - { id: left-w, text: 'sinistra', meaning: 'left' }
+      - { id: straight-w, text: 'dritto', meaning: 'straight ahead' }
+    dialogue:
+      startNodeId: n1
+      nodes:
+        - { id: n1, speaker: user, text: "Scusi, dov'è la stazione?", meaning: 'Excuse me, where is the station?', options: [
+              { text: "Scusi, dov'è la stazione?", meaning: 'Excuse me, where is the station?', next: n2, correct: true },
+              { text: 'Un tavolo per due', meaning: 'A table for two', next: n2, correct: false },
+            ] }
+        - { id: n2, speaker: npc, text: 'Vada sempre dritto, poi giri a destra.', meaning: 'Go straight, then turn right.', next: n3 }
+        - id: n3
+          speaker: user
+          text: 'È lontano?'
+          meaning: 'Is it far?'
+          options:
+            - { text: 'È lontano?', meaning: 'Is it far?', next: n4, correct: true }
+            - { text: 'Quanto costa?', meaning: 'How much is it?', next: n4, correct: false }
+        - { id: n4, speaker: npc, text: 'No, cinque minuti a piedi.', meaning: 'No, five minutes on foot.' }
+
+  # 5 ───────────────────────────────────────────────────────────
+  - id: hotel
+    name: 'Hotel & Check-in'
+    icon: bed
+    priorityDefault: 70
+    cultureTips: []
+    corePhrases:
+      - { id: reservation, text: 'Ho una prenotazione', meaning: 'I have a reservation' }
+      - { id: check-in, text: 'Vorrei fare il check-in', meaning: "I'd like to check in" }
+      - { id: under-name, text: 'Una camera a nome Rossi', meaning: 'A room under the name Rossi' }
+      - { id: breakfast-incl, text: 'La colazione è inclusa?', meaning: 'Is breakfast included?' }
+      - { id: wifi-password, text: 'Qual è la password del Wi-Fi?', meaning: "What's the Wi-Fi password?" }
+      - { id: leave-luggage, text: 'Posso lasciare i bagagli?', meaning: 'Can I leave my luggage?' }
+      - { id: room-key, text: 'La chiave della camera, per favore', meaning: 'The room key, please' }
+    replies:
+      - { id: passport-hotel, text: 'Il passaporto, per favore', meaning: 'Your passport, please' }
+      - { id: breakfast-time, text: 'La colazione è dalle sette alle dieci', meaning: 'Breakfast is from seven to ten' }
+      - { id: room-number, text: 'Camera dodici, secondo piano', meaning: 'Room twelve, second floor' }
+      - { id: sign-here, text: 'Firmi qui, per favore', meaning: 'Sign here, please' }
+    words:
+      - { id: room-w, text: 'camera', meaning: 'room' }
+      - { id: floor-w, text: 'piano', meaning: 'floor' }
+      - { id: key-w, text: 'chiave', meaning: 'key' }
+    dialogue:
+      startNodeId: n1
+      nodes:
+        - { id: n1, speaker: npc, text: 'Buonasera, come posso aiutarla?', meaning: 'Good evening, how can I help you?', next: n2 }
+        - id: n2
+          speaker: user
+          text: 'Ho una prenotazione a nome Rossi'
+          meaning: 'I have a reservation under the name Rossi'
+          options:
+            - { text: 'Ho una prenotazione a nome Rossi', meaning: 'I have a reservation under the name Rossi', next: n3, correct: true }
+            - { text: 'Il conto, per favore', meaning: 'The bill, please', next: n3, correct: false }
+        - { id: n3, speaker: npc, text: 'Perfetto. Il passaporto, per favore.', meaning: 'Perfect. Your passport, please.', next: n4 }
+        - id: n4
+          speaker: user
+          text: 'La colazione è inclusa?'
+          meaning: 'Is breakfast included?'
+          options:
+            - { text: 'La colazione è inclusa?', meaning: 'Is breakfast included?', next: n5, correct: true }
+            - { text: 'Aiuto!', meaning: 'Help!', next: n5, correct: false }
+        - { id: n5, speaker: npc, text: 'Sì, dalle sette alle dieci.', meaning: 'Yes, from seven to ten.' }
+
+  # 6 ───────────────────────────────────────────────────────────
+  - id: smalltalk
+    name: 'Small Talk & Social'
+    icon: chat
+    priorityDefault: 40
+    cultureTips:
+      - 'Un semplice "Buongiorno" entrando in un negozio è molto apprezzato.'
+    corePhrases:
+      - { id: nice-meet, text: 'Piacere', meaning: 'Nice to meet you' }
+      - { id: how-are-you, text: 'Come sta?', meaning: 'How are you? (formal)' }
+      - { id: im-from, text: 'Vengo dagli Stati Uniti', meaning: "I'm from the United States" }
+      - { id: first-time, text: 'È la mia prima volta qui', meaning: "It's my first time here" }
+      - { id: beautiful-here, text: 'È bellissimo qui', meaning: "It's beautiful here" }
+      - { id: cheers, text: 'Salute!', meaning: 'Cheers!', tier: 0 }
+      - { id: what-recommend, text: 'Cosa mi consiglia?', meaning: 'What do you recommend?' }
+    replies:
+      - { id: where-from, text: "Di dov'è?", meaning: 'Where are you from?' }
+      - { id: enjoy-stay, text: 'Buona permanenza!', meaning: 'Enjoy your stay!' }
+      - { id: welcome-reply, text: 'Benvenuto!', meaning: 'Welcome!' }
+      - { id: me-too, text: "Anch'io", meaning: 'Me too' }
+    words: []
+    dialogue:
+      startNodeId: n1
+      nodes:
+        - { id: n1, speaker: npc, text: "Di dov'è?", meaning: 'Where are you from?', next: n2 }
+        - id: n2
+          speaker: user
+          text: 'Vengo dagli Stati Uniti'
+          meaning: "I'm from the United States"
+          options:
+            - { text: 'Vengo dagli Stati Uniti', meaning: "I'm from the United States", next: n3, correct: true }
+            - { text: 'Non ho capito', meaning: "I didn't understand", next: n3, correct: false }
+        - { id: n3, speaker: npc, text: 'Benvenuto! Prima volta in Italia?', meaning: 'Welcome! First time in Italy?', next: n4 }
+        - id: n4
+          speaker: user
+          text: 'Sì, è bellissimo qui'
+          meaning: "Yes, it's beautiful here"
+          options:
+            - { text: 'Sì, è bellissimo qui', meaning: "Yes, it's beautiful here", next: n5, correct: true }
+            - { text: 'Il conto, per favore', meaning: 'The bill, please', next: n5, correct: false }
+        - { id: n5, speaker: npc, text: 'Buona permanenza!', meaning: 'Enjoy your stay!' }
+
+  # 7 ───────────────────────────────────────────────────────────
+  - id: airport
+    name: 'Airport & Border'
+    icon: plane
+    priorityDefault: 50
+    cultureTips: []
+    corePhrases:
+      - { id: where-gate, text: "Dov'è l'imbarco?", meaning: 'Where is the boarding gate?' }
+      - { id: where-checkin, text: "Dov'è il check-in?", meaning: 'Where is the check-in desk?' }
+      - { id: hand-luggage, text: 'Ho solo un bagaglio a mano', meaning: 'I only have hand luggage' }
+      - { id: flight-delayed, text: 'Il volo è in ritardo?', meaning: 'Is the flight delayed?' }
+      - { id: on-holiday, text: 'Sono qui in vacanza', meaning: "I'm here on holiday" }
+      - { id: staying-week, text: 'Resto una settimana', meaning: "I'm staying a week" }
+    replies:
+      - { id: passport-boarding, text: "Passaporto e carta d'imbarco", meaning: 'Passport and boarding pass' }
+      - { id: purpose-trip, text: 'Qual è il motivo del viaggio?', meaning: "What's the purpose of your trip?" }
+      - { id: how-long-stay, text: 'Quanto si ferma?', meaning: 'How long are you staying?' }
+      - { id: gate-fifteen, text: 'Uscita quindici', meaning: 'Gate fifteen' }
+    words:
+      - { id: arrivals-w, text: 'arrivi', meaning: 'arrivals' }
+      - { id: departures-w, text: 'partenze', meaning: 'departures' }
+      - { id: gate-w, text: 'uscita', meaning: 'gate / exit' }
+    dialogue:
+      startNodeId: n1
+      nodes:
+        - { id: n1, speaker: npc, text: "Passaporto e carta d'imbarco, per favore.", meaning: 'Passport and boarding pass, please.', next: n2 }
+        - id: n2
+          speaker: user
+          text: 'Eccoli. Sono qui in vacanza'
+          meaning: "Here they are. I'm here on holiday"
+          options:
+            - { text: 'Eccoli. Sono qui in vacanza', meaning: "Here they are. I'm here on holiday", next: n3, correct: true }
+            - { text: 'Quanto costa?', meaning: 'How much is it?', next: n3, correct: false }
+        - { id: n3, speaker: npc, text: 'Quanto si ferma?', meaning: 'How long are you staying?', next: n4 }
+        - id: n4
+          speaker: user
+          text: 'Resto una settimana'
+          meaning: "I'm staying a week"
+          options:
+            - { text: 'Resto una settimana', meaning: "I'm staying a week", next: n5, correct: true }
+            - { text: 'Non parlo italiano', meaning: "I don't speak Italian", next: n5, correct: false }
+        - { id: n5, speaker: npc, text: 'Buon soggiorno.', meaning: 'Have a good stay.' }
+
+  # 8 ───────────────────────────────────────────────────────────
+  - id: emergency
+    name: 'Emergency & Help'
+    icon: alert
+    priorityDefault: 60
+    isEmergency: true
+    cultureTips:
+      - "Il numero unico per le emergenze in Italia e in Europa è il 112."
+    corePhrases:
+      - { id: help, text: 'Aiuto!', meaning: 'Help!', tier: 0, skillTarget: fluent }
+      - { id: call-ambulance, text: "Chiami un'ambulanza!", meaning: 'Call an ambulance!', tier: 0, skillTarget: fluent }
+      - { id: call-police, text: 'Chiami la polizia!', meaning: 'Call the police!', tier: 0, skillTarget: fluent }
+      - { id: its-emergency, text: "È un'emergenza", meaning: "It's an emergency", tier: 0, skillTarget: fluent }
+      - { id: need-doctor, text: 'Ho bisogno di un medico', meaning: 'I need a doctor', tier: 0, skillTarget: fluent }
+      - { id: allergic-to, text: 'Sono allergico alle arachidi', meaning: "I'm allergic to peanuts", tier: 0, skillTarget: fluent }
+      - { id: lost-passport, text: 'Ho perso il passaporto', meaning: "I've lost my passport", skillTarget: fluent }
+      - { id: stop, text: 'Si fermi!', meaning: 'Stop!', tier: 0, skillTarget: fluent }
+    replies:
+      - { id: what-happened, text: 'Cosa è successo?', meaning: 'What happened?' }
+      - { id: coming-now, text: 'Arrivo subito', meaning: "I'm coming right away" }
+      - { id: where-hurt, text: 'Dove le fa male?', meaning: 'Where does it hurt?' }
+      - { id: stay-calm, text: 'Stia calmo', meaning: 'Stay calm' }
+    words:
+      - { id: hospital-w, text: 'ospedale', meaning: 'hospital' }
+      - { id: police-w, text: 'polizia', meaning: 'police' }
+      - { id: pharmacy-w, text: 'farmacia', meaning: 'pharmacy' }
+    dialogue:
+      startNodeId: n1
+      nodes:
+        - { id: n1, speaker: user, text: 'Aiuto! Chiami un’ambulanza!', meaning: 'Help! Call an ambulance!', options: [
+              { text: 'Aiuto! Chiami un’ambulanza!', meaning: 'Help! Call an ambulance!', next: n2, correct: true },
+              { text: 'Un caffè, per favore', meaning: 'A coffee, please', next: n2, correct: false },
+            ] }
+        - { id: n2, speaker: npc, text: 'Cosa è successo?', meaning: 'What happened?', next: n3 }
+        - id: n3
+          speaker: user
+          text: 'Ho bisogno di un medico'
+          meaning: 'I need a doctor'
+          options:
+            - { text: 'Ho bisogno di un medico', meaning: 'I need a doctor', next: n4, correct: true }
+            - { text: 'Sto solo guardando', meaning: "I'm just looking", next: n4, correct: false }
+        - { id: n4, speaker: npc, text: 'Stia calmo, arrivo subito.', meaning: "Stay calm, I'm coming right away." }
+
+  # 9 ───────────────────────────────────────────────────────────
+  - id: medical
+    name: 'Medical & Pharmacy'
+    icon: cross
+    priorityDefault: 45
+    cultureTips:
+      - 'In farmacia (croce verde) puoi avere consigli per piccoli disturbi senza medico.'
+    corePhrases:
+      - { id: feel-sick, text: 'Non mi sento bene', meaning: "I don't feel well" }
+      - { id: headache, text: 'Ho mal di testa', meaning: 'I have a headache' }
+      - { id: stomachache, text: 'Ho mal di stomaco', meaning: 'I have a stomachache' }
+      - { id: fever, text: 'Ho la febbre', meaning: 'I have a fever' }
+      - { id: something-for, text: 'Avete qualcosa per il raffreddore?', meaning: 'Do you have something for a cold?' }
+      - { id: need-prescription, text: 'Mi serve la ricetta?', meaning: 'Do I need a prescription?' }
+      - { id: allergic-antibiotics, text: 'Sono allergico agli antibiotici', meaning: "I'm allergic to antibiotics" }
+    replies:
+      - { id: how-feel, text: 'Come si sente?', meaning: 'How do you feel?' }
+      - { id: since-when, text: 'Da quando?', meaning: 'Since when?' }
+      - { id: twice-day, text: 'Prenda questo due volte al giorno', meaning: 'Take this twice a day' }
+      - { id: after-meals, text: 'Dopo i pasti', meaning: 'After meals' }
+    words:
+      - { id: pharmacy-w2, text: 'farmacia', meaning: 'pharmacy' }
+      - { id: medicine-w, text: 'medicina', meaning: 'medicine' }
+    dialogue:
+      startNodeId: n1
+      nodes:
+        - { id: n1, speaker: npc, text: 'Buongiorno, mi dica.', meaning: 'Good morning, how can I help?', next: n2 }
+        - id: n2
+          speaker: user
+          text: 'Ho mal di testa. Avete qualcosa?'
+          meaning: 'I have a headache. Do you have something?'
+          options:
+            - { text: 'Ho mal di testa. Avete qualcosa?', meaning: 'I have a headache. Do you have something?', next: n3, correct: true }
+            - { text: 'Due biglietti, per favore', meaning: 'Two tickets, please', next: n3, correct: false }
+        - { id: n3, speaker: npc, text: 'Certo. Prenda questo due volte al giorno.', meaning: 'Of course. Take this twice a day.', next: n4 }
+        - id: n4
+          speaker: user
+          text: 'Sono allergico agli antibiotici'
+          meaning: "I'm allergic to antibiotics"
+          options:
+            - { text: 'Sono allergico agli antibiotici', meaning: "I'm allergic to antibiotics", next: n5, correct: true }
+            - { text: 'Salute!', meaning: 'Cheers!', next: n5, correct: false }
+        - { id: n5, speaker: npc, text: 'Nessun problema, questo non lo è.', meaning: "No problem, this one isn't." }
+
+  # 10 ──────────────────────────────────────────────────────────
+  - id: connectivity
+    name: 'Connectivity & Practical'
+    icon: wifi
+    priorityDefault: 55
+    cultureTips: []
+    corePhrases:
+      - { id: wifi-here, text: "C'è il Wi-Fi qui?", meaning: 'Is there Wi-Fi here?' }
+      - { id: sim-card, text: 'Vorrei una scheda SIM', meaning: "I'd like a SIM card" }
+      - { id: charge-phone, text: 'Posso caricare il telefono?', meaning: 'Can I charge my phone?' }
+      - { id: what-time-open, text: 'A che ora aprite?', meaning: 'What time do you open?' }
+      - { id: what-time-close, text: 'A che ora chiudete?', meaning: 'What time do you close?' }
+      - { id: where-laundry, text: "Dov'è una lavanderia?", meaning: 'Where is a laundromat?' }
+    replies:
+      - { id: password-on-table, text: 'La password è sul tavolo', meaning: 'The password is on the table' }
+      - { id: open-at-nine, text: 'Apriamo alle nove', meaning: 'We open at nine' }
+      - { id: closed-sunday, text: 'La domenica siamo chiusi', meaning: "We're closed on Sundays" }
+      - { id: socket-there, text: 'La presa è là', meaning: 'The socket is over there' }
+    words:
+      - { id: open-w2, text: 'aperto', meaning: 'open' }
+      - { id: closed-w2, text: 'chiuso', meaning: 'closed' }
+    dialogue:
+      startNodeId: n1
+      nodes:
+        - { id: n1, speaker: user, text: "Scusi, c'è il Wi-Fi qui?", meaning: 'Excuse me, is there Wi-Fi here?', options: [
+              { text: "Scusi, c'è il Wi-Fi qui?", meaning: 'Excuse me, is there Wi-Fi here?', next: n2, correct: true },
+              { text: 'Il conto, per favore', meaning: 'The bill, please', next: n2, correct: false },
+            ] }
+        - { id: n2, speaker: npc, text: 'Sì, la password è sul tavolo.', meaning: 'Yes, the password is on the table.', next: n3 }
+        - id: n3
+          speaker: user
+          text: 'Grazie. A che ora chiudete?'
+          meaning: 'Thanks. What time do you close?'
+          options:
+            - { text: 'Grazie. A che ora chiudete?', meaning: 'Thanks. What time do you close?', next: n4, correct: true }
+            - { text: 'Mi sono perso', meaning: "I'm lost", next: n4, correct: false }
+        - { id: n4, speaker: npc, text: 'Alle sette di sera.', meaning: 'At seven in the evening.' }

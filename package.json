@@ -11,7 +11,7 @@
     "node": ">=20"
   },
   "scripts": {
-    "typecheck": "tsc -b",
+    "typecheck": "tsc -b && tsc --noEmit -p content/tsconfig.json",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write \"**/*.{ts,tsx,json,md,css,html}\"",
@@ -36,5 +36,8 @@
     "typescript": "^5.6.2",
     "typescript-eslint": "^8.8.0",
     "vitest": "^2.1.2"
+  },
+  "dependencies": {
+    "yaml": "^2.5.1"
   }
 }

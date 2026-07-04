@@ -44,3 +44,18 @@ Every non-obvious technical decision, with one line of reasoning. Referenced by 
 - **D011 — Memory state is a rebuildable projection; `reviewEvents` is the source of truth.** Same
   `packages/engine` code projects state on client and server (Decision 1), so re-computation after
   an algorithm change needs no migration (PDF §11.4).
+
+## Notes added during M1
+
+- **D012 — Simulated-learner assertion interprets "Tier-1 items reach L2+" as core *phrases*.**
+  Asymmetric skill targeting (PDF §6.3) means recognition items (replies/words) only aim for L1,
+  so the ≥80% L2+ bar applies to production (phrase) items; recognition items are asserted at L1+.
+  Both bars are enforced in `simulated-learner.test.ts`.
+- **D013 — Dialogue `id` is synthesized by the pipeline (`it.dialogue.<situation>`).** Authors
+  write only `startNodeId` + `nodes` in YAML; the build assigns a stable id, one less thing to
+  keep consistent by hand.
+- **D014 — Emitted JSON packs are build artifacts (gitignored); YAML is the source of truth.**
+  `npm run build:content` regenerates `apps/web/public/content/*.json` + `manifest.json`.
+- **D015 — Repo path contains Hebrew; a homoglyph twin dir (Arabic reh vs Hebrew resh) was
+  created and removed.** All shell commands `cd "$(ls -d /Users/.../*/parto_language | head -1)"`
+  to bind to the real (git) directory unambiguously.

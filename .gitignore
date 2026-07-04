@@ -11,3 +11,5 @@ apps/web/public/content/*.json
 !apps/web/public/content/.gitkeep
 *.log
 .vite/
+
+.claude/
