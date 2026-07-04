@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useAppStore } from '../../shared/stores/appStore.js';
 import { TopBar } from '../../shared/ui/TopBar.js';
+import { googleSignInAvailable, mountGoogleButton } from '../../shared/auth/google.js';
 
 /** Plan & Settings (PDF §10.3): edit trip date/minutes; view the day-by-day plan. */
 export function PlanSettings() {
@@ -87,7 +88,47 @@ export function PlanSettings() {
         <p className="dim small" style={{ marginTop: 12 }}>
           Plan v{plan.version} · Tier {plan.tier} · pack it-IT
         </p>
+
+        <GoogleLink />
       </div>
+    </div>
+  );
+}
+
+/** "Save your progress" — links the anonymous account to Google; progress merges server-side. */
+function GoogleLink() {
+  const buttonRef = useRef<HTMLDivElement>(null);
+  const [linkedEmail, setLinkedEmail] = useState<string | null>(null);
+  const [authError, setAuthError] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!googleSignInAvailable() || !buttonRef.current || linkedEmail) return;
+    void mountGoogleButton(
+      buttonRef.current,
+      (email) => setLinkedEmail(email ?? 'your Google account'),
+      (message) => setAuthError(message),
+    );
+  }, [linkedEmail]);
+
+  if (!googleSignInAvailable()) return null;
+
+  return (
+    <div className="card" style={{ marginTop: 16 }}>
+      <h3>Save your progress</h3>
+      {linkedEmail ? (
+        <p className="small" style={{ color: 'var(--accent)', marginTop: 8 }}>
+          Linked to {linkedEmail}. Your progress now follows you across devices.
+        </p>
+      ) : (
+        <>
+          <p className="dim small" style={{ margin: '8px 0 12px' }}>
+            Optional — READY works fully without an account. Sign in to keep progress across
+            devices; everything you have learned merges automatically.
+          </p>
+          <div ref={buttonRef} />
+          {authError && <div className="error-box" style={{ marginTop: 8 }}>{authError}</div>}
+        </>
+      )}
     </div>
   );
 }

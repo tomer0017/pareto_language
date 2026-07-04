@@ -75,3 +75,19 @@ Every non-obvious technical decision, with one line of reasoning. Referenced by 
   covers the curriculum stages while keeping tracking honest.
 - **D020 — PWA icons are generated placeholder PNGs.** Solid-accent squares emitted by a
   dependency-free script; real brand icons are a design task, not an engineering one.
+
+## M3 — Backend, Sync & Google Auth (implementation notes)
+
+- **D021 — Anonymous server users adopt the client-generated id.** POST /users/anonymous accepts
+  `clientUserId` so the device's local user and the server user are the same id — event logs
+  merge without any id-mapping table.
+- **D022 — /me/identities and /auth/google share one handler.** Both verify the Google ID token
+  server-side (`google-auth-library`) and run the identity merge; merge = move append-only
+  events + logs to the Google user, re-project via the shared engine (no bespoke conflict code).
+- **D023 — API tests run against mongodb-memory-server.** Real Mongoose queries + indexes under
+  test with zero local MongoDB requirement; the binary downloads once on first test run.
+- **D024 — memoryStates projection is recomputed per batch upload.** Per-user event logs are
+  small (≤ a few thousand); correctness over premature optimization, and the projection stays
+  rebuildable at any time (PDF §12.3).
+- **D025 — Async Express handlers are wrapped (`ah`) so rejections hit the error middleware.**
+  Express 4 does not forward async rejections; without this, thrown AppErrors crash the process.

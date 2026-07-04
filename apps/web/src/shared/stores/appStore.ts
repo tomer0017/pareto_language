@@ -11,7 +11,7 @@ import type {
   TripPlan,
   UserProfile,
 } from '@ready/content-schema';
-import { LocalProvider, type DataProvider } from '@ready/data';
+import { ApiProvider, LocalProvider, type DataProvider } from '@ready/data';
 import { buildPlan, computeReadiness, DAY_MS } from '@ready/engine';
 
 export type View =
@@ -62,8 +62,16 @@ function toMaps(pack: ContentPack): {
   };
 }
 
+const API_BASE = (import.meta.env.VITE_API_BASE as string | undefined) ?? '';
+
+function makeProvider(): DataProvider {
+  const local = new LocalProvider();
+  // Local-first always; the API layer only adds background sync when configured (PDF §11.4).
+  return API_BASE ? new ApiProvider(local, { baseUrl: API_BASE }) : local;
+}
+
 export const useAppStore = create<AppState>((set, get) => ({
-  provider: new LocalProvider(),
+  provider: makeProvider(),
   view: 'onboarding',
   loading: true,
   fatalError: null,

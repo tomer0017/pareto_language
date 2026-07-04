@@ -6,7 +6,8 @@
   "description": "READY — The Travel Language Trainer. Deadline-driven language readiness app.",
   "workspaces": [
     "packages/*",
-    "apps/*"
+    "apps/*",
+    "server"
   ],
   "engines": {
     "node": ">=20"
@@ -25,7 +26,8 @@
     "validate:content": "tsx content/validate.ts",
     "smoke": "tsx scripts/smoke.ts",
     "verify": "npm run typecheck && npm run lint && npm run test && npm run build",
-    "dev:web": "npm run dev -w @ready/web"
+    "dev:web": "npm run dev -w @ready/web",
+    "dev:server": "npm run dev -w @ready/server"
   },
   "devDependencies": {
     "@eslint/js": "^9.12.0",
