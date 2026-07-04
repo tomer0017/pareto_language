@@ -59,3 +59,19 @@ Every non-obvious technical decision, with one line of reasoning. Referenced by 
 - **D015 — Repo path contains Hebrew; a homoglyph twin dir (Arabic reh vs Hebrew resh) was
   created and removed.** All shell commands `cd "$(ls -d /Users/.../*/parto_language | head -1)"`
   to bind to the real (git) directory unambiguously.
+
+## M2 — App
+
+- **D016 — View routing via Zustand state, not react-router.** Six flat views, no deep links
+  needed in MVP; one less dependency and zero router/PWA-offline interplay to debug.
+- **D017 — Echo mode ships without microphone recording.** Record-and-compare adds a permission
+  prompt and MediaRecorder complexity for zero knowledge-model signal (echo is exposure, weight
+  0.3). Play → repeat aloud → continue. Mic compare is a clean v1.1 addition.
+- **D018 — Simulator completion = L4 evidence on the core phrases the user actually produced.**
+  `simulatorDone` for readiness is derived (any core phrase at L4) instead of a separate stored
+  flag — keeps the event log the single source of truth (P3, §11.4).
+- **D019 — Number Sprint drills the authored number items only.** Composite numbers (e.g. 34)
+  would have no itemId to log honest evidence against; the authored set (0–20, tens, 100, 1000)
+  covers the curriculum stages while keeping tracking honest.
+- **D020 — PWA icons are generated placeholder PNGs.** Solid-accent squares emitted by a
+  dependency-free script; real brand icons are a design task, not an engineering one.

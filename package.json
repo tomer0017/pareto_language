@@ -5,13 +5,14 @@
   "type": "module",
   "description": "READY — The Travel Language Trainer. Deadline-driven language readiness app.",
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "apps/*"
   ],
   "engines": {
     "node": ">=20"
   },
   "scripts": {
-    "typecheck": "tsc -b && tsc --noEmit -p content/tsconfig.json",
+    "typecheck": "tsc -b && tsc --noEmit -p content/tsconfig.json && npm run typecheck -w @ready/web",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write \"**/*.{ts,tsx,json,md,css,html}\"",
@@ -19,11 +20,12 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "coverage": "vitest run --coverage",
-    "build": "tsc -b",
+    "build": "tsc -b && npm run build:content && npm run build -w @ready/web",
     "build:content": "tsx content/build.ts",
     "validate:content": "tsx content/validate.ts",
     "smoke": "tsx scripts/smoke.ts",
-    "verify": "npm run typecheck && npm run lint && npm run test && npm run build"
+    "verify": "npm run typecheck && npm run lint && npm run test && npm run build",
+    "dev:web": "npm run dev -w @ready/web"
   },
   "devDependencies": {
     "@eslint/js": "^9.12.0",
