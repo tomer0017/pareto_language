@@ -91,3 +91,15 @@ Every non-obvious technical decision, with one line of reasoning. Referenced by 
   rebuildable at any time (PDF §12.3).
 - **D025 — Async Express handlers are wrapped (`ah`) so rejections hit the error middleware.**
   Express 4 does not forward async rejections; without this, thrown AppErrors crash the process.
+
+## M4 — Hardening
+
+- **D026 — npm audit criticals are dev-tooling only; accepted, not force-fixed.** vitest/vite
+  dev-server advisories need major bumps (vitest 4 / vite 8) that risk the verified toolchain;
+  production artifacts are unaffected. Revisit on the next toolchain upgrade.
+- **D027 — Planner uses weighted item costs (recognize = 0.35 × production).** Without this the
+  182-item Tier 1 could never fit the flagship 7-day × 30-min persona (§7.1 says it must);
+  §8.1's "blended across skill targets" and §6.3's "fraction of production cost" bless the
+  weighting. Regression-tested against the real it-IT pack.
+- **D028 — selectTier caps at the pack's deepest authored tier.** A Tier-0/1-only pack must
+  report Tier 1, not a vacuous Tier 3.

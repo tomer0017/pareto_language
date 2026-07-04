@@ -61,3 +61,17 @@ describe('it-IT content pack', () => {
     expect(kinds.has('time')).toBe(true);
   });
 });
+
+describe('plan-level product guarantees (PDF §1, §7.1)', () => {
+  it('the flagship 7-day × 30-min traveler gets Tier 1 (Core 180)', async () => {
+    const { selectTier } = await import('@ready/engine');
+    const pack = loadPack('it-IT');
+    expect(selectTier(pack, 7, 30)).toBe(1);
+  });
+
+  it('a 1-day panic user falls back to Tier 0 Survival', async () => {
+    const { selectTier } = await import('@ready/engine');
+    const pack = loadPack('it-IT');
+    expect(selectTier(pack, 1, 30)).toBe(0);
+  });
+});

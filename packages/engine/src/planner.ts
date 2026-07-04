@@ -26,6 +26,19 @@ export interface PlanInput {
 
 const TIERS: Tier[] = [3, 2, 1, 0];
 
+/**
+ * Acquisition cost of one item relative to the blended rate (PDF §6.3, §8.1 "blended across
+ * skill targets"): recognition-only items (swipe + listen to L1) cost a fraction of
+ * production items (echo + repeated recall to L2/L3).
+ */
+export function itemCost(item: Pick<ContentItem, 'skillTarget'>): number {
+  return item.skillTarget === 'recognize' ? 0.35 : 1;
+}
+
+function totalCost(items: Pick<ContentItem, 'skillTarget'>[]): number {
+  return items.reduce((sum, it) => sum + itemCost(it), 0);
+}
+
 function studyDaysUntil(nowMs: number, departureMs: number): number {
   const days = Math.floor((departureMs - nowMs) / DAY_MS);
   return Math.max(1, days);
@@ -46,8 +59,12 @@ export function selectTier(
   params: EngineParams = DEFAULT_PARAMS,
 ): Tier {
   const capacity = days * minutesPerDay * params.acquisitionRatePerMinute * params.capacityUtilization;
+  // Never select deeper than the pack actually provides — an it-IT v0.1 pack with only
+  // Tier 0/1 content must report Tier 1, not a vacuous Tier 3.
+  const deepestAuthored = pack.items.reduce<Tier>((max, it) => (it.tier > max ? it.tier : max), 0);
   for (const tier of TIERS) {
-    if (itemsUpToTier(pack, tier).length <= capacity) return tier;
+    if (tier > deepestAuthored) continue;
+    if (totalCost(itemsUpToTier(pack, tier)) <= capacity) return tier;
   }
   return 0;
 }
@@ -141,11 +158,21 @@ export function buildPlan(input: PlanInput): TripPlan {
   const activeDays = Math.max(1, days - taperDays);
 
   // Narrow scope if the remaining runway can't hold everything: drop fringe (protect core).
-  const perDayCapacity = Math.floor(input.minutesPerDay * params.acquisitionRatePerMinute);
-  const capacity = Math.max(1, Math.floor(activeDays * perDayCapacity * params.capacityUtilization));
-  if (toIntroduce.length > capacity) {
+  // Capacity is weighted (recognition items are cheap, §6.3) to match selectTier.
+  const capacity = Math.max(
+    1,
+    activeDays * input.minutesPerDay * params.acquisitionRatePerMinute * params.capacityUtilization,
+  );
+  if (totalCost(toIntroduce) > capacity) {
     // fullQueue is already core-first; keep the front (core), drop the tail (fringe).
-    toIntroduce = toIntroduce.slice(0, capacity);
+    let acc = 0;
+    const kept: ContentItem[] = [];
+    for (const it of toIntroduce) {
+      acc += itemCost(it);
+      if (acc > capacity) break;
+      kept.push(it);
+    }
+    toIntroduce = kept;
   }
 
   const perDay = Math.ceil(toIntroduce.length / activeDays);
