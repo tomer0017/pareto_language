@@ -1,0 +1,13 @@
+node_modules/
+dist/
+build/
+coverage/
+*.tsbuildinfo
+.env
+.env.local
+.DS_Store
+apps/web/dev-dist/
+apps/web/public/content/*.json
+!apps/web/public/content/.gitkeep
+*.log
+.vite/

@@ -1,0 +1,49 @@
+# Architecture
+
+READY is an npm-workspaces monorepo. The design follows the PDF §11: a pure isomorphic engine,
+content separated from user state, and a `DataProvider` interface the UI depends on.
+
+```
+packages/content-schema/  zod schemas — the single source of truth for all data shapes
+packages/engine/          pure TS: memory model, scheduler, planner, readiness (ZERO I/O deps)
+packages/data/            DataProvider interface + Mock / Local(IndexedDB) / Api implementations
+apps/web/                 React 18 + Vite PWA (feature-sliced)
+server/                   Express + Mongoose API (user state only)
+content/                  YAML sources + build/validate pipeline → versioned JSON packs
+docs/                     this folder
+```
+
+## Key decisions (see DECISIONS.md for the full log)
+
+1. **The engine is pure and isomorphic** (PDF §11.2 D1). It has no import from React, Express, or
+   any storage. The same code projects memory state on the client (offline) and the server
+   (analytics / restore), and is validated by simulated-learner tests before any UI exists.
+
+2. **Content ≠ user state** (PDF §11.2 D2). Content is static, versioned JSON built by a pipeline
+   and served statically (precached offline). User state lives in IndexedDB (offline) and MongoDB.
+
+3. **`ReviewEvent` is the append-only source of truth** (PDF §11.4). `MemoryState`,
+   `ReadinessSnapshot`, etc. are deterministic projections rebuildable by `packages/engine`. Sync
+   is "replay events in timestamp order"; idempotent by client-generated UUID.
+
+4. **`DataProvider` interface from day one** (PDF §11.2 D3): `MockProvider` → `LocalProvider`
+   (IndexedDB, the permanent offline layer) → `ApiProvider` (wraps Local, background sync).
+
+## Build & module strategy
+
+- TypeScript **project references** (`tsc -b`) build packages in dependency order and typecheck
+  cross-package via emitted declarations.
+- Cross-package imports at **test/app** time resolve to source via Vite/Vitest aliases (no build
+  step needed to run tests). At runtime, the server consumes built `dist` via workspace symlinks.
+- The engine is the product; it targets ≥85% coverage (currently ~98% statements).
+
+## The learning engine (packages/engine)
+
+| Module | Responsibility | PDF |
+| --- | --- | --- |
+| `params.ts` | Tunable FSRS-inspired constants + evidence weights | §8.2, §16 R2 |
+| `memory.ts` | Stability/retrievability/difficulty model, `R(t)=exp(-t/S)`, event projection | §8.2, §11.4 |
+| `modemixer.ts` | Which drill trains an item given its ladder level | §9.1 |
+| `scheduler.ts` | Deadline-aware greedy: `value × R-gain / seconds-cost` toward `R(T_departure)` | §8.3 |
+| `planner.ts` | Tier selection, situation ordering, new-item taper, graceful re-plan | §8.1 |
+| `readiness.ts` | Honest badges: notStarted / inProgress / ready / fading | §10.4 |
