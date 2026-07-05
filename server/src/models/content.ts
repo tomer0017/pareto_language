@@ -1,5 +1,14 @@
 import mongoose, { Schema } from 'mongoose';
-import type { ContentPack } from '@ready/content-schema';
+import type { Concept, ContentPack, QualityLevel } from '@ready/content-schema';
+
+const QUALITY_LEVELS = ['draft', 'ai_generated', 'ai_reviewed', 'native_reviewed', 'expert_approved', 'verified'];
+
+/** Append-only per-item audit trail (Sprint 4 quality workflow). */
+const changelogSchema = new Schema(
+  { at: { type: Date, required: true }, actor: String, action: { type: String, required: true }, note: String },
+  { _id: false },
+);
+export interface ChangelogEntry { at: Date; actor?: string; action: string; note?: string }
 
 /**
  * Content collections — MongoDB is the authoritative content store for the API; the pipeline's
@@ -21,6 +30,10 @@ export interface WordDoc {
   example?: Record<string, string>;
   tags?: string[];
   source?: string;
+  quality?: QualityLevel;
+  rolScore?: number;
+  conceptId?: string;
+  changelog?: ChangelogEntry[];
 }
 
 const wordSchema = new Schema<WordDoc>(
@@ -37,11 +50,17 @@ const wordSchema = new Schema<WordDoc>(
     example: { type: Map, of: String },
     tags: [String],
     source: String,
+    quality: { type: String, enum: QUALITY_LEVELS, default: 'ai_generated' },
+    rolScore: Number,
+    conceptId: String,
+    changelog: { type: [changelogSchema], default: [] },
   },
   { versionKey: false, timestamps: true },
 );
 wordSchema.index({ languageCode: 1, word: 1 });
 wordSchema.index({ languageCode: 1, tags: 1 });
+wordSchema.index({ conceptId: 1 });
+wordSchema.index({ languageCode: 1, quality: 1 });
 
 export interface PhraseDoc {
   _id: string;
@@ -54,6 +73,10 @@ export interface PhraseDoc {
   example?: Record<string, string>;
   tags?: string[];
   source?: string;
+  quality?: QualityLevel;
+  rolScore?: number;
+  conceptId?: string;
+  changelog?: ChangelogEntry[];
 }
 
 const phraseSchema = new Schema<PhraseDoc>(
@@ -68,10 +91,16 @@ const phraseSchema = new Schema<PhraseDoc>(
     example: { type: Map, of: String },
     tags: [String],
     source: String,
+    quality: { type: String, enum: QUALITY_LEVELS, default: 'ai_generated' },
+    rolScore: Number,
+    conceptId: String,
+    changelog: { type: [changelogSchema], default: [] },
   },
   { versionKey: false, timestamps: true },
 );
 phraseSchema.index({ languageCode: 1, situationSlug: 1 });
+phraseSchema.index({ conceptId: 1 });
+phraseSchema.index({ languageCode: 1, quality: 1 });
 
 export interface SituationDoc {
   _id: string;
@@ -113,6 +142,8 @@ export interface ContentPackDoc {
   situationCount: number;
   validated: boolean;
   notes?: string;
+  qualityHistogram?: Record<string, number>;
+  gateReport?: { activeEligible: boolean; reasons: string[]; computedAt: Date };
   /** Canonical engine ContentPack payload (active packs only) — what the PWA consumes. */
   payload?: ContentPack;
 }
@@ -128,6 +159,8 @@ const contentPackSchema = new Schema<ContentPackDoc>(
     situationCount: { type: Number, default: 0 },
     validated: { type: Boolean, default: false },
     notes: String,
+    qualityHistogram: { type: Map, of: Number },
+    gateReport: { activeEligible: Boolean, reasons: [String], computedAt: Date },
     payload: { type: Schema.Types.Mixed },
   },
   { versionKey: false, timestamps: true },
@@ -163,6 +196,34 @@ const practiceSessionSchema = new Schema<PracticeSessionDoc>(
 );
 practiceSessionSchema.index({ userId: 1, startedAt: -1 });
 
+export type ConceptDoc = Omit<Concept, 'id'> & { _id: string; changelog?: ChangelogEntry[] };
+
+const conceptSchema = new Schema<ConceptDoc>(
+  {
+    _id: { type: String, required: true },
+    kind: { type: String, required: true },
+    gloss: { type: Map, of: String, required: true },
+    categories: { type: [String], required: true },
+    rof: { type: Number, required: true },
+    layer: { type: Number, required: true },
+    skillTarget: { type: String, required: true },
+    role: String,
+    isOpener: { type: Boolean, default: false },
+    situationSlugs: { type: [String], default: [] },
+    rolComponents: { type: Schema.Types.Mixed },
+    rolScore: Number,
+    neverTeach: { type: Boolean, default: false },
+    realizations: { type: Schema.Types.Mixed, default: {} },
+    notes: String,
+    changelog: { type: [changelogSchema], default: [] },
+  },
+  { versionKey: false, timestamps: true },
+);
+conceptSchema.index({ kind: 1, layer: 1 });
+conceptSchema.index({ situationSlugs: 1 });
+conceptSchema.index({ neverTeach: 1 });
+
+export const ConceptModel = mongoose.model('Concept', conceptSchema, 'concepts');
 export const WordModel = mongoose.model('Word', wordSchema, 'words');
 export const PhraseModel = mongoose.model('Phrase', phraseSchema, 'phrases');
 export const SituationModel = mongoose.model('Situation', situationSchema, 'situations');

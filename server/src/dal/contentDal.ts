@@ -69,3 +69,23 @@ export const packDal = {
       .select(withPayload ? {} : '-payload')
       .lean(),
 };
+
+export const conceptDal = {
+  upsertMany: async (docs: import('../models/content.js').ConceptDoc[]): Promise<UpsertSummary> => {
+    const { ConceptModel } = await import('../models/content.js');
+    const summary: UpsertSummary = { inserted: 0, updated: 0, skipped: 0 };
+    if (docs.length === 0) return summary;
+    const writes = docs.map((d) => ({
+      updateOne: { filter: { _id: d._id }, update: { $set: d }, upsert: true },
+    }));
+    const result = await ConceptModel.bulkWrite(writes as never, { ordered: false });
+    summary.inserted = result.upsertedCount;
+    summary.updated = result.modifiedCount;
+    summary.skipped = docs.length - result.upsertedCount - result.modifiedCount;
+    return summary;
+  },
+  list: async (filter: { layer?: number; neverTeach?: boolean } = {}) => {
+    const { ConceptModel } = await import('../models/content.js');
+    return ConceptModel.find({ neverTeach: false, ...filter }).sort({ _id: 1 }).lean();
+  },
+};

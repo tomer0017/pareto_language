@@ -1,7 +1,10 @@
+import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import type { ContentPack } from '@ready/content-schema';
+import { parse } from 'yaml';
+import { ConceptSchema, type ContentPack, type QualityLevel } from '@ready/content-schema';
 import { loadPack } from '../services/content.js';
-import { packDal, phraseDal, situationDal, wordDal, type UpsertSummary } from '../dal/contentDal.js';
+import { conceptDal, packDal, phraseDal, situationDal, wordDal, type UpsertSummary } from '../dal/contentDal.js';
+import type { ConceptDoc } from '../models/content.js';
 import type { ContentPackDoc, PhraseDoc, SituationDoc, WordDoc } from '../models/content.js';
 import { bankToWords, parseBank, printBankReport } from './bank.js';
 
@@ -84,6 +87,10 @@ export async function seedContentPacks(): Promise<void> {
     wordCount: await wordDal.count(lang),
     phraseCount: await phraseDal.count(lang),
     situationCount: await situationDal.count(lang),
+    ...(await computeQualityGate(lang).then(({ histogram, gateReport }) => ({
+      qualityHistogram: histogram,
+      gateReport,
+    }))),
   });
 
   const docs: ContentPackDoc[] = [];
@@ -117,8 +124,57 @@ export async function seedContentPacks(): Promise<void> {
   console.info(`  contentPacks: upserted ${docs.length} language rows (it=${docs[0]?.status})`);
 }
 
+const CONCEPTS_DIR = fileURLToPath(new URL('../../../content/concepts/', import.meta.url));
+
+/** Concepts: canonical meanings from content/concepts/*.yaml (idempotent upsert by id). */
+export async function seedConcepts(): Promise<void> {
+  if (!existsSync(CONCEPTS_DIR)) {
+    console.info('  concepts: no concepts dir — skipped');
+    return;
+  }
+  const files = readdirSync(CONCEPTS_DIR).filter((f) => f.endsWith('.yaml'));
+  const docs: ConceptDoc[] = [];
+  for (const file of files) {
+    const raw = parse(readFileSync(`${CONCEPTS_DIR}${file}`, 'utf8')) as { concepts: unknown[] };
+    for (const c of raw.concepts ?? []) {
+      const parsed = ConceptSchema.parse(c);
+      const { id, ...rest } = parsed;
+      docs.push({ _id: id, ...rest });
+    }
+  }
+  log('concepts', await conceptDal.upsertMany(docs));
+}
+
+/**
+ * Quality gate (advisory for the legacy it pack; enforcing for future packs):
+ * active eligibility = every say-phrase native_reviewed + no draft items.
+ */
+export async function computeQualityGate(lang: string): Promise<{
+  histogram: Record<string, number>;
+  gateReport: { activeEligible: boolean; reasons: string[]; computedAt: Date };
+}> {
+  const [words, phrases] = await Promise.all([wordDal.list(lang, 100000), phraseDal.list(lang)]);
+  const histogram: Record<string, number> = {};
+  const bump = (q: QualityLevel | undefined) => {
+    const key = q ?? 'ai_generated';
+    histogram[key] = (histogram[key] ?? 0) + 1;
+  };
+  for (const w of words) bump(w.quality as QualityLevel | undefined);
+  for (const p of phrases) bump(p.quality as QualityLevel | undefined);
+
+  const reasons: string[] = [];
+  const RANK: Record<string, number> = { draft: 0, ai_generated: 1, ai_reviewed: 2, native_reviewed: 3, expert_approved: 4, verified: 5 };
+  const sayBelowNative = phrases.filter(
+    (p) => (p.tags ?? []).includes('phrase') && (RANK[(p.quality as string) ?? 'ai_generated'] ?? 1) < 3,
+  ).length;
+  if (sayBelowNative > 0) reasons.push(`${sayBelowNative} say-phrases below native_reviewed`);
+  if ((histogram.draft ?? 0) > 0) reasons.push(`${histogram.draft} draft items present`);
+  return { histogram, gateReport: { activeEligible: reasons.length === 0, reasons, computedAt: new Date() } };
+}
+
 export async function seedAll(): Promise<void> {
   await seedItalianFromPack();
   await seedBankWords();
+  await seedConcepts();
   await seedContentPacks();
 }

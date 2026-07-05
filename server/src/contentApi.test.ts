@@ -179,3 +179,33 @@ describe('practice + progress (anonymous, no login)', () => {
     expect(res.status).toBe(401);
   });
 });
+
+describe('Sprint 4 — concepts + quality gate', () => {
+  it('seeds sample concepts idempotently', async () => {
+    const { seedConcepts } = await import('./seed/seeders.js');
+    const { ConceptModel } = await import('./models/content.js');
+    await seedConcepts();
+    const first = await ConceptModel.countDocuments();
+    expect(first).toBeGreaterThanOrEqual(4);
+    await seedConcepts();
+    expect(await ConceptModel.countDocuments()).toBe(first); // no duplicates
+    const exit = await ConceptModel.findById('concept.word.exit').lean();
+    expect((exit!.gloss as Record<string, string>).he).toBe('יציאה');
+  });
+
+  it('computes a quality histogram + honest gate report on the pack row', async () => {
+    const { computeQualityGate } = await import('./seed/seeders.js');
+    const { histogram, gateReport } = await computeQualityGate('it');
+    expect(Object.values(histogram).reduce((a, b) => a + b, 0)).toBeGreaterThan(150);
+    // Legacy it content defaults to ai_generated → gate must honestly say not-yet-eligible.
+    expect(gateReport.activeEligible).toBe(false);
+    expect(gateReport.reasons.length).toBeGreaterThan(0);
+  });
+
+  it('neverTeach concepts are excluded from the default concept listing', async () => {
+    const { conceptDal } = await import('./dal/contentDal.js');
+    const list = await conceptDal.list();
+    expect(list.some((c) => c._id === 'concept.word.carburetor')).toBe(false);
+    expect(list.some((c) => c._id === 'concept.word.exit')).toBe(true);
+  });
+});
