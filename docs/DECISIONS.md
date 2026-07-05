@@ -202,3 +202,11 @@ Every non-obvious technical decision, with one line of reasoning. Referenced by 
   methodology rule introduced: the Assumed-Known (cognate) Filter, cohort-relative per
   (learningLang, uiLang) pair. Italian remains the shipped demo pack; en public status stays
   honest (draft/coming_soon) until Stage B passes.
+
+- **D047 — Corpus Methodology v1 + Core-EN drafts.** docs/CORE-EN-METHODOLOGY.md defines the
+  signal set, ROL formula and exclusion filters; content/core-en/ holds assumed-known.yaml,
+  core100.draft.yaml (exactly 100; 'why' cut by θ at score 26) and core50.draft.yaml
+  (8 recovery + 24 say + 18 hear, 5 openers). v1 scores are rubric-estimated and auditable
+  per row (honesty declaration §6); Arabic translations are MSA and universally
+  review-flagged. Drafts are NOT wired to pipeline or seeds — Stage A founder validation
+  gates promotion.

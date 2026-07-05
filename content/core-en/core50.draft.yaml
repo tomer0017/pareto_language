@@ -1,0 +1,259 @@
+# READY Core 50 — English phrases (DRAFT — pending Stage A founder validation).
+# Composition per CORE spec §2: 8 recovery + 24 say + 18 hear. opener: One-Perfect-Sentence set.
+# situations: restaurant · taxi · border · hotel · social · directions · paying · emergency
+lang: en
+status: draft
+phrases:
+  # ── RECOVERY KIT (8) — trained Day 1 to reflex; tier 0, skill fluent ──
+  - { id: en.phrase.recovery.dont-understand, text: "Sorry, I don't understand.", role: recovery, cefr: A1, tier: 0, skill: fluent, rol: 100,
+      cats: [recovery], situations: [all],
+      why: "move #1 — names the breakdown without shame; resets the exchange",
+      use: "Any moment, the instant comprehension fails.",
+      t: { he: "סליחה, אני לא מבין.", es: "Perdón, no entiendo.", fr: "Désolé, je ne comprends pas.", it: "Scusi, non capisco.", ar: "عذراً، لا أفهم." }, review: [ar] }
+  - { id: en.phrase.recovery.repeat, text: "Can you repeat that, please?", role: recovery, cefr: A1, tier: 0, skill: fluent, rol: 98,
+      cats: [recovery], situations: [all],
+      why: "move #2 — buys a second exposure at zero social cost",
+      use: "Missed a reply once.",
+      t: { he: "אפשר לחזור על זה, בבקשה?", es: "¿Puede repetirlo, por favor?", fr: "Pouvez-vous répéter, s'il vous plaît ?", it: "Può ripetere, per favore?", ar: "هل يمكنك التكرار من فضلك؟" }, review: [ar] }
+  - { id: en.phrase.recovery.slowly, text: "Please speak slowly.", role: recovery, cefr: A1, tier: 0, skill: fluent, rol: 96,
+      cats: [recovery], situations: [all],
+      why: "move #3 — converts native speed into learnable speed on demand",
+      use: "Second miss, or fast speaker.",
+      t: { he: "דבר לאט, בבקשה.", es: "Hable despacio, por favor.", fr: "Parlez lentement, s'il vous plaît.", it: "Parli lentamente, per favore.", ar: "تكلم ببطء من فضلك." }, review: [ar] }
+  - { id: en.phrase.recovery.my-english, text: "Sorry, my English is not so good.", role: recovery, cefr: A2, tier: 0, skill: fluent, rol: 90,
+      cats: [recovery, social], situations: [all],
+      why: "move #4 — flips the frame: locals slow down, simplify, and warm up",
+      use: "Early in any struggling exchange; buys patience for the rest.",
+      t: { he: "סליחה, האנגלית שלי לא כל כך טובה.", es: "Perdón, mi inglés no es muy bueno.", fr: "Désolé, mon anglais n'est pas très bon.", it: "Scusi, il mio inglese non è molto buono.", ar: "عذراً، لغتي الإنجليزية ليست جيدة." }, review: [ar] }
+  - { id: en.phrase.recovery.show-me, text: "Can you show me?", role: recovery, cefr: A1, tier: 0, skill: fluent, rol: 88,
+      cats: [recovery], situations: [all],
+      why: "move #5 — switches channel from ears to eyes (map, menu, screen)",
+      use: "Directions or menus that words can't carry.",
+      t: { he: "אתה יכול להראות לי?", es: "¿Me lo puede mostrar?", fr: "Pouvez-vous me montrer ?", it: "Può mostrarmi?", ar: "هل يمكنك أن تريني؟" }, review: [ar] }
+  - { id: en.phrase.recovery.one-moment, text: "One moment, please.", role: recovery, cefr: A1, tier: 0, skill: fluent, rol: 87,
+      cats: [recovery], situations: [all],
+      why: "move #6 — buys thinking time; pairs with the graceful-translator gesture (B-001)",
+      use: "Before reaching for the phone: 'One moment, please — look.'",
+      t: { he: "רגע אחד, בבקשה.", es: "Un momento, por favor.", fr: "Un instant, s'il vous plaît.", it: "Un attimo, per favore.", ar: "لحظة من فضلك." }, review: [ar] }
+  - { id: en.phrase.recovery.need-help, text: "I need help.", role: recovery, cefr: A1, tier: 0, skill: fluent, rol: 95,
+      cats: [recovery, emergency], situations: [all, emergency],
+      why: "move #7 — the escalation phrase; overlearned for stress conditions",
+      use: "Any situation beyond the kit.",
+      t: { he: "אני צריך עזרה.", es: "Necesito ayuda.", fr: "J'ai besoin d'aide.", it: "Ho bisogno di aiuto.", ar: "أحتاج مساعدة." }, review: [ar] }
+  - { id: en.phrase.recovery.thats-all, text: "Thank you, that's all.", role: recovery, cefr: A1, tier: 0, skill: fluent, rol: 85,
+      cats: [recovery, social], situations: [all],
+      why: "move #8 — the graceful exit: every exchange can be ended with dignity",
+      use: "Closing any interaction, successful or not.",
+      t: { he: "תודה, זה הכל.", es: "Gracias, eso es todo.", fr: "Merci, c'est tout.", it: "Grazie, è tutto.", ar: "شكراً، هذا كل شيء." }, review: [ar] }
+  # ── SAY (24) ──
+  - { id: en.phrase.say.excuse-me, text: "Excuse me!", role: say, cefr: A1, tier: 0, skill: fluent, rol: 93, opener: true,
+      cats: [openers], situations: [all],
+      why: "the universal attention-opener; prosody-trained (One Perfect Sentence)",
+      use: "Starting any interaction with a stranger or staff.",
+      t: { he: "סליחה!", es: "¡Disculpe!", fr: "Excusez-moi !", it: "Scusi!", ar: "عفواً!" }, review: [ar] }
+  - { id: en.phrase.say.how-much, text: "How much does it cost?", role: say, cefr: A1, tier: 0, skill: recall, rol: 91,
+      cats: [money, shopping], situations: [paying, taxi, restaurant],
+      why: "the most-asked traveler question on earth",
+      use: "Any unmarked price; taxi before entering.",
+      t: { he: "כמה זה עולה?", es: "¿Cuánto cuesta?", fr: "Combien ça coûte ?", it: "Quanto costa?", ar: "كم يكلف؟" }, review: [ar] }
+  - { id: en.phrase.say.id-like-this, text: "I'd like this, please.", role: say, cefr: A1, tier: 0, skill: recall, rol: 89,
+      cats: [requests], situations: [restaurant, paying],
+      why: "slot-template with point-gesture — orders anything visible",
+      use: "Menus, counters, displays. Template: I'd like ___, please.",
+      t: { he: "אני רוצה את זה, בבקשה.", es: "Quiero esto, por favor.", fr: "Je voudrais ceci, s'il vous plaît.", it: "Vorrei questo, per favore.", ar: "أريد هذا من فضلك." }, review: [ar] }
+  - { id: en.phrase.say.something-cold, text: "I'd like something cold.", role: say, cefr: A2, tier: 1, skill: recall, rol: 61,
+      cats: [food], situations: [restaurant],
+      why: "category-order template: works when you can't name the item",
+      use: "Hot day, unknown menu. Template: something ___ (cold/sweet/local).",
+      t: { he: "אני רוצה משהו קר.", es: "Quiero algo frío.", fr: "Je voudrais quelque chose de froid.", it: "Vorrei qualcosa di freddo.", ar: "أريد شيئاً بارداً." }, review: [ar] }
+  - { id: en.phrase.say.table-for-two, text: "A table for two, please.", role: say, cefr: A1, tier: 0, skill: fluent, rol: 86, opener: true,
+      cats: [food], situations: [restaurant],
+      why: "the restaurant opener — first 5 seconds set the interaction's tone",
+      use: "Walking into any restaurant.",
+      t: { he: "שולחן לשניים, בבקשה.", es: "Una mesa para dos, por favor.", fr: "Une table pour deux, s'il vous plaît.", it: "Un tavolo per due, per favore.", ar: "طاولة لشخصين من فضلك." }, review: [ar] }
+  - { id: en.phrase.say.the-bill, text: "The bill, please.", role: say, cefr: A1, tier: 0, skill: recall, rol: 90,
+      cats: [food, money], situations: [restaurant],
+      why: "ends every restaurant moment; universally understood",
+      use: "Catching the waiter's eye at the end.",
+      t: { he: "חשבון, בבקשה.", es: "La cuenta, por favor.", fr: "L'addition, s'il vous plaît.", it: "Il conto, per favore.", ar: "الحساب من فضلك." }, review: [ar] }
+  - { id: en.phrase.say.pay-by-card, text: "I'd like to pay by card.", role: say, cefr: A2, tier: 0, skill: recall, rol: 82,
+      cats: [money], situations: [paying, restaurant, hotel],
+      why: "declares payment method before the awkward moment",
+      use: "At any register or bill.",
+      t: { he: "אני רוצה לשלם בכרטיס.", es: "Quiero pagar con tarjeta.", fr: "Je voudrais payer par carte.", it: "Vorrei pagare con la carta.", ar: "أريد الدفع بالبطاقة." }, review: [ar] }
+  - { id: en.phrase.say.do-you-have, text: "Do you have ___?", role: say, cefr: A1, tier: 0, skill: recall, rol: 84,
+      cats: [requests], situations: [shopping, restaurant, hotel],
+      why: "the availability template — highest reuse score in the set",
+      use: "Fillers from Core 100: water / a room / medicine / a map.",
+      t: { he: "יש לכם ___?", es: "¿Tienen ___?", fr: "Avez-vous ___ ?", it: "Avete ___?", ar: "هل لديكم ___؟" }, review: [ar] }
+  - { id: en.phrase.say.where-is-bathroom, text: "Where is the bathroom?", role: say, cefr: A1, tier: 0, skill: recall, rol: 85,
+      cats: [directions], situations: [all],
+      why: "the single most urgent where-question",
+      use: "Anywhere. Template: Where is the ___?",
+      t: { he: "איפה השירותים?", es: "¿Dónde está el baño?", fr: "Où sont les toilettes ?", it: "Dov'è il bagno?", ar: "أين الحمام؟" }, review: [ar] }
+  - { id: en.phrase.say.how-do-i-get, text: "How do I get to the beach?", role: say, cefr: A2, tier: 0, skill: recall, rol: 78,
+      cats: [directions], situations: [directions],
+      why: "route-template; beach filler per founder cohort (Israeli travelers)",
+      use: "Template: How do I get to ___ (the station / the hotel / this address)?",
+      t: { he: "איך מגיעים לחוף?", es: "¿Cómo llego a la playa?", fr: "Comment aller à la plage ?", it: "Come arrivo alla spiaggia?", ar: "كيف أصل إلى الشاطئ؟" }, review: [ar] }
+  - { id: en.phrase.say.is-it-far, text: "Is it far?", role: say, cefr: A1, tier: 1, skill: recall, rol: 66,
+      cats: [directions], situations: [directions],
+      why: "walk-or-ride decision in three words",
+      use: "After any direction answer.",
+      t: { he: "זה רחוק?", es: "¿Está lejos?", fr: "C'est loin ?", it: "È lontano?", ar: "هل هو بعيد؟" }, review: [ar] }
+  - { id: en.phrase.say.to-this-address, text: "To this address, please.", role: say, cefr: A2, tier: 0, skill: fluent, rol: 83, opener: true,
+      cats: [transport], situations: [taxi],
+      why: "the taxi opener — pairs with showing the address (channel-switch built in)",
+      use: "Entering any taxi, phone in hand.",
+      t: { he: "לכתובת הזאת, בבקשה.", es: "A esta dirección, por favor.", fr: "À cette adresse, s'il vous plaît.", it: "A questo indirizzo, per favore.", ar: "إلى هذا العنوان من فضلك." }, review: [ar] }
+  - { id: en.phrase.say.stop-here, text: "Stop here, please.", role: say, cefr: A1, tier: 0, skill: recall, rol: 74,
+      cats: [transport], situations: [taxi],
+      why: "closes the taxi moment; timing-critical phrase",
+      use: "Approaching the destination.",
+      t: { he: "עצור כאן, בבקשה.", es: "Pare aquí, por favor.", fr: "Arrêtez-vous ici, s'il vous plaît.", it: "Si fermi qui, per favore.", ar: "قف هنا من فضلك." }, review: [ar] }
+  - { id: en.phrase.say.ticket-where, text: "Where can I buy a ticket?", role: say, cefr: A2, tier: 1, skill: recall, rol: 63,
+      cats: [transport], situations: [directions],
+      why: "opens the buying-a-ticket companion script",
+      use: "Stations, attractions.",
+      t: { he: "איפה קונים כרטיס?", es: "¿Dónde compro un billete?", fr: "Où puis-je acheter un billet ?", it: "Dove posso comprare un biglietto?", ar: "أين أشتري تذكرة؟" }, review: [ar] }
+  - { id: en.phrase.say.i-have-reservation, text: "I have a reservation.", role: say, cefr: A2, tier: 0, skill: fluent, rol: 84, opener: true,
+      cats: [lodging], situations: [hotel, restaurant],
+      why: "the hotel opener; also serves restaurants — double coverage",
+      use: "Reaching any front desk.",
+      t: { he: "יש לי הזמנה.", es: "Tengo una reserva.", fr: "J'ai une réservation.", it: "Ho una prenotazione.", ar: "لدي حجز." }, review: [ar] }
+  - { id: en.phrase.say.my-name-is, text: "My name is ___.", role: say, cefr: A1, tier: 0, skill: fluent, rol: 80, opener: true,
+      cats: [social, border], situations: [social, hotel, border],
+      why: "the social opener; serves check-in, introductions and border",
+      use: "Any name request; introductions.",
+      t: { he: "קוראים לי ___.", es: "Me llamo ___.", fr: "Je m'appelle ___.", it: "Mi chiamo ___.", ar: "اسمي ___." }, review: [ar] }
+  - { id: en.phrase.say.i-live-in-israel, text: "I live in Israel.", role: say, cefr: A1, tier: 0, skill: recall, rol: 76,
+      cats: [social, border], situations: [border, social],
+      why: "border/smalltalk answer the cohort will actually give",
+      use: "'Where are you from?' — anywhere.",
+      t: { he: "אני גר בישראל.", es: "Vivo en Israel.", fr: "J'habite en Israël.", it: "Vivo in Israele.", ar: "أعيش في إسرائيل." }, review: [ar] }
+  - { id: en.phrase.say.here-for-trip, text: "I came here for a trip.", role: say, cefr: A2, tier: 0, skill: recall, rol: 79,
+      cats: [border], situations: [border],
+      why: "the passport-moment answer — rehearsed so authority can't rattle it",
+      use: "'Purpose of your visit?' at any border.",
+      t: { he: "באתי לכאן לטיול.", es: "Vine de viaje.", fr: "Je suis venu pour un voyage.", it: "Sono venuto per un viaggio.", ar: "جئت في رحلة سياحية." }, review: [ar, fr] }
+  - { id: en.phrase.say.staying-nights, text: "I'm staying for five nights.", role: say, cefr: A2, tier: 1, skill: recall, rol: 65,
+      cats: [border, lodging], situations: [border, hotel],
+      why: "duration answer template (number slot from Core 100)",
+      use: "Border and check-in. Template: ___ nights.",
+      t: { he: "אני נשאר חמישה לילות.", es: "Me quedo cinco noches.", fr: "Je reste cinq nuits.", it: "Resto cinque notti.", ar: "سأبقى خمس ليالٍ." }, review: [ar] }
+  - { id: en.phrase.say.without-please, text: "Without ___, please.", role: say, cefr: A2, tier: 0, skill: recall, rol: 77,
+      cats: [food, health], situations: [restaurant],
+      why: "diet/allergy operator template — small phrase, high stakes",
+      use: "Fillers: onions / meat / milk / nuts.",
+      t: { he: "בלי ___, בבקשה.", es: "Sin ___, por favor.", fr: "Sans ___, s'il vous plaît.", it: "Senza ___, per favore.", ar: "بدون ___ من فضلك." }, review: [ar] }
+  - { id: en.phrase.say.im-allergic, text: "I'm allergic to nuts.", role: say, cefr: A2, tier: 0, skill: fluent, rol: 87,
+      cats: [health, food], situations: [restaurant, emergency],
+      why: "life-critical; overlearned; nut-slot swappable",
+      use: "Every food order if relevant. Template: allergic to ___.",
+      t: { he: "אני אלרגי לאגוזים.", es: "Soy alérgico a los frutos secos.", fr: "Je suis allergique aux fruits à coque.", it: "Sono allergico alla frutta secca.", ar: "لدي حساسية من المكسرات." }, review: [ar, fr, it] }
+  - { id: en.phrase.say.call-doctor, text: "Please call a doctor.", role: say, cefr: A1, tier: 0, skill: fluent, rol: 86,
+      cats: [emergency], situations: [emergency],
+      why: "emergency escalation — works on any bystander",
+      use: "Medical trouble, yours or others'.",
+      t: { he: "תזמין רופא, בבקשה.", es: "Llame a un médico, por favor.", fr: "Appelez un médecin, s'il vous plaît.", it: "Chiami un medico, per favore.", ar: "اتصل بطبيب من فضلك." }, review: [ar] }
+  - { id: en.phrase.say.i-lost, text: "I lost my bag.", role: say, cefr: A2, tier: 1, skill: recall, rol: 62,
+      cats: [emergency], situations: [emergency],
+      why: "loss-report template (bag/passport/phone slots)",
+      use: "Police, lost & found, hotel desk. Template: I lost my ___.",
+      t: { he: "איבדתי את התיק שלי.", es: "Perdí mi bolso.", fr: "J'ai perdu mon sac.", it: "Ho perso la mia borsa.", ar: "فقدت حقيبتي." }, review: [ar] }
+  - { id: en.phrase.say.what-time-open, text: "What time do you open?", role: say, cefr: A2, tier: 1, skill: recall, rol: 58,
+      cats: [shopping, time], situations: [paying, directions],
+      why: "planning question; open/close template pair",
+      use: "Shops, museums, restaurants.",
+      t: { he: "באיזו שעה אתם פותחים?", es: "¿A qué hora abren?", fr: "À quelle heure ouvrez-vous ?", it: "A che ora aprite?", ar: "متى تفتحون؟" }, review: [ar] }
+  # ── HEAR (18) — replies at native speed; never drilled for production ──
+  - { id: en.phrase.hear.passport-please, text: "Can I see your passport, please?", role: hear, cefr: A2, tier: 0, skill: recognize, rol: 88,
+      cats: [border], situations: [border],
+      why: "the trigger line of the authority moment",
+      use: "Security/passport control opener.",
+      t: { he: "אפשר לראות את הדרכון שלך, בבקשה?", es: "¿Su pasaporte, por favor?", fr: "Votre passeport, s'il vous plaît ?", it: "Il passaporto, per favore?", ar: "جواز سفرك من فضلك؟" }, review: [ar] }
+  - { id: en.phrase.hear.purpose-visit, text: "What's the purpose of your visit?", role: hear, cefr: B1, tier: 0, skill: recognize, rol: 84,
+      cats: [border], situations: [border],
+      why: "the question that scares travelers most at borders — pre-heard = defused",
+      use: "Passport control.",
+      t: { he: "מה מטרת הביקור שלך?", es: "¿Cuál es el motivo de su visita?", fr: "Quel est le but de votre visite ?", it: "Qual è lo scopo della sua visita?", ar: "ما هو غرض زيارتك؟" }, review: [ar] }
+  - { id: en.phrase.hear.how-long-staying, text: "How long are you staying?", role: hear, cefr: A2, tier: 0, skill: recognize, rol: 80,
+      cats: [border, lodging], situations: [border, hotel],
+      why: "border + check-in double duty",
+      use: "Follows the purpose question.",
+      t: { he: "כמה זמן אתה נשאר?", es: "¿Cuánto tiempo se queda?", fr: "Combien de temps restez-vous ?", it: "Quanto si ferma?", ar: "كم ستبقى؟" }, review: [ar] }
+  - { id: en.phrase.hear.where-staying, text: "Where are you staying?", role: hear, cefr: A2, tier: 1, skill: recognize, rol: 68,
+      cats: [border, social], situations: [border, social],
+      why: "border + taxi + smalltalk triple duty",
+      use: "Have the hotel name ready.",
+      t: { he: "איפה אתה מתאכסן?", es: "¿Dónde se hospeda?", fr: "Où logez-vous ?", it: "Dove alloggia?", ar: "أين تقيم؟" }, review: [ar] }
+  - { id: en.phrase.hear.anything-drink, text: "Anything to drink?", role: hear, cefr: A1, tier: 0, skill: recognize, rol: 85,
+      cats: [food], situations: [restaurant],
+      why: "the waiter-arrives trigger variant heard everywhere",
+      use: "Right after sitting down.",
+      t: { he: "משהו לשתות?", es: "¿Algo para beber?", fr: "Quelque chose à boire ?", it: "Da bere?", ar: "هل تريد مشروباً؟" }, review: [ar] }
+  - { id: en.phrase.hear.ready-order, text: "Are you ready to order?", role: hear, cefr: A2, tier: 0, skill: recognize, rol: 83,
+      cats: [food], situations: [restaurant],
+      why: "the waiter-arrives main trigger line",
+      use: "Menu moment.",
+      t: { he: "מוכנים להזמין?", es: "¿Listos para pedir?", fr: "Vous avez choisi ?", it: "Pronti per ordinare?", ar: "هل أنتم مستعدون للطلب؟" }, review: [ar, fr] }
+  - { id: en.phrase.hear.here-or-to-go, text: "For here or to go?", role: hear, cefr: A2, tier: 0, skill: recognize, rol: 75,
+      cats: [food], situations: [restaurant],
+      why: "counter-order fork; freezes unprepared travelers daily",
+      use: "Cafés, fast food.",
+      t: { he: "לכאן או לקחת?", es: "¿Para aquí o para llevar?", fr: "Sur place ou à emporter ?", it: "Qui o da portare via?", ar: "هنا أم سفري؟" }, review: [ar] }
+  - { id: en.phrase.hear.cash-or-card, text: "Cash or card?", role: hear, cefr: A1, tier: 0, skill: recognize, rol: 89,
+      cats: [money], situations: [paying, restaurant, taxi],
+      why: "the most-heard payment fork on earth",
+      use: "Every checkout.",
+      t: { he: "מזומן או כרטיס?", es: "¿Efectivo o tarjeta?", fr: "Espèces ou carte ?", it: "Contanti o carta?", ar: "نقداً أم بطاقة؟" }, review: [ar] }
+  - { id: en.phrase.hear.anything-else, text: "Anything else?", role: hear, cefr: A1, tier: 0, skill: recognize, rol: 78,
+      cats: [food, shopping], situations: [restaurant, paying],
+      why: "closes orders everywhere; pairs with recovery move #8",
+      use: "End of any order.",
+      t: { he: "עוד משהו?", es: "¿Algo más?", fr: "Autre chose ?", it: "Altro?", ar: "هل تريد شيئاً آخر؟" }, review: [ar] }
+  - { id: en.phrase.hear.that-will-be, text: "That'll be twenty euros.", role: hear, cefr: A2, tier: 0, skill: recognize, rol: 81,
+      cats: [money, numbers], situations: [paying, taxi, restaurant],
+      why: "price-comprehension frame — number slot trains with Speed Challenge",
+      use: "Every payment; the number varies.",
+      t: { he: "זה עשרים יורו.", es: "Son veinte euros.", fr: "Ça fera vingt euros.", it: "Sono venti euro.", ar: "المجموع عشرون يورو." }, review: [ar] }
+  - { id: en.phrase.hear.reservation-q, text: "Do you have a reservation?", role: hear, cefr: A2, tier: 0, skill: recognize, rol: 79,
+      cats: [lodging, food], situations: [hotel, restaurant],
+      why: "the hotel-moment trigger; restaurant variant identical",
+      use: "Front desks and hosts.",
+      t: { he: "יש לכם הזמנה?", es: "¿Tiene una reserva?", fr: "Avez-vous une réservation ?", it: "Ha prenotato?", ar: "هل لديك حجز؟" }, review: [ar] }
+  - { id: en.phrase.hear.what-name, text: "What name is it under?", role: hear, cefr: B1, tier: 1, skill: recognize, rol: 64,
+      cats: [lodging], situations: [hotel, restaurant],
+      why: "follows the reservation question; answered by the my-name opener",
+      use: "Check-in desks.",
+      t: { he: "על איזה שם ההזמנה?", es: "¿A nombre de quién?", fr: "À quel nom ?", it: "A che nome?", ar: "باسم من الحجز؟" }, review: [ar] }
+  - { id: en.phrase.hear.sign-here, text: "Sign here, please.", role: hear, cefr: A2, tier: 1, skill: recognize, rol: 60,
+      cats: [lodging, paying], situations: [hotel, paying],
+      why: "check-in/checkout instruction with a gesture affordance",
+      use: "Forms and card machines.",
+      t: { he: "תחתום כאן, בבקשה.", es: "Firme aquí, por favor.", fr: "Signez ici, s'il vous plaît.", it: "Firmi qui, per favore.", ar: "وقّع هنا من فضلك." }, review: [ar] }
+  - { id: en.phrase.hear.breakfast-hours, text: "Breakfast is from seven to ten.", role: hear, cefr: A2, tier: 1, skill: recognize, rol: 62,
+      cats: [lodging, time, numbers], situations: [hotel],
+      why: "the check-in info line; two-number comprehension drill",
+      use: "After getting the key.",
+      t: { he: "ארוחת הבוקר משבע עד עשר.", es: "El desayuno es de siete a diez.", fr: "Le petit-déjeuner est de sept à dix heures.", it: "La colazione è dalle sette alle dieci.", ar: "الفطور من السابعة حتى العاشرة." }, review: [ar] }
+  - { id: en.phrase.hear.second-floor, text: "Your room is on the second floor.", role: hear, cefr: A2, tier: 1, skill: recognize, rol: 61,
+      cats: [lodging, directions], situations: [hotel],
+      why: "the key-handover line; ordinal comprehension",
+      use: "Check-in close.",
+      t: { he: "החדר שלך בקומה השנייה.", es: "Su habitación está en el segundo piso.", fr: "Votre chambre est au deuxième étage.", it: "La sua camera è al secondo piano.", ar: "غرفتك في الطابق الثاني." }, review: [ar] }
+  - { id: en.phrase.hear.its-on-left, text: "It's on the left, next to the bank.", role: hear, cefr: A2, tier: 0, skill: recognize, rol: 74,
+      cats: [directions], situations: [directions],
+      why: "canonical direction-answer shape (side + landmark)",
+      use: "After any where-question.",
+      t: { he: "זה בצד שמאל, ליד הבנק.", es: "Está a la izquierda, junto al banco.", fr: "C'est à gauche, à côté de la banque.", it: "È a sinistra, vicino alla banca.", ar: "على اليسار بجانب البنك." }, review: [ar] }
+  - { id: en.phrase.hear.five-minutes-walk, text: "It's about five minutes on foot.", role: hear, cefr: A2, tier: 1, skill: recognize, rol: 66,
+      cats: [directions, time], situations: [directions],
+      why: "distance-answer frame; number slot",
+      use: "Follows direction answers.",
+      t: { he: "זה בערך חמש דקות ברגל.", es: "Está a unos cinco minutos a pie.", fr: "C'est à environ cinq minutes à pied.", it: "Sono circa cinque minuti a piedi.", ar: "حوالي خمس دقائق سيراً." }, review: [ar] }
+  - { id: en.phrase.hear.where-from, text: "Where are you from?", role: hear, cefr: A1, tier: 0, skill: recognize, rol: 72,
+      cats: [social], situations: [social, taxi],
+      why: "the smalltalk trigger — answered by the i-live-in-israel phrase",
+      use: "Taxis, bars, hosts; the introduction moment.",
+      t: { he: "מאיפה אתה?", es: "¿De dónde eres?", fr: "D'où venez-vous ?", it: "Di dove sei?", ar: "من أين أنت؟" }, review: [ar] }

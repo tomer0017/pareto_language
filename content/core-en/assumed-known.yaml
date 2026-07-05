@@ -1,0 +1,7 @@
+# Assumed-Known whitelist — he→en cohort (Methodology §4.2).
+# Loanwords/universals a Hebrew speaker already owns. Excluded from Core 100;
+# scripts may use them freely. Cohort-relative: DO NOT reuse for other language pairs.
+assumedKnown:
+  [taxi, hotel, bus, internet, wifi, telephone, phone, coffee, tea, pizza, menu, bank,
+   museum, supermarket, toilet, check-in, credit, visa, shampoo, balcony, lobby, salat,
+   ok, stop, super, mini, bar, cafe]

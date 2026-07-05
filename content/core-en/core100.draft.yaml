@@ -1,0 +1,410 @@
+# READY Core 100 — English words (DRAFT — pending Stage A founder validation).
+# NOT wired to pipeline or seeds. Methodology: docs/CORE-EN-METHODOLOGY.md.
+# skill: recognize|recall|fluent · rol: CoreScore 0–100 · review: translations needing native review.
+# Arabic is MSA and ALWAYS review-flagged. cats = travel categories.
+lang: en
+uiPivot: he
+status: draft
+words:
+  # ── Question words (6) — every traveler question starts here (why: cut by θ, score 26) ──
+  - { id: en.word.where, word: where, pos: adv, cefr: A1, tier: 0, skill: recall, rol: 95, cats: [questions, directions],
+      why: "opens every location question; serves 6 of 10 core scripts",
+      t: { he: "איפה", es: "dónde", fr: "où", it: "dove", ar: "أين" }, review: [ar],
+      ex: "Where is the exit?", exHe: "איפה היציאה?" }
+  - { id: en.word.when, word: when, pos: adv, cefr: A1, tier: 0, skill: recall, rol: 72, cats: [questions, time],
+      why: "times, openings, departures — second most-used question opener",
+      t: { he: "מתי", es: "cuándo", fr: "quand", it: "quando", ar: "متى" }, review: [ar],
+      ex: "When does it open?", exHe: "מתי זה נפתח?" }
+  - { id: en.word.what, word: what, pos: pron, cefr: A1, tier: 0, skill: recall, rol: 78, cats: [questions],
+      why: "clarification engine; core of recovery questions",
+      t: { he: "מה", es: "qué", fr: "quoi", it: "cosa", ar: "ماذا" }, review: [ar],
+      ex: "What is this?", exHe: "מה זה?" }
+  - { id: en.word.how, word: how, pos: adv, cefr: A1, tier: 0, skill: recall, rol: 82, cats: [questions],
+      why: "unlocks how-much / how-long / how-do-I-get — three core functions",
+      t: { he: "איך", es: "cómo", fr: "comment", it: "come", ar: "كيف" }, review: [ar],
+      ex: "How do I get to the beach?", exHe: "איך מגיעים לחוף?" }
+  - { id: en.word.who, word: who, pos: pron, cefr: A1, tier: 1, skill: recognize, rol: 34, cats: [questions, social],
+      why: "hear-channel in social/authority moments",
+      t: { he: "מי", es: "quién", fr: "qui", it: "chi", ar: "من" }, review: [ar],
+      ex: "Who is next?", exHe: "מי הבא בתור?" }
+  - { id: en.word.which, word: which, pos: pron, cefr: A1, tier: 1, skill: recognize, rol: 41, cats: [questions, transport],
+      why: "platform/gate/floor questions — heard from staff",
+      t: { he: "איזה", es: "cuál", fr: "quel", it: "quale", ar: "أي" }, review: [ar],
+      ex: "Which gate?", exHe: "איזה שער?" }
+  - { id: en.word.one, word: one, pos: num, cefr: A1, tier: 0, skill: recall, rol: 90, cats: [numbers],
+      why: "prices, tickets, rooms; swipe-triage places it if already known",
+      t: { he: "אחת", es: "uno", fr: "un", it: "uno", ar: "واحد" }, review: [ar],
+      ex: "One ticket, please.", exHe: "כרטיס אחד, בבקשה." }
+  - { id: en.word.two, word: two, pos: num, cefr: A1, tier: 0, skill: recall, rol: 90, cats: [numbers],
+      why: "the traveler's most-said number (tables, tickets, nights)",
+      t: { he: "שתיים", es: "dos", fr: "deux", it: "due", ar: "اثنان" }, review: [ar],
+      ex: "A table for two.", exHe: "שולחן לשניים." }
+  - { id: en.word.three, word: three, pos: num, cefr: A1, tier: 0, skill: recall, rol: 84, cats: [numbers],
+      t: { he: "שלוש", es: "tres", fr: "trois", it: "tre", ar: "ثلاثة" }, review: [ar],
+      why: "counting core", ex: "Three nights.", exHe: "שלושה לילות." }
+  - { id: en.word.four, word: four, pos: num, cefr: A1, tier: 0, skill: recall, rol: 80, cats: [numbers],
+      t: { he: "ארבע", es: "cuatro", fr: "quatre", it: "quattro", ar: "أربعة" }, review: [ar],
+      why: "counting core", ex: "Four people.", exHe: "ארבעה אנשים." }
+  - { id: en.word.five, word: five, pos: num, cefr: A1, tier: 0, skill: recall, rol: 82, cats: [numbers],
+      t: { he: "חמש", es: "cinco", fr: "cinq", it: "cinque", ar: "خمسة" }, review: [ar],
+      why: "counting core + 'five minutes' heard constantly", ex: "It's five minutes away.", exHe: "זה במרחק חמש דקות." }
+  - { id: en.word.six, word: six, pos: num, cefr: A1, tier: 0, skill: recall, rol: 76, cats: [numbers],
+      t: { he: "שש", es: "seis", fr: "six", it: "sei", ar: "ستة" }, review: [ar],
+      why: "counting core", ex: "Room six.", exHe: "חדר שש." }
+  - { id: en.word.seven, word: seven, pos: num, cefr: A1, tier: 0, skill: recall, rol: 76, cats: [numbers],
+      t: { he: "שבע", es: "siete", fr: "sept", it: "sette", ar: "سبعة" }, review: [ar],
+      why: "counting core + breakfast times", ex: "Breakfast is at seven.", exHe: "ארוחת הבוקר בשבע." }
+  - { id: en.word.eight, word: eight, pos: num, cefr: A1, tier: 0, skill: recall, rol: 74, cats: [numbers],
+      t: { he: "שמונה", es: "ocho", fr: "huit", it: "otto", ar: "ثمانية" }, review: [ar],
+      why: "counting core", ex: "Gate eight.", exHe: "שער שמונה." }
+  - { id: en.word.nine, word: nine, pos: num, cefr: A1, tier: 0, skill: recall, rol: 72, cats: [numbers],
+      t: { he: "תשע", es: "nueve", fr: "neuf", it: "nove", ar: "تسعة" }, review: [ar],
+      why: "counting core", ex: "Nine euros.", exHe: "תשעה יורו." }
+  - { id: en.word.ten, word: ten, pos: num, cefr: A1, tier: 0, skill: recall, rol: 78, cats: [numbers],
+      t: { he: "עשר", es: "diez", fr: "dix", it: "dieci", ar: "عشرة" }, review: [ar],
+      why: "counting core; tens built in Speed Challenge", ex: "Ten percent tip.", exHe: "טיפ של עשרה אחוזים." }
+  - { id: en.word.hundred, word: hundred, pos: num, cefr: A1, tier: 0, skill: recognize, rol: 61, cats: [numbers, money],
+      why: "price comprehension ceiling for most transactions",
+      t: { he: "מאה", es: "cien", fr: "cent", it: "cento", ar: "مئة" }, review: [ar],
+      ex: "One hundred shekels.", exHe: "מאה שקלים." }
+  - { id: en.word.half, word: half, pos: n, cefr: A2, tier: 1, skill: recognize, rol: 42, cats: [numbers, time, food],
+      why: "times (half past), portions, tickets",
+      t: { he: "חצי", es: "medio", fr: "demi", it: "mezzo", ar: "نصف" }, review: [ar],
+      ex: "Half past nine.", exHe: "תשע וחצי." }
+  - { id: en.word.more, word: more, pos: adv, cefr: A1, tier: 0, skill: recall, rol: 58, cats: [food, shopping],
+      why: "universal requester-extender: more water, more time",
+      t: { he: "עוד", es: "más", fr: "plus", it: "più", ar: "أكثر" }, review: [ar],
+      ex: "More water, please.", exHe: "עוד מים, בבקשה." }
+  - { id: en.word.another, word: another, pos: det, cefr: A2, tier: 1, skill: recognize, rol: 38, cats: [food, shopping],
+      why: "reorder/replace function in restaurants and shops",
+      t: { he: "עוד אחד", es: "otro", fr: "un autre", it: "un altro", ar: "آخر" }, review: [ar],
+      ex: "Another one, please.", exHe: "עוד אחד, בבקשה." }
+  # ── Survival verbs (12) ──
+  - { id: en.word.want, word: want, pos: v, cefr: A1, tier: 0, skill: recall, rol: 80, cats: [requests],
+      why: "the traveler's primary intent verb ('I want...')",
+      t: { he: "רוצה", es: "querer", fr: "vouloir", it: "volere", ar: "يريد" }, review: [ar],
+      ex: "I want this one.", exHe: "אני רוצה את זה." }
+  - { id: en.word.need, word: need, pos: v, cefr: A1, tier: 0, skill: recall, rol: 84, cats: [requests, emergency],
+      why: "urgency-carrying intent verb; core of help requests",
+      t: { he: "צריך", es: "necesitar", fr: "avoir besoin de", it: "avere bisogno di", ar: "يحتاج" }, review: [ar, fr, it],
+      ex: "I need a doctor.", exHe: "אני צריך רופא." }
+  - { id: en.word.have, word: have, pos: v, cefr: A1, tier: 0, skill: recall, rol: 74, cats: [requests, lodging],
+      why: "'do you have', 'I have a reservation' — two core functions",
+      t: { he: "יש", es: "tener", fr: "avoir", it: "avere", ar: "لديه" }, review: [ar],
+      ex: "Do you have a room?", exHe: "יש לכם חדר?" }
+  - { id: en.word.go, word: go, pos: v, cefr: A1, tier: 0, skill: recall, rol: 66, cats: [directions, transport],
+      why: "movement core: 'go straight', 'to go' (takeaway)",
+      t: { he: "ללכת", es: "ir", fr: "aller", it: "andare", ar: "يذهب" }, review: [ar],
+      ex: "Go straight.", exHe: "לך ישר." }
+  - { id: en.word.pay, word: pay, pos: v, cefr: A1, tier: 0, skill: recall, rol: 76, cats: [money],
+      why: "every transaction ends here",
+      t: { he: "לשלם", es: "pagar", fr: "payer", it: "pagare", ar: "يدفع" }, review: [ar],
+      ex: "Can I pay by card?", exHe: "אפשר לשלם בכרטיס?" }
+  - { id: en.word.help, word: help, pos: v, cefr: A1, tier: 0, skill: fluent, rol: 92, cats: [emergency, recovery],
+      why: "the emergency word — overlearned to reflex (urgency 3)",
+      t: { he: "עזרה", es: "ayuda", fr: "aide", it: "aiuto", ar: "مساعدة" }, review: [ar],
+      ex: "Help! I need help.", exHe: "הצילו! אני צריך עזרה." }
+  - { id: en.word.wait, word: wait, pos: v, cefr: A1, tier: 1, skill: recognize, rol: 48, cats: [transport, service],
+      why: "heard constantly: 'please wait', 'wait here'",
+      t: { he: "לחכות", es: "esperar", fr: "attendre", it: "aspettare", ar: "ينتظر" }, review: [ar],
+      ex: "Please wait here.", exHe: "חכה כאן בבקשה." }
+  - { id: en.word.speak, word: speak, pos: v, cefr: A1, tier: 0, skill: recall, rol: 70, cats: [recovery],
+      why: "recovery-kit verb: 'speak slowly'",
+      t: { he: "לדבר", es: "hablar", fr: "parler", it: "parlare", ar: "يتكلم" }, review: [ar],
+      ex: "Please speak slowly.", exHe: "דבר לאט בבקשה." }
+  - { id: en.word.understand, word: understand, pos: v, cefr: A1, tier: 0, skill: recall, rol: 74, cats: [recovery],
+      why: "recovery-kit verb: 'I don't understand'",
+      t: { he: "להבין", es: "entender", fr: "comprendre", it: "capire", ar: "يفهم" }, review: [ar],
+      ex: "I don't understand.", exHe: "אני לא מבין." }
+  - { id: en.word.take, word: take, pos: v, cefr: A1, tier: 1, skill: recognize, rol: 44, cats: [transport, shopping],
+      why: "'take the second left', 'I'll take it'",
+      t: { he: "לקחת", es: "tomar", fr: "prendre", it: "prendere", ar: "يأخذ" }, review: [ar],
+      ex: "Take the first left.", exHe: "קח שמאלה בפנייה הראשונה." }
+  - { id: en.word.open, word: open, pos: adj, cefr: A1, tier: 0, skill: recognize, rol: 63, cats: [signs, shopping],
+      why: "sign-channel critical; also 'what time do you open'",
+      t: { he: "פתוח", es: "abierto", fr: "ouvert", it: "aperto", ar: "مفتوح" }, review: [ar],
+      ex: "OPEN — Are you open?", exHe: "פתוח — אתם פתוחים?" }
+  - { id: en.word.closed, word: closed, pos: adj, cefr: A1, tier: 0, skill: recognize, rol: 65, cats: [signs, shopping],
+      why: "sign whose misreading costs a wasted trip (urgency 2)",
+      t: { he: "סגור", es: "cerrado", fr: "fermé", it: "chiuso", ar: "مغلق" }, review: [ar],
+      ex: "Sorry, we're closed.", exHe: "סליחה, אנחנו סגורים." }
+  # ── Directions & places (13) ──
+  - { id: en.word.left, word: left, pos: n, cefr: A1, tier: 0, skill: recognize, rol: 77, cats: [directions],
+      why: "direction comprehension triad 1/3; almost always heard not said",
+      t: { he: "שמאלה", es: "izquierda", fr: "gauche", it: "sinistra", ar: "يسار" }, review: [ar],
+      ex: "It's on the left.", exHe: "זה בצד שמאל." }
+  - { id: en.word.right.direction, word: right, pos: n, cefr: A1, tier: 0, skill: recognize, rol: 77, cats: [directions],
+      why: "direction triad 2/3 (sense-split from right=correct, excluded)",
+      t: { he: "ימינה", es: "derecha", fr: "droite", it: "destra", ar: "يمين" }, review: [ar],
+      ex: "Turn right at the corner.", exHe: "פנה ימינה בפינה." }
+  - { id: en.word.straight, word: straight, pos: adv, cefr: A2, tier: 0, skill: recognize, rol: 73, cats: [directions],
+      why: "direction triad 3/3",
+      t: { he: "ישר", es: "recto", fr: "tout droit", it: "dritto", ar: "مباشرة" }, review: [ar, es],
+      ex: "Go straight ahead.", exHe: "לך ישר." }
+  - { id: en.word.near, word: near, pos: adj, cefr: A1, tier: 1, skill: recognize, rol: 52, cats: [directions],
+      why: "distance comprehension pair 1/2",
+      t: { he: "קרוב", es: "cerca", fr: "près", it: "vicino", ar: "قريب" }, review: [ar],
+      ex: "Is it near here?", exHe: "זה קרוב לכאן?" }
+  - { id: en.word.far, word: far, pos: adj, cefr: A1, tier: 1, skill: recognize, rol: 52, cats: [directions],
+      why: "distance comprehension pair 2/2",
+      t: { he: "רחוק", es: "lejos", fr: "loin", it: "lontano", ar: "بعيد" }, review: [ar],
+      ex: "It's not far.", exHe: "זה לא רחוק." }
+  - { id: en.word.here, word: here, pos: adv, cefr: A1, tier: 0, skill: recall, rol: 68, cats: [directions, transport],
+      why: "'stop here', 'for here' — say and hear channels both",
+      t: { he: "כאן", es: "aquí", fr: "ici", it: "qui", ar: "هنا" }, review: [ar],
+      ex: "Stop here, please.", exHe: "עצור כאן, בבקשה." }
+  - { id: en.word.there, word: there, pos: adv, cefr: A1, tier: 1, skill: recognize, rol: 44, cats: [directions],
+      why: "pointing companion — 'over there'",
+      t: { he: "שם", es: "allí", fr: "là-bas", it: "là", ar: "هناك" }, review: [ar],
+      ex: "It's over there.", exHe: "זה שם." }
+  - { id: en.word.street, word: street, pos: n, cefr: A1, tier: 1, skill: recognize, rol: 40, cats: [directions],
+      why: "address comprehension + signage",
+      t: { he: "רחוב", es: "calle", fr: "rue", it: "via", ar: "شارع" }, review: [ar],
+      ex: "It's on this street.", exHe: "זה ברחוב הזה." }
+  - { id: en.word.station, word: station, pos: n, cefr: A1, tier: 1, skill: recognize, rol: 49, cats: [transport],
+      why: "transport anchor noun (train/metro/bus station)",
+      t: { he: "תחנה", es: "estación", fr: "gare", it: "stazione", ar: "محطة" }, review: [ar],
+      ex: "Where is the station?", exHe: "איפה התחנה?" }
+  - { id: en.word.airport, word: airport, pos: n, cefr: A1, tier: 1, skill: recognize, rol: 47, cats: [transport],
+      why: "taxi destination + signage",
+      t: { he: "שדה תעופה", es: "aeropuerto", fr: "aéroport", it: "aeroporto", ar: "مطار" }, review: [ar],
+      ex: "To the airport, please.", exHe: "לשדה התעופה, בבקשה." }
+  - { id: en.word.gate, word: gate, pos: n, cefr: A2, tier: 0, skill: recognize, rol: 62, cats: [transport, signs],
+      why: "airport sign + announcement channel; missing it costs a flight",
+      t: { he: "שער", es: "puerta", fr: "porte", it: "uscita (imbarco)", ar: "بوابة" }, review: [ar, it],
+      ex: "Gate B4 — boarding.", exHe: "שער B4 — עלייה למטוס." }
+  - { id: en.word.exit, word: exit, pos: n, cefr: A1, tier: 0, skill: recognize, rol: 66, cats: [signs],
+      why: "the canonical survival sign",
+      t: { he: "יציאה", es: "salida", fr: "sortie", it: "uscita", ar: "خروج" }, review: [ar],
+      ex: "EXIT — this way out.", exHe: "יציאה — הדרך החוצה." }
+  - { id: en.word.entrance, word: entrance, pos: n, cefr: A2, tier: 1, skill: recognize, rol: 45, cats: [signs],
+      why: "sign pair with exit",
+      t: { he: "כניסה", es: "entrada", fr: "entrée", it: "entrata", ar: "مدخل" }, review: [ar],
+      ex: "Main entrance.", exHe: "כניסה ראשית." }
+  # ── Food & restaurant (13) ──
+  - { id: en.word.water, word: water, pos: n, cefr: A1, tier: 0, skill: recall, rol: 79, cats: [food],
+      why: "most-ordered item on earth",
+      t: { he: "מים", es: "agua", fr: "eau", it: "acqua", ar: "ماء" }, review: [ar],
+      ex: "Water, please.", exHe: "מים, בבקשה." }
+  - { id: en.word.food, word: food, pos: n, cefr: A1, tier: 1, skill: recognize, rol: 46, cats: [food],
+      why: "category anchor; 'food court' signage",
+      t: { he: "אוכל", es: "comida", fr: "nourriture", it: "cibo", ar: "طعام" }, review: [ar],
+      ex: "The food was great.", exHe: "האוכל היה מצוין." }
+  - { id: en.word.bill, word: bill, pos: n, cefr: A2, tier: 0, skill: recall, rol: 81, cats: [food, money],
+      why: "ends every restaurant moment ('check' variant taught as hear)",
+      t: { he: "חשבון", es: "cuenta", fr: "addition", it: "conto", ar: "فاتورة" }, review: [ar],
+      ex: "The bill, please.", exHe: "חשבון, בבקשה." }
+  - { id: en.word.table, word: table, pos: n, cefr: A1, tier: 0, skill: recall, rol: 64, cats: [food],
+      why: "restaurant opener noun",
+      t: { he: "שולחן", es: "mesa", fr: "table", it: "tavolo", ar: "طاولة" }, review: [ar],
+      ex: "A table for two, please.", exHe: "שולחן לשניים, בבקשה." }
+  - { id: en.word.breakfast, word: breakfast, pos: n, cefr: A1, tier: 1, skill: recognize, rol: 55, cats: [food, lodging],
+      why: "hotel-channel: included? what time?",
+      t: { he: "ארוחת בוקר", es: "desayuno", fr: "petit-déjeuner", it: "colazione", ar: "فطور" }, review: [ar],
+      ex: "Is breakfast included?", exHe: "ארוחת הבוקר כלולה?" }
+  - { id: en.word.dinner, word: dinner, pos: n, cefr: A1, tier: 1, skill: recognize, rol: 40, cats: [food],
+      why: "reservation vocabulary",
+      t: { he: "ארוחת ערב", es: "cena", fr: "dîner", it: "cena", ar: "عشاء" }, review: [ar],
+      ex: "Dinner for two at eight.", exHe: "ארוחת ערב לשניים בשמונה." }
+  - { id: en.word.chicken, word: chicken, pos: n, cefr: A1, tier: 1, skill: recognize, rol: 43, cats: [food],
+      why: "menu-reading anchor protein",
+      t: { he: "עוף", es: "pollo", fr: "poulet", it: "pollo", ar: "دجاج" }, review: [ar],
+      ex: "Grilled chicken.", exHe: "עוף בגריל." }
+  - { id: en.word.meat, word: meat, pos: n, cefr: A1, tier: 1, skill: recognize, rol: 44, cats: [food],
+      why: "menu + dietary filter word",
+      t: { he: "בשר", es: "carne", fr: "viande", it: "carne", ar: "لحم" }, review: [ar],
+      ex: "No meat, please.", exHe: "בלי בשר, בבקשה." }
+  - { id: en.word.fish, word: fish, pos: n, cefr: A1, tier: 1, skill: recognize, rol: 41, cats: [food],
+      why: "menu anchor + allergy channel",
+      t: { he: "דג", es: "pescado", fr: "poisson", it: "pesce", ar: "سمك" }, review: [ar],
+      ex: "Fish of the day.", exHe: "דג היום." }
+  - { id: en.word.bread, word: bread, pos: n, cefr: A1, tier: 1, skill: recognize, rol: 38, cats: [food],
+      why: "table vocabulary + gluten channel",
+      t: { he: "לחם", es: "pan", fr: "pain", it: "pane", ar: "خبز" }, review: [ar],
+      ex: "Fresh bread.", exHe: "לחם טרי." }
+  - { id: en.word.milk, word: milk, pos: n, cefr: A1, tier: 1, skill: recognize, rol: 39, cats: [food],
+      why: "coffee orders + lactose channel",
+      t: { he: "חלב", es: "leche", fr: "lait", it: "latte", ar: "حليب" }, review: [ar],
+      ex: "With milk, please.", exHe: "עם חלב, בבקשה." }
+  - { id: en.word.cold, word: cold, pos: adj, cefr: A1, tier: 0, skill: recall, rol: 57, cats: [food, descriptors],
+      why: "'something cold' requester + weather smalltalk",
+      t: { he: "קר", es: "frío", fr: "froid", it: "freddo", ar: "بارد" }, review: [ar],
+      ex: "I'd like something cold.", exHe: "אני רוצה משהו קר." }
+  - { id: en.word.hot, word: hot, pos: adj, cefr: A1, tier: 1, skill: recognize, rol: 47, cats: [food, descriptors],
+      why: "pair of cold; spicy-warning channel",
+      t: { he: "חם", es: "caliente", fr: "chaud", it: "caldo", ar: "حار" }, review: [ar],
+      ex: "Careful, it's hot.", exHe: "זהירות, זה חם." }
+  # ── Money & shopping (8) ──
+  - { id: en.word.money, word: money, pos: n, cefr: A1, tier: 1, skill: recognize, rol: 42, cats: [money],
+      why: "category anchor; ATM/exchange contexts",
+      t: { he: "כסף", es: "dinero", fr: "argent", it: "soldi", ar: "مال" }, review: [ar],
+      ex: "I have no cash money.", exHe: "אין לי כסף מזומן." }
+  - { id: en.word.price, word: price, pos: n, cefr: A1, tier: 1, skill: recognize, rol: 50, cats: [money, shopping],
+      why: "tags/labels channel + 'the price is...'",
+      t: { he: "מחיר", es: "precio", fr: "prix", it: "prezzo", ar: "سعر" }, review: [ar],
+      ex: "The price is on the tag.", exHe: "המחיר על התווית." }
+  - { id: en.word.cash, word: cash, pos: n, cefr: A2, tier: 0, skill: recognize, rol: 67, cats: [money],
+      why: "'cash or card?' — the most-heard payment question",
+      t: { he: "מזומן", es: "efectivo", fr: "espèces", it: "contanti", ar: "نقداً" }, review: [ar],
+      ex: "Cash only.", exHe: "מזומן בלבד." }
+  - { id: en.word.card, word: card, pos: n, cefr: A1, tier: 0, skill: recall, rol: 72, cats: [money],
+      why: "payment pair of cash; say-channel ('by card')",
+      t: { he: "כרטיס", es: "tarjeta", fr: "carte", it: "carta", ar: "بطاقة" }, review: [ar],
+      ex: "By card, please.", exHe: "בכרטיס, בבקשה." }
+  - { id: en.word.cheap, word: cheap, pos: adj, cefr: A2, tier: 1, skill: recognize, rol: 36, cats: [shopping],
+      why: "bargain/compare channel",
+      t: { he: "זול", es: "barato", fr: "pas cher", it: "economico", ar: "رخيص" }, review: [ar, fr],
+      ex: "Is there a cheaper one?", exHe: "יש זול יותר?" }
+  - { id: en.word.expensive, word: expensive, pos: adj, cefr: A2, tier: 1, skill: recognize, rol: 40, cats: [shopping],
+      why: "pair of cheap; polite-decline setup",
+      t: { he: "יקר", es: "caro", fr: "cher", it: "caro", ar: "غالي" }, review: [ar],
+      ex: "It's too expensive.", exHe: "זה יקר מדי." }
+  - { id: en.word.change.money, word: change, pos: n, cefr: A2, tier: 1, skill: recognize, rol: 44, cats: [money],
+      why: "hear-channel at every cash payment (sense-split: coins back)",
+      t: { he: "עודף", es: "cambio", fr: "monnaie", it: "resto", ar: "باقي" }, review: [ar, it],
+      ex: "Here's your change.", exHe: "הנה העודף שלך." }
+  - { id: en.word.receipt, word: receipt, pos: n, cefr: A2, tier: 1, skill: recognize, rol: 43, cats: [money, shopping],
+      why: "heard at checkout everywhere ('do you want the receipt?')",
+      t: { he: "קבלה", es: "recibo", fr: "reçu", it: "scontrino", ar: "إيصال" }, review: [ar],
+      ex: "Do you need the receipt?", exHe: "אתה צריך את הקבלה?" }
+  # ── Health & emergency (8) ──
+  - { id: en.word.doctor, word: doctor, pos: n, cefr: A1, tier: 0, skill: fluent, rol: 75, cats: [emergency, health],
+      why: "emergency noun #1 — overlearned (urgency 3)",
+      t: { he: "רופא", es: "médico", fr: "médecin", it: "medico", ar: "طبيب" }, review: [ar],
+      ex: "I need a doctor.", exHe: "אני צריך רופא." }
+  - { id: en.word.pharmacy, word: pharmacy, pos: n, cefr: A2, tier: 0, skill: recognize, rol: 60, cats: [health, signs],
+      why: "green-cross destination; ask-and-find channel",
+      t: { he: "בית מרקחת", es: "farmacia", fr: "pharmacie", it: "farmacia", ar: "صيدلية" }, review: [ar],
+      ex: "Is there a pharmacy near here?", exHe: "יש בית מרקחת קרוב?" }
+  - { id: en.word.hospital, word: hospital, pos: n, cefr: A1, tier: 0, skill: recognize, rol: 58, cats: [emergency, health],
+      why: "emergency destination + signage",
+      t: { he: "בית חולים", es: "hospital", fr: "hôpital", it: "ospedale", ar: "مستشفى" }, review: [ar],
+      ex: "To the hospital, fast!", exHe: "לבית החולים, מהר!" }
+  - { id: en.word.pain, word: pain, pos: n, cefr: A2, tier: 1, skill: recall, rol: 52, cats: [health],
+      why: "symptom reporter ('pain here')",
+      t: { he: "כאב", es: "dolor", fr: "douleur", it: "dolore", ar: "ألم" }, review: [ar],
+      ex: "I have pain here.", exHe: "יש לי כאב כאן." }
+  - { id: en.word.sick, word: sick, pos: adj, cefr: A1, tier: 1, skill: recall, rol: 50, cats: [health],
+      why: "state reporter ('I feel sick')",
+      t: { he: "חולה", es: "enfermo", fr: "malade", it: "malato", ar: "مريض" }, review: [ar],
+      ex: "I feel sick.", exHe: "אני מרגיש חולה." }
+  - { id: en.word.allergic, word: allergic, pos: adj, cefr: A2, tier: 0, skill: fluent, rol: 88, cats: [health, food, emergency],
+      why: "life-critical restaurant channel — methodology worked example",
+      t: { he: "אלרגי", es: "alérgico", fr: "allergique", it: "allergico", ar: "لديه حساسية" }, review: [ar],
+      ex: "I'm allergic to nuts.", exHe: "אני אלרגי לאגוזים." }
+  - { id: en.word.medicine, word: medicine, pos: n, cefr: A2, tier: 1, skill: recognize, rol: 45, cats: [health],
+      why: "pharmacy transaction noun",
+      t: { he: "תרופה", es: "medicina", fr: "médicament", it: "medicina", ar: "دواء" }, review: [ar],
+      ex: "Medicine for a headache.", exHe: "תרופה לכאב ראש." }
+  - { id: en.word.emergency, word: emergency, pos: n, cefr: B1, tier: 0, skill: recognize, rol: 56, cats: [emergency, signs],
+      why: "signage (EMERGENCY EXIT) + declaring urgency",
+      t: { he: "חירום", es: "emergencia", fr: "urgence", it: "emergenza", ar: "طوارئ" }, review: [ar],
+      ex: "It's an emergency.", exHe: "זה מקרה חירום." }
+  # ── Lodging (6) ──
+  - { id: en.word.room, word: room, pos: n, cefr: A1, tier: 0, skill: recall, rol: 62, cats: [lodging],
+      why: "hotel anchor noun",
+      t: { he: "חדר", es: "habitación", fr: "chambre", it: "camera", ar: "غرفة" }, review: [ar],
+      ex: "A room for two nights.", exHe: "חדר לשני לילות." }
+  - { id: en.word.key, word: key, pos: n, cefr: A1, tier: 1, skill: recognize, rol: 46, cats: [lodging],
+      why: "check-in/out transaction noun",
+      t: { he: "מפתח", es: "llave", fr: "clé", it: "chiave", ar: "مفتاح" }, review: [ar],
+      ex: "Your key, room 214.", exHe: "המפתח שלך, חדר 214." }
+  - { id: en.word.reservation, word: reservation, pos: n, cefr: A2, tier: 0, skill: recall, rol: 71, cats: [lodging, food],
+      why: "opens the hotel moment AND restaurant hear-channel",
+      t: { he: "הזמנה", es: "reserva", fr: "réservation", it: "prenotazione", ar: "حجز" }, review: [ar],
+      ex: "I have a reservation.", exHe: "יש לי הזמנה." }
+  - { id: en.word.night, word: night, pos: n, cefr: A1, tier: 0, skill: recall, rol: 60, cats: [lodging, time],
+      why: "'for three nights' — booking unit",
+      t: { he: "לילה", es: "noche", fr: "nuit", it: "notte", ar: "ليلة" }, review: [ar],
+      ex: "For two nights.", exHe: "לשני לילות." }
+  - { id: en.word.bag, word: bag, pos: n, cefr: A1, tier: 1, skill: recall, rol: 49, cats: [lodging, transport, emergency],
+      why: "luggage word travelers actually say ('my bag') incl. loss reports",
+      t: { he: "תיק", es: "bolso", fr: "sac", it: "borsa", ar: "حقيبة" }, review: [ar],
+      ex: "I lost my bag.", exHe: "איבדתי את התיק שלי." }
+  - { id: en.word.floor, word: floor, pos: n, cefr: A1, tier: 1, skill: recognize, rol: 42, cats: [lodging],
+      why: "'second floor' — the most-heard hotel direction",
+      t: { he: "קומה", es: "piso", fr: "étage", it: "piano", ar: "طابق" }, review: [ar],
+      ex: "Second floor, on the right.", exHe: "קומה שנייה, מימין." }
+  # ── Time (7) ──
+  - { id: en.word.now, word: now, pos: adv, cefr: A1, tier: 0, skill: recall, rol: 55, cats: [time],
+      why: "immediacy marker both channels",
+      t: { he: "עכשיו", es: "ahora", fr: "maintenant", it: "adesso", ar: "الآن" }, review: [ar],
+      ex: "Can we order now?", exHe: "אפשר להזמין עכשיו?" }
+  - { id: en.word.today, word: today, pos: adv, cefr: A1, tier: 1, skill: recall, rol: 48, cats: [time],
+      why: "booking/availability axis",
+      t: { he: "היום", es: "hoy", fr: "aujourd'hui", it: "oggi", ar: "اليوم" }, review: [ar],
+      ex: "Is it open today?", exHe: "זה פתוח היום?" }
+  - { id: en.word.tomorrow, word: tomorrow, pos: adv, cefr: A1, tier: 1, skill: recall, rol: 50, cats: [time],
+      why: "booking axis + checkout talk",
+      t: { he: "מחר", es: "mañana", fr: "demain", it: "domani", ar: "غداً" }, review: [ar],
+      ex: "We leave tomorrow.", exHe: "אנחנו עוזבים מחר." }
+  - { id: en.word.morning, word: morning, pos: n, cefr: A1, tier: 1, skill: recognize, rol: 41, cats: [time],
+      why: "breakfast window + greetings",
+      t: { he: "בוקר", es: "mañana", fr: "matin", it: "mattina", ar: "صباح" }, review: [ar],
+      ex: "Tomorrow morning at nine.", exHe: "מחר בבוקר בתשע." }
+  - { id: en.word.hour, word: hour, pos: n, cefr: A1, tier: 1, skill: recognize, rol: 43, cats: [time],
+      why: "duration comprehension ('one hour wait')",
+      t: { he: "שעה", es: "hora", fr: "heure", it: "ora", ar: "ساعة" }, review: [ar],
+      ex: "About one hour.", exHe: "בערך שעה." }
+  - { id: en.word.minute, word: minute, pos: n, cefr: A1, tier: 0, skill: recognize, rol: 54, cats: [time],
+      why: "'five minutes' — the most-heard time unit abroad",
+      t: { he: "דקה", es: "minuto", fr: "minute", it: "minuto", ar: "دقيقة" }, review: [ar],
+      ex: "Ten minutes on foot.", exHe: "עשר דקות ברגל." }
+  - { id: en.word.late, word: late, pos: adj, cefr: A1, tier: 1, skill: recognize, rol: 35, cats: [time, transport],
+      why: "delay comprehension (flights, buses)",
+      t: { he: "מאוחר", es: "tarde", fr: "en retard", it: "in ritardo", ar: "متأخر" }, review: [ar],
+      ex: "The flight is late.", exHe: "הטיסה מאחרת." }
+  # ── Descriptors & glue (8) ──
+  - { id: en.word.big, word: big, pos: adj, cefr: A1, tier: 1, skill: recognize, rol: 34, cats: [descriptors, shopping],
+      why: "size pair 1/2 (rooms, portions, sizes)",
+      t: { he: "גדול", es: "grande", fr: "grand", it: "grande", ar: "كبير" }, review: [ar],
+      ex: "A bigger size?", exHe: "מידה גדולה יותר?" }
+  - { id: en.word.small, word: small, pos: adj, cefr: A1, tier: 1, skill: recognize, rol: 34, cats: [descriptors, shopping],
+      why: "size pair 2/2",
+      t: { he: "קטן", es: "pequeño", fr: "petit", it: "piccolo", ar: "صغير" }, review: [ar],
+      ex: "A small one, please.", exHe: "קטן, בבקשה." }
+  - { id: en.word.good, word: good, pos: adj, cefr: A1, tier: 1, skill: recall, rol: 45, cats: [descriptors, social],
+      why: "universal positive; compliments buy warmth",
+      t: { he: "טוב", es: "bueno", fr: "bon", it: "buono", ar: "جيد" }, review: [ar],
+      ex: "Very good, thank you!", exHe: "טוב מאוד, תודה!" }
+  - { id: en.word.slowly, word: slowly, pos: adv, cefr: A2, tier: 0, skill: recall, rol: 69, cats: [recovery],
+      why: "recovery-kit adverb ('speak slowly')",
+      t: { he: "לאט", es: "despacio", fr: "lentement", it: "lentamente", ar: "ببطء" }, review: [ar],
+      ex: "Slowly, please.", exHe: "לאט, בבקשה." }
+  - { id: en.word.only, word: only, pos: adv, cefr: A1, tier: 1, skill: recognize, rol: 47, cats: [signs, money],
+      why: "restriction marker on signs ('cash only', 'staff only')",
+      t: { he: "רק", es: "solo", fr: "seulement", it: "solo", ar: "فقط" }, review: [ar],
+      ex: "Cash only.", exHe: "מזומן בלבד." }
+  - { id: en.word.all, word: all, pos: det, cefr: A1, tier: 1, skill: recognize, rol: 33, cats: [descriptors],
+      why: "totality comprehension ('that's all?')",
+      t: { he: "הכל", es: "todo", fr: "tout", it: "tutto", ar: "كل" }, review: [ar],
+      ex: "That's all, thanks.", exHe: "זה הכל, תודה." }
+  - { id: en.word.free, word: free, pos: adj, cefr: A2, tier: 1, skill: recognize, rol: 46, cats: [signs, money],
+      why: "double travel sense: no-cost / available seat — both valuable",
+      t: { he: "חינם / פנוי", es: "gratis / libre", fr: "gratuit / libre", it: "gratuito / libero", ar: "مجاني" }, review: [ar, he],
+      ex: "Is this seat free?", exHe: "המקום הזה פנוי?" }
+  - { id: en.word.same, word: same, pos: adj, cefr: A2, tier: 1, skill: recall, rol: 37, cats: [food, shopping],
+      why: "the effortless order-copier ('the same, please')",
+      t: { he: "אותו דבר", es: "lo mismo", fr: "la même chose", it: "lo stesso", ar: "نفس الشيء" }, review: [ar],
+      ex: "The same for me.", exHe: "אותו דבר בשבילי." }
+  # ── Social & connectors (5) ──
+  - { id: en.word.friend, word: friend, pos: n, cefr: A1, tier: 1, skill: recognize, rol: 30, cats: [social],
+      why: "introduction moment vocabulary",
+      t: { he: "חבר", es: "amigo", fr: "ami", it: "amico", ar: "صديق" }, review: [ar],
+      ex: "This is my friend.", exHe: "זה חבר שלי." }
+  - { id: en.word.family, word: family, pos: n, cefr: A1, tier: 1, skill: recognize, rol: 31, cats: [social, border],
+      why: "border + smalltalk channel ('traveling with family?')",
+      t: { he: "משפחה", es: "familia", fr: "famille", it: "famiglia", ar: "عائلة" }, review: [ar],
+      ex: "I'm here with my family.", exHe: "אני כאן עם המשפחה שלי." }
+  - { id: en.word.trip, word: trip, pos: n, cefr: A1, tier: 0, skill: recall, rol: 59, cats: [border, social],
+      why: "the border answer ('for a trip') + smalltalk anchor",
+      t: { he: "טיול", es: "viaje", fr: "voyage", it: "viaggio", ar: "رحلة" }, review: [ar],
+      ex: "I came here for a trip.", exHe: "באתי לכאן לטיול." }
+  - { id: en.word.with, word: with, pos: prep, cefr: A1, tier: 1, skill: recognize, rol: 39, cats: [food, glue],
+      why: "composition glue ('with milk', 'with my family')",
+      t: { he: "עם", es: "con", fr: "avec", it: "con", ar: "مع" }, review: [ar],
+      ex: "With ice, please.", exHe: "עם קרח, בבקשה." }
+  - { id: en.word.without, word: without, pos: prep, cefr: A2, tier: 0, skill: recall, rol: 64, cats: [food, health],
+      why: "the allergy/diet operator — small word, high stakes",
+      t: { he: "בלי", es: "sin", fr: "sans", it: "senza", ar: "بدون" }, review: [ar],
+      ex: "Without onions, please.", exHe: "בלי בצל, בבקשה." }
