@@ -26,7 +26,8 @@ export type View =
   | 'session'
   | 'emergency'
   | 'plan'
-  | 'languages';
+  | 'languages'
+  | 'bootcamp';
 
 export interface OnboardingInput {
   departureAt: string;

@@ -13,6 +13,7 @@ import { SessionPlayer } from '../features/session/SessionPlayer.js';
 import { EmergencyCard } from '../features/emergency/EmergencyCard.js';
 import { PlanSettings } from '../features/plan/PlanSettings.js';
 import { LanguageSelect } from '../features/languages/LanguageSelect.js';
+import { Bootcamp } from '../features/bootcamp/Bootcamp.js';
 
 const TAB_VIEWS: View[] = ['mission', 'words', 'phrases', 'situations', 'practice'];
 
@@ -27,6 +28,7 @@ const SCREENS: Partial<Record<View, { feature: string; el: () => JSX.Element | n
   emergency: { feature: 'Emergency Card', el: EmergencyCard },
   plan: { feature: 'Plan', el: PlanSettings },
   languages: { feature: 'Languages', el: LanguageSelect },
+  bootcamp: { feature: 'Bootcamp', el: Bootcamp },
 };
 
 export function App() {

@@ -7,7 +7,7 @@ import type { ContentItem } from '@ready/content-schema';
  * Every failure path resolves — a drill must never dead-end on audio (M4 quality bar).
  */
 
-const LANG_TAG: Record<string, string> = { it: 'it-IT' };
+const LANG_TAG: Record<string, string> = { it: 'it-IT', en: 'en-US', es: 'es-ES', fr: 'fr-FR', ar: 'ar-SA' };
 
 let cachedVoices: SpeechSynthesisVoice[] | null = null;
 

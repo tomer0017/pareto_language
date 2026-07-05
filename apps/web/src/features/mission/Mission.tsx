@@ -56,6 +56,14 @@ export function Mission() {
           </div>
         </div>
 
+        <button className="card card-accent card-press fade-in" style={{ width: '100%', textAlign: 'start', display: 'flex', alignItems: 'center', gap: 12 }} onClick={() => app.navigate('bootcamp')}>
+          <span style={{ fontSize: '1.8rem' }}>🎖️</span>
+          <span>
+            <p style={{ fontWeight: 800 }}>{t('bootcamp')}</p>
+            <p className="dim small">{t('bootcampSub')}</p>
+          </span>
+        </button>
+
         <h1 className="fade-in" style={{ marginBottom: 14 }}>{t('todaysMission')}</h1>
 
         <div className="mission-card fade-in">

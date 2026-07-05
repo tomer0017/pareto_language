@@ -152,3 +152,15 @@ jargon-free copy, anonymous restore wired. Verification: 97 tests, typecheck/lin
 production build, SMOKE PASS, live API checks (he title + localized tip via /packs/it/full).
 Remaining Epic 1 tasks (next): ID namespace unification (T2), Moment schema (T3), quality
 field (T4).
+
+---
+
+## Sprint 6 — Bootcamp Foundation (vertical slice)
+
+20-day capability plan (data + landing map: Day 1 "I can survive" → Day 20 "a whole day
+abroad alone") with per-day objective/confidence gain/targets/skills/feeling/why/prepares-next.
+Day 1 fully playable in Hebrew UI (~20 min): welcome → briefing → stuck-traveler dialogue
+(watch) → 7 survival tools listening-first (hear→meaning→say) → listening quizzes → swipe
+game → dialogue (play, choice points) → fast-sentence confidence ambush → evidence receipts →
+day summary + capability card. Real events into the log; resume + replay; walkthrough fixes
+(speech-complete advancing, StrictMode-safe transcript, clear ambush CTA). 113 tests green.

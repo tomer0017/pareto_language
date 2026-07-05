@@ -220,3 +220,18 @@ Every non-obvious technical decision, with one line of reasoning. Referenced by 
   candidates win all ties. Known-By-Default becomes a measured, pair-specific system
   (internationalism score + attested loanwords + ≥90% first-pass cohort demotion) with a
   probe mechanism through Swipe Triage. Ten Never-Teach categories adopted.
+
+## Sprint 6 — Bootcamp Foundation
+
+- **D048 — Bootcamp = data-driven days over one generic player.** A day is a content file
+  (items + dialogue + typed steps); the DayPlayer renders any day. Days 2–20 = new data files
+  + one registry line, zero code. 20-day capability plan lives as data (plan.ts) and renders
+  on the landing map.
+- **D049 — Bootcamp drills emit real ReviewEvents** (echo/listen/swipe/simulator) with frozen
+  en-pack ids; projection ignores unknown ids today and will count this history retroactively
+  when the en pack ships (event-sourcing dividend). Progress/receipts persist in localStorage —
+  offline-first, engine-independent.
+- **D050 — Day 1 kit follows the founder's 7 tools** (slowly/repeat/don't-understand/show-me/
+  one-moment/thank-you/sorry); CORE-spec moves my-english/need-help/graceful-exit are deferred
+  to Days 2 and 17. Dialogue-first + listening-first enforced by data-integrity tests, not
+  convention (watch precedes tools precedes quizzes; no recall production on Day 1).
