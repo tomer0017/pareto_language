@@ -32,7 +32,8 @@
     "seed:words": "tsx server/src/seed/cli.ts words",
     "seed:phrases": "tsx server/src/seed/cli.ts phrases",
     "seed:situations": "tsx server/src/seed/cli.ts situations",
-    "seed:content-packs": "tsx server/src/seed/cli.ts content-packs"
+    "seed:content-packs": "tsx server/src/seed/cli.ts content-packs",
+    "pipeline": "tsx content/pipeline/run.ts"
   },
   "devDependencies": {
     "@eslint/js": "^9.12.0",

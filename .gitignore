@@ -13,3 +13,4 @@ apps/web/public/content/*.json
 .vite/
 
 .claude/
+content/reports/
