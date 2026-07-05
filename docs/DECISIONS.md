@@ -154,3 +154,11 @@ Every non-obvious technical decision, with one line of reasoning. Referenced by 
   pack — phrases/replies/situations are still required (packs stay coming_soon).
 - **D041 — Seed idempotency = upsert by stable _id.** Re-running inserts 0; "updated" counts
   reflect $set touching timestamps, not duplicates.
+
+## Product Bible
+
+- **D042 — docs/PRODUCT-BIBLE.md v1.0 is the frozen product constitution.** Three-plane
+  architecture (content / orchestration / evidence), LocalizedText translation strategy, ID
+  convention, Moment model with survived-semantics, ROL methodology with the §7.8 pilot gate,
+  quality workflow, and the epic roadmap. All future work must be consistent with it or amend
+  it first (B-### entries).
