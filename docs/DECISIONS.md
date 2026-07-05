@@ -193,3 +193,12 @@ Every non-obvious technical decision, with one line of reasoning. Referenced by 
   state (never "Session complete"); practice games disable with a reason when they would be
   empty; Tier/plan-version/pack-id jargon removed from user-facing copy; ApiProvider.restore()
   wired into init for API-configured builds.
+
+- **B-004 — Pilot language amended it→en: READY CORE.** The Bible §7.8 pilot is implemented
+  as READY CORE (100/50/10/5, learning=en, UI=he) per docs/READY-CORE-SPEC.md. Rationale:
+  founder can desk-validate every item (removes the native-reviewer bottleneck from the pilot
+  loop); he→en is a real beachhead market. Caveat encoded in the spec: founder fluency cannot
+  test the fear curve — outcome validation requires the Stage-B weak-English cohort. New
+  methodology rule introduced: the Assumed-Known (cognate) Filter, cohort-relative per
+  (learningLang, uiLang) pair. Italian remains the shipped demo pack; en public status stays
+  honest (draft/coming_soon) until Stage B passes.
