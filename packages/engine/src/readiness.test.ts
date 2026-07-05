@@ -12,15 +12,15 @@ const SOON = NOW + DAY_MS / 4;
 function situation(over: Partial<Situation> = {}): Situation {
   return {
     id: 'restaurant',
-    name: 'Restaurant',
+    name: { en: 'Restaurant' },
     icon: 'fork',
     priorityDefault: 10,
     corePhraseIds: ['p1', 'p2'],
     replyIds: ['r1'],
     recognitionIds: [],
     dialogue: { id: 'd', startNodeId: 'n1', nodes: [
-      { id: 'n1', speaker: 'npc', text: 'a', meaning: 'a' },
-      { id: 'n2', speaker: 'user', text: 'b', meaning: 'b' },
+      { id: 'n1', speaker: 'npc', text: 'a', meaning: { en: 'a' } },
+      { id: 'n2', speaker: 'user', text: 'b', meaning: { en: 'b' } },
     ] },
     cultureTips: [],
     isEmergency: false,

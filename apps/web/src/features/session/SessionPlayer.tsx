@@ -26,8 +26,10 @@ export function SessionPlayer() {
 
   const step = session.current();
 
+  const emptySession = session.steps.length === 0 && !session.simulatorSituation;
+
   useEffect(() => {
-    if (phase !== 'drill') return;
+    if (phase !== 'drill' || emptySession) return; // empty runs render a guidance state instead
     if (step === null) {
       if (session.simulatorSituation) setPhase('simulator');
       else void closeSession();
@@ -63,8 +65,8 @@ export function SessionPlayer() {
     <div className="screen">
       <CheckPop trigger={checkTrigger} />
       <div className="topbar">
-        <button className="btn-ghost" onClick={phase === 'close' ? exit : () => void closeSession()}>
-          {phase === 'close' ? t('home') : t('endEarly')}
+        <button className="btn-ghost" onClick={phase === 'close' || emptySession ? exit : () => void closeSession()}>
+          {phase === 'close' || emptySession ? t('home') : t('endEarly')}
         </button>
         <span className="chip">
           {step ? BLOCK_LABEL[step.block] : phase === 'simulator' ? t('integrate') : t('closeBlock')}
@@ -131,9 +133,18 @@ export function SessionPlayer() {
         </div>
       )}
 
-      {phase === 'drill' && !step && !session.simulatorSituation && (
-        <div className="drill-card" style={{ minHeight: 160 }}>
-          <p className="drill-meaning">{t('nothingDue')}</p>
+      {phase === 'drill' && emptySession && (
+        <div className="fade-in">
+          <div className="drill-card" style={{ minHeight: 180 }}>
+            <p style={{ fontSize: '2.2rem' }}>🌤️</p>
+            <p className="drill-meaning">{session.isPractice ? t('nothingHereYet') : t('nothingDue')}</p>
+            {session.isPractice && <p className="faint small">{t('nothingHereYetSub')}</p>}
+          </div>
+          <div className="action-zone">
+            <button className="btn-primary" onClick={exit}>
+              {t('backToMission')}
+            </button>
+          </div>
         </div>
       )}
     </div>

@@ -3,9 +3,11 @@ import { fileURLToPath } from 'node:url';
 import { parse } from 'yaml';
 import {
   ContentPackSchema,
+  toLocalized,
   type ContentItem,
   type ContentPack,
-  type DialogueScript,
+  type DialogueNode,
+  type LocalizedText,
   type NumberStage,
   type Situation,
   type SkillTarget,
@@ -18,33 +20,49 @@ import { withAudio } from './tts.js';
  * stability. Shared by `build.ts` (emits versioned JSON) and `validate.ts` / tests (CI gate).
  */
 
+/** Authors may write plain strings (English) or full translation maps. */
+type RawText = string | LocalizedText;
+
 interface RawItem {
   id: string;
   text: string;
-  meaning: string;
-  literal?: string;
+  meaning: RawText;
+  literal?: RawText;
   tier?: 0 | 1 | 2 | 3;
   skillTarget?: SkillTarget;
 }
 
+interface RawDialogueNode {
+  id: string;
+  speaker: 'npc' | 'user';
+  text: string;
+  meaning: RawText;
+  next?: string;
+  options?: { text: string; meaning: RawText; next: string; itemId?: string; correct?: boolean }[];
+}
+
 interface RawSituation {
   id: string;
-  name: string;
+  name: RawText;
   icon: string;
   priorityDefault: number;
   isEmergency?: boolean;
-  cultureTips?: string[];
+  cultureTips?: RawText[];
   corePhrases: RawItem[];
   replies: RawItem[];
   words: RawItem[];
-  dialogue: Omit<DialogueScript, "id">;
+  dialogue: { startNodeId: string; nodes: RawDialogueNode[] };
+}
+
+interface RawNumberStage extends Omit<NumberStage, 'label'> {
+  label: RawText;
 }
 
 interface RawPack {
   lang: string;
   version: string;
   needsNativeReview?: boolean;
-  numbersCurriculum: NumberStage[];
+  numbersCurriculum: RawNumberStage[];
   glue: RawItem[];
   numbers: RawItem[];
   situations: RawSituation[];
@@ -71,11 +89,11 @@ function makeItem(
     id: fullId,
     kind,
     text: raw.text,
-    meaning: raw.meaning,
+    meaning: toLocalized(raw.meaning),
     tier: raw.tier ?? defaults.tier,
     skillTarget: raw.skillTarget ?? defaults.skillTarget,
     situationIds: defaults.situationIds,
-    ...(raw.literal ? { literal: raw.literal } : {}),
+    ...(raw.literal ? { literal: toLocalized(raw.literal) } : {}),
   };
   return withAudio(base, lang);
 }
@@ -148,16 +166,35 @@ export function buildPack(raw: RawPack): ContentPack {
       recognitionIds.push(id);
     }
 
+    const nodes: DialogueNode[] = s.dialogue.nodes.map((n) => ({
+      id: n.id,
+      speaker: n.speaker,
+      text: n.text,
+      meaning: toLocalized(n.meaning),
+      ...(n.next ? { next: n.next } : {}),
+      ...(n.options
+        ? {
+            options: n.options.map((o) => ({
+              text: o.text,
+              meaning: toLocalized(o.meaning),
+              next: o.next,
+              correct: o.correct ?? true,
+              ...(o.itemId ? { itemId: o.itemId } : {}),
+            })),
+          }
+        : {}),
+    }));
+
     situations.push({
       id: s.id,
-      name: s.name,
+      name: toLocalized(s.name),
       icon: s.icon,
       priorityDefault: s.priorityDefault,
       corePhraseIds,
       replyIds,
       recognitionIds,
-      dialogue: { id: `it.dialogue.${s.id}`, startNodeId: s.dialogue.startNodeId, nodes: s.dialogue.nodes },
-      cultureTips: s.cultureTips ?? [],
+      dialogue: { id: `it.dialogue.${s.id}`, startNodeId: s.dialogue.startNodeId, nodes },
+      cultureTips: (s.cultureTips ?? []).map(toLocalized),
       isEmergency: s.isEmergency ?? false,
     });
   }
@@ -168,7 +205,7 @@ export function buildPack(raw: RawPack): ContentPack {
     needsNativeReview: raw.needsNativeReview ?? false,
     items,
     situations,
-    numbersCurriculum: raw.numbersCurriculum,
+    numbersCurriculum: raw.numbersCurriculum.map((n) => ({ ...n, label: toLocalized(n.label) })),
   };
 
   const parsed = ContentPackSchema.safeParse(candidate);

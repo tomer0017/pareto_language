@@ -125,6 +125,13 @@ const en = {
   errorIn: 'Something went wrong in {feature}.',
   progressSafe: 'Your progress is saved locally — nothing is lost.',
   planSaveError: 'Could not save your plan. Please try again.',
+  coverageSurvival: 'Survival essentials',
+  coverageCore: 'Core coverage — the phrases and replies real trips run on',
+  planFootnote: 'Your plan re-adjusts after every session.',
+  notEnoughItems: 'Learn a few items first',
+  nothingHereYet: 'Nothing to train right now',
+  nothingHereYetSub: 'Your mission introduces new material — everything you learn becomes practicable here.',
+  backToMission: 'Back',
 } as const;
 
 const he: Partial<Record<StringKey, string>> = {
@@ -179,6 +186,13 @@ const he: Partial<Record<StringKey, string>> = {
   learningLanguage: 'שפת הטיול',
   retry: 'נסה שוב',
   tryAgain: 'נסה שוב',
+  coverageSurvival: 'חיוני להישרדות',
+  coverageCore: 'כיסוי ליבה — המשפטים והתשובות שטיול אמיתי בנוי מהם',
+  planFootnote: 'התוכנית מתעדכנת אחרי כל אימון.',
+  notEnoughItems: 'קודם לומדים כמה פריטים',
+  nothingHereYet: 'אין מה לתרגל כרגע',
+  nothingHereYetSub: 'המשימה היומית מוסיפה חומר חדש — כל מה שנלמד יהיה זמין לתרגול כאן.',
+  backToMission: 'חזרה',
 };
 
 const DICTS: Record<string, Partial<Record<StringKey, string>>> = { en, he };
@@ -187,6 +201,13 @@ let currentUiLang = 'en';
 
 export function setUiLangDict(lang: string): void {
   currentUiLang = DICTS[lang] ? lang : 'en';
+}
+
+/** Localize a content LocalizedText for the current UI language (chain: uiLang → en → any). */
+export function L(text: Record<string, string> | string | undefined): string {
+  if (text === undefined) return '';
+  if (typeof text === 'string') return text; // legacy cache tolerance
+  return text[currentUiLang] ?? text.en ?? Object.values(text)[0] ?? '';
 }
 
 /** Translate a key, with {placeholder} interpolation. Falls back to English. */

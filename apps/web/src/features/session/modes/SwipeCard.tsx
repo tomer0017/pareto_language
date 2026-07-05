@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import type { ContentItem, Outcome } from '@ready/content-schema';
 import { playItem } from '../../../shared/audio/tts.js';
-import { t } from '../../../shared/i18n/strings.js';
+import { L, t } from '../../../shared/i18n/strings.js';
 
 /** Mode 1 — Swipe (PDF §9): fast triage; weak prior only, never sole evidence. */
 export function SwipeCard({ item, onDone }: { item: ContentItem; onDone: (o: Outcome) => void }) {
@@ -36,7 +36,7 @@ export function SwipeCard({ item, onDone }: { item: ContentItem; onDone: (o: Out
         <p className="drill-label">{t('swipeTriage')}</p>
         <p className="drill-phrase">{item.text}</p>
         {flipped ? (
-          <p className="drill-meaning fade-in">{item.meaning}</p>
+          <p className="drill-meaning fade-in">{L(item.meaning)}</p>
         ) : (
           <p className="faint small">{t('tapToFlip')}</p>
         )}

@@ -178,3 +178,18 @@ Every non-obvious technical decision, with one line of reasoning. Referenced by 
   content type; no schema change.
 - **B-003 — Document freeze.** After MASTER-SPEC v1.0, no further strategy documents until
   the Italian pilot (Bible §7.8) produces user telemetry. Amendments only via B-###.
+
+## Epic 1 — Schema Freeze (execution)
+
+- **D044 — LocalizedText is live end-to-end.** ContentItem.meaning/literal, Situation.name,
+  cultureTips, dialogue meanings and NumberStage.label are language→string maps (en pivot
+  required by zod). `localize()` implements the frozen fallback chain uiLang → en → any and
+  tolerates legacy plain strings so stale offline caches can never crash a render. Pack bumped
+  to it 0.2.0; the Mongo migration was a reseed (idempotent upserts; 0 inserts, in-place update).
+- **D045 — YAML authoring accepts string or map.** Plain strings mean {en}; tips and situation
+  names now author as en+he maps. Culture tips are written in UI languages (frozen rule) —
+  the Italian-only tips bug is gone at the schema level, not just the data level.
+- **D046 — P0 pilot fixes shipped with the migration:** zero-drill sessions render a guidance
+  state (never "Session complete"); practice games disable with a reason when they would be
+  empty; Tier/plan-version/pack-id jargon removed from user-facing copy; ApiProvider.restore()
+  wired into init for API-configured builds.

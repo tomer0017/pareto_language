@@ -24,7 +24,30 @@ const GAMES: Game[] = [
 export function PracticeHub() {
   const app = useAppStore();
   const buildPractice = useSessionStore((s) => s.buildPractice);
-  const anythingLearned = app.states.size > 0;
+
+  // Eligibility per game — a game a user can enter must always contain at least one drill.
+  const seen = [...app.states.keys()]
+    .map((id) => app.itemsById.get(id))
+    .filter((i): i is NonNullable<typeof i> => i !== undefined);
+  const seenPhrases = seen.filter((i) => i.kind === 'phrase').length;
+  const startedSituations = new Set(seen.flatMap((i) => i.situationIds));
+  const listenPool = (app.pack?.items ?? []).filter(
+    (i) => i.kind === 'reply' && i.situationIds.some((sid) => startedSituations.has(sid)),
+  ).length;
+  const simulatorReady = (app.pack?.situations ?? []).some(
+    (sit) =>
+      sit.corePhraseIds.length > 0 &&
+      sit.corePhraseIds.every((id) => (app.states.get(id)?.level ?? 0) >= 2),
+  );
+  const eligible: Record<PracticeGame, boolean> = {
+    swipe: seen.length > 0,
+    flashRecall: seenPhrases > 0,
+    echo: seenPhrases > 0,
+    listen: listenPool > 0,
+    numberSprint: true,
+    simulator: simulatorReady,
+  };
+  const anythingLearned = seen.length > 0;
 
   const start = (game: PracticeGame) => {
     tap();
@@ -44,13 +67,19 @@ export function PracticeHub() {
         )}
         <div className="stagger">
           {GAMES.map((g) => (
-            <button key={g.id} className="game-card card-press" onClick={() => start(g.id)} disabled={!anythingLearned && g.id !== 'numberSprint'}>
+            <button
+              key={g.id}
+              className="game-card card-press"
+              onClick={() => start(g.id)}
+              disabled={!eligible[g.id]}
+              style={eligible[g.id] ? undefined : { opacity: 0.5 }}
+            >
               <span className="game-icon" style={{ background: g.color, boxShadow: `0 8px 20px ${g.color}55` }}>
                 {g.icon}
               </span>
               <span>
                 <p style={{ fontWeight: 800 }}>{t(g.titleKey)}</p>
-                <p className="dim small">{t(g.subKey)}</p>
+                <p className="dim small">{eligible[g.id] ? t(g.subKey) : t('notEnoughItems')}</p>
               </span>
             </button>
           ))}

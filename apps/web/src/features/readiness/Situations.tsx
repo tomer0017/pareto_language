@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 import { confidencePct, useAppStore } from '../../shared/stores/appStore.js';
-import { t } from '../../shared/i18n/strings.js';
+import { L, t } from '../../shared/i18n/strings.js';
 import { Badge } from '../../shared/ui/Badge.js';
 import { Ring } from '../../shared/ui/Ring.js';
 import { playItem } from '../../shared/audio/tts.js';
@@ -27,7 +27,7 @@ export function Situations() {
       <div className="screen">
         <div className="topbar">
           <button className="btn-ghost" onClick={() => setOpenId(null)}>←</button>
-          <h2 style={{ margin: 0 }}>{s.name}</h2>
+          <h2 style={{ margin: 0 }}>{L(s.name)}</h2>
           <span style={{ width: 44 }} />
         </div>
         <div className="screen-scroll">
@@ -57,7 +57,7 @@ export function Situations() {
                     <p style={{ fontWeight: 700 }}>
                       {item.text} {level >= 2 && <span style={{ color: 'var(--good)' }}>✓</span>}
                     </p>
-                    <p className="dim small">{item.meaning}</p>
+                    <p className="dim small">{L(item.meaning)}</p>
                   </div>
                   <button className="btn-ghost" onClick={() => void playItem(item)} aria-label={t('play')}>🔊</button>
                 </div>
@@ -66,8 +66,8 @@ export function Situations() {
           </div>
           {s.cultureTips.length > 0 && (
             <div className="card card-sunken">
-              {s.cultureTips.map((tip) => (
-                <p className="small dim" key={tip}>💡 {tip}</p>
+              {s.cultureTips.map((tip, i) => (
+                <p className="small dim" key={i}>💡 {L(tip)}</p>
               ))}
             </div>
           )}
@@ -91,7 +91,7 @@ export function Situations() {
                   <span className="conf-icon">{SITUATION_ICONS[s.icon] ?? '📍'}</span>
                   <Ring pct={confidencePct(snap)} color={snap.state === 'fading' ? 'var(--warn)' : snap.state === 'ready' ? 'var(--good)' : 'var(--accent)'} />
                 </div>
-                <span className="conf-name">{s.name}</span>
+                <span className="conf-name">{L(s.name)}</span>
                 <Badge state={snap.state} />
               </button>
             );

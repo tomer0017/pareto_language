@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import type { ContentItem, Outcome, ReviewEvent } from '@ready/content-schema';
 import { playItem } from '../../../shared/audio/tts.js';
-import { t } from '../../../shared/i18n/strings.js';
+import { L, t } from '../../../shared/i18n/strings.js';
 import { languageInfo } from '../../../shared/i18n/languages.js';
 import { useAppStore } from '../../../shared/stores/appStore.js';
 
@@ -33,7 +33,7 @@ export function FlashRecall({
     <>
       <div className="drill-card">
         <p className="drill-label">{t('sayIt', { language: languageInfo(learningLang).name })}</p>
-        <p className="drill-phrase">{item.meaning}</p>
+        <p className="drill-phrase">{L(item.meaning)}</p>
         {revealed ? (
           <p className="reveal-answer fade-in">{item.text}</p>
         ) : (

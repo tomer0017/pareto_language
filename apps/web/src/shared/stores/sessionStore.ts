@@ -9,6 +9,7 @@ import type {
 } from '@ready/content-schema';
 import { isDue, scheduleSession, shouldRequeue, type SchedulableItem } from '@ready/engine';
 import { useAppStore } from './appStore.js';
+import { L } from '../i18n/strings.js';
 
 /**
  * Session runtime (PDF §10.2): fixed rhythm Warm-up → Learn → Integrate → Close, adaptive
@@ -160,7 +161,7 @@ export function previewMission(): MissionPreview {
     newCount: seenNew.size,
     phraseCount: Math.ceil(phraseCount / 2), // echo+recall pairs count once
     hasSprint,
-    scenarioName: simulatorSituation?.name ?? null,
+    scenarioName: simulatorSituation ? L(simulatorSituation.name) : null,
     estMinutes: Math.max(1, Math.round(estSeconds / 60)),
     empty: steps.length === 0 && !simulatorSituation,
   };
@@ -376,7 +377,7 @@ export const useSessionStore = create<SessionState>((set, get) => ({
     const readySituations = app
       .readiness()
       .filter((r) => r.state === 'ready')
-      .map((r) => app.situationById.get(r.situationId)?.name)
+      .map((r) => { const n = app.situationById.get(r.situationId)?.name; return n ? L(n) : undefined; })
       .filter(Boolean);
     if (readySituations.length > 0) lines.push(`Ready: ${readySituations.join(', ')}`);
     if (lines.length === 0) lines.push('Progress saved. Every review sharpens departure-day recall.');

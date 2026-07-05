@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
 import type { ContentItem } from '@ready/content-schema';
 import { useAppStore } from '../../shared/stores/appStore.js';
+import { L } from '../../shared/i18n/strings.js';
 import { TopBar } from '../../shared/ui/TopBar.js';
 import { playItem } from '../../shared/audio/tts.js';
 
@@ -28,7 +29,7 @@ export function EmergencyCard() {
       <div className="screen" onClick={() => setShowLocal(null)} role="button" tabIndex={0}>
         <p className="show-local">{showLocal.text}</p>
         <p className="dim" style={{ textAlign: 'center' }}>
-          {showLocal.meaning}
+          {L(showLocal.meaning)}
         </p>
         <div className="action-zone">
           <button className="btn-secondary" onClick={() => setShowLocal(null)}>
@@ -52,7 +53,7 @@ export function EmergencyCard() {
           <div className="card" key={item.id}>
             <p className="emergency-phrase">{item.text}</p>
             <p className="dim" style={{ margin: '6px 0 12px' }}>
-              {item.meaning}
+              {L(item.meaning)}
             </p>
             <div className="btn-row">
               <button className="btn-secondary" onClick={() => void playItem(item)}>

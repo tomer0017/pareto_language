@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import type { ContentItem, Outcome } from '@ready/content-schema';
 import { playItem } from '../../../shared/audio/tts.js';
-import { t } from '../../../shared/i18n/strings.js';
+import { L, t } from '../../../shared/i18n/strings.js';
 
 /** Mode 3 — Echo: hear it, say it. Introduction drill; no fake scoring (P3). */
 export function Echo({ item, onDone }: { item: ContentItem; onDone: (o: Outcome) => void }) {
@@ -17,8 +17,8 @@ export function Echo({ item, onDone }: { item: ContentItem; onDone: (o: Outcome)
       <div className="drill-card">
         <p className="drill-label">{t('newPhrase')}</p>
         <p className="drill-phrase">{item.text}</p>
-        <p className="drill-meaning">{item.meaning}</p>
-        {item.literal && <p className="faint small">lit. {item.literal}</p>}
+        <p className="drill-meaning">{L(item.meaning)}</p>
+        {item.literal && <p className="faint small">lit. {L(item.literal)}</p>}
       </div>
       <div className="action-zone">
         <div className="btn-row">

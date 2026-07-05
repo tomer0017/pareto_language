@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 import { useAppStore } from '../../shared/stores/appStore.js';
-import { t } from '../../shared/i18n/strings.js';
+import { L, t } from '../../shared/i18n/strings.js';
 import { playItem } from '../../shared/audio/tts.js';
 
 /** Words — recognition vocabulary and numbers, with honest level dots (L0–L4). */
@@ -14,7 +14,7 @@ export function Words() {
     return app.pack.items.filter((i) => {
       if (i.kind !== 'word' && i.kind !== 'number') return false;
       if (q === '') return true;
-      return i.text.toLowerCase().includes(q) || i.meaning.toLowerCase().includes(q);
+      return i.text.toLowerCase().includes(q) || L(i.meaning).toLowerCase().includes(q);
     });
   }, [app.pack, query]);
 
@@ -38,7 +38,7 @@ export function Words() {
             <div className="list-row fade-in" key={item.id}>
               <div>
                 <p style={{ fontWeight: 700 }}>{item.text}</p>
-                <p className="dim small">{item.meaning}</p>
+                <p className="dim small">{L(item.meaning)}</p>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                 <span className="level-dots" aria-label={`L${level}`}>

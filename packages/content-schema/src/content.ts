@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { LocalizedTextSchema } from './localized.js';
 
 /**
  * Content entities — the static, versioned language packs (PDF §12.1).
@@ -29,10 +30,10 @@ export const ContentItemSchema = z.object({
   kind: ItemKindSchema,
   /** Target-language text, e.g. "Il conto, per favore". */
   text: z.string().min(1),
-  /** English meaning, e.g. "The bill, please". */
-  meaning: z.string().min(1),
+  /** Meaning per UI language; en required as pivot (Bible §3.2). */
+  meaning: LocalizedTextSchema,
   /** Optional literal gloss for curious learners (PDF §7.4). */
-  literal: z.string().optional(),
+  literal: LocalizedTextSchema.optional(),
   /** Romanization for non-Latin scripts (v2). */
   romanization: z.string().optional(),
   audio: AudioRefSchema,
@@ -51,7 +52,7 @@ export const DialogueNodeSchema = z.object({
   speaker: z.enum(['npc', 'user']),
   /** Target-language line. */
   text: z.string().min(1),
-  meaning: z.string().min(1),
+  meaning: LocalizedTextSchema,
   audio: z.string().optional(),
   /** For npc turns: the next node id (linear until a user choice). */
   next: z.string().optional(),
@@ -60,7 +61,7 @@ export const DialogueNodeSchema = z.object({
     .array(
       z.object({
         text: z.string().min(1),
-        meaning: z.string().min(1),
+        meaning: LocalizedTextSchema,
         /** Node id this option leads to. */
         next: z.string().min(1),
         /** Optional link to the content item this line trains. */
@@ -82,7 +83,7 @@ export type DialogueScript = z.infer<typeof DialogueScriptSchema>;
 
 export const SituationSchema = z.object({
   id: z.string().min(1),
-  name: z.string().min(1),
+  name: LocalizedTextSchema,
   icon: z.string().min(1),
   /** frequency × criticality default ordering (PDF §7.2). Higher = earlier in plan. */
   priorityDefault: z.number(),
@@ -90,7 +91,8 @@ export const SituationSchema = z.object({
   replyIds: z.array(z.string().min(1)),
   recognitionIds: z.array(z.string().min(1)),
   dialogue: DialogueScriptSchema,
-  cultureTips: z.array(z.string()).max(3),
+  /** Written in UI languages — the learner cannot read the target language (frozen rule). */
+  cultureTips: z.array(LocalizedTextSchema).max(3),
   /** Emergency situations are overlearned to L3 and always available offline (PDF §7.2). */
   isEmergency: z.boolean().default(false),
 });
@@ -99,7 +101,7 @@ export type Situation = z.infer<typeof SituationSchema>;
 /** One difficulty stage in the numbers curriculum (Number Sprint, PDF §9 mode 5). */
 export const NumberStageSchema = z.object({
   id: z.string().min(1),
-  label: z.string().min(1),
+  label: LocalizedTextSchema,
   /** Kind of value learners must comprehend at speed. */
   kind: z.enum(['integer', 'price', 'time']),
   /** Inclusive numeric range for generated prompts (for integer/price kinds). */

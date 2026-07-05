@@ -9,7 +9,7 @@ export function item(
     id,
     kind,
     text: id,
-    meaning: id,
+    meaning: { en: id },
     audio: { natural: `${id}.mp3` },
     tier: 1,
     skillTarget,

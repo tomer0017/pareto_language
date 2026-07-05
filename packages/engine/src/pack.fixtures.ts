@@ -13,7 +13,7 @@ export function makeItem(partial: Partial<ContentItem> & Pick<ContentItem, 'id'>
   return {
     kind: 'phrase',
     text: partial.text ?? `text-${partial.id}`,
-    meaning: partial.meaning ?? `meaning-${partial.id}`,
+    meaning: partial.meaning ?? { en: `meaning-${partial.id}` },
     audio: { natural: `audio/${partial.id}.mp3` },
     tier: 1,
     skillTarget: 'recall',
@@ -27,18 +27,18 @@ function makeDialogue(id: string): DialogueScript {
     id: `${id}.dialogue`,
     startNodeId: 'n1',
     nodes: [
-      { id: 'n1', speaker: 'npc', text: 'Buongiorno', meaning: 'Good morning', next: 'n2' },
+      { id: 'n1', speaker: 'npc', text: 'Buongiorno', meaning: { en: 'Good morning' }, next: 'n2' },
       {
         id: 'n2',
         speaker: 'user',
         text: 'Buongiorno',
-        meaning: 'Good morning',
+        meaning: { en: 'Good morning' },
         options: [
-          { text: 'Buongiorno', meaning: 'Good morning', next: 'n3', correct: true },
-          { text: '...', meaning: '(freeze)', next: 'n3', correct: false },
+          { text: 'Buongiorno', meaning: { en: 'Good morning' }, next: 'n3', correct: true },
+          { text: '...', meaning: { en: '(freeze)' }, next: 'n3', correct: false },
         ],
       },
-      { id: 'n3', speaker: 'npc', text: 'Prego', meaning: "You're welcome", next: 'n1' },
+      { id: 'n3', speaker: 'npc', text: 'Prego', meaning: { en: "You're welcome" }, next: 'n1' },
     ],
   };
 }
@@ -117,7 +117,7 @@ export function makeSyntheticPack(opts: SyntheticPackOptions = {}): ContentPack 
 
     situations.push({
       id: sid,
-      name: `Situation ${s}`,
+      name: { en: `Situation ${s}` },
       icon: 'circle',
       priorityDefault: situationsCount - s,
       corePhraseIds,
@@ -139,7 +139,7 @@ export function makeSyntheticPack(opts: SyntheticPackOptions = {}): ContentPack 
         skillTarget: 'recognize',
         situationIds: [],
         text: String(n),
-        meaning: String(n),
+        meaning: { en: String(n) },
       }),
     );
   }
@@ -153,9 +153,9 @@ export function makeSyntheticPack(opts: SyntheticPackOptions = {}): ContentPack 
     items,
     situations,
     numbersCurriculum: [
-      { id: 'ns0', label: '0–20', kind: 'integer', min: 0, max: 20 },
-      { id: 'ns1', label: 'tens', kind: 'integer', min: 20, max: 100 },
-      { id: 'ns2', label: 'prices', kind: 'price', min: 1, max: 100 },
+      { id: 'ns0', label: { en: '0–20' }, kind: 'integer', min: 0, max: 20 },
+      { id: 'ns1', label: { en: 'tens' }, kind: 'integer', min: 20, max: 100 },
+      { id: 'ns2', label: { en: 'prices' }, kind: 'price', min: 1, max: 100 },
     ],
   };
 }

@@ -139,3 +139,16 @@ entries), engine untouched at ~98% coverage.
 - **Google Auth**: implementation already present; still needs your `GOOGLE_CLIENT_ID`
   (+ VITE_ vars). GOOGLE_CLIENT_SECRET is NOT required for the ID-token button flow.
 - Verification: 92/92 tests, typecheck/lint clean, prod builds, SMOKE PASS.
+
+---
+
+## Epic 1 — Schema Freeze executed (2026-07-05)
+
+LocalizedText canonical schema live across content-schema → pipeline → packs (it 0.2.0) →
+Mongo (reseeded in place, 0 new rows) → API → web UI (L() at every render site). Hebrew UI
+now renders situation names + culture tips in Hebrew with English fallback elsewhere; culture
+tips re-authored en+he. P0 fixes: zero-drill guidance state, per-game practice eligibility,
+jargon-free copy, anonymous restore wired. Verification: 97 tests, typecheck/lint clean,
+production build, SMOKE PASS, live API checks (he title + localized tip via /packs/it/full).
+Remaining Epic 1 tasks (next): ID namespace unification (T2), Moment schema (T3), quality
+field (T4).

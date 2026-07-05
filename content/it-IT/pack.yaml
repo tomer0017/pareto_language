@@ -2,7 +2,7 @@
 # Tier 0 (Survival) + Tier 1 (Core). Authored per PDF §7.
 # needsNativeReview: this content must be validated by a native Italian speaker (PDF §7.4, R1).
 lang: it
-version: 0.1.0
+version: 0.2.0
 needsNativeReview: true
 
 numbersCurriculum:
@@ -61,12 +61,12 @@ numbers:
 situations:
   # 1 ───────────────────────────────────────────────────────────
   - id: restaurant
-    name: 'Café & Restaurant'
+    name: { en: 'Café & Restaurant', he: 'בית קפה ומסעדה' }
     icon: utensils
     priorityDefault: 100
     cultureTips:
-      - 'Al bar, un caffè preso al banco costa meno che seduti al tavolo.'
-      - 'Il coperto è un piccolo costo fisso per il servizio al tavolo — è normale.'
+      - { en: 'Coffee at the bar counter costs less than at a table.', he: 'קפה בעמידה בבר זול יותר מקפה בישיבה ליד שולחן.' }
+      - { en: 'The "coperto" is a small fixed cover charge for table service — it is normal.', he: 'ה"קופרטו" הוא דמי שירות קבועים וקטנים על ישיבה — זה נורמלי.' }
     corePhrases:
       - { id: table-two, text: 'Un tavolo per due, per favore', meaning: 'A table for two, please' }
       - { id: menu, text: 'Il menù, per favore', meaning: 'The menu, please' }
@@ -109,11 +109,11 @@ situations:
 
   # 2 ───────────────────────────────────────────────────────────
   - id: transport
-    name: 'Getting Around'
+    name: { en: 'Getting Around', he: 'תחבורה והתניידות' }
     icon: train
     priorityDefault: 90
     cultureTips:
-      - 'Convalida sempre il biglietto nella macchinetta gialla prima di salire.'
+      - { en: 'Always validate your ticket in the yellow machine before boarding.', he: 'תמיד תקפו את הכרטיס במכונה הצהובה לפני העלייה.' }
     corePhrases:
       - { id: to-address, text: 'Mi porti a questo indirizzo, per favore', meaning: 'Take me to this address, please' }
       - { id: how-much-centre, text: 'Quanto costa fino al centro?', meaning: 'How much is it to the centre?' }
@@ -156,11 +156,11 @@ situations:
 
   # 3 ───────────────────────────────────────────────────────────
   - id: shopping
-    name: 'Shopping & Paying'
+    name: { en: 'Shopping & Paying', he: 'קניות ותשלום' }
     icon: bag
     priorityDefault: 80
     cultureTips:
-      - "Conserva lo scontrino finché non esci dal negozio."
+      - { en: 'Keep the receipt until you leave the shop.', he: 'שמרו את הקבלה עד היציאה מהחנות.' }
     corePhrases:
       - { id: how-much, text: 'Quanto costa?', meaning: 'How much is it?', tier: 0 }
       - { id: just-looking, text: 'Sto solo guardando, grazie', meaning: "I'm just looking, thanks" }
@@ -203,7 +203,7 @@ situations:
 
   # 4 ───────────────────────────────────────────────────────────
   - id: directions
-    name: 'Directions & Navigation'
+    name: { en: 'Directions & Navigation', he: 'כיוונים והתמצאות' }
     icon: compass
     priorityDefault: 85
     cultureTips: []
@@ -245,7 +245,7 @@ situations:
 
   # 5 ───────────────────────────────────────────────────────────
   - id: hotel
-    name: 'Hotel & Check-in'
+    name: { en: 'Hotel & Check-in', he: 'מלון וצ׳ק-אין' }
     icon: bed
     priorityDefault: 70
     cultureTips: []
@@ -289,11 +289,11 @@ situations:
 
   # 6 ───────────────────────────────────────────────────────────
   - id: smalltalk
-    name: 'Small Talk & Social'
+    name: { en: 'Small Talk & Social', he: 'שיחת חולין' }
     icon: chat
     priorityDefault: 40
     cultureTips:
-      - 'Un semplice "Buongiorno" entrando in un negozio è molto apprezzato.'
+      - { en: 'A simple "Buongiorno" when entering a shop is warmly appreciated.', he: '"Buongiorno" פשוט בכניסה לחנות מתקבל בחום רב.' }
     corePhrases:
       - { id: nice-meet, text: 'Piacere', meaning: 'Nice to meet you' }
       - { id: how-are-you, text: 'Come sta?', meaning: 'How are you? (formal)' }
@@ -331,7 +331,7 @@ situations:
 
   # 7 ───────────────────────────────────────────────────────────
   - id: airport
-    name: 'Airport & Border'
+    name: { en: 'Airport & Border', he: 'שדה תעופה וגבול' }
     icon: plane
     priorityDefault: 50
     cultureTips: []
@@ -374,12 +374,12 @@ situations:
 
   # 8 ───────────────────────────────────────────────────────────
   - id: emergency
-    name: 'Emergency & Help'
+    name: { en: 'Emergency & Help', he: 'חירום ועזרה' }
     icon: alert
     priorityDefault: 60
     isEmergency: true
     cultureTips:
-      - "Il numero unico per le emergenze in Italia e in Europa è il 112."
+      - { en: 'The single emergency number in Italy and across Europe is 112.', he: 'מספר החירום האחיד באיטליה ובכל אירופה הוא 112.' }
     corePhrases:
       - { id: help, text: 'Aiuto!', meaning: 'Help!', tier: 0, skillTarget: fluent }
       - { id: call-ambulance, text: "Chiami un'ambulanza!", meaning: 'Call an ambulance!', tier: 0, skillTarget: fluent }
@@ -417,11 +417,11 @@ situations:
 
   # 9 ───────────────────────────────────────────────────────────
   - id: medical
-    name: 'Medical & Pharmacy'
+    name: { en: 'Medical & Pharmacy', he: 'רפואה ובית מרקחת' }
     icon: cross
     priorityDefault: 45
     cultureTips:
-      - 'In farmacia (croce verde) puoi avere consigli per piccoli disturbi senza medico.'
+      - { en: 'Pharmacies (green cross) give advice for minor ailments — no doctor needed.', he: 'בבתי מרקחת (צלב ירוק) מקבלים ייעוץ לבעיות קלות — בלי רופא.' }
     corePhrases:
       - { id: feel-sick, text: 'Non mi sento bene', meaning: "I don't feel well" }
       - { id: headache, text: 'Ho mal di testa', meaning: 'I have a headache' }
@@ -461,7 +461,7 @@ situations:
 
   # 10 ──────────────────────────────────────────────────────────
   - id: connectivity
-    name: 'Connectivity & Practical'
+    name: { en: 'Connectivity & Practical', he: 'אינטרנט ופרקטיקה' }
     icon: wifi
     priorityDefault: 55
     cultureTips: []

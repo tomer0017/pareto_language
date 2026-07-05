@@ -33,7 +33,9 @@ const CONTENT = fileURLToPath(new URL('../apps/web/public/content/', import.meta
 
 async function main(): Promise<void> {
   // ── Load the real built pack (same file the PWA precaches) ─────────────
-  const packRaw = JSON.parse(readFileSync(`${CONTENT}it-IT.v0.1.0.json`, 'utf8')) as unknown;
+  const manifest = JSON.parse(readFileSync(`${CONTENT}manifest.json`, "utf8")) as { languages: { packUrl: string }[] };
+const packFile = manifest.languages[0]!.packUrl.split("/").pop() as string;
+const packRaw = JSON.parse(readFileSync(`${CONTENT}${packFile}`, "utf8")) as unknown;
   const pack: ContentPack = ContentPackSchema.parse(packRaw);
   check('built content pack validates against the schema', pack.items.length >= 150);
 

@@ -11,7 +11,7 @@ describe('it-IT content pack', () => {
   it('loads and passes integrity checks', () => {
     expect(() => runIntegrityChecks(pack)).not.toThrow();
     expect(pack.lang).toBe('it');
-    expect(pack.version).toBe('0.1.0');
+    expect(pack.version).toBe('0.2.0');
     expect(pack.needsNativeReview).toBe(true);
   });
 

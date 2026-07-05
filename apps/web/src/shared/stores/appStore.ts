@@ -132,6 +132,10 @@ export const useAppStore = create<AppState>((set, get) => ({
     try {
       const user = await provider.ensureAnonymousUser();
       const pack = await provider.getContentPack(learningLang);
+      if (provider instanceof ApiProvider) {
+        // Multi-device restore: pull the merged server event log; local stays authoritative on failure.
+        await provider.restore().catch((err) => console.warn('[app] restore skipped', err));
+      }
       const plan = await provider.getTripPlan(user.id);
       const stateList = await provider.getMemoryStates(user.id);
       set({

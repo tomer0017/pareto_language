@@ -3,7 +3,7 @@ import type { SituationPriority } from '@ready/content-schema';
 import { selectTier, DAY_MS } from '@ready/engine';
 import { useAppStore } from '../../shared/stores/appStore.js';
 import { LEARNING_LANGUAGES, languageInfo } from '../../shared/i18n/languages.js';
-import { t } from '../../shared/i18n/strings.js';
+import { L, t } from '../../shared/i18n/strings.js';
 import { tap } from '../../shared/ui/haptics.js';
 
 const MINUTE_CHOICES = [10, 20, 30, 45];
@@ -120,7 +120,7 @@ export function Onboarding() {
               return (
                 <div className="card" key={id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 16px', marginBottom: 8 }}>
                   <span>
-                    <span className="faint small">{i + 1}.</span> <strong>{s.name}</strong>
+                    <span className="faint small">{i + 1}.</span> <strong>{L(s.name)}</strong>
                   </span>
                   <button className="btn-ghost" onClick={() => moveUp(id)} aria-label={`↑ ${s.name}`}>
                     ↑
@@ -141,7 +141,8 @@ export function Onboarding() {
             </div>
             <div className="card">
               <p>
-                <strong>{minutes} {t('min')}/day</strong> · Tier {previewTier}
+                <strong>{minutes} {t('min')}/day</strong> ·{' '}
+                {previewTier === 0 ? t('coverageSurvival') : t('coverageCore')}
               </p>
               <p className="dim small" style={{ marginTop: 8 }}>{t('planPreviewNote')}</p>
             </div>

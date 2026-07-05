@@ -2,7 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type { ContentItem, ReviewEvent } from '@ready/content-schema';
 import { useAppStore } from '../../../shared/stores/appStore.js';
 import { playItem } from '../../../shared/audio/tts.js';
-import { t } from '../../../shared/i18n/strings.js';
+import { L, t } from '../../../shared/i18n/strings.js';
 
 const SPRINT_SECONDS = 60;
 
@@ -34,9 +34,9 @@ export function NumberSprint({ onFinish }: { onFinish: (events: ReviewEvent[]) =
       .filter((n) => n.id !== target.id)
       .sort(() => Math.random() - 0.5)
       .slice(0, 3)
-      .map((n) => n.meaning);
+      .map((n) => L(n.meaning));
     setCurrent(target);
-    setOptions([...distractors, target.meaning].sort(() => Math.random() - 0.5));
+    setOptions([...distractors, L(target.meaning)].sort(() => Math.random() - 0.5));
     setLocked(false);
     void playItem(target);
   }, [numberItems]);
@@ -65,7 +65,7 @@ export function NumberSprint({ onFinish }: { onFinish: (events: ReviewEvent[]) =
   const answer = (meaning: string) => {
     if (!current || !app.user || locked) return;
     setLocked(true);
-    const pass = meaning === current.meaning;
+    const pass = meaning === L(current.meaning);
     events.current.push({
       id: crypto.randomUUID(),
       userId: app.user.id,

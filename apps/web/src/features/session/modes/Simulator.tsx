@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import type { DialogueNode, ReviewEvent, Situation } from '@ready/content-schema';
 import { useAppStore } from '../../../shared/stores/appStore.js';
 import { speak } from '../../../shared/audio/tts.js';
-import { t } from '../../../shared/i18n/strings.js';
+import { L, t } from '../../../shared/i18n/strings.js';
 import { useAppStore as useApp2 } from '../../../shared/stores/appStore.js';
 
 /**
@@ -98,7 +98,7 @@ export function Simulator({
   return (
     <>
       <div className="drill-card" style={{ justifyContent: 'flex-start', textAlign: 'left', gap: 10, maxHeight: '50vh', overflowY: 'auto' }}>
-        <p className="drill-label">{situation.name} — live</p>
+        <p className="drill-label">{L(situation.name)} — live</p>
         {transcript.map((line, i) => (
           <p key={i} className={line.who === 'npc' ? 'dim' : ''} style={{ fontWeight: line.who === 'user' ? 700 : 400 }}>
             {line.who === 'npc' ? '🗣 ' : 'You: '}
@@ -115,7 +115,7 @@ export function Simulator({
           node.options.map((opt, i) => (
             <button key={i} className="btn-secondary" onClick={() => choose(i)}>
               {opt.text}
-              <span className="dim small" style={{ display: 'block' }}>{opt.meaning}</span>
+              <span className="dim small" style={{ display: 'block' }}>{L(opt.meaning)}</span>
             </button>
           ))
         ) : (

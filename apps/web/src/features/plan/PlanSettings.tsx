@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useAppStore } from '../../shared/stores/appStore.js';
+import { L, t } from '../../shared/i18n/strings.js';
 import { TopBar } from '../../shared/ui/TopBar.js';
 import { googleSignInAvailable, mountGoogleButton } from '../../shared/auth/google.js';
 
@@ -36,7 +37,7 @@ export function PlanSettings() {
 
   return (
     <div className="screen">
-      <TopBar title="Plan & Settings" />
+      <TopBar title={t('planSettings')} />
       <div className="screen-scroll">
         <div className="card">
           <h3>Departure date</h3>
@@ -72,7 +73,8 @@ export function PlanSettings() {
 
         <h3 style={{ margin: '16px 0 8px' }}>Day-by-day</h3>
         {plan.days.map((d, i) => {
-          const focus = d.focusSituationId ? app.situationById.get(d.focusSituationId)?.name : null;
+          const focusName = d.focusSituationId ? app.situationById.get(d.focusSituationId)?.name : undefined;
+          const focus = focusName ? L(focusName) : null;
           return (
             <div className="list-row" key={d.date}>
               <span>
@@ -86,7 +88,7 @@ export function PlanSettings() {
           );
         })}
         <p className="dim small" style={{ marginTop: 12 }}>
-          Plan v{plan.version} · Tier {plan.tier} · pack it-IT
+          {t('planFootnote')}
         </p>
 
         <GoogleLink />

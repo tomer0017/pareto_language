@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react';
 import type { ContentItem } from '@ready/content-schema';
 import { useAppStore } from '../../shared/stores/appStore.js';
 import { isPhraseSolid } from '@ready/engine';
-import { t } from '../../shared/i18n/strings.js';
+import { L, t } from '../../shared/i18n/strings.js';
 import { playItem } from '../../shared/audio/tts.js';
 
 /** Phrases — the atomic production unit (PDF §6.1). Survival glue first, then per situation. */
@@ -15,12 +15,12 @@ export function Phrases() {
     if (!app.pack) return empty;
     const q = query.trim().toLowerCase();
     const match = (i: ContentItem) =>
-      q === '' || i.text.toLowerCase().includes(q) || i.meaning.toLowerCase().includes(q);
+      q === '' || i.text.toLowerCase().includes(q) || L(i.meaning).toLowerCase().includes(q);
     const phrases = app.pack.items.filter((i) => i.kind === 'phrase' && match(i));
     return {
       glue: phrases.filter((i) => i.situationIds.length === 0),
       bySituation: app.pack.situations
-        .map((s) => ({ name: s.name, items: phrases.filter((i) => i.situationIds.includes(s.id)) }))
+        .map((s) => ({ name: L(s.name), items: phrases.filter((i) => i.situationIds.includes(s.id)) }))
         .filter((g) => g.items.length > 0),
     };
   }, [app.pack, query]);
@@ -33,7 +33,7 @@ export function Phrases() {
           <p style={{ fontWeight: 700 }}>
             {item.text} {solid && <span style={{ color: 'var(--good)' }}>✓</span>}
           </p>
-          <p className="dim small">{item.meaning}</p>
+          <p className="dim small">{L(item.meaning)}</p>
         </div>
         <button className="btn-ghost" onClick={() => void playItem(item)} aria-label={t('play')}>
           🔊

@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import { confidencePct, useAppStore } from '../../shared/stores/appStore.js';
 import { previewMission, useSessionStore } from '../../shared/stores/sessionStore.js';
 import { languageInfo } from '../../shared/i18n/languages.js';
-import { t } from '../../shared/i18n/strings.js';
+import { L, t } from '../../shared/i18n/strings.js';
 import { tap } from '../../shared/ui/haptics.js';
 import { Ring } from '../../shared/ui/Ring.js';
 
@@ -103,7 +103,7 @@ export function Mission() {
                   <span className="conf-icon">{SITUATION_ICONS[s.icon] ?? '📍'}</span>
                   <Ring pct={pct} color={snap.state === 'fading' ? 'var(--warn)' : snap.state === 'ready' ? 'var(--good)' : 'var(--accent)'} />
                 </div>
-                <span className="conf-name">{s.name}</span>
+                <span className="conf-name">{L(s.name)}</span>
                 <span className={`badge badge-${snap.state}`}>{t(snap.state)}</span>
               </button>
             );
