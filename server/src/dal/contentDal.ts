@@ -1,4 +1,5 @@
 import type { Model } from 'mongoose';
+import type { ConceptDoc } from '../models/content.js';
 import {
   ContentPackModel,
   PhraseModel,
@@ -71,7 +72,7 @@ export const packDal = {
 };
 
 export const conceptDal = {
-  upsertMany: async (docs: import('../models/content.js').ConceptDoc[]): Promise<UpsertSummary> => {
+  upsertMany: async (docs: ConceptDoc[]): Promise<UpsertSummary> => {
     const { ConceptModel } = await import('../models/content.js');
     const summary: UpsertSummary = { inserted: 0, updated: 0, skipped: 0 };
     if (docs.length === 0) return summary;
