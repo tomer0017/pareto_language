@@ -1,0 +1,56 @@
+# Concept Layer — SAMPLE concepts (Sprint 3 foundation proof; NOT production content).
+# One canonical meaning each; realizations per learning language; gloss stored exactly once.
+concepts:
+  - id: concept.word.exit
+    kind: word
+    gloss: { en: "exit", he: "יציאה", es: "salida", fr: "sortie", it: "uscita", ar: "خروج" }
+    categories: [signs]
+    rof: 2
+    layer: 1
+    skillTarget: recognize
+    situationSlugs: [directions]
+    rolComponents: { travel: 0.9, coverage: 0.6, freq: 0.5, reuse: 0.3, learnability: 1.0 }
+    rolScore: 66
+    realizations:
+      en: { text: "exit", quality: ai_reviewed }
+      it: { text: "uscita", quality: native_reviewed }   # from the shipped it pack lineage
+      es: { text: "salida", quality: ai_generated }
+      fr: { text: "sortie", quality: ai_generated }
+      ar: { text: "مخرج", quality: draft, reviewNotes: "MSA; sign form vs spoken form needs native ruling" }
+  - id: concept.word.where
+    kind: word
+    gloss: { en: "where", he: "איפה", es: "dónde", fr: "où", it: "dove", ar: "أين" }
+    categories: [questions, directions]
+    rof: 2
+    layer: 1
+    skillTarget: recall
+    situationSlugs: [directions]
+    rolScore: 95
+    realizations:
+      en: { text: "where", quality: ai_reviewed }
+      it: { text: "dove", quality: ai_generated }
+      es: { text: "dónde", quality: ai_generated }
+  - id: concept.phrase.recovery.dont-understand
+    kind: phrase
+    gloss: { en: "Sorry, I don't understand.", he: "סליחה, אני לא מבין." }
+    categories: [recovery]
+    rof: 3
+    layer: 1
+    skillTarget: fluent
+    role: recovery
+    situationSlugs: []
+    rolScore: 100
+    realizations:
+      en: { text: "Sorry, I don't understand.", quality: ai_reviewed }
+      it: { text: "Scusi, non capisco.", quality: native_reviewed }
+      es: { text: "Perdón, no entiendo.", quality: ai_generated }
+  - id: concept.word.carburetor
+    kind: word
+    gloss: { en: "carburetor", he: "קרבורטור" }
+    categories: [never-teach-demo]
+    rof: 1
+    layer: 4
+    skillTarget: recognize
+    neverTeach: true            # translator-cheap: kept as a scored rejection record
+    rolScore: 2
+    realizations: {}

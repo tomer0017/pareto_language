@@ -43,6 +43,8 @@ export const ContentItemSchema = z.object({
   frequencyRank: z.number().int().positive().optional(),
   /** Phrases link to their likely replies (PDF §7.3). */
   replyIds: z.array(z.string().min(1)).optional(),
+  /** Canonical meaning this item realizes (Concept Layer, Sprint 3). Optional by design. */
+  conceptId: z.string().optional(),
 });
 export type ContentItem = z.infer<typeof ContentItemSchema>;
 
