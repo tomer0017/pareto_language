@@ -210,3 +210,13 @@ Every non-obvious technical decision, with one line of reasoning. Referenced by 
   per row (honesty declaration §6); Arabic translations are MSA and universally
   review-flagged. Drafts are NOT wired to pipeline or seeds — Stage A founder validation
   gates promotion.
+
+- **B-005 — Progressive corpus layers replace raw tier sizes.** Survive 100/50 → Transact
+  300/150 → Adapt 700/300 → Connect 1500/500 (words/phrases, cumulative), mapped to engine
+  tiers 0–3; capacities update at pack level, planner math unchanged. Each layer is defined
+  by the capability it unlocks, per docs/CORPUS-METHODOLOGY.md §2.
+- **B-006 — Confidence-over-knowledge codified in selection.** RoF (Return on Failure) is a
+  first-class score factor; hear-channel ≥ say-channel at equal impact; freeze-reducing
+  candidates win all ties. Known-By-Default becomes a measured, pair-specific system
+  (internationalism score + attested loanwords + ≥90% first-pass cohort demotion) with a
+  probe mechanism through Swipe Triage. Ten Never-Teach categories adopted.
