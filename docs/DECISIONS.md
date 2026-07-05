@@ -162,3 +162,19 @@ Every non-obvious technical decision, with one line of reasoning. Referenced by 
   convention, Moment model with survived-semantics, ROL methodology with the §7.8 pilot gate,
   quality workflow, and the epic roadmap. All future work must be consistent with it or amend
   it first (B-### entries).
+
+## Master Specification & amendments
+
+- **D043 — docs/MASTER-SPEC.md v1.0** extends the Bible with learning science (Capability
+  Stack + Ten Laws), the staged Intelligence Layer, Pareto mathematics (θ-threshold
+  economics), psychology journey, the CFIR metric tree, gated future stages, and the ranked
+  pre-mortem. Bible remains the constitution; where both speak, Bible governs structure and
+  the Master Spec governs method.
+- **B-001 — Recovery Move #8: The Graceful Translator.** Trained, dignified hand-over to the
+  phone translator as the explicit last move. Converts the existential competitor into the
+  safety net; also acts as a content filter (rare nouns score Impact≈0). Kit stays ≤8 moves.
+- **B-002 — Morning Micro-Review.** Opt-in 90-second next-morning review of yesterday's 3
+  weakest items (sleep-sandwich consolidation). Orchestration-plane session preset; no new
+  content type; no schema change.
+- **B-003 — Document freeze.** After MASTER-SPEC v1.0, no further strategy documents until
+  the Italian pilot (Bible §7.8) produces user telemetry. Amendments only via B-###.
