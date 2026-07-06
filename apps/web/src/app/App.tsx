@@ -3,6 +3,7 @@ import { useAppStore, type View } from '../shared/stores/appStore.js';
 import { t } from '../shared/i18n/strings.js';
 import { ErrorBoundary } from '../shared/ui/ErrorBoundary.js';
 import { BottomNav } from '../shared/ui/BottomNav.js';
+import { AudioDebug } from '../shared/ui/AudioDebug.js';
 import { Onboarding } from '../features/onboarding/Onboarding.js';
 import { Mission } from '../features/mission/Mission.js';
 import { Words } from '../features/phrasebook/Words.js';
@@ -70,6 +71,7 @@ export function App() {
         <Screen />
       </ErrorBoundary>
       {TAB_VIEWS.includes(view) && <BottomNav />}
+      {import.meta.env.DEV && <AudioDebug />}
     </>
   );
 }

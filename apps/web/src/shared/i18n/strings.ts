@@ -164,6 +164,9 @@ const en = {
   whichReply: 'What did they just say?',
   niceRecovery: 'Nice recovery — the conversation continues.',
   checkpointTag: 'Checkpoint',
+  testAudioBtn: '🔊 Tap to test sound',
+  audioReady: '🔊 Sound is on',
+  audioHint: 'READY speaks to you. Tap once to enable sound on this device.',
 } as const;
 
 const he: Partial<Record<StringKey, string>> = {
@@ -257,6 +260,9 @@ const he: Partial<Record<StringKey, string>> = {
   whichReply: 'מה הוא אמר עכשיו?',
   niceRecovery: 'התאוששות יפה — השיחה ממשיכה.',
   checkpointTag: 'נקודת ביקורת',
+  testAudioBtn: '🔊 הקש כדי לבדוק קול',
+  audioReady: '🔊 הקול פועל',
+  audioHint: 'READY מדבר אליך. הקש פעם אחת כדי להפעיל קול במכשיר הזה.',
 };
 
 const DICTS: Record<string, Partial<Record<StringKey, string>>> = { en, he };

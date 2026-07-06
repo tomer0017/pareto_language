@@ -1,7 +1,18 @@
 import { describe, expect, it } from 'vitest';
 import { BOOTCAMP_PLAN, PHASES } from './plan.js';
 import { DAY1 } from './day1.js';
+import { DAY2 } from './day2.js';
+import { DAY3 } from './day3.js';
 import { DAY4 } from './day4.js';
+import { DAY5 } from './day5.js';
+import { DAY6 } from './day6.js';
+import { DAY7 } from './day7.js';
+import { DAY8 } from './day8.js';
+import { DAY9 } from './day9.js';
+import { DAY10 } from './day10.js';
+
+// Pure-data registry (avoids importing the store, which loads the app/zustand chain).
+const DAYS: Record<number, BootcampDayContent> = { 1: DAY1, 2: DAY2, 3: DAY3, 4: DAY4, 5: DAY5, 6: DAY6, 7: DAY7, 8: DAY8, 9: DAY9, 10: DAY10 };
 import type { BootcampDayContent, BootcampDialogue } from './types.js';
 
 /**
@@ -96,6 +107,37 @@ describe('30-mission roadmap (Sprint 7 Part 1)', () => {
     for (const cp of BOOTCAMP_PLAN.filter((m) => m.checkpoint)) {
       expect(cp.targets.concepts).toBe(0);
       expect(cp.targets.phrases).toBe(0);
+    }
+  });
+});
+
+describe('all built missions are structurally sound', () => {
+  const built = Object.entries(DAYS);
+  it('has the Sprint-8 missions built (1-10)', () => {
+    expect(Object.keys(DAYS).map(Number).sort((a, b) => a - b)).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+  });
+  for (const [num, day] of built) {
+    it(`mission ${num} passes reference + dialogue-graph validation`, () => {
+      expect(validateMission(day)).toEqual([]);
+    });
+    it(`mission ${num} is dialogue-deep and ends with evidence + summary`, () => {
+      const kinds = day.steps.map((s) => s.kind);
+      expect(kinds).toContain('dialogue');
+      expect(kinds.filter((k) => k === 'receipt').length).toBeGreaterThanOrEqual(2);
+      expect(kinds.at(-1)).toBe('summary');
+      // Every 'you' choice node offers at least one recovery-tool escape hatch OR a valid line.
+      for (const d of Object.values(day.dialogues)) {
+        for (const n of d.nodes) {
+          if (n.choices) expect(n.choices.some((c) => c.correct)).toBe(true);
+        }
+      }
+    });
+  }
+  it('non-checkpoint missions train expected replies (comprehension-first)', () => {
+    for (const [num, day] of built) {
+      const n = Number(num);
+      if (n === 1 || n === 10) continue; // 1 = recovery-tools only; 10 = cold checkpoint
+      expect(day.steps.some((s) => s.kind === 'replies')).toBe(true);
     }
   });
 });

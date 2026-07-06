@@ -4,6 +4,8 @@ import { speak } from '../../shared/audio/tts.js';
 import { useAppStore } from '../../shared/stores/appStore.js';
 import { CheckPop } from '../../shared/ui/CheckPop.js';
 import { success, tap } from '../../shared/ui/haptics.js';
+import { getAudioDiag, subscribeAudioDiag, testAudio, unlockAudio } from '../../shared/audio/tts.js';
+import { useSyncExternalStore } from 'react';
 import { BOOTCAMP_PLAN, PHASES } from './plan.js';
 import { DAYS, useBootcampStore } from './bootcampStore.js';
 import type { BootcampItem, BootcampStep, BootcampDialogue } from './types.js';
@@ -40,6 +42,7 @@ function MissionMap() {
         <span className="dim small">{t('missionsProgress', { done, total: 30 })}</span>
       </div>
       <div className="screen-scroll no-nav">
+        <AudioEnable />
         {PHASES.map((phase) => (
           <div key={phase.n}>
             <h3 style={{ margin: '14px 0 8px' }}>{phase.icon} {L(phase.title)}</h3>
@@ -76,6 +79,29 @@ function MissionMap() {
         ))}
       </div>
     </div>
+  );
+}
+
+function AudioEnable() {
+  const diag = useSyncExternalStore(subscribeAudioDiag, getAudioDiag, getAudioDiag);
+  const [testing, setTesting] = useState(false);
+  return (
+    <button
+      className="card card-press"
+      style={{ width: '100%', textAlign: 'start', display: 'flex', alignItems: 'center', gap: 10, background: diag.unlocked ? 'var(--good-soft)' : 'var(--warn-soft)' }}
+      onClick={async () => {
+        unlockAudio();
+        setTesting(true);
+        await testAudio();
+        setTesting(false);
+      }}
+    >
+      <span style={{ fontSize: '1.4rem' }}>{diag.unlocked ? '🔊' : '🔈'}</span>
+      <span>
+        <p style={{ fontWeight: 700 }}>{testing ? t('listenFirst') : diag.unlocked ? t('audioReady') : t('testAudioBtn')}</p>
+        {!diag.unlocked && <p className="dim small">{t('audioHint')}</p>}
+      </span>
+    </button>
   );
 }
 

@@ -2,7 +2,15 @@ import { create } from 'zustand';
 import type { Outcome, PracticeMode, ReviewEvent } from '@ready/content-schema';
 import { useAppStore } from '../../shared/stores/appStore.js';
 import { DAY1 } from './day1.js';
+import { DAY2 } from './day2.js';
+import { DAY3 } from './day3.js';
 import { DAY4 } from './day4.js';
+import { DAY5 } from './day5.js';
+import { DAY6 } from './day6.js';
+import { DAY7 } from './day7.js';
+import { DAY8 } from './day8.js';
+import { DAY9 } from './day9.js';
+import { DAY10 } from './day10.js';
 import type { BootcampDayContent } from './types.js';
 
 /**
@@ -13,7 +21,7 @@ import type { BootcampDayContent } from './types.js';
  * new day = new data file + one line in DAYS. Zero new code.
  */
 
-export const DAYS: Record<number, BootcampDayContent> = { 1: DAY1, 4: DAY4 };
+export const DAYS: Record<number, BootcampDayContent> = { 1: DAY1, 2: DAY2, 3: DAY3, 4: DAY4, 5: DAY5, 6: DAY6, 7: DAY7, 8: DAY8, 9: DAY9, 10: DAY10 };
 
 interface BootcampProgress {
   completedDays: number[];
