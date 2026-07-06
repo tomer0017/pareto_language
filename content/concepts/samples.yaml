@@ -30,20 +30,7 @@ concepts:
       en: { text: "where", quality: ai_reviewed }
       it: { text: "dove", quality: ai_generated }
       es: { text: "dónde", quality: ai_generated }
-  - id: concept.phrase.recovery.dont-understand
-    kind: phrase
-    gloss: { en: "Sorry, I don't understand.", he: "סליחה, אני לא מבין." }
-    categories: [recovery]
-    rof: 3
-    layer: 1
-    skillTarget: fluent
-    role: recovery
-    situationSlugs: []
-    rolScore: 100
-    realizations:
-      en: { text: "Sorry, I don't understand.", quality: ai_reviewed }
-      it: { text: "Scusi, non capisco.", quality: native_reviewed }
-      es: { text: "Perdón, no entiendo.", quality: ai_generated }
+  # recovery.dont-understand moved to missions-core.yaml (production recovery kit)
   - id: concept.word.carburetor
     kind: word
     gloss: { en: "carburetor", he: "קרבורטור" }

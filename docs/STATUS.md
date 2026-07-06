@@ -176,3 +176,20 @@ beats; Expected Replies as a first-class comprehension step. Mission 1 rebuilt i
 Mission 4 "Coffee Shop" built as the depth exemplar (full barista question-chain). Mission
 Complete screen drives the one-more-mission loop. 121 tests green incl. dialogue-graph
 validators; typecheck/lint/build/smoke pass.
+
+---
+
+## Sprint 8 — Production Content Acceleration (2026-07-07)
+
+Chrome audio fixed at the TRUE root (D056): the blocker was Chrome's autoplay/gesture-unlock
+policy, not the Sprint-7 cancel/speak race — the prior setTimeout defer had made it worse.
+Engine now primed inside the first user gesture + explicit unlock on Start, with a dev-only
+audio diagnostics panel, a Test Audio button, an always-visible "enable sound" card on the
+mission map, and never-silent fallbacks. Missions 2–10 built as pure data on the single Mission
+player (Introduce Myself, Numbers & Money, Restaurant, Directions, Taxi, Hotel Check-in,
+Shopping, Arrival-Day checkpoint): listening-first tools, Expected-Replies comprehension,
+branching recovery-beat dialogue trees, off-script cold opens, evidence receipts. 32 mission
+concepts (recovery kit + core say-phrases + expected replies) seeded idempotently through the
+pipeline into Mongo (35 total incl. samples) with English playable and es/fr/it/ar honest
+DRAFT realizations flagged for native review. Typecheck 0 / lint clean / 143 tests / build /
+smoke all green; seed reruns idempotent (0 inserted, 35 updated).

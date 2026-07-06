@@ -1,0 +1,473 @@
+# Mission concepts — canonical meanings behind the Bootcamp missions (Sprint 8).
+# English realization is playable (ai_reviewed); es/fr/it/ar are DRAFT machine-assisted
+# translations, each flagged for native review. No fake "native_reviewed". Seeded via the
+# pipeline (npm run seed:concepts / seed:all) — idempotent upsert by concept id.
+concepts:
+  # ── Recovery Kit (Mission 1) — RoF 3, Survive layer ──
+  - id: concept.phrase.recovery.dont-understand
+    kind: phrase
+    gloss: { en: "Sorry, I don't understand.", he: "סליחה, אני לא מבין." }
+    categories: [recovery]
+    rof: 3
+    layer: 1
+    skillTarget: fluent
+    role: recovery
+    realizations:
+      en: { text: "Sorry, I don't understand.", quality: ai_reviewed }
+      es: { text: "Perdón, no entiendo.", quality: draft, reviewNotes: "MT draft — native review needed" }
+      fr: { text: "Désolé, je ne comprends pas.", quality: draft, reviewNotes: "MT draft — native review needed" }
+      it: { text: "Scusi, non capisco.", quality: draft, reviewNotes: "MT draft — native review needed" }
+      ar: { text: "عذراً، لا أفهم.", quality: draft, reviewNotes: "MSA draft — dialect + register need native review" }
+  - id: concept.phrase.recovery.repeat
+    kind: phrase
+    gloss: { en: "Can you repeat that?", he: "אפשר לחזור על זה?" }
+    categories: [recovery]
+    rof: 3
+    layer: 1
+    skillTarget: fluent
+    role: recovery
+    realizations:
+      en: { text: "Can you repeat that?", quality: ai_reviewed }
+      es: { text: "¿Puede repetirlo?", quality: draft, reviewNotes: "MT draft — native review needed" }
+      fr: { text: "Pouvez-vous répéter ?", quality: draft, reviewNotes: "MT draft — native review needed" }
+      it: { text: "Può ripetere?", quality: draft, reviewNotes: "MT draft — native review needed" }
+      ar: { text: "هل يمكنك التكرار؟", quality: draft, reviewNotes: "MSA draft — native review needed" }
+  - id: concept.phrase.recovery.slowly
+    kind: phrase
+    gloss: { en: "Please speak slowly.", he: "דבר לאט, בבקשה." }
+    categories: [recovery]
+    rof: 3
+    layer: 1
+    skillTarget: fluent
+    role: recovery
+    realizations:
+      en: { text: "Please speak slowly.", quality: ai_reviewed }
+      es: { text: "Hable despacio, por favor.", quality: draft, reviewNotes: "MT draft — native review needed" }
+      fr: { text: "Parlez lentement, s'il vous plaît.", quality: draft, reviewNotes: "MT draft — native review needed" }
+      it: { text: "Parli lentamente, per favore.", quality: draft, reviewNotes: "MT draft — native review needed" }
+      ar: { text: "تكلم ببطء من فضلك.", quality: draft, reviewNotes: "MSA draft — native review needed" }
+  - id: concept.phrase.recovery.show-me
+    kind: phrase
+    gloss: { en: "Can you show me?", he: "אתה יכול להראות לי?" }
+    categories: [recovery]
+    rof: 2
+    layer: 1
+    skillTarget: fluent
+    role: recovery
+    realizations:
+      en: { text: "Can you show me?", quality: ai_reviewed }
+      es: { text: "¿Me lo puede mostrar?", quality: draft, reviewNotes: "MT draft — native review needed" }
+      fr: { text: "Pouvez-vous me montrer ?", quality: draft, reviewNotes: "MT draft — native review needed" }
+      it: { text: "Può mostrarmi?", quality: draft, reviewNotes: "MT draft — native review needed" }
+      ar: { text: "هل يمكنك أن تريني؟", quality: draft, reviewNotes: "MSA draft — native review needed" }
+  - id: concept.phrase.recovery.one-moment
+    kind: phrase
+    gloss: { en: "One moment, please.", he: "רגע אחד, בבקשה." }
+    categories: [recovery]
+    rof: 2
+    layer: 1
+    skillTarget: fluent
+    role: recovery
+    realizations:
+      en: { text: "One moment, please.", quality: ai_reviewed }
+      es: { text: "Un momento, por favor.", quality: draft, reviewNotes: "MT draft — native review needed" }
+      fr: { text: "Un instant, s'il vous plaît.", quality: draft, reviewNotes: "MT draft — native review needed" }
+      it: { text: "Un attimo, per favore.", quality: draft, reviewNotes: "MT draft — native review needed" }
+      ar: { text: "لحظة من فضلك.", quality: draft, reviewNotes: "MSA draft — native review needed" }
+  - id: concept.phrase.recovery.thank-you
+    kind: phrase
+    gloss: { en: "Thank you!", he: "תודה!" }
+    categories: [recovery, social]
+    rof: 2
+    layer: 1
+    skillTarget: fluent
+    role: recovery
+    realizations:
+      en: { text: "Thank you!", quality: ai_reviewed }
+      es: { text: "¡Gracias!", quality: draft, reviewNotes: "MT draft — native review needed" }
+      fr: { text: "Merci !", quality: draft, reviewNotes: "MT draft — native review needed" }
+      it: { text: "Grazie!", quality: draft, reviewNotes: "MT draft — native review needed" }
+      ar: { text: "شكراً!", quality: draft, reviewNotes: "MSA draft — native review needed" }
+  - id: concept.phrase.recovery.sorry
+    kind: phrase
+    gloss: { en: "Sorry!", he: "סליחה!" }
+    categories: [recovery, social]
+    rof: 2
+    layer: 1
+    skillTarget: fluent
+    role: recovery
+    realizations:
+      en: { text: "Sorry!", quality: ai_reviewed }
+      es: { text: "¡Perdón!", quality: draft, reviewNotes: "MT draft — native review needed" }
+      fr: { text: "Pardon !", quality: draft, reviewNotes: "MT draft — native review needed" }
+      it: { text: "Scusi!", quality: draft, reviewNotes: "MT draft — native review needed" }
+      ar: { text: "آسف!", quality: draft, reviewNotes: "MSA draft — native review needed" }
+
+  # ── Mission 2 · Introduce Myself (say + hear) ──
+  - id: concept.phrase.intro.my-name-is
+    kind: phrase
+    gloss: { en: "My name is…", he: "קוראים לי…" }
+    categories: [social, intro]
+    rof: 2
+    layer: 1
+    skillTarget: fluent
+    role: say
+    isOpener: true
+    realizations:
+      en: { text: "My name is…", quality: ai_reviewed }
+      es: { text: "Me llamo…", quality: draft, reviewNotes: "MT draft — native review needed" }
+      fr: { text: "Je m'appelle…", quality: draft, reviewNotes: "MT draft — native review needed" }
+      it: { text: "Mi chiamo…", quality: draft, reviewNotes: "MT draft — native review needed" }
+      ar: { text: "اسمي…", quality: draft, reviewNotes: "MSA draft — native review needed" }
+  - id: concept.phrase.intro.nice-to-meet-you
+    kind: phrase
+    gloss: { en: "Nice to meet you.", he: "נעים להכיר." }
+    categories: [social, intro]
+    rof: 2
+    layer: 1
+    skillTarget: fluent
+    role: say
+    realizations:
+      en: { text: "Nice to meet you.", quality: ai_reviewed }
+      es: { text: "Mucho gusto.", quality: draft, reviewNotes: "MT draft — native review needed" }
+      fr: { text: "Enchanté.", quality: draft, reviewNotes: "MT draft — gender agreement (enchanté/e) needs native review" }
+      it: { text: "Piacere.", quality: draft, reviewNotes: "MT draft — native review needed" }
+      ar: { text: "تشرفنا.", quality: draft, reviewNotes: "MSA draft — native review needed" }
+  - id: concept.phrase.intro.i-am-from
+    kind: phrase
+    gloss: { en: "I'm from…", he: "אני מ…" }
+    categories: [social, intro]
+    rof: 2
+    layer: 1
+    skillTarget: fluent
+    role: say
+    realizations:
+      en: { text: "I'm from…", quality: ai_reviewed }
+      es: { text: "Soy de…", quality: draft, reviewNotes: "MT draft — native review needed" }
+      fr: { text: "Je viens de…", quality: draft, reviewNotes: "MT draft — native review needed" }
+      it: { text: "Vengo da…", quality: draft, reviewNotes: "MT draft — native review needed" }
+      ar: { text: "أنا من…", quality: draft, reviewNotes: "MSA draft — native review needed" }
+  - id: concept.phrase.intro.do-you-speak-english
+    kind: phrase
+    gloss: { en: "Do you speak English?", he: "אתה מדבר אנגלית?" }
+    categories: [social, recovery]
+    rof: 3
+    layer: 1
+    skillTarget: fluent
+    role: say
+    realizations:
+      en: { text: "Do you speak English?", quality: ai_reviewed }
+      es: { text: "¿Habla inglés?", quality: draft, reviewNotes: "MT draft — native review needed" }
+      fr: { text: "Parlez-vous anglais ?", quality: draft, reviewNotes: "MT draft — native review needed" }
+      it: { text: "Parla inglese?", quality: draft, reviewNotes: "MT draft — native review needed" }
+      ar: { text: "هل تتحدث الإنجليزية؟", quality: draft, reviewNotes: "MSA draft — native review needed" }
+  - id: concept.reply.intro.where-are-you-from
+    kind: reply
+    gloss: { en: "Where are you from?", he: "מאיפה אתה?" }
+    categories: [social, intro]
+    rof: 2
+    layer: 1
+    skillTarget: recognize
+    role: hear
+    realizations:
+      en: { text: "Where are you from?", quality: ai_reviewed }
+      es: { text: "¿De dónde es?", quality: draft, reviewNotes: "MT draft — native review needed" }
+      fr: { text: "Vous venez d'où ?", quality: draft, reviewNotes: "MT draft — native review needed" }
+      it: { text: "Di dov'è?", quality: draft, reviewNotes: "MT draft — native review needed" }
+      ar: { text: "من أين أنت؟", quality: draft, reviewNotes: "MSA draft — native review needed" }
+
+  # ── Mission 3 · Numbers & Money ──
+  - id: concept.phrase.money.how-much
+    kind: phrase
+    gloss: { en: "How much is it?", he: "כמה זה עולה?" }
+    categories: [money, shopping]
+    rof: 3
+    layer: 1
+    skillTarget: fluent
+    role: say
+    realizations:
+      en: { text: "How much is it?", quality: ai_reviewed }
+      es: { text: "¿Cuánto es?", quality: draft, reviewNotes: "MT draft — native review needed" }
+      fr: { text: "C'est combien ?", quality: draft, reviewNotes: "MT draft — native review needed" }
+      it: { text: "Quanto costa?", quality: draft, reviewNotes: "MT draft — native review needed" }
+      ar: { text: "بكم هذا؟", quality: draft, reviewNotes: "MSA draft — native review needed" }
+  - id: concept.phrase.money.card-or-cash
+    kind: phrase
+    gloss: { en: "Can I pay by card?", he: "אפשר לשלם בכרטיס?" }
+    categories: [money]
+    rof: 3
+    layer: 1
+    skillTarget: fluent
+    role: say
+    realizations:
+      en: { text: "Can I pay by card?", quality: ai_reviewed }
+      es: { text: "¿Puedo pagar con tarjeta?", quality: draft, reviewNotes: "MT draft — native review needed" }
+      fr: { text: "Je peux payer par carte ?", quality: draft, reviewNotes: "MT draft — native review needed" }
+      it: { text: "Posso pagare con la carta?", quality: draft, reviewNotes: "MT draft — native review needed" }
+      ar: { text: "هل يمكنني الدفع بالبطاقة؟", quality: draft, reviewNotes: "MSA draft — native review needed" }
+  - id: concept.reply.money.thats-x-euros
+    kind: reply
+    gloss: { en: "That's ten euros.", he: "זה עשרה יורו." }
+    categories: [money]
+    rof: 2
+    layer: 1
+    skillTarget: recognize
+    role: hear
+    realizations:
+      en: { text: "That's ten euros.", quality: ai_reviewed }
+      es: { text: "Son diez euros.", quality: draft, reviewNotes: "MT draft — native review needed" }
+      fr: { text: "Ça fait dix euros.", quality: draft, reviewNotes: "MT draft — native review needed" }
+      it: { text: "Sono dieci euro.", quality: draft, reviewNotes: "MT draft — native review needed" }
+      ar: { text: "المجموع عشرة يورو.", quality: draft, reviewNotes: "MSA draft — currency varies by country; native review needed" }
+
+  # ── Mission 5 · Restaurant Basics ──
+  - id: concept.phrase.restaurant.table-for-two
+    kind: phrase
+    gloss: { en: "A table for two, please.", he: "שולחן לשניים, בבקשה." }
+    categories: [restaurant]
+    rof: 2
+    layer: 1
+    skillTarget: fluent
+    role: say
+    isOpener: true
+    realizations:
+      en: { text: "A table for two, please.", quality: ai_reviewed }
+      es: { text: "Una mesa para dos, por favor.", quality: draft, reviewNotes: "MT draft — native review needed" }
+      fr: { text: "Une table pour deux, s'il vous plaît.", quality: draft, reviewNotes: "MT draft — native review needed" }
+      it: { text: "Un tavolo per due, per favore.", quality: draft, reviewNotes: "MT draft — native review needed" }
+      ar: { text: "طاولة لشخصين من فضلك.", quality: draft, reviewNotes: "MSA draft — native review needed" }
+  - id: concept.phrase.restaurant.ill-have-this
+    kind: phrase
+    gloss: { en: "I'll have this, please.", he: "אני אקח את זה, בבקשה." }
+    categories: [restaurant]
+    rof: 3
+    layer: 1
+    skillTarget: fluent
+    role: say
+    realizations:
+      en: { text: "I'll have this, please.", quality: ai_reviewed }
+      es: { text: "Quiero esto, por favor.", quality: draft, reviewNotes: "MT draft — native review needed" }
+      fr: { text: "Je vais prendre ça, s'il vous plaît.", quality: draft, reviewNotes: "MT draft — native review needed" }
+      it: { text: "Prendo questo, per favore.", quality: draft, reviewNotes: "MT draft — native review needed" }
+      ar: { text: "سآخذ هذا من فضلك.", quality: draft, reviewNotes: "MSA draft — native review needed" }
+  - id: concept.phrase.restaurant.bill-please
+    kind: phrase
+    gloss: { en: "The bill, please.", he: "החשבון, בבקשה." }
+    categories: [restaurant, money]
+    rof: 3
+    layer: 1
+    skillTarget: fluent
+    role: say
+    realizations:
+      en: { text: "The bill, please.", quality: ai_reviewed }
+      es: { text: "La cuenta, por favor.", quality: draft, reviewNotes: "MT draft — native review needed" }
+      fr: { text: "L'addition, s'il vous plaît.", quality: draft, reviewNotes: "MT draft — native review needed" }
+      it: { text: "Il conto, per favore.", quality: draft, reviewNotes: "MT draft — native review needed" }
+      ar: { text: "الحساب من فضلك.", quality: draft, reviewNotes: "MSA draft — native review needed" }
+  - id: concept.reply.restaurant.still-or-sparkling
+    kind: reply
+    gloss: { en: "Still or sparkling?", he: "מים רגילים או מוגזים?" }
+    categories: [restaurant]
+    rof: 2
+    layer: 1
+    skillTarget: recognize
+    role: hear
+    realizations:
+      en: { text: "Still or sparkling?", quality: ai_reviewed }
+      es: { text: "¿Sin gas o con gas?", quality: draft, reviewNotes: "MT draft — native review needed" }
+      fr: { text: "Plate ou gazeuse ?", quality: draft, reviewNotes: "MT draft — native review needed" }
+      it: { text: "Naturale o frizzante?", quality: draft, reviewNotes: "MT draft — native review needed" }
+      ar: { text: "ماء عادي أم فوار؟", quality: draft, reviewNotes: "MSA draft — native review needed" }
+
+  # ── Mission 6 · Directions ──
+  - id: concept.phrase.directions.where-is
+    kind: phrase
+    gloss: { en: "Where is the…?", he: "איפה ה…?" }
+    categories: [directions]
+    rof: 3
+    layer: 1
+    skillTarget: fluent
+    role: say
+    isOpener: true
+    realizations:
+      en: { text: "Where is the…?", quality: ai_reviewed }
+      es: { text: "¿Dónde está el/la…?", quality: draft, reviewNotes: "MT draft — gendered article needs native review" }
+      fr: { text: "Où est le/la…?", quality: draft, reviewNotes: "MT draft — gendered article needs native review" }
+      it: { text: "Dov'è il/la…?", quality: draft, reviewNotes: "MT draft — gendered article needs native review" }
+      ar: { text: "أين…؟", quality: draft, reviewNotes: "MSA draft — native review needed" }
+  - id: concept.phrase.directions.is-it-far
+    kind: phrase
+    gloss: { en: "Is it far?", he: "זה רחוק?" }
+    categories: [directions]
+    rof: 2
+    layer: 1
+    skillTarget: fluent
+    role: say
+    realizations:
+      en: { text: "Is it far?", quality: ai_reviewed }
+      es: { text: "¿Está lejos?", quality: draft, reviewNotes: "MT draft — native review needed" }
+      fr: { text: "C'est loin ?", quality: draft, reviewNotes: "MT draft — native review needed" }
+      it: { text: "È lontano?", quality: draft, reviewNotes: "MT draft — native review needed" }
+      ar: { text: "هل هو بعيد؟", quality: draft, reviewNotes: "MSA draft — native review needed" }
+  - id: concept.reply.directions.on-the-right
+    kind: reply
+    gloss: { en: "It's on the right.", he: "זה מימין." }
+    categories: [directions]
+    rof: 2
+    layer: 1
+    skillTarget: recognize
+    role: hear
+    realizations:
+      en: { text: "It's on the right.", quality: ai_reviewed }
+      es: { text: "Está a la derecha.", quality: draft, reviewNotes: "MT draft — native review needed" }
+      fr: { text: "C'est à droite.", quality: draft, reviewNotes: "MT draft — native review needed" }
+      it: { text: "È a destra.", quality: draft, reviewNotes: "MT draft — native review needed" }
+      ar: { text: "على اليمين.", quality: draft, reviewNotes: "MSA draft — native review needed" }
+  - id: concept.reply.directions.go-straight
+    kind: reply
+    gloss: { en: "Go straight ahead.", he: "לך ישר." }
+    categories: [directions]
+    rof: 2
+    layer: 1
+    skillTarget: recognize
+    role: hear
+    realizations:
+      en: { text: "Go straight ahead.", quality: ai_reviewed }
+      es: { text: "Siga recto.", quality: draft, reviewNotes: "MT draft — native review needed" }
+      fr: { text: "Continuez tout droit.", quality: draft, reviewNotes: "MT draft — native review needed" }
+      it: { text: "Vada dritto.", quality: draft, reviewNotes: "MT draft — native review needed" }
+      ar: { text: "امشِ على طول.", quality: draft, reviewNotes: "MSA draft — dialectal alternative common; native review needed" }
+
+  # ── Mission 7 · Taxi ──
+  - id: concept.phrase.taxi.to-this-address
+    kind: phrase
+    gloss: { en: "To this address, please.", he: "לכתובת הזו, בבקשה." }
+    categories: [taxi, transit]
+    rof: 3
+    layer: 1
+    skillTarget: fluent
+    role: say
+    isOpener: true
+    realizations:
+      en: { text: "To this address, please.", quality: ai_reviewed }
+      es: { text: "A esta dirección, por favor.", quality: draft, reviewNotes: "MT draft — native review needed" }
+      fr: { text: "À cette adresse, s'il vous plaît.", quality: draft, reviewNotes: "MT draft — native review needed" }
+      it: { text: "A questo indirizzo, per favore.", quality: draft, reviewNotes: "MT draft — native review needed" }
+      ar: { text: "إلى هذا العنوان من فضلك.", quality: draft, reviewNotes: "MSA draft — native review needed" }
+  - id: concept.phrase.taxi.stop-here
+    kind: phrase
+    gloss: { en: "Stop here, please.", he: "עצור כאן, בבקשה." }
+    categories: [taxi, transit]
+    rof: 3
+    layer: 1
+    skillTarget: fluent
+    role: say
+    realizations:
+      en: { text: "Stop here, please.", quality: ai_reviewed }
+      es: { text: "Pare aquí, por favor.", quality: draft, reviewNotes: "MT draft — native review needed" }
+      fr: { text: "Arrêtez-vous ici, s'il vous plaît.", quality: draft, reviewNotes: "MT draft — native review needed" }
+      it: { text: "Si fermi qui, per favore.", quality: draft, reviewNotes: "MT draft — native review needed" }
+      ar: { text: "قف هنا من فضلك.", quality: draft, reviewNotes: "MSA draft — native review needed" }
+  - id: concept.reply.taxi.where-to
+    kind: reply
+    gloss: { en: "Where to?", he: "לאן?" }
+    categories: [taxi, transit]
+    rof: 2
+    layer: 1
+    skillTarget: recognize
+    role: hear
+    realizations:
+      en: { text: "Where to?", quality: ai_reviewed }
+      es: { text: "¿A dónde?", quality: draft, reviewNotes: "MT draft — native review needed" }
+      fr: { text: "Où allez-vous ?", quality: draft, reviewNotes: "MT draft — native review needed" }
+      it: { text: "Dove andiamo?", quality: draft, reviewNotes: "MT draft — native review needed" }
+      ar: { text: "إلى أين؟", quality: draft, reviewNotes: "MSA draft — native review needed" }
+
+  # ── Mission 8 · Hotel Check-in ──
+  - id: concept.phrase.hotel.i-have-a-reservation
+    kind: phrase
+    gloss: { en: "I have a reservation.", he: "יש לי הזמנה." }
+    categories: [hotel]
+    rof: 3
+    layer: 1
+    skillTarget: fluent
+    role: say
+    isOpener: true
+    realizations:
+      en: { text: "I have a reservation.", quality: ai_reviewed }
+      es: { text: "Tengo una reserva.", quality: draft, reviewNotes: "MT draft — native review needed" }
+      fr: { text: "J'ai une réservation.", quality: draft, reviewNotes: "MT draft — native review needed" }
+      it: { text: "Ho una prenotazione.", quality: draft, reviewNotes: "MT draft — native review needed" }
+      ar: { text: "لديّ حجز.", quality: draft, reviewNotes: "MSA draft — native review needed" }
+  - id: concept.phrase.hotel.what-time-checkout
+    kind: phrase
+    gloss: { en: "What time is checkout?", he: "באיזו שעה הצ'ק-אאוט?" }
+    categories: [hotel]
+    rof: 2
+    layer: 1
+    skillTarget: fluent
+    role: say
+    realizations:
+      en: { text: "What time is checkout?", quality: ai_reviewed }
+      es: { text: "¿A qué hora es la salida?", quality: draft, reviewNotes: "MT draft — native review needed" }
+      fr: { text: "À quelle heure est le départ ?", quality: draft, reviewNotes: "MT draft — native review needed" }
+      it: { text: "A che ora è il check-out?", quality: draft, reviewNotes: "MT draft — native review needed" }
+      ar: { text: "متى موعد المغادرة؟", quality: draft, reviewNotes: "MSA draft — native review needed" }
+  - id: concept.reply.hotel.passport-please
+    kind: reply
+    gloss: { en: "Your passport, please.", he: "הדרכון שלך, בבקשה." }
+    categories: [hotel, border]
+    rof: 3
+    layer: 1
+    skillTarget: recognize
+    role: hear
+    realizations:
+      en: { text: "Your passport, please.", quality: ai_reviewed }
+      es: { text: "Su pasaporte, por favor.", quality: draft, reviewNotes: "MT draft — native review needed" }
+      fr: { text: "Votre passeport, s'il vous plaît.", quality: draft, reviewNotes: "MT draft — native review needed" }
+      it: { text: "Il passaporto, per favore.", quality: draft, reviewNotes: "MT draft — native review needed" }
+      ar: { text: "جواز سفرك من فضلك.", quality: draft, reviewNotes: "MSA draft — native review needed" }
+
+  # ── Mission 9 · Shopping ──
+  - id: concept.phrase.shopping.can-i-try-it-on
+    kind: phrase
+    gloss: { en: "Can I try it on?", he: "אפשר למדוד?" }
+    categories: [shopping]
+    rof: 2
+    layer: 1
+    skillTarget: fluent
+    role: say
+    realizations:
+      en: { text: "Can I try it on?", quality: ai_reviewed }
+      es: { text: "¿Me lo puedo probar?", quality: draft, reviewNotes: "MT draft — native review needed" }
+      fr: { text: "Je peux l'essayer ?", quality: draft, reviewNotes: "MT draft — native review needed" }
+      it: { text: "Posso provarlo?", quality: draft, reviewNotes: "MT draft — native review needed" }
+      ar: { text: "هل يمكنني تجربته؟", quality: draft, reviewNotes: "MSA draft — native review needed" }
+  - id: concept.phrase.shopping.ill-take-it
+    kind: phrase
+    gloss: { en: "I'll take it.", he: "אני אקח את זה." }
+    categories: [shopping, money]
+    rof: 2
+    layer: 1
+    skillTarget: fluent
+    role: say
+    realizations:
+      en: { text: "I'll take it.", quality: ai_reviewed }
+      es: { text: "Me lo llevo.", quality: draft, reviewNotes: "MT draft — native review needed" }
+      fr: { text: "Je le prends.", quality: draft, reviewNotes: "MT draft — native review needed" }
+      it: { text: "Lo prendo.", quality: draft, reviewNotes: "MT draft — native review needed" }
+      ar: { text: "سآخذه.", quality: draft, reviewNotes: "MSA draft — native review needed" }
+  - id: concept.reply.shopping.what-size
+    kind: reply
+    gloss: { en: "What size?", he: "איזו מידה?" }
+    categories: [shopping]
+    rof: 2
+    layer: 1
+    skillTarget: recognize
+    role: hear
+    realizations:
+      en: { text: "What size?", quality: ai_reviewed }
+      es: { text: "¿Qué talla?", quality: draft, reviewNotes: "MT draft — native review needed" }
+      fr: { text: "Quelle taille ?", quality: draft, reviewNotes: "MT draft — native review needed" }
+      it: { text: "Che taglia?", quality: draft, reviewNotes: "MT draft — native review needed" }
+      ar: { text: "أي مقاس؟", quality: draft, reviewNotes: "MSA draft — native review needed" }

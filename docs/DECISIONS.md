@@ -259,3 +259,29 @@ Every non-obvious technical decision, with one line of reasoning. Referenced by 
 - **D055 — The one-more-mission loop**: the Mission Complete screen's primary CTA starts the
   next built mission directly (breathing button); the map shows phases + honest progress
   (n/30) and confidence-gain per mission instead of metrics.
+- **D056 — Chrome audio real root cause: autoplay/gesture-unlock policy** (supersedes the D051
+  theory). The cancel/speak race was NOT why Chrome stayed silent — Chrome blocks
+  `speechSynthesis.speak()` until the engine is unlocked by a speak() that runs INSIDE a real
+  user gesture. Our drill/dialogue audio fires from effects and promise chains, so every
+  utterance was refused; Safari has no such policy, so it always worked. The D051 `setTimeout`
+  defer made it strictly worse (moved the first speak further from any gesture). Fix: prime the
+  engine on the first pointer/key/touch gesture (silent volume-0 utterance) + an explicit
+  unlock on Start; then programmatic speak works for the session. Backed by a dev-only
+  diagnostics panel (browser/voices/selected voice/lang/last request/last error/unlocked) and a
+  Test Audio button + always-visible "enable sound" card on the mission map. Never-silent
+  fallbacks: missing voice → browser default, TTS unavailable/throws → drill continues text-only
+  with a logged reason.
+- **D057 — Missions 2–10 are pure data, one player.** Introduce Myself, Numbers & Money,
+  Restaurant, Directions, Taxi, Hotel Check-in, Shopping and the Arrival-Day checkpoint were
+  authored as `BootcampDayContent` files against the Mission-1/4 pattern — no new player code.
+  Each carries listening-first tools, an Expected-Replies comprehension step (except the
+  tools-only survival mission and the cold checkpoint), a branching dialogue tree with recovery
+  beats, an off-script cold open, and ≥2 evidence receipts. Dialogue-graph + reference
+  validators run over all ten in the test suite.
+- **D058 — Mission phrases/replies seeded as Concepts with honest draft multilingual.** The
+  survival recovery kit plus the core say-phrases and expected replies became 32 canonical
+  Concepts in `content/concepts/missions-core.yaml` (idempotent seed by id via the existing
+  pipeline). English is playable (`ai_reviewed`); es/fr/it/ar are machine-assisted `draft`
+  realizations, each with a `reviewNotes` flag — no fabricated `native_reviewed`. The one
+  shipped-lineage Italian recovery phrase moved out of the non-production samples file into this
+  production set.

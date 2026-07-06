@@ -15,7 +15,7 @@ function loadSamples(): Concept[] {
 describe('Concept Layer (Sprint 3)', () => {
   it('sample concepts validate against the schema', () => {
     const concepts = loadSamples();
-    expect(concepts.length).toBe(4);
+    expect(concepts.length).toBe(3); // recovery.dont-understand moved to production missions-core.yaml
     expect(concepts[0]!.gloss.he).toBe('יציאה');
   });
 
