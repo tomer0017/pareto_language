@@ -164,3 +164,15 @@ Day 1 fully playable in Hebrew UI (~20 min): welcome → briefing → stuck-trav
 game → dialogue (play, choice points) → fast-sentence confidence ambush → evidence receipts →
 day summary + capability card. Real events into the log; resume + replay; walkthrough fixes
 (speech-complete advancing, StrictMode-safe transcript, clear ambush CTA). 113 tests green.
+
+---
+
+## Sprint 7 — READY Missions (2026-07-06)
+
+Chrome audio fixed at the root (cancel/speak race + utterance GC + voice priming — D051).
+Bootcamp redesigned into 30 missions / 5 phases with cold checkpoints (plan data + map UI).
+Deep Moment architecture: dialogue TREES rendered one line at a time with branching recovery
+beats; Expected Replies as a first-class comprehension step. Mission 1 rebuilt interactive;
+Mission 4 "Coffee Shop" built as the depth exemplar (full barista question-chain). Mission
+Complete screen drives the one-more-mission loop. 121 tests green incl. dialogue-graph
+validators; typecheck/lint/build/smoke pass.

@@ -1,29 +1,31 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { L, t } from '../../shared/i18n/strings.js';
 import { speak } from '../../shared/audio/tts.js';
 import { useAppStore } from '../../shared/stores/appStore.js';
 import { CheckPop } from '../../shared/ui/CheckPop.js';
 import { success, tap } from '../../shared/ui/haptics.js';
-import { BOOTCAMP_PLAN } from './plan.js';
+import { BOOTCAMP_PLAN, PHASES } from './plan.js';
 import { DAYS, useBootcampStore } from './bootcampStore.js';
-import type { BootcampItem, BootcampStep, DialogueLine } from './day1.js';
+import type { BootcampItem, BootcampStep, BootcampDialogue } from './types.js';
 
 /**
- * Bootcamp (Sprint 6): landing (20-day map) + the generic day player.
- * The player renders steps from data — days 2–20 need only content files.
- * Every screen answers: does this reduce fear? (Part 9)
+ * READY Missions (Sprint 7): phase map + the generic MissionPlayer.
+ * Dialogues render one line at a time (visual novel) — the user never sees the
+ * conversation in advance; wrong choices branch through recovery beats and continue.
+ * Every screen answers: does this reduce fear?
  */
 
 export function Bootcamp() {
   const activeDay = useBootcampStore((s) => s.activeDay);
-  return activeDay === null ? <BootcampLanding /> : <DayPlayer />;
+  return activeDay === null ? <MissionMap /> : <MissionPlayer />;
 }
 
-/* ── Landing: the 20-capability map ─────────────────────────────────────── */
+/* ── The map: 30 missions in 5 phases ───────────────────────────────────── */
 
-function BootcampLanding() {
+function MissionMap() {
   const app = useAppStore();
   const bc = useBootcampStore();
+  const done = bc.completedDays.length;
   return (
     <div className="screen">
       <div className="topbar">
@@ -31,45 +33,55 @@ function BootcampLanding() {
         <h2 style={{ margin: 0 }}>{t('bootcamp')}</h2>
         <span style={{ width: 44 }} />
       </div>
-      <p className="dim small" style={{ marginBottom: 12 }}>{t('bootcampSub')}</p>
-      <div className="screen-scroll no-nav">
-        <div className="stagger">
-          {BOOTCAMP_PLAN.map((d) => {
-            const built = d.day in DAYS;
-            const done = bc.completedDays.includes(d.day);
-            const resumable = (bc.stepIndex[String(d.day)] ?? 0) > 0 && !done;
-            return (
-              <button
-                key={d.day}
-                className="game-card card-press"
-                disabled={!built}
-                style={built ? undefined : { opacity: 0.45 }}
-                onClick={() => {
-                  tap();
-                  bc.startDay(d.day);
-                }}
-              >
-                <span className="game-icon" style={{ background: done ? 'var(--good)' : built ? 'var(--brand)' : 'var(--line)' }}>
-                  {done ? '✓' : d.day}
-                </span>
-                <span>
-                  <p style={{ fontWeight: 800 }}>{L(d.title)}</p>
-                  <p className="dim small">
-                    {done ? t('completed') : built ? (resumable ? t('continueDay', { n: d.day }) : `${d.minutes} ${t('min')} · ${t('startDay', { n: d.day })}`) : t('locked')}
-                  </p>
-                </span>
-              </button>
-            );
-          })}
+      <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
+        <div className="progress-track" style={{ flex: 1 }}>
+          <div className="progress-fill" style={{ width: `${(done / 30) * 100}%` }} />
         </div>
+        <span className="dim small">{t('missionsProgress', { done, total: 30 })}</span>
+      </div>
+      <div className="screen-scroll no-nav">
+        {PHASES.map((phase) => (
+          <div key={phase.n}>
+            <h3 style={{ margin: '14px 0 8px' }}>{phase.icon} {L(phase.title)}</h3>
+            {BOOTCAMP_PLAN.filter((m) => m.phase === phase.n).map((m) => {
+              const built = m.day in DAYS;
+              const isDone = bc.completedDays.includes(m.day);
+              const resumable = (bc.stepIndex[String(m.day)] ?? 0) > 0 && !isDone;
+              return (
+                <button
+                  key={m.day}
+                  className="game-card card-press"
+                  disabled={!built}
+                  style={built ? undefined : { opacity: 0.45 }}
+                  onClick={() => {
+                    tap();
+                    bc.startDay(m.day);
+                  }}
+                >
+                  <span className="game-icon" style={{ background: isDone ? 'var(--good)' : built ? 'var(--brand)' : 'var(--line)' }}>
+                    {isDone ? '✓' : m.day}
+                  </span>
+                  <span>
+                    <p style={{ fontWeight: 800 }}>
+                      {L(m.title)} {m.checkpoint && <span className="badge badge-fading">{t('checkpointTag')}</span>}
+                    </p>
+                    <p className="dim small">
+                      {isDone ? t('completed') : built ? (resumable ? t('continueDay', { n: m.day }) : `${m.minutes} ${t('min')} · ${L(m.confidenceGain)}`) : t('locked')}
+                    </p>
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+        ))}
       </div>
     </div>
   );
 }
 
-/* ── Day player: renders any day's steps ────────────────────────────────── */
+/* ── Mission player ─────────────────────────────────────────────────────── */
 
-function DayPlayer() {
+function MissionPlayer() {
   const bc = useBootcampStore();
   const [checkTrigger, setCheckTrigger] = useState(0);
   const day = bc.currentDay();
@@ -83,11 +95,7 @@ function DayPlayer() {
   };
   const advance = (): void => bc.next();
 
-  if (!step) {
-    // Past the last step (resume edge) — treat as summary.
-    return <SummaryStep />;
-  }
-
+  if (!step) return <SummaryStep />;
   const progress = Math.round((bc.index / day.steps.length) * 100);
 
   return (
@@ -95,7 +103,7 @@ function DayPlayer() {
       <CheckPop trigger={checkTrigger} />
       <div className="topbar">
         <button className="btn-ghost" onClick={() => bc.exit()}>{t('back')}</button>
-        <span className="chip">{t('day')} {day.day} · {L(day.title)}</span>
+        <span className="chip">{t('mission')} {day.day} · {L(day.title)}</span>
         <span style={{ width: 44 }} />
       </div>
       <div className="progress-track" style={{ marginBottom: 10 }}>
@@ -105,8 +113,9 @@ function DayPlayer() {
         {step.kind === 'talk' && <TalkStep step={step} onNext={advance} />}
         {step.kind === 'tool' && <ToolStep step={step} item={itemsById.get(step.itemId)!} onDone={() => { pop(); advance(); }} />}
         {step.kind === 'quiz' && <QuizStep step={step} itemsById={itemsById} onDone={(ok) => { if (ok) pop(); advance(); }} />}
+        {step.kind === 'replies' && <RepliesStep step={step} itemsById={itemsById} onDone={() => { pop(); advance(); }} />}
         {step.kind === 'swipe' && <SwipeStep itemIds={step.itemIds} itemsById={itemsById} onDone={() => { pop(); advance(); }} />}
-        {step.kind === 'dialogue' && <DialogueStep mode={step.mode} lines={day.dialogue} itemsById={itemsById} onDone={() => { pop(); advance(); }} />}
+        {step.kind === 'dialogue' && <DialogueStep dialogue={day.dialogues[step.dialogueId]!} onDone={() => { pop(); advance(); }} />}
         {step.kind === 'ambush' && <AmbushStep step={step} itemsById={itemsById} onDone={(ok) => { if (ok) pop(); advance(); }} />}
         {step.kind === 'receipt' && <ReceiptStep text={step.text} onNext={advance} />}
         {step.kind === 'summary' && <SummaryStep />}
@@ -134,7 +143,6 @@ function TalkStep({ step, onNext }: { step: Extract<BootcampStep, { kind: 'talk'
   );
 }
 
-/** Listening-first tool intro: hear → understand → say (Part 6 order, always). */
 function ToolStep({ step, item, onDone }: { step: Extract<BootcampStep, { kind: 'tool' }>; item: BootcampItem; onDone: () => void }) {
   const bc = useBootcampStore();
   const [phase, setPhase] = useState<'listen' | 'reveal' | 'say'>('listen');
@@ -148,19 +156,17 @@ function ToolStep({ step, item, onDone }: { step: Extract<BootcampStep, { kind: 
   return (
     <>
       <div className="drill-card">
-        <p className="drill-label">{t('toolOf', { i: step.index, n: step.total })}</p>
-        {phase === 'listen' && (
+        <p className="drill-label">{step.label ? L(step.label) : t('toolOf', { i: step.index, n: step.total })}</p>
+        {phase === 'listen' ? (
           <>
             <p style={{ fontSize: '2.6rem' }}>👂</p>
             <p className="drill-meaning">{t('listenFirst')}</p>
           </>
-        )}
-        {phase !== 'listen' && (
+        ) : (
           <>
             <p className="drill-phrase" style={{ fontSize: '1.5rem' }}>{item.text}</p>
             <p className="drill-meaning">{L(item.meaning)}</p>
             {item.tip && <p className="faint small">{L(item.tip)}</p>}
-            <p className="faint small">🛟 {t('notVocabulary')}</p>
           </>
         )}
       </div>
@@ -168,22 +174,14 @@ function ToolStep({ step, item, onDone }: { step: Extract<BootcampStep, { kind: 
         <button className="btn-ghost" onClick={() => void speak(item.text, 'en', phase === 'listen' ? 1 : 0.8)}>
           🔊 {t('hearAgain')}
         </button>
-        {phase === 'listen' && (
-          <button className="btn-primary" onClick={() => setPhase('reveal')}>{t('tapWhenReady')}</button>
-        )}
+        {phase === 'listen' && <button className="btn-primary" onClick={() => setPhase('reveal')}>{t('tapWhenReady')}</button>}
         {phase === 'reveal' && (
           <button className="btn-primary" onClick={() => { setPhase('say'); void speak(item.text, 'en', 0.85); }}>
             {t('sayItAloud')}
           </button>
         )}
         {phase === 'say' && (
-          <button
-            className="btn-accent"
-            onClick={() => {
-              bc.recordDrill(item.id, 'echo', 'pass');
-              onDone();
-            }}
-          >
+          <button className="btn-accent" onClick={() => { bc.recordDrill(item.id, 'echo', 'pass'); onDone(); }}>
             {t('saidItBtn')}
           </button>
         )}
@@ -219,22 +217,83 @@ function QuizStep({ step, itemsById, onDone }: { step: Extract<BootcampStep, { k
         {options.map((o) => {
           const cls = picked === null ? '' : o.id === item.id ? 'option-correct' : picked === o.id ? 'option-wrong' : '';
           return (
-            <button
-              key={o.id}
-              className={`btn-secondary ${cls}`}
-              onClick={() => {
-                if (picked) return;
-                setPicked(o.id);
-                const ok = o.id === item.id;
-                bc.recordDrill(item.id, 'listen', ok ? 'pass' : 'fail');
-                setTimeout(() => onDone(ok), 700);
-              }}
-            >
+            <button key={o.id} className={`btn-secondary ${cls}`} onClick={() => {
+              if (picked) return;
+              setPicked(o.id);
+              const ok = o.id === item.id;
+              bc.recordDrill(item.id, 'listen', ok ? 'pass' : 'fail');
+              setTimeout(() => onDone(ok), 700);
+            }}>
               {o.label}
             </button>
           );
         })}
         <button className="btn-ghost" onClick={() => void speak(item.text, 'en')}>🔊 {t('hearAgain')}</button>
+      </div>
+    </>
+  );
+}
+
+/** Expected Replies: "you said X — here's what they might answer." Comprehension-first. */
+function RepliesStep({ step, itemsById, onDone }: { step: Extract<BootcampStep, { kind: 'replies' }>; itemsById: Map<string, BootcampItem>; onDone: () => void }) {
+  const bc = useBootcampStore();
+  const said = itemsById.get(step.saidItemId)!;
+  const [idx, setIdx] = useState(-1); // -1 = intro
+  const [picked, setPicked] = useState<string | null>(null);
+  const reply = idx >= 0 ? itemsById.get(step.replyIds[idx] ?? '') : undefined;
+
+  const options = useMemo(() => {
+    if (!reply) return [];
+    const wrongs = step.replyIds.filter((id) => id !== reply.id).slice(0, 2).map((id) => itemsById.get(id)!);
+    return [reply, ...wrongs].map((i) => ({ id: i.id, label: L(i.meaning) })).sort(() => Math.random() - 0.5);
+  }, [reply, step.replyIds, itemsById]);
+
+  useEffect(() => {
+    if (reply) void speak(reply.text, 'en');
+  }, [reply]);
+
+  if (idx === -1) {
+    return (
+      <>
+        <div className="drill-card" style={{ gap: 10 }}>
+          <p className="drill-label">{t('youSaid')}</p>
+          <p className="drill-phrase" style={{ fontSize: '1.3rem' }}>“{said.text}”</p>
+          <p className="drill-meaning" style={{ fontSize: '0.95rem' }}>{t('expectedReplies')}</p>
+        </div>
+        <div className="action-zone">
+          <button className="btn-primary" onClick={() => setIdx(0)}>👂 {t('imReady')}</button>
+        </div>
+      </>
+    );
+  }
+  if (!reply) return null;
+
+  return (
+    <>
+      <div className="drill-card">
+        <p className="drill-label">{t('whichReply')} ({idx + 1}/{step.replyIds.length})</p>
+        <p style={{ fontSize: '2.6rem' }}>👂</p>
+        {picked && <p className="drill-meaning fade-in">“{reply.text}”</p>}
+      </div>
+      <div className="action-zone">
+        {options.map((o) => {
+          const cls = picked === null ? '' : o.id === reply.id ? 'option-correct' : picked === o.id ? 'option-wrong' : '';
+          return (
+            <button key={o.id} className={`btn-secondary ${cls}`} onClick={() => {
+              if (picked) return;
+              setPicked(o.id);
+              bc.recordDrill(reply.id, 'listen', o.id === reply.id ? 'pass' : 'fail');
+              setTimeout(() => {
+                setPicked(null);
+                if (idx + 1 >= step.replyIds.length) onDone();
+                else setIdx(idx + 1);
+              }, 750);
+            }}>
+              {o.label}
+            </button>
+          );
+        })}
+        <button className="btn-ghost" onClick={() => void speak(reply.text, 'en')}>🔊 {t('hearAgain')}</button>
       </div>
     </>
   );
@@ -258,8 +317,7 @@ function SwipeStep({ itemIds, itemsById, onDone }: { itemIds: string[]; itemsByI
     <>
       <div className="drill-card">
         <p className="drill-label">{i + 1} / {itemIds.length}</p>
-        <p className="drill-phrase" style={{ fontSize: '1.5rem' }}>{item.text}</p>
-        <p className="faint small">{t('tapToFlip')}</p>
+        <p className="drill-phrase" style={{ fontSize: '1.4rem' }}>{item.text}</p>
       </div>
       <div className="action-zone">
         <div className="btn-row">
@@ -271,76 +329,80 @@ function SwipeStep({ itemIds, itemsById, onDone }: { itemIds: string[]; itemsByI
   );
 }
 
-function DialogueStep({ mode, lines, itemsById, onDone }: { mode: 'watch' | 'play'; lines: DialogueLine[]; itemsById: Map<string, BootcampItem>; onDone: () => void }) {
+/** Visual-novel dialogue: ONE exchange on screen, choices branch, no transcript spoilers. */
+function DialogueStep({ dialogue, onDone }: { dialogue: BootcampDialogue; onDone: () => void }) {
   const bc = useBootcampStore();
-  const [idx, setIdx] = useState(0);
-  const line = lines[idx];
-  const shown = lines.slice(0, Math.min(idx + 1, lines.length)); // derived — StrictMode-safe
+  const nodesById = useMemo(() => new Map(dialogue.nodes.map((n) => [n.id, n])), [dialogue]);
+  const [nodeId, setNodeId] = useState(dialogue.start);
+  const [yourLine, setYourLine] = useState<string | null>(null); // your last spoken line (briefly shown)
+  const [recovered, setRecovered] = useState(false);
+  const node = nodesById.get(nodeId);
 
   useEffect(() => {
-    if (!line) return;
+    if (!node) return;
     let cancelled = false;
-    // Speak, THEN advance — a line is never cut off mid-sentence (zero-English users need the
-    // full audio + a beat to read the subtitle).
-    void speak(line.en, 'en', line.fast ? 1.05 : 0.92).then(() => {
-      if (cancelled) return;
-      if (mode === 'watch' || line.who === 'npc' || !line.choice) {
-        setTimeout(() => {
-          if (!cancelled) setIdx((n) => n + 1);
-        }, 900);
-      }
-    });
+    if (node.who === 'npc') {
+      void speak(node.en, 'en', node.fast ? 1.08 : node.slow ? 0.75 : 0.95).then(() => {
+        if (cancelled) return;
+        if (node.end) {
+          setTimeout(() => !cancelled && onDone(), 800);
+        } else if (node.next) {
+          setTimeout(() => !cancelled && setNodeId(node.next!), 700);
+        }
+      });
+    } else if (node.who === 'you' && node.next && !node.choices) {
+      // scripted you-line: the app voices it for you, then moves on
+      setYourLine(node.en);
+      void speak(node.en, 'en', 0.92).then(() => {
+        if (!cancelled) setTimeout(() => setNodeId(node.next!), 500);
+      });
+    }
     return () => {
       cancelled = true;
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [idx, mode]);
+  }, [nodeId]);
 
-  useEffect(() => {
-    if (idx >= lines.length) onDone();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [idx]);
-
-  const needsChoice = mode === 'play' && line?.who === 'you' && line.choice;
+  if (!node) return null;
+  const npcNode = node.who === 'npc' ? node : [...nodesById.values()].find((n) => n.next === node.id || n.choices?.some((c) => c.next === node.id));
+  const displayNpc = node.who === 'npc' ? node : npcNode;
 
   return (
     <>
-      <div className="drill-card" style={{ justifyContent: 'flex-start', textAlign: 'start', gap: 10, maxHeight: '52vh', overflowY: 'auto' }}>
-        <p className="drill-label">{mode === 'watch' ? t('watchFirst') : t('yourTurn')}</p>
-        {shown.map((l, i) => (
-          <div key={i}>
-            <p style={{ fontWeight: l.who === 'you' ? 800 : 500 }}>
-              {l.who === 'npc' ? '🧑‍🍳 ' : '🫵 '}{l.en}
-            </p>
-            <p className="faint small">{l.he}</p>
+      <div className="drill-card" style={{ gap: 14, minHeight: 240 }}>
+        <p className="drill-label">{t('yourTurn')}</p>
+        {recovered && <p className="faint small fade-in">🛟 {t('niceRecovery')}</p>}
+        {displayNpc && (
+          <div className="fade-in" key={displayNpc.id}>
+            <p style={{ fontSize: '1.9rem' }}>🧑‍🍳</p>
+            <p className="drill-phrase" style={{ fontSize: '1.25rem' }}>“{displayNpc.en}”</p>
+            <p className="dim small">{displayNpc.he}</p>
           </div>
-        ))}
+        )}
+        {yourLine && node.who !== 'you' && <p className="faint small">🫵 {yourLine}</p>}
       </div>
       <div className="action-zone">
-        {needsChoice && line.choice ? (
-          <>
+        {node.who === 'you' && node.choices ? (
+          node.choices.map((c, i) => (
             <button
+              key={i}
               className="btn-secondary"
               onClick={() => {
-                const correct = itemsById.get(line.choice!.correctItemId)!;
-                bc.recordDrill(correct.id, 'simulator', 'pass');
-                setIdx(idx + 1);
+                tap();
+                if (c.itemId) bc.recordDrill(c.itemId, 'simulator', c.correct ? 'pass' : 'partial');
+                setRecovered(!c.correct);
+                setYourLine(c.en);
+                void speak(c.en, 'en', 0.92).then(() => setNodeId(c.next));
               }}
             >
-              🛟 {itemsById.get(line.choice.correctItemId)!.text}
+              {c.en}
+              <span className="dim small" style={{ display: 'block' }}>{c.he}</span>
             </button>
-            <button
-              className="btn-secondary"
-              onClick={() => {
-                bc.recordDrill(line.choice!.correctItemId, 'simulator', 'partial');
-                setIdx(idx + 1); // wrong pick still advances — gently; the right line is spoken
-              }}
-            >
-              {L(line.choice.wrong)}
-            </button>
-          </>
+          ))
         ) : (
-          <p className="faint small center">…</p>
+          <button className="btn-ghost" onClick={() => displayNpc && void speak(displayNpc.en, 'en', 0.8)}>
+            🐢 {t('playSlow')}
+          </button>
         )}
       </div>
     </>
@@ -363,27 +425,20 @@ function AmbushStep({ step, itemsById, onDone }: { step: Extract<BootcampStep, {
       </div>
       <div className="action-zone">
         {!fired ? (
-          <button
-            className="btn-primary"
-            onClick={() => {
-              setFired(true);
-              shownAt.current = Date.now();
-              void speak(step.npc.en, 'en', 1.1);
-            }}
-          >
+          <button className="btn-primary" onClick={() => {
+            setFired(true);
+            shownAt.current = Date.now();
+            void speak(step.npc.en, 'en', 1.12);
+          }}>
             👂 {t('imReady')}
           </button>
         ) : (
           order.map((o) => (
-            <button
-              key={o.id}
-              className="btn-secondary"
-              onClick={() => {
-                const ok = o.id === correct.id;
-                bc.recordDrill(correct.id, 'listen', ok ? 'pass' : 'fail', Date.now() - shownAt.current);
-                onDone(ok);
-              }}
-            >
+            <button key={o.id} className="btn-secondary" onClick={() => {
+              const ok = o.id === correct.id;
+              bc.recordDrill(correct.id, 'listen', ok ? 'pass' : 'fail', Date.now() - shownAt.current);
+              onDone(ok);
+            }}>
               🛟 {o.text}
             </button>
           ))
@@ -393,7 +448,7 @@ function AmbushStep({ step, itemsById, onDone }: { step: Extract<BootcampStep, {
   );
 }
 
-function ReceiptStep({ text, onNext }: { text: { [k: string]: string }; onNext: () => void }) {
+function ReceiptStep({ text, onNext }: { text: Record<string, string>; onNext: () => void }) {
   const bc = useBootcampStore();
   useEffect(() => {
     bc.addReceipt(L(text));
@@ -412,13 +467,18 @@ function ReceiptStep({ text, onNext }: { text: { [k: string]: string }; onNext: 
   );
 }
 
+/** Mission complete — capability card, receipts, and the "one more mission" loop. */
 function SummaryStep() {
   const bc = useBootcampStore();
   const day = bc.currentDay();
   const app = useAppStore();
   if (!day) return null;
   const receipts = bc.receipts.filter((r) => r.day === day.day);
-  const tomorrow = BOOTCAMP_PLAN.find((d) => d.day === day.day + 1);
+  const nextBuilt = BOOTCAMP_PLAN.find((m) => m.day > day.day && m.day in DAYS && !bc.completedDays.includes(m.day));
+  const finish = (): void => {
+    bc.completeDay();
+    bc.exit();
+  };
   return (
     <>
       <div className="drill-card pop-in" style={{ textAlign: 'start', gap: 12 }}>
@@ -428,18 +488,21 @@ function SummaryStep() {
         {receipts.map((r, i) => (
           <p key={i} className="small">🧾 {r.text}</p>
         ))}
-        {tomorrow && <p className="faint small" style={{ marginTop: 6 }}>{t('tomorrowTeaser', { title: L(tomorrow.title) })}</p>}
       </div>
       <div className="action-zone">
-        <button
-          className="btn-primary breathe"
-          onClick={() => {
-            bc.completeDay();
-            bc.exit();
-            app.navigate('bootcamp');
-          }}
-        >
-          {t('finishDay', { n: day.day })}
+        {nextBuilt && (
+          <button
+            className="btn-primary breathe"
+            onClick={() => {
+              bc.completeDay();
+              bc.startDay(nextBuilt.day);
+            }}
+          >
+            {t('nextMission', { title: L(nextBuilt.title) })}
+          </button>
+        )}
+        <button className={nextBuilt ? 'btn-ghost' : 'btn-primary'} onClick={() => { finish(); app.navigate('bootcamp'); }}>
+          {t('backToMap')}
         </button>
       </div>
     </>

@@ -235,3 +235,27 @@ Every non-obvious technical decision, with one line of reasoning. Referenced by 
   one-moment/thank-you/sorry); CORE-spec moves my-english/need-help/graceful-exit are deferred
   to Days 2 and 17. Dialogue-first + listening-first enforced by data-integrity tests, not
   convention (watch precedes tools precedes quizzes; no recall production on Day 1).
+
+## Sprint 7 — READY Missions
+
+- **D051 — Chrome audio root cause: cancel()/speak() same-tick race.** Chrome processes
+  speechSynthesis.cancel() asynchronously; speaking in the same tick silently drops the
+  utterance (Safari tolerates it). Fix: defer speak ~90ms when the engine is speaking/pending,
+  hold a module ref to the active utterance (Chrome GCs unreferenced utterances mid-speech),
+  and prime getVoices() eagerly + on voiceschanged. Root-cause handling, no hacks.
+- **D052 — Bootcamp → 30 READY Missions in 5 phases** (Foundations/Arrival/Food/City/Mastery)
+  with cold checkpoints at 10/18/24 and the finale at 30. Redesigned, not stretched: street
+  food, supermarket, hotel-problems, wifi/SIM and tickets missions added; checkpoints carry
+  zero new content by rule (tested).
+- **D053 — Dialogues are trees rendered one line at a time** (visual novel): the user never
+  sees the conversation in advance; wrong choices branch through recovery beats (the world
+  responds) and reconverge — a scene can be survived with style but never failed. Using a
+  recovery tool is ALWAYS a valid move (tested invariant).
+- **D054 — Expected Replies are a first-class step**: "you said X — here is what they might
+  answer", trained by ear before the live scene. Mission 4 (Coffee Shop) is the Deep Moment
+  exemplar: the full barista chain (here/to-go, size, milk/sugar, food, anything-else,
+  cash/card, receipt, goodbye) as 10 hear-items, replies-first, then the branching scene,
+  then an off-script ambush.
+- **D055 — The one-more-mission loop**: the Mission Complete screen's primary CTA starts the
+  next built mission directly (breathing button); the map shows phases + honest progress
+  (n/30) and confidence-gain per mission instead of metrics.

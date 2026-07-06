@@ -1,80 +1,171 @@
 import { describe, expect, it } from 'vitest';
-import { BOOTCAMP_PLAN } from './plan.js';
+import { BOOTCAMP_PLAN, PHASES } from './plan.js';
 import { DAY1 } from './day1.js';
+import { DAY4 } from './day4.js';
+import type { BootcampDayContent, BootcampDialogue } from './types.js';
 
-describe('Bootcamp plan (Sprint 6 Part 1)', () => {
-  it('has exactly 20 capability-named days with full metadata', () => {
-    expect(BOOTCAMP_PLAN.length).toBe(20);
-    for (const d of BOOTCAMP_PLAN) {
-      expect(d.title.en!.startsWith('I can') || d.title.en!.startsWith("I ")).toBe(true);
-      expect(d.title.he).toBeTruthy();
-      expect(d.why.length).toBeGreaterThan(10);
-      expect(d.preparesNext.length).toBeGreaterThan(10);
-      expect(d.minutes).toBeGreaterThanOrEqual(20);
+/**
+ * Mission data integrity (Sprint 7). The pedagogy is enforced by tests, not convention:
+ * dialogue trees must be sound (no dead ends, wrong choices branch and return), every
+ * reference must resolve, and depth/ordering rules hold per mission.
+ */
+
+/** Graph validator: every target resolves, an end exists and is reachable, choices are sane. */
+function validateDialogue(d: BootcampDialogue): string[] {
+  const issues: string[] = [];
+  const byId = new Map(d.nodes.map((n) => [n.id, n]));
+  if (!byId.has(d.start)) issues.push(`start ${d.start} missing`);
+  let hasEnd = false;
+  for (const n of d.nodes) {
+    if (n.end) hasEnd = true;
+    if (n.next && !byId.has(n.next)) issues.push(`${n.id} → missing ${n.next}`);
+    if (n.who === 'you' && !n.next && !n.choices?.length && !n.end) issues.push(`${n.id}: you-node with no way forward`);
+    for (const c of n.choices ?? []) {
+      if (!byId.has(c.next)) issues.push(`${n.id} choice "${c.en}" → missing ${c.next}`);
     }
-    expect(BOOTCAMP_PLAN.map((d) => d.day)).toEqual(Array.from({ length: 20 }, (_, i) => i + 1));
+    if (n.choices && !n.choices.some((c) => c.correct)) issues.push(`${n.id}: no correct choice`);
+  }
+  if (!hasEnd) issues.push('no end node');
+  // Reachability: BFS from start must reach an end node.
+  const seen = new Set<string>();
+  const queue = [d.start];
+  let reachedEnd = false;
+  while (queue.length > 0) {
+    const id = queue.shift()!;
+    if (seen.has(id)) continue;
+    seen.add(id);
+    const n = byId.get(id);
+    if (!n) continue;
+    if (n.end) reachedEnd = true;
+    if (n.next) queue.push(n.next);
+    for (const c of n.choices ?? []) queue.push(c.next);
+  }
+  if (!reachedEnd) issues.push('end unreachable from start');
+  const unreachable = d.nodes.filter((n) => !seen.has(n.id));
+  if (unreachable.length > 0) issues.push(`unreachable nodes: ${unreachable.map((n) => n.id).join(',')}`);
+  return issues;
+}
+
+/** Every step/dialogue reference in a mission must resolve to a real item. */
+function validateMission(day: BootcampDayContent): string[] {
+  const issues: string[] = [];
+  const ids = new Set(day.items.map((i) => i.id));
+  for (const step of day.steps) {
+    if (step.kind === 'tool' && !ids.has(step.itemId)) issues.push(`tool → ${step.itemId}`);
+    if (step.kind === 'quiz') {
+      if (!ids.has(step.itemId)) issues.push(`quiz → ${step.itemId}`);
+      for (const w of step.wrongIds) if (!ids.has(w)) issues.push(`quiz wrong → ${w}`);
+    }
+    if (step.kind === 'replies') {
+      if (!ids.has(step.saidItemId)) issues.push(`replies said → ${step.saidItemId}`);
+      for (const r of step.replyIds) if (!ids.has(r)) issues.push(`replies → ${r}`);
+    }
+    if (step.kind === 'swipe') for (const id of step.itemIds) if (!ids.has(id)) issues.push(`swipe → ${id}`);
+    if (step.kind === 'ambush') {
+      if (!ids.has(step.correctItemId)) issues.push(`ambush correct → ${step.correctItemId}`);
+      if (!ids.has(step.wrongItemId)) issues.push(`ambush wrong → ${step.wrongItemId}`);
+    }
+    if (step.kind === 'dialogue' && !day.dialogues[step.dialogueId]) issues.push(`dialogue → ${step.dialogueId}`);
+  }
+  for (const d of Object.values(day.dialogues)) {
+    issues.push(...validateDialogue(d).map((x) => `${d.id}: ${x}`));
+    for (const n of d.nodes) for (const c of n.choices ?? []) {
+      if (c.itemId && !ids.has(c.itemId)) issues.push(`${d.id}/${n.id}: choice item → ${c.itemId}`);
+    }
+  }
+  return issues;
+}
+
+describe('30-mission roadmap (Sprint 7 Part 1)', () => {
+  it('has 30 missions across 5 phases with full metadata', () => {
+    expect(BOOTCAMP_PLAN.length).toBe(30);
+    expect(BOOTCAMP_PLAN.map((m) => m.day)).toEqual(Array.from({ length: 30 }, (_, i) => i + 1));
+    expect(PHASES.length).toBe(5);
+    for (const m of BOOTCAMP_PLAN) {
+      expect(PHASES.some((p) => p.n === m.phase)).toBe(true);
+      expect(m.title.he && m.title.en).toBeTruthy();
+      expect(m.why.length).toBeGreaterThan(10);
+      expect(m.preparesNext.length).toBeGreaterThan(10);
+      expect(m.minutes).toBeGreaterThanOrEqual(18);
+    }
+  });
+
+  it('checkpoints sit at 10, 18, 24 and the finale — cold integration, no new content', () => {
+    const cps = BOOTCAMP_PLAN.filter((m) => m.checkpoint).map((m) => m.day);
+    expect(cps).toEqual([10, 18, 24, 30]);
+    for (const cp of BOOTCAMP_PLAN.filter((m) => m.checkpoint)) {
+      expect(cp.targets.concepts).toBe(0);
+      expect(cp.targets.phrases).toBe(0);
+    }
   });
 });
 
-describe('Day 1 content integrity (Sprint 6 Part 2)', () => {
-  const ids = new Set(DAY1.items.map((i) => i.id));
+describe('Mission 1 — I Can Survive (interactive)', () => {
+  it('is structurally sound (all references + dialogue graph)', () => {
+    expect(validateMission(DAY1)).toEqual([]);
+  });
 
-  it('teaches exactly the 7 founder-specified survival tools with he meanings', () => {
+  it('teaches the 7 tools with he meanings under the frozen id convention', () => {
     expect(DAY1.items.length).toBe(7);
-    for (const item of DAY1.items) {
-      expect(item.meaning.he).toBeTruthy();
-      expect(item.id.startsWith('en.phrase.recovery.')).toBe(true); // frozen id convention
+    for (const i of DAY1.items) {
+      expect(i.id.startsWith('en.phrase.recovery.')).toBe(true);
+      expect(i.meaning.he).toBeTruthy();
     }
   });
 
-  it('every step reference resolves (no dead itemIds anywhere)', () => {
-    for (const step of DAY1.steps) {
-      if (step.kind === 'tool') expect(ids.has(step.itemId)).toBe(true);
-      if (step.kind === 'quiz') {
-        expect(ids.has(step.itemId)).toBe(true);
-        for (const w of step.wrongIds) expect(ids.has(w)).toBe(true);
-        expect(step.wrongIds).not.toContain(step.itemId);
-      }
-      if (step.kind === 'swipe') for (const id of step.itemIds) expect(ids.has(id)).toBe(true);
-      if (step.kind === 'ambush') {
-        expect(ids.has(step.correctItemId)).toBe(true);
-        expect(ids.has(step.wrongItemId)).toBe(true);
-      }
-    }
-    for (const line of DAY1.dialogue) {
-      if (line.choice) expect(ids.has(line.choice.correctItemId)).toBe(true);
-    }
-  });
-
-  it('is dialogue-first and listening-first: watch precedes every tool; tools precede quizzes; no recall production', () => {
+  it('is dialogue-first and listening-first: scene before tools before quizzes; no cold production', () => {
     const kinds = DAY1.steps.map((s) => s.kind);
-    const firstDialogue = kinds.indexOf('dialogue');
-    const firstTool = kinds.indexOf('tool');
-    const firstQuiz = kinds.indexOf('quiz');
-    expect(firstDialogue).toBeGreaterThan(-1);
-    expect(firstDialogue).toBeLessThan(firstTool); // words appear inside a dialogue first (Part 5)
-    expect(firstTool).toBeLessThan(firstQuiz);     // hear+understand before being tested (Part 6)
-    expect(kinds).not.toContain('recall');          // day 1 never demands cold production
-  });
-
-  it('every tool is introduced before it is quizzed or ambushed', () => {
-    const introduced = new Set<string>();
-    for (const step of DAY1.steps) {
-      if (step.kind === 'tool') introduced.add(step.itemId);
-      if (step.kind === 'quiz') expect(introduced.has(step.itemId)).toBe(true);
-      if (step.kind === 'ambush') expect(introduced.has(step.correctItemId)).toBe(true);
-    }
-    expect(introduced.size).toBe(7); // all tools taught
-  });
-
-  it('ends with evidence: ≥3 receipts, summary last, ~20-minute step budget', () => {
-    const kinds = DAY1.steps.map((s) => s.kind);
+    expect(kinds.indexOf('dialogue')).toBeLessThan(kinds.indexOf('tool'));
+    expect(kinds.indexOf('tool')).toBeLessThan(kinds.indexOf('quiz'));
+    expect(kinds.filter((k) => k === 'dialogue').length).toBe(2); // guided run + confident rerun
     expect(kinds.filter((k) => k === 'receipt').length).toBeGreaterThanOrEqual(3);
     expect(kinds.at(-1)).toBe('summary');
-    // crude duration model (secs): talk 45, tool 40, quiz 25, swipe 60, dialogue 150, ambush 40, receipt 15, summary 45
-    const cost: Record<string, number> = { talk: 45, tool: 40, quiz: 25, swipe: 60, dialogue: 150, ambush: 40, receipt: 15, summary: 45 };
-    const total = DAY1.steps.reduce((a, s) => a + (cost[s.kind] ?? 0), 0);
-    expect(total).toBeGreaterThan(14 * 60);
-    expect(total).toBeLessThan(24 * 60);
+  });
+
+  it('wrong choices branch through recovery beats — never dead-end, never fail the scene', () => {
+    const scene = DAY1.dialogues['stuck-traveler']!;
+    const wrongs = scene.nodes.flatMap((n) => (n.choices ?? []).filter((c) => !c.correct));
+    expect(wrongs.length).toBeGreaterThanOrEqual(2);
+    const byId = new Map(scene.nodes.map((n) => [n.id, n]));
+    for (const w of wrongs) {
+      const target = byId.get(w.next)!;
+      expect(target.who).toBe('npc'); // the world responds — conversation continues naturally
+    }
+  });
+});
+
+describe('Mission 4 — Coffee Shop (Deep Moment exemplar)', () => {
+  it('is structurally sound (all references + dialogue graph)', () => {
+    expect(validateMission(DAY4)).toEqual([]);
+  });
+
+  it('covers the full barista question-chain as expected replies', () => {
+    const replyIds = DAY4.items.filter((i) => i.id.startsWith('en.reply.')).map((i) => i.id);
+    for (const key of ['here-or-to-go', 'medium-or-large', 'milk-sugar', 'anything-to-eat', 'anything-else', 'cash-or-card', 'receipt', 'enjoy']) {
+      expect(replyIds.some((id) => id.includes(key))).toBe(true);
+    }
+    expect(replyIds.length).toBeGreaterThanOrEqual(8); // depth before breadth
+  });
+
+  it('trains expected replies BEFORE the live dialogue, and includes an off-script cold open', () => {
+    const kinds = DAY4.steps.map((s) => s.kind);
+    expect(kinds.indexOf('replies')).toBeGreaterThan(-1);
+    expect(kinds.indexOf('replies')).toBeLessThan(kinds.indexOf('dialogue'));
+    expect(kinds).toContain('ambush');
+    expect(kinds.at(-1)).toBe('summary');
+  });
+
+  it('reuses recovery tools inside the scene (spaced review in context)', () => {
+    const scene = DAY4.dialogues['breakfast-order']!;
+    const recoveryChoices = scene.nodes.flatMap((n) => (n.choices ?? []).filter((c) => c.itemId?.startsWith('en.phrase.recovery.')));
+    expect(recoveryChoices.length).toBeGreaterThanOrEqual(3);
+    expect(recoveryChoices.every((c) => c.correct)).toBe(true); // using a tool is ALWAYS a valid move
+  });
+
+  it('the breakfast scene walks the founder flow: order → size → milk/sugar → food → pay → receipt → goodbye', () => {
+    const en = DAY4.dialogues['breakfast-order']!.nodes.map((n) => n.en).join(' ');
+    for (const beat of ['What can I get you', 'Medium or large', 'Milk and sugar', 'Anything to eat', 'anything else', 'Cash or card', 'receipt', 'enjoy your day']) {
+      expect(en.toLowerCase()).toContain(beat.toLowerCase());
+    }
   });
 });

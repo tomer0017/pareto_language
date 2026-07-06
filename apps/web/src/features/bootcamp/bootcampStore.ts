@@ -1,7 +1,9 @@
 import { create } from 'zustand';
 import type { Outcome, PracticeMode, ReviewEvent } from '@ready/content-schema';
 import { useAppStore } from '../../shared/stores/appStore.js';
-import { DAY1, type BootcampDayContent } from './day1.js';
+import { DAY1 } from './day1.js';
+import { DAY4 } from './day4.js';
+import type { BootcampDayContent } from './types.js';
 
 /**
  * Bootcamp runtime + persistence (Sprint 6). Progress and receipts live in localStorage
@@ -11,7 +13,7 @@ import { DAY1, type BootcampDayContent } from './day1.js';
  * new day = new data file + one line in DAYS. Zero new code.
  */
 
-export const DAYS: Record<number, BootcampDayContent> = { 1: DAY1 };
+export const DAYS: Record<number, BootcampDayContent> = { 1: DAY1, 4: DAY4 };
 
 interface BootcampProgress {
   completedDays: number[];

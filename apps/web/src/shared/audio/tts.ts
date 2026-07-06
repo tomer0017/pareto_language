@@ -1,37 +1,52 @@
 import type { ContentItem } from '@ready/content-schema';
 
 /**
- * Audio playback for content items (PDF §11.3, content/tts.ts integration point).
- * Strategy: try the pre-generated asset path first (real recordings / neural TTS, added later
- * without client changes); fall back to the Web Speech API so the app is fully usable today.
- * Every failure path resolves — a drill must never dead-end on audio (M4 quality bar).
+ * Audio playback (asset-first, Web Speech fallback). Cross-browser notes — Chrome specifics
+ * are ROOT-CAUSE handling of a genuinely asynchronous engine, not hacks:
+ *
+ * 1) Chrome processes `speechSynthesis.cancel()` asynchronously. Calling `speak()` in the
+ *    same tick races the cancel inside the engine and the new utterance is SILENTLY dropped
+ *    (Safari tolerates it). Fix: when the engine is speaking/pending, cancel, then hand the
+ *    new utterance over on a short deferral so the engine reaches idle first.
+ * 2) Chrome drops utterances whose JS object is garbage-collected mid-speech. Fix: hold a
+ *    module-level reference to the active utterance until it ends.
+ * 3) Chrome populates `getVoices()` asynchronously (empty until `voiceschanged`). Fix: prime
+ *    the voice list eagerly at module load AND on voiceschanged; never depend on a voice being
+ *    present — an unset voice still speaks with the browser default for `utterance.lang`.
  */
 
 const LANG_TAG: Record<string, string> = { it: 'it-IT', en: 'en-US', es: 'es-ES', fr: 'fr-FR', ar: 'ar-SA' };
 
-let cachedVoices: SpeechSynthesisVoice[] | null = null;
+let cachedVoices: SpeechSynthesisVoice[] = [];
+/** GC guard (Chrome drops collected utterances mid-speech). */
+let activeUtterance: SpeechSynthesisUtterance | null = null;
 
-function voicesFor(langTag: string): SpeechSynthesisVoice | undefined {
-  if (typeof speechSynthesis === 'undefined') return undefined;
-  if (!cachedVoices || cachedVoices.length === 0) cachedVoices = speechSynthesis.getVoices();
-  return (
-    cachedVoices.find((v) => v.lang === langTag) ??
-    cachedVoices.find((v) => v.lang.startsWith(langTag.slice(0, 2)))
-  );
+function refreshVoices(): void {
+  try {
+    cachedVoices = speechSynthesis.getVoices();
+  } catch {
+    cachedVoices = [];
+  }
 }
 
 if (typeof speechSynthesis !== 'undefined') {
-  // Voice list loads asynchronously in some browsers.
-  speechSynthesis.addEventListener?.('voiceschanged', () => {
-    cachedVoices = speechSynthesis.getVoices();
-  });
+  refreshVoices(); // prime eagerly — Chrome returns [] until the async load completes
+  speechSynthesis.addEventListener?.('voiceschanged', refreshVoices);
+}
+
+function voiceFor(langTag: string): SpeechSynthesisVoice | undefined {
+  if (cachedVoices.length === 0) refreshVoices();
+  return (
+    cachedVoices.find((v) => v.lang === langTag) ??
+    cachedVoices.find((v) => v.lang.replace('_', '-').startsWith(langTag.slice(0, 2)))
+  );
 }
 
 export function ttsAvailable(): boolean {
   return typeof speechSynthesis !== 'undefined' && typeof SpeechSynthesisUtterance !== 'undefined';
 }
 
-/** Speak text via Web Speech API. Resolves when done; resolves (not rejects) on failure. */
+/** Speak text. Resolves when playback ends; resolves (never rejects) on any failure. */
 export function speak(text: string, lang = 'it', rate = 1): Promise<void> {
   return new Promise((resolve) => {
     if (!ttsAvailable()) {
@@ -39,25 +54,40 @@ export function speak(text: string, lang = 'it', rate = 1): Promise<void> {
       resolve();
       return;
     }
-    try {
-      speechSynthesis.cancel();
-      const u = new SpeechSynthesisUtterance(text);
-      const tag = LANG_TAG[lang] ?? lang;
-      u.lang = tag;
-      const voice = voicesFor(tag);
-      if (voice) u.voice = voice;
-      u.rate = rate;
-      u.onend = () => resolve();
-      u.onerror = (e) => {
-        console.warn('[audio] TTS error; drill continues text-only', e.error);
+    const synth = speechSynthesis;
+
+    const start = (): void => {
+      try {
+        const u = new SpeechSynthesisUtterance(text);
+        activeUtterance = u; // (2) keep referenced until done
+        const tag = LANG_TAG[lang] ?? lang;
+        u.lang = tag;
+        const voice = voiceFor(tag);
+        if (voice) u.voice = voice;
+        u.rate = rate;
+        let settled = false;
+        const done = (): void => {
+          if (settled) return;
+          settled = true;
+          if (activeUtterance === u) activeUtterance = null;
+          resolve();
+        };
+        u.onend = done;
+        u.onerror = done; // 'interrupted'/'canceled' from a later cancel() also settle us
+        synth.speak(u);
+        // Safety net scaled to text length — some engines drop onend under fast rates.
+        setTimeout(done, Math.max(4000, text.length * 220));
+      } catch (err) {
+        console.warn('[audio] TTS threw; drill continues text-only', err);
         resolve();
-      };
-      speechSynthesis.speak(u);
-      // Safety net: some engines never fire onend.
-      setTimeout(resolve, 15000);
-    } catch (err) {
-      console.warn('[audio] TTS threw; drill continues text-only', err);
-      resolve();
+      }
+    };
+
+    if (synth.speaking || synth.pending) {
+      synth.cancel(); // (1) never speak in the same tick as cancel — Chrome drops it
+      setTimeout(start, 90);
+    } else {
+      start();
     }
   });
 }
