@@ -209,6 +209,20 @@ const en = {
   watchFullConvo: '🎬 Watch full conversation',
   videoUnavailable: 'Video unavailable right now — you can keep going.',
   reviewProgress: 'Review {i} of {n}',
+  // Mission Hub (three ways to learn)
+  threeWaysToLearn: 'Three ways to learn this mission.',
+  practiceCardDesc: 'The main learning experience — practice the sentences and replies.',
+  practiceAgain: 'Practice again',
+  continuePractice: 'Continue practice',
+  transcriptTitle: 'Conversation transcript',
+  transcriptCardDesc: 'Read the whole conversation — both languages, replay any line.',
+  openTranscript: 'Open transcript',
+  videoCardTitle: 'Watch video',
+  videoCardDesc: 'Watch the full conversation with narration.',
+  videoComingSoonDesc: 'A video for this mission is coming soon.',
+  watchVideoCta: 'Watch video',
+  hubHint: 'Recommended: watch, practice, then watch again.',
+  backToHub: 'Back to mission',
 } as const;
 
 const he: Partial<Record<StringKey, string>> = {
@@ -347,6 +361,20 @@ const he: Partial<Record<StringKey, string>> = {
   watchFullConvo: '🎬 לצפות בשיחה המלאה',
   videoUnavailable: 'הווידאו לא זמין כרגע — אפשר להמשיך.',
   reviewProgress: 'חזרה {i} מתוך {n}',
+  // Mission Hub (three ways to learn)
+  threeWaysToLearn: 'שלוש דרכים ללמוד את המשימה.',
+  practiceCardDesc: 'חוויית הלמידה המרכזית — תרגול המשפטים והתשובות.',
+  practiceAgain: 'לתרגל שוב',
+  continuePractice: 'להמשיך לתרגל',
+  transcriptTitle: 'תמלול שיחה',
+  transcriptCardDesc: 'קרא את השיחה המלאה — בשתי השפות, עם השמעה חוזרת של כל שורה.',
+  openTranscript: 'פתח תמלול',
+  videoCardTitle: 'צפייה בסרטון',
+  videoCardDesc: 'צפה בשיחה המלאה עם קריינות.',
+  videoComingSoonDesc: 'סרטון למשימה הזו יגיע בקרוב.',
+  watchVideoCta: 'צפה בסרטון',
+  hubHint: 'מומלץ: צפה, תרגל, ואז חזור לצפות שוב.',
+  backToHub: 'חזרה למשימה',
 };
 
 const DICTS: Record<string, Partial<Record<StringKey, string>>> = { en, he };

@@ -375,6 +375,12 @@ input:focus, select:focus { outline: 2px solid var(--brand); border-color: trans
   display: flex; flex-direction: column; gap: 10px; z-index: 82;
 }
 
+/* ── Mission Hub (three ways to learn) ────────────────────────────────── */
+.hub-icon {
+  width: 54px; height: 54px; border-radius: 16px; flex-shrink: 0;
+  display: grid; place-items: center; font-size: 1.6rem;
+}
+
 /* ── Video (video-first Bootcamp) ─────────────────────────────────────── */
 .video-player {
   width: 100%;

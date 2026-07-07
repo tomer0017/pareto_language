@@ -68,8 +68,12 @@ function loadProgress(): BootcampProgress {
 interface BootcampState extends BootcampProgress {
   activeDay: number | null;
   index: number;
+  /** Within an active mission: the hub (three learning modes) or the practice step-flow. */
+  stage: 'hub' | 'play';
 
   startDay(day: number): void;
+  enterPractice(): void;
+  toHub(): void;
   next(): void;
   addReceipt(text: string): void;
   recordDrill(itemId: string, mode: PracticeMode, outcome: Outcome, latencyMs?: number): void;
@@ -90,12 +94,22 @@ export const useBootcampStore = create<BootcampState>((set, get) => ({
   ...loadProgress(),
   activeDay: null,
   index: 0,
+  stage: 'hub',
 
+  // Selecting a mission opens its hub (the three learning modes), not the step-flow directly.
   startDay(day) {
     const resume = get().stepIndex[String(day)] ?? 0;
     const content = DAYS[day];
     const max = content ? content.steps.length - 1 : 0;
-    set({ activeDay: day, index: Math.min(resume, max) });
+    set({ activeDay: day, index: Math.min(resume, max), stage: 'hub' });
+  },
+
+  enterPractice() {
+    set({ stage: 'play' });
+  },
+
+  toHub() {
+    set({ stage: 'hub' });
   },
 
   next() {
@@ -138,7 +152,8 @@ export const useBootcampStore = create<BootcampState>((set, get) => ({
     const done = completedDays.includes(activeDay) ? completedDays : [...completedDays, activeDay];
     const si = { ...stepIndex, [String(activeDay)]: 0 }; // replayable from the top
     persist({ completedDays: done, receipts, stepIndex: si });
-    set({ completedDays: done, stepIndex: si });
+    // Reset the live index too, so "Practice again" from the hub restarts at step 0.
+    set({ completedDays: done, stepIndex: si, index: 0 });
   },
 
   exit() {

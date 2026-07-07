@@ -35,7 +35,86 @@ function primaryDialogue(day: BootcampDayContent): BootcampDialogue | null {
 
 export function Bootcamp() {
   const activeDay = useBootcampStore((s) => s.activeDay);
-  return activeDay === null ? <MissionMap /> : <MissionPlayer />;
+  const stage = useBootcampStore((s) => s.stage);
+  if (activeDay === null) return <MissionMap />;
+  return stage === 'play' ? <MissionPlayer /> : <MissionHub />;
+}
+
+/* ── Mission Hub: three ways to learn, always available ──────────────────── */
+
+/** The home of a mission (20/80). Exactly three learning modes — Practice, Transcript, Video —
+ *  each always reachable. Completing a mission never removes access; it just becomes "Practice
+ *  again". Practice enters the unchanged Bootcamp step-flow; Transcript/Video open as overlays. */
+function MissionHub() {
+  const bc = useBootcampStore();
+  const [showReader, setShowReader] = useState(false);
+  const [showVideo, setShowVideo] = useState(false);
+  useEffect(() => () => cancelSpeech(), []);
+  const day = bc.currentDay();
+  if (!day) return null;
+  const convo = primaryDialogue(day);
+  const video = day.introVideo;
+  const done = bc.completedDays.includes(day.day);
+  const resumable = (bc.stepIndex[String(day.day)] ?? 0) > 0 && !done;
+  const practiceCta = done ? t('practiceAgain') : resumable ? t('continuePractice') : t('startPractice');
+
+  if (showReader && convo) return <DialogueReader dialogue={convo} onClose={() => setShowReader(false)} />;
+  if (showVideo && video) return <VideoOverlay video={video} onClose={() => setShowVideo(false)} />;
+
+  return (
+    <div className="screen">
+      <div className="topbar">
+        <button className="btn-ghost" onClick={() => { cancelSpeech(); bc.exit(); }}>{t('back')}</button>
+        <span className="chip">{t('mission')} {day.day}</span>
+        <span style={{ width: 44 }} />
+      </div>
+      <div className="screen-scroll no-nav">
+        <h1 style={{ textAlign: 'center', margin: '4px 0 6px' }}>🎖️ {L(day.title)}</h1>
+        <p className="center" style={{ marginBottom: 14 }}>
+          {done
+            ? <span className="badge badge-ready">{t('completed')}</span>
+            : <span className="dim small">{t('threeWaysToLearn')}</span>}
+        </p>
+
+        <HubCard
+          icon="🎯" iconBg="var(--brand-soft)"
+          title={t('practice')} desc={t('practiceCardDesc')}
+          cta={practiceCta} ctaClass="btn-primary" onClick={() => bc.enterPractice()}
+        />
+        <HubCard
+          icon="📖" iconBg="var(--accent-soft)"
+          title={t('transcriptTitle')} desc={t('transcriptCardDesc')}
+          cta={t('openTranscript')} ctaClass="btn-secondary"
+          onClick={() => setShowReader(true)} disabled={!convo}
+        />
+        <HubCard
+          icon="🎬" iconBg="#dbeafe"
+          title={t('videoCardTitle')} desc={video ? t('videoCardDesc') : t('videoComingSoonDesc')}
+          cta={video ? t('watchVideoCta') : t('comingSoon')} ctaClass="btn-secondary"
+          onClick={() => setShowVideo(true)} disabled={!video}
+        />
+
+        <p className="faint small center" style={{ margin: '6px 4px 0' }}>ℹ️ {t('hubHint')}</p>
+      </div>
+    </div>
+  );
+}
+
+function HubCard({ icon, iconBg, title, desc, cta, ctaClass, onClick, disabled }: {
+  icon: string; iconBg: string; title: string; desc: string; cta: string; ctaClass: string; onClick: () => void; disabled?: boolean;
+}) {
+  return (
+    <div className="card" style={{ opacity: disabled ? 0.6 : 1 }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 14 }}>
+        <span className="hub-icon" style={{ background: iconBg }}>{icon}</span>
+        <span style={{ minWidth: 0 }}>
+          <p style={{ fontWeight: 800, fontSize: '1.12rem' }}>{title}</p>
+          <p className="dim small">{desc}</p>
+        </span>
+      </div>
+      <button className={ctaClass} onClick={onClick} disabled={disabled}>{cta}{disabled ? '' : ' →'}</button>
+    </div>
+  );
 }
 
 /* ── The map: 30 missions in 5 phases ───────────────────────────────────── */
@@ -144,9 +223,11 @@ function MissionPlayer() {
     cancelSpeech(); // never let one step's audio bleed into the next
     bc.next();
   };
-  const exit = (): void => {
+  // Back returns to the mission hub — the mission is a place you can always come back to,
+  // never a dead end. (The hub's own back goes out to the map.)
+  const back = (): void => {
     cancelSpeech();
-    bc.exit();
+    bc.toHub();
   };
 
   if (showReader && convo) return <DialogueReader dialogue={convo} onClose={() => setShowReader(false)} />;
@@ -158,7 +239,7 @@ function MissionPlayer() {
     <div className="screen">
       <CheckPop trigger={checkTrigger} />
       <div className="topbar">
-        <button className="btn-ghost" onClick={exit}>{t('back')}</button>
+        <button className="btn-ghost" onClick={back}>{t('back')}</button>
         <span className="chip">{t('mission')} {day.day} · {L(day.title)}</span>
         <span style={{ width: 44 }} />
       </div>
@@ -588,16 +669,17 @@ function ReceiptStep({ text, onNext }: { text: Record<string, string>; onNext: (
 function SummaryStep() {
   const bc = useBootcampStore();
   const day = bc.currentDay();
-  const app = useAppStore();
   const [showReader, setShowReader] = useState(false);
   if (!day) return null;
   const receipts = bc.receipts.filter((r) => r.day === day.day);
   const convo = primaryDialogue(day);
   const nextBuilt = BOOTCAMP_PLAN.find((m) => m.day > day.day && m.day in DAYS && !bc.completedDays.includes(m.day));
-  const finish = (): void => {
+  // Completing a mission unlocks confidence — it never removes access. Land back on the hub,
+  // where Practice (now "again"), Transcript and Video all stay available forever.
+  const finishToHub = (): void => {
     cancelSpeech();
     bc.completeDay();
-    bc.exit();
+    bc.toHub();
   };
   if (showReader && convo) return <DialogueReader dialogue={convo} onClose={() => setShowReader(false)} />;
   return (
@@ -625,8 +707,8 @@ function SummaryStep() {
             {t('nextMission', { title: L(nextBuilt.title) })}
           </button>
         )}
-        <button className={nextBuilt ? 'btn-ghost' : 'btn-primary'} onClick={() => { finish(); app.navigate('bootcamp'); }}>
-          {t('backToMap')}
+        <button className={nextBuilt ? 'btn-ghost' : 'btn-primary'} onClick={finishToHub}>
+          {t('backToHub')}
         </button>
       </div>
     </>
