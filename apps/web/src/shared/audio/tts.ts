@@ -51,7 +51,11 @@ const diag: AudioDiag = {
 };
 
 const listeners = new Set<() => void>();
+// Cached immutable snapshot: getAudioDiag MUST return a stable reference between changes,
+// or useSyncExternalStore loops forever ("getSnapshot should be cached"). Rebuilt only on emit.
+let snapshot: AudioDiag = { ...diag };
 function emit(): void {
+  snapshot = { ...diag };
   for (const l of listeners) l();
 }
 export function subscribeAudioDiag(cb: () => void): () => void {
@@ -59,7 +63,7 @@ export function subscribeAudioDiag(cb: () => void): () => void {
   return () => listeners.delete(cb);
 }
 export function getAudioDiag(): AudioDiag {
-  return { ...diag };
+  return snapshot;
 }
 
 /* ── Voices ─────────────────────────────────────────────────────────────── */

@@ -71,7 +71,11 @@ export function App() {
         <Screen />
       </ErrorBoundary>
       {TAB_VIEWS.includes(view) && <BottomNav />}
-      {import.meta.env.DEV && <AudioDebug />}
+      {import.meta.env.DEV && (
+        <ErrorBoundary feature="AudioDebug">
+          <AudioDebug />
+        </ErrorBoundary>
+      )}
     </>
   );
 }
