@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url';
 const r = (p: string) => fileURLToPath(new URL(p, import.meta.url));
 
 export default defineConfig({
+  base: '/pareto_language/',
   resolve: {
     alias: {
       '@ready/content-schema': r('./packages/content-schema/src/index.ts'),
