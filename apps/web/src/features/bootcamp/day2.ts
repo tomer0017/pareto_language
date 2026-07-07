@@ -58,7 +58,14 @@ export const DAY2: BootcampDayContent = {
   title: T('להציג את עצמי', 'Introduce Myself'),
   items: DAY2_ITEMS,
   dialogues: { 'meeting-host': SCENE },
+  introVideo: {
+    src: '/videos/En_day2.mp4',
+    title: T('השיחה המלאה', 'Full conversation'),
+    language: 'en',
+    type: 'intro',
+  },
   steps: [
+    { kind: 'video', mode: 'intro' },
     { kind: 'talk', icon: '👋', title: T('משימה 2: להציג את עצמי', 'Mission 2: Introduce Myself'),
       body: [
         T('היום אתה פוגש בן אדם — לא דלפק. מארח, נהג, מישהו בבר.', 'Today you meet a person — not a counter. A host, a driver, someone at the bar.'),
@@ -78,6 +85,7 @@ export const DAY2: BootcampDayContent = {
     { kind: 'ambush', npc: { en: 'So what brings you all the way out here anyway?', he: 'אז מה בכלל הביא אותך עד לכאן?' },
       correctItemId: 'en.phrase.social.here-on-holiday', wrongItemId: 'en.phrase.social.my-name' },
     { kind: 'receipt', text: T('שאלה פתוחה ומהירה — וידעת בדיוק מה לענות.', 'An open, fast question — and you knew exactly what to answer.') },
+    { kind: 'video', mode: 'again' },
     { kind: 'summary' },
   ],
 };

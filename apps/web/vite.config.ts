@@ -14,8 +14,22 @@ export default defineConfig({
       includeAssets: ['content/*.json'],
       workbox: {
         // Precache the app shell and the content packs — fully offline after first load (P7).
+        // Videos are deliberately NOT precached (too large to bloat the SW install); they are
+        // cached at runtime on first view so offline replay works without gating first load.
         globPatterns: ['**/*.{js,css,html,svg,png,json}'],
         navigateFallback: '/index.html',
+        runtimeCaching: [
+          {
+            urlPattern: /\.mp4$/,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'ready-videos',
+              rangeRequests: true, // videos stream via HTTP range requests (206)
+              cacheableResponse: { statuses: [0, 200, 206] },
+              expiration: { maxEntries: 8, maxAgeSeconds: 60 * 60 * 24 * 30 },
+            },
+          },
+        ],
       },
       manifest: {
         name: 'READY — Travel Language Trainer',

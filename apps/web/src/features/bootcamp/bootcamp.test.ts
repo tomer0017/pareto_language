@@ -37,7 +37,7 @@ const DAYS: Record<number, BootcampDayContent> = {
   11: DAY11, 12: DAY12, 13: DAY13, 14: DAY14, 15: DAY15, 16: DAY16, 17: DAY17, 18: DAY18, 19: DAY19, 20: DAY20,
   21: DAY21, 22: DAY22, 23: DAY23, 24: DAY24, 25: DAY25, 26: DAY26, 27: DAY27, 28: DAY28, 29: DAY29, 30: DAY30,
 };
-import type { BootcampDayContent, BootcampDialogue } from './types.js';
+import type { BootcampDayContent, BootcampDialogue, BootcampStep } from './types.js';
 
 /**
  * Mission data integrity (Sprint 7). The pedagogy is enforced by tests, not convention:
@@ -235,6 +235,37 @@ describe('Mission 4 — Coffee Shop (Deep Moment exemplar)', () => {
     const en = DAY4.dialogues['breakfast-order']!.nodes.map((n) => n.en).join(' ');
     for (const beat of ['What can I get you', 'Medium or large', 'Milk and sugar', 'Anything to eat', 'anything else', 'Cash or card', 'receipt', 'enjoy your day']) {
       expect(en.toLowerCase()).toContain(beat.toLowerCase());
+    }
+  });
+});
+
+describe('video-first Bootcamp (intro/review video)', () => {
+  it('Mission 2 carries the intro video at the documented public path', () => {
+    expect(DAY2.introVideo).toBeDefined();
+    expect(DAY2.introVideo?.src).toBe('/videos/En_day2.mp4');
+    expect(DAY2.introVideo?.language).toBe('en');
+  });
+
+  it('Mission 2 opens with a video-intro step and replays it before the summary', () => {
+    const kinds = DAY2.steps.map((s) => s.kind);
+    expect(kinds[0]).toBe('video'); // watch the full conversation first
+    const videoSteps = DAY2.steps.filter((s) => s.kind === 'video') as Extract<BootcampStep, { kind: 'video' }>[];
+    expect(videoSteps.map((s) => s.mode)).toEqual(['intro', 'again']);
+    // "watch again" sits immediately before the final summary.
+    expect(kinds[kinds.length - 2]).toBe('video');
+    expect(kinds.at(-1)).toBe('summary');
+  });
+
+  it('video is optional: only Mission 2 ships one, and video steps only appear where a video exists', () => {
+    for (const [num, day] of Object.entries(DAYS)) {
+      const hasVideoStep = day.steps.some((s) => s.kind === 'video');
+      if (Number(num) === 2) {
+        expect(day.introVideo).toBeDefined();
+        expect(hasVideoStep).toBe(true);
+      } else {
+        expect(day.introVideo).toBeUndefined();
+        expect(hasVideoStep).toBe(false); // no placeholder videos elsewhere
+      }
     }
   });
 });

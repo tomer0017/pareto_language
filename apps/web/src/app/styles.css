@@ -375,5 +375,15 @@ input:focus, select:focus { outline: 2px solid var(--brand); border-color: trans
   display: flex; flex-direction: column; gap: 10px; z-index: 82;
 }
 
+/* ── Video (video-first Bootcamp) ─────────────────────────────────────── */
+.video-player {
+  width: 100%;
+  max-height: 62vh;
+  border-radius: 18px;
+  background: #000;
+  display: block;
+  box-shadow: var(--shadow-pop);
+}
+
 /* RTL: flex/grid mirror automatically; nudge the few directional bits. */
 [dir='rtl'] .swipe-hint { flex-direction: row-reverse; }

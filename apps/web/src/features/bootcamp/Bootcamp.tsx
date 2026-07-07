@@ -8,8 +8,16 @@ import { getAudioDiag, subscribeAudioDiag, testAudio, unlockAudio } from '../../
 import { useSyncExternalStore } from 'react';
 import { BOOTCAMP_PLAN, PHASES } from './plan.js';
 import { DAYS, useBootcampStore } from './bootcampStore.js';
-import type { BootcampItem, BootcampStep, BootcampDialogue, BootcampDayContent } from './types.js';
+import type { BootcampItem, BootcampStep, BootcampDialogue, BootcampDayContent, BootcampVideo } from './types.js';
 import { dialogueTranscript } from './transcript.js';
+
+/** Resolve a public asset path (e.g. "/videos/x.mp4") against the app's base so it works in
+ *  dev, on the deployed sub-path, and inside the PWA. Absolute URLs pass through unchanged. */
+function resolveAsset(src: string): string {
+  if (/^https?:\/\//.test(src) || src.startsWith('blob:') || src.startsWith('data:')) return src;
+  const base = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
+  return src.startsWith('/') ? base + src : `${base}/${src}`;
+}
 
 /** The mission's canonical dialogue — used by the full-conversation reader (start + summary). */
 function primaryDialogue(day: BootcampDayContent): BootcampDialogue | null {
@@ -118,6 +126,7 @@ function MissionPlayer() {
   const bc = useBootcampStore();
   const [checkTrigger, setCheckTrigger] = useState(0);
   const [showReader, setShowReader] = useState(false);
+  const [showVideo, setShowVideo] = useState(false);
   const day = bc.currentDay();
   // Stop any lingering speech when the player unmounts (route change / back navigation).
   useEffect(() => () => cancelSpeech(), []);
@@ -125,6 +134,7 @@ function MissionPlayer() {
   const step = day.steps[bc.index];
   const itemsById = new Map(day.items.map((i) => [i.id, i]));
   const convo = primaryDialogue(day);
+  const video = day.introVideo;
 
   const pop = (): void => {
     success();
@@ -140,6 +150,7 @@ function MissionPlayer() {
   };
 
   if (showReader && convo) return <DialogueReader dialogue={convo} onClose={() => setShowReader(false)} />;
+  if (showVideo && video) return <VideoOverlay video={video} onClose={() => setShowVideo(false)} />;
   if (!step) return <SummaryStep />;
   const progress = Math.round((bc.index / day.steps.length) * 100);
 
@@ -154,13 +165,20 @@ function MissionPlayer() {
       <div className="progress-track" style={{ marginBottom: 10 }}>
         <div className="progress-fill brand" style={{ width: `${progress}%` }} />
       </div>
-      {/* Listen → Understand → Learn: advanced users can hear the whole scene up front. */}
-      {bc.index === 0 && convo && (
+      {/* Video-first missions: the full conversation is one tap away at any moment. */}
+      {video && step.kind !== 'video' && (
+        <button className="btn-ghost" style={{ alignSelf: 'center', marginBottom: 4 }} onClick={() => { cancelSpeech(); setShowVideo(true); }}>
+          {t('watchFullConvo')}
+        </button>
+      )}
+      {/* Listen → Understand → Learn: missions without a video can still hear the scene up front. */}
+      {!video && bc.index === 0 && convo && (
         <button className="btn-ghost" style={{ alignSelf: 'center', marginBottom: 4 }} onClick={() => setShowReader(true)}>
           {t('listenFullConvo')}
         </button>
       )}
       <div className="fade-in" key={bc.index}>
+        {step.kind === 'video' && <VideoStep video={video} mode={step.mode} onNext={advance} />}
         {step.kind === 'talk' && <TalkStep step={step} onNext={advance} />}
         {step.kind === 'tool' && <ToolStep step={step} item={itemsById.get(step.itemId)!} onDone={() => { pop(); advance(); }} />}
         {step.kind === 'quiz' && <QuizStep step={step} itemsById={itemsById} onDone={(ok) => { if (ok) pop(); advance(); }} />}
@@ -380,31 +398,35 @@ function RepliesStep({ step, itemsById, onDone }: { step: Extract<BootcampStep, 
   );
 }
 
+/**
+ * Sentence review (Sprint: replaced the "Know it / Don't know" flashcard self-report — see
+ * LEARNING FLOW RULE). No self-grading: the learner hears each trained sentence, sees its
+ * meaning, can replay it freely, and moves on. Words are support; the sentence is the unit.
+ */
 function SwipeStep({ itemIds, itemsById, onDone }: { itemIds: string[]; itemsById: Map<string, BootcampItem>; onDone: () => void }) {
-  const bc = useBootcampStore();
   const [i, setI] = useState(0);
   const item = itemsById.get(itemIds[i] ?? '')!;
   useEffect(() => {
     if (item) void speak(item.text, 'en');
   }, [item]);
   if (!item) return null;
-  const answer = (know: boolean): void => {
+  const last = i + 1 >= itemIds.length;
+  const next = (): void => {
     tap();
-    bc.recordDrill(item.id, 'swipe', know ? 'pass' : 'fail');
-    if (i + 1 >= itemIds.length) onDone();
+    if (last) onDone();
     else setI(i + 1);
   };
   return (
     <>
       <div className="drill-card">
-        <p className="drill-label">{i + 1} / {itemIds.length}</p>
-        <p className="drill-phrase" style={{ fontSize: '1.4rem' }}>{item.text}</p>
+        <p className="drill-label">{t('reviewProgress', { i: i + 1, n: itemIds.length })}</p>
+        <p className="drill-phrase" style={{ fontSize: '1.5rem' }}>{item.text}</p>
+        <p className="drill-meaning">{L(item.meaning)}</p>
+        {item.tip && <p className="faint small">{L(item.tip)}</p>}
       </div>
       <div className="action-zone">
-        <div className="btn-row">
-          <button className="btn-secondary" onClick={() => answer(false)}>{t('dontKnow')}</button>
-          <button className="btn-accent" onClick={() => answer(true)}>{t('know')}</button>
-        </div>
+        <button className="btn-ghost" onClick={() => void speak(item.text, 'en')}>🔊 {t('hearAgain')}</button>
+        <button className="btn-primary" onClick={next}>{last ? t('continue') : t('nextBtn')}</button>
       </div>
     </>
   );
@@ -694,6 +716,61 @@ function DialogueReader({ dialogue, onClose }: { dialogue: BootcampDialogue; onC
         <button className="btn-primary" onClick={() => (playing ? stop() : playAll(current))}>
           {playing ? t('pausePlay') : t('playAll')}
         </button>
+      </div>
+    </div>
+  );
+}
+
+/* ── Video-first intro / review ─────────────────────────────────────────── */
+
+/** Native <video> with manual play (never autoplays with sound), inline on iOS, fullscreen
+ *  allowed, replayable. A missing/broken file degrades to a friendly note — never crashes. */
+function VideoPlayer({ video }: { video: BootcampVideo }) {
+  const [failed, setFailed] = useState(false);
+  if (failed || !video.src) return <p className="dim small" style={{ padding: '20px 0' }}>{t('videoUnavailable')}</p>;
+  return (
+    <video
+      className="video-player"
+      src={resolveAsset(video.src)}
+      controls
+      playsInline
+      preload="metadata"
+      controlsList="nodownload"
+      onError={() => setFailed(true)}
+    />
+  );
+}
+
+/** A mission step that shows the full-conversation video — before practice (intro) and again
+ *  near the end (again). The learner presses Play; then a single button moves the mission on. */
+function VideoStep({ video, mode, onNext }: { video?: BootcampVideo; mode: 'intro' | 'again'; onNext: () => void }) {
+  const intro = mode === 'intro';
+  return (
+    <>
+      <div className="drill-card" style={{ gap: 14 }}>
+        <p style={{ fontSize: '2.2rem' }}>🎬</p>
+        <p className="drill-phrase" style={{ fontSize: '1.3rem' }}>{intro ? t('videoIntroTitle') : t('videoAgainTitle')}</p>
+        <p className="drill-meaning" style={{ fontSize: '0.98rem' }}>{intro ? t('videoIntroSub') : t('videoAgainSub')}</p>
+        {video ? <VideoPlayer video={video} /> : <p className="dim small">{t('videoUnavailable')}</p>}
+      </div>
+      <div className="action-zone">
+        <button className="btn-primary" onClick={onNext}>{intro ? t('startPractice') : t('continue')}</button>
+      </div>
+    </>
+  );
+}
+
+/** Full-screen "Watch full conversation" overlay — reachable any time during the mission. */
+function VideoOverlay({ video, onClose }: { video: BootcampVideo; onClose: () => void }) {
+  return (
+    <div className="reader">
+      <div className="topbar">
+        <button className="btn-ghost" onClick={onClose} aria-label={t('close')}>←</button>
+        <span className="chip">🎬 {video.title ? L(video.title) : t('fullConversationTitle')}</span>
+        <span style={{ width: 44 }} />
+      </div>
+      <div className="reader-scroll" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+        <VideoPlayer video={video} />
       </div>
     </div>
   );

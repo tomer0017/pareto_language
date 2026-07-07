@@ -200,6 +200,15 @@ const en = {
   comingSoonBody: 'This part of READY is being rebuilt for the English pilot. For now, your whole training lives in the Bootcamp.',
   backToBootcamp: '← Back to the Bootcamp',
   settings: 'Settings',
+  // Video-first Bootcamp
+  videoIntroTitle: 'Watch the full conversation first',
+  videoIntroSub: 'You may not understand everything yet. That’s okay — you’ll come back to this after practice.',
+  videoAgainTitle: 'Watch again — now try to understand it',
+  videoAgainSub: 'Notice how much more you catch this time.',
+  startPractice: 'Start practice',
+  watchFullConvo: '🎬 Watch full conversation',
+  videoUnavailable: 'Video unavailable right now — you can keep going.',
+  reviewProgress: 'Review {i} of {n}',
 } as const;
 
 const he: Partial<Record<StringKey, string>> = {
@@ -329,6 +338,15 @@ const he: Partial<Record<StringKey, string>> = {
   comingSoonBody: 'החלק הזה של READY נבנה מחדש לפיילוט האנגלי. בינתיים, כל האימון שלך נמצא במחנה האימונים.',
   backToBootcamp: '← חזרה למחנה האימונים',
   settings: 'הגדרות',
+  // Video-first Bootcamp
+  videoIntroTitle: 'קודם צפו בשיחה המלאה',
+  videoIntroSub: 'ייתכן שעדיין לא תבינו הכל. זה בסדר — תחזרו לזה אחרי התרגול.',
+  videoAgainTitle: 'צפו שוב — עכשיו נסו להבין',
+  videoAgainSub: 'שימו לב כמה יותר אתם קולטים הפעם.',
+  startPractice: 'להתחיל לתרגל',
+  watchFullConvo: '🎬 לצפות בשיחה המלאה',
+  videoUnavailable: 'הווידאו לא זמין כרגע — אפשר להמשיך.',
+  reviewProgress: 'חזרה {i} מתוך {n}',
 };
 
 const DICTS: Record<string, Partial<Record<StringKey, string>>> = { en, he };
