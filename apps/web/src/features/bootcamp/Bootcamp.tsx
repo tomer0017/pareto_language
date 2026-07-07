@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { L, t } from '../../shared/i18n/strings.js';
-import { speak } from '../../shared/audio/tts.js';
+import { speak, cancelSpeech } from '../../shared/audio/tts.js';
 import { useAppStore } from '../../shared/stores/appStore.js';
 import { CheckPop } from '../../shared/ui/CheckPop.js';
 import { success, tap } from '../../shared/ui/haptics.js';
@@ -8,7 +8,15 @@ import { getAudioDiag, subscribeAudioDiag, testAudio, unlockAudio } from '../../
 import { useSyncExternalStore } from 'react';
 import { BOOTCAMP_PLAN, PHASES } from './plan.js';
 import { DAYS, useBootcampStore } from './bootcampStore.js';
-import type { BootcampItem, BootcampStep, BootcampDialogue } from './types.js';
+import type { BootcampItem, BootcampStep, BootcampDialogue, BootcampDayContent } from './types.js';
+import { dialogueTranscript } from './transcript.js';
+
+/** The mission's canonical dialogue — used by the full-conversation reader (start + summary). */
+function primaryDialogue(day: BootcampDayContent): BootcampDialogue | null {
+  const step = day.steps.find((s): s is Extract<BootcampStep, { kind: 'dialogue' }> => s.kind === 'dialogue');
+  const byStep = step ? day.dialogues[step.dialogueId] : undefined;
+  return byStep ?? Object.values(day.dialogues)[0] ?? null;
+}
 
 /**
  * READY Missions (Sprint 7): phase map + the generic MissionPlayer.
@@ -31,9 +39,8 @@ function MissionMap() {
   return (
     <div className="screen">
       <div className="topbar">
-        <button className="btn-ghost" onClick={() => app.navigate('mission')} aria-label={t('back')}>←</button>
         <h2 style={{ margin: 0 }}>{t('bootcamp')}</h2>
-        <span style={{ width: 44 }} />
+        <button className="btn-ghost" onClick={() => app.navigate('languages')} aria-label={t('settings')}>🌐</button>
       </div>
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
         <div className="progress-track" style={{ flex: 1 }}>
@@ -110,17 +117,29 @@ function AudioEnable() {
 function MissionPlayer() {
   const bc = useBootcampStore();
   const [checkTrigger, setCheckTrigger] = useState(0);
+  const [showReader, setShowReader] = useState(false);
   const day = bc.currentDay();
+  // Stop any lingering speech when the player unmounts (route change / back navigation).
+  useEffect(() => () => cancelSpeech(), []);
   if (!day) return null;
   const step = day.steps[bc.index];
   const itemsById = new Map(day.items.map((i) => [i.id, i]));
+  const convo = primaryDialogue(day);
 
   const pop = (): void => {
     success();
     setCheckTrigger((n) => n + 1);
   };
-  const advance = (): void => bc.next();
+  const advance = (): void => {
+    cancelSpeech(); // never let one step's audio bleed into the next
+    bc.next();
+  };
+  const exit = (): void => {
+    cancelSpeech();
+    bc.exit();
+  };
 
+  if (showReader && convo) return <DialogueReader dialogue={convo} onClose={() => setShowReader(false)} />;
   if (!step) return <SummaryStep />;
   const progress = Math.round((bc.index / day.steps.length) * 100);
 
@@ -128,13 +147,19 @@ function MissionPlayer() {
     <div className="screen">
       <CheckPop trigger={checkTrigger} />
       <div className="topbar">
-        <button className="btn-ghost" onClick={() => bc.exit()}>{t('back')}</button>
+        <button className="btn-ghost" onClick={exit}>{t('back')}</button>
         <span className="chip">{t('mission')} {day.day} · {L(day.title)}</span>
         <span style={{ width: 44 }} />
       </div>
       <div className="progress-track" style={{ marginBottom: 10 }}>
         <div className="progress-fill brand" style={{ width: `${progress}%` }} />
       </div>
+      {/* Listen → Understand → Learn: advanced users can hear the whole scene up front. */}
+      {bc.index === 0 && convo && (
+        <button className="btn-ghost" style={{ alignSelf: 'center', marginBottom: 4 }} onClick={() => setShowReader(true)}>
+          {t('listenFullConvo')}
+        </button>
+      )}
       <div className="fade-in" key={bc.index}>
         {step.kind === 'talk' && <TalkStep step={step} onNext={advance} />}
         {step.kind === 'tool' && <ToolStep step={step} item={itemsById.get(step.itemId)!} onDone={() => { pop(); advance(); }} />}
@@ -232,29 +257,55 @@ function QuizStep({ step, itemsById, onDone }: { step: Extract<BootcampStep, { k
       void speak(item.text, 'en');
     }
   }, [item.text]);
+
+  // Answered — pause here. Explain, translate, replay freely, continue only on NEXT.
+  if (picked !== null) {
+    const ok = picked === item.id;
+    return (
+      <AnsweredView ok={ok} en={item.text} meaning={L(item.meaning)} tip={item.tip ? L(item.tip) : undefined}
+        onNext={() => onDone(ok)} />
+    );
+  }
+
   return (
     <>
       <div className="drill-card">
         <p className="drill-label">{t('whatDidItMean')}</p>
         <p style={{ fontSize: '2.6rem' }}>👂</p>
-        {picked && <p className="drill-meaning fade-in">“{item.text}”</p>}
       </div>
       <div className="action-zone">
-        {options.map((o) => {
-          const cls = picked === null ? '' : o.id === item.id ? 'option-correct' : picked === o.id ? 'option-wrong' : '';
-          return (
-            <button key={o.id} className={`btn-secondary ${cls}`} onClick={() => {
-              if (picked) return;
-              setPicked(o.id);
-              const ok = o.id === item.id;
-              bc.recordDrill(item.id, 'listen', ok ? 'pass' : 'fail');
-              setTimeout(() => onDone(ok), 700);
-            }}>
-              {o.label}
-            </button>
-          );
-        })}
+        {options.map((o) => (
+          <button key={o.id} className="btn-secondary" onClick={() => {
+            tap();
+            setPicked(o.id);
+            bc.recordDrill(item.id, 'listen', o.id === item.id ? 'pass' : 'fail');
+          }}>
+            {o.label}
+          </button>
+        ))}
         <button className="btn-ghost" onClick={() => void speak(item.text, 'en')}>🔊 {t('hearAgain')}</button>
+      </div>
+    </>
+  );
+}
+
+/** Shared "you answered — now learn" surface: success/failure state, the correct answer
+ *  highlighted, translation, unlimited replay, time to breathe, and a manual NEXT. */
+function AnsweredView({ ok, en, meaning, tip, onNext }: { ok: boolean; en: string; meaning: string; tip?: string; onNext: () => void }) {
+  return (
+    <>
+      <div className="drill-card pop-in" style={{ gap: 12, minHeight: 240 }}>
+        <span className={`feedback-head ${ok ? 'ok' : 'bad'}`}>{ok ? `✓ ${t('correctHeader')}` : `✗ ${t('wrongHeader')}`}</span>
+        <p className="drill-phrase" style={{ fontSize: '1.5rem' }}>“{en}”</p>
+        <p className="drill-label">{t('theMeaning')}</p>
+        <p className="answer-pill">{meaning}</p>
+        {tip && <p className="faint small">{tip}</p>}
+        <p className="dim small">{ok ? t('whyRight') : t('whyWrong')}</p>
+      </div>
+      <div className="action-zone">
+        <button className="btn-ghost" onClick={() => void speak(en, 'en')}>🔊 {t('hearAgain')}</button>
+        <p className="faint small" style={{ textAlign: 'center' }}>{t('takeYourTime')}</p>
+        <button className="btn-primary" onClick={onNext}>{t('nextBtn')}</button>
       </div>
     </>
   );
@@ -294,31 +345,35 @@ function RepliesStep({ step, itemsById, onDone }: { step: Extract<BootcampStep, 
   }
   if (!reply) return null;
 
+  // Answered — learn this reply before moving to the next one.
+  if (picked !== null) {
+    const ok = picked === reply.id;
+    return (
+      <AnsweredView ok={ok} en={reply.text} meaning={L(reply.meaning)} tip={reply.tip ? L(reply.tip) : undefined}
+        onNext={() => {
+          setPicked(null);
+          if (idx + 1 >= step.replyIds.length) onDone();
+          else setIdx(idx + 1);
+        }} />
+    );
+  }
+
   return (
     <>
       <div className="drill-card">
         <p className="drill-label">{t('whichReply')} ({idx + 1}/{step.replyIds.length})</p>
         <p style={{ fontSize: '2.6rem' }}>👂</p>
-        {picked && <p className="drill-meaning fade-in">“{reply.text}”</p>}
       </div>
       <div className="action-zone">
-        {options.map((o) => {
-          const cls = picked === null ? '' : o.id === reply.id ? 'option-correct' : picked === o.id ? 'option-wrong' : '';
-          return (
-            <button key={o.id} className={`btn-secondary ${cls}`} onClick={() => {
-              if (picked) return;
-              setPicked(o.id);
-              bc.recordDrill(reply.id, 'listen', o.id === reply.id ? 'pass' : 'fail');
-              setTimeout(() => {
-                setPicked(null);
-                if (idx + 1 >= step.replyIds.length) onDone();
-                else setIdx(idx + 1);
-              }, 750);
-            }}>
-              {o.label}
-            </button>
-          );
-        })}
+        {options.map((o) => (
+          <button key={o.id} className="btn-secondary" onClick={() => {
+            tap();
+            setPicked(o.id);
+            bc.recordDrill(reply.id, 'listen', o.id === reply.id ? 'pass' : 'fail');
+          }}>
+            {o.label}
+          </button>
+        ))}
         <button className="btn-ghost" onClick={() => void speak(reply.text, 'en')}>🔊 {t('hearAgain')}</button>
       </div>
     </>
@@ -438,10 +493,21 @@ function DialogueStep({ dialogue, onDone }: { dialogue: BootcampDialogue; onDone
 function AmbushStep({ step, itemsById, onDone }: { step: Extract<BootcampStep, { kind: 'ambush' }>; itemsById: Map<string, BootcampItem>; onDone: (ok: boolean) => void }) {
   const bc = useBootcampStore();
   const [fired, setFired] = useState(false);
+  const [picked, setPicked] = useState<string | null>(null);
   const shownAt = useRef(0);
   const correct = itemsById.get(step.correctItemId)!;
   const wrong = itemsById.get(step.wrongItemId)!;
   const [order] = useState(() => (Math.random() > 0.5 ? [correct, wrong] : [wrong, correct]));
+
+  // Answered — explain what they threw at you and the tool that beats it; continue on NEXT.
+  if (picked !== null) {
+    const ok = picked === correct.id;
+    return (
+      <AnsweredView ok={ok} en={correct.text} meaning={L(correct.meaning)} tip={correct.tip ? L(correct.tip) : undefined}
+        onNext={() => onDone(ok)} />
+    );
+  }
+
   return (
     <>
       <div className="drill-card">
@@ -459,15 +525,18 @@ function AmbushStep({ step, itemsById, onDone }: { step: Extract<BootcampStep, {
             👂 {t('imReady')}
           </button>
         ) : (
-          order.map((o) => (
-            <button key={o.id} className="btn-secondary" onClick={() => {
-              const ok = o.id === correct.id;
-              bc.recordDrill(correct.id, 'listen', ok ? 'pass' : 'fail', Date.now() - shownAt.current);
-              onDone(ok);
-            }}>
-              🛟 {o.text}
-            </button>
-          ))
+          <>
+            {order.map((o) => (
+              <button key={o.id} className="btn-secondary" onClick={() => {
+                tap();
+                bc.recordDrill(correct.id, 'listen', o.id === correct.id ? 'pass' : 'fail', Date.now() - shownAt.current);
+                setPicked(o.id);
+              }}>
+                🛟 {o.text}
+              </button>
+            ))}
+            <button className="btn-ghost" onClick={() => void speak(step.npc.en, 'en', 0.85)}>🔊 {t('hearAgain')}</button>
+          </>
         )}
       </div>
     </>
@@ -498,13 +567,17 @@ function SummaryStep() {
   const bc = useBootcampStore();
   const day = bc.currentDay();
   const app = useAppStore();
+  const [showReader, setShowReader] = useState(false);
   if (!day) return null;
   const receipts = bc.receipts.filter((r) => r.day === day.day);
+  const convo = primaryDialogue(day);
   const nextBuilt = BOOTCAMP_PLAN.find((m) => m.day > day.day && m.day in DAYS && !bc.completedDays.includes(m.day));
   const finish = (): void => {
+    cancelSpeech();
     bc.completeDay();
     bc.exit();
   };
+  if (showReader && convo) return <DialogueReader dialogue={convo} onClose={() => setShowReader(false)} />;
   return (
     <>
       <div className="drill-card pop-in" style={{ textAlign: 'start', gap: 12 }}>
@@ -516,6 +589,9 @@ function SummaryStep() {
         ))}
       </div>
       <div className="action-zone">
+        {convo && (
+          <button className="btn-secondary" onClick={() => setShowReader(true)}>{t('reviewConversation')}</button>
+        )}
         {nextBuilt && (
           <button
             className="btn-primary breathe"
@@ -532,5 +608,93 @@ function SummaryStep() {
         </button>
       </div>
     </>
+  );
+}
+
+/* ── Full dialogue reader — the premium study sheet ─────────────────────── */
+
+/** The complete conversation as a reader: every line in both languages, per-line replay,
+ *  play-all / pause / restart / prev / next, with the current line highlighted. Used before
+ *  the mission (preview) and after it (study sheet). Pure playback — no scoring. */
+function DialogueReader({ dialogue, onClose }: { dialogue: BootcampDialogue; onClose: () => void }) {
+  const lines = useMemo(() => dialogueTranscript(dialogue), [dialogue]);
+  const [current, setCurrent] = useState(0);
+  const [playing, setPlaying] = useState(false);
+  const runToken = useRef(0);
+  const lineRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  // Cancel any speech + abort any play-all loop when the reader closes.
+  useEffect(() => () => { runToken.current += 1; cancelSpeech(); }, []);
+
+  // Keep the active line in view as playback (or stepping) moves through the sheet.
+  useEffect(() => {
+    lineRefs.current[current]?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }, [current]);
+
+  const stop = (): void => {
+    runToken.current += 1; // invalidate any in-flight play-all loop
+    setPlaying(false);
+    cancelSpeech();
+  };
+
+  const playOne = (i: number): void => {
+    stop();
+    setCurrent(i);
+    void speak(lines[i]!.en, 'en', 0.95);
+  };
+
+  const playAll = (from: number): void => {
+    const token = ++runToken.current;
+    setPlaying(true);
+    void (async () => {
+      for (let i = from; i < lines.length; i++) {
+        if (token !== runToken.current) return; // paused / closed / stepped away
+        setCurrent(i);
+        await speak(lines[i]!.en, 'en', 0.95);
+        if (token !== runToken.current) return;
+        await new Promise((r) => setTimeout(r, 350)); // a beat between speakers
+      }
+      if (token === runToken.current) setPlaying(false);
+    })();
+  };
+
+  const atStart = current <= 0;
+  const atEnd = current >= lines.length - 1;
+
+  return (
+    <div className="reader">
+      <div className="topbar">
+        <button className="btn-ghost" onClick={() => { stop(); onClose(); }} aria-label={t('close')}>←</button>
+        <span className="chip">📖 {t('fullConversationTitle')}</span>
+        <span style={{ width: 44 }} />
+      </div>
+      <p className="dim small" style={{ margin: '0 0 8px' }}>{t('studySheetSub')} · {t('lineProgress', { i: current + 1, n: lines.length })}</p>
+      <div className="reader-scroll">
+        {lines.map((line, i) => (
+          <div
+            key={i}
+            ref={(el) => { lineRefs.current[i] = el; }}
+            className={`dline ${line.who === 'you' ? 'you' : ''} ${i === current ? 'now' : ''}`}
+          >
+            <div className="dline-top">
+              <span className="dline-speaker">{line.who === 'you' ? `🫵 ${t('speakerYou')}` : `🧑 ${t('speakerThem')}`}</span>
+              <button className="dline-play" onClick={() => playOne(i)} aria-label={t('replay')}>🔊</button>
+            </div>
+            <p className="dline-en">{line.en}</p>
+            <p className="dline-he">{line.he}</p>
+          </div>
+        ))}
+      </div>
+      <div className="reader-transport">
+        <div className="btn-row">
+          <button className="btn-secondary" onClick={() => playOne(Math.max(0, current - 1))} disabled={atStart}>‹ {t('prevLine')}</button>
+          <button className="btn-secondary" onClick={() => { setCurrent(0); playAll(0); }}>{t('restartConvo')}</button>
+          <button className="btn-secondary" onClick={() => playOne(Math.min(lines.length - 1, current + 1))} disabled={atEnd}>{t('nextLine')} ›</button>
+        </div>
+        <button className="btn-primary" onClick={() => (playing ? stop() : playAll(current))}>
+          {playing ? t('pausePlay') : t('playAll')}
+        </button>
+      </div>
+    </div>
   );
 }

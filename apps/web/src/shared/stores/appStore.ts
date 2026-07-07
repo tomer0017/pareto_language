@@ -13,7 +13,7 @@ import type {
 } from '@ready/content-schema';
 import { ApiProvider, LocalProvider, type DataProvider } from '@ready/data';
 import { buildPlan, computeReadiness, DAY_MS } from '@ready/engine';
-import { applyLanguageTheme, applyUiDirection, languageInfo } from '../i18n/languages.js';
+import { applyLanguageTheme, applyUiDirection, languageInfo, PILOT_LANG } from '../i18n/languages.js';
 import { setUiLangDict } from '../i18n/strings.js';
 import { reportContentSource, setProviderDiag } from '../data/dataDiag.js';
 
@@ -96,7 +96,10 @@ function makeProvider(): DataProvider {
 }
 
 const storedUiLang = localStorage.getItem('ready.uiLang') ?? 'en';
-const storedLearningLang = localStorage.getItem('ready.lang') ?? 'it';
+// English is the current pilot language (see languages.ts / PILOT_LANG). Any legacy 'it'
+// preference from before the switch is normalized to the pilot so no user is stuck on Italian.
+const rawLearningLang = localStorage.getItem('ready.lang') ?? PILOT_LANG;
+const storedLearningLang = languageInfo(rawLearningLang).available ? rawLearningLang : PILOT_LANG;
 setUiLangDict(storedUiLang);
 
 export const useAppStore = create<AppState>((set, get) => ({
@@ -138,20 +141,33 @@ export const useAppStore = create<AppState>((set, get) => ({
     applyUiDirection(uiLang);
     try {
       const user = await provider.ensureAnonymousUser();
-      const pack = await provider.getContentPack(learningLang);
+      // Pilot (English): the content pack (words/phrases/situations) is not shipped yet, so a
+      // missing pack is EXPECTED, not fatal — the Bootcamp is the pilot and needs no pack.
+      // Content-driven screens gate themselves to "coming soon" when pack is null.
+      let pack: ContentPack | null = null;
+      try {
+        pack = await provider.getContentPack(learningLang);
+      } catch (err) {
+        console.info('[app] no content pack for pilot language — Bootcamp-only mode', err);
+      }
       if (provider instanceof ApiProvider) {
         // Multi-device restore: pull the merged server event log; local stays authoritative on failure.
         await provider.restore().catch((err) => console.warn('[app] restore skipped', err));
       }
       const plan = await provider.getTripPlan(user.id);
       const stateList = await provider.getMemoryStates(user.id);
+      // "Entered" = has crossed the welcome screen before, or is a returning user with a plan
+      // from the pre-pilot build. Either way, don't gate them behind the welcome again.
+      const entered = localStorage.getItem('ready.entered') === '1' || plan !== null;
       set({
         user,
         pack,
         plan,
         states: new Map(stateList.map((s) => [s.itemId, s])),
-        ...toMaps(pack),
-        view: plan ? 'mission' : 'onboarding',
+        ...(pack ? toMaps(pack) : { itemsById: new Map(), situationById: new Map() }),
+        // Every new user starts directly in the English pilot (the Bootcamp); the welcome/
+        // language screen shows once, then hands off to it.
+        view: entered ? 'bootcamp' : 'onboarding',
         loading: false,
         fatalError: null,
       });

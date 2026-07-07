@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react';
 import type { SituationPriority } from '@ready/content-schema';
 import { selectTier, DAY_MS } from '@ready/engine';
 import { useAppStore } from '../../shared/stores/appStore.js';
-import { LEARNING_LANGUAGES, languageInfo } from '../../shared/i18n/languages.js';
+import { LEARNING_LANGUAGES, languageInfo, PILOT_LANG } from '../../shared/i18n/languages.js';
 import { L, t } from '../../shared/i18n/strings.js';
 import { tap } from '../../shared/ui/haptics.js';
 
@@ -57,6 +57,49 @@ export function Onboarding() {
       setSaving(false);
     }
   };
+
+  // English pilot (Bootcamp-first): until a content pack ships, onboarding is a single honest
+  // welcome — English is the pilot, the rest are coming soon — then it hands off to the Bootcamp.
+  // The full trip-plan flow below is preserved for when a shipped pack makes it meaningful again.
+  if (!app.pack) {
+    return (
+      <div className="screen">
+        <div className="screen-scroll no-nav fade-in">
+          <h1>{t('pilotWelcomeTitle')}</h1>
+          <p className="dim" style={{ margin: '8px 0 20px' }}>{t('pilotWelcomeSub')}</p>
+          <p className="drill-label" style={{ marginBottom: 10 }}>{t('pilotLanguageLabel')}</p>
+          <div className="lang-grid stagger">
+            {LEARNING_LANGUAGES.map((l) => (
+              <div
+                key={l.code}
+                className={`lang-card ${l.code === PILOT_LANG ? 'selected' : 'locked'}`}
+                aria-disabled={!l.available}
+              >
+                <span className="lang-flag">{l.flag}</span>
+                <span className="lang-native" style={{ color: l.accent }}>{l.nativeName}</span>
+                {l.available
+                  ? <span className="badge badge-ready">{t('ready')}</span>
+                  : <span className="badge badge-notStarted">{t('comingSoon')}</span>}
+              </div>
+            ))}
+          </div>
+          <p className="faint small" style={{ marginTop: 14 }}>{t('moreLanguagesSoon')}</p>
+        </div>
+        <div className="action-zone">
+          <button
+            className="btn-primary breathe"
+            onClick={() => {
+              tap();
+              localStorage.setItem('ready.entered', '1');
+              app.navigate('bootcamp');
+            }}
+          >
+            {t('startPilot')}
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="screen">

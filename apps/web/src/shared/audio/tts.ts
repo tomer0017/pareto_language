@@ -3,7 +3,7 @@ import type { ContentItem } from '@ready/content-schema';
 /**
  * Audio playback (asset-first, Web Speech fallback).
  *
- * CHROME ROOT CAUSE (Sprint 8): Chrome's autoplay policy blocks speechSynthesis.speak()
+ * CHROME ROOT CAUSE #1 (Sprint 8): Chrome's autoplay policy blocks speechSynthesis.speak()
  * unless the engine has been "unlocked" by a speak() call that originated INSIDE a real user
  * gesture. Our drill/dialogue audio fires from React effects and promise chains — never a
  * gesture — so Chrome silently refused every utterance. Safari has no such policy, so it
@@ -11,6 +11,19 @@ import type { ContentItem } from '@ready/content-schema';
  * speak out of any gesture.) Fix: prime the engine on the first pointer/key gesture; once
  * unlocked, programmatic speak() works for the session. This is the intended way to satisfy
  * the policy, not a workaround.
+ *
+ * CHROME ROOT CAUSE #2 ("works then stops later", Sprint 9): Chrome's speech engine does not
+ * stay running on its own. Two documented failure modes make audio die mid-session with NO
+ * error — exactly the "worked at launch, dead later" symptom:
+ *   (a) An internal ~15s watchdog pauses/kills any utterance that runs too long.
+ *   (b) Chrome pauses speechSynthesis whenever the tab is backgrounded (visibilitychange /
+ *       tab switch) and frequently leaves it stuck `paused` after the tab returns — so every
+ *       later speak() enqueues behind a paused engine and never plays.
+ * The engine exposes exactly one lever for both: speechSynthesis.resume(). The real fix is to
+ * (1) run a resume() keep-alive while an utterance is live, defeating the watchdog and any
+ * spontaneous pause, and (2) resume() the moment the tab becomes visible again. This is the
+ * canonical, engine-level fix — not a per-call retry hack. Safari/Firefox ignore resume() on a
+ * running engine, so the keep-alive is a harmless no-op there.
  */
 
 const LANG_TAG: Record<string, string> = { it: 'it-IT', en: 'en-US', es: 'es-ES', fr: 'fr-FR', ar: 'ar-SA' };
@@ -70,6 +83,30 @@ export function getAudioDiag(): AudioDiag {
 
 let cachedVoices: SpeechSynthesisVoice[] = [];
 let activeUtterance: SpeechSynthesisUtterance | null = null; // GC guard (Chrome drops collected utterances)
+
+/* ── Keep-alive: defeat Chrome's watchdog + auto-pause (ROOT CAUSE #2) ────── */
+let keepAlive: ReturnType<typeof setInterval> | null = null;
+
+function startKeepAlive(): void {
+  if (keepAlive !== null || !ttsAvailable()) return;
+  // 5s < Chrome's ~15s watchdog. Each tick nudges the engine so a live utterance keeps
+  // flowing and a spontaneously-paused engine un-sticks itself. Stops itself once idle.
+  keepAlive = setInterval(() => {
+    try {
+      if (speechSynthesis.speaking || speechSynthesis.pending) speechSynthesis.resume();
+      else stopKeepAlive();
+    } catch {
+      stopKeepAlive();
+    }
+  }, 5000);
+}
+
+function stopKeepAlive(): void {
+  if (keepAlive !== null) {
+    clearInterval(keepAlive);
+    keepAlive = null;
+  }
+}
 
 function refreshVoices(): void {
   try {
@@ -133,10 +170,37 @@ if (typeof window !== 'undefined' && ttsAvailable()) {
   window.addEventListener('touchstart', onGesture);
 }
 
+// Tab switching / visibility change is the #1 cause of Chrome speech dying mid-session:
+// backgrounding pauses the engine and it often stays stuck paused on return. Resume on
+// every return to foreground so the next (and any in-flight) speak() actually plays.
+if (typeof document !== 'undefined' && ttsAvailable()) {
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') {
+      try {
+        speechSynthesis.resume();
+      } catch {
+        /* engine may be momentarily unavailable; next speak() re-primes */
+      }
+    }
+  });
+}
+
 /* ── Speak ──────────────────────────────────────────────────────────────── */
 
+/** Stop any in-flight speech immediately. Safe to call on unmount / route change. */
+export function cancelSpeech(): void {
+  if (!ttsAvailable()) return;
+  try {
+    activeUtterance = null;
+    stopKeepAlive();
+    speechSynthesis.cancel();
+  } catch {
+    /* nothing to cancel */
+  }
+}
+
 /** Speak text via Web Speech. Resolves when done; resolves (never rejects) on failure. */
-export function speak(text: string, lang = 'it', rate = 1): Promise<void> {
+export function speak(text: string, lang = 'en', rate = 1): Promise<void> {
   return new Promise((resolve) => {
     diag.lastRequest = `${lang} · "${text.slice(0, 42)}" @${rate}`;
     if (!ttsAvailable()) {
@@ -173,7 +237,10 @@ export function speak(text: string, lang = 'it', rate = 1): Promise<void> {
           diag.lastError = error;
           emit();
         }
-        if (activeUtterance === u) activeUtterance = null;
+        if (activeUtterance === u) {
+          activeUtterance = null;
+          stopKeepAlive(); // no live utterance of ours — let the engine idle
+        }
         resolve();
       };
       u.onend = () => done();
@@ -183,6 +250,7 @@ export function speak(text: string, lang = 'it', rate = 1): Promise<void> {
         done(err && err !== 'interrupted' && err !== 'canceled' ? `speak error: ${err}` : undefined);
       };
       synth.speak(u);
+      startKeepAlive(); // keep Chrome's engine alive for the whole utterance
       // Safety net scaled to text length — some engines never fire onend.
       setTimeout(() => done(), Math.max(4000, text.length * 220));
     } catch (err) {
@@ -203,7 +271,7 @@ export function testAudio(): Promise<void> {
 /* ── Asset-first item playback ──────────────────────────────────────────── */
 
 export async function playItem(item: ContentItem, opts?: { slow?: boolean; lang?: string }): Promise<void> {
-  const lang = opts?.lang ?? 'it';
+  const lang = opts?.lang ?? 'en';
   const path = opts?.slow ? (item.audio.slow ?? item.audio.natural) : item.audio.natural;
   const url = `/${path}`;
   try {

@@ -10,9 +10,33 @@ import { DAY7 } from './day7.js';
 import { DAY8 } from './day8.js';
 import { DAY9 } from './day9.js';
 import { DAY10 } from './day10.js';
+import { DAY11 } from './day11.js';
+import { DAY12 } from './day12.js';
+import { DAY13 } from './day13.js';
+import { DAY14 } from './day14.js';
+import { DAY15 } from './day15.js';
+import { DAY16 } from './day16.js';
+import { DAY17 } from './day17.js';
+import { DAY18 } from './day18.js';
+import { DAY19 } from './day19.js';
+import { DAY20 } from './day20.js';
+import { DAY21 } from './day21.js';
+import { DAY22 } from './day22.js';
+import { DAY23 } from './day23.js';
+import { DAY24 } from './day24.js';
+import { DAY25 } from './day25.js';
+import { DAY26 } from './day26.js';
+import { DAY27 } from './day27.js';
+import { DAY28 } from './day28.js';
+import { DAY29 } from './day29.js';
+import { DAY30 } from './day30.js';
 
 // Pure-data registry (avoids importing the store, which loads the app/zustand chain).
-const DAYS: Record<number, BootcampDayContent> = { 1: DAY1, 2: DAY2, 3: DAY3, 4: DAY4, 5: DAY5, 6: DAY6, 7: DAY7, 8: DAY8, 9: DAY9, 10: DAY10 };
+const DAYS: Record<number, BootcampDayContent> = {
+  1: DAY1, 2: DAY2, 3: DAY3, 4: DAY4, 5: DAY5, 6: DAY6, 7: DAY7, 8: DAY8, 9: DAY9, 10: DAY10,
+  11: DAY11, 12: DAY12, 13: DAY13, 14: DAY14, 15: DAY15, 16: DAY16, 17: DAY17, 18: DAY18, 19: DAY19, 20: DAY20,
+  21: DAY21, 22: DAY22, 23: DAY23, 24: DAY24, 25: DAY25, 26: DAY26, 27: DAY27, 28: DAY28, 29: DAY29, 30: DAY30,
+};
 import type { BootcampDayContent, BootcampDialogue } from './types.js';
 
 /**
@@ -113,8 +137,8 @@ describe('30-mission roadmap (Sprint 7 Part 1)', () => {
 
 describe('all built missions are structurally sound', () => {
   const built = Object.entries(DAYS);
-  it('has the Sprint-8 missions built (1-10)', () => {
-    expect(Object.keys(DAYS).map(Number).sort((a, b) => a - b)).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+  it('has all 30 missions built', () => {
+    expect(Object.keys(DAYS).map(Number).sort((a, b) => a - b)).toEqual(Array.from({ length: 30 }, (_, i) => i + 1));
   });
   for (const [num, day] of built) {
     it(`mission ${num} passes reference + dialogue-graph validation`, () => {
@@ -133,10 +157,13 @@ describe('all built missions are structurally sound', () => {
       }
     });
   }
-  it('non-checkpoint missions train expected replies (comprehension-first)', () => {
+  it('content missions train expected replies (comprehension-first)', () => {
+    // Mission 1 is the recovery-tools primer; cold/checkpoint missions (plan concepts === 0)
+    // introduce no new content, so they legitimately skip the replies drill.
+    const coldDays = new Set(BOOTCAMP_PLAN.filter((m) => m.targets.concepts === 0).map((m) => m.day));
     for (const [num, day] of built) {
       const n = Number(num);
-      if (n === 1 || n === 10) continue; // 1 = recovery-tools only; 10 = cold checkpoint
+      if (n === 1 || coldDays.has(n)) continue;
       expect(day.steps.some((s) => s.kind === 'replies')).toBe(true);
     }
   });

@@ -21,16 +21,24 @@ export interface LanguageInfo {
   available: boolean;
 }
 
+// English is the current pilot — the only playable trip language today (the READY Missions
+// Bootcamp is fully English). Italian and the rest are honest "coming soon" until their packs
+// ship. English leads the list so it is the default everywhere it matters.
 export const LEARNING_LANGUAGES: LanguageInfo[] = [
-  { code: 'en', name: 'English', nativeName: 'English', flag: '🇺🇸', accent: '#2f6fed', accentSoft: '#e3ecfd', dir: 'ltr', ttsTag: 'en-US', available: false },
+  { code: 'en', name: 'English', nativeName: 'English', flag: '🇺🇸', accent: '#2f6fed', accentSoft: '#e3ecfd', dir: 'ltr', ttsTag: 'en-US', available: true },
   { code: 'es', name: 'Spanish', nativeName: 'Español', flag: '🇪🇸', accent: '#e8590c', accentSoft: '#fdeadd', dir: 'ltr', ttsTag: 'es-ES', available: false },
   { code: 'fr', name: 'French', nativeName: 'Français', flag: '🇫🇷', accent: '#3b5bdb', accentSoft: '#e5eafb', dir: 'ltr', ttsTag: 'fr-FR', available: false },
-  { code: 'it', name: 'Italian', nativeName: 'Italiano', flag: '🇮🇹', accent: '#0ca678', accentSoft: '#dcf5ec', dir: 'ltr', ttsTag: 'it-IT', available: true },
+  { code: 'it', name: 'Italian', nativeName: 'Italiano', flag: '🇮🇹', accent: '#0ca678', accentSoft: '#dcf5ec', dir: 'ltr', ttsTag: 'it-IT', available: false },
   { code: 'ar', name: 'Arabic', nativeName: 'العربية', flag: '🇸🇦', accent: '#b8860b', accentSoft: '#f7efd8', dir: 'rtl', ttsTag: 'ar-SA', available: false },
 ];
 
+/** The current pilot / default trip language. Single source of truth for the default. */
+export const PILOT_LANG = 'en';
+
 export function languageInfo(code: string): LanguageInfo {
-  return LEARNING_LANGUAGES.find((l) => l.code === code) ?? (LEARNING_LANGUAGES[3] as LanguageInfo);
+  return LEARNING_LANGUAGES.find((l) => l.code === code)
+    ?? LEARNING_LANGUAGES.find((l) => l.code === PILOT_LANG)
+    ?? (LEARNING_LANGUAGES[0] as LanguageInfo);
 }
 
 /** Apply a learning language's theme to the document (accent drives the whole UI). */

@@ -14,9 +14,9 @@ export function LanguageSelect() {
 
   return (
     <div className="screen">
-      <TopBar title={t('learningLanguage')} />
+      <TopBar title={t('learningLanguage')} backTo="bootcamp" />
       <div className="screen-scroll">
-        <p className="dim small" style={{ marginBottom: 14 }}>{t('chooseLanguageSub')}</p>
+        <p className="dim small" style={{ marginBottom: 14 }}>{t('moreLanguagesSoon')}</p>
         <div className="lang-grid stagger">
           {LEARNING_LANGUAGES.map((l) => {
             const selected = l.code === app.learningLang;
@@ -28,7 +28,7 @@ export function LanguageSelect() {
                 onClick={() => {
                   if (!l.available) return;
                   tap();
-                  void app.setLearningLang(l.code).then(() => app.navigate('mission'));
+                  void app.setLearningLang(l.code).then(() => app.navigate('bootcamp'));
                 }}
                 aria-pressed={selected}
               >

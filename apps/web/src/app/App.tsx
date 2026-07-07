@@ -19,6 +19,28 @@ import { Bootcamp } from '../features/bootcamp/Bootcamp.js';
 
 const TAB_VIEWS: View[] = ['mission', 'words', 'phrases', 'situations', 'practice'];
 
+// Views that render shipped content-pack material. During the English pilot no pack ships, so
+// these gate to an honest "coming soon" instead of showing Italian content or crashing on a
+// null pack. The Bootcamp (the pilot), the language screen and onboarding never gate.
+const PACK_GATED: View[] = ['mission', 'words', 'phrases', 'situations', 'practice', 'session', 'emergency', 'plan'];
+
+/** Honest placeholder for content surfaces not yet rebuilt for the English pilot. */
+function ComingSoon() {
+  const navigate = useAppStore((s) => s.navigate);
+  return (
+    <div className="screen" style={{ justifyContent: 'center' }}>
+      <div className="drill-card pop-in center">
+        <p style={{ fontSize: '2.6rem' }}>🚧</p>
+        <p className="drill-phrase" style={{ fontSize: '1.35rem' }}>{t('comingSoonTitle')}</p>
+        <p className="drill-meaning">{t('comingSoonBody')}</p>
+      </div>
+      <div className="action-zone">
+        <button className="btn-primary" onClick={() => navigate('bootcamp')}>{t('backToBootcamp')}</button>
+      </div>
+    </div>
+  );
+}
+
 const SCREENS: Partial<Record<View, { feature: string; el: () => JSX.Element | null }>> = {
   onboarding: { feature: 'Onboarding', el: Onboarding },
   mission: { feature: 'Mission', el: Mission },
@@ -34,7 +56,7 @@ const SCREENS: Partial<Record<View, { feature: string; el: () => JSX.Element | n
 };
 
 export function App() {
-  const { view, loading, fatalError, init } = useAppStore();
+  const { view, loading, fatalError, init, pack } = useAppStore();
 
   useEffect(() => {
     void init();
@@ -62,7 +84,16 @@ export function App() {
     );
   }
 
-  const screen = SCREENS[view] ?? SCREENS.mission;
+  // Pilot: content-pack screens gate to "coming soon" until an English pack ships.
+  if (!pack && PACK_GATED.includes(view)) {
+    return (
+      <ErrorBoundary feature="ComingSoon">
+        <ComingSoon />
+      </ErrorBoundary>
+    );
+  }
+
+  const screen = SCREENS[view] ?? SCREENS.bootcamp;
   if (!screen) return null;
   const Screen = screen.el;
 
@@ -71,7 +102,7 @@ export function App() {
       <ErrorBoundary feature={screen.feature}>
         <Screen />
       </ErrorBoundary>
-      {TAB_VIEWS.includes(view) && <BottomNav />}
+      {TAB_VIEWS.includes(view) && pack && <BottomNav />}
       {import.meta.env.DEV && (
         <ErrorBoundary feature="DevDiagnostics">
           <AudioDebug />
