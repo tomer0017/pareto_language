@@ -7,6 +7,16 @@ import type {
   UserProfile,
 } from '@ready/content-schema';
 
+/** Where a content pack actually came from — surfaced to dev diagnostics. */
+export interface ContentSourceEvent {
+  source: 'api' | 'idb-cache' | 'static';
+  lang: string;
+  version?: string;
+  /** Set when this source was reached via fallback (e.g. API was down). */
+  reason?: string;
+}
+export type ContentSourceReporter = (event: ContentSourceEvent) => void;
+
 /**
  * The one interface the UI depends on (PDF §11.2 Decision 3). Three implementations plug in
  * without the UI knowing which is active: MockProvider → LocalProvider (IndexedDB, the permanent

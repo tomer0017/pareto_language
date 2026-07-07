@@ -15,6 +15,7 @@ import { ApiProvider, LocalProvider, type DataProvider } from '@ready/data';
 import { buildPlan, computeReadiness, DAY_MS } from '@ready/engine';
 import { applyLanguageTheme, applyUiDirection, languageInfo } from '../i18n/languages.js';
 import { setUiLangDict } from '../i18n/strings.js';
+import { reportContentSource, setProviderDiag } from '../data/dataDiag.js';
 
 export type View =
   | 'onboarding'
@@ -84,9 +85,14 @@ function toMaps(pack: ContentPack): {
 const API_BASE = (import.meta.env.VITE_API_BASE as string | undefined) ?? '';
 
 function makeProvider(): DataProvider {
-  const local = new LocalProvider();
-  // Local-first always; the API layer only adds background sync when configured (PDF §11.4).
-  return API_BASE ? new ApiProvider(local, { baseUrl: API_BASE }) : local;
+  // Local-first always; when VITE_API_BASE is set, ApiProvider makes content API-first (server
+  // pack → IDB cache → static fallback) and adds background sync (PDF §11.4). The reporter feeds
+  // the dev data-source diagnostics so it's visible which layer actually served each pack.
+  const local = new LocalProvider(undefined, reportContentSource);
+  setProviderDiag(API_BASE ? 'api' : 'local-only', API_BASE);
+  return API_BASE
+    ? new ApiProvider(local, { baseUrl: API_BASE, report: reportContentSource })
+    : local;
 }
 
 const storedUiLang = localStorage.getItem('ready.uiLang') ?? 'en';

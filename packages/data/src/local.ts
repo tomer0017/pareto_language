@@ -8,7 +8,7 @@ import type {
   TripPlan,
   UserProfile,
 } from '@ready/content-schema';
-import type { DataProvider } from './provider.js';
+import type { ContentSourceReporter, DataProvider } from './provider.js';
 import { mergeEvents, projectMemoryStates } from './projection.js';
 
 const DB_NAME = 'ready-db';
@@ -37,6 +37,8 @@ export class LocalProvider implements DataProvider {
   /** Optional network fetcher (browser fetch by default); overridable for tests. */
   constructor(
     private readonly fetchPack: (lang: string, version?: string) => Promise<ContentPack> = defaultFetchPack,
+    /** Optional dev diagnostics hook: reports whether a pack came from IDB cache or static. */
+    private readonly report?: ContentSourceReporter,
   ) {}
 
   private db(): Promise<IDBPDatabase<ReadyDB>> {
@@ -87,11 +89,13 @@ export class LocalProvider implements DataProvider {
     const cached = await db.get('packs', lang);
     if (cached && (!version || cached.pack.version === version)) {
       this.indexItems(cached.pack);
+      this.report?.({ source: 'idb-cache', lang, version: cached.pack.version });
       return cached.pack;
     }
     const pack = await this.fetchPack(lang, version);
     await db.put('packs', { lang, pack, cachedAt: new Date().toISOString() });
     this.indexItems(pack);
+    this.report?.({ source: 'static', lang, version: pack.version });
     return pack;
   }
 

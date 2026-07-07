@@ -4,6 +4,7 @@ import { t } from '../shared/i18n/strings.js';
 import { ErrorBoundary } from '../shared/ui/ErrorBoundary.js';
 import { BottomNav } from '../shared/ui/BottomNav.js';
 import { AudioDebug } from '../shared/ui/AudioDebug.js';
+import { DataDebug } from '../shared/ui/DataDebug.js';
 import { Onboarding } from '../features/onboarding/Onboarding.js';
 import { Mission } from '../features/mission/Mission.js';
 import { Words } from '../features/phrasebook/Words.js';
@@ -72,8 +73,9 @@ export function App() {
       </ErrorBoundary>
       {TAB_VIEWS.includes(view) && <BottomNav />}
       {import.meta.env.DEV && (
-        <ErrorBoundary feature="AudioDebug">
+        <ErrorBoundary feature="DevDiagnostics">
           <AudioDebug />
+          <DataDebug />
         </ErrorBoundary>
       )}
     </>

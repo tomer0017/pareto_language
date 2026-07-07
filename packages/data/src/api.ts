@@ -6,7 +6,7 @@ import type {
   TripPlan,
   UserProfile,
 } from '@ready/content-schema';
-import type { DataProvider } from './provider.js';
+import type { ContentSourceReporter, DataProvider } from './provider.js';
 import type { LocalProvider } from './local.js';
 
 export interface ApiProviderOptions {
@@ -14,6 +14,8 @@ export interface ApiProviderOptions {
   fetchFn?: typeof fetch;
   /** Backoff schedule in ms between sync retries (M4: retry with backoff). */
   backoffMs?: number[];
+  /** Optional dev diagnostics hook: reports API vs cache/static content source. */
+  report?: ContentSourceReporter;
 }
 
 /**
@@ -143,16 +145,23 @@ export class ApiProvider implements DataProvider {
    * as fallback — the app never breaks when the backend is down (P7, local-first).
    */
   async getContentPack(lang: string, version?: string): Promise<ContentPack> {
+    let reason = 'API returned non-OK';
     try {
       const res = await this.call(`/content/packs/${lang}/full`);
       if (res.ok) {
         const pack = (await res.json()) as ContentPack;
         await this.local.cachePack(pack);
+        this.opts.report?.({ source: 'api', lang, version: pack.version });
         return pack;
       }
+      reason = `API ${res.status}`;
     } catch (err) {
+      reason = err instanceof Error ? err.message : String(err);
       console.warn('[content] API pack unavailable; using local/static pack', err);
     }
+    // Fallback: LocalProvider reports the actual source (idb-cache/static) it lands on,
+    // annotated with why the API path was not used.
+    this.opts.report?.({ source: 'idb-cache', lang, reason: `fallback: ${reason}` });
     return this.local.getContentPack(lang, version);
   }
 

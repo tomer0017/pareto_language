@@ -122,4 +122,36 @@ describe('ApiProvider — content is API-first with local fallback (M6)', () => 
     const pack = await api.getContentPack('it');
     expect(pack.version).toBe(testPack.version); // app keeps working — no crash
   });
+
+  it('reports the content source to the dev diagnostics hook', async () => {
+    globalThis.indexedDB = new IDBFactory();
+    const events: { source: string; reason?: string }[] = [];
+    const local = new LocalProvider(async () => testPack, (e) => events.push(e));
+    const apiPack = { ...testPack, version: '9.9.9' };
+
+    // API healthy → source 'api'.
+    const up = new ApiProvider(local, {
+      baseUrl: 'http://x/api/v1',
+      fetchFn: (async () => okJson(apiPack)) as typeof fetch,
+      report: (e) => events.push(e),
+    });
+    await up.getContentPack('it');
+    expect(events.some((e) => e.source === 'api')).toBe(true);
+
+    // API down → a fallback reason is recorded and it lands on a local source.
+    events.length = 0;
+    globalThis.indexedDB = new IDBFactory();
+    const freshLocal = new LocalProvider(async () => testPack, (e) => events.push(e));
+    const down = new ApiProvider(freshLocal, {
+      baseUrl: 'http://x/api/v1',
+      fetchFn: (async () => {
+        throw new Error('server down');
+      }) as unknown as typeof fetch,
+      report: (e) => events.push(e),
+    });
+    await down.getContentPack('it');
+    expect(events.some((e) => e.reason?.includes('server down'))).toBe(true);
+    expect(events.some((e) => e.source === 'static')).toBe(true);
+    expect(events.every((e) => e.source !== 'api')).toBe(true);
+  });
 });
