@@ -1,0 +1,4046 @@
+{
+  "lang": "it",
+  "version": "0.2.0",
+  "needsNativeReview": true,
+  "items": [
+    {
+      "id": "it.phrase.glue.grazie",
+      "kind": "phrase",
+      "text": "Grazie",
+      "meaning": {
+        "en": "Thank you"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.glue.grazie.mp3"
+      },
+      "tier": 0,
+      "skillTarget": "fluent",
+      "situationIds": []
+    },
+    {
+      "id": "it.phrase.glue.prego",
+      "kind": "phrase",
+      "text": "Prego",
+      "meaning": {
+        "en": "You're welcome / Go ahead"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.glue.prego.mp3"
+      },
+      "tier": 0,
+      "skillTarget": "fluent",
+      "situationIds": []
+    },
+    {
+      "id": "it.phrase.glue.perfavore",
+      "kind": "phrase",
+      "text": "Per favore",
+      "meaning": {
+        "en": "Please"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.glue.perfavore.mp3"
+      },
+      "tier": 0,
+      "skillTarget": "fluent",
+      "situationIds": []
+    },
+    {
+      "id": "it.phrase.glue.scusi",
+      "kind": "phrase",
+      "text": "Scusi",
+      "meaning": {
+        "en": "Excuse me (formal)"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.glue.scusi.mp3"
+      },
+      "tier": 0,
+      "skillTarget": "fluent",
+      "situationIds": []
+    },
+    {
+      "id": "it.phrase.glue.mi-dispiace",
+      "kind": "phrase",
+      "text": "Mi dispiace",
+      "meaning": {
+        "en": "I'm sorry"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.glue.mi-dispiace.mp3"
+      },
+      "tier": 0,
+      "skillTarget": "fluent",
+      "situationIds": []
+    },
+    {
+      "id": "it.phrase.glue.si",
+      "kind": "phrase",
+      "text": "Sì",
+      "meaning": {
+        "en": "Yes"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.glue.si.mp3"
+      },
+      "tier": 0,
+      "skillTarget": "fluent",
+      "situationIds": []
+    },
+    {
+      "id": "it.phrase.glue.no",
+      "kind": "phrase",
+      "text": "No",
+      "meaning": {
+        "en": "No"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.glue.no.mp3"
+      },
+      "tier": 0,
+      "skillTarget": "fluent",
+      "situationIds": []
+    },
+    {
+      "id": "it.phrase.glue.buongiorno",
+      "kind": "phrase",
+      "text": "Buongiorno",
+      "meaning": {
+        "en": "Good morning / Hello"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.glue.buongiorno.mp3"
+      },
+      "tier": 0,
+      "skillTarget": "fluent",
+      "situationIds": []
+    },
+    {
+      "id": "it.phrase.glue.buonasera",
+      "kind": "phrase",
+      "text": "Buonasera",
+      "meaning": {
+        "en": "Good evening"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.glue.buonasera.mp3"
+      },
+      "tier": 0,
+      "skillTarget": "fluent",
+      "situationIds": []
+    },
+    {
+      "id": "it.phrase.glue.arrivederci",
+      "kind": "phrase",
+      "text": "Arrivederci",
+      "meaning": {
+        "en": "Goodbye"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.glue.arrivederci.mp3"
+      },
+      "tier": 0,
+      "skillTarget": "fluent",
+      "situationIds": []
+    },
+    {
+      "id": "it.phrase.glue.non-parlo",
+      "kind": "phrase",
+      "text": "Non parlo italiano",
+      "meaning": {
+        "en": "I don't speak Italian"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.glue.non-parlo.mp3"
+      },
+      "tier": 0,
+      "skillTarget": "fluent",
+      "situationIds": []
+    },
+    {
+      "id": "it.phrase.glue.parla-inglese",
+      "kind": "phrase",
+      "text": "Parla inglese?",
+      "meaning": {
+        "en": "Do you speak English?"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.glue.parla-inglese.mp3"
+      },
+      "tier": 0,
+      "skillTarget": "fluent",
+      "situationIds": []
+    },
+    {
+      "id": "it.phrase.glue.non-capito",
+      "kind": "phrase",
+      "text": "Non ho capito",
+      "meaning": {
+        "en": "I didn't understand"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.glue.non-capito.mp3"
+      },
+      "tier": 0,
+      "skillTarget": "fluent",
+      "situationIds": []
+    },
+    {
+      "id": "it.phrase.glue.piu-lento",
+      "kind": "phrase",
+      "text": "Può parlare più lentamente?",
+      "meaning": {
+        "en": "Can you speak more slowly?"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.glue.piu-lento.mp3"
+      },
+      "tier": 0,
+      "skillTarget": "fluent",
+      "situationIds": []
+    },
+    {
+      "id": "it.number.zero",
+      "kind": "number",
+      "text": "zero",
+      "meaning": {
+        "en": "0"
+      },
+      "audio": {
+        "natural": "audio/it/it.number.zero.mp3"
+      },
+      "tier": 0,
+      "skillTarget": "recognize",
+      "situationIds": []
+    },
+    {
+      "id": "it.number.uno",
+      "kind": "number",
+      "text": "uno",
+      "meaning": {
+        "en": "1"
+      },
+      "audio": {
+        "natural": "audio/it/it.number.uno.mp3"
+      },
+      "tier": 0,
+      "skillTarget": "recognize",
+      "situationIds": []
+    },
+    {
+      "id": "it.number.due",
+      "kind": "number",
+      "text": "due",
+      "meaning": {
+        "en": "2"
+      },
+      "audio": {
+        "natural": "audio/it/it.number.due.mp3"
+      },
+      "tier": 0,
+      "skillTarget": "recognize",
+      "situationIds": []
+    },
+    {
+      "id": "it.number.tre",
+      "kind": "number",
+      "text": "tre",
+      "meaning": {
+        "en": "3"
+      },
+      "audio": {
+        "natural": "audio/it/it.number.tre.mp3"
+      },
+      "tier": 0,
+      "skillTarget": "recognize",
+      "situationIds": []
+    },
+    {
+      "id": "it.number.quattro",
+      "kind": "number",
+      "text": "quattro",
+      "meaning": {
+        "en": "4"
+      },
+      "audio": {
+        "natural": "audio/it/it.number.quattro.mp3"
+      },
+      "tier": 0,
+      "skillTarget": "recognize",
+      "situationIds": []
+    },
+    {
+      "id": "it.number.cinque",
+      "kind": "number",
+      "text": "cinque",
+      "meaning": {
+        "en": "5"
+      },
+      "audio": {
+        "natural": "audio/it/it.number.cinque.mp3"
+      },
+      "tier": 0,
+      "skillTarget": "recognize",
+      "situationIds": []
+    },
+    {
+      "id": "it.number.sei",
+      "kind": "number",
+      "text": "sei",
+      "meaning": {
+        "en": "6"
+      },
+      "audio": {
+        "natural": "audio/it/it.number.sei.mp3"
+      },
+      "tier": 0,
+      "skillTarget": "recognize",
+      "situationIds": []
+    },
+    {
+      "id": "it.number.sette",
+      "kind": "number",
+      "text": "sette",
+      "meaning": {
+        "en": "7"
+      },
+      "audio": {
+        "natural": "audio/it/it.number.sette.mp3"
+      },
+      "tier": 0,
+      "skillTarget": "recognize",
+      "situationIds": []
+    },
+    {
+      "id": "it.number.otto",
+      "kind": "number",
+      "text": "otto",
+      "meaning": {
+        "en": "8"
+      },
+      "audio": {
+        "natural": "audio/it/it.number.otto.mp3"
+      },
+      "tier": 0,
+      "skillTarget": "recognize",
+      "situationIds": []
+    },
+    {
+      "id": "it.number.nove",
+      "kind": "number",
+      "text": "nove",
+      "meaning": {
+        "en": "9"
+      },
+      "audio": {
+        "natural": "audio/it/it.number.nove.mp3"
+      },
+      "tier": 0,
+      "skillTarget": "recognize",
+      "situationIds": []
+    },
+    {
+      "id": "it.number.dieci",
+      "kind": "number",
+      "text": "dieci",
+      "meaning": {
+        "en": "10"
+      },
+      "audio": {
+        "natural": "audio/it/it.number.dieci.mp3"
+      },
+      "tier": 0,
+      "skillTarget": "recognize",
+      "situationIds": []
+    },
+    {
+      "id": "it.number.undici",
+      "kind": "number",
+      "text": "undici",
+      "meaning": {
+        "en": "11"
+      },
+      "audio": {
+        "natural": "audio/it/it.number.undici.mp3"
+      },
+      "tier": 0,
+      "skillTarget": "recognize",
+      "situationIds": []
+    },
+    {
+      "id": "it.number.dodici",
+      "kind": "number",
+      "text": "dodici",
+      "meaning": {
+        "en": "12"
+      },
+      "audio": {
+        "natural": "audio/it/it.number.dodici.mp3"
+      },
+      "tier": 0,
+      "skillTarget": "recognize",
+      "situationIds": []
+    },
+    {
+      "id": "it.number.tredici",
+      "kind": "number",
+      "text": "tredici",
+      "meaning": {
+        "en": "13"
+      },
+      "audio": {
+        "natural": "audio/it/it.number.tredici.mp3"
+      },
+      "tier": 0,
+      "skillTarget": "recognize",
+      "situationIds": []
+    },
+    {
+      "id": "it.number.quattordici",
+      "kind": "number",
+      "text": "quattordici",
+      "meaning": {
+        "en": "14"
+      },
+      "audio": {
+        "natural": "audio/it/it.number.quattordici.mp3"
+      },
+      "tier": 0,
+      "skillTarget": "recognize",
+      "situationIds": []
+    },
+    {
+      "id": "it.number.quindici",
+      "kind": "number",
+      "text": "quindici",
+      "meaning": {
+        "en": "15"
+      },
+      "audio": {
+        "natural": "audio/it/it.number.quindici.mp3"
+      },
+      "tier": 0,
+      "skillTarget": "recognize",
+      "situationIds": []
+    },
+    {
+      "id": "it.number.sedici",
+      "kind": "number",
+      "text": "sedici",
+      "meaning": {
+        "en": "16"
+      },
+      "audio": {
+        "natural": "audio/it/it.number.sedici.mp3"
+      },
+      "tier": 0,
+      "skillTarget": "recognize",
+      "situationIds": []
+    },
+    {
+      "id": "it.number.diciassette",
+      "kind": "number",
+      "text": "diciassette",
+      "meaning": {
+        "en": "17"
+      },
+      "audio": {
+        "natural": "audio/it/it.number.diciassette.mp3"
+      },
+      "tier": 0,
+      "skillTarget": "recognize",
+      "situationIds": []
+    },
+    {
+      "id": "it.number.diciotto",
+      "kind": "number",
+      "text": "diciotto",
+      "meaning": {
+        "en": "18"
+      },
+      "audio": {
+        "natural": "audio/it/it.number.diciotto.mp3"
+      },
+      "tier": 0,
+      "skillTarget": "recognize",
+      "situationIds": []
+    },
+    {
+      "id": "it.number.diciannove",
+      "kind": "number",
+      "text": "diciannove",
+      "meaning": {
+        "en": "19"
+      },
+      "audio": {
+        "natural": "audio/it/it.number.diciannove.mp3"
+      },
+      "tier": 0,
+      "skillTarget": "recognize",
+      "situationIds": []
+    },
+    {
+      "id": "it.number.venti",
+      "kind": "number",
+      "text": "venti",
+      "meaning": {
+        "en": "20"
+      },
+      "audio": {
+        "natural": "audio/it/it.number.venti.mp3"
+      },
+      "tier": 0,
+      "skillTarget": "recognize",
+      "situationIds": []
+    },
+    {
+      "id": "it.number.trenta",
+      "kind": "number",
+      "text": "trenta",
+      "meaning": {
+        "en": "30"
+      },
+      "audio": {
+        "natural": "audio/it/it.number.trenta.mp3"
+      },
+      "tier": 0,
+      "skillTarget": "recognize",
+      "situationIds": []
+    },
+    {
+      "id": "it.number.quaranta",
+      "kind": "number",
+      "text": "quaranta",
+      "meaning": {
+        "en": "40"
+      },
+      "audio": {
+        "natural": "audio/it/it.number.quaranta.mp3"
+      },
+      "tier": 0,
+      "skillTarget": "recognize",
+      "situationIds": []
+    },
+    {
+      "id": "it.number.cinquanta",
+      "kind": "number",
+      "text": "cinquanta",
+      "meaning": {
+        "en": "50"
+      },
+      "audio": {
+        "natural": "audio/it/it.number.cinquanta.mp3"
+      },
+      "tier": 0,
+      "skillTarget": "recognize",
+      "situationIds": []
+    },
+    {
+      "id": "it.number.cento",
+      "kind": "number",
+      "text": "cento",
+      "meaning": {
+        "en": "100"
+      },
+      "audio": {
+        "natural": "audio/it/it.number.cento.mp3"
+      },
+      "tier": 0,
+      "skillTarget": "recognize",
+      "situationIds": []
+    },
+    {
+      "id": "it.number.mille",
+      "kind": "number",
+      "text": "mille",
+      "meaning": {
+        "en": "1000"
+      },
+      "audio": {
+        "natural": "audio/it/it.number.mille.mp3"
+      },
+      "tier": 0,
+      "skillTarget": "recognize",
+      "situationIds": []
+    },
+    {
+      "id": "it.phrase.restaurant.table-two",
+      "kind": "phrase",
+      "text": "Un tavolo per due, per favore",
+      "meaning": {
+        "en": "A table for two, please"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.restaurant.table-two.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recall",
+      "situationIds": [
+        "restaurant"
+      ]
+    },
+    {
+      "id": "it.phrase.restaurant.menu",
+      "kind": "phrase",
+      "text": "Il menù, per favore",
+      "meaning": {
+        "en": "The menu, please"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.restaurant.menu.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recall",
+      "situationIds": [
+        "restaurant"
+      ]
+    },
+    {
+      "id": "it.phrase.restaurant.coffee",
+      "kind": "phrase",
+      "text": "Un caffè, per favore",
+      "meaning": {
+        "en": "A coffee, please"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.restaurant.coffee.mp3"
+      },
+      "tier": 0,
+      "skillTarget": "recall",
+      "situationIds": [
+        "restaurant"
+      ]
+    },
+    {
+      "id": "it.phrase.restaurant.water",
+      "kind": "phrase",
+      "text": "Una bottiglia d'acqua, per favore",
+      "meaning": {
+        "en": "A bottle of water, please"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.restaurant.water.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recall",
+      "situationIds": [
+        "restaurant"
+      ]
+    },
+    {
+      "id": "it.phrase.restaurant.order-this",
+      "kind": "phrase",
+      "text": "Vorrei questo, per favore",
+      "meaning": {
+        "en": "I'd like this, please"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.restaurant.order-this.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recall",
+      "situationIds": [
+        "restaurant"
+      ]
+    },
+    {
+      "id": "it.phrase.restaurant.bill",
+      "kind": "phrase",
+      "text": "Il conto, per favore",
+      "meaning": {
+        "en": "The bill, please"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.restaurant.bill.mp3"
+      },
+      "tier": 0,
+      "skillTarget": "recall",
+      "situationIds": [
+        "restaurant"
+      ]
+    },
+    {
+      "id": "it.phrase.restaurant.card",
+      "kind": "phrase",
+      "text": "Posso pagare con la carta?",
+      "meaning": {
+        "en": "Can I pay by card?"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.restaurant.card.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recall",
+      "situationIds": [
+        "restaurant"
+      ]
+    },
+    {
+      "id": "it.phrase.restaurant.delicious",
+      "kind": "phrase",
+      "text": "Era tutto buonissimo",
+      "meaning": {
+        "en": "It was all delicious"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.restaurant.delicious.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recall",
+      "situationIds": [
+        "restaurant"
+      ]
+    },
+    {
+      "id": "it.reply.restaurant.to-drink",
+      "kind": "reply",
+      "text": "Da bere?",
+      "meaning": {
+        "en": "Anything to drink?"
+      },
+      "audio": {
+        "natural": "audio/it/it.reply.restaurant.to-drink.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recognize",
+      "situationIds": [
+        "restaurant"
+      ]
+    },
+    {
+      "id": "it.reply.restaurant.here-away",
+      "kind": "reply",
+      "text": "Qui o da portare via?",
+      "meaning": {
+        "en": "Here or to take away?"
+      },
+      "audio": {
+        "natural": "audio/it/it.reply.restaurant.here-away.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recognize",
+      "situationIds": [
+        "restaurant"
+      ]
+    },
+    {
+      "id": "it.reply.restaurant.cash-card",
+      "kind": "reply",
+      "text": "Contanti o carta?",
+      "meaning": {
+        "en": "Cash or card?"
+      },
+      "audio": {
+        "natural": "audio/it/it.reply.restaurant.cash-card.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recognize",
+      "situationIds": [
+        "restaurant"
+      ]
+    },
+    {
+      "id": "it.reply.restaurant.reserved",
+      "kind": "reply",
+      "text": "Ha prenotato?",
+      "meaning": {
+        "en": "Do you have a reservation?"
+      },
+      "audio": {
+        "natural": "audio/it/it.reply.restaurant.reserved.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recognize",
+      "situationIds": [
+        "restaurant"
+      ]
+    },
+    {
+      "id": "it.reply.restaurant.anything-else",
+      "kind": "reply",
+      "text": "Desidera altro?",
+      "meaning": {
+        "en": "Anything else?"
+      },
+      "audio": {
+        "natural": "audio/it/it.reply.restaurant.anything-else.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recognize",
+      "situationIds": [
+        "restaurant"
+      ]
+    },
+    {
+      "id": "it.word.restaurant.menu-w",
+      "kind": "word",
+      "text": "il menù",
+      "meaning": {
+        "en": "menu"
+      },
+      "audio": {
+        "natural": "audio/it/it.word.restaurant.menu-w.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recognize",
+      "situationIds": [
+        "restaurant"
+      ]
+    },
+    {
+      "id": "it.word.restaurant.bill-w",
+      "kind": "word",
+      "text": "il conto",
+      "meaning": {
+        "en": "the bill"
+      },
+      "audio": {
+        "natural": "audio/it/it.word.restaurant.bill-w.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recognize",
+      "situationIds": [
+        "restaurant"
+      ]
+    },
+    {
+      "id": "it.word.restaurant.table-w",
+      "kind": "word",
+      "text": "il tavolo",
+      "meaning": {
+        "en": "table"
+      },
+      "audio": {
+        "natural": "audio/it/it.word.restaurant.table-w.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recognize",
+      "situationIds": [
+        "restaurant"
+      ]
+    },
+    {
+      "id": "it.phrase.transport.to-address",
+      "kind": "phrase",
+      "text": "Mi porti a questo indirizzo, per favore",
+      "meaning": {
+        "en": "Take me to this address, please"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.transport.to-address.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recall",
+      "situationIds": [
+        "transport"
+      ]
+    },
+    {
+      "id": "it.phrase.transport.how-much-centre",
+      "kind": "phrase",
+      "text": "Quanto costa fino al centro?",
+      "meaning": {
+        "en": "How much is it to the centre?"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.transport.how-much-centre.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recall",
+      "situationIds": [
+        "transport"
+      ]
+    },
+    {
+      "id": "it.phrase.transport.one-ticket",
+      "kind": "phrase",
+      "text": "Un biglietto, per favore",
+      "meaning": {
+        "en": "One ticket, please"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.transport.one-ticket.mp3"
+      },
+      "tier": 0,
+      "skillTarget": "recall",
+      "situationIds": [
+        "transport"
+      ]
+    },
+    {
+      "id": "it.phrase.transport.two-tickets",
+      "kind": "phrase",
+      "text": "Due biglietti per il centro",
+      "meaning": {
+        "en": "Two tickets to the centre"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.transport.two-tickets.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recall",
+      "situationIds": [
+        "transport"
+      ]
+    },
+    {
+      "id": "it.phrase.transport.which-platform",
+      "kind": "phrase",
+      "text": "Da quale binario parte?",
+      "meaning": {
+        "en": "Which platform does it leave from?"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.transport.which-platform.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recall",
+      "situationIds": [
+        "transport"
+      ]
+    },
+    {
+      "id": "it.phrase.transport.does-stop",
+      "kind": "phrase",
+      "text": "Ferma a San Marco?",
+      "meaning": {
+        "en": "Does it stop at San Marco?"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.transport.does-stop.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recall",
+      "situationIds": [
+        "transport"
+      ]
+    },
+    {
+      "id": "it.phrase.transport.next-stop",
+      "kind": "phrase",
+      "text": "Qual è la prossima fermata?",
+      "meaning": {
+        "en": "What's the next stop?"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.transport.next-stop.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recall",
+      "situationIds": [
+        "transport"
+      ]
+    },
+    {
+      "id": "it.phrase.transport.stop-here",
+      "kind": "phrase",
+      "text": "Può fermarsi qui, per favore",
+      "meaning": {
+        "en": "Can you stop here, please"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.transport.stop-here.mp3"
+      },
+      "tier": 0,
+      "skillTarget": "recall",
+      "situationIds": [
+        "transport"
+      ]
+    },
+    {
+      "id": "it.reply.transport.cash-only",
+      "kind": "reply",
+      "text": "Solo contanti",
+      "meaning": {
+        "en": "Cash only"
+      },
+      "audio": {
+        "natural": "audio/it/it.reply.transport.cash-only.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recognize",
+      "situationIds": [
+        "transport"
+      ]
+    },
+    {
+      "id": "it.reply.transport.platform-three",
+      "kind": "reply",
+      "text": "Binario tre",
+      "meaning": {
+        "en": "Platform three"
+      },
+      "audio": {
+        "natural": "audio/it/it.reply.transport.platform-three.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recognize",
+      "situationIds": [
+        "transport"
+      ]
+    },
+    {
+      "id": "it.reply.transport.next-at-ten",
+      "kind": "reply",
+      "text": "Il prossimo è alle dieci",
+      "meaning": {
+        "en": "The next one is at ten"
+      },
+      "audio": {
+        "natural": "audio/it/it.reply.transport.next-at-ten.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recognize",
+      "situationIds": [
+        "transport"
+      ]
+    },
+    {
+      "id": "it.reply.transport.get-off-next",
+      "kind": "reply",
+      "text": "Deve scendere alla prossima",
+      "meaning": {
+        "en": "You need to get off at the next stop"
+      },
+      "audio": {
+        "natural": "audio/it/it.reply.transport.get-off-next.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recognize",
+      "situationIds": [
+        "transport"
+      ]
+    },
+    {
+      "id": "it.reply.transport.straight-reply",
+      "kind": "reply",
+      "text": "È sempre dritto",
+      "meaning": {
+        "en": "It's straight ahead"
+      },
+      "audio": {
+        "natural": "audio/it/it.reply.transport.straight-reply.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recognize",
+      "situationIds": [
+        "transport"
+      ]
+    },
+    {
+      "id": "it.word.transport.exit-w",
+      "kind": "word",
+      "text": "uscita",
+      "meaning": {
+        "en": "exit"
+      },
+      "audio": {
+        "natural": "audio/it/it.word.transport.exit-w.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recognize",
+      "situationIds": [
+        "transport"
+      ]
+    },
+    {
+      "id": "it.word.transport.platform-w",
+      "kind": "word",
+      "text": "binario",
+      "meaning": {
+        "en": "platform (track)"
+      },
+      "audio": {
+        "natural": "audio/it/it.word.transport.platform-w.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recognize",
+      "situationIds": [
+        "transport"
+      ]
+    },
+    {
+      "id": "it.word.transport.ticket-w",
+      "kind": "word",
+      "text": "biglietto",
+      "meaning": {
+        "en": "ticket"
+      },
+      "audio": {
+        "natural": "audio/it/it.word.transport.ticket-w.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recognize",
+      "situationIds": [
+        "transport"
+      ]
+    },
+    {
+      "id": "it.phrase.shopping.how-much",
+      "kind": "phrase",
+      "text": "Quanto costa?",
+      "meaning": {
+        "en": "How much is it?"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.shopping.how-much.mp3"
+      },
+      "tier": 0,
+      "skillTarget": "recall",
+      "situationIds": [
+        "shopping"
+      ]
+    },
+    {
+      "id": "it.phrase.shopping.just-looking",
+      "kind": "phrase",
+      "text": "Sto solo guardando, grazie",
+      "meaning": {
+        "en": "I'm just looking, thanks"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.shopping.just-looking.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recall",
+      "situationIds": [
+        "shopping"
+      ]
+    },
+    {
+      "id": "it.phrase.shopping.try-on",
+      "kind": "phrase",
+      "text": "Posso provarlo?",
+      "meaning": {
+        "en": "Can I try it on?"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.shopping.try-on.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recall",
+      "situationIds": [
+        "shopping"
+      ]
+    },
+    {
+      "id": "it.phrase.shopping.bigger-size",
+      "kind": "phrase",
+      "text": "Avete una taglia più grande?",
+      "meaning": {
+        "en": "Do you have a bigger size?"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.shopping.bigger-size.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recall",
+      "situationIds": [
+        "shopping"
+      ]
+    },
+    {
+      "id": "it.phrase.shopping.too-expensive",
+      "kind": "phrase",
+      "text": "È troppo caro",
+      "meaning": {
+        "en": "It's too expensive"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.shopping.too-expensive.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recall",
+      "situationIds": [
+        "shopping"
+      ]
+    },
+    {
+      "id": "it.phrase.shopping.take-it",
+      "kind": "phrase",
+      "text": "Lo prendo",
+      "meaning": {
+        "en": "I'll take it"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.shopping.take-it.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recall",
+      "situationIds": [
+        "shopping"
+      ]
+    },
+    {
+      "id": "it.phrase.shopping.pay-card",
+      "kind": "phrase",
+      "text": "Posso pagare con la carta?",
+      "meaning": {
+        "en": "Can I pay by card?"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.shopping.pay-card.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recall",
+      "situationIds": [
+        "shopping"
+      ]
+    },
+    {
+      "id": "it.phrase.shopping.receipt",
+      "kind": "phrase",
+      "text": "Mi dà lo scontrino, per favore?",
+      "meaning": {
+        "en": "Can I have the receipt, please?"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.shopping.receipt.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recall",
+      "situationIds": [
+        "shopping"
+      ]
+    },
+    {
+      "id": "it.reply.shopping.can-help",
+      "kind": "reply",
+      "text": "Posso aiutarla?",
+      "meaning": {
+        "en": "Can I help you?"
+      },
+      "audio": {
+        "natural": "audio/it/it.reply.shopping.can-help.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recognize",
+      "situationIds": [
+        "shopping"
+      ]
+    },
+    {
+      "id": "it.reply.shopping.which-size",
+      "kind": "reply",
+      "text": "Che taglia?",
+      "meaning": {
+        "en": "What size?"
+      },
+      "audio": {
+        "natural": "audio/it/it.reply.shopping.which-size.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recognize",
+      "situationIds": [
+        "shopping"
+      ]
+    },
+    {
+      "id": "it.reply.shopping.sold-out",
+      "kind": "reply",
+      "text": "È esaurito",
+      "meaning": {
+        "en": "It's sold out"
+      },
+      "audio": {
+        "natural": "audio/it/it.reply.shopping.sold-out.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recognize",
+      "situationIds": [
+        "shopping"
+      ]
+    },
+    {
+      "id": "it.reply.shopping.how-pay",
+      "kind": "reply",
+      "text": "Come paga?",
+      "meaning": {
+        "en": "How are you paying?"
+      },
+      "audio": {
+        "natural": "audio/it/it.reply.shopping.how-pay.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recognize",
+      "situationIds": [
+        "shopping"
+      ]
+    },
+    {
+      "id": "it.reply.shopping.else-shop",
+      "kind": "reply",
+      "text": "Desidera altro?",
+      "meaning": {
+        "en": "Anything else?"
+      },
+      "audio": {
+        "natural": "audio/it/it.reply.shopping.else-shop.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recognize",
+      "situationIds": [
+        "shopping"
+      ]
+    },
+    {
+      "id": "it.word.shopping.sale-w",
+      "kind": "word",
+      "text": "saldi",
+      "meaning": {
+        "en": "sale (discounts)"
+      },
+      "audio": {
+        "natural": "audio/it/it.word.shopping.sale-w.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recognize",
+      "situationIds": [
+        "shopping"
+      ]
+    },
+    {
+      "id": "it.word.shopping.open-w",
+      "kind": "word",
+      "text": "aperto",
+      "meaning": {
+        "en": "open"
+      },
+      "audio": {
+        "natural": "audio/it/it.word.shopping.open-w.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recognize",
+      "situationIds": [
+        "shopping"
+      ]
+    },
+    {
+      "id": "it.word.shopping.closed-w",
+      "kind": "word",
+      "text": "chiuso",
+      "meaning": {
+        "en": "closed"
+      },
+      "audio": {
+        "natural": "audio/it/it.word.shopping.closed-w.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recognize",
+      "situationIds": [
+        "shopping"
+      ]
+    },
+    {
+      "id": "it.phrase.directions.where-is",
+      "kind": "phrase",
+      "text": "Dov'è la stazione?",
+      "meaning": {
+        "en": "Where is the station?"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.directions.where-is.mp3"
+      },
+      "tier": 0,
+      "skillTarget": "recall",
+      "situationIds": [
+        "directions"
+      ]
+    },
+    {
+      "id": "it.phrase.directions.how-get-to",
+      "kind": "phrase",
+      "text": "Come arrivo al Colosseo?",
+      "meaning": {
+        "en": "How do I get to the Colosseum?"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.directions.how-get-to.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recall",
+      "situationIds": [
+        "directions"
+      ]
+    },
+    {
+      "id": "it.phrase.directions.is-it-far",
+      "kind": "phrase",
+      "text": "È lontano?",
+      "meaning": {
+        "en": "Is it far?"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.directions.is-it-far.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recall",
+      "situationIds": [
+        "directions"
+      ]
+    },
+    {
+      "id": "it.phrase.directions.im-lost",
+      "kind": "phrase",
+      "text": "Mi sono perso",
+      "meaning": {
+        "en": "I'm lost"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.directions.im-lost.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recall",
+      "situationIds": [
+        "directions"
+      ]
+    },
+    {
+      "id": "it.phrase.directions.on-map",
+      "kind": "phrase",
+      "text": "Può mostrarmelo sulla mappa?",
+      "meaning": {
+        "en": "Can you show me on the map?"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.directions.on-map.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recall",
+      "situationIds": [
+        "directions"
+      ]
+    },
+    {
+      "id": "it.phrase.directions.toilet",
+      "kind": "phrase",
+      "text": "Dov'è il bagno?",
+      "meaning": {
+        "en": "Where is the toilet?"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.directions.toilet.mp3"
+      },
+      "tier": 0,
+      "skillTarget": "recall",
+      "situationIds": [
+        "directions"
+      ]
+    },
+    {
+      "id": "it.phrase.directions.near-here",
+      "kind": "phrase",
+      "text": "C'è una farmacia qui vicino?",
+      "meaning": {
+        "en": "Is there a pharmacy near here?"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.directions.near-here.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recall",
+      "situationIds": [
+        "directions"
+      ]
+    },
+    {
+      "id": "it.reply.directions.turn-right",
+      "kind": "reply",
+      "text": "Giri a destra",
+      "meaning": {
+        "en": "Turn right"
+      },
+      "audio": {
+        "natural": "audio/it/it.reply.directions.turn-right.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recognize",
+      "situationIds": [
+        "directions"
+      ]
+    },
+    {
+      "id": "it.reply.directions.turn-left",
+      "kind": "reply",
+      "text": "Giri a sinistra",
+      "meaning": {
+        "en": "Turn left"
+      },
+      "audio": {
+        "natural": "audio/it/it.reply.directions.turn-left.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recognize",
+      "situationIds": [
+        "directions"
+      ]
+    },
+    {
+      "id": "it.reply.directions.go-straight",
+      "kind": "reply",
+      "text": "Vada sempre dritto",
+      "meaning": {
+        "en": "Go straight ahead"
+      },
+      "audio": {
+        "natural": "audio/it/it.reply.directions.go-straight.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recognize",
+      "situationIds": [
+        "directions"
+      ]
+    },
+    {
+      "id": "it.reply.directions.its-near",
+      "kind": "reply",
+      "text": "È qui vicino",
+      "meaning": {
+        "en": "It's nearby"
+      },
+      "audio": {
+        "natural": "audio/it/it.reply.directions.its-near.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recognize",
+      "situationIds": [
+        "directions"
+      ]
+    },
+    {
+      "id": "it.reply.directions.its-far",
+      "kind": "reply",
+      "text": "È un po' lontano",
+      "meaning": {
+        "en": "It's a bit far"
+      },
+      "audio": {
+        "natural": "audio/it/it.reply.directions.its-far.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recognize",
+      "situationIds": [
+        "directions"
+      ]
+    },
+    {
+      "id": "it.reply.directions.five-minutes",
+      "kind": "reply",
+      "text": "Sono cinque minuti a piedi",
+      "meaning": {
+        "en": "It's five minutes on foot"
+      },
+      "audio": {
+        "natural": "audio/it/it.reply.directions.five-minutes.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recognize",
+      "situationIds": [
+        "directions"
+      ]
+    },
+    {
+      "id": "it.word.directions.right-w",
+      "kind": "word",
+      "text": "destra",
+      "meaning": {
+        "en": "right"
+      },
+      "audio": {
+        "natural": "audio/it/it.word.directions.right-w.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recognize",
+      "situationIds": [
+        "directions"
+      ]
+    },
+    {
+      "id": "it.word.directions.left-w",
+      "kind": "word",
+      "text": "sinistra",
+      "meaning": {
+        "en": "left"
+      },
+      "audio": {
+        "natural": "audio/it/it.word.directions.left-w.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recognize",
+      "situationIds": [
+        "directions"
+      ]
+    },
+    {
+      "id": "it.word.directions.straight-w",
+      "kind": "word",
+      "text": "dritto",
+      "meaning": {
+        "en": "straight ahead"
+      },
+      "audio": {
+        "natural": "audio/it/it.word.directions.straight-w.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recognize",
+      "situationIds": [
+        "directions"
+      ]
+    },
+    {
+      "id": "it.phrase.hotel.reservation",
+      "kind": "phrase",
+      "text": "Ho una prenotazione",
+      "meaning": {
+        "en": "I have a reservation"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.hotel.reservation.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recall",
+      "situationIds": [
+        "hotel"
+      ]
+    },
+    {
+      "id": "it.phrase.hotel.check-in",
+      "kind": "phrase",
+      "text": "Vorrei fare il check-in",
+      "meaning": {
+        "en": "I'd like to check in"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.hotel.check-in.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recall",
+      "situationIds": [
+        "hotel"
+      ]
+    },
+    {
+      "id": "it.phrase.hotel.under-name",
+      "kind": "phrase",
+      "text": "Una camera a nome Rossi",
+      "meaning": {
+        "en": "A room under the name Rossi"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.hotel.under-name.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recall",
+      "situationIds": [
+        "hotel"
+      ]
+    },
+    {
+      "id": "it.phrase.hotel.breakfast-incl",
+      "kind": "phrase",
+      "text": "La colazione è inclusa?",
+      "meaning": {
+        "en": "Is breakfast included?"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.hotel.breakfast-incl.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recall",
+      "situationIds": [
+        "hotel"
+      ]
+    },
+    {
+      "id": "it.phrase.hotel.wifi-password",
+      "kind": "phrase",
+      "text": "Qual è la password del Wi-Fi?",
+      "meaning": {
+        "en": "What's the Wi-Fi password?"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.hotel.wifi-password.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recall",
+      "situationIds": [
+        "hotel"
+      ]
+    },
+    {
+      "id": "it.phrase.hotel.leave-luggage",
+      "kind": "phrase",
+      "text": "Posso lasciare i bagagli?",
+      "meaning": {
+        "en": "Can I leave my luggage?"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.hotel.leave-luggage.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recall",
+      "situationIds": [
+        "hotel"
+      ]
+    },
+    {
+      "id": "it.phrase.hotel.room-key",
+      "kind": "phrase",
+      "text": "La chiave della camera, per favore",
+      "meaning": {
+        "en": "The room key, please"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.hotel.room-key.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recall",
+      "situationIds": [
+        "hotel"
+      ]
+    },
+    {
+      "id": "it.reply.hotel.passport-hotel",
+      "kind": "reply",
+      "text": "Il passaporto, per favore",
+      "meaning": {
+        "en": "Your passport, please"
+      },
+      "audio": {
+        "natural": "audio/it/it.reply.hotel.passport-hotel.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recognize",
+      "situationIds": [
+        "hotel"
+      ]
+    },
+    {
+      "id": "it.reply.hotel.breakfast-time",
+      "kind": "reply",
+      "text": "La colazione è dalle sette alle dieci",
+      "meaning": {
+        "en": "Breakfast is from seven to ten"
+      },
+      "audio": {
+        "natural": "audio/it/it.reply.hotel.breakfast-time.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recognize",
+      "situationIds": [
+        "hotel"
+      ]
+    },
+    {
+      "id": "it.reply.hotel.room-number",
+      "kind": "reply",
+      "text": "Camera dodici, secondo piano",
+      "meaning": {
+        "en": "Room twelve, second floor"
+      },
+      "audio": {
+        "natural": "audio/it/it.reply.hotel.room-number.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recognize",
+      "situationIds": [
+        "hotel"
+      ]
+    },
+    {
+      "id": "it.reply.hotel.sign-here",
+      "kind": "reply",
+      "text": "Firmi qui, per favore",
+      "meaning": {
+        "en": "Sign here, please"
+      },
+      "audio": {
+        "natural": "audio/it/it.reply.hotel.sign-here.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recognize",
+      "situationIds": [
+        "hotel"
+      ]
+    },
+    {
+      "id": "it.word.hotel.room-w",
+      "kind": "word",
+      "text": "camera",
+      "meaning": {
+        "en": "room"
+      },
+      "audio": {
+        "natural": "audio/it/it.word.hotel.room-w.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recognize",
+      "situationIds": [
+        "hotel"
+      ]
+    },
+    {
+      "id": "it.word.hotel.floor-w",
+      "kind": "word",
+      "text": "piano",
+      "meaning": {
+        "en": "floor"
+      },
+      "audio": {
+        "natural": "audio/it/it.word.hotel.floor-w.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recognize",
+      "situationIds": [
+        "hotel"
+      ]
+    },
+    {
+      "id": "it.word.hotel.key-w",
+      "kind": "word",
+      "text": "chiave",
+      "meaning": {
+        "en": "key"
+      },
+      "audio": {
+        "natural": "audio/it/it.word.hotel.key-w.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recognize",
+      "situationIds": [
+        "hotel"
+      ]
+    },
+    {
+      "id": "it.phrase.smalltalk.nice-meet",
+      "kind": "phrase",
+      "text": "Piacere",
+      "meaning": {
+        "en": "Nice to meet you"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.smalltalk.nice-meet.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recall",
+      "situationIds": [
+        "smalltalk"
+      ]
+    },
+    {
+      "id": "it.phrase.smalltalk.how-are-you",
+      "kind": "phrase",
+      "text": "Come sta?",
+      "meaning": {
+        "en": "How are you? (formal)"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.smalltalk.how-are-you.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recall",
+      "situationIds": [
+        "smalltalk"
+      ]
+    },
+    {
+      "id": "it.phrase.smalltalk.im-from",
+      "kind": "phrase",
+      "text": "Vengo dagli Stati Uniti",
+      "meaning": {
+        "en": "I'm from the United States"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.smalltalk.im-from.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recall",
+      "situationIds": [
+        "smalltalk"
+      ]
+    },
+    {
+      "id": "it.phrase.smalltalk.first-time",
+      "kind": "phrase",
+      "text": "È la mia prima volta qui",
+      "meaning": {
+        "en": "It's my first time here"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.smalltalk.first-time.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recall",
+      "situationIds": [
+        "smalltalk"
+      ]
+    },
+    {
+      "id": "it.phrase.smalltalk.beautiful-here",
+      "kind": "phrase",
+      "text": "È bellissimo qui",
+      "meaning": {
+        "en": "It's beautiful here"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.smalltalk.beautiful-here.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recall",
+      "situationIds": [
+        "smalltalk"
+      ]
+    },
+    {
+      "id": "it.phrase.smalltalk.cheers",
+      "kind": "phrase",
+      "text": "Salute!",
+      "meaning": {
+        "en": "Cheers!"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.smalltalk.cheers.mp3"
+      },
+      "tier": 0,
+      "skillTarget": "recall",
+      "situationIds": [
+        "smalltalk"
+      ]
+    },
+    {
+      "id": "it.phrase.smalltalk.what-recommend",
+      "kind": "phrase",
+      "text": "Cosa mi consiglia?",
+      "meaning": {
+        "en": "What do you recommend?"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.smalltalk.what-recommend.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recall",
+      "situationIds": [
+        "smalltalk"
+      ]
+    },
+    {
+      "id": "it.reply.smalltalk.where-from",
+      "kind": "reply",
+      "text": "Di dov'è?",
+      "meaning": {
+        "en": "Where are you from?"
+      },
+      "audio": {
+        "natural": "audio/it/it.reply.smalltalk.where-from.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recognize",
+      "situationIds": [
+        "smalltalk"
+      ]
+    },
+    {
+      "id": "it.reply.smalltalk.enjoy-stay",
+      "kind": "reply",
+      "text": "Buona permanenza!",
+      "meaning": {
+        "en": "Enjoy your stay!"
+      },
+      "audio": {
+        "natural": "audio/it/it.reply.smalltalk.enjoy-stay.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recognize",
+      "situationIds": [
+        "smalltalk"
+      ]
+    },
+    {
+      "id": "it.reply.smalltalk.welcome-reply",
+      "kind": "reply",
+      "text": "Benvenuto!",
+      "meaning": {
+        "en": "Welcome!"
+      },
+      "audio": {
+        "natural": "audio/it/it.reply.smalltalk.welcome-reply.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recognize",
+      "situationIds": [
+        "smalltalk"
+      ]
+    },
+    {
+      "id": "it.reply.smalltalk.me-too",
+      "kind": "reply",
+      "text": "Anch'io",
+      "meaning": {
+        "en": "Me too"
+      },
+      "audio": {
+        "natural": "audio/it/it.reply.smalltalk.me-too.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recognize",
+      "situationIds": [
+        "smalltalk"
+      ]
+    },
+    {
+      "id": "it.phrase.airport.where-gate",
+      "kind": "phrase",
+      "text": "Dov'è l'imbarco?",
+      "meaning": {
+        "en": "Where is the boarding gate?"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.airport.where-gate.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recall",
+      "situationIds": [
+        "airport"
+      ]
+    },
+    {
+      "id": "it.phrase.airport.where-checkin",
+      "kind": "phrase",
+      "text": "Dov'è il check-in?",
+      "meaning": {
+        "en": "Where is the check-in desk?"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.airport.where-checkin.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recall",
+      "situationIds": [
+        "airport"
+      ]
+    },
+    {
+      "id": "it.phrase.airport.hand-luggage",
+      "kind": "phrase",
+      "text": "Ho solo un bagaglio a mano",
+      "meaning": {
+        "en": "I only have hand luggage"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.airport.hand-luggage.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recall",
+      "situationIds": [
+        "airport"
+      ]
+    },
+    {
+      "id": "it.phrase.airport.flight-delayed",
+      "kind": "phrase",
+      "text": "Il volo è in ritardo?",
+      "meaning": {
+        "en": "Is the flight delayed?"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.airport.flight-delayed.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recall",
+      "situationIds": [
+        "airport"
+      ]
+    },
+    {
+      "id": "it.phrase.airport.on-holiday",
+      "kind": "phrase",
+      "text": "Sono qui in vacanza",
+      "meaning": {
+        "en": "I'm here on holiday"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.airport.on-holiday.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recall",
+      "situationIds": [
+        "airport"
+      ]
+    },
+    {
+      "id": "it.phrase.airport.staying-week",
+      "kind": "phrase",
+      "text": "Resto una settimana",
+      "meaning": {
+        "en": "I'm staying a week"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.airport.staying-week.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recall",
+      "situationIds": [
+        "airport"
+      ]
+    },
+    {
+      "id": "it.reply.airport.passport-boarding",
+      "kind": "reply",
+      "text": "Passaporto e carta d'imbarco",
+      "meaning": {
+        "en": "Passport and boarding pass"
+      },
+      "audio": {
+        "natural": "audio/it/it.reply.airport.passport-boarding.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recognize",
+      "situationIds": [
+        "airport"
+      ]
+    },
+    {
+      "id": "it.reply.airport.purpose-trip",
+      "kind": "reply",
+      "text": "Qual è il motivo del viaggio?",
+      "meaning": {
+        "en": "What's the purpose of your trip?"
+      },
+      "audio": {
+        "natural": "audio/it/it.reply.airport.purpose-trip.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recognize",
+      "situationIds": [
+        "airport"
+      ]
+    },
+    {
+      "id": "it.reply.airport.how-long-stay",
+      "kind": "reply",
+      "text": "Quanto si ferma?",
+      "meaning": {
+        "en": "How long are you staying?"
+      },
+      "audio": {
+        "natural": "audio/it/it.reply.airport.how-long-stay.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recognize",
+      "situationIds": [
+        "airport"
+      ]
+    },
+    {
+      "id": "it.reply.airport.gate-fifteen",
+      "kind": "reply",
+      "text": "Uscita quindici",
+      "meaning": {
+        "en": "Gate fifteen"
+      },
+      "audio": {
+        "natural": "audio/it/it.reply.airport.gate-fifteen.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recognize",
+      "situationIds": [
+        "airport"
+      ]
+    },
+    {
+      "id": "it.word.airport.arrivals-w",
+      "kind": "word",
+      "text": "arrivi",
+      "meaning": {
+        "en": "arrivals"
+      },
+      "audio": {
+        "natural": "audio/it/it.word.airport.arrivals-w.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recognize",
+      "situationIds": [
+        "airport"
+      ]
+    },
+    {
+      "id": "it.word.airport.departures-w",
+      "kind": "word",
+      "text": "partenze",
+      "meaning": {
+        "en": "departures"
+      },
+      "audio": {
+        "natural": "audio/it/it.word.airport.departures-w.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recognize",
+      "situationIds": [
+        "airport"
+      ]
+    },
+    {
+      "id": "it.word.airport.gate-w",
+      "kind": "word",
+      "text": "uscita",
+      "meaning": {
+        "en": "gate / exit"
+      },
+      "audio": {
+        "natural": "audio/it/it.word.airport.gate-w.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recognize",
+      "situationIds": [
+        "airport"
+      ]
+    },
+    {
+      "id": "it.phrase.emergency.help",
+      "kind": "phrase",
+      "text": "Aiuto!",
+      "meaning": {
+        "en": "Help!"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.emergency.help.mp3"
+      },
+      "tier": 0,
+      "skillTarget": "fluent",
+      "situationIds": [
+        "emergency"
+      ]
+    },
+    {
+      "id": "it.phrase.emergency.call-ambulance",
+      "kind": "phrase",
+      "text": "Chiami un'ambulanza!",
+      "meaning": {
+        "en": "Call an ambulance!"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.emergency.call-ambulance.mp3"
+      },
+      "tier": 0,
+      "skillTarget": "fluent",
+      "situationIds": [
+        "emergency"
+      ]
+    },
+    {
+      "id": "it.phrase.emergency.call-police",
+      "kind": "phrase",
+      "text": "Chiami la polizia!",
+      "meaning": {
+        "en": "Call the police!"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.emergency.call-police.mp3"
+      },
+      "tier": 0,
+      "skillTarget": "fluent",
+      "situationIds": [
+        "emergency"
+      ]
+    },
+    {
+      "id": "it.phrase.emergency.its-emergency",
+      "kind": "phrase",
+      "text": "È un'emergenza",
+      "meaning": {
+        "en": "It's an emergency"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.emergency.its-emergency.mp3"
+      },
+      "tier": 0,
+      "skillTarget": "fluent",
+      "situationIds": [
+        "emergency"
+      ]
+    },
+    {
+      "id": "it.phrase.emergency.need-doctor",
+      "kind": "phrase",
+      "text": "Ho bisogno di un medico",
+      "meaning": {
+        "en": "I need a doctor"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.emergency.need-doctor.mp3"
+      },
+      "tier": 0,
+      "skillTarget": "fluent",
+      "situationIds": [
+        "emergency"
+      ]
+    },
+    {
+      "id": "it.phrase.emergency.allergic-to",
+      "kind": "phrase",
+      "text": "Sono allergico alle arachidi",
+      "meaning": {
+        "en": "I'm allergic to peanuts"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.emergency.allergic-to.mp3"
+      },
+      "tier": 0,
+      "skillTarget": "fluent",
+      "situationIds": [
+        "emergency"
+      ]
+    },
+    {
+      "id": "it.phrase.emergency.lost-passport",
+      "kind": "phrase",
+      "text": "Ho perso il passaporto",
+      "meaning": {
+        "en": "I've lost my passport"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.emergency.lost-passport.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "fluent",
+      "situationIds": [
+        "emergency"
+      ]
+    },
+    {
+      "id": "it.phrase.emergency.stop",
+      "kind": "phrase",
+      "text": "Si fermi!",
+      "meaning": {
+        "en": "Stop!"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.emergency.stop.mp3"
+      },
+      "tier": 0,
+      "skillTarget": "fluent",
+      "situationIds": [
+        "emergency"
+      ]
+    },
+    {
+      "id": "it.reply.emergency.what-happened",
+      "kind": "reply",
+      "text": "Cosa è successo?",
+      "meaning": {
+        "en": "What happened?"
+      },
+      "audio": {
+        "natural": "audio/it/it.reply.emergency.what-happened.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recognize",
+      "situationIds": [
+        "emergency"
+      ]
+    },
+    {
+      "id": "it.reply.emergency.coming-now",
+      "kind": "reply",
+      "text": "Arrivo subito",
+      "meaning": {
+        "en": "I'm coming right away"
+      },
+      "audio": {
+        "natural": "audio/it/it.reply.emergency.coming-now.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recognize",
+      "situationIds": [
+        "emergency"
+      ]
+    },
+    {
+      "id": "it.reply.emergency.where-hurt",
+      "kind": "reply",
+      "text": "Dove le fa male?",
+      "meaning": {
+        "en": "Where does it hurt?"
+      },
+      "audio": {
+        "natural": "audio/it/it.reply.emergency.where-hurt.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recognize",
+      "situationIds": [
+        "emergency"
+      ]
+    },
+    {
+      "id": "it.reply.emergency.stay-calm",
+      "kind": "reply",
+      "text": "Stia calmo",
+      "meaning": {
+        "en": "Stay calm"
+      },
+      "audio": {
+        "natural": "audio/it/it.reply.emergency.stay-calm.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recognize",
+      "situationIds": [
+        "emergency"
+      ]
+    },
+    {
+      "id": "it.word.emergency.hospital-w",
+      "kind": "word",
+      "text": "ospedale",
+      "meaning": {
+        "en": "hospital"
+      },
+      "audio": {
+        "natural": "audio/it/it.word.emergency.hospital-w.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recognize",
+      "situationIds": [
+        "emergency"
+      ]
+    },
+    {
+      "id": "it.word.emergency.police-w",
+      "kind": "word",
+      "text": "polizia",
+      "meaning": {
+        "en": "police"
+      },
+      "audio": {
+        "natural": "audio/it/it.word.emergency.police-w.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recognize",
+      "situationIds": [
+        "emergency"
+      ]
+    },
+    {
+      "id": "it.word.emergency.pharmacy-w",
+      "kind": "word",
+      "text": "farmacia",
+      "meaning": {
+        "en": "pharmacy"
+      },
+      "audio": {
+        "natural": "audio/it/it.word.emergency.pharmacy-w.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recognize",
+      "situationIds": [
+        "emergency"
+      ]
+    },
+    {
+      "id": "it.phrase.medical.feel-sick",
+      "kind": "phrase",
+      "text": "Non mi sento bene",
+      "meaning": {
+        "en": "I don't feel well"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.medical.feel-sick.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recall",
+      "situationIds": [
+        "medical"
+      ]
+    },
+    {
+      "id": "it.phrase.medical.headache",
+      "kind": "phrase",
+      "text": "Ho mal di testa",
+      "meaning": {
+        "en": "I have a headache"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.medical.headache.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recall",
+      "situationIds": [
+        "medical"
+      ]
+    },
+    {
+      "id": "it.phrase.medical.stomachache",
+      "kind": "phrase",
+      "text": "Ho mal di stomaco",
+      "meaning": {
+        "en": "I have a stomachache"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.medical.stomachache.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recall",
+      "situationIds": [
+        "medical"
+      ]
+    },
+    {
+      "id": "it.phrase.medical.fever",
+      "kind": "phrase",
+      "text": "Ho la febbre",
+      "meaning": {
+        "en": "I have a fever"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.medical.fever.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recall",
+      "situationIds": [
+        "medical"
+      ]
+    },
+    {
+      "id": "it.phrase.medical.something-for",
+      "kind": "phrase",
+      "text": "Avete qualcosa per il raffreddore?",
+      "meaning": {
+        "en": "Do you have something for a cold?"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.medical.something-for.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recall",
+      "situationIds": [
+        "medical"
+      ]
+    },
+    {
+      "id": "it.phrase.medical.need-prescription",
+      "kind": "phrase",
+      "text": "Mi serve la ricetta?",
+      "meaning": {
+        "en": "Do I need a prescription?"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.medical.need-prescription.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recall",
+      "situationIds": [
+        "medical"
+      ]
+    },
+    {
+      "id": "it.phrase.medical.allergic-antibiotics",
+      "kind": "phrase",
+      "text": "Sono allergico agli antibiotici",
+      "meaning": {
+        "en": "I'm allergic to antibiotics"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.medical.allergic-antibiotics.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recall",
+      "situationIds": [
+        "medical"
+      ]
+    },
+    {
+      "id": "it.reply.medical.how-feel",
+      "kind": "reply",
+      "text": "Come si sente?",
+      "meaning": {
+        "en": "How do you feel?"
+      },
+      "audio": {
+        "natural": "audio/it/it.reply.medical.how-feel.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recognize",
+      "situationIds": [
+        "medical"
+      ]
+    },
+    {
+      "id": "it.reply.medical.since-when",
+      "kind": "reply",
+      "text": "Da quando?",
+      "meaning": {
+        "en": "Since when?"
+      },
+      "audio": {
+        "natural": "audio/it/it.reply.medical.since-when.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recognize",
+      "situationIds": [
+        "medical"
+      ]
+    },
+    {
+      "id": "it.reply.medical.twice-day",
+      "kind": "reply",
+      "text": "Prenda questo due volte al giorno",
+      "meaning": {
+        "en": "Take this twice a day"
+      },
+      "audio": {
+        "natural": "audio/it/it.reply.medical.twice-day.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recognize",
+      "situationIds": [
+        "medical"
+      ]
+    },
+    {
+      "id": "it.reply.medical.after-meals",
+      "kind": "reply",
+      "text": "Dopo i pasti",
+      "meaning": {
+        "en": "After meals"
+      },
+      "audio": {
+        "natural": "audio/it/it.reply.medical.after-meals.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recognize",
+      "situationIds": [
+        "medical"
+      ]
+    },
+    {
+      "id": "it.word.medical.pharmacy-w2",
+      "kind": "word",
+      "text": "farmacia",
+      "meaning": {
+        "en": "pharmacy"
+      },
+      "audio": {
+        "natural": "audio/it/it.word.medical.pharmacy-w2.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recognize",
+      "situationIds": [
+        "medical"
+      ]
+    },
+    {
+      "id": "it.word.medical.medicine-w",
+      "kind": "word",
+      "text": "medicina",
+      "meaning": {
+        "en": "medicine"
+      },
+      "audio": {
+        "natural": "audio/it/it.word.medical.medicine-w.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recognize",
+      "situationIds": [
+        "medical"
+      ]
+    },
+    {
+      "id": "it.phrase.connectivity.wifi-here",
+      "kind": "phrase",
+      "text": "C'è il Wi-Fi qui?",
+      "meaning": {
+        "en": "Is there Wi-Fi here?"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.connectivity.wifi-here.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recall",
+      "situationIds": [
+        "connectivity"
+      ]
+    },
+    {
+      "id": "it.phrase.connectivity.sim-card",
+      "kind": "phrase",
+      "text": "Vorrei una scheda SIM",
+      "meaning": {
+        "en": "I'd like a SIM card"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.connectivity.sim-card.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recall",
+      "situationIds": [
+        "connectivity"
+      ]
+    },
+    {
+      "id": "it.phrase.connectivity.charge-phone",
+      "kind": "phrase",
+      "text": "Posso caricare il telefono?",
+      "meaning": {
+        "en": "Can I charge my phone?"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.connectivity.charge-phone.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recall",
+      "situationIds": [
+        "connectivity"
+      ]
+    },
+    {
+      "id": "it.phrase.connectivity.what-time-open",
+      "kind": "phrase",
+      "text": "A che ora aprite?",
+      "meaning": {
+        "en": "What time do you open?"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.connectivity.what-time-open.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recall",
+      "situationIds": [
+        "connectivity"
+      ]
+    },
+    {
+      "id": "it.phrase.connectivity.what-time-close",
+      "kind": "phrase",
+      "text": "A che ora chiudete?",
+      "meaning": {
+        "en": "What time do you close?"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.connectivity.what-time-close.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recall",
+      "situationIds": [
+        "connectivity"
+      ]
+    },
+    {
+      "id": "it.phrase.connectivity.where-laundry",
+      "kind": "phrase",
+      "text": "Dov'è una lavanderia?",
+      "meaning": {
+        "en": "Where is a laundromat?"
+      },
+      "audio": {
+        "natural": "audio/it/it.phrase.connectivity.where-laundry.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recall",
+      "situationIds": [
+        "connectivity"
+      ]
+    },
+    {
+      "id": "it.reply.connectivity.password-on-table",
+      "kind": "reply",
+      "text": "La password è sul tavolo",
+      "meaning": {
+        "en": "The password is on the table"
+      },
+      "audio": {
+        "natural": "audio/it/it.reply.connectivity.password-on-table.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recognize",
+      "situationIds": [
+        "connectivity"
+      ]
+    },
+    {
+      "id": "it.reply.connectivity.open-at-nine",
+      "kind": "reply",
+      "text": "Apriamo alle nove",
+      "meaning": {
+        "en": "We open at nine"
+      },
+      "audio": {
+        "natural": "audio/it/it.reply.connectivity.open-at-nine.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recognize",
+      "situationIds": [
+        "connectivity"
+      ]
+    },
+    {
+      "id": "it.reply.connectivity.closed-sunday",
+      "kind": "reply",
+      "text": "La domenica siamo chiusi",
+      "meaning": {
+        "en": "We're closed on Sundays"
+      },
+      "audio": {
+        "natural": "audio/it/it.reply.connectivity.closed-sunday.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recognize",
+      "situationIds": [
+        "connectivity"
+      ]
+    },
+    {
+      "id": "it.reply.connectivity.socket-there",
+      "kind": "reply",
+      "text": "La presa è là",
+      "meaning": {
+        "en": "The socket is over there"
+      },
+      "audio": {
+        "natural": "audio/it/it.reply.connectivity.socket-there.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recognize",
+      "situationIds": [
+        "connectivity"
+      ]
+    },
+    {
+      "id": "it.word.connectivity.open-w2",
+      "kind": "word",
+      "text": "aperto",
+      "meaning": {
+        "en": "open"
+      },
+      "audio": {
+        "natural": "audio/it/it.word.connectivity.open-w2.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recognize",
+      "situationIds": [
+        "connectivity"
+      ]
+    },
+    {
+      "id": "it.word.connectivity.closed-w2",
+      "kind": "word",
+      "text": "chiuso",
+      "meaning": {
+        "en": "closed"
+      },
+      "audio": {
+        "natural": "audio/it/it.word.connectivity.closed-w2.mp3"
+      },
+      "tier": 1,
+      "skillTarget": "recognize",
+      "situationIds": [
+        "connectivity"
+      ]
+    }
+  ],
+  "situations": [
+    {
+      "id": "restaurant",
+      "name": {
+        "en": "Café & Restaurant",
+        "he": "בית קפה ומסעדה"
+      },
+      "icon": "utensils",
+      "priorityDefault": 100,
+      "corePhraseIds": [
+        "it.phrase.restaurant.table-two",
+        "it.phrase.restaurant.menu",
+        "it.phrase.restaurant.coffee",
+        "it.phrase.restaurant.water",
+        "it.phrase.restaurant.order-this",
+        "it.phrase.restaurant.bill",
+        "it.phrase.restaurant.card",
+        "it.phrase.restaurant.delicious"
+      ],
+      "replyIds": [
+        "it.reply.restaurant.to-drink",
+        "it.reply.restaurant.here-away",
+        "it.reply.restaurant.cash-card",
+        "it.reply.restaurant.reserved",
+        "it.reply.restaurant.anything-else"
+      ],
+      "recognitionIds": [
+        "it.word.restaurant.menu-w",
+        "it.word.restaurant.bill-w",
+        "it.word.restaurant.table-w"
+      ],
+      "dialogue": {
+        "id": "it.dialogue.restaurant",
+        "startNodeId": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "npc",
+            "text": "Buonasera, ha prenotato?",
+            "meaning": {
+              "en": "Good evening, do you have a reservation?"
+            },
+            "next": "n2"
+          },
+          {
+            "id": "n2",
+            "speaker": "user",
+            "text": "No, un tavolo per due, per favore",
+            "meaning": {
+              "en": "No, a table for two, please"
+            },
+            "options": [
+              {
+                "text": "No, un tavolo per due, per favore",
+                "meaning": {
+                  "en": "No, a table for two, please"
+                },
+                "next": "n3",
+                "correct": true
+              },
+              {
+                "text": "Il conto, per favore",
+                "meaning": {
+                  "en": "The bill, please"
+                },
+                "next": "n3",
+                "correct": false
+              }
+            ]
+          },
+          {
+            "id": "n3",
+            "speaker": "npc",
+            "text": "Certo. Da bere?",
+            "meaning": {
+              "en": "Of course. Anything to drink?"
+            },
+            "next": "n4"
+          },
+          {
+            "id": "n4",
+            "speaker": "user",
+            "text": "Una bottiglia d'acqua, per favore",
+            "meaning": {
+              "en": "A bottle of water, please"
+            },
+            "options": [
+              {
+                "text": "Una bottiglia d'acqua, per favore",
+                "meaning": {
+                  "en": "A bottle of water, please"
+                },
+                "next": "n5",
+                "correct": true
+              },
+              {
+                "text": "Arrivederci",
+                "meaning": {
+                  "en": "Goodbye"
+                },
+                "next": "n5",
+                "correct": false
+              }
+            ]
+          },
+          {
+            "id": "n5",
+            "speaker": "npc",
+            "text": "Perfetto, arrivo subito.",
+            "meaning": {
+              "en": "Perfect, I'll be right there."
+            }
+          }
+        ]
+      },
+      "cultureTips": [
+        {
+          "en": "Coffee at the bar counter costs less than at a table.",
+          "he": "קפה בעמידה בבר זול יותר מקפה בישיבה ליד שולחן."
+        },
+        {
+          "en": "The \"coperto\" is a small fixed cover charge for table service — it is normal.",
+          "he": "ה\"קופרטו\" הוא דמי שירות קבועים וקטנים על ישיבה — זה נורמלי."
+        }
+      ],
+      "isEmergency": false
+    },
+    {
+      "id": "transport",
+      "name": {
+        "en": "Getting Around",
+        "he": "תחבורה והתניידות"
+      },
+      "icon": "train",
+      "priorityDefault": 90,
+      "corePhraseIds": [
+        "it.phrase.transport.to-address",
+        "it.phrase.transport.how-much-centre",
+        "it.phrase.transport.one-ticket",
+        "it.phrase.transport.two-tickets",
+        "it.phrase.transport.which-platform",
+        "it.phrase.transport.does-stop",
+        "it.phrase.transport.next-stop",
+        "it.phrase.transport.stop-here"
+      ],
+      "replyIds": [
+        "it.reply.transport.cash-only",
+        "it.reply.transport.platform-three",
+        "it.reply.transport.next-at-ten",
+        "it.reply.transport.get-off-next",
+        "it.reply.transport.straight-reply"
+      ],
+      "recognitionIds": [
+        "it.word.transport.exit-w",
+        "it.word.transport.platform-w",
+        "it.word.transport.ticket-w"
+      ],
+      "dialogue": {
+        "id": "it.dialogue.transport",
+        "startNodeId": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "npc",
+            "text": "Buongiorno, dove va?",
+            "meaning": {
+              "en": "Good morning, where to?"
+            },
+            "next": "n2"
+          },
+          {
+            "id": "n2",
+            "speaker": "user",
+            "text": "Mi porti a questo indirizzo, per favore",
+            "meaning": {
+              "en": "Take me to this address, please"
+            },
+            "options": [
+              {
+                "text": "Mi porti a questo indirizzo, per favore",
+                "meaning": {
+                  "en": "Take me to this address, please"
+                },
+                "next": "n3",
+                "correct": true
+              },
+              {
+                "text": "Il menù, per favore",
+                "meaning": {
+                  "en": "The menu, please"
+                },
+                "next": "n3",
+                "correct": false
+              }
+            ]
+          },
+          {
+            "id": "n3",
+            "speaker": "npc",
+            "text": "Va bene. Sono quindici euro.",
+            "meaning": {
+              "en": "Alright. That's fifteen euros."
+            },
+            "next": "n4"
+          },
+          {
+            "id": "n4",
+            "speaker": "user",
+            "text": "Posso pagare con la carta?",
+            "meaning": {
+              "en": "Can I pay by card?"
+            },
+            "options": [
+              {
+                "text": "Posso pagare con la carta?",
+                "meaning": {
+                  "en": "Can I pay by card?"
+                },
+                "next": "n5",
+                "correct": true
+              },
+              {
+                "text": "Sono allergico",
+                "meaning": {
+                  "en": "I'm allergic"
+                },
+                "next": "n5",
+                "correct": false
+              }
+            ]
+          },
+          {
+            "id": "n5",
+            "speaker": "npc",
+            "text": "Mi dispiace, solo contanti.",
+            "meaning": {
+              "en": "Sorry, cash only."
+            }
+          }
+        ]
+      },
+      "cultureTips": [
+        {
+          "en": "Always validate your ticket in the yellow machine before boarding.",
+          "he": "תמיד תקפו את הכרטיס במכונה הצהובה לפני העלייה."
+        }
+      ],
+      "isEmergency": false
+    },
+    {
+      "id": "shopping",
+      "name": {
+        "en": "Shopping & Paying",
+        "he": "קניות ותשלום"
+      },
+      "icon": "bag",
+      "priorityDefault": 80,
+      "corePhraseIds": [
+        "it.phrase.shopping.how-much",
+        "it.phrase.shopping.just-looking",
+        "it.phrase.shopping.try-on",
+        "it.phrase.shopping.bigger-size",
+        "it.phrase.shopping.too-expensive",
+        "it.phrase.shopping.take-it",
+        "it.phrase.shopping.pay-card",
+        "it.phrase.shopping.receipt"
+      ],
+      "replyIds": [
+        "it.reply.shopping.can-help",
+        "it.reply.shopping.which-size",
+        "it.reply.shopping.sold-out",
+        "it.reply.shopping.how-pay",
+        "it.reply.shopping.else-shop"
+      ],
+      "recognitionIds": [
+        "it.word.shopping.sale-w",
+        "it.word.shopping.open-w",
+        "it.word.shopping.closed-w"
+      ],
+      "dialogue": {
+        "id": "it.dialogue.shopping",
+        "startNodeId": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "npc",
+            "text": "Buongiorno, posso aiutarla?",
+            "meaning": {
+              "en": "Good morning, can I help you?"
+            },
+            "next": "n2"
+          },
+          {
+            "id": "n2",
+            "speaker": "user",
+            "text": "Sto solo guardando, grazie",
+            "meaning": {
+              "en": "I'm just looking, thanks"
+            },
+            "options": [
+              {
+                "text": "Sto solo guardando, grazie",
+                "meaning": {
+                  "en": "I'm just looking, thanks"
+                },
+                "next": "n3",
+                "correct": true
+              },
+              {
+                "text": "Un caffè, per favore",
+                "meaning": {
+                  "en": "A coffee, please"
+                },
+                "next": "n3",
+                "correct": false
+              }
+            ]
+          },
+          {
+            "id": "n3",
+            "speaker": "npc",
+            "text": "Certo, faccia con calma.",
+            "meaning": {
+              "en": "Of course, take your time."
+            },
+            "next": "n4"
+          },
+          {
+            "id": "n4",
+            "speaker": "user",
+            "text": "Quanto costa?",
+            "meaning": {
+              "en": "How much is it?"
+            },
+            "options": [
+              {
+                "text": "Quanto costa?",
+                "meaning": {
+                  "en": "How much is it?"
+                },
+                "next": "n5",
+                "correct": true
+              },
+              {
+                "text": "Dov'è il bagno?",
+                "meaning": {
+                  "en": "Where is the toilet?"
+                },
+                "next": "n5",
+                "correct": false
+              }
+            ]
+          },
+          {
+            "id": "n5",
+            "speaker": "npc",
+            "text": "Venti euro.",
+            "meaning": {
+              "en": "Twenty euros."
+            }
+          }
+        ]
+      },
+      "cultureTips": [
+        {
+          "en": "Keep the receipt until you leave the shop.",
+          "he": "שמרו את הקבלה עד היציאה מהחנות."
+        }
+      ],
+      "isEmergency": false
+    },
+    {
+      "id": "directions",
+      "name": {
+        "en": "Directions & Navigation",
+        "he": "כיוונים והתמצאות"
+      },
+      "icon": "compass",
+      "priorityDefault": 85,
+      "corePhraseIds": [
+        "it.phrase.directions.where-is",
+        "it.phrase.directions.how-get-to",
+        "it.phrase.directions.is-it-far",
+        "it.phrase.directions.im-lost",
+        "it.phrase.directions.on-map",
+        "it.phrase.directions.toilet",
+        "it.phrase.directions.near-here"
+      ],
+      "replyIds": [
+        "it.reply.directions.turn-right",
+        "it.reply.directions.turn-left",
+        "it.reply.directions.go-straight",
+        "it.reply.directions.its-near",
+        "it.reply.directions.its-far",
+        "it.reply.directions.five-minutes"
+      ],
+      "recognitionIds": [
+        "it.word.directions.right-w",
+        "it.word.directions.left-w",
+        "it.word.directions.straight-w"
+      ],
+      "dialogue": {
+        "id": "it.dialogue.directions",
+        "startNodeId": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "user",
+            "text": "Scusi, dov'è la stazione?",
+            "meaning": {
+              "en": "Excuse me, where is the station?"
+            },
+            "options": [
+              {
+                "text": "Scusi, dov'è la stazione?",
+                "meaning": {
+                  "en": "Excuse me, where is the station?"
+                },
+                "next": "n2",
+                "correct": true
+              },
+              {
+                "text": "Un tavolo per due",
+                "meaning": {
+                  "en": "A table for two"
+                },
+                "next": "n2",
+                "correct": false
+              }
+            ]
+          },
+          {
+            "id": "n2",
+            "speaker": "npc",
+            "text": "Vada sempre dritto, poi giri a destra.",
+            "meaning": {
+              "en": "Go straight, then turn right."
+            },
+            "next": "n3"
+          },
+          {
+            "id": "n3",
+            "speaker": "user",
+            "text": "È lontano?",
+            "meaning": {
+              "en": "Is it far?"
+            },
+            "options": [
+              {
+                "text": "È lontano?",
+                "meaning": {
+                  "en": "Is it far?"
+                },
+                "next": "n4",
+                "correct": true
+              },
+              {
+                "text": "Quanto costa?",
+                "meaning": {
+                  "en": "How much is it?"
+                },
+                "next": "n4",
+                "correct": false
+              }
+            ]
+          },
+          {
+            "id": "n4",
+            "speaker": "npc",
+            "text": "No, cinque minuti a piedi.",
+            "meaning": {
+              "en": "No, five minutes on foot."
+            }
+          }
+        ]
+      },
+      "cultureTips": [],
+      "isEmergency": false
+    },
+    {
+      "id": "hotel",
+      "name": {
+        "en": "Hotel & Check-in",
+        "he": "מלון וצ׳ק-אין"
+      },
+      "icon": "bed",
+      "priorityDefault": 70,
+      "corePhraseIds": [
+        "it.phrase.hotel.reservation",
+        "it.phrase.hotel.check-in",
+        "it.phrase.hotel.under-name",
+        "it.phrase.hotel.breakfast-incl",
+        "it.phrase.hotel.wifi-password",
+        "it.phrase.hotel.leave-luggage",
+        "it.phrase.hotel.room-key"
+      ],
+      "replyIds": [
+        "it.reply.hotel.passport-hotel",
+        "it.reply.hotel.breakfast-time",
+        "it.reply.hotel.room-number",
+        "it.reply.hotel.sign-here"
+      ],
+      "recognitionIds": [
+        "it.word.hotel.room-w",
+        "it.word.hotel.floor-w",
+        "it.word.hotel.key-w"
+      ],
+      "dialogue": {
+        "id": "it.dialogue.hotel",
+        "startNodeId": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "npc",
+            "text": "Buonasera, come posso aiutarla?",
+            "meaning": {
+              "en": "Good evening, how can I help you?"
+            },
+            "next": "n2"
+          },
+          {
+            "id": "n2",
+            "speaker": "user",
+            "text": "Ho una prenotazione a nome Rossi",
+            "meaning": {
+              "en": "I have a reservation under the name Rossi"
+            },
+            "options": [
+              {
+                "text": "Ho una prenotazione a nome Rossi",
+                "meaning": {
+                  "en": "I have a reservation under the name Rossi"
+                },
+                "next": "n3",
+                "correct": true
+              },
+              {
+                "text": "Il conto, per favore",
+                "meaning": {
+                  "en": "The bill, please"
+                },
+                "next": "n3",
+                "correct": false
+              }
+            ]
+          },
+          {
+            "id": "n3",
+            "speaker": "npc",
+            "text": "Perfetto. Il passaporto, per favore.",
+            "meaning": {
+              "en": "Perfect. Your passport, please."
+            },
+            "next": "n4"
+          },
+          {
+            "id": "n4",
+            "speaker": "user",
+            "text": "La colazione è inclusa?",
+            "meaning": {
+              "en": "Is breakfast included?"
+            },
+            "options": [
+              {
+                "text": "La colazione è inclusa?",
+                "meaning": {
+                  "en": "Is breakfast included?"
+                },
+                "next": "n5",
+                "correct": true
+              },
+              {
+                "text": "Aiuto!",
+                "meaning": {
+                  "en": "Help!"
+                },
+                "next": "n5",
+                "correct": false
+              }
+            ]
+          },
+          {
+            "id": "n5",
+            "speaker": "npc",
+            "text": "Sì, dalle sette alle dieci.",
+            "meaning": {
+              "en": "Yes, from seven to ten."
+            }
+          }
+        ]
+      },
+      "cultureTips": [],
+      "isEmergency": false
+    },
+    {
+      "id": "smalltalk",
+      "name": {
+        "en": "Small Talk & Social",
+        "he": "שיחת חולין"
+      },
+      "icon": "chat",
+      "priorityDefault": 40,
+      "corePhraseIds": [
+        "it.phrase.smalltalk.nice-meet",
+        "it.phrase.smalltalk.how-are-you",
+        "it.phrase.smalltalk.im-from",
+        "it.phrase.smalltalk.first-time",
+        "it.phrase.smalltalk.beautiful-here",
+        "it.phrase.smalltalk.cheers",
+        "it.phrase.smalltalk.what-recommend"
+      ],
+      "replyIds": [
+        "it.reply.smalltalk.where-from",
+        "it.reply.smalltalk.enjoy-stay",
+        "it.reply.smalltalk.welcome-reply",
+        "it.reply.smalltalk.me-too"
+      ],
+      "recognitionIds": [],
+      "dialogue": {
+        "id": "it.dialogue.smalltalk",
+        "startNodeId": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "npc",
+            "text": "Di dov'è?",
+            "meaning": {
+              "en": "Where are you from?"
+            },
+            "next": "n2"
+          },
+          {
+            "id": "n2",
+            "speaker": "user",
+            "text": "Vengo dagli Stati Uniti",
+            "meaning": {
+              "en": "I'm from the United States"
+            },
+            "options": [
+              {
+                "text": "Vengo dagli Stati Uniti",
+                "meaning": {
+                  "en": "I'm from the United States"
+                },
+                "next": "n3",
+                "correct": true
+              },
+              {
+                "text": "Non ho capito",
+                "meaning": {
+                  "en": "I didn't understand"
+                },
+                "next": "n3",
+                "correct": false
+              }
+            ]
+          },
+          {
+            "id": "n3",
+            "speaker": "npc",
+            "text": "Benvenuto! Prima volta in Italia?",
+            "meaning": {
+              "en": "Welcome! First time in Italy?"
+            },
+            "next": "n4"
+          },
+          {
+            "id": "n4",
+            "speaker": "user",
+            "text": "Sì, è bellissimo qui",
+            "meaning": {
+              "en": "Yes, it's beautiful here"
+            },
+            "options": [
+              {
+                "text": "Sì, è bellissimo qui",
+                "meaning": {
+                  "en": "Yes, it's beautiful here"
+                },
+                "next": "n5",
+                "correct": true
+              },
+              {
+                "text": "Il conto, per favore",
+                "meaning": {
+                  "en": "The bill, please"
+                },
+                "next": "n5",
+                "correct": false
+              }
+            ]
+          },
+          {
+            "id": "n5",
+            "speaker": "npc",
+            "text": "Buona permanenza!",
+            "meaning": {
+              "en": "Enjoy your stay!"
+            }
+          }
+        ]
+      },
+      "cultureTips": [
+        {
+          "en": "A simple \"Buongiorno\" when entering a shop is warmly appreciated.",
+          "he": "\"Buongiorno\" פשוט בכניסה לחנות מתקבל בחום רב."
+        }
+      ],
+      "isEmergency": false
+    },
+    {
+      "id": "airport",
+      "name": {
+        "en": "Airport & Border",
+        "he": "שדה תעופה וגבול"
+      },
+      "icon": "plane",
+      "priorityDefault": 50,
+      "corePhraseIds": [
+        "it.phrase.airport.where-gate",
+        "it.phrase.airport.where-checkin",
+        "it.phrase.airport.hand-luggage",
+        "it.phrase.airport.flight-delayed",
+        "it.phrase.airport.on-holiday",
+        "it.phrase.airport.staying-week"
+      ],
+      "replyIds": [
+        "it.reply.airport.passport-boarding",
+        "it.reply.airport.purpose-trip",
+        "it.reply.airport.how-long-stay",
+        "it.reply.airport.gate-fifteen"
+      ],
+      "recognitionIds": [
+        "it.word.airport.arrivals-w",
+        "it.word.airport.departures-w",
+        "it.word.airport.gate-w"
+      ],
+      "dialogue": {
+        "id": "it.dialogue.airport",
+        "startNodeId": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "npc",
+            "text": "Passaporto e carta d'imbarco, per favore.",
+            "meaning": {
+              "en": "Passport and boarding pass, please."
+            },
+            "next": "n2"
+          },
+          {
+            "id": "n2",
+            "speaker": "user",
+            "text": "Eccoli. Sono qui in vacanza",
+            "meaning": {
+              "en": "Here they are. I'm here on holiday"
+            },
+            "options": [
+              {
+                "text": "Eccoli. Sono qui in vacanza",
+                "meaning": {
+                  "en": "Here they are. I'm here on holiday"
+                },
+                "next": "n3",
+                "correct": true
+              },
+              {
+                "text": "Quanto costa?",
+                "meaning": {
+                  "en": "How much is it?"
+                },
+                "next": "n3",
+                "correct": false
+              }
+            ]
+          },
+          {
+            "id": "n3",
+            "speaker": "npc",
+            "text": "Quanto si ferma?",
+            "meaning": {
+              "en": "How long are you staying?"
+            },
+            "next": "n4"
+          },
+          {
+            "id": "n4",
+            "speaker": "user",
+            "text": "Resto una settimana",
+            "meaning": {
+              "en": "I'm staying a week"
+            },
+            "options": [
+              {
+                "text": "Resto una settimana",
+                "meaning": {
+                  "en": "I'm staying a week"
+                },
+                "next": "n5",
+                "correct": true
+              },
+              {
+                "text": "Non parlo italiano",
+                "meaning": {
+                  "en": "I don't speak Italian"
+                },
+                "next": "n5",
+                "correct": false
+              }
+            ]
+          },
+          {
+            "id": "n5",
+            "speaker": "npc",
+            "text": "Buon soggiorno.",
+            "meaning": {
+              "en": "Have a good stay."
+            }
+          }
+        ]
+      },
+      "cultureTips": [],
+      "isEmergency": false
+    },
+    {
+      "id": "emergency",
+      "name": {
+        "en": "Emergency & Help",
+        "he": "חירום ועזרה"
+      },
+      "icon": "alert",
+      "priorityDefault": 60,
+      "corePhraseIds": [
+        "it.phrase.emergency.help",
+        "it.phrase.emergency.call-ambulance",
+        "it.phrase.emergency.call-police",
+        "it.phrase.emergency.its-emergency",
+        "it.phrase.emergency.need-doctor",
+        "it.phrase.emergency.allergic-to",
+        "it.phrase.emergency.lost-passport",
+        "it.phrase.emergency.stop"
+      ],
+      "replyIds": [
+        "it.reply.emergency.what-happened",
+        "it.reply.emergency.coming-now",
+        "it.reply.emergency.where-hurt",
+        "it.reply.emergency.stay-calm"
+      ],
+      "recognitionIds": [
+        "it.word.emergency.hospital-w",
+        "it.word.emergency.police-w",
+        "it.word.emergency.pharmacy-w"
+      ],
+      "dialogue": {
+        "id": "it.dialogue.emergency",
+        "startNodeId": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "user",
+            "text": "Aiuto! Chiami un’ambulanza!",
+            "meaning": {
+              "en": "Help! Call an ambulance!"
+            },
+            "options": [
+              {
+                "text": "Aiuto! Chiami un’ambulanza!",
+                "meaning": {
+                  "en": "Help! Call an ambulance!"
+                },
+                "next": "n2",
+                "correct": true
+              },
+              {
+                "text": "Un caffè, per favore",
+                "meaning": {
+                  "en": "A coffee, please"
+                },
+                "next": "n2",
+                "correct": false
+              }
+            ]
+          },
+          {
+            "id": "n2",
+            "speaker": "npc",
+            "text": "Cosa è successo?",
+            "meaning": {
+              "en": "What happened?"
+            },
+            "next": "n3"
+          },
+          {
+            "id": "n3",
+            "speaker": "user",
+            "text": "Ho bisogno di un medico",
+            "meaning": {
+              "en": "I need a doctor"
+            },
+            "options": [
+              {
+                "text": "Ho bisogno di un medico",
+                "meaning": {
+                  "en": "I need a doctor"
+                },
+                "next": "n4",
+                "correct": true
+              },
+              {
+                "text": "Sto solo guardando",
+                "meaning": {
+                  "en": "I'm just looking"
+                },
+                "next": "n4",
+                "correct": false
+              }
+            ]
+          },
+          {
+            "id": "n4",
+            "speaker": "npc",
+            "text": "Stia calmo, arrivo subito.",
+            "meaning": {
+              "en": "Stay calm, I'm coming right away."
+            }
+          }
+        ]
+      },
+      "cultureTips": [
+        {
+          "en": "The single emergency number in Italy and across Europe is 112.",
+          "he": "מספר החירום האחיד באיטליה ובכל אירופה הוא 112."
+        }
+      ],
+      "isEmergency": true
+    },
+    {
+      "id": "medical",
+      "name": {
+        "en": "Medical & Pharmacy",
+        "he": "רפואה ובית מרקחת"
+      },
+      "icon": "cross",
+      "priorityDefault": 45,
+      "corePhraseIds": [
+        "it.phrase.medical.feel-sick",
+        "it.phrase.medical.headache",
+        "it.phrase.medical.stomachache",
+        "it.phrase.medical.fever",
+        "it.phrase.medical.something-for",
+        "it.phrase.medical.need-prescription",
+        "it.phrase.medical.allergic-antibiotics"
+      ],
+      "replyIds": [
+        "it.reply.medical.how-feel",
+        "it.reply.medical.since-when",
+        "it.reply.medical.twice-day",
+        "it.reply.medical.after-meals"
+      ],
+      "recognitionIds": [
+        "it.word.medical.pharmacy-w2",
+        "it.word.medical.medicine-w"
+      ],
+      "dialogue": {
+        "id": "it.dialogue.medical",
+        "startNodeId": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "npc",
+            "text": "Buongiorno, mi dica.",
+            "meaning": {
+              "en": "Good morning, how can I help?"
+            },
+            "next": "n2"
+          },
+          {
+            "id": "n2",
+            "speaker": "user",
+            "text": "Ho mal di testa. Avete qualcosa?",
+            "meaning": {
+              "en": "I have a headache. Do you have something?"
+            },
+            "options": [
+              {
+                "text": "Ho mal di testa. Avete qualcosa?",
+                "meaning": {
+                  "en": "I have a headache. Do you have something?"
+                },
+                "next": "n3",
+                "correct": true
+              },
+              {
+                "text": "Due biglietti, per favore",
+                "meaning": {
+                  "en": "Two tickets, please"
+                },
+                "next": "n3",
+                "correct": false
+              }
+            ]
+          },
+          {
+            "id": "n3",
+            "speaker": "npc",
+            "text": "Certo. Prenda questo due volte al giorno.",
+            "meaning": {
+              "en": "Of course. Take this twice a day."
+            },
+            "next": "n4"
+          },
+          {
+            "id": "n4",
+            "speaker": "user",
+            "text": "Sono allergico agli antibiotici",
+            "meaning": {
+              "en": "I'm allergic to antibiotics"
+            },
+            "options": [
+              {
+                "text": "Sono allergico agli antibiotici",
+                "meaning": {
+                  "en": "I'm allergic to antibiotics"
+                },
+                "next": "n5",
+                "correct": true
+              },
+              {
+                "text": "Salute!",
+                "meaning": {
+                  "en": "Cheers!"
+                },
+                "next": "n5",
+                "correct": false
+              }
+            ]
+          },
+          {
+            "id": "n5",
+            "speaker": "npc",
+            "text": "Nessun problema, questo non lo è.",
+            "meaning": {
+              "en": "No problem, this one isn't."
+            }
+          }
+        ]
+      },
+      "cultureTips": [
+        {
+          "en": "Pharmacies (green cross) give advice for minor ailments — no doctor needed.",
+          "he": "בבתי מרקחת (צלב ירוק) מקבלים ייעוץ לבעיות קלות — בלי רופא."
+        }
+      ],
+      "isEmergency": false
+    },
+    {
+      "id": "connectivity",
+      "name": {
+        "en": "Connectivity & Practical",
+        "he": "אינטרנט ופרקטיקה"
+      },
+      "icon": "wifi",
+      "priorityDefault": 55,
+      "corePhraseIds": [
+        "it.phrase.connectivity.wifi-here",
+        "it.phrase.connectivity.sim-card",
+        "it.phrase.connectivity.charge-phone",
+        "it.phrase.connectivity.what-time-open",
+        "it.phrase.connectivity.what-time-close",
+        "it.phrase.connectivity.where-laundry"
+      ],
+      "replyIds": [
+        "it.reply.connectivity.password-on-table",
+        "it.reply.connectivity.open-at-nine",
+        "it.reply.connectivity.closed-sunday",
+        "it.reply.connectivity.socket-there"
+      ],
+      "recognitionIds": [
+        "it.word.connectivity.open-w2",
+        "it.word.connectivity.closed-w2"
+      ],
+      "dialogue": {
+        "id": "it.dialogue.connectivity",
+        "startNodeId": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "user",
+            "text": "Scusi, c'è il Wi-Fi qui?",
+            "meaning": {
+              "en": "Excuse me, is there Wi-Fi here?"
+            },
+            "options": [
+              {
+                "text": "Scusi, c'è il Wi-Fi qui?",
+                "meaning": {
+                  "en": "Excuse me, is there Wi-Fi here?"
+                },
+                "next": "n2",
+                "correct": true
+              },
+              {
+                "text": "Il conto, per favore",
+                "meaning": {
+                  "en": "The bill, please"
+                },
+                "next": "n2",
+                "correct": false
+              }
+            ]
+          },
+          {
+            "id": "n2",
+            "speaker": "npc",
+            "text": "Sì, la password è sul tavolo.",
+            "meaning": {
+              "en": "Yes, the password is on the table."
+            },
+            "next": "n3"
+          },
+          {
+            "id": "n3",
+            "speaker": "user",
+            "text": "Grazie. A che ora chiudete?",
+            "meaning": {
+              "en": "Thanks. What time do you close?"
+            },
+            "options": [
+              {
+                "text": "Grazie. A che ora chiudete?",
+                "meaning": {
+                  "en": "Thanks. What time do you close?"
+                },
+                "next": "n4",
+                "correct": true
+              },
+              {
+                "text": "Mi sono perso",
+                "meaning": {
+                  "en": "I'm lost"
+                },
+                "next": "n4",
+                "correct": false
+              }
+            ]
+          },
+          {
+            "id": "n4",
+            "speaker": "npc",
+            "text": "Alle sette di sera.",
+            "meaning": {
+              "en": "At seven in the evening."
+            }
+          }
+        ]
+      },
+      "cultureTips": [],
+      "isEmergency": false
+    }
+  ],
+  "numbersCurriculum": [
+    {
+      "id": "ns.0-20",
+      "label": {
+        "en": "0–20"
+      },
+      "kind": "integer",
+      "min": 0,
+      "max": 20
+    },
+    {
+      "id": "ns.tens",
+      "label": {
+        "en": "Tens (20–100)"
+      },
+      "kind": "integer",
+      "min": 20,
+      "max": 100
+    },
+    {
+      "id": "ns.hundreds",
+      "label": {
+        "en": "Hundreds (100–1000)"
+      },
+      "kind": "integer",
+      "min": 100,
+      "max": 1000
+    },
+    {
+      "id": "ns.prices",
+      "label": {
+        "en": "Prices (€)"
+      },
+      "kind": "price",
+      "min": 1,
+      "max": 100
+    },
+    {
+      "id": "ns.time",
+      "label": {
+        "en": "Telling time"
+      },
+      "kind": "time",
+      "min": 0,
+      "max": 24
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "languages": [
+    {
+      "lang": "it",
+      "name": "Italian",
+      "latestVersion": "0.2.0",
+      "packUrl": "/content/it-IT.v0.2.0.json"
+    }
+  ]
+}
