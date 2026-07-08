@@ -50,7 +50,7 @@ export function Profile() {
             onChange={(e) => onRate(parseFloat(e.target.value))}
             aria-label={t('speechSpeed')}
           />
-          <div className="swipe-hint" style={{ padding: '2px 2px 12px' }}>
+          <div className="slider-range">
             <span>{Math.round(SPEECH_RATE_RANGE.min * 100)}%</span>
             <span>{Math.round(SPEECH_RATE_RANGE.max * 100)}%</span>
           </div>

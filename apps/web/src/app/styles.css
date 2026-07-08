@@ -419,6 +419,12 @@ input:focus, select:focus { outline: 2px solid var(--brand); border-color: trans
   width: 26px; height: 26px; border: none; border-radius: 50%;
   background: var(--brand); cursor: pointer;
 }
+/* Min / max end labels. Plain flex so it mirrors NATURALLY in RTL (min → leading side,
+   max → trailing side) — unlike .swipe-hint, which force-reverses for the swipe screen. */
+.slider-range {
+  display: flex; justify-content: space-between;
+  padding: 2px 2px 12px; color: var(--ink-faint); font-size: 0.78rem;
+}
 
 /* ── Core (practical phrases) ─────────────────────────────────────────── */
 .core-play { font-size: 1.15rem; flex-shrink: 0; opacity: 0.55; }
