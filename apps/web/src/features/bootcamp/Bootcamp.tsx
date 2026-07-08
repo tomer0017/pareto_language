@@ -4,6 +4,7 @@ import { speak, cancelSpeech } from '../../shared/audio/tts.js';
 import { useAppStore } from '../../shared/stores/appStore.js';
 import { CheckPop } from '../../shared/ui/CheckPop.js';
 import { success, tap } from '../../shared/ui/haptics.js';
+import { LangStrip } from '../../shared/ui/LangStrip.js';
 import { getAudioDiag, subscribeAudioDiag, testAudio, unlockAudio } from '../../shared/audio/tts.js';
 import { useSyncExternalStore } from 'react';
 import { BOOTCAMP_PLAN, PHASES } from './plan.js';
@@ -69,6 +70,7 @@ function MissionHub() {
         <span style={{ width: 44 }} />
       </div>
       <div className="screen-scroll no-nav">
+        <LangStrip />
         <h1 style={{ textAlign: 'center', margin: '4px 0 6px' }}>🎖️ {L(day.title)}</h1>
         <p className="center" style={{ marginBottom: 14 }}>
           {done
@@ -136,6 +138,7 @@ function MissionMap() {
         <span className="dim small">{t('missionsProgress', { done, total: 30 })}</span>
       </div>
       <div className="screen-scroll no-nav">
+        <LangStrip />
         <AudioEnable />
         {PHASES.map((phase) => (
           <div key={phase.n}>

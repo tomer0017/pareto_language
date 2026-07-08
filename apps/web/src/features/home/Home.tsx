@@ -1,6 +1,7 @@
 import { useAppStore } from '../../shared/stores/appStore.js';
 import { L, t } from '../../shared/i18n/strings.js';
 import { tap } from '../../shared/ui/haptics.js';
+import { LangStrip } from '../../shared/ui/LangStrip.js';
 import { BOOTCAMP_PLAN } from '../bootcamp/plan.js';
 import { DAYS, useBootcampStore } from '../bootcamp/bootcampStore.js';
 
@@ -39,6 +40,7 @@ export function Home() {
   return (
     <div className="screen">
       <div className="screen-scroll">
+        <LangStrip />
         <div style={{ padding: '6px 0 4px' }}>
           <h1>{t('homeGreeting')}</h1>
           <p className="dim" style={{ marginTop: 4 }}>{t('homeSub')}</p>

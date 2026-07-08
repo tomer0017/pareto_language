@@ -2,11 +2,12 @@
 
 ## 📚 Start here — required reading for every sprint
 
-Before touching this codebase, read the two living docs:
+Before touching this codebase, read the living docs **in this order**:
 
-1. **[READY_PROJECT_STRUCTURE.md](./READY_PROJECT_STRUCTURE.md)** — product vision, philosophy,
-   app structure, architecture, constraints, and the current English-pilot state.
-2. **[BOOTCAMP_CONVERSATIONS.md](./BOOTCAMP_CONVERSATIONS.md)** — every Bootcamp mission's content
+1. **[READY_MASTER_OVERVIEW.md](./READY_MASTER_OVERVIEW.md)** — the single source of truth for
+   understanding READY: what it is, why it exists, how it's built, the rules, and current status.
+2. **[READY_PROJECT_STRUCTURE.md](./READY_PROJECT_STRUCTURE.md)** — product rules + app/architecture detail.
+3. **[BOOTCAMP_CONVERSATIONS.md](./BOOTCAMP_CONVERSATIONS.md)** — every Bootcamp mission's content
    (phrases, expected replies, recovery tools, cold opens, dialogues), for content review. Read
    this before touching any Bootcamp content.
 

@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import { L, t } from '../../shared/i18n/strings.js';
 import { speak } from '../../shared/audio/tts.js';
 import { tap } from '../../shared/ui/haptics.js';
+import { LangStrip } from '../../shared/ui/LangStrip.js';
 import { RECOVERY_ITEMS } from '../bootcamp/recovery.js';
 import { BOOTCAMP_PLAN } from '../bootcamp/plan.js';
 import { DAYS } from '../bootcamp/bootcampStore.js';
@@ -42,6 +43,7 @@ export function Core() {
   return (
     <div className="screen">
       <div style={{ padding: '6px 0 2px' }}>
+        <LangStrip />
         <h1>{t('coreTitle')}</h1>
         <p className="dim" style={{ marginTop: 4 }}>{t('coreSub', { n: total })}</p>
       </div>

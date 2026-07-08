@@ -3,6 +3,7 @@ import { useSyncExternalStore } from 'react';
 import { useAppStore } from '../../shared/stores/appStore.js';
 import { t } from '../../shared/i18n/strings.js';
 import { tap } from '../../shared/ui/haptics.js';
+import { LangStrip } from '../../shared/ui/LangStrip.js';
 import { UI_LANGUAGES, languageInfo, PILOT_LANG } from '../../shared/i18n/languages.js';
 import {
   getSpeechRate, setSpeechRate, SPEECH_RATE_RANGE, testVoice,
@@ -29,6 +30,7 @@ export function Profile() {
   return (
     <div className="screen">
       <div style={{ padding: '6px 0 2px' }}>
+        <LangStrip />
         <h1>{t('profileTitle')}</h1>
       </div>
       <div className="screen-scroll">

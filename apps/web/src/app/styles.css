@@ -409,6 +409,9 @@ input:focus, select:focus { outline: 2px solid var(--brand); border-color: trans
   -webkit-appearance: none; appearance: none;
   width: 100%; height: 8px; border-radius: 999px;
   background: var(--line); outline: none; padding: 0; border: none; box-shadow: none;
+  /* A speed slider is a quantity, not text: keep it LTR in every UI language so the thumb
+     always tells the truth — min (slower) on the left, max (faster) on the right. */
+  direction: ltr;
 }
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none; appearance: none;
@@ -424,7 +427,20 @@ input:focus, select:focus { outline: 2px solid var(--brand); border-color: trans
 .slider-range {
   display: flex; justify-content: space-between;
   padding: 2px 2px 12px; color: var(--ink-faint); font-size: 0.78rem;
+  /* Match the LTR track: min label on the left, max on the right, in every UI language. */
+  direction: ltr;
 }
+
+/* ── Global language strip (UI lang + learning lang, always honest) ───── */
+.lang-strip {
+  width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px;
+  background: var(--card); border: 1px solid var(--line); box-shadow: none;
+  border-radius: 999px; padding: 8px 14px; min-height: 0;
+  font-size: 0.82rem; font-weight: 700; margin-bottom: 12px;
+}
+.lang-strip .dim { font-weight: 600; }
+.lang-strip-sep { color: var(--ink-faint); }
+.lang-strip-globe { margin-inline-start: 2px; opacity: 0.65; }
 
 /* ── Core (practical phrases) ─────────────────────────────────────────── */
 .core-play { font-size: 1.15rem; flex-shrink: 0; opacity: 0.55; }

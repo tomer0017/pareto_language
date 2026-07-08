@@ -266,6 +266,10 @@ const en = {
   // Victory screen
   victoryTitle: 'You did it!',
   victoryEmotional: 'Twenty minutes ago you probably didn’t understand this conversation. Now watch it again.',
+  // Global language strip
+  stripLearnPrefix: 'Learning:',
+  stripAppPrefix: 'App:',
+  stripAria: 'Language settings',
   // Mission 1 coaching (survival, not correctness)
   chooseToEscape: 'Pick the line that helps you get out of the moment',
   survivalTool: 'Survival tool',
@@ -469,6 +473,10 @@ const he: Partial<Record<StringKey, string>> = {
   // Victory screen
   victoryTitle: 'הצלחת!',
   victoryEmotional: 'לפני עשרים דקות כנראה לא הבנת את השיחה הזאת. עכשיו צפה בה שוב.',
+  // Global language strip
+  stripLearnPrefix: 'לימוד:',
+  stripAppPrefix: 'אפליקציה:',
+  stripAria: 'הגדרות שפה',
   // Mission 1 coaching (survival, not correctness)
   chooseToEscape: 'בחר את המשפט שיעזור לך לצאת מהמצב',
   survivalTool: 'כלי הישרדות',
