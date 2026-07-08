@@ -19,6 +19,12 @@ import { reportContentSource, setProviderDiag } from '../data/dataDiag.js';
 
 export type View =
   | 'onboarding'
+  // English-pilot top-level tabs (permanent bottom nav)
+  | 'home'
+  | 'bootcamp'
+  | 'core'
+  | 'profile'
+  // Content-pack screens (gated to "coming soon" until an English pack ships)
   | 'mission'
   | 'words'
   | 'phrases'
@@ -27,8 +33,7 @@ export type View =
   | 'session'
   | 'emergency'
   | 'plan'
-  | 'languages'
-  | 'bootcamp';
+  | 'languages';
 
 export interface OnboardingInput {
   departureAt: string;
@@ -58,10 +63,12 @@ interface AppState {
   situationById: Map<string, Situation>;
   uiLang: string;
   learningLang: string;
+  theme: 'light' | 'dark';
 
   navigate(view: View): void;
   setUiLang(lang: string): void;
   setLearningLang(lang: string): Promise<void>;
+  setTheme(theme: 'light' | 'dark'): void;
   init(): Promise<void>;
   createPlan(input: OnboardingInput): Promise<void>;
   updatePlanSettings(input: OnboardingInput): Promise<void>;
@@ -95,6 +102,9 @@ function makeProvider(): DataProvider {
     : local;
 }
 
+const storedTheme: 'light' | 'dark' = localStorage.getItem('ready.theme') === 'dark' ? 'dark' : 'light';
+if (typeof document !== 'undefined') document.documentElement.dataset.theme = storedTheme;
+
 const storedUiLang = localStorage.getItem('ready.uiLang') ?? 'en';
 // English is the current pilot language (see languages.ts / PILOT_LANG). Any legacy 'it'
 // preference from before the switch is normalized to the pilot so no user is stuck on Italian.
@@ -115,6 +125,7 @@ export const useAppStore = create<AppState>((set, get) => ({
   situationById: new Map(),
   uiLang: storedUiLang,
   learningLang: storedLearningLang,
+  theme: storedTheme,
 
   navigate(view) {
     set({ view });
@@ -125,6 +136,12 @@ export const useAppStore = create<AppState>((set, get) => ({
     setUiLangDict(lang);
     applyUiDirection(lang);
     set({ uiLang: lang });
+  },
+
+  setTheme(theme) {
+    localStorage.setItem('ready.theme', theme);
+    if (typeof document !== 'undefined') document.documentElement.dataset.theme = theme;
+    set({ theme });
   },
 
   async setLearningLang(lang) {
@@ -165,9 +182,9 @@ export const useAppStore = create<AppState>((set, get) => ({
         plan,
         states: new Map(stateList.map((s) => [s.itemId, s])),
         ...(pack ? toMaps(pack) : { itemsById: new Map(), situationById: new Map() }),
-        // Every new user starts directly in the English pilot (the Bootcamp); the welcome/
-        // language screen shows once, then hands off to it.
-        view: entered ? 'bootcamp' : 'onboarding',
+        // Every new user starts directly in the English pilot; the welcome/language screen shows
+        // once, then hands off to Home (the mission overview with the permanent bottom nav).
+        view: entered ? 'home' : 'onboarding',
         loading: false,
         fatalError: null,
       });

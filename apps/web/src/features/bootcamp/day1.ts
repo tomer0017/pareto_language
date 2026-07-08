@@ -41,7 +41,7 @@ const SCENE_STUCK: BootcampDialogue = {
   nodes: [
     { id: 'n1', who: 'npc', fast: true, next: 'c1',
       en: "Hi there! What can I get you today — we've got a special on the flat white!",
-      he: 'היי! מה להביא לך היום — יש מבצע על הפלאט וייט!' },
+      he: 'היי! מה להביא לך היום — יש מבצע על flat white (אספרסו עם חלב מוקצף)!' },
     { id: 'c1', who: 'you', en: '', he: '', choices: [
       { en: "Sorry, I don't understand.", he: 'סליחה, אני לא מבין.', itemId: 'en.phrase.recovery.dont-understand', correct: true, next: 'n2' },
       { en: 'Goodbye!', he: 'להגיד שלום וללכת', correct: false, next: 'r1' },

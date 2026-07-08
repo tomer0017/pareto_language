@@ -91,7 +91,7 @@ export function Onboarding() {
             onClick={() => {
               tap();
               localStorage.setItem('ready.entered', '1');
-              app.navigate('bootcamp');
+              app.navigate('home');
             }}
           >
             {t('startPilot')}

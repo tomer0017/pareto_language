@@ -105,7 +105,11 @@ export const useBootcampStore = create<BootcampState>((set, get) => ({
   },
 
   enterPractice() {
-    set({ stage: 'play' });
+    // Start (or resume) practice at the persisted step: 0 for a fresh/completed mission,
+    // the saved point for an in-progress one. Recomputed here so the hub is the source of truth.
+    const { activeDay, stepIndex } = get();
+    const resume = activeDay === null ? 0 : (stepIndex[String(activeDay)] ?? 0);
+    set({ stage: 'play', index: resume });
   },
 
   toHub() {
@@ -152,8 +156,9 @@ export const useBootcampStore = create<BootcampState>((set, get) => ({
     const done = completedDays.includes(activeDay) ? completedDays : [...completedDays, activeDay];
     const si = { ...stepIndex, [String(activeDay)]: 0 }; // replayable from the top
     persist({ completedDays: done, receipts, stepIndex: si });
-    // Reset the live index too, so "Practice again" from the hub restarts at step 0.
-    set({ completedDays: done, stepIndex: si, index: 0 });
+    // Persisted resume resets to 0 (replayable from the top); the live index is left where it is
+    // so the Victory screen stays on-screen. enterPractice() re-reads stepIndex when replaying.
+    set({ completedDays: done, stepIndex: si });
   },
 
   exit() {

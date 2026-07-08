@@ -16,8 +16,14 @@ import { EmergencyCard } from '../features/emergency/EmergencyCard.js';
 import { PlanSettings } from '../features/plan/PlanSettings.js';
 import { LanguageSelect } from '../features/languages/LanguageSelect.js';
 import { Bootcamp } from '../features/bootcamp/Bootcamp.js';
+import { Home } from '../features/home/Home.js';
+import { Core } from '../features/core/Core.js';
+import { Profile } from '../features/profile/Profile.js';
+import { useBootcampStore } from '../features/bootcamp/bootcampStore.js';
 
-const TAB_VIEWS: View[] = ['mission', 'words', 'phrases', 'situations', 'practice'];
+// The permanent English-pilot tabs. The bottom nav is shown on these — except inside an active
+// Bootcamp mission (hub/play), which is a focused full-screen flow with its own controls.
+const PILOT_TABS: View[] = ['home', 'bootcamp', 'core', 'profile'];
 
 // Views that render shipped content-pack material. During the English pilot no pack ships, so
 // these gate to an honest "coming soon" instead of showing Italian content or crashing on a
@@ -43,6 +49,9 @@ function ComingSoon() {
 
 const SCREENS: Partial<Record<View, { feature: string; el: () => JSX.Element | null }>> = {
   onboarding: { feature: 'Onboarding', el: Onboarding },
+  home: { feature: 'Home', el: Home },
+  core: { feature: 'Core', el: Core },
+  profile: { feature: 'Profile', el: Profile },
   mission: { feature: 'Mission', el: Mission },
   words: { feature: 'Words', el: Words },
   phrases: { feature: 'Phrases', el: Phrases },
@@ -57,6 +66,7 @@ const SCREENS: Partial<Record<View, { feature: string; el: () => JSX.Element | n
 
 export function App() {
   const { view, loading, fatalError, init, pack } = useAppStore();
+  const inMission = useBootcampStore((s) => s.activeDay !== null);
 
   useEffect(() => {
     void init();
@@ -93,16 +103,19 @@ export function App() {
     );
   }
 
-  const screen = SCREENS[view] ?? SCREENS.bootcamp;
+  const screen = SCREENS[view] ?? SCREENS.home;
   if (!screen) return null;
   const Screen = screen.el;
+
+  // Permanent nav on the top-level tabs — hidden only inside an active Bootcamp mission.
+  const showNav = PILOT_TABS.includes(view) && !(view === 'bootcamp' && inMission);
 
   return (
     <>
       <ErrorBoundary feature={screen.feature}>
         <Screen />
       </ErrorBoundary>
-      {TAB_VIEWS.includes(view) && pack && <BottomNav />}
+      {showNav && <BottomNav />}
       {import.meta.env.DEV && (
         <ErrorBoundary feature="DevDiagnostics">
           <AudioDebug />

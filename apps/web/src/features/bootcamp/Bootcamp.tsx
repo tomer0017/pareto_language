@@ -232,7 +232,7 @@ function MissionPlayer() {
 
   if (showReader && convo) return <DialogueReader dialogue={convo} onClose={() => setShowReader(false)} />;
   if (showVideo && video) return <VideoOverlay video={video} onClose={() => setShowVideo(false)} />;
-  if (!step) return <SummaryStep />;
+  if (!step || step.kind === 'summary') return <VictoryScreen />;
   const progress = Math.round((bc.index / day.steps.length) * 100);
 
   return (
@@ -268,7 +268,6 @@ function MissionPlayer() {
         {step.kind === 'dialogue' && <DialogueStep dialogue={day.dialogues[step.dialogueId]!} onDone={() => { pop(); advance(); }} />}
         {step.kind === 'ambush' && <AmbushStep step={step} itemsById={itemsById} onDone={(ok) => { if (ok) pop(); advance(); }} />}
         {step.kind === 'receipt' && <ReceiptStep text={step.text} onNext={advance} />}
-        {step.kind === 'summary' && <SummaryStep />}
       </div>
     </div>
   );
@@ -665,53 +664,99 @@ function ReceiptStep({ text, onNext }: { text: Record<string, string>; onNext: (
   );
 }
 
-/** Mission complete — capability card, receipts, and the "one more mission" loop. */
-function SummaryStep() {
+/** Celebratory confetti burst (decorative). Honors prefers-reduced-motion via the global rule. */
+const CONFETTI_COLORS = ['#5b46e4', '#0ca678', '#e8a13c', '#e05252', '#2f6fed', '#e8590c'];
+function Confetti() {
+  const pieces = useMemo(
+    () => Array.from({ length: 42 }, (_, i) => ({
+      left: Math.random() * 100,
+      delay: Math.random() * 0.6,
+      dur: 1.8 + Math.random() * 1.4,
+      rot: Math.random() * 360,
+      color: CONFETTI_COLORS[i % CONFETTI_COLORS.length],
+    })),
+    [],
+  );
+  return (
+    <div className="confetti" aria-hidden>
+      {pieces.map((p, i) => (
+        <span key={i} style={{ left: `${p.left}%`, background: p.color, animationDelay: `${p.delay}s`, animationDuration: `${p.dur}s`, rotate: `${p.rot}deg` }} />
+      ))}
+    </div>
+  );
+}
+
+/**
+ * Victory Screen — READY sells confidence, so completion celebrates, it doesn't summarize.
+ * The reward is re-watching the conversation you now understand (primary), THEN transcript /
+ * practice again; the next mission is a quiet ghost action (confidence before progress).
+ * Completion is recorded on mount; nothing is ever locked afterwards.
+ */
+function VictoryScreen() {
   const bc = useBootcampStore();
   const day = bc.currentDay();
   const [showReader, setShowReader] = useState(false);
+  const [showVideo, setShowVideo] = useState(false);
+  const recorded = useRef(false);
+  useEffect(() => {
+    if (!recorded.current) {
+      recorded.current = true;
+      success();
+      bc.completeDay();
+    }
+    return () => cancelSpeech();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   if (!day) return null;
   const receipts = bc.receipts.filter((r) => r.day === day.day);
   const convo = primaryDialogue(day);
+  const video = day.introVideo;
   const nextBuilt = BOOTCAMP_PLAN.find((m) => m.day > day.day && m.day in DAYS && !bc.completedDays.includes(m.day));
-  // Completing a mission unlocks confidence — it never removes access. Land back on the hub,
-  // where Practice (now "again"), Transcript and Video all stay available forever.
-  const finishToHub = (): void => {
-    cancelSpeech();
-    bc.completeDay();
-    bc.toHub();
-  };
+
   if (showReader && convo) return <DialogueReader dialogue={convo} onClose={() => setShowReader(false)} />;
+  if (showVideo && video) return <VideoOverlay video={video} onClose={() => setShowVideo(false)} />;
+
+  // The reward: re-watch the full conversation — the video if there is one, else the transcript.
+  const watch = (): void => {
+    if (video) setShowVideo(true);
+    else if (convo) setShowReader(true);
+  };
+
   return (
-    <>
-      <div className="drill-card pop-in" style={{ textAlign: 'start', gap: 12 }}>
-        <p className="drill-label" style={{ textAlign: 'center' }}>{t('dayComplete', { n: day.day })}</p>
-        <p className="drill-phrase" style={{ fontSize: '1.5rem', textAlign: 'center' }}>🎖️ {L(day.title)}</p>
-        <p className="dim small">{t('yourEvidence')}:</p>
-        {receipts.map((r, i) => (
-          <p key={i} className="small">🧾 {r.text}</p>
-        ))}
+    <div className="screen">
+      <Confetti />
+      <div className="topbar">
+        <button className="btn-ghost" onClick={() => { cancelSpeech(); bc.toHub(); }}>{t('back')}</button>
+        <span className="chip">{t('mission')} {day.day}</span>
+        <span style={{ width: 44 }} />
+      </div>
+      <div className="screen-scroll no-nav">
+        <div className="center" style={{ padding: '8px 0 4px' }}>
+          <p className="pop-in" style={{ fontSize: '3.6rem' }}>🎉</p>
+          <h1 style={{ marginTop: 4 }}>{t('victoryTitle')}</h1>
+          <p className="drill-phrase" style={{ fontSize: '1.2rem', margin: '6px 0' }}>🎖️ {L(day.title)}</p>
+          <p className="dim" style={{ maxWidth: 340, margin: '10px auto 0' }}>{t('victoryEmotional')}</p>
+        </div>
+        {receipts.length > 0 && (
+          <div className="card card-sunken" style={{ marginTop: 16, textAlign: 'start' }}>
+            <p className="dim small" style={{ marginBottom: 6 }}>{t('yourEvidence')}:</p>
+            {receipts.map((r, i) => (
+              <p key={i} className="small">🧾 {r.text}</p>
+            ))}
+          </div>
+        )}
       </div>
       <div className="action-zone">
-        {convo && (
-          <button className="btn-secondary" onClick={() => setShowReader(true)}>{t('reviewConversation')}</button>
-        )}
+        <button className="btn-primary breathe" onClick={watch}>{t('watchFullConvo')}</button>
+        {convo && <button className="btn-secondary" onClick={() => setShowReader(true)}>{t('openTranscript')}</button>}
+        <button className="btn-secondary" onClick={() => bc.enterPractice()}>🎯 {t('practiceAgain')}</button>
         {nextBuilt && (
-          <button
-            className="btn-primary breathe"
-            onClick={() => {
-              bc.completeDay();
-              bc.startDay(nextBuilt.day);
-            }}
-          >
-            {t('nextMission', { title: L(nextBuilt.title) })}
+          <button className="btn-ghost" onClick={() => bc.startDay(nextBuilt.day)}>
+            ▶ {t('nextMission', { title: L(nextBuilt.title) })}
           </button>
         )}
-        <button className={nextBuilt ? 'btn-ghost' : 'btn-primary'} onClick={finishToHub}>
-          {t('backToHub')}
-        </button>
       </div>
-    </>
+    </div>
   );
 }
 

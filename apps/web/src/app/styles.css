@@ -375,6 +375,56 @@ input:focus, select:focus { outline: 2px solid var(--brand); border-color: trans
   display: flex; flex-direction: column; gap: 10px; z-index: 82;
 }
 
+/* ── Victory confetti ─────────────────────────────────────────────────── */
+.confetti { position: fixed; inset: 0; pointer-events: none; z-index: 90; overflow: hidden; }
+.confetti span {
+  position: absolute; top: -14px; width: 9px; height: 14px; border-radius: 2px; opacity: 0.92;
+  animation-name: confettiFall; animation-timing-function: ease-in; animation-fill-mode: forwards;
+}
+@keyframes confettiFall {
+  0% { top: -14px; opacity: 1; }
+  100% { top: 108%; opacity: 0.5; }
+}
+
+/* ── Dark theme (Profile → Appearance) ────────────────────────────────── */
+/* Variable-only override: every surface/ink token flips; accent stays per-language. */
+:root[data-theme='dark'] {
+  --bg: #100f1a;
+  --card: #1b1930;
+  --card-sunken: #17152a;
+  --line: #2c2a44;
+  --ink: #f3f2fb;
+  --ink-dim: #b6b2d4;
+  --ink-faint: #7d799a;
+  --brand-soft: #26224d;
+  --good-soft: #123024;
+  --warn-soft: #382c14;
+  --danger-soft: #3a1c1c;
+  --shadow-card: 0 6px 24px rgba(0, 0, 0, 0.45);
+  --shadow-pop: 0 12px 34px rgba(0, 0, 0, 0.55);
+}
+
+/* ── Speed slider (Learning Preferences) ──────────────────────────────── */
+.slider {
+  -webkit-appearance: none; appearance: none;
+  width: 100%; height: 8px; border-radius: 999px;
+  background: var(--line); outline: none; padding: 0; border: none; box-shadow: none;
+}
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none;
+  width: 26px; height: 26px; border-radius: 50%;
+  background: var(--brand); box-shadow: var(--shadow-glow); cursor: pointer;
+}
+.slider::-moz-range-thumb {
+  width: 26px; height: 26px; border: none; border-radius: 50%;
+  background: var(--brand); cursor: pointer;
+}
+
+/* ── Core (practical phrases) ─────────────────────────────────────────── */
+.core-play { font-size: 1.15rem; flex-shrink: 0; opacity: 0.55; }
+.core-playing { outline: 2px solid var(--accent); }
+.core-playing .core-play { opacity: 1; }
+
 /* ── Mission Hub (three ways to learn) ────────────────────────────────── */
 .hub-icon {
   width: 54px; height: 54px; border-radius: 16px; flex-shrink: 0;

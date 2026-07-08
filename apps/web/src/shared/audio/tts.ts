@@ -79,6 +79,41 @@ export function getAudioDiag(): AudioDiag {
   return snapshot;
 }
 
+/* ── Global speech rate (single source of truth) ─────────────────────────── */
+// One user-controlled speed multiplies EVERY spoken sentence (Bootcamp, transcript, replay,
+// future simulator/vocabulary). Per-call rates (fast/slow beats) stay relative to it. Persisted
+// so it survives reloads; guarded so it never throws in non-browser (test) environments.
+const RATE_KEY = 'ready.speechRate';
+const RATE_MIN = 0.8;
+const RATE_MAX = 1.05;
+const RATE_DEFAULT = 0.95;
+const clampUserRate = (r: number): number => Math.min(RATE_MAX, Math.max(RATE_MIN, Number.isFinite(r) ? r : RATE_DEFAULT));
+
+let userRate = RATE_DEFAULT;
+try {
+  const stored = localStorage.getItem(RATE_KEY);
+  if (stored) userRate = clampUserRate(parseFloat(stored));
+} catch {
+  /* no localStorage (SSR/test) — keep default */
+}
+
+export const SPEECH_RATE_RANGE = { min: RATE_MIN, max: RATE_MAX, default: RATE_DEFAULT } as const;
+
+/** Current global speech rate (0.8–1.05). */
+export function getSpeechRate(): number {
+  return userRate;
+}
+
+/** Set the global speech rate; clamped and persisted. Affects all future speak() calls. */
+export function setSpeechRate(rate: number): void {
+  userRate = clampUserRate(rate);
+  try {
+    localStorage.setItem(RATE_KEY, String(userRate));
+  } catch {
+    /* ignore persistence failure */
+  }
+}
+
 /* ── Voices ─────────────────────────────────────────────────────────────── */
 
 let cachedVoices: SpeechSynthesisVoice[] = [];
@@ -217,6 +252,8 @@ export function speak(text: string, lang = 'en', rate = 1): Promise<void> {
 
       const u = new SpeechSynthesisUtterance(text);
       activeUtterance = u;
+      // Effective rate = per-call rate × the user's global speed, kept in a sane utterance band.
+      u.rate = Math.min(1.5, Math.max(0.5, rate * userRate));
       const tag = LANG_TAG[lang] ?? lang;
       u.lang = tag;
       const voice = voiceFor(tag);
@@ -266,6 +303,12 @@ export function speak(text: string, lang = 'en', rate = 1): Promise<void> {
 export function testAudio(): Promise<void> {
   unlockAudio();
   return speak('Hello! Ready audio is working.', 'en', 1);
+}
+
+/** Preview the current global speech speed on a natural sentence (Learning Preferences). */
+export function testVoice(): Promise<void> {
+  unlockAudio();
+  return speak('This is how fast the sentences will sound.', 'en', 1);
 }
 
 /* ── Asset-first item playback ──────────────────────────────────────────── */
