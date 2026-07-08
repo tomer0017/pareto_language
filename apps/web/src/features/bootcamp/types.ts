@@ -21,6 +21,7 @@ export interface DialogueChoice {
   itemId?: string;      // the item this line trains (scoring)
   correct: boolean;
   next: string;         // branch target — wrong choices route to recovery beats, never dead-end
+  coach?: LocalizedText; // coaching-mode only: why this pick is more/less useful (never "wrong")
 }
 
 export interface DialogueNodeB {
@@ -39,6 +40,9 @@ export interface BootcampDialogue {
   id: string;
   start: string;
   nodes: DialogueNodeB[];
+  /** Coaching mode (Mission 1): label recovery lines as survival tools, and after each pick
+   *  explain why it's more/less useful before continuing. Opt-in — other missions run as-is. */
+  coaching?: boolean;
 }
 
 /**

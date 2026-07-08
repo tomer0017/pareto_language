@@ -201,6 +201,29 @@ describe('Mission 1 — I Can Survive (interactive)', () => {
       expect(target.who).toBe('npc'); // the world responds — conversation continues naturally
     }
   });
+
+  it('runs in coaching mode: survival framing up front and every less-useful pick teaches', () => {
+    const scene = DAY1.dialogues['stuck-traveler']!;
+    expect(scene.coaching).toBe(true);
+    // An explanation screen precedes the first dialogue (survival, not correctness).
+    const firstDialogue = DAY1.steps.findIndex((s) => s.kind === 'dialogue');
+    const intro = DAY1.steps.slice(0, firstDialogue).filter((s) => s.kind === 'talk') as Extract<BootcampStep, { kind: 'talk' }>[];
+    expect(intro.some((s) => /תשובה מושלמת|perfect answer/.test(`${s.title.he} ${s.title.en}`))).toBe(true);
+    // Every "less useful" choice carries a coaching explanation (teach, not punish).
+    for (const c of scene.nodes.flatMap((n) => n.choices ?? []).filter((c) => !c.correct)) {
+      expect(c.coach?.he).toBeTruthy();
+      expect(c.coach?.en).toBeTruthy();
+    }
+  });
+});
+
+describe('coaching mode is scoped to Mission 1 only (no regression to 2–30)', () => {
+  it('no other built mission enables dialogue coaching', () => {
+    for (const [num, day] of Object.entries(DAYS)) {
+      if (Number(num) === 1) continue;
+      for (const d of Object.values(day.dialogues)) expect(d.coaching ?? false).toBe(false);
+    }
+  });
 });
 
 describe('Mission 4 — Coffee Shop (Deep Moment exemplar)', () => {

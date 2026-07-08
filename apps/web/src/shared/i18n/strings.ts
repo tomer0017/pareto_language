@@ -266,6 +266,14 @@ const en = {
   // Victory screen
   victoryTitle: 'You did it!',
   victoryEmotional: 'Twenty minutes ago you probably didn’t understand this conversation. Now watch it again.',
+  // Mission 1 coaching (survival, not correctness)
+  chooseToEscape: 'Pick the line that helps you get out of the moment',
+  survivalTool: 'Survival tool',
+  suitsHere: 'A good move',
+  lessUsefulHere: 'Less useful here',
+  usedSurvivalTool: 'Nice — you didn’t freeze. You used a survival tool.',
+  goodMoveGeneric: 'Good — that keeps the conversation going.',
+  lessUsefulGeneric: 'Here a survival tool would help you more. Let’s keep going.',
 } as const;
 
 const he: Partial<Record<StringKey, string>> = {
@@ -461,6 +469,14 @@ const he: Partial<Record<StringKey, string>> = {
   // Victory screen
   victoryTitle: 'הצלחת!',
   victoryEmotional: 'לפני עשרים דקות כנראה לא הבנת את השיחה הזאת. עכשיו צפה בה שוב.',
+  // Mission 1 coaching (survival, not correctness)
+  chooseToEscape: 'בחר את המשפט שיעזור לך לצאת מהמצב',
+  survivalTool: 'כלי הישרדות',
+  suitsHere: 'מהלך טוב',
+  lessUsefulHere: 'פחות מתאים כאן',
+  usedSurvivalTool: 'יופי — לא קפאת. השתמשת בכלי הישרדות.',
+  goodMoveGeneric: 'יופי — זה משאיר את השיחה פתוחה.',
+  lessUsefulGeneric: 'כאן כלי הישרדות היה עוזר לך יותר. בוא נמשיך.',
 };
 
 const DICTS: Record<string, Partial<Record<StringKey, string>>> = { en, he };

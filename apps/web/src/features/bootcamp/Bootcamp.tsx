@@ -8,7 +8,7 @@ import { getAudioDiag, subscribeAudioDiag, testAudio, unlockAudio } from '../../
 import { useSyncExternalStore } from 'react';
 import { BOOTCAMP_PLAN, PHASES } from './plan.js';
 import { DAYS, useBootcampStore } from './bootcampStore.js';
-import type { BootcampItem, BootcampStep, BootcampDialogue, BootcampDayContent, BootcampVideo } from './types.js';
+import type { BootcampItem, BootcampStep, BootcampDialogue, BootcampDayContent, BootcampVideo, DialogueChoice } from './types.js';
 import { dialogueTranscript } from './transcript.js';
 
 /** Resolve a public asset path (e.g. "/videos/x.mp4") against the app's base so it works in
@@ -512,13 +512,17 @@ function SwipeStep({ itemIds, itemsById, onDone }: { itemIds: string[]; itemsByI
   );
 }
 
-/** Visual-novel dialogue: ONE exchange on screen, choices branch, no transcript spoilers. */
+/** Visual-novel dialogue: ONE exchange on screen, choices branch, no transcript spoilers.
+ *  Coaching mode (Mission 1): survival-tool badges, a "pick a way out" hint, and a pause after
+ *  each choice that reframes it as more/less useful — never right/wrong — before continuing. */
 function DialogueStep({ dialogue, onDone }: { dialogue: BootcampDialogue; onDone: () => void }) {
   const bc = useBootcampStore();
+  const coaching = dialogue.coaching ?? false;
   const nodesById = useMemo(() => new Map(dialogue.nodes.map((n) => [n.id, n])), [dialogue]);
   const [nodeId, setNodeId] = useState(dialogue.start);
   const [yourLine, setYourLine] = useState<string | null>(null); // your last spoken line (briefly shown)
   const [recovered, setRecovered] = useState(false);
+  const [picked, setPicked] = useState<DialogueChoice | null>(null); // coaching feedback pause
   const node = nodesById.get(nodeId);
 
   useEffect(() => {
@@ -550,6 +554,27 @@ function DialogueStep({ dialogue, onDone }: { dialogue: BootcampDialogue; onDone
   const npcNode = node.who === 'npc' ? node : [...nodesById.values()].find((n) => n.next === node.id || n.choices?.some((c) => c.next === node.id));
   const displayNpc = node.who === 'npc' ? node : npcNode;
 
+  // Coaching pause: reframe the pick as more/less useful (never wrong), then continue on tap.
+  if (coaching && picked) {
+    const suits = picked.correct;
+    const isTool = picked.itemId?.startsWith('en.phrase.recovery.') ?? false;
+    const message = picked.coach ? L(picked.coach) : suits && isTool ? t('usedSurvivalTool') : suits ? t('goodMoveGeneric') : t('lessUsefulGeneric');
+    return (
+      <>
+        <div className="drill-card pop-in" style={{ gap: 12, minHeight: 240 }}>
+          <span style={{ fontWeight: 800, letterSpacing: '0.04em', color: suits ? 'var(--good)' : 'var(--warn)' }}>
+            {suits ? `🛟 ${t('suitsHere')}` : t('lessUsefulHere')}
+          </span>
+          <p className="drill-phrase" style={{ fontSize: '1.3rem' }}>“{picked.en}”</p>
+          <p className="drill-meaning">{message}</p>
+        </div>
+        <div className="action-zone">
+          <button className="btn-primary" onClick={() => { const next = picked.next; setPicked(null); setNodeId(next); }}>{t('nextBtn')}</button>
+        </div>
+      </>
+    );
+  }
+
   return (
     <>
       <div className="drill-card" style={{ gap: 14, minHeight: 240 }}>
@@ -566,22 +591,36 @@ function DialogueStep({ dialogue, onDone }: { dialogue: BootcampDialogue; onDone
       </div>
       <div className="action-zone">
         {node.who === 'you' && node.choices ? (
-          node.choices.map((c, i) => (
-            <button
-              key={i}
-              className="btn-secondary"
-              onClick={() => {
-                tap();
-                if (c.itemId) bc.recordDrill(c.itemId, 'simulator', c.correct ? 'pass' : 'partial');
-                setRecovered(!c.correct);
-                setYourLine(c.en);
-                void speak(c.en, 'en', 0.92).then(() => setNodeId(c.next));
-              }}
-            >
-              {c.en}
-              <span className="dim small" style={{ display: 'block' }}>{c.he}</span>
-            </button>
-          ))
+          <>
+            {coaching && <p className="dim small" style={{ textAlign: 'center', marginBottom: 2 }}>{t('chooseToEscape')}</p>}
+            {node.choices.map((c, i) => {
+              const isTool = c.itemId?.startsWith('en.phrase.recovery.') ?? false;
+              return (
+                <button
+                  key={i}
+                  className="btn-secondary"
+                  onClick={() => {
+                    tap();
+                    if (c.itemId) bc.recordDrill(c.itemId, 'simulator', c.correct ? 'pass' : 'partial');
+                    setYourLine(c.en);
+                    if (coaching) {
+                      setPicked(c); // pause on a coaching card before branching
+                      void speak(c.en, 'en', 0.92);
+                    } else {
+                      setRecovered(!c.correct);
+                      void speak(c.en, 'en', 0.92).then(() => setNodeId(c.next));
+                    }
+                  }}
+                >
+                  {coaching && isTool && (
+                    <span className="badge badge-ready" style={{ display: 'inline-flex', marginBottom: 6 }}>🛟 {t('survivalTool')}</span>
+                  )}
+                  <span style={{ display: 'block' }}>{c.en}</span>
+                  <span className="dim small" style={{ display: 'block' }}>{c.he}</span>
+                </button>
+              );
+            })}
+          </>
         ) : (
           <button className="btn-ghost" onClick={() => displayNpc && void speak(displayNpc.en, 'en', 0.8)}>
             🐢 {t('playSlow')}

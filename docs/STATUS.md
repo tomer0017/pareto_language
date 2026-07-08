@@ -1,5 +1,21 @@
 # STATUS — READY build report
 
+## 📚 Start here — required reading for every sprint
+
+Before touching this codebase, read the two living docs:
+
+1. **[READY_PROJECT_STRUCTURE.md](./READY_PROJECT_STRUCTURE.md)** — product vision, philosophy,
+   app structure, architecture, constraints, and the current English-pilot state.
+2. **[BOOTCAMP_CONVERSATIONS.md](./BOOTCAMP_CONVERSATIONS.md)** — every Bootcamp mission's content
+   (phrases, expected replies, recovery tools, cold opens, dialogues), for content review. Read
+   this before touching any Bootcamp content.
+
+**Before development:** read (1); if touching Bootcamp content, also read (2).
+**After development:** update (1) if architecture/product rules/navigation/data-model/learning
+philosophy/pipeline/language support/Bootcamp behavior changed; regenerate (2) with
+`npm run gen:conversations` if Bootcamp content changed.
+
+
 Date: 2026-07-04 · All four milestones (M0–M4) complete and committed. Full verification
 loop (typecheck → lint → tests → build → smoke) green at every milestone.
 

@@ -37,6 +37,7 @@ export const DAY1_ITEMS: BootcampItem[] = [
  *  recovery beats and come back; the conversation continues naturally either way. */
 const SCENE_STUCK: BootcampDialogue = {
   id: 'stuck-traveler',
+  coaching: true,
   start: 'n1',
   nodes: [
     { id: 'n1', who: 'npc', fast: true, next: 'c1',
@@ -44,7 +45,8 @@ const SCENE_STUCK: BootcampDialogue = {
       he: 'היי! מה להביא לך היום — יש מבצע על flat white (אספרסו עם חלב מוקצף)!' },
     { id: 'c1', who: 'you', en: '', he: '', choices: [
       { en: "Sorry, I don't understand.", he: 'סליחה, אני לא מבין.', itemId: 'en.phrase.recovery.dont-understand', correct: true, next: 'n2' },
-      { en: 'Goodbye!', he: 'להגיד שלום וללכת', correct: false, next: 'r1' },
+      { en: 'Goodbye!', he: 'להגיד שלום וללכת', correct: false, next: 'r1',
+        coach: T('לצאת עכשיו זה לוותר על הקפה. כלי הישרדות היה משאיר אותך בפנים — בלי לחץ.', 'Leaving now means giving up the coffee. A survival tool would have kept you in it — no pressure.') },
     ] },
     { id: 'r1', who: 'npc', next: 'c1b',
       en: "Oh — wait, don't go! I can help. Coffee?", he: 'רגע — אל תלך! אני אעזור. קפה?' },
@@ -56,7 +58,8 @@ const SCENE_STUCK: BootcampDialogue = {
       en: 'No problem! Coffee? Tea?', he: 'אין בעיה! קפה? תה?' },
     { id: 'c2', who: 'you', en: '', he: '', choices: [
       { en: 'One moment, please.', he: 'רגע אחד, בבקשה.', itemId: 'en.phrase.recovery.one-moment', correct: true, next: 'n3' },
-      { en: 'My name is Dan.', he: 'להציג את עצמך', correct: false, next: 'r2' },
+      { en: 'My name is Dan.', he: 'להציג את עצמך', correct: false, next: 'r2',
+        coach: T('הצגת את עצמך — אבל הוא שאל מה תרצה. פה כלי הישרדות עוזר לך יותר.', 'You introduced yourself — but he asked what you’d like. Here a survival tool helps you more.') },
     ] },
     { id: 'r2', who: 'npc', next: 'c2b',
       en: "Ha! Nice to meet you, Dan. So… coffee, or tea?", he: 'נעים מאוד, דן! אז… קפה או תה?' },
@@ -68,7 +71,8 @@ const SCENE_STUCK: BootcampDialogue = {
     { id: 'n4', who: 'npc', next: 'c3', en: 'Here you go!', he: 'בבקשה, הנה!' },
     { id: 'c3', who: 'you', en: '', he: '', choices: [
       { en: 'Thank you!', he: 'תודה!', itemId: 'en.phrase.recovery.thank-you', correct: true, next: 'n5' },
-      { en: 'Please speak slowly.', he: 'לבקש שידבר לאט', correct: false, next: 'r3' },
+      { en: 'Please speak slowly.', he: 'לבקש שידבר לאט', correct: false, next: 'r3',
+        coach: T('"דבר לאט" הוא כלי מעולה — אבל הוא רק אמר "בבקשה, הנה". פה תודה מתאימה יותר.', '“Speak slowly” is a great tool — but he only said “Here you go”. Here a thank-you fits better.') },
     ] },
     { id: 'r3', who: 'npc', slow: true, next: 'c3b',
       en: 'Ha — I only said: HERE — YOU — GO!', he: 'הא — רק אמרתי: בבקשה, הנה!' },
@@ -97,6 +101,13 @@ export const DAY1: BootcampDayContent = {
         T('וזה בסדר גמור — כי יש לך כלים.', 'And that’s completely fine — because you have tools.'),
         T('בחר את השורות שלך. אי אפשר להיכשל כאן — רק לשרוד יפה יותר.', 'Choose your own lines. You can’t fail here — only survive with more style.'),
       ], cta: T('להיכנס לבית הקפה', 'Walk in') },
+    { kind: 'talk', icon: '🛟', title: T('אין כאן תשובה מושלמת — יש דרך לצאת מהמצב', 'There’s no perfect answer here — there’s a way out'),
+      body: [
+        T('הבריסטה ידבר מהר. סביר שלא תבין הכול — וזה בסדר גמור.', 'The barista talks fast. You probably won’t understand everything — and that’s completely fine.'),
+        T('המטרה שלך היא לא לענות נכון. המטרה היא לבחור כלי הישרדות.', 'Your job isn’t to answer perfectly. Your job is to pick a survival tool.'),
+        T('כל משפט הישרדות הוא בחירה מתאימה. לפעמים כמה מהם מתאימים — וכולם עובדים.', 'Any survival phrase is a valid move. Sometimes several fit — and they all work.'),
+        T('העיקר: לא לקפוא. יצאת מהמצב — ניצחת.', 'The main thing: don’t freeze. Get out of the moment — and you’ve won.'),
+      ], cta: T('הבנתי — יאללה', 'Got it — let’s go') },
     { kind: 'dialogue', dialogueId: 'stuck-traveler' },
     { kind: 'receipt', text: T('שרדת שיחה אמיתית באנגלית — בלי לדעת אנגלית.', 'You survived a real conversation in English — without knowing English.') },
     { kind: 'talk', icon: '🛟', title: T('אז מה בעצם קרה שם?', 'So what actually happened there?'),

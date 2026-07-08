@@ -25,6 +25,7 @@
     "build:content": "tsx content/build.ts",
     "validate:content": "tsx content/validate.ts",
     "smoke": "tsx scripts/smoke.ts",
+    "gen:conversations": "tsx scripts/gen-conversations.ts",
     "verify": "npm run typecheck && npm run lint && npm run test && npm run build",
     "dev:web": "npm run dev -w @ready/web",
     "deploy": "npm run build && gh-pages -d apps/web/dist",
