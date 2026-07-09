@@ -9,6 +9,7 @@ import type { BootcampDayContent, BootcampItem, BootcampDialogue } from './types
 
 const T = (he: string, en: string): LocalizedText => ({ he, en });
 
+
 export const DAY1_ITEMS: BootcampItem[] = [
   { id: 'en.phrase.recovery.dont-understand', text: "Sorry, I don't understand.",
     meaning: T('סליחה, אני לא מבין.', "Sorry, I don't understand."),
