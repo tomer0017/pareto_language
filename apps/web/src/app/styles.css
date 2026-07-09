@@ -379,6 +379,36 @@ input:focus, select:focus { outline: 2px solid var(--brand); border-color: trans
   font-weight: 700; font-size: 0.92rem; box-shadow: none; white-space: nowrap;
 }
 .core-tab.active { background: var(--accent); color: #fff; border-color: transparent; }
+
+/* ── Home / Core action cards ─────────────────────────────────────────── */
+.home-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
+.action-card {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 4px;
+  padding: 16px; min-height: 118px; text-align: start;
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: var(--r-lg); box-shadow: var(--shadow-card);
+}
+.action-icon {
+  width: 48px; height: 48px; margin-bottom: 4px; border-radius: 14px;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 1.7rem; line-height: 1; background: var(--brand-soft);
+}
+.action-title { font-weight: 800; font-size: 1.02rem; line-height: 1.2; }
+.action-sub { font-size: 0.78rem; color: var(--ink-dim); line-height: 1.3; }
+.ac-words .action-icon { background: var(--good-soft); }
+.ac-phrases .action-icon { background: var(--accent-soft); }
+.ac-videos .action-icon { background: #dbeafe; }
+
+/* ── Modal (Videos "did you understand?" popup) ──────────────────────── */
+.modal-scrim {
+  position: fixed; inset: 0; z-index: 95; padding: 24px;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex; align-items: center; justify-content: center;
+}
+.modal-card {
+  width: 100%; max-width: 360px; padding: 22px;
+  background: var(--card); border-radius: var(--r-lg); box-shadow: var(--shadow-pop);
+}
 .reader-back {
   display: inline-flex; align-items: center; justify-content: center;
   width: 52px; height: 52px; min-height: 52px; border-radius: 999px;

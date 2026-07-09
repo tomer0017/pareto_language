@@ -1,21 +1,25 @@
+import { useState } from 'react';
 import { useAppStore } from '../../shared/stores/appStore.js';
 import { L, t } from '../../shared/i18n/strings.js';
 import { tap } from '../../shared/ui/haptics.js';
 import { LangStrip } from '../../shared/ui/LangStrip.js';
 import { BOOTCAMP_PLAN } from '../bootcamp/plan.js';
 import { DAYS, useBootcampStore } from '../bootcamp/bootcampStore.js';
+import { getSpeechRate, setSpeechRate, SPEECH_RATE_RANGE } from '../../shared/audio/tts.js';
 
 /**
- * Home — the pilot's overview (20/80): where am I, and what's the one thing to do next.
- * A single "Continue" hero (resume in-progress → else next mission → else replay), a progress
- * bar, and a quiet path to the full map. No dashboards, no vanity metrics.
+ * Home — the real entry point of READY (not a Bootcamp mirror). It answers "what can I do here?"
+ * with four large action cards, surfaces the two most-changed settings (Theme + Speech Speed —
+ * reusing the exact same appStore/TTS, no duplicate state), and keeps "Continue" available as a
+ * quieter secondary card lower down. The language strip and its logic are unchanged.
  */
 export function Home() {
   const app = useAppStore();
   const bc = useBootcampStore();
+  const [rate, setRate] = useState(getSpeechRate());
 
   // The journey the learner walks — numbered missions only. The optional Recovery Toolkit is a
-  // special companion (Task 6), so it never becomes "up next" and doesn't gate progress.
+  // special companion, so it never becomes "up next" and doesn't gate progress.
   const built = BOOTCAMP_PLAN.filter((m) => m.day in DAYS && !m.special);
   const doneCount = built.filter((m) => bc.completedDays.includes(m.day)).length;
   const pct = built.length ? Math.round((doneCount / built.length) * 100) : 0;
@@ -25,19 +29,22 @@ export function Home() {
   const target = resumeDay ?? nextDay ?? built[0];
   const allDone = doneCount >= built.length && built.length > 0;
 
-  const open = (day: number): void => {
+  const onRate = (value: number): void => {
+    setRate(value);
+    setSpeechRate(value); // single global source of truth — same store the whole app uses
+  };
+
+  const openMission = (day: number): void => {
     tap();
     bc.startDay(day);
     app.navigate('bootcamp');
   };
 
-  const heroLabel = allDone
-    ? t('replayMissions')
-    : resumeDay
-      ? t('continueMissionCta', { title: L(target!.title) })
-      : doneCount > 0
-        ? t('nextMissionCta', { title: L(target!.title) })
-        : t('startMissionCta', { title: L(target!.title) });
+  const openCore = (category: string): void => {
+    tap();
+    app.setCoreCategory(category);
+    app.navigate('core');
+  };
 
   return (
     <div className="screen">
@@ -48,31 +55,74 @@ export function Home() {
           <p className="dim" style={{ marginTop: 4 }}>{t('homeSub')}</p>
         </div>
 
-        <div className="card" style={{ display: 'flex', alignItems: 'center', gap: 12, marginTop: 8 }}>
-          <div className="progress-track" style={{ flex: 1 }}>
-            <div className="progress-fill brand" style={{ width: `${pct}%` }} />
+        {/* ── Quick settings (the two most-changed controls, reused from their stores) ── */}
+        <p className="drill-label" style={{ margin: '12px 2px 8px' }}>{t('quickSettings')}</p>
+        <div className="card" style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+          <div>
+            <p style={{ fontWeight: 700, marginBottom: 8 }}>{t('darkMode')}</p>
+            <div className="btn-row">
+              <button className={app.theme === 'light' ? 'btn-accent' : 'btn-secondary'} onClick={() => { tap(); app.setTheme('light'); }}>☀️ {t('lightTheme')}</button>
+              <button className={app.theme === 'dark' ? 'btn-accent' : 'btn-secondary'} onClick={() => { tap(); app.setTheme('dark'); }}>🌙 {t('darkTheme')}</button>
+            </div>
           </div>
-          <span className="chip">{t('missionsProgress', { done: doneCount, total: built.length })}</span>
+          <div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
+              <span style={{ fontWeight: 700 }}>{t('speechSpeed')}</span>
+              <strong style={{ color: 'var(--brand)', fontSize: '1.05rem' }}>{Math.round(rate * 100)}%</strong>
+            </div>
+            <input
+              type="range"
+              className="slider"
+              min={SPEECH_RATE_RANGE.min}
+              max={SPEECH_RATE_RANGE.max}
+              step={0.05}
+              value={rate}
+              onChange={(e) => onRate(parseFloat(e.target.value))}
+              aria-label={t('speechSpeed')}
+            />
+          </div>
         </div>
 
+        {/* ── Main actions — the primary navigation of READY ── */}
+        <div className="home-actions stagger">
+          <button className="action-card card-press ac-situations" onClick={() => { tap(); bc.exit(); app.navigate('bootcamp'); }}>
+            <span className="action-icon">🗣️</span>
+            <span className="action-title">{t('homeCommonSituations')}</span>
+            <span className="action-sub">{t('homeCommonSituationsSub')}</span>
+          </button>
+          <button className="action-card card-press ac-words" onClick={() => openCore('words')}>
+            <span className="action-icon">📖</span>
+            <span className="action-title">{t('homeLearnWords')}</span>
+            <span className="action-sub">{t('homeLearnWordsSub')}</span>
+          </button>
+          <button className="action-card card-press ac-phrases" onClick={() => openCore('phrases')}>
+            <span className="action-icon">💬</span>
+            <span className="action-title">{t('coreTabPhrases')}</span>
+            <span className="action-sub">{t('homeCorePhrasesSub')}</span>
+          </button>
+          <button className="action-card card-press ac-videos" onClick={() => { tap(); app.navigate('videos'); }}>
+            <span className="action-icon">🎬</span>
+            <span className="action-title">{t('homeVideos')}</span>
+            <span className="action-sub">{t('homeVideosSub')}</span>
+          </button>
+        </div>
+
+        {/* ── Continue learning — secondary, for returning users ── */}
         {target && (
-          <button className="mission-card card-press" style={{ width: '100%', textAlign: 'start', border: 'none' }} onClick={() => open(target.day)}>
-            <p className="drill-label" style={{ color: 'var(--brand)' }}>{allDone ? t('allMissionsDone') : t('upNext')}</p>
-            <p style={{ fontSize: '1.5rem', fontWeight: 800, margin: '6px 0 4px' }}>
-              🎖️ {L(target.title)}
-            </p>
-            <p className="dim small">{L(target.confidenceGain)}</p>
-            <div className="btn-primary breathe" style={{ marginTop: 14, textAlign: 'center' }}>{heroLabel}</div>
+          <button className="card card-press" style={{ width: '100%', textAlign: 'start', marginTop: 18, border: 'none' }} onClick={() => openMission(target.day)}>
+            <p className="drill-label" style={{ color: 'var(--brand)' }}>{allDone ? t('allMissionsDone') : t('continueWhereStopped')}</p>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 12, marginTop: 6 }}>
+              <span style={{ minWidth: 0 }}>
+                <p style={{ fontWeight: 800 }}>🎖️ {L(target.title)}</p>
+                <p className="dim small">{t('missionsProgress', { done: doneCount, total: built.length })}</p>
+              </span>
+              <span className="chip chip-accent">{allDone ? t('replay') : t('continue')}</span>
+            </div>
+            <div className="progress-track" style={{ marginTop: 10 }}>
+              <div className="progress-fill brand" style={{ width: `${pct}%` }} />
+            </div>
           </button>
         )}
-
-        <button className="game-card card-press" style={{ marginTop: 4 }} onClick={() => { tap(); bc.exit(); app.navigate('bootcamp'); }}>
-          <span className="game-icon" style={{ background: 'var(--brand)' }}>🎯</span>
-          <span>
-            <p style={{ fontWeight: 800 }}>{t('allMissions')}</p>
-            <p className="dim small">{t('allMissionsSub')}</p>
-          </span>
-        </button>
       </div>
     </div>
   );

@@ -33,7 +33,8 @@ export type View =
   | 'session'
   | 'emergency'
   | 'plan'
-  | 'languages';
+  | 'languages'
+  | 'videos';
 
 export interface OnboardingInput {
   departureAt: string;
@@ -64,11 +65,15 @@ interface AppState {
   uiLang: string;
   learningLang: string;
   theme: 'light' | 'dark';
+  /** Which Core category the Core screen opens on: set by Home's deep-link cards, reset to null
+   *  (the category-card grid) by the Core bottom-nav tab. Purely navigational view state. */
+  coreCategory: string | null;
 
   navigate(view: View): void;
   setUiLang(lang: string): void;
   setLearningLang(lang: string): Promise<void>;
   setTheme(theme: 'light' | 'dark'): void;
+  setCoreCategory(category: string | null): void;
   init(): Promise<void>;
   createPlan(input: OnboardingInput): Promise<void>;
   updatePlanSettings(input: OnboardingInput): Promise<void>;
@@ -126,9 +131,14 @@ export const useAppStore = create<AppState>((set, get) => ({
   uiLang: storedUiLang,
   learningLang: storedLearningLang,
   theme: storedTheme,
+  coreCategory: null,
 
   navigate(view) {
     set({ view });
+  },
+
+  setCoreCategory(category) {
+    set({ coreCategory: category });
   },
 
   setUiLang(lang) {

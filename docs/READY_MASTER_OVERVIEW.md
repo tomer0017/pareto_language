@@ -100,8 +100,12 @@ emotional loop than "learn → get told you're done."
 Permanent bottom navigation (English pilot): **Home · Bootcamp · Core · Profile**. The nav is
 hidden only inside an active mission — a focused, full-screen flow with its own controls.
 
-- **Home** — mission overview: a Continue hero (resume → next → replay), a progress bar, and a path
-  to the full mission map. No dashboards.
+- **Home** — the real entry point ("what can I do here?"): the language strip, a header, a Quick
+  Settings card owning Theme + Speech Speed (same appStore/TTS, no duplicate state), and four large
+  action cards (Common Situations → Bootcamp, Learn New Words → Core Words, Core Phrases → Core
+  Phrases, Videos). Continue is a quieter secondary card. No dashboards.
+- **Videos** — an experience, not a list: a random mission video plays, then a "did you understand
+  everything?" popup either loads another random video or opens the exact Mission Hub that owns it.
 - **Bootcamp** — a 29-mission numbered journey in 5 phases (beginning with Introduce Myself);
   checkpoints are cold integration days. The **Recovery Toolkit** (the 7 survival tools, formerly
   "Mission 1") is now an optional, unnumbered **special mission** at the end of the map — content

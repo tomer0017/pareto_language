@@ -924,7 +924,7 @@ function DialogueReader({ dialogue, onClose, onFinish }: { dialogue: BootcampDia
 
 /** Native <video> with manual play (never autoplays with sound), inline on iOS, fullscreen
  *  allowed, replayable. A missing/broken file degrades to a friendly note — never crashes. */
-function VideoPlayer({ video }: { video: BootcampVideo }) {
+export function VideoPlayer({ video, onEnded }: { video: BootcampVideo; onEnded?: () => void }) {
   const [failed, setFailed] = useState(false);
   if (failed || !video.src) return <p className="dim small" style={{ padding: '20px 0' }}>{t('videoUnavailable')}</p>;
   return (
@@ -936,6 +936,7 @@ function VideoPlayer({ video }: { video: BootcampVideo }) {
       preload="metadata"
       controlsList="nodownload"
       onError={() => setFailed(true)}
+      onEnded={onEnded}
     />
   );
 }

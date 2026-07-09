@@ -41,8 +41,14 @@ handling common travel situations abroad** — ordering, arriving, asking, recov
 Permanent bottom navigation (English pilot): **Home · Bootcamp · Core · Profile**. The nav is
 hidden only inside an active mission (a focused, full-screen flow with its own controls).
 
-- **Home** — the overview: one "Continue" hero (resume → next → replay), a progress bar, and a
-  quiet path to the full mission map. No dashboards, no vanity metrics.
+- **Home** — the real entry point (answers "what can I do here?"): the language strip, a welcoming
+  header, a **Quick Settings** card owning **Theme** + **Speech Speed** (reusing the same
+  appStore/TTS — no duplicate state), and four large **action cards** as the primary navigation
+  (🗣️ Common Situations → Bootcamp · 📖 Learn New Words → Core Words · 💬 Core Phrases → Core
+  Phrases · 🎬 Videos). **Continue** remains as a quieter secondary card lower down. No dashboards.
+- **Videos** — an experience, not a list: plays a random available mission video, then asks "did
+  you understand everything?" → load another random video, or drop into the exact Mission Hub that
+  owns the video (Practice / Transcript / Video). Honest empty state; only Mission 2 has a video today.
 - **Bootcamp** — the heart of the product: a **29-mission numbered journey** in 5 phases
   (Foundations → Arrival → Food → City Life → Mastery), beginning with **Introduce Myself**.
   Checkpoints are cold integration days. The **Recovery Toolkit** (the 7 survival tools, formerly
@@ -50,14 +56,18 @@ hidden only inside an active mission (a focused, full-screen flow with its own c
   content is unchanged; only its placement/presentation moved (pilot testers read it as a broken
   first mission because its answers are escape tools, not answers to the conversation). Display
   numbering is presentational (`missionNumber()`); the internal `day`/DAYS keys never change.
-- **Core** — the practical communication engine, presented as a tabbed **knowledge center**: tabs
-  for **Core Phrases** (live — every sentence READY teaches, grouped by mission, tap to hear), plus
-  Core Words · Core Patterns · Common Questions · Emergency · Favorites (structure only, honest
-  "coming soon"). Not "1500 words." Spaced/weak-word review is still planned.
-- **Profile** — everything personal: **Learning Preferences** (the single global **speech-speed**
-  control 80–105%, default 95%, with Test Voice), language (trip = English pilot; app = EN/HE),
-  appearance (light/dark), audio (enable/test sound), and honest disabled "coming soon" rows
-  (Google sign-in, statistics, notifications).
+- **Core** — the practical communication engine, a two-layer **knowledge center**: a grid of
+  **category cards** (📖 Core Phrases · 📝 Core Words · ❓ Common Questions · 🚨 Emergency · 🧩 Core
+  Patterns · ⭐ Favorites) → the existing tabbed page opened on the chosen category (top tabs +
+  content), with a back button to the cards. Only **Core Phrases** is live (every sentence READY
+  teaches, grouped by mission, tap to hear); the rest are honest "coming soon". The chosen category
+  lives in `appStore.coreCategory` (Home's cards deep-link into it; the Core tab resets to the
+  grid). Not "1500 words." Spaced/weak-word review is still planned.
+- **Profile** — everything personal: language (trip = English pilot; app = EN/HE), audio
+  (enable/test sound), and honest disabled "coming soon" rows (Google sign-in, statistics,
+  notifications). The two most-changed controls — **Theme** and the single global **speech-speed**
+  (80–105%, default 95%) — now live in Home's Quick Settings for one-tap access, reading/writing
+  the exact same appStore/TTS source of truth (no duplicate state).
 - **Mission Hub** — the home of each mission: exactly three always-available modes —
   **🎯 Practice**, **📖 Conversation Transcript**, **🎬 Watch Video** (Coming Soon if no video).
 - **Practice** — the Bootcamp step-flow (talk → tools → expected-reply drills → quizzes →

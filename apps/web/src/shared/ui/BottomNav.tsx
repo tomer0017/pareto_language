@@ -16,7 +16,7 @@ const TABS: { view: View; icon: string; key: 'homeTab' | 'bootcampTab' | 'coreTa
 ];
 
 export function BottomNav() {
-  const { view, navigate } = useAppStore();
+  const { view, navigate, setCoreCategory } = useAppStore();
   const exitMission = useBootcampStore((s) => s.exit);
   return (
     <nav className="bottom-nav" aria-label="Main">
@@ -31,6 +31,8 @@ export function BottomNav() {
               // Leaving via the nav always drops back to a tab's home surface (e.g. the Bootcamp
               // map), never mid-mission — so the nav is a reliable escape hatch.
               if (tab.view === 'bootcamp') exitMission();
+              // Tapping Core always returns to its category-card grid (the top of Core).
+              if (tab.view === 'core') setCoreCategory(null);
               navigate(tab.view);
             }}
             aria-current={active ? 'page' : undefined}

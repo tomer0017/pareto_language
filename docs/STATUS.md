@@ -252,3 +252,38 @@ SMOKE PASS · `gen:conversations` regenerated. Known follow-ups: the internal "M
 on each mission's first practice screen still carries its original day number (cosmetic, off by one
 vs the new display number for missions 2–30); and day5/day13 are two similar restaurant lessons —
 next sprint could differentiate or merge them, and add the real "Fast Replies" speed mission.
+
+---
+
+## Sprint — Home Experience & Core UX (2026-07-09)
+
+UX-only sprint making READY feel like a product, not "just a Bootcamp." No engine/schema/
+pipeline/mission-logic/progress/content changes; all controls reuse their existing stores.
+
+- **Home is now the real entry point.** Below the (unchanged) language strip: a welcoming header,
+  a **Quick Settings** card with **Theme** (Day/Night) and the **Speech Speed** slider — both
+  reusing the exact same appStore/TTS source of truth (no duplicate state) — then four large
+  **action cards** that are the app's primary navigation: 🗣️ Common Situations → Bootcamp,
+  📖 Learn New Words → Core (Words), 💬 Core Phrases → Core (Phrases), 🎬 Videos → the new Videos
+  experience. **Continue** is preserved but demoted to a quieter secondary card lower down.
+- **Videos experience** (`features/videos/Videos.tsx`) — not a list: plays a random available
+  mission video; when it ends (or the learner taps "I finished watching") a popup asks *"Did you
+  understand everything?"* → **Yes** loads another random video (excluding ones seen this session),
+  **I'd like to practice** opens the exact **Mission Hub** that owns the video (`startDay` → hub,
+  unchanged). Honest empty state when no/again-no videos exist. Only Mission 2 ships a video today,
+  so the practical flow is: watch → Yes → "that's every video for now". Reuses the existing
+  `VideoPlayer` (now exported, with an added optional `onEnded`).
+- **Core is a two-layer knowledge center** (Task 3): a grid of **category cards** (📖 Phrases ·
+  📝 Words · ❓ Common Questions · 🚨 Emergency · 🧩 Patterns · ⭐ Favorites) → the existing tabbed
+  page (top tabs + content) opened on the chosen category, with a back button to the cards. The
+  chosen category lives in `appStore.coreCategory` so Home's cards deep-link straight into a
+  category and the Core bottom-nav tab resets to the card grid. Only Core Phrases has content;
+  the rest stay honest "coming soon". Core content itself is unchanged.
+- **Profile** now defers Theme + Speech Speed to Home (single source of truth, surfaced where
+  they're used most); Profile keeps Language, Audio and the honest "coming soon" rows.
+- **Bottom navigation, Mission Hub, Practice, Transcript, Victory, progress, offline/PWA — all
+  unchanged.** New `videos` view is a focused screen (no bottom nav) with a back-to-Home button.
+
+Verification: typecheck 0 · lint clean · **281 tests** · production build (13 precache entries) ·
+SMOKE PASS. Light polish only (staggered card entrances via the existing animation). Follow-ups:
+Videos becomes richer as more mission videos ship; Core's non-Phrases categories await content.

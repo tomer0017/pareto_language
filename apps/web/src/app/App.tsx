@@ -19,6 +19,7 @@ import { Bootcamp } from '../features/bootcamp/Bootcamp.js';
 import { Home } from '../features/home/Home.js';
 import { Core } from '../features/core/Core.js';
 import { Profile } from '../features/profile/Profile.js';
+import { Videos } from '../features/videos/Videos.js';
 import { useBootcampStore } from '../features/bootcamp/bootcampStore.js';
 
 // The permanent English-pilot tabs. The bottom nav is shown on these — except inside an active
@@ -62,6 +63,7 @@ const SCREENS: Partial<Record<View, { feature: string; el: () => JSX.Element | n
   plan: { feature: 'Plan', el: PlanSettings },
   languages: { feature: 'Languages', el: LanguageSelect },
   bootcamp: { feature: 'Bootcamp', el: Bootcamp },
+  videos: { feature: 'Videos', el: Videos },
 };
 
 export function App() {
