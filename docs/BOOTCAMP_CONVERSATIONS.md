@@ -121,7 +121,7 @@ _Reply-training drill:_ “Where are you from?” · “Is this your first time 
 
 **Estimated time:** ~20 min
 
-**Video:** — (none yet)
+**Video:** `/videos/En_day3.mp4`
 
 ### Core phrases (you say)
 - **How much is it?** · כמה זה עולה? — _השאלה שפותחת כל עסקה. תלמד אותה עד הסוף._

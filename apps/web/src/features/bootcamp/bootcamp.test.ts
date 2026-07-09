@@ -279,16 +279,22 @@ describe('video-first Bootcamp (intro/review video)', () => {
     expect(kinds.at(-1)).toBe('summary');
   });
 
-  it('video is optional: only Mission 2 ships one, and video steps only appear where a video exists', () => {
+  it('Mission 3 ships a full-conversation video (hub / Videos experience), without injecting video steps', () => {
+    expect(DAY3.introVideo).toBeDefined();
+    expect(DAY3.introVideo?.src).toBe('/videos/En_day3.mp4');
+    expect(DAY3.introVideo?.language).toBe('en');
+    expect(DAY3.steps.some((s) => s.kind === 'video')).toBe(false);
+  });
+
+  it('videos are opt-in per mission; a video step never appears without a video', () => {
+    const withVideo = new Set<number>();
     for (const [num, day] of Object.entries(DAYS)) {
       const hasVideoStep = day.steps.some((s) => s.kind === 'video');
-      if (Number(num) === 2) {
-        expect(day.introVideo).toBeDefined();
-        expect(hasVideoStep).toBe(true);
-      } else {
-        expect(day.introVideo).toBeUndefined();
-        expect(hasVideoStep).toBe(false); // no placeholder videos elsewhere
-      }
+      if (day.introVideo) withVideo.add(Number(num));
+      else expect(hasVideoStep).toBe(false); // never a placeholder video step without a video
     }
+    // Missions 2 and 3 ship the full-conversation video; only Mission 2 injects video steps.
+    expect([...withVideo].sort((a, b) => a - b)).toEqual([2, 3]);
+    expect(DAY2.steps.some((s) => s.kind === 'video')).toBe(true);
   });
 });

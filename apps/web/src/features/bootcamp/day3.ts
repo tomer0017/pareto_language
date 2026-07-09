@@ -54,6 +54,12 @@ export const DAY3: BootcampDayContent = {
   title: T('כסף ומספרים', 'Numbers & Money'),
   items: DAY3_ITEMS,
   dialogues: { 'market-stall': SCENE },
+  introVideo: {
+    src: '/videos/En_day3.mp4',
+    title: T('השיחה המלאה', 'Full conversation'),
+    language: 'en',
+    type: 'intro',
+  },
   steps: [
     { kind: 'talk', icon: '💶', title: T('משימה 3: כסף ומספרים', 'Mission 3: Numbers & Money'),
       body: [
