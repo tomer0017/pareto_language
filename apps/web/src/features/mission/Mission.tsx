@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { confidencePct, useAppStore } from '../../shared/stores/appStore.js';
 import { previewMission, useSessionStore } from '../../shared/stores/sessionStore.js';
-import { languageInfo } from '../../shared/i18n/languages.js';
+import { languageInfo, languageName } from '../../shared/i18n/languages.js';
 import { L, t } from '../../shared/i18n/strings.js';
 import { tap } from '../../shared/ui/haptics.js';
 import { Ring } from '../../shared/ui/Ring.js';
@@ -44,7 +44,7 @@ export function Mission() {
       <div className="screen-scroll">
         <div className="topbar">
           <button className="chip" onClick={() => app.navigate('languages')}>
-            {lang.flag} {lang.nativeName}
+            {lang.flag} {languageName(app.learningLang)}
           </button>
           <div style={{ display: 'flex', gap: 8 }}>
             <span className="chip chip-accent">

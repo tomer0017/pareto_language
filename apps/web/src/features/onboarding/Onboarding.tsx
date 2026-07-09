@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react';
 import type { SituationPriority } from '@ready/content-schema';
 import { selectTier, DAY_MS } from '@ready/engine';
 import { useAppStore } from '../../shared/stores/appStore.js';
-import { LEARNING_LANGUAGES, languageInfo, PILOT_LANG } from '../../shared/i18n/languages.js';
+import { LEARNING_LANGUAGES, UI_LANGUAGES, languageInfo, languageName, PILOT_LANG } from '../../shared/i18n/languages.js';
 import { L, t } from '../../shared/i18n/strings.js';
 import { tap } from '../../shared/ui/haptics.js';
 
@@ -22,6 +22,9 @@ export function Onboarding() {
   const [ranking, setRanking] = useState<string[]>([]);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  // Very first launch: the app must not assume the user reads English. Ask for the app language
+  // before anything else (Task 3). Once chosen (ready.uiLang set), this step never shows again.
+  const [askAppLang, setAskAppLang] = useState(() => localStorage.getItem('ready.uiLang') === null);
 
   const situations = useMemo(() => app.pack?.situations ?? [], [app.pack]);
   const orderedRanking = ranking.length > 0 ? ranking : situations.map((s) => s.id);
@@ -62,6 +65,30 @@ export function Onboarding() {
   // welcome — English is the pilot, the rest are coming soon — then it hands off to the Bootcamp.
   // The full trip-plan flow below is preserved for when a shipped pack makes it meaningful again.
   if (!app.pack) {
+    // Step 1 (first launch only): choose the app language before the learning language (Task 3).
+    if (askAppLang) {
+      return (
+        <div className="screen">
+          <div className="screen-scroll no-nav fade-in" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+            <p style={{ fontSize: '2.8rem', textAlign: 'center' }}>🌍</p>
+            <h1 style={{ textAlign: 'center' }}>{t('appLangTitle')}</h1>
+            <p className="dim center" style={{ margin: '8px 0 22px' }}>{t('appLangSub')}</p>
+            <div className="stagger" style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+              {UI_LANGUAGES.map((l) => (
+                <button
+                  key={l.code}
+                  className="btn-secondary"
+                  style={{ fontSize: '1.25rem', padding: '18px', minHeight: 60 }}
+                  onClick={() => { tap(); app.setUiLang(l.code); setAskAppLang(false); }}
+                >
+                  {l.nativeName}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      );
+    }
     return (
       <div className="screen">
         <div className="screen-scroll no-nav fade-in">
@@ -76,7 +103,7 @@ export function Onboarding() {
                 aria-disabled={!l.available}
               >
                 <span className="lang-flag">{l.flag}</span>
-                <span className="lang-native" style={{ color: l.accent }}>{l.nativeName}</span>
+                <span className="lang-native" style={{ color: l.accent }}>{languageName(l.code)}</span>
                 {l.available
                   ? <span className="badge badge-ready">{t('ready')}</span>
                   : <span className="badge badge-notStarted">{t('comingSoon')}</span>}
@@ -120,7 +147,7 @@ export function Onboarding() {
                   }}
                 >
                   <span className="lang-flag">{l.flag}</span>
-                  <span className="lang-native" style={{ color: l.accent }}>{l.nativeName}</span>
+                  <span className="lang-native" style={{ color: l.accent }}>{languageName(l.code)}</span>
                   {!l.available && <span className="badge badge-notStarted">{t('comingSoon')}</span>}
                 </button>
               ))}

@@ -14,7 +14,9 @@ export function Home() {
   const app = useAppStore();
   const bc = useBootcampStore();
 
-  const built = BOOTCAMP_PLAN.filter((m) => m.day in DAYS);
+  // The journey the learner walks — numbered missions only. The optional Recovery Toolkit is a
+  // special companion (Task 6), so it never becomes "up next" and doesn't gate progress.
+  const built = BOOTCAMP_PLAN.filter((m) => m.day in DAYS && !m.special);
   const doneCount = built.filter((m) => bc.completedDays.includes(m.day)).length;
   const pct = built.length ? Math.round((doneCount / built.length) * 100) : 0;
 
@@ -57,7 +59,7 @@ export function Home() {
           <button className="mission-card card-press" style={{ width: '100%', textAlign: 'start', border: 'none' }} onClick={() => open(target.day)}>
             <p className="drill-label" style={{ color: 'var(--brand)' }}>{allDone ? t('allMissionsDone') : t('upNext')}</p>
             <p style={{ fontSize: '1.5rem', fontWeight: 800, margin: '6px 0 4px' }}>
-              🎖️ {t('mission')} {target.day} · {L(target.title)}
+              🎖️ {L(target.title)}
             </p>
             <p className="dim small">{L(target.confidenceGain)}</p>
             <div className="btn-primary breathe" style={{ marginTop: 14, textAlign: 'center' }}>{heroLabel}</div>

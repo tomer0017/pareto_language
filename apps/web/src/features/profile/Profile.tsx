@@ -4,7 +4,7 @@ import { useAppStore } from '../../shared/stores/appStore.js';
 import { t } from '../../shared/i18n/strings.js';
 import { tap } from '../../shared/ui/haptics.js';
 import { LangStrip } from '../../shared/ui/LangStrip.js';
-import { UI_LANGUAGES, languageInfo, PILOT_LANG } from '../../shared/i18n/languages.js';
+import { UI_LANGUAGES, languageInfo, languageName, PILOT_LANG } from '../../shared/i18n/languages.js';
 import {
   getSpeechRate, setSpeechRate, SPEECH_RATE_RANGE, testVoice,
   getAudioDiag, subscribeAudioDiag, unlockAudio, testAudio,
@@ -69,7 +69,7 @@ export function Profile() {
         <div className="card">
           <div className="list-row" style={{ borderBottom: '1px solid var(--line)' }}>
             <span style={{ fontWeight: 700 }}>{t('learningLanguage')}</span>
-            <span className="chip">{pilot.flag} {pilot.nativeName} · {t('pilotTag')}</span>
+            <span className="chip">{pilot.flag} {languageName(PILOT_LANG)} · {t('pilotTag')}</span>
           </div>
           <p className="faint small" style={{ margin: '10px 0 12px' }}>{t('moreLanguagesSoon')}</p>
           <p style={{ fontWeight: 700, marginBottom: 8 }}>{t('uiLanguage')}</p>

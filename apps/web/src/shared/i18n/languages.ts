@@ -4,11 +4,17 @@
  * direction; the whole UI re-themes when the language changes (CSS custom properties).
  */
 
+import { L } from './strings.js';
+
 export interface LanguageInfo {
   /** BCP-47-ish code used by content packs (ContentPack.lang). */
   code: string;
   name: string;
   nativeName: string;
+  /** The language's name written IN each UI language. Beginners see language names in their own
+   *  app language (Task 4) — never an unfamiliar endonym like "Français". Add a UI language = add
+   *  a key here. Falls back to `name` (English) for any missing UI language. */
+  names: { en: string; he: string };
   flag: string;
   /** Accent color driving the per-language theme. */
   accent: string;
@@ -25,12 +31,18 @@ export interface LanguageInfo {
 // Bootcamp is fully English). Italian and the rest are honest "coming soon" until their packs
 // ship. English leads the list so it is the default everywhere it matters.
 export const LEARNING_LANGUAGES: LanguageInfo[] = [
-  { code: 'en', name: 'English', nativeName: 'English', flag: '🇺🇸', accent: '#2f6fed', accentSoft: '#e3ecfd', dir: 'ltr', ttsTag: 'en-US', available: true },
-  { code: 'es', name: 'Spanish', nativeName: 'Español', flag: '🇪🇸', accent: '#e8590c', accentSoft: '#fdeadd', dir: 'ltr', ttsTag: 'es-ES', available: false },
-  { code: 'fr', name: 'French', nativeName: 'Français', flag: '🇫🇷', accent: '#3b5bdb', accentSoft: '#e5eafb', dir: 'ltr', ttsTag: 'fr-FR', available: false },
-  { code: 'it', name: 'Italian', nativeName: 'Italiano', flag: '🇮🇹', accent: '#0ca678', accentSoft: '#dcf5ec', dir: 'ltr', ttsTag: 'it-IT', available: false },
-  { code: 'ar', name: 'Arabic', nativeName: 'العربية', flag: '🇸🇦', accent: '#b8860b', accentSoft: '#f7efd8', dir: 'rtl', ttsTag: 'ar-SA', available: false },
+  { code: 'en', name: 'English', nativeName: 'English', names: { en: 'English', he: 'אנגלית' }, flag: '🇺🇸', accent: '#2f6fed', accentSoft: '#e3ecfd', dir: 'ltr', ttsTag: 'en-US', available: true },
+  { code: 'es', name: 'Spanish', nativeName: 'Español', names: { en: 'Spanish', he: 'ספרדית' }, flag: '🇪🇸', accent: '#e8590c', accentSoft: '#fdeadd', dir: 'ltr', ttsTag: 'es-ES', available: false },
+  { code: 'fr', name: 'French', nativeName: 'Français', names: { en: 'French', he: 'צרפתית' }, flag: '🇫🇷', accent: '#3b5bdb', accentSoft: '#e5eafb', dir: 'ltr', ttsTag: 'fr-FR', available: false },
+  { code: 'it', name: 'Italian', nativeName: 'Italiano', names: { en: 'Italian', he: 'איטלקית' }, flag: '🇮🇹', accent: '#0ca678', accentSoft: '#dcf5ec', dir: 'ltr', ttsTag: 'it-IT', available: false },
+  { code: 'ar', name: 'Arabic', nativeName: 'العربية', names: { en: 'Arabic', he: 'ערבית' }, flag: '🇸🇦', accent: '#b8860b', accentSoft: '#f7efd8', dir: 'rtl', ttsTag: 'ar-SA', available: false },
 ];
+
+/** A learning language's name written in the CURRENT app language (Task 4). Uses the active UI
+ *  dictionary via L(), so Hebrew users see "אנגלית", English users see "English". */
+export function languageName(code: string): string {
+  return L(languageInfo(code).names);
+}
 
 /** The current pilot / default trip language. Single source of truth for the default. */
 export const PILOT_LANG = 'en';

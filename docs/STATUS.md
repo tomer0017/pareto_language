@@ -210,3 +210,45 @@ concepts (recovery kit + core say-phrases + expected replies) seeded idempotentl
 pipeline into Mongo (35 total incl. samples) with English playable and es/fr/it/ar honest
 DRAFT realizations flagged for native review. Typecheck 0 / lint clean / 143 tests / build /
 smoke all green; seed reruns idempotent (0 inserted, 35 updated).
+
+---
+
+## Sprint — Pilot UX Improvements (real pilot feedback, 2026-07-09)
+
+UX-only sprint driven entirely by real pilot testers. No engine/schema/pipeline/pedagogy changes;
+Bootcamp content (phrases, replies, dialogues) is untouched — only placement, presentation and
+navigation improved.
+
+- **Removed the redundant "I said it" screen** in the Practice tool step. The flow was
+  Learn → Hear → "I said it" (which just repeated the same sentence and made testers think the app
+  had frozen) → Next. It is now Learn → Practice (say it aloud) → Next, on one screen. The echo
+  evidence event is still recorded.
+- **Transcript navigation**: the tiny back arrow is now a large, rounded, mobile-friendly icon
+  button (52px target), and a **✓ Finish** button returns to the Mission Hub — navigation only, no
+  progress reset.
+- **First-launch App Language step**: on the very first open the app asks for the app language
+  (עברית / English) *before* anything else, instead of assuming English.
+- **Language names shown in the app language** (Task 4): a Hebrew UI now shows אנגלית / ספרדית /
+  איטלקית / צרפתית / ערבית; an English UI shows English / Spanish / Italian / French / Arabic
+  (`languages.ts` `names` + `languageName()`), everywhere trip languages are listed.
+- **Core is now a knowledge-center shell** with tabs — Core Phrases (live) · Core Words · Core
+  Patterns · Common Questions · Emergency · Favorites (all honest "coming soon"). Structure only,
+  no faked content.
+- **Survival Toolkit relocated** (biggest reported problem): ex-Mission 1 confused almost every
+  tester because its answers are escape tools, not answers to the conversation. It is renamed
+  **Recovery Toolkit**, marked **special/optional** (no number), and placed at the end of the
+  Bootcamp map. The numbered journey now begins with **Introduce Myself** (#1) and runs 29 missions
+  (1–29). The mission's content is unchanged; `day`/DAYS keys and persistence ids are unchanged —
+  display numbering is purely presentational (`missionNumber()` / `CORE_MISSIONS`).
+- **Mission mapping bug fixed + fully validated** (Task 7): Mission 5's card said "Fast Replies I"
+  but opened the Restaurant sit-down-meal content (day5) — the ear-only "Fast Replies" slot never
+  had content. The card is corrected to **Restaurant Meal** (distinct from Mission 13's "Restaurant
+  Basics" to avoid two identical cards). A script now verifies all 30: every card's title == its
+  hub == its content, with a victory summary and a transcript dialogue present. Missions 2 & 3 card
+  wording was harmonized to their content ("Introduce Myself", "Numbers & Money").
+
+Verification: typecheck 0 · lint clean · **281 tests** · production build (13 precache entries) ·
+SMOKE PASS · `gen:conversations` regenerated. Known follow-ups: the internal "Mission N:" headline
+on each mission's first practice screen still carries its original day number (cosmetic, off by one
+vs the new display number for missions 2–30); and day5/day13 are two similar restaurant lessons —
+next sprint could differentiate or merge them, and add the real "Fast Replies" speed mission.

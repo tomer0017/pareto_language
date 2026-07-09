@@ -102,9 +102,15 @@ hidden only inside an active mission — a focused, full-screen flow with its ow
 
 - **Home** — mission overview: a Continue hero (resume → next → replay), a progress bar, and a path
   to the full mission map. No dashboards.
-- **Bootcamp** — the 30-mission map in 5 phases; checkpoints at 10/18/24/30 are cold integration days.
-- **Core (a.k.a. "Core 1500")** — the practical communication engine: every sentence READY teaches,
-  grouped by mission, tap to hear. *Not* "1500 words" — the real phrases a traveler says and hears.
+- **Bootcamp** — a 29-mission numbered journey in 5 phases (beginning with Introduce Myself);
+  checkpoints are cold integration days. The **Recovery Toolkit** (the 7 survival tools, formerly
+  "Mission 1") is now an optional, unnumbered **special mission** at the end of the map — content
+  unchanged, placement/presentation only (pilot testers skipped it as a "broken" first mission
+  because its answers are escape tools, not answers to the conversation).
+- **Core (a.k.a. "Core 1500")** — the practical communication engine, presented as a tabbed
+  **knowledge center**: **Core Phrases** is live (every sentence READY teaches, grouped by mission,
+  tap to hear); Core Words · Core Patterns · Common Questions · Emergency · Favorites are honest
+  "coming soon" scaffolding. *Not* "1500 words" — the real phrases a traveler says and hears.
   Spaced/weak-word review is planned (currently a browsable, audio-enabled deck).
 - **Profile / Settings** — everything personal in one place: **Learning Preferences** (the single
   global **speech-speed** control, 80–105%, default 95%, with Test Voice), language (trip = English

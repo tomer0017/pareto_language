@@ -64,11 +64,11 @@ const SCENE: BootcampDialogue = {
 
 export const DAY5: BootcampDayContent = {
   day: 5,
-  title: T('מסעדה — בסיס', 'Restaurant Basics'),
+  title: T('ארוחה במסעדה', 'Restaurant Meal'),
   items: DAY5_ITEMS,
   dialogues: { 'sit-down-meal': SCENE },
   steps: [
-    { kind: 'talk', icon: '🍽️', title: T('משימה 5: מסעדה', 'Mission 5: Restaurant Basics'),
+    { kind: 'talk', icon: '🍽️', title: T('ארוחה במסעדה', 'Restaurant Meal'),
       body: [
         T('ארוחת ערב אמיתית: שולחן, תפריט, הזמנה, שתייה, חשבון.', 'A real dinner: table, menu, order, drink, bill.'),
         T('הבריח מתחיל ברגע שהמלצר מגיע ושואל שאלה. נכיר את השאלות מראש.', 'The freeze starts the second the waiter arrives with a question. We meet them in advance.'),

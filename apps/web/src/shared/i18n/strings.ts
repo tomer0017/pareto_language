@@ -278,6 +278,20 @@ const en = {
   usedSurvivalTool: 'Nice — you didn’t freeze. You used a survival tool.',
   goodMoveGeneric: 'Good — that keeps the conversation going.',
   lessUsefulGeneric: 'Here a survival tool would help you more. Let’s keep going.',
+  // Sprint — Pilot UX improvements
+  finishToHub: 'Finish',
+  appLangTitle: 'Choose your language',
+  appLangSub: 'You can change this anytime in Settings.',
+  optionalMission: 'Optional · use it anytime',
+  specialMissions: 'Special',
+  coreCenterSub: 'Your travel knowledge center.',
+  coreTabPhrases: 'Core Phrases',
+  coreTabWords: 'Core Words',
+  coreTabPatterns: 'Core Patterns',
+  coreTabQuestions: 'Common Questions',
+  coreTabEmergency: 'Emergency',
+  coreTabFavorites: 'Favorites',
+  coreTabComingSoon: 'Coming soon — this part of your knowledge center is being built.',
 } as const;
 
 const he: Partial<Record<StringKey, string>> = {
@@ -485,6 +499,20 @@ const he: Partial<Record<StringKey, string>> = {
   usedSurvivalTool: 'יופי — לא קפאת. השתמשת בכלי הישרדות.',
   goodMoveGeneric: 'יופי — זה משאיר את השיחה פתוחה.',
   lessUsefulGeneric: 'כאן כלי הישרדות היה עוזר לך יותר. בוא נמשיך.',
+  // Sprint — Pilot UX improvements
+  finishToHub: 'סיום',
+  appLangTitle: 'בחרו שפה',
+  appLangSub: 'אפשר לשנות בכל רגע בהגדרות.',
+  optionalMission: 'אופציונלי · בכל רגע',
+  specialMissions: 'מיוחד',
+  coreCenterSub: 'מרכז הידע לטיול שלך.',
+  coreTabPhrases: 'משפטי ליבה',
+  coreTabWords: 'מילות ליבה',
+  coreTabPatterns: 'תבניות ליבה',
+  coreTabQuestions: 'שאלות נפוצות',
+  coreTabEmergency: 'חירום',
+  coreTabFavorites: 'מועדפים',
+  coreTabComingSoon: 'בקרוב — החלק הזה של מרכז הידע עדיין נבנה.',
 };
 
 const DICTS: Record<string, Partial<Record<StringKey, string>>> = { en, he };

@@ -22,6 +22,10 @@ export interface MissionPlan {
   why: string;
   preparesNext: string;
   checkpoint?: boolean;
+  /** Optional "special" mission — outside the numbered journey (e.g. the Survival/Recovery
+   *  Toolkit). Shown without a number, near the end of the list, and excluded from the numbered
+   *  progress count. Content is unchanged; only its placement/presentation differs (Task 6). */
+  special?: boolean;
 }
 
 export const PHASES: { n: number; title: LocalizedText; icon: string }[] = [
@@ -36,15 +40,15 @@ const T = (he: string, en: string): LocalizedText => ({ he, en });
 
 export const BOOTCAMP_PLAN: MissionPlan[] = [
   // ── Phase 1 · Foundations ──
-  { day: 1, phase: 1, title: T('אני יכול לשרוד.', 'I Can Survive'),
-    objective: T('שבעת כלי ההישרדות — אי אפשר יותר להיתקע.', 'The 7 survival tools — you can never be stuck again.'),
-    confidenceGain: T('הפחד מלקפוא מת ראשון.', 'The fear of freezing dies first.'),
+  { day: 1, phase: 1, special: true, title: T('ערכת חילוץ — כשלא מבינים', 'Recovery Toolkit'),
+    objective: T('שבעת כלי ההישרדות — למקרה שלא הבנת או נתקעת. אופציונלי, בכל רגע.', 'The 7 survival tools — for when you don’t understand or get stuck. Optional, anytime.'),
+    confidenceGain: T('כשלא מבינים — תמיד יש מוצא.', 'When you don’t understand — you always have a way out.'),
     situations: ['recovery'], targets: { concepts: 7, phrases: 7, dialogues: 2 },
     listeningSkill: 'the 7 tools at natural speed', speakingSkill: 'each tool said aloud',
     minutes: 20, feeling: T('אני עדיין לא יודע אנגלית — אבל אני פחות מפחד.', "I still don't know English — but I'm less afraid."),
-    why: 'Recoverability before vocabulary: the safety net IS the confidence.',
-    preparesNext: 'Every dialogue from here assumes the tools are reflexes.' },
-  { day: 2, phase: 1, title: T('להציג את עצמי', 'Introducing Myself'),
+    why: 'Recoverability before vocabulary: the safety net IS the confidence. Moved out of the numbered start (Task 6) so beginners begin with a mission that actually answers its conversation.',
+    preparesNext: 'Every dialogue assumes the tools are reflexes — reach for it anytime you feel stuck.' },
+  { day: 2, phase: 1, title: T('להציג את עצמי', 'Introduce Myself'),
     objective: T('שם, מאיפה, למה — בביטחון ובחיוך.', 'Name, origin, purpose — with confidence and a smile.'),
     confidenceGain: T('חיבור אנושי ראשון.', 'First human connection.'),
     situations: ['social'], targets: { concepts: 8, phrases: 5, dialogues: 1 },
@@ -52,7 +56,7 @@ export const BOOTCAMP_PLAN: MissionPlan[] = [
     minutes: 20, feeling: T('אפשר להכיר אותי.', 'People can know me.'),
     why: 'Identity phrases: highest warmth, lowest risk production.',
     preparesNext: 'The opener habit used in every mission after.' },
-  { day: 3, phase: 1, title: T('כסף ומספרים', 'Money & Numbers'),
+  { day: 3, phase: 1, title: T('כסף ומספרים', 'Numbers & Money'),
     objective: T('מספרים בשמיעה, מחירים, עודף — בלי להנהן סתם.', 'Numbers by ear, prices, change — no more blind nodding.'),
     confidenceGain: T('הכסף מובן. תמיד.', 'Money makes sense. Always.'),
     situations: ['paying'], targets: { concepts: 14, phrases: 3, dialogues: 1 },
@@ -68,14 +72,14 @@ export const BOOTCAMP_PLAN: MissionPlan[] = [
     minutes: 22, feeling: T('אני מסוגל להזמין ארוחת בוקר אמיתית.', 'I can order a real breakfast.'),
     why: 'THE depth exemplar: one situation, every realistic follow-up (deep moment system).',
     preparesNext: 'The reply-chain pattern reused in every service mission.' },
-  { day: 5, phase: 1, title: T('תשובות מהירות א׳', 'Fast Replies I'),
-    objective: T('יום אוזניים: כל מה שנלמד — במהירות מלאה, בלי כפתור האטה.', 'Ear day: everything learned so far at full speed, no slow button.'),
-    confidenceGain: T('מהירות טבעית מתחילה להישמע כמו מילים.', 'Native speed starts sounding like words.'),
-    situations: ['all'], targets: { concepts: 0, phrases: 0, dialogues: 1 },
-    listeningSkill: 'full-speed comprehension', speakingSkill: 'none — ears only',
-    minutes: 18, feeling: T('אני שומע מילים, לא רעש.', 'I hear words, not noise.'),
-    why: 'Dedicated desirable-difficulty day early — before bad habits form.',
-    preparesNext: 'The speed baseline for arrival missions.' },
+  { day: 5, phase: 1, title: T('ארוחה במסעדה', 'Restaurant Meal'),
+    objective: T('ארוחת ערב שלמה: שולחן, תפריט, הזמנה, שתייה, חשבון — מקצה לקצה.', 'A full dinner: table, menu, order, drink, bill — end to end.'),
+    confidenceGain: T('העסקה השלמה במסעדה — בידיים שלי.', 'The whole restaurant transaction — in my hands.'),
+    situations: ['restaurant'], targets: { concepts: 7, phrases: 4, dialogues: 1 },
+    listeningSkill: 'the waiter chain (reservation, ready-to-order, to-drink, dessert)', speakingSkill: 'table opener + order + bill',
+    minutes: 22, feeling: T('ארוחת ערב זה שלי.', 'Dinner is mine.'),
+    why: 'Mapping fix (Task 7): the card now matches the mission it opens — day 5 is a full sit-down meal, not the ear-only "Fast Replies" slot that never had content.',
+    preparesNext: 'The waiter reply-chain, reused across the later restaurant missions.' },
   { day: 6, phase: 1, title: T('כיוונים', 'Directions'),
     objective: T('לשאול — ובעיקר להבין את התשובה, כולל ציוני דרך.', 'Ask — and truly understand the answer, landmarks included.'),
     confidenceGain: T('ללכת לאיבוד מפסיק להפחיד.', 'Being lost stops being scary.'),
@@ -282,3 +286,18 @@ export const BOOTCAMP_PLAN: MissionPlan[] = [
     why: 'The finish line must be an experience, not a certificate.',
     preparesNext: 'Real life. The First Move abroad.' },
 ];
+
+/** The numbered journey — every mission except the "special" ones (the Recovery Toolkit). This
+ *  is the ordered spine beginners walk; the special missions are optional companions (Task 6). */
+export const CORE_MISSIONS: MissionPlan[] = BOOTCAMP_PLAN.filter((m) => !m.special);
+
+/** The optional special missions (Recovery Toolkit) — shown unnumbered near the end of the map. */
+export const SPECIAL_MISSIONS: MissionPlan[] = BOOTCAMP_PLAN.filter((m) => m.special);
+
+/** The display number a mission shows to the learner (1..N over the numbered journey), or null
+ *  for special/unnumbered missions. Kept separate from the internal `day` (the DAYS registry key
+ *  + persistence id, which never changes) so numbering is purely presentational. */
+export function missionNumber(day: number): number | null {
+  const i = CORE_MISSIONS.findIndex((m) => m.day === day);
+  return i === -1 ? null : i + 1;
+}

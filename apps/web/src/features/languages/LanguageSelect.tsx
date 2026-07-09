@@ -1,4 +1,4 @@
-import { LEARNING_LANGUAGES, UI_LANGUAGES } from '../../shared/i18n/languages.js';
+import { LEARNING_LANGUAGES, UI_LANGUAGES, languageName } from '../../shared/i18n/languages.js';
 import { t } from '../../shared/i18n/strings.js';
 import { useAppStore } from '../../shared/stores/appStore.js';
 import { TopBar } from '../../shared/ui/TopBar.js';
@@ -33,7 +33,7 @@ export function LanguageSelect() {
                 aria-pressed={selected}
               >
                 <span className="lang-flag">{l.flag}</span>
-                <span className="lang-native" style={{ color: l.accent }}>{l.nativeName}</span>
+                <span className="lang-native" style={{ color: l.accent }}>{languageName(l.code)}</span>
                 {!l.available && <span className="badge badge-notStarted">{t('comingSoon')}</span>}
               </button>
             );

@@ -1,5 +1,5 @@
 import { useAppStore } from '../stores/appStore.js';
-import { languageInfo, UI_LANGUAGES } from '../i18n/languages.js';
+import { languageInfo, UI_LANGUAGES, languageName } from '../i18n/languages.js';
 import { t } from '../i18n/strings.js';
 import { tap } from './haptics.js';
 
@@ -18,7 +18,7 @@ export function LangStrip() {
   const ui = UI_LANGUAGES.find((l) => l.code === uiLang);
   return (
     <button className="lang-strip card-press" onClick={() => { tap(); navigate('languages'); }} aria-label={t('stripAria')}>
-      <span className="lang-strip-seg"><span className="dim">{t('stripLearnPrefix')}</span> {learn.flag} {learn.nativeName}</span>
+      <span className="lang-strip-seg"><span className="dim">{t('stripLearnPrefix')}</span> {learn.flag} {languageName(learningLang)}</span>
       <span className="lang-strip-sep">·</span>
       <span className="lang-strip-seg"><span className="dim">{t('stripAppPrefix')}</span> {ui?.nativeName ?? uiLang}</span>
       <span className="lang-strip-globe" aria-hidden>🌐</span>

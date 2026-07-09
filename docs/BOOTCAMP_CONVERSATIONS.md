@@ -15,13 +15,13 @@ and carry no new phrases — that is expected, not missing content.
 
 ---
 
-## Mission 1 — I Can Survive · אני יכול לשרוד.
+## Mission 1 — Recovery Toolkit · ערכת חילוץ — כשלא מבינים
 
 > Phase 1 · 🛟 Foundations
 
-**Objective:** The 7 survival tools — you can never be stuck again. · שבעת כלי ההישרדות — אי אפשר יותר להיתקע.
+**Objective:** The 7 survival tools — for when you don’t understand or get stuck. Optional, anytime. · שבעת כלי ההישרדות — למקרה שלא הבנת או נתקעת. אופציונלי, בכל רגע.
 
-**Confidence gain:** The fear of freezing dies first. · הפחד מלקפוא מת ראשון.
+**Confidence gain:** When you don’t understand — you always have a way out. · כשלא מבינים — תמיד יש מוצא.
 
 **Estimated time:** ~20 min
 
@@ -233,15 +233,15 @@ _Reply-training drill:_ “For here or to go?” · “Medium or large?” · �
 
 ---
 
-## Mission 5 — Restaurant Basics · מסעדה — בסיס
+## Mission 5 — Restaurant Meal · ארוחה במסעדה
 
 > Phase 1 · 🛟 Foundations
 
-**Objective:** Ear day: everything learned so far at full speed, no slow button. · יום אוזניים: כל מה שנלמד — במהירות מלאה, בלי כפתור האטה.
+**Objective:** A full dinner: table, menu, order, drink, bill — end to end. · ארוחת ערב שלמה: שולחן, תפריט, הזמנה, שתייה, חשבון — מקצה לקצה.
 
-**Confidence gain:** Native speed starts sounding like words. · מהירות טבעית מתחילה להישמע כמו מילים.
+**Confidence gain:** The whole restaurant transaction — in my hands. · העסקה השלמה במסעדה — בידיים שלי.
 
-**Estimated time:** ~18 min
+**Estimated time:** ~22 min
 
 **Video:** — (none yet)
 

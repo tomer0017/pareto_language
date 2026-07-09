@@ -7,7 +7,7 @@ import { success, tap } from '../../shared/ui/haptics.js';
 import { LangStrip } from '../../shared/ui/LangStrip.js';
 import { getAudioDiag, subscribeAudioDiag, testAudio, unlockAudio } from '../../shared/audio/tts.js';
 import { useSyncExternalStore } from 'react';
-import { BOOTCAMP_PLAN, PHASES } from './plan.js';
+import { BOOTCAMP_PLAN, CORE_MISSIONS, SPECIAL_MISSIONS, PHASES, missionNumber } from './plan.js';
 import { DAYS, useBootcampStore } from './bootcampStore.js';
 import type { BootcampItem, BootcampStep, BootcampDialogue, BootcampDayContent, BootcampVideo, DialogueChoice } from './types.js';
 import { dialogueTranscript } from './transcript.js';
@@ -59,14 +59,14 @@ function MissionHub() {
   const resumable = (bc.stepIndex[String(day.day)] ?? 0) > 0 && !done;
   const practiceCta = done ? t('practiceAgain') : resumable ? t('continuePractice') : t('startPractice');
 
-  if (showReader && convo) return <DialogueReader dialogue={convo} onClose={() => setShowReader(false)} />;
+  if (showReader && convo) return <DialogueReader dialogue={convo} onClose={() => setShowReader(false)} onFinish={() => { setShowReader(false); bc.toHub(); }} />;
   if (showVideo && video) return <VideoOverlay video={video} onClose={() => setShowVideo(false)} />;
 
   return (
     <div className="screen">
       <div className="topbar">
         <button className="btn-ghost" onClick={() => { cancelSpeech(); bc.exit(); }}>{t('back')}</button>
-        <span className="chip">{t('mission')} {day.day}</span>
+        <span className="chip">{missionNumber(day.day) ? `${t('mission')} ${missionNumber(day.day)}` : '🛟'}</span>
         <span style={{ width: 44 }} />
       </div>
       <div className="screen-scroll no-nav">
@@ -121,10 +121,47 @@ function HubCard({ icon, iconBg, title, desc, cta, ctaClass, onClick, disabled }
 
 /* ── The map: 30 missions in 5 phases ───────────────────────────────────── */
 
+/** One mission row in the map. `badge` is the number (numbered journey) or an icon (special). */
+function MissionCard({ mission, badge, special }: { mission: (typeof BOOTCAMP_PLAN)[number]; badge: string; special?: boolean }) {
+  const bc = useBootcampStore();
+  const built = mission.day in DAYS;
+  const isDone = bc.completedDays.includes(mission.day);
+  const resumable = (bc.stepIndex[String(mission.day)] ?? 0) > 0 && !isDone;
+  const sub = isDone
+    ? t('completed')
+    : built
+      ? special
+        ? t('optionalMission')
+        : resumable
+          ? t('continueDay', { n: missionNumber(mission.day) ?? mission.day })
+          : `${mission.minutes} ${t('min')} · ${L(mission.confidenceGain)}`
+      : t('locked');
+  return (
+    <button
+      className="game-card card-press"
+      disabled={!built}
+      style={built ? undefined : { opacity: 0.45 }}
+      onClick={() => { tap(); bc.startDay(mission.day); }}
+    >
+      <span className="game-icon" style={{ background: isDone ? 'var(--good)' : special ? 'var(--accent)' : built ? 'var(--brand)' : 'var(--line)' }}>
+        {isDone ? '✓' : badge}
+      </span>
+      <span>
+        <p style={{ fontWeight: 800 }}>
+          {L(mission.title)} {mission.checkpoint && <span className="badge badge-fading">{t('checkpointTag')}</span>}
+        </p>
+        <p className="dim small">{sub}</p>
+      </span>
+    </button>
+  );
+}
+
 function MissionMap() {
   const app = useAppStore();
   const bc = useBootcampStore();
-  const done = bc.completedDays.length;
+  // Progress counts the numbered journey only — the optional Recovery Toolkit doesn't gate it.
+  const total = CORE_MISSIONS.length;
+  const done = CORE_MISSIONS.filter((m) => bc.completedDays.includes(m.day)).length;
   return (
     <div className="screen">
       <div className="topbar">
@@ -133,47 +170,33 @@ function MissionMap() {
       </div>
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
         <div className="progress-track" style={{ flex: 1 }}>
-          <div className="progress-fill" style={{ width: `${(done / 30) * 100}%` }} />
+          <div className="progress-fill" style={{ width: `${(done / total) * 100}%` }} />
         </div>
-        <span className="dim small">{t('missionsProgress', { done, total: 30 })}</span>
+        <span className="dim small">{t('missionsProgress', { done, total })}</span>
       </div>
       <div className="screen-scroll no-nav">
         <LangStrip />
         <AudioEnable />
-        {PHASES.map((phase) => (
-          <div key={phase.n}>
-            <h3 style={{ margin: '14px 0 8px' }}>{phase.icon} {L(phase.title)}</h3>
-            {BOOTCAMP_PLAN.filter((m) => m.phase === phase.n).map((m) => {
-              const built = m.day in DAYS;
-              const isDone = bc.completedDays.includes(m.day);
-              const resumable = (bc.stepIndex[String(m.day)] ?? 0) > 0 && !isDone;
-              return (
-                <button
-                  key={m.day}
-                  className="game-card card-press"
-                  disabled={!built}
-                  style={built ? undefined : { opacity: 0.45 }}
-                  onClick={() => {
-                    tap();
-                    bc.startDay(m.day);
-                  }}
-                >
-                  <span className="game-icon" style={{ background: isDone ? 'var(--good)' : built ? 'var(--brand)' : 'var(--line)' }}>
-                    {isDone ? '✓' : m.day}
-                  </span>
-                  <span>
-                    <p style={{ fontWeight: 800 }}>
-                      {L(m.title)} {m.checkpoint && <span className="badge badge-fading">{t('checkpointTag')}</span>}
-                    </p>
-                    <p className="dim small">
-                      {isDone ? t('completed') : built ? (resumable ? t('continueDay', { n: m.day }) : `${m.minutes} ${t('min')} · ${L(m.confidenceGain)}`) : t('locked')}
-                    </p>
-                  </span>
-                </button>
-              );
-            })}
+        {PHASES.map((phase) => {
+          const missions = CORE_MISSIONS.filter((m) => m.phase === phase.n);
+          if (missions.length === 0) return null;
+          return (
+            <div key={phase.n}>
+              <h3 style={{ margin: '14px 0 8px' }}>{phase.icon} {L(phase.title)}</h3>
+              {missions.map((m) => (
+                <MissionCard key={m.day} mission={m} badge={String(missionNumber(m.day))} />
+              ))}
+            </div>
+          );
+        })}
+        {SPECIAL_MISSIONS.length > 0 && (
+          <div>
+            <h3 style={{ margin: '18px 0 8px' }}>🛟 {t('specialMissions')}</h3>
+            {SPECIAL_MISSIONS.map((m) => (
+              <MissionCard key={m.day} mission={m} badge="🛟" special />
+            ))}
           </div>
-        ))}
+        )}
       </div>
     </div>
   );
@@ -233,7 +256,7 @@ function MissionPlayer() {
     bc.toHub();
   };
 
-  if (showReader && convo) return <DialogueReader dialogue={convo} onClose={() => setShowReader(false)} />;
+  if (showReader && convo) return <DialogueReader dialogue={convo} onClose={() => setShowReader(false)} onFinish={() => { setShowReader(false); bc.toHub(); }} />;
   if (showVideo && video) return <VideoOverlay video={video} onClose={() => setShowVideo(false)} />;
   if (!step || step.kind === 'summary') return <VictoryScreen />;
   const progress = Math.round((bc.index / day.steps.length) * 100);
@@ -243,7 +266,7 @@ function MissionPlayer() {
       <CheckPop trigger={checkTrigger} />
       <div className="topbar">
         <button className="btn-ghost" onClick={back}>{t('back')}</button>
-        <span className="chip">{t('mission')} {day.day} · {L(day.title)}</span>
+        <span className="chip">🎖️ {L(day.title)}</span>
         <span style={{ width: 44 }} />
       </div>
       <div className="progress-track" style={{ marginBottom: 10 }}>
@@ -295,9 +318,14 @@ function TalkStep({ step, onNext }: { step: Extract<BootcampStep, { kind: 'talk'
   );
 }
 
+/**
+ * Learn one sentence: hear it, then see + say it. Two beats only — Learn → Practice → Next.
+ * The old third "I said it" screen (which just repeated the exact same sentence and made testers
+ * think the app had frozen) is gone: saying it aloud and continuing now happen on one screen.
+ */
 function ToolStep({ step, item, onDone }: { step: Extract<BootcampStep, { kind: 'tool' }>; item: BootcampItem; onDone: () => void }) {
   const bc = useBootcampStore();
-  const [phase, setPhase] = useState<'listen' | 'reveal' | 'say'>('listen');
+  const [phase, setPhase] = useState<'listen' | 'reveal'>('listen');
   const played = useRef(false);
   useEffect(() => {
     if (!played.current) {
@@ -305,6 +333,12 @@ function ToolStep({ step, item, onDone }: { step: Extract<BootcampStep, { kind: 
       void speak(item.text, 'en');
     }
   }, [item.text]);
+
+  const reveal = (): void => {
+    setPhase('reveal');
+    void speak(item.text, 'en', 0.85); // hear it again, slowly, as you read it
+  };
+
   return (
     <>
       <div className="drill-card">
@@ -319,24 +353,17 @@ function ToolStep({ step, item, onDone }: { step: Extract<BootcampStep, { kind: 
             <p className="drill-phrase" style={{ fontSize: '1.5rem' }}>{item.text}</p>
             <p className="drill-meaning">{L(item.meaning)}</p>
             {item.tip && <p className="faint small">{L(item.tip)}</p>}
+            <p className="faint small">🗣️ {t('sayItAloud')}</p>
           </>
         )}
       </div>
       <div className="action-zone">
-        <button className="btn-ghost" onClick={() => void speak(item.text, 'en', phase === 'listen' ? 1 : 0.8)}>
+        <button className="btn-ghost" onClick={() => void speak(item.text, 'en', phase === 'listen' ? 1 : 0.85)}>
           🔊 {t('hearAgain')}
         </button>
-        {phase === 'listen' && <button className="btn-primary" onClick={() => setPhase('reveal')}>{t('tapWhenReady')}</button>}
-        {phase === 'reveal' && (
-          <button className="btn-primary" onClick={() => { setPhase('say'); void speak(item.text, 'en', 0.85); }}>
-            {t('sayItAloud')}
-          </button>
-        )}
-        {phase === 'say' && (
-          <button className="btn-accent" onClick={() => { bc.recordDrill(item.id, 'echo', 'pass'); onDone(); }}>
-            {t('saidItBtn')}
-          </button>
-        )}
+        {phase === 'listen'
+          ? <button className="btn-primary" onClick={reveal}>{t('tapWhenReady')}</button>
+          : <button className="btn-primary" onClick={() => { bc.recordDrill(item.id, 'echo', 'pass'); onDone(); }}>{t('continue')}</button>}
       </div>
     </>
   );
@@ -753,9 +780,9 @@ function VictoryScreen() {
   const receipts = bc.receipts.filter((r) => r.day === day.day);
   const convo = primaryDialogue(day);
   const video = day.introVideo;
-  const nextBuilt = BOOTCAMP_PLAN.find((m) => m.day > day.day && m.day in DAYS && !bc.completedDays.includes(m.day));
+  const nextBuilt = BOOTCAMP_PLAN.find((m) => m.day > day.day && m.day in DAYS && !m.special && !bc.completedDays.includes(m.day));
 
-  if (showReader && convo) return <DialogueReader dialogue={convo} onClose={() => setShowReader(false)} />;
+  if (showReader && convo) return <DialogueReader dialogue={convo} onClose={() => setShowReader(false)} onFinish={() => { setShowReader(false); bc.toHub(); }} />;
   if (showVideo && video) return <VideoOverlay video={video} onClose={() => setShowVideo(false)} />;
 
   // The reward: re-watch the full conversation — the video if there is one, else the transcript.
@@ -769,7 +796,7 @@ function VictoryScreen() {
       <Confetti />
       <div className="topbar">
         <button className="btn-ghost" onClick={() => { cancelSpeech(); bc.toHub(); }}>{t('back')}</button>
-        <span className="chip">{t('mission')} {day.day}</span>
+        <span className="chip">{missionNumber(day.day) ? `${t('mission')} ${missionNumber(day.day)}` : '🛟'}</span>
         <span style={{ width: 44 }} />
       </div>
       <div className="screen-scroll no-nav">
@@ -807,7 +834,7 @@ function VictoryScreen() {
 /** The complete conversation as a reader: every line in both languages, per-line replay,
  *  play-all / pause / restart / prev / next, with the current line highlighted. Used before
  *  the mission (preview) and after it (study sheet). Pure playback — no scoring. */
-function DialogueReader({ dialogue, onClose }: { dialogue: BootcampDialogue; onClose: () => void }) {
+function DialogueReader({ dialogue, onClose, onFinish }: { dialogue: BootcampDialogue; onClose: () => void; onFinish?: () => void }) {
   const lines = useMemo(() => dialogueTranscript(dialogue), [dialogue]);
   const [current, setCurrent] = useState(0);
   const [playing, setPlaying] = useState(false);
@@ -855,9 +882,9 @@ function DialogueReader({ dialogue, onClose }: { dialogue: BootcampDialogue; onC
   return (
     <div className="reader">
       <div className="topbar">
-        <button className="btn-ghost" onClick={() => { stop(); onClose(); }} aria-label={t('close')}>←</button>
+        <button className="reader-back" onClick={() => { stop(); onClose(); }} aria-label={t('back')}>←</button>
         <span className="chip">📖 {t('fullConversationTitle')}</span>
-        <span style={{ width: 44 }} />
+        <span style={{ width: 52 }} />
       </div>
       <p className="dim small" style={{ margin: '0 0 8px' }}>{t('studySheetSub')} · {t('lineProgress', { i: current + 1, n: lines.length })}</p>
       <div className="reader-scroll">
@@ -885,6 +912,9 @@ function DialogueReader({ dialogue, onClose }: { dialogue: BootcampDialogue; onC
         <button className="btn-primary" onClick={() => (playing ? stop() : playAll(current))}>
           {playing ? t('pausePlay') : t('playAll')}
         </button>
+        {onFinish && (
+          <button className="btn-secondary" onClick={() => { stop(); onFinish(); }}>✓ {t('finishToHub')}</button>
+        )}
       </div>
     </div>
   );

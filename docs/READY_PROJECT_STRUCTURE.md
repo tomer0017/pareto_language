@@ -43,10 +43,17 @@ hidden only inside an active mission (a focused, full-screen flow with its own c
 
 - **Home** — the overview: one "Continue" hero (resume → next → replay), a progress bar, and a
   quiet path to the full mission map. No dashboards, no vanity metrics.
-- **Bootcamp** — the heart of the product: 30 real-world missions in 5 phases (Foundations →
-  Arrival → Food → City Life → Mastery). Checkpoints at 10/18/24/30 are cold integration days.
-- **Core** — the practical communication engine: every sentence READY teaches, grouped by mission,
-  tap to hear. Not "1500 words." Spaced/weak-word review is planned (stubbed as coming soon).
+- **Bootcamp** — the heart of the product: a **29-mission numbered journey** in 5 phases
+  (Foundations → Arrival → Food → City Life → Mastery), beginning with **Introduce Myself**.
+  Checkpoints are cold integration days. The **Recovery Toolkit** (the 7 survival tools, formerly
+  "Mission 1") is now an **optional special mission** shown unnumbered at the end of the map — its
+  content is unchanged; only its placement/presentation moved (pilot testers read it as a broken
+  first mission because its answers are escape tools, not answers to the conversation). Display
+  numbering is presentational (`missionNumber()`); the internal `day`/DAYS keys never change.
+- **Core** — the practical communication engine, presented as a tabbed **knowledge center**: tabs
+  for **Core Phrases** (live — every sentence READY teaches, grouped by mission, tap to hear), plus
+  Core Words · Core Patterns · Common Questions · Emergency · Favorites (structure only, honest
+  "coming soon"). Not "1500 words." Spaced/weak-word review is still planned.
 - **Profile** — everything personal: **Learning Preferences** (the single global **speech-speed**
   control 80–105%, default 95%, with Test Voice), language (trip = English pilot; app = EN/HE),
   appearance (light/dark), audio (enable/test sound), and honest disabled "coming soon" rows

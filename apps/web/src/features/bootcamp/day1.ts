@@ -85,7 +85,7 @@ const SCENE_STUCK: BootcampDialogue = {
 
 export const DAY1: BootcampDayContent = {
   day: 1,
-  title: T('אני יכול לשרוד.', 'I Can Survive'),
+  title: T('ערכת חילוץ — כשלא מבינים', 'Recovery Toolkit'),
   items: DAY1_ITEMS,
   dialogues: { 'stuck-traveler': SCENE_STUCK },
   steps: [
@@ -95,7 +95,7 @@ export const DAY1: BootcampDayContent = {
         T('לא נלמד היום "אנגלית". נלמד דבר אחד: איך אי אפשר להיתקע.', 'We won’t “learn English” today. We’ll learn one thing: how to never get stuck.'),
         T('בסוף המשימה עדיין לא תדע אנגלית — אבל כבר תפחד הרבה פחות.', 'By the end you still won’t know English — but you’ll be far less afraid.'),
       ], cta: T('יאללה, מתחילים', 'Let’s go') },
-    { kind: 'talk', icon: '🎯', title: T('משימה 1: אני יכול לשרוד', 'Mission 1: I Can Survive'),
+    { kind: 'talk', icon: '🎯', title: T('ערכת חילוץ: אני יכול לשרוד', 'Recovery Toolkit: I Can Survive'),
       body: [
         T('עוד רגע תיכנס לבית קפה. הבריסטה מדבר מהר. אין לך מושג מה הוא אומר.', 'In a moment you’ll walk into a coffee shop. The barista talks fast. You have no idea what he’s saying.'),
         T('וזה בסדר גמור — כי יש לך כלים.', 'And that’s completely fine — because you have tools.'),
