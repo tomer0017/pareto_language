@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { buildRounds } from './rounds.js';
+import { buildRounds, buildSession } from './rounds.js';
 import type { GameWord } from '../types.js';
 
 const W = (id: string, word: string, emoji: string): GameWord => ({ id, word, translation: { en: word, he: word }, emoji });
@@ -35,6 +35,33 @@ describe('Picture Quiz rounds', () => {
     const withBlank = [...WORDS, { id: 'x', word: 'blank', translation: { en: 'x', he: 'x' }, emoji: '' }];
     for (const r of buildRounds(withBlank)) {
       expect(r.options.every((o) => o.emoji)).toBe(true);
+    }
+  });
+});
+
+describe('Picture Quiz sessions (Beta polish)', () => {
+  it('builds exactly `size` rounds when enough words exist', () => {
+    expect(buildSession(WORDS, 5).length).toBe(5);
+    expect(buildSession(WORDS, 8).length).toBe(8);
+  });
+
+  it('never repeats a concept within a session', () => {
+    for (let n = 0; n < 30; n++) {
+      const ids = buildSession(WORDS, 6).map((r) => r.word.id);
+      expect(new Set(ids).size).toBe(ids.length);
+    }
+  });
+
+  it('clamps the size to the available words (future-proof for 100 → 1500)', () => {
+    expect(buildSession(WORDS, 999).length).toBe(WORDS.length);
+    expect(buildSession(WORDS, 0).length).toBe(1); // always at least one question
+  });
+
+  it('each session round is still a valid 4-option question with one correct, no dup emoji', () => {
+    for (const r of buildSession(WORDS, 8)) {
+      expect(r.options.length).toBe(4);
+      expect(r.options.filter((o) => o.id === r.word.id).length).toBe(1);
+      expect(new Set(r.options.map((o) => o.emoji)).size).toBe(4);
     }
   });
 });

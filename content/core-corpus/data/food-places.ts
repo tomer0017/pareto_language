@@ -1,0 +1,62 @@
+import type { CorpusRow } from '../types.js';
+
+/**
+ * Food & places expansion beyond the visual pilot: menu-decoding vocabulary (recognition-heavy),
+ * tableware, meals, and the city-navigation nouns every directions answer is built from.
+ * `exit` moved here from the Sprint-3 sample concepts — same id, now canonically owned.
+ */
+export const FOOD_PLACES: CorpusRow[] = [
+  // ── Food & drink (30) ──────────────────────────────────────────────────────
+  { slug: 'fruit', pos: 'noun', en: 'fruit', he: 'פירות', cat: 'food', layer: 2, rof: 1, skill: 'recognize', s: [4, 3, 3, 2, 3], emoji: '🍇', vis: 0.65, ex: 'Fresh fruit.', exHe: 'פירות טריים.' },
+  { slug: 'vegetables', pos: 'noun', en: 'vegetables', he: 'ירקות', cat: 'food', layer: 2, rof: 2, skill: 'recognize', s: [4, 3, 3, 2, 3], emoji: '🥦', vis: 0.6, ex: 'Only vegetables, please.', exHe: 'רק ירקות, בבקשה.' },
+  { slug: 'salad', pos: 'noun', en: 'salad', he: 'סלט', cat: 'food', layer: 2, rof: 1, skill: 'recognize', s: [4, 4, 3, 2, 3], emoji: '🥗', vis: 0.9, ex: 'A big salad.', exHe: 'סלט גדול.' },
+  { slug: 'sugar', pos: 'noun', en: 'sugar', he: 'סוכר', cat: 'food', layer: 2, rof: 2, skill: 'recognize', s: [4, 3, 3, 2, 3], ex: 'No sugar, please.', exHe: 'בלי סוכר, בבקשה.' },
+  { slug: 'salt', pos: 'noun', en: 'salt', he: 'מלח', cat: 'food', layer: 2, rof: 1, skill: 'recognize', s: [4, 3, 3, 2, 3], emoji: '🧂', vis: 0.85, ex: 'Salt and pepper.', exHe: 'מלח ופלפל.' },
+  { slug: 'pepper', pos: 'noun', en: 'pepper', he: 'פלפל', cat: 'food', layer: 2, rof: 1, skill: 'recognize', s: [3, 2, 3, 1, 2], ex: 'A little pepper.', exHe: 'קצת פלפל.' },
+  { slug: 'oil', pos: 'noun', en: 'oil', he: 'שמן', cat: 'food', layer: 2, rof: 1, skill: 'recognize', s: [3, 2, 3, 1, 2], ex: 'Olive oil.', exHe: 'שמן זית.' },
+  { slug: 'butter', pos: 'noun', en: 'butter', he: 'חמאה', cat: 'food', layer: 2, rof: 1, skill: 'recognize', s: [3, 3, 3, 1, 2], emoji: '🧈', vis: 0.85, ex: 'Bread with butter.', exHe: 'לחם עם חמאה.' },
+  { slug: 'juice', pos: 'noun', en: 'juice', he: 'מיץ', cat: 'food', layer: 2, rof: 1, skill: 'recall', s: [4, 4, 3, 2, 3], emoji: '🧃', vis: 0.85, ex: 'Orange juice, please.', exHe: 'מיץ תפוזים, בבקשה.' },
+  { slug: 'beer', pos: 'noun', en: 'beer', he: 'בירה', cat: 'food', layer: 2, rof: 1, skill: 'recall', s: [4, 4, 3, 2, 4], emoji: '🍺', vis: 0.95, ex: 'Two beers, please.', exHe: 'שתי בירות, בבקשה.' },
+  { slug: 'sandwich', pos: 'noun', en: 'sandwich', he: 'כריך', cat: 'food', layer: 2, rof: 1, skill: 'recognize', s: [4, 4, 3, 2, 3], emoji: '🥪', vis: 0.95, ex: 'A cheese sandwich.', exHe: 'כריך גבינה.' },
+  { slug: 'pizza', pos: 'noun', en: 'pizza', he: 'פיצה', cat: 'food', layer: 2, rof: 1, skill: 'recognize', s: [4, 4, 3, 2, 3], emoji: '🍕', vis: 0.98, ex: 'A slice of pizza.', exHe: 'משולש פיצה.' },
+  { slug: 'pasta', pos: 'noun', en: 'pasta', he: 'פסטה', cat: 'food', layer: 2, rof: 1, skill: 'recognize', s: [4, 3, 3, 1, 3], emoji: '🍝', vis: 0.95, ex: 'Pasta with tomato sauce.', exHe: 'פסטה ברוטב עגבניות.' },
+  { slug: 'cake', pos: 'noun', en: 'cake', he: 'עוגה', cat: 'food', layer: 2, rof: 1, skill: 'recognize', s: [3, 3, 3, 1, 2], emoji: '🍰', vis: 0.95, ex: 'A piece of cake.', exHe: 'פרוסת עוגה.' },
+  { slug: 'chocolate', pos: 'noun', en: 'chocolate', he: 'שוקולד', cat: 'food', layer: 2, rof: 1, skill: 'recognize', s: [4, 3, 3, 1, 2], emoji: '🍫', vis: 0.95, ex: 'Hot chocolate.', exHe: 'שוקו חם.' },
+  { slug: 'ice-cream', pos: 'noun', en: 'ice cream', he: 'גלידה', cat: 'food', layer: 2, rof: 1, skill: 'recognize', s: [4, 4, 3, 1, 3], emoji: '🍦', vis: 0.95, ex: 'Two scoops of ice cream.', exHe: 'שני כדורי גלידה.' },
+  { slug: 'tomato', pos: 'noun', en: 'tomato', he: 'עגבנייה', cat: 'food', layer: 2, rof: 1, skill: 'recognize', s: [3, 3, 3, 1, 2], emoji: '🍅', vis: 0.95, ex: 'Without tomato, please.', exHe: 'בלי עגבנייה, בבקשה.' },
+  { slug: 'fork', pos: 'noun', en: 'fork', he: 'מזלג', cat: 'food', layer: 2, rof: 1, skill: 'recognize', s: [3, 3, 2, 1, 2], ex: 'A fork, please.', exHe: 'מזלג, בבקשה.' },
+  { slug: 'knife', pos: 'noun', en: 'knife', he: 'סכין', cat: 'food', layer: 2, rof: 1, skill: 'recognize', s: [3, 3, 2, 1, 2], emoji: '🔪', vis: 0.85, ex: 'A clean knife, please.', exHe: 'סכין נקייה, בבקשה.' },
+  { slug: 'spoon', pos: 'noun', en: 'spoon', he: 'כף', cat: 'food', layer: 2, rof: 1, skill: 'recognize', s: [3, 3, 2, 1, 2], emoji: '🥄', vis: 0.9, ex: 'A spoon for the soup.', exHe: 'כף למרק.' },
+  { slug: 'plate', pos: 'noun', en: 'plate', he: 'צלחת', cat: 'food', layer: 2, rof: 1, skill: 'recognize', s: [3, 3, 2, 1, 2], emoji: '🍽️', vis: 0.85, ex: 'Another plate, please.', exHe: 'עוד צלחת, בבקשה.' },
+  { slug: 'cup', pos: 'noun', en: 'cup', he: 'ספל', cat: 'food', layer: 2, rof: 1, skill: 'recognize', s: [4, 3, 3, 1, 2], ex: 'A cup of tea.', exHe: 'ספל תה.' },
+  { slug: 'glass', pos: 'noun', en: 'glass', he: 'כוס', cat: 'food', layer: 2, rof: 1, skill: 'recognize', s: [4, 3, 3, 2, 3], ex: 'A glass of water.', exHe: 'כוס מים.' },
+  { slug: 'bottle', pos: 'noun', en: 'bottle', he: 'בקבוק', cat: 'food', layer: 2, rof: 1, skill: 'recall', s: [4, 4, 3, 2, 3], ex: 'A bottle of water.', exHe: 'בקבוק מים.' },
+  { slug: 'menu', pos: 'noun', en: 'menu', he: 'תפריט', cat: 'food', layer: 1, rof: 2, skill: 'recall', s: [4, 5, 4, 2, 5], emoji: '📋', vis: 0.6, ex: 'The menu, please.', exHe: 'את התפריט, בבקשה.' },
+  { slug: 'bill', pos: 'noun', en: 'bill', he: 'חשבון', cat: 'food', layer: 1, rof: 2, skill: 'recall', s: [5, 5, 4, 3, 5], ex: 'The bill, please.', exHe: 'חשבון, בבקשה.', alias: ['check'] },
+  { slug: 'breakfast', pos: 'noun', en: 'breakfast', he: 'ארוחת בוקר', cat: 'food', layer: 2, rof: 2, skill: 'recall', s: [4, 4, 5, 3, 5], emoji: '🍳', vis: 0.8, ex: 'Is breakfast included?', exHe: 'ארוחת הבוקר כלולה?' },
+  { slug: 'lunch', pos: 'noun', en: 'lunch', he: 'ארוחת צהריים', cat: 'food', layer: 2, rof: 1, skill: 'recognize', s: [4, 3, 4, 2, 3], ex: 'Lunch until three.', exHe: 'צהריים עד שלוש.' },
+  { slug: 'dinner', pos: 'noun', en: 'dinner', he: 'ארוחת ערב', cat: 'food', layer: 2, rof: 1, skill: 'recognize', s: [4, 3, 4, 2, 3], ex: 'Dinner at eight.', exHe: 'ארוחת ערב בשמונה.' },
+  { slug: 'dessert', pos: 'noun', en: 'dessert', he: 'קינוח', cat: 'food', layer: 2, rof: 1, skill: 'recognize', s: [3, 3, 4, 1, 3], emoji: '🍮', vis: 0.8, ex: 'Something for dessert?', exHe: 'משהו לקינוח?' },
+
+  // ── Places (20) ────────────────────────────────────────────────────────────
+  { slug: 'airport', pos: 'noun', en: 'airport', he: 'שדה תעופה', cat: 'places', layer: 1, rof: 2, skill: 'recall', s: [4, 5, 5, 4, 5], emoji: '🛫', vis: 0.85, ex: 'To the airport, please.', exHe: 'לשדה התעופה, בבקשה.' },
+  { slug: 'shop', pos: 'noun', en: 'shop', he: 'חנות', cat: 'places', layer: 2, rof: 1, skill: 'recognize', s: [4, 3, 4, 3, 4], emoji: '🛍️', vis: 0.8, ex: 'The shop is closed.', exHe: 'החנות סגורה.', alias: ['store'] },
+  { slug: 'supermarket', pos: 'noun', en: 'supermarket', he: 'סופרמרקט', cat: 'places', layer: 2, rof: 1, skill: 'recall', s: [4, 4, 3, 3, 4], emoji: '🛒', vis: 0.85, ex: 'Is there a supermarket near here?', exHe: 'יש סופרמרקט קרוב לכאן?' },
+  { slug: 'street', pos: 'noun', en: 'street', he: 'רחוב', cat: 'places', layer: 2, rof: 2, skill: 'recognize', s: [5, 4, 5, 4, 5], ex: 'What street is this?', exHe: 'איזה רחוב זה?' },
+  { slug: 'city', pos: 'noun', en: 'city', he: 'עיר', cat: 'places', layer: 2, rof: 1, skill: 'recognize', s: [5, 3, 4, 3, 4], emoji: '🏙️', vis: 0.85, ex: 'The old city.', exHe: 'העיר העתיקה.' },
+  { slug: 'center', pos: 'noun', en: 'center', he: 'מרכז', cat: 'places', layer: 1, rof: 2, skill: 'recall', s: [4, 5, 5, 4, 5], ex: 'To the city center.', exHe: 'למרכז העיר.', alias: ['downtown'] },
+  { slug: 'square', pos: 'noun', en: 'square', he: 'כיכר', cat: 'places', layer: 2, rof: 1, skill: 'recognize', s: [3, 3, 4, 2, 4], ex: 'The main square.', exHe: 'הכיכר הראשית.' },
+  { slug: 'bridge', pos: 'noun', en: 'bridge', he: 'גשר', cat: 'places', layer: 2, rof: 1, skill: 'recognize', s: [3, 2, 4, 2, 3], emoji: '🌉', vis: 0.9, ex: 'Cross the bridge.', exHe: 'תחצה את הגשר.' },
+  { slug: 'park', pos: 'noun', en: 'park', he: 'פארק', cat: 'places', layer: 2, rof: 1, skill: 'recognize', s: [4, 3, 4, 2, 3], emoji: '🏞️', vis: 0.7, ex: 'Next to the park.', exHe: 'ליד הפארק.' },
+  { slug: 'entrance', pos: 'noun', en: 'entrance', he: 'כניסה', cat: 'places', layer: 1, rof: 2, skill: 'recognize', s: [4, 3, 5, 4, 5], ex: 'The main entrance.', exHe: 'הכניסה הראשית.', opp: ['exit'] },
+  { slug: 'exit', pos: 'noun', en: 'exit', he: 'יציאה', cat: 'places', layer: 1, rof: 2, skill: 'recognize', s: [4, 4, 5, 5, 5], ex: 'Where is the exit?', exHe: 'איפה היציאה?', opp: ['entrance'] },
+  { slug: 'elevator', pos: 'noun', en: 'elevator', he: 'מעלית', cat: 'places', layer: 2, rof: 1, skill: 'recognize', s: [3, 3, 4, 2, 3], emoji: '🛗', vis: 0.85, ex: 'Take the elevator.', exHe: 'קח את המעלית.', alias: ['lift'] },
+  { slug: 'stairs', pos: 'noun', en: 'stairs', he: 'מדרגות', cat: 'places', layer: 2, rof: 1, skill: 'recognize', s: [3, 3, 4, 2, 3], ex: 'The stairs are on the right.', exHe: 'המדרגות מימין.' },
+  { slug: 'door', pos: 'noun', en: 'door', he: 'דלת', cat: 'places', layer: 2, rof: 1, skill: 'recognize', s: [4, 3, 4, 3, 3], emoji: '🚪', vis: 0.9, ex: 'The door is locked.', exHe: 'הדלת נעולה.' },
+  { slug: 'window', pos: 'noun', en: 'window', he: 'חלון', cat: 'places', layer: 2, rof: 1, skill: 'recognize', s: [4, 3, 3, 2, 3], emoji: '🪟', vis: 0.9, ex: 'A seat by the window.', exHe: 'מקום ליד החלון.' },
+  { slug: 'building', pos: 'noun', en: 'building', he: 'בניין', cat: 'places', layer: 2, rof: 1, skill: 'recognize', s: [4, 2, 4, 2, 3], emoji: '🏢', vis: 0.85, ex: 'The tall building.', exHe: 'הבניין הגבוה.' },
+  { slug: 'reception', pos: 'noun', en: 'reception', he: 'קבלה', cat: 'places', layer: 1, rof: 2, skill: 'recall', s: [4, 4, 5, 3, 5], ex: 'Ask at the reception.', exHe: 'תשאל בקבלה.', alias: ['front desk'] },
+  { slug: 'cafe', pos: 'noun', en: 'cafe', he: 'בית קפה', cat: 'places', layer: 2, rof: 1, skill: 'recognize', s: [4, 4, 4, 3, 4], ex: 'A nice cafe.', exHe: 'בית קפה נחמד.' },
+  { slug: 'gas-station', pos: 'noun', en: 'gas station', he: 'תחנת דלק', cat: 'places', layer: 2, rof: 2, skill: 'recognize', s: [3, 3, 3, 2, 3], emoji: '⛽', vis: 0.9, ex: 'Stop at the gas station.', exHe: 'עצור בתחנת הדלק.' },
+  { slug: 'castle', pos: 'noun', en: 'castle', he: 'טירה', cat: 'places', layer: 2, rof: 1, skill: 'recognize', s: [3, 2, 3, 1, 3], emoji: '🏰', vis: 0.9, ex: 'Tickets to the castle.', exHe: 'כרטיסים לטירה.' },
+];

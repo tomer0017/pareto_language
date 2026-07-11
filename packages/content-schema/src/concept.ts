@@ -51,6 +51,12 @@ export const RolComponentsSchema = z.object({
   learnability: z.number().min(0).max(1),
 });
 
+/** Traveler-relevant part of speech (coarse — drives reuse heuristics + future grammar hints). */
+export const PartOfSpeechSchema = z.enum([
+  'noun', 'verb', 'adj', 'adv', 'pron', 'det', 'prep', 'conj', 'num', 'interj', 'phrase',
+]);
+export type PartOfSpeech = z.infer<typeof PartOfSpeechSchema>;
+
 export const ConceptSchema = z.object({
   /** concept.{kind}.{slug}[.{sense}] — e.g. concept.word.exit, concept.word.right.direction */
   id: z.string().regex(/^concept\.(word|phrase|number|reply)\.[a-z0-9-]+(\.[a-z0-9-]+)?$/),
@@ -87,6 +93,22 @@ export const ConceptSchema = z.object({
   rank: z.number().int().positive().optional(),
   /** Example sentence (en pivot) + its learner-language translation, for review + UI context. */
   example: LocalizedTextSchema.optional(),
+
+  /* ── Core Corpus metadata (Core 500; optional & additive — corpus methodology two-sided score) ── */
+  /** Coarse part of speech (language-independent communicative class). */
+  pos: PartOfSpeechSchema.optional(),
+  /** Communication score 0–1 — value when the traveler needs to SAY it (say-channel). */
+  commScore: z.number().min(0).max(1).optional(),
+  /** Recognition score 0–1 — value when someone ELSE says it (hear-channel; freeze prevention). */
+  recogScore: z.number().min(0).max(1).optional(),
+  /** True when a real photo/illustration could represent it (wider than emoji `iconEligible`). */
+  imageEligible: z.boolean().optional(),
+  /** Alternate surface forms a traveler may hear for the same meaning ("restroom" for toilet). */
+  aliases: z.array(z.string()).optional(),
+  /** Concept ids semantically linked to this one (same cluster / commonly co-taught). */
+  relatedConcepts: z.array(z.string()).optional(),
+  /** Concept ids that are antonyms (open/closed, cheap/expensive) — future drill pairing. */
+  oppositeConcepts: z.array(z.string()).optional(),
 });
 export type Concept = z.infer<typeof ConceptSchema>;
 

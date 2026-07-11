@@ -111,13 +111,16 @@ tools and every pick is reframed as *more or less useful*, never right/wrong.
 - **Reusable UI/feedback (`shared/ui`, `shared/audio/sfx.ts`)** — `Modal` (confirm/choice dialogs),
   `Feedback` + `feedbackCue` + `sfx` (the single success/error system: burst + glow/shake + chime/
   tone + haptic, synthesized offline, wired through every drill). New patterns compose here first.
-- **Learning games (`features/games/*`)** — content-agnostic games: `GameWord`/`GameWordSource`,
-  `Picture Quiz` (pure `rounds.ts`) and `Swipe Recall` over a **pure, unit-tested re-queue engine**
-  (unknown cards return after ~10–15 others — the SRS seam). Now mounted in **Core Words** on the real
-  **Core 100** (`shared/content/coreWords.ts` loads the precached `core-en.v1.json`); they record
-  review events via `shared/review/recordReview`. Both share the reusable **`AnswerFeedback`** +
-  pure `answerContext.ts` builders (the full-context wrong-answer model, also used by every Bootcamp
-  drill). The old `mockWords` remains for isolated tests only.
+- **Learning games (`features/games/*`)** — content-agnostic games mounted in **Core Words** on the
+  real **Core 100** (`shared/content/coreWords.ts` → precached `core-en.v1.json`); both scale to Core
+  500/1000/1500 with no changes and record review events via `shared/review/recordReview`.
+  **Picture Quiz** is a full session (pure `rounds.ts` `buildSession(size)` — randomized, no-repeat,
+  configurable/clamped) → progress → shared feedback → Victory (Play Again / Back). **Swipe Recall**
+  is a **Tinder-style** card (finger-following drag with live rotate + like/nope stamp, spring-back,
+  fly-off; drag via direct GPU `translate3d` on a ref for 60 FPS) over a **pure, unit-tested re-queue
+  engine** (unknown returns after ~10–15 — the SRS seam) with press-and-hold reveal. Both share the
+  reusable **`AnswerFeedback`** + pure `answerContext.ts` builders (the full-context wrong-answer
+  model, also used by every Bootcamp drill). The old `mockWords` remains for isolated tests only.
 - **Core 100 corpus (`content/core-en/*`, `content/concepts/core-en.yaml`)** — authored `pilot100.ts`
   → pure `corpus.ts` (validate + transform) → `build-core-en.ts` emits the canonical concepts YAML
   (seeded to Mongo via `seedConcepts`) and the offline app pack. The `Concept` schema carries additive

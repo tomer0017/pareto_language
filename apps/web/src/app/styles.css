@@ -290,8 +290,19 @@ button:disabled { opacity: 0.55; }
   display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px;
   touch-action: pan-y; user-select: none; -webkit-user-select: none; cursor: grab;
 }
+.recall-card { position: relative; will-change: transform; touch-action: none; }
 .recall-card:active { cursor: grabbing; }
+.recall-dealt { animation: cardIn 0.26s cubic-bezier(0.22, 1, 0.36, 1); }
+@keyframes cardIn { from { transform: scale(0.9); opacity: 0.4; } to { transform: scale(1); opacity: 1; } }
 .recall-emoji { font-size: 5rem; line-height: 1; }
+/* Tinder-style like/nope stamps — opacity is driven by the drag distance via JS (GPU-only). */
+.recall-badge {
+  position: absolute; top: 16px; padding: 6px 14px; border-radius: 12px;
+  font-weight: 900; font-size: 1rem; letter-spacing: 0.02em; opacity: 0; pointer-events: none;
+  border: 3px solid; background: var(--card);
+}
+.recall-badge.like { right: 16px; color: var(--good); border-color: var(--good); transform: rotate(-14deg); }
+.recall-badge.nope { left: 16px; color: var(--danger); border-color: var(--danger); transform: rotate(14deg); }
 .hold-bar { display: block; width: 120px; height: 6px; border-radius: 999px; background: var(--line); overflow: hidden; margin: 4px auto 0; }
 .hold-fill { display: block; height: 100%; width: 0; border-radius: 999px; background: var(--brand); animation: holdFill 0.5s linear forwards; }
 @keyframes holdFill { from { width: 0; } to { width: 100%; } }

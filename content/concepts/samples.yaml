@@ -1,36 +1,7 @@
 # Concept Layer — SAMPLE concepts (Sprint 3 foundation proof; NOT production content).
-# One canonical meaning each; realizations per learning language; gloss stored exactly once.
+# `exit` and `where` graduated to the production corpus (core-corpus.yaml) — the Core Corpus
+# owns them canonically now. Only the Never-Teach demo remains here (a scored rejection record).
 concepts:
-  - id: concept.word.exit
-    kind: word
-    gloss: { en: "exit", he: "יציאה", es: "salida", fr: "sortie", it: "uscita", ar: "خروج" }
-    categories: [signs]
-    rof: 2
-    layer: 1
-    skillTarget: recognize
-    situationSlugs: [directions]
-    rolComponents: { travel: 0.9, coverage: 0.6, freq: 0.5, reuse: 0.3, learnability: 1.0 }
-    rolScore: 66
-    realizations:
-      en: { text: "exit", quality: ai_reviewed }
-      it: { text: "uscita", quality: native_reviewed }   # from the shipped it pack lineage
-      es: { text: "salida", quality: ai_generated }
-      fr: { text: "sortie", quality: ai_generated }
-      ar: { text: "مخرج", quality: draft, reviewNotes: "MSA; sign form vs spoken form needs native ruling" }
-  - id: concept.word.where
-    kind: word
-    gloss: { en: "where", he: "איפה", es: "dónde", fr: "où", it: "dove", ar: "أين" }
-    categories: [questions, directions]
-    rof: 2
-    layer: 1
-    skillTarget: recall
-    situationSlugs: [directions]
-    rolScore: 95
-    realizations:
-      en: { text: "where", quality: ai_reviewed }
-      it: { text: "dove", quality: ai_generated }
-      es: { text: "dónde", quality: ai_generated }
-  # recovery.dont-understand moved to missions-core.yaml (production recovery kit)
   - id: concept.word.carburetor
     kind: word
     gloss: { en: "carburetor", he: "קרבורטור" }

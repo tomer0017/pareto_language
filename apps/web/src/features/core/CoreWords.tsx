@@ -51,8 +51,8 @@ export function CoreWords() {
     );
   }
 
-  if (mode === 'quiz') return <GameFrame onBack={() => setMode('menu')}><PictureQuiz words={gameWords} onDone={() => setMode('menu')} /></GameFrame>;
-  if (mode === 'recall') return <GameFrame onBack={() => setMode('menu')}><SwipeRecall words={gameWords} onDone={() => setMode('menu')} /></GameFrame>;
+  if (mode === 'quiz') return <GameFrame onBack={() => setMode('menu')}><PictureQuiz words={gameWords} onExit={() => setMode('menu')} /></GameFrame>;
+  if (mode === 'recall') return <GameFrame onBack={() => setMode('menu')}><SwipeRecall words={gameWords} onExit={() => setMode('menu')} /></GameFrame>;
 
   if (mode === 'browse') {
     const cats = coreCategories(words);

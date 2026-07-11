@@ -1,34 +1,50 @@
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import { L, t } from '../../../shared/i18n/strings.js';
 import { speak } from '../../../shared/audio/tts.js';
 import { tap } from '../../../shared/ui/haptics.js';
 import { AnswerFeedback } from '../../../shared/ui/AnswerFeedback.js';
 import { buildRespondContext } from '../../../shared/ui/answerContext.js';
 import { recordReview } from '../../../shared/review/recordReview.js';
-import { buildRounds } from './rounds.js';
+import { buildSession, DEFAULT_SESSION_SIZE } from './rounds.js';
 import type { GameWord } from '../types.js';
 
 /**
- * Picture Quiz (Part B2) — show one English word, four emoji options, tap the match. Generic over
- * any GameWord[] (now the real Core 100). Round construction lives in rounds.ts (pure, tested). On
- * answer it shows the shared full-context AnswerFeedback (no auto-advance — explicit Continue/Try
- * again) and records a review event through the canonical log.
+ * Picture Quiz (Beta polish — real game session). A full N-question round: randomized, no concept
+ * repeats within a session (buildSession), a progress counter, the shared full-context feedback (no
+ * auto-advance), review events per answer, then a Victory screen with Play Again / Back to Core
+ * Words. Session size is configurable (defaults, clamped to available words) so the same component
+ * serves Core 100 → 500 → 1500 unchanged.
  */
-
-export function PictureQuiz({ words, onDone }: { words: GameWord[]; onDone?: (score: number) => void }) {
-  const rounds = useMemo(() => buildRounds(words), [words]);
+export function PictureQuiz({
+  words,
+  sessionSize = DEFAULT_SESSION_SIZE,
+  onExit,
+}: {
+  words: GameWord[];
+  sessionSize?: number;
+  onExit?: () => void;
+}) {
+  // A session is a fixed randomized set (words is stable once the pack has loaded). Play Again
+  // reshuffles a brand-new session.
+  const [rounds, setRounds] = useState(() => buildSession(words, sessionSize));
   const [i, setI] = useState(0);
   const [picked, setPicked] = useState<GameWord | null>(null);
   const [score, setScore] = useState(0);
   const round = rounds[i];
 
+  const playAgain = (): void => { tap(); setRounds(buildSession(words, sessionSize)); setI(0); setScore(0); setPicked(null); };
+
+  // Victory — the session is complete.
   if (!round) {
     return (
-      <div className="drill-card pop-in center">
-        <p style={{ fontSize: '3rem' }}>🎉</p>
-        <p className="drill-phrase">{t('deckComplete')}</p>
-        <p className="dim">{t('gameScore', { n: score, total: rounds.length })}</p>
-        {onDone && <button className="btn-primary" onClick={() => onDone(score)} style={{ marginTop: 12 }}>{t('continue')}</button>}
+      <div className="drill-card pop-in center" style={{ gap: 10 }}>
+        <p style={{ fontSize: '3.4rem' }}>🎉</p>
+        <p className="drill-phrase" style={{ fontSize: '1.4rem' }}>{t('victoryTitle')}</p>
+        <p className="dim">{t('quizScore', { n: score, total: rounds.length })}</p>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginTop: 12, width: '100%' }}>
+          <button className="btn-primary" onClick={playAgain}>🔁 {t('playAgain')}</button>
+          {onExit && <button className="btn-secondary" onClick={() => { tap(); onExit(); }}>{t('backToWords')}</button>}
+        </div>
       </div>
     );
   }
@@ -62,7 +78,8 @@ export function PictureQuiz({ words, onDone }: { words: GameWord[]; onDone?: (sc
 
   return (
     <>
-      <div className="drill-card" style={{ minHeight: 180 }}>
+      <p className="dim small center" style={{ margin: '0 0 6px' }}>{t('quizProgress', { i: i + 1, n: rounds.length })}</p>
+      <div className="drill-card" style={{ minHeight: 170 }}>
         <p className="drill-label">{t('pictureQuizPrompt')}</p>
         <button className="btn-ghost" onClick={() => void speak(round.word.word, 'en')} style={{ margin: '0 auto' }}>
           <span className="drill-phrase" style={{ fontSize: '1.8rem' }}>🔊 {round.word.word}</span>

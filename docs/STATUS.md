@@ -408,3 +408,34 @@ entries incl. `core-en.v1.json`) · SMOKE PASS · dialogue audit 0 blockers · `
 diff. Known: Hebrew pending native review; TTS audio (no per-word recordings yet); `npm run pipeline`
 still reports **pre-existing** orphan warnings for `missions-core.yaml` phrase concepts (unrelated to
 this sprint; the seed path is unaffected). es/fr/it/ar realizations intentionally deferred.
+
+---
+
+## Sprint — Beta Polish (games) + Expression Research (2026-07-11)
+
+Final UX polish before the Core Corpus project. No new systems; no Concept-Layer / Bootcamp / review
+behavior changes. Both games stay content-agnostic (Core 100 → 500 → 1500 with zero changes).
+
+- **Picture Quiz is a real game session.** New pure `buildSession(words, size)` (in `rounds.ts`)
+  draws a randomized, **no-repeat** set of `size` concepts (default `DEFAULT_SESSION_SIZE`, clamped
+  to what's available — never hardcoded at call sites). The component runs Question *i/N* with a
+  progress counter → shared full-context feedback (no auto-advance) → review event per answer →
+  **Victory** with **Play Again** (fresh session) / **Back to Core Words**. +4 session tests.
+- **Swipe Recall feels like Tinder.** The card now **follows the finger** with a live rotate, a
+  green/red like-nope stamp whose opacity tracks the drag, **springs back** under threshold and
+  **flies off-screen** when committed; the next card animates in. Drag runs through **direct GPU
+  `translate3d`+rotate on a ref (no React re-render per move → 60 FPS, no reflow)**; `touch-action:
+  none` + `will-change: transform`. Press-and-hold-to-reveal, RTL-safe physical-direction semantics,
+  the pure re-queue engine, and review events are unchanged. Buttons still mirror the swipes.
+- **Pareto Expression Research** (**[EXPRESSION-RESEARCH.md](./EXPRESSION-RESEARCH.md)**) — a
+  report-only audit scoring conversational-glue candidates against the "1 of 30 missions" bar.
+  Finding: the winners are short reactive replies (*Sounds good · No worries · That's fine · Of
+  course · It's up to you · Never mind · I'm not sure*) + hear-first (*Here you go · Go ahead · Take
+  your time*); idioms (*Fingers crossed*, *I had to pinch myself*, …) are rejected. Recommendation
+  (future sprint): extend Mission 23 (Small Talk) + add *Never mind* to the Recovery Toolkit — **no
+  new mission, no content changed this sprint.**
+
+Verification: typecheck 0 · lint clean · **341 tests** (21 files, +4 session tests) · production
+build (15 precache) · SMOKE PASS. Both games shipped through the existing `CoreWords` entry (bottom
+nav unchanged). Remaining: haptics/animation feel is best judged on a real device; expression
+shortlist awaits native review before any content work.
