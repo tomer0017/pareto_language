@@ -59,10 +59,11 @@ hidden only inside an active mission (a focused, full-screen flow with its own c
 - **Core** — the practical communication engine, a two-layer **knowledge center**: a grid of
   **category cards** (📖 Core Phrases · 📝 Core Words · ❓ Common Questions · 🚨 Emergency · 🧩 Core
   Patterns · ⭐ Favorites) → the existing tabbed page opened on the chosen category (top tabs +
-  content), with a back button to the cards. Only **Core Phrases** is live (every sentence READY
-  teaches, grouped by mission, tap to hear); the rest are honest "coming soon". The chosen category
-  lives in `appStore.coreCategory` (Home's cards deep-link into it; the Core tab resets to the
-  grid). Not "1500 words." Spaced/weak-word review is still planned.
+  content), with a back button to the cards. **Core Phrases** is live (every sentence READY teaches,
+  grouped by mission, tap to hear) and **Core Words** is now live too — the **Core 100** emoji pilot
+  (`CoreWords.tsx`) with three modes on one screen: Browse · Picture Quiz · Swipe Recall (see
+  **[CORE-100.md](./CORE-100.md)**). The rest stay honest "coming soon". The chosen category lives in
+  `appStore.coreCategory`. Not "1500 words" yet — a validated 100-word pilot. Spaced review planned.
 - **Profile** — everything personal: language (trip = English pilot; app = EN/HE), audio
   (enable/test sound), and honest disabled "coming soon" rows (Google sign-in, statistics,
   notifications). The two most-changed controls — **Theme** and the single global **speech-speed**
@@ -110,10 +111,17 @@ tools and every pick is reframed as *more or less useful*, never right/wrong.
 - **Reusable UI/feedback (`shared/ui`, `shared/audio/sfx.ts`)** — `Modal` (confirm/choice dialogs),
   `Feedback` + `feedbackCue` + `sfx` (the single success/error system: burst + glow/shake + chime/
   tone + haptic, synthesized offline, wired through every drill). New patterns compose here first.
-- **Learning games (`features/games/*`)** — content-agnostic game infrastructure: `GameWord`/
-  `GameWordSource` types, `Picture Quiz`, and `Swipe Recall` over a **pure, unit-tested re-queue
-  engine** (unknown cards return after ~10–15 others — the SRS seam). Demo data today; Core 1500
-  later, same components. **Not mounted in the pilot nav** until real content exists.
+- **Learning games (`features/games/*`)** — content-agnostic games: `GameWord`/`GameWordSource`,
+  `Picture Quiz` (pure `rounds.ts`) and `Swipe Recall` over a **pure, unit-tested re-queue engine**
+  (unknown cards return after ~10–15 others — the SRS seam). Now mounted in **Core Words** on the real
+  **Core 100** (`shared/content/coreWords.ts` loads the precached `core-en.v1.json`); they record
+  review events via `shared/review/recordReview`. Both share the reusable **`AnswerFeedback`** +
+  pure `answerContext.ts` builders (the full-context wrong-answer model, also used by every Bootcamp
+  drill). The old `mockWords` remains for isolated tests only.
+- **Core 100 corpus (`content/core-en/*`, `content/concepts/core-en.yaml`)** — authored `pilot100.ts`
+  → pure `corpus.ts` (validate + transform) → `build-core-en.ts` emits the canonical concepts YAML
+  (seeded to Mongo via `seedConcepts`) and the offline app pack. The `Concept` schema carries additive
+  visual fields (`emoji`, `iconEligible`, `visualConfidence`, `rank`, `example`). See **CORE-100.md**.
 - **Content schema (`packages/content-schema`)** — `ContentPack` / `ContentItem` / `Situation` /
   memory + review types shared across web, server, engine, and the pipeline.
 - **Concept Layer + Pipeline (`content/`)** — the corpus → concepts → phrases → validated pack

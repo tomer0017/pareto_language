@@ -113,9 +113,10 @@ hidden only inside an active mission — a focused, full-screen flow with its ow
   because its answers are escape tools, not answers to the conversation).
 - **Core (a.k.a. "Core 1500")** — the practical communication engine, presented as a tabbed
   **knowledge center**: **Core Phrases** is live (every sentence READY teaches, grouped by mission,
-  tap to hear); Core Words · Core Patterns · Common Questions · Emergency · Favorites are honest
-  "coming soon" scaffolding. *Not* "1500 words" — the real phrases a traveler says and hears.
-  Spaced/weak-word review is planned (currently a browsable, audio-enabled deck).
+  tap to hear) and **Core Words** is now live — the **Core 100** emoji pilot with Browse · Picture
+  Quiz · Swipe Recall, backed by the real concept pipeline (see CORE-100.md). Core Patterns · Common
+  Questions · Emergency · Favorites remain honest "coming soon". *Not* "1500 words" yet — a validated
+  100-word pilot to prove the word-learning system. Spaced/weak-word review is planned.
 - **Profile / Settings** — everything personal in one place: **Learning Preferences** (the single
   global **speech-speed** control, 80–105%, default 95%, with Test Voice), language (trip = English
   pilot; app = English/Hebrew), appearance (light/dark), audio (enable/test sound), and honest
@@ -210,7 +211,10 @@ auto-generated from source by `npm run gen:conversations`.
 - Full docs set + auto-generated conversations file.
 
 **In progress / next 🚧**
-- **English Core content pack** (so Words/Phrases/Situations light up instead of "coming soon").
+- **Core 100 pilot shipped** ✅ — 100 emoji-first English words through the real concept pipeline
+  (concepts → seed → offline pack), powering live Core Words + Picture Quiz + Swipe Recall. Next:
+  native Hebrew review, per-word audio, and expansion 100 → 300 → 1500 (see CORE-100.md).
+- **English Core content pack** (so Phrases/Situations light up instead of "coming soon").
 - **Native (Hebrew) content review** — all mission content is AI-drafted, pending a native pass.
 - **Core review engine** — spaced/weak-word review over Bootcamp sentences (currently browsable only).
 - **More mission videos** (only Mission 2 today).
