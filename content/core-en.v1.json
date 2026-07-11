@@ -1,0 +1,1808 @@
+{
+  "lang": "en",
+  "version": "1.0.0",
+  "generatedAt": "2026-07-11T13:04:36.822Z",
+  "count": 100,
+  "words": [
+    {
+      "id": "en.word.nose",
+      "conceptId": "concept.word.nose",
+      "word": "nose",
+      "meaning": {
+        "en": "nose",
+        "he": "אף"
+      },
+      "emoji": "👃",
+      "category": "body",
+      "tier": 1,
+      "rank": 1,
+      "skill": "recognize",
+      "example": {
+        "en": "My nose hurts.",
+        "he": "האף שלי כואב."
+      }
+    },
+    {
+      "id": "en.word.eye",
+      "conceptId": "concept.word.eye",
+      "word": "eye",
+      "meaning": {
+        "en": "eye",
+        "he": "עין"
+      },
+      "emoji": "👁️",
+      "category": "body",
+      "tier": 1,
+      "rank": 2,
+      "skill": "recognize",
+      "example": {
+        "en": "Something is in my eye.",
+        "he": "משהו נכנס לי לעין."
+      }
+    },
+    {
+      "id": "en.word.ear",
+      "conceptId": "concept.word.ear",
+      "word": "ear",
+      "meaning": {
+        "en": "ear",
+        "he": "אוזן"
+      },
+      "emoji": "👂",
+      "category": "body",
+      "tier": 1,
+      "rank": 3,
+      "skill": "recognize",
+      "example": {
+        "en": "My ear hurts.",
+        "he": "האוזן שלי כואבת."
+      }
+    },
+    {
+      "id": "en.word.hand",
+      "conceptId": "concept.word.hand",
+      "word": "hand",
+      "meaning": {
+        "en": "hand",
+        "he": "יד"
+      },
+      "emoji": "✋",
+      "category": "body",
+      "tier": 1,
+      "rank": 4,
+      "skill": "recognize",
+      "example": {
+        "en": "Give me your hand.",
+        "he": "תן לי את היד."
+      }
+    },
+    {
+      "id": "en.word.mouth",
+      "conceptId": "concept.word.mouth",
+      "word": "mouth",
+      "meaning": {
+        "en": "mouth",
+        "he": "פה"
+      },
+      "emoji": "👄",
+      "category": "body",
+      "tier": 1,
+      "rank": 5,
+      "skill": "recognize",
+      "example": {
+        "en": "Open your mouth.",
+        "he": "תפתח את הפה."
+      }
+    },
+    {
+      "id": "en.word.foot",
+      "conceptId": "concept.word.foot",
+      "word": "foot",
+      "meaning": {
+        "en": "foot",
+        "he": "כף רגל"
+      },
+      "emoji": "🦶",
+      "category": "body",
+      "tier": 1,
+      "rank": 6,
+      "skill": "recognize",
+      "example": {
+        "en": "My foot hurts.",
+        "he": "כף הרגל שלי כואבת."
+      }
+    },
+    {
+      "id": "en.word.leg",
+      "conceptId": "concept.word.leg",
+      "word": "leg",
+      "meaning": {
+        "en": "leg",
+        "he": "רגל"
+      },
+      "emoji": "🦵",
+      "category": "body",
+      "tier": 1,
+      "rank": 7,
+      "skill": "recognize",
+      "example": {
+        "en": "I hurt my leg.",
+        "he": "פגעתי ברגל."
+      }
+    },
+    {
+      "id": "en.word.tooth",
+      "conceptId": "concept.word.tooth",
+      "word": "tooth",
+      "meaning": {
+        "en": "tooth",
+        "he": "שן"
+      },
+      "emoji": "🦷",
+      "category": "body",
+      "tier": 1,
+      "rank": 8,
+      "skill": "recognize",
+      "example": {
+        "en": "I have a toothache.",
+        "he": "יש לי כאב שיניים."
+      }
+    },
+    {
+      "id": "en.word.water",
+      "conceptId": "concept.word.water",
+      "word": "water",
+      "meaning": {
+        "en": "water",
+        "he": "מים"
+      },
+      "emoji": "💧",
+      "category": "food",
+      "tier": 0,
+      "rank": 9,
+      "skill": "recall",
+      "example": {
+        "en": "Water, please.",
+        "he": "מים, בבקשה."
+      }
+    },
+    {
+      "id": "en.word.coffee",
+      "conceptId": "concept.word.coffee",
+      "word": "coffee",
+      "meaning": {
+        "en": "coffee",
+        "he": "קפה"
+      },
+      "emoji": "☕",
+      "category": "food",
+      "tier": 0,
+      "rank": 10,
+      "skill": "recall",
+      "example": {
+        "en": "A coffee, please.",
+        "he": "קפה, בבקשה."
+      }
+    },
+    {
+      "id": "en.word.tea",
+      "conceptId": "concept.word.tea",
+      "word": "tea",
+      "meaning": {
+        "en": "tea",
+        "he": "תה"
+      },
+      "emoji": "🍵",
+      "category": "food",
+      "tier": 1,
+      "rank": 11,
+      "skill": "recognize",
+      "example": {
+        "en": "Tea with milk.",
+        "he": "תה עם חלב."
+      }
+    },
+    {
+      "id": "en.word.bread",
+      "conceptId": "concept.word.bread",
+      "word": "bread",
+      "meaning": {
+        "en": "bread",
+        "he": "לחם"
+      },
+      "emoji": "🍞",
+      "category": "food",
+      "tier": 1,
+      "rank": 12,
+      "skill": "recognize",
+      "example": {
+        "en": "Fresh bread.",
+        "he": "לחם טרי."
+      }
+    },
+    {
+      "id": "en.word.milk",
+      "conceptId": "concept.word.milk",
+      "word": "milk",
+      "meaning": {
+        "en": "milk",
+        "he": "חלב"
+      },
+      "emoji": "🥛",
+      "category": "food",
+      "tier": 1,
+      "rank": 13,
+      "skill": "recognize",
+      "example": {
+        "en": "With milk, please.",
+        "he": "עם חלב, בבקשה."
+      }
+    },
+    {
+      "id": "en.word.egg",
+      "conceptId": "concept.word.egg",
+      "word": "egg",
+      "meaning": {
+        "en": "egg",
+        "he": "ביצה"
+      },
+      "emoji": "🥚",
+      "category": "food",
+      "tier": 1,
+      "rank": 14,
+      "skill": "recognize",
+      "example": {
+        "en": "Two eggs, please.",
+        "he": "שתי ביצים, בבקשה."
+      }
+    },
+    {
+      "id": "en.word.apple",
+      "conceptId": "concept.word.apple",
+      "word": "apple",
+      "meaning": {
+        "en": "apple",
+        "he": "תפוח"
+      },
+      "emoji": "🍎",
+      "category": "food",
+      "tier": 1,
+      "rank": 15,
+      "skill": "recognize",
+      "example": {
+        "en": "One apple.",
+        "he": "תפוח אחד."
+      }
+    },
+    {
+      "id": "en.word.banana",
+      "conceptId": "concept.word.banana",
+      "word": "banana",
+      "meaning": {
+        "en": "banana",
+        "he": "בננה"
+      },
+      "emoji": "🍌",
+      "category": "food",
+      "tier": 1,
+      "rank": 16,
+      "skill": "recognize",
+      "example": {
+        "en": "A banana, please.",
+        "he": "בננה, בבקשה."
+      }
+    },
+    {
+      "id": "en.word.chicken",
+      "conceptId": "concept.word.chicken",
+      "word": "chicken",
+      "meaning": {
+        "en": "chicken",
+        "he": "עוף"
+      },
+      "emoji": "🍗",
+      "category": "food",
+      "tier": 1,
+      "rank": 17,
+      "skill": "recognize",
+      "example": {
+        "en": "Grilled chicken.",
+        "he": "עוף בגריל."
+      }
+    },
+    {
+      "id": "en.word.fish",
+      "conceptId": "concept.word.fish",
+      "word": "fish",
+      "meaning": {
+        "en": "fish",
+        "he": "דג"
+      },
+      "emoji": "🐟",
+      "category": "food",
+      "tier": 1,
+      "rank": 18,
+      "skill": "recognize",
+      "example": {
+        "en": "Fish of the day.",
+        "he": "דג היום."
+      }
+    },
+    {
+      "id": "en.word.meat",
+      "conceptId": "concept.word.meat",
+      "word": "meat",
+      "meaning": {
+        "en": "meat",
+        "he": "בשר"
+      },
+      "emoji": "🥩",
+      "category": "food",
+      "tier": 1,
+      "rank": 19,
+      "skill": "recognize",
+      "example": {
+        "en": "No meat, please.",
+        "he": "בלי בשר, בבקשה."
+      }
+    },
+    {
+      "id": "en.word.cheese",
+      "conceptId": "concept.word.cheese",
+      "word": "cheese",
+      "meaning": {
+        "en": "cheese",
+        "he": "גבינה"
+      },
+      "emoji": "🧀",
+      "category": "food",
+      "tier": 1,
+      "rank": 20,
+      "skill": "recognize",
+      "example": {
+        "en": "Bread and cheese.",
+        "he": "לחם וגבינה."
+      }
+    },
+    {
+      "id": "en.word.rice",
+      "conceptId": "concept.word.rice",
+      "word": "rice",
+      "meaning": {
+        "en": "rice",
+        "he": "אורז"
+      },
+      "emoji": "🍚",
+      "category": "food",
+      "tier": 1,
+      "rank": 21,
+      "skill": "recognize",
+      "example": {
+        "en": "Rice, please.",
+        "he": "אורז, בבקשה."
+      }
+    },
+    {
+      "id": "en.word.soup",
+      "conceptId": "concept.word.soup",
+      "word": "soup",
+      "meaning": {
+        "en": "soup",
+        "he": "מרק"
+      },
+      "emoji": "🍲",
+      "category": "food",
+      "tier": 1,
+      "rank": 22,
+      "skill": "recognize",
+      "example": {
+        "en": "Hot soup.",
+        "he": "מרק חם."
+      }
+    },
+    {
+      "id": "en.word.wine",
+      "conceptId": "concept.word.wine",
+      "word": "wine",
+      "meaning": {
+        "en": "wine",
+        "he": "יין"
+      },
+      "emoji": "🍷",
+      "category": "food",
+      "tier": 1,
+      "rank": 23,
+      "skill": "recognize",
+      "example": {
+        "en": "A glass of wine.",
+        "he": "כוס יין."
+      }
+    },
+    {
+      "id": "en.word.dog",
+      "conceptId": "concept.word.dog",
+      "word": "dog",
+      "meaning": {
+        "en": "dog",
+        "he": "כלב"
+      },
+      "emoji": "🐶",
+      "category": "animals",
+      "tier": 1,
+      "rank": 24,
+      "skill": "recognize",
+      "example": {
+        "en": "A big dog.",
+        "he": "כלב גדול."
+      }
+    },
+    {
+      "id": "en.word.cat",
+      "conceptId": "concept.word.cat",
+      "word": "cat",
+      "meaning": {
+        "en": "cat",
+        "he": "חתול"
+      },
+      "emoji": "🐱",
+      "category": "animals",
+      "tier": 1,
+      "rank": 25,
+      "skill": "recognize",
+      "example": {
+        "en": "A small cat.",
+        "he": "חתול קטן."
+      }
+    },
+    {
+      "id": "en.word.bird",
+      "conceptId": "concept.word.bird",
+      "word": "bird",
+      "meaning": {
+        "en": "bird",
+        "he": "ציפור"
+      },
+      "emoji": "🐦",
+      "category": "animals",
+      "tier": 1,
+      "rank": 26,
+      "skill": "recognize",
+      "example": {
+        "en": "A little bird.",
+        "he": "ציפור קטנה."
+      }
+    },
+    {
+      "id": "en.word.horse",
+      "conceptId": "concept.word.horse",
+      "word": "horse",
+      "meaning": {
+        "en": "horse",
+        "he": "סוס"
+      },
+      "emoji": "🐴",
+      "category": "animals",
+      "tier": 1,
+      "rank": 27,
+      "skill": "recognize",
+      "example": {
+        "en": "A brown horse.",
+        "he": "סוס חום."
+      }
+    },
+    {
+      "id": "en.word.cow",
+      "conceptId": "concept.word.cow",
+      "word": "cow",
+      "meaning": {
+        "en": "cow",
+        "he": "פרה"
+      },
+      "emoji": "🐄",
+      "category": "animals",
+      "tier": 1,
+      "rank": 28,
+      "skill": "recognize",
+      "example": {
+        "en": "A cow in the field.",
+        "he": "פרה בשדה."
+      }
+    },
+    {
+      "id": "en.word.car",
+      "conceptId": "concept.word.car",
+      "word": "car",
+      "meaning": {
+        "en": "car",
+        "he": "מכונית"
+      },
+      "emoji": "🚗",
+      "category": "transport",
+      "tier": 1,
+      "rank": 29,
+      "skill": "recognize",
+      "example": {
+        "en": "By car.",
+        "he": "במכונית."
+      }
+    },
+    {
+      "id": "en.word.bus",
+      "conceptId": "concept.word.bus",
+      "word": "bus",
+      "meaning": {
+        "en": "bus",
+        "he": "אוטובוס"
+      },
+      "emoji": "🚌",
+      "category": "transport",
+      "tier": 0,
+      "rank": 30,
+      "skill": "recall",
+      "example": {
+        "en": "Where is the bus?",
+        "he": "איפה האוטובוס?"
+      }
+    },
+    {
+      "id": "en.word.train",
+      "conceptId": "concept.word.train",
+      "word": "train",
+      "meaning": {
+        "en": "train",
+        "he": "רכבת"
+      },
+      "emoji": "🚆",
+      "category": "transport",
+      "tier": 0,
+      "rank": 31,
+      "skill": "recall",
+      "example": {
+        "en": "The train to the center.",
+        "he": "הרכבת למרכז."
+      }
+    },
+    {
+      "id": "en.word.plane",
+      "conceptId": "concept.word.plane",
+      "word": "plane",
+      "meaning": {
+        "en": "plane",
+        "he": "מטוס"
+      },
+      "emoji": "✈️",
+      "category": "transport",
+      "tier": 1,
+      "rank": 32,
+      "skill": "recognize",
+      "example": {
+        "en": "My plane is late.",
+        "he": "המטוס שלי מאחר."
+      }
+    },
+    {
+      "id": "en.word.taxi",
+      "conceptId": "concept.word.taxi",
+      "word": "taxi",
+      "meaning": {
+        "en": "taxi",
+        "he": "מונית"
+      },
+      "emoji": "🚕",
+      "category": "transport",
+      "tier": 0,
+      "rank": 33,
+      "skill": "recall",
+      "example": {
+        "en": "Call a taxi, please.",
+        "he": "תזמין מונית, בבקשה."
+      }
+    },
+    {
+      "id": "en.word.bike",
+      "conceptId": "concept.word.bike",
+      "word": "bike",
+      "meaning": {
+        "en": "bike",
+        "he": "אופניים"
+      },
+      "emoji": "🚲",
+      "category": "transport",
+      "tier": 1,
+      "rank": 34,
+      "skill": "recognize",
+      "example": {
+        "en": "I want to rent a bike.",
+        "he": "אני רוצה לשכור אופניים."
+      }
+    },
+    {
+      "id": "en.word.boat",
+      "conceptId": "concept.word.boat",
+      "word": "boat",
+      "meaning": {
+        "en": "boat",
+        "he": "סירה"
+      },
+      "emoji": "⛵",
+      "category": "transport",
+      "tier": 1,
+      "rank": 35,
+      "skill": "recognize",
+      "example": {
+        "en": "A boat trip.",
+        "he": "טיול בסירה."
+      }
+    },
+    {
+      "id": "en.word.hotel",
+      "conceptId": "concept.word.hotel",
+      "word": "hotel",
+      "meaning": {
+        "en": "hotel",
+        "he": "מלון"
+      },
+      "emoji": "🏨",
+      "category": "places",
+      "tier": 0,
+      "rank": 36,
+      "skill": "recall",
+      "example": {
+        "en": "Where is my hotel?",
+        "he": "איפה המלון שלי?"
+      }
+    },
+    {
+      "id": "en.word.hospital",
+      "conceptId": "concept.word.hospital",
+      "word": "hospital",
+      "meaning": {
+        "en": "hospital",
+        "he": "בית חולים"
+      },
+      "emoji": "🏥",
+      "category": "places",
+      "tier": 0,
+      "rank": 37,
+      "skill": "recognize",
+      "example": {
+        "en": "To the hospital, fast!",
+        "he": "לבית החולים, מהר!"
+      }
+    },
+    {
+      "id": "en.word.restaurant",
+      "conceptId": "concept.word.restaurant",
+      "word": "restaurant",
+      "meaning": {
+        "en": "restaurant",
+        "he": "מסעדה"
+      },
+      "emoji": "🍴",
+      "category": "places",
+      "tier": 1,
+      "rank": 38,
+      "skill": "recognize",
+      "example": {
+        "en": "A good restaurant.",
+        "he": "מסעדה טובה."
+      }
+    },
+    {
+      "id": "en.word.bank",
+      "conceptId": "concept.word.bank",
+      "word": "bank",
+      "meaning": {
+        "en": "bank",
+        "he": "בנק"
+      },
+      "emoji": "🏦",
+      "category": "places",
+      "tier": 1,
+      "rank": 39,
+      "skill": "recognize",
+      "example": {
+        "en": "It is next to the bank.",
+        "he": "זה ליד הבנק."
+      }
+    },
+    {
+      "id": "en.word.pharmacy",
+      "conceptId": "concept.word.pharmacy",
+      "word": "pharmacy",
+      "meaning": {
+        "en": "pharmacy",
+        "he": "בית מרקחת"
+      },
+      "emoji": "💊",
+      "category": "places",
+      "tier": 0,
+      "rank": 40,
+      "skill": "recognize",
+      "example": {
+        "en": "Where is a pharmacy?",
+        "he": "איפה יש בית מרקחת?"
+      }
+    },
+    {
+      "id": "en.word.beach",
+      "conceptId": "concept.word.beach",
+      "word": "beach",
+      "meaning": {
+        "en": "beach",
+        "he": "חוף"
+      },
+      "emoji": "🏖️",
+      "category": "places",
+      "tier": 1,
+      "rank": 41,
+      "skill": "recognize",
+      "example": {
+        "en": "How do I get to the beach?",
+        "he": "איך מגיעים לחוף?"
+      }
+    },
+    {
+      "id": "en.word.museum",
+      "conceptId": "concept.word.museum",
+      "word": "museum",
+      "meaning": {
+        "en": "museum",
+        "he": "מוזיאון"
+      },
+      "emoji": "🏛️",
+      "category": "places",
+      "tier": 1,
+      "rank": 42,
+      "skill": "recognize",
+      "example": {
+        "en": "Two tickets to the museum.",
+        "he": "שני כרטיסים למוזיאון."
+      }
+    },
+    {
+      "id": "en.word.market",
+      "conceptId": "concept.word.market",
+      "word": "market",
+      "meaning": {
+        "en": "market",
+        "he": "שוק"
+      },
+      "emoji": "🏪",
+      "category": "places",
+      "tier": 1,
+      "rank": 43,
+      "skill": "recognize",
+      "example": {
+        "en": "The fruit market.",
+        "he": "שוק הפירות."
+      }
+    },
+    {
+      "id": "en.word.station",
+      "conceptId": "concept.word.station",
+      "word": "station",
+      "meaning": {
+        "en": "station",
+        "he": "תחנה"
+      },
+      "emoji": "🚉",
+      "category": "places",
+      "tier": 1,
+      "rank": 44,
+      "skill": "recognize",
+      "example": {
+        "en": "Where is the station?",
+        "he": "איפה התחנה?"
+      }
+    },
+    {
+      "id": "en.word.toilet",
+      "conceptId": "concept.word.toilet",
+      "word": "toilet",
+      "meaning": {
+        "en": "toilet",
+        "he": "שירותים"
+      },
+      "emoji": "🚻",
+      "category": "places",
+      "tier": 0,
+      "rank": 45,
+      "skill": "recall",
+      "example": {
+        "en": "Where is the toilet?",
+        "he": "איפה השירותים?"
+      }
+    },
+    {
+      "id": "en.word.church",
+      "conceptId": "concept.word.church",
+      "word": "church",
+      "meaning": {
+        "en": "church",
+        "he": "כנסייה"
+      },
+      "emoji": "⛪",
+      "category": "places",
+      "tier": 1,
+      "rank": 46,
+      "skill": "recognize",
+      "example": {
+        "en": "The old church.",
+        "he": "הכנסייה העתיקה."
+      }
+    },
+    {
+      "id": "en.word.key",
+      "conceptId": "concept.word.key",
+      "word": "key",
+      "meaning": {
+        "en": "key",
+        "he": "מפתח"
+      },
+      "emoji": "🔑",
+      "category": "objects",
+      "tier": 1,
+      "rank": 47,
+      "skill": "recognize",
+      "example": {
+        "en": "My room key.",
+        "he": "המפתח של החדר שלי."
+      }
+    },
+    {
+      "id": "en.word.phone",
+      "conceptId": "concept.word.phone",
+      "word": "phone",
+      "meaning": {
+        "en": "phone",
+        "he": "טלפון"
+      },
+      "emoji": "📱",
+      "category": "objects",
+      "tier": 1,
+      "rank": 48,
+      "skill": "recognize",
+      "example": {
+        "en": "I lost my phone.",
+        "he": "איבדתי את הטלפון שלי."
+      }
+    },
+    {
+      "id": "en.word.bag",
+      "conceptId": "concept.word.bag",
+      "word": "bag",
+      "meaning": {
+        "en": "bag",
+        "he": "תיק"
+      },
+      "emoji": "🎒",
+      "category": "objects",
+      "tier": 1,
+      "rank": 49,
+      "skill": "recall",
+      "example": {
+        "en": "I lost my bag.",
+        "he": "איבדתי את התיק שלי."
+      }
+    },
+    {
+      "id": "en.word.money",
+      "conceptId": "concept.word.money",
+      "word": "money",
+      "meaning": {
+        "en": "money",
+        "he": "כסף"
+      },
+      "emoji": "💰",
+      "category": "objects",
+      "tier": 1,
+      "rank": 50,
+      "skill": "recognize",
+      "example": {
+        "en": "I have no money.",
+        "he": "אין לי כסף."
+      }
+    },
+    {
+      "id": "en.word.card",
+      "conceptId": "concept.word.card",
+      "word": "card",
+      "meaning": {
+        "en": "card",
+        "he": "כרטיס אשראי"
+      },
+      "emoji": "💳",
+      "category": "objects",
+      "tier": 0,
+      "rank": 51,
+      "skill": "recall",
+      "example": {
+        "en": "By card, please.",
+        "he": "בכרטיס, בבקשה."
+      }
+    },
+    {
+      "id": "en.word.ticket",
+      "conceptId": "concept.word.ticket",
+      "word": "ticket",
+      "meaning": {
+        "en": "ticket",
+        "he": "כרטיס"
+      },
+      "emoji": "🎫",
+      "category": "objects",
+      "tier": 1,
+      "rank": 52,
+      "skill": "recall",
+      "example": {
+        "en": "One ticket, please.",
+        "he": "כרטיס אחד, בבקשה."
+      }
+    },
+    {
+      "id": "en.word.passport",
+      "conceptId": "concept.word.passport",
+      "word": "passport",
+      "meaning": {
+        "en": "passport",
+        "he": "דרכון"
+      },
+      "emoji": "🛂",
+      "category": "objects",
+      "tier": 0,
+      "rank": 53,
+      "skill": "recall",
+      "example": {
+        "en": "Here is my passport.",
+        "he": "הנה הדרכון שלי."
+      }
+    },
+    {
+      "id": "en.word.umbrella",
+      "conceptId": "concept.word.umbrella",
+      "word": "umbrella",
+      "meaning": {
+        "en": "umbrella",
+        "he": "מטרייה"
+      },
+      "emoji": "☂️",
+      "category": "objects",
+      "tier": 1,
+      "rank": 54,
+      "skill": "recognize",
+      "example": {
+        "en": "Take an umbrella.",
+        "he": "קח מטרייה."
+      }
+    },
+    {
+      "id": "en.word.camera",
+      "conceptId": "concept.word.camera",
+      "word": "camera",
+      "meaning": {
+        "en": "camera",
+        "he": "מצלמה"
+      },
+      "emoji": "📷",
+      "category": "objects",
+      "tier": 1,
+      "rank": 55,
+      "skill": "recognize",
+      "example": {
+        "en": "Can I use my camera here?",
+        "he": "אפשר לצלם כאן?"
+      }
+    },
+    {
+      "id": "en.word.glasses",
+      "conceptId": "concept.word.glasses",
+      "word": "glasses",
+      "meaning": {
+        "en": "glasses",
+        "he": "משקפיים"
+      },
+      "emoji": "👓",
+      "category": "objects",
+      "tier": 1,
+      "rank": 56,
+      "skill": "recognize",
+      "example": {
+        "en": "I need my glasses.",
+        "he": "אני צריך את המשקפיים שלי."
+      }
+    },
+    {
+      "id": "en.word.watch",
+      "conceptId": "concept.word.watch",
+      "word": "watch",
+      "meaning": {
+        "en": "watch",
+        "he": "שעון"
+      },
+      "emoji": "⌚",
+      "category": "objects",
+      "tier": 1,
+      "rank": 57,
+      "skill": "recognize",
+      "example": {
+        "en": "A nice watch.",
+        "he": "שעון יפה."
+      }
+    },
+    {
+      "id": "en.word.map",
+      "conceptId": "concept.word.map",
+      "word": "map",
+      "meaning": {
+        "en": "map",
+        "he": "מפה"
+      },
+      "emoji": "🗺️",
+      "category": "objects",
+      "tier": 1,
+      "rank": 58,
+      "skill": "recall",
+      "example": {
+        "en": "Can you show me on the map?",
+        "he": "אפשר להראות לי על המפה?"
+      }
+    },
+    {
+      "id": "en.word.shirt",
+      "conceptId": "concept.word.shirt",
+      "word": "shirt",
+      "meaning": {
+        "en": "shirt",
+        "he": "חולצה"
+      },
+      "emoji": "👕",
+      "category": "clothing",
+      "tier": 1,
+      "rank": 59,
+      "skill": "recognize",
+      "example": {
+        "en": "A blue shirt.",
+        "he": "חולצה כחולה."
+      }
+    },
+    {
+      "id": "en.word.shoes",
+      "conceptId": "concept.word.shoes",
+      "word": "shoes",
+      "meaning": {
+        "en": "shoes",
+        "he": "נעליים"
+      },
+      "emoji": "👟",
+      "category": "clothing",
+      "tier": 1,
+      "rank": 60,
+      "skill": "recognize",
+      "example": {
+        "en": "New shoes.",
+        "he": "נעליים חדשות."
+      }
+    },
+    {
+      "id": "en.word.hat",
+      "conceptId": "concept.word.hat",
+      "word": "hat",
+      "meaning": {
+        "en": "hat",
+        "he": "כובע"
+      },
+      "emoji": "🧢",
+      "category": "clothing",
+      "tier": 1,
+      "rank": 61,
+      "skill": "recognize",
+      "example": {
+        "en": "A sun hat.",
+        "he": "כובע שמש."
+      }
+    },
+    {
+      "id": "en.word.jacket",
+      "conceptId": "concept.word.jacket",
+      "word": "jacket",
+      "meaning": {
+        "en": "jacket",
+        "he": "מעיל"
+      },
+      "emoji": "🧥",
+      "category": "clothing",
+      "tier": 1,
+      "rank": 62,
+      "skill": "recognize",
+      "example": {
+        "en": "A warm jacket.",
+        "he": "מעיל חם."
+      }
+    },
+    {
+      "id": "en.word.dress",
+      "conceptId": "concept.word.dress",
+      "word": "dress",
+      "meaning": {
+        "en": "dress",
+        "he": "שמלה"
+      },
+      "emoji": "👗",
+      "category": "clothing",
+      "tier": 1,
+      "rank": 63,
+      "skill": "recognize",
+      "example": {
+        "en": "A red dress.",
+        "he": "שמלה אדומה."
+      }
+    },
+    {
+      "id": "en.word.socks",
+      "conceptId": "concept.word.socks",
+      "word": "socks",
+      "meaning": {
+        "en": "socks",
+        "he": "גרביים"
+      },
+      "emoji": "🧦",
+      "category": "clothing",
+      "tier": 1,
+      "rank": 64,
+      "skill": "recognize",
+      "example": {
+        "en": "Warm socks.",
+        "he": "גרביים חמים."
+      }
+    },
+    {
+      "id": "en.word.pants",
+      "conceptId": "concept.word.pants",
+      "word": "pants",
+      "meaning": {
+        "en": "pants",
+        "he": "מכנסיים"
+      },
+      "emoji": "👖",
+      "category": "clothing",
+      "tier": 1,
+      "rank": 65,
+      "skill": "recognize",
+      "example": {
+        "en": "Black pants.",
+        "he": "מכנסיים שחורים."
+      }
+    },
+    {
+      "id": "en.word.gloves",
+      "conceptId": "concept.word.gloves",
+      "word": "gloves",
+      "meaning": {
+        "en": "gloves",
+        "he": "כפפות"
+      },
+      "emoji": "🧤",
+      "category": "clothing",
+      "tier": 1,
+      "rank": 66,
+      "skill": "recognize",
+      "example": {
+        "en": "Winter gloves.",
+        "he": "כפפות חורף."
+      }
+    },
+    {
+      "id": "en.word.sun",
+      "conceptId": "concept.word.sun",
+      "word": "sun",
+      "meaning": {
+        "en": "sun",
+        "he": "שמש"
+      },
+      "emoji": "☀️",
+      "category": "weather",
+      "tier": 1,
+      "rank": 67,
+      "skill": "recognize",
+      "example": {
+        "en": "A sunny day.",
+        "he": "יום שמשי."
+      }
+    },
+    {
+      "id": "en.word.rain",
+      "conceptId": "concept.word.rain",
+      "word": "rain",
+      "meaning": {
+        "en": "rain",
+        "he": "גשם"
+      },
+      "emoji": "🌧️",
+      "category": "weather",
+      "tier": 1,
+      "rank": 68,
+      "skill": "recognize",
+      "example": {
+        "en": "It is raining.",
+        "he": "יורד גשם."
+      }
+    },
+    {
+      "id": "en.word.snow",
+      "conceptId": "concept.word.snow",
+      "word": "snow",
+      "meaning": {
+        "en": "snow",
+        "he": "שלג"
+      },
+      "emoji": "❄️",
+      "category": "weather",
+      "tier": 1,
+      "rank": 69,
+      "skill": "recognize",
+      "example": {
+        "en": "A lot of snow.",
+        "he": "הרבה שלג."
+      }
+    },
+    {
+      "id": "en.word.cloud",
+      "conceptId": "concept.word.cloud",
+      "word": "cloud",
+      "meaning": {
+        "en": "cloud",
+        "he": "ענן"
+      },
+      "emoji": "☁️",
+      "category": "weather",
+      "tier": 1,
+      "rank": 70,
+      "skill": "recognize",
+      "example": {
+        "en": "A cloudy sky.",
+        "he": "שמיים מעוננים."
+      }
+    },
+    {
+      "id": "en.word.wind",
+      "conceptId": "concept.word.wind",
+      "word": "wind",
+      "meaning": {
+        "en": "wind",
+        "he": "רוח"
+      },
+      "emoji": "💨",
+      "category": "weather",
+      "tier": 1,
+      "rank": 71,
+      "skill": "recognize",
+      "example": {
+        "en": "A strong wind.",
+        "he": "רוח חזקה."
+      }
+    },
+    {
+      "id": "en.word.storm",
+      "conceptId": "concept.word.storm",
+      "word": "storm",
+      "meaning": {
+        "en": "storm",
+        "he": "סערה"
+      },
+      "emoji": "⛈️",
+      "category": "weather",
+      "tier": 1,
+      "rank": 72,
+      "skill": "recognize",
+      "example": {
+        "en": "A big storm is coming.",
+        "he": "מגיעה סערה גדולה."
+      }
+    },
+    {
+      "id": "en.word.doctor",
+      "conceptId": "concept.word.doctor",
+      "word": "doctor",
+      "meaning": {
+        "en": "doctor",
+        "he": "רופא"
+      },
+      "emoji": "🧑‍⚕️",
+      "category": "health",
+      "tier": 0,
+      "rank": 73,
+      "skill": "fluent",
+      "example": {
+        "en": "I need a doctor.",
+        "he": "אני צריך רופא."
+      }
+    },
+    {
+      "id": "en.word.ambulance",
+      "conceptId": "concept.word.ambulance",
+      "word": "ambulance",
+      "meaning": {
+        "en": "ambulance",
+        "he": "אמבולנס"
+      },
+      "emoji": "🚑",
+      "category": "health",
+      "tier": 0,
+      "rank": 74,
+      "skill": "recognize",
+      "example": {
+        "en": "Call an ambulance!",
+        "he": "תזמינו אמבולנס!"
+      }
+    },
+    {
+      "id": "en.word.police",
+      "conceptId": "concept.word.police",
+      "word": "police",
+      "meaning": {
+        "en": "police",
+        "he": "משטרה"
+      },
+      "emoji": "👮",
+      "category": "health",
+      "tier": 0,
+      "rank": 75,
+      "skill": "recognize",
+      "example": {
+        "en": "Call the police!",
+        "he": "תתקשרו למשטרה!"
+      }
+    },
+    {
+      "id": "en.word.fire",
+      "conceptId": "concept.word.fire",
+      "word": "fire",
+      "meaning": {
+        "en": "fire",
+        "he": "שריפה"
+      },
+      "emoji": "🔥",
+      "category": "health",
+      "tier": 0,
+      "rank": 76,
+      "skill": "recognize",
+      "example": {
+        "en": "Fire! Get out!",
+        "he": "שריפה! צאו החוצה!"
+      }
+    },
+    {
+      "id": "en.word.medicine",
+      "conceptId": "concept.word.medicine",
+      "word": "medicine",
+      "meaning": {
+        "en": "medicine",
+        "he": "תרופה"
+      },
+      "emoji": "💉",
+      "category": "health",
+      "tier": 1,
+      "rank": 77,
+      "skill": "recognize",
+      "example": {
+        "en": "Medicine for a headache.",
+        "he": "תרופה לכאב ראש."
+      }
+    },
+    {
+      "id": "en.word.bandage",
+      "conceptId": "concept.word.bandage",
+      "word": "bandage",
+      "meaning": {
+        "en": "bandage",
+        "he": "תחבושת"
+      },
+      "emoji": "🩹",
+      "category": "health",
+      "tier": 1,
+      "rank": 78,
+      "skill": "recognize",
+      "example": {
+        "en": "I need a bandage.",
+        "he": "אני צריך תחבושת."
+      }
+    },
+    {
+      "id": "en.word.pain",
+      "conceptId": "concept.word.pain",
+      "word": "pain",
+      "meaning": {
+        "en": "pain",
+        "he": "כאב"
+      },
+      "emoji": "🤕",
+      "category": "health",
+      "tier": 1,
+      "rank": 79,
+      "skill": "recall",
+      "example": {
+        "en": "I have pain here.",
+        "he": "יש לי כאב כאן."
+      }
+    },
+    {
+      "id": "en.word.sick",
+      "conceptId": "concept.word.sick",
+      "word": "sick",
+      "meaning": {
+        "en": "sick",
+        "he": "חולה"
+      },
+      "emoji": "🤒",
+      "category": "health",
+      "tier": 1,
+      "rank": 80,
+      "skill": "recall",
+      "example": {
+        "en": "I feel sick.",
+        "he": "אני מרגיש חולה."
+      }
+    },
+    {
+      "id": "en.word.tree",
+      "conceptId": "concept.word.tree",
+      "word": "tree",
+      "meaning": {
+        "en": "tree",
+        "he": "עץ"
+      },
+      "emoji": "🌳",
+      "category": "nature",
+      "tier": 1,
+      "rank": 81,
+      "skill": "recognize",
+      "example": {
+        "en": "A big tree.",
+        "he": "עץ גדול."
+      }
+    },
+    {
+      "id": "en.word.flower",
+      "conceptId": "concept.word.flower",
+      "word": "flower",
+      "meaning": {
+        "en": "flower",
+        "he": "פרח"
+      },
+      "emoji": "🌸",
+      "category": "nature",
+      "tier": 1,
+      "rank": 82,
+      "skill": "recognize",
+      "example": {
+        "en": "A beautiful flower.",
+        "he": "פרח יפה."
+      }
+    },
+    {
+      "id": "en.word.mountain",
+      "conceptId": "concept.word.mountain",
+      "word": "mountain",
+      "meaning": {
+        "en": "mountain",
+        "he": "הר"
+      },
+      "emoji": "⛰️",
+      "category": "nature",
+      "tier": 1,
+      "rank": 83,
+      "skill": "recognize",
+      "example": {
+        "en": "A high mountain.",
+        "he": "הר גבוה."
+      }
+    },
+    {
+      "id": "en.word.sea",
+      "conceptId": "concept.word.sea",
+      "word": "sea",
+      "meaning": {
+        "en": "sea",
+        "he": "ים"
+      },
+      "emoji": "🌊",
+      "category": "nature",
+      "tier": 1,
+      "rank": 84,
+      "skill": "recognize",
+      "example": {
+        "en": "The sea is warm.",
+        "he": "הים חם."
+      }
+    },
+    {
+      "id": "en.word.moon",
+      "conceptId": "concept.word.moon",
+      "word": "moon",
+      "meaning": {
+        "en": "moon",
+        "he": "ירח"
+      },
+      "emoji": "🌙",
+      "category": "nature",
+      "tier": 1,
+      "rank": 85,
+      "skill": "recognize",
+      "example": {
+        "en": "A full moon.",
+        "he": "ירח מלא."
+      }
+    },
+    {
+      "id": "en.word.swim",
+      "conceptId": "concept.word.swim",
+      "word": "swim",
+      "meaning": {
+        "en": "swim",
+        "he": "לשחות"
+      },
+      "emoji": "🏊",
+      "category": "activities",
+      "tier": 1,
+      "rank": 86,
+      "skill": "recognize",
+      "example": {
+        "en": "I want to swim.",
+        "he": "אני רוצה לשחות."
+      }
+    },
+    {
+      "id": "en.word.run",
+      "conceptId": "concept.word.run",
+      "word": "run",
+      "meaning": {
+        "en": "run",
+        "he": "לרוץ"
+      },
+      "emoji": "🏃",
+      "category": "activities",
+      "tier": 1,
+      "rank": 87,
+      "skill": "recognize",
+      "example": {
+        "en": "I run every morning.",
+        "he": "אני רץ כל בוקר."
+      }
+    },
+    {
+      "id": "en.word.football",
+      "conceptId": "concept.word.football",
+      "word": "football",
+      "meaning": {
+        "en": "football",
+        "he": "כדורגל"
+      },
+      "emoji": "⚽",
+      "category": "activities",
+      "tier": 1,
+      "rank": 88,
+      "skill": "recognize",
+      "example": {
+        "en": "Let us watch football.",
+        "he": "בוא נראה כדורגל."
+      }
+    },
+    {
+      "id": "en.word.walk",
+      "conceptId": "concept.word.walk",
+      "word": "walk",
+      "meaning": {
+        "en": "walk",
+        "he": "ללכת"
+      },
+      "emoji": "🚶",
+      "category": "activities",
+      "tier": 1,
+      "rank": 89,
+      "skill": "recognize",
+      "example": {
+        "en": "It is a short walk.",
+        "he": "זו הליכה קצרה."
+      }
+    },
+    {
+      "id": "en.word.dance",
+      "conceptId": "concept.word.dance",
+      "word": "dance",
+      "meaning": {
+        "en": "dance",
+        "he": "לרקוד"
+      },
+      "emoji": "💃",
+      "category": "activities",
+      "tier": 1,
+      "rank": 90,
+      "skill": "recognize",
+      "example": {
+        "en": "They love to dance.",
+        "he": "הם אוהבים לרקוד."
+      }
+    },
+    {
+      "id": "en.word.man",
+      "conceptId": "concept.word.man",
+      "word": "man",
+      "meaning": {
+        "en": "man",
+        "he": "גבר"
+      },
+      "emoji": "👨",
+      "category": "people",
+      "tier": 1,
+      "rank": 91,
+      "skill": "recognize",
+      "example": {
+        "en": "That man over there.",
+        "he": "הגבר שם."
+      }
+    },
+    {
+      "id": "en.word.woman",
+      "conceptId": "concept.word.woman",
+      "word": "woman",
+      "meaning": {
+        "en": "woman",
+        "he": "אישה"
+      },
+      "emoji": "👩",
+      "category": "people",
+      "tier": 1,
+      "rank": 92,
+      "skill": "recognize",
+      "example": {
+        "en": "Ask that woman.",
+        "he": "תשאל את האישה הזאת."
+      }
+    },
+    {
+      "id": "en.word.baby",
+      "conceptId": "concept.word.baby",
+      "word": "baby",
+      "meaning": {
+        "en": "baby",
+        "he": "תינוק"
+      },
+      "emoji": "👶",
+      "category": "people",
+      "tier": 1,
+      "rank": 93,
+      "skill": "recognize",
+      "example": {
+        "en": "I am traveling with a baby.",
+        "he": "אני נוסע עם תינוק."
+      }
+    },
+    {
+      "id": "en.word.child",
+      "conceptId": "concept.word.child",
+      "word": "child",
+      "meaning": {
+        "en": "child",
+        "he": "ילד"
+      },
+      "emoji": "🧒",
+      "category": "people",
+      "tier": 1,
+      "rank": 94,
+      "skill": "recognize",
+      "example": {
+        "en": "One adult, one child.",
+        "he": "מבוגר אחד, ילד אחד."
+      }
+    },
+    {
+      "id": "en.word.family",
+      "conceptId": "concept.word.family",
+      "word": "family",
+      "meaning": {
+        "en": "family",
+        "he": "משפחה"
+      },
+      "emoji": "👪",
+      "category": "people",
+      "tier": 1,
+      "rank": 95,
+      "skill": "recognize",
+      "example": {
+        "en": "I am here with my family.",
+        "he": "אני כאן עם המשפחה שלי."
+      }
+    },
+    {
+      "id": "en.word.friend",
+      "conceptId": "concept.word.friend",
+      "word": "friend",
+      "meaning": {
+        "en": "friend",
+        "he": "חבר"
+      },
+      "emoji": "👫",
+      "category": "people",
+      "tier": 1,
+      "rank": 96,
+      "skill": "recognize",
+      "example": {
+        "en": "This is my friend.",
+        "he": "זה החבר שלי."
+      }
+    },
+    {
+      "id": "en.word.left",
+      "conceptId": "concept.word.left",
+      "word": "left",
+      "meaning": {
+        "en": "left",
+        "he": "שמאלה"
+      },
+      "emoji": "⬅️",
+      "category": "directions",
+      "tier": 0,
+      "rank": 97,
+      "skill": "recognize",
+      "example": {
+        "en": "It is on the left.",
+        "he": "זה בצד שמאל."
+      }
+    },
+    {
+      "id": "en.word.right",
+      "conceptId": "concept.word.right",
+      "word": "right",
+      "meaning": {
+        "en": "right",
+        "he": "ימינה"
+      },
+      "emoji": "➡️",
+      "category": "directions",
+      "tier": 0,
+      "rank": 98,
+      "skill": "recognize",
+      "example": {
+        "en": "Turn right.",
+        "he": "פנה ימינה."
+      }
+    },
+    {
+      "id": "en.word.up",
+      "conceptId": "concept.word.up",
+      "word": "up",
+      "meaning": {
+        "en": "up",
+        "he": "למעלה"
+      },
+      "emoji": "⬆️",
+      "category": "directions",
+      "tier": 1,
+      "rank": 99,
+      "skill": "recognize",
+      "example": {
+        "en": "The room is up the stairs.",
+        "he": "החדר למעלה במדרגות."
+      }
+    },
+    {
+      "id": "en.word.down",
+      "conceptId": "concept.word.down",
+      "word": "down",
+      "meaning": {
+        "en": "down",
+        "he": "למטה"
+      },
+      "emoji": "⬇️",
+      "category": "directions",
+      "tier": 1,
+      "rank": 100,
+      "skill": "recognize",
+      "example": {
+        "en": "Breakfast is down the stairs.",
+        "he": "ארוחת הבוקר למטה במדרגות."
+      }
+    }
+  ]
+}
