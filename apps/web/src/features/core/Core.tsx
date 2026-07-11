@@ -4,6 +4,7 @@ import { L, t, type StringKey } from '../../shared/i18n/strings.js';
 import { speak } from '../../shared/audio/tts.js';
 import { tap } from '../../shared/ui/haptics.js';
 import { LangStrip } from '../../shared/ui/LangStrip.js';
+import { CoreWords } from './CoreWords.js';
 import { RECOVERY_ITEMS } from '../bootcamp/recovery.js';
 import { BOOTCAMP_PLAN } from '../bootcamp/plan.js';
 import { DAYS } from '../bootcamp/bootcampStore.js';
@@ -113,7 +114,9 @@ export function Core() {
         ))}
       </div>
       <div className="screen-scroll">
-        {category === 'phrases' ? (
+        {category === 'words' ? (
+          <CoreWords />
+        ) : category === 'phrases' ? (
           <>
             {groups.map((g) => (
               <div key={g.title} style={{ marginTop: 14 }}>

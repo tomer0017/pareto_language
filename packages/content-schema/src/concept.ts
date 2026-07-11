@@ -75,6 +75,18 @@ export const ConceptSchema = z.object({
   neverTeach: z.boolean().default(false),
   realizations: z.record(z.string(), ConceptRealizationSchema).default({}),
   notes: z.string().optional(),
+
+  /* ── Visual metadata for emoji/icon-based games (Core 100 pilot; optional & additive) ── */
+  /** A single emoji (or short icon token) that depicts the concept for Picture Quiz / Swipe Recall. */
+  emoji: z.string().min(1).optional(),
+  /** True when the concept can be represented by a clear, unambiguous picture. */
+  iconEligible: z.boolean().default(false),
+  /** How confidently the emoji reads as this exact meaning (0–1) — distractor-safety input. */
+  visualConfidence: z.number().min(0).max(1).optional(),
+  /** Rank within a curated pilot set (e.g. Core 100) — ordering + validation, not a global rank. */
+  rank: z.number().int().positive().optional(),
+  /** Example sentence (en pivot) + its learner-language translation, for review + UI context. */
+  example: LocalizedTextSchema.optional(),
 });
 export type Concept = z.infer<typeof ConceptSchema>;
 

@@ -215,6 +215,12 @@ const conceptSchema = new Schema<ConceptDoc>(
     neverTeach: { type: Boolean, default: false },
     realizations: { type: Schema.Types.Mixed, default: {} },
     notes: String,
+    // Visual metadata for emoji/icon games (Core 100 pilot) — additive, optional.
+    emoji: String,
+    iconEligible: { type: Boolean, default: false },
+    visualConfidence: Number,
+    rank: Number,
+    example: { type: Map, of: String },
     changelog: { type: [changelogSchema], default: [] },
   },
   { versionKey: false, timestamps: true },

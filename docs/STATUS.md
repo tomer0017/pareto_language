@@ -366,3 +366,45 @@ Locked with **2 new believability tests** (Missions 8 & 9). Verification: typech
 **320 tests** · build (13 precache) · SMOKE PASS · structural audit 0 blockers. Remaining for future
 review: the AI-drafted Hebrew of the new recovery lines; whether cold missions should offer a brief
 "repeat" beat for recovery tools.
+
+---
+
+## Sprint — Core 100 Activation + Full-Context Wrong-Answer (2026-07-11)
+
+Two goals: (A/B) ship the first **real** 100 Core Words through the canonical pipeline and turn on
+Core Words + both emoji games; (C) give wrong-answer feedback the full learning context. No Bootcamp
+mission content changed (`gen:conversations` zero diff); no bottom-nav change; offline preserved.
+
+- **Core 100 corpus (concept-first).** New authored source `content/core-en/pilot100.ts` (100
+  emoji-representable, travel-valuable words — balanced across 13 categories) → pure transforms in
+  `corpus.ts` → `build-core-en.ts` emits the canonical `content/concepts/core-en.yaml`
+  (ConceptSchema, seeded to Mongo by the existing `seedConcepts`, idempotent) **and** the offline app
+  pack `apps/web/public/content/core-en.v1.json` (PWA-precached). The `Concept` schema gained
+  additive optional visual fields (`emoji`, `iconEligible`, `visualConfidence`, `rank`, `example`);
+  the Mongoose model mirrors them. Hebrew is human-authored, `ai_reviewed` (honest — pending native).
+  Methodology + expansion path in **[CORE-100.md](./CORE-100.md)**.
+- **Core Words activated.** The Core "Words" category is live (was Coming Soon): `CoreWords.tsx`
+  loads the real pack (`shared/content/coreWords.ts`, offline-first) and offers one screen with three
+  modes — **Browse** (grouped by category, emoji + word + Hebrew, tap to hear) · **Picture Quiz** ·
+  **Swipe Recall**. Reuses the existing Core two-layer navigation; bottom nav untouched.
+- **Picture Quiz** on the real source: word → four emoji (deduped distractors, pure `rounds.ts`),
+  shared full-context feedback, **no auto-advance**, records a `flashRecall` review event.
+- **Swipe Recall** on the real source: persistent "press and hold to reveal" helper, **~0.5 s** hold
+  with a fill indicator, release hides, physical-direction swipe (RTL-safe) + mirrored buttons, the
+  pure re-queue engine (unknown returns after ~10–15 cards), records a `swipe` review event.
+- **Full-context wrong answer (Part C).** New reusable `AnswerFeedback` + pure `answerContext.ts`
+  builders now power every exercise (quiz · expected-reply · dialogue · ambush · Picture Quiz). The
+  wrong state restores the lost connection: **What you heard** (original prompt + translation +
+  replay) → **Your answer** → **What you should answer** (+ translation + replay) → **Why** → Try
+  again / Continue (never auto-advances). Fixes the Money & Numbers case ("That comes to fifteen
+  fifty…" is shown, so "Fifteen fifty." makes sense). Correct state stays fast.
+- **Validation & tests (Part D).** `validatePilot` gates the corpus (exactly 100, unique ids/ranks/
+  emoji, required fields) and fails the build on violation. **+17 tests** (corpus 7, Picture-Quiz
+  rounds 4, swipe engine +2, answer-context 4 incl. the Money regression). Seed idempotency proven in
+  the server suite: first seed inserted 135 concepts, second inserted **0**.
+
+Verification: typecheck 0 · lint clean · **337 tests** (21 files) · production build (**15 precache**
+entries incl. `core-en.v1.json`) · SMOKE PASS · dialogue audit 0 blockers · `gen:conversations` zero
+diff. Known: Hebrew pending native review; TTS audio (no per-word recordings yet); `npm run pipeline`
+still reports **pre-existing** orphan warnings for `missions-core.yaml` phrase concepts (unrelated to
+this sprint; the seed path is unaffected). es/fr/it/ar realizations intentionally deferred.

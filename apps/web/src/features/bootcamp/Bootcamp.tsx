@@ -3,8 +3,9 @@ import { L, t } from '../../shared/i18n/strings.js';
 import { speak, cancelSpeech } from '../../shared/audio/tts.js';
 import { useAppStore } from '../../shared/stores/appStore.js';
 import { CheckPop } from '../../shared/ui/CheckPop.js';
-import { Feedback } from '../../shared/ui/Feedback.js';
-import { feedback, feedbackWrong } from '../../shared/ui/feedbackCue.js';
+import { AnswerFeedback } from '../../shared/ui/AnswerFeedback.js';
+import { buildComprehensionContext, buildRespondContext } from '../../shared/ui/answerContext.js';
+import { feedbackWrong } from '../../shared/ui/feedbackCue.js';
 import { success, tap } from '../../shared/ui/haptics.js';
 import { LangStrip } from '../../shared/ui/LangStrip.js';
 import { Modal, ModalActions } from '../../shared/ui/Modal.js';
@@ -412,13 +413,13 @@ function QuizStep({ step, itemsById, onDone }: { step: Extract<BootcampStep, { k
     }
   }, [item.text]);
 
-  // Answered — pause here. Explain, translate, replay freely, continue only on NEXT.
+  // Answered — pause here. Full context: what you heard, your pick, what it means. Continue only on NEXT.
   if (picked !== null) {
     const ok = picked === item.id;
     const yourAnswer = options.find((o) => o.id === picked)?.label;
     return (
       <AnsweredView ok={ok} en={item.text} meaning={L(item.meaning)} tip={item.tip ? L(item.tip) : undefined}
-        yourAnswer={ok ? undefined : yourAnswer} onRetry={ok ? undefined : () => setPicked(null)}
+        comprehension yourAnswer={ok ? undefined : yourAnswer} onRetry={ok ? undefined : () => setPicked(null)}
         onNext={() => onDone(ok)} />
     );
   }
@@ -446,63 +447,30 @@ function QuizStep({ step, itemsById, onDone }: { step: Extract<BootcampStep, { k
 }
 
 /**
- * Shared "you answered" surface (Tasks 4 + 5 + 7). Fires the ONE global feedback system on mount
- * (chime/haptic/burst + card motion). Correct → a lean celebration (no textbook filler). Wrong →
- * the redesigned experience: your answer vs the right answer, one short "why", and TWO choices —
- * Try Again or Continue. It never auto-advances; the learner decides when to move on.
+ * Adapter over the reusable AnswerFeedback (Part C). Builds the structured context from a drill's
+ * data so every exercise gets the same full-context hierarchy:
+ *  - `comprehension` drills (hear English → pick meaning): prompt = the English you heard (with
+ *    replay); expected = its meaning ("What it means").
+ *  - respond-to-prompt drills (ambush): prompt = the NPC line you heard (+ translation + replay);
+ *    expected = the response that fit (+ translation + replay). This restores the lost context that
+ *    made "That comes to fifteen fifty…" → "Fifteen fifty." confusing.
  */
-function AnsweredView({ ok, en, meaning, yourAnswer, why, tip, onRetry, onNext }: {
-  ok: boolean; en: string; meaning: string; yourAnswer?: string; why?: string; tip?: string; onRetry?: () => void; onNext: () => void;
+function AnsweredView({ ok, en, meaning, yourAnswer, why, tip, prompt, comprehension, onRetry, onNext }: {
+  ok: boolean; en: string; meaning: string; yourAnswer?: string; why?: string; tip?: string;
+  prompt?: { en: string; he?: string }; comprehension?: boolean; onRetry?: () => void; onNext: () => void;
 }) {
-  const [burst] = useState(() => Date.now());
-  useEffect(() => { feedback(ok); }, [ok]);
   const reason = why ?? tip ?? t('meansMapping', { en, meaning });
-
-  if (ok) {
-    return (
-      <>
-        <div className="drill-card fx-correct pop-in" style={{ gap: 12, minHeight: 240 }}>
-          <span className="feedback-head ok">✓ {t('correctHeader')}</span>
-          <p className="drill-phrase" style={{ fontSize: '1.5rem' }}>“{en}”</p>
-          <p className="answer-pill">{meaning}</p>
-          {tip && <p className="faint small">{tip}</p>}
-        </div>
-        <div className="action-zone">
-          <button className="btn-ghost" onClick={() => void speak(en, 'en')}>🔊 {t('replay')}</button>
-          <button className="btn-primary" onClick={onNext}>{t('nextBtn')}</button>
-        </div>
-        <Feedback kind="correct" trigger={burst} />
-      </>
-    );
-  }
-
-  return (
-    <>
-      <div className="drill-card fx-wrong pop-in" style={{ gap: 10, minHeight: 240 }}>
-        <span className="feedback-head bad">❌ {t('wrongHeader')}</span>
-        {yourAnswer && (
-          <div>
-            <p className="drill-label">{t('yourAnswerLabel')}</p>
-            <p className="answer-pill answer-pill-bad">{yourAnswer}</p>
-          </div>
-        )}
-        <div>
-          <p className="drill-label">{t('correctAnswerLabel')}</p>
-          <p className="drill-phrase" style={{ fontSize: '1.3rem' }}>“{en}”</p>
-          <p className="answer-pill">{meaning}</p>
-        </div>
-        <p className="dim small"><strong>{t('whyLabel')}</strong> {reason}</p>
-      </div>
-      <div className="action-zone">
-        <button className="btn-ghost" onClick={() => void speak(en, 'en')}>🔊 {t('replay')}</button>
-        <div className="btn-row">
-          {onRetry && <button className="btn-secondary" onClick={onRetry}>{t('tryAgain')}</button>}
-          <button className="btn-primary" onClick={onNext}>{t('continue')}</button>
-        </div>
-      </div>
-      <Feedback kind="wrong" trigger={burst} />
-    </>
-  );
+  const ctx = comprehension
+    ? buildComprehensionContext({
+        heard: en, onReplayHeard: () => void speak(en, 'en'),
+        chosen: yourAnswer, meaning, why: reason, shouldLabel: t('theMeaning'),
+      })
+    : buildRespondContext({
+        promptText: prompt?.en, promptTranslation: prompt?.he, onReplayPrompt: prompt ? () => void speak(prompt.en, 'en') : undefined,
+        chosen: yourAnswer, expectedText: en, expectedTranslation: meaning, onReplayExpected: () => void speak(en, 'en'),
+        why: reason,
+      });
+  return <AnswerFeedback ok={ok} ctx={ctx} onRetry={onRetry} onContinue={onNext} />;
 }
 
 /** Expected Replies: "you said X — here's what they might answer." Comprehension-first. */
@@ -545,7 +513,7 @@ function RepliesStep({ step, itemsById, onDone }: { step: Extract<BootcampStep, 
     const yourAnswer = options.find((o) => o.id === picked)?.label;
     return (
       <AnsweredView ok={ok} en={reply.text} meaning={L(reply.meaning)} tip={reply.tip ? L(reply.tip) : undefined}
-        yourAnswer={ok ? undefined : yourAnswer} onRetry={ok ? undefined : () => setPicked(null)}
+        comprehension yourAnswer={ok ? undefined : yourAnswer} onRetry={ok ? undefined : () => setPicked(null)}
         onNext={() => {
           setPicked(null);
           if (idx + 1 >= step.replyIds.length) onDone();
@@ -673,21 +641,26 @@ function DialogueStep({ dialogue, onDone }: { dialogue: BootcampDialogue; onDone
     );
   }
 
-  // Non-coaching wrong pick (Example 2 fix): pause on a clear "Not quite" card — with the reaction
-  // coming next — so the mistake matters, instead of the correction flashing past. Tap to continue
-  // to the NPC's believable recovery beat, which then re-asks and rejoins the conversation.
+  // Non-coaching wrong pick: full-context correction so the mistake matters (never flashes past).
+  // Shows WHAT YOU HEARD (the NPC line) → your pick → WHAT YOU SHOULD ANSWER (the line that fit).
+  // Try again returns to the same decision; Continue proceeds to the NPC's believable recovery beat.
   if (picked) {
+    const correctChoice = node.choices?.find((c) => c.correct);
+    const ctx = buildRespondContext({
+      promptText: displayNpc?.en, promptTranslation: displayNpc?.he,
+      onReplayPrompt: displayNpc ? () => void speak(displayNpc.en, 'en') : undefined,
+      chosen: picked.en, chosenTranslation: picked.he,
+      expectedText: correctChoice?.en ?? picked.en, expectedTranslation: correctChoice?.he,
+      onReplayExpected: correctChoice ? () => void speak(correctChoice.en, 'en') : undefined,
+      why: picked.coach ? L(picked.coach) : t('dialogueMisstep'),
+    });
     return (
-      <>
-        <div className="drill-card fx-wrong pop-in" style={{ gap: 12, minHeight: 240 }}>
-          <span className="feedback-head bad">❌ {t('wrongHeader')}</span>
-          <p className="drill-phrase" style={{ fontSize: '1.3rem' }}>“{picked.en}”</p>
-          <p className="dim small">{picked.coach ? L(picked.coach) : t('dialogueMisstep')}</p>
-        </div>
-        <div className="action-zone">
-          <button className="btn-primary" onClick={() => { const next = picked.next; setPicked(null); setRecovered(true); setNodeId(next); }}>{t('continue')}</button>
-        </div>
-      </>
+      <AnswerFeedback
+        ok={false}
+        ctx={ctx}
+        onRetry={() => setPicked(null)}
+        onContinue={() => { const next = picked.next; setPicked(null); setRecovered(true); setNodeId(next); }}
+      />
     );
   }
 
@@ -759,13 +732,14 @@ function AmbushStep({ step, itemsById, onDone }: { step: Extract<BootcampStep, {
   const wrong = itemsById.get(step.wrongItemId)!;
   const [order] = useState(() => (Math.random() > 0.5 ? [correct, wrong] : [wrong, correct]));
 
-  // Answered — explain what they threw at you and the tool that beats it; continue on NEXT.
+  // Answered — full context: WHAT YOU HEARD (the fast NPC line) → your pick → what fit. This is the
+  // Money & Numbers case: "That comes to fifteen fifty…" is now shown, so "Fifteen fifty." makes sense.
   if (picked !== null) {
     const ok = picked === correct.id;
     return (
       <AnsweredView ok={ok} en={correct.text} meaning={L(correct.meaning)} tip={correct.tip ? L(correct.tip) : undefined}
-        yourAnswer={ok ? undefined : L(wrong.meaning)} onRetry={ok ? undefined : () => setPicked(null)}
-        onNext={() => onDone(ok)} />
+        prompt={{ en: step.npc.en, he: step.npc.he }} yourAnswer={ok ? undefined : wrong.text}
+        onRetry={ok ? undefined : () => setPicked(null)} onNext={() => onDone(ok)} />
     );
   }
 

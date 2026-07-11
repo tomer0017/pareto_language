@@ -41,4 +41,20 @@ describe('Swipe Recall re-queue engine', () => {
     }
     expect(reinsertGap(4)).toBeLessThanOrEqual(4); // clamped to a short deck
   });
+
+  it('with the DEFAULT gap, an unknown card reappears no sooner than 10 cards later', () => {
+    const big = Array.from({ length: 20 }, (_, i) => `w${i}`);
+    for (let i = 0; i < 100; i++) {
+      const next = applySwipe(big, 'unknown'); // default random gap 10–15
+      expect(next.indexOf('w0')).toBeGreaterThanOrEqual(10);
+    }
+  });
+
+  it('answering "known" repeatedly empties the deck (round completes, no infinite loop)', () => {
+    let deck = ['a', 'b', 'c'];
+    let steps = 0;
+    while (deck.length > 0 && steps < 50) { deck = applySwipe(deck, 'known'); steps++; }
+    expect(deck).toEqual([]);
+    expect(steps).toBe(3);
+  });
 });

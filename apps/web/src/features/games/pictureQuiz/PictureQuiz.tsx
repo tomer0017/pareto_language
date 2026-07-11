@@ -2,44 +2,29 @@ import { useMemo, useState } from 'react';
 import { L, t } from '../../../shared/i18n/strings.js';
 import { speak } from '../../../shared/audio/tts.js';
 import { tap } from '../../../shared/ui/haptics.js';
-import { feedback } from '../../../shared/ui/feedbackCue.js';
-import { Feedback } from '../../../shared/ui/Feedback.js';
+import { AnswerFeedback } from '../../../shared/ui/AnswerFeedback.js';
+import { buildRespondContext } from '../../../shared/ui/answerContext.js';
+import { recordReview } from '../../../shared/review/recordReview.js';
+import { buildRounds } from './rounds.js';
 import type { GameWord } from '../types.js';
 
 /**
- * Picture Quiz (Task 8) — show one word, four emoji options, tap the match. The component is
- * generic: hand it any GameWord[] (demo data today, Core 1500 tomorrow) and it builds rounds with
- * three distractor pictures each. Reuses the ONE global feedback system (chime/haptic/burst).
- * Architecture first — no content is hardcoded here.
+ * Picture Quiz (Part B2) — show one English word, four emoji options, tap the match. Generic over
+ * any GameWord[] (now the real Core 100). Round construction lives in rounds.ts (pure, tested). On
+ * answer it shows the shared full-context AnswerFeedback (no auto-advance — explicit Continue/Try
+ * again) and records a review event through the canonical log.
  */
-interface Round {
-  word: GameWord;
-  options: GameWord[]; // 4 words; the correct one's emoji is the answer
-}
-
-function buildRounds(words: GameWord[]): Round[] {
-  const pool = words.filter((w) => w.emoji);
-  return pool.map((word) => {
-    const distractors = pool
-      .filter((w) => w.id !== word.id)
-      .sort(() => Math.random() - 0.5)
-      .slice(0, 3);
-    const options = [word, ...distractors].sort(() => Math.random() - 0.5);
-    return { word, options };
-  });
-}
 
 export function PictureQuiz({ words, onDone }: { words: GameWord[]; onDone?: (score: number) => void }) {
   const rounds = useMemo(() => buildRounds(words), [words]);
   const [i, setI] = useState(0);
-  const [picked, setPicked] = useState<string | null>(null);
+  const [picked, setPicked] = useState<GameWord | null>(null);
   const [score, setScore] = useState(0);
-  const [burst, setBurst] = useState({ kind: 'correct' as 'correct' | 'wrong', n: 0 });
   const round = rounds[i];
 
   if (!round) {
     return (
-      <div className="drill-card pop-in">
+      <div className="drill-card pop-in center">
         <p style={{ fontSize: '3rem' }}>🎉</p>
         <p className="drill-phrase">{t('deckComplete')}</p>
         <p className="dim">{t('gameScore', { n: score, total: rounds.length })}</p>
@@ -48,23 +33,36 @@ export function PictureQuiz({ words, onDone }: { words: GameWord[]; onDone?: (sc
     );
   }
 
+  // Answered — full-context feedback, explicit action to advance.
+  if (picked) {
+    const ok = picked.id === round.word.id;
+    const ctx = buildRespondContext({
+      promptText: round.word.word, promptTranslation: L(round.word.translation), onReplayPrompt: () => void speak(round.word.word, 'en'),
+      chosen: ok ? undefined : picked.emoji,
+      expectedText: round.word.emoji, expectedTranslation: L(round.word.translation),
+      why: t('meansMapping', { en: round.word.word, meaning: L(round.word.translation) }),
+      labels: { should: t('correctAnswerLabel') },
+    });
+    return (
+      <AnswerFeedback
+        ok={ok}
+        ctx={ctx}
+        onRetry={ok ? undefined : () => setPicked(null)}
+        onContinue={() => { if (ok) setScore((s) => s + 1); setPicked(null); setI((n) => n + 1); }}
+      />
+    );
+  }
+
   const choose = (opt: GameWord): void => {
-    if (picked) return;
     tap();
     const ok = opt.id === round.word.id;
-    feedback(ok);
-    setBurst({ kind: ok ? 'correct' : 'wrong', n: Date.now() });
-    setPicked(opt.id);
-    if (ok) setScore((s) => s + 1);
-    setTimeout(() => {
-      setPicked(null);
-      setI((n) => n + 1);
-    }, 900);
+    recordReview(round.word.id, 'flashRecall', ok ? 'pass' : 'fail');
+    setPicked(opt);
   };
 
   return (
     <>
-      <div className="drill-card" style={{ minHeight: 200 }}>
+      <div className="drill-card" style={{ minHeight: 180 }}>
         <p className="drill-label">{t('pictureQuizPrompt')}</p>
         <button className="btn-ghost" onClick={() => void speak(round.word.word, 'en')} style={{ margin: '0 auto' }}>
           <span className="drill-phrase" style={{ fontSize: '1.8rem' }}>🔊 {round.word.word}</span>
@@ -72,18 +70,12 @@ export function PictureQuiz({ words, onDone }: { words: GameWord[]; onDone?: (sc
         <p className="dim small">{L(round.word.translation)}</p>
       </div>
       <div className="pic-grid">
-        {round.options.map((opt) => {
-          const state = picked
-            ? opt.id === round.word.id ? 'option-correct' : opt.id === picked ? 'option-wrong' : ''
-            : '';
-          return (
-            <button key={opt.id} className={`pic-option ${state}`} onClick={() => choose(opt)} aria-label={opt.word}>
-              {opt.emoji}
-            </button>
-          );
-        })}
+        {round.options.map((opt) => (
+          <button key={opt.id} className="pic-option" onClick={() => choose(opt)} aria-label={opt.word}>
+            {opt.emoji}
+          </button>
+        ))}
       </div>
-      <Feedback kind={burst.kind} trigger={burst.n} />
     </>
   );
 }

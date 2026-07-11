@@ -292,6 +292,9 @@ button:disabled { opacity: 0.55; }
 }
 .recall-card:active { cursor: grabbing; }
 .recall-emoji { font-size: 5rem; line-height: 1; }
+.hold-bar { display: block; width: 120px; height: 6px; border-radius: 999px; background: var(--line); overflow: hidden; margin: 4px auto 0; }
+.hold-fill { display: block; height: 100%; width: 0; border-radius: 999px; background: var(--brand); animation: holdFill 0.5s linear forwards; }
+@keyframes holdFill { from { width: 0; } to { width: 100%; } }
 
 /* ── Language selector ────────────────────────────────────────────────── */
 .lang-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
