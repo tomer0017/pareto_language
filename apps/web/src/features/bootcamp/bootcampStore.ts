@@ -73,6 +73,7 @@ interface BootcampState extends BootcampProgress {
 
   startDay(day: number): void;
   enterPractice(): void;
+  restartDay(): void;
   toHub(): void;
   next(): void;
   addReceipt(text: string): void;
@@ -110,6 +111,17 @@ export const useBootcampStore = create<BootcampState>((set, get) => ({
     const { activeDay, stepIndex } = get();
     const resume = activeDay === null ? 0 : (stepIndex[String(activeDay)] ?? 0);
     set({ stage: 'play', index: resume });
+  },
+
+  /** Restart ONLY the active mission's practice progress (resume point → 0), then enter it fresh.
+   *  Never touches completedDays, receipts, review events, or any other mission — those are
+   *  bootcamp completion / statistics / review data and stay intact. */
+  restartDay() {
+    const { activeDay, completedDays, receipts, stepIndex } = get();
+    if (activeDay === null) return;
+    const si = { ...stepIndex, [String(activeDay)]: 0 };
+    persist({ completedDays, receipts, stepIndex: si });
+    set({ stepIndex: si, stage: 'play', index: 0 });
   },
 
   toHub() {

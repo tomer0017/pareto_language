@@ -122,6 +122,12 @@ export const DAY4: BootcampDayContent = {
   title: T('בית קפה', 'Coffee Shop'),
   items: [...DAY4_ITEMS, ...REUSED_RECOVERY],
   dialogues: { 'breakfast-order': SCENE_BREAKFAST },
+  introVideo: {
+    src: '/videos/En_day4.mp4',
+    title: T('השיחה המלאה', 'Full conversation'),
+    language: 'en',
+    type: 'intro',
+  },
   steps: [
     { kind: 'talk', icon: '☕', title: T('משימה 4: בית קפה', 'Mission 4: Coffee Shop'),
       body: [

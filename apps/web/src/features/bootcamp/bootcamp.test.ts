@@ -217,6 +217,73 @@ describe('Mission 1 — I Can Survive (interactive)', () => {
   });
 });
 
+/** Node ids visited on the ideal run: follow `next`; at a choice take the first correct one. */
+function happyPathNodes(d: BootcampDialogue): Set<string> {
+  const byId = new Map(d.nodes.map((n) => [n.id, n]));
+  const seen = new Set<string>();
+  let node = byId.get(d.start);
+  while (node && !seen.has(node.id)) {
+    seen.add(node.id);
+    if (node.who === 'you' && node.choices?.length) {
+      const choice = node.choices.find((c) => c.correct) ?? node.choices[0]!;
+      node = byId.get(choice.next);
+      continue;
+    }
+    if (node.end || !node.next) break;
+    node = byId.get(node.next);
+  }
+  return seen;
+}
+
+describe('Dialogue integrity — the NPC never continues as if a wrong pick were correct', () => {
+  // The learning bug we guard against: a `correct: false` choice whose `next` lands directly on
+  // the happy path (so the NPC ignores the wrong answer) or shares its target with a correct
+  // sibling (identical response either way). Every wrong pick MUST route to its own recovery beat.
+  for (const [num, day] of Object.entries(DAYS)) {
+    it(`mission ${num}: every wrong choice routes to a distinct recovery beat`, () => {
+      const offenders: string[] = [];
+      for (const d of Object.values(day.dialogues)) {
+        const byId = new Map(d.nodes.map((n) => [n.id, n]));
+        const happy = happyPathNodes(d);
+        for (const n of d.nodes) {
+          if (!n.choices) continue;
+          const correctTargets = new Set(n.choices.filter((c) => c.correct).map((c) => c.next));
+          for (const c of n.choices) {
+            if (c.correct) continue;
+            if (happy.has(c.next)) offenders.push(`${d.id}/${n.id}: "${c.en}" → happy-path node ${c.next}`);
+            else if (correctTargets.has(c.next)) offenders.push(`${d.id}/${n.id}: "${c.en}" shares next with a correct choice`);
+            const target = byId.get(c.next);
+            if (target && target.who !== 'npc') offenders.push(`${d.id}/${n.id}: "${c.en}" → non-NPC node ${c.next} (no reaction)`);
+          }
+        }
+      }
+      expect(offenders).toEqual([]);
+    });
+  }
+});
+
+describe('Believability — a different answer gets a different, matching reaction', () => {
+  it('Mission 8: asking the wifi password is answered about wifi, not breakfast', () => {
+    const scene = DAY8.dialogues['hotel-checkin']!;
+    const byId = new Map(scene.nodes.map((n) => [n.id, n]));
+    const node = scene.nodes.find((n) => n.choices?.some((c) => c.en.includes('wifi password')))!;
+    const wifi = node.choices!.find((c) => c.en.includes('wifi password'))!;
+    const breakfast = node.choices!.find((c) => c.en.includes('breakfast'))!;
+    expect(wifi.next).not.toBe(breakfast.next); // no shared, one-size-fits-all answer
+    expect(byId.get(wifi.next)!.en.toLowerCase()).toContain('wifi'); // reacts to what was actually asked
+  });
+
+  it('Mission 9: a price objection is acknowledged, not ignored', () => {
+    const scene = DAY9.dialogues['clothing-shop']!;
+    const byId = new Map(scene.nodes.map((n) => [n.id, n]));
+    const node = scene.nodes.find((n) => n.choices?.some((c) => c.en.includes('expensive')))!;
+    const takeIt = node.choices!.find((c) => c.en.includes("take it"))!;
+    const object = node.choices!.find((c) => c.en.includes('expensive'))!;
+    expect(object.next).not.toBe(takeIt.next);
+    expect(byId.get(object.next)!.en.toLowerCase()).toMatch(/off|price|understand/); // reacts to the objection
+  });
+});
+
 describe('coaching mode is scoped to Mission 1 only (no regression to 2–30)', () => {
   it('no other built mission enables dialogue coaching', () => {
     for (const [num, day] of Object.entries(DAYS)) {
@@ -279,11 +346,13 @@ describe('video-first Bootcamp (intro/review video)', () => {
     expect(kinds.at(-1)).toBe('summary');
   });
 
-  it('Mission 3 ships a full-conversation video (hub / Videos experience), without injecting video steps', () => {
-    expect(DAY3.introVideo).toBeDefined();
-    expect(DAY3.introVideo?.src).toBe('/videos/En_day3.mp4');
-    expect(DAY3.introVideo?.language).toBe('en');
-    expect(DAY3.steps.some((s) => s.kind === 'video')).toBe(false);
+  it('Missions 3–5 ship a full-conversation video (hub / Videos experience), without injecting video steps', () => {
+    for (const [day, src] of [[DAY3, 'En_day3'], [DAY4, 'En_day4'], [DAY5, 'En_day5']] as const) {
+      expect(day.introVideo).toBeDefined();
+      expect(day.introVideo?.src).toBe(`/videos/${src}.mp4`);
+      expect(day.introVideo?.language).toBe('en');
+      expect(day.steps.some((s) => s.kind === 'video')).toBe(false);
+    }
   });
 
   it('videos are opt-in per mission; a video step never appears without a video', () => {
@@ -293,8 +362,8 @@ describe('video-first Bootcamp (intro/review video)', () => {
       if (day.introVideo) withVideo.add(Number(num));
       else expect(hasVideoStep).toBe(false); // never a placeholder video step without a video
     }
-    // Missions 2 and 3 ship the full-conversation video; only Mission 2 injects video steps.
-    expect([...withVideo].sort((a, b) => a - b)).toEqual([2, 3]);
+    // Missions 2–5 ship the full-conversation video; only Mission 2 injects video steps.
+    expect([...withVideo].sort((a, b) => a - b)).toEqual([2, 3, 4, 5]);
     expect(DAY2.steps.some((s) => s.kind === 'video')).toBe(true);
   });
 });

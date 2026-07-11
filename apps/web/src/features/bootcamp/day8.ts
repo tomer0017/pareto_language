@@ -41,9 +41,11 @@ const SCENE: BootcampDialogue = {
     { id: 'n3', who: 'npc', fast: true, next: 'c3', en: "Thank you. You're in room two-oh-four, on the second floor. Is breakfast included in your booking?", he: 'תודה. אתה בחדר 204, בקומה השנייה. ארוחת בוקר כלולה בהזמנה שלך?' },
     { id: 'c3', who: 'you', en: '', he: '', choices: [
       { en: 'Is breakfast included?', he: 'ארוחת הבוקר כלולה?', itemId: 'en.phrase.hotel.breakfast', correct: true, next: 'n4' },
-      { en: "What's the wifi password?", he: 'מה סיסמת הוויי-פיי?', itemId: 'en.phrase.hotel.wifi', correct: true, next: 'n4' },
+      // A different question gets a DIFFERENT, matching answer — the NPC never ignores what you said.
+      { en: "What's the wifi password?", he: 'מה סיסמת הוויי-פיי?', itemId: 'en.phrase.hotel.wifi', correct: true, next: 'n4w' },
     ] },
     { id: 'n4', who: 'npc', next: 'n5', en: 'Yes! Breakfast is from seven to ten. The elevator is on your right.', he: 'כן! ארוחת בוקר משבע עד עשר. המעלית מימינך.' },
+    { id: 'n4w', who: 'npc', next: 'n5', en: "The wifi code is on your key card. And breakfast's from seven to ten — the elevator's on your right.", he: 'קוד הוויי-פיי על כרטיס המפתח. וארוחת בוקר משבע עד עשר — המעלית מימינך.' },
     { id: 'n5', who: 'npc', end: true, en: 'Enjoy your stay!', he: 'תיהנה מהשהות!' },
   ],
 };

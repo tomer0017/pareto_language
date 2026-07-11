@@ -13,3 +13,11 @@ export function success(): void {
     /* unsupported — fine */
   }
 }
+/** Stronger, more insistent pattern for a wrong answer — felt, not just seen. */
+export function error(): void {
+  try {
+    navigator.vibrate?.([28, 30, 28]);
+  } catch {
+    /* unsupported — fine */
+  }
+}

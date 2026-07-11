@@ -3,8 +3,11 @@ import { L, t } from '../../shared/i18n/strings.js';
 import { speak, cancelSpeech } from '../../shared/audio/tts.js';
 import { useAppStore } from '../../shared/stores/appStore.js';
 import { CheckPop } from '../../shared/ui/CheckPop.js';
+import { Feedback } from '../../shared/ui/Feedback.js';
+import { feedback, feedbackWrong } from '../../shared/ui/feedbackCue.js';
 import { success, tap } from '../../shared/ui/haptics.js';
 import { LangStrip } from '../../shared/ui/LangStrip.js';
+import { Modal, ModalActions } from '../../shared/ui/Modal.js';
 import { getAudioDiag, subscribeAudioDiag, testAudio, unlockAudio } from '../../shared/audio/tts.js';
 import { useSyncExternalStore } from 'react';
 import { BOOTCAMP_PLAN, CORE_MISSIONS, SPECIAL_MISSIONS, PHASES, missionNumber } from './plan.js';
@@ -50,6 +53,7 @@ function MissionHub() {
   const bc = useBootcampStore();
   const [showReader, setShowReader] = useState(false);
   const [showVideo, setShowVideo] = useState(false);
+  const [showResume, setShowResume] = useState(false);
   useEffect(() => () => cancelSpeech(), []);
   const day = bc.currentDay();
   if (!day) return null;
@@ -58,6 +62,9 @@ function MissionHub() {
   const done = bc.completedDays.includes(day.day);
   const resumable = (bc.stepIndex[String(day.day)] ?? 0) > 0 && !done;
   const practiceCta = done ? t('practiceAgain') : resumable ? t('continuePractice') : t('startPractice');
+  // An in-progress (started but not completed) mission asks before dropping the learner mid-flow.
+  // A fresh mission starts immediately; a completed one keeps the existing "Practice again" (from 0).
+  const onPractice = () => (resumable ? setShowResume(true) : bc.enterPractice());
 
   if (showReader && convo) return <DialogueReader dialogue={convo} onClose={() => setShowReader(false)} onFinish={() => { setShowReader(false); bc.toHub(); }} />;
   if (showVideo && video) return <VideoOverlay video={video} onClose={() => setShowVideo(false)} />;
@@ -81,7 +88,7 @@ function MissionHub() {
         <HubCard
           icon="🎯" iconBg="var(--brand-soft)"
           title={t('practice')} desc={t('practiceCardDesc')}
-          cta={practiceCta} ctaClass="btn-primary" onClick={() => bc.enterPractice()}
+          cta={practiceCta} ctaClass="btn-primary" onClick={onPractice}
         />
         <HubCard
           icon="📖" iconBg="var(--accent-soft)"
@@ -98,6 +105,19 @@ function MissionHub() {
 
         <p className="faint small center" style={{ margin: '6px 4px 0' }}>ℹ️ {t('hubHint')}</p>
       </div>
+
+      {showResume && (
+        <Modal icon="🎯" title={t('resumeTitle')} body={t('resumeBody')} onClose={() => setShowResume(false)}>
+          <ModalActions>
+            <button className="btn-primary" onClick={() => { tap(); setShowResume(false); bc.enterPractice(); }}>
+              {t('resumeContinue')}
+            </button>
+            <button className="btn-secondary" onClick={() => { tap(); setShowResume(false); bc.restartDay(); }}>
+              {t('resumeRestart')}
+            </button>
+          </ModalActions>
+        </Modal>
+      )}
     </div>
   );
 }
@@ -319,25 +339,31 @@ function TalkStep({ step, onNext }: { step: Extract<BootcampStep, { kind: 'talk'
 }
 
 /**
- * Learn one sentence: hear it, then see + say it. Two beats only — Learn → Practice → Next.
- * The old third "I said it" screen (which just repeated the exact same sentence and made testers
- * think the app had frozen) is gone: saying it aloud and continuing now happen on one screen.
+ * Learn one sentence on ONE screen (Pareto UX sprint — "Listen → Understand → Continue").
+ * Initial state: a play button + "Listening…" and nothing else. The moment playback FINISHES the
+ * same screen transforms in place into the sentence + translation + Replay + Continue — no second
+ * screen, no manual "tap when ready" gate (that gap was what made testers think the app froze).
  */
 function ToolStep({ step, item, onDone }: { step: Extract<BootcampStep, { kind: 'tool' }>; item: BootcampItem; onDone: () => void }) {
   const bc = useBootcampStore();
   const [phase, setPhase] = useState<'listen' | 'reveal'>('listen');
   const played = useRef(false);
+  const revealedRef = useRef(false);
+  const reveal = (): void => {
+    if (revealedRef.current) return;
+    revealedRef.current = true;
+    setPhase('reveal');
+  };
+
+  // Play on mount, then auto-transform the instant the audio ends (speak resolves on utterance end,
+  // or immediately if audio is unavailable — either way the learner never stares at a frozen screen).
   useEffect(() => {
-    if (!played.current) {
-      played.current = true;
-      void speak(item.text, 'en');
-    }
+    if (played.current) return;
+    played.current = true;
+    void speak(item.text, 'en').then(reveal);
   }, [item.text]);
 
-  const reveal = (): void => {
-    setPhase('reveal');
-    void speak(item.text, 'en', 0.85); // hear it again, slowly, as you read it
-  };
+  const replayListen = (): void => void speak(item.text, 'en').then(reveal);
 
   return (
     <>
@@ -345,12 +371,12 @@ function ToolStep({ step, item, onDone }: { step: Extract<BootcampStep, { kind: 
         <p className="drill-label">{step.label ? L(step.label) : t('toolOf', { i: step.index, n: step.total })}</p>
         {phase === 'listen' ? (
           <>
-            <p style={{ fontSize: '2.6rem' }}>👂</p>
+            <button className="listen-play" onClick={replayListen} aria-label={t('playBtn')}>▶︎</button>
             <p className="drill-meaning">{t('listenFirst')}</p>
           </>
         ) : (
           <>
-            <p className="drill-phrase" style={{ fontSize: '1.5rem' }}>{item.text}</p>
+            <p className="drill-phrase pop-in" style={{ fontSize: '1.5rem' }}>{item.text}</p>
             <p className="drill-meaning">{L(item.meaning)}</p>
             {item.tip && <p className="faint small">{L(item.tip)}</p>}
             <p className="faint small">🗣️ {t('sayItAloud')}</p>
@@ -359,11 +385,11 @@ function ToolStep({ step, item, onDone }: { step: Extract<BootcampStep, { kind: 
       </div>
       <div className="action-zone">
         <button className="btn-ghost" onClick={() => void speak(item.text, 'en', phase === 'listen' ? 1 : 0.85)}>
-          🔊 {t('hearAgain')}
+          🔊 {t('replay')}
         </button>
-        {phase === 'listen'
-          ? <button className="btn-primary" onClick={reveal}>{t('tapWhenReady')}</button>
-          : <button className="btn-primary" onClick={() => { bc.recordDrill(item.id, 'echo', 'pass'); onDone(); }}>{t('continue')}</button>}
+        {phase === 'reveal' && (
+          <button className="btn-primary" onClick={() => { bc.recordDrill(item.id, 'echo', 'pass'); onDone(); }}>{t('continue')}</button>
+        )}
       </div>
     </>
   );
@@ -389,8 +415,10 @@ function QuizStep({ step, itemsById, onDone }: { step: Extract<BootcampStep, { k
   // Answered — pause here. Explain, translate, replay freely, continue only on NEXT.
   if (picked !== null) {
     const ok = picked === item.id;
+    const yourAnswer = options.find((o) => o.id === picked)?.label;
     return (
       <AnsweredView ok={ok} en={item.text} meaning={L(item.meaning)} tip={item.tip ? L(item.tip) : undefined}
+        yourAnswer={ok ? undefined : yourAnswer} onRetry={ok ? undefined : () => setPicked(null)}
         onNext={() => onDone(ok)} />
     );
   }
@@ -417,24 +445,62 @@ function QuizStep({ step, itemsById, onDone }: { step: Extract<BootcampStep, { k
   );
 }
 
-/** Shared "you answered — now learn" surface: success/failure state, the correct answer
- *  highlighted, translation, unlimited replay, time to breathe, and a manual NEXT. */
-function AnsweredView({ ok, en, meaning, tip, onNext }: { ok: boolean; en: string; meaning: string; tip?: string; onNext: () => void }) {
+/**
+ * Shared "you answered" surface (Tasks 4 + 5 + 7). Fires the ONE global feedback system on mount
+ * (chime/haptic/burst + card motion). Correct → a lean celebration (no textbook filler). Wrong →
+ * the redesigned experience: your answer vs the right answer, one short "why", and TWO choices —
+ * Try Again or Continue. It never auto-advances; the learner decides when to move on.
+ */
+function AnsweredView({ ok, en, meaning, yourAnswer, why, tip, onRetry, onNext }: {
+  ok: boolean; en: string; meaning: string; yourAnswer?: string; why?: string; tip?: string; onRetry?: () => void; onNext: () => void;
+}) {
+  const [burst] = useState(() => Date.now());
+  useEffect(() => { feedback(ok); }, [ok]);
+  const reason = why ?? tip ?? t('meansMapping', { en, meaning });
+
+  if (ok) {
+    return (
+      <>
+        <div className="drill-card fx-correct pop-in" style={{ gap: 12, minHeight: 240 }}>
+          <span className="feedback-head ok">✓ {t('correctHeader')}</span>
+          <p className="drill-phrase" style={{ fontSize: '1.5rem' }}>“{en}”</p>
+          <p className="answer-pill">{meaning}</p>
+          {tip && <p className="faint small">{tip}</p>}
+        </div>
+        <div className="action-zone">
+          <button className="btn-ghost" onClick={() => void speak(en, 'en')}>🔊 {t('replay')}</button>
+          <button className="btn-primary" onClick={onNext}>{t('nextBtn')}</button>
+        </div>
+        <Feedback kind="correct" trigger={burst} />
+      </>
+    );
+  }
+
   return (
     <>
-      <div className="drill-card pop-in" style={{ gap: 12, minHeight: 240 }}>
-        <span className={`feedback-head ${ok ? 'ok' : 'bad'}`}>{ok ? `✓ ${t('correctHeader')}` : `✗ ${t('wrongHeader')}`}</span>
-        <p className="drill-phrase" style={{ fontSize: '1.5rem' }}>“{en}”</p>
-        <p className="drill-label">{t('theMeaning')}</p>
-        <p className="answer-pill">{meaning}</p>
-        {tip && <p className="faint small">{tip}</p>}
-        <p className="dim small">{ok ? t('whyRight') : t('whyWrong')}</p>
+      <div className="drill-card fx-wrong pop-in" style={{ gap: 10, minHeight: 240 }}>
+        <span className="feedback-head bad">❌ {t('wrongHeader')}</span>
+        {yourAnswer && (
+          <div>
+            <p className="drill-label">{t('yourAnswerLabel')}</p>
+            <p className="answer-pill answer-pill-bad">{yourAnswer}</p>
+          </div>
+        )}
+        <div>
+          <p className="drill-label">{t('correctAnswerLabel')}</p>
+          <p className="drill-phrase" style={{ fontSize: '1.3rem' }}>“{en}”</p>
+          <p className="answer-pill">{meaning}</p>
+        </div>
+        <p className="dim small"><strong>{t('whyLabel')}</strong> {reason}</p>
       </div>
       <div className="action-zone">
-        <button className="btn-ghost" onClick={() => void speak(en, 'en')}>🔊 {t('hearAgain')}</button>
-        <p className="faint small" style={{ textAlign: 'center' }}>{t('takeYourTime')}</p>
-        <button className="btn-primary" onClick={onNext}>{t('nextBtn')}</button>
+        <button className="btn-ghost" onClick={() => void speak(en, 'en')}>🔊 {t('replay')}</button>
+        <div className="btn-row">
+          {onRetry && <button className="btn-secondary" onClick={onRetry}>{t('tryAgain')}</button>}
+          <button className="btn-primary" onClick={onNext}>{t('continue')}</button>
+        </div>
       </div>
+      <Feedback kind="wrong" trigger={burst} />
     </>
   );
 }
@@ -476,8 +542,10 @@ function RepliesStep({ step, itemsById, onDone }: { step: Extract<BootcampStep, 
   // Answered — learn this reply before moving to the next one.
   if (picked !== null) {
     const ok = picked === reply.id;
+    const yourAnswer = options.find((o) => o.id === picked)?.label;
     return (
       <AnsweredView ok={ok} en={reply.text} meaning={L(reply.meaning)} tip={reply.tip ? L(reply.tip) : undefined}
+        yourAnswer={ok ? undefined : yourAnswer} onRetry={ok ? undefined : () => setPicked(null)}
         onNext={() => {
           setPicked(null);
           if (idx + 1 >= step.replyIds.length) onDone();
@@ -605,6 +673,24 @@ function DialogueStep({ dialogue, onDone }: { dialogue: BootcampDialogue; onDone
     );
   }
 
+  // Non-coaching wrong pick (Example 2 fix): pause on a clear "Not quite" card — with the reaction
+  // coming next — so the mistake matters, instead of the correction flashing past. Tap to continue
+  // to the NPC's believable recovery beat, which then re-asks and rejoins the conversation.
+  if (picked) {
+    return (
+      <>
+        <div className="drill-card fx-wrong pop-in" style={{ gap: 12, minHeight: 240 }}>
+          <span className="feedback-head bad">❌ {t('wrongHeader')}</span>
+          <p className="drill-phrase" style={{ fontSize: '1.3rem' }}>“{picked.en}”</p>
+          <p className="dim small">{picked.coach ? L(picked.coach) : t('dialogueMisstep')}</p>
+        </div>
+        <div className="action-zone">
+          <button className="btn-primary" onClick={() => { const next = picked.next; setPicked(null); setRecovered(true); setNodeId(next); }}>{t('continue')}</button>
+        </div>
+      </>
+    );
+  }
+
   return (
     <>
       <div className="drill-card" style={{ gap: 14, minHeight: 240 }}>
@@ -633,11 +719,14 @@ function DialogueStep({ dialogue, onDone }: { dialogue: BootcampDialogue; onDone
                     tap();
                     if (c.itemId) bc.recordDrill(c.itemId, 'simulator', c.correct ? 'pass' : 'partial');
                     setYourLine(c.en);
-                    if (coaching) {
-                      setPicked(c); // pause on a coaching card before branching
+                    // A wrong pick ALWAYS pauses (coaching card in Mission 1, "Not quite" card
+                    // elsewhere) so the mistake registers before the NPC reacts — it never just
+                    // flashes by. Correct picks flow straight on (no chime on every happy line).
+                    if (coaching || !c.correct) {
+                      if (!c.correct && !coaching) feedbackWrong(); // coaching stays "never wrong"
+                      setPicked(c);
                       void speak(c.en, 'en', 0.92);
                     } else {
-                      setRecovered(!c.correct);
                       void speak(c.en, 'en', 0.92).then(() => setNodeId(c.next));
                     }
                   }}
@@ -675,6 +764,7 @@ function AmbushStep({ step, itemsById, onDone }: { step: Extract<BootcampStep, {
     const ok = picked === correct.id;
     return (
       <AnsweredView ok={ok} en={correct.text} meaning={L(correct.meaning)} tip={correct.tip ? L(correct.tip) : undefined}
+        yourAnswer={ok ? undefined : L(wrong.meaning)} onRetry={ok ? undefined : () => setPicked(null)}
         onNext={() => onDone(ok)} />
     );
   }
@@ -776,10 +866,14 @@ function VictoryScreen() {
     return () => cancelSpeech();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  const [showLearned, setShowLearned] = useState(false);
   if (!day) return null;
   const receipts = bc.receipts.filter((r) => r.day === day.day);
   const convo = primaryDialogue(day);
   const video = day.introVideo;
+  const meta = BOOTCAMP_PLAN.find((m) => m.day === day.day);
+  // "Mastered phrases" = the say-phrases this mission taught (recovery tools + replies excluded).
+  const mastered = day.items.filter((i) => i.id.startsWith('en.phrase.') && !i.id.startsWith('en.phrase.recovery.'));
   const nextBuilt = BOOTCAMP_PLAN.find((m) => m.day > day.day && m.day in DAYS && !m.special && !bc.completedDays.includes(m.day));
 
   if (showReader && convo) return <DialogueReader dialogue={convo} onClose={() => setShowReader(false)} onFinish={() => { setShowReader(false); bc.toHub(); }} />;
@@ -800,25 +894,61 @@ function VictoryScreen() {
         <span style={{ width: 44 }} />
       </div>
       <div className="screen-scroll no-nav">
-        <div className="center" style={{ padding: '8px 0 4px' }}>
-          <p className="pop-in" style={{ fontSize: '3.6rem' }}>🎉</p>
-          <h1 style={{ marginTop: 4 }}>{t('victoryTitle')}</h1>
-          <p className="drill-phrase" style={{ fontSize: '1.2rem', margin: '6px 0' }}>🎖️ {L(day.title)}</p>
-          <p className="dim" style={{ maxWidth: 340, margin: '10px auto 0' }}>{t('victoryEmotional')}</p>
+        {/* Celebrate — no wall of text. One line: the mission is done. */}
+        <div className="center" style={{ padding: '10px 0 8px' }}>
+          <p className="pop-in" style={{ fontSize: '3.8rem' }}>🎉</p>
+          <h1 style={{ marginTop: 6 }}>{t('victoryCompleted', { title: L(day.title) })}</h1>
         </div>
-        {receipts.length > 0 && (
-          <div className="card card-sunken" style={{ marginTop: 16, textAlign: 'start' }}>
-            <p className="dim small" style={{ marginBottom: 6 }}>{t('yourEvidence')}:</p>
-            {receipts.map((r, i) => (
-              <p key={i} className="small">🧾 {r.text}</p>
-            ))}
+
+        {/* Large action cards — the whole point of the screen. */}
+        <button className="game-card card-press" onClick={watch}>
+          <span className="game-icon" style={{ background: 'var(--brand)' }}>🎬</span>
+          <span><p style={{ fontWeight: 800 }}>{t('watchConversationCard')}</p></span>
+        </button>
+        {convo && (
+          <button className="game-card card-press" onClick={() => setShowReader(true)}>
+            <span className="game-icon" style={{ background: 'var(--accent)' }}>📖</span>
+            <span><p style={{ fontWeight: 800 }}>{t('openTranscript')}</p></span>
+          </button>
+        )}
+        <button className="game-card card-press" onClick={() => bc.enterPractice()}>
+          <span className="game-icon" style={{ background: 'var(--good)' }}>🎯</span>
+          <span><p style={{ fontWeight: 800 }}>{t('practiceAgain')}</p></span>
+        </button>
+
+        {/* Evidence is opt-in, not a wall of reading — collapsed by default (Pareto). */}
+        <button className="btn-ghost" style={{ margin: '8px auto 0' }} onClick={() => setShowLearned((v) => !v)}>
+          {showLearned ? '▾' : '▸'} {t('whatDidILearn')}
+        </button>
+        {showLearned && (
+          <div className="card card-sunken fade-in" style={{ textAlign: 'start' }}>
+            {meta && (
+              <>
+                <p className="drill-label">{t('learnedSkill')}</p>
+                <p className="small" style={{ marginBottom: 10 }}>✅ {L(meta.confidenceGain)}</p>
+              </>
+            )}
+            {mastered.length > 0 && (
+              <>
+                <p className="drill-label">{t('masteredPhrases')}</p>
+                {mastered.map((i) => (
+                  <p key={i.id} className="small">🗣️ {i.text} <span className="dim">— {L(i.meaning)}</span></p>
+                ))}
+              </>
+            )}
+            {receipts.length > 0 && (
+              <>
+                <p className="drill-label" style={{ marginTop: 10 }}>{t('yourEvidence')}</p>
+                {receipts.map((r, i) => (
+                  <p key={i} className="small">🧾 {r.text}</p>
+                ))}
+              </>
+            )}
           </div>
         )}
       </div>
       <div className="action-zone">
         <button className="btn-primary breathe" onClick={watch}>{t('watchFullConvo')}</button>
-        {convo && <button className="btn-secondary" onClick={() => setShowReader(true)}>{t('openTranscript')}</button>}
-        <button className="btn-secondary" onClick={() => bc.enterPractice()}>🎯 {t('practiceAgain')}</button>
         {nextBuilt && (
           <button className="btn-ghost" onClick={() => bc.startDay(nextBuilt.day)}>
             ▶ {t('nextMission', { title: L(nextBuilt.title) })}

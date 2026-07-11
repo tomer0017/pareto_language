@@ -248,6 +248,20 @@ button:disabled { opacity: 0.55; }
 .drill-label { font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); font-weight: 800; }
 .reveal-answer { color: var(--accent); font-size: 1.45rem; font-weight: 800; }
 
+/* Listen-first play button (Task 3): the one affordance on the initial listening screen. */
+.listen-play {
+  width: 92px; height: 92px; border-radius: 999px; margin: 4px auto;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 2.4rem; color: #fff; padding-left: 6px;
+  background: var(--brand); box-shadow: var(--shadow-pop);
+  animation: listenPulse 1.8s ease-in-out infinite;
+}
+.listen-play:active { transform: scale(0.94); }
+@keyframes listenPulse {
+  0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--brand) 45%, transparent); }
+  50% { box-shadow: 0 0 0 14px color-mix(in srgb, var(--brand) 0%, transparent); }
+}
+
 .progress-dots { display: flex; gap: 4px; justify-content: center; padding: 8px 0; flex-wrap: wrap; }
 .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--line); transition: all 0.25s ease; }
 .dot.done { background: var(--accent); }
@@ -260,6 +274,24 @@ button:disabled { opacity: 0.55; }
 .keypad button { font-size: 1.25rem; font-weight: 800; min-height: 62px; background: var(--card); box-shadow: var(--shadow-card); }
 .option-correct { outline: 2.5px solid var(--good); background: var(--good-soft); }
 .option-wrong { outline: 2.5px solid var(--danger); background: var(--danger-soft); }
+
+/* ── Learning games (Tasks 8 & 9) ─────────────────────────────────────── */
+.pic-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 4px; }
+.pic-option {
+  font-size: 3rem; min-height: 104px; background: var(--card);
+  box-shadow: var(--shadow-card); border-radius: var(--r-lg);
+  display: grid; place-items: center;
+}
+.pic-option.option-correct { outline: 3px solid var(--good); background: var(--good-soft); }
+.pic-option.option-wrong { outline: 3px solid var(--danger); background: var(--danger-soft); }
+.recall-card {
+  background: var(--card); border-radius: 26px; padding: 30px 22px; margin: 12px 0;
+  box-shadow: var(--shadow-pop); text-align: center; min-height: 300px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px;
+  touch-action: pan-y; user-select: none; -webkit-user-select: none; cursor: grab;
+}
+.recall-card:active { cursor: grabbing; }
+.recall-emoji { font-size: 5rem; line-height: 1; }
 
 /* ── Language selector ────────────────────────────────────────────────── */
 .lang-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
@@ -325,6 +357,37 @@ input:focus, select:focus { outline: 2px solid var(--brand); border-color: trans
   box-shadow: 0 14px 44px rgba(22, 163, 74, 0.45);
 }
 
+/* ── Global feedback system (Task 4): one look for success/error everywhere ──────────── */
+/* Icon burst — green ✓ or red ✕ — used by <Feedback>. Mirrors .check-pop but two-polarity. */
+.fx-burst { position: fixed; inset: 0; display: grid; place-items: center; pointer-events: none; z-index: 60; }
+.fx-burst span {
+  width: 92px; height: 92px; border-radius: 50%; color: #fff; font-size: 2.6rem;
+  display: grid; place-items: center;
+  animation: checkPop 0.55s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.fx-burst-correct span { background: var(--good); box-shadow: 0 14px 44px rgba(22, 163, 74, 0.45); }
+.fx-burst-wrong span { background: var(--danger); box-shadow: 0 14px 44px rgba(224, 82, 82, 0.42); animation: fxShake 0.45s ease; }
+
+/* Card motion + glow: apply to the card being judged. Correct = subtle scale + green glow. */
+.fx-correct { animation: fxPopGlow 0.6s ease; }
+.fx-wrong { animation: fxShake 0.45s ease; }
+@keyframes fxPopGlow {
+  0% { transform: scale(1); box-shadow: var(--shadow-pop); }
+  40% { transform: scale(1.03); box-shadow: 0 0 0 4px color-mix(in srgb, var(--good) 45%, transparent), var(--shadow-pop); }
+  100% { transform: scale(1); box-shadow: var(--shadow-pop); }
+}
+@keyframes fxShake {
+  0%, 100% { transform: translateX(0); }
+  15% { transform: translateX(-9px); }
+  30% { transform: translateX(8px); }
+  45% { transform: translateX(-6px); }
+  60% { transform: translateX(5px); }
+  75% { transform: translateX(-3px); }
+}
+/* A brief tint flash to reinforce polarity without redesigning the card. */
+.fx-flash-good { box-shadow: 0 0 0 3px color-mix(in srgb, var(--good) 40%, transparent), var(--shadow-pop); }
+.fx-flash-bad { box-shadow: 0 0 0 3px color-mix(in srgb, var(--danger) 45%, transparent), var(--shadow-pop); }
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.001s !important; transition-duration: 0.001s !important; }
 }
@@ -338,6 +401,12 @@ input:focus, select:focus { outline: 2px solid var(--brand); border-color: trans
   background: var(--good-soft); color: color-mix(in srgb, var(--good) 82%, black);
   border-radius: 999px; padding: 8px 16px; font-weight: 800; font-size: 1.05rem;
   border: 2px solid color-mix(in srgb, var(--good) 40%, transparent);
+}
+/* Wrong pick, shown above the right answer in the redesigned wrong-answer view (Task 5). */
+.answer-pill-bad {
+  background: var(--danger-soft); color: color-mix(in srgb, var(--danger) 78%, black);
+  border-color: color-mix(in srgb, var(--danger) 42%, transparent);
+  text-decoration: line-through; text-decoration-thickness: 2px;
 }
 
 /* ── Dialogue reader (premium study sheet) ────────────────────────────── */

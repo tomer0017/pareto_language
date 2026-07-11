@@ -47,7 +47,12 @@ const SCENE: BootcampDialogue = {
     { id: 'n4', who: 'npc', next: 'c3', en: 'Here you go, one size up. And good news — it’s on sale, twenty percent off!', he: 'הנה, מידה אחת גדולה יותר. ובשורה טובה — זה במבצע, עשרים אחוז הנחה!' },
     { id: 'c3', who: 'you', en: '', he: '', choices: [
       { en: "Great, I'll take it.", he: 'מעולה, אני אקח את זה.', itemId: 'en.phrase.shop.take-it', correct: true, next: 'n5' },
-      { en: "It's a bit expensive.", he: 'זה קצת יקר.', itemId: 'en.phrase.shop.too-expensive', correct: true, next: 'n5' },
+      // An objection gets ANSWERED, not ignored — the price comment actually changes what they say.
+      { en: "It's a bit expensive.", he: 'זה קצת יקר.', itemId: 'en.phrase.shop.too-expensive', correct: true, next: 'n4b' },
+    ] },
+    { id: 'n4b', who: 'npc', next: 'c3b', en: "I understand — but it's already twenty percent off. That's the best price I can do.", he: 'אני מבין — אבל זה כבר בעשרים אחוז הנחה. זה המחיר הכי טוב שאני יכול לתת.' },
+    { id: 'c3b', who: 'you', en: '', he: '', choices: [
+      { en: "Okay, I'll take it.", he: 'בסדר, אני אקח את זה.', itemId: 'en.phrase.shop.take-it', correct: true, next: 'n5' },
     ] },
     { id: 'n5', who: 'npc', end: true, en: 'Wonderful — I’ll ring you up at the till. Thank you!', he: 'נהדר — אחייב אותך בקופה. תודה!' },
   ],

@@ -175,7 +175,7 @@ _Reply-training drill:_ “That's five euros.” · “That'll be ten euros.” 
 
 **Estimated time:** ~22 min
 
-**Video:** — (none yet)
+**Video:** `/videos/En_day4.mp4`
 
 ### Core phrases (you say)
 - **I'd like an iced coffee, please.** · אני רוצה קפה קר, בבקשה. — _התבנית: I’d like ___, please — עובדת על הכל._
@@ -243,7 +243,7 @@ _Reply-training drill:_ “For here or to go?” · “Medium or large?” · �
 
 **Estimated time:** ~22 min
 
-**Video:** — (none yet)
+**Video:** `/videos/En_day5.mp4`
 
 ### Core phrases (you say)
 - **A table for two, please.** · שולחן לשניים, בבקשה. — _הפתיח למסעדה. תבנית: a table for ___._

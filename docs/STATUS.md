@@ -287,3 +287,82 @@ pipeline/mission-logic/progress/content changes; all controls reuse their existi
 Verification: typecheck 0 · lint clean · **281 tests** · production build (13 precache entries) ·
 SMOKE PASS. Light polish only (staggered card entrances via the existing animation). Follow-ups:
 Videos becomes richer as more mission videos ship; Core's non-Phrases categories await content.
+
+---
+
+## Sprint — Pareto UX & Learning Experience (2026-07-11)
+
+UX + reusable-infrastructure sprint. No engine/schema/pipeline/pedagogy/Mongo changes; **no
+Bootcamp mission content changed** (`gen:conversations` produces zero diff). All controls reuse
+their existing stores; new UI is composable and content-agnostic.
+
+- **Dialogue Integrity Audit (P0).** New `scripts/audit-dialogues.ts` walks every mission's happy
+  path and flags any `correct: false` choice that routes into the happy path (NPC "continues as if
+  correct") or shares a target with a correct sibling. **Result: 0 blockers** — all 13 wrong-answer
+  branches across the 30 missions already route to dedicated recovery beats that acknowledge the
+  wrong pick; the runtime (`DialogueStep`) routes strictly by `choice.next`. The reported
+  "NPC ignores wrong answer" perception traced to the *absence of wrong-answer feedback*, fixed by
+  Tasks 4–5. Locked in with **30 new regression tests** (one per mission) so it can never regress.
+- **Resume Mission dialog (P0).** Entering a started-but-not-completed mission now asks *"Continue
+  your practice?"* → Continue where I left off · Start from the beginning. Restart calls the new
+  `restartDay()` which resets **only that mission's step index** — never completion, receipts,
+  review events, or any other mission. Fresh missions start immediately; completed ones keep
+  Practice-Again. New reusable `shared/ui/Modal.tsx` (generalizes the Videos popup pattern).
+- **One-screen listening (P0).** `ToolStep` no longer gates the reveal behind a manual "tap when
+  ready" (the gap testers read as a freeze). A play button + "Listening…" transforms *in place* the
+  instant playback finishes (speak() resolves) into sentence + translation + Replay + Continue.
+- **Global feedback system (P1).** ONE reusable system: `shared/audio/sfx.ts` (synthesized WebAudio
+  chime/error tones — no assets, fully offline), `haptics.error()`, `shared/ui/feedbackCue.ts`
+  (`feedbackCorrect/Wrong/feedback(ok)`), `shared/ui/Feedback.tsx` (two-polarity burst), and
+  `.fx-correct`/`.fx-wrong` motion + glow/shake in CSS. Wired through the shared `AnsweredView`
+  (Quiz + Replies), `DialogueStep`, and `AmbushStep` — success/failure now feels identical everywhere.
+- **Redesigned wrong-answer experience (P1).** `AnsweredView` wrong state now shows ❌ Not quite →
+  Your answer (struck-through) → The right answer → a one-line **Why?** → **Try Again · Continue**
+  (never auto-advances). Correct state trimmed to a lean celebration (removed the textbook filler).
+- **Pareto victory screen (P1).** Confetti + "{Mission} completed!" + three large action cards
+  (Watch Conversation · Open Transcript · Practice Again). The evidence wall is gone from the
+  default view — collapsed behind a tiny **"What did I learn?"** toggle (skill · mastered phrases ·
+  receipts). Celebrates achievement, not reading.
+- **Reading trimmed (P1).** Removed the "no rush / jot it in your notebook" and verbose why-lines
+  from answer feedback and the victory paragraph. Mission-intro copy (behind each mission's CTA) is
+  intentional content and left to native review, not chrome.
+- **Learning-game infrastructure (P2).** New `features/games/` — generic `GameWord`/`GameWordSource`
+  types, demo data (`mockWords.ts`), **Picture Quiz** (word → 4 emoji, generic over any word list),
+  and **Swipe Recall** (emoji card, press-&-hold reveal, swipe/buttons) over a **pure, unit-tested
+  re-queue engine** (`swipeRecall/engine.ts`, 6 tests) where unknown cards return after ~10–15
+  others — the exact seam a real SRS scheduler plugs into later. Both reuse the global feedback
+  system. Kept **unmounted from pilot nav** (English pilot stays honest) — ready to mount on Core 1500.
+
+Verification: typecheck 0 · lint clean · **318 tests** (was 281: +30 dialogue-integrity, +6 swipe
+engine, +1) · production build (13 precache entries) · SMOKE PASS · dialogue audit 0 blockers ·
+`gen:conversations` zero diff. Follow-ups: mount the two games when Core 1500 ships; consider a
+per-item "why" for missions lacking tips; native-Hebrew review of mission-intro copy.
+
+### Follow-up — pedagogical believability pass (same sprint)
+
+The first audit was structural (no `correct:false` choice silently rejoins the happy path — 0
+blockers). This pass experienced every conversation as a beginner and hunted the subtler bug the
+founder flagged: an answer that *feels* consequence-free. New `scripts/audit-choices.ts` dumps every
+choice node with the NPC prompt and the reaction each option produces — the review surface for the
+**alternate-correct** branches the auto-generated conversations doc never shows (which is exactly
+why these slipped through).
+
+- **Mission 8 (the founder's Example 1) — fixed.** "What's the wifi password?" and "Is breakfast
+  included?" both routed to the *same* breakfast answer — the receptionist ignored the wifi
+  question. The wifi choice now routes to its own line ("The wifi code is on your key card…"). The
+  NPC never answers a question you didn't ask.
+- **Mission 9 — fixed.** "It's a bit expensive" was ignored (NPC rang you up regardless). It now
+  gets an acknowledging beat ("it's already twenty percent off — best price I can do") before
+  closing. The objection changes what happens.
+- **Every wrong dialogue pick now MATTERS (the founder's Example 2).** In `DialogueStep`, a genuine
+  wrong pick (`correct:false`) no longer flashes the correction and moves on — it **pauses on a
+  "❌ Not quite" card** (with the error cue) and requires a tap before the NPC's recovery beat plays.
+  Mission 1's coaching mode is untouched ("never right/wrong", no error buzz).
+- **Cold/checkpoint missions (10, 18, 24, 28–30) intentionally left as-is:** their rushed NPC blows
+  past a recovery tool by design (real high-pressure moments); documented, not "fixed" (changing
+  them would lengthen and dilute the cold-integration intent).
+
+Locked with **2 new believability tests** (Missions 8 & 9). Verification: typecheck 0 · lint clean ·
+**320 tests** · build (13 precache) · SMOKE PASS · structural audit 0 blockers. Remaining for future
+review: the AI-drafted Hebrew of the new recovery lines; whether cold missions should offer a brief
+"repeat" beat for recovery tools.

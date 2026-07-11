@@ -72,13 +72,19 @@ hidden only inside an active mission (a focused, full-screen flow with its own c
   **🎯 Practice**, **📖 Conversation Transcript**, **🎬 Watch Video** (Coming Soon if no video).
 - **Practice** — the Bootcamp step-flow (talk → tools → expected-reply drills → quizzes →
   dialogue → sentence review → cold open → victory). Unlimited repeats; never "finished."
+  Listening is **one screen** (play → transforms in place when audio ends → sentence + Continue,
+  no "tap when ready" gate). A **started** mission asks *Continue vs Start over* before resuming.
+  Every answer runs the **one global feedback system** (`shared/ui/feedbackCue` + `Feedback` +
+  `.fx-*` motion + `shared/audio/sfx`): correct = chime/green glow, wrong = tone/shake + a
+  redesigned **wrong-answer view** (your answer · right answer · one-line Why? · Try Again / Continue).
 - **Transcript** — the full conversation as a premium bilingual reader with per-line replay,
   play-all / pause / restart / prev / next, and the current line highlighted.
 - **Video** — the full-conversation video (manual play, inline, replayable). Mission 2 ships one
   (`/videos/En_day2.mp4`); others show Coming Soon. Missing/broken video degrades gracefully.
-- **Victory Screen** — completion **celebrates** (confetti + "20 minutes ago you didn't understand
-  this — now watch it again"). Primary action is **Watch Full Conversation** (the reward), then
-  Transcript / Practice Again, with Next Mission as a quiet ghost action. Confidence before progress.
+- **Victory Screen** — completion **celebrates** with minimal reading (Pareto): confetti +
+  "{Mission} completed!" + three **large action cards** (Watch Conversation · Open Transcript ·
+  Practice Again). Evidence is not a wall — it is collapsed behind a tiny **"What did I learn?"**
+  toggle (skill · mastered phrases · receipts). Next Mission stays a quiet ghost action.
 
 ## 6. Learning flow (intended order)
 
@@ -101,6 +107,13 @@ tools and every pick is reframed as *more or less useful*, never right/wrong.
   registered in `bootcampStore.ts`'s `DAYS`. `plan.ts` = 30-mission metadata; `types.ts` = the
   content model; `transcript.ts` = happy-path linearizer; `recovery.ts` = the shared survival kit.
   A mission is data; the generic MissionPlayer renders it.
+- **Reusable UI/feedback (`shared/ui`, `shared/audio/sfx.ts`)** — `Modal` (confirm/choice dialogs),
+  `Feedback` + `feedbackCue` + `sfx` (the single success/error system: burst + glow/shake + chime/
+  tone + haptic, synthesized offline, wired through every drill). New patterns compose here first.
+- **Learning games (`features/games/*`)** — content-agnostic game infrastructure: `GameWord`/
+  `GameWordSource` types, `Picture Quiz`, and `Swipe Recall` over a **pure, unit-tested re-queue
+  engine** (unknown cards return after ~10–15 others — the SRS seam). Demo data today; Core 1500
+  later, same components. **Not mounted in the pilot nav** until real content exists.
 - **Content schema (`packages/content-schema`)** — `ContentPack` / `ContentItem` / `Situation` /
   memory + review types shared across web, server, engine, and the pipeline.
 - **Concept Layer + Pipeline (`content/`)** — the corpus → concepts → phrases → validated pack

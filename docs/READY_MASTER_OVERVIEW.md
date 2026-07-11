@@ -127,7 +127,12 @@ hidden only inside an active mission — a focused, full-screen flow with its ow
   restart / prev / next, current line highlighted.
 - **Practice** — the Bootcamp step-flow (talk → tools → expected-reply drills → quizzes → dialogue →
   sentence review → cold open → victory). Unlimited repeats; never "finished."
-- **Victory Screen** — the celebratory completion screen; primary action is Watch Full Conversation.
+- **Victory Screen** — the celebratory completion screen (Pareto): confetti + "{Mission}
+  completed!" + large action cards (Watch Conversation · Transcript · Practice Again); evidence is
+  collapsed behind a tiny "What did I learn?" toggle. Minimal reading, maximum celebration.
+- **Feedback system** — one reusable success/error system (burst + glow/shake + synthesized
+  chime/tone + haptic) fired by every drill, dialogue pick, quiz and game; wrong answers get a
+  redesigned view (your answer · right answer · one-line Why? · Try Again / Continue).
 - **Bottom Navigation** — the permanent, native, RTL-aware pill: Home / Bootcamp / Core / Profile.
 
 ## 6. Technical architecture
