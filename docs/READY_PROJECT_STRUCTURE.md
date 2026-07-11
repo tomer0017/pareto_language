@@ -121,10 +121,15 @@ tools and every pick is reframed as *more or less useful*, never right/wrong.
   engine** (unknown returns after ~10–15 — the SRS seam) with press-and-hold reveal. Both share the
   reusable **`AnswerFeedback`** + pure `answerContext.ts` builders (the full-context wrong-answer
   model, also used by every Bootcamp drill). The old `mockWords` remains for isolated tests only.
-- **Core 100 corpus (`content/core-en/*`, `content/concepts/core-en.yaml`)** — authored `pilot100.ts`
-  → pure `corpus.ts` (validate + transform) → `build-core-en.ts` emits the canonical concepts YAML
-  (seeded to Mongo via `seedConcepts`) and the offline app pack. The `Concept` schema carries additive
-  visual fields (`emoji`, `iconEligible`, `visualConfidence`, `rank`, `example`). See **CORE-100.md**.
+- **Core Corpus (`content/core-corpus/*`, `content/concepts/core-corpus.yaml`)** — the production
+  **Core 500**: authored concept rows (`data/*.ts`, 25 categories, five-part scorecard
+  freq/comm/recog/coverage/travel + RoF/layer/pos) → pure `corpus.ts` (validate · ROL · rank ·
+  realize) → `build-core.ts` (`npm run build:core`) emits the canonical concepts YAML (seeded to
+  Mongo via `seedConcepts`, idempotent) and **one offline pack per declared language**
+  (`core-{lang}.v1.json`, PWA-precached). Concept-first: gloss stored once; adding a language =
+  realizations + declaration, **zero code** (proven by test). The `Concept` schema carries additive
+  corpus fields (`pos`, `commScore`, `recogScore`, `imageEligible`, `aliases`, `relatedConcepts`,
+  `oppositeConcepts`). The Core 100 pilot migrated in with identical ids. See **CORE-CORPUS.md**.
 - **Content schema (`packages/content-schema`)** — `ContentPack` / `ContentItem` / `Situation` /
   memory + review types shared across web, server, engine, and the pipeline.
 - **Concept Layer + Pipeline (`content/`)** — the corpus → concepts → phrases → validated pack

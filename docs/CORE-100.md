@@ -1,4 +1,9 @@
-# READY Core 100 — the emoji-first vocabulary pilot
+# READY Core 100 — the emoji-first vocabulary pilot (SUPERSEDED)
+
+> **Superseded by the Core Corpus (Core 500)** — see **[CORE-CORPUS.md](./CORE-CORPUS.md)**. The
+> 100 pilot concepts were migrated verbatim (same slugs, ids, emoji, examples) into
+> `content/core-corpus/data/visual-pilot.ts`; the old `content/core-en` builder was retired.
+> This document remains as the historical record of the pilot's methodology and validation.
 
 > The first **real** slice of Core Words: 100 high-value, emoji-representable travel words used to
 > validate the word-learning system (Core Words · Picture Quiz · Swipe Recall · audio · translations

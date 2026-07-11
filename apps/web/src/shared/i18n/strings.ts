@@ -300,7 +300,7 @@ const en = {
   gameSwipeRecallSub: 'Reveal, then swipe what you knew',
   coreWordsLoading: 'Loading words…',
   coreWordsEmpty: 'Word content is being prepared — check back soon.',
-  coreWordsPickMode: 'Core 100 · {n} travel words',
+  coreWordsPickMode: 'Core Words · {n} travel words',
   // Global language strip
   stripLearnPrefix: 'Learning:',
   stripAppPrefix: 'App:',
@@ -578,7 +578,7 @@ const he: Partial<Record<StringKey, string>> = {
   gameSwipeRecallSub: 'חשפו, ואז החליקו את מה שידעתם',
   coreWordsLoading: 'טוען מילים…',
   coreWordsEmpty: 'תוכן המילים בהכנה — חזרו בקרוב.',
-  coreWordsPickMode: 'ליבה 100 · {n} מילות טיול',
+  coreWordsPickMode: 'מילות הליבה · {n} מילות טיול',
   // Global language strip
   stripLearnPrefix: 'לימוד:',
   stripAppPrefix: 'אפליקציה:',

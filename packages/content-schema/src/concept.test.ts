@@ -12,11 +12,21 @@ function loadSamples(): Concept[] {
   return raw.concepts.map((c) => ConceptSchema.parse(c));
 }
 
+/** exit/where graduated to the production corpus (core-corpus.yaml); this fixture mirrors the
+ *  original sample so the realization contract stays covered independent of content files. */
+const EXIT: Concept = ConceptSchema.parse({
+  id: 'concept.word.exit', kind: 'word',
+  gloss: { en: 'exit', he: 'יציאה', it: 'uscita' },
+  categories: ['signs'], rof: 2, layer: 1, skillTarget: 'recognize',
+  situationSlugs: ['directions'],
+  realizations: { en: { text: 'exit', quality: 'ai_reviewed' }, it: { text: 'uscita', quality: 'native_reviewed' } },
+});
+
 describe('Concept Layer (Sprint 3)', () => {
   it('sample concepts validate against the schema', () => {
     const concepts = loadSamples();
-    expect(concepts.length).toBe(3); // recovery.dont-understand moved to production missions-core.yaml
-    expect(concepts[0]!.gloss.he).toBe('יציאה');
+    expect(concepts.length).toBe(1); // only the Never-Teach demo remains; production lives in core-corpus.yaml
+    expect(concepts[0]!.neverTeach).toBe(true);
   });
 
   it('enforces the concept id convention and en gloss pivot', () => {
@@ -26,11 +36,10 @@ describe('Concept Layer (Sprint 3)', () => {
   });
 
   it('realizes to a valid per-language ContentItem with the frozen id convention', () => {
-    const [exit] = loadSamples();
-    const item = realizeConcept(exit!, 'it');
+    const item = realizeConcept(EXIT, 'it');
     expect(item).not.toBeNull();
-    expect(item!.id).toBe('it.word.uscita'.replace('uscita', 'exit')); // {lang}.{kind}.{slug}
-    expect(conceptItemId(exit!, 'fr')).toBe('fr.word.exit');
+    expect(item!.id).toBe('it.word.exit'); // {lang}.{kind}.{slug}
+    expect(conceptItemId(EXIT, 'fr')).toBe('fr.word.exit');
     expect(item!.text).toBe('uscita');
     expect(item!.meaning.he).toBe('יציאה'); // gloss flows through — stored once, used everywhere
     expect(item!.conceptId).toBe('concept.word.exit');
@@ -39,10 +48,8 @@ describe('Concept Layer (Sprint 3)', () => {
   });
 
   it('returns null for missing realizations and for neverTeach records', () => {
-    const concepts = loadSamples();
-    const where = concepts.find((c) => c.id === 'concept.word.where')!;
-    expect(realizeConcept(where, 'ar')).toBeNull(); // no ar realization yet
-    const carb = concepts.find((c) => c.id === 'concept.word.carburetor')!;
+    expect(realizeConcept(EXIT, 'ar')).toBeNull(); // no ar realization yet
+    const carb = loadSamples().find((c) => c.id === 'concept.word.carburetor')!;
     expect(realizeConcept(carb, 'en')).toBeNull(); // rejected concepts never realize
   });
 

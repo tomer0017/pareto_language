@@ -3,40 +3,54 @@ import type { LocalizedText } from '@ready/content-schema';
 import { L, t } from '../../shared/i18n/strings.js';
 import { speak } from '../../shared/audio/tts.js';
 import { tap } from '../../shared/ui/haptics.js';
+import { useAppStore } from '../../shared/stores/appStore.js';
 import { loadCoreWords, toGameWords, coreCategories, type CoreWord } from '../../shared/content/coreWords.js';
 import { PictureQuiz } from '../games/pictureQuiz/PictureQuiz.js';
 import { SwipeRecall } from '../games/swipeRecall/SwipeRecall.js';
 
 /**
- * Core Words (Part B) — the pilot's word-learning surface, backed by the REAL Core 100 (loaded
- * from the pipeline-generated, PWA-precached pack). One screen, one obvious next action: a small
- * menu of three modes — Browse · Picture Quiz · Swipe Recall — each opening a focused view.
- * Reuses the existing Core two-layer navigation (this renders inside the Core "Words" category).
+ * Core Words — the word-learning surface, backed by the REAL Core Corpus pack for the active
+ * learning language (pipeline-generated, PWA-precached; 500 concepts today). One screen, one
+ * obvious next action: Browse · Picture Quiz · Swipe Recall. Games receive only icon-eligible
+ * words (unique emoji); non-visual words appear in Browse with a neutral bullet.
  */
 type Mode = 'menu' | 'browse' | 'quiz' | 'recall';
 
 const CAT_LABEL: Record<string, LocalizedText> = {
+  glue: { en: 'Conversation glue', he: 'ביטויי שיחה' },
+  questions: { en: 'Questions', he: 'שאלות' },
+  pronouns: { en: 'Pronouns', he: 'כינויי גוף' },
+  numbers: { en: 'Numbers', he: 'מספרים' },
+  time: { en: 'Time', he: 'זמן' },
+  colors: { en: 'Colors', he: 'צבעים' },
   body: { en: 'Body', he: 'גוף' },
   food: { en: 'Food & drink', he: 'אוכל ושתייה' },
   animals: { en: 'Animals', he: 'חיות' },
   transport: { en: 'Transport', he: 'תחבורה' },
   places: { en: 'Places', he: 'מקומות' },
+  directions: { en: 'Directions', he: 'כיוונים' },
+  money: { en: 'Money & shopping', he: 'כסף וקניות' },
   objects: { en: 'Objects', he: 'חפצים' },
   clothing: { en: 'Clothing', he: 'ביגוד' },
+  home: { en: 'Room & home', he: 'חדר ובית' },
+  technology: { en: 'Technology', he: 'טכנולוגיה' },
+  health: { en: 'Health', he: 'בריאות' },
+  emergency: { en: 'Emergency', he: 'חירום' },
   weather: { en: 'Weather', he: 'מזג אוויר' },
-  health: { en: 'Health & emergency', he: 'בריאות וחירום' },
   nature: { en: 'Nature', he: 'טבע' },
   activities: { en: 'Activities', he: 'פעילויות' },
+  actions: { en: 'Actions', he: 'פעלים' },
+  descriptions: { en: 'Descriptions', he: 'תיאורים' },
   people: { en: 'People & family', he: 'אנשים ומשפחה' },
-  directions: { en: 'Directions', he: 'כיוונים' },
 };
 
 export function CoreWords() {
+  const learningLang = useAppStore((s) => s.learningLang);
   const [words, setWords] = useState<CoreWord[] | null>(null);
   const [mode, setMode] = useState<Mode>('menu');
   const [playing, setPlaying] = useState<string | null>(null);
 
-  useEffect(() => { void loadCoreWords().then(setWords); }, []);
+  useEffect(() => { void loadCoreWords(learningLang).then(setWords); }, [learningLang]);
   const gameWords = useMemo(() => (words ? toGameWords(words) : []), [words]);
 
   if (words === null) {
@@ -56,7 +70,7 @@ export function CoreWords() {
 
   if (mode === 'browse') {
     const cats = coreCategories(words);
-    const say = (w: CoreWord): void => { tap(); setPlaying(w.id); void speak(w.word, 'en').then(() => setPlaying((p) => (p === w.id ? null : p))); };
+    const say = (w: CoreWord): void => { tap(); setPlaying(w.id); void speak(w.word, learningLang).then(() => setPlaying((p) => (p === w.id ? null : p))); };
     return (
       <div style={{ marginTop: 8 }}>
         <button className="btn-ghost" onClick={() => setMode('menu')}>{t('back')}</button>
@@ -70,7 +84,7 @@ export function CoreWords() {
                 style={{ width: '100%', textAlign: 'start', background: 'var(--card)', borderRadius: 'var(--r-md)', border: 'none', padding: '10px 14px', marginBottom: 8, boxShadow: 'var(--shadow-card)', display: 'flex', alignItems: 'center', gap: 12 }}
                 onClick={() => say(w)}
               >
-                <span style={{ fontSize: '1.8rem' }} aria-hidden>{w.emoji}</span>
+                <span style={{ fontSize: '1.8rem', width: 34, textAlign: 'center' }} aria-hidden>{w.emoji ?? '·'}</span>
                 <span style={{ minWidth: 0, flex: 1 }}>
                   <span style={{ display: 'block', fontWeight: 700 }}>{w.word}</span>
                   <span className="dim small" style={{ display: 'block' }}>{L(w.meaning)}</span>

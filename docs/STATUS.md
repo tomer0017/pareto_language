@@ -439,3 +439,35 @@ Verification: typecheck 0 · lint clean · **341 tests** (21 files, +4 session t
 build (15 precache) · SMOKE PASS. Both games shipped through the existing `CoreWords` entry (bottom
 nav unchanged). Remaining: haptics/animation feel is best judged on a real device; expression
 shortlist awaits native review before any content work.
+
+## Sprint — Core Corpus (Core 500, multilingual foundation) (2026-07-11)
+
+READY's first production corpus: **500 language-independent concepts** replacing the 100-word
+pilot, built so that **adding a language is content-only** (the sprint's success criterion).
+
+- **New `content/core-corpus/`** (retires `content/core-en/` builders): authored rows in
+  `data/*.ts` (25-category taxonomy) → pure `corpus.ts` (validation · ROL · ranking · realization)
+  → `build-core.ts` emits `content/concepts/core-corpus.yaml` (seeded to Mongo idempotently) and
+  **one offline pack per declared language** (`core-{lang}.v1.json`, PWA-precached).
+- **The Core 100 migrated verbatim** (same slugs/ids/emoji/examples) — no Mongo churn, no orphaned
+  review events, no progress reset. `exit`/`where` graduated from `samples.yaml` to the corpus.
+- **Two-sided scoring**: every concept carries `s: [freq, comm(say), recog(hear), coverage,
+  travel]` + RoF + layer + pos; the schema gained additive optional fields (`pos`, `commScore`,
+  `recogScore`, `imageEligible`, `aliases`, `relatedConcepts`, `oppositeConcepts`) and the Mongo
+  ConceptModel mirrors them. Selection followed CORPUS-METHODOLOGY v2 (Never-Teach enforced; no
+  duplicate of Bootcamp-owned meanings like *thank you / sorry / how much*).
+- **Validation gates fail the build** on: wrong total (500) · duplicate slug/surface/emoji ·
+  missing gloss/example/scores · invalid category/layer/RoF · broken related/opposite refs ·
+  emoji without visual confidence · undeclared/incomplete languages · **cross-file concept-id
+  duplicates** across all `content/concepts/*.yaml` (seed integrity).
+- **Web**: `loadCoreWords(lang)` + `speak(word, learningLang)` are language-parameterized; pack
+  rows have optional emoji — games consume exactly the **218 icon-eligible** words (unique emoji =
+  distractor safety); Browse shows all 500 grouped by category. Games/components unchanged.
+- **French readiness proven by test**: `core-corpus.test.ts` builds a fake-language pack through
+  the production functions; language completeness is a hard validator error. See
+  **[CORE-CORPUS.md](./CORE-CORPUS.md)** (philosophy · methodology · how to add concepts/languages).
+
+Verification: typecheck 0 · lint clean · **347 tests** (21 files; 13 new corpus gates; schema
+sample tests updated) · pipeline + seed green (Mongo idempotent upsert of all 500) · production
+build (15 precache, en pack ~205 KB) · SMOKE PASS. Honest status: Hebrew glosses + realizations
+ship `ai_reviewed` pending native review; scores are expert estimates pending the telemetry flywheel.
