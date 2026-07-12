@@ -171,6 +171,9 @@ const en = {
   niceRecovery: 'Nice recovery — the conversation continues.',
   checkpointTag: 'Checkpoint',
   testAudioBtn: '🔊 Tap to test sound',
+  testVoiceBtn: '🔊 Test the voice',
+  voiceFallbackNote: 'system voice',
+  voiceAccentNote: 'different regional accent',
   audioReady: '🔊 Sound is on',
   audioHint: 'READY speaks to you. Tap once to enable sound on this device.',
   // Sprint 9 — learning flow (manual NEXT, explain, unlimited replay)
@@ -453,6 +456,9 @@ const he: Partial<Record<StringKey, string>> = {
   niceRecovery: 'התאוששות יפה — השיחה ממשיכה.',
   checkpointTag: 'נקודת ביקורת',
   testAudioBtn: '🔊 הקש כדי לבדוק קול',
+  testVoiceBtn: '🔊 בדיקת הקול',
+  voiceFallbackNote: 'קול מערכת',
+  voiceAccentNote: 'מבטא אזורי שונה',
   audioReady: '🔊 הקול פועל',
   audioHint: 'READY מדבר אליך. הקש פעם אחת כדי להפעיל קול במכשיר הזה.',
   // Sprint 9 — learning flow

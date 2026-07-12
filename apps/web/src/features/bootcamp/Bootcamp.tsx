@@ -28,7 +28,7 @@ function resolveAsset(src: string): string {
 /** Speak a mission line in the ACTIVE learning language (the target — English pilot, French
  *  mission, …). Reads the app store at call time so it always matches the mission being played;
  *  replaces the old hardcoded English voice that made every mission sound English. */
-function speakL(text: string, rate?: number): Promise<void> {
+function speakL(text: string, rate?: number): ReturnType<typeof speak> {
   return speak(text, useAppStore.getState().learningLang, rate);
 }
 
@@ -236,6 +236,7 @@ function MissionMap() {
 
 function AudioEnable() {
   const diag = useSyncExternalStore(subscribeAudioDiag, getAudioDiag, getAudioDiag);
+  const learningLang = useAppStore((s) => s.learningLang);
   const [testing, setTesting] = useState(false);
   return (
     <button
@@ -244,7 +245,7 @@ function AudioEnable() {
       onClick={async () => {
         unlockAudio();
         setTesting(true);
-        await testAudio();
+        await testAudio(learningLang);
         setTesting(false);
       }}
     >
@@ -372,10 +373,12 @@ function ToolStep({ step, item, onDone }: { step: Extract<BootcampStep, { kind: 
   useEffect(() => {
     if (played.current) return;
     played.current = true;
-    void speakL(item.text).then(reveal);
+    // Reveal on any terminal state (incl. audio unavailable) EXCEPT interruption — an interrupted
+    // utterance means a newer one is now driving the screen.
+    void speakL(item.text).then((r) => { if (r !== 'interrupted') reveal(); });
   }, [item.text]);
 
-  const replayListen = (): void => void speakL(item.text).then(reveal);
+  const replayListen = (): void => void speakL(item.text).then((r) => { if (r !== 'interrupted') reveal(); });
 
   return (
     <>
@@ -606,8 +609,8 @@ function DialogueStep({ dialogue, onDone }: { dialogue: BootcampDialogue; onDone
     if (!node) return;
     let cancelled = false;
     if (node.who === 'npc') {
-      void speakL(node.en, node.fast ? 1.08 : node.slow ? 0.75 : 0.95).then(() => {
-        if (cancelled) return;
+      void speakL(node.en, node.fast ? 1.08 : node.slow ? 0.75 : 0.95).then((r) => {
+        if (cancelled || r !== 'ended') return; // interrupted audio never advances the dialogue
         if (node.end) {
           setTimeout(() => !cancelled && onDone(), 800);
         } else if (node.next) {
@@ -617,8 +620,8 @@ function DialogueStep({ dialogue, onDone }: { dialogue: BootcampDialogue; onDone
     } else if (node.who === 'you' && node.next && !node.choices) {
       // scripted you-line: the app voices it for you, then moves on
       setYourLine(node.en);
-      void speakL(node.en, 0.92).then(() => {
-        if (!cancelled) setTimeout(() => setNodeId(node.next!), 500);
+      void speakL(node.en, 0.92).then((r) => {
+        if (!cancelled && r === 'ended') setTimeout(() => setNodeId(node.next!), 500);
       });
     }
     return () => {
@@ -711,7 +714,10 @@ function DialogueStep({ dialogue, onDone }: { dialogue: BootcampDialogue; onDone
                       setPicked(c);
                       void speakL(c.en, 0.92);
                     } else {
-                      void speakL(c.en, 0.92).then(() => setNodeId(c.next));
+                      // Advance only when the line finishes naturally; a rapid re-tap that
+                      // supersedes this utterance resolves 'interrupted' and must not double-advance.
+                      const target = c.next;
+                      void speakL(c.en, 0.92).then((r) => { if (r === 'ended') setNodeId(target); });
                     }
                   }}
                 >
@@ -999,8 +1005,9 @@ function DialogueReader({ dialogue, onClose, onFinish }: { dialogue: BootcampDia
       for (let i = from; i < lines.length; i++) {
         if (token !== runToken.current) return; // paused / closed / stepped away
         setCurrent(i);
-        await speakL(lines[i]!.en, 0.95);
-        if (token !== runToken.current) return;
+        const r = await speakL(lines[i]!.en, 0.95);
+        // Stop on any interruption (a newer utterance or stop()) — a cancelled line never advances.
+        if (token !== runToken.current || r === 'interrupted') return;
         await new Promise((r) => setTimeout(r, 350)); // a beat between speakers
       }
       if (token === runToken.current) setPlaying(false);

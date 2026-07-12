@@ -47,3 +47,18 @@ docs/                     this folder
 | `scheduler.ts` | Deadline-aware greedy: `value × R-gain / seconds-cost` toward `R(T_departure)` | §8.3 |
 | `planner.ts` | Tier selection, situation ordering, new-item taper, graceful re-plan | §8.1 |
 | `readiness.ts` | Honest badges: notStarted / inProgress / ready / fading | §10.4 |
+
+## Audio / TTS (apps/web/src/shared/audio)
+
+Runtime, free, cross-device speech via the Web Speech API — no cloud, no keys, no server, offline-capable.
+
+| Module | Responsibility |
+| --- | --- |
+| `tts.ts` | Central `speak(text, lang, rate) → Promise<SpeakResult>`; Chrome unlock + keep-alive + visibility-resume; global speech rate; diagnostics; asset-first `playItem`. |
+| `voiceResolver.ts` | Pure, scored voice selection with explicit **match quality** (`exact-locale` ≫ `approved-fallback` ≫ `same-language-different-region`; wrong language disqualified). Regional accents are NOT equivalent (en-US ≠ en-GB); a different region is degraded, never a native match. + `prepareTextForSpeech`. |
+| `voiceProfiles.ts` | Per-language speech profile derived from the registry locale (`languageTtsTag`) + fallbacks / preferred names / test phrase. |
+
+The **learning language** (not the UI/OS language) selects the voice. `SpeakResult`
+(`ended|interrupted|error|unavailable`) lets chained actions (dialogue advance, Play-All) proceed only
+on a natural finish. Full research, resolver rules, fallback ladder and honest limits:
+**[TTS_RESEARCH.md](./TTS_RESEARCH.md)**.

@@ -1,4 +1,6 @@
 import type { ContentItem } from '@ready/content-schema';
+import { resolveVoice, prepareTextForSpeech, isNativeAccent, type VoiceLike, type VoiceMatchQuality } from './voiceResolver.js';
+import { speechProfile } from './voiceProfiles.js';
 
 /**
  * Audio playback (asset-first, Web Speech fallback).
@@ -26,7 +28,13 @@ import type { ContentItem } from '@ready/content-schema';
  * running engine, so the keep-alive is a harmless no-op there.
  */
 
-const LANG_TAG: Record<string, string> = { it: 'it-IT', en: 'en-US', es: 'es-ES', fr: 'fr-FR', ar: 'ar-SA' };
+/**
+ * How a speak() request ended — so callers can distinguish a natural finish from an interruption.
+ * A chained action (dialogue auto-advance, Transcript Play-All) MUST only proceed on `ended`; when a
+ * newer utterance supersedes this one (or the learner navigates), the result is `interrupted` and the
+ * stale callback is ignored — never advancing the UI after the audio it belonged to was cancelled.
+ */
+export type SpeakResult = 'ended' | 'interrupted' | 'error' | 'unavailable';
 
 /* ── Diagnostics (dev panel + Test Audio) ───────────────────────────────── */
 
@@ -36,6 +44,12 @@ export interface AudioDiag {
   voicesLoaded: number;
   selectedVoice: string | null;
   selectedLang: string | null;
+  /** Resolver score of the selected voice (diagnostics; null when engine default / none). */
+  selectedScore: number | null;
+  /** Explicit accent match quality of the selected voice (honest — never flattens a wrong region). */
+  selectedQuality: VoiceMatchQuality;
+  /** True ONLY for a native-accent match (exact locale or an explicitly approved fallback). */
+  selectedExact: boolean;
   lastRequest: string | null;
   lastError: string | null;
   unlocked: boolean;
@@ -58,6 +72,9 @@ const diag: AudioDiag = {
   voicesLoaded: 0,
   selectedVoice: null,
   selectedLang: null,
+  selectedScore: null,
+  selectedQuality: 'unavailable',
+  selectedExact: false,
   lastRequest: null,
   lastError: null,
   unlocked: false,
@@ -157,12 +174,66 @@ export function ttsAvailable(): boolean {
   return typeof speechSynthesis !== 'undefined' && typeof SpeechSynthesisUtterance !== 'undefined';
 }
 
-function voiceFor(langTag: string): SpeechSynthesisVoice | undefined {
+/**
+ * Bounded wait for the voice list to populate (Chrome/Safari load voices asynchronously). Resolves
+ * as soon as voices appear (via `voiceschanged` or a short poll) or after ~1.2s — never an infinite
+ * loop. Not awaited on the gesture-critical first speak (that would break the iOS gesture chain);
+ * used by Test Voice / diagnostics where a small delay is fine.
+ */
+function ensureVoices(timeoutMs = 1200): Promise<void> {
+  return new Promise((resolve) => {
+    if (!ttsAvailable()) return resolve();
+    refreshVoices();
+    if (cachedVoices.length > 0) return resolve();
+    let settled = false;
+    const finish = (): void => {
+      if (settled) return;
+      settled = true;
+      speechSynthesis.removeEventListener?.('voiceschanged', onChange);
+      clearInterval(poll);
+      clearTimeout(timer);
+      resolve();
+    };
+    const onChange = (): void => { refreshVoices(); if (cachedVoices.length > 0) finish(); };
+    speechSynthesis.addEventListener?.('voiceschanged', onChange);
+    const poll = setInterval(() => { refreshVoices(); if (cachedVoices.length > 0) finish(); }, 150);
+    const timer = setTimeout(finish, timeoutMs);
+  });
+}
+
+/** Resolve the best voice for a learning language via the scored resolver (registry locale). */
+function voiceFor(lang: string): { voice: SpeechSynthesisVoice; score: number; quality: VoiceMatchQuality } | null {
   if (cachedVoices.length === 0) refreshVoices();
-  return (
-    cachedVoices.find((v) => v.lang === langTag) ??
-    cachedVoices.find((v) => v.lang.replace('_', '-').toLowerCase().startsWith(langTag.slice(0, 2).toLowerCase()))
-  );
+  const profile = speechProfile(lang);
+  const scored = resolveVoice(cachedVoices as VoiceLike[], profile);
+  if (!scored) return null;
+  return { voice: scored.voice as SpeechSynthesisVoice, score: scored.score, quality: scored.quality };
+}
+
+/** UI-facing voice info for Test Voice / diagnostics: the target locale + what actually resolved. */
+export interface VoiceInfo {
+  locale: string;
+  voiceName: string | null;
+  voiceLocale: string | null;
+  /** Explicit accent quality — distinguishes exact / approved / different-region / browser-managed. */
+  quality: VoiceMatchQuality;
+  /** True only for a genuine native accent (exact or approved). A different region is NOT native. */
+  nativeAccent: boolean;
+  available: boolean; // any correct-language voice exists on this device
+}
+export async function resolveVoiceInfo(lang: string): Promise<VoiceInfo> {
+  await ensureVoices();
+  const profile = speechProfile(lang);
+  const hit = voiceFor(lang);
+  const quality: VoiceMatchQuality = hit ? hit.quality : ttsAvailable() ? 'browser-managed' : 'unavailable';
+  return {
+    locale: profile.locale,
+    voiceName: hit?.voice.name ?? null,
+    voiceLocale: hit?.voice.lang ?? null,
+    quality,
+    nativeAccent: isNativeAccent(quality),
+    available: hit !== null,
+  };
 }
 
 /* ── Gesture unlock ─────────────────────────────────────────────────────── */
@@ -172,6 +243,7 @@ export function unlockAudio(): void {
   if (diag.unlocked || !ttsAvailable()) return;
   try {
     speechSynthesis.resume(); // Chrome can get stuck paused
+    refreshVoices(); // the gesture is also a good moment to (re)load the voice list
     const primer = new SpeechSynthesisUtterance(' ');
     primer.volume = 0; // silent — this call's only job is to satisfy the gesture policy
     speechSynthesis.speak(primer);
@@ -234,81 +306,96 @@ export function cancelSpeech(): void {
   }
 }
 
-/** Speak text via Web Speech. Resolves when done; resolves (never rejects) on failure. */
-export function speak(text: string, lang = 'en', rate = 1): Promise<void> {
+/**
+ * Speak text in a LEARNING language via Web Speech. Resolves (never rejects) with a `SpeakResult`:
+ * `ended` on natural finish, `interrupted` when superseded/cancelled, `error`/`unavailable` otherwise.
+ * The locale comes from the language registry (via the speech profile) and the voice from the scored
+ * resolver — a wrong-language voice is never chosen; when no correct voice exists we still set the
+ * locale tag so the engine speaks the right language. Effective rate = per-call rate × global speed.
+ */
+export function speak(text: string, lang = 'en', rate = 1): Promise<SpeakResult> {
   return new Promise((resolve) => {
-    diag.lastRequest = `${lang} · "${text.slice(0, 42)}" @${rate}`;
+    const profile = speechProfile(lang);
+    const tag = profile.locale;
+    diag.lastRequest = `${lang}→${tag} · "${text.slice(0, 42)}" @${rate}`;
     if (!ttsAvailable()) {
       diag.lastError = 'speechSynthesis unavailable';
       emit();
       console.warn('[audio] speechSynthesis unavailable; drill continues text-only');
-      resolve();
+      resolve('unavailable');
       return;
     }
+    const spoken = prepareTextForSpeech(text);
+    if (spoken === '') { resolve('ended'); return; } // nothing audible (e.g. an emoji-only line)
     const synth = speechSynthesis;
     try {
+      // A new utterance supersedes any in-flight one; its promise settles 'interrupted' below.
       if (synth.speaking || synth.pending) synth.cancel();
       synth.resume(); // defensive: unstick a paused engine (Chrome)
 
-      const u = new SpeechSynthesisUtterance(text);
+      const u = new SpeechSynthesisUtterance(spoken);
       activeUtterance = u;
-      // Effective rate = per-call rate × the user's global speed, kept in a sane utterance band.
-      u.rate = Math.min(1.5, Math.max(0.5, rate * userRate));
-      const tag = LANG_TAG[lang] ?? lang;
-      u.lang = tag;
-      const voice = voiceFor(tag);
-      if (voice) {
-        u.voice = voice;
-        diag.selectedVoice = `${voice.name} (${voice.lang})`;
+      const base = profile.defaultRate ?? 1;
+      u.rate = Math.min(1.5, Math.max(0.5, rate * base * userRate));
+      u.lang = tag; // ALWAYS set — even without an explicit voice, this drives the language
+      const hit = voiceFor(lang);
+      if (hit) {
+        u.voice = hit.voice;
+        diag.selectedVoice = `${hit.voice.name} (${hit.voice.lang})`;
+        diag.selectedScore = hit.score;
+        diag.selectedQuality = hit.quality;
+        diag.selectedExact = isNativeAccent(hit.quality);
       } else {
-        diag.selectedVoice = '(browser default)'; // fallback: unset voice still speaks tag
+        // No specific voice — the engine picks from the locale tag we set on the utterance.
+        diag.selectedVoice = '(engine default for locale)';
+        diag.selectedScore = null;
+        diag.selectedQuality = 'browser-managed';
+        diag.selectedExact = false;
       }
       diag.selectedLang = tag;
       emit();
 
       let settled = false;
-      const done = (error?: string): void => {
+      const done = (result: SpeakResult, error?: string): void => {
         if (settled) return;
         settled = true;
-        if (error) {
-          diag.lastError = error;
-          emit();
-        }
+        if (error) { diag.lastError = error; emit(); }
         if (activeUtterance === u) {
           activeUtterance = null;
           stopKeepAlive(); // no live utterance of ours — let the engine idle
         }
-        resolve();
+        resolve(result);
       };
-      u.onend = () => done();
+      u.onend = () => done('ended');
       u.onerror = (e) => {
-        // 'interrupted'/'canceled' are our own cancel() — not real failures.
+        // 'interrupted'/'canceled' are our own cancel() — a supersede, not a failure.
         const err = e.error;
-        done(err && err !== 'interrupted' && err !== 'canceled' ? `speak error: ${err}` : undefined);
+        if (err === 'interrupted' || err === 'canceled') done('interrupted');
+        else done('error', `speak error: ${err}`);
       };
       synth.speak(u);
       startKeepAlive(); // keep Chrome's engine alive for the whole utterance
       // Safety net scaled to text length — some engines never fire onend.
-      setTimeout(() => done(), Math.max(4000, text.length * 220));
+      setTimeout(() => done('ended'), Math.max(4000, spoken.length * 220));
     } catch (err) {
       diag.lastError = `speak threw: ${String(err)}`;
       emit();
       console.warn('[audio] TTS threw; drill continues text-only', err);
-      resolve();
+      resolve('error');
     }
   });
 }
 
-/** Audible self-test for the Test Audio button — real English at full volume. */
-export function testAudio(): Promise<void> {
+/** Audible self-test for the Test Audio button — the learning language's natural test phrase. */
+export function testAudio(lang = 'en'): Promise<SpeakResult> {
   unlockAudio();
-  return speak('Hello! Ready audio is working.', 'en', 1);
+  return speak(speechProfile(lang).testPhrase, lang, 1);
 }
 
-/** Preview the current global speech speed on a natural sentence (Learning Preferences). */
-export function testVoice(): Promise<void> {
+/** Preview the current global speech speed on a natural sentence in the learning language. */
+export function testVoice(lang = 'en'): Promise<SpeakResult> {
   unlockAudio();
-  return speak('This is how fast the sentences will sound.', 'en', 1);
+  return speak(speechProfile(lang).testPhrase, lang, 1);
 }
 
 /* ── Asset-first item playback ──────────────────────────────────────────── */

@@ -52,7 +52,15 @@ export function Profile() {
             <span style={{ fontWeight: 700 }}>{t('sound')}</span>
             <span className={`badge ${diag.unlocked ? 'badge-ready' : 'badge-notStarted'}`}>{diag.unlocked ? t('audioReady') : t('audioOff')}</span>
           </div>
-          <button className="btn-secondary" onClick={() => { tap(); unlockAudio(); void testAudio(); }}>🔊 {t('testAudioBtn')}</button>
+          <button className="btn-secondary" onClick={() => { tap(); unlockAudio(); void testAudio(app.learningLang); }}>🔊 {t('testVoiceBtn')}</button>
+          {/* Honest: the browser/OS owns the voices — show the locale we target and what resolved. */}
+          {diag.selectedVoice && (
+            <p className="faint small" style={{ marginTop: 8 }}>
+              {diag.selectedLang} · {diag.selectedVoice}
+              {diag.selectedQuality === 'same-language-different-region' && ' · ' + t('voiceAccentNote')}
+              {diag.selectedQuality === 'browser-managed' && ' · ' + t('voiceFallbackNote')}
+            </p>
+          )}
         </div>
 
         {/* ── Coming soon ── */}

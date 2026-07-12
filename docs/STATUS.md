@@ -22,6 +22,35 @@ loop (typecheck → lint → tests → build → smoke) green at every milestone
 
 ## What's done
 
+### Sprint — Cross-device TTS engine: scored voice resolver + outcome model (2026-07-12)
+- **Scored VoiceResolver** (`shared/audio/voiceResolver.ts`, pure + 16 tests): ranks the OS's
+  installed voices — exact locale +1000, ordered fallback locale, same-base region, preferred-name
+  bonus, local-voice bonus, engine-default; **wrong language disqualified**. `en-US` beats `en-GB`,
+  `fr-FR` beats `fr-CA`, a preferred name never overrides a wrong locale, and no correct voice →
+  `null` (speak the locale tag, never a wrong-language voice).
+- **Registry-driven profiles** (`voiceProfiles.ts`): locale = `languageTtsTag(lang)` (single source
+  of truth — the old `LANG_TAG` duplicate table is gone) + per-language fallbacks/preferred names/
+  natural test phrase (en/fr/it/es/ar).
+- **Outcome model:** `speak()` now returns `Promise<SpeakResult>` (`ended|interrupted|error|
+  unavailable`). Dialogue auto-advance, scripted you-lines, Transcript **Play-All** and the listening
+  reveal proceed **only on `ended`** — a superseded/cancelled utterance never advances the UI (fixes
+  a real stale-callback bug). Mocked-engine tests cover ended/interrupted/unavailable + locale.
+- **Voice loading** hardened: bounded `ensureVoices()` (≤1.2s, `voiceschanged` + poll, no infinite
+  loop), voices refreshed on the unlock gesture. Preserved Chrome keep-alive + visibility-resume +
+  iOS gesture-unlock + global speech-rate (all still green). `prepareTextForSpeech` strips emoji only
+  from the spoken string (display unchanged).
+- **Test Voice** now speaks the **active learning language's** natural phrase and shows the resolved
+  locale + voice + an honest note when the accent is a different region / a system voice.
+- **Explicit accent match quality** (correction pass): `exact-locale` / `approved-fallback` /
+  `same-language-different-region` / `browser-managed` / `unavailable`. **Regional accents are not
+  equivalent** — en-US ≠ en-GB, fr-FR ≠ fr-CA, es-ES ≠ es-MX; only registry-approved locales are
+  `approved-fallback` (today: region-neutral base only), and a different region is degraded/last-resort,
+  never surfaced as native. Tests assert this.
+- **Honesty:** Chrome/Safari/iOS/Android/Edge reliability is **implemented from browser documentation,
+  NOT validated on physical devices** in this environment (mocked-engine tests only). Device QA matrix
+  is pending. See **[TTS_RESEARCH.md](./TTS_RESEARCH.md)** §10.
+- Gates: typecheck · lint · **428 tests** · build · smoke (offline).
+
 ### Sprint — Display consolidation + French missions 3–4 + Early Access end-state (2026-07-12)
 - **Canonical display resolver adopted in the real app.** `resolveLearningItem(item, appLang,
   learningLang) → LearningDisplayModel` (`shared/i18n/display.ts`) is now the single path Core Words
