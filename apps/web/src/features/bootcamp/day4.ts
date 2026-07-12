@@ -134,6 +134,18 @@ export const DAY4: BootcampDayContent = {
         T('היום לא לומדים "מילים על קפה". היום לומדים לצאת מבית קפה עם ארוחת בוקר ביד.', 'Today we don’t learn “coffee words”. Today you walk out of a café holding breakfast.'),
         T('הסוד: אחרי שאתה מזמין, הבריסטה שואל שאלות המשך. מי שמכיר אותן מראש — אף פעם לא קופא.', 'The secret: after you order, the barista fires follow-up questions. Know them in advance — never freeze.'),
       ], cta: T('להיכנס', 'Walk in') },
+    // Vocabulary priming (Part 7): the six café building blocks that control every order, taught
+    // before the full sentences. milk + no + sugar compose "Milk, no sugar." — the assemble beat.
+    { kind: 'prime', label: T('לפני שנדבר', 'Before we speak'),
+      intro: T('שש מילים שולטות בכל הזמנה בבית קפה.', 'Six words control every café order.'),
+      words: [
+        { text: 'coffee', meaning: T('קפה', 'coffee'), emoji: '☕' },
+        { text: 'milk', meaning: T('חלב', 'milk'), emoji: '🥛' },
+        { text: 'sugar', meaning: T('סוכר', 'sugar'), emoji: '🍬' },
+        { text: 'medium', meaning: T('בינוני', 'medium') },
+        { text: 'with', meaning: T('עם', 'with') },
+        { text: 'no / without', meaning: T('בלי', 'no / without') },
+      ], buildFromItemId: 'en.phrase.coffee.no-sugar' },
     { kind: 'tool', itemId: 'en.phrase.coffee.iced-coffee', index: 1, total: 4, label: T('משפט הזהב', 'The golden template') },
     { kind: 'tool', itemId: 'en.phrase.coffee.no-sugar', index: 2, total: 4, label: T('שליטה בהזמנה', 'Order control') },
     { kind: 'tool', itemId: 'en.phrase.coffee.thats-all', index: 3, total: 4, label: T('הסוגר האוניברסלי', 'The universal closer') },

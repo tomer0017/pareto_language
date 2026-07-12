@@ -125,6 +125,17 @@ export const DAY1_FR: BootcampDayContent = {
         T('השתמשת בכלי הישרדות. עכשיו נכיר את כל השבעה — אחד-אחד.', 'You used survival tools. Now let’s meet all seven — one by one.'),
         T('אלה לא "מילים ללימוד". אלה רפלקסים.', 'These aren’t “vocabulary”. They’re reflexes.'),
       ] },
+    // Vocabulary priming (Part 6), French parallel: the smallest word foundation before the tools.
+    // "Désolé, je ne comprends pas." is composed of désolé + je + comprends — met here first.
+    { kind: 'prime', label: T('לפני שנדבר', 'Before we speak'),
+      intro: T('כמה מילים קטנות שחוזרות בכל הכלים.', 'A few tiny words that recur across the tools.'),
+      words: [
+        { text: 'désolé', meaning: T('סליחה', 'sorry'), emoji: '🙏' },
+        { text: 'je', meaning: T('אני', 'I') },
+        { text: 'comprends', meaning: T('מבין', 'understand'), emoji: '💡' },
+        { text: 'lentement', meaning: T('לאט', 'slowly'), emoji: '🐢' },
+        { text: 's’il vous plaît', meaning: T('בבקשה', 'please') },
+      ], buildFromItemId: 'fr.phrase.recovery.dont-understand' },
     { kind: 'tool', itemId: 'fr.phrase.recovery.dont-understand', index: 1, total: 7 },
     { kind: 'tool', itemId: 'fr.phrase.recovery.repeat', index: 2, total: 7 },
     { kind: 'tool', itemId: 'fr.phrase.recovery.slowly', index: 3, total: 7 },

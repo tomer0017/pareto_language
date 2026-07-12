@@ -18,8 +18,10 @@ import type { PartOfSpeech } from '@ready/content-schema';
 /** Realization languages the corpus currently ships. Adding a language starts here (content). */
 export const DECLARED_LANGS = ['en'] as const;
 
-/** Corpus target size — the validator enforces exactly this many concepts. */
-export const CORPUS_SIZE = 500;
+/** Corpus target size — the validator enforces exactly this many concepts. Grew from 500 → 511
+ *  when the high-reuse connectors/function words (with, without, and, or, here, there, can, more,
+ *  less, medium, large) were promoted from in-mission-only to global Core concepts. */
+export const CORPUS_SIZE = 511;
 
 export const CORE_CORPUS_VERSION = '2.0.0';
 

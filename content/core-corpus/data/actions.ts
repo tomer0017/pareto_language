@@ -35,6 +35,7 @@ export const ACTIONS: CorpusRow[] = [
   { slug: 'wait', pos: 'verb', en: 'wait', he: 'לחכות', cat: 'actions', layer: 1, rof: 2, skill: 'recall', s: [5, 4, 5, 5, 4], ex: 'Please wait here.', exHe: 'נא לחכות כאן.' },
   { slug: 'stop', pos: 'verb', en: 'stop', he: 'לעצור', cat: 'actions', layer: 1, rof: 3, skill: 'recall', s: [4, 5, 5, 4, 5], emoji: '🛑', vis: 0.9, ex: 'Stop here, please.', exHe: 'תעצור כאן, בבקשה.' },
   { slug: 'help', pos: 'verb', en: 'help', he: 'לעזור', cat: 'actions', layer: 1, rof: 3, skill: 'recall', s: [5, 5, 5, 5, 5], ex: 'Can you help me?', exHe: 'אתה יכול לעזור לי?' },
+  { slug: 'can', pos: 'verb', en: 'can', he: 'יכול', cat: 'actions', layer: 1, rof: 2, skill: 'recall', s: [5, 5, 5, 5, 4], ex: 'Can you help me?', exHe: 'אתה יכול לעזור לי?' },
   { slug: 'ask', pos: 'verb', en: 'ask', he: 'לשאול', cat: 'actions', layer: 2, rof: 1, skill: 'recall', s: [4, 4, 4, 4, 3], ex: "Let's ask someone.", exHe: 'בוא נשאל מישהו.', opp: ['answer'] },
   { slug: 'answer', pos: 'verb', en: 'answer', he: 'לענות', cat: 'actions', layer: 2, rof: 1, skill: 'recognize', s: [4, 2, 4, 3, 2], ex: 'Nobody answers.', exHe: 'אף אחד לא עונה.', opp: ['ask'] },
   { slug: 'call', pos: 'verb', en: 'call', he: 'להתקשר', cat: 'actions', layer: 2, rof: 2, skill: 'recall', s: [5, 4, 4, 4, 4], emoji: '📞', vis: 0.85, ex: 'Please call a taxi.', exHe: 'תזמין מונית, בבקשה.' },

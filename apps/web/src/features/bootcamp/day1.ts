@@ -116,6 +116,17 @@ export const DAY1: BootcampDayContent = {
         T('השתמשת בכלי הישרדות. עכשיו נכיר את כל השבעה — אחד-אחד.', 'You used survival tools. Now let’s meet all seven — one by one.'),
         T('אלה לא "מילים ללימוד". אלה רפלקסים.', 'These aren’t “vocabulary”. They’re reflexes.'),
       ] },
+    // Vocabulary priming (Part 6): the smallest word foundation before the tools are taught. Kept
+    // tiny on purpose — Day 1 is reflexes, not a pronoun lesson. Three of these compose the first tool.
+    { kind: 'prime', label: T('לפני שנדבר', 'Before we speak'),
+      intro: T('כמה מילים קטנות שחוזרות בכל הכלים.', 'A few tiny words that recur across the tools.'),
+      words: [
+        { text: 'sorry', meaning: T('סליחה', 'sorry'), emoji: '🙏' },
+        { text: 'I', meaning: T('אני', 'I') },
+        { text: 'understand', meaning: T('להבין', 'understand'), emoji: '💡' },
+        { text: 'slowly', meaning: T('לאט', 'slowly'), emoji: '🐢' },
+        { text: 'please', meaning: T('בבקשה', 'please') },
+      ], buildFromItemId: 'en.phrase.recovery.dont-understand' },
     { kind: 'tool', itemId: 'en.phrase.recovery.dont-understand', index: 1, total: 7 },
     { kind: 'tool', itemId: 'en.phrase.recovery.repeat', index: 2, total: 7 },
     { kind: 'tool', itemId: 'en.phrase.recovery.slowly', index: 3, total: 7 },

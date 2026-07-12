@@ -6,6 +6,7 @@ import { speak } from '../../shared/audio/tts.js';
 import { tap } from '../../shared/ui/haptics.js';
 import { LangStrip } from '../../shared/ui/LangStrip.js';
 import { CoreWords } from './CoreWords.js';
+import { SentenceFlashcards } from './SentenceFlashcards.js';
 import { BOOTCAMP_PLAN } from '../bootcamp/plan.js';
 import { missionsFor } from '../bootcamp/bootcampStore.js';
 import type { BootcampItem } from '../bootcamp/types.js';
@@ -70,6 +71,7 @@ export function Core() {
   const category = app.coreCategory as CoreTab | null;
   const groups = useMemo(() => buildGroups(app.learningLang), [app.learningLang]);
   const [playing, setPlaying] = useState<string | null>(null);
+  const [reviewOpen, setReviewOpen] = useState(false);
   const total = useMemo(() => groups.reduce((n, g) => n + g.items.length, 0), [groups]);
 
   // One canonical display model per phrase (target + app-gloss + audio + directions + review id).
@@ -131,7 +133,14 @@ export function Core() {
         {category === 'words' ? (
           <CoreWords />
         ) : category === 'phrases' ? (
+          reviewOpen ? (
+            <SentenceFlashcards onBack={() => setReviewOpen(false)} />
+          ) : (
           <>
+            <button className="btn-primary" style={{ width: '100%', marginTop: 8 }} onClick={() => { tap(); setReviewOpen(true); }}>
+              {t('coreOpenFlashcards')}
+            </button>
+            <p className="dim small center" style={{ margin: '6px 4px 0' }}>{t('coreReviewSub')}</p>
             {groups.map((g) => (
               <div key={g.title} style={{ marginTop: 14 }}>
                 <h3 style={{ margin: '0 0 8px' }}>{g.title}</h3>
@@ -154,8 +163,8 @@ export function Core() {
                 })}
               </div>
             ))}
-            <p className="faint small center" style={{ margin: '18px 4px 0' }}>ℹ️ {t('coreReviewSoon')}</p>
           </>
+          )
         ) : (
           <div className="drill-card pop-in center" style={{ marginTop: 24 }}>
             <p style={{ fontSize: '2.4rem' }}>🚧</p>

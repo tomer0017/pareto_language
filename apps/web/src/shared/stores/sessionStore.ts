@@ -10,6 +10,7 @@ import type {
 import { isDue, scheduleSession, shouldRequeue, type SchedulableItem } from '@ready/engine';
 import { useAppStore } from './appStore.js';
 import { L } from '../i18n/strings.js';
+import { shuffle } from '../util/shuffle.js';
 
 /**
  * Session runtime (PDF §10.2): fixed rhythm Warm-up → Learn → Integrate → Close, adaptive
@@ -227,16 +228,6 @@ function computePractice(game: PracticeGame): ComputedSession {
   }
 }
 
-function shuffle<T>(arr: T[]): T[] {
-  const a = [...arr];
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    const tmp = a[i] as T;
-    a[i] = a[j] as T;
-    a[j] = tmp;
-  }
-  return a;
-}
 
 interface SessionState {
   steps: DrillStep[];

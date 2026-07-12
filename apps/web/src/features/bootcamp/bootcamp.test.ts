@@ -100,6 +100,10 @@ function validateMission(day: BootcampDayContent): string[] {
       if (!ids.has(step.correctItemId)) issues.push(`ambush correct → ${step.correctItemId}`);
       if (!ids.has(step.wrongItemId)) issues.push(`ambush wrong → ${step.wrongItemId}`);
     }
+    if (step.kind === 'prime') {
+      if (step.buildFromItemId && !ids.has(step.buildFromItemId)) issues.push(`prime build → ${step.buildFromItemId}`);
+      if (step.words.length === 0) issues.push('prime: no words');
+    }
     if (step.kind === 'dialogue' && !day.dialogues[step.dialogueId]) issues.push(`dialogue → ${step.dialogueId}`);
   }
   for (const d of Object.values(day.dialogues)) {

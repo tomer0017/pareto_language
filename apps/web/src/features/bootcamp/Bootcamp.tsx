@@ -16,6 +16,7 @@ import { missionsFor, useBootcampStore } from './bootcampStore.js';
 import type { BootcampItem, BootcampStep, BootcampDialogue, BootcampDayContent, BootcampVideo, DialogueChoice } from './types.js';
 import { dialogueTranscript } from './transcript.js';
 import { dialogueTr } from './i18n.js';
+import { shuffle, mulberry32, sessionSeed } from '../../shared/util/shuffle.js';
 
 /** Resolve a public asset path (e.g. "/videos/x.mp4") against the app's base so it works in
  *  dev, on the deployed sub-path, and inside the PWA. Absolute URLs pass through unchanged. */
@@ -320,6 +321,7 @@ function MissionPlayer() {
       <div className="fade-in" key={bc.index}>
         {step.kind === 'video' && <VideoStep video={video} mode={step.mode} onNext={advance} />}
         {step.kind === 'talk' && <TalkStep step={step} onNext={advance} />}
+        {step.kind === 'prime' && <PrimeStep step={step} itemsById={itemsById} onNext={advance} />}
         {step.kind === 'tool' && <ToolStep step={step} item={itemsById.get(step.itemId)!} onDone={() => { pop(); advance(); }} />}
         {step.kind === 'quiz' && <QuizStep step={step} itemsById={itemsById} onDone={(ok) => { if (ok) pop(); advance(); }} />}
         {step.kind === 'replies' && <RepliesStep step={step} itemsById={itemsById} onDone={() => { pop(); advance(); }} />}
@@ -346,6 +348,59 @@ function TalkStep({ step, onNext }: { step: Extract<BootcampStep, { kind: 'talk'
       </div>
       <div className="action-zone">
         <button className="btn-primary" onClick={onNext}>{step.cta ? L(step.cta) : t('continue')}</button>
+      </div>
+    </>
+  );
+}
+
+/**
+ * Vocabulary priming (Part 5) — "Before We Speak". A small set of building-block words shown on ONE
+ * screen so a near-beginner recognizes the pieces before meeting a longer sentence. Each word is a
+ * tap-to-hear chip (meaning always visible — this is preparation, not a test). When the step names a
+ * canonical sentence (`buildFromItemId`), a "this builds" card reveals how the pieces combine into
+ * the real, natural target sentence with its own audio. Sentences stay the learning unit.
+ */
+function PrimeStep({ step, itemsById, onNext }: { step: Extract<BootcampStep, { kind: 'prime' }>; itemsById: Map<string, BootcampItem>; onNext: () => void }) {
+  const [playing, setPlaying] = useState<string | null>(null);
+  const built = step.buildFromItemId ? itemsById.get(step.buildFromItemId) : undefined;
+  const say = (key: string, text: string, rate?: number): void => {
+    tap();
+    setPlaying(key);
+    void speakL(text, rate).then((r) => { if (r !== 'interrupted') setPlaying((p) => (p === key ? null : p)); });
+  };
+  return (
+    <>
+      <div className="drill-card" style={{ textAlign: 'start', gap: 12 }}>
+        <p className="drill-label" style={{ textAlign: 'center' }}>🗝️ {step.label ? L(step.label) : t('primeTitle')}</p>
+        {step.intro && <p className="drill-meaning" style={{ textAlign: 'center' }}>{L(step.intro)}</p>}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+          {step.words.map((w, i) => (
+            <button
+              key={`${w.text}-${i}`}
+              className={`list-row card-press ${playing === `w${i}` ? 'core-playing' : ''}`}
+              style={{ width: '100%', textAlign: 'start', background: 'var(--card)', borderRadius: 'var(--r-md)', border: 'none', padding: '10px 14px', boxShadow: 'var(--shadow-card)', display: 'flex', alignItems: 'center', gap: 12 }}
+              onClick={() => say(`w${i}`, w.text)}
+            >
+              {w.emoji && <span style={{ fontSize: '1.6rem', width: 30, textAlign: 'center' }} aria-hidden>{w.emoji}</span>}
+              <span style={{ minWidth: 0, flex: 1 }}>
+                <span style={{ display: 'block', fontWeight: 700 }}>{w.text}{w.review && <span title={t('primeReview')} aria-label={t('primeReview')}> ♻️</span>}</span>
+                <span className="dim small" style={{ display: 'block' }}>{L(w.meaning)}</span>
+              </span>
+              <span className="core-play" aria-hidden>🔊</span>
+            </button>
+          ))}
+        </div>
+        {built && (
+          <div className="drill-card" style={{ marginTop: 4, gap: 6, background: 'var(--bg-soft, var(--card))' }}>
+            <p className="faint small" style={{ textAlign: 'center' }}>{t('primeBuilds')}</p>
+            <button className="listen-play" style={{ margin: '0 auto' }} onClick={() => say('full', built.text)} aria-label={t('playBtn')}>▶︎</button>
+            <p className="drill-phrase" style={{ fontSize: '1.25rem', textAlign: 'center' }}>{built.text}</p>
+            <p className="drill-meaning" style={{ textAlign: 'center' }}>{L(built.meaning)}</p>
+          </div>
+        )}
+      </div>
+      <div className="action-zone">
+        <button className="btn-primary" onClick={() => { cancelSpeech(); onNext(); }}>{t('continue')}</button>
       </div>
     </>
   );
@@ -414,9 +469,12 @@ function QuizStep({ step, itemsById, onDone }: { step: Extract<BootcampStep, { k
   const bc = useBootcampStore();
   const item = itemsById.get(step.itemId)!;
   const [options] = useState(() =>
-    [item, ...step.wrongIds.map((id) => itemsById.get(id)!)]
-      .map((i) => ({ id: i.id, label: L(i.meaning) }))
-      .sort(() => Math.random() - 0.5),
+    // Uniform Fisher–Yates (seeded once per mount) — the old `.sort(() => random-0.5)` biased
+    // which answer landed in which slot. Seed captured in state so re-renders never reorder.
+    shuffle(
+      [item, ...step.wrongIds.map((id) => itemsById.get(id)!)].map((i) => ({ id: i.id, label: L(i.meaning) })),
+      mulberry32(sessionSeed()),
+    ),
   );
   const [picked, setPicked] = useState<string | null>(null);
   const played = useRef(false);
@@ -493,13 +551,14 @@ function RepliesStep({ step, itemsById, onDone }: { step: Extract<BootcampStep, 
   const said = itemsById.get(step.saidItemId)!;
   const [idx, setIdx] = useState(-1); // -1 = intro
   const [picked, setPicked] = useState<string | null>(null);
+  const [seed] = useState(sessionSeed); // stable across re-renders so options don't reshuffle mid-view
   const reply = idx >= 0 ? itemsById.get(step.replyIds[idx] ?? '') : undefined;
 
   const options = useMemo(() => {
     if (!reply) return [];
     const wrongs = step.replyIds.filter((id) => id !== reply.id).slice(0, 2).map((id) => itemsById.get(id)!);
-    return [reply, ...wrongs].map((i) => ({ id: i.id, label: L(i.meaning) })).sort(() => Math.random() - 0.5);
-  }, [reply, step.replyIds, itemsById]);
+    return shuffle([reply, ...wrongs].map((i) => ({ id: i.id, label: L(i.meaning) })), mulberry32(seed + idx));
+  }, [reply, step.replyIds, itemsById, seed, idx]);
 
   useEffect(() => {
     if (reply) void speakL(reply.text);
@@ -747,7 +806,7 @@ function AmbushStep({ step, itemsById, onDone }: { step: Extract<BootcampStep, {
   const shownAt = useRef(0);
   const correct = itemsById.get(step.correctItemId)!;
   const wrong = itemsById.get(step.wrongItemId)!;
-  const [order] = useState(() => (Math.random() > 0.5 ? [correct, wrong] : [wrong, correct]));
+  const [order] = useState(() => shuffle([correct, wrong], mulberry32(sessionSeed())));
 
   // Answered — full context: WHAT YOU HEARD (the fast NPC line) → your pick → what fit. This is the
   // Money & Numbers case: "That comes to fifteen fifty…" is now shown, so "Fifteen fifty." makes sense.

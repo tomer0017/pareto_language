@@ -1,6 +1,7 @@
 import type { LocalizedText } from '@ready/content-schema';
 import type { BootcampDayContent, BootcampDialogue, BootcampItem } from '../types.js';
 import { recoveryFr } from './recovery.js';
+import { frenchNumber } from './frenchNumbers.js';
 
 /**
  * French Mission (day 3) — "Argent et chiffres" (Numbers & Money). French parallel of English day 3:
@@ -63,12 +64,30 @@ export const DAY3_FR: BootcampDayContent = {
   title: T('כסף ומספרים', 'Numbers & Money'),
   items: DAY3_FR_ITEMS,
   dialogues: { 'market-stall': SCENE },
+  introVideo: {
+    src: '/videos/Fr_day3.mp4',
+    title: T('השיחה המלאה', 'Full conversation'),
+    language: 'fr',
+    type: 'intro',
+  },
   steps: [
     { kind: 'talk', icon: '💶', title: T('משימה 3: כסף ומספרים', 'Mission 3: Numbers & Money'),
       body: [
         T('הכישלון הכי נפוץ של מטייל: לא הבנת את המחיר, אז פשוט הושטת שטר גדול וקיווית.', 'The most common traveler failure: you didn’t catch the price, so you just held out a big bill and hoped.'),
         T('היום זה נגמר. אתה תשמע מחירים — ותבין אותם.', 'Today that ends. You’ll hear prices — and understand them.'),
       ], cta: T('מתחילים', 'Start') },
+    // French numbers priming (Part 6) — the vigesimal 70/80/90 forms a traveler hears in prices.
+    // Sourced from the tested `frenchNumber` builder so the mission and the module never drift.
+    { kind: 'prime', label: T('לפני שנדבר: מספרים בצרפתית', 'Before we speak: French numbers'),
+      intro: T('בצרפתית 70/80/90 בנויים אחרת — 60+10, 4×20, 4×20+10. תכיר אותם מראש.', 'In French 70/80/90 are built oddly — 60+10, 4×20, 4×20+10. Meet them first.'),
+      words: [
+        { text: frenchNumber(5), meaning: T('חמש (5)', 'five (5)') },
+        { text: frenchNumber(10), meaning: T('עשר (10)', 'ten (10)') },
+        { text: frenchNumber(20), meaning: T('עשרים (20)', 'twenty (20)') },
+        { text: frenchNumber(70), meaning: T('שבעים (60+10)', 'seventy (60+10)') },
+        { text: frenchNumber(80), meaning: T('שמונים (4×20)', 'eighty (4×20)') },
+        { text: frenchNumber(90), meaning: T('תשעים (4×20+10)', 'ninety (4×20+10)') },
+      ], buildFromItemId: 'fr.reply.money.five-euros' },
     { kind: 'tool', itemId: 'fr.phrase.money.how-much', index: 1, total: 3, label: T('לשאול מחיר', 'Ask the price') },
     { kind: 'tool', itemId: 'fr.phrase.money.by-card', index: 2, total: 3, label: T('לשלם בכרטיס', 'Pay by card') },
     { kind: 'tool', itemId: 'fr.phrase.money.too-expensive', index: 3, total: 3, label: T('מיקוח מנומס', 'Polite haggle') },

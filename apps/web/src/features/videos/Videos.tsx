@@ -5,6 +5,7 @@ import { success, tap } from '../../shared/ui/haptics.js';
 import { missionsFor, useBootcampStore } from '../bootcamp/bootcampStore.js';
 import { VideoPlayer } from '../bootcamp/Bootcamp.js';
 import type { BootcampVideo } from '../bootcamp/types.js';
+import { pickOne } from '../../shared/util/shuffle.js';
 
 /**
  * Videos — an experience, not a list (Task 2). Play a random available mission video; when it
@@ -25,9 +26,7 @@ function allVideos(lang: string): VideoEntry[] {
 }
 
 function pickRandom(pool: VideoEntry[], exclude: Set<number>): VideoEntry | null {
-  const avail = pool.filter((v) => !exclude.has(v.day));
-  if (avail.length === 0) return null;
-  return avail[Math.floor(Math.random() * avail.length)]!;
+  return pickOne(pool.filter((v) => !exclude.has(v.day))) ?? null;
 }
 
 export function Videos() {

@@ -113,11 +113,17 @@ hidden only inside an active mission — a focused, full-screen flow with its ow
   because its answers are escape tools, not answers to the conversation).
 - **Core (a.k.a. "Core 1500")** — the practical communication engine, presented as a tabbed
   **knowledge center**: **Core Phrases** is live (every sentence READY teaches, grouped by mission,
-  tap to hear) and **Core Words** is now live — the **Core Corpus (Core 500)** with Browse ·
-  Picture Quiz · Swipe Recall, backed by the real concept pipeline (see CORE-CORPUS.md): 500
-  language-independent concepts, 218 game-eligible with unique emoji, one offline pack per
-  language. Core Patterns · Common Questions · Emergency · Favorites remain honest "coming soon".
-  Spaced/weak-word review is planned.
+  tap to hear) with **🎴 Sentence Flashcards** review (flip/hear/shuffle over the canonical mission
+  sentences), and **Core Words** is live — the **Core Corpus (Core 511)** with Browse · Picture Quiz ·
+  Swipe Recall, backed by the real concept pipeline (see CORE-CORPUS.md): 511 language-independent
+  concepts (grew from 500 when the high-reuse connectors/sizes `with/without/and/or/here/there/can/
+  more/less/medium/large` were promoted to global Core), 218 game-eligible with unique emoji, one
+  offline pack per language. Core Patterns · Common Questions · Emergency · Favorites remain honest
+  "coming soon".
+- **Mission vocabulary priming** — a "Before we speak" step primes 3–8 building-block words before a
+  longer sentence (Missions 1–8; FR 1–4 in parity), with new-vs-review tracking; every mission's
+  priming decision is audited in `vocabAudit.ts`. French 70/80/90 number patterns are tested in
+  `fr/frenchNumbers.ts`. See VOCABULARY-AUDIT.md.
 - **Profile / Settings** — everything personal in one place: **Learning Preferences** (the single
   global **speech-speed** control, 80–105%, default 95%, with Test Voice), language (trip = English
   pilot; app = English/Hebrew), appearance (light/dark), audio (enable/test sound), and honest
@@ -153,7 +159,7 @@ Each layer has one responsibility.
   `Situation` / memory + review types, shared by web, server, engine, and the pipeline.
 - **Concept Layer + Pipeline (`content/`)** — the corpus → concepts → phrases → validated-pack
   toolchain (`content/pipeline`, `content/build.ts`, `content/concepts`, `content/core-corpus`).
-  It builds the **Core 500 packs** (`core-{lang}.v1.json`) and the **Italian `it-IT` pack** into
+  It builds the **Core 511 packs** (`core-{lang}.v1.json`) and the **Italian `it-IT` pack** into
   `apps/web/public/content/`. **Important
   nuance:** the Bootcamp (the actual pilot) is *decoupled* from this — Bootcamp missions are pure
   TypeScript data files, not pipeline output. The pipeline feeds the content-pack app
@@ -213,7 +219,7 @@ auto-generated from source by `npm run gen:conversations`.
 - Full docs set + auto-generated conversations file.
 
 **In progress / next 🚧**
-- **Core Corpus (Core 500) shipped** ✅ — 500 concept-first entries (two-sided comm/recog scoring,
+- **Core Corpus (Core 511) shipped** ✅ — 511 concept-first entries (two-sided comm/recog scoring,
   RoF, layers, 25 categories) through the real pipeline (concepts → Mongo seed → per-language
   offline packs), powering live Core Words + Picture Quiz + Swipe Recall. **Adding a language is
   content-only** (proven by test). Next: native Hebrew review, per-word audio, French pilot

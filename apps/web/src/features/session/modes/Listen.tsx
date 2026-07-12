@@ -3,6 +3,7 @@ import type { ContentItem, Outcome, ReviewEvent } from '@ready/content-schema';
 import { useAppStore } from '../../../shared/stores/appStore.js';
 import { playItem } from '../../../shared/audio/tts.js';
 import { L, t } from '../../../shared/i18n/strings.js';
+import { shuffle } from '../../../shared/util/shuffle.js';
 
 /** Mode 4 — Listening: natural-speed reply → pick the meaning. Slow replay is logged. */
 export function Listen({
@@ -31,8 +32,8 @@ export function Listen({
     );
     const pool =
       sameSituation.length >= 2 ? sameSituation : (app.pack?.items ?? []).filter((i) => i.id !== item.id);
-    const distractors = [...pool].sort(() => Math.random() - 0.5).slice(0, 2);
-    return [...distractors.map((d) => L(d.meaning)), L(item.meaning)].sort(() => Math.random() - 0.5);
+    const distractors = shuffle(pool).slice(0, 2);
+    return shuffle([...distractors.map((d) => L(d.meaning)), L(item.meaning)]);
   }, [item, app.pack]);
 
   const choose = (meaning: string) => {

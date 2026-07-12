@@ -3,6 +3,7 @@ import type { ContentItem, ReviewEvent } from '@ready/content-schema';
 import { useAppStore } from '../../../shared/stores/appStore.js';
 import { playItem } from '../../../shared/audio/tts.js';
 import { L, t } from '../../../shared/i18n/strings.js';
+import { shuffle, pickOne } from '../../../shared/util/shuffle.js';
 
 const SPRINT_SECONDS = 60;
 
@@ -28,15 +29,13 @@ export function NumberSprint({ onFinish }: { onFinish: (events: ReviewEvent[]) =
 
   const nextPrompt = useCallback(() => {
     if (numberItems.length < 4) return;
-    const target = numberItems[Math.floor(Math.random() * numberItems.length)];
+    const target = pickOne(numberItems);
     if (!target) return;
-    const distractors = numberItems
-      .filter((n) => n.id !== target.id)
-      .sort(() => Math.random() - 0.5)
+    const distractors = shuffle(numberItems.filter((n) => n.id !== target.id))
       .slice(0, 3)
       .map((n) => L(n.meaning));
     setCurrent(target);
-    setOptions([...distractors, L(target.meaning)].sort(() => Math.random() - 0.5));
+    setOptions(shuffle([...distractors, L(target.meaning)]));
     setLocked(false);
     void playItem(target);
   }, [numberItems]);

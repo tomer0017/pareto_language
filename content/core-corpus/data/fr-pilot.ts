@@ -595,4 +595,17 @@ export const FR_PILOT: Record<string, FrEntry> = {
   meet: { w: 'rencontrer' },
   wash: { w: 'laver' },
   stand: { w: 'se lever', note: 'be standing = "être debout".' },
+
+  // ── Connectors, function words & sizes (promoted to global Core) ─────────────
+  can: { w: 'pouvoir', note: 'modal; "can you…?" = "pouvez-vous…?" (vous).' },
+  with: { w: 'avec' },
+  without: { w: 'sans' },
+  and: { w: 'et' },
+  or: { w: 'ou', note: 'unaccented "ou" = or; "où" (accent) = where.' },
+  here: { w: 'ici' },
+  there: { w: 'là', note: '"là-bas" for a farther "over there".' },
+  more: { w: 'plus', note: 'final -s often silent; liaison/emphasis varies.' },
+  less: { w: 'moins' },
+  medium: { w: 'moyen', g: 'm', note: 'café size; fem. "moyenne".' },
+  large: { w: 'grand', g: 'm', note: 'size = "grand"; note the false friend — Fr "large" means wide.' },
 };

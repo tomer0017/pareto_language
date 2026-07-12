@@ -113,6 +113,18 @@ export const DAY4_FR: BootcampDayContent = {
         T('היום לא לומדים "מילים על קפה". היום לומדים לצאת מבית קפה עם ארוחת בוקר ביד.', 'Today we don’t learn “coffee words”. Today you walk out of a café holding breakfast.'),
         T('הסוד: אחרי שאתה מזמין, הבריסטה שואל שאלות המשך. מי שמכיר אותן מראש — אף פעם לא קופא.', 'The secret: after you order, the barista fires follow-up questions. Know them in advance — never freeze.'),
       ], cta: T('להיכנס', 'Walk in') },
+    // Vocabulary priming (Part 7), authored as French: avec/sans are the two order-control words.
+    // avec + lait + sans + sucre literally compose "Avec du lait, sans sucre." — the assemble beat.
+    { kind: 'prime', label: T('לפני שנדבר', 'Before we speak'),
+      intro: T('שש מילים שולטות בכל הזמנה בבית קפה.', 'Six words control every café order.'),
+      words: [
+        { text: 'café', meaning: T('קפה', 'coffee'), emoji: '☕' },
+        { text: 'lait', meaning: T('חלב', 'milk'), emoji: '🥛' },
+        { text: 'sucre', meaning: T('סוכר', 'sugar'), emoji: '🍬' },
+        { text: 'moyen', meaning: T('בינוני', 'medium') },
+        { text: 'avec', meaning: T('עם', 'with') },
+        { text: 'sans', meaning: T('בלי', 'without') },
+      ], buildFromItemId: 'fr.phrase.coffee.no-sugar' },
     { kind: 'tool', itemId: 'fr.phrase.coffee.iced-coffee', index: 1, total: 4, label: T('משפט הזהב', 'The golden template') },
     { kind: 'tool', itemId: 'fr.phrase.coffee.no-sugar', index: 2, total: 4, label: T('שליטה בהזמנה', 'Order control') },
     { kind: 'tool', itemId: 'fr.phrase.coffee.thats-all', index: 3, total: 4, label: T('הסוגר האוניברסלי', 'The universal closer') },

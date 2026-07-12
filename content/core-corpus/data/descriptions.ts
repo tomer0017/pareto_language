@@ -12,6 +12,11 @@ export const DESCRIPTIONS: CorpusRow[] = [
   { slug: 'small', pos: 'adj', en: 'small', he: 'קטן', cat: 'descriptions', layer: 2, rof: 1, skill: 'recall', s: [5, 4, 4, 4, 3], ex: 'A smaller size, please.', exHe: 'מידה קטנה יותר, בבקשה.', opp: ['big'] },
   { slug: 'hot', pos: 'adj', en: 'hot', he: 'חם', cat: 'descriptions', layer: 2, rof: 2, skill: 'recall', s: [5, 4, 4, 4, 4], emoji: '🥵', vis: 0.8, ex: 'Careful, it is hot!', exHe: 'זהירות, זה חם!', opp: ['cold'] },
   { slug: 'cold', pos: 'adj', en: 'cold', he: 'קר', cat: 'descriptions', layer: 2, rof: 2, skill: 'recall', s: [5, 4, 4, 4, 4], emoji: '🥶', vis: 0.8, ex: 'A cold water, please.', exHe: 'מים קרים, בבקשה.', opp: ['hot'] },
+  // Sizes & quantity — the highest-reuse ordering/shopping descriptors (café/restaurant/market/shop).
+  { slug: 'medium', pos: 'adj', en: 'medium', he: 'בינוני', cat: 'descriptions', layer: 2, rof: 2, skill: 'recall', s: [5, 4, 4, 4, 4], ex: 'A medium coffee, please.', exHe: 'קפה בינוני, בבקשה.', rel: ['small', 'big'] },
+  { slug: 'large', pos: 'adj', en: 'large', he: 'גדול', cat: 'descriptions', layer: 2, rof: 2, skill: 'recall', s: [5, 4, 4, 4, 4], ex: 'A large size, please.', exHe: 'מידה גדולה, בבקשה.', rel: ['big'] },
+  { slug: 'more', pos: 'adv', en: 'more', he: 'עוד', cat: 'descriptions', layer: 1, rof: 2, skill: 'recall', s: [5, 5, 4, 5, 4], ex: 'A little more, please.', exHe: 'עוד קצת, בבקשה.', opp: ['less'] },
+  { slug: 'less', pos: 'adv', en: 'less', he: 'פחות', cat: 'descriptions', layer: 2, rof: 1, skill: 'recognize', s: [5, 4, 4, 4, 3], ex: 'A little less, please.', exHe: 'קצת פחות, בבקשה.', opp: ['more'] },
   { slug: 'new', pos: 'adj', en: 'new', he: 'חדש', cat: 'descriptions', layer: 2, rof: 1, skill: 'recognize', s: [5, 3, 4, 3, 2], ex: 'The new terminal.', exHe: 'הטרמינל החדש.', opp: ['old'] },
   { slug: 'old', pos: 'adj', en: 'old', he: 'ישן', cat: 'descriptions', layer: 2, rof: 1, skill: 'recognize', s: [5, 3, 4, 3, 3], ex: 'The old city.', exHe: 'העיר העתיקה.', opp: ['new'] },
   { slug: 'cheap', pos: 'adj', en: 'cheap', he: 'זול', cat: 'descriptions', layer: 2, rof: 2, skill: 'recall', s: [4, 4, 4, 4, 4], ex: 'Something cheaper?', exHe: 'משהו זול יותר?', opp: ['expensive'] },

@@ -48,6 +48,28 @@ docs/                     this folder
 | `planner.ts` | Tier selection, situation ordering, new-item taper, graceful re-plan | §8.1 |
 | `readiness.ts` | Honest badges: notStarted / inProgress / ready / fading | §10.4 |
 
+## Randomization (apps/web/src/shared/util/shuffle.ts)
+
+One tested utility for all controlled randomness — uniform Fisher–Yates with an injectable RNG
+(`shuffle`, `seededShuffle`, `sample`, `pickOne`, `mulberry32`, `sessionSeed`). Replaces the biased
+`.sort(() => Math.random() - 0.5)` idiom app-wide (quiz/replies/ambush options, Picture Quiz rounds,
+Listen & NumberSprint distractors, session builder, Videos). Seeds make it deterministic in tests and
+stable across re-renders. **Narrative dialogue order is never shuffled** — only options / review order.
+
+## Vocabulary priming & sentence flashcards
+
+- `{ kind: 'prime' }` — a mission step ("Before we speak") of 3–8 building-block words shown before a
+  longer sentence, optionally assembling a canonical mission item (`buildFromItemId`). Renderer:
+  `PrimeStep` in `Bootcamp.tsx`. Opt-in, language-agnostic. `PrimeWord.review` + `primeVocab.ts`
+  (`priorPrimeVocabulary`) track prior knowledge so a reused word shows a ♻️ review hint instead of
+  being re-taught. Every mission's decision is recorded in `vocabAudit.ts` (`MISSION_VOCAB_AUDIT`,
+  all 30) and bound to the actual steps by tests. Currently primed: Missions 1–8 (FR 1–4 in parity).
+- `fr/frenchNumbers.ts` — the tested source of truth for spoken `fr-FR` numbers (0–9999) incl. the
+  vigesimal 70/80/90 rules; feeds the French-numbers priming step in Mission 3.
+- `core/flashcards.ts` (pure) + `SentenceFlashcards.tsx` — flip-card review over the canonical mission
+  sentences (`buildSentenceDeck` reuses item ids; no duplication), shuffled per session, both review
+  directions. See **[VOCABULARY-AUDIT.md](./VOCABULARY-AUDIT.md)**.
+
 ## Audio / TTS (apps/web/src/shared/audio)
 
 Runtime, free, cross-device speech via the Web Speech API — no cloud, no keys, no server, offline-capable.

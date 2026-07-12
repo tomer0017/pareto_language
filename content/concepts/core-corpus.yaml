@@ -31,7 +31,7 @@ concepts:
     emoji: 👃
     iconEligible: true
     visualConfidence: 0.98
-    rank: 439
+    rank: 450
     example:
       en: My nose hurts.
       he: האף שלי כואב.
@@ -68,7 +68,7 @@ concepts:
     emoji: 👁️
     iconEligible: true
     visualConfidence: 0.95
-    rank: 419
+    rank: 430
     example:
       en: Something is in my eye.
       he: משהו נכנס לי לעין.
@@ -105,7 +105,7 @@ concepts:
     emoji: 👂
     iconEligible: true
     visualConfidence: 0.96
-    rank: 440
+    rank: 451
     example:
       en: My ear hurts.
       he: האוזן שלי כואבת.
@@ -142,7 +142,7 @@ concepts:
     emoji: ✋
     iconEligible: true
     visualConfidence: 0.9
-    rank: 338
+    rank: 349
     example:
       en: Give me your hand.
       he: תן לי את היד.
@@ -179,7 +179,7 @@ concepts:
     emoji: 👄
     iconEligible: true
     visualConfidence: 0.92
-    rank: 420
+    rank: 431
     example:
       en: Open your mouth.
       he: תפתח את הפה.
@@ -216,7 +216,7 @@ concepts:
     emoji: 🦶
     iconEligible: true
     visualConfidence: 0.9
-    rank: 421
+    rank: 432
     example:
       en: My foot hurts.
       he: כף הרגל שלי כואבת.
@@ -253,7 +253,7 @@ concepts:
     emoji: 🦵
     iconEligible: true
     visualConfidence: 0.9
-    rank: 422
+    rank: 433
     example:
       en: I hurt my leg.
       he: פגעתי ברגל.
@@ -290,7 +290,7 @@ concepts:
     emoji: 🦷
     iconEligible: true
     visualConfidence: 0.9
-    rank: 225
+    rank: 235
     example:
       en: I have a toothache.
       he: יש לי כאב שיניים.
@@ -327,7 +327,7 @@ concepts:
     emoji: 💧
     iconEligible: true
     visualConfidence: 0.85
-    rank: 40
+    rank: 41
     example:
       en: Water, please.
       he: מים, בבקשה.
@@ -364,7 +364,7 @@ concepts:
     emoji: ☕
     iconEligible: true
     visualConfidence: 0.95
-    rank: 90
+    rank: 98
     example:
       en: A coffee, please.
       he: קפה, בבקשה.
@@ -401,7 +401,7 @@ concepts:
     emoji: 🍵
     iconEligible: true
     visualConfidence: 0.9
-    rank: 299
+    rank: 310
     example:
       en: Tea with milk.
       he: תה עם חלב.
@@ -438,7 +438,7 @@ concepts:
     emoji: 🍞
     iconEligible: true
     visualConfidence: 0.95
-    rank: 272
+    rank: 283
     example:
       en: Fresh bread.
       he: לחם טרי.
@@ -475,7 +475,7 @@ concepts:
     emoji: 🥛
     iconEligible: true
     visualConfidence: 0.92
-    rank: 188
+    rank: 198
     example:
       en: With milk, please.
       he: עם חלב, בבקשה.
@@ -512,7 +512,7 @@ concepts:
     emoji: 🥚
     iconEligible: true
     visualConfidence: 0.9
-    rank: 339
+    rank: 350
     example:
       en: Two eggs, please.
       he: שתי ביצים, בבקשה.
@@ -549,7 +549,7 @@ concepts:
     emoji: 🍎
     iconEligible: true
     visualConfidence: 0.98
-    rank: 388
+    rank: 399
     example:
       en: One apple.
       he: תפוח אחד.
@@ -586,7 +586,7 @@ concepts:
     emoji: 🍌
     iconEligible: true
     visualConfidence: 0.98
-    rank: 389
+    rank: 400
     example:
       en: A banana, please.
       he: בננה, בבקשה.
@@ -623,7 +623,7 @@ concepts:
     emoji: 🍗
     iconEligible: true
     visualConfidence: 0.85
-    rank: 189
+    rank: 199
     example:
       en: Grilled chicken.
       he: עוף בגריל.
@@ -660,7 +660,7 @@ concepts:
     emoji: 🐟
     iconEligible: true
     visualConfidence: 0.9
-    rank: 190
+    rank: 200
     example:
       en: Fish of the day.
       he: דג היום.
@@ -697,7 +697,7 @@ concepts:
     emoji: 🥩
     iconEligible: true
     visualConfidence: 0.88
-    rank: 170
+    rank: 180
     example:
       en: No meat, please.
       he: בלי בשר, בבקשה.
@@ -734,7 +734,7 @@ concepts:
     emoji: 🧀
     iconEligible: true
     visualConfidence: 0.92
-    rank: 340
+    rank: 351
     example:
       en: Bread and cheese.
       he: לחם וגבינה.
@@ -771,7 +771,7 @@ concepts:
     emoji: 🍚
     iconEligible: true
     visualConfidence: 0.85
-    rank: 368
+    rank: 379
     example:
       en: Rice, please.
       he: אורז, בבקשה.
@@ -808,7 +808,7 @@ concepts:
     emoji: 🍲
     iconEligible: true
     visualConfidence: 0.82
-    rank: 369
+    rank: 380
     example:
       en: Hot soup.
       he: מרק חם.
@@ -845,7 +845,7 @@ concepts:
     emoji: 🍷
     iconEligible: true
     visualConfidence: 0.95
-    rank: 300
+    rank: 311
     example:
       en: A glass of wine.
       he: כוס יין.
@@ -882,7 +882,7 @@ concepts:
     emoji: 🐶
     iconEligible: true
     visualConfidence: 0.98
-    rank: 390
+    rank: 401
     example:
       en: A big dog.
       he: כלב גדול.
@@ -919,7 +919,7 @@ concepts:
     emoji: 🐱
     iconEligible: true
     visualConfidence: 0.98
-    rank: 391
+    rank: 402
     example:
       en: A small cat.
       he: חתול קטן.
@@ -956,7 +956,7 @@ concepts:
     emoji: 🐦
     iconEligible: true
     visualConfidence: 0.95
-    rank: 482
+    rank: 493
     example:
       en: A little bird.
       he: ציפור קטנה.
@@ -993,7 +993,7 @@ concepts:
     emoji: 🐴
     iconEligible: true
     visualConfidence: 0.95
-    rank: 483
+    rank: 494
     example:
       en: A brown horse.
       he: סוס חום.
@@ -1030,7 +1030,7 @@ concepts:
     emoji: 🐄
     iconEligible: true
     visualConfidence: 0.95
-    rank: 484
+    rank: 495
     example:
       en: A cow in the field.
       he: פרה בשדה.
@@ -1067,7 +1067,7 @@ concepts:
     emoji: 🚗
     iconEligible: true
     visualConfidence: 0.95
-    rank: 156
+    rank: 166
     example:
       en: By car.
       he: במכונית.
@@ -1104,7 +1104,7 @@ concepts:
     emoji: 🚌
     iconEligible: true
     visualConfidence: 0.95
-    rank: 67
+    rank: 75
     example:
       en: Where is the bus?
       he: איפה האוטובוס?
@@ -1141,7 +1141,7 @@ concepts:
     emoji: 🚆
     iconEligible: true
     visualConfidence: 0.95
-    rank: 76
+    rank: 84
     example:
       en: The train to the center.
       he: הרכבת למרכז.
@@ -1178,7 +1178,7 @@ concepts:
     emoji: ✈️
     iconEligible: true
     visualConfidence: 0.97
-    rank: 145
+    rank: 155
     example:
       en: My plane is late.
       he: המטוס שלי מאחר.
@@ -1215,7 +1215,7 @@ concepts:
     emoji: 🚕
     iconEligible: true
     visualConfidence: 0.95
-    rank: 77
+    rank: 85
     example:
       en: Call a taxi, please.
       he: תזמין מונית, בבקשה.
@@ -1254,7 +1254,7 @@ concepts:
     emoji: 🚲
     iconEligible: true
     visualConfidence: 0.95
-    rank: 370
+    rank: 381
     example:
       en: I want to rent a bike.
       he: אני רוצה לשכור אופניים.
@@ -1291,7 +1291,7 @@ concepts:
     emoji: ⛵
     iconEligible: true
     visualConfidence: 0.9
-    rank: 371
+    rank: 382
     example:
       en: A boat trip.
       he: טיול בסירה.
@@ -1328,7 +1328,7 @@ concepts:
     emoji: 🏨
     iconEligible: true
     visualConfidence: 0.92
-    rank: 41
+    rank: 42
     example:
       en: Where is my hotel?
       he: איפה המלון שלי?
@@ -1402,7 +1402,7 @@ concepts:
     emoji: 🍴
     iconEligible: true
     visualConfidence: 0.85
-    rank: 226
+    rank: 236
     example:
       en: A good restaurant.
       he: מסעדה טובה.
@@ -1439,7 +1439,7 @@ concepts:
     emoji: 🏦
     iconEligible: true
     visualConfidence: 0.85
-    rank: 372
+    rank: 383
     example:
       en: It is next to the bank.
       he: זה ליד הבנק.
@@ -1515,7 +1515,7 @@ concepts:
     emoji: 🏖️
     iconEligible: true
     visualConfidence: 0.92
-    rank: 301
+    rank: 312
     example:
       en: How do I get to the beach?
       he: איך מגיעים לחוף?
@@ -1552,7 +1552,7 @@ concepts:
     emoji: 🏛️
     iconEligible: true
     visualConfidence: 0.82
-    rank: 319
+    rank: 330
     example:
       en: Two tickets to the museum.
       he: שני כרטיסים למוזיאון.
@@ -1589,7 +1589,7 @@ concepts:
     emoji: 🏪
     iconEligible: true
     visualConfidence: 0.7
-    rank: 273
+    rank: 284
     example:
       en: The fruit market.
       he: שוק הפירות.
@@ -1626,7 +1626,7 @@ concepts:
     emoji: 🚉
     iconEligible: true
     visualConfidence: 0.85
-    rank: 117
+    rank: 127
     example:
       en: Where is the station?
       he: איפה התחנה?
@@ -1704,7 +1704,7 @@ concepts:
     emoji: ⛪
     iconEligible: true
     visualConfidence: 0.9
-    rank: 392
+    rank: 403
     example:
       en: The old church.
       he: הכנסייה העתיקה.
@@ -1741,7 +1741,7 @@ concepts:
     emoji: 🔑
     iconEligible: true
     visualConfidence: 0.95
-    rank: 165
+    rank: 175
     example:
       en: My room key.
       he: המפתח של החדר שלי.
@@ -1778,7 +1778,7 @@ concepts:
     emoji: 📱
     iconEligible: true
     visualConfidence: 0.95
-    rank: 129
+    rank: 139
     example:
       en: I lost my phone.
       he: איבדתי את הטלפון שלי.
@@ -1815,7 +1815,7 @@ concepts:
     emoji: 🎒
     iconEligible: true
     visualConfidence: 0.9
-    rank: 146
+    rank: 156
     example:
       en: I lost my bag.
       he: איבדתי את התיק שלי.
@@ -1852,7 +1852,7 @@ concepts:
     emoji: 💰
     iconEligible: true
     visualConfidence: 0.85
-    rank: 94
+    rank: 102
     example:
       en: I have no money.
       he: אין לי כסף.
@@ -1889,7 +1889,7 @@ concepts:
     emoji: 💳
     iconEligible: true
     visualConfidence: 0.9
-    rank: 42
+    rank: 43
     example:
       en: By card, please.
       he: בכרטיס, בבקשה.
@@ -1928,7 +1928,7 @@ concepts:
     emoji: 🎫
     iconEligible: true
     visualConfidence: 0.85
-    rank: 98
+    rank: 106
     example:
       en: One ticket, please.
       he: כרטיס אחד, בבקשה.
@@ -2002,7 +2002,7 @@ concepts:
     emoji: ☂️
     iconEligible: true
     visualConfidence: 0.95
-    rank: 485
+    rank: 496
     example:
       en: Take an umbrella.
       he: קח מטרייה.
@@ -2039,7 +2039,7 @@ concepts:
     emoji: 📷
     iconEligible: true
     visualConfidence: 0.95
-    rank: 393
+    rank: 404
     example:
       en: Can I use my camera here?
       he: אפשר לצלם כאן?
@@ -2076,7 +2076,7 @@ concepts:
     emoji: 👓
     iconEligible: true
     visualConfidence: 0.92
-    rank: 453
+    rank: 464
     example:
       en: I need my glasses.
       he: אני צריך את המשקפיים שלי.
@@ -2113,7 +2113,7 @@ concepts:
     emoji: ⌚
     iconEligible: true
     visualConfidence: 0.9
-    rank: 473
+    rank: 484
     example:
       en: A nice watch.
       he: שעון יפה.
@@ -2150,7 +2150,7 @@ concepts:
     emoji: 🗺️
     iconEligible: true
     visualConfidence: 0.9
-    rank: 130
+    rank: 140
     example:
       en: Can you show me on the map?
       he: אפשר להראות לי על המפה?
@@ -2187,7 +2187,7 @@ concepts:
     emoji: 👕
     iconEligible: true
     visualConfidence: 0.92
-    rank: 423
+    rank: 434
     example:
       en: A blue shirt.
       he: חולצה כחולה.
@@ -2224,7 +2224,7 @@ concepts:
     emoji: 👟
     iconEligible: true
     visualConfidence: 0.95
-    rank: 424
+    rank: 435
     example:
       en: New shoes.
       he: נעליים חדשות.
@@ -2261,7 +2261,7 @@ concepts:
     emoji: 🧢
     iconEligible: true
     visualConfidence: 0.9
-    rank: 474
+    rank: 485
     example:
       en: A sun hat.
       he: כובע שמש.
@@ -2298,7 +2298,7 @@ concepts:
     emoji: 🧥
     iconEligible: true
     visualConfidence: 0.9
-    rank: 454
+    rank: 465
     example:
       en: A warm jacket.
       he: מעיל חם.
@@ -2335,7 +2335,7 @@ concepts:
     emoji: 👗
     iconEligible: true
     visualConfidence: 0.92
-    rank: 455
+    rank: 466
     example:
       en: A red dress.
       he: שמלה אדומה.
@@ -2372,7 +2372,7 @@ concepts:
     emoji: 🧦
     iconEligible: true
     visualConfidence: 0.9
-    rank: 495
+    rank: 506
     example:
       en: Warm socks.
       he: גרביים חמים.
@@ -2409,7 +2409,7 @@ concepts:
     emoji: 👖
     iconEligible: true
     visualConfidence: 0.9
-    rank: 456
+    rank: 467
     example:
       en: Black pants.
       he: מכנסיים שחורים.
@@ -2448,7 +2448,7 @@ concepts:
     emoji: 🧤
     iconEligible: true
     visualConfidence: 0.88
-    rank: 496
+    rank: 507
     example:
       en: Winter gloves.
       he: כפפות חורף.
@@ -2485,7 +2485,7 @@ concepts:
     emoji: ☀️
     iconEligible: true
     visualConfidence: 0.97
-    rank: 394
+    rank: 405
     example:
       en: A sunny day.
       he: יום שמשי.
@@ -2522,7 +2522,7 @@ concepts:
     emoji: 🌧️
     iconEligible: true
     visualConfidence: 0.92
-    rank: 341
+    rank: 352
     example:
       en: It is raining.
       he: יורד גשם.
@@ -2559,7 +2559,7 @@ concepts:
     emoji: ❄️
     iconEligible: true
     visualConfidence: 0.92
-    rank: 457
+    rank: 468
     example:
       en: A lot of snow.
       he: הרבה שלג.
@@ -2596,7 +2596,7 @@ concepts:
     emoji: ☁️
     iconEligible: true
     visualConfidence: 0.92
-    rank: 497
+    rank: 508
     example:
       en: A cloudy sky.
       he: שמיים מעוננים.
@@ -2633,7 +2633,7 @@ concepts:
     emoji: 💨
     iconEligible: true
     visualConfidence: 0.7
-    rank: 486
+    rank: 497
     example:
       en: A strong wind.
       he: רוח חזקה.
@@ -2670,7 +2670,7 @@ concepts:
     emoji: ⛈️
     iconEligible: true
     visualConfidence: 0.85
-    rank: 475
+    rank: 486
     example:
       en: A big storm is coming.
       he: מגיעה סערה גדולה.
@@ -2744,7 +2744,7 @@ concepts:
     emoji: 🚑
     iconEligible: true
     visualConfidence: 0.95
-    rank: 45
+    rank: 46
     example:
       en: Call an ambulance!
       he: תזמינו אמבולנס!
@@ -2818,7 +2818,7 @@ concepts:
     emoji: 🔥
     iconEligible: true
     visualConfidence: 0.85
-    rank: 74
+    rank: 82
     example:
       en: Fire! Get out!
       he: שריפה! צאו החוצה!
@@ -2855,7 +2855,7 @@ concepts:
     emoji: 💉
     iconEligible: true
     visualConfidence: 0.72
-    rank: 159
+    rank: 169
     example:
       en: Medicine for a headache.
       he: תרופה לכאב ראש.
@@ -2892,7 +2892,7 @@ concepts:
     emoji: 🩹
     iconEligible: true
     visualConfidence: 0.82
-    rank: 227
+    rank: 237
     example:
       en: I need a bandage.
       he: אני צריך תחבושת.
@@ -2929,7 +2929,7 @@ concepts:
     emoji: 🤕
     iconEligible: true
     visualConfidence: 0.7
-    rank: 160
+    rank: 170
     example:
       en: I have pain here.
       he: יש לי כאב כאן.
@@ -2966,7 +2966,7 @@ concepts:
     emoji: 🤒
     iconEligible: true
     visualConfidence: 0.8
-    rank: 147
+    rank: 157
     example:
       en: I feel sick.
       he: אני מרגיש חולה.
@@ -3003,7 +3003,7 @@ concepts:
     emoji: 🌳
     iconEligible: true
     visualConfidence: 0.95
-    rank: 487
+    rank: 498
     example:
       en: A big tree.
       he: עץ גדול.
@@ -3040,7 +3040,7 @@ concepts:
     emoji: 🌸
     iconEligible: true
     visualConfidence: 0.92
-    rank: 488
+    rank: 499
     example:
       en: A beautiful flower.
       he: פרח יפה.
@@ -3077,7 +3077,7 @@ concepts:
     emoji: ⛰️
     iconEligible: true
     visualConfidence: 0.9
-    rank: 395
+    rank: 406
     example:
       en: A high mountain.
       he: הר גבוה.
@@ -3114,7 +3114,7 @@ concepts:
     emoji: 🌊
     iconEligible: true
     visualConfidence: 0.85
-    rank: 342
+    rank: 353
     example:
       en: The sea is warm.
       he: הים חם.
@@ -3151,7 +3151,7 @@ concepts:
     emoji: 🌙
     iconEligible: true
     visualConfidence: 0.92
-    rank: 493
+    rank: 504
     example:
       en: A full moon.
       he: ירח מלא.
@@ -3188,7 +3188,7 @@ concepts:
     emoji: 🏊
     iconEligible: true
     visualConfidence: 0.9
-    rank: 343
+    rank: 354
     example:
       en: I want to swim.
       he: אני רוצה לשחות.
@@ -3225,7 +3225,7 @@ concepts:
     emoji: 🏃
     iconEligible: true
     visualConfidence: 0.85
-    rank: 373
+    rank: 384
     example:
       en: I run every morning.
       he: אני רץ כל בוקר.
@@ -3262,7 +3262,7 @@ concepts:
     emoji: ⚽
     iconEligible: true
     visualConfidence: 0.95
-    rank: 425
+    rank: 436
     example:
       en: Let us watch football.
       he: בוא נראה כדורגל.
@@ -3299,7 +3299,7 @@ concepts:
     emoji: 🚶
     iconEligible: true
     visualConfidence: 0.82
-    rank: 249
+    rank: 260
     example:
       en: It is a short walk.
       he: זו הליכה קצרה.
@@ -3336,7 +3336,7 @@ concepts:
     emoji: 💃
     iconEligible: true
     visualConfidence: 0.9
-    rank: 476
+    rank: 487
     example:
       en: They love to dance.
       he: הם אוהבים לרקוד.
@@ -3373,7 +3373,7 @@ concepts:
     emoji: 👨
     iconEligible: true
     visualConfidence: 0.9
-    rank: 320
+    rank: 331
     example:
       en: That man over there.
       he: הגבר שם.
@@ -3412,7 +3412,7 @@ concepts:
     emoji: 👩
     iconEligible: true
     visualConfidence: 0.9
-    rank: 321
+    rank: 332
     example:
       en: Ask that woman.
       he: תשאל את האישה הזאת.
@@ -3451,7 +3451,7 @@ concepts:
     emoji: 👶
     iconEligible: true
     visualConfidence: 0.95
-    rank: 396
+    rank: 407
     example:
       en: I am traveling with a baby.
       he: אני נוסע עם תינוק.
@@ -3488,7 +3488,7 @@ concepts:
     emoji: 🧒
     iconEligible: true
     visualConfidence: 0.88
-    rank: 274
+    rank: 285
     example:
       en: One adult, one child.
       he: מבוגר אחד, ילד אחד.
@@ -3525,7 +3525,7 @@ concepts:
     emoji: 👪
     iconEligible: true
     visualConfidence: 0.88
-    rank: 302
+    rank: 313
     example:
       en: I am here with my family.
       he: אני כאן עם המשפחה שלי.
@@ -3562,7 +3562,7 @@ concepts:
     emoji: 👫
     iconEligible: true
     visualConfidence: 0.7
-    rank: 281
+    rank: 292
     example:
       en: This is my friend.
       he: זה החבר שלי.
@@ -3599,7 +3599,7 @@ concepts:
     emoji: ⬅️
     iconEligible: true
     visualConfidence: 0.85
-    rank: 58
+    rank: 63
     example:
       en: It is on the left.
       he: זה בצד שמאל.
@@ -3638,7 +3638,7 @@ concepts:
     emoji: ➡️
     iconEligible: true
     visualConfidence: 0.85
-    rank: 59
+    rank: 64
     example:
       en: Turn right.
       he: פנה ימינה.
@@ -3677,7 +3677,7 @@ concepts:
     emoji: ⬆️
     iconEligible: true
     visualConfidence: 0.8
-    rank: 259
+    rank: 270
     example:
       en: The room is up the stairs.
       he: החדר למעלה במדרגות.
@@ -3716,7 +3716,7 @@ concepts:
     emoji: ⬇️
     iconEligible: true
     visualConfidence: 0.8
-    rank: 260
+    rank: 271
     example:
       en: Breakfast is down the stairs.
       he: ארוחת הבוקר למטה במדרגות.
@@ -3754,7 +3754,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 35
+    rank: 36
     example:
       en: Yes, please.
       he: כן, בבקשה.
@@ -3792,7 +3792,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 36
+    rank: 37
     example:
       en: No, thank you.
       he: לא, תודה.
@@ -3830,7 +3830,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 37
+    rank: 38
     example:
       en: One ticket, please.
       he: כרטיס אחד, בבקשה.
@@ -3866,7 +3866,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 38
+    rank: 39
     example:
       en: Okay, no problem.
       he: בסדר, אין בעיה.
@@ -3904,7 +3904,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 39
+    rank: 40
     example:
       en: Hello! A table for two?
       he: שלום! שולחן לשניים?
@@ -3942,7 +3942,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 89
+    rank: 97
     example:
       en: Goodbye, and thanks!
       he: להתראות, ותודה!
@@ -3980,7 +3980,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 235
+    rank: 245
     example:
       en: Good morning! Breakfast, please.
       he: בוקר טוב! ארוחת בוקר, בבקשה.
@@ -4016,7 +4016,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 250
+    rank: 261
     example:
       en: Good evening! We have a reservation.
       he: ערב טוב! יש לנו הזמנה.
@@ -4052,7 +4052,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 322
+    rank: 333
     example:
       en: Good night, see you tomorrow.
       he: לילה טוב, נתראה מחר.
@@ -4088,7 +4088,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 228
+    rank: 238
     example:
       en: "\"Thank you!\" — \"You're welcome.\""
       he: '"תודה!" — "על לא דבר."'
@@ -4124,7 +4124,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 106
+    rank: 114
     example:
       en: '"Pizza tonight?" — "Sounds good!"'
       he: '"פיצה הערב?" — "נשמע טוב!"'
@@ -4160,7 +4160,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 107
+    rank: 115
     example:
       en: '"Sorry, we are late." — "No worries."'
       he: '"סליחה, איחרנו." — "אל דאגה."'
@@ -4196,7 +4196,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 118
+    rank: 128
     example:
       en: Never mind, thank you anyway.
       he: לא משנה, תודה בכל זאת.
@@ -4232,7 +4232,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 229
+    rank: 239
     example:
       en: '"Can I sit here?" — "Of course."'
       he: '"אפשר לשבת כאן?" — "כמובן."'
@@ -4268,7 +4268,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 108
+    rank: 116
     example:
       en: "\"Only card, no cash.\" — \"That's fine.\""
       he: '"רק כרטיס, בלי מזומן." — "זה בסדר."'
@@ -4304,7 +4304,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 282
+    rank: 293
     example:
       en: "\"Inside or outside?\" — \"It's up to you.\""
       he: '"בפנים או בחוץ?" — "זה תלוי בך."'
@@ -4340,7 +4340,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 131
+    rank: 141
     example:
       en: I'm not sure. Maybe at nine.
       he: אני לא בטוח. אולי בתשע.
@@ -4376,7 +4376,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 60
+    rank: 65
     example:
       en: Maybe tomorrow.
       he: אולי מחר.
@@ -4412,7 +4412,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 251
+    rank: 262
     example:
       en: '"Dessert?" — "Maybe later."'
       he: '"קינוח?" — "אולי אחר כך."'
@@ -4448,7 +4448,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 46
+    rank: 47
     example:
       en: '"Here you go." — "Thank you!"'
       he: '"הנה, בבקשה." — "תודה!"'
@@ -4484,7 +4484,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 252
+    rank: 263
     example:
       en: '"Can I ask something?" — "Go ahead."'
       he: '"אפשר לשאול משהו?" — "בבקשה, קדימה."'
@@ -4520,7 +4520,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 261
+    rank: 272
     example:
       en: '"One minute…" — "Take your time."'
       he: '"רגע אחד…" — "קח את הזמן."'
@@ -4556,7 +4556,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 262
+    rank: 273
     example:
       en: '"I love this city." — "Me too!"'
       he: '"אני אוהב את העיר הזאת." — "גם אני!"'
@@ -4592,7 +4592,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 253
+    rank: 264
     example:
       en: Really? That is great!
       he: באמת? זה מעולה!
@@ -4628,7 +4628,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 223
+    rank: 233
     example:
       en: Great, thank you!
       he: מעולה, תודה!
@@ -4664,7 +4664,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 109
+    rank: 117
     example:
       en: '"Can we pay separately?" — "No problem."'
       he: '"אפשר לשלם בנפרד?" — "אין בעיה."'
@@ -4700,7 +4700,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 75
+    rank: 83
     example:
       en: I don't know. Let's ask.
       he: אני לא יודע. בוא נשאל.
@@ -4736,7 +4736,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 236
+    rank: 246
     example:
       en: The taxi is here. Let's go!
       he: המונית כאן. בוא נלך!
@@ -4772,7 +4772,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 275
+    rank: 286
     example:
       en: See you later at the hotel.
       he: נתראה אחר כך במלון.
@@ -4808,7 +4808,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 230
+    rank: 240
     example:
       en: '"Have a nice day!" — "You too!"'
       he: '"שיהיה לך יום נעים!" — "גם לך!"'
@@ -4844,7 +4844,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 344
+    rank: 355
     example:
       en: Cheers! To the trip!
       he: לחיים! לכבוד הטיול!
@@ -4880,7 +4880,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 426
+    rank: 437
     example:
       en: Congratulations!
       he: מזל טוב!
@@ -4916,7 +4916,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 151
+    rank: 161
     example:
       en: "\"Anything else?\" — \"That's all, thanks.\""
       he: '"עוד משהו?" — "זה הכול, תודה."'
@@ -4952,7 +4952,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 345
+    rank: 356
     example:
       en: Nothing else, just the coffee.
       he: שום דבר נוסף, רק הקפה.
@@ -4988,7 +4988,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 177
+    rank: 187
     example:
       en: "\"Can I help you?\" — \"I'm just looking.\""
       he: '"אפשר לעזור?" — "אני רק מסתכל."'
@@ -5024,7 +5024,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 47
+    rank: 48
     example:
       en: Excuse me, where is the exit?
       he: סליחה, איפה היציאה?
@@ -5032,6 +5032,224 @@ concepts:
     commScore: 1
     recogScore: 0.8
     imageEligible: false
+  - id: concept.word.with
+    kind: word
+    gloss:
+      en: with
+      he: עם
+    categories:
+      - glue
+    rof: 2
+    layer: 1
+    skillTarget: recall
+    isOpener: false
+    situationSlugs:
+      - smalltalk
+    rolComponents:
+      travel: 0.8
+      coverage: 1
+      freq: 1
+      reuse: 0.9
+      learnability: 0.9333333333333333
+    rolScore: 61
+    neverTeach: false
+    realizations:
+      en:
+        text: with
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    iconEligible: false
+    rank: 49
+    example:
+      en: Coffee with milk.
+      he: קפה עם חלב.
+    pos: prep
+    commScore: 1
+    recogScore: 1
+    imageEligible: false
+    oppositeConcepts:
+      - concept.word.without
+  - id: concept.word.without
+    kind: word
+    gloss:
+      en: without
+      he: בלי
+    categories:
+      - glue
+    rof: 2
+    layer: 1
+    skillTarget: recall
+    isOpener: false
+    situationSlugs:
+      - smalltalk
+    rolComponents:
+      travel: 0.8
+      coverage: 1
+      freq: 1
+      reuse: 0.9
+      learnability: 0.7333333333333334
+    rolScore: 60
+    neverTeach: false
+    realizations:
+      en:
+        text: without
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    iconEligible: false
+    rank: 66
+    example:
+      en: Tea without sugar.
+      he: תה בלי סוכר.
+    pos: prep
+    commScore: 1
+    recogScore: 1
+    imageEligible: false
+    oppositeConcepts:
+      - concept.word.with
+  - id: concept.word.and
+    kind: word
+    gloss:
+      en: and
+      he: ו…
+    categories:
+      - glue
+    rof: 2
+    layer: 1
+    skillTarget: recall
+    isOpener: false
+    situationSlugs:
+      - smalltalk
+    rolComponents:
+      travel: 0.8
+      coverage: 1
+      freq: 1
+      reuse: 0.9
+      learnability: 1
+    rolScore: 61
+    neverTeach: false
+    realizations:
+      en:
+        text: and
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    iconEligible: false
+    rank: 50
+    example:
+      en: Coffee and water.
+      he: קפה ומים.
+    pos: conj
+    commScore: 1
+    recogScore: 1
+    imageEligible: false
+  - id: concept.word.or
+    kind: word
+    gloss:
+      en: or
+      he: או
+    categories:
+      - glue
+    rof: 2
+    layer: 1
+    skillTarget: recall
+    isOpener: false
+    situationSlugs:
+      - smalltalk
+    rolComponents:
+      travel: 0.8
+      coverage: 1
+      freq: 1
+      reuse: 0.9
+      learnability: 1
+    rolScore: 61
+    neverTeach: false
+    realizations:
+      en:
+        text: or
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    iconEligible: false
+    rank: 51
+    example:
+      en: Cash or card?
+      he: מזומן או כרטיס?
+    pos: conj
+    commScore: 0.8
+    recogScore: 1
+    imageEligible: false
+  - id: concept.word.here
+    kind: word
+    gloss:
+      en: here
+      he: כאן
+    categories:
+      - directions
+    rof: 2
+    layer: 1
+    skillTarget: recall
+    isOpener: false
+    situationSlugs:
+      - directions
+    rolComponents:
+      travel: 1
+      coverage: 1
+      freq: 1
+      reuse: 0.7
+      learnability: 0.9333333333333333
+    rolScore: 64
+    neverTeach: false
+    realizations:
+      en:
+        text: here
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    iconEligible: false
+    rank: 27
+    example:
+      en: Stop here, please.
+      he: עצור כאן, בבקשה.
+    pos: adv
+    commScore: 1
+    recogScore: 1
+    imageEligible: false
+    oppositeConcepts:
+      - concept.word.there
+  - id: concept.word.there
+    kind: word
+    gloss:
+      en: there
+      he: שם
+    categories:
+      - directions
+    rof: 2
+    layer: 1
+    skillTarget: recall
+    isOpener: false
+    situationSlugs:
+      - directions
+    rolComponents:
+      travel: 0.8
+      coverage: 1
+      freq: 1
+      reuse: 0.7
+      learnability: 0.8666666666666667
+    rolScore: 60
+    neverTeach: false
+    realizations:
+      en:
+        text: there
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    iconEligible: false
+    rank: 67
+    example:
+      en: It is over there.
+      he: זה שם.
+    pos: adv
+    commScore: 0.8
+    recogScore: 1
+    imageEligible: false
+    oppositeConcepts:
+      - concept.word.here
   - id: concept.reply.one-more
     kind: reply
     gloss:
@@ -5060,7 +5278,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 157
+    rank: 167
     example:
       en: One more, please. It was great.
       he: עוד אחד, בבקשה. זה היה מעולה.
@@ -5096,7 +5314,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 178
+    rank: 188
     example:
       en: A coffee to go, please.
       he: קפה לקחת, בבקשה.
@@ -5134,7 +5352,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 166
+    rank: 176
     example:
       en: That's enough, thank you.
       he: זה מספיק, תודה.
@@ -5170,7 +5388,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 263
+    rank: 274
     example:
       en: "\"I'm fine. And you?\""
       he: '"אני בסדר. ואתה?"'
@@ -5205,7 +5423,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 27
+    rank: 28
     example:
       en: Where is the exit?
       he: איפה היציאה?
@@ -5240,7 +5458,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 28
+    rank: 29
     example:
       en: When does it open?
       he: מתי זה נפתח?
@@ -5275,7 +5493,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 48
+    rank: 52
     example:
       en: What is this?
       he: מה זה?
@@ -5310,7 +5528,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 237
+    rank: 247
     example:
       en: Who is next?
       he: מי הבא בתור?
@@ -5345,7 +5563,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 238
+    rank: 248
     example:
       en: Why is it closed?
       he: למה זה סגור?
@@ -5415,7 +5633,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 119
+    rank: 129
     example:
       en: Which gate?
       he: איזה שער?
@@ -5451,7 +5669,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 152
+    rank: 162
     example:
       en: '"How many people?" — "Two."'
       he: '"כמה אנשים?" — "שניים."'
@@ -5487,7 +5705,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 49
+    rank: 53
     example:
       en: What time is checkout?
       he: באיזו שעה העזיבה?
@@ -5523,7 +5741,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 153
+    rank: 163
     example:
       en: How long is the ride?
       he: כמה זמן הנסיעה?
@@ -5558,7 +5776,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 50
+    rank: 54
     example:
       en: I want a coffee.
       he: אני רוצה קפה.
@@ -5593,7 +5811,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 51
+    rank: 55
     example:
       en: You are very kind.
       he: אתה מאוד אדיב.
@@ -5628,7 +5846,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 239
+    rank: 249
     example:
       en: He is my friend.
       he: הוא חבר שלי.
@@ -5665,7 +5883,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 240
+    rank: 250
     example:
       en: She speaks English.
       he: היא מדברת אנגלית.
@@ -5702,7 +5920,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 231
+    rank: 241
     example:
       en: It is very good.
       he: זה טוב מאוד.
@@ -5737,7 +5955,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 52
+    rank: 56
     example:
       en: We have a reservation.
       he: יש לנו הזמנה.
@@ -5772,7 +5990,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 241
+    rank: 251
     example:
       en: They are with me.
       he: הם איתי.
@@ -5844,7 +6062,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 224
+    rank: 234
     example:
       en: That one over there.
       he: ההוא שם.
@@ -5881,7 +6099,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 53
+    rank: 57
     example:
       en: This is my bag.
       he: זה התיק שלי.
@@ -5918,7 +6136,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 242
+    rank: 252
     example:
       en: Your passport, please.
       he: הדרכון שלך, בבקשה.
@@ -6068,7 +6286,7 @@ concepts:
     emoji: 4️⃣
     iconEligible: true
     visualConfidence: 0.97
-    rank: 61
+    rank: 68
     example:
       en: Four people.
       he: ארבעה אנשים.
@@ -6105,7 +6323,7 @@ concepts:
     emoji: 5️⃣
     iconEligible: true
     visualConfidence: 0.97
-    rank: 62
+    rank: 69
     example:
       en: It is five minutes away.
       he: זה במרחק חמש דקות.
@@ -6142,7 +6360,7 @@ concepts:
     emoji: 6️⃣
     iconEligible: true
     visualConfidence: 0.97
-    rank: 120
+    rank: 130
     example:
       en: Room six.
       he: חדר שש.
@@ -6179,7 +6397,7 @@ concepts:
     emoji: 7️⃣
     iconEligible: true
     visualConfidence: 0.97
-    rank: 121
+    rank: 131
     example:
       en: Breakfast is at seven.
       he: ארוחת הבוקר בשבע.
@@ -6216,7 +6434,7 @@ concepts:
     emoji: 8️⃣
     iconEligible: true
     visualConfidence: 0.97
-    rank: 122
+    rank: 132
     example:
       en: Gate eight.
       he: שער שמונה.
@@ -6253,7 +6471,7 @@ concepts:
     emoji: 9️⃣
     iconEligible: true
     visualConfidence: 0.97
-    rank: 123
+    rank: 133
     example:
       en: Nine euros.
       he: תשעה יורו.
@@ -6290,7 +6508,7 @@ concepts:
     emoji: 🔟
     iconEligible: true
     visualConfidence: 0.97
-    rank: 54
+    rank: 58
     example:
       en: Ten percent tip.
       he: טיפ של עשרה אחוזים.
@@ -6325,7 +6543,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 191
+    rank: 201
     example:
       en: Checkout is at eleven.
       he: העזיבה באחת עשרה.
@@ -6360,7 +6578,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 192
+    rank: 202
     example:
       en: Lunch at twelve.
       he: צהריים בשתים עשרה.
@@ -6395,7 +6613,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 132
+    rank: 142
     example:
       en: Twenty euros, please.
       he: עשרים יורו, בבקשה.
@@ -6430,7 +6648,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 124
+    rank: 134
     example:
       en: It costs fifty.
       he: זה עולה חמישים.
@@ -6465,7 +6683,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 133
+    rank: 143
     example:
       en: One hundred shekels.
       he: מאה שקלים.
@@ -6500,7 +6718,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 303
+    rank: 314
     example:
       en: A thousand people were there.
       he: אלף אנשים היו שם.
@@ -6535,7 +6753,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 125
+    rank: 135
     example:
       en: Half past nine.
       he: תשע וחצי.
@@ -6607,7 +6825,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 63
+    rank: 70
     example:
       en: Come back later.
       he: תחזור אחר כך.
@@ -6644,7 +6862,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 29
+    rank: 30
     example:
       en: Is it open today?
       he: זה פתוח היום?
@@ -6679,7 +6897,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 30
+    rank: 31
     example:
       en: We leave tomorrow.
       he: אנחנו עוזבים מחר.
@@ -6716,7 +6934,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 264
+    rank: 275
     example:
       en: We arrived yesterday.
       he: הגענו אתמול.
@@ -6753,7 +6971,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 110
+    rank: 118
     example:
       en: Tomorrow morning at eight.
       he: מחר בבוקר בשמונה.
@@ -6790,7 +7008,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 283
+    rank: 294
     example:
       en: Closed in the afternoon.
       he: סגור אחר הצהריים.
@@ -6825,7 +7043,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 138
+    rank: 148
     example:
       en: A table for this evening.
       he: שולחן להערב.
@@ -6862,7 +7080,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 95
+    rank: 103
     example:
       en: Two nights, please.
       he: שני לילות, בבקשה.
@@ -6899,7 +7117,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 96
+    rank: 104
     example:
       en: Three days in the city.
       he: שלושה ימים בעיר.
@@ -6936,7 +7154,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 233
+    rank: 243
     example:
       en: One week in Italy.
       he: שבוע אחד באיטליה.
@@ -6971,7 +7189,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 304
+    rank: 315
     example:
       en: Next month.
       he: בחודש הבא.
@@ -7006,7 +7224,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 284
+    rank: 295
     example:
       en: Happy new year!
       he: שנה טובה!
@@ -7041,7 +7259,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 101
+    rank: 109
     example:
       en: The tour is one hour.
       he: הסיור הוא שעה אחת.
@@ -7076,7 +7294,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 102
+    rank: 110
     example:
       en: Five minutes on foot.
       he: חמש דקות ברגל.
@@ -7111,7 +7329,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 103
+    rank: 111
     example:
       en: We have no time.
       he: אין לנו זמן.
@@ -7146,7 +7364,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 111
+    rank: 119
     example:
       en: The bus is late.
       he: האוטובוס מאחר.
@@ -7183,7 +7401,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 265
+    rank: 276
     example:
       en: We arrived early.
       he: הגענו מוקדם.
@@ -7220,7 +7438,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 266
+    rank: 277
     example:
       en: The train comes soon.
       he: הרכבת מגיעה בקרוב.
@@ -7255,7 +7473,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 305
+    rank: 316
     example:
       en: It is always open.
       he: זה תמיד פתוח.
@@ -7292,7 +7510,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 306
+    rank: 317
     example:
       en: I never eat meat.
       he: אני אף פעם לא אוכל בשר.
@@ -7329,7 +7547,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 307
+    rank: 318
     example:
       en: Closed on the weekend.
       he: סגור בסוף השבוע.
@@ -7364,7 +7582,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 308
+    rank: 319
     example:
       en: Closed on Monday.
       he: סגור ביום שני.
@@ -7399,7 +7617,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 346
+    rank: 357
     example:
       en: The market is on Tuesday.
       he: השוק ביום שלישי.
@@ -7434,7 +7652,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 347
+    rank: 358
     example:
       en: We fly on Wednesday.
       he: אנחנו טסים ביום רביעי.
@@ -7469,7 +7687,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 348
+    rank: 359
     example:
       en: Until Thursday.
       he: עד יום חמישי.
@@ -7504,7 +7722,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 309
+    rank: 320
     example:
       en: Friday evening.
       he: ערב שישי.
@@ -7539,7 +7757,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 323
+    rank: 334
     example:
       en: Open on Saturday?
       he: פתוח בשבת?
@@ -7574,7 +7792,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 310
+    rank: 321
     example:
       en: Everything is closed on Sunday.
       he: הכול סגור ביום ראשון.
@@ -7611,7 +7829,7 @@ concepts:
     emoji: 🔴
     iconEligible: true
     visualConfidence: 0.9
-    rank: 285
+    rank: 296
     example:
       en: The red bus.
       he: האוטובוס האדום.
@@ -7648,7 +7866,7 @@ concepts:
     emoji: 🔵
     iconEligible: true
     visualConfidence: 0.9
-    rank: 286
+    rank: 297
     example:
       en: The blue line.
       he: הקו הכחול.
@@ -7685,7 +7903,7 @@ concepts:
     emoji: 🟢
     iconEligible: true
     visualConfidence: 0.9
-    rank: 287
+    rank: 298
     example:
       en: Cross on green.
       he: חוצים בירוק.
@@ -7722,7 +7940,7 @@ concepts:
     emoji: 🟡
     iconEligible: true
     visualConfidence: 0.9
-    rank: 407
+    rank: 418
     example:
       en: The yellow taxi.
       he: המונית הצהובה.
@@ -7759,7 +7977,7 @@ concepts:
     emoji: ⚫
     iconEligible: true
     visualConfidence: 0.9
-    rank: 374
+    rank: 385
     example:
       en: Black coffee, please.
       he: קפה שחור, בבקשה.
@@ -7798,7 +8016,7 @@ concepts:
     emoji: ⚪
     iconEligible: true
     visualConfidence: 0.9
-    rank: 375
+    rank: 386
     example:
       en: White wine.
       he: יין לבן.
@@ -7837,7 +8055,7 @@ concepts:
     emoji: 🟠
     iconEligible: true
     visualConfidence: 0.88
-    rank: 408
+    rank: 419
     example:
       en: The orange building.
       he: הבניין הכתום.
@@ -7874,7 +8092,7 @@ concepts:
     emoji: 💗
     iconEligible: true
     visualConfidence: 0.8
-    rank: 397
+    rank: 408
     example:
       en: The pink dress.
       he: השמלה הוורודה.
@@ -7911,7 +8129,7 @@ concepts:
     emoji: 🟤
     iconEligible: true
     visualConfidence: 0.88
-    rank: 409
+    rank: 420
     example:
       en: The brown bag.
       he: התיק החום.
@@ -7948,7 +8166,7 @@ concepts:
     emoji: 🟣
     iconEligible: true
     visualConfidence: 0.88
-    rank: 427
+    rank: 438
     example:
       en: The purple line.
       he: הקו הסגול.
@@ -8125,7 +8343,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 112
+    rank: 120
     example:
       en: Come with me, please.
       he: בוא איתי, בבקשה.
@@ -8162,7 +8380,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 55
+    rank: 59
     example:
       en: Where can we eat?
       he: איפה אפשר לאכול?
@@ -8199,7 +8417,7 @@ concepts:
     emoji: 🥤
     iconEligible: true
     visualConfidence: 0.7
-    rank: 139
+    rank: 149
     example:
       en: Something to drink?
       he: משהו לשתות?
@@ -8234,7 +8452,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 243
+    rank: 253
     example:
       en: I want to see the menu.
       he: אני רוצה לראות את התפריט.
@@ -8271,7 +8489,7 @@ concepts:
     emoji: 👀
     iconEligible: true
     visualConfidence: 0.7
-    rank: 244
+    rank: 254
     example:
       en: Look at this!
       he: תסתכל על זה!
@@ -8306,7 +8524,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 324
+    rank: 335
     example:
       en: I cannot hear you.
       he: אני לא שומע אותך.
@@ -8378,7 +8596,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 245
+    rank: 255
     example:
       en: How do you say this?
       he: איך אומרים את זה?
@@ -8413,7 +8631,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 31
+    rank: 32
     example:
       en: Now I understand.
       he: עכשיו אני מבין.
@@ -8448,7 +8666,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 140
+    rank: 150
     example:
       en: Do you know a good place?
       he: אתה מכיר מקום טוב?
@@ -8483,7 +8701,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 311
+    rank: 322
     example:
       en: I think it is close.
       he: אני חושב שזה קרוב.
@@ -8518,7 +8736,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 246
+    rank: 256
     example:
       en: I like this place.
       he: אני מחבב את המקום הזה.
@@ -8553,7 +8771,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 288
+    rank: 299
     example:
       en: I love this city.
       he: אני אוהב את העיר הזאת.
@@ -8588,7 +8806,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 99
+    rank: 107
     example:
       en: I will take it.
       he: אני אקח את זה.
@@ -8625,7 +8843,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 141
+    rank: 151
     example:
       en: Give me one, please.
       he: תן לי אחד, בבקשה.
@@ -8662,7 +8880,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 247
+    rank: 257
     example:
       en: Where do I get the bus?
       he: איפה עולים לאוטובוס?
@@ -8697,7 +8915,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 104
+    rank: 112
     example:
       en: Where can I buy tickets?
       he: איפה אפשר לקנות כרטיסים?
@@ -8771,7 +8989,7 @@ concepts:
     emoji: 😴
     iconEligible: true
     visualConfidence: 0.85
-    rank: 325
+    rank: 336
     example:
       en: I need to sleep.
       he: אני צריך לישון.
@@ -8806,7 +9024,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 276
+    rank: 287
     example:
       en: Can we sit outside?
       he: אפשר לשבת בחוץ?
@@ -8843,7 +9061,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 376
+    rank: 387
     example:
       en: Please stand in line.
       he: נא לעמוד בתור.
@@ -8880,7 +9098,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 64
+    rank: 71
     example:
       en: Please wait here.
       he: נא לחכות כאן.
@@ -8960,6 +9178,41 @@ concepts:
     commScore: 1
     recogScore: 1
     imageEligible: false
+  - id: concept.word.can
+    kind: word
+    gloss:
+      en: can
+      he: יכול
+    categories:
+      - actions
+    rof: 2
+    layer: 1
+    skillTarget: recall
+    isOpener: false
+    situationSlugs:
+      - smalltalk
+    rolComponents:
+      travel: 0.8
+      coverage: 1
+      freq: 1
+      reuse: 0.8
+      learnability: 1
+    rolScore: 61
+    neverTeach: false
+    realizations:
+      en:
+        text: can
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    iconEligible: false
+    rank: 60
+    example:
+      en: Can you help me?
+      he: אתה יכול לעזור לי?
+    pos: verb
+    commScore: 1
+    recogScore: 1
+    imageEligible: false
   - id: concept.word.ask
     kind: word
     gloss:
@@ -8987,7 +9240,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 254
+    rank: 265
     example:
       en: Let's ask someone.
       he: בוא נשאל מישהו.
@@ -9024,7 +9277,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 326
+    rank: 337
     example:
       en: Nobody answers.
       he: אף אחד לא עונה.
@@ -9063,7 +9316,7 @@ concepts:
     emoji: 📞
     iconEligible: true
     visualConfidence: 0.85
-    rank: 113
+    rank: 121
     example:
       en: Please call a taxi.
       he: תזמין מונית, בבקשה.
@@ -9098,7 +9351,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 114
+    rank: 122
     example:
       en: I cannot find my hotel.
       he: אני לא מוצא את המלון שלי.
@@ -9172,7 +9425,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 179
+    rank: 189
     example:
       en: I forgot my key.
       he: שכחתי את המפתח שלי.
@@ -9209,7 +9462,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 327
+    rank: 338
     example:
       en: I do not remember the name.
       he: אני לא זוכר את השם.
@@ -9246,7 +9499,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 289
+    rank: 300
     example:
       en: Can you bring the bill?
       he: אפשר להביא את החשבון?
@@ -9281,7 +9534,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 328
+    rank: 339
     example:
       en: Send me the address.
       he: תשלח לי את הכתובת.
@@ -9316,7 +9569,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 68
+    rank: 76
     example:
       en: Can you show me?
       he: אתה יכול להראות לי?
@@ -9351,7 +9604,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 277
+    rank: 288
     example:
       en: Can I try it on?
       he: אפשר למדוד את זה?
@@ -9386,7 +9639,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 255
+    rank: 266
     example:
       en: Can I use the phone?
       he: אפשר להשתמש בטלפון?
@@ -9421,7 +9674,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 142
+    rank: 152
     example:
       en: The shower does not work.
       he: המקלחת לא עובדת.
@@ -9456,7 +9709,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 329
+    rank: 340
     example:
       en: He drives slowly.
       he: הוא נוהג לאט.
@@ -9491,7 +9744,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 154
+    rank: 164
     example:
       en: We fly on Sunday.
       he: אנחנו טסים ביום ראשון.
@@ -9526,7 +9779,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 134
+    rank: 144
     example:
       en: When does it arrive?
       he: מתי זה מגיע?
@@ -9563,7 +9816,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 126
+    rank: 136
     example:
       en: The train leaves at nine.
       he: הרכבת יוצאת בתשע.
@@ -9600,7 +9853,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 267
+    rank: 278
     example:
       en: We return tomorrow.
       he: אנחנו חוזרים מחר.
@@ -9635,7 +9888,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 234
+    rank: 244
     example:
       en: We stay three nights.
       he: אנחנו נשארים שלושה לילות.
@@ -9670,7 +9923,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 290
+    rank: 301
     example:
       en: We want to visit the old city.
       he: אנחנו רוצים לבקר בעיר העתיקה.
@@ -9705,7 +9958,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 330
+    rank: 341
     example:
       en: Nice to meet you.
       he: נעים להכיר.
@@ -9740,7 +9993,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 127
+    rank: 137
     example:
       en: I booked a room.
       he: הזמנתי חדר.
@@ -9777,7 +10030,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 148
+    rank: 158
     example:
       en: I want to cancel the order.
       he: אני רוצה לבטל את ההזמנה.
@@ -9812,7 +10065,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 167
+    rank: 177
     example:
       en: We want to rent a car.
       he: אנחנו רוצים לשכור רכב.
@@ -9847,7 +10100,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 398
+    rank: 409
     example:
       en: Where can I wash my hands?
       he: איפה אפשר לשטוף ידיים?
@@ -9882,7 +10135,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 193
+    rank: 203
     example:
       en: It is broken.
       he: זה שבור.
@@ -9917,7 +10170,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 268
+    rank: 279
     example:
       en: Push the door.
       he: דחוף את הדלת.
@@ -9954,7 +10207,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 269
+    rank: 280
     example:
       en: Pull, do not push.
       he: משוך, אל תדחוף.
@@ -9991,7 +10244,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 69
+    rank: 77
     example:
       en: Turn left at the corner.
       he: פנה שמאלה בפינה.
@@ -10028,7 +10281,7 @@ concepts:
     emoji: 🚬
     iconEligible: true
     visualConfidence: 0.85
-    rank: 207
+    rank: 217
     example:
       en: No smoking here.
       he: אסור לעשן כאן.
@@ -10063,7 +10316,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 56
+    rank: 61
     example:
       en: Ready to order?
       he: מוכנים להזמין?
@@ -10100,7 +10353,7 @@ concepts:
     emoji: 💱
     iconEligible: true
     visualConfidence: 0.7
-    rank: 171
+    rank: 181
     example:
       en: Where can I exchange money?
       he: איפה אפשר להחליף כסף?
@@ -10135,7 +10388,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 291
+    rank: 302
     example:
       en: We travel a lot.
       he: אנחנו מטיילים הרבה.
@@ -10170,7 +10423,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 65
+    rank: 72
     example:
       en: The food is very good.
       he: האוכל טוב מאוד.
@@ -10207,7 +10460,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 149
+    rank: 159
     example:
       en: The weather is bad.
       he: מזג האוויר רע.
@@ -10244,7 +10497,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 248
+    rank: 258
     example:
       en: A big room.
       he: חדר גדול.
@@ -10281,7 +10534,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 256
+    rank: 267
     example:
       en: A smaller size, please.
       he: מידה קטנה יותר, בבקשה.
@@ -10320,7 +10573,7 @@ concepts:
     emoji: 🥵
     iconEligible: true
     visualConfidence: 0.8
-    rank: 115
+    rank: 123
     example:
       en: Careful, it is hot!
       he: זהירות, זה חם!
@@ -10359,7 +10612,7 @@ concepts:
     emoji: 🥶
     iconEligible: true
     visualConfidence: 0.8
-    rank: 116
+    rank: 124
     example:
       en: A cold water, please.
       he: מים קרים, בבקשה.
@@ -10369,6 +10622,155 @@ concepts:
     imageEligible: true
     oppositeConcepts:
       - concept.word.hot
+  - id: concept.word.medium
+    kind: word
+    gloss:
+      en: medium
+      he: בינוני
+    categories:
+      - descriptions
+    rof: 2
+    layer: 2
+    skillTarget: recall
+    isOpener: false
+    situationSlugs:
+      - shopping
+    rolComponents:
+      travel: 0.8
+      coverage: 0.8
+      freq: 1
+      reuse: 0.7
+      learnability: 0.8
+    rolScore: 55
+    neverTeach: false
+    realizations:
+      en:
+        text: medium
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    iconEligible: false
+    rank: 126
+    example:
+      en: A medium coffee, please.
+      he: קפה בינוני, בבקשה.
+    pos: adj
+    commScore: 0.8
+    recogScore: 0.8
+    imageEligible: false
+    relatedConcepts:
+      - concept.word.small
+      - concept.word.big
+  - id: concept.word.large
+    kind: word
+    gloss:
+      en: large
+      he: גדול
+    categories:
+      - descriptions
+    rof: 2
+    layer: 2
+    skillTarget: recall
+    isOpener: false
+    situationSlugs:
+      - shopping
+    rolComponents:
+      travel: 0.8
+      coverage: 0.8
+      freq: 1
+      reuse: 0.7
+      learnability: 0.8666666666666667
+    rolScore: 56
+    neverTeach: false
+    realizations:
+      en:
+        text: large
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    iconEligible: false
+    rank: 125
+    example:
+      en: A large size, please.
+      he: מידה גדולה, בבקשה.
+    pos: adj
+    commScore: 0.8
+    recogScore: 0.8
+    imageEligible: false
+    relatedConcepts:
+      - concept.word.big
+  - id: concept.word.more
+    kind: word
+    gloss:
+      en: more
+      he: עוד
+    categories:
+      - descriptions
+    rof: 2
+    layer: 1
+    skillTarget: recall
+    isOpener: false
+    situationSlugs:
+      - shopping
+    rolComponents:
+      travel: 0.8
+      coverage: 1
+      freq: 1
+      reuse: 0.7
+      learnability: 0.9333333333333333
+    rolScore: 60
+    neverTeach: false
+    realizations:
+      en:
+        text: more
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    iconEligible: false
+    rank: 73
+    example:
+      en: A little more, please.
+      he: עוד קצת, בבקשה.
+    pos: adv
+    commScore: 1
+    recogScore: 0.8
+    imageEligible: false
+    oppositeConcepts:
+      - concept.word.less
+  - id: concept.word.less
+    kind: word
+    gloss:
+      en: less
+      he: פחות
+    categories:
+      - descriptions
+    rof: 1
+    layer: 2
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - shopping
+    rolComponents:
+      travel: 0.6
+      coverage: 0.8
+      freq: 1
+      reuse: 0.7
+      learnability: 0.9333333333333333
+    rolScore: 26
+    neverTeach: false
+    realizations:
+      en:
+        text: less
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    iconEligible: false
+    rank: 259
+    example:
+      en: A little less, please.
+      he: קצת פחות, בבקשה.
+    pos: adv
+    commScore: 0.8
+    recogScore: 0.8
+    imageEligible: false
+    oppositeConcepts:
+      - concept.word.more
   - id: concept.word.new
     kind: word
     gloss:
@@ -10396,7 +10798,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 312
+    rank: 323
     example:
       en: The new terminal.
       he: הטרמינל החדש.
@@ -10433,7 +10835,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 270
+    rank: 281
     example:
       en: The old city.
       he: העיר העתיקה.
@@ -10470,7 +10872,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 135
+    rank: 145
     example:
       en: Something cheaper?
       he: משהו זול יותר?
@@ -10507,7 +10909,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 143
+    rank: 153
     example:
       en: It is too expensive.
       he: זה יקר מדי.
@@ -10544,7 +10946,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 136
+    rank: 146
     example:
       en: Is the wifi free?
       he: האם הוויי-פיי חינם?
@@ -10579,7 +10981,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 292
+    rank: 303
     example:
       en: The fast train.
       he: הרכבת המהירה.
@@ -10616,7 +11018,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 161
+    rank: 171
     example:
       en: Slower, please.
       he: לאט יותר, בבקשה.
@@ -10653,7 +11055,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 43
+    rank: 44
     example:
       en: Is it near?
       he: זה קרוב?
@@ -10692,7 +11094,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 44
+    rank: 45
     example:
       en: Is it far from here?
       he: זה רחוק מכאן?
@@ -10729,7 +11131,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 278
+    rank: 289
     example:
       en: What a beautiful view!
       he: איזה נוף יפה!
@@ -10764,7 +11166,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 293
+    rank: 304
     example:
       en: The room is clean.
       he: החדר נקי.
@@ -10801,7 +11203,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 194
+    rank: 204
     example:
       en: The table is dirty.
       he: השולחן מלוכלך.
@@ -10838,7 +11240,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 162
+    rank: 172
     example:
       en: The hotel is full.
       he: המלון מלא.
@@ -10875,7 +11277,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 377
+    rank: 388
     example:
       en: The bus is empty.
       he: האוטובוס ריק.
@@ -10912,7 +11314,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 313
+    rank: 324
     example:
       en: The suitcase is too heavy.
       he: המזוודה כבדה מדי.
@@ -10947,7 +11349,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 331
+    rank: 342
     example:
       en: It is easy to find.
       he: קל למצוא את זה.
@@ -10984,7 +11386,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 332
+    rank: 343
     example:
       en: It is hard to say.
       he: קשה להגיד.
@@ -11021,7 +11423,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 185
+    rank: 195
     example:
       en: It is very important.
       he: זה מאוד חשוב.
@@ -11056,7 +11458,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 93
+    rank: 101
     example:
       en: It is dangerous at night.
       he: מסוכן שם בלילה.
@@ -11093,7 +11495,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 91
+    rank: 99
     example:
       en: Is this area safe?
       he: האזור הזה בטוח?
@@ -11130,7 +11532,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 294
+    rank: 305
     example:
       en: A quiet room, please.
       he: חדר שקט, בבקשה.
@@ -11167,7 +11569,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 399
+    rank: 410
     example:
       en: It is too loud here.
       he: רועש כאן מדי.
@@ -11206,7 +11608,7 @@ concepts:
     emoji: 😊
     iconEligible: true
     visualConfidence: 0.9
-    rank: 314
+    rank: 325
     example:
       en: I am happy to be here.
       he: אני שמח להיות כאן.
@@ -11245,7 +11647,7 @@ concepts:
     emoji: 😢
     iconEligible: true
     visualConfidence: 0.9
-    rank: 410
+    rank: 421
     example:
       en: She looks sad.
       he: היא נראית עצובה.
@@ -11284,7 +11686,7 @@ concepts:
     emoji: 😫
     iconEligible: true
     visualConfidence: 0.85
-    rank: 295
+    rank: 306
     example:
       en: I am very tired.
       he: אני מאוד עייף.
@@ -11319,7 +11721,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 158
+    rank: 168
     example:
       en: We are hungry.
       he: אנחנו רעבים.
@@ -11356,7 +11758,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 211
+    rank: 221
     example:
       en: I am thirsty.
       he: אני צמא.
@@ -11393,7 +11795,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 333
+    rank: 344
     example:
       en: Too sweet for me.
       he: מתוק מדי בשבילי.
@@ -11430,7 +11832,7 @@ concepts:
     emoji: 🌶️
     iconEligible: true
     visualConfidence: 0.85
-    rank: 195
+    rank: 205
     example:
       en: Is it spicy?
       he: זה חריף?
@@ -11465,7 +11867,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 349
+    rank: 360
     example:
       en: The soup is salty.
       he: המרק מלוח.
@@ -11500,7 +11902,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 350
+    rank: 361
     example:
       en: Fresh orange juice.
       he: מיץ תפוזים טרי.
@@ -11537,7 +11939,7 @@ concepts:
     emoji: 😋
     iconEligible: true
     visualConfidence: 0.7
-    rank: 271
+    rank: 282
     example:
       en: It was delicious!
       he: זה היה טעים!
@@ -11572,7 +11974,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 163
+    rank: 173
     example:
       en: We are ready.
       he: אנחנו מוכנים.
@@ -11607,7 +12009,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 296
+    rank: 307
     example:
       en: The restaurant is busy tonight.
       he: המסעדה עמוסה הערב.
@@ -11642,7 +12044,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 351
+    rank: 362
     example:
       en: Something different, please.
       he: משהו שונה, בבקשה.
@@ -11679,7 +12081,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 297
+    rank: 308
     example:
       en: The same for me, please.
       he: אותו דבר בשבילי, בבקשה.
@@ -11716,7 +12118,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 32
+    rank: 33
     example:
       en: The next station.
       he: התחנה הבאה.
@@ -11753,7 +12155,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 137
+    rank: 147
     example:
       en: The last bus is at ten.
       he: האוטובוס האחרון בעשר.
@@ -11790,7 +12192,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 257
+    rank: 268
     example:
       en: The first time in Rome.
       he: הפעם הראשונה ברומא.
@@ -11825,7 +12227,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 181
+    rank: 191
     example:
       en: We pay together.
       he: אנחנו משלמים ביחד.
@@ -11862,7 +12264,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 411
+    rank: 422
     example:
       en: I am traveling alone.
       he: אני מטייל לבד.
@@ -11899,7 +12301,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 180
+    rank: 190
     example:
       en: The lock is broken.
       he: המנעול מקולקל.
@@ -11934,7 +12336,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 33
+    rank: 34
     example:
       en: Is it open today?
       he: זה פתוח היום?
@@ -11971,7 +12373,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 34
+    rank: 35
     example:
       en: The museum is closed.
       he: המוזיאון סגור.
@@ -12010,7 +12412,7 @@ concepts:
     emoji: 🍇
     iconEligible: true
     visualConfidence: 0.65
-    rank: 352
+    rank: 363
     example:
       en: Fresh fruit.
       he: פירות טריים.
@@ -12047,7 +12449,7 @@ concepts:
     emoji: 🥦
     iconEligible: true
     visualConfidence: 0.6
-    rank: 213
+    rank: 223
     example:
       en: Only vegetables, please.
       he: רק ירקות, בבקשה.
@@ -12084,7 +12486,7 @@ concepts:
     emoji: 🥗
     iconEligible: true
     visualConfidence: 0.9
-    rank: 353
+    rank: 364
     example:
       en: A big salad.
       he: סלט גדול.
@@ -12119,7 +12521,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 208
+    rank: 218
     example:
       en: No sugar, please.
       he: בלי סוכר, בבקשה.
@@ -12156,7 +12558,7 @@ concepts:
     emoji: 🧂
     iconEligible: true
     visualConfidence: 0.85
-    rank: 354
+    rank: 365
     example:
       en: Salt and pepper.
       he: מלח ופלפל.
@@ -12191,7 +12593,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 458
+    rank: 469
     example:
       en: A little pepper.
       he: קצת פלפל.
@@ -12226,7 +12628,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 459
+    rank: 470
     example:
       en: Olive oil.
       he: שמן זית.
@@ -12263,7 +12665,7 @@ concepts:
     emoji: 🧈
     iconEligible: true
     visualConfidence: 0.85
-    rank: 460
+    rank: 471
     example:
       en: Bread with butter.
       he: לחם עם חמאה.
@@ -12300,7 +12702,7 @@ concepts:
     emoji: 🧃
     iconEligible: true
     visualConfidence: 0.85
-    rank: 355
+    rank: 366
     example:
       en: Orange juice, please.
       he: מיץ תפוזים, בבקשה.
@@ -12337,7 +12739,7 @@ concepts:
     emoji: 🍺
     iconEligible: true
     visualConfidence: 0.95
-    rank: 315
+    rank: 326
     example:
       en: Two beers, please.
       he: שתי בירות, בבקשה.
@@ -12374,7 +12776,7 @@ concepts:
     emoji: 🥪
     iconEligible: true
     visualConfidence: 0.95
-    rank: 378
+    rank: 389
     example:
       en: A cheese sandwich.
       he: כריך גבינה.
@@ -12411,7 +12813,7 @@ concepts:
     emoji: 🍕
     iconEligible: true
     visualConfidence: 0.98
-    rank: 356
+    rank: 367
     example:
       en: A slice of pizza.
       he: משולש פיצה.
@@ -12448,7 +12850,7 @@ concepts:
     emoji: 🍝
     iconEligible: true
     visualConfidence: 0.95
-    rank: 400
+    rank: 411
     example:
       en: Pasta with tomato sauce.
       he: פסטה ברוטב עגבניות.
@@ -12485,7 +12887,7 @@ concepts:
     emoji: 🍰
     iconEligible: true
     visualConfidence: 0.95
-    rank: 461
+    rank: 472
     example:
       en: A piece of cake.
       he: פרוסת עוגה.
@@ -12522,7 +12924,7 @@ concepts:
     emoji: 🍫
     iconEligible: true
     visualConfidence: 0.95
-    rank: 441
+    rank: 452
     example:
       en: Hot chocolate.
       he: שוקו חם.
@@ -12559,7 +12961,7 @@ concepts:
     emoji: 🍦
     iconEligible: true
     visualConfidence: 0.95
-    rank: 412
+    rank: 423
     example:
       en: Two scoops of ice cream.
       he: שני כדורי גלידה.
@@ -12596,7 +12998,7 @@ concepts:
     emoji: 🍅
     iconEligible: true
     visualConfidence: 0.95
-    rank: 462
+    rank: 473
     example:
       en: Without tomato, please.
       he: בלי עגבנייה, בבקשה.
@@ -12631,7 +13033,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 463
+    rank: 474
     example:
       en: A fork, please.
       he: מזלג, בבקשה.
@@ -12668,7 +13070,7 @@ concepts:
     emoji: 🔪
     iconEligible: true
     visualConfidence: 0.85
-    rank: 464
+    rank: 475
     example:
       en: A clean knife, please.
       he: סכין נקייה, בבקשה.
@@ -12705,7 +13107,7 @@ concepts:
     emoji: 🥄
     iconEligible: true
     visualConfidence: 0.9
-    rank: 465
+    rank: 476
     example:
       en: A spoon for the soup.
       he: כף למרק.
@@ -12742,7 +13144,7 @@ concepts:
     emoji: 🍽️
     iconEligible: true
     visualConfidence: 0.85
-    rank: 466
+    rank: 477
     example:
       en: Another plate, please.
       he: עוד צלחת, בבקשה.
@@ -12777,7 +13179,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 428
+    rank: 439
     example:
       en: A cup of tea.
       he: ספל תה.
@@ -12812,7 +13214,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 357
+    rank: 368
     example:
       en: A glass of water.
       he: כוס מים.
@@ -12847,7 +13249,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 358
+    rank: 369
     example:
       en: A bottle of water.
       he: בקבוק מים.
@@ -12884,7 +13286,7 @@ concepts:
     emoji: 📋
     iconEligible: true
     visualConfidence: 0.6
-    rank: 86
+    rank: 94
     example:
       en: The menu, please.
       he: את התפריט, בבקשה.
@@ -12919,7 +13321,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 80
+    rank: 88
     example:
       en: The bill, please.
       he: חשבון, בבקשה.
@@ -12958,7 +13360,7 @@ concepts:
     emoji: 🍳
     iconEligible: true
     visualConfidence: 0.8
-    rank: 155
+    rank: 165
     example:
       en: Is breakfast included?
       he: ארוחת הבוקר כלולה?
@@ -12993,7 +13395,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 359
+    rank: 370
     example:
       en: Lunch until three.
       he: צהריים עד שלוש.
@@ -13028,7 +13430,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 360
+    rank: 371
     example:
       en: Dinner at eight.
       he: ארוחת ערב בשמונה.
@@ -13065,7 +13467,7 @@ concepts:
     emoji: 🍮
     iconEligible: true
     visualConfidence: 0.8
-    rank: 429
+    rank: 440
     example:
       en: Something for dessert?
       he: משהו לקינוח?
@@ -13102,7 +13504,7 @@ concepts:
     emoji: 🛫
     iconEligible: true
     visualConfidence: 0.85
-    rank: 81
+    rank: 89
     example:
       en: To the airport, please.
       he: לשדה התעופה, בבקשה.
@@ -13139,7 +13541,7 @@ concepts:
     emoji: 🛍️
     iconEligible: true
     visualConfidence: 0.8
-    rank: 279
+    rank: 290
     example:
       en: The shop is closed.
       he: החנות סגורה.
@@ -13178,7 +13580,7 @@ concepts:
     emoji: 🛒
     iconEligible: true
     visualConfidence: 0.85
-    rank: 298
+    rank: 309
     example:
       en: Is there a supermarket near here?
       he: יש סופרמרקט קרוב לכאן?
@@ -13213,7 +13615,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 105
+    rank: 113
     example:
       en: What street is this?
       he: איזה רחוב זה?
@@ -13250,7 +13652,7 @@ concepts:
     emoji: 🏙️
     iconEligible: true
     visualConfidence: 0.85
-    rank: 258
+    rank: 269
     example:
       en: The old city.
       he: העיר העתיקה.
@@ -13285,7 +13687,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 78
+    rank: 86
     example:
       en: To the city center.
       he: למרכז העיר.
@@ -13322,7 +13724,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 334
+    rank: 345
     example:
       en: The main square.
       he: הכיכר הראשית.
@@ -13359,7 +13761,7 @@ concepts:
     emoji: 🌉
     iconEligible: true
     visualConfidence: 0.9
-    rank: 401
+    rank: 412
     example:
       en: Cross the bridge.
       he: תחצה את הגשר.
@@ -13396,7 +13798,7 @@ concepts:
     emoji: 🏞️
     iconEligible: true
     visualConfidence: 0.7
-    rank: 361
+    rank: 372
     example:
       en: Next to the park.
       he: ליד הפארק.
@@ -13431,7 +13833,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 82
+    rank: 90
     example:
       en: The main entrance.
       he: הכניסה הראשית.
@@ -13468,7 +13870,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 66
+    rank: 74
     example:
       en: Where is the exit?
       he: איפה היציאה?
@@ -13507,7 +13909,7 @@ concepts:
     emoji: 🛗
     iconEligible: true
     visualConfidence: 0.85
-    rank: 402
+    rank: 413
     example:
       en: Take the elevator.
       he: קח את המעלית.
@@ -13544,7 +13946,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 403
+    rank: 414
     example:
       en: The stairs are on the right.
       he: המדרגות מימין.
@@ -13581,7 +13983,7 @@ concepts:
     emoji: 🚪
     iconEligible: true
     visualConfidence: 0.9
-    rank: 316
+    rank: 327
     example:
       en: The door is locked.
       he: הדלת נעולה.
@@ -13618,7 +14020,7 @@ concepts:
     emoji: 🪟
     iconEligible: true
     visualConfidence: 0.9
-    rank: 362
+    rank: 373
     example:
       en: A seat by the window.
       he: מקום ליד החלון.
@@ -13655,7 +14057,7 @@ concepts:
     emoji: 🏢
     iconEligible: true
     visualConfidence: 0.85
-    rank: 379
+    rank: 390
     example:
       en: The tall building.
       he: הבניין הגבוה.
@@ -13690,7 +14092,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 84
+    rank: 92
     example:
       en: Ask at the reception.
       he: תשאל בקבלה.
@@ -13727,7 +14129,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 280
+    rank: 291
     example:
       en: A nice cafe.
       he: בית קפה נחמד.
@@ -13764,7 +14166,7 @@ concepts:
     emoji: ⛽
     iconEligible: true
     visualConfidence: 0.9
-    rank: 215
+    rank: 225
     example:
       en: Stop at the gas station.
       he: עצור בתחנת הדלק.
@@ -13801,7 +14203,7 @@ concepts:
     emoji: 🏰
     iconEligible: true
     visualConfidence: 0.9
-    rank: 430
+    rank: 441
     example:
       en: Tickets to the castle.
       he: כרטיסים לטירה.
@@ -13836,7 +14238,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 182
+    rank: 192
     example:
       en: Platform three.
       he: רציף שלוש.
@@ -13871,7 +14273,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 87
+    rank: 95
     example:
       en: Gate twelve.
       he: שער שתים עשרה.
@@ -13908,7 +14310,7 @@ concepts:
     emoji: 💺
     iconEligible: true
     visualConfidence: 0.85
-    rank: 172
+    rank: 182
     example:
       en: Is this seat free?
       he: המושב הזה פנוי?
@@ -13943,7 +14345,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 183
+    rank: 193
     example:
       en: My luggage is lost.
       he: הכבודה שלי אבדה.
@@ -13982,7 +14384,7 @@ concepts:
     emoji: 🧳
     iconEligible: true
     visualConfidence: 0.9
-    rank: 196
+    rank: 206
     example:
       en: A heavy suitcase.
       he: מזוודה כבדה.
@@ -14019,7 +14421,7 @@ concepts:
     emoji: 🚏
     iconEligible: true
     visualConfidence: 0.85
-    rank: 173
+    rank: 183
     example:
       en: The bus stop is there.
       he: תחנת האוטובוס שם.
@@ -14054,7 +14456,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 317
+    rank: 328
     example:
       en: Ask the driver.
       he: תשאל את הנהג.
@@ -14091,7 +14493,7 @@ concepts:
     emoji: 🚇
     iconEligible: true
     visualConfidence: 0.9
-    rank: 168
+    rank: 178
     example:
       en: The nearest metro station.
       he: תחנת הרכבת התחתית הקרובה.
@@ -14131,7 +14533,7 @@ concepts:
     emoji: 🛣️
     iconEligible: true
     visualConfidence: 0.7
-    rank: 363
+    rank: 374
     example:
       en: Cross the road carefully.
       he: תחצה את הכביש בזהירות.
@@ -14168,7 +14570,7 @@ concepts:
     emoji: 🚦
     iconEligible: true
     visualConfidence: 0.95
-    rank: 364
+    rank: 375
     example:
       en: Turn left at the traffic light.
       he: פנה שמאלה ברמזור.
@@ -14203,7 +14605,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 335
+    rank: 346
     example:
       en: It is around the corner.
       he: זה מעבר לפינה.
@@ -14238,7 +14640,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 169
+    rank: 179
     example:
       en: My flight is at noon.
       he: הטיסה שלי בצהריים.
@@ -14273,7 +14675,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 186
+    rank: 196
     example:
       en: Departures are upstairs.
       he: ההמראות למעלה.
@@ -14310,7 +14712,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 184
+    rank: 194
     example:
       en: The arrivals hall.
       he: אולם הנחיתות.
@@ -14349,7 +14751,7 @@ concepts:
     emoji: ⛴️
     iconEligible: true
     visualConfidence: 0.85
-    rank: 442
+    rank: 453
     example:
       en: The ferry to the island.
       he: המעבורת לאי.
@@ -14386,7 +14788,7 @@ concepts:
     emoji: 🏷️
     iconEligible: true
     visualConfidence: 0.7
-    rank: 70
+    rank: 78
     example:
       en: What is the price?
       he: מה המחיר?
@@ -14423,7 +14825,7 @@ concepts:
     emoji: 💵
     iconEligible: true
     visualConfidence: 0.9
-    rank: 79
+    rank: 87
     example:
       en: Cash only.
       he: מזומן בלבד.
@@ -14460,7 +14862,7 @@ concepts:
     emoji: 🪙
     iconEligible: true
     visualConfidence: 0.9
-    rank: 380
+    rank: 391
     example:
       en: I need coins for the locker.
       he: אני צריך מטבעות ללוקר.
@@ -14497,7 +14899,7 @@ concepts:
     emoji: 🧾
     iconEligible: true
     visualConfidence: 0.9
-    rank: 174
+    rank: 184
     example:
       en: A receipt, please.
       he: קבלה, בבקשה.
@@ -14534,7 +14936,7 @@ concepts:
     emoji: 👛
     iconEligible: true
     visualConfidence: 0.85
-    rank: 203
+    rank: 213
     example:
       en: I lost my wallet.
       he: איבדתי את הארנק שלי.
@@ -14569,7 +14971,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 197
+    rank: 207
     example:
       en: A bigger size?
       he: יש מידה גדולה יותר?
@@ -14604,7 +15006,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 404
+    rank: 415
     example:
       en: Is there a discount?
       he: יש הנחה?
@@ -14639,7 +15041,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 381
+    rank: 392
     example:
       en: Everything is on sale.
       he: הכול במבצע.
@@ -14676,7 +15078,7 @@ concepts:
     emoji: 💶
     iconEligible: true
     visualConfidence: 0.9
-    rank: 150
+    rank: 160
     example:
       en: Ten euros, please.
       he: עשרה יורו, בבקשה.
@@ -14713,7 +15115,7 @@ concepts:
     emoji: 💲
     iconEligible: true
     visualConfidence: 0.8
-    rank: 175
+    rank: 185
     example:
       en: Twenty dollars.
       he: עשרים דולר.
@@ -14748,7 +15150,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 405
+    rank: 416
     example:
       en: A hundred shekels.
       he: מאה שקלים.
@@ -14783,7 +15185,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 382
+    rank: 393
     example:
       en: Is tax included?
       he: המס כלול?
@@ -14818,7 +15220,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 336
+    rank: 347
     example:
       en: Is the tip included?
       he: הטיפ כלול?
@@ -14855,7 +15257,7 @@ concepts:
     emoji: 🎁
     iconEligible: true
     visualConfidence: 0.95
-    rank: 383
+    rank: 394
     example:
       en: A gift for my family.
       he: מתנה למשפחה שלי.
@@ -14890,7 +15292,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 443
+    rank: 454
     example:
       en: A small souvenir.
       he: מזכרת קטנה.
@@ -14927,7 +15329,7 @@ concepts:
     emoji: 🏧
     iconEligible: true
     visualConfidence: 0.9
-    rank: 85
+    rank: 93
     example:
       en: Is there an ATM near here?
       he: יש כספומט קרוב לכאן?
@@ -14964,7 +15366,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 209
+    rank: 219
     example:
       en: My head hurts.
       he: הראש שלי כואב.
@@ -14999,7 +15401,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 489
+    rank: 500
     example:
       en: Short hair.
       he: שיער קצר.
@@ -15034,7 +15436,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 490
+    rank: 501
     example:
       en: Wash your face.
       he: שטוף את הפנים.
@@ -15071,7 +15473,7 @@ concepts:
     emoji: ❤️
     iconEligible: true
     visualConfidence: 0.9
-    rank: 144
+    rank: 154
     example:
       en: A heart problem.
       he: בעיה בלב.
@@ -15106,7 +15508,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 216
+    rank: 226
     example:
       en: My stomach hurts.
       he: הבטן שלי כואבת.
@@ -15141,7 +15543,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 210
+    rank: 220
     example:
       en: My back hurts.
       he: הגב שלי כואב.
@@ -15176,7 +15578,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 204
+    rank: 214
     example:
       en: Something for a headache.
       he: משהו נגד כאב ראש.
@@ -15213,7 +15615,7 @@ concepts:
     emoji: 🌡️
     iconEligible: true
     visualConfidence: 0.8
-    rank: 100
+    rank: 108
     example:
       en: I have a fever.
       he: יש לי חום.
@@ -15288,7 +15690,7 @@ concepts:
     emoji: 🩸
     iconEligible: true
     visualConfidence: 0.9
-    rank: 176
+    rank: 186
     example:
       en: There is blood.
       he: יש דם.
@@ -15323,7 +15725,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 232
+    rank: 242
     example:
       en: I need a dentist.
       he: אני צריך רופא שיניים.
@@ -15358,7 +15760,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 220
+    rank: 230
     example:
       en: The nurse will help you.
       he: האחות תעזור לך.
@@ -15393,7 +15795,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 205
+    rank: 215
     example:
       en: I have travel insurance.
       he: יש לי ביטוח נסיעות.
@@ -15428,7 +15830,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 221
+    rank: 231
     example:
       en: One pill a day.
       he: כדור אחד ביום.
@@ -15465,7 +15867,7 @@ concepts:
     emoji: 🧴
     iconEligible: true
     visualConfidence: 0.7
-    rank: 477
+    rank: 488
     example:
       en: A cream for the sunburn.
       he: משחה לכוויית השמש.
@@ -15500,7 +15902,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 73
+    rank: 81
     example:
       en: My name is Dana.
       he: קוראים לי דנה.
@@ -15535,7 +15937,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 384
+    rank: 395
     example:
       en: This is my mother.
       he: זאת אמא שלי.
@@ -15574,7 +15976,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 385
+    rank: 396
     example:
       en: My father loves to travel.
       he: אבא שלי אוהב לטייל.
@@ -15613,7 +16015,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 444
+    rank: 455
     example:
       en: I travel with my brother.
       he: אני מטייל עם אח שלי.
@@ -15650,7 +16052,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 445
+    rank: 456
     example:
       en: My sister lives here.
       he: אחותי גרה כאן.
@@ -15687,7 +16089,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 446
+    rank: 457
     example:
       en: This is my husband.
       he: זה בעלי.
@@ -15724,7 +16126,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 431
+    rank: 442
     example:
       en: My wife and I.
       he: אשתי ואני.
@@ -15761,7 +16163,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 432
+    rank: 443
     example:
       en: Our son is ten.
       he: הבן שלנו בן עשר.
@@ -15798,7 +16200,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 447
+    rank: 458
     example:
       en: My daughter is here.
       he: הבת שלי כאן.
@@ -15835,7 +16237,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 478
+    rank: 489
     example:
       en: The little boy.
       he: הילד הקטן.
@@ -15872,7 +16274,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 479
+    rank: 490
     example:
       en: The girl with the hat.
       he: הילדה עם הכובע.
@@ -15909,7 +16311,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 337
+    rank: 348
     example:
       en: We are tourists.
       he: אנחנו תיירים.
@@ -15944,7 +16346,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 386
+    rank: 397
     example:
       en: Ask the waiter.
       he: תשאל את המלצר.
@@ -16019,7 +16421,7 @@ concepts:
     emoji: ⚠️
     iconEligible: true
     visualConfidence: 0.85
-    rank: 57
+    rank: 62
     example:
       en: Danger! Keep out.
       he: סכנה! אין כניסה.
@@ -16124,7 +16526,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 92
+    rank: 100
     example:
       en: My bag was stolen.
       he: התיק שלי נגנב.
@@ -16159,7 +16561,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 97
+    rank: 105
     example:
       en: The Israeli embassy.
       he: השגרירות הישראלית.
@@ -16194,7 +16596,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 128
+    rank: 138
     example:
       en: There was an accident.
       he: הייתה תאונה.
@@ -16264,7 +16666,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 201
+    rank: 211
     example:
       en: We need more towels.
       he: אנחנו צריכים עוד מגבות.
@@ -16301,7 +16703,7 @@ concepts:
     emoji: 🧼
     iconEligible: true
     visualConfidence: 0.85
-    rank: 413
+    rank: 424
     example:
       en: There is no soap.
       he: אין סבון.
@@ -16338,7 +16740,7 @@ concepts:
     emoji: 🪥
     iconEligible: true
     visualConfidence: 0.9
-    rank: 448
+    rank: 459
     example:
       en: I forgot my toothbrush.
       he: שכחתי את מברשת השיניים.
@@ -16373,7 +16775,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 449
+    rank: 460
     example:
       en: A small toothpaste.
       he: משחת שיניים קטנה.
@@ -16408,7 +16810,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 480
+    rank: 491
     example:
       en: Shampoo and soap.
       he: שמפו וסבון.
@@ -16443,7 +16845,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 206
+    rank: 216
     example:
       en: I lost my charger.
       he: איבדתי את המטען שלי.
@@ -16480,7 +16882,7 @@ concepts:
     emoji: 🔋
     iconEligible: true
     visualConfidence: 0.9
-    rank: 406
+    rank: 417
     example:
       en: The battery is empty.
       he: הסוללה ריקה.
@@ -16517,7 +16919,7 @@ concepts:
     emoji: 🖊️
     iconEligible: true
     visualConfidence: 0.9
-    rank: 387
+    rank: 398
     example:
       en: A pen for the form.
       he: עט לטופס.
@@ -16554,7 +16956,7 @@ concepts:
     emoji: 📄
     iconEligible: true
     visualConfidence: 0.8
-    rank: 414
+    rank: 425
     example:
       en: A piece of paper.
       he: פיסת נייר.
@@ -16589,7 +16991,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 219
+    rank: 229
     example:
       en: I need an adapter.
       he: אני צריך מתאם.
@@ -16628,7 +17030,7 @@ concepts:
     emoji: ✂️
     iconEligible: true
     visualConfidence: 0.95
-    rank: 498
+    rank: 509
     example:
       en: Do you have scissors?
       he: יש לך מספריים?
@@ -16665,7 +17067,7 @@ concepts:
     emoji: 🪞
     iconEligible: true
     visualConfidence: 0.85
-    rank: 499
+    rank: 510
     example:
       en: The mirror in the room.
       he: המראה בחדר.
@@ -16700,7 +17102,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 500
+    rank: 511
     example:
       en: A small comb.
       he: מסרק קטן.
@@ -16737,7 +17139,7 @@ concepts:
     emoji: 🪒
     iconEligible: true
     visualConfidence: 0.9
-    rank: 481
+    rank: 492
     example:
       en: A razor, please.
       he: סכין גילוח, בבקשה.
@@ -16774,7 +17176,7 @@ concepts:
     emoji: 🕶️
     iconEligible: true
     visualConfidence: 0.9
-    rank: 433
+    rank: 444
     example:
       en: New sunglasses.
       he: משקפי שמש חדשים.
@@ -16809,7 +17211,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 71
+    rank: 79
     example:
       en: A room for two nights.
       he: חדר לשני לילות.
@@ -16846,7 +17248,7 @@ concepts:
     emoji: 🛏️
     iconEligible: true
     visualConfidence: 0.9
-    rank: 187
+    rank: 197
     example:
       en: A double bed.
       he: מיטה זוגית.
@@ -16881,7 +17283,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 83
+    rank: 91
     example:
       en: A table for two, please.
       he: שולחן לשניים, בבקשה.
@@ -16918,7 +17320,7 @@ concepts:
     emoji: 🪑
     iconEligible: true
     visualConfidence: 0.9
-    rank: 415
+    rank: 426
     example:
       en: One more chair, please.
       he: עוד כיסא, בבקשה.
@@ -16955,7 +17357,7 @@ concepts:
     emoji: 🚿
     iconEligible: true
     visualConfidence: 0.9
-    rank: 198
+    rank: 208
     example:
       en: The shower is cold.
       he: המקלחת קרה.
@@ -16990,7 +17392,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 467
+    rank: 478
     example:
       en: The sink is blocked.
       he: הכיור סתום.
@@ -17025,7 +17427,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 365
+    rank: 376
     example:
       en: Is there a kitchen?
       he: יש מטבח?
@@ -17062,7 +17464,7 @@ concepts:
     emoji: 🛁
     iconEligible: true
     visualConfidence: 0.85
-    rank: 199
+    rank: 209
     example:
       en: The bathroom is small.
       he: חדר האמבטיה קטן.
@@ -17099,7 +17501,7 @@ concepts:
     emoji: 🧻
     iconEligible: true
     visualConfidence: 0.9
-    rank: 217
+    rank: 227
     example:
       en: There is no toilet paper.
       he: אין נייר טואלט.
@@ -17134,7 +17536,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 212
+    rank: 222
     example:
       en: The air conditioning does not work.
       he: המזגן לא עובד.
@@ -17171,7 +17573,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 222
+    rank: 232
     example:
       en: The heating is off.
       he: החימום כבוי.
@@ -17206,7 +17608,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 434
+    rank: 445
     example:
       en: Another pillow, please.
       he: עוד כרית, בבקשה.
@@ -17241,7 +17643,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 435
+    rank: 446
     example:
       en: A warm blanket.
       he: שמיכה חמה.
@@ -17276,7 +17678,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 450
+    rank: 461
     example:
       en: Clean sheets, please.
       he: סדינים נקיים, בבקשה.
@@ -17313,7 +17715,7 @@ concepts:
     emoji: 💡
     iconEligible: true
     visualConfidence: 0.85
-    rank: 468
+    rank: 479
     example:
       en: The lamp is broken.
       he: המנורה שבורה.
@@ -17350,7 +17752,7 @@ concepts:
     emoji: 🛋️
     iconEligible: true
     visualConfidence: 0.9
-    rank: 491
+    rank: 502
     example:
       en: A sofa in the lobby.
       he: ספה בלובי.
@@ -17387,7 +17789,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 436
+    rank: 447
     example:
       en: Is there a fridge in the room?
       he: יש מקרר בחדר?
@@ -17424,7 +17826,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 437
+    rank: 448
     example:
       en: A room with a balcony.
       he: חדר עם מרפסת.
@@ -17459,7 +17861,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 200
+    rank: 210
     example:
       en: The third floor.
       he: קומה שלישית.
@@ -17494,7 +17896,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 492
+    rank: 503
     example:
       en: The picture on the wall.
       he: התמונה על הקיר.
@@ -17531,7 +17933,7 @@ concepts:
     emoji: 🗑️
     iconEligible: true
     visualConfidence: 0.85
-    rank: 469
+    rank: 480
     example:
       en: Where is the trash?
       he: איפה פח האשפה?
@@ -17571,7 +17973,7 @@ concepts:
     emoji: 🧺
     iconEligible: true
     visualConfidence: 0.8
-    rank: 451
+    rank: 462
     example:
       en: Is there a laundry service?
       he: יש שירות כביסה?
@@ -17606,7 +18008,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 218
+    rank: 228
     example:
       en: Lockers are at the station.
       he: הלוקרים בתחנה.
@@ -17641,7 +18043,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 416
+    rank: 427
     example:
       en: We rented an apartment.
       he: שכרנו דירה.
@@ -17676,7 +18078,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 470
+    rank: 481
     example:
       en: A table in the garden.
       he: שולחן בגינה.
@@ -17713,7 +18115,7 @@ concepts:
     emoji: 📶
     iconEligible: true
     visualConfidence: 0.85
-    rank: 72
+    rank: 80
     example:
       en: What is the wifi password?
       he: מה הסיסמה של הוויי-פיי?
@@ -17753,7 +18155,7 @@ concepts:
     emoji: 🌐
     iconEligible: true
     visualConfidence: 0.8
-    rank: 164
+    rank: 174
     example:
       en: The internet is slow.
       he: האינטרנט איטי.
@@ -17790,7 +18192,7 @@ concepts:
     emoji: 💻
     iconEligible: true
     visualConfidence: 0.9
-    rank: 417
+    rank: 428
     example:
       en: My computer is in the bag.
       he: המחשב שלי בתיק.
@@ -17827,7 +18229,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 438
+    rank: 449
     example:
       en: Look at the screen.
       he: תסתכל על המסך.
@@ -17862,7 +18264,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 471
+    rank: 482
     example:
       en: A USB cable.
       he: כבל יו-אס-בי.
@@ -17899,7 +18301,7 @@ concepts:
     emoji: 🔌
     iconEligible: true
     visualConfidence: 0.85
-    rank: 202
+    rank: 212
     example:
       en: I need a plug adapter.
       he: אני צריך מתאם לשקע.
@@ -17937,7 +18339,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 214
+    rank: 224
     example:
       en: A SIM card with data.
       he: כרטיס סים עם גלישה.
@@ -17972,7 +18374,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 366
+    rank: 377
     example:
       en: Use the metro app.
       he: תשתמש באפליקציה של המטרו.
@@ -18009,7 +18411,7 @@ concepts:
     emoji: 📧
     iconEligible: true
     visualConfidence: 0.85
-    rank: 367
+    rank: 378
     example:
       en: Send it by email.
       he: תשלח את זה באימייל.
@@ -18044,7 +18446,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 88
+    rank: 96
     example:
       en: The wifi password, please.
       he: את סיסמת הוויי-פיי, בבקשה.
@@ -18083,7 +18485,7 @@ concepts:
     emoji: 🖼️
     iconEligible: true
     visualConfidence: 0.85
-    rank: 318
+    rank: 329
     example:
       en: Can you take a photo of us?
       he: אפשר לצלם אותנו?
@@ -18122,7 +18524,7 @@ concepts:
     emoji: 🎬
     iconEligible: true
     visualConfidence: 0.85
-    rank: 452
+    rank: 463
     example:
       en: A short video.
       he: סרטון קצר.
@@ -18159,7 +18561,7 @@ concepts:
     emoji: 🎧
     iconEligible: true
     visualConfidence: 0.9
-    rank: 472
+    rank: 483
     example:
       en: I forgot my headphones.
       he: שכחתי את האוזניות שלי.
@@ -18196,7 +18598,7 @@ concepts:
     emoji: 📺
     iconEligible: true
     visualConfidence: 0.9
-    rank: 494
+    rank: 505
     example:
       en: The television does not work.
       he: הטלוויזיה לא עובדת.
@@ -18235,7 +18637,7 @@ concepts:
     emoji: 💬
     iconEligible: true
     visualConfidence: 0.8
-    rank: 418
+    rank: 429
     example:
       en: Send me a message.
       he: תשלח לי הודעה.

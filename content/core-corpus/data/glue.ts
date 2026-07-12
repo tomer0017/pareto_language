@@ -46,6 +46,15 @@ export const GLUE: CorpusRow[] = [
   { slug: 'nothing-else', kind: 'reply', pos: 'phrase', en: 'Nothing else.', he: 'שום דבר נוסף', cat: 'glue', layer: 2, rof: 1, skill: 'recall', role: 'say', s: [3, 4, 3, 3, 3], ex: 'Nothing else, just the coffee.', exHe: 'שום דבר נוסף, רק הקפה.' },
   { slug: 'just-looking', kind: 'reply', pos: 'phrase', en: "I'm just looking.", he: 'אני רק מסתכל', cat: 'glue', layer: 2, rof: 2, skill: 'recall', role: 'say', s: [4, 5, 3, 3, 4], ex: '"Can I help you?" — "I\'m just looking."', exHe: '"אפשר לעזור?" — "אני רק מסתכל."' },
   { slug: 'excuse-me', kind: 'phrase', pos: 'phrase', en: 'Excuse me.', he: 'סליחה, אפשר?', cat: 'glue', layer: 1, rof: 2, skill: 'fluent', role: 'say', s: [5, 5, 4, 5, 5], ex: 'Excuse me, where is the exit?', exHe: 'סליחה, איפה היציאה?' },
+  // Connectors & function words — the highest-reuse glue that builds orders/requests across every
+  // situation (café "milk, no sugar", restaurant "with/without", "and/or"). Promoted to global Core
+  // so they are learnable in Browse/audio/flashcards, and reviewed in-context via mission priming.
+  { slug: 'with', pos: 'prep', en: 'with', he: 'עם', cat: 'glue', layer: 1, rof: 2, skill: 'recall', s: [5, 5, 5, 5, 4], ex: 'Coffee with milk.', exHe: 'קפה עם חלב.', opp: ['without'] },
+  { slug: 'without', pos: 'prep', en: 'without', he: 'בלי', cat: 'glue', layer: 1, rof: 2, skill: 'recall', s: [5, 5, 5, 5, 4], ex: 'Tea without sugar.', exHe: 'תה בלי סוכר.', opp: ['with'] },
+  { slug: 'and', pos: 'conj', en: 'and', he: 'ו…', cat: 'glue', layer: 1, rof: 2, skill: 'recall', s: [5, 5, 5, 5, 4], ex: 'Coffee and water.', exHe: 'קפה ומים.' },
+  { slug: 'or', pos: 'conj', en: 'or', he: 'או', cat: 'glue', layer: 1, rof: 2, skill: 'recall', s: [5, 4, 5, 5, 4], ex: 'Cash or card?', exHe: 'מזומן או כרטיס?' },
+  { slug: 'here', pos: 'adv', en: 'here', he: 'כאן', cat: 'directions', layer: 1, rof: 2, skill: 'recall', s: [5, 5, 5, 5, 5], ex: 'Stop here, please.', exHe: 'עצור כאן, בבקשה.', opp: ['there'] },
+  { slug: 'there', pos: 'adv', en: 'there', he: 'שם', cat: 'directions', layer: 1, rof: 2, skill: 'recall', s: [5, 4, 5, 5, 4], ex: 'It is over there.', exHe: 'זה שם.', opp: ['here'] },
   { slug: 'one-more', kind: 'reply', pos: 'phrase', en: 'One more, please.', he: 'עוד אחד, בבקשה', cat: 'glue', layer: 2, rof: 2, skill: 'recall', role: 'say', s: [4, 5, 3, 4, 4], ex: 'One more, please. It was great.', exHe: 'עוד אחד, בבקשה. זה היה מעולה.' },
   { slug: 'to-go', kind: 'reply', pos: 'phrase', en: 'To go, please.', he: 'לקחת, בבקשה', cat: 'glue', layer: 2, rof: 2, skill: 'recall', role: 'say', s: [4, 5, 4, 3, 4], ex: 'A coffee to go, please.', exHe: 'קפה לקחת, בבקשה.', alias: ['takeaway'] },
   { slug: 'enough', pos: 'interj', en: 'enough', he: 'מספיק', cat: 'glue', layer: 2, rof: 2, skill: 'recall', role: 'say', s: [4, 4, 3, 4, 3], ex: "That's enough, thank you.", exHe: 'זה מספיק, תודה.' },
