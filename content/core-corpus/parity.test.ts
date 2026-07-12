@@ -11,19 +11,24 @@ import { FR_PILOT } from './data/fr-pilot.js';
 describe('Corpus parity (French vs English reference)', () => {
   const report = corpusParity('fr', FR_PILOT, CORPUS);
 
-  it('measures French coverage of the full corpus (honest — a subset today)', () => {
+  it('realizes the COMPLETE corpus — French concept count equals English (500/500)', () => {
     expect(report.total).toBe(CORPUS.length);
-    expect(report.covered).toBe(Object.keys(FR_PILOT).length);
-    expect(report.covered).toBeLessThan(report.total); // brutally honest: not full parity yet
-    expect(report.missing.length).toBe(report.total - report.covered);
+    expect(report.covered).toBe(report.total); // full vocabulary parity
+    expect(report.missing).toEqual([]);
+    expect(report.complete).toBe(true);
   });
 
   it('has NO orphan French realizations (every fr key is a real concept id)', () => {
     expect(report.orphans).toEqual([]);
   });
 
-  it('fails loudly while French is incomplete (Phase 7 — no silent gaps)', () => {
-    expect(() => assertCorpusParity(report)).toThrow(/Corpus parity FAILED for "fr"/);
+  it('passes the corpus parity gate for French (no gaps)', () => {
+    expect(() => assertCorpusParity(report)).not.toThrow();
+  });
+
+  it('still fails loudly for a language with a real gap (Phase 7 — no silent gaps)', () => {
+    const partial = Object.fromEntries(Object.entries(FR_PILOT).slice(0, 100));
+    expect(() => assertCorpusParity(corpusParity('xx', partial, CORPUS))).toThrow(/Corpus parity FAILED/);
   });
 
   it('passes for the complete reference language (English realizes every row)', () => {

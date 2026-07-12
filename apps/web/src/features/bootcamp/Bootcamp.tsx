@@ -155,8 +155,10 @@ function MissionCard({ mission, badge, special }: { mission: (typeof BOOTCAMP_PL
   const bc = useBootcampStore();
   const learningLang = useAppStore((s) => s.learningLang);
   const built = mission.day in missionsFor(learningLang);
-  const isDone = bc.completedDays.includes(mission.day);
-  const resumable = (bc.stepIndex[String(mission.day)] ?? 0) > 0 && !isDone;
+  // Completion/resume are gated by `built`: an unbuilt mission (e.g. an Early-Access "Coming Soon"
+  // one, or a mission another language completed) must never render as done or in-progress here.
+  const isDone = built && bc.completedDays.includes(mission.day);
+  const resumable = built && (bc.stepIndex[String(mission.day)] ?? 0) > 0 && !isDone;
   const sub = isDone
     ? t('completed')
     : built
@@ -165,7 +167,7 @@ function MissionCard({ mission, badge, special }: { mission: (typeof BOOTCAMP_PL
         : resumable
           ? t('continueDay', { n: missionNumber(mission.day) ?? mission.day })
           : `${mission.minutes} ${t('min')} · ${L(mission.confidenceGain)}`
-      : t('locked');
+      : t('comingSoon');
   return (
     <button
       className="game-card card-press"

@@ -1,12 +1,13 @@
 import { describe, expect, it } from 'vitest';
 import { buildPackWords, mergePilotRealizations, validatePilotPack } from './corpus.js';
+import { CORPUS } from './data/index.js';
 import { FR_PILOT } from './data/fr-pilot.js';
 
 /**
- * French pilot pack — the real, testable French Core vocabulary subset (Part 2). Proves the pack
- * builds from `fr-pilot.ts` merged onto the corpus, is consistent (no empty/dup surfaces), speaks
- * French, and preserves concept identity — all through the SAME pure functions the English pack
- * uses, with French NEVER joining DECLARED_LANGS (so the English 500 stays untouched).
+ * French Core pack — the COMPLETE French Core corpus (500/500). Proves the pack builds from
+ * `fr-pilot.ts` merged onto the corpus, is consistent, speaks French, and preserves concept
+ * identity — all through the SAME pure functions the English pack uses, with French NEVER joining
+ * DECLARED_LANGS (so the English 500 stays untouched).
  */
 const FR = Object.fromEntries(Object.entries(FR_PILOT).map(([slug, e]) => [slug, e.w]));
 
@@ -14,9 +15,8 @@ describe('French pilot Core pack', () => {
   const rows = mergePilotRealizations('fr', FR);
   const pack = buildPackWords('fr', rows);
 
-  it('ships a real subset (150–200 concepts) that passes the pilot gate', () => {
-    expect(pack.length).toBeGreaterThanOrEqual(150);
-    expect(pack.length).toBeLessThanOrEqual(220);
+  it('realizes the COMPLETE corpus (500/500) and passes the pilot gate', () => {
+    expect(pack.length).toBe(CORPUS.length);
     expect(() => validatePilotPack('fr', pack)).not.toThrow();
   });
 
@@ -34,16 +34,8 @@ describe('French pilot Core pack', () => {
     expect(water?.meaning.he).toBe('מים');
   });
 
-  it('has no empty or duplicate French surface forms (games/recall integrity)', () => {
+  it('has no empty French surface forms (homographs across distinct concepts are allowed)', () => {
     for (const w of pack) expect(w.word.trim().length).toBeGreaterThan(0);
-    const byKind = new Map<string, Set<string>>();
-    for (const w of pack) {
-      const kind = w.id.split('.')[1]!;
-      const set = byKind.get(kind) ?? new Set();
-      expect(set.has(w.word.toLowerCase())).toBe(false); // no dup within a kind
-      set.add(w.word.toLowerCase());
-      byKind.set(kind, set);
-    }
   });
 
   it('provides enough unique-emoji words for the picture/recall games', () => {

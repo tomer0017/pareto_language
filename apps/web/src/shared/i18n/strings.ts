@@ -57,6 +57,8 @@ const en = {
   chooseLanguage: 'Where are you going?',
   chooseLanguageSub: 'Pick the language of your trip. The whole app adapts.',
   comingSoon: 'Coming soon',
+  earlyAccess: 'Early Access',
+  earlyAccessNote: 'Full vocabulary + first missions ready — more missions coming soon.',
   whenFly: 'When do you fly?',
   whenFlySub: 'Your whole plan is built backwards from this date.',
   minutesQ: 'Minutes per day?',

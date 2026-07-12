@@ -230,15 +230,13 @@ export function mergePilotRealizations(
 export function validatePilotPack(lang: string, words: CorePackWord[], min = 120): void {
   const errs: string[] = [];
   if (words.length < min) errs.push(`${lang} pilot has ${words.length} concepts, expected at least ${min}`);
-  const seen = new Map<string, string>();
   for (const w of words) {
     if (!w.word.trim()) errs.push(`${w.conceptId}: empty "${lang}" realization`);
-    const kind = w.id.split('.')[1] ?? 'word';
-    const key = `${kind}:${w.word.toLowerCase()}`;
-    const prev = seen.get(key);
-    if (prev) errs.push(`duplicate "${lang}" surface "${w.word}" (${kind}): ${prev} and ${w.conceptId}`);
-    seen.set(key, w.conceptId);
   }
+  // NOTE: duplicate surface forms are NOT an error for a target-language pack. Distinct concepts
+  // legitimately share one word in another language (fr: porte = door/gate, café = coffee/café,
+  // fille = girl/daughter, place = seat/square). The games key on concept id + emoji, never the
+  // surface string, so homographs are harmless — forbidding them would force unnatural French.
   if (errs.length) throw new Error(`${lang} pilot pack invalid (${errs.length}):\n - ${errs.join('\n - ')}`);
 }
 

@@ -22,6 +22,34 @@ loop (typecheck → lint → tests → build → smoke) green at every milestone
 
 ## What's done
 
+### Sprint — French Early Access enabled (2026-07-12)
+- **French is now selectable as an Early Access language** (`available:true` + `earlyAccess:true`,
+  badge in onboarding/Profile pickers). Complete French Core 500 + both Bootcamp missions are usable;
+  unbuilt missions show honest **"Coming Soon"** and cannot be entered.
+- Closed four real leak-paths first (evaluated before enabling): (1) **per-language Bootcamp
+  progress** — `ready.bootcamp.v1.{lang}` with one-time legacy→`en` migration + reload-on-switch, so
+  English completions never appear on the French map and switching never resumes into another
+  language's mission; (2) **Home Continue/Next** now reads `missionsFor(learningLang)` (can't start an
+  unbuilt French mission); (3) **Videos** reads the active language's missions (French shows the
+  honest empty state, never English videos); (4) **map cards** show "Coming Soon" and gate
+  completion/resume by `built`. Gates green: typecheck · lint · **384 tests** · build · PWA · parity.
+
+### Sprint — French content: Core Corpus 500/500 + Bootcamp missions (2026-07-12)
+- **French Core Corpus is COMPLETE: 500/500 concepts.** Authored the remaining 300 French
+  realizations (`data/fr-pilot.ts`); `core-fr.v1.json` now ships **500 words, 218 game-eligible —
+  identical counts to English**. `corpusParity('fr')` = 0 missing, 0 orphans; ids/categories/metadata
+  identical to English by construction (only the realization differs). Legitimate target-language
+  homographs (porte = door/gate, café = coffee/café, fille = girl/daughter, place = seat/square) are
+  allowed — the games key on concept id + emoji, not the surface string.
+- **French Bootcamp: missions 1–2 authored** (`fr/day1.ts` Recovery Toolkit, `fr/day2.ts` Introduce
+  Myself) + shared `fr/recovery.ts`. Each plays through the SAME engine and the parity checker
+  confirms structural equivalence to its English counterpart (23/23·7/7, 16/16·13/13) with no
+  dead-end branches. `npm run parity`: **corpus 100%, Bootcamp 2/30**.
+- **Honest status:** vocabulary parity is DONE; the remaining work is **28/30 Bootcamp missions**
+  (pure content, one `fr/dayN.ts` per mission). French stays `available:false` until the Bootcamp is
+  complete enough to not drop a learner into "not built" missions. Gates green: typecheck · lint ·
+  **384 tests** · content + production build · parity.
+
 ### Sprint — Language-agnostic engine + French parity machinery (2026-07-12)
 - **The Bootcamp is now language-agnostic** (the real refactor, not a translation). Removed every
   English assumption in the engine: (1) a single English `DAYS` map → a pure, store-free

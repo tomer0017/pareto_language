@@ -1,12 +1,23 @@
-# READY — French Parity (status & plan)
+# READY — French (Early Access) status & plan
 
-> **Honest status: French is NOT at feature parity and is NOT user-selectable yet**
-> (`available:false`). What IS done is the hard part: the **architecture is now language-agnostic**,
-> so reaching parity — and adding Spanish/Italian/German/Portuguese after it — is **primarily a
-> content task**. The remaining work is content volume (300 corpus concepts + 29 Bootcamp missions),
-> measured honestly by `npm run parity`. Nothing here claims native review.
+> **Status: French is live as an EARLY ACCESS learning language** (`available:true`,
+> `earlyAccess:true`). It is selectable from onboarding/Profile; the **complete French Core 500** and
+> both authored Bootcamp missions are fully usable; **unbuilt missions show honest "Coming Soon"** and
+> cannot be entered. The architecture is language-agnostic, so finishing French — and adding
+> Spanish/Italian/German/Portuguese — is **primarily content**. Nothing here claims native review.
 
-Run `npm run parity` for the live dashboard. Today: **FR corpus 200/500 (40%), Bootcamp 1/30 (3%)**.
+Run `npm run parity` for the live dashboard. Today: **FR corpus 500/500 (100%) ✅, Bootcamp 2/30 (7%)**.
+
+## Early Access guarantees (how "no English leaks / never taken into missing content" hold)
+
+- **Progress is per learning language** (`ready.bootcamp.v1.{lang}`, legacy English migrated once) —
+  English completions never appear on the French map; switching languages swaps progress and drops
+  any active mission.
+- **Map**: unbuilt missions are disabled and labelled "Coming Soon"; completion/resume are gated by
+  `built`, so a not-yet-authored mission can never render as done or in progress.
+- **Home "Continue/Next"** and **Videos** read the *active language's* mission set (`missionsFor`),
+  so neither can start an unbuilt French mission or show an English video.
+- **Bootcamp audio/dialogue** speak French and gloss in the app language (`speakL` / `dialogueTr`).
 
 ---
 
@@ -18,13 +29,18 @@ Run `npm run parity` for the live dashboard. Today: **FR corpus 200/500 (40%), B
   aware (`tr:{en,he,…}` + `dialogueTr`, English identical by fallback); the transcript carries `tr`;
   and id-prefix checks are language-agnostic (`.includes('.phrase.recovery.')`). A language with no
   missions shows honest "not built" — **never** an English fallback.
-- **French Core vocabulary: 200 concepts** (`content/core-corpus/data/fr-pilot.ts`), built into
-  `core-fr.v1.json` (PWA-precached) via a curated **pilot-pack** path (`mergePilotRealizations` +
-  `validatePilotPack`) that never touches the English 500. Core Words + Picture Quiz + Swipe Recall
-  + TTS all work in French from it (games take a `lang` prop; `fr-FR` voice).
-- **French Bootcamp Mission 1 (Recovery Toolkit)** authored (`fr/day1.ts`): French target lines with
-  `tr` glosses, `fr.phrase.*` ids (French progress/review isolated from English). Plays through the
-  SAME engine; the parity checker confirms it structurally matches English mission 1.
+- **French Core vocabulary: COMPLETE — 500/500 concepts** (`content/core-corpus/data/fr-pilot.ts`),
+  built into `core-fr.v1.json` (500 words, 218 game-eligible — identical count to English; PWA-
+  precached) via a curated **pilot-pack** path (`mergePilotRealizations` + `validatePilotPack`) that
+  never touches the English 500. Core Words + Picture Quiz + Swipe Recall + TTS all work in French
+  from it (games take a `lang` prop; `fr-FR` voice). Concept ids/categories/metadata are identical to
+  English by construction — only the realization differs (enforced by `corpusParity`, 0 missing / 0 orphans).
+- **French Bootcamp Missions 1–2** authored (`fr/day1.ts` Recovery Toolkit, `fr/day2.ts` Introduce
+  Myself) + a shared French recovery kit (`fr/recovery.ts`): French target lines with `tr` glosses,
+  `fr.phrase.*`/`fr.reply.*` ids (French progress/review isolated from English). They play through the
+  SAME engine; the parity checker confirms each structurally matches its English counterpart, and no
+  dialogue branch dead-ends. Missions with no French video degrade to an honest "unavailable" (never
+  an English video). **Pattern is repeatable — each further mission is a `fr/dayN.ts` file, no engine change.**
 - **Parity validators (Phase 7)** — `content/core-corpus/parity.ts` (`corpusParity` — coverage + no
   orphans) and `apps/web/src/features/bootcamp/parity.ts` (`missionParity`, `unreachableOrDeadEnds`).
   Pure, unit-tested, runnable (`npm run parity`); `assert*` FAIL the build for any language declared
@@ -32,13 +48,12 @@ Run `npm run parity` for the live dashboard. Today: **FR corpus 200/500 (40%), B
 
 ## 2. What is NOT done (brutally honest)
 
-- **Core corpus: 300/500 concepts still have no French realization.** `npm run parity` lists exactly
-  which. Full vocabulary parity = author the remaining 300, then `assertCorpusParity` passes.
-- **Bootcamp: 29/30 missions are not authored in French.** Each is ~90–155 lines of structured
-  dialogue/quiz/ambush/transcript content. This is the bulk of the remaining work.
-- **French is not `available`,** so it cannot be selected — correct, because selecting it before the
-  Bootcamp exists would drop a learner into "not built" missions. Flip `available:true` only when the
-  parity gate passes for `fr`.
+- **Core corpus: DONE (500/500).** No gap. `corpusParity('fr')` passes with 0 missing, 0 orphans.
+- **Bootcamp: 28/30 missions are not authored in French.** Each is ~90–155 lines of structured
+  dialogue/quiz/ambush/transcript content mirroring the matching English `dayN.ts`. This is the bulk
+  of the remaining work and the reason French is not yet user-selectable.
+- **French is Early Access, not full parity.** It is selectable and safe (unbuilt missions are honest
+  "Coming Soon"), but the Bootcamp is 2/30. It is not the full English experience yet.
 - **`fr` is not in `DECLARED_LANGS`.** The pilot pack ships a curated subset deliberately; declaring
   `fr` (the all-or-nothing 500 gate) is the final step once every concept is realized and reviewed.
 - **No native review.** All French is AI-drafted, `pending_native_review`.

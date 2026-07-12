@@ -25,6 +25,9 @@ export interface LanguageInfo {
   /** Whether a validated content pack ships today. Others show as "coming soon" (R1: one
    *  language done superbly before five done adequately). */
   available: boolean;
+  /** Early Access: selectable and fully usable, but its Bootcamp is still being authored — unbuilt
+   *  missions show honest "Coming Soon" (never English). Core Words/games are complete. */
+  earlyAccess?: boolean;
 }
 
 // English is the current pilot — the only playable trip language today (the READY Missions
@@ -33,7 +36,7 @@ export interface LanguageInfo {
 export const LEARNING_LANGUAGES: LanguageInfo[] = [
   { code: 'en', name: 'English', nativeName: 'English', names: { en: 'English', he: 'אנגלית' }, flag: '🇺🇸', accent: '#2f6fed', accentSoft: '#e3ecfd', dir: 'ltr', ttsTag: 'en-US', available: true },
   { code: 'es', name: 'Spanish', nativeName: 'Español', names: { en: 'Spanish', he: 'ספרדית' }, flag: '🇪🇸', accent: '#e8590c', accentSoft: '#fdeadd', dir: 'ltr', ttsTag: 'es-ES', available: false },
-  { code: 'fr', name: 'French', nativeName: 'Français', names: { en: 'French', he: 'צרפתית' }, flag: '🇫🇷', accent: '#3b5bdb', accentSoft: '#e5eafb', dir: 'ltr', ttsTag: 'fr-FR', available: false },
+  { code: 'fr', name: 'French', nativeName: 'Français', names: { en: 'French', he: 'צרפתית' }, flag: '🇫🇷', accent: '#3b5bdb', accentSoft: '#e5eafb', dir: 'ltr', ttsTag: 'fr-FR', available: true, earlyAccess: true },
   { code: 'it', name: 'Italian', nativeName: 'Italiano', names: { en: 'Italian', he: 'איטלקית' }, flag: '🇮🇹', accent: '#0ca678', accentSoft: '#dcf5ec', dir: 'ltr', ttsTag: 'it-IT', available: false },
   { code: 'ar', name: 'Arabic', nativeName: 'العربية', names: { en: 'Arabic', he: 'ערבית' }, flag: '🇸🇦', accent: '#b8860b', accentSoft: '#f7efd8', dir: 'rtl', ttsTag: 'ar-SA', available: false },
 ];

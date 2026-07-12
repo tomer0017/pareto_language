@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react';
 import { useAppStore } from '../../shared/stores/appStore.js';
 import { L, t } from '../../shared/i18n/strings.js';
 import { success, tap } from '../../shared/ui/haptics.js';
-import { DAYS, useBootcampStore } from '../bootcamp/bootcampStore.js';
+import { missionsFor, useBootcampStore } from '../bootcamp/bootcampStore.js';
 import { VideoPlayer } from '../bootcamp/Bootcamp.js';
 import type { BootcampVideo } from '../bootcamp/types.js';
 
@@ -10,13 +10,15 @@ import type { BootcampVideo } from '../bootcamp/types.js';
  * Videos — an experience, not a list (Task 2). Play a random available mission video; when it
  * ends (or the learner says so), ask "Did you understand everything?" → either load another random
  * video, or drop into the exact Mission Hub that owns this video (Practice / Transcript / Video,
- * unchanged). Videos are the missions' optional `introVideo`s — only Mission 2 ships one today.
+ * unchanged). Videos are the missions' optional `introVideo`s — sourced from the ACTIVE learning
+ * language's missions, so a language with no videos (e.g. French) shows the honest empty state
+ * instead of leaking English videos. Only English Mission 2 ships one today.
  */
 interface VideoEntry { day: number; video: BootcampVideo }
 
-function allVideos(): VideoEntry[] {
+function allVideos(lang: string): VideoEntry[] {
   const out: VideoEntry[] = [];
-  for (const d of Object.values(DAYS)) {
+  for (const d of Object.values(missionsFor(lang))) {
     if (d.introVideo) out.push({ day: d.day, video: d.introVideo });
   }
   return out;
@@ -31,7 +33,7 @@ function pickRandom(pool: VideoEntry[], exclude: Set<number>): VideoEntry | null
 export function Videos() {
   const app = useAppStore();
   const bc = useBootcampStore();
-  const pool = useMemo(allVideos, []);
+  const pool = useMemo(() => allVideos(app.learningLang), [app.learningLang]);
   const [watched, setWatched] = useState<Set<number>>(new Set());
   const [current, setCurrent] = useState<VideoEntry | null>(() => pickRandom(pool, new Set()));
   const [showPopup, setShowPopup] = useState(false);

@@ -4,7 +4,7 @@ import { L, t } from '../../shared/i18n/strings.js';
 import { tap } from '../../shared/ui/haptics.js';
 import { LangStrip } from '../../shared/ui/LangStrip.js';
 import { BOOTCAMP_PLAN } from '../bootcamp/plan.js';
-import { DAYS, useBootcampStore } from '../bootcamp/bootcampStore.js';
+import { missionsFor, useBootcampStore } from '../bootcamp/bootcampStore.js';
 import { getSpeechRate, setSpeechRate, SPEECH_RATE_RANGE } from '../../shared/audio/tts.js';
 
 /**
@@ -18,9 +18,12 @@ export function Home() {
   const bc = useBootcampStore();
   const [rate, setRate] = useState(getSpeechRate());
 
-  // The journey the learner walks — numbered missions only. The optional Recovery Toolkit is a
-  // special companion, so it never becomes "up next" and doesn't gate progress.
-  const built = BOOTCAMP_PLAN.filter((m) => m.day in DAYS && !m.special);
+  // The journey the learner walks — numbered missions only, IN THE ACTIVE LEARNING LANGUAGE. Using
+  // the language's own mission set means "Continue/Next" can never jump into an unbuilt French
+  // mission (Early Access), and progress % reflects that language. The optional Recovery Toolkit is
+  // a special companion, so it never becomes "up next" and doesn't gate progress.
+  const missions = missionsFor(app.learningLang);
+  const built = BOOTCAMP_PLAN.filter((m) => m.day in missions && !m.special);
   const doneCount = built.filter((m) => bc.completedDays.includes(m.day)).length;
   const pct = built.length ? Math.round((doneCount / built.length) * 100) : 0;
 

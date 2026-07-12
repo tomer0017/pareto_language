@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import type { Outcome, PracticeMode, ReviewEvent } from '@ready/content-schema';
 import { useAppStore } from '../../shared/stores/appStore.js';
+import { PILOT_LANG } from '../../shared/i18n/languages.js';
 import { DAYS, MISSIONS_BY_LANG, missionsFor } from './registry.js';
 import type { BootcampDayContent } from './types.js';
 
@@ -26,16 +27,38 @@ interface BootcampProgress {
   stepIndex: Record<string, number>; // per-day resume point
 }
 
-const STORAGE_KEY = 'ready.bootcamp.v1';
+// Progress is PER LEARNING LANGUAGE: English completions must never appear on the French map (and
+// vice-versa), and switching languages must never resume/next into another language's mission. The
+// legacy single-key store (`ready.bootcamp.v1`, English-only pilot) migrates to the `en` slot once.
+const STORAGE_PREFIX = 'ready.bootcamp.v1';
+const LEGACY_KEY = 'ready.bootcamp.v1';
+const keyFor = (lang: string): string => `${STORAGE_PREFIX}.${lang}`;
+const currentLang = (): string => useAppStore.getState().learningLang;
+const EMPTY: BootcampProgress = { completedDays: [], receipts: [], stepIndex: {} };
 
-function loadProgress(): BootcampProgress {
+function readKey(key: string): BootcampProgress | null {
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (raw) return JSON.parse(raw) as BootcampProgress;
+    const raw = localStorage.getItem(key);
+    return raw ? (JSON.parse(raw) as BootcampProgress) : null;
   } catch (err) {
     console.warn('[bootcamp] progress unreadable — starting fresh', err);
+    return null;
   }
-  return { completedDays: [], receipts: [], stepIndex: {} };
+}
+
+function loadProgress(lang: string): BootcampProgress {
+  const own = readKey(keyFor(lang));
+  if (own) return own;
+  // One-time migration: the pre-multilingual pilot stored English progress under the un-suffixed
+  // key. Fold it into the `en` slot so no English learner loses their history.
+  if (lang === PILOT_LANG) {
+    const legacy = readKey(LEGACY_KEY);
+    if (legacy && LEGACY_KEY !== keyFor(lang)) {
+      persist(lang, legacy);
+      return legacy;
+    }
+  }
+  return { ...EMPTY };
 }
 
 interface BootcampState extends BootcampProgress {
@@ -56,16 +79,16 @@ interface BootcampState extends BootcampProgress {
   currentDay(): BootcampDayContent | null;
 }
 
-function persist(state: BootcampProgress): void {
+function persist(lang: string, state: BootcampProgress): void {
   try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    localStorage.setItem(keyFor(lang), JSON.stringify(state));
   } catch (err) {
     console.warn('[bootcamp] persist failed', err);
   }
 }
 
 export const useBootcampStore = create<BootcampState>((set, get) => ({
-  ...loadProgress(),
+  ...loadProgress(currentLang()),
   activeDay: null,
   index: 0,
   stage: 'hub',
@@ -93,7 +116,7 @@ export const useBootcampStore = create<BootcampState>((set, get) => ({
     const { activeDay, completedDays, receipts, stepIndex } = get();
     if (activeDay === null) return;
     const si = { ...stepIndex, [String(activeDay)]: 0 };
-    persist({ completedDays, receipts, stepIndex: si });
+    persist(currentLang(), { completedDays, receipts, stepIndex: si });
     set({ stepIndex: si, stage: 'play', index: 0 });
   },
 
@@ -106,7 +129,7 @@ export const useBootcampStore = create<BootcampState>((set, get) => ({
     if (activeDay === null) return;
     const nextIndex = index + 1;
     const si = { ...stepIndex, [String(activeDay)]: nextIndex };
-    persist({ completedDays, receipts, stepIndex: si });
+    persist(currentLang(), { completedDays, receipts, stepIndex: si });
     set({ index: nextIndex, stepIndex: si });
   },
 
@@ -115,7 +138,7 @@ export const useBootcampStore = create<BootcampState>((set, get) => ({
     if (activeDay === null) return;
     if (receipts.some((r) => r.day === activeDay && r.text === text)) return; // no dup receipts on resume
     const next = [...receipts, { day: activeDay, text, at: new Date().toISOString() }];
-    persist({ completedDays, receipts: next, stepIndex });
+    persist(currentLang(), { completedDays, receipts: next, stepIndex });
     set({ receipts: next });
   },
 
@@ -140,7 +163,7 @@ export const useBootcampStore = create<BootcampState>((set, get) => ({
     if (activeDay === null) return;
     const done = completedDays.includes(activeDay) ? completedDays : [...completedDays, activeDay];
     const si = { ...stepIndex, [String(activeDay)]: 0 }; // replayable from the top
-    persist({ completedDays: done, receipts, stepIndex: si });
+    persist(currentLang(), { completedDays: done, receipts, stepIndex: si });
     // Persisted resume resets to 0 (replayable from the top); the live index is left where it is
     // so the Victory screen stays on-screen. enterPractice() re-reads stepIndex when replaying.
     set({ completedDays: done, stepIndex: si });
@@ -155,3 +178,12 @@ export const useBootcampStore = create<BootcampState>((set, get) => ({
     return activeDay === null ? null : (activeMissions()[activeDay] ?? null);
   },
 }));
+
+// Switching the learning language swaps in THAT language's progress and drops any active mission,
+// so the map/Home/Victory never show another language's completions or resume into its missions.
+let lastLang = currentLang();
+useAppStore.subscribe((s) => {
+  if (s.learningLang === lastLang) return;
+  lastLang = s.learningLang;
+  useBootcampStore.setState({ ...loadProgress(lastLang), activeDay: null, index: 0, stage: 'hub' });
+});

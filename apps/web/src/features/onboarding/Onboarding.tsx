@@ -149,6 +149,7 @@ export function Onboarding() {
                   <span className="lang-flag">{l.flag}</span>
                   <span className="lang-native" style={{ color: l.accent }}>{languageName(l.code)}</span>
                   {!l.available && <span className="badge badge-notStarted">{t('comingSoon')}</span>}
+                  {l.available && l.earlyAccess && <span className="badge badge-ready">{t('earlyAccess')}</span>}
                 </button>
               ))}
             </div>
