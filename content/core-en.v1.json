@@ -1,8 +1,8 @@
 {
   "lang": "en",
   "version": "2.0.0",
-  "generatedAt": "2026-07-12T14:48:16.229Z",
-  "count": 500,
+  "generatedAt": "2026-07-12T18:47:05.076Z",
+  "count": 511,
   "words": [
     {
       "id": "en.word.help",
@@ -486,6 +486,24 @@
       }
     },
     {
+      "id": "en.word.here",
+      "conceptId": "concept.word.here",
+      "word": "here",
+      "meaning": {
+        "en": "here",
+        "he": "כאן"
+      },
+      "category": "directions",
+      "pos": "adv",
+      "tier": 0,
+      "rank": 27,
+      "skill": "recall",
+      "example": {
+        "en": "Stop here, please.",
+        "he": "עצור כאן, בבקשה."
+      }
+    },
+    {
       "id": "en.word.where",
       "conceptId": "concept.word.where",
       "word": "where",
@@ -496,7 +514,7 @@
       "category": "questions",
       "pos": "adv",
       "tier": 0,
-      "rank": 27,
+      "rank": 28,
       "skill": "recall",
       "example": {
         "en": "Where is the exit?",
@@ -514,7 +532,7 @@
       "category": "questions",
       "pos": "adv",
       "tier": 0,
-      "rank": 28,
+      "rank": 29,
       "skill": "recall",
       "example": {
         "en": "When does it open?",
@@ -532,7 +550,7 @@
       "category": "time",
       "pos": "adv",
       "tier": 0,
-      "rank": 29,
+      "rank": 30,
       "skill": "recall",
       "example": {
         "en": "Is it open today?",
@@ -550,7 +568,7 @@
       "category": "time",
       "pos": "adv",
       "tier": 0,
-      "rank": 30,
+      "rank": 31,
       "skill": "recall",
       "example": {
         "en": "We leave tomorrow.",
@@ -568,7 +586,7 @@
       "category": "actions",
       "pos": "verb",
       "tier": 0,
-      "rank": 31,
+      "rank": 32,
       "skill": "recall",
       "example": {
         "en": "Now I understand.",
@@ -586,7 +604,7 @@
       "category": "descriptions",
       "pos": "adj",
       "tier": 0,
-      "rank": 32,
+      "rank": 33,
       "skill": "recognize",
       "example": {
         "en": "The next station.",
@@ -604,7 +622,7 @@
       "category": "descriptions",
       "pos": "adj",
       "tier": 0,
-      "rank": 33,
+      "rank": 34,
       "skill": "recall",
       "example": {
         "en": "Is it open today?",
@@ -622,7 +640,7 @@
       "category": "descriptions",
       "pos": "adj",
       "tier": 0,
-      "rank": 34,
+      "rank": 35,
       "skill": "recognize",
       "example": {
         "en": "The museum is closed.",
@@ -640,7 +658,7 @@
       "category": "glue",
       "pos": "interj",
       "tier": 0,
-      "rank": 35,
+      "rank": 36,
       "skill": "fluent",
       "example": {
         "en": "Yes, please.",
@@ -658,7 +676,7 @@
       "category": "glue",
       "pos": "interj",
       "tier": 0,
-      "rank": 36,
+      "rank": 37,
       "skill": "fluent",
       "example": {
         "en": "No, thank you.",
@@ -676,7 +694,7 @@
       "category": "glue",
       "pos": "interj",
       "tier": 0,
-      "rank": 37,
+      "rank": 38,
       "skill": "fluent",
       "example": {
         "en": "One ticket, please.",
@@ -694,7 +712,7 @@
       "category": "glue",
       "pos": "interj",
       "tier": 0,
-      "rank": 38,
+      "rank": 39,
       "skill": "fluent",
       "example": {
         "en": "Okay, no problem.",
@@ -712,7 +730,7 @@
       "category": "glue",
       "pos": "interj",
       "tier": 0,
-      "rank": 39,
+      "rank": 40,
       "skill": "fluent",
       "example": {
         "en": "Hello! A table for two?",
@@ -731,7 +749,7 @@
       "category": "food",
       "pos": "noun",
       "tier": 0,
-      "rank": 40,
+      "rank": 41,
       "skill": "recall",
       "example": {
         "en": "Water, please.",
@@ -750,7 +768,7 @@
       "category": "places",
       "pos": "noun",
       "tier": 0,
-      "rank": 41,
+      "rank": 42,
       "skill": "recall",
       "example": {
         "en": "Where is my hotel?",
@@ -769,7 +787,7 @@
       "category": "objects",
       "pos": "noun",
       "tier": 0,
-      "rank": 42,
+      "rank": 43,
       "skill": "recall",
       "example": {
         "en": "By card, please.",
@@ -787,7 +805,7 @@
       "category": "descriptions",
       "pos": "adj",
       "tier": 0,
-      "rank": 43,
+      "rank": 44,
       "skill": "recall",
       "example": {
         "en": "Is it near?",
@@ -805,7 +823,7 @@
       "category": "descriptions",
       "pos": "adj",
       "tier": 0,
-      "rank": 44,
+      "rank": 45,
       "skill": "recall",
       "example": {
         "en": "Is it far from here?",
@@ -824,7 +842,7 @@
       "category": "health",
       "pos": "noun",
       "tier": 0,
-      "rank": 45,
+      "rank": 46,
       "skill": "recognize",
       "example": {
         "en": "Call an ambulance!",
@@ -842,7 +860,7 @@
       "category": "glue",
       "pos": "phrase",
       "tier": 0,
-      "rank": 46,
+      "rank": 47,
       "skill": "recognize",
       "example": {
         "en": "\"Here you go.\" — \"Thank you!\"",
@@ -860,11 +878,65 @@
       "category": "glue",
       "pos": "phrase",
       "tier": 0,
-      "rank": 47,
+      "rank": 48,
       "skill": "fluent",
       "example": {
         "en": "Excuse me, where is the exit?",
         "he": "סליחה, איפה היציאה?"
+      }
+    },
+    {
+      "id": "en.word.with",
+      "conceptId": "concept.word.with",
+      "word": "with",
+      "meaning": {
+        "en": "with",
+        "he": "עם"
+      },
+      "category": "glue",
+      "pos": "prep",
+      "tier": 0,
+      "rank": 49,
+      "skill": "recall",
+      "example": {
+        "en": "Coffee with milk.",
+        "he": "קפה עם חלב."
+      }
+    },
+    {
+      "id": "en.word.and",
+      "conceptId": "concept.word.and",
+      "word": "and",
+      "meaning": {
+        "en": "and",
+        "he": "ו…"
+      },
+      "category": "glue",
+      "pos": "conj",
+      "tier": 0,
+      "rank": 50,
+      "skill": "recall",
+      "example": {
+        "en": "Coffee and water.",
+        "he": "קפה ומים."
+      }
+    },
+    {
+      "id": "en.word.or",
+      "conceptId": "concept.word.or",
+      "word": "or",
+      "meaning": {
+        "en": "or",
+        "he": "או"
+      },
+      "category": "glue",
+      "pos": "conj",
+      "tier": 0,
+      "rank": 51,
+      "skill": "recall",
+      "example": {
+        "en": "Cash or card?",
+        "he": "מזומן או כרטיס?"
       }
     },
     {
@@ -878,7 +950,7 @@
       "category": "questions",
       "pos": "pron",
       "tier": 0,
-      "rank": 48,
+      "rank": 52,
       "skill": "recall",
       "example": {
         "en": "What is this?",
@@ -896,7 +968,7 @@
       "category": "questions",
       "pos": "phrase",
       "tier": 0,
-      "rank": 49,
+      "rank": 53,
       "skill": "recall",
       "example": {
         "en": "What time is checkout?",
@@ -914,7 +986,7 @@
       "category": "pronouns",
       "pos": "pron",
       "tier": 0,
-      "rank": 50,
+      "rank": 54,
       "skill": "fluent",
       "example": {
         "en": "I want a coffee.",
@@ -932,7 +1004,7 @@
       "category": "pronouns",
       "pos": "pron",
       "tier": 0,
-      "rank": 51,
+      "rank": 55,
       "skill": "recall",
       "example": {
         "en": "You are very kind.",
@@ -950,7 +1022,7 @@
       "category": "pronouns",
       "pos": "pron",
       "tier": 0,
-      "rank": 52,
+      "rank": 56,
       "skill": "recall",
       "example": {
         "en": "We have a reservation.",
@@ -968,7 +1040,7 @@
       "category": "pronouns",
       "pos": "det",
       "tier": 0,
-      "rank": 53,
+      "rank": 57,
       "skill": "recall",
       "example": {
         "en": "This is my bag.",
@@ -987,7 +1059,7 @@
       "category": "numbers",
       "pos": "num",
       "tier": 0,
-      "rank": 54,
+      "rank": 58,
       "skill": "recall",
       "example": {
         "en": "Ten percent tip.",
@@ -1005,11 +1077,29 @@
       "category": "actions",
       "pos": "verb",
       "tier": 0,
-      "rank": 55,
+      "rank": 59,
       "skill": "recall",
       "example": {
         "en": "Where can we eat?",
         "he": "איפה אפשר לאכול?"
+      }
+    },
+    {
+      "id": "en.word.can",
+      "conceptId": "concept.word.can",
+      "word": "can",
+      "meaning": {
+        "en": "can",
+        "he": "יכול"
+      },
+      "category": "actions",
+      "pos": "verb",
+      "tier": 0,
+      "rank": 60,
+      "skill": "recall",
+      "example": {
+        "en": "Can you help me?",
+        "he": "אתה יכול לעזור לי?"
       }
     },
     {
@@ -1023,7 +1113,7 @@
       "category": "actions",
       "pos": "verb",
       "tier": 0,
-      "rank": 56,
+      "rank": 61,
       "skill": "recall",
       "example": {
         "en": "Ready to order?",
@@ -1042,7 +1132,7 @@
       "category": "emergency",
       "pos": "noun",
       "tier": 0,
-      "rank": 57,
+      "rank": 62,
       "skill": "recognize",
       "example": {
         "en": "Danger! Keep out.",
@@ -1061,7 +1151,7 @@
       "category": "directions",
       "pos": "adv",
       "tier": 0,
-      "rank": 58,
+      "rank": 63,
       "skill": "recognize",
       "example": {
         "en": "It is on the left.",
@@ -1080,7 +1170,7 @@
       "category": "directions",
       "pos": "adv",
       "tier": 0,
-      "rank": 59,
+      "rank": 64,
       "skill": "recognize",
       "example": {
         "en": "Turn right.",
@@ -1098,11 +1188,47 @@
       "category": "glue",
       "pos": "adv",
       "tier": 0,
-      "rank": 60,
+      "rank": 65,
       "skill": "recall",
       "example": {
         "en": "Maybe tomorrow.",
         "he": "אולי מחר."
+      }
+    },
+    {
+      "id": "en.word.without",
+      "conceptId": "concept.word.without",
+      "word": "without",
+      "meaning": {
+        "en": "without",
+        "he": "בלי"
+      },
+      "category": "glue",
+      "pos": "prep",
+      "tier": 0,
+      "rank": 66,
+      "skill": "recall",
+      "example": {
+        "en": "Tea without sugar.",
+        "he": "תה בלי סוכר."
+      }
+    },
+    {
+      "id": "en.word.there",
+      "conceptId": "concept.word.there",
+      "word": "there",
+      "meaning": {
+        "en": "there",
+        "he": "שם"
+      },
+      "category": "directions",
+      "pos": "adv",
+      "tier": 0,
+      "rank": 67,
+      "skill": "recall",
+      "example": {
+        "en": "It is over there.",
+        "he": "זה שם."
       }
     },
     {
@@ -1117,7 +1243,7 @@
       "category": "numbers",
       "pos": "num",
       "tier": 0,
-      "rank": 61,
+      "rank": 68,
       "skill": "recall",
       "example": {
         "en": "Four people.",
@@ -1136,7 +1262,7 @@
       "category": "numbers",
       "pos": "num",
       "tier": 0,
-      "rank": 62,
+      "rank": 69,
       "skill": "recall",
       "example": {
         "en": "It is five minutes away.",
@@ -1154,7 +1280,7 @@
       "category": "time",
       "pos": "adv",
       "tier": 0,
-      "rank": 63,
+      "rank": 70,
       "skill": "recall",
       "example": {
         "en": "Come back later.",
@@ -1172,7 +1298,7 @@
       "category": "actions",
       "pos": "verb",
       "tier": 0,
-      "rank": 64,
+      "rank": 71,
       "skill": "recall",
       "example": {
         "en": "Please wait here.",
@@ -1190,11 +1316,29 @@
       "category": "descriptions",
       "pos": "adj",
       "tier": 0,
-      "rank": 65,
+      "rank": 72,
       "skill": "fluent",
       "example": {
         "en": "The food is very good.",
         "he": "האוכל טוב מאוד."
+      }
+    },
+    {
+      "id": "en.word.more",
+      "conceptId": "concept.word.more",
+      "word": "more",
+      "meaning": {
+        "en": "more",
+        "he": "עוד"
+      },
+      "category": "descriptions",
+      "pos": "adv",
+      "tier": 0,
+      "rank": 73,
+      "skill": "recall",
+      "example": {
+        "en": "A little more, please.",
+        "he": "עוד קצת, בבקשה."
       }
     },
     {
@@ -1208,7 +1352,7 @@
       "category": "places",
       "pos": "noun",
       "tier": 0,
-      "rank": 66,
+      "rank": 74,
       "skill": "recognize",
       "example": {
         "en": "Where is the exit?",
@@ -1227,7 +1371,7 @@
       "category": "transport",
       "pos": "noun",
       "tier": 0,
-      "rank": 67,
+      "rank": 75,
       "skill": "recall",
       "example": {
         "en": "Where is the bus?",
@@ -1245,7 +1389,7 @@
       "category": "actions",
       "pos": "verb",
       "tier": 0,
-      "rank": 68,
+      "rank": 76,
       "skill": "recall",
       "example": {
         "en": "Can you show me?",
@@ -1263,7 +1407,7 @@
       "category": "actions",
       "pos": "verb",
       "tier": 0,
-      "rank": 69,
+      "rank": 77,
       "skill": "recognize",
       "example": {
         "en": "Turn left at the corner.",
@@ -1282,7 +1426,7 @@
       "category": "money",
       "pos": "noun",
       "tier": 0,
-      "rank": 70,
+      "rank": 78,
       "skill": "recall",
       "example": {
         "en": "What is the price?",
@@ -1300,7 +1444,7 @@
       "category": "home",
       "pos": "noun",
       "tier": 0,
-      "rank": 71,
+      "rank": 79,
       "skill": "recall",
       "example": {
         "en": "A room for two nights.",
@@ -1319,7 +1463,7 @@
       "category": "technology",
       "pos": "noun",
       "tier": 0,
-      "rank": 72,
+      "rank": 80,
       "skill": "recall",
       "example": {
         "en": "What is the wifi password?",
@@ -1337,7 +1481,7 @@
       "category": "people",
       "pos": "noun",
       "tier": 0,
-      "rank": 73,
+      "rank": 81,
       "skill": "recall",
       "example": {
         "en": "My name is Dana.",
@@ -1356,7 +1500,7 @@
       "category": "health",
       "pos": "noun",
       "tier": 0,
-      "rank": 74,
+      "rank": 82,
       "skill": "recognize",
       "example": {
         "en": "Fire! Get out!",
@@ -1374,7 +1518,7 @@
       "category": "glue",
       "pos": "phrase",
       "tier": 0,
-      "rank": 75,
+      "rank": 83,
       "skill": "recall",
       "example": {
         "en": "I don't know. Let's ask.",
@@ -1393,7 +1537,7 @@
       "category": "transport",
       "pos": "noun",
       "tier": 0,
-      "rank": 76,
+      "rank": 84,
       "skill": "recall",
       "example": {
         "en": "The train to the center.",
@@ -1412,7 +1556,7 @@
       "category": "transport",
       "pos": "noun",
       "tier": 0,
-      "rank": 77,
+      "rank": 85,
       "skill": "recall",
       "example": {
         "en": "Call a taxi, please.",
@@ -1430,7 +1574,7 @@
       "category": "places",
       "pos": "noun",
       "tier": 0,
-      "rank": 78,
+      "rank": 86,
       "skill": "recall",
       "example": {
         "en": "To the city center.",
@@ -1449,7 +1593,7 @@
       "category": "money",
       "pos": "noun",
       "tier": 0,
-      "rank": 79,
+      "rank": 87,
       "skill": "recall",
       "example": {
         "en": "Cash only.",
@@ -1467,7 +1611,7 @@
       "category": "food",
       "pos": "noun",
       "tier": 0,
-      "rank": 80,
+      "rank": 88,
       "skill": "recall",
       "example": {
         "en": "The bill, please.",
@@ -1486,7 +1630,7 @@
       "category": "places",
       "pos": "noun",
       "tier": 0,
-      "rank": 81,
+      "rank": 89,
       "skill": "recall",
       "example": {
         "en": "To the airport, please.",
@@ -1504,7 +1648,7 @@
       "category": "places",
       "pos": "noun",
       "tier": 0,
-      "rank": 82,
+      "rank": 90,
       "skill": "recognize",
       "example": {
         "en": "The main entrance.",
@@ -1522,7 +1666,7 @@
       "category": "home",
       "pos": "noun",
       "tier": 0,
-      "rank": 83,
+      "rank": 91,
       "skill": "recall",
       "example": {
         "en": "A table for two, please.",
@@ -1540,7 +1684,7 @@
       "category": "places",
       "pos": "noun",
       "tier": 0,
-      "rank": 84,
+      "rank": 92,
       "skill": "recall",
       "example": {
         "en": "Ask at the reception.",
@@ -1559,7 +1703,7 @@
       "category": "money",
       "pos": "noun",
       "tier": 0,
-      "rank": 85,
+      "rank": 93,
       "skill": "recall",
       "example": {
         "en": "Is there an ATM near here?",
@@ -1578,7 +1722,7 @@
       "category": "food",
       "pos": "noun",
       "tier": 0,
-      "rank": 86,
+      "rank": 94,
       "skill": "recall",
       "example": {
         "en": "The menu, please.",
@@ -1596,7 +1740,7 @@
       "category": "transport",
       "pos": "noun",
       "tier": 0,
-      "rank": 87,
+      "rank": 95,
       "skill": "recognize",
       "example": {
         "en": "Gate twelve.",
@@ -1614,7 +1758,7 @@
       "category": "technology",
       "pos": "noun",
       "tier": 0,
-      "rank": 88,
+      "rank": 96,
       "skill": "recall",
       "example": {
         "en": "The wifi password, please.",
@@ -1632,7 +1776,7 @@
       "category": "glue",
       "pos": "interj",
       "tier": 0,
-      "rank": 89,
+      "rank": 97,
       "skill": "recall",
       "example": {
         "en": "Goodbye, and thanks!",
@@ -1651,7 +1795,7 @@
       "category": "food",
       "pos": "noun",
       "tier": 0,
-      "rank": 90,
+      "rank": 98,
       "skill": "recall",
       "example": {
         "en": "A coffee, please.",
@@ -1669,7 +1813,7 @@
       "category": "descriptions",
       "pos": "adj",
       "tier": 1,
-      "rank": 91,
+      "rank": 99,
       "skill": "recall",
       "example": {
         "en": "Is this area safe?",
@@ -1687,7 +1831,7 @@
       "category": "emergency",
       "pos": "adj",
       "tier": 1,
-      "rank": 92,
+      "rank": 100,
       "skill": "recall",
       "example": {
         "en": "My bag was stolen.",
@@ -1705,7 +1849,7 @@
       "category": "descriptions",
       "pos": "adj",
       "tier": 1,
-      "rank": 93,
+      "rank": 101,
       "skill": "recognize",
       "example": {
         "en": "It is dangerous at night.",
@@ -1724,7 +1868,7 @@
       "category": "objects",
       "pos": "noun",
       "tier": 1,
-      "rank": 94,
+      "rank": 102,
       "skill": "recognize",
       "example": {
         "en": "I have no money.",
@@ -1742,7 +1886,7 @@
       "category": "time",
       "pos": "noun",
       "tier": 1,
-      "rank": 95,
+      "rank": 103,
       "skill": "recall",
       "example": {
         "en": "Two nights, please.",
@@ -1760,7 +1904,7 @@
       "category": "time",
       "pos": "noun",
       "tier": 1,
-      "rank": 96,
+      "rank": 104,
       "skill": "recall",
       "example": {
         "en": "Three days in the city.",
@@ -1778,7 +1922,7 @@
       "category": "emergency",
       "pos": "noun",
       "tier": 1,
-      "rank": 97,
+      "rank": 105,
       "skill": "recall",
       "example": {
         "en": "The Israeli embassy.",
@@ -1797,7 +1941,7 @@
       "category": "objects",
       "pos": "noun",
       "tier": 1,
-      "rank": 98,
+      "rank": 106,
       "skill": "recall",
       "example": {
         "en": "One ticket, please.",
@@ -1815,7 +1959,7 @@
       "category": "actions",
       "pos": "verb",
       "tier": 1,
-      "rank": 99,
+      "rank": 107,
       "skill": "recall",
       "example": {
         "en": "I will take it.",
@@ -1834,7 +1978,7 @@
       "category": "health",
       "pos": "noun",
       "tier": 1,
-      "rank": 100,
+      "rank": 108,
       "skill": "recall",
       "example": {
         "en": "I have a fever.",
@@ -1852,7 +1996,7 @@
       "category": "time",
       "pos": "noun",
       "tier": 1,
-      "rank": 101,
+      "rank": 109,
       "skill": "recall",
       "example": {
         "en": "The tour is one hour.",
@@ -1870,7 +2014,7 @@
       "category": "time",
       "pos": "noun",
       "tier": 1,
-      "rank": 102,
+      "rank": 110,
       "skill": "recall",
       "example": {
         "en": "Five minutes on foot.",
@@ -1888,7 +2032,7 @@
       "category": "time",
       "pos": "noun",
       "tier": 1,
-      "rank": 103,
+      "rank": 111,
       "skill": "recall",
       "example": {
         "en": "We have no time.",
@@ -1906,7 +2050,7 @@
       "category": "actions",
       "pos": "verb",
       "tier": 1,
-      "rank": 104,
+      "rank": 112,
       "skill": "recall",
       "example": {
         "en": "Where can I buy tickets?",
@@ -1924,7 +2068,7 @@
       "category": "places",
       "pos": "noun",
       "tier": 1,
-      "rank": 105,
+      "rank": 113,
       "skill": "recognize",
       "example": {
         "en": "What street is this?",
@@ -1942,7 +2086,7 @@
       "category": "glue",
       "pos": "phrase",
       "tier": 1,
-      "rank": 106,
+      "rank": 114,
       "skill": "recall",
       "example": {
         "en": "\"Pizza tonight?\" — \"Sounds good!\"",
@@ -1960,7 +2104,7 @@
       "category": "glue",
       "pos": "phrase",
       "tier": 1,
-      "rank": 107,
+      "rank": 115,
       "skill": "recall",
       "example": {
         "en": "\"Sorry, we are late.\" — \"No worries.\"",
@@ -1978,7 +2122,7 @@
       "category": "glue",
       "pos": "phrase",
       "tier": 1,
-      "rank": 108,
+      "rank": 116,
       "skill": "recall",
       "example": {
         "en": "\"Only card, no cash.\" — \"That's fine.\"",
@@ -1996,7 +2140,7 @@
       "category": "glue",
       "pos": "phrase",
       "tier": 1,
-      "rank": 109,
+      "rank": 117,
       "skill": "recognize",
       "example": {
         "en": "\"Can we pay separately?\" — \"No problem.\"",
@@ -2014,7 +2158,7 @@
       "category": "time",
       "pos": "noun",
       "tier": 1,
-      "rank": 110,
+      "rank": 118,
       "skill": "recall",
       "example": {
         "en": "Tomorrow morning at eight.",
@@ -2032,7 +2176,7 @@
       "category": "time",
       "pos": "adj",
       "tier": 1,
-      "rank": 111,
+      "rank": 119,
       "skill": "recall",
       "example": {
         "en": "The bus is late.",
@@ -2050,7 +2194,7 @@
       "category": "actions",
       "pos": "verb",
       "tier": 1,
-      "rank": 112,
+      "rank": 120,
       "skill": "recognize",
       "example": {
         "en": "Come with me, please.",
@@ -2069,7 +2213,7 @@
       "category": "actions",
       "pos": "verb",
       "tier": 1,
-      "rank": 113,
+      "rank": 121,
       "skill": "recall",
       "example": {
         "en": "Please call a taxi.",
@@ -2087,7 +2231,7 @@
       "category": "actions",
       "pos": "verb",
       "tier": 1,
-      "rank": 114,
+      "rank": 122,
       "skill": "recall",
       "example": {
         "en": "I cannot find my hotel.",
@@ -2106,7 +2250,7 @@
       "category": "descriptions",
       "pos": "adj",
       "tier": 1,
-      "rank": 115,
+      "rank": 123,
       "skill": "recall",
       "example": {
         "en": "Careful, it is hot!",
@@ -2125,11 +2269,47 @@
       "category": "descriptions",
       "pos": "adj",
       "tier": 1,
-      "rank": 116,
+      "rank": 124,
       "skill": "recall",
       "example": {
         "en": "A cold water, please.",
         "he": "מים קרים, בבקשה."
+      }
+    },
+    {
+      "id": "en.word.large",
+      "conceptId": "concept.word.large",
+      "word": "large",
+      "meaning": {
+        "en": "large",
+        "he": "גדול"
+      },
+      "category": "descriptions",
+      "pos": "adj",
+      "tier": 1,
+      "rank": 125,
+      "skill": "recall",
+      "example": {
+        "en": "A large size, please.",
+        "he": "מידה גדולה, בבקשה."
+      }
+    },
+    {
+      "id": "en.word.medium",
+      "conceptId": "concept.word.medium",
+      "word": "medium",
+      "meaning": {
+        "en": "medium",
+        "he": "בינוני"
+      },
+      "category": "descriptions",
+      "pos": "adj",
+      "tier": 1,
+      "rank": 126,
+      "skill": "recall",
+      "example": {
+        "en": "A medium coffee, please.",
+        "he": "קפה בינוני, בבקשה."
       }
     },
     {
@@ -2144,7 +2324,7 @@
       "category": "places",
       "pos": "noun",
       "tier": 1,
-      "rank": 117,
+      "rank": 127,
       "skill": "recognize",
       "example": {
         "en": "Where is the station?",
@@ -2162,7 +2342,7 @@
       "category": "glue",
       "pos": "phrase",
       "tier": 1,
-      "rank": 118,
+      "rank": 128,
       "skill": "recall",
       "example": {
         "en": "Never mind, thank you anyway.",
@@ -2180,7 +2360,7 @@
       "category": "questions",
       "pos": "pron",
       "tier": 1,
-      "rank": 119,
+      "rank": 129,
       "skill": "recognize",
       "example": {
         "en": "Which gate?",
@@ -2199,7 +2379,7 @@
       "category": "numbers",
       "pos": "num",
       "tier": 1,
-      "rank": 120,
+      "rank": 130,
       "skill": "recall",
       "example": {
         "en": "Room six.",
@@ -2218,7 +2398,7 @@
       "category": "numbers",
       "pos": "num",
       "tier": 1,
-      "rank": 121,
+      "rank": 131,
       "skill": "recall",
       "example": {
         "en": "Breakfast is at seven.",
@@ -2237,7 +2417,7 @@
       "category": "numbers",
       "pos": "num",
       "tier": 1,
-      "rank": 122,
+      "rank": 132,
       "skill": "recall",
       "example": {
         "en": "Gate eight.",
@@ -2256,7 +2436,7 @@
       "category": "numbers",
       "pos": "num",
       "tier": 1,
-      "rank": 123,
+      "rank": 133,
       "skill": "recall",
       "example": {
         "en": "Nine euros.",
@@ -2274,7 +2454,7 @@
       "category": "numbers",
       "pos": "num",
       "tier": 1,
-      "rank": 124,
+      "rank": 134,
       "skill": "recognize",
       "example": {
         "en": "It costs fifty.",
@@ -2292,7 +2472,7 @@
       "category": "numbers",
       "pos": "num",
       "tier": 1,
-      "rank": 125,
+      "rank": 135,
       "skill": "recognize",
       "example": {
         "en": "Half past nine.",
@@ -2310,7 +2490,7 @@
       "category": "actions",
       "pos": "verb",
       "tier": 1,
-      "rank": 126,
+      "rank": 136,
       "skill": "recall",
       "example": {
         "en": "The train leaves at nine.",
@@ -2328,7 +2508,7 @@
       "category": "actions",
       "pos": "verb",
       "tier": 1,
-      "rank": 127,
+      "rank": 137,
       "skill": "recall",
       "example": {
         "en": "I booked a room.",
@@ -2346,7 +2526,7 @@
       "category": "emergency",
       "pos": "noun",
       "tier": 1,
-      "rank": 128,
+      "rank": 138,
       "skill": "recognize",
       "example": {
         "en": "There was an accident.",
@@ -2365,7 +2545,7 @@
       "category": "objects",
       "pos": "noun",
       "tier": 1,
-      "rank": 129,
+      "rank": 139,
       "skill": "recognize",
       "example": {
         "en": "I lost my phone.",
@@ -2384,7 +2564,7 @@
       "category": "objects",
       "pos": "noun",
       "tier": 1,
-      "rank": 130,
+      "rank": 140,
       "skill": "recall",
       "example": {
         "en": "Can you show me on the map?",
@@ -2402,7 +2582,7 @@
       "category": "glue",
       "pos": "phrase",
       "tier": 1,
-      "rank": 131,
+      "rank": 141,
       "skill": "recall",
       "example": {
         "en": "I'm not sure. Maybe at nine.",
@@ -2420,7 +2600,7 @@
       "category": "numbers",
       "pos": "num",
       "tier": 1,
-      "rank": 132,
+      "rank": 142,
       "skill": "recognize",
       "example": {
         "en": "Twenty euros, please.",
@@ -2438,7 +2618,7 @@
       "category": "numbers",
       "pos": "num",
       "tier": 1,
-      "rank": 133,
+      "rank": 143,
       "skill": "recognize",
       "example": {
         "en": "One hundred shekels.",
@@ -2456,7 +2636,7 @@
       "category": "actions",
       "pos": "verb",
       "tier": 1,
-      "rank": 134,
+      "rank": 144,
       "skill": "recognize",
       "example": {
         "en": "When does it arrive?",
@@ -2474,7 +2654,7 @@
       "category": "descriptions",
       "pos": "adj",
       "tier": 1,
-      "rank": 135,
+      "rank": 145,
       "skill": "recall",
       "example": {
         "en": "Something cheaper?",
@@ -2492,7 +2672,7 @@
       "category": "descriptions",
       "pos": "adj",
       "tier": 1,
-      "rank": 136,
+      "rank": 146,
       "skill": "recognize",
       "example": {
         "en": "Is the wifi free?",
@@ -2510,7 +2690,7 @@
       "category": "descriptions",
       "pos": "adj",
       "tier": 1,
-      "rank": 137,
+      "rank": 147,
       "skill": "recognize",
       "example": {
         "en": "The last bus is at ten.",
@@ -2528,7 +2708,7 @@
       "category": "time",
       "pos": "noun",
       "tier": 1,
-      "rank": 138,
+      "rank": 148,
       "skill": "recall",
       "example": {
         "en": "A table for this evening.",
@@ -2547,7 +2727,7 @@
       "category": "actions",
       "pos": "verb",
       "tier": 1,
-      "rank": 139,
+      "rank": 149,
       "skill": "recall",
       "example": {
         "en": "Something to drink?",
@@ -2565,7 +2745,7 @@
       "category": "actions",
       "pos": "verb",
       "tier": 1,
-      "rank": 140,
+      "rank": 150,
       "skill": "recall",
       "example": {
         "en": "Do you know a good place?",
@@ -2583,7 +2763,7 @@
       "category": "actions",
       "pos": "verb",
       "tier": 1,
-      "rank": 141,
+      "rank": 151,
       "skill": "recognize",
       "example": {
         "en": "Give me one, please.",
@@ -2601,7 +2781,7 @@
       "category": "actions",
       "pos": "verb",
       "tier": 1,
-      "rank": 142,
+      "rank": 152,
       "skill": "recall",
       "example": {
         "en": "The shower does not work.",
@@ -2619,7 +2799,7 @@
       "category": "descriptions",
       "pos": "adj",
       "tier": 1,
-      "rank": 143,
+      "rank": 153,
       "skill": "recall",
       "example": {
         "en": "It is too expensive.",
@@ -2638,7 +2818,7 @@
       "category": "body",
       "pos": "noun",
       "tier": 1,
-      "rank": 144,
+      "rank": 154,
       "skill": "recognize",
       "example": {
         "en": "A heart problem.",
@@ -2657,7 +2837,7 @@
       "category": "transport",
       "pos": "noun",
       "tier": 1,
-      "rank": 145,
+      "rank": 155,
       "skill": "recognize",
       "example": {
         "en": "My plane is late.",
@@ -2676,7 +2856,7 @@
       "category": "objects",
       "pos": "noun",
       "tier": 1,
-      "rank": 146,
+      "rank": 156,
       "skill": "recall",
       "example": {
         "en": "I lost my bag.",
@@ -2695,7 +2875,7 @@
       "category": "health",
       "pos": "adj",
       "tier": 1,
-      "rank": 147,
+      "rank": 157,
       "skill": "recall",
       "example": {
         "en": "I feel sick.",
@@ -2713,7 +2893,7 @@
       "category": "actions",
       "pos": "verb",
       "tier": 1,
-      "rank": 148,
+      "rank": 158,
       "skill": "recall",
       "example": {
         "en": "I want to cancel the order.",
@@ -2731,7 +2911,7 @@
       "category": "descriptions",
       "pos": "adj",
       "tier": 1,
-      "rank": 149,
+      "rank": 159,
       "skill": "recall",
       "example": {
         "en": "The weather is bad.",
@@ -2750,7 +2930,7 @@
       "category": "money",
       "pos": "noun",
       "tier": 1,
-      "rank": 150,
+      "rank": 160,
       "skill": "recognize",
       "example": {
         "en": "Ten euros, please.",
@@ -2768,7 +2948,7 @@
       "category": "glue",
       "pos": "phrase",
       "tier": 1,
-      "rank": 151,
+      "rank": 161,
       "skill": "recall",
       "example": {
         "en": "\"Anything else?\" — \"That's all, thanks.\"",
@@ -2786,7 +2966,7 @@
       "category": "questions",
       "pos": "phrase",
       "tier": 1,
-      "rank": 152,
+      "rank": 162,
       "skill": "recall",
       "example": {
         "en": "\"How many people?\" — \"Two.\"",
@@ -2804,7 +2984,7 @@
       "category": "questions",
       "pos": "phrase",
       "tier": 1,
-      "rank": 153,
+      "rank": 163,
       "skill": "recall",
       "example": {
         "en": "How long is the ride?",
@@ -2822,7 +3002,7 @@
       "category": "actions",
       "pos": "verb",
       "tier": 1,
-      "rank": 154,
+      "rank": 164,
       "skill": "recall",
       "example": {
         "en": "We fly on Sunday.",
@@ -2841,7 +3021,7 @@
       "category": "food",
       "pos": "noun",
       "tier": 1,
-      "rank": 155,
+      "rank": 165,
       "skill": "recall",
       "example": {
         "en": "Is breakfast included?",
@@ -2860,7 +3040,7 @@
       "category": "transport",
       "pos": "noun",
       "tier": 1,
-      "rank": 156,
+      "rank": 166,
       "skill": "recognize",
       "example": {
         "en": "By car.",
@@ -2878,7 +3058,7 @@
       "category": "glue",
       "pos": "phrase",
       "tier": 1,
-      "rank": 157,
+      "rank": 167,
       "skill": "recall",
       "example": {
         "en": "One more, please. It was great.",
@@ -2896,7 +3076,7 @@
       "category": "descriptions",
       "pos": "adj",
       "tier": 1,
-      "rank": 158,
+      "rank": 168,
       "skill": "recall",
       "example": {
         "en": "We are hungry.",
@@ -2915,7 +3095,7 @@
       "category": "health",
       "pos": "noun",
       "tier": 1,
-      "rank": 159,
+      "rank": 169,
       "skill": "recognize",
       "example": {
         "en": "Medicine for a headache.",
@@ -2934,7 +3114,7 @@
       "category": "health",
       "pos": "noun",
       "tier": 1,
-      "rank": 160,
+      "rank": 170,
       "skill": "recall",
       "example": {
         "en": "I have pain here.",
@@ -2952,7 +3132,7 @@
       "category": "descriptions",
       "pos": "adj",
       "tier": 1,
-      "rank": 161,
+      "rank": 171,
       "skill": "recall",
       "example": {
         "en": "Slower, please.",
@@ -2970,7 +3150,7 @@
       "category": "descriptions",
       "pos": "adj",
       "tier": 1,
-      "rank": 162,
+      "rank": 172,
       "skill": "recognize",
       "example": {
         "en": "The hotel is full.",
@@ -2988,7 +3168,7 @@
       "category": "descriptions",
       "pos": "adj",
       "tier": 1,
-      "rank": 163,
+      "rank": 173,
       "skill": "recall",
       "example": {
         "en": "We are ready.",
@@ -3007,7 +3187,7 @@
       "category": "technology",
       "pos": "noun",
       "tier": 1,
-      "rank": 164,
+      "rank": 174,
       "skill": "recognize",
       "example": {
         "en": "The internet is slow.",
@@ -3026,7 +3206,7 @@
       "category": "objects",
       "pos": "noun",
       "tier": 1,
-      "rank": 165,
+      "rank": 175,
       "skill": "recognize",
       "example": {
         "en": "My room key.",
@@ -3044,7 +3224,7 @@
       "category": "glue",
       "pos": "interj",
       "tier": 1,
-      "rank": 166,
+      "rank": 176,
       "skill": "recall",
       "example": {
         "en": "That's enough, thank you.",
@@ -3062,7 +3242,7 @@
       "category": "actions",
       "pos": "verb",
       "tier": 1,
-      "rank": 167,
+      "rank": 177,
       "skill": "recall",
       "example": {
         "en": "We want to rent a car.",
@@ -3081,7 +3261,7 @@
       "category": "transport",
       "pos": "noun",
       "tier": 1,
-      "rank": 168,
+      "rank": 178,
       "skill": "recall",
       "example": {
         "en": "The nearest metro station.",
@@ -3099,7 +3279,7 @@
       "category": "transport",
       "pos": "noun",
       "tier": 1,
-      "rank": 169,
+      "rank": 179,
       "skill": "recall",
       "example": {
         "en": "My flight is at noon.",
@@ -3118,7 +3298,7 @@
       "category": "food",
       "pos": "noun",
       "tier": 1,
-      "rank": 170,
+      "rank": 180,
       "skill": "recognize",
       "example": {
         "en": "No meat, please.",
@@ -3137,7 +3317,7 @@
       "category": "actions",
       "pos": "verb",
       "tier": 1,
-      "rank": 171,
+      "rank": 181,
       "skill": "recall",
       "example": {
         "en": "Where can I exchange money?",
@@ -3156,7 +3336,7 @@
       "category": "transport",
       "pos": "noun",
       "tier": 1,
-      "rank": 172,
+      "rank": 182,
       "skill": "recognize",
       "example": {
         "en": "Is this seat free?",
@@ -3175,7 +3355,7 @@
       "category": "transport",
       "pos": "noun",
       "tier": 1,
-      "rank": 173,
+      "rank": 183,
       "skill": "recall",
       "example": {
         "en": "The bus stop is there.",
@@ -3194,7 +3374,7 @@
       "category": "money",
       "pos": "noun",
       "tier": 1,
-      "rank": 174,
+      "rank": 184,
       "skill": "recall",
       "example": {
         "en": "A receipt, please.",
@@ -3213,7 +3393,7 @@
       "category": "money",
       "pos": "noun",
       "tier": 1,
-      "rank": 175,
+      "rank": 185,
       "skill": "recognize",
       "example": {
         "en": "Twenty dollars.",
@@ -3232,7 +3412,7 @@
       "category": "health",
       "pos": "noun",
       "tier": 1,
-      "rank": 176,
+      "rank": 186,
       "skill": "recognize",
       "example": {
         "en": "There is blood.",
@@ -3250,7 +3430,7 @@
       "category": "glue",
       "pos": "phrase",
       "tier": 1,
-      "rank": 177,
+      "rank": 187,
       "skill": "recall",
       "example": {
         "en": "\"Can I help you?\" — \"I'm just looking.\"",
@@ -3268,7 +3448,7 @@
       "category": "glue",
       "pos": "phrase",
       "tier": 1,
-      "rank": 178,
+      "rank": 188,
       "skill": "recall",
       "example": {
         "en": "A coffee to go, please.",
@@ -3286,7 +3466,7 @@
       "category": "actions",
       "pos": "verb",
       "tier": 1,
-      "rank": 179,
+      "rank": 189,
       "skill": "recall",
       "example": {
         "en": "I forgot my key.",
@@ -3304,7 +3484,7 @@
       "category": "descriptions",
       "pos": "adj",
       "tier": 1,
-      "rank": 180,
+      "rank": 190,
       "skill": "recall",
       "example": {
         "en": "The lock is broken.",
@@ -3322,7 +3502,7 @@
       "category": "descriptions",
       "pos": "adv",
       "tier": 1,
-      "rank": 181,
+      "rank": 191,
       "skill": "recall",
       "example": {
         "en": "We pay together.",
@@ -3340,7 +3520,7 @@
       "category": "transport",
       "pos": "noun",
       "tier": 1,
-      "rank": 182,
+      "rank": 192,
       "skill": "recognize",
       "example": {
         "en": "Platform three.",
@@ -3358,7 +3538,7 @@
       "category": "transport",
       "pos": "noun",
       "tier": 1,
-      "rank": 183,
+      "rank": 193,
       "skill": "recognize",
       "example": {
         "en": "My luggage is lost.",
@@ -3376,7 +3556,7 @@
       "category": "transport",
       "pos": "noun",
       "tier": 1,
-      "rank": 184,
+      "rank": 194,
       "skill": "recognize",
       "example": {
         "en": "The arrivals hall.",
@@ -3394,7 +3574,7 @@
       "category": "descriptions",
       "pos": "adj",
       "tier": 1,
-      "rank": 185,
+      "rank": 195,
       "skill": "recognize",
       "example": {
         "en": "It is very important.",
@@ -3412,7 +3592,7 @@
       "category": "transport",
       "pos": "noun",
       "tier": 1,
-      "rank": 186,
+      "rank": 196,
       "skill": "recognize",
       "example": {
         "en": "Departures are upstairs.",
@@ -3431,7 +3611,7 @@
       "category": "home",
       "pos": "noun",
       "tier": 1,
-      "rank": 187,
+      "rank": 197,
       "skill": "recall",
       "example": {
         "en": "A double bed.",
@@ -3450,7 +3630,7 @@
       "category": "food",
       "pos": "noun",
       "tier": 1,
-      "rank": 188,
+      "rank": 198,
       "skill": "recognize",
       "example": {
         "en": "With milk, please.",
@@ -3469,7 +3649,7 @@
       "category": "food",
       "pos": "noun",
       "tier": 1,
-      "rank": 189,
+      "rank": 199,
       "skill": "recognize",
       "example": {
         "en": "Grilled chicken.",
@@ -3488,7 +3668,7 @@
       "category": "food",
       "pos": "noun",
       "tier": 1,
-      "rank": 190,
+      "rank": 200,
       "skill": "recognize",
       "example": {
         "en": "Fish of the day.",
@@ -3506,7 +3686,7 @@
       "category": "numbers",
       "pos": "num",
       "tier": 1,
-      "rank": 191,
+      "rank": 201,
       "skill": "recognize",
       "example": {
         "en": "Checkout is at eleven.",
@@ -3524,7 +3704,7 @@
       "category": "numbers",
       "pos": "num",
       "tier": 1,
-      "rank": 192,
+      "rank": 202,
       "skill": "recognize",
       "example": {
         "en": "Lunch at twelve.",
@@ -3542,7 +3722,7 @@
       "category": "actions",
       "pos": "verb",
       "tier": 1,
-      "rank": 193,
+      "rank": 203,
       "skill": "recognize",
       "example": {
         "en": "It is broken.",
@@ -3560,7 +3740,7 @@
       "category": "descriptions",
       "pos": "adj",
       "tier": 1,
-      "rank": 194,
+      "rank": 204,
       "skill": "recall",
       "example": {
         "en": "The table is dirty.",
@@ -3579,7 +3759,7 @@
       "category": "descriptions",
       "pos": "adj",
       "tier": 1,
-      "rank": 195,
+      "rank": 205,
       "skill": "recall",
       "example": {
         "en": "Is it spicy?",
@@ -3598,7 +3778,7 @@
       "category": "transport",
       "pos": "noun",
       "tier": 1,
-      "rank": 196,
+      "rank": 206,
       "skill": "recall",
       "example": {
         "en": "A heavy suitcase.",
@@ -3616,7 +3796,7 @@
       "category": "money",
       "pos": "noun",
       "tier": 1,
-      "rank": 197,
+      "rank": 207,
       "skill": "recall",
       "example": {
         "en": "A bigger size?",
@@ -3635,7 +3815,7 @@
       "category": "home",
       "pos": "noun",
       "tier": 1,
-      "rank": 198,
+      "rank": 208,
       "skill": "recall",
       "example": {
         "en": "The shower is cold.",
@@ -3654,7 +3834,7 @@
       "category": "home",
       "pos": "noun",
       "tier": 1,
-      "rank": 199,
+      "rank": 209,
       "skill": "recall",
       "example": {
         "en": "The bathroom is small.",
@@ -3672,7 +3852,7 @@
       "category": "home",
       "pos": "noun",
       "tier": 1,
-      "rank": 200,
+      "rank": 210,
       "skill": "recognize",
       "example": {
         "en": "The third floor.",
@@ -3690,7 +3870,7 @@
       "category": "objects",
       "pos": "noun",
       "tier": 1,
-      "rank": 201,
+      "rank": 211,
       "skill": "recall",
       "example": {
         "en": "We need more towels.",
@@ -3709,7 +3889,7 @@
       "category": "technology",
       "pos": "noun",
       "tier": 1,
-      "rank": 202,
+      "rank": 212,
       "skill": "recall",
       "example": {
         "en": "I need a plug adapter.",
@@ -3728,7 +3908,7 @@
       "category": "money",
       "pos": "noun",
       "tier": 1,
-      "rank": 203,
+      "rank": 213,
       "skill": "recall",
       "example": {
         "en": "I lost my wallet.",
@@ -3746,7 +3926,7 @@
       "category": "health",
       "pos": "noun",
       "tier": 1,
-      "rank": 204,
+      "rank": 214,
       "skill": "recall",
       "example": {
         "en": "Something for a headache.",
@@ -3764,7 +3944,7 @@
       "category": "health",
       "pos": "noun",
       "tier": 1,
-      "rank": 205,
+      "rank": 215,
       "skill": "recognize",
       "example": {
         "en": "I have travel insurance.",
@@ -3782,7 +3962,7 @@
       "category": "objects",
       "pos": "noun",
       "tier": 1,
-      "rank": 206,
+      "rank": 216,
       "skill": "recall",
       "example": {
         "en": "I lost my charger.",
@@ -3801,7 +3981,7 @@
       "category": "actions",
       "pos": "verb",
       "tier": 1,
-      "rank": 207,
+      "rank": 217,
       "skill": "recognize",
       "example": {
         "en": "No smoking here.",
@@ -3819,7 +3999,7 @@
       "category": "food",
       "pos": "noun",
       "tier": 1,
-      "rank": 208,
+      "rank": 218,
       "skill": "recognize",
       "example": {
         "en": "No sugar, please.",
@@ -3837,7 +4017,7 @@
       "category": "body",
       "pos": "noun",
       "tier": 1,
-      "rank": 209,
+      "rank": 219,
       "skill": "recall",
       "example": {
         "en": "My head hurts.",
@@ -3855,7 +4035,7 @@
       "category": "body",
       "pos": "noun",
       "tier": 1,
-      "rank": 210,
+      "rank": 220,
       "skill": "recall",
       "example": {
         "en": "My back hurts.",
@@ -3873,7 +4053,7 @@
       "category": "descriptions",
       "pos": "adj",
       "tier": 1,
-      "rank": 211,
+      "rank": 221,
       "skill": "recall",
       "example": {
         "en": "I am thirsty.",
@@ -3891,7 +4071,7 @@
       "category": "home",
       "pos": "noun",
       "tier": 1,
-      "rank": 212,
+      "rank": 222,
       "skill": "recall",
       "example": {
         "en": "The air conditioning does not work.",
@@ -3910,7 +4090,7 @@
       "category": "food",
       "pos": "noun",
       "tier": 1,
-      "rank": 213,
+      "rank": 223,
       "skill": "recognize",
       "example": {
         "en": "Only vegetables, please.",
@@ -3928,7 +4108,7 @@
       "category": "technology",
       "pos": "noun",
       "tier": 1,
-      "rank": 214,
+      "rank": 224,
       "skill": "recall",
       "example": {
         "en": "A SIM card with data.",
@@ -3947,7 +4127,7 @@
       "category": "places",
       "pos": "noun",
       "tier": 1,
-      "rank": 215,
+      "rank": 225,
       "skill": "recognize",
       "example": {
         "en": "Stop at the gas station.",
@@ -3965,7 +4145,7 @@
       "category": "body",
       "pos": "noun",
       "tier": 1,
-      "rank": 216,
+      "rank": 226,
       "skill": "recall",
       "example": {
         "en": "My stomach hurts.",
@@ -3984,7 +4164,7 @@
       "category": "home",
       "pos": "noun",
       "tier": 1,
-      "rank": 217,
+      "rank": 227,
       "skill": "recall",
       "example": {
         "en": "There is no toilet paper.",
@@ -4002,7 +4182,7 @@
       "category": "home",
       "pos": "noun",
       "tier": 1,
-      "rank": 218,
+      "rank": 228,
       "skill": "recognize",
       "example": {
         "en": "Lockers are at the station.",
@@ -4020,7 +4200,7 @@
       "category": "objects",
       "pos": "noun",
       "tier": 1,
-      "rank": 219,
+      "rank": 229,
       "skill": "recall",
       "example": {
         "en": "I need an adapter.",
@@ -4038,7 +4218,7 @@
       "category": "health",
       "pos": "noun",
       "tier": 1,
-      "rank": 220,
+      "rank": 230,
       "skill": "recognize",
       "example": {
         "en": "The nurse will help you.",
@@ -4056,7 +4236,7 @@
       "category": "health",
       "pos": "noun",
       "tier": 1,
-      "rank": 221,
+      "rank": 231,
       "skill": "recognize",
       "example": {
         "en": "One pill a day.",
@@ -4074,7 +4254,7 @@
       "category": "home",
       "pos": "noun",
       "tier": 1,
-      "rank": 222,
+      "rank": 232,
       "skill": "recall",
       "example": {
         "en": "The heating is off.",
@@ -4092,7 +4272,7 @@
       "category": "glue",
       "pos": "interj",
       "tier": 1,
-      "rank": 223,
+      "rank": 233,
       "skill": "recall",
       "example": {
         "en": "Great, thank you!",
@@ -4110,7 +4290,7 @@
       "category": "pronouns",
       "pos": "pron",
       "tier": 1,
-      "rank": 224,
+      "rank": 234,
       "skill": "recall",
       "example": {
         "en": "That one over there.",
@@ -4129,7 +4309,7 @@
       "category": "body",
       "pos": "noun",
       "tier": 1,
-      "rank": 225,
+      "rank": 235,
       "skill": "recognize",
       "example": {
         "en": "I have a toothache.",
@@ -4148,7 +4328,7 @@
       "category": "places",
       "pos": "noun",
       "tier": 1,
-      "rank": 226,
+      "rank": 236,
       "skill": "recognize",
       "example": {
         "en": "A good restaurant.",
@@ -4167,7 +4347,7 @@
       "category": "health",
       "pos": "noun",
       "tier": 1,
-      "rank": 227,
+      "rank": 237,
       "skill": "recognize",
       "example": {
         "en": "I need a bandage.",
@@ -4185,7 +4365,7 @@
       "category": "glue",
       "pos": "phrase",
       "tier": 1,
-      "rank": 228,
+      "rank": 238,
       "skill": "recognize",
       "example": {
         "en": "\"Thank you!\" — \"You're welcome.\"",
@@ -4203,7 +4383,7 @@
       "category": "glue",
       "pos": "phrase",
       "tier": 1,
-      "rank": 229,
+      "rank": 239,
       "skill": "recognize",
       "example": {
         "en": "\"Can I sit here?\" — \"Of course.\"",
@@ -4221,7 +4401,7 @@
       "category": "glue",
       "pos": "phrase",
       "tier": 1,
-      "rank": 230,
+      "rank": 240,
       "skill": "recognize",
       "example": {
         "en": "\"Have a nice day!\" — \"You too!\"",
@@ -4239,7 +4419,7 @@
       "category": "pronouns",
       "pos": "pron",
       "tier": 1,
-      "rank": 231,
+      "rank": 241,
       "skill": "recognize",
       "example": {
         "en": "It is very good.",
@@ -4257,7 +4437,7 @@
       "category": "health",
       "pos": "noun",
       "tier": 1,
-      "rank": 232,
+      "rank": 242,
       "skill": "recognize",
       "example": {
         "en": "I need a dentist.",
@@ -4275,7 +4455,7 @@
       "category": "time",
       "pos": "noun",
       "tier": 1,
-      "rank": 233,
+      "rank": 243,
       "skill": "recall",
       "example": {
         "en": "One week in Italy.",
@@ -4293,7 +4473,7 @@
       "category": "actions",
       "pos": "verb",
       "tier": 1,
-      "rank": 234,
+      "rank": 244,
       "skill": "recall",
       "example": {
         "en": "We stay three nights.",
@@ -4311,7 +4491,7 @@
       "category": "glue",
       "pos": "phrase",
       "tier": 1,
-      "rank": 235,
+      "rank": 245,
       "skill": "recall",
       "example": {
         "en": "Good morning! Breakfast, please.",
@@ -4329,7 +4509,7 @@
       "category": "glue",
       "pos": "phrase",
       "tier": 1,
-      "rank": 236,
+      "rank": 246,
       "skill": "recall",
       "example": {
         "en": "The taxi is here. Let's go!",
@@ -4347,7 +4527,7 @@
       "category": "questions",
       "pos": "pron",
       "tier": 1,
-      "rank": 237,
+      "rank": 247,
       "skill": "recognize",
       "example": {
         "en": "Who is next?",
@@ -4365,7 +4545,7 @@
       "category": "questions",
       "pos": "adv",
       "tier": 1,
-      "rank": 238,
+      "rank": 248,
       "skill": "recognize",
       "example": {
         "en": "Why is it closed?",
@@ -4383,7 +4563,7 @@
       "category": "pronouns",
       "pos": "pron",
       "tier": 1,
-      "rank": 239,
+      "rank": 249,
       "skill": "recognize",
       "example": {
         "en": "He is my friend.",
@@ -4401,7 +4581,7 @@
       "category": "pronouns",
       "pos": "pron",
       "tier": 1,
-      "rank": 240,
+      "rank": 250,
       "skill": "recognize",
       "example": {
         "en": "She speaks English.",
@@ -4419,7 +4599,7 @@
       "category": "pronouns",
       "pos": "pron",
       "tier": 1,
-      "rank": 241,
+      "rank": 251,
       "skill": "recognize",
       "example": {
         "en": "They are with me.",
@@ -4437,7 +4617,7 @@
       "category": "pronouns",
       "pos": "det",
       "tier": 1,
-      "rank": 242,
+      "rank": 252,
       "skill": "recognize",
       "example": {
         "en": "Your passport, please.",
@@ -4455,7 +4635,7 @@
       "category": "actions",
       "pos": "verb",
       "tier": 1,
-      "rank": 243,
+      "rank": 253,
       "skill": "recall",
       "example": {
         "en": "I want to see the menu.",
@@ -4474,7 +4654,7 @@
       "category": "actions",
       "pos": "verb",
       "tier": 1,
-      "rank": 244,
+      "rank": 254,
       "skill": "recognize",
       "example": {
         "en": "Look at this!",
@@ -4492,7 +4672,7 @@
       "category": "actions",
       "pos": "verb",
       "tier": 1,
-      "rank": 245,
+      "rank": 255,
       "skill": "recognize",
       "example": {
         "en": "How do you say this?",
@@ -4510,7 +4690,7 @@
       "category": "actions",
       "pos": "verb",
       "tier": 1,
-      "rank": 246,
+      "rank": 256,
       "skill": "recall",
       "example": {
         "en": "I like this place.",
@@ -4528,7 +4708,7 @@
       "category": "actions",
       "pos": "verb",
       "tier": 1,
-      "rank": 247,
+      "rank": 257,
       "skill": "recognize",
       "example": {
         "en": "Where do I get the bus?",
@@ -4546,11 +4726,29 @@
       "category": "descriptions",
       "pos": "adj",
       "tier": 1,
-      "rank": 248,
+      "rank": 258,
       "skill": "recall",
       "example": {
         "en": "A big room.",
         "he": "חדר גדול."
+      }
+    },
+    {
+      "id": "en.word.less",
+      "conceptId": "concept.word.less",
+      "word": "less",
+      "meaning": {
+        "en": "less",
+        "he": "פחות"
+      },
+      "category": "descriptions",
+      "pos": "adv",
+      "tier": 1,
+      "rank": 259,
+      "skill": "recognize",
+      "example": {
+        "en": "A little less, please.",
+        "he": "קצת פחות, בבקשה."
       }
     },
     {
@@ -4565,7 +4763,7 @@
       "category": "activities",
       "pos": "verb",
       "tier": 1,
-      "rank": 249,
+      "rank": 260,
       "skill": "recognize",
       "example": {
         "en": "It is a short walk.",
@@ -4583,7 +4781,7 @@
       "category": "glue",
       "pos": "phrase",
       "tier": 1,
-      "rank": 250,
+      "rank": 261,
       "skill": "recall",
       "example": {
         "en": "Good evening! We have a reservation.",
@@ -4601,7 +4799,7 @@
       "category": "glue",
       "pos": "phrase",
       "tier": 1,
-      "rank": 251,
+      "rank": 262,
       "skill": "recall",
       "example": {
         "en": "\"Dessert?\" — \"Maybe later.\"",
@@ -4619,7 +4817,7 @@
       "category": "glue",
       "pos": "phrase",
       "tier": 1,
-      "rank": 252,
+      "rank": 263,
       "skill": "recognize",
       "example": {
         "en": "\"Can I ask something?\" — \"Go ahead.\"",
@@ -4637,7 +4835,7 @@
       "category": "glue",
       "pos": "interj",
       "tier": 1,
-      "rank": 253,
+      "rank": 264,
       "skill": "recall",
       "example": {
         "en": "Really? That is great!",
@@ -4655,7 +4853,7 @@
       "category": "actions",
       "pos": "verb",
       "tier": 1,
-      "rank": 254,
+      "rank": 265,
       "skill": "recall",
       "example": {
         "en": "Let's ask someone.",
@@ -4673,7 +4871,7 @@
       "category": "actions",
       "pos": "verb",
       "tier": 1,
-      "rank": 255,
+      "rank": 266,
       "skill": "recall",
       "example": {
         "en": "Can I use the phone?",
@@ -4691,7 +4889,7 @@
       "category": "descriptions",
       "pos": "adj",
       "tier": 1,
-      "rank": 256,
+      "rank": 267,
       "skill": "recall",
       "example": {
         "en": "A smaller size, please.",
@@ -4709,7 +4907,7 @@
       "category": "descriptions",
       "pos": "adj",
       "tier": 1,
-      "rank": 257,
+      "rank": 268,
       "skill": "recognize",
       "example": {
         "en": "The first time in Rome.",
@@ -4728,7 +4926,7 @@
       "category": "places",
       "pos": "noun",
       "tier": 1,
-      "rank": 258,
+      "rank": 269,
       "skill": "recognize",
       "example": {
         "en": "The old city.",
@@ -4747,7 +4945,7 @@
       "category": "directions",
       "pos": "adv",
       "tier": 1,
-      "rank": 259,
+      "rank": 270,
       "skill": "recognize",
       "example": {
         "en": "The room is up the stairs.",
@@ -4766,7 +4964,7 @@
       "category": "directions",
       "pos": "adv",
       "tier": 1,
-      "rank": 260,
+      "rank": 271,
       "skill": "recognize",
       "example": {
         "en": "Breakfast is down the stairs.",
@@ -4784,7 +4982,7 @@
       "category": "glue",
       "pos": "phrase",
       "tier": 1,
-      "rank": 261,
+      "rank": 272,
       "skill": "recognize",
       "example": {
         "en": "\"One minute…\" — \"Take your time.\"",
@@ -4802,7 +5000,7 @@
       "category": "glue",
       "pos": "phrase",
       "tier": 1,
-      "rank": 262,
+      "rank": 273,
       "skill": "recall",
       "example": {
         "en": "\"I love this city.\" — \"Me too!\"",
@@ -4820,7 +5018,7 @@
       "category": "glue",
       "pos": "phrase",
       "tier": 1,
-      "rank": 263,
+      "rank": 274,
       "skill": "recall",
       "example": {
         "en": "\"I'm fine. And you?\"",
@@ -4838,7 +5036,7 @@
       "category": "time",
       "pos": "adv",
       "tier": 1,
-      "rank": 264,
+      "rank": 275,
       "skill": "recall",
       "example": {
         "en": "We arrived yesterday.",
@@ -4856,7 +5054,7 @@
       "category": "time",
       "pos": "adj",
       "tier": 1,
-      "rank": 265,
+      "rank": 276,
       "skill": "recall",
       "example": {
         "en": "We arrived early.",
@@ -4874,7 +5072,7 @@
       "category": "time",
       "pos": "adv",
       "tier": 1,
-      "rank": 266,
+      "rank": 277,
       "skill": "recognize",
       "example": {
         "en": "The train comes soon.",
@@ -4892,7 +5090,7 @@
       "category": "actions",
       "pos": "verb",
       "tier": 1,
-      "rank": 267,
+      "rank": 278,
       "skill": "recall",
       "example": {
         "en": "We return tomorrow.",
@@ -4910,7 +5108,7 @@
       "category": "actions",
       "pos": "verb",
       "tier": 1,
-      "rank": 268,
+      "rank": 279,
       "skill": "recognize",
       "example": {
         "en": "Push the door.",
@@ -4928,7 +5126,7 @@
       "category": "actions",
       "pos": "verb",
       "tier": 1,
-      "rank": 269,
+      "rank": 280,
       "skill": "recognize",
       "example": {
         "en": "Pull, do not push.",
@@ -4946,7 +5144,7 @@
       "category": "descriptions",
       "pos": "adj",
       "tier": 1,
-      "rank": 270,
+      "rank": 281,
       "skill": "recognize",
       "example": {
         "en": "The old city.",
@@ -4965,7 +5163,7 @@
       "category": "descriptions",
       "pos": "adj",
       "tier": 1,
-      "rank": 271,
+      "rank": 282,
       "skill": "recall",
       "example": {
         "en": "It was delicious!",
@@ -4984,7 +5182,7 @@
       "category": "food",
       "pos": "noun",
       "tier": 1,
-      "rank": 272,
+      "rank": 283,
       "skill": "recognize",
       "example": {
         "en": "Fresh bread.",
@@ -5003,7 +5201,7 @@
       "category": "places",
       "pos": "noun",
       "tier": 1,
-      "rank": 273,
+      "rank": 284,
       "skill": "recognize",
       "example": {
         "en": "The fruit market.",
@@ -5022,7 +5220,7 @@
       "category": "people",
       "pos": "noun",
       "tier": 1,
-      "rank": 274,
+      "rank": 285,
       "skill": "recognize",
       "example": {
         "en": "One adult, one child.",
@@ -5040,7 +5238,7 @@
       "category": "glue",
       "pos": "phrase",
       "tier": 1,
-      "rank": 275,
+      "rank": 286,
       "skill": "recall",
       "example": {
         "en": "See you later at the hotel.",
@@ -5058,7 +5256,7 @@
       "category": "actions",
       "pos": "verb",
       "tier": 1,
-      "rank": 276,
+      "rank": 287,
       "skill": "recall",
       "example": {
         "en": "Can we sit outside?",
@@ -5076,7 +5274,7 @@
       "category": "actions",
       "pos": "verb",
       "tier": 1,
-      "rank": 277,
+      "rank": 288,
       "skill": "recall",
       "example": {
         "en": "Can I try it on?",
@@ -5094,7 +5292,7 @@
       "category": "descriptions",
       "pos": "adj",
       "tier": 1,
-      "rank": 278,
+      "rank": 289,
       "skill": "recall",
       "example": {
         "en": "What a beautiful view!",
@@ -5113,7 +5311,7 @@
       "category": "places",
       "pos": "noun",
       "tier": 1,
-      "rank": 279,
+      "rank": 290,
       "skill": "recognize",
       "example": {
         "en": "The shop is closed.",
@@ -5131,7 +5329,7 @@
       "category": "places",
       "pos": "noun",
       "tier": 1,
-      "rank": 280,
+      "rank": 291,
       "skill": "recognize",
       "example": {
         "en": "A nice cafe.",
@@ -5150,7 +5348,7 @@
       "category": "people",
       "pos": "noun",
       "tier": 1,
-      "rank": 281,
+      "rank": 292,
       "skill": "recognize",
       "example": {
         "en": "This is my friend.",
@@ -5168,7 +5366,7 @@
       "category": "glue",
       "pos": "phrase",
       "tier": 1,
-      "rank": 282,
+      "rank": 293,
       "skill": "recall",
       "example": {
         "en": "\"Inside or outside?\" — \"It's up to you.\"",
@@ -5186,7 +5384,7 @@
       "category": "time",
       "pos": "noun",
       "tier": 1,
-      "rank": 283,
+      "rank": 294,
       "skill": "recognize",
       "example": {
         "en": "Closed in the afternoon.",
@@ -5204,7 +5402,7 @@
       "category": "time",
       "pos": "noun",
       "tier": 1,
-      "rank": 284,
+      "rank": 295,
       "skill": "recognize",
       "example": {
         "en": "Happy new year!",
@@ -5223,7 +5421,7 @@
       "category": "colors",
       "pos": "adj",
       "tier": 1,
-      "rank": 285,
+      "rank": 296,
       "skill": "recognize",
       "example": {
         "en": "The red bus.",
@@ -5242,7 +5440,7 @@
       "category": "colors",
       "pos": "adj",
       "tier": 1,
-      "rank": 286,
+      "rank": 297,
       "skill": "recognize",
       "example": {
         "en": "The blue line.",
@@ -5261,7 +5459,7 @@
       "category": "colors",
       "pos": "adj",
       "tier": 1,
-      "rank": 287,
+      "rank": 298,
       "skill": "recognize",
       "example": {
         "en": "Cross on green.",
@@ -5279,7 +5477,7 @@
       "category": "actions",
       "pos": "verb",
       "tier": 1,
-      "rank": 288,
+      "rank": 299,
       "skill": "recall",
       "example": {
         "en": "I love this city.",
@@ -5297,7 +5495,7 @@
       "category": "actions",
       "pos": "verb",
       "tier": 1,
-      "rank": 289,
+      "rank": 300,
       "skill": "recall",
       "example": {
         "en": "Can you bring the bill?",
@@ -5315,7 +5513,7 @@
       "category": "actions",
       "pos": "verb",
       "tier": 1,
-      "rank": 290,
+      "rank": 301,
       "skill": "recall",
       "example": {
         "en": "We want to visit the old city.",
@@ -5333,7 +5531,7 @@
       "category": "actions",
       "pos": "verb",
       "tier": 1,
-      "rank": 291,
+      "rank": 302,
       "skill": "recall",
       "example": {
         "en": "We travel a lot.",
@@ -5351,7 +5549,7 @@
       "category": "descriptions",
       "pos": "adj",
       "tier": 1,
-      "rank": 292,
+      "rank": 303,
       "skill": "recall",
       "example": {
         "en": "The fast train.",
@@ -5369,7 +5567,7 @@
       "category": "descriptions",
       "pos": "adj",
       "tier": 1,
-      "rank": 293,
+      "rank": 304,
       "skill": "recall",
       "example": {
         "en": "The room is clean.",
@@ -5387,7 +5585,7 @@
       "category": "descriptions",
       "pos": "adj",
       "tier": 1,
-      "rank": 294,
+      "rank": 305,
       "skill": "recall",
       "example": {
         "en": "A quiet room, please.",
@@ -5406,7 +5604,7 @@
       "category": "descriptions",
       "pos": "adj",
       "tier": 1,
-      "rank": 295,
+      "rank": 306,
       "skill": "recall",
       "example": {
         "en": "I am very tired.",
@@ -5424,7 +5622,7 @@
       "category": "descriptions",
       "pos": "adj",
       "tier": 1,
-      "rank": 296,
+      "rank": 307,
       "skill": "recognize",
       "example": {
         "en": "The restaurant is busy tonight.",
@@ -5442,7 +5640,7 @@
       "category": "descriptions",
       "pos": "adj",
       "tier": 1,
-      "rank": 297,
+      "rank": 308,
       "skill": "recall",
       "example": {
         "en": "The same for me, please.",
@@ -5461,7 +5659,7 @@
       "category": "places",
       "pos": "noun",
       "tier": 1,
-      "rank": 298,
+      "rank": 309,
       "skill": "recall",
       "example": {
         "en": "Is there a supermarket near here?",
@@ -5480,7 +5678,7 @@
       "category": "food",
       "pos": "noun",
       "tier": 1,
-      "rank": 299,
+      "rank": 310,
       "skill": "recognize",
       "example": {
         "en": "Tea with milk.",
@@ -5499,7 +5697,7 @@
       "category": "food",
       "pos": "noun",
       "tier": 1,
-      "rank": 300,
+      "rank": 311,
       "skill": "recognize",
       "example": {
         "en": "A glass of wine.",
@@ -5518,7 +5716,7 @@
       "category": "places",
       "pos": "noun",
       "tier": 1,
-      "rank": 301,
+      "rank": 312,
       "skill": "recognize",
       "example": {
         "en": "How do I get to the beach?",
@@ -5537,7 +5735,7 @@
       "category": "people",
       "pos": "noun",
       "tier": 1,
-      "rank": 302,
+      "rank": 313,
       "skill": "recognize",
       "example": {
         "en": "I am here with my family.",
@@ -5555,7 +5753,7 @@
       "category": "numbers",
       "pos": "num",
       "tier": 1,
-      "rank": 303,
+      "rank": 314,
       "skill": "recognize",
       "example": {
         "en": "A thousand people were there.",
@@ -5573,7 +5771,7 @@
       "category": "time",
       "pos": "noun",
       "tier": 1,
-      "rank": 304,
+      "rank": 315,
       "skill": "recognize",
       "example": {
         "en": "Next month.",
@@ -5591,7 +5789,7 @@
       "category": "time",
       "pos": "adv",
       "tier": 1,
-      "rank": 305,
+      "rank": 316,
       "skill": "recognize",
       "example": {
         "en": "It is always open.",
@@ -5609,7 +5807,7 @@
       "category": "time",
       "pos": "adv",
       "tier": 1,
-      "rank": 306,
+      "rank": 317,
       "skill": "recognize",
       "example": {
         "en": "I never eat meat.",
@@ -5627,7 +5825,7 @@
       "category": "time",
       "pos": "noun",
       "tier": 1,
-      "rank": 307,
+      "rank": 318,
       "skill": "recognize",
       "example": {
         "en": "Closed on the weekend.",
@@ -5645,7 +5843,7 @@
       "category": "time",
       "pos": "noun",
       "tier": 1,
-      "rank": 308,
+      "rank": 319,
       "skill": "recognize",
       "example": {
         "en": "Closed on Monday.",
@@ -5663,7 +5861,7 @@
       "category": "time",
       "pos": "noun",
       "tier": 1,
-      "rank": 309,
+      "rank": 320,
       "skill": "recognize",
       "example": {
         "en": "Friday evening.",
@@ -5681,7 +5879,7 @@
       "category": "time",
       "pos": "noun",
       "tier": 1,
-      "rank": 310,
+      "rank": 321,
       "skill": "recognize",
       "example": {
         "en": "Everything is closed on Sunday.",
@@ -5699,7 +5897,7 @@
       "category": "actions",
       "pos": "verb",
       "tier": 1,
-      "rank": 311,
+      "rank": 322,
       "skill": "recognize",
       "example": {
         "en": "I think it is close.",
@@ -5717,7 +5915,7 @@
       "category": "descriptions",
       "pos": "adj",
       "tier": 1,
-      "rank": 312,
+      "rank": 323,
       "skill": "recognize",
       "example": {
         "en": "The new terminal.",
@@ -5735,7 +5933,7 @@
       "category": "descriptions",
       "pos": "adj",
       "tier": 1,
-      "rank": 313,
+      "rank": 324,
       "skill": "recognize",
       "example": {
         "en": "The suitcase is too heavy.",
@@ -5754,7 +5952,7 @@
       "category": "descriptions",
       "pos": "adj",
       "tier": 1,
-      "rank": 314,
+      "rank": 325,
       "skill": "recall",
       "example": {
         "en": "I am happy to be here.",
@@ -5773,7 +5971,7 @@
       "category": "food",
       "pos": "noun",
       "tier": 1,
-      "rank": 315,
+      "rank": 326,
       "skill": "recall",
       "example": {
         "en": "Two beers, please.",
@@ -5792,7 +5990,7 @@
       "category": "places",
       "pos": "noun",
       "tier": 1,
-      "rank": 316,
+      "rank": 327,
       "skill": "recognize",
       "example": {
         "en": "The door is locked.",
@@ -5810,7 +6008,7 @@
       "category": "transport",
       "pos": "noun",
       "tier": 1,
-      "rank": 317,
+      "rank": 328,
       "skill": "recognize",
       "example": {
         "en": "Ask the driver.",
@@ -5829,7 +6027,7 @@
       "category": "technology",
       "pos": "noun",
       "tier": 1,
-      "rank": 318,
+      "rank": 329,
       "skill": "recall",
       "example": {
         "en": "Can you take a photo of us?",
@@ -5848,7 +6046,7 @@
       "category": "places",
       "pos": "noun",
       "tier": 1,
-      "rank": 319,
+      "rank": 330,
       "skill": "recognize",
       "example": {
         "en": "Two tickets to the museum.",
@@ -5867,7 +6065,7 @@
       "category": "people",
       "pos": "noun",
       "tier": 1,
-      "rank": 320,
+      "rank": 331,
       "skill": "recognize",
       "example": {
         "en": "That man over there.",
@@ -5886,7 +6084,7 @@
       "category": "people",
       "pos": "noun",
       "tier": 1,
-      "rank": 321,
+      "rank": 332,
       "skill": "recognize",
       "example": {
         "en": "Ask that woman.",
@@ -5904,7 +6102,7 @@
       "category": "glue",
       "pos": "phrase",
       "tier": 1,
-      "rank": 322,
+      "rank": 333,
       "skill": "recall",
       "example": {
         "en": "Good night, see you tomorrow.",
@@ -5922,7 +6120,7 @@
       "category": "time",
       "pos": "noun",
       "tier": 1,
-      "rank": 323,
+      "rank": 334,
       "skill": "recognize",
       "example": {
         "en": "Open on Saturday?",
@@ -5940,7 +6138,7 @@
       "category": "actions",
       "pos": "verb",
       "tier": 1,
-      "rank": 324,
+      "rank": 335,
       "skill": "recognize",
       "example": {
         "en": "I cannot hear you.",
@@ -5959,7 +6157,7 @@
       "category": "actions",
       "pos": "verb",
       "tier": 1,
-      "rank": 325,
+      "rank": 336,
       "skill": "recall",
       "example": {
         "en": "I need to sleep.",
@@ -5977,7 +6175,7 @@
       "category": "actions",
       "pos": "verb",
       "tier": 1,
-      "rank": 326,
+      "rank": 337,
       "skill": "recognize",
       "example": {
         "en": "Nobody answers.",
@@ -5995,7 +6193,7 @@
       "category": "actions",
       "pos": "verb",
       "tier": 1,
-      "rank": 327,
+      "rank": 338,
       "skill": "recognize",
       "example": {
         "en": "I do not remember the name.",
@@ -6013,7 +6211,7 @@
       "category": "actions",
       "pos": "verb",
       "tier": 1,
-      "rank": 328,
+      "rank": 339,
       "skill": "recognize",
       "example": {
         "en": "Send me the address.",
@@ -6031,7 +6229,7 @@
       "category": "actions",
       "pos": "verb",
       "tier": 1,
-      "rank": 329,
+      "rank": 340,
       "skill": "recognize",
       "example": {
         "en": "He drives slowly.",
@@ -6049,7 +6247,7 @@
       "category": "actions",
       "pos": "verb",
       "tier": 1,
-      "rank": 330,
+      "rank": 341,
       "skill": "recall",
       "example": {
         "en": "Nice to meet you.",
@@ -6067,7 +6265,7 @@
       "category": "descriptions",
       "pos": "adj",
       "tier": 1,
-      "rank": 331,
+      "rank": 342,
       "skill": "recognize",
       "example": {
         "en": "It is easy to find.",
@@ -6085,7 +6283,7 @@
       "category": "descriptions",
       "pos": "adj",
       "tier": 1,
-      "rank": 332,
+      "rank": 343,
       "skill": "recognize",
       "example": {
         "en": "It is hard to say.",
@@ -6103,7 +6301,7 @@
       "category": "descriptions",
       "pos": "adj",
       "tier": 1,
-      "rank": 333,
+      "rank": 344,
       "skill": "recognize",
       "example": {
         "en": "Too sweet for me.",
@@ -6121,7 +6319,7 @@
       "category": "places",
       "pos": "noun",
       "tier": 1,
-      "rank": 334,
+      "rank": 345,
       "skill": "recognize",
       "example": {
         "en": "The main square.",
@@ -6139,7 +6337,7 @@
       "category": "transport",
       "pos": "noun",
       "tier": 1,
-      "rank": 335,
+      "rank": 346,
       "skill": "recognize",
       "example": {
         "en": "It is around the corner.",
@@ -6157,7 +6355,7 @@
       "category": "money",
       "pos": "noun",
       "tier": 1,
-      "rank": 336,
+      "rank": 347,
       "skill": "recognize",
       "example": {
         "en": "Is the tip included?",
@@ -6175,7 +6373,7 @@
       "category": "people",
       "pos": "noun",
       "tier": 1,
-      "rank": 337,
+      "rank": 348,
       "skill": "recall",
       "example": {
         "en": "We are tourists.",
@@ -6194,7 +6392,7 @@
       "category": "body",
       "pos": "noun",
       "tier": 1,
-      "rank": 338,
+      "rank": 349,
       "skill": "recognize",
       "example": {
         "en": "Give me your hand.",
@@ -6213,7 +6411,7 @@
       "category": "food",
       "pos": "noun",
       "tier": 1,
-      "rank": 339,
+      "rank": 350,
       "skill": "recognize",
       "example": {
         "en": "Two eggs, please.",
@@ -6232,7 +6430,7 @@
       "category": "food",
       "pos": "noun",
       "tier": 1,
-      "rank": 340,
+      "rank": 351,
       "skill": "recognize",
       "example": {
         "en": "Bread and cheese.",
@@ -6251,7 +6449,7 @@
       "category": "weather",
       "pos": "noun",
       "tier": 1,
-      "rank": 341,
+      "rank": 352,
       "skill": "recognize",
       "example": {
         "en": "It is raining.",
@@ -6270,7 +6468,7 @@
       "category": "nature",
       "pos": "noun",
       "tier": 1,
-      "rank": 342,
+      "rank": 353,
       "skill": "recognize",
       "example": {
         "en": "The sea is warm.",
@@ -6289,7 +6487,7 @@
       "category": "activities",
       "pos": "verb",
       "tier": 1,
-      "rank": 343,
+      "rank": 354,
       "skill": "recognize",
       "example": {
         "en": "I want to swim.",
@@ -6307,7 +6505,7 @@
       "category": "glue",
       "pos": "interj",
       "tier": 1,
-      "rank": 344,
+      "rank": 355,
       "skill": "recall",
       "example": {
         "en": "Cheers! To the trip!",
@@ -6325,7 +6523,7 @@
       "category": "glue",
       "pos": "phrase",
       "tier": 1,
-      "rank": 345,
+      "rank": 356,
       "skill": "recall",
       "example": {
         "en": "Nothing else, just the coffee.",
@@ -6343,7 +6541,7 @@
       "category": "time",
       "pos": "noun",
       "tier": 1,
-      "rank": 346,
+      "rank": 357,
       "skill": "recognize",
       "example": {
         "en": "The market is on Tuesday.",
@@ -6361,7 +6559,7 @@
       "category": "time",
       "pos": "noun",
       "tier": 1,
-      "rank": 347,
+      "rank": 358,
       "skill": "recognize",
       "example": {
         "en": "We fly on Wednesday.",
@@ -6379,7 +6577,7 @@
       "category": "time",
       "pos": "noun",
       "tier": 1,
-      "rank": 348,
+      "rank": 359,
       "skill": "recognize",
       "example": {
         "en": "Until Thursday.",
@@ -6397,7 +6595,7 @@
       "category": "descriptions",
       "pos": "adj",
       "tier": 1,
-      "rank": 349,
+      "rank": 360,
       "skill": "recognize",
       "example": {
         "en": "The soup is salty.",
@@ -6415,7 +6613,7 @@
       "category": "descriptions",
       "pos": "adj",
       "tier": 1,
-      "rank": 350,
+      "rank": 361,
       "skill": "recognize",
       "example": {
         "en": "Fresh orange juice.",
@@ -6433,7 +6631,7 @@
       "category": "descriptions",
       "pos": "adj",
       "tier": 1,
-      "rank": 351,
+      "rank": 362,
       "skill": "recall",
       "example": {
         "en": "Something different, please.",
@@ -6452,7 +6650,7 @@
       "category": "food",
       "pos": "noun",
       "tier": 1,
-      "rank": 352,
+      "rank": 363,
       "skill": "recognize",
       "example": {
         "en": "Fresh fruit.",
@@ -6471,7 +6669,7 @@
       "category": "food",
       "pos": "noun",
       "tier": 1,
-      "rank": 353,
+      "rank": 364,
       "skill": "recognize",
       "example": {
         "en": "A big salad.",
@@ -6490,7 +6688,7 @@
       "category": "food",
       "pos": "noun",
       "tier": 1,
-      "rank": 354,
+      "rank": 365,
       "skill": "recognize",
       "example": {
         "en": "Salt and pepper.",
@@ -6509,7 +6707,7 @@
       "category": "food",
       "pos": "noun",
       "tier": 1,
-      "rank": 355,
+      "rank": 366,
       "skill": "recall",
       "example": {
         "en": "Orange juice, please.",
@@ -6528,7 +6726,7 @@
       "category": "food",
       "pos": "noun",
       "tier": 1,
-      "rank": 356,
+      "rank": 367,
       "skill": "recognize",
       "example": {
         "en": "A slice of pizza.",
@@ -6546,7 +6744,7 @@
       "category": "food",
       "pos": "noun",
       "tier": 1,
-      "rank": 357,
+      "rank": 368,
       "skill": "recognize",
       "example": {
         "en": "A glass of water.",
@@ -6564,7 +6762,7 @@
       "category": "food",
       "pos": "noun",
       "tier": 1,
-      "rank": 358,
+      "rank": 369,
       "skill": "recall",
       "example": {
         "en": "A bottle of water.",
@@ -6582,7 +6780,7 @@
       "category": "food",
       "pos": "noun",
       "tier": 1,
-      "rank": 359,
+      "rank": 370,
       "skill": "recognize",
       "example": {
         "en": "Lunch until three.",
@@ -6600,7 +6798,7 @@
       "category": "food",
       "pos": "noun",
       "tier": 1,
-      "rank": 360,
+      "rank": 371,
       "skill": "recognize",
       "example": {
         "en": "Dinner at eight.",
@@ -6619,7 +6817,7 @@
       "category": "places",
       "pos": "noun",
       "tier": 1,
-      "rank": 361,
+      "rank": 372,
       "skill": "recognize",
       "example": {
         "en": "Next to the park.",
@@ -6638,7 +6836,7 @@
       "category": "places",
       "pos": "noun",
       "tier": 1,
-      "rank": 362,
+      "rank": 373,
       "skill": "recognize",
       "example": {
         "en": "A seat by the window.",
@@ -6657,7 +6855,7 @@
       "category": "transport",
       "pos": "noun",
       "tier": 1,
-      "rank": 363,
+      "rank": 374,
       "skill": "recognize",
       "example": {
         "en": "Cross the road carefully.",
@@ -6676,7 +6874,7 @@
       "category": "transport",
       "pos": "noun",
       "tier": 1,
-      "rank": 364,
+      "rank": 375,
       "skill": "recognize",
       "example": {
         "en": "Turn left at the traffic light.",
@@ -6694,7 +6892,7 @@
       "category": "home",
       "pos": "noun",
       "tier": 1,
-      "rank": 365,
+      "rank": 376,
       "skill": "recognize",
       "example": {
         "en": "Is there a kitchen?",
@@ -6712,7 +6910,7 @@
       "category": "technology",
       "pos": "noun",
       "tier": 1,
-      "rank": 366,
+      "rank": 377,
       "skill": "recognize",
       "example": {
         "en": "Use the metro app.",
@@ -6731,7 +6929,7 @@
       "category": "technology",
       "pos": "noun",
       "tier": 1,
-      "rank": 367,
+      "rank": 378,
       "skill": "recognize",
       "example": {
         "en": "Send it by email.",
@@ -6750,7 +6948,7 @@
       "category": "food",
       "pos": "noun",
       "tier": 1,
-      "rank": 368,
+      "rank": 379,
       "skill": "recognize",
       "example": {
         "en": "Rice, please.",
@@ -6769,7 +6967,7 @@
       "category": "food",
       "pos": "noun",
       "tier": 1,
-      "rank": 369,
+      "rank": 380,
       "skill": "recognize",
       "example": {
         "en": "Hot soup.",
@@ -6788,7 +6986,7 @@
       "category": "transport",
       "pos": "noun",
       "tier": 1,
-      "rank": 370,
+      "rank": 381,
       "skill": "recognize",
       "example": {
         "en": "I want to rent a bike.",
@@ -6807,7 +7005,7 @@
       "category": "transport",
       "pos": "noun",
       "tier": 1,
-      "rank": 371,
+      "rank": 382,
       "skill": "recognize",
       "example": {
         "en": "A boat trip.",
@@ -6826,7 +7024,7 @@
       "category": "places",
       "pos": "noun",
       "tier": 1,
-      "rank": 372,
+      "rank": 383,
       "skill": "recognize",
       "example": {
         "en": "It is next to the bank.",
@@ -6845,7 +7043,7 @@
       "category": "activities",
       "pos": "verb",
       "tier": 1,
-      "rank": 373,
+      "rank": 384,
       "skill": "recognize",
       "example": {
         "en": "I run every morning.",
@@ -6864,7 +7062,7 @@
       "category": "colors",
       "pos": "adj",
       "tier": 1,
-      "rank": 374,
+      "rank": 385,
       "skill": "recognize",
       "example": {
         "en": "Black coffee, please.",
@@ -6883,7 +7081,7 @@
       "category": "colors",
       "pos": "adj",
       "tier": 1,
-      "rank": 375,
+      "rank": 386,
       "skill": "recognize",
       "example": {
         "en": "White wine.",
@@ -6901,7 +7099,7 @@
       "category": "actions",
       "pos": "verb",
       "tier": 1,
-      "rank": 376,
+      "rank": 387,
       "skill": "recognize",
       "example": {
         "en": "Please stand in line.",
@@ -6919,7 +7117,7 @@
       "category": "descriptions",
       "pos": "adj",
       "tier": 1,
-      "rank": 377,
+      "rank": 388,
       "skill": "recognize",
       "example": {
         "en": "The bus is empty.",
@@ -6938,7 +7136,7 @@
       "category": "food",
       "pos": "noun",
       "tier": 1,
-      "rank": 378,
+      "rank": 389,
       "skill": "recognize",
       "example": {
         "en": "A cheese sandwich.",
@@ -6957,7 +7155,7 @@
       "category": "places",
       "pos": "noun",
       "tier": 1,
-      "rank": 379,
+      "rank": 390,
       "skill": "recognize",
       "example": {
         "en": "The tall building.",
@@ -6976,7 +7174,7 @@
       "category": "money",
       "pos": "noun",
       "tier": 1,
-      "rank": 380,
+      "rank": 391,
       "skill": "recognize",
       "example": {
         "en": "I need coins for the locker.",
@@ -6994,7 +7192,7 @@
       "category": "money",
       "pos": "noun",
       "tier": 1,
-      "rank": 381,
+      "rank": 392,
       "skill": "recognize",
       "example": {
         "en": "Everything is on sale.",
@@ -7012,7 +7210,7 @@
       "category": "money",
       "pos": "noun",
       "tier": 1,
-      "rank": 382,
+      "rank": 393,
       "skill": "recognize",
       "example": {
         "en": "Is tax included?",
@@ -7031,7 +7229,7 @@
       "category": "money",
       "pos": "noun",
       "tier": 1,
-      "rank": 383,
+      "rank": 394,
       "skill": "recall",
       "example": {
         "en": "A gift for my family.",
@@ -7049,7 +7247,7 @@
       "category": "people",
       "pos": "noun",
       "tier": 1,
-      "rank": 384,
+      "rank": 395,
       "skill": "recall",
       "example": {
         "en": "This is my mother.",
@@ -7067,7 +7265,7 @@
       "category": "people",
       "pos": "noun",
       "tier": 1,
-      "rank": 385,
+      "rank": 396,
       "skill": "recall",
       "example": {
         "en": "My father loves to travel.",
@@ -7085,7 +7283,7 @@
       "category": "people",
       "pos": "noun",
       "tier": 1,
-      "rank": 386,
+      "rank": 397,
       "skill": "recognize",
       "example": {
         "en": "Ask the waiter.",
@@ -7104,7 +7302,7 @@
       "category": "objects",
       "pos": "noun",
       "tier": 1,
-      "rank": 387,
+      "rank": 398,
       "skill": "recognize",
       "example": {
         "en": "A pen for the form.",
@@ -7123,7 +7321,7 @@
       "category": "food",
       "pos": "noun",
       "tier": 1,
-      "rank": 388,
+      "rank": 399,
       "skill": "recognize",
       "example": {
         "en": "One apple.",
@@ -7142,7 +7340,7 @@
       "category": "food",
       "pos": "noun",
       "tier": 1,
-      "rank": 389,
+      "rank": 400,
       "skill": "recognize",
       "example": {
         "en": "A banana, please.",
@@ -7161,7 +7359,7 @@
       "category": "animals",
       "pos": "noun",
       "tier": 1,
-      "rank": 390,
+      "rank": 401,
       "skill": "recognize",
       "example": {
         "en": "A big dog.",
@@ -7180,7 +7378,7 @@
       "category": "animals",
       "pos": "noun",
       "tier": 1,
-      "rank": 391,
+      "rank": 402,
       "skill": "recognize",
       "example": {
         "en": "A small cat.",
@@ -7199,7 +7397,7 @@
       "category": "places",
       "pos": "noun",
       "tier": 1,
-      "rank": 392,
+      "rank": 403,
       "skill": "recognize",
       "example": {
         "en": "The old church.",
@@ -7218,7 +7416,7 @@
       "category": "objects",
       "pos": "noun",
       "tier": 1,
-      "rank": 393,
+      "rank": 404,
       "skill": "recognize",
       "example": {
         "en": "Can I use my camera here?",
@@ -7237,7 +7435,7 @@
       "category": "weather",
       "pos": "noun",
       "tier": 1,
-      "rank": 394,
+      "rank": 405,
       "skill": "recognize",
       "example": {
         "en": "A sunny day.",
@@ -7256,7 +7454,7 @@
       "category": "nature",
       "pos": "noun",
       "tier": 1,
-      "rank": 395,
+      "rank": 406,
       "skill": "recognize",
       "example": {
         "en": "A high mountain.",
@@ -7275,7 +7473,7 @@
       "category": "people",
       "pos": "noun",
       "tier": 1,
-      "rank": 396,
+      "rank": 407,
       "skill": "recognize",
       "example": {
         "en": "I am traveling with a baby.",
@@ -7294,7 +7492,7 @@
       "category": "colors",
       "pos": "adj",
       "tier": 1,
-      "rank": 397,
+      "rank": 408,
       "skill": "recognize",
       "example": {
         "en": "The pink dress.",
@@ -7312,7 +7510,7 @@
       "category": "actions",
       "pos": "verb",
       "tier": 1,
-      "rank": 398,
+      "rank": 409,
       "skill": "recognize",
       "example": {
         "en": "Where can I wash my hands?",
@@ -7330,7 +7528,7 @@
       "category": "descriptions",
       "pos": "adj",
       "tier": 1,
-      "rank": 399,
+      "rank": 410,
       "skill": "recall",
       "example": {
         "en": "It is too loud here.",
@@ -7349,7 +7547,7 @@
       "category": "food",
       "pos": "noun",
       "tier": 1,
-      "rank": 400,
+      "rank": 411,
       "skill": "recognize",
       "example": {
         "en": "Pasta with tomato sauce.",
@@ -7368,7 +7566,7 @@
       "category": "places",
       "pos": "noun",
       "tier": 1,
-      "rank": 401,
+      "rank": 412,
       "skill": "recognize",
       "example": {
         "en": "Cross the bridge.",
@@ -7387,7 +7585,7 @@
       "category": "places",
       "pos": "noun",
       "tier": 1,
-      "rank": 402,
+      "rank": 413,
       "skill": "recognize",
       "example": {
         "en": "Take the elevator.",
@@ -7405,7 +7603,7 @@
       "category": "places",
       "pos": "noun",
       "tier": 1,
-      "rank": 403,
+      "rank": 414,
       "skill": "recognize",
       "example": {
         "en": "The stairs are on the right.",
@@ -7423,7 +7621,7 @@
       "category": "money",
       "pos": "noun",
       "tier": 1,
-      "rank": 404,
+      "rank": 415,
       "skill": "recognize",
       "example": {
         "en": "Is there a discount?",
@@ -7441,7 +7639,7 @@
       "category": "money",
       "pos": "noun",
       "tier": 1,
-      "rank": 405,
+      "rank": 416,
       "skill": "recognize",
       "example": {
         "en": "A hundred shekels.",
@@ -7460,7 +7658,7 @@
       "category": "objects",
       "pos": "noun",
       "tier": 1,
-      "rank": 406,
+      "rank": 417,
       "skill": "recognize",
       "example": {
         "en": "The battery is empty.",
@@ -7479,7 +7677,7 @@
       "category": "colors",
       "pos": "adj",
       "tier": 1,
-      "rank": 407,
+      "rank": 418,
       "skill": "recognize",
       "example": {
         "en": "The yellow taxi.",
@@ -7498,7 +7696,7 @@
       "category": "colors",
       "pos": "adj",
       "tier": 1,
-      "rank": 408,
+      "rank": 419,
       "skill": "recognize",
       "example": {
         "en": "The orange building.",
@@ -7517,7 +7715,7 @@
       "category": "colors",
       "pos": "adj",
       "tier": 1,
-      "rank": 409,
+      "rank": 420,
       "skill": "recognize",
       "example": {
         "en": "The brown bag.",
@@ -7536,7 +7734,7 @@
       "category": "descriptions",
       "pos": "adj",
       "tier": 1,
-      "rank": 410,
+      "rank": 421,
       "skill": "recognize",
       "example": {
         "en": "She looks sad.",
@@ -7554,7 +7752,7 @@
       "category": "descriptions",
       "pos": "adv",
       "tier": 1,
-      "rank": 411,
+      "rank": 422,
       "skill": "recall",
       "example": {
         "en": "I am traveling alone.",
@@ -7573,7 +7771,7 @@
       "category": "food",
       "pos": "noun",
       "tier": 1,
-      "rank": 412,
+      "rank": 423,
       "skill": "recognize",
       "example": {
         "en": "Two scoops of ice cream.",
@@ -7592,7 +7790,7 @@
       "category": "objects",
       "pos": "noun",
       "tier": 1,
-      "rank": 413,
+      "rank": 424,
       "skill": "recognize",
       "example": {
         "en": "There is no soap.",
@@ -7611,7 +7809,7 @@
       "category": "objects",
       "pos": "noun",
       "tier": 1,
-      "rank": 414,
+      "rank": 425,
       "skill": "recognize",
       "example": {
         "en": "A piece of paper.",
@@ -7630,7 +7828,7 @@
       "category": "home",
       "pos": "noun",
       "tier": 1,
-      "rank": 415,
+      "rank": 426,
       "skill": "recognize",
       "example": {
         "en": "One more chair, please.",
@@ -7648,7 +7846,7 @@
       "category": "home",
       "pos": "noun",
       "tier": 1,
-      "rank": 416,
+      "rank": 427,
       "skill": "recognize",
       "example": {
         "en": "We rented an apartment.",
@@ -7667,7 +7865,7 @@
       "category": "technology",
       "pos": "noun",
       "tier": 1,
-      "rank": 417,
+      "rank": 428,
       "skill": "recognize",
       "example": {
         "en": "My computer is in the bag.",
@@ -7686,7 +7884,7 @@
       "category": "technology",
       "pos": "noun",
       "tier": 1,
-      "rank": 418,
+      "rank": 429,
       "skill": "recognize",
       "example": {
         "en": "Send me a message.",
@@ -7705,7 +7903,7 @@
       "category": "body",
       "pos": "noun",
       "tier": 1,
-      "rank": 419,
+      "rank": 430,
       "skill": "recognize",
       "example": {
         "en": "Something is in my eye.",
@@ -7724,7 +7922,7 @@
       "category": "body",
       "pos": "noun",
       "tier": 1,
-      "rank": 420,
+      "rank": 431,
       "skill": "recognize",
       "example": {
         "en": "Open your mouth.",
@@ -7743,7 +7941,7 @@
       "category": "body",
       "pos": "noun",
       "tier": 1,
-      "rank": 421,
+      "rank": 432,
       "skill": "recognize",
       "example": {
         "en": "My foot hurts.",
@@ -7762,7 +7960,7 @@
       "category": "body",
       "pos": "noun",
       "tier": 1,
-      "rank": 422,
+      "rank": 433,
       "skill": "recognize",
       "example": {
         "en": "I hurt my leg.",
@@ -7781,7 +7979,7 @@
       "category": "clothing",
       "pos": "noun",
       "tier": 1,
-      "rank": 423,
+      "rank": 434,
       "skill": "recognize",
       "example": {
         "en": "A blue shirt.",
@@ -7800,7 +7998,7 @@
       "category": "clothing",
       "pos": "noun",
       "tier": 1,
-      "rank": 424,
+      "rank": 435,
       "skill": "recognize",
       "example": {
         "en": "New shoes.",
@@ -7819,7 +8017,7 @@
       "category": "activities",
       "pos": "noun",
       "tier": 1,
-      "rank": 425,
+      "rank": 436,
       "skill": "recognize",
       "example": {
         "en": "Let us watch football.",
@@ -7837,7 +8035,7 @@
       "category": "glue",
       "pos": "interj",
       "tier": 1,
-      "rank": 426,
+      "rank": 437,
       "skill": "recognize",
       "example": {
         "en": "Congratulations!",
@@ -7856,7 +8054,7 @@
       "category": "colors",
       "pos": "adj",
       "tier": 1,
-      "rank": 427,
+      "rank": 438,
       "skill": "recognize",
       "example": {
         "en": "The purple line.",
@@ -7874,7 +8072,7 @@
       "category": "food",
       "pos": "noun",
       "tier": 1,
-      "rank": 428,
+      "rank": 439,
       "skill": "recognize",
       "example": {
         "en": "A cup of tea.",
@@ -7893,7 +8091,7 @@
       "category": "food",
       "pos": "noun",
       "tier": 1,
-      "rank": 429,
+      "rank": 440,
       "skill": "recognize",
       "example": {
         "en": "Something for dessert?",
@@ -7912,7 +8110,7 @@
       "category": "places",
       "pos": "noun",
       "tier": 1,
-      "rank": 430,
+      "rank": 441,
       "skill": "recognize",
       "example": {
         "en": "Tickets to the castle.",
@@ -7930,7 +8128,7 @@
       "category": "people",
       "pos": "noun",
       "tier": 1,
-      "rank": 431,
+      "rank": 442,
       "skill": "recall",
       "example": {
         "en": "My wife and I.",
@@ -7948,7 +8146,7 @@
       "category": "people",
       "pos": "noun",
       "tier": 1,
-      "rank": 432,
+      "rank": 443,
       "skill": "recognize",
       "example": {
         "en": "Our son is ten.",
@@ -7967,7 +8165,7 @@
       "category": "objects",
       "pos": "noun",
       "tier": 1,
-      "rank": 433,
+      "rank": 444,
       "skill": "recognize",
       "example": {
         "en": "New sunglasses.",
@@ -7985,7 +8183,7 @@
       "category": "home",
       "pos": "noun",
       "tier": 1,
-      "rank": 434,
+      "rank": 445,
       "skill": "recall",
       "example": {
         "en": "Another pillow, please.",
@@ -8003,7 +8201,7 @@
       "category": "home",
       "pos": "noun",
       "tier": 1,
-      "rank": 435,
+      "rank": 446,
       "skill": "recall",
       "example": {
         "en": "A warm blanket.",
@@ -8021,7 +8219,7 @@
       "category": "home",
       "pos": "noun",
       "tier": 1,
-      "rank": 436,
+      "rank": 447,
       "skill": "recognize",
       "example": {
         "en": "Is there a fridge in the room?",
@@ -8039,7 +8237,7 @@
       "category": "home",
       "pos": "noun",
       "tier": 1,
-      "rank": 437,
+      "rank": 448,
       "skill": "recognize",
       "example": {
         "en": "A room with a balcony.",
@@ -8057,7 +8255,7 @@
       "category": "technology",
       "pos": "noun",
       "tier": 1,
-      "rank": 438,
+      "rank": 449,
       "skill": "recognize",
       "example": {
         "en": "Look at the screen.",
@@ -8076,7 +8274,7 @@
       "category": "body",
       "pos": "noun",
       "tier": 1,
-      "rank": 439,
+      "rank": 450,
       "skill": "recognize",
       "example": {
         "en": "My nose hurts.",
@@ -8095,7 +8293,7 @@
       "category": "body",
       "pos": "noun",
       "tier": 1,
-      "rank": 440,
+      "rank": 451,
       "skill": "recognize",
       "example": {
         "en": "My ear hurts.",
@@ -8114,7 +8312,7 @@
       "category": "food",
       "pos": "noun",
       "tier": 1,
-      "rank": 441,
+      "rank": 452,
       "skill": "recognize",
       "example": {
         "en": "Hot chocolate.",
@@ -8133,7 +8331,7 @@
       "category": "transport",
       "pos": "noun",
       "tier": 1,
-      "rank": 442,
+      "rank": 453,
       "skill": "recognize",
       "example": {
         "en": "The ferry to the island.",
@@ -8151,7 +8349,7 @@
       "category": "money",
       "pos": "noun",
       "tier": 1,
-      "rank": 443,
+      "rank": 454,
       "skill": "recognize",
       "example": {
         "en": "A small souvenir.",
@@ -8169,7 +8367,7 @@
       "category": "people",
       "pos": "noun",
       "tier": 1,
-      "rank": 444,
+      "rank": 455,
       "skill": "recognize",
       "example": {
         "en": "I travel with my brother.",
@@ -8187,7 +8385,7 @@
       "category": "people",
       "pos": "noun",
       "tier": 1,
-      "rank": 445,
+      "rank": 456,
       "skill": "recognize",
       "example": {
         "en": "My sister lives here.",
@@ -8205,7 +8403,7 @@
       "category": "people",
       "pos": "noun",
       "tier": 1,
-      "rank": 446,
+      "rank": 457,
       "skill": "recall",
       "example": {
         "en": "This is my husband.",
@@ -8223,7 +8421,7 @@
       "category": "people",
       "pos": "noun",
       "tier": 1,
-      "rank": 447,
+      "rank": 458,
       "skill": "recognize",
       "example": {
         "en": "My daughter is here.",
@@ -8242,7 +8440,7 @@
       "category": "objects",
       "pos": "noun",
       "tier": 1,
-      "rank": 448,
+      "rank": 459,
       "skill": "recognize",
       "example": {
         "en": "I forgot my toothbrush.",
@@ -8260,7 +8458,7 @@
       "category": "objects",
       "pos": "noun",
       "tier": 1,
-      "rank": 449,
+      "rank": 460,
       "skill": "recognize",
       "example": {
         "en": "A small toothpaste.",
@@ -8278,7 +8476,7 @@
       "category": "home",
       "pos": "noun",
       "tier": 1,
-      "rank": 450,
+      "rank": 461,
       "skill": "recognize",
       "example": {
         "en": "Clean sheets, please.",
@@ -8297,7 +8495,7 @@
       "category": "home",
       "pos": "noun",
       "tier": 1,
-      "rank": 451,
+      "rank": 462,
       "skill": "recognize",
       "example": {
         "en": "Is there a laundry service?",
@@ -8316,7 +8514,7 @@
       "category": "technology",
       "pos": "noun",
       "tier": 1,
-      "rank": 452,
+      "rank": 463,
       "skill": "recognize",
       "example": {
         "en": "A short video.",
@@ -8335,7 +8533,7 @@
       "category": "objects",
       "pos": "noun",
       "tier": 1,
-      "rank": 453,
+      "rank": 464,
       "skill": "recognize",
       "example": {
         "en": "I need my glasses.",
@@ -8354,7 +8552,7 @@
       "category": "clothing",
       "pos": "noun",
       "tier": 1,
-      "rank": 454,
+      "rank": 465,
       "skill": "recognize",
       "example": {
         "en": "A warm jacket.",
@@ -8373,7 +8571,7 @@
       "category": "clothing",
       "pos": "noun",
       "tier": 1,
-      "rank": 455,
+      "rank": 466,
       "skill": "recognize",
       "example": {
         "en": "A red dress.",
@@ -8392,7 +8590,7 @@
       "category": "clothing",
       "pos": "noun",
       "tier": 1,
-      "rank": 456,
+      "rank": 467,
       "skill": "recognize",
       "example": {
         "en": "Black pants.",
@@ -8411,7 +8609,7 @@
       "category": "weather",
       "pos": "noun",
       "tier": 1,
-      "rank": 457,
+      "rank": 468,
       "skill": "recognize",
       "example": {
         "en": "A lot of snow.",
@@ -8429,7 +8627,7 @@
       "category": "food",
       "pos": "noun",
       "tier": 1,
-      "rank": 458,
+      "rank": 469,
       "skill": "recognize",
       "example": {
         "en": "A little pepper.",
@@ -8447,7 +8645,7 @@
       "category": "food",
       "pos": "noun",
       "tier": 1,
-      "rank": 459,
+      "rank": 470,
       "skill": "recognize",
       "example": {
         "en": "Olive oil.",
@@ -8466,7 +8664,7 @@
       "category": "food",
       "pos": "noun",
       "tier": 1,
-      "rank": 460,
+      "rank": 471,
       "skill": "recognize",
       "example": {
         "en": "Bread with butter.",
@@ -8485,7 +8683,7 @@
       "category": "food",
       "pos": "noun",
       "tier": 1,
-      "rank": 461,
+      "rank": 472,
       "skill": "recognize",
       "example": {
         "en": "A piece of cake.",
@@ -8504,7 +8702,7 @@
       "category": "food",
       "pos": "noun",
       "tier": 1,
-      "rank": 462,
+      "rank": 473,
       "skill": "recognize",
       "example": {
         "en": "Without tomato, please.",
@@ -8522,7 +8720,7 @@
       "category": "food",
       "pos": "noun",
       "tier": 1,
-      "rank": 463,
+      "rank": 474,
       "skill": "recognize",
       "example": {
         "en": "A fork, please.",
@@ -8541,7 +8739,7 @@
       "category": "food",
       "pos": "noun",
       "tier": 1,
-      "rank": 464,
+      "rank": 475,
       "skill": "recognize",
       "example": {
         "en": "A clean knife, please.",
@@ -8560,7 +8758,7 @@
       "category": "food",
       "pos": "noun",
       "tier": 1,
-      "rank": 465,
+      "rank": 476,
       "skill": "recognize",
       "example": {
         "en": "A spoon for the soup.",
@@ -8579,7 +8777,7 @@
       "category": "food",
       "pos": "noun",
       "tier": 1,
-      "rank": 466,
+      "rank": 477,
       "skill": "recognize",
       "example": {
         "en": "Another plate, please.",
@@ -8597,7 +8795,7 @@
       "category": "home",
       "pos": "noun",
       "tier": 1,
-      "rank": 467,
+      "rank": 478,
       "skill": "recognize",
       "example": {
         "en": "The sink is blocked.",
@@ -8616,7 +8814,7 @@
       "category": "home",
       "pos": "noun",
       "tier": 1,
-      "rank": 468,
+      "rank": 479,
       "skill": "recognize",
       "example": {
         "en": "The lamp is broken.",
@@ -8635,7 +8833,7 @@
       "category": "home",
       "pos": "noun",
       "tier": 1,
-      "rank": 469,
+      "rank": 480,
       "skill": "recognize",
       "example": {
         "en": "Where is the trash?",
@@ -8653,7 +8851,7 @@
       "category": "home",
       "pos": "noun",
       "tier": 1,
-      "rank": 470,
+      "rank": 481,
       "skill": "recognize",
       "example": {
         "en": "A table in the garden.",
@@ -8671,7 +8869,7 @@
       "category": "technology",
       "pos": "noun",
       "tier": 1,
-      "rank": 471,
+      "rank": 482,
       "skill": "recognize",
       "example": {
         "en": "A USB cable.",
@@ -8690,7 +8888,7 @@
       "category": "technology",
       "pos": "noun",
       "tier": 1,
-      "rank": 472,
+      "rank": 483,
       "skill": "recognize",
       "example": {
         "en": "I forgot my headphones.",
@@ -8709,7 +8907,7 @@
       "category": "objects",
       "pos": "noun",
       "tier": 1,
-      "rank": 473,
+      "rank": 484,
       "skill": "recognize",
       "example": {
         "en": "A nice watch.",
@@ -8728,7 +8926,7 @@
       "category": "clothing",
       "pos": "noun",
       "tier": 1,
-      "rank": 474,
+      "rank": 485,
       "skill": "recognize",
       "example": {
         "en": "A sun hat.",
@@ -8747,7 +8945,7 @@
       "category": "weather",
       "pos": "noun",
       "tier": 1,
-      "rank": 475,
+      "rank": 486,
       "skill": "recognize",
       "example": {
         "en": "A big storm is coming.",
@@ -8766,7 +8964,7 @@
       "category": "activities",
       "pos": "verb",
       "tier": 1,
-      "rank": 476,
+      "rank": 487,
       "skill": "recognize",
       "example": {
         "en": "They love to dance.",
@@ -8785,7 +8983,7 @@
       "category": "health",
       "pos": "noun",
       "tier": 1,
-      "rank": 477,
+      "rank": 488,
       "skill": "recognize",
       "example": {
         "en": "A cream for the sunburn.",
@@ -8803,7 +9001,7 @@
       "category": "people",
       "pos": "noun",
       "tier": 1,
-      "rank": 478,
+      "rank": 489,
       "skill": "recognize",
       "example": {
         "en": "The little boy.",
@@ -8821,7 +9019,7 @@
       "category": "people",
       "pos": "noun",
       "tier": 1,
-      "rank": 479,
+      "rank": 490,
       "skill": "recognize",
       "example": {
         "en": "The girl with the hat.",
@@ -8839,7 +9037,7 @@
       "category": "objects",
       "pos": "noun",
       "tier": 1,
-      "rank": 480,
+      "rank": 491,
       "skill": "recognize",
       "example": {
         "en": "Shampoo and soap.",
@@ -8858,7 +9056,7 @@
       "category": "objects",
       "pos": "noun",
       "tier": 1,
-      "rank": 481,
+      "rank": 492,
       "skill": "recognize",
       "example": {
         "en": "A razor, please.",
@@ -8877,7 +9075,7 @@
       "category": "animals",
       "pos": "noun",
       "tier": 1,
-      "rank": 482,
+      "rank": 493,
       "skill": "recognize",
       "example": {
         "en": "A little bird.",
@@ -8896,7 +9094,7 @@
       "category": "animals",
       "pos": "noun",
       "tier": 1,
-      "rank": 483,
+      "rank": 494,
       "skill": "recognize",
       "example": {
         "en": "A brown horse.",
@@ -8915,7 +9113,7 @@
       "category": "animals",
       "pos": "noun",
       "tier": 1,
-      "rank": 484,
+      "rank": 495,
       "skill": "recognize",
       "example": {
         "en": "A cow in the field.",
@@ -8934,7 +9132,7 @@
       "category": "objects",
       "pos": "noun",
       "tier": 1,
-      "rank": 485,
+      "rank": 496,
       "skill": "recognize",
       "example": {
         "en": "Take an umbrella.",
@@ -8953,7 +9151,7 @@
       "category": "weather",
       "pos": "noun",
       "tier": 1,
-      "rank": 486,
+      "rank": 497,
       "skill": "recognize",
       "example": {
         "en": "A strong wind.",
@@ -8972,7 +9170,7 @@
       "category": "nature",
       "pos": "noun",
       "tier": 1,
-      "rank": 487,
+      "rank": 498,
       "skill": "recognize",
       "example": {
         "en": "A big tree.",
@@ -8991,7 +9189,7 @@
       "category": "nature",
       "pos": "noun",
       "tier": 1,
-      "rank": 488,
+      "rank": 499,
       "skill": "recognize",
       "example": {
         "en": "A beautiful flower.",
@@ -9009,7 +9207,7 @@
       "category": "body",
       "pos": "noun",
       "tier": 1,
-      "rank": 489,
+      "rank": 500,
       "skill": "recognize",
       "example": {
         "en": "Short hair.",
@@ -9027,7 +9225,7 @@
       "category": "body",
       "pos": "noun",
       "tier": 1,
-      "rank": 490,
+      "rank": 501,
       "skill": "recognize",
       "example": {
         "en": "Wash your face.",
@@ -9046,7 +9244,7 @@
       "category": "home",
       "pos": "noun",
       "tier": 1,
-      "rank": 491,
+      "rank": 502,
       "skill": "recognize",
       "example": {
         "en": "A sofa in the lobby.",
@@ -9064,7 +9262,7 @@
       "category": "home",
       "pos": "noun",
       "tier": 1,
-      "rank": 492,
+      "rank": 503,
       "skill": "recognize",
       "example": {
         "en": "The picture on the wall.",
@@ -9083,7 +9281,7 @@
       "category": "nature",
       "pos": "noun",
       "tier": 1,
-      "rank": 493,
+      "rank": 504,
       "skill": "recognize",
       "example": {
         "en": "A full moon.",
@@ -9102,7 +9300,7 @@
       "category": "technology",
       "pos": "noun",
       "tier": 1,
-      "rank": 494,
+      "rank": 505,
       "skill": "recognize",
       "example": {
         "en": "The television does not work.",
@@ -9121,7 +9319,7 @@
       "category": "clothing",
       "pos": "noun",
       "tier": 1,
-      "rank": 495,
+      "rank": 506,
       "skill": "recognize",
       "example": {
         "en": "Warm socks.",
@@ -9140,7 +9338,7 @@
       "category": "clothing",
       "pos": "noun",
       "tier": 1,
-      "rank": 496,
+      "rank": 507,
       "skill": "recognize",
       "example": {
         "en": "Winter gloves.",
@@ -9159,7 +9357,7 @@
       "category": "weather",
       "pos": "noun",
       "tier": 1,
-      "rank": 497,
+      "rank": 508,
       "skill": "recognize",
       "example": {
         "en": "A cloudy sky.",
@@ -9178,7 +9376,7 @@
       "category": "objects",
       "pos": "noun",
       "tier": 1,
-      "rank": 498,
+      "rank": 509,
       "skill": "recognize",
       "example": {
         "en": "Do you have scissors?",
@@ -9197,7 +9395,7 @@
       "category": "objects",
       "pos": "noun",
       "tier": 1,
-      "rank": 499,
+      "rank": 510,
       "skill": "recognize",
       "example": {
         "en": "The mirror in the room.",
@@ -9215,7 +9413,7 @@
       "category": "objects",
       "pos": "noun",
       "tier": 1,
-      "rank": 500,
+      "rank": 511,
       "skill": "recognize",
       "example": {
         "en": "A small comb.",
