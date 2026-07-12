@@ -5,9 +5,8 @@ import { speak } from '../../shared/audio/tts.js';
 import { tap } from '../../shared/ui/haptics.js';
 import { LangStrip } from '../../shared/ui/LangStrip.js';
 import { CoreWords } from './CoreWords.js';
-import { RECOVERY_ITEMS } from '../bootcamp/recovery.js';
 import { BOOTCAMP_PLAN } from '../bootcamp/plan.js';
-import { DAYS } from '../bootcamp/bootcampStore.js';
+import { missionsFor } from '../bootcamp/bootcampStore.js';
 import type { BootcampItem } from '../bootcamp/types.js';
 
 /**
@@ -39,14 +38,26 @@ const CATEGORIES: { id: CoreTab; key: StringKey; icon: string }[] = [
   { id: 'favorites', key: 'coreTabFavorites', icon: '⭐' },
 ];
 
-function buildGroups(): Group[] {
+/** Every phrase READY teaches IN THE ACTIVE LEARNING LANGUAGE, grouped by mission (root-cause fix
+ *  for the French Core-Phrases leak): sourced from that language's own missions, never English. The
+ *  survival kit = the recovery tools the language teaches (deduped). Language-agnostic id matching
+ *  (`.phrase.recovery.`) so it works for `en.*`, `fr.*`, and any future language. */
+function buildGroups(lang: string): Group[] {
+  const missions = missionsFor(lang);
   const seen = new Set<string>();
-  const groups: Group[] = [{ title: t('survivalKit'), items: RECOVERY_ITEMS }];
-  for (const i of RECOVERY_ITEMS) seen.add(i.id);
+  const recovery: BootcampItem[] = [];
   for (const m of BOOTCAMP_PLAN) {
-    const day = DAYS[m.day];
+    const day = missions[m.day];
     if (!day) continue;
-    const items = day.items.filter((i) => !seen.has(i.id) && !i.id.startsWith('en.phrase.recovery.'));
+    for (const i of day.items) {
+      if (i.id.includes('.phrase.recovery.') && !seen.has(i.id)) { seen.add(i.id); recovery.push(i); }
+    }
+  }
+  const groups: Group[] = recovery.length ? [{ title: t('survivalKit'), items: recovery }] : [];
+  for (const m of BOOTCAMP_PLAN) {
+    const day = missions[m.day];
+    if (!day) continue;
+    const items = day.items.filter((i) => !seen.has(i.id) && !i.id.includes('.phrase.recovery.'));
     for (const i of items) seen.add(i.id);
     if (items.length) groups.push({ title: `${t('mission')} ${m.day} · ${L(m.title)}`, items });
   }
@@ -56,14 +67,14 @@ function buildGroups(): Group[] {
 export function Core() {
   const app = useAppStore();
   const category = app.coreCategory as CoreTab | null;
-  const groups = useMemo(buildGroups, []);
+  const groups = useMemo(() => buildGroups(app.learningLang), [app.learningLang]);
   const [playing, setPlaying] = useState<string | null>(null);
   const total = useMemo(() => groups.reduce((n, g) => n + g.items.length, 0), [groups]);
 
   const say = (item: BootcampItem): void => {
     tap();
     setPlaying(item.id);
-    void speak(item.text, 'en').then(() => setPlaying((p) => (p === item.id ? null : p)));
+    void speak(item.text, app.learningLang).then(() => setPlaying((p) => (p === item.id ? null : p)));
   };
 
   // Layer 1 — the category cards.

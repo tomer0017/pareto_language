@@ -22,6 +22,23 @@ loop (typecheck → lint → tests → build → smoke) green at every milestone
 
 ## What's done
 
+### Sprint — Polish / QA (replay · Picture Quiz reveal · Core Phrases leak) (2026-07-12)
+- **Replay after CORRECT answers (root cause in shared `AnswerFeedback`).** The correct branch
+  rendered the prompt as static text (no replay); only the wrong branch used the replayable `<Line>`.
+  Now the correct branch shows the prompt with its replay button whenever it carries audio — one fix
+  covers every caller (Picture Quiz, comprehension drills, dialogue, ambush, quiz, expected-reply).
+  Replay uses the active learning language and never records review or advances.
+- **Picture Quiz no longer reveals the translation before answering.** Removed the pre-answer
+  learner-language line; the question now shows only the foreign word + speaker + image options.
+  The translation appears in `AnswerFeedback` after answering (every language combination).
+- **French Core Phrases leak fixed at root.** `Core.tsx` built the phrase list from the English
+  `DAYS` + imported English `RECOVERY_ITEMS` and spoke `speak(text,'en')`. Now it sources from
+  `missionsFor(learningLang)` (survival kit = the language's own recovery tools, language-agnostic
+  `.phrase.recovery.` matching) and speaks the active language. Verified: French shows French
+  ("Désolé, je ne comprends pas." / "Je m’appelle Dan."), English unchanged.
+- Audit: no remaining hardcoded `speak(…, 'en')`, English `DAYS`, or `startsWith('en.…')` in app
+  code. Gates green: typecheck · lint · **384 tests** · content + production build · parity.
+
 ### Sprint — French Early Access enabled (2026-07-12)
 - **French is now selectable as an Early Access language** (`available:true` + `earlyAccess:true`,
   badge in onboarding/Profile pickers). Complete French Core 500 + both Bootcamp missions are usable;

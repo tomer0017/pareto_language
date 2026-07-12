@@ -68,7 +68,20 @@ export function AnswerFeedback({
           <span className="feedback-head ok">✓ {t('correctHeader')}</span>
           <Line party={ctx.expected} big />
           {ctx.expected.translation && <p className="answer-pill">{ctx.expected.translation}</p>}
-          {ctx.prompt && <p className="faint small">{t('whatYouHeard')}: “{ctx.prompt.text}”</p>}
+          {/* The strongest reinforcement is right after a CORRECT answer — keep the sentence
+              replayable (learning-language audio), not just static text. When the prompt carries
+              audio (Picture Quiz word, comprehension heard-line) show it with its replay button;
+              otherwise keep the compact recap line. Replay never advances or records review. */}
+          {ctx.prompt && (
+            ctx.prompt.onReplay ? (
+              <div>
+                <p className="drill-label">{ctx.labels?.heard ?? t('whatYouHeard')}</p>
+                <Line party={ctx.prompt} />
+              </div>
+            ) : (
+              <p className="faint small">{t('whatYouHeard')}: “{ctx.prompt.text}”</p>
+            )
+          )}
         </div>
         <div className="action-zone">
           <button className="btn-primary" onClick={onContinue}>{t('nextBtn')}</button>

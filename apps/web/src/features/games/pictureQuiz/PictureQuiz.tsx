@@ -83,10 +83,13 @@ export function PictureQuiz({
       <p className="dim small center" style={{ margin: '0 0 6px' }}>{t('quizProgress', { i: progress.i + 1, n: rounds.length })}</p>
       <div className="drill-card" style={{ minHeight: 170 }}>
         <p className="drill-label">{t('pictureQuizPrompt')}</p>
+        {/* Recognition test: show ONLY the foreign word + speaker before answering. The
+            learner-language translation is deliberately withheld until after they choose — showing
+            it here would let them read the answer instead of recognizing the word. Revealed by
+            AnswerFeedback post-answer. */}
         <button className="btn-ghost" onClick={() => void speak(round.word.word, lang)} style={{ margin: '0 auto' }}>
           <span className="drill-phrase" style={{ fontSize: '1.8rem' }}>🔊 {round.word.word}</span>
         </button>
-        <p className="dim small">{L(round.word.translation)}</p>
       </div>
       <div className="pic-grid">
         {round.options.map((opt) => (

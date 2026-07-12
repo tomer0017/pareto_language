@@ -67,7 +67,12 @@ export const DAY2_FR: BootcampDayContent = {
   title: T('להציג את עצמי', 'Introduce Myself'),
   items: DAY2_FR_ITEMS,
   dialogues: { 'meeting-host': SCENE },
-  // No French video yet — the intro/again video steps degrade to an honest "unavailable".
+  introVideo: {
+    src: '/videos/Fr_day2.mp4',
+    title: T('השיחה המלאה', 'Full conversation'),
+    language: 'fr',
+    type: 'intro',
+  },
   steps: [
     { kind: 'video', mode: 'intro' },
     { kind: 'talk', icon: '👋', title: T('משימה 2: להציג את עצמי', 'Mission 2: Introduce Myself'),
