@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
 import { useAppStore } from '../../shared/stores/appStore.js';
 import { L, t, type StringKey } from '../../shared/i18n/strings.js';
+import { resolveLearningItem } from '../../shared/i18n/display.js';
 import { speak } from '../../shared/audio/tts.js';
 import { tap } from '../../shared/ui/haptics.js';
 import { LangStrip } from '../../shared/ui/LangStrip.js';
@@ -71,10 +72,12 @@ export function Core() {
   const [playing, setPlaying] = useState<string | null>(null);
   const total = useMemo(() => groups.reduce((n, g) => n + g.items.length, 0), [groups]);
 
-  const say = (item: BootcampItem): void => {
+  // One canonical display model per phrase (target + app-gloss + audio + directions + review id).
+  const model = (item: BootcampItem) => resolveLearningItem({ id: item.id, target: item.text, meaning: item.meaning }, app.uiLang, app.learningLang);
+  const say = (dm: ReturnType<typeof model>): void => {
     tap();
-    setPlaying(item.id);
-    void speak(item.text, app.learningLang).then(() => setPlaying((p) => (p === item.id ? null : p)));
+    setPlaying(dm.contentId);
+    void speak(dm.audioText, dm.audioLang).then(() => setPlaying((p) => (p === dm.contentId ? null : p)));
   };
 
   // Layer 1 — the category cards.
@@ -132,20 +135,23 @@ export function Core() {
             {groups.map((g) => (
               <div key={g.title} style={{ marginTop: 14 }}>
                 <h3 style={{ margin: '0 0 8px' }}>{g.title}</h3>
-                {g.items.map((item) => (
+                {g.items.map((item) => {
+                  const dm = model(item);
+                  return (
                   <button
-                    key={item.id}
-                    className={`list-row card-press ${playing === item.id ? 'core-playing' : ''}`}
+                    key={dm.contentId}
+                    className={`list-row card-press ${playing === dm.contentId ? 'core-playing' : ''}`}
                     style={{ width: '100%', textAlign: 'start', background: 'var(--card)', borderRadius: 'var(--r-md)', border: 'none', padding: '12px 14px', marginBottom: 8, boxShadow: 'var(--shadow-card)' }}
-                    onClick={() => say(item)}
+                    onClick={() => say(dm)}
                   >
                     <span style={{ minWidth: 0 }}>
-                      <span style={{ display: 'block', fontWeight: 700 }}>{item.text}</span>
-                      <span className="dim small" style={{ display: 'block' }}>{L(item.meaning)}</span>
+                      <span dir={dm.primaryDirection} style={{ display: 'block', fontWeight: 700 }}>{dm.primaryText}</span>
+                      <span dir={dm.secondaryDirection} className="dim small" style={{ display: 'block' }}>{dm.secondaryText}</span>
                     </span>
                     <span className="core-play" aria-hidden>🔊</span>
                   </button>
-                ))}
+                  );
+                })}
               </div>
             ))}
             <p className="faint small center" style={{ margin: '18px 4px 0' }}>ℹ️ {t('coreReviewSoon')}</p>

@@ -6,7 +6,10 @@
 > cannot be entered. The architecture is language-agnostic, so finishing French — and adding
 > Spanish/Italian/German/Portuguese — is **primarily content**. Nothing here claims native review.
 
-Run `npm run parity` for the live dashboard. Today: **FR corpus 500/500 (100%) ✅, Bootcamp 2/30 (7%)**.
+Run `npm run parity` for the live dashboard. Today: **FR corpus 500/500 (100%) ✅, Bootcamp 4/30 (13%)** —
+Recovery Toolkit + visible Missions 1–3 (Introduce Myself · Numbers & Money · Coffee Shop). Missions
+4–10 (days 5–11) remain honest "Coming Soon"; the last available mission shows an Early Access
+completion state (never routes into unbuilt content).
 
 ## Early Access guarantees (how "no English leaks / never taken into missing content" hold)
 

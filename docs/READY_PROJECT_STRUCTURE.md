@@ -167,6 +167,12 @@ tools and every pick is reframed as *more or less useful*, never right/wrong.
 - No **meaningless gamification**. No **unnecessary architecture changes**.
 - Prefer reusable components; avoid duplicated state, navigation, or settings.
 - Do not change Mongo / Concept Layer / pipeline / review engine as a side effect of UX work.
+- **Any-to-any rule (multilingual):** before every multilingual change, verify it works for an
+  **arbitrary (app-language × learning-language) pair** and assumes neither English nor Hebrew.
+  Content is **concept-first** — realizations per language, gloss = the same concept in the app
+  language, never English-as-bridge. Use `shared/i18n/display.ts` (`resolveDisplay`) as the display
+  rule and `assertPairsComplete` as the leak gate. Any language-capability change updates
+  **[MULTILINGUAL-ARCHITECTURE.md](./MULTILINGUAL-ARCHITECTURE.md)** and `npm run parity`.
 
 ## 9. Current pilot state
 

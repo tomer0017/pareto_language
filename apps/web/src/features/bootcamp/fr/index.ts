@@ -1,6 +1,8 @@
 import type { BootcampDayContent } from '../types.js';
 import { DAY1_FR } from './day1.js';
 import { DAY2_FR } from './day2.js';
+import { DAY3_FR } from './day3.js';
+import { DAY4_FR } from './day4.js';
 
 /**
  * French Bootcamp missions (content-only). Same `BootcampDayContent` shape as the English missions;
@@ -14,4 +16,6 @@ import { DAY2_FR } from './day2.js';
 export const DAYS_FR: Record<number, BootcampDayContent> = {
   1: DAY1_FR,
   2: DAY2_FR,
+  3: DAY3_FR,
+  4: DAY4_FR,
 };

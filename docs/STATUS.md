@@ -22,6 +22,46 @@ loop (typecheck → lint → tests → build → smoke) green at every milestone
 
 ## What's done
 
+### Sprint — Display consolidation + French missions 3–4 + Early Access end-state (2026-07-12)
+- **Canonical display resolver adopted in the real app.** `resolveLearningItem(item, appLang,
+  learningLang) → LearningDisplayModel` (`shared/i18n/display.ts`) is now the single path Core Words
+  (browse) and Core Phrases use — primary target text + app-language gloss + audio(text+lang) + both
+  directions + review id, in one object. Games/Bootcamp drills consume the same primitives
+  (`speak(learningLang)`/`L`/item-id) and are documented as equivalent policy. Permanent rule added:
+  no learning-UI component independently re-selects realization/gloss/TTS/direction/review id.
+- **French Bootcamp 2/30 → 4/30**: authored visible **Mission 2 (Numbers & Money, day3)** and
+  **Mission 3 (Coffee Shop, day4)** — natural spoken `vous` French, `fr.*` ids, `tr:{en,he}` glosses,
+  full branch/recovery/ambush/transcript parity with English (parity checker: steps/items match, no
+  dead ends). New test `fr/fr-missions.test.ts` guards fr ids, French-primary lines, bilingual transcripts.
+- **Early Access completion state** (Part C): after the last built French mission, Victory shows an
+  honest "you're at the front of Early Access — more coming soon" card + Back-to-map, and never
+  offers a next-mission that routes into unbuilt content.
+- Honest coverage: **visible Missions 1–3 + Recovery** playable; Missions 4–10 remain Coming Soon
+  (this sprint targeted 10 — delivered 3; the remaining 7 are pure content on the same pattern).
+  Gates: typecheck · lint · **402 tests** · content + production build · parity. English unchanged.
+
+### Sprint — True any-to-any multilingual architecture + proof (2026-07-12)
+- **Any-to-any display rule** (`shared/i18n/display.ts` `resolveDisplay`): one pure function maps
+  (concept, appLang, learningLang) → primary target realization + app-language gloss (the SAME
+  concept realized in the app language — **no English bridge**) + TTS locale + independent RTL/LTR +
+  review id (`concept@learningLang`). `LocalizedText` was already an open map; this makes the display
+  rule explicit and testable.
+- **Proof (architectural evidence, not shipped languages):** `display.test.ts` (14 tests) proves
+  **Arabic UI → Spanish** and **Spanish UI → French** with correct primary/gloss/TTS/RTL/review-id
+  and **no English in the visible flow**, plus RTL-target-under-LTR-app, progress isolation by
+  learning language, English-leak detection, and "future language = data" (a `de` realization
+  resolves with zero engine change).
+- **Registry generalized:** `capabilities(code)`, `languageDirection(code)` (RTL is not Hebrew-only),
+  `languageTtsTag(code)`; additive capability fields (coreAvailable / bootcamp / appUi / nativeReviewed).
+- **Any-to-any validator:** `assertPairsComplete` fails loudly when an enabled pair would fall back to
+  English (missing realization or app gloss); distinguishes error vs early-access vs pending review.
+- **Audit outcome:** the platform was already largely general (open `LocalizedText`, keyed
+  realizations, per-language progress/TTS/missions, Mongo `Mixed` realizations, `itemId`-scoped review
+  events). Honest gaps remain: production app languages are **en/he only** (no es/ar UI dict), and
+  `en` stays the LocalizedText safety pivot. Arabic/Spanish are **proof-only**, not production. New
+  doc: **[MULTILINGUAL-ARCHITECTURE.md](./MULTILINGUAL-ARCHITECTURE.md)**. Gates: typecheck · lint ·
+  **398 tests** · content + production build · parity — English & French unchanged.
+
 ### Sprint — Polish / QA (replay · Picture Quiz reveal · Core Phrases leak) (2026-07-12)
 - **Replay after CORRECT answers (root cause in shared `AnswerFeedback`).** The correct branch
   rendered the prompt as static text (no replay); only the wrong branch used the replayable `<Line>`.

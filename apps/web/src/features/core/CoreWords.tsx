@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import type { LocalizedText } from '@ready/content-schema';
 import { L, t } from '../../shared/i18n/strings.js';
+import { resolveLearningItem } from '../../shared/i18n/display.js';
 import { speak } from '../../shared/audio/tts.js';
 import { tap } from '../../shared/ui/haptics.js';
 import { useAppStore } from '../../shared/stores/appStore.js';
@@ -46,6 +47,7 @@ const CAT_LABEL: Record<string, LocalizedText> = {
 
 export function CoreWords() {
   const learningLang = useAppStore((s) => s.learningLang);
+  const uiLang = useAppStore((s) => s.uiLang);
   const setCoreGameActive = useAppStore((s) => s.setCoreGameActive);
   const [words, setWords] = useState<CoreWord[] | null>(null);
   const [mode, setMode] = useState<Mode>('menu');
@@ -76,28 +78,33 @@ export function CoreWords() {
 
   if (mode === 'browse') {
     const cats = coreCategories(words);
-    const say = (w: CoreWord): void => { tap(); setPlaying(w.id); void speak(w.word, learningLang).then(() => setPlaying((p) => (p === w.id ? null : p))); };
+    // One canonical display model per word (target + app-gloss + audio + directions + review id).
+    const model = (w: CoreWord) => resolveLearningItem({ id: w.id, target: w.word, meaning: w.meaning, emoji: w.emoji }, uiLang, learningLang);
+    const say = (dm: ReturnType<typeof model>): void => { tap(); setPlaying(dm.contentId); void speak(dm.audioText, dm.audioLang).then(() => setPlaying((p) => (p === dm.contentId ? null : p))); };
     return (
       <div style={{ marginTop: 8 }}>
         <button className="btn-ghost" onClick={() => setMode('menu')}>{t('back')}</button>
         {cats.map((cat) => (
           <div key={cat} style={{ marginTop: 12 }}>
             <h3 style={{ margin: '0 0 8px' }}>{L(CAT_LABEL[cat] ?? { en: cat })}</h3>
-            {words.filter((w) => w.category === cat).map((w) => (
+            {words.filter((w) => w.category === cat).map((w) => {
+              const dm = model(w);
+              return (
               <button
-                key={w.id}
-                className={`list-row card-press ${playing === w.id ? 'core-playing' : ''}`}
+                key={dm.contentId}
+                className={`list-row card-press ${playing === dm.contentId ? 'core-playing' : ''}`}
                 style={{ width: '100%', textAlign: 'start', background: 'var(--card)', borderRadius: 'var(--r-md)', border: 'none', padding: '10px 14px', marginBottom: 8, boxShadow: 'var(--shadow-card)', display: 'flex', alignItems: 'center', gap: 12 }}
-                onClick={() => say(w)}
+                onClick={() => say(dm)}
               >
-                <span style={{ fontSize: '1.8rem', width: 34, textAlign: 'center' }} aria-hidden>{w.emoji ?? '·'}</span>
+                <span style={{ fontSize: '1.8rem', width: 34, textAlign: 'center' }} aria-hidden>{dm.emoji ?? '·'}</span>
                 <span style={{ minWidth: 0, flex: 1 }}>
-                  <span style={{ display: 'block', fontWeight: 700 }}>{w.word}</span>
-                  <span className="dim small" style={{ display: 'block' }}>{L(w.meaning)}</span>
+                  <span dir={dm.primaryDirection} style={{ display: 'block', fontWeight: 700 }}>{dm.primaryText}</span>
+                  <span dir={dm.secondaryDirection} className="dim small" style={{ display: 'block' }}>{dm.secondaryText}</span>
                 </span>
                 <span className="core-play" aria-hidden>🔊</span>
               </button>
-            ))}
+              );
+            })}
           </div>
         ))}
       </div>

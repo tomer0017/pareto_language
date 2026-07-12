@@ -860,7 +860,12 @@ function VictoryScreen() {
   const meta = BOOTCAMP_PLAN.find((m) => m.day === day.day);
   // "Mastered phrases" = the say-phrases this mission taught (recovery tools + replies excluded).
   const mastered = day.items.filter((i) => i.id.includes('.phrase.') && !i.id.includes('.phrase.recovery.'));
-  const nextBuilt = BOOTCAMP_PLAN.find((m) => m.day > day.day && m.day in missionsFor(learningLang) && !m.special && !bc.completedDays.includes(m.day));
+  const missions = missionsFor(learningLang);
+  const nextBuilt = BOOTCAMP_PLAN.find((m) => m.day > day.day && m.day in missions && !m.special && !bc.completedDays.includes(m.day));
+  // Early Access end-state: no further built numbered mission to do, but the language still has
+  // numbered missions "Coming Soon". The learner reached the edge of the built content — never
+  // route them into an unbuilt mission; celebrate the available set honestly.
+  const earlyAccessDone = !nextBuilt && CORE_MISSIONS.some((m) => !(m.day in missions));
 
   if (showReader && convo) return <DialogueReader dialogue={convo} onClose={() => setShowReader(false)} onFinish={() => { setShowReader(false); bc.toHub(); }} />;
   if (showVideo && video) return <VideoOverlay video={video} onClose={() => setShowVideo(false)} />;
@@ -885,6 +890,14 @@ function VictoryScreen() {
           <p className="pop-in" style={{ fontSize: '3.8rem' }}>🎉</p>
           <h1 style={{ marginTop: 6 }}>{t('victoryCompleted', { title: L(day.title) })}</h1>
         </div>
+
+        {/* Early Access edge: honestly celebrate reaching the end of the available missions. */}
+        {earlyAccessDone && (
+          <div className="card fade-in center" style={{ marginBottom: 4 }}>
+            <p className="drill-phrase" style={{ fontSize: '1.06rem' }}>🚀 {t('earlyAccessDoneTitle')}</p>
+            <p className="dim small" style={{ marginTop: 4 }}>{t('earlyAccessDoneBody')}</p>
+          </div>
+        )}
 
         {/* Large action cards — the whole point of the screen. */}
         <button className="game-card card-press" onClick={watch}>
@@ -935,11 +948,13 @@ function VictoryScreen() {
       </div>
       <div className="action-zone">
         <button className="btn-primary breathe" onClick={watch}>{t('watchFullConvo')}</button>
-        {nextBuilt && (
+        {nextBuilt ? (
           <button className="btn-ghost" onClick={() => bc.startDay(nextBuilt.day)}>
             ▶ {t('nextMission', { title: L(nextBuilt.title) })}
           </button>
-        )}
+        ) : earlyAccessDone ? (
+          <button className="btn-ghost" onClick={() => { cancelSpeech(); bc.exit(); }}>{t('earlyAccessBackToMap')}</button>
+        ) : null}
       </div>
     </div>
   );
