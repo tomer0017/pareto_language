@@ -1,9 +1,9 @@
 {
   "lang": "fr",
   "version": "2.0.0",
-  "generatedAt": "2026-07-12T01:24:12.964Z",
+  "generatedAt": "2026-07-12T01:50:44.016Z",
   "pilot": true,
-  "count": 200,
+  "count": 500,
   "words": [
     {
       "id": "fr.word.help",
@@ -3678,6 +3678,5549 @@
       "example": {
         "en": "The third floor.",
         "he": "קומה שלישית."
+      }
+    },
+    {
+      "id": "fr.word.towel",
+      "conceptId": "concept.word.towel",
+      "word": "serviette",
+      "meaning": {
+        "en": "towel",
+        "he": "מגבת"
+      },
+      "category": "objects",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 201,
+      "skill": "recall",
+      "example": {
+        "en": "We need more towels.",
+        "he": "אנחנו צריכים עוד מגבות."
+      }
+    },
+    {
+      "id": "fr.word.plug",
+      "conceptId": "concept.word.plug",
+      "word": "prise",
+      "meaning": {
+        "en": "plug",
+        "he": "תקע / שקע"
+      },
+      "emoji": "🔌",
+      "category": "technology",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 202,
+      "skill": "recall",
+      "example": {
+        "en": "I need a plug adapter.",
+        "he": "אני צריך מתאם לשקע."
+      }
+    },
+    {
+      "id": "fr.word.wallet",
+      "conceptId": "concept.word.wallet",
+      "word": "portefeuille",
+      "meaning": {
+        "en": "wallet",
+        "he": "ארנק"
+      },
+      "emoji": "👛",
+      "category": "money",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 203,
+      "skill": "recall",
+      "example": {
+        "en": "I lost my wallet.",
+        "he": "איבדתי את הארנק שלי."
+      }
+    },
+    {
+      "id": "fr.word.headache",
+      "conceptId": "concept.word.headache",
+      "word": "mal de tête",
+      "meaning": {
+        "en": "headache",
+        "he": "כאב ראש"
+      },
+      "category": "health",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 204,
+      "skill": "recall",
+      "example": {
+        "en": "Something for a headache.",
+        "he": "משהו נגד כאב ראש."
+      }
+    },
+    {
+      "id": "fr.word.insurance",
+      "conceptId": "concept.word.insurance",
+      "word": "assurance",
+      "meaning": {
+        "en": "insurance",
+        "he": "ביטוח"
+      },
+      "category": "health",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 205,
+      "skill": "recognize",
+      "example": {
+        "en": "I have travel insurance.",
+        "he": "יש לי ביטוח נסיעות."
+      }
+    },
+    {
+      "id": "fr.word.charger",
+      "conceptId": "concept.word.charger",
+      "word": "chargeur",
+      "meaning": {
+        "en": "charger",
+        "he": "מטען"
+      },
+      "category": "objects",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 206,
+      "skill": "recall",
+      "example": {
+        "en": "I lost my charger.",
+        "he": "איבדתי את המטען שלי."
+      }
+    },
+    {
+      "id": "fr.word.smoke",
+      "conceptId": "concept.word.smoke",
+      "word": "fumer",
+      "meaning": {
+        "en": "smoke",
+        "he": "לעשן"
+      },
+      "emoji": "🚬",
+      "category": "actions",
+      "pos": "verb",
+      "tier": 1,
+      "rank": 207,
+      "skill": "recognize",
+      "example": {
+        "en": "No smoking here.",
+        "he": "אסור לעשן כאן."
+      }
+    },
+    {
+      "id": "fr.word.sugar",
+      "conceptId": "concept.word.sugar",
+      "word": "sucre",
+      "meaning": {
+        "en": "sugar",
+        "he": "סוכר"
+      },
+      "category": "food",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 208,
+      "skill": "recognize",
+      "example": {
+        "en": "No sugar, please.",
+        "he": "בלי סוכר, בבקשה."
+      }
+    },
+    {
+      "id": "fr.word.head",
+      "conceptId": "concept.word.head",
+      "word": "tête",
+      "meaning": {
+        "en": "head",
+        "he": "ראש"
+      },
+      "category": "body",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 209,
+      "skill": "recall",
+      "example": {
+        "en": "My head hurts.",
+        "he": "הראש שלי כואב."
+      }
+    },
+    {
+      "id": "fr.word.back",
+      "conceptId": "concept.word.back",
+      "word": "dos",
+      "meaning": {
+        "en": "back",
+        "he": "גב"
+      },
+      "category": "body",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 210,
+      "skill": "recall",
+      "example": {
+        "en": "My back hurts.",
+        "he": "הגב שלי כואב."
+      }
+    },
+    {
+      "id": "fr.word.thirsty",
+      "conceptId": "concept.word.thirsty",
+      "word": "soif",
+      "meaning": {
+        "en": "thirsty",
+        "he": "צמא"
+      },
+      "category": "descriptions",
+      "pos": "adj",
+      "tier": 1,
+      "rank": 211,
+      "skill": "recall",
+      "example": {
+        "en": "I am thirsty.",
+        "he": "אני צמא."
+      }
+    },
+    {
+      "id": "fr.word.air-conditioning",
+      "conceptId": "concept.word.air-conditioning",
+      "word": "climatisation",
+      "meaning": {
+        "en": "air conditioning",
+        "he": "מזגן"
+      },
+      "category": "home",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 212,
+      "skill": "recall",
+      "example": {
+        "en": "The air conditioning does not work.",
+        "he": "המזגן לא עובד."
+      }
+    },
+    {
+      "id": "fr.word.vegetables",
+      "conceptId": "concept.word.vegetables",
+      "word": "légumes",
+      "meaning": {
+        "en": "vegetables",
+        "he": "ירקות"
+      },
+      "emoji": "🥦",
+      "category": "food",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 213,
+      "skill": "recognize",
+      "example": {
+        "en": "Only vegetables, please.",
+        "he": "רק ירקות, בבקשה."
+      }
+    },
+    {
+      "id": "fr.word.sim-card",
+      "conceptId": "concept.word.sim-card",
+      "word": "carte SIM",
+      "meaning": {
+        "en": "SIM card",
+        "he": "כרטיס סים"
+      },
+      "category": "technology",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 214,
+      "skill": "recall",
+      "example": {
+        "en": "A SIM card with data.",
+        "he": "כרטיס סים עם גלישה."
+      }
+    },
+    {
+      "id": "fr.word.gas-station",
+      "conceptId": "concept.word.gas-station",
+      "word": "station-service",
+      "meaning": {
+        "en": "gas station",
+        "he": "תחנת דלק"
+      },
+      "emoji": "⛽",
+      "category": "places",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 215,
+      "skill": "recognize",
+      "example": {
+        "en": "Stop at the gas station.",
+        "he": "עצור בתחנת הדלק."
+      }
+    },
+    {
+      "id": "fr.word.stomach",
+      "conceptId": "concept.word.stomach",
+      "word": "ventre",
+      "meaning": {
+        "en": "stomach",
+        "he": "בטן"
+      },
+      "category": "body",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 216,
+      "skill": "recall",
+      "example": {
+        "en": "My stomach hurts.",
+        "he": "הבטן שלי כואבת."
+      }
+    },
+    {
+      "id": "fr.word.toilet-paper",
+      "conceptId": "concept.word.toilet-paper",
+      "word": "papier toilette",
+      "meaning": {
+        "en": "toilet paper",
+        "he": "נייר טואלט"
+      },
+      "emoji": "🧻",
+      "category": "home",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 217,
+      "skill": "recall",
+      "example": {
+        "en": "There is no toilet paper.",
+        "he": "אין נייר טואלט."
+      }
+    },
+    {
+      "id": "fr.word.locker",
+      "conceptId": "concept.word.locker",
+      "word": "casier",
+      "meaning": {
+        "en": "locker",
+        "he": "לוקר / תא אחסון"
+      },
+      "category": "home",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 218,
+      "skill": "recognize",
+      "example": {
+        "en": "Lockers are at the station.",
+        "he": "הלוקרים בתחנה."
+      }
+    },
+    {
+      "id": "fr.word.adapter",
+      "conceptId": "concept.word.adapter",
+      "word": "adaptateur",
+      "meaning": {
+        "en": "adapter",
+        "he": "מתאם (לשקע)"
+      },
+      "category": "objects",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 219,
+      "skill": "recall",
+      "example": {
+        "en": "I need an adapter.",
+        "he": "אני צריך מתאם."
+      }
+    },
+    {
+      "id": "fr.word.nurse",
+      "conceptId": "concept.word.nurse",
+      "word": "infirmier",
+      "meaning": {
+        "en": "nurse",
+        "he": "אח / אחות (רפואה)"
+      },
+      "category": "health",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 220,
+      "skill": "recognize",
+      "example": {
+        "en": "The nurse will help you.",
+        "he": "האחות תעזור לך."
+      }
+    },
+    {
+      "id": "fr.word.pill",
+      "conceptId": "concept.word.pill",
+      "word": "comprimé",
+      "meaning": {
+        "en": "pill",
+        "he": "כדור (תרופה)"
+      },
+      "category": "health",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 221,
+      "skill": "recognize",
+      "example": {
+        "en": "One pill a day.",
+        "he": "כדור אחד ביום."
+      }
+    },
+    {
+      "id": "fr.word.heating",
+      "conceptId": "concept.word.heating",
+      "word": "chauffage",
+      "meaning": {
+        "en": "heating",
+        "he": "חימום"
+      },
+      "category": "home",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 222,
+      "skill": "recall",
+      "example": {
+        "en": "The heating is off.",
+        "he": "החימום כבוי."
+      }
+    },
+    {
+      "id": "fr.word.great",
+      "conceptId": "concept.word.great",
+      "word": "super",
+      "meaning": {
+        "en": "great",
+        "he": "מעולה"
+      },
+      "category": "glue",
+      "pos": "interj",
+      "tier": 1,
+      "rank": 223,
+      "skill": "recall",
+      "example": {
+        "en": "Great, thank you!",
+        "he": "מעולה, תודה!"
+      }
+    },
+    {
+      "id": "fr.word.that",
+      "conceptId": "concept.word.that",
+      "word": "cela",
+      "meaning": {
+        "en": "that",
+        "he": "ההוא"
+      },
+      "category": "pronouns",
+      "pos": "pron",
+      "tier": 1,
+      "rank": 224,
+      "skill": "recall",
+      "example": {
+        "en": "That one over there.",
+        "he": "ההוא שם."
+      }
+    },
+    {
+      "id": "fr.word.tooth",
+      "conceptId": "concept.word.tooth",
+      "word": "dent",
+      "meaning": {
+        "en": "tooth",
+        "he": "שן"
+      },
+      "emoji": "🦷",
+      "category": "body",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 225,
+      "skill": "recognize",
+      "example": {
+        "en": "I have a toothache.",
+        "he": "יש לי כאב שיניים."
+      }
+    },
+    {
+      "id": "fr.word.restaurant",
+      "conceptId": "concept.word.restaurant",
+      "word": "restaurant",
+      "meaning": {
+        "en": "restaurant",
+        "he": "מסעדה"
+      },
+      "emoji": "🍴",
+      "category": "places",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 226,
+      "skill": "recognize",
+      "example": {
+        "en": "A good restaurant.",
+        "he": "מסעדה טובה."
+      }
+    },
+    {
+      "id": "fr.word.bandage",
+      "conceptId": "concept.word.bandage",
+      "word": "pansement",
+      "meaning": {
+        "en": "bandage",
+        "he": "תחבושת"
+      },
+      "emoji": "🩹",
+      "category": "health",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 227,
+      "skill": "recognize",
+      "example": {
+        "en": "I need a bandage.",
+        "he": "אני צריך תחבושת."
+      }
+    },
+    {
+      "id": "fr.reply.youre-welcome",
+      "conceptId": "concept.reply.youre-welcome",
+      "word": "Je vous en prie.",
+      "meaning": {
+        "en": "You're welcome.",
+        "he": "על לא דבר"
+      },
+      "category": "glue",
+      "pos": "phrase",
+      "tier": 1,
+      "rank": 228,
+      "skill": "recognize",
+      "example": {
+        "en": "\"Thank you!\" — \"You're welcome.\"",
+        "he": "\"תודה!\" — \"על לא דבר.\""
+      }
+    },
+    {
+      "id": "fr.reply.of-course",
+      "conceptId": "concept.reply.of-course",
+      "word": "Bien sûr.",
+      "meaning": {
+        "en": "Of course.",
+        "he": "כמובן"
+      },
+      "category": "glue",
+      "pos": "phrase",
+      "tier": 1,
+      "rank": 229,
+      "skill": "recognize",
+      "example": {
+        "en": "\"Can I sit here?\" — \"Of course.\"",
+        "he": "\"אפשר לשבת כאן?\" — \"כמובן.\""
+      }
+    },
+    {
+      "id": "fr.reply.have-a-nice-day",
+      "conceptId": "concept.reply.have-a-nice-day",
+      "word": "Bonne journée !",
+      "meaning": {
+        "en": "Have a nice day.",
+        "he": "שיהיה לך יום נעים"
+      },
+      "category": "glue",
+      "pos": "phrase",
+      "tier": 1,
+      "rank": 230,
+      "skill": "recognize",
+      "example": {
+        "en": "\"Have a nice day!\" — \"You too!\"",
+        "he": "\"שיהיה לך יום נעים!\" — \"גם לך!\""
+      }
+    },
+    {
+      "id": "fr.word.it",
+      "conceptId": "concept.word.it",
+      "word": "ce",
+      "meaning": {
+        "en": "it",
+        "he": "זה"
+      },
+      "category": "pronouns",
+      "pos": "pron",
+      "tier": 1,
+      "rank": 231,
+      "skill": "recognize",
+      "example": {
+        "en": "It is very good.",
+        "he": "זה טוב מאוד."
+      }
+    },
+    {
+      "id": "fr.word.dentist",
+      "conceptId": "concept.word.dentist",
+      "word": "dentiste",
+      "meaning": {
+        "en": "dentist",
+        "he": "רופא שיניים"
+      },
+      "category": "health",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 232,
+      "skill": "recognize",
+      "example": {
+        "en": "I need a dentist.",
+        "he": "אני צריך רופא שיניים."
+      }
+    },
+    {
+      "id": "fr.word.week",
+      "conceptId": "concept.word.week",
+      "word": "semaine",
+      "meaning": {
+        "en": "week",
+        "he": "שבוע"
+      },
+      "category": "time",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 233,
+      "skill": "recall",
+      "example": {
+        "en": "One week in Italy.",
+        "he": "שבוע אחד באיטליה."
+      }
+    },
+    {
+      "id": "fr.word.stay",
+      "conceptId": "concept.word.stay",
+      "word": "rester",
+      "meaning": {
+        "en": "stay",
+        "he": "להישאר"
+      },
+      "category": "actions",
+      "pos": "verb",
+      "tier": 1,
+      "rank": 234,
+      "skill": "recall",
+      "example": {
+        "en": "We stay three nights.",
+        "he": "אנחנו נשארים שלושה לילות."
+      }
+    },
+    {
+      "id": "fr.phrase.good-morning",
+      "conceptId": "concept.phrase.good-morning",
+      "word": "Bonjour.",
+      "meaning": {
+        "en": "Good morning.",
+        "he": "בוקר טוב"
+      },
+      "category": "glue",
+      "pos": "phrase",
+      "tier": 1,
+      "rank": 235,
+      "skill": "recall",
+      "example": {
+        "en": "Good morning! Breakfast, please.",
+        "he": "בוקר טוב! ארוחת בוקר, בבקשה."
+      }
+    },
+    {
+      "id": "fr.reply.lets-go",
+      "conceptId": "concept.reply.lets-go",
+      "word": "Allons-y !",
+      "meaning": {
+        "en": "Let's go.",
+        "he": "בוא נלך"
+      },
+      "category": "glue",
+      "pos": "phrase",
+      "tier": 1,
+      "rank": 236,
+      "skill": "recall",
+      "example": {
+        "en": "The taxi is here. Let's go!",
+        "he": "המונית כאן. בוא נלך!"
+      }
+    },
+    {
+      "id": "fr.word.who",
+      "conceptId": "concept.word.who",
+      "word": "qui",
+      "meaning": {
+        "en": "who",
+        "he": "מי"
+      },
+      "category": "questions",
+      "pos": "pron",
+      "tier": 1,
+      "rank": 237,
+      "skill": "recognize",
+      "example": {
+        "en": "Who is next?",
+        "he": "מי הבא בתור?"
+      }
+    },
+    {
+      "id": "fr.word.why",
+      "conceptId": "concept.word.why",
+      "word": "pourquoi",
+      "meaning": {
+        "en": "why",
+        "he": "למה"
+      },
+      "category": "questions",
+      "pos": "adv",
+      "tier": 1,
+      "rank": 238,
+      "skill": "recognize",
+      "example": {
+        "en": "Why is it closed?",
+        "he": "למה זה סגור?"
+      }
+    },
+    {
+      "id": "fr.word.he",
+      "conceptId": "concept.word.he",
+      "word": "il",
+      "meaning": {
+        "en": "he",
+        "he": "הוא"
+      },
+      "category": "pronouns",
+      "pos": "pron",
+      "tier": 1,
+      "rank": 239,
+      "skill": "recognize",
+      "example": {
+        "en": "He is my friend.",
+        "he": "הוא חבר שלי."
+      }
+    },
+    {
+      "id": "fr.word.she",
+      "conceptId": "concept.word.she",
+      "word": "elle",
+      "meaning": {
+        "en": "she",
+        "he": "היא"
+      },
+      "category": "pronouns",
+      "pos": "pron",
+      "tier": 1,
+      "rank": 240,
+      "skill": "recognize",
+      "example": {
+        "en": "She speaks English.",
+        "he": "היא מדברת אנגלית."
+      }
+    },
+    {
+      "id": "fr.word.they",
+      "conceptId": "concept.word.they",
+      "word": "ils",
+      "meaning": {
+        "en": "they",
+        "he": "הם"
+      },
+      "category": "pronouns",
+      "pos": "pron",
+      "tier": 1,
+      "rank": 241,
+      "skill": "recognize",
+      "example": {
+        "en": "They are with me.",
+        "he": "הם איתי."
+      }
+    },
+    {
+      "id": "fr.word.your",
+      "conceptId": "concept.word.your",
+      "word": "votre",
+      "meaning": {
+        "en": "your",
+        "he": "שלך"
+      },
+      "category": "pronouns",
+      "pos": "det",
+      "tier": 1,
+      "rank": 242,
+      "skill": "recognize",
+      "example": {
+        "en": "Your passport, please.",
+        "he": "הדרכון שלך, בבקשה."
+      }
+    },
+    {
+      "id": "fr.word.see",
+      "conceptId": "concept.word.see",
+      "word": "voir",
+      "meaning": {
+        "en": "see",
+        "he": "לראות"
+      },
+      "category": "actions",
+      "pos": "verb",
+      "tier": 1,
+      "rank": 243,
+      "skill": "recall",
+      "example": {
+        "en": "I want to see the menu.",
+        "he": "אני רוצה לראות את התפריט."
+      }
+    },
+    {
+      "id": "fr.word.look",
+      "conceptId": "concept.word.look",
+      "word": "regarder",
+      "meaning": {
+        "en": "look",
+        "he": "להסתכל"
+      },
+      "emoji": "👀",
+      "category": "actions",
+      "pos": "verb",
+      "tier": 1,
+      "rank": 244,
+      "skill": "recognize",
+      "example": {
+        "en": "Look at this!",
+        "he": "תסתכל על זה!"
+      }
+    },
+    {
+      "id": "fr.word.say",
+      "conceptId": "concept.word.say",
+      "word": "dire",
+      "meaning": {
+        "en": "say",
+        "he": "להגיד"
+      },
+      "category": "actions",
+      "pos": "verb",
+      "tier": 1,
+      "rank": 245,
+      "skill": "recognize",
+      "example": {
+        "en": "How do you say this?",
+        "he": "איך אומרים את זה?"
+      }
+    },
+    {
+      "id": "fr.word.like",
+      "conceptId": "concept.word.like",
+      "word": "aimer bien",
+      "meaning": {
+        "en": "like",
+        "he": "לחבב"
+      },
+      "category": "actions",
+      "pos": "verb",
+      "tier": 1,
+      "rank": 246,
+      "skill": "recall",
+      "example": {
+        "en": "I like this place.",
+        "he": "אני מחבב את המקום הזה."
+      }
+    },
+    {
+      "id": "fr.word.get",
+      "conceptId": "concept.word.get",
+      "word": "obtenir",
+      "meaning": {
+        "en": "get",
+        "he": "לקבל"
+      },
+      "category": "actions",
+      "pos": "verb",
+      "tier": 1,
+      "rank": 247,
+      "skill": "recognize",
+      "example": {
+        "en": "Where do I get the bus?",
+        "he": "איפה עולים לאוטובוס?"
+      }
+    },
+    {
+      "id": "fr.word.big",
+      "conceptId": "concept.word.big",
+      "word": "grand",
+      "meaning": {
+        "en": "big",
+        "he": "גדול"
+      },
+      "category": "descriptions",
+      "pos": "adj",
+      "tier": 1,
+      "rank": 248,
+      "skill": "recall",
+      "example": {
+        "en": "A big room.",
+        "he": "חדר גדול."
+      }
+    },
+    {
+      "id": "fr.word.walk",
+      "conceptId": "concept.word.walk",
+      "word": "marcher",
+      "meaning": {
+        "en": "walk",
+        "he": "ללכת"
+      },
+      "emoji": "🚶",
+      "category": "activities",
+      "pos": "verb",
+      "tier": 1,
+      "rank": 249,
+      "skill": "recognize",
+      "example": {
+        "en": "It is a short walk.",
+        "he": "זו הליכה קצרה."
+      }
+    },
+    {
+      "id": "fr.phrase.good-evening",
+      "conceptId": "concept.phrase.good-evening",
+      "word": "Bonsoir.",
+      "meaning": {
+        "en": "Good evening.",
+        "he": "ערב טוב"
+      },
+      "category": "glue",
+      "pos": "phrase",
+      "tier": 1,
+      "rank": 250,
+      "skill": "recall",
+      "example": {
+        "en": "Good evening! We have a reservation.",
+        "he": "ערב טוב! יש לנו הזמנה."
+      }
+    },
+    {
+      "id": "fr.reply.maybe-later",
+      "conceptId": "concept.reply.maybe-later",
+      "word": "Peut-être plus tard.",
+      "meaning": {
+        "en": "Maybe later.",
+        "he": "אולי אחר כך"
+      },
+      "category": "glue",
+      "pos": "phrase",
+      "tier": 1,
+      "rank": 251,
+      "skill": "recall",
+      "example": {
+        "en": "\"Dessert?\" — \"Maybe later.\"",
+        "he": "\"קינוח?\" — \"אולי אחר כך.\""
+      }
+    },
+    {
+      "id": "fr.reply.go-ahead",
+      "conceptId": "concept.reply.go-ahead",
+      "word": "Allez-y.",
+      "meaning": {
+        "en": "Go ahead.",
+        "he": "בבקשה, קדימה"
+      },
+      "category": "glue",
+      "pos": "phrase",
+      "tier": 1,
+      "rank": 252,
+      "skill": "recognize",
+      "example": {
+        "en": "\"Can I ask something?\" — \"Go ahead.\"",
+        "he": "\"אפשר לשאול משהו?\" — \"בבקשה, קדימה.\""
+      }
+    },
+    {
+      "id": "fr.word.really",
+      "conceptId": "concept.word.really",
+      "word": "vraiment",
+      "meaning": {
+        "en": "really",
+        "he": "באמת"
+      },
+      "category": "glue",
+      "pos": "interj",
+      "tier": 1,
+      "rank": 253,
+      "skill": "recall",
+      "example": {
+        "en": "Really? That is great!",
+        "he": "באמת? זה מעולה!"
+      }
+    },
+    {
+      "id": "fr.word.ask",
+      "conceptId": "concept.word.ask",
+      "word": "demander",
+      "meaning": {
+        "en": "ask",
+        "he": "לשאול"
+      },
+      "category": "actions",
+      "pos": "verb",
+      "tier": 1,
+      "rank": 254,
+      "skill": "recall",
+      "example": {
+        "en": "Let's ask someone.",
+        "he": "בוא נשאל מישהו."
+      }
+    },
+    {
+      "id": "fr.word.use",
+      "conceptId": "concept.word.use",
+      "word": "utiliser",
+      "meaning": {
+        "en": "use",
+        "he": "להשתמש"
+      },
+      "category": "actions",
+      "pos": "verb",
+      "tier": 1,
+      "rank": 255,
+      "skill": "recall",
+      "example": {
+        "en": "Can I use the phone?",
+        "he": "אפשר להשתמש בטלפון?"
+      }
+    },
+    {
+      "id": "fr.word.small",
+      "conceptId": "concept.word.small",
+      "word": "petit",
+      "meaning": {
+        "en": "small",
+        "he": "קטן"
+      },
+      "category": "descriptions",
+      "pos": "adj",
+      "tier": 1,
+      "rank": 256,
+      "skill": "recall",
+      "example": {
+        "en": "A smaller size, please.",
+        "he": "מידה קטנה יותר, בבקשה."
+      }
+    },
+    {
+      "id": "fr.word.first",
+      "conceptId": "concept.word.first",
+      "word": "premier",
+      "meaning": {
+        "en": "first",
+        "he": "ראשון"
+      },
+      "category": "descriptions",
+      "pos": "adj",
+      "tier": 1,
+      "rank": 257,
+      "skill": "recognize",
+      "example": {
+        "en": "The first time in Rome.",
+        "he": "הפעם הראשונה ברומא."
+      }
+    },
+    {
+      "id": "fr.word.city",
+      "conceptId": "concept.word.city",
+      "word": "ville",
+      "meaning": {
+        "en": "city",
+        "he": "עיר"
+      },
+      "emoji": "🏙️",
+      "category": "places",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 258,
+      "skill": "recognize",
+      "example": {
+        "en": "The old city.",
+        "he": "העיר העתיקה."
+      }
+    },
+    {
+      "id": "fr.word.up",
+      "conceptId": "concept.word.up",
+      "word": "en haut",
+      "meaning": {
+        "en": "up",
+        "he": "למעלה"
+      },
+      "emoji": "⬆️",
+      "category": "directions",
+      "pos": "adv",
+      "tier": 1,
+      "rank": 259,
+      "skill": "recognize",
+      "example": {
+        "en": "The room is up the stairs.",
+        "he": "החדר למעלה במדרגות."
+      }
+    },
+    {
+      "id": "fr.word.down",
+      "conceptId": "concept.word.down",
+      "word": "en bas",
+      "meaning": {
+        "en": "down",
+        "he": "למטה"
+      },
+      "emoji": "⬇️",
+      "category": "directions",
+      "pos": "adv",
+      "tier": 1,
+      "rank": 260,
+      "skill": "recognize",
+      "example": {
+        "en": "Breakfast is down the stairs.",
+        "he": "ארוחת הבוקר למטה במדרגות."
+      }
+    },
+    {
+      "id": "fr.reply.take-your-time",
+      "conceptId": "concept.reply.take-your-time",
+      "word": "Prenez votre temps.",
+      "meaning": {
+        "en": "Take your time.",
+        "he": "קח את הזמן"
+      },
+      "category": "glue",
+      "pos": "phrase",
+      "tier": 1,
+      "rank": 261,
+      "skill": "recognize",
+      "example": {
+        "en": "\"One minute…\" — \"Take your time.\"",
+        "he": "\"רגע אחד…\" — \"קח את הזמן.\""
+      }
+    },
+    {
+      "id": "fr.reply.me-too",
+      "conceptId": "concept.reply.me-too",
+      "word": "Moi aussi.",
+      "meaning": {
+        "en": "Me too.",
+        "he": "גם אני"
+      },
+      "category": "glue",
+      "pos": "phrase",
+      "tier": 1,
+      "rank": 262,
+      "skill": "recall",
+      "example": {
+        "en": "\"I love this city.\" — \"Me too!\"",
+        "he": "\"אני אוהב את העיר הזאת.\" — \"גם אני!\""
+      }
+    },
+    {
+      "id": "fr.reply.and-you",
+      "conceptId": "concept.reply.and-you",
+      "word": "Et vous ?",
+      "meaning": {
+        "en": "And you?",
+        "he": "ואתה?"
+      },
+      "category": "glue",
+      "pos": "phrase",
+      "tier": 1,
+      "rank": 263,
+      "skill": "recall",
+      "example": {
+        "en": "\"I'm fine. And you?\"",
+        "he": "\"אני בסדר. ואתה?\""
+      }
+    },
+    {
+      "id": "fr.word.yesterday",
+      "conceptId": "concept.word.yesterday",
+      "word": "hier",
+      "meaning": {
+        "en": "yesterday",
+        "he": "אתמול"
+      },
+      "category": "time",
+      "pos": "adv",
+      "tier": 1,
+      "rank": 264,
+      "skill": "recall",
+      "example": {
+        "en": "We arrived yesterday.",
+        "he": "הגענו אתמול."
+      }
+    },
+    {
+      "id": "fr.word.early",
+      "conceptId": "concept.word.early",
+      "word": "tôt",
+      "meaning": {
+        "en": "early",
+        "he": "מוקדם"
+      },
+      "category": "time",
+      "pos": "adj",
+      "tier": 1,
+      "rank": 265,
+      "skill": "recall",
+      "example": {
+        "en": "We arrived early.",
+        "he": "הגענו מוקדם."
+      }
+    },
+    {
+      "id": "fr.word.soon",
+      "conceptId": "concept.word.soon",
+      "word": "bientôt",
+      "meaning": {
+        "en": "soon",
+        "he": "בקרוב"
+      },
+      "category": "time",
+      "pos": "adv",
+      "tier": 1,
+      "rank": 266,
+      "skill": "recognize",
+      "example": {
+        "en": "The train comes soon.",
+        "he": "הרכבת מגיעה בקרוב."
+      }
+    },
+    {
+      "id": "fr.word.return",
+      "conceptId": "concept.word.return",
+      "word": "revenir",
+      "meaning": {
+        "en": "return",
+        "he": "לחזור"
+      },
+      "category": "actions",
+      "pos": "verb",
+      "tier": 1,
+      "rank": 267,
+      "skill": "recall",
+      "example": {
+        "en": "We return tomorrow.",
+        "he": "אנחנו חוזרים מחר."
+      }
+    },
+    {
+      "id": "fr.word.push",
+      "conceptId": "concept.word.push",
+      "word": "pousser",
+      "meaning": {
+        "en": "push",
+        "he": "לדחוף"
+      },
+      "category": "actions",
+      "pos": "verb",
+      "tier": 1,
+      "rank": 268,
+      "skill": "recognize",
+      "example": {
+        "en": "Push the door.",
+        "he": "דחוף את הדלת."
+      }
+    },
+    {
+      "id": "fr.word.pull",
+      "conceptId": "concept.word.pull",
+      "word": "tirer",
+      "meaning": {
+        "en": "pull",
+        "he": "למשוך"
+      },
+      "category": "actions",
+      "pos": "verb",
+      "tier": 1,
+      "rank": 269,
+      "skill": "recognize",
+      "example": {
+        "en": "Pull, do not push.",
+        "he": "משוך, אל תדחוף."
+      }
+    },
+    {
+      "id": "fr.word.old",
+      "conceptId": "concept.word.old",
+      "word": "vieux",
+      "meaning": {
+        "en": "old",
+        "he": "ישן"
+      },
+      "category": "descriptions",
+      "pos": "adj",
+      "tier": 1,
+      "rank": 270,
+      "skill": "recognize",
+      "example": {
+        "en": "The old city.",
+        "he": "העיר העתיקה."
+      }
+    },
+    {
+      "id": "fr.word.delicious",
+      "conceptId": "concept.word.delicious",
+      "word": "délicieux",
+      "meaning": {
+        "en": "delicious",
+        "he": "טעים"
+      },
+      "emoji": "😋",
+      "category": "descriptions",
+      "pos": "adj",
+      "tier": 1,
+      "rank": 271,
+      "skill": "recall",
+      "example": {
+        "en": "It was delicious!",
+        "he": "זה היה טעים!"
+      }
+    },
+    {
+      "id": "fr.word.bread",
+      "conceptId": "concept.word.bread",
+      "word": "pain",
+      "meaning": {
+        "en": "bread",
+        "he": "לחם"
+      },
+      "emoji": "🍞",
+      "category": "food",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 272,
+      "skill": "recognize",
+      "example": {
+        "en": "Fresh bread.",
+        "he": "לחם טרי."
+      }
+    },
+    {
+      "id": "fr.word.market",
+      "conceptId": "concept.word.market",
+      "word": "marché",
+      "meaning": {
+        "en": "market",
+        "he": "שוק"
+      },
+      "emoji": "🏪",
+      "category": "places",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 273,
+      "skill": "recognize",
+      "example": {
+        "en": "The fruit market.",
+        "he": "שוק הפירות."
+      }
+    },
+    {
+      "id": "fr.word.child",
+      "conceptId": "concept.word.child",
+      "word": "enfant",
+      "meaning": {
+        "en": "child",
+        "he": "ילד"
+      },
+      "emoji": "🧒",
+      "category": "people",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 274,
+      "skill": "recognize",
+      "example": {
+        "en": "One adult, one child.",
+        "he": "מבוגר אחד, ילד אחד."
+      }
+    },
+    {
+      "id": "fr.reply.see-you-later",
+      "conceptId": "concept.reply.see-you-later",
+      "word": "À plus tard.",
+      "meaning": {
+        "en": "See you later.",
+        "he": "נתראה"
+      },
+      "category": "glue",
+      "pos": "phrase",
+      "tier": 1,
+      "rank": 275,
+      "skill": "recall",
+      "example": {
+        "en": "See you later at the hotel.",
+        "he": "נתראה אחר כך במלון."
+      }
+    },
+    {
+      "id": "fr.word.sit",
+      "conceptId": "concept.word.sit",
+      "word": "s’asseoir",
+      "meaning": {
+        "en": "sit",
+        "he": "לשבת"
+      },
+      "category": "actions",
+      "pos": "verb",
+      "tier": 1,
+      "rank": 276,
+      "skill": "recall",
+      "example": {
+        "en": "Can we sit outside?",
+        "he": "אפשר לשבת בחוץ?"
+      }
+    },
+    {
+      "id": "fr.word.try",
+      "conceptId": "concept.word.try",
+      "word": "essayer",
+      "meaning": {
+        "en": "try",
+        "he": "לנסות"
+      },
+      "category": "actions",
+      "pos": "verb",
+      "tier": 1,
+      "rank": 277,
+      "skill": "recall",
+      "example": {
+        "en": "Can I try it on?",
+        "he": "אפשר למדוד את זה?"
+      }
+    },
+    {
+      "id": "fr.word.beautiful",
+      "conceptId": "concept.word.beautiful",
+      "word": "beau",
+      "meaning": {
+        "en": "beautiful",
+        "he": "יפה"
+      },
+      "category": "descriptions",
+      "pos": "adj",
+      "tier": 1,
+      "rank": 278,
+      "skill": "recall",
+      "example": {
+        "en": "What a beautiful view!",
+        "he": "איזה נוף יפה!"
+      }
+    },
+    {
+      "id": "fr.word.shop",
+      "conceptId": "concept.word.shop",
+      "word": "magasin",
+      "meaning": {
+        "en": "shop",
+        "he": "חנות"
+      },
+      "emoji": "🛍️",
+      "category": "places",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 279,
+      "skill": "recognize",
+      "example": {
+        "en": "The shop is closed.",
+        "he": "החנות סגורה."
+      }
+    },
+    {
+      "id": "fr.word.cafe",
+      "conceptId": "concept.word.cafe",
+      "word": "café",
+      "meaning": {
+        "en": "cafe",
+        "he": "בית קפה"
+      },
+      "category": "places",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 280,
+      "skill": "recognize",
+      "example": {
+        "en": "A nice cafe.",
+        "he": "בית קפה נחמד."
+      }
+    },
+    {
+      "id": "fr.word.friend",
+      "conceptId": "concept.word.friend",
+      "word": "ami",
+      "meaning": {
+        "en": "friend",
+        "he": "חבר"
+      },
+      "emoji": "👫",
+      "category": "people",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 281,
+      "skill": "recognize",
+      "example": {
+        "en": "This is my friend.",
+        "he": "זה החבר שלי."
+      }
+    },
+    {
+      "id": "fr.reply.up-to-you",
+      "conceptId": "concept.reply.up-to-you",
+      "word": "Comme vous voulez.",
+      "meaning": {
+        "en": "It's up to you.",
+        "he": "זה תלוי בך"
+      },
+      "category": "glue",
+      "pos": "phrase",
+      "tier": 1,
+      "rank": 282,
+      "skill": "recall",
+      "example": {
+        "en": "\"Inside or outside?\" — \"It's up to you.\"",
+        "he": "\"בפנים או בחוץ?\" — \"זה תלוי בך.\""
+      }
+    },
+    {
+      "id": "fr.word.afternoon",
+      "conceptId": "concept.word.afternoon",
+      "word": "après-midi",
+      "meaning": {
+        "en": "afternoon",
+        "he": "אחר הצהריים"
+      },
+      "category": "time",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 283,
+      "skill": "recognize",
+      "example": {
+        "en": "Closed in the afternoon.",
+        "he": "סגור אחר הצהריים."
+      }
+    },
+    {
+      "id": "fr.word.year",
+      "conceptId": "concept.word.year",
+      "word": "année",
+      "meaning": {
+        "en": "year",
+        "he": "שנה"
+      },
+      "category": "time",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 284,
+      "skill": "recognize",
+      "example": {
+        "en": "Happy new year!",
+        "he": "שנה טובה!"
+      }
+    },
+    {
+      "id": "fr.word.red",
+      "conceptId": "concept.word.red",
+      "word": "rouge",
+      "meaning": {
+        "en": "red",
+        "he": "אדום"
+      },
+      "emoji": "🔴",
+      "category": "colors",
+      "pos": "adj",
+      "tier": 1,
+      "rank": 285,
+      "skill": "recognize",
+      "example": {
+        "en": "The red bus.",
+        "he": "האוטובוס האדום."
+      }
+    },
+    {
+      "id": "fr.word.blue",
+      "conceptId": "concept.word.blue",
+      "word": "bleu",
+      "meaning": {
+        "en": "blue",
+        "he": "כחול"
+      },
+      "emoji": "🔵",
+      "category": "colors",
+      "pos": "adj",
+      "tier": 1,
+      "rank": 286,
+      "skill": "recognize",
+      "example": {
+        "en": "The blue line.",
+        "he": "הקו הכחול."
+      }
+    },
+    {
+      "id": "fr.word.green",
+      "conceptId": "concept.word.green",
+      "word": "vert",
+      "meaning": {
+        "en": "green",
+        "he": "ירוק"
+      },
+      "emoji": "🟢",
+      "category": "colors",
+      "pos": "adj",
+      "tier": 1,
+      "rank": 287,
+      "skill": "recognize",
+      "example": {
+        "en": "Cross on green.",
+        "he": "חוצים בירוק."
+      }
+    },
+    {
+      "id": "fr.word.love",
+      "conceptId": "concept.word.love",
+      "word": "aimer",
+      "meaning": {
+        "en": "love",
+        "he": "לאהוב"
+      },
+      "category": "actions",
+      "pos": "verb",
+      "tier": 1,
+      "rank": 288,
+      "skill": "recall",
+      "example": {
+        "en": "I love this city.",
+        "he": "אני אוהב את העיר הזאת."
+      }
+    },
+    {
+      "id": "fr.word.bring",
+      "conceptId": "concept.word.bring",
+      "word": "apporter",
+      "meaning": {
+        "en": "bring",
+        "he": "להביא"
+      },
+      "category": "actions",
+      "pos": "verb",
+      "tier": 1,
+      "rank": 289,
+      "skill": "recall",
+      "example": {
+        "en": "Can you bring the bill?",
+        "he": "אפשר להביא את החשבון?"
+      }
+    },
+    {
+      "id": "fr.word.visit",
+      "conceptId": "concept.word.visit",
+      "word": "visiter",
+      "meaning": {
+        "en": "visit",
+        "he": "לבקר"
+      },
+      "category": "actions",
+      "pos": "verb",
+      "tier": 1,
+      "rank": 290,
+      "skill": "recall",
+      "example": {
+        "en": "We want to visit the old city.",
+        "he": "אנחנו רוצים לבקר בעיר העתיקה."
+      }
+    },
+    {
+      "id": "fr.word.travel",
+      "conceptId": "concept.word.travel",
+      "word": "voyager",
+      "meaning": {
+        "en": "travel",
+        "he": "לטייל"
+      },
+      "category": "actions",
+      "pos": "verb",
+      "tier": 1,
+      "rank": 291,
+      "skill": "recall",
+      "example": {
+        "en": "We travel a lot.",
+        "he": "אנחנו מטיילים הרבה."
+      }
+    },
+    {
+      "id": "fr.word.fast",
+      "conceptId": "concept.word.fast",
+      "word": "rapide",
+      "meaning": {
+        "en": "fast",
+        "he": "מהיר"
+      },
+      "category": "descriptions",
+      "pos": "adj",
+      "tier": 1,
+      "rank": 292,
+      "skill": "recall",
+      "example": {
+        "en": "The fast train.",
+        "he": "הרכבת המהירה."
+      }
+    },
+    {
+      "id": "fr.word.clean",
+      "conceptId": "concept.word.clean",
+      "word": "propre",
+      "meaning": {
+        "en": "clean",
+        "he": "נקי"
+      },
+      "category": "descriptions",
+      "pos": "adj",
+      "tier": 1,
+      "rank": 293,
+      "skill": "recall",
+      "example": {
+        "en": "The room is clean.",
+        "he": "החדר נקי."
+      }
+    },
+    {
+      "id": "fr.word.quiet",
+      "conceptId": "concept.word.quiet",
+      "word": "calme",
+      "meaning": {
+        "en": "quiet",
+        "he": "שקט"
+      },
+      "category": "descriptions",
+      "pos": "adj",
+      "tier": 1,
+      "rank": 294,
+      "skill": "recall",
+      "example": {
+        "en": "A quiet room, please.",
+        "he": "חדר שקט, בבקשה."
+      }
+    },
+    {
+      "id": "fr.word.tired",
+      "conceptId": "concept.word.tired",
+      "word": "fatigué",
+      "meaning": {
+        "en": "tired",
+        "he": "עייף"
+      },
+      "emoji": "😫",
+      "category": "descriptions",
+      "pos": "adj",
+      "tier": 1,
+      "rank": 295,
+      "skill": "recall",
+      "example": {
+        "en": "I am very tired.",
+        "he": "אני מאוד עייף."
+      }
+    },
+    {
+      "id": "fr.word.busy",
+      "conceptId": "concept.word.busy",
+      "word": "occupé",
+      "meaning": {
+        "en": "busy",
+        "he": "תפוס / עמוס"
+      },
+      "category": "descriptions",
+      "pos": "adj",
+      "tier": 1,
+      "rank": 296,
+      "skill": "recognize",
+      "example": {
+        "en": "The restaurant is busy tonight.",
+        "he": "המסעדה עמוסה הערב."
+      }
+    },
+    {
+      "id": "fr.word.same",
+      "conceptId": "concept.word.same",
+      "word": "même",
+      "meaning": {
+        "en": "same",
+        "he": "אותו דבר"
+      },
+      "category": "descriptions",
+      "pos": "adj",
+      "tier": 1,
+      "rank": 297,
+      "skill": "recall",
+      "example": {
+        "en": "The same for me, please.",
+        "he": "אותו דבר בשבילי, בבקשה."
+      }
+    },
+    {
+      "id": "fr.word.supermarket",
+      "conceptId": "concept.word.supermarket",
+      "word": "supermarché",
+      "meaning": {
+        "en": "supermarket",
+        "he": "סופרמרקט"
+      },
+      "emoji": "🛒",
+      "category": "places",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 298,
+      "skill": "recall",
+      "example": {
+        "en": "Is there a supermarket near here?",
+        "he": "יש סופרמרקט קרוב לכאן?"
+      }
+    },
+    {
+      "id": "fr.word.tea",
+      "conceptId": "concept.word.tea",
+      "word": "thé",
+      "meaning": {
+        "en": "tea",
+        "he": "תה"
+      },
+      "emoji": "🍵",
+      "category": "food",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 299,
+      "skill": "recognize",
+      "example": {
+        "en": "Tea with milk.",
+        "he": "תה עם חלב."
+      }
+    },
+    {
+      "id": "fr.word.wine",
+      "conceptId": "concept.word.wine",
+      "word": "vin",
+      "meaning": {
+        "en": "wine",
+        "he": "יין"
+      },
+      "emoji": "🍷",
+      "category": "food",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 300,
+      "skill": "recognize",
+      "example": {
+        "en": "A glass of wine.",
+        "he": "כוס יין."
+      }
+    },
+    {
+      "id": "fr.word.beach",
+      "conceptId": "concept.word.beach",
+      "word": "plage",
+      "meaning": {
+        "en": "beach",
+        "he": "חוף"
+      },
+      "emoji": "🏖️",
+      "category": "places",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 301,
+      "skill": "recognize",
+      "example": {
+        "en": "How do I get to the beach?",
+        "he": "איך מגיעים לחוף?"
+      }
+    },
+    {
+      "id": "fr.word.family",
+      "conceptId": "concept.word.family",
+      "word": "famille",
+      "meaning": {
+        "en": "family",
+        "he": "משפחה"
+      },
+      "emoji": "👪",
+      "category": "people",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 302,
+      "skill": "recognize",
+      "example": {
+        "en": "I am here with my family.",
+        "he": "אני כאן עם המשפחה שלי."
+      }
+    },
+    {
+      "id": "fr.number.thousand",
+      "conceptId": "concept.number.thousand",
+      "word": "mille",
+      "meaning": {
+        "en": "thousand",
+        "he": "אלף"
+      },
+      "category": "numbers",
+      "pos": "num",
+      "tier": 1,
+      "rank": 303,
+      "skill": "recognize",
+      "example": {
+        "en": "A thousand people were there.",
+        "he": "אלף אנשים היו שם."
+      }
+    },
+    {
+      "id": "fr.word.month",
+      "conceptId": "concept.word.month",
+      "word": "mois",
+      "meaning": {
+        "en": "month",
+        "he": "חודש"
+      },
+      "category": "time",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 304,
+      "skill": "recognize",
+      "example": {
+        "en": "Next month.",
+        "he": "בחודש הבא."
+      }
+    },
+    {
+      "id": "fr.word.always",
+      "conceptId": "concept.word.always",
+      "word": "toujours",
+      "meaning": {
+        "en": "always",
+        "he": "תמיד"
+      },
+      "category": "time",
+      "pos": "adv",
+      "tier": 1,
+      "rank": 305,
+      "skill": "recognize",
+      "example": {
+        "en": "It is always open.",
+        "he": "זה תמיד פתוח."
+      }
+    },
+    {
+      "id": "fr.word.never",
+      "conceptId": "concept.word.never",
+      "word": "jamais",
+      "meaning": {
+        "en": "never",
+        "he": "אף פעם"
+      },
+      "category": "time",
+      "pos": "adv",
+      "tier": 1,
+      "rank": 306,
+      "skill": "recognize",
+      "example": {
+        "en": "I never eat meat.",
+        "he": "אני אף פעם לא אוכל בשר."
+      }
+    },
+    {
+      "id": "fr.word.weekend",
+      "conceptId": "concept.word.weekend",
+      "word": "week-end",
+      "meaning": {
+        "en": "weekend",
+        "he": "סוף שבוע"
+      },
+      "category": "time",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 307,
+      "skill": "recognize",
+      "example": {
+        "en": "Closed on the weekend.",
+        "he": "סגור בסוף השבוע."
+      }
+    },
+    {
+      "id": "fr.word.monday",
+      "conceptId": "concept.word.monday",
+      "word": "lundi",
+      "meaning": {
+        "en": "Monday",
+        "he": "יום שני"
+      },
+      "category": "time",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 308,
+      "skill": "recognize",
+      "example": {
+        "en": "Closed on Monday.",
+        "he": "סגור ביום שני."
+      }
+    },
+    {
+      "id": "fr.word.friday",
+      "conceptId": "concept.word.friday",
+      "word": "vendredi",
+      "meaning": {
+        "en": "Friday",
+        "he": "יום שישי"
+      },
+      "category": "time",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 309,
+      "skill": "recognize",
+      "example": {
+        "en": "Friday evening.",
+        "he": "ערב שישי."
+      }
+    },
+    {
+      "id": "fr.word.sunday",
+      "conceptId": "concept.word.sunday",
+      "word": "dimanche",
+      "meaning": {
+        "en": "Sunday",
+        "he": "יום ראשון"
+      },
+      "category": "time",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 310,
+      "skill": "recognize",
+      "example": {
+        "en": "Everything is closed on Sunday.",
+        "he": "הכול סגור ביום ראשון."
+      }
+    },
+    {
+      "id": "fr.word.think",
+      "conceptId": "concept.word.think",
+      "word": "penser",
+      "meaning": {
+        "en": "think",
+        "he": "לחשוב"
+      },
+      "category": "actions",
+      "pos": "verb",
+      "tier": 1,
+      "rank": 311,
+      "skill": "recognize",
+      "example": {
+        "en": "I think it is close.",
+        "he": "אני חושב שזה קרוב."
+      }
+    },
+    {
+      "id": "fr.word.new",
+      "conceptId": "concept.word.new",
+      "word": "nouveau",
+      "meaning": {
+        "en": "new",
+        "he": "חדש"
+      },
+      "category": "descriptions",
+      "pos": "adj",
+      "tier": 1,
+      "rank": 312,
+      "skill": "recognize",
+      "example": {
+        "en": "The new terminal.",
+        "he": "הטרמינל החדש."
+      }
+    },
+    {
+      "id": "fr.word.heavy",
+      "conceptId": "concept.word.heavy",
+      "word": "lourd",
+      "meaning": {
+        "en": "heavy",
+        "he": "כבד"
+      },
+      "category": "descriptions",
+      "pos": "adj",
+      "tier": 1,
+      "rank": 313,
+      "skill": "recognize",
+      "example": {
+        "en": "The suitcase is too heavy.",
+        "he": "המזוודה כבדה מדי."
+      }
+    },
+    {
+      "id": "fr.word.happy",
+      "conceptId": "concept.word.happy",
+      "word": "content",
+      "meaning": {
+        "en": "happy",
+        "he": "שמח"
+      },
+      "emoji": "😊",
+      "category": "descriptions",
+      "pos": "adj",
+      "tier": 1,
+      "rank": 314,
+      "skill": "recall",
+      "example": {
+        "en": "I am happy to be here.",
+        "he": "אני שמח להיות כאן."
+      }
+    },
+    {
+      "id": "fr.word.beer",
+      "conceptId": "concept.word.beer",
+      "word": "bière",
+      "meaning": {
+        "en": "beer",
+        "he": "בירה"
+      },
+      "emoji": "🍺",
+      "category": "food",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 315,
+      "skill": "recall",
+      "example": {
+        "en": "Two beers, please.",
+        "he": "שתי בירות, בבקשה."
+      }
+    },
+    {
+      "id": "fr.word.door",
+      "conceptId": "concept.word.door",
+      "word": "porte",
+      "meaning": {
+        "en": "door",
+        "he": "דלת"
+      },
+      "emoji": "🚪",
+      "category": "places",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 316,
+      "skill": "recognize",
+      "example": {
+        "en": "The door is locked.",
+        "he": "הדלת נעולה."
+      }
+    },
+    {
+      "id": "fr.word.driver",
+      "conceptId": "concept.word.driver",
+      "word": "chauffeur",
+      "meaning": {
+        "en": "driver",
+        "he": "נהג"
+      },
+      "category": "transport",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 317,
+      "skill": "recognize",
+      "example": {
+        "en": "Ask the driver.",
+        "he": "תשאל את הנהג."
+      }
+    },
+    {
+      "id": "fr.word.photo",
+      "conceptId": "concept.word.photo",
+      "word": "photo",
+      "meaning": {
+        "en": "photo",
+        "he": "תמונה"
+      },
+      "emoji": "🖼️",
+      "category": "technology",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 318,
+      "skill": "recall",
+      "example": {
+        "en": "Can you take a photo of us?",
+        "he": "אפשר לצלם אותנו?"
+      }
+    },
+    {
+      "id": "fr.word.museum",
+      "conceptId": "concept.word.museum",
+      "word": "musée",
+      "meaning": {
+        "en": "museum",
+        "he": "מוזיאון"
+      },
+      "emoji": "🏛️",
+      "category": "places",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 319,
+      "skill": "recognize",
+      "example": {
+        "en": "Two tickets to the museum.",
+        "he": "שני כרטיסים למוזיאון."
+      }
+    },
+    {
+      "id": "fr.word.man",
+      "conceptId": "concept.word.man",
+      "word": "homme",
+      "meaning": {
+        "en": "man",
+        "he": "גבר"
+      },
+      "emoji": "👨",
+      "category": "people",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 320,
+      "skill": "recognize",
+      "example": {
+        "en": "That man over there.",
+        "he": "הגבר שם."
+      }
+    },
+    {
+      "id": "fr.word.woman",
+      "conceptId": "concept.word.woman",
+      "word": "femme",
+      "meaning": {
+        "en": "woman",
+        "he": "אישה"
+      },
+      "emoji": "👩",
+      "category": "people",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 321,
+      "skill": "recognize",
+      "example": {
+        "en": "Ask that woman.",
+        "he": "תשאל את האישה הזאת."
+      }
+    },
+    {
+      "id": "fr.phrase.good-night",
+      "conceptId": "concept.phrase.good-night",
+      "word": "Bonne nuit.",
+      "meaning": {
+        "en": "Good night.",
+        "he": "לילה טוב"
+      },
+      "category": "glue",
+      "pos": "phrase",
+      "tier": 1,
+      "rank": 322,
+      "skill": "recall",
+      "example": {
+        "en": "Good night, see you tomorrow.",
+        "he": "לילה טוב, נתראה מחר."
+      }
+    },
+    {
+      "id": "fr.word.saturday",
+      "conceptId": "concept.word.saturday",
+      "word": "samedi",
+      "meaning": {
+        "en": "Saturday",
+        "he": "יום שבת"
+      },
+      "category": "time",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 323,
+      "skill": "recognize",
+      "example": {
+        "en": "Open on Saturday?",
+        "he": "פתוח בשבת?"
+      }
+    },
+    {
+      "id": "fr.word.hear",
+      "conceptId": "concept.word.hear",
+      "word": "entendre",
+      "meaning": {
+        "en": "hear",
+        "he": "לשמוע"
+      },
+      "category": "actions",
+      "pos": "verb",
+      "tier": 1,
+      "rank": 324,
+      "skill": "recognize",
+      "example": {
+        "en": "I cannot hear you.",
+        "he": "אני לא שומע אותך."
+      }
+    },
+    {
+      "id": "fr.word.sleep",
+      "conceptId": "concept.word.sleep",
+      "word": "dormir",
+      "meaning": {
+        "en": "sleep",
+        "he": "לישון"
+      },
+      "emoji": "😴",
+      "category": "actions",
+      "pos": "verb",
+      "tier": 1,
+      "rank": 325,
+      "skill": "recall",
+      "example": {
+        "en": "I need to sleep.",
+        "he": "אני צריך לישון."
+      }
+    },
+    {
+      "id": "fr.word.answer",
+      "conceptId": "concept.word.answer",
+      "word": "répondre",
+      "meaning": {
+        "en": "answer",
+        "he": "לענות"
+      },
+      "category": "actions",
+      "pos": "verb",
+      "tier": 1,
+      "rank": 326,
+      "skill": "recognize",
+      "example": {
+        "en": "Nobody answers.",
+        "he": "אף אחד לא עונה."
+      }
+    },
+    {
+      "id": "fr.word.remember",
+      "conceptId": "concept.word.remember",
+      "word": "se souvenir",
+      "meaning": {
+        "en": "remember",
+        "he": "לזכור"
+      },
+      "category": "actions",
+      "pos": "verb",
+      "tier": 1,
+      "rank": 327,
+      "skill": "recognize",
+      "example": {
+        "en": "I do not remember the name.",
+        "he": "אני לא זוכר את השם."
+      }
+    },
+    {
+      "id": "fr.word.send",
+      "conceptId": "concept.word.send",
+      "word": "envoyer",
+      "meaning": {
+        "en": "send",
+        "he": "לשלוח"
+      },
+      "category": "actions",
+      "pos": "verb",
+      "tier": 1,
+      "rank": 328,
+      "skill": "recognize",
+      "example": {
+        "en": "Send me the address.",
+        "he": "תשלח לי את הכתובת."
+      }
+    },
+    {
+      "id": "fr.word.drive",
+      "conceptId": "concept.word.drive",
+      "word": "conduire",
+      "meaning": {
+        "en": "drive",
+        "he": "לנהוג"
+      },
+      "category": "actions",
+      "pos": "verb",
+      "tier": 1,
+      "rank": 329,
+      "skill": "recognize",
+      "example": {
+        "en": "He drives slowly.",
+        "he": "הוא נוהג לאט."
+      }
+    },
+    {
+      "id": "fr.word.meet",
+      "conceptId": "concept.word.meet",
+      "word": "rencontrer",
+      "meaning": {
+        "en": "meet",
+        "he": "לפגוש"
+      },
+      "category": "actions",
+      "pos": "verb",
+      "tier": 1,
+      "rank": 330,
+      "skill": "recall",
+      "example": {
+        "en": "Nice to meet you.",
+        "he": "נעים להכיר."
+      }
+    },
+    {
+      "id": "fr.word.easy",
+      "conceptId": "concept.word.easy",
+      "word": "facile",
+      "meaning": {
+        "en": "easy",
+        "he": "קל"
+      },
+      "category": "descriptions",
+      "pos": "adj",
+      "tier": 1,
+      "rank": 331,
+      "skill": "recognize",
+      "example": {
+        "en": "It is easy to find.",
+        "he": "קל למצוא את זה."
+      }
+    },
+    {
+      "id": "fr.word.hard",
+      "conceptId": "concept.word.hard",
+      "word": "difficile",
+      "meaning": {
+        "en": "hard",
+        "he": "קשה"
+      },
+      "category": "descriptions",
+      "pos": "adj",
+      "tier": 1,
+      "rank": 332,
+      "skill": "recognize",
+      "example": {
+        "en": "It is hard to say.",
+        "he": "קשה להגיד."
+      }
+    },
+    {
+      "id": "fr.word.sweet",
+      "conceptId": "concept.word.sweet",
+      "word": "sucré",
+      "meaning": {
+        "en": "sweet",
+        "he": "מתוק"
+      },
+      "category": "descriptions",
+      "pos": "adj",
+      "tier": 1,
+      "rank": 333,
+      "skill": "recognize",
+      "example": {
+        "en": "Too sweet for me.",
+        "he": "מתוק מדי בשבילי."
+      }
+    },
+    {
+      "id": "fr.word.square",
+      "conceptId": "concept.word.square",
+      "word": "place",
+      "meaning": {
+        "en": "square",
+        "he": "כיכר"
+      },
+      "category": "places",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 334,
+      "skill": "recognize",
+      "example": {
+        "en": "The main square.",
+        "he": "הכיכר הראשית."
+      }
+    },
+    {
+      "id": "fr.word.corner",
+      "conceptId": "concept.word.corner",
+      "word": "coin",
+      "meaning": {
+        "en": "corner",
+        "he": "פינה"
+      },
+      "category": "transport",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 335,
+      "skill": "recognize",
+      "example": {
+        "en": "It is around the corner.",
+        "he": "זה מעבר לפינה."
+      }
+    },
+    {
+      "id": "fr.word.tip",
+      "conceptId": "concept.word.tip",
+      "word": "pourboire",
+      "meaning": {
+        "en": "tip",
+        "he": "טיפ"
+      },
+      "category": "money",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 336,
+      "skill": "recognize",
+      "example": {
+        "en": "Is the tip included?",
+        "he": "הטיפ כלול?"
+      }
+    },
+    {
+      "id": "fr.word.tourist",
+      "conceptId": "concept.word.tourist",
+      "word": "touriste",
+      "meaning": {
+        "en": "tourist",
+        "he": "תייר"
+      },
+      "category": "people",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 337,
+      "skill": "recall",
+      "example": {
+        "en": "We are tourists.",
+        "he": "אנחנו תיירים."
+      }
+    },
+    {
+      "id": "fr.word.hand",
+      "conceptId": "concept.word.hand",
+      "word": "main",
+      "meaning": {
+        "en": "hand",
+        "he": "יד"
+      },
+      "emoji": "✋",
+      "category": "body",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 338,
+      "skill": "recognize",
+      "example": {
+        "en": "Give me your hand.",
+        "he": "תן לי את היד."
+      }
+    },
+    {
+      "id": "fr.word.egg",
+      "conceptId": "concept.word.egg",
+      "word": "œuf",
+      "meaning": {
+        "en": "egg",
+        "he": "ביצה"
+      },
+      "emoji": "🥚",
+      "category": "food",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 339,
+      "skill": "recognize",
+      "example": {
+        "en": "Two eggs, please.",
+        "he": "שתי ביצים, בבקשה."
+      }
+    },
+    {
+      "id": "fr.word.cheese",
+      "conceptId": "concept.word.cheese",
+      "word": "fromage",
+      "meaning": {
+        "en": "cheese",
+        "he": "גבינה"
+      },
+      "emoji": "🧀",
+      "category": "food",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 340,
+      "skill": "recognize",
+      "example": {
+        "en": "Bread and cheese.",
+        "he": "לחם וגבינה."
+      }
+    },
+    {
+      "id": "fr.word.rain",
+      "conceptId": "concept.word.rain",
+      "word": "pluie",
+      "meaning": {
+        "en": "rain",
+        "he": "גשם"
+      },
+      "emoji": "🌧️",
+      "category": "weather",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 341,
+      "skill": "recognize",
+      "example": {
+        "en": "It is raining.",
+        "he": "יורד גשם."
+      }
+    },
+    {
+      "id": "fr.word.sea",
+      "conceptId": "concept.word.sea",
+      "word": "mer",
+      "meaning": {
+        "en": "sea",
+        "he": "ים"
+      },
+      "emoji": "🌊",
+      "category": "nature",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 342,
+      "skill": "recognize",
+      "example": {
+        "en": "The sea is warm.",
+        "he": "הים חם."
+      }
+    },
+    {
+      "id": "fr.word.swim",
+      "conceptId": "concept.word.swim",
+      "word": "nager",
+      "meaning": {
+        "en": "swim",
+        "he": "לשחות"
+      },
+      "emoji": "🏊",
+      "category": "activities",
+      "pos": "verb",
+      "tier": 1,
+      "rank": 343,
+      "skill": "recognize",
+      "example": {
+        "en": "I want to swim.",
+        "he": "אני רוצה לשחות."
+      }
+    },
+    {
+      "id": "fr.word.cheers",
+      "conceptId": "concept.word.cheers",
+      "word": "santé",
+      "meaning": {
+        "en": "cheers",
+        "he": "לחיים"
+      },
+      "category": "glue",
+      "pos": "interj",
+      "tier": 1,
+      "rank": 344,
+      "skill": "recall",
+      "example": {
+        "en": "Cheers! To the trip!",
+        "he": "לחיים! לכבוד הטיול!"
+      }
+    },
+    {
+      "id": "fr.reply.nothing-else",
+      "conceptId": "concept.reply.nothing-else",
+      "word": "Rien d’autre.",
+      "meaning": {
+        "en": "Nothing else.",
+        "he": "שום דבר נוסף"
+      },
+      "category": "glue",
+      "pos": "phrase",
+      "tier": 1,
+      "rank": 345,
+      "skill": "recall",
+      "example": {
+        "en": "Nothing else, just the coffee.",
+        "he": "שום דבר נוסף, רק הקפה."
+      }
+    },
+    {
+      "id": "fr.word.tuesday",
+      "conceptId": "concept.word.tuesday",
+      "word": "mardi",
+      "meaning": {
+        "en": "Tuesday",
+        "he": "יום שלישי"
+      },
+      "category": "time",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 346,
+      "skill": "recognize",
+      "example": {
+        "en": "The market is on Tuesday.",
+        "he": "השוק ביום שלישי."
+      }
+    },
+    {
+      "id": "fr.word.wednesday",
+      "conceptId": "concept.word.wednesday",
+      "word": "mercredi",
+      "meaning": {
+        "en": "Wednesday",
+        "he": "יום רביעי"
+      },
+      "category": "time",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 347,
+      "skill": "recognize",
+      "example": {
+        "en": "We fly on Wednesday.",
+        "he": "אנחנו טסים ביום רביעי."
+      }
+    },
+    {
+      "id": "fr.word.thursday",
+      "conceptId": "concept.word.thursday",
+      "word": "jeudi",
+      "meaning": {
+        "en": "Thursday",
+        "he": "יום חמישי"
+      },
+      "category": "time",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 348,
+      "skill": "recognize",
+      "example": {
+        "en": "Until Thursday.",
+        "he": "עד יום חמישי."
+      }
+    },
+    {
+      "id": "fr.word.salty",
+      "conceptId": "concept.word.salty",
+      "word": "salé",
+      "meaning": {
+        "en": "salty",
+        "he": "מלוח"
+      },
+      "category": "descriptions",
+      "pos": "adj",
+      "tier": 1,
+      "rank": 349,
+      "skill": "recognize",
+      "example": {
+        "en": "The soup is salty.",
+        "he": "המרק מלוח."
+      }
+    },
+    {
+      "id": "fr.word.fresh",
+      "conceptId": "concept.word.fresh",
+      "word": "frais",
+      "meaning": {
+        "en": "fresh",
+        "he": "טרי"
+      },
+      "category": "descriptions",
+      "pos": "adj",
+      "tier": 1,
+      "rank": 350,
+      "skill": "recognize",
+      "example": {
+        "en": "Fresh orange juice.",
+        "he": "מיץ תפוזים טרי."
+      }
+    },
+    {
+      "id": "fr.word.different",
+      "conceptId": "concept.word.different",
+      "word": "différent",
+      "meaning": {
+        "en": "different",
+        "he": "שונה"
+      },
+      "category": "descriptions",
+      "pos": "adj",
+      "tier": 1,
+      "rank": 351,
+      "skill": "recall",
+      "example": {
+        "en": "Something different, please.",
+        "he": "משהו שונה, בבקשה."
+      }
+    },
+    {
+      "id": "fr.word.fruit",
+      "conceptId": "concept.word.fruit",
+      "word": "fruit",
+      "meaning": {
+        "en": "fruit",
+        "he": "פירות"
+      },
+      "emoji": "🍇",
+      "category": "food",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 352,
+      "skill": "recognize",
+      "example": {
+        "en": "Fresh fruit.",
+        "he": "פירות טריים."
+      }
+    },
+    {
+      "id": "fr.word.salad",
+      "conceptId": "concept.word.salad",
+      "word": "salade",
+      "meaning": {
+        "en": "salad",
+        "he": "סלט"
+      },
+      "emoji": "🥗",
+      "category": "food",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 353,
+      "skill": "recognize",
+      "example": {
+        "en": "A big salad.",
+        "he": "סלט גדול."
+      }
+    },
+    {
+      "id": "fr.word.salt",
+      "conceptId": "concept.word.salt",
+      "word": "sel",
+      "meaning": {
+        "en": "salt",
+        "he": "מלח"
+      },
+      "emoji": "🧂",
+      "category": "food",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 354,
+      "skill": "recognize",
+      "example": {
+        "en": "Salt and pepper.",
+        "he": "מלח ופלפל."
+      }
+    },
+    {
+      "id": "fr.word.juice",
+      "conceptId": "concept.word.juice",
+      "word": "jus",
+      "meaning": {
+        "en": "juice",
+        "he": "מיץ"
+      },
+      "emoji": "🧃",
+      "category": "food",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 355,
+      "skill": "recall",
+      "example": {
+        "en": "Orange juice, please.",
+        "he": "מיץ תפוזים, בבקשה."
+      }
+    },
+    {
+      "id": "fr.word.pizza",
+      "conceptId": "concept.word.pizza",
+      "word": "pizza",
+      "meaning": {
+        "en": "pizza",
+        "he": "פיצה"
+      },
+      "emoji": "🍕",
+      "category": "food",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 356,
+      "skill": "recognize",
+      "example": {
+        "en": "A slice of pizza.",
+        "he": "משולש פיצה."
+      }
+    },
+    {
+      "id": "fr.word.glass",
+      "conceptId": "concept.word.glass",
+      "word": "verre",
+      "meaning": {
+        "en": "glass",
+        "he": "כוס"
+      },
+      "category": "food",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 357,
+      "skill": "recognize",
+      "example": {
+        "en": "A glass of water.",
+        "he": "כוס מים."
+      }
+    },
+    {
+      "id": "fr.word.bottle",
+      "conceptId": "concept.word.bottle",
+      "word": "bouteille",
+      "meaning": {
+        "en": "bottle",
+        "he": "בקבוק"
+      },
+      "category": "food",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 358,
+      "skill": "recall",
+      "example": {
+        "en": "A bottle of water.",
+        "he": "בקבוק מים."
+      }
+    },
+    {
+      "id": "fr.word.lunch",
+      "conceptId": "concept.word.lunch",
+      "word": "déjeuner",
+      "meaning": {
+        "en": "lunch",
+        "he": "ארוחת צהריים"
+      },
+      "category": "food",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 359,
+      "skill": "recognize",
+      "example": {
+        "en": "Lunch until three.",
+        "he": "צהריים עד שלוש."
+      }
+    },
+    {
+      "id": "fr.word.dinner",
+      "conceptId": "concept.word.dinner",
+      "word": "dîner",
+      "meaning": {
+        "en": "dinner",
+        "he": "ארוחת ערב"
+      },
+      "category": "food",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 360,
+      "skill": "recognize",
+      "example": {
+        "en": "Dinner at eight.",
+        "he": "ארוחת ערב בשמונה."
+      }
+    },
+    {
+      "id": "fr.word.park",
+      "conceptId": "concept.word.park",
+      "word": "parc",
+      "meaning": {
+        "en": "park",
+        "he": "פארק"
+      },
+      "emoji": "🏞️",
+      "category": "places",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 361,
+      "skill": "recognize",
+      "example": {
+        "en": "Next to the park.",
+        "he": "ליד הפארק."
+      }
+    },
+    {
+      "id": "fr.word.window",
+      "conceptId": "concept.word.window",
+      "word": "fenêtre",
+      "meaning": {
+        "en": "window",
+        "he": "חלון"
+      },
+      "emoji": "🪟",
+      "category": "places",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 362,
+      "skill": "recognize",
+      "example": {
+        "en": "A seat by the window.",
+        "he": "מקום ליד החלון."
+      }
+    },
+    {
+      "id": "fr.word.road",
+      "conceptId": "concept.word.road",
+      "word": "route",
+      "meaning": {
+        "en": "road",
+        "he": "כביש"
+      },
+      "emoji": "🛣️",
+      "category": "transport",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 363,
+      "skill": "recognize",
+      "example": {
+        "en": "Cross the road carefully.",
+        "he": "תחצה את הכביש בזהירות."
+      }
+    },
+    {
+      "id": "fr.word.traffic-light",
+      "conceptId": "concept.word.traffic-light",
+      "word": "feu tricolore",
+      "meaning": {
+        "en": "traffic light",
+        "he": "רמזור"
+      },
+      "emoji": "🚦",
+      "category": "transport",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 364,
+      "skill": "recognize",
+      "example": {
+        "en": "Turn left at the traffic light.",
+        "he": "פנה שמאלה ברמזור."
+      }
+    },
+    {
+      "id": "fr.word.kitchen",
+      "conceptId": "concept.word.kitchen",
+      "word": "cuisine",
+      "meaning": {
+        "en": "kitchen",
+        "he": "מטבח"
+      },
+      "category": "home",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 365,
+      "skill": "recognize",
+      "example": {
+        "en": "Is there a kitchen?",
+        "he": "יש מטבח?"
+      }
+    },
+    {
+      "id": "fr.word.app",
+      "conceptId": "concept.word.app",
+      "word": "application",
+      "meaning": {
+        "en": "app",
+        "he": "אפליקציה"
+      },
+      "category": "technology",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 366,
+      "skill": "recognize",
+      "example": {
+        "en": "Use the metro app.",
+        "he": "תשתמש באפליקציה של המטרו."
+      }
+    },
+    {
+      "id": "fr.word.email",
+      "conceptId": "concept.word.email",
+      "word": "e-mail",
+      "meaning": {
+        "en": "email",
+        "he": "אימייל"
+      },
+      "emoji": "📧",
+      "category": "technology",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 367,
+      "skill": "recognize",
+      "example": {
+        "en": "Send it by email.",
+        "he": "תשלח את זה באימייל."
+      }
+    },
+    {
+      "id": "fr.word.rice",
+      "conceptId": "concept.word.rice",
+      "word": "riz",
+      "meaning": {
+        "en": "rice",
+        "he": "אורז"
+      },
+      "emoji": "🍚",
+      "category": "food",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 368,
+      "skill": "recognize",
+      "example": {
+        "en": "Rice, please.",
+        "he": "אורז, בבקשה."
+      }
+    },
+    {
+      "id": "fr.word.soup",
+      "conceptId": "concept.word.soup",
+      "word": "soupe",
+      "meaning": {
+        "en": "soup",
+        "he": "מרק"
+      },
+      "emoji": "🍲",
+      "category": "food",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 369,
+      "skill": "recognize",
+      "example": {
+        "en": "Hot soup.",
+        "he": "מרק חם."
+      }
+    },
+    {
+      "id": "fr.word.bike",
+      "conceptId": "concept.word.bike",
+      "word": "vélo",
+      "meaning": {
+        "en": "bike",
+        "he": "אופניים"
+      },
+      "emoji": "🚲",
+      "category": "transport",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 370,
+      "skill": "recognize",
+      "example": {
+        "en": "I want to rent a bike.",
+        "he": "אני רוצה לשכור אופניים."
+      }
+    },
+    {
+      "id": "fr.word.boat",
+      "conceptId": "concept.word.boat",
+      "word": "bateau",
+      "meaning": {
+        "en": "boat",
+        "he": "סירה"
+      },
+      "emoji": "⛵",
+      "category": "transport",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 371,
+      "skill": "recognize",
+      "example": {
+        "en": "A boat trip.",
+        "he": "טיול בסירה."
+      }
+    },
+    {
+      "id": "fr.word.bank",
+      "conceptId": "concept.word.bank",
+      "word": "banque",
+      "meaning": {
+        "en": "bank",
+        "he": "בנק"
+      },
+      "emoji": "🏦",
+      "category": "places",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 372,
+      "skill": "recognize",
+      "example": {
+        "en": "It is next to the bank.",
+        "he": "זה ליד הבנק."
+      }
+    },
+    {
+      "id": "fr.word.run",
+      "conceptId": "concept.word.run",
+      "word": "courir",
+      "meaning": {
+        "en": "run",
+        "he": "לרוץ"
+      },
+      "emoji": "🏃",
+      "category": "activities",
+      "pos": "verb",
+      "tier": 1,
+      "rank": 373,
+      "skill": "recognize",
+      "example": {
+        "en": "I run every morning.",
+        "he": "אני רץ כל בוקר."
+      }
+    },
+    {
+      "id": "fr.word.black",
+      "conceptId": "concept.word.black",
+      "word": "noir",
+      "meaning": {
+        "en": "black",
+        "he": "שחור"
+      },
+      "emoji": "⚫",
+      "category": "colors",
+      "pos": "adj",
+      "tier": 1,
+      "rank": 374,
+      "skill": "recognize",
+      "example": {
+        "en": "Black coffee, please.",
+        "he": "קפה שחור, בבקשה."
+      }
+    },
+    {
+      "id": "fr.word.white",
+      "conceptId": "concept.word.white",
+      "word": "blanc",
+      "meaning": {
+        "en": "white",
+        "he": "לבן"
+      },
+      "emoji": "⚪",
+      "category": "colors",
+      "pos": "adj",
+      "tier": 1,
+      "rank": 375,
+      "skill": "recognize",
+      "example": {
+        "en": "White wine.",
+        "he": "יין לבן."
+      }
+    },
+    {
+      "id": "fr.word.stand",
+      "conceptId": "concept.word.stand",
+      "word": "se lever",
+      "meaning": {
+        "en": "stand",
+        "he": "לעמוד"
+      },
+      "category": "actions",
+      "pos": "verb",
+      "tier": 1,
+      "rank": 376,
+      "skill": "recognize",
+      "example": {
+        "en": "Please stand in line.",
+        "he": "נא לעמוד בתור."
+      }
+    },
+    {
+      "id": "fr.word.empty",
+      "conceptId": "concept.word.empty",
+      "word": "vide",
+      "meaning": {
+        "en": "empty",
+        "he": "ריק"
+      },
+      "category": "descriptions",
+      "pos": "adj",
+      "tier": 1,
+      "rank": 377,
+      "skill": "recognize",
+      "example": {
+        "en": "The bus is empty.",
+        "he": "האוטובוס ריק."
+      }
+    },
+    {
+      "id": "fr.word.sandwich",
+      "conceptId": "concept.word.sandwich",
+      "word": "sandwich",
+      "meaning": {
+        "en": "sandwich",
+        "he": "כריך"
+      },
+      "emoji": "🥪",
+      "category": "food",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 378,
+      "skill": "recognize",
+      "example": {
+        "en": "A cheese sandwich.",
+        "he": "כריך גבינה."
+      }
+    },
+    {
+      "id": "fr.word.building",
+      "conceptId": "concept.word.building",
+      "word": "bâtiment",
+      "meaning": {
+        "en": "building",
+        "he": "בניין"
+      },
+      "emoji": "🏢",
+      "category": "places",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 379,
+      "skill": "recognize",
+      "example": {
+        "en": "The tall building.",
+        "he": "הבניין הגבוה."
+      }
+    },
+    {
+      "id": "fr.word.coin",
+      "conceptId": "concept.word.coin",
+      "word": "pièce",
+      "meaning": {
+        "en": "coin",
+        "he": "מטבע"
+      },
+      "emoji": "🪙",
+      "category": "money",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 380,
+      "skill": "recognize",
+      "example": {
+        "en": "I need coins for the locker.",
+        "he": "אני צריך מטבעות ללוקר."
+      }
+    },
+    {
+      "id": "fr.word.sale",
+      "conceptId": "concept.word.sale",
+      "word": "soldes",
+      "meaning": {
+        "en": "sale",
+        "he": "מבצע"
+      },
+      "category": "money",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 381,
+      "skill": "recognize",
+      "example": {
+        "en": "Everything is on sale.",
+        "he": "הכול במבצע."
+      }
+    },
+    {
+      "id": "fr.word.tax",
+      "conceptId": "concept.word.tax",
+      "word": "taxe",
+      "meaning": {
+        "en": "tax",
+        "he": "מס"
+      },
+      "category": "money",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 382,
+      "skill": "recognize",
+      "example": {
+        "en": "Is tax included?",
+        "he": "המס כלול?"
+      }
+    },
+    {
+      "id": "fr.word.gift",
+      "conceptId": "concept.word.gift",
+      "word": "cadeau",
+      "meaning": {
+        "en": "gift",
+        "he": "מתנה"
+      },
+      "emoji": "🎁",
+      "category": "money",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 383,
+      "skill": "recall",
+      "example": {
+        "en": "A gift for my family.",
+        "he": "מתנה למשפחה שלי."
+      }
+    },
+    {
+      "id": "fr.word.mother",
+      "conceptId": "concept.word.mother",
+      "word": "mère",
+      "meaning": {
+        "en": "mother",
+        "he": "אמא"
+      },
+      "category": "people",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 384,
+      "skill": "recall",
+      "example": {
+        "en": "This is my mother.",
+        "he": "זאת אמא שלי."
+      }
+    },
+    {
+      "id": "fr.word.father",
+      "conceptId": "concept.word.father",
+      "word": "père",
+      "meaning": {
+        "en": "father",
+        "he": "אבא"
+      },
+      "category": "people",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 385,
+      "skill": "recall",
+      "example": {
+        "en": "My father loves to travel.",
+        "he": "אבא שלי אוהב לטייל."
+      }
+    },
+    {
+      "id": "fr.word.waiter",
+      "conceptId": "concept.word.waiter",
+      "word": "serveur",
+      "meaning": {
+        "en": "waiter",
+        "he": "מלצר"
+      },
+      "category": "people",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 386,
+      "skill": "recognize",
+      "example": {
+        "en": "Ask the waiter.",
+        "he": "תשאל את המלצר."
+      }
+    },
+    {
+      "id": "fr.word.pen",
+      "conceptId": "concept.word.pen",
+      "word": "stylo",
+      "meaning": {
+        "en": "pen",
+        "he": "עט"
+      },
+      "emoji": "🖊️",
+      "category": "objects",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 387,
+      "skill": "recognize",
+      "example": {
+        "en": "A pen for the form.",
+        "he": "עט לטופס."
+      }
+    },
+    {
+      "id": "fr.word.apple",
+      "conceptId": "concept.word.apple",
+      "word": "pomme",
+      "meaning": {
+        "en": "apple",
+        "he": "תפוח"
+      },
+      "emoji": "🍎",
+      "category": "food",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 388,
+      "skill": "recognize",
+      "example": {
+        "en": "One apple.",
+        "he": "תפוח אחד."
+      }
+    },
+    {
+      "id": "fr.word.banana",
+      "conceptId": "concept.word.banana",
+      "word": "banane",
+      "meaning": {
+        "en": "banana",
+        "he": "בננה"
+      },
+      "emoji": "🍌",
+      "category": "food",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 389,
+      "skill": "recognize",
+      "example": {
+        "en": "A banana, please.",
+        "he": "בננה, בבקשה."
+      }
+    },
+    {
+      "id": "fr.word.dog",
+      "conceptId": "concept.word.dog",
+      "word": "chien",
+      "meaning": {
+        "en": "dog",
+        "he": "כלב"
+      },
+      "emoji": "🐶",
+      "category": "animals",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 390,
+      "skill": "recognize",
+      "example": {
+        "en": "A big dog.",
+        "he": "כלב גדול."
+      }
+    },
+    {
+      "id": "fr.word.cat",
+      "conceptId": "concept.word.cat",
+      "word": "chat",
+      "meaning": {
+        "en": "cat",
+        "he": "חתול"
+      },
+      "emoji": "🐱",
+      "category": "animals",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 391,
+      "skill": "recognize",
+      "example": {
+        "en": "A small cat.",
+        "he": "חתול קטן."
+      }
+    },
+    {
+      "id": "fr.word.church",
+      "conceptId": "concept.word.church",
+      "word": "église",
+      "meaning": {
+        "en": "church",
+        "he": "כנסייה"
+      },
+      "emoji": "⛪",
+      "category": "places",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 392,
+      "skill": "recognize",
+      "example": {
+        "en": "The old church.",
+        "he": "הכנסייה העתיקה."
+      }
+    },
+    {
+      "id": "fr.word.camera",
+      "conceptId": "concept.word.camera",
+      "word": "appareil photo",
+      "meaning": {
+        "en": "camera",
+        "he": "מצלמה"
+      },
+      "emoji": "📷",
+      "category": "objects",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 393,
+      "skill": "recognize",
+      "example": {
+        "en": "Can I use my camera here?",
+        "he": "אפשר לצלם כאן?"
+      }
+    },
+    {
+      "id": "fr.word.sun",
+      "conceptId": "concept.word.sun",
+      "word": "soleil",
+      "meaning": {
+        "en": "sun",
+        "he": "שמש"
+      },
+      "emoji": "☀️",
+      "category": "weather",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 394,
+      "skill": "recognize",
+      "example": {
+        "en": "A sunny day.",
+        "he": "יום שמשי."
+      }
+    },
+    {
+      "id": "fr.word.mountain",
+      "conceptId": "concept.word.mountain",
+      "word": "montagne",
+      "meaning": {
+        "en": "mountain",
+        "he": "הר"
+      },
+      "emoji": "⛰️",
+      "category": "nature",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 395,
+      "skill": "recognize",
+      "example": {
+        "en": "A high mountain.",
+        "he": "הר גבוה."
+      }
+    },
+    {
+      "id": "fr.word.baby",
+      "conceptId": "concept.word.baby",
+      "word": "bébé",
+      "meaning": {
+        "en": "baby",
+        "he": "תינוק"
+      },
+      "emoji": "👶",
+      "category": "people",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 396,
+      "skill": "recognize",
+      "example": {
+        "en": "I am traveling with a baby.",
+        "he": "אני נוסע עם תינוק."
+      }
+    },
+    {
+      "id": "fr.word.pink",
+      "conceptId": "concept.word.pink",
+      "word": "rose",
+      "meaning": {
+        "en": "pink",
+        "he": "ורוד"
+      },
+      "emoji": "💗",
+      "category": "colors",
+      "pos": "adj",
+      "tier": 1,
+      "rank": 397,
+      "skill": "recognize",
+      "example": {
+        "en": "The pink dress.",
+        "he": "השמלה הוורודה."
+      }
+    },
+    {
+      "id": "fr.word.wash",
+      "conceptId": "concept.word.wash",
+      "word": "laver",
+      "meaning": {
+        "en": "wash",
+        "he": "לשטוף"
+      },
+      "category": "actions",
+      "pos": "verb",
+      "tier": 1,
+      "rank": 398,
+      "skill": "recognize",
+      "example": {
+        "en": "Where can I wash my hands?",
+        "he": "איפה אפשר לשטוף ידיים?"
+      }
+    },
+    {
+      "id": "fr.word.loud",
+      "conceptId": "concept.word.loud",
+      "word": "fort",
+      "meaning": {
+        "en": "loud",
+        "he": "רועש"
+      },
+      "category": "descriptions",
+      "pos": "adj",
+      "tier": 1,
+      "rank": 399,
+      "skill": "recall",
+      "example": {
+        "en": "It is too loud here.",
+        "he": "רועש כאן מדי."
+      }
+    },
+    {
+      "id": "fr.word.pasta",
+      "conceptId": "concept.word.pasta",
+      "word": "pâtes",
+      "meaning": {
+        "en": "pasta",
+        "he": "פסטה"
+      },
+      "emoji": "🍝",
+      "category": "food",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 400,
+      "skill": "recognize",
+      "example": {
+        "en": "Pasta with tomato sauce.",
+        "he": "פסטה ברוטב עגבניות."
+      }
+    },
+    {
+      "id": "fr.word.bridge",
+      "conceptId": "concept.word.bridge",
+      "word": "pont",
+      "meaning": {
+        "en": "bridge",
+        "he": "גשר"
+      },
+      "emoji": "🌉",
+      "category": "places",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 401,
+      "skill": "recognize",
+      "example": {
+        "en": "Cross the bridge.",
+        "he": "תחצה את הגשר."
+      }
+    },
+    {
+      "id": "fr.word.elevator",
+      "conceptId": "concept.word.elevator",
+      "word": "ascenseur",
+      "meaning": {
+        "en": "elevator",
+        "he": "מעלית"
+      },
+      "emoji": "🛗",
+      "category": "places",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 402,
+      "skill": "recognize",
+      "example": {
+        "en": "Take the elevator.",
+        "he": "קח את המעלית."
+      }
+    },
+    {
+      "id": "fr.word.stairs",
+      "conceptId": "concept.word.stairs",
+      "word": "escalier",
+      "meaning": {
+        "en": "stairs",
+        "he": "מדרגות"
+      },
+      "category": "places",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 403,
+      "skill": "recognize",
+      "example": {
+        "en": "The stairs are on the right.",
+        "he": "המדרגות מימין."
+      }
+    },
+    {
+      "id": "fr.word.discount",
+      "conceptId": "concept.word.discount",
+      "word": "réduction",
+      "meaning": {
+        "en": "discount",
+        "he": "הנחה"
+      },
+      "category": "money",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 404,
+      "skill": "recognize",
+      "example": {
+        "en": "Is there a discount?",
+        "he": "יש הנחה?"
+      }
+    },
+    {
+      "id": "fr.word.shekel",
+      "conceptId": "concept.word.shekel",
+      "word": "shekel",
+      "meaning": {
+        "en": "shekel",
+        "he": "שקל"
+      },
+      "category": "money",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 405,
+      "skill": "recognize",
+      "example": {
+        "en": "A hundred shekels.",
+        "he": "מאה שקלים."
+      }
+    },
+    {
+      "id": "fr.word.battery",
+      "conceptId": "concept.word.battery",
+      "word": "pile",
+      "meaning": {
+        "en": "battery",
+        "he": "סוללה"
+      },
+      "emoji": "🔋",
+      "category": "objects",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 406,
+      "skill": "recognize",
+      "example": {
+        "en": "The battery is empty.",
+        "he": "הסוללה ריקה."
+      }
+    },
+    {
+      "id": "fr.word.yellow",
+      "conceptId": "concept.word.yellow",
+      "word": "jaune",
+      "meaning": {
+        "en": "yellow",
+        "he": "צהוב"
+      },
+      "emoji": "🟡",
+      "category": "colors",
+      "pos": "adj",
+      "tier": 1,
+      "rank": 407,
+      "skill": "recognize",
+      "example": {
+        "en": "The yellow taxi.",
+        "he": "המונית הצהובה."
+      }
+    },
+    {
+      "id": "fr.word.orange",
+      "conceptId": "concept.word.orange",
+      "word": "orange",
+      "meaning": {
+        "en": "orange",
+        "he": "כתום"
+      },
+      "emoji": "🟠",
+      "category": "colors",
+      "pos": "adj",
+      "tier": 1,
+      "rank": 408,
+      "skill": "recognize",
+      "example": {
+        "en": "The orange building.",
+        "he": "הבניין הכתום."
+      }
+    },
+    {
+      "id": "fr.word.brown",
+      "conceptId": "concept.word.brown",
+      "word": "marron",
+      "meaning": {
+        "en": "brown",
+        "he": "חום"
+      },
+      "emoji": "🟤",
+      "category": "colors",
+      "pos": "adj",
+      "tier": 1,
+      "rank": 409,
+      "skill": "recognize",
+      "example": {
+        "en": "The brown bag.",
+        "he": "התיק החום."
+      }
+    },
+    {
+      "id": "fr.word.sad",
+      "conceptId": "concept.word.sad",
+      "word": "triste",
+      "meaning": {
+        "en": "sad",
+        "he": "עצוב"
+      },
+      "emoji": "😢",
+      "category": "descriptions",
+      "pos": "adj",
+      "tier": 1,
+      "rank": 410,
+      "skill": "recognize",
+      "example": {
+        "en": "She looks sad.",
+        "he": "היא נראית עצובה."
+      }
+    },
+    {
+      "id": "fr.word.alone",
+      "conceptId": "concept.word.alone",
+      "word": "seul",
+      "meaning": {
+        "en": "alone",
+        "he": "לבד"
+      },
+      "category": "descriptions",
+      "pos": "adv",
+      "tier": 1,
+      "rank": 411,
+      "skill": "recall",
+      "example": {
+        "en": "I am traveling alone.",
+        "he": "אני מטייל לבד."
+      }
+    },
+    {
+      "id": "fr.word.ice-cream",
+      "conceptId": "concept.word.ice-cream",
+      "word": "glace",
+      "meaning": {
+        "en": "ice cream",
+        "he": "גלידה"
+      },
+      "emoji": "🍦",
+      "category": "food",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 412,
+      "skill": "recognize",
+      "example": {
+        "en": "Two scoops of ice cream.",
+        "he": "שני כדורי גלידה."
+      }
+    },
+    {
+      "id": "fr.word.soap",
+      "conceptId": "concept.word.soap",
+      "word": "savon",
+      "meaning": {
+        "en": "soap",
+        "he": "סבון"
+      },
+      "emoji": "🧼",
+      "category": "objects",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 413,
+      "skill": "recognize",
+      "example": {
+        "en": "There is no soap.",
+        "he": "אין סבון."
+      }
+    },
+    {
+      "id": "fr.word.paper",
+      "conceptId": "concept.word.paper",
+      "word": "papier",
+      "meaning": {
+        "en": "paper",
+        "he": "נייר"
+      },
+      "emoji": "📄",
+      "category": "objects",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 414,
+      "skill": "recognize",
+      "example": {
+        "en": "A piece of paper.",
+        "he": "פיסת נייר."
+      }
+    },
+    {
+      "id": "fr.word.chair",
+      "conceptId": "concept.word.chair",
+      "word": "chaise",
+      "meaning": {
+        "en": "chair",
+        "he": "כיסא"
+      },
+      "emoji": "🪑",
+      "category": "home",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 415,
+      "skill": "recognize",
+      "example": {
+        "en": "One more chair, please.",
+        "he": "עוד כיסא, בבקשה."
+      }
+    },
+    {
+      "id": "fr.word.apartment",
+      "conceptId": "concept.word.apartment",
+      "word": "appartement",
+      "meaning": {
+        "en": "apartment",
+        "he": "דירה"
+      },
+      "category": "home",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 416,
+      "skill": "recognize",
+      "example": {
+        "en": "We rented an apartment.",
+        "he": "שכרנו דירה."
+      }
+    },
+    {
+      "id": "fr.word.computer",
+      "conceptId": "concept.word.computer",
+      "word": "ordinateur",
+      "meaning": {
+        "en": "computer",
+        "he": "מחשב"
+      },
+      "emoji": "💻",
+      "category": "technology",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 417,
+      "skill": "recognize",
+      "example": {
+        "en": "My computer is in the bag.",
+        "he": "המחשב שלי בתיק."
+      }
+    },
+    {
+      "id": "fr.word.message",
+      "conceptId": "concept.word.message",
+      "word": "message",
+      "meaning": {
+        "en": "message",
+        "he": "הודעה"
+      },
+      "emoji": "💬",
+      "category": "technology",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 418,
+      "skill": "recognize",
+      "example": {
+        "en": "Send me a message.",
+        "he": "תשלח לי הודעה."
+      }
+    },
+    {
+      "id": "fr.word.eye",
+      "conceptId": "concept.word.eye",
+      "word": "œil",
+      "meaning": {
+        "en": "eye",
+        "he": "עין"
+      },
+      "emoji": "👁️",
+      "category": "body",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 419,
+      "skill": "recognize",
+      "example": {
+        "en": "Something is in my eye.",
+        "he": "משהו נכנס לי לעין."
+      }
+    },
+    {
+      "id": "fr.word.mouth",
+      "conceptId": "concept.word.mouth",
+      "word": "bouche",
+      "meaning": {
+        "en": "mouth",
+        "he": "פה"
+      },
+      "emoji": "👄",
+      "category": "body",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 420,
+      "skill": "recognize",
+      "example": {
+        "en": "Open your mouth.",
+        "he": "תפתח את הפה."
+      }
+    },
+    {
+      "id": "fr.word.foot",
+      "conceptId": "concept.word.foot",
+      "word": "pied",
+      "meaning": {
+        "en": "foot",
+        "he": "כף רגל"
+      },
+      "emoji": "🦶",
+      "category": "body",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 421,
+      "skill": "recognize",
+      "example": {
+        "en": "My foot hurts.",
+        "he": "כף הרגל שלי כואבת."
+      }
+    },
+    {
+      "id": "fr.word.leg",
+      "conceptId": "concept.word.leg",
+      "word": "jambe",
+      "meaning": {
+        "en": "leg",
+        "he": "רגל"
+      },
+      "emoji": "🦵",
+      "category": "body",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 422,
+      "skill": "recognize",
+      "example": {
+        "en": "I hurt my leg.",
+        "he": "פגעתי ברגל."
+      }
+    },
+    {
+      "id": "fr.word.shirt",
+      "conceptId": "concept.word.shirt",
+      "word": "chemise",
+      "meaning": {
+        "en": "shirt",
+        "he": "חולצה"
+      },
+      "emoji": "👕",
+      "category": "clothing",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 423,
+      "skill": "recognize",
+      "example": {
+        "en": "A blue shirt.",
+        "he": "חולצה כחולה."
+      }
+    },
+    {
+      "id": "fr.word.shoes",
+      "conceptId": "concept.word.shoes",
+      "word": "chaussures",
+      "meaning": {
+        "en": "shoes",
+        "he": "נעליים"
+      },
+      "emoji": "👟",
+      "category": "clothing",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 424,
+      "skill": "recognize",
+      "example": {
+        "en": "New shoes.",
+        "he": "נעליים חדשות."
+      }
+    },
+    {
+      "id": "fr.word.football",
+      "conceptId": "concept.word.football",
+      "word": "football",
+      "meaning": {
+        "en": "football",
+        "he": "כדורגל"
+      },
+      "emoji": "⚽",
+      "category": "activities",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 425,
+      "skill": "recognize",
+      "example": {
+        "en": "Let us watch football.",
+        "he": "בוא נראה כדורגל."
+      }
+    },
+    {
+      "id": "fr.word.congratulations",
+      "conceptId": "concept.word.congratulations",
+      "word": "félicitations",
+      "meaning": {
+        "en": "congratulations",
+        "he": "מזל טוב"
+      },
+      "category": "glue",
+      "pos": "interj",
+      "tier": 1,
+      "rank": 426,
+      "skill": "recognize",
+      "example": {
+        "en": "Congratulations!",
+        "he": "מזל טוב!"
+      }
+    },
+    {
+      "id": "fr.word.purple",
+      "conceptId": "concept.word.purple",
+      "word": "violet",
+      "meaning": {
+        "en": "purple",
+        "he": "סגול"
+      },
+      "emoji": "🟣",
+      "category": "colors",
+      "pos": "adj",
+      "tier": 1,
+      "rank": 427,
+      "skill": "recognize",
+      "example": {
+        "en": "The purple line.",
+        "he": "הקו הסגול."
+      }
+    },
+    {
+      "id": "fr.word.cup",
+      "conceptId": "concept.word.cup",
+      "word": "tasse",
+      "meaning": {
+        "en": "cup",
+        "he": "ספל"
+      },
+      "category": "food",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 428,
+      "skill": "recognize",
+      "example": {
+        "en": "A cup of tea.",
+        "he": "ספל תה."
+      }
+    },
+    {
+      "id": "fr.word.dessert",
+      "conceptId": "concept.word.dessert",
+      "word": "dessert",
+      "meaning": {
+        "en": "dessert",
+        "he": "קינוח"
+      },
+      "emoji": "🍮",
+      "category": "food",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 429,
+      "skill": "recognize",
+      "example": {
+        "en": "Something for dessert?",
+        "he": "משהו לקינוח?"
+      }
+    },
+    {
+      "id": "fr.word.castle",
+      "conceptId": "concept.word.castle",
+      "word": "château",
+      "meaning": {
+        "en": "castle",
+        "he": "טירה"
+      },
+      "emoji": "🏰",
+      "category": "places",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 430,
+      "skill": "recognize",
+      "example": {
+        "en": "Tickets to the castle.",
+        "he": "כרטיסים לטירה."
+      }
+    },
+    {
+      "id": "fr.word.wife",
+      "conceptId": "concept.word.wife",
+      "word": "épouse",
+      "meaning": {
+        "en": "wife",
+        "he": "אישה (בת זוג)"
+      },
+      "category": "people",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 431,
+      "skill": "recall",
+      "example": {
+        "en": "My wife and I.",
+        "he": "אשתי ואני."
+      }
+    },
+    {
+      "id": "fr.word.son",
+      "conceptId": "concept.word.son",
+      "word": "fils",
+      "meaning": {
+        "en": "son",
+        "he": "בן"
+      },
+      "category": "people",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 432,
+      "skill": "recognize",
+      "example": {
+        "en": "Our son is ten.",
+        "he": "הבן שלנו בן עשר."
+      }
+    },
+    {
+      "id": "fr.word.sunglasses",
+      "conceptId": "concept.word.sunglasses",
+      "word": "lunettes de soleil",
+      "meaning": {
+        "en": "sunglasses",
+        "he": "משקפי שמש"
+      },
+      "emoji": "🕶️",
+      "category": "objects",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 433,
+      "skill": "recognize",
+      "example": {
+        "en": "New sunglasses.",
+        "he": "משקפי שמש חדשים."
+      }
+    },
+    {
+      "id": "fr.word.pillow",
+      "conceptId": "concept.word.pillow",
+      "word": "oreiller",
+      "meaning": {
+        "en": "pillow",
+        "he": "כרית"
+      },
+      "category": "home",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 434,
+      "skill": "recall",
+      "example": {
+        "en": "Another pillow, please.",
+        "he": "עוד כרית, בבקשה."
+      }
+    },
+    {
+      "id": "fr.word.blanket",
+      "conceptId": "concept.word.blanket",
+      "word": "couverture",
+      "meaning": {
+        "en": "blanket",
+        "he": "שמיכה"
+      },
+      "category": "home",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 435,
+      "skill": "recall",
+      "example": {
+        "en": "A warm blanket.",
+        "he": "שמיכה חמה."
+      }
+    },
+    {
+      "id": "fr.word.fridge",
+      "conceptId": "concept.word.fridge",
+      "word": "frigo",
+      "meaning": {
+        "en": "fridge",
+        "he": "מקרר"
+      },
+      "category": "home",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 436,
+      "skill": "recognize",
+      "example": {
+        "en": "Is there a fridge in the room?",
+        "he": "יש מקרר בחדר?"
+      }
+    },
+    {
+      "id": "fr.word.balcony",
+      "conceptId": "concept.word.balcony",
+      "word": "balcon",
+      "meaning": {
+        "en": "balcony",
+        "he": "מרפסת"
+      },
+      "category": "home",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 437,
+      "skill": "recognize",
+      "example": {
+        "en": "A room with a balcony.",
+        "he": "חדר עם מרפסת."
+      }
+    },
+    {
+      "id": "fr.word.screen",
+      "conceptId": "concept.word.screen",
+      "word": "écran",
+      "meaning": {
+        "en": "screen",
+        "he": "מסך"
+      },
+      "category": "technology",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 438,
+      "skill": "recognize",
+      "example": {
+        "en": "Look at the screen.",
+        "he": "תסתכל על המסך."
+      }
+    },
+    {
+      "id": "fr.word.nose",
+      "conceptId": "concept.word.nose",
+      "word": "nez",
+      "meaning": {
+        "en": "nose",
+        "he": "אף"
+      },
+      "emoji": "👃",
+      "category": "body",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 439,
+      "skill": "recognize",
+      "example": {
+        "en": "My nose hurts.",
+        "he": "האף שלי כואב."
+      }
+    },
+    {
+      "id": "fr.word.ear",
+      "conceptId": "concept.word.ear",
+      "word": "oreille",
+      "meaning": {
+        "en": "ear",
+        "he": "אוזן"
+      },
+      "emoji": "👂",
+      "category": "body",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 440,
+      "skill": "recognize",
+      "example": {
+        "en": "My ear hurts.",
+        "he": "האוזן שלי כואבת."
+      }
+    },
+    {
+      "id": "fr.word.chocolate",
+      "conceptId": "concept.word.chocolate",
+      "word": "chocolat",
+      "meaning": {
+        "en": "chocolate",
+        "he": "שוקולד"
+      },
+      "emoji": "🍫",
+      "category": "food",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 441,
+      "skill": "recognize",
+      "example": {
+        "en": "Hot chocolate.",
+        "he": "שוקו חם."
+      }
+    },
+    {
+      "id": "fr.word.ferry",
+      "conceptId": "concept.word.ferry",
+      "word": "ferry",
+      "meaning": {
+        "en": "ferry",
+        "he": "מעבורת"
+      },
+      "emoji": "⛴️",
+      "category": "transport",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 442,
+      "skill": "recognize",
+      "example": {
+        "en": "The ferry to the island.",
+        "he": "המעבורת לאי."
+      }
+    },
+    {
+      "id": "fr.word.souvenir",
+      "conceptId": "concept.word.souvenir",
+      "word": "souvenir",
+      "meaning": {
+        "en": "souvenir",
+        "he": "מזכרת"
+      },
+      "category": "money",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 443,
+      "skill": "recognize",
+      "example": {
+        "en": "A small souvenir.",
+        "he": "מזכרת קטנה."
+      }
+    },
+    {
+      "id": "fr.word.brother",
+      "conceptId": "concept.word.brother",
+      "word": "frère",
+      "meaning": {
+        "en": "brother",
+        "he": "אח"
+      },
+      "category": "people",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 444,
+      "skill": "recognize",
+      "example": {
+        "en": "I travel with my brother.",
+        "he": "אני מטייל עם אח שלי."
+      }
+    },
+    {
+      "id": "fr.word.sister",
+      "conceptId": "concept.word.sister",
+      "word": "sœur",
+      "meaning": {
+        "en": "sister",
+        "he": "אחות"
+      },
+      "category": "people",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 445,
+      "skill": "recognize",
+      "example": {
+        "en": "My sister lives here.",
+        "he": "אחותי גרה כאן."
+      }
+    },
+    {
+      "id": "fr.word.husband",
+      "conceptId": "concept.word.husband",
+      "word": "mari",
+      "meaning": {
+        "en": "husband",
+        "he": "בעל"
+      },
+      "category": "people",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 446,
+      "skill": "recall",
+      "example": {
+        "en": "This is my husband.",
+        "he": "זה בעלי."
+      }
+    },
+    {
+      "id": "fr.word.daughter",
+      "conceptId": "concept.word.daughter",
+      "word": "fille",
+      "meaning": {
+        "en": "daughter",
+        "he": "בת"
+      },
+      "category": "people",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 447,
+      "skill": "recognize",
+      "example": {
+        "en": "My daughter is here.",
+        "he": "הבת שלי כאן."
+      }
+    },
+    {
+      "id": "fr.word.toothbrush",
+      "conceptId": "concept.word.toothbrush",
+      "word": "brosse à dents",
+      "meaning": {
+        "en": "toothbrush",
+        "he": "מברשת שיניים"
+      },
+      "emoji": "🪥",
+      "category": "objects",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 448,
+      "skill": "recognize",
+      "example": {
+        "en": "I forgot my toothbrush.",
+        "he": "שכחתי את מברשת השיניים."
+      }
+    },
+    {
+      "id": "fr.word.toothpaste",
+      "conceptId": "concept.word.toothpaste",
+      "word": "dentifrice",
+      "meaning": {
+        "en": "toothpaste",
+        "he": "משחת שיניים"
+      },
+      "category": "objects",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 449,
+      "skill": "recognize",
+      "example": {
+        "en": "A small toothpaste.",
+        "he": "משחת שיניים קטנה."
+      }
+    },
+    {
+      "id": "fr.word.sheets",
+      "conceptId": "concept.word.sheets",
+      "word": "draps",
+      "meaning": {
+        "en": "sheets",
+        "he": "סדינים"
+      },
+      "category": "home",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 450,
+      "skill": "recognize",
+      "example": {
+        "en": "Clean sheets, please.",
+        "he": "סדינים נקיים, בבקשה."
+      }
+    },
+    {
+      "id": "fr.word.laundry",
+      "conceptId": "concept.word.laundry",
+      "word": "linge",
+      "meaning": {
+        "en": "laundry",
+        "he": "כביסה"
+      },
+      "emoji": "🧺",
+      "category": "home",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 451,
+      "skill": "recognize",
+      "example": {
+        "en": "Is there a laundry service?",
+        "he": "יש שירות כביסה?"
+      }
+    },
+    {
+      "id": "fr.word.video",
+      "conceptId": "concept.word.video",
+      "word": "vidéo",
+      "meaning": {
+        "en": "video",
+        "he": "סרטון"
+      },
+      "emoji": "🎬",
+      "category": "technology",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 452,
+      "skill": "recognize",
+      "example": {
+        "en": "A short video.",
+        "he": "סרטון קצר."
+      }
+    },
+    {
+      "id": "fr.word.glasses",
+      "conceptId": "concept.word.glasses",
+      "word": "lunettes",
+      "meaning": {
+        "en": "glasses",
+        "he": "משקפיים"
+      },
+      "emoji": "👓",
+      "category": "objects",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 453,
+      "skill": "recognize",
+      "example": {
+        "en": "I need my glasses.",
+        "he": "אני צריך את המשקפיים שלי."
+      }
+    },
+    {
+      "id": "fr.word.jacket",
+      "conceptId": "concept.word.jacket",
+      "word": "veste",
+      "meaning": {
+        "en": "jacket",
+        "he": "מעיל"
+      },
+      "emoji": "🧥",
+      "category": "clothing",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 454,
+      "skill": "recognize",
+      "example": {
+        "en": "A warm jacket.",
+        "he": "מעיל חם."
+      }
+    },
+    {
+      "id": "fr.word.dress",
+      "conceptId": "concept.word.dress",
+      "word": "robe",
+      "meaning": {
+        "en": "dress",
+        "he": "שמלה"
+      },
+      "emoji": "👗",
+      "category": "clothing",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 455,
+      "skill": "recognize",
+      "example": {
+        "en": "A red dress.",
+        "he": "שמלה אדומה."
+      }
+    },
+    {
+      "id": "fr.word.pants",
+      "conceptId": "concept.word.pants",
+      "word": "pantalon",
+      "meaning": {
+        "en": "pants",
+        "he": "מכנסיים"
+      },
+      "emoji": "👖",
+      "category": "clothing",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 456,
+      "skill": "recognize",
+      "example": {
+        "en": "Black pants.",
+        "he": "מכנסיים שחורים."
+      }
+    },
+    {
+      "id": "fr.word.snow",
+      "conceptId": "concept.word.snow",
+      "word": "neige",
+      "meaning": {
+        "en": "snow",
+        "he": "שלג"
+      },
+      "emoji": "❄️",
+      "category": "weather",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 457,
+      "skill": "recognize",
+      "example": {
+        "en": "A lot of snow.",
+        "he": "הרבה שלג."
+      }
+    },
+    {
+      "id": "fr.word.pepper",
+      "conceptId": "concept.word.pepper",
+      "word": "poivre",
+      "meaning": {
+        "en": "pepper",
+        "he": "פלפל"
+      },
+      "category": "food",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 458,
+      "skill": "recognize",
+      "example": {
+        "en": "A little pepper.",
+        "he": "קצת פלפל."
+      }
+    },
+    {
+      "id": "fr.word.oil",
+      "conceptId": "concept.word.oil",
+      "word": "huile",
+      "meaning": {
+        "en": "oil",
+        "he": "שמן"
+      },
+      "category": "food",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 459,
+      "skill": "recognize",
+      "example": {
+        "en": "Olive oil.",
+        "he": "שמן זית."
+      }
+    },
+    {
+      "id": "fr.word.butter",
+      "conceptId": "concept.word.butter",
+      "word": "beurre",
+      "meaning": {
+        "en": "butter",
+        "he": "חמאה"
+      },
+      "emoji": "🧈",
+      "category": "food",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 460,
+      "skill": "recognize",
+      "example": {
+        "en": "Bread with butter.",
+        "he": "לחם עם חמאה."
+      }
+    },
+    {
+      "id": "fr.word.cake",
+      "conceptId": "concept.word.cake",
+      "word": "gâteau",
+      "meaning": {
+        "en": "cake",
+        "he": "עוגה"
+      },
+      "emoji": "🍰",
+      "category": "food",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 461,
+      "skill": "recognize",
+      "example": {
+        "en": "A piece of cake.",
+        "he": "פרוסת עוגה."
+      }
+    },
+    {
+      "id": "fr.word.tomato",
+      "conceptId": "concept.word.tomato",
+      "word": "tomate",
+      "meaning": {
+        "en": "tomato",
+        "he": "עגבנייה"
+      },
+      "emoji": "🍅",
+      "category": "food",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 462,
+      "skill": "recognize",
+      "example": {
+        "en": "Without tomato, please.",
+        "he": "בלי עגבנייה, בבקשה."
+      }
+    },
+    {
+      "id": "fr.word.fork",
+      "conceptId": "concept.word.fork",
+      "word": "fourchette",
+      "meaning": {
+        "en": "fork",
+        "he": "מזלג"
+      },
+      "category": "food",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 463,
+      "skill": "recognize",
+      "example": {
+        "en": "A fork, please.",
+        "he": "מזלג, בבקשה."
+      }
+    },
+    {
+      "id": "fr.word.knife",
+      "conceptId": "concept.word.knife",
+      "word": "couteau",
+      "meaning": {
+        "en": "knife",
+        "he": "סכין"
+      },
+      "emoji": "🔪",
+      "category": "food",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 464,
+      "skill": "recognize",
+      "example": {
+        "en": "A clean knife, please.",
+        "he": "סכין נקייה, בבקשה."
+      }
+    },
+    {
+      "id": "fr.word.spoon",
+      "conceptId": "concept.word.spoon",
+      "word": "cuillère",
+      "meaning": {
+        "en": "spoon",
+        "he": "כף"
+      },
+      "emoji": "🥄",
+      "category": "food",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 465,
+      "skill": "recognize",
+      "example": {
+        "en": "A spoon for the soup.",
+        "he": "כף למרק."
+      }
+    },
+    {
+      "id": "fr.word.plate",
+      "conceptId": "concept.word.plate",
+      "word": "assiette",
+      "meaning": {
+        "en": "plate",
+        "he": "צלחת"
+      },
+      "emoji": "🍽️",
+      "category": "food",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 466,
+      "skill": "recognize",
+      "example": {
+        "en": "Another plate, please.",
+        "he": "עוד צלחת, בבקשה."
+      }
+    },
+    {
+      "id": "fr.word.sink",
+      "conceptId": "concept.word.sink",
+      "word": "évier",
+      "meaning": {
+        "en": "sink",
+        "he": "כיור"
+      },
+      "category": "home",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 467,
+      "skill": "recognize",
+      "example": {
+        "en": "The sink is blocked.",
+        "he": "הכיור סתום."
+      }
+    },
+    {
+      "id": "fr.word.lamp",
+      "conceptId": "concept.word.lamp",
+      "word": "lampe",
+      "meaning": {
+        "en": "lamp",
+        "he": "מנורה"
+      },
+      "emoji": "💡",
+      "category": "home",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 468,
+      "skill": "recognize",
+      "example": {
+        "en": "The lamp is broken.",
+        "he": "המנורה שבורה."
+      }
+    },
+    {
+      "id": "fr.word.trash",
+      "conceptId": "concept.word.trash",
+      "word": "poubelle",
+      "meaning": {
+        "en": "trash",
+        "he": "פח אשפה"
+      },
+      "emoji": "🗑️",
+      "category": "home",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 469,
+      "skill": "recognize",
+      "example": {
+        "en": "Where is the trash?",
+        "he": "איפה פח האשפה?"
+      }
+    },
+    {
+      "id": "fr.word.garden",
+      "conceptId": "concept.word.garden",
+      "word": "jardin",
+      "meaning": {
+        "en": "garden",
+        "he": "גינה"
+      },
+      "category": "home",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 470,
+      "skill": "recognize",
+      "example": {
+        "en": "A table in the garden.",
+        "he": "שולחן בגינה."
+      }
+    },
+    {
+      "id": "fr.word.cable",
+      "conceptId": "concept.word.cable",
+      "word": "câble",
+      "meaning": {
+        "en": "cable",
+        "he": "כבל"
+      },
+      "category": "technology",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 471,
+      "skill": "recognize",
+      "example": {
+        "en": "A USB cable.",
+        "he": "כבל יו-אס-בי."
+      }
+    },
+    {
+      "id": "fr.word.headphones",
+      "conceptId": "concept.word.headphones",
+      "word": "écouteurs",
+      "meaning": {
+        "en": "headphones",
+        "he": "אוזניות"
+      },
+      "emoji": "🎧",
+      "category": "technology",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 472,
+      "skill": "recognize",
+      "example": {
+        "en": "I forgot my headphones.",
+        "he": "שכחתי את האוזניות שלי."
+      }
+    },
+    {
+      "id": "fr.word.watch",
+      "conceptId": "concept.word.watch",
+      "word": "montre",
+      "meaning": {
+        "en": "watch",
+        "he": "שעון"
+      },
+      "emoji": "⌚",
+      "category": "objects",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 473,
+      "skill": "recognize",
+      "example": {
+        "en": "A nice watch.",
+        "he": "שעון יפה."
+      }
+    },
+    {
+      "id": "fr.word.hat",
+      "conceptId": "concept.word.hat",
+      "word": "chapeau",
+      "meaning": {
+        "en": "hat",
+        "he": "כובע"
+      },
+      "emoji": "🧢",
+      "category": "clothing",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 474,
+      "skill": "recognize",
+      "example": {
+        "en": "A sun hat.",
+        "he": "כובע שמש."
+      }
+    },
+    {
+      "id": "fr.word.storm",
+      "conceptId": "concept.word.storm",
+      "word": "tempête",
+      "meaning": {
+        "en": "storm",
+        "he": "סערה"
+      },
+      "emoji": "⛈️",
+      "category": "weather",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 475,
+      "skill": "recognize",
+      "example": {
+        "en": "A big storm is coming.",
+        "he": "מגיעה סערה גדולה."
+      }
+    },
+    {
+      "id": "fr.word.dance",
+      "conceptId": "concept.word.dance",
+      "word": "danser",
+      "meaning": {
+        "en": "dance",
+        "he": "לרקוד"
+      },
+      "emoji": "💃",
+      "category": "activities",
+      "pos": "verb",
+      "tier": 1,
+      "rank": 476,
+      "skill": "recognize",
+      "example": {
+        "en": "They love to dance.",
+        "he": "הם אוהבים לרקוד."
+      }
+    },
+    {
+      "id": "fr.word.cream",
+      "conceptId": "concept.word.cream",
+      "word": "crème",
+      "meaning": {
+        "en": "cream",
+        "he": "משחה"
+      },
+      "emoji": "🧴",
+      "category": "health",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 477,
+      "skill": "recognize",
+      "example": {
+        "en": "A cream for the sunburn.",
+        "he": "משחה לכוויית השמש."
+      }
+    },
+    {
+      "id": "fr.word.boy",
+      "conceptId": "concept.word.boy",
+      "word": "garçon",
+      "meaning": {
+        "en": "boy",
+        "he": "ילד (בן)"
+      },
+      "category": "people",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 478,
+      "skill": "recognize",
+      "example": {
+        "en": "The little boy.",
+        "he": "הילד הקטן."
+      }
+    },
+    {
+      "id": "fr.word.girl",
+      "conceptId": "concept.word.girl",
+      "word": "fille",
+      "meaning": {
+        "en": "girl",
+        "he": "ילדה"
+      },
+      "category": "people",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 479,
+      "skill": "recognize",
+      "example": {
+        "en": "The girl with the hat.",
+        "he": "הילדה עם הכובע."
+      }
+    },
+    {
+      "id": "fr.word.shampoo",
+      "conceptId": "concept.word.shampoo",
+      "word": "shampoing",
+      "meaning": {
+        "en": "shampoo",
+        "he": "שמפו"
+      },
+      "category": "objects",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 480,
+      "skill": "recognize",
+      "example": {
+        "en": "Shampoo and soap.",
+        "he": "שמפו וסבון."
+      }
+    },
+    {
+      "id": "fr.word.razor",
+      "conceptId": "concept.word.razor",
+      "word": "rasoir",
+      "meaning": {
+        "en": "razor",
+        "he": "סכין גילוח"
+      },
+      "emoji": "🪒",
+      "category": "objects",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 481,
+      "skill": "recognize",
+      "example": {
+        "en": "A razor, please.",
+        "he": "סכין גילוח, בבקשה."
+      }
+    },
+    {
+      "id": "fr.word.bird",
+      "conceptId": "concept.word.bird",
+      "word": "oiseau",
+      "meaning": {
+        "en": "bird",
+        "he": "ציפור"
+      },
+      "emoji": "🐦",
+      "category": "animals",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 482,
+      "skill": "recognize",
+      "example": {
+        "en": "A little bird.",
+        "he": "ציפור קטנה."
+      }
+    },
+    {
+      "id": "fr.word.horse",
+      "conceptId": "concept.word.horse",
+      "word": "cheval",
+      "meaning": {
+        "en": "horse",
+        "he": "סוס"
+      },
+      "emoji": "🐴",
+      "category": "animals",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 483,
+      "skill": "recognize",
+      "example": {
+        "en": "A brown horse.",
+        "he": "סוס חום."
+      }
+    },
+    {
+      "id": "fr.word.cow",
+      "conceptId": "concept.word.cow",
+      "word": "vache",
+      "meaning": {
+        "en": "cow",
+        "he": "פרה"
+      },
+      "emoji": "🐄",
+      "category": "animals",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 484,
+      "skill": "recognize",
+      "example": {
+        "en": "A cow in the field.",
+        "he": "פרה בשדה."
+      }
+    },
+    {
+      "id": "fr.word.umbrella",
+      "conceptId": "concept.word.umbrella",
+      "word": "parapluie",
+      "meaning": {
+        "en": "umbrella",
+        "he": "מטרייה"
+      },
+      "emoji": "☂️",
+      "category": "objects",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 485,
+      "skill": "recognize",
+      "example": {
+        "en": "Take an umbrella.",
+        "he": "קח מטרייה."
+      }
+    },
+    {
+      "id": "fr.word.wind",
+      "conceptId": "concept.word.wind",
+      "word": "vent",
+      "meaning": {
+        "en": "wind",
+        "he": "רוח"
+      },
+      "emoji": "💨",
+      "category": "weather",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 486,
+      "skill": "recognize",
+      "example": {
+        "en": "A strong wind.",
+        "he": "רוח חזקה."
+      }
+    },
+    {
+      "id": "fr.word.tree",
+      "conceptId": "concept.word.tree",
+      "word": "arbre",
+      "meaning": {
+        "en": "tree",
+        "he": "עץ"
+      },
+      "emoji": "🌳",
+      "category": "nature",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 487,
+      "skill": "recognize",
+      "example": {
+        "en": "A big tree.",
+        "he": "עץ גדול."
+      }
+    },
+    {
+      "id": "fr.word.flower",
+      "conceptId": "concept.word.flower",
+      "word": "fleur",
+      "meaning": {
+        "en": "flower",
+        "he": "פרח"
+      },
+      "emoji": "🌸",
+      "category": "nature",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 488,
+      "skill": "recognize",
+      "example": {
+        "en": "A beautiful flower.",
+        "he": "פרח יפה."
+      }
+    },
+    {
+      "id": "fr.word.hair",
+      "conceptId": "concept.word.hair",
+      "word": "cheveux",
+      "meaning": {
+        "en": "hair",
+        "he": "שיער"
+      },
+      "category": "body",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 489,
+      "skill": "recognize",
+      "example": {
+        "en": "Short hair.",
+        "he": "שיער קצר."
+      }
+    },
+    {
+      "id": "fr.word.face",
+      "conceptId": "concept.word.face",
+      "word": "visage",
+      "meaning": {
+        "en": "face",
+        "he": "פנים"
+      },
+      "category": "body",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 490,
+      "skill": "recognize",
+      "example": {
+        "en": "Wash your face.",
+        "he": "שטוף את הפנים."
+      }
+    },
+    {
+      "id": "fr.word.sofa",
+      "conceptId": "concept.word.sofa",
+      "word": "canapé",
+      "meaning": {
+        "en": "sofa",
+        "he": "ספה"
+      },
+      "emoji": "🛋️",
+      "category": "home",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 491,
+      "skill": "recognize",
+      "example": {
+        "en": "A sofa in the lobby.",
+        "he": "ספה בלובי."
+      }
+    },
+    {
+      "id": "fr.word.wall",
+      "conceptId": "concept.word.wall",
+      "word": "mur",
+      "meaning": {
+        "en": "wall",
+        "he": "קיר"
+      },
+      "category": "home",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 492,
+      "skill": "recognize",
+      "example": {
+        "en": "The picture on the wall.",
+        "he": "התמונה על הקיר."
+      }
+    },
+    {
+      "id": "fr.word.moon",
+      "conceptId": "concept.word.moon",
+      "word": "lune",
+      "meaning": {
+        "en": "moon",
+        "he": "ירח"
+      },
+      "emoji": "🌙",
+      "category": "nature",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 493,
+      "skill": "recognize",
+      "example": {
+        "en": "A full moon.",
+        "he": "ירח מלא."
+      }
+    },
+    {
+      "id": "fr.word.television",
+      "conceptId": "concept.word.television",
+      "word": "télévision",
+      "meaning": {
+        "en": "television",
+        "he": "טלוויזיה"
+      },
+      "emoji": "📺",
+      "category": "technology",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 494,
+      "skill": "recognize",
+      "example": {
+        "en": "The television does not work.",
+        "he": "הטלוויזיה לא עובדת."
+      }
+    },
+    {
+      "id": "fr.word.socks",
+      "conceptId": "concept.word.socks",
+      "word": "chaussettes",
+      "meaning": {
+        "en": "socks",
+        "he": "גרביים"
+      },
+      "emoji": "🧦",
+      "category": "clothing",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 495,
+      "skill": "recognize",
+      "example": {
+        "en": "Warm socks.",
+        "he": "גרביים חמים."
+      }
+    },
+    {
+      "id": "fr.word.gloves",
+      "conceptId": "concept.word.gloves",
+      "word": "gants",
+      "meaning": {
+        "en": "gloves",
+        "he": "כפפות"
+      },
+      "emoji": "🧤",
+      "category": "clothing",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 496,
+      "skill": "recognize",
+      "example": {
+        "en": "Winter gloves.",
+        "he": "כפפות חורף."
+      }
+    },
+    {
+      "id": "fr.word.cloud",
+      "conceptId": "concept.word.cloud",
+      "word": "nuage",
+      "meaning": {
+        "en": "cloud",
+        "he": "ענן"
+      },
+      "emoji": "☁️",
+      "category": "weather",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 497,
+      "skill": "recognize",
+      "example": {
+        "en": "A cloudy sky.",
+        "he": "שמיים מעוננים."
+      }
+    },
+    {
+      "id": "fr.word.scissors",
+      "conceptId": "concept.word.scissors",
+      "word": "ciseaux",
+      "meaning": {
+        "en": "scissors",
+        "he": "מספריים"
+      },
+      "emoji": "✂️",
+      "category": "objects",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 498,
+      "skill": "recognize",
+      "example": {
+        "en": "Do you have scissors?",
+        "he": "יש לך מספריים?"
+      }
+    },
+    {
+      "id": "fr.word.mirror",
+      "conceptId": "concept.word.mirror",
+      "word": "miroir",
+      "meaning": {
+        "en": "mirror",
+        "he": "מראה"
+      },
+      "emoji": "🪞",
+      "category": "objects",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 499,
+      "skill": "recognize",
+      "example": {
+        "en": "The mirror in the room.",
+        "he": "המראה בחדר."
+      }
+    },
+    {
+      "id": "fr.word.comb",
+      "conceptId": "concept.word.comb",
+      "word": "peigne",
+      "meaning": {
+        "en": "comb",
+        "he": "מסרק"
+      },
+      "category": "objects",
+      "pos": "noun",
+      "tier": 1,
+      "rank": 500,
+      "skill": "recognize",
+      "example": {
+        "en": "A small comb.",
+        "he": "מסרק קטן."
       }
     }
   ]
