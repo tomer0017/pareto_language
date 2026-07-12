@@ -204,6 +204,44 @@ export interface CorePackWord {
  * Per-language offline pack rows. Works for any declared language with complete realizations —
  * this is the seam that makes a French pilot content-only.
  */
+/**
+ * Merge a PILOT language's realizations (concept slug → surface form) onto the corpus rows as
+ * `t[lang]`, non-destructively (returns new rows). A pilot language is a CURATED SUBSET: only the
+ * slugs present in `realizations` gain a realization, so `buildPackWords(lang, …)` emits exactly
+ * that subset. English data files are never touched, and `fr` never joins `DECLARED_LANGS` (so the
+ * strict all-500 completeness gate stays for full languages).
+ */
+export function mergePilotRealizations(
+  lang: string,
+  realizations: Record<string, string>,
+  rows: CorpusRow[] = CORPUS,
+): CorpusRow[] {
+  return rows.map((r) =>
+    realizations[r.slug] ? { ...r, t: { ...(r.t ?? {}), [lang]: realizations[r.slug]! } } : r,
+  );
+}
+
+/**
+ * Validate an emitted pilot pack: enough concepts to be a real pilot, no empty realizations, and no
+ * duplicate surface form within a kind (which would break quiz distractors / recall identity).
+ * This is the "no partial-but-broken pilot ships" gate — the subset is intentionally partial, but
+ * everything IN it must be complete and consistent.
+ */
+export function validatePilotPack(lang: string, words: CorePackWord[], min = 120): void {
+  const errs: string[] = [];
+  if (words.length < min) errs.push(`${lang} pilot has ${words.length} concepts, expected at least ${min}`);
+  const seen = new Map<string, string>();
+  for (const w of words) {
+    if (!w.word.trim()) errs.push(`${w.conceptId}: empty "${lang}" realization`);
+    const kind = w.id.split('.')[1] ?? 'word';
+    const key = `${kind}:${w.word.toLowerCase()}`;
+    const prev = seen.get(key);
+    if (prev) errs.push(`duplicate "${lang}" surface "${w.word}" (${kind}): ${prev} and ${w.conceptId}`);
+    seen.set(key, w.conceptId);
+  }
+  if (errs.length) throw new Error(`${lang} pilot pack invalid (${errs.length}):\n - ${errs.join('\n - ')}`);
+}
+
 export function buildPackWords(lang: string, rows: CorpusRow[] = CORPUS): CorePackWord[] {
   const ranks = rankRows(rows);
   return rows

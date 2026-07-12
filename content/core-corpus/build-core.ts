@@ -15,8 +15,15 @@ import { mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { parse, stringify } from 'yaml';
 import { CORPUS } from './data/index.js';
-import { buildConcepts, buildPackWords, validateCorpus } from './corpus.js';
+import { buildConcepts, buildPackWords, mergePilotRealizations, validateCorpus, validatePilotPack } from './corpus.js';
 import { CORE_CORPUS_VERSION, DECLARED_LANGS } from './types.js';
+import { FR_PILOT } from './data/fr-pilot.js';
+
+/** Pilot (curated-subset) languages: shipped as a real, validated pack without joining
+ *  DECLARED_LANGS (which would demand a realization on all 500). Keyed slug → surface form. */
+const PILOT_PACKS: Record<string, Record<string, string>> = {
+  fr: Object.fromEntries(Object.entries(FR_PILOT).map(([slug, e]) => [slug, e.w])),
+};
 
 const CONCEPTS_DIR = fileURLToPath(new URL('../concepts/', import.meta.url));
 const PACKS_DIR = fileURLToPath(new URL('../../apps/web/public/content/', import.meta.url));
@@ -55,6 +62,18 @@ function main(): void {
     writeFileSync(`${PACKS_DIR}core-${lang}.v1.json`, JSON.stringify(pack, null, 2));
     const visual = words.filter((w) => w.emoji).length;
     console.info(`✓ core-${lang}.v1.json: ${words.length} words (${visual} game-eligible with emoji)`);
+  }
+
+  // 3) Pilot packs — curated subsets (e.g. French ~200) shipped so Core Words + games work in that
+  //    language now, validated as a pilot. NOT a completed language; stays out of DECLARED_LANGS.
+  for (const [lang, realizations] of Object.entries(PILOT_PACKS)) {
+    const rows = mergePilotRealizations(lang, realizations, CORPUS);
+    const words = buildPackWords(lang, rows);
+    validatePilotPack(lang, words);
+    const pack = { lang, version: CORE_CORPUS_VERSION, generatedAt: new Date().toISOString(), pilot: true, count: words.length, words };
+    writeFileSync(`${PACKS_DIR}core-${lang}.v1.json`, JSON.stringify(pack, null, 2));
+    const visual = words.filter((w) => w.emoji).length;
+    console.info(`✓ core-${lang}.v1.json: ${words.length} words (${visual} game-eligible) — PILOT subset, pending native review`);
   }
 
   const byCat = CORPUS.reduce<Record<string, number>>((m, r) => ((m[r.cat] = (m[r.cat] ?? 0) + 1), m), {});
