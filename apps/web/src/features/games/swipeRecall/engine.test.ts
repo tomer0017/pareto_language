@@ -1,5 +1,29 @@
 import { describe, expect, it } from 'vitest';
-import { applySwipe, reinsertGap, DEFAULT_GAP } from './engine.js';
+import { applySwipe, cardFace, reinsertGap, DEFAULT_GAP } from './engine.js';
+
+/**
+ * Part-E regression — icon ambiguity. Before reveal the card must show the learner-language MEANING
+ * (so 🚻 is unmistakably "toilets") but NOT the target-language word (recall, not reading). After
+ * the press-and-hold reveal both are shown. This is the rule the card renders from.
+ */
+describe('Swipe Recall card face (Part E — meaning before reveal, word hidden)', () => {
+  it('shows the meaning but hides the target word before reveal', () => {
+    const face = cardFace('toilettes', 'שירותים', false);
+    expect(face.meaning).toBe('שירותים');
+    expect(face.target).toBeNull();
+  });
+
+  it('shows both the target word and the meaning after reveal', () => {
+    const face = cardFace('toilettes', 'שירותים', true);
+    expect(face.target).toBe('toilettes');
+    expect(face.meaning).toBe('שירותים');
+  });
+
+  it('is app-language agnostic (whatever gloss the caller resolves is what is shown)', () => {
+    expect(cardFace('toilettes', 'toilet', false).meaning).toBe('toilet');
+    expect(cardFace('toilettes', 'toilette', false).meaning).toBe('toilette');
+  });
+});
 
 describe('Swipe Recall re-queue engine', () => {
   const deck = ['a', 'b', 'c', 'd', 'e'];

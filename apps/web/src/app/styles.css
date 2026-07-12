@@ -295,6 +295,9 @@ button:disabled { opacity: 0.55; }
 .recall-dealt { animation: cardIn 0.26s cubic-bezier(0.22, 1, 0.36, 1); }
 @keyframes cardIn { from { transform: scale(0.9); opacity: 0.4; } to { transform: scale(1); opacity: 1; } }
 .recall-emoji { font-size: 5rem; line-height: 1; }
+/* The concept meaning shown in the learner's app language BELOW the icon before reveal — removes
+   icon ambiguity (🚻 = toilets?) without giving away the target word. Wraps long glosses safely. */
+.recall-prompt-meaning { font-size: 1.3rem; font-weight: 700; color: var(--ink); max-width: 94%; overflow-wrap: anywhere; line-height: 1.28; margin: 0; }
 /* Tinder-style like/nope stamps — opacity is driven by the drag distance via JS (GPU-only). */
 .recall-badge {
   position: absolute; top: 16px; padding: 6px 14px; border-radius: 12px;

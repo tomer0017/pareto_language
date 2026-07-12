@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useAppStore, type View } from '../shared/stores/appStore.js';
+import { shouldShowNav } from './nav.js';
 import { t } from '../shared/i18n/strings.js';
 import { ErrorBoundary } from '../shared/ui/ErrorBoundary.js';
 import { BottomNav } from '../shared/ui/BottomNav.js';
@@ -22,9 +23,6 @@ import { Profile } from '../features/profile/Profile.js';
 import { Videos } from '../features/videos/Videos.js';
 import { useBootcampStore } from '../features/bootcamp/bootcampStore.js';
 
-// The permanent English-pilot tabs. The bottom nav is shown on these — except inside an active
-// Bootcamp mission (hub/play), which is a focused full-screen flow with its own controls.
-const PILOT_TABS: View[] = ['home', 'bootcamp', 'core', 'profile'];
 
 // Views that render shipped content-pack material. During the English pilot no pack ships, so
 // these gate to an honest "coming soon" instead of showing Italian content or crashing on a
@@ -69,6 +67,7 @@ const SCREENS: Partial<Record<View, { feature: string; el: () => JSX.Element | n
 export function App() {
   const { view, loading, fatalError, init, pack } = useAppStore();
   const inMission = useBootcampStore((s) => s.activeDay !== null);
+  const coreGameActive = useAppStore((s) => s.coreGameActive);
 
   useEffect(() => {
     void init();
@@ -109,8 +108,7 @@ export function App() {
   if (!screen) return null;
   const Screen = screen.el;
 
-  // Permanent nav on the top-level tabs — hidden only inside an active Bootcamp mission.
-  const showNav = PILOT_TABS.includes(view) && !(view === 'bootcamp' && inMission);
+  const showNav = shouldShowNav(view, inMission, coreGameActive);
 
   return (
     <>

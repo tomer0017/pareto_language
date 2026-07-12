@@ -22,6 +22,29 @@ loop (typecheck → lint → tests → build → smoke) green at every milestone
 
 ## What's done
 
+### Sprint — Vocabulary-game fixes + French foundation (2026-07-12)
+- **Picture Quiz "stuck on feedback" fixed (Part F).** Root cause was **not** a state bug — the
+  advance state machine was correct — but a **stacking/occlusion** bug: the feedback's fixed
+  `.action-zone` Continue button (`z-index:15`) sat *behind* the permanent bottom nav
+  (`z-index:20`) on the Core tab, so the tap never landed. Fix: a Core learning-game session is now
+  a focused, nav-less flow (new `appStore.coreGameActive`; `shouldShowNav` in `apps/web/src/app/nav.ts`
+  hides the nav) — the same rule Bootcamp missions already use. Progression is also protected by a
+  pure reducer (`advanceQuiz`/`isQuizComplete` in `pictureQuiz/rounds.ts`) with tests.
+- **Swipe Recall icon ambiguity fixed (Part E).** Cards now show the concept meaning in the
+  learner's app language **below the emoji before reveal** (pure `cardFace` in `swipeRecall/engine.ts`),
+  so 🚻 is unmistakably "toilets" without giving away the target word; the target French/English word
+  still waits for the press-and-hold reveal. RTL-safe, no change to requeue or review events.
+- **Games are learning-language aware.** Both games take a `lang` prop and speak the active learning
+  language (was hardcoded `'en'`).
+- **French foundation (content-only, honest).** `validateCorpus` takes an injectable `declaredLangs`
+  so partial-pack rejection is testable per language; a validated 17-concept French **proof slice**
+  (`content/core-corpus/fr-proof.ts` + test) proves French flows through the same builder to a valid
+  `core-fr` pack. French is **not** in `DECLARED_LANGS` and stays `available: false` — the full Core
+  500 + Bootcamp are a separate sprint. See **[FRENCH-PILOT.md](./FRENCH-PILOT.md)**.
+- Gates: typecheck · lint · **363 tests** · content build (`core-en` = 500 words) · production build
+  + PWA precache all green. English pilot unregressed. Manual device verification (iPhone Safari/
+  Chrome, RTL long-press/swipe) still recommended before release.
+
 ### M0 — Foundation & Engine
 - npm-workspaces monorepo, TS strict (project references), ESLint 9 + Prettier, Vitest.
 - `packages/content-schema`: zod schemas for every content + user-state entity (PDF §12).

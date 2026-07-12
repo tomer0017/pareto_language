@@ -4,7 +4,7 @@ import { speak } from '../../../shared/audio/tts.js';
 import { tap } from '../../../shared/ui/haptics.js';
 import { feedback } from '../../../shared/ui/feedbackCue.js';
 import { recordReview } from '../../../shared/review/recordReview.js';
-import { applySwipe, type SwipeResult } from './engine.js';
+import { applySwipe, cardFace, type SwipeResult } from './engine.js';
 import type { GameWord } from '../types.js';
 
 const HOLD_MS = 500;      // press-and-hold time to reveal
@@ -20,7 +20,7 @@ const FLY_MS = 280;       // off-screen fly duration
  * Physical-pointer direction is layout-independent, so RTL never flips the meaning. Generic over any
  * GameWord[] (Core 100 → 500 → 1500 unchanged); records review events through the canonical log.
  */
-export function SwipeRecall({ words, onExit }: { words: GameWord[]; onExit?: () => void }) {
+export function SwipeRecall({ words, lang = 'en', onExit }: { words: GameWord[]; lang?: string; onExit?: () => void }) {
   const byId = useMemo(() => new Map(words.map((w) => [w.id, w])), [words]);
   const [queue, setQueue] = useState<string[]>(() => words.map((w) => w.id));
   const [dealt, setDealt] = useState(0);       // monotonic — forces a fresh card element per deal
@@ -94,7 +94,8 @@ export function SwipeRecall({ words, onExit }: { words: GameWord[]; onExit?: () 
     );
   }
 
-  const reveal = (): void => { setHolding(false); setRevealed(true); void speak(current.word, 'en'); };
+  const reveal = (): void => { setHolding(false); setRevealed(true); void speak(current.word, lang); };
+  const face = cardFace(current.word, L(current.translation), revealed);
 
   return (
     <>
@@ -140,12 +141,13 @@ export function SwipeRecall({ words, onExit }: { words: GameWord[]; onExit?: () 
         <span ref={likeRef} className="recall-badge like" aria-hidden>✓ {t('knewIt')}</span>
         <span ref={nopeRef} className="recall-badge nope" aria-hidden>✕ {t('didntKnow')}</span>
         <span className="recall-emoji">{current.emoji}</span>
-        {revealed ? (
-          <div className="fade-in">
-            <p className="drill-phrase" style={{ fontSize: '1.5rem' }}>{current.word}</p>
-            <p className="drill-meaning">{L(current.translation)}</p>
-          </div>
-        ) : (
+        {/* Part-E: the learner-language MEANING is always on the card (an ambiguous icon like 🚻 is
+            never a guessing game); the target WORD appears only after the press-and-hold reveal. */}
+        {face.target !== null && (
+          <p className="drill-phrase fade-in" style={{ fontSize: '1.5rem' }}>{face.target}</p>
+        )}
+        <p className={revealed ? 'drill-meaning' : 'recall-prompt-meaning'}>{face.meaning}</p>
+        {!revealed && (
           <>
             <p className="faint small">🤏 {t('swipeRevealHint')}</p>
             {holding && <span className="hold-bar" aria-hidden><span className="hold-fill" /></span>}

@@ -46,11 +46,17 @@ const CAT_LABEL: Record<string, LocalizedText> = {
 
 export function CoreWords() {
   const learningLang = useAppStore((s) => s.learningLang);
+  const setCoreGameActive = useAppStore((s) => s.setCoreGameActive);
   const [words, setWords] = useState<CoreWord[] | null>(null);
   const [mode, setMode] = useState<Mode>('menu');
   const [playing, setPlaying] = useState<string | null>(null);
 
   useEffect(() => { void loadCoreWords(learningLang).then(setWords); }, [learningLang]);
+  // A game session is a focused, nav-less flow: hide the bottom nav so the game's fixed action zone
+  // (Continue / Next) is reachable rather than covered by the higher-z nav (the Picture Quiz
+  // "stuck on feedback" bug). Cleared when returning to the menu and on leaving Core entirely.
+  useEffect(() => { setCoreGameActive(mode === 'quiz' || mode === 'recall'); }, [mode, setCoreGameActive]);
+  useEffect(() => () => setCoreGameActive(false), [setCoreGameActive]);
   const gameWords = useMemo(() => (words ? toGameWords(words) : []), [words]);
 
   if (words === null) {
@@ -65,8 +71,8 @@ export function CoreWords() {
     );
   }
 
-  if (mode === 'quiz') return <GameFrame onBack={() => setMode('menu')}><PictureQuiz words={gameWords} onExit={() => setMode('menu')} /></GameFrame>;
-  if (mode === 'recall') return <GameFrame onBack={() => setMode('menu')}><SwipeRecall words={gameWords} onExit={() => setMode('menu')} /></GameFrame>;
+  if (mode === 'quiz') return <GameFrame onBack={() => setMode('menu')}><PictureQuiz words={gameWords} lang={learningLang} onExit={() => setMode('menu')} /></GameFrame>;
+  if (mode === 'recall') return <GameFrame onBack={() => setMode('menu')}><SwipeRecall words={gameWords} lang={learningLang} onExit={() => setMode('menu')} /></GameFrame>;
 
   if (mode === 'browse') {
     const cats = coreCategories(words);

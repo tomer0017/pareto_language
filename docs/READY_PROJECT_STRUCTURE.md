@@ -101,9 +101,12 @@ tools and every pick is reframed as *more or less useful*, never right/wrong.
 - **React app (`apps/web`)** — Vite + React 18, mobile-first, RTL-aware, PWA. Screens live under
   `src/features/*`; shared UI/audio/i18n/stores under `src/shared/*`; app shell in `src/app/`.
 - **Zustand stores** — `shared/stores/appStore.ts` (routing/`view`, user, content pack, `theme`,
-  `uiLang`, `learningLang`), `features/bootcamp/bootcampStore.ts` (active mission, hub/play `stage`,
-  progress + receipts in **localStorage**), `shared/stores/sessionStore.ts`. Single sources of
-  truth — no duplicated navigation/settings/state.
+  `uiLang`, `learningLang`, `coreGameActive`), `features/bootcamp/bootcampStore.ts` (active mission,
+  hub/play `stage`, progress + receipts in **localStorage**), `shared/stores/sessionStore.ts`. Single
+  sources of truth — no duplicated navigation/settings/state. **Nav visibility** is a pure rule
+  (`app/nav.ts` `shouldShowNav`): the permanent bottom nav hides inside any focused full-screen flow
+  — an active Bootcamp mission **or** an active Core learning-game session (`coreGameActive`), so a
+  game's fixed action zone (Continue) is never occluded by the higher-z nav.
 - **Bootcamp data files** — `features/bootcamp/day1..30.ts` are **pure data** (no React, no store),
   registered in `bootcampStore.ts`'s `DAYS`. `plan.ts` = 30-mission metadata; `types.ts` = the
   content model; `transcript.ts` = happy-path linearizer; `recovery.ts` = the shared survival kit.
@@ -118,7 +121,10 @@ tools and every pick is reframed as *more or less useful*, never right/wrong.
   configurable/clamped) → progress → shared feedback → Victory (Play Again / Back). **Swipe Recall**
   is a **Tinder-style** card (finger-following drag with live rotate + like/nope stamp, spring-back,
   fly-off; drag via direct GPU `translate3d` on a ref for 60 FPS) over a **pure, unit-tested re-queue
-  engine** (unknown returns after ~10–15 — the SRS seam) with press-and-hold reveal. Both share the
+  engine** (unknown returns after ~10–15 — the SRS seam) with press-and-hold reveal. The card shows
+  the **learner-language meaning below the icon before reveal** (pure `cardFace`) so an ambiguous
+  emoji is never a guess; the target word waits for the hold. Both games take a `lang` prop and
+  speak the active learning language (not hardcoded English). Both share the
   reusable **`AnswerFeedback`** + pure `answerContext.ts` builders (the full-context wrong-answer
   model, also used by every Bootcamp drill). The old `mockWords` remains for isolated tests only.
 - **Core Corpus (`content/core-corpus/*`, `content/concepts/core-corpus.yaml`)** — the production
@@ -169,7 +175,11 @@ tools and every pick is reframed as *more or less useful*, never right/wrong.
 - **A full English content pack is not yet complete.** The Words / Phrases / Situations / daily
   Mission tabs are content-pack driven and are therefore gated to an honest "coming soon."
 - **Italian / Spanish / French / Arabic are not active yet.** Only the Italian `it-IT` pack is
-  actually built (used by the pipeline/server), and it is **not user-facing** in the pilot.
+  actually built (used by the pipeline/server), and it is **not user-facing** in the pilot. A
+  **French foundation** exists (validated 17-concept proof slice + partial-pack validator gate) but
+  French stays `available: false` and out of `DECLARED_LANGS` until a reviewed Core 500 + Bootcamp
+  ship — see **[FRENCH-PILOT.md](./FRENCH-PILOT.md)**. `validateCorpus(rows, size, declaredLangs)`
+  proves no half-French pack can build.
 - Existing **multilingual infrastructure exists** (language registry, per-language theming, RTL,
   the content-pack chain) but is intentionally not fully surfaced until real content ships.
 

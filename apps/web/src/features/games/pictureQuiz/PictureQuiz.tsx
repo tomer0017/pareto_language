@@ -5,7 +5,7 @@ import { tap } from '../../../shared/ui/haptics.js';
 import { AnswerFeedback } from '../../../shared/ui/AnswerFeedback.js';
 import { buildRespondContext } from '../../../shared/ui/answerContext.js';
 import { recordReview } from '../../../shared/review/recordReview.js';
-import { buildSession, DEFAULT_SESSION_SIZE } from './rounds.js';
+import { advanceQuiz, buildSession, DEFAULT_SESSION_SIZE, type QuizProgress } from './rounds.js';
 import type { GameWord } from '../types.js';
 
 /**
@@ -17,22 +17,24 @@ import type { GameWord } from '../types.js';
  */
 export function PictureQuiz({
   words,
+  lang = 'en',
   sessionSize = DEFAULT_SESSION_SIZE,
   onExit,
 }: {
   words: GameWord[];
+  /** The learning language whose voice speaks each word (fr-FR, en-…). Defaults to English. */
+  lang?: string;
   sessionSize?: number;
   onExit?: () => void;
 }) {
   // A session is a fixed randomized set (words is stable once the pack has loaded). Play Again
   // reshuffles a brand-new session.
   const [rounds, setRounds] = useState(() => buildSession(words, sessionSize));
-  const [i, setI] = useState(0);
+  const [progress, setProgress] = useState<QuizProgress>({ i: 0, score: 0 });
   const [picked, setPicked] = useState<GameWord | null>(null);
-  const [score, setScore] = useState(0);
-  const round = rounds[i];
+  const round = rounds[progress.i];
 
-  const playAgain = (): void => { tap(); setRounds(buildSession(words, sessionSize)); setI(0); setScore(0); setPicked(null); };
+  const playAgain = (): void => { tap(); setRounds(buildSession(words, sessionSize)); setProgress({ i: 0, score: 0 }); setPicked(null); };
 
   // Victory — the session is complete.
   if (!round) {
@@ -40,7 +42,7 @@ export function PictureQuiz({
       <div className="drill-card pop-in center" style={{ gap: 10 }}>
         <p style={{ fontSize: '3.4rem' }}>🎉</p>
         <p className="drill-phrase" style={{ fontSize: '1.4rem' }}>{t('victoryTitle')}</p>
-        <p className="dim">{t('quizScore', { n: score, total: rounds.length })}</p>
+        <p className="dim">{t('quizScore', { n: progress.score, total: rounds.length })}</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginTop: 12, width: '100%' }}>
           <button className="btn-primary" onClick={playAgain}>🔁 {t('playAgain')}</button>
           {onExit && <button className="btn-secondary" onClick={() => { tap(); onExit(); }}>{t('backToWords')}</button>}
@@ -53,7 +55,7 @@ export function PictureQuiz({
   if (picked) {
     const ok = picked.id === round.word.id;
     const ctx = buildRespondContext({
-      promptText: round.word.word, promptTranslation: L(round.word.translation), onReplayPrompt: () => void speak(round.word.word, 'en'),
+      promptText: round.word.word, promptTranslation: L(round.word.translation), onReplayPrompt: () => void speak(round.word.word, lang),
       chosen: ok ? undefined : picked.emoji,
       expectedText: round.word.emoji, expectedTranslation: L(round.word.translation),
       why: t('meansMapping', { en: round.word.word, meaning: L(round.word.translation) }),
@@ -64,7 +66,7 @@ export function PictureQuiz({
         ok={ok}
         ctx={ctx}
         onRetry={ok ? undefined : () => setPicked(null)}
-        onContinue={() => { if (ok) setScore((s) => s + 1); setPicked(null); setI((n) => n + 1); }}
+        onContinue={() => { setPicked(null); setProgress((p) => advanceQuiz(p, ok)); }}
       />
     );
   }
@@ -78,10 +80,10 @@ export function PictureQuiz({
 
   return (
     <>
-      <p className="dim small center" style={{ margin: '0 0 6px' }}>{t('quizProgress', { i: i + 1, n: rounds.length })}</p>
+      <p className="dim small center" style={{ margin: '0 0 6px' }}>{t('quizProgress', { i: progress.i + 1, n: rounds.length })}</p>
       <div className="drill-card" style={{ minHeight: 170 }}>
         <p className="drill-label">{t('pictureQuizPrompt')}</p>
-        <button className="btn-ghost" onClick={() => void speak(round.word.word, 'en')} style={{ margin: '0 auto' }}>
+        <button className="btn-ghost" onClick={() => void speak(round.word.word, lang)} style={{ margin: '0 auto' }}>
           <span className="drill-phrase" style={{ fontSize: '1.8rem' }}>🔊 {round.word.word}</span>
         </button>
         <p className="dim small">{L(round.word.translation)}</p>

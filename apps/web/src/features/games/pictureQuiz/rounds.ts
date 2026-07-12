@@ -44,3 +44,25 @@ export function buildSession(words: GameWord[], size: number = DEFAULT_SESSION_S
   const chosen = shuffle(pool).slice(0, Math.max(1, Math.min(size, pool.length)));
   return chosen.map((word) => ({ word, options: makeOptions(word, pool) }));
 }
+
+/** Position in a running session: which question (`i`) and how many correct so far (`score`). */
+export interface QuizProgress {
+  i: number;
+  score: number;
+}
+
+/**
+ * The one Continue/advance transition (pure → unit-testable; the component just wires it to the
+ * button). Moves to the NEXT question exactly once, adding to the score only on a correct answer.
+ * `i` always increments by exactly 1, so a session can never skip or repeat a question. When `i`
+ * reaches `total`, the caller renders Victory. Rapid double-taps cannot double-advance in the UI
+ * because Continue unmounts with the feedback the moment it fires (there is no button to tap twice).
+ */
+export function advanceQuiz(progress: QuizProgress, wasCorrect: boolean): QuizProgress {
+  return { i: progress.i + 1, score: progress.score + (wasCorrect ? 1 : 0) };
+}
+
+/** The session is over (show Victory) once every question has been answered. */
+export function isQuizComplete(progress: QuizProgress, total: number): boolean {
+  return progress.i >= total;
+}

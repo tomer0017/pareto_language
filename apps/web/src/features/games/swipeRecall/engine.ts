@@ -8,6 +8,21 @@
  */
 export type SwipeResult = 'known' | 'unknown';
 
+/** What a Swipe Recall card renders (Part-E fix). */
+export interface CardFace {
+  /** The concept meaning in the learner's app language — shown in EVERY state so an ambiguous icon
+   *  (🚻 = toilets? bathroom? public facilities?) is never a guessing game. */
+  meaning: string;
+  /** The target-language word — `null` until the learner has tried to recall it (press-and-hold
+   *  reveal). Hiding it before reveal is the whole point: the game trains recall, not reading. */
+  target: string | null;
+}
+
+/** Pure card-face rule (unit-tested): meaning is always visible; the target word only after reveal. */
+export function cardFace(word: string, meaning: string, revealed: boolean): CardFace {
+  return { meaning, target: revealed ? word : null };
+}
+
 export const DEFAULT_GAP = { min: 10, max: 15 } as const;
 
 /** Where an unknown card re-enters the queue: `gap` cards from the front (clamped to the deck).

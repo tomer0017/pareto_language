@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { buildRounds, buildSession } from './rounds.js';
+import { advanceQuiz, buildRounds, buildSession, isQuizComplete, type QuizProgress } from './rounds.js';
 import type { GameWord } from '../types.js';
 
 const W = (id: string, word: string, emoji: string): GameWord => ({ id, word, translation: { en: word, he: word }, emoji });
@@ -63,5 +63,37 @@ describe('Picture Quiz sessions (Beta polish)', () => {
       expect(r.options.filter((o) => o.id === r.word.id).length).toBe(1);
       expect(new Set(r.options.map((o) => o.emoji)).size).toBe(4);
     }
+  });
+});
+
+/**
+ * Part-F regression — session PROGRESSION. Question → answer → feedback → Continue must advance
+ * exactly once, never skip or repeat a question, count only correct answers, and terminate on the
+ * final question (Victory). This is the state transition the component wires the Continue button to.
+ */
+describe('Picture Quiz progression (Part F — advance exactly once, reach victory)', () => {
+  it('advances the index by exactly one per Continue (no skip, no repeat)', () => {
+    let p: QuizProgress = { i: 0, score: 0 };
+    p = advanceQuiz(p, true);
+    expect(p.i).toBe(1);
+    p = advanceQuiz(p, false);
+    expect(p.i).toBe(2);
+  });
+
+  it('increments the score only on a correct answer', () => {
+    expect(advanceQuiz({ i: 0, score: 0 }, true).score).toBe(1);
+    expect(advanceQuiz({ i: 3, score: 3 }, false).score).toBe(3);
+  });
+
+  it('reaches Victory after the final question and not before', () => {
+    const total = 5;
+    let p: QuizProgress = { i: 0, score: 0 };
+    for (let q = 0; q < total; q++) {
+      expect(isQuizComplete(p, total)).toBe(false); // still a question to answer
+      p = advanceQuiz(p, q % 2 === 0);
+    }
+    expect(isQuizComplete(p, total)).toBe(true); // Victory exactly at the end
+    expect(p.i).toBe(total);
+    expect(p.score).toBe(3); // questions 0,2,4 correct
   });
 });

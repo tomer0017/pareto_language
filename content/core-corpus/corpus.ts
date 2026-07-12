@@ -75,14 +75,21 @@ const CONCRETE_CATS = new Set<Category>([
  * (Sprint: duplicates, missing translations/metadata, broken references, invalid categories/
  * tiers, emoji conflicts, language completeness.)
  */
-export function validateCorpus(rows: CorpusRow[] = CORPUS, size: number = CORPUS_SIZE): void {
+export function validateCorpus(
+  rows: CorpusRow[] = CORPUS,
+  size: number = CORPUS_SIZE,
+  // The languages this pack claims to ship. Defaults to the production set; injectable so a future
+  // pack (e.g. French) can be validated for completeness BEFORE it joins DECLARED_LANGS — this is
+  // the seam that lets us prove "a partial French pack is rejected" without declaring fr globally.
+  declaredLangs: readonly string[] = DECLARED_LANGS,
+): void {
   const errs: string[] = [];
   if (rows.length !== size) errs.push(`expected exactly ${size} concepts, got ${rows.length}`);
   const slugs = new Set(rows.map((r) => r.slug));
   const seenSlug = new Set<string>();
   const emojis = new Map<string, string>();
   const surface = new Map<string, string>();
-  const declared = new Set<string>(DECLARED_LANGS);
+  const declared = new Set<string>(declaredLangs);
   for (const r of rows) {
     const at = r.slug || '(missing slug)';
     if (seenSlug.has(r.slug)) errs.push(`duplicate slug: ${at}`);
@@ -115,7 +122,7 @@ export function validateCorpus(rows: CorpusRow[] = CORPUS, size: number = CORPUS
     for (const lang of Object.keys(r.t ?? {})) {
       if (!declared.has(lang)) errs.push(`${at}: realization for undeclared language "${lang}" — add it to DECLARED_LANGS`);
     }
-    for (const lang of DECLARED_LANGS) {
+    for (const lang of declaredLangs) {
       if (!realizationText(r, lang)?.trim()) errs.push(`${at}: missing "${lang}" realization (language completeness)`);
     }
   }

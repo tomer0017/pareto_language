@@ -68,12 +68,18 @@ interface AppState {
   /** Which Core category the Core screen opens on: set by Home's deep-link cards, reset to null
    *  (the category-card grid) by the Core bottom-nav tab. Purely navigational view state. */
   coreCategory: string | null;
+  /** True while a focused, nav-less learning-game session (Core Words → Picture Quiz / Swipe
+   *  Recall) is running. Hides the permanent bottom nav so a game's fixed action zone (Continue)
+   *  is reachable instead of being covered by the higher-z nav — the same focused-flow rule an
+   *  active Bootcamp mission already uses. Purely navigational; never persisted. */
+  coreGameActive: boolean;
 
   navigate(view: View): void;
   setUiLang(lang: string): void;
   setLearningLang(lang: string): Promise<void>;
   setTheme(theme: 'light' | 'dark'): void;
   setCoreCategory(category: string | null): void;
+  setCoreGameActive(active: boolean): void;
   init(): Promise<void>;
   createPlan(input: OnboardingInput): Promise<void>;
   updatePlanSettings(input: OnboardingInput): Promise<void>;
@@ -132,13 +138,20 @@ export const useAppStore = create<AppState>((set, get) => ({
   learningLang: storedLearningLang,
   theme: storedTheme,
   coreCategory: null,
+  coreGameActive: false,
 
   navigate(view) {
-    set({ view });
+    // Leaving any screen ends a focused game session (defensive: a nav tap must always restore the
+    // bottom nav, even if a game did not clean up its own flag on the way out).
+    set({ view, coreGameActive: false });
   },
 
   setCoreCategory(category) {
     set({ coreCategory: category });
+  },
+
+  setCoreGameActive(active) {
+    set({ coreGameActive: active });
   },
 
   setUiLang(lang) {
