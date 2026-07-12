@@ -12,9 +12,10 @@ import { Modal, ModalActions } from '../../shared/ui/Modal.js';
 import { getAudioDiag, subscribeAudioDiag, testAudio, unlockAudio } from '../../shared/audio/tts.js';
 import { useSyncExternalStore } from 'react';
 import { BOOTCAMP_PLAN, CORE_MISSIONS, SPECIAL_MISSIONS, PHASES, missionNumber } from './plan.js';
-import { DAYS, useBootcampStore } from './bootcampStore.js';
+import { missionsFor, useBootcampStore } from './bootcampStore.js';
 import type { BootcampItem, BootcampStep, BootcampDialogue, BootcampDayContent, BootcampVideo, DialogueChoice } from './types.js';
 import { dialogueTranscript } from './transcript.js';
+import { dialogueTr } from './i18n.js';
 
 /** Resolve a public asset path (e.g. "/videos/x.mp4") against the app's base so it works in
  *  dev, on the deployed sub-path, and inside the PWA. Absolute URLs pass through unchanged. */
@@ -22,6 +23,13 @@ function resolveAsset(src: string): string {
   if (/^https?:\/\//.test(src) || src.startsWith('blob:') || src.startsWith('data:')) return src;
   const base = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
   return src.startsWith('/') ? base + src : `${base}/${src}`;
+}
+
+/** Speak a mission line in the ACTIVE learning language (the target — English pilot, French
+ *  mission, …). Reads the app store at call time so it always matches the mission being played;
+ *  replaces the old hardcoded English voice that made every mission sound English. */
+function speakL(text: string, rate?: number): Promise<void> {
+  return speak(text, useAppStore.getState().learningLang, rate);
 }
 
 /** The mission's canonical dialogue — used by the full-conversation reader (start + summary). */
@@ -145,7 +153,8 @@ function HubCard({ icon, iconBg, title, desc, cta, ctaClass, onClick, disabled }
 /** One mission row in the map. `badge` is the number (numbered journey) or an icon (special). */
 function MissionCard({ mission, badge, special }: { mission: (typeof BOOTCAMP_PLAN)[number]; badge: string; special?: boolean }) {
   const bc = useBootcampStore();
-  const built = mission.day in DAYS;
+  const learningLang = useAppStore((s) => s.learningLang);
+  const built = mission.day in missionsFor(learningLang);
   const isDone = bc.completedDays.includes(mission.day);
   const resumable = (bc.stepIndex[String(mission.day)] ?? 0) > 0 && !isDone;
   const sub = isDone
@@ -361,10 +370,10 @@ function ToolStep({ step, item, onDone }: { step: Extract<BootcampStep, { kind: 
   useEffect(() => {
     if (played.current) return;
     played.current = true;
-    void speak(item.text, 'en').then(reveal);
+    void speakL(item.text).then(reveal);
   }, [item.text]);
 
-  const replayListen = (): void => void speak(item.text, 'en').then(reveal);
+  const replayListen = (): void => void speakL(item.text).then(reveal);
 
   return (
     <>
@@ -385,7 +394,7 @@ function ToolStep({ step, item, onDone }: { step: Extract<BootcampStep, { kind: 
         )}
       </div>
       <div className="action-zone">
-        <button className="btn-ghost" onClick={() => void speak(item.text, 'en', phase === 'listen' ? 1 : 0.85)}>
+        <button className="btn-ghost" onClick={() => void speakL(item.text, phase === 'listen' ? 1 : 0.85)}>
           🔊 {t('replay')}
         </button>
         {phase === 'reveal' && (
@@ -409,7 +418,7 @@ function QuizStep({ step, itemsById, onDone }: { step: Extract<BootcampStep, { k
   useEffect(() => {
     if (!played.current) {
       played.current = true;
-      void speak(item.text, 'en');
+      void speakL(item.text);
     }
   }, [item.text]);
 
@@ -440,7 +449,7 @@ function QuizStep({ step, itemsById, onDone }: { step: Extract<BootcampStep, { k
             {o.label}
           </button>
         ))}
-        <button className="btn-ghost" onClick={() => void speak(item.text, 'en')}>🔊 {t('hearAgain')}</button>
+        <button className="btn-ghost" onClick={() => void speakL(item.text)}>🔊 {t('hearAgain')}</button>
       </div>
     </>
   );
@@ -462,12 +471,12 @@ function AnsweredView({ ok, en, meaning, yourAnswer, why, tip, prompt, comprehen
   const reason = why ?? tip ?? t('meansMapping', { en, meaning });
   const ctx = comprehension
     ? buildComprehensionContext({
-        heard: en, onReplayHeard: () => void speak(en, 'en'),
+        heard: en, onReplayHeard: () => void speakL(en),
         chosen: yourAnswer, meaning, why: reason, shouldLabel: t('theMeaning'),
       })
     : buildRespondContext({
-        promptText: prompt?.en, promptTranslation: prompt?.he, onReplayPrompt: prompt ? () => void speak(prompt.en, 'en') : undefined,
-        chosen: yourAnswer, expectedText: en, expectedTranslation: meaning, onReplayExpected: () => void speak(en, 'en'),
+        promptText: prompt?.en, promptTranslation: prompt?.he, onReplayPrompt: prompt ? () => void speakL(prompt.en) : undefined,
+        chosen: yourAnswer, expectedText: en, expectedTranslation: meaning, onReplayExpected: () => void speakL(en),
         why: reason,
       });
   return <AnswerFeedback ok={ok} ctx={ctx} onRetry={onRetry} onContinue={onNext} />;
@@ -488,7 +497,7 @@ function RepliesStep({ step, itemsById, onDone }: { step: Extract<BootcampStep, 
   }, [reply, step.replyIds, itemsById]);
 
   useEffect(() => {
-    if (reply) void speak(reply.text, 'en');
+    if (reply) void speakL(reply.text);
   }, [reply]);
 
   if (idx === -1) {
@@ -538,7 +547,7 @@ function RepliesStep({ step, itemsById, onDone }: { step: Extract<BootcampStep, 
             {o.label}
           </button>
         ))}
-        <button className="btn-ghost" onClick={() => void speak(reply.text, 'en')}>🔊 {t('hearAgain')}</button>
+        <button className="btn-ghost" onClick={() => void speakL(reply.text)}>🔊 {t('hearAgain')}</button>
       </div>
     </>
   );
@@ -553,7 +562,7 @@ function SwipeStep({ itemIds, itemsById, onDone }: { itemIds: string[]; itemsByI
   const [i, setI] = useState(0);
   const item = itemsById.get(itemIds[i] ?? '')!;
   useEffect(() => {
-    if (item) void speak(item.text, 'en');
+    if (item) void speakL(item.text);
   }, [item]);
   if (!item) return null;
   const last = i + 1 >= itemIds.length;
@@ -571,7 +580,7 @@ function SwipeStep({ itemIds, itemsById, onDone }: { itemIds: string[]; itemsByI
         {item.tip && <p className="faint small">{L(item.tip)}</p>}
       </div>
       <div className="action-zone">
-        <button className="btn-ghost" onClick={() => void speak(item.text, 'en')}>🔊 {t('hearAgain')}</button>
+        <button className="btn-ghost" onClick={() => void speakL(item.text)}>🔊 {t('hearAgain')}</button>
         <button className="btn-primary" onClick={next}>{last ? t('continue') : t('nextBtn')}</button>
       </div>
     </>
@@ -595,7 +604,7 @@ function DialogueStep({ dialogue, onDone }: { dialogue: BootcampDialogue; onDone
     if (!node) return;
     let cancelled = false;
     if (node.who === 'npc') {
-      void speak(node.en, 'en', node.fast ? 1.08 : node.slow ? 0.75 : 0.95).then(() => {
+      void speakL(node.en, node.fast ? 1.08 : node.slow ? 0.75 : 0.95).then(() => {
         if (cancelled) return;
         if (node.end) {
           setTimeout(() => !cancelled && onDone(), 800);
@@ -606,7 +615,7 @@ function DialogueStep({ dialogue, onDone }: { dialogue: BootcampDialogue; onDone
     } else if (node.who === 'you' && node.next && !node.choices) {
       // scripted you-line: the app voices it for you, then moves on
       setYourLine(node.en);
-      void speak(node.en, 'en', 0.92).then(() => {
+      void speakL(node.en, 0.92).then(() => {
         if (!cancelled) setTimeout(() => setNodeId(node.next!), 500);
       });
     }
@@ -623,7 +632,7 @@ function DialogueStep({ dialogue, onDone }: { dialogue: BootcampDialogue; onDone
   // Coaching pause: reframe the pick as more/less useful (never wrong), then continue on tap.
   if (coaching && picked) {
     const suits = picked.correct;
-    const isTool = picked.itemId?.startsWith('en.phrase.recovery.') ?? false;
+    const isTool = picked.itemId?.includes('.phrase.recovery.') ?? false;
     const message = picked.coach ? L(picked.coach) : suits && isTool ? t('usedSurvivalTool') : suits ? t('goodMoveGeneric') : t('lessUsefulGeneric');
     return (
       <>
@@ -647,11 +656,11 @@ function DialogueStep({ dialogue, onDone }: { dialogue: BootcampDialogue; onDone
   if (picked) {
     const correctChoice = node.choices?.find((c) => c.correct);
     const ctx = buildRespondContext({
-      promptText: displayNpc?.en, promptTranslation: displayNpc?.he,
-      onReplayPrompt: displayNpc ? () => void speak(displayNpc.en, 'en') : undefined,
-      chosen: picked.en, chosenTranslation: picked.he,
-      expectedText: correctChoice?.en ?? picked.en, expectedTranslation: correctChoice?.he,
-      onReplayExpected: correctChoice ? () => void speak(correctChoice.en, 'en') : undefined,
+      promptText: displayNpc?.en, promptTranslation: displayNpc ? dialogueTr(displayNpc) : undefined,
+      onReplayPrompt: displayNpc ? () => void speakL(displayNpc.en) : undefined,
+      chosen: picked.en, chosenTranslation: dialogueTr(picked),
+      expectedText: correctChoice?.en ?? picked.en, expectedTranslation: correctChoice ? dialogueTr(correctChoice) : undefined,
+      onReplayExpected: correctChoice ? () => void speakL(correctChoice.en) : undefined,
       why: picked.coach ? L(picked.coach) : t('dialogueMisstep'),
     });
     return (
@@ -673,7 +682,7 @@ function DialogueStep({ dialogue, onDone }: { dialogue: BootcampDialogue; onDone
           <div className="fade-in" key={displayNpc.id}>
             <p style={{ fontSize: '1.9rem' }}>🧑‍🍳</p>
             <p className="drill-phrase" style={{ fontSize: '1.25rem' }}>“{displayNpc.en}”</p>
-            <p className="dim small">{displayNpc.he}</p>
+            <p className="dim small">{dialogueTr(displayNpc)}</p>
           </div>
         )}
         {yourLine && node.who !== 'you' && <p className="faint small">🫵 {yourLine}</p>}
@@ -683,7 +692,7 @@ function DialogueStep({ dialogue, onDone }: { dialogue: BootcampDialogue; onDone
           <>
             {coaching && <p className="dim small" style={{ textAlign: 'center', marginBottom: 2 }}>{t('chooseToEscape')}</p>}
             {node.choices.map((c, i) => {
-              const isTool = c.itemId?.startsWith('en.phrase.recovery.') ?? false;
+              const isTool = c.itemId?.includes('.phrase.recovery.') ?? false;
               return (
                 <button
                   key={i}
@@ -698,9 +707,9 @@ function DialogueStep({ dialogue, onDone }: { dialogue: BootcampDialogue; onDone
                     if (coaching || !c.correct) {
                       if (!c.correct && !coaching) feedbackWrong(); // coaching stays "never wrong"
                       setPicked(c);
-                      void speak(c.en, 'en', 0.92);
+                      void speakL(c.en, 0.92);
                     } else {
-                      void speak(c.en, 'en', 0.92).then(() => setNodeId(c.next));
+                      void speakL(c.en, 0.92).then(() => setNodeId(c.next));
                     }
                   }}
                 >
@@ -708,13 +717,13 @@ function DialogueStep({ dialogue, onDone }: { dialogue: BootcampDialogue; onDone
                     <span className="badge badge-ready" style={{ display: 'inline-flex', marginBottom: 6 }}>🛟 {t('survivalTool')}</span>
                   )}
                   <span style={{ display: 'block' }}>{c.en}</span>
-                  <span className="dim small" style={{ display: 'block' }}>{c.he}</span>
+                  <span className="dim small" style={{ display: 'block' }}>{dialogueTr(c)}</span>
                 </button>
               );
             })}
           </>
         ) : (
-          <button className="btn-ghost" onClick={() => displayNpc && void speak(displayNpc.en, 'en', 0.8)}>
+          <button className="btn-ghost" onClick={() => displayNpc && void speakL(displayNpc.en, 0.8)}>
             🐢 {t('playSlow')}
           </button>
         )}
@@ -738,7 +747,7 @@ function AmbushStep({ step, itemsById, onDone }: { step: Extract<BootcampStep, {
     const ok = picked === correct.id;
     return (
       <AnsweredView ok={ok} en={correct.text} meaning={L(correct.meaning)} tip={correct.tip ? L(correct.tip) : undefined}
-        prompt={{ en: step.npc.en, he: step.npc.he }} yourAnswer={ok ? undefined : wrong.text}
+        prompt={{ en: step.npc.en, he: dialogueTr(step.npc) }} yourAnswer={ok ? undefined : wrong.text}
         onRetry={ok ? undefined : () => setPicked(null)} onNext={() => onDone(ok)} />
     );
   }
@@ -755,7 +764,7 @@ function AmbushStep({ step, itemsById, onDone }: { step: Extract<BootcampStep, {
           <button className="btn-primary" onClick={() => {
             setFired(true);
             shownAt.current = Date.now();
-            void speak(step.npc.en, 'en', 1.12);
+            void speakL(step.npc.en, 1.12);
           }}>
             👂 {t('imReady')}
           </button>
@@ -770,7 +779,7 @@ function AmbushStep({ step, itemsById, onDone }: { step: Extract<BootcampStep, {
                 🛟 {o.text}
               </button>
             ))}
-            <button className="btn-ghost" onClick={() => void speak(step.npc.en, 'en', 0.85)}>🔊 {t('hearAgain')}</button>
+            <button className="btn-ghost" onClick={() => void speakL(step.npc.en, 0.85)}>🔊 {t('hearAgain')}</button>
           </>
         )}
       </div>
@@ -827,6 +836,7 @@ function Confetti() {
  */
 function VictoryScreen() {
   const bc = useBootcampStore();
+  const learningLang = useAppStore((s) => s.learningLang);
   const day = bc.currentDay();
   const [showReader, setShowReader] = useState(false);
   const [showVideo, setShowVideo] = useState(false);
@@ -847,8 +857,8 @@ function VictoryScreen() {
   const video = day.introVideo;
   const meta = BOOTCAMP_PLAN.find((m) => m.day === day.day);
   // "Mastered phrases" = the say-phrases this mission taught (recovery tools + replies excluded).
-  const mastered = day.items.filter((i) => i.id.startsWith('en.phrase.') && !i.id.startsWith('en.phrase.recovery.'));
-  const nextBuilt = BOOTCAMP_PLAN.find((m) => m.day > day.day && m.day in DAYS && !m.special && !bc.completedDays.includes(m.day));
+  const mastered = day.items.filter((i) => i.id.includes('.phrase.') && !i.id.includes('.phrase.recovery.'));
+  const nextBuilt = BOOTCAMP_PLAN.find((m) => m.day > day.day && m.day in missionsFor(learningLang) && !m.special && !bc.completedDays.includes(m.day));
 
   if (showReader && convo) return <DialogueReader dialogue={convo} onClose={() => setShowReader(false)} onFinish={() => { setShowReader(false); bc.toHub(); }} />;
   if (showVideo && video) return <VideoOverlay video={video} onClose={() => setShowVideo(false)} />;
@@ -962,7 +972,7 @@ function DialogueReader({ dialogue, onClose, onFinish }: { dialogue: BootcampDia
   const playOne = (i: number): void => {
     stop();
     setCurrent(i);
-    void speak(lines[i]!.en, 'en', 0.95);
+    void speakL(lines[i]!.en, 0.95);
   };
 
   const playAll = (from: number): void => {
@@ -972,7 +982,7 @@ function DialogueReader({ dialogue, onClose, onFinish }: { dialogue: BootcampDia
       for (let i = from; i < lines.length; i++) {
         if (token !== runToken.current) return; // paused / closed / stepped away
         setCurrent(i);
-        await speak(lines[i]!.en, 'en', 0.95);
+        await speakL(lines[i]!.en, 0.95);
         if (token !== runToken.current) return;
         await new Promise((r) => setTimeout(r, 350)); // a beat between speakers
       }
@@ -1003,7 +1013,7 @@ function DialogueReader({ dialogue, onClose, onFinish }: { dialogue: BootcampDia
               <button className="dline-play" onClick={() => playOne(i)} aria-label={t('replay')}>🔊</button>
             </div>
             <p className="dline-en">{line.en}</p>
-            <p className="dline-he">{line.he}</p>
+            <p className="dline-he">{dialogueTr(line)}</p>
           </div>
         ))}
       </div>

@@ -22,6 +22,31 @@ loop (typecheck → lint → tests → build → smoke) green at every milestone
 
 ## What's done
 
+### Sprint — Language-agnostic engine + French parity machinery (2026-07-12)
+- **The Bootcamp is now language-agnostic** (the real refactor, not a translation). Removed every
+  English assumption in the engine: (1) a single English `DAYS` map → a pure, store-free
+  **`registry.ts`** with `MISSIONS_BY_LANG` / `missionsFor(lang)` (a language with no missions shows
+  honest "not built", never English); (2) hardcoded `speak(text,'en')` in ~23 spots → `speakL` (the
+  active learning language); (3) Hebrew-only dialogue translations (`node.he`) → app-language-aware
+  **`tr:{en,he,…}`** via the pure `dialogueTr` helper (English stays byte-identical by fallback);
+  (4) transcript now carries `tr`; (5) English-only id-prefix checks (`startsWith('en.phrase…')`)
+  → language-agnostic `.includes('.phrase…')` so coaching/mastered-phrases work for any language.
+- **French Mission 1 (Recovery Toolkit)** authored and registered under `fr` — French target lines
+  + `tr` glosses, `fr.phrase.*` ids (French progress/review isolated from English). It plays through
+  the SAME engine; parity checker confirms it structurally matches English mission 1 (23 steps, 7 items).
+- **Parity validators (Phase 7)** — pure, tested, and runnable (`npm run parity`): `corpusParity`
+  (every concept must have a realization; no orphans) and `missionParity`/`unreachableOrDeadEnds`
+  (same mission set, structurally equivalent, no dead-end branches). `assert*` FAIL the build for any
+  language declared complete-but-incomplete. Honest dashboard today: **FR corpus 200/500 (40%),
+  Bootcamp 1/30 (3%)** — measured, not claimed done.
+- **French Core vocabulary** now 200 concepts (`data/fr-pilot.ts`), built into `core-fr.v1.json`
+  (PWA-precached) — Core Words + Picture Quiz + Swipe Recall + TTS all work in French from it.
+- Adding the NEXT language (es/it/de/pt) is now primarily content: realizations + a mission set +
+  registry line. Gates: typecheck · lint · **383 tests** · content build · production build green.
+- **Honest status: French is NOT at feature parity and is not user-selectable yet** (`available:false`).
+  The engine is ready; the remaining work is content (300 corpus concepts, 29 Bootcamp missions). See
+  **[FRENCH-PILOT.md](./FRENCH-PILOT.md)**.
+
 ### Sprint — Vocabulary-game fixes + French foundation (2026-07-12)
 - **Picture Quiz "stuck on feedback" fixed (Part F).** Root cause was **not** a state bug — the
   advance state machine was correct — but a **stacking/occlusion** bug: the feedback's fixed

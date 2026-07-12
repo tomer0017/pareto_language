@@ -16,8 +16,14 @@ export interface BootcampItem {
 }
 
 export interface DialogueChoice {
+  /** The spoken line in the LEARNING language (English in the en pilot, French in a fr mission). */
   en: string;
+  /** Legacy Hebrew translation. Prefer `tr` (app-language-aware). Kept for the English missions. */
   he: string;
+  /** Translation in the learner's APP language ({en,he,…}). Set by non-English missions so an
+   *  English-UI learner reads an English gloss, a Hebrew-UI learner a Hebrew one. When absent, the
+   *  engine falls back to {en: this.en, he: this.he} — which is exactly right for English missions. */
+  tr?: LocalizedText;
   itemId?: string;      // the item this line trains (scoring)
   correct: boolean;
   next: string;         // branch target — wrong choices route to recovery beats, never dead-end
@@ -27,8 +33,12 @@ export interface DialogueChoice {
 export interface DialogueNodeB {
   id: string;
   who: 'npc' | 'you';
+  /** The spoken line in the LEARNING language (English in the en pilot, French in a fr mission). */
   en: string;
+  /** Legacy Hebrew translation. Prefer `tr` (app-language-aware); kept for the English missions. */
   he: string;
+  /** Translation in the learner's APP language ({en,he,…}) — see DialogueChoice.tr. */
+  tr?: LocalizedText;
   fast?: boolean;       // natural speed
   slow?: boolean;       // deliberately slowed (recovery beats)
   next?: string;        // linear advance (npc lines / scripted you-lines)
@@ -64,7 +74,7 @@ export type BootcampStep =
   | { kind: 'replies'; saidItemId: string; replyIds: string[] }   // expected-reply training
   | { kind: 'swipe'; itemIds: string[] }
   | { kind: 'dialogue'; dialogueId: string }
-  | { kind: 'ambush'; npc: { en: string; he: string }; correctItemId: string; wrongItemId: string }
+  | { kind: 'ambush'; npc: { en: string; he: string; tr?: LocalizedText }; correctItemId: string; wrongItemId: string }
   | { kind: 'receipt'; text: LocalizedText }
   | { kind: 'video'; mode: 'intro' | 'again' }   // plays day.introVideo (intro = before, again = after)
   | { kind: 'summary' };

@@ -1,3 +1,4 @@
+import type { LocalizedText } from '@ready/content-schema';
 import type { BootcampDialogue } from './types.js';
 
 /**
@@ -14,8 +15,13 @@ import type { BootcampDialogue } from './types.js';
 
 export interface TranscriptLine {
   who: 'npc' | 'you';
+  /** Spoken line in the learning language (English pilot, French mission, …). */
   en: string;
+  /** Legacy Hebrew translation (kept for the docs generator). */
   he: string;
+  /** App-language-aware translation ({en,he,…}); present for non-English missions. UI reads this
+   *  via `dialogueTr`, falling back to {en,he}. */
+  tr?: LocalizedText;
 }
 
 export function dialogueTranscript(d: BootcampDialogue): TranscriptLine[] {
@@ -30,13 +36,13 @@ export function dialogueTranscript(d: BootcampDialogue): TranscriptLine[] {
     if (node.who === 'you' && node.choices?.length) {
       // Take the ideal line: the correct choice (fall back to the first if none is flagged).
       const choice = node.choices.find((c) => c.correct) ?? node.choices[0]!;
-      lines.push({ who: 'you', en: choice.en, he: choice.he });
+      lines.push({ who: 'you', en: choice.en, he: choice.he, ...(choice.tr ? { tr: choice.tr } : {}) });
       node = byId.get(choice.next);
       continue;
     }
 
     // npc line or scripted you-line — emit its text when present, then advance linearly.
-    if (node.en) lines.push({ who: node.who, en: node.en, he: node.he });
+    if (node.en) lines.push({ who: node.who, en: node.en, he: node.he, ...(node.tr ? { tr: node.tr } : {}) });
     if (node.end || !node.next) break;
     node = byId.get(node.next);
   }

@@ -1,42 +1,47 @@
-# READY — French Pilot (status & plan)
+# READY — French Parity (status & plan)
 
-> **Honest status: French is NOT a shippable learning language yet.** This sprint delivered the
-> *foundation* — a validated proof that French is content-only through the existing pipeline, plus
-> the validator gate that prevents a half-French pack from ever shipping. The full French Core 500
-> and French Bootcamp are **deferred** to their own content sprint (see §7). Nothing in this
-> document claims native review.
+> **Honest status: French is NOT at feature parity and is NOT user-selectable yet**
+> (`available:false`). What IS done is the hard part: the **architecture is now language-agnostic**,
+> so reaching parity — and adding Spanish/Italian/German/Portuguese after it — is **primarily a
+> content task**. The remaining work is content volume (300 corpus concepts + 29 Bootcamp missions),
+> measured honestly by `npm run parity`. Nothing here claims native review.
+
+Run `npm run parity` for the live dashboard. Today: **FR corpus 200/500 (40%), Bootcamp 1/30 (3%)**.
 
 ---
 
-## 1. Scope delivered this sprint (foundation only)
+## 1. What is done — the language-agnostic engine (content-only from here)
 
-- **Proof that French is content-only.** `content/core-corpus/fr-proof.ts` is a small set of
-  genuine, high-value French travel realizations (17 concepts: glue, directions, places, transport,
-  water, doctor, help). The SAME pure functions the English builder uses (`validateCorpus`,
-  `buildPackWords`) turn these rows into a valid `core-fr` pack — proven in
-  `content/core-corpus/fr-proof.test.ts`. No engine, component, or store was forked for French.
-- **The partial-pack gate is now testable and enforced for any language.** `validateCorpus` gained
-  an optional `declaredLangs` argument (default = production `DECLARED_LANGS`). A French pack that
-  is missing even one `t.fr` realization is **rejected** (`missing "fr" realization`), and French
-  realizations are rejected entirely unless `fr` is declared (`undeclared language "fr"`). This is
-  the sprint's "validator rejects partial packs" requirement, proven with real French.
-- **Game TTS is now learning-language aware.** Picture Quiz and Swipe Recall previously hardcoded
-  `speak(word, 'en')`; they now take a `lang` prop and speak the active learning language, so a
-  French pack will pronounce with the French voice. TTS locale for French is `fr-FR`
-  (`apps/web/src/shared/i18n/languages.ts`).
+- **Bootcamp engine de-Englished.** The mission registry is now pure and language-keyed
+  (`registry.ts` → `MISSIONS_BY_LANG` / `missionsFor(lang)`); audio speaks the active learning
+  language (`speakL`, was hardcoded `'en'` in ~23 spots); dialogue translations are app-language
+  aware (`tr:{en,he,…}` + `dialogueTr`, English identical by fallback); the transcript carries `tr`;
+  and id-prefix checks are language-agnostic (`.includes('.phrase.recovery.')`). A language with no
+  missions shows honest "not built" — **never** an English fallback.
+- **French Core vocabulary: 200 concepts** (`content/core-corpus/data/fr-pilot.ts`), built into
+  `core-fr.v1.json` (PWA-precached) via a curated **pilot-pack** path (`mergePilotRealizations` +
+  `validatePilotPack`) that never touches the English 500. Core Words + Picture Quiz + Swipe Recall
+  + TTS all work in French from it (games take a `lang` prop; `fr-FR` voice).
+- **French Bootcamp Mission 1 (Recovery Toolkit)** authored (`fr/day1.ts`): French target lines with
+  `tr` glosses, `fr.phrase.*` ids (French progress/review isolated from English). Plays through the
+  SAME engine; the parity checker confirms it structurally matches English mission 1.
+- **Parity validators (Phase 7)** — `content/core-corpus/parity.ts` (`corpusParity` — coverage + no
+  orphans) and `apps/web/src/features/bootcamp/parity.ts` (`missionParity`, `unreachableOrDeadEnds`).
+  Pure, unit-tested, runnable (`npm run parity`); `assert*` FAIL the build for any language declared
+  complete while incomplete.
 
-## 2. What is deliberately NOT done (and why)
+## 2. What is NOT done (brutally honest)
 
-- **French is not added to `DECLARED_LANGS`.** Declaring `fr` is all-or-nothing: the validator
-  requires a `t.fr` on **every** one of the 500 production concepts or the content build fails. We
-  do not have a reviewed 500-concept French set, so declaring `fr` now would break the build (or
-  force fake content). The production corpus stays English-complete; `fr` joins `DECLARED_LANGS`
-  only as the *final* step of the real French Core sprint.
-- **French stays `available: false`** in the language registry, so it cannot be selected in
-  onboarding/Profile. `appStore.setLearningLang` refuses any language whose registry entry is not
-  `available` — French cannot be entered until its content is complete. This keeps the pilot honest.
-- **No French Bootcamp missions were authored.** ~29 missions with dialogue trees, recovery
-  branches, quizzes and transcripts is a multi-week authoring effort and is out of this sprint.
+- **Core corpus: 300/500 concepts still have no French realization.** `npm run parity` lists exactly
+  which. Full vocabulary parity = author the remaining 300, then `assertCorpusParity` passes.
+- **Bootcamp: 29/30 missions are not authored in French.** Each is ~90–155 lines of structured
+  dialogue/quiz/ambush/transcript content. This is the bulk of the remaining work.
+- **French is not `available`,** so it cannot be selected — correct, because selecting it before the
+  Bootcamp exists would drop a learner into "not built" missions. Flip `available:true` only when the
+  parity gate passes for `fr`.
+- **`fr` is not in `DECLARED_LANGS`.** The pilot pack ships a curated subset deliberately; declaring
+  `fr` (the all-or-nothing 500 gate) is the final step once every concept is realized and reviewed.
+- **No native review.** All French is AI-drafted, `pending_native_review`.
 
 ## 3. Translation methodology (for the proof slice, and the standard for the full pack)
 

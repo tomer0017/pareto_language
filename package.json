@@ -36,7 +36,8 @@
     "seed:phrases": "tsx server/src/seed/cli.ts phrases",
     "seed:situations": "tsx server/src/seed/cli.ts situations",
     "seed:content-packs": "tsx server/src/seed/cli.ts content-packs",
-    "pipeline": "tsx content/pipeline/run.ts"
+    "pipeline": "tsx content/pipeline/run.ts",
+    "parity": "tsx scripts/parity.ts"
   },
   "devDependencies": {
     "@eslint/js": "^9.12.0",
