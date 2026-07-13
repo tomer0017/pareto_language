@@ -13,6 +13,12 @@ import { DAY11_FR } from './day11.js';
 import { DAY12_FR } from './day12.js';
 import { DAY13_FR } from './day13.js';
 import { DAY14_FR } from './day14.js';
+import { DAY15_FR } from './day15.js';
+import { DAY16_FR } from './day16.js';
+import { DAY17_FR } from './day17.js';
+import { DAY18_FR } from './day18.js';
+import { DAY19_FR } from './day19.js';
+import { DAY20_FR } from './day20.js';
 
 /**
  * French Bootcamp missions (content-only). Same `BootcampDayContent` shape as the English missions;
@@ -38,4 +44,10 @@ export const DAYS_FR: Record<number, BootcampDayContent> = {
   12: DAY12_FR,
   13: DAY13_FR,
   14: DAY14_FR,
+  15: DAY15_FR,
+  16: DAY16_FR,
+  17: DAY17_FR,
+  18: DAY18_FR,
+  19: DAY19_FR,
+  20: DAY20_FR,
 };
