@@ -51,12 +51,22 @@ completion state (never routes into unbuilt content).
 
 ## 2. What is NOT done (brutally honest)
 
-- **Core corpus: DONE (500/500).** No gap. `corpusParity('fr')` passes with 0 missing, 0 orphans.
-- **Bootcamp: 28/30 missions are not authored in French.** Each is ~90–155 lines of structured
-  dialogue/quiz/ambush/transcript content mirroring the matching English `dayN.ts`. This is the bulk
-  of the remaining work and the reason French is not yet user-selectable.
+- **Core corpus: DONE (511/511).** No gap. `corpusParity('fr')` passes with 0 missing, 0 orphans.
+- **Bootcamp: 4 of ~29 missions authored in French** (days 1–4: Recovery Toolkit, Introduce Myself,
+  Numbers & Money, Coffee Shop). The 4 built are at genuine **content parity** with English 1–4 —
+  identical items/tools/steps, natural idiomatic `vous`-French, complete `tr:{en,he}` glosses,
+  priming (incl. the 70/80/90 number system), videos (2–4), and full recovery-branch dialogues
+  (2026-07-13 content-alignment audit). **25 missions remain** (~90–155 lines each, mirroring the
+  matching English `dayN.ts`) — the bulk of the work and why French is not yet trip-ready.
+- **Foundation examples: French authored (Foundation words).** `features/foundation/frenchExamples.ts`
+  provides an authored French example for **all 192 Foundation building-block concepts** (verified by a
+  coverage test); the word page shows French first · Hebrew under · French audio, and the tapped
+  **surface** is preserved (tapping "combien" shows "combien", with "Combien ?" as a secondary base
+  form). AI-drafted, `pending native review`. For Core words OUTSIDE the Foundation taxonomy the app
+  still shows the app-language meaning (never English-as-French). A future step folds French examples
+  into the corpus for the remaining concepts.
 - **French is Early Access, not full parity.** It is selectable and safe (unbuilt missions are honest
-  "Coming Soon"), but the Bootcamp is 2/30. It is not the full English experience yet.
+  "Coming Soon"), but the Bootcamp is 4/29. It is not the full English experience yet.
 - **`fr` is not in `DECLARED_LANGS`.** The pilot pack ships a curated subset deliberately; declaring
   `fr` (the all-or-nothing 500 gate) is the final step once every concept is realized and reviewed.
 - **No native review.** All French is AI-drafted, `pending_native_review`.

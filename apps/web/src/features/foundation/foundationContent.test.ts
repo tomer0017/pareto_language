@@ -4,12 +4,14 @@ import type { CoreWord } from '../../shared/content/coreWords.js';
 import type { BootcampDayContent } from '../bootcamp/types.js';
 import { FOUNDATION_TAXONOMY } from './taxonomy.js';
 import { buildCorpusIndex } from './corpusIndex.js';
+import { FRENCH_EXAMPLE_IDS } from './frenchExamples.js';
 import {
   matchesCategory,
   frequencyStars,
   relatedMissions,
   buildMissionIndex,
   buildFoundation,
+  buildWord,
   buildExample,
   missionFoundationWords,
 } from './foundationContent.js';
@@ -66,13 +68,50 @@ describe('matchesCategory (data-driven selection on language-independent fields)
   });
 });
 
-describe('buildExample (learning-language line first, deduped gloss)', () => {
+describe('buildExample (learning-language line first, deduped gloss, honest for languages without examples)', () => {
   const ex = { en: 'We have time.', he: 'יש לנו זמן.' };
   it('puts the learning-language sentence first and the app-language gloss under it', () => {
     expect(buildExample(ex, 'he', 'en')).toEqual({ target: 'We have time.', targetLang: 'en-US', gloss: 'יש לנו זמן.' });
   });
   it('omits the gloss when it would just repeat the target (same language)', () => {
     expect(buildExample(ex, 'en', 'en')).toEqual({ target: 'We have time.', targetLang: 'en-US', gloss: undefined });
+  });
+  it('for a learning language with NO example realization (fr), shows the app-language meaning only — never English as the target', () => {
+    // The corpus example is en+he; there is no fr sentence, so no target line / no audio is offered.
+    expect(buildExample(ex, 'he', 'fr')).toEqual({ gloss: 'יש לנו זמן.' });
+    expect(buildExample(ex, 'en', 'fr')).toEqual({ gloss: 'We have time.' });
+  });
+});
+
+describe('buildWord — tapped surface & French examples (the two reported bugs)', () => {
+  const combien = word({ id: 'fr.phrase.how-many', conceptId: 'concept.phrase.how-many', word: 'Combien ?', category: 'questions', pos: 'phrase', example: { en: 'How many people?', he: 'כמה אנשים?' } });
+
+  it('shows the EXACT tapped surface as the title, with the canonical as the base form (Bug 1)', () => {
+    const w = buildWord(combien, {}, 'he', 'fr', 'combien'); // learner tapped lowercase "combien"
+    expect(w.display.primaryText).toBe('combien'); // matches the lesson — never "Combien ?"
+    expect(w.display.audioText).toBe('combien');   // audio matches the shown word
+    expect(w.baseForm).toBe('Combien ?');          // canonical shown as secondary, not as the title
+  });
+
+  it('does not add a base form when the tapped surface already equals the canonical', () => {
+    expect(buildWord(combien, {}, 'he', 'fr', 'Combien ?').baseForm).toBeUndefined();
+    expect(buildWord(combien, {}, 'he', 'fr').baseForm).toBeUndefined(); // browse (no surface)
+  });
+
+  it('shows a FRENCH example first + the Hebrew underneath, never English, for a French learner (Bug 2)', () => {
+    const help = word({ id: 'fr.word.help', conceptId: 'concept.word.help', word: 'aider', example: { en: 'Can you help me?', he: 'אתה יכול לעזור לי?' } });
+    const ex = buildWord(help, {}, 'he', 'fr').example!;
+    expect(ex.target).toBe('Pouvez-vous m’aider ?'); // authored French, spoken in fr
+    expect(ex.targetLang).toBe('fr-FR');
+    expect(ex.gloss).toBe('אתה יכול לעזור לי?');      // Hebrew underneath (from the corpus)
+    expect(/[A-Za-z]/.test(ex.target!)).toBe(true);   // French (has letters) — sanity, not English content
+  });
+
+  it('leaves the English learner unchanged (native corpus example + audio)', () => {
+    const help = word({ id: 'en.word.help', conceptId: 'concept.word.help', word: 'help', example: { en: 'Can you help me?', he: 'אתה יכול לעזור לי?' } });
+    const ex = buildWord(help, {}, 'he', 'en').example!;
+    expect(ex.target).toBe('Can you help me?');
+    expect(ex.targetLang).toBe('en-US');
   });
 });
 
@@ -175,6 +214,15 @@ describe('buildFoundation over the REAL packs (data-driven coverage gate)', () =
     const quantity = en.find((c) => c.id === 'quantity')!;
     expect(responses.words.some((w) => w.conceptId === 'concept.word.enough')).toBe(false);
     expect(quantity.words.some((w) => w.conceptId === 'concept.word.enough')).toBe(true);
+  });
+
+  it('EVERY French Foundation word has an authored French example (Bug 2 — no English fallback)', () => {
+    const ids = new Set(FRENCH_EXAMPLE_IDS);
+    const missing = loadPack('fr')
+      .filter((w) => FOUNDATION_TAXONOMY.some((c) => matchesCategory(w, c)))
+      .filter((w) => !ids.has(w.conceptId))
+      .map((w) => `${w.conceptId} (${w.word})`);
+    expect(missing, `Foundation words missing a French example:\n${missing.join('\n')}`).toEqual([]);
   });
 
   it('keeps categories in declared order and drops none of the ten', () => {

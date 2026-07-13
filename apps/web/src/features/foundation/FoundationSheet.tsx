@@ -45,6 +45,7 @@ function Bar({ pct }: { pct: number }) {
 export function FoundationSheet() {
   const open = useFoundationStore((s) => s.open);
   const target = useFoundationStore((s) => s.target);
+  const targetSurface = useFoundationStore((s) => s.targetSurface);
   const session = useFoundationStore((s) => s.session);
   const sessionGo = useFoundationStore((s) => s.sessionGo);
   const close = useFoundationStore((s) => s.close);
@@ -85,8 +86,8 @@ export function FoundationSheet() {
     return cw ? buildWord(cw, missions, uiLang, learningLang) : null;
   }, [session, missions, uiLang, learningLang]);
   const tapWord = useMemo(
-    () => (target ? buildWord(target, missions, uiLang, learningLang) : null),
-    [target, missions, uiLang, learningLang],
+    () => (target ? buildWord(target, missions, uiLang, learningLang, targetSurface ?? undefined) : null),
+    [target, targetSurface, missions, uiLang, learningLang],
   );
 
   const mode: 'session' | 'tap' | 'browse' = session ? 'session' : target ? 'tap' : 'browse';
@@ -203,6 +204,7 @@ function WordPage({ word, lang }: { word: FoundationWord; lang: string }) {
       <div className="foundation-page-head">
         <div style={{ minWidth: 0 }}>
           <p dir={dm.primaryDirection} className="foundation-page-word">{dm.primaryText}</p>
+          {word.baseForm && <p dir={dm.primaryDirection} className="dim small foundation-page-base">{t('foundationBaseForm')}: {word.baseForm}</p>}
           {showGloss && <p dir={dm.secondaryDirection} className="dim foundation-page-gloss">{dm.secondaryText}</p>}
           <span className="foundation-page-freq">
             <Stars n={word.stars} />
@@ -218,15 +220,22 @@ function WordPage({ word, lang }: { word: FoundationWord; lang: string }) {
           : <span className="foundation-chip">{word.corpusCategory}</span>}
       </div>
 
-      {word.example && (
+      {word.example && (word.example.target || word.example.gloss) && (
         <div className="foundation-section">
           <h3 className="foundation-section-title">{t('foundationExamples')}</h3>
           <div className="foundation-example">
-            <div className="foundation-example-row">
-              <p dir={dm.primaryDirection} className="foundation-example-target">{word.example.target}</p>
-              <SpeakerButton text={word.example.target} lang={lang} size={36} stop />
-            </div>
-            {word.example.gloss && <p dir={dm.secondaryDirection} className="dim small foundation-example-gloss">{word.example.gloss}</p>}
+            {word.example.target ? (
+              <>
+                <div className="foundation-example-row">
+                  <p dir={dm.primaryDirection} className="foundation-example-target">{word.example.target}</p>
+                  <SpeakerButton text={word.example.target} lang={lang} size={36} stop />
+                </div>
+                {word.example.gloss && <p dir={dm.secondaryDirection} className="dim small foundation-example-gloss">{word.example.gloss}</p>}
+              </>
+            ) : (
+              // No target-language example yet — show the meaning in the learner's app language.
+              <p dir={dm.secondaryDirection} className="foundation-example-target">{word.example.gloss}</p>
+            )}
           </div>
         </div>
       )}

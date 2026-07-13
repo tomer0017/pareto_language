@@ -17,12 +17,13 @@ import { TapCoachmark } from './TapCoachmark.js';
  * the pack loads it renders plain text, so it degrades gracefully and never blocks reading.
  */
 
-function openWord(word: CoreWord): void {
+function openWord(word: CoreWord, surface?: string): void {
   tap();
-  useFoundationStore.getState().openWord(word);
+  useFoundationStore.getState().openWord(word, surface);
 }
 
-/** A single tappable Core word (used where the whole element is one word). */
+/** A single tappable Core word (used where the whole element is one word — the shown text IS the
+ *  canonical word, so no surface override is needed). */
 export function TappableWord({ word, children, className = '' }: { word: CoreWord; children: React.ReactNode; className?: string }) {
   return (
     <button type="button" className={`tappable-word ${className}`} onClick={(e) => { e.stopPropagation(); openWord(word); }}>
@@ -54,7 +55,9 @@ export function TappableText({ text, lang, className }: { text: string; lang?: s
             ref={isFirst ? firstWordRef : undefined}
             type="button"
             className="tappable-word"
-            onClick={(e) => { e.stopPropagation(); openWord(seg.word!); }}
+            // Pass the exact tapped surface so the sheet shows THIS form (e.g. "combien"), not the
+            // pack's canonical realization ("Combien ?"). Preserves the learner's mental model.
+            onClick={(e) => { e.stopPropagation(); openWord(seg.word!, seg.text); }}
             // Swallow the pointer so a tappable word inside a draggable/flip card never triggers it.
             onPointerDown={(e) => e.stopPropagation()}
           >

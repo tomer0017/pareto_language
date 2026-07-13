@@ -403,6 +403,7 @@ const en = {
   foundationOnboardBody: 'The most useful words for this mission are always one tap away on the 🛟 button. Learning just a few building blocks makes every dialogue much easier to understand.',
   foundationOnboardCta: 'Got it',
   foundationTapHint: 'Tap underlined words to instantly see their meaning, pronunciation and examples.',
+  foundationBaseForm: 'Base form',
 } as const;
 
 const he: Partial<Record<StringKey, string>> = {
@@ -734,6 +735,7 @@ const he: Partial<Record<StringKey, string>> = {
   foundationOnboardBody: 'המילים הכי שימושיות למשימה הזו תמיד במרחק הקשה אחת על כפתור ה-🛟. לימוד כמה אבני יסוד הופך כל דיאלוג להרבה יותר קל להבנה.',
   foundationOnboardCta: 'הבנתי',
   foundationTapHint: 'הקישו על מילים מודגשות כדי לראות מיד את המשמעות, ההגייה והדוגמאות.',
+  foundationBaseForm: 'צורת בסיס',
 };
 
 const DICTS: Record<string, Partial<Record<StringKey, string>>> = { en, he };

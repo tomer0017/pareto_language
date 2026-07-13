@@ -673,6 +673,7 @@ input:focus, select:focus { outline: 2px solid var(--brand); border-color: trans
 }
 .foundation-page-word { font-size: 1.9rem; font-weight: 800; }
 .foundation-page-gloss { font-size: 1.05rem; margin-top: 2px; }
+.foundation-page-base { margin-top: 2px; opacity: 0.8; }
 .foundation-page-freq { display: inline-flex; align-items: center; gap: 8px; margin-top: 8px; }
 .foundation-audio {
   width: 52px; height: 52px; min-height: 52px; border-radius: 999px; flex-shrink: 0;

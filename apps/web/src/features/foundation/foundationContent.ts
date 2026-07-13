@@ -6,6 +6,7 @@ import type { BootcampDayContent } from '../bootcamp/types.js';
 import { BOOTCAMP_PLAN, missionNumber } from '../bootcamp/plan.js';
 import { FOUNDATION_TAXONOMY, type FoundationCategory } from './taxonomy.js';
 import { buildCorpusIndex, segmentText, type CorpusIndex } from './corpusIndex.js';
+import { authoredExample } from './frenchExamples.js';
 
 /**
  * Foundation model — PURE (no React, no store, no I/O). Turns the Core Corpus (per-language pack
@@ -28,13 +29,20 @@ export interface RelatedMission {
 /** The Foundation category a word belongs to (icon + i18n title), or null for a non-Foundation Core word. */
 export type FoundationWordCategory = { id: string; icon: string; titleKey: FoundationCategory['titleKey'] } | null;
 
-/** An example sentence: the LEARNING-language line (shown first + spoken) + its app-language gloss. */
+/**
+ * An example sentence. The corpus stores examples per CONCEPT in en+he only (no per-language
+ * realization), so a `target` (learning-language) line + audio is shown ONLY when the learning
+ * language genuinely has that sentence (English today). For a language without an example
+ * realization (e.g. French) we NEVER show the English sentence dressed up as the target — we show
+ * the example in the learner's own app language as a meaning hint (no wrong-voice audio). This keeps
+ * French honest until real French examples are authored in the corpus (see the audit).
+ */
 export interface FoundationExample {
-  /** The sentence in the learning language (what the word page speaks). */
-  target: string;
-  /** TTS locale for the target line. */
-  targetLang: string;
-  /** Translation in the app language, omitted when it would just repeat the target line. */
+  /** The sentence in the learning language (spoken) — present only when a realization exists. */
+  target?: string;
+  /** TTS locale for the target line (present with `target`). */
+  targetLang?: string;
+  /** The sentence in the app language — the meaning hint (omitted only when it repeats the target). */
   gloss?: string;
 }
 
@@ -44,6 +52,10 @@ export interface FoundationWord {
   conceptId: string;
   /** Canonical display model (target word + app-gloss + audio locale + directions + id). */
   display: LearningDisplayModel;
+  /** The concept's dictionary/base form, shown as secondary info ONLY when it differs from the shown
+   *  (tapped) surface — so tapping "combien" shows "combien" with "Combien ?" as the base form,
+   *  never replacing the word the learner actually tapped. */
+  baseForm?: string;
   /** 1–5 "essential-ness", derived from the corpus rank/tier (5 = Essential). */
   stars: number;
   /** Example sentence — learning-language line first, then app-language gloss (undefined when the
@@ -162,16 +174,34 @@ export function buildWord(
   missions: Record<number, BootcampDayContent>,
   appLang: string,
   learningLang: string,
+  /** The exact surface the learner tapped inline (Universal Tap), e.g. "combien" vs canonical "Combien ?". */
+  surface?: string,
 ): FoundationWord {
-  return buildWordWithIndex(word, buildMissionIndex(missions), appLang, learningLang);
+  return buildWordWithIndex(word, buildMissionIndex(missions), appLang, learningLang, surface);
+}
+
+/** The example a Foundation word page shows: an authored target-language sentence (French today)
+ *  when one exists, else the honest fallback (never English-as-target for a non-English learner). */
+function buildFoundationExample(word: CoreWord, appLang: string, learningLang: string): FoundationExample | undefined {
+  if (!word.example) return undefined;
+  const authored = authoredExample(word.conceptId, learningLang);
+  if (authored) {
+    const gloss = localize(word.example, appLang);
+    return { target: authored, targetLang: languageTtsTag(learningLang), gloss: gloss || undefined };
+  }
+  return buildExample(word.example, appLang, learningLang);
 }
 
 /** Resolve an example to the LEARNING-language line + app-language gloss (deduped). Consistent
  *  ordering everywhere: the target sentence is always primary; the gloss only when it differs. */
 export function buildExample(example: LocalizedText, appLang: string, learningLang: string): FoundationExample {
-  const target = example[learningLang] ?? example.en ?? localize(example, learningLang);
-  const gloss = localize(example, appLang);
-  return { target, targetLang: languageTtsTag(learningLang), gloss: gloss && gloss !== target ? gloss : undefined };
+  const target = example[learningLang]; // a genuine learning-language realization, or undefined
+  const gloss = localize(example, appLang); // the sentence in the app language
+  if (target) {
+    return { target, targetLang: languageTtsTag(learningLang), gloss: gloss && gloss !== target ? gloss : undefined };
+  }
+  // No learning-language example (e.g. French) — show the app-language meaning only, never English-as-target.
+  return { gloss };
 }
 
 function buildWordWithIndex(
@@ -179,13 +209,17 @@ function buildWordWithIndex(
   index: { day: number; text: string }[],
   appLang: string,
   learningLang: string,
+  surface?: string,
 ): FoundationWord {
   const cat = foundationCategoryOf(word);
+  // Preserve the learner's mental model: show the exact tapped surface, keep the canonical as base form.
+  const shown = surface && surface !== word.word ? surface : undefined;
   return {
     conceptId: word.conceptId,
-    display: resolveLearningItem({ id: word.id, target: word.word, meaning: word.meaning, emoji: word.emoji }, appLang, learningLang),
+    display: resolveLearningItem({ id: word.id, target: shown ?? word.word, meaning: word.meaning, emoji: word.emoji }, appLang, learningLang),
+    baseForm: shown ? word.word : undefined,
     stars: frequencyStars(word),
-    example: word.example ? buildExample(word.example, appLang, learningLang) : undefined,
+    example: buildFoundationExample(word, appLang, learningLang),
     relatedMissions: relatedMissions(word.word, index, appLang),
     category: cat ? { id: cat.id, icon: cat.icon, titleKey: cat.titleKey } : null,
     corpusCategory: word.category,
