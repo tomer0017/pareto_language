@@ -70,6 +70,20 @@ stable across re-renders. **Narrative dialogue order is never shuffled** — onl
   sentences (`buildSentenceDeck` reuses item ids; no duplication), shuffled per session, both review
   directions. See **[VOCABULARY-AUDIT.md](./VOCABULARY-AUDIT.md)**.
 
+## Foundation (apps/web/src/features/foundation)
+
+The 🛟 "building blocks" surface — a **data-driven VIEW over the Core Corpus**, never new content.
+
+| Module | Responsibility |
+| --- | --- |
+| `taxonomy.ts` | The ONLY place categories are declared — `FoundationCategory[]` as DATA. Each is a *selector* over the language-independent corpus fields (`category` / `pos` / `conceptId`), so adding a language is zero code and adding a category is one entry. |
+| `foundationContent.ts` (pure, tested) | `buildFoundation(words, missions, appLang, learningLang)` → categories → words; `frequencyStars` (tier/rank → 1–5); `relatedMissions` (whole-word scan of real `missionsFor(lang)` text). Reuses `resolveLearningItem` (the any-to-any display model). |
+| `FoundationFab.tsx` / `FoundationSheet.tsx` / `foundationStore.ts` | The FAB (shell-mounted, gated by `shouldShowFoundationFab`), one component rendering every level (categories → word list → word page) from the model, and a tiny open/close store. |
+
+Reusable primitive: `shared/ui/Sheet.tsx` — a bottom sheet (RTL/theme-aware) generalizing the
+`Modal` scrim; the seam the future Universal-Tap word sheet reuses. Words come from
+`loadCoreWords(learningLang)`, so English + French (and any future pack) work through one code path.
+
 ## Audio / TTS (apps/web/src/shared/audio)
 
 Runtime, free, cross-device speech via the Web Speech API — no cloud, no keys, no server, offline-capable.

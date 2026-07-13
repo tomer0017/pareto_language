@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useAppStore, type View } from '../shared/stores/appStore.js';
-import { shouldShowNav } from './nav.js';
+import { shouldShowNav, shouldShowFoundationFab } from './nav.js';
 import { t } from '../shared/i18n/strings.js';
 import { ErrorBoundary } from '../shared/ui/ErrorBoundary.js';
 import { BottomNav } from '../shared/ui/BottomNav.js';
@@ -21,6 +21,8 @@ import { Home } from '../features/home/Home.js';
 import { Core } from '../features/core/Core.js';
 import { Profile } from '../features/profile/Profile.js';
 import { Videos } from '../features/videos/Videos.js';
+import { FoundationFab } from '../features/foundation/FoundationFab.js';
+import { FoundationSheet } from '../features/foundation/FoundationSheet.js';
 import { useBootcampStore } from '../features/bootcamp/bootcampStore.js';
 
 
@@ -109,11 +111,20 @@ export function App() {
   const Screen = screen.el;
 
   const showNav = shouldShowNav(view, inMission, coreGameActive);
+  const showFoundation = shouldShowFoundationFab(view, inMission);
 
   return (
     <>
       <ErrorBoundary feature={screen.feature}>
         <Screen />
+      </ErrorBoundary>
+      {showFoundation && (
+        <ErrorBoundary feature="Foundation">
+          <FoundationFab />
+        </ErrorBoundary>
+      )}
+      <ErrorBoundary feature="Foundation">
+        <FoundationSheet />
       </ErrorBoundary>
       {showNav && <BottomNav />}
       {import.meta.env.DEV && (

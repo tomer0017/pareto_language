@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { shouldShowNav } from './nav.js';
+import { shouldShowNav, shouldShowFoundationFab } from './nav.js';
 
 /**
  * Part-F regression — the Picture Quiz "stuck on feedback" bug.
@@ -33,5 +33,19 @@ describe('shouldShowNav (Part F — game feedback must be reachable)', () => {
   it('never shows the nav on non-tab views', () => {
     expect(shouldShowNav('session', false, false)).toBe(false);
     expect(shouldShowNav('onboarding', false, false)).toBe(false);
+  });
+});
+
+describe('shouldShowFoundationFab (🛟 lives on the Bootcamp map, not inside a mission)', () => {
+  it('shows on the Bootcamp map', () => {
+    expect(shouldShowFoundationFab('bootcamp', false)).toBe(true);
+  });
+  it('hides inside an active mission (focused full-screen flow)', () => {
+    expect(shouldShowFoundationFab('bootcamp', true)).toBe(false);
+  });
+  it('is Bootcamp-only — not on the other tabs', () => {
+    expect(shouldShowFoundationFab('home', false)).toBe(false);
+    expect(shouldShowFoundationFab('core', false)).toBe(false);
+    expect(shouldShowFoundationFab('profile', false)).toBe(false);
   });
 });

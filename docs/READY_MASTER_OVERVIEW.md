@@ -111,6 +111,13 @@ hidden only inside an active mission — a focused, full-screen flow with its ow
   "Mission 1") is now an optional, unnumbered **special mission** at the end of the map — content
   unchanged, placement/presentation only (pilot testers skipped it as a "broken" first mission
   because its answers are escape tools, not answers to the conversation).
+- **Foundation (🛟)** — an always-accessible floating button on the Bootcamp map (hidden inside an
+  active mission) opening a bottom sheet of "building block" categories (People, Question Words,
+  Connectors, Position, Essential Verbs, Colors, Numbers, Time, Quantity, Quick Responses) → word
+  list → word page (translation · native audio · frequency stars · example · "Appears in" missions).
+  Pareto "grab the missing brick and keep going": no progression, no gating. It is a **data-driven
+  VIEW over the Core Corpus** (categories declared as data in `features/foundation/taxonomy.ts`; no
+  new content), so it scales to thousands of words and lights up per language (EN + FR) with no code.
 - **Core (a.k.a. "Core 1500")** — the practical communication engine, presented as a tabbed
   **knowledge center**: **Core Phrases** is live (every sentence READY teaches, grouped by mission,
   tap to hear) with **🎴 Sentence Flashcards** review (flip/hear/shuffle over the canonical mission

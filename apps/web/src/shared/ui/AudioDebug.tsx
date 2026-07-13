@@ -1,5 +1,6 @@
 import { useSyncExternalStore, useState } from 'react';
 import { getAudioDiag, subscribeAudioDiag, testAudio, unlockAudio } from '../audio/tts.js';
+import { DEV_BADGE_ANCHOR } from './devOverlay.js';
 
 /**
  * Dev-only audio diagnostics + Test Audio (Sprint 8 P0). Rendered only under import.meta.env.DEV.
@@ -26,7 +27,7 @@ export function AudioDebug() {
           setOpen(true);
         }}
         style={{
-          position: 'fixed', bottom: 96, insetInlineEnd: 12, zIndex: 90, minHeight: 0,
+          ...DEV_BADGE_ANCHOR, bottom: 96,
           padding: '6px 10px', fontSize: '0.7rem', borderRadius: 999,
           background: diag.unlocked ? 'var(--good)' : 'var(--warn)', color: '#fff', boxShadow: 'var(--shadow-card)',
         }}

@@ -1,0 +1,142 @@
+import { readFileSync } from 'node:fs';
+import { describe, it, expect } from 'vitest';
+import type { CoreWord } from '../../shared/content/coreWords.js';
+import type { BootcampDayContent } from '../bootcamp/types.js';
+import { FOUNDATION_TAXONOMY } from './taxonomy.js';
+import {
+  matchesCategory,
+  frequencyStars,
+  relatedMissions,
+  buildMissionIndex,
+  buildFoundation,
+} from './foundationContent.js';
+
+/** Load a real per-language Core pack from disk (node env — no fetch). */
+function loadPack(lang: string): CoreWord[] {
+  const url = new URL(`../../../public/content/core-${lang}.v1.json`, import.meta.url);
+  const pack = JSON.parse(readFileSync(url, 'utf8')) as { words: CoreWord[] };
+  return pack.words;
+}
+
+const word = (over: Partial<CoreWord>): CoreWord => ({
+  id: 'en.word.x',
+  conceptId: 'concept.word.x',
+  word: 'x',
+  meaning: { en: 'x', he: 'x' },
+  category: 'actions',
+  pos: 'verb',
+  tier: 1,
+  rank: 100,
+  skill: 'recall',
+  ...over,
+});
+
+describe('matchesCategory (data-driven selection on language-independent fields)', () => {
+  const verbs = FOUNDATION_TAXONOMY.find((c) => c.id === 'verbs')!;
+  const connectors = FOUNDATION_TAXONOMY.find((c) => c.id === 'connectors')!;
+  const responses = FOUNDATION_TAXONOMY.find((c) => c.id === 'responses')!;
+  const quantity = FOUNDATION_TAXONOMY.find((c) => c.id === 'quantity')!;
+
+  it('matches by corpus category', () => {
+    expect(matchesCategory(word({ category: 'actions', pos: 'verb' }), verbs)).toBe(true);
+    expect(matchesCategory(word({ category: 'colors', pos: 'adj' }), verbs)).toBe(false);
+  });
+
+  it('honours the pos restriction (a non-verb action is not an Essential Verb)', () => {
+    expect(matchesCategory(word({ category: 'actions', pos: 'noun' }), verbs)).toBe(false);
+  });
+
+  it('partitions glue by pos so a word is Connector XOR Quick Response', () => {
+    const withPrep = word({ category: 'glue', pos: 'prep', word: 'with' });
+    const yes = word({ category: 'glue', pos: 'interj', word: 'yes' });
+    expect(matchesCategory(withPrep, connectors)).toBe(true);
+    expect(matchesCategory(withPrep, responses)).toBe(false);
+    expect(matchesCategory(yes, connectors)).toBe(false);
+    expect(matchesCategory(yes, responses)).toBe(true);
+  });
+
+  it('matches explicit conceptIds regardless of corpus category', () => {
+    const more = word({ conceptId: 'concept.word.more', category: 'descriptions', pos: 'adv' });
+    expect(matchesCategory(more, quantity)).toBe(true);
+    const other = word({ conceptId: 'concept.word.zzz', category: 'descriptions', pos: 'adv' });
+    expect(matchesCategory(other, quantity)).toBe(false);
+  });
+});
+
+describe('frequencyStars', () => {
+  it('tier 0 is always Essential (5)', () => {
+    expect(frequencyStars({ tier: 0, rank: 500 })).toBe(5);
+  });
+  it('degrades by global rank for lower tiers', () => {
+    expect(frequencyStars({ tier: 1, rank: 100 })).toBe(4);
+    expect(frequencyStars({ tier: 1, rank: 250 })).toBe(3);
+    expect(frequencyStars({ tier: 1, rank: 400 })).toBe(2);
+    expect(frequencyStars({ tier: 1, rank: 500 })).toBe(1);
+  });
+});
+
+describe('relatedMissions (derived from real mission text, whole-word)', () => {
+  const missions: Record<number, BootcampDayContent> = {
+    1: {
+      day: 1,
+      title: { en: 'Introduce Myself', he: '' },
+      items: [{ id: 'i1', text: 'I want coffee', meaning: { en: '', he: '' } }],
+      dialogues: {},
+      steps: [],
+    },
+    2: {
+      day: 2,
+      title: { en: 'Order Coffee', he: '' },
+      items: [],
+      dialogues: {
+        d: { id: 'd', start: 's', nodes: [{ id: 's', who: 'you', en: 'Can I pay by card?', he: '' }] },
+      },
+      steps: [],
+    },
+  };
+  const index = buildMissionIndex(missions);
+
+  it('finds the word as a whole token in items and dialogue', () => {
+    expect(relatedMissions('want', index, 'en').map((m) => m.day)).toEqual([1]);
+    expect(relatedMissions('pay', index, 'en').map((m) => m.day)).toEqual([2]);
+  });
+
+  it('does not match substrings (card ≠ car)', () => {
+    expect(relatedMissions('car', index, 'en')).toEqual([]);
+  });
+
+  it('caps the result set', () => {
+    const many: Record<number, BootcampDayContent> = {};
+    for (let d = 1; d <= 10; d++) many[d] = { day: d, title: { en: `M${d}`, he: '' }, items: [{ id: `i${d}`, text: 'yes please', meaning: { en: '', he: '' } }], dialogues: {}, steps: [] };
+    expect(relatedMissions('yes', buildMissionIndex(many), 'en', 3)).toHaveLength(3);
+  });
+});
+
+describe('buildFoundation over the REAL packs (data-driven coverage gate)', () => {
+  for (const lang of ['en', 'fr']) {
+    it(`every taxonomy category resolves to ≥1 word in core-${lang}`, () => {
+      const model = buildFoundation(loadPack(lang), {}, 'en', lang);
+      const ids = model.map((c) => c.id);
+      for (const cat of FOUNDATION_TAXONOMY) {
+        expect(ids, `${cat.id} empty in ${lang}`).toContain(cat.id);
+      }
+    });
+  }
+
+  it('shows the target word as primary and the app-language gloss as secondary (no leak)', () => {
+    const fr = buildFoundation(loadPack('fr'), {}, 'en', 'fr');
+    const people = fr.find((c) => c.id === 'people')!;
+    // French realization is primary; the English gloss is the secondary meaning — English is never
+    // the primary for a French learner (the any-to-any rule).
+    for (const w of people.words) {
+      expect(w.display.audioLang).toBe('fr');
+      expect(w.display.primaryText).toBeTruthy();
+    }
+  });
+
+  it('keeps categories in declared order and drops none of the ten', () => {
+    const model = buildFoundation(loadPack('en'), {}, 'en', 'en');
+    expect(model).toHaveLength(FOUNDATION_TAXONOMY.length);
+    expect(model.map((c) => c.id)).toEqual([...FOUNDATION_TAXONOMY].sort((a, b) => a.order - b.order).map((c) => c.id));
+  });
+});

@@ -22,6 +22,26 @@ loop (typecheck → lint → tests → build → smoke) green at every milestone
 
 ## What's done
 
+### Sprint — Foundation System: data-driven building-blocks surface (2026-07-13)
+- **New always-on 🛟 Foundation surface inside the Bootcamp** (an architecture sprint, not a content
+  one): a floating action button on the Bootcamp map (hidden inside an active mission) opens a
+  reusable bottom **Sheet** → 10 Foundation categories → word list → word page (target word,
+  app-language translation, native audio, frequency stars + "Essential", example, and derived
+  "Appears in" mission chips). No progression, no gating — pure Pareto "grab the missing brick".
+- **Fully data-driven, zero content duplication.** Foundation is a curated VIEW over the existing
+  **Core Corpus** packs (`core-{lang}.v1.json`), not new content. Categories are declared as DATA in
+  `features/foundation/taxonomy.ts` (selectors over the language-independent `category`/`pos`/
+  `conceptId` fields), so the surface scales from hundreds → thousands of words and lights up a new
+  language with **zero code**. Proven for **English + French** by an end-to-end Chrome run and a
+  coverage test asserting every category resolves in both `core-en` and `core-fr`.
+- **Pure model builder** `features/foundation/foundationContent.ts` (+ tests): `buildFoundation`,
+  `frequencyStars` (tier/rank → 1–5), `relatedMissions` (whole-word scan of real mission text via
+  `missionsFor(lang)`). **New reusable primitive** `shared/ui/Sheet.tsx` (bottom sheet, RTL/theme
+  aware) generalizing the `Modal` scrim — the seam a future Universal-Tap word sheet reuses.
+- Shell wiring: `shouldShowFoundationFab` (pure, tested in `nav.test.ts`), mount in `App.tsx`,
+  `foundationStore` (open/close), en+he strings, `.foundation-*`/`.sheet-*` CSS. Gates green
+  (typecheck · lint · **640 tests** · build · smoke).
+
 ### Sprint — Complete priming coverage + global function words + French numbers (2026-07-12)
 - **8 foundation missions primed** (EN 1–8; FR 1–4 in parity): added justified `prime` steps to EN
   Missions 2,3,5,6,7,8 and FR 2,3 (Day 1 + 4 already done). Every mission decision is recorded in

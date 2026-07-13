@@ -56,6 +56,14 @@ hidden only inside an active mission (a focused, full-screen flow with its own c
   content is unchanged; only its placement/presentation moved (pilot testers read it as a broken
   first mission because its answers are escape tools, not answers to the conversation). Display
   numbering is presentational (`missionNumber()`); the internal `day`/DAYS keys never change.
+- **Foundation (🛟)** — a floating action button on the Bootcamp map (hidden inside an active mission,
+  via the pure `shouldShowFoundationFab`) opening a reusable bottom **Sheet**: 10 building-block
+  categories → word list → word page (translation · audio · frequency · example · related missions).
+  It is a **data-driven VIEW over the Core Corpus** — categories are declared as DATA in
+  `features/foundation/taxonomy.ts` (selectors over the language-independent `category`/`pos`/
+  `conceptId`), the model is pure (`foundationContent.ts`), and words come from
+  `loadCoreWords(learningLang)`. So it never duplicates content, scales to thousands of words with no
+  UI change, and works for EN + FR (and any future pack) through one code path. No progression/gating.
 - **Core** — the practical communication engine, a two-layer **knowledge center**: a grid of
   **category cards** (📖 Core Phrases · 📝 Core Words · ❓ Common Questions · 🚨 Emergency · 🧩 Core
   Patterns · ⭐ Favorites) → the existing tabbed page opened on the chosen category (top tabs +

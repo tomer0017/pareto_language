@@ -52,3 +52,19 @@ export function buildSentenceDeck(lang: string): FlashCard[] {
 export function shuffledDeck(deck: FlashCard[], seed: number): FlashCard[] {
   return seededShuffle(deck, seed);
 }
+
+/** Next card index with wrap-around (pure → the navigation bug is unit-testable, not gesture-only).
+ *  `delta` is +1 (next) or -1 (prev); the result always stays within `[0, len)`. */
+export function nextIndex(i: number, delta: number, len: number): number {
+  if (len <= 0) return 0;
+  return (((i + delta) % len) + len) % len;
+}
+
+/** What a horizontal drag of `dx` pixels means. Swipe LEFT (dx negative) → next card; swipe RIGHT
+ *  (dx positive) → previous; anything under the threshold is a tap (→ flip), not a swipe. */
+export type SwipeOutcome = 'next' | 'prev' | 'none';
+export function swipeOutcome(dx: number, threshold = 80): SwipeOutcome {
+  if (dx <= -threshold) return 'next';
+  if (dx >= threshold) return 'prev';
+  return 'none';
+}

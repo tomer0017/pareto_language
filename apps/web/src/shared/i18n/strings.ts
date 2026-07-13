@@ -371,6 +371,25 @@ const en = {
   videosAllDoneTitle: 'That’s every video for now',
   videosAllDoneBody: 'You’ve watched all the available videos. More are coming soon.',
   backHome: 'Back to Home',
+
+  // Foundation (the 🛟 building-blocks surface). Category titles map to the taxonomy `titleKey`s.
+  loading: 'Loading…',
+  foundationTitle: 'Foundation',
+  foundationSubtitle: 'Build the language one brick at a time.',
+  foundationEmpty: 'Foundation is empty for this language until its Core pack is built.',
+  foundationEssential: 'Essential',
+  foundationExamples: 'Examples',
+  foundationAppearsIn: 'Appears in',
+  foundationCatPeople: 'People',
+  foundationCatQuestions: 'Question Words',
+  foundationCatConnectors: 'Connectors',
+  foundationCatPosition: 'Position & Direction',
+  foundationCatVerbs: 'Essential Verbs',
+  foundationCatColors: 'Colors',
+  foundationCatNumbers: 'Numbers',
+  foundationCatTime: 'Time',
+  foundationCatQuantity: 'Quantity',
+  foundationCatResponses: 'Quick Responses',
 } as const;
 
 const he: Partial<Record<StringKey, string>> = {
@@ -670,6 +689,25 @@ const he: Partial<Record<StringKey, string>> = {
   videosAllDoneTitle: 'זה כל הסרטונים לבינתיים',
   videosAllDoneBody: 'צפיתם בכל הסרטונים הזמינים. עוד יגיעו בקרוב.',
   backHome: 'חזרה לבית',
+
+  // Foundation
+  loading: 'טוען…',
+  foundationTitle: 'יסודות',
+  foundationSubtitle: 'בנו את השפה לבנה אחר לבנה.',
+  foundationEmpty: 'היסודות ריקים עבור שפה זו עד שחבילת הליבה שלה תיבנה.',
+  foundationEssential: 'חיוני',
+  foundationExamples: 'דוגמאות',
+  foundationAppearsIn: 'מופיע ב',
+  foundationCatPeople: 'אנשים',
+  foundationCatQuestions: 'מילות שאלה',
+  foundationCatConnectors: 'מילות קישור',
+  foundationCatPosition: 'מיקום וכיוון',
+  foundationCatVerbs: 'פעלים חיוניים',
+  foundationCatColors: 'צבעים',
+  foundationCatNumbers: 'מספרים',
+  foundationCatTime: 'זמן',
+  foundationCatQuantity: 'כמות',
+  foundationCatResponses: 'תגובות מהירות',
 };
 
 const DICTS: Record<string, Partial<Record<StringKey, string>>> = { en, he };

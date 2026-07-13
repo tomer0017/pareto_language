@@ -1,5 +1,6 @@
 import { useSyncExternalStore, useState } from 'react';
 import { getDataDiag, subscribeDataDiag } from '../data/dataDiag.js';
+import { DEV_BADGE_ANCHOR } from './devOverlay.js';
 
 /**
  * Dev-only data-source diagnostics (Sprint 8). Makes it obvious at a glance whether content is
@@ -24,7 +25,7 @@ export function DataDebug() {
       <button
         onClick={() => setOpen(true)}
         style={{
-          position: 'fixed', bottom: 132, insetInlineEnd: 12, zIndex: 90, minHeight: 0,
+          ...DEV_BADGE_ANCHOR, bottom: 132,
           padding: '6px 10px', fontSize: '0.7rem', borderRadius: 999,
           background: healthy ? 'var(--good)' : 'var(--warn)', color: '#fff', boxShadow: 'var(--shadow-card)',
         }}

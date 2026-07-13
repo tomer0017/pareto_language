@@ -16,3 +16,13 @@ export const PILOT_TABS: View[] = ['home', 'bootcamp', 'core', 'profile'];
 export function shouldShowNav(view: View, inMission: boolean, coreGameActive: boolean): boolean {
   return PILOT_TABS.includes(view) && !(view === 'bootcamp' && inMission) && !coreGameActive;
 }
+
+/**
+ * Whether the 🛟 Foundation FAB is shown. Pure + React-free (nav.test.ts). Foundation is the
+ * Bootcamp's "grab the missing building block" surface, so the button lives on the Bootcamp map but
+ * is hidden inside an active mission (a focused full-screen flow with its own controls) — mirroring
+ * the bottom-nav rule so the two never fight for the same corner.
+ */
+export function shouldShowFoundationFab(view: View, inMission: boolean): boolean {
+  return view === 'bootcamp' && !inMission;
+}
