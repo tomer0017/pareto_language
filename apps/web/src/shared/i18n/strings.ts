@@ -390,6 +390,12 @@ const en = {
   foundationCatTime: 'Time',
   foundationCatQuantity: 'Quantity',
   foundationCatResponses: 'Quick Responses',
+  foundationProgress: 'Your progress',
+  foundationViewed: 'Viewed',
+  foundationHintTitle: 'Missing Foundation Brick',
+  foundationHintLearn: 'learn it in 20 sec',
+  foundationHintCta: 'Learn now',
+  foundationHintDismiss: 'Dismiss',
 } as const;
 
 const he: Partial<Record<StringKey, string>> = {
@@ -708,6 +714,12 @@ const he: Partial<Record<StringKey, string>> = {
   foundationCatTime: 'זמן',
   foundationCatQuantity: 'כמות',
   foundationCatResponses: 'תגובות מהירות',
+  foundationProgress: 'ההתקדמות שלך',
+  foundationViewed: 'נצפה',
+  foundationHintTitle: 'חסרה לבנה ביסוד',
+  foundationHintLearn: 'ללמוד ב-20 שניות',
+  foundationHintCta: 'למד עכשיו',
+  foundationHintDismiss: 'סגור',
 };
 
 const DICTS: Record<string, Partial<Record<StringKey, string>>> = { en, he };

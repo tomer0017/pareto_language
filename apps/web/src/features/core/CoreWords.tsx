@@ -2,10 +2,11 @@ import { useEffect, useMemo, useState } from 'react';
 import type { LocalizedText } from '@ready/content-schema';
 import { L, t } from '../../shared/i18n/strings.js';
 import { resolveLearningItem } from '../../shared/i18n/display.js';
-import { speak } from '../../shared/audio/tts.js';
 import { tap } from '../../shared/ui/haptics.js';
+import { SpeakerButton } from '../../shared/ui/SpeakerButton.js';
 import { useAppStore } from '../../shared/stores/appStore.js';
 import { loadCoreWords, toGameWords, coreCategories, type CoreWord } from '../../shared/content/coreWords.js';
+import { TappableWord } from '../foundation/TappableText.js';
 import { PictureQuiz } from '../games/pictureQuiz/PictureQuiz.js';
 import { SwipeRecall } from '../games/swipeRecall/SwipeRecall.js';
 
@@ -51,7 +52,6 @@ export function CoreWords() {
   const setCoreGameActive = useAppStore((s) => s.setCoreGameActive);
   const [words, setWords] = useState<CoreWord[] | null>(null);
   const [mode, setMode] = useState<Mode>('menu');
-  const [playing, setPlaying] = useState<string | null>(null);
 
   useEffect(() => { void loadCoreWords(learningLang).then(setWords); }, [learningLang]);
   // A game session is a focused, nav-less flow: hide the bottom nav so the game's fixed action zone
@@ -80,7 +80,6 @@ export function CoreWords() {
     const cats = coreCategories(words);
     // One canonical display model per word (target + app-gloss + audio + directions + review id).
     const model = (w: CoreWord) => resolveLearningItem({ id: w.id, target: w.word, meaning: w.meaning, emoji: w.emoji }, uiLang, learningLang);
-    const say = (dm: ReturnType<typeof model>): void => { tap(); setPlaying(dm.contentId); void speak(dm.audioText, dm.audioLang).then(() => setPlaying((p) => (p === dm.contentId ? null : p))); };
     return (
       <div style={{ marginTop: 8 }}>
         <button className="btn-ghost" onClick={() => setMode('menu')}>{t('back')}</button>
@@ -90,19 +89,21 @@ export function CoreWords() {
             {words.filter((w) => w.category === cat).map((w) => {
               const dm = model(w);
               return (
-              <button
+              <div
                 key={dm.contentId}
-                className={`list-row card-press ${playing === dm.contentId ? 'core-playing' : ''}`}
-                style={{ width: '100%', textAlign: 'start', background: 'var(--card)', borderRadius: 'var(--r-md)', border: 'none', padding: '10px 14px', marginBottom: 8, boxShadow: 'var(--shadow-card)', display: 'flex', alignItems: 'center', gap: 12 }}
-                onClick={() => say(dm)}
+                className="list-row"
+                style={{ background: 'var(--card)', borderRadius: 'var(--r-md)', padding: '10px 14px', marginBottom: 8, boxShadow: 'var(--shadow-card)', display: 'flex', alignItems: 'center', gap: 12 }}
               >
-                <span style={{ fontSize: '1.8rem', width: 34, textAlign: 'center' }} aria-hidden>{dm.emoji ?? '·'}</span>
-                <span style={{ minWidth: 0, flex: 1 }}>
-                  <span dir={dm.primaryDirection} style={{ display: 'block', fontWeight: 700 }}>{dm.primaryText}</span>
-                  <span dir={dm.secondaryDirection} className="dim small" style={{ display: 'block' }}>{dm.secondaryText}</span>
-                </span>
-                <span className="core-play" aria-hidden>🔊</span>
-              </button>
+                {/* Universal Tap: the word opens the shared Foundation word sheet. */}
+                <TappableWord word={w} className="core-word-open">
+                  <span style={{ fontSize: '1.8rem', width: 34, textAlign: 'center' }} aria-hidden>{dm.emoji ?? '·'}</span>
+                  <span style={{ minWidth: 0, flex: 1 }}>
+                    <span dir={dm.primaryDirection} style={{ display: 'block', fontWeight: 700 }}>{dm.primaryText}</span>
+                    <span dir={dm.secondaryDirection} className="dim small" style={{ display: 'block' }}>{dm.secondaryText}</span>
+                  </span>
+                </TappableWord>
+                <SpeakerButton text={dm.audioText} lang={dm.audioLang} size={40} />
+              </div>
               );
             })}
           </div>

@@ -64,6 +64,11 @@ hidden only inside an active mission (a focused, full-screen flow with its own c
   `conceptId`), the model is pure (`foundationContent.ts`), and words come from
   `loadCoreWords(learningLang)`. So it never duplicates content, scales to thousands of words with no
   UI change, and works for EN + FR (and any future pack) through one code path. No progression/gating.
+  It also powers **Universal Tap** (every Core word in dialogue/flashcards/Core/mission drills is
+  tappable → the SAME sheet, via `TappableText`/`corpusIndex.ts` + `foundationStore.openWord`),
+  **Smart Detection** (`FoundationHint` — a non-blocking nudge for the first unviewed brick in a
+  mission), and **Progress** (`foundationProgress.ts`, per-category + overall, persisted `viewed`/
+  `dismissed`). One shared word sheet + one `SpeakerButton`; nothing duplicated.
 - **Core** — the practical communication engine, a two-layer **knowledge center**: a grid of
   **category cards** (📖 Core Phrases · 📝 Core Words · ❓ Common Questions · 🚨 Emergency · 🧩 Core
   Patterns · ⭐ Favorites) → the existing tabbed page opened on the chosen category (top tabs +

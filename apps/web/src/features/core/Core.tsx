@@ -2,9 +2,10 @@ import { useMemo, useState } from 'react';
 import { useAppStore } from '../../shared/stores/appStore.js';
 import { L, t, type StringKey } from '../../shared/i18n/strings.js';
 import { resolveLearningItem } from '../../shared/i18n/display.js';
-import { speak } from '../../shared/audio/tts.js';
 import { tap } from '../../shared/ui/haptics.js';
 import { LangStrip } from '../../shared/ui/LangStrip.js';
+import { SpeakerButton } from '../../shared/ui/SpeakerButton.js';
+import { TappableText } from '../foundation/TappableText.js';
 import { CoreWords } from './CoreWords.js';
 import { SentenceFlashcards } from './SentenceFlashcards.js';
 import { BOOTCAMP_PLAN } from '../bootcamp/plan.js';
@@ -70,17 +71,11 @@ export function Core() {
   const app = useAppStore();
   const category = app.coreCategory as CoreTab | null;
   const groups = useMemo(() => buildGroups(app.learningLang), [app.learningLang]);
-  const [playing, setPlaying] = useState<string | null>(null);
   const [reviewOpen, setReviewOpen] = useState(false);
   const total = useMemo(() => groups.reduce((n, g) => n + g.items.length, 0), [groups]);
 
   // One canonical display model per phrase (target + app-gloss + audio + directions + review id).
   const model = (item: BootcampItem) => resolveLearningItem({ id: item.id, target: item.text, meaning: item.meaning }, app.uiLang, app.learningLang);
-  const say = (dm: ReturnType<typeof model>): void => {
-    tap();
-    setPlaying(dm.contentId);
-    void speak(dm.audioText, dm.audioLang).then(() => setPlaying((p) => (p === dm.contentId ? null : p)));
-  };
 
   // Layer 1 — the category cards.
   if (!category) {
@@ -147,18 +142,19 @@ export function Core() {
                 {g.items.map((item) => {
                   const dm = model(item);
                   return (
-                  <button
+                  <div
                     key={dm.contentId}
-                    className={`list-row card-press ${playing === dm.contentId ? 'core-playing' : ''}`}
-                    style={{ width: '100%', textAlign: 'start', background: 'var(--card)', borderRadius: 'var(--r-md)', border: 'none', padding: '12px 14px', marginBottom: 8, boxShadow: 'var(--shadow-card)' }}
-                    onClick={() => say(dm)}
+                    className="list-row"
+                    style={{ background: 'var(--card)', borderRadius: 'var(--r-md)', padding: '12px 14px', marginBottom: 8, boxShadow: 'var(--shadow-card)' }}
                   >
                     <span style={{ minWidth: 0 }}>
-                      <span dir={dm.primaryDirection} style={{ display: 'block', fontWeight: 700 }}>{dm.primaryText}</span>
+                      <span dir={dm.primaryDirection} style={{ display: 'block', fontWeight: 700 }}>
+                        <TappableText text={dm.primaryText} lang={dm.audioLang} />
+                      </span>
                       <span dir={dm.secondaryDirection} className="dim small" style={{ display: 'block' }}>{dm.secondaryText}</span>
                     </span>
-                    <span className="core-play" aria-hidden>🔊</span>
-                  </button>
+                    <SpeakerButton text={dm.audioText} lang={dm.audioLang} size={40} />
+                  </div>
                   );
                 })}
               </div>

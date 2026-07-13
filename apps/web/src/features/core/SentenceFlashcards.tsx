@@ -5,6 +5,7 @@ import { speak, cancelSpeech } from '../../shared/audio/tts.js';
 import { tap } from '../../shared/ui/haptics.js';
 import { useAppStore } from '../../shared/stores/appStore.js';
 import { sessionSeed } from '../../shared/util/shuffle.js';
+import { TappableText } from '../foundation/TappableText.js';
 import { buildSentenceDeck, shuffledDeck, nextIndex, swipeOutcome, type FlashDirection } from './flashcards.js';
 
 /**
@@ -124,9 +125,13 @@ export function SentenceFlashcards({ onBack }: { onBack: () => void }) {
         }}
         onPointerCancel={() => { startX.current = null; dragging.current = false; setDx(0); }}
       >
-        <p dir={front.dir} className="drill-phrase" style={{ fontSize: '1.6rem' }}>{front.text}</p>
+        <p dir={front.dir} className="drill-phrase" style={{ fontSize: '1.6rem' }}>
+          {showTargetOnFront && front.text ? <TappableText text={front.text} lang={learningLang} /> : front.text}
+        </p>
         {flipped ? (
-          <p dir={backSide.dir} className="drill-meaning pop-in" style={{ fontSize: '1.15rem' }}>{backSide.text}</p>
+          <p dir={backSide.dir} className="drill-meaning pop-in" style={{ fontSize: '1.15rem' }}>
+            {!showTargetOnFront && backSide.text ? <TappableText text={backSide.text} lang={learningLang} /> : backSide.text}
+          </p>
         ) : (
           <p className="faint small">{t('flashTapToFlip')}</p>
         )}

@@ -78,10 +78,14 @@ The 🛟 "building blocks" surface — a **data-driven VIEW over the Core Corpus
 | --- | --- |
 | `taxonomy.ts` | The ONLY place categories are declared — `FoundationCategory[]` as DATA. Each is a *selector* over the language-independent corpus fields (`category` / `pos` / `conceptId`), so adding a language is zero code and adding a category is one entry. |
 | `foundationContent.ts` (pure, tested) | `buildFoundation(words, missions, appLang, learningLang)` → categories → words; `frequencyStars` (tier/rank → 1–5); `relatedMissions` (whole-word scan of real `missionsFor(lang)` text). Reuses `resolveLearningItem` (the any-to-any display model). |
-| `FoundationFab.tsx` / `FoundationSheet.tsx` / `foundationStore.ts` | The FAB (shell-mounted, gated by `shouldShowFoundationFab`), one component rendering every level (categories → word list → word page) from the model, and a tiny open/close store. |
+| `FoundationFab.tsx` / `FoundationSheet.tsx` / `foundationStore.ts` | The FAB (shell-mounted, gated by `shouldShowFoundationFab`), one component rendering every level (categories → word list → word page) from the model, and the shared store (open/close + Universal-Tap `openWord` + persisted `viewed`/`dismissed`). |
+| `corpusIndex.ts` (pure) + `TappableText.tsx` | **Universal Tap**: `buildCorpusIndex` + `segmentText` (whole-word, greedy longest-match, lossless) mark every Core word in a sentence; `TappableText` / `TappableWord` render them tappable and open the shared sheet via `openWord`. `useCoreWords(lang)` loads the pack + index once per language. |
+| `FoundationHint.tsx` | **Smart Detection**: the non-blocking "Missing Foundation Brick" nudge for the first unviewed building block in the current mission text (Learn now / Dismiss). |
+| `foundationProgress.ts` (pure, tested) | Per-category + overall completion from the viewed set — motivational only, never gates. |
 
-Reusable primitive: `shared/ui/Sheet.tsx` — a bottom sheet (RTL/theme-aware) generalizing the
-`Modal` scrim; the seam the future Universal-Tap word sheet reuses. Words come from
+Reusable primitives: `shared/ui/Sheet.tsx` (bottom sheet) and `shared/ui/SpeakerButton.tsx` (one
+tap-to-hear button). There is exactly ONE word sheet and ONE tap entry point app-wide — dialogue,
+flashcards, Core Words/Phrases and mission drills all reuse them. Words come from
 `loadCoreWords(learningLang)`, so English + French (and any future pack) work through one code path.
 
 ## Audio / TTS (apps/web/src/shared/audio)

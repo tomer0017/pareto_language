@@ -699,5 +699,61 @@ input:focus, select:focus { outline: 2px solid var(--brand); border-color: trans
 }
 .foundation-chip b { font-weight: 800; }
 
+/* Universal Tap — every Core Corpus word is a subtle tappable span opening the shared word sheet. */
+.tappable-word {
+  display: inline; background: none; border: none; padding: 0; margin: 0; min-height: 0;
+  font: inherit; color: inherit; text-align: inherit; cursor: pointer;
+  text-decoration: underline dotted;
+  text-decoration-color: color-mix(in srgb, var(--brand) 45%, transparent);
+  text-underline-offset: 3px; border-radius: 4px;
+}
+.tappable-word:active { background: var(--brand-soft); }
+.core-word-open, .foundation-word-open {
+  display: flex; align-items: center; gap: 12px; flex: 1; min-width: 0;
+  background: none; border: none; padding: 0; text-align: start; min-height: 0; color: inherit;
+}
+.core-word-open { width: 100%; }
+
+/* Reusable speaker button (shared/ui/SpeakerButton) */
+.speaker-btn {
+  border-radius: 999px; display: grid; place-items: center; flex-shrink: 0;
+  background: var(--card); border: 1px solid var(--line); box-shadow: var(--shadow-card);
+  font-size: 1.15rem; line-height: 1;
+}
+.speaker-btn:active { transform: scale(0.92); }
+
+/* Foundation word-list row now wraps a tappable word + a speaker button. */
+.foundation-word-row {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  padding: 10px 12px; margin-bottom: 8px;
+  background: var(--card); border-radius: var(--r-md); box-shadow: var(--shadow-card);
+}
+.foundation-seen { color: var(--good); font-weight: 800; flex-shrink: 0; }
+
+/* Progress (motivational only — never gates) */
+.foundation-bar { height: 6px; border-radius: 999px; background: var(--line); overflow: hidden; width: 100%; margin-top: 6px; }
+.foundation-bar-fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--brand), var(--accent)); transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1); }
+.foundation-overall { background: var(--card); border-radius: var(--r-md); padding: 12px 14px; box-shadow: var(--shadow-card); margin-bottom: 12px; }
+.foundation-overall-head { display: flex; justify-content: space-between; font-weight: 700; font-size: 0.9rem; margin-bottom: 2px; }
+.foundation-overall-pct { color: var(--brand); font-weight: 800; }
+.foundation-page-cat { margin-top: 12px; }
+
+/* Smart Detection hint — non-blocking */
+.foundation-hint {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap;
+  background: linear-gradient(135deg, var(--brand-soft), var(--card));
+  border: 1px solid var(--line); border-radius: var(--r-md);
+  padding: 8px 12px; margin-bottom: 10px;
+}
+.foundation-hint-body { display: flex; flex-direction: column; min-width: 0; }
+.foundation-hint-title { font-weight: 800; font-size: 0.82rem; color: var(--brand-deep); }
+.foundation-hint-word { font-size: 0.82rem; color: var(--ink-dim); }
+.foundation-hint-actions { display: flex; gap: 6px; flex-shrink: 0; }
+.foundation-hint-learn, .foundation-hint-dismiss {
+  min-height: 0; padding: 6px 12px; border-radius: 999px; font-size: 0.8rem; font-weight: 700;
+}
+.foundation-hint-learn { background: var(--brand); color: #fff; box-shadow: var(--shadow-card); }
+.foundation-hint-dismiss { background: var(--card); color: var(--ink-dim); border: 1px solid var(--line); }
+
 /* RTL: flex/grid mirror automatically; nudge the few directional bits. */
 [dir='rtl'] .swipe-hint { flex-direction: row-reverse; }

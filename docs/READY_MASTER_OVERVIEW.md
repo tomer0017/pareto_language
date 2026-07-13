@@ -118,6 +118,11 @@ hidden only inside an active mission — a focused, full-screen flow with its ow
   Pareto "grab the missing brick and keep going": no progression, no gating. It is a **data-driven
   VIEW over the Core Corpus** (categories declared as data in `features/foundation/taxonomy.ts`; no
   new content), so it scales to thousands of words and lights up per language (EN + FR) with no code.
+  Three capabilities extend it, all reusing that ONE word sheet: **Universal Tap** (every Core word
+  across dialogue, flashcards, Core Words/Phrases and mission drills is tappable → the sheet),
+  **Smart Detection** (a non-blocking "🛟 Missing Foundation Brick" nudge for the first unviewed
+  building block in a mission — Learn now / Dismiss, never gates), and **Progress** (motivational
+  per-category + overall bars from the words you've viewed; persisted, never gates).
 - **Core (a.k.a. "Core 1500")** — the practical communication engine, presented as a tabbed
   **knowledge center**: **Core Phrases** is live (every sentence READY teaches, grouped by mission,
   tap to hear) with **🎴 Sentence Flashcards** review (flip/hear/shuffle over the canonical mission

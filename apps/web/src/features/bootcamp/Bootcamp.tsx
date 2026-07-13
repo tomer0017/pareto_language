@@ -17,6 +17,8 @@ import type { BootcampItem, BootcampStep, BootcampDialogue, BootcampDayContent, 
 import { dialogueTranscript } from './transcript.js';
 import { dialogueTr } from './i18n.js';
 import { shuffle, mulberry32, sessionSeed } from '../../shared/util/shuffle.js';
+import { FoundationHint } from '../foundation/FoundationHint.js';
+import { TappableText } from '../foundation/TappableText.js';
 
 /** Resolve a public asset path (e.g. "/videos/x.mp4") against the app's base so it works in
  *  dev, on the deployed sub-path, and inside the PWA. Absolute URLs pass through unchanged. */
@@ -306,6 +308,9 @@ function MissionPlayer() {
       <div className="progress-track" style={{ marginBottom: 10 }}>
         <div className="progress-fill brand" style={{ width: `${progress}%` }} />
       </div>
+      {/* Smart Foundation Detection: a tiny, non-blocking nudge for the first building-block word in
+          this mission the learner has never viewed. Learn now / Dismiss — never gates the lesson. */}
+      <FoundationHint targets={day.items.map((i) => i.text)} />
       {/* Video-first missions: the full conversation is one tap away at any moment. */}
       {video && step.kind !== 'video' && (
         <button className="btn-ghost" style={{ alignSelf: 'center', marginBottom: 4 }} onClick={() => { cancelSpeech(); setShowVideo(true); }}>
@@ -446,7 +451,7 @@ function ToolStep({ step, item, onDone }: { step: Extract<BootcampStep, { kind: 
           </>
         ) : (
           <>
-            <p className="drill-phrase pop-in" style={{ fontSize: '1.5rem' }}>{item.text}</p>
+            <p className="drill-phrase pop-in" style={{ fontSize: '1.5rem' }}><TappableText text={item.text} /></p>
             <p className="drill-meaning">{L(item.meaning)}</p>
             {item.tip && <p className="faint small">{L(item.tip)}</p>}
             <p className="faint small">🗣️ {t('sayItAloud')}</p>
@@ -745,7 +750,7 @@ function DialogueStep({ dialogue, onDone }: { dialogue: BootcampDialogue; onDone
         {displayNpc && (
           <div className="fade-in" key={displayNpc.id}>
             <p style={{ fontSize: '1.9rem' }}>🧑‍🍳</p>
-            <p className="drill-phrase" style={{ fontSize: '1.25rem' }}>“{displayNpc.en}”</p>
+            <p className="drill-phrase" style={{ fontSize: '1.25rem' }}>“<TappableText text={displayNpc.en} />”</p>
             <p className="dim small">{dialogueTr(displayNpc)}</p>
           </div>
         )}

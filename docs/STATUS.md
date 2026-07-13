@@ -22,6 +22,29 @@ loop (typecheck → lint → tests → build → smoke) green at every milestone
 
 ## What's done
 
+### Sprint — Foundation complete: Universal Tap · Smart Detection · Progress (2026-07-13)
+- **Universal Tap everywhere.** Every Core-Corpus word is now tappable across the app and opens the
+  ONE shared Foundation word sheet — no duplicated UI. `TappableText` (pure `corpusIndex.ts` tokenizer:
+  whole-word, greedy longest-match, lossless) marks Core words inside sentences (dialogue NPC line,
+  tool step, Core Phrases, sentence flashcards); `TappableWord` is the single-word form (Core Words
+  Browse). All funnel through `foundationStore.openWord` → `FoundationSheet`. Rows gained a reusable
+  `shared/ui/SpeakerButton` so audio stays one tap away without nested-button hacks.
+- **Smart Foundation Detection.** `FoundationHint` (in the mission player) surfaces the first
+  building-block word the learner has never viewed as a tiny non-blocking "🛟 Missing Foundation
+  Brick — learn it in 20 sec" banner: **Learn now** (opens the word sheet) / **Dismiss** (suppress
+  forever). Never blocks progression; renders nothing when there's nothing new.
+- **Foundation Progress** (motivational, never gates). `foundationProgress.ts` (pure) computes
+  per-category `viewed/total` + an overall %, shown as bars on the sheet's category grid. Viewing a
+  word page marks its concept viewed; **viewed + dismissed persist to localStorage**
+  (`ready.foundation.viewed` / `.dismissed`), concept-id keyed so it holds across languages.
+- **Word page integration**: translation · audio · examples · frequency stars · related missions ·
+  **Foundation category** chip (falls back to the raw corpus category for tapped non-Foundation words).
+- Any Core word is openable (not just the ten categories) via the shared single-word builder
+  `buildWord`. New pure tests: `corpusIndex.test.ts`, `foundationProgress.test.ts` (+ extended
+  `foundationContent.test.ts`). Verified end-to-end in Chrome (EN): hint→learn, inline word taps in
+  dialogue/phrases, 511 browse rows, progress bars. Gates green (typecheck · lint · **654 tests** ·
+  build · smoke).
+
 ### Sprint — Foundation System: data-driven building-blocks surface (2026-07-13)
 - **New always-on 🛟 Foundation surface inside the Bootcamp** (an architecture sprint, not a content
   one): a floating action button on the Bootcamp map (hidden inside an active mission) opens a

@@ -134,6 +134,24 @@ describe('buildFoundation over the REAL packs (data-driven coverage gate)', () =
     }
   });
 
+  it('carries the concept id + category on every built word (for tap/progress)', () => {
+    const en = buildFoundation(loadPack('en'), {}, 'en', 'en');
+    const verbs = en.find((c) => c.id === 'verbs')!;
+    for (const w of verbs.words) {
+      expect(w.conceptId).toMatch(/^concept\./);
+      expect(w.category?.id).toBe('verbs');
+      expect(w.corpusCategory).toBe('actions');
+    }
+  });
+
+  it('keeps every concept in exactly one Foundation category (enough is Quantity, not a Response)', () => {
+    const en = buildFoundation(loadPack('en'), {}, 'en', 'en');
+    const responses = en.find((c) => c.id === 'responses')!;
+    const quantity = en.find((c) => c.id === 'quantity')!;
+    expect(responses.words.some((w) => w.conceptId === 'concept.word.enough')).toBe(false);
+    expect(quantity.words.some((w) => w.conceptId === 'concept.word.enough')).toBe(true);
+  });
+
   it('keeps categories in declared order and drops none of the ten', () => {
     const model = buildFoundation(loadPack('en'), {}, 'en', 'en');
     expect(model).toHaveLength(FOUNDATION_TAXONOMY.length);

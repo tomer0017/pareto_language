@@ -70,5 +70,15 @@ export const FOUNDATION_TAXONOMY: readonly FoundationCategory[] = [
     order: 9,
     conceptIds: ['concept.word.more', 'concept.word.less', 'concept.word.enough', 'concept.word.full', 'concept.word.empty'],
   },
-  { id: 'responses', icon: '✅', titleKey: 'foundationCatResponses', order: 10, corpusCategories: ['glue'], pos: ['interj', 'phrase'] },
+  {
+    id: 'responses',
+    icon: '✅',
+    titleKey: 'foundationCatResponses',
+    order: 10,
+    corpusCategories: ['glue'],
+    pos: ['interj', 'phrase'],
+    // `enough` (glue/interj) belongs to Quantity — keep every concept in exactly one category so
+    // progress totals never double-count.
+    excludeConceptIds: ['concept.word.enough'],
+  },
 ] as const;

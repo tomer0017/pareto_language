@@ -23,8 +23,13 @@ export interface RelatedMission {
   title: string;
 }
 
+/** The Foundation category a word belongs to (icon + i18n title), or null for a non-Foundation Core word. */
+export type FoundationWordCategory = { id: string; icon: string; titleKey: FoundationCategory['titleKey'] } | null;
+
 /** One Foundation word, fully resolved for display. */
 export interface FoundationWord {
+  /** Language-independent concept id (`concept.word.*`) — the identity used for progress/viewed. */
+  conceptId: string;
   /** Canonical display model (target word + app-gloss + audio locale + directions + id). */
   display: LearningDisplayModel;
   /** 1–5 "essential-ness", derived from the corpus rank/tier (5 = Essential). */
@@ -33,6 +38,12 @@ export interface FoundationWord {
   example?: string;
   /** Missions that use this word (derived from real mission text). */
   relatedMissions: RelatedMission[];
+  /** The Foundation category this word belongs to, or null when it is a Core word outside the
+   *  Foundation taxonomy (still openable via Universal Tap). */
+  category: FoundationWordCategory;
+  /** The raw Core Corpus category (always present) — the word page's fallback label for a word that
+   *  is tapped from a sentence but sits outside the ten Foundation categories. */
+  corpusCategory: string;
 }
 
 /** One Foundation category with its resolved words (only non-empty categories are returned). */
@@ -116,6 +127,50 @@ export function relatedMissions(
   return out;
 }
 
+/** The Foundation category a Core word belongs to (the first match in declared order), or null. */
+export function foundationCategoryOf(word: CoreWord): FoundationCategory | null {
+  const ordered = [...FOUNDATION_TAXONOMY].sort((a, b) => a.order - b.order);
+  return ordered.find((c) => matchesCategory(word, c)) ?? null;
+}
+
+/** Is this Core word one of the Foundation building blocks (in some Foundation category)? */
+export function isFoundationWord(word: CoreWord): boolean {
+  return foundationCategoryOf(word) !== null;
+}
+
+/**
+ * Resolve ONE Core word into the full display model the word page renders — the single builder
+ * reused by both `buildFoundation` (category browse) and Universal Tap (open any tapped word). A
+ * word outside the Foundation taxonomy still resolves (its `category` is null) so any Core Corpus
+ * word can be tapped, not just the ten Foundation categories.
+ */
+export function buildWord(
+  word: CoreWord,
+  missions: Record<number, BootcampDayContent>,
+  appLang: string,
+  learningLang: string,
+): FoundationWord {
+  return buildWordWithIndex(word, buildMissionIndex(missions), appLang, learningLang);
+}
+
+function buildWordWithIndex(
+  word: CoreWord,
+  index: { day: number; text: string }[],
+  appLang: string,
+  learningLang: string,
+): FoundationWord {
+  const cat = foundationCategoryOf(word);
+  return {
+    conceptId: word.conceptId,
+    display: resolveLearningItem({ id: word.id, target: word.word, meaning: word.meaning, emoji: word.emoji }, appLang, learningLang),
+    stars: frequencyStars(word),
+    example: word.example ? localize(word.example, appLang) : undefined,
+    relatedMissions: relatedMissions(word.word, index, appLang),
+    category: cat ? { id: cat.id, icon: cat.icon, titleKey: cat.titleKey } : null,
+    corpusCategory: word.category,
+  };
+}
+
 /**
  * Build the full Foundation model for a language pair. `words` come from
  * `loadCoreWords(learningLang)`, `missions` from `missionsFor(learningLang)`. Categories keep their
@@ -133,19 +188,7 @@ export function buildFoundation(
   for (const cat of categories) {
     const catWords = words
       .filter((w) => matchesCategory(w, cat))
-      .map<FoundationWord>((w) => {
-        const display = resolveLearningItem(
-          { id: w.id, target: w.word, meaning: w.meaning, emoji: w.emoji },
-          appLang,
-          learningLang,
-        );
-        return {
-          display,
-          stars: frequencyStars(w),
-          example: w.example ? localize(w.example, appLang) : undefined,
-          relatedMissions: relatedMissions(w.word, index, appLang),
-        };
-      });
+      .map<FoundationWord>((w) => buildWordWithIndex(w, index, appLang, learningLang));
     if (catWords.length > 0) {
       models.push({ id: cat.id, icon: cat.icon, titleKey: cat.titleKey, words: catWords });
     }
