@@ -4,7 +4,7 @@ import type { CoreWord } from '../../shared/content/coreWords.js';
 import type { BootcampDayContent } from '../bootcamp/types.js';
 import { FOUNDATION_TAXONOMY } from './taxonomy.js';
 import { buildCorpusIndex } from './corpusIndex.js';
-import { FRENCH_EXAMPLE_IDS } from './frenchExamples.js';
+import { EXAMPLE_LANGS, authoredExampleIds } from './foundationExamples.js';
 import {
   matchesCategory,
   frequencyStars,
@@ -216,14 +216,18 @@ describe('buildFoundation over the REAL packs (data-driven coverage gate)', () =
     expect(quantity.words.some((w) => w.conceptId === 'concept.word.enough')).toBe(true);
   });
 
-  it('EVERY French Foundation word has an authored French example (Bug 2 — no English fallback)', () => {
-    const ids = new Set(FRENCH_EXAMPLE_IDS);
-    const missing = loadPack('fr')
-      .filter((w) => FOUNDATION_TAXONOMY.some((c) => matchesCategory(w, c)))
-      .filter((w) => !ids.has(w.conceptId))
-      .map((w) => `${w.conceptId} (${w.word})`);
-    expect(missing, `Foundation words missing a French example:\n${missing.join('\n')}`).toEqual([]);
-  });
+  // Registry-driven: EVERY installed example language is validated automatically — adding a language
+  // to `EXAMPLES_BY_LANG` auto-extends this coverage gate, no test edit needed (scalability guard).
+  for (const lang of EXAMPLE_LANGS) {
+    it(`every ${lang} Foundation word has an authored ${lang} example (coverage — no English fallback)`, () => {
+      const ids = new Set(authoredExampleIds(lang));
+      const missing = loadPack(lang)
+        .filter((w) => FOUNDATION_TAXONOMY.some((c) => matchesCategory(w, c)))
+        .filter((w) => !ids.has(w.conceptId))
+        .map((w) => `${w.conceptId} (${w.word})`);
+      expect(missing, `${lang} Foundation words missing an example:\n${missing.join('\n')}`).toEqual([]);
+    });
+  }
 
   it('keeps categories in declared order and drops none of the ten', () => {
     const model = buildFoundation(loadPack('en'), {}, 'en', 'en');

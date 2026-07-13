@@ -8,9 +8,13 @@
  *
  * Keyed by language-independent concept id (works for the tapped word and the browsed word alike).
  * AI-drafted, neutral-polite (vous), `pending native review` — consistent with the French Bootcamp.
- * When a concept has no entry here, the app shows the app-language meaning (never English-as-French).
+ *
+ * This file is pure CONTENT (a French map). The language-agnostic accessor lives in
+ * `foundationExamples.ts`, which registers this map under `fr` — so adding another language's
+ * examples is content-only, with no per-language code branch. When a concept has no entry, the app
+ * shows the app-language meaning (never English-as-French).
  */
-const FRENCH_EXAMPLES: Record<string, string> = {
+export const FRENCH_EXAMPLES: Record<string, string> = {
   // ⚡ Essential verbs
   'concept.word.help': 'Pouvez-vous m’aider ?',
   'concept.word.stop': 'Arrêtez-vous ici, s’il vous plaît.',
@@ -222,13 +226,3 @@ const FRENCH_EXAMPLES: Record<string, string> = {
   'concept.word.thursday': 'Jusqu’à jeudi.',
 };
 
-/**
- * The authored example for a concept in a learning language, or undefined. Only French is authored
- * today; English already has a native example in the corpus, and other languages fall back honestly.
- */
-export function authoredExample(conceptId: string, learningLang: string): string | undefined {
-  return learningLang === 'fr' ? FRENCH_EXAMPLES[conceptId] : undefined;
-}
-
-/** All concept ids that have an authored French example (for the coverage test). */
-export const FRENCH_EXAMPLE_IDS: string[] = Object.keys(FRENCH_EXAMPLES);

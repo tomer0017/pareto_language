@@ -122,15 +122,21 @@ Arabic), RTL app + RTL target. Proven in the display tests.
   leak). Distinguish **error** from **early-access limitation** and **pending native review** — the
   last is a content status, never structural completeness.
 - Corpus/Bootcamp parity: `npm run parity` (`content/core-corpus/parity.ts`,
-  `features/bootcamp/parity.ts`).
+  `features/bootcamp/parity.ts`) — now also reports **Foundation example coverage** (authored
+  target-language sentences vs the Foundation words) and **audio (TTS tag)** per language.
+- Foundation example coverage is also a **registry-driven test gate**: `foundationContent.test.ts`
+  iterates `EXAMPLE_LANGS` (from `foundationExamples.ts`), so every installed example language is
+  validated automatically — adding one needs no test edit.
 
 ## 10. How to add …
 
 - **A new app (UI) language:** add a `strings.ts` dictionary + `UI_LANGUAGES` entry (with `dir`);
   ensure content glosses cover it (validator). No screen changes.
 - **A new learning language:** add its realizations (→ `core-{lang}.v1.json` via the pilot-pack
-  path) + a `fr/`-style mission set + one `MISSIONS_BY_LANG` line + registry capability flags. No
-  engine change. Run `npm run parity` to complete it. Flip `available` only when it passes.
+  path) + a `fr/`-style mission set + one `MISSIONS_BY_LANG` line + registry capability flags +
+  (optional) an authored Foundation-examples map registered in `foundationExamples.ts`
+  (`EXAMPLES_BY_LANG`). All **content + registry data — no product/UI code**. Run `npm run parity` to
+  measure coverage. Flip `available` only when it passes.
 - **Translations / Bootcamp missions:** content only — realizations + `tr` glosses. Ids stay stable
   when wording changes.
 

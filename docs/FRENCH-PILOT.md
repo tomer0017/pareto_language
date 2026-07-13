@@ -52,8 +52,10 @@ completion state (never routes into unbuilt content).
 ## 2. What is NOT done (brutally honest)
 
 - **Core corpus: DONE (511/511).** No gap. `corpusParity('fr')` passes with 0 missing, 0 orphans.
-- **Bootcamp: 4 of ~29 missions authored in French** (days 1–4: Recovery Toolkit, Introduce Myself,
-  Numbers & Money, Coffee Shop). The 4 built are at genuine **content parity** with English 1–4 —
+- **Bootcamp: 14 of 30 missions authored in French** (days 1–14; days 5–14 added 2026-07-13:
+  Restaurant Meal, Directions, Taxi, Hotel Check-in, Shopping, Arrival Checkpoint, Airport & Border,
+  Hotel Problems, Restaurant Basics, Special Requests & Allergies). Days 15–30 remain. The built
+  missions are at genuine **content parity** with their English counterparts —
   identical items/tools/steps, natural idiomatic `vous`-French, complete `tr:{en,he}` glosses,
   priming (incl. the 70/80/90 number system), videos (2–4), and full recovery-branch dialogues
   (2026-07-13 content-alignment audit). **25 missions remain** (~90–155 lines each, mirroring the

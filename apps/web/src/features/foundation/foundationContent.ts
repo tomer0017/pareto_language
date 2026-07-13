@@ -6,7 +6,7 @@ import type { BootcampDayContent } from '../bootcamp/types.js';
 import { BOOTCAMP_PLAN, missionNumber } from '../bootcamp/plan.js';
 import { FOUNDATION_TAXONOMY, type FoundationCategory } from './taxonomy.js';
 import { buildCorpusIndex, segmentText, type CorpusIndex } from './corpusIndex.js';
-import { authoredExample } from './frenchExamples.js';
+import { authoredExample } from './foundationExamples.js';
 
 /**
  * Foundation model — PURE (no React, no store, no I/O). Turns the Core Corpus (per-language pack
