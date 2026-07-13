@@ -3,12 +3,15 @@ import { describe, it, expect } from 'vitest';
 import type { CoreWord } from '../../shared/content/coreWords.js';
 import type { BootcampDayContent } from '../bootcamp/types.js';
 import { FOUNDATION_TAXONOMY } from './taxonomy.js';
+import { buildCorpusIndex } from './corpusIndex.js';
 import {
   matchesCategory,
   frequencyStars,
   relatedMissions,
   buildMissionIndex,
   buildFoundation,
+  buildExample,
+  missionFoundationWords,
 } from './foundationContent.js';
 
 /** Load a real per-language Core pack from disk (node env — no fetch). */
@@ -60,6 +63,28 @@ describe('matchesCategory (data-driven selection on language-independent fields)
     expect(matchesCategory(more, quantity)).toBe(true);
     const other = word({ conceptId: 'concept.word.zzz', category: 'descriptions', pos: 'adv' });
     expect(matchesCategory(other, quantity)).toBe(false);
+  });
+});
+
+describe('buildExample (learning-language line first, deduped gloss)', () => {
+  const ex = { en: 'We have time.', he: 'יש לנו זמן.' };
+  it('puts the learning-language sentence first and the app-language gloss under it', () => {
+    expect(buildExample(ex, 'he', 'en')).toEqual({ target: 'We have time.', targetLang: 'en-US', gloss: 'יש לנו זמן.' });
+  });
+  it('omits the gloss when it would just repeat the target (same language)', () => {
+    expect(buildExample(ex, 'en', 'en')).toEqual({ target: 'We have time.', targetLang: 'en-US', gloss: undefined });
+  });
+});
+
+describe('missionFoundationWords (the guided-session deck for a mission)', () => {
+  it('returns only Foundation words, in order of first appearance, deduped', () => {
+    const idx = buildCorpusIndex([
+      word({ word: 'I', conceptId: 'concept.word.I', category: 'pronouns', pos: 'pron' }),
+      word({ word: 'pay', conceptId: 'concept.word.pay', category: 'actions', pos: 'verb' }),
+      word({ word: 'toilet', conceptId: 'concept.word.toilet', category: 'places', pos: 'noun' }), // not a Foundation category
+    ]);
+    const deck = missionFoundationWords(['I want to pay.', 'Where is the toilet? I pay.'], idx);
+    expect(deck.map((w) => w.word)).toEqual(['I', 'pay']); // toilet excluded, I not repeated
   });
 });
 

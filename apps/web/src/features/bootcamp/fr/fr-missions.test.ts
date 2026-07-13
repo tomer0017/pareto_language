@@ -54,4 +54,20 @@ describe('French missions — content integrity (no English leaks)', () => {
     for (const m of report.perMission) expect(m.ok).toBe(true);
     expect(report.covered).toBe(builtDays.length);
   });
+
+  it('French full-conversation videos map to Fr_day{n}.mp4 (fr locale); discovered via missionsFor(fr)', () => {
+    // Each video-carrying mission points at its own French file. Mission 2 mirrors English Mission 2
+    // (intro/again video steps); Missions 3 & 4 only surface the video in the hub / Videos experience.
+    for (const [day, src] of [[2, 'Fr_day2'], [3, 'Fr_day3'], [4, 'Fr_day4']] as const) {
+      const m = DAYS_FR[day]!;
+      expect(m.introVideo?.src).toBe(`/videos/${src}.mp4`);
+      expect(m.introVideo?.language).toBe('fr');
+    }
+    expect(DAYS_FR[3]!.steps.some((s) => s.kind === 'video')).toBe(false);
+    expect(DAYS_FR[4]!.steps.some((s) => s.kind === 'video')).toBe(false);
+    // Video is opt-in — a mission without one never fakes a video step.
+    for (const d of builtDays) {
+      if (!DAYS_FR[d]!.introVideo) expect(DAYS_FR[d]!.steps.some((s) => s.kind === 'video')).toBe(false);
+    }
+  });
 });

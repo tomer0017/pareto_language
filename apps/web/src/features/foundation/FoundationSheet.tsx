@@ -12,17 +12,18 @@ import { foundationProgress } from './foundationProgress.js';
 import { useFoundationStore } from './foundationStore.js';
 
 /**
- * Foundation sheet — ONE component renders every level from the data model (categories → word list →
- * word page); there is no per-category screen. It is the single shared word sheet: the 🛟 FAB opens
- * it on the category grid, and Universal Tap opens it straight to a tapped word's page (`store.target`).
- * Words come from the Core Corpus pack for the ACTIVE learning language, so English + French (and any
- * future pack) light up through one code path. Opening a word page marks the concept viewed (progress).
+ * Foundation sheet — ONE component renders every mode from the data model, no per-category screen:
+ *  • the 🛟 FAB opens the category grid (browse: categories → word list → word page);
+ *  • Universal Tap opens straight to a tapped word's page (`store.target`, back returns to the lesson);
+ *  • the mission "Learn now" opens a GUIDED mini-session (`store.session`) with a header, progress bar
+ *    and Prev / Next / ✓ Back to Mission over EXACTLY the current mission's Foundation words.
+ * It is the single shared word sheet; opening a word page marks the concept viewed (progress).
  */
 
-type Level =
+type BrowseLevel =
   | { level: 'categories' }
   | { level: 'words'; cat: FoundationCategoryModel }
-  | { level: 'word'; word: FoundationWord; from: 'category' | 'tap'; cat: FoundationCategoryModel | null };
+  | { level: 'word'; word: FoundationWord; cat: FoundationCategoryModel };
 
 function Stars({ n }: { n: number }) {
   return (
@@ -44,35 +45,33 @@ function Bar({ pct }: { pct: number }) {
 export function FoundationSheet() {
   const open = useFoundationStore((s) => s.open);
   const target = useFoundationStore((s) => s.target);
+  const session = useFoundationStore((s) => s.session);
+  const sessionGo = useFoundationStore((s) => s.sessionGo);
   const close = useFoundationStore((s) => s.close);
   const viewed = useFoundationStore((s) => s.viewed);
   const learningLang = useAppStore((s) => s.learningLang);
   const uiLang = useAppStore((s) => s.uiLang);
 
   const [words, setWords] = useState<CoreWord[] | null>(null);
-  const [nav, setNav] = useState<Level>({ level: 'categories' });
+  const [browse, setBrowse] = useState<BrowseLevel>({ level: 'categories' });
 
   const missions = useMemo(() => missionsFor(learningLang), [learningLang]);
 
-  // Load the active language's Core pack while open (cached across opens by loadCoreWords).
+  // Load the active language's Core pack while open (cached across opens by loadCoreWords). Only the
+  // browse (FAB) flow needs it; the guided session / single tap build straight from the tapped word.
   useEffect(() => {
-    if (!open) return;
+    if (!open || target || session) return;
     let alive = true;
     setWords(null);
     void loadCoreWords(learningLang).then((w) => { if (alive) setWords(w); });
     return () => { alive = false; };
-  }, [open, learningLang]);
+  }, [open, target, session, learningLang]);
 
-  // Each open: jump straight to a tapped word (Universal Tap), else the category grid. Closing stops audio.
+  // Reset browse navigation each fresh browse open; stop audio on close.
   useEffect(() => {
-    if (open) {
-      setNav(target
-        ? { level: 'word', word: buildWord(target, missions, uiLang, learningLang), from: 'tap', cat: null }
-        : { level: 'categories' });
-    } else {
-      cancelSpeech();
-    }
-  }, [open, target, missions, uiLang, learningLang]);
+    if (open && !target && !session) setBrowse({ level: 'categories' });
+    if (!open) cancelSpeech();
+  }, [open, target, session]);
 
   const model = useMemo(
     () => (words ? buildFoundation(words, missions, uiLang, learningLang) : []),
@@ -80,42 +79,70 @@ export function FoundationSheet() {
   );
   const progress = useMemo(() => foundationProgress(model, viewed), [model, viewed]);
 
-  const back = () => {
+  // Guided session word (store-driven) and single tapped word (store-driven).
+  const sessionWord = useMemo(() => {
+    const cw = session?.words[session.index];
+    return cw ? buildWord(cw, missions, uiLang, learningLang) : null;
+  }, [session, missions, uiLang, learningLang]);
+  const tapWord = useMemo(
+    () => (target ? buildWord(target, missions, uiLang, learningLang) : null),
+    [target, missions, uiLang, learningLang],
+  );
+
+  const mode: 'session' | 'tap' | 'browse' = session ? 'session' : target ? 'tap' : 'browse';
+  const onBrowseBack = () => {
     tap();
     cancelSpeech();
-    setNav((n) => {
-      if (n.level === 'word') return n.from === 'category' && n.cat ? { level: 'words', cat: n.cat } : { level: 'categories' };
-      return { level: 'categories' };
-    });
+    setBrowse((n) => (n.level === 'word' ? { level: 'words', cat: n.cat } : { level: 'categories' }));
   };
-  // A word opened via Universal Tap has no category context: back closes (returns to the lesson).
-  const onBack = nav.level === 'word' && nav.from === 'tap' ? close : back;
 
+  // Header: a word page NEVER repeats the word in the header (the big page title is the sole word).
+  const showsIcon = mode === 'session' || (mode === 'browse' && browse.level === 'categories');
+  const headerBack =
+    mode === 'tap' ? close
+    : mode === 'browse' && browse.level !== 'categories' ? onBrowseBack
+    : null;
   const title =
-    nav.level === 'categories' ? t('foundationTitle')
-    : nav.level === 'words' ? t(nav.cat.titleKey)
-    : nav.word.display.primaryText;
+    mode === 'session' ? t('foundationSessionTitle')
+    : mode === 'browse' && browse.level === 'words' ? t(browse.cat.titleKey)
+    : t('foundationTitle');
 
   return (
     <Sheet open={open} onClose={close} labelledBy="foundation-title">
       <div className="sheet-header">
-        {nav.level === 'categories'
+        {showsIcon
           ? <span className="sheet-icon" aria-hidden>🛟</span>
-          : <button className="sheet-back" onClick={onBack} aria-label={t('back')}>‹</button>}
+          : <button className="sheet-back" onClick={headerBack ?? close} aria-label={t('back')}>‹</button>}
         <h2 id="foundation-title" className="sheet-title">{title}</h2>
         <button className="sheet-close" onClick={() => { tap(); close(); }} aria-label={t('close')}>✕</button>
       </div>
 
-      {nav.level === 'categories' && <p className="dim small sheet-sub">{t('foundationSubtitle')}</p>}
+      {mode === 'browse' && browse.level === 'categories' && <p className="dim small sheet-sub">{t('foundationSubtitle')}</p>}
 
       <div className="sheet-body">
-        {nav.level === 'word' ? (
-          <WordPage word={nav.word} lang={learningLang} />
+        {mode === 'session' && sessionWord && session ? (
+          <>
+            <div className="foundation-session-head">
+              <span className="foundation-session-count">{t('foundationWordOf', { i: session.index + 1, n: session.words.length })}</span>
+              <Bar pct={Math.round(((session.index + 1) / session.words.length) * 100)} />
+            </div>
+            <WordPage word={sessionWord} lang={learningLang} />
+            <div className="foundation-session-nav">
+              <button className="btn-ghost" disabled={session.index === 0} onClick={() => { tap(); cancelSpeech(); sessionGo(-1); }}>← {t('flashPrev')}</button>
+              {session.index < session.words.length - 1
+                ? <button className="btn-primary" style={{ flex: 1 }} onClick={() => { tap(); cancelSpeech(); sessionGo(1); }}>{t('flashNext')} →</button>
+                : <button className="btn-primary" style={{ flex: 1 }} onClick={() => { tap(); close(); }}>✓ {t('foundationBackToMission')}</button>}
+            </div>
+          </>
+        ) : mode === 'tap' && tapWord ? (
+          <WordPage word={tapWord} lang={learningLang} />
         ) : words === null ? (
           <p className="dim center" style={{ padding: '28px 0' }}>{t('loading')}</p>
         ) : model.length === 0 ? (
           <p className="dim center" style={{ padding: '28px 0' }}>{t('foundationEmpty')}</p>
-        ) : nav.level === 'categories' ? (
+        ) : browse.level === 'word' ? (
+          <WordPage word={browse.word} lang={learningLang} />
+        ) : browse.level === 'categories' ? (
           <>
             <div className="foundation-overall">
               <div className="foundation-overall-head">
@@ -128,7 +155,7 @@ export function FoundationSheet() {
               {model.map((c) => {
                 const p = progress.byCategory[c.id] ?? { id: c.id, viewed: 0, total: c.words.length, pct: 0 };
                 return (
-                  <button key={c.id} className="foundation-cat card-press" onClick={() => { tap(); setNav({ level: 'words', cat: c }); }}>
+                  <button key={c.id} className="foundation-cat card-press" onClick={() => { tap(); setBrowse({ level: 'words', cat: c }); }}>
                     <span className="foundation-cat-icon" aria-hidden>{c.icon}</span>
                     <span className="foundation-cat-title">{t(c.titleKey)}</span>
                     <span className="foundation-cat-count dim">{p.viewed}/{p.total}</span>
@@ -140,16 +167,16 @@ export function FoundationSheet() {
           </>
         ) : (
           <div>
-            {nav.cat.words.map((w) => {
+            {browse.cat.words.map((w) => {
               const dm = w.display;
               const seen = viewed.has(w.conceptId);
               return (
                 <div key={dm.contentId} className="foundation-word-row">
-                  <button className="foundation-word-open" onClick={() => { tap(); setNav({ level: 'word', word: w, from: 'category', cat: nav.cat }); }}>
+                  <button className="foundation-word-open" onClick={() => { tap(); setBrowse({ level: 'word', word: w, cat: browse.cat }); }}>
                     {seen && <span className="foundation-seen" aria-label={t('foundationViewed')}>✓</span>}
                     <span style={{ minWidth: 0 }}>
                       <span dir={dm.primaryDirection} className="foundation-word-target">{dm.primaryText}</span>
-                      {dm.secondaryText && <span dir={dm.secondaryDirection} className="dim small foundation-word-gloss">{dm.secondaryText}</span>}
+                      {dm.secondaryText && dm.secondaryText !== dm.primaryText && <span dir={dm.secondaryDirection} className="dim small foundation-word-gloss">{dm.secondaryText}</span>}
                     </span>
                   </button>
                   <SpeakerButton text={dm.audioText} lang={dm.audioLang} stop size={40} />
@@ -168,13 +195,15 @@ function WordPage({ word, lang }: { word: FoundationWord; lang: string }) {
   const dm = word.display;
   // Opening a word page = "I looked at this brick" → count it toward progress (idempotent).
   useEffect(() => { markViewed(word.conceptId); }, [word.conceptId, markViewed]);
+  // The learner sees the word ONCE, as this clear page title — the gloss shows only when it adds meaning.
+  const showGloss = !!dm.secondaryText && dm.secondaryText !== dm.primaryText;
 
   return (
     <div className="foundation-page">
       <div className="foundation-page-head">
         <div style={{ minWidth: 0 }}>
           <p dir={dm.primaryDirection} className="foundation-page-word">{dm.primaryText}</p>
-          {dm.secondaryText && <p dir={dm.secondaryDirection} className="dim foundation-page-gloss">{dm.secondaryText}</p>}
+          {showGloss && <p dir={dm.secondaryDirection} className="dim foundation-page-gloss">{dm.secondaryText}</p>}
           <span className="foundation-page-freq">
             <Stars n={word.stars} />
             {word.stars === 5 && <span className="foundation-essential">{t('foundationEssential')}</span>}
@@ -192,7 +221,13 @@ function WordPage({ word, lang }: { word: FoundationWord; lang: string }) {
       {word.example && (
         <div className="foundation-section">
           <h3 className="foundation-section-title">{t('foundationExamples')}</h3>
-          <p className="foundation-example">{word.example}</p>
+          <div className="foundation-example">
+            <div className="foundation-example-row">
+              <p dir={dm.primaryDirection} className="foundation-example-target">{word.example.target}</p>
+              <SpeakerButton text={word.example.target} lang={lang} size={36} stop />
+            </div>
+            {word.example.gloss && <p dir={dm.secondaryDirection} className="dim small foundation-example-gloss">{word.example.gloss}</p>}
+          </div>
         </div>
       )}
 

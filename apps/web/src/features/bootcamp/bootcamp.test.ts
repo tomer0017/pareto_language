@@ -350,8 +350,11 @@ describe('video-first Bootcamp (intro/review video)', () => {
     expect(kinds.at(-1)).toBe('summary');
   });
 
-  it('Missions 3–5 ship a full-conversation video (hub / Videos experience), without injecting video steps', () => {
-    for (const [day, src] of [[DAY3, 'En_day3'], [DAY4, 'En_day4'], [DAY5, 'En_day5']] as const) {
+  it('Missions 3–5, 7–9 and 11 ship a full-conversation video (hub / Videos experience), without injecting video steps', () => {
+    for (const [day, src] of [
+      [DAY3, 'En_day3'], [DAY4, 'En_day4'], [DAY5, 'En_day5'],
+      [DAY7, 'En_day7'], [DAY8, 'En_day8'], [DAY9, 'En_day9'], [DAY11, 'En_day11'],
+    ] as const) {
       expect(day.introVideo).toBeDefined();
       expect(day.introVideo?.src).toBe(`/videos/${src}.mp4`);
       expect(day.introVideo?.language).toBe('en');
@@ -366,8 +369,8 @@ describe('video-first Bootcamp (intro/review video)', () => {
       if (day.introVideo) withVideo.add(Number(num));
       else expect(hasVideoStep).toBe(false); // never a placeholder video step without a video
     }
-    // Missions 2–5 ship the full-conversation video; only Mission 2 injects video steps.
-    expect([...withVideo].sort((a, b) => a - b)).toEqual([2, 3, 4, 5]);
+    // Missions 2–5, 7–9 and 11 ship the full-conversation video; only Mission 2 injects video steps.
+    expect([...withVideo].sort((a, b) => a - b)).toEqual([2, 3, 4, 5, 7, 8, 9, 11]);
     expect(DAY2.steps.some((s) => s.kind === 'video')).toBe(true);
   });
 });

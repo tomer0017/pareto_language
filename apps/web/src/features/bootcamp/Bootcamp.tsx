@@ -18,6 +18,7 @@ import { dialogueTranscript } from './transcript.js';
 import { dialogueTr } from './i18n.js';
 import { shuffle, mulberry32, sessionSeed } from '../../shared/util/shuffle.js';
 import { FoundationHint } from '../foundation/FoundationHint.js';
+import { FoundationOnboarding } from '../foundation/FoundationOnboarding.js';
 import { TappableText } from '../foundation/TappableText.js';
 
 /** Resolve a public asset path (e.g. "/videos/x.mp4") against the app's base so it works in
@@ -199,6 +200,8 @@ function MissionMap() {
   const done = CORE_MISSIONS.filter((m) => bc.completedDays.includes(m.day)).length;
   return (
     <div className="screen">
+      {/* First arrival at the Bootcamp (per learning language): introduce the 🛟 Foundation button. */}
+      <FoundationOnboarding />
       <div className="topbar">
         <h2 style={{ margin: 0 }}>{t('bootcamp')}</h2>
         <button className="btn-ghost" onClick={() => app.navigate('languages')} aria-label={t('settings')}>🌐</button>

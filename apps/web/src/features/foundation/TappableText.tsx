@@ -1,10 +1,11 @@
-import { Fragment, useMemo } from 'react';
+import { Fragment, useMemo, useRef } from 'react';
 import type { CoreWord } from '../../shared/content/coreWords.js';
 import { useAppStore } from '../../shared/stores/appStore.js';
 import { tap } from '../../shared/ui/haptics.js';
 import { segmentText, type CorpusIndex } from './corpusIndex.js';
 import { useCoreWords } from './useCoreWords.js';
 import { useFoundationStore } from './foundationStore.js';
+import { TapCoachmark } from './TapCoachmark.js';
 
 /**
  * Universal Tap. `TappableText` renders a learning-language sentence where every Core Corpus word is
@@ -36,14 +37,21 @@ export function TappableText({ text, lang, className }: { text: string; lang?: s
   const activeLang = lang ?? learningLang;
   const { index } = useCoreWords(activeLang);
   const segments = useMemo(() => (index ? segmentText(text, index) : null), [text, index]);
+  const firstWordRef = useRef<HTMLButtonElement>(null);
 
   if (!segments) return <span className={className}>{text}</span>;
+  let firstWordSeen = false;
+  const hasTappable = segments.some((s) => s.word);
   return (
     <span className={className}>
-      {segments.map((seg, i) =>
-        seg.word ? (
+      {segments.map((seg, i) => {
+        if (!seg.word) return <Fragment key={i}>{seg.text}</Fragment>;
+        const isFirst = !firstWordSeen;
+        firstWordSeen = true;
+        return (
           <button
             key={i}
+            ref={isFirst ? firstWordRef : undefined}
             type="button"
             className="tappable-word"
             onClick={(e) => { e.stopPropagation(); openWord(seg.word!); }}
@@ -52,10 +60,9 @@ export function TappableText({ text, lang, className }: { text: string; lang?: s
           >
             {seg.text}
           </button>
-        ) : (
-          <Fragment key={i}>{seg.text}</Fragment>
-        ),
-      )}
+        );
+      })}
+      {hasTappable && <TapCoachmark anchorRef={firstWordRef} />}
     </span>
   );
 }

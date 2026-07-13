@@ -25,10 +25,18 @@ function saveSet(key: string, set: ReadonlySet<string>): void {
   try { localStorage.setItem(key, JSON.stringify([...set])); } catch { /* storage full / disabled — non-fatal */ }
 }
 
+/** A guided "Learn now" run over just the current mission's Foundation words. */
+export interface FoundationSession {
+  words: CoreWord[];
+  index: number;
+}
+
 interface FoundationState {
   open: boolean;
   /** When set, the sheet opens straight to this word's page (Universal Tap); null = category grid. */
   target: CoreWord | null;
+  /** A guided mini-session (mission "Learn now"): prev/next over the mission's Foundation words. */
+  session: FoundationSession | null;
   /** Concept ids whose word page the learner has opened (drives progress + hint suppression). */
   viewed: Set<string>;
   /** Concept ids the learner dismissed from the hint (never nag again). */
@@ -38,6 +46,14 @@ interface FoundationState {
   openSheet(): void;
   /** Open straight to a tapped word's page (Universal Tap, from anywhere in the app). */
   openWord(word: CoreWord): void;
+  /** Open a guided mini-session over `words`, starting at `startIndex` (mission "Learn now"). */
+  openSession(words: CoreWord[], startIndex: number): void;
+  /** Move within the active session (clamped). */
+  sessionGo(delta: number): void;
+  /** True briefly after onboarding so the shell-mounted FAB can pulse to reveal itself. */
+  pulse: boolean;
+  firePulse(): void;
+  clearPulse(): void;
   close(): void;
   /** Record that a word page was seen — marks the concept viewed (idempotent, persisted). */
   markViewed(conceptId: string): void;
@@ -48,12 +64,26 @@ interface FoundationState {
 export const useFoundationStore = create<FoundationState>((set, get) => ({
   open: false,
   target: null,
+  session: null,
+  pulse: false,
   viewed: loadSet(VIEWED_KEY),
   dismissed: loadSet(DISMISSED_KEY),
 
-  openSheet: () => set({ open: true, target: null }),
-  openWord: (word) => set({ open: true, target: word }),
-  close: () => set({ open: false, target: null }),
+  firePulse: () => set({ pulse: true }),
+  clearPulse: () => set({ pulse: false }),
+
+  openSheet: () => set({ open: true, target: null, session: null }),
+  openWord: (word) => set({ open: true, target: word, session: null }),
+  openSession: (words, startIndex) =>
+    words.length === 0
+      ? undefined
+      : set({ open: true, target: null, session: { words, index: Math.min(Math.max(startIndex, 0), words.length - 1) } }),
+  sessionGo: (delta) => {
+    const s = get().session;
+    if (!s) return;
+    set({ session: { ...s, index: Math.min(Math.max(s.index + delta, 0), s.words.length - 1) } });
+  },
+  close: () => set({ open: false, target: null, session: null }),
 
   markViewed: (conceptId) => {
     if (get().viewed.has(conceptId)) return;

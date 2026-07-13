@@ -48,7 +48,9 @@ hidden only inside an active mission (a focused, full-screen flow with its own c
   Phrases · 🎬 Videos). **Continue** remains as a quieter secondary card lower down. No dashboards.
 - **Videos** — an experience, not a list: plays a random available mission video, then asks "did
   you understand everything?" → load another random video, or drop into the exact Mission Hub that
-  owns the video (Practice / Transcript / Video). Honest empty state; only Mission 2 has a video today.
+  owns the video (Practice / Transcript / Video). Honest empty state. Videos ship for EN Missions
+  2–5, 7–9, 11 and FR Missions 2–4 (each mission's optional `introVideo`, auto-discovered per
+  learning language); missions without one show "Coming soon".
 - **Bootcamp** — the heart of the product: a **29-mission numbered journey** in 5 phases
   (Foundations → Arrival → Food → City Life → Mastery), beginning with **Introduce Myself**.
   Checkpoints are cold integration days. The **Recovery Toolkit** (the 7 survival tools, formerly
@@ -106,8 +108,9 @@ hidden only inside an active mission (a focused, full-screen flow with its own c
   redesigned **wrong-answer view** (your answer · right answer · one-line Why? · Try Again / Continue).
 - **Transcript** — the full conversation as a premium bilingual reader with per-line replay,
   play-all / pause / restart / prev / next, and the current line highlighted.
-- **Video** — the full-conversation video (manual play, inline, replayable). Mission 2 ships one
-  (`/videos/En_day2.mp4`); others show Coming Soon. Missing/broken video degrades gracefully.
+- **Video** — the full-conversation video (manual play, inline, replayable). EN Missions 2–5, 7–9, 11
+  and FR Missions 2–4 ship one (e.g. `/videos/En_day7.mp4`); others show Coming Soon. Missing/broken
+  video degrades gracefully.
 - **Victory Screen** — completion **celebrates** with minimal reading (Pareto): confetti +
   "{Mission} completed!" + three **large action cards** (Watch Conversation · Open Transcript ·
   Practice Again). Evidence is not a wall — it is collapsed behind a tiny **"What did I learn?"**
@@ -178,7 +181,7 @@ tools and every pick is reframed as *more or less useful*, never right/wrong.
   resume (the "works then stops" fix), a gesture unlock, and the **single global speech-rate**
   multiplier (`getSpeechRate`/`setSpeechRate`) applied to every `speak()`. Asset-first, TTS fallback.
 - **Videos (`apps/web/public/videos`)** — referenced by a mission's optional `introVideo.src`
-  (public path, resolved against `BASE_URL`). Only Mission 2 has one today.
+  (public path, resolved against `BASE_URL`). Shipped for EN days 2–5, 7–9, 11 and FR days 2–4.
 
 ## 8. Important constraints (rules for every future change)
 

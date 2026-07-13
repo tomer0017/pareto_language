@@ -1,9 +1,11 @@
-import { localize } from '@ready/content-schema';
+import { localize, type LocalizedText } from '@ready/content-schema';
 import type { CoreWord } from '../../shared/content/coreWords.js';
 import { resolveLearningItem, type LearningDisplayModel } from '../../shared/i18n/display.js';
+import { languageTtsTag } from '../../shared/i18n/languages.js';
 import type { BootcampDayContent } from '../bootcamp/types.js';
 import { BOOTCAMP_PLAN, missionNumber } from '../bootcamp/plan.js';
 import { FOUNDATION_TAXONOMY, type FoundationCategory } from './taxonomy.js';
+import { buildCorpusIndex, segmentText, type CorpusIndex } from './corpusIndex.js';
 
 /**
  * Foundation model — PURE (no React, no store, no I/O). Turns the Core Corpus (per-language pack
@@ -26,6 +28,16 @@ export interface RelatedMission {
 /** The Foundation category a word belongs to (icon + i18n title), or null for a non-Foundation Core word. */
 export type FoundationWordCategory = { id: string; icon: string; titleKey: FoundationCategory['titleKey'] } | null;
 
+/** An example sentence: the LEARNING-language line (shown first + spoken) + its app-language gloss. */
+export interface FoundationExample {
+  /** The sentence in the learning language (what the word page speaks). */
+  target: string;
+  /** TTS locale for the target line. */
+  targetLang: string;
+  /** Translation in the app language, omitted when it would just repeat the target line. */
+  gloss?: string;
+}
+
 /** One Foundation word, fully resolved for display. */
 export interface FoundationWord {
   /** Language-independent concept id (`concept.word.*`) — the identity used for progress/viewed. */
@@ -34,8 +46,9 @@ export interface FoundationWord {
   display: LearningDisplayModel;
   /** 1–5 "essential-ness", derived from the corpus rank/tier (5 = Essential). */
   stars: number;
-  /** Example sentence, resolved to the app language (undefined when the corpus has none). */
-  example?: string;
+  /** Example sentence — learning-language line first, then app-language gloss (undefined when the
+   *  corpus has none). */
+  example?: FoundationExample;
   /** Missions that use this word (derived from real mission text). */
   relatedMissions: RelatedMission[];
   /** The Foundation category this word belongs to, or null when it is a Core word outside the
@@ -153,6 +166,14 @@ export function buildWord(
   return buildWordWithIndex(word, buildMissionIndex(missions), appLang, learningLang);
 }
 
+/** Resolve an example to the LEARNING-language line + app-language gloss (deduped). Consistent
+ *  ordering everywhere: the target sentence is always primary; the gloss only when it differs. */
+export function buildExample(example: LocalizedText, appLang: string, learningLang: string): FoundationExample {
+  const target = example[learningLang] ?? example.en ?? localize(example, learningLang);
+  const gloss = localize(example, appLang);
+  return { target, targetLang: languageTtsTag(learningLang), gloss: gloss && gloss !== target ? gloss : undefined };
+}
+
 function buildWordWithIndex(
   word: CoreWord,
   index: { day: number; text: string }[],
@@ -164,11 +185,36 @@ function buildWordWithIndex(
     conceptId: word.conceptId,
     display: resolveLearningItem({ id: word.id, target: word.word, meaning: word.meaning, emoji: word.emoji }, appLang, learningLang),
     stars: frequencyStars(word),
-    example: word.example ? localize(word.example, appLang) : undefined,
+    example: word.example ? buildExample(word.example, appLang, learningLang) : undefined,
     relatedMissions: relatedMissions(word.word, index, appLang),
     category: cat ? { id: cat.id, icon: cat.icon, titleKey: cat.titleKey } : null,
     corpusCategory: word.category,
   };
+}
+
+/**
+ * The Foundation building-block words that appear in a set of learning-language lines (a mission's
+ * items), in order of first appearance, deduped by concept. Powers the guided "Learn now" session
+ * and Smart Detection so both traverse EXACTLY the words relevant to the current mission — never the
+ * whole Foundation database.
+ */
+export function missionFoundationWords(targets: string[], index: CorpusIndex): CoreWord[] {
+  const out: CoreWord[] = [];
+  const seen = new Set<string>();
+  for (const line of targets) {
+    for (const seg of segmentText(line, index)) {
+      const w = seg.word;
+      if (!w || seen.has(w.conceptId)) continue;
+      seen.add(w.conceptId);
+      if (isFoundationWord(w)) out.push(w);
+    }
+  }
+  return out;
+}
+
+/** Convenience: build the mission-word index straight from a pack (used by Smart Detection / session). */
+export function missionFoundationWordsFromPack(targets: string[], words: CoreWord[]): CoreWord[] {
+  return missionFoundationWords(targets, buildCorpusIndex(words));
 }
 
 /**

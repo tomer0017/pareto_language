@@ -82,7 +82,8 @@ Home → Bootcamp (30 missions) → Mission Hub → Video → Practice → Trans
 - **Mission Hub** — the home of each mission. Exactly three always-available modes: **Practice**,
   **Transcript**, **Video**. Completing a mission never removes access; it becomes "Practice again."
 - **Video** — watch the full conversation **before** learning and understand almost nothing. This
-  sets up the emotional payoff. (Only Mission 2 has a video today; others show "Coming soon.")
+  sets up the emotional payoff. (EN Missions 2–5, 7–9, 11 and FR Missions 2–4 ship a video; others
+  show "Coming soon.")
 - **Practice** — the actual learning: watch/listen → understand → repeat (tools) → recognize
   (expected replies) → answer (quizzes/dialogue) → recover (recovery tools) → a cold-open ambush.
 - **Transcript** — the full conversation as a premium bilingual reader with per-line replay: the
@@ -183,7 +184,8 @@ Each layer has one responsibility.
   (IndexedDB, via `@ready/data`) stores users/plans/events/packs and projects memory state offline.
   Videos are **runtime-cached** (not precached — too large) so first load never waits on them.
 - **Videos (`apps/web/public/videos`)** — referenced by a mission's optional `introVideo.src` (a
-  public path resolved against `BASE_URL`). Only Mission 2 (`En_day2.mp4`) has one today.
+  public path resolved against `BASE_URL`). Shipped for EN days 2–5, 7–9, 11 and FR days 2–4; only
+  Mission 2 (EN & FR) injects intro/again video steps, the rest surface it in the hub / Videos.
 - **TTS / audio (`shared/audio/tts.ts`)** — Web Speech with a Chrome keep-alive + visibility resume
   (the "works then stops" fix), a first-gesture unlock, and the **single global speech-rate**
   multiplier applied to every `speak()`. Asset-first playback, TTS fallback.
@@ -239,7 +241,7 @@ auto-generated from source by `npm run gen:conversations`.
 - **English Core content pack** (so Phrases/Situations light up instead of "coming soon").
 - **Native (Hebrew) content review** — all mission content is AI-drafted, pending a native pass.
 - **Core review engine** — spaced/weak-word review over Bootcamp sentences (currently browsable only).
-- **More mission videos** (only Mission 2 today).
+- **More mission videos** (EN 2–5, 7–9, 11 and FR 2–4 shipped; remaining missions pending).
 - **Auth + sync** (Google sign-in) and per-user server-side settings/statistics.
 - **Future languages** (Italian/Spanish/French/Arabic) — infrastructure exists; not user-facing yet.
 

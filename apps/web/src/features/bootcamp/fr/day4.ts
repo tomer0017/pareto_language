@@ -107,6 +107,12 @@ export const DAY4_FR: BootcampDayContent = {
   title: T('בית קפה', 'Coffee Shop'),
   items: [...DAY4_FR_ITEMS, ...REUSED_RECOVERY],
   dialogues: { 'breakfast-order': SCENE_BREAKFAST },
+  introVideo: {
+    src: '/videos/Fr_day4.mp4',
+    title: T('השיחה המלאה', 'Full conversation'),
+    language: 'fr',
+    type: 'intro',
+  },
   steps: [
     { kind: 'talk', icon: '☕', title: T('משימה 4: בית קפה', 'Mission 4: Coffee Shop'),
       body: [

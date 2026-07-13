@@ -63,6 +63,12 @@ export const DAY9: BootcampDayContent = {
   title: T('קניות', 'Shopping'),
   items: DAY9_ITEMS,
   dialogues: { 'clothing-shop': SCENE },
+  introVideo: {
+    src: '/videos/En_day9.mp4',
+    title: T('השיחה המלאה', 'Full conversation'),
+    language: 'en',
+    type: 'intro',
+  },
   steps: [
     { kind: 'talk', icon: '🛍️', title: T('משימה 9: קניות', 'Mission 9: Shopping'),
       body: [

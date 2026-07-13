@@ -82,6 +82,8 @@ The 🛟 "building blocks" surface — a **data-driven VIEW over the Core Corpus
 | `corpusIndex.ts` (pure) + `TappableText.tsx` | **Universal Tap**: `buildCorpusIndex` + `segmentText` (whole-word, greedy longest-match, lossless) mark every Core word in a sentence; `TappableText` / `TappableWord` render them tappable and open the shared sheet via `openWord`. `useCoreWords(lang)` loads the pack + index once per language. |
 | `FoundationHint.tsx` | **Smart Detection**: the non-blocking "Missing Foundation Brick" nudge for the first unviewed building block in the current mission text (Learn now / Dismiss). |
 | `foundationProgress.ts` (pure, tested) | Per-category + overall completion from the viewed set — motivational only, never gates. |
+| `missionFoundationWords` + store `session` | The mission "Learn now" **guided session** (Word X of N, progress, Prev/Next/Back to Mission) over exactly the mission's Foundation words. |
+| `FoundationOnboarding.tsx` / `TapCoachmark.tsx` / `foundationCoach.ts` | One-time discovery: first-arrival intro dialog (+ FAB pulse) and the first tappable-word tooltip, each shown once and persisted. |
 
 Reusable primitives: `shared/ui/Sheet.tsx` (bottom sheet) and `shared/ui/SpeakerButton.tsx` (one
 tap-to-hear button). There is exactly ONE word sheet and ONE tap entry point app-wide — dialogue,

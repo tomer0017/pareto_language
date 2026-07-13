@@ -699,15 +699,50 @@ input:focus, select:focus { outline: 2px solid var(--brand); border-color: trans
 }
 .foundation-chip b { font-weight: 800; }
 
-/* Universal Tap — every Core Corpus word is a subtle tappable span opening the shared word sheet. */
+/* Universal Tap — every Core Corpus word is a recognizably tappable chip opening the shared sheet.
+   Subtle enough not to make a whole sentence noisy, clear enough to invite a first-time learner. */
 .tappable-word {
-  display: inline; background: none; border: none; padding: 0; margin: 0; min-height: 0;
+  display: inline; -webkit-box-decoration-break: clone; box-decoration-break: clone;
+  background: color-mix(in srgb, var(--brand) 8%, transparent);
+  border: none; margin: 0; padding: 1px 3px; min-height: 0;
   font: inherit; color: inherit; text-align: inherit; cursor: pointer;
-  text-decoration: underline dotted;
-  text-decoration-color: color-mix(in srgb, var(--brand) 45%, transparent);
-  text-underline-offset: 3px; border-radius: 4px;
+  text-decoration: underline dotted; text-decoration-thickness: 2px;
+  text-decoration-color: color-mix(in srgb, var(--brand) 62%, transparent);
+  text-underline-offset: 3px; border-radius: 5px;
+  transition: background 0.12s, transform 0.08s;
 }
-.tappable-word:active { background: var(--brand-soft); }
+@media (hover: hover) { .tappable-word:hover { background: var(--brand-soft); text-decoration-color: var(--brand); } }
+.tappable-word:active { background: var(--brand-soft); transform: scale(0.96); }
+.tappable-word:focus-visible { outline: 2px solid var(--brand); outline-offset: 1px; }
+
+/* FAB reveal pulse (after onboarding). */
+.foundation-fab-pulse { animation: fabPulse 1.3s ease-out 2; }
+@keyframes fabPulse {
+  0% { box-shadow: var(--shadow-pop), 0 0 0 0 color-mix(in srgb, var(--brand) 55%, transparent); }
+  70% { box-shadow: var(--shadow-pop), 0 0 0 18px transparent; }
+  100% { box-shadow: var(--shadow-pop), 0 0 0 0 transparent; }
+}
+
+/* One-time tap tooltip (coach-mark). pointer-events:none so it never steals the tap it explains. */
+.tap-coachmark {
+  position: fixed; z-index: 96; max-width: 260px; pointer-events: none;
+  background: var(--ink); color: var(--bg); padding: 9px 12px; border-radius: 12px;
+  font-size: 0.82rem; font-weight: 600; line-height: 1.35; box-shadow: var(--shadow-pop);
+}
+.tap-coachmark-arrow {
+  position: absolute; top: -5px; inset-inline-start: 16px; width: 11px; height: 11px;
+  background: var(--ink); transform: rotate(45deg); border-radius: 2px;
+}
+
+/* Guided "Learn now" session controls */
+.foundation-session-head { margin-bottom: 8px; }
+.foundation-session-count { font-weight: 800; font-size: 0.9rem; display: block; margin-bottom: 6px; }
+.foundation-session-nav { display: flex; gap: 8px; align-items: center; margin-top: 16px; }
+
+/* Example: learning-language sentence first (with audio), app-language translation underneath. */
+.foundation-example-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.foundation-example-target { font-weight: 600; min-width: 0; }
+.foundation-example-gloss { margin-top: 4px; }
 .core-word-open, .foundation-word-open {
   display: flex; align-items: center; gap: 12px; flex: 1; min-width: 0;
   background: none; border: none; padding: 0; text-align: start; min-height: 0; color: inherit;

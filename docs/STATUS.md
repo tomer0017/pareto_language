@@ -22,6 +22,40 @@ loop (typecheck → lint → tests → build → smoke) green at every milestone
 
 ## What's done
 
+### Sprint — More mission videos wired (2026-07-13)
+- Added **5 full-conversation videos** to `apps/web/public/videos` and mapped each to its mission via
+  the mission's optional `introVideo` (public path resolved against `BASE_URL`): **EN** `En_day7`→
+  day7 (Taxi/Uber), `En_day8`→day8 (Hotel Check-in), `En_day9`→day9 (Shopping), `En_day11`→day11
+  (Airport & Border); **FR** `Fr_day4`→fr/day4 (Coffee Shop). Same days-3–5 pattern (video in the
+  hub / Videos experience, no injected video steps; only Mission 2 injects intro/again steps).
+- The Videos experience auto-discovers these via `missionsFor(lang).introVideo` — **no code change**.
+- Tests updated to lock the mapping (`bootcamp.test.ts` EN set now `[2,3,4,5,7,8,9,11]`; new FR video
+  assertion in `fr-missions.test.ts`). **Verified in-browser** each plays from its lesson (readyState
+  4, real durations 15–20s, actually playing). Gates green: typecheck · lint · **662 tests** · build.
+
+### Sprint — Foundation UX polish: guided sessions, discovery, affordance (2026-07-13)
+- **Guided mini-session from a mission.** The hint's **Learn now** now opens a guided run over
+  EXACTLY the current mission's Foundation words (`missionFoundationWords`, pure): a header
+  "Foundation Building Blocks", **Word X of N** + progress bar, **Prev / Next**, and a final
+  **✓ Back to Mission**. Never browses the whole database. The FAB keeps the existing category
+  browsing; Universal Tap keeps single-word "peek and return". New store mode `session` +
+  `openSession`/`sessionGo` (unit-tested); architecture unchanged.
+- **Learning-language example first.** Every word page shows the example in the LEARNING language
+  first (spoken via its own audio button), the app-language translation underneath (deduped when
+  identical) — `buildExample` (pure, tested). Consistent everywhere.
+- **First-time discovery.** `FoundationOnboarding` — a one-time dialog on first Bootcamp arrival per
+  learning language ("Got it"), then a **pulse** on the 🛟 FAB (`foundationCoach.ts` persistence).
+- **Tappable-word tooltip.** `TapCoachmark` — a one-time tooltip anchored to the first tappable word
+  ("Tap underlined words…"), auto-dismiss ~2s, dismiss on tap, `pointer-events:none` so it never
+  steals the tap; claimed once globally + persisted.
+- **Stronger tap affordance.** `.tappable-word` is now a subtle brand chip + 2px dotted underline
+  with hover / active / focus-visible states — recognizable without making a sentence noisy.
+- **Removed the duplicated word title.** A word page shows the word ONCE as the big page title; the
+  sheet header no longer repeats it, and the gloss line is hidden when it equals the word.
+- RTL verified (Hebrew UI: guided session, tooltip, learning-first example with Hebrew underneath).
+  Gates green (typecheck · lint · **661 tests** · build · smoke). No architecture, taxonomy, progress,
+  detection, shared-sheet or corpus changes — polish only.
+
 ### Sprint — Foundation complete: Universal Tap · Smart Detection · Progress (2026-07-13)
 - **Universal Tap everywhere.** Every Core-Corpus word is now tappable across the app and opens the
   ONE shared Foundation word sheet — no duplicated UI. `TappableText` (pure `corpusIndex.ts` tokenizer:

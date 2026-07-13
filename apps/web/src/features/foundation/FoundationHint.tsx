@@ -1,10 +1,8 @@
 import { useMemo } from 'react';
-import type { CoreWord } from '../../shared/content/coreWords.js';
 import { useAppStore } from '../../shared/stores/appStore.js';
 import { t } from '../../shared/i18n/strings.js';
 import { tap } from '../../shared/ui/haptics.js';
-import { segmentText } from './corpusIndex.js';
-import { isFoundationWord } from './foundationContent.js';
+import { missionFoundationWords } from './foundationContent.js';
 import { useCoreWords } from './useCoreWords.js';
 import { useFoundationStore } from './foundationStore.js';
 
@@ -19,21 +17,16 @@ export function FoundationHint({ targets }: { targets: string[] }) {
   const { index } = useCoreWords(learningLang);
   const viewed = useFoundationStore((s) => s.viewed);
   const dismissed = useFoundationStore((s) => s.dismissed);
-  const openWord = useFoundationStore((s) => s.openWord);
+  const openSession = useFoundationStore((s) => s.openSession);
   const dismiss = useFoundationStore((s) => s.dismiss);
 
-  const candidate = useMemo<CoreWord | null>(() => {
-    if (!index) return null;
-    const seen = new Set<string>();
-    for (const line of targets) {
-      for (const seg of segmentText(line, index)) {
-        const w = seg.word;
-        if (!w || seen.has(w.conceptId)) continue;
-        seen.add(w.conceptId);
-        if (isFoundationWord(w) && !viewed.has(w.conceptId) && !dismissed.has(w.conceptId)) return w;
-      }
-    }
-    return null;
+  // ALL Foundation building blocks in this mission (the guided session's deck), plus the first the
+  // learner has not viewed/dismissed — the one the hint nudges and where "Learn now" starts.
+  const { deck, startIndex, candidate } = useMemo(() => {
+    if (!index) return { deck: [], startIndex: 0, candidate: null };
+    const words = missionFoundationWords(targets, index);
+    const i = words.findIndex((w) => !viewed.has(w.conceptId) && !dismissed.has(w.conceptId));
+    return { deck: words, startIndex: Math.max(i, 0), candidate: i === -1 ? null : words[i] };
   }, [index, targets, viewed, dismissed]);
 
   if (!candidate) return null;
@@ -47,7 +40,7 @@ export function FoundationHint({ targets }: { targets: string[] }) {
       </div>
       <div className="foundation-hint-actions">
         <button className="foundation-hint-dismiss" onClick={() => { tap(); dismiss(candidate.conceptId); }}>{t('foundationHintDismiss')}</button>
-        <button className="foundation-hint-learn" onClick={() => { tap(); openWord(candidate); }}>{t('foundationHintCta')}</button>
+        <button className="foundation-hint-learn" onClick={() => { tap(); openSession(deck, startIndex); }}>{t('foundationHintCta')}</button>
       </div>
     </div>
   );

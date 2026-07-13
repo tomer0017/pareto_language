@@ -396,6 +396,13 @@ const en = {
   foundationHintLearn: 'learn it in 20 sec',
   foundationHintCta: 'Learn now',
   foundationHintDismiss: 'Dismiss',
+  foundationSessionTitle: 'Foundation Building Blocks',
+  foundationWordOf: 'Word {i} of {n}',
+  foundationBackToMission: 'Back to Mission',
+  foundationOnboardTitle: 'Foundation Building Blocks',
+  foundationOnboardBody: 'The most useful words for this mission are always one tap away on the 🛟 button. Learning just a few building blocks makes every dialogue much easier to understand.',
+  foundationOnboardCta: 'Got it',
+  foundationTapHint: 'Tap underlined words to instantly see their meaning, pronunciation and examples.',
 } as const;
 
 const he: Partial<Record<StringKey, string>> = {
@@ -720,6 +727,13 @@ const he: Partial<Record<StringKey, string>> = {
   foundationHintLearn: 'ללמוד ב-20 שניות',
   foundationHintCta: 'למד עכשיו',
   foundationHintDismiss: 'סגור',
+  foundationSessionTitle: 'אבני היסוד',
+  foundationWordOf: 'מילה {i} מתוך {n}',
+  foundationBackToMission: 'חזרה למשימה',
+  foundationOnboardTitle: 'אבני היסוד',
+  foundationOnboardBody: 'המילים הכי שימושיות למשימה הזו תמיד במרחק הקשה אחת על כפתור ה-🛟. לימוד כמה אבני יסוד הופך כל דיאלוג להרבה יותר קל להבנה.',
+  foundationOnboardCta: 'הבנתי',
+  foundationTapHint: 'הקישו על מילים מודגשות כדי לראות מיד את המשמעות, ההגייה והדוגמאות.',
 };
 
 const DICTS: Record<string, Partial<Record<StringKey, string>>> = { en, he };
