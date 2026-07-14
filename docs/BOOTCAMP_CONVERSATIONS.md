@@ -358,7 +358,7 @@ _Reply-training drill:_ “It's on the left.” · “It's on the right.” · �
 
 **Estimated time:** ~20 min
 
-**Video:** — (none yet)
+**Video:** `/videos/En_day7.mp4`
 
 ### Core phrases (you say)
 - **To this address, please.** · לכתובת הזאת, בבקשה. — _הפתיח למונית — תגיד את זה ותראה את הכתובת בטלפון._
@@ -413,7 +413,7 @@ _Reply-training drill:_ “Where to?” · “It's about fifteen euros.” · �
 
 **Estimated time:** ~20 min
 
-**Video:** — (none yet)
+**Video:** `/videos/En_day8.mp4`
 
 ### Core phrases (you say)
 - **I have a reservation.** · יש לי הזמנה. — _הפתיח לדלפק המלון. תבנית: I have a ___._
@@ -466,7 +466,7 @@ _Reply-training drill:_ “Your passport, please.” · “You're in room two-oh
 
 **Estimated time:** ~20 min
 
-**Video:** — (none yet)
+**Video:** `/videos/En_day9.mp4`
 
 ### Core phrases (you say)
 - **I'm just looking, thanks.** · אני רק מסתכל, תודה. — _משפט שקונה לך מרחב בלי לחץ מוכר._
@@ -576,7 +576,7 @@ _Reply-training drill:_ “What size are you?” · “The fitting room is over 
 
 **Estimated time:** ~20 min
 
-**Video:** — (none yet)
+**Video:** `/videos/En_day11.mp4`
 
 ### Core phrases (you say)
 - **Here is my passport.** · הנה הדרכון שלי. — _מגישים ואומרים. שלוש מילים שפותחות כל גבול._

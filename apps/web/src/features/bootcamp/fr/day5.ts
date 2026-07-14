@@ -5,7 +5,7 @@ import { recoveryFr } from './recovery.js';
 /**
  * French Mission 5 — "Repas au restaurant" (Restaurant Meal). French parallel of English day 5:
  * same objective (table → menu → order → drink → bill), same step structure, same engine. French
- * target lines + `tr:{en,he}` glosses; `fr.*` ids. No French video yet. AI-drafted, vous, pending review.
+ * target lines + `tr:{en,he}` glosses; `fr.*` ids. Full-conversation video (Fr_day5.mp4). AI-drafted, vous, pending review.
  */
 const T = (he: string, en: string): LocalizedText => ({ he, en });
 const TR = (en: string, he: string): LocalizedText => ({ en, he });
@@ -75,6 +75,12 @@ export const DAY5_FR: BootcampDayContent = {
   title: T('ארוחה במסעדה', 'Restaurant Meal'),
   items: DAY5_FR_ITEMS,
   dialogues: { 'sit-down-meal': SCENE },
+  introVideo: {
+    src: '/videos/Fr_day5.mp4',
+    title: T('השיחה המלאה', 'Full conversation'),
+    language: 'fr',
+    type: 'intro',
+  },
   steps: [
     { kind: 'talk', icon: '🍽️', title: T('ארוחה במסעדה', 'Restaurant Meal'),
       body: [

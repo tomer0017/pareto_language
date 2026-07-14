@@ -19,6 +19,16 @@ import { DAY17_FR } from './day17.js';
 import { DAY18_FR } from './day18.js';
 import { DAY19_FR } from './day19.js';
 import { DAY20_FR } from './day20.js';
+import { DAY21_FR } from './day21.js';
+import { DAY22_FR } from './day22.js';
+import { DAY23_FR } from './day23.js';
+import { DAY24_FR } from './day24.js';
+import { DAY25_FR } from './day25.js';
+import { DAY26_FR } from './day26.js';
+import { DAY27_FR } from './day27.js';
+import { DAY28_FR } from './day28.js';
+import { DAY29_FR } from './day29.js';
+import { DAY30_FR } from './day30.js';
 
 /**
  * French Bootcamp missions (content-only). Same `BootcampDayContent` shape as the English missions;
@@ -50,4 +60,14 @@ export const DAYS_FR: Record<number, BootcampDayContent> = {
   18: DAY18_FR,
   19: DAY19_FR,
   20: DAY20_FR,
+  21: DAY21_FR,
+  22: DAY22_FR,
+  23: DAY23_FR,
+  24: DAY24_FR,
+  25: DAY25_FR,
+  26: DAY26_FR,
+  27: DAY27_FR,
+  28: DAY28_FR,
+  29: DAY29_FR,
+  30: DAY30_FR,
 };

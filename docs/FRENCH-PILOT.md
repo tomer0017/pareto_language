@@ -2,14 +2,14 @@
 
 > **Status: French is live as an EARLY ACCESS learning language** (`available:true`,
 > `earlyAccess:true`). It is selectable from onboarding/Profile; the **complete French Core 500** and
-> both authored Bootcamp missions are fully usable; **unbuilt missions show honest "Coming Soon"** and
-> cannot be entered. The architecture is language-agnostic, so finishing French — and adding
+> **all 30 Bootcamp missions** are fully usable and at full structural parity with English. The
+> architecture is language-agnostic, so finishing French — and adding
 > Spanish/Italian/German/Portuguese — is **primarily content**. Nothing here claims native review.
 
-Run `npm run parity` for the live dashboard. Today: **FR corpus 500/500 (100%) ✅, Bootcamp 4/30 (13%)** —
-Recovery Toolkit + visible Missions 1–3 (Introduce Myself · Numbers & Money · Coffee Shop). Missions
-4–10 (days 5–11) remain honest "Coming Soon"; the last available mission shows an Early Access
-completion state (never routes into unbuilt content).
+Run `npm run parity` for the live dashboard. Today: **FR corpus 511/511 (100%) ✅, Bootcamp 30/30 (100%) ✅** —
+the full 30-mission journey (days 1–30) is authored in French with structural parity to English.
+French remains **Early Access** only because the content is AI-drafted and **pending native review** —
+not because anything is missing.
 
 ## Early Access guarantees (how "no English leaks / never taken into missing content" hold)
 
@@ -52,14 +52,13 @@ completion state (never routes into unbuilt content).
 ## 2. What is NOT done (brutally honest)
 
 - **Core corpus: DONE (511/511).** No gap. `corpusParity('fr')` passes with 0 missing, 0 orphans.
-- **Bootcamp: 20 of 30 missions authored in French** (days 1–20; days 5–20 added 2026-07-13 through
-  Paying Anywhere, Street Food, Supermarket, Food-Day Checkpoint, Public Transport, Tickets &
-  Attractions). Days 21–30 remain. The built missions are at genuine **content parity** with their
-  English counterparts —
-  identical items/tools/steps, natural idiomatic `vous`-French, complete `tr:{en,he}` glosses,
-  priming (incl. the 70/80/90 number system), videos (2–4), and full recovery-branch dialogues
-  (2026-07-13 content-alignment audit). **25 missions remain** (~90–155 lines each, mirroring the
-  matching English `dayN.ts`) — the bulk of the work and why French is not yet trip-ready.
+- **Bootcamp: COMPLETE — 30 of 30 missions authored in French** (days 1–30; days 5–30 added
+  2026-07-13/14). Every mission is at genuine **content parity** with its English counterpart —
+  identical items/tools/steps/dialogues, natural idiomatic `vous`-French, complete `tr:{en,he}`
+  glosses, priming (incl. the 70/80/90 number system), videos, and full recovery-branch dialogues.
+  The checkpoint / integration missions (10, 18, 24, 28, 29, 30) reuse earlier French items by id,
+  exactly as English does. `missionParity('fr', …)` reports **30/30 covered, complete, 0 missing**, and every
+  per-mission structural check (steps/items/dialogues) matches its English source exactly.
 - **Foundation examples: French authored (Foundation words).** `features/foundation/frenchExamples.ts`
   provides an authored French example for **all 192 Foundation building-block concepts** (verified by a
   coverage test); the word page shows French first · Hebrew under · French audio, and the tapped
@@ -67,8 +66,9 @@ completion state (never routes into unbuilt content).
   form). AI-drafted, `pending native review`. For Core words OUTSIDE the Foundation taxonomy the app
   still shows the app-language meaning (never English-as-French). A future step folds French examples
   into the corpus for the remaining concepts.
-- **French is Early Access, not full parity.** It is selectable and safe (unbuilt missions are honest
-  "Coming Soon"), but the Bootcamp is 4/29. It is not the full English experience yet.
+- **French is Early Access because of native review, not coverage.** The full 30/30 Bootcamp and
+  511/511 corpus are structurally at parity with English; the only thing standing between Early Access
+  and full parity is professional native review of the AI-drafted content.
 - **`fr` is not in `DECLARED_LANGS`.** The pilot pack ships a curated subset deliberately; declaring
   `fr` (the all-or-nothing 500 gate) is the final step once every concept is realized and reviewed.
 - **No native review.** All French is AI-drafted, `pending_native_review`.

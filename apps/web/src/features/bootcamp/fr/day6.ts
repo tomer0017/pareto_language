@@ -5,7 +5,7 @@ import { recoveryFr } from './recovery.js';
 /**
  * French Mission 6 — "Directions". French parallel of English day 6: same objective (ask, then
  * UNDERSTAND the fast answer — 90% listening), same step structure, same engine. French target
- * lines + `tr:{en,he}` glosses; `fr.*` ids. No French video yet. AI-drafted, vous, pending review.
+ * lines + `tr:{en,he}` glosses; `fr.*` ids. Full-conversation video (Fr_day6.mp4). AI-drafted, vous, pending review.
  */
 const T = (he: string, en: string): LocalizedText => ({ he, en });
 const TR = (en: string, he: string): LocalizedText => ({ en, he });
@@ -60,6 +60,12 @@ export const DAY6_FR: BootcampDayContent = {
   title: T('כיוונים', 'Directions'),
   items: DAY6_FR_ITEMS,
   dialogues: { 'lost-in-town': SCENE },
+  introVideo: {
+    src: '/videos/Fr_day6.mp4',
+    title: T('השיחה המלאה', 'Full conversation'),
+    language: 'fr',
+    type: 'intro',
+  },
   steps: [
     { kind: 'talk', icon: '🧭', title: T('משימה 6: כיוונים', 'Mission 6: Directions'),
       body: [
