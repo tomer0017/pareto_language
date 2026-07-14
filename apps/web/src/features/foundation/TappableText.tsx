@@ -1,4 +1,4 @@
-import { Fragment, useMemo, useRef } from 'react';
+import { Fragment, useMemo, useRef, type KeyboardEvent } from 'react';
 import type { CoreWord } from '../../shared/content/coreWords.js';
 import { useAppStore } from '../../shared/stores/appStore.js';
 import { tap } from '../../shared/ui/haptics.js';
@@ -43,6 +43,15 @@ export function TappableText({ text, lang, className }: { text: string; lang?: s
   if (!segments) return <span className={className}>{text}</span>;
   let firstWordSeen = false;
   const hasTappable = segments.some((s) => s.word);
+  // Tappable words are inline <span role="button"> — NOT <button>. A real button is an atomic
+  // inline-block: it can't line-break and it reorders as a neutral run in bidi text, which broke
+  // sentence wrapping and RTL word order. A span flows exactly like the surrounding text.
+  const onKey = (e: KeyboardEvent, w: CoreWord, surface: string) => {
+    if (e.key !== 'Enter' && e.key !== ' ') return;
+    e.preventDefault();
+    e.stopPropagation();
+    openWord(w, surface);
+  };
   return (
     <span className={className}>
       {segments.map((seg, i) => {
@@ -50,19 +59,21 @@ export function TappableText({ text, lang, className }: { text: string; lang?: s
         const isFirst = !firstWordSeen;
         firstWordSeen = true;
         return (
-          <button
+          <span
             key={i}
             ref={isFirst ? firstWordRef : undefined}
-            type="button"
+            role="button"
+            tabIndex={0}
             className="tappable-word"
             // Pass the exact tapped surface so the sheet shows THIS form (e.g. "combien"), not the
             // pack's canonical realization ("Combien ?"). Preserves the learner's mental model.
             onClick={(e) => { e.stopPropagation(); openWord(seg.word!, seg.text); }}
+            onKeyDown={(e) => onKey(e, seg.word!, seg.text)}
             // Swallow the pointer so a tappable word inside a draggable/flip card never triggers it.
             onPointerDown={(e) => e.stopPropagation()}
           >
             {seg.text}
-          </button>
+          </span>
         );
       })}
       {hasTappable && <TapCoachmark anchorRef={firstWordRef} />}

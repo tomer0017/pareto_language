@@ -113,6 +113,26 @@ describe('buildWord — tapped surface & French examples (the two reported bugs)
     expect(ex.target).toBe('Can you help me?');
     expect(ex.targetLang).toBe('en-US');
   });
+
+  it('falls back to a REAL authored mission sentence (target + audio + gloss) for a French Core word with no authored/native example', () => {
+    // "billet" has no authored Foundation example and no fr corpus realization, but it appears in a
+    // real French mission line — so the sheet shows that genuine sentence (French + audio + Hebrew),
+    // keeping EN/FR parity with honest content rather than a bare app-language gloss.
+    const billet = word({ id: 'fr.word.ticket', conceptId: 'concept.word.ticket', word: 'billet', example: { en: 'One ticket, please.', he: 'כרטיס אחד, בבקשה.' } });
+    const missions = {
+      1: {
+        day: 1, title: { en: '', he: '' }, items: [],
+        dialogues: { d: { id: 'd', start: 'n1', nodes: [
+          { id: 'n1', who: 'you', en: 'Un billet pour le centre, s’il vous plaît.', he: 'כרטיס אחד למרכז, בבקשה.', tr: { en: 'One ticket to the center, please.', he: 'כרטיס אחד למרכז, בבקשה.' } },
+        ] } },
+        steps: [],
+      },
+    } as unknown as Parameters<typeof buildWord>[1];
+    const ex = buildWord(billet, missions, 'he', 'fr').example!;
+    expect(ex.target).toBe('Un billet pour le centre, s’il vous plaît.'); // a real French line, not fabricated
+    expect(ex.targetLang).toBe('fr-FR');
+    expect(ex.gloss).toBe('כרטיס אחד למרכז, בבקשה.');
+  });
 });
 
 describe('missionFoundationWords (the guided-session deck for a mission)', () => {

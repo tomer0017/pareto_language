@@ -4,6 +4,7 @@ import { cancelSpeech } from '../../shared/audio/tts.js';
 import { tap } from '../../shared/ui/haptics.js';
 import { Sheet } from '../../shared/ui/Sheet.js';
 import { SpeakerButton } from '../../shared/ui/SpeakerButton.js';
+import { IconButton } from '../../shared/ui/IconButton.js';
 import { useAppStore } from '../../shared/stores/appStore.js';
 import { loadCoreWords, type CoreWord } from '../../shared/content/coreWords.js';
 import { missionsFor } from '../bootcamp/bootcampStore.js';
@@ -113,9 +114,9 @@ export function FoundationSheet() {
       <div className="sheet-header">
         {showsIcon
           ? <span className="sheet-icon" aria-hidden>🛟</span>
-          : <button className="sheet-back" onClick={headerBack ?? close} aria-label={t('back')}>‹</button>}
+          : <IconButton icon="‹" label={t('back')} className="sheet-back" variant="surface" size={40} onClick={headerBack ?? close} />}
         <h2 id="foundation-title" className="sheet-title">{title}</h2>
-        <button className="sheet-close" onClick={() => { tap(); close(); }} aria-label={t('close')}>✕</button>
+        <IconButton icon="✕" label={t('close')} className="sheet-close" variant="surface" size={40} onClick={close} />
       </div>
 
       {mode === 'browse' && browse.level === 'categories' && <p className="dim small sheet-sub">{t('foundationSubtitle')}</p>}

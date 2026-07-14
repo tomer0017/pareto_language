@@ -3,7 +3,7 @@ import { L, t } from '../../shared/i18n/strings.js';
 import { speak, cancelSpeech } from '../../shared/audio/tts.js';
 import { useAppStore } from '../../shared/stores/appStore.js';
 import { CheckPop } from '../../shared/ui/CheckPop.js';
-import { AnswerFeedback } from '../../shared/ui/AnswerFeedback.js';
+import { AnswerFeedback, type AnswerContext } from '../../shared/ui/AnswerFeedback.js';
 import { buildComprehensionContext, buildRespondContext } from '../../shared/ui/answerContext.js';
 import { feedbackWrong } from '../../shared/ui/feedbackCue.js';
 import { success, tap } from '../../shared/ui/haptics.js';
@@ -326,7 +326,7 @@ function MissionPlayer() {
           {t('listenFullConvo')}
         </button>
       )}
-      <div className="fade-in" key={bc.index}>
+      <div className="fade-in mission-step-body" key={bc.index}>
         {step.kind === 'video' && <VideoStep video={video} mode={step.mode} onNext={advance} />}
         {step.kind === 'talk' && <TalkStep step={step} onNext={advance} />}
         {step.kind === 'prime' && <PrimeStep step={step} itemsById={itemsById} onNext={advance} />}
@@ -463,7 +463,7 @@ function ToolStep({ step, item, onDone }: { step: Extract<BootcampStep, { kind: 
       </div>
       <div className="action-zone">
         <button className="btn-ghost" onClick={() => void speakL(item.text, phase === 'listen' ? 1 : 0.85)}>
-          🔊 {t('replay')}
+          🔊 {t('replayAudio')}
         </button>
         {phase === 'reveal' && (
           <button className="btn-primary" onClick={() => { bc.recordDrill(item.id, 'echo', 'pass'); onDone(); }}>{t('continue')}</button>
@@ -647,7 +647,7 @@ function SwipeStep({ itemIds, itemsById, onDone }: { itemIds: string[]; itemsByI
     <>
       <div className="drill-card">
         <p className="drill-label">{t('reviewProgress', { i: i + 1, n: itemIds.length })}</p>
-        <p className="drill-phrase" style={{ fontSize: '1.5rem' }}>{item.text}</p>
+        <p className="drill-phrase" style={{ fontSize: '1.5rem' }}><TappableText text={item.text} /></p>
         <p className="drill-meaning">{L(item.meaning)}</p>
         {item.tip && <p className="faint small">{L(item.tip)}</p>}
       </div>
@@ -722,6 +722,22 @@ function DialogueStep({ dialogue, onDone }: { dialogue: BootcampDialogue; onDone
     );
   }
 
+  // Non-coaching FULL-correct pick: a short success screen (Correct · replay question · replay your
+  // answer · Next) — the natural line is celebrated, not skipped past. Continue advances the dialogue.
+  if (picked && picked.correct) {
+    const ctx: AnswerContext = {
+      prompt: displayNpc ? { text: displayNpc.en, translation: dialogueTr(displayNpc), onReplay: () => void speakL(displayNpc.en) } : undefined,
+      expected: { text: picked.en, translation: dialogueTr(picked), onReplay: () => void speakL(picked.en) },
+    };
+    return (
+      <AnswerFeedback
+        ok
+        ctx={ctx}
+        onContinue={() => { const next = picked.next; setPicked(null); setNodeId(next); }}
+      />
+    );
+  }
+
   // Non-coaching wrong pick: full-context correction so the mistake matters (never flashes past).
   // Shows WHAT YOU HEARD (the NPC line) → your pick → WHAT YOU SHOULD ANSWER (the line that fit).
   // Try again returns to the same decision; Continue proceeds to the NPC's believable recovery beat.
@@ -774,14 +790,20 @@ function DialogueStep({ dialogue, onDone }: { dialogue: BootcampDialogue; onDone
                     if (c.itemId) bc.recordDrill(c.itemId, 'simulator', c.correct ? 'pass' : 'partial');
                     setYourLine(c.en);
                     // A wrong pick ALWAYS pauses (coaching card in Mission 1, "Not quite" card
-                    // elsewhere) so the mistake registers before the NPC reacts — it never just
-                    // flashes by. Correct picks flow straight on (no chime on every happy line).
+                    // elsewhere) so the mistake registers before the NPC reacts. A FULL correct
+                    // answer (the natural line, not merely a survival tool) now earns a short success
+                    // screen too — it never just flashes past. Survival-tool picks stay fast (an
+                    // emergency alternative isn't celebrated) and flow straight on.
                     if (coaching || !c.correct) {
                       if (!c.correct && !coaching) feedbackWrong(); // coaching stays "never wrong"
                       setPicked(c);
                       void speakL(c.en, 0.92);
+                    } else if (!isTool) {
+                      success();
+                      setPicked(c); // → success screen (Correct · replay question · replay answer · Next)
+                      void speakL(c.en, 0.92);
                     } else {
-                      // Advance only when the line finishes naturally; a rapid re-tap that
+                      // Survival tool: advance when the line finishes naturally; a rapid re-tap that
                       // supersedes this utterance resolves 'interrupted' and must not double-advance.
                       const target = c.next;
                       void speakL(c.en, 0.92).then((r) => { if (r === 'ended') setNodeId(target); });
@@ -796,10 +818,14 @@ function DialogueStep({ dialogue, onDone }: { dialogue: BootcampDialogue; onDone
                 </button>
               );
             })}
+            {/* Replay the question audio (item: every multiple-choice exercise can re-hear the prompt). */}
+            {displayNpc && (
+              <button className="btn-ghost" onClick={() => void speakL(displayNpc.en)}>🔊 {t('replayQuestion')}</button>
+            )}
           </>
         ) : (
-          <button className="btn-ghost" onClick={() => displayNpc && void speakL(displayNpc.en, 0.8)}>
-            🐢 {t('playSlow')}
+          <button className="btn-ghost" onClick={() => displayNpc && void speakL(displayNpc.en)}>
+            🔊 {t('replayAudio')}
           </button>
         )}
       </div>
@@ -1004,7 +1030,7 @@ function VictoryScreen() {
               <>
                 <p className="drill-label">{t('masteredPhrases')}</p>
                 {mastered.map((i) => (
-                  <p key={i.id} className="small">🗣️ {i.text} <span className="dim">— {L(i.meaning)}</span></p>
+                  <p key={i.id} className="small">🗣️ <TappableText text={i.text} /> <span className="dim">— {L(i.meaning)}</span></p>
                 ))}
               </>
             )}
@@ -1101,7 +1127,7 @@ function DialogueReader({ dialogue, onClose, onFinish }: { dialogue: BootcampDia
           >
             <div className="dline-top">
               <span className="dline-speaker">{line.who === 'you' ? `🫵 ${t('speakerYou')}` : `🧑 ${t('speakerThem')}`}</span>
-              <button className="dline-play" onClick={() => playOne(i)} aria-label={t('replay')}>🔊</button>
+              <button className="dline-play" onClick={() => playOne(i)} aria-label={t('replayAudio')}>🔊</button>
             </div>
             <p className="dline-en">{line.en}</p>
             <p className="dline-he">{dialogueTr(line)}</p>
@@ -1127,22 +1153,38 @@ function DialogueReader({ dialogue, onClose, onFinish }: { dialogue: BootcampDia
 
 /* ── Video-first intro / review ─────────────────────────────────────────── */
 
-/** Native <video> with manual play (never autoplays with sound), inline on iOS, fullscreen
- *  allowed, replayable. A missing/broken file degrades to a friendly note — never crashes. */
+/** Custom video player — NO native controls: no seek bar, no ±10s, no fullscreen, no menu, no dark
+ *  overlay, no letterbox bars. One tap toggles play/pause; a centered ▶︎ shows while paused. The
+ *  video stays fully visible (frame == video box). A missing/broken file degrades to a friendly
+ *  note — never crashes. Videos are short (20–35s), so play/pause is the only control needed. */
 export function VideoPlayer({ video, onEnded }: { video: BootcampVideo; onEnded?: () => void }) {
   const [failed, setFailed] = useState(false);
+  const [playing, setPlaying] = useState(false);
+  const ref = useRef<HTMLVideoElement>(null);
   if (failed || !video.src) return <p className="dim small" style={{ padding: '20px 0' }}>{t('videoUnavailable')}</p>;
+  const toggle = (): void => {
+    const v = ref.current;
+    if (!v) return;
+    if (v.paused) void v.play().catch(() => undefined);
+    else v.pause();
+  };
   return (
-    <video
-      className="video-player"
-      src={resolveAsset(video.src)}
-      controls
-      playsInline
-      preload="metadata"
-      controlsList="nodownload"
-      onError={() => setFailed(true)}
-      onEnded={onEnded}
-    />
+    <div className="video-frame" onClick={toggle} role="button" aria-label={t('playBtn')}>
+      <video
+        ref={ref}
+        className="video-player"
+        src={resolveAsset(video.src)}
+        playsInline
+        preload="metadata"
+        disablePictureInPicture
+        controlsList="nodownload noplaybackrate nofullscreen"
+        onPlay={() => setPlaying(true)}
+        onPause={() => setPlaying(false)}
+        onError={() => setFailed(true)}
+        onEnded={() => { setPlaying(false); onEnded?.(); }}
+      />
+      {!playing && <span className="video-play-overlay" aria-hidden />}
+    </div>
   );
 }
 

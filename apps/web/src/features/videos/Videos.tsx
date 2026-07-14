@@ -35,13 +35,11 @@ export function Videos() {
   const pool = useMemo(() => allVideos(app.learningLang), [app.learningLang]);
   const [watched, setWatched] = useState<Set<number>>(new Set());
   const [current, setCurrent] = useState<VideoEntry | null>(() => pickRandom(pool, new Set()));
-  const [showPopup, setShowPopup] = useState(false);
 
   const next = (): void => {
     const nw = new Set(watched);
     if (current) nw.add(current.day);
     setWatched(nw);
-    setShowPopup(false);
     setCurrent(pickRandom(pool, nw)); // null → the all-done empty state below
   };
 
@@ -85,24 +83,13 @@ export function Videos() {
       </div>
       <div className="screen-scroll no-nav" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
         <p className="dim center" style={{ marginBottom: 12 }}>{t('videosWatchHint')}</p>
-        <VideoPlayer key={current.day} video={current.video} onEnded={() => { success(); setShowPopup(true); }} />
-        <button className="btn-ghost" style={{ marginTop: 14, alignSelf: 'center' }} onClick={() => setShowPopup(true)}>
-          {t('videosImDone')}
-        </button>
+        <VideoPlayer key={current.day} video={current.video} onEnded={() => success()} />
       </div>
-
-      {showPopup && (
-        <div className="modal-scrim" onClick={() => setShowPopup(false)}>
-          <div className="modal-card pop-in" onClick={(e) => e.stopPropagation()}>
-            <p style={{ fontSize: '3rem', textAlign: 'center' }}>🎉</p>
-            <p className="drill-phrase center" style={{ fontSize: '1.35rem', margin: '4px 0 4px' }}>{t('videosPopupQ')}</p>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginTop: 18 }}>
-              <button className="btn-primary" onClick={() => { tap(); next(); }}>✅ {t('videosUnderstood')}</button>
-              <button className="btn-secondary" onClick={practice}>🎯 {t('videosPractice')}</button>
-            </div>
-          </div>
-        </div>
-      )}
+      {/* After watching, two honest next steps — no intermediate "I finished watching" popup. */}
+      <div className="action-zone">
+        <button className="btn-primary" onClick={practice}>🎯 {t('videoWantPractice')}</button>
+        <button className="btn-secondary" onClick={() => { tap(); next(); }}>✅ {t('videoUnderstoodAll')}</button>
+      </div>
     </div>
   );
 }

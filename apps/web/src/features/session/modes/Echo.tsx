@@ -26,10 +26,10 @@ export function Echo({ item, onDone }: { item: ContentItem; onDone: (o: Outcome)
             className="btn-secondary"
             onClick={() => {
               setPlays(plays + 1);
-              void playItem(item, { slow: plays >= 1 });
+              void playItem(item);
             }}
           >
-            🔊 {plays >= 1 ? t('playSlow') : t('playAgain')}
+            🔊 {t('replayAudio')}
           </button>
           <button className="btn-accent" onClick={() => onDone('pass')}>
             {t('saidIt')}

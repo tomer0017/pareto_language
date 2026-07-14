@@ -67,16 +67,7 @@ export function Listen({
         })}
         <div className="btn-row">
           <button className="btn-ghost" onClick={() => void playItem(item)}>
-            🔊 {t('playAgain')}
-          </button>
-          <button
-            className="btn-ghost"
-            onClick={() => {
-              setUsedSlow(true);
-              void playItem(item, { slow: true });
-            }}
-          >
-            🐢 {t('playSlow')}
+            🔊 {t('replayAudio')}
           </button>
         </div>
       </div>

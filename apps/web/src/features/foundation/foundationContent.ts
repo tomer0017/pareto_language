@@ -130,6 +130,60 @@ export function buildMissionIndex(missions: Record<number, BootcampDayContent>):
     .sort((a, b) => a.day - b.day);
 }
 
+/** One authored sentence usable as an example: a learning-language line + its app-language gloss.
+ *  Sourced from real mission content (dialogue lines and trained items), never fabricated. */
+export interface ExampleSentence {
+  target: string;
+  gloss: LocalizedText;
+}
+
+/**
+ * All authored sentences from a language's missions — every spoken dialogue line (with its `tr`
+ * gloss) and every trained item (with its `meaning`). This is the honest fallback source for an
+ * example on any Core word that has no authored Foundation example: a REAL sentence the learner will
+ * actually meet, in genuine target-language content, with an aligned app-language translation. Pure.
+ */
+export function buildSentenceIndex(missions: Record<number, BootcampDayContent>): ExampleSentence[] {
+  const out: ExampleSentence[] = [];
+  const seen = new Set<string>();
+  const add = (target: string, gloss: LocalizedText) => {
+    const t = target.trim();
+    if (!t || seen.has(t)) return;
+    seen.add(t);
+    out.push({ target: t, gloss });
+  };
+  for (const day of Object.values(missions)) {
+    for (const item of day.items) add(item.text, item.meaning);
+    for (const dlg of Object.values(day.dialogues)) {
+      for (const node of dlg.nodes) {
+        if (node.en) add(node.en, node.tr ?? { en: node.en, he: node.he });
+        for (const c of node.choices ?? []) if (c.en) add(c.en, c.tr ?? { en: c.en, he: c.he });
+      }
+    }
+  }
+  return out;
+}
+
+/** The shortest authored mission sentence that uses `targetWord` (whole-word), resolved to a target
+ *  line + app-language gloss + audio. Used only when a language lacks a native corpus example
+ *  realization (e.g. French), so the word page keeps EN/FR parity with real, honest content. */
+export function missionExample(
+  targetWord: string,
+  sentences: ExampleSentence[],
+  appLang: string,
+  learningLang: string,
+): FoundationExample | undefined {
+  const re = wordMatcher(targetWord);
+  let best: ExampleSentence | undefined;
+  for (const s of sentences) {
+    if (!re.test(s.target)) continue;
+    if (!best || s.target.length < best.target.length) best = s;
+  }
+  if (!best) return undefined;
+  const gloss = localize(best.gloss, appLang);
+  return { target: best.target, targetLang: languageTtsTag(learningLang), gloss: gloss && gloss !== best.target ? gloss : undefined };
+}
+
 /** Missions whose real text contains this target word (derived), capped and resolved for display. */
 export function relatedMissions(
   targetWord: string,
@@ -177,19 +231,34 @@ export function buildWord(
   /** The exact surface the learner tapped inline (Universal Tap), e.g. "combien" vs canonical "Combien ?". */
   surface?: string,
 ): FoundationWord {
-  return buildWordWithIndex(word, buildMissionIndex(missions), appLang, learningLang, surface);
+  return buildWordWithIndex(word, buildMissionIndex(missions), appLang, learningLang, surface, buildSentenceIndex(missions));
 }
 
-/** The example a Foundation word page shows: an authored target-language sentence (French today)
- *  when one exists, else the honest fallback (never English-as-target for a non-English learner). */
-function buildFoundationExample(word: CoreWord, appLang: string, learningLang: string): FoundationExample | undefined {
+/**
+ * The example a Foundation/Tap word page shows. Priority (all HONEST — real content, never fabricated):
+ *  1. an authored Foundation example in the learning language (French today, 192 words);
+ *  2. a native corpus example realization (English ships one for every Core word);
+ *  3. a real sentence from the authored missions that uses the word (keeps EN/FR parity for the
+ *     ~300 non-Foundation Core words French has no per-word example for — a line the learner meets);
+ *  4. the app-language meaning as a last-resort hint (never English-as-target for a non-English learner).
+ */
+function buildFoundationExample(
+  word: CoreWord,
+  appLang: string,
+  learningLang: string,
+  sentences?: ExampleSentence[],
+): FoundationExample | undefined {
   if (!word.example) return undefined;
   const authored = authoredExample(word.conceptId, learningLang);
   if (authored) {
     const gloss = localize(word.example, appLang);
     return { target: authored, targetLang: languageTtsTag(learningLang), gloss: gloss || undefined };
   }
-  return buildExample(word.example, appLang, learningLang);
+  const corpus = buildExample(word.example, appLang, learningLang);
+  if (corpus.target) return corpus; // the learning language ships a native corpus example (English).
+  // No native realization (e.g. a French non-Foundation word) — reuse a real authored mission line.
+  const derived = sentences && missionExample(word.word, sentences, appLang, learningLang);
+  return derived ?? corpus;
 }
 
 /** Resolve an example to the LEARNING-language line + app-language gloss (deduped). Consistent
@@ -210,6 +279,7 @@ function buildWordWithIndex(
   appLang: string,
   learningLang: string,
   surface?: string,
+  sentences?: ExampleSentence[],
 ): FoundationWord {
   const cat = foundationCategoryOf(word);
   // Preserve the learner's mental model: show the exact tapped surface, keep the canonical as base form.
@@ -219,7 +289,7 @@ function buildWordWithIndex(
     display: resolveLearningItem({ id: word.id, target: shown ?? word.word, meaning: word.meaning, emoji: word.emoji }, appLang, learningLang),
     baseForm: shown ? word.word : undefined,
     stars: frequencyStars(word),
-    example: buildFoundationExample(word, appLang, learningLang),
+    example: buildFoundationExample(word, appLang, learningLang, sentences),
     relatedMissions: relatedMissions(word.word, index, appLang),
     category: cat ? { id: cat.id, icon: cat.icon, titleKey: cat.titleKey } : null,
     corpusCategory: word.category,
@@ -263,12 +333,13 @@ export function buildFoundation(
   learningLang: string,
 ): FoundationCategoryModel[] {
   const index = buildMissionIndex(missions);
+  const sentences = buildSentenceIndex(missions);
   const categories = [...FOUNDATION_TAXONOMY].sort((a, b) => a.order - b.order);
   const models: FoundationCategoryModel[] = [];
   for (const cat of categories) {
     const catWords = words
       .filter((w) => matchesCategory(w, cat))
-      .map<FoundationWord>((w) => buildWordWithIndex(w, index, appLang, learningLang));
+      .map<FoundationWord>((w) => buildWordWithIndex(w, index, appLang, learningLang, undefined, sentences));
     if (catWords.length > 0) {
       models.push({ id: cat.id, icon: cat.icon, titleKey: cat.titleKey, words: catWords });
     }

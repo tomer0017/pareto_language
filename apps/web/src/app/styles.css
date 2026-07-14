@@ -57,8 +57,13 @@ body {
   flex-direction: column;
   padding: calc(env(safe-area-inset-top) + 14px) 18px 0;
 }
-.screen-scroll { flex: 1; overflow-y: auto; padding-bottom: 130px; }
-.screen-scroll.no-nav { padding-bottom: 110px; }
+/* Scrollable learning screens reserve room for the fixed bottom bar (nav or action-zone) PLUS the
+   device safe area, so a CTA can never cover the last row of content. Generous by design. */
+.screen-scroll { flex: 1; overflow-y: auto; padding-bottom: calc(env(safe-area-inset-bottom) + 150px); }
+.screen-scroll.no-nav { padding-bottom: calc(env(safe-area-inset-bottom) + 170px); }
+/* The mission player renders each step directly under .screen (no .screen-scroll); reserve the same
+   clearance so a tall drill card / feedback screen is never hidden behind the fixed action-zone. */
+.mission-step-body { padding-bottom: calc(env(safe-area-inset-bottom) + 170px); }
 
 h1 { font-size: 1.65rem; font-weight: 800; letter-spacing: -0.02em; }
 h2 { font-size: 1.12rem; font-weight: 700; }
@@ -284,15 +289,21 @@ button:disabled { opacity: 0.55; }
 }
 .pic-option.option-correct { outline: 3px solid var(--good); background: var(--good-soft); }
 .pic-option.option-wrong { outline: 3px solid var(--danger); background: var(--danger-soft); }
+/* Shared swipe-card shell (shared/ui/GestureCard) — one gesture/animation surface for word AND
+   sentence flashcards. Follows the finger (GPU transform), springs back, flies off, deals in. */
+.gesture-card {
+  position: relative; will-change: transform; touch-action: pan-y;
+  user-select: none; -webkit-user-select: none; cursor: grab;
+  animation: cardIn 0.26s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.gesture-card:active { cursor: grabbing; }
+.gesture-card:focus-visible { outline: 2px solid var(--brand); outline-offset: 3px; }
+
 .recall-card {
   background: var(--card); border-radius: 26px; padding: 30px 22px; margin: 12px 0;
   box-shadow: var(--shadow-pop); text-align: center; min-height: 300px;
   display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px;
-  touch-action: pan-y; user-select: none; -webkit-user-select: none; cursor: grab;
 }
-.recall-card { position: relative; will-change: transform; touch-action: none; }
-.recall-card:active { cursor: grabbing; }
-.recall-dealt { animation: cardIn 0.26s cubic-bezier(0.22, 1, 0.36, 1); }
 @keyframes cardIn { from { transform: scale(0.9); opacity: 0.4; } to { transform: scale(1); opacity: 1; } }
 .recall-emoji { font-size: 5rem; line-height: 1; }
 /* The concept meaning shown in the learner's app language BELOW the icon before reveal — removes
@@ -588,13 +599,44 @@ input:focus, select:focus { outline: 2px solid var(--brand); border-color: trans
 }
 
 /* ── Video (video-first Bootcamp) ─────────────────────────────────────── */
+/* Custom video player — no native chrome, no letterbox bars, no dark overlay. The frame is exactly
+   the video box (width:100%, height:auto) so the video is always fully visible with no side bars.
+   One tap toggles play/pause; a centered ▶︎ shows only while paused. */
+.video-frame {
+  position: relative;
+  width: 100%;
+  display: block;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: var(--shadow-pop);
+  cursor: pointer;
+  line-height: 0; /* kill the inline-descender gap under the <video> */
+  background: transparent;
+}
 .video-player {
   width: 100%;
-  max-height: 62vh;
-  border-radius: 18px;
-  background: #000;
+  height: auto;
   display: block;
-  box-shadow: var(--shadow-pop);
+  background: transparent;
+}
+.video-play-overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none; /* the tap goes to the frame, never blocked by the icon */
+}
+.video-play-overlay::before {
+  content: '▶︎';
+  display: grid;
+  place-items: center;
+  width: 66px; height: 66px;
+  padding-inline-start: 5px; /* optically center the triangle */
+  border-radius: 999px;
+  background: color-mix(in srgb, #000 42%, transparent);
+  color: #fff;
+  font-size: 1.7rem;
+  line-height: 1;
 }
 
 /* ── Foundation (🛟 building-blocks surface) ──────────────────────────────
@@ -637,12 +679,9 @@ input:focus, select:focus { outline: 2px solid var(--brand); border-color: trans
 .sheet-header { display: flex; align-items: center; gap: 10px; }
 .sheet-icon { font-size: 1.5rem; }
 .sheet-title { flex: 1; margin: 0; font-size: 1.2rem; font-weight: 800; min-width: 0; }
-.sheet-back, .sheet-close {
-  width: 40px; height: 40px; min-height: 40px; border-radius: 999px;
-  display: grid; place-items: center; font-size: 1.3rem; line-height: 1;
-  background: var(--card); border: 1px solid var(--line); color: var(--ink);
-  box-shadow: var(--shadow-card); flex-shrink: 0;
-}
+/* Sheet header controls reuse the shared .icon-btn base (centering + surface); only the glyph size
+   and the RTL chevron flip are sheet-specific. */
+.sheet-back, .sheet-close { font-size: 1.3rem; }
 [dir='rtl'] .sheet-back { transform: scaleX(-1); }
 .sheet-sub { margin: 2px 2px 0; }
 .sheet-body { overflow-y: auto; padding: 10px 0 4px; }
@@ -716,6 +755,35 @@ input:focus, select:focus { outline: 2px solid var(--brand); border-color: trans
 .tappable-word:active { background: var(--brand-soft); transform: scale(0.96); }
 .tappable-word:focus-visible { outline: 2px solid var(--brand); outline-offset: 1px; }
 
+/* One-time swipe/long-press onboarding (shared/ui/SwipeOnboarding) — shown once per user on any
+   card deck. A ghost card slides left↔right to demonstrate the gesture. Theme + RTL safe. */
+.swipe-onboard-scrim {
+  position: fixed; inset: 0; z-index: 90; display: grid; place-items: center;
+  padding: 24px; background: color-mix(in srgb, #000 46%, transparent);
+}
+.swipe-onboard-card {
+  width: 100%; max-width: 340px; text-align: center;
+  background: var(--card); color: var(--ink);
+  border-radius: 22px; padding: 22px 20px; box-shadow: var(--shadow-pop);
+}
+.swipe-onboard-demo { position: relative; height: 92px; margin-bottom: 8px; display: grid; place-items: center; }
+.swipe-onboard-ghost {
+  width: 74px; height: 92px; border-radius: 14px;
+  background: var(--card-sunken); border: 1px solid var(--line);
+  animation: swipeDemo 2.2s ease-in-out infinite;
+}
+.swipe-onboard-arrow {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  font-size: 1.6rem; color: var(--brand); opacity: 0.85;
+}
+.swipe-onboard-arrow.start { inset-inline-start: 18px; }
+.swipe-onboard-arrow.end { inset-inline-end: 18px; }
+@keyframes swipeDemo {
+  0%, 100% { transform: translateX(0) rotate(0); }
+  25% { transform: translateX(-42px) rotate(-9deg); }
+  75% { transform: translateX(42px) rotate(9deg); }
+}
+
 /* FAB reveal pulse (after onboarding). */
 .foundation-fab-pulse { animation: fabPulse 1.3s ease-out 2; }
 @keyframes fabPulse {
@@ -750,7 +818,18 @@ input:focus, select:focus { outline: 2px solid var(--brand); border-color: trans
 }
 .core-word-open { width: 100%; }
 
-/* Reusable speaker button (shared/ui/SpeakerButton) */
+/* The ONE circular icon button (shared/ui/IconButton) — perfectly centered by grid, never squashed. */
+.icon-btn {
+  border-radius: 999px; display: grid; place-items: center; flex-shrink: 0;
+  padding: 0; line-height: 1; cursor: pointer;
+  color: inherit; -webkit-tap-highlight-color: transparent;
+}
+.icon-btn:active { transform: scale(0.92); }
+.icon-btn-surface { background: var(--card); border: 1px solid var(--line); box-shadow: var(--shadow-card); }
+.icon-btn-ghost { background: transparent; border: none; box-shadow: none; }
+.icon-btn-brand { background: var(--brand); border: none; color: #fff; box-shadow: var(--shadow-pop); }
+
+/* Reusable speaker button (shared/ui/SpeakerButton) — shares the centered icon-button base. */
 .speaker-btn {
   border-radius: 999px; display: grid; place-items: center; flex-shrink: 0;
   background: var(--card); border: 1px solid var(--line); box-shadow: var(--shadow-card);

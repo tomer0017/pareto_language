@@ -71,7 +71,8 @@ export function Core() {
   const app = useAppStore();
   const category = app.coreCategory as CoreTab | null;
   const groups = useMemo(() => buildGroups(app.learningLang), [app.learningLang]);
-  const [reviewOpen, setReviewOpen] = useState(false);
+  // Core Sentences entry: two square cards (Flashcards · View All). 'entry' is the default landing.
+  const [phrasesView, setPhrasesView] = useState<'entry' | 'flashcards' | 'list'>('entry');
   const total = useMemo(() => groups.reduce((n, g) => n + g.items.length, 0), [groups]);
 
   // One canonical display model per phrase (target + app-gloss + audio + directions + review id).
@@ -128,14 +129,23 @@ export function Core() {
         {category === 'words' ? (
           <CoreWords />
         ) : category === 'phrases' ? (
-          reviewOpen ? (
-            <SentenceFlashcards onBack={() => setReviewOpen(false)} />
+          phrasesView === 'flashcards' ? (
+            <SentenceFlashcards onBack={() => setPhrasesView('entry')} />
+          ) : phrasesView === 'entry' ? (
+            // Two square cards — pick how to review sentences.
+            <div className="home-actions stagger" style={{ marginTop: 8 }}>
+              <button className="action-card card-press" onClick={() => { tap(); setPhrasesView('flashcards'); }}>
+                <span className="action-icon">🎴</span>
+                <span className="action-title">{t('coreSentenceFlashcards')}</span>
+              </button>
+              <button className="action-card card-press" onClick={() => { tap(); setPhrasesView('list'); }}>
+                <span className="action-icon">📋</span>
+                <span className="action-title">{t('coreViewAllSentences')}</span>
+              </button>
+            </div>
           ) : (
           <>
-            <button className="btn-primary" style={{ width: '100%', marginTop: 8 }} onClick={() => { tap(); setReviewOpen(true); }}>
-              {t('coreOpenFlashcards')}
-            </button>
-            <p className="dim small center" style={{ margin: '6px 4px 0' }}>{t('coreReviewSub')}</p>
+            <button className="btn-ghost" style={{ marginTop: 8 }} onClick={() => { tap(); setPhrasesView('entry'); }}>{t('back')}</button>
             {groups.map((g) => (
               <div key={g.title} style={{ marginTop: 14 }}>
                 <h3 style={{ margin: '0 0 8px' }}>{g.title}</h3>

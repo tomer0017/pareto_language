@@ -5,19 +5,19 @@ import { speak, cancelSpeech } from '../../shared/audio/tts.js';
 import { tap } from '../../shared/ui/haptics.js';
 import { useAppStore } from '../../shared/stores/appStore.js';
 import { sessionSeed } from '../../shared/util/shuffle.js';
+import { SwipeOnboarding } from '../../shared/ui/SwipeOnboarding.js';
+import { GestureCard, type GestureCardHandle } from '../../shared/ui/GestureCard.js';
 import { TappableText } from '../foundation/TappableText.js';
-import { buildSentenceDeck, shuffledDeck, nextIndex, swipeOutcome, type FlashDirection } from './flashcards.js';
+import { buildSentenceDeck, shuffledDeck, nextIndex, type FlashDirection } from './flashcards.js';
 
 /**
- * Sentence Flashcards (Part 2) — flip-card review over the canonical mission sentences. Behaves like
- * the word cards: TAP to flip, SWIPE left/right (or ←/→ buttons) to move, shuffle, direction toggle.
- * Audio uses the ONE centralized `speak(text, learningLang)` (same voice-selection + speech-speed as
- * everywhere), auto-plays the sentence on every card change (listening-first), and cancels the
- * previous utterance before the next. Navigation is pure (`nextIndex` / `swipeOutcome`) so it is
- * unit-tested, not gesture-only. No content lives here; it all comes from the deck.
+ * Sentence Flashcards (Part 2) — flip-card review over the canonical mission sentences. Uses the SAME
+ * gesture/animation shell as the word flashcards (shared `GestureCard`): TAP to flip, SWIPE left/right
+ * (or ←/→ buttons) to move, shuffle, direction toggle. Only the SEMANTICS differ (flip-review, no
+ * self-grading — the intentional design for sentence review). Audio uses the ONE centralized
+ * `speak(text, learningLang)`, auto-plays on every card change (listening-first), and cancels the
+ * previous utterance first. Navigation is pure (`nextIndex`). No content lives here; it comes from the deck.
  */
-const SWIPE_COMMIT_PX = 80; // matches swipeOutcome() threshold
-
 export function SentenceFlashcards({ onBack }: { onBack: () => void }) {
   const learningLang = useAppStore((s) => s.learningLang);
   const uiLang = useAppStore((s) => s.uiLang);
@@ -28,12 +28,7 @@ export function SentenceFlashcards({ onBack }: { onBack: () => void }) {
   const [flipped, setFlipped] = useState(false);
   const [direction, setDirection] = useState<FlashDirection>('target-first');
   const [playing, setPlaying] = useState(false);
-  const [dx, setDx] = useState(0);
-
-  // Pointer/drag tracking (a drag past the threshold = swipe; a tap = flip).
-  const startX = useRef<number | null>(null);
-  const dragging = useRef(false);
-  const cardRef = useRef<HTMLDivElement>(null);
+  const deckRef = useRef<GestureCardHandle>(null);
 
   const card = deck[i];
   const model = useMemo(
@@ -89,6 +84,7 @@ export function SentenceFlashcards({ onBack }: { onBack: () => void }) {
 
   return (
     <div style={{ marginTop: 8 }}>
+      <SwipeOnboarding variant="sentences" />
       <div className="topbar" style={{ marginBottom: 6 }}>
         <button className="btn-ghost" onClick={() => { cancelSpeech(); onBack(); }}>{t('back')}</button>
         <span className="chip">🎴 {i + 1} / {deck.length}</span>
@@ -98,32 +94,15 @@ export function SentenceFlashcards({ onBack }: { onBack: () => void }) {
         <div className="progress-fill brand" style={{ width: `${((i + 1) / deck.length) * 100}%` }} />
       </div>
 
-      <div
-        ref={cardRef}
+      {/* Same shared shell as the word cards — SWIPE left = next / right = prev, TAP = flip. */}
+      <GestureCard
+        ref={deckRef}
+        dealKey={i}
         className="drill-card card-press"
-        style={{ width: '100%', minHeight: 200, cursor: 'grab', gap: 12, touchAction: 'pan-y', transform: `translateX(${dx}px)`, transition: dragging.current ? 'none' : 'transform 0.18s' }}
-        role="button"
-        tabIndex={0}
-        onKeyDown={(e) => { if (e.key === 'ArrowLeft') go(-1); else if (e.key === 'ArrowRight') go(1); else if (e.key === 'Enter' || e.key === ' ') setFlipped((f) => !f); }}
-        onPointerDown={(e) => { startX.current = e.clientX; dragging.current = false; }}
-        onPointerMove={(e) => {
-          if (startX.current === null) return;
-          const delta = e.clientX - startX.current;
-          if (!dragging.current && Math.abs(delta) > 8) dragging.current = true;
-          if (dragging.current) setDx(delta);
-        }}
-        onPointerUp={(e) => {
-          if (startX.current === null) return;
-          const delta = e.clientX - startX.current;
-          startX.current = null;
-          setDx(0);
-          if (!dragging.current) { setFlipped((f) => !f); return; } // a tap → flip
-          dragging.current = false;
-          const outcome = swipeOutcome(delta, SWIPE_COMMIT_PX);
-          if (outcome === 'next') go(1);
-          else if (outcome === 'prev') go(-1);
-        }}
-        onPointerCancel={() => { startX.current = null; dragging.current = false; setDx(0); }}
+        style={{ width: '100%', minHeight: 200, gap: 12 }}
+        ariaLabel={front.text}
+        onTap={() => setFlipped((f) => !f)}
+        onCommit={(dir) => go(dir === 'left' ? 1 : -1)}
       >
         <p dir={front.dir} className="drill-phrase" style={{ fontSize: '1.6rem' }}>
           {showTargetOnFront && front.text ? <TappableText text={front.text} lang={learningLang} /> : front.text}
@@ -135,15 +114,15 @@ export function SentenceFlashcards({ onBack }: { onBack: () => void }) {
         ) : (
           <p className="faint small">{t('flashTapToFlip')}</p>
         )}
-      </div>
+      </GestureCard>
 
       <div className="action-zone" style={{ flexDirection: 'row', gap: 8, flexWrap: 'wrap', justifyContent: 'center' }}>
-        <button className={`btn-ghost ${playing ? 'core-playing' : ''}`} onClick={replay}>🔊 {t('replay')}</button>
+        <button className={`btn-ghost ${playing ? 'core-playing' : ''}`} onClick={replay}>🔊 {t('replayAudio')}</button>
         <button className="btn-ghost" onClick={reshuffle}>🔀 {t('flashShuffle')}</button>
       </div>
       <div className="action-zone" style={{ flexDirection: 'row', gap: 8, justifyContent: 'space-between' }}>
-        <button className="btn-ghost" onClick={() => go(-1)}>← {t('flashPrev')}</button>
-        <button className="btn-primary" style={{ flex: 1 }} onClick={() => go(1)}>{t('flashNext')} →</button>
+        <button className="btn-ghost" onClick={() => deckRef.current?.commit('right')}>← {t('flashPrev')}</button>
+        <button className="btn-primary" style={{ flex: 1 }} onClick={() => deckRef.current?.commit('left')}>{t('flashNext')} →</button>
       </div>
     </div>
   );

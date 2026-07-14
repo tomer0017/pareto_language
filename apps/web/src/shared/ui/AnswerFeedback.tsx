@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { t } from '../i18n/strings.js';
 import { feedback } from './feedbackCue.js';
 import { Feedback } from './Feedback.js';
+import { TappableText } from '../../features/foundation/TappableText.js';
 
 /**
  * Reusable answer-feedback with FULL context (Part C) — the one learning-hierarchy surface shared
@@ -39,9 +40,11 @@ export interface AnswerContext {
 function Line({ party, big }: { party: AnswerParty; big?: boolean }) {
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: 8, justifyContent: 'center', flexWrap: 'wrap' }}>
-      <span className="drill-phrase" style={{ fontSize: big ? '1.35rem' : '1.1rem' }}>“{party.text}”</span>
+      {/* The line is target-language content, so every Core word in it is tappable (opens the shared
+          Foundation sheet). Non-Core words and emoji (Picture Quiz) stay plain automatically. */}
+      <span className="drill-phrase" style={{ fontSize: big ? '1.35rem' : '1.1rem' }}>“<TappableText text={party.text} />”</span>
       {party.onReplay && (
-        <button className="btn-ghost" style={{ minHeight: 36, padding: '4px 10px' }} onClick={party.onReplay} aria-label={t('replay')}>🔊</button>
+        <button className="btn-ghost" style={{ minHeight: 36, padding: '4px 10px' }} onClick={party.onReplay} aria-label={t('replayAudio')}>🔊</button>
       )}
     </div>
   );
