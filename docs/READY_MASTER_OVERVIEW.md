@@ -101,9 +101,11 @@ emotional loop than "learn → get told you're done."
 Permanent bottom navigation (English pilot): **Home · Bootcamp · Core · Profile**. The nav is
 hidden only inside an active mission — a focused, full-screen flow with its own controls.
 
-- **Home** — the real entry point ("what can I do here?"): the language strip, a header, a Quick
-  Settings card owning Theme + Speech Speed (same appStore/TTS, no duplicate state), and four large
-  action cards (Common Situations → Bootcamp, Learn New Words → Core Words, Core Phrases → Core
+- **Home** — the real entry point ("what can I do here?"): the language strip, a compact **Quick
+  Translator** hero (type in the UI language → instant learning-language phrase + speaker + copy;
+  source/target locked, no swap; a pure offline dictionary over the Core Corpus + mission sentences),
+  a Quick Settings card owning Theme + Speech Speed (same appStore/TTS, no duplicate state), and four
+  large action cards (Common Situations → Bootcamp, Learn New Words → Core Words, Core Phrases → Core
   Phrases, Videos). Continue is a quieter secondary card. No dashboards.
 - **Videos** — an experience, not a list: a random mission video plays, then a "did you understand
   everything?" popup either loads another random video or opens the exact Mission Hub that owns it.
@@ -122,13 +124,15 @@ hidden only inside an active mission — a focused, full-screen flow with its ow
   Three capabilities extend it, all reusing that ONE word sheet: **Universal Tap** (every Core word
   across dialogue, flashcards, Core Words/Phrases and mission drills is tappable → the sheet),
   **Smart Detection** (a non-blocking "🛟 Missing Foundation Brick" nudge for the first unviewed
-  building block in a mission — Learn now / Dismiss, never gates), and **Progress** (motivational
+  building block in a mission — Learn now / Dismiss, never gates; once every brick is learned it stays
+  as an always-available **Review** action that reopens the guided session in review mode without
+  resetting progress), and **Progress** (motivational
   per-category + overall bars from the words you've viewed; persisted, never gates).
 - **Core (a.k.a. "Core 1500")** — the practical communication engine, presented as a tabbed
   **knowledge center**: **Core Phrases** is live (every sentence READY teaches, grouped by mission,
   tap to hear) with **🎴 Sentence Flashcards** review (flip/hear/shuffle over the canonical mission
-  sentences), and **Core Words** is live — the **Core Corpus (Core 511)** with Browse · Picture Quiz ·
-  Swipe Recall, backed by the real concept pipeline (see CORE-CORPUS.md): 511 language-independent
+  sentences) and a shared **🎧 Listen Mode** (Parrot Mode), and **Core Words** is live — the **Core
+  Corpus (Core 511)** with Browse · **🎧 Listen Mode** · Picture Quiz · Swipe Recall, backed by the real concept pipeline (see CORE-CORPUS.md): 511 language-independent
   concepts (grew from 500 when the high-reuse connectors/sizes `with/without/and/or/here/there/can/
   more/less/medium/large` were promoted to global Core), 218 game-eligible with unique emoji, one
   offline pack per language. Core Patterns · Common Questions · Emergency · Favorites remain honest
@@ -144,8 +148,9 @@ hidden only inside an active mission — a focused, full-screen flow with its ow
 - **Mission Hub** — three always-available modes for a mission (Practice / Transcript / Video).
 - **Video** — full-conversation player: manual play (no autoplay with sound), inline on iOS,
   replayable, fullscreen; degrades gracefully if the file is missing.
-- **Transcript** — bilingual reader: every line, both languages, per-line replay, play-all / pause /
-  restart / prev / next, current line highlighted.
+- **Transcript** — bilingual reader: every line, both languages, per-line replay, current line
+  highlighted + auto-scrolled; playback driven by the shared **Parrot Mode** engine
+  (`shared/playback`) so it also offers repeat, sequential/random and translation on/off.
 - **Practice** — the Bootcamp step-flow (talk → tools → expected-reply drills → quizzes → dialogue →
   sentence review → cold open → victory). Unlimited repeats; never "finished."
 - **Victory Screen** — the celebratory completion screen (Pareto): confetti + "{Mission}
@@ -186,6 +191,7 @@ Each layer has one responsibility.
 - **Videos (`apps/web/public/videos`)** — referenced by a mission's optional `introVideo.src` (a
   public path resolved against `BASE_URL`). Shipped for EN days 2–5, 7–9, 11 and FR days 2–4; only
   Mission 2 (EN & FR) injects intro/again video steps, the rest surface it in the hub / Videos.
+- **Parrot Mode (`shared/playback`)** — ONE content-agnostic listening engine + controls reused by Core Words, Core Sentences and the Dialogue Transcript. A surface supplies a list of items; the engine owns play/pause/resume, sequential/random, repeat ×1–3, translation on/off and Screen Wake Lock. Pure planning (`playbackPlan.ts`) is unit-tested; see ARCHITECTURE.md.
 - **TTS / audio (`shared/audio/tts.ts`)** — Web Speech with a Chrome keep-alive + visibility resume
   (the "works then stops" fix), a first-gesture unlock, and the **single global speech-rate**
   multiplier applied to every `speak()`. Asset-first playback, TTS fallback.

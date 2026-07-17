@@ -10,7 +10,12 @@ import { useFoundationStore } from './foundationStore.js';
  * Smart Foundation Detection. Given the learning-language text the learner is meeting right now
  * (`targets`), surface the FIRST Foundation building block they have never viewed — as a tiny,
  * non-blocking hint ("🛟 Missing Foundation Brick"). Learn now opens the shared word sheet; Dismiss
- * suppresses it forever. It NEVER blocks progression: when there is nothing new, it renders nothing.
+ * suppresses it forever. It NEVER blocks progression.
+ *
+ * Once every building block is learned/dismissed, the "learn" nudge is replaced by an always-available
+ * **Review** action (never disappears): reopening opens the guided session in review mode over the
+ * whole mission deck. Reviewing only ever re-reads word pages — it never resets Foundation progress.
+ * The component renders nothing only when this mission has no Foundation building blocks at all.
  */
 export function FoundationHint({ targets }: { targets: string[] }) {
   const learningLang = useAppStore((s) => s.learningLang);
@@ -29,7 +34,24 @@ export function FoundationHint({ targets }: { targets: string[] }) {
     return { deck: words, startIndex: Math.max(i, 0), candidate: i === -1 ? null : words[i] };
   }, [index, targets, viewed, dismissed]);
 
-  if (!candidate) return null;
+  // No Foundation words in this mission at all → nothing to learn or review.
+  if (deck.length === 0) return null;
+
+  // Every brick learned → keep a Review action available (review mode), never reset progress.
+  if (!candidate) {
+    return (
+      <div className="foundation-hint fade-in" role="note">
+        <div className="foundation-hint-body">
+          <span className="foundation-hint-title">🛟 {t('foundationHintReviewTitle')}</span>
+          <span className="foundation-hint-word" dir="auto">{t('foundationHintReviewSub')}</span>
+        </div>
+        <div className="foundation-hint-actions">
+          <button className="foundation-hint-learn" onClick={() => { tap(); openSession(deck, 0); }}>{t('foundationHintReviewCta')}</button>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="foundation-hint fade-in" role="note">
       <div className="foundation-hint-body">

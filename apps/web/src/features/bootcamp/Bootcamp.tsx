@@ -20,6 +20,7 @@ import { shuffle, mulberry32, sessionSeed } from '../../shared/util/shuffle.js';
 import { FoundationHint } from '../foundation/FoundationHint.js';
 import { FoundationOnboarding } from '../foundation/FoundationOnboarding.js';
 import { TappableText } from '../foundation/TappableText.js';
+import { useParrotPlayback, PlaybackControls, type PlaybackItem } from '../../shared/playback/index.js';
 
 /** Resolve a public asset path (e.g. "/videos/x.mp4") against the app's base so it works in
  *  dev, on the deployed sub-path, and inside the PWA. Absolute URLs pass through unchanged. */
@@ -813,8 +814,10 @@ function DialogueStep({ dialogue, onDone }: { dialogue: BootcampDialogue; onDone
                   {coaching && isTool && (
                     <span className="badge badge-ready" style={{ display: 'inline-flex', marginBottom: 6 }}>🛟 {t('survivalTool')}</span>
                   )}
+                  {/* Answer cards show ONLY the target language — the learner must understand the
+                      option, not match the native translation. The translation still appears on the
+                      question (NPC line above) and in the post-answer feedback. */}
                   <span style={{ display: 'block' }}>{c.en}</span>
-                  <span className="dim small" style={{ display: 'block' }}>{dialogueTr(c)}</span>
                 </button>
               );
             })}
@@ -1066,58 +1069,31 @@ function VictoryScreen() {
  *  the mission (preview) and after it (study sheet). Pure playback — no scoring. */
 function DialogueReader({ dialogue, onClose, onFinish }: { dialogue: BootcampDialogue; onClose: () => void; onFinish?: () => void }) {
   const lines = useMemo(() => dialogueTranscript(dialogue), [dialogue]);
-  const [current, setCurrent] = useState(0);
-  const [playing, setPlaying] = useState(false);
-  const runToken = useRef(0);
+  const learningLang = useAppStore((s) => s.learningLang);
+  const uiLang = useAppStore((s) => s.uiLang);
   const lineRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  // Cancel any speech + abort any play-all loop when the reader closes.
-  useEffect(() => () => { runToken.current += 1; cancelSpeech(); }, []);
+  // The SAME universal listen engine the Core surfaces use — the transcript adds no second player,
+  // it just provides its lines as items and renders them as a scrolling, highlighted study sheet.
+  const items = useMemo<PlaybackItem[]>(() => lines.map((line, i) => ({
+    id: `${i}`, target: line.en, targetLang: learningLang, translation: dialogueTr(line), translationLang: uiLang,
+  })), [lines, learningLang, uiLang]);
+  const pb = useParrotPlayback(items);
+  const current = pb.currentIndex;
 
-  // Keep the active line in view as playback (or stepping) moves through the sheet.
+  // Auto-scroll: keep the active line centred as playback (or stepping) moves through the sheet.
   useEffect(() => {
     lineRefs.current[current]?.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }, [current]);
 
-  const stop = (): void => {
-    runToken.current += 1; // invalidate any in-flight play-all loop
-    setPlaying(false);
-    cancelSpeech();
-  };
-
-  const playOne = (i: number): void => {
-    stop();
-    setCurrent(i);
-    void speakL(lines[i]!.en, 0.95);
-  };
-
-  const playAll = (from: number): void => {
-    const token = ++runToken.current;
-    setPlaying(true);
-    void (async () => {
-      for (let i = from; i < lines.length; i++) {
-        if (token !== runToken.current) return; // paused / closed / stepped away
-        setCurrent(i);
-        const r = await speakL(lines[i]!.en, 0.95);
-        // Stop on any interruption (a newer utterance or stop()) — a cancelled line never advances.
-        if (token !== runToken.current || r === 'interrupted') return;
-        await new Promise((r) => setTimeout(r, 350)); // a beat between speakers
-      }
-      if (token === runToken.current) setPlaying(false);
-    })();
-  };
-
-  const atStart = current <= 0;
-  const atEnd = current >= lines.length - 1;
-
   return (
     <div className="reader">
       <div className="topbar">
-        <button className="reader-back" onClick={() => { stop(); onClose(); }} aria-label={t('back')}>←</button>
+        <button className="reader-back" onClick={() => { pb.pause(); onClose(); }} aria-label={t('back')}>←</button>
         <span className="chip">📖 {t('fullConversationTitle')}</span>
         <span style={{ width: 52 }} />
       </div>
-      <p className="dim small" style={{ margin: '0 0 8px' }}>{t('studySheetSub')} · {t('lineProgress', { i: current + 1, n: lines.length })}</p>
+      <p className="dim small" style={{ margin: '0 0 8px' }}>{t('studySheetSub')} · {t('lineProgress', { i: pb.position, n: pb.total })}</p>
       <div className="reader-scroll">
         {lines.map((line, i) => (
           <div
@@ -1127,7 +1103,7 @@ function DialogueReader({ dialogue, onClose, onFinish }: { dialogue: BootcampDia
           >
             <div className="dline-top">
               <span className="dline-speaker">{line.who === 'you' ? `🫵 ${t('speakerYou')}` : `🧑 ${t('speakerThem')}`}</span>
-              <button className="dline-play" onClick={() => playOne(i)} aria-label={t('replayAudio')}>🔊</button>
+              <button className="dline-play" onClick={() => pb.jumpTo(i)} aria-label={t('replayAudio')}>🔊</button>
             </div>
             <p className="dline-en">{line.en}</p>
             <p className="dline-he">{dialogueTr(line)}</p>
@@ -1135,17 +1111,13 @@ function DialogueReader({ dialogue, onClose, onFinish }: { dialogue: BootcampDia
         ))}
       </div>
       <div className="reader-transport">
+        <PlaybackControls pb={pb} />
         <div className="btn-row">
-          <button className="btn-secondary" onClick={() => playOne(Math.max(0, current - 1))} disabled={atStart}>‹ {t('prevLine')}</button>
-          <button className="btn-secondary" onClick={() => { setCurrent(0); playAll(0); }}>{t('restartConvo')}</button>
-          <button className="btn-secondary" onClick={() => playOne(Math.min(lines.length - 1, current + 1))} disabled={atEnd}>{t('nextLine')} ›</button>
+          <button className="btn-secondary" onClick={() => pb.jumpTo(0, { play: true })}>{t('restartConvo')}</button>
+          {onFinish && (
+            <button className="btn-secondary" onClick={() => { pb.pause(); onFinish(); }}>✓ {t('finishToHub')}</button>
+          )}
         </div>
-        <button className="btn-primary" onClick={() => (playing ? stop() : playAll(current))}>
-          {playing ? t('pausePlay') : t('playAll')}
-        </button>
-        {onFinish && (
-          <button className="btn-secondary" onClick={() => { stop(); onFinish(); }}>✓ {t('finishToHub')}</button>
-        )}
       </div>
     </div>
   );

@@ -9,6 +9,7 @@ import { loadCoreWords, toGameWords, coreCategories, type CoreWord } from '../..
 import { TappableWord } from '../foundation/TappableText.js';
 import { PictureQuiz } from '../games/pictureQuiz/PictureQuiz.js';
 import { SwipeRecall } from '../games/swipeRecall/SwipeRecall.js';
+import { ListenPanel, type PlaybackItem } from '../../shared/playback/index.js';
 
 /**
  * Core Words — the word-learning surface, backed by the REAL Core Corpus pack for the active
@@ -16,7 +17,7 @@ import { SwipeRecall } from '../games/swipeRecall/SwipeRecall.js';
  * obvious next action: Browse · Picture Quiz · Swipe Recall. Games receive only icon-eligible
  * words (unique emoji); non-visual words appear in Browse with a neutral bullet.
  */
-type Mode = 'menu' | 'browse' | 'quiz' | 'recall';
+type Mode = 'menu' | 'browse' | 'quiz' | 'recall' | 'listen';
 
 const CAT_LABEL: Record<string, LocalizedText> = {
   glue: { en: 'Conversation glue', he: 'ביטויי שיחה' },
@@ -57,9 +58,14 @@ export function CoreWords() {
   // A game session is a focused, nav-less flow: hide the bottom nav so the game's fixed action zone
   // (Continue / Next) is reachable rather than covered by the higher-z nav (the Picture Quiz
   // "stuck on feedback" bug). Cleared when returning to the menu and on leaving Core entirely.
-  useEffect(() => { setCoreGameActive(mode === 'quiz' || mode === 'recall'); }, [mode, setCoreGameActive]);
+  useEffect(() => { setCoreGameActive(mode === 'quiz' || mode === 'recall' || mode === 'listen'); }, [mode, setCoreGameActive]);
   useEffect(() => () => setCoreGameActive(false), [setCoreGameActive]);
   const gameWords = useMemo(() => (words ? toGameWords(words) : []), [words]);
+  // Parrot Mode items: reuse the ONE canonical display model (target + app-gloss + audio locale).
+  const listenItems = useMemo<PlaybackItem[]>(() => (words ?? []).map((w) => {
+    const dm = resolveLearningItem({ id: w.id, target: w.word, meaning: w.meaning, emoji: w.emoji }, uiLang, learningLang);
+    return { id: dm.contentId, target: dm.audioText, targetLang: dm.audioLang, translation: dm.secondaryText, translationLang: uiLang, emoji: dm.emoji };
+  }), [words, uiLang, learningLang]);
 
   if (words === null) {
     return <div className="drill-card pop-in center" style={{ marginTop: 24 }}><p className="dim">{t('coreWordsLoading')}</p></div>;
@@ -75,6 +81,7 @@ export function CoreWords() {
 
   if (mode === 'quiz') return <GameFrame onBack={() => setMode('menu')}><PictureQuiz words={gameWords} lang={learningLang} onExit={() => setMode('menu')} /></GameFrame>;
   if (mode === 'recall') return <GameFrame onBack={() => setMode('menu')}><SwipeRecall words={gameWords} lang={learningLang} onExit={() => setMode('menu')} /></GameFrame>;
+  if (mode === 'listen') return <GameFrame onBack={() => setMode('menu')}><ListenPanel items={listenItems} /></GameFrame>;
 
   if (mode === 'browse') {
     const cats = coreCategories(words);
@@ -118,6 +125,7 @@ export function CoreWords() {
       <p className="dim" style={{ margin: '2px 0 12px' }}>{t('coreWordsPickMode', { n: words.length })}</p>
       <div className="home-actions stagger">
         <ModeCard icon="📖" title={t('browseWords')} sub={t('browseWordsSub', { n: words.length })} onClick={() => setMode('browse')} />
+        <ModeCard icon="🎧" title={t('listenMode')} sub={t('listenModeSub')} onClick={() => setMode('listen')} />
         <ModeCard icon="🖼️" title={t('gamePictureQuiz')} sub={t('gamePictureQuizSub')} onClick={() => setMode('quiz')} />
         <ModeCard icon="🔁" title={t('gameSwipeRecall')} sub={t('gameSwipeRecallSub')} onClick={() => setMode('recall')} />
       </div>

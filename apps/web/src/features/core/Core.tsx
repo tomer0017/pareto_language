@@ -8,6 +8,7 @@ import { SpeakerButton } from '../../shared/ui/SpeakerButton.js';
 import { TappableText } from '../foundation/TappableText.js';
 import { CoreWords } from './CoreWords.js';
 import { SentenceFlashcards } from './SentenceFlashcards.js';
+import { ListenPanel, type PlaybackItem } from '../../shared/playback/index.js';
 import { BOOTCAMP_PLAN } from '../bootcamp/plan.js';
 import { missionsFor } from '../bootcamp/bootcampStore.js';
 import type { BootcampItem } from '../bootcamp/types.js';
@@ -71,12 +72,18 @@ export function Core() {
   const app = useAppStore();
   const category = app.coreCategory as CoreTab | null;
   const groups = useMemo(() => buildGroups(app.learningLang), [app.learningLang]);
-  // Core Sentences entry: two square cards (Flashcards · View All). 'entry' is the default landing.
-  const [phrasesView, setPhrasesView] = useState<'entry' | 'flashcards' | 'list'>('entry');
+  // Core Sentences entry: three cards (Listen · Flashcards · View All). 'entry' is the default landing.
+  const [phrasesView, setPhrasesView] = useState<'entry' | 'listen' | 'flashcards' | 'list'>('entry');
   const total = useMemo(() => groups.reduce((n, g) => n + g.items.length, 0), [groups]);
 
   // One canonical display model per phrase (target + app-gloss + audio + directions + review id).
   const model = (item: BootcampItem) => resolveLearningItem({ id: item.id, target: item.text, meaning: item.meaning }, app.uiLang, app.learningLang);
+
+  // Parrot Mode items: every taught sentence, in mission order, reusing the same display model.
+  const listenItems = useMemo<PlaybackItem[]>(() => groups.flatMap((g) => g.items.map((item) => {
+    const dm = model(item);
+    return { id: dm.contentId, target: dm.audioText, targetLang: dm.audioLang, translation: dm.secondaryText, translationLang: app.uiLang } satisfies PlaybackItem;
+  })), [groups, app.uiLang, app.learningLang]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Layer 1 — the category cards.
   if (!category) {
@@ -131,9 +138,18 @@ export function Core() {
         ) : category === 'phrases' ? (
           phrasesView === 'flashcards' ? (
             <SentenceFlashcards onBack={() => setPhrasesView('entry')} />
+          ) : phrasesView === 'listen' ? (
+            <>
+              <button className="btn-ghost" style={{ marginTop: 8 }} onClick={() => { tap(); setPhrasesView('entry'); }}>{t('back')}</button>
+              <ListenPanel items={listenItems} />
+            </>
           ) : phrasesView === 'entry' ? (
-            // Two square cards — pick how to review sentences.
+            // Square cards — pick how to review sentences.
             <div className="home-actions stagger" style={{ marginTop: 8 }}>
+              <button className="action-card card-press" onClick={() => { tap(); setPhrasesView('listen'); }}>
+                <span className="action-icon">🎧</span>
+                <span className="action-title">{t('listenMode')}</span>
+              </button>
               <button className="action-card card-press" onClick={() => { tap(); setPhrasesView('flashcards'); }}>
                 <span className="action-icon">🎴</span>
                 <span className="action-title">{t('coreSentenceFlashcards')}</span>

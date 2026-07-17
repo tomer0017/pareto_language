@@ -41,9 +41,13 @@ handling common travel situations abroad** — ordering, arriving, asking, recov
 Permanent bottom navigation (English pilot): **Home · Bootcamp · Core · Profile**. The nav is
 hidden only inside an active mission (a focused, full-screen flow with its own controls).
 
-- **Home** — the real entry point (answers "what can I do here?"): the language strip, a welcoming
-  header, a **Quick Settings** card owning **Theme** + **Speech Speed** (reusing the same
-  appStore/TTS — no duplicate state), and four large **action cards** as the primary navigation
+- **Home** — the real entry point (answers "what can I do here?"): the language strip, a compact
+  **Quick Translator** hero (`features/home/QuickTranslator.tsx` + pure `quickTranslate.ts`) that
+  replaced the old "Your training" header — source locked to the UI language, target locked to the
+  learning language (no swap), text in → instant learning-language phrase + speaker + copy, a pure
+  offline dictionary over Core Corpus + mission sentences (no network/API), a **Quick Settings** card
+  owning **Theme** + **Speech Speed** (reusing the same appStore/TTS — no duplicate state), and four
+  large **action cards** as the primary navigation
   (🗣️ Common Situations → Bootcamp · 📖 Learn New Words → Core Words · 💬 Core Phrases → Core
   Phrases · 🎬 Videos). **Continue** remains as a quieter secondary card lower down. No dashboards.
 - **Videos** — an experience, not a list: plays a random available mission video, then asks "did
@@ -69,15 +73,18 @@ hidden only inside an active mission (a focused, full-screen flow with its own c
   It also powers **Universal Tap** (every Core word in dialogue/flashcards/Core/mission drills is
   tappable → the SAME sheet, via `TappableText`/`corpusIndex.ts` + `foundationStore.openWord`),
   **Smart Detection** (`FoundationHint` — a non-blocking nudge for the first unviewed brick in a
-  mission), and **Progress** (`foundationProgress.ts`, per-category + overall, persisted `viewed`/
+  mission; once all bricks are learned it stays as an always-available **Review** action that reopens
+  the guided session in review mode, never resetting progress), and **Progress**
+  (`foundationProgress.ts`, per-category + overall, persisted `viewed`/
   `dismissed`). One shared word sheet + one `SpeakerButton`; nothing duplicated.
 - **Core** — the practical communication engine, a two-layer **knowledge center**: a grid of
   **category cards** (📖 Core Phrases · 📝 Core Words · ❓ Common Questions · 🚨 Emergency · 🧩 Core
   Patterns · ⭐ Favorites) → the existing tabbed page opened on the chosen category (top tabs +
   content), with a back button to the cards. **Core Phrases** is live (every sentence READY teaches,
   grouped by mission, tap to hear) and **Core Words** is now live too — the **Core 100** emoji pilot
-  (`CoreWords.tsx`) with three modes on one screen: Browse · Picture Quiz · Swipe Recall (see
-  **[CORE-100.md](./CORE-100.md)**). **Core Phrases** also hosts **🎴 Sentence Flashcards**
+  (`CoreWords.tsx`) with four modes on one screen: Browse · **🎧 Listen Mode** (Parrot Mode) · Picture
+  Quiz · Swipe Recall (see **[CORE-100.md](./CORE-100.md)**). **Core Phrases** also hosts **🎧 Listen
+  Mode**, **🎴 Sentence Flashcards**
   (`SentenceFlashcards.tsx` + pure `flashcards.ts`): flip / hear / next-prev / shuffle / direction
   toggle over the SAME canonical mission sentences (`buildSentenceDeck` reuses item ids — no
   duplication), per-language, shuffled per session. The rest stay honest "coming soon". The chosen
@@ -106,8 +113,10 @@ hidden only inside an active mission (a focused, full-screen flow with its own c
   Every answer runs the **one global feedback system** (`shared/ui/feedbackCue` + `Feedback` +
   `.fx-*` motion + `shared/audio/sfx`): correct = chime/green glow, wrong = tone/shake + a
   redesigned **wrong-answer view** (your answer · right answer · one-line Why? · Try Again / Continue).
-- **Transcript** — the full conversation as a premium bilingual reader with per-line replay,
-  play-all / pause / restart / prev / next, and the current line highlighted.
+- **Transcript** — the full conversation as a premium bilingual reader with per-line replay and the
+  current line highlighted + auto-scrolled. Its playback is driven by the shared **Parrot Mode**
+  engine (`shared/playback`), so it gains repeat ×1–3, sequential/random and translation on/off
+  alongside play / pause / resume / restart — the same controls Core Words & Core Sentences use.
 - **Video** — the full-conversation video (manual play, inline, replayable). EN Missions 2–5, 7–9, 11
   and FR Missions 2–4 ship one (e.g. `/videos/En_day7.mp4`); others show Coming Soon. Missing/broken
   video degrades gracefully.

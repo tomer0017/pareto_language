@@ -6,6 +6,7 @@ import { LangStrip } from '../../shared/ui/LangStrip.js';
 import { BOOTCAMP_PLAN } from '../bootcamp/plan.js';
 import { missionsFor, useBootcampStore } from '../bootcamp/bootcampStore.js';
 import { getSpeechRate, setSpeechRate, SPEECH_RATE_RANGE } from '../../shared/audio/tts.js';
+import { QuickTranslator } from './QuickTranslator.js';
 
 /**
  * Home — the real entry point of READY (not a Bootcamp mirror). It answers "what can I do here?"
@@ -53,10 +54,9 @@ export function Home() {
     <div className="screen">
       <div className="screen-scroll">
         <LangStrip />
-        <div style={{ padding: '6px 0 4px' }}>
-          <h1>{t('homeGreeting')}</h1>
-          <p className="dim" style={{ marginTop: 4 }}>{t('homeSub')}</p>
-        </div>
+        {/* Compact Quick Translator replaces the old "Your training" hero — one glance, instant
+            help, no added vertical weight (source = UI language, target = learning language, locked). */}
+        <QuickTranslator />
 
         {/* ── Quick settings (the two most-changed controls, reused from their stores) ── */}
         <p className="drill-label" style={{ margin: '12px 2px 8px' }}>{t('quickSettings')}</p>

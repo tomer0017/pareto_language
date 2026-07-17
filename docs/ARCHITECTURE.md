@@ -90,6 +90,27 @@ tap-to-hear button). There is exactly ONE word sheet and ONE tap entry point app
 flashcards, Core Words/Phrases and mission drills all reuse them. Words come from
 `loadCoreWords(learningLang)`, so English + French (and any future pack) work through one code path.
 
+## Parrot Mode — Universal Listen (apps/web/src/shared/playback)
+
+ONE content-agnostic listening system every learning surface reuses. A screen supplies a list of
+`PlaybackItem` (`target` + `targetLang`, optional `translation` + `translationLang`); the engine owns
+all playback. Nothing here imports Bootcamp/Core — a new surface reuses it with zero changes.
+
+| Module | Responsibility |
+| --- | --- |
+| `types.ts` | The public contract: `PlaybackItem`, `PlaybackSettings` (repeat ×1–3 / order / translation), `PlaybackStatus`. |
+| `playbackPlan.ts` (pure, tested) | The two testable decisions: `buildUtterancePlan(item, settings)` → flat speak/pause steps (target → pause → translation, × repeat) and `buildOrder(count, order, seed)` → play order (sequential or a seeded shuffle, reusing `shuffle.ts`). Pause durations are exported constants — the tuning seam. |
+| `useParrotPlayback.ts` | The engine hook: status, current item, the async play loop, wake lock, resume-from-exact-item, persisted settings. Run-token cancellation (same contract as the Transcript reader — a superseded/cancelled `speak()` never advances). Settings read via refs so changes apply at the next item boundary. |
+| `wakeLock.ts` | Guarded Screen Wake Lock wrapper (module-level sentinel; re-acquired on visibility while playing; silent no-op where unsupported). |
+| `PlaybackControls.tsx` | The single controls component — Play/Pause, Repeat, Sequential/Random, Translation, prev/next — a pure view over the engine handle. |
+| `ListenPanel.tsx` | Reusable "now playing" single-item screen (Core Words + Core Sentences share it). The Dialogue Transcript uses the engine directly for its full-list + highlight presentation. |
+
+Consumers: **Core Words** (`CoreWords.tsx` `listen` mode) and **Core Sentences** (`Core.tsx` phrases
+`listen` view) mount `ListenPanel`; the **Dialogue Transcript** (`DialogueReader` in `Bootcamp.tsx`)
+drives its existing scroll/highlight sheet from the same hook + `PlaybackControls`. Future knobs
+(speed, loop-forever, pause length, voice, bookmark) land in `playbackPlan.ts` / `PlaybackControls`
+once and appear everywhere — no playback logic is duplicated.
+
 ## Audio / TTS (apps/web/src/shared/audio)
 
 Runtime, free, cross-device speech via the Web Speech API — no cloud, no keys, no server, offline-capable.

@@ -478,6 +478,33 @@ input:focus, select:focus { outline: 2px solid var(--brand); border-color: trans
 .core-tab.active { background: var(--accent); color: #fff; border-color: transparent; }
 
 /* ── Home / Core action cards ─────────────────────────────────────────── */
+/* ── Quick Translator (compact Home hero) ────────────────────────────── */
+.quick-translator { padding: 14px; margin-top: 8px; margin-bottom: 14px; }
+.qt-langs {
+  display: flex; align-items: center; gap: 8px; margin-bottom: 10px;
+  font-size: 0.74rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
+  color: var(--ink-dim);
+}
+.qt-lang-target { color: var(--brand); }
+.qt-arrow { color: var(--ink-dim); font-weight: 800; }
+.qt-input {
+  width: 100%; padding: 11px 12px; border-radius: var(--r-md);
+  border: 1px solid var(--line); background: var(--card-sunken, var(--card));
+  color: var(--ink); font-size: 1.02rem; outline: none;
+}
+.qt-input:focus { border-color: var(--brand); }
+.qt-result {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--line);
+}
+.qt-target { font-weight: 800; font-size: 1.12rem; min-width: 0; overflow-wrap: anywhere; }
+.qt-result-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+.qt-copy {
+  background: transparent; border: none; color: var(--ink-dim);
+  font-size: 0.82rem; font-weight: 700; padding: 8px 6px; min-height: 40px; cursor: pointer;
+}
+.qt-empty { margin-top: 10px; }
+
 .home-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
 .action-card {
   display: flex; flex-direction: column; align-items: flex-start; gap: 4px;
@@ -870,5 +897,44 @@ input:focus, select:focus { outline: 2px solid var(--brand); border-color: trans
 .foundation-hint-learn { background: var(--brand); color: #fff; box-shadow: var(--shadow-card); }
 .foundation-hint-dismiss { background: var(--card); color: var(--ink-dim); border: 1px solid var(--line); }
 
+/* ── Parrot Mode (Universal Listen) ───────────────────────────────────── */
+/* Shared by Core Words, Core Sentences (ListenPanel) and the Dialogue Transcript controls. */
+.listen-panel { display: flex; flex-direction: column; gap: 16px; margin-top: 10px; }
+.listen-now {
+  background: var(--card); border-radius: 26px; padding: 30px 22px;
+  box-shadow: var(--shadow-pop); text-align: center; min-height: 220px;
+  display: flex; flex-direction: column; justify-content: center; gap: 12px;
+  transition: box-shadow 0.25s ease;
+}
+.listen-now.is-playing { box-shadow: var(--shadow-glow); }
+.listen-progress { margin: 0; }
+.listen-emoji { font-size: 3rem; line-height: 1; margin: 0; }
+.listen-target { font-size: 1.9rem; font-weight: 800; line-height: 1.28; letter-spacing: -0.01em; margin: 0; }
+.listen-translation { font-size: 1.12rem; color: var(--ink-dim); margin: 0; }
+
+.parrot-controls { display: flex; flex-direction: column; gap: 12px; }
+.parrot-transport { display: flex; align-items: center; justify-content: center; gap: 16px; }
+.parrot-play {
+  width: 74px; height: 74px; border-radius: 999px; min-height: 0; padding: 0 0 0 4px;
+  display: inline-flex; align-items: center; justify-content: center; font-size: 1.6rem; color: #fff;
+  background: linear-gradient(135deg, var(--brand), var(--brand-deep)); box-shadow: var(--shadow-glow);
+}
+.parrot-step {
+  width: 52px; height: 52px; border-radius: 999px; min-height: 0; padding: 0; font-size: 1.5rem;
+  background: var(--card); border: 1.5px solid var(--line); box-shadow: var(--shadow-card); color: var(--ink);
+}
+.parrot-group { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.parrot-label { font-size: 0.82rem; font-weight: 700; color: var(--ink-dim); }
+
+/* Segmented control — reusable pill group for the repeat/order/translation toggles. */
+.seg { display: inline-flex; background: var(--card-sunken); border-radius: 999px; padding: 3px; gap: 2px; }
+.seg-btn {
+  min-height: 0; padding: 7px 14px; border-radius: 999px; font-size: 0.85rem; font-weight: 700;
+  background: transparent; color: var(--ink-dim); box-shadow: none;
+}
+.seg-btn.on { background: var(--card); color: var(--brand-deep); box-shadow: var(--shadow-card); }
+
 /* RTL: flex/grid mirror automatically; nudge the few directional bits. */
 [dir='rtl'] .swipe-hint { flex-direction: row-reverse; }
+/* Transport chevrons are glyph-mirrored by direction, not layout — keep the physical order. */
+[dir='rtl'] .parrot-transport { flex-direction: row-reverse; }

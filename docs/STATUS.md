@@ -22,6 +22,53 @@ loop (typecheck → lint → tests → build → smoke) green at every milestone
 
 ## What's done
 
+### Sprint — Universal Listen Mode ("Parrot Mode") (2026-07-17)
+One shared, content-agnostic listening architecture (no engine/schema/pipeline/pedagogy/Mongo
+changes; no Bootcamp mission content changed — `gen:conversations` produces zero diff). EN/FR parity
+preserved; offline preserved (uses the existing Web Speech TTS, no network). Full gate loop
+(typecheck → lint → 715 tests → build → smoke) green.
+- **New shared module `apps/web/src/shared/playback/`** — ONE playback engine + ONE controls
+  component, reused everywhere. A surface provides only a list of `PlaybackItem { target, targetLang,
+  translation?, translationLang? }`; the engine owns all behaviour.
+  - `playbackPlan.ts` (pure, unit-tested) — `buildUtterancePlan` (target → pause → translation, ×
+    repeat) and `buildOrder` (sequential / seeded shuffle). The tuning seam (pause durations exported).
+  - `useParrotPlayback.ts` — the React engine: play / pause / resume-from-exact-item, sequential &
+    random order, repeat ×1–3, translation on/off, wake lock, persisted settings. Run-token
+    cancellation mirrors the Transcript play-all contract (a cancelled line never advances).
+  - `wakeLock.ts` — guarded Screen Wake Lock (re-acquired on visibility while playing; no-op where
+    unsupported). `PlaybackControls.tsx` — the single controls UI. `ListenPanel.tsx` — the reusable
+    single-item "now playing" screen shared by Core Words + Core Sentences.
+- **Integrated into three surfaces, zero duplicated playback logic:** Core Words gets a 🎧 **Listen
+  Mode** mode; Core Sentences (Core Phrases) gets a 🎧 **Listen Mode** entry — both mount the same
+  `ListenPanel`. The **Dialogue Transcript** (`DialogueReader`) was refactored to drive its existing
+  scrolling/highlight/auto-scroll study sheet from the same engine + `PlaybackControls` (its bespoke
+  play-all loop was deleted — no second player), gaining repeat / random / translation.
+
+### Sprint — UX Improvements (answers · Home translator · Foundation review) (2026-07-17)
+UX-only sprint (no engine/schema/pipeline/pedagogy/Mongo changes; no Bootcamp mission content
+changed — `gen:conversations` produces zero diff). EN/FR parity preserved; offline preserved.
+- **Answer choices no longer show the native translation.** In the "Your turn / choose the correct
+  sentence" dialogue step (`DialogueStep` in `Bootcamp.tsx`), each answer card previously rendered
+  the target line **and** its native gloss, so the learner could match Hebrew instead of
+  understanding. The gloss is removed from every answer option (all languages, coaching + normal
+  mode); the **question** (NPC line) keeps its translation and the post-answer feedback still shows
+  full context. Other exercise types are unchanged (comprehension quizzes/replies show only the
+  meaning by design; the Transcript reader stays bilingual).
+- **Home hero replaced by a compact Quick Translator** (`features/home/QuickTranslator.tsx` + pure,
+  tested `quickTranslate.ts`). Source is **locked to the UI language**, target **locked to the
+  learning language** (no swap): the learner types and instantly gets the phrase they'll say abroad,
+  with a 🔊 speaker (reuses `SpeakerButton`) and a 📋 copy. It is a **pure offline dictionary** over
+  the vocabulary READY already knows (Core Corpus words + mission sentences) — no network, no API,
+  offline intact. Language-agnostic (resolves the gloss in the active UI language, no English
+  bridge). Honest empty state when a phrase isn't in the word bank. Compact — no added vertical
+  weight vs the old "Your training" hero.
+- **Foundation "Learn" is now always available.** The in-mission `FoundationHint` used to disappear
+  once every building block was viewed; it now keeps a **Review** action (opens the guided session in
+  review mode over the whole mission deck). Reviewing only re-reads word pages — it **never resets**
+  Foundation progress (`openSession` doesn't touch `viewed`/`dismissed`). Renders nothing only when a
+  mission has no Foundation words at all.
+- Gates green: typecheck · lint · **706 tests** (+6 `quickTranslate`) · build (17 precache) · smoke.
+
 ### Sprint — More mission videos wired (2026-07-13)
 - Added **5 full-conversation videos** to `apps/web/public/videos` and mapped each to its mission via
   the mission's optional `introVideo` (public path resolved against `BASE_URL`): **EN** `En_day7`→
