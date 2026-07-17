@@ -81,7 +81,7 @@ export function CoreWords() {
 
   if (mode === 'quiz') return <GameFrame onBack={() => setMode('menu')}><PictureQuiz words={gameWords} lang={learningLang} onExit={() => setMode('menu')} /></GameFrame>;
   if (mode === 'recall') return <GameFrame onBack={() => setMode('menu')}><SwipeRecall words={gameWords} lang={learningLang} onExit={() => setMode('menu')} /></GameFrame>;
-  if (mode === 'listen') return <GameFrame onBack={() => setMode('menu')}><ListenPanel items={listenItems} /></GameFrame>;
+  if (mode === 'listen') return <GameFrame onBack={() => setMode('menu')}><ListenPanel items={listenItems} bookmarkKey={`words:${learningLang}`} /></GameFrame>;
 
   if (mode === 'browse') {
     const cats = coreCategories(words);

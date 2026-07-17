@@ -141,7 +141,7 @@ export function Core() {
           ) : phrasesView === 'listen' ? (
             <>
               <button className="btn-ghost" style={{ marginTop: 8 }} onClick={() => { tap(); setPhrasesView('entry'); }}>{t('back')}</button>
-              <ListenPanel items={listenItems} />
+              <ListenPanel items={listenItems} bookmarkKey={`sentences:${app.learningLang}`} />
             </>
           ) : phrasesView === 'entry' ? (
             // Square cards — pick how to review sentences.

@@ -10,12 +10,13 @@ import type { PlaybackItem } from './types.js';
  * Reusable "now playing" listening screen for single-item surfaces (Core Words + Core Sentences share
  * THIS exact component). It renders the current target + translation as a large, glanceable card and
  * mounts the shared {@link PlaybackControls}; all behaviour comes from {@link useParrotPlayback}. A
- * screen only builds `items` and drops this in — no playback code is written twice. The Dialogue
- * Transcript uses the same engine directly (it needs its full-list + highlight presentation).
+ * screen only builds `items` (+ an optional `bookmarkKey` to remember the last item) and drops this
+ * in — no playback code is written twice. The Dialogue Transcript uses the same engine directly (it
+ * needs its full-list + highlight presentation).
  */
-export function ListenPanel({ items, emptyText }: { items: PlaybackItem[]; emptyText?: string }) {
+export function ListenPanel({ items, bookmarkKey, emptyText }: { items: PlaybackItem[]; bookmarkKey?: string; emptyText?: string }) {
   const uiLang = useAppStore((s) => s.uiLang);
-  const pb = useParrotPlayback(items);
+  const pb = useParrotPlayback(items, { bookmarkKey });
   const item = items[pb.currentIndex];
 
   const targetDir = useMemo(() => (item ? languageDirection(item.targetLang) : 'ltr'), [item]);

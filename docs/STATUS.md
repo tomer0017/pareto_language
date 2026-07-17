@@ -22,6 +22,38 @@ loop (typecheck → lint → tests → build → smoke) green at every milestone
 
 ## What's done
 
+### Sprint — Parrot Mode Completion: loop, sleep timer, speed, pause, prefs, bookmarks (2026-07-17)
+Extended the ONE shared playback module (no second engine/controls; no content/schema/pedagogy
+changes; `gen:conversations` zero diff; EN/FR parity + offline preserved). Gates green
+(typecheck · lint · 740 tests · build · smoke). All logic lives in `shared/playback` and is available
+identically on Core Words, Core Sentences and the Dialogue Transcript.
+- **Continuous Loop** (`planNextCycle`) — OFF finishes (status `finished`, Wake Lock released); ON
+  starts a fresh cycle (sequential from item 0; random reshuffles and avoids an immediate boundary
+  repeat).
+- **Sleep timer** (Off/10/15/30/60) — a framework-free `sleepTimer.ts` controller that counts only
+  active playback time (pause pauses it, resume continues the remainder), resets on duration change,
+  and on expiry stops cleanly, releases the lock, keeps the item as the resume position and shows a
+  non-blocking notice + compact `M:SS` countdown. Disposed on unmount.
+- **Playback speed** (0.75×/1×/1.25×) and **Pause duration** (Short/Normal/Long) — both flow from the
+  ONE `PAUSE_PRESETS` mapping and the utterance plan through the existing `tts.speak(rate)`; no second
+  speaker.
+- **Persistence** (`preferences.ts`) — all seven prefs persist via the existing localStorage
+  convention with `sanitizeSettings` validation/fallback; "currently playing" is never stored (no
+  auto-start after refresh).
+- **Listening bookmarks** — last item remembered per surface by stable content id
+  (`words:<lang>` · `sentences:<lang>` · `transcript:<lang>:<dialogueId>`); returning refocuses it,
+  a missing id falls back to the first item. Never auto-plays.
+- **Random hardening + Transcript restart fix** — a shuffle is a complete cycle; pause/resume and
+  repeat/translation/speed/pause changes never reshuffle; `restart()` now restarts the ACTIVE
+  sequence (line 0 sequential; shuffle position 0 random) instead of confusing content index with
+  shuffle position.
+- **Wake Lock hardening** — held only while playing; released on pause/finish/expiry/unmount;
+  re-acquired on resume and on visibility return; unsupported browsers are a silent no-op.
+- **Controls redesign (progressive disclosure)** — primary row (Prev · Play/Pause · Next · Repeat)
+  always visible; the rest (Translation · Order · Loop · Speed · Pause · Sleep timer) in a collapsible
+  panel. A11y: translated aria-labels, aria-pressed/aria-expanded, `:focus-visible`, a polite
+  status-only live region, reduced-motion honoured. All strings EN + HE.
+
 ### Sprint — Universal Listen Mode ("Parrot Mode") (2026-07-17)
 One shared, content-agnostic listening architecture (no engine/schema/pipeline/pedagogy/Mongo
 changes; no Bootcamp mission content changed — `gen:conversations` produces zero diff). EN/FR parity

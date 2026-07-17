@@ -102,6 +102,8 @@ all playback. Nothing here imports Bootcamp/Core — a new surface reuses it wit
 | `playbackPlan.ts` (pure, tested) | The two testable decisions: `buildUtterancePlan(item, settings)` → flat speak/pause steps (target → pause → translation, × repeat) and `buildOrder(count, order, seed)` → play order (sequential or a seeded shuffle, reusing `shuffle.ts`). Pause durations are exported constants — the tuning seam. |
 | `useParrotPlayback.ts` | The engine hook: status, current item, the async play loop, wake lock, resume-from-exact-item, persisted settings. Run-token cancellation (same contract as the Transcript reader — a superseded/cancelled `speak()` never advances). Settings read via refs so changes apply at the next item boundary. |
 | `wakeLock.ts` | Guarded Screen Wake Lock wrapper (module-level sentinel; re-acquired on visibility while playing; silent no-op where unsupported). |
+| `sleepTimer.ts` (pure, tested) | Framework-free countdown controller (`arm/resume/pauseTicking/reset/off/dispose`) that counts only active playback time; the engine drives it so pause/resume preserve the remainder and expiry stops playback + releases the lock. |
+| `preferences.ts` (pure, tested) | Persistence via the existing localStorage convention: `sanitizeSettings` (validate/fallback), load/persist, and per-surface listening bookmarks (`resolveBookmarkIndex` matches by stable content id, never array position). "Currently playing" is never stored. |
 | `PlaybackControls.tsx` | The single controls component — Play/Pause, Repeat, Sequential/Random, Translation, prev/next — a pure view over the engine handle. |
 | `ListenPanel.tsx` | Reusable "now playing" single-item screen (Core Words + Core Sentences share it). The Dialogue Transcript uses the engine directly for its full-list + highlight presentation. |
 
@@ -110,6 +112,12 @@ Consumers: **Core Words** (`CoreWords.tsx` `listen` mode) and **Core Sentences**
 drives its existing scroll/highlight sheet from the same hook + `PlaybackControls`. Future knobs
 (speed, loop-forever, pause length, voice, bookmark) land in `playbackPlan.ts` / `PlaybackControls`
 once and appear everywhere — no playback logic is duplicated.
+
+Sprint-3 capabilities — continuous **Loop** (`planNextCycle`, anti-boundary-repeat), a **sleep
+timer**, **speed** (0.75/1/1.25×), **pause durations** (`PAUSE_PRESETS`), persisted **preferences**
+and per-surface **listening bookmarks** — are all engine-level, so every current and future
+surface gets them for free. Voice selection / background playback / lock-screen controls remain
+out of scope (browser TTS + Wake Lock cannot guarantee them once the OS suspends the page).
 
 ## Audio / TTS (apps/web/src/shared/audio)
 

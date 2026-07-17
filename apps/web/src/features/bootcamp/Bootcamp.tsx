@@ -1078,7 +1078,8 @@ function DialogueReader({ dialogue, onClose, onFinish }: { dialogue: BootcampDia
   const items = useMemo<PlaybackItem[]>(() => lines.map((line, i) => ({
     id: `${i}`, target: line.en, targetLang: learningLang, translation: dialogueTr(line), translationLang: uiLang,
   })), [lines, learningLang, uiLang]);
-  const pb = useParrotPlayback(items);
+  // Remember the last-listened line per dialogue (by stable id) so returning refocuses it.
+  const pb = useParrotPlayback(items, { bookmarkKey: `transcript:${learningLang}:${dialogue.id}` });
   const current = pb.currentIndex;
 
   // Auto-scroll: keep the active line centred as playback (or stepping) moves through the sheet.
@@ -1113,7 +1114,7 @@ function DialogueReader({ dialogue, onClose, onFinish }: { dialogue: BootcampDia
       <div className="reader-transport">
         <PlaybackControls pb={pb} />
         <div className="btn-row">
-          <button className="btn-secondary" onClick={() => pb.jumpTo(0, { play: true })}>{t('restartConvo')}</button>
+          <button className="btn-secondary" onClick={() => pb.restart({ play: true })}>{t('restartConvo')}</button>
           {onFinish && (
             <button className="btn-secondary" onClick={() => { pb.pause(); onFinish(); }}>✓ {t('finishToHub')}</button>
           )}

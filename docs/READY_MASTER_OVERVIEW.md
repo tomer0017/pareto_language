@@ -191,7 +191,7 @@ Each layer has one responsibility.
 - **Videos (`apps/web/public/videos`)** — referenced by a mission's optional `introVideo.src` (a
   public path resolved against `BASE_URL`). Shipped for EN days 2–5, 7–9, 11 and FR days 2–4; only
   Mission 2 (EN & FR) injects intro/again video steps, the rest surface it in the hub / Videos.
-- **Parrot Mode (`shared/playback`)** — ONE content-agnostic listening engine + controls reused by Core Words, Core Sentences and the Dialogue Transcript. A surface supplies a list of items; the engine owns play/pause/resume, sequential/random, repeat ×1–3, translation on/off and Screen Wake Lock. Pure planning (`playbackPlan.ts`) is unit-tested; see ARCHITECTURE.md.
+- **Parrot Mode (`shared/playback`)** — ONE content-agnostic listening engine + controls reused by Core Words, Core Sentences and the Dialogue Transcript. A surface supplies a list of items; the engine owns play/pause/resume, sequential/random, repeat ×1–3, translation on/off, continuous loop, playback speed (0.75/1/1.25×), pause durations, a sleep timer, per-surface listening bookmarks and Screen Wake Lock. Preferences persist; "currently playing" never does (no auto-start on refresh). Pure planning/persistence/sleep are unit-tested; see ARCHITECTURE.md.
 - **TTS / audio (`shared/audio/tts.ts`)** — Web Speech with a Chrome keep-alive + visibility resume
   (the "works then stops" fix), a first-gesture unlock, and the **single global speech-rate**
   multiplier applied to every `speak()`. Asset-first playback, TTS fallback.
