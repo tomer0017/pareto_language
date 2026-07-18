@@ -65,13 +65,19 @@ export interface ParrotPlayback {
 export interface ParrotOptions {
   /** Namespaces the listening-position bookmark for this surface (e.g. `words:en`). Omit to disable. */
   bookmarkKey?: string;
+  /** Pin the play order for this surface, ignoring the shared preference (e.g. Reading is always
+   *  `'sequential'`). When set, `setOrder` is a no-op and the surface never shuffles. */
+  order?: PlaybackOrder;
 }
 
 export function useParrotPlayback(items: PlaybackItem[], opts?: ParrotOptions): ParrotPlayback {
   const bookmarkKey = opts?.bookmarkKey;
+  const lockedOrder = opts?.order;
   const [settings, setSettings] = useState<PlaybackSettings>(loadSettings);
   const [status, setStatus] = useState<PlaybackStatus>('idle');
-  const [order, setOrderState] = useState<number[]>(() => buildOrder(items.length, settings.order, sessionSeed()));
+  // Effective order: a surface lock (Reading) overrides the shared preference.
+  const effectiveOrder = lockedOrder ?? settings.order;
+  const [order, setOrderState] = useState<number[]>(() => buildOrder(items.length, effectiveOrder, sessionSeed()));
   const [pos, setPos] = useState(0);
   const [sleepRemainingMs, setSleepRemainingMs] = useState<number | null>(null);
   const [sleepFinished, setSleepFinished] = useState(false);
@@ -116,12 +122,12 @@ export function useParrotPlayback(items: PlaybackItem[], opts?: ParrotOptions): 
   // "select Random while playing" builds the remaining order around the current item).
   useEffect(() => {
     const keep = orderRef.current[posRef.current] ?? 0;
-    const next = buildOrder(items.length, settings.order, seed);
+    const next = buildOrder(items.length, effectiveOrder, seed);
     orderRef.current = next;
     setOrderState(next);
     const np = Math.max(0, next.indexOf(keep));
     applyPos(next.length ? np : 0);
-  }, [items.length, settings.order, seed, applyPos]);
+  }, [items.length, effectiveOrder, seed, applyPos]);
 
   /* ── Playback ────────────────────────────────────────────────────────── */
 
@@ -168,7 +174,9 @@ export function useParrotPlayback(items: PlaybackItem[], opts?: ParrotOptions): 
         }
         if (token !== runToken.current) return;
 
-        const cycle = planNextCycle(settingsRef.current, orderRef.current, itemsRef.current.length, sessionSeed());
+        const cycle = planNextCycle(
+          lockedOrder ? { ...settingsRef.current, order: lockedOrder } : settingsRef.current,
+          orderRef.current, itemsRef.current.length, sessionSeed());
         if (cycle.finished) {
           setStatus('finished');
           statusRef.current = 'finished';
@@ -184,7 +192,7 @@ export function useParrotPlayback(items: PlaybackItem[], opts?: ParrotOptions): 
         await wait(pausePlan(settingsRef.current.pause).betweenItems);
       }
     })();
-  }, [applyPos]);
+  }, [applyPos, lockedOrder]);
 
   const pause = useCallback(() => {
     runToken.current += 1; // invalidate the loop; the current line settles 'interrupted'
@@ -254,7 +262,8 @@ export function useParrotPlayback(items: PlaybackItem[], opts?: ParrotOptions): 
   }, []);
 
   const setRepeat = useCallback((r: RepeatCount) => update({ repeat: r }), [update]);
-  const setOrder = useCallback((o: PlaybackOrder) => update({ order: o }), [update]);
+  // A surface with a pinned order (Reading) ignores order changes entirely.
+  const setOrder = useCallback((o: PlaybackOrder) => { if (!lockedOrder) update({ order: o }); }, [update, lockedOrder]);
   const setTranslation = useCallback((on: boolean) => update({ translation: on }), [update]);
   const setLoop = useCallback((on: boolean) => update({ loop: on }), [update]);
   const setSpeed = useCallback((s: PlaybackSpeed) => update({ speed: s }), [update]);

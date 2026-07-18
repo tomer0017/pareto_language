@@ -1,6 +1,7 @@
-import { Fragment, useMemo, useRef, type KeyboardEvent } from 'react';
+import { Fragment, useMemo, useRef, type CSSProperties, type KeyboardEvent } from 'react';
 import type { CoreWord } from '../../shared/content/coreWords.js';
 import { useAppStore } from '../../shared/stores/appStore.js';
+import { languageDirection } from '../../shared/i18n/languages.js';
 import { tap } from '../../shared/ui/haptics.js';
 import { segmentText, type CorpusIndex } from './corpusIndex.js';
 import { useCoreWords } from './useCoreWords.js';
@@ -32,6 +33,18 @@ export function TappableWord({ word, children, className = '' }: { word: CoreWor
   );
 }
 
+/**
+ * Non-tappable target text with the SAME BiDi isolation as {@link TappableText}. Use where the text is
+ * the learning language but must NOT be word-tappable (e.g. a whole quiz-option button, a feedback
+ * answer pill) — a tappable word there would swallow the button's own click. Correct `dir`/`lang` +
+ * `unicode-bidi: isolate` keep punctuation right under any UI direction.
+ */
+export function TargetText({ text, lang, className }: { text: string; lang?: string; className?: string }) {
+  const learningLang = useAppStore((s) => s.learningLang);
+  const activeLang = lang ?? learningLang;
+  return <span className={className} dir={languageDirection(activeLang)} lang={activeLang} style={{ unicodeBidi: 'isolate' }}>{text}</span>;
+}
+
 /** Inline tappable words inside a sentence. `lang` defaults to the active learning language. */
 export function TappableText({ text, lang, className }: { text: string; lang?: string; className?: string }) {
   const learningLang = useAppStore((s) => s.learningLang);
@@ -40,7 +53,14 @@ export function TappableText({ text, lang, className }: { text: string; lang?: s
   const segments = useMemo(() => (index ? segmentText(text, index) : null), [text, index]);
   const firstWordRef = useRef<HTMLButtonElement>(null);
 
-  if (!segments) return <span className={className}>{text}</span>;
+  // BiDi isolation (global punctuation fix): the target language has its OWN direction, so we mark
+  // the span with the correct `dir` + `lang` and isolate it from the surrounding UI direction. This
+  // keeps punctuation ("¿…?", trailing ".", "!") in place even under a Hebrew (RTL) interface AND when
+  // the sentence is split into clickable word spans below.
+  const dir = languageDirection(activeLang);
+  const bidi: CSSProperties = { unicodeBidi: 'isolate' };
+
+  if (!segments) return <span className={className} dir={dir} lang={activeLang} style={bidi}>{text}</span>;
   let firstWordSeen = false;
   const hasTappable = segments.some((s) => s.word);
   // Tappable words are inline <span role="button"> — NOT <button>. A real button is an atomic
@@ -53,7 +73,7 @@ export function TappableText({ text, lang, className }: { text: string; lang?: s
     openWord(w, surface);
   };
   return (
-    <span className={className}>
+    <span className={className} dir={dir} lang={activeLang} style={bidi}>
       {segments.map((seg, i) => {
         if (!seg.word) return <Fragment key={i}>{seg.text}</Fragment>;
         const isFirst = !firstWordSeen;

@@ -22,6 +22,28 @@ loop (typecheck → lint → tests → build → smoke) green at every milestone
 
 ## What's done
 
+### Sprint 8 — UI polish & pilot readiness (2026-07-19)
+Polish-only pass before external testers (no new features/content/backend). Gates green (typecheck ·
+lint · 825 tests · build · smoke).
+- **Global BiDi / punctuation fix** (high priority): `TappableText` now renders target text with the
+  correct `dir` + `lang` + `unicode-bidi: isolate`, so LTR sentences ("¿…?", trailing ".") stay correct
+  under the Hebrew (RTL) UI — even when split into clickable word spans. Added a non-tappable sibling
+  `TargetText` for places where a whole element is the click target (quiz-option buttons, feedback
+  pills, prime chips). Routed the remaining plain target renders (Bootcamp transcript/assembled/prompt/
+  ambush lines, quiz options, `AnswerFeedback`) through them. Covers Reading, Core Words/Sentences,
+  Foundation, Bootcamp, Transcript, Quiz, Feedback, tappable/highlighted words.
+- **RTL navigation**: the shared Parrot transport (‹ prev / ▶ / › next) and the Reading transport are
+  forced `dir="ltr"` (media-player convention) so arrows are consistent in every UI direction.
+- **Reading simplification**: the story is now the hero — it fills the scroll area. Reading mode +
+  speed moved into a compact bottom **Sheet**; only the essential transport + settings + quiz stay
+  visible. Reading is **sequential-only** (new `useParrotPlayback({ order })` lock; Random stays on
+  Core/Transcript). Removed Loop/Pause/Sleep/Translation/Random from Reading.
+- **Learning Hub**: exposes only **Core Words** + **Core Sentences** (Emergency/FAQ/Templates/Favorites
+  removed from the grid + tabs; implementations kept for a future release). De-duplicated titles —
+  screen title is the area (**Core**), cards are the activity.
+- **Discoverability**: the one-time "tap underlined words" coachmark (existing `TapCoachmark`) already
+  fires in Reading via `TappableText` — verified, no change needed.
+
 ### Sprint 7 — Reading Mode: Beginner Stories (2026-07-18)
 Added a brand-new **Reading** learning surface — a REUSABLE reading system (not a one-off Stories
 feature), with **Beginner Stories** as the first collection. Gates green (typecheck · lint · 825

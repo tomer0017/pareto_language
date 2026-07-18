@@ -24,22 +24,17 @@ interface Group { title: string; items: BootcampItem[] }
 
 type CoreTab = 'phrases' | 'words' | 'patterns' | 'questions' | 'emergency' | 'favorites';
 
+// Pilot Learning Hub: only the two finished surfaces are exposed in production. Emergency, Common
+// Questions (FAQ), Core Templates/Patterns and Favorites are temporarily removed from the UI (their
+// implementation stays for a future release — the `else` branch below still renders them if reached).
 const TABS: { id: CoreTab; key: StringKey }[] = [
-  { id: 'phrases', key: 'coreTabPhrases' },
   { id: 'words', key: 'coreTabWords' },
-  { id: 'patterns', key: 'coreTabPatterns' },
-  { id: 'questions', key: 'coreTabQuestions' },
-  { id: 'emergency', key: 'coreTabEmergency' },
-  { id: 'favorites', key: 'coreTabFavorites' },
+  { id: 'phrases', key: 'coreTabPhrases' },
 ];
 
 const CATEGORIES: { id: CoreTab; key: StringKey; icon: string }[] = [
-  { id: 'phrases', key: 'coreTabPhrases', icon: '📖' },
   { id: 'words', key: 'coreTabWords', icon: '📝' },
-  { id: 'questions', key: 'coreTabQuestions', icon: '❓' },
-  { id: 'emergency', key: 'coreTabEmergency', icon: '🚨' },
-  { id: 'patterns', key: 'coreTabPatterns', icon: '🧩' },
-  { id: 'favorites', key: 'coreTabFavorites', icon: '⭐' },
+  { id: 'phrases', key: 'coreTabPhrases', icon: '📖' },
 ];
 
 /** Every phrase READY teaches IN THE ACTIVE LEARNING LANGUAGE, grouped by mission (root-cause fix

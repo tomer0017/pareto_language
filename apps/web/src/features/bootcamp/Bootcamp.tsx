@@ -19,7 +19,7 @@ import { dialogueTr } from './i18n.js';
 import { shuffle, mulberry32, sessionSeed } from '../../shared/util/shuffle.js';
 import { FoundationHint } from '../foundation/FoundationHint.js';
 import { FoundationOnboarding } from '../foundation/FoundationOnboarding.js';
-import { TappableText } from '../foundation/TappableText.js';
+import { TappableText, TargetText } from '../foundation/TappableText.js';
 import { useParrotPlayback, PlaybackControls, type PlaybackItem } from '../../shared/playback/index.js';
 
 /** Resolve a public asset path (e.g. "/videos/x.mp4") against the app's base so it works in
@@ -392,7 +392,7 @@ function PrimeStep({ step, itemsById, onNext }: { step: Extract<BootcampStep, { 
             >
               {w.emoji && <span style={{ fontSize: '1.6rem', width: 30, textAlign: 'center' }} aria-hidden>{w.emoji}</span>}
               <span style={{ minWidth: 0, flex: 1 }}>
-                <span style={{ display: 'block', fontWeight: 700 }}>{w.text}{w.review && <span title={t('primeReview')} aria-label={t('primeReview')}> ♻️</span>}</span>
+                <span style={{ display: "block", fontWeight: 700 }}><TargetText text={w.text} />{w.review && <span title={t('primeReview')} aria-label={t('primeReview')}> ♻️</span>}</span>
                 <span className="dim small" style={{ display: 'block' }}>{L(w.meaning)}</span>
               </span>
               <span className="core-play" aria-hidden>🔊</span>
@@ -403,7 +403,7 @@ function PrimeStep({ step, itemsById, onNext }: { step: Extract<BootcampStep, { 
           <div className="drill-card" style={{ marginTop: 4, gap: 6, background: 'var(--bg-soft, var(--card))' }}>
             <p className="faint small" style={{ textAlign: 'center' }}>{t('primeBuilds')}</p>
             <button className="listen-play" style={{ margin: '0 auto' }} onClick={() => say('full', built.text)} aria-label={t('playBtn')}>▶︎</button>
-            <p className="drill-phrase" style={{ fontSize: '1.25rem', textAlign: 'center' }}>{built.text}</p>
+            <p className="drill-phrase" style={{ fontSize: '1.25rem', textAlign: 'center' }}><TappableText text={built.text} /></p>
             <p className="drill-meaning" style={{ textAlign: 'center' }}>{L(built.meaning)}</p>
           </div>
         )}
@@ -518,7 +518,7 @@ function QuizStep({ step, itemsById, onDone }: { step: Extract<BootcampStep, { k
             setPicked(o.id);
             bc.recordDrill(item.id, 'listen', o.id === item.id ? 'pass' : 'fail');
           }}>
-            {o.label}
+            <TargetText text={o.label} />
           </button>
         ))}
         <button className="btn-ghost" onClick={() => void speakL(item.text)}>🔊 {t('hearAgain')}</button>
@@ -578,7 +578,7 @@ function RepliesStep({ step, itemsById, onDone }: { step: Extract<BootcampStep, 
       <>
         <div className="drill-card" style={{ gap: 10 }}>
           <p className="drill-label">{t('youSaid')}</p>
-          <p className="drill-phrase" style={{ fontSize: '1.3rem' }}>“{said.text}”</p>
+          <p className="drill-phrase" style={{ fontSize: '1.3rem' }}>“<TappableText text={said.text} />”</p>
           <p className="drill-meaning" style={{ fontSize: '0.95rem' }}>{t('expectedReplies')}</p>
         </div>
         <div className="action-zone">
@@ -617,7 +617,7 @@ function RepliesStep({ step, itemsById, onDone }: { step: Extract<BootcampStep, 
             setPicked(o.id);
             bc.recordDrill(reply.id, 'listen', o.id === reply.id ? 'pass' : 'fail');
           }}>
-            {o.label}
+            <TargetText text={o.label} />
           </button>
         ))}
         <button className="btn-ghost" onClick={() => void speakL(reply.text)}>🔊 {t('hearAgain')}</button>
@@ -713,7 +713,7 @@ function DialogueStep({ dialogue, onDone }: { dialogue: BootcampDialogue; onDone
           <span style={{ fontWeight: 800, letterSpacing: '0.04em', color: suits ? 'var(--good)' : 'var(--warn)' }}>
             {suits ? `🛟 ${t('suitsHere')}` : t('lessUsefulHere')}
           </span>
-          <p className="drill-phrase" style={{ fontSize: '1.3rem' }}>“{picked.en}”</p>
+          <p className="drill-phrase" style={{ fontSize: '1.3rem' }}>“<TappableText text={picked.en} />”</p>
           <p className="drill-meaning">{message}</p>
         </div>
         <div className="action-zone">
@@ -1106,7 +1106,7 @@ function DialogueReader({ dialogue, onClose, onFinish }: { dialogue: BootcampDia
               <span className="dline-speaker">{line.who === 'you' ? `🫵 ${t('speakerYou')}` : `🧑 ${t('speakerThem')}`}</span>
               <button className="dline-play" onClick={() => pb.jumpTo(i)} aria-label={t('replayAudio')}>🔊</button>
             </div>
-            <p className="dline-en">{line.en}</p>
+            <p className="dline-en"><TappableText text={line.en} /></p>
             <p className="dline-he">{dialogueTr(line)}</p>
           </div>
         ))}

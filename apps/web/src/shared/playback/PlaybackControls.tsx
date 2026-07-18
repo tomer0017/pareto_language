@@ -68,8 +68,9 @@ export function PlaybackControls({ pb }: { pb: ParrotPlayback }) {
       {/* Polite live region — status only, so screen readers aren't flooded by the countdown. */}
       <span className="sr-only" role="status" aria-live="polite">{statusAnnouncement(pb)}</span>
 
-      {/* Primary row: always visible */}
-      <div className="parrot-transport">
+      {/* Primary row: always visible. Forced LTR so the transport reads like a media player everywhere
+          (‹ = previous, › = next) — never mirrored/inconsistent under an RTL (Hebrew) interface. */}
+      <div className="parrot-transport" dir="ltr">
         <button type="button" className="parrot-step" onClick={() => { tap(); pb.prev(); }} disabled={empty} aria-label={t('parrotPrev')}>‹</button>
         <button
           type="button"

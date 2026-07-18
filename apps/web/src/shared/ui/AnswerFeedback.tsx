@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { t } from '../i18n/strings.js';
 import { feedback } from './feedbackCue.js';
 import { Feedback } from './Feedback.js';
-import { TappableText } from '../../features/foundation/TappableText.js';
+import { TappableText, TargetText } from '../../features/foundation/TappableText.js';
 
 /**
  * Reusable answer-feedback with FULL context (Part C) — the one learning-hierarchy surface shared
@@ -82,7 +82,7 @@ export function AnswerFeedback({
                 <Line party={ctx.prompt} />
               </div>
             ) : (
-              <p className="faint small">{t('whatYouHeard')}: “{ctx.prompt.text}”</p>
+              <p className="faint small">{t('whatYouHeard')}: “<TargetText text={ctx.prompt.text} />”</p>
             )
           )}
         </div>
@@ -110,7 +110,7 @@ export function AnswerFeedback({
         {ctx.selected && (
           <div>
             <p className="drill-label">{ctx.labels?.your ?? t('yourAnswerLabel')}</p>
-            <p className="answer-pill answer-pill-bad">{ctx.selected.text}{ctx.selected.translation ? ` — ${ctx.selected.translation}` : ''}</p>
+            <p className="answer-pill answer-pill-bad"><TargetText text={ctx.selected.text} />{ctx.selected.translation ? ` — ${ctx.selected.translation}` : ''}</p>
           </div>
         )}
 

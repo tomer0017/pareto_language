@@ -506,7 +506,12 @@ input:focus, select:focus { outline: 2px solid var(--brand); border-color: trans
 .reading-story-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; width: 100%; }
 .reading-story-title { display: block; font-weight: 800; overflow-wrap: anywhere; }
 .reading-story-meta { display: flex; align-items: center; gap: 8px; margin-top: 5px; flex-wrap: wrap; }
-.reading-modes { margin: 4px 0 12px; }
+.reading-meta { margin: 0 0 10px; }
+/* Slim, essential-only transport: media controls + settings + quiz. The story owns the space above. */
+.reading-transport { display: flex; align-items: center; gap: 10px; }
+.reading-transport .parrot-transport { flex: 0 0 auto; margin: 0; }
+.reading-gear { flex: 0 0 auto; min-width: 44px; padding: 10px 12px; font-size: 1.1rem; }
+.reading-quiz-btn { flex: 1; }
 /* Generous spacing + line-height encourages slow, sentence-by-sentence reading. */
 .rline { padding: 14px 12px; margin-bottom: 10px; border: 1px solid var(--line); border-radius: var(--r-md); background: var(--card); transition: border-color 0.15s, box-shadow 0.15s; }
 .rline.now { border-color: var(--accent); box-shadow: var(--shadow-pop); }

@@ -4,7 +4,9 @@ import { L, t } from '../../shared/i18n/strings.js';
 import { tap } from '../../shared/ui/haptics.js';
 import { TopBar } from '../../shared/ui/TopBar.js';
 import { TappableText } from '../foundation/TappableText.js';
-import { useParrotPlayback, PlaybackControls } from '../../shared/playback/index.js';
+import { useParrotPlayback } from '../../shared/playback/index.js';
+import { Sheet } from '../../shared/ui/Sheet.js';
+import type { PlaybackSpeed } from '../../shared/playback/types.js';
 import { READING_COLLECTIONS } from './collections.js';
 import { buildStoryItems, readingTimeMin, scoreQuiz } from './readingCore.js';
 import { useReadingStore } from './readingStore.js';
@@ -131,13 +133,17 @@ function StoryReader({ story, onExit }: { story: Story; onExit: () => void }) {
   const savePosition = useReadingStore((s) => s.savePosition);
   const [revealed, setRevealed] = useState<Set<number>>(() => new Set());
   const [showQuiz, setShowQuiz] = useState(false);
+  const [settingsOpen, setSettingsOpen] = useState(false);
   const lineRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   // The SAME shared playback engine every listening surface uses — the reader just supplies its
-  // sentences as items and renders them as a scrolling, highlighted, tappable reading sheet.
+  // sentences as items and renders them as a scrolling, highlighted, tappable reading sheet. Reading
+  // is ALWAYS sequential (`order: 'sequential'` pins it, ignoring the shared shuffle preference).
   const items = useMemo(() => buildStoryItems(story, rl, uiLang), [story, rl, uiLang]);
-  const pb = useParrotPlayback(items, { bookmarkKey: `reading:${rl}:${story.id}` });
+  const pb = useParrotPlayback(items, { bookmarkKey: `reading:${rl}:${story.id}`, order: 'sequential' });
+  const playing = pb.status === 'playing';
   const current = pb.currentIndex;
+  const SPEEDS: PlaybackSpeed[] = [0.5, 0.75, 1, 1.25];
 
   // Persist the read position for "resume reading" (store guards forward-only).
   useEffect(() => { savePosition(story.id, current); }, [current, story.id, savePosition]);
@@ -154,21 +160,11 @@ function StoryReader({ story, onExit }: { story: Story; onExit: () => void }) {
         <span className="chip">📖 {story.title.target[rl]}</span>
         <span style={{ width: 52 }} />
       </div>
-      <p className="dim small" style={{ margin: '0 0 6px' }}>
+      <p className="dim small reading-meta">
         <span className="badge">{BAND[story.level]}</span> · ⏱ {t('readingMinN', { n: readingTimeMin(story, rl) })} · {t('lineProgress', { i: pb.position, n: pb.total })}
       </p>
 
-      {/* ── Reading mode (persisted) ── */}
-      <div className="reading-modes btn-row" role="tablist" aria-label={t('readingMode')}>
-        {(['target', 'bilingual', 'hidden'] as const).map((m) => (
-          <button key={m} role="tab" aria-selected={mode === m}
-            className={mode === m ? 'btn-accent' : 'btn-secondary'}
-            onClick={() => { tap(); setMode(m); }}>
-            {t(m === 'target' ? 'readingModeTarget' : m === 'bilingual' ? 'readingModeBilingual' : 'readingModeHidden')}
-          </button>
-        ))}
-      </div>
-
+      {/* The story is the hero — it fills the scroll area; controls stay minimal below. */}
       <div className="reader-scroll">
         {story.sentences.map((sen, i) => (
           <div key={i} ref={(el) => { lineRefs.current[i] = el; }} className={`rline ${i === current ? 'now' : ''}`}>
@@ -185,13 +181,38 @@ function StoryReader({ story, onExit }: { story: Story; onExit: () => void }) {
         ))}
       </div>
 
-      <div className="reader-transport">
-        <PlaybackControls pb={pb} />
-        <div className="btn-row">
-          <button className="btn-secondary" onClick={() => pb.restart({ play: true })}>▶ {t('readingPlayStory')}</button>
-          <button className="btn-accent" onClick={() => { tap(); pb.pause(); setShowQuiz(true); }}>✓ {t('readingToQuiz')}</button>
+      {/* Essential controls only: media transport (LTR, consistent) + settings + go to quiz. */}
+      <div className="reader-transport reading-transport">
+        <div className="parrot-transport" dir="ltr">
+          <button type="button" className="parrot-step" onClick={() => { tap(); pb.prev(); }} aria-label={t('parrotPrev')}>‹</button>
+          <button type="button" className="parrot-play" onClick={() => { tap(); pb.toggle(); }} aria-label={playing ? t('parrotPause') : t('parrotPlay')}>{playing ? '❚❚' : '▶'}</button>
+          <button type="button" className="parrot-step" onClick={() => { tap(); pb.next(); }} aria-label={t('parrotNext')}>›</button>
         </div>
+        <button type="button" className="reading-gear btn-secondary" onClick={() => { tap(); setSettingsOpen(true); }} aria-label={t('readingSettings')}>⚙</button>
+        <button type="button" className="btn-accent reading-quiz-btn" onClick={() => { tap(); pb.pause(); setShowQuiz(true); }}>✓ {t('readingToQuiz')}</button>
       </div>
+
+      {/* Secondary settings (only what's meaningful while reading) live in a compact bottom sheet. */}
+      <Sheet open={settingsOpen} onClose={() => setSettingsOpen(false)} labelledBy="reading-settings-title">
+        <h3 id="reading-settings-title" style={{ margin: '0 0 12px' }}>{t('readingSettings')}</h3>
+        <p className="parrot-label">{t('readingMode')}</p>
+        <div className="btn-row" role="group" aria-label={t('readingMode')} style={{ marginBottom: 16 }}>
+          {(['target', 'bilingual', 'hidden'] as const).map((m) => (
+            <button key={m} aria-pressed={mode === m}
+              className={mode === m ? 'btn-accent' : 'btn-secondary'}
+              onClick={() => { tap(); setMode(m); }}>
+              {t(m === 'target' ? 'readingModeTarget' : m === 'bilingual' ? 'readingModeBilingual' : 'readingModeHidden')}
+            </button>
+          ))}
+        </div>
+        <p className="parrot-label">{t('parrotSpeed')}</p>
+        <div className="seg" role="group" aria-label={t('parrotSpeed')}>
+          {SPEEDS.map((sp) => (
+            <button key={sp} className={`seg-btn ${pb.settings.speed === sp ? 'on' : ''}`} aria-pressed={pb.settings.speed === sp}
+              onClick={() => { tap(); pb.setSpeed(sp); }}>{sp}×</button>
+          ))}
+        </div>
+      </Sheet>
     </div>
   );
 }
