@@ -24,7 +24,7 @@ export const DAY21_ES_ITEMS: BootcampItem[] = [
   { id: 'es.reply.sim.twenty-euros', text: 'Son veinte euros.', meaning: T('זה עשרים יורו.', "It's twenty euros.") },
   { id: 'es.reply.sim.need-passport', text: 'Voy a necesitar su pasaporte.', meaning: T('אצטרך את הדרכון שלך.', "I'll need your passport.") },
   { id: 'es.reply.sim.set-up-now', text: 'Se la configuro ahora mismo.', meaning: T('אני אתקין עכשיו.', "I'll set it up now.") },
-  { id: 'es.reply.sim.password-receipt', text: 'La contraseña del wifi está en su tique.', meaning: T('סיסמת הוויי-פיי על הקבלה.', 'The wifi password is on your receipt.') },
+  { id: 'es.reply.sim.password-receipt', text: 'La contraseña del wifi está en su recibo.', meaning: T('סיסמת הוויי-פיי על הקבלה.', 'The wifi password is on your receipt.') },
   ...recoveryEs('es.phrase.recovery.repeat', 'es.phrase.recovery.slowly', 'es.phrase.recovery.thank-you'),
 ];
 
@@ -55,12 +55,12 @@ const SCENE_SIM: BootcampDialogue = {
     { id: 'c3b', who: 'you', en: '', he: '', choices: [
       { en: '¡Gracias!', tr: TR('Thank you!', 'תודה!'), he: 'תודה!', itemId: 'es.phrase.recovery.thank-you', correct: true, next: 'n4' },
     ] },
-    { id: 'n4', who: 'npc', next: 'c4', en: 'Todo listo — se la configuro ahora mismo. La contraseña del wifi está en su tique.', tr: TR("All set — I'll set it up now. The wifi password is on your receipt.", 'הכל מוכן — אני אתקין עכשיו. סיסמת הוויי-פיי על הקבלה.'), he: 'הכל מוכן — אני אתקין עכשיו. סיסמת הוויי-פיי על הקבלה.' },
+    { id: 'n4', who: 'npc', next: 'c4', en: 'Todo listo — se la configuro ahora mismo. La contraseña del wifi está en su recibo.', tr: TR("All set — I'll set it up now. The wifi password is on your receipt.", 'הכל מוכן — אני אתקין עכשיו. סיסמת הוויי-פיי על הקבלה.'), he: 'הכל מוכן — אני אתקין עכשיו. סיסמת הוויי-פיי על הקבלה.' },
     { id: 'c4', who: 'you', en: '', he: '', choices: [
       { en: '¡Gracias!', tr: TR('Thank you!', 'תודה!'), he: 'תודה!', itemId: 'es.phrase.recovery.thank-you', correct: true, next: 'n5' },
       { en: 'Más despacio, por favor.', tr: TR('Please speak slowly.', 'דבר לאט, בבקשה.'), he: 'דבר לאט, בבקשה.', itemId: 'es.phrase.recovery.slowly', correct: true, next: 'r4' },
     ] },
-    { id: 'r4', who: 'npc', slow: true, next: 'c4b', en: 'La contraseña del wifi — está en — su tique.', tr: TR('The wifi password — is on — your receipt.', 'סיסמת הוויי-פיי — נמצאת — על הקבלה.'), he: 'סיסמת הוויי-פיי — נמצאת — על הקבלה.' },
+    { id: 'r4', who: 'npc', slow: true, next: 'c4b', en: 'La contraseña del wifi — está en — su recibo.', tr: TR('The wifi password — is on — your receipt.', 'סיסמת הוויי-פיי — נמצאת — על הקבלה.'), he: 'סיסמת הוויי-פיי — נמצאת — על הקבלה.' },
     { id: 'c4b', who: 'you', en: '', he: '', choices: [
       { en: '¡Gracias!', tr: TR('Thank you!', 'תודה!'), he: 'תודה!', itemId: 'es.phrase.recovery.thank-you', correct: true, next: 'n5' },
     ] },

@@ -31,7 +31,7 @@ const COLD_TRANSPORT: BootcampDialogue = {
   nodes: [
     { id: 'n1', who: 'npc', fast: true, next: 'c1', en: '¿A dónde va?', tr: TR('Where are you headed?', 'לאן אתה נוסע?'), he: 'לאן אתה נוסע?' },
     { id: 'c1', who: 'you', en: '', he: '', choices: [
-      { en: 'Un billete para el centro, por favor.', tr: TR('One ticket to the center, please.', 'כרטיס אחד למרכז, בבקשה.'), he: 'כרטיס אחד למרכז, בבקשה.', itemId: 'es.phrase.trans.one-ticket', correct: true, next: 'n2' },
+      { en: 'Un boleto para el centro, por favor.', tr: TR('One ticket to the center, please.', 'כרטיס אחד למרכז, בבקשה.'), he: 'כרטיס אחד למרכז, בבקשה.', itemId: 'es.phrase.trans.one-ticket', correct: true, next: 'n2' },
       { en: 'Más despacio, por favor.', tr: TR('Please speak slowly.', 'דבר לאט, בבקשה.'), he: 'דבר לאט, בבקשה.', itemId: 'es.phrase.recovery.slowly', correct: true, next: 'n2' },
     ] },
     { id: 'n2', who: 'npc', fast: true, next: 'c2', en: 'Andén número dos, sale en cinco minutos.', tr: TR('Platform two, leaves in five minutes.', 'רציף שתיים, יוצא בעוד חמש דקות.'), he: 'רציף שתיים, יוצא בעוד חמש דקות.' },

@@ -50,7 +50,7 @@ const SCENE_STUCK_ES: BootcampDialogue = {
   start: 'n1',
   nodes: [
     { id: 'n1', who: 'npc', fast: true, next: 'c1',
-      en: '¡Buenos días! ¿Qué le pongo? ¡Tenemos una oferta en el café con leche!',
+      en: '¡Buenos días! ¿Qué le sirvo? ¡Tenemos una oferta en el café con leche!',
       tr: TR('Hi! What can I get you? We have a special on the café con leche!', 'בוקר טוב! מה להביא לך? יש מבצע על קפה עם חלב!'), he: 'בוקר טוב! מה להביא לך? יש מבצע על קפה עם חלב!' },
     { id: 'c1', who: 'you', en: '', he: '', choices: [
       { en: 'Perdón, no entiendo.', tr: TR("Sorry, I don't understand.", 'סליחה, אני לא מבין.'), he: 'סליחה, אני לא מבין.', itemId: 'es.phrase.recovery.dont-understand', correct: true, next: 'n2' },
@@ -150,7 +150,7 @@ export const DAY1_ES: BootcampDayContent = {
     { kind: 'swipe', itemIds: DAY1_ES_ITEMS.map((i) => i.id) },
     { kind: 'dialogue', dialogueId: 'stuck-traveler' },
     { kind: 'receipt', text: T('סיבוב שני — הפעם ידעת בדיוק מה אתה עושה.', 'Round two — this time you knew exactly what you were doing.') },
-    { kind: 'ambush', npc: { en: '¿Quiere el tique o le vale con un email?', tr: TR('Would you like the receipt or is email okay for you?', 'רוצה קבלה או שאימייל בסדר?'), he: 'רוצה קבלה או שאימייל בסדר?' },
+    { kind: 'ambush', npc: { en: '¿Quiere el recibo o prefiere un correo?', tr: TR('Would you like the receipt or is email okay for you?', 'רוצה קבלה או שאימייל בסדר?'), he: 'רוצה קבלה או שאימייל בסדר?' },
       correctItemId: 'es.phrase.recovery.slowly', wrongItemId: 'es.phrase.recovery.thank-you' },
     { kind: 'receipt', text: T('מישהו ירה בך משפט מהיר — ולא קפאת. הגבת.', 'Someone fired a fast sentence at you — and you didn’t freeze. You responded.') },
     { kind: 'summary' },

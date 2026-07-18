@@ -29,7 +29,7 @@ const COLD_COFFEE: BootcampDialogue = {
   id: 'cold-coffee',
   start: 'n1',
   nodes: [
-    { id: 'n1', who: 'npc', fast: true, next: 'c1', en: '¡Buenos días! ¿Qué le pongo?', tr: TR('Morning! What can I get you?', 'בוקר! מה להביא לך?'), he: 'בוקר! מה להביא לך?' },
+    { id: 'n1', who: 'npc', fast: true, next: 'c1', en: '¡Buenos días! ¿Qué le sirvo?', tr: TR('Morning! What can I get you?', 'בוקר! מה להביא לך?'), he: 'בוקר! מה להביא לך?' },
     { id: 'c1', who: 'you', en: '', he: '', choices: [
       { en: 'Quiero un café con hielo, por favor.', tr: TR("I'd like an iced coffee, please.", 'אני רוצה קפה קר, בבקשה.'), he: 'אני רוצה קפה קר, בבקשה.', itemId: 'es.phrase.coffee.iced-coffee', correct: true, next: 'n2' },
       { en: '¿Puede repetir, por favor?', tr: TR('Can you repeat that?', 'אפשר לחזור על זה?'), he: 'אפשר לחזור על זה?', itemId: 'es.phrase.recovery.repeat', correct: true, next: 'n2' },

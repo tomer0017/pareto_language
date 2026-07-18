@@ -30,7 +30,7 @@ export function sanitizeSettings(raw: unknown): PlaybackSettings {
     order: o.order === 'random' ? 'random' : 'sequential',
     translation: o.translation !== false, // default ON
     loop: o.loop === true,
-    speed: o.speed === 0.75 || o.speed === 1.25 ? o.speed : 1,
+    speed: o.speed === 0.5 || o.speed === 0.75 || o.speed === 1.25 ? o.speed : 1,
     pause: o.pause === 'short' || o.pause === 'long' ? o.pause : 'normal',
     sleepTimer: o.sleepTimer === 10 || o.sleepTimer === 15 || o.sleepTimer === 30 || o.sleepTimer === 60 ? o.sleepTimer : 0,
   };

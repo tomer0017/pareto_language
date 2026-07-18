@@ -22,7 +22,7 @@ export const DAY8_ES_ITEMS: BootcampItem[] = [
   { id: 'es.reply.hotel.passport', text: 'Su pasaporte, por favor.', meaning: T('הדרכון שלך, בבקשה.', 'Your passport, please.') },
   { id: 'es.reply.hotel.sign-here', text: 'Firme aquí, por favor.', meaning: T('תחתום כאן, בבקשה.', 'Sign here, please.') },
   { id: 'es.reply.hotel.room-number', text: 'Está en la habitación doscientos cuatro.', meaning: T('אתה בחדר 204.', "You're in room two-oh-four.") },
-  { id: 'es.reply.hotel.second-floor', text: 'Está en la segunda planta.', meaning: T('זה בקומה השנייה.', "It's on the second floor.") },
+  { id: 'es.reply.hotel.second-floor', text: 'Está en el segundo piso.', meaning: T('זה בקומה השנייה.', "It's on the second floor.") },
   { id: 'es.reply.hotel.breakfast-time', text: 'El desayuno es de siete a diez.', meaning: T('ארוחת בוקר משבע עד עשר.', 'Breakfast is from seven to ten.') },
   { id: 'es.reply.hotel.elevator', text: 'El ascensor está a su derecha.', meaning: T('המעלית מימינך.', 'The elevator is on your right.') },
   ...recoveryEs('es.phrase.recovery.repeat', 'es.phrase.recovery.slowly', 'es.phrase.recovery.thank-you', 'es.phrase.recovery.one-moment'),
@@ -46,7 +46,7 @@ const SCENE: BootcampDialogue = {
       { en: 'Aquí tiene.', tr: TR('Here you go.', 'בבקשה, הנה.'), he: 'בבקשה, הנה.', correct: true, next: 'n3' },
       { en: 'Un momento, por favor.', tr: TR('One moment, please.', 'רגע אחד, בבקשה.'), he: 'רגע אחד, בבקשה.', itemId: 'es.phrase.recovery.one-moment', correct: true, next: 'n3' },
     ] },
-    { id: 'n3', who: 'npc', fast: true, next: 'c3', en: 'Gracias. Está en la habitación doscientos cuatro, en la segunda planta. ¿El desayuno está incluido en su reserva?', tr: TR("Thank you. You're in room two-oh-four, on the second floor. Is breakfast included in your booking?", 'תודה. אתה בחדר 204, בקומה השנייה. ארוחת בוקר כלולה בהזמנה שלך?'), he: 'תודה. אתה בחדר 204, בקומה השנייה. ארוחת בוקר כלולה בהזמנה שלך?' },
+    { id: 'n3', who: 'npc', fast: true, next: 'c3', en: 'Gracias. Está en la habitación doscientos cuatro, en el segundo piso. ¿El desayuno está incluido en su reserva?', tr: TR("Thank you. You're in room two-oh-four, on the second floor. Is breakfast included in your booking?", 'תודה. אתה בחדר 204, בקומה השנייה. ארוחת בוקר כלולה בהזמנה שלך?'), he: 'תודה. אתה בחדר 204, בקומה השנייה. ארוחת בוקר כלולה בהזמנה שלך?' },
     { id: 'c3', who: 'you', en: '', he: '', choices: [
       { en: '¿El desayuno está incluido?', tr: TR('Is breakfast included?', 'ארוחת הבוקר כלולה?'), he: 'ארוחת הבוקר כלולה?', itemId: 'es.phrase.hotel.breakfast', correct: true, next: 'n4' },
       { en: '¿Cuál es la contraseña del wifi?', tr: TR("What's the wifi password?", 'מה סיסמת הוויי-פיי?'), he: 'מה סיסמת הוויי-פיי?', itemId: 'es.phrase.hotel.wifi', correct: true, next: 'n4w' },

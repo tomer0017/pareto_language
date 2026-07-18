@@ -82,10 +82,11 @@ describe('buildUtterancePlan', () => {
     expect(PAUSE_PRESETS.short.afterTarget).toBeLessThan(PAUSE_PRESETS.long.afterTarget);
   });
 
-  it('propagates the playback speed to every spoken step', () => {
-    for (const speed of [0.75, 1, 1.25] as const) {
+  it('propagates the playback speed (incl. the new 0.5×) to every spoken step', () => {
+    for (const speed of [0.5, 0.75, 1, 1.25] as const) {
       const plan = buildUtterancePlan(item, settings({ translation: true, speed }));
       const speaks = plan.filter((s) => s.kind === 'speak');
+      expect(speaks.length).toBeGreaterThan(0);
       expect(speaks.every((s) => s.kind === 'speak' && s.rate === speed)).toBe(true);
     }
   });

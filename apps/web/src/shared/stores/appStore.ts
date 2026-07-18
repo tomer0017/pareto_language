@@ -34,7 +34,8 @@ export type View =
   | 'emergency'
   | 'plan'
   | 'languages'
-  | 'videos';
+  | 'videos'
+  | 'reading';
 
 export interface OnboardingInput {
   departureAt: string;

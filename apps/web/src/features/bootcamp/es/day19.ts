@@ -12,8 +12,8 @@ const TR = (en: string, he: string): LocalizedText => ({ en, he });
 
 export const DAY19_ES_ITEMS: BootcampItem[] = [
   // say
-  { id: 'es.phrase.trans.one-ticket', text: 'Un billete para el centro, por favor.', meaning: T('כרטיס אחד למרכז, בבקשה.', 'One ticket to the center, please.'),
-    tip: T('התבנית: Un billete para ___ — קונה כרטיס לכל יעד.', 'Template: Un billete para ___ — buys a ticket to anywhere.') },
+  { id: 'es.phrase.trans.one-ticket', text: 'Un boleto para el centro, por favor.', meaning: T('כרטיס אחד למרכז, בבקשה.', 'One ticket to the center, please.'),
+    tip: T('התבנית: Un boleto para ___ — קונה כרטיס לכל יעד.', 'Template: Un boleto para ___ — buys a ticket to anywhere.') },
   { id: 'es.phrase.trans.which-platform', text: '¿Qué andén?', meaning: T('איזה רציף?', 'Which platform?'),
     tip: T('שתי מילים שמונעות עלייה לרכבת הלא נכונה.', 'Two words that stop you boarding the wrong train.') },
   { id: 'es.phrase.trans.does-stop', text: '¿Para en el museo?', meaning: T('זה עוצר במוזיאון?', 'Does this stop at the museum?'),
@@ -35,12 +35,12 @@ const SCENE_TRANSPORT: BootcampDialogue = {
   nodes: [
     { id: 'n1', who: 'npc', next: 'c1', en: '¡Hola! ¿A dónde va?', tr: TR('Hello! Where are you headed?', 'שלום! לאן אתה נוסע?'), he: 'שלום! לאן אתה נוסע?' },
     { id: 'c1', who: 'you', en: '', he: '', choices: [
-      { en: 'Un billete para el centro, por favor.', tr: TR('One ticket to the center, please.', 'כרטיס אחד למרכז, בבקשה.'), he: 'כרטיס אחד למרכז, בבקשה.', itemId: 'es.phrase.trans.one-ticket', correct: true, next: 'n2' },
+      { en: 'Un boleto para el centro, por favor.', tr: TR('One ticket to the center, please.', 'כרטיס אחד למרכז, בבקשה.'), he: 'כרטיס אחד למרכז, בבקשה.', itemId: 'es.phrase.trans.one-ticket', correct: true, next: 'n2' },
       { en: '¿Puede repetir, por favor?', tr: TR('Can you repeat that?', 'אפשר לחזור על זה?'), he: 'אפשר לחזור על זה?', itemId: 'es.phrase.recovery.repeat', correct: true, next: 'r1' },
     ] },
     { id: 'r1', who: 'npc', slow: true, next: 'c1b', en: '¿A — dónde — va?', tr: TR('Where — are you — going?', 'לאן — אתה — נוסע?'), he: 'לאן — אתה — נוסע?' },
     { id: 'c1b', who: 'you', en: '', he: '', choices: [
-      { en: 'Un billete para el centro, por favor.', tr: TR('One ticket to the center, please.', 'כרטיס אחד למרכז, בבקשה.'), he: 'כרטיס אחד למרכז, בבקשה.', itemId: 'es.phrase.trans.one-ticket', correct: true, next: 'n2' },
+      { en: 'Un boleto para el centro, por favor.', tr: TR('One ticket to the center, please.', 'כרטיס אחד למרכז, בבקשה.'), he: 'כרטיס אחד למרכז, בבקשה.', itemId: 'es.phrase.trans.one-ticket', correct: true, next: 'n2' },
     ] },
     { id: 'n2', who: 'npc', next: 'c2', en: '¿Solo ida o ida y vuelta?', tr: TR('Single or return?', 'הלוך או הלוך-חזור?'), he: 'הלוך או הלוך-חזור?' },
     { id: 'c2', who: 'you', en: '', he: '', choices: [

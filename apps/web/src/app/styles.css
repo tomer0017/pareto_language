@@ -478,32 +478,6 @@ input:focus, select:focus { outline: 2px solid var(--brand); border-color: trans
 .core-tab.active { background: var(--accent); color: #fff; border-color: transparent; }
 
 /* ── Home / Core action cards ─────────────────────────────────────────── */
-/* ── Quick Translator (compact Home hero) ────────────────────────────── */
-.quick-translator { padding: 14px; margin-top: 8px; margin-bottom: 14px; }
-.qt-langs {
-  display: flex; align-items: center; gap: 8px; margin-bottom: 10px;
-  font-size: 0.74rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
-  color: var(--ink-dim);
-}
-.qt-lang-target { color: var(--brand); }
-.qt-arrow { color: var(--ink-dim); font-weight: 800; }
-.qt-input {
-  width: 100%; padding: 11px 12px; border-radius: var(--r-md);
-  border: 1px solid var(--line); background: var(--card-sunken, var(--card));
-  color: var(--ink); font-size: 1.02rem; outline: none;
-}
-.qt-input:focus { border-color: var(--brand); }
-.qt-result {
-  display: flex; align-items: center; justify-content: space-between; gap: 10px;
-  margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--line);
-}
-.qt-target { font-weight: 800; font-size: 1.12rem; min-width: 0; overflow-wrap: anywhere; }
-.qt-result-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
-.qt-copy {
-  background: transparent; border: none; color: var(--ink-dim);
-  font-size: 0.82rem; font-weight: 700; padding: 8px 6px; min-height: 40px; cursor: pointer;
-}
-.qt-empty { margin-top: 10px; }
 
 .home-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
 .action-card {
@@ -522,6 +496,37 @@ input:focus, select:focus { outline: 2px solid var(--brand); border-color: trans
 .ac-words .action-icon { background: var(--good-soft); }
 .ac-phrases .action-icon { background: var(--accent-soft); }
 .ac-videos .action-icon { background: #dbeafe; }
+.ac-reading .action-icon { background: #fef3c7; }
+
+/* ── Reading Mode ─────────────────────────────────────────────────────── */
+.reading-stats { display: flex; gap: 8px; flex-wrap: wrap; }
+.reading-collection { display: flex; align-items: center; gap: 12px; text-align: start; width: 100%; }
+.reading-collection-emoji { font-size: 1.9rem; flex-shrink: 0; }
+.reading-collection-title { display: block; font-weight: 800; }
+.reading-story-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; width: 100%; }
+.reading-story-title { display: block; font-weight: 800; overflow-wrap: anywhere; }
+.reading-story-meta { display: flex; align-items: center; gap: 8px; margin-top: 5px; flex-wrap: wrap; }
+.reading-modes { margin: 4px 0 12px; }
+/* Generous spacing + line-height encourages slow, sentence-by-sentence reading. */
+.rline { padding: 14px 12px; margin-bottom: 10px; border: 1px solid var(--line); border-radius: var(--r-md); background: var(--card); transition: border-color 0.15s, box-shadow 0.15s; }
+.rline.now { border-color: var(--accent); box-shadow: var(--shadow-pop); }
+.rline-top { display: flex; justify-content: flex-end; margin-bottom: 2px; }
+.rline.now .dline-play { background: var(--accent); color: #fff; border-color: transparent; }
+.rline-target { font-size: 1.18rem; font-weight: 700; line-height: 1.75; overflow-wrap: anywhere; }
+.rline-tr { color: var(--ink-dim); margin-top: 8px; line-height: 1.5; overflow-wrap: anywhere; }
+.rline-reveal { margin-top: 8px; background: transparent; border: 1px dashed var(--line); border-radius: var(--r-sm); color: var(--ink-dim); font-size: 0.85rem; padding: 7px 10px; cursor: pointer; }
+.reading-q { margin-bottom: 12px; }
+.reading-q-text { font-weight: 700; line-height: 1.4; }
+.reading-q-options { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+.reading-q-options.reading-tf { flex-direction: row; }
+.reading-opt {
+  flex: 1; text-align: start; padding: 12px 14px; border-radius: var(--r-md);
+  border: 1px solid var(--line); background: var(--card); color: var(--ink);
+  font-size: 0.98rem; cursor: pointer;
+}
+.reading-opt.chosen { border-color: var(--accent); background: var(--accent-soft); }
+.reading-opt.right { border-color: var(--good); background: var(--good-soft); color: var(--good); font-weight: 700; }
+.reading-opt.wrong { border-color: var(--bad, #d33); background: var(--bad-soft, #fde8e8); }
 
 /* ── Modal (Videos "did you understand?" popup) ──────────────────────── */
 .modal-scrim {

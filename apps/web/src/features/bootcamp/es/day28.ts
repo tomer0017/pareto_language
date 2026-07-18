@@ -31,7 +31,7 @@ const COLD_TRANSIT: BootcampDialogue = {
   nodes: [
     { id: 'n1', who: 'npc', fast: true, next: 'c1', en: 'Bueno — ¿a dónde va?', tr: TR('Right — where to?', 'טוב — לאן?'), he: 'טוב — לאן?' },
     { id: 'c1', who: 'you', en: '', he: '', choices: [
-      { en: 'Un billete para el centro, por favor.', tr: TR('One ticket to the center, please.', 'כרטיס אחד למרכז, בבקשה.'), he: 'כרטיס אחד למרכז, בבקשה.', itemId: 'es.phrase.trans.one-ticket', correct: true, next: 'n2' },
+      { en: 'Un boleto para el centro, por favor.', tr: TR('One ticket to the center, please.', 'כרטיס אחד למרכז, בבקשה.'), he: 'כרטיס אחד למרכז, בבקשה.', itemId: 'es.phrase.trans.one-ticket', correct: true, next: 'n2' },
       { en: '¿Puede repetir, por favor?', tr: TR('Can you repeat that?', 'אפשר לחזור על זה?'), he: 'אפשר לחזור על זה?', itemId: 'es.phrase.recovery.repeat', correct: true, next: 'n2' },
     ] },
     { id: 'n2', who: 'npc', fast: true, next: 'c2', en: 'El andén ha cambiado — ahora es el cuatro, ¡rápido!', tr: TR("Platform's changed — it's four now, quick!", 'הרציף השתנה — עכשיו ארבע, מהר!'), he: 'הרציף השתנה — עכשיו ארבע, מהר!' },

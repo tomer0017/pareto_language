@@ -22,6 +22,63 @@ loop (typecheck → lint → tests → build → smoke) green at every milestone
 
 ## What's done
 
+### Sprint 7 — Reading Mode: Beginner Stories (2026-07-18)
+Added a brand-new **Reading** learning surface — a REUSABLE reading system (not a one-off Stories
+feature), with **Beginner Stories** as the first collection. Gates green (typecheck · lint · 825
+tests · build · smoke). Reuses `shared/playback`, Foundation Universal Tap, and the localStorage
+persistence convention — no second speech engine, no duplicated logic.
+- **Reusable architecture** (`features/reading/`): `types.ts` (Story/Sentence/Quiz/Collection —
+  collection-agnostic), `authoring.ts` (terse `s`/`title`/`mc`/`tf`/`order` helpers), `readingCore.ts`
+  (PURE: `readingTimeMin`, `buildStoryItems`, `scoreQuiz`, `storyParityIssues`/`collectionParity`),
+  `readingStore.ts` (mode pref · per-story resume position · completion · quiz score · reading
+  streak), and `collections.ts` (registry whose `load()` DYNAMIC-imports each collection → code-split
+  25 kB chunk, PWA-precached). Adding a future collection = one data file + one registry entry.
+- **Beginner Stories** — 15 stories across A1/A1+/A2 (8 · 5 · 2 by level), each in EN (canonical) · FR ·
+  ES with a Hebrew native gloss and a 3–4-question comprehension quiz. Folk tales (Three Little Pigs,
+  Goldilocks) are ORIGINAL simplified adaptations. Vocabulary deliberately recycles animals/colors/
+  food/fruit/veg/numbers/family/routines/clothing/house/weather/transport/market/verbs.
+- **UI** (`Reading.tsx`): collection browse → story list (title · A1/A2 · est. time · done/resume) →
+  full-screen reader. Three persisted **modes** — Original / Bilingual / Tap-to-reveal — sentence by
+  sentence (generous spacing), each word **tappable** (Universal Tap → the ONE Foundation sheet;
+  reading position is preserved since the reader never unmounts). Per-sentence 🔊 + whole-story play/
+  pause/resume/repeat/loop/speed/sleep-timer/bookmark/Wake Lock all come from `useParrotPlayback` +
+  `PlaybackControls`. Reached from a new **Read Stories** Home card (view `reading`).
+- **Tests** (`reading.test.ts`, 15): lazy load, unique ids, level ranges, **language parity** (all 15
+  complete in en/fr/es), playback-item + language-switch contract, quiz scoring, streak transitions,
+  and store persistence (mode · forward-only resume · completion + best-score).
+
+### Sprint 6 — Remove the Home Quick Translator (2026-07-18)
+Removed the experimental Quick Translator from Home cleanly — Home now goes straight to Quick Settings,
+the four action cards and Continue, with no dead UI, state, CSS or strings left behind. No change to
+Missions, Foundation, Parrot Mode, Core, Bootcamp, language selection, progress or navigation. Gates
+green (typecheck · lint · 811 tests · build · smoke).
+- **Deleted** `features/home/QuickTranslator.tsx`, its pure logic `quickTranslate.ts`, and its test
+  `quickTranslate.test.ts` (the whole feature was self-contained — nothing else imported them).
+- **Cleaned** `Home.tsx` (removed the import + render + stale hero comment; nudged the first section's
+  top margin so nothing feels cramped under the language strip), `app/styles.css` (removed the dead
+  `.quick-translator` / `.qt-*` block), and `shared/i18n/strings.ts` (removed the four translator-only
+  keys × en/he). Living docs (overview + project structure) updated to drop the hero from the Home
+  description.
+- No translator entry point remains in the production Home screen; `grep` for
+  `QuickTranslator|quickTranslate|quickTrans|qt-` over `apps/web/src` is empty.
+
+### Sprint 5 — Global speech-speed: add 0.5× (2026-07-18)
+Extended the ONE shared Parrot-Mode speed configuration with a **0.5×** option so beginners can slow
+every spoken sentence right down; default stays **1×**. No new engine, no duplicate speed logic, no
+redesign. Gates green (typecheck · lint · 814 tests · build · smoke).
+- **One source, propagated everywhere**: `PlaybackSpeed` (`shared/playback/types.ts`) is now
+  `0.5 | 0.75 | 1 | 1.25`. The set is consumed once by `DEFAULT_SETTINGS`/`sanitizeSettings`
+  (`preferences.ts`) and the `SPEEDS` selector (`PlaybackControls.tsx`), and flows through
+  `buildUtterancePlan` → each `speak` step's `rate` → the existing `tts.speak(rate)` layer. Every
+  Parrot surface (Core Words, Core Sentences, Dialogue Transcript, single-item taps) picks it up with
+  zero per-surface change; the global speech-rate slider and per-line mission pacing are untouched.
+- **UI**: the speed selector now exposes `0.5× · 0.75× · 1× · 1.25×` in that order everywhere it
+  renders (label `${s}×`), with the active value shown selected.
+- **Persistence**: unchanged shared `ready.parrot.settings` key; 0.5× survives refresh. Corrupt/legacy
+  values still fall back to 1×.
+- **Tests** (`playbackPlan.test.ts`, `preferences.test.ts`): 0.5× propagates to every spoken step;
+  0.5× is accepted by sanitize (invalid → 1×); a real persist→load round-trip restores 0.5×.
+
 ### Sprint 4 — Complete Spanish learning-language integration (2026-07-18)
 Added **Spanish (`es`, speech locale `es-ES`)** as a complete learning language at full parity with
 English, through the existing data-driven seams only — no engine, schema, or pedagogy changes. Gates

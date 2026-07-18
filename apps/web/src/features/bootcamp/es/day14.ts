@@ -53,12 +53,12 @@ const SCENE_ALLERGY: BootcampDialogue = {
     { id: 'c2b', who: 'you', en: '', he: '', choices: [
       { en: 'Soy vegetariano.', tr: TR("I'm vegetarian.", 'אני צמחוני.'), he: 'אני צמחוני.', itemId: 'es.phrase.diet.vegetarian', correct: true, next: 'n3' },
     ] },
-    { id: 'n3', who: 'npc', next: 'c3', en: 'Entendido — sin frutos secos, vegetariano. El risotto de setas es una buena opción para usted.', tr: TR('Got it — no nuts, vegetarian. The mushroom risotto is a good option for you.', 'הבנתי — בלי אגוזים, צמחוני. ריזוטו הפטריות אפשרות טובה בשבילך.'), he: 'הבנתי — בלי אגוזים, צמחוני. ריזוטו הפטריות אפשרות טובה בשבילך.' },
+    { id: 'n3', who: 'npc', next: 'c3', en: 'Entendido — sin frutos secos, vegetariano. El risotto de champiñones es una buena opción para usted.', tr: TR('Got it — no nuts, vegetarian. The mushroom risotto is a good option for you.', 'הבנתי — בלי אגוזים, צמחוני. ריזוטו הפטריות אפשרות טובה בשבילך.'), he: 'הבנתי — בלי אגוזים, צמחוני. ריזוטו הפטריות אפשרות טובה בשבילך.' },
     { id: 'c3', who: 'you', en: '', he: '', choices: [
       { en: '¿Esto lleva lácteos?', tr: TR('Does this have dairy?', 'יש בזה מוצרי חלב?'), he: 'יש בזה מוצרי חלב?', itemId: 'es.phrase.diet.does-have-dairy', correct: true, next: 'n4' },
       { en: '¿Puede repetir, por favor?', tr: TR('Can you repeat that?', 'אפשר לחזור על זה?'), he: 'אפשר לחזור על זה?', itemId: 'es.phrase.recovery.repeat', correct: true, next: 'r3' },
     ] },
-    { id: 'r3', who: 'npc', slow: true, next: 'c3b', en: 'El — risotto — de setas — es bueno para usted.', tr: TR('The — mushroom — risotto — is good for you.', 'ריזוטו — הפטריות — טוב — בשבילך.'), he: 'ריזוטו — הפטריות — טוב — בשבילך.' },
+    { id: 'r3', who: 'npc', slow: true, next: 'c3b', en: 'El — risotto — de champiñones — es bueno para usted.', tr: TR('The — mushroom — risotto — is good for you.', 'ריזוטו — הפטריות — טוב — בשבילך.'), he: 'ריזוטו — הפטריות — טוב — בשבילך.' },
     { id: 'c3b', who: 'you', en: '', he: '', choices: [
       { en: '¿Esto lleva lácteos?', tr: TR('Does this have dairy?', 'יש בזה מוצרי חלב?'), he: 'יש בזה מוצרי חלב?', itemId: 'es.phrase.diet.does-have-dairy', correct: true, next: 'n4' },
     ] },

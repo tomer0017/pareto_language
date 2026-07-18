@@ -44,7 +44,7 @@ function Seg<T extends string | number>({ label, value, options, onChange }: {
 }
 
 const REPEATS: RepeatCount[] = [1, 2, 3];
-const SPEEDS: PlaybackSpeed[] = [0.75, 1, 1.25];
+const SPEEDS: PlaybackSpeed[] = [0.5, 0.75, 1, 1.25];
 const SLEEP_OPTIONS: SleepTimerMinutes[] = [0, 10, 15, 30, 60];
 
 /** Translated, non-spammy status line for the live region (announced only when it changes). */

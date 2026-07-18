@@ -41,12 +41,9 @@ handling common travel situations abroad** — ordering, arriving, asking, recov
 Permanent bottom navigation (English pilot): **Home · Bootcamp · Core · Profile**. The nav is
 hidden only inside an active mission (a focused, full-screen flow with its own controls).
 
-- **Home** — the real entry point (answers "what can I do here?"): the language strip, a compact
-  **Quick Translator** hero (`features/home/QuickTranslator.tsx` + pure `quickTranslate.ts`) that
-  replaced the old "Your training" header — source locked to the UI language, target locked to the
-  learning language (no swap), text in → instant learning-language phrase + speaker + copy, a pure
-  offline dictionary over Core Corpus + mission sentences (no network/API), a **Quick Settings** card
-  owning **Theme** + **Speech Speed** (reusing the same appStore/TTS — no duplicate state), and four
+- **Home** — the real entry point (answers "what can I do here?"): the language strip, a **Quick
+  Settings** card owning **Theme** + **Speech Speed** (reusing the same appStore/TTS — no duplicate
+  state), and four
   large **action cards** as the primary navigation
   (🗣️ Common Situations → Bootcamp · 📖 Learn New Words → Core Words · 💬 Core Phrases → Core
   Phrases · 🎬 Videos). **Continue** remains as a quieter secondary card lower down. No dashboards.

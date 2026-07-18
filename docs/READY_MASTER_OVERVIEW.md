@@ -101,14 +101,19 @@ emotional loop than "learn → get told you're done."
 Permanent bottom navigation (English pilot): **Home · Bootcamp · Core · Profile**. The nav is
 hidden only inside an active mission — a focused, full-screen flow with its own controls.
 
-- **Home** — the real entry point ("what can I do here?"): the language strip, a compact **Quick
-  Translator** hero (type in the UI language → instant learning-language phrase + speaker + copy;
-  source/target locked, no swap; a pure offline dictionary over the Core Corpus + mission sentences),
-  a Quick Settings card owning Theme + Speech Speed (same appStore/TTS, no duplicate state), and four
-  large action cards (Common Situations → Bootcamp, Learn New Words → Core Words, Core Phrases → Core
-  Phrases, Videos). Continue is a quieter secondary card. No dashboards.
+- **Home** — the real entry point ("what can I do here?"): the language strip, a Quick Settings card
+  owning Theme + Speech Speed (same appStore/TTS, no duplicate state), and four large action cards
+  (Common Situations → Bootcamp, Learn New Words → Core Words, Core Phrases → Core Phrases, Videos).
+  Continue is a quieter secondary card. No dashboards. (The experimental Quick Translator hero was
+  removed — Home now goes straight to learning actions and progress.)
 - **Videos** — an experience, not a list: a random mission video plays, then a "did you understand
   everything?" popup either loads another random video or opens the exact Mission Hub that owns it.
+- **Reading (📖)** — a reusable reading surface (reached from a Home card): browse collections →
+  story → full-screen reader. First collection **Beginner Stories** (15 A1–A2 stories in EN/FR/ES +
+  Hebrew gloss). Three persisted modes (Original / Bilingual / Tap-to-reveal), sentence-by-sentence
+  with **Universal Tap** on every Core word and whole-story/per-sentence audio via the shared
+  `shared/playback` engine, then a short comprehension quiz. Collection-agnostic + code-split
+  (`features/reading/`): future collections (Easy Conversations, News, Recipes, …) are data-only.
 - **Bootcamp** — a 29-mission numbered journey in 5 phases (beginning with Introduce Myself);
   checkpoints are cold integration days. The **Recovery Toolkit** (the 7 survival tools, formerly
   "Mission 1") is now an optional, unnumbered **special mission** at the end of the map — content
@@ -191,7 +196,7 @@ Each layer has one responsibility.
 - **Videos (`apps/web/public/videos`)** — referenced by a mission's optional `introVideo.src` (a
   public path resolved against `BASE_URL`). Shipped for EN days 2–5, 7–9, 11 and FR days 2–4; only
   Mission 2 (EN & FR) injects intro/again video steps, the rest surface it in the hub / Videos.
-- **Parrot Mode (`shared/playback`)** — ONE content-agnostic listening engine + controls reused by Core Words, Core Sentences and the Dialogue Transcript. A surface supplies a list of items; the engine owns play/pause/resume, sequential/random, repeat ×1–3, translation on/off, continuous loop, playback speed (0.75/1/1.25×), pause durations, a sleep timer, per-surface listening bookmarks and Screen Wake Lock. Preferences persist; "currently playing" never does (no auto-start on refresh). Pure planning/persistence/sleep are unit-tested; see ARCHITECTURE.md.
+- **Parrot Mode (`shared/playback`)** — ONE content-agnostic listening engine + controls reused by Core Words, Core Sentences and the Dialogue Transcript. A surface supplies a list of items; the engine owns play/pause/resume, sequential/random, repeat ×1–3, translation on/off, continuous loop, playback speed (0.5/0.75/1/1.25×), pause durations, a sleep timer, per-surface listening bookmarks and Screen Wake Lock. Preferences persist; "currently playing" never does (no auto-start on refresh). Pure planning/persistence/sleep are unit-tested; see ARCHITECTURE.md.
 - **TTS / audio (`shared/audio/tts.ts`)** — Web Speech with a Chrome keep-alive + visibility resume
   (the "works then stops" fix), a first-gesture unlock, and the **single global speech-rate**
   multiplier applied to every `speak()`. Asset-first playback, TTS fallback.

@@ -30,7 +30,7 @@ export const DAY4_ES_ITEMS: BootcampItem[] = [
   { id: 'es.phrase.coffee.card', text: 'Con tarjeta, por favor.',
     meaning: T('בכרטיס, בבקשה.', 'Card, please.') },
   // hear — the barista question-chain
-  { id: 'es.reply.coffee.what-can-i-get', text: '¿Qué le pongo?', meaning: T('מה להביא לך?', 'What can I get you?') },
+  { id: 'es.reply.coffee.what-can-i-get', text: '¿Qué le sirvo?', meaning: T('מה להביא לך?', 'What can I get you?') },
   { id: 'es.reply.coffee.hot-or-iced', text: '¿Caliente o con hielo?', meaning: T('חם או קר?', 'Hot or iced?') },
   { id: 'es.reply.coffee.here-or-to-go', text: '¿Para aquí o para llevar?', meaning: T('לשבת כאן או לקחת?', 'For here or to go?') },
   { id: 'es.reply.coffee.medium-or-large', text: '¿Mediano o grande?', meaning: T('בינוני או גדול?', 'Medium or large?') },
@@ -38,7 +38,7 @@ export const DAY4_ES_ITEMS: BootcampItem[] = [
   { id: 'es.reply.coffee.anything-to-eat', text: '¿Algo de comer?', meaning: T('משהו לאכול?', 'Anything to eat?') },
   { id: 'es.reply.coffee.anything-else', text: '¿Algo más?', meaning: T('עוד משהו?', 'Would you like anything else?') },
   { id: 'es.reply.coffee.cash-or-card', text: '¿Efectivo o tarjeta?', meaning: T('מזומן או כרטיס?', 'Cash or card?') },
-  { id: 'es.reply.coffee.receipt', text: '¿Quiere el tique?', meaning: T('רוצה את הקבלה?', 'Would you like the receipt?') },
+  { id: 'es.reply.coffee.receipt', text: '¿Quiere el recibo?', meaning: T('רוצה את הקבלה?', 'Would you like the receipt?') },
   { id: 'es.reply.coffee.enjoy', text: '¡Que tenga un buen día!', meaning: T('שיהיה לך יום מעולה!', 'Enjoy your day!') },
 ];
 
@@ -46,7 +46,7 @@ const SCENE_BREAKFAST: BootcampDialogue = {
   id: 'breakfast-order',
   start: 'n1',
   nodes: [
-    { id: 'n1', who: 'npc', next: 'c1', en: '¡Buenos días! ¿Qué le pongo?', tr: TR('Good morning! What can I get you?', 'בוקר טוב! מה להביא לך?'), he: 'בוקר טוב! מה להביא לך?' },
+    { id: 'n1', who: 'npc', next: 'c1', en: '¡Buenos días! ¿Qué le sirvo?', tr: TR('Good morning! What can I get you?', 'בוקר טוב! מה להביא לך?'), he: 'בוקר טוב! מה להביא לך?' },
     { id: 'c1', who: 'you', en: '', he: '', choices: [
       { en: 'Quiero un café con hielo, por favor.', tr: TR("I'd like an iced coffee, please.", 'אני רוצה קפה קר, בבקשה.'), he: 'אני רוצה קפה קר, בבקשה.', itemId: 'es.phrase.coffee.iced-coffee', correct: true, next: 'n2' },
       { en: 'Un momento, por favor.', tr: TR('One moment, please.', 'רגע אחד, בבקשה. (כלי הישרדות)'), he: 'רגע אחד, בבקשה.', itemId: 'es.phrase.recovery.one-moment', correct: true, next: 'r1' },
@@ -91,7 +91,7 @@ const SCENE_BREAKFAST: BootcampDialogue = {
     { id: 'c6b', who: 'you', en: '', he: '', choices: [
       { en: 'Con tarjeta, por favor.', tr: TR('Card, please.', 'בכרטיס, בבקשה.'), he: 'בכרטיס, בבקשה.', itemId: 'es.phrase.coffee.card', correct: true, next: 'n7' },
     ] },
-    { id: 'n7', who: 'npc', next: 'c7', en: '¿Quiere el tique?', tr: TR('Would you like the receipt?', 'רוצה את הקבלה?'), he: 'רוצה את הקבלה?' },
+    { id: 'n7', who: 'npc', next: 'c7', en: '¿Quiere el recibo?', tr: TR('Would you like the receipt?', 'רוצה את הקבלה?'), he: 'רוצה את הקבלה?' },
     { id: 'c7', who: 'you', en: '', he: '', choices: [
       { en: '¡No, gracias!', tr: TR('No, thank you!', 'לא, תודה!'), he: 'לא, תודה!', itemId: 'es.phrase.recovery.thank-you', correct: true, next: 'n8' },
       { en: 'Sí, por favor.', tr: TR('Yes, please.', 'כן, בבקשה.'), he: 'כן, בבקשה.', correct: true, next: 'n8' },

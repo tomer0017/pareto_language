@@ -108,7 +108,7 @@ export const DAY11_ES: BootcampDayContent = {
     { kind: 'dialogue', dialogueId: 'border-control' },
     { kind: 'receipt', text: T('עברת ביקורת גבול שלמה בספרדית — דרכון, מטרה, משך, מקום, מכס.', 'You cleared a full border check in Spanish — passport, purpose, duration, place, customs.') },
     { kind: 'swipe', itemIds: DAY11_ES_ITEMS.map((i) => i.id) },
-    { kind: 'ambush', npc: { en: '¿Y tiene un billete de vuelta reservado para su vuelo de regreso?', tr: TR('And do you have a return ticket booked for your flight home at all?', 'ויש לך בכלל כרטיס חזור מוזמן לטיסה הביתה?'), he: 'ויש לך בכלל כרטיס חזור מוזמן לטיסה הביתה?' },
+    { kind: 'ambush', npc: { en: '¿Y tiene un boleto de vuelta reservado para su vuelo de regreso?', tr: TR('And do you have a return ticket booked for your flight home at all?', 'ויש לך בכלל כרטיס חזור מוזמן לטיסה הביתה?'), he: 'ויש לך בכלל כרטיס חזור מוזמן לטיסה הביתה?' },
       correctItemId: 'es.phrase.recovery.one-moment', wrongItemId: 'es.phrase.border.two-weeks' },
     { kind: 'receipt', text: T('שאלה שלא ציפית לה — ולא קפאת. קנית שנייה עם כלי.', 'A question you didn’t expect — and you didn’t freeze. You bought a second with a tool.') },
     { kind: 'summary' },

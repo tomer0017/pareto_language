@@ -49,7 +49,7 @@ const HOTEL_COLD: BootcampDialogue = {
       { en: 'Tengo una reserva.', tr: TR('I have a reservation.', 'יש לי הזמנה.'), he: 'יש לי הזמנה.', itemId: 'es.phrase.hotel.reservation', correct: true, next: 'n2' },
       { en: 'Más despacio, por favor.', tr: TR('Please speak slowly.', 'דבר לאט, בבקשה.'), he: 'דבר לאט, בבקשה.', itemId: 'es.phrase.recovery.slowly', correct: true, next: 'n2' },
     ] },
-    { id: 'n2', who: 'npc', fast: true, next: 'c2', en: 'Perfecto — habitación doscientos cuatro, segunda planta, desayuno de siete a diez.', tr: TR("Great — room two-oh-four, second floor, breakfast is seven to ten.", 'מצוין — חדר 204, קומה שנייה, ארוחת בוקר משבע עד עשר.'), he: 'מצוין — חדר 204, קומה שנייה, ארוחת בוקר משבע עד עשר.' },
+    { id: 'n2', who: 'npc', fast: true, next: 'c2', en: 'Perfecto — habitación doscientos cuatro, segundo piso, desayuno de siete a diez.', tr: TR("Great — room two-oh-four, second floor, breakfast is seven to ten.", 'מצוין — חדר 204, קומה שנייה, ארוחת בוקר משבע עד עשר.'), he: 'מצוין — חדר 204, קומה שנייה, ארוחת בוקר משבע עד עשר.' },
     { id: 'c2', who: 'you', en: '', he: '', choices: [
       { en: '¿El desayuno está incluido?', tr: TR('Is breakfast included?', 'ארוחת הבוקר כלולה?'), he: 'ארוחת הבוקר כלולה?', itemId: 'es.phrase.hotel.breakfast', correct: true, next: 'n3' },
       { en: '¡Gracias!', tr: TR('Thank you!', 'תודה!'), he: 'תודה!', itemId: 'es.phrase.recovery.thank-you', correct: true, next: 'n3' },

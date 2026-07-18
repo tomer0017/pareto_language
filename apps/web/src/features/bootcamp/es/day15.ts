@@ -17,14 +17,14 @@ export const DAY15_ES_ITEMS: BootcampItem[] = [
   { id: 'es.phrase.pay.by-cash', text: 'Voy a pagar en efectivo.', meaning: T('אני אשלם במזומן.', "I'll pay in cash.") },
   { id: 'es.phrase.pay.keep-change', text: 'Quédese con el cambio.', meaning: T('תשמור את העודף.', 'Keep the change.'),
     tip: T('הדרך החלקה לתת טיפ במזומן. שתי מילים, חיוך גדול.', 'The smooth way to tip in cash. Two words, big smile.') },
-  { id: 'es.phrase.pay.receipt-please', text: '¿Me da un tique?', meaning: T('אפשר קבלה?', 'Could I have a receipt?') },
+  { id: 'es.phrase.pay.receipt-please', text: '¿Me da un recibo?', meaning: T('אפשר קבלה?', 'Could I have a receipt?') },
   { id: 'es.phrase.pay.together', text: 'Todo junto, por favor.', meaning: T('הכל ביחד, בבקשה.', 'All together, please.'),
     tip: T('התשובה ל-"ביחד או בנפרד?" כשמשלמים על כולם.', 'The answer to “together or separate?” when you pay for everyone.') },
   // hear — the counter's replies
   { id: 'es.reply.pay.thatll-be', text: 'Son doce con cincuenta.', meaning: T('זה יוצא שתים-עשרה וחצי.', "That'll be twelve fifty.") },
   { id: 'es.reply.pay.cash-card', text: '¿Efectivo o tarjeta?', meaning: T('מזומן או כרטיס?', 'Cash or card?') },
   { id: 'es.reply.pay.tap-card', text: 'Puede pagar sin contacto.', meaning: T('אפשר להצמיד את הכרטיס.', 'You can tap your card.') },
-  { id: 'es.reply.pay.receipt-q', text: '¿Quiere el tique?', meaning: T('תרצה קבלה?', 'Would you like a receipt?') },
+  { id: 'es.reply.pay.receipt-q', text: '¿Quiere el recibo?', meaning: T('תרצה קבלה?', 'Would you like a receipt?') },
   { id: 'es.reply.pay.together-separate', text: '¿Junto o por separado?', meaning: T('ביחד או בנפרד?', 'Together or separate?') },
   { id: 'es.reply.pay.heres-change', text: 'Aquí tiene su cambio.', meaning: T('הנה העודף שלך.', "Here's your change.") },
   ...recoveryEs('es.phrase.recovery.repeat', 'es.phrase.recovery.slowly', 'es.phrase.recovery.thank-you'),
@@ -46,12 +46,12 @@ const SCENE_CHECKOUT: BootcampDialogue = {
     ] },
     { id: 'n2', who: 'npc', next: 'c2', en: 'Perfecto — puede pagar sin contacto aquí.', tr: TR('Perfect — you can tap your card right here.', 'מצוין — אפשר להצמיד את הכרטיס כאן.'), he: 'מצוין — אפשר להצמיד את הכרטיס כאן.' },
     { id: 'c2', who: 'you', en: '', he: '', choices: [
-      { en: '¿Me da un tique?', tr: TR('Could I have a receipt?', 'אפשר קבלה?'), he: 'אפשר קבלה?', itemId: 'es.phrase.pay.receipt-please', correct: true, next: 'n3' },
+      { en: '¿Me da un recibo?', tr: TR('Could I have a receipt?', 'אפשר קבלה?'), he: 'אפשר קבלה?', itemId: 'es.phrase.pay.receipt-please', correct: true, next: 'n3' },
       { en: '¿Puede repetir, por favor?', tr: TR('Can you repeat that?', 'אפשר לחזור על זה?'), he: 'אפשר לחזור על זה?', itemId: 'es.phrase.recovery.repeat', correct: true, next: 'r2' },
     ] },
     { id: 'r2', who: 'npc', slow: true, next: 'c2b', en: 'Puede — pagar — sin contacto — aquí.', tr: TR('You can — tap — your card — here.', 'אפשר — להצמיד — את הכרטיס — כאן.'), he: 'אפשר — להצמיד — את הכרטיס — כאן.' },
     { id: 'c2b', who: 'you', en: '', he: '', choices: [
-      { en: '¿Me da un tique?', tr: TR('Could I have a receipt?', 'אפשר קבלה?'), he: 'אפשר קבלה?', itemId: 'es.phrase.pay.receipt-please', correct: true, next: 'n3' },
+      { en: '¿Me da un recibo?', tr: TR('Could I have a receipt?', 'אפשר קבלה?'), he: 'אפשר קבלה?', itemId: 'es.phrase.pay.receipt-please', correct: true, next: 'n3' },
     ] },
     { id: 'n3', who: 'npc', next: 'c3', en: '¡Muy amable, gracias! ¿Algo más?', tr: TR("That's very kind, thank you! Anything else?", 'מאוד נחמד, תודה! עוד משהו?'), he: 'מאוד נחמד, תודה! עוד משהו?' },
     { id: 'c3', who: 'you', en: '', he: '', choices: [
@@ -62,7 +62,7 @@ const SCENE_CHECKOUT: BootcampDialogue = {
     { id: 'c3b', who: 'you', en: '', he: '', choices: [
       { en: 'Eso es todo, gracias.', tr: TR("That's all, thanks.", 'זה הכל, תודה.'), he: 'זה הכל, תודה.', correct: true, next: 'n4' },
     ] },
-    { id: 'n4', who: 'npc', end: true, en: 'Aquí tiene su tique. Gracias — ¡que tenga un buen día!', tr: TR("Here's your receipt. Thank you — have a great day!", 'הנה הקבלה שלך. תודה — שיהיה יום מעולה!'), he: 'הנה הקבלה שלך. תודה — שיהיה יום מעולה!' },
+    { id: 'n4', who: 'npc', end: true, en: 'Aquí tiene su recibo. Gracias — ¡que tenga un buen día!', tr: TR("Here's your receipt. Thank you — have a great day!", 'הנה הקבלה שלך. תודה — שיהיה יום מעולה!'), he: 'הנה הקבלה שלך. תודה — שיהיה יום מעולה!' },
   ],
 };
 
@@ -89,7 +89,7 @@ export const DAY15_ES: BootcampDayContent = {
     { kind: 'dialogue', dialogueId: 'pay-checkout' },
     { kind: 'receipt', text: T('סגרת תשלום שלם — בחרת אמצעי, נתת טיפ, וביקשת קבלה. חלק לגמרי.', 'You closed a full payment — chose a method, tipped, and asked for a receipt. Completely smooth.') },
     { kind: 'swipe', itemIds: DAY15_ES_ITEMS.map((i) => i.id) },
-    { kind: 'ambush', npc: { en: 'Ay, perdone, el datáfono no funciona ahora mismo — ¿lleva efectivo encima?', tr: TR("Ah sorry the card machine is down right now do you have any cash on you?", 'אה, סליחה, מכונת הכרטיסים מושבתת כרגע — יש עליך מזומן?'), he: 'אה, סליחה, מכונת הכרטיסים מושבתת כרגע — יש עליך מזומן?' },
+    { kind: 'ambush', npc: { en: 'Ay, perdone, la máquina de tarjetas no funciona ahora mismo — ¿lleva efectivo encima?', tr: TR("Ah sorry the card machine is down right now do you have any cash on you?", 'אה, סליחה, מכונת הכרטיסים מושבתת כרגע — יש עליך מזומן?'), he: 'אה, סליחה, מכונת הכרטיסים מושבתת כרגע — יש עליך מזומן?' },
       correctItemId: 'es.phrase.pay.by-cash', wrongItemId: 'es.phrase.pay.receipt-please' },
     { kind: 'receipt', text: T('הכרטיס לא עבד — ובלי היסוס עברת למזומן. גמישות היא ביטחון.', 'The card failed — and without hesitation you switched to cash. Flexibility is confidence.') },
     { kind: 'summary' },

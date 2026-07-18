@@ -43,8 +43,12 @@ const EXTRAS: Record<string, ProfileExtras> = {
     testPhrase: 'Buongiorno! Vorrei un caffè, per favore.',
   },
   es: {
-    fallbackLocales: ['es'], // region-neutral 'es' only; es-MX / es-419 are NOT approved for es-ES
-    preferredVoiceNames: ['Mónica', 'Monica', 'Google español', 'Microsoft Elvira', 'Paulina'],
+    // READY teaches NEUTRAL LATIN AMERICAN Spanish, so Latin-American regions ARE the target accent —
+    // approved (not degraded) and prioritized IN ORDER: es-419 (LatAm macro) ≫ es-MX ≫ es-US ≫ es-CO,
+    // then bare 'es'. The registry primary locale (es-ES) stays the exact match only as a last resort
+    // where nothing Latin-American is installed — Castilian is the fallback here, not the goal.
+    fallbackLocales: ['es-419', 'es-MX', 'es-US', 'es-CO', 'es'],
+    preferredVoiceNames: ['Paulina', 'Juan', 'Google español de Estados Unidos', 'Microsoft Dalia', 'Microsoft Jorge', 'Mónica', 'Monica'],
     testPhrase: 'Hola. Quiero un café, por favor.',
   },
   ar: {

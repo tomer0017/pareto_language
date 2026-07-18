@@ -114,7 +114,7 @@ drives its existing scroll/highlight sheet from the same hook + `PlaybackControl
 once and appear everywhere — no playback logic is duplicated.
 
 Sprint-3 capabilities — continuous **Loop** (`planNextCycle`, anti-boundary-repeat), a **sleep
-timer**, **speed** (0.75/1/1.25×), **pause durations** (`PAUSE_PRESETS`), persisted **preferences**
+timer**, **speed** (0.5/0.75/1/1.25×), **pause durations** (`PAUSE_PRESETS`), persisted **preferences**
 and per-surface **listening bookmarks** — are all engine-level, so every current and future
 surface gets them for free. Voice selection / background playback / lock-screen controls remain
 out of scope (browser TTS + Wake Lock cannot guarantee them once the OS suspends the page).

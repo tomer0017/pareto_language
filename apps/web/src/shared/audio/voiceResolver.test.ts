@@ -5,7 +5,7 @@ import { speechProfile } from './voiceProfiles.js';
 const V = (name: string, lang: string, extra: Partial<VoiceLike> = {}): VoiceLike => ({ name, lang, ...extra });
 const EN = speechProfile('en'); // locale en-US, approved fallbacks: ['en'] (region-neutral only)
 const FR = speechProfile('fr'); // locale fr-FR, approved fallbacks: ['fr']
-const ES = speechProfile('es'); // locale es-ES, approved fallbacks: ['es']
+const ES = speechProfile('es'); // locale es-ES; LatAm-preferred fallbacks ['es-419','es-MX','es-US','es-CO','es']
 
 describe('VoiceResolver — locale scoring', () => {
   it('prefers exact en-US over en-GB', () => {
@@ -64,9 +64,17 @@ describe('VoiceResolver — regional accents are NOT equivalent (match quality)'
     expect(scoreVoice(V('Canadian', 'fr-CA'), FR)?.quality).toBe('same-language-different-region');
   });
 
-  it('es-ES does not silently treat es-MX as exact or approved (unless configured)', () => {
-    expect(scoreVoice(V('Mexican', 'es-MX'), ES)?.quality).toBe('same-language-different-region');
-    // and an exact es-ES beside it still wins outright
+  it('es (Neutral Latin American) approves LatAm regions in order; an unlisted region stays degraded', () => {
+    // es-MX / es-US / es-CO are the taught accent → approved fallbacks (not degraded).
+    expect(scoreVoice(V('Mexican', 'es-MX'), ES)?.quality).toBe('approved-fallback');
+    expect(scoreVoice(V('Colombian', 'es-CO'), ES)?.quality).toBe('approved-fallback');
+    // an unlisted region is still degraded (mechanism intact).
+    expect(scoreVoice(V('EqGuinea', 'es-GQ'), ES)?.quality).toBe('same-language-different-region');
+    // when no exact es-ES voice is installed (the common Latin-American device case), the ordered
+    // ladder decides: es-MX (index 1) outranks es-CO (index 3).
+    expect(resolveVoice([V('Colombian', 'es-CO'), V('Mexican', 'es-MX')], ES)?.voice.name).toBe('Mexican');
+    // The registry primary is still es-ES, so an installed Castilian voice remains the exact match
+    // (last-resort target). Truly demoting it below LatAm would require a registry locale change.
     const best = resolveVoice([V('Mexican', 'es-MX'), V('Castilian', 'es-ES')], ES);
     expect(best?.voice.name).toBe('Castilian');
     expect(best?.quality).toBe('exact-locale');

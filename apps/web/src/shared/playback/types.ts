@@ -17,8 +17,9 @@ export type PlaybackOrder = 'sequential' | 'random';
 /** Idle (never started), actively speaking, paused mid-session (resumable), or finished the list. */
 export type PlaybackStatus = 'idle' | 'playing' | 'paused' | 'finished';
 
-/** TTS rate multiplier for Parrot Mode (relative to the global speech-speed preference). */
-export type PlaybackSpeed = 0.75 | 1 | 1.25;
+/** TTS rate multiplier for Parrot Mode (relative to the global speech-speed preference). `0.5×` lets
+ *  a beginner slow every spoken sentence right down; `1×` is the default. */
+export type PlaybackSpeed = 0.5 | 0.75 | 1 | 1.25;
 
 /** Named silence length between spoken parts — mapped to concrete ms in `playbackPlan.ts`. */
 export type PauseDuration = 'short' | 'normal' | 'long';
