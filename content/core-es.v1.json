@@ -1,14 +1,14 @@
 {
-  "lang": "fr",
+  "lang": "es",
   "version": "2.0.0",
-  "generatedAt": "2026-07-18T10:43:56.453Z",
+  "generatedAt": "2026-07-18T10:43:56.456Z",
   "pilot": true,
   "count": 511,
   "words": [
     {
-      "id": "fr.word.help",
+      "id": "es.word.help",
       "conceptId": "concept.word.help",
-      "word": "aider",
+      "word": "ayudar",
       "meaning": {
         "en": "help",
         "he": "לעזור"
@@ -24,9 +24,9 @@
       }
     },
     {
-      "id": "fr.word.toilet",
+      "id": "es.word.toilet",
       "conceptId": "concept.word.toilet",
-      "word": "toilettes",
+      "word": "servicios",
       "meaning": {
         "en": "toilet",
         "he": "שירותים"
@@ -43,9 +43,9 @@
       }
     },
     {
-      "id": "fr.word.stop",
+      "id": "es.word.stop",
       "conceptId": "concept.word.stop",
-      "word": "arrêter",
+      "word": "parar",
       "meaning": {
         "en": "stop",
         "he": "לעצור"
@@ -62,9 +62,9 @@
       }
     },
     {
-      "id": "fr.word.lose",
+      "id": "es.word.lose",
       "conceptId": "concept.word.lose",
-      "word": "perdre",
+      "word": "perder",
       "meaning": {
         "en": "lose",
         "he": "לאבד"
@@ -80,9 +80,9 @@
       }
     },
     {
-      "id": "fr.word.passport",
+      "id": "es.word.passport",
       "conceptId": "concept.word.passport",
-      "word": "passeport",
+      "word": "pasaporte",
       "meaning": {
         "en": "passport",
         "he": "דרכון"
@@ -99,9 +99,9 @@
       }
     },
     {
-      "id": "fr.word.lost",
+      "id": "es.word.lost",
       "conceptId": "concept.word.lost",
-      "word": "perdu",
+      "word": "perdido",
       "meaning": {
         "en": "lost",
         "he": "אבוד"
@@ -117,9 +117,9 @@
       }
     },
     {
-      "id": "fr.word.doctor",
+      "id": "es.word.doctor",
       "conceptId": "concept.word.doctor",
-      "word": "médecin",
+      "word": "médico",
       "meaning": {
         "en": "doctor",
         "he": "רופא"
@@ -136,9 +136,9 @@
       }
     },
     {
-      "id": "fr.reply.help.call",
+      "id": "es.reply.help.call",
       "conceptId": "concept.reply.help.call",
-      "word": "Au secours !",
+      "word": "¡Socorro!",
       "meaning": {
         "en": "Help!",
         "he": "הצילו!"
@@ -155,9 +155,9 @@
       }
     },
     {
-      "id": "fr.word.police",
+      "id": "es.word.police",
       "conceptId": "concept.word.police",
-      "word": "police",
+      "word": "policía",
       "meaning": {
         "en": "police",
         "he": "משטרה"
@@ -174,9 +174,9 @@
       }
     },
     {
-      "id": "fr.word.allergy",
+      "id": "es.word.allergy",
       "conceptId": "concept.word.allergy",
-      "word": "allergie",
+      "word": "alergia",
       "meaning": {
         "en": "allergy",
         "he": "אלרגיה"
@@ -192,9 +192,9 @@
       }
     },
     {
-      "id": "fr.word.hospital",
+      "id": "es.word.hospital",
       "conceptId": "concept.word.hospital",
-      "word": "hôpital",
+      "word": "hospital",
       "meaning": {
         "en": "hospital",
         "he": "בית חולים"
@@ -211,9 +211,9 @@
       }
     },
     {
-      "id": "fr.word.pharmacy",
+      "id": "es.word.pharmacy",
       "conceptId": "concept.word.pharmacy",
-      "word": "pharmacie",
+      "word": "farmacia",
       "meaning": {
         "en": "pharmacy",
         "he": "בית מרקחת"
@@ -230,9 +230,9 @@
       }
     },
     {
-      "id": "fr.word.careful",
+      "id": "es.word.careful",
       "conceptId": "concept.word.careful",
-      "word": "attention",
+      "word": "cuidado",
       "meaning": {
         "en": "careful",
         "he": "זהירות"
@@ -248,9 +248,9 @@
       }
     },
     {
-      "id": "fr.word.emergency",
+      "id": "es.word.emergency",
       "conceptId": "concept.word.emergency",
-      "word": "urgence",
+      "word": "emergencia",
       "meaning": {
         "en": "emergency",
         "he": "חירום"
@@ -266,9 +266,9 @@
       }
     },
     {
-      "id": "fr.word.this",
+      "id": "es.word.this",
       "conceptId": "concept.word.this",
-      "word": "ça",
+      "word": "esto",
       "meaning": {
         "en": "this",
         "he": "זה (הזה)"
@@ -284,9 +284,9 @@
       }
     },
     {
-      "id": "fr.word.how",
+      "id": "es.word.how",
       "conceptId": "concept.word.how",
-      "word": "comment",
+      "word": "cómo",
       "meaning": {
         "en": "how",
         "he": "איך"
@@ -302,9 +302,9 @@
       }
     },
     {
-      "id": "fr.number.one",
+      "id": "es.number.one",
       "conceptId": "concept.number.one",
-      "word": "un",
+      "word": "uno",
       "meaning": {
         "en": "one",
         "he": "אחת"
@@ -321,9 +321,9 @@
       }
     },
     {
-      "id": "fr.number.two",
+      "id": "es.number.two",
       "conceptId": "concept.number.two",
-      "word": "deux",
+      "word": "dos",
       "meaning": {
         "en": "two",
         "he": "שתיים"
@@ -340,9 +340,9 @@
       }
     },
     {
-      "id": "fr.number.three",
+      "id": "es.number.three",
       "conceptId": "concept.number.three",
-      "word": "trois",
+      "word": "tres",
       "meaning": {
         "en": "three",
         "he": "שלוש"
@@ -359,9 +359,9 @@
       }
     },
     {
-      "id": "fr.word.now",
+      "id": "es.word.now",
       "conceptId": "concept.word.now",
-      "word": "maintenant",
+      "word": "ahora",
       "meaning": {
         "en": "now",
         "he": "עכשיו"
@@ -377,9 +377,9 @@
       }
     },
     {
-      "id": "fr.word.want",
+      "id": "es.word.want",
       "conceptId": "concept.word.want",
-      "word": "vouloir",
+      "word": "querer",
       "meaning": {
         "en": "want",
         "he": "לרצות"
@@ -395,9 +395,9 @@
       }
     },
     {
-      "id": "fr.word.need",
+      "id": "es.word.need",
       "conceptId": "concept.word.need",
-      "word": "avoir besoin",
+      "word": "necesitar",
       "meaning": {
         "en": "need",
         "he": "להיות צריך"
@@ -413,9 +413,9 @@
       }
     },
     {
-      "id": "fr.word.have",
+      "id": "es.word.have",
       "conceptId": "concept.word.have",
-      "word": "avoir",
+      "word": "tener",
       "meaning": {
         "en": "have",
         "he": "יש (לי)"
@@ -431,9 +431,9 @@
       }
     },
     {
-      "id": "fr.word.go",
+      "id": "es.word.go",
       "conceptId": "concept.word.go",
-      "word": "aller",
+      "word": "ir",
       "meaning": {
         "en": "go",
         "he": "ללכת / לנסוע"
@@ -449,9 +449,9 @@
       }
     },
     {
-      "id": "fr.word.speak",
+      "id": "es.word.speak",
       "conceptId": "concept.word.speak",
-      "word": "parler",
+      "word": "hablar",
       "meaning": {
         "en": "speak",
         "he": "לדבר"
@@ -468,9 +468,9 @@
       }
     },
     {
-      "id": "fr.word.pay",
+      "id": "es.word.pay",
       "conceptId": "concept.word.pay",
-      "word": "payer",
+      "word": "pagar",
       "meaning": {
         "en": "pay",
         "he": "לשלם"
@@ -487,9 +487,9 @@
       }
     },
     {
-      "id": "fr.word.here",
+      "id": "es.word.here",
       "conceptId": "concept.word.here",
-      "word": "ici",
+      "word": "aquí",
       "meaning": {
         "en": "here",
         "he": "כאן"
@@ -505,9 +505,9 @@
       }
     },
     {
-      "id": "fr.word.where",
+      "id": "es.word.where",
       "conceptId": "concept.word.where",
-      "word": "où",
+      "word": "dónde",
       "meaning": {
         "en": "where",
         "he": "איפה"
@@ -523,9 +523,9 @@
       }
     },
     {
-      "id": "fr.word.when",
+      "id": "es.word.when",
       "conceptId": "concept.word.when",
-      "word": "quand",
+      "word": "cuándo",
       "meaning": {
         "en": "when",
         "he": "מתי"
@@ -541,9 +541,9 @@
       }
     },
     {
-      "id": "fr.word.today",
+      "id": "es.word.today",
       "conceptId": "concept.word.today",
-      "word": "aujourd’hui",
+      "word": "hoy",
       "meaning": {
         "en": "today",
         "he": "היום"
@@ -559,9 +559,9 @@
       }
     },
     {
-      "id": "fr.word.tomorrow",
+      "id": "es.word.tomorrow",
       "conceptId": "concept.word.tomorrow",
-      "word": "demain",
+      "word": "mañana",
       "meaning": {
         "en": "tomorrow",
         "he": "מחר"
@@ -577,9 +577,9 @@
       }
     },
     {
-      "id": "fr.word.understand",
+      "id": "es.word.understand",
       "conceptId": "concept.word.understand",
-      "word": "comprendre",
+      "word": "entender",
       "meaning": {
         "en": "understand",
         "he": "להבין"
@@ -595,9 +595,9 @@
       }
     },
     {
-      "id": "fr.word.next",
+      "id": "es.word.next",
       "conceptId": "concept.word.next",
-      "word": "prochain",
+      "word": "próximo",
       "meaning": {
         "en": "next",
         "he": "הבא"
@@ -613,9 +613,9 @@
       }
     },
     {
-      "id": "fr.word.open",
+      "id": "es.word.open",
       "conceptId": "concept.word.open",
-      "word": "ouvert",
+      "word": "abierto",
       "meaning": {
         "en": "open",
         "he": "פתוח"
@@ -631,9 +631,9 @@
       }
     },
     {
-      "id": "fr.word.closed",
+      "id": "es.word.closed",
       "conceptId": "concept.word.closed",
-      "word": "fermé",
+      "word": "cerrado",
       "meaning": {
         "en": "closed",
         "he": "סגור"
@@ -649,9 +649,9 @@
       }
     },
     {
-      "id": "fr.word.yes",
+      "id": "es.word.yes",
       "conceptId": "concept.word.yes",
-      "word": "oui",
+      "word": "sí",
       "meaning": {
         "en": "yes",
         "he": "כן"
@@ -667,9 +667,9 @@
       }
     },
     {
-      "id": "fr.word.no",
+      "id": "es.word.no",
       "conceptId": "concept.word.no",
-      "word": "non",
+      "word": "no",
       "meaning": {
         "en": "no",
         "he": "לא"
@@ -685,9 +685,9 @@
       }
     },
     {
-      "id": "fr.word.please",
+      "id": "es.word.please",
       "conceptId": "concept.word.please",
-      "word": "s’il vous plaît",
+      "word": "por favor",
       "meaning": {
         "en": "please",
         "he": "בבקשה"
@@ -703,9 +703,9 @@
       }
     },
     {
-      "id": "fr.word.okay",
+      "id": "es.word.okay",
       "conceptId": "concept.word.okay",
-      "word": "d’accord",
+      "word": "de acuerdo",
       "meaning": {
         "en": "okay",
         "he": "בסדר"
@@ -721,9 +721,9 @@
       }
     },
     {
-      "id": "fr.word.hello",
+      "id": "es.word.hello",
       "conceptId": "concept.word.hello",
-      "word": "bonjour",
+      "word": "hola",
       "meaning": {
         "en": "hello",
         "he": "שלום"
@@ -739,9 +739,9 @@
       }
     },
     {
-      "id": "fr.word.water",
+      "id": "es.word.water",
       "conceptId": "concept.word.water",
-      "word": "eau",
+      "word": "agua",
       "meaning": {
         "en": "water",
         "he": "מים"
@@ -758,9 +758,9 @@
       }
     },
     {
-      "id": "fr.word.hotel",
+      "id": "es.word.hotel",
       "conceptId": "concept.word.hotel",
-      "word": "hôtel",
+      "word": "hotel",
       "meaning": {
         "en": "hotel",
         "he": "מלון"
@@ -777,9 +777,9 @@
       }
     },
     {
-      "id": "fr.word.card",
+      "id": "es.word.card",
       "conceptId": "concept.word.card",
-      "word": "carte",
+      "word": "tarjeta",
       "meaning": {
         "en": "card",
         "he": "כרטיס אשראי"
@@ -796,9 +796,9 @@
       }
     },
     {
-      "id": "fr.word.near",
+      "id": "es.word.near",
       "conceptId": "concept.word.near",
-      "word": "près",
+      "word": "cerca",
       "meaning": {
         "en": "near",
         "he": "קרוב"
@@ -814,9 +814,9 @@
       }
     },
     {
-      "id": "fr.word.far",
+      "id": "es.word.far",
       "conceptId": "concept.word.far",
-      "word": "loin",
+      "word": "lejos",
       "meaning": {
         "en": "far",
         "he": "רחוק"
@@ -832,9 +832,9 @@
       }
     },
     {
-      "id": "fr.word.ambulance",
+      "id": "es.word.ambulance",
       "conceptId": "concept.word.ambulance",
-      "word": "ambulance",
+      "word": "ambulancia",
       "meaning": {
         "en": "ambulance",
         "he": "אמבולנס"
@@ -851,9 +851,9 @@
       }
     },
     {
-      "id": "fr.reply.here-you-go",
+      "id": "es.reply.here-you-go",
       "conceptId": "concept.reply.here-you-go",
-      "word": "Voilà.",
+      "word": "Aquí tiene.",
       "meaning": {
         "en": "Here you go.",
         "he": "הנה, בבקשה"
@@ -869,9 +869,9 @@
       }
     },
     {
-      "id": "fr.phrase.excuse-me",
+      "id": "es.phrase.excuse-me",
       "conceptId": "concept.phrase.excuse-me",
-      "word": "Excusez-moi.",
+      "word": "Disculpe.",
       "meaning": {
         "en": "Excuse me.",
         "he": "סליחה, אפשר?"
@@ -887,9 +887,9 @@
       }
     },
     {
-      "id": "fr.word.with",
+      "id": "es.word.with",
       "conceptId": "concept.word.with",
-      "word": "avec",
+      "word": "con",
       "meaning": {
         "en": "with",
         "he": "עם"
@@ -905,9 +905,9 @@
       }
     },
     {
-      "id": "fr.word.and",
+      "id": "es.word.and",
       "conceptId": "concept.word.and",
-      "word": "et",
+      "word": "y",
       "meaning": {
         "en": "and",
         "he": "ו…"
@@ -923,9 +923,9 @@
       }
     },
     {
-      "id": "fr.word.or",
+      "id": "es.word.or",
       "conceptId": "concept.word.or",
-      "word": "ou",
+      "word": "o",
       "meaning": {
         "en": "or",
         "he": "או"
@@ -941,9 +941,9 @@
       }
     },
     {
-      "id": "fr.word.what",
+      "id": "es.word.what",
       "conceptId": "concept.word.what",
-      "word": "quoi",
+      "word": "qué",
       "meaning": {
         "en": "what",
         "he": "מה"
@@ -959,9 +959,9 @@
       }
     },
     {
-      "id": "fr.phrase.what-time",
+      "id": "es.phrase.what-time",
       "conceptId": "concept.phrase.what-time",
-      "word": "Quelle heure ?",
+      "word": "¿Qué hora es?",
       "meaning": {
         "en": "What time?",
         "he": "באיזו שעה?"
@@ -977,9 +977,9 @@
       }
     },
     {
-      "id": "fr.word.i",
+      "id": "es.word.i",
       "conceptId": "concept.word.i",
-      "word": "je",
+      "word": "yo",
       "meaning": {
         "en": "I",
         "he": "אני"
@@ -995,9 +995,9 @@
       }
     },
     {
-      "id": "fr.word.you",
+      "id": "es.word.you",
       "conceptId": "concept.word.you",
-      "word": "vous",
+      "word": "usted",
       "meaning": {
         "en": "you",
         "he": "אתה"
@@ -1013,9 +1013,9 @@
       }
     },
     {
-      "id": "fr.word.we",
+      "id": "es.word.we",
       "conceptId": "concept.word.we",
-      "word": "nous",
+      "word": "nosotros",
       "meaning": {
         "en": "we",
         "he": "אנחנו"
@@ -1031,9 +1031,9 @@
       }
     },
     {
-      "id": "fr.word.my",
+      "id": "es.word.my",
       "conceptId": "concept.word.my",
-      "word": "mon",
+      "word": "mi",
       "meaning": {
         "en": "my",
         "he": "שלי"
@@ -1049,9 +1049,9 @@
       }
     },
     {
-      "id": "fr.number.ten",
+      "id": "es.number.ten",
       "conceptId": "concept.number.ten",
-      "word": "dix",
+      "word": "diez",
       "meaning": {
         "en": "ten",
         "he": "עשר"
@@ -1068,9 +1068,9 @@
       }
     },
     {
-      "id": "fr.word.eat",
+      "id": "es.word.eat",
       "conceptId": "concept.word.eat",
-      "word": "manger",
+      "word": "comer",
       "meaning": {
         "en": "eat",
         "he": "לאכול"
@@ -1086,9 +1086,9 @@
       }
     },
     {
-      "id": "fr.word.can",
+      "id": "es.word.can",
       "conceptId": "concept.word.can",
-      "word": "pouvoir",
+      "word": "poder",
       "meaning": {
         "en": "can",
         "he": "יכול"
@@ -1104,9 +1104,9 @@
       }
     },
     {
-      "id": "fr.word.order",
+      "id": "es.word.order",
       "conceptId": "concept.word.order",
-      "word": "commander",
+      "word": "pedir",
       "meaning": {
         "en": "order",
         "he": "להזמין (אוכל)"
@@ -1122,9 +1122,9 @@
       }
     },
     {
-      "id": "fr.word.danger",
+      "id": "es.word.danger",
       "conceptId": "concept.word.danger",
-      "word": "danger",
+      "word": "peligro",
       "meaning": {
         "en": "danger",
         "he": "סכנה"
@@ -1141,9 +1141,9 @@
       }
     },
     {
-      "id": "fr.word.left",
+      "id": "es.word.left",
       "conceptId": "concept.word.left",
-      "word": "gauche",
+      "word": "izquierda",
       "meaning": {
         "en": "left",
         "he": "שמאלה"
@@ -1160,9 +1160,9 @@
       }
     },
     {
-      "id": "fr.word.right",
+      "id": "es.word.right",
       "conceptId": "concept.word.right",
-      "word": "droite",
+      "word": "derecha",
       "meaning": {
         "en": "right",
         "he": "ימינה"
@@ -1179,9 +1179,9 @@
       }
     },
     {
-      "id": "fr.word.maybe",
+      "id": "es.word.maybe",
       "conceptId": "concept.word.maybe",
-      "word": "peut-être",
+      "word": "quizás",
       "meaning": {
         "en": "maybe",
         "he": "אולי"
@@ -1197,9 +1197,9 @@
       }
     },
     {
-      "id": "fr.word.without",
+      "id": "es.word.without",
       "conceptId": "concept.word.without",
-      "word": "sans",
+      "word": "sin",
       "meaning": {
         "en": "without",
         "he": "בלי"
@@ -1215,9 +1215,9 @@
       }
     },
     {
-      "id": "fr.word.there",
+      "id": "es.word.there",
       "conceptId": "concept.word.there",
-      "word": "là",
+      "word": "allí",
       "meaning": {
         "en": "there",
         "he": "שם"
@@ -1233,9 +1233,9 @@
       }
     },
     {
-      "id": "fr.number.four",
+      "id": "es.number.four",
       "conceptId": "concept.number.four",
-      "word": "quatre",
+      "word": "cuatro",
       "meaning": {
         "en": "four",
         "he": "ארבע"
@@ -1252,9 +1252,9 @@
       }
     },
     {
-      "id": "fr.number.five",
+      "id": "es.number.five",
       "conceptId": "concept.number.five",
-      "word": "cinq",
+      "word": "cinco",
       "meaning": {
         "en": "five",
         "he": "חמש"
@@ -1271,9 +1271,9 @@
       }
     },
     {
-      "id": "fr.word.later",
+      "id": "es.word.later",
       "conceptId": "concept.word.later",
-      "word": "plus tard",
+      "word": "más tarde",
       "meaning": {
         "en": "later",
         "he": "אחר כך"
@@ -1289,9 +1289,9 @@
       }
     },
     {
-      "id": "fr.word.wait",
+      "id": "es.word.wait",
       "conceptId": "concept.word.wait",
-      "word": "attendre",
+      "word": "esperar",
       "meaning": {
         "en": "wait",
         "he": "לחכות"
@@ -1307,9 +1307,9 @@
       }
     },
     {
-      "id": "fr.word.good",
+      "id": "es.word.good",
       "conceptId": "concept.word.good",
-      "word": "bon",
+      "word": "bueno",
       "meaning": {
         "en": "good",
         "he": "טוב"
@@ -1325,9 +1325,9 @@
       }
     },
     {
-      "id": "fr.word.more",
+      "id": "es.word.more",
       "conceptId": "concept.word.more",
-      "word": "plus",
+      "word": "más",
       "meaning": {
         "en": "more",
         "he": "עוד"
@@ -1343,9 +1343,9 @@
       }
     },
     {
-      "id": "fr.word.exit",
+      "id": "es.word.exit",
       "conceptId": "concept.word.exit",
-      "word": "sortie",
+      "word": "salida",
       "meaning": {
         "en": "exit",
         "he": "יציאה"
@@ -1361,9 +1361,9 @@
       }
     },
     {
-      "id": "fr.word.bus",
+      "id": "es.word.bus",
       "conceptId": "concept.word.bus",
-      "word": "bus",
+      "word": "autobús",
       "meaning": {
         "en": "bus",
         "he": "אוטובוס"
@@ -1380,9 +1380,9 @@
       }
     },
     {
-      "id": "fr.word.show",
+      "id": "es.word.show",
       "conceptId": "concept.word.show",
-      "word": "montrer",
+      "word": "mostrar",
       "meaning": {
         "en": "show",
         "he": "להראות"
@@ -1398,9 +1398,9 @@
       }
     },
     {
-      "id": "fr.word.turn",
+      "id": "es.word.turn",
       "conceptId": "concept.word.turn",
-      "word": "tourner",
+      "word": "girar",
       "meaning": {
         "en": "turn",
         "he": "לפנות"
@@ -1416,9 +1416,9 @@
       }
     },
     {
-      "id": "fr.word.price",
+      "id": "es.word.price",
       "conceptId": "concept.word.price",
-      "word": "prix",
+      "word": "precio",
       "meaning": {
         "en": "price",
         "he": "מחיר"
@@ -1435,9 +1435,9 @@
       }
     },
     {
-      "id": "fr.word.room",
+      "id": "es.word.room",
       "conceptId": "concept.word.room",
-      "word": "chambre",
+      "word": "habitación",
       "meaning": {
         "en": "room",
         "he": "חדר"
@@ -1453,7 +1453,7 @@
       }
     },
     {
-      "id": "fr.word.wifi",
+      "id": "es.word.wifi",
       "conceptId": "concept.word.wifi",
       "word": "wifi",
       "meaning": {
@@ -1472,9 +1472,9 @@
       }
     },
     {
-      "id": "fr.word.name",
+      "id": "es.word.name",
       "conceptId": "concept.word.name",
-      "word": "nom",
+      "word": "nombre",
       "meaning": {
         "en": "name",
         "he": "שם"
@@ -1490,9 +1490,9 @@
       }
     },
     {
-      "id": "fr.word.fire",
+      "id": "es.word.fire",
       "conceptId": "concept.word.fire",
-      "word": "feu",
+      "word": "fuego",
       "meaning": {
         "en": "fire",
         "he": "שריפה"
@@ -1509,9 +1509,9 @@
       }
     },
     {
-      "id": "fr.reply.i-dont-know",
+      "id": "es.reply.i-dont-know",
       "conceptId": "concept.reply.i-dont-know",
-      "word": "Je ne sais pas.",
+      "word": "No lo sé.",
       "meaning": {
         "en": "I don't know.",
         "he": "אני לא יודע"
@@ -1527,9 +1527,9 @@
       }
     },
     {
-      "id": "fr.word.train",
+      "id": "es.word.train",
       "conceptId": "concept.word.train",
-      "word": "train",
+      "word": "tren",
       "meaning": {
         "en": "train",
         "he": "רכבת"
@@ -1546,7 +1546,7 @@
       }
     },
     {
-      "id": "fr.word.taxi",
+      "id": "es.word.taxi",
       "conceptId": "concept.word.taxi",
       "word": "taxi",
       "meaning": {
@@ -1565,9 +1565,9 @@
       }
     },
     {
-      "id": "fr.word.center",
+      "id": "es.word.center",
       "conceptId": "concept.word.center",
-      "word": "centre",
+      "word": "centro",
       "meaning": {
         "en": "center",
         "he": "מרכז"
@@ -1583,9 +1583,9 @@
       }
     },
     {
-      "id": "fr.word.cash",
+      "id": "es.word.cash",
       "conceptId": "concept.word.cash",
-      "word": "espèces",
+      "word": "efectivo",
       "meaning": {
         "en": "cash",
         "he": "מזומן"
@@ -1602,9 +1602,9 @@
       }
     },
     {
-      "id": "fr.word.bill",
+      "id": "es.word.bill",
       "conceptId": "concept.word.bill",
-      "word": "addition",
+      "word": "cuenta",
       "meaning": {
         "en": "bill",
         "he": "חשבון"
@@ -1620,9 +1620,9 @@
       }
     },
     {
-      "id": "fr.word.airport",
+      "id": "es.word.airport",
       "conceptId": "concept.word.airport",
-      "word": "aéroport",
+      "word": "aeropuerto",
       "meaning": {
         "en": "airport",
         "he": "שדה תעופה"
@@ -1639,9 +1639,9 @@
       }
     },
     {
-      "id": "fr.word.entrance",
+      "id": "es.word.entrance",
       "conceptId": "concept.word.entrance",
-      "word": "entrée",
+      "word": "entrada",
       "meaning": {
         "en": "entrance",
         "he": "כניסה"
@@ -1657,9 +1657,9 @@
       }
     },
     {
-      "id": "fr.word.table",
+      "id": "es.word.table",
       "conceptId": "concept.word.table",
-      "word": "table",
+      "word": "mesa",
       "meaning": {
         "en": "table",
         "he": "שולחן"
@@ -1675,9 +1675,9 @@
       }
     },
     {
-      "id": "fr.word.reception",
+      "id": "es.word.reception",
       "conceptId": "concept.word.reception",
-      "word": "réception",
+      "word": "recepción",
       "meaning": {
         "en": "reception",
         "he": "קבלה"
@@ -1693,9 +1693,9 @@
       }
     },
     {
-      "id": "fr.word.atm",
+      "id": "es.word.atm",
       "conceptId": "concept.word.atm",
-      "word": "distributeur",
+      "word": "cajero",
       "meaning": {
         "en": "ATM",
         "he": "כספומט"
@@ -1712,9 +1712,9 @@
       }
     },
     {
-      "id": "fr.word.menu",
+      "id": "es.word.menu",
       "conceptId": "concept.word.menu",
-      "word": "menu",
+      "word": "carta",
       "meaning": {
         "en": "menu",
         "he": "תפריט"
@@ -1731,9 +1731,9 @@
       }
     },
     {
-      "id": "fr.word.gate",
+      "id": "es.word.gate",
       "conceptId": "concept.word.gate",
-      "word": "porte",
+      "word": "puerta",
       "meaning": {
         "en": "gate",
         "he": "שער (בשדה תעופה)"
@@ -1749,9 +1749,9 @@
       }
     },
     {
-      "id": "fr.word.password",
+      "id": "es.word.password",
       "conceptId": "concept.word.password",
-      "word": "mot de passe",
+      "word": "contraseña",
       "meaning": {
         "en": "password",
         "he": "סיסמה"
@@ -1767,9 +1767,9 @@
       }
     },
     {
-      "id": "fr.word.goodbye",
+      "id": "es.word.goodbye",
       "conceptId": "concept.word.goodbye",
-      "word": "au revoir",
+      "word": "adiós",
       "meaning": {
         "en": "goodbye",
         "he": "להתראות"
@@ -1785,7 +1785,7 @@
       }
     },
     {
-      "id": "fr.word.coffee",
+      "id": "es.word.coffee",
       "conceptId": "concept.word.coffee",
       "word": "café",
       "meaning": {
@@ -1804,9 +1804,9 @@
       }
     },
     {
-      "id": "fr.word.safe",
+      "id": "es.word.safe",
       "conceptId": "concept.word.safe",
-      "word": "en sécurité",
+      "word": "a salvo",
       "meaning": {
         "en": "safe",
         "he": "בטוח"
@@ -1822,9 +1822,9 @@
       }
     },
     {
-      "id": "fr.word.stolen",
+      "id": "es.word.stolen",
       "conceptId": "concept.word.stolen",
-      "word": "volé",
+      "word": "robado",
       "meaning": {
         "en": "stolen",
         "he": "גנוב"
@@ -1840,9 +1840,9 @@
       }
     },
     {
-      "id": "fr.word.dangerous",
+      "id": "es.word.dangerous",
       "conceptId": "concept.word.dangerous",
-      "word": "dangereux",
+      "word": "peligroso",
       "meaning": {
         "en": "dangerous",
         "he": "מסוכן"
@@ -1858,9 +1858,9 @@
       }
     },
     {
-      "id": "fr.word.money",
+      "id": "es.word.money",
       "conceptId": "concept.word.money",
-      "word": "argent",
+      "word": "dinero",
       "meaning": {
         "en": "money",
         "he": "כסף"
@@ -1877,9 +1877,9 @@
       }
     },
     {
-      "id": "fr.word.night",
+      "id": "es.word.night",
       "conceptId": "concept.word.night",
-      "word": "nuit",
+      "word": "noche",
       "meaning": {
         "en": "night",
         "he": "לילה"
@@ -1895,9 +1895,9 @@
       }
     },
     {
-      "id": "fr.word.day",
+      "id": "es.word.day",
       "conceptId": "concept.word.day",
-      "word": "jour",
+      "word": "día",
       "meaning": {
         "en": "day",
         "he": "יום"
@@ -1913,9 +1913,9 @@
       }
     },
     {
-      "id": "fr.word.embassy",
+      "id": "es.word.embassy",
       "conceptId": "concept.word.embassy",
-      "word": "ambassade",
+      "word": "embajada",
       "meaning": {
         "en": "embassy",
         "he": "שגרירות"
@@ -1931,9 +1931,9 @@
       }
     },
     {
-      "id": "fr.word.ticket",
+      "id": "es.word.ticket",
       "conceptId": "concept.word.ticket",
-      "word": "billet",
+      "word": "billete",
       "meaning": {
         "en": "ticket",
         "he": "כרטיס"
@@ -1950,9 +1950,9 @@
       }
     },
     {
-      "id": "fr.word.take",
+      "id": "es.word.take",
       "conceptId": "concept.word.take",
-      "word": "prendre",
+      "word": "tomar",
       "meaning": {
         "en": "take",
         "he": "לקחת"
@@ -1968,9 +1968,9 @@
       }
     },
     {
-      "id": "fr.word.fever",
+      "id": "es.word.fever",
       "conceptId": "concept.word.fever",
-      "word": "fièvre",
+      "word": "fiebre",
       "meaning": {
         "en": "fever",
         "he": "חום (גבוה)"
@@ -1987,9 +1987,9 @@
       }
     },
     {
-      "id": "fr.word.hour",
+      "id": "es.word.hour",
       "conceptId": "concept.word.hour",
-      "word": "heure",
+      "word": "hora",
       "meaning": {
         "en": "hour",
         "he": "שעה"
@@ -2005,9 +2005,9 @@
       }
     },
     {
-      "id": "fr.word.minute",
+      "id": "es.word.minute",
       "conceptId": "concept.word.minute",
-      "word": "minute",
+      "word": "minuto",
       "meaning": {
         "en": "minute",
         "he": "דקה"
@@ -2023,9 +2023,9 @@
       }
     },
     {
-      "id": "fr.word.time",
+      "id": "es.word.time",
       "conceptId": "concept.word.time",
-      "word": "temps",
+      "word": "tiempo",
       "meaning": {
         "en": "time",
         "he": "זמן"
@@ -2041,9 +2041,9 @@
       }
     },
     {
-      "id": "fr.word.buy",
+      "id": "es.word.buy",
       "conceptId": "concept.word.buy",
-      "word": "acheter",
+      "word": "comprar",
       "meaning": {
         "en": "buy",
         "he": "לקנות"
@@ -2059,9 +2059,9 @@
       }
     },
     {
-      "id": "fr.word.street",
+      "id": "es.word.street",
       "conceptId": "concept.word.street",
-      "word": "rue",
+      "word": "calle",
       "meaning": {
         "en": "street",
         "he": "רחוב"
@@ -2077,9 +2077,9 @@
       }
     },
     {
-      "id": "fr.reply.sounds-good",
+      "id": "es.reply.sounds-good",
       "conceptId": "concept.reply.sounds-good",
-      "word": "Ça marche.",
+      "word": "Me parece bien.",
       "meaning": {
         "en": "Sounds good.",
         "he": "נשמע טוב"
@@ -2095,9 +2095,9 @@
       }
     },
     {
-      "id": "fr.reply.no-worries",
+      "id": "es.reply.no-worries",
       "conceptId": "concept.reply.no-worries",
-      "word": "Pas de souci.",
+      "word": "No se preocupe.",
       "meaning": {
         "en": "No worries.",
         "he": "אל דאגה"
@@ -2113,9 +2113,9 @@
       }
     },
     {
-      "id": "fr.reply.thats-fine",
+      "id": "es.reply.thats-fine",
       "conceptId": "concept.reply.thats-fine",
-      "word": "C’est bon.",
+      "word": "Está bien.",
       "meaning": {
         "en": "That's fine.",
         "he": "זה בסדר"
@@ -2131,9 +2131,9 @@
       }
     },
     {
-      "id": "fr.reply.no-problem",
+      "id": "es.reply.no-problem",
       "conceptId": "concept.reply.no-problem",
-      "word": "Pas de problème.",
+      "word": "No hay problema.",
       "meaning": {
         "en": "No problem.",
         "he": "אין בעיה"
@@ -2149,9 +2149,9 @@
       }
     },
     {
-      "id": "fr.word.morning",
+      "id": "es.word.morning",
       "conceptId": "concept.word.morning",
-      "word": "matin",
+      "word": "mañana",
       "meaning": {
         "en": "morning",
         "he": "בוקר"
@@ -2167,9 +2167,9 @@
       }
     },
     {
-      "id": "fr.word.late",
+      "id": "es.word.late",
       "conceptId": "concept.word.late",
-      "word": "en retard",
+      "word": "tarde",
       "meaning": {
         "en": "late",
         "he": "מאוחר"
@@ -2185,7 +2185,7 @@
       }
     },
     {
-      "id": "fr.word.come",
+      "id": "es.word.come",
       "conceptId": "concept.word.come",
       "word": "venir",
       "meaning": {
@@ -2203,9 +2203,9 @@
       }
     },
     {
-      "id": "fr.word.call",
+      "id": "es.word.call",
       "conceptId": "concept.word.call",
-      "word": "appeler",
+      "word": "llamar",
       "meaning": {
         "en": "call",
         "he": "להתקשר"
@@ -2222,9 +2222,9 @@
       }
     },
     {
-      "id": "fr.word.find",
+      "id": "es.word.find",
       "conceptId": "concept.word.find",
-      "word": "trouver",
+      "word": "encontrar",
       "meaning": {
         "en": "find",
         "he": "למצוא"
@@ -2240,9 +2240,9 @@
       }
     },
     {
-      "id": "fr.word.hot",
+      "id": "es.word.hot",
       "conceptId": "concept.word.hot",
-      "word": "chaud",
+      "word": "caliente",
       "meaning": {
         "en": "hot",
         "he": "חם"
@@ -2259,9 +2259,9 @@
       }
     },
     {
-      "id": "fr.word.cold",
+      "id": "es.word.cold",
       "conceptId": "concept.word.cold",
-      "word": "froid",
+      "word": "frío",
       "meaning": {
         "en": "cold",
         "he": "קר"
@@ -2278,9 +2278,9 @@
       }
     },
     {
-      "id": "fr.word.large",
+      "id": "es.word.large",
       "conceptId": "concept.word.large",
-      "word": "grand",
+      "word": "grande",
       "meaning": {
         "en": "large",
         "he": "גדול"
@@ -2296,9 +2296,9 @@
       }
     },
     {
-      "id": "fr.word.medium",
+      "id": "es.word.medium",
       "conceptId": "concept.word.medium",
-      "word": "moyen",
+      "word": "mediano",
       "meaning": {
         "en": "medium",
         "he": "בינוני"
@@ -2314,9 +2314,9 @@
       }
     },
     {
-      "id": "fr.word.station",
+      "id": "es.word.station",
       "conceptId": "concept.word.station",
-      "word": "gare",
+      "word": "estación",
       "meaning": {
         "en": "station",
         "he": "תחנה"
@@ -2333,9 +2333,9 @@
       }
     },
     {
-      "id": "fr.reply.never-mind",
+      "id": "es.reply.never-mind",
       "conceptId": "concept.reply.never-mind",
-      "word": "Laissez tomber.",
+      "word": "No importa.",
       "meaning": {
         "en": "Never mind.",
         "he": "לא משנה"
@@ -2351,9 +2351,9 @@
       }
     },
     {
-      "id": "fr.word.which",
+      "id": "es.word.which",
       "conceptId": "concept.word.which",
-      "word": "quel",
+      "word": "cuál",
       "meaning": {
         "en": "which",
         "he": "איזה"
@@ -2369,9 +2369,9 @@
       }
     },
     {
-      "id": "fr.number.six",
+      "id": "es.number.six",
       "conceptId": "concept.number.six",
-      "word": "six",
+      "word": "seis",
       "meaning": {
         "en": "six",
         "he": "שש"
@@ -2388,9 +2388,9 @@
       }
     },
     {
-      "id": "fr.number.seven",
+      "id": "es.number.seven",
       "conceptId": "concept.number.seven",
-      "word": "sept",
+      "word": "siete",
       "meaning": {
         "en": "seven",
         "he": "שבע"
@@ -2407,9 +2407,9 @@
       }
     },
     {
-      "id": "fr.number.eight",
+      "id": "es.number.eight",
       "conceptId": "concept.number.eight",
-      "word": "huit",
+      "word": "ocho",
       "meaning": {
         "en": "eight",
         "he": "שמונה"
@@ -2426,9 +2426,9 @@
       }
     },
     {
-      "id": "fr.number.nine",
+      "id": "es.number.nine",
       "conceptId": "concept.number.nine",
-      "word": "neuf",
+      "word": "nueve",
       "meaning": {
         "en": "nine",
         "he": "תשע"
@@ -2445,9 +2445,9 @@
       }
     },
     {
-      "id": "fr.number.fifty",
+      "id": "es.number.fifty",
       "conceptId": "concept.number.fifty",
-      "word": "cinquante",
+      "word": "cincuenta",
       "meaning": {
         "en": "fifty",
         "he": "חמישים"
@@ -2463,9 +2463,9 @@
       }
     },
     {
-      "id": "fr.number.half",
+      "id": "es.number.half",
       "conceptId": "concept.number.half",
-      "word": "demi",
+      "word": "medio",
       "meaning": {
         "en": "half",
         "he": "חצי"
@@ -2481,9 +2481,9 @@
       }
     },
     {
-      "id": "fr.word.leave",
+      "id": "es.word.leave",
       "conceptId": "concept.word.leave",
-      "word": "partir",
+      "word": "salir",
       "meaning": {
         "en": "leave",
         "he": "לעזוב / לצאת"
@@ -2499,9 +2499,9 @@
       }
     },
     {
-      "id": "fr.word.book",
+      "id": "es.word.book",
       "conceptId": "concept.word.book",
-      "word": "réserver",
+      "word": "reservar",
       "meaning": {
         "en": "book",
         "he": "להזמין מראש"
@@ -2517,9 +2517,9 @@
       }
     },
     {
-      "id": "fr.word.accident",
+      "id": "es.word.accident",
       "conceptId": "concept.word.accident",
-      "word": "accident",
+      "word": "accidente",
       "meaning": {
         "en": "accident",
         "he": "תאונה"
@@ -2535,9 +2535,9 @@
       }
     },
     {
-      "id": "fr.word.phone",
+      "id": "es.word.phone",
       "conceptId": "concept.word.phone",
-      "word": "téléphone",
+      "word": "teléfono",
       "meaning": {
         "en": "phone",
         "he": "טלפון"
@@ -2554,9 +2554,9 @@
       }
     },
     {
-      "id": "fr.word.map",
+      "id": "es.word.map",
       "conceptId": "concept.word.map",
-      "word": "plan",
+      "word": "mapa",
       "meaning": {
         "en": "map",
         "he": "מפה"
@@ -2573,9 +2573,9 @@
       }
     },
     {
-      "id": "fr.reply.im-not-sure",
+      "id": "es.reply.im-not-sure",
       "conceptId": "concept.reply.im-not-sure",
-      "word": "Je ne suis pas sûr.",
+      "word": "No estoy seguro.",
       "meaning": {
         "en": "I'm not sure.",
         "he": "אני לא בטוח"
@@ -2591,9 +2591,9 @@
       }
     },
     {
-      "id": "fr.number.twenty",
+      "id": "es.number.twenty",
       "conceptId": "concept.number.twenty",
-      "word": "vingt",
+      "word": "veinte",
       "meaning": {
         "en": "twenty",
         "he": "עשרים"
@@ -2609,9 +2609,9 @@
       }
     },
     {
-      "id": "fr.number.hundred",
+      "id": "es.number.hundred",
       "conceptId": "concept.number.hundred",
-      "word": "cent",
+      "word": "cien",
       "meaning": {
         "en": "hundred",
         "he": "מאה"
@@ -2627,9 +2627,9 @@
       }
     },
     {
-      "id": "fr.word.arrive",
+      "id": "es.word.arrive",
       "conceptId": "concept.word.arrive",
-      "word": "arriver",
+      "word": "llegar",
       "meaning": {
         "en": "arrive",
         "he": "להגיע"
@@ -2645,9 +2645,9 @@
       }
     },
     {
-      "id": "fr.word.cheap",
+      "id": "es.word.cheap",
       "conceptId": "concept.word.cheap",
-      "word": "pas cher",
+      "word": "barato",
       "meaning": {
         "en": "cheap",
         "he": "זול"
@@ -2663,9 +2663,9 @@
       }
     },
     {
-      "id": "fr.word.free",
+      "id": "es.word.free",
       "conceptId": "concept.word.free",
-      "word": "gratuit",
+      "word": "gratis",
       "meaning": {
         "en": "free",
         "he": "חינם"
@@ -2681,9 +2681,9 @@
       }
     },
     {
-      "id": "fr.word.last",
+      "id": "es.word.last",
       "conceptId": "concept.word.last",
-      "word": "dernier",
+      "word": "último",
       "meaning": {
         "en": "last",
         "he": "אחרון"
@@ -2699,9 +2699,9 @@
       }
     },
     {
-      "id": "fr.word.evening",
+      "id": "es.word.evening",
       "conceptId": "concept.word.evening",
-      "word": "soir",
+      "word": "tarde",
       "meaning": {
         "en": "evening",
         "he": "ערב"
@@ -2717,9 +2717,9 @@
       }
     },
     {
-      "id": "fr.word.drink",
+      "id": "es.word.drink",
       "conceptId": "concept.word.drink",
-      "word": "boire",
+      "word": "beber",
       "meaning": {
         "en": "drink",
         "he": "לשתות"
@@ -2736,9 +2736,9 @@
       }
     },
     {
-      "id": "fr.word.know",
+      "id": "es.word.know",
       "conceptId": "concept.word.know",
-      "word": "savoir",
+      "word": "saber",
       "meaning": {
         "en": "know",
         "he": "לדעת"
@@ -2754,9 +2754,9 @@
       }
     },
     {
-      "id": "fr.word.give",
+      "id": "es.word.give",
       "conceptId": "concept.word.give",
-      "word": "donner",
+      "word": "dar",
       "meaning": {
         "en": "give",
         "he": "לתת"
@@ -2772,9 +2772,9 @@
       }
     },
     {
-      "id": "fr.word.work",
+      "id": "es.word.work",
       "conceptId": "concept.word.work",
-      "word": "marcher",
+      "word": "funcionar",
       "meaning": {
         "en": "work",
         "he": "לעבוד"
@@ -2790,9 +2790,9 @@
       }
     },
     {
-      "id": "fr.word.expensive",
+      "id": "es.word.expensive",
       "conceptId": "concept.word.expensive",
-      "word": "cher",
+      "word": "caro",
       "meaning": {
         "en": "expensive",
         "he": "יקר"
@@ -2808,9 +2808,9 @@
       }
     },
     {
-      "id": "fr.word.heart",
+      "id": "es.word.heart",
       "conceptId": "concept.word.heart",
-      "word": "cœur",
+      "word": "corazón",
       "meaning": {
         "en": "heart",
         "he": "לב"
@@ -2827,9 +2827,9 @@
       }
     },
     {
-      "id": "fr.word.plane",
+      "id": "es.word.plane",
       "conceptId": "concept.word.plane",
-      "word": "avion",
+      "word": "avión",
       "meaning": {
         "en": "plane",
         "he": "מטוס"
@@ -2846,9 +2846,9 @@
       }
     },
     {
-      "id": "fr.word.bag",
+      "id": "es.word.bag",
       "conceptId": "concept.word.bag",
-      "word": "sac",
+      "word": "bolsa",
       "meaning": {
         "en": "bag",
         "he": "תיק"
@@ -2865,9 +2865,9 @@
       }
     },
     {
-      "id": "fr.word.sick",
+      "id": "es.word.sick",
       "conceptId": "concept.word.sick",
-      "word": "malade",
+      "word": "enfermo",
       "meaning": {
         "en": "sick",
         "he": "חולה"
@@ -2884,9 +2884,9 @@
       }
     },
     {
-      "id": "fr.word.cancel",
+      "id": "es.word.cancel",
       "conceptId": "concept.word.cancel",
-      "word": "annuler",
+      "word": "cancelar",
       "meaning": {
         "en": "cancel",
         "he": "לבטל"
@@ -2902,9 +2902,9 @@
       }
     },
     {
-      "id": "fr.word.bad",
+      "id": "es.word.bad",
       "conceptId": "concept.word.bad",
-      "word": "mauvais",
+      "word": "malo",
       "meaning": {
         "en": "bad",
         "he": "רע"
@@ -2920,7 +2920,7 @@
       }
     },
     {
-      "id": "fr.word.euro",
+      "id": "es.word.euro",
       "conceptId": "concept.word.euro",
       "word": "euro",
       "meaning": {
@@ -2939,9 +2939,9 @@
       }
     },
     {
-      "id": "fr.reply.thats-all",
+      "id": "es.reply.thats-all",
       "conceptId": "concept.reply.thats-all",
-      "word": "C’est tout.",
+      "word": "Eso es todo.",
       "meaning": {
         "en": "That's all.",
         "he": "זה הכול"
@@ -2957,9 +2957,9 @@
       }
     },
     {
-      "id": "fr.phrase.how-many",
+      "id": "es.phrase.how-many",
       "conceptId": "concept.phrase.how-many",
-      "word": "Combien ?",
+      "word": "¿Cuántos?",
       "meaning": {
         "en": "How many?",
         "he": "כמה?"
@@ -2975,9 +2975,9 @@
       }
     },
     {
-      "id": "fr.phrase.how-long",
+      "id": "es.phrase.how-long",
       "conceptId": "concept.phrase.how-long",
-      "word": "Combien de temps ?",
+      "word": "¿Cuánto tiempo?",
       "meaning": {
         "en": "How long?",
         "he": "כמה זמן?"
@@ -2993,9 +2993,9 @@
       }
     },
     {
-      "id": "fr.word.fly",
+      "id": "es.word.fly",
       "conceptId": "concept.word.fly",
-      "word": "voler",
+      "word": "volar",
       "meaning": {
         "en": "fly",
         "he": "לטוס"
@@ -3011,9 +3011,9 @@
       }
     },
     {
-      "id": "fr.word.breakfast",
+      "id": "es.word.breakfast",
       "conceptId": "concept.word.breakfast",
-      "word": "petit-déjeuner",
+      "word": "desayuno",
       "meaning": {
         "en": "breakfast",
         "he": "ארוחת בוקר"
@@ -3030,9 +3030,9 @@
       }
     },
     {
-      "id": "fr.word.car",
+      "id": "es.word.car",
       "conceptId": "concept.word.car",
-      "word": "voiture",
+      "word": "coche",
       "meaning": {
         "en": "car",
         "he": "מכונית"
@@ -3049,9 +3049,9 @@
       }
     },
     {
-      "id": "fr.reply.one-more",
+      "id": "es.reply.one-more",
       "conceptId": "concept.reply.one-more",
-      "word": "Encore un, s’il vous plaît.",
+      "word": "Uno más, por favor.",
       "meaning": {
         "en": "One more, please.",
         "he": "עוד אחד, בבקשה"
@@ -3067,9 +3067,9 @@
       }
     },
     {
-      "id": "fr.word.hungry",
+      "id": "es.word.hungry",
       "conceptId": "concept.word.hungry",
-      "word": "faim",
+      "word": "hambre",
       "meaning": {
         "en": "hungry",
         "he": "רעב"
@@ -3085,9 +3085,9 @@
       }
     },
     {
-      "id": "fr.word.medicine",
+      "id": "es.word.medicine",
       "conceptId": "concept.word.medicine",
-      "word": "médicament",
+      "word": "medicamento",
       "meaning": {
         "en": "medicine",
         "he": "תרופה"
@@ -3104,9 +3104,9 @@
       }
     },
     {
-      "id": "fr.word.pain",
+      "id": "es.word.pain",
       "conceptId": "concept.word.pain",
-      "word": "douleur",
+      "word": "dolor",
       "meaning": {
         "en": "pain",
         "he": "כאב"
@@ -3123,9 +3123,9 @@
       }
     },
     {
-      "id": "fr.word.slow",
+      "id": "es.word.slow",
       "conceptId": "concept.word.slow",
-      "word": "lent",
+      "word": "lento",
       "meaning": {
         "en": "slow",
         "he": "איטי"
@@ -3141,9 +3141,9 @@
       }
     },
     {
-      "id": "fr.word.full",
+      "id": "es.word.full",
       "conceptId": "concept.word.full",
-      "word": "plein",
+      "word": "lleno",
       "meaning": {
         "en": "full",
         "he": "מלא"
@@ -3159,9 +3159,9 @@
       }
     },
     {
-      "id": "fr.word.ready",
+      "id": "es.word.ready",
       "conceptId": "concept.word.ready",
-      "word": "prêt",
+      "word": "listo",
       "meaning": {
         "en": "ready",
         "he": "מוכן"
@@ -3177,7 +3177,7 @@
       }
     },
     {
-      "id": "fr.word.internet",
+      "id": "es.word.internet",
       "conceptId": "concept.word.internet",
       "word": "internet",
       "meaning": {
@@ -3196,9 +3196,9 @@
       }
     },
     {
-      "id": "fr.word.key",
+      "id": "es.word.key",
       "conceptId": "concept.word.key",
-      "word": "clé",
+      "word": "llave",
       "meaning": {
         "en": "key",
         "he": "מפתח"
@@ -3215,9 +3215,9 @@
       }
     },
     {
-      "id": "fr.word.enough",
+      "id": "es.word.enough",
       "conceptId": "concept.word.enough",
-      "word": "assez",
+      "word": "suficiente",
       "meaning": {
         "en": "enough",
         "he": "מספיק"
@@ -3233,9 +3233,9 @@
       }
     },
     {
-      "id": "fr.word.rent",
+      "id": "es.word.rent",
       "conceptId": "concept.word.rent",
-      "word": "louer",
+      "word": "alquilar",
       "meaning": {
         "en": "rent",
         "he": "לשכור"
@@ -3251,9 +3251,9 @@
       }
     },
     {
-      "id": "fr.word.metro",
+      "id": "es.word.metro",
       "conceptId": "concept.word.metro",
-      "word": "métro",
+      "word": "metro",
       "meaning": {
         "en": "metro",
         "he": "רכבת תחתית"
@@ -3270,9 +3270,9 @@
       }
     },
     {
-      "id": "fr.word.flight",
+      "id": "es.word.flight",
       "conceptId": "concept.word.flight",
-      "word": "vol",
+      "word": "vuelo",
       "meaning": {
         "en": "flight",
         "he": "טיסה"
@@ -3288,9 +3288,9 @@
       }
     },
     {
-      "id": "fr.word.meat",
+      "id": "es.word.meat",
       "conceptId": "concept.word.meat",
-      "word": "viande",
+      "word": "carne",
       "meaning": {
         "en": "meat",
         "he": "בשר"
@@ -3307,9 +3307,9 @@
       }
     },
     {
-      "id": "fr.word.exchange",
+      "id": "es.word.exchange",
       "conceptId": "concept.word.exchange",
-      "word": "changer",
+      "word": "cambiar",
       "meaning": {
         "en": "exchange",
         "he": "להחליף (כסף)"
@@ -3326,9 +3326,9 @@
       }
     },
     {
-      "id": "fr.word.seat",
+      "id": "es.word.seat",
       "conceptId": "concept.word.seat",
-      "word": "place",
+      "word": "asiento",
       "meaning": {
         "en": "seat",
         "he": "מושב"
@@ -3345,9 +3345,9 @@
       }
     },
     {
-      "id": "fr.word.bus-stop",
+      "id": "es.word.bus-stop",
       "conceptId": "concept.word.bus-stop",
-      "word": "arrêt de bus",
+      "word": "parada de autobús",
       "meaning": {
         "en": "bus stop",
         "he": "תחנת אוטובוס"
@@ -3364,9 +3364,9 @@
       }
     },
     {
-      "id": "fr.word.receipt",
+      "id": "es.word.receipt",
       "conceptId": "concept.word.receipt",
-      "word": "reçu",
+      "word": "recibo",
       "meaning": {
         "en": "receipt",
         "he": "קבלה (חשבונית)"
@@ -3383,9 +3383,9 @@
       }
     },
     {
-      "id": "fr.word.dollar",
+      "id": "es.word.dollar",
       "conceptId": "concept.word.dollar",
-      "word": "dollar",
+      "word": "dólar",
       "meaning": {
         "en": "dollar",
         "he": "דולר"
@@ -3402,9 +3402,9 @@
       }
     },
     {
-      "id": "fr.word.blood",
+      "id": "es.word.blood",
       "conceptId": "concept.word.blood",
-      "word": "sang",
+      "word": "sangre",
       "meaning": {
         "en": "blood",
         "he": "דם"
@@ -3421,9 +3421,9 @@
       }
     },
     {
-      "id": "fr.reply.just-looking",
+      "id": "es.reply.just-looking",
       "conceptId": "concept.reply.just-looking",
-      "word": "Je regarde seulement.",
+      "word": "Solo estoy mirando.",
       "meaning": {
         "en": "I'm just looking.",
         "he": "אני רק מסתכל"
@@ -3439,9 +3439,9 @@
       }
     },
     {
-      "id": "fr.reply.to-go",
+      "id": "es.reply.to-go",
       "conceptId": "concept.reply.to-go",
-      "word": "À emporter, s’il vous plaît.",
+      "word": "Para llevar, por favor.",
       "meaning": {
         "en": "To go, please.",
         "he": "לקחת, בבקשה"
@@ -3457,9 +3457,9 @@
       }
     },
     {
-      "id": "fr.word.forget",
+      "id": "es.word.forget",
       "conceptId": "concept.word.forget",
-      "word": "oublier",
+      "word": "olvidar",
       "meaning": {
         "en": "forget",
         "he": "לשכוח"
@@ -3475,9 +3475,9 @@
       }
     },
     {
-      "id": "fr.word.broken",
+      "id": "es.word.broken",
       "conceptId": "concept.word.broken",
-      "word": "cassé",
+      "word": "roto",
       "meaning": {
         "en": "broken",
         "he": "שבור / מקולקל"
@@ -3493,9 +3493,9 @@
       }
     },
     {
-      "id": "fr.word.together",
+      "id": "es.word.together",
       "conceptId": "concept.word.together",
-      "word": "ensemble",
+      "word": "juntos",
       "meaning": {
         "en": "together",
         "he": "ביחד"
@@ -3511,9 +3511,9 @@
       }
     },
     {
-      "id": "fr.word.platform",
+      "id": "es.word.platform",
       "conceptId": "concept.word.platform",
-      "word": "quai",
+      "word": "andén",
       "meaning": {
         "en": "platform",
         "he": "רציף"
@@ -3529,9 +3529,9 @@
       }
     },
     {
-      "id": "fr.word.luggage",
+      "id": "es.word.luggage",
       "conceptId": "concept.word.luggage",
-      "word": "bagages",
+      "word": "equipaje",
       "meaning": {
         "en": "luggage",
         "he": "כבודה"
@@ -3547,9 +3547,9 @@
       }
     },
     {
-      "id": "fr.word.arrival",
+      "id": "es.word.arrival",
       "conceptId": "concept.word.arrival",
-      "word": "arrivée",
+      "word": "llegada",
       "meaning": {
         "en": "arrival",
         "he": "הגעה / נחיתה"
@@ -3565,9 +3565,9 @@
       }
     },
     {
-      "id": "fr.word.important",
+      "id": "es.word.important",
       "conceptId": "concept.word.important",
-      "word": "important",
+      "word": "importante",
       "meaning": {
         "en": "important",
         "he": "חשוב"
@@ -3583,9 +3583,9 @@
       }
     },
     {
-      "id": "fr.word.departure",
+      "id": "es.word.departure",
       "conceptId": "concept.word.departure",
-      "word": "départ",
+      "word": "salida",
       "meaning": {
         "en": "departure",
         "he": "יציאה / המראה"
@@ -3601,9 +3601,9 @@
       }
     },
     {
-      "id": "fr.word.bed",
+      "id": "es.word.bed",
       "conceptId": "concept.word.bed",
-      "word": "lit",
+      "word": "cama",
       "meaning": {
         "en": "bed",
         "he": "מיטה"
@@ -3620,9 +3620,9 @@
       }
     },
     {
-      "id": "fr.word.milk",
+      "id": "es.word.milk",
       "conceptId": "concept.word.milk",
-      "word": "lait",
+      "word": "leche",
       "meaning": {
         "en": "milk",
         "he": "חלב"
@@ -3639,9 +3639,9 @@
       }
     },
     {
-      "id": "fr.word.chicken",
+      "id": "es.word.chicken",
       "conceptId": "concept.word.chicken",
-      "word": "poulet",
+      "word": "pollo",
       "meaning": {
         "en": "chicken",
         "he": "עוף"
@@ -3658,9 +3658,9 @@
       }
     },
     {
-      "id": "fr.word.fish",
+      "id": "es.word.fish",
       "conceptId": "concept.word.fish",
-      "word": "poisson",
+      "word": "pescado",
       "meaning": {
         "en": "fish",
         "he": "דג"
@@ -3677,9 +3677,9 @@
       }
     },
     {
-      "id": "fr.number.eleven",
+      "id": "es.number.eleven",
       "conceptId": "concept.number.eleven",
-      "word": "onze",
+      "word": "once",
       "meaning": {
         "en": "eleven",
         "he": "אחת עשרה"
@@ -3695,9 +3695,9 @@
       }
     },
     {
-      "id": "fr.number.twelve",
+      "id": "es.number.twelve",
       "conceptId": "concept.number.twelve",
-      "word": "douze",
+      "word": "doce",
       "meaning": {
         "en": "twelve",
         "he": "שתים עשרה"
@@ -3713,9 +3713,9 @@
       }
     },
     {
-      "id": "fr.word.break",
+      "id": "es.word.break",
       "conceptId": "concept.word.break",
-      "word": "casser",
+      "word": "romper",
       "meaning": {
         "en": "break",
         "he": "לשבור"
@@ -3731,9 +3731,9 @@
       }
     },
     {
-      "id": "fr.word.dirty",
+      "id": "es.word.dirty",
       "conceptId": "concept.word.dirty",
-      "word": "sale",
+      "word": "sucio",
       "meaning": {
         "en": "dirty",
         "he": "מלוכלך"
@@ -3749,9 +3749,9 @@
       }
     },
     {
-      "id": "fr.word.spicy",
+      "id": "es.word.spicy",
       "conceptId": "concept.word.spicy",
-      "word": "épicé",
+      "word": "picante",
       "meaning": {
         "en": "spicy",
         "he": "חריף"
@@ -3768,9 +3768,9 @@
       }
     },
     {
-      "id": "fr.word.suitcase",
+      "id": "es.word.suitcase",
       "conceptId": "concept.word.suitcase",
-      "word": "valise",
+      "word": "maleta",
       "meaning": {
         "en": "suitcase",
         "he": "מזוודה"
@@ -3787,9 +3787,9 @@
       }
     },
     {
-      "id": "fr.word.size",
+      "id": "es.word.size",
       "conceptId": "concept.word.size",
-      "word": "taille",
+      "word": "talla",
       "meaning": {
         "en": "size",
         "he": "מידה"
@@ -3805,9 +3805,9 @@
       }
     },
     {
-      "id": "fr.word.shower",
+      "id": "es.word.shower",
       "conceptId": "concept.word.shower",
-      "word": "douche",
+      "word": "ducha",
       "meaning": {
         "en": "shower",
         "he": "מקלחת"
@@ -3824,9 +3824,9 @@
       }
     },
     {
-      "id": "fr.word.bathroom",
+      "id": "es.word.bathroom",
       "conceptId": "concept.word.bathroom",
-      "word": "salle de bain",
+      "word": "baño",
       "meaning": {
         "en": "bathroom",
         "he": "חדר אמבטיה"
@@ -3843,9 +3843,9 @@
       }
     },
     {
-      "id": "fr.word.floor",
+      "id": "es.word.floor",
       "conceptId": "concept.word.floor",
-      "word": "étage",
+      "word": "planta",
       "meaning": {
         "en": "floor",
         "he": "קומה"
@@ -3861,9 +3861,9 @@
       }
     },
     {
-      "id": "fr.word.towel",
+      "id": "es.word.towel",
       "conceptId": "concept.word.towel",
-      "word": "serviette",
+      "word": "toalla",
       "meaning": {
         "en": "towel",
         "he": "מגבת"
@@ -3879,9 +3879,9 @@
       }
     },
     {
-      "id": "fr.word.plug",
+      "id": "es.word.plug",
       "conceptId": "concept.word.plug",
-      "word": "prise",
+      "word": "enchufe",
       "meaning": {
         "en": "plug",
         "he": "תקע / שקע"
@@ -3898,9 +3898,9 @@
       }
     },
     {
-      "id": "fr.word.wallet",
+      "id": "es.word.wallet",
       "conceptId": "concept.word.wallet",
-      "word": "portefeuille",
+      "word": "cartera",
       "meaning": {
         "en": "wallet",
         "he": "ארנק"
@@ -3917,9 +3917,9 @@
       }
     },
     {
-      "id": "fr.word.headache",
+      "id": "es.word.headache",
       "conceptId": "concept.word.headache",
-      "word": "mal de tête",
+      "word": "dolor de cabeza",
       "meaning": {
         "en": "headache",
         "he": "כאב ראש"
@@ -3935,9 +3935,9 @@
       }
     },
     {
-      "id": "fr.word.insurance",
+      "id": "es.word.insurance",
       "conceptId": "concept.word.insurance",
-      "word": "assurance",
+      "word": "seguro",
       "meaning": {
         "en": "insurance",
         "he": "ביטוח"
@@ -3953,9 +3953,9 @@
       }
     },
     {
-      "id": "fr.word.charger",
+      "id": "es.word.charger",
       "conceptId": "concept.word.charger",
-      "word": "chargeur",
+      "word": "cargador",
       "meaning": {
         "en": "charger",
         "he": "מטען"
@@ -3971,9 +3971,9 @@
       }
     },
     {
-      "id": "fr.word.smoke",
+      "id": "es.word.smoke",
       "conceptId": "concept.word.smoke",
-      "word": "fumer",
+      "word": "fumar",
       "meaning": {
         "en": "smoke",
         "he": "לעשן"
@@ -3990,9 +3990,9 @@
       }
     },
     {
-      "id": "fr.word.sugar",
+      "id": "es.word.sugar",
       "conceptId": "concept.word.sugar",
-      "word": "sucre",
+      "word": "azúcar",
       "meaning": {
         "en": "sugar",
         "he": "סוכר"
@@ -4008,9 +4008,9 @@
       }
     },
     {
-      "id": "fr.word.head",
+      "id": "es.word.head",
       "conceptId": "concept.word.head",
-      "word": "tête",
+      "word": "cabeza",
       "meaning": {
         "en": "head",
         "he": "ראש"
@@ -4026,9 +4026,9 @@
       }
     },
     {
-      "id": "fr.word.back",
+      "id": "es.word.back",
       "conceptId": "concept.word.back",
-      "word": "dos",
+      "word": "espalda",
       "meaning": {
         "en": "back",
         "he": "גב"
@@ -4044,9 +4044,9 @@
       }
     },
     {
-      "id": "fr.word.thirsty",
+      "id": "es.word.thirsty",
       "conceptId": "concept.word.thirsty",
-      "word": "soif",
+      "word": "sed",
       "meaning": {
         "en": "thirsty",
         "he": "צמא"
@@ -4062,9 +4062,9 @@
       }
     },
     {
-      "id": "fr.word.air-conditioning",
+      "id": "es.word.air-conditioning",
       "conceptId": "concept.word.air-conditioning",
-      "word": "climatisation",
+      "word": "aire acondicionado",
       "meaning": {
         "en": "air conditioning",
         "he": "מזגן"
@@ -4080,9 +4080,9 @@
       }
     },
     {
-      "id": "fr.word.vegetables",
+      "id": "es.word.vegetables",
       "conceptId": "concept.word.vegetables",
-      "word": "légumes",
+      "word": "verduras",
       "meaning": {
         "en": "vegetables",
         "he": "ירקות"
@@ -4099,9 +4099,9 @@
       }
     },
     {
-      "id": "fr.word.sim-card",
+      "id": "es.word.sim-card",
       "conceptId": "concept.word.sim-card",
-      "word": "carte SIM",
+      "word": "tarjeta SIM",
       "meaning": {
         "en": "SIM card",
         "he": "כרטיס סים"
@@ -4117,9 +4117,9 @@
       }
     },
     {
-      "id": "fr.word.gas-station",
+      "id": "es.word.gas-station",
       "conceptId": "concept.word.gas-station",
-      "word": "station-service",
+      "word": "gasolinera",
       "meaning": {
         "en": "gas station",
         "he": "תחנת דלק"
@@ -4136,9 +4136,9 @@
       }
     },
     {
-      "id": "fr.word.stomach",
+      "id": "es.word.stomach",
       "conceptId": "concept.word.stomach",
-      "word": "ventre",
+      "word": "estómago",
       "meaning": {
         "en": "stomach",
         "he": "בטן"
@@ -4154,9 +4154,9 @@
       }
     },
     {
-      "id": "fr.word.toilet-paper",
+      "id": "es.word.toilet-paper",
       "conceptId": "concept.word.toilet-paper",
-      "word": "papier toilette",
+      "word": "papel higiénico",
       "meaning": {
         "en": "toilet paper",
         "he": "נייר טואלט"
@@ -4173,9 +4173,9 @@
       }
     },
     {
-      "id": "fr.word.locker",
+      "id": "es.word.locker",
       "conceptId": "concept.word.locker",
-      "word": "casier",
+      "word": "taquilla",
       "meaning": {
         "en": "locker",
         "he": "לוקר / תא אחסון"
@@ -4191,9 +4191,9 @@
       }
     },
     {
-      "id": "fr.word.adapter",
+      "id": "es.word.adapter",
       "conceptId": "concept.word.adapter",
-      "word": "adaptateur",
+      "word": "adaptador",
       "meaning": {
         "en": "adapter",
         "he": "מתאם (לשקע)"
@@ -4209,9 +4209,9 @@
       }
     },
     {
-      "id": "fr.word.nurse",
+      "id": "es.word.nurse",
       "conceptId": "concept.word.nurse",
-      "word": "infirmier",
+      "word": "enfermero",
       "meaning": {
         "en": "nurse",
         "he": "אח / אחות (רפואה)"
@@ -4227,9 +4227,9 @@
       }
     },
     {
-      "id": "fr.word.pill",
+      "id": "es.word.pill",
       "conceptId": "concept.word.pill",
-      "word": "comprimé",
+      "word": "pastilla",
       "meaning": {
         "en": "pill",
         "he": "כדור (תרופה)"
@@ -4245,9 +4245,9 @@
       }
     },
     {
-      "id": "fr.word.heating",
+      "id": "es.word.heating",
       "conceptId": "concept.word.heating",
-      "word": "chauffage",
+      "word": "calefacción",
       "meaning": {
         "en": "heating",
         "he": "חימום"
@@ -4263,9 +4263,9 @@
       }
     },
     {
-      "id": "fr.word.great",
+      "id": "es.word.great",
       "conceptId": "concept.word.great",
-      "word": "super",
+      "word": "genial",
       "meaning": {
         "en": "great",
         "he": "מעולה"
@@ -4281,9 +4281,9 @@
       }
     },
     {
-      "id": "fr.word.that",
+      "id": "es.word.that",
       "conceptId": "concept.word.that",
-      "word": "cela",
+      "word": "eso",
       "meaning": {
         "en": "that",
         "he": "ההוא"
@@ -4299,9 +4299,9 @@
       }
     },
     {
-      "id": "fr.word.tooth",
+      "id": "es.word.tooth",
       "conceptId": "concept.word.tooth",
-      "word": "dent",
+      "word": "diente",
       "meaning": {
         "en": "tooth",
         "he": "שן"
@@ -4318,9 +4318,9 @@
       }
     },
     {
-      "id": "fr.word.restaurant",
+      "id": "es.word.restaurant",
       "conceptId": "concept.word.restaurant",
-      "word": "restaurant",
+      "word": "restaurante",
       "meaning": {
         "en": "restaurant",
         "he": "מסעדה"
@@ -4337,9 +4337,9 @@
       }
     },
     {
-      "id": "fr.word.bandage",
+      "id": "es.word.bandage",
       "conceptId": "concept.word.bandage",
-      "word": "pansement",
+      "word": "venda",
       "meaning": {
         "en": "bandage",
         "he": "תחבושת"
@@ -4356,9 +4356,9 @@
       }
     },
     {
-      "id": "fr.reply.youre-welcome",
+      "id": "es.reply.youre-welcome",
       "conceptId": "concept.reply.youre-welcome",
-      "word": "Je vous en prie.",
+      "word": "De nada.",
       "meaning": {
         "en": "You're welcome.",
         "he": "על לא דבר"
@@ -4374,9 +4374,9 @@
       }
     },
     {
-      "id": "fr.reply.of-course",
+      "id": "es.reply.of-course",
       "conceptId": "concept.reply.of-course",
-      "word": "Bien sûr.",
+      "word": "Por supuesto.",
       "meaning": {
         "en": "Of course.",
         "he": "כמובן"
@@ -4392,9 +4392,9 @@
       }
     },
     {
-      "id": "fr.reply.have-a-nice-day",
+      "id": "es.reply.have-a-nice-day",
       "conceptId": "concept.reply.have-a-nice-day",
-      "word": "Bonne journée !",
+      "word": "¡Que tenga un buen día!",
       "meaning": {
         "en": "Have a nice day.",
         "he": "שיהיה לך יום נעים"
@@ -4410,9 +4410,9 @@
       }
     },
     {
-      "id": "fr.word.it",
+      "id": "es.word.it",
       "conceptId": "concept.word.it",
-      "word": "ce",
+      "word": "ello",
       "meaning": {
         "en": "it",
         "he": "זה"
@@ -4428,9 +4428,9 @@
       }
     },
     {
-      "id": "fr.word.dentist",
+      "id": "es.word.dentist",
       "conceptId": "concept.word.dentist",
-      "word": "dentiste",
+      "word": "dentista",
       "meaning": {
         "en": "dentist",
         "he": "רופא שיניים"
@@ -4446,9 +4446,9 @@
       }
     },
     {
-      "id": "fr.word.week",
+      "id": "es.word.week",
       "conceptId": "concept.word.week",
-      "word": "semaine",
+      "word": "semana",
       "meaning": {
         "en": "week",
         "he": "שבוע"
@@ -4464,9 +4464,9 @@
       }
     },
     {
-      "id": "fr.word.stay",
+      "id": "es.word.stay",
       "conceptId": "concept.word.stay",
-      "word": "rester",
+      "word": "quedarse",
       "meaning": {
         "en": "stay",
         "he": "להישאר"
@@ -4482,9 +4482,9 @@
       }
     },
     {
-      "id": "fr.phrase.good-morning",
+      "id": "es.phrase.good-morning",
       "conceptId": "concept.phrase.good-morning",
-      "word": "Bonjour.",
+      "word": "Buenos días.",
       "meaning": {
         "en": "Good morning.",
         "he": "בוקר טוב"
@@ -4500,9 +4500,9 @@
       }
     },
     {
-      "id": "fr.reply.lets-go",
+      "id": "es.reply.lets-go",
       "conceptId": "concept.reply.lets-go",
-      "word": "Allons-y !",
+      "word": "¡Vamos!",
       "meaning": {
         "en": "Let's go.",
         "he": "בוא נלך"
@@ -4518,9 +4518,9 @@
       }
     },
     {
-      "id": "fr.word.who",
+      "id": "es.word.who",
       "conceptId": "concept.word.who",
-      "word": "qui",
+      "word": "quién",
       "meaning": {
         "en": "who",
         "he": "מי"
@@ -4536,9 +4536,9 @@
       }
     },
     {
-      "id": "fr.word.why",
+      "id": "es.word.why",
       "conceptId": "concept.word.why",
-      "word": "pourquoi",
+      "word": "por qué",
       "meaning": {
         "en": "why",
         "he": "למה"
@@ -4554,9 +4554,9 @@
       }
     },
     {
-      "id": "fr.word.he",
+      "id": "es.word.he",
       "conceptId": "concept.word.he",
-      "word": "il",
+      "word": "él",
       "meaning": {
         "en": "he",
         "he": "הוא"
@@ -4572,9 +4572,9 @@
       }
     },
     {
-      "id": "fr.word.she",
+      "id": "es.word.she",
       "conceptId": "concept.word.she",
-      "word": "elle",
+      "word": "ella",
       "meaning": {
         "en": "she",
         "he": "היא"
@@ -4590,9 +4590,9 @@
       }
     },
     {
-      "id": "fr.word.they",
+      "id": "es.word.they",
       "conceptId": "concept.word.they",
-      "word": "ils",
+      "word": "ellos",
       "meaning": {
         "en": "they",
         "he": "הם"
@@ -4608,9 +4608,9 @@
       }
     },
     {
-      "id": "fr.word.your",
+      "id": "es.word.your",
       "conceptId": "concept.word.your",
-      "word": "votre",
+      "word": "su",
       "meaning": {
         "en": "your",
         "he": "שלך"
@@ -4626,9 +4626,9 @@
       }
     },
     {
-      "id": "fr.word.see",
+      "id": "es.word.see",
       "conceptId": "concept.word.see",
-      "word": "voir",
+      "word": "ver",
       "meaning": {
         "en": "see",
         "he": "לראות"
@@ -4644,9 +4644,9 @@
       }
     },
     {
-      "id": "fr.word.look",
+      "id": "es.word.look",
       "conceptId": "concept.word.look",
-      "word": "regarder",
+      "word": "mirar",
       "meaning": {
         "en": "look",
         "he": "להסתכל"
@@ -4663,9 +4663,9 @@
       }
     },
     {
-      "id": "fr.word.say",
+      "id": "es.word.say",
       "conceptId": "concept.word.say",
-      "word": "dire",
+      "word": "decir",
       "meaning": {
         "en": "say",
         "he": "להגיד"
@@ -4681,9 +4681,9 @@
       }
     },
     {
-      "id": "fr.word.like",
+      "id": "es.word.like",
       "conceptId": "concept.word.like",
-      "word": "aimer bien",
+      "word": "gustar",
       "meaning": {
         "en": "like",
         "he": "לחבב"
@@ -4699,9 +4699,9 @@
       }
     },
     {
-      "id": "fr.word.get",
+      "id": "es.word.get",
       "conceptId": "concept.word.get",
-      "word": "obtenir",
+      "word": "conseguir",
       "meaning": {
         "en": "get",
         "he": "לקבל"
@@ -4717,9 +4717,9 @@
       }
     },
     {
-      "id": "fr.word.big",
+      "id": "es.word.big",
       "conceptId": "concept.word.big",
-      "word": "grand",
+      "word": "grande",
       "meaning": {
         "en": "big",
         "he": "גדול"
@@ -4735,9 +4735,9 @@
       }
     },
     {
-      "id": "fr.word.less",
+      "id": "es.word.less",
       "conceptId": "concept.word.less",
-      "word": "moins",
+      "word": "menos",
       "meaning": {
         "en": "less",
         "he": "פחות"
@@ -4753,9 +4753,9 @@
       }
     },
     {
-      "id": "fr.word.walk",
+      "id": "es.word.walk",
       "conceptId": "concept.word.walk",
-      "word": "marcher",
+      "word": "caminar",
       "meaning": {
         "en": "walk",
         "he": "ללכת"
@@ -4772,9 +4772,9 @@
       }
     },
     {
-      "id": "fr.phrase.good-evening",
+      "id": "es.phrase.good-evening",
       "conceptId": "concept.phrase.good-evening",
-      "word": "Bonsoir.",
+      "word": "Buenas tardes.",
       "meaning": {
         "en": "Good evening.",
         "he": "ערב טוב"
@@ -4790,9 +4790,9 @@
       }
     },
     {
-      "id": "fr.reply.maybe-later",
+      "id": "es.reply.maybe-later",
       "conceptId": "concept.reply.maybe-later",
-      "word": "Peut-être plus tard.",
+      "word": "Quizás más tarde.",
       "meaning": {
         "en": "Maybe later.",
         "he": "אולי אחר כך"
@@ -4808,9 +4808,9 @@
       }
     },
     {
-      "id": "fr.reply.go-ahead",
+      "id": "es.reply.go-ahead",
       "conceptId": "concept.reply.go-ahead",
-      "word": "Allez-y.",
+      "word": "Adelante.",
       "meaning": {
         "en": "Go ahead.",
         "he": "בבקשה, קדימה"
@@ -4826,9 +4826,9 @@
       }
     },
     {
-      "id": "fr.word.really",
+      "id": "es.word.really",
       "conceptId": "concept.word.really",
-      "word": "vraiment",
+      "word": "de verdad",
       "meaning": {
         "en": "really",
         "he": "באמת"
@@ -4844,9 +4844,9 @@
       }
     },
     {
-      "id": "fr.word.ask",
+      "id": "es.word.ask",
       "conceptId": "concept.word.ask",
-      "word": "demander",
+      "word": "preguntar",
       "meaning": {
         "en": "ask",
         "he": "לשאול"
@@ -4862,9 +4862,9 @@
       }
     },
     {
-      "id": "fr.word.use",
+      "id": "es.word.use",
       "conceptId": "concept.word.use",
-      "word": "utiliser",
+      "word": "usar",
       "meaning": {
         "en": "use",
         "he": "להשתמש"
@@ -4880,9 +4880,9 @@
       }
     },
     {
-      "id": "fr.word.small",
+      "id": "es.word.small",
       "conceptId": "concept.word.small",
-      "word": "petit",
+      "word": "pequeño",
       "meaning": {
         "en": "small",
         "he": "קטן"
@@ -4898,9 +4898,9 @@
       }
     },
     {
-      "id": "fr.word.first",
+      "id": "es.word.first",
       "conceptId": "concept.word.first",
-      "word": "premier",
+      "word": "primero",
       "meaning": {
         "en": "first",
         "he": "ראשון"
@@ -4916,9 +4916,9 @@
       }
     },
     {
-      "id": "fr.word.city",
+      "id": "es.word.city",
       "conceptId": "concept.word.city",
-      "word": "ville",
+      "word": "ciudad",
       "meaning": {
         "en": "city",
         "he": "עיר"
@@ -4935,9 +4935,9 @@
       }
     },
     {
-      "id": "fr.word.up",
+      "id": "es.word.up",
       "conceptId": "concept.word.up",
-      "word": "en haut",
+      "word": "arriba",
       "meaning": {
         "en": "up",
         "he": "למעלה"
@@ -4954,9 +4954,9 @@
       }
     },
     {
-      "id": "fr.word.down",
+      "id": "es.word.down",
       "conceptId": "concept.word.down",
-      "word": "en bas",
+      "word": "abajo",
       "meaning": {
         "en": "down",
         "he": "למטה"
@@ -4973,9 +4973,9 @@
       }
     },
     {
-      "id": "fr.reply.take-your-time",
+      "id": "es.reply.take-your-time",
       "conceptId": "concept.reply.take-your-time",
-      "word": "Prenez votre temps.",
+      "word": "Tómese su tiempo.",
       "meaning": {
         "en": "Take your time.",
         "he": "קח את הזמן"
@@ -4991,9 +4991,9 @@
       }
     },
     {
-      "id": "fr.reply.me-too",
+      "id": "es.reply.me-too",
       "conceptId": "concept.reply.me-too",
-      "word": "Moi aussi.",
+      "word": "Yo también.",
       "meaning": {
         "en": "Me too.",
         "he": "גם אני"
@@ -5009,9 +5009,9 @@
       }
     },
     {
-      "id": "fr.reply.and-you",
+      "id": "es.reply.and-you",
       "conceptId": "concept.reply.and-you",
-      "word": "Et vous ?",
+      "word": "¿Y usted?",
       "meaning": {
         "en": "And you?",
         "he": "ואתה?"
@@ -5027,9 +5027,9 @@
       }
     },
     {
-      "id": "fr.word.yesterday",
+      "id": "es.word.yesterday",
       "conceptId": "concept.word.yesterday",
-      "word": "hier",
+      "word": "ayer",
       "meaning": {
         "en": "yesterday",
         "he": "אתמול"
@@ -5045,9 +5045,9 @@
       }
     },
     {
-      "id": "fr.word.early",
+      "id": "es.word.early",
       "conceptId": "concept.word.early",
-      "word": "tôt",
+      "word": "temprano",
       "meaning": {
         "en": "early",
         "he": "מוקדם"
@@ -5063,9 +5063,9 @@
       }
     },
     {
-      "id": "fr.word.soon",
+      "id": "es.word.soon",
       "conceptId": "concept.word.soon",
-      "word": "bientôt",
+      "word": "pronto",
       "meaning": {
         "en": "soon",
         "he": "בקרוב"
@@ -5081,9 +5081,9 @@
       }
     },
     {
-      "id": "fr.word.return",
+      "id": "es.word.return",
       "conceptId": "concept.word.return",
-      "word": "revenir",
+      "word": "volver",
       "meaning": {
         "en": "return",
         "he": "לחזור"
@@ -5099,9 +5099,9 @@
       }
     },
     {
-      "id": "fr.word.push",
+      "id": "es.word.push",
       "conceptId": "concept.word.push",
-      "word": "pousser",
+      "word": "empujar",
       "meaning": {
         "en": "push",
         "he": "לדחוף"
@@ -5117,9 +5117,9 @@
       }
     },
     {
-      "id": "fr.word.pull",
+      "id": "es.word.pull",
       "conceptId": "concept.word.pull",
-      "word": "tirer",
+      "word": "tirar",
       "meaning": {
         "en": "pull",
         "he": "למשוך"
@@ -5135,9 +5135,9 @@
       }
     },
     {
-      "id": "fr.word.old",
+      "id": "es.word.old",
       "conceptId": "concept.word.old",
-      "word": "vieux",
+      "word": "viejo",
       "meaning": {
         "en": "old",
         "he": "ישן"
@@ -5153,9 +5153,9 @@
       }
     },
     {
-      "id": "fr.word.delicious",
+      "id": "es.word.delicious",
       "conceptId": "concept.word.delicious",
-      "word": "délicieux",
+      "word": "delicioso",
       "meaning": {
         "en": "delicious",
         "he": "טעים"
@@ -5172,9 +5172,9 @@
       }
     },
     {
-      "id": "fr.word.bread",
+      "id": "es.word.bread",
       "conceptId": "concept.word.bread",
-      "word": "pain",
+      "word": "pan",
       "meaning": {
         "en": "bread",
         "he": "לחם"
@@ -5191,9 +5191,9 @@
       }
     },
     {
-      "id": "fr.word.market",
+      "id": "es.word.market",
       "conceptId": "concept.word.market",
-      "word": "marché",
+      "word": "mercado",
       "meaning": {
         "en": "market",
         "he": "שוק"
@@ -5210,9 +5210,9 @@
       }
     },
     {
-      "id": "fr.word.child",
+      "id": "es.word.child",
       "conceptId": "concept.word.child",
-      "word": "enfant",
+      "word": "niño",
       "meaning": {
         "en": "child",
         "he": "ילד"
@@ -5229,9 +5229,9 @@
       }
     },
     {
-      "id": "fr.reply.see-you-later",
+      "id": "es.reply.see-you-later",
       "conceptId": "concept.reply.see-you-later",
-      "word": "À plus tard.",
+      "word": "Hasta luego.",
       "meaning": {
         "en": "See you later.",
         "he": "נתראה"
@@ -5247,9 +5247,9 @@
       }
     },
     {
-      "id": "fr.word.sit",
+      "id": "es.word.sit",
       "conceptId": "concept.word.sit",
-      "word": "s’asseoir",
+      "word": "sentarse",
       "meaning": {
         "en": "sit",
         "he": "לשבת"
@@ -5265,9 +5265,9 @@
       }
     },
     {
-      "id": "fr.word.try",
+      "id": "es.word.try",
       "conceptId": "concept.word.try",
-      "word": "essayer",
+      "word": "probar",
       "meaning": {
         "en": "try",
         "he": "לנסות"
@@ -5283,9 +5283,9 @@
       }
     },
     {
-      "id": "fr.word.beautiful",
+      "id": "es.word.beautiful",
       "conceptId": "concept.word.beautiful",
-      "word": "beau",
+      "word": "bonito",
       "meaning": {
         "en": "beautiful",
         "he": "יפה"
@@ -5301,9 +5301,9 @@
       }
     },
     {
-      "id": "fr.word.shop",
+      "id": "es.word.shop",
       "conceptId": "concept.word.shop",
-      "word": "magasin",
+      "word": "tienda",
       "meaning": {
         "en": "shop",
         "he": "חנות"
@@ -5320,7 +5320,7 @@
       }
     },
     {
-      "id": "fr.word.cafe",
+      "id": "es.word.cafe",
       "conceptId": "concept.word.cafe",
       "word": "café",
       "meaning": {
@@ -5338,9 +5338,9 @@
       }
     },
     {
-      "id": "fr.word.friend",
+      "id": "es.word.friend",
       "conceptId": "concept.word.friend",
-      "word": "ami",
+      "word": "amigo",
       "meaning": {
         "en": "friend",
         "he": "חבר"
@@ -5357,9 +5357,9 @@
       }
     },
     {
-      "id": "fr.reply.up-to-you",
+      "id": "es.reply.up-to-you",
       "conceptId": "concept.reply.up-to-you",
-      "word": "Comme vous voulez.",
+      "word": "Como usted quiera.",
       "meaning": {
         "en": "It's up to you.",
         "he": "זה תלוי בך"
@@ -5375,9 +5375,9 @@
       }
     },
     {
-      "id": "fr.word.afternoon",
+      "id": "es.word.afternoon",
       "conceptId": "concept.word.afternoon",
-      "word": "après-midi",
+      "word": "tarde",
       "meaning": {
         "en": "afternoon",
         "he": "אחר הצהריים"
@@ -5393,9 +5393,9 @@
       }
     },
     {
-      "id": "fr.word.year",
+      "id": "es.word.year",
       "conceptId": "concept.word.year",
-      "word": "année",
+      "word": "año",
       "meaning": {
         "en": "year",
         "he": "שנה"
@@ -5411,9 +5411,9 @@
       }
     },
     {
-      "id": "fr.word.red",
+      "id": "es.word.red",
       "conceptId": "concept.word.red",
-      "word": "rouge",
+      "word": "rojo",
       "meaning": {
         "en": "red",
         "he": "אדום"
@@ -5430,9 +5430,9 @@
       }
     },
     {
-      "id": "fr.word.blue",
+      "id": "es.word.blue",
       "conceptId": "concept.word.blue",
-      "word": "bleu",
+      "word": "azul",
       "meaning": {
         "en": "blue",
         "he": "כחול"
@@ -5449,9 +5449,9 @@
       }
     },
     {
-      "id": "fr.word.green",
+      "id": "es.word.green",
       "conceptId": "concept.word.green",
-      "word": "vert",
+      "word": "verde",
       "meaning": {
         "en": "green",
         "he": "ירוק"
@@ -5468,9 +5468,9 @@
       }
     },
     {
-      "id": "fr.word.love",
+      "id": "es.word.love",
       "conceptId": "concept.word.love",
-      "word": "aimer",
+      "word": "amar",
       "meaning": {
         "en": "love",
         "he": "לאהוב"
@@ -5486,9 +5486,9 @@
       }
     },
     {
-      "id": "fr.word.bring",
+      "id": "es.word.bring",
       "conceptId": "concept.word.bring",
-      "word": "apporter",
+      "word": "traer",
       "meaning": {
         "en": "bring",
         "he": "להביא"
@@ -5504,9 +5504,9 @@
       }
     },
     {
-      "id": "fr.word.visit",
+      "id": "es.word.visit",
       "conceptId": "concept.word.visit",
-      "word": "visiter",
+      "word": "visitar",
       "meaning": {
         "en": "visit",
         "he": "לבקר"
@@ -5522,9 +5522,9 @@
       }
     },
     {
-      "id": "fr.word.travel",
+      "id": "es.word.travel",
       "conceptId": "concept.word.travel",
-      "word": "voyager",
+      "word": "viajar",
       "meaning": {
         "en": "travel",
         "he": "לטייל"
@@ -5540,9 +5540,9 @@
       }
     },
     {
-      "id": "fr.word.fast",
+      "id": "es.word.fast",
       "conceptId": "concept.word.fast",
-      "word": "rapide",
+      "word": "rápido",
       "meaning": {
         "en": "fast",
         "he": "מהיר"
@@ -5558,9 +5558,9 @@
       }
     },
     {
-      "id": "fr.word.clean",
+      "id": "es.word.clean",
       "conceptId": "concept.word.clean",
-      "word": "propre",
+      "word": "limpio",
       "meaning": {
         "en": "clean",
         "he": "נקי"
@@ -5576,9 +5576,9 @@
       }
     },
     {
-      "id": "fr.word.quiet",
+      "id": "es.word.quiet",
       "conceptId": "concept.word.quiet",
-      "word": "calme",
+      "word": "tranquilo",
       "meaning": {
         "en": "quiet",
         "he": "שקט"
@@ -5594,9 +5594,9 @@
       }
     },
     {
-      "id": "fr.word.tired",
+      "id": "es.word.tired",
       "conceptId": "concept.word.tired",
-      "word": "fatigué",
+      "word": "cansado",
       "meaning": {
         "en": "tired",
         "he": "עייף"
@@ -5613,9 +5613,9 @@
       }
     },
     {
-      "id": "fr.word.busy",
+      "id": "es.word.busy",
       "conceptId": "concept.word.busy",
-      "word": "occupé",
+      "word": "ocupado",
       "meaning": {
         "en": "busy",
         "he": "תפוס / עמוס"
@@ -5631,9 +5631,9 @@
       }
     },
     {
-      "id": "fr.word.same",
+      "id": "es.word.same",
       "conceptId": "concept.word.same",
-      "word": "même",
+      "word": "mismo",
       "meaning": {
         "en": "same",
         "he": "אותו דבר"
@@ -5649,9 +5649,9 @@
       }
     },
     {
-      "id": "fr.word.supermarket",
+      "id": "es.word.supermarket",
       "conceptId": "concept.word.supermarket",
-      "word": "supermarché",
+      "word": "supermercado",
       "meaning": {
         "en": "supermarket",
         "he": "סופרמרקט"
@@ -5668,9 +5668,9 @@
       }
     },
     {
-      "id": "fr.word.tea",
+      "id": "es.word.tea",
       "conceptId": "concept.word.tea",
-      "word": "thé",
+      "word": "té",
       "meaning": {
         "en": "tea",
         "he": "תה"
@@ -5687,9 +5687,9 @@
       }
     },
     {
-      "id": "fr.word.wine",
+      "id": "es.word.wine",
       "conceptId": "concept.word.wine",
-      "word": "vin",
+      "word": "vino",
       "meaning": {
         "en": "wine",
         "he": "יין"
@@ -5706,9 +5706,9 @@
       }
     },
     {
-      "id": "fr.word.beach",
+      "id": "es.word.beach",
       "conceptId": "concept.word.beach",
-      "word": "plage",
+      "word": "playa",
       "meaning": {
         "en": "beach",
         "he": "חוף"
@@ -5725,9 +5725,9 @@
       }
     },
     {
-      "id": "fr.word.family",
+      "id": "es.word.family",
       "conceptId": "concept.word.family",
-      "word": "famille",
+      "word": "familia",
       "meaning": {
         "en": "family",
         "he": "משפחה"
@@ -5744,9 +5744,9 @@
       }
     },
     {
-      "id": "fr.number.thousand",
+      "id": "es.number.thousand",
       "conceptId": "concept.number.thousand",
-      "word": "mille",
+      "word": "mil",
       "meaning": {
         "en": "thousand",
         "he": "אלף"
@@ -5762,9 +5762,9 @@
       }
     },
     {
-      "id": "fr.word.month",
+      "id": "es.word.month",
       "conceptId": "concept.word.month",
-      "word": "mois",
+      "word": "mes",
       "meaning": {
         "en": "month",
         "he": "חודש"
@@ -5780,9 +5780,9 @@
       }
     },
     {
-      "id": "fr.word.always",
+      "id": "es.word.always",
       "conceptId": "concept.word.always",
-      "word": "toujours",
+      "word": "siempre",
       "meaning": {
         "en": "always",
         "he": "תמיד"
@@ -5798,9 +5798,9 @@
       }
     },
     {
-      "id": "fr.word.never",
+      "id": "es.word.never",
       "conceptId": "concept.word.never",
-      "word": "jamais",
+      "word": "nunca",
       "meaning": {
         "en": "never",
         "he": "אף פעם"
@@ -5816,9 +5816,9 @@
       }
     },
     {
-      "id": "fr.word.weekend",
+      "id": "es.word.weekend",
       "conceptId": "concept.word.weekend",
-      "word": "week-end",
+      "word": "fin de semana",
       "meaning": {
         "en": "weekend",
         "he": "סוף שבוע"
@@ -5834,9 +5834,9 @@
       }
     },
     {
-      "id": "fr.word.monday",
+      "id": "es.word.monday",
       "conceptId": "concept.word.monday",
-      "word": "lundi",
+      "word": "lunes",
       "meaning": {
         "en": "Monday",
         "he": "יום שני"
@@ -5852,9 +5852,9 @@
       }
     },
     {
-      "id": "fr.word.friday",
+      "id": "es.word.friday",
       "conceptId": "concept.word.friday",
-      "word": "vendredi",
+      "word": "viernes",
       "meaning": {
         "en": "Friday",
         "he": "יום שישי"
@@ -5870,9 +5870,9 @@
       }
     },
     {
-      "id": "fr.word.sunday",
+      "id": "es.word.sunday",
       "conceptId": "concept.word.sunday",
-      "word": "dimanche",
+      "word": "domingo",
       "meaning": {
         "en": "Sunday",
         "he": "יום ראשון"
@@ -5888,9 +5888,9 @@
       }
     },
     {
-      "id": "fr.word.think",
+      "id": "es.word.think",
       "conceptId": "concept.word.think",
-      "word": "penser",
+      "word": "pensar",
       "meaning": {
         "en": "think",
         "he": "לחשוב"
@@ -5906,9 +5906,9 @@
       }
     },
     {
-      "id": "fr.word.new",
+      "id": "es.word.new",
       "conceptId": "concept.word.new",
-      "word": "nouveau",
+      "word": "nuevo",
       "meaning": {
         "en": "new",
         "he": "חדש"
@@ -5924,9 +5924,9 @@
       }
     },
     {
-      "id": "fr.word.heavy",
+      "id": "es.word.heavy",
       "conceptId": "concept.word.heavy",
-      "word": "lourd",
+      "word": "pesado",
       "meaning": {
         "en": "heavy",
         "he": "כבד"
@@ -5942,9 +5942,9 @@
       }
     },
     {
-      "id": "fr.word.happy",
+      "id": "es.word.happy",
       "conceptId": "concept.word.happy",
-      "word": "content",
+      "word": "contento",
       "meaning": {
         "en": "happy",
         "he": "שמח"
@@ -5961,9 +5961,9 @@
       }
     },
     {
-      "id": "fr.word.beer",
+      "id": "es.word.beer",
       "conceptId": "concept.word.beer",
-      "word": "bière",
+      "word": "cerveza",
       "meaning": {
         "en": "beer",
         "he": "בירה"
@@ -5980,9 +5980,9 @@
       }
     },
     {
-      "id": "fr.word.door",
+      "id": "es.word.door",
       "conceptId": "concept.word.door",
-      "word": "porte",
+      "word": "puerta",
       "meaning": {
         "en": "door",
         "he": "דלת"
@@ -5999,9 +5999,9 @@
       }
     },
     {
-      "id": "fr.word.driver",
+      "id": "es.word.driver",
       "conceptId": "concept.word.driver",
-      "word": "chauffeur",
+      "word": "conductor",
       "meaning": {
         "en": "driver",
         "he": "נהג"
@@ -6017,9 +6017,9 @@
       }
     },
     {
-      "id": "fr.word.photo",
+      "id": "es.word.photo",
       "conceptId": "concept.word.photo",
-      "word": "photo",
+      "word": "foto",
       "meaning": {
         "en": "photo",
         "he": "תמונה"
@@ -6036,9 +6036,9 @@
       }
     },
     {
-      "id": "fr.word.museum",
+      "id": "es.word.museum",
       "conceptId": "concept.word.museum",
-      "word": "musée",
+      "word": "museo",
       "meaning": {
         "en": "museum",
         "he": "מוזיאון"
@@ -6055,9 +6055,9 @@
       }
     },
     {
-      "id": "fr.word.man",
+      "id": "es.word.man",
       "conceptId": "concept.word.man",
-      "word": "homme",
+      "word": "hombre",
       "meaning": {
         "en": "man",
         "he": "גבר"
@@ -6074,9 +6074,9 @@
       }
     },
     {
-      "id": "fr.word.woman",
+      "id": "es.word.woman",
       "conceptId": "concept.word.woman",
-      "word": "femme",
+      "word": "mujer",
       "meaning": {
         "en": "woman",
         "he": "אישה"
@@ -6093,9 +6093,9 @@
       }
     },
     {
-      "id": "fr.phrase.good-night",
+      "id": "es.phrase.good-night",
       "conceptId": "concept.phrase.good-night",
-      "word": "Bonne nuit.",
+      "word": "Buenas noches.",
       "meaning": {
         "en": "Good night.",
         "he": "לילה טוב"
@@ -6111,9 +6111,9 @@
       }
     },
     {
-      "id": "fr.word.saturday",
+      "id": "es.word.saturday",
       "conceptId": "concept.word.saturday",
-      "word": "samedi",
+      "word": "sábado",
       "meaning": {
         "en": "Saturday",
         "he": "יום שבת"
@@ -6129,9 +6129,9 @@
       }
     },
     {
-      "id": "fr.word.hear",
+      "id": "es.word.hear",
       "conceptId": "concept.word.hear",
-      "word": "entendre",
+      "word": "oír",
       "meaning": {
         "en": "hear",
         "he": "לשמוע"
@@ -6147,7 +6147,7 @@
       }
     },
     {
-      "id": "fr.word.sleep",
+      "id": "es.word.sleep",
       "conceptId": "concept.word.sleep",
       "word": "dormir",
       "meaning": {
@@ -6166,9 +6166,9 @@
       }
     },
     {
-      "id": "fr.word.answer",
+      "id": "es.word.answer",
       "conceptId": "concept.word.answer",
-      "word": "répondre",
+      "word": "responder",
       "meaning": {
         "en": "answer",
         "he": "לענות"
@@ -6184,9 +6184,9 @@
       }
     },
     {
-      "id": "fr.word.remember",
+      "id": "es.word.remember",
       "conceptId": "concept.word.remember",
-      "word": "se souvenir",
+      "word": "recordar",
       "meaning": {
         "en": "remember",
         "he": "לזכור"
@@ -6202,9 +6202,9 @@
       }
     },
     {
-      "id": "fr.word.send",
+      "id": "es.word.send",
       "conceptId": "concept.word.send",
-      "word": "envoyer",
+      "word": "enviar",
       "meaning": {
         "en": "send",
         "he": "לשלוח"
@@ -6220,9 +6220,9 @@
       }
     },
     {
-      "id": "fr.word.drive",
+      "id": "es.word.drive",
       "conceptId": "concept.word.drive",
-      "word": "conduire",
+      "word": "conducir",
       "meaning": {
         "en": "drive",
         "he": "לנהוג"
@@ -6238,9 +6238,9 @@
       }
     },
     {
-      "id": "fr.word.meet",
+      "id": "es.word.meet",
       "conceptId": "concept.word.meet",
-      "word": "rencontrer",
+      "word": "conocer",
       "meaning": {
         "en": "meet",
         "he": "לפגוש"
@@ -6256,9 +6256,9 @@
       }
     },
     {
-      "id": "fr.word.easy",
+      "id": "es.word.easy",
       "conceptId": "concept.word.easy",
-      "word": "facile",
+      "word": "fácil",
       "meaning": {
         "en": "easy",
         "he": "קל"
@@ -6274,9 +6274,9 @@
       }
     },
     {
-      "id": "fr.word.hard",
+      "id": "es.word.hard",
       "conceptId": "concept.word.hard",
-      "word": "difficile",
+      "word": "difícil",
       "meaning": {
         "en": "hard",
         "he": "קשה"
@@ -6292,9 +6292,9 @@
       }
     },
     {
-      "id": "fr.word.sweet",
+      "id": "es.word.sweet",
       "conceptId": "concept.word.sweet",
-      "word": "sucré",
+      "word": "dulce",
       "meaning": {
         "en": "sweet",
         "he": "מתוק"
@@ -6310,9 +6310,9 @@
       }
     },
     {
-      "id": "fr.word.square",
+      "id": "es.word.square",
       "conceptId": "concept.word.square",
-      "word": "place",
+      "word": "plaza",
       "meaning": {
         "en": "square",
         "he": "כיכר"
@@ -6328,9 +6328,9 @@
       }
     },
     {
-      "id": "fr.word.corner",
+      "id": "es.word.corner",
       "conceptId": "concept.word.corner",
-      "word": "coin",
+      "word": "esquina",
       "meaning": {
         "en": "corner",
         "he": "פינה"
@@ -6346,9 +6346,9 @@
       }
     },
     {
-      "id": "fr.word.tip",
+      "id": "es.word.tip",
       "conceptId": "concept.word.tip",
-      "word": "pourboire",
+      "word": "propina",
       "meaning": {
         "en": "tip",
         "he": "טיפ"
@@ -6364,9 +6364,9 @@
       }
     },
     {
-      "id": "fr.word.tourist",
+      "id": "es.word.tourist",
       "conceptId": "concept.word.tourist",
-      "word": "touriste",
+      "word": "turista",
       "meaning": {
         "en": "tourist",
         "he": "תייר"
@@ -6382,9 +6382,9 @@
       }
     },
     {
-      "id": "fr.word.hand",
+      "id": "es.word.hand",
       "conceptId": "concept.word.hand",
-      "word": "main",
+      "word": "mano",
       "meaning": {
         "en": "hand",
         "he": "יד"
@@ -6401,9 +6401,9 @@
       }
     },
     {
-      "id": "fr.word.egg",
+      "id": "es.word.egg",
       "conceptId": "concept.word.egg",
-      "word": "œuf",
+      "word": "huevo",
       "meaning": {
         "en": "egg",
         "he": "ביצה"
@@ -6420,9 +6420,9 @@
       }
     },
     {
-      "id": "fr.word.cheese",
+      "id": "es.word.cheese",
       "conceptId": "concept.word.cheese",
-      "word": "fromage",
+      "word": "queso",
       "meaning": {
         "en": "cheese",
         "he": "גבינה"
@@ -6439,9 +6439,9 @@
       }
     },
     {
-      "id": "fr.word.rain",
+      "id": "es.word.rain",
       "conceptId": "concept.word.rain",
-      "word": "pluie",
+      "word": "lluvia",
       "meaning": {
         "en": "rain",
         "he": "גשם"
@@ -6458,9 +6458,9 @@
       }
     },
     {
-      "id": "fr.word.sea",
+      "id": "es.word.sea",
       "conceptId": "concept.word.sea",
-      "word": "mer",
+      "word": "mar",
       "meaning": {
         "en": "sea",
         "he": "ים"
@@ -6477,9 +6477,9 @@
       }
     },
     {
-      "id": "fr.word.swim",
+      "id": "es.word.swim",
       "conceptId": "concept.word.swim",
-      "word": "nager",
+      "word": "nadar",
       "meaning": {
         "en": "swim",
         "he": "לשחות"
@@ -6496,9 +6496,9 @@
       }
     },
     {
-      "id": "fr.word.cheers",
+      "id": "es.word.cheers",
       "conceptId": "concept.word.cheers",
-      "word": "santé",
+      "word": "salud",
       "meaning": {
         "en": "cheers",
         "he": "לחיים"
@@ -6514,9 +6514,9 @@
       }
     },
     {
-      "id": "fr.reply.nothing-else",
+      "id": "es.reply.nothing-else",
       "conceptId": "concept.reply.nothing-else",
-      "word": "Rien d’autre.",
+      "word": "Nada más.",
       "meaning": {
         "en": "Nothing else.",
         "he": "שום דבר נוסף"
@@ -6532,9 +6532,9 @@
       }
     },
     {
-      "id": "fr.word.tuesday",
+      "id": "es.word.tuesday",
       "conceptId": "concept.word.tuesday",
-      "word": "mardi",
+      "word": "martes",
       "meaning": {
         "en": "Tuesday",
         "he": "יום שלישי"
@@ -6550,9 +6550,9 @@
       }
     },
     {
-      "id": "fr.word.wednesday",
+      "id": "es.word.wednesday",
       "conceptId": "concept.word.wednesday",
-      "word": "mercredi",
+      "word": "miércoles",
       "meaning": {
         "en": "Wednesday",
         "he": "יום רביעי"
@@ -6568,9 +6568,9 @@
       }
     },
     {
-      "id": "fr.word.thursday",
+      "id": "es.word.thursday",
       "conceptId": "concept.word.thursday",
-      "word": "jeudi",
+      "word": "jueves",
       "meaning": {
         "en": "Thursday",
         "he": "יום חמישי"
@@ -6586,9 +6586,9 @@
       }
     },
     {
-      "id": "fr.word.salty",
+      "id": "es.word.salty",
       "conceptId": "concept.word.salty",
-      "word": "salé",
+      "word": "salado",
       "meaning": {
         "en": "salty",
         "he": "מלוח"
@@ -6604,9 +6604,9 @@
       }
     },
     {
-      "id": "fr.word.fresh",
+      "id": "es.word.fresh",
       "conceptId": "concept.word.fresh",
-      "word": "frais",
+      "word": "fresco",
       "meaning": {
         "en": "fresh",
         "he": "טרי"
@@ -6622,9 +6622,9 @@
       }
     },
     {
-      "id": "fr.word.different",
+      "id": "es.word.different",
       "conceptId": "concept.word.different",
-      "word": "différent",
+      "word": "diferente",
       "meaning": {
         "en": "different",
         "he": "שונה"
@@ -6640,9 +6640,9 @@
       }
     },
     {
-      "id": "fr.word.fruit",
+      "id": "es.word.fruit",
       "conceptId": "concept.word.fruit",
-      "word": "fruit",
+      "word": "fruta",
       "meaning": {
         "en": "fruit",
         "he": "פירות"
@@ -6659,9 +6659,9 @@
       }
     },
     {
-      "id": "fr.word.salad",
+      "id": "es.word.salad",
       "conceptId": "concept.word.salad",
-      "word": "salade",
+      "word": "ensalada",
       "meaning": {
         "en": "salad",
         "he": "סלט"
@@ -6678,9 +6678,9 @@
       }
     },
     {
-      "id": "fr.word.salt",
+      "id": "es.word.salt",
       "conceptId": "concept.word.salt",
-      "word": "sel",
+      "word": "sal",
       "meaning": {
         "en": "salt",
         "he": "מלח"
@@ -6697,9 +6697,9 @@
       }
     },
     {
-      "id": "fr.word.juice",
+      "id": "es.word.juice",
       "conceptId": "concept.word.juice",
-      "word": "jus",
+      "word": "zumo",
       "meaning": {
         "en": "juice",
         "he": "מיץ"
@@ -6716,7 +6716,7 @@
       }
     },
     {
-      "id": "fr.word.pizza",
+      "id": "es.word.pizza",
       "conceptId": "concept.word.pizza",
       "word": "pizza",
       "meaning": {
@@ -6735,9 +6735,9 @@
       }
     },
     {
-      "id": "fr.word.glass",
+      "id": "es.word.glass",
       "conceptId": "concept.word.glass",
-      "word": "verre",
+      "word": "vaso",
       "meaning": {
         "en": "glass",
         "he": "כוס"
@@ -6753,9 +6753,9 @@
       }
     },
     {
-      "id": "fr.word.bottle",
+      "id": "es.word.bottle",
       "conceptId": "concept.word.bottle",
-      "word": "bouteille",
+      "word": "botella",
       "meaning": {
         "en": "bottle",
         "he": "בקבוק"
@@ -6771,9 +6771,9 @@
       }
     },
     {
-      "id": "fr.word.lunch",
+      "id": "es.word.lunch",
       "conceptId": "concept.word.lunch",
-      "word": "déjeuner",
+      "word": "almuerzo",
       "meaning": {
         "en": "lunch",
         "he": "ארוחת צהריים"
@@ -6789,9 +6789,9 @@
       }
     },
     {
-      "id": "fr.word.dinner",
+      "id": "es.word.dinner",
       "conceptId": "concept.word.dinner",
-      "word": "dîner",
+      "word": "cena",
       "meaning": {
         "en": "dinner",
         "he": "ארוחת ערב"
@@ -6807,9 +6807,9 @@
       }
     },
     {
-      "id": "fr.word.park",
+      "id": "es.word.park",
       "conceptId": "concept.word.park",
-      "word": "parc",
+      "word": "parque",
       "meaning": {
         "en": "park",
         "he": "פארק"
@@ -6826,9 +6826,9 @@
       }
     },
     {
-      "id": "fr.word.window",
+      "id": "es.word.window",
       "conceptId": "concept.word.window",
-      "word": "fenêtre",
+      "word": "ventana",
       "meaning": {
         "en": "window",
         "he": "חלון"
@@ -6845,9 +6845,9 @@
       }
     },
     {
-      "id": "fr.word.road",
+      "id": "es.word.road",
       "conceptId": "concept.word.road",
-      "word": "route",
+      "word": "carretera",
       "meaning": {
         "en": "road",
         "he": "כביש"
@@ -6864,9 +6864,9 @@
       }
     },
     {
-      "id": "fr.word.traffic-light",
+      "id": "es.word.traffic-light",
       "conceptId": "concept.word.traffic-light",
-      "word": "feu tricolore",
+      "word": "semáforo",
       "meaning": {
         "en": "traffic light",
         "he": "רמזור"
@@ -6883,9 +6883,9 @@
       }
     },
     {
-      "id": "fr.word.kitchen",
+      "id": "es.word.kitchen",
       "conceptId": "concept.word.kitchen",
-      "word": "cuisine",
+      "word": "cocina",
       "meaning": {
         "en": "kitchen",
         "he": "מטבח"
@@ -6901,9 +6901,9 @@
       }
     },
     {
-      "id": "fr.word.app",
+      "id": "es.word.app",
       "conceptId": "concept.word.app",
-      "word": "application",
+      "word": "aplicación",
       "meaning": {
         "en": "app",
         "he": "אפליקציה"
@@ -6919,9 +6919,9 @@
       }
     },
     {
-      "id": "fr.word.email",
+      "id": "es.word.email",
       "conceptId": "concept.word.email",
-      "word": "e-mail",
+      "word": "correo electrónico",
       "meaning": {
         "en": "email",
         "he": "אימייל"
@@ -6938,9 +6938,9 @@
       }
     },
     {
-      "id": "fr.word.rice",
+      "id": "es.word.rice",
       "conceptId": "concept.word.rice",
-      "word": "riz",
+      "word": "arroz",
       "meaning": {
         "en": "rice",
         "he": "אורז"
@@ -6957,9 +6957,9 @@
       }
     },
     {
-      "id": "fr.word.soup",
+      "id": "es.word.soup",
       "conceptId": "concept.word.soup",
-      "word": "soupe",
+      "word": "sopa",
       "meaning": {
         "en": "soup",
         "he": "מרק"
@@ -6976,9 +6976,9 @@
       }
     },
     {
-      "id": "fr.word.bike",
+      "id": "es.word.bike",
       "conceptId": "concept.word.bike",
-      "word": "vélo",
+      "word": "bicicleta",
       "meaning": {
         "en": "bike",
         "he": "אופניים"
@@ -6995,9 +6995,9 @@
       }
     },
     {
-      "id": "fr.word.boat",
+      "id": "es.word.boat",
       "conceptId": "concept.word.boat",
-      "word": "bateau",
+      "word": "barco",
       "meaning": {
         "en": "boat",
         "he": "סירה"
@@ -7014,9 +7014,9 @@
       }
     },
     {
-      "id": "fr.word.bank",
+      "id": "es.word.bank",
       "conceptId": "concept.word.bank",
-      "word": "banque",
+      "word": "banco",
       "meaning": {
         "en": "bank",
         "he": "בנק"
@@ -7033,9 +7033,9 @@
       }
     },
     {
-      "id": "fr.word.run",
+      "id": "es.word.run",
       "conceptId": "concept.word.run",
-      "word": "courir",
+      "word": "correr",
       "meaning": {
         "en": "run",
         "he": "לרוץ"
@@ -7052,9 +7052,9 @@
       }
     },
     {
-      "id": "fr.word.black",
+      "id": "es.word.black",
       "conceptId": "concept.word.black",
-      "word": "noir",
+      "word": "negro",
       "meaning": {
         "en": "black",
         "he": "שחור"
@@ -7071,9 +7071,9 @@
       }
     },
     {
-      "id": "fr.word.white",
+      "id": "es.word.white",
       "conceptId": "concept.word.white",
-      "word": "blanc",
+      "word": "blanco",
       "meaning": {
         "en": "white",
         "he": "לבן"
@@ -7090,9 +7090,9 @@
       }
     },
     {
-      "id": "fr.word.stand",
+      "id": "es.word.stand",
       "conceptId": "concept.word.stand",
-      "word": "se lever",
+      "word": "levantarse",
       "meaning": {
         "en": "stand",
         "he": "לעמוד"
@@ -7108,9 +7108,9 @@
       }
     },
     {
-      "id": "fr.word.empty",
+      "id": "es.word.empty",
       "conceptId": "concept.word.empty",
-      "word": "vide",
+      "word": "vacío",
       "meaning": {
         "en": "empty",
         "he": "ריק"
@@ -7126,9 +7126,9 @@
       }
     },
     {
-      "id": "fr.word.sandwich",
+      "id": "es.word.sandwich",
       "conceptId": "concept.word.sandwich",
-      "word": "sandwich",
+      "word": "bocadillo",
       "meaning": {
         "en": "sandwich",
         "he": "כריך"
@@ -7145,9 +7145,9 @@
       }
     },
     {
-      "id": "fr.word.building",
+      "id": "es.word.building",
       "conceptId": "concept.word.building",
-      "word": "bâtiment",
+      "word": "edificio",
       "meaning": {
         "en": "building",
         "he": "בניין"
@@ -7164,9 +7164,9 @@
       }
     },
     {
-      "id": "fr.word.coin",
+      "id": "es.word.coin",
       "conceptId": "concept.word.coin",
-      "word": "pièce",
+      "word": "moneda",
       "meaning": {
         "en": "coin",
         "he": "מטבע"
@@ -7183,9 +7183,9 @@
       }
     },
     {
-      "id": "fr.word.sale",
+      "id": "es.word.sale",
       "conceptId": "concept.word.sale",
-      "word": "soldes",
+      "word": "rebajas",
       "meaning": {
         "en": "sale",
         "he": "מבצע"
@@ -7201,9 +7201,9 @@
       }
     },
     {
-      "id": "fr.word.tax",
+      "id": "es.word.tax",
       "conceptId": "concept.word.tax",
-      "word": "taxe",
+      "word": "impuesto",
       "meaning": {
         "en": "tax",
         "he": "מס"
@@ -7219,9 +7219,9 @@
       }
     },
     {
-      "id": "fr.word.gift",
+      "id": "es.word.gift",
       "conceptId": "concept.word.gift",
-      "word": "cadeau",
+      "word": "regalo",
       "meaning": {
         "en": "gift",
         "he": "מתנה"
@@ -7238,9 +7238,9 @@
       }
     },
     {
-      "id": "fr.word.mother",
+      "id": "es.word.mother",
       "conceptId": "concept.word.mother",
-      "word": "mère",
+      "word": "madre",
       "meaning": {
         "en": "mother",
         "he": "אמא"
@@ -7256,9 +7256,9 @@
       }
     },
     {
-      "id": "fr.word.father",
+      "id": "es.word.father",
       "conceptId": "concept.word.father",
-      "word": "père",
+      "word": "padre",
       "meaning": {
         "en": "father",
         "he": "אבא"
@@ -7274,9 +7274,9 @@
       }
     },
     {
-      "id": "fr.word.waiter",
+      "id": "es.word.waiter",
       "conceptId": "concept.word.waiter",
-      "word": "serveur",
+      "word": "camarero",
       "meaning": {
         "en": "waiter",
         "he": "מלצר"
@@ -7292,9 +7292,9 @@
       }
     },
     {
-      "id": "fr.word.pen",
+      "id": "es.word.pen",
       "conceptId": "concept.word.pen",
-      "word": "stylo",
+      "word": "bolígrafo",
       "meaning": {
         "en": "pen",
         "he": "עט"
@@ -7311,9 +7311,9 @@
       }
     },
     {
-      "id": "fr.word.apple",
+      "id": "es.word.apple",
       "conceptId": "concept.word.apple",
-      "word": "pomme",
+      "word": "manzana",
       "meaning": {
         "en": "apple",
         "he": "תפוח"
@@ -7330,9 +7330,9 @@
       }
     },
     {
-      "id": "fr.word.banana",
+      "id": "es.word.banana",
       "conceptId": "concept.word.banana",
-      "word": "banane",
+      "word": "plátano",
       "meaning": {
         "en": "banana",
         "he": "בננה"
@@ -7349,9 +7349,9 @@
       }
     },
     {
-      "id": "fr.word.dog",
+      "id": "es.word.dog",
       "conceptId": "concept.word.dog",
-      "word": "chien",
+      "word": "perro",
       "meaning": {
         "en": "dog",
         "he": "כלב"
@@ -7368,9 +7368,9 @@
       }
     },
     {
-      "id": "fr.word.cat",
+      "id": "es.word.cat",
       "conceptId": "concept.word.cat",
-      "word": "chat",
+      "word": "gato",
       "meaning": {
         "en": "cat",
         "he": "חתול"
@@ -7387,9 +7387,9 @@
       }
     },
     {
-      "id": "fr.word.church",
+      "id": "es.word.church",
       "conceptId": "concept.word.church",
-      "word": "église",
+      "word": "iglesia",
       "meaning": {
         "en": "church",
         "he": "כנסייה"
@@ -7406,9 +7406,9 @@
       }
     },
     {
-      "id": "fr.word.camera",
+      "id": "es.word.camera",
       "conceptId": "concept.word.camera",
-      "word": "appareil photo",
+      "word": "cámara",
       "meaning": {
         "en": "camera",
         "he": "מצלמה"
@@ -7425,9 +7425,9 @@
       }
     },
     {
-      "id": "fr.word.sun",
+      "id": "es.word.sun",
       "conceptId": "concept.word.sun",
-      "word": "soleil",
+      "word": "sol",
       "meaning": {
         "en": "sun",
         "he": "שמש"
@@ -7444,9 +7444,9 @@
       }
     },
     {
-      "id": "fr.word.mountain",
+      "id": "es.word.mountain",
       "conceptId": "concept.word.mountain",
-      "word": "montagne",
+      "word": "montaña",
       "meaning": {
         "en": "mountain",
         "he": "הר"
@@ -7463,9 +7463,9 @@
       }
     },
     {
-      "id": "fr.word.baby",
+      "id": "es.word.baby",
       "conceptId": "concept.word.baby",
-      "word": "bébé",
+      "word": "bebé",
       "meaning": {
         "en": "baby",
         "he": "תינוק"
@@ -7482,9 +7482,9 @@
       }
     },
     {
-      "id": "fr.word.pink",
+      "id": "es.word.pink",
       "conceptId": "concept.word.pink",
-      "word": "rose",
+      "word": "rosa",
       "meaning": {
         "en": "pink",
         "he": "ורוד"
@@ -7501,9 +7501,9 @@
       }
     },
     {
-      "id": "fr.word.wash",
+      "id": "es.word.wash",
       "conceptId": "concept.word.wash",
-      "word": "laver",
+      "word": "lavar",
       "meaning": {
         "en": "wash",
         "he": "לשטוף"
@@ -7519,9 +7519,9 @@
       }
     },
     {
-      "id": "fr.word.loud",
+      "id": "es.word.loud",
       "conceptId": "concept.word.loud",
-      "word": "fort",
+      "word": "fuerte",
       "meaning": {
         "en": "loud",
         "he": "רועש"
@@ -7537,9 +7537,9 @@
       }
     },
     {
-      "id": "fr.word.pasta",
+      "id": "es.word.pasta",
       "conceptId": "concept.word.pasta",
-      "word": "pâtes",
+      "word": "pasta",
       "meaning": {
         "en": "pasta",
         "he": "פסטה"
@@ -7556,9 +7556,9 @@
       }
     },
     {
-      "id": "fr.word.bridge",
+      "id": "es.word.bridge",
       "conceptId": "concept.word.bridge",
-      "word": "pont",
+      "word": "puente",
       "meaning": {
         "en": "bridge",
         "he": "גשר"
@@ -7575,9 +7575,9 @@
       }
     },
     {
-      "id": "fr.word.elevator",
+      "id": "es.word.elevator",
       "conceptId": "concept.word.elevator",
-      "word": "ascenseur",
+      "word": "ascensor",
       "meaning": {
         "en": "elevator",
         "he": "מעלית"
@@ -7594,9 +7594,9 @@
       }
     },
     {
-      "id": "fr.word.stairs",
+      "id": "es.word.stairs",
       "conceptId": "concept.word.stairs",
-      "word": "escalier",
+      "word": "escaleras",
       "meaning": {
         "en": "stairs",
         "he": "מדרגות"
@@ -7612,9 +7612,9 @@
       }
     },
     {
-      "id": "fr.word.discount",
+      "id": "es.word.discount",
       "conceptId": "concept.word.discount",
-      "word": "réduction",
+      "word": "descuento",
       "meaning": {
         "en": "discount",
         "he": "הנחה"
@@ -7630,7 +7630,7 @@
       }
     },
     {
-      "id": "fr.word.shekel",
+      "id": "es.word.shekel",
       "conceptId": "concept.word.shekel",
       "word": "shekel",
       "meaning": {
@@ -7648,9 +7648,9 @@
       }
     },
     {
-      "id": "fr.word.battery",
+      "id": "es.word.battery",
       "conceptId": "concept.word.battery",
-      "word": "pile",
+      "word": "pila",
       "meaning": {
         "en": "battery",
         "he": "סוללה"
@@ -7667,9 +7667,9 @@
       }
     },
     {
-      "id": "fr.word.yellow",
+      "id": "es.word.yellow",
       "conceptId": "concept.word.yellow",
-      "word": "jaune",
+      "word": "amarillo",
       "meaning": {
         "en": "yellow",
         "he": "צהוב"
@@ -7686,9 +7686,9 @@
       }
     },
     {
-      "id": "fr.word.orange",
+      "id": "es.word.orange",
       "conceptId": "concept.word.orange",
-      "word": "orange",
+      "word": "naranja",
       "meaning": {
         "en": "orange",
         "he": "כתום"
@@ -7705,9 +7705,9 @@
       }
     },
     {
-      "id": "fr.word.brown",
+      "id": "es.word.brown",
       "conceptId": "concept.word.brown",
-      "word": "marron",
+      "word": "marrón",
       "meaning": {
         "en": "brown",
         "he": "חום"
@@ -7724,7 +7724,7 @@
       }
     },
     {
-      "id": "fr.word.sad",
+      "id": "es.word.sad",
       "conceptId": "concept.word.sad",
       "word": "triste",
       "meaning": {
@@ -7743,9 +7743,9 @@
       }
     },
     {
-      "id": "fr.word.alone",
+      "id": "es.word.alone",
       "conceptId": "concept.word.alone",
-      "word": "seul",
+      "word": "solo",
       "meaning": {
         "en": "alone",
         "he": "לבד"
@@ -7761,9 +7761,9 @@
       }
     },
     {
-      "id": "fr.word.ice-cream",
+      "id": "es.word.ice-cream",
       "conceptId": "concept.word.ice-cream",
-      "word": "glace",
+      "word": "helado",
       "meaning": {
         "en": "ice cream",
         "he": "גלידה"
@@ -7780,9 +7780,9 @@
       }
     },
     {
-      "id": "fr.word.soap",
+      "id": "es.word.soap",
       "conceptId": "concept.word.soap",
-      "word": "savon",
+      "word": "jabón",
       "meaning": {
         "en": "soap",
         "he": "סבון"
@@ -7799,9 +7799,9 @@
       }
     },
     {
-      "id": "fr.word.paper",
+      "id": "es.word.paper",
       "conceptId": "concept.word.paper",
-      "word": "papier",
+      "word": "papel",
       "meaning": {
         "en": "paper",
         "he": "נייר"
@@ -7818,9 +7818,9 @@
       }
     },
     {
-      "id": "fr.word.chair",
+      "id": "es.word.chair",
       "conceptId": "concept.word.chair",
-      "word": "chaise",
+      "word": "silla",
       "meaning": {
         "en": "chair",
         "he": "כיסא"
@@ -7837,9 +7837,9 @@
       }
     },
     {
-      "id": "fr.word.apartment",
+      "id": "es.word.apartment",
       "conceptId": "concept.word.apartment",
-      "word": "appartement",
+      "word": "apartamento",
       "meaning": {
         "en": "apartment",
         "he": "דירה"
@@ -7855,9 +7855,9 @@
       }
     },
     {
-      "id": "fr.word.computer",
+      "id": "es.word.computer",
       "conceptId": "concept.word.computer",
-      "word": "ordinateur",
+      "word": "ordenador",
       "meaning": {
         "en": "computer",
         "he": "מחשב"
@@ -7874,9 +7874,9 @@
       }
     },
     {
-      "id": "fr.word.message",
+      "id": "es.word.message",
       "conceptId": "concept.word.message",
-      "word": "message",
+      "word": "mensaje",
       "meaning": {
         "en": "message",
         "he": "הודעה"
@@ -7893,9 +7893,9 @@
       }
     },
     {
-      "id": "fr.word.eye",
+      "id": "es.word.eye",
       "conceptId": "concept.word.eye",
-      "word": "œil",
+      "word": "ojo",
       "meaning": {
         "en": "eye",
         "he": "עין"
@@ -7912,9 +7912,9 @@
       }
     },
     {
-      "id": "fr.word.mouth",
+      "id": "es.word.mouth",
       "conceptId": "concept.word.mouth",
-      "word": "bouche",
+      "word": "boca",
       "meaning": {
         "en": "mouth",
         "he": "פה"
@@ -7931,9 +7931,9 @@
       }
     },
     {
-      "id": "fr.word.foot",
+      "id": "es.word.foot",
       "conceptId": "concept.word.foot",
-      "word": "pied",
+      "word": "pie",
       "meaning": {
         "en": "foot",
         "he": "כף רגל"
@@ -7950,9 +7950,9 @@
       }
     },
     {
-      "id": "fr.word.leg",
+      "id": "es.word.leg",
       "conceptId": "concept.word.leg",
-      "word": "jambe",
+      "word": "pierna",
       "meaning": {
         "en": "leg",
         "he": "רגל"
@@ -7969,9 +7969,9 @@
       }
     },
     {
-      "id": "fr.word.shirt",
+      "id": "es.word.shirt",
       "conceptId": "concept.word.shirt",
-      "word": "chemise",
+      "word": "camisa",
       "meaning": {
         "en": "shirt",
         "he": "חולצה"
@@ -7988,9 +7988,9 @@
       }
     },
     {
-      "id": "fr.word.shoes",
+      "id": "es.word.shoes",
       "conceptId": "concept.word.shoes",
-      "word": "chaussures",
+      "word": "zapatos",
       "meaning": {
         "en": "shoes",
         "he": "נעליים"
@@ -8007,9 +8007,9 @@
       }
     },
     {
-      "id": "fr.word.football",
+      "id": "es.word.football",
       "conceptId": "concept.word.football",
-      "word": "football",
+      "word": "fútbol",
       "meaning": {
         "en": "football",
         "he": "כדורגל"
@@ -8026,9 +8026,9 @@
       }
     },
     {
-      "id": "fr.word.congratulations",
+      "id": "es.word.congratulations",
       "conceptId": "concept.word.congratulations",
-      "word": "félicitations",
+      "word": "felicidades",
       "meaning": {
         "en": "congratulations",
         "he": "מזל טוב"
@@ -8044,9 +8044,9 @@
       }
     },
     {
-      "id": "fr.word.purple",
+      "id": "es.word.purple",
       "conceptId": "concept.word.purple",
-      "word": "violet",
+      "word": "morado",
       "meaning": {
         "en": "purple",
         "he": "סגול"
@@ -8063,9 +8063,9 @@
       }
     },
     {
-      "id": "fr.word.cup",
+      "id": "es.word.cup",
       "conceptId": "concept.word.cup",
-      "word": "tasse",
+      "word": "taza",
       "meaning": {
         "en": "cup",
         "he": "ספל"
@@ -8081,9 +8081,9 @@
       }
     },
     {
-      "id": "fr.word.dessert",
+      "id": "es.word.dessert",
       "conceptId": "concept.word.dessert",
-      "word": "dessert",
+      "word": "postre",
       "meaning": {
         "en": "dessert",
         "he": "קינוח"
@@ -8100,9 +8100,9 @@
       }
     },
     {
-      "id": "fr.word.castle",
+      "id": "es.word.castle",
       "conceptId": "concept.word.castle",
-      "word": "château",
+      "word": "castillo",
       "meaning": {
         "en": "castle",
         "he": "טירה"
@@ -8119,9 +8119,9 @@
       }
     },
     {
-      "id": "fr.word.wife",
+      "id": "es.word.wife",
       "conceptId": "concept.word.wife",
-      "word": "épouse",
+      "word": "esposa",
       "meaning": {
         "en": "wife",
         "he": "אישה (בת זוג)"
@@ -8137,9 +8137,9 @@
       }
     },
     {
-      "id": "fr.word.son",
+      "id": "es.word.son",
       "conceptId": "concept.word.son",
-      "word": "fils",
+      "word": "hijo",
       "meaning": {
         "en": "son",
         "he": "בן"
@@ -8155,9 +8155,9 @@
       }
     },
     {
-      "id": "fr.word.sunglasses",
+      "id": "es.word.sunglasses",
       "conceptId": "concept.word.sunglasses",
-      "word": "lunettes de soleil",
+      "word": "gafas de sol",
       "meaning": {
         "en": "sunglasses",
         "he": "משקפי שמש"
@@ -8174,9 +8174,9 @@
       }
     },
     {
-      "id": "fr.word.pillow",
+      "id": "es.word.pillow",
       "conceptId": "concept.word.pillow",
-      "word": "oreiller",
+      "word": "almohada",
       "meaning": {
         "en": "pillow",
         "he": "כרית"
@@ -8192,9 +8192,9 @@
       }
     },
     {
-      "id": "fr.word.blanket",
+      "id": "es.word.blanket",
       "conceptId": "concept.word.blanket",
-      "word": "couverture",
+      "word": "manta",
       "meaning": {
         "en": "blanket",
         "he": "שמיכה"
@@ -8210,9 +8210,9 @@
       }
     },
     {
-      "id": "fr.word.fridge",
+      "id": "es.word.fridge",
       "conceptId": "concept.word.fridge",
-      "word": "frigo",
+      "word": "nevera",
       "meaning": {
         "en": "fridge",
         "he": "מקרר"
@@ -8228,9 +8228,9 @@
       }
     },
     {
-      "id": "fr.word.balcony",
+      "id": "es.word.balcony",
       "conceptId": "concept.word.balcony",
-      "word": "balcon",
+      "word": "balcón",
       "meaning": {
         "en": "balcony",
         "he": "מרפסת"
@@ -8246,9 +8246,9 @@
       }
     },
     {
-      "id": "fr.word.screen",
+      "id": "es.word.screen",
       "conceptId": "concept.word.screen",
-      "word": "écran",
+      "word": "pantalla",
       "meaning": {
         "en": "screen",
         "he": "מסך"
@@ -8264,9 +8264,9 @@
       }
     },
     {
-      "id": "fr.word.nose",
+      "id": "es.word.nose",
       "conceptId": "concept.word.nose",
-      "word": "nez",
+      "word": "nariz",
       "meaning": {
         "en": "nose",
         "he": "אף"
@@ -8283,9 +8283,9 @@
       }
     },
     {
-      "id": "fr.word.ear",
+      "id": "es.word.ear",
       "conceptId": "concept.word.ear",
-      "word": "oreille",
+      "word": "oreja",
       "meaning": {
         "en": "ear",
         "he": "אוזן"
@@ -8302,9 +8302,9 @@
       }
     },
     {
-      "id": "fr.word.chocolate",
+      "id": "es.word.chocolate",
       "conceptId": "concept.word.chocolate",
-      "word": "chocolat",
+      "word": "chocolate",
       "meaning": {
         "en": "chocolate",
         "he": "שוקולד"
@@ -8321,7 +8321,7 @@
       }
     },
     {
-      "id": "fr.word.ferry",
+      "id": "es.word.ferry",
       "conceptId": "concept.word.ferry",
       "word": "ferry",
       "meaning": {
@@ -8340,9 +8340,9 @@
       }
     },
     {
-      "id": "fr.word.souvenir",
+      "id": "es.word.souvenir",
       "conceptId": "concept.word.souvenir",
-      "word": "souvenir",
+      "word": "recuerdo",
       "meaning": {
         "en": "souvenir",
         "he": "מזכרת"
@@ -8358,9 +8358,9 @@
       }
     },
     {
-      "id": "fr.word.brother",
+      "id": "es.word.brother",
       "conceptId": "concept.word.brother",
-      "word": "frère",
+      "word": "hermano",
       "meaning": {
         "en": "brother",
         "he": "אח"
@@ -8376,9 +8376,9 @@
       }
     },
     {
-      "id": "fr.word.sister",
+      "id": "es.word.sister",
       "conceptId": "concept.word.sister",
-      "word": "sœur",
+      "word": "hermana",
       "meaning": {
         "en": "sister",
         "he": "אחות"
@@ -8394,9 +8394,9 @@
       }
     },
     {
-      "id": "fr.word.husband",
+      "id": "es.word.husband",
       "conceptId": "concept.word.husband",
-      "word": "mari",
+      "word": "marido",
       "meaning": {
         "en": "husband",
         "he": "בעל"
@@ -8412,9 +8412,9 @@
       }
     },
     {
-      "id": "fr.word.daughter",
+      "id": "es.word.daughter",
       "conceptId": "concept.word.daughter",
-      "word": "fille",
+      "word": "hija",
       "meaning": {
         "en": "daughter",
         "he": "בת"
@@ -8430,9 +8430,9 @@
       }
     },
     {
-      "id": "fr.word.toothbrush",
+      "id": "es.word.toothbrush",
       "conceptId": "concept.word.toothbrush",
-      "word": "brosse à dents",
+      "word": "cepillo de dientes",
       "meaning": {
         "en": "toothbrush",
         "he": "מברשת שיניים"
@@ -8449,9 +8449,9 @@
       }
     },
     {
-      "id": "fr.word.toothpaste",
+      "id": "es.word.toothpaste",
       "conceptId": "concept.word.toothpaste",
-      "word": "dentifrice",
+      "word": "pasta de dientes",
       "meaning": {
         "en": "toothpaste",
         "he": "משחת שיניים"
@@ -8467,9 +8467,9 @@
       }
     },
     {
-      "id": "fr.word.sheets",
+      "id": "es.word.sheets",
       "conceptId": "concept.word.sheets",
-      "word": "draps",
+      "word": "sábanas",
       "meaning": {
         "en": "sheets",
         "he": "סדינים"
@@ -8485,9 +8485,9 @@
       }
     },
     {
-      "id": "fr.word.laundry",
+      "id": "es.word.laundry",
       "conceptId": "concept.word.laundry",
-      "word": "linge",
+      "word": "ropa sucia",
       "meaning": {
         "en": "laundry",
         "he": "כביסה"
@@ -8504,9 +8504,9 @@
       }
     },
     {
-      "id": "fr.word.video",
+      "id": "es.word.video",
       "conceptId": "concept.word.video",
-      "word": "vidéo",
+      "word": "vídeo",
       "meaning": {
         "en": "video",
         "he": "סרטון"
@@ -8523,9 +8523,9 @@
       }
     },
     {
-      "id": "fr.word.glasses",
+      "id": "es.word.glasses",
       "conceptId": "concept.word.glasses",
-      "word": "lunettes",
+      "word": "gafas",
       "meaning": {
         "en": "glasses",
         "he": "משקפיים"
@@ -8542,9 +8542,9 @@
       }
     },
     {
-      "id": "fr.word.jacket",
+      "id": "es.word.jacket",
       "conceptId": "concept.word.jacket",
-      "word": "veste",
+      "word": "chaqueta",
       "meaning": {
         "en": "jacket",
         "he": "מעיל"
@@ -8561,9 +8561,9 @@
       }
     },
     {
-      "id": "fr.word.dress",
+      "id": "es.word.dress",
       "conceptId": "concept.word.dress",
-      "word": "robe",
+      "word": "vestido",
       "meaning": {
         "en": "dress",
         "he": "שמלה"
@@ -8580,9 +8580,9 @@
       }
     },
     {
-      "id": "fr.word.pants",
+      "id": "es.word.pants",
       "conceptId": "concept.word.pants",
-      "word": "pantalon",
+      "word": "pantalón",
       "meaning": {
         "en": "pants",
         "he": "מכנסיים"
@@ -8599,9 +8599,9 @@
       }
     },
     {
-      "id": "fr.word.snow",
+      "id": "es.word.snow",
       "conceptId": "concept.word.snow",
-      "word": "neige",
+      "word": "nieve",
       "meaning": {
         "en": "snow",
         "he": "שלג"
@@ -8618,9 +8618,9 @@
       }
     },
     {
-      "id": "fr.word.pepper",
+      "id": "es.word.pepper",
       "conceptId": "concept.word.pepper",
-      "word": "poivre",
+      "word": "pimienta",
       "meaning": {
         "en": "pepper",
         "he": "פלפל"
@@ -8636,9 +8636,9 @@
       }
     },
     {
-      "id": "fr.word.oil",
+      "id": "es.word.oil",
       "conceptId": "concept.word.oil",
-      "word": "huile",
+      "word": "aceite",
       "meaning": {
         "en": "oil",
         "he": "שמן"
@@ -8654,9 +8654,9 @@
       }
     },
     {
-      "id": "fr.word.butter",
+      "id": "es.word.butter",
       "conceptId": "concept.word.butter",
-      "word": "beurre",
+      "word": "mantequilla",
       "meaning": {
         "en": "butter",
         "he": "חמאה"
@@ -8673,9 +8673,9 @@
       }
     },
     {
-      "id": "fr.word.cake",
+      "id": "es.word.cake",
       "conceptId": "concept.word.cake",
-      "word": "gâteau",
+      "word": "pastel",
       "meaning": {
         "en": "cake",
         "he": "עוגה"
@@ -8692,7 +8692,7 @@
       }
     },
     {
-      "id": "fr.word.tomato",
+      "id": "es.word.tomato",
       "conceptId": "concept.word.tomato",
       "word": "tomate",
       "meaning": {
@@ -8711,9 +8711,9 @@
       }
     },
     {
-      "id": "fr.word.fork",
+      "id": "es.word.fork",
       "conceptId": "concept.word.fork",
-      "word": "fourchette",
+      "word": "tenedor",
       "meaning": {
         "en": "fork",
         "he": "מזלג"
@@ -8729,9 +8729,9 @@
       }
     },
     {
-      "id": "fr.word.knife",
+      "id": "es.word.knife",
       "conceptId": "concept.word.knife",
-      "word": "couteau",
+      "word": "cuchillo",
       "meaning": {
         "en": "knife",
         "he": "סכין"
@@ -8748,9 +8748,9 @@
       }
     },
     {
-      "id": "fr.word.spoon",
+      "id": "es.word.spoon",
       "conceptId": "concept.word.spoon",
-      "word": "cuillère",
+      "word": "cuchara",
       "meaning": {
         "en": "spoon",
         "he": "כף"
@@ -8767,9 +8767,9 @@
       }
     },
     {
-      "id": "fr.word.plate",
+      "id": "es.word.plate",
       "conceptId": "concept.word.plate",
-      "word": "assiette",
+      "word": "plato",
       "meaning": {
         "en": "plate",
         "he": "צלחת"
@@ -8786,9 +8786,9 @@
       }
     },
     {
-      "id": "fr.word.sink",
+      "id": "es.word.sink",
       "conceptId": "concept.word.sink",
-      "word": "évier",
+      "word": "fregadero",
       "meaning": {
         "en": "sink",
         "he": "כיור"
@@ -8804,9 +8804,9 @@
       }
     },
     {
-      "id": "fr.word.lamp",
+      "id": "es.word.lamp",
       "conceptId": "concept.word.lamp",
-      "word": "lampe",
+      "word": "lámpara",
       "meaning": {
         "en": "lamp",
         "he": "מנורה"
@@ -8823,9 +8823,9 @@
       }
     },
     {
-      "id": "fr.word.trash",
+      "id": "es.word.trash",
       "conceptId": "concept.word.trash",
-      "word": "poubelle",
+      "word": "basura",
       "meaning": {
         "en": "trash",
         "he": "פח אשפה"
@@ -8842,9 +8842,9 @@
       }
     },
     {
-      "id": "fr.word.garden",
+      "id": "es.word.garden",
       "conceptId": "concept.word.garden",
-      "word": "jardin",
+      "word": "jardín",
       "meaning": {
         "en": "garden",
         "he": "גינה"
@@ -8860,9 +8860,9 @@
       }
     },
     {
-      "id": "fr.word.cable",
+      "id": "es.word.cable",
       "conceptId": "concept.word.cable",
-      "word": "câble",
+      "word": "cable",
       "meaning": {
         "en": "cable",
         "he": "כבל"
@@ -8878,9 +8878,9 @@
       }
     },
     {
-      "id": "fr.word.headphones",
+      "id": "es.word.headphones",
       "conceptId": "concept.word.headphones",
-      "word": "écouteurs",
+      "word": "auriculares",
       "meaning": {
         "en": "headphones",
         "he": "אוזניות"
@@ -8897,9 +8897,9 @@
       }
     },
     {
-      "id": "fr.word.watch",
+      "id": "es.word.watch",
       "conceptId": "concept.word.watch",
-      "word": "montre",
+      "word": "reloj",
       "meaning": {
         "en": "watch",
         "he": "שעון"
@@ -8916,9 +8916,9 @@
       }
     },
     {
-      "id": "fr.word.hat",
+      "id": "es.word.hat",
       "conceptId": "concept.word.hat",
-      "word": "chapeau",
+      "word": "sombrero",
       "meaning": {
         "en": "hat",
         "he": "כובע"
@@ -8935,9 +8935,9 @@
       }
     },
     {
-      "id": "fr.word.storm",
+      "id": "es.word.storm",
       "conceptId": "concept.word.storm",
-      "word": "tempête",
+      "word": "tormenta",
       "meaning": {
         "en": "storm",
         "he": "סערה"
@@ -8954,9 +8954,9 @@
       }
     },
     {
-      "id": "fr.word.dance",
+      "id": "es.word.dance",
       "conceptId": "concept.word.dance",
-      "word": "danser",
+      "word": "bailar",
       "meaning": {
         "en": "dance",
         "he": "לרקוד"
@@ -8973,9 +8973,9 @@
       }
     },
     {
-      "id": "fr.word.cream",
+      "id": "es.word.cream",
       "conceptId": "concept.word.cream",
-      "word": "crème",
+      "word": "crema",
       "meaning": {
         "en": "cream",
         "he": "משחה"
@@ -8992,9 +8992,9 @@
       }
     },
     {
-      "id": "fr.word.boy",
+      "id": "es.word.boy",
       "conceptId": "concept.word.boy",
-      "word": "garçon",
+      "word": "chico",
       "meaning": {
         "en": "boy",
         "he": "ילד (בן)"
@@ -9010,9 +9010,9 @@
       }
     },
     {
-      "id": "fr.word.girl",
+      "id": "es.word.girl",
       "conceptId": "concept.word.girl",
-      "word": "fille",
+      "word": "chica",
       "meaning": {
         "en": "girl",
         "he": "ילדה"
@@ -9028,9 +9028,9 @@
       }
     },
     {
-      "id": "fr.word.shampoo",
+      "id": "es.word.shampoo",
       "conceptId": "concept.word.shampoo",
-      "word": "shampoing",
+      "word": "champú",
       "meaning": {
         "en": "shampoo",
         "he": "שמפו"
@@ -9046,9 +9046,9 @@
       }
     },
     {
-      "id": "fr.word.razor",
+      "id": "es.word.razor",
       "conceptId": "concept.word.razor",
-      "word": "rasoir",
+      "word": "maquinilla de afeitar",
       "meaning": {
         "en": "razor",
         "he": "סכין גילוח"
@@ -9065,9 +9065,9 @@
       }
     },
     {
-      "id": "fr.word.bird",
+      "id": "es.word.bird",
       "conceptId": "concept.word.bird",
-      "word": "oiseau",
+      "word": "pájaro",
       "meaning": {
         "en": "bird",
         "he": "ציפור"
@@ -9084,9 +9084,9 @@
       }
     },
     {
-      "id": "fr.word.horse",
+      "id": "es.word.horse",
       "conceptId": "concept.word.horse",
-      "word": "cheval",
+      "word": "caballo",
       "meaning": {
         "en": "horse",
         "he": "סוס"
@@ -9103,9 +9103,9 @@
       }
     },
     {
-      "id": "fr.word.cow",
+      "id": "es.word.cow",
       "conceptId": "concept.word.cow",
-      "word": "vache",
+      "word": "vaca",
       "meaning": {
         "en": "cow",
         "he": "פרה"
@@ -9122,9 +9122,9 @@
       }
     },
     {
-      "id": "fr.word.umbrella",
+      "id": "es.word.umbrella",
       "conceptId": "concept.word.umbrella",
-      "word": "parapluie",
+      "word": "paraguas",
       "meaning": {
         "en": "umbrella",
         "he": "מטרייה"
@@ -9141,9 +9141,9 @@
       }
     },
     {
-      "id": "fr.word.wind",
+      "id": "es.word.wind",
       "conceptId": "concept.word.wind",
-      "word": "vent",
+      "word": "viento",
       "meaning": {
         "en": "wind",
         "he": "רוח"
@@ -9160,9 +9160,9 @@
       }
     },
     {
-      "id": "fr.word.tree",
+      "id": "es.word.tree",
       "conceptId": "concept.word.tree",
-      "word": "arbre",
+      "word": "árbol",
       "meaning": {
         "en": "tree",
         "he": "עץ"
@@ -9179,9 +9179,9 @@
       }
     },
     {
-      "id": "fr.word.flower",
+      "id": "es.word.flower",
       "conceptId": "concept.word.flower",
-      "word": "fleur",
+      "word": "flor",
       "meaning": {
         "en": "flower",
         "he": "פרח"
@@ -9198,9 +9198,9 @@
       }
     },
     {
-      "id": "fr.word.hair",
+      "id": "es.word.hair",
       "conceptId": "concept.word.hair",
-      "word": "cheveux",
+      "word": "pelo",
       "meaning": {
         "en": "hair",
         "he": "שיער"
@@ -9216,9 +9216,9 @@
       }
     },
     {
-      "id": "fr.word.face",
+      "id": "es.word.face",
       "conceptId": "concept.word.face",
-      "word": "visage",
+      "word": "cara",
       "meaning": {
         "en": "face",
         "he": "פנים"
@@ -9234,9 +9234,9 @@
       }
     },
     {
-      "id": "fr.word.sofa",
+      "id": "es.word.sofa",
       "conceptId": "concept.word.sofa",
-      "word": "canapé",
+      "word": "sofá",
       "meaning": {
         "en": "sofa",
         "he": "ספה"
@@ -9253,9 +9253,9 @@
       }
     },
     {
-      "id": "fr.word.wall",
+      "id": "es.word.wall",
       "conceptId": "concept.word.wall",
-      "word": "mur",
+      "word": "pared",
       "meaning": {
         "en": "wall",
         "he": "קיר"
@@ -9271,9 +9271,9 @@
       }
     },
     {
-      "id": "fr.word.moon",
+      "id": "es.word.moon",
       "conceptId": "concept.word.moon",
-      "word": "lune",
+      "word": "luna",
       "meaning": {
         "en": "moon",
         "he": "ירח"
@@ -9290,9 +9290,9 @@
       }
     },
     {
-      "id": "fr.word.television",
+      "id": "es.word.television",
       "conceptId": "concept.word.television",
-      "word": "télévision",
+      "word": "televisión",
       "meaning": {
         "en": "television",
         "he": "טלוויזיה"
@@ -9309,9 +9309,9 @@
       }
     },
     {
-      "id": "fr.word.socks",
+      "id": "es.word.socks",
       "conceptId": "concept.word.socks",
-      "word": "chaussettes",
+      "word": "calcetines",
       "meaning": {
         "en": "socks",
         "he": "גרביים"
@@ -9328,9 +9328,9 @@
       }
     },
     {
-      "id": "fr.word.gloves",
+      "id": "es.word.gloves",
       "conceptId": "concept.word.gloves",
-      "word": "gants",
+      "word": "guantes",
       "meaning": {
         "en": "gloves",
         "he": "כפפות"
@@ -9347,9 +9347,9 @@
       }
     },
     {
-      "id": "fr.word.cloud",
+      "id": "es.word.cloud",
       "conceptId": "concept.word.cloud",
-      "word": "nuage",
+      "word": "nube",
       "meaning": {
         "en": "cloud",
         "he": "ענן"
@@ -9366,9 +9366,9 @@
       }
     },
     {
-      "id": "fr.word.scissors",
+      "id": "es.word.scissors",
       "conceptId": "concept.word.scissors",
-      "word": "ciseaux",
+      "word": "tijeras",
       "meaning": {
         "en": "scissors",
         "he": "מספריים"
@@ -9385,9 +9385,9 @@
       }
     },
     {
-      "id": "fr.word.mirror",
+      "id": "es.word.mirror",
       "conceptId": "concept.word.mirror",
-      "word": "miroir",
+      "word": "espejo",
       "meaning": {
         "en": "mirror",
         "he": "מראה"
@@ -9404,9 +9404,9 @@
       }
     },
     {
-      "id": "fr.word.comb",
+      "id": "es.word.comb",
       "conceptId": "concept.word.comb",
-      "word": "peigne",
+      "word": "peine",
       "meaning": {
         "en": "comb",
         "he": "מסרק"
