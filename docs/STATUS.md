@@ -22,6 +22,30 @@ loop (typecheck → lint → tests → build → smoke) green at every milestone
 
 ## What's done
 
+### Sprint 4 — Complete Spanish learning-language integration (2026-07-18)
+Added **Spanish (`es`, speech locale `es-ES`)** as a complete learning language at full parity with
+English, through the existing data-driven seams only — no engine, schema, or pedagogy changes. Gates
+green (typecheck · lint · 814 tests · build · smoke · parity · export · `gen:conversations` zero diff).
+- **Registration** — `languages.ts` flips `es` to `available/coreAvailable/earlyAccess: true`,
+  `bootcamp: 'full'`. Picker, onboarding, appStore validation, TTS voice profile (already present)
+  and exports light up with zero screen changes. Saved EN/FR selections stay valid; invalid values
+  still fall back to the pilot.
+- **Bootcamp 30/30** — `features/bootcamp/es/` (recovery kit + `day1..30` + `index`), registered in
+  `registry.ts` under `es`. Each mission mirrors its English counterpart exactly (step count, item
+  count, dialogue count, speaker order, exercise semantics, checkpoint reuse days 10/18/24) with
+  natural neutral-international Spanish targets and unchanged `{en,he}` glosses. No Spanish video yet →
+  Mission 2 keeps its intro/again video steps but sets no `introVideo`, so they degrade to an honest
+  "video unavailable" (never an English video).
+- **Core 511 / Foundation** — `content/core-corpus/data/es-pilot.ts` realizes ALL 511 concepts onto
+  the same concept rows (stable ids, categories, ranking, emoji preserved) → `core-es.v1.json` pilot
+  pack via the existing builder. `spanishExamples.ts` supplies all 192 Foundation example sentences.
+  Foundation, Universal Tap, Parrot Mode and Core games work in Spanish through the one shared path.
+- **Validation** — `es/es-missions.test.ts` (30/30 structural parity + `es.*` ids + Spanish-primary +
+  bilingual transcript + no French leaks) and `es-pilot.test.ts` (500/500 slug parity, no orphans,
+  genuine Spanish forms). `scripts/parity.ts` measures ES: Core 511/511, Bootcamp 30/30, Fnd 192/192,
+  Audio es-ES — all 100%.
+- Honest status: Spanish content is **AI-drafted, pending native review** (marked Early Access).
+
 ### Sprint — Parrot Mode Completion: loop, sleep timer, speed, pause, prefs, bookmarks (2026-07-17)
 Extended the ONE shared playback module (no second engine/controls; no content/schema/pedagogy
 changes; `gen:conversations` zero diff; EN/FR parity + offline preserved). Gates green

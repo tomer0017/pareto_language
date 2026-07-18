@@ -18,11 +18,13 @@ import { CORPUS } from './data/index.js';
 import { buildConcepts, buildPackWords, mergePilotRealizations, validateCorpus, validatePilotPack } from './corpus.js';
 import { CORE_CORPUS_VERSION, DECLARED_LANGS } from './types.js';
 import { FR_PILOT } from './data/fr-pilot.js';
+import { ES_PILOT } from './data/es-pilot.js';
 
 /** Pilot (curated-subset) languages: shipped as a real, validated pack without joining
  *  DECLARED_LANGS (which would demand a realization on all 500). Keyed slug → surface form. */
 const PILOT_PACKS: Record<string, Record<string, string>> = {
   fr: Object.fromEntries(Object.entries(FR_PILOT).map(([slug, e]) => [slug, e.w])),
+  es: Object.fromEntries(Object.entries(ES_PILOT).map(([slug, e]) => [slug, e.w])),
 };
 
 const CONCEPTS_DIR = fileURLToPath(new URL('../concepts/', import.meta.url));

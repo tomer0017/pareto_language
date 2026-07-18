@@ -9,9 +9,11 @@ import { readFileSync } from 'node:fs';
 import { corpusParity, assertCorpusParity } from '../content/core-corpus/parity.js';
 import { CORPUS } from '../content/core-corpus/data/index.js';
 import { FR_PILOT } from '../content/core-corpus/data/fr-pilot.js';
+import { ES_PILOT } from '../content/core-corpus/data/es-pilot.js';
 import { missionParity, assertBootcampParity } from '../apps/web/src/features/bootcamp/parity.js';
 import { DAYS } from '../apps/web/src/features/bootcamp/registry.js';
 import { DAYS_FR } from '../apps/web/src/features/bootcamp/fr/index.js';
+import { DAYS_ES } from '../apps/web/src/features/bootcamp/es/index.js';
 import { FOUNDATION_TAXONOMY } from '../apps/web/src/features/foundation/taxonomy.js';
 import { matchesCategory } from '../apps/web/src/features/foundation/foundationContent.js';
 import { authoredExampleIds } from '../apps/web/src/features/foundation/foundationExamples.js';
@@ -35,6 +37,13 @@ const COMPLETE_LANGS = new Set<string>([]);
 
 const corpusRealizations: Record<string, Record<string, unknown>> = {
   fr: FR_PILOT,
+  es: ES_PILOT,
+};
+
+/** Mission sets per language (parity is measured against the English reference `DAYS`). */
+const missionsByLang: Record<string, typeof DAYS> = {
+  fr: DAYS_FR,
+  es: DAYS_ES,
 };
 
 function bar(covered: number, total: number): string {
@@ -48,7 +57,7 @@ console.info('\n READY — multilingual parity vs English reference\n' + '─'.r
 
 for (const lang of Object.keys(corpusRealizations)) {
   const cp = corpusParity(lang, corpusRealizations[lang]!, CORPUS);
-  const bp = missionParity(lang, DAYS, DAYS_FR);
+  const bp = missionParity(lang, DAYS, missionsByLang[lang] ?? {});
   const complete = COMPLETE_LANGS.has(lang);
   console.info(`\n ${lang.toUpperCase()}  ${complete ? '(claims COMPLETE)' : '(in progress)'}`);
   console.info(`  Core corpus   ${bar(cp.covered, cp.total)}${cp.orphans.length ? `  ⚠ ${cp.orphans.length} orphan(s)` : ''}`);

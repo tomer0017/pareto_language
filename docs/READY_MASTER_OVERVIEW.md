@@ -251,9 +251,12 @@ auto-generated from source by `npm run gen:conversations`.
 - **Auth + sync** (Google sign-in) and per-user server-side settings/statistics.
 - **Future languages** (Italian/Spanish/French/Arabic) — infrastructure exists; not user-facing yet.
 
-**Explicitly not true yet ⚠️**
-- Only the **Italian `it-IT`** content pack is actually built, and it is **not user-facing** in the
-  pilot. English is the only active trip language. Other languages are honest "coming soon."
+**Active trip languages**
+- **English** (full pilot), **French** (Early Access, AI-drafted) and **Spanish** (`es-ES`, full 30/30
+  Bootcamp + Core 511 + Foundation examples, Early Access / AI-drafted, pending native review) are all
+  selectable and fully usable. Italian/Arabic and the rest remain honest "coming soon" until their
+  reviewed content ships. Adding a learning language stays content-only (registry + mission set + a
+  Core pilot pack) — proven again by the Spanish integration.
 
 ## 9. Development rules (never break)
 

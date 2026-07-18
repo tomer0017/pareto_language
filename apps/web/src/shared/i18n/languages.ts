@@ -46,7 +46,7 @@ export interface LanguageInfo {
 // ship. English leads the list so it is the default everywhere it matters.
 export const LEARNING_LANGUAGES: LanguageInfo[] = [
   { code: 'en', name: 'English', nativeName: 'English', names: { en: 'English', he: 'אנגלית' }, flag: '🇺🇸', accent: '#2f6fed', accentSoft: '#e3ecfd', dir: 'ltr', ttsTag: 'en-US', available: true, coreAvailable: true, bootcamp: 'full', appUi: true },
-  { code: 'es', name: 'Spanish', nativeName: 'Español', names: { en: 'Spanish', he: 'ספרדית' }, flag: '🇪🇸', accent: '#e8590c', accentSoft: '#fdeadd', dir: 'ltr', ttsTag: 'es-ES', available: false, coreAvailable: false, bootcamp: false, appUi: false },
+  { code: 'es', name: 'Spanish', nativeName: 'Español', names: { en: 'Spanish', he: 'ספרדית' }, flag: '🇪🇸', accent: '#e8590c', accentSoft: '#fdeadd', dir: 'ltr', ttsTag: 'es-ES', available: true, earlyAccess: true, coreAvailable: true, bootcamp: 'full', appUi: false },
   { code: 'fr', name: 'French', nativeName: 'Français', names: { en: 'French', he: 'צרפתית' }, flag: '🇫🇷', accent: '#3b5bdb', accentSoft: '#e5eafb', dir: 'ltr', ttsTag: 'fr-FR', available: true, earlyAccess: true, coreAvailable: true, bootcamp: 'early-access', appUi: false },
   { code: 'it', name: 'Italian', nativeName: 'Italiano', names: { en: 'Italian', he: 'איטלקית' }, flag: '🇮🇹', accent: '#0ca678', accentSoft: '#dcf5ec', dir: 'ltr', ttsTag: 'it-IT', available: false, coreAvailable: false, bootcamp: false, appUi: false },
   { code: 'ar', name: 'Arabic', nativeName: 'العربية', names: { en: 'Arabic', he: 'ערבית' }, flag: '🇸🇦', accent: '#b8860b', accentSoft: '#f7efd8', dir: 'rtl', ttsTag: 'ar-SA', available: false, coreAvailable: false, bootcamp: false, appUi: false },

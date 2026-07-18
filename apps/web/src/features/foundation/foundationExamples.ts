@@ -1,4 +1,5 @@
 import { FRENCH_EXAMPLES } from './frenchExamples.js';
+import { SPANISH_EXAMPLES } from './spanishExamples.js';
 
 /**
  * Registry of authored Foundation example sentences, per learning language, keyed by the
@@ -10,6 +11,7 @@ import { FRENCH_EXAMPLES } from './frenchExamples.js';
  */
 const EXAMPLES_BY_LANG: Record<string, Record<string, string>> = {
   fr: FRENCH_EXAMPLES,
+  es: SPANISH_EXAMPLES,
 };
 
 /** The authored target-language example for a concept, or undefined (→ honest app-language fallback). */

@@ -29,6 +29,7 @@ import { DAY28 } from './day28.js';
 import { DAY29 } from './day29.js';
 import { DAY30 } from './day30.js';
 import { DAYS_FR } from './fr/index.js';
+import { DAYS_ES } from './es/index.js';
 import type { BootcampDayContent } from './types.js';
 
 /**
@@ -49,6 +50,7 @@ export const DAYS: Record<number, BootcampDayContent> = {
 export const MISSIONS_BY_LANG: Record<string, Record<number, BootcampDayContent>> = {
   en: DAYS,
   fr: DAYS_FR,
+  es: DAYS_ES,
 };
 
 export function missionsFor(lang: string): Record<number, BootcampDayContent> {
