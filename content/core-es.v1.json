@@ -1,7 +1,7 @@
 {
   "lang": "es",
   "version": "2.0.0",
-  "generatedAt": "2026-07-18T10:43:56.456Z",
+  "generatedAt": "2026-07-18T18:17:42.583Z",
   "pilot": true,
   "count": 511,
   "words": [
@@ -26,7 +26,7 @@
     {
       "id": "es.word.toilet",
       "conceptId": "concept.word.toilet",
-      "word": "servicios",
+      "word": "baño",
       "meaning": {
         "en": "toilet",
         "he": "שירותים"
@@ -1933,7 +1933,7 @@
     {
       "id": "es.word.ticket",
       "conceptId": "concept.word.ticket",
-      "word": "billete",
+      "word": "boleto",
       "meaning": {
         "en": "ticket",
         "he": "כרטיס"
@@ -3032,7 +3032,7 @@
     {
       "id": "es.word.car",
       "conceptId": "concept.word.car",
-      "word": "coche",
+      "word": "auto",
       "meaning": {
         "en": "car",
         "he": "מכונית"
@@ -3845,7 +3845,7 @@
     {
       "id": "es.word.floor",
       "conceptId": "concept.word.floor",
-      "word": "planta",
+      "word": "piso",
       "meaning": {
         "en": "floor",
         "he": "קומה"
@@ -6222,7 +6222,7 @@
     {
       "id": "es.word.drive",
       "conceptId": "concept.word.drive",
-      "word": "conducir",
+      "word": "manejar",
       "meaning": {
         "en": "drive",
         "he": "לנהוג"
@@ -6699,7 +6699,7 @@
     {
       "id": "es.word.juice",
       "conceptId": "concept.word.juice",
-      "word": "zumo",
+      "word": "jugo",
       "meaning": {
         "en": "juice",
         "he": "מיץ"
@@ -7128,7 +7128,7 @@
     {
       "id": "es.word.sandwich",
       "conceptId": "concept.word.sandwich",
-      "word": "bocadillo",
+      "word": "sándwich",
       "meaning": {
         "en": "sandwich",
         "he": "כריך"
@@ -7276,7 +7276,7 @@
     {
       "id": "es.word.waiter",
       "conceptId": "concept.word.waiter",
-      "word": "camarero",
+      "word": "mesero",
       "meaning": {
         "en": "waiter",
         "he": "מלצר"
@@ -7857,7 +7857,7 @@
     {
       "id": "es.word.computer",
       "conceptId": "concept.word.computer",
-      "word": "ordenador",
+      "word": "computadora",
       "meaning": {
         "en": "computer",
         "he": "מחשב"
@@ -8157,7 +8157,7 @@
     {
       "id": "es.word.sunglasses",
       "conceptId": "concept.word.sunglasses",
-      "word": "gafas de sol",
+      "word": "lentes de sol",
       "meaning": {
         "en": "sunglasses",
         "he": "משקפי שמש"
@@ -8212,7 +8212,7 @@
     {
       "id": "es.word.fridge",
       "conceptId": "concept.word.fridge",
-      "word": "nevera",
+      "word": "refrigerador",
       "meaning": {
         "en": "fridge",
         "he": "מקרר"
@@ -8525,7 +8525,7 @@
     {
       "id": "es.word.glasses",
       "conceptId": "concept.word.glasses",
-      "word": "gafas",
+      "word": "lentes",
       "meaning": {
         "en": "glasses",
         "he": "משקפיים"
@@ -9048,7 +9048,7 @@
     {
       "id": "es.word.razor",
       "conceptId": "concept.word.razor",
-      "word": "maquinilla de afeitar",
+      "word": "rasuradora",
       "meaning": {
         "en": "razor",
         "he": "סכין גילוח"
