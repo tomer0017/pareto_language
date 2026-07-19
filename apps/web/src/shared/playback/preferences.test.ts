@@ -42,6 +42,10 @@ describe('sanitizeSettings', () => {
     });
   });
 
+  it('does NOT carry a translationFirst field (Reading owns its order, not the shared prefs)', () => {
+    expect('translationFirst' in sanitizeSettings({ translationFirst: true })).toBe(false);
+  });
+
   it('treats a non-object (null / string / number) as all-defaults', () => {
     expect(sanitizeSettings(null)).toEqual(DEFAULT_SETTINGS);
     expect(sanitizeSettings('garbage')).toEqual(DEFAULT_SETTINGS);

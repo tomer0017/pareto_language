@@ -1,5 +1,5 @@
 import { seededShuffle } from '../util/shuffle.js';
-import type { PauseDuration, PlaybackItem, PlaybackOrder, PlaybackSettings } from './types.js';
+import type { PauseDuration, PlaybackItem, PlaybackOrder, PlaybackSettings, SpeakOrderOverride } from './types.js';
 
 /**
  * Pure playback planning — the testable seam of Parrot Mode.
@@ -76,21 +76,29 @@ export function planNextCycle(settings: PlaybackSettings, prevOrder: number[], c
 }
 
 /**
- * The flat plan for one item: target → (pause → translation)? repeated `repeat` times, with a beat
- * between repeats. Translation is only spoken when the toggle is ON *and* the item carries one. Every
- * speak step carries the current playback `speed` so the rate propagates to the TTS layer.
+ * The flat plan for one item, repeated `repeat` times with a beat between repeats. Whether — and in
+ * which order — the translation is spoken is decided by the optional per-surface `order` OVERRIDE, and
+ * otherwise by the shared `settings.translation` (target → translation). A translation is only ever
+ * spoken when the item actually carries one. `order.translationFirst` flips to translation → target.
+ * Each line keeps its OWN locale (`targetLang` for the target, `translationLang` for the translation)
+ * so voices never cross. Every speak step carries the current playback `speed` for the TTS layer.
  */
-export function buildUtterancePlan(item: PlaybackItem, settings: PlaybackSettings): UtteranceStep[] {
+export function buildUtterancePlan(item: PlaybackItem, settings: PlaybackSettings, order?: SpeakOrderOverride): UtteranceStep[] {
   const steps: UtteranceStep[] = [];
   const p = pausePlan(settings.pause);
   const rate = settings.speed;
-  const speakTranslation = settings.translation && !!item.translation;
+  const translationOn = (order ? order.translation : settings.translation) && !!item.translation;
+  const translationFirst = order?.translationFirst ?? false;
   const repeat = Math.max(1, settings.repeat);
+  const target: UtteranceStep = { kind: 'speak', text: item.target, lang: item.targetLang, role: 'target', rate };
+  const translation: UtteranceStep = { kind: 'speak', text: item.translation ?? '', lang: item.translationLang ?? item.targetLang, role: 'translation', rate };
   for (let r = 0; r < repeat; r++) {
-    steps.push({ kind: 'speak', text: item.target, lang: item.targetLang, role: 'target', rate });
-    if (speakTranslation) {
-      steps.push({ kind: 'pause', ms: p.afterTarget });
-      steps.push({ kind: 'speak', text: item.translation!, lang: item.translationLang ?? item.targetLang, role: 'translation', rate });
+    if (translationOn && translationFirst) {
+      steps.push(translation, { kind: 'pause', ms: p.afterTarget }, target);
+    } else if (translationOn) {
+      steps.push(target, { kind: 'pause', ms: p.afterTarget }, translation);
+    } else {
+      steps.push(target);
     }
     if (r < repeat - 1) steps.push({ kind: 'pause', ms: p.betweenRepeats });
   }

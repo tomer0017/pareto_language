@@ -49,6 +49,20 @@ export interface PlaybackItem {
 }
 
 /**
+ * A per-surface listening-order OVERRIDE (not a shared/persisted preference). A surface that owns its
+ * own translation-order UI (Reading) passes this so it controls whether — and in which order — the
+ * translation is spoken WITHOUT touching the global `translation` preference other Parrot surfaces
+ * share. When omitted, the shared `settings.translation` (target → translation) is used. Speed, pause,
+ * repeat and loop always stay global.
+ */
+export interface SpeakOrderOverride {
+  /** Whether the translation is spoken at all (false = target only). */
+  translation: boolean;
+  /** When true (and `translation` is on), speak the translation BEFORE the target. */
+  translationFirst: boolean;
+}
+
+/**
  * User-controlled playback preferences — shared across every surface and persisted locally. The
  * "currently playing" state is deliberately NOT here (never auto-starts after a refresh).
  */

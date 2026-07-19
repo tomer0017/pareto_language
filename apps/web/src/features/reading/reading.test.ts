@@ -131,7 +131,7 @@ describe('Reading — progress store (mode, resume, completion, persistence)', (
   let storage: Map<string, string>;
   beforeEach(() => {
     storage = installStorage();
-    useReadingStore.setState({ mode: 'bilingual', stories: {}, streak: { count: 0, lastDay: null } });
+    useReadingStore.setState({ mode: 'bilingual', playback: 'target-tr', stories: {}, streak: { count: 0, lastDay: null } });
   });
   afterEach(() => { delete (globalThis as { localStorage?: unknown }).localStorage; });
 
@@ -139,6 +139,15 @@ describe('Reading — progress store (mode, resume, completion, persistence)', (
     useReadingStore.getState().setMode('hidden');
     expect(useReadingStore.getState().mode).toBe('hidden');
     expect(JSON.parse(storage.get('ready.reading.v1')!).mode).toBe('hidden');
+  });
+
+  it('persists the Reading-only voice order (target / target→tr / tr→target) separately from shared prefs', () => {
+    useReadingStore.getState().setPlayback('tr-target');
+    expect(useReadingStore.getState().playback).toBe('tr-target');
+    const saved = JSON.parse(storage.get('ready.reading.v1')!);
+    expect(saved.playback).toBe('tr-target');
+    // it lives in the reading key, NOT the shared parrot-settings key
+    expect(storage.get('ready.parrot.settings')).toBeUndefined();
   });
 
   it('saves the resume position forward-only', () => {

@@ -72,11 +72,16 @@ Each principle exists to protect the promise in §2.
 ## 4. Learning architecture (the flow)
 
 ```
-Home → Bootcamp (30 missions) → Mission Hub → Video → Practice → Transcript → Victory → Next Mission
+Home → [Zero Start — absolute beginners] → Bootcamp (30 missions) → Mission Hub → Video → Practice → Transcript → Victory → Next Mission
 ```
 
 - **Home** — orientation. One glance answers "where am I, what's the one thing to do next?" A single
   Continue action removes decision friction (20/80).
+- **Zero Start ("מתחילים מאפס")** — an **optional, strongly-recommended pre-Bootcamp bridge** for a
+  learner who knows *zero* words and can't yet follow the first realistic mission. A short guided
+  Pre-A1 path (8 modules, cumulative "one new brick at a time") that ends by **graduating the learner
+  into the first real Bootcamp mission** (it never auto-completes the Bootcamp). Experienced learners
+  skip it; it is recommended, never forced.
 - **Bootcamp** — the heart: 30 real-world missions across 5 phases (Foundations → Arrival → Food →
   City Life → Mastery). Depth before breadth — one situation, taken all the way, per mission.
 - **Mission Hub** — the home of each mission. Exactly three always-available modes: **Practice**,
@@ -114,6 +119,25 @@ hidden only inside an active mission — a focused, full-screen flow with its ow
   with **Universal Tap** on every Core word and whole-story/per-sentence audio via the shared
   `shared/playback` engine, then a short comprehension quiz. Collection-agnostic + code-split
   (`features/reading/`): future collections (Easy Conversations, News, Recipes, …) are data-only.
+- **Zero Start ("מתחילים מאפס", 🌱)** — the guided zero-beginner path, reached from a Home action
+  card ("מתחילים מאפס · מפגש ראשון עם השפה", showing % progress) and, for a genuinely new learner in a
+  supported language, a one-time first-use recommendation banner ("לא מכיר עדיין את השפה? כדאי להתחיל
+  כאן." → *Start from zero* / *Skip to Bootcamp*). **Navigation:** it is the `zerostart` view — NOT a
+  bottom-nav tab, so the permanent nav auto-hides during lessons (a focused flow with its own back/exit,
+  like an active mission). Flow: hub (module list + overall progress + resume) → lesson steps → module
+  "I can now…" outcome → graduation screen with a CTA into the first real Bootcamp mission. **Teaching
+  model:** 8 cumulative modules (First contact → Me & my identity → Wants & needs → Finding things →
+  Buying & paying → Understanding & repair → Essential questions → Readiness checkpoint), each brick
+  moving through introduce → recognize → build → recall → mini-dialogue; the checkpoint reuses only
+  material already taught. **Architecture (`features/zerostart/`):** fully data-driven — content
+  (`content.ts`: a shared chunk library + modules), pure progress/validation (`zeroStartProgress.ts`),
+  persistence (`zeroStartStore.ts`), and the renderer (`ZeroStart.tsx`); audio via the shared
+  `shared/audio/tts` engine; personalization via a saved learner name (`{name}` substituted at render,
+  no PII in static data). **Persistence:** per-language completed-step ids + completion date + name in
+  `localStorage` (`ready.zerostart.v1`); progress is completed-step based (never "screens visited") and
+  resumes from the first incomplete step. **Foundation sync:** learning a chunk marks its Foundation
+  concept `viewed` (idempotent, deduped — no double-count), so Zero Start and the Foundation library
+  share one progress signal rather than competing.
 - **Bootcamp** — a 29-mission numbered journey in 5 phases (beginning with Introduce Myself);
   checkpoints are cold integration days. The **Recovery Toolkit** (the 7 survival tools, formerly
   "Mission 1") is now an optional, unnumbered **special mission** at the end of the map — content
@@ -237,6 +261,9 @@ auto-generated from source by `npm run gen:conversations`.
 - Video system (Mission 2 shipped; framework ready for the rest; graceful fallback).
 - Victory Screen (confetti, watch-first reward order).
 - Permanent bottom navigation; Home; Core phrase engine; Profile with global speech speed + dark mode.
+- **Zero Start ("מתחילים מאפס")** guided zero-beginner path — built, routed, tested (validation +
+  progress + store + Foundation-sync). User-facing for the active learning language; graduates into the
+  first real Bootcamp mission.
 - Offline/PWA (local-first, IndexedDB, runtime-cached video).
 - Chrome + Safari speech stability (keep-alive + visibility resume + gesture unlock).
 - Concept Layer, content Pipeline, and MongoDB server exist and are green.
@@ -251,6 +278,10 @@ auto-generated from source by `npm run gen:conversations`.
   realizations, and expansion 500 → 1500 (see CORE-CORPUS.md).
 - **English Core content pack** (so Phrases/Situations light up instead of "coming soon").
 - **Native (Hebrew) content review** — all mission content is AI-drafted, pending a native pass.
+- **Zero Start content native review** — the EN/FR/ES Zero Start chunks/sentences are **AI-authored
+  and user-facing, but NOT yet natively reviewed** (no native speaker has proofed the French or Spanish
+  phrasing/politeness). Same status as the Bootcamp content: shipped as pilot/Early-Access quality,
+  pending a native pass. Do not describe FR/ES Zero Start as native-reviewed.
 - **Core review engine** — spaced/weak-word review over Bootcamp sentences (currently browsable only).
 - **More mission videos** (EN 2–5, 7–9, 11 and FR 2–4 shipped; remaining missions pending).
 - **Auth + sync** (Google sign-in) and per-user server-side settings/statistics.
@@ -262,6 +293,11 @@ auto-generated from source by `npm run gen:conversations`.
   selectable and fully usable. Italian/Arabic and the rest remain honest "coming soon" until their
   reviewed content ships. Adding a learning language stays content-only (registry + mission set + a
   Core pilot pack) — proven again by the Spanish integration.
+- **Zero Start availability:** the path ships content for **EN / FR / ES** and is user-facing whenever
+  one of those is the active language (parity verified by test: every chunk realizes in all three, and
+  every referenced Foundation concept id exists in all three packs). That content is **AI-authored and
+  not yet natively reviewed** — it inherits each language's status (EN pilot; FR/ES Early Access), and
+  FR/ES Zero Start must not be described as shipped-native or review-complete.
 
 ## 9. Development rules (never break)
 

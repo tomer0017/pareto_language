@@ -6,7 +6,7 @@ import { buildOrder, buildUtterancePlan, pausePlan, planNextCycle, sleepDuration
 import { loadSettings, persistSettings, loadBookmark, saveBookmark, resolveBookmarkIndex } from './preferences.js';
 import { createSleepTimer, type SleepTimer } from './sleepTimer.js';
 import type {
-  PauseDuration, PlaybackItem, PlaybackOrder, PlaybackSettings, PlaybackSpeed, PlaybackStatus, RepeatCount, SleepTimerMinutes,
+  PauseDuration, PlaybackItem, PlaybackOrder, PlaybackSettings, PlaybackSpeed, PlaybackStatus, RepeatCount, SleepTimerMinutes, SpeakOrderOverride,
 } from './types.js';
 
 /**
@@ -68,6 +68,10 @@ export interface ParrotOptions {
   /** Pin the play order for this surface, ignoring the shared preference (e.g. Reading is always
    *  `'sequential'`). When set, `setOrder` is a no-op and the surface never shuffles. */
   order?: PlaybackOrder;
+  /** Per-surface listening-order OVERRIDE (Reading owns its own translation-order UI). When set, it
+   *  decides whether/what order the translation is spoken WITHOUT touching the shared `translation`
+   *  preference; speed/pause/repeat/loop stay global. Omit to follow the shared preference. */
+  speakOrder?: SpeakOrderOverride;
 }
 
 export function useParrotPlayback(items: PlaybackItem[], opts?: ParrotOptions): ParrotPlayback {
@@ -89,10 +93,12 @@ export function useParrotPlayback(items: PlaybackItem[], opts?: ParrotOptions): 
   const orderRef = useRef(order);
   const posRef = useRef(0);
   const itemsRef = useRef(items);
+  const speakOrderRef = useRef(opts?.speakOrder);
   settingsRef.current = settings;
   statusRef.current = status;
   orderRef.current = order;
   itemsRef.current = items;
+  speakOrderRef.current = opts?.speakOrder;
 
   // One stable seed per mount; each loop cycle draws a fresh seed so random reshuffles.
   const seed = useRef<number>(sessionSeed()).current;
@@ -160,7 +166,7 @@ export function useParrotPlayback(items: PlaybackItem[], opts?: ParrotOptions): 
           applyPos(p);
           const item = itemsRef.current[orderRef.current[p]!];
           if (item) {
-            const plan = buildUtterancePlan(item, settingsRef.current);
+            const plan = buildUtterancePlan(item, settingsRef.current, speakOrderRef.current);
             for (const stepItem of plan) {
               if (token !== runToken.current) return;
               if (stepItem.kind === 'pause') { await wait(stepItem.ms); continue; }

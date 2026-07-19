@@ -104,10 +104,15 @@ export function SwipeRecall({ words, lang = 'en', onExit }: { words: GameWord[];
           </>
         )}
       </GestureCard>
+      {/* The two answer buttons map to PHYSICAL swipe directions (left card = "didn't know", right
+          card = "knew it"), and the swipe itself is layout-independent (see the header comment). So
+          the row keeps a CONSTANT physical order in every UI direction — `recall-actions` pins it
+          LTR so the positive action is always on the RIGHT with a right arrow, and the negative on
+          the LEFT with a left arrow, in both Hebrew (RTL) and LTR. */}
       <div className="action-zone">
-        <div className="btn-row">
-          <button className="btn-secondary" onClick={() => deckRef.current?.commit('left')}>← {t('didntKnow')}</button>
-          <button className="btn-primary" onClick={() => deckRef.current?.commit('right')}>{t('knewIt')} →</button>
+        <div className="btn-row recall-actions">
+          <button className="btn-secondary" onClick={() => deckRef.current?.commit('left')} aria-label={t('didntKnow')}>← {t('didntKnow')}</button>
+          <button className="btn-primary" onClick={() => deckRef.current?.commit('right')} aria-label={t('knewIt')}>{t('knewIt')} →</button>
         </div>
       </div>
     </>

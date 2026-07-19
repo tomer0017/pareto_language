@@ -68,6 +68,25 @@ describe('buildUtterancePlan', () => {
     }
   });
 
+  it('order override translationFirst → translation (app voice) then target (learning voice), own locales', () => {
+    const plan = buildUtterancePlan(item, settings({ repeat: 1 }), { translation: true, translationFirst: true });
+    expect(plan.map((s) => s.kind)).toEqual(['speak', 'pause', 'speak']);
+    expect(plan[0]).toMatchObject({ role: 'translation', text: 'Hello', lang: 'en' });
+    expect(plan[2]).toMatchObject({ role: 'target', text: 'Bonjour', lang: 'fr' });
+  });
+
+  it('order override target-only wins over the shared translation preference (no translation spoken)', () => {
+    const plan = buildUtterancePlan(item, settings({ repeat: 1, translation: true }), { translation: false, translationFirst: false });
+    expect(plan).toEqual([{ kind: 'speak', text: 'Bonjour', lang: 'fr', role: 'target', rate: 1 }]);
+  });
+
+  it('order override target→translation forces translation on even when the shared preference is off', () => {
+    const plan = buildUtterancePlan(item, settings({ repeat: 1, translation: false }), { translation: true, translationFirst: false });
+    expect(plan.map((s) => s.kind)).toEqual(['speak', 'pause', 'speak']);
+    expect(plan[0]).toMatchObject({ role: 'target' });
+    expect(plan[2]).toMatchObject({ role: 'translation' });
+  });
+
   it('never speaks a translation the item lacks, even when the toggle is on', () => {
     const noTr: PlaybackItem = { id: 'y', target: 'Oui', targetLang: 'fr' };
     const plan = buildUtterancePlan(noTr, settings({ repeat: 2, translation: true }));

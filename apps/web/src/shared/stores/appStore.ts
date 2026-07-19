@@ -35,7 +35,8 @@ export type View =
   | 'plan'
   | 'languages'
   | 'videos'
-  | 'reading';
+  | 'reading'
+  | 'zerostart';
 
 export interface OnboardingInput {
   departureAt: string;

@@ -2,6 +2,13 @@ import { create } from 'zustand';
 import type { ReadingMode } from './types.js';
 
 /**
+ * Reading's OWN listening order (kept out of the shared Parrot preferences so it never affects Core /
+ * Dialogue playback): target only / target → translation / translation → target.
+ */
+export type ReadingPlayback = 'target' | 'target-tr' | 'tr-target';
+const READING_PLAYBACKS: readonly ReadingPlayback[] = ['target', 'target-tr', 'tr-target'];
+
+/**
  * Reading runtime + persistence. Progress and the preferred reading mode live in localStorage
  * (offline-first, engine-independent) under one namespaced key, exactly like the Bootcamp store. The
  * model is collection-agnostic: every collection's stories persist through the SAME per-story map, so
@@ -23,11 +30,13 @@ export interface StoryProgress {
 
 interface ReadingPersisted {
   mode: ReadingMode;
+  /** Reading-only voice order (target only / target→translation / translation→target). */
+  playback: ReadingPlayback;
   stories: Record<string, StoryProgress>;
   streak: { count: number; lastDay: string | null };
 }
 
-const DEFAULT: ReadingPersisted = { mode: 'bilingual', stories: {}, streak: { count: 0, lastDay: null } };
+const DEFAULT: ReadingPersisted = { mode: 'bilingual', playback: 'target-tr', stories: {}, streak: { count: 0, lastDay: null } };
 
 function load(): ReadingPersisted {
   try {
@@ -36,6 +45,7 @@ function load(): ReadingPersisted {
     const p = JSON.parse(raw) as Partial<ReadingPersisted>;
     return {
       mode: p.mode === 'target' || p.mode === 'hidden' ? p.mode : 'bilingual',
+      playback: p.playback && READING_PLAYBACKS.includes(p.playback) ? p.playback : 'target-tr',
       stories: p.stories && typeof p.stories === 'object' ? p.stories : {},
       streak: p.streak && typeof p.streak === 'object' ? p.streak : { count: 0, lastDay: null },
     };
@@ -46,7 +56,7 @@ function load(): ReadingPersisted {
 
 function save(state: ReadingPersisted): void {
   try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify({ mode: state.mode, stories: state.stories, streak: state.streak }));
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({ mode: state.mode, playback: state.playback, stories: state.stories, streak: state.streak }));
   } catch {
     /* ignore (private mode / SSR) */
   }
@@ -69,6 +79,7 @@ export function nextStreak(streak: { count: number; lastDay: string | null }, da
 
 interface ReadingState extends ReadingPersisted {
   setMode(mode: ReadingMode): void;
+  setPlayback(playback: ReadingPlayback): void;
   /** Save the last-read sentence index for resume (only advances forward). */
   savePosition(storyId: string, pos: number): void;
   /** Mark a story complete and record the quiz score; bumps the reading streak once per day. */
@@ -84,6 +95,11 @@ export const useReadingStore = create<ReadingState>((set, get) => ({
 
   setMode(mode) {
     set({ mode });
+    save(get());
+  },
+
+  setPlayback(playback) {
+    set({ playback });
     save(get());
   },
 

@@ -22,6 +22,7 @@ import { Core } from '../features/core/Core.js';
 import { Profile } from '../features/profile/Profile.js';
 import { Videos } from '../features/videos/Videos.js';
 import { Reading } from '../features/reading/Reading.js';
+import { ZeroStart } from '../features/zerostart/ZeroStart.js';
 import { FoundationFab } from '../features/foundation/FoundationFab.js';
 import { FoundationSheet } from '../features/foundation/FoundationSheet.js';
 import { useBootcampStore } from '../features/bootcamp/bootcampStore.js';
@@ -66,6 +67,7 @@ const SCREENS: Partial<Record<View, { feature: string; el: () => JSX.Element | n
   bootcamp: { feature: 'Bootcamp', el: Bootcamp },
   videos: { feature: 'Videos', el: Videos },
   reading: { feature: 'Reading', el: Reading },
+  zerostart: { feature: 'ZeroStart', el: ZeroStart },
 };
 
 export function App() {

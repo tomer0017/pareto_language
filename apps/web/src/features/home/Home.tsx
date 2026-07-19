@@ -6,6 +6,10 @@ import { LangStrip } from '../../shared/ui/LangStrip.js';
 import { BOOTCAMP_PLAN } from '../bootcamp/plan.js';
 import { missionsFor, useBootcampStore } from '../bootcamp/bootcampStore.js';
 import { getSpeechRate, setSpeechRate, SPEECH_RATE_RANGE } from '../../shared/audio/tts.js';
+import { ZERO_MODULES } from '../zerostart/content.js';
+import { ZERO_LANGS } from '../zerostart/types.js';
+import { pathProgress } from '../zerostart/zeroStartProgress.js';
+import { useZeroStartStore } from '../zerostart/zeroStartStore.js';
 
 /**
  * Home — the real entry point of READY (not a Bootcamp mirror). It answers "what can I do here?"
@@ -32,6 +36,14 @@ export function Home() {
   const target = resumeDay ?? nextDay ?? built[0];
   const allDone = doneCount >= built.length && built.length > 0;
 
+  // "מתחילים מאפס" (zero-beginner path) — shown when the active language ships it. The first-use
+  // recommendation appears only for a genuinely new learner in this language (no path progress AND no
+  // Bootcamp progress); it strongly suggests starting from zero but never locks the Bootcamp.
+  const zeroLang = (ZERO_LANGS as readonly string[]).includes(app.learningLang);
+  const zeroDoneArr = useZeroStartStore((s) => s.byLang[app.learningLang]?.done);
+  const zeroPct = pathProgress(ZERO_MODULES, new Set(zeroDoneArr ?? [])).pct;
+  const recommendZero = zeroLang && (zeroDoneArr?.length ?? 0) === 0 && doneCount === 0;
+
   const onRate = (value: number): void => {
     setRate(value);
     setSpeechRate(value); // single global source of truth — same store the whole app uses
@@ -53,6 +65,17 @@ export function Home() {
     <div className="screen">
       <div className="screen-scroll">
         <LangStrip />
+
+        {/* ── First-use recommendation: strongly suggest the zero-beginner path (never coercive) ── */}
+        {recommendZero && (
+          <div className="card" style={{ marginTop: 14, borderInlineStart: '4px solid var(--brand)' }}>
+            <p style={{ fontWeight: 800, marginBottom: 8 }}>🌱 {t('zeroStartRecommendTitle')}</p>
+            <div className="btn-row">
+              <button className="btn-primary" onClick={() => { tap(); app.navigate('zerostart'); }}>{t('zeroStartRecommendStart')}</button>
+              <button className="btn-secondary" onClick={() => { tap(); bc.exit(); app.navigate('bootcamp'); }}>{t('zeroStartRecommendSkip')}</button>
+            </div>
+          </div>
+        )}
 
         {/* ── Quick settings (the two most-changed controls, reused from their stores) ── */}
         <p className="drill-label" style={{ margin: '18px 2px 8px' }}>{t('quickSettings')}</p>
@@ -84,6 +107,13 @@ export function Home() {
 
         {/* ── Main actions — the primary navigation of READY ── */}
         <div className="home-actions stagger">
+          {zeroLang && (
+            <button className="action-card card-press ac-words" onClick={() => { tap(); app.navigate('zerostart'); }}>
+              <span className="action-icon">🌱</span>
+              <span className="action-title">{t('homeZeroStart')}</span>
+              <span className="action-sub">{t('homeZeroStartSub')}{zeroPct > 0 ? ` · ${zeroPct}%` : ''}</span>
+            </button>
+          )}
           <button className="action-card card-press ac-situations" onClick={() => { tap(); bc.exit(); app.navigate('bootcamp'); }}>
             <span className="action-icon">🗣️</span>
             <span className="action-title">{t('homeCommonSituations')}</span>

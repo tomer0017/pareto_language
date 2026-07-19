@@ -22,6 +22,37 @@ loop (typecheck → lint → tests → build → smoke) green at every milestone
 
 ## What's done
 
+### Sprint 10 — RTL fix, Reading playback restore & Zero-Beginner Path (2026-07-19)
+Three-part mission. Gates green (typecheck · lint · 853 tests · build · smoke).
+- **Part 1 — RTL answer buttons (Swipe Recall).** The "ידעתי / לא ידעתי" answer buttons map to
+  PHYSICAL swipe directions (right = known, left = unknown), which are layout-independent. The row is
+  now pinned with `.recall-actions { direction: ltr }` so the positive action is always physically on
+  the RIGHT ("ידעתי →") and the negative on the LEFT ("← לא ידעתי") in RTL *and* LTR, with arrows
+  pointing outward. Swipe/scoring/keyboard semantics unchanged. Guard test: `swipeRecall/rtlButtons.test.ts`.
+- **Part 2 — Reading playback restored (Reading-scoped, not global).** Reading now offers all three
+  voice orders — target only / target→translation / translation→target — each line in its own locale
+  (target = learning voice, translation = app voice). The order is a **Reading-only** preference
+  persisted in the reading store (`ready.reading.v1`) and applied to the shared Parrot engine purely as
+  a per-surface `speakOrder` override (`SpeakOrderOverride` + `buildUtterancePlan(item, settings, order)`
+  + `ParrotOptions.speakOrder`) — it never writes the shared `translation` preference, so Core /
+  Dialogue Parrot playback is unaffected. Speed stays global. Exposed in the compact Reading settings
+  sheet as "השמעה קולית" beside the existing mode (translation display) + speed; changing the order
+  pauses playback so no stale speech continues. Tests: `playbackPlan.test.ts` (override behaviour),
+  `preferences.test.ts` (no global `translationFirst`), `reading.test.ts` (order persists in the
+  reading key, not the parrot key).
+- **Part 3 — "מתחילים מאפס" (Zero-Beginner Path).** A new data-driven guided path
+  (`features/zerostart/`): a shared chunk library + 8 cumulative modules (First contact → Readiness
+  checkpoint) authored naturally in EN/FR/ES with one he/en gloss each. Learning loop per brick
+  (introduce → recognize → build → recall → mini-dialogue). Progress is completed-step based, per
+  language, persisted (`ready.zerostart.v1`), resumable from the first incomplete step; learning a
+  chunk marks its Foundation concept viewed (idempotent sync, no double-count). Home shows an entry
+  card + a first-use recommendation ("לא מכיר עדיין את השפה? כדאי להתחיל כאן."); the checkpoint reuses
+  only taught material and graduates into the first real Bootcamp mission (never auto-completes it).
+  Validation + progress + store + concept-id parity covered by `zerostart/zeroStart.test.ts`.
+  **Honesty:** the EN/FR/ES Zero Start content is AI-authored and user-facing but **not yet natively
+  reviewed** — FR/ES inherit Early-Access status (do not describe them as native-reviewed/shipped).
+  Follow-up: no analytics abstraction exists in the app, so path/step events are not emitted yet.
+
 ### Sprint 8 — UI polish & pilot readiness (2026-07-19)
 Polish-only pass before external testers (no new features/content/backend). Gates green (typecheck ·
 lint · 825 tests · build · smoke).

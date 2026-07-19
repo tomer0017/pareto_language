@@ -117,6 +117,11 @@ button:active { transform: scale(0.965); }
 .btn-danger-soft { width: 100%; background: var(--danger-soft); color: var(--danger); }
 .btn-row { display: flex; gap: 10px; }
 .btn-row > button { flex: 1; }
+/* Swipe-Recall answer buttons map to physical swipe directions (left = "didn't know", right =
+   "knew it"), which are layout-independent. Pin the row LTR so the positive action stays on the
+   RIGHT (with a right arrow) and the negative on the LEFT (with a left arrow) in RTL and LTR alike.
+   `direction: ltr` also lands each button's arrow glyph on its correct physical side. */
+.recall-actions { direction: ltr; }
 button:disabled { opacity: 0.55; }
 
 /* ── Chips & badges ───────────────────────────────────────────────────── */

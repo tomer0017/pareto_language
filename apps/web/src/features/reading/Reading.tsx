@@ -9,7 +9,7 @@ import { Sheet } from '../../shared/ui/Sheet.js';
 import type { PlaybackSpeed } from '../../shared/playback/types.js';
 import { READING_COLLECTIONS } from './collections.js';
 import { buildStoryItems, readingTimeMin, scoreQuiz } from './readingCore.js';
-import { useReadingStore } from './readingStore.js';
+import { useReadingStore, type ReadingPlayback } from './readingStore.js';
 import { READING_LANGS, type QuizResponse, type ReadingCollection, type ReadingLang, type ReadingLevel, type Story } from './types.js';
 
 /**
@@ -139,11 +139,30 @@ function StoryReader({ story, onExit }: { story: Story; onExit: () => void }) {
   // The SAME shared playback engine every listening surface uses — the reader just supplies its
   // sentences as items and renders them as a scrolling, highlighted, tappable reading sheet. Reading
   // is ALWAYS sequential (`order: 'sequential'` pins it, ignoring the shared shuffle preference).
+  // Voice-playback order (restored) — Reading owns this preference so it NEVER changes the shared
+  // Parrot `translation` setting other surfaces use. It persists in the Reading store and is applied
+  // to the engine purely as a per-surface `speakOrder` override (speed stays global). The target line
+  // always uses the learning voice, the translation the app voice (per-line locales owned by the
+  // engine). Changing it pauses playback so no stale speech continues under the previous order.
+  const playback = useReadingStore((s) => s.playback);
+  const setPlayback = useReadingStore((s) => s.setPlayback);
+  const speakOrder = useMemo(
+    () => ({ translation: playback !== 'target', translationFirst: playback === 'tr-target' }),
+    [playback],
+  );
+
   const items = useMemo(() => buildStoryItems(story, rl, uiLang), [story, rl, uiLang]);
-  const pb = useParrotPlayback(items, { bookmarkKey: `reading:${rl}:${story.id}`, order: 'sequential' });
+  const pb = useParrotPlayback(items, { bookmarkKey: `reading:${rl}:${story.id}`, order: 'sequential', speakOrder });
   const playing = pb.status === 'playing';
   const current = pb.currentIndex;
   const SPEEDS: PlaybackSpeed[] = [0.5, 0.75, 1, 1.25];
+
+  const setPlayOrder = (o: ReadingPlayback): void => { tap(); pb.pause(); setPlayback(o); };
+  const PLAY_ORDERS = [
+    { id: 'target', key: 'readingPlayTarget' },
+    { id: 'target-tr', key: 'readingPlayTargetTr' },
+    { id: 'tr-target', key: 'readingPlayTrTarget' },
+  ] as const;
 
   // Persist the read position for "resume reading" (store guards forward-only).
   useEffect(() => { savePosition(story.id, current); }, [current, story.id, savePosition]);
@@ -202,6 +221,16 @@ function StoryReader({ story, onExit }: { story: Story; onExit: () => void }) {
               className={mode === m ? 'btn-accent' : 'btn-secondary'}
               onClick={() => { tap(); setMode(m); }}>
               {t(m === 'target' ? 'readingModeTarget' : m === 'bilingual' ? 'readingModeBilingual' : 'readingModeHidden')}
+            </button>
+          ))}
+        </div>
+        <p className="parrot-label">{t('readingPlayback')}</p>
+        <div className="reading-q-options" role="group" aria-label={t('readingPlayback')} style={{ marginTop: 0, marginBottom: 16 }}>
+          {PLAY_ORDERS.map((o) => (
+            <button key={o.id} aria-pressed={playback === o.id}
+              className={playback === o.id ? 'btn-accent' : 'btn-secondary'}
+              onClick={() => setPlayOrder(o.id)}>
+              {t(o.key)}
             </button>
           ))}
         </div>

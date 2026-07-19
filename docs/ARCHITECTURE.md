@@ -90,6 +90,22 @@ tap-to-hear button). There is exactly ONE word sheet and ONE tap entry point app
 flashcards, Core Words/Phrases and mission drills all reuse them. Words come from
 `loadCoreWords(learningLang)`, so English + French (and any future pack) work through one code path.
 
+## Zero-Beginner Path — "מתחילים מאפס" (apps/web/src/features/zerostart)
+
+A guided, cumulative Pre-A1 bridge for a learner who knows zero words — a fixed sequence OVER the
+same survival concepts, never a parallel engine. Data-driven and split into layers:
+
+| File | Role |
+| --- | --- |
+| `types.ts` | `ZeroChunk` (per-language `target` + one he/en `tr` + optional Foundation `conceptId`), the `ZeroStep` union (introduce / recognize / build / recall / dialogue), `ZeroModule`, `ZeroPath`. |
+| `content.ts` (data) | The ONE authored source: a shared chunk library + 8 modules (First contact → Readiness checkpoint), natural EN/FR/ES phrasing. `{name}` is substituted at render time (no PII in static data). |
+| `zeroStartProgress.ts` (pure, tested) | Completed-step progress, `resumePosition` (first incomplete step), and `validatePath` (references, EN/FR/ES + he/en parity, checkpoint-reuse rule). |
+| `zeroStartStore.ts` | Per-language persisted progress (`ready.zerostart.v1`) + saved learner name; "current step" is derived, never stored. |
+| `ZeroStart.tsx` | The renderer (hub → lesson steps → module outcome → graduation). Audio via the shared `tts` engine; learning a chunk calls `foundationStore.markViewed(conceptId)` (idempotent progress sync). Graduates into the first real Bootcamp mission (never auto-completes it). |
+
+Routed as the `zerostart` view (not a pilot tab, so the bottom nav auto-hides during lessons). Home
+shows the entry card + a first-use recommendation for a new learner in a supported language.
+
 ## Parrot Mode — Universal Listen (apps/web/src/shared/playback)
 
 ONE content-agnostic listening system every learning surface reuses. A screen supplies a list of
@@ -98,8 +114,8 @@ all playback. Nothing here imports Bootcamp/Core — a new surface reuses it wit
 
 | Module | Responsibility |
 | --- | --- |
-| `types.ts` | The public contract: `PlaybackItem`, `PlaybackSettings` (repeat ×1–3 / order / translation), `PlaybackStatus`. |
-| `playbackPlan.ts` (pure, tested) | The two testable decisions: `buildUtterancePlan(item, settings)` → flat speak/pause steps (target → pause → translation, × repeat) and `buildOrder(count, order, seed)` → play order (sequential or a seeded shuffle, reusing `shuffle.ts`). Pause durations are exported constants — the tuning seam. |
+| `types.ts` | The public contract: `PlaybackItem`, `PlaybackSettings` (repeat ×1–3 / order / translation), the per-surface `SpeakOrderOverride`, `PlaybackStatus`. |
+| `playbackPlan.ts` (pure, tested) | The two testable decisions: `buildUtterancePlan(item, settings, order?)` → flat speak/pause steps (target→translation, or translation→target when a surface passes `order.translationFirst`, × repeat — each line in its own locale) and `buildOrder(count, order, seed)` → play order (sequential or a seeded shuffle, reusing `shuffle.ts`). Pause durations are exported constants — the tuning seam. |
 | `useParrotPlayback.ts` | The engine hook: status, current item, the async play loop, wake lock, resume-from-exact-item, persisted settings. Run-token cancellation (same contract as the Transcript reader — a superseded/cancelled `speak()` never advances). Settings read via refs so changes apply at the next item boundary. |
 | `wakeLock.ts` | Guarded Screen Wake Lock wrapper (module-level sentinel; re-acquired on visibility while playing; silent no-op where unsupported). |
 | `sleepTimer.ts` (pure, tested) | Framework-free countdown controller (`arm/resume/pauseTicking/reset/off/dispose`) that counts only active playback time; the engine drives it so pause/resume preserve the remainder and expiry stops playback + releases the lock. |
