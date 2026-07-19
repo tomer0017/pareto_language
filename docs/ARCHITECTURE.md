@@ -97,7 +97,7 @@ same survival concepts, never a parallel engine. Data-driven and split into laye
 
 | File | Role |
 | --- | --- |
-| `types.ts` | `ZeroChunk` (per-language `target` + one he/en `tr` + optional Foundation `conceptId`), the `ZeroStep` union (introduce / recognize / build / recall / dialogue), `ZeroModule`, `ZeroPath`. |
+| `types.ts` | `ZeroChunk` (per-language `target` + one he/en `tr` + optional Foundation `conceptId`), the `ZeroStep` union (introduce / recognize / picture / listen / cloze / build / recall / dialogue), `ZeroModule` (+ `masteryStart`), `ZeroPath`. |
 | `content.ts` (data) | The ONE authored source: a shared chunk library + 8 modules (First contact → Readiness checkpoint), natural EN/FR/ES phrasing. `{name}` is substituted at render time (no PII in static data). |
 | `zeroStartProgress.ts` (pure, tested) | Completed-step progress, `resumePosition` (first incomplete step), and `validatePath` (references, EN/FR/ES + he/en parity, checkpoint-reuse rule). |
 | `zeroStartStore.ts` | Per-language persisted progress (`ready.zerostart.v1`) + saved learner name; "current step" is derived, never stored. |

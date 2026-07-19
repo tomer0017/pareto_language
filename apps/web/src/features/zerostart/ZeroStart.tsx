@@ -4,7 +4,7 @@ import { t, L } from '../../shared/i18n/strings.js';
 import { tap } from '../../shared/ui/haptics.js';
 import { feedback } from '../../shared/ui/feedbackCue.js';
 import { speak, cancelSpeech } from '../../shared/audio/tts.js';
-import { languageTtsTag } from '../../shared/i18n/languages.js';
+import { languageTtsTag, languageInfo } from '../../shared/i18n/languages.js';
 import { shuffle, mulberry32 } from '../../shared/util/shuffle.js';
 import { TopBar } from '../../shared/ui/TopBar.js';
 import { useFoundationStore } from '../foundation/foundationStore.js';
@@ -220,11 +220,17 @@ function Lesson(props: {
   onExit: () => void;
 }) {
   const { lang, module: m, moduleIndex, totalModules, stepIndex, step, displayName, hasName, onSetName, onDone, onExit } = props;
+  const uiLang = useAppStore((s) => s.uiLang);
   const chunks = ZERO_PATH.chunks;
   const ttsTag = languageTtsTag(lang);
-  const withName = (s: string): string => s.replace(/\{name\}/g, displayName);
-  const target = (id: string): string => withName(chunks[id]!.target[lang]);
-  const gloss = (id: string): string => withName(L(chunks[id]!.tr));
+  // The learning language's OWN name in the app language (e.g. "צרפתית"), so a gloss like
+  // "I speak a little {targetLangName}." always matches the sentence shown for the active language.
+  const langNames = languageInfo(lang).names as Record<string, string>;
+  const targetLangName = langNames[uiLang] ?? langNames.en ?? lang;
+  const fill = (s: string): string => s.replace(/\{name\}/g, displayName).replace(/\{targetLangName\}/g, targetLangName);
+  const target = (id: string): string => fill(chunks[id]!.target[lang]);
+  const gloss = (id: string): string => fill(L(chunks[id]!.tr));
+  const isMastery = m.masteryStart !== undefined && stepIndex >= m.masteryStart;
 
   // A step that introduces the name frame asks for the name once (skippable → example name).
   const primaryText = chunks[primaryChunkId(step)]?.target[lang] ?? '';
@@ -246,6 +252,7 @@ function Lesson(props: {
         <span style={{ width: 44 }} />
       </div>
       <p className="dim small" style={{ textAlign: 'center', margin: '2px 0 8px' }}>
+        {isMastery && <span className="chip chip-accent" style={{ marginInlineEnd: 6 }}>🏆 {t('zeroStartMastery')}</span>}
         {t('zeroStartModuleOf', { i: moduleIndex + 1, n: totalModules })} · {t('zeroStartStepOf', { i: stepIndex + 1, n: m.steps.length })}
       </p>
       <div className="progress-track" style={{ marginBottom: 14 }}>
@@ -260,6 +267,27 @@ function Lesson(props: {
             stepKey={stepId(m.id, stepIndex)} ttsTag={ttsTag} onSpeak={speakTarget}
             target={target(step.chunk)} answer={gloss(step.chunk)}
             options={[step.chunk, ...step.distractors].map((id) => gloss(id))} onDone={onDone}
+          />
+        )}
+        {step.kind === 'picture' && (
+          <Picture
+            stepKey={stepId(m.id, stepIndex)} ttsTag={ttsTag} onSpeak={speakTarget}
+            emoji={chunks[step.chunk]!.emoji ?? '❓'} answer={target(step.chunk)} answerGloss={gloss(step.chunk)}
+            options={[step.chunk, ...step.distractors].map((id) => target(id))} onDone={onDone}
+          />
+        )}
+        {step.kind === 'listen' && (
+          <Listen
+            stepKey={stepId(m.id, stepIndex)} ttsTag={ttsTag} onSpeak={speakTarget}
+            answer={target(step.chunk)} answerGloss={gloss(step.chunk)}
+            options={[step.chunk, ...step.distractors].map((id) => target(id))} onDone={onDone}
+          />
+        )}
+        {step.kind === 'cloze' && (
+          <Cloze
+            stepKey={stepId(m.id, stepIndex)} ttsTag={ttsTag} onSpeak={speakTarget}
+            sentence={target(step.chunk)} gloss={gloss(step.chunk)}
+            distractorWords={step.distractors.map((id) => lastWord(target(id)))} onDone={onDone}
           />
         )}
         {step.kind === 'dialogue' && (
@@ -278,9 +306,50 @@ function Lesson(props: {
   );
 }
 
-/** A large, LTR-isolated target line (the learning language is always LTR in this pilot). */
-function TargetLine({ text, ttsTag, size = '2rem' }: { text: string; ttsTag: string; size?: string }) {
-  return <p dir="ltr" lang={ttsTag} className="drill-phrase" style={{ fontSize: size, unicodeBidi: 'isolate' }}>{text}</p>;
+/** Small, visually-secondary "replay THIS line" speaker (per-item replay of the target audio). */
+function Speaker({ onClick, label }: { onClick: () => void; label?: string }) {
+  return <button className="btn-ghost zs-speaker" onClick={() => { tap(); onClick(); }} aria-label={label ?? t('replayAudio')}>🔊</button>;
+}
+
+/** A large, LTR-isolated target line (learning language is LTR in this pilot) with an optional small
+ *  per-item replay speaker beside it. */
+function TargetLine({ text, ttsTag, size = '2rem', onReplay }: { text: string; ttsTag: string; size?: string; onReplay?: () => void }) {
+  return (
+    <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, justifyContent: 'center', flexWrap: 'wrap' }}>
+      <span dir="ltr" lang={ttsTag} className="drill-phrase" style={{ fontSize: size, unicodeBidi: 'isolate' }}>{text}</span>
+      {onReplay && <Speaker onClick={onReplay} />}
+    </span>
+  );
+}
+
+/** Last whitespace token of a sentence, trailing sentence punctuation stripped — the cloze answer. */
+function lastWord(sentence: string): string {
+  const core = sentence.replace(/[.?!¿¡]+$/g, '').trimEnd();
+  const i = core.lastIndexOf(' ');
+  return i >= 0 ? core.slice(i + 1) : core;
+}
+
+/** A list of TARGET-language choices, each a big choice button + a small per-item replay speaker.
+ *  `optionAudio` hides the per-option speakers until true (a listening task hides them until answered
+ *  so the learner recognizes the prompt, not by pre-playing every option). */
+function TargetChoiceList({ options, answer, picked, solved, ttsTag, optionAudio, onSpeak, onChoose }: {
+  options: string[]; answer: string; picked: string | null; solved: boolean; ttsTag: string; optionAudio: boolean;
+  onSpeak: (t: string) => void; onChoose: (opt: string) => void;
+}) {
+  return (
+    <div className="reading-q-options" style={{ marginTop: 12 }}>
+      {options.map((opt) => {
+        const isAnswer = opt === answer;
+        const state = picked === null ? '' : isAnswer ? 'right' : picked === opt ? 'wrong' : '';
+        return (
+          <div key={opt} className="zs-choice-row">
+            <button dir="ltr" lang={ttsTag} className={`reading-opt ${state}`} style={{ flex: 1 }} disabled={solved} onClick={() => onChoose(opt)}>{opt}</button>
+            {optionAudio && <Speaker onClick={() => onSpeak(opt)} />}
+          </div>
+        );
+      })}
+    </div>
+  );
 }
 
 function AudioButtons({ text, onSpeak }: { text: string; onSpeak: (t: string, slow?: boolean) => void }) {
@@ -298,7 +367,7 @@ function Introduce({ chunk, target, gloss, ttsTag, onSpeak, onDone }: { chunk: Z
     <>
       <div className="drill-card center pop-in" style={{ gap: 12 }}>
         {chunk.emoji && <span style={{ fontSize: '2.6rem' }} aria-hidden>{chunk.emoji}</span>}
-        <TargetLine text={target} ttsTag={ttsTag} />
+        <TargetLine text={target} ttsTag={ttsTag} onReplay={() => onSpeak(target)} />
         <p className="drill-meaning">{gloss}</p>
       </div>
       <AudioButtons text={target} onSpeak={onSpeak} />
@@ -314,7 +383,7 @@ function Recall({ target, gloss, ttsTag, onSpeak, onDone }: { target: string; gl
       <p className="drill-label" style={{ textAlign: 'center' }}>{t('zeroStartRecallPrompt')}</p>
       <div className="drill-card center pop-in" style={{ gap: 12 }}>
         <p className="drill-meaning" style={{ fontSize: '1.3rem' }}>{gloss}</p>
-        {revealed ? <TargetLine text={target} ttsTag={ttsTag} size="1.7rem" /> : <p className="faint">• • •</p>}
+        {revealed ? <TargetLine text={target} ttsTag={ttsTag} size="1.7rem" onReplay={() => onSpeak(target)} /> : <p className="faint">• • •</p>}
       </div>
       {revealed
         ? <><AudioButtons text={target} onSpeak={onSpeak} /><div className="action-zone"><button className="btn-primary" onClick={() => { tap(); cancelSpeech(); onDone(); }}>{t('continue')}</button></div></>
@@ -333,9 +402,9 @@ function Recognize({ stepKey, target, answer, options, ttsTag, onSpeak, onDone }
     <>
       <p className="drill-label" style={{ textAlign: 'center' }}>{t('zeroStartChooseMeaning')}</p>
       <div className="drill-card center pop-in" style={{ gap: 8 }}>
-        <TargetLine text={target} ttsTag={ttsTag} size="1.7rem" />
-        <button className="btn-ghost" onClick={() => { tap(); onSpeak(target); }} aria-label={t('replayAudio')}>🔊</button>
+        <TargetLine text={target} ttsTag={ttsTag} size="1.7rem" onReplay={() => onSpeak(target)} />
       </div>
+      {/* Options are app-language MEANINGS (never target audio — we don't replay the translation). */}
       <div className="reading-q-options" style={{ marginTop: 12 }}>
         {shuffled.map((opt) => {
           const isAnswer = opt === answer;
@@ -358,20 +427,80 @@ function Dialogue({ stepKey, npcTarget, npcGloss, answer, answerGloss, options, 
     <>
       <div className="card" style={{ marginBottom: 12 }}>
         <p className="dim small">🧑 {npcGloss}</p>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-          <TargetLine text={npcTarget} ttsTag={ttsTag} size="1.35rem" />
-          <button className="btn-ghost" onClick={() => { tap(); onSpeak(npcTarget); }} aria-label={t('replayAudio')}>🔊</button>
-        </div>
+        <TargetLine text={npcTarget} ttsTag={ttsTag} size="1.35rem" onReplay={() => onSpeak(npcTarget)} />
       </div>
       <p className="drill-label" style={{ textAlign: 'center' }}>{t('zeroStartChooseReply')}</p>
-      <div className="reading-q-options" style={{ marginTop: 8 }}>
-        {shuffled.map((opt) => {
+      <TargetChoiceList options={shuffled} answer={answer} picked={picked} solved={correct} ttsTag={ttsTag} optionAudio onSpeak={onSpeak} onChoose={choose} />
+      <ResultBar picked={picked} correct={correct} answerText={`${answer} — ${answerGloss}`} onRetry={() => setPicked(null)} onDone={onDone} />
+    </>
+  );
+}
+
+/** Picture recognition — an icon → pick the matching target word. Options carry per-item audio. */
+function Picture({ stepKey, emoji, answer, answerGloss, options, ttsTag, onSpeak, onDone }: { stepKey: string; emoji: string; answer: string; answerGloss?: string; options: string[]; ttsTag: string; onSpeak: (t: string, slow?: boolean) => void; onDone: () => void }) {
+  const shuffled = useMemo(() => shuffle(options, mulberry32(seedFrom(stepKey))), [stepKey, options]);
+  const [picked, setPicked] = useState<string | null>(null);
+  const correct = picked === answer;
+  const choose = (opt: string): void => { if (picked === answer) return; setPicked(opt); feedback(opt === answer); if (opt === answer) onSpeak(answer); };
+  return (
+    <>
+      <p className="drill-label" style={{ textAlign: 'center' }}>{t('zeroStartPicturePrompt')}</p>
+      <div className="drill-card center pop-in"><span style={{ fontSize: '4rem' }} aria-hidden>{emoji}</span></div>
+      <TargetChoiceList options={shuffled} answer={answer} picked={picked} solved={correct} ttsTag={ttsTag} optionAudio onSpeak={onSpeak} onChoose={choose} />
+      <ResultBar picked={picked} correct={correct} answerText={answerGloss ? `${answer} — ${answerGloss}` : answer} onRetry={() => setPicked(null)} onDone={onDone} />
+    </>
+  );
+}
+
+/** Listening recognition — hear the audio → pick the target sentence. Option audio only AFTER answering
+ *  (so the learner recognizes the prompt, not by pre-playing every option). */
+function Listen({ stepKey, answer, answerGloss, options, ttsTag, onSpeak, onDone }: { stepKey: string; answer: string; answerGloss: string; options: string[]; ttsTag: string; onSpeak: (t: string, slow?: boolean) => void; onDone: () => void }) {
+  const shuffled = useMemo(() => shuffle(options, mulberry32(seedFrom(stepKey))), [stepKey, options]);
+  const [picked, setPicked] = useState<string | null>(null);
+  const correct = picked === answer;
+  useEffect(() => { onSpeak(answer); return () => cancelSpeech(); }, [answer]); // eslint-disable-line react-hooks/exhaustive-deps
+  const choose = (opt: string): void => { if (picked === answer) return; setPicked(opt); feedback(opt === answer); };
+  return (
+    <>
+      <p className="drill-label" style={{ textAlign: 'center' }}>{t('zeroStartListenPrompt')}</p>
+      <div className="drill-card center pop-in" style={{ gap: 8 }}>
+        <button className="btn-secondary" style={{ width: 'auto' }} onClick={() => { tap(); onSpeak(answer); }} aria-label={t('replayAudio')}>🔊 {t('replayAudio')}</button>
+        <button className="btn-ghost" onClick={() => { tap(); onSpeak(answer, true); }} aria-label={t('zeroStartSlow')}>🐢 {t('zeroStartSlow')}</button>
+      </div>
+      <TargetChoiceList options={shuffled} answer={answer} picked={picked} solved={correct} ttsTag={ttsTag} optionAudio={picked !== null} onSpeak={onSpeak} onChoose={choose} />
+      <ResultBar picked={picked} correct={correct} answerText={`${answer} — ${answerGloss}`} onRetry={() => setPicked(null)} onDone={onDone} />
+    </>
+  );
+}
+
+/** Missing-word — the sentence with its last word blanked → pick the word. */
+function Cloze({ stepKey, sentence, gloss, distractorWords, ttsTag, onSpeak, onDone }: { stepKey: string; sentence: string; gloss: string; distractorWords: string[]; ttsTag: string; onSpeak: (t: string, slow?: boolean) => void; onDone: () => void }) {
+  const answer = lastWord(sentence);
+  const trailing = (sentence.match(/[.?!]+$/) || [''])[0];
+  const core = sentence.slice(0, sentence.length - trailing.length).trimEnd();
+  const idx = core.lastIndexOf(' ');
+  const prefix = idx >= 0 ? core.slice(0, idx) : '';
+  const display = `${prefix} ___${trailing}`.trim();
+  const options = useMemo(() => shuffle([answer, ...distractorWords.filter((w) => w !== answer)], mulberry32(seedFrom(stepKey))), [stepKey, answer, distractorWords]);
+  const [picked, setPicked] = useState<string | null>(null);
+  const correct = picked === answer;
+  useEffect(() => { onSpeak(sentence); return () => cancelSpeech(); }, [sentence]); // eslint-disable-line react-hooks/exhaustive-deps
+  const choose = (opt: string): void => { if (picked === answer) return; setPicked(opt); feedback(opt === answer); if (opt === answer) onSpeak(sentence); };
+  return (
+    <>
+      <p className="drill-label" style={{ textAlign: 'center' }}>{t('zeroStartClozePrompt')}</p>
+      <div className="drill-card center pop-in" style={{ gap: 8 }}>
+        <p className="drill-meaning">{gloss}</p>
+        <TargetLine text={display} ttsTag={ttsTag} size="1.5rem" onReplay={() => onSpeak(sentence)} />
+      </div>
+      <div dir="ltr" style={{ display: 'flex', flexWrap: 'wrap', gap: 8, justifyContent: 'center', marginTop: 12 }}>
+        {options.map((opt) => {
           const isAnswer = opt === answer;
           const state = picked === null ? '' : isAnswer ? 'right' : picked === opt ? 'wrong' : '';
-          return <button key={opt} dir="ltr" lang={ttsTag} className={`reading-opt ${state}`} disabled={correct} onClick={() => choose(opt)}>{opt}</button>;
+          return <button key={opt} dir="ltr" lang={ttsTag} className={`reading-opt ${state}`} style={{ width: 'auto', flex: 'none' }} disabled={correct} onClick={() => choose(opt)}>{opt}</button>;
         })}
       </div>
-      <ResultBar picked={picked} correct={correct} answerText={`${answer} — ${answerGloss}`} onRetry={() => setPicked(null)} onDone={onDone} />
+      <ResultBar picked={picked} correct={correct} answerText={answer} onRetry={() => setPicked(null)} onDone={onDone} />
     </>
   );
 }
@@ -391,9 +520,10 @@ function Build({ stepKey, target, gloss, ttsTag, onSpeak, onDone }: { stepKey: s
       <p className="drill-label" style={{ textAlign: 'center' }}>{t('zeroStartBuildPrompt')}</p>
       <div className="drill-card center pop-in" style={{ gap: 6, minHeight: 90 }}>
         <p className="drill-meaning">{gloss}</p>
-        <p dir="ltr" lang={ttsTag} className="drill-phrase" style={{ fontSize: '1.5rem', unicodeBidi: 'isolate', minHeight: '1.6em' }}>
-          {assembled || '—'}
-        </p>
+        <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, justifyContent: 'center', flexWrap: 'wrap' }}>
+          <span dir="ltr" lang={ttsTag} className="drill-phrase" style={{ fontSize: '1.5rem', unicodeBidi: 'isolate', minHeight: '1.6em' }}>{assembled || '—'}</span>
+          {assembled && <Speaker onClick={() => onSpeak(assembled)} />}
+        </span>
       </div>
       <div dir="ltr" style={{ display: 'flex', flexWrap: 'wrap', gap: 8, justifyContent: 'center', marginTop: 12 }}>
         {remaining.map((i) => (
@@ -408,7 +538,7 @@ function Build({ stepKey, target, gloss, ttsTag, onSpeak, onDone }: { stepKey: s
       {complete && !correct && (
         <div className="drill-card center" style={{ marginTop: 10 }}>
           <p className="dim small">{t('zeroStartAnswerWas')}:</p>
-          <TargetLine text={target} ttsTag={ttsTag} size="1.3rem" />
+          <TargetLine text={target} ttsTag={ttsTag} size="1.3rem" onReplay={() => onSpeak(target)} />
           <button className="btn-ghost" onClick={() => { tap(); setPicked([]); }}>↺ {t('zeroStartClear')}</button>
         </div>
       )}

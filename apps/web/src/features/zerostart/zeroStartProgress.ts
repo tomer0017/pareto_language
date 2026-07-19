@@ -16,6 +16,9 @@ export function stepChunkIds(step: ZeroStep): string[] {
     case 'recall':
       return [step.chunk];
     case 'recognize':
+    case 'picture':
+    case 'listen':
+    case 'cloze':
       return [step.chunk, ...step.distractors];
     case 'dialogue':
       return [step.npc, step.answer, ...step.distractors];
@@ -103,12 +106,19 @@ export function validatePath(path: ZeroPath): string[] {
     if (seenModuleIds.has(m.id)) problems.push(`duplicate module id "${m.id}"`);
     seenModuleIds.add(m.id);
     if (m.steps.length === 0) problems.push(`module "${m.id}" has no steps`);
+    if (m.masteryStart !== undefined && (m.masteryStart < 0 || m.masteryStart >= m.steps.length)) {
+      problems.push(`module "${m.id}": masteryStart ${m.masteryStart} out of range`);
+    }
     m.steps.forEach((step, i) => {
       const where = `${m.id} step ${i} (${step.kind})`;
       for (const id of stepChunkIds(step)) requireChunk(id, where);
-      if (step.kind === 'recognize') {
+      if (step.kind === 'recognize' || step.kind === 'picture' || step.kind === 'listen' || step.kind === 'cloze') {
         if (step.distractors.includes(step.chunk)) problems.push(`${where}: distractor equals the answer`);
         if (step.distractors.length === 0) problems.push(`${where}: needs at least one distractor`);
+      }
+      // Picture recognition needs an icon on its answer chunk.
+      if (step.kind === 'picture' && chunks[step.chunk] && !chunks[step.chunk]!.emoji) {
+        problems.push(`${where}: picture chunk "${step.chunk}" has no emoji`);
       }
       if (step.kind === 'dialogue') {
         if (step.distractors.includes(step.answer)) problems.push(`${where}: distractor equals the answer`);

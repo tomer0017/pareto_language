@@ -41,6 +41,12 @@ export type ZeroStep =
   | { kind: 'introduce'; chunk: string }
   /** Stage B — pick the correct meaning among glosses (`distractors` = other chunk ids). */
   | { kind: 'recognize'; chunk: string; distractors: string[] }
+  /** Picture recognition — an icon → pick the matching target word (`distractors` = other chunk ids). */
+  | { kind: 'picture'; chunk: string; distractors: string[] }
+  /** Listening recognition — hear the audio → pick the target sentence it matched. */
+  | { kind: 'listen'; chunk: string; distractors: string[] }
+  /** Missing-word — the sentence with its LAST word blanked → pick the word (distractors' last words). */
+  | { kind: 'cloze'; chunk: string; distractors: string[] }
   /** Stage C — assemble the target sentence from its own (shuffled) words. */
   | { kind: 'build'; chunk: string }
   /** Stage D — meaning/audio shown, retrieve the target (reveal + replay allowed). */
@@ -56,6 +62,8 @@ export interface ZeroModule {
   /** The practical result the learner unlocks — shown on completion ("I can now…"). */
   outcome: LocalizedText;
   steps: ZeroStep[];
+  /** Index into `steps` where the end-of-module mastery stretch begins (badged; no new material). */
+  masteryStart?: number;
 }
 
 /** The whole path: a shared chunk library + the ordered modules that reference it. */

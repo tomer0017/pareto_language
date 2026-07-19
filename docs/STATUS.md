@@ -22,6 +22,27 @@ loop (typecheck → lint → tests → build → smoke) green at every milestone
 
 ## What's done
 
+### Sprint 11 — Zero Start polish: depth, exercise variety & per-item audio (2026-07-19)
+Polish pass on "מתחילים מאפס" (no redesign). Gates green (typecheck · lint · 862 tests · build · smoke).
+- **Per-item replay everywhere.** A small, secondary speaker (`.zs-speaker`) sits beside every
+  target-language item (introduce/recall/recognize prompt/build assembly/cloze sentence/dialogue NPC +
+  every target-language answer option) — replays ONLY that line, correct locale + target voice, respects
+  global speed, cancels prior speech, never speaks the Hebrew translation. Listening options stay silent
+  until answered so the task isn't given away.
+- **Translation audit + fixes.** Fixed the reported bug ("Je parle un peu français" → "אני מדבר/ת קצת"
+  now "…קצת צרפתית"): the language-name glosses use a `{targetLangName}` placeholder resolved to the
+  app-language name at render (targets hardcode the name in their own language so audio is right). Also
+  "אפשר לחזור?" → "אפשר לחזור על זה?" and "אתה מדבר אנגלית?" → "אתם מדברים אנגלית?". A placeholder-sync
+  test + a `{targetLangName}` regression test guard it.
+- **Depth + exercise variety.** New data-driven exercise types (`picture`, `listen`, `cloze`) join
+  introduce/recognize/build/recall/dialogue; modules rotate them with a natural word→chunk→sentence→
+  dialogue progression, spaced micro-review, and end (m1–m7) with a **badged "🏆 אתגר שליטה" mastery
+  stretch** (no new material, `masteryStart`). Modules grew from ~7 to 12–16 steps (107 total). Five new
+  survival-noun chunks (coffee/station/hotel/ticket/bag) power picture recognition; all reuse existing
+  Foundation concept ids (validated against all three packs). m8 is now a mixed no-new-material checkpoint.
+- Progress/validation/tests extended (26 zerostart tests incl. per-language runtime-data checks that
+  every picture/listen/dialogue/cloze yields distinct, answer-containing, playable options in en/fr/es).
+
 ### Sprint 10 — RTL fix, Reading playback restore & Zero-Beginner Path (2026-07-19)
 Three-part mission. Gates green (typecheck · lint · 853 tests · build · smoke).
 - **Part 1 — RTL answer buttons (Swipe Recall).** The "ידעתי / לא ידעתי" answer buttons map to

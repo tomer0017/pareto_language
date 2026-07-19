@@ -117,6 +117,12 @@ button:active { transform: scale(0.965); }
 .btn-danger-soft { width: 100%; background: var(--danger-soft); color: var(--danger); }
 .btn-row { display: flex; gap: 10px; }
 .btn-row > button { flex: 1; }
+/* Zero Start: a small, visually-secondary per-item replay speaker, and a choice row that pairs a
+   target-language option with its own speaker. */
+.zs-speaker { min-height: 36px; padding: 4px 9px; width: auto; flex: none; box-shadow: none; }
+.zs-choice-row { display: flex; align-items: center; gap: 8px; }
+.zs-choice-row > .reading-opt { min-width: 0; }
+
 /* Swipe-Recall answer buttons map to physical swipe directions (left = "didn't know", right =
    "knew it"), which are layout-independent. Pin the row LTR so the positive action stays on the
    RIGHT (with a right arrow) and the negative on the LEFT (with a left arrow) in RTL and LTR alike.

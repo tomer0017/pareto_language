@@ -128,8 +128,10 @@ hidden only inside an active mission — a focused, full-screen flow with its ow
   "I can now…" outcome → graduation screen with a CTA into the first real Bootcamp mission. **Teaching
   model:** 8 cumulative modules (First contact → Me & my identity → Wants & needs → Finding things →
   Buying & paying → Understanding & repair → Essential questions → Readiness checkpoint), each brick
-  moving through introduce → recognize → build → recall → mini-dialogue; the checkpoint reuses only
-  material already taught. **Architecture (`features/zerostart/`):** fully data-driven — content
+  moving through introduce → recognize → build → recall → mini-dialogue, with rotating exercise types
+  (listening recognition, picture recognition, missing-word/cloze, sentence builder) and a badged
+  end-of-module mastery stretch; every target-language item has a small per-item replay speaker. The
+  checkpoint reuses only material already taught. **Architecture (`features/zerostart/`):** fully data-driven — content
   (`content.ts`: a shared chunk library + modules), pure progress/validation (`zeroStartProgress.ts`),
   persistence (`zeroStartStore.ts`), and the renderer (`ZeroStart.tsx`); audio via the shared
   `shared/audio/tts` engine; personalization via a saved learner name (`{name}` substituted at render,
