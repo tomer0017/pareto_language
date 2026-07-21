@@ -10,11 +10,21 @@ import type { Story } from './types.js';
  * picture BEFORE reading a single foreign word, which lowers cognitive load and anxiety.
  */
 
-const BASE = '/images/stories/';
+const DIR = 'images/stories/';
+
+/**
+ * Resolve a public path against the app's deploy base (`import.meta.env.BASE_URL`) so images load in
+ * dev (`/`), on the GitHub Pages sub-path (`/pareto_language/`), and inside the PWA alike. Mirrors the
+ * shared `resolveAsset` used for videos and content packs — a bare `/images/...` would 404 on Pages.
+ */
+function resolveAsset(path: string): string {
+  const base = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
+  return path.startsWith('/') ? base + path : `${base}/${path}`;
+}
 
 /** Public URL for a story's illustration (encodes spaces/punctuation so the path stays valid). */
 export function storyImageUrl(story: Story): string {
-  return `${BASE}${encodeURIComponent(story.title.target.en)}.png`;
+  return resolveAsset(`${DIR}${encodeURIComponent(story.title.target.en)}.png`);
 }
 
 /** Hero-card presentation for a collection: a decorative collage + a friendly reading-time estimate. */
@@ -38,5 +48,5 @@ export const COLLECTION_HERO: Record<string, CollectionHero> = {
 
 /** Public URLs for a collection's hero collage (empty if the collection has none). */
 export function collectionHeroUrls(collectionId: string): string[] {
-  return (COLLECTION_HERO[collectionId]?.images ?? []).map((name) => `${BASE}${encodeURIComponent(name)}.png`);
+  return (COLLECTION_HERO[collectionId]?.images ?? []).map((name) => resolveAsset(`${DIR}${encodeURIComponent(name)}.png`));
 }
