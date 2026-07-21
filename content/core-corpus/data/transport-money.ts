@@ -40,4 +40,13 @@ export const TRANSPORT_MONEY: CorpusRow[] = [
   { slug: 'gift', pos: 'noun', en: 'gift', he: 'מתנה', cat: 'money', layer: 2, rof: 1, skill: 'recall', s: [3, 3, 3, 2, 3], emoji: '🎁', vis: 0.95, ex: 'A gift for my family.', exHe: 'מתנה למשפחה שלי.' },
   { slug: 'souvenir', pos: 'noun', en: 'souvenir', he: 'מזכרת', cat: 'money', layer: 2, rof: 1, skill: 'recognize', s: [2, 3, 3, 1, 3], ex: 'A small souvenir.', exHe: 'מזכרת קטנה.' },
   { slug: 'atm', pos: 'noun', en: 'ATM', he: 'כספומט', cat: 'money', layer: 1, rof: 2, skill: 'recall', s: [3, 4, 4, 3, 5], emoji: '🏧', vis: 0.9, ex: 'Is there an ATM near here?', exHe: 'יש כספומט קרוב לכאן?', alias: ['cash machine'] },
+
+  // ── Core World Audit: transport (Tier B/C) ──────────────────────────────────
+  { slug: 'motorcycle', pos: 'noun', en: 'motorcycle', he: 'אופנוע', cat: 'transport', layer: 2, rof: 1, skill: 'recognize', s: [3, 2, 2, 1, 2], emoji: '🏍️', vis: 0.9, ex: 'He rides a motorcycle.', exHe: 'הוא רוכב על אופנוע.' },
+  { slug: 'helicopter', pos: 'noun', en: 'helicopter', he: 'מסוק', cat: 'transport', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 2, 1, 2], emoji: '🚁', vis: 0.9, ex: 'A helicopter in the sky.', exHe: 'מסוק בשמיים.' },
+  { slug: 'ship', pos: 'noun', en: 'ship', he: 'אונייה', cat: 'transport', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 2, 1, 2], emoji: '🚢', vis: 0.9, ex: 'A big ship.', exHe: 'אונייה גדולה.', rel: ['boat'] },
+  { slug: 'tractor', pos: 'noun', en: 'tractor', he: 'טרקטור', cat: 'transport', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 1, 1, 1], emoji: '🚜', vis: 0.92, ex: 'A tractor on the farm.', exHe: 'טרקטור בחווה.', rel: ['farm'] },
+  { slug: 'scooter', pos: 'noun', en: 'scooter', he: 'קורקינט', cat: 'transport', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 1, 1, 2], emoji: '🛴', vis: 0.88, ex: 'The child rides a scooter.', exHe: 'הילד רוכב על קורקינט.' },
+  { slug: 'rocket', pos: 'noun', en: 'rocket', he: 'טיל', cat: 'transport', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 1, 1, 1], emoji: '🚀', vis: 0.92, ex: 'The rocket goes up.', exHe: 'הטיל עולה למעלה.' },
+  { slug: 'spaceship', pos: 'noun', en: 'spaceship', he: 'חללית', cat: 'transport', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 1, 1, 1], emoji: '🛸', vis: 0.9, ex: 'A spaceship to the moon.', exHe: 'חללית לירח.' },
 ];

@@ -38,6 +38,9 @@ interface FoundationState {
   /** The exact surface the learner tapped inline (e.g. "combien"), so the page shows THAT form, not
    *  the pack's canonical realization ("Combien ?"). Null for browse/FAB opens. */
   targetSurface: string | null;
+  /** All senses of the tapped surface when it is a homograph (e.g. book noun/verb) — lets the sheet
+   *  offer the other meaning(s). Null when the surface has a single sense. */
+  targetSenses: CoreWord[] | null;
   /** A guided mini-session (mission "Learn now"): prev/next over the mission's Foundation words. */
   session: FoundationSession | null;
   /** Concept ids whose word page the learner has opened (drives progress + hint suppression). */
@@ -47,8 +50,9 @@ interface FoundationState {
 
   /** Open on the category grid (the 🛟 FAB). */
   openSheet(): void;
-  /** Open straight to a tapped word's page (Universal Tap). `surface` = the exact tapped text. */
-  openWord(word: CoreWord, surface?: string): void;
+  /** Open straight to a tapped word's page (Universal Tap). `surface` = the exact tapped text;
+   *  `senses` = all senses when the surface is a homograph (primary first). */
+  openWord(word: CoreWord, surface?: string, senses?: CoreWord[]): void;
   /** Open a guided mini-session over `words`, starting at `startIndex` (mission "Learn now"). */
   openSession(words: CoreWord[], startIndex: number): void;
   /** Move within the active session (clamped). */
@@ -68,6 +72,7 @@ export const useFoundationStore = create<FoundationState>((set, get) => ({
   open: false,
   target: null,
   targetSurface: null,
+  targetSenses: null,
   session: null,
   pulse: false,
   viewed: loadSet(VIEWED_KEY),
@@ -76,18 +81,19 @@ export const useFoundationStore = create<FoundationState>((set, get) => ({
   firePulse: () => set({ pulse: true }),
   clearPulse: () => set({ pulse: false }),
 
-  openSheet: () => set({ open: true, target: null, targetSurface: null, session: null }),
-  openWord: (word, surface) => set({ open: true, target: word, targetSurface: surface ?? null, session: null }),
+  openSheet: () => set({ open: true, target: null, targetSurface: null, targetSenses: null, session: null }),
+  openWord: (word, surface, senses) =>
+    set({ open: true, target: word, targetSurface: surface ?? null, targetSenses: senses && senses.length > 1 ? senses : null, session: null }),
   openSession: (words, startIndex) =>
     words.length === 0
       ? undefined
-      : set({ open: true, target: null, targetSurface: null, session: { words, index: Math.min(Math.max(startIndex, 0), words.length - 1) } }),
+      : set({ open: true, target: null, targetSurface: null, targetSenses: null, session: { words, index: Math.min(Math.max(startIndex, 0), words.length - 1) } }),
   sessionGo: (delta) => {
     const s = get().session;
     if (!s) return;
     set({ session: { ...s, index: Math.min(Math.max(s.index + delta, 0), s.words.length - 1) } });
   },
-  close: () => set({ open: false, target: null, targetSurface: null, session: null }),
+  close: () => set({ open: false, target: null, targetSurface: null, targetSenses: null, session: null }),
 
   markViewed: (conceptId) => {
     if (get().viewed.has(conceptId)) return;

@@ -78,6 +78,13 @@ export const FRENCH_EXAMPLES: Record<string, string> = {
   'concept.word.meet': 'Ravi de vous rencontrer.',
   'concept.word.stand': 'Faites la queue, s’il vous plaît.',
   'concept.word.wash': 'Où puis-je me laver les mains ?',
+  'concept.word.play': 'Les enfants jouent dans le parc.',
+  'concept.word.read': 'Je lis un livre.',
+  'concept.word.write': 'Écrivez votre nom, s’il vous plaît.',
+  'concept.word.cook': 'Ma mère cuisine une soupe.',
+  'concept.word.wear': 'Je porte une veste en hiver.',
+  'concept.word.build': 'Ils construisent une maison.',
+  'concept.word.sing': 'Les oiseaux chantent chaque matin.',
 
   // 🎨 Colors
   'concept.word.red': 'Le bus rouge.',

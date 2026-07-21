@@ -18,9 +18,9 @@ import { TapCoachmark } from './TapCoachmark.js';
  * the pack loads it renders plain text, so it degrades gracefully and never blocks reading.
  */
 
-function openWord(word: CoreWord, surface?: string): void {
+function openWord(word: CoreWord, surface?: string, senses?: CoreWord[]): void {
   tap();
-  useFoundationStore.getState().openWord(word, surface);
+  useFoundationStore.getState().openWord(word, surface, senses);
 }
 
 /** A single tappable Core word (used where the whole element is one word — the shown text IS the
@@ -66,11 +66,11 @@ export function TappableText({ text, lang, className }: { text: string; lang?: s
   // Tappable words are inline <span role="button"> — NOT <button>. A real button is an atomic
   // inline-block: it can't line-break and it reorders as a neutral run in bidi text, which broke
   // sentence wrapping and RTL word order. A span flows exactly like the surrounding text.
-  const onKey = (e: KeyboardEvent, w: CoreWord, surface: string) => {
+  const onKey = (e: KeyboardEvent, w: CoreWord, surface: string, senses?: CoreWord[]) => {
     if (e.key !== 'Enter' && e.key !== ' ') return;
     e.preventDefault();
     e.stopPropagation();
-    openWord(w, surface);
+    openWord(w, surface, senses);
   };
   return (
     <span className={className} dir={dir} lang={activeLang} style={bidi}>
@@ -87,8 +87,8 @@ export function TappableText({ text, lang, className }: { text: string; lang?: s
             className="tappable-word"
             // Pass the exact tapped surface so the sheet shows THIS form (e.g. "combien"), not the
             // pack's canonical realization ("Combien ?"). Preserves the learner's mental model.
-            onClick={(e) => { e.stopPropagation(); openWord(seg.word!, seg.text); }}
-            onKeyDown={(e) => onKey(e, seg.word!, seg.text)}
+            onClick={(e) => { e.stopPropagation(); openWord(seg.word!, seg.text, seg.senses); }}
+            onKeyDown={(e) => onKey(e, seg.word!, seg.text, seg.senses)}
             // Swallow the pointer so a tappable word inside a draggable/flip card never triggers it.
             onPointerDown={(e) => e.stopPropagation()}
           >

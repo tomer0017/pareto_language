@@ -6,7 +6,9 @@ import { Sheet } from '../../shared/ui/Sheet.js';
 import { SpeakerButton } from '../../shared/ui/SpeakerButton.js';
 import { IconButton } from '../../shared/ui/IconButton.js';
 import { useAppStore } from '../../shared/stores/appStore.js';
+import { languageDirection } from '../../shared/i18n/languages.js';
 import { loadCoreWords, type CoreWord } from '../../shared/content/coreWords.js';
+import { alternateSenses, senseLabel } from './corpusIndex.js';
 import { missionsFor } from '../bootcamp/bootcampStore.js';
 import { buildFoundation, buildWord, type FoundationCategoryModel, type FoundationWord } from './foundationContent.js';
 import { foundationProgress } from './foundationProgress.js';
@@ -47,6 +49,8 @@ export function FoundationSheet() {
   const open = useFoundationStore((s) => s.open);
   const target = useFoundationStore((s) => s.target);
   const targetSurface = useFoundationStore((s) => s.targetSurface);
+  const targetSenses = useFoundationStore((s) => s.targetSenses);
+  const openWord = useFoundationStore((s) => s.openWord);
   const session = useFoundationStore((s) => s.session);
   const sessionGo = useFoundationStore((s) => s.sessionGo);
   const close = useFoundationStore((s) => s.close);
@@ -90,6 +94,11 @@ export function FoundationSheet() {
     () => (target ? buildWord(target, missions, uiLang, learningLang, targetSurface ?? undefined) : null),
     [target, targetSurface, missions, uiLang, learningLang],
   );
+  // Homograph disambiguation: the tapped surface (e.g. "book") has more than one sense. Offer the
+  // OTHER sense(s) as chips — each labelled with its OWN meaning (ספר / להזמין), not a generic
+  // "other meaning" — so the learner reaches the sense they intended. Universal Tap is surface-only
+  // and cannot infer part-of-speech from context, so it never silently guesses; it lets them choose.
+  const otherSenses = useMemo(() => (target ? alternateSenses(target, targetSenses) : []), [target, targetSenses]);
 
   const mode: 'session' | 'tap' | 'browse' = session ? 'session' : target ? 'tap' : 'browse';
   const onBrowseBack = () => {
@@ -137,7 +146,27 @@ export function FoundationSheet() {
             </div>
           </>
         ) : mode === 'tap' && tapWord ? (
-          <WordPage word={tapWord} lang={learningLang} />
+          <>
+            <WordPage word={tapWord} lang={learningLang} />
+            {otherSenses.length > 0 && (
+              <div className="foundation-senses">
+                <span className="dim small foundation-senses-label">{t('foundationOtherMeaning')}</span>
+                <div className="foundation-senses-chips">
+                  {otherSenses.map((cw) => (
+                    <button
+                      key={cw.conceptId}
+                      type="button"
+                      className="foundation-sense-chip card-press"
+                      onClick={() => { tap(); cancelSpeech(); openWord(cw, targetSurface ?? undefined, targetSenses ?? undefined); }}
+                    >
+                      <span className="foundation-sense-meaning" dir={languageDirection(uiLang)}>{senseLabel(cw, uiLang)}</span>
+                      <span className="dim small foundation-sense-pos">{cw.pos}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+          </>
         ) : words === null ? (
           <p className="dim center" style={{ padding: '28px 0' }}>{t('loading')}</p>
         ) : model.length === 0 ? (

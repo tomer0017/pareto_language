@@ -898,6 +898,14 @@ input:focus, select:focus { outline: 2px solid var(--brand); border-color: trans
 .foundation-session-count { font-weight: 800; font-size: 0.9rem; display: block; margin-bottom: 6px; }
 .foundation-session-nav { display: flex; gap: 8px; align-items: center; margin-top: 16px; }
 
+/* Homograph disambiguation: chips offering the tapped surface's OTHER sense(s). */
+.foundation-senses { margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--border, rgba(0,0,0,0.08)); }
+.foundation-senses-label { display: block; margin-bottom: 8px; }
+.foundation-senses-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.foundation-sense-chip { display: inline-flex; align-items: baseline; gap: 6px; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--border, rgba(0,0,0,0.12)); background: var(--surface, transparent); cursor: pointer; }
+.foundation-sense-meaning { font-weight: 600; }
+.foundation-sense-pos { text-transform: lowercase; }
+
 /* Example: learning-language sentence first (with audio), app-language translation underneath. */
 .foundation-example-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
 .foundation-example-target { font-weight: 600; min-width: 0; }

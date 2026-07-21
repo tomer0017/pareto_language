@@ -61,4 +61,8 @@ export const DESCRIPTIONS: CorpusRow[] = [
   { slug: 'broken', pos: 'adj', en: 'broken', he: 'שבור / מקולקל', cat: 'descriptions', layer: 2, rof: 2, skill: 'recall', s: [3, 4, 3, 4, 3], ex: 'The lock is broken.', exHe: 'המנעול מקולקל.' },
   { slug: 'open', pos: 'adj', en: 'open', he: 'פתוח', cat: 'descriptions', layer: 1, rof: 2, skill: 'recall', s: [5, 4, 5, 5, 5], ex: 'Is it open today?', exHe: 'זה פתוח היום?', opp: ['closed'] },
   { slug: 'closed', pos: 'adj', en: 'closed', he: 'סגור', cat: 'descriptions', layer: 1, rof: 2, skill: 'recognize', s: [5, 3, 5, 5, 5], ex: 'The museum is closed.', exHe: 'המוזיאון סגור.', opp: ['open'] },
+
+  // ── Core World Audit: emotions (Tier A) ─────────────────────────────────────
+  { slug: 'angry', pos: 'adj', en: 'angry', he: 'עצבני', cat: 'descriptions', layer: 2, rof: 1, skill: 'recall', s: [3, 3, 3, 2, 2], emoji: '😠', vis: 0.9, ex: 'Why are you angry?', exHe: 'למה אתה עצבני?', opp: ['happy'] },
+  { slug: 'confused', pos: 'adj', en: 'confused', he: 'מבולבל', cat: 'descriptions', layer: 2, rof: 1, skill: 'recall', s: [3, 3, 3, 2, 2], emoji: '😕', vis: 0.85, ex: 'I am a little confused.', exHe: 'אני קצת מבולבל.' },
 ];

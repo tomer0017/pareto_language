@@ -1,9 +1,26 @@
-# READY Core Corpus — the production multilingual corpus (Core 500)
+# READY Core Corpus — the production multilingual corpus (Core 633)
 
-> The first production-ready slice of READY's vocabulary: **500 language-independent concepts**,
-> selected by communication coverage (not raw frequency), realized per learning language, and
-> consumed by Core Words, Picture Quiz, Swipe Recall and the review engine. Built so that adding
-> **French (or any language) requires content only — never code.**
+> The first production-ready slice of READY's vocabulary: **633 language-independent concepts**
+> (500 → 511 with the promoted function words → 532 with Core World Phase 1 → **633** with the Core
+> World Audit), selected by communication coverage (not raw frequency), realized per learning
+> language, and consumed by Core Words, Picture Quiz, Swipe Recall and the review engine. Built so
+> that adding **French (or any language) requires content only — never code.**
+>
+> **Core World Vocabulary — Phase 1 (511 → 532).** The corpus was travel-optimized, which left small
+> gaps in the *everyday physical world* that beginner Reading stories run on. Phase 1 closed the
+> highest-value, most reusable of those gaps (a child knows them before school; they recur across
+> many stories): the world nouns `house · school · farm · sky · star · grandmother · grandfather ·
+> people · rabbit · carrot · potato · ball · bowl · clothes` and the world verbs `play · read ·
+> write · cook · wear · build · sing`.
+>
+> **Core World Audit — Phase 2 (532 → 633).** A full audit of a ~179-item candidate list (see
+> [CORE-WORLD-AUDIT.md](./CORE-WORLD-AUDIT.md)) added **99** concepts, placed by learning depth:
+> Tier A early Foundation (7), Tier B Extended Core World (44), Tier C contextual (48). This reverses
+> Phase 1's `book`(noun) rejection — that was a *validator* limit (one surface per `kind`), not
+> pedagogy. Surface-uniqueness is now **pos-scoped** (`kind:pos:en`), so `book`(noun) coexists with
+> `book`(verb "reserve") and `orange`(fruit) with `orange`(colour); genuine same-pos duplicates are
+> still rejected. Story animals (wolf-family: fox/pig/lion/bear/mouse/frog…) now qualify on
+> story/visual recurrence, not travel frequency.
 
 ## 1. Philosophy
 
@@ -72,9 +89,10 @@ pending native review** (never fabricated). Tier = layer − 1 (engine mapping u
 glue · questions · pronouns · numbers · time · colors · people · body · food · places · transport
 · directions · money · objects · clothing · home · technology · health · emergency · weather ·
 nature · animals · activities · actions · descriptions. Categories drive situation links, browse
-grouping and distractor pools — never game logic. Current distribution: actions 61 · descriptions
-50 · food 45 · glue 40 · places 31 · time 29 · objects 27 · home 25 · transport 22 … (500 total,
-218 icon-eligible with a **unique** emoji each).
+grouping and distractor pools — never game logic. Current distribution: actions 69 · food 59 ·
+descriptions 56 · objects 51 · glue 44 · places 37 · people 33 · transport 29 · time 29 · home 27 ·
+health 21 · animals 20 · numbers 17 · body 16 · money 16 · activities 16 · technology 16 · nature 15 …
+(633 total, 305 icon-eligible with a **unique** emoji each).
 
 ## 6. Translation strategy (concept-first)
 
@@ -82,8 +100,11 @@ English is **not** the source of truth — the concept is. The gloss (meaning) i
 languages (en + he); each learning language contributes only a realization (surface form). Hebrew
 in this corpus is the learner's UI gloss, human-authored and natural, shipped as `ai_reviewed`
 with review notes — no fake native review. Homograph senses get sense-suffixed slugs
-(`help.call`); the validator refuses two concepts with the same surface form per kind, because two
-identical words with different pictures would corrupt quiz distractors.
+(`help.call`, `book-noun`, `orange-fruit`); surface-uniqueness is **pos-scoped** (`kind:pos:en`), so
+one written surface may carry two senses of *different* parts of speech (book noun/verb, orange
+fruit/colour) but never two of the *same* POS — identical same-POS words with different pictures
+would corrupt quiz distractors. Universal Tap resolves a homograph to a deterministic primary sense
+and offers the other via an "Other meaning" chip (it never guesses POS from context).
 
 ## 7. How to add a language (e.g. the French pilot)
 
@@ -107,7 +128,7 @@ slug; deprecate instead (methodology semver).
 
 ## 9. Games & performance
 
-Games consume only the 218 icon-eligible words via `toGameWords` (emoji uniqueness = distractor
+Games consume only the 305 icon-eligible words via `toGameWords` (emoji uniqueness = distractor
 safety); non-visual words appear in Browse with a neutral bullet and await text-first games.
 The en pack is ~205 KB pretty-printed (precached once, then offline). The same structure holds to
 3000 concepts; if packs grow past ~1 MB, split per tier at the builder (no consumer changes —

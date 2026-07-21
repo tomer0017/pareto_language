@@ -163,10 +163,12 @@ hidden only inside an active mission — a focused, full-screen flow with its ow
   **knowledge center**: **Core Phrases** is live (every sentence READY teaches, grouped by mission,
   tap to hear) with **🎴 Sentence Flashcards** review (flip/hear/shuffle over the canonical mission
   sentences) and a shared **🎧 Listen Mode** (Parrot Mode), and **Core Words** is live — the **Core
-  Corpus (Core 511)** with Browse · **🎧 Listen Mode** · Picture Quiz · Swipe Recall, backed by the real concept pipeline (see CORE-CORPUS.md): 511 language-independent
-  concepts (grew from 500 when the high-reuse connectors/sizes `with/without/and/or/here/there/can/
-  more/less/medium/large` were promoted to global Core), 218 game-eligible with unique emoji, one
-  offline pack per language. Core Patterns · Common Questions · Emergency · Favorites remain honest
+  Corpus (Core 633)** with Browse · **🎧 Listen Mode** · Picture Quiz · Swipe Recall, backed by the real concept pipeline (see CORE-CORPUS.md): 633 language-independent
+  concepts (grew from 500 → 511 when the high-reuse connectors/sizes `with/without/and/or/here/there/can/
+  more/less/medium/large` were promoted to global Core, then 511 → 532 with the **Core World
+  Vocabulary Phase 1**, then 532 → 633 with the **Core World Audit** — everyday world nouns/verbs +
+  story animals/objects that recur in beginner stories; see CORE-WORLD-AUDIT.md), 305 game-eligible
+  with unique emoji, one offline pack per language. Core Patterns · Common Questions · Emergency · Favorites remain honest
   "coming soon".
 - **Mission vocabulary priming** — a "Before we speak" step primes 3–8 building-block words before a
   longer sentence (Missions 1–8; FR 1–4 in parity), with new-vs-review tracking; every mission's
@@ -208,7 +210,7 @@ Each layer has one responsibility.
   `Situation` / memory + review types, shared by web, server, engine, and the pipeline.
 - **Concept Layer + Pipeline (`content/`)** — the corpus → concepts → phrases → validated-pack
   toolchain (`content/pipeline`, `content/build.ts`, `content/concepts`, `content/core-corpus`).
-  It builds the **Core 511 packs** (`core-{lang}.v1.json`) and the **Italian `it-IT` pack** into
+  It builds the **Core 633 packs** (`core-{lang}.v1.json`) and the **Italian `it-IT` pack** into
   `apps/web/public/content/`. **Important
   nuance:** the Bootcamp (the actual pilot) is *decoupled* from this — Bootcamp missions are pure
   TypeScript data files, not pipeline output. The pipeline feeds the content-pack app
@@ -273,7 +275,7 @@ auto-generated from source by `npm run gen:conversations`.
 - Full docs set + auto-generated conversations file.
 
 **In progress / next 🚧**
-- **Core Corpus (Core 511) shipped** ✅ — 511 concept-first entries (two-sided comm/recog scoring,
+- **Core Corpus (Core 633) shipped** ✅ — 633 concept-first entries (two-sided comm/recog scoring,
   RoF, layers, 25 categories) through the real pipeline (concepts → Mongo seed → per-language
   offline packs), powering live Core Words + Picture Quiz + Swipe Recall. **Adding a language is
   content-only** (proven by test). Next: native Hebrew review, per-word audio, French pilot
@@ -291,7 +293,7 @@ auto-generated from source by `npm run gen:conversations`.
 
 **Active trip languages**
 - **English** (full pilot), **French** (Early Access, AI-drafted) and **Spanish** (`es-ES`, full 30/30
-  Bootcamp + Core 511 + Foundation examples, Early Access / AI-drafted, pending native review) are all
+  Bootcamp + Core 633 + Foundation examples, Early Access / AI-drafted, pending native review) are all
   selectable and fully usable. Italian/Arabic and the rest remain honest "coming soon" until their
   reviewed content ships. Adding a learning language stays content-only (registry + mission set + a
   Core pilot pack) — proven again by the Spanish integration.

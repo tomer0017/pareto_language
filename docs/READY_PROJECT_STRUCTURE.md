@@ -91,7 +91,8 @@ hidden only inside an active mission (a focused, full-screen flow with its own c
   sentence, with a ♻️ review hint for words seen earlier (`primeVocab.ts`). Primed: **Missions 1–8**
   (FR 1–4 in parity). Every mission's priming decision is recorded and test-bound in `vocabAudit.ts`
   (30 audited · 8 primed · 22 no-priming-needed). Essential connectors/sizes (`with/without/and/or/
-  here/there/can/more/less/medium/large`) are now **global Core** concepts (corpus 511). French
+  here/there/can/more/less/medium/large`) are now **global Core** concepts (corpus 633, incl. the
+  Core World Vocabulary Phase 1 — everyday world nouns/verbs that recur in beginner stories). French
   numbers (70/80/90 vigesimal) live in `fr/frenchNumbers.ts`. See **[VOCABULARY-AUDIT.md](./VOCABULARY-AUDIT.md)**.
 - **Randomization** — one tested seeded shuffle (`shared/util/shuffle.ts`, Fisher–Yates + `mulberry32`)
   backs all answer-option / distractor / review ordering (games, quizzes, flashcards, session builder).
@@ -163,7 +164,7 @@ tools and every pick is reframed as *more or less useful*, never right/wrong.
   reusable **`AnswerFeedback`** + pure `answerContext.ts` builders (the full-context wrong-answer
   model, also used by every Bootcamp drill). The old `mockWords` remains for isolated tests only.
 - **Core Corpus (`content/core-corpus/*`, `content/concepts/core-corpus.yaml`)** — the production
-  **Core 511**: authored concept rows (`data/*.ts`, 25 categories, five-part scorecard
+  **Core 633**: authored concept rows (`data/*.ts`, 25 categories, five-part scorecard
   freq/comm/recog/coverage/travel + RoF/layer/pos) → pure `corpus.ts` (validate · ROL · rank ·
   realize) → `build-core.ts` (`npm run build:core`) emits the canonical concepts YAML (seeded to
   Mongo via `seedConcepts`, idempotent) and **one offline pack per declared language**

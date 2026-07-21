@@ -56,5 +56,19 @@ describe('foundationStore guided session', () => {
     expect(s.open).toBe(false);
     expect(s.target).toBeNull();
     expect(s.session).toBeNull();
+    expect(s.targetSenses).toBeNull();
+  });
+
+  it('openWord carries homograph senses (>1) but not a single-sense list', () => {
+    const bookVerb = w('book');
+    const bookNoun = { ...w('book'), conceptId: 'concept.word.book-noun' };
+    useFoundationStore.getState().openWord(bookVerb, 'book', [bookVerb, bookNoun]);
+    let s = useFoundationStore.getState();
+    expect(s.target?.conceptId).toBe('concept.word.book'); // primary shown = tapped sense
+    expect(s.targetSenses?.map((x) => x.conceptId)).toEqual(['concept.word.book', 'concept.word.book-noun']);
+    // A single-sense tap must NOT set targetSenses (no chip for ordinary words).
+    useFoundationStore.getState().openWord(w('y'), 'y', [w('y')]);
+    s = useFoundationStore.getState();
+    expect(s.targetSenses).toBeNull();
   });
 });

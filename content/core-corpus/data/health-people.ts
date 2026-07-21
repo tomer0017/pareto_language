@@ -29,6 +29,9 @@ export const HEALTH_PEOPLE: CorpusRow[] = [
   { slug: 'name', pos: 'noun', en: 'name', he: 'שם', cat: 'people', layer: 1, rof: 2, skill: 'recall', s: [5, 5, 5, 5, 4], ex: 'My name is Dana.', exHe: 'קוראים לי דנה.' },
   { slug: 'mother', pos: 'noun', en: 'mother', he: 'אמא', cat: 'people', layer: 2, rof: 1, skill: 'recall', s: [5, 3, 3, 2, 2], ex: 'This is my mother.', exHe: 'זאת אמא שלי.', opp: ['father'], alias: ['mom'] },
   { slug: 'father', pos: 'noun', en: 'father', he: 'אבא', cat: 'people', layer: 2, rof: 1, skill: 'recall', s: [5, 3, 3, 2, 2], ex: 'My father loves to travel.', exHe: 'אבא שלי אוהב לטייל.', opp: ['mother'], alias: ['dad'] },
+  { slug: 'grandmother', pos: 'noun', en: 'grandmother', he: 'סבתא', cat: 'people', layer: 2, rof: 1, skill: 'recall', s: [4, 2, 2, 1, 2], ex: 'My grandmother is kind.', exHe: 'סבתא שלי נחמדה.', opp: ['grandfather'], alias: ['grandma'] },
+  { slug: 'grandfather', pos: 'noun', en: 'grandfather', he: 'סבא', cat: 'people', layer: 2, rof: 1, skill: 'recall', s: [4, 2, 2, 1, 2], ex: 'Grandfather has a farm.', exHe: 'לסבא יש חווה.', opp: ['grandmother'], alias: ['grandpa'] },
+  { slug: 'people', pos: 'noun', en: 'people', he: 'אנשים', cat: 'people', layer: 2, rof: 2, skill: 'recognize', s: [5, 3, 4, 3, 3], ex: 'The market is full of people.', exHe: 'השוק מלא אנשים.' },
   { slug: 'brother', pos: 'noun', en: 'brother', he: 'אח', cat: 'people', layer: 2, rof: 1, skill: 'recognize', s: [4, 3, 3, 1, 2], ex: 'I travel with my brother.', exHe: 'אני מטייל עם אח שלי.', opp: ['sister'] },
   { slug: 'sister', pos: 'noun', en: 'sister', he: 'אחות', cat: 'people', layer: 2, rof: 1, skill: 'recognize', s: [4, 3, 3, 1, 2], ex: 'My sister lives here.', exHe: 'אחותי גרה כאן.', opp: ['brother'] },
   { slug: 'husband', pos: 'noun', en: 'husband', he: 'בעל', cat: 'people', layer: 2, rof: 1, skill: 'recall', s: [4, 3, 3, 1, 2], ex: 'This is my husband.', exHe: 'זה בעלי.', opp: ['wife'] },
@@ -49,4 +52,23 @@ export const HEALTH_PEOPLE: CorpusRow[] = [
   { slug: 'embassy', pos: 'noun', en: 'embassy', he: 'שגרירות', cat: 'emergency', layer: 2, rof: 3, skill: 'recall', s: [2, 4, 3, 2, 5], ex: 'The Israeli embassy.', exHe: 'השגרירות הישראלית.' },
   { slug: 'accident', pos: 'noun', en: 'accident', he: 'תאונה', cat: 'emergency', layer: 2, rof: 3, skill: 'recognize', s: [2, 4, 4, 2, 4], ex: 'There was an accident.', exHe: 'הייתה תאונה.' },
   { slug: 'emergency', pos: 'noun', en: 'emergency', he: 'חירום', cat: 'emergency', layer: 1, rof: 3, skill: 'recognize', s: [2, 4, 5, 3, 5], ex: 'It is an emergency!', exHe: 'זה מקרה חירום!' },
+
+  // ── Core World Audit: people & occupations (Tier B/C) ───────────────────────
+  { slug: 'chef', pos: 'noun', en: 'chef', he: 'טבח', cat: 'people', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 2, 1, 2], emoji: '🧑‍🍳', vis: 0.9, ex: 'The chef cooks well.', exHe: 'הטבח מבשל טוב.', rel: ['cook'] },
+  { slug: 'student', pos: 'noun', en: 'student', he: 'סטודנט', cat: 'people', layer: 3, rof: 1, skill: 'recognize', s: [3, 2, 2, 1, 2], emoji: '🧑‍🎓', vis: 0.85, ex: 'She is a student.', exHe: 'היא סטודנטית.' },
+  { slug: 'painter', pos: 'noun', en: 'painter', he: 'צייר', cat: 'people', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 1, 1, 1], emoji: '🧑‍🎨', vis: 0.85, ex: 'The painter sells his art.', exHe: 'הצייר מוכר את האומנות שלו.', rel: ['drawing', 'art'] },
+  { slug: 'singer', pos: 'noun', en: 'singer', he: 'זמר', cat: 'people', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 1, 1, 1], emoji: '🧑‍🎤', vis: 0.85, ex: 'A famous singer.', exHe: 'זמר מפורסם.', rel: ['sing'] },
+  { slug: 'musician', pos: 'noun', en: 'musician', he: 'מוזיקאי', cat: 'people', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 1, 1, 1], ex: 'The musician plays guitar.', exHe: 'המוזיקאי מנגן בגיטרה.', rel: ['guitar'] },
+  { slug: 'clown', pos: 'noun', en: 'clown', he: 'ליצן', cat: 'people', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 1, 1, 1], emoji: '🤡', vis: 0.92, ex: 'The clown makes us laugh.', exHe: 'הליצן מצחיק אותנו.' },
+  { slug: 'groom', pos: 'noun', en: 'groom', he: 'חתן', cat: 'people', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 1, 1, 1], emoji: '🤵', vis: 0.85, ex: 'The groom is happy.', exHe: 'החתן שמח.', opp: ['bride'] },
+  { slug: 'bride', pos: 'noun', en: 'bride', he: 'כלה', cat: 'people', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 1, 1, 1], emoji: '👰', vis: 0.85, ex: 'The bride wears white.', exHe: 'הכלה לובשת לבן.', opp: ['groom'] },
+  { slug: 'winner', pos: 'noun', en: 'winner', he: 'מנצח', cat: 'people', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 1, 1, 1], emoji: '🏆', vis: 0.8, ex: 'She is the winner.', exHe: 'היא המנצחת.', opp: ['loser'] },
+  { slug: 'loser', pos: 'noun', en: 'loser', he: 'מפסיד', cat: 'people', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 1, 1, 1], ex: 'No one likes to be the loser.', exHe: 'אף אחד לא אוהב להיות המפסיד.', opp: ['winner'] },
+
+  // ── Core World Audit: body-care & health (Tier B/C) ─────────────────────────
+  { slug: 'kiss', pos: 'noun', en: 'kiss', he: 'נשיקה', cat: 'people', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 1, 1, 1], emoji: '💋', vis: 0.85, ex: 'A kiss on the cheek.', exHe: 'נשיקה על הלחי.' },
+  { slug: 'pregnant', pos: 'adj', en: 'pregnant', he: 'בהיריון', cat: 'health', layer: 3, rof: 2, skill: 'recognize', s: [2, 2, 2, 1, 2], emoji: '🤰', vis: 0.85, ex: 'She is pregnant.', exHe: 'היא בהיריון.' },
+  { slug: 'haircut', pos: 'noun', en: 'haircut', he: 'תספורת', cat: 'health', layer: 3, rof: 1, skill: 'recognize', s: [2, 2, 1, 1, 2], emoji: '💇', vis: 0.8, ex: 'I need a haircut.', exHe: 'אני צריך תספורת.' },
+  { slug: 'nail-polish', pos: 'noun', en: 'nail polish', he: 'לק', cat: 'health', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 1, 1, 1], emoji: '💅', vis: 0.85, ex: 'Red nail polish.', exHe: 'לק אדום.' },
+  { slug: 'germ', pos: 'noun', en: 'germ', he: 'חיידק', cat: 'health', layer: 3, rof: 2, skill: 'recognize', s: [2, 1, 1, 1, 1], emoji: '🦠', vis: 0.8, ex: 'Wash your hands, germs!', exHe: 'תשטוף ידיים, חיידקים!' },
 ];

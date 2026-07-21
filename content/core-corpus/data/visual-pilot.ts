@@ -26,6 +26,9 @@ export const VISUAL_PILOT: CorpusRow[] = [
   { slug: 'egg', pos: 'noun', en: 'egg', he: 'ביצה', cat: 'food', layer: 2, rof: 1, skill: 'recognize', s: [4, 3, 3, 2, 3], emoji: '🥚', vis: 0.9, ex: 'Two eggs, please.', exHe: 'שתי ביצים, בבקשה.' },
   { slug: 'apple', pos: 'noun', en: 'apple', he: 'תפוח', cat: 'food', layer: 2, rof: 1, skill: 'recognize', s: [3, 3, 2, 2, 3], emoji: '🍎', vis: 0.98, ex: 'One apple.', exHe: 'תפוח אחד.' },
   { slug: 'banana', pos: 'noun', en: 'banana', he: 'בננה', cat: 'food', layer: 2, rof: 1, skill: 'recognize', s: [3, 3, 2, 2, 3], emoji: '🍌', vis: 0.98, ex: 'A banana, please.', exHe: 'בננה, בבקשה.' },
+  { slug: 'carrot', pos: 'noun', en: 'carrot', he: 'גזר', cat: 'food', layer: 2, rof: 1, skill: 'recognize', s: [3, 2, 2, 1, 2], emoji: '🥕', vis: 0.95, ex: 'A fresh carrot.', exHe: 'גזר טרי.', rel: ['vegetables'] },
+  { slug: 'potato', pos: 'noun', en: 'potato', he: 'תפוח אדמה', cat: 'food', layer: 2, rof: 1, skill: 'recognize', s: [3, 3, 2, 2, 3], emoji: '🥔', vis: 0.95, ex: 'Rice or potato?', exHe: 'אורז או תפוח אדמה?', rel: ['vegetables'] },
+  { slug: 'bowl', pos: 'noun', en: 'bowl', he: 'קערה', cat: 'food', layer: 2, rof: 1, skill: 'recognize', s: [3, 3, 2, 2, 2], emoji: '🥣', vis: 0.9, ex: 'A bowl of soup.', exHe: 'קערת מרק.', rel: ['plate'] },
   { slug: 'chicken', pos: 'noun', en: 'chicken', he: 'עוף', cat: 'food', layer: 2, rof: 2, skill: 'recognize', s: [4, 4, 4, 2, 4], emoji: '🍗', vis: 0.85, ex: 'Grilled chicken.', exHe: 'עוף בגריל.' },
   { slug: 'fish', pos: 'noun', en: 'fish', he: 'דג', cat: 'food', layer: 2, rof: 2, skill: 'recognize', s: [4, 4, 4, 2, 4], emoji: '🐟', vis: 0.9, ex: 'Fish of the day.', exHe: 'דג היום.' },
   { slug: 'meat', pos: 'noun', en: 'meat', he: 'בשר', cat: 'food', layer: 2, rof: 2, skill: 'recognize', s: [4, 4, 4, 3, 4], emoji: '🥩', vis: 0.88, ex: 'No meat, please.', exHe: 'בלי בשר, בבקשה.' },
@@ -40,6 +43,7 @@ export const VISUAL_PILOT: CorpusRow[] = [
   { slug: 'bird', pos: 'noun', en: 'bird', he: 'ציפור', cat: 'animals', layer: 2, rof: 1, skill: 'recognize', s: [3, 1, 2, 1, 1], emoji: '🐦', vis: 0.95, ex: 'A little bird.', exHe: 'ציפור קטנה.' },
   { slug: 'horse', pos: 'noun', en: 'horse', he: 'סוס', cat: 'animals', layer: 2, rof: 1, skill: 'recognize', s: [3, 1, 2, 1, 1], emoji: '🐴', vis: 0.95, ex: 'A brown horse.', exHe: 'סוס חום.' },
   { slug: 'cow', pos: 'noun', en: 'cow', he: 'פרה', cat: 'animals', layer: 2, rof: 1, skill: 'recognize', s: [3, 1, 2, 1, 1], emoji: '🐄', vis: 0.95, ex: 'A cow in the field.', exHe: 'פרה בשדה.' },
+  { slug: 'rabbit', pos: 'noun', en: 'rabbit', he: 'ארנב', cat: 'animals', layer: 2, rof: 1, skill: 'recognize', s: [2, 1, 1, 1, 1], emoji: '🐰', vis: 0.95, ex: 'A white rabbit.', exHe: 'ארנב לבן.' },
 
   // ── Transport ──────────────────────────────────────────────────────────────
   { slug: 'car', pos: 'noun', en: 'car', he: 'מכונית', cat: 'transport', layer: 2, rof: 2, skill: 'recognize', s: [5, 3, 4, 3, 4], emoji: '🚗', vis: 0.95, ex: 'By car.', exHe: 'במכונית.' },
@@ -86,6 +90,7 @@ export const VISUAL_PILOT: CorpusRow[] = [
   { slug: 'socks', pos: 'noun', en: 'socks', he: 'גרביים', cat: 'clothing', layer: 2, rof: 1, skill: 'recognize', s: [2, 2, 2, 1, 1], emoji: '🧦', vis: 0.9, ex: 'Warm socks.', exHe: 'גרביים חמים.' },
   { slug: 'pants', pos: 'noun', en: 'pants', he: 'מכנסיים', cat: 'clothing', layer: 2, rof: 1, skill: 'recognize', s: [3, 2, 2, 1, 2], emoji: '👖', vis: 0.9, ex: 'Black pants.', exHe: 'מכנסיים שחורים.', alias: ['trousers'] },
   { slug: 'gloves', pos: 'noun', en: 'gloves', he: 'כפפות', cat: 'clothing', layer: 2, rof: 1, skill: 'recognize', s: [2, 1, 1, 1, 1], emoji: '🧤', vis: 0.88, ex: 'Winter gloves.', exHe: 'כפפות חורף.' },
+  { slug: 'clothes', pos: 'noun', en: 'clothes', he: 'בגדים', cat: 'clothing', layer: 2, rof: 1, skill: 'recognize', s: [4, 3, 3, 2, 3], ex: 'Warm clothes for winter.', exHe: 'בגדים חמים לחורף.', rel: ['shirt'] },
 
   // ── Weather ────────────────────────────────────────────────────────────────
   { slug: 'sun', pos: 'noun', en: 'sun', he: 'שמש', cat: 'weather', layer: 2, rof: 1, skill: 'recognize', s: [4, 2, 3, 2, 2], emoji: '☀️', vis: 0.97, ex: 'A sunny day.', exHe: 'יום שמשי.' },
@@ -111,6 +116,8 @@ export const VISUAL_PILOT: CorpusRow[] = [
   { slug: 'mountain', pos: 'noun', en: 'mountain', he: 'הר', cat: 'nature', layer: 2, rof: 1, skill: 'recognize', s: [3, 2, 3, 2, 3], emoji: '⛰️', vis: 0.9, ex: 'A high mountain.', exHe: 'הר גבוה.' },
   { slug: 'sea', pos: 'noun', en: 'sea', he: 'ים', cat: 'nature', layer: 2, rof: 1, skill: 'recognize', s: [4, 2, 3, 2, 3], emoji: '🌊', vis: 0.85, ex: 'The sea is warm.', exHe: 'הים חם.' },
   { slug: 'moon', pos: 'noun', en: 'moon', he: 'ירח', cat: 'nature', layer: 2, rof: 1, skill: 'recognize', s: [2, 1, 1, 1, 1], emoji: '🌙', vis: 0.92, ex: 'A full moon.', exHe: 'ירח מלא.' },
+  { slug: 'sky', pos: 'noun', en: 'sky', he: 'שמיים', cat: 'nature', layer: 2, rof: 1, skill: 'recognize', s: [3, 1, 2, 1, 2], ex: 'The sky is blue.', exHe: 'השמיים כחולים.', rel: ['cloud'] },
+  { slug: 'star', pos: 'noun', en: 'star', he: 'כוכב', cat: 'nature', layer: 2, rof: 1, skill: 'recognize', s: [2, 1, 1, 1, 1], emoji: '⭐', vis: 0.9, ex: 'A star in the sky.', exHe: 'כוכב בשמיים.', rel: ['moon'] },
 
   // ── Sports & activities ────────────────────────────────────────────────────
   { slug: 'swim', pos: 'verb', en: 'swim', he: 'לשחות', cat: 'activities', layer: 2, rof: 1, skill: 'recognize', s: [3, 3, 2, 2, 3], emoji: '🏊', vis: 0.9, ex: 'I want to swim.', exHe: 'אני רוצה לשחות.' },
@@ -132,4 +139,35 @@ export const VISUAL_PILOT: CorpusRow[] = [
   { slug: 'right', pos: 'adv', en: 'right', he: 'ימינה', cat: 'directions', layer: 1, rof: 2, skill: 'recognize', s: [5, 3, 5, 4, 5], emoji: '➡️', vis: 0.85, ex: 'Turn right.', exHe: 'פנה ימינה.', opp: ['left'] },
   { slug: 'up', pos: 'adv', en: 'up', he: 'למעלה', cat: 'directions', layer: 2, rof: 1, skill: 'recognize', s: [5, 2, 4, 3, 3], emoji: '⬆️', vis: 0.8, ex: 'The room is up the stairs.', exHe: 'החדר למעלה במדרגות.', opp: ['down'] },
   { slug: 'down', pos: 'adv', en: 'down', he: 'למטה', cat: 'directions', layer: 2, rof: 1, skill: 'recognize', s: [5, 2, 4, 3, 3], emoji: '⬇️', vis: 0.8, ex: 'Breakfast is down the stairs.', exHe: 'ארוחת הבוקר למטה במדרגות.', opp: ['up'] },
+
+  // ── Core World Audit: body (Tier A/B) ───────────────────────────────────────
+  { slug: 'lips', pos: 'noun', en: 'lips', he: 'שפתיים', cat: 'body', layer: 2, rof: 1, skill: 'recognize', s: [2, 2, 2, 2, 2], ex: 'Her lips are dry.', exHe: 'השפתיים שלה יבשות.' },
+  { slug: 'chin', pos: 'noun', en: 'chin', he: 'סנטר', cat: 'body', layer: 2, rof: 1, skill: 'recognize', s: [2, 1, 1, 1, 1], ex: 'His chin is small.', exHe: 'הסנטר שלו קטן.' },
+  { slug: 'fingernails', pos: 'noun', en: 'fingernails', he: 'ציפורניים', cat: 'body', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 1, 1, 1], ex: 'Clean fingernails.', exHe: 'ציפורניים נקיות.' },
+
+  // ── Core World Audit: animals (Tier B) ──────────────────────────────────────
+  { slug: 'fox', pos: 'noun', en: 'fox', he: 'שועל', cat: 'animals', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 1, 1, 1], emoji: '🦊', vis: 0.95, ex: 'The fox runs fast.', exHe: 'השועל רץ מהר.' },
+  { slug: 'monkey', pos: 'noun', en: 'monkey', he: 'קוף', cat: 'animals', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 1, 1, 1], emoji: '🐒', vis: 0.96, ex: 'A monkey in the tree.', exHe: 'קוף על העץ.' },
+  { slug: 'pig', pos: 'noun', en: 'pig', he: 'חזיר', cat: 'animals', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 1, 1, 1], emoji: '🐷', vis: 0.96, ex: 'The pig is pink.', exHe: 'החזיר ורוד.' },
+  { slug: 'tiger', pos: 'noun', en: 'tiger', he: 'נמר', cat: 'animals', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 1, 1, 1], emoji: '🐯', vis: 0.95, ex: 'The tiger is big.', exHe: 'הנמר גדול.' },
+  { slug: 'lion', pos: 'noun', en: 'lion', he: 'אריה', cat: 'animals', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 1, 1, 1], emoji: '🦁', vis: 0.96, ex: 'The lion is strong.', exHe: 'האריה חזק.' },
+  { slug: 'bear', pos: 'noun', en: 'bear', he: 'דב', cat: 'animals', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 1, 1, 1], emoji: '🐻', vis: 0.96, ex: 'A brown bear.', exHe: 'דב חום.' },
+  { slug: 'mouse', pos: 'noun', en: 'mouse', he: 'עכבר', cat: 'animals', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 1, 1, 1], emoji: '🐭', vis: 0.95, ex: 'A little mouse.', exHe: 'עכבר קטן.' },
+  { slug: 'rooster', pos: 'noun', en: 'rooster', he: 'תרנגול', cat: 'animals', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 1, 1, 1], emoji: '🐓', vis: 0.95, ex: 'The rooster wakes us up.', exHe: 'התרנגול מעיר אותנו.' },
+  { slug: 'frog', pos: 'noun', en: 'frog', he: 'צפרדע', cat: 'animals', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 1, 1, 1], emoji: '🐸', vis: 0.96, ex: 'A green frog.', exHe: 'צפרדע ירוקה.' },
+  { slug: 'butterfly', pos: 'noun', en: 'butterfly', he: 'פרפר', cat: 'animals', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 1, 1, 1], emoji: '🦋', vis: 0.96, ex: 'A colorful butterfly.', exHe: 'פרפר צבעוני.' },
+  { slug: 'giraffe', pos: 'noun', en: 'giraffe', he: 'ג׳ירפה', cat: 'animals', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 1, 1, 1], emoji: '🦒', vis: 0.96, ex: 'The giraffe is tall.', exHe: 'הג׳ירפה גבוהה.' },
+  { slug: 'sheep', pos: 'noun', en: 'sheep', he: 'כבשה', cat: 'animals', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 1, 1, 1], emoji: '🐑', vis: 0.95, ex: 'A white sheep.', exHe: 'כבשה לבנה.' },
+  { slug: 'donkey', pos: 'noun', en: 'donkey', he: 'חמור', cat: 'animals', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 1, 1, 1], emoji: '🫏', vis: 0.93, ex: 'The donkey carries the bags.', exHe: 'החמור נושא את התיקים.' },
+  { slug: 'parrot', pos: 'noun', en: 'parrot', he: 'תוכי', cat: 'animals', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 1, 1, 1], emoji: '🦜', vis: 0.95, ex: 'The parrot can talk.', exHe: 'התוכי יודע לדבר.' },
+
+  // ── Core World Audit: nature (Tier B/C) ─────────────────────────────────────
+  { slug: 'mushroom', pos: 'noun', en: 'mushroom', he: 'פטרייה', cat: 'nature', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 1, 1, 1], emoji: '🍄', vis: 0.9, ex: 'A red mushroom.', exHe: 'פטרייה אדומה.' },
+  { slug: 'ice', pos: 'noun', en: 'ice', he: 'קרח', cat: 'nature', layer: 2, rof: 1, skill: 'recognize', s: [3, 2, 2, 1, 2], emoji: '🧊', vis: 0.88, ex: 'Water with ice, please.', exHe: 'מים עם קרח, בבקשה.' },
+  { slug: 'air', pos: 'noun', en: 'air', he: 'אוויר', cat: 'nature', layer: 2, rof: 1, skill: 'recognize', s: [3, 1, 2, 1, 1], ex: 'Fresh air.', exHe: 'אוויר צח.' },
+  { slug: 'sunrise', pos: 'noun', en: 'sunrise', he: 'זריחה', cat: 'nature', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 1, 1, 1], emoji: '🌅', vis: 0.85, ex: 'We watched the sunrise.', exHe: 'צפינו בזריחה.', opp: ['sunset'] },
+  { slug: 'sunset', pos: 'noun', en: 'sunset', he: 'שקיעה', cat: 'nature', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 1, 1, 1], emoji: '🌇', vis: 0.85, ex: 'A beautiful sunset.', exHe: 'שקיעה יפה.', opp: ['sunrise'] },
+  { slug: 'earth', pos: 'noun', en: 'earth', he: 'כדור הארץ', cat: 'nature', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 1, 1, 1], emoji: '🌍', vis: 0.9, ex: 'The earth is round.', exHe: 'כדור הארץ עגול.' },
+  { slug: 'soil', pos: 'noun', en: 'soil', he: 'אדמה', cat: 'nature', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 1, 1, 1], ex: 'Plants grow in the soil.', exHe: 'צמחים גדלים באדמה.' },
+  { slug: 'flowerpot', pos: 'noun', en: 'flowerpot', he: 'עציץ', cat: 'nature', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 1, 1, 1], emoji: '🪴', vis: 0.9, ex: 'A flowerpot on the balcony.', exHe: 'עציץ על המרפסת.' },
 ];

@@ -31,7 +31,7 @@ concepts:
     emoji: 👃
     iconEligible: true
     visualConfidence: 0.98
-    rank: 450
+    rank: 466
     example:
       en: My nose hurts.
       he: האף שלי כואב.
@@ -68,7 +68,7 @@ concepts:
     emoji: 👁️
     iconEligible: true
     visualConfidence: 0.95
-    rank: 430
+    rank: 442
     example:
       en: Something is in my eye.
       he: משהו נכנס לי לעין.
@@ -105,7 +105,7 @@ concepts:
     emoji: 👂
     iconEligible: true
     visualConfidence: 0.96
-    rank: 451
+    rank: 467
     example:
       en: My ear hurts.
       he: האוזן שלי כואבת.
@@ -142,7 +142,7 @@ concepts:
     emoji: ✋
     iconEligible: true
     visualConfidence: 0.9
-    rank: 349
+    rank: 353
     example:
       en: Give me your hand.
       he: תן לי את היד.
@@ -179,7 +179,7 @@ concepts:
     emoji: 👄
     iconEligible: true
     visualConfidence: 0.92
-    rank: 431
+    rank: 443
     example:
       en: Open your mouth.
       he: תפתח את הפה.
@@ -216,7 +216,7 @@ concepts:
     emoji: 🦶
     iconEligible: true
     visualConfidence: 0.9
-    rank: 432
+    rank: 444
     example:
       en: My foot hurts.
       he: כף הרגל שלי כואבת.
@@ -253,7 +253,7 @@ concepts:
     emoji: 🦵
     iconEligible: true
     visualConfidence: 0.9
-    rank: 433
+    rank: 445
     example:
       en: I hurt my leg.
       he: פגעתי ברגל.
@@ -290,7 +290,7 @@ concepts:
     emoji: 🦷
     iconEligible: true
     visualConfidence: 0.9
-    rank: 235
+    rank: 237
     example:
       en: I have a toothache.
       he: יש לי כאב שיניים.
@@ -364,7 +364,7 @@ concepts:
     emoji: ☕
     iconEligible: true
     visualConfidence: 0.95
-    rank: 98
+    rank: 99
     example:
       en: A coffee, please.
       he: קפה, בבקשה.
@@ -401,7 +401,7 @@ concepts:
     emoji: 🍵
     iconEligible: true
     visualConfidence: 0.9
-    rank: 310
+    rank: 312
     example:
       en: Tea with milk.
       he: תה עם חלב.
@@ -438,7 +438,7 @@ concepts:
     emoji: 🍞
     iconEligible: true
     visualConfidence: 0.95
-    rank: 283
+    rank: 285
     example:
       en: Fresh bread.
       he: לחם טרי.
@@ -475,7 +475,7 @@ concepts:
     emoji: 🥛
     iconEligible: true
     visualConfidence: 0.92
-    rank: 198
+    rank: 200
     example:
       en: With milk, please.
       he: עם חלב, בבקשה.
@@ -512,7 +512,7 @@ concepts:
     emoji: 🥚
     iconEligible: true
     visualConfidence: 0.9
-    rank: 350
+    rank: 354
     example:
       en: Two eggs, please.
       he: שתי ביצים, בבקשה.
@@ -549,7 +549,7 @@ concepts:
     emoji: 🍎
     iconEligible: true
     visualConfidence: 0.98
-    rank: 399
+    rank: 406
     example:
       en: One apple.
       he: תפוח אחד.
@@ -586,7 +586,7 @@ concepts:
     emoji: 🍌
     iconEligible: true
     visualConfidence: 0.98
-    rank: 400
+    rank: 407
     example:
       en: A banana, please.
       he: בננה, בבקשה.
@@ -594,6 +594,123 @@ concepts:
     commScore: 0.6
     recogScore: 0.4
     imageEligible: true
+  - id: concept.word.carrot
+    kind: word
+    gloss:
+      en: carrot
+      he: גזר
+    categories:
+      - food
+    rof: 1
+    layer: 2
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - restaurant
+    rolComponents:
+      travel: 0.4
+      coverage: 0.2
+      freq: 0.6
+      reuse: 0.3
+      learnability: 0.8
+    rolScore: 13
+    neverTeach: false
+    realizations:
+      en:
+        text: carrot
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🥕
+    iconEligible: true
+    visualConfidence: 0.95
+    rank: 483
+    example:
+      en: A fresh carrot.
+      he: גזר טרי.
+    pos: noun
+    commScore: 0.4
+    recogScore: 0.4
+    imageEligible: true
+    relatedConcepts:
+      - concept.word.vegetables
+  - id: concept.word.potato
+    kind: word
+    gloss:
+      en: potato
+      he: תפוח אדמה
+    categories:
+      - food
+    rof: 1
+    layer: 2
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - restaurant
+    rolComponents:
+      travel: 0.6
+      coverage: 0.4
+      freq: 0.6
+      reuse: 0.3
+      learnability: 0.8
+    rolScore: 17
+    neverTeach: false
+    realizations:
+      en:
+        text: potato
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🥔
+    iconEligible: true
+    visualConfidence: 0.95
+    rank: 408
+    example:
+      en: Rice or potato?
+      he: אורז או תפוח אדמה?
+    pos: noun
+    commScore: 0.6
+    recogScore: 0.4
+    imageEligible: true
+    relatedConcepts:
+      - concept.word.vegetables
+  - id: concept.word.bowl
+    kind: word
+    gloss:
+      en: bowl
+      he: קערה
+    categories:
+      - food
+    rof: 1
+    layer: 2
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - restaurant
+    rolComponents:
+      travel: 0.4
+      coverage: 0.4
+      freq: 0.6
+      reuse: 0.3
+      learnability: 0.9333333333333333
+    rolScore: 15
+    neverTeach: false
+    realizations:
+      en:
+        text: bowl
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🥣
+    iconEligible: true
+    visualConfidence: 0.9
+    rank: 446
+    example:
+      en: A bowl of soup.
+      he: קערת מרק.
+    pos: noun
+    commScore: 0.6
+    recogScore: 0.4
+    imageEligible: true
+    relatedConcepts:
+      - concept.word.plate
   - id: concept.word.chicken
     kind: word
     gloss:
@@ -623,7 +740,7 @@ concepts:
     emoji: 🍗
     iconEligible: true
     visualConfidence: 0.85
-    rank: 199
+    rank: 201
     example:
       en: Grilled chicken.
       he: עוף בגריל.
@@ -660,7 +777,7 @@ concepts:
     emoji: 🐟
     iconEligible: true
     visualConfidence: 0.9
-    rank: 200
+    rank: 202
     example:
       en: Fish of the day.
       he: דג היום.
@@ -697,7 +814,7 @@ concepts:
     emoji: 🥩
     iconEligible: true
     visualConfidence: 0.88
-    rank: 180
+    rank: 181
     example:
       en: No meat, please.
       he: בלי בשר, בבקשה.
@@ -734,7 +851,7 @@ concepts:
     emoji: 🧀
     iconEligible: true
     visualConfidence: 0.92
-    rank: 351
+    rank: 355
     example:
       en: Bread and cheese.
       he: לחם וגבינה.
@@ -771,7 +888,7 @@ concepts:
     emoji: 🍚
     iconEligible: true
     visualConfidence: 0.85
-    rank: 379
+    rank: 385
     example:
       en: Rice, please.
       he: אורז, בבקשה.
@@ -808,7 +925,7 @@ concepts:
     emoji: 🍲
     iconEligible: true
     visualConfidence: 0.82
-    rank: 380
+    rank: 386
     example:
       en: Hot soup.
       he: מרק חם.
@@ -845,7 +962,7 @@ concepts:
     emoji: 🍷
     iconEligible: true
     visualConfidence: 0.95
-    rank: 311
+    rank: 313
     example:
       en: A glass of wine.
       he: כוס יין.
@@ -882,7 +999,7 @@ concepts:
     emoji: 🐶
     iconEligible: true
     visualConfidence: 0.98
-    rank: 401
+    rank: 409
     example:
       en: A big dog.
       he: כלב גדול.
@@ -919,7 +1036,7 @@ concepts:
     emoji: 🐱
     iconEligible: true
     visualConfidence: 0.98
-    rank: 402
+    rank: 410
     example:
       en: A small cat.
       he: חתול קטן.
@@ -956,7 +1073,7 @@ concepts:
     emoji: 🐦
     iconEligible: true
     visualConfidence: 0.95
-    rank: 493
+    rank: 528
     example:
       en: A little bird.
       he: ציפור קטנה.
@@ -993,7 +1110,7 @@ concepts:
     emoji: 🐴
     iconEligible: true
     visualConfidence: 0.95
-    rank: 494
+    rank: 529
     example:
       en: A brown horse.
       he: סוס חום.
@@ -1030,13 +1147,50 @@ concepts:
     emoji: 🐄
     iconEligible: true
     visualConfidence: 0.95
-    rank: 495
+    rank: 530
     example:
       en: A cow in the field.
       he: פרה בשדה.
     pos: noun
     commScore: 0.2
     recogScore: 0.4
+    imageEligible: true
+  - id: concept.word.rabbit
+    kind: word
+    gloss:
+      en: rabbit
+      he: ארנב
+    categories:
+      - animals
+    rof: 1
+    layer: 2
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - sightseeing
+    rolComponents:
+      travel: 0.2
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.8
+    rolScore: 9
+    neverTeach: false
+    realizations:
+      en:
+        text: rabbit
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🐰
+    iconEligible: true
+    visualConfidence: 0.95
+    rank: 544
+    example:
+      en: A white rabbit.
+      he: ארנב לבן.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.2
     imageEligible: true
   - id: concept.word.car
     kind: word
@@ -1067,7 +1221,7 @@ concepts:
     emoji: 🚗
     iconEligible: true
     visualConfidence: 0.95
-    rank: 166
+    rank: 167
     example:
       en: By car.
       he: במכונית.
@@ -1178,7 +1332,7 @@ concepts:
     emoji: ✈️
     iconEligible: true
     visualConfidence: 0.97
-    rank: 155
+    rank: 156
     example:
       en: My plane is late.
       he: המטוס שלי מאחר.
@@ -1254,7 +1408,7 @@ concepts:
     emoji: 🚲
     iconEligible: true
     visualConfidence: 0.95
-    rank: 381
+    rank: 387
     example:
       en: I want to rent a bike.
       he: אני רוצה לשכור אופניים.
@@ -1291,7 +1445,7 @@ concepts:
     emoji: ⛵
     iconEligible: true
     visualConfidence: 0.9
-    rank: 382
+    rank: 388
     example:
       en: A boat trip.
       he: טיול בסירה.
@@ -1402,7 +1556,7 @@ concepts:
     emoji: 🍴
     iconEligible: true
     visualConfidence: 0.85
-    rank: 236
+    rank: 238
     example:
       en: A good restaurant.
       he: מסעדה טובה.
@@ -1439,7 +1593,7 @@ concepts:
     emoji: 🏦
     iconEligible: true
     visualConfidence: 0.85
-    rank: 383
+    rank: 389
     example:
       en: It is next to the bank.
       he: זה ליד הבנק.
@@ -1515,7 +1669,7 @@ concepts:
     emoji: 🏖️
     iconEligible: true
     visualConfidence: 0.92
-    rank: 312
+    rank: 314
     example:
       en: How do I get to the beach?
       he: איך מגיעים לחוף?
@@ -1552,7 +1706,7 @@ concepts:
     emoji: 🏛️
     iconEligible: true
     visualConfidence: 0.82
-    rank: 330
+    rank: 333
     example:
       en: Two tickets to the museum.
       he: שני כרטיסים למוזיאון.
@@ -1589,7 +1743,7 @@ concepts:
     emoji: 🏪
     iconEligible: true
     visualConfidence: 0.7
-    rank: 284
+    rank: 286
     example:
       en: The fruit market.
       he: שוק הפירות.
@@ -1626,7 +1780,7 @@ concepts:
     emoji: 🚉
     iconEligible: true
     visualConfidence: 0.85
-    rank: 127
+    rank: 128
     example:
       en: Where is the station?
       he: איפה התחנה?
@@ -1704,7 +1858,7 @@ concepts:
     emoji: ⛪
     iconEligible: true
     visualConfidence: 0.9
-    rank: 403
+    rank: 411
     example:
       en: The old church.
       he: הכנסייה העתיקה.
@@ -1741,7 +1895,7 @@ concepts:
     emoji: 🔑
     iconEligible: true
     visualConfidence: 0.95
-    rank: 175
+    rank: 176
     example:
       en: My room key.
       he: המפתח של החדר שלי.
@@ -1778,7 +1932,7 @@ concepts:
     emoji: 📱
     iconEligible: true
     visualConfidence: 0.95
-    rank: 139
+    rank: 140
     example:
       en: I lost my phone.
       he: איבדתי את הטלפון שלי.
@@ -1815,7 +1969,7 @@ concepts:
     emoji: 🎒
     iconEligible: true
     visualConfidence: 0.9
-    rank: 156
+    rank: 157
     example:
       en: I lost my bag.
       he: איבדתי את התיק שלי.
@@ -1852,7 +2006,7 @@ concepts:
     emoji: 💰
     iconEligible: true
     visualConfidence: 0.85
-    rank: 102
+    rank: 103
     example:
       en: I have no money.
       he: אין לי כסף.
@@ -1928,7 +2082,7 @@ concepts:
     emoji: 🎫
     iconEligible: true
     visualConfidence: 0.85
-    rank: 106
+    rank: 107
     example:
       en: One ticket, please.
       he: כרטיס אחד, בבקשה.
@@ -2002,7 +2156,7 @@ concepts:
     emoji: ☂️
     iconEligible: true
     visualConfidence: 0.95
-    rank: 496
+    rank: 531
     example:
       en: Take an umbrella.
       he: קח מטרייה.
@@ -2039,7 +2193,7 @@ concepts:
     emoji: 📷
     iconEligible: true
     visualConfidence: 0.95
-    rank: 404
+    rank: 412
     example:
       en: Can I use my camera here?
       he: אפשר לצלם כאן?
@@ -2076,7 +2230,7 @@ concepts:
     emoji: 👓
     iconEligible: true
     visualConfidence: 0.92
-    rank: 464
+    rank: 484
     example:
       en: I need my glasses.
       he: אני צריך את המשקפיים שלי.
@@ -2113,7 +2267,7 @@ concepts:
     emoji: ⌚
     iconEligible: true
     visualConfidence: 0.9
-    rank: 484
+    rank: 519
     example:
       en: A nice watch.
       he: שעון יפה.
@@ -2150,7 +2304,7 @@ concepts:
     emoji: 🗺️
     iconEligible: true
     visualConfidence: 0.9
-    rank: 140
+    rank: 141
     example:
       en: Can you show me on the map?
       he: אפשר להראות לי על המפה?
@@ -2187,7 +2341,7 @@ concepts:
     emoji: 👕
     iconEligible: true
     visualConfidence: 0.92
-    rank: 434
+    rank: 447
     example:
       en: A blue shirt.
       he: חולצה כחולה.
@@ -2224,7 +2378,7 @@ concepts:
     emoji: 👟
     iconEligible: true
     visualConfidence: 0.95
-    rank: 435
+    rank: 448
     example:
       en: New shoes.
       he: נעליים חדשות.
@@ -2261,7 +2415,7 @@ concepts:
     emoji: 🧢
     iconEligible: true
     visualConfidence: 0.9
-    rank: 485
+    rank: 520
     example:
       en: A sun hat.
       he: כובע שמש.
@@ -2298,7 +2452,7 @@ concepts:
     emoji: 🧥
     iconEligible: true
     visualConfidence: 0.9
-    rank: 465
+    rank: 485
     example:
       en: A warm jacket.
       he: מעיל חם.
@@ -2335,7 +2489,7 @@ concepts:
     emoji: 👗
     iconEligible: true
     visualConfidence: 0.92
-    rank: 466
+    rank: 486
     example:
       en: A red dress.
       he: שמלה אדומה.
@@ -2372,7 +2526,7 @@ concepts:
     emoji: 🧦
     iconEligible: true
     visualConfidence: 0.9
-    rank: 506
+    rank: 545
     example:
       en: Warm socks.
       he: גרביים חמים.
@@ -2409,7 +2563,7 @@ concepts:
     emoji: 👖
     iconEligible: true
     visualConfidence: 0.9
-    rank: 467
+    rank: 487
     example:
       en: Black pants.
       he: מכנסיים שחורים.
@@ -2448,7 +2602,7 @@ concepts:
     emoji: 🧤
     iconEligible: true
     visualConfidence: 0.88
-    rank: 507
+    rank: 546
     example:
       en: Winter gloves.
       he: כפפות חורף.
@@ -2456,6 +2610,43 @@ concepts:
     commScore: 0.2
     recogScore: 0.2
     imageEligible: true
+  - id: concept.word.clothes
+    kind: word
+    gloss:
+      en: clothes
+      he: בגדים
+    categories:
+      - clothing
+    rof: 1
+    layer: 2
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - shopping
+    rolComponents:
+      travel: 0.6
+      coverage: 0.4
+      freq: 0.8
+      reuse: 0.3
+      learnability: 0.7333333333333334
+    rolScore: 19
+    neverTeach: false
+    realizations:
+      en:
+        text: clothes
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    iconEligible: false
+    rank: 356
+    example:
+      en: Warm clothes for winter.
+      he: בגדים חמים לחורף.
+    pos: noun
+    commScore: 0.6
+    recogScore: 0.6
+    imageEligible: true
+    relatedConcepts:
+      - concept.word.shirt
   - id: concept.word.sun
     kind: word
     gloss:
@@ -2485,7 +2676,7 @@ concepts:
     emoji: ☀️
     iconEligible: true
     visualConfidence: 0.97
-    rank: 405
+    rank: 413
     example:
       en: A sunny day.
       he: יום שמשי.
@@ -2522,7 +2713,7 @@ concepts:
     emoji: 🌧️
     iconEligible: true
     visualConfidence: 0.92
-    rank: 352
+    rank: 357
     example:
       en: It is raining.
       he: יורד גשם.
@@ -2559,7 +2750,7 @@ concepts:
     emoji: ❄️
     iconEligible: true
     visualConfidence: 0.92
-    rank: 468
+    rank: 488
     example:
       en: A lot of snow.
       he: הרבה שלג.
@@ -2596,7 +2787,7 @@ concepts:
     emoji: ☁️
     iconEligible: true
     visualConfidence: 0.92
-    rank: 508
+    rank: 547
     example:
       en: A cloudy sky.
       he: שמיים מעוננים.
@@ -2633,7 +2824,7 @@ concepts:
     emoji: 💨
     iconEligible: true
     visualConfidence: 0.7
-    rank: 497
+    rank: 532
     example:
       en: A strong wind.
       he: רוח חזקה.
@@ -2670,7 +2861,7 @@ concepts:
     emoji: ⛈️
     iconEligible: true
     visualConfidence: 0.85
-    rank: 486
+    rank: 521
     example:
       en: A big storm is coming.
       he: מגיעה סערה גדולה.
@@ -2855,7 +3046,7 @@ concepts:
     emoji: 💉
     iconEligible: true
     visualConfidence: 0.72
-    rank: 169
+    rank: 170
     example:
       en: Medicine for a headache.
       he: תרופה לכאב ראש.
@@ -2892,7 +3083,7 @@ concepts:
     emoji: 🩹
     iconEligible: true
     visualConfidence: 0.82
-    rank: 237
+    rank: 239
     example:
       en: I need a bandage.
       he: אני צריך תחבושת.
@@ -2929,7 +3120,7 @@ concepts:
     emoji: 🤕
     iconEligible: true
     visualConfidence: 0.7
-    rank: 170
+    rank: 171
     example:
       en: I have pain here.
       he: יש לי כאב כאן.
@@ -2966,7 +3157,7 @@ concepts:
     emoji: 🤒
     iconEligible: true
     visualConfidence: 0.8
-    rank: 157
+    rank: 158
     example:
       en: I feel sick.
       he: אני מרגיש חולה.
@@ -3003,7 +3194,7 @@ concepts:
     emoji: 🌳
     iconEligible: true
     visualConfidence: 0.95
-    rank: 498
+    rank: 533
     example:
       en: A big tree.
       he: עץ גדול.
@@ -3040,7 +3231,7 @@ concepts:
     emoji: 🌸
     iconEligible: true
     visualConfidence: 0.92
-    rank: 499
+    rank: 534
     example:
       en: A beautiful flower.
       he: פרח יפה.
@@ -3077,7 +3268,7 @@ concepts:
     emoji: ⛰️
     iconEligible: true
     visualConfidence: 0.9
-    rank: 406
+    rank: 414
     example:
       en: A high mountain.
       he: הר גבוה.
@@ -3114,7 +3305,7 @@ concepts:
     emoji: 🌊
     iconEligible: true
     visualConfidence: 0.85
-    rank: 353
+    rank: 358
     example:
       en: The sea is warm.
       he: הים חם.
@@ -3151,7 +3342,7 @@ concepts:
     emoji: 🌙
     iconEligible: true
     visualConfidence: 0.92
-    rank: 504
+    rank: 540
     example:
       en: A full moon.
       he: ירח מלא.
@@ -3159,6 +3350,82 @@ concepts:
     commScore: 0.2
     recogScore: 0.2
     imageEligible: true
+  - id: concept.word.sky
+    kind: word
+    gloss:
+      en: sky
+      he: שמיים
+    categories:
+      - nature
+    rof: 1
+    layer: 2
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - sightseeing
+    rolComponents:
+      travel: 0.4
+      coverage: 0.2
+      freq: 0.6
+      reuse: 0.3
+      learnability: 1
+    rolScore: 13
+    neverTeach: false
+    realizations:
+      en:
+        text: sky
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    iconEligible: false
+    rank: 489
+    example:
+      en: The sky is blue.
+      he: השמיים כחולים.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.4
+    imageEligible: true
+    relatedConcepts:
+      - concept.word.cloud
+  - id: concept.word.star
+    kind: word
+    gloss:
+      en: star
+      he: כוכב
+    categories:
+      - nature
+    rof: 1
+    layer: 2
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - sightseeing
+    rolComponents:
+      travel: 0.2
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.9333333333333333
+    rolScore: 10
+    neverTeach: false
+    realizations:
+      en:
+        text: star
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: ⭐
+    iconEligible: true
+    visualConfidence: 0.9
+    rank: 541
+    example:
+      en: A star in the sky.
+      he: כוכב בשמיים.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.2
+    imageEligible: true
+    relatedConcepts:
+      - concept.word.moon
   - id: concept.word.swim
     kind: word
     gloss:
@@ -3188,7 +3455,7 @@ concepts:
     emoji: 🏊
     iconEligible: true
     visualConfidence: 0.9
-    rank: 354
+    rank: 359
     example:
       en: I want to swim.
       he: אני רוצה לשחות.
@@ -3225,7 +3492,7 @@ concepts:
     emoji: 🏃
     iconEligible: true
     visualConfidence: 0.85
-    rank: 384
+    rank: 390
     example:
       en: I run every morning.
       he: אני רץ כל בוקר.
@@ -3262,7 +3529,7 @@ concepts:
     emoji: ⚽
     iconEligible: true
     visualConfidence: 0.95
-    rank: 436
+    rank: 449
     example:
       en: Let us watch football.
       he: בוא נראה כדורגל.
@@ -3299,7 +3566,7 @@ concepts:
     emoji: 🚶
     iconEligible: true
     visualConfidence: 0.82
-    rank: 260
+    rank: 262
     example:
       en: It is a short walk.
       he: זו הליכה קצרה.
@@ -3336,7 +3603,7 @@ concepts:
     emoji: 💃
     iconEligible: true
     visualConfidence: 0.9
-    rank: 487
+    rank: 522
     example:
       en: They love to dance.
       he: הם אוהבים לרקוד.
@@ -3373,7 +3640,7 @@ concepts:
     emoji: 👨
     iconEligible: true
     visualConfidence: 0.9
-    rank: 331
+    rank: 334
     example:
       en: That man over there.
       he: הגבר שם.
@@ -3412,7 +3679,7 @@ concepts:
     emoji: 👩
     iconEligible: true
     visualConfidence: 0.9
-    rank: 332
+    rank: 335
     example:
       en: Ask that woman.
       he: תשאל את האישה הזאת.
@@ -3451,7 +3718,7 @@ concepts:
     emoji: 👶
     iconEligible: true
     visualConfidence: 0.95
-    rank: 407
+    rank: 415
     example:
       en: I am traveling with a baby.
       he: אני נוסע עם תינוק.
@@ -3488,7 +3755,7 @@ concepts:
     emoji: 🧒
     iconEligible: true
     visualConfidence: 0.88
-    rank: 285
+    rank: 287
     example:
       en: One adult, one child.
       he: מבוגר אחד, ילד אחד.
@@ -3525,7 +3792,7 @@ concepts:
     emoji: 👪
     iconEligible: true
     visualConfidence: 0.88
-    rank: 313
+    rank: 315
     example:
       en: I am here with my family.
       he: אני כאן עם המשפחה שלי.
@@ -3562,7 +3829,7 @@ concepts:
     emoji: 👫
     iconEligible: true
     visualConfidence: 0.7
-    rank: 292
+    rank: 294
     example:
       en: This is my friend.
       he: זה החבר שלי.
@@ -3677,7 +3944,7 @@ concepts:
     emoji: ⬆️
     iconEligible: true
     visualConfidence: 0.8
-    rank: 270
+    rank: 272
     example:
       en: The room is up the stairs.
       he: החדר למעלה במדרגות.
@@ -3716,7 +3983,7 @@ concepts:
     emoji: ⬇️
     iconEligible: true
     visualConfidence: 0.8
-    rank: 271
+    rank: 273
     example:
       en: Breakfast is down the stairs.
       he: ארוחת הבוקר למטה במדרגות.
@@ -3726,6 +3993,925 @@ concepts:
     imageEligible: true
     oppositeConcepts:
       - concept.word.up
+  - id: concept.word.lips
+    kind: word
+    gloss:
+      en: lips
+      he: שפתיים
+    categories:
+      - body
+    rof: 1
+    layer: 2
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - health
+    rolComponents:
+      travel: 0.4
+      coverage: 0.4
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.9333333333333333
+    rolScore: 14
+    neverTeach: false
+    realizations:
+      en:
+        text: lips
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    iconEligible: false
+    rank: 468
+    example:
+      en: Her lips are dry.
+      he: השפתיים שלה יבשות.
+    pos: noun
+    commScore: 0.4
+    recogScore: 0.4
+    imageEligible: true
+  - id: concept.word.chin
+    kind: word
+    gloss:
+      en: chin
+      he: סנטר
+    categories:
+      - body
+    rof: 1
+    layer: 2
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - health
+    rolComponents:
+      travel: 0.2
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.9333333333333333
+    rolScore: 10
+    neverTeach: false
+    realizations:
+      en:
+        text: chin
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    iconEligible: false
+    rank: 542
+    example:
+      en: His chin is small.
+      he: הסנטר שלו קטן.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.2
+    imageEligible: true
+  - id: concept.word.fingernails
+    kind: word
+    gloss:
+      en: fingernails
+      he: ציפורניים
+    categories:
+      - body
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - health
+    rolComponents:
+      travel: 0.2
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.4666666666666667
+    rolScore: 9
+    neverTeach: false
+    realizations:
+      en:
+        text: fingernails
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    iconEligible: false
+    rank: 589
+    example:
+      en: Clean fingernails.
+      he: ציפורניים נקיות.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.2
+    imageEligible: true
+  - id: concept.word.fox
+    kind: word
+    gloss:
+      en: fox
+      he: שועל
+    categories:
+      - animals
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - sightseeing
+    rolComponents:
+      travel: 0.2
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 1
+    rolScore: 10
+    neverTeach: false
+    realizations:
+      en:
+        text: fox
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🦊
+    iconEligible: true
+    visualConfidence: 0.95
+    rank: 577
+    example:
+      en: The fox runs fast.
+      he: השועל רץ מהר.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.2
+    imageEligible: true
+  - id: concept.word.monkey
+    kind: word
+    gloss:
+      en: monkey
+      he: קוף
+    categories:
+      - animals
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - sightseeing
+    rolComponents:
+      travel: 0.2
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.8
+    rolScore: 9
+    neverTeach: false
+    realizations:
+      en:
+        text: monkey
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🐒
+    iconEligible: true
+    visualConfidence: 0.96
+    rank: 590
+    example:
+      en: A monkey in the tree.
+      he: קוף על העץ.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.2
+    imageEligible: true
+  - id: concept.word.pig
+    kind: word
+    gloss:
+      en: pig
+      he: חזיר
+    categories:
+      - animals
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - sightseeing
+    rolComponents:
+      travel: 0.2
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 1
+    rolScore: 10
+    neverTeach: false
+    realizations:
+      en:
+        text: pig
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🐷
+    iconEligible: true
+    visualConfidence: 0.96
+    rank: 578
+    example:
+      en: The pig is pink.
+      he: החזיר ורוד.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.2
+    imageEligible: true
+  - id: concept.word.tiger
+    kind: word
+    gloss:
+      en: tiger
+      he: נמר
+    categories:
+      - animals
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - sightseeing
+    rolComponents:
+      travel: 0.2
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.8666666666666667
+    rolScore: 9
+    neverTeach: false
+    realizations:
+      en:
+        text: tiger
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🐯
+    iconEligible: true
+    visualConfidence: 0.95
+    rank: 591
+    example:
+      en: The tiger is big.
+      he: הנמר גדול.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.2
+    imageEligible: true
+  - id: concept.word.lion
+    kind: word
+    gloss:
+      en: lion
+      he: אריה
+    categories:
+      - animals
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - sightseeing
+    rolComponents:
+      travel: 0.2
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.9333333333333333
+    rolScore: 10
+    neverTeach: false
+    realizations:
+      en:
+        text: lion
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🦁
+    iconEligible: true
+    visualConfidence: 0.96
+    rank: 579
+    example:
+      en: The lion is strong.
+      he: האריה חזק.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.2
+    imageEligible: true
+  - id: concept.word.bear
+    kind: word
+    gloss:
+      en: bear
+      he: דב
+    categories:
+      - animals
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - sightseeing
+    rolComponents:
+      travel: 0.2
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.9333333333333333
+    rolScore: 10
+    neverTeach: false
+    realizations:
+      en:
+        text: bear
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🐻
+    iconEligible: true
+    visualConfidence: 0.96
+    rank: 580
+    example:
+      en: A brown bear.
+      he: דב חום.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.2
+    imageEligible: true
+  - id: concept.word.mouse
+    kind: word
+    gloss:
+      en: mouse
+      he: עכבר
+    categories:
+      - animals
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - sightseeing
+    rolComponents:
+      travel: 0.2
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.8666666666666667
+    rolScore: 9
+    neverTeach: false
+    realizations:
+      en:
+        text: mouse
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🐭
+    iconEligible: true
+    visualConfidence: 0.95
+    rank: 592
+    example:
+      en: A little mouse.
+      he: עכבר קטן.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.2
+    imageEligible: true
+  - id: concept.word.rooster
+    kind: word
+    gloss:
+      en: rooster
+      he: תרנגול
+    categories:
+      - animals
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - sightseeing
+    rolComponents:
+      travel: 0.2
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.7333333333333334
+    rolScore: 9
+    neverTeach: false
+    realizations:
+      en:
+        text: rooster
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🐓
+    iconEligible: true
+    visualConfidence: 0.95
+    rank: 593
+    example:
+      en: The rooster wakes us up.
+      he: התרנגול מעיר אותנו.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.2
+    imageEligible: true
+  - id: concept.word.frog
+    kind: word
+    gloss:
+      en: frog
+      he: צפרדע
+    categories:
+      - animals
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - sightseeing
+    rolComponents:
+      travel: 0.2
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.9333333333333333
+    rolScore: 10
+    neverTeach: false
+    realizations:
+      en:
+        text: frog
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🐸
+    iconEligible: true
+    visualConfidence: 0.96
+    rank: 581
+    example:
+      en: A green frog.
+      he: צפרדע ירוקה.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.2
+    imageEligible: true
+  - id: concept.word.butterfly
+    kind: word
+    gloss:
+      en: butterfly
+      he: פרפר
+    categories:
+      - animals
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - sightseeing
+    rolComponents:
+      travel: 0.2
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.6
+    rolScore: 9
+    neverTeach: false
+    realizations:
+      en:
+        text: butterfly
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🦋
+    iconEligible: true
+    visualConfidence: 0.96
+    rank: 594
+    example:
+      en: A colorful butterfly.
+      he: פרפר צבעוני.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.2
+    imageEligible: true
+  - id: concept.word.giraffe
+    kind: word
+    gloss:
+      en: giraffe
+      he: ג׳ירפה
+    categories:
+      - animals
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - sightseeing
+    rolComponents:
+      travel: 0.2
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.7333333333333334
+    rolScore: 9
+    neverTeach: false
+    realizations:
+      en:
+        text: giraffe
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🦒
+    iconEligible: true
+    visualConfidence: 0.96
+    rank: 595
+    example:
+      en: The giraffe is tall.
+      he: הג׳ירפה גבוהה.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.2
+    imageEligible: true
+  - id: concept.word.sheep
+    kind: word
+    gloss:
+      en: sheep
+      he: כבשה
+    categories:
+      - animals
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - sightseeing
+    rolComponents:
+      travel: 0.2
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.8666666666666667
+    rolScore: 9
+    neverTeach: false
+    realizations:
+      en:
+        text: sheep
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🐑
+    iconEligible: true
+    visualConfidence: 0.95
+    rank: 596
+    example:
+      en: A white sheep.
+      he: כבשה לבנה.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.2
+    imageEligible: true
+  - id: concept.word.donkey
+    kind: word
+    gloss:
+      en: donkey
+      he: חמור
+    categories:
+      - animals
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - sightseeing
+    rolComponents:
+      travel: 0.2
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.8
+    rolScore: 9
+    neverTeach: false
+    realizations:
+      en:
+        text: donkey
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🫏
+    iconEligible: true
+    visualConfidence: 0.93
+    rank: 597
+    example:
+      en: The donkey carries the bags.
+      he: החמור נושא את התיקים.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.2
+    imageEligible: true
+  - id: concept.word.parrot
+    kind: word
+    gloss:
+      en: parrot
+      he: תוכי
+    categories:
+      - animals
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - sightseeing
+    rolComponents:
+      travel: 0.2
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.8
+    rolScore: 9
+    neverTeach: false
+    realizations:
+      en:
+        text: parrot
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🦜
+    iconEligible: true
+    visualConfidence: 0.95
+    rank: 598
+    example:
+      en: The parrot can talk.
+      he: התוכי יודע לדבר.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.2
+    imageEligible: true
+  - id: concept.word.mushroom
+    kind: word
+    gloss:
+      en: mushroom
+      he: פטרייה
+    categories:
+      - nature
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - sightseeing
+    rolComponents:
+      travel: 0.2
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.6666666666666667
+    rolScore: 9
+    neverTeach: false
+    realizations:
+      en:
+        text: mushroom
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🍄
+    iconEligible: true
+    visualConfidence: 0.9
+    rank: 599
+    example:
+      en: A red mushroom.
+      he: פטרייה אדומה.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.2
+    imageEligible: true
+  - id: concept.word.ice
+    kind: word
+    gloss:
+      en: ice
+      he: קרח
+    categories:
+      - nature
+    rof: 1
+    layer: 2
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - sightseeing
+    rolComponents:
+      travel: 0.4
+      coverage: 0.2
+      freq: 0.6
+      reuse: 0.3
+      learnability: 1
+    rolScore: 13
+    neverTeach: false
+    realizations:
+      en:
+        text: ice
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🧊
+    iconEligible: true
+    visualConfidence: 0.88
+    rank: 490
+    example:
+      en: Water with ice, please.
+      he: מים עם קרח, בבקשה.
+    pos: noun
+    commScore: 0.4
+    recogScore: 0.4
+    imageEligible: true
+  - id: concept.word.air
+    kind: word
+    gloss:
+      en: air
+      he: אוויר
+    categories:
+      - nature
+    rof: 1
+    layer: 2
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - sightseeing
+    rolComponents:
+      travel: 0.2
+      coverage: 0.2
+      freq: 0.6
+      reuse: 0.3
+      learnability: 1
+    rolScore: 11
+    neverTeach: false
+    realizations:
+      en:
+        text: air
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    iconEligible: false
+    rank: 535
+    example:
+      en: Fresh air.
+      he: אוויר צח.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.4
+    imageEligible: true
+  - id: concept.word.sunrise
+    kind: word
+    gloss:
+      en: sunrise
+      he: זריחה
+    categories:
+      - nature
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - sightseeing
+    rolComponents:
+      travel: 0.2
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.7333333333333334
+    rolScore: 9
+    neverTeach: false
+    realizations:
+      en:
+        text: sunrise
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🌅
+    iconEligible: true
+    visualConfidence: 0.85
+    rank: 600
+    example:
+      en: We watched the sunrise.
+      he: צפינו בזריחה.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.2
+    imageEligible: true
+    oppositeConcepts:
+      - concept.word.sunset
+  - id: concept.word.sunset
+    kind: word
+    gloss:
+      en: sunset
+      he: שקיעה
+    categories:
+      - nature
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - sightseeing
+    rolComponents:
+      travel: 0.2
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.8
+    rolScore: 9
+    neverTeach: false
+    realizations:
+      en:
+        text: sunset
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🌇
+    iconEligible: true
+    visualConfidence: 0.85
+    rank: 601
+    example:
+      en: A beautiful sunset.
+      he: שקיעה יפה.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.2
+    imageEligible: true
+    oppositeConcepts:
+      - concept.word.sunrise
+  - id: concept.word.earth
+    kind: word
+    gloss:
+      en: earth
+      he: כדור הארץ
+    categories:
+      - nature
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - sightseeing
+    rolComponents:
+      travel: 0.2
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.8666666666666667
+    rolScore: 9
+    neverTeach: false
+    realizations:
+      en:
+        text: earth
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🌍
+    iconEligible: true
+    visualConfidence: 0.9
+    rank: 602
+    example:
+      en: The earth is round.
+      he: כדור הארץ עגול.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.2
+    imageEligible: true
+  - id: concept.word.soil
+    kind: word
+    gloss:
+      en: soil
+      he: אדמה
+    categories:
+      - nature
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - sightseeing
+    rolComponents:
+      travel: 0.2
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.9333333333333333
+    rolScore: 10
+    neverTeach: false
+    realizations:
+      en:
+        text: soil
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    iconEligible: false
+    rank: 582
+    example:
+      en: Plants grow in the soil.
+      he: צמחים גדלים באדמה.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.2
+    imageEligible: true
+  - id: concept.word.flowerpot
+    kind: word
+    gloss:
+      en: flowerpot
+      he: עציץ
+    categories:
+      - nature
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - sightseeing
+    rolComponents:
+      travel: 0.2
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.6
+    rolScore: 9
+    neverTeach: false
+    realizations:
+      en:
+        text: flowerpot
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🪴
+    iconEligible: true
+    visualConfidence: 0.9
+    rank: 603
+    example:
+      en: A flowerpot on the balcony.
+      he: עציץ על המרפסת.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.2
+    imageEligible: true
   - id: concept.word.yes
     kind: word
     gloss:
@@ -3942,7 +5128,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 97
+    rank: 98
     example:
       en: Goodbye, and thanks!
       he: להתראות, ותודה!
@@ -3980,7 +5166,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 245
+    rank: 247
     example:
       en: Good morning! Breakfast, please.
       he: בוקר טוב! ארוחת בוקר, בבקשה.
@@ -4016,7 +5202,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 261
+    rank: 263
     example:
       en: Good evening! We have a reservation.
       he: ערב טוב! יש לנו הזמנה.
@@ -4052,7 +5238,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 333
+    rank: 336
     example:
       en: Good night, see you tomorrow.
       he: לילה טוב, נתראה מחר.
@@ -4088,7 +5274,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 238
+    rank: 240
     example:
       en: "\"Thank you!\" — \"You're welcome.\""
       he: '"תודה!" — "על לא דבר."'
@@ -4124,7 +5310,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 114
+    rank: 115
     example:
       en: '"Pizza tonight?" — "Sounds good!"'
       he: '"פיצה הערב?" — "נשמע טוב!"'
@@ -4160,7 +5346,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 115
+    rank: 116
     example:
       en: '"Sorry, we are late." — "No worries."'
       he: '"סליחה, איחרנו." — "אל דאגה."'
@@ -4196,7 +5382,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 128
+    rank: 129
     example:
       en: Never mind, thank you anyway.
       he: לא משנה, תודה בכל זאת.
@@ -4232,7 +5418,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 239
+    rank: 241
     example:
       en: '"Can I sit here?" — "Of course."'
       he: '"אפשר לשבת כאן?" — "כמובן."'
@@ -4268,7 +5454,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 116
+    rank: 117
     example:
       en: "\"Only card, no cash.\" — \"That's fine.\""
       he: '"רק כרטיס, בלי מזומן." — "זה בסדר."'
@@ -4304,7 +5490,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 293
+    rank: 295
     example:
       en: "\"Inside or outside?\" — \"It's up to you.\""
       he: '"בפנים או בחוץ?" — "זה תלוי בך."'
@@ -4340,7 +5526,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 141
+    rank: 142
     example:
       en: I'm not sure. Maybe at nine.
       he: אני לא בטוח. אולי בתשע.
@@ -4412,7 +5598,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 262
+    rank: 264
     example:
       en: '"Dessert?" — "Maybe later."'
       he: '"קינוח?" — "אולי אחר כך."'
@@ -4484,7 +5670,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 263
+    rank: 265
     example:
       en: '"Can I ask something?" — "Go ahead."'
       he: '"אפשר לשאול משהו?" — "בבקשה, קדימה."'
@@ -4520,7 +5706,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 272
+    rank: 274
     example:
       en: '"One minute…" — "Take your time."'
       he: '"רגע אחד…" — "קח את הזמן."'
@@ -4556,7 +5742,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 273
+    rank: 275
     example:
       en: '"I love this city." — "Me too!"'
       he: '"אני אוהב את העיר הזאת." — "גם אני!"'
@@ -4592,7 +5778,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 264
+    rank: 266
     example:
       en: Really? That is great!
       he: באמת? זה מעולה!
@@ -4628,7 +5814,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 233
+    rank: 235
     example:
       en: Great, thank you!
       he: מעולה, תודה!
@@ -4664,7 +5850,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 117
+    rank: 118
     example:
       en: '"Can we pay separately?" — "No problem."'
       he: '"אפשר לשלם בנפרד?" — "אין בעיה."'
@@ -4736,7 +5922,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 246
+    rank: 248
     example:
       en: The taxi is here. Let's go!
       he: המונית כאן. בוא נלך!
@@ -4772,7 +5958,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 286
+    rank: 288
     example:
       en: See you later at the hotel.
       he: נתראה אחר כך במלון.
@@ -4808,7 +5994,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 240
+    rank: 242
     example:
       en: '"Have a nice day!" — "You too!"'
       he: '"שיהיה לך יום נעים!" — "גם לך!"'
@@ -4844,7 +6030,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 355
+    rank: 360
     example:
       en: Cheers! To the trip!
       he: לחיים! לכבוד הטיול!
@@ -4880,7 +6066,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 437
+    rank: 450
     example:
       en: Congratulations!
       he: מזל טוב!
@@ -4916,7 +6102,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 161
+    rank: 162
     example:
       en: "\"Anything else?\" — \"That's all, thanks.\""
       he: '"עוד משהו?" — "זה הכול, תודה."'
@@ -4952,7 +6138,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 356
+    rank: 361
     example:
       en: Nothing else, just the coffee.
       he: שום דבר נוסף, רק הקפה.
@@ -4988,7 +6174,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 187
+    rank: 188
     example:
       en: "\"Can I help you?\" — \"I'm just looking.\""
       he: '"אפשר לעזור?" — "אני רק מסתכל."'
@@ -5278,7 +6464,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 167
+    rank: 168
     example:
       en: One more, please. It was great.
       he: עוד אחד, בבקשה. זה היה מעולה.
@@ -5314,7 +6500,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 188
+    rank: 189
     example:
       en: A coffee to go, please.
       he: קפה לקחת, בבקשה.
@@ -5352,7 +6538,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 176
+    rank: 177
     example:
       en: That's enough, thank you.
       he: זה מספיק, תודה.
@@ -5388,7 +6574,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 274
+    rank: 276
     example:
       en: "\"I'm fine. And you?\""
       he: '"אני בסדר. ואתה?"'
@@ -5528,7 +6714,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 247
+    rank: 249
     example:
       en: Who is next?
       he: מי הבא בתור?
@@ -5563,7 +6749,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 248
+    rank: 250
     example:
       en: Why is it closed?
       he: למה זה סגור?
@@ -5633,7 +6819,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 129
+    rank: 130
     example:
       en: Which gate?
       he: איזה שער?
@@ -5669,7 +6855,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 162
+    rank: 163
     example:
       en: '"How many people?" — "Two."'
       he: '"כמה אנשים?" — "שניים."'
@@ -5741,7 +6927,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 163
+    rank: 164
     example:
       en: How long is the ride?
       he: כמה זמן הנסיעה?
@@ -5846,7 +7032,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 249
+    rank: 251
     example:
       en: He is my friend.
       he: הוא חבר שלי.
@@ -5883,7 +7069,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 250
+    rank: 252
     example:
       en: She speaks English.
       he: היא מדברת אנגלית.
@@ -5920,7 +7106,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 241
+    rank: 243
     example:
       en: It is very good.
       he: זה טוב מאוד.
@@ -5990,7 +7176,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 251
+    rank: 253
     example:
       en: They are with me.
       he: הם איתי.
@@ -6062,7 +7248,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 234
+    rank: 236
     example:
       en: That one over there.
       he: ההוא שם.
@@ -6136,7 +7322,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 252
+    rank: 254
     example:
       en: Your passport, please.
       he: הדרכון שלך, בבקשה.
@@ -6360,7 +7546,7 @@ concepts:
     emoji: 6️⃣
     iconEligible: true
     visualConfidence: 0.97
-    rank: 130
+    rank: 131
     example:
       en: Room six.
       he: חדר שש.
@@ -6397,7 +7583,7 @@ concepts:
     emoji: 7️⃣
     iconEligible: true
     visualConfidence: 0.97
-    rank: 131
+    rank: 132
     example:
       en: Breakfast is at seven.
       he: ארוחת הבוקר בשבע.
@@ -6434,7 +7620,7 @@ concepts:
     emoji: 8️⃣
     iconEligible: true
     visualConfidence: 0.97
-    rank: 132
+    rank: 133
     example:
       en: Gate eight.
       he: שער שמונה.
@@ -6471,7 +7657,7 @@ concepts:
     emoji: 9️⃣
     iconEligible: true
     visualConfidence: 0.97
-    rank: 133
+    rank: 134
     example:
       en: Nine euros.
       he: תשעה יורו.
@@ -6543,7 +7729,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 201
+    rank: 203
     example:
       en: Checkout is at eleven.
       he: העזיבה באחת עשרה.
@@ -6578,7 +7764,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 202
+    rank: 204
     example:
       en: Lunch at twelve.
       he: צהריים בשתים עשרה.
@@ -6613,7 +7799,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 142
+    rank: 143
     example:
       en: Twenty euros, please.
       he: עשרים יורו, בבקשה.
@@ -6648,7 +7834,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 134
+    rank: 135
     example:
       en: It costs fifty.
       he: זה עולה חמישים.
@@ -6683,7 +7869,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 143
+    rank: 144
     example:
       en: One hundred shekels.
       he: מאה שקלים.
@@ -6718,7 +7904,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 314
+    rank: 316
     example:
       en: A thousand people were there.
       he: אלף אנשים היו שם.
@@ -6753,7 +7939,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 135
+    rank: 136
     example:
       en: Half past nine.
       he: תשע וחצי.
@@ -6934,7 +8120,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 275
+    rank: 277
     example:
       en: We arrived yesterday.
       he: הגענו אתמול.
@@ -6971,7 +8157,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 118
+    rank: 119
     example:
       en: Tomorrow morning at eight.
       he: מחר בבוקר בשמונה.
@@ -7008,7 +8194,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 294
+    rank: 296
     example:
       en: Closed in the afternoon.
       he: סגור אחר הצהריים.
@@ -7043,7 +8229,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 148
+    rank: 149
     example:
       en: A table for this evening.
       he: שולחן להערב.
@@ -7080,7 +8266,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 103
+    rank: 104
     example:
       en: Two nights, please.
       he: שני לילות, בבקשה.
@@ -7117,7 +8303,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 104
+    rank: 105
     example:
       en: Three days in the city.
       he: שלושה ימים בעיר.
@@ -7154,7 +8340,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 243
+    rank: 245
     example:
       en: One week in Italy.
       he: שבוע אחד באיטליה.
@@ -7189,7 +8375,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 315
+    rank: 317
     example:
       en: Next month.
       he: בחודש הבא.
@@ -7224,7 +8410,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 295
+    rank: 297
     example:
       en: Happy new year!
       he: שנה טובה!
@@ -7259,7 +8445,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 109
+    rank: 110
     example:
       en: The tour is one hour.
       he: הסיור הוא שעה אחת.
@@ -7294,7 +8480,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 110
+    rank: 111
     example:
       en: Five minutes on foot.
       he: חמש דקות ברגל.
@@ -7329,7 +8515,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 111
+    rank: 112
     example:
       en: We have no time.
       he: אין לנו זמן.
@@ -7364,7 +8550,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 119
+    rank: 120
     example:
       en: The bus is late.
       he: האוטובוס מאחר.
@@ -7401,7 +8587,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 276
+    rank: 278
     example:
       en: We arrived early.
       he: הגענו מוקדם.
@@ -7438,7 +8624,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 277
+    rank: 279
     example:
       en: The train comes soon.
       he: הרכבת מגיעה בקרוב.
@@ -7473,7 +8659,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 316
+    rank: 318
     example:
       en: It is always open.
       he: זה תמיד פתוח.
@@ -7510,7 +8696,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 317
+    rank: 319
     example:
       en: I never eat meat.
       he: אני אף פעם לא אוכל בשר.
@@ -7547,7 +8733,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 318
+    rank: 320
     example:
       en: Closed on the weekend.
       he: סגור בסוף השבוע.
@@ -7582,7 +8768,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 319
+    rank: 321
     example:
       en: Closed on Monday.
       he: סגור ביום שני.
@@ -7617,7 +8803,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 357
+    rank: 362
     example:
       en: The market is on Tuesday.
       he: השוק ביום שלישי.
@@ -7652,7 +8838,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 358
+    rank: 363
     example:
       en: We fly on Wednesday.
       he: אנחנו טסים ביום רביעי.
@@ -7687,7 +8873,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 359
+    rank: 364
     example:
       en: Until Thursday.
       he: עד יום חמישי.
@@ -7722,7 +8908,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 320
+    rank: 322
     example:
       en: Friday evening.
       he: ערב שישי.
@@ -7757,7 +8943,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 334
+    rank: 337
     example:
       en: Open on Saturday?
       he: פתוח בשבת?
@@ -7792,7 +8978,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 321
+    rank: 323
     example:
       en: Everything is closed on Sunday.
       he: הכול סגור ביום ראשון.
@@ -7829,7 +9015,7 @@ concepts:
     emoji: 🔴
     iconEligible: true
     visualConfidence: 0.9
-    rank: 296
+    rank: 298
     example:
       en: The red bus.
       he: האוטובוס האדום.
@@ -7866,7 +9052,7 @@ concepts:
     emoji: 🔵
     iconEligible: true
     visualConfidence: 0.9
-    rank: 297
+    rank: 299
     example:
       en: The blue line.
       he: הקו הכחול.
@@ -7903,7 +9089,7 @@ concepts:
     emoji: 🟢
     iconEligible: true
     visualConfidence: 0.9
-    rank: 298
+    rank: 300
     example:
       en: Cross on green.
       he: חוצים בירוק.
@@ -7940,7 +9126,7 @@ concepts:
     emoji: 🟡
     iconEligible: true
     visualConfidence: 0.9
-    rank: 418
+    rank: 428
     example:
       en: The yellow taxi.
       he: המונית הצהובה.
@@ -7977,7 +9163,7 @@ concepts:
     emoji: ⚫
     iconEligible: true
     visualConfidence: 0.9
-    rank: 385
+    rank: 391
     example:
       en: Black coffee, please.
       he: קפה שחור, בבקשה.
@@ -8016,7 +9202,7 @@ concepts:
     emoji: ⚪
     iconEligible: true
     visualConfidence: 0.9
-    rank: 386
+    rank: 392
     example:
       en: White wine.
       he: יין לבן.
@@ -8055,7 +9241,7 @@ concepts:
     emoji: 🟠
     iconEligible: true
     visualConfidence: 0.88
-    rank: 419
+    rank: 429
     example:
       en: The orange building.
       he: הבניין הכתום.
@@ -8092,7 +9278,7 @@ concepts:
     emoji: 💗
     iconEligible: true
     visualConfidence: 0.8
-    rank: 408
+    rank: 416
     example:
       en: The pink dress.
       he: השמלה הוורודה.
@@ -8129,7 +9315,7 @@ concepts:
     emoji: 🟤
     iconEligible: true
     visualConfidence: 0.88
-    rank: 420
+    rank: 430
     example:
       en: The brown bag.
       he: התיק החום.
@@ -8166,7 +9352,7 @@ concepts:
     emoji: 🟣
     iconEligible: true
     visualConfidence: 0.88
-    rank: 438
+    rank: 451
     example:
       en: The purple line.
       he: הקו הסגול.
@@ -8343,7 +9529,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 120
+    rank: 121
     example:
       en: Come with me, please.
       he: בוא איתי, בבקשה.
@@ -8417,7 +9603,7 @@ concepts:
     emoji: 🥤
     iconEligible: true
     visualConfidence: 0.7
-    rank: 149
+    rank: 150
     example:
       en: Something to drink?
       he: משהו לשתות?
@@ -8452,7 +9638,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 253
+    rank: 255
     example:
       en: I want to see the menu.
       he: אני רוצה לראות את התפריט.
@@ -8489,7 +9675,7 @@ concepts:
     emoji: 👀
     iconEligible: true
     visualConfidence: 0.7
-    rank: 254
+    rank: 256
     example:
       en: Look at this!
       he: תסתכל על זה!
@@ -8524,7 +9710,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 335
+    rank: 338
     example:
       en: I cannot hear you.
       he: אני לא שומע אותך.
@@ -8596,7 +9782,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 255
+    rank: 257
     example:
       en: How do you say this?
       he: איך אומרים את זה?
@@ -8666,7 +9852,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 150
+    rank: 151
     example:
       en: Do you know a good place?
       he: אתה מכיר מקום טוב?
@@ -8701,7 +9887,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 322
+    rank: 324
     example:
       en: I think it is close.
       he: אני חושב שזה קרוב.
@@ -8736,7 +9922,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 256
+    rank: 258
     example:
       en: I like this place.
       he: אני מחבב את המקום הזה.
@@ -8771,7 +9957,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 299
+    rank: 301
     example:
       en: I love this city.
       he: אני אוהב את העיר הזאת.
@@ -8806,7 +9992,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 107
+    rank: 108
     example:
       en: I will take it.
       he: אני אקח את זה.
@@ -8843,7 +10029,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 151
+    rank: 152
     example:
       en: Give me one, please.
       he: תן לי אחד, בבקשה.
@@ -8880,7 +10066,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 257
+    rank: 259
     example:
       en: Where do I get the bus?
       he: איפה עולים לאוטובוס?
@@ -8915,7 +10101,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 112
+    rank: 113
     example:
       en: Where can I buy tickets?
       he: איפה אפשר לקנות כרטיסים?
@@ -8989,7 +10175,7 @@ concepts:
     emoji: 😴
     iconEligible: true
     visualConfidence: 0.85
-    rank: 336
+    rank: 339
     example:
       en: I need to sleep.
       he: אני צריך לישון.
@@ -9024,7 +10210,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 287
+    rank: 289
     example:
       en: Can we sit outside?
       he: אפשר לשבת בחוץ?
@@ -9061,7 +10247,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 387
+    rank: 393
     example:
       en: Please stand in line.
       he: נא לעמוד בתור.
@@ -9240,7 +10426,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 265
+    rank: 267
     example:
       en: Let's ask someone.
       he: בוא נשאל מישהו.
@@ -9277,7 +10463,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 337
+    rank: 340
     example:
       en: Nobody answers.
       he: אף אחד לא עונה.
@@ -9316,7 +10502,7 @@ concepts:
     emoji: 📞
     iconEligible: true
     visualConfidence: 0.85
-    rank: 121
+    rank: 122
     example:
       en: Please call a taxi.
       he: תזמין מונית, בבקשה.
@@ -9351,7 +10537,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 122
+    rank: 123
     example:
       en: I cannot find my hotel.
       he: אני לא מוצא את המלון שלי.
@@ -9425,7 +10611,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 189
+    rank: 190
     example:
       en: I forgot my key.
       he: שכחתי את המפתח שלי.
@@ -9462,7 +10648,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 338
+    rank: 341
     example:
       en: I do not remember the name.
       he: אני לא זוכר את השם.
@@ -9499,7 +10685,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 300
+    rank: 302
     example:
       en: Can you bring the bill?
       he: אפשר להביא את החשבון?
@@ -9534,7 +10720,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 339
+    rank: 342
     example:
       en: Send me the address.
       he: תשלח לי את הכתובת.
@@ -9604,7 +10790,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 288
+    rank: 290
     example:
       en: Can I try it on?
       he: אפשר למדוד את זה?
@@ -9639,7 +10825,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 266
+    rank: 268
     example:
       en: Can I use the phone?
       he: אפשר להשתמש בטלפון?
@@ -9674,7 +10860,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 152
+    rank: 153
     example:
       en: The shower does not work.
       he: המקלחת לא עובדת.
@@ -9709,7 +10895,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 340
+    rank: 343
     example:
       en: He drives slowly.
       he: הוא נוהג לאט.
@@ -9744,7 +10930,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 164
+    rank: 165
     example:
       en: We fly on Sunday.
       he: אנחנו טסים ביום ראשון.
@@ -9779,7 +10965,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 144
+    rank: 145
     example:
       en: When does it arrive?
       he: מתי זה מגיע?
@@ -9816,7 +11002,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 136
+    rank: 137
     example:
       en: The train leaves at nine.
       he: הרכבת יוצאת בתשע.
@@ -9853,7 +11039,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 278
+    rank: 280
     example:
       en: We return tomorrow.
       he: אנחנו חוזרים מחר.
@@ -9888,7 +11074,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 244
+    rank: 246
     example:
       en: We stay three nights.
       he: אנחנו נשארים שלושה לילות.
@@ -9923,7 +11109,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 301
+    rank: 303
     example:
       en: We want to visit the old city.
       he: אנחנו רוצים לבקר בעיר העתיקה.
@@ -9958,7 +11144,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 341
+    rank: 344
     example:
       en: Nice to meet you.
       he: נעים להכיר.
@@ -9993,7 +11179,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 137
+    rank: 138
     example:
       en: I booked a room.
       he: הזמנתי חדר.
@@ -10030,7 +11216,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 158
+    rank: 159
     example:
       en: I want to cancel the order.
       he: אני רוצה לבטל את ההזמנה.
@@ -10065,7 +11251,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 177
+    rank: 178
     example:
       en: We want to rent a car.
       he: אנחנו רוצים לשכור רכב.
@@ -10100,13 +11286,266 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 409
+    rank: 417
     example:
       en: Where can I wash my hands?
       he: איפה אפשר לשטוף ידיים?
     pos: verb
     commScore: 0.4
     recogScore: 0.6
+    imageEligible: false
+  - id: concept.word.play
+    kind: word
+    gloss:
+      en: play
+      he: לשחק
+    categories:
+      - actions
+    rof: 1
+    layer: 2
+    skillTarget: recall
+    isOpener: false
+    situationSlugs:
+      - smalltalk
+    rolComponents:
+      travel: 0.4
+      coverage: 0.4
+      freq: 0.8
+      reuse: 0.8
+      learnability: 0.9333333333333333
+    rolScore: 18
+    neverTeach: false
+    realizations:
+      en:
+        text: play
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    iconEligible: false
+    rank: 394
+    example:
+      en: The children play in the park.
+      he: הילדים משחקים בפארק.
+    pos: verb
+    commScore: 0.6
+    recogScore: 0.6
+    imageEligible: false
+  - id: concept.word.read
+    kind: word
+    gloss:
+      en: read
+      he: לקרוא
+    categories:
+      - actions
+    rof: 1
+    layer: 2
+    skillTarget: recall
+    isOpener: false
+    situationSlugs:
+      - smalltalk
+    rolComponents:
+      travel: 0.6
+      coverage: 0.4
+      freq: 0.8
+      reuse: 0.8
+      learnability: 0.9333333333333333
+    rolScore: 21
+    neverTeach: false
+    realizations:
+      en:
+        text: read
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    iconEligible: false
+    rank: 325
+    example:
+      en: I read a book.
+      he: אני קורא ספר.
+    pos: verb
+    commScore: 0.6
+    recogScore: 0.8
+    imageEligible: false
+    relatedConcepts:
+      - concept.word.write
+  - id: concept.word.write
+    kind: word
+    gloss:
+      en: write
+      he: לכתוב
+    categories:
+      - actions
+    rof: 1
+    layer: 2
+    skillTarget: recall
+    isOpener: false
+    situationSlugs:
+      - smalltalk
+    rolComponents:
+      travel: 0.6
+      coverage: 0.4
+      freq: 0.8
+      reuse: 0.8
+      learnability: 0.8666666666666667
+    rolScore: 20
+    neverTeach: false
+    realizations:
+      en:
+        text: write
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    iconEligible: false
+    rank: 345
+    example:
+      en: Please write your name.
+      he: בבקשה תכתוב את השם שלך.
+    pos: verb
+    commScore: 0.6
+    recogScore: 0.8
+    imageEligible: false
+    relatedConcepts:
+      - concept.word.read
+  - id: concept.word.cook
+    kind: word
+    gloss:
+      en: cook
+      he: לבשל
+    categories:
+      - actions
+    rof: 1
+    layer: 2
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - smalltalk
+    rolComponents:
+      travel: 0.4
+      coverage: 0.2
+      freq: 0.6
+      reuse: 0.8
+      learnability: 0.9333333333333333
+    rolScore: 15
+    neverTeach: false
+    realizations:
+      en:
+        text: cook
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    iconEligible: false
+    rank: 452
+    example:
+      en: My mother cooks soup.
+      he: אמא שלי מבשלת מרק.
+    pos: verb
+    commScore: 0.4
+    recogScore: 0.4
+    imageEligible: false
+  - id: concept.word.wear
+    kind: word
+    gloss:
+      en: wear
+      he: ללבוש
+    categories:
+      - actions
+    rof: 1
+    layer: 2
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - smalltalk
+    rolComponents:
+      travel: 0.4
+      coverage: 0.2
+      freq: 0.6
+      reuse: 0.8
+      learnability: 0.9333333333333333
+    rolScore: 15
+    neverTeach: false
+    realizations:
+      en:
+        text: wear
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    iconEligible: false
+    rank: 453
+    example:
+      en: I wear a jacket in winter.
+      he: אני לובש מעיל בחורף.
+    pos: verb
+    commScore: 0.4
+    recogScore: 0.6
+    imageEligible: false
+    relatedConcepts:
+      - concept.word.clothes
+  - id: concept.word.build
+    kind: word
+    gloss:
+      en: build
+      he: לבנות
+    categories:
+      - actions
+    rof: 1
+    layer: 2
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - smalltalk
+    rolComponents:
+      travel: 0.4
+      coverage: 0.2
+      freq: 0.6
+      reuse: 0.8
+      learnability: 0.8666666666666667
+    rolScore: 15
+    neverTeach: false
+    realizations:
+      en:
+        text: build
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    iconEligible: false
+    rank: 454
+    example:
+      en: They build a house.
+      he: הם בונים בית.
+    pos: verb
+    commScore: 0.4
+    recogScore: 0.4
+    imageEligible: false
+    relatedConcepts:
+      - concept.word.house
+  - id: concept.word.sing
+    kind: word
+    gloss:
+      en: sing
+      he: לשיר
+    categories:
+      - actions
+    rof: 1
+    layer: 2
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - smalltalk
+    rolComponents:
+      travel: 0.2
+      coverage: 0.2
+      freq: 0.6
+      reuse: 0.8
+      learnability: 0.9333333333333333
+    rolScore: 13
+    neverTeach: false
+    realizations:
+      en:
+        text: sing
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    iconEligible: false
+    rank: 491
+    example:
+      en: The birds sing every morning.
+      he: הציפורים שרות כל בוקר.
+    pos: verb
+    commScore: 0.2
+    recogScore: 0.4
     imageEligible: false
   - id: concept.word.break
     kind: word
@@ -10135,7 +11574,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 203
+    rank: 205
     example:
       en: It is broken.
       he: זה שבור.
@@ -10170,7 +11609,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 279
+    rank: 281
     example:
       en: Push the door.
       he: דחוף את הדלת.
@@ -10207,7 +11646,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 280
+    rank: 282
     example:
       en: Pull, do not push.
       he: משוך, אל תדחוף.
@@ -10281,7 +11720,7 @@ concepts:
     emoji: 🚬
     iconEligible: true
     visualConfidence: 0.85
-    rank: 217
+    rank: 219
     example:
       en: No smoking here.
       he: אסור לעשן כאן.
@@ -10353,7 +11792,7 @@ concepts:
     emoji: 💱
     iconEligible: true
     visualConfidence: 0.7
-    rank: 181
+    rank: 182
     example:
       en: Where can I exchange money?
       he: איפה אפשר להחליף כסף?
@@ -10388,13 +11827,412 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 302
+    rank: 304
     example:
       en: We travel a lot.
       he: אנחנו מטיילים הרבה.
     pos: verb
     commScore: 0.8
     recogScore: 0.8
+    imageEligible: false
+  - id: concept.word.exercise
+    kind: word
+    gloss:
+      en: exercise
+      he: להתאמן
+    categories:
+      - activities
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - activities
+    rolComponents:
+      travel: 0.4
+      coverage: 0.2
+      freq: 0.6
+      reuse: 0.8
+      learnability: 0.6666666666666667
+    rolScore: 14
+    neverTeach: false
+    realizations:
+      en:
+        text: exercise
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    iconEligible: false
+    rank: 553
+    example:
+      en: I exercise every day.
+      he: אני מתאמן כל יום.
+    pos: verb
+    commScore: 0.4
+    recogScore: 0.4
+    imageEligible: false
+  - id: concept.word.surf
+    kind: word
+    gloss:
+      en: surf
+      he: לגלוש
+    categories:
+      - activities
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - activities
+    rolComponents:
+      travel: 0.4
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.8
+      learnability: 0.9333333333333333
+    rolScore: 14
+    neverTeach: false
+    realizations:
+      en:
+        text: surf
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🏄
+    iconEligible: true
+    visualConfidence: 0.9
+    rank: 554
+    example:
+      en: They surf at the beach.
+      he: הם גולשים בחוף.
+    pos: verb
+    commScore: 0.2
+    recogScore: 0.2
+    imageEligible: true
+  - id: concept.word.high-five
+    kind: word
+    gloss:
+      en: high five
+      he: לתת כיף
+    categories:
+      - activities
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - activities
+    rolComponents:
+      travel: 0.2
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.8
+      learnability: 0.6
+    rolScore: 11
+    neverTeach: false
+    realizations:
+      en:
+        text: high five
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    iconEligible: false
+    rank: 571
+    example:
+      en: Give me a high five!
+      he: תן לי כיף!
+    pos: verb
+    commScore: 0.4
+    recogScore: 0.4
+    imageEligible: false
+  - id: concept.word.shake-hands
+    kind: word
+    gloss:
+      en: shake hands
+      he: ללחוץ יד
+    categories:
+      - activities
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - activities
+    rolComponents:
+      travel: 0.4
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.8
+      learnability: 0.4666666666666667
+    rolScore: 13
+    neverTeach: false
+    realizations:
+      en:
+        text: shake hands
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    iconEligible: false
+    rank: 555
+    example:
+      en: We shake hands to say hello.
+      he: אנחנו לוחצים ידיים כדי להגיד שלום.
+    pos: verb
+    commScore: 0.4
+    recogScore: 0.4
+    imageEligible: false
+  - id: concept.word.basketball
+    kind: word
+    gloss:
+      en: basketball
+      he: כדורסל
+    categories:
+      - activities
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - activities
+    rolComponents:
+      travel: 0.4
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.5333333333333333
+    rolScore: 11
+    neverTeach: false
+    realizations:
+      en:
+        text: basketball
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🏀
+    iconEligible: true
+    visualConfidence: 0.95
+    rank: 572
+    example:
+      en: We play basketball.
+      he: אנחנו משחקים כדורסל.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.4
+    imageEligible: true
+  - id: concept.word.tennis
+    kind: word
+    gloss:
+      en: tennis
+      he: טניס
+    categories:
+      - activities
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - activities
+    rolComponents:
+      travel: 0.4
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.8
+    rolScore: 12
+    neverTeach: false
+    realizations:
+      en:
+        text: tennis
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🎾
+    iconEligible: true
+    visualConfidence: 0.9
+    rank: 557
+    example:
+      en: A game of tennis.
+      he: משחק טניס.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.4
+    imageEligible: true
+  - id: concept.word.billiards
+    kind: word
+    gloss:
+      en: billiards
+      he: סנוקר
+    categories:
+      - activities
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - activities
+    rolComponents:
+      travel: 0.2
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.6
+    rolScore: 9
+    neverTeach: false
+    realizations:
+      en:
+        text: billiards
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🎱
+    iconEligible: true
+    visualConfidence: 0.9
+    rank: 604
+    example:
+      en: They play billiards at the bar.
+      he: הם משחקים סנוקר בבר.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.2
+    imageEligible: true
+  - id: concept.word.golf
+    kind: word
+    gloss:
+      en: golf
+      he: גולף
+    categories:
+      - activities
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - activities
+    rolComponents:
+      travel: 0.2
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.9333333333333333
+    rolScore: 10
+    neverTeach: false
+    realizations:
+      en:
+        text: golf
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: ⛳
+    iconEligible: true
+    visualConfidence: 0.85
+    rank: 583
+    example:
+      en: He plays golf on Sunday.
+      he: הוא משחק גולף ביום ראשון.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.2
+    imageEligible: true
+  - id: concept.word.diving
+    kind: word
+    gloss:
+      en: diving
+      he: צלילה
+    categories:
+      - activities
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - activities
+    rolComponents:
+      travel: 0.4
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.8
+    rolScore: 12
+    neverTeach: false
+    realizations:
+      en:
+        text: diving
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🤿
+    iconEligible: true
+    visualConfidence: 0.85
+    rank: 558
+    example:
+      en: Diving in the sea.
+      he: צלילה בים.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.2
+    imageEligible: true
+  - id: concept.word.wrestling
+    kind: word
+    gloss:
+      en: wrestling
+      he: האבקות
+    categories:
+      - activities
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - activities
+    rolComponents:
+      travel: 0.2
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.6
+    rolScore: 9
+    neverTeach: false
+    realizations:
+      en:
+        text: wrestling
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🤼
+    iconEligible: true
+    visualConfidence: 0.85
+    rank: 605
+    example:
+      en: Wrestling is a sport.
+      he: האבקות זה ספורט.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.2
+    imageEligible: true
+  - id: concept.word.performance
+    kind: word
+    gloss:
+      en: performance
+      he: הופעה
+    categories:
+      - activities
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - activities
+    rolComponents:
+      travel: 0.4
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.4666666666666667
+    rolScore: 11
+    neverTeach: false
+    realizations:
+      en:
+        text: performance
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    iconEligible: false
+    rank: 573
+    example:
+      en: The performance starts at eight.
+      he: ההופעה מתחילה בשמונה.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.4
     imageEligible: false
   - id: concept.word.good
     kind: word
@@ -10460,7 +12298,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 159
+    rank: 160
     example:
       en: The weather is bad.
       he: מזג האוויר רע.
@@ -10497,7 +12335,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 258
+    rank: 260
     example:
       en: A big room.
       he: חדר גדול.
@@ -10534,7 +12372,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 267
+    rank: 269
     example:
       en: A smaller size, please.
       he: מידה קטנה יותר, בבקשה.
@@ -10573,7 +12411,7 @@ concepts:
     emoji: 🥵
     iconEligible: true
     visualConfidence: 0.8
-    rank: 123
+    rank: 124
     example:
       en: Careful, it is hot!
       he: זהירות, זה חם!
@@ -10612,7 +12450,7 @@ concepts:
     emoji: 🥶
     iconEligible: true
     visualConfidence: 0.8
-    rank: 124
+    rank: 125
     example:
       en: A cold water, please.
       he: מים קרים, בבקשה.
@@ -10649,7 +12487,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 126
+    rank: 127
     example:
       en: A medium coffee, please.
       he: קפה בינוני, בבקשה.
@@ -10687,7 +12525,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 125
+    rank: 126
     example:
       en: A large size, please.
       he: מידה גדולה, בבקשה.
@@ -10761,7 +12599,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 259
+    rank: 261
     example:
       en: A little less, please.
       he: קצת פחות, בבקשה.
@@ -10798,7 +12636,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 323
+    rank: 326
     example:
       en: The new terminal.
       he: הטרמינל החדש.
@@ -10835,7 +12673,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 281
+    rank: 283
     example:
       en: The old city.
       he: העיר העתיקה.
@@ -10872,7 +12710,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 145
+    rank: 146
     example:
       en: Something cheaper?
       he: משהו זול יותר?
@@ -10909,7 +12747,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 153
+    rank: 154
     example:
       en: It is too expensive.
       he: זה יקר מדי.
@@ -10946,7 +12784,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 146
+    rank: 147
     example:
       en: Is the wifi free?
       he: האם הוויי-פיי חינם?
@@ -10981,7 +12819,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 303
+    rank: 305
     example:
       en: The fast train.
       he: הרכבת המהירה.
@@ -11018,7 +12856,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 171
+    rank: 172
     example:
       en: Slower, please.
       he: לאט יותר, בבקשה.
@@ -11131,7 +12969,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 289
+    rank: 291
     example:
       en: What a beautiful view!
       he: איזה נוף יפה!
@@ -11166,7 +13004,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 304
+    rank: 306
     example:
       en: The room is clean.
       he: החדר נקי.
@@ -11203,7 +13041,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 204
+    rank: 206
     example:
       en: The table is dirty.
       he: השולחן מלוכלך.
@@ -11240,7 +13078,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 172
+    rank: 173
     example:
       en: The hotel is full.
       he: המלון מלא.
@@ -11277,7 +13115,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 388
+    rank: 395
     example:
       en: The bus is empty.
       he: האוטובוס ריק.
@@ -11314,7 +13152,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 324
+    rank: 327
     example:
       en: The suitcase is too heavy.
       he: המזוודה כבדה מדי.
@@ -11349,7 +13187,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 342
+    rank: 346
     example:
       en: It is easy to find.
       he: קל למצוא את זה.
@@ -11386,7 +13224,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 343
+    rank: 347
     example:
       en: It is hard to say.
       he: קשה להגיד.
@@ -11423,7 +13261,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 195
+    rank: 197
     example:
       en: It is very important.
       he: זה מאוד חשוב.
@@ -11458,7 +13296,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 101
+    rank: 102
     example:
       en: It is dangerous at night.
       he: מסוכן שם בלילה.
@@ -11495,7 +13333,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 99
+    rank: 100
     example:
       en: Is this area safe?
       he: האזור הזה בטוח?
@@ -11532,7 +13370,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 305
+    rank: 307
     example:
       en: A quiet room, please.
       he: חדר שקט, בבקשה.
@@ -11569,7 +13407,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 410
+    rank: 418
     example:
       en: It is too loud here.
       he: רועש כאן מדי.
@@ -11608,7 +13446,7 @@ concepts:
     emoji: 😊
     iconEligible: true
     visualConfidence: 0.9
-    rank: 325
+    rank: 328
     example:
       en: I am happy to be here.
       he: אני שמח להיות כאן.
@@ -11647,7 +13485,7 @@ concepts:
     emoji: 😢
     iconEligible: true
     visualConfidence: 0.9
-    rank: 421
+    rank: 431
     example:
       en: She looks sad.
       he: היא נראית עצובה.
@@ -11686,7 +13524,7 @@ concepts:
     emoji: 😫
     iconEligible: true
     visualConfidence: 0.85
-    rank: 306
+    rank: 308
     example:
       en: I am very tired.
       he: אני מאוד עייף.
@@ -11721,7 +13559,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 168
+    rank: 169
     example:
       en: We are hungry.
       he: אנחנו רעבים.
@@ -11758,7 +13596,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 221
+    rank: 223
     example:
       en: I am thirsty.
       he: אני צמא.
@@ -11795,7 +13633,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 344
+    rank: 348
     example:
       en: Too sweet for me.
       he: מתוק מדי בשבילי.
@@ -11832,7 +13670,7 @@ concepts:
     emoji: 🌶️
     iconEligible: true
     visualConfidence: 0.85
-    rank: 205
+    rank: 207
     example:
       en: Is it spicy?
       he: זה חריף?
@@ -11867,7 +13705,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 360
+    rank: 365
     example:
       en: The soup is salty.
       he: המרק מלוח.
@@ -11902,7 +13740,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 361
+    rank: 366
     example:
       en: Fresh orange juice.
       he: מיץ תפוזים טרי.
@@ -11939,7 +13777,7 @@ concepts:
     emoji: 😋
     iconEligible: true
     visualConfidence: 0.7
-    rank: 282
+    rank: 284
     example:
       en: It was delicious!
       he: זה היה טעים!
@@ -11974,7 +13812,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 173
+    rank: 174
     example:
       en: We are ready.
       he: אנחנו מוכנים.
@@ -12009,7 +13847,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 307
+    rank: 309
     example:
       en: The restaurant is busy tonight.
       he: המסעדה עמוסה הערב.
@@ -12044,7 +13882,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 362
+    rank: 367
     example:
       en: Something different, please.
       he: משהו שונה, בבקשה.
@@ -12081,7 +13919,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 308
+    rank: 310
     example:
       en: The same for me, please.
       he: אותו דבר בשבילי, בבקשה.
@@ -12155,7 +13993,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 147
+    rank: 148
     example:
       en: The last bus is at ten.
       he: האוטובוס האחרון בעשר.
@@ -12192,7 +14030,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 268
+    rank: 270
     example:
       en: The first time in Rome.
       he: הפעם הראשונה ברומא.
@@ -12227,7 +14065,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 191
+    rank: 192
     example:
       en: We pay together.
       he: אנחנו משלמים ביחד.
@@ -12264,7 +14102,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 422
+    rank: 432
     example:
       en: I am traveling alone.
       he: אני מטייל לבד.
@@ -12301,7 +14139,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 190
+    rank: 191
     example:
       en: The lock is broken.
       he: המנעול מקולקל.
@@ -12383,6 +14221,82 @@ concepts:
     imageEligible: false
     oppositeConcepts:
       - concept.word.open
+  - id: concept.word.angry
+    kind: word
+    gloss:
+      en: angry
+      he: עצבני
+    categories:
+      - descriptions
+    rof: 1
+    layer: 2
+    skillTarget: recall
+    isOpener: false
+    situationSlugs:
+      - shopping
+    rolComponents:
+      travel: 0.4
+      coverage: 0.4
+      freq: 0.6
+      reuse: 0.7
+      learnability: 0.8666666666666667
+    rolScore: 16
+    neverTeach: false
+    realizations:
+      en:
+        text: angry
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 😠
+    iconEligible: true
+    visualConfidence: 0.9
+    rank: 433
+    example:
+      en: Why are you angry?
+      he: למה אתה עצבני?
+    pos: adj
+    commScore: 0.6
+    recogScore: 0.6
+    imageEligible: true
+    oppositeConcepts:
+      - concept.word.happy
+  - id: concept.word.confused
+    kind: word
+    gloss:
+      en: confused
+      he: מבולבל
+    categories:
+      - descriptions
+    rof: 1
+    layer: 2
+    skillTarget: recall
+    isOpener: false
+    situationSlugs:
+      - shopping
+    rolComponents:
+      travel: 0.4
+      coverage: 0.4
+      freq: 0.6
+      reuse: 0.7
+      learnability: 0.6666666666666667
+    rolScore: 16
+    neverTeach: false
+    realizations:
+      en:
+        text: confused
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 😕
+    iconEligible: true
+    visualConfidence: 0.85
+    rank: 434
+    example:
+      en: I am a little confused.
+      he: אני קצת מבולבל.
+    pos: adj
+    commScore: 0.6
+    recogScore: 0.6
+    imageEligible: true
   - id: concept.word.fruit
     kind: word
     gloss:
@@ -12412,7 +14326,7 @@ concepts:
     emoji: 🍇
     iconEligible: true
     visualConfidence: 0.65
-    rank: 363
+    rank: 368
     example:
       en: Fresh fruit.
       he: פירות טריים.
@@ -12449,7 +14363,7 @@ concepts:
     emoji: 🥦
     iconEligible: true
     visualConfidence: 0.6
-    rank: 223
+    rank: 225
     example:
       en: Only vegetables, please.
       he: רק ירקות, בבקשה.
@@ -12486,7 +14400,7 @@ concepts:
     emoji: 🥗
     iconEligible: true
     visualConfidence: 0.9
-    rank: 364
+    rank: 369
     example:
       en: A big salad.
       he: סלט גדול.
@@ -12521,7 +14435,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 218
+    rank: 220
     example:
       en: No sugar, please.
       he: בלי סוכר, בבקשה.
@@ -12558,7 +14472,7 @@ concepts:
     emoji: 🧂
     iconEligible: true
     visualConfidence: 0.85
-    rank: 365
+    rank: 370
     example:
       en: Salt and pepper.
       he: מלח ופלפל.
@@ -12593,7 +14507,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 469
+    rank: 492
     example:
       en: A little pepper.
       he: קצת פלפל.
@@ -12628,7 +14542,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 470
+    rank: 493
     example:
       en: Olive oil.
       he: שמן זית.
@@ -12665,7 +14579,7 @@ concepts:
     emoji: 🧈
     iconEligible: true
     visualConfidence: 0.85
-    rank: 471
+    rank: 494
     example:
       en: Bread with butter.
       he: לחם עם חמאה.
@@ -12702,7 +14616,7 @@ concepts:
     emoji: 🧃
     iconEligible: true
     visualConfidence: 0.85
-    rank: 366
+    rank: 371
     example:
       en: Orange juice, please.
       he: מיץ תפוזים, בבקשה.
@@ -12739,7 +14653,7 @@ concepts:
     emoji: 🍺
     iconEligible: true
     visualConfidence: 0.95
-    rank: 326
+    rank: 329
     example:
       en: Two beers, please.
       he: שתי בירות, בבקשה.
@@ -12776,7 +14690,7 @@ concepts:
     emoji: 🥪
     iconEligible: true
     visualConfidence: 0.95
-    rank: 389
+    rank: 396
     example:
       en: A cheese sandwich.
       he: כריך גבינה.
@@ -12813,7 +14727,7 @@ concepts:
     emoji: 🍕
     iconEligible: true
     visualConfidence: 0.98
-    rank: 367
+    rank: 372
     example:
       en: A slice of pizza.
       he: משולש פיצה.
@@ -12850,7 +14764,7 @@ concepts:
     emoji: 🍝
     iconEligible: true
     visualConfidence: 0.95
-    rank: 411
+    rank: 419
     example:
       en: Pasta with tomato sauce.
       he: פסטה ברוטב עגבניות.
@@ -12887,7 +14801,7 @@ concepts:
     emoji: 🍰
     iconEligible: true
     visualConfidence: 0.95
-    rank: 472
+    rank: 495
     example:
       en: A piece of cake.
       he: פרוסת עוגה.
@@ -12924,7 +14838,7 @@ concepts:
     emoji: 🍫
     iconEligible: true
     visualConfidence: 0.95
-    rank: 452
+    rank: 469
     example:
       en: Hot chocolate.
       he: שוקו חם.
@@ -12961,7 +14875,7 @@ concepts:
     emoji: 🍦
     iconEligible: true
     visualConfidence: 0.95
-    rank: 423
+    rank: 435
     example:
       en: Two scoops of ice cream.
       he: שני כדורי גלידה.
@@ -12998,7 +14912,7 @@ concepts:
     emoji: 🍅
     iconEligible: true
     visualConfidence: 0.95
-    rank: 473
+    rank: 496
     example:
       en: Without tomato, please.
       he: בלי עגבנייה, בבקשה.
@@ -13033,7 +14947,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 474
+    rank: 497
     example:
       en: A fork, please.
       he: מזלג, בבקשה.
@@ -13070,7 +14984,7 @@ concepts:
     emoji: 🔪
     iconEligible: true
     visualConfidence: 0.85
-    rank: 475
+    rank: 498
     example:
       en: A clean knife, please.
       he: סכין נקייה, בבקשה.
@@ -13107,7 +15021,7 @@ concepts:
     emoji: 🥄
     iconEligible: true
     visualConfidence: 0.9
-    rank: 476
+    rank: 499
     example:
       en: A spoon for the soup.
       he: כף למרק.
@@ -13144,7 +15058,7 @@ concepts:
     emoji: 🍽️
     iconEligible: true
     visualConfidence: 0.85
-    rank: 477
+    rank: 500
     example:
       en: Another plate, please.
       he: עוד צלחת, בבקשה.
@@ -13179,7 +15093,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 439
+    rank: 455
     example:
       en: A cup of tea.
       he: ספל תה.
@@ -13187,6 +15101,43 @@ concepts:
     commScore: 0.6
     recogScore: 0.6
     imageEligible: true
+  - id: concept.word.pot
+    kind: word
+    gloss:
+      en: pot
+      he: סיר
+    categories:
+      - food
+    rof: 1
+    layer: 2
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - restaurant
+    rolComponents:
+      travel: 0.4
+      coverage: 0.2
+      freq: 0.6
+      reuse: 0.3
+      learnability: 1
+    rolScore: 13
+    neverTeach: false
+    realizations:
+      en:
+        text: pot
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    iconEligible: false
+    rank: 501
+    example:
+      en: A pot of soup.
+      he: סיר מרק.
+    pos: noun
+    commScore: 0.4
+    recogScore: 0.4
+    imageEligible: true
+    relatedConcepts:
+      - concept.word.bowl
   - id: concept.word.glass
     kind: word
     gloss:
@@ -13214,7 +15165,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 368
+    rank: 373
     example:
       en: A glass of water.
       he: כוס מים.
@@ -13249,7 +15200,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 369
+    rank: 374
     example:
       en: A bottle of water.
       he: בקבוק מים.
@@ -13286,7 +15237,7 @@ concepts:
     emoji: 📋
     iconEligible: true
     visualConfidence: 0.6
-    rank: 94
+    rank: 95
     example:
       en: The menu, please.
       he: את התפריט, בבקשה.
@@ -13360,7 +15311,7 @@ concepts:
     emoji: 🍳
     iconEligible: true
     visualConfidence: 0.8
-    rank: 165
+    rank: 166
     example:
       en: Is breakfast included?
       he: ארוחת הבוקר כלולה?
@@ -13395,7 +15346,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 370
+    rank: 375
     example:
       en: Lunch until three.
       he: צהריים עד שלוש.
@@ -13430,7 +15381,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 371
+    rank: 376
     example:
       en: Dinner at eight.
       he: ארוחת ערב בשמונה.
@@ -13467,7 +15418,7 @@ concepts:
     emoji: 🍮
     iconEligible: true
     visualConfidence: 0.8
-    rank: 440
+    rank: 456
     example:
       en: Something for dessert?
       he: משהו לקינוח?
@@ -13541,7 +15492,7 @@ concepts:
     emoji: 🛍️
     iconEligible: true
     visualConfidence: 0.8
-    rank: 290
+    rank: 292
     example:
       en: The shop is closed.
       he: החנות סגורה.
@@ -13580,7 +15531,7 @@ concepts:
     emoji: 🛒
     iconEligible: true
     visualConfidence: 0.85
-    rank: 309
+    rank: 311
     example:
       en: Is there a supermarket near here?
       he: יש סופרמרקט קרוב לכאן?
@@ -13615,7 +15566,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 113
+    rank: 114
     example:
       en: What street is this?
       he: איזה רחוב זה?
@@ -13652,7 +15603,7 @@ concepts:
     emoji: 🏙️
     iconEligible: true
     visualConfidence: 0.85
-    rank: 269
+    rank: 271
     example:
       en: The old city.
       he: העיר העתיקה.
@@ -13724,7 +15675,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 345
+    rank: 349
     example:
       en: The main square.
       he: הכיכר הראשית.
@@ -13761,7 +15712,7 @@ concepts:
     emoji: 🌉
     iconEligible: true
     visualConfidence: 0.9
-    rank: 412
+    rank: 420
     example:
       en: Cross the bridge.
       he: תחצה את הגשר.
@@ -13798,13 +15749,85 @@ concepts:
     emoji: 🏞️
     iconEligible: true
     visualConfidence: 0.7
-    rank: 372
+    rank: 377
     example:
       en: Next to the park.
       he: ליד הפארק.
     pos: noun
     commScore: 0.6
     recogScore: 0.8
+    imageEligible: true
+  - id: concept.word.school
+    kind: word
+    gloss:
+      en: school
+      he: בית ספר
+    categories:
+      - places
+    rof: 1
+    layer: 2
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - directions
+    rolComponents:
+      travel: 0.6
+      coverage: 0.4
+      freq: 0.8
+      reuse: 0.3
+      learnability: 0.8
+    rolScore: 19
+    neverTeach: false
+    realizations:
+      en:
+        text: school
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🏫
+    iconEligible: true
+    visualConfidence: 0.9
+    rank: 378
+    example:
+      en: The children go to school.
+      he: הילדים הולכים לבית ספר.
+    pos: noun
+    commScore: 0.6
+    recogScore: 0.8
+    imageEligible: true
+  - id: concept.word.farm
+    kind: word
+    gloss:
+      en: farm
+      he: חווה
+    categories:
+      - places
+    rof: 1
+    layer: 2
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - directions
+    rolComponents:
+      travel: 0.4
+      coverage: 0.2
+      freq: 0.6
+      reuse: 0.3
+      learnability: 0.9333333333333333
+    rolScore: 13
+    neverTeach: false
+    realizations:
+      en:
+        text: farm
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    iconEligible: false
+    rank: 502
+    example:
+      en: Grandfather has a farm.
+      he: לסבא יש חווה.
+    pos: noun
+    commScore: 0.4
+    recogScore: 0.6
     imageEligible: true
   - id: concept.word.entrance
     kind: word
@@ -13909,7 +15932,7 @@ concepts:
     emoji: 🛗
     iconEligible: true
     visualConfidence: 0.85
-    rank: 413
+    rank: 421
     example:
       en: Take the elevator.
       he: קח את המעלית.
@@ -13946,7 +15969,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 414
+    rank: 422
     example:
       en: The stairs are on the right.
       he: המדרגות מימין.
@@ -13983,7 +16006,7 @@ concepts:
     emoji: 🚪
     iconEligible: true
     visualConfidence: 0.9
-    rank: 327
+    rank: 330
     example:
       en: The door is locked.
       he: הדלת נעולה.
@@ -14020,7 +16043,7 @@ concepts:
     emoji: 🪟
     iconEligible: true
     visualConfidence: 0.9
-    rank: 373
+    rank: 379
     example:
       en: A seat by the window.
       he: מקום ליד החלון.
@@ -14057,7 +16080,7 @@ concepts:
     emoji: 🏢
     iconEligible: true
     visualConfidence: 0.85
-    rank: 390
+    rank: 397
     example:
       en: The tall building.
       he: הבניין הגבוה.
@@ -14129,7 +16152,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 291
+    rank: 293
     example:
       en: A nice cafe.
       he: בית קפה נחמד.
@@ -14166,7 +16189,7 @@ concepts:
     emoji: ⛽
     iconEligible: true
     visualConfidence: 0.9
-    rank: 225
+    rank: 227
     example:
       en: Stop at the gas station.
       he: עצור בתחנת הדלק.
@@ -14203,13 +16226,609 @@ concepts:
     emoji: 🏰
     iconEligible: true
     visualConfidence: 0.9
-    rank: 441
+    rank: 457
     example:
       en: Tickets to the castle.
       he: כרטיסים לטירה.
     pos: noun
     commScore: 0.4
     recogScore: 0.6
+    imageEligible: true
+  - id: concept.word.lemon
+    kind: word
+    gloss:
+      en: lemon
+      he: לימון
+    categories:
+      - food
+    rof: 1
+    layer: 2
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - restaurant
+    rolComponents:
+      travel: 0.4
+      coverage: 0.2
+      freq: 0.6
+      reuse: 0.3
+      learnability: 0.8666666666666667
+    rolScore: 13
+    neverTeach: false
+    realizations:
+      en:
+        text: lemon
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🍋
+    iconEligible: true
+    visualConfidence: 0.95
+    rank: 503
+    example:
+      en: Tea with lemon.
+      he: תה עם לימון.
+    pos: noun
+    commScore: 0.4
+    recogScore: 0.4
+    imageEligible: true
+  - id: concept.word.orange-fruit
+    kind: word
+    gloss:
+      en: orange
+      he: תפוז
+    categories:
+      - food
+    rof: 1
+    layer: 2
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - restaurant
+    rolComponents:
+      travel: 0.4
+      coverage: 0.2
+      freq: 0.6
+      reuse: 0.3
+      learnability: 0.8
+    rolScore: 13
+    neverTeach: false
+    realizations:
+      en:
+        text: orange
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🍊
+    iconEligible: true
+    visualConfidence: 0.95
+    rank: 504
+    example:
+      en: A sweet orange.
+      he: תפוז מתוק.
+    pos: noun
+    commScore: 0.4
+    recogScore: 0.4
+    imageEligible: true
+    relatedConcepts:
+      - concept.word.fruit
+  - id: concept.word.cucumber
+    kind: word
+    gloss:
+      en: cucumber
+      he: מלפפון
+    categories:
+      - food
+    rof: 1
+    layer: 2
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - restaurant
+    rolComponents:
+      travel: 0.4
+      coverage: 0.2
+      freq: 0.6
+      reuse: 0.3
+      learnability: 0.6666666666666667
+    rolScore: 13
+    neverTeach: false
+    realizations:
+      en:
+        text: cucumber
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🥒
+    iconEligible: true
+    visualConfidence: 0.95
+    rank: 505
+    example:
+      en: Cucumber in the salad.
+      he: מלפפון בסלט.
+    pos: noun
+    commScore: 0.4
+    recogScore: 0.4
+    imageEligible: true
+    relatedConcepts:
+      - concept.word.vegetables
+  - id: concept.word.onion
+    kind: word
+    gloss:
+      en: onion
+      he: בצל
+    categories:
+      - food
+    rof: 1
+    layer: 2
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - restaurant
+    rolComponents:
+      travel: 0.4
+      coverage: 0.2
+      freq: 0.6
+      reuse: 0.3
+      learnability: 0.8666666666666667
+    rolScore: 13
+    neverTeach: false
+    realizations:
+      en:
+        text: onion
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🧅
+    iconEligible: true
+    visualConfidence: 0.9
+    rank: 506
+    example:
+      en: No onion, please.
+      he: בלי בצל, בבקשה.
+    pos: noun
+    commScore: 0.4
+    recogScore: 0.4
+    imageEligible: true
+    relatedConcepts:
+      - concept.word.vegetables
+  - id: concept.word.fries
+    kind: word
+    gloss:
+      en: fries
+      he: צ׳יפס
+    categories:
+      - food
+    rof: 1
+    layer: 2
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - restaurant
+    rolComponents:
+      travel: 0.6
+      coverage: 0.4
+      freq: 0.6
+      reuse: 0.3
+      learnability: 0.8666666666666667
+    rolScore: 17
+    neverTeach: false
+    realizations:
+      en:
+        text: fries
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🍟
+    iconEligible: true
+    visualConfidence: 0.95
+    rank: 423
+    example:
+      en: A burger and fries.
+      he: המבורגר וצ׳יפס.
+    pos: noun
+    commScore: 0.6
+    recogScore: 0.4
+    imageEligible: true
+  - id: concept.word.candy
+    kind: word
+    gloss:
+      en: candy
+      he: ממתקים
+    categories:
+      - food
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - restaurant
+    rolComponents:
+      travel: 0.4
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.8666666666666667
+    rolScore: 12
+    neverTeach: false
+    realizations:
+      en:
+        text: candy
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🍬
+    iconEligible: true
+    visualConfidence: 0.92
+    rank: 559
+    example:
+      en: The children want candy.
+      he: הילדים רוצים ממתקים.
+    pos: noun
+    commScore: 0.4
+    recogScore: 0.4
+    imageEligible: true
+  - id: concept.word.snacks
+    kind: word
+    gloss:
+      en: snacks
+      he: חטיפים
+    categories:
+      - food
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - restaurant
+    rolComponents:
+      travel: 0.4
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.8
+    rolScore: 12
+    neverTeach: false
+    realizations:
+      en:
+        text: snacks
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    iconEligible: false
+    rank: 560
+    example:
+      en: Snacks for the trip.
+      he: חטיפים לטיול.
+    pos: noun
+    commScore: 0.4
+    recogScore: 0.4
+    imageEligible: true
+  - id: concept.word.honey
+    kind: word
+    gloss:
+      en: honey
+      he: דבש
+    categories:
+      - food
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - restaurant
+    rolComponents:
+      travel: 0.2
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.8666666666666667
+    rolScore: 9
+    neverTeach: false
+    realizations:
+      en:
+        text: honey
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🍯
+    iconEligible: true
+    visualConfidence: 0.9
+    rank: 606
+    example:
+      en: Bread with honey.
+      he: לחם עם דבש.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.2
+    imageEligible: true
+  - id: concept.word.jug
+    kind: word
+    gloss:
+      en: jug
+      he: קנקן
+    categories:
+      - food
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - restaurant
+    rolComponents:
+      travel: 0.2
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 1
+    rolScore: 10
+    neverTeach: false
+    realizations:
+      en:
+        text: jug
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    iconEligible: false
+    rank: 584
+    example:
+      en: A jug of water.
+      he: קנקן מים.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.2
+    imageEligible: true
+  - id: concept.word.cocktail
+    kind: word
+    gloss:
+      en: cocktail
+      he: קוקטייל
+    categories:
+      - food
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - restaurant
+    rolComponents:
+      travel: 0.4
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.6666666666666667
+    rolScore: 11
+    neverTeach: false
+    realizations:
+      en:
+        text: cocktail
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🍸
+    iconEligible: true
+    visualConfidence: 0.9
+    rank: 574
+    example:
+      en: A cocktail at the bar.
+      he: קוקטייל בבר.
+    pos: noun
+    commScore: 0.4
+    recogScore: 0.4
+    imageEligible: true
+  - id: concept.word.spices
+    kind: word
+    gloss:
+      en: spices
+      he: תבלינים
+    categories:
+      - food
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - restaurant
+    rolComponents:
+      travel: 0.2
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.8
+    rolScore: 9
+    neverTeach: false
+    realizations:
+      en:
+        text: spices
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    iconEligible: false
+    rank: 607
+    example:
+      en: The market sells spices.
+      he: השוק מוכר תבלינים.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.2
+    imageEligible: true
+  - id: concept.word.stadium
+    kind: word
+    gloss:
+      en: stadium
+      he: אצטדיון
+    categories:
+      - places
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - directions
+    rolComponents:
+      travel: 0.4
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.7333333333333334
+    rolScore: 12
+    neverTeach: false
+    realizations:
+      en:
+        text: stadium
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🏟️
+    iconEligible: true
+    visualConfidence: 0.85
+    rank: 561
+    example:
+      en: A game at the stadium.
+      he: משחק באצטדיון.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.4
+    imageEligible: true
+  - id: concept.word.synagogue
+    kind: word
+    gloss:
+      en: synagogue
+      he: בית כנסת
+    categories:
+      - places
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - directions
+    rolComponents:
+      travel: 0.4
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.6
+    rolScore: 11
+    neverTeach: false
+    realizations:
+      en:
+        text: synagogue
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🕍
+    iconEligible: true
+    visualConfidence: 0.85
+    rank: 575
+    example:
+      en: The old synagogue.
+      he: בית הכנסת העתיק.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.4
+    imageEligible: true
+    relatedConcepts:
+      - concept.word.church
+  - id: concept.word.temple
+    kind: word
+    gloss:
+      en: temple
+      he: מקדש
+    categories:
+      - places
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - directions
+    rolComponents:
+      travel: 0.4
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.8
+    rolScore: 12
+    neverTeach: false
+    realizations:
+      en:
+        text: temple
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🛕
+    iconEligible: true
+    visualConfidence: 0.85
+    rank: 562
+    example:
+      en: We visited a temple.
+      he: ביקרנו במקדש.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.4
+    imageEligible: true
+    relatedConcepts:
+      - concept.word.church
+  - id: concept.word.circus
+    kind: word
+    gloss:
+      en: circus
+      he: קרקס
+    categories:
+      - places
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - directions
+    rolComponents:
+      travel: 0.2
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.8
+    rolScore: 9
+    neverTeach: false
+    realizations:
+      en:
+        text: circus
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🎪
+    iconEligible: true
+    visualConfidence: 0.9
+    rank: 608
+    example:
+      en: The children love the circus.
+      he: הילדים אוהבים את הקרקס.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.2
+    imageEligible: true
+  - id: concept.word.tent
+    kind: word
+    gloss:
+      en: tent
+      he: אוהל
+    categories:
+      - home
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - accommodation
+    rolComponents:
+      travel: 0.4
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.9333333333333333
+    rolScore: 12
+    neverTeach: false
+    realizations:
+      en:
+        text: tent
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: ⛺
+    iconEligible: true
+    visualConfidence: 0.9
+    rank: 563
+    example:
+      en: We sleep in a tent.
+      he: אנחנו ישנים באוהל.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.4
     imageEligible: true
   - id: concept.word.platform
     kind: word
@@ -14238,7 +16857,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 192
+    rank: 193
     example:
       en: Platform three.
       he: רציף שלוש.
@@ -14273,7 +16892,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 95
+    rank: 96
     example:
       en: Gate twelve.
       he: שער שתים עשרה.
@@ -14310,7 +16929,7 @@ concepts:
     emoji: 💺
     iconEligible: true
     visualConfidence: 0.85
-    rank: 182
+    rank: 183
     example:
       en: Is this seat free?
       he: המושב הזה פנוי?
@@ -14345,7 +16964,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 193
+    rank: 194
     example:
       en: My luggage is lost.
       he: הכבודה שלי אבדה.
@@ -14384,7 +17003,7 @@ concepts:
     emoji: 🧳
     iconEligible: true
     visualConfidence: 0.9
-    rank: 206
+    rank: 208
     example:
       en: A heavy suitcase.
       he: מזוודה כבדה.
@@ -14421,7 +17040,7 @@ concepts:
     emoji: 🚏
     iconEligible: true
     visualConfidence: 0.85
-    rank: 183
+    rank: 184
     example:
       en: The bus stop is there.
       he: תחנת האוטובוס שם.
@@ -14456,7 +17075,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 328
+    rank: 331
     example:
       en: Ask the driver.
       he: תשאל את הנהג.
@@ -14493,7 +17112,7 @@ concepts:
     emoji: 🚇
     iconEligible: true
     visualConfidence: 0.9
-    rank: 178
+    rank: 179
     example:
       en: The nearest metro station.
       he: תחנת הרכבת התחתית הקרובה.
@@ -14533,7 +17152,7 @@ concepts:
     emoji: 🛣️
     iconEligible: true
     visualConfidence: 0.7
-    rank: 374
+    rank: 380
     example:
       en: Cross the road carefully.
       he: תחצה את הכביש בזהירות.
@@ -14570,7 +17189,7 @@ concepts:
     emoji: 🚦
     iconEligible: true
     visualConfidence: 0.95
-    rank: 375
+    rank: 381
     example:
       en: Turn left at the traffic light.
       he: פנה שמאלה ברמזור.
@@ -14605,7 +17224,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 346
+    rank: 350
     example:
       en: It is around the corner.
       he: זה מעבר לפינה.
@@ -14640,7 +17259,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 179
+    rank: 180
     example:
       en: My flight is at noon.
       he: הטיסה שלי בצהריים.
@@ -14675,7 +17294,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 196
+    rank: 198
     example:
       en: Departures are upstairs.
       he: ההמראות למעלה.
@@ -14712,7 +17331,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 194
+    rank: 195
     example:
       en: The arrivals hall.
       he: אולם הנחיתות.
@@ -14751,7 +17370,7 @@ concepts:
     emoji: ⛴️
     iconEligible: true
     visualConfidence: 0.85
-    rank: 453
+    rank: 470
     example:
       en: The ferry to the island.
       he: המעבורת לאי.
@@ -14862,7 +17481,7 @@ concepts:
     emoji: 🪙
     iconEligible: true
     visualConfidence: 0.9
-    rank: 391
+    rank: 398
     example:
       en: I need coins for the locker.
       he: אני צריך מטבעות ללוקר.
@@ -14899,7 +17518,7 @@ concepts:
     emoji: 🧾
     iconEligible: true
     visualConfidence: 0.9
-    rank: 184
+    rank: 185
     example:
       en: A receipt, please.
       he: קבלה, בבקשה.
@@ -14936,7 +17555,7 @@ concepts:
     emoji: 👛
     iconEligible: true
     visualConfidence: 0.85
-    rank: 213
+    rank: 215
     example:
       en: I lost my wallet.
       he: איבדתי את הארנק שלי.
@@ -14971,7 +17590,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 207
+    rank: 209
     example:
       en: A bigger size?
       he: יש מידה גדולה יותר?
@@ -15006,7 +17625,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 415
+    rank: 424
     example:
       en: Is there a discount?
       he: יש הנחה?
@@ -15041,7 +17660,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 392
+    rank: 399
     example:
       en: Everything is on sale.
       he: הכול במבצע.
@@ -15078,7 +17697,7 @@ concepts:
     emoji: 💶
     iconEligible: true
     visualConfidence: 0.9
-    rank: 160
+    rank: 161
     example:
       en: Ten euros, please.
       he: עשרה יורו, בבקשה.
@@ -15115,7 +17734,7 @@ concepts:
     emoji: 💲
     iconEligible: true
     visualConfidence: 0.8
-    rank: 185
+    rank: 186
     example:
       en: Twenty dollars.
       he: עשרים דולר.
@@ -15150,7 +17769,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 416
+    rank: 425
     example:
       en: A hundred shekels.
       he: מאה שקלים.
@@ -15185,7 +17804,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 393
+    rank: 400
     example:
       en: Is tax included?
       he: המס כלול?
@@ -15220,7 +17839,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 347
+    rank: 351
     example:
       en: Is the tip included?
       he: הטיפ כלול?
@@ -15257,7 +17876,7 @@ concepts:
     emoji: 🎁
     iconEligible: true
     visualConfidence: 0.95
-    rank: 394
+    rank: 401
     example:
       en: A gift for my family.
       he: מתנה למשפחה שלי.
@@ -15292,7 +17911,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 454
+    rank: 471
     example:
       en: A small souvenir.
       he: מזכרת קטנה.
@@ -15339,6 +17958,269 @@ concepts:
     imageEligible: true
     aliases:
       - cash machine
+  - id: concept.word.motorcycle
+    kind: word
+    gloss:
+      en: motorcycle
+      he: אופנוע
+    categories:
+      - transport
+    rof: 1
+    layer: 2
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - transport
+    rolComponents:
+      travel: 0.4
+      coverage: 0.2
+      freq: 0.6
+      reuse: 0.3
+      learnability: 0.5333333333333333
+    rolScore: 13
+    neverTeach: false
+    realizations:
+      en:
+        text: motorcycle
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🏍️
+    iconEligible: true
+    visualConfidence: 0.9
+    rank: 507
+    example:
+      en: He rides a motorcycle.
+      he: הוא רוכב על אופנוע.
+    pos: noun
+    commScore: 0.4
+    recogScore: 0.4
+    imageEligible: true
+  - id: concept.word.helicopter
+    kind: word
+    gloss:
+      en: helicopter
+      he: מסוק
+    categories:
+      - transport
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - transport
+    rolComponents:
+      travel: 0.4
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.5333333333333333
+    rolScore: 11
+    neverTeach: false
+    realizations:
+      en:
+        text: helicopter
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🚁
+    iconEligible: true
+    visualConfidence: 0.9
+    rank: 576
+    example:
+      en: A helicopter in the sky.
+      he: מסוק בשמיים.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.4
+    imageEligible: true
+  - id: concept.word.ship
+    kind: word
+    gloss:
+      en: ship
+      he: אונייה
+    categories:
+      - transport
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - transport
+    rolComponents:
+      travel: 0.4
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.9333333333333333
+    rolScore: 12
+    neverTeach: false
+    realizations:
+      en:
+        text: ship
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🚢
+    iconEligible: true
+    visualConfidence: 0.9
+    rank: 564
+    example:
+      en: A big ship.
+      he: אונייה גדולה.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.4
+    imageEligible: true
+    relatedConcepts:
+      - concept.word.boat
+  - id: concept.word.tractor
+    kind: word
+    gloss:
+      en: tractor
+      he: טרקטור
+    categories:
+      - transport
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - transport
+    rolComponents:
+      travel: 0.2
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.7333333333333334
+    rolScore: 9
+    neverTeach: false
+    realizations:
+      en:
+        text: tractor
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🚜
+    iconEligible: true
+    visualConfidence: 0.92
+    rank: 609
+    example:
+      en: A tractor on the farm.
+      he: טרקטור בחווה.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.2
+    imageEligible: true
+    relatedConcepts:
+      - concept.word.farm
+  - id: concept.word.scooter
+    kind: word
+    gloss:
+      en: scooter
+      he: קורקינט
+    categories:
+      - transport
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - transport
+    rolComponents:
+      travel: 0.4
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.7333333333333334
+    rolScore: 12
+    neverTeach: false
+    realizations:
+      en:
+        text: scooter
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🛴
+    iconEligible: true
+    visualConfidence: 0.88
+    rank: 565
+    example:
+      en: The child rides a scooter.
+      he: הילד רוכב על קורקינט.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.2
+    imageEligible: true
+  - id: concept.word.rocket
+    kind: word
+    gloss:
+      en: rocket
+      he: טיל
+    categories:
+      - transport
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - transport
+    rolComponents:
+      travel: 0.2
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.8
+    rolScore: 9
+    neverTeach: false
+    realizations:
+      en:
+        text: rocket
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🚀
+    iconEligible: true
+    visualConfidence: 0.92
+    rank: 610
+    example:
+      en: The rocket goes up.
+      he: הטיל עולה למעלה.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.2
+    imageEligible: true
+  - id: concept.word.spaceship
+    kind: word
+    gloss:
+      en: spaceship
+      he: חללית
+    categories:
+      - transport
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - transport
+    rolComponents:
+      travel: 0.2
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.6
+    rolScore: 9
+    neverTeach: false
+    realizations:
+      en:
+        text: spaceship
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🛸
+    iconEligible: true
+    visualConfidence: 0.9
+    rank: 611
+    example:
+      en: A spaceship to the moon.
+      he: חללית לירח.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.2
+    imageEligible: true
   - id: concept.word.head
     kind: word
     gloss:
@@ -15366,7 +18248,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 219
+    rank: 221
     example:
       en: My head hurts.
       he: הראש שלי כואב.
@@ -15401,7 +18283,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 500
+    rank: 536
     example:
       en: Short hair.
       he: שיער קצר.
@@ -15436,7 +18318,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 501
+    rank: 537
     example:
       en: Wash your face.
       he: שטוף את הפנים.
@@ -15473,7 +18355,7 @@ concepts:
     emoji: ❤️
     iconEligible: true
     visualConfidence: 0.9
-    rank: 154
+    rank: 155
     example:
       en: A heart problem.
       he: בעיה בלב.
@@ -15508,7 +18390,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 226
+    rank: 228
     example:
       en: My stomach hurts.
       he: הבטן שלי כואבת.
@@ -15543,7 +18425,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 220
+    rank: 222
     example:
       en: My back hurts.
       he: הגב שלי כואב.
@@ -15578,7 +18460,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 214
+    rank: 216
     example:
       en: Something for a headache.
       he: משהו נגד כאב ראש.
@@ -15615,7 +18497,7 @@ concepts:
     emoji: 🌡️
     iconEligible: true
     visualConfidence: 0.8
-    rank: 108
+    rank: 109
     example:
       en: I have a fever.
       he: יש לי חום.
@@ -15690,7 +18572,7 @@ concepts:
     emoji: 🩸
     iconEligible: true
     visualConfidence: 0.9
-    rank: 186
+    rank: 187
     example:
       en: There is blood.
       he: יש דם.
@@ -15725,7 +18607,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 242
+    rank: 244
     example:
       en: I need a dentist.
       he: אני צריך רופא שיניים.
@@ -15760,7 +18642,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 230
+    rank: 232
     example:
       en: The nurse will help you.
       he: האחות תעזור לך.
@@ -15795,7 +18677,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 215
+    rank: 217
     example:
       en: I have travel insurance.
       he: יש לי ביטוח נסיעות.
@@ -15830,7 +18712,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 231
+    rank: 233
     example:
       en: One pill a day.
       he: כדור אחד ביום.
@@ -15867,7 +18749,7 @@ concepts:
     emoji: 🧴
     iconEligible: true
     visualConfidence: 0.7
-    rank: 488
+    rank: 523
     example:
       en: A cream for the sunburn.
       he: משחה לכוויית השמש.
@@ -15937,7 +18819,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 395
+    rank: 402
     example:
       en: This is my mother.
       he: זאת אמא שלי.
@@ -15976,7 +18858,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 396
+    rank: 403
     example:
       en: My father loves to travel.
       he: אבא שלי אוהב לטייל.
@@ -15988,6 +18870,119 @@ concepts:
       - dad
     oppositeConcepts:
       - concept.word.mother
+  - id: concept.word.grandmother
+    kind: word
+    gloss:
+      en: grandmother
+      he: סבתא
+    categories:
+      - people
+    rof: 1
+    layer: 2
+    skillTarget: recall
+    isOpener: false
+    situationSlugs:
+      - social
+    rolComponents:
+      travel: 0.4
+      coverage: 0.2
+      freq: 0.8
+      reuse: 0.3
+      learnability: 0.4666666666666667
+    rolScore: 14
+    neverTeach: false
+    realizations:
+      en:
+        text: grandmother
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    iconEligible: false
+    rank: 472
+    example:
+      en: My grandmother is kind.
+      he: סבתא שלי נחמדה.
+    pos: noun
+    commScore: 0.4
+    recogScore: 0.4
+    imageEligible: true
+    aliases:
+      - grandma
+    oppositeConcepts:
+      - concept.word.grandfather
+  - id: concept.word.grandfather
+    kind: word
+    gloss:
+      en: grandfather
+      he: סבא
+    categories:
+      - people
+    rof: 1
+    layer: 2
+    skillTarget: recall
+    isOpener: false
+    situationSlugs:
+      - social
+    rolComponents:
+      travel: 0.4
+      coverage: 0.2
+      freq: 0.8
+      reuse: 0.3
+      learnability: 0.4666666666666667
+    rolScore: 14
+    neverTeach: false
+    realizations:
+      en:
+        text: grandfather
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    iconEligible: false
+    rank: 473
+    example:
+      en: Grandfather has a farm.
+      he: לסבא יש חווה.
+    pos: noun
+    commScore: 0.4
+    recogScore: 0.4
+    imageEligible: true
+    aliases:
+      - grandpa
+    oppositeConcepts:
+      - concept.word.grandmother
+  - id: concept.word.people
+    kind: word
+    gloss:
+      en: people
+      he: אנשים
+    categories:
+      - people
+    rof: 2
+    layer: 2
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - social
+    rolComponents:
+      travel: 0.6
+      coverage: 0.6
+      freq: 1
+      reuse: 0.3
+      learnability: 0.8
+    rolScore: 44
+    neverTeach: false
+    realizations:
+      en:
+        text: people
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    iconEligible: false
+    rank: 196
+    example:
+      en: The market is full of people.
+      he: השוק מלא אנשים.
+    pos: noun
+    commScore: 0.6
+    recogScore: 0.8
+    imageEligible: true
   - id: concept.word.brother
     kind: word
     gloss:
@@ -16015,7 +19010,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 455
+    rank: 474
     example:
       en: I travel with my brother.
       he: אני מטייל עם אח שלי.
@@ -16052,7 +19047,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 456
+    rank: 475
     example:
       en: My sister lives here.
       he: אחותי גרה כאן.
@@ -16089,7 +19084,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 457
+    rank: 476
     example:
       en: This is my husband.
       he: זה בעלי.
@@ -16126,7 +19121,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 442
+    rank: 458
     example:
       en: My wife and I.
       he: אשתי ואני.
@@ -16163,7 +19158,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 443
+    rank: 459
     example:
       en: Our son is ten.
       he: הבן שלנו בן עשר.
@@ -16200,7 +19195,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 458
+    rank: 477
     example:
       en: My daughter is here.
       he: הבת שלי כאן.
@@ -16237,7 +19232,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 489
+    rank: 524
     example:
       en: The little boy.
       he: הילד הקטן.
@@ -16274,7 +19269,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 490
+    rank: 525
     example:
       en: The girl with the hat.
       he: הילדה עם הכובע.
@@ -16311,7 +19306,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 348
+    rank: 352
     example:
       en: We are tourists.
       he: אנחנו תיירים.
@@ -16346,7 +19341,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 397
+    rank: 404
     example:
       en: Ask the waiter.
       he: תשאל את המלצר.
@@ -16526,7 +19521,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 100
+    rank: 101
     example:
       en: My bag was stolen.
       he: התיק שלי נגנב.
@@ -16561,7 +19556,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 105
+    rank: 106
     example:
       en: The Israeli embassy.
       he: השגרירות הישראלית.
@@ -16596,7 +19591,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 138
+    rank: 139
     example:
       en: There was an accident.
       he: הייתה תאונה.
@@ -16639,6 +19634,574 @@ concepts:
     commScore: 0.8
     recogScore: 1
     imageEligible: false
+  - id: concept.word.chef
+    kind: word
+    gloss:
+      en: chef
+      he: טבח
+    categories:
+      - people
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - social
+    rolComponents:
+      travel: 0.4
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.9333333333333333
+    rolScore: 12
+    neverTeach: false
+    realizations:
+      en:
+        text: chef
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🧑‍🍳
+    iconEligible: true
+    visualConfidence: 0.9
+    rank: 566
+    example:
+      en: The chef cooks well.
+      he: הטבח מבשל טוב.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.4
+    imageEligible: true
+    relatedConcepts:
+      - concept.word.cook
+  - id: concept.word.student
+    kind: word
+    gloss:
+      en: student
+      he: סטודנט
+    categories:
+      - people
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - social
+    rolComponents:
+      travel: 0.4
+      coverage: 0.2
+      freq: 0.6
+      reuse: 0.3
+      learnability: 0.7333333333333334
+    rolScore: 13
+    neverTeach: false
+    realizations:
+      en:
+        text: student
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🧑‍🎓
+    iconEligible: true
+    visualConfidence: 0.85
+    rank: 556
+    example:
+      en: She is a student.
+      he: היא סטודנטית.
+    pos: noun
+    commScore: 0.4
+    recogScore: 0.4
+    imageEligible: true
+  - id: concept.word.painter
+    kind: word
+    gloss:
+      en: painter
+      he: צייר
+    categories:
+      - people
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - social
+    rolComponents:
+      travel: 0.2
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.7333333333333334
+    rolScore: 9
+    neverTeach: false
+    realizations:
+      en:
+        text: painter
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🧑‍🎨
+    iconEligible: true
+    visualConfidence: 0.85
+    rank: 612
+    example:
+      en: The painter sells his art.
+      he: הצייר מוכר את האומנות שלו.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.2
+    imageEligible: true
+    relatedConcepts:
+      - concept.word.drawing
+      - concept.word.art
+  - id: concept.word.singer
+    kind: word
+    gloss:
+      en: singer
+      he: זמר
+    categories:
+      - people
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - social
+    rolComponents:
+      travel: 0.2
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.8
+    rolScore: 9
+    neverTeach: false
+    realizations:
+      en:
+        text: singer
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🧑‍🎤
+    iconEligible: true
+    visualConfidence: 0.85
+    rank: 613
+    example:
+      en: A famous singer.
+      he: זמר מפורסם.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.2
+    imageEligible: true
+    relatedConcepts:
+      - concept.word.sing
+  - id: concept.word.musician
+    kind: word
+    gloss:
+      en: musician
+      he: מוזיקאי
+    categories:
+      - people
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - social
+    rolComponents:
+      travel: 0.2
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.6666666666666667
+    rolScore: 9
+    neverTeach: false
+    realizations:
+      en:
+        text: musician
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    iconEligible: false
+    rank: 614
+    example:
+      en: The musician plays guitar.
+      he: המוזיקאי מנגן בגיטרה.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.2
+    imageEligible: true
+    relatedConcepts:
+      - concept.word.guitar
+  - id: concept.word.clown
+    kind: word
+    gloss:
+      en: clown
+      he: ליצן
+    categories:
+      - people
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - social
+    rolComponents:
+      travel: 0.2
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.8666666666666667
+    rolScore: 9
+    neverTeach: false
+    realizations:
+      en:
+        text: clown
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🤡
+    iconEligible: true
+    visualConfidence: 0.92
+    rank: 615
+    example:
+      en: The clown makes us laugh.
+      he: הליצן מצחיק אותנו.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.2
+    imageEligible: true
+  - id: concept.word.groom
+    kind: word
+    gloss:
+      en: groom
+      he: חתן
+    categories:
+      - people
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - social
+    rolComponents:
+      travel: 0.2
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.8666666666666667
+    rolScore: 9
+    neverTeach: false
+    realizations:
+      en:
+        text: groom
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🤵
+    iconEligible: true
+    visualConfidence: 0.85
+    rank: 616
+    example:
+      en: The groom is happy.
+      he: החתן שמח.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.2
+    imageEligible: true
+    oppositeConcepts:
+      - concept.word.bride
+  - id: concept.word.bride
+    kind: word
+    gloss:
+      en: bride
+      he: כלה
+    categories:
+      - people
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - social
+    rolComponents:
+      travel: 0.2
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.8666666666666667
+    rolScore: 9
+    neverTeach: false
+    realizations:
+      en:
+        text: bride
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 👰
+    iconEligible: true
+    visualConfidence: 0.85
+    rank: 617
+    example:
+      en: The bride wears white.
+      he: הכלה לובשת לבן.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.2
+    imageEligible: true
+    oppositeConcepts:
+      - concept.word.groom
+  - id: concept.word.winner
+    kind: word
+    gloss:
+      en: winner
+      he: מנצח
+    categories:
+      - people
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - social
+    rolComponents:
+      travel: 0.2
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.8
+    rolScore: 9
+    neverTeach: false
+    realizations:
+      en:
+        text: winner
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🏆
+    iconEligible: true
+    visualConfidence: 0.8
+    rank: 618
+    example:
+      en: She is the winner.
+      he: היא המנצחת.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.2
+    imageEligible: true
+    oppositeConcepts:
+      - concept.word.loser
+  - id: concept.word.loser
+    kind: word
+    gloss:
+      en: loser
+      he: מפסיד
+    categories:
+      - people
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - social
+    rolComponents:
+      travel: 0.2
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.8666666666666667
+    rolScore: 9
+    neverTeach: false
+    realizations:
+      en:
+        text: loser
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    iconEligible: false
+    rank: 619
+    example:
+      en: No one likes to be the loser.
+      he: אף אחד לא אוהב להיות המפסיד.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.2
+    imageEligible: true
+    oppositeConcepts:
+      - concept.word.winner
+  - id: concept.word.kiss
+    kind: word
+    gloss:
+      en: kiss
+      he: נשיקה
+    categories:
+      - people
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - social
+    rolComponents:
+      travel: 0.2
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.9333333333333333
+    rolScore: 10
+    neverTeach: false
+    realizations:
+      en:
+        text: kiss
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 💋
+    iconEligible: true
+    visualConfidence: 0.85
+    rank: 585
+    example:
+      en: A kiss on the cheek.
+      he: נשיקה על הלחי.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.2
+    imageEligible: true
+  - id: concept.word.pregnant
+    kind: word
+    gloss:
+      en: pregnant
+      he: בהיריון
+    categories:
+      - health
+    rof: 2
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - emergency
+    rolComponents:
+      travel: 0.4
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.7
+      learnability: 0.6666666666666667
+    rolScore: 26
+    neverTeach: false
+    realizations:
+      en:
+        text: pregnant
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🤰
+    iconEligible: true
+    visualConfidence: 0.85
+    rank: 551
+    example:
+      en: She is pregnant.
+      he: היא בהיריון.
+    pos: adj
+    commScore: 0.4
+    recogScore: 0.4
+    imageEligible: true
+  - id: concept.word.haircut
+    kind: word
+    gloss:
+      en: haircut
+      he: תספורת
+    categories:
+      - health
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - emergency
+    rolComponents:
+      travel: 0.4
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.7333333333333334
+    rolScore: 12
+    neverTeach: false
+    realizations:
+      en:
+        text: haircut
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 💇
+    iconEligible: true
+    visualConfidence: 0.8
+    rank: 567
+    example:
+      en: I need a haircut.
+      he: אני צריך תספורת.
+    pos: noun
+    commScore: 0.4
+    recogScore: 0.2
+    imageEligible: true
+  - id: concept.word.nail-polish
+    kind: word
+    gloss:
+      en: nail polish
+      he: לק
+    categories:
+      - health
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - emergency
+    rolComponents:
+      travel: 0.2
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.4666666666666667
+    rolScore: 9
+    neverTeach: false
+    realizations:
+      en:
+        text: nail polish
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 💅
+    iconEligible: true
+    visualConfidence: 0.85
+    rank: 620
+    example:
+      en: Red nail polish.
+      he: לק אדום.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.2
+    imageEligible: true
+  - id: concept.word.germ
+    kind: word
+    gloss:
+      en: germ
+      he: חיידק
+    categories:
+      - health
+    rof: 2
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - emergency
+    rolComponents:
+      travel: 0.2
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.9333333333333333
+    rolScore: 19
+    neverTeach: false
+    realizations:
+      en:
+        text: germ
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🦠
+    iconEligible: true
+    visualConfidence: 0.8
+    rank: 552
+    example:
+      en: Wash your hands, germs!
+      he: תשטוף ידיים, חיידקים!
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.2
+    imageEligible: true
   - id: concept.word.towel
     kind: word
     gloss:
@@ -16666,7 +20229,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 211
+    rank: 213
     example:
       en: We need more towels.
       he: אנחנו צריכים עוד מגבות.
@@ -16703,7 +20266,7 @@ concepts:
     emoji: 🧼
     iconEligible: true
     visualConfidence: 0.85
-    rank: 424
+    rank: 436
     example:
       en: There is no soap.
       he: אין סבון.
@@ -16740,7 +20303,7 @@ concepts:
     emoji: 🪥
     iconEligible: true
     visualConfidence: 0.9
-    rank: 459
+    rank: 478
     example:
       en: I forgot my toothbrush.
       he: שכחתי את מברשת השיניים.
@@ -16775,7 +20338,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 460
+    rank: 479
     example:
       en: A small toothpaste.
       he: משחת שיניים קטנה.
@@ -16810,7 +20373,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 491
+    rank: 526
     example:
       en: Shampoo and soap.
       he: שמפו וסבון.
@@ -16845,7 +20408,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 216
+    rank: 218
     example:
       en: I lost my charger.
       he: איבדתי את המטען שלי.
@@ -16882,7 +20445,7 @@ concepts:
     emoji: 🔋
     iconEligible: true
     visualConfidence: 0.9
-    rank: 417
+    rank: 426
     example:
       en: The battery is empty.
       he: הסוללה ריקה.
@@ -16919,7 +20482,7 @@ concepts:
     emoji: 🖊️
     iconEligible: true
     visualConfidence: 0.9
-    rank: 398
+    rank: 405
     example:
       en: A pen for the form.
       he: עט לטופס.
@@ -16956,7 +20519,7 @@ concepts:
     emoji: 📄
     iconEligible: true
     visualConfidence: 0.8
-    rank: 425
+    rank: 437
     example:
       en: A piece of paper.
       he: פיסת נייר.
@@ -16991,7 +20554,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 229
+    rank: 231
     example:
       en: I need an adapter.
       he: אני צריך מתאם.
@@ -17030,7 +20593,7 @@ concepts:
     emoji: ✂️
     iconEligible: true
     visualConfidence: 0.95
-    rank: 509
+    rank: 548
     example:
       en: Do you have scissors?
       he: יש לך מספריים?
@@ -17067,7 +20630,7 @@ concepts:
     emoji: 🪞
     iconEligible: true
     visualConfidence: 0.85
-    rank: 510
+    rank: 549
     example:
       en: The mirror in the room.
       he: המראה בחדר.
@@ -17102,7 +20665,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 511
+    rank: 550
     example:
       en: A small comb.
       he: מסרק קטן.
@@ -17139,7 +20702,7 @@ concepts:
     emoji: 🪒
     iconEligible: true
     visualConfidence: 0.9
-    rank: 492
+    rank: 527
     example:
       en: A razor, please.
       he: סכין גילוח, בבקשה.
@@ -17176,10 +20739,45 @@ concepts:
     emoji: 🕶️
     iconEligible: true
     visualConfidence: 0.9
-    rank: 444
+    rank: 460
     example:
       en: New sunglasses.
       he: משקפי שמש חדשים.
+    pos: noun
+    commScore: 0.4
+    recogScore: 0.4
+    imageEligible: true
+  - id: concept.word.ball
+    kind: word
+    gloss:
+      en: ball
+      he: כדור
+    categories:
+      - objects
+    rof: 1
+    layer: 2
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - shopping
+    rolComponents:
+      travel: 0.4
+      coverage: 0.2
+      freq: 0.6
+      reuse: 0.3
+      learnability: 0.9333333333333333
+    rolScore: 13
+    neverTeach: false
+    realizations:
+      en:
+        text: ball
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    iconEligible: false
+    rank: 508
+    example:
+      en: The children play with a ball.
+      he: הילדים משחקים בכדור.
     pos: noun
     commScore: 0.4
     recogScore: 0.4
@@ -17219,6 +20817,47 @@ concepts:
     commScore: 1
     recogScore: 1
     imageEligible: true
+  - id: concept.word.house
+    kind: word
+    gloss:
+      en: house
+      he: בית
+    categories:
+      - home
+    rof: 2
+    layer: 1
+    skillTarget: recall
+    isOpener: false
+    situationSlugs:
+      - accommodation
+    rolComponents:
+      travel: 0.8
+      coverage: 0.6
+      freq: 1
+      reuse: 0.3
+      learnability: 0.8666666666666667
+    rolScore: 49
+    neverTeach: false
+    realizations:
+      en:
+        text: house
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🏠
+    iconEligible: true
+    visualConfidence: 0.95
+    rank: 94
+    example:
+      en: A house with a garden.
+      he: בית עם גינה.
+    pos: noun
+    commScore: 0.8
+    recogScore: 0.8
+    imageEligible: true
+    aliases:
+      - home
+    relatedConcepts:
+      - concept.word.apartment
   - id: concept.word.bed
     kind: word
     gloss:
@@ -17248,7 +20887,7 @@ concepts:
     emoji: 🛏️
     iconEligible: true
     visualConfidence: 0.9
-    rank: 197
+    rank: 199
     example:
       en: A double bed.
       he: מיטה זוגית.
@@ -17320,7 +20959,7 @@ concepts:
     emoji: 🪑
     iconEligible: true
     visualConfidence: 0.9
-    rank: 426
+    rank: 438
     example:
       en: One more chair, please.
       he: עוד כיסא, בבקשה.
@@ -17357,7 +20996,7 @@ concepts:
     emoji: 🚿
     iconEligible: true
     visualConfidence: 0.9
-    rank: 208
+    rank: 210
     example:
       en: The shower is cold.
       he: המקלחת קרה.
@@ -17392,7 +21031,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 478
+    rank: 509
     example:
       en: The sink is blocked.
       he: הכיור סתום.
@@ -17427,7 +21066,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 376
+    rank: 382
     example:
       en: Is there a kitchen?
       he: יש מטבח?
@@ -17464,7 +21103,7 @@ concepts:
     emoji: 🛁
     iconEligible: true
     visualConfidence: 0.85
-    rank: 209
+    rank: 211
     example:
       en: The bathroom is small.
       he: חדר האמבטיה קטן.
@@ -17501,7 +21140,7 @@ concepts:
     emoji: 🧻
     iconEligible: true
     visualConfidence: 0.9
-    rank: 227
+    rank: 229
     example:
       en: There is no toilet paper.
       he: אין נייר טואלט.
@@ -17536,7 +21175,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 222
+    rank: 224
     example:
       en: The air conditioning does not work.
       he: המזגן לא עובד.
@@ -17573,7 +21212,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 232
+    rank: 234
     example:
       en: The heating is off.
       he: החימום כבוי.
@@ -17608,7 +21247,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 445
+    rank: 461
     example:
       en: Another pillow, please.
       he: עוד כרית, בבקשה.
@@ -17643,7 +21282,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 446
+    rank: 462
     example:
       en: A warm blanket.
       he: שמיכה חמה.
@@ -17678,7 +21317,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 461
+    rank: 480
     example:
       en: Clean sheets, please.
       he: סדינים נקיים, בבקשה.
@@ -17715,7 +21354,7 @@ concepts:
     emoji: 💡
     iconEligible: true
     visualConfidence: 0.85
-    rank: 479
+    rank: 510
     example:
       en: The lamp is broken.
       he: המנורה שבורה.
@@ -17752,7 +21391,7 @@ concepts:
     emoji: 🛋️
     iconEligible: true
     visualConfidence: 0.9
-    rank: 502
+    rank: 538
     example:
       en: A sofa in the lobby.
       he: ספה בלובי.
@@ -17789,7 +21428,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 447
+    rank: 463
     example:
       en: Is there a fridge in the room?
       he: יש מקרר בחדר?
@@ -17826,7 +21465,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 448
+    rank: 464
     example:
       en: A room with a balcony.
       he: חדר עם מרפסת.
@@ -17861,7 +21500,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 210
+    rank: 212
     example:
       en: The third floor.
       he: קומה שלישית.
@@ -17896,7 +21535,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 503
+    rank: 539
     example:
       en: The picture on the wall.
       he: התמונה על הקיר.
@@ -17933,7 +21572,7 @@ concepts:
     emoji: 🗑️
     iconEligible: true
     visualConfidence: 0.85
-    rank: 480
+    rank: 511
     example:
       en: Where is the trash?
       he: איפה פח האשפה?
@@ -17973,7 +21612,7 @@ concepts:
     emoji: 🧺
     iconEligible: true
     visualConfidence: 0.8
-    rank: 462
+    rank: 481
     example:
       en: Is there a laundry service?
       he: יש שירות כביסה?
@@ -18008,7 +21647,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 228
+    rank: 230
     example:
       en: Lockers are at the station.
       he: הלוקרים בתחנה.
@@ -18043,7 +21682,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 427
+    rank: 439
     example:
       en: We rented an apartment.
       he: שכרנו דירה.
@@ -18078,7 +21717,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 481
+    rank: 512
     example:
       en: A table in the garden.
       he: שולחן בגינה.
@@ -18155,7 +21794,7 @@ concepts:
     emoji: 🌐
     iconEligible: true
     visualConfidence: 0.8
-    rank: 174
+    rank: 175
     example:
       en: The internet is slow.
       he: האינטרנט איטי.
@@ -18192,7 +21831,7 @@ concepts:
     emoji: 💻
     iconEligible: true
     visualConfidence: 0.9
-    rank: 428
+    rank: 440
     example:
       en: My computer is in the bag.
       he: המחשב שלי בתיק.
@@ -18229,7 +21868,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 449
+    rank: 465
     example:
       en: Look at the screen.
       he: תסתכל על המסך.
@@ -18264,7 +21903,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 482
+    rank: 513
     example:
       en: A USB cable.
       he: כבל יו-אס-בי.
@@ -18301,7 +21940,7 @@ concepts:
     emoji: 🔌
     iconEligible: true
     visualConfidence: 0.85
-    rank: 212
+    rank: 214
     example:
       en: I need a plug adapter.
       he: אני צריך מתאם לשקע.
@@ -18339,7 +21978,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 224
+    rank: 226
     example:
       en: A SIM card with data.
       he: כרטיס סים עם גלישה.
@@ -18374,7 +22013,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 377
+    rank: 383
     example:
       en: Use the metro app.
       he: תשתמש באפליקציה של המטרו.
@@ -18411,7 +22050,7 @@ concepts:
     emoji: 📧
     iconEligible: true
     visualConfidence: 0.85
-    rank: 378
+    rank: 384
     example:
       en: Send it by email.
       he: תשלח את זה באימייל.
@@ -18446,7 +22085,7 @@ concepts:
         quality: ai_reviewed
         reviewNotes: pending native review
     iconEligible: false
-    rank: 96
+    rank: 97
     example:
       en: The wifi password, please.
       he: את סיסמת הוויי-פיי, בבקשה.
@@ -18485,7 +22124,7 @@ concepts:
     emoji: 🖼️
     iconEligible: true
     visualConfidence: 0.85
-    rank: 329
+    rank: 332
     example:
       en: Can you take a photo of us?
       he: אפשר לצלם אותנו?
@@ -18524,7 +22163,7 @@ concepts:
     emoji: 🎬
     iconEligible: true
     visualConfidence: 0.85
-    rank: 463
+    rank: 482
     example:
       en: A short video.
       he: סרטון קצר.
@@ -18561,7 +22200,7 @@ concepts:
     emoji: 🎧
     iconEligible: true
     visualConfidence: 0.9
-    rank: 483
+    rank: 514
     example:
       en: I forgot my headphones.
       he: שכחתי את האוזניות שלי.
@@ -18598,7 +22237,7 @@ concepts:
     emoji: 📺
     iconEligible: true
     visualConfidence: 0.9
-    rank: 505
+    rank: 543
     example:
       en: The television does not work.
       he: הטלוויזיה לא עובדת.
@@ -18637,7 +22276,7 @@ concepts:
     emoji: 💬
     iconEligible: true
     visualConfidence: 0.8
-    rank: 429
+    rank: 441
     example:
       en: Send me a message.
       he: תשלח לי הודעה.
@@ -18645,3 +22284,914 @@ concepts:
     commScore: 0.6
     recogScore: 0.6
     imageEligible: true
+  - id: concept.word.book-noun
+    kind: word
+    gloss:
+      en: book
+      he: ספר
+    categories:
+      - objects
+    rof: 1
+    layer: 2
+    skillTarget: recall
+    isOpener: false
+    situationSlugs:
+      - shopping
+    rolComponents:
+      travel: 0.4
+      coverage: 0.4
+      freq: 0.8
+      reuse: 0.3
+      learnability: 0.9333333333333333
+    rolScore: 17
+    neverTeach: false
+    realizations:
+      en:
+        text: book
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 📖
+    iconEligible: true
+    visualConfidence: 0.9
+    rank: 427
+    example:
+      en: A book to read.
+      he: ספר לקרוא.
+    pos: noun
+    commScore: 0.6
+    recogScore: 0.6
+    imageEligible: true
+    relatedConcepts:
+      - concept.word.read
+      - concept.word.notebook
+  - id: concept.word.notebook
+    kind: word
+    gloss:
+      en: notebook
+      he: מחברת
+    categories:
+      - objects
+    rof: 1
+    layer: 2
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - shopping
+    rolComponents:
+      travel: 0.4
+      coverage: 0.2
+      freq: 0.6
+      reuse: 0.3
+      learnability: 0.6666666666666667
+    rolScore: 13
+    neverTeach: false
+    realizations:
+      en:
+        text: notebook
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 📓
+    iconEligible: true
+    visualConfidence: 0.88
+    rank: 515
+    example:
+      en: Write it in the notebook.
+      he: תכתוב את זה במחברת.
+    pos: noun
+    commScore: 0.4
+    recogScore: 0.4
+    imageEligible: true
+    relatedConcepts:
+      - concept.word.write
+  - id: concept.word.pencil
+    kind: word
+    gloss:
+      en: pencil
+      he: עיפרון
+    categories:
+      - objects
+    rof: 1
+    layer: 2
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - shopping
+    rolComponents:
+      travel: 0.4
+      coverage: 0.2
+      freq: 0.6
+      reuse: 0.3
+      learnability: 0.8
+    rolScore: 13
+    neverTeach: false
+    realizations:
+      en:
+        text: pencil
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: ✏️
+    iconEligible: true
+    visualConfidence: 0.9
+    rank: 516
+    example:
+      en: Draw with a pencil.
+      he: לצייר בעיפרון.
+    pos: noun
+    commScore: 0.4
+    recogScore: 0.4
+    imageEligible: true
+    relatedConcepts:
+      - concept.word.pen
+  - id: concept.word.eraser
+    kind: word
+    gloss:
+      en: eraser
+      he: מחק
+    categories:
+      - objects
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - shopping
+    rolComponents:
+      travel: 0.2
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.8
+    rolScore: 9
+    neverTeach: false
+    realizations:
+      en:
+        text: eraser
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    iconEligible: false
+    rank: 621
+    example:
+      en: Use the eraser.
+      he: תשתמש במחק.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.2
+    imageEligible: true
+    relatedConcepts:
+      - concept.word.pencil
+  - id: concept.word.box
+    kind: word
+    gloss:
+      en: box
+      he: קופסה
+    categories:
+      - objects
+    rof: 1
+    layer: 2
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - shopping
+    rolComponents:
+      travel: 0.4
+      coverage: 0.2
+      freq: 0.6
+      reuse: 0.3
+      learnability: 1
+    rolScore: 13
+    neverTeach: false
+    realizations:
+      en:
+        text: box
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 📦
+    iconEligible: true
+    visualConfidence: 0.9
+    rank: 517
+    example:
+      en: A box of shoes.
+      he: קופסת נעליים.
+    pos: noun
+    commScore: 0.4
+    recogScore: 0.4
+    imageEligible: true
+    relatedConcepts:
+      - concept.word.crate
+  - id: concept.word.crate
+    kind: word
+    gloss:
+      en: crate
+      he: ארגז
+    categories:
+      - objects
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - shopping
+    rolComponents:
+      travel: 0.2
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.8666666666666667
+    rolScore: 9
+    neverTeach: false
+    realizations:
+      en:
+        text: crate
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    iconEligible: false
+    rank: 622
+    example:
+      en: A crate of fruit.
+      he: ארגז פירות.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.2
+    imageEligible: true
+    relatedConcepts:
+      - concept.word.box
+  - id: concept.word.mailbox
+    kind: word
+    gloss:
+      en: mailbox
+      he: תיבת דואר
+    categories:
+      - objects
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - shopping
+    rolComponents:
+      travel: 0.2
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.7333333333333334
+    rolScore: 9
+    neverTeach: false
+    realizations:
+      en:
+        text: mailbox
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 📫
+    iconEligible: true
+    visualConfidence: 0.85
+    rank: 623
+    example:
+      en: The letter is in the mailbox.
+      he: המכתב בתיבת הדואר.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.2
+    imageEligible: true
+    relatedConcepts:
+      - concept.word.letter
+  - id: concept.word.letter
+    kind: word
+    gloss:
+      en: letter
+      he: מכתב
+    categories:
+      - objects
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - shopping
+    rolComponents:
+      travel: 0.2
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.8
+    rolScore: 9
+    neverTeach: false
+    realizations:
+      en:
+        text: letter
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: ✉️
+    iconEligible: true
+    visualConfidence: 0.85
+    rank: 624
+    example:
+      en: I wrote a letter.
+      he: כתבתי מכתב.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.2
+    imageEligible: true
+    relatedConcepts:
+      - concept.word.mailbox
+  - id: concept.word.bell
+    kind: word
+    gloss:
+      en: bell
+      he: פעמון
+    categories:
+      - objects
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - shopping
+    rolComponents:
+      travel: 0.2
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.9333333333333333
+    rolScore: 10
+    neverTeach: false
+    realizations:
+      en:
+        text: bell
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🔔
+    iconEligible: true
+    visualConfidence: 0.9
+    rank: 586
+    example:
+      en: Ring the bell.
+      he: תצלצל בפעמון.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.2
+    imageEligible: true
+  - id: concept.word.bucket
+    kind: word
+    gloss:
+      en: bucket
+      he: דלי
+    categories:
+      - objects
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - shopping
+    rolComponents:
+      travel: 0.2
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.8
+    rolScore: 9
+    neverTeach: false
+    realizations:
+      en:
+        text: bucket
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🪣
+    iconEligible: true
+    visualConfidence: 0.9
+    rank: 625
+    example:
+      en: A bucket of water.
+      he: דלי מים.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.2
+    imageEligible: true
+  - id: concept.word.sponge
+    kind: word
+    gloss:
+      en: sponge
+      he: ספוג
+    categories:
+      - objects
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - shopping
+    rolComponents:
+      travel: 0.2
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.8
+    rolScore: 9
+    neverTeach: false
+    realizations:
+      en:
+        text: sponge
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🧽
+    iconEligible: true
+    visualConfidence: 0.85
+    rank: 626
+    example:
+      en: Wash with a sponge.
+      he: לשטוף עם ספוג.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.2
+    imageEligible: true
+  - id: concept.word.hammer
+    kind: word
+    gloss:
+      en: hammer
+      he: פטיש
+    categories:
+      - objects
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - shopping
+    rolComponents:
+      travel: 0.2
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.8
+    rolScore: 9
+    neverTeach: false
+    realizations:
+      en:
+        text: hammer
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🔨
+    iconEligible: true
+    visualConfidence: 0.92
+    rank: 627
+    example:
+      en: A hammer and a nail.
+      he: פטיש ומסמר.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.2
+    imageEligible: true
+    relatedConcepts:
+      - concept.word.nail
+  - id: concept.word.nail
+    kind: word
+    gloss:
+      en: nail
+      he: מסמר
+    categories:
+      - objects
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - shopping
+    rolComponents:
+      travel: 0.2
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.9333333333333333
+    rolScore: 10
+    neverTeach: false
+    realizations:
+      en:
+        text: nail
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    iconEligible: false
+    rank: 587
+    example:
+      en: Hit the nail.
+      he: להכות את המסמר.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.2
+    imageEligible: true
+    relatedConcepts:
+      - concept.word.hammer
+  - id: concept.word.printer
+    kind: word
+    gloss:
+      en: printer
+      he: מדפסת
+    categories:
+      - technology
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - accommodation
+    rolComponents:
+      travel: 0.4
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.7333333333333334
+    rolScore: 12
+    neverTeach: false
+    realizations:
+      en:
+        text: printer
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🖨️
+    iconEligible: true
+    visualConfidence: 0.88
+    rank: 568
+    example:
+      en: The printer is out of paper.
+      he: למדפסת נגמר הנייר.
+    pos: noun
+    commScore: 0.4
+    recogScore: 0.4
+    imageEligible: true
+  - id: concept.word.dice
+    kind: word
+    gloss:
+      en: dice
+      he: קובייה
+    categories:
+      - objects
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - shopping
+    rolComponents:
+      travel: 0.2
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.9333333333333333
+    rolScore: 10
+    neverTeach: false
+    realizations:
+      en:
+        text: dice
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🎲
+    iconEligible: true
+    visualConfidence: 0.92
+    rank: 588
+    example:
+      en: Roll the dice.
+      he: תזרוק את הקובייה.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.2
+    imageEligible: true
+  - id: concept.word.guitar
+    kind: word
+    gloss:
+      en: guitar
+      he: גיטרה
+    categories:
+      - objects
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - shopping
+    rolComponents:
+      travel: 0.2
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.8
+    rolScore: 9
+    neverTeach: false
+    realizations:
+      en:
+        text: guitar
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🎸
+    iconEligible: true
+    visualConfidence: 0.95
+    rank: 628
+    example:
+      en: He plays the guitar.
+      he: הוא מנגן בגיטרה.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.2
+    imageEligible: true
+    relatedConcepts:
+      - concept.word.musician
+  - id: concept.word.teddy-bear
+    kind: word
+    gloss:
+      en: teddy bear
+      he: דובי
+    categories:
+      - objects
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - shopping
+    rolComponents:
+      travel: 0.2
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.5333333333333333
+    rolScore: 9
+    neverTeach: false
+    realizations:
+      en:
+        text: teddy bear
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🧸
+    iconEligible: true
+    visualConfidence: 0.95
+    rank: 629
+    example:
+      en: The baby has a teddy bear.
+      he: לתינוק יש דובי.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.2
+    imageEligible: true
+  - id: concept.word.balloon
+    kind: word
+    gloss:
+      en: balloon
+      he: בלון
+    categories:
+      - objects
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - shopping
+    rolComponents:
+      travel: 0.2
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.7333333333333334
+    rolScore: 9
+    neverTeach: false
+    realizations:
+      en:
+        text: balloon
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🎈
+    iconEligible: true
+    visualConfidence: 0.95
+    rank: 630
+    example:
+      en: A red balloon.
+      he: בלון אדום.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.2
+    imageEligible: true
+  - id: concept.word.plastic-bag
+    kind: word
+    gloss:
+      en: plastic bag
+      he: שקית
+    categories:
+      - objects
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - shopping
+    rolComponents:
+      travel: 0.4
+      coverage: 0.2
+      freq: 0.6
+      reuse: 0.3
+      learnability: 0.4666666666666667
+    rolScore: 12
+    neverTeach: false
+    realizations:
+      en:
+        text: plastic bag
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    iconEligible: false
+    rank: 569
+    example:
+      en: Do you want a plastic bag?
+      he: רוצה שקית?
+    pos: noun
+    commScore: 0.4
+    recogScore: 0.4
+    imageEligible: true
+    relatedConcepts:
+      - concept.word.bag
+  - id: concept.word.clock
+    kind: word
+    gloss:
+      en: clock
+      he: שעון קיר
+    categories:
+      - objects
+    rof: 1
+    layer: 2
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - shopping
+    rolComponents:
+      travel: 0.4
+      coverage: 0.2
+      freq: 0.6
+      reuse: 0.3
+      learnability: 0.8666666666666667
+    rolScore: 13
+    neverTeach: false
+    realizations:
+      en:
+        text: clock
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🕰️
+    iconEligible: true
+    visualConfidence: 0.85
+    rank: 518
+    example:
+      en: The clock on the wall.
+      he: השעון על הקיר.
+    pos: noun
+    commScore: 0.4
+    recogScore: 0.4
+    imageEligible: true
+    relatedConcepts:
+      - concept.word.watch
+  - id: concept.word.parasol
+    kind: word
+    gloss:
+      en: parasol
+      he: שמשייה
+    categories:
+      - objects
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - shopping
+    rolComponents:
+      travel: 0.2
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.7333333333333334
+    rolScore: 9
+    neverTeach: false
+    realizations:
+      en:
+        text: parasol
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: ⛱️
+    iconEligible: true
+    visualConfidence: 0.85
+    rank: 631
+    example:
+      en: A parasol on the beach.
+      he: שמשייה על החוף.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.2
+    imageEligible: true
+    relatedConcepts:
+      - concept.word.umbrella
+  - id: concept.word.crane
+    kind: word
+    gloss:
+      en: crane
+      he: מנוף
+    categories:
+      - objects
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - shopping
+    rolComponents:
+      travel: 0.2
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.8666666666666667
+    rolScore: 9
+    neverTeach: false
+    realizations:
+      en:
+        text: crane
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    emoji: 🏗️
+    iconEligible: true
+    visualConfidence: 0.8
+    rank: 632
+    example:
+      en: A crane builds the tower.
+      he: מנוף בונה את המגדל.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.2
+    imageEligible: true
+  - id: concept.word.drawing
+    kind: word
+    gloss:
+      en: drawing
+      he: ציור
+    categories:
+      - objects
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - shopping
+    rolComponents:
+      travel: 0.2
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 0.7333333333333334
+    rolScore: 9
+    neverTeach: false
+    realizations:
+      en:
+        text: drawing
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    iconEligible: false
+    rank: 633
+    example:
+      en: A drawing of a house.
+      he: ציור של בית.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.2
+    imageEligible: true
+    relatedConcepts:
+      - concept.word.art
+      - concept.word.painter
+  - id: concept.word.art
+    kind: word
+    gloss:
+      en: art
+      he: אומנות
+    categories:
+      - objects
+    rof: 1
+    layer: 3
+    skillTarget: recognize
+    isOpener: false
+    situationSlugs:
+      - shopping
+    rolComponents:
+      travel: 0.4
+      coverage: 0.2
+      freq: 0.4
+      reuse: 0.3
+      learnability: 1
+    rolScore: 12
+    neverTeach: false
+    realizations:
+      en:
+        text: art
+        quality: ai_reviewed
+        reviewNotes: pending native review
+    iconEligible: false
+    rank: 570
+    example:
+      en: Modern art.
+      he: אומנות מודרנית.
+    pos: noun
+    commScore: 0.2
+    recogScore: 0.4
+    imageEligible: true
+    relatedConcepts:
+      - concept.word.drawing
+      - concept.word.painter

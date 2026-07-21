@@ -61,6 +61,13 @@ export const ACTIONS: CorpusRow[] = [
   { slug: 'cancel', pos: 'verb', en: 'cancel', he: 'לבטל', cat: 'actions', layer: 2, rof: 2, skill: 'recall', s: [3, 4, 4, 4, 4], ex: 'I want to cancel the order.', exHe: 'אני רוצה לבטל את ההזמנה.' },
   { slug: 'rent', pos: 'verb', en: 'rent', he: 'לשכור', cat: 'actions', layer: 2, rof: 2, skill: 'recall', s: [3, 4, 3, 3, 4], ex: 'We want to rent a car.', exHe: 'אנחנו רוצים לשכור רכב.' },
   { slug: 'wash', pos: 'verb', en: 'wash', he: 'לשטוף', cat: 'actions', layer: 2, rof: 1, skill: 'recognize', s: [3, 2, 3, 2, 2], ex: 'Where can I wash my hands?', exHe: 'איפה אפשר לשטוף ידיים?' },
+  { slug: 'play', pos: 'verb', en: 'play', he: 'לשחק', cat: 'actions', layer: 2, rof: 1, skill: 'recall', s: [4, 3, 3, 2, 2], ex: 'The children play in the park.', exHe: 'הילדים משחקים בפארק.' },
+  { slug: 'read', pos: 'verb', en: 'read', he: 'לקרוא', cat: 'actions', layer: 2, rof: 1, skill: 'recall', s: [4, 3, 4, 2, 3], ex: 'I read a book.', exHe: 'אני קורא ספר.', rel: ['write'] },
+  { slug: 'write', pos: 'verb', en: 'write', he: 'לכתוב', cat: 'actions', layer: 2, rof: 1, skill: 'recall', s: [4, 3, 4, 2, 3], ex: 'Please write your name.', exHe: 'בבקשה תכתוב את השם שלך.', rel: ['read'] },
+  { slug: 'cook', pos: 'verb', en: 'cook', he: 'לבשל', cat: 'actions', layer: 2, rof: 1, skill: 'recognize', s: [3, 2, 2, 1, 2], ex: 'My mother cooks soup.', exHe: 'אמא שלי מבשלת מרק.' },
+  { slug: 'wear', pos: 'verb', en: 'wear', he: 'ללבוש', cat: 'actions', layer: 2, rof: 1, skill: 'recognize', s: [3, 2, 3, 1, 2], ex: 'I wear a jacket in winter.', exHe: 'אני לובש מעיל בחורף.', rel: ['clothes'] },
+  { slug: 'build', pos: 'verb', en: 'build', he: 'לבנות', cat: 'actions', layer: 2, rof: 1, skill: 'recognize', s: [3, 2, 2, 1, 2], ex: 'They build a house.', exHe: 'הם בונים בית.', rel: ['house'] },
+  { slug: 'sing', pos: 'verb', en: 'sing', he: 'לשיר', cat: 'actions', layer: 2, rof: 1, skill: 'recognize', s: [3, 1, 2, 1, 1], ex: 'The birds sing every morning.', exHe: 'הציפורים שרות כל בוקר.' },
   { slug: 'break', pos: 'verb', en: 'break', he: 'לשבור', cat: 'actions', layer: 2, rof: 2, skill: 'recognize', s: [3, 3, 3, 3, 3], ex: 'It is broken.', exHe: 'זה שבור.' },
   { slug: 'push', pos: 'verb', en: 'push', he: 'לדחוף', cat: 'actions', layer: 2, rof: 1, skill: 'recognize', s: [3, 1, 5, 3, 4], ex: 'Push the door.', exHe: 'דחוף את הדלת.', opp: ['pull'] },
   { slug: 'pull', pos: 'verb', en: 'pull', he: 'למשוך', cat: 'actions', layer: 2, rof: 1, skill: 'recognize', s: [3, 1, 5, 3, 4], ex: 'Pull, do not push.', exHe: 'משוך, אל תדחוף.', opp: ['push'] },
@@ -69,4 +76,19 @@ export const ACTIONS: CorpusRow[] = [
   { slug: 'order', pos: 'verb', en: 'order', he: 'להזמין (אוכל)', cat: 'actions', layer: 1, rof: 2, skill: 'recall', s: [5, 5, 5, 4, 5], ex: 'Ready to order?', exHe: 'מוכנים להזמין?' },
   { slug: 'exchange', pos: 'verb', en: 'exchange', he: 'להחליף (כסף)', cat: 'actions', layer: 2, rof: 2, skill: 'recall', s: [3, 4, 3, 3, 4], emoji: '💱', vis: 0.7, ex: 'Where can I exchange money?', exHe: 'איפה אפשר להחליף כסף?' },
   { slug: 'travel', pos: 'verb', en: 'travel', he: 'לטייל', cat: 'actions', layer: 2, rof: 1, skill: 'recall', s: [4, 4, 4, 3, 3], ex: 'We travel a lot.', exHe: 'אנחנו מטיילים הרבה.' },
+
+  // ── Core World Audit: activity verbs & gestures (Tier C) ────────────────────
+  { slug: 'exercise', pos: 'verb', en: 'exercise', he: 'להתאמן', cat: 'activities', layer: 3, rof: 1, skill: 'recognize', s: [3, 2, 2, 1, 2], ex: 'I exercise every day.', exHe: 'אני מתאמן כל יום.' },
+  { slug: 'surf', pos: 'verb', en: 'surf', he: 'לגלוש', cat: 'activities', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 1, 1, 2], emoji: '🏄', vis: 0.9, ex: 'They surf at the beach.', exHe: 'הם גולשים בחוף.' },
+  { slug: 'high-five', pos: 'verb', en: 'high five', he: 'לתת כיף', cat: 'activities', layer: 3, rof: 1, skill: 'recognize', s: [2, 2, 2, 1, 1], ex: 'Give me a high five!', exHe: 'תן לי כיף!' },
+  { slug: 'shake-hands', pos: 'verb', en: 'shake hands', he: 'ללחוץ יד', cat: 'activities', layer: 3, rof: 1, skill: 'recognize', s: [2, 2, 2, 1, 2], ex: 'We shake hands to say hello.', exHe: 'אנחנו לוחצים ידיים כדי להגיד שלום.' },
+
+  // ── Core World Audit: sports (Tier C) ───────────────────────────────────────
+  { slug: 'basketball', pos: 'noun', en: 'basketball', he: 'כדורסל', cat: 'activities', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 2, 1, 2], emoji: '🏀', vis: 0.95, ex: 'We play basketball.', exHe: 'אנחנו משחקים כדורסל.' },
+  { slug: 'tennis', pos: 'noun', en: 'tennis', he: 'טניס', cat: 'activities', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 2, 1, 2], emoji: '🎾', vis: 0.9, ex: 'A game of tennis.', exHe: 'משחק טניס.' },
+  { slug: 'billiards', pos: 'noun', en: 'billiards', he: 'סנוקר', cat: 'activities', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 1, 1, 1], emoji: '🎱', vis: 0.9, ex: 'They play billiards at the bar.', exHe: 'הם משחקים סנוקר בבר.' },
+  { slug: 'golf', pos: 'noun', en: 'golf', he: 'גולף', cat: 'activities', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 1, 1, 1], emoji: '⛳', vis: 0.85, ex: 'He plays golf on Sunday.', exHe: 'הוא משחק גולף ביום ראשון.' },
+  { slug: 'diving', pos: 'noun', en: 'diving', he: 'צלילה', cat: 'activities', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 1, 1, 2], emoji: '🤿', vis: 0.85, ex: 'Diving in the sea.', exHe: 'צלילה בים.' },
+  { slug: 'wrestling', pos: 'noun', en: 'wrestling', he: 'האבקות', cat: 'activities', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 1, 1, 1], emoji: '🤼', vis: 0.85, ex: 'Wrestling is a sport.', exHe: 'האבקות זה ספורט.' },
+  { slug: 'performance', pos: 'noun', en: 'performance', he: 'הופעה', cat: 'activities', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 2, 1, 2], ex: 'The performance starts at eight.', exHe: 'ההופעה מתחילה בשמונה.' },
 ];

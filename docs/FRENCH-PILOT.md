@@ -6,7 +6,7 @@
 > architecture is language-agnostic, so finishing French — and adding
 > Spanish/Italian/German/Portuguese — is **primarily content**. Nothing here claims native review.
 
-Run `npm run parity` for the live dashboard. Today: **FR corpus 511/511 (100%) ✅, Bootcamp 30/30 (100%) ✅** —
+Run `npm run parity` for the live dashboard. Today: **FR corpus 633/633 (100%) ✅, Bootcamp 30/30 (100%) ✅** —
 the full 30-mission journey (days 1–30) is authored in French with structural parity to English.
 French remains **Early Access** only because the content is AI-drafted and **pending native review** —
 not because anything is missing.
@@ -51,7 +51,7 @@ not because anything is missing.
 
 ## 2. What is NOT done (brutally honest)
 
-- **Core corpus: DONE (511/511).** No gap. `corpusParity('fr')` passes with 0 missing, 0 orphans.
+- **Core corpus: DONE (633/633).** No gap. `corpusParity('fr')` passes with 0 missing, 0 orphans.
 - **Bootcamp: COMPLETE — 30 of 30 missions authored in French** (days 1–30; days 5–30 added
   2026-07-13/14). Every mission is at genuine **content parity** with its English counterpart —
   identical items/tools/steps/dialogues, natural idiomatic `vous`-French, complete `tr:{en,he}`

@@ -104,11 +104,15 @@ export function validateCorpus(
     if (r.s.length !== 5 || r.s.some((v) => !Number.isInteger(v) || v < 1 || v > 5)) {
       errs.push(`${at}: scores must be five integers 1–5`);
     }
-    // Duplicate surface forms within a kind confuse games + reviews — senses must differ in text.
+    // Duplicate surface forms within a kind+pos confuse games + reviews — senses must differ in
+    // text. The key is pos-scoped so noun/verb (and noun/adj) homographs that carry genuinely
+    // distinct beginner meaning can coexist — e.g. book (noun, the object) alongside book (verb,
+    // "to reserve"), or orange (fruit, noun) alongside orange (colour, adj). Same-pos duplicates are
+    // still forbidden. Target-language packs already permit surface homographs (see mergePilot note).
     const kind = r.kind ?? 'word';
-    const surfaceKey = `${kind}:${r.en.toLowerCase()}`;
+    const surfaceKey = `${kind}:${r.pos}:${r.en.toLowerCase()}`;
     const prev = surface.get(surfaceKey);
-    if (prev) errs.push(`duplicate realization "${r.en}" (${kind}): ${prev} and ${at}`);
+    if (prev) errs.push(`duplicate realization "${r.en}" (${kind}/${r.pos}): ${prev} and ${at}`);
     surface.set(surfaceKey, at);
     if (r.emoji) {
       const owner = emojis.get(r.emoji);

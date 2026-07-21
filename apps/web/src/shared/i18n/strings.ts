@@ -529,6 +529,7 @@ const en = {
   foundationOnboardCta: 'Got it',
   foundationTapHint: 'Tap underlined words to instantly see their meaning, pronunciation and examples.',
   foundationBaseForm: 'Base form',
+  foundationOtherMeaning: 'Other meaning',
 } as const;
 
 const he: Partial<Record<StringKey, string>> = {
@@ -986,6 +987,7 @@ const he: Partial<Record<StringKey, string>> = {
   foundationOnboardCta: 'הבנתי',
   foundationTapHint: 'הקישו על מילים מודגשות כדי לראות מיד את המשמעות, ההגייה והדוגמאות.',
   foundationBaseForm: 'צורת בסיס',
+  foundationOtherMeaning: 'משמעות נוספת',
 };
 
 const DICTS: Record<string, Partial<Record<StringKey, string>>> = { en, he };

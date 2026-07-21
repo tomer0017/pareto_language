@@ -20,8 +20,17 @@ export const DECLARED_LANGS = ['en'] as const;
 
 /** Corpus target size — the validator enforces exactly this many concepts. Grew from 500 → 511
  *  when the high-reuse connectors/function words (with, without, and, or, here, there, can, more,
- *  less, medium, large) were promoted from in-mission-only to global Core concepts. */
-export const CORPUS_SIZE = 511;
+ *  less, medium, large) were promoted from in-mission-only to global Core concepts; then 511 → 532
+ *  with the Core World Vocabulary Phase 1 (everyday world nouns/verbs that recur in beginner
+ *  stories: house, school, farm, sky, star, grandmother/grandfather, people, rabbit, carrot,
+ *  potato, ball, bowl, clothes, play, read, write, cook, wear, build, sing); then 532 → 631 with
+ *  the Core World Audit (docs/CORE-WORLD-AUDIT.md) — 99 concepts from the ~179-item candidate list:
+ *  emotions (angry, confused), the school kit incl. the NOUN book (pos-scoped vs the reserve verb),
+ *  story animals (wolf-family: fox/pig/lion/bear/mouse/frog…), everyday food/objects/transport, and
+ *  contextual sport/place concepts. Split A(7)/B(44)/C(48) by learning depth, not all early; then
+ *  631 → 633 adding chin (beside eye/nose/lips) and pot (beside bowl/cup) — child-basic Core World
+ *  concepts from the original non-negotiable examples, omitted from the pasted 179-item list. */
+export const CORPUS_SIZE = 633;
 
 export const CORE_CORPUS_VERSION = '2.0.0';
 

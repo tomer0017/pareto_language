@@ -22,6 +22,47 @@ loop (typecheck → lint → tests → build → smoke) green at every milestone
 
 ## What's done
 
+### Sprint 13 — Core World Audit + runtime homograph fix (corpus 532 → 633) (2026-07-21)
+Full audit of a user-supplied ~179-item Hebrew candidate list (the "why is `house` missing?" review) —
+see **[CORE-WORLD-AUDIT.md](./CORE-WORLD-AUDIT.md)** for the per-item table. 183 unique concepts →
+79 already present, **99 new**, 5 composed/duplicate. Placed by learning depth, not all early:
+**Tier A 7** (angry, confused, lips, the NOUN `book`, notebook, pencil, eraser), **Tier B 44**
+(story animals fox/pig/lion/bear/mouse/frog…, occupations, nature, instruments, larger transport),
+**Tier C 48** (sports, entertainment, structures, household tools — contextual/Universal-Tap).
+- **Reversed the Sprint-12 `book`(noun) rejection.** Root cause was a validator limit, not pedagogy:
+  surface-uniqueness keyed on `kind:en` blocked a second `book`. Fix = pos-scoped key `kind:pos:en`
+  in `corpus.ts`, so `book`(noun) coexists with `book`(verb "reserve") and `orange`(fruit) with
+  `orange`(colour). Still forbids genuine same-pos duplicates. Smallest safe change; no slug renames.
+- **+99 concept-first rows** across `data/{descriptions,visual-pilot,food-places,health-people,
+  objects-home,transport-money,actions}.ts` (existing categories, no taxonomy change); `CORPUS_SIZE 532 → 633` (incl. chin + pot, added on review).
+- **EN/FR/ES parity complete:** all 99 added to `fr-pilot.ts` + `es-pilot.ts` (AI-drafted, gendered,
+  pending native review — consistent with pilot honesty policy). Packs regenerated: **633/633** in all
+  three, 305 game-eligible. Distinct collision pairs verified (book noun/verb, orange fruit/colour,
+  clock/watch) in en/fr/es. `chin` (beside eye/nose/lips) + `pot` (beside bowl/cup) added on review.
+- **Runtime homograph fix (Universal Tap).** Pos-scoping let two concepts share a surface, but the
+  tap index (`corpusIndex.bySurface`) was surface-only with an arbitrary iteration-order first-match —
+  tapping "book" always hit the verb and silently dropped the noun. Now `buildCorpusIndex` keeps ALL
+  senses (`sensesBySurface`), picks the primary deterministically (rank, order-independent), and the
+  word sheet shows an **"Other meaning" chip labelled with the alternate's own gloss** (ספר / תפוז) —
+  both senses reachable, no context-guessing, existing primary (booking) behavior unchanged. Files:
+  `corpusIndex.ts`, `foundationStore.ts`, `TappableText.tsx`, `FoundationSheet.tsx`, `strings.ts`,
+  `styles.css`. See CORE-WORLD-AUDIT.md §9.
+- Gates green: typecheck · lint · **872 tests** · build (PWA) · smoke.
+
+### Sprint 12 — Core World Vocabulary Phase 1 (corpus 511 → 532) (2026-07-21)
+Closed the highest-value *everyday physical world* gaps that beginner Reading stories run on — the
+travel-optimized corpus had none of `house/school/farm/sky/star/grandparents/people/rabbit/carrot/
+potato/ball/bowl/clothes` nor the verbs `play/read/write/cook/wear/build/sing`. Pareto-selected (each
+recurs across many stories + is known before school + is highly reusable); `book`(noun) rejected
+(English surface owned by the "reserve" verb — one surface per kind), fairy-tale-only words dropped.
+- **+21 concept-first rows** across `content/core-corpus/data/{visual-pilot,objects-home,food-places,
+  health-people,actions}.ts`, all in existing categories (no taxonomy change); `CORPUS_SIZE 511 → 532`.
+- **EN/FR/ES parity** kept complete: added all 21 to `fr-pilot.ts` + `es-pilot.ts` (identical slug set,
+  enforced by `es-pilot.test.ts`), and the 7 verbs' authored Foundation examples to `frenchExamples.ts`
+  + `spanishExamples.ts` (the fr/es coverage gate). Packs regenerated (`npm run build:core`): 532/532
+  in all three, 225 game-eligible.
+- Gates green: typecheck · lint · **862 tests** · build (PWA) · smoke. See **CORE-CORPUS.md**.
+
 ### Sprint 11 — Zero Start polish: depth, exercise variety & per-item audio (2026-07-19)
 Polish pass on "מתחילים מאפס" (no redesign). Gates green (typecheck · lint · 862 tests · build · smoke).
 - **Per-item replay everywhere.** A small, secondary speaker (`.zs-speaker`) sits beside every

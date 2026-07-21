@@ -22,9 +22,11 @@ export const OBJECTS_HOME: CorpusRow[] = [
   { slug: 'comb', pos: 'noun', en: 'comb', he: 'מסרק', cat: 'objects', layer: 2, rof: 1, skill: 'recognize', s: [1, 2, 1, 1, 1], ex: 'A small comb.', exHe: 'מסרק קטן.' },
   { slug: 'razor', pos: 'noun', en: 'razor', he: 'סכין גילוח', cat: 'objects', layer: 2, rof: 1, skill: 'recognize', s: [2, 2, 2, 1, 2], emoji: '🪒', vis: 0.9, ex: 'A razor, please.', exHe: 'סכין גילוח, בבקשה.' },
   { slug: 'sunglasses', pos: 'noun', en: 'sunglasses', he: 'משקפי שמש', cat: 'objects', layer: 2, rof: 1, skill: 'recognize', s: [3, 2, 2, 1, 3], emoji: '🕶️', vis: 0.9, ex: 'New sunglasses.', exHe: 'משקפי שמש חדשים.' },
+  { slug: 'ball', pos: 'noun', en: 'ball', he: 'כדור', cat: 'objects', layer: 2, rof: 1, skill: 'recognize', s: [3, 2, 2, 1, 2], ex: 'The children play with a ball.', exHe: 'הילדים משחקים בכדור.' },
 
   // ── Home & room (25) ───────────────────────────────────────────────────────
   { slug: 'room', pos: 'noun', en: 'room', he: 'חדר', cat: 'home', layer: 1, rof: 2, skill: 'recall', s: [5, 5, 5, 4, 5], ex: 'A room for two nights.', exHe: 'חדר לשני לילות.' },
+  { slug: 'house', pos: 'noun', en: 'house', he: 'בית', cat: 'home', layer: 1, rof: 2, skill: 'recall', s: [5, 4, 4, 3, 4], emoji: '🏠', vis: 0.95, ex: 'A house with a garden.', exHe: 'בית עם גינה.', alias: ['home'], rel: ['apartment'] },
   { slug: 'bed', pos: 'noun', en: 'bed', he: 'מיטה', cat: 'home', layer: 2, rof: 2, skill: 'recall', s: [4, 4, 4, 2, 4], emoji: '🛏️', vis: 0.9, ex: 'A double bed.', exHe: 'מיטה זוגית.' },
   { slug: 'table', pos: 'noun', en: 'table', he: 'שולחן', cat: 'home', layer: 1, rof: 2, skill: 'recall', s: [5, 5, 5, 3, 5], ex: 'A table for two, please.', exHe: 'שולחן לשניים, בבקשה.' },
   { slug: 'chair', pos: 'noun', en: 'chair', he: 'כיסא', cat: 'home', layer: 2, rof: 1, skill: 'recognize', s: [4, 3, 3, 2, 2], emoji: '🪑', vis: 0.9, ex: 'One more chair, please.', exHe: 'עוד כיסא, בבקשה.' },
@@ -66,4 +68,36 @@ export const OBJECTS_HOME: CorpusRow[] = [
   { slug: 'headphones', pos: 'noun', en: 'headphones', he: 'אוזניות', cat: 'technology', layer: 2, rof: 1, skill: 'recognize', s: [3, 3, 2, 1, 2], emoji: '🎧', vis: 0.9, ex: 'I forgot my headphones.', exHe: 'שכחתי את האוזניות שלי.' },
   { slug: 'television', pos: 'noun', en: 'television', he: 'טלוויזיה', cat: 'technology', layer: 2, rof: 1, skill: 'recognize', s: [3, 2, 2, 1, 1], emoji: '📺', vis: 0.9, ex: 'The television does not work.', exHe: 'הטלוויזיה לא עובדת.', alias: ['TV'] },
   { slug: 'message', pos: 'noun', en: 'message', he: 'הודעה', cat: 'technology', layer: 2, rof: 1, skill: 'recognize', s: [4, 3, 3, 2, 2], emoji: '💬', vis: 0.8, ex: 'Send me a message.', exHe: 'תשלח לי הודעה.' },
+
+  // ── Core World Audit: school kit (Tier A) ───────────────────────────────────
+  // NOTE: slug 'book' is the verb ("to reserve") in actions.ts; this is the NOUN. They coexist
+  // because surface-uniqueness in corpus.ts is now pos-scoped (word:noun:book vs word:verb:book).
+  { slug: 'book-noun', pos: 'noun', en: 'book', he: 'ספר', cat: 'objects', layer: 2, rof: 1, skill: 'recall', s: [4, 3, 3, 2, 2], emoji: '📖', vis: 0.9, ex: 'A book to read.', exHe: 'ספר לקרוא.', rel: ['read', 'notebook'] },
+  { slug: 'notebook', pos: 'noun', en: 'notebook', he: 'מחברת', cat: 'objects', layer: 2, rof: 1, skill: 'recognize', s: [3, 2, 2, 1, 2], emoji: '📓', vis: 0.88, ex: 'Write it in the notebook.', exHe: 'תכתוב את זה במחברת.', rel: ['write'] },
+  { slug: 'pencil', pos: 'noun', en: 'pencil', he: 'עיפרון', cat: 'objects', layer: 2, rof: 1, skill: 'recognize', s: [3, 2, 2, 1, 2], emoji: '✏️', vis: 0.9, ex: 'Draw with a pencil.', exHe: 'לצייר בעיפרון.', rel: ['pen'] },
+  { slug: 'eraser', pos: 'noun', en: 'eraser', he: 'מחק', cat: 'objects', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 1, 1, 1], ex: 'Use the eraser.', exHe: 'תשתמש במחק.', rel: ['pencil'] },
+
+  // ── Core World Audit: everyday objects (Tier B/C) ───────────────────────────
+  { slug: 'box', pos: 'noun', en: 'box', he: 'קופסה', cat: 'objects', layer: 2, rof: 1, skill: 'recognize', s: [3, 2, 2, 1, 2], emoji: '📦', vis: 0.9, ex: 'A box of shoes.', exHe: 'קופסת נעליים.', rel: ['crate'] },
+  { slug: 'crate', pos: 'noun', en: 'crate', he: 'ארגז', cat: 'objects', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 1, 1, 1], ex: 'A crate of fruit.', exHe: 'ארגז פירות.', rel: ['box'] },
+  { slug: 'mailbox', pos: 'noun', en: 'mailbox', he: 'תיבת דואר', cat: 'objects', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 1, 1, 1], emoji: '📫', vis: 0.85, ex: 'The letter is in the mailbox.', exHe: 'המכתב בתיבת הדואר.', rel: ['letter'] },
+  { slug: 'letter', pos: 'noun', en: 'letter', he: 'מכתב', cat: 'objects', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 1, 1, 1], emoji: '✉️', vis: 0.85, ex: 'I wrote a letter.', exHe: 'כתבתי מכתב.', rel: ['mailbox'] },
+  { slug: 'bell', pos: 'noun', en: 'bell', he: 'פעמון', cat: 'objects', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 1, 1, 1], emoji: '🔔', vis: 0.9, ex: 'Ring the bell.', exHe: 'תצלצל בפעמון.' },
+  { slug: 'bucket', pos: 'noun', en: 'bucket', he: 'דלי', cat: 'objects', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 1, 1, 1], emoji: '🪣', vis: 0.9, ex: 'A bucket of water.', exHe: 'דלי מים.' },
+  { slug: 'sponge', pos: 'noun', en: 'sponge', he: 'ספוג', cat: 'objects', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 1, 1, 1], emoji: '🧽', vis: 0.85, ex: 'Wash with a sponge.', exHe: 'לשטוף עם ספוג.' },
+  { slug: 'hammer', pos: 'noun', en: 'hammer', he: 'פטיש', cat: 'objects', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 1, 1, 1], emoji: '🔨', vis: 0.92, ex: 'A hammer and a nail.', exHe: 'פטיש ומסמר.', rel: ['nail'] },
+  { slug: 'nail', pos: 'noun', en: 'nail', he: 'מסמר', cat: 'objects', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 1, 1, 1], ex: 'Hit the nail.', exHe: 'להכות את המסמר.', rel: ['hammer'] },
+  { slug: 'printer', pos: 'noun', en: 'printer', he: 'מדפסת', cat: 'technology', layer: 3, rof: 1, skill: 'recognize', s: [2, 2, 2, 1, 2], emoji: '🖨️', vis: 0.88, ex: 'The printer is out of paper.', exHe: 'למדפסת נגמר הנייר.' },
+  { slug: 'dice', pos: 'noun', en: 'dice', he: 'קובייה', cat: 'objects', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 1, 1, 1], emoji: '🎲', vis: 0.92, ex: 'Roll the dice.', exHe: 'תזרוק את הקובייה.' },
+  { slug: 'guitar', pos: 'noun', en: 'guitar', he: 'גיטרה', cat: 'objects', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 1, 1, 1], emoji: '🎸', vis: 0.95, ex: 'He plays the guitar.', exHe: 'הוא מנגן בגיטרה.', rel: ['musician'] },
+  { slug: 'teddy-bear', pos: 'noun', en: 'teddy bear', he: 'דובי', cat: 'objects', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 1, 1, 1], emoji: '🧸', vis: 0.95, ex: 'The baby has a teddy bear.', exHe: 'לתינוק יש דובי.' },
+  { slug: 'balloon', pos: 'noun', en: 'balloon', he: 'בלון', cat: 'objects', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 1, 1, 1], emoji: '🎈', vis: 0.95, ex: 'A red balloon.', exHe: 'בלון אדום.' },
+  { slug: 'plastic-bag', pos: 'noun', en: 'plastic bag', he: 'שקית', cat: 'objects', layer: 3, rof: 1, skill: 'recognize', s: [3, 2, 2, 1, 2], ex: 'Do you want a plastic bag?', exHe: 'רוצה שקית?', rel: ['bag'] },
+  { slug: 'clock', pos: 'noun', en: 'clock', he: 'שעון קיר', cat: 'objects', layer: 2, rof: 1, skill: 'recognize', s: [3, 2, 2, 1, 2], emoji: '🕰️', vis: 0.85, ex: 'The clock on the wall.', exHe: 'השעון על הקיר.', rel: ['watch'] },
+  { slug: 'parasol', pos: 'noun', en: 'parasol', he: 'שמשייה', cat: 'objects', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 1, 1, 1], emoji: '⛱️', vis: 0.85, ex: 'A parasol on the beach.', exHe: 'שמשייה על החוף.', rel: ['umbrella'] },
+  { slug: 'crane', pos: 'noun', en: 'crane', he: 'מנוף', cat: 'objects', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 1, 1, 1], emoji: '🏗️', vis: 0.8, ex: 'A crane builds the tower.', exHe: 'מנוף בונה את המגדל.' },
+
+  // ── Core World Audit: creative & drawing (Tier B) ───────────────────────────
+  { slug: 'drawing', pos: 'noun', en: 'drawing', he: 'ציור', cat: 'objects', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 1, 1, 1], ex: 'A drawing of a house.', exHe: 'ציור של בית.', rel: ['art', 'painter'] },
+  { slug: 'art', pos: 'noun', en: 'art', he: 'אומנות', cat: 'objects', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 2, 1, 2], ex: 'Modern art.', exHe: 'אומנות מודרנית.', rel: ['drawing', 'painter'] },
 ];

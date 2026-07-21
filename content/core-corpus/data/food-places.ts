@@ -29,6 +29,7 @@ export const FOOD_PLACES: CorpusRow[] = [
   { slug: 'spoon', pos: 'noun', en: 'spoon', he: 'כף', cat: 'food', layer: 2, rof: 1, skill: 'recognize', s: [3, 3, 2, 1, 2], emoji: '🥄', vis: 0.9, ex: 'A spoon for the soup.', exHe: 'כף למרק.' },
   { slug: 'plate', pos: 'noun', en: 'plate', he: 'צלחת', cat: 'food', layer: 2, rof: 1, skill: 'recognize', s: [3, 3, 2, 1, 2], emoji: '🍽️', vis: 0.85, ex: 'Another plate, please.', exHe: 'עוד צלחת, בבקשה.' },
   { slug: 'cup', pos: 'noun', en: 'cup', he: 'ספל', cat: 'food', layer: 2, rof: 1, skill: 'recognize', s: [4, 3, 3, 1, 2], ex: 'A cup of tea.', exHe: 'ספל תה.' },
+  { slug: 'pot', pos: 'noun', en: 'pot', he: 'סיר', cat: 'food', layer: 2, rof: 1, skill: 'recognize', s: [3, 2, 2, 1, 2], ex: 'A pot of soup.', exHe: 'סיר מרק.', rel: ['bowl'] },
   { slug: 'glass', pos: 'noun', en: 'glass', he: 'כוס', cat: 'food', layer: 2, rof: 1, skill: 'recognize', s: [4, 3, 3, 2, 3], ex: 'A glass of water.', exHe: 'כוס מים.' },
   { slug: 'bottle', pos: 'noun', en: 'bottle', he: 'בקבוק', cat: 'food', layer: 2, rof: 1, skill: 'recall', s: [4, 4, 3, 2, 3], ex: 'A bottle of water.', exHe: 'בקבוק מים.' },
   { slug: 'menu', pos: 'noun', en: 'menu', he: 'תפריט', cat: 'food', layer: 1, rof: 2, skill: 'recall', s: [4, 5, 4, 2, 5], emoji: '📋', vis: 0.6, ex: 'The menu, please.', exHe: 'את התפריט, בבקשה.' },
@@ -48,6 +49,8 @@ export const FOOD_PLACES: CorpusRow[] = [
   { slug: 'square', pos: 'noun', en: 'square', he: 'כיכר', cat: 'places', layer: 2, rof: 1, skill: 'recognize', s: [3, 3, 4, 2, 4], ex: 'The main square.', exHe: 'הכיכר הראשית.' },
   { slug: 'bridge', pos: 'noun', en: 'bridge', he: 'גשר', cat: 'places', layer: 2, rof: 1, skill: 'recognize', s: [3, 2, 4, 2, 3], emoji: '🌉', vis: 0.9, ex: 'Cross the bridge.', exHe: 'תחצה את הגשר.' },
   { slug: 'park', pos: 'noun', en: 'park', he: 'פארק', cat: 'places', layer: 2, rof: 1, skill: 'recognize', s: [4, 3, 4, 2, 3], emoji: '🏞️', vis: 0.7, ex: 'Next to the park.', exHe: 'ליד הפארק.' },
+  { slug: 'school', pos: 'noun', en: 'school', he: 'בית ספר', cat: 'places', layer: 2, rof: 1, skill: 'recognize', s: [4, 3, 4, 2, 3], emoji: '🏫', vis: 0.9, ex: 'The children go to school.', exHe: 'הילדים הולכים לבית ספר.' },
+  { slug: 'farm', pos: 'noun', en: 'farm', he: 'חווה', cat: 'places', layer: 2, rof: 1, skill: 'recognize', s: [3, 2, 3, 1, 2], ex: 'Grandfather has a farm.', exHe: 'לסבא יש חווה.' },
   { slug: 'entrance', pos: 'noun', en: 'entrance', he: 'כניסה', cat: 'places', layer: 1, rof: 2, skill: 'recognize', s: [4, 3, 5, 4, 5], ex: 'The main entrance.', exHe: 'הכניסה הראשית.', opp: ['exit'] },
   { slug: 'exit', pos: 'noun', en: 'exit', he: 'יציאה', cat: 'places', layer: 1, rof: 2, skill: 'recognize', s: [4, 4, 5, 5, 5], ex: 'Where is the exit?', exHe: 'איפה היציאה?', opp: ['entrance'] },
   { slug: 'elevator', pos: 'noun', en: 'elevator', he: 'מעלית', cat: 'places', layer: 2, rof: 1, skill: 'recognize', s: [3, 3, 4, 2, 3], emoji: '🛗', vis: 0.85, ex: 'Take the elevator.', exHe: 'קח את המעלית.', alias: ['lift'] },
@@ -59,4 +62,24 @@ export const FOOD_PLACES: CorpusRow[] = [
   { slug: 'cafe', pos: 'noun', en: 'cafe', he: 'בית קפה', cat: 'places', layer: 2, rof: 1, skill: 'recognize', s: [4, 4, 4, 3, 4], ex: 'A nice cafe.', exHe: 'בית קפה נחמד.' },
   { slug: 'gas-station', pos: 'noun', en: 'gas station', he: 'תחנת דלק', cat: 'places', layer: 2, rof: 2, skill: 'recognize', s: [3, 3, 3, 2, 3], emoji: '⛽', vis: 0.9, ex: 'Stop at the gas station.', exHe: 'עצור בתחנת הדלק.' },
   { slug: 'castle', pos: 'noun', en: 'castle', he: 'טירה', cat: 'places', layer: 2, rof: 1, skill: 'recognize', s: [3, 2, 3, 1, 3], emoji: '🏰', vis: 0.9, ex: 'Tickets to the castle.', exHe: 'כרטיסים לטירה.' },
+
+  // ── Core World Audit: food & drink (Tier B/C) ───────────────────────────────
+  { slug: 'lemon', pos: 'noun', en: 'lemon', he: 'לימון', cat: 'food', layer: 2, rof: 1, skill: 'recognize', s: [3, 2, 2, 1, 2], emoji: '🍋', vis: 0.95, ex: 'Tea with lemon.', exHe: 'תה עם לימון.' },
+  { slug: 'orange-fruit', pos: 'noun', en: 'orange', he: 'תפוז', cat: 'food', layer: 2, rof: 1, skill: 'recognize', s: [3, 2, 2, 1, 2], emoji: '🍊', vis: 0.95, ex: 'A sweet orange.', exHe: 'תפוז מתוק.', rel: ['fruit'] },
+  { slug: 'cucumber', pos: 'noun', en: 'cucumber', he: 'מלפפון', cat: 'food', layer: 2, rof: 1, skill: 'recognize', s: [3, 2, 2, 1, 2], emoji: '🥒', vis: 0.95, ex: 'Cucumber in the salad.', exHe: 'מלפפון בסלט.', rel: ['vegetables'] },
+  { slug: 'onion', pos: 'noun', en: 'onion', he: 'בצל', cat: 'food', layer: 2, rof: 1, skill: 'recognize', s: [3, 2, 2, 1, 2], emoji: '🧅', vis: 0.9, ex: 'No onion, please.', exHe: 'בלי בצל, בבקשה.', rel: ['vegetables'] },
+  { slug: 'fries', pos: 'noun', en: 'fries', he: 'צ׳יפס', cat: 'food', layer: 2, rof: 1, skill: 'recognize', s: [3, 3, 2, 2, 3], emoji: '🍟', vis: 0.95, ex: 'A burger and fries.', exHe: 'המבורגר וצ׳יפס.' },
+  { slug: 'candy', pos: 'noun', en: 'candy', he: 'ממתקים', cat: 'food', layer: 3, rof: 1, skill: 'recognize', s: [2, 2, 2, 1, 2], emoji: '🍬', vis: 0.92, ex: 'The children want candy.', exHe: 'הילדים רוצים ממתקים.' },
+  { slug: 'snacks', pos: 'noun', en: 'snacks', he: 'חטיפים', cat: 'food', layer: 3, rof: 1, skill: 'recognize', s: [2, 2, 2, 1, 2], ex: 'Snacks for the trip.', exHe: 'חטיפים לטיול.' },
+  { slug: 'honey', pos: 'noun', en: 'honey', he: 'דבש', cat: 'food', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 1, 1, 1], emoji: '🍯', vis: 0.9, ex: 'Bread with honey.', exHe: 'לחם עם דבש.' },
+  { slug: 'jug', pos: 'noun', en: 'jug', he: 'קנקן', cat: 'food', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 1, 1, 1], ex: 'A jug of water.', exHe: 'קנקן מים.' },
+  { slug: 'cocktail', pos: 'noun', en: 'cocktail', he: 'קוקטייל', cat: 'food', layer: 3, rof: 1, skill: 'recognize', s: [2, 2, 2, 1, 2], emoji: '🍸', vis: 0.9, ex: 'A cocktail at the bar.', exHe: 'קוקטייל בבר.' },
+  { slug: 'spices', pos: 'noun', en: 'spices', he: 'תבלינים', cat: 'food', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 1, 1, 1], ex: 'The market sells spices.', exHe: 'השוק מוכר תבלינים.' },
+
+  // ── Core World Audit: places (Tier B/C) ─────────────────────────────────────
+  { slug: 'stadium', pos: 'noun', en: 'stadium', he: 'אצטדיון', cat: 'places', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 2, 1, 2], emoji: '🏟️', vis: 0.85, ex: 'A game at the stadium.', exHe: 'משחק באצטדיון.' },
+  { slug: 'synagogue', pos: 'noun', en: 'synagogue', he: 'בית כנסת', cat: 'places', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 2, 1, 2], emoji: '🕍', vis: 0.85, ex: 'The old synagogue.', exHe: 'בית הכנסת העתיק.', rel: ['church'] },
+  { slug: 'temple', pos: 'noun', en: 'temple', he: 'מקדש', cat: 'places', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 2, 1, 2], emoji: '🛕', vis: 0.85, ex: 'We visited a temple.', exHe: 'ביקרנו במקדש.', rel: ['church'] },
+  { slug: 'circus', pos: 'noun', en: 'circus', he: 'קרקס', cat: 'places', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 1, 1, 1], emoji: '🎪', vis: 0.9, ex: 'The children love the circus.', exHe: 'הילדים אוהבים את הקרקס.' },
+  { slug: 'tent', pos: 'noun', en: 'tent', he: 'אוהל', cat: 'home', layer: 3, rof: 1, skill: 'recognize', s: [2, 1, 2, 1, 2], emoji: '⛺', vis: 0.9, ex: 'We sleep in a tent.', exHe: 'אנחנו ישנים באוהל.' },
 ];

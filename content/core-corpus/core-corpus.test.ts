@@ -29,6 +29,31 @@ describe('Core 500 — corpus invariants', () => {
     expect(() => validateCorpus([a, c], 2)).toThrow(/duplicate realization/);
   });
 
+  it('allows one surface across different parts of speech, but not within the same POS', () => {
+    // book: NOUN (the object) + VERB ("to reserve") — pos-scoped uniqueness keeps both (see corpus.ts).
+    const bookNoun = row({ slug: 'book-noun', pos: 'noun', en: 'book', he: 'ספר' });
+    const bookVerb = row({ slug: 'book', pos: 'verb', en: 'book', he: 'להזמין' });
+    expect(() => validateCorpus([bookNoun, bookVerb], 2)).not.toThrow();
+    // orange: NOUN (fruit) + ADJ (colour) — same principle.
+    const orangeFruit = row({ slug: 'orange-fruit', pos: 'noun', en: 'orange', he: 'תפוז' });
+    const orangeColour = row({ slug: 'orange', pos: 'adj', en: 'orange', he: 'כתום' });
+    expect(() => validateCorpus([orangeFruit, orangeColour], 2)).not.toThrow();
+    // Same surface AND same POS is still a genuine duplicate — must be rejected.
+    const bookNoun2 = row({ slug: 'book-noun-2', pos: 'noun', en: 'book', he: 'ספר' });
+    expect(() => validateCorpus([bookNoun, bookNoun2], 2)).toThrow(/duplicate realization/);
+  });
+
+  it('ships book(noun)/book(verb) and orange(fruit)/orange(colour) as distinct real concepts', () => {
+    const bySlug = new Map(CORPUS.map((r) => [r.slug, r]));
+    expect(bySlug.get('book')?.pos).toBe('verb');
+    expect(bySlug.get('book-noun')?.pos).toBe('noun');
+    expect(bySlug.get('orange')?.pos).toBe('adj');
+    expect(bySlug.get('orange-fruit')?.pos).toBe('noun');
+    // Same written English surface, genuinely different senses.
+    expect(bySlug.get('book')?.en).toBe(bySlug.get('book-noun')?.en);
+    expect(bySlug.get('orange')?.en).toBe(bySlug.get('orange-fruit')?.en);
+  });
+
   it('rejects broken related/opposite references and undeclared languages', () => {
     expect(() => validateCorpus([row({ rel: ['ghost'] })], 1)).toThrow(/broken reference "ghost"/);
     expect(() => validateCorpus([row({ t: { fr: 'essai' } })], 1)).toThrow(/undeclared language "fr"/);

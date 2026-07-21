@@ -79,6 +79,13 @@ export const SPANISH_EXAMPLES: Record<string, string> = {
   'concept.word.meet': 'Encantado de conocerle.',
   'concept.word.stand': 'Haga cola, por favor.',
   'concept.word.wash': '¿Dónde puedo lavarme las manos?',
+  'concept.word.play': 'Los niños juegan en el parque.',
+  'concept.word.read': 'Leo un libro.',
+  'concept.word.write': 'Escriba su nombre, por favor.',
+  'concept.word.cook': 'Mi madre cocina una sopa.',
+  'concept.word.wear': 'Llevo una chaqueta en invierno.',
+  'concept.word.build': 'Construyen una casa.',
+  'concept.word.sing': 'Los pájaros cantan cada mañana.',
 
   // 🎨 Colors
   'concept.word.red': 'El autobús rojo.',
