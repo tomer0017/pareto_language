@@ -511,21 +511,63 @@ input:focus, select:focus { outline: 2px solid var(--brand); border-color: trans
 
 /* ── Reading Mode ─────────────────────────────────────────────────────── */
 .reading-stats { display: flex; gap: 8px; flex-wrap: wrap; }
-.reading-collection { display: flex; align-items: center; gap: 12px; text-align: start; width: 100%; }
-.reading-collection-emoji { font-size: 1.9rem; flex-shrink: 0; }
-.reading-collection-title { display: block; font-weight: 800; }
-.reading-story-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; width: 100%; }
-.reading-story-title { display: block; font-weight: 800; overflow-wrap: anywhere; }
-.reading-story-meta { display: flex; align-items: center; gap: 8px; margin-top: 5px; flex-wrap: wrap; }
-.reading-meta { margin: 0 0 10px; }
+
+/* Illustration with a graceful fallback if a PNG is ever missing (soft tint + book emoji). */
+.story-img-fallback {
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, var(--accent-soft), var(--brand-soft));
+  font-size: 2rem;
+}
+
+/* Collection hero — a warm, Netflix/Duolingo-style landing card with an illustration collage. */
+.reading-hero {
+  display: block; width: 100%; padding: 0; text-align: start; overflow: hidden;
+  background: var(--card); border-radius: var(--r-lg); box-shadow: var(--shadow-card);
+}
+.reading-hero-collage {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+  width: 100%; aspect-ratio: 2 / 1; background: var(--line);
+}
+.reading-hero-tile { width: 100%; height: 100%; object-fit: cover; }
+.reading-hero-body { display: block; padding: 16px 18px 18px; }
+.reading-hero-title { display: block; font-size: 1.32rem; font-weight: 800; letter-spacing: -0.01em; }
+.reading-hero-meta { display: flex; gap: 8px; flex-wrap: wrap; margin: 12px 0 16px; }
+.reading-hero-meta .chip { box-shadow: none; background: var(--card-sunken); }
+.reading-hero-cta { display: flex; align-items: center; justify-content: center; padding: 14px 18px; }
+
+/* Story selection — one large, tappable visual card per story (image on top, then title + CTA). */
+.reading-story-grid { display: flex; flex-direction: column; gap: 18px; }
+.reading-story-card {
+  position: relative; display: block; width: 100%; padding: 0; text-align: start; overflow: hidden;
+  background: var(--card); border-radius: var(--r-lg); box-shadow: var(--shadow-card);
+}
+.reading-story-img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+.reading-story-flag { position: absolute; top: 12px; inset-inline-end: 12px; box-shadow: var(--shadow-card); }
+.reading-story-body { display: block; padding: 14px 18px 18px; }
+.reading-story-title { display: block; font-size: 1.22rem; font-weight: 800; line-height: 1.25; overflow-wrap: anywhere; }
+.reading-story-sub { display: block; font-size: 0.95rem; margin-top: 3px; overflow-wrap: anywhere; }
+.reading-story-meta { display: flex; align-items: center; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+.reading-story-cta { display: flex; align-items: center; justify-content: center; padding: 14px 18px; margin-top: 14px; }
+
+/* Reader hero — the illustration leads the reader (~38% viewport tall) so context comes before text. */
+.reading-progress { font-weight: 700; }
+.reader-hero { margin-bottom: 18px; text-align: center; }
+.reader-hero-img {
+  display: block; width: 100%; height: 38vh; max-height: 340px; object-fit: cover;
+  border-radius: var(--r-lg); box-shadow: var(--shadow-card);
+}
+.reader-hero-title { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.01em; margin-top: 16px; overflow-wrap: anywhere; }
+.reader-hero-sub { font-size: 1.02rem; margin-top: 4px; overflow-wrap: anywhere; }
+.reader-hero-meta { display: inline-flex; align-items: center; gap: 6px; margin-top: 10px; }
+
 /* Slim, essential-only transport: media controls + settings + quiz. The story owns the space above. */
 .reading-transport { display: flex; align-items: center; gap: 10px; }
 .reading-transport .parrot-transport { flex: 0 0 auto; margin: 0; }
 .reading-gear { flex: 0 0 auto; min-width: 44px; padding: 10px 12px; font-size: 1.1rem; }
 .reading-quiz-btn { flex: 1; }
-/* Generous spacing + line-height encourages slow, sentence-by-sentence reading. */
-.rline { padding: 14px 12px; margin-bottom: 10px; border: 1px solid var(--line); border-radius: var(--r-md); background: var(--card); transition: border-color 0.15s, box-shadow 0.15s; }
-.rline.now { border-color: var(--accent); box-shadow: var(--shadow-pop); }
+/* Light, breathing sentence cards — generous padding + line-height invites slow, per-sentence reading. */
+.rline { padding: 18px 18px; margin-bottom: 14px; border: 1px solid transparent; border-radius: var(--r-lg); background: var(--card); box-shadow: var(--shadow-card); transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s; }
+.rline.now { border-color: var(--accent); box-shadow: var(--shadow-pop); transform: scale(1.01); }
 .rline-top { display: flex; justify-content: flex-end; margin-bottom: 2px; }
 .rline.now .dline-play { background: var(--accent); color: #fff; border-color: transparent; }
 .rline-target { font-size: 1.18rem; font-weight: 700; line-height: 1.75; overflow-wrap: anywhere; }

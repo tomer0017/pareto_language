@@ -10,6 +10,7 @@ import type { PlaybackSpeed } from '../../shared/playback/types.js';
 import { READING_COLLECTIONS } from './collections.js';
 import { buildStoryItems, readingTimeMin, scoreQuiz } from './readingCore.js';
 import { useReadingStore, type ReadingPlayback } from './readingStore.js';
+import { COLLECTION_HERO, collectionHeroUrls, storyImageUrl } from './storyImages.js';
 import { READING_LANGS, type QuizResponse, type ReadingCollection, type ReadingLang, type ReadingLevel, type Story } from './types.js';
 
 /**
@@ -60,42 +61,34 @@ export function Reading() {
     }
   };
 
-  // ── Story list for an opened collection ──
+  // ── Story list for an opened collection (large visual cards) ──
   if (collection) {
     return (
       <div className="screen">
         <LocalTopBar title={L(collection.title)} onBack={() => setCollection(null)} />
         <div className="screen-scroll">
-          <p className="dim small" style={{ marginBottom: 12 }}>{L(collection.description)}</p>
-          <div className="stagger" style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-            {collection.stories.map((st) => <StoryRow key={st.id} story={st} rl={rl} onOpen={() => { tap(); setStory(st); }} />)}
+          <p className="dim small" style={{ marginBottom: 14 }}>{L(collection.description)}</p>
+          <div className="stagger reading-story-grid">
+            {collection.stories.map((st) => <StoryCard key={st.id} story={st} rl={rl} onOpen={() => { tap(); setStory(st); }} />)}
           </div>
         </div>
       </div>
     );
   }
 
-  // ── Collection browse (top level) ──
+  // ── Collection browse (top level) — a warm, image-first landing ──
   return (
     <div className="screen">
       <TopBar title={t('readingTitle')} backTo="home" />
       <div className="screen-scroll">
-        <p className="dim small" style={{ marginBottom: 6 }}>{t('readingIntro')}</p>
-        <div className="reading-stats">
+        <p className="dim small" style={{ marginBottom: 10 }}>{t('readingHeroSub')}</p>
+        <div className="reading-stats" style={{ marginBottom: 4 }}>
           <span className="chip chip-accent">📚 {t('readingCompletedN', { n: completed })}</span>
           {streak > 0 && <span className="chip">🔥 {t('readingStreakN', { n: streak })}</span>}
         </div>
-        <div className="stagger" style={{ display: 'flex', flexDirection: 'column', gap: 12, marginTop: 12 }}>
+        <div className="stagger" style={{ display: 'flex', flexDirection: 'column', gap: 16, marginTop: 14 }}>
           {READING_COLLECTIONS.map((c) => (
-            <button key={c.id} className="card card-press reading-collection" onClick={() => void openCollection(c.id)} disabled={loadingId !== null}>
-              <span className="reading-collection-emoji">{c.emoji}</span>
-              <span style={{ minWidth: 0 }}>
-                <span className="reading-collection-title">{L(c.title)}</span>
-                <span className="dim small">{L(c.description)}</span>
-                <span className="dim small">· {t('readingStoriesN', { n: c.count })}</span>
-              </span>
-              <span className="chip">{loadingId === c.id ? '…' : t('read')}</span>
-            </button>
+            <CollectionHeroCard key={c.id} id={c.id} loading={loadingId === c.id} disabled={loadingId !== null} onOpen={() => void openCollection(c.id)} />
           ))}
         </div>
       </div>
@@ -103,23 +96,55 @@ export function Reading() {
   );
 }
 
-/** One story row in a collection list — title (target + native), difficulty, time, done/resume state. */
-function StoryRow({ story, rl, onOpen }: { story: Story; rl: ReadingLang; onOpen: () => void }) {
+/** Story illustration with a graceful fallback (soft gradient + emoji) if the image is missing. */
+function StoryImage({ src, alt, className }: { src: string; alt: string; className: string }) {
+  const [failed, setFailed] = useState(false);
+  if (failed) return <div className={`${className} story-img-fallback`} aria-hidden>📖</div>;
+  return <img className={className} src={src} alt={alt} loading="lazy" onError={() => setFailed(true)} />;
+}
+
+/** The Netflix/Duolingo-style hero for a collection: a soft illustration collage + a clear CTA. */
+function CollectionHeroCard({ id, loading, disabled, onOpen }: { id: string; loading: boolean; disabled: boolean; onOpen: () => void }) {
+  const meta = READING_COLLECTIONS.find((c) => c.id === id);
+  if (!meta) return null;
+  const heroImages = collectionHeroUrls(id);
+  const minutes = COLLECTION_HERO[id]?.minutes;
+  return (
+    <button className="reading-hero card-press" onClick={onOpen} disabled={disabled}>
+      <span className="reading-hero-collage" aria-hidden>
+        {heroImages.map((src, i) => <StoryImage key={i} src={src} alt="" className="reading-hero-tile" />)}
+      </span>
+      <span className="reading-hero-body">
+        <span className="reading-hero-title">{meta.emoji} {L(meta.title)}</span>
+        <span className="reading-hero-meta">
+          <span className="chip">{t('readingStoriesN', { n: meta.count })}</span>
+          <span className="chip">{t('readingLevelRange')}</span>
+          {minutes != null && <span className="chip">⏱ {t('readingAboutMinN', { n: minutes })}</span>}
+        </span>
+        <span className="btn-primary reading-hero-cta">{loading ? '…' : `${t('readingStartReading')} →`}</span>
+      </span>
+    </button>
+  );
+}
+
+/** One large, tappable visual story card — illustration on top, title + native gloss + meta + CTA. */
+function StoryCard({ story, rl, onOpen }: { story: Story; rl: ReadingLang; onOpen: () => void }) {
   const progress = useReadingStore((s) => s.stories[story.id]);
   const done = progress?.done ?? false;
   const inProgress = !done && (progress?.pos ?? 0) > 0;
   return (
-    <button className="card card-press reading-story-row" onClick={onOpen}>
-      <span style={{ minWidth: 0, textAlign: 'start' }}>
+    <button className="reading-story-card card-press" onClick={onOpen}>
+      <StoryImage src={storyImageUrl(story)} alt={story.title.target.en} className="reading-story-img" />
+      {done && <span className="reading-story-flag badge badge-ready">✓ {t('readingDone')}</span>}
+      <span className="reading-story-body">
         <span className="reading-story-title">{story.title.target[rl]}</span>
-        <span className="dim small">{L(story.title.tr)}</span>
+        <span className="reading-story-sub dim">{L(story.title.tr)}</span>
         <span className="reading-story-meta">
           <span className="badge">{BAND[story.level]}</span>
           <span className="dim small">⏱ {t('readingMinN', { n: readingTimeMin(story, rl) })}</span>
-          {done && <span className="badge badge-ready">✓ {t('readingDone')}</span>}
         </span>
+        <span className="btn-accent reading-story-cta">{done ? t('readingReadAgain') : inProgress ? `${t('continue')} →` : `${t('readingStartReading')} →`}</span>
       </span>
-      <span className="chip chip-accent">{done ? t('readingReadAgain') : inProgress ? t('continue') : t('readingStart')}</span>
     </button>
   );
 }
@@ -176,15 +201,21 @@ function StoryReader({ story, onExit }: { story: Story; onExit: () => void }) {
     <div className="reader">
       <div className="topbar">
         <button className="reader-back" onClick={() => { pb.pause(); onExit(); }} aria-label={t('back')}>←</button>
-        <span className="chip">📖 {story.title.target[rl]}</span>
+        <span className="dim small reading-progress">{t('lineProgress', { i: pb.position, n: pb.total })}</span>
         <span style={{ width: 52 }} />
       </div>
-      <p className="dim small reading-meta">
-        <span className="badge">{BAND[story.level]}</span> · ⏱ {t('readingMinN', { n: readingTimeMin(story, rl) })} · {t('lineProgress', { i: pb.position, n: pb.total })}
-      </p>
 
-      {/* The story is the hero — it fills the scroll area; controls stay minimal below. */}
+      {/* The story is the hero — it fills the scroll area; controls stay minimal below. The
+          illustration leads so a beginner grasps the context BEFORE meeting the foreign text. */}
       <div className="reader-scroll">
+        <div className="reader-hero fade-in">
+          <StoryImage src={storyImageUrl(story)} alt={story.title.target.en} className="reader-hero-img" />
+          <h2 className="reader-hero-title">{story.title.target[rl]}</h2>
+          <p className="reader-hero-sub dim">{L(story.title.tr)}</p>
+          <p className="reader-hero-meta dim small">
+            <span className="badge">{BAND[story.level]}</span> · ⏱ {t('readingMinN', { n: readingTimeMin(story, rl) })}
+          </p>
+        </div>
         {story.sentences.map((sen, i) => (
           <div key={i} ref={(el) => { lineRefs.current[i] = el; }} className={`rline ${i === current ? 'now' : ''}`}>
             <div className="rline-top">
