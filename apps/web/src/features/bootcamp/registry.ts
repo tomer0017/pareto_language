@@ -27,7 +27,6 @@ import { DAY26 } from './day26.js';
 import { DAY27 } from './day27.js';
 import { DAY28 } from './day28.js';
 import { DAY29 } from './day29.js';
-import { DAY30 } from './day30.js';
 import { DAYS_FR } from './fr/index.js';
 import { DAYS_ES } from './es/index.js';
 import type { BootcampDayContent } from './types.js';
@@ -42,9 +41,9 @@ import type { BootcampDayContent } from './types.js';
 
 /** The English mission set (the pilot). `DAYS` name kept — many tests/consumers reference it. */
 export const DAYS: Record<number, BootcampDayContent> = {
-  1: DAY1, 2: DAY2, 3: DAY3, 4: DAY4, 5: DAY5, 6: DAY6, 7: DAY7, 8: DAY8, 9: DAY9, 10: DAY10,
-  11: DAY11, 12: DAY12, 13: DAY13, 14: DAY14, 15: DAY15, 16: DAY16, 17: DAY17, 18: DAY18, 19: DAY19, 20: DAY20,
-  21: DAY21, 22: DAY22, 23: DAY23, 24: DAY24, 25: DAY25, 26: DAY26, 27: DAY27, 28: DAY28, 29: DAY29, 30: DAY30,
+  1: DAY1, 2: DAY2, 3: DAY3, 4: DAY4, 5: DAY5, 6: DAY6, 7: DAY7, 8: DAY8, 9: DAY9,
+  10: DAY10, 11: DAY11, 12: DAY12, 13: DAY13, 14: DAY14, 15: DAY15, 16: DAY16, 17: DAY17, 18: DAY18, 19: DAY19,
+  20: DAY20, 21: DAY21, 22: DAY22, 23: DAY23, 24: DAY24, 25: DAY25, 26: DAY26, 27: DAY27, 28: DAY28, 29: DAY29,
 };
 
 export const MISSIONS_BY_LANG: Record<string, Record<number, BootcampDayContent>> = {

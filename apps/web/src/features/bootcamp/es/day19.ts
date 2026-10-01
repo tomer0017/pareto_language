@@ -3,111 +3,111 @@ import type { BootcampDayContent, BootcampDialogue, BootcampItem } from '../type
 import { recoveryEs } from './recovery.js';
 
 /**
- * Spanish Mission 19 — "Transporte público" (Public Transport). Spanish parallel of English day 19:
- * ticket, platform, direction, the right stop — half of it pure listening. `tr:{en,he}` glosses;
- * `es.*` ids. AI-drafted, pending review.
+ * Spanish Mission 19 — "Entradas y atracciones" (Tickets & Attractions). Spanish parallel of English
+ * mission 19: buy tickets, ask opening hours, find a discount, catch the tour — the hidden skill is
+ * understanding times. `tr:{en,he}` glosses; `es.*` ids. AI-drafted, pending review.
  */
 const T = (he: string, en: string): LocalizedText => ({ he, en });
 const TR = (en: string, he: string): LocalizedText => ({ en, he });
 
 export const DAY19_ES_ITEMS: BootcampItem[] = [
   // say
-  { id: 'es.phrase.trans.one-ticket', text: 'Un boleto para el centro, por favor.', meaning: T('כרטיס אחד למרכז, בבקשה.', 'One ticket to the center, please.'),
-    tip: T('התבנית: Un boleto para ___ — קונה כרטיס לכל יעד.', 'Template: Un boleto para ___ — buys a ticket to anywhere.') },
-  { id: 'es.phrase.trans.which-platform', text: '¿Qué andén?', meaning: T('איזה רציף?', 'Which platform?'),
-    tip: T('שתי מילים שמונעות עלייה לרכבת הלא נכונה.', 'Two words that stop you boarding the wrong train.') },
-  { id: 'es.phrase.trans.does-stop', text: '¿Para en el museo?', meaning: T('זה עוצר במוזיאון?', 'Does this stop at the museum?'),
-    tip: T('התבנית: ¿Para en ___ ? — מוודאת שאתה יורד נכון.', 'Template: ¿Para en ___ ? — makes sure you get off in the right place.') },
-  { id: 'es.phrase.trans.next-one', text: '¿Cuándo es el próximo?', meaning: T('מתי הבא?', "When's the next one?") },
-  // hear — booth + platform
-  { id: 'es.reply.trans.single-return', text: '¿Solo ida o ida y vuelta?', meaning: T('הלוך או הלוך-חזור?', 'Single or return?') },
-  { id: 'es.reply.trans.platform-two', text: 'Andén número dos.', meaning: T('רציף שתיים.', 'Platform two.') },
-  { id: 'es.reply.trans.every-ten', text: 'Cada diez minutos.', meaning: T('כל עשר דקות.', 'Every ten minutes.') },
-  { id: 'es.reply.trans.three-stops', text: 'Son tres paradas.', meaning: T('זה שלוש תחנות.', "It's three stops.") },
-  { id: 'es.reply.trans.wrong-way', text: 'Va en dirección contraria.', meaning: T('אתה בכיוון הלא נכון.', "You're going the wrong way.") },
-  { id: 'es.reply.trans.stop-next', text: 'Su parada es la siguiente.', meaning: T('התחנה שלך הבאה.', 'Your stop is next.') },
+  { id: 'es.phrase.attr.two-tickets', text: 'Dos entradas, por favor.', meaning: T('שני כרטיסים, בבקשה.', 'Two tickets, please.'),
+    tip: T('התבנית: ___ entradas, por favor. פשוט מספר, וגמרנו.', 'Template: ___ entradas, por favor. Just a number, done.') },
+  { id: 'es.phrase.attr.what-time-open', text: '¿A qué hora abren?', meaning: T('באיזו שעה אתם פותחים?', 'What time do you open?'),
+    tip: T('התבנית: ¿A qué hora ___ ? — פותחת כל שאלת שעה.', 'Template: ¿A qué hora ___ ? — opens any time question.') },
+  { id: 'es.phrase.attr.discount', text: '¿Hay descuento?', meaning: T('יש הנחה?', 'Is there a discount?'),
+    tip: T('התבנית: ¿Hay ___ ? — בודקת אם קיים משהו. שאלה ששווה כסף.', 'Template: ¿Hay ___ ? — checks if something exists. A question worth money.') },
+  { id: 'es.phrase.attr.guided-tour', text: '¿Hay visita guiada?', meaning: T('יש סיור מודרך?', 'Is there a guided tour?') },
+  // hear — ticket desk
+  { id: 'es.reply.attr.how-many-tickets', text: '¿Cuántas entradas?', meaning: T('כמה כרטיסים?', 'How many tickets?') },
+  { id: 'es.reply.attr.opens-nine', text: 'Abrimos a las nueve.', meaning: T('אנחנו פותחים בתשע.', 'We open at nine.') },
+  { id: 'es.reply.attr.last-entry', text: 'La última entrada es a las cinco.', meaning: T('כניסה אחרונה בחמש.', 'Last entry is at five.') },
+  { id: 'es.reply.attr.tour-eleven', text: 'La visita empieza a las once.', meaning: T('הסיור מתחיל באחת-עשרה.', 'The tour starts at eleven.') },
+  { id: 'es.reply.attr.students-half', text: 'Los estudiantes pagan la mitad.', meaning: T('סטודנטים משלמים חצי מחיר.', 'Students get half price.') },
+  { id: 'es.reply.attr.sold-out', text: 'Hoy está agotado.', meaning: T('היום אזל.', 'Today is sold out.') },
   ...recoveryEs('es.phrase.recovery.repeat', 'es.phrase.recovery.slowly', 'es.phrase.recovery.thank-you'),
 ];
 
-const SCENE_TRANSPORT: BootcampDialogue = {
-  id: 'transport',
+const SCENE_ATTRACTION: BootcampDialogue = {
+  id: 'ticket-desk',
   start: 'n1',
   nodes: [
-    { id: 'n1', who: 'npc', next: 'c1', en: '¡Hola! ¿A dónde va?', tr: TR('Hello! Where are you headed?', 'שלום! לאן אתה נוסע?'), he: 'שלום! לאן אתה נוסע?' },
+    { id: 'n1', who: 'npc', next: 'c1', en: '¡Hola! Bienvenido al museo. ¿Cuántas entradas?', tr: TR('Hi! Welcome to the museum. How many tickets?', 'היי! ברוך הבא למוזיאון. כמה כרטיסים?'), he: 'היי! ברוך הבא למוזיאון. כמה כרטיסים?' },
     { id: 'c1', who: 'you', en: '', he: '', choices: [
-      { en: 'Un boleto para el centro, por favor.', tr: TR('One ticket to the center, please.', 'כרטיס אחד למרכז, בבקשה.'), he: 'כרטיס אחד למרכז, בבקשה.', itemId: 'es.phrase.trans.one-ticket', correct: true, next: 'n2' },
+      { en: 'Dos entradas, por favor.', tr: TR('Two tickets, please.', 'שני כרטיסים, בבקשה.'), he: 'שני כרטיסים, בבקשה.', itemId: 'es.phrase.attr.two-tickets', correct: true, next: 'n2' },
       { en: '¿Puede repetir, por favor?', tr: TR('Can you repeat that?', 'אפשר לחזור על זה?'), he: 'אפשר לחזור על זה?', itemId: 'es.phrase.recovery.repeat', correct: true, next: 'r1' },
     ] },
-    { id: 'r1', who: 'npc', slow: true, next: 'c1b', en: '¿A — dónde — va?', tr: TR('Where — are you — going?', 'לאן — אתה — נוסע?'), he: 'לאן — אתה — נוסע?' },
+    { id: 'r1', who: 'npc', slow: true, next: 'c1b', en: '¿Cuántas — entradas?', tr: TR('How — many — tickets?', 'כמה — כרטיסים?'), he: 'כמה — כרטיסים?' },
     { id: 'c1b', who: 'you', en: '', he: '', choices: [
-      { en: 'Un boleto para el centro, por favor.', tr: TR('One ticket to the center, please.', 'כרטיס אחד למרכז, בבקשה.'), he: 'כרטיס אחד למרכז, בבקשה.', itemId: 'es.phrase.trans.one-ticket', correct: true, next: 'n2' },
+      { en: 'Dos entradas, por favor.', tr: TR('Two tickets, please.', 'שני כרטיסים, בבקשה.'), he: 'שני כרטיסים, בבקשה.', itemId: 'es.phrase.attr.two-tickets', correct: true, next: 'n2' },
     ] },
-    { id: 'n2', who: 'npc', next: 'c2', en: '¿Solo ida o ida y vuelta?', tr: TR('Single or return?', 'הלוך או הלוך-חזור?'), he: 'הלוך או הלוך-חזור?' },
+    { id: 'n2', who: 'npc', next: 'c2', en: 'Dos — son veinte euros. ¿Algo más?', tr: TR("Two — that's twenty euros. Anything else?", 'שניים — זה עשרים יורו. עוד משהו?'), he: 'שניים — זה עשרים יורו. עוד משהו?' },
     { id: 'c2', who: 'you', en: '', he: '', choices: [
-      { en: 'Solo ida, por favor.', tr: TR('Single, please.', 'הלוך, בבקשה.'), he: 'הלוך, בבקשה.', correct: true, next: 'n3' },
-      { en: 'Más despacio, por favor.', tr: TR('Please speak slowly.', 'דבר לאט, בבקשה.'), he: 'דבר לאט, בבקשה.', itemId: 'es.phrase.recovery.slowly', correct: true, next: 'r2' },
+      { en: '¿Hay descuento?', tr: TR('Is there a discount?', 'יש הנחה?'), he: 'יש הנחה?', itemId: 'es.phrase.attr.discount', correct: true, next: 'n3' },
+      { en: '¿A qué hora abren?', tr: TR('What time do you open?', 'באיזו שעה אתם פותחים?'), he: 'באיזו שעה אתם פותחים?', itemId: 'es.phrase.attr.what-time-open', correct: true, next: 'n2b' },
     ] },
-    { id: 'r2', who: 'npc', slow: true, next: 'c2b', en: '¿Solo ida — o — ida y vuelta?', tr: TR('Single — or — return?', 'הלוך — או — הלוך-חזור?'), he: 'הלוך — או — הלוך-חזור?' },
+    { id: 'n2b', who: 'npc', next: 'c2b', en: 'Abrimos a las nueve, y la última entrada es a las cinco.', tr: TR('We open at nine, and last entry is at five.', 'אנחנו פותחים בתשע, וכניסה אחרונה בחמש.'), he: 'אנחנו פותחים בתשע, וכניסה אחרונה בחמש.' },
     { id: 'c2b', who: 'you', en: '', he: '', choices: [
-      { en: 'Solo ida, por favor.', tr: TR('Single, please.', 'הלוך, בבקשה.'), he: 'הלוך, בבקשה.', correct: true, next: 'n3' },
+      { en: '¿Hay descuento?', tr: TR('Is there a discount?', 'יש הנחה?'), he: 'יש הנחה?', itemId: 'es.phrase.attr.discount', correct: true, next: 'n3' },
     ] },
-    { id: 'n3', who: 'npc', fast: true, next: 'c3', en: 'Son tres euros. Andén número dos, sale cada diez minutos.', tr: TR("That's three euros. Platform two, leaves every ten minutes.", 'זה שלושה יורו. רציף שתיים, יוצא כל עשר דקות.'), he: 'זה שלושה יורו. רציף שתיים, יוצא כל עשר דקות.' },
+    { id: 'n3', who: 'npc', next: 'c3', en: 'Los estudiantes pagan la mitad — ¿tiene carné de estudiante?', tr: TR('Students get half price — do you have a student card?', 'סטודנטים חצי מחיר — יש לך כרטיס סטודנט?'), he: 'סטודנטים חצי מחיר — יש לך כרטיס סטודנט?' },
     { id: 'c3', who: 'you', en: '', he: '', choices: [
-      { en: '¿Qué andén?', tr: TR('Which platform?', 'איזה רציף?'), he: 'איזה רציף?', itemId: 'es.phrase.trans.which-platform', correct: true, next: 'n3b' },
       { en: '¡Gracias!', tr: TR('Thank you!', 'תודה!'), he: 'תודה!', itemId: 'es.phrase.recovery.thank-you', correct: true, next: 'n4' },
+      { en: 'Más despacio, por favor.', tr: TR('Please speak slowly.', 'דבר לאט, בבקשה.'), he: 'דבר לאט, בבקשה.', itemId: 'es.phrase.recovery.slowly', correct: true, next: 'r3' },
     ] },
-    { id: 'n3b', who: 'npc', slow: true, next: 'c3b', en: 'Andén — dos. Todo recto.', tr: TR('Platform — two. Straight ahead.', 'רציף — שתיים. ישר קדימה.'), he: 'רציף — שתיים. ישר קדימה.' },
+    { id: 'r3', who: 'npc', slow: true, next: 'c3b', en: 'Los estudiantes — pagan — la mitad.', tr: TR('Students — get — half price.', 'סטודנטים — משלמים — חצי מחיר.'), he: 'סטודנטים — משלמים — חצי מחיר.' },
     { id: 'c3b', who: 'you', en: '', he: '', choices: [
       { en: '¡Gracias!', tr: TR('Thank you!', 'תודה!'), he: 'תודה!', itemId: 'es.phrase.recovery.thank-you', correct: true, next: 'n4' },
     ] },
-    { id: 'n4', who: 'npc', next: 'c4', en: 'El tren está justo ahí. Suba.', tr: TR("The train's right here. Hop on.", 'הרכבת ממש כאן. עלה.'), he: 'הרכבת ממש כאן. עלה.' },
+    { id: 'n4', who: 'npc', next: 'c4', en: 'Aquí tiene sus entradas. ¿Algo más en lo que pueda ayudar?', tr: TR('Here are your tickets. Anything else I can help with?', 'הנה הכרטיסים. עוד משהו שאוכל לעזור?'), he: 'הנה הכרטיסים. עוד משהו שאוכל לעזור?' },
     { id: 'c4', who: 'you', en: '', he: '', choices: [
-      { en: '¿Para en el museo?', tr: TR('Does this stop at the museum?', 'זה עוצר במוזיאון?'), he: 'זה עוצר במוזיאון?', itemId: 'es.phrase.trans.does-stop', correct: true, next: 'n5' },
-      { en: '¿Cuándo es el próximo?', tr: TR("When's the next one?", 'מתי הבא?'), he: 'מתי הבא?', itemId: 'es.phrase.trans.next-one', correct: true, next: 'n4b' },
+      { en: '¿Hay visita guiada?', tr: TR('Is there a guided tour?', 'יש סיור מודרך?'), he: 'יש סיור מודרך?', itemId: 'es.phrase.attr.guided-tour', correct: true, next: 'n5' },
+      { en: '¿Puede repetir, por favor?', tr: TR('Can you repeat that?', 'אפשר לחזור על זה?'), he: 'אפשר לחזור על זה?', itemId: 'es.phrase.recovery.repeat', correct: true, next: 'r4' },
     ] },
-    { id: 'n4b', who: 'npc', next: 'c4b', en: '¿El próximo? Cada diez minutos — pero este va bien, suba.', tr: TR('The next one? Every ten minutes — but this one is fine, hop on.', 'הבא? כל עשר דקות — אבל זה בסדר, עלה.'), he: 'הבא? כל עשר דקות — אבל זה בסדר, עלה.' },
+    { id: 'r4', who: 'npc', slow: true, next: 'c4b', en: '¿Algo — más?', tr: TR('Anything — else?', 'עוד — משהו?'), he: 'עוד — משהו?' },
     { id: 'c4b', who: 'you', en: '', he: '', choices: [
-      { en: '¿Para en el museo?', tr: TR('Does this stop at the museum?', 'זה עוצר במוזיאון?'), he: 'זה עוצר במוזיאון?', itemId: 'es.phrase.trans.does-stop', correct: true, next: 'n5' },
+      { en: '¿Hay visita guiada?', tr: TR('Is there a guided tour?', 'יש סיור מודרך?'), he: 'יש סיור מודרך?', itemId: 'es.phrase.attr.guided-tour', correct: true, next: 'n5' },
     ] },
-    { id: 'n5', who: 'npc', next: 'c5', en: 'Sí — son tres paradas. Le aviso cuándo.', tr: TR("Yes — it's three stops. I'll tell you when.", 'כן — זה שלוש תחנות. אני אגיד לך מתי.'), he: 'כן — זה שלוש תחנות. אני אגיד לך מתי.' },
+    { id: 'n5', who: 'npc', next: 'c5', en: 'Sí — la visita empieza a las once, en el vestíbulo principal.', tr: TR('Yes — the tour starts at eleven, in the main hall.', 'כן — הסיור מתחיל באחת-עשרה, באולם המרכזי.'), he: 'כן — הסיור מתחיל באחת-עשרה, באולם המרכזי.' },
     { id: 'c5', who: 'you', en: '', he: '', choices: [
       { en: '¡Gracias!', tr: TR('Thank you!', 'תודה!'), he: 'תודה!', itemId: 'es.phrase.recovery.thank-you', correct: true, next: 'n6' },
-      { en: '¿Puede repetir, por favor?', tr: TR('Can you repeat that?', 'אפשר לחזור על זה?'), he: 'אפשר לחזור על זה?', itemId: 'es.phrase.recovery.repeat', correct: true, next: 'r5' },
+      { en: 'Más despacio, por favor.', tr: TR('Please speak slowly.', 'דבר לאט, בבקשה.'), he: 'דבר לאט, בבקשה.', itemId: 'es.phrase.recovery.slowly', correct: true, next: 'r5' },
     ] },
-    { id: 'r5', who: 'npc', slow: true, next: 'c5b', en: 'Son — tres — paradas.', tr: TR("It's — three — stops.", 'זה — שלוש — תחנות.'), he: 'זה — שלוש — תחנות.' },
+    { id: 'r5', who: 'npc', slow: true, next: 'c5b', en: 'La visita — empieza — a las once.', tr: TR('The tour — starts — at eleven.', 'הסיור — מתחיל — באחת-עשרה.'), he: 'הסיור — מתחיל — באחת-עשרה.' },
     { id: 'c5b', who: 'you', en: '', he: '', choices: [
       { en: '¡Gracias!', tr: TR('Thank you!', 'תודה!'), he: 'תודה!', itemId: 'es.phrase.recovery.thank-you', correct: true, next: 'n6' },
     ] },
-    { id: 'n6', who: 'npc', end: true, en: 'Ya llegamos — su parada es la siguiente. ¡Que disfrute del museo!', tr: TR('Here we are — your stop is next. Enjoy the museum!', 'הגענו — התחנה שלך הבאה. תיהנה במוזיאון!'), he: 'הגענו — התחנה שלך הבאה. תיהנה במוזיאון!' },
+    { id: 'n6', who: 'npc', end: true, en: '¡Que disfrute del museo — y de la visita!', tr: TR('Enjoy the museum — and the tour!', 'תיהנה מהמוזיאון — ומהסיור!'), he: 'תיהנה מהמוזיאון — ומהסיור!' },
   ],
 };
 
 export const DAY19_ES: BootcampDayContent = {
   day: 19,
-  title: T('תחבורה ציבורית', 'Public Transport'),
+  title: T('כרטיסים ואטרקציות', 'Tickets & Attractions'),
   items: DAY19_ES_ITEMS,
-  dialogues: { transport: SCENE_TRANSPORT },
+  dialogues: { 'ticket-desk': SCENE_ATTRACTION },
   steps: [
-    { kind: 'talk', icon: '🚇', title: T('משימה 19: תחבורה ציבורית', 'Mission 19: Public Transport'),
+    { kind: 'talk', icon: '🎟️', title: T('משימה 19: כרטיסים ואטרקציות', 'Mission 19: Tickets & Attractions'),
       body: [
-        T('העיר זזה בשבילך — בזול. כרטיס, רציף, כיוון, והתחנה הנכונה.', 'The city moves for you — cheaply. Ticket, platform, direction, the right stop.'),
-        T('חצי מהמשימה הזאת היא האזנה: הכרזות ותשובות מהירות של איזה-רציף.', 'Half of this mission is listening: announcements and fast which-platform answers.'),
-      ], cta: T('לגשת לדלפק הכרטיסים', 'Step up to the ticket desk') },
-    { kind: 'tool', itemId: 'es.phrase.trans.one-ticket', index: 1, total: 4, label: T('לקנות כרטיס', 'Buy a ticket') },
-    { kind: 'tool', itemId: 'es.phrase.trans.which-platform', index: 2, total: 4, label: T('לאתר רציף', 'Find the platform') },
-    { kind: 'tool', itemId: 'es.phrase.trans.does-stop', index: 3, total: 4, label: T('לוודא יעד', 'Confirm the stop') },
-    { kind: 'tool', itemId: 'es.phrase.trans.next-one', index: 4, total: 4, label: T('לשאול על הבא', 'Ask about the next one') },
-    { kind: 'replies', saidItemId: 'es.phrase.trans.one-ticket',
-      replyIds: ['es.reply.trans.single-return', 'es.reply.trans.platform-two', 'es.reply.trans.every-ten', 'es.reply.trans.three-stops'] },
-    { kind: 'receipt', text: T('אתה מזהה את תשובות הדלפק והרציף — הלוך/חזור, מספר רציף, תדירות.', 'You recognize the booth and platform answers — single/return, platform number, frequency.') },
-    { kind: 'quiz', itemId: 'es.reply.trans.single-return', wrongIds: ['es.reply.trans.platform-two', 'es.reply.trans.three-stops'] },
-    { kind: 'quiz', itemId: 'es.reply.trans.every-ten', wrongIds: ['es.reply.trans.wrong-way', 'es.reply.trans.stop-next'] },
-    { kind: 'dialogue', dialogueId: 'transport' },
-    { kind: 'receipt', text: T('קנית כרטיס, מצאת רציף, ווידאת שהרכבת עוצרת ביעד שלך.', 'You bought a ticket, found the platform, and confirmed the train stops at your destination.') },
+        T('הטיול נהיה טיול. היום קונים כרטיסים, שואלים שעות, מוצאים הנחה ותופסים סיור.', 'The trip becomes a trip. Today you buy tickets, ask hours, find a discount, and catch a tour.'),
+        T('ומאחורי הכל מסתתרת מיומנות אחת: להבין שעות. היא נמצאת בכל מקום.', 'And behind it all hides one skill: understanding times. It’s everywhere.'),
+      ], cta: T('לגשת לקופה', 'Step up to the ticket desk') },
+    { kind: 'tool', itemId: 'es.phrase.attr.two-tickets', index: 1, total: 4, label: T('לקנות כרטיסים', 'Buy tickets') },
+    { kind: 'tool', itemId: 'es.phrase.attr.what-time-open', index: 2, total: 4, label: T('לשאול שעות', 'Ask the hours') },
+    { kind: 'tool', itemId: 'es.phrase.attr.discount', index: 3, total: 4, label: T('לבקש הנחה', 'Ask for a discount') },
+    { kind: 'tool', itemId: 'es.phrase.attr.guided-tour', index: 4, total: 4, label: T('לשאול על סיור', 'Ask about a tour') },
+    { kind: 'replies', saidItemId: 'es.phrase.attr.two-tickets',
+      replyIds: ['es.reply.attr.how-many-tickets', 'es.reply.attr.opens-nine', 'es.reply.attr.students-half', 'es.reply.attr.tour-eleven'] },
+    { kind: 'receipt', text: T('אתה מזהה תשובות של קופה — כמות, שעות, הנחות, זמני סיור.', 'You recognize a ticket desk’s answers — quantity, hours, discounts, tour times.') },
+    { kind: 'quiz', itemId: 'es.reply.attr.opens-nine', wrongIds: ['es.reply.attr.last-entry', 'es.reply.attr.tour-eleven'] },
+    { kind: 'quiz', itemId: 'es.reply.attr.students-half', wrongIds: ['es.reply.attr.how-many-tickets', 'es.reply.attr.sold-out'] },
+    { kind: 'dialogue', dialogueId: 'ticket-desk' },
+    { kind: 'receipt', text: T('קנית כרטיסים, גילית הנחה, ותפסת את זמני הסיור — הכל בספרדית.', 'You bought tickets, found a discount, and caught the tour times — all in Spanish.') },
     { kind: 'swipe', itemIds: DAY19_ES_ITEMS.map((i) => i.id) },
-    { kind: 'ambush', npc: { en: 'Este tren lleva retraso — mejor coja el autobús alternativo en la parada C.', tr: TR("This train's been delayed — you'll want the replacement bus from stand C instead.", 'הרכבת הזאת מתעכבת — עדיף לך את האוטובוס החלופי מעמדה C.'), he: 'הרכבת הזאת מתעכבת — עדיף לך את האוטובוס החלופי מעמדה C.' },
-      correctItemId: 'es.phrase.recovery.repeat', wrongItemId: 'es.phrase.trans.which-platform' },
-    { kind: 'receipt', text: T('הודעת שיבוש מהירה — וביקשת שיחזרו במקום לעלות לרכבת הלא נכונה.', 'A fast disruption announcement — and you asked them to repeat instead of boarding the wrong train.') },
+    { kind: 'ambush', npc: { en: 'La exposición principal está cerrada hoy, pero la terraza de la azotea está abierta — ¿prefiere eso en su lugar?', tr: TR("The main exhibit's closed today but the rooftop terrace is open would you prefer that instead?", 'התערוכה הראשית סגורה היום, אבל גג הצפייה פתוח — אתה מעדיף את זה במקום?'), he: 'התערוכה הראשית סגורה היום, אבל גג הצפייה פתוח — אתה מעדיף את זה במקום?' },
+      correctItemId: 'es.phrase.recovery.slowly', wrongItemId: 'es.phrase.attr.two-tickets' },
+    { kind: 'receipt', text: T('שינוי תוכניות מפתיע ומהיר — וביקשת שיאט במקום להנהן בעיוורון.', 'A fast, surprise change of plans — and you asked them to slow down instead of nodding blindly.') },
     { kind: 'summary' },
   ],
 };

@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { buildComprehensionContext, buildRespondContext } from './answerContext.js';
-import { DAY3 } from '../../features/bootcamp/day3.js';
 import { DAY2 } from '../../features/bootcamp/day2.js';
+import { DAY1 } from '../../features/bootcamp/day1.js';
 
 /**
  * Task D3 — the reusable wrong-answer context carries the FULL learning connection for every
@@ -33,9 +33,9 @@ describe('answer context — full learning hierarchy', () => {
   });
 
   it('MONEY REGRESSION — the ambush shows what you heard, not just the answer', () => {
-    const step = DAY3.steps.find((s) => s.kind === 'ambush');
+    const step = DAY2.steps.find((s) => s.kind === 'ambush');
     if (!step || step.kind !== 'ambush') throw new Error('Mission 3 ambush missing');
-    const byId = new Map(DAY3.items.map((i) => [i.id, i]));
+    const byId = new Map(DAY2.items.map((i) => [i.id, i]));
     const correct = byId.get(step.correctItemId)!;
     const wrong = byId.get(step.wrongItemId)!;
 
@@ -57,7 +57,7 @@ describe('answer context — full learning hierarchy', () => {
   });
 
   it('DIALOGUE CHOICE — prompt is the NPC line, expected is the correct sibling', () => {
-    const scene = DAY2.dialogues['meeting-host']!;
+    const scene = DAY1.dialogues['meeting-host']!;
     const node = scene.nodes.find((n) => n.choices?.some((c) => !c.correct))!;
     const wrong = node.choices!.find((c) => !c.correct)!;
     const right = node.choices!.find((c) => c.correct)!;

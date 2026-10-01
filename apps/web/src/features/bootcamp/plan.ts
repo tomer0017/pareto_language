@@ -1,14 +1,18 @@
 import type { LocalizedText } from '@ready/content-schema';
 
 /**
- * READY MISSIONS — 30 real-world travel missions in 5 phases (Sprint 7 redesign).
- * Not a course: each mission ends when the user can realistically survive one situation.
- * Checkpoints (10, 18, 24) and the finale are cold integration missions — no new content,
- * pure evidence. Depth before breadth: one situation per mission, taken all the way.
+ * READY MISSIONS — the real-world travel missions, in 5 phases (Sprint 7 redesign). This array is the
+ * ONE source of truth for the curriculum: its length is the mission count and its order is the
+ * journey — never hard-code either elsewhere. Not a course: each mission ends when the user can
+ * realistically survive one situation. Checkpoints and the finale are cold integration missions —
+ * no new content, pure evidence. Depth before breadth: one situation per mission, taken all the way.
  */
 
 export interface MissionPlan {
-  day: number;                    // mission number (field name kept for store compatibility)
+  /** Stable semantic identity — what persisted progress is keyed by. Never derived from the
+   *  mission's position, so the journey can be reordered without losing anyone's progress. */
+  id: string;
+  day: number;                    // content-registry key (DAYS / DAYS_FR / DAYS_ES) + in-memory handle
   phase: number;
   title: LocalizedText;
   objective: LocalizedText;
@@ -22,10 +26,6 @@ export interface MissionPlan {
   why: string;
   preparesNext: string;
   checkpoint?: boolean;
-  /** Optional "special" mission — outside the numbered journey (e.g. the Survival/Recovery
-   *  Toolkit). Shown without a number, near the end of the list, and excluded from the numbered
-   *  progress count. Content is unchanged; only its placement/presentation differs (Task 6). */
-  special?: boolean;
 }
 
 export const PHASES: { n: number; title: LocalizedText; icon: string }[] = [
@@ -40,15 +40,7 @@ const T = (he: string, en: string): LocalizedText => ({ he, en });
 
 export const BOOTCAMP_PLAN: MissionPlan[] = [
   // ── Phase 1 · Foundations ──
-  { day: 1, phase: 1, special: true, title: T('ערכת חילוץ — כשלא מבינים', 'Recovery Toolkit'),
-    objective: T('שבעת כלי ההישרדות — למקרה שלא הבנת או נתקעת. אופציונלי, בכל רגע.', 'The 7 survival tools — for when you don’t understand or get stuck. Optional, anytime.'),
-    confidenceGain: T('כשלא מבינים — תמיד יש מוצא.', 'When you don’t understand — you always have a way out.'),
-    situations: ['recovery'], targets: { concepts: 7, phrases: 7, dialogues: 2 },
-    listeningSkill: 'the 7 tools at natural speed', speakingSkill: 'each tool said aloud',
-    minutes: 20, feeling: T('אני עדיין לא יודע אנגלית — אבל אני פחות מפחד.', "I still don't know English — but I'm less afraid."),
-    why: 'Recoverability before vocabulary: the safety net IS the confidence. Moved out of the numbered start (Task 6) so beginners begin with a mission that actually answers its conversation.',
-    preparesNext: 'Every dialogue assumes the tools are reflexes — reach for it anytime you feel stuck.' },
-  { day: 2, phase: 1, title: T('להציג את עצמי', 'Introduce Myself'),
+  { id: 'introduce-myself', day: 1, phase: 1, title: T('להציג את עצמי', 'Introduce Myself'),
     objective: T('שם, מאיפה, למה — בביטחון ובחיוך.', 'Name, origin, purpose — with confidence and a smile.'),
     confidenceGain: T('חיבור אנושי ראשון.', 'First human connection.'),
     situations: ['social'], targets: { concepts: 8, phrases: 5, dialogues: 1 },
@@ -56,15 +48,15 @@ export const BOOTCAMP_PLAN: MissionPlan[] = [
     minutes: 20, feeling: T('אפשר להכיר אותי.', 'People can know me.'),
     why: 'Identity phrases: highest warmth, lowest risk production.',
     preparesNext: 'The opener habit used in every mission after.' },
-  { day: 3, phase: 1, title: T('כסף ומספרים', 'Numbers & Money'),
+  { id: 'numbers-money', day: 2, phase: 1, title: T('כסף ומספרים', 'Numbers & Money'),
     objective: T('מספרים בשמיעה, מחירים, עודף — בלי להנהן סתם.', 'Numbers by ear, prices, change — no more blind nodding.'),
     confidenceGain: T('הכסף מובן. תמיד.', 'Money makes sense. Always.'),
     situations: ['paying'], targets: { concepts: 14, phrases: 3, dialogues: 1 },
     listeningSkill: 'price extraction at speed', speakingSkill: 'How-much + number answers',
     minutes: 20, feeling: T('אי אפשר לעבוד עליי במחירים.', 'Nobody can confuse me with a price.'),
     why: 'Numbers are the #1 comprehension task abroad; unlocks every transaction.',
-    preparesNext: 'Every payment beat in missions 4–30.' },
-  { day: 4, phase: 1, title: T('בית קפה', 'Coffee Shop'),
+    preparesNext: 'Every payment beat in missions 3–29.' },
+  { id: 'coffee-shop', day: 3, phase: 1, title: T('בית קפה', 'Coffee Shop'),
     objective: T('הזמנת בוקר שלמה: שתייה, אוכל, תשלום, קבלה — מקצה לקצה.', 'A complete breakfast order: drink, food, payment, receipt — end to end.'),
     confidenceGain: T('העסקה המלאה הראשונה, כולל כל שאלות ההמשך.', 'First full transaction incl. every follow-up question.'),
     situations: ['restaurant'], targets: { concepts: 14, phrases: 6, dialogues: 2 },
@@ -72,15 +64,15 @@ export const BOOTCAMP_PLAN: MissionPlan[] = [
     minutes: 22, feeling: T('אני מסוגל להזמין ארוחת בוקר אמיתית.', 'I can order a real breakfast.'),
     why: 'THE depth exemplar: one situation, every realistic follow-up (deep moment system).',
     preparesNext: 'The reply-chain pattern reused in every service mission.' },
-  { day: 5, phase: 1, title: T('ארוחה במסעדה', 'Restaurant Meal'),
+  { id: 'restaurant-meal', day: 4, phase: 1, title: T('ארוחה במסעדה', 'Restaurant Meal'),
     objective: T('ארוחת ערב שלמה: שולחן, תפריט, הזמנה, שתייה, חשבון — מקצה לקצה.', 'A full dinner: table, menu, order, drink, bill — end to end.'),
     confidenceGain: T('העסקה השלמה במסעדה — בידיים שלי.', 'The whole restaurant transaction — in my hands.'),
     situations: ['restaurant'], targets: { concepts: 7, phrases: 4, dialogues: 1 },
     listeningSkill: 'the waiter chain (reservation, ready-to-order, to-drink, dessert)', speakingSkill: 'table opener + order + bill',
     minutes: 22, feeling: T('ארוחת ערב זה שלי.', 'Dinner is mine.'),
-    why: 'Mapping fix (Task 7): the card now matches the mission it opens — day 5 is a full sit-down meal, not the ear-only "Fast Replies" slot that never had content.',
+    why: 'Mapping fix (Task 7): the card now matches the mission it opens — this is a full sit-down meal, not the ear-only "Fast Replies" slot that never had content.',
     preparesNext: 'The waiter reply-chain, reused across the later restaurant missions.' },
-  { day: 6, phase: 1, title: T('כיוונים', 'Directions'),
+  { id: 'directions', day: 5, phase: 1, title: T('כיוונים', 'Directions'),
     objective: T('לשאול — ובעיקר להבין את התשובה, כולל ציוני דרך.', 'Ask — and truly understand the answer, landmarks included.'),
     confidenceGain: T('ללכת לאיבוד מפסיק להפחיד.', 'Being lost stops being scary.'),
     situations: ['directions'], targets: { concepts: 9, phrases: 4, dialogues: 1 },
@@ -89,7 +81,7 @@ export const BOOTCAMP_PLAN: MissionPlan[] = [
     why: 'Directions are 90% listening — the anti-freeze muscle, pure.',
     preparesNext: 'Spatial answers feed taxi and transport.' },
   // ── Phase 2 · Arrival ──
-  { day: 7, phase: 2, title: T('מונית', 'Taxi / Uber'),
+  { id: 'taxi', day: 6, phase: 2, title: T('מונית', 'Taxi / Uber'),
     objective: T('יעד, מחיר, עצירה — כולל מהלך הצגת הכתובת.', 'Destination, price, stop — incl. the address-show move.'),
     confidenceGain: T('כל עיר נגישה.', 'Every city is reachable.'),
     situations: ['taxi'], targets: { concepts: 6, phrases: 4, dialogues: 1 },
@@ -97,15 +89,15 @@ export const BOOTCAMP_PLAN: MissionPlan[] = [
     minutes: 20, feeling: T('אני מגיע לכל מקום.', 'I can get anywhere.'),
     why: 'The highest-stakes 60-second conversation of day one abroad.',
     preparesNext: 'Arrival confidence for hotel check-in.' },
-  { day: 8, phase: 2, title: T("צ'ק-אין במלון", 'Hotel Check-in'),
-    objective: T('הזמנה → שם → מפתח → קומה → ארוחת בוקר.', 'Reservation → name → key → floor → breakfast.'),
+  { id: 'hotel-check-in', day: 7, phase: 2, title: T("צ'ק-אין במלון", 'Hotel Check-in'),
+    objective: T('הזמנה ← שם ← מפתח ← קומה ← ארוחת בוקר.', 'Reservation → name → key → floor → breakfast.'),
     confidenceGain: T('בסיס הבית מובטח.', 'Home base secured.'),
     situations: ['hotel'], targets: { concepts: 8, phrases: 5, dialogues: 1 },
     listeningSkill: 'floor/times comprehension', speakingSkill: 'reservation opener',
     minutes: 20, feeling: T('אני שייך לכאן.', 'I belong here.'),
     why: 'Trip-start concentrated; nail it once, relax all week.',
     preparesNext: 'Completes taxi+hotel for the arrival checkpoint.' },
-  { day: 9, phase: 2, title: T('קניות', 'Shopping'),
+  { id: 'shopping', day: 8, phase: 2, title: T('קניות', 'Shopping'),
     objective: T('להסתכל, למדוד, לבקש מידה, להחליט, לשלם.', 'Browse, try on, ask a size, decide, pay.'),
     confidenceGain: T('חנויות הן טריטוריה ידידותית.', 'Shops are friendly territory.'),
     situations: ['paying'], targets: { concepts: 8, phrases: 5, dialogues: 1 },
@@ -113,15 +105,15 @@ export const BOOTCAMP_PLAN: MissionPlan[] = [
     minutes: 20, feeling: T('אני קונה כמו בן אדם.', 'I shop like a person.'),
     why: 'Low-stakes reps of decision language; joyful and confidence-building.',
     preparesNext: 'Payment + decision confidence for the checkpoint.' },
-  { day: 10, phase: 2, checkpoint: true, title: T('נקודת ביקורת: יום הגעה', 'Arrival Day Checkpoint'),
-    objective: T('שרשור קר: מונית → מלון. בלי הכנה, בלי כתוביות מלאות.', 'Cold chain: taxi → hotel. Unannounced, minimal subtitles.'),
+  { id: 'arrival-day-checkpoint', day: 9, phase: 2, checkpoint: true, title: T('נקודת ביקורת: יום הגעה', 'Arrival Day Checkpoint'),
+    objective: T('שרשור קר: מונית ← מלון. בלי הכנה, בלי כתוביות מלאות.', 'Cold chain: taxi → hotel. Unannounced, minimal subtitles.'),
     confidenceGain: T('הוכחה: יום הגעה שלם — שריד.', 'Proof: a full arrival day, survivable.'),
     situations: ['taxi', 'hotel'], targets: { concepts: 0, phrases: 0, dialogues: 2 },
     listeningSkill: 'first cold opens', speakingSkill: 'chained answers under mild stress',
     minutes: 20, feeling: T('אני מוכן לנחות.', 'I am ready to land.'),
     why: 'Checkpoints convert learning into receipts — the boss level without the candy.',
     preparesNext: 'Cold format unlocked for all later missions.' },
-  { day: 11, phase: 2, title: T('שדה תעופה וגבול', 'Airport & Border'),
+  { id: 'airport-border', day: 10, phase: 2, title: T('שדה תעופה וגבול', 'Airport & Border'),
     objective: T('דלפק, שער, ושאלות הגבול — רגוע.', 'Counter, gate, and the border questions — calm.'),
     confidenceGain: T('סמכות מפסיקה להפחיד.', 'Authority stops being frightening.'),
     situations: ['border'], targets: { concepts: 8, phrases: 4, dialogues: 1 },
@@ -129,7 +121,7 @@ export const BOOTCAMP_PLAN: MissionPlan[] = [
     minutes: 20, feeling: T('גבול זה בסך הכל תסריט.', 'A border is just a script.'),
     why: 'Scariest moment, most predictable script — best fear-per-minute ROI.',
     preparesNext: 'Calm-under-authority for emergencies later.' },
-  { day: 12, phase: 2, title: T('בקשות ובעיות במלון', 'Hotel Requests & Problems'),
+  { id: 'hotel-requests', day: 11, phase: 2, title: T('בקשות ובעיות במלון', 'Hotel Requests & Problems'),
     objective: T('מגבות, מזגן, וויי-פיי, חדר רועש — לבקש ולקבל.', 'Towels, AC, wifi, noisy room — ask and receive.'),
     confidenceGain: T('אני לא סובל בשקט; אני מבקש.', "I don't suffer quietly; I ask."),
     situations: ['hotel'], targets: { concepts: 8, phrases: 5, dialogues: 1 },
@@ -139,7 +131,7 @@ export const BOOTCAMP_PLAN: MissionPlan[] = [
     preparesNext: 'Complaint pattern for Fixing Problems.' },
 
   // ── Phase 3 · Food ──
-  { day: 13, phase: 3, title: T('מסעדה — בסיס', 'Restaurant Basics'),
+  { id: 'restaurant-basics', day: 12, phase: 3, title: T('מסעדה — בסיס', 'Restaurant Basics'),
     objective: T('שולחן, תפריט, הזמנה, חשבון — הליבה.', 'Table, menu, order, bill — the core loop.'),
     confidenceGain: T('לב הטיול — בידיים שלי.', 'The heart of travel — in my hands.'),
     situations: ['restaurant'], targets: { concepts: 10, phrases: 6, dialogues: 2 },
@@ -147,7 +139,7 @@ export const BOOTCAMP_PLAN: MissionPlan[] = [
     minutes: 22, feeling: T('ארוחת ערב זה שלי.', 'Dinner is mine.'),
     why: '3–5 restaurant interactions per travel day; deepest ROI in food phase.',
     preparesNext: 'Menu comprehension for special requests.' },
-  { day: 14, phase: 3, title: T('בקשות מיוחדות ואלרגיות', 'Special Requests & Allergies'),
+  { id: 'special-requests-allergies', day: 13, phase: 3, title: T('בקשות מיוחדות ואלרגיות', 'Special Requests & Allergies'),
     objective: T('בלי בצל, אלרגי לאגוזים, צמחוני — ברור ובטוח.', 'No onions, allergic to nuts, vegetarian — clear and safe.'),
     confidenceGain: T('האוכל בטוח גם בשבילי.', 'Food is safe for me too.'),
     situations: ['restaurant'], targets: { concepts: 9, phrases: 4, dialogues: 1 },
@@ -155,15 +147,15 @@ export const BOOTCAMP_PLAN: MissionPlan[] = [
     minutes: 20, feeling: T('הגוף שלי מוגן.', 'My body is protected.'),
     why: 'RoF-3 content: rare need, catastrophic to lack.',
     preparesNext: 'Safety phrasing for pharmacy/emergency.' },
-  { day: 15, phase: 3, title: T('לשלם בכל מקום', 'Paying Anywhere'),
+  { id: 'paying-anywhere', day: 14, phase: 3, title: T('לשלם בכל מקום', 'Paying Anywhere'),
     objective: T('מזומן/כרטיס/טיפ/קבלה — כל סוגר עסקה אפשרי.', 'Cash/card/tip/receipt — every transaction closer.'),
     confidenceGain: T('הרגע המביך של התשלום נעלם.', 'The awkward payment moment disappears.'),
     situations: ['paying'], targets: { concepts: 6, phrases: 4, dialogues: 1 },
     listeningSkill: "'that'll be…' + follow-ups", speakingSkill: 'pay-by-card + keep-the-change',
     minutes: 18, feeling: T('אני סוגר עסקאות חלק.', 'I close transactions smoothly.'),
-    why: 'Consolidates mission 3 into muscle memory across contexts.',
+    why: 'Consolidates mission 2 into muscle memory across contexts.',
     preparesNext: 'Payment closers for shopping/markets.' },
-  { day: 16, phase: 3, title: T('אוכל רחוב ושווקים', 'Street Food & Markets'),
+  { id: 'street-food-markets', day: 15, phase: 3, title: T('אוכל רחוב ושווקים', 'Street Food & Markets'),
     objective: T('להזמין בדוכן, לטעום, להתמקח קלות.', 'Order at a stall, taste, light haggling.'),
     confidenceGain: T('האוכל הכי טוב — בחוץ, ואני שם.', 'The best food is outside — and I’m there.'),
     situations: ['restaurant', 'paying'], targets: { concepts: 8, phrases: 4, dialogues: 1 },
@@ -171,7 +163,7 @@ export const BOOTCAMP_PLAN: MissionPlan[] = [
     minutes: 20, feeling: T('אני אוכל כמו מקומי.', 'I eat like a local.'),
     why: 'Noisy, fast, informal — the perfect stress inoculation for food talk.',
     preparesNext: 'Noise tolerance for the checkpoint.' },
-  { day: 17, phase: 3, title: T('סופרמרקט', 'Supermarket'),
+  { id: 'supermarket', day: 16, phase: 3, title: T('סופרמרקט', 'Supermarket'),
     objective: T('למצוא, לשקול, לשלם — כולל קופה אוטומטית.', 'Find, weigh, pay — self-checkout included.'),
     confidenceGain: T('קניות בסיסיות בלי תלות באף אחד.', 'Basic groceries with zero dependence.'),
     situations: ['paying'], targets: { concepts: 8, phrases: 3, dialogues: 1 },
@@ -179,7 +171,7 @@ export const BOOTCAMP_PLAN: MissionPlan[] = [
     minutes: 18, feeling: T('היום-יום פשוט זול ופשוט.', 'Daily life just got cheap and easy.'),
     why: 'Independence multiplier; heavy recognition (signs, labels) = cheap wins.',
     preparesNext: 'Sign-reading for city phase.' },
-  { day: 18, phase: 3, checkpoint: true, title: T('נקודת ביקורת: יום אוכל', 'CHECKPOINT: Food Day'),
+  { id: 'food-day-checkpoint', day: 17, phase: 3, checkpoint: true, title: T('נקודת ביקורת: יום אוכל', 'CHECKPOINT: Food Day'),
     objective: T('קפה בבוקר, שוק בצהריים, מסעדה בערב — קר.', 'Coffee morning, market noon, restaurant night — cold.'),
     confidenceGain: T('יום אוכל שלם בלי רשת ביטחון.', 'A full food day without the net.'),
     situations: ['restaurant', 'paying'], targets: { concepts: 0, phrases: 0, dialogues: 3 },
@@ -188,7 +180,7 @@ export const BOOTCAMP_PLAN: MissionPlan[] = [
     why: 'Second proof milestone; receipts on the fridge.',
     preparesNext: 'Confidence base for city independence.' },
   // ── Phase 4 · City Life ──
-  { day: 19, phase: 4, title: T('תחבורה ציבורית', 'Public Transport'),
+  { id: 'public-transport', day: 18, phase: 4, title: T('תחבורה ציבורית', 'Public Transport'),
     objective: T('כרטיס, רציף, כיוון, ירידה נכונה.', 'Ticket, platform, direction, the right stop.'),
     confidenceGain: T('העיר זזה בשבילי, בזול.', 'The city moves for me, cheaply.'),
     situations: ['transport'], targets: { concepts: 8, phrases: 4, dialogues: 1 },
@@ -196,7 +188,7 @@ export const BOOTCAMP_PLAN: MissionPlan[] = [
     minutes: 20, feeling: T('אני זז כמו מקומי.', 'I move like a local.'),
     why: 'Unlocks independence beyond taxi budgets.',
     preparesNext: 'Announcement listening for no-subtitles.' },
-  { day: 20, phase: 4, title: T('כרטיסים ואטרקציות', 'Tickets & Attractions'),
+  { id: 'tickets-attractions', day: 19, phase: 4, title: T('כרטיסים ואטרקציות', 'Tickets & Attractions'),
     objective: T('מוזיאון, סיור, שעות פתיחה, הנחות.', 'Museum, tour, opening hours, discounts.'),
     confidenceGain: T('התרבות נפתחת בלי חיכוך.', 'Culture opens frictionlessly.'),
     situations: ['directions', 'paying'], targets: { concepts: 7, phrases: 4, dialogues: 1 },
@@ -204,7 +196,7 @@ export const BOOTCAMP_PLAN: MissionPlan[] = [
     minutes: 18, feeling: T('הטיול נהיה טיול.', 'The trip becomes a trip.'),
     why: 'High-joy content sustains motivation through phase 4.',
     preparesNext: 'Time comprehension everywhere.' },
-  { day: 21, phase: 4, title: T('וויי-פיי, סים ופרקטיקה', 'Wifi, SIM & Practical'),
+  { id: 'wifi-sim-practical', day: 20, phase: 4, title: T('וויי-פיי, סים ופרקטיקה', 'Wifi, SIM & Practical'),
     objective: T('חבילת סים, סיסמת וויי-פיי, מטען — צרכי המאה ה-21.', 'SIM plan, wifi password, charger — 21st-century needs.'),
     confidenceGain: T('אני מחובר בכל מדינה.', 'I stay connected in any country.'),
     situations: ['paying'], targets: { concepts: 7, phrases: 4, dialogues: 1 },
@@ -212,7 +204,7 @@ export const BOOTCAMP_PLAN: MissionPlan[] = [
     minutes: 18, feeling: T('הטלפון חי, אני חי.', 'Phone alive, me alive.'),
     why: 'Modern-traveler reality missing from classic phrasebooks.',
     preparesNext: 'The translator-backstop is now always available (B-001).' },
-  { day: 22, phase: 4, title: T('מזכרות ומתנות', 'Souvenirs & Gifts'),
+  { id: 'souvenirs-gifts', day: 21, phase: 4, title: T('מזכרות ומתנות', 'Souvenirs & Gifts'),
     objective: T('לבחור מתנות, לשאול על אריזה, לשלם.', 'Choose gifts, ask about wrapping, pay.'),
     confidenceGain: T('חנויות הן טריטוריה ידידותית.', 'Shops are friendly territory.'),
     situations: ['paying'], targets: { concepts: 8, phrases: 5, dialogues: 1 },
@@ -220,7 +212,7 @@ export const BOOTCAMP_PLAN: MissionPlan[] = [
     minutes: 20, feeling: T('אני קונה כמו בן אדם.', 'I shop like a person.'),
     why: 'Low-stakes reps of decision language; joy content.',
     preparesNext: 'Decision phrases for problem-fixing.' },
-  { day: 23, phase: 4, title: T('שיחת חולין', 'Small Talk'),
+  { id: 'small-talk', day: 22, phase: 4, title: T('שיחת חולין', 'Small Talk'),
     objective: T('שלוש דקות שיחה חמה עם זר.', 'Three warm minutes with a stranger.'),
     confidenceGain: T('חיבור, לא רק עסקאות.', 'Connection, not just transactions.'),
     situations: ['social'], targets: { concepts: 8, phrases: 5, dialogues: 1 },
@@ -228,8 +220,8 @@ export const BOOTCAMP_PLAN: MissionPlan[] = [
     minutes: 20, feeling: T('הצחקתי מישהו באנגלית.', 'I made someone laugh in English.'),
     why: 'Trips are remembered by these minutes.',
     preparesNext: 'Free-flow confidence for mastery phase.' },
-  { day: 24, phase: 4, checkpoint: true, title: T('נקודת ביקורת: יום עיר', 'CHECKPOINT: City Day'),
-    objective: T('תחבורה → אטרקציה → קניות → שיחה. קר, ברצף.', 'Transport → attraction → shopping → chat. Cold, chained.'),
+  { id: 'city-day-checkpoint', day: 23, phase: 4, checkpoint: true, title: T('נקודת ביקורת: יום עיר', 'CHECKPOINT: City Day'),
+    objective: T('תחבורה ← אטרקציה ← קניות ← שיחה. קר, ברצף.', 'Transport → attraction → shopping → chat. Cold, chained.'),
     confidenceGain: T('עיר זרה = מגרש ביתי.', 'A foreign city = home turf.'),
     situations: ['transport', 'paying', 'social'], targets: { concepts: 0, phrases: 0, dialogues: 3 },
     listeningSkill: 'mixed cold chains', speakingSkill: 'context switching',
@@ -237,15 +229,15 @@ export const BOOTCAMP_PLAN: MissionPlan[] = [
     why: 'Third milestone; context-switching is the real-life skill.',
     preparesNext: 'The mastery phase assumes city fluency.' },
   // ── Phase 5 · Mastery ──
-  { day: 25, phase: 5, title: T('לתקן בעיה', 'Fixing Problems'),
+  { id: 'fixing-problems', day: 24, phase: 5, title: T('לתקן בעיה', 'Fixing Problems'),
     objective: T('הזמנה שגויה, חיוב כפול, חדר רועש — נפתרים באלגנטיות.', 'Wrong order, double charge, noisy room — fixed with grace.'),
     confidenceGain: T('תקלה היא תסריט, לא משבר.', 'Friction is a script, not a crisis.'),
     situations: ['all'], targets: { concepts: 6, phrases: 5, dialogues: 2 },
     listeningSkill: 'apology/solution replies', speakingSkill: 'polite complaint + recovery chains',
     minutes: 22, feeling: T('דברים משתבשים. אני לא.', 'Things go wrong. I don’t.'),
-    why: 'The Day-1 kit graduating to full adversity scenes.',
+    why: 'The recovery kit graduating to full adversity scenes.',
     preparesNext: 'Resilience under surprise for the finale.' },
-  { day: 26, phase: 5, title: T('בית מרקחת ובריאות', 'Pharmacy & Health'),
+  { id: 'pharmacy-health', day: 25, phase: 5, title: T('בית מרקחת ובריאות', 'Pharmacy & Health'),
     objective: T('תסמינים, מינון, אלרגיות — ברור ובטוח.', 'Symptoms, dosage, allergies — clear and safe.'),
     confidenceGain: T('הגוף שלי מטופל בכל שפה.', 'My body is cared for in any language.'),
     situations: ['medical'], targets: { concepts: 9, phrases: 5, dialogues: 1 },
@@ -253,7 +245,7 @@ export const BOOTCAMP_PLAN: MissionPlan[] = [
     minutes: 20, feeling: T('גם חולה — אני מסתדר.', 'Even sick — I manage.'),
     why: 'RoF-3; trained near the end so it stays fresh for the trip.',
     preparesNext: 'Health floor under the emergency mission.' },
-  { day: 27, phase: 5, title: T('חירום', 'Emergency'),
+  { id: 'emergency', day: 26, phase: 5, title: T('חירום', 'Emergency'),
     objective: T('עזרה, רופא, משטרה, אבידות — אוטומטי תחת לחץ.', 'Help, doctor, police, lost items — automatic under stress.'),
     confidenceGain: T('לתרחיש הגרוע ביותר יש תסריט.', 'The worst case has a script.'),
     situations: ['emergency'], targets: { concepts: 7, phrases: 5, dialogues: 1 },
@@ -261,7 +253,7 @@ export const BOOTCAMP_PLAN: MissionPlan[] = [
     minutes: 20, feeling: T('שיקרה מה שיקרה — אפעל.', 'Whatever happens — I act.'),
     why: 'Under real stress only automatic memory survives.',
     preparesNext: 'The safety floor under the finale.' },
-  { day: 28, phase: 5, title: T('בלי כתוביות', 'No Subtitles'),
+  { id: 'no-subtitles', day: 27, phase: 5, title: T('בלי כתוביות', 'No Subtitles'),
     objective: T('כל הדיאלוגים — בלי טקסט, עם וריאציות הפתעה.', 'Every dialogue — no text, surprise variants.'),
     confidenceGain: T('האוזניים עומדות לבד.', 'My ears stand alone.'),
     situations: ['all'], targets: { concepts: 0, phrases: 0, dialogues: 3 },
@@ -269,15 +261,15 @@ export const BOOTCAMP_PLAN: MissionPlan[] = [
     minutes: 20, feeling: T('אני סומך על האוזניים שלי.', 'I trust my ears.'),
     why: 'Visible removal of training wheels is itself a receipt.',
     preparesNext: 'Cold format for the rehearsal.' },
-  { day: 29, phase: 5, title: T('חזרה גנרלית: ערב שלם', 'Dress Rehearsal: Full Evening'),
-    objective: T('מונית → מסעדה → תקלה → תשלום. טייק אחד.', 'Taxi → restaurant → problem → payment. One take.'),
+  { id: 'dress-rehearsal', day: 28, phase: 5, title: T('חזרה גנרלית: ערב שלם', 'Dress Rehearsal: Full Evening'),
+    objective: T('מונית ← מסעדה ← תקלה ← תשלום. טייק אחד.', 'Taxi → restaurant → problem → payment. One take.'),
     confidenceGain: T('רצף רגעים = זרימה אחת.', 'Chained moments feel like one flow.'),
     situations: ['taxi', 'restaurant', 'paying'], targets: { concepts: 0, phrases: 0, dialogues: 4 },
     listeningSkill: 'continuous mixed', speakingSkill: 'sustained, one take',
     minutes: 22, feeling: T('זה היה… כמעט כיף?', 'That was… almost fun?'),
     why: 'The athlete’s rehearsal before race day, one designed surprise included.',
     preparesNext: 'The finale format.' },
-  { day: 30, phase: 5, checkpoint: true, title: T('יום שלם לבד בחו״ל', 'A Complete Day Abroad Alone'),
+  { id: 'complete-day-abroad', day: 29, phase: 5, checkpoint: true, title: T('יום שלם לבד בחו״ל', 'A Complete Day Abroad Alone'),
     objective: T('מבוקר עד לילה: שרשרת רגעים קרים. טייק אחד. פסק דין אמיתי.', 'Morning to night: a cold moment chain. One take. A real verdict.'),
     confidenceGain: T('עצמאות — מוכחת.', 'Independence — proven.'),
     situations: ['all'], targets: { concepts: 0, phrases: 0, dialogues: 5 },
@@ -287,17 +279,22 @@ export const BOOTCAMP_PLAN: MissionPlan[] = [
     preparesNext: 'Real life. The First Move abroad.' },
 ];
 
-/** The numbered journey — every mission except the "special" ones (the Recovery Toolkit). This
- *  is the ordered spine beginners walk; the special missions are optional companions (Task 6). */
-export const CORE_MISSIONS: MissionPlan[] = BOOTCAMP_PLAN.filter((m) => !m.special);
-
-/** The optional special missions (Recovery Toolkit) — shown unnumbered near the end of the map. */
-export const SPECIAL_MISSIONS: MissionPlan[] = BOOTCAMP_PLAN.filter((m) => m.special);
-
-/** The display number a mission shows to the learner (1..N over the numbered journey), or null
- *  for special/unnumbered missions. Kept separate from the internal `day` (the DAYS registry key
- *  + persistence id, which never changes) so numbering is purely presentational. */
+/** The display number a mission shows to the learner: its 1-based position in the plan, or null
+ *  for a day that is not in the curriculum. Derived from ORDER, never from the `day` key or the id,
+ *  so numbering stays purely presentational. */
 export function missionNumber(day: number): number | null {
-  const i = CORE_MISSIONS.findIndex((m) => m.day === day);
+  const i = BOOTCAMP_PLAN.findIndex((m) => m.day === day);
   return i === -1 ? null : i + 1;
+}
+
+/** The next mission to offer after `day`, walking the plan in journey order: the first later mission
+ *  that is available (built for the learning language) and not yet completed. */
+export function nextMission(
+  day: number,
+  isAvailable: (m: MissionPlan) => boolean,
+  isCompleted: (m: MissionPlan) => boolean,
+): MissionPlan | undefined {
+  const from = BOOTCAMP_PLAN.findIndex((m) => m.day === day);
+  if (from === -1) return undefined;
+  return BOOTCAMP_PLAN.slice(from + 1).find((m) => isAvailable(m) && !isCompleted(m));
 }

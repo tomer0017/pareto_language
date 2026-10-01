@@ -14,7 +14,7 @@ export function LanguageSelect() {
 
   return (
     <div className="screen">
-      <TopBar title={t('learningLanguage')} backTo="home" />
+      <TopBar title={t('learningLanguage')} backTo="profile" />
       <div className="screen-scroll">
         <p className="dim small" style={{ marginBottom: 14 }}>{t('moreLanguagesSoon')}</p>
         <div className="lang-grid stagger">

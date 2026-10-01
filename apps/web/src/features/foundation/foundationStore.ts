@@ -57,10 +57,6 @@ interface FoundationState {
   openSession(words: CoreWord[], startIndex: number): void;
   /** Move within the active session (clamped). */
   sessionGo(delta: number): void;
-  /** True briefly after onboarding so the shell-mounted FAB can pulse to reveal itself. */
-  pulse: boolean;
-  firePulse(): void;
-  clearPulse(): void;
   close(): void;
   /** Record that a word page was seen — marks the concept viewed (idempotent, persisted). */
   markViewed(conceptId: string): void;
@@ -74,12 +70,8 @@ export const useFoundationStore = create<FoundationState>((set, get) => ({
   targetSurface: null,
   targetSenses: null,
   session: null,
-  pulse: false,
   viewed: loadSet(VIEWED_KEY),
   dismissed: loadSet(DISMISSED_KEY),
-
-  firePulse: () => set({ pulse: true }),
-  clearPulse: () => set({ pulse: false }),
 
   openSheet: () => set({ open: true, target: null, targetSurface: null, targetSenses: null, session: null }),
   openWord: (word, surface, senses) =>

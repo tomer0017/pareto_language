@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { DAYS_ES } from './index.js';
 import { DAYS } from '../registry.js';
+import { BOOTCAMP_PLAN } from '../plan.js';
 import { missionParity, unreachableOrDeadEnds } from '../parity.js';
 import { dialogueTranscript } from '../transcript.js';
 
@@ -13,8 +14,8 @@ import { dialogueTranscript } from '../transcript.js';
 const builtDays = Object.keys(DAYS_ES).map(Number).sort((a, b) => a - b);
 
 describe('Spanish missions — full parity + content integrity', () => {
-  it('covers all 30 missions', () => {
-    expect(builtDays).toEqual(Array.from({ length: 30 }, (_, i) => i + 1));
+  it('covers every mission in the plan', () => {
+    expect(builtDays).toEqual(BOOTCAMP_PLAN.map((m) => m.day));
   });
 
   it('every Spanish mission item uses an es.* id', () => {
@@ -70,12 +71,12 @@ describe('Spanish missions — full parity + content integrity', () => {
     }
     const report = missionParity('es', DAYS, DAYS_ES);
     for (const m of report.perMission) expect(m.ok).toBe(true);
-    expect(report.covered).toBe(30);
+    expect(report.covered).toBe(BOOTCAMP_PLAN.length);
     expect(report.complete).toBe(true);
   });
 
   it('Spanish references no video file yet (video steps degrade to an honest "unavailable")', () => {
-    // Parity keeps Mission 2's intro/again video steps, but no Es_day*.mp4 exists, so no mission
+    // Parity keeps Mission 1's intro/again video steps, but no Es_day*.mp4 exists, so no mission
     // sets introVideo — the VideoStep renderer shows "video unavailable" (never an English video).
     for (const d of builtDays) expect(DAYS_ES[d]!.introVideo).toBeUndefined();
   });

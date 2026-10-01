@@ -13,7 +13,7 @@ import type { PlaybackItem, PlaybackSettings } from './types.js';
 const item: PlaybackItem = { id: 'x', target: 'Bonjour', targetLang: 'fr', translation: 'Hello', translationLang: 'en' };
 
 const settings = (over: Partial<PlaybackSettings>): PlaybackSettings => ({
-  repeat: 1, order: 'sequential', translation: false, loop: false, speed: 1, pause: 'normal', sleepTimer: 0, ...over,
+  repeat: 1, order: 'sequential', translation: false, loop: false, pause: 'normal', sleepTimer: 0, ...over,
 });
 
 describe('buildOrder', () => {
@@ -49,7 +49,7 @@ describe('buildOrder', () => {
 describe('buildUtterancePlan', () => {
   it('repeat ×1, translation off → just the target once', () => {
     const plan = buildUtterancePlan(item, settings({ repeat: 1 }));
-    expect(plan).toEqual([{ kind: 'speak', text: 'Bonjour', lang: 'fr', role: 'target', rate: 1 }]);
+    expect(plan).toEqual([{ kind: 'speak', text: 'Bonjour', lang: 'fr', role: 'target' }]);
   });
 
   it('repeat ×1, translation on → target, pause, translation', () => {
@@ -77,7 +77,7 @@ describe('buildUtterancePlan', () => {
 
   it('order override target-only wins over the shared translation preference (no translation spoken)', () => {
     const plan = buildUtterancePlan(item, settings({ repeat: 1, translation: true }), { translation: false, translationFirst: false });
-    expect(plan).toEqual([{ kind: 'speak', text: 'Bonjour', lang: 'fr', role: 'target', rate: 1 }]);
+    expect(plan).toEqual([{ kind: 'speak', text: 'Bonjour', lang: 'fr', role: 'target' }]);
   });
 
   it('order override target→translation forces translation on even when the shared preference is off', () => {
@@ -101,13 +101,11 @@ describe('buildUtterancePlan', () => {
     expect(PAUSE_PRESETS.short.afterTarget).toBeLessThan(PAUSE_PRESETS.long.afterTarget);
   });
 
-  it('propagates the playback speed (incl. the new 0.5×) to every spoken step', () => {
-    for (const speed of [0.5, 0.75, 1, 1.25] as const) {
-      const plan = buildUtterancePlan(item, settings({ translation: true, speed }));
-      const speaks = plan.filter((s) => s.kind === 'speak');
-      expect(speaks.length).toBeGreaterThan(0);
-      expect(speaks.every((s) => s.kind === 'speak' && s.rate === speed)).toBe(true);
-    }
+  it('a speak step carries text + locale only — speech rate is never a playback decision', () => {
+    const plan = buildUtterancePlan(item, settings({ translation: true, repeat: 3 }));
+    const speaks = plan.filter((s) => s.kind === 'speak');
+    expect(speaks.length).toBe(6);
+    for (const s of speaks) expect(Object.keys(s).sort()).toEqual(['kind', 'lang', 'role', 'text']);
   });
 });
 

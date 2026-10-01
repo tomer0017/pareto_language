@@ -28,7 +28,6 @@ import { DAY26_FR } from './day26.js';
 import { DAY27_FR } from './day27.js';
 import { DAY28_FR } from './day28.js';
 import { DAY29_FR } from './day29.js';
-import { DAY30_FR } from './day30.js';
 
 /**
  * French Bootcamp missions (content-only). Same `BootcampDayContent` shape as the English missions;
@@ -36,8 +35,7 @@ import { DAY30_FR } from './day30.js';
  * engine change (the language-agnostic registry in bootcampStore selects the set by learning
  * language). Missions NOT present here show as honest "not built" for French — never English.
  *
- * Status: French Bootcamp authoring in progress; missions land here one file at a time.
- * Parity target: the 30 English missions (see docs/FRENCH-PILOT.md).
+ * Status: French Bootcamp at full parity with the English missions (see docs/FRENCH-PILOT.md).
  */
 export const DAYS_FR: Record<number, BootcampDayContent> = {
   1: DAY1_FR,
@@ -69,5 +67,4 @@ export const DAYS_FR: Record<number, BootcampDayContent> = {
   27: DAY27_FR,
   28: DAY28_FR,
   29: DAY29_FR,
-  30: DAY30_FR,
 };

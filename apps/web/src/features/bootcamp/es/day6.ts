@@ -3,93 +3,96 @@ import type { BootcampDayContent, BootcampDialogue, BootcampItem } from '../type
 import { recoveryEs } from './recovery.js';
 
 /**
- * Spanish Mission 6 — "Direcciones" (Directions). Spanish parallel of English day 6: same objective
- * (ask, then UNDERSTAND the fast answer — 90% listening), same step structure, same engine. Spanish
+ * Spanish Mission 6 — "Taxi" (Taxi / Uber). Spanish parallel of English mission 6: same objective
+ * (destination → price → stop, the address-show move), same step structure, same engine. Spanish
  * target lines + `tr:{en,he}` glosses; `es.*` ids. No Spanish video yet. AI-drafted, pending review.
  */
 const T = (he: string, en: string): LocalizedText => ({ he, en });
 const TR = (en: string, he: string): LocalizedText => ({ en, he });
 
 export const DAY6_ES_ITEMS: BootcampItem[] = [
-  { id: 'es.phrase.dir.excuse-me', text: '¡Perdone!', meaning: T('סליחה!', 'Excuse me!'),
-    tip: T('פותח כל פנייה לזר ברחוב.', 'Opens any approach to a stranger on the street.') },
-  { id: 'es.phrase.dir.where-is', text: '¿Dónde está la estación?', meaning: T('איפה התחנה?', 'Where is the station?'),
-    tip: T('תבנית: ¿Dónde está ___ ? — התחנה, השירותים, המלון.', 'Template: ¿Dónde está ___ ? — the station, the bathroom, the hotel.') },
-  { id: 'es.phrase.dir.how-do-i-get', text: '¿Cómo se llega a la playa?', meaning: T('איך מגיעים לחוף?', 'How do I get to the beach?') },
-  { id: 'es.phrase.dir.is-it-far', text: '¿Está lejos?', meaning: T('זה רחוק?', 'Is it far?'),
-    tip: T('שתי מילים שמחליטות: ללכת ברגל או לקחת מונית.', 'Two words that decide: walk or take a taxi.') },
-  { id: 'es.phrase.dir.show-me-map', text: '¿Me lo puede mostrar en el mapa?', meaning: T('אתה יכול להראות לי על המפה?', 'Can you show me on the map?'),
-    tip: T('כשמילים לא מספיקות — עוברים לעיניים.', 'When words aren’t enough — switch to eyes.') },
-  // hear — the direction answers (this is the whole mission)
-  { id: 'es.reply.dir.left', text: 'Está a la izquierda.', meaning: T('זה בצד שמאל.', "It's on the left.") },
-  { id: 'es.reply.dir.right', text: 'Está a la derecha.', meaning: T('זה בצד ימין.', "It's on the right.") },
-  { id: 'es.reply.dir.straight', text: 'Siga todo recto.', meaning: T('לך ישר.', 'Go straight ahead.') },
-  { id: 'es.reply.dir.turn-left', text: 'Gire a la izquierda en la esquina.', meaning: T('פנה שמאלה בפינה.', 'Turn left at the corner.') },
-  { id: 'es.reply.dir.next-to', text: 'Está al lado del banco.', meaning: T('זה ליד הבנק.', "It's next to the bank.") },
-  { id: 'es.reply.dir.five-minutes', text: 'Está a unos cinco minutos a pie.', meaning: T('זה בערך חמש דקות ברגל.', "It's about five minutes on foot.") },
-  { id: 'es.reply.dir.cant-miss', text: 'No tiene pérdida.', meaning: T('אי אפשר לפספס.', "You can't miss it.") },
-  ...recoveryEs('es.phrase.recovery.repeat', 'es.phrase.recovery.slowly', 'es.phrase.recovery.show-me', 'es.phrase.recovery.thank-you'),
+  { id: 'es.phrase.taxi.to-address', text: 'A esta dirección, por favor.', meaning: T('לכתובת הזאת, בבקשה.', 'To this address, please.'),
+    tip: T('הפתיח למונית — תגיד את זה ותראה את הכתובת בטלפון.', 'The taxi opener — say it and show the address on your phone.') },
+  { id: 'es.phrase.taxi.to-airport', text: 'Al aeropuerto, por favor.', meaning: T('לשדה התעופה, בבקשה.', 'To the airport, please.') },
+  { id: 'es.phrase.taxi.how-much', text: '¿Cuánto cuesta al centro?', meaning: T('כמה עד המרכז?', 'How much to the centre?'),
+    tip: T('לשאול מחיר לפני שנוסעים — חוסך הפתעות.', 'Ask the price before you ride — no surprises.') },
+  { id: 'es.phrase.taxi.stop-here', text: 'Pare aquí, por favor.', meaning: T('עצור כאן, בבקשה.', 'Stop here, please.'),
+    tip: T('העיתוי חשוב — תגיד את זה קצת לפני היעד.', 'Timing matters — say it just before the destination.') },
+  { id: 'es.phrase.taxi.keep-change', text: 'Quédese con el cambio.', meaning: T('תשאיר את העודף.', 'Keep the change.') },
+  // hear
+  { id: 'es.reply.taxi.where-to', text: '¿A dónde va?', meaning: T('לאן?', 'Where to?') },
+  { id: 'es.reply.taxi.about-fifteen', text: 'Son unos quince euros.', meaning: T('זה בערך חמישה עשר יורו.', "It's about fifteen euros.") },
+  { id: 'es.reply.taxi.traffic', text: 'Hay mucho tráfico ahora mismo.', meaning: T('יש הרבה פקקים עכשיו.', "There's a lot of traffic right now.") },
+  { id: 'es.reply.taxi.here-good', text: '¿Aquí está bien?', meaning: T('כאן זה בסדר?', 'Is here okay?') },
+  { id: 'es.reply.taxi.first-visit', text: '¿Es su primera vez en la ciudad?', meaning: T('פעם ראשונה בעיר?', 'First time in the city?') },
+  ...recoveryEs('es.phrase.recovery.slowly', 'es.phrase.recovery.show-me', 'es.phrase.recovery.thank-you'),
 ];
 
 const SCENE: BootcampDialogue = {
-  id: 'lost-in-town',
+  id: 'taxi-ride',
   start: 'n1',
   nodes: [
-    { id: 'n1', who: 'you', next: 'n2', en: '¡Perdone! ¿Dónde está la estación?', tr: TR('Excuse me! Where is the station?', 'סליחה! איפה התחנה?'), he: 'סליחה! איפה התחנה?' },
-    { id: 'n2', who: 'npc', fast: true, next: 'c1', en: '¿La estación? Siga todo recto y luego gire a la izquierda en la esquina.', tr: TR('The station? Go straight ahead, then turn left at the corner.', 'התחנה? לך ישר, ואז פנה שמאלה בפינה.'), he: 'התחנה? לך ישר, ואז פנה שמאלה בפינה.' },
+    { id: 'n1', who: 'npc', next: 'c1', en: '¡Hola! ¿A dónde va?', tr: TR('Hello! Where to?', 'שלום! לאן?'), he: 'שלום! לאן?' },
     { id: 'c1', who: 'you', en: '', he: '', choices: [
-      { en: '¿Puede repetir, por favor?', tr: TR('Can you repeat that?', 'אפשר לחזור על זה? (הרבה כיוונים ברצף — עצור אותו!)'), he: 'אפשר לחזור על זה?', itemId: 'es.phrase.recovery.repeat', correct: true, next: 'r1' },
-      { en: '¿Está lejos?', tr: TR('Is it far?', 'זה רחוק?'), he: 'זה רחוק?', itemId: 'es.phrase.dir.is-it-far', correct: true, next: 'n3' },
+      { en: 'A esta dirección, por favor.', tr: TR('To this address, please.', 'לכתובת הזאת, בבקשה.'), he: 'לכתובת הזאת, בבקשה.', itemId: 'es.phrase.taxi.to-address', correct: true, next: 'n2' },
+      { en: 'Al aeropuerto, por favor.', tr: TR('To the airport, please.', 'לשדה התעופה, בבקשה.'), he: 'לשדה התעופה, בבקשה.', itemId: 'es.phrase.taxi.to-airport', correct: true, next: 'n2' },
     ] },
-    { id: 'r1', who: 'npc', slow: true, next: 'c1b', en: 'Todo recto… luego… a la izquierda… en la esquina.', tr: TR('Straight… then… left… at the corner.', 'ישר… ואז… שמאלה… בפינה.'), he: 'ישר… ואז… שמאלה… בפינה.' },
-    { id: 'c1b', who: 'you', en: '', he: '', choices: [
-      { en: '¿Está lejos?', tr: TR('Is it far?', 'זה רחוק?'), he: 'זה רחוק?', itemId: 'es.phrase.dir.is-it-far', correct: true, next: 'n3' },
-    ] },
-    { id: 'n3', who: 'npc', next: 'c2', en: 'No, está a unos cinco minutos a pie. Está al lado del banco.', tr: TR("No, it's about five minutes on foot. It's next to the bank.", 'לא, זה בערך חמש דקות ברגל. זה ליד הבנק.'), he: 'לא, זה בערך חמש דקות ברגל. זה ליד הבנק.' },
+    { id: 'n2', who: 'npc', next: 'c2', en: 'De acuerdo. ¿Cuánto pensaba pagar?', tr: TR('Got it. How much did you expect to pay?', 'הבנתי. כמה חשבת לשלם?'), he: 'הבנתי. כמה חשבת לשלם?' },
     { id: 'c2', who: 'you', en: '', he: '', choices: [
-      { en: '¿Me lo puede mostrar en el mapa?', tr: TR('Can you show me on the map?', 'אתה יכול להראות לי על המפה?'), he: 'אתה יכול להראות לי על המפה?', itemId: 'es.phrase.dir.show-me-map', correct: true, next: 'n4' },
-      { en: '¡Gracias!', tr: TR('Thank you!', 'תודה!'), he: 'תודה!', itemId: 'es.phrase.recovery.thank-you', correct: true, next: 'n5' },
+      { en: '¿Cuánto cuesta al centro?', tr: TR('How much to the centre?', 'כמה עד המרכז?'), he: 'כמה עד המרכז?', itemId: 'es.phrase.taxi.how-much', correct: true, next: 'n3' },
+      { en: '¿Me lo puede mostrar?', tr: TR('Can you show me?', 'אתה יכול להראות לי? (בקש לראות את המונה)'), he: 'אתה יכול להראות לי?', itemId: 'es.phrase.recovery.show-me', correct: true, next: 'n3' },
     ] },
-    { id: 'n4', who: 'npc', next: 'n5', en: 'Claro — mire, estamos aquí, y la estación está justo ahí.', tr: TR('Of course — here, we are here, and the station is right there.', 'כמובן — הנה, אנחנו כאן, והתחנה בדיוק שם.'), he: 'כמובן — הנה, אנחנו כאן, והתחנה בדיוק שם.' },
-    { id: 'n5', who: 'npc', end: true, en: 'No tiene pérdida. ¡Que tenga buen día!', tr: TR("You can't miss it. Have a good day!", 'אי אפשר לפספס. שיהיה יום טוב!'), he: 'אי אפשר לפספס. שיהיה יום טוב!' },
+    { id: 'n3', who: 'npc', fast: true, next: 'c3', en: 'Son unos quince euros — hay mucho tráfico ahora mismo.', tr: TR("It's about fifteen euros — there's a lot of traffic right now.", 'זה בערך חמישה עשר יורו — יש הרבה פקקים עכשיו.'), he: 'זה בערך חמישה עשר יורו — יש הרבה פקקים עכשיו.' },
+    { id: 'c3', who: 'you', en: '', he: '', choices: [
+      { en: 'Más despacio, por favor.', tr: TR('Please speak slowly.', 'דבר לאט, בבקשה.'), he: 'דבר לאט, בבקשה.', itemId: 'es.phrase.recovery.slowly', correct: true, next: 'r3' },
+      { en: 'De acuerdo, gracias.', tr: TR('Okay, thank you.', 'בסדר, תודה.'), he: 'בסדר, תודה.', itemId: 'es.phrase.recovery.thank-you', correct: true, next: 'n4' },
+    ] },
+    { id: 'r3', who: 'npc', slow: true, next: 'c3b', en: 'Quince — euros. El tráfico.', tr: TR('Fifteen — euros. Traffic.', 'חמישה עשר — יורו. פקקים.'), he: 'חמישה עשר — יורו. פקקים.' },
+    { id: 'c3b', who: 'you', en: '', he: '', choices: [
+      { en: 'De acuerdo, gracias.', tr: TR('Okay, thank you.', 'בסדר, תודה.'), he: 'בסדר, תודה.', itemId: 'es.phrase.recovery.thank-you', correct: true, next: 'n4' },
+    ] },
+    { id: 'n4', who: 'npc', next: 'c4', en: '…Ya casi llegamos. ¿Aquí está bien?', tr: TR('…We are almost there. Is here okay?', '…כמעט הגענו. כאן זה בסדר?'), he: '…כמעט הגענו. כאן זה בסדר?' },
+    { id: 'c4', who: 'you', en: '', he: '', choices: [
+      { en: 'Pare aquí, por favor. Quédese con el cambio.', tr: TR('Stop here, please. Keep the change.', 'עצור כאן, בבקשה. תשאיר את העודף.'), he: 'עצור כאן, בבקשה. תשאיר את העודף.', itemId: 'es.phrase.taxi.stop-here', correct: true, next: 'n5' },
+    ] },
+    { id: 'n5', who: 'npc', end: true, en: '¡Muchas gracias! ¡Buen viaje!', tr: TR('Thank you very much! Enjoy your trip!', 'תודה רבה! תיהנה מהטיול!'), he: 'תודה רבה! תיהנה מהטיול!' },
   ],
 };
 
 export const DAY6_ES: BootcampDayContent = {
   day: 6,
-  title: T('כיוונים', 'Directions'),
+  title: T('מונית', 'Taxi / Uber'),
   items: DAY6_ES_ITEMS,
-  dialogues: { 'lost-in-town': SCENE },
+  dialogues: { 'taxi-ride': SCENE },
   steps: [
-    { kind: 'talk', icon: '🧭', title: T('משימה 6: כיוונים', 'Mission 6: Directions'),
+    { kind: 'talk', icon: '🚕', title: T('משימה 6: מונית', 'Mission 6: Taxi / Uber'),
       body: [
-        T('לשאול "איפה?" זה קל. הקושי האמיתי: להבין את התשובה המהירה.', 'Asking “where?” is easy. The real challenge: understanding the fast answer.'),
-        T('היום זו בעיקר האזנה. שמאל, ימין, ישר, ליד — עד שזה טבעי.', 'Today is mostly listening. Left, right, straight, next to — until it’s automatic.'),
-      ], cta: T('מתחילים', 'Start') },
+        T('שיחה של 60 שניות עם נהג — יעד, מחיר, עצירה. לחץ גבוה, זמן קצר.', 'A 60-second conversation with a driver — destination, price, stop. High pressure, short window.'),
+        T('הסוד: תגיד את היעד ותראה את הכתובת בטלפון. גם אם קפאת — יש לך את הכלים.', 'The trick: say the destination and show the address on your phone. Even if you freeze — you have the tools.'),
+      ], cta: T('להיכנס למונית', 'Get in') },
     { kind: 'prime', label: T('לפני שנדבר', 'Before we speak'),
-      intro: T('שש מילות כיוון — כדי שתבין את התשובה, לא רק תשאל.', 'Six direction words — so you understand the answer, not just ask.'),
+      intro: T('המילים שמכניסות אותך למונית ומוציאות אותך במקום הנכון.', 'The words that get you into the taxi and out at the right spot.'),
       words: [
-        { text: 'perdone', meaning: T('סליחה (לפנות)', 'excuse me') },
-        { text: 'izquierda', meaning: T('שמאלה', 'left'), emoji: '⬅️' },
-        { text: 'derecha', meaning: T('ימינה', 'right'), emoji: '➡️' },
-        { text: 'todo recto', meaning: T('ישר', 'straight'), emoji: '⬆️' },
-        { text: 'cerca', meaning: T('קרוב', 'near') },
-        { text: 'lejos', meaning: T('רחוק', 'far') },
-      ], buildFromItemId: 'es.reply.dir.turn-left' },
-    { kind: 'tool', itemId: 'es.phrase.dir.where-is', index: 1, total: 3, label: T('לשאול איפה', 'Ask where') },
-    { kind: 'tool', itemId: 'es.phrase.dir.is-it-far', index: 2, total: 3, label: T('ללכת או מונית?', 'Walk or taxi?') },
-    { kind: 'tool', itemId: 'es.phrase.dir.show-me-map', index: 3, total: 3, label: T('לעבור לעיניים', 'Switch to eyes') },
-    { kind: 'replies', saidItemId: 'es.phrase.dir.where-is',
-      replyIds: ['es.reply.dir.left', 'es.reply.dir.right', 'es.reply.dir.straight', 'es.reply.dir.next-to'] },
-    { kind: 'receipt', text: T('שמאל, ימין, ישר, ליד — אתה מזהה כל כיוון במשפט.', 'Left, right, straight, next to — you catch every direction in a sentence.') },
-    { kind: 'quiz', itemId: 'es.reply.dir.turn-left', wrongIds: ['es.reply.dir.straight', 'es.reply.dir.right'] },
-    { kind: 'quiz', itemId: 'es.reply.dir.five-minutes', wrongIds: ['es.reply.dir.next-to', 'es.reply.dir.cant-miss'] },
-    { kind: 'dialogue', dialogueId: 'lost-in-town' },
-    { kind: 'receipt', text: T('שאלת דרך, הבנת הוראות מהירות, והגעת. ללכת לאיבוד כבר לא מפחיד.', 'You asked for directions, understood fast instructions, and arrived. Being lost isn’t scary anymore.') },
+        { text: 'dirección', meaning: T('כתובת', 'address'), emoji: '🏠' },
+        { text: 'aeropuerto', meaning: T('שדה תעופה', 'airport'), emoji: '✈️' },
+        { text: 'parar', meaning: T('לעצור', 'stop'), emoji: '✋' },
+        { text: 'aquí', meaning: T('כאן', 'here'), emoji: '📍' },
+        { text: 'cuánto', meaning: T('כמה (עולה)', 'how much') },
+      ], buildFromItemId: 'es.phrase.taxi.to-address' },
+    { kind: 'tool', itemId: 'es.phrase.taxi.to-address', index: 1, total: 4, label: T('הפתיח', 'The opener') },
+    { kind: 'tool', itemId: 'es.phrase.taxi.how-much', index: 2, total: 4, label: T('לשאול מחיר', 'Ask the price') },
+    { kind: 'tool', itemId: 'es.phrase.taxi.stop-here', index: 3, total: 4, label: T('לעצור', 'Stop it') },
+    { kind: 'tool', itemId: 'es.phrase.taxi.keep-change', index: 4, total: 4, label: T('לסיים יפה', 'Finish smoothly') },
+    { kind: 'replies', saidItemId: 'es.phrase.taxi.to-address',
+      replyIds: ['es.reply.taxi.where-to', 'es.reply.taxi.about-fifteen', 'es.reply.taxi.here-good', 'es.reply.taxi.first-visit'] },
+    { kind: 'receipt', text: T('אתה מזהה מה נהג מונית שואל — לאן, כמה, כאן בסדר?', 'You recognize what a taxi driver asks — where to, how much, is here okay?') },
+    { kind: 'quiz', itemId: 'es.reply.taxi.about-fifteen', wrongIds: ['es.reply.taxi.where-to', 'es.reply.taxi.traffic'] },
+    { kind: 'dialogue', dialogueId: 'taxi-ride' },
+    { kind: 'receipt', text: T('נסיעה שלמה: יעד, מחיר, עצירה, תשלום. שרדת את המונית.', 'A full ride: destination, price, stop, payment. You survived the taxi.') },
     { kind: 'swipe', itemIds: DAY6_ES_ITEMS.map((i) => i.id) },
-    { kind: 'ambush', npc: { en: 'Pase la iglesia, tome la segunda a la derecha, y está justo enfrente de la farmacia.', tr: TR('Go past the church take the second right and it is just opposite the pharmacy.', 'תעבור את הכנסייה, פנה ימינה בשנייה, וזה ממש מול בית המרקחת.'), he: 'תעבור את הכנסייה, פנה ימינה בשנייה, וזה ממש מול בית המרקחת.' },
-      correctItemId: 'es.reply.dir.right', wrongItemId: 'es.reply.dir.left' },
-    { kind: 'receipt', text: T('הוראה ארוכה ומהירה עם שלושה שלבים — ותפסת את הפנייה הנכונה.', 'A long, fast three-step instruction — and you caught the right turn.') },
+    { kind: 'ambush', npc: { en: 'Lo siento, la calle de delante está cortada — ¿le parece bien si le dejo a la vuelta de la esquina?', tr: TR('Sorry the road ahead is closed is it alright if I drop you around the corner?', 'סליחה, הכביש קדימה חסום — בסדר שאוריד אותך מעבר לפינה?'), he: 'סליחה, הכביש קדימה חסום — בסדר שאוריד אותך מעבר לפינה?' },
+      correctItemId: 'es.reply.taxi.here-good', wrongItemId: 'es.reply.taxi.where-to' },
+    { kind: 'receipt', text: T('שינוי ברגע האחרון, מהיר — והבנת שהוא מציע להוריד אותך קרוב.', 'A fast last-minute change — and you understood he’s offering to drop you nearby.') },
     { kind: 'summary' },
   ],
 };

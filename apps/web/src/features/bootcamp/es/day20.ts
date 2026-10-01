@@ -3,111 +3,97 @@ import type { BootcampDayContent, BootcampDialogue, BootcampItem } from '../type
 import { recoveryEs } from './recovery.js';
 
 /**
- * Spanish Mission 20 — "Entradas y atracciones" (Tickets & Attractions). Spanish parallel of English
- * day 20: buy tickets, ask opening hours, find a discount, catch the tour — the hidden skill is
- * understanding times. `tr:{en,he}` glosses; `es.*` ids. AI-drafted, pending review.
+ * Spanish Mission 20 — "Wifi, SIM y práctico" (Wifi, SIM & Practical). Spanish parallel of English
+ * mission 20: a SIM plan, data, a charger, the wifi password — phone alive, you alive. `tr:{en,he}`
+ * glosses; `es.*` ids. AI-drafted, pending review.
  */
 const T = (he: string, en: string): LocalizedText => ({ he, en });
 const TR = (en: string, he: string): LocalizedText => ({ en, he });
 
 export const DAY20_ES_ITEMS: BootcampItem[] = [
   // say
-  { id: 'es.phrase.attr.two-tickets', text: 'Dos entradas, por favor.', meaning: T('שני כרטיסים, בבקשה.', 'Two tickets, please.'),
-    tip: T('התבנית: ___ entradas, por favor. פשוט מספר, וגמרנו.', 'Template: ___ entradas, por favor. Just a number, done.') },
-  { id: 'es.phrase.attr.what-time-open', text: '¿A qué hora abren?', meaning: T('באיזו שעה אתם פותחים?', 'What time do you open?'),
-    tip: T('התבנית: ¿A qué hora ___ ? — פותחת כל שאלת שעה.', 'Template: ¿A qué hora ___ ? — opens any time question.') },
-  { id: 'es.phrase.attr.discount', text: '¿Hay descuento?', meaning: T('יש הנחה?', 'Is there a discount?'),
-    tip: T('התבנית: ¿Hay ___ ? — בודקת אם קיים משהו. שאלה ששווה כסף.', 'Template: ¿Hay ___ ? — checks if something exists. A question worth money.') },
-  { id: 'es.phrase.attr.guided-tour', text: '¿Hay visita guiada?', meaning: T('יש סיור מודרך?', 'Is there a guided tour?') },
-  // hear — ticket desk
-  { id: 'es.reply.attr.how-many-tickets', text: '¿Cuántas entradas?', meaning: T('כמה כרטיסים?', 'How many tickets?') },
-  { id: 'es.reply.attr.opens-nine', text: 'Abrimos a las nueve.', meaning: T('אנחנו פותחים בתשע.', 'We open at nine.') },
-  { id: 'es.reply.attr.last-entry', text: 'La última entrada es a las cinco.', meaning: T('כניסה אחרונה בחמש.', 'Last entry is at five.') },
-  { id: 'es.reply.attr.tour-eleven', text: 'La visita empieza a las once.', meaning: T('הסיור מתחיל באחת-עשרה.', 'The tour starts at eleven.') },
-  { id: 'es.reply.attr.students-half', text: 'Los estudiantes pagan la mitad.', meaning: T('סטודנטים משלמים חצי מחיר.', 'Students get half price.') },
-  { id: 'es.reply.attr.sold-out', text: 'Hoy está agotado.', meaning: T('היום אזל.', 'Today is sold out.') },
+  { id: 'es.phrase.sim.need-sim', text: 'Necesito una tarjeta SIM.', meaning: T('אני צריך כרטיס סים.', 'I need a SIM card.'),
+    tip: T('התבנית: Necesito ___ — מבקשת כל דבר בפשטות ובביטחון.', 'Template: Necesito ___ — asks for anything, simply and confidently.') },
+  { id: 'es.phrase.sim.data-plan', text: 'Un plan de datos, por favor.', meaning: T('חבילת גלישה, בבקשה.', 'A data plan, please.') },
+  { id: 'es.phrase.sim.how-much', text: '¿Cuánto es?', meaning: T('כמה זה עולה?', 'How much is it?'),
+    tip: T('לפני שמתחייבים לחבילה — תמיד שואלים מחיר.', 'Before committing to a plan — always ask the price.') },
+  { id: 'es.phrase.sim.charger', text: '¿Tienen un cargador?', meaning: T('יש לכם מטען?', 'Do you have a charger?') },
+  // hear — the shop's replies
+  { id: 'es.reply.sim.how-long-stay', text: '¿Cuánto tiempo se queda?', meaning: T('לכמה זמן אתה נשאר?', 'How long are you staying?') },
+  { id: 'es.reply.sim.ten-gigs', text: 'Este tiene diez gigas.', meaning: T("לזה יש עשרה ג'יגה.", 'This one has ten gigs.') },
+  { id: 'es.reply.sim.twenty-euros', text: 'Son veinte euros.', meaning: T('זה עשרים יורו.', "It's twenty euros.") },
+  { id: 'es.reply.sim.need-passport', text: 'Voy a necesitar su pasaporte.', meaning: T('אצטרך את הדרכון שלך.', "I'll need your passport.") },
+  { id: 'es.reply.sim.set-up-now', text: 'Se la configuro ahora mismo.', meaning: T('אני אתקין עכשיו.', "I'll set it up now.") },
+  { id: 'es.reply.sim.password-receipt', text: 'La contraseña del wifi está en su recibo.', meaning: T('סיסמת הוויי-פיי על הקבלה.', 'The wifi password is on your receipt.') },
   ...recoveryEs('es.phrase.recovery.repeat', 'es.phrase.recovery.slowly', 'es.phrase.recovery.thank-you'),
 ];
 
-const SCENE_ATTRACTION: BootcampDialogue = {
-  id: 'ticket-desk',
+const SCENE_SIM: BootcampDialogue = {
+  id: 'sim-shop',
   start: 'n1',
   nodes: [
-    { id: 'n1', who: 'npc', next: 'c1', en: '¡Hola! Bienvenido al museo. ¿Cuántas entradas?', tr: TR('Hi! Welcome to the museum. How many tickets?', 'היי! ברוך הבא למוזיאון. כמה כרטיסים?'), he: 'היי! ברוך הבא למוזיאון. כמה כרטיסים?' },
+    { id: 'n1', who: 'npc', next: 'c1', en: '¡Hola! ¿En qué puedo ayudarle?', tr: TR('Hi there! How can I help?', 'היי! איך אפשר לעזור?'), he: 'היי! איך אפשר לעזור?' },
     { id: 'c1', who: 'you', en: '', he: '', choices: [
-      { en: 'Dos entradas, por favor.', tr: TR('Two tickets, please.', 'שני כרטיסים, בבקשה.'), he: 'שני כרטיסים, בבקשה.', itemId: 'es.phrase.attr.two-tickets', correct: true, next: 'n2' },
-      { en: '¿Puede repetir, por favor?', tr: TR('Can you repeat that?', 'אפשר לחזור על זה?'), he: 'אפשר לחזור על זה?', itemId: 'es.phrase.recovery.repeat', correct: true, next: 'r1' },
+      { en: 'Necesito una tarjeta SIM.', tr: TR('I need a SIM card.', 'אני צריך כרטיס סים.'), he: 'אני צריך כרטיס סים.', itemId: 'es.phrase.sim.need-sim', correct: true, next: 'n2' },
+      { en: 'Un plan de datos, por favor.', tr: TR('A data plan, please.', 'חבילת גלישה, בבקשה.'), he: 'חבילת גלישה, בבקשה.', itemId: 'es.phrase.sim.data-plan', correct: true, next: 'n2' },
     ] },
-    { id: 'r1', who: 'npc', slow: true, next: 'c1b', en: '¿Cuántas — entradas?', tr: TR('How — many — tickets?', 'כמה — כרטיסים?'), he: 'כמה — כרטיסים?' },
-    { id: 'c1b', who: 'you', en: '', he: '', choices: [
-      { en: 'Dos entradas, por favor.', tr: TR('Two tickets, please.', 'שני כרטיסים, בבקשה.'), he: 'שני כרטיסים, בבקשה.', itemId: 'es.phrase.attr.two-tickets', correct: true, next: 'n2' },
-    ] },
-    { id: 'n2', who: 'npc', next: 'c2', en: 'Dos — son veinte euros. ¿Algo más?', tr: TR("Two — that's twenty euros. Anything else?", 'שניים — זה עשרים יורו. עוד משהו?'), he: 'שניים — זה עשרים יורו. עוד משהו?' },
+    { id: 'n2', who: 'npc', next: 'c2', en: 'Perfecto — este plan turístico tiene diez gigas. ¿Cuánto tiempo se queda?', tr: TR('Great — this tourist plan has ten gigs. How long are you staying?', "מעולה — לחבילה התיירותית הזאת יש עשרה ג'יגה. לכמה זמן אתה נשאר?"), he: "מעולה — לחבילה התיירותית הזאת יש עשרה ג'יגה. לכמה זמן אתה נשאר?" },
     { id: 'c2', who: 'you', en: '', he: '', choices: [
-      { en: '¿Hay descuento?', tr: TR('Is there a discount?', 'יש הנחה?'), he: 'יש הנחה?', itemId: 'es.phrase.attr.discount', correct: true, next: 'n3' },
-      { en: '¿A qué hora abren?', tr: TR('What time do you open?', 'באיזו שעה אתם פותחים?'), he: 'באיזו שעה אתם פותחים?', itemId: 'es.phrase.attr.what-time-open', correct: true, next: 'n2b' },
+      { en: '¿Cuánto es?', tr: TR('How much is it?', 'כמה זה עולה?'), he: 'כמה זה עולה?', itemId: 'es.phrase.sim.how-much', correct: true, next: 'n3' },
+      { en: '¿Puede repetir, por favor?', tr: TR('Can you repeat that?', 'אפשר לחזור על זה?'), he: 'אפשר לחזור על זה?', itemId: 'es.phrase.recovery.repeat', correct: true, next: 'r2' },
     ] },
-    { id: 'n2b', who: 'npc', next: 'c2b', en: 'Abrimos a las nueve, y la última entrada es a las cinco.', tr: TR('We open at nine, and last entry is at five.', 'אנחנו פותחים בתשע, וכניסה אחרונה בחמש.'), he: 'אנחנו פותחים בתשע, וכניסה אחרונה בחמש.' },
+    { id: 'r2', who: 'npc', slow: true, next: 'c2b', en: '¿Cuánto tiempo — se — queda?', tr: TR('How long — are you — staying?', 'לכמה זמן — אתה — נשאר?'), he: 'לכמה זמן — אתה — נשאר?' },
     { id: 'c2b', who: 'you', en: '', he: '', choices: [
-      { en: '¿Hay descuento?', tr: TR('Is there a discount?', 'יש הנחה?'), he: 'יש הנחה?', itemId: 'es.phrase.attr.discount', correct: true, next: 'n3' },
+      { en: '¿Cuánto es?', tr: TR('How much is it?', 'כמה זה עולה?'), he: 'כמה זה עולה?', itemId: 'es.phrase.sim.how-much', correct: true, next: 'n3' },
     ] },
-    { id: 'n3', who: 'npc', next: 'c3', en: 'Los estudiantes pagan la mitad — ¿tiene carné de estudiante?', tr: TR('Students get half price — do you have a student card?', 'סטודנטים חצי מחיר — יש לך כרטיס סטודנט?'), he: 'סטודנטים חצי מחיר — יש לך כרטיס סטודנט?' },
+    { id: 'n3', who: 'npc', next: 'c3', en: 'Son veinte euros, y voy a necesitar su pasaporte.', tr: TR("It's twenty euros, and I'll need your passport.", 'זה עשרים יורו, ואצטרך את הדרכון שלך.'), he: 'זה עשרים יורו, ואצטרך את הדרכון שלך.' },
     { id: 'c3', who: 'you', en: '', he: '', choices: [
-      { en: '¡Gracias!', tr: TR('Thank you!', 'תודה!'), he: 'תודה!', itemId: 'es.phrase.recovery.thank-you', correct: true, next: 'n4' },
-      { en: 'Más despacio, por favor.', tr: TR('Please speak slowly.', 'דבר לאט, בבקשה.'), he: 'דבר לאט, בבקשה.', itemId: 'es.phrase.recovery.slowly', correct: true, next: 'r3' },
+      { en: '¿Tienen un cargador?', tr: TR('Do you have a charger?', 'יש לכם מטען?'), he: 'יש לכם מטען?', itemId: 'es.phrase.sim.charger', correct: true, next: 'n3b' },
+      { en: '¡Gracias!', tr: TR('Thank you!', 'תודה! (מגיש דרכון)'), he: 'תודה!', itemId: 'es.phrase.recovery.thank-you', correct: true, next: 'n4' },
     ] },
-    { id: 'r3', who: 'npc', slow: true, next: 'c3b', en: 'Los estudiantes — pagan — la mitad.', tr: TR('Students — get — half price.', 'סטודנטים — משלמים — חצי מחיר.'), he: 'סטודנטים — משלמים — חצי מחיר.' },
+    { id: 'n3b', who: 'npc', next: 'c3b', en: '¿Un cargador? Sí — justo detrás de usted. ¿Algo más?', tr: TR('A charger? Yes — right behind you. Anything else?', 'מטען? כן — ממש מאחוריך. עוד משהו?'), he: 'מטען? כן — ממש מאחוריך. עוד משהו?' },
     { id: 'c3b', who: 'you', en: '', he: '', choices: [
       { en: '¡Gracias!', tr: TR('Thank you!', 'תודה!'), he: 'תודה!', itemId: 'es.phrase.recovery.thank-you', correct: true, next: 'n4' },
     ] },
-    { id: 'n4', who: 'npc', next: 'c4', en: 'Aquí tiene sus entradas. ¿Algo más en lo que pueda ayudar?', tr: TR('Here are your tickets. Anything else I can help with?', 'הנה הכרטיסים. עוד משהו שאוכל לעזור?'), he: 'הנה הכרטיסים. עוד משהו שאוכל לעזור?' },
+    { id: 'n4', who: 'npc', next: 'c4', en: 'Todo listo — se la configuro ahora mismo. La contraseña del wifi está en su recibo.', tr: TR("All set — I'll set it up now. The wifi password is on your receipt.", 'הכל מוכן — אני אתקין עכשיו. סיסמת הוויי-פיי על הקבלה.'), he: 'הכל מוכן — אני אתקין עכשיו. סיסמת הוויי-פיי על הקבלה.' },
     { id: 'c4', who: 'you', en: '', he: '', choices: [
-      { en: '¿Hay visita guiada?', tr: TR('Is there a guided tour?', 'יש סיור מודרך?'), he: 'יש סיור מודרך?', itemId: 'es.phrase.attr.guided-tour', correct: true, next: 'n5' },
-      { en: '¿Puede repetir, por favor?', tr: TR('Can you repeat that?', 'אפשר לחזור על זה?'), he: 'אפשר לחזור על זה?', itemId: 'es.phrase.recovery.repeat', correct: true, next: 'r4' },
+      { en: '¡Gracias!', tr: TR('Thank you!', 'תודה!'), he: 'תודה!', itemId: 'es.phrase.recovery.thank-you', correct: true, next: 'n5' },
+      { en: 'Más despacio, por favor.', tr: TR('Please speak slowly.', 'דבר לאט, בבקשה.'), he: 'דבר לאט, בבקשה.', itemId: 'es.phrase.recovery.slowly', correct: true, next: 'r4' },
     ] },
-    { id: 'r4', who: 'npc', slow: true, next: 'c4b', en: '¿Algo — más?', tr: TR('Anything — else?', 'עוד — משהו?'), he: 'עוד — משהו?' },
+    { id: 'r4', who: 'npc', slow: true, next: 'c4b', en: 'La contraseña del wifi — está en — su recibo.', tr: TR('The wifi password — is on — your receipt.', 'סיסמת הוויי-פיי — נמצאת — על הקבלה.'), he: 'סיסמת הוויי-פיי — נמצאת — על הקבלה.' },
     { id: 'c4b', who: 'you', en: '', he: '', choices: [
-      { en: '¿Hay visita guiada?', tr: TR('Is there a guided tour?', 'יש סיור מודרך?'), he: 'יש סיור מודרך?', itemId: 'es.phrase.attr.guided-tour', correct: true, next: 'n5' },
+      { en: '¡Gracias!', tr: TR('Thank you!', 'תודה!'), he: 'תודה!', itemId: 'es.phrase.recovery.thank-you', correct: true, next: 'n5' },
     ] },
-    { id: 'n5', who: 'npc', next: 'c5', en: 'Sí — la visita empieza a las once, en el vestíbulo principal.', tr: TR('Yes — the tour starts at eleven, in the main hall.', 'כן — הסיור מתחיל באחת-עשרה, באולם המרכזי.'), he: 'כן — הסיור מתחיל באחת-עשרה, באולם המרכזי.' },
-    { id: 'c5', who: 'you', en: '', he: '', choices: [
-      { en: '¡Gracias!', tr: TR('Thank you!', 'תודה!'), he: 'תודה!', itemId: 'es.phrase.recovery.thank-you', correct: true, next: 'n6' },
-      { en: 'Más despacio, por favor.', tr: TR('Please speak slowly.', 'דבר לאט, בבקשה.'), he: 'דבר לאט, בבקשה.', itemId: 'es.phrase.recovery.slowly', correct: true, next: 'r5' },
-    ] },
-    { id: 'r5', who: 'npc', slow: true, next: 'c5b', en: 'La visita — empieza — a las once.', tr: TR('The tour — starts — at eleven.', 'הסיור — מתחיל — באחת-עשרה.'), he: 'הסיור — מתחיל — באחת-עשרה.' },
-    { id: 'c5b', who: 'you', en: '', he: '', choices: [
-      { en: '¡Gracias!', tr: TR('Thank you!', 'תודה!'), he: 'תודה!', itemId: 'es.phrase.recovery.thank-you', correct: true, next: 'n6' },
-    ] },
-    { id: 'n6', who: 'npc', end: true, en: '¡Que disfrute del museo — y de la visita!', tr: TR('Enjoy the museum — and the tour!', 'תיהנה מהמוזיאון — ומהסיור!'), he: 'תיהנה מהמוזיאון — ומהסיור!' },
+    { id: 'n5', who: 'npc', end: true, en: '¡Ya está conectado! Buen viaje.', tr: TR("You're connected! Enjoy your trip.", 'אתה מחובר! תיהנה מהטיול.'), he: 'אתה מחובר! תיהנה מהטיול.' },
   ],
 };
 
 export const DAY20_ES: BootcampDayContent = {
   day: 20,
-  title: T('כרטיסים ואטרקציות', 'Tickets & Attractions'),
+  title: T('וויי-פיי, סים ופרקטיקה', 'Wifi, SIM & Practical'),
   items: DAY20_ES_ITEMS,
-  dialogues: { 'ticket-desk': SCENE_ATTRACTION },
+  dialogues: { 'sim-shop': SCENE_SIM },
   steps: [
-    { kind: 'talk', icon: '🎟️', title: T('משימה 20: כרטיסים ואטרקציות', 'Mission 20: Tickets & Attractions'),
+    { kind: 'talk', icon: '📶', title: T('משימה 20: וויי-פיי, סים ופרקטיקה', 'Mission 20: Wifi, SIM & Practical'),
       body: [
-        T('הטיול נהיה טיול. היום קונים כרטיסים, שואלים שעות, מוצאים הנחה ותופסים סיור.', 'The trip becomes a trip. Today you buy tickets, ask hours, find a discount, and catch a tour.'),
-        T('ומאחורי הכל מסתתרת מיומנות אחת: להבין שעות. היא נמצאת בכל מקום.', 'And behind it all hides one skill: understanding times. It’s everywhere.'),
-      ], cta: T('לגשת לקופה', 'Step up to the ticket desk') },
-    { kind: 'tool', itemId: 'es.phrase.attr.two-tickets', index: 1, total: 4, label: T('לקנות כרטיסים', 'Buy tickets') },
-    { kind: 'tool', itemId: 'es.phrase.attr.what-time-open', index: 2, total: 4, label: T('לשאול שעות', 'Ask the hours') },
-    { kind: 'tool', itemId: 'es.phrase.attr.discount', index: 3, total: 4, label: T('לבקש הנחה', 'Ask for a discount') },
-    { kind: 'tool', itemId: 'es.phrase.attr.guided-tour', index: 4, total: 4, label: T('לשאול על סיור', 'Ask about a tour') },
-    { kind: 'replies', saidItemId: 'es.phrase.attr.two-tickets',
-      replyIds: ['es.reply.attr.how-many-tickets', 'es.reply.attr.opens-nine', 'es.reply.attr.students-half', 'es.reply.attr.tour-eleven'] },
-    { kind: 'receipt', text: T('אתה מזהה תשובות של קופה — כמות, שעות, הנחות, זמני סיור.', 'You recognize a ticket desk’s answers — quantity, hours, discounts, tour times.') },
-    { kind: 'quiz', itemId: 'es.reply.attr.opens-nine', wrongIds: ['es.reply.attr.last-entry', 'es.reply.attr.tour-eleven'] },
-    { kind: 'quiz', itemId: 'es.reply.attr.students-half', wrongIds: ['es.reply.attr.how-many-tickets', 'es.reply.attr.sold-out'] },
-    { kind: 'dialogue', dialogueId: 'ticket-desk' },
-    { kind: 'receipt', text: T('קנית כרטיסים, גילית הנחה, ותפסת את זמני הסיור — הכל בספרדית.', 'You bought tickets, found a discount, and caught the tour times — all in Spanish.') },
+        T('הצרכים של המאה ה-21 שאף שיחון לא מלמד: כרטיס סים, גלישה, מטען, סיסמת וויי-פיי.', 'The 21st-century needs no phrasebook teaches: a SIM card, data, a charger, the wifi password.'),
+        T('טלפון חי — אתה חי. וגיבוי המתרגם תמיד בכיס.', 'Phone alive — you alive. And the translator backup is always in your pocket.'),
+      ], cta: T('להיכנס לחנות הטלפונים', 'Walk into the phone shop') },
+    { kind: 'tool', itemId: 'es.phrase.sim.need-sim', index: 1, total: 4, label: T('לבקש מה שצריך', 'Ask for what you need') },
+    { kind: 'tool', itemId: 'es.phrase.sim.data-plan', index: 2, total: 4, label: T('לבקש גלישה', 'Ask for data') },
+    { kind: 'tool', itemId: 'es.phrase.sim.how-much', index: 3, total: 4, label: T('לשאול מחיר', 'Ask the price') },
+    { kind: 'tool', itemId: 'es.phrase.sim.charger', index: 4, total: 4, label: T('לבקש מטען', 'Ask for a charger') },
+    { kind: 'replies', saidItemId: 'es.phrase.sim.need-sim',
+      replyIds: ['es.reply.sim.how-long-stay', 'es.reply.sim.ten-gigs', 'es.reply.sim.twenty-euros', 'es.reply.sim.need-passport'] },
+    { kind: 'receipt', text: T('אתה מזהה את שאלות המוכר — משך שהות, נפח גלישה, מחיר, דרכון.', 'You recognize the seller’s questions — length of stay, data amount, price, passport.') },
+    { kind: 'quiz', itemId: 'es.reply.sim.ten-gigs', wrongIds: ['es.reply.sim.twenty-euros', 'es.reply.sim.set-up-now'] },
+    { kind: 'quiz', itemId: 'es.reply.sim.need-passport', wrongIds: ['es.reply.sim.how-long-stay', 'es.reply.sim.password-receipt'] },
+    { kind: 'dialogue', dialogueId: 'sim-shop' },
+    { kind: 'receipt', text: T('קנית סים, חבילת גלישה ומטען — והתחברת לאינטרנט. הטלפון חי.', 'You bought a SIM, a data plan, and a charger — and got online. Your phone is alive.') },
     { kind: 'swipe', itemIds: DAY20_ES_ITEMS.map((i) => i.id) },
-    { kind: 'ambush', npc: { en: 'La exposición principal está cerrada hoy, pero la terraza de la azotea está abierta — ¿prefiere eso en su lugar?', tr: TR("The main exhibit's closed today but the rooftop terrace is open would you prefer that instead?", 'התערוכה הראשית סגורה היום, אבל גג הצפייה פתוח — אתה מעדיף את זה במקום?'), he: 'התערוכה הראשית סגורה היום, אבל גג הצפייה פתוח — אתה מעדיף את זה במקום?' },
-      correctItemId: 'es.phrase.recovery.slowly', wrongItemId: 'es.phrase.attr.two-tickets' },
-    { kind: 'receipt', text: T('שינוי תוכניות מפתיע ומהיר — וביקשת שיאט במקום להנהן בעיוורון.', 'A fast, surprise change of plans — and you asked them to slow down instead of nodding blindly.') },
+    { kind: 'ambush', npc: { en: '¿Quiere que el plan se renueve automáticamente cada mes o solo una recarga única por ahora?', tr: TR('Would you like the plan to auto-renew each month or just the one-time top-up for now?', 'תרצה שהחבילה תתחדש אוטומטית כל חודש או רק טעינה חד-פעמית לעכשיו?'), he: 'תרצה שהחבילה תתחדש אוטומטית כל חודש או רק טעינה חד-פעמית לעכשיו?' },
+      correctItemId: 'es.phrase.recovery.repeat', wrongItemId: 'es.phrase.sim.charger' },
+    { kind: 'receipt', text: T('שאלה טכנית ומהירה על החבילה — וביקשת שיחזרו במקום לבחור בעיוורון.', 'A fast, technical question about the plan — and you asked them to repeat instead of choosing blindly.') },
     { kind: 'summary' },
   ],
 };

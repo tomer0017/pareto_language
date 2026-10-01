@@ -3,107 +3,93 @@ import type { BootcampDayContent, BootcampDialogue, BootcampItem } from '../type
 import { recoveryEs } from './recovery.js';
 
 /**
- * Spanish Mission 5 — "Comida en el restaurante" (Restaurant Meal). Spanish parallel of English day
- * 5: same objective (table → menu → order → drink → bill), same step structure, same engine. Spanish
+ * Spanish Mission 5 — "Direcciones" (Directions). Spanish parallel of English mission 5: same objective
+ * (ask, then UNDERSTAND the fast answer — 90% listening), same step structure, same engine. Spanish
  * target lines + `tr:{en,he}` glosses; `es.*` ids. No Spanish video yet. AI-drafted, pending review.
  */
 const T = (he: string, en: string): LocalizedText => ({ he, en });
 const TR = (en: string, he: string): LocalizedText => ({ en, he });
 
 export const DAY5_ES_ITEMS: BootcampItem[] = [
-  { id: 'es.phrase.rest.table-two', text: 'Una mesa para dos, por favor.', meaning: T('שולחן לשניים, בבקשה.', 'A table for two, please.'),
-    tip: T('הפתיח למסעדה. התבנית: Una mesa para ___.', 'The restaurant opener. Template: Una mesa para ___.') },
-  { id: 'es.phrase.rest.menu', text: 'La carta, por favor.', meaning: T('התפריט, בבקשה.', 'The menu, please.') },
-  { id: 'es.phrase.rest.ill-have', text: 'Voy a tomar el pollo.', meaning: T('אני אקח את העוף.', "I'll have the chicken."),
-    tip: T('תבנית ההזמנה: Voy a tomar ___.', 'The ordering template: Voy a tomar ___.') },
-  { id: 'es.phrase.rest.water', text: 'Una botella de agua, por favor.', meaning: T('בקבוק מים, בבקשה.', 'A bottle of water, please.') },
-  { id: 'es.phrase.rest.no-onions', text: 'Sin cebolla, por favor.', meaning: T('בלי בצל, בבקשה.', 'No onions, please.'),
-    tip: T('תבנית: Sin ___, por favor — לכל מה שאתה לא רוצה בצלחת.', 'Template: Sin ___, por favor — for anything you don’t want on the plate.') },
-  { id: 'es.phrase.rest.the-bill', text: 'La cuenta, por favor.', meaning: T('החשבון, בבקשה.', 'The bill, please.') },
-  { id: 'es.phrase.rest.delicious', text: '¡Estaba delicioso!', meaning: T('זה היה טעים מאוד!', 'That was delicious!'),
-    tip: T('מחמאה קטנה שקונה חיוך גדול.', 'A small compliment that buys a big smile.') },
-  // hear
-  { id: 'es.reply.rest.reservation', text: '¿Tiene reserva?', meaning: T('יש לכם הזמנה?', 'Do you have a reservation?') },
-  { id: 'es.reply.rest.follow-me', text: 'Sígame, por favor.', meaning: T('בואו אחריי, בבקשה.', 'Follow me, please.') },
-  { id: 'es.reply.rest.ready-to-order', text: '¿Están listos para pedir?', meaning: T('מוכנים להזמין?', 'Are you ready to order?') },
-  { id: 'es.reply.rest.to-drink', text: '¿Algo de beber?', meaning: T('משהו לשתות?', 'Anything to drink?') },
-  { id: 'es.reply.rest.how-was-it', text: '¿Qué tal todo?', meaning: T('איך היה הכל?', 'How was everything?') },
-  { id: 'es.reply.rest.dessert', text: '¿Quieren postre?', meaning: T('רוצים קינוח?', 'Would you like dessert?') },
-  ...recoveryEs('es.phrase.recovery.repeat', 'es.phrase.recovery.slowly', 'es.phrase.recovery.thank-you', 'es.phrase.recovery.one-moment', 'es.phrase.recovery.dont-understand'),
+  { id: 'es.phrase.dir.excuse-me', text: '¡Perdone!', meaning: T('סליחה!', 'Excuse me!'),
+    tip: T('פותח כל פנייה לזר ברחוב.', 'Opens any approach to a stranger on the street.') },
+  { id: 'es.phrase.dir.where-is', text: '¿Dónde está la estación?', meaning: T('איפה התחנה?', 'Where is the station?'),
+    tip: T('תבנית: ¿Dónde está ___ ? — התחנה, השירותים, המלון.', 'Template: ¿Dónde está ___ ? — the station, the bathroom, the hotel.') },
+  { id: 'es.phrase.dir.how-do-i-get', text: '¿Cómo se llega a la playa?', meaning: T('איך מגיעים לחוף?', 'How do I get to the beach?') },
+  { id: 'es.phrase.dir.is-it-far', text: '¿Está lejos?', meaning: T('זה רחוק?', 'Is it far?'),
+    tip: T('שתי מילים שמחליטות: ללכת ברגל או לקחת מונית.', 'Two words that decide: walk or take a taxi.') },
+  { id: 'es.phrase.dir.show-me-map', text: '¿Me lo puede mostrar en el mapa?', meaning: T('אתה יכול להראות לי על המפה?', 'Can you show me on the map?'),
+    tip: T('כשמילים לא מספיקות — עוברים לעיניים.', 'When words aren’t enough — switch to eyes.') },
+  // hear — the direction answers (this is the whole mission)
+  { id: 'es.reply.dir.left', text: 'Está a la izquierda.', meaning: T('זה בצד שמאל.', "It's on the left.") },
+  { id: 'es.reply.dir.right', text: 'Está a la derecha.', meaning: T('זה בצד ימין.', "It's on the right.") },
+  { id: 'es.reply.dir.straight', text: 'Siga todo recto.', meaning: T('לך ישר.', 'Go straight ahead.') },
+  { id: 'es.reply.dir.turn-left', text: 'Gire a la izquierda en la esquina.', meaning: T('פנה שמאלה בפינה.', 'Turn left at the corner.') },
+  { id: 'es.reply.dir.next-to', text: 'Está al lado del banco.', meaning: T('זה ליד הבנק.', "It's next to the bank.") },
+  { id: 'es.reply.dir.five-minutes', text: 'Está a unos cinco minutos a pie.', meaning: T('זה בערך חמש דקות ברגל.', "It's about five minutes on foot.") },
+  { id: 'es.reply.dir.cant-miss', text: 'No tiene pérdida.', meaning: T('אי אפשר לפספס.', "You can't miss it.") },
+  ...recoveryEs('es.phrase.recovery.repeat', 'es.phrase.recovery.slowly', 'es.phrase.recovery.show-me', 'es.phrase.recovery.thank-you'),
 ];
 
 const SCENE: BootcampDialogue = {
-  id: 'sit-down-meal',
+  id: 'lost-in-town',
   start: 'n1',
   nodes: [
-    { id: 'n1', who: 'npc', next: 'c1', en: '¡Buenas noches! ¿Tiene reserva?', tr: TR('Good evening! Do you have a reservation?', 'ערב טוב! יש לכם הזמנה?'), he: 'ערב טוב! יש לכם הזמנה?' },
+    { id: 'n1', who: 'you', next: 'n2', en: '¡Perdone! ¿Dónde está la estación?', tr: TR('Excuse me! Where is the station?', 'סליחה! איפה התחנה?'), he: 'סליחה! איפה התחנה?' },
+    { id: 'n2', who: 'npc', fast: true, next: 'c1', en: '¿La estación? Siga todo recto y luego gire a la izquierda en la esquina.', tr: TR('The station? Go straight ahead, then turn left at the corner.', 'התחנה? לך ישר, ואז פנה שמאלה בפינה.'), he: 'התחנה? לך ישר, ואז פנה שמאלה בפינה.' },
     { id: 'c1', who: 'you', en: '', he: '', choices: [
-      { en: 'No — una mesa para dos, por favor.', tr: TR('No — a table for two, please.', 'לא — שולחן לשניים, בבקשה.'), he: 'לא — שולחן לשניים, בבקשה.', itemId: 'es.phrase.rest.table-two', correct: true, next: 'n2' },
-      { en: 'Perdón, no entiendo.', tr: TR("Sorry, I don't understand.", 'סליחה, אני לא מבין.'), he: 'סליחה, אני לא מבין.', itemId: 'es.phrase.recovery.dont-understand', correct: true, next: 'r1' },
+      { en: '¿Puede repetir, por favor?', tr: TR('Can you repeat that?', 'אפשר לחזור על זה? (הרבה כיוונים ברצף — עצור אותו!)'), he: 'אפשר לחזור על זה?', itemId: 'es.phrase.recovery.repeat', correct: true, next: 'r1' },
+      { en: '¿Está lejos?', tr: TR('Is it far?', 'זה רחוק?'), he: 'זה רחוק?', itemId: 'es.phrase.dir.is-it-far', correct: true, next: 'n3' },
     ] },
-    { id: 'r1', who: 'npc', slow: true, next: 'c1b', en: '¿Una mesa? ¿Para cuántas personas?', tr: TR('A table? For how many people?', 'שולחן? לכמה אנשים?'), he: 'שולחן? לכמה אנשים?' },
+    { id: 'r1', who: 'npc', slow: true, next: 'c1b', en: 'Todo recto… luego… a la izquierda… en la esquina.', tr: TR('Straight… then… left… at the corner.', 'ישר… ואז… שמאלה… בפינה.'), he: 'ישר… ואז… שמאלה… בפינה.' },
     { id: 'c1b', who: 'you', en: '', he: '', choices: [
-      { en: 'Una mesa para dos, por favor.', tr: TR('A table for two, please.', 'שולחן לשניים, בבקשה.'), he: 'שולחן לשניים, בבקשה.', itemId: 'es.phrase.rest.table-two', correct: true, next: 'n2' },
+      { en: '¿Está lejos?', tr: TR('Is it far?', 'זה רחוק?'), he: 'זה רחוק?', itemId: 'es.phrase.dir.is-it-far', correct: true, next: 'n3' },
     ] },
-    { id: 'n2', who: 'npc', next: 'n2b', en: 'Perfecto, sígame. Aquí tienen las cartas.', tr: TR('Perfect, follow me. Here are your menus.', 'מצוין, בואו אחריי. הנה התפריטים.'), he: 'מצוין, בואו אחריי. הנה התפריטים.' },
-    { id: 'n2b', who: 'npc', next: 'c2', en: '¿Están listos para pedir?', tr: TR('Are you ready to order?', 'מוכנים להזמין?'), he: 'מוכנים להזמין?' },
+    { id: 'n3', who: 'npc', next: 'c2', en: 'No, está a unos cinco minutos a pie. Está al lado del banco.', tr: TR("No, it's about five minutes on foot. It's next to the bank.", 'לא, זה בערך חמש דקות ברגל. זה ליד הבנק.'), he: 'לא, זה בערך חמש דקות ברגל. זה ליד הבנק.' },
     { id: 'c2', who: 'you', en: '', he: '', choices: [
-      { en: 'Voy a tomar el pollo.', tr: TR("I'll have the chicken.", 'אני אקח את העוף.'), he: 'אני אקח את העוף.', itemId: 'es.phrase.rest.ill-have', correct: true, next: 'n3' },
-      { en: 'Un momento, por favor.', tr: TR('One moment, please.', 'רגע אחד, בבקשה. (צריך עוד רגע? לגיטימי)'), he: 'רגע אחד, בבקשה.', itemId: 'es.phrase.recovery.one-moment', correct: true, next: 'r2' },
+      { en: '¿Me lo puede mostrar en el mapa?', tr: TR('Can you show me on the map?', 'אתה יכול להראות לי על המפה?'), he: 'אתה יכול להראות לי על המפה?', itemId: 'es.phrase.dir.show-me-map', correct: true, next: 'n4' },
+      { en: '¡Gracias!', tr: TR('Thank you!', 'תודה!'), he: 'תודה!', itemId: 'es.phrase.recovery.thank-you', correct: true, next: 'n5' },
     ] },
-    { id: 'r2', who: 'npc', next: 'n2b', en: 'Claro, tómense su tiempo.', tr: TR('Sure, take your time.', 'בטח, קחו את הזמן.'), he: 'בטח, קחו את הזמן.' },
-    { id: 'n3', who: 'npc', next: 'c3', en: 'Excelente elección. ¿Algo de beber?', tr: TR('Excellent choice. Anything to drink?', 'בחירה מצוינת. משהו לשתות?'), he: 'בחירה מצוינת. משהו לשתות?' },
-    { id: 'c3', who: 'you', en: '', he: '', choices: [
-      { en: 'Una botella de agua, por favor.', tr: TR('A bottle of water, please.', 'בקבוק מים, בבקשה.'), he: 'בקבוק מים, בבקשה.', itemId: 'es.phrase.rest.water', correct: true, next: 'n4' },
-    ] },
-    { id: 'n4', who: 'npc', fast: true, next: 'c4', en: 'Muy bien — ¿y con eso quieren algo más?', tr: TR('Great — and would you like anything else with that?', 'מצוין — ורוצים עוד משהו עם זה?'), he: 'מצוין — ורוצים עוד משהו עם זה?' },
-    { id: 'c4', who: 'you', en: '', he: '', choices: [
-      { en: 'Sin cebolla, por favor.', tr: TR('No onions, please.', 'בלי בצל, בבקשה.'), he: 'בלי בצל, בבקשה.', itemId: 'es.phrase.rest.no-onions', correct: true, next: 'n5' },
-      { en: 'Eso es todo, gracias.', tr: TR("That's all, thank you.", 'זה הכל, תודה.'), he: 'זה הכל, תודה.', itemId: 'es.phrase.recovery.thank-you', correct: true, next: 'n5' },
-    ] },
-    { id: 'n5', who: 'npc', next: 'n5b', en: '¡Enseguida se lo traigo!', tr: TR('Coming right up!', 'מגיע עוד רגע!'), he: 'מגיע עוד רגע!' },
-    { id: 'n5b', who: 'npc', next: 'c5', en: '…Más tarde… ¿Qué tal todo?', tr: TR('…Later… How was everything?', '…אחר כך… איך היה הכל?'), he: '…אחר כך… איך היה הכל?' },
-    { id: 'c5', who: 'you', en: '', he: '', choices: [
-      { en: '¡Estaba delicioso! La cuenta, por favor.', tr: TR('That was delicious! The bill, please.', 'זה היה טעים מאוד! החשבון, בבקשה.'), he: 'זה היה טעים מאוד! החשבון, בבקשה.', itemId: 'es.phrase.rest.the-bill', correct: true, next: 'n6' },
-    ] },
-    { id: 'n6', who: 'npc', end: true, en: 'Me alegro de que les gustara. Aquí tienen — ¡que pasen buena noche!', tr: TR('So glad you enjoyed it. Here you are — have a lovely evening!', 'שמח שנהניתם. בבקשה — ערב נעים!'), he: 'שמח שנהניתם. בבקשה — ערב נעים!' },
+    { id: 'n4', who: 'npc', next: 'n5', en: 'Claro — mire, estamos aquí, y la estación está justo ahí.', tr: TR('Of course — here, we are here, and the station is right there.', 'כמובן — הנה, אנחנו כאן, והתחנה בדיוק שם.'), he: 'כמובן — הנה, אנחנו כאן, והתחנה בדיוק שם.' },
+    { id: 'n5', who: 'npc', end: true, en: 'No tiene pérdida. ¡Que tenga buen día!', tr: TR("You can't miss it. Have a good day!", 'אי אפשר לפספס. שיהיה יום טוב!'), he: 'אי אפשר לפספס. שיהיה יום טוב!' },
   ],
 };
 
 export const DAY5_ES: BootcampDayContent = {
   day: 5,
-  title: T('ארוחה במסעדה', 'Restaurant Meal'),
+  title: T('כיוונים', 'Directions'),
   items: DAY5_ES_ITEMS,
-  dialogues: { 'sit-down-meal': SCENE },
+  dialogues: { 'lost-in-town': SCENE },
   steps: [
-    { kind: 'talk', icon: '🍽️', title: T('ארוחה במסעדה', 'Restaurant Meal'),
+    { kind: 'talk', icon: '🧭', title: T('משימה 5: כיוונים', 'Mission 5: Directions'),
       body: [
-        T('ארוחת ערב אמיתית: שולחן, תפריט, הזמנה, שתייה, חשבון.', 'A real dinner: table, menu, order, drink, bill.'),
-        T('הבריח מתחיל ברגע שהמלצר מגיע ושואל שאלה. נכיר את השאלות מראש.', 'The freeze starts the second the waiter arrives with a question. We meet them in advance.'),
-      ], cta: T('להיכנס למסעדה', 'Walk in') },
+        T('לשאול "איפה?" זה קל. הקושי האמיתי: להבין את התשובה המהירה.', 'Asking “where?” is easy. The real challenge: understanding the fast answer.'),
+        T('היום זו בעיקר האזנה. שמאל, ימין, ישר, ליד — עד שזה טבעי.', 'Today is mostly listening. Left, right, straight, next to — until it’s automatic.'),
+      ], cta: T('מתחילים', 'Start') },
     { kind: 'prime', label: T('לפני שנדבר', 'Before we speak'),
-      intro: T('שמות המפתח של הארוחה — שאר המשפט כבר מוכר.', 'The meal’s key nouns — the rest of the sentence is already familiar.'),
+      intro: T('שש מילות כיוון — כדי שתבין את התשובה, לא רק תשאל.', 'Six direction words — so you understand the answer, not just ask.'),
       words: [
-        { text: 'mesa', meaning: T('שולחן', 'table'), emoji: '🍽️' },
-        { text: 'carta', meaning: T('תפריט', 'menu'), emoji: '📋' },
-        { text: 'agua', meaning: T('מים', 'water'), emoji: '💧' },
-        { text: 'cuenta', meaning: T('חשבון', 'bill'), emoji: '🧾' },
-        { text: 'por favor', meaning: T('בבקשה', 'please'), review: true },
-      ], buildFromItemId: 'es.phrase.rest.the-bill' },
-    { kind: 'tool', itemId: 'es.phrase.rest.table-two', index: 1, total: 4, label: T('הפתיח', 'The opener') },
-    { kind: 'tool', itemId: 'es.phrase.rest.ill-have', index: 2, total: 4, label: T('להזמין', 'Order it') },
-    { kind: 'tool', itemId: 'es.phrase.rest.no-onions', index: 3, total: 4, label: T('בקשה מיוחדת', 'Special request') },
-    { kind: 'tool', itemId: 'es.phrase.rest.the-bill', index: 4, total: 4, label: T('לסגור', 'Close it out') },
-    { kind: 'replies', saidItemId: 'es.phrase.rest.ill-have',
-      replyIds: ['es.reply.rest.to-drink', 'es.reply.rest.ready-to-order', 'es.reply.rest.how-was-it', 'es.reply.rest.dessert'] },
-    { kind: 'receipt', text: T('אתה מזהה את כל שאלות המלצר — לפני שהן מפתיעות אותך.', 'You recognize every waiter question — before it can surprise you.') },
-    { kind: 'quiz', itemId: 'es.reply.rest.reservation', wrongIds: ['es.reply.rest.ready-to-order', 'es.reply.rest.dessert'] },
-    { kind: 'dialogue', dialogueId: 'sit-down-meal' },
-    { kind: 'receipt', text: T('ארוחת ערב שלמה: משולחן ועד חשבון, כולל בקשה מיוחדת.', 'A full dinner: from table to bill, special request included.') },
+        { text: 'perdone', meaning: T('סליחה (לפנות)', 'excuse me') },
+        { text: 'izquierda', meaning: T('שמאלה', 'left'), emoji: '⬅️' },
+        { text: 'derecha', meaning: T('ימינה', 'right'), emoji: '➡️' },
+        { text: 'todo recto', meaning: T('ישר', 'straight'), emoji: '⬆️' },
+        { text: 'cerca', meaning: T('קרוב', 'near') },
+        { text: 'lejos', meaning: T('רחוק', 'far') },
+      ], buildFromItemId: 'es.reply.dir.turn-left' },
+    { kind: 'tool', itemId: 'es.phrase.dir.where-is', index: 1, total: 3, label: T('לשאול איפה', 'Ask where') },
+    { kind: 'tool', itemId: 'es.phrase.dir.is-it-far', index: 2, total: 3, label: T('ללכת או מונית?', 'Walk or taxi?') },
+    { kind: 'tool', itemId: 'es.phrase.dir.show-me-map', index: 3, total: 3, label: T('לעבור לעיניים', 'Switch to eyes') },
+    { kind: 'replies', saidItemId: 'es.phrase.dir.where-is',
+      replyIds: ['es.reply.dir.left', 'es.reply.dir.right', 'es.reply.dir.straight', 'es.reply.dir.next-to'] },
+    { kind: 'receipt', text: T('שמאל, ימין, ישר, ליד — אתה מזהה כל כיוון במשפט.', 'Left, right, straight, next to — you catch every direction in a sentence.') },
+    { kind: 'quiz', itemId: 'es.reply.dir.turn-left', wrongIds: ['es.reply.dir.straight', 'es.reply.dir.right'] },
+    { kind: 'quiz', itemId: 'es.reply.dir.five-minutes', wrongIds: ['es.reply.dir.next-to', 'es.reply.dir.cant-miss'] },
+    { kind: 'dialogue', dialogueId: 'lost-in-town' },
+    { kind: 'receipt', text: T('שאלת דרך, הבנת הוראות מהירות, והגעת. ללכת לאיבוד כבר לא מפחיד.', 'You asked for directions, understood fast instructions, and arrived. Being lost isn’t scary anymore.') },
     { kind: 'swipe', itemIds: DAY5_ES_ITEMS.map((i) => i.id) },
-    { kind: 'ambush', npc: { en: '¿Quieren ver la carta de postres antes de que traiga la cuenta?', tr: TR('Would you like to see the dessert menu before I bring the check?', 'רוצים לראות את תפריט הקינוחים לפני שאני מביא את החשבון?'), he: 'רוצים לראות את תפריט הקינוחים לפני שאני מביא את החשבון?' },
-      correctItemId: 'es.reply.rest.dessert', wrongItemId: 'es.reply.rest.reservation' },
-    { kind: 'receipt', text: T('משפט ארוך ומהיר בסוף הארוחה — והבנת את העיקר.', 'A long, fast sentence at the end of the meal — and you caught the point.') },
+    { kind: 'ambush', npc: { en: 'Pase la iglesia, tome la segunda a la derecha, y está justo enfrente de la farmacia.', tr: TR('Go past the church take the second right and it is just opposite the pharmacy.', 'תעבור את הכנסייה, פנה ימינה בשנייה, וזה ממש מול בית המרקחת.'), he: 'תעבור את הכנסייה, פנה ימינה בשנייה, וזה ממש מול בית המרקחת.' },
+      correctItemId: 'es.reply.dir.right', wrongItemId: 'es.reply.dir.left' },
+    { kind: 'receipt', text: T('הוראה ארוכה ומהירה עם שלושה שלבים — ותפסת את הפנייה הנכונה.', 'A long, fast three-step instruction — and you caught the right turn.') },
     { kind: 'summary' },
   ],
 };

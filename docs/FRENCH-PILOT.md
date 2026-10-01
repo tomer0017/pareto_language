@@ -2,12 +2,12 @@
 
 > **Status: French is live as an EARLY ACCESS learning language** (`available:true`,
 > `earlyAccess:true`). It is selectable from onboarding/Profile; the **complete French Core 500** and
-> **all 30 Bootcamp missions** are fully usable and at full structural parity with English. The
+> **all 29 Bootcamp missions** are fully usable and at full structural parity with English. The
 > architecture is language-agnostic, so finishing French — and adding
 > Spanish/Italian/German/Portuguese — is **primarily content**. Nothing here claims native review.
 
-Run `npm run parity` for the live dashboard. Today: **FR corpus 633/633 (100%) ✅, Bootcamp 30/30 (100%) ✅** —
-the full 30-mission journey (days 1–30) is authored in French with structural parity to English.
+Run `npm run parity` for the live dashboard. Today: **FR corpus 633/633 (100%) ✅, Bootcamp 29/29 (100%) ✅** —
+the full 29-mission journey (days 1–29) is authored in French with structural parity to English.
 French remains **Early Access** only because the content is AI-drafted and **pending native review** —
 not because anything is missing.
 
@@ -38,8 +38,8 @@ not because anything is missing.
   never touches the English 500. Core Words + Picture Quiz + Swipe Recall + TTS all work in French
   from it (games take a `lang` prop; `fr-FR` voice). Concept ids/categories/metadata are identical to
   English by construction — only the realization differs (enforced by `corpusParity`, 0 missing / 0 orphans).
-- **French Bootcamp Missions 1–2** authored (`fr/day1.ts` Recovery Toolkit, `fr/day2.ts` Introduce
-  Myself) + a shared French recovery kit (`fr/recovery.ts`): French target lines with `tr` glosses,
+- **French Bootcamp** authored (`fr/day1.ts` Introduce Myself … `fr/day29.ts`; the former Recovery
+  Toolkit mission was removed from the curriculum in every language) + a shared French recovery kit (`fr/recovery.ts`): French target lines with `tr` glosses,
   `fr.phrase.*`/`fr.reply.*` ids (French progress/review isolated from English). They play through the
   SAME engine; the parity checker confirms each structurally matches its English counterpart, and no
   dialogue branch dead-ends. Missions with no French video degrade to an honest "unavailable" (never
@@ -52,12 +52,11 @@ not because anything is missing.
 ## 2. What is NOT done (brutally honest)
 
 - **Core corpus: DONE (633/633).** No gap. `corpusParity('fr')` passes with 0 missing, 0 orphans.
-- **Bootcamp: COMPLETE — 30 of 30 missions authored in French** (days 1–30; days 5–30 added
-  2026-07-13/14). Every mission is at genuine **content parity** with its English counterpart —
+- **Bootcamp: COMPLETE — 29 of 29 missions authored in French** (days 1–29). Every mission is at genuine **content parity** with its English counterpart —
   identical items/tools/steps/dialogues, natural idiomatic `vous`-French, complete `tr:{en,he}`
   glosses, priming (incl. the 70/80/90 number system), videos, and full recovery-branch dialogues.
-  The checkpoint / integration missions (10, 18, 24, 28, 29, 30) reuse earlier French items by id,
-  exactly as English does. `missionParity('fr', …)` reports **30/30 covered, complete, 0 missing**, and every
+  The checkpoint / integration missions (9, 17, 23, 27, 28, 29) reuse earlier French items by id,
+  exactly as English does. `missionParity('fr', …)` reports **29/29 covered, complete, 0 missing**, and every
   per-mission structural check (steps/items/dialogues) matches its English source exactly.
 - **Foundation examples: French authored (Foundation words).** `features/foundation/frenchExamples.ts`
   provides an authored French example for **all 192 Foundation building-block concepts** (verified by a
@@ -66,7 +65,7 @@ not because anything is missing.
   form). AI-drafted, `pending native review`. For Core words OUTSIDE the Foundation taxonomy the app
   still shows the app-language meaning (never English-as-French). A future step folds French examples
   into the corpus for the remaining concepts.
-- **French is Early Access because of native review, not coverage.** The full 30/30 Bootcamp and
+- **French is Early Access because of native review, not coverage.** The full 29/29 Bootcamp and
   511/511 corpus are structurally at parity with English; the only thing standing between Early Access
   and full parity is professional native review of the AI-drafted content.
 - **`fr` is not in `DECLARED_LANGS`.** The pilot pack ships a curated subset deliberately; declaring

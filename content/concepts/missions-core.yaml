@@ -3,7 +3,7 @@
 # translations, each flagged for native review. No fake "native_reviewed". Seeded via the
 # pipeline (npm run seed:concepts / seed:all) — idempotent upsert by concept id.
 concepts:
-  # ── Recovery Kit (Mission 1) — RoF 3, Survive layer ──
+  # ── Recovery Kit (shared tools, reused inside missions — not a mission of its own) — RoF 3, Survive layer ──
   - id: concept.phrase.recovery.dont-understand
     kind: phrase
     gloss: { en: "Sorry, I don't understand.", he: "סליחה, אני לא מבין." }
@@ -103,7 +103,7 @@ concepts:
       it: { text: "Scusi!", quality: draft, reviewNotes: "MT draft — native review needed" }
       ar: { text: "آسف!", quality: draft, reviewNotes: "MSA draft — native review needed" }
 
-  # ── Mission 2 · Introduce Myself (say + hear) ──
+  # ── Mission 1 · Introduce Myself (say + hear) ──
   - id: concept.phrase.intro.my-name-is
     kind: phrase
     gloss: { en: "My name is…", he: "קוראים לי…" }
@@ -176,7 +176,7 @@ concepts:
       it: { text: "Di dov'è?", quality: draft, reviewNotes: "MT draft — native review needed" }
       ar: { text: "من أين أنت؟", quality: draft, reviewNotes: "MSA draft — native review needed" }
 
-  # ── Mission 3 · Numbers & Money ──
+  # ── Mission 2 · Numbers & Money ──
   - id: concept.phrase.money.how-much
     kind: phrase
     gloss: { en: "How much is it?", he: "כמה זה עולה?" }
@@ -220,7 +220,7 @@ concepts:
       it: { text: "Sono dieci euro.", quality: draft, reviewNotes: "MT draft — native review needed" }
       ar: { text: "المجموع عشرة يورو.", quality: draft, reviewNotes: "MSA draft — currency varies by country; native review needed" }
 
-  # ── Mission 5 · Restaurant Basics ──
+  # ── Mission 4 · Restaurant Basics ──
   - id: concept.phrase.restaurant.table-for-two
     kind: phrase
     gloss: { en: "A table for two, please.", he: "שולחן לשניים, בבקשה." }
@@ -279,7 +279,7 @@ concepts:
       it: { text: "Naturale o frizzante?", quality: draft, reviewNotes: "MT draft — native review needed" }
       ar: { text: "ماء عادي أم فوار؟", quality: draft, reviewNotes: "MSA draft — native review needed" }
 
-  # ── Mission 6 · Directions ──
+  # ── Mission 5 · Directions ──
   - id: concept.phrase.directions.where-is
     kind: phrase
     gloss: { en: "Where is the…?", he: "איפה ה…?" }
@@ -338,7 +338,7 @@ concepts:
       it: { text: "Vada dritto.", quality: draft, reviewNotes: "MT draft — native review needed" }
       ar: { text: "امشِ على طول.", quality: draft, reviewNotes: "MSA draft — dialectal alternative common; native review needed" }
 
-  # ── Mission 7 · Taxi ──
+  # ── Mission 6 · Taxi ──
   - id: concept.phrase.taxi.to-this-address
     kind: phrase
     gloss: { en: "To this address, please.", he: "לכתובת הזו, בבקשה." }
@@ -383,7 +383,7 @@ concepts:
       it: { text: "Dove andiamo?", quality: draft, reviewNotes: "MT draft — native review needed" }
       ar: { text: "إلى أين؟", quality: draft, reviewNotes: "MSA draft — native review needed" }
 
-  # ── Mission 8 · Hotel Check-in ──
+  # ── Mission 7 · Hotel Check-in ──
   - id: concept.phrase.hotel.i-have-a-reservation
     kind: phrase
     gloss: { en: "I have a reservation.", he: "יש לי הזמנה." }
@@ -428,7 +428,7 @@ concepts:
       it: { text: "Il passaporto, per favore.", quality: draft, reviewNotes: "MT draft — native review needed" }
       ar: { text: "جواز سفرك من فضلك.", quality: draft, reviewNotes: "MSA draft — native review needed" }
 
-  # ── Mission 9 · Shopping ──
+  # ── Mission 8 · Shopping ──
   - id: concept.phrase.shopping.can-i-try-it-on
     kind: phrase
     gloss: { en: "Can I try it on?", he: "אפשר למדוד?" }

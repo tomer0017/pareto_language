@@ -3,7 +3,7 @@ import { t } from '../i18n/strings.js';
 import { tap } from '../ui/haptics.js';
 import { formatDuration } from './playbackPlan.js';
 import type { ParrotPlayback } from './useParrotPlayback.js';
-import type { PauseDuration, PlaybackOrder, PlaybackSpeed, RepeatCount, SleepTimerMinutes } from './types.js';
+import type { PauseDuration, PlaybackOrder, RepeatCount, SleepTimerMinutes } from './types.js';
 
 /**
  * The ONE Parrot-Mode controls component — used by every listening surface (Core Words, Core
@@ -11,18 +11,19 @@ import type { PauseDuration, PlaybackOrder, PlaybackSpeed, RepeatCount, SleepTim
  * the engine handle ({@link ParrotPlayback}).
  *
  * Progressive disclosure (Task 9): the PRIMARY row (Prev · Play/Pause · Next · Repeat) is always
- * visible; the remaining settings (Translation, Order, Loop, Speed, Pause, Sleep timer) live in a
+ * visible; the remaining settings (Translation, Order, Loop, Pause, Sleep timer) live in a
  * collapsible panel so nothing overflows on a phone and the Transcript keeps its reading space.
+ * There is NO speed control: speech speed is one global preference (Profile).
  * Accessibility (Task 10): every icon control has a translated aria-label, toggle groups expose
  * aria-pressed, the settings disclosure exposes aria-expanded, and a polite live region announces
  * status changes (never the per-second countdown).
  */
 
 /** A labelled segmented toggle group — the single reusable pattern for every Parrot setting. */
-function Seg<T extends string | number>({ label, value, options, onChange }: {
+export function Seg<T extends string | number>({ label, value, options, onChange }: {
   label: string;
   value: T;
-  options: { v: T; label: string }[];
+  options: { v: T; label: string; aria?: string }[];
   onChange: (v: T) => void;
 }) {
   return (
@@ -35,6 +36,7 @@ function Seg<T extends string | number>({ label, value, options, onChange }: {
             type="button"
             className={`seg-btn ${value === o.v ? 'on' : ''}`}
             aria-pressed={value === o.v}
+            aria-label={o.aria}
             onClick={() => { tap(); onChange(o.v); }}
           >{o.label}</button>
         ))}
@@ -44,7 +46,6 @@ function Seg<T extends string | number>({ label, value, options, onChange }: {
 }
 
 const REPEATS: RepeatCount[] = [1, 2, 3];
-const SPEEDS: PlaybackSpeed[] = [0.5, 0.75, 1, 1.25];
 const SLEEP_OPTIONS: SleepTimerMinutes[] = [0, 10, 15, 30, 60];
 
 /** Translated, non-spammy status line for the live region (announced only when it changes). */
@@ -87,7 +88,7 @@ export function PlaybackControls({ pb }: { pb: ParrotPlayback }) {
       <Seg
         label={t('parrotRepeat')}
         value={pb.settings.repeat}
-        options={REPEATS.map((r) => ({ v: r, label: `×${r}` }))}
+        options={REPEATS.map((r) => ({ v: r, label: `${r}×` }))}
         onChange={pb.setRepeat}
       />
 
@@ -132,12 +133,6 @@ export function PlaybackControls({ pb }: { pb: ParrotPlayback }) {
             value={pb.settings.loop ? 'on' : 'off'}
             options={[{ v: 'on', label: t('parrotOn') }, { v: 'off', label: t('parrotOff') }]}
             onChange={(v) => pb.setLoop(v === 'on')}
-          />
-          <Seg
-            label={t('parrotSpeed')}
-            value={pb.settings.speed}
-            options={SPEEDS.map((s) => ({ v: s, label: `${s}×` }))}
-            onChange={pb.setSpeed}
           />
           <Seg
             label={t('parrotPauseLength')}

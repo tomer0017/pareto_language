@@ -38,28 +38,63 @@ handling common travel situations abroad** — ordering, arriving, asking, recov
 
 ## 5. Current app structure (screens)
 
-Permanent bottom navigation (English pilot): **Home · Bootcamp · Core · Profile**. The nav is
-hidden only inside an active mission (a focused, full-screen flow with its own controls).
+Primary navigation — **Home · Path · Listen · Profile** (בית · מסלול · להאזין · פרופיל; exactly four
+destinations — Stories live inside Listen, words and the sentence library under the Path). ONE model
+(`app/nav.ts`) and ONE component (`shared/ui/AppNav`) for every screen size: a floating bottom bar
+on phones/tablets, a side rail on desktop (on the inline-start edge — right in Hebrew, left in
+English). The bottom bar hides inside a focused flow (an active mission, a game); the desktop rail
+stays as a calm way out. READY is used in two modes over the SAME content: **active learning**
+(the Path) and **passive listening** (Listen).
 
-- **Home** — the real entry point (answers "what can I do here?"): the language strip, a **Quick
-  Settings** card owning **Theme** + **Speech Speed** (reusing the same appStore/TTS — no duplicate
-  state), and four
-  large **action cards** as the primary navigation
-  (🗣️ Common Situations → Bootcamp · 📖 Learn New Words → Core Words · 💬 Core Phrases → Core
-  Phrases · 🎬 Videos). **Continue** remains as a quieter secondary card lower down. No dashboards.
+- **Home** — the coach, not a menu. It answers "what is the single best thing to do now?" with
+  exactly four surfaces: **Travel Readiness** (ring + "X of 29 situations ready", plus "X of Y core
+  sentences practiced" read from the real review log; Y is the canonical sentence count — one per
+  distinct wording — from `sentenceCatalog`, the same number every screen shows), **Your next step** (the mission to continue
+  or start — icon, objective, "Situation N of 29", estimated minutes, one primary button), **Quick
+  review** (up to 5 sentences from the learner's own practice log; **hidden** until something was
+  practiced — no empty disabled card) and **Quick listen** (10 hands-free minutes). No settings, libraries or
+  tools on Home — they live in Learn / Listen / Profile. A brand-new learner additionally sees one
+  quiet text link to the zero-beginner path.
+- **Travel Readiness (מוכנות לטיול)** — the one progress model: completed missions ÷ the plan's
+  length (`features/bootcamp/readiness.ts`, pure). Never "% of a language", never a hard-coded
+  number. The detail screen (`readiness` view, opened from Home's ring or Learn's summary) lists
+  every situation as ready / in progress / not started. Capability is the motivation — there are
+  no points, streaks, hearts or invented achievement badges.
+- **Path (מסלול)** — the structured path through the 29 real situations and the ONE route to them
+  (labelled "מסלול" / "Path" because everything in READY is learning; internally still the `bootcamp` view):
+  a small readiness summary, the plan's phases as groups, compact mission cards (number, the
+  mission's own icon, title, objective, status), and exactly ONE card highlighted as "your next
+  step". One column on phones, two on tablets, three on desktop. Below the curriculum, a quiet
+  **More practice** row: the zero-beginner path, the Foundation building blocks, words, and the
+  sentence library — ordinary rows, nothing floating over the mission list.
+- **Listen (להאזין)** — passive mode: press Play and learn while driving or walking. Three
+  categories — **Core sentences · Dialogues · Stories** — each a playlist built from content that
+  already exists (`features/listen/playlists.ts`; nothing is duplicated). A **queue** of topics, a
+  **now-playing** card (sentence in its own direction + translation), prev / play / next,
+  **Repeats (חזרות)** 1× 2× 3× (how many times a sentence is said — NOT speed), a separate
+  **Continuous play (ניגון רציף)** switch, three
+  **listening modes** (app language → target · target only · target → app language) and a **Quick
+  listen** (10 minutes, then it stops itself). Speech speed is NOT here: the one global speed lives
+  in Profile. Desktop uses two columns (queue beside the player). **Stories are surfaced visually**:
+  a card with one real story cover (the story being read, else the first unfinished one — from stored
+  reading progress) opens the reader directly; "All stories" opens the list. The Videos experience
+  and the sentence library are linked under "More ways to practice".
 - **Videos** — an experience, not a list: plays a random available mission video, then asks "did
   you understand everything?" → load another random video, or drop into the exact Mission Hub that
   owns the video (Practice / Transcript / Video). Honest empty state. Videos ship for EN Missions
-  2–5, 7–9, 11 and FR Missions 2–4 (each mission's optional `introVideo`, auto-discovered per
+  1–4, 6–8, 10 and FR Missions 1–5, 8, 10 (each mission's optional `introVideo`, auto-discovered per
   learning language); missions without one show "Coming soon".
-- **Bootcamp** — the heart of the product: a **29-mission numbered journey** in 5 phases
-  (Foundations → Arrival → Food → City Life → Mastery), beginning with **Introduce Myself**.
-  Checkpoints are cold integration days. The **Recovery Toolkit** (the 7 survival tools, formerly
-  "Mission 1") is now an **optional special mission** shown unnumbered at the end of the map — its
-  content is unchanged; only its placement/presentation moved (pilot testers read it as a broken
-  first mission because its answers are escape tools, not answers to the conversation). Display
-  numbering is presentational (`missionNumber()`); the internal `day`/DAYS keys never change.
-- **Foundation (🛟)** — a floating action button on the Bootcamp map (hidden inside an active mission,
+- **Bootcamp** — the heart of the product: a **29-mission journey** in 5 phases
+  (Foundations → Arrival → Food → City Life → Mastery). **Mission 1 = Introduce Myself**, Mission 29 =
+  A Complete Day Abroad Alone; checkpoints (cold integration days) at **9 / 17 / 23 / 29**. The former
+  **Recovery Toolkit** mission is **removed** — no mission, special card, checkpoint or progress slot;
+  the header reads "0 of 29 missions" for a new learner. The shared recovery phrases remain only as
+  reusable lines inside other missions (`recovery.ts`, `fr/recovery.ts`, `es/recovery.ts`).
+  Identity vs. order: each plan entry has a stable semantic `id` (`introduce-myself`, …) that
+  persisted progress is keyed by; the display number is derived from plan order
+  (`missionNumber()`); `day` is only the content-registry key. `BOOTCAMP_PLAN` is the single source
+  of truth for count and order — nothing else hard-codes 29.
+- **Foundation** — a row in the Path's "More practice" section (no longer a floating button; historically an action button on the Bootcamp map, hidden inside an active mission,
   via the pure `shouldShowFoundationFab`) opening a reusable bottom **Sheet**: 10 building-block
   categories → word list → word page (translation · audio · frequency · example · related missions).
   It is a **data-driven VIEW over the Core Corpus** — categories are declared as DATA in
@@ -74,7 +109,9 @@ hidden only inside an active mission (a focused, full-screen flow with its own c
   the guided session in review mode, never resetting progress), and **Progress**
   (`foundationProgress.ts`, per-category + overall, persisted `viewed`/
   `dismissed`). One shared word sheet + one `SpeakerButton`; nothing duplicated.
-- **Core** — the practical communication engine, a two-layer **knowledge center**: a grid of
+- **Library (formerly the "Core" tab)** — a SECONDARY screen under Learn (words + sentence library),
+  not a navigation destination; its content powers Learn, Listen and Quick Review. Conversation-help
+  phrases are the last group ("עזרה בשיחה"), never first. Historical description of the surface: a grid of
   **category cards** (📖 Core Phrases · 📝 Core Words · ❓ Common Questions · 🚨 Emergency · 🧩 Core
   Patterns · ⭐ Favorites) → the existing tabbed page opened on the chosen category (top tabs +
   content), with a back button to the cards. **Core Phrases** is live (every sentence READY teaches,
@@ -88,22 +125,28 @@ hidden only inside an active mission (a focused, full-screen flow with its own c
   category lives in `appStore.coreCategory`. Not "1500 words" yet — a validated 100-word pilot.
 - **Mission vocabulary priming** — a `{ kind: 'prime' }` mission step ("Before we speak") teaches 3–8
   building-block words before a longer sentence, optionally assembling into a canonical mission
-  sentence, with a ♻️ review hint for words seen earlier (`primeVocab.ts`). Primed: **Missions 1–8**
-  (FR 1–4 in parity). Every mission's priming decision is recorded and test-bound in `vocabAudit.ts`
-  (30 audited · 8 primed · 22 no-priming-needed). Essential connectors/sizes (`with/without/and/or/
+  sentence, with a ♻️ review hint for words seen earlier (`primeVocab.ts`). Primed: **Missions 1–7**
+  (all languages in parity). Every mission's priming decision is recorded and test-bound in `vocabAudit.ts`
+  (29 audited · 7 primed · 22 no-priming-needed). Essential connectors/sizes (`with/without/and/or/
   here/there/can/more/less/medium/large`) are now **global Core** concepts (corpus 633, incl. the
   Core World Vocabulary Phase 1 — everyday world nouns/verbs that recur in beginner stories). French
   numbers (70/80/90 vigesimal) live in `fr/frenchNumbers.ts`. See **[VOCABULARY-AUDIT.md](./VOCABULARY-AUDIT.md)**.
 - **Randomization** — one tested seeded shuffle (`shared/util/shuffle.ts`, Fisher–Yates + `mulberry32`)
   backs all answer-option / distractor / review ordering (games, quizzes, flashcards, session builder).
   Narrative dialogue order is never shuffled; only options and review order are.
-- **Profile** — everything personal: language (trip = English pilot; app = EN/HE), audio
-  (enable/test sound), and honest disabled "coming soon" rows (Google sign-in, statistics,
-  notifications). The two most-changed controls — **Theme** and the single global **speech-speed**
-  (80–105%, default 95%) — now live in Home's Quick Settings for one-tap access, reading/writing
-  the exact same appStore/TTS source of truth (no duplicate state).
-- **Mission Hub** — the home of each mission: exactly three always-available modes —
-  **🎯 Practice**, **📖 Conversation Transcript**, **🎬 Watch Video** (Coming Soon if no video).
+- **Profile** — the one home for settings: trip language, app language, the single global
+  **speech-speed** (80–105%, default 95%) + Test Voice, appearance (light/dark) and honest "coming
+  soon" account rows. Theme and speed are no longer on Home.
+- **Mission overview** — ONE guided path, with ONE primary button: **Watch** (the video; with no
+  video, **Listen** to the conversation in the transcript reader) → **Learn** (the words, sentences
+  and expected replies) → **Practice** (respond) → **Watch again** (the reward). The journey is
+  shown as a short list, but a first-time learner never chooses between "Learn" and "Practice":
+  the button always runs the next step ("start" / "continue learning" / "continue to practice"),
+  and after the first viewing the video offers one way forward — never an "I understood
+  everything" shortcut. Once the mission is COMPLETED the steps become shortcuts for revisiting.
+  Learn and Practice are entries into the SAME unchanged step-flow (`missionFlow.ts`); cold
+  checkpoints have no Learn step. "Watched" is not stored, so the Watch step is ticked only for a
+  viewing in the current visit. The transcript stays one quiet tap away.
 - **Practice** — the Bootcamp step-flow (talk → tools → expected-reply drills → quizzes →
   dialogue → sentence review → cold open → victory). Unlimited repeats; never "finished."
   Listening is **one screen** (play → transforms in place when audio ends → sentence + Continue,
@@ -115,8 +158,8 @@ hidden only inside an active mission (a focused, full-screen flow with its own c
   current line highlighted + auto-scrolled. Its playback is driven by the shared **Parrot Mode**
   engine (`shared/playback`), so it gains repeat ×1–3, sequential/random and translation on/off
   alongside play / pause / resume / restart — the same controls Core Words & Core Sentences use.
-- **Video** — the full-conversation video (manual play, inline, replayable). EN Missions 2–5, 7–9, 11
-  and FR Missions 2–4 ship one (e.g. `/videos/En_day7.mp4`); others show Coming Soon. Missing/broken
+- **Video** — the full-conversation video (manual play, inline, replayable). EN Missions 1–4, 6–8, 10
+  and FR Missions 1–5, 8, 10 ship one (e.g. `/videos/En_day6.mp4` = Mission 6, Taxi); others show Coming Soon. Missing/broken
   video degrades gracefully.
 - **Victory Screen** — completion **celebrates** with minimal reading (Pareto): confetti +
   "{Mission} completed!" + three **large action cards** (Watch Conversation · Open Transcript ·
@@ -128,9 +171,9 @@ hidden only inside an active mission (a focused, full-screen flow with its own c
 **Watch / listen → Understand → Practice → Reply → Recover → Review full conversation → Repeat.**
 
 The emotional loop of a mission: watch the conversation and understand almost nothing → practice
-→ watch again and realize "now I understand it." Mission 1 additionally runs in **coaching mode**:
-it teaches that survival, not correctness, is the goal — recovery phrases are labeled survival
-tools and every pick is reframed as *more or less useful*, never right/wrong.
+→ watch again and realize "now I understand it." The dialogue player still supports an opt-in
+**coaching mode** (`dialogue.coaching`: picks reframed as *more or less useful*, never right/wrong),
+but no current mission enables it — it belonged to the retired Recovery Toolkit mission.
 
 ## 7. Architecture overview
 
@@ -138,13 +181,14 @@ tools and every pick is reframed as *more or less useful*, never right/wrong.
   `src/features/*`; shared UI/audio/i18n/stores under `src/shared/*`; app shell in `src/app/`.
 - **Zustand stores** — `shared/stores/appStore.ts` (routing/`view`, user, content pack, `theme`,
   `uiLang`, `learningLang`, `coreGameActive`), `features/bootcamp/bootcampStore.ts` (active mission,
-  hub/play `stage`, progress + receipts in **localStorage**), `shared/stores/sessionStore.ts`. Single
+  hub/play `stage`, progress + receipts in **localStorage** — `ready.bootcamp.v2.<lang>`, keyed by
+  stable mission id via the pure `progress.ts`; v1 day-number data migrates once), `shared/stores/sessionStore.ts`. Single
   sources of truth — no duplicated navigation/settings/state. **Nav visibility** is a pure rule
-  (`app/nav.ts` `shouldShowNav`): the permanent bottom nav hides inside any focused full-screen flow
+  (`app/nav.ts`: `PRIMARY_TABS`, `navTabOf`, `shouldShowNav`, `hasAppShell`): the bottom bar hides inside any focused full-screen flow
   — an active Bootcamp mission **or** an active Core learning-game session (`coreGameActive`), so a
   game's fixed action zone (Continue) is never occluded by the higher-z nav.
-- **Bootcamp data files** — `features/bootcamp/day1..30.ts` are **pure data** (no React, no store),
-  registered in `bootcampStore.ts`'s `DAYS`. `plan.ts` = 30-mission metadata; `types.ts` = the
+- **Bootcamp data files** — `features/bootcamp/day1..29.ts` are **pure data** (no React, no store),
+  registered in `registry.ts`'s `DAYS`. `plan.ts` = 29-mission metadata (stable ids + order); `types.ts` = the
   content model; `transcript.ts` = happy-path linearizer; `recovery.ts` = the shared survival kit.
   A mission is data; the generic MissionPlayer renders it.
 - **Reusable UI/feedback (`shared/ui`, `shared/audio/sfx.ts`)** — `Modal` (confirm/choice dialogs),

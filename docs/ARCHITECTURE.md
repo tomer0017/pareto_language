@@ -56,6 +56,64 @@ One tested utility for all controlled randomness — uniform Fisher–Yates with
 Listen & NumberSprint distractors, session builder, Videos). Seeds make it deterministic in tests and
 stable across re-renders. **Narrative dialogue order is never shuffled** — only options / review order.
 
+## Product IA & responsive shell
+
+- **Destinations** — `app/nav.ts` is the single navigation model: `PRIMARY_TABS` = Home · Path
+  (`bootcamp` view; labelled "מסלול" / "Path") · Listen · Profile; `navTabOf(view)` maps every secondary screen to the
+  destination that stays highlighted (readiness/review → Home, core/zerostart → Learn,
+  reading/videos → Listen, languages → Profile); `shouldShowNav` decides the phone/tablet bottom
+  bar (hidden in focused flows); `hasAppShell` decides whether the shell + desktop rail exist.
+  `shared/ui/AppNav` renders it once — CSS alone turns the bar into a rail at ≥ 1100px.
+- **Layout tokens (`app/styles.css`)** — `--page-max` (browse pages, `.screen.screen-wide`),
+  `--focus-max` (focused flows, plain `.screen`; also the width of the fixed `.action-zone`,
+  readers and transports), `--rail-w` and `--gutter`, each stepped at 768px and 1100px.
+  `.app-shell.has-rail` reserves the rail and exposes `--shell-start` so fixed bars centre over the
+  content. Logical properties throughout (RTL/LTR mirror without per-direction rules).
+- **Shared primitives (`shared/ui`)** — `Icon` (inline SVG set; `flip` = direction-aware),
+  `AppNav`, `PageHeader` + `BackButton`, `ProgressRing`, plus CSS building blocks (`.icon-tile`,
+  `.link-row`, `.tabs`, `.stat-row`, `.mcard`, `.jstep`). Arrows are icons owned by components —
+  never glyphs inside translated strings.
+- **Travel Readiness** — `features/bootcamp/readiness.ts` (pure) → `useTravelReadiness()`; every
+  screen that shows progress reads it, so the numbers always agree. Denominator = `BOOTCAMP_PLAN.length`.
+- **Mission journey** — `features/bootcamp/missionFlow.ts` (pure): `missionPhases` splits the
+  unchanged step list into Learn / Practice; `bootcampStore.enterPractice(at?)` enters the flow at a
+  chosen step and makes it the resume point. No pedagogy-engine change.
+- **Listen** — `features/listen/`: `playlists.ts` (pure; sentences via `core/phraseGroups.ts`,
+  dialogues via `transcript.ts`, stories via `reading/readingCore.ts`), `listenMode.ts` (modes →
+  the engine's speak-order override), `Listen.tsx` (queue + now playing + the story card). Playback
+  is the shared `useParrotPlayback` in the `listen` scope. Quick Listen = the engine's sleep timer
+  (10 min), cleared when it ends or the screen is left.
+- **Sentence catalog** — `features/core/phraseGroups.ts` `sentenceCatalog(lang)` is the one source
+  for the sentence library, the flashcard deck, Listen and every "N core sentences" count. One id
+  never means two sentences (`sentenceIdConflicts` must be empty — tested); one wording is one
+  canonical sentence, and later ids that re-declare the same wording are ALIASES, so a drill logged
+  under any of them counts once (`canonicalSentenceId`). Counts today: EN 242 · FR 239 · ES 236
+  (262 ids per language).
+- **Developer diagnostics** — `shared/ui/devOverlay.ts`: rendered only when the build is a dev
+  build AND `?debug=1` was requested (remembered until `?debug=0`). Never in production.
+- **Quick Review** — `features/core/review.ts` (pure) picks sentences from the real review-event
+  log (`provider.getReviewEvents`); `QuickReview.tsx` reuses `SentenceFlashcards` with that subset.
+
+## Bootcamp curriculum: identity, order, persistence
+
+- **One source of truth** — `features/bootcamp/plan.ts` `BOOTCAMP_PLAN` (29 entries). Its length is the
+  mission count and its array order is the journey; UI progress (`Home`, the map header, Victory) and
+  tests read it — no other constant holds "29".
+- **Three separate concepts per mission:** `id` (stable semantic slug, e.g. `introduce-myself` — what
+  persisted progress is keyed by), display number (`missionNumber(day)` = 1-based plan position), and
+  `day` (the numeric content-registry key shared by `DAYS` / `DAYS_FR` / `DAYS_ES` and the in-memory
+  store handle). `nextMission()` walks plan order, never `day` arithmetic.
+- **Persistence** — `progress.ts` (pure): in memory the store keeps `completedDays` / `receipts` /
+  `stepIndex` by `day`; on disk (`ready.bootcamp.v2.<lang>`) the same data is keyed by mission `id`.
+  `migrateV1` converts the old `ready.bootcamp.v1[.<lang>]` day-number data once (old 2 → Introduce
+  Myself … old 30 → the finale; old day 1, the retired Recovery Toolkit, is dropped). v1 keys are
+  left untouched on disk.
+- **Videos** — `introVideo.src` is an explicit asset path on the mission (`/videos/En_day1.mp4`),
+  never computed from the mission number. A test asserts every referenced file exists in `public/`.
+- **Recovery phrases** — there is no recovery mission. `recovery.ts` / `fr/recovery.ts` /
+  `es/recovery.ts` hold the shared 7 tools that other missions bundle into their item lists and
+  dialogue choices. The dialogue player's opt-in `coaching` mode is dormant (no mission sets it).
+
 ## Vocabulary priming & sentence flashcards
 
 - `{ kind: 'prime' }` — a mission step ("Before we speak") of 3–8 building-block words shown before a
@@ -63,9 +121,9 @@ stable across re-renders. **Narrative dialogue order is never shuffled** — onl
   `PrimeStep` in `Bootcamp.tsx`. Opt-in, language-agnostic. `PrimeWord.review` + `primeVocab.ts`
   (`priorPrimeVocabulary`) track prior knowledge so a reused word shows a ♻️ review hint instead of
   being re-taught. Every mission's decision is recorded in `vocabAudit.ts` (`MISSION_VOCAB_AUDIT`,
-  all 30) and bound to the actual steps by tests. Currently primed: Missions 1–8 (FR 1–4 in parity).
+  all 29) and bound to the actual steps by tests. Currently primed: Missions 1–7 (all languages in parity).
 - `fr/frenchNumbers.ts` — the tested source of truth for spoken `fr-FR` numbers (0–9999) incl. the
-  vigesimal 70/80/90 rules; feeds the French-numbers priming step in Mission 3.
+  vigesimal 70/80/90 rules; feeds the French-numbers priming step in Mission 2.
 - `core/flashcards.ts` (pure) + `SentenceFlashcards.tsx` — flip-card review over the canonical mission
   sentences (`buildSentenceDeck` reuses item ids; no duplication), shuffled per session, both review
   directions. See **[VOCABULARY-AUDIT.md](./VOCABULARY-AUDIT.md)**.
@@ -106,6 +164,26 @@ same survival concepts, never a parallel engine. Data-driven and split into laye
 Routed as the `zerostart` view (not a pilot tab, so the bottom nav auto-hides during lessons). Home
 shows the entry card + a first-use recommendation for a new learner in a supported language.
 
+## Audio preference ownership
+
+RULE: a playback option must never affect a screen where the learner cannot see or change it, unless
+it is explicitly global.
+
+| Owner | What | Stored in |
+| --- | --- | --- |
+| **Global** | speech rate — the ONLY speed; applied by `tts.speak()` to every utterance | `ready.speechRate` (Profile) |
+| **Listen** | repeats, continuous play, shuffle, quick-listen timer; listening mode | `ready.playback.listen`, `ready.listen.mode` |
+| **Story** | reading mode, voice order (target / target→translation / translation→target) | `ready.reading.v1` |
+| **Transcript** | its controls panel (repeats, translation, order, loop, pause, sleep timer) | `ready.playback.transcript` |
+| **Word listening** | the same panel | `ready.playback.words` |
+
+How it is enforced: `useParrotPlayback(items, { scope })` loads/persists settings per
+`PlaybackScope`; `preferences.ts` `SCOPE_OWNS` lists the options each surface exposes, and
+`scopedSettings` forces every other option to its default (the `story` scope owns none, so a story
+is always one pass, once per sentence). The engine has NO speed: a speak step carries text + locale
+only (`runUtterancePlan`), and the old shared record `ready.parrot.settings` is no longer read.
+Locked by `shared/playback/ownership.test.ts`.
+
 ## Parrot Mode — Universal Listen (apps/web/src/shared/playback)
 
 ONE content-agnostic listening system every learning surface reuses. A screen supplies a list of
@@ -126,11 +204,11 @@ all playback. Nothing here imports Bootcamp/Core — a new surface reuses it wit
 Consumers: **Core Words** (`CoreWords.tsx` `listen` mode) and **Core Sentences** (`Core.tsx` phrases
 `listen` view) mount `ListenPanel`; the **Dialogue Transcript** (`DialogueReader` in `Bootcamp.tsx`)
 drives its existing scroll/highlight sheet from the same hook + `PlaybackControls`. Future knobs
-(speed, loop-forever, pause length, voice, bookmark) land in `playbackPlan.ts` / `PlaybackControls`
+(loop-forever, pause length, voice, bookmark) land in `playbackPlan.ts` / `PlaybackControls`
 once and appear everywhere — no playback logic is duplicated.
 
 Sprint-3 capabilities — continuous **Loop** (`planNextCycle`, anti-boundary-repeat), a **sleep
-timer**, **speed** (0.5/0.75/1/1.25×), **pause durations** (`PAUSE_PRESETS`), persisted **preferences**
+timer**, **pause durations** (`PAUSE_PRESETS`), persisted **preferences**
 and per-surface **listening bookmarks** — are all engine-level, so every current and future
 surface gets them for free. Voice selection / background playback / lock-screen controls remain
 out of scope (browser TTS + Wake Lock cannot guarantee them once the OS suspends the page).

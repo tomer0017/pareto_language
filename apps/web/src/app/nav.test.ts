@@ -1,51 +1,101 @@
 import { describe, expect, it } from 'vitest';
-import { shouldShowNav, shouldShowFoundationFab } from './nav.js';
+import { readFileSync } from 'node:fs';
+import { PRIMARY_TABS, hasAppShell, navTabOf, shouldShowNav } from './nav.js';
+import * as navModule from './nav.js';
+
+/**
+ * READY's navigation model: four primary destinations, one source of truth for both presentations
+ * (bottom bar on phones/tablets, side rail on desktop).
+ */
+describe('primary navigation — Home · Learn · Listen · Profile', () => {
+  it('has exactly the four destinations, in order (Learn is the `bootcamp` view)', () => {
+    expect(PRIMARY_TABS).toEqual(['home', 'bootcamp', 'listen', 'profile']);
+  });
+
+  it('Core is no longer a destination of its own', () => {
+    expect(PRIMARY_TABS).not.toContain('core');
+  });
+
+  it('every secondary screen belongs to one destination, which stays highlighted', () => {
+    expect(navTabOf('home')).toBe('home');
+    expect(navTabOf('readiness')).toBe('home');
+    expect(navTabOf('review')).toBe('home');
+    expect(navTabOf('bootcamp')).toBe('bootcamp');
+    expect(navTabOf('core')).toBe('bootcamp');
+    expect(navTabOf('zerostart')).toBe('bootcamp');
+    expect(navTabOf('listen')).toBe('listen');
+    expect(navTabOf('reading')).toBe('listen');
+    expect(navTabOf('videos')).toBe('listen');
+    expect(navTabOf('profile')).toBe('profile');
+    expect(navTabOf('languages')).toBe('profile');
+    expect(navTabOf('onboarding')).toBeNull();
+  });
+
+  it('the app shell (and the desktop rail) exists everywhere except the first-run welcome', () => {
+    expect(hasAppShell('onboarding')).toBe(false);
+    for (const view of [...PRIMARY_TABS, 'core', 'reading', 'readiness', 'languages'] as const) expect(hasAppShell(view)).toBe(true);
+  });
+});
 
 /**
  * Part-F regression — the Picture Quiz "stuck on feedback" bug.
  *
- * Root cause: the feedback's fixed `.action-zone` (Continue, z-index 15) was covered by the
- * permanent bottom nav (z-index 20), which stays visible on the Core tab. The advance control was
- * physically unreachable, so the game looked frozen on the feedback screen. The fix hides the nav
- * while a Core learning-game session is active — the same focused-flow rule Bootcamp missions use.
- *
- * These cases fail against the pre-fix logic (which ignored an active game session) and pass now.
+ * Root cause: the feedback's fixed `.action-zone` (Continue, z-index 15) was covered by the bottom
+ * bar (z-index 20). The advance control was physically unreachable, so the game looked frozen. The
+ * fix hides the bar while a focused flow is live — an active mission or a Core game session.
  */
-describe('shouldShowNav (Part F — game feedback must be reachable)', () => {
-  it('hides the nav during an active Core game session so Continue is not occluded', () => {
+describe('shouldShowNav — the bottom bar never covers a focused flow', () => {
+  it('shows the bar on all four destinations', () => {
+    for (const tab of PRIMARY_TABS) expect(shouldShowNav(tab, false, false)).toBe(true);
+  });
+
+  it('hides the bar during an active Core game session so Continue is not occluded', () => {
     expect(shouldShowNav('core', false, true)).toBe(false);
   });
 
-  it('shows the nav on the Core menu (no active game)', () => {
+  it('shows the bar on the library screen (no active game) and on Travel Readiness', () => {
     expect(shouldShowNav('core', false, false)).toBe(true);
+    expect(shouldShowNav('readiness', false, false)).toBe(true);
   });
 
-  it('still shows the nav on the other pilot tabs', () => {
-    expect(shouldShowNav('home', false, false)).toBe(true);
-    expect(shouldShowNav('bootcamp', false, false)).toBe(true);
-    expect(shouldShowNav('profile', false, false)).toBe(true);
-  });
-
-  it('keeps hiding the nav inside an active Bootcamp mission (unchanged behavior)', () => {
+  it('hides the bar inside an active mission', () => {
     expect(shouldShowNav('bootcamp', true, false)).toBe(false);
   });
 
-  it('never shows the nav on non-tab views', () => {
-    expect(shouldShowNav('session', false, false)).toBe(false);
-    expect(shouldShowNav('onboarding', false, false)).toBe(false);
+  it('never shows the bar on focused secondary flows or outside the shell', () => {
+    for (const view of ['session', 'onboarding', 'reading', 'videos', 'zerostart', 'review', 'languages'] as const) {
+      expect(shouldShowNav(view, false, false)).toBe(false);
+    }
   });
 });
 
-describe('shouldShowFoundationFab (🛟 lives on the Bootcamp map, not inside a mission)', () => {
-  it('shows on the Bootcamp map', () => {
-    expect(shouldShowFoundationFab('bootcamp', false)).toBe(true);
+describe('primary navigation stays at four destinations', () => {
+  it('has no fifth tab — Stories live inside Listen, the library under the Path', () => {
+    expect(PRIMARY_TABS).toHaveLength(4);
+    for (const view of ['reading', 'videos', 'core', 'zerostart', 'readiness', 'review'] as const) {
+      expect(PRIMARY_TABS).not.toContain(view);
+    }
+    expect(navTabOf('reading')).toBe('listen');
   });
-  it('hides inside an active mission (focused full-screen flow)', () => {
-    expect(shouldShowFoundationFab('bootcamp', true)).toBe(false);
+});
+
+describe('the Foundation building blocks no longer float over the mission list', () => {
+  const read = (p: string): string => readFileSync(new URL(p, import.meta.url), 'utf8');
+
+  it('there is no floating-button rule in the navigation model or the app shell', () => {
+    expect(navModule).not.toHaveProperty('shouldShowFoundationFab');
+    expect(read('./App.tsx')).not.toMatch(/FoundationFab/);
   });
-  it('is Bootcamp-only — not on the other tabs', () => {
-    expect(shouldShowFoundationFab('home', false)).toBe(false);
-    expect(shouldShowFoundationFab('core', false)).toBe(false);
-    expect(shouldShowFoundationFab('profile', false)).toBe(false);
+
+  it('no fixed-position Foundation control exists in the styles', () => {
+    expect(read('./styles.css')).not.toMatch(/foundation-fab/);
+  });
+
+  it('Foundation is an ordinary row in the Path screen\'s "More practice" section', () => {
+    const learn = read('../features/bootcamp/Learn.tsx');
+    const support = learn.slice(learn.indexOf("t('morePractice')"));
+    expect(support).toContain("t('foundationTitle')");
+    expect(support).toContain('openFoundation()');
+    expect(learn.indexOf("t('foundationTitle')")).toBeGreaterThan(learn.indexOf('PHASES.map')); // after the missions, never above them
   });
 });

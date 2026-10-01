@@ -1,105 +1,105 @@
 import type { LocalizedText } from '@ready/content-schema';
 import type { BootcampDayContent, BootcampDialogue, BootcampItem } from '../types.js';
 import { recoveryFr } from './recovery.js';
+import { DAY18_FR_ITEMS } from './day18.js';
+import { DAY19_FR_ITEMS } from './day19.js';
+import { DAY22_FR_ITEMS } from './day22.js';
 
 /**
- * French Mission 23 — "Conversation" (Small Talk). French parallel of English day 23: three warm
- * minutes with a stranger — a compliment, a question back, a recommendation, a warm goodbye.
- * `tr:{en,he}` glosses; `fr.*` ids. AI-drafted, vous, pending review.
+ * French Mission 23 — "Point de contrôle : journée en ville" (City Day Checkpoint). Cold integration,
+ * no new content: transport → attraction → chat, cold and chained, reusing missions 18, 19 & 22 items.
+ * Same structure as English mission 23. `tr:{en,he}` glosses; `fr.*` ids. AI-drafted, vous, pending review.
  */
 const T = (he: string, en: string): LocalizedText => ({ he, en });
 const TR = (en: string, he: string): LocalizedText => ({ en, he });
 
+const byId = new Map([...DAY18_FR_ITEMS, ...DAY19_FR_ITEMS, ...DAY22_FR_ITEMS].map((i) => [i.id, i]));
+const pick = (...ids: string[]): BootcampItem[] => ids.map((id) => byId.get(id)!).filter(Boolean);
+
 export const DAY23_FR_ITEMS: BootcampItem[] = [
-  // say
-  { id: 'fr.phrase.talk.beautiful-place', text: 'Cet endroit est magnifique.', meaning: T('המקום הזה יפהפה.', 'This place is beautiful.'),
-    tip: T('מחמאה קטנה פותחת חום מיידי. תמיד עובדת.', 'A small compliment opens instant warmth. Always works.') },
-  { id: 'fr.phrase.talk.how-about-you', text: 'Et vous ?', meaning: T('ואתה?', 'How about you?'),
-    tip: T('שתי מילים שמחזירות את הכדור וממשיכות כל שיחה.', 'Two words that pass the ball back and keep any conversation going.') },
-  { id: 'fr.phrase.talk.recommend-place', text: 'Vous pouvez recommander un endroit ?', meaning: T('אתה יכול להמליץ על מקום?', 'Can you recommend a place?') },
-  { id: 'fr.phrase.talk.nice-talking', text: 'C’était sympa de discuter avec vous.', meaning: T('היה נעים לדבר איתך.', 'It was nice talking to you.'),
-    tip: T('הדרך החמה לסיים שיחה. משאירה חיוך.', 'The warm way to end a conversation. Leaves a smile.') },
-  { id: 'fr.phrase.talk.love-food', text: 'J’adore la nourriture ici.', meaning: T('אני אוהב את האוכל כאן.', 'I love the food here.') },
-  // hear — the local's lines
-  { id: 'fr.reply.talk.first-time-q', text: 'C’est votre première fois ici ?', meaning: T('זו הפעם הראשונה שלך כאן?', 'Is this your first time here?') },
-  { id: 'fr.reply.talk.where-from', text: 'Vous venez d’où ?', meaning: T('מאיפה אתה?', 'Where are you from?') },
-  { id: 'fr.reply.talk.you-should-try', text: 'Vous devriez essayer la vieille ville.', meaning: T('כדאי לך לנסות את העיר העתיקה.', 'You should try the old town.') },
-  { id: 'fr.reply.talk.how-long-here', text: 'Vous êtes ici pour combien de temps ?', meaning: T('לכמה זמן אתה כאן?', 'How long are you here for?') },
-  { id: 'fr.reply.talk.enjoy-rest', text: 'Profitez bien du reste de votre voyage !', meaning: T('תיהנה משאר הטיול!', 'Enjoy the rest of your trip!') },
-  { id: 'fr.reply.talk.me-too', text: 'Moi aussi !', meaning: T('גם אני!', 'Me too!') },
+  ...pick(
+    'fr.phrase.trans.one-ticket', 'fr.phrase.trans.does-stop',
+    'fr.phrase.attr.two-tickets', 'fr.phrase.attr.discount',
+    'fr.phrase.talk.beautiful-place', 'fr.phrase.talk.recommend-place',
+  ),
   ...recoveryFr('fr.phrase.recovery.repeat', 'fr.phrase.recovery.slowly', 'fr.phrase.recovery.thank-you'),
 ];
 
-const SCENE_TALK: BootcampDialogue = {
-  id: 'small-talk',
+const COLD_TRANSPORT: BootcampDialogue = {
+  id: 'cold-transport',
   start: 'n1',
   nodes: [
-    { id: 'n1', who: 'npc', next: 'c1', en: 'Belle vue, non ? Vous venez d’où ?', tr: TR("Beautiful view, isn't it? Where are you from?", 'נוף יפה, נכון? מאיפה אתה?'), he: 'נוף יפה, נכון? מאיפה אתה?' },
+    { id: 'n1', who: 'npc', fast: true, next: 'c1', en: 'Vous allez où ?', tr: TR('Where are you headed?', 'לאן אתה נוסע?'), he: 'לאן אתה נוסע?' },
+    { id: 'c1', who: 'you', en: '', he: '', choices: [
+      { en: 'Un billet pour le centre, s’il vous plaît.', tr: TR('One ticket to the center, please.', 'כרטיס אחד למרכז, בבקשה.'), he: 'כרטיס אחד למרכז, בבקשה.', itemId: 'fr.phrase.trans.one-ticket', correct: true, next: 'n2' },
+      { en: 'Parlez lentement, s’il vous plaît.', tr: TR('Please speak slowly.', 'דבר לאט, בבקשה.'), he: 'דבר לאט, בבקשה.', itemId: 'fr.phrase.recovery.slowly', correct: true, next: 'n2' },
+    ] },
+    { id: 'n2', who: 'npc', fast: true, next: 'c2', en: 'Quai numéro deux, ça part dans cinq minutes.', tr: TR('Platform two, leaves in five minutes.', 'רציף שתיים, יוצא בעוד חמש דקות.'), he: 'רציף שתיים, יוצא בעוד חמש דקות.' },
+    { id: 'c2', who: 'you', en: '', he: '', choices: [
+      { en: 'Ça s’arrête au musée ?', tr: TR('Does this stop at the museum?', 'זה עוצר במוזיאון?'), he: 'זה עוצר במוזיאון?', itemId: 'fr.phrase.trans.does-stop', correct: true, next: 'n3' },
+      { en: 'Vous pouvez répéter ?', tr: TR('Can you repeat that?', 'אפשר לחזור על זה?'), he: 'אפשר לחזור על זה?', itemId: 'fr.phrase.recovery.repeat', correct: true, next: 'n3' },
+    ] },
+    { id: 'n3', who: 'npc', end: true, en: 'Oui — trois arrêts. Bonne journée !', tr: TR('Yep — three stops. Enjoy!', 'כן — שלוש תחנות. תיהנה!'), he: 'כן — שלוש תחנות. תיהנה!' },
+  ],
+};
+
+const COLD_ATTRACTION: BootcampDialogue = {
+  id: 'cold-attraction',
+  start: 'n1',
+  nodes: [
+    { id: 'n1', who: 'npc', next: 'c1', en: 'Bienvenue ! Combien de billets ?', tr: TR('Welcome! How many tickets?', 'ברוך הבא! כמה כרטיסים?'), he: 'ברוך הבא! כמה כרטיסים?' },
+    { id: 'c1', who: 'you', en: '', he: '', choices: [
+      { en: 'Deux billets, s’il vous plaît.', tr: TR('Two tickets, please.', 'שני כרטיסים, בבקשה.'), he: 'שני כרטיסים, בבקשה.', itemId: 'fr.phrase.attr.two-tickets', correct: true, next: 'n2' },
+      { en: 'Vous pouvez répéter ?', tr: TR('Can you repeat that?', 'אפשר לחזור על זה?'), he: 'אפשר לחזור על זה?', itemId: 'fr.phrase.recovery.repeat', correct: true, next: 'n2' },
+    ] },
+    { id: 'n2', who: 'npc', fast: true, next: 'c2', en: 'Vingt euros. On ouvre à neuf heures, dernière entrée à dix-sept heures.', tr: TR('Twenty euros. We open at nine, last entry at five.', 'עשרים יורו. פותחים בתשע, כניסה אחרונה בחמש.'), he: 'עשרים יורו. פותחים בתשע, כניסה אחרונה בחמש.' },
+    { id: 'c2', who: 'you', en: '', he: '', choices: [
+      { en: 'Il y a une réduction ?', tr: TR('Is there a discount?', 'יש הנחה?'), he: 'יש הנחה?', itemId: 'fr.phrase.attr.discount', correct: true, next: 'n3' },
+      { en: 'Merci !', tr: TR('Thank you!', 'תודה!'), he: 'תודה!', itemId: 'fr.phrase.recovery.thank-you', correct: true, next: 'n3' },
+    ] },
+    { id: 'n3', who: 'npc', end: true, en: 'Les étudiants paient demi-tarif. Bonne visite du musée !', tr: TR('Students get half price. Enjoy the museum!', 'סטודנטים חצי מחיר. תיהנה במוזיאון!'), he: 'סטודנטים חצי מחיר. תיהנה במוזיאון!' },
+  ],
+};
+
+const COLD_CHAT: BootcampDialogue = {
+  id: 'cold-chat',
+  start: 'n1',
+  nodes: [
+    { id: 'n1', who: 'npc', next: 'c1', en: 'Belle journée ! Vous venez d’où ?', tr: TR('Beautiful day! Where are you from?', 'יום יפה! מאיפה אתה?'), he: 'יום יפה! מאיפה אתה?' },
     { id: 'c1', who: 'you', en: '', he: '', choices: [
       { en: 'Cet endroit est magnifique.', tr: TR('This place is beautiful.', 'המקום הזה יפהפה.'), he: 'המקום הזה יפהפה.', itemId: 'fr.phrase.talk.beautiful-place', correct: true, next: 'n2' },
-      { en: 'Vous pouvez répéter ?', tr: TR('Can you repeat that?', 'אפשר לחזור על זה?'), he: 'אפשר לחזור על זה?', itemId: 'fr.phrase.recovery.repeat', correct: true, next: 'r1' },
+      { en: 'Parlez lentement, s’il vous plaît.', tr: TR('Please speak slowly.', 'דבר לאט, בבקשה.'), he: 'דבר לאט, בבקשה.', itemId: 'fr.phrase.recovery.slowly', correct: true, next: 'n2' },
     ] },
-    { id: 'r1', who: 'npc', slow: true, next: 'c1b', en: 'Vous venez — d’où ?', tr: TR('Where — are you — from?', 'מאיפה — אתה?'), he: 'מאיפה — אתה?' },
-    { id: 'c1b', who: 'you', en: '', he: '', choices: [
-      { en: 'Cet endroit est magnifique.', tr: TR('This place is beautiful.', 'המקום הזה יפהפה.'), he: 'המקום הזה יפהפה.', itemId: 'fr.phrase.talk.beautiful-place', correct: true, next: 'n2' },
-    ] },
-    { id: 'n2', who: 'npc', next: 'c2', en: 'C’est vrai. C’est votre première fois ici ?', tr: TR('It really is. Is this your first time here?', 'באמת. זו הפעם הראשונה שלך כאן?'), he: 'באמת. זו הפעם הראשונה שלך כאן?' },
+    { id: 'n2', who: 'npc', next: 'c2', en: 'Première fois ici ? Vous devriez essayer la vieille ville.', tr: TR('First time here? You should try the old town.', 'פעם ראשונה כאן? כדאי לך לנסות את העיר העתיקה.'), he: 'פעם ראשונה כאן? כדאי לך לנסות את העיר העתיקה.' },
     { id: 'c2', who: 'you', en: '', he: '', choices: [
-      { en: 'J’adore la nourriture ici.', tr: TR('I love the food here.', 'אני אוהב את האוכל כאן.'), he: 'אני אוהב את האוכל כאן.', itemId: 'fr.phrase.talk.love-food', correct: true, next: 'n3' },
-      { en: 'Et vous ?', tr: TR('How about you?', 'ואתה?'), he: 'ואתה?', itemId: 'fr.phrase.talk.how-about-you', correct: true, next: 'n2b' },
+      { en: 'Vous pouvez recommander un endroit ?', tr: TR('Can you recommend a place?', 'אתה יכול להמליץ על מקום?'), he: 'אתה יכול להמליץ על מקום?', itemId: 'fr.phrase.talk.recommend-place', correct: true, next: 'n3' },
+      { en: 'Merci !', tr: TR('Thank you!', 'תודה!'), he: 'תודה!', itemId: 'fr.phrase.recovery.thank-you', correct: true, next: 'n3' },
     ] },
-    { id: 'n2b', who: 'npc', next: 'c2b', en: 'Moi ? Je vis ici depuis vingt ans — je ne m’en lasse jamais. Et vous ?', tr: TR("Me? I've lived here twenty years — never get tired of it. And you?", 'אני? גר כאן עשרים שנה — לא נמאס לי אף פעם. ואתה?'), he: 'אני? גר כאן עשרים שנה — לא נמאס לי אף פעם. ואתה?' },
-    { id: 'c2b', who: 'you', en: '', he: '', choices: [
-      { en: 'J’adore la nourriture ici.', tr: TR('I love the food here.', 'אני אוהב את האוכל כאן.'), he: 'אני אוהב את האוכל כאן.', itemId: 'fr.phrase.talk.love-food', correct: true, next: 'n3' },
-    ] },
-    { id: 'n3', who: 'npc', next: 'c3', en: 'La nourriture, c’est le meilleur ! Vous devriez essayer la vieille ville — de merveilleux petits restaurants.', tr: TR('The food is the best part! You should try the old town — wonderful little restaurants.', 'האוכל זה הכי טוב! כדאי לך לנסות את העיר העתיקה — מסעדות קטנות נפלאות.'), he: 'האוכל זה הכי טוב! כדאי לך לנסות את העיר העתיקה — מסעדות קטנות נפלאות.' },
-    { id: 'c3', who: 'you', en: '', he: '', choices: [
-      { en: 'Vous pouvez recommander un endroit ?', tr: TR('Can you recommend a place?', 'אתה יכול להמליץ על מקום?'), he: 'אתה יכול להמליץ על מקום?', itemId: 'fr.phrase.talk.recommend-place', correct: true, next: 'n4' },
-      { en: 'Parlez lentement, s’il vous plaît.', tr: TR('Please speak slowly.', 'דבר לאט, בבקשה.'), he: 'דבר לאט, בבקשה.', itemId: 'fr.phrase.recovery.slowly', correct: true, next: 'r3' },
-    ] },
-    { id: 'r3', who: 'npc', slow: true, next: 'c3b', en: 'Vous devriez — essayer — la vieille ville.', tr: TR('You should — try — the old town.', 'כדאי לך — לנסות — את העיר העתיקה.'), he: 'כדאי לך — לנסות — את העיר העתיקה.' },
-    { id: 'c3b', who: 'you', en: '', he: '', choices: [
-      { en: 'Vous pouvez recommander un endroit ?', tr: TR('Can you recommend a place?', 'אתה יכול להמליץ על מקום?'), he: 'אתה יכול להמליץ על מקום?', itemId: 'fr.phrase.talk.recommend-place', correct: true, next: 'n4' },
-    ] },
-    { id: 'n4', who: 'npc', next: 'c4', en: 'Bien sûr — « Mama Rosa ». Demandez la patronne et dites-lui que je vous envoie !', tr: TR("Of course — 'Mama Rosa'. Ask for the owner and tell her I sent you!", "בטח — 'מאמא רוזה'. תבקש את הבעלים ותגיד שאני שלחתי!"), he: "בטח — 'מאמא רוזה'. תבקש את הבעלים ותגיד שאני שלחתי!" },
-    { id: 'c4', who: 'you', en: '', he: '', choices: [
-      { en: 'C’était sympa de discuter avec vous.', tr: TR('It was nice talking to you.', 'היה נעים לדבר איתך.'), he: 'היה נעים לדבר איתך.', itemId: 'fr.phrase.talk.nice-talking', correct: true, next: 'n5' },
-      { en: 'Vous pouvez répéter ?', tr: TR('Can you repeat that?', 'אפשר לחזור על זה?'), he: 'אפשר לחזור על זה?', itemId: 'fr.phrase.recovery.repeat', correct: true, next: 'r4' },
-    ] },
-    { id: 'r4', who: 'npc', slow: true, next: 'c4b', en: '« Mama Rosa » — demandez — la patronne.', tr: TR("'Mama Rosa' — ask — for the owner.", "'מאמא רוזה' — תבקש — את הבעלים."), he: "'מאמא רוזה' — תבקש — את הבעלים." },
-    { id: 'c4b', who: 'you', en: '', he: '', choices: [
-      { en: 'C’était sympa de discuter avec vous.', tr: TR('It was nice talking to you.', 'היה נעים לדבר איתך.'), he: 'היה נעים לדבר איתך.', itemId: 'fr.phrase.talk.nice-talking', correct: true, next: 'n5' },
-    ] },
-    { id: 'n5', who: 'npc', end: true, en: 'Moi aussi ! Profitez bien du reste de votre voyage !', tr: TR('You too! Enjoy the rest of your trip!', 'גם לי! תיהנה משאר הטיול!'), he: 'גם לי! תיהנה משאר הטיול!' },
+    { id: 'n3', who: 'npc', end: true, en: '« Mama Rosa » — dites-lui que je vous envoie. Bon voyage !', tr: TR("'Mama Rosa' — tell her I sent you. Enjoy your trip!", "'מאמא רוזה' — תגיד שאני שלחתי. תיהנה מהטיול!"), he: "'מאמא רוזה' — תגיד שאני שלחתי. תיהנה מהטיול!" },
   ],
 };
 
 export const DAY23_FR: BootcampDayContent = {
   day: 23,
-  title: T('שיחת חולין', 'Small Talk'),
+  title: T('נקודת ביקורת: יום עיר', 'CHECKPOINT: City Day'),
   items: DAY23_FR_ITEMS,
-  dialogues: { 'small-talk': SCENE_TALK },
+  dialogues: { 'cold-transport': COLD_TRANSPORT, 'cold-attraction': COLD_ATTRACTION, 'cold-chat': COLD_CHAT },
   steps: [
-    { kind: 'talk', icon: '💬', title: T('משימה 23: שיחת חולין', 'Mission 23: Small Talk'),
+    { kind: 'talk', icon: '🏙️', title: T('נקודת ביקורת: יום עיר', 'Checkpoint: City Day'),
       body: [
-        T('עד עכשיו למדנו עסקאות. היום לומדים חיבור — שלוש דקות חמות עם זר.', 'So far we learned transactions. Today we learn connection — three warm minutes with a stranger.'),
-        T('מחמאה, שאלה בחזרה, המלצה, ופרידה חמה. את הטיול זוכרים דרך הרגעים האלה.', 'A compliment, a question back, a recommendation, a warm goodbye. A trip is remembered through these moments.'),
-      ], cta: T('להתחיל שיחה', 'Start a conversation') },
-    { kind: 'tool', itemId: 'fr.phrase.talk.beautiful-place', index: 1, total: 4, label: T('מחמאה פותחת', 'An opening compliment') },
-    { kind: 'tool', itemId: 'fr.phrase.talk.how-about-you', index: 2, total: 4, label: T('להחזיר את הכדור', 'Pass the ball back') },
-    { kind: 'tool', itemId: 'fr.phrase.talk.recommend-place', index: 3, total: 4, label: T('לבקש המלצה', 'Ask for a tip') },
-    { kind: 'tool', itemId: 'fr.phrase.talk.nice-talking', index: 4, total: 4, label: T('פרידה חמה', 'A warm goodbye') },
-    { kind: 'replies', saidItemId: 'fr.phrase.talk.beautiful-place',
-      replyIds: ['fr.reply.talk.first-time-q', 'fr.reply.talk.where-from', 'fr.reply.talk.you-should-try', 'fr.reply.talk.how-long-here'] },
-    { kind: 'receipt', text: T('אתה מזהה את השאלות הסקרניות שכל מקומי ידידותי שואל.', 'You recognize the curious questions every friendly local asks.') },
-    { kind: 'quiz', itemId: 'fr.reply.talk.you-should-try', wrongIds: ['fr.reply.talk.first-time-q', 'fr.reply.talk.enjoy-rest'] },
-    { kind: 'quiz', itemId: 'fr.reply.talk.how-long-here', wrongIds: ['fr.reply.talk.where-from', 'fr.reply.talk.me-too'] },
-    { kind: 'dialogue', dialogueId: 'small-talk' },
-    { kind: 'receipt', text: T('ניהלת שיחת חולין שלמה — מחמאה, שאלות, המלצה, ופרידה חמה.', 'You held a full small-talk conversation — compliment, questions, recommendation, and a warm goodbye.') },
-    { kind: 'swipe', itemIds: DAY23_FR_ITEMS.map((i) => i.id) },
-    { kind: 'ambush', npc: { en: 'Alors, franchement, qu’est-ce que vous avez préféré dans le voyage jusqu’ici ?', tr: TR("So honestly what's been your favorite thing about the trip so far?", 'אז בכנות — מה הדבר האהוב עליך בטיול עד עכשיו?'), he: 'אז בכנות — מה הדבר האהוב עליך בטיול עד עכשיו?' },
-      correctItemId: 'fr.phrase.talk.love-food', wrongItemId: 'fr.phrase.talk.recommend-place' },
-    { kind: 'receipt', text: T('שאלה אישית ופתוחה — וידעת לענות משהו אמיתי, בחיוך.', 'A personal, open question — and you knew how to answer something real, with a smile.') },
+        T('אין חומר חדש. רק הוכחה — יום שלם בעיר זרה, לבד.', 'No new material. Just proof — a full day in a foreign city, alone.'),
+        T('תחבורה, אטרקציה, שיחה עם מקומי. הכל קר, ברצף, עם החלפת הקשר בין רגע לרגע.', 'Transport, an attraction, a chat with a local. All cold, chained, switching context from moment to moment.'),
+      ], cta: T('לצאת ליום בעיר', 'Head out into the city') },
+    { kind: 'dialogue', dialogueId: 'cold-transport' },
+    { kind: 'receipt', text: T('שרדת תחבורה ציבורית בקור — כרטיס, רציף, יעד.', 'You survived public transport cold — ticket, platform, destination.') },
+    { kind: 'ambush', npc: { en: 'Changement de plan, c’est maintenant le quai quatre — dépêchez-vous !', tr: TR("Change of plan that platform's now platform four — better hurry along!", 'שינוי — הרציף עכשיו רציף ארבע — כדאי שתמהר!'), he: 'שינוי — הרציף עכשיו רציף ארבע — כדאי שתמהר!' },
+      correctItemId: 'fr.phrase.recovery.repeat', wrongItemId: 'fr.phrase.trans.does-stop' },
+    { kind: 'dialogue', dialogueId: 'cold-attraction' },
+    { kind: 'receipt', text: T('שרדת קופת אטרקציה בקור — כרטיסים, שעות, הנחה.', 'You survived an attraction desk cold — tickets, hours, discount.') },
+    { kind: 'ambush', npc: { en: 'La visite guidée en anglais commence en fait dans deux minutes — vous voulez la rejoindre ?', tr: TR('The English guided tour actually starts in two minutes would you like to join it?', 'הסיור המודרך באנגלית מתחיל בעצם בעוד שתי דקות — תרצה להצטרף?'), he: 'הסיור המודרך באנגלית מתחיל בעצם בעוד שתי דקות — תרצה להצטרף?' },
+      correctItemId: 'fr.phrase.recovery.slowly', wrongItemId: 'fr.phrase.attr.discount' },
+    { kind: 'dialogue', dialogueId: 'cold-chat' },
+    { kind: 'receipt', text: T('יום עיר שלם — תחבורה, אטרקציה, ושיחה — בקור. עיר זרה נהייתה מגרש ביתי.', 'A full city day — transport, attraction, and a chat — cold. A foreign city became home turf.') },
     { kind: 'summary' },
   ],
 };

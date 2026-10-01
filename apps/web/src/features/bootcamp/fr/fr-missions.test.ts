@@ -56,14 +56,14 @@ describe('French missions — content integrity (no English leaks)', () => {
   });
 
   it('French full-conversation videos map to Fr_day{n}.mp4 (fr locale); discovered via missionsFor(fr)', () => {
-    // Each video-carrying mission points at its own French file. Mission 2 mirrors English Mission 2
-    // (intro/again video steps); Missions 3–6 only surface the video in the hub / Videos experience.
-    for (const [day, src] of [[2, 'Fr_day2'], [3, 'Fr_day3'], [4, 'Fr_day4'], [5, 'Fr_day5'], [6, 'Fr_day6'], [9, 'Fr_day9'], [11, 'Fr_day11']] as const) {
+    // Each video-carrying mission points at its own French file. Mission 1 mirrors English Mission 1
+    // (intro/again video steps); the others only surface the video in the hub / Videos experience.
+    for (const [day, src] of [[1, 'Fr_day1'], [2, 'Fr_day2'], [3, 'Fr_day3'], [4, 'Fr_day4'], [5, 'Fr_day5'], [8, 'Fr_day8'], [10, 'Fr_day10']] as const) {
       const m = DAYS_FR[day]!;
       expect(m.introVideo?.src).toBe(`/videos/${src}.mp4`);
       expect(m.introVideo?.language).toBe('fr');
     }
-    for (const day of [3, 4, 5, 6, 9, 11] as const) {
+    for (const day of [2, 3, 4, 5, 8, 10] as const) {
       expect(DAYS_FR[day]!.steps.some((s) => s.kind === 'video')).toBe(false);
     }
     // Video is opt-in — a mission without one never fakes a video step.

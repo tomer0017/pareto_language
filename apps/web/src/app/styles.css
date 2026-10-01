@@ -18,6 +18,8 @@
   --brand: #5b46e4;
   --brand-deep: #4534b8;
   --brand-soft: #eceafd;
+  /* Text/icon colour ON a --brand-soft surface (flips light in the dark theme for contrast). */
+  --brand-ink: #4534b8;
   /* Learning-language accent — overridden at runtime per language */
   --accent: #0ca678;
   --accent-soft: #dcf5ec;
@@ -35,7 +37,25 @@
   --shadow-card: 0 6px 24px rgba(43, 36, 90, 0.08);
   --shadow-pop: 0 10px 32px rgba(43, 36, 90, 0.16);
   --shadow-glow: 0 8px 28px color-mix(in srgb, var(--brand) 38%, transparent);
+  --ring-track: #ebe9f8;
+  /* Spacing scale */
+  --sp-1: 4px; --sp-2: 8px; --sp-3: 12px; --sp-4: 16px; --sp-5: 24px; --sp-6: 32px;
+  /* Layout widths — READY has exactly two column widths:
+     --page-max  : browse pages (Home / Learn / Listen / Profile) — they use the screen.
+     --focus-max : focused flows (a mission, a reader, a game) — one thing to look at.
+     --rail-w    : the desktop navigation rail (0 until the desktop breakpoint).
+     Breakpoints: phone < 768px · tablet 768–1099px · desktop ≥ 1100px. */
+  --page-max: 480px;
+  --focus-max: 480px;
+  --rail-w: 0px;
+  --gutter: 18px;
   font-size: 16.5px;
+}
+@media (min-width: 768px) {
+  :root { --page-max: 760px; --focus-max: 640px; --gutter: 28px; }
+}
+@media (min-width: 1100px) {
+  :root { --page-max: 1160px; --focus-max: 780px; --rail-w: 232px; --gutter: 36px; }
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
@@ -49,14 +69,21 @@ body {
 }
 
 /* ── Layout shell ─────────────────────────────────────────────────────── */
+/* The app shell reserves the desktop rail on its inline-start edge; fixed bars read the same
+   offset (--shell-start) so they stay centred over the content, never under the rail. */
+.app-shell { min-height: 100%; }
+.app-shell.has-rail { padding-inline-start: var(--rail-w); --shell-start: var(--rail-w); }
+
 .screen {
-  max-width: 480px;
+  max-width: var(--focus-max);
   margin: 0 auto;
   min-height: 100%;
   display: flex;
   flex-direction: column;
-  padding: calc(env(safe-area-inset-top) + 14px) 18px 0;
+  padding: calc(env(safe-area-inset-top) + 14px) var(--gutter) 0;
 }
+/* Browse pages use the wide column. */
+.screen-wide { max-width: var(--page-max); }
 /* Scrollable learning screens reserve room for the fixed bottom bar (nav or action-zone) PLUS the
    device safe area, so a CTA can never cover the last row of content. Generous by design. */
 .screen-scroll { flex: 1; overflow-y: auto; padding-bottom: calc(env(safe-area-inset-bottom) + 150px); }
@@ -112,7 +139,7 @@ button:active { transform: scale(0.965); }
   box-shadow: 0 8px 24px color-mix(in srgb, var(--accent) 35%, transparent);
 }
 .btn-secondary { width: 100%; background: var(--card); border: 1.5px solid var(--line); box-shadow: var(--shadow-card); }
-.btn-soft { width: 100%; background: var(--brand-soft); color: var(--brand-deep); }
+.btn-soft { width: 100%; background: var(--brand-soft); color: var(--brand-ink); }
 .btn-ghost { background: transparent; color: var(--ink-dim); box-shadow: none; min-height: 44px; padding: 10px 14px; }
 .btn-danger-soft { width: 100%; background: var(--danger-soft); color: var(--danger); }
 .btn-row { display: flex; gap: 10px; }
@@ -139,7 +166,7 @@ button:disabled { opacity: 0.55; }
 .chip-accent { background: var(--accent-soft); color: color-mix(in srgb, var(--accent) 80%, black); box-shadow: none; }
 .badge { display: inline-flex; align-items: center; gap: 5px; border-radius: 999px; padding: 4px 11px; font-size: 0.76rem; font-weight: 700; }
 .badge-notStarted { background: var(--card-sunken); color: var(--ink-faint); border: 1px solid var(--line); }
-.badge-inProgress { background: var(--brand-soft); color: var(--brand-deep); }
+.badge-inProgress { background: var(--brand-soft); color: var(--brand-ink); }
 .badge-ready { background: var(--good-soft); color: var(--good); }
 .badge-fading { background: var(--warn-soft); color: var(--warn); }
 
@@ -219,9 +246,9 @@ button:disabled { opacity: 0.55; }
 .level-dot.on { background: var(--accent); }
 
 /* ── Bottom navigation ────────────────────────────────────────────────── */
-.bottom-nav {
-  position: fixed; bottom: 0; left: 0; right: 0;
-  max-width: 480px; margin: 0 auto;
+.app-nav {
+  position: fixed; bottom: 0; inset-inline: 0;
+  max-width: 520px; margin: 0 auto;
   display: flex; justify-content: space-around; align-items: center;
   padding: 8px 8px calc(env(safe-area-inset-bottom) + 10px);
   background: color-mix(in srgb, var(--card) 88%, transparent);
@@ -244,9 +271,9 @@ button:disabled { opacity: 0.55; }
 
 /* ── Action zone (session screens without nav) ───────────────────────── */
 .action-zone {
-  position: fixed; bottom: 0; left: 0; right: 0;
-  max-width: 480px; margin: 0 auto;
-  padding: 12px 18px calc(env(safe-area-inset-bottom) + 14px);
+  position: fixed; bottom: 0; inset-inline: var(--shell-start, 0px) 0;
+  max-width: var(--focus-max); margin: 0 auto;
+  padding: 12px var(--gutter) calc(env(safe-area-inset-bottom) + 14px);
   background: linear-gradient(transparent, var(--bg) 32%);
   display: flex; flex-direction: column; gap: 10px; z-index: 15;
 }
@@ -450,12 +477,12 @@ input:focus, select:focus { outline: 2px solid var(--brand); border-color: trans
 
 /* ── Dialogue reader (premium study sheet) ────────────────────────────── */
 .reader {
-  position: fixed; inset: 0; z-index: 80;
+  position: fixed; inset-block: 0; inset-inline: var(--shell-start, 0px) 0; z-index: 80;
   background: var(--bg);
   display: flex; flex-direction: column;
-  max-width: 480px; margin: 0 auto;
-  padding: calc(env(safe-area-inset-top) + 14px) 18px 0;
+  padding: calc(env(safe-area-inset-top) + 14px) var(--gutter) 0;
 }
+.reader > :not(.reader-transport) { width: 100%; max-width: calc(var(--focus-max) - 2 * var(--gutter)); margin-inline: auto; }
 .reader-scroll { flex: 1; overflow-y: auto; padding: 4px 0 200px; }
 .dline {
   display: flex; flex-direction: column; gap: 6px;
@@ -468,7 +495,7 @@ input:focus, select:focus { outline: 2px solid var(--brand); border-color: trans
 .dline.now { border-color: var(--accent); box-shadow: var(--shadow-pop); transform: scale(1.015); }
 .dline-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
 .dline-speaker { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 800; color: var(--ink-dim); }
-.dline.you .dline-speaker { color: var(--brand-deep); }
+.dline.you .dline-speaker { color: var(--brand-ink); }
 .dline-en { font-size: 1.16rem; font-weight: 700; line-height: 1.3; }
 .dline-he { font-size: 0.96rem; color: var(--ink-dim); }
 .dline-play {
@@ -596,16 +623,9 @@ input:focus, select:focus { outline: 2px solid var(--brand); border-color: trans
   width: 100%; max-width: 360px; padding: 22px;
   background: var(--card); border-radius: var(--r-lg); box-shadow: var(--shadow-pop);
 }
-.reader-back {
-  display: inline-flex; align-items: center; justify-content: center;
-  width: 52px; height: 52px; min-height: 52px; border-radius: 999px;
-  background: var(--card); box-shadow: var(--shadow-card); border: 1px solid var(--line);
-  font-size: 1.5rem; line-height: 1; color: var(--ink); flex-shrink: 0;
-}
-.reader-back:active { transform: scale(0.94); }
 .reader-transport {
-  position: fixed; bottom: 0; left: 0; right: 0; max-width: 480px; margin: 0 auto;
-  padding: 12px 18px calc(env(safe-area-inset-bottom) + 14px);
+  position: fixed; bottom: 0; inset-inline: var(--shell-start, 0px) 0; max-width: var(--focus-max); margin: 0 auto;
+  padding: 12px var(--gutter) calc(env(safe-area-inset-bottom) + 14px);
   background: linear-gradient(transparent, var(--bg) 30%);
   display: flex; flex-direction: column; gap: 10px; z-index: 82;
 }
@@ -632,11 +652,13 @@ input:focus, select:focus { outline: 2px solid var(--brand); border-color: trans
   --ink-dim: #b6b2d4;
   --ink-faint: #7d799a;
   --brand-soft: #26224d;
+  --brand-ink: #c9c2ff;
   --good-soft: #123024;
   --warn-soft: #382c14;
   --danger-soft: #3a1c1c;
   --shadow-card: 0 6px 24px rgba(0, 0, 0, 0.45);
   --shadow-pop: 0 12px 34px rgba(0, 0, 0, 0.55);
+  --ring-track: #2c2a44;
 }
 
 /* ── Speed slider (Learning Preferences) ──────────────────────────────── */
@@ -682,19 +704,17 @@ input:focus, select:focus { outline: 2px solid var(--brand); border-color: trans
 .core-playing { outline: 2px solid var(--accent); }
 .core-playing .core-play { opacity: 1; }
 
-/* ── Mission Hub (three ways to learn) ────────────────────────────────── */
-.hub-icon {
-  width: 54px; height: 54px; border-radius: 16px; flex-shrink: 0;
-  display: grid; place-items: center; font-size: 1.6rem;
-}
-
 /* ── Video (video-first Bootcamp) ─────────────────────────────────────── */
 /* Custom video player — no native chrome, no letterbox bars, no dark overlay. The frame is exactly
    the video box (width:100%, height:auto) so the video is always fully visible with no side bars.
    One tap toggles play/pause; a centered ▶︎ shows only while paused. */
 .video-frame {
   position: relative;
-  width: 100%;
+  /* Shrink-wraps the video: portrait clips are capped to the viewport height (below), so on wide
+     columns the frame narrows with them instead of running off the bottom of the screen. */
+  width: fit-content;
+  max-width: 100%;
+  margin-inline: auto;
   display: block;
   border-radius: 18px;
   overflow: hidden;
@@ -704,7 +724,9 @@ input:focus, select:focus { outline: 2px solid var(--brand); border-color: trans
   background: transparent;
 }
 .video-player {
-  width: 100%;
+  width: auto;
+  max-width: 100%;
+  max-height: 74vh;
   height: auto;
   display: block;
   background: transparent;
@@ -729,24 +751,7 @@ input:focus, select:focus { outline: 2px solid var(--brand); border-color: trans
   line-height: 1;
 }
 
-/* ── Foundation (🛟 building-blocks surface) ──────────────────────────────
-   The FAB + a reusable bottom SHEET rendering the whole data-driven surface
-   (categories → word list → word page). Design tokens only, so it re-themes
-   with the language accent and follows light/dark automatically. */
-.foundation-fab {
-  position: fixed;
-  bottom: calc(env(safe-area-inset-bottom) + 96px);
-  inset-inline-end: max(18px, calc(50% - 240px + 18px));
-  z-index: 25;
-  width: 58px; height: 58px; border-radius: 999px;
-  display: grid; place-items: center;
-  font-size: 1.7rem; line-height: 1;
-  background: var(--card);
-  border: 1.5px solid var(--line);
-  box-shadow: var(--shadow-pop);
-}
-.foundation-fab:active { transform: scale(0.92); }
-
+/* ── Bottom sheet (Foundation word sheet, reading settings) ───────────── */
 .sheet-scrim {
   position: fixed; inset: 0; z-index: 95;
   background: rgba(0, 0, 0, 0.5);
@@ -824,7 +829,7 @@ input:focus, select:focus { outline: 2px solid var(--brand); border-color: trans
 .foundation-chips { display: flex; flex-wrap: wrap; gap: 8px; }
 .foundation-chip {
   display: inline-flex; align-items: center; gap: 5px;
-  background: var(--brand-soft); color: var(--brand-deep);
+  background: var(--brand-soft); color: var(--brand-ink);
   padding: 6px 11px; border-radius: 999px; font-size: 0.85rem; font-weight: 600;
 }
 .foundation-chip b { font-weight: 800; }
@@ -872,14 +877,6 @@ input:focus, select:focus { outline: 2px solid var(--brand); border-color: trans
   0%, 100% { transform: translateX(0) rotate(0); }
   25% { transform: translateX(-42px) rotate(-9deg); }
   75% { transform: translateX(42px) rotate(9deg); }
-}
-
-/* FAB reveal pulse (after onboarding). */
-.foundation-fab-pulse { animation: fabPulse 1.3s ease-out 2; }
-@keyframes fabPulse {
-  0% { box-shadow: var(--shadow-pop), 0 0 0 0 color-mix(in srgb, var(--brand) 55%, transparent); }
-  70% { box-shadow: var(--shadow-pop), 0 0 0 18px transparent; }
-  100% { box-shadow: var(--shadow-pop), 0 0 0 0 transparent; }
 }
 
 /* One-time tap tooltip (coach-mark). pointer-events:none so it never steals the tap it explains. */
@@ -959,7 +956,7 @@ input:focus, select:focus { outline: 2px solid var(--brand); border-color: trans
   padding: 8px 12px; margin-bottom: 10px;
 }
 .foundation-hint-body { display: flex; flex-direction: column; min-width: 0; }
-.foundation-hint-title { font-weight: 800; font-size: 0.82rem; color: var(--brand-deep); }
+.foundation-hint-title { font-weight: 800; font-size: 0.82rem; color: var(--brand-ink); }
 .foundation-hint-word { font-size: 0.82rem; color: var(--ink-dim); }
 .foundation-hint-actions { display: flex; gap: 6px; flex-shrink: 0; }
 .foundation-hint-learn, .foundation-hint-dismiss {
@@ -1003,7 +1000,7 @@ input:focus, select:focus { outline: 2px solid var(--brand); border-color: trans
   min-height: 0; padding: 7px 14px; border-radius: 999px; font-size: 0.85rem; font-weight: 700;
   background: transparent; color: var(--ink-dim); box-shadow: none;
 }
-.seg-btn.on { background: var(--card); color: var(--brand-deep); box-shadow: var(--shadow-card); }
+.seg-btn.on { background: var(--card); color: var(--brand-ink); box-shadow: var(--shadow-card); }
 
 /* Screen-reader-only content (visually hidden but announced). */
 .sr-only {
@@ -1019,7 +1016,7 @@ input:focus, select:focus { outline: 2px solid var(--brand); border-color: trans
 }
 .parrot-settings { display: flex; flex-direction: column; gap: 10px; }
 .parrot-sleep {
-  margin: 0; text-align: center; font-size: 0.85rem; font-weight: 700; color: var(--brand-deep);
+  margin: 0; text-align: center; font-size: 0.85rem; font-weight: 700; color: var(--brand-ink);
 }
 /* Keep segmented groups from ever overflowing a narrow phone. */
 .parrot-controls .seg { flex-wrap: wrap; justify-content: center; }
@@ -1031,3 +1028,333 @@ input:focus, select:focus { outline: 2px solid var(--brand); border-color: trans
 [dir='rtl'] .swipe-hint { flex-direction: row-reverse; }
 /* Transport chevrons are glyph-mirrored by direction, not layout — keep the physical order. */
 [dir='rtl'] .parrot-transport { flex-direction: row-reverse; }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   Product IA layer — Home · Learn · Listen · Profile.
+   Reusable primitives first (icons, page header, tiles, rows, ring, nav),
+   then the few layouts that compose them. Tokens only; mirrors in RTL via
+   logical properties; every grid collapses to one column on a phone.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Icons ────────────────────────────────────────────────────────────── */
+.icon { display: inline-block; flex-shrink: 0; vertical-align: middle; }
+/* Directional icons follow the reading direction; "back" points against it. */
+[dir='rtl'] .icon-dir { transform: scaleX(-1); }
+.icon-back { transform: scaleX(-1); }
+[dir='rtl'] .icon-back { transform: none; }
+
+/* ── Navigation: bottom bar (phone/tablet) → side rail (desktop) ──────── */
+.app-nav-brand { display: none; }
+.app-nav.is-bar-hidden { display: none; }
+.nav-label { line-height: 1.1; }
+.nav-item:focus-visible, .back-btn:focus-visible, .mcard:focus-visible, .jstep:focus-visible,
+.queue-row:focus-visible, .mode-card:focus-visible, .link-row:focus-visible, .tab:focus-visible {
+  outline: 2px solid var(--brand); outline-offset: 2px;
+}
+@media (min-width: 1100px) {
+  .app-nav, .app-nav.is-bar-hidden {
+    display: flex; flex-direction: column; justify-content: flex-start; align-items: stretch; gap: 6px;
+    inset-block: 0; inset-inline: 0 auto; width: var(--rail-w); max-width: none; margin: 0;
+    padding: 28px 14px; border-radius: 0; backdrop-filter: none;
+    background: var(--card); box-shadow: none; border-inline-end: 1px solid var(--line);
+  }
+  .app-nav-brand { display: flex; flex-direction: column; gap: 4px; padding: 0 10px 22px; }
+  .nav-item {
+    flex-direction: row; justify-content: flex-start; gap: 12px;
+    padding: 11px 12px; font-size: 1rem; color: var(--ink-dim); width: 100%;
+  }
+  .nav-item .nav-bubble { width: 36px; height: 36px; }
+  .nav-item.active { background: var(--brand-soft); color: var(--brand-ink); }
+  .nav-item.active .nav-bubble { background: transparent; color: var(--brand); box-shadow: none; transform: none; }
+}
+.brand-mark { direction: ltr; display: inline-flex; align-items: center; gap: 6px; font-weight: 900; font-size: 1.45rem; letter-spacing: -0.02em; color: var(--ink); }
+.brand-mark .icon { color: var(--brand); }
+.brand-tagline { font-size: 0.72rem; color: var(--ink-dim); }
+/* Phone/tablet pages carry the wordmark themselves (the rail carries it on desktop). */
+.brand-top { display: flex; justify-content: center; padding: 2px 0 10px; }
+@media (min-width: 1100px) { .brand-top { display: none; } }
+
+/* ── Page header ──────────────────────────────────────────────────────── */
+.page-header { padding: 4px 0 14px; }
+.page-header-row { display: flex; align-items: center; gap: 12px; min-height: 44px; }
+.page-title { flex: 1; min-width: 0; overflow-wrap: anywhere; }
+.page-header-trailing { flex-shrink: 0; }
+.page-sub { color: var(--ink-dim); margin-top: 4px; }
+.back-btn {
+  width: 44px; height: 44px; min-height: 44px; padding: 0; border-radius: 999px; flex-shrink: 0;
+  display: grid; place-items: center; color: var(--ink);
+  background: var(--card); border: 1px solid var(--line); box-shadow: var(--shadow-card);
+}
+@media (min-width: 1100px) {
+  .screen { padding-top: 32px; }
+  h1 { font-size: 2rem; }
+  .page-header { padding-bottom: 20px; }
+}
+
+/* ── Small building blocks ────────────────────────────────────────────── */
+.icon-tile {
+  width: 48px; height: 48px; border-radius: 14px; flex-shrink: 0;
+  display: grid; place-items: center; font-size: 1.5rem; line-height: 1;
+  background: var(--card-sunken); color: var(--ink-dim);
+}
+.icon-tile-brand { background: var(--brand-soft); color: var(--brand); }
+.icon-tile-good { background: var(--good-soft); color: var(--good); }
+.icon-tile-lg { width: 60px; height: 60px; border-radius: 18px; font-size: 1.9rem; }
+.section-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin: 22px 2px 10px; }
+.section-head h2 { display: flex; align-items: center; gap: 8px; }
+.eyebrow { display: flex; align-items: center; gap: 8px; font-weight: 800; color: var(--ink-dim); font-size: 0.92rem; margin-bottom: 10px; }
+.eyebrow .icon { color: var(--brand); }
+.meta-row { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 14px; color: var(--ink-dim); font-size: 0.86rem; }
+.meta-row > span { display: inline-flex; align-items: center; gap: 5px; }
+/* Buttons that carry an icon keep it beside the label in both directions. */
+.btn-icon { display: inline-flex; align-items: center; justify-content: center; gap: 10px; }
+.btn-outline {
+  width: 100%; background: var(--card); color: var(--brand-ink); font-weight: 800;
+  border: 1.5px solid color-mix(in srgb, var(--brand) 38%, var(--line)); box-shadow: none;
+}
+.btn-outline.good { color: color-mix(in srgb, var(--good) 82%, black); border-color: color-mix(in srgb, var(--good) 45%, var(--line)); }
+.btn-link { background: none; box-shadow: none; min-height: 44px; padding: 8px 6px; color: var(--brand-ink); font-weight: 700; }
+/* Target-language text is isolated so punctuation never jumps sides inside an RTL interface. */
+.target-text { unicode-bidi: isolate; }
+
+/* A tappable row: leading tile, text, trailing chevron/slot. */
+.link-row {
+  width: 100%; display: flex; align-items: center; gap: 14px; text-align: start;
+  background: var(--card); border-radius: var(--r-lg); padding: 14px 16px;
+  box-shadow: var(--shadow-card); margin-bottom: 10px;
+}
+.link-row-body { flex: 1; min-width: 0; }
+.link-row-title { display: block; font-weight: 800; overflow-wrap: anywhere; }
+.link-row-sub { display: block; color: var(--ink-dim); font-size: 0.84rem; line-height: 1.35; overflow-wrap: anywhere; }
+.link-row .icon-dir { color: var(--ink-faint); }
+
+/* Tabs — one segmented control for category switches. */
+.tabs { display: flex; gap: 4px; padding: 4px; border-radius: 999px; background: var(--card); box-shadow: var(--shadow-card); margin-bottom: 14px; }
+.tab {
+  flex: 1; min-height: 44px; padding: 8px 10px; border-radius: 999px; background: transparent; box-shadow: none;
+  color: var(--ink-dim); font-weight: 700; font-size: 0.92rem;
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+}
+.tab.active { background: linear-gradient(135deg, var(--brand), var(--brand-deep)); color: #fff; }
+@media (max-width: 479px) { .tab { font-size: 0.84rem; padding: 8px 4px; } .tab .icon { display: none; } }
+
+/* ── Progress ring ────────────────────────────────────────────────────── */
+.progress-ring { position: relative; flex-shrink: 0; }
+.progress-ring svg { display: block; }
+.progress-ring-center {
+  position: absolute; inset: 0; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; text-align: center; line-height: 1.1;
+}
+.ring-value { font-size: 1.9rem; font-weight: 900; letter-spacing: -0.02em; direction: ltr; }
+.ring-value.small { font-size: 1.05rem; }
+.ring-caption { font-size: 0.74rem; color: var(--ink-dim); font-weight: 600; margin-top: 2px; }
+.progress-ring-center .icon { color: var(--brand); margin-top: 4px; opacity: 0.75; }
+
+/* ── Home ─────────────────────────────────────────────────────────────── */
+.home-grid { display: grid; gap: 14px; grid-template-columns: minmax(0, 1fr); }
+.home-grid > .card { margin-bottom: 0; }
+@media (min-width: 768px) {
+  .home-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+  .home-grid > .span-2 { grid-column: 1 / -1; }
+}
+@media (min-width: 1100px) {
+  .home-grid { grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 20px; }
+  .home-grid > .next-card { grid-column: span 7; order: -1; }
+  .home-grid > .readiness-card { grid-column: span 5; }
+  .home-grid > .quick-card { grid-column: span 6; }
+  .home-grid > .span-2, .home-grid > .quick-card.span-2 { grid-column: 1 / -1; }
+}
+.readiness-card { display: flex; align-items: center; gap: 18px; text-align: start; width: 100%; }
+/* The ring trails the text (inline-end) on a row; on a narrow phone it still fits beside it. */
+.readiness-card .progress-ring { order: 2; }
+.readiness-body { flex: 1; min-width: 0; }
+.readiness-body h2 { font-size: 1.3rem; }
+.stat-row {
+  display: flex; align-items: center; gap: 10px; margin-top: 8px; padding: 9px 12px;
+  border-radius: var(--r-sm); background: var(--card-sunken); font-size: 0.9rem; color: var(--ink-dim);
+}
+.stat-row b { color: var(--ink); font-weight: 800; }
+.stat-row .icon { color: var(--brand); }
+.stat-row.good .icon { color: var(--good); }
+.next-card { display: flex; flex-direction: column; gap: 12px; }
+.next-head { display: flex; align-items: center; gap: 14px; }
+.next-title { font-size: 1.45rem; font-weight: 800; letter-spacing: -0.01em; overflow-wrap: anywhere; }
+.quick-card { display: flex; flex-direction: column; gap: 12px; }
+.quick-card.listen { background: linear-gradient(160deg, var(--good-soft), var(--card) 70%); }
+.quick-head { display: flex; align-items: flex-start; gap: 14px; }
+.quick-head h2 { font-size: 1.12rem; }
+.quick-card button { margin-top: auto; }
+.encourage {
+  display: flex; align-items: center; justify-content: center; gap: 10px; text-align: center;
+  padding: 16px; border-radius: var(--r-lg); background: var(--card-sunken); border: 1px solid var(--line);
+  color: var(--ink-dim); font-weight: 600;
+}
+.encourage b { color: var(--brand); font-weight: 900; }
+.encourage .icon { color: var(--brand); }
+
+/* ── Learn: phases + mission cards ────────────────────────────────────── */
+.summary-card { display: flex; align-items: center; gap: 16px; width: 100%; text-align: start; }
+.summary-card .icon-dir { color: var(--ink-faint); margin-inline-start: auto; }
+.phase { margin-top: 20px; }
+.phase-head { display: flex; align-items: center; gap: 12px; margin: 0 2px 10px; }
+.phase-title { font-size: 1.15rem; font-weight: 800; flex: 1; min-width: 0; }
+.phase-count { color: var(--ink-dim); font-size: 0.86rem; font-weight: 600; white-space: nowrap; }
+.mission-grid { display: grid; gap: 10px; grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 768px) { .mission-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; } }
+@media (min-width: 1100px) { .mission-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; } }
+.mcard {
+  width: 100%; display: flex; align-items: center; gap: 12px; text-align: start;
+  background: var(--card); border-radius: var(--r-lg); padding: 12px 14px; min-height: 84px;
+  box-shadow: var(--shadow-card); border: 1.5px solid transparent;
+}
+.mcard-num {
+  width: 34px; height: 34px; border-radius: 999px; flex-shrink: 0; display: grid; place-items: center;
+  background: var(--brand-soft); color: var(--brand-ink); font-weight: 800; font-size: 0.92rem;
+}
+.mcard-body { flex: 1; min-width: 0; }
+.mcard-title { display: block; font-weight: 800; line-height: 1.25; overflow-wrap: anywhere; }
+.mcard-sub { display: block; color: var(--ink-dim); font-size: 0.83rem; line-height: 1.35; margin-top: 2px; overflow-wrap: anywhere; }
+.mcard-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.mcard .icon-dir { color: var(--ink-faint); flex-shrink: 0; }
+.mcard.is-done .mcard-num { background: var(--good); color: #fff; }
+.mcard.is-next { border-color: color-mix(in srgb, var(--brand) 55%, transparent); box-shadow: var(--shadow-pop); }
+.mcard.is-next .mcard-num { background: var(--brand); color: #fff; }
+.mcard:disabled { opacity: 0.5; }
+.badge-next { background: var(--brand-soft); color: var(--brand-ink); }
+
+/* ── Mission overview: the guided journey ─────────────────────────────── */
+.hub-hero { text-align: center; padding: 4px 0 16px; }
+.hub-hero .icon-tile { margin: 0 auto 10px; }
+.hub-hero h1 { overflow-wrap: anywhere; }
+.jstep {
+  width: 100%; display: flex; align-items: center; gap: 14px; text-align: start;
+  background: var(--card); border-radius: var(--r-lg); padding: 16px; margin-bottom: 12px;
+  box-shadow: var(--shadow-card); border: 2px solid transparent;
+}
+.jstep-num {
+  width: 40px; height: 40px; border-radius: 999px; flex-shrink: 0; display: grid; place-items: center;
+  background: var(--card-sunken); color: var(--ink-dim); font-weight: 800; font-size: 1.05rem;
+}
+.jstep-body { flex: 1; min-width: 0; }
+.jstep-title { display: block; font-size: 1.25rem; font-weight: 800; }
+.jstep-sub { display: block; color: var(--ink-dim); font-size: 0.9rem; line-height: 1.35; }
+div.jstep { box-shadow: none; border-color: var(--line); }
+.jstep.is-current { border-color: var(--brand); background: linear-gradient(135deg, var(--brand-soft), var(--card) 65%); }
+.jstep.is-current .jstep-num { background: linear-gradient(135deg, var(--brand), var(--brand-deep)); color: #fff; }
+.jstep.is-done .jstep-num { background: var(--good-soft); color: var(--good); }
+.jstep.is-reward { border-style: dashed; border-color: var(--line); box-shadow: none; background: var(--card-sunken); }
+.jstep.is-reward.is-current { border-style: solid; border-color: var(--good); background: linear-gradient(135deg, var(--good-soft), var(--card) 65%); }
+.jstep.is-reward.is-current .jstep-num { background: var(--good); color: #fff; }
+.hint-card {
+  display: flex; align-items: center; gap: 10px; padding: 14px 16px; border-radius: var(--r-lg);
+  background: var(--brand-soft); color: var(--brand-ink); font-weight: 600; font-size: 0.92rem;
+}
+/* Inside an active lesson: one small indicator of where the learner is in the journey. */
+.phase-steps { display: flex; align-items: center; justify-content: center; gap: 6px; margin-bottom: 8px; font-size: 0.8rem; font-weight: 700; color: var(--ink-faint); }
+.phase-steps .on { color: var(--brand-ink); }
+.phase-steps .sep { width: 18px; height: 2px; border-radius: 2px; background: var(--line); }
+
+/* ── Listen ───────────────────────────────────────────────────────────── */
+.listen-layout { display: grid; gap: 14px; grid-template-columns: minmax(0, 1fr); align-items: start; }
+.listen-layout > .card { margin-bottom: 0; }
+@media (min-width: 1100px) {
+  .listen-layout { grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); gap: 20px; }
+  .listen-layout > .now-card { order: -1; }
+}
+.queue-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; margin-bottom: 10px; }
+.queue-list { display: flex; flex-direction: column; gap: 6px; max-height: 268px; overflow-y: auto; padding: 2px; }
+@media (min-width: 1100px) { .queue-list { max-height: 440px; } }
+.queue-row {
+  width: 100%; display: flex; align-items: center; gap: 12px; text-align: start;
+  min-height: 56px; padding: 8px 10px; border-radius: var(--r-md);
+  background: transparent; box-shadow: none; border: 1px solid var(--line);
+}
+.queue-row .icon-tile { width: 38px; height: 38px; border-radius: 11px; font-size: 1.15rem; }
+.queue-row-num { width: 26px; text-align: center; color: var(--ink-faint); font-weight: 800; font-size: 0.85rem; flex-shrink: 0; }
+.queue-row.active { background: var(--brand-soft); border-color: transparent; }
+.queue-row.active .link-row-title, .queue-row.active .queue-row-num { color: var(--brand-ink); }
+.queue-row .icon { color: var(--brand); }
+.now-card { display: flex; flex-direction: column; gap: 14px; text-align: center; }
+.now-meta { color: var(--ink-dim); font-size: 0.86rem; font-weight: 600; }
+.now-target { font-size: 1.8rem; font-weight: 800; line-height: 1.25; letter-spacing: -0.01em; overflow-wrap: anywhere; }
+.now-translation { font-size: 1.1rem; color: var(--ink-dim); overflow-wrap: anywhere; min-height: 1.5em; }
+@media (min-width: 1100px) { .now-target { font-size: 2.3rem; } .now-translation { font-size: 1.3rem; } }
+.now-progress { height: 6px; border-radius: 999px; background: var(--line); overflow: hidden; direction: ltr; }
+.now-progress > span { display: block; height: 100%; border-radius: 999px; background: var(--brand); transition: width 0.4s ease; }
+.transport { display: flex; align-items: center; justify-content: center; gap: 22px; direction: ltr; }
+.transport .parrot-step { display: grid; place-items: center; border: none; box-shadow: none; background: transparent; }
+.transport .parrot-play { display: grid; place-items: center; padding: 0; }
+.transport .icon-prev { transform: scaleX(-1); }
+.control-row { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 8px 14px; }
+.control-label { font-size: 0.84rem; font-weight: 700; color: var(--ink-dim); }
+.mode-grid { display: grid; gap: 8px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.mode-card {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; text-align: center;
+  min-height: 64px; padding: 8px 6px; border-radius: var(--r-md);
+  background: var(--card); border: 1.5px solid var(--line); box-shadow: none;
+}
+.mode-card b { font-size: 0.86rem; font-weight: 800; overflow-wrap: anywhere; }
+.mode-card span { font-size: 0.72rem; color: var(--ink-dim); line-height: 1.25; }
+.mode-card.active { border-color: var(--brand); background: var(--brand-soft); }
+.mode-card.active b { color: var(--brand-ink); }
+/* The one visual entry to Stories: a real cover beside a short description. */
+.story-card { display: flex; align-items: stretch; gap: 16px; padding: 14px; }
+.story-card-cover {
+  flex: 0 0 38%; max-width: 220px; min-height: 0; padding: 0; overflow: hidden;
+  border-radius: var(--r-md); background: var(--card-sunken); box-shadow: none;
+}
+.story-card-cover img, .story-card-cover .story-img-fallback { display: block; width: 100%; height: 100%; min-height: 132px; object-fit: cover; }
+.story-card-body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; justify-content: center; }
+.story-card-body .eyebrow { margin-bottom: 2px; font-size: 0.82rem; }
+.story-card-title { font-size: 1.2rem; font-weight: 800; line-height: 1.25; overflow-wrap: anywhere; text-align: start; }
+.story-card-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 4px 10px; margin-top: 8px; }
+.story-card-actions .btn-primary { width: auto; min-height: 46px; padding: 10px 18px; font-size: 0.95rem; }
+@media (min-width: 1100px) { .story-card-cover { flex-basis: 220px; } .story-card { padding: 16px; gap: 22px; } }
+
+/* A two-state switch that reads as on/off (not as one more value in a numeric scale). */
+.toggle-pill {
+  display: inline-flex; align-items: center; gap: 6px; min-height: 36px; padding: 7px 14px;
+  border-radius: 999px; font-size: 0.85rem; font-weight: 700; box-shadow: none;
+  background: var(--card); color: var(--ink-dim); border: 1.5px solid var(--line);
+}
+.toggle-pill.on { background: var(--brand-soft); color: var(--brand-ink); border-color: var(--brand); }
+.toggle-pill:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+.pair { display: inline-flex; align-items: center; gap: 5px; flex-wrap: wrap; justify-content: center; }
+
+/* Mission overview: the journey list (a plain ordered list; rows are buttons only on revisit). */
+.journey { list-style: none; margin: 0; padding: 0; }
+.hub-tools { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 4px 16px; margin-top: 10px; }
+
+.quick-strip { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.quick-strip .link-row-body { min-width: 180px; }
+.quick-strip button { width: auto; flex: 1 1 220px; }
+.support-grid { display: grid; gap: 10px; grid-template-columns: minmax(0, 1fr); }
+.support-grid > .link-row { margin-bottom: 0; }
+@media (min-width: 768px) { .support-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1100px) { .support-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+/* ── Profile / settings ───────────────────────────────────────────────── */
+.settings-grid { display: grid; gap: 14px; grid-template-columns: minmax(0, 1fr); align-items: start; }
+.settings-grid > .card { margin-bottom: 0; }
+@media (min-width: 1100px) { .settings-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; } }
+.setting-title { display: flex; align-items: center; gap: 10px; font-weight: 800; margin-bottom: 12px; }
+.setting-line { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 0; }
+.setting-line + .setting-line { border-top: 1px solid var(--line); }
+.setting-line .btn-link { min-height: 40px; }
+
+/* ── Readiness detail ─────────────────────────────────────────────────── */
+.status-dot { width: 26px; height: 26px; border-radius: 999px; flex-shrink: 0; display: grid; place-items: center; border: 3px solid var(--line); color: #fff; }
+.status-dot.ready { background: var(--good); border-color: var(--good); }
+.status-dot.inProgress { border-color: var(--warn); border-inline-start-color: var(--line); }
+.status-label { font-size: 0.74rem; font-weight: 700; color: var(--ink-faint); white-space: nowrap; }
+.status-label.ready { color: var(--good); }
+.status-label.inProgress { color: var(--warn); }
+
+@media (min-width: 1100px) {
+  .screen-wide .screen-scroll { padding-bottom: 64px; }
+}
+
+/* Shown only where there is room for it (desktop). */
+.only-desktop { display: none; }
+@media (min-width: 1100px) { .only-desktop { display: block; } }
+.next-title { display: block; }

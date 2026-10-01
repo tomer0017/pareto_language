@@ -1,6 +1,5 @@
 import type { LocalizedText } from '@ready/content-schema';
-import { BOOTCAMP_PLAN } from '../bootcamp/plan.js';
-import { missionsFor } from '../bootcamp/registry.js';
+import { sentenceCatalog } from './phraseGroups.js';
 import { seededShuffle } from '../../shared/util/shuffle.js';
 
 /**
@@ -24,27 +23,19 @@ export interface FlashCard {
 export type FlashDirection = 'target-first' | 'meaning-first';
 
 /**
- * The canonical sentence deck for a learning language, in mission order, deduped by id. Recovery
- * tools come first (they recur across every mission), then each mission's own sentences — mirroring
- * how Core Phrases already groups them, so flashcards and the phrase list are the SAME content.
+ * The sentence deck for a learning language — the canonical catalog (`sentenceCatalog`) flattened to
+ * cards, in the same order: each mission's own sentences in journey order, then the shared
+ * conversation-help phrases LAST. One card per canonical sentence, so flashcards, the library, Listen
+ * and every "N core sentences" count are the SAME content and the SAME number.
  */
 export function buildSentenceDeck(lang: string): FlashCard[] {
-  const missions = missionsFor(lang);
-  const seen = new Set<string>();
-  const recovery: FlashCard[] = [];
-  const rest: FlashCard[] = [];
-  for (const plan of BOOTCAMP_PLAN) {
-    const day = missions[plan.day];
-    if (!day) continue;
-    for (const item of day.items) {
-      if (seen.has(item.id)) continue;
-      seen.add(item.id);
-      const card: FlashCard = { id: item.id, target: item.text, meaning: item.meaning, missionDay: plan.day };
-      if (item.id.includes('.phrase.recovery.')) recovery.push(card);
-      else rest.push(card);
-    }
-  }
-  return [...recovery, ...rest];
+  const catalog = sentenceCatalog(lang);
+  return catalog.groups.flatMap((group) => group.items.map((item) => ({
+    id: item.id,
+    target: item.text,
+    meaning: item.meaning,
+    missionDay: group.mission?.day ?? catalog.firstDay.get(item.id) ?? 0,
+  })));
 }
 
 /** A shuffled copy of a deck (seeded → deterministic in tests, stable per session in the UI).

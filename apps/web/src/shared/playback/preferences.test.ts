@@ -1,44 +1,22 @@
-import { describe, it, expect } from 'vitest';
-import { sanitizeSettings, resolveBookmarkIndex, loadSettings, persistSettings, DEFAULT_SETTINGS } from './preferences.js';
-import type { PlaybackItem, PlaybackSpeed } from './types.js';
+import { afterEach, beforeEach, describe, it, expect } from 'vitest';
+import { sanitizeSettings, scopedSettings, scopeOwns, resolveBookmarkIndex, loadSettings, persistSettings, DEFAULT_SETTINGS, SCOPE_OWNS } from './preferences.js';
+import type { PlaybackItem, PlaybackScope, PlaybackSettings } from './types.js';
 
 describe('sanitizeSettings', () => {
   it('restores a fully valid settings object unchanged', () => {
-    const valid = { repeat: 3, order: 'random', translation: false, loop: true, speed: 1.25, pause: 'long', sleepTimer: 30 };
+    const valid = { repeat: 3, order: 'random', translation: false, loop: true, pause: 'long', sleepTimer: 30 };
     expect(sanitizeSettings(valid)).toEqual(valid);
   });
 
-  it('accepts every supported speed option (0.5× / 0.75× / 1× / 1.25×) and defaults to 1×', () => {
-    for (const speed of [0.5, 0.75, 1, 1.25] as PlaybackSpeed[]) {
-      expect(sanitizeSettings({ speed }).speed).toBe(speed);
-    }
-    // the default remains 1× when the field is missing or invalid
-    expect(sanitizeSettings({}).speed).toBe(1);
-    expect(sanitizeSettings({ speed: 0.6 }).speed).toBe(1);
-    expect(sanitizeSettings({ speed: 2 }).speed).toBe(1);
-  });
-
-  it('persists and restores the new 0.5× speed across a reload (shared preferences)', () => {
-    // Exercise the real persist→load path over an in-memory localStorage (node env has no DOM).
-    const store = new Map<string, string>();
-    const prev = (globalThis as { localStorage?: Storage }).localStorage;
-    (globalThis as { localStorage?: unknown }).localStorage = {
-      getItem: (k: string) => store.get(k) ?? null,
-      setItem: (k: string, v: string) => void store.set(k, v),
-      removeItem: (k: string) => void store.delete(k),
-    };
-    try {
-      persistSettings({ ...DEFAULT_SETTINGS, speed: 0.5 });
-      expect(loadSettings().speed).toBe(0.5); // survives refresh via the shared localStorage key
-    } finally {
-      (globalThis as { localStorage?: unknown }).localStorage = prev;
-    }
+  it('has no speed setting — a stored legacy "speed" is dropped, never restored', () => {
+    expect('speed' in DEFAULT_SETTINGS).toBe(false);
+    expect('speed' in sanitizeSettings({ speed: 0.5, repeat: 2 })).toBe(false);
   });
 
   it('falls back to defaults for every invalid field', () => {
-    const bad = { repeat: 7, order: 'sideways', translation: 'nope', loop: 'yes', speed: 2, pause: 'huge', sleepTimer: 99 };
+    const bad = { repeat: 7, order: 'sideways', translation: 'nope', loop: 'yes', pause: 'huge', sleepTimer: 99 };
     expect(sanitizeSettings(bad)).toEqual({
-      repeat: 1, order: 'sequential', translation: true, loop: false, speed: 1, pause: 'normal', sleepTimer: 0,
+      repeat: 1, order: 'sequential', translation: true, loop: false, pause: 'normal', sleepTimer: 0,
     });
   });
 
@@ -54,6 +32,61 @@ describe('sanitizeSettings', () => {
 
   it('defaults translation ON when the field is missing', () => {
     expect(sanitizeSettings({ repeat: 2 }).translation).toBe(true);
+  });
+});
+
+describe('per-surface preferences (a surface keeps only what its screen exposes)', () => {
+  const store = new Map<string, string>();
+  let prev: unknown;
+  beforeEach(() => {
+    store.clear();
+    prev = (globalThis as { localStorage?: unknown }).localStorage;
+    (globalThis as { localStorage?: unknown }).localStorage = {
+      getItem: (k: string) => store.get(k) ?? null,
+      setItem: (k: string, v: string) => void store.set(k, v),
+      removeItem: (k: string) => void store.delete(k),
+    };
+  });
+  afterEach(() => { (globalThis as { localStorage?: unknown }).localStorage = prev; });
+
+  const everything: PlaybackSettings = { repeat: 3, order: 'random', translation: false, loop: true, pause: 'long', sleepTimer: 30 };
+  const scopes = Object.keys(SCOPE_OWNS) as PlaybackScope[];
+
+  it('persists and restores a surface\'s own options across a reload', () => {
+    persistSettings('transcript', everything);
+    expect(loadSettings('transcript')).toEqual(everything);
+  });
+
+  it('each surface has its own storage key — none of them the old shared one', () => {
+    for (const scope of scopes) persistSettings(scope, everything);
+    expect([...store.keys()].sort()).toEqual(scopes.map((s) => 'ready.playback.' + s).sort());
+    expect(store.has('ready.parrot.settings')).toBe(false);
+  });
+
+  it('ignores the pre-scoping shared record entirely (that record WAS the leak)', () => {
+    store.set('ready.parrot.settings', JSON.stringify({ ...everything, speed: 0.5 }));
+    for (const scope of scopes) expect(loadSettings(scope)).toEqual(DEFAULT_SETTINGS);
+  });
+
+  it('a surface never keeps an option it does not expose', () => {
+    for (const scope of scopes) {
+      const kept = scopedSettings(scope, everything);
+      for (const key of Object.keys(DEFAULT_SETTINGS) as (keyof PlaybackSettings)[]) {
+        expect(kept[key], `${scope}.${key}`).toBe(scopeOwns(scope, key) ? everything[key] : DEFAULT_SETTINGS[key]);
+      }
+      persistSettings(scope, everything);
+      expect(loadSettings(scope), scope).toEqual(kept);
+    }
+  });
+
+  it('the story reader owns no engine option at all: always one pass, once per sentence, in order', () => {
+    expect(SCOPE_OWNS.story).toEqual([]);
+    store.set('ready.playback.story', JSON.stringify(everything)); // even a tampered record
+    expect(loadSettings('story')).toEqual(DEFAULT_SETTINGS);
+  });
+
+  it('Listen owns repeats, non-stop, shuffle and its quick-listen timer — not translation or pauses', () => {
+    expect([...SCOPE_OWNS.listen].sort()).toEqual(['loop', 'order', 'repeat', 'sleepTimer']);
   });
 });
 

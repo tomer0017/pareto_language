@@ -12,7 +12,7 @@
  */
 import { writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { BOOTCAMP_PLAN, PHASES } from '../apps/web/src/features/bootcamp/plan.js';
+import { BOOTCAMP_PLAN, PHASES, missionNumber } from '../apps/web/src/features/bootcamp/plan.js';
 import { dialogueTranscript } from '../apps/web/src/features/bootcamp/transcript.js';
 import type { BootcampDayContent, BootcampDialogue, BootcampItem } from '../apps/web/src/features/bootcamp/types.js';
 import { DAY1 } from '../apps/web/src/features/bootcamp/day1.js';
@@ -44,12 +44,11 @@ import { DAY26 } from '../apps/web/src/features/bootcamp/day26.js';
 import { DAY27 } from '../apps/web/src/features/bootcamp/day27.js';
 import { DAY28 } from '../apps/web/src/features/bootcamp/day28.js';
 import { DAY29 } from '../apps/web/src/features/bootcamp/day29.js';
-import { DAY30 } from '../apps/web/src/features/bootcamp/day30.js';
 
 const DAYS: BootcampDayContent[] = [
-  DAY1, DAY2, DAY3, DAY4, DAY5, DAY6, DAY7, DAY8, DAY9, DAY10,
-  DAY11, DAY12, DAY13, DAY14, DAY15, DAY16, DAY17, DAY18, DAY19, DAY20,
-  DAY21, DAY22, DAY23, DAY24, DAY25, DAY26, DAY27, DAY28, DAY29, DAY30,
+  DAY1, DAY2, DAY3, DAY4, DAY5, DAY6, DAY7, DAY8, DAY9,
+  DAY10, DAY11, DAY12, DAY13, DAY14, DAY15, DAY16, DAY17, DAY18, DAY19,
+  DAY20, DAY21, DAY22, DAY23, DAY24, DAY25, DAY26, DAY27, DAY28, DAY29,
 ];
 
 const isRecovery = (id: string): boolean => id.startsWith('en.phrase.recovery.');
@@ -93,7 +92,7 @@ function renderMission(day: BootcampDayContent): string {
 
   const lines: string[] = [];
   const checkpoint = plan?.checkpoint ? ' · 🏁 CHECKPOINT' : '';
-  lines.push(`## Mission ${day.day} — ${day.title.en} · ${day.title.he}`);
+  lines.push(`## Mission ${missionNumber(day.day) ?? day.day} — ${day.title.en} · ${day.title.he}`);
   lines.push('');
   lines.push(`> Phase ${plan?.phase ?? '—'} · ${phase ? `${phase.icon} ${phase.title.en}` : '—'}${checkpoint}`);
   lines.push('');
@@ -172,7 +171,9 @@ function renderMission(day: BootcampDayContent): string {
   return lines.join('\n');
 }
 
-const header = `# READY Bootcamp — Conversations & Content (all 30 missions)
+const checkpointNumbers = BOOTCAMP_PLAN.filter((m) => m.checkpoint).map((m) => missionNumber(m.day)).join(', ');
+
+const header = `# READY Bootcamp — Conversations & Content (all ${DAYS.length} missions)
 
 > **Auto-generated** from the Bootcamp source data by \`scripts/gen-conversations.ts\`.
 > Do not edit by hand — edit the mission files under \`apps/web/src/features/bootcamp/\`,
@@ -184,7 +185,7 @@ const header = `# READY Bootcamp — Conversations & Content (all 30 missions)
 **wrong / recovery branches** that teach why a pick is more or less useful.
 
 Missions are dialogue trees; the happy path is the canonical conversation used by the in-app
-transcript reader. Checkpoints (10, 18, 24, 30) and a few integration days reuse earlier items
+transcript reader. Checkpoints (${checkpointNumbers}) and a few integration days reuse earlier items
 and carry no new phrases — that is expected, not missing content.
 
 ---

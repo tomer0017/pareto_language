@@ -1,162 +1,146 @@
-import { useState } from 'react';
 import { useAppStore } from '../../shared/stores/appStore.js';
 import { L, t } from '../../shared/i18n/strings.js';
 import { tap } from '../../shared/ui/haptics.js';
+import { Icon } from '../../shared/ui/Icon.js';
 import { LangStrip } from '../../shared/ui/LangStrip.js';
-import { BOOTCAMP_PLAN } from '../bootcamp/plan.js';
+import { PageHeader } from '../../shared/ui/PageHeader.js';
+import { ProgressRing } from '../../shared/ui/ProgressRing.js';
+import { BOOTCAMP_PLAN, missionNumber } from '../bootcamp/plan.js';
 import { missionsFor, useBootcampStore } from '../bootcamp/bootcampStore.js';
-import { getSpeechRate, setSpeechRate, SPEECH_RATE_RANGE } from '../../shared/audio/tts.js';
-import { ZERO_MODULES } from '../zerostart/content.js';
+import { missionIcon } from '../bootcamp/missionFlow.js';
+import { useTravelReadiness } from '../bootcamp/useReadiness.js';
+import { useSentenceProgress } from '../core/useSentenceProgress.js';
 import { ZERO_LANGS } from '../zerostart/types.js';
-import { pathProgress } from '../zerostart/zeroStartProgress.js';
 import { useZeroStartStore } from '../zerostart/zeroStartStore.js';
 
 /**
- * Home — the real entry point of READY (not a Bootcamp mirror). It answers "what can I do here?"
- * with four large action cards, surfaces the two most-changed settings (Theme + Speech Speed —
- * reusing the exact same appStore/TTS, no duplicate state), and keeps "Continue" available as a
- * quieter secondary card lower down. The language strip and its logic are unchanged.
+ * Home — the coach, not a menu. It answers one question: "what is the single best thing for me to
+ * do now?" Four surfaces and nothing else:
+ *
+ *   1. Travel Readiness — real situations completed, out of the plan (never "% of a language").
+ *   2. Your next step   — the one mission to continue or start.
+ *   3. Quick review     — a few sentences from the learner's own practice log. Shown only once
+ *                          there is something to review: an empty, disabled card is noise.
+ *   4. Quick listen     — ten hands-free minutes.
+ *
+ * Every number is derived from stored progress. Settings, libraries and tools live in Learn, Listen
+ * and Profile.
  */
 export function Home() {
   const app = useAppStore();
   const bc = useBootcampStore();
-  const [rate, setRate] = useState(getSpeechRate());
-
-  // The journey the learner walks — numbered missions only, IN THE ACTIVE LEARNING LANGUAGE. Using
-  // the language's own mission set means "Continue/Next" can never jump into an unbuilt French
-  // mission (Early Access), and progress % reflects that language. The optional Recovery Toolkit is
-  // a special companion, so it never becomes "up next" and doesn't gate progress.
+  const readiness = useTravelReadiness();
+  const sentences = useSentenceProgress();
   const missions = missionsFor(app.learningLang);
-  const built = BOOTCAMP_PLAN.filter((m) => m.day in missions && !m.special);
-  const doneCount = built.filter((m) => bc.completedDays.includes(m.day)).length;
-  const pct = built.length ? Math.round((doneCount / built.length) * 100) : 0;
+  const reviewCount = sentences.reviewCards.length;
 
-  const resumeDay = built.find((m) => (bc.stepIndex[String(m.day)] ?? 0) > 0 && !bc.completedDays.includes(m.day));
-  const nextDay = built.find((m) => !bc.completedDays.includes(m.day));
-  const target = resumeDay ?? nextDay ?? built[0];
-  const allDone = doneCount >= built.length && built.length > 0;
-
-  // "מתחילים מאפס" (zero-beginner path) — shown when the active language ships it. The first-use
-  // recommendation appears only for a genuinely new learner in this language (no path progress AND no
-  // Bootcamp progress); it strongly suggests starting from zero but never locks the Bootcamp.
-  const zeroLang = (ZERO_LANGS as readonly string[]).includes(app.learningLang);
-  const zeroDoneArr = useZeroStartStore((s) => s.byLang[app.learningLang]?.done);
-  const zeroPct = pathProgress(ZERO_MODULES, new Set(zeroDoneArr ?? [])).pct;
-  const recommendZero = zeroLang && (zeroDoneArr?.length ?? 0) === 0 && doneCount === 0;
-
-  const onRate = (value: number): void => {
-    setRate(value);
-    setSpeechRate(value); // single global source of truth — same store the whole app uses
-  };
+  const next = readiness.next;
+  // A genuinely new learner (nothing done here, and the zero-beginner path untouched) gets one quiet
+  // pointer to it — a suggestion, never a second primary action.
+  const zeroDone = useZeroStartStore((s) => s.byLang[app.learningLang]?.done);
+  const suggestZero = (ZERO_LANGS as readonly string[]).includes(app.learningLang)
+    && (zeroDone?.length ?? 0) === 0 && readiness.ready === 0 && !readiness.nextIsResume;
 
   const openMission = (day: number): void => {
     tap();
     bc.startDay(day);
     app.navigate('bootcamp');
   };
-
-  const openCore = (category: string): void => {
+  const quickListen = (): void => {
     tap();
-    app.setCoreCategory(category);
-    app.navigate('core');
+    app.setListenIntent('quick');
+    app.navigate('listen');
   };
 
   return (
-    <div className="screen">
+    <div className="screen screen-wide">
+      <div className="brand-top"><span className="brand-mark">READY <Icon name="plane" size={22} /></span></div>
+      <LangStrip />
+      <div className="only-desktop">
+        <PageHeader title={t('homeGreeting')} sub={t('homeSub')} />
+      </div>
       <div className="screen-scroll">
-        <LangStrip />
+        <div className="home-grid">
+          {/* 1 — Travel readiness */}
+          <button className="card card-press readiness-card" onClick={() => { tap(); app.navigate('readiness'); }} aria-label={t('readinessOpen')}>
+            <ProgressRing pct={readiness.pct} size={116} stroke={11} label={`${t('readinessTitle')} ${readiness.pct}%`}>
+              <span className="ring-value">{readiness.pct}%</span>
+              <span className="ring-caption">{t('readinessTitle')}</span>
+            </ProgressRing>
+            <span className="readiness-body">
+              <strong style={{ display: 'block', fontSize: '1.3rem' }}>{t('readinessTitle')}</strong>
+              <span className="dim small" style={{ display: 'block' }}>{t('readinessSub')}</span>
+              <span className="stat-row good"><Icon name="check" size={18} />{t('readinessSituations', { done: readiness.ready, total: readiness.total })}</span>
+              {sentences.practiced !== null && (
+                <span className="stat-row"><Icon name="chat" size={18} />{t('readinessPhrases', { done: sentences.practiced, total: sentences.total })}</span>
+              )}
+            </span>
+          </button>
 
-        {/* ── First-use recommendation: strongly suggest the zero-beginner path (never coercive) ── */}
-        {recommendZero && (
-          <div className="card" style={{ marginTop: 14, borderInlineStart: '4px solid var(--brand)' }}>
-            <p style={{ fontWeight: 800, marginBottom: 8 }}>🌱 {t('zeroStartRecommendTitle')}</p>
-            <div className="btn-row">
-              <button className="btn-primary" onClick={() => { tap(); app.navigate('zerostart'); }}>{t('zeroStartRecommendStart')}</button>
-              <button className="btn-secondary" onClick={() => { tap(); bc.exit(); app.navigate('bootcamp'); }}>{t('zeroStartRecommendSkip')}</button>
-            </div>
-          </div>
-        )}
-
-        {/* ── Quick settings (the two most-changed controls, reused from their stores) ── */}
-        <p className="drill-label" style={{ margin: '18px 2px 8px' }}>{t('quickSettings')}</p>
-        <div className="card" style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-          <div>
-            <p style={{ fontWeight: 700, marginBottom: 8 }}>{t('darkMode')}</p>
-            <div className="btn-row">
-              <button className={app.theme === 'light' ? 'btn-accent' : 'btn-secondary'} onClick={() => { tap(); app.setTheme('light'); }}>☀️ {t('lightTheme')}</button>
-              <button className={app.theme === 'dark' ? 'btn-accent' : 'btn-secondary'} onClick={() => { tap(); app.setTheme('dark'); }}>🌙 {t('darkTheme')}</button>
-            </div>
-          </div>
-          <div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
-              <span style={{ fontWeight: 700 }}>{t('speechSpeed')}</span>
-              <strong style={{ color: 'var(--brand)', fontSize: '1.05rem' }}>{Math.round(rate * 100)}%</strong>
-            </div>
-            <input
-              type="range"
-              className="slider"
-              min={SPEECH_RATE_RANGE.min}
-              max={SPEECH_RATE_RANGE.max}
-              step={0.05}
-              value={rate}
-              onChange={(e) => onRate(parseFloat(e.target.value))}
-              aria-label={t('speechSpeed')}
-            />
-          </div>
-        </div>
-
-        {/* ── Main actions — the primary navigation of READY ── */}
-        <div className="home-actions stagger">
-          {zeroLang && (
-            <button className="action-card card-press ac-words" onClick={() => { tap(); app.navigate('zerostart'); }}>
-              <span className="action-icon">🌱</span>
-              <span className="action-title">{t('homeZeroStart')}</span>
-              <span className="action-sub">{t('homeZeroStartSub')}{zeroPct > 0 ? ` · ${zeroPct}%` : ''}</span>
-            </button>
+          {/* 2 — The next step */}
+          {next && (
+            <section className="card next-card" aria-labelledby="home-next">
+              <p className="eyebrow" id="home-next"><Icon name="flag" size={18} />{readiness.allDone ? t('allMissionsDone') : t('nextStepTitle')}</p>
+              <div className="next-head">
+                <span className="icon-tile icon-tile-brand icon-tile-lg" aria-hidden>{missionIcon(missions[next.day])}</span>
+                <span style={{ minWidth: 0 }}>
+                  <strong className="next-title">{L(next.title)}</strong>
+                </span>
+              </div>
+              <p className="dim">{L(next.objective)}</p>
+              <p className="meta-row">
+                <span>{t('situationOf', { n: missionNumber(next.day) ?? next.day, total: BOOTCAMP_PLAN.length })}</span>
+                <span><Icon name="clock" size={16} />{t('aboutMinutes', { n: next.minutes })}</span>
+              </p>
+              <button className="btn-primary btn-icon" onClick={() => openMission(next.day)}>
+                {readiness.allDone ? t('replay') : readiness.nextIsResume ? t('continueLearning') : t('startLearning')}
+                <Icon name="arrow" size={20} flip />
+              </button>
+              {suggestZero && (
+                <button className="btn-link" onClick={() => { tap(); app.navigate('zerostart'); }}>{t('newHereZero')}</button>
+              )}
+            </section>
           )}
-          <button className="action-card card-press ac-situations" onClick={() => { tap(); bc.exit(); app.navigate('bootcamp'); }}>
-            <span className="action-icon">🗣️</span>
-            <span className="action-title">{t('homeCommonSituations')}</span>
-            <span className="action-sub">{t('homeCommonSituationsSub')}</span>
-          </button>
-          <button className="action-card card-press ac-words" onClick={() => openCore('words')}>
-            <span className="action-icon">📖</span>
-            <span className="action-title">{t('homeLearnWords')}</span>
-            <span className="action-sub">{t('homeLearnWordsSub')}</span>
-          </button>
-          <button className="action-card card-press ac-phrases" onClick={() => openCore('phrases')}>
-            <span className="action-icon">💬</span>
-            <span className="action-title">{t('coreTabPhrases')}</span>
-            <span className="action-sub">{t('homeCorePhrasesSub')}</span>
-          </button>
-          <button className="action-card card-press ac-videos" onClick={() => { tap(); app.navigate('videos'); }}>
-            <span className="action-icon">🎬</span>
-            <span className="action-title">{t('homeVideos')}</span>
-            <span className="action-sub">{t('homeVideosSub')}</span>
-          </button>
-          <button className="action-card card-press ac-reading" onClick={() => { tap(); app.navigate('reading'); }}>
-            <span className="action-icon">📖</span>
-            <span className="action-title">{t('homeReading')}</span>
-            <span className="action-sub">{t('homeReadingSub')}</span>
-          </button>
-        </div>
 
-        {/* ── Continue learning — secondary, for returning users ── */}
-        {target && (
-          <button className="card card-press" style={{ width: '100%', textAlign: 'start', marginTop: 18, border: 'none' }} onClick={() => openMission(target.day)}>
-            <p className="drill-label" style={{ color: 'var(--brand)' }}>{allDone ? t('allMissionsDone') : t('continueWhereStopped')}</p>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 12, marginTop: 6 }}>
-              <span style={{ minWidth: 0 }}>
-                <p style={{ fontWeight: 800 }}>🎖️ {L(target.title)}</p>
-                <p className="dim small">{t('missionsProgress', { done: doneCount, total: built.length })}</p>
+          {/* 3 — Quick review: only when the learner has practiced something worth refreshing. */}
+          {reviewCount > 0 && (
+          <section className="card quick-card" aria-labelledby="home-review">
+            <div className="quick-head">
+              <span className="icon-tile icon-tile-brand" aria-hidden><Icon name="repeat" /></span>
+              <span>
+                <h2 id="home-review">{t('quickReviewTitle')}</h2>
+                <p className="dim small">{reviewCount === 1 ? t('quickReviewSubOne') : t('quickReviewSub', { n: reviewCount })}</p>
               </span>
-              <span className="chip chip-accent">{allDone ? t('replay') : t('continue')}</span>
             </div>
-            <div className="progress-track" style={{ marginTop: 10 }}>
-              <div className="progress-fill brand" style={{ width: `${pct}%` }} />
+            <button className="btn-outline btn-icon" onClick={() => { tap(); app.navigate('review'); }}>
+              <Icon name="repeat" size={18} />{t('quickReviewCta')}
+            </button>
+          </section>
+          )}
+
+          {/* 4 — Quick listen */}
+          <section className={`card quick-card listen ${reviewCount > 0 ? '' : 'span-2'}`} aria-labelledby="home-listen">
+            <div className="quick-head">
+              <span className="icon-tile icon-tile-good" aria-hidden><Icon name="listen" /></span>
+              <span>
+                <h2 id="home-listen">{t('quickListenTitle')}</h2>
+                <p className="dim small">{t('quickListenSub')}</p>
+              </span>
             </div>
-          </button>
-        )}
+            <button className="btn-outline good btn-icon" onClick={quickListen}>
+              <Icon name="play" size={18} />{t('quickListenCta')}
+            </button>
+          </section>
+
+          <p className="encourage span-2">
+            <Icon name="flag" size={20} />
+            <span>
+              {readiness.allDone
+                ? t('readinessAllDone', { total: readiness.total })
+                : t('readinessRemaining', { n: readiness.remaining })}
+            </span>
+          </p>
+        </div>
       </div>
     </div>
   );

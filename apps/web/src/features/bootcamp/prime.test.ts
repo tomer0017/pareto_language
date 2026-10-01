@@ -47,16 +47,16 @@ describe('mission vocabulary priming — all languages', () => {
 });
 
 describe('priming is present where the sprint required it, absent elsewhere', () => {
-  it('English foundation missions (1–8) each prime before the sentences', () => {
-    for (const d of [1, 2, 3, 4, 5, 6, 7, 8]) expect(primes(MISSIONS_BY_LANG.en![d]!).length).toBeGreaterThanOrEqual(1);
+  it('English foundation missions (1–7) each prime before the sentences', () => {
+    for (const d of [1, 2, 3, 4, 5, 6, 7]) expect(primes(MISSIONS_BY_LANG.en![d]!).length).toBeGreaterThanOrEqual(1);
   });
   it('French built missions (1–4) all prime (feature parity for what exists)', () => {
     for (const d of [1, 2, 3, 4]) expect(primes(MISSIONS_BY_LANG.fr![d]!).length).toBeGreaterThanOrEqual(1);
   });
   it('checkpoint / cold missions carry NO priming (they introduce no new content)', () => {
-    // Day 10 is a cold arrival checkpoint — a well-formed mission that intentionally skips priming.
-    expect(primes(MISSIONS_BY_LANG.en![10]!).length).toBe(0);
-    expect(MISSIONS_BY_LANG.en![10]!.steps.at(-1)!.kind).toBe('summary');
+    // Mission 9 is the cold arrival checkpoint — a well-formed mission that intentionally skips priming.
+    expect(primes(MISSIONS_BY_LANG.en![9]!).length).toBe(0);
+    expect(MISSIONS_BY_LANG.en![9]!.steps.at(-1)!.kind).toBe('summary');
   });
 });
 

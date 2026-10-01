@@ -120,3 +120,30 @@ export function collectionParity(collection: ReadingCollection): CollectionParit
     complete: bad === 0,
   };
 }
+
+/** CEFR band label for a reading level. */
+export const LEVEL_BAND: Record<Story['level'], string> = { 1: 'A1', 2: 'A1+', 3: 'A2' };
+
+export interface FeaturedStory {
+  story: Story;
+  /** The learner already started this story (a stored read position) but has not finished it. */
+  inProgress: boolean;
+  /** Every story is finished — the pick is then simply the first one, offered for a re-read. */
+  allDone: boolean;
+}
+
+/**
+ * The one story to put in front of the learner: the story they are in the middle of, else the first
+ * one they have not finished, else (all finished) the first. Decided ONLY from stored reading
+ * progress — nothing is inferred or invented. Null when there are no stories.
+ */
+export function featuredStory(
+  stories: readonly Story[],
+  progress: Readonly<Record<string, { pos: number; done: boolean } | undefined>>,
+): FeaturedStory | null {
+  if (stories.length === 0) return null;
+  const started = stories.find((s) => !progress[s.id]?.done && (progress[s.id]?.pos ?? 0) > 0);
+  const unread = stories.find((s) => !progress[s.id]?.done);
+  const story = started ?? unread ?? stories[0]!;
+  return { story, inProgress: started !== undefined, allDone: unread === undefined };
+}

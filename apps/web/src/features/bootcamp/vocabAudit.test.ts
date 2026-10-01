@@ -1,11 +1,12 @@
 import { describe, expect, it } from 'vitest';
 import { MISSION_VOCAB_AUDIT } from './vocabAudit.js';
 import { MISSIONS_BY_LANG } from './registry.js';
+import { BOOTCAMP_PLAN } from './plan.js';
 import type { BootcampStep } from './types.js';
 
 /**
  * The audit must stay bound to reality: every English mission is audited, and each priming DECISION
- * matches whether the mission actually has a `prime` step. This is what makes "all 30 missions
+ * matches whether the mission actually has a `prime` step. This is what makes "all missions
  * audited" a fact rather than a claim.
  */
 
@@ -15,11 +16,11 @@ const primeWords = (day: number): string[] => {
 };
 
 describe('mission vocabulary audit — complete and consistent (Part 9)', () => {
-  it('audits all 30 English missions', () => {
-    expect(Object.keys(MISSION_VOCAB_AUDIT).map(Number).sort((a, b) => a - b)).toEqual(Array.from({ length: 30 }, (_, i) => i + 1));
+  it('audits every English mission in the plan', () => {
+    expect(Object.keys(MISSION_VOCAB_AUDIT).map(Number).sort((a, b) => a - b)).toEqual(BOOTCAMP_PLAN.map((m) => m.day));
   });
 
-  for (let day = 1; day <= 30; day++) {
+  for (const { day } of BOOTCAMP_PLAN) {
     it(`mission ${day}: decision matches the actual mission, with a justification`, () => {
       const audit = MISSION_VOCAB_AUDIT[day]!;
       expect(audit.day).toBe(day);
@@ -38,11 +39,11 @@ describe('mission vocabulary audit — complete and consistent (Part 9)', () => 
   }
 
   it('explicitly marks checkpoints/cold missions as no-priming-needed', () => {
-    for (const cp of [10, 18, 24, 28, 29, 30]) expect(MISSION_VOCAB_AUDIT[cp]!.decision).toBe('no-priming-needed');
+    for (const cp of [9, 17, 23, 27, 28, 29]) expect(MISSION_VOCAB_AUDIT[cp]!.decision).toBe('no-priming-needed');
   });
 
-  it('reports the exact primed count (8 foundation missions)', () => {
+  it('reports the exact primed count (7 foundation missions)', () => {
     const primed = Object.values(MISSION_VOCAB_AUDIT).filter((a) => a.decision === 'primed').map((a) => a.day);
-    expect(primed).toEqual([1, 2, 3, 4, 5, 6, 7, 8]);
+    expect(primed).toEqual([1, 2, 3, 4, 5, 6, 7]);
   });
 });

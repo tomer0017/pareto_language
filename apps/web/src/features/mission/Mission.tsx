@@ -5,6 +5,7 @@ import { languageInfo, languageName } from '../../shared/i18n/languages.js';
 import { L, t } from '../../shared/i18n/strings.js';
 import { tap } from '../../shared/ui/haptics.js';
 import { Ring } from '../../shared/ui/Ring.js';
+import { BOOTCAMP_PLAN } from '../bootcamp/plan.js';
 
 const SITUATION_ICONS: Record<string, string> = {
   utensils: '🍝', train: '🚕', bag: '🛍️', compass: '🧭', bed: '🏨',
@@ -60,7 +61,7 @@ export function Mission() {
           <span style={{ fontSize: '1.8rem' }}>🎖️</span>
           <span>
             <p style={{ fontWeight: 800 }}>{t('bootcamp')}</p>
-            <p className="dim small">{t('bootcampSub')}</p>
+            <p className="dim small">{t('bootcampSub', { n: BOOTCAMP_PLAN.length, caps: BOOTCAMP_PLAN.length })}</p>
           </span>
         </button>
 

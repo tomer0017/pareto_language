@@ -26,10 +26,12 @@ describe('buildSentenceDeck — canonical, deduped, per-language', () => {
     expect(new Set(deck.map((c) => c.id)).size).toBe(deck.length);
   });
 
-  it('leads with the recovery survival kit, then mission sentences', () => {
+  it('opens with a mission sentence; the shared conversation-help phrases come last, never first', () => {
     const deck = buildSentenceDeck('en');
-    expect(deck[0]!.id).toContain('.phrase.recovery.');
-    expect(deck.some((c) => !c.id.includes('.phrase.recovery.'))).toBe(true);
+    const isHelp = deck.map((c) => c.id.includes('.phrase.recovery.'));
+    expect(deck[0]!.id).toBe('en.phrase.social.my-name'); // Mission 1 — Introduce Myself
+    expect(isHelp.includes(true)).toBe(true); // still in the deck — missions depend on them
+    expect(isHelp.indexOf(true)).toBeGreaterThan(isHelp.lastIndexOf(false)); // one block, at the very end
   });
 
   it('French deck is French only — never leaks English target text', () => {

@@ -8,7 +8,10 @@ import { sessionSeed } from '../../shared/util/shuffle.js';
 import { SwipeOnboarding } from '../../shared/ui/SwipeOnboarding.js';
 import { GestureCard, type GestureCardHandle } from '../../shared/ui/GestureCard.js';
 import { TappableText } from '../foundation/TappableText.js';
-import { buildSentenceDeck, shuffledDeck, nextIndex, type FlashDirection } from './flashcards.js';
+import { BackButton } from '../../shared/ui/PageHeader.js';
+import { Icon } from '../../shared/ui/Icon.js';
+import { Pair } from '../../shared/ui/Pair.js';
+import { buildSentenceDeck, shuffledDeck, nextIndex, type FlashCard, type FlashDirection } from './flashcards.js';
 
 /**
  * Sentence Flashcards (Part 2) — flip-card review over the canonical mission sentences. Uses the SAME
@@ -17,12 +20,15 @@ import { buildSentenceDeck, shuffledDeck, nextIndex, type FlashDirection } from 
  * self-grading — the intentional design for sentence review). Audio uses the ONE centralized
  * `speak(text, learningLang)`, auto-plays on every card change (listening-first), and cancels the
  * previous utterance first. Navigation is pure (`nextIndex`). No content lives here; it comes from the deck.
+ *
+ * `cards` narrows the session to a chosen subset of the SAME deck (Quick Review passes the few
+ * sentences worth refreshing); omitted, the whole deck is reviewed.
  */
-export function SentenceFlashcards({ onBack }: { onBack: () => void }) {
+export function SentenceFlashcards({ onBack, cards }: { onBack: () => void; cards?: FlashCard[] }) {
   const learningLang = useAppStore((s) => s.learningLang);
   const uiLang = useAppStore((s) => s.uiLang);
   const [seed, setSeed] = useState(sessionSeed);
-  const base = useMemo(() => buildSentenceDeck(learningLang), [learningLang]);
+  const base = useMemo(() => cards ?? buildSentenceDeck(learningLang), [cards, learningLang]);
   const deck = useMemo(() => shuffledDeck(base, seed), [base, seed]);
   const [i, setI] = useState(0);
   const [flipped, setFlipped] = useState(false);
@@ -86,9 +92,11 @@ export function SentenceFlashcards({ onBack }: { onBack: () => void }) {
     <div style={{ marginTop: 8 }}>
       <SwipeOnboarding variant="sentences" />
       <div className="topbar" style={{ marginBottom: 6 }}>
-        <button className="btn-ghost" onClick={() => { cancelSpeech(); onBack(); }}>{t('back')}</button>
+        <BackButton onBack={() => { cancelSpeech(); onBack(); }} />
         <span className="chip">🎴 {i + 1} / {deck.length}</span>
-        <button className="btn-ghost" onClick={toggleDirection}>{direction === 'target-first' ? t('flashDirComprehension') : t('flashDirRecall')}</button>
+        <button className="btn-ghost" onClick={toggleDirection}>
+          {direction === 'target-first' ? <Pair from={t('flashTarget')} to={t('flashMeaning')} /> : <Pair from={t('flashMeaning')} to={t('flashTarget')} />}
+        </button>
       </div>
       <div className="progress-track" style={{ marginBottom: 12 }}>
         <div className="progress-fill brand" style={{ width: `${((i + 1) / deck.length) * 100}%` }} />
@@ -121,8 +129,8 @@ export function SentenceFlashcards({ onBack }: { onBack: () => void }) {
         <button className="btn-ghost" onClick={reshuffle}>🔀 {t('flashShuffle')}</button>
       </div>
       <div className="action-zone" style={{ flexDirection: 'row', gap: 8, justifyContent: 'space-between' }}>
-        <button className="btn-ghost" onClick={() => deckRef.current?.commit('right')}>← {t('flashPrev')}</button>
-        <button className="btn-primary" style={{ flex: 1 }} onClick={() => deckRef.current?.commit('left')}>{t('flashNext')} →</button>
+        <button className="btn-ghost btn-icon" onClick={() => deckRef.current?.commit('right')}><Icon name="chevron" size={18} className="icon-back" />{t('flashPrev')}</button>
+        <button className="btn-primary btn-icon" style={{ flex: 1 }} onClick={() => deckRef.current?.commit('left')}>{t('flashNext')}<Icon name="arrow" size={18} flip /></button>
       </div>
     </div>
   );

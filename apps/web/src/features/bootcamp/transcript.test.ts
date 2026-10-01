@@ -29,13 +29,12 @@ import { DAY26 } from './day26.js';
 import { DAY27 } from './day27.js';
 import { DAY28 } from './day28.js';
 import { DAY29 } from './day29.js';
-import { DAY30 } from './day30.js';
 import type { BootcampDayContent, BootcampDialogue } from './types.js';
 
 const DAYS: BootcampDayContent[] = [
-  DAY1, DAY2, DAY3, DAY4, DAY5, DAY6, DAY7, DAY8, DAY9, DAY10,
-  DAY11, DAY12, DAY13, DAY14, DAY15, DAY16, DAY17, DAY18, DAY19, DAY20,
-  DAY21, DAY22, DAY23, DAY24, DAY25, DAY26, DAY27, DAY28, DAY29, DAY30,
+  DAY1, DAY2, DAY3, DAY4, DAY5, DAY6, DAY7, DAY8, DAY9,
+  DAY10, DAY11, DAY12, DAY13, DAY14, DAY15, DAY16, DAY17, DAY18, DAY19,
+  DAY20, DAY21, DAY22, DAY23, DAY24, DAY25, DAY26, DAY27, DAY28, DAY29,
 ];
 
 /**
@@ -79,12 +78,12 @@ describe('dialogueTranscript — the canonical happy-path conversation', () => {
     });
   }
 
-  it('collapses Mission 1 to the ideal barista run (no recovery beats, ends on "Enjoy!")', () => {
-    const lines = dialogueTranscript(DAY1.dialogues['stuck-traveler']!);
-    expect(lines.at(-1)!.en).toBe('Enjoy!');
-    // Recovery-only nodes (r1/r2/r3) must not appear on the happy path.
+  it('collapses Mission 1 to the ideal introduction (no recovery beats, ends on the host\'s goodbye)', () => {
+    const lines = dialogueTranscript(DAY1.dialogues['meeting-host']!);
+    expect(lines.at(-1)!.en).toBe('Well, enjoy your stay! Let me know if you need anything.');
+    // Recovery-only nodes (r1/r2) must not appear on the happy path.
     const texts = lines.map((l) => l.en);
-    expect(texts).not.toContain("Oh — wait, don't go! I can help. Coffee?");
+    expect(texts).not.toContain('Of course — what — is — your — name?');
   });
 
   it('terminates even on a pathological self-referential loop', () => {

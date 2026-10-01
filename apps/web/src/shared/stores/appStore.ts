@@ -19,11 +19,15 @@ import { reportContentSource, setProviderDiag } from '../data/dataDiag.js';
 
 export type View =
   | 'onboarding'
-  // English-pilot top-level tabs (permanent bottom nav)
+  // Primary destinations (see app/nav.ts): Home · Learn (`bootcamp`) · Listen · Profile
   | 'home'
   | 'bootcamp'
-  | 'core'
+  | 'listen'
   | 'profile'
+  // Secondary screens
+  | 'core'
+  | 'readiness'
+  | 'review'
   // Content-pack screens (gated to "coming soon" until an English pack ships)
   | 'mission'
   | 'words'
@@ -67,16 +71,23 @@ interface AppState {
   uiLang: string;
   learningLang: string;
   theme: 'light' | 'dark';
-  /** Which Core category the Core screen opens on: set by Home's deep-link cards, reset to null
-   *  (the category-card grid) by the Core bottom-nav tab. Purely navigational view state. */
+  /** Which library category (words / sentences) the secondary Core screen opens on: set by the
+   *  links that open it, cleared when leaving it. Purely navigational view state. */
   coreCategory: string | null;
   /** True while a focused, nav-less learning-game session (Core Words → Picture Quiz / Swipe
    *  Recall) is running. Hides the permanent bottom nav so a game's fixed action zone (Continue)
    *  is reachable instead of being covered by the higher-z nav — the same focused-flow rule an
    *  active Bootcamp mission already uses. Purely navigational; never persisted. */
   coreGameActive: boolean;
+  /** A one-shot request handed to the Listen screen by another surface (Home's Quick Listen):
+   *  consumed and cleared by Listen on arrival. Navigational only; never persisted. */
+  listenIntent: 'quick' | null;
+  /** A one-shot request to open a specific story (Listen's story card): consumed by Reading. */
+  readingIntent: string | null;
 
   navigate(view: View): void;
+  setListenIntent(intent: 'quick' | null): void;
+  setReadingIntent(storyId: string | null): void;
   setUiLang(lang: string): void;
   setLearningLang(lang: string): Promise<void>;
   setTheme(theme: 'light' | 'dark'): void;
@@ -141,6 +152,16 @@ export const useAppStore = create<AppState>((set, get) => ({
   theme: storedTheme,
   coreCategory: null,
   coreGameActive: false,
+  listenIntent: null,
+  readingIntent: null,
+
+  setListenIntent(intent) {
+    set({ listenIntent: intent });
+  },
+
+  setReadingIntent(storyId) {
+    set({ readingIntent: storyId });
+  },
 
   navigate(view) {
     // Leaving any screen ends a focused game session (defensive: a nav tap must always restore the

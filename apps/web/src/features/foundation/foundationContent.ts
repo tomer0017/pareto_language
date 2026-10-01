@@ -20,7 +20,7 @@ import { authoredExample } from './foundationExamples.js';
 /** A mission this word actually appears in (derived), for the word page's "Appears in" chips. */
 export interface RelatedMission {
   day: number;
-  /** Learner-facing mission number (null for special/unnumbered missions). */
+  /** Learner-facing mission number (null if the mission is not in the plan). */
   number: number | null;
   /** Mission title, resolved to the app language. */
   title: string;

@@ -3,15 +3,16 @@ import { useAppStore } from '../../shared/stores/appStore.js';
 import { L, t } from '../../shared/i18n/strings.js';
 import { tap } from '../../shared/ui/haptics.js';
 import { TopBar } from '../../shared/ui/TopBar.js';
+import { BackButton } from '../../shared/ui/PageHeader.js';
+import { Icon } from '../../shared/ui/Icon.js';
 import { TappableText } from '../foundation/TappableText.js';
 import { useParrotPlayback } from '../../shared/playback/index.js';
 import { Sheet } from '../../shared/ui/Sheet.js';
-import type { PlaybackSpeed } from '../../shared/playback/types.js';
 import { READING_COLLECTIONS } from './collections.js';
-import { buildStoryItems, readingTimeMin, scoreQuiz } from './readingCore.js';
+import { LEVEL_BAND, buildStoryItems, readingTimeMin, scoreQuiz } from './readingCore.js';
 import { useReadingStore, type ReadingPlayback } from './readingStore.js';
 import { COLLECTION_HERO, collectionHeroUrls, storyImageUrl } from './storyImages.js';
-import { READING_LANGS, type QuizResponse, type ReadingCollection, type ReadingLang, type ReadingLevel, type Story } from './types.js';
+import { READING_LANGS, type QuizResponse, type ReadingCollection, type ReadingLang, type Story } from './types.js';
 
 /**
  * Reading Mode surface — collection browse → story reader (3 modes + Universal Tap + shared playback)
@@ -20,13 +21,13 @@ import { READING_LANGS, type QuizResponse, type ReadingCollection, type ReadingL
  * component; the target is `story.*.target[learningLang]`, the translation is the app-language gloss.
  */
 
-const BAND: Record<ReadingLevel, string> = { 1: 'A1', 2: 'A1+', 3: 'A2' };
+const BAND = LEVEL_BAND;
 
 /** A top bar whose back button runs a LOCAL callback (in-surface navigation, not a view change). */
 function LocalTopBar({ title, onBack }: { title: string; onBack: () => void }) {
   return (
     <div className="topbar">
-      <button className="btn-ghost" onClick={() => { tap(); onBack(); }} aria-label={t('back')}>←</button>
+      <BackButton onBack={onBack} />
       <h2 style={{ margin: 0 }}>{title}</h2>
       <span style={{ width: 44 }} />
     </div>
@@ -46,6 +47,23 @@ export function Reading() {
   const rl = useReadingLang();
   const completed = useReadingStore((s) => s.completedCount());
   const streak = useReadingStore((s) => s.streak.count);
+
+  // Opened from Listen's story card with a specific story: load its collection and go straight in.
+  // The request is captured once on arrival and cleared from the store, so it never replays.
+  const [requested] = useState(() => useAppStore.getState().readingIntent);
+  useEffect(() => {
+    if (!requested) return;
+    useAppStore.getState().setReadingIntent(null);
+    let live = true;
+    void Promise.all(READING_COLLECTIONS.map((c) => c.load())).then((cols) => {
+      if (!live) return;
+      for (const col of cols) {
+        const hit = col.stories.find((st) => st.id === requested);
+        if (hit) { setCollection(col); setStory(hit); return; }
+      }
+    }).catch((err) => console.warn('[reading] story unavailable', err));
+    return () => { live = false; };
+  }, [requested]);
 
   if (story) return <StoryReader story={story} onExit={() => setStory(null)} />;
 
@@ -79,7 +97,7 @@ export function Reading() {
   // ── Collection browse (top level) — a warm, image-first landing ──
   return (
     <div className="screen">
-      <TopBar title={t('readingTitle')} backTo="home" />
+      <TopBar title={t('readingTitle')} backTo="listen" />
       <div className="screen-scroll">
         <p className="dim small" style={{ marginBottom: 10 }}>{t('readingHeroSub')}</p>
         <div className="reading-stats" style={{ marginBottom: 4 }}>
@@ -121,7 +139,7 @@ function CollectionHeroCard({ id, loading, disabled, onOpen }: { id: string; loa
           <span className="chip">{t('readingLevelRange')}</span>
           {minutes != null && <span className="chip">⏱ {t('readingAboutMinN', { n: minutes })}</span>}
         </span>
-        <span className="btn-primary reading-hero-cta">{loading ? '…' : `${t('readingStartReading')} →`}</span>
+        <span className="btn-primary reading-hero-cta btn-icon">{loading ? '…' : <>{t('readingStartReading')}<Icon name="arrow" size={18} flip /></>}</span>
       </span>
     </button>
   );
@@ -143,7 +161,7 @@ function StoryCard({ story, rl, onOpen }: { story: Story; rl: ReadingLang; onOpe
           <span className="badge">{BAND[story.level]}</span>
           <span className="dim small">⏱ {t('readingMinN', { n: readingTimeMin(story, rl) })}</span>
         </span>
-        <span className="btn-accent reading-story-cta">{done ? t('readingReadAgain') : inProgress ? `${t('continue')} →` : `${t('readingStartReading')} →`}</span>
+        <span className="btn-accent reading-story-cta btn-icon">{done ? t('readingReadAgain') : <>{inProgress ? t('continue') : t('readingStartReading')}<Icon name="arrow" size={18} flip /></>}</span>
       </span>
     </button>
   );
@@ -162,11 +180,11 @@ function StoryReader({ story, onExit }: { story: Story; onExit: () => void }) {
   const lineRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   // The SAME shared playback engine every listening surface uses — the reader just supplies its
-  // sentences as items and renders them as a scrolling, highlighted, tappable reading sheet. Reading
-  // is ALWAYS sequential (`order: 'sequential'` pins it, ignoring the shared shuffle preference).
-  // Voice-playback order (restored) — Reading owns this preference so it NEVER changes the shared
-  // Parrot `translation` setting other surfaces use. It persists in the Reading store and is applied
-  // to the engine purely as a per-surface `speakOrder` override (speed stays global). The target line
+  // sentences as items and renders them as a scrolling, highlighted, tappable reading sheet. It runs
+  // in the `story` scope, which owns NO engine options: every sentence is spoken once, in order, at
+  // the global speech rate — nothing chosen in Listen or a transcript can reach it.
+  // Voice-playback order — Reading's own preference. It persists in the Reading store and is applied
+  // to the engine purely as a per-surface `speakOrder` override. The target line
   // always uses the learning voice, the translation the app voice (per-line locales owned by the
   // engine). Changing it pauses playback so no stale speech continues under the previous order.
   const playback = useReadingStore((s) => s.playback);
@@ -177,10 +195,9 @@ function StoryReader({ story, onExit }: { story: Story; onExit: () => void }) {
   );
 
   const items = useMemo(() => buildStoryItems(story, rl, uiLang), [story, rl, uiLang]);
-  const pb = useParrotPlayback(items, { bookmarkKey: `reading:${rl}:${story.id}`, order: 'sequential', speakOrder });
+  const pb = useParrotPlayback(items, { scope: 'story', bookmarkKey: `reading:${rl}:${story.id}`, order: 'sequential', speakOrder });
   const playing = pb.status === 'playing';
   const current = pb.currentIndex;
-  const SPEEDS: PlaybackSpeed[] = [0.5, 0.75, 1, 1.25];
 
   const setPlayOrder = (o: ReadingPlayback): void => { tap(); pb.pause(); setPlayback(o); };
   const PLAY_ORDERS = [
@@ -200,7 +217,7 @@ function StoryReader({ story, onExit }: { story: Story; onExit: () => void }) {
   return (
     <div className="reader">
       <div className="topbar">
-        <button className="reader-back" onClick={() => { pb.pause(); onExit(); }} aria-label={t('back')}>←</button>
+        <BackButton onBack={() => { pb.pause(); onExit(); }} />
         <span className="dim small reading-progress">{t('lineProgress', { i: pb.position, n: pb.total })}</span>
         <span style={{ width: 52 }} />
       </div>
@@ -256,20 +273,13 @@ function StoryReader({ story, onExit }: { story: Story; onExit: () => void }) {
           ))}
         </div>
         <p className="parrot-label">{t('readingPlayback')}</p>
-        <div className="reading-q-options" role="group" aria-label={t('readingPlayback')} style={{ marginTop: 0, marginBottom: 16 }}>
+        <div className="reading-q-options" role="group" aria-label={t('readingPlayback')} style={{ marginTop: 0 }}>
           {PLAY_ORDERS.map((o) => (
             <button key={o.id} aria-pressed={playback === o.id}
               className={playback === o.id ? 'btn-accent' : 'btn-secondary'}
               onClick={() => setPlayOrder(o.id)}>
               {t(o.key)}
             </button>
-          ))}
-        </div>
-        <p className="parrot-label">{t('parrotSpeed')}</p>
-        <div className="seg" role="group" aria-label={t('parrotSpeed')}>
-          {SPEEDS.map((sp) => (
-            <button key={sp} className={`seg-btn ${pb.settings.speed === sp ? 'on' : ''}`} aria-pressed={pb.settings.speed === sp}
-              onClick={() => { tap(); pb.setSpeed(sp); }}>{sp}×</button>
           ))}
         </div>
       </Sheet>

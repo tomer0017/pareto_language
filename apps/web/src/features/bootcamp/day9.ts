@@ -1,95 +1,80 @@
-import { RECOVERY_ITEMS, T, recovery } from './recovery.js';
+import { T, recovery } from './recovery.js';
+import { DAY6_ITEMS } from './day6.js';
+import { DAY7_ITEMS } from './day7.js';
 import type { BootcampDayContent, BootcampDialogue, BootcampItem } from './types.js';
 
-/** Mission 9 — "Shopping" (real objective: browse, try, decide, pay — in control). */
+/**
+ * Mission 9 — "Arrival Day Checkpoint" (cold integration, no new content).
+ * Chains the arrival situations (taxi → hotel) at speed with cold ambushes — the first proof
+ * milestone. Reuses items from missions 6 & 7; the value is evidence, not new vocabulary.
+ */
+const byId = new Map([...DAY6_ITEMS, ...DAY7_ITEMS].map((i) => [i.id, i]));
+const pick = (...ids: string[]): BootcampItem[] => ids.map((id) => byId.get(id)!).filter(Boolean);
+
 export const DAY9_ITEMS: BootcampItem[] = [
-  { id: 'en.phrase.shop.just-looking', text: "I'm just looking, thanks.", meaning: T('אני רק מסתכל, תודה.', "I'm just looking, thanks."),
-    tip: T('משפט שקונה לך מרחב בלי לחץ מוכר.', 'A phrase that buys you space from a pushy seller.') },
-  { id: 'en.phrase.shop.try-on', text: 'Can I try this on?', meaning: T('אפשר למדוד את זה?', 'Can I try this on?') },
-  { id: 'en.phrase.shop.bigger', text: 'Do you have a bigger size?', meaning: T('יש מידה גדולה יותר?', 'Do you have a bigger size?'),
-    tip: T('תבנית: Do you have a ___ size? (bigger/smaller).', 'Template: Do you have a ___ size? (bigger/smaller).') },
-  { id: 'en.phrase.shop.take-it', text: "I'll take it.", meaning: T('אני אקח את זה.', "I'll take it."),
-    tip: T('החלטת? שתי מילים סוגרות עסקה.', 'Decided? Two words close the deal.') },
-  { id: 'en.phrase.shop.too-expensive', text: "It's a bit expensive.", meaning: T('זה קצת יקר.', "It's a bit expensive."),
-    tip: T('פתח מנומס להנחה או לחלופה זולה יותר.', 'A polite opening for a discount or a cheaper option.') },
-  // hear
-  { id: 'en.reply.shop.can-i-help', text: 'Can I help you find anything?', meaning: T('אפשר לעזור לך למצוא משהו?', 'Can I help you find anything?') },
-  { id: 'en.reply.shop.what-size', text: 'What size are you?', meaning: T('איזו מידה אתה?', 'What size are you?') },
-  { id: 'en.reply.shop.fitting-room', text: 'The fitting room is over there.', meaning: T('חדר ההלבשה שם.', 'The fitting room is over there.') },
-  { id: 'en.reply.shop.out-of-stock', text: "Sorry, that's out of stock.", meaning: T('סליחה, זה אזל מהמלאי.', "Sorry, that's out of stock.") },
-  { id: 'en.reply.shop.on-sale', text: "It's on sale — twenty percent off.", meaning: T('זה במבצע — עשרים אחוז הנחה.', "It's on sale — twenty percent off.") },
-  { id: 'en.reply.shop.anything-else', text: 'Anything else for you today?', meaning: T('עוד משהו היום?', 'Anything else for you today?') },
-  ...recovery('en.phrase.recovery.slowly', 'en.phrase.recovery.repeat', 'en.phrase.recovery.thank-you', 'en.phrase.recovery.show-me'),
+  ...pick(
+    'en.phrase.taxi.to-address', 'en.phrase.taxi.stop-here', 'en.reply.taxi.about-fifteen', 'en.reply.taxi.here-good',
+    'en.phrase.hotel.reservation', 'en.phrase.hotel.breakfast', 'en.reply.hotel.passport', 'en.reply.hotel.second-floor', 'en.reply.hotel.breakfast-time',
+  ),
+  ...recovery('en.phrase.recovery.repeat', 'en.phrase.recovery.slowly', 'en.phrase.recovery.thank-you'),
 ];
 
-const SCENE: BootcampDialogue = {
-  id: 'clothing-shop',
+const TAXI_COLD: BootcampDialogue = {
+  id: 'cold-taxi',
   start: 'n1',
   nodes: [
-    { id: 'n1', who: 'npc', next: 'c1', en: 'Hi there! Can I help you find anything?', he: 'היי! אפשר לעזור לך למצוא משהו?' },
+    { id: 'n1', who: 'npc', fast: true, next: 'c1', en: 'Evening! Where can I take you?', he: 'ערב! לאן לקחת אותך?' },
     { id: 'c1', who: 'you', en: '', he: '', choices: [
-      { en: "I'm just looking, thanks.", he: 'אני רק מסתכל, תודה.', itemId: 'en.phrase.shop.just-looking', correct: true, next: 'n2' },
-      { en: 'Can I try this on?', he: 'אפשר למדוד את זה?', itemId: 'en.phrase.shop.try-on', correct: true, next: 'n3' },
+      { en: 'To this address, please.', he: 'לכתובת הזאת, בבקשה.', itemId: 'en.phrase.taxi.to-address', correct: true, next: 'n2' },
+      { en: 'Can you repeat that?', he: 'אפשר לחזור על זה?', itemId: 'en.phrase.recovery.repeat', correct: true, next: 'n2' },
     ] },
-    { id: 'n2', who: 'npc', next: 'c1b', en: 'Of course, take your time. Let me know if you need a hand.', he: 'כמובן, קח את הזמן. תגיד אם אתה צריך עזרה.' },
-    { id: 'c1b', who: 'you', en: '', he: '', choices: [
-      { en: 'Can I try this on?', he: 'אפשר למדוד את זה?', itemId: 'en.phrase.shop.try-on', correct: true, next: 'n3' },
-    ] },
-    { id: 'n3', who: 'npc', fast: true, next: 'c2', en: 'Sure! What size are you? The fitting room is over there.', he: 'בטח! איזו מידה אתה? חדר ההלבשה שם.' },
+    { id: 'n2', who: 'npc', fast: true, next: 'c2', en: "Sure — it'll be about fifteen euros with the traffic.", he: 'בטח — זה יהיה בערך חמישה עשר יורו עם הפקקים.' },
     { id: 'c2', who: 'you', en: '', he: '', choices: [
-      { en: 'Do you have a bigger size?', he: 'יש מידה גדולה יותר?', itemId: 'en.phrase.shop.bigger', correct: true, next: 'n4' },
-      { en: 'Please speak slowly.', he: 'דבר לאט, בבקשה.', itemId: 'en.phrase.recovery.slowly', correct: true, next: 'r2' },
+      { en: 'Okay, thank you.', he: 'בסדר, תודה.', itemId: 'en.phrase.recovery.thank-you', correct: true, next: 'n3' },
     ] },
-    { id: 'r2', who: 'npc', slow: true, next: 'c2b', en: 'What — size? Fitting room — there.', he: 'איזו — מידה? חדר הלבשה — שם.' },
-    { id: 'c2b', who: 'you', en: '', he: '', choices: [
-      { en: 'Do you have a bigger size?', he: 'יש מידה גדולה יותר?', itemId: 'en.phrase.shop.bigger', correct: true, next: 'n4' },
+    { id: 'n3', who: 'npc', end: true, en: 'Here we are. Have a great night!', he: 'הגענו. לילה נהדר!' },
+  ],
+};
+
+const HOTEL_COLD: BootcampDialogue = {
+  id: 'cold-hotel',
+  start: 'n1',
+  nodes: [
+    { id: 'n1', who: 'npc', fast: true, next: 'c1', en: 'Welcome! Checking in tonight?', he: 'ברוך הבא! עושה צ\'ק-אין הערב?' },
+    { id: 'c1', who: 'you', en: '', he: '', choices: [
+      { en: 'I have a reservation.', he: 'יש לי הזמנה.', itemId: 'en.phrase.hotel.reservation', correct: true, next: 'n2' },
+      { en: 'Please speak slowly.', he: 'דבר לאט, בבקשה.', itemId: 'en.phrase.recovery.slowly', correct: true, next: 'n2' },
     ] },
-    { id: 'n4', who: 'npc', next: 'c3', en: 'Here you go, one size up. And good news — it’s on sale, twenty percent off!', he: 'הנה, מידה אחת גדולה יותר. ובשורה טובה — זה במבצע, עשרים אחוז הנחה!' },
-    { id: 'c3', who: 'you', en: '', he: '', choices: [
-      { en: "Great, I'll take it.", he: 'מעולה, אני אקח את זה.', itemId: 'en.phrase.shop.take-it', correct: true, next: 'n5' },
-      // An objection gets ANSWERED, not ignored — the price comment actually changes what they say.
-      { en: "It's a bit expensive.", he: 'זה קצת יקר.', itemId: 'en.phrase.shop.too-expensive', correct: true, next: 'n4b' },
+    { id: 'n2', who: 'npc', fast: true, next: 'c2', en: "Great — room two-oh-four, second floor, breakfast is seven to ten.", he: 'מצוין — חדר 204, קומה שנייה, ארוחת בוקר משבע עד עשר.' },
+    { id: 'c2', who: 'you', en: '', he: '', choices: [
+      { en: 'Is breakfast included?', he: 'ארוחת הבוקר כלולה?', itemId: 'en.phrase.hotel.breakfast', correct: true, next: 'n3' },
+      { en: 'Thank you!', he: 'תודה!', itemId: 'en.phrase.recovery.thank-you', correct: true, next: 'n3' },
     ] },
-    { id: 'n4b', who: 'npc', next: 'c3b', en: "I understand — but it's already twenty percent off. That's the best price I can do.", he: 'אני מבין — אבל זה כבר בעשרים אחוז הנחה. זה המחיר הכי טוב שאני יכול לתת.' },
-    { id: 'c3b', who: 'you', en: '', he: '', choices: [
-      { en: "Okay, I'll take it.", he: 'בסדר, אני אקח את זה.', itemId: 'en.phrase.shop.take-it', correct: true, next: 'n5' },
-    ] },
-    { id: 'n5', who: 'npc', end: true, en: 'Wonderful — I’ll ring you up at the till. Thank you!', he: 'נהדר — אחייב אותך בקופה. תודה!' },
+    { id: 'n3', who: 'npc', end: true, en: 'Enjoy your stay!', he: 'תיהנה מהשהות!' },
   ],
 };
 
 export const DAY9: BootcampDayContent = {
   day: 9,
-  title: T('קניות', 'Shopping'),
+  title: T('נקודת ביקורת: יום הגעה', 'Arrival Day Checkpoint'),
   items: DAY9_ITEMS,
-  dialogues: { 'clothing-shop': SCENE },
-  introVideo: {
-    src: '/videos/En_day9.mp4',
-    title: T('השיחה המלאה', 'Full conversation'),
-    language: 'en',
-    type: 'intro',
-  },
+  dialogues: { 'cold-taxi': TAXI_COLD, 'cold-hotel': HOTEL_COLD },
   steps: [
-    { kind: 'talk', icon: '🛍️', title: T('משימה 9: קניות', 'Mission 9: Shopping'),
+    { kind: 'talk', icon: '🛬', title: T('נקודת ביקורת: יום הגעה', 'Checkpoint: Arrival Day'),
       body: [
-        T('חנות בגדים: להסתכל בשקט, למדוד, לבקש מידה, להחליט.', 'A clothing shop: browse in peace, try on, ask for a size, decide.'),
-        T('לא צריך לקנות. צריך להרגיש בשליטה מול המוכר.', 'You don’t have to buy. You do have to feel in control with the seller.'),
-      ], cta: T('להיכנס לחנות', 'Walk in') },
-    { kind: 'tool', itemId: 'en.phrase.shop.just-looking', index: 1, total: 4, label: T('מרחב אישי', 'Personal space') },
-    { kind: 'tool', itemId: 'en.phrase.shop.try-on', index: 2, total: 4, label: T('למדוד', 'Try it on') },
-    { kind: 'tool', itemId: 'en.phrase.shop.bigger', index: 3, total: 4, label: T('מידה', 'Sizes') },
-    { kind: 'tool', itemId: 'en.phrase.shop.take-it', index: 4, total: 4, label: T('להחליט', 'Decide') },
-    { kind: 'replies', saidItemId: 'en.phrase.shop.try-on',
-      replyIds: ['en.reply.shop.what-size', 'en.reply.shop.fitting-room', 'en.reply.shop.on-sale', 'en.reply.shop.anything-else'] },
-    { kind: 'receipt', text: T('אתה מזהה מה מוכר שואל — מידה, חדר הלבשה, מבצע.', 'You recognize what a seller asks — size, fitting room, sale.') },
-    { kind: 'quiz', itemId: 'en.reply.shop.out-of-stock', wrongIds: ['en.reply.shop.on-sale', 'en.reply.shop.fitting-room'] },
-    { kind: 'dialogue', dialogueId: 'clothing-shop' },
-    { kind: 'receipt', text: T('קניה שלמה: הסתכלת, מדדת, ביקשת מידה, החלטת. בשליטה מלאה.', 'A full shop: browsed, tried on, asked for a size, decided. Fully in control.') },
-    { kind: 'swipe', itemIds: DAY9_ITEMS.map((i) => i.id) },
-    { kind: 'ambush', npc: { en: 'That one is actually the last piece we have in that colour would you like me to hold it?', he: 'זה בעצם הפריט האחרון שיש לנו בצבע הזה — שאשמור לך אותו?' },
-      correctItemId: 'en.phrase.recovery.repeat', wrongItemId: 'en.reply.shop.what-size' },
-    { kind: 'receipt', text: T('משפט ארוך ומהיר — ובמקום לקפוא, ביקשת הבהרה. זה בדיוק הרפלקס.', 'A long, fast sentence — and instead of freezing, you asked for clarity. Exactly the reflex.') },
+        T('אין חומר חדש היום. רק הוכחה.', 'No new material today. Just proof.'),
+        T('נחתת. מונית למלון, ואז צ\'ק-אין — הכל מהר, בלי הכנה, בלי כתוביות מלאות.', 'You’ve landed. A taxi to the hotel, then check-in — all fast, unprepared, minimal subtitles.'),
+        T('בוא נראה מה באמת נשאר לך בראש.', 'Let’s see what actually stuck.'),
+      ], cta: T('נחתנו — קדימה', 'We’ve landed — go') },
+    { kind: 'dialogue', dialogueId: 'cold-taxi' },
+    { kind: 'receipt', text: T('שרדת מונית בקור — יעד, מחיר, תשלום. בלי הכנה.', 'You survived a cold taxi — destination, price, payment. No prep.') },
+    { kind: 'ambush', npc: { en: 'Is here alright or would you prefer the main entrance just up ahead?', he: 'כאן בסדר או שאתה מעדיף את הכניסה הראשית קצת קדימה?' },
+      correctItemId: 'en.reply.taxi.here-good', wrongItemId: 'en.reply.taxi.about-fifteen' },
+    { kind: 'dialogue', dialogueId: 'cold-hotel' },
+    { kind: 'receipt', text: T('שרדת צ\'ק-אין בקור — הזמנה, חדר, ארוחת בוקר.', 'You survived a cold check-in — reservation, room, breakfast.') },
+    { kind: 'ambush', npc: { en: 'Just so you have it breakfast is downstairs from seven and the wifi code is on your key card.', he: 'רק שיהיה לך — ארוחת בוקר למטה משבע, וקוד הוויי-פיי על כרטיס המפתח.' },
+      correctItemId: 'en.reply.hotel.breakfast-time', wrongItemId: 'en.reply.hotel.passport' },
+    { kind: 'receipt', text: T('יום הגעה שלם — מונית ומלון — בקור. אתה מוכן לנחות באמת.', 'A full arrival day — taxi and hotel — cold. You are ready to actually land.') },
     { kind: 'summary' },
   ],
 };
-void RECOVERY_ITEMS;

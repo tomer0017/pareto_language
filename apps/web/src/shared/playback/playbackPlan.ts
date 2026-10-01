@@ -10,7 +10,10 @@ import type { PauseDuration, PlaybackItem, PlaybackOrder, PlaybackSettings, Spea
  *   1. `buildOrder` / `planNextCycle` — the sequence of item indices to walk (sequential vs a seeded
  *      shuffle), including a fresh cycle for Loop that avoids an immediate boundary repeat.
  *   2. `buildUtterancePlan` — the flat speak/pause steps for a SINGLE item (repeat, translation,
- *      speed, pause durations).
+ *      pause durations), and `runUtterancePlan`, which executes them.
+ *
+ * Speech rate is NOT decided here: a speak step carries only text + locale, and the TTS layer applies
+ * the one global speech-speed preference. `repeat` is a count of repetitions.
  *   3. `PAUSE_PRESETS` — the single mapping of Short/Normal/Long → concrete millisecond silences.
  */
 
@@ -39,9 +42,9 @@ export function pausePlan(d: PauseDuration): PausePlan {
   return PAUSE_PRESETS[d] ?? PAUSE_PRESETS.normal;
 }
 
-/** One executable step: speak a line (at a rate), or wait. `role` lets the UI/tests reason about it. */
+/** One executable step: speak a line, or wait. `role` lets the UI/tests reason about it. */
 export type UtteranceStep =
-  | { kind: 'speak'; text: string; lang: string; role: 'target' | 'translation'; rate: number }
+  | { kind: 'speak'; text: string; lang: string; role: 'target' | 'translation' }
   | { kind: 'pause'; ms: number };
 
 /**
@@ -81,17 +84,16 @@ export function planNextCycle(settings: PlaybackSettings, prevOrder: number[], c
  * otherwise by the shared `settings.translation` (target → translation). A translation is only ever
  * spoken when the item actually carries one. `order.translationFirst` flips to translation → target.
  * Each line keeps its OWN locale (`targetLang` for the target, `translationLang` for the translation)
- * so voices never cross. Every speak step carries the current playback `speed` for the TTS layer.
+ * so voices never cross.
  */
 export function buildUtterancePlan(item: PlaybackItem, settings: PlaybackSettings, order?: SpeakOrderOverride): UtteranceStep[] {
   const steps: UtteranceStep[] = [];
   const p = pausePlan(settings.pause);
-  const rate = settings.speed;
   const translationOn = (order ? order.translation : settings.translation) && !!item.translation;
   const translationFirst = order?.translationFirst ?? false;
   const repeat = Math.max(1, settings.repeat);
-  const target: UtteranceStep = { kind: 'speak', text: item.target, lang: item.targetLang, role: 'target', rate };
-  const translation: UtteranceStep = { kind: 'speak', text: item.translation ?? '', lang: item.translationLang ?? item.targetLang, role: 'translation', rate };
+  const target: UtteranceStep = { kind: 'speak', text: item.target, lang: item.targetLang, role: 'target' };
+  const translation: UtteranceStep = { kind: 'speak', text: item.translation ?? '', lang: item.translationLang ?? item.targetLang, role: 'translation' };
   for (let r = 0; r < repeat; r++) {
     if (translationOn && translationFirst) {
       steps.push(translation, { kind: 'pause', ms: p.afterTarget }, target);
@@ -103,6 +105,29 @@ export function buildUtterancePlan(item: PlaybackItem, settings: PlaybackSetting
     if (r < repeat - 1) steps.push({ kind: 'pause', ms: p.betweenRepeats });
   }
   return steps;
+}
+
+/** What the engine needs to execute a plan — injected so the runner is testable without a browser. */
+export interface PlanIO {
+  /** Speak one line in a locale. Called with text + locale ONLY: the rate is the TTS layer's. */
+  speak(text: string, lang: string): Promise<string>;
+  wait(ms: number): Promise<void>;
+  /** False once this run was cancelled/superseded. */
+  live(): boolean;
+}
+
+/**
+ * Execute one item's plan in order. Resolves `true` when it ran to the end, `false` as soon as the
+ * run is cancelled or a line is interrupted (a superseded line must never advance playback).
+ */
+export async function runUtterancePlan(steps: readonly UtteranceStep[], io: PlanIO): Promise<boolean> {
+  for (const step of steps) {
+    if (!io.live()) return false;
+    if (step.kind === 'pause') { await io.wait(step.ms); continue; }
+    const result = await io.speak(step.text, step.lang);
+    if (!io.live() || result === 'interrupted') return false;
+  }
+  return true;
 }
 
 /** Sleep-timer selection (minutes) → milliseconds. */

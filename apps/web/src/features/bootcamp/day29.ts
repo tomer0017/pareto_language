@@ -1,121 +1,146 @@
 import { T, recovery } from './recovery.js';
-import { DAY7_ITEMS } from './day7.js';
-import { DAY13_ITEMS } from './day13.js';
-import { DAY15_ITEMS } from './day15.js';
-import { DAY25_ITEMS } from './day25.js';
+import { DAY3_ITEMS } from './day3.js';
+import { DAY6_ITEMS } from './day6.js';
+import { DAY12_ITEMS } from './day12.js';
+import { DAY22_ITEMS } from './day22.js';
+import { DAY24_ITEMS } from './day24.js';
 import type { BootcampDayContent, BootcampDialogue, BootcampItem } from './types.js';
 
 /**
- * Mission 29 — "Dress Rehearsal: Full Evening" (Phase 5, cold integration, no new content).
- * Taxi → restaurant → problem → payment, one take, with one designed surprise. The athlete's
- * rehearsal before race day: chained moments that finally feel like a single flow. Reuses 7, 13, 15 & 25.
+ * Mission 29 — "A Complete Day Abroad Alone" (Phase 5, the finale — cold, no new content).
+ * Morning to night as one cold chain: coffee → taxi → lunch → a problem → a warm goodbye.
+ * One take. A real verdict. The finish line is an experience, not a certificate. Reuses 3, 6, 12, 22 & 24.
  */
-const byId = new Map([...DAY7_ITEMS, ...DAY13_ITEMS, ...DAY15_ITEMS, ...DAY25_ITEMS].map((i) => [i.id, i]));
+const byId = new Map([...DAY3_ITEMS, ...DAY6_ITEMS, ...DAY12_ITEMS, ...DAY22_ITEMS, ...DAY24_ITEMS].map((i) => [i.id, i]));
 const pick = (...ids: string[]): BootcampItem[] => ids.map((id) => byId.get(id)!).filter(Boolean);
 
 export const DAY29_ITEMS: BootcampItem[] = [
   ...pick(
-    'en.phrase.taxi.to-address', 'en.phrase.taxi.stop-here',
-    'en.phrase.rest.table-for-two', 'en.phrase.rest.ill-have', 'en.phrase.rest.bill-please',
-    'en.phrase.fix.not-ordered', 'en.phrase.fix.charged-twice',
-    'en.phrase.pay.by-card',
+    'en.phrase.coffee.iced-coffee',
+    'en.phrase.taxi.to-address',
+    'en.phrase.rest.table-for-two', 'en.phrase.rest.ill-have',
+    'en.phrase.fix.not-ordered',
+    'en.phrase.talk.beautiful-place', 'en.phrase.talk.nice-talking',
   ),
   ...recovery('en.phrase.recovery.repeat', 'en.phrase.recovery.slowly', 'en.phrase.recovery.thank-you'),
 ];
 
-const COLD_TAXI: BootcampDialogue = {
-  id: 'dr-taxi',
+const COLD_MORNING: BootcampDialogue = {
+  id: 'fin-morning',
   start: 'n1',
   nodes: [
-    { id: 'n1', who: 'npc', fast: true, next: 'c1', en: 'Evening! Where to?', he: 'ערב! לאן?' },
+    { id: 'n1', who: 'npc', fast: true, next: 'c1', en: 'Morning! What can I get you?', he: 'בוקר! מה להביא לך?' },
+    { id: 'c1', who: 'you', en: '', he: '', choices: [
+      { en: "I'd like an iced coffee, please.", he: 'אני רוצה קפה קר, בבקשה.', itemId: 'en.phrase.coffee.iced-coffee', correct: true, next: 'n2' },
+      { en: 'Can you repeat that?', he: 'אפשר לחזור על זה?', itemId: 'en.phrase.recovery.repeat', correct: true, next: 'n2' },
+    ] },
+    { id: 'n2', who: 'npc', fast: true, next: 'c2', en: 'Coming up — anything else this morning?', he: 'תכף מוכן — עוד משהו הבוקר?' },
+    { id: 'c2', who: 'you', en: '', he: '', choices: [
+      { en: "That's all, thanks.", he: 'זה הכל, תודה.', correct: true, next: 'n3' },
+      { en: 'Please speak slowly.', he: 'דבר לאט, בבקשה.', itemId: 'en.phrase.recovery.slowly', correct: true, next: 'n3' },
+    ] },
+    { id: 'n3', who: 'npc', end: true, en: 'Have a wonderful day!', he: 'שיהיה יום נפלא!' },
+  ],
+};
+
+const COLD_TAXI: BootcampDialogue = {
+  id: 'fin-taxi',
+  start: 'n1',
+  nodes: [
+    { id: 'n1', who: 'npc', fast: true, next: 'c1', en: 'Where can I take you?', he: 'לאן לקחת אותך?' },
     { id: 'c1', who: 'you', en: '', he: '', choices: [
       { en: 'To this address, please.', he: 'לכתובת הזאת, בבקשה.', itemId: 'en.phrase.taxi.to-address', correct: true, next: 'n2' },
-      { en: 'Can you repeat that?', he: 'אפשר לחזור על זה?', itemId: 'en.phrase.recovery.repeat', correct: true, next: 'n2' },
-    ] },
-    { id: 'n2', who: 'npc', next: 'c2', en: 'About fifteen with the traffic. Here okay?', he: 'בערך חמש-עשרה עם הפקקים. כאן בסדר?' },
-    { id: 'c2', who: 'you', en: '', he: '', choices: [
-      { en: 'Stop here, please.', he: 'עצור כאן, בבקשה.', itemId: 'en.phrase.taxi.stop-here', correct: true, next: 'n3' },
-      { en: 'Please speak slowly.', he: 'דבר לאט, בבקשה.', itemId: 'en.phrase.recovery.slowly', correct: true, next: 'n3' },
-    ] },
-    { id: 'n3', who: 'npc', end: true, en: 'Here you are — have a good night!', he: 'הגענו — לילה טוב!' },
-  ],
-};
-
-const COLD_ORDER: BootcampDialogue = {
-  id: 'dr-order',
-  start: 'n1',
-  nodes: [
-    { id: 'n1', who: 'npc', next: 'c1', en: 'Welcome! How many people?', he: 'ברוך הבא! כמה אנשים?' },
-    { id: 'c1', who: 'you', en: '', he: '', choices: [
-      { en: 'A table for two, please.', he: 'שולחן לשניים, בבקשה.', itemId: 'en.phrase.rest.table-for-two', correct: true, next: 'n2' },
-      { en: 'Can you repeat that?', he: 'אפשר לחזור על זה?', itemId: 'en.phrase.recovery.repeat', correct: true, next: 'n2' },
-    ] },
-    { id: 'n2', who: 'npc', next: 'c2', en: 'Right this way. Ready to order?', he: 'בבקשה אחריי. מוכן להזמין?' },
-    { id: 'c2', who: 'you', en: '', he: '', choices: [
-      { en: "I'll have the pasta, please.", he: 'אני אקח את הפסטה, בבקשה.', itemId: 'en.phrase.rest.ill-have', correct: true, next: 'n3' },
-      { en: 'Please speak slowly.', he: 'דבר לאט, בבקשה.', itemId: 'en.phrase.recovery.slowly', correct: true, next: 'n3' },
-    ] },
-    { id: 'n3', who: 'npc', end: true, en: 'Excellent — coming right up!', he: 'מצוין — תכף מגיע!' },
-  ],
-};
-
-const COLD_PROBLEM: BootcampDialogue = {
-  id: 'dr-problem',
-  start: 'n1',
-  nodes: [
-    { id: 'n1', who: 'npc', next: 'c1', en: "Here's your meal — one steak!", he: 'הנה הארוחה — סטייק אחד!' },
-    { id: 'c1', who: 'you', en: '', he: '', choices: [
-      { en: "This isn't what I ordered.", he: 'זה לא מה שהזמנתי.', itemId: 'en.phrase.fix.not-ordered', correct: true, next: 'n2' },
       { en: 'Please speak slowly.', he: 'דבר לאט, בבקשה.', itemId: 'en.phrase.recovery.slowly', correct: true, next: 'n2' },
     ] },
-    { id: 'n2', who: 'npc', next: 'c2', en: "Oh no — so sorry! I'll bring the right one right away.", he: 'אוי לא — מצטער מאוד! אביא את הנכון מיד.' },
+    { id: 'n2', who: 'npc', next: 'c2', en: "It'll be about ten. We're here.", he: 'זה יהיה בערך עשרה. הגענו.' },
     { id: 'c2', who: 'you', en: '', he: '', choices: [
       { en: 'Thank you!', he: 'תודה!', itemId: 'en.phrase.recovery.thank-you', correct: true, next: 'n3' },
       { en: 'Can you repeat that?', he: 'אפשר לחזור על זה?', itemId: 'en.phrase.recovery.repeat', correct: true, next: 'n3' },
     ] },
-    { id: 'n3', who: 'npc', end: true, en: 'The right dish, and it\'s on the house. Enjoy!', he: 'המנה הנכונה, ועל חשבון הבית. בתיאבון!' },
+    { id: 'n3', who: 'npc', end: true, en: 'Enjoy your day!', he: 'תיהנה מהיום!' },
   ],
 };
 
-const COLD_PAY: BootcampDialogue = {
-  id: 'dr-pay',
+const COLD_LUNCH: BootcampDialogue = {
+  id: 'fin-lunch',
   start: 'n1',
   nodes: [
-    { id: 'n1', who: 'npc', next: 'c1', en: 'All done? Anything else for you tonight?', he: 'סיימנו? עוד משהו הערב?' },
+    { id: 'n1', who: 'npc', next: 'c1', en: 'Hello! How many people?', he: 'שלום! כמה אנשים?' },
     { id: 'c1', who: 'you', en: '', he: '', choices: [
-      { en: 'Could we have the bill, please?', he: 'אפשר את החשבון, בבקשה?', itemId: 'en.phrase.rest.bill-please', correct: true, next: 'n2' },
+      { en: 'A table for two, please.', he: 'שולחן לשניים, בבקשה.', itemId: 'en.phrase.rest.table-for-two', correct: true, next: 'n2' },
       { en: 'Can you repeat that?', he: 'אפשר לחזור על זה?', itemId: 'en.phrase.recovery.repeat', correct: true, next: 'n2' },
     ] },
-    { id: 'n2', who: 'npc', fast: true, next: 'c2', en: "Here you go — that's thirty. Cash or card?", he: 'בבקשה — זה שלושים. מזומן או כרטיס?' },
+    { id: 'n2', who: 'npc', next: 'c2', en: 'Wonderful. Ready to order?', he: 'נהדר. מוכן להזמין?' },
     { id: 'c2', who: 'you', en: '', he: '', choices: [
-      { en: "I'll pay by card.", he: 'אני אשלם בכרטיס.', itemId: 'en.phrase.pay.by-card', correct: true, next: 'n3' },
+      { en: "I'll have the pasta, please.", he: 'אני אקח את הפסטה, בבקשה.', itemId: 'en.phrase.rest.ill-have', correct: true, next: 'n3' },
       { en: 'Please speak slowly.', he: 'דבר לאט, בבקשה.', itemId: 'en.phrase.recovery.slowly', correct: true, next: 'n3' },
     ] },
-    { id: 'n3', who: 'npc', end: true, en: 'Perfect — have a lovely evening!', he: 'מושלם — ערב נפלא!' },
+    { id: 'n3', who: 'npc', end: true, en: 'Great choice — coming right up!', he: 'בחירה מעולה — תכף מגיע!' },
+  ],
+};
+
+const COLD_TWIST: BootcampDialogue = {
+  id: 'fin-twist',
+  start: 'n1',
+  nodes: [
+    { id: 'n1', who: 'npc', next: 'c1', en: "Here you are — the seafood risotto!", he: 'בבקשה — ריזוטו פירות ים!' },
+    { id: 'c1', who: 'you', en: '', he: '', choices: [
+      { en: "This isn't what I ordered.", he: 'זה לא מה שהזמנתי.', itemId: 'en.phrase.fix.not-ordered', correct: true, next: 'n2' },
+      { en: 'Please speak slowly.', he: 'דבר לאט, בבקשה.', itemId: 'en.phrase.recovery.slowly', correct: true, next: 'n2' },
+    ] },
+    { id: 'n2', who: 'npc', next: 'c2', en: "Oh — my apologies! The pasta, right? I'll fix it now.", he: 'אוי — סליחה! הפסטה, נכון? אני מתקן עכשיו.' },
+    { id: 'c2', who: 'you', en: '', he: '', choices: [
+      { en: 'Thank you!', he: 'תודה!', itemId: 'en.phrase.recovery.thank-you', correct: true, next: 'n3' },
+      { en: 'Can you repeat that?', he: 'אפשר לחזור על זה?', itemId: 'en.phrase.recovery.repeat', correct: true, next: 'n3' },
+    ] },
+    { id: 'n3', who: 'npc', end: true, en: 'The right dish, on the house. So sorry again!', he: 'המנה הנכונה, על חשבון הבית. שוב סליחה!' },
+  ],
+};
+
+const COLD_EVENING: BootcampDialogue = {
+  id: 'fin-evening',
+  start: 'n1',
+  nodes: [
+    { id: 'n1', who: 'npc', next: 'c1', en: "What a sunset. You've picked a beautiful spot.", he: 'איזו שקיעה. בחרת מקום יפהפה.' },
+    { id: 'c1', who: 'you', en: '', he: '', choices: [
+      { en: 'This place is beautiful.', he: 'המקום הזה יפהפה.', itemId: 'en.phrase.talk.beautiful-place', correct: true, next: 'n2' },
+      { en: 'Please speak slowly.', he: 'דבר לאט, בבקשה.', itemId: 'en.phrase.recovery.slowly', correct: true, next: 'n2' },
+    ] },
+    { id: 'n2', who: 'npc', next: 'c2', en: 'It really is. Well — safe travels, my friend.', he: 'באמת. אז — נסיעה טובה, חבר.' },
+    { id: 'c2', who: 'you', en: '', he: '', choices: [
+      { en: 'It was nice talking to you.', he: 'היה נעים לדבר איתך.', itemId: 'en.phrase.talk.nice-talking', correct: true, next: 'n3' },
+      { en: 'Thank you!', he: 'תודה!', itemId: 'en.phrase.recovery.thank-you', correct: true, next: 'n3' },
+    ] },
+    { id: 'n3', who: 'npc', end: true, en: 'Take care — and come back one day!', he: 'שמור על עצמך — ותחזור יום אחד!' },
   ],
 };
 
 export const DAY29: BootcampDayContent = {
   day: 29,
-  title: T('חזרה גנרלית: ערב שלם', 'Dress Rehearsal: Full Evening'),
+  title: T('יום שלם לבד בחו״ל', 'A Complete Day Abroad Alone'),
   items: DAY29_ITEMS,
-  dialogues: { 'dr-taxi': COLD_TAXI, 'dr-order': COLD_ORDER, 'dr-problem': COLD_PROBLEM, 'dr-pay': COLD_PAY },
+  dialogues: { 'fin-morning': COLD_MORNING, 'fin-taxi': COLD_TAXI, 'fin-lunch': COLD_LUNCH, 'fin-twist': COLD_TWIST, 'fin-evening': COLD_EVENING },
   steps: [
-    { kind: 'talk', icon: '🎬', title: T('משימה 29: חזרה גנרלית — ערב שלם', 'Mission 29: Dress Rehearsal — Full Evening'),
+    { kind: 'talk', icon: '🎖️', title: T('משימה 29: יום שלם לבד בחו״ל', 'Mission 29: A Complete Day Abroad Alone'),
       body: [
-        T('אין חומר חדש. ערב שלם בטייק אחד: מונית, מסעדה, תקלה, תשלום.', 'No new material. A full evening in one take: taxi, restaurant, a problem, payment.'),
-        T('זו החזרה של הספורטאי לפני יום התחרות — עם הפתעה מתוכננת אחת. בוא נזרום.', 'This is the athlete’s rehearsal before race day — with one designed surprise. Let’s flow.'),
-      ], cta: T('אקשן — מתחילים', 'Action — begin') },
-    { kind: 'dialogue', dialogueId: 'dr-taxi' },
-    { kind: 'receipt', text: T('מונית בקור — יעד, מחיר, עצירה. הערב יצא לדרך.', 'A cold taxi — destination, price, stop. The evening is underway.') },
-    { kind: 'dialogue', dialogueId: 'dr-order' },
-    { kind: 'receipt', text: T('שולחן והזמנה — חלק, בלי הכנה.', 'Table and order — smooth, no prep.') },
-    { kind: 'dialogue', dialogueId: 'dr-problem' },
-    { kind: 'receipt', text: T('ההפתעה: מנה שגויה — ותיקנת אותה ברוגע.', 'The surprise: a wrong dish — and you fixed it calmly.') },
-    { kind: 'ambush', npc: { en: 'While we fix that can I bring you a drink on the house to make up for it?', he: 'בזמן שאנחנו מתקנים — שאביא לך משקה על חשבון הבית כפיצוי?' },
-      correctItemId: 'en.phrase.recovery.repeat', wrongItemId: 'en.phrase.fix.charged-twice' },
-    { kind: 'dialogue', dialogueId: 'dr-pay' },
-    { kind: 'receipt', text: T('ערב שלם בטייק אחד — מונית, ארוחה, תקלה, תשלום. זרימה אחת. כמעט כיף.', 'A full evening in one take — taxi, meal, problem, payment. One flow. Almost fun.') },
+        T('זהו. אין חומר חדש — רק אתה, מבוקר עד לילה, לבד.', 'This is it. No new material — just you, morning to night, alone.'),
+        T('קפה, מונית, ארוחה, תקלה, ופרידה חמה. טייק אחד, בקור. פסק דין אמיתי.', 'Coffee, a taxi, a meal, a problem, and a warm goodbye. One take, cold. A real verdict.'),
+        T('לפני 29 משימות פחדת לפתוח את הפה. עכשיו תראה מי אתה.', 'Twenty-nine missions ago you were afraid to open your mouth. Now — see who you are.'),
+      ], cta: T('להתחיל את היום', 'Begin the day') },
+    { kind: 'dialogue', dialogueId: 'fin-morning' },
+    { kind: 'receipt', text: T('בוקר: קפה בקור, בלי הכנה. היום התחיל טוב.', 'Morning: a cold coffee, no prep. The day started well.') },
+    { kind: 'dialogue', dialogueId: 'fin-taxi' },
+    { kind: 'receipt', text: T('מונית: יעד ותשלום. אתה זז בעיר לבד.', 'Taxi: destination and payment. You move through the city alone.') },
+    { kind: 'ambush', npc: { en: 'Mind if I take the scenic route it might add a few minutes but no extra charge?', he: 'אכפת לך אם אקח את הדרך היפה? זה אולי יוסיף כמה דקות אבל בלי תוספת תשלום.' },
+      correctItemId: 'en.phrase.recovery.repeat', wrongItemId: 'en.phrase.taxi.to-address' },
+    { kind: 'dialogue', dialogueId: 'fin-lunch' },
+    { kind: 'receipt', text: T('צהריים: שולחן והזמנה — חלק לגמרי.', 'Noon: a table and an order — completely smooth.') },
+    { kind: 'dialogue', dialogueId: 'fin-twist' },
+    { kind: 'receipt', text: T('תקלה: מנה שגויה — ותיקנת אותה ברוגע, כמו מקצוען.', 'A problem: a wrong dish — and you fixed it calmly, like a pro.') },
+    { kind: 'ambush', npc: { en: 'And would you like me to box the wrong dish for you to take away as well no charge?', he: 'ותרצה שאארוז לך גם את המנה השגויה לקחת, בלי תשלום?' },
+      correctItemId: 'en.phrase.recovery.slowly', wrongItemId: 'en.phrase.fix.not-ordered' },
+    { kind: 'dialogue', dialogueId: 'fin-evening' },
+    { kind: 'receipt', text: T('ערב: שיחה חמה עם זר, ופרידה יפה. יום שלם לבד בחו״ל — שרדת. יותר מזה: נהנית.', 'Evening: a warm chat with a stranger, and a lovely goodbye. A full day abroad alone — you survived. More than that: you enjoyed it.') },
     { kind: 'summary' },
   ],
 };

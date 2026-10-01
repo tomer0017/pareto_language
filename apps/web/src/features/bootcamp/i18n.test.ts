@@ -30,7 +30,7 @@ describe('dialogueTr — app-language dialogue translation', () => {
 
 describe('French Mission 1 through the shared engine (parity proof)', () => {
   it('renders a fully bilingual transcript — every spoken line has both en and he (zero English leak)', () => {
-    const lines = dialogueTranscript(DAY1_FR.dialogues['stuck-traveler']!);
+    const lines = dialogueTranscript(DAY1_FR.dialogues['meeting-host']!);
     expect(lines.length).toBeGreaterThan(0);
     for (const l of lines) {
       expect(l.en.trim().length).toBeGreaterThan(0);   // French spoken line
@@ -41,6 +41,6 @@ describe('French Mission 1 through the shared engine (parity proof)', () => {
 
   it('scopes French progress/review under fr.* ids (never mixed with English)', () => {
     expect(DAY1_FR.items.every((i) => i.id.startsWith('fr.'))).toBe(true);
-    expect(DAY1_FR.items[0]!.text).toBe('Désolé, je ne comprends pas.'); // French target surface
+    expect(DAY1_FR.items[0]!.text).toBe('Je m’appelle Dan.'); // French target surface
   });
 });

@@ -5,6 +5,7 @@ import { tap } from '../../shared/ui/haptics.js';
 import { Sheet } from '../../shared/ui/Sheet.js';
 import { SpeakerButton } from '../../shared/ui/SpeakerButton.js';
 import { IconButton } from '../../shared/ui/IconButton.js';
+import { Icon } from '../../shared/ui/Icon.js';
 import { useAppStore } from '../../shared/stores/appStore.js';
 import { languageDirection } from '../../shared/i18n/languages.js';
 import { loadCoreWords, type CoreWord } from '../../shared/content/coreWords.js';
@@ -139,9 +140,9 @@ export function FoundationSheet() {
             </div>
             <WordPage word={sessionWord} lang={learningLang} />
             <div className="foundation-session-nav">
-              <button className="btn-ghost" disabled={session.index === 0} onClick={() => { tap(); cancelSpeech(); sessionGo(-1); }}>← {t('flashPrev')}</button>
+              <button className="btn-ghost" disabled={session.index === 0} onClick={() => { tap(); cancelSpeech(); sessionGo(-1); }}><Icon name="chevron" size={16} className="icon-back" /> {t('flashPrev')}</button>
               {session.index < session.words.length - 1
-                ? <button className="btn-primary" style={{ flex: 1 }} onClick={() => { tap(); cancelSpeech(); sessionGo(1); }}>{t('flashNext')} →</button>
+                ? <button className="btn-primary" style={{ flex: 1 }} onClick={() => { tap(); cancelSpeech(); sessionGo(1); }}>{t('flashNext')} <Icon name="arrow" size={16} flip /></button>
                 : <button className="btn-primary" style={{ flex: 1 }} onClick={() => { tap(); close(); }}>✓ {t('foundationBackToMission')}</button>}
             </div>
           </>

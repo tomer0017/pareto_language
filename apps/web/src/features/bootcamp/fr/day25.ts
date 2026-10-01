@@ -3,8 +3,8 @@ import type { BootcampDayContent, BootcampDialogue, BootcampItem } from '../type
 import { recoveryFr } from './recovery.js';
 
 /**
- * French Mission 25 — "Régler un problème" (Fixing Problems). French parallel of English day 25:
- * wrong order, double charge — fixed with grace. Friction is a script, not a crisis. `tr:{en,he}`
+ * French Mission 25 — "Pharmacie et santé" (Pharmacy & Health). French parallel of English mission 25:
+ * describe a symptom, state an allergy, understand the dosage — even sick, you manage. `tr:{en,he}`
  * glosses; `fr.*` ids. AI-drafted, vous, pending review.
  */
 const T = (he: string, en: string): LocalizedText => ({ he, en });
@@ -12,103 +12,94 @@ const TR = (en: string, he: string): LocalizedText => ({ en, he });
 
 export const DAY25_FR_ITEMS: BootcampItem[] = [
   // say
-  { id: 'fr.phrase.fix.not-ordered', text: 'Ce n’est pas ce que j’ai commandé.', meaning: T('זה לא מה שהזמנתי.', "This isn't what I ordered."),
-    tip: T('רגוע ועובדתי — לא ריב. מתארים, לא מאשימים.', 'Calm and factual — not a fight. You describe, you don’t accuse.') },
-  { id: 'fr.phrase.fix.theres-mistake', text: 'Je crois qu’il y a une erreur.', meaning: T('אני חושב שיש טעות.', "I think there's a mistake."),
-    tip: T('הפתיח העדין לכל בעיה. פותח דלת במקום להרים קול.', 'The gentle opener for any problem. Opens a door instead of raising a voice.') },
-  { id: 'fr.phrase.fix.charged-twice', text: 'On m’a facturé deux fois.', meaning: T('חייבו אותי פעמיים.', 'I was charged twice.') },
-  { id: 'fr.phrase.fix.can-you-fix', text: 'Vous pouvez arranger ça ?', meaning: T('אפשר לתקן את זה?', 'Can you fix it?') },
-  { id: 'fr.phrase.fix.no-problem-thanks', text: 'Pas de problème, merci.', meaning: T('אין בעיה, תודה.', 'No problem, thank you.'),
-    tip: T('סוגר תקלה בחן. השארת אותם עם חיוך, לא עם מתח.', 'Closes friction with grace. You leave them with a smile, not tension.') },
-  // hear — staff solutions
-  { id: 'fr.reply.fix.so-sorry', text: 'Je suis vraiment désolé.', meaning: T('אני מצטער על זה מאוד.', "I'm so sorry about that.") },
-  { id: 'fr.reply.fix.bring-right', text: 'Je vous apporte le bon.', meaning: T('אביא את הנכון.', "I'll bring the right one.") },
-  { id: 'fr.reply.fix.check-bill', text: 'Laissez-moi vérifier l’addition.', meaning: T('תן לי לבדוק את החשבון.', 'Let me check the bill.') },
-  { id: 'fr.reply.fix.refund-now', text: 'Je vous rembourse tout de suite.', meaning: T('אחזיר לך את הכסף עכשיו.', "I'll refund it now.") },
-  { id: 'fr.reply.fix.on-the-house', text: 'C’est offert par la maison.', meaning: T('זה על חשבון הבית.', "It's on the house.") },
-  { id: 'fr.reply.fix.anything-else', text: 'Il y a autre chose ?', meaning: T('יש עוד משהו?', 'Is there anything else?') },
+  { id: 'fr.phrase.pharm.headache', text: 'J’ai mal à la tête.', meaning: T('יש לי כאב ראש.', 'I have a headache.'),
+    tip: T('התבנית: J’ai mal à ___ — מתארת כל כאב. à la tête / au ventre / à la gorge.', 'Template: J’ai mal à ___ — describes any ache. head / stomach / throat.') },
+  { id: 'fr.phrase.pharm.something-for', text: 'Vous avez quelque chose pour un rhume ?', meaning: T('יש לכם משהו לצינון?', 'Do you have something for a cold?'),
+    tip: T('התבנית: quelque chose pour ___ — מבקשת תרופה בלי לדעת את השם שלה.', 'Template: quelque chose pour ___ — asks for medicine without knowing its name.') },
+  { id: 'fr.phrase.pharm.how-often', text: 'Je le prends tous les combien ?', meaning: T('כל כמה זמן לוקחים?', 'How often do I take it?'),
+    tip: T('השאלה שאסור לוותר עליה עם תרופה. תמיד מוודאים מינון.', 'The one question you never skip with medicine. Always confirm the dosage.') },
+  { id: 'fr.phrase.pharm.allergic-penicillin', text: 'Je suis allergique à la pénicilline.', meaning: T('אני אלרגי לפניצילין.', "I'm allergic to penicillin.") },
+  { id: 'fr.phrase.pharm.stomach-ache', text: 'J’ai mal au ventre.', meaning: T('יש לי כאב בטן.', 'I have a stomach ache.') },
+  // hear — the pharmacist's replies
+  { id: 'fr.reply.pharm.whats-matter', text: 'Qu’est-ce qui ne va pas ?', meaning: T('מה קרה?', "What's the matter?") },
+  { id: 'fr.reply.pharm.take-twice', text: 'Prenez-en deux fois par jour.', meaning: T('קח את זה פעמיים ביום.', 'Take this twice a day.') },
+  { id: 'fr.reply.pharm.after-meals', text: 'Après les repas.', meaning: T('אחרי הארוחות.', 'After meals.') },
+  { id: 'fr.reply.pharm.any-allergies', text: 'Des allergies ?', meaning: T('יש אלרגיות?', 'Any allergies?') },
+  { id: 'fr.reply.pharm.see-doctor', text: 'Vous devriez voir un médecin.', meaning: T('כדאי לך לראות רופא.', 'You should see a doctor.') },
+  { id: 'fr.reply.pharm.feel-better', text: 'Bon rétablissement !', meaning: T('תרגיש טוב יותר!', 'Feel better soon!') },
   ...recoveryFr('fr.phrase.recovery.repeat', 'fr.phrase.recovery.slowly', 'fr.phrase.recovery.thank-you'),
 ];
 
-const SCENE_FIX: BootcampDialogue = {
-  id: 'fixing-problems',
+const SCENE_PHARMACY: BootcampDialogue = {
+  id: 'pharmacy',
   start: 'n1',
   nodes: [
-    { id: 'n1', who: 'npc', next: 'c1', en: 'Voici votre plat — un steak !', tr: TR("Here's your meal — one steak!", 'הנה הארוחה שלך — סטייק אחד!'), he: 'הנה הארוחה שלך — סטייק אחד!' },
+    { id: 'n1', who: 'npc', next: 'c1', en: 'Bonjour ! Qu’est-ce qui ne va pas ?', tr: TR("Hello! What's the matter?", 'שלום! מה קרה?'), he: 'שלום! מה קרה?' },
     { id: 'c1', who: 'you', en: '', he: '', choices: [
-      { en: 'Ce n’est pas ce que j’ai commandé.', tr: TR("This isn't what I ordered.", 'זה לא מה שהזמנתי.'), he: 'זה לא מה שהזמנתי.', itemId: 'fr.phrase.fix.not-ordered', correct: true, next: 'n2' },
+      { en: 'J’ai mal à la tête.', tr: TR('I have a headache.', 'יש לי כאב ראש.'), he: 'יש לי כאב ראש.', itemId: 'fr.phrase.pharm.headache', correct: true, next: 'n2' },
       { en: 'Parlez lentement, s’il vous plaît.', tr: TR('Please speak slowly.', 'דבר לאט, בבקשה.'), he: 'דבר לאט, בבקשה.', itemId: 'fr.phrase.recovery.slowly', correct: true, next: 'r1' },
     ] },
-    { id: 'r1', who: 'npc', slow: true, next: 'c1b', en: 'Voici — votre — steak !', tr: TR("Here's — your — steak!", 'הנה — הסטייק — שלך!'), he: 'הנה — הסטייק — שלך!' },
+    { id: 'r1', who: 'npc', slow: true, next: 'c1b', en: 'Qu’est-ce — qui — ne va pas ?', tr: TR("What's — the — matter?", 'מה — קרה?'), he: 'מה — קרה?' },
     { id: 'c1b', who: 'you', en: '', he: '', choices: [
-      { en: 'Ce n’est pas ce que j’ai commandé.', tr: TR("This isn't what I ordered.", 'זה לא מה שהזמנתי.'), he: 'זה לא מה שהזמנתי.', itemId: 'fr.phrase.fix.not-ordered', correct: true, next: 'n2' },
+      { en: 'J’ai mal à la tête.', tr: TR('I have a headache.', 'יש לי כאב ראש.'), he: 'יש לי כאב ראש.', itemId: 'fr.phrase.pharm.headache', correct: true, next: 'n2' },
     ] },
-    { id: 'n2', who: 'npc', next: 'c2', en: 'Oh non, je suis vraiment désolé ! Vous aviez commandé quoi ?', tr: TR("Oh no, I'm so sorry! What did you order?", 'אוי לא, אני מצטער מאוד! מה הזמנת?'), he: 'אוי לא, אני מצטער מאוד! מה הזמנת?' },
+    { id: 'n2', who: 'npc', next: 'c2', en: 'Je vois. Avant de vous donner quelque chose — des allergies ?', tr: TR('I see. Before I give you anything — any allergies?', 'הבנתי. לפני שאתן לך משהו — יש אלרגיות?'), he: 'הבנתי. לפני שאתן לך משהו — יש אלרגיות?' },
     { id: 'c2', who: 'you', en: '', he: '', choices: [
-      { en: 'Vous pouvez arranger ça ?', tr: TR('Can you fix it?', 'אפשר לתקן את זה?'), he: 'אפשר לתקן את זה?', itemId: 'fr.phrase.fix.can-you-fix', correct: true, next: 'n3' },
-      { en: 'Je crois qu’il y a une erreur.', tr: TR("I think there's a mistake.", 'אני חושב שיש טעות.'), he: 'אני חושב שיש טעות.', itemId: 'fr.phrase.fix.theres-mistake', correct: true, next: 'n2b' },
+      { en: 'Je suis allergique à la pénicilline.', tr: TR("I'm allergic to penicillin.", 'אני אלרגי לפניצילין.'), he: 'אני אלרגי לפניצילין.', itemId: 'fr.phrase.pharm.allergic-penicillin', correct: true, next: 'n3' },
+      { en: 'J’ai mal au ventre.', tr: TR('I have a stomach ache.', 'יש לי כאב בטן. (חשוב — אבל הוא שאל על אלרגיות)'), he: 'יש לי כאב בטן.', itemId: 'fr.phrase.pharm.stomach-ache', correct: false, next: 'r2' },
     ] },
-    { id: 'n2b', who: 'npc', next: 'c2b', en: 'Vous avez raison, il y a eu une confusion — je vais arranger ça.', tr: TR("You're right, there's been a mix-up — I'll sort it out.", 'אתה צודק, הייתה אי-הבנה — אני אסדר את זה.'), he: 'אתה צודק, הייתה אי-הבנה — אני אסדר את זה.' },
+    { id: 'r2', who: 'npc', next: 'c2b', en: 'Je le note — mais d’abord, une allergie aux médicaments ?', tr: TR("I'll note that — but first, any allergies to medicine?", 'ארשום את זה — אבל קודם, יש אלרגיה לתרופות?'), he: 'ארשום את זה — אבל קודם, יש אלרגיה לתרופות?' },
     { id: 'c2b', who: 'you', en: '', he: '', choices: [
-      { en: 'Vous pouvez arranger ça ?', tr: TR('Can you fix it?', 'אפשר לתקן את זה?'), he: 'אפשר לתקן את זה?', itemId: 'fr.phrase.fix.can-you-fix', correct: true, next: 'n3' },
+      { en: 'Je suis allergique à la pénicilline.', tr: TR("I'm allergic to penicillin.", 'אני אלרגי לפניצילין.'), he: 'אני אלרגי לפניצילין.', itemId: 'fr.phrase.pharm.allergic-penicillin', correct: true, next: 'n3' },
     ] },
-    { id: 'n3', who: 'npc', next: 'c3', en: 'Bien sûr — je vous apporte le bon tout de suite. Et c’est offert par la maison.', tr: TR("Of course — I'll bring the right one right away. And it's on the house.", 'כמובן — אביא את הנכון מיד. וזה על חשבון הבית.'), he: 'כמובן — אביא את הנכון מיד. וזה על חשבון הבית.' },
+    { id: 'n3', who: 'npc', next: 'c3', en: 'Bon à savoir. Celui-ci est sans danger pour vous — prenez-le deux fois par jour.', tr: TR('Good to know. This one is safe for you — take it twice a day.', 'טוב לדעת. זה בטוח בשבילך — קח פעמיים ביום.'), he: 'טוב לדעת. זה בטוח בשבילך — קח פעמיים ביום.' },
     { id: 'c3', who: 'you', en: '', he: '', choices: [
-      { en: 'Merci !', tr: TR('Thank you!', 'תודה!'), he: 'תודה!', itemId: 'fr.phrase.recovery.thank-you', correct: true, next: 'n4' },
+      { en: 'Je le prends tous les combien ?', tr: TR('How often do I take it?', 'כל כמה זמן לוקחים?'), he: 'כל כמה זמן לוקחים?', itemId: 'fr.phrase.pharm.how-often', correct: true, next: 'n3b' },
       { en: 'Vous pouvez répéter ?', tr: TR('Can you repeat that?', 'אפשר לחזור על זה?'), he: 'אפשר לחזור על זה?', itemId: 'fr.phrase.recovery.repeat', correct: true, next: 'r3' },
     ] },
-    { id: 'r3', who: 'npc', slow: true, next: 'c3b', en: 'C’est — offert — par la maison.', tr: TR("It's — on — the house.", 'זה — על — חשבון הבית.'), he: 'זה — על — חשבון הבית.' },
+    { id: 'r3', who: 'npc', slow: true, next: 'c3b2', en: 'Prenez-le — deux fois — par jour.', tr: TR('Take it — twice — a day.', 'קח — פעמיים — ביום.'), he: 'קח — פעמיים — ביום.' },
+    { id: 'c3b2', who: 'you', en: '', he: '', choices: [
+      { en: 'Je le prends tous les combien ?', tr: TR('How often do I take it?', 'כל כמה זמן לוקחים?'), he: 'כל כמה זמן לוקחים?', itemId: 'fr.phrase.pharm.how-often', correct: true, next: 'n3b' },
+    ] },
+    { id: 'n3b', who: 'npc', next: 'c3b', en: 'Deux fois par jour, après les repas.', tr: TR('Twice a day, after meals.', 'פעמיים ביום, אחרי הארוחות.'), he: 'פעמיים ביום, אחרי הארוחות.' },
     { id: 'c3b', who: 'you', en: '', he: '', choices: [
       { en: 'Merci !', tr: TR('Thank you!', 'תודה!'), he: 'תודה!', itemId: 'fr.phrase.recovery.thank-you', correct: true, next: 'n4' },
     ] },
-    { id: 'n4', who: 'npc', next: 'c4', en: 'Voici votre addition pour ce soir.', tr: TR("Here's your bill for this evening.", 'הנה החשבון לערב.'), he: 'הנה החשבון לערב.' },
+    { id: 'n4', who: 'npc', next: 'c4', en: 'Vous avez besoin d’autre chose ?', tr: TR('Is there anything else you need?', 'עוד משהו שאתה צריך?'), he: 'עוד משהו שאתה צריך?' },
     { id: 'c4', who: 'you', en: '', he: '', choices: [
-      { en: 'On m’a facturé deux fois.', tr: TR('I was charged twice.', 'חייבו אותי פעמיים.'), he: 'חייבו אותי פעמיים.', itemId: 'fr.phrase.fix.charged-twice', correct: true, next: 'n5' },
-      { en: 'Pas de problème, merci.', tr: TR('No problem, thank you.', 'אין בעיה, תודה. (רגע — יש טעות בחשבון)'), he: 'אין בעיה, תודה.', itemId: 'fr.phrase.fix.no-problem-thanks', correct: false, next: 'r4' },
+      { en: 'Vous avez quelque chose pour un rhume ?', tr: TR('Do you have something for a cold?', 'יש לכם משהו לצינון?'), he: 'יש לכם משהו לצינון?', itemId: 'fr.phrase.pharm.something-for', correct: true, next: 'n5' },
+      { en: 'Merci !', tr: TR('Thank you!', 'תודה!'), he: 'תודה!', itemId: 'fr.phrase.recovery.thank-you', correct: true, next: 'n5' },
     ] },
-    { id: 'r4', who: 'npc', next: 'c4b', en: 'Tout va bien avec l’addition ?', tr: TR('Is everything alright with the bill?', 'הכל בסדר עם החשבון?'), he: 'הכל בסדר עם החשבון?' },
-    { id: 'c4b', who: 'you', en: '', he: '', choices: [
-      { en: 'On m’a facturé deux fois.', tr: TR('I was charged twice.', 'חייבו אותי פעמיים.'), he: 'חייבו אותי פעמיים.', itemId: 'fr.phrase.fix.charged-twice', correct: true, next: 'n5' },
-    ] },
-    { id: 'n5', who: 'npc', next: 'c5', en: 'Vous avez raison — c’est mon erreur. Je vous rembourse tout de suite.', tr: TR("You're right — my mistake. I'll refund it now.", 'אתה צודק — הטעות שלי. אחזיר לך עכשיו.'), he: 'אתה צודק — הטעות שלי. אחזיר לך עכשיו.' },
-    { id: 'c5', who: 'you', en: '', he: '', choices: [
-      { en: 'Pas de problème, merci.', tr: TR('No problem, thank you.', 'אין בעיה, תודה.'), he: 'אין בעיה, תודה.', itemId: 'fr.phrase.fix.no-problem-thanks', correct: true, next: 'n6' },
-      { en: 'Parlez lentement, s’il vous plaît.', tr: TR('Please speak slowly.', 'דבר לאט, בבקשה.'), he: 'דבר לאט, בבקשה.', itemId: 'fr.phrase.recovery.slowly', correct: true, next: 'r5' },
-    ] },
-    { id: 'r5', who: 'npc', slow: true, next: 'c5b', en: 'Je vous rembourse — ça — tout de suite.', tr: TR("I'll refund — it — now.", 'אחזיר — לך — עכשיו.'), he: 'אחזיר — לך — עכשיו.' },
-    { id: 'c5b', who: 'you', en: '', he: '', choices: [
-      { en: 'Pas de problème, merci.', tr: TR('No problem, thank you.', 'אין בעיה, תודה.'), he: 'אין בעיה, תודה.', itemId: 'fr.phrase.fix.no-problem-thanks', correct: true, next: 'n6' },
-    ] },
-    { id: 'n6', who: 'npc', end: true, en: 'Tout est réglé. Merci de votre patience — la soirée est pour nous !', tr: TR("All fixed. Thank you for your patience — the evening's on us!", 'הכל תוקן. תודה על הסבלנות — הערב עלינו!'), he: 'הכל תוקן. תודה על הסבלנות — הערב עלינו!' },
+    { id: 'n5', who: 'npc', end: true, en: 'Tenez. Bon rétablissement !', tr: TR('Here you go. Feel better soon!', 'הנה לך. תרגיש טוב יותר!'), he: 'הנה לך. תרגיש טוב יותר!' },
   ],
 };
 
 export const DAY25_FR: BootcampDayContent = {
   day: 25,
-  title: T('לתקן בעיה', 'Fixing Problems'),
+  title: T('בית מרקחת ובריאות', 'Pharmacy & Health'),
   items: DAY25_FR_ITEMS,
-  dialogues: { 'fixing-problems': SCENE_FIX },
+  dialogues: { pharmacy: SCENE_PHARMACY },
   steps: [
-    { kind: 'talk', icon: '🛠️', title: T('משימה 25: לתקן בעיה', 'Mission 25: Fixing Problems'),
+    { kind: 'talk', icon: '💊', title: T('משימה 25: בית מרקחת ובריאות', 'Mission 25: Pharmacy & Health'),
       body: [
-        T('דברים משתבשים בטיולים — מנה לא נכונה, חיוב כפול. אתה לא. תקלה היא תסריט, לא משבר.', 'Things go wrong on trips — a wrong dish, a double charge. You don’t. Friction is a script, not a crisis.'),
-        T('ערכת ההישרדות מיום 1 מתבגרת: מתארים בעיה ברוגע, ונותנים להם לפתור אותה.', 'The Day-1 kit grows up: you state a problem calmly, and let them solve it.'),
-      ], cta: T('להתמודד עם התקלה', 'Handle the problem') },
-    { kind: 'tool', itemId: 'fr.phrase.fix.not-ordered', index: 1, total: 4, label: T('לתאר בעיה', 'State the problem') },
-    { kind: 'tool', itemId: 'fr.phrase.fix.theres-mistake', index: 2, total: 4, label: T('פתיח עדין', 'A gentle opener') },
-    { kind: 'tool', itemId: 'fr.phrase.fix.charged-twice', index: 3, total: 4, label: T('בעיה בחשבון', 'A billing problem') },
-    { kind: 'tool', itemId: 'fr.phrase.fix.can-you-fix', index: 4, total: 4, label: T('לבקש פתרון', 'Ask for a fix') },
-    { kind: 'replies', saidItemId: 'fr.phrase.fix.not-ordered',
-      replyIds: ['fr.reply.fix.so-sorry', 'fr.reply.fix.bring-right', 'fr.reply.fix.on-the-house', 'fr.reply.fix.refund-now'] },
-    { kind: 'receipt', text: T('אתה מזהה איך צוות מגיב לתלונה מנומסת — התנצלות, תיקון, פיצוי.', 'You recognize how staff respond to a polite complaint — apology, fix, compensation.') },
-    { kind: 'quiz', itemId: 'fr.reply.fix.bring-right', wrongIds: ['fr.reply.fix.check-bill', 'fr.reply.fix.on-the-house'] },
-    { kind: 'quiz', itemId: 'fr.reply.fix.refund-now', wrongIds: ['fr.reply.fix.so-sorry', 'fr.reply.fix.anything-else'] },
-    { kind: 'dialogue', dialogueId: 'fixing-problems' },
-    { kind: 'receipt', text: T('תיקנת מנה שגויה וחיוב כפול — ברוגע, בנימוס, ויצאת עם ארוחה חינם.', 'You fixed a wrong dish and a double charge — calmly, politely, and walked out with a free meal.') },
+        T('יש מילים שתקווה לא להזדקק להן — אבל אם כן, הן חשובות מאוד.', 'Some words you hope never to need — but if you do, they matter a great deal.'),
+        T('לתאר תסמין, להצהיר על אלרגיה, להבין מינון. גם חולה, אתה מסתדר בכל שפה.', 'Describe a symptom, state an allergy, understand the dosage. Even sick, you manage in any language.'),
+      ], cta: T('להיכנס לבית המרקחת', 'Walk into the pharmacy') },
+    { kind: 'tool', itemId: 'fr.phrase.pharm.headache', index: 1, total: 4, label: T('לתאר תסמין', 'Describe a symptom') },
+    { kind: 'tool', itemId: 'fr.phrase.pharm.something-for', index: 2, total: 4, label: T('לבקש תרופה', 'Ask for a remedy') },
+    { kind: 'tool', itemId: 'fr.phrase.pharm.allergic-penicillin', index: 3, total: 4, label: T('להצהיר על אלרגיה', 'State an allergy') },
+    { kind: 'tool', itemId: 'fr.phrase.pharm.how-often', index: 4, total: 4, label: T('לוודא מינון', 'Confirm the dosage') },
+    { kind: 'replies', saidItemId: 'fr.phrase.pharm.headache',
+      replyIds: ['fr.reply.pharm.whats-matter', 'fr.reply.pharm.any-allergies', 'fr.reply.pharm.take-twice', 'fr.reply.pharm.after-meals'] },
+    { kind: 'receipt', text: T('אתה מזהה את שאלות הרוקח — תסמין, אלרגיות, והוראות מינון.', 'You recognize the pharmacist’s questions — symptom, allergies, and dosage instructions.') },
+    { kind: 'quiz', itemId: 'fr.reply.pharm.take-twice', wrongIds: ['fr.reply.pharm.after-meals', 'fr.reply.pharm.see-doctor'] },
+    { kind: 'quiz', itemId: 'fr.reply.pharm.any-allergies', wrongIds: ['fr.reply.pharm.whats-matter', 'fr.reply.pharm.feel-better'] },
+    { kind: 'dialogue', dialogueId: 'pharmacy' },
+    { kind: 'receipt', text: T('תיארת תסמין, הצהרת על אלרגיה, ווידאת מינון — טיפול בטוח בכל שפה.', 'You described a symptom, stated an allergy, and confirmed the dosage — safe care in any language.') },
     { kind: 'swipe', itemIds: DAY25_FR_ITEMS.map((i) => i.id) },
-    { kind: 'ambush', npc: { en: 'Le responsable dit qu’on ne peut rembourser que sur la carte d’origine — ça vous convient ?', tr: TR('The manager says we can only refund to the original card is that alright with you?', 'המנהל אומר שאפשר להחזיר רק לכרטיס המקורי — זה בסדר מבחינתך?'), he: 'המנהל אומר שאפשר להחזיר רק לכרטיס המקורי — זה בסדר מבחינתך?' },
-      correctItemId: 'fr.phrase.recovery.repeat', wrongItemId: 'fr.phrase.fix.charged-twice' },
-    { kind: 'receipt', text: T('תנאי החזר מפתיע ומהיר — וביקשת שיחזרו עליו לפני שאתה מסכים.', 'A fast, surprise refund condition — and you asked them to repeat it before agreeing.') },
+    { kind: 'ambush', npc: { en: 'Et si ça ne s’améliore pas dans trois jours, il faudra vraiment voir un médecin, d’accord ?', tr: TR("And if it doesn't improve in three days you'll really need to see a doctor okay?", 'ואם זה לא משתפר תוך שלושה ימים, תצטרך באמת לראות רופא, בסדר?'), he: 'ואם זה לא משתפר תוך שלושה ימים, תצטרך באמת לראות רופא, בסדר?' },
+      correctItemId: 'fr.phrase.recovery.slowly', wrongItemId: 'fr.phrase.pharm.headache' },
+    { kind: 'receipt', text: T('הוראת המשך רפואית מהירה — וביקשת שיאט. עם בריאות לא מנחשים.', 'A fast medical follow-up instruction — and you asked them to slow down. With health, you never guess.') },
     { kind: 'summary' },
   ],
 };

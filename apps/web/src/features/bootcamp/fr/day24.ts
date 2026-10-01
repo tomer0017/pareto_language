@@ -1,105 +1,114 @@
 import type { LocalizedText } from '@ready/content-schema';
 import type { BootcampDayContent, BootcampDialogue, BootcampItem } from '../types.js';
 import { recoveryFr } from './recovery.js';
-import { DAY19_FR_ITEMS } from './day19.js';
-import { DAY20_FR_ITEMS } from './day20.js';
-import { DAY23_FR_ITEMS } from './day23.js';
 
 /**
- * French Mission 24 — "Point de contrôle : journée en ville" (City Day Checkpoint). Cold integration,
- * no new content: transport → attraction → chat, cold and chained, reusing days 19, 20 & 23 items.
- * Same structure as English day 24. `tr:{en,he}` glosses; `fr.*` ids. AI-drafted, vous, pending review.
+ * French Mission 24 — "Régler un problème" (Fixing Problems). French parallel of English mission 24:
+ * wrong order, double charge — fixed with grace. Friction is a script, not a crisis. `tr:{en,he}`
+ * glosses; `fr.*` ids. AI-drafted, vous, pending review.
  */
 const T = (he: string, en: string): LocalizedText => ({ he, en });
 const TR = (en: string, he: string): LocalizedText => ({ en, he });
 
-const byId = new Map([...DAY19_FR_ITEMS, ...DAY20_FR_ITEMS, ...DAY23_FR_ITEMS].map((i) => [i.id, i]));
-const pick = (...ids: string[]): BootcampItem[] => ids.map((id) => byId.get(id)!).filter(Boolean);
-
 export const DAY24_FR_ITEMS: BootcampItem[] = [
-  ...pick(
-    'fr.phrase.trans.one-ticket', 'fr.phrase.trans.does-stop',
-    'fr.phrase.attr.two-tickets', 'fr.phrase.attr.discount',
-    'fr.phrase.talk.beautiful-place', 'fr.phrase.talk.recommend-place',
-  ),
+  // say
+  { id: 'fr.phrase.fix.not-ordered', text: 'Ce n’est pas ce que j’ai commandé.', meaning: T('זה לא מה שהזמנתי.', "This isn't what I ordered."),
+    tip: T('רגוע ועובדתי — לא ריב. מתארים, לא מאשימים.', 'Calm and factual — not a fight. You describe, you don’t accuse.') },
+  { id: 'fr.phrase.fix.theres-mistake', text: 'Je crois qu’il y a une erreur.', meaning: T('אני חושב שיש טעות.', "I think there's a mistake."),
+    tip: T('הפתיח העדין לכל בעיה. פותח דלת במקום להרים קול.', 'The gentle opener for any problem. Opens a door instead of raising a voice.') },
+  { id: 'fr.phrase.fix.charged-twice', text: 'On m’a facturé deux fois.', meaning: T('חייבו אותי פעמיים.', 'I was charged twice.') },
+  { id: 'fr.phrase.fix.can-you-fix', text: 'Vous pouvez arranger ça ?', meaning: T('אפשר לתקן את זה?', 'Can you fix it?') },
+  { id: 'fr.phrase.fix.no-problem-thanks', text: 'Pas de problème, merci.', meaning: T('אין בעיה, תודה.', 'No problem, thank you.'),
+    tip: T('סוגר תקלה בחן. השארת אותם עם חיוך, לא עם מתח.', 'Closes friction with grace. You leave them with a smile, not tension.') },
+  // hear — staff solutions
+  { id: 'fr.reply.fix.so-sorry', text: 'Je suis vraiment désolé.', meaning: T('אני מצטער על זה מאוד.', "I'm so sorry about that.") },
+  { id: 'fr.reply.fix.bring-right', text: 'Je vous apporte le bon.', meaning: T('אביא את הנכון.', "I'll bring the right one.") },
+  { id: 'fr.reply.fix.check-bill', text: 'Laissez-moi vérifier l’addition.', meaning: T('תן לי לבדוק את החשבון.', 'Let me check the bill.') },
+  { id: 'fr.reply.fix.refund-now', text: 'Je vous rembourse tout de suite.', meaning: T('אחזיר לך את הכסף עכשיו.', "I'll refund it now.") },
+  { id: 'fr.reply.fix.on-the-house', text: 'C’est offert par la maison.', meaning: T('זה על חשבון הבית.', "It's on the house.") },
+  { id: 'fr.reply.fix.anything-else', text: 'Il y a autre chose ?', meaning: T('יש עוד משהו?', 'Is there anything else?') },
   ...recoveryFr('fr.phrase.recovery.repeat', 'fr.phrase.recovery.slowly', 'fr.phrase.recovery.thank-you'),
 ];
 
-const COLD_TRANSPORT: BootcampDialogue = {
-  id: 'cold-transport',
+const SCENE_FIX: BootcampDialogue = {
+  id: 'fixing-problems',
   start: 'n1',
   nodes: [
-    { id: 'n1', who: 'npc', fast: true, next: 'c1', en: 'Vous allez où ?', tr: TR('Where are you headed?', 'לאן אתה נוסע?'), he: 'לאן אתה נוסע?' },
+    { id: 'n1', who: 'npc', next: 'c1', en: 'Voici votre plat — un steak !', tr: TR("Here's your meal — one steak!", 'הנה הארוחה שלך — סטייק אחד!'), he: 'הנה הארוחה שלך — סטייק אחד!' },
     { id: 'c1', who: 'you', en: '', he: '', choices: [
-      { en: 'Un billet pour le centre, s’il vous plaît.', tr: TR('One ticket to the center, please.', 'כרטיס אחד למרכז, בבקשה.'), he: 'כרטיס אחד למרכז, בבקשה.', itemId: 'fr.phrase.trans.one-ticket', correct: true, next: 'n2' },
-      { en: 'Parlez lentement, s’il vous plaît.', tr: TR('Please speak slowly.', 'דבר לאט, בבקשה.'), he: 'דבר לאט, בבקשה.', itemId: 'fr.phrase.recovery.slowly', correct: true, next: 'n2' },
+      { en: 'Ce n’est pas ce que j’ai commandé.', tr: TR("This isn't what I ordered.", 'זה לא מה שהזמנתי.'), he: 'זה לא מה שהזמנתי.', itemId: 'fr.phrase.fix.not-ordered', correct: true, next: 'n2' },
+      { en: 'Parlez lentement, s’il vous plaît.', tr: TR('Please speak slowly.', 'דבר לאט, בבקשה.'), he: 'דבר לאט, בבקשה.', itemId: 'fr.phrase.recovery.slowly', correct: true, next: 'r1' },
     ] },
-    { id: 'n2', who: 'npc', fast: true, next: 'c2', en: 'Quai numéro deux, ça part dans cinq minutes.', tr: TR('Platform two, leaves in five minutes.', 'רציף שתיים, יוצא בעוד חמש דקות.'), he: 'רציף שתיים, יוצא בעוד חמש דקות.' },
+    { id: 'r1', who: 'npc', slow: true, next: 'c1b', en: 'Voici — votre — steak !', tr: TR("Here's — your — steak!", 'הנה — הסטייק — שלך!'), he: 'הנה — הסטייק — שלך!' },
+    { id: 'c1b', who: 'you', en: '', he: '', choices: [
+      { en: 'Ce n’est pas ce que j’ai commandé.', tr: TR("This isn't what I ordered.", 'זה לא מה שהזמנתי.'), he: 'זה לא מה שהזמנתי.', itemId: 'fr.phrase.fix.not-ordered', correct: true, next: 'n2' },
+    ] },
+    { id: 'n2', who: 'npc', next: 'c2', en: 'Oh non, je suis vraiment désolé ! Vous aviez commandé quoi ?', tr: TR("Oh no, I'm so sorry! What did you order?", 'אוי לא, אני מצטער מאוד! מה הזמנת?'), he: 'אוי לא, אני מצטער מאוד! מה הזמנת?' },
     { id: 'c2', who: 'you', en: '', he: '', choices: [
-      { en: 'Ça s’arrête au musée ?', tr: TR('Does this stop at the museum?', 'זה עוצר במוזיאון?'), he: 'זה עוצר במוזיאון?', itemId: 'fr.phrase.trans.does-stop', correct: true, next: 'n3' },
-      { en: 'Vous pouvez répéter ?', tr: TR('Can you repeat that?', 'אפשר לחזור על זה?'), he: 'אפשר לחזור על זה?', itemId: 'fr.phrase.recovery.repeat', correct: true, next: 'n3' },
+      { en: 'Vous pouvez arranger ça ?', tr: TR('Can you fix it?', 'אפשר לתקן את זה?'), he: 'אפשר לתקן את זה?', itemId: 'fr.phrase.fix.can-you-fix', correct: true, next: 'n3' },
+      { en: 'Je crois qu’il y a une erreur.', tr: TR("I think there's a mistake.", 'אני חושב שיש טעות.'), he: 'אני חושב שיש טעות.', itemId: 'fr.phrase.fix.theres-mistake', correct: true, next: 'n2b' },
     ] },
-    { id: 'n3', who: 'npc', end: true, en: 'Oui — trois arrêts. Bonne journée !', tr: TR('Yep — three stops. Enjoy!', 'כן — שלוש תחנות. תיהנה!'), he: 'כן — שלוש תחנות. תיהנה!' },
-  ],
-};
-
-const COLD_ATTRACTION: BootcampDialogue = {
-  id: 'cold-attraction',
-  start: 'n1',
-  nodes: [
-    { id: 'n1', who: 'npc', next: 'c1', en: 'Bienvenue ! Combien de billets ?', tr: TR('Welcome! How many tickets?', 'ברוך הבא! כמה כרטיסים?'), he: 'ברוך הבא! כמה כרטיסים?' },
-    { id: 'c1', who: 'you', en: '', he: '', choices: [
-      { en: 'Deux billets, s’il vous plaît.', tr: TR('Two tickets, please.', 'שני כרטיסים, בבקשה.'), he: 'שני כרטיסים, בבקשה.', itemId: 'fr.phrase.attr.two-tickets', correct: true, next: 'n2' },
-      { en: 'Vous pouvez répéter ?', tr: TR('Can you repeat that?', 'אפשר לחזור על זה?'), he: 'אפשר לחזור על זה?', itemId: 'fr.phrase.recovery.repeat', correct: true, next: 'n2' },
+    { id: 'n2b', who: 'npc', next: 'c2b', en: 'Vous avez raison, il y a eu une confusion — je vais arranger ça.', tr: TR("You're right, there's been a mix-up — I'll sort it out.", 'אתה צודק, הייתה אי-הבנה — אני אסדר את זה.'), he: 'אתה צודק, הייתה אי-הבנה — אני אסדר את זה.' },
+    { id: 'c2b', who: 'you', en: '', he: '', choices: [
+      { en: 'Vous pouvez arranger ça ?', tr: TR('Can you fix it?', 'אפשר לתקן את זה?'), he: 'אפשר לתקן את זה?', itemId: 'fr.phrase.fix.can-you-fix', correct: true, next: 'n3' },
     ] },
-    { id: 'n2', who: 'npc', fast: true, next: 'c2', en: 'Vingt euros. On ouvre à neuf heures, dernière entrée à dix-sept heures.', tr: TR('Twenty euros. We open at nine, last entry at five.', 'עשרים יורו. פותחים בתשע, כניסה אחרונה בחמש.'), he: 'עשרים יורו. פותחים בתשע, כניסה אחרונה בחמש.' },
-    { id: 'c2', who: 'you', en: '', he: '', choices: [
-      { en: 'Il y a une réduction ?', tr: TR('Is there a discount?', 'יש הנחה?'), he: 'יש הנחה?', itemId: 'fr.phrase.attr.discount', correct: true, next: 'n3' },
-      { en: 'Merci !', tr: TR('Thank you!', 'תודה!'), he: 'תודה!', itemId: 'fr.phrase.recovery.thank-you', correct: true, next: 'n3' },
+    { id: 'n3', who: 'npc', next: 'c3', en: 'Bien sûr — je vous apporte le bon tout de suite. Et c’est offert par la maison.', tr: TR("Of course — I'll bring the right one right away. And it's on the house.", 'כמובן — אביא את הנכון מיד. וזה על חשבון הבית.'), he: 'כמובן — אביא את הנכון מיד. וזה על חשבון הבית.' },
+    { id: 'c3', who: 'you', en: '', he: '', choices: [
+      { en: 'Merci !', tr: TR('Thank you!', 'תודה!'), he: 'תודה!', itemId: 'fr.phrase.recovery.thank-you', correct: true, next: 'n4' },
+      { en: 'Vous pouvez répéter ?', tr: TR('Can you repeat that?', 'אפשר לחזור על זה?'), he: 'אפשר לחזור על זה?', itemId: 'fr.phrase.recovery.repeat', correct: true, next: 'r3' },
     ] },
-    { id: 'n3', who: 'npc', end: true, en: 'Les étudiants paient demi-tarif. Bonne visite du musée !', tr: TR('Students get half price. Enjoy the museum!', 'סטודנטים חצי מחיר. תיהנה במוזיאון!'), he: 'סטודנטים חצי מחיר. תיהנה במוזיאון!' },
-  ],
-};
-
-const COLD_CHAT: BootcampDialogue = {
-  id: 'cold-chat',
-  start: 'n1',
-  nodes: [
-    { id: 'n1', who: 'npc', next: 'c1', en: 'Belle journée ! Vous venez d’où ?', tr: TR('Beautiful day! Where are you from?', 'יום יפה! מאיפה אתה?'), he: 'יום יפה! מאיפה אתה?' },
-    { id: 'c1', who: 'you', en: '', he: '', choices: [
-      { en: 'Cet endroit est magnifique.', tr: TR('This place is beautiful.', 'המקום הזה יפהפה.'), he: 'המקום הזה יפהפה.', itemId: 'fr.phrase.talk.beautiful-place', correct: true, next: 'n2' },
-      { en: 'Parlez lentement, s’il vous plaît.', tr: TR('Please speak slowly.', 'דבר לאט, בבקשה.'), he: 'דבר לאט, בבקשה.', itemId: 'fr.phrase.recovery.slowly', correct: true, next: 'n2' },
+    { id: 'r3', who: 'npc', slow: true, next: 'c3b', en: 'C’est — offert — par la maison.', tr: TR("It's — on — the house.", 'זה — על — חשבון הבית.'), he: 'זה — על — חשבון הבית.' },
+    { id: 'c3b', who: 'you', en: '', he: '', choices: [
+      { en: 'Merci !', tr: TR('Thank you!', 'תודה!'), he: 'תודה!', itemId: 'fr.phrase.recovery.thank-you', correct: true, next: 'n4' },
     ] },
-    { id: 'n2', who: 'npc', next: 'c2', en: 'Première fois ici ? Vous devriez essayer la vieille ville.', tr: TR('First time here? You should try the old town.', 'פעם ראשונה כאן? כדאי לך לנסות את העיר העתיקה.'), he: 'פעם ראשונה כאן? כדאי לך לנסות את העיר העתיקה.' },
-    { id: 'c2', who: 'you', en: '', he: '', choices: [
-      { en: 'Vous pouvez recommander un endroit ?', tr: TR('Can you recommend a place?', 'אתה יכול להמליץ על מקום?'), he: 'אתה יכול להמליץ על מקום?', itemId: 'fr.phrase.talk.recommend-place', correct: true, next: 'n3' },
-      { en: 'Merci !', tr: TR('Thank you!', 'תודה!'), he: 'תודה!', itemId: 'fr.phrase.recovery.thank-you', correct: true, next: 'n3' },
+    { id: 'n4', who: 'npc', next: 'c4', en: 'Voici votre addition pour ce soir.', tr: TR("Here's your bill for this evening.", 'הנה החשבון לערב.'), he: 'הנה החשבון לערב.' },
+    { id: 'c4', who: 'you', en: '', he: '', choices: [
+      { en: 'On m’a facturé deux fois.', tr: TR('I was charged twice.', 'חייבו אותי פעמיים.'), he: 'חייבו אותי פעמיים.', itemId: 'fr.phrase.fix.charged-twice', correct: true, next: 'n5' },
+      { en: 'Pas de problème, merci.', tr: TR('No problem, thank you.', 'אין בעיה, תודה. (רגע — יש טעות בחשבון)'), he: 'אין בעיה, תודה.', itemId: 'fr.phrase.fix.no-problem-thanks', correct: false, next: 'r4' },
     ] },
-    { id: 'n3', who: 'npc', end: true, en: '« Mama Rosa » — dites-lui que je vous envoie. Bon voyage !', tr: TR("'Mama Rosa' — tell her I sent you. Enjoy your trip!", "'מאמא רוזה' — תגיד שאני שלחתי. תיהנה מהטיול!"), he: "'מאמא רוזה' — תגיד שאני שלחתי. תיהנה מהטיול!" },
+    { id: 'r4', who: 'npc', next: 'c4b', en: 'Tout va bien avec l’addition ?', tr: TR('Is everything alright with the bill?', 'הכל בסדר עם החשבון?'), he: 'הכל בסדר עם החשבון?' },
+    { id: 'c4b', who: 'you', en: '', he: '', choices: [
+      { en: 'On m’a facturé deux fois.', tr: TR('I was charged twice.', 'חייבו אותי פעמיים.'), he: 'חייבו אותי פעמיים.', itemId: 'fr.phrase.fix.charged-twice', correct: true, next: 'n5' },
+    ] },
+    { id: 'n5', who: 'npc', next: 'c5', en: 'Vous avez raison — c’est mon erreur. Je vous rembourse tout de suite.', tr: TR("You're right — my mistake. I'll refund it now.", 'אתה צודק — הטעות שלי. אחזיר לך עכשיו.'), he: 'אתה צודק — הטעות שלי. אחזיר לך עכשיו.' },
+    { id: 'c5', who: 'you', en: '', he: '', choices: [
+      { en: 'Pas de problème, merci.', tr: TR('No problem, thank you.', 'אין בעיה, תודה.'), he: 'אין בעיה, תודה.', itemId: 'fr.phrase.fix.no-problem-thanks', correct: true, next: 'n6' },
+      { en: 'Parlez lentement, s’il vous plaît.', tr: TR('Please speak slowly.', 'דבר לאט, בבקשה.'), he: 'דבר לאט, בבקשה.', itemId: 'fr.phrase.recovery.slowly', correct: true, next: 'r5' },
+    ] },
+    { id: 'r5', who: 'npc', slow: true, next: 'c5b', en: 'Je vous rembourse — ça — tout de suite.', tr: TR("I'll refund — it — now.", 'אחזיר — לך — עכשיו.'), he: 'אחזיר — לך — עכשיו.' },
+    { id: 'c5b', who: 'you', en: '', he: '', choices: [
+      { en: 'Pas de problème, merci.', tr: TR('No problem, thank you.', 'אין בעיה, תודה.'), he: 'אין בעיה, תודה.', itemId: 'fr.phrase.fix.no-problem-thanks', correct: true, next: 'n6' },
+    ] },
+    { id: 'n6', who: 'npc', end: true, en: 'Tout est réglé. Merci de votre patience — la soirée est pour nous !', tr: TR("All fixed. Thank you for your patience — the evening's on us!", 'הכל תוקן. תודה על הסבלנות — הערב עלינו!'), he: 'הכל תוקן. תודה על הסבלנות — הערב עלינו!' },
   ],
 };
 
 export const DAY24_FR: BootcampDayContent = {
   day: 24,
-  title: T('נקודת ביקורת: יום עיר', 'CHECKPOINT: City Day'),
+  title: T('לתקן בעיה', 'Fixing Problems'),
   items: DAY24_FR_ITEMS,
-  dialogues: { 'cold-transport': COLD_TRANSPORT, 'cold-attraction': COLD_ATTRACTION, 'cold-chat': COLD_CHAT },
+  dialogues: { 'fixing-problems': SCENE_FIX },
   steps: [
-    { kind: 'talk', icon: '🏙️', title: T('נקודת ביקורת: יום עיר', 'Checkpoint: City Day'),
+    { kind: 'talk', icon: '🛠️', title: T('משימה 24: לתקן בעיה', 'Mission 24: Fixing Problems'),
       body: [
-        T('אין חומר חדש. רק הוכחה — יום שלם בעיר זרה, לבד.', 'No new material. Just proof — a full day in a foreign city, alone.'),
-        T('תחבורה, אטרקציה, שיחה עם מקומי. הכל קר, ברצף, עם החלפת הקשר בין רגע לרגע.', 'Transport, an attraction, a chat with a local. All cold, chained, switching context from moment to moment.'),
-      ], cta: T('לצאת ליום בעיר', 'Head out into the city') },
-    { kind: 'dialogue', dialogueId: 'cold-transport' },
-    { kind: 'receipt', text: T('שרדת תחבורה ציבורית בקור — כרטיס, רציף, יעד.', 'You survived public transport cold — ticket, platform, destination.') },
-    { kind: 'ambush', npc: { en: 'Changement de plan, c’est maintenant le quai quatre — dépêchez-vous !', tr: TR("Change of plan that platform's now platform four — better hurry along!", 'שינוי — הרציף עכשיו רציף ארבע — כדאי שתמהר!'), he: 'שינוי — הרציף עכשיו רציף ארבע — כדאי שתמהר!' },
-      correctItemId: 'fr.phrase.recovery.repeat', wrongItemId: 'fr.phrase.trans.does-stop' },
-    { kind: 'dialogue', dialogueId: 'cold-attraction' },
-    { kind: 'receipt', text: T('שרדת קופת אטרקציה בקור — כרטיסים, שעות, הנחה.', 'You survived an attraction desk cold — tickets, hours, discount.') },
-    { kind: 'ambush', npc: { en: 'La visite guidée en anglais commence en fait dans deux minutes — vous voulez la rejoindre ?', tr: TR('The English guided tour actually starts in two minutes would you like to join it?', 'הסיור המודרך באנגלית מתחיל בעצם בעוד שתי דקות — תרצה להצטרף?'), he: 'הסיור המודרך באנגלית מתחיל בעצם בעוד שתי דקות — תרצה להצטרף?' },
-      correctItemId: 'fr.phrase.recovery.slowly', wrongItemId: 'fr.phrase.attr.discount' },
-    { kind: 'dialogue', dialogueId: 'cold-chat' },
-    { kind: 'receipt', text: T('יום עיר שלם — תחבורה, אטרקציה, ושיחה — בקור. עיר זרה נהייתה מגרש ביתי.', 'A full city day — transport, attraction, and a chat — cold. A foreign city became home turf.') },
+        T('דברים משתבשים בטיולים — מנה לא נכונה, חיוב כפול. אתה לא. תקלה היא תסריט, לא משבר.', 'Things go wrong on trips — a wrong dish, a double charge. You don’t. Friction is a script, not a crisis.'),
+        T('ערכת ההישרדות מתבגרת: מתארים בעיה ברוגע, ונותנים להם לפתור אותה.', 'The recovery kit grows up: you state a problem calmly, and let them solve it.'),
+      ], cta: T('להתמודד עם התקלה', 'Handle the problem') },
+    { kind: 'tool', itemId: 'fr.phrase.fix.not-ordered', index: 1, total: 4, label: T('לתאר בעיה', 'State the problem') },
+    { kind: 'tool', itemId: 'fr.phrase.fix.theres-mistake', index: 2, total: 4, label: T('פתיח עדין', 'A gentle opener') },
+    { kind: 'tool', itemId: 'fr.phrase.fix.charged-twice', index: 3, total: 4, label: T('בעיה בחשבון', 'A billing problem') },
+    { kind: 'tool', itemId: 'fr.phrase.fix.can-you-fix', index: 4, total: 4, label: T('לבקש פתרון', 'Ask for a fix') },
+    { kind: 'replies', saidItemId: 'fr.phrase.fix.not-ordered',
+      replyIds: ['fr.reply.fix.so-sorry', 'fr.reply.fix.bring-right', 'fr.reply.fix.on-the-house', 'fr.reply.fix.refund-now'] },
+    { kind: 'receipt', text: T('אתה מזהה איך צוות מגיב לתלונה מנומסת — התנצלות, תיקון, פיצוי.', 'You recognize how staff respond to a polite complaint — apology, fix, compensation.') },
+    { kind: 'quiz', itemId: 'fr.reply.fix.bring-right', wrongIds: ['fr.reply.fix.check-bill', 'fr.reply.fix.on-the-house'] },
+    { kind: 'quiz', itemId: 'fr.reply.fix.refund-now', wrongIds: ['fr.reply.fix.so-sorry', 'fr.reply.fix.anything-else'] },
+    { kind: 'dialogue', dialogueId: 'fixing-problems' },
+    { kind: 'receipt', text: T('תיקנת מנה שגויה וחיוב כפול — ברוגע, בנימוס, ויצאת עם ארוחה חינם.', 'You fixed a wrong dish and a double charge — calmly, politely, and walked out with a free meal.') },
+    { kind: 'swipe', itemIds: DAY24_FR_ITEMS.map((i) => i.id) },
+    { kind: 'ambush', npc: { en: 'Le responsable dit qu’on ne peut rembourser que sur la carte d’origine — ça vous convient ?', tr: TR('The manager says we can only refund to the original card is that alright with you?', 'המנהל אומר שאפשר להחזיר רק לכרטיס המקורי — זה בסדר מבחינתך?'), he: 'המנהל אומר שאפשר להחזיר רק לכרטיס המקורי — זה בסדר מבחינתך?' },
+      correctItemId: 'fr.phrase.recovery.repeat', wrongItemId: 'fr.phrase.fix.charged-twice' },
+    { kind: 'receipt', text: T('תנאי החזר מפתיע ומהיר — וביקשת שיחזרו עליו לפני שאתה מסכים.', 'A fast, surprise refund condition — and you asked them to repeat it before agreeing.') },
     { kind: 'summary' },
   ],
 };

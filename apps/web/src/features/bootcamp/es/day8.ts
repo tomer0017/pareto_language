@@ -3,94 +3,93 @@ import type { BootcampDayContent, BootcampDialogue, BootcampItem } from '../type
 import { recoveryEs } from './recovery.js';
 
 /**
- * Spanish Mission 8 — "Registro en el hotel" (Hotel Check-in). Spanish parallel of English day 8:
- * same objective (reservation → passport → key → floor → breakfast), same step structure, same
- * engine. Spanish target lines + `tr:{en,he}` glosses; `es.*` ids. AI-drafted, pending review.
+ * Spanish Mission 8 — "Compras" (Shopping). Spanish parallel of English mission 8: same objective (browse,
+ * try, decide, pay — in control), same step structure, same engine. Spanish target lines +
+ * `tr:{en,he}` glosses; `es.*` ids. No Spanish video yet. AI-drafted, pending review.
  */
 const T = (he: string, en: string): LocalizedText => ({ he, en });
 const TR = (en: string, he: string): LocalizedText => ({ en, he });
 
 export const DAY8_ES_ITEMS: BootcampItem[] = [
-  { id: 'es.phrase.hotel.reservation', text: 'Tengo una reserva.', meaning: T('יש לי הזמנה.', 'I have a reservation.'),
-    tip: T('הפתיח לדלפק המלון. תבנית: Tengo una ___.', 'The front-desk opener. Template: Tengo una ___.') },
-  { id: 'es.phrase.hotel.under-name', text: 'A nombre de Cohen.', meaning: T('על השם כהן.', 'Under the name Cohen.') },
-  { id: 'es.phrase.hotel.two-nights', text: 'Para dos noches.', meaning: T('לשני לילות.', 'For two nights.'),
-    tip: T('תבנית: Para ___ noches — משך השהות.', 'Template: Para ___ noches — the length of your stay.') },
-  { id: 'es.phrase.hotel.breakfast', text: '¿El desayuno está incluido?', meaning: T('ארוחת הבוקר כלולה?', 'Is breakfast included?') },
-  { id: 'es.phrase.hotel.wifi', text: '¿Cuál es la contraseña del wifi?', meaning: T('מה סיסמת הוויי-פיי?', "What's the wifi password?") },
+  { id: 'es.phrase.shop.just-looking', text: 'Solo estoy mirando, gracias.', meaning: T('אני רק מסתכל, תודה.', "I'm just looking, thanks."),
+    tip: T('משפט שקונה לך מרחב בלי לחץ מוכר.', 'A phrase that buys you space from a pushy seller.') },
+  { id: 'es.phrase.shop.try-on', text: '¿Puedo probarme esto?', meaning: T('אפשר למדוד את זה?', 'Can I try this on?') },
+  { id: 'es.phrase.shop.bigger', text: '¿Tiene una talla más grande?', meaning: T('יש מידה גדולה יותר?', 'Do you have a bigger size?'),
+    tip: T('תבנית: ¿Tiene una talla más ___ ? (grande/pequeña).', 'Template: ¿Tiene una talla más ___ ? (bigger/smaller).') },
+  { id: 'es.phrase.shop.take-it', text: 'Me lo llevo.', meaning: T('אני אקח את זה.', "I'll take it."),
+    tip: T('החלטת? שתי מילים סוגרות עסקה.', 'Decided? Two words close the deal.') },
+  { id: 'es.phrase.shop.too-expensive', text: 'Es un poco caro.', meaning: T('זה קצת יקר.', "It's a bit expensive."),
+    tip: T('פתח מנומס להנחה או לחלופה זולה יותר.', 'A polite opening for a discount or a cheaper option.') },
   // hear
-  { id: 'es.reply.hotel.passport', text: 'Su pasaporte, por favor.', meaning: T('הדרכון שלך, בבקשה.', 'Your passport, please.') },
-  { id: 'es.reply.hotel.sign-here', text: 'Firme aquí, por favor.', meaning: T('תחתום כאן, בבקשה.', 'Sign here, please.') },
-  { id: 'es.reply.hotel.room-number', text: 'Está en la habitación doscientos cuatro.', meaning: T('אתה בחדר 204.', "You're in room two-oh-four.") },
-  { id: 'es.reply.hotel.second-floor', text: 'Está en el segundo piso.', meaning: T('זה בקומה השנייה.', "It's on the second floor.") },
-  { id: 'es.reply.hotel.breakfast-time', text: 'El desayuno es de siete a diez.', meaning: T('ארוחת בוקר משבע עד עשר.', 'Breakfast is from seven to ten.') },
-  { id: 'es.reply.hotel.elevator', text: 'El ascensor está a su derecha.', meaning: T('המעלית מימינך.', 'The elevator is on your right.') },
-  ...recoveryEs('es.phrase.recovery.repeat', 'es.phrase.recovery.slowly', 'es.phrase.recovery.thank-you', 'es.phrase.recovery.one-moment'),
+  { id: 'es.reply.shop.can-i-help', text: '¿Le ayudo a encontrar algo?', meaning: T('אפשר לעזור לך למצוא משהו?', 'Can I help you find anything?') },
+  { id: 'es.reply.shop.what-size', text: '¿Qué talla usa?', meaning: T('איזו מידה אתה?', 'What size are you?') },
+  { id: 'es.reply.shop.fitting-room', text: 'El probador está allí.', meaning: T('חדר ההלבשה שם.', 'The fitting room is over there.') },
+  { id: 'es.reply.shop.out-of-stock', text: 'Lo siento, está agotado.', meaning: T('סליחה, זה אזל מהמלאי.', "Sorry, that's out of stock.") },
+  { id: 'es.reply.shop.on-sale', text: 'Está rebajado — un veinte por ciento de descuento.', meaning: T('זה במבצע — עשרים אחוז הנחה.', "It's on sale — twenty percent off.") },
+  { id: 'es.reply.shop.anything-else', text: '¿Algo más para hoy?', meaning: T('עוד משהו היום?', 'Anything else for you today?') },
+  ...recoveryEs('es.phrase.recovery.slowly', 'es.phrase.recovery.repeat', 'es.phrase.recovery.thank-you', 'es.phrase.recovery.show-me'),
 ];
 
 const SCENE: BootcampDialogue = {
-  id: 'hotel-checkin',
+  id: 'clothing-shop',
   start: 'n1',
   nodes: [
-    { id: 'n1', who: 'npc', next: 'c1', en: '¡Buenas noches! ¿En qué puedo ayudarle?', tr: TR('Good evening! How can I help you?', 'ערב טוב! איך אפשר לעזור?'), he: 'ערב טוב! איך אפשר לעזור?' },
+    { id: 'n1', who: 'npc', next: 'c1', en: '¡Hola! ¿Le ayudo a encontrar algo?', tr: TR('Hi there! Can I help you find anything?', 'היי! אפשר לעזור לך למצוא משהו?'), he: 'היי! אפשר לעזור לך למצוא משהו?' },
     { id: 'c1', who: 'you', en: '', he: '', choices: [
-      { en: 'Tengo una reserva, a nombre de Cohen.', tr: TR('I have a reservation, under the name Cohen.', 'יש לי הזמנה, על השם כהן.'), he: 'יש לי הזמנה, על השם כהן.', itemId: 'es.phrase.hotel.reservation', correct: true, next: 'n2' },
-      { en: '¿Puede repetir, por favor?', tr: TR('Can you repeat that?', 'אפשר לחזור על זה?'), he: 'אפשר לחזור על זה?', itemId: 'es.phrase.recovery.repeat', correct: true, next: 'r1' },
+      { en: 'Solo estoy mirando, gracias.', tr: TR("I'm just looking, thanks.", 'אני רק מסתכל, תודה.'), he: 'אני רק מסתכל, תודה.', itemId: 'es.phrase.shop.just-looking', correct: true, next: 'n2' },
+      { en: '¿Puedo probarme esto?', tr: TR('Can I try this on?', 'אפשר למדוד את זה?'), he: 'אפשר למדוד את זה?', itemId: 'es.phrase.shop.try-on', correct: true, next: 'n3' },
     ] },
-    { id: 'r1', who: 'npc', slow: true, next: 'c1b', en: '¿En — qué — puedo — ayudarle?', tr: TR('How — can — I — help you?', 'איך — אפשר — לעזור — לך?'), he: 'איך — אפשר — לעזור — לך?' },
+    { id: 'n2', who: 'npc', next: 'c1b', en: 'Claro, tómese su tiempo. Avíseme si necesita ayuda.', tr: TR('Of course, take your time. Let me know if you need a hand.', 'כמובן, קח את הזמן. תגיד אם אתה צריך עזרה.'), he: 'כמובן, קח את הזמן. תגיד אם אתה צריך עזרה.' },
     { id: 'c1b', who: 'you', en: '', he: '', choices: [
-      { en: 'Tengo una reserva, a nombre de Cohen.', tr: TR('I have a reservation, under the name Cohen.', 'יש לי הזמנה, על השם כהן.'), he: 'יש לי הזמנה, על השם כהן.', itemId: 'es.phrase.hotel.reservation', correct: true, next: 'n2' },
+      { en: '¿Puedo probarme esto?', tr: TR('Can I try this on?', 'אפשר למדוד את זה?'), he: 'אפשר למדוד את זה?', itemId: 'es.phrase.shop.try-on', correct: true, next: 'n3' },
     ] },
-    { id: 'n2', who: 'npc', next: 'c2', en: 'Bienvenido, señor Cohen. Su pasaporte, por favor.', tr: TR('Welcome, Mr. Cohen. Your passport, please.', 'ברוך הבא, מר כהן. הדרכון שלך, בבקשה.'), he: 'ברוך הבא, מר כהן. הדרכון שלך, בבקשה.' },
+    { id: 'n3', who: 'npc', fast: true, next: 'c2', en: '¡Claro! ¿Qué talla usa? El probador está allí.', tr: TR('Sure! What size are you? The fitting room is over there.', 'בטח! איזו מידה אתה? חדר ההלבשה שם.'), he: 'בטח! איזו מידה אתה? חדר ההלבשה שם.' },
     { id: 'c2', who: 'you', en: '', he: '', choices: [
-      { en: 'Aquí tiene.', tr: TR('Here you go.', 'בבקשה, הנה.'), he: 'בבקשה, הנה.', correct: true, next: 'n3' },
-      { en: 'Un momento, por favor.', tr: TR('One moment, please.', 'רגע אחד, בבקשה.'), he: 'רגע אחד, בבקשה.', itemId: 'es.phrase.recovery.one-moment', correct: true, next: 'n3' },
+      { en: '¿Tiene una talla más grande?', tr: TR('Do you have a bigger size?', 'יש מידה גדולה יותר?'), he: 'יש מידה גדולה יותר?', itemId: 'es.phrase.shop.bigger', correct: true, next: 'n4' },
+      { en: 'Más despacio, por favor.', tr: TR('Please speak slowly.', 'דבר לאט, בבקשה.'), he: 'דבר לאט, בבקשה.', itemId: 'es.phrase.recovery.slowly', correct: true, next: 'r2' },
     ] },
-    { id: 'n3', who: 'npc', fast: true, next: 'c3', en: 'Gracias. Está en la habitación doscientos cuatro, en el segundo piso. ¿El desayuno está incluido en su reserva?', tr: TR("Thank you. You're in room two-oh-four, on the second floor. Is breakfast included in your booking?", 'תודה. אתה בחדר 204, בקומה השנייה. ארוחת בוקר כלולה בהזמנה שלך?'), he: 'תודה. אתה בחדר 204, בקומה השנייה. ארוחת בוקר כלולה בהזמנה שלך?' },
+    { id: 'r2', who: 'npc', slow: true, next: 'c2b', en: '¿Qué — talla? El probador — allí.', tr: TR('What — size? Fitting room — there.', 'איזו — מידה? חדר הלבשה — שם.'), he: 'איזו — מידה? חדר הלבשה — שם.' },
+    { id: 'c2b', who: 'you', en: '', he: '', choices: [
+      { en: '¿Tiene una talla más grande?', tr: TR('Do you have a bigger size?', 'יש מידה גדולה יותר?'), he: 'יש מידה גדולה יותר?', itemId: 'es.phrase.shop.bigger', correct: true, next: 'n4' },
+    ] },
+    { id: 'n4', who: 'npc', next: 'c3', en: 'Aquí tiene, una talla más. Y buena noticia — ¡está rebajado, un veinte por ciento de descuento!', tr: TR("Here you go, one size up. And good news — it's on sale, twenty percent off!", 'הנה, מידה אחת גדולה יותר. ובשורה טובה — זה במבצע, עשרים אחוז הנחה!'), he: 'הנה, מידה אחת גדולה יותר. ובשורה טובה — זה במבצע, עשרים אחוז הנחה!' },
     { id: 'c3', who: 'you', en: '', he: '', choices: [
-      { en: '¿El desayuno está incluido?', tr: TR('Is breakfast included?', 'ארוחת הבוקר כלולה?'), he: 'ארוחת הבוקר כלולה?', itemId: 'es.phrase.hotel.breakfast', correct: true, next: 'n4' },
-      { en: '¿Cuál es la contraseña del wifi?', tr: TR("What's the wifi password?", 'מה סיסמת הוויי-פיי?'), he: 'מה סיסמת הוויי-פיי?', itemId: 'es.phrase.hotel.wifi', correct: true, next: 'n4w' },
+      { en: 'Genial, me lo llevo.', tr: TR("Great, I'll take it.", 'מעולה, אני אקח את זה.'), he: 'מעולה, אני אקח את זה.', itemId: 'es.phrase.shop.take-it', correct: true, next: 'n5' },
+      { en: 'Es un poco caro.', tr: TR("It's a bit expensive.", 'זה קצת יקר.'), he: 'זה קצת יקר.', itemId: 'es.phrase.shop.too-expensive', correct: true, next: 'n4b' },
     ] },
-    { id: 'n4', who: 'npc', next: 'n5', en: '¡Sí! El desayuno es de siete a diez. El ascensor está a su derecha.', tr: TR('Yes! Breakfast is from seven to ten. The elevator is on your right.', 'כן! ארוחת בוקר משבע עד עשר. המעלית מימינך.'), he: 'כן! ארוחת בוקר משבע עד עשר. המעלית מימינך.' },
-    { id: 'n4w', who: 'npc', next: 'n5', en: 'La clave del wifi está en su tarjeta de la habitación. Y el desayuno es de siete a diez — el ascensor está a su derecha.', tr: TR("The wifi code is on your key card. And breakfast's from seven to ten — the elevator's on your right.", 'קוד הוויי-פיי על כרטיס המפתח. וארוחת בוקר משבע עד עשר — המעלית מימינך.'), he: 'קוד הוויי-פיי על כרטיס המפתח. וארוחת בוקר משבע עד עשר — המעלית מימינך.' },
-    { id: 'n5', who: 'npc', end: true, en: '¡Que disfrute su estancia!', tr: TR('Enjoy your stay!', 'תיהנה מהשהות!'), he: 'תיהנה מהשהות!' },
+    { id: 'n4b', who: 'npc', next: 'c3b', en: 'Lo entiendo — pero ya tiene un veinte por ciento de descuento. Es el mejor precio que le puedo hacer.', tr: TR("I understand — but it's already twenty percent off. That's the best price I can do.", 'אני מבין — אבל זה כבר בעשרים אחוז הנחה. זה המחיר הכי טוב שאני יכול לתת.'), he: 'אני מבין — אבל זה כבר בעשרים אחוז הנחה. זה המחיר הכי טוב שאני יכול לתת.' },
+    { id: 'c3b', who: 'you', en: '', he: '', choices: [
+      { en: 'De acuerdo, me lo llevo.', tr: TR("Okay, I'll take it.", 'בסדר, אני אקח את זה.'), he: 'בסדר, אני אקח את זה.', itemId: 'es.phrase.shop.take-it', correct: true, next: 'n5' },
+    ] },
+    { id: 'n5', who: 'npc', end: true, en: 'Perfecto — le cobro en la caja. ¡Gracias!', tr: TR("Wonderful — I'll ring you up at the till. Thank you!", 'נהדר — אחייב אותך בקופה. תודה!'), he: 'נהדר — אחייב אותך בקופה. תודה!' },
   ],
 };
 
 export const DAY8_ES: BootcampDayContent = {
   day: 8,
-  title: T("צ'ק-אין במלון", 'Hotel Check-in'),
+  title: T('קניות', 'Shopping'),
   items: DAY8_ES_ITEMS,
-  dialogues: { 'hotel-checkin': SCENE },
+  dialogues: { 'clothing-shop': SCENE },
   steps: [
-    { kind: 'talk', icon: '🏨', title: T('משימה 8: צ\'ק-אין במלון', 'Mission 8: Hotel Check-in'),
+    { kind: 'talk', icon: '🛍️', title: T('משימה 8: קניות', 'Mission 8: Shopping'),
       body: [
-        T('בסיס הבית שלך בטיול. הזמנה, דרכון, מפתח, קומה, ארוחת בוקר.', 'Your home base for the trip. Reservation, passport, key, floor, breakfast.'),
-        T('הפעם אחת — ותהיה רגוע כל השבוע.', 'Nail it once — and relax all week.'),
-      ], cta: T('להגיע לדלפק', 'Approach the desk') },
-    { kind: 'prime', label: T('לפני שנדבר', 'Before we speak'),
-      intro: T('המילים של הצ׳ק-אין — אחת מהן כבר מוכרת לך.', 'The check-in words — one of them you already know.'),
-      words: [
-        { text: 'reserva', meaning: T('הזמנה', 'reservation'), emoji: '📅' },
-        { text: 'nombre', meaning: T('שם', 'name'), emoji: '📛', review: true },
-        { text: 'noche', meaning: T('לילה', 'night'), emoji: '🌙' },
-        { text: 'desayuno', meaning: T('ארוחת בוקר', 'breakfast'), emoji: '🍳' },
-        { text: 'pasaporte', meaning: T('דרכון', 'passport'), emoji: '🛂' },
-      ], buildFromItemId: 'es.phrase.hotel.reservation' },
-    { kind: 'tool', itemId: 'es.phrase.hotel.reservation', index: 1, total: 4, label: T('הפתיח', 'The opener') },
-    { kind: 'tool', itemId: 'es.phrase.hotel.two-nights', index: 2, total: 4, label: T('משך השהות', 'Length of stay') },
-    { kind: 'tool', itemId: 'es.phrase.hotel.breakfast', index: 3, total: 4, label: T('ארוחת בוקר', 'Breakfast') },
-    { kind: 'tool', itemId: 'es.phrase.hotel.wifi', index: 4, total: 4, label: T('וויי-פיי', 'Wifi') },
-    { kind: 'replies', saidItemId: 'es.phrase.hotel.reservation',
-      replyIds: ['es.reply.hotel.passport', 'es.reply.hotel.room-number', 'es.reply.hotel.second-floor', 'es.reply.hotel.breakfast-time'] },
-    { kind: 'receipt', text: T('אתה מזהה כל מה שפקיד הקבלה אומר — דרכון, חדר, קומה, שעות.', 'You recognize everything the receptionist says — passport, room, floor, hours.') },
-    { kind: 'quiz', itemId: 'es.reply.hotel.second-floor', wrongIds: ['es.reply.hotel.elevator', 'es.reply.hotel.breakfast-time'] },
-    { kind: 'dialogue', dialogueId: 'hotel-checkin' },
-    { kind: 'receipt', text: T("צ'ק-אין שלם: הזמנה, דרכון, חדר, מידע — ואתה בפנים.", 'A full check-in: reservation, passport, room, info — and you’re in.') },
+        T('חנות בגדים: להסתכל בשקט, למדוד, לבקש מידה, להחליט.', 'A clothing shop: browse in peace, try on, ask for a size, decide.'),
+        T('לא צריך לקנות. צריך להרגיש בשליטה מול המוכר.', 'You don’t have to buy. You do have to feel in control with the seller.'),
+      ], cta: T('להיכנס לחנות', 'Walk in') },
+    { kind: 'tool', itemId: 'es.phrase.shop.just-looking', index: 1, total: 4, label: T('מרחב אישי', 'Personal space') },
+    { kind: 'tool', itemId: 'es.phrase.shop.try-on', index: 2, total: 4, label: T('למדוד', 'Try it on') },
+    { kind: 'tool', itemId: 'es.phrase.shop.bigger', index: 3, total: 4, label: T('מידה', 'Sizes') },
+    { kind: 'tool', itemId: 'es.phrase.shop.take-it', index: 4, total: 4, label: T('להחליט', 'Decide') },
+    { kind: 'replies', saidItemId: 'es.phrase.shop.try-on',
+      replyIds: ['es.reply.shop.what-size', 'es.reply.shop.fitting-room', 'es.reply.shop.on-sale', 'es.reply.shop.anything-else'] },
+    { kind: 'receipt', text: T('אתה מזהה מה מוכר שואל — מידה, חדר הלבשה, מבצע.', 'You recognize what a seller asks — size, fitting room, sale.') },
+    { kind: 'quiz', itemId: 'es.reply.shop.out-of-stock', wrongIds: ['es.reply.shop.on-sale', 'es.reply.shop.fitting-room'] },
+    { kind: 'dialogue', dialogueId: 'clothing-shop' },
+    { kind: 'receipt', text: T('קניה שלמה: הסתכלת, מדדת, ביקשת מידה, החלטת. בשליטה מלאה.', 'A full shop: browsed, tried on, asked for a size, decided. Fully in control.') },
     { kind: 'swipe', itemIds: DAY8_ES_ITEMS.map((i) => i.id) },
-    { kind: 'ambush', npc: { en: 'Solo para que lo sepa, el desayuno se sirve en la sala de la planta baja, junto a la piscina.', tr: TR('Just so you know breakfast is served in the room on the lower level next to the pool.', 'רק שתדע, ארוחת הבוקר מוגשת בחדר בקומה התחתונה ליד הבריכה.'), he: 'רק שתדע, ארוחת הבוקר מוגשת בחדר בקומה התחתונה ליד הבריכה.' },
-      correctItemId: 'es.phrase.recovery.repeat', wrongItemId: 'es.reply.hotel.passport' },
-    { kind: 'receipt', text: T('מידע ארוך ומהיר — ובמקום לקפוא, ביקשת לחזור עליו. זה כלי.', 'Long, fast info — and instead of freezing, you asked them to repeat. That’s a tool.') },
+    { kind: 'ambush', npc: { en: 'Este es en realidad el último que nos queda en ese color — ¿quiere que se lo guarde?', tr: TR('That one is actually the last piece we have in that colour would you like me to hold it?', 'זה בעצם הפריט האחרון שיש לנו בצבע הזה — שאשמור לך אותו?'), he: 'זה בעצם הפריט האחרון שיש לנו בצבע הזה — שאשמור לך אותו?' },
+      correctItemId: 'es.phrase.recovery.repeat', wrongItemId: 'es.reply.shop.what-size' },
+    { kind: 'receipt', text: T('משפט ארוך ומהיר — ובמקום לקפוא, ביקשת הבהרה. זה בדיוק הרפלקס.', 'A long, fast sentence — and instead of freezing, you asked for clarity. Exactly the reflex.') },
     { kind: 'summary' },
   ],
 };

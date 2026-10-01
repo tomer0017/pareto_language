@@ -3,6 +3,7 @@ import type { Outcome, PracticeMode, ReviewEvent } from '@ready/content-schema';
 import { useAppStore } from '../../shared/stores/appStore.js';
 import { PILOT_LANG } from '../../shared/i18n/languages.js';
 import { DAYS, MISSIONS_BY_LANG, missionsFor } from './registry.js';
+import { fromStored, migrateV1, toStored, type BootcampProgress, type StoredProgress } from './progress.js';
 import type { BootcampDayContent } from './types.js';
 
 /**
@@ -21,25 +22,21 @@ function activeMissions(): Record<number, BootcampDayContent> {
   return missionsFor(useAppStore.getState().learningLang);
 }
 
-interface BootcampProgress {
-  completedDays: number[];
-  receipts: { day: number; text: string; at: string }[];
-  stepIndex: Record<string, number>; // per-day resume point
-}
-
 // Progress is PER LEARNING LANGUAGE: English completions must never appear on the French map (and
-// vice-versa), and switching languages must never resume/next into another language's mission. The
-// legacy single-key store (`ready.bootcamp.v1`, English-only pilot) migrates to the `en` slot once.
-const STORAGE_PREFIX = 'ready.bootcamp.v1';
-const LEGACY_KEY = 'ready.bootcamp.v1';
+// vice-versa), and switching languages must never resume/next into another language's mission.
+// On disk (v2) it is keyed by stable mission id — see progress.ts. Two older layouts migrate once,
+// and are left untouched on disk: v1 per-language (`ready.bootcamp.v1.<lang>`, raw day numbers of
+// the 30-mission plan) and the pre-multilingual pilot key (`ready.bootcamp.v1`, English only).
+const STORAGE_PREFIX = 'ready.bootcamp.v2';
+const V1_PREFIX = 'ready.bootcamp.v1';
 const keyFor = (lang: string): string => `${STORAGE_PREFIX}.${lang}`;
 const currentLang = (): string => useAppStore.getState().learningLang;
 const EMPTY: BootcampProgress = { completedDays: [], receipts: [], stepIndex: {} };
 
-function readKey(key: string): BootcampProgress | null {
+function readKey<T>(key: string): T | null {
   try {
     const raw = localStorage.getItem(key);
-    return raw ? (JSON.parse(raw) as BootcampProgress) : null;
+    return raw ? (JSON.parse(raw) as T) : null;
   } catch (err) {
     console.warn('[bootcamp] progress unreadable — starting fresh', err);
     return null;
@@ -47,16 +44,14 @@ function readKey(key: string): BootcampProgress | null {
 }
 
 function loadProgress(lang: string): BootcampProgress {
-  const own = readKey(keyFor(lang));
-  if (own) return own;
-  // One-time migration: the pre-multilingual pilot stored English progress under the un-suffixed
-  // key. Fold it into the `en` slot so no English learner loses their history.
-  if (lang === PILOT_LANG) {
-    const legacy = readKey(LEGACY_KEY);
-    if (legacy && LEGACY_KEY !== keyFor(lang)) {
-      persist(lang, legacy);
-      return legacy;
-    }
+  const own = readKey<Partial<StoredProgress>>(keyFor(lang));
+  if (own) return fromStored(own);
+  const v1 = readKey<Partial<BootcampProgress>>(`${V1_PREFIX}.${lang}`)
+    ?? (lang === PILOT_LANG ? readKey<Partial<BootcampProgress>>(V1_PREFIX) : null);
+  if (v1) {
+    const migrated = fromStored(migrateV1(v1));
+    persist(lang, migrated);
+    return migrated;
   }
   return { ...EMPTY };
 }
@@ -68,7 +63,9 @@ interface BootcampState extends BootcampProgress {
   stage: 'hub' | 'play';
 
   startDay(day: number): void;
-  enterPractice(): void;
+  /** Enter the step-flow: at the saved resume point, or at an explicit step (the mission
+   *  overview's Learn / Practice entries), which also becomes the new resume point. */
+  enterPractice(at?: number): void;
   restartDay(): void;
   toHub(): void;
   next(): void;
@@ -81,7 +78,7 @@ interface BootcampState extends BootcampProgress {
 
 function persist(lang: string, state: BootcampProgress): void {
   try {
-    localStorage.setItem(keyFor(lang), JSON.stringify(state));
+    localStorage.setItem(keyFor(lang), JSON.stringify(toStored(state)));
   } catch (err) {
     console.warn('[bootcamp] persist failed', err);
   }
@@ -101,10 +98,16 @@ export const useBootcampStore = create<BootcampState>((set, get) => ({
     set({ activeDay: day, index: Math.min(resume, max), stage: 'hub' });
   },
 
-  enterPractice() {
+  enterPractice(at) {
     // Start (or resume) practice at the persisted step: 0 for a fresh/completed mission,
     // the saved point for an in-progress one. Recomputed here so the hub is the source of truth.
-    const { activeDay, stepIndex } = get();
+    const { activeDay, completedDays, receipts, stepIndex } = get();
+    if (at !== undefined && activeDay !== null) {
+      const si = { ...stepIndex, [String(activeDay)]: at };
+      persist(currentLang(), { completedDays, receipts, stepIndex: si });
+      set({ stage: 'play', index: at, stepIndex: si });
+      return;
+    }
     const resume = activeDay === null ? 0 : (stepIndex[String(activeDay)] ?? 0);
     set({ stage: 'play', index: resume });
   },

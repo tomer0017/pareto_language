@@ -1,113 +1,105 @@
 import type { LocalizedText } from '@ready/content-schema';
 import type { BootcampDayContent, BootcampDialogue, BootcampItem } from '../types.js';
 import { recoveryFr } from './recovery.js';
+import { DAY12_FR_ITEMS } from './day12.js';
+import { DAY18_FR_ITEMS } from './day18.js';
+import { DAY22_FR_ITEMS } from './day22.js';
 
 /**
- * French Mission 27 — "Urgence" (Emergency). French parallel of English day 27, overlearned for
- * stress: help, doctor, police, a lost passport, the hospital. The worst case has a script.
- * `tr:{en,he}` glosses; `fr.*` ids. AI-drafted, vous, pending review.
+ * French Mission 27 — "Sans sous-titres" (No Subtitles). Cold integration, no new content: every
+ * scene at full speed with surprise variants — your ears stand alone. Reuses missions 12, 18 & 22 items.
+ * Same structure as English mission 27. `tr:{en,he}` glosses; `fr.*` ids. AI-drafted, vous, pending review.
  */
 const T = (he: string, en: string): LocalizedText => ({ he, en });
 const TR = (en: string, he: string): LocalizedText => ({ en, he });
 
+const byId = new Map([...DAY12_FR_ITEMS, ...DAY18_FR_ITEMS, ...DAY22_FR_ITEMS].map((i) => [i.id, i]));
+const pick = (...ids: string[]): BootcampItem[] => ids.map((id) => byId.get(id)!).filter(Boolean);
+
 export const DAY27_FR_ITEMS: BootcampItem[] = [
-  // say
-  { id: 'fr.phrase.emerg.need-help', text: 'J’ai besoin d’aide.', meaning: T('אני צריך עזרה.', 'I need help.'),
-    tip: T('שלוש מילים שמזמנות עזרה בכל מקום בעולם. תגיד בקול.', 'Words that summon help anywhere on earth. Say them loud.') },
-  { id: 'fr.phrase.emerg.call-doctor', text: 'Appelez un médecin, s’il vous plaît.', meaning: T('תקראו לרופא, בבקשה.', 'Please call a doctor.') },
-  { id: 'fr.phrase.emerg.lost-passport', text: 'J’ai perdu mon passeport.', meaning: T('איבדתי את הדרכון.', 'I lost my passport.'),
-    tip: T('התבנית: J’ai perdu mon/ma ___ — לדווח על כל אבידה. passeport / sac / téléphone.', 'Template: J’ai perdu mon/ma ___ — report any lost item. passport / bag / phone.') },
-  { id: 'fr.phrase.emerg.call-police', text: 'Appelez la police !', meaning: T('תקראו למשטרה!', 'Call the police!') },
-  { id: 'fr.phrase.emerg.where-hospital', text: 'Où est l’hôpital ?', meaning: T('איפה בית החולים?', 'Where is the hospital?') },
-  // hear — responders
-  { id: 'fr.reply.emerg.whats-wrong', text: 'Qu’est-ce qui se passe ?', meaning: T('מה קרה?', "What's wrong?") },
-  { id: 'fr.reply.emerg.stay-calm', text: 'Restez calme, les secours arrivent.', meaning: T('תישאר רגוע, עזרה בדרך.', 'Stay calm, help is coming.') },
-  { id: 'fr.reply.emerg.where-you', text: 'Où êtes-vous ?', meaning: T('איפה אתה?', 'Where are you?') },
-  { id: 'fr.reply.emerg.are-you-hurt', text: 'Vous êtes blessé ?', meaning: T('אתה פצוע?', 'Are you hurt?') },
-  { id: 'fr.reply.emerg.on-the-way', text: 'Une ambulance arrive.', meaning: T('אמבולנס בדרך.', 'An ambulance is on the way.') },
-  { id: 'fr.reply.emerg.report-here', text: 'Vous pouvez le signaler ici.', meaning: T('אפשר לדווח כאן.', 'You can report it here.') },
+  ...pick(
+    'fr.phrase.trans.one-ticket', 'fr.phrase.trans.does-stop',
+    'fr.phrase.rest.table-for-two', 'fr.phrase.rest.ill-have',
+    'fr.phrase.talk.beautiful-place', 'fr.phrase.talk.recommend-place',
+  ),
   ...recoveryFr('fr.phrase.recovery.repeat', 'fr.phrase.recovery.slowly', 'fr.phrase.recovery.thank-you'),
 ];
 
-const SCENE_EMERGENCY: BootcampDialogue = {
-  id: 'emergency',
+const COLD_TRANSIT: BootcampDialogue = {
+  id: 'ns-transit',
   start: 'n1',
   nodes: [
-    { id: 'n1', who: 'npc', next: 'c1', en: 'Services d’urgence — qu’est-ce qui se passe ?', tr: TR("Emergency services — what's wrong?", 'שירותי חירום — מה קרה?'), he: 'שירותי חירום — מה קרה?' },
+    { id: 'n1', who: 'npc', fast: true, next: 'c1', en: 'Bon — vous allez où ?', tr: TR('Right — where to?', 'טוב — לאן?'), he: 'טוב — לאן?' },
     { id: 'c1', who: 'you', en: '', he: '', choices: [
-      { en: 'J’ai besoin d’aide.', tr: TR('I need help.', 'אני צריך עזרה.'), he: 'אני צריך עזרה.', itemId: 'fr.phrase.emerg.need-help', correct: true, next: 'n2' },
-      { en: 'Parlez lentement, s’il vous plaît.', tr: TR('Please speak slowly.', 'דבר לאט, בבקשה.'), he: 'דבר לאט, בבקשה.', itemId: 'fr.phrase.recovery.slowly', correct: true, next: 'r1' },
+      { en: 'Un billet pour le centre, s’il vous plaît.', tr: TR('One ticket to the center, please.', 'כרטיס אחד למרכז, בבקשה.'), he: 'כרטיס אחד למרכז, בבקשה.', itemId: 'fr.phrase.trans.one-ticket', correct: true, next: 'n2' },
+      { en: 'Vous pouvez répéter ?', tr: TR('Can you repeat that?', 'אפשר לחזור על זה?'), he: 'אפשר לחזור על זה?', itemId: 'fr.phrase.recovery.repeat', correct: true, next: 'n2' },
     ] },
-    { id: 'r1', who: 'npc', slow: true, next: 'c1b', en: 'Qu’est-ce — qui se passe ?', tr: TR("What's — wrong?", 'מה — קרה?'), he: 'מה — קרה?' },
-    { id: 'c1b', who: 'you', en: '', he: '', choices: [
-      { en: 'J’ai besoin d’aide.', tr: TR('I need help.', 'אני צריך עזרה.'), he: 'אני צריך עזרה.', itemId: 'fr.phrase.emerg.need-help', correct: true, next: 'n2' },
-    ] },
-    { id: 'n2', who: 'npc', next: 'c2', en: 'D’accord, restez calme. Vous êtes blessé, ou quelqu’un est en danger ?', tr: TR('Okay, stay calm. Are you hurt, or is someone in danger?', 'טוב, תישאר רגוע. אתה פצוע, או שמישהו בסכנה?'), he: 'טוב, תישאר רגוע. אתה פצוע, או שמישהו בסכנה?' },
+    { id: 'n2', who: 'npc', fast: true, next: 'c2', en: 'Le quai a changé — c’est le quatre maintenant, vite !', tr: TR("Platform's changed — it's four now, quick!", 'הרציף השתנה — עכשיו ארבע, מהר!'), he: 'הרציף השתנה — עכשיו ארבע, מהר!' },
     { id: 'c2', who: 'you', en: '', he: '', choices: [
-      { en: 'Appelez un médecin, s’il vous plaît.', tr: TR('Please call a doctor.', 'תקראו לרופא, בבקשה.'), he: 'תקראו לרופא, בבקשה.', itemId: 'fr.phrase.emerg.call-doctor', correct: true, next: 'n3' },
-      { en: 'Appelez la police !', tr: TR('Call the police!', 'תקראו למשטרה!'), he: 'תקראו למשטרה!', itemId: 'fr.phrase.emerg.call-police', correct: true, next: 'n2c' },
+      { en: 'Ça s’arrête au musée ?', tr: TR('Does this stop at the museum?', 'זה עוצר במוזיאון?'), he: 'זה עוצר במוזיאון?', itemId: 'fr.phrase.trans.does-stop', correct: true, next: 'n3' },
+      { en: 'Parlez lentement, s’il vous plaît.', tr: TR('Please speak slowly.', 'דבר לאט, בבקשה.'), he: 'דבר לאט, בבקשה.', itemId: 'fr.phrase.recovery.slowly', correct: true, next: 'n3' },
     ] },
-    { id: 'n2c', who: 'npc', next: 'c2b', en: 'La police est en route. Maintenant — vous avez besoin d’un médecin ?', tr: TR("Police are on their way. Now — do you need a doctor?", 'המשטרה בדרך. עכשיו — אתה צריך רופא?'), he: 'המשטרה בדרך. עכשיו — אתה צריך רופא?' },
-    { id: 'c2b', who: 'you', en: '', he: '', choices: [
-      { en: 'Appelez un médecin, s’il vous plaît.', tr: TR('Please call a doctor.', 'תקראו לרופא, בבקשה.'), he: 'תקראו לרופא, בבקשה.', itemId: 'fr.phrase.emerg.call-doctor', correct: true, next: 'n3' },
+    { id: 'n3', who: 'npc', end: true, en: 'Trois arrêts — allez, allez !', tr: TR('Three stops — go, go!', 'שלוש תחנות — קדימה, קדימה!'), he: 'שלוש תחנות — קדימה, קדימה!' },
+  ],
+};
+
+const COLD_DINER: BootcampDialogue = {
+  id: 'ns-diner',
+  start: 'n1',
+  nodes: [
+    { id: 'n1', who: 'npc', fast: true, next: 'c1', en: 'Bonsoir — une table pour combien ?', tr: TR('Evening — table for how many?', 'ערב — שולחן לכמה?'), he: 'ערב — שולחן לכמה?' },
+    { id: 'c1', who: 'you', en: '', he: '', choices: [
+      { en: 'Une table pour deux, s’il vous plaît.', tr: TR('A table for two, please.', 'שולחן לשניים, בבקשה.'), he: 'שולחן לשניים, בבקשה.', itemId: 'fr.phrase.rest.table-for-two', correct: true, next: 'n2' },
+      { en: 'Vous pouvez répéter ?', tr: TR('Can you repeat that?', 'אפשר לחזור על זה?'), he: 'אפשר לחזור על זה?', itemId: 'fr.phrase.recovery.repeat', correct: true, next: 'n2' },
     ] },
-    { id: 'n3', who: 'npc', next: 'c3', en: 'Une ambulance arrive. Où êtes-vous ?', tr: TR('An ambulance is on the way. Where are you?', 'אמבולנס בדרך. איפה אתה?'), he: 'אמבולנס בדרך. איפה אתה?' },
-    { id: 'c3', who: 'you', en: '', he: '', choices: [
-      { en: 'Je suis à la gare.', tr: TR("I'm at the train station.", 'אני בתחנת הרכבת.'), he: 'אני בתחנת הרכבת.', correct: true, next: 'n4' },
-      { en: 'Vous pouvez répéter ?', tr: TR('Can you repeat that?', 'אפשר לחזור על זה?'), he: 'אפשר לחזור על זה?', itemId: 'fr.phrase.recovery.repeat', correct: true, next: 'r3' },
+    { id: 'n2', who: 'npc', fast: true, next: 'c2', en: 'La cuisine va fermer — prêt à commander ?', tr: TR("Kitchen's about to close — ready to order?", 'המטבח עומד להיסגר — מוכן להזמין?'), he: 'המטבח עומד להיסגר — מוכן להזמין?' },
+    { id: 'c2', who: 'you', en: '', he: '', choices: [
+      { en: 'Je vais prendre les pâtes, s’il vous plaît.', tr: TR("I'll have the pasta, please.", 'אני אקח את הפסטה, בבקשה.'), he: 'אני אקח את הפסטה, בבקשה.', itemId: 'fr.phrase.rest.ill-have', correct: true, next: 'n3' },
+      { en: 'Parlez lentement, s’il vous plaît.', tr: TR('Please speak slowly.', 'דבר לאט, בבקשה.'), he: 'דבר לאט, בבקשה.', itemId: 'fr.phrase.recovery.slowly', correct: true, next: 'n3' },
     ] },
-    { id: 'r3', who: 'npc', slow: true, next: 'c3b', en: 'Où — êtes — vous ?', tr: TR('Where — are — you?', 'איפה — אתה?'), he: 'איפה — אתה?' },
-    { id: 'c3b', who: 'you', en: '', he: '', choices: [
-      { en: 'Je suis à la gare.', tr: TR("I'm at the train station.", 'אני בתחנת הרכבת.'), he: 'אני בתחנת הרכבת.', correct: true, next: 'n4' },
+    { id: 'n3', who: 'npc', end: true, en: 'Bien joué — le dernier admis ! Ça arrive.', tr: TR('Good call — last one in! Coming up.', 'בחירה טובה — האחרון שנכנס! תכף מגיע.'), he: 'בחירה טובה — האחרון שנכנס! תכף מגיע.' },
+  ],
+};
+
+const COLD_LOCAL: BootcampDialogue = {
+  id: 'ns-local',
+  start: 'n1',
+  nodes: [
+    { id: 'n1', who: 'npc', fast: true, next: 'c1', en: 'Superbe endroit, non ? Première fois ici ?', tr: TR('Gorgeous spot, right? First time here?', 'מקום מהמם, נכון? פעם ראשונה כאן?'), he: 'מקום מהמם, נכון? פעם ראשונה כאן?' },
+    { id: 'c1', who: 'you', en: '', he: '', choices: [
+      { en: 'Cet endroit est magnifique.', tr: TR('This place is beautiful.', 'המקום הזה יפהפה.'), he: 'המקום הזה יפהפה.', itemId: 'fr.phrase.talk.beautiful-place', correct: true, next: 'n2' },
+      { en: 'Parlez lentement, s’il vous plaît.', tr: TR('Please speak slowly.', 'דבר לאט, בבקשה.'), he: 'דבר לאט, בבקשה.', itemId: 'fr.phrase.recovery.slowly', correct: true, next: 'n2' },
     ] },
-    { id: 'n4', who: 'npc', next: 'c4', en: 'Bien. Restez là. Vous avez aussi dit que quelque chose était perdu ?', tr: TR('Good. Stay there. You also said something was lost?', 'טוב. תישאר שם. אמרת גם שמשהו אבד?'), he: 'טוב. תישאר שם. אמרת גם שמשהו אבד?' },
-    { id: 'c4', who: 'you', en: '', he: '', choices: [
-      { en: 'J’ai perdu mon passeport.', tr: TR('I lost my passport.', 'איבדתי את הדרכון.'), he: 'איבדתי את הדרכון.', itemId: 'fr.phrase.emerg.lost-passport', correct: true, next: 'n5' },
-      { en: 'Où est l’hôpital ?', tr: TR('Where is the hospital?', 'איפה בית החולים? (הוא שאל על האבידה)'), he: 'איפה בית החולים?', itemId: 'fr.phrase.emerg.where-hospital', correct: false, next: 'r4' },
+    { id: 'n2', who: 'npc', fast: true, next: 'c2', en: 'Vous devez voir la vieille ville — vous avez une seconde ?', tr: TR("You've gotta see the old town — got a second?", 'אתה חייב לראות את העיר העתיקה — יש לך רגע?'), he: 'אתה חייב לראות את העיר העתיקה — יש לך רגע?' },
+    { id: 'c2', who: 'you', en: '', he: '', choices: [
+      { en: 'Vous pouvez recommander un endroit ?', tr: TR('Can you recommend a place?', 'אתה יכול להמליץ על מקום?'), he: 'אתה יכול להמליץ על מקום?', itemId: 'fr.phrase.talk.recommend-place', correct: true, next: 'n3' },
+      { en: 'Merci !', tr: TR('Thank you!', 'תודה!'), he: 'תודה!', itemId: 'fr.phrase.recovery.thank-you', correct: true, next: 'n3' },
     ] },
-    { id: 'r4', who: 'npc', next: 'c4b', en: 'On vous emmènera à l’hôpital — mais vous avez mentionné que quelque chose était perdu ?', tr: TR("We'll get you to a hospital — but you mentioned something was lost?", 'נדאג להביא אותך לבית חולים — אבל אמרת שמשהו אבד?'), he: 'נדאג להביא אותך לבית חולים — אבל אמרת שמשהו אבד?' },
-    { id: 'c4b', who: 'you', en: '', he: '', choices: [
-      { en: 'J’ai perdu mon passeport.', tr: TR('I lost my passport.', 'איבדתי את הדרכון.'), he: 'איבדתי את הדרכון.', itemId: 'fr.phrase.emerg.lost-passport', correct: true, next: 'n5' },
-    ] },
-    { id: 'n5', who: 'npc', next: 'c5', en: 'Vous pouvez le signaler ici — je vais vous aider avec le formulaire.', tr: TR("You can report it here — I'll help you with the form.", 'אפשר לדווח כאן — אני אעזור לך עם הטופס.'), he: 'אפשר לדווח כאן — אני אעזור לך עם הטופס.' },
-    { id: 'c5', who: 'you', en: '', he: '', choices: [
-      { en: 'Merci !', tr: TR('Thank you!', 'תודה!'), he: 'תודה!', itemId: 'fr.phrase.recovery.thank-you', correct: true, next: 'n6' },
-      { en: 'Parlez lentement, s’il vous plaît.', tr: TR('Please speak slowly.', 'דבר לאט, בבקשה.'), he: 'דבר לאט, בבקשה.', itemId: 'fr.phrase.recovery.slowly', correct: true, next: 'r5' },
-    ] },
-    { id: 'r5', who: 'npc', slow: true, next: 'c5b', en: 'Vous pouvez — le signaler — ici.', tr: TR('You can — report it — here.', 'אפשר — לדווח — כאן.'), he: 'אפשר — לדווח — כאן.' },
-    { id: 'c5b', who: 'you', en: '', he: '', choices: [
-      { en: 'Merci !', tr: TR('Thank you!', 'תודה!'), he: 'תודה!', itemId: 'fr.phrase.recovery.thank-you', correct: true, next: 'n6' },
-    ] },
-    { id: 'n6', who: 'npc', end: true, en: 'Vous avez tout fait comme il faut. Les secours sont là. Vous êtes en sécurité.', tr: TR("You did everything right. Help is here now. You're safe.", 'עשית הכל נכון. העזרה כאן עכשיו. אתה בטוח.'), he: 'עשית הכל נכון. העזרה כאן עכשיו. אתה בטוח.' },
+    { id: 'n3', who: 'npc', end: true, en: '« Mama Rosa » — allez-y tout de suite, dites-leur que je vous envoie !', tr: TR("Mama Rosa's — go now, tell 'em I sent you!", "'מאמא רוזה' — לך עכשיו, תגיד שאני שלחתי!"), he: "'מאמא רוזה' — לך עכשיו, תגיד שאני שלחתי!" },
   ],
 };
 
 export const DAY27_FR: BootcampDayContent = {
   day: 27,
-  title: T('חירום', 'Emergency'),
+  title: T('בלי כתוביות', 'No Subtitles'),
   items: DAY27_FR_ITEMS,
-  dialogues: { emergency: SCENE_EMERGENCY },
+  dialogues: { 'ns-transit': COLD_TRANSIT, 'ns-diner': COLD_DINER, 'ns-local': COLD_LOCAL },
   steps: [
-    { kind: 'talk', icon: '🆘', title: T('משימה 27: חירום', 'Mission 27: Emergency'),
+    { kind: 'talk', icon: '👂', title: T('משימה 27: בלי כתוביות', 'Mission 27: No Subtitles'),
       body: [
-        T('בלחץ אמיתי שורד רק מה שנחרט אוטומטית. לכן היום נחזור על המשפטים האלה שוב ושוב.', 'Under real stress only what’s burned in automatically survives. So today we repeat these lines again and again.'),
-        T('עזרה, רופא, משטרה, אבידה, בית חולים. יקרה מה שיקרה — אתה תפעל.', 'Help, doctor, police, a lost item, the hospital. Whatever happens — you will act.'),
-      ], cta: T('להיות מוכן לכל דבר', 'Be ready for anything') },
-    { kind: 'tool', itemId: 'fr.phrase.emerg.need-help', index: 1, total: 4, label: T('לזמן עזרה', 'Summon help') },
-    { kind: 'tool', itemId: 'fr.phrase.emerg.call-doctor', index: 2, total: 4, label: T('לקרוא לרופא', 'Call a doctor') },
-    { kind: 'tool', itemId: 'fr.phrase.emerg.lost-passport', index: 3, total: 4, label: T('לדווח על אבידה', 'Report a lost item') },
-    { kind: 'tool', itemId: 'fr.phrase.emerg.call-police', index: 4, total: 4, label: T('לקרוא למשטרה', 'Call the police') },
-    { kind: 'replies', saidItemId: 'fr.phrase.emerg.need-help',
-      replyIds: ['fr.reply.emerg.whats-wrong', 'fr.reply.emerg.are-you-hurt', 'fr.reply.emerg.where-you', 'fr.reply.emerg.on-the-way'] },
-    { kind: 'receipt', text: T('אתה מזהה את שאלות מוקד החירום — מה קרה, איפה אתה, אתה פצוע.', 'You recognize the emergency dispatcher’s questions — what happened, where you are, are you hurt.') },
-    { kind: 'quiz', itemId: 'fr.reply.emerg.are-you-hurt', wrongIds: ['fr.reply.emerg.where-you', 'fr.reply.emerg.stay-calm'] },
-    { kind: 'quiz', itemId: 'fr.reply.emerg.on-the-way', wrongIds: ['fr.reply.emerg.whats-wrong', 'fr.reply.emerg.report-here'] },
-    { kind: 'dialogue', dialogueId: 'emergency' },
-    { kind: 'receipt', text: T('ניהלת שיחת חירום שלמה — עזרה, רופא, מיקום, אבידה — בלי לקפוא.', 'You handled a full emergency call — help, doctor, location, lost item — without freezing.') },
-    { kind: 'swipe', itemIds: DAY27_FR_ITEMS.map((i) => i.id) },
-    { kind: 'ambush', npc: { en: 'Vous pouvez me dire exactement à quoi ressemblait l’homme et dans quelle direction il s’est enfui ?', tr: TR('Can you tell me exactly what the man looked like and which direction he ran off in?', 'אתה יכול לומר לי בדיוק איך האיש נראה ולאיזה כיוון הוא ברח?'), he: 'אתה יכול לומר לי בדיוק איך האיש נראה ולאיזה כיוון הוא ברח?' },
-      correctItemId: 'fr.phrase.recovery.slowly', wrongItemId: 'fr.phrase.emerg.need-help' },
-    { kind: 'receipt', text: T('שאלה מהירה תחת לחץ — וביקשת שיאט כדי לענות נכון. בחירום, זה עוצמה.', 'A fast question under pressure — and you asked them to slow down to answer well. In an emergency, that’s power.') },
+        T('אין חומר חדש. היום מורידים את גלגלי העזר — הכל במהירות מלאה, עם וריאציות הפתעה.', 'No new material. Today the training wheels come off — everything at full speed, with surprise variants.'),
+        T('האוזניים שלך עומדות לבד עכשיו. וזה בדיוק מה שנוכיח.', 'Your ears stand alone now. And that’s exactly what we’ll prove.'),
+      ], cta: T('לסמוך על האוזניים', 'Trust your ears') },
+    { kind: 'dialogue', dialogueId: 'ns-transit' },
+    { kind: 'receipt', text: T('שרדת תחבורה מהירה עם שינוי רציף פתאומי — בלי להיתקע.', 'You survived fast transit with a sudden platform change — without getting stuck.') },
+    { kind: 'ambush', npc: { en: 'Cette machine, c’est en espèces seulement au fait — vous avez de la monnaie sur vous ?', tr: TR("That machine's cash only by the way — you got coins on you?", 'המכונה הזאת מקבלת רק מזומן, דרך אגב — יש עליך מטבעות?'), he: 'המכונה הזאת מקבלת רק מזומן, דרך אגב — יש עליך מטבעות?' },
+      correctItemId: 'fr.phrase.recovery.repeat', wrongItemId: 'fr.phrase.trans.does-stop' },
+    { kind: 'dialogue', dialogueId: 'ns-diner' },
+    { kind: 'receipt', text: T('שרדת הזמנה מהירה לפני סגירת מטבח — בלי כתוביות איטיות.', 'You survived a fast order before the kitchen closed — no slow subtitles.') },
+    { kind: 'ambush', npc: { en: 'En fait, on n’a plus de pâtes ce soir — le risotto à la place, peut-être ?', tr: TR("We're actually all out of pasta tonight — the risotto instead maybe?", 'בעצם נגמרה לנו הפסטה הערב — אולי ריזוטו במקום?'), he: 'בעצם נגמרה לנו הפסטה הערב — אולי ריזוטו במקום?' },
+      correctItemId: 'fr.phrase.recovery.slowly', wrongItemId: 'fr.phrase.rest.table-for-two' },
+    { kind: 'dialogue', dialogueId: 'ns-local' },
+    { kind: 'receipt', text: T('שיחה מהירה עם מקומי — הבנת, הגבת, וקיבלת המלצה. האוזניים ניצחו.', 'A fast chat with a local — you understood, responded, and got a recommendation. Your ears won.') },
     { kind: 'summary' },
   ],
 };

@@ -17,10 +17,6 @@ export type PlaybackOrder = 'sequential' | 'random';
 /** Idle (never started), actively speaking, paused mid-session (resumable), or finished the list. */
 export type PlaybackStatus = 'idle' | 'playing' | 'paused' | 'finished';
 
-/** TTS rate multiplier for Parrot Mode (relative to the global speech-speed preference). `0.5×` lets
- *  a beginner slow every spoken sentence right down; `1×` is the default. */
-export type PlaybackSpeed = 0.5 | 0.75 | 1 | 1.25;
-
 /** Named silence length between spoken parts — mapped to concrete ms in `playbackPlan.ts`. */
 export type PauseDuration = 'short' | 'normal' | 'long';
 
@@ -51,9 +47,8 @@ export interface PlaybackItem {
 /**
  * A per-surface listening-order OVERRIDE (not a shared/persisted preference). A surface that owns its
  * own translation-order UI (Reading) passes this so it controls whether — and in which order — the
- * translation is spoken WITHOUT touching the global `translation` preference other Parrot surfaces
- * share. When omitted, the shared `settings.translation` (target → translation) is used. Speed, pause,
- * repeat and loop always stay global.
+ * translation is spoken from ITS OWN store. When omitted, the surface's `settings.translation`
+ * (target → translation) is used.
  */
 export interface SpeakOrderOverride {
   /** Whether the translation is spoken at all (false = target only). */
@@ -63,8 +58,19 @@ export interface SpeakOrderOverride {
 }
 
 /**
- * User-controlled playback preferences — shared across every surface and persisted locally. The
- * "currently playing" state is deliberately NOT here (never auto-starts after a refresh).
+ * The surfaces that play content through the shared engine. Each one OWNS its playback preferences:
+ * they are stored per scope, so an option chosen on one surface can never change another — least of
+ * all a surface that does not even show that option. See `preferences.ts` for what each scope owns.
+ */
+export type PlaybackScope = 'listen' | 'story' | 'transcript' | 'words';
+
+/**
+ * A surface's playback preferences — stored PER SCOPE (never shared across surfaces). The "currently
+ * playing" state is deliberately NOT here (never auto-starts after a refresh).
+ *
+ * There is deliberately NO speed here: speech rate is ONE global preference (Profile → speech
+ * speed, `shared/audio/tts`), applied to every utterance by the TTS layer itself. `repeat` is a
+ * count of repetitions, not a rate.
  */
 export interface PlaybackSettings {
   repeat: RepeatCount;
@@ -73,8 +79,6 @@ export interface PlaybackSettings {
   translation: boolean;
   /** When true, playback starts a fresh cycle after the last item instead of finishing. */
   loop: boolean;
-  /** Playback speed applied to both target and translation utterances. */
-  speed: PlaybackSpeed;
   /** Silence length between spoken parts. */
   pause: PauseDuration;
   /** Sleep-timer selection (minutes; `0` = off). Persisted; the running countdown is not. */

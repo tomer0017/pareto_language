@@ -266,12 +266,12 @@ describe('Zero-Beginner Path — persistence store', () => {
 });
 
 describe('Zero-Beginner Path — graduation target (into the real Bootcamp)', () => {
-  it('resolves a first non-special Bootcamp mission for every learning language', async () => {
+  it('resolves a first Bootcamp mission for every learning language', async () => {
     const { missionsFor } = await import('../bootcamp/bootcampStore.js');
     const { BOOTCAMP_PLAN } = await import('../bootcamp/plan.js');
     for (const lang of ZERO_LANGS) {
       const missions = missionsFor(lang);
-      const firstDay = BOOTCAMP_PLAN.filter((m) => m.day in missions && !m.special)[0]?.day;
+      const firstDay = BOOTCAMP_PLAN.filter((m) => m.day in missions)[0]?.day;
       expect(firstDay, `no first mission for ${lang}`).toBeTypeOf('number');
     }
   });

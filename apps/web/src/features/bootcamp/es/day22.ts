@@ -3,8 +3,8 @@ import type { BootcampDayContent, BootcampDialogue, BootcampItem } from '../type
 import { recoveryEs } from './recovery.js';
 
 /**
- * Spanish Mission 22 — "Souvenirs y regalos" (Souvenirs & Gifts). Spanish parallel of English day 22:
- * browse without pressure, ask a price, ask for another color, have it gift-wrapped, pay.
+ * Spanish Mission 22 — "Conversación" (Small Talk). Spanish parallel of English mission 22: three warm
+ * minutes with a stranger — a compliment, a question back, a recommendation, a warm goodbye.
  * `tr:{en,he}` glosses; `es.*` ids. AI-drafted, pending review.
  */
 const T = (he: string, en: string): LocalizedText => ({ he, en });
@@ -12,90 +12,94 @@ const TR = (en: string, he: string): LocalizedText => ({ en, he });
 
 export const DAY22_ES_ITEMS: BootcampItem[] = [
   // say
-  { id: 'es.phrase.gift.just-looking', text: 'Solo estoy mirando, gracias.', meaning: T('אני רק מסתכל, תודה.', "I'm just looking, thanks."),
-    tip: T('מוריד את כל הלחץ. אתה מסתכל בשקט, בלי התחייבות.', 'Takes all the pressure off. You browse in peace, no commitment.') },
-  { id: 'es.phrase.gift.how-much-this', text: '¿Cuánto cuesta este?', meaning: T('כמה זה עולה?', 'How much is this one?') },
-  { id: 'es.phrase.gift.different-color', text: '¿Lo tiene en otro color?', meaning: T('יש בצבע אחר?', 'Do you have another color?'),
-    tip: T('התבנית: ¿Lo tiene en otro ___ ? — מבקשת גרסה אחרת של כל דבר.', 'Template: ¿Lo tiene en otro ___ ? — asks for a different version of anything.') },
-  { id: 'es.phrase.gift.gift-wrap', text: '¿Me lo puede envolver para regalo?', meaning: T('אפשר לעטוף למתנה?', 'Could you gift-wrap it?') },
-  { id: 'es.phrase.gift.take-this', text: 'Me llevo este.', meaning: T('אני אקח את זה.', "I'll take this one."),
-    tip: T('סוגר את הקנייה. בחירה, וגמרנו.', 'Closes the purchase. A choice, and you’re done.') },
-  // hear — the shopkeeper's replies
-  { id: 'es.reply.gift.help-find', text: '¿Le ayudo a encontrar algo?', meaning: T('לעזור לך למצוא משהו?', 'Can I help you find anything?') },
-  { id: 'es.reply.gift.handmade', text: 'Están hechos a mano.', meaning: T('אלה בעבודת יד.', 'These are handmade.') },
-  { id: 'es.reply.gift.which-color', text: '¿Qué color quiere?', meaning: T('איזה צבע תרצה?', 'Which color would you like?') },
-  { id: 'es.reply.gift.is-it-gift', text: 'Claro — ¿es para regalo?', meaning: T('בטח — זה מתנה?', 'Of course — is it a gift?') },
-  { id: 'es.reply.gift.last-one', text: 'Es el último.', meaning: T('זה האחרון.', 'This is the last one.') },
-  { id: 'es.reply.gift.thatll-be', text: 'Serán quince.', meaning: T('זה יוצא חמש-עשרה.', "That'll be fifteen.") },
+  { id: 'es.phrase.talk.beautiful-place', text: 'Este lugar es precioso.', meaning: T('המקום הזה יפהפה.', 'This place is beautiful.'),
+    tip: T('מחמאה קטנה פותחת חום מיידי. תמיד עובדת.', 'A small compliment opens instant warmth. Always works.') },
+  { id: 'es.phrase.talk.how-about-you', text: '¿Y usted?', meaning: T('ואתה?', 'How about you?'),
+    tip: T('שתי מילים שמחזירות את הכדור וממשיכות כל שיחה.', 'Two words that pass the ball back and keep any conversation going.') },
+  { id: 'es.phrase.talk.recommend-place', text: '¿Me puede recomendar un sitio?', meaning: T('אתה יכול להמליץ על מקום?', 'Can you recommend a place?') },
+  { id: 'es.phrase.talk.nice-talking', text: 'Ha sido un placer hablar con usted.', meaning: T('היה נעים לדבר איתך.', 'It was nice talking to you.'),
+    tip: T('הדרך החמה לסיים שיחה. משאירה חיוך.', 'The warm way to end a conversation. Leaves a smile.') },
+  { id: 'es.phrase.talk.love-food', text: 'Me encanta la comida de aquí.', meaning: T('אני אוהב את האוכל כאן.', 'I love the food here.') },
+  // hear — the local's lines
+  { id: 'es.reply.talk.first-time-q', text: '¿Es su primera vez aquí?', meaning: T('זו הפעם הראשונה שלך כאן?', 'Is this your first time here?') },
+  { id: 'es.reply.talk.where-from', text: '¿De dónde es?', meaning: T('מאיפה אתה?', 'Where are you from?') },
+  { id: 'es.reply.talk.you-should-try', text: 'Debería visitar el casco antiguo.', meaning: T('כדאי לך לנסות את העיר העתיקה.', 'You should try the old town.') },
+  { id: 'es.reply.talk.how-long-here', text: '¿Cuánto tiempo está aquí?', meaning: T('לכמה זמן אתה כאן?', 'How long are you here for?') },
+  { id: 'es.reply.talk.enjoy-rest', text: '¡Que disfrute del resto del viaje!', meaning: T('תיהנה משאר הטיול!', 'Enjoy the rest of your trip!') },
+  { id: 'es.reply.talk.me-too', text: '¡Yo también!', meaning: T('גם אני!', 'Me too!') },
   ...recoveryEs('es.phrase.recovery.repeat', 'es.phrase.recovery.slowly', 'es.phrase.recovery.thank-you'),
 ];
 
-const SCENE_SOUVENIR: BootcampDialogue = {
-  id: 'souvenir-shop',
+const SCENE_TALK: BootcampDialogue = {
+  id: 'small-talk',
   start: 'n1',
   nodes: [
-    { id: 'n1', who: 'npc', next: 'c1', en: '¡Hola! ¿Le ayudo a encontrar algo?', tr: TR('Hello! Can I help you find anything?', 'שלום! לעזור לך למצוא משהו?'), he: 'שלום! לעזור לך למצוא משהו?' },
+    { id: 'n1', who: 'npc', next: 'c1', en: 'Bonitas vistas, ¿verdad? ¿De dónde es?', tr: TR("Beautiful view, isn't it? Where are you from?", 'נוף יפה, נכון? מאיפה אתה?'), he: 'נוף יפה, נכון? מאיפה אתה?' },
     { id: 'c1', who: 'you', en: '', he: '', choices: [
-      { en: 'Solo estoy mirando, gracias.', tr: TR("I'm just looking, thanks.", 'אני רק מסתכל, תודה.'), he: 'אני רק מסתכל, תודה.', itemId: 'es.phrase.gift.just-looking', correct: true, next: 'n2' },
-      { en: '¿Lo tiene en otro color?', tr: TR('Do you have another color?', 'יש בצבע אחר?'), he: 'יש בצבע אחר?', itemId: 'es.phrase.gift.different-color', correct: true, next: 'n1b' },
+      { en: 'Este lugar es precioso.', tr: TR('This place is beautiful.', 'המקום הזה יפהפה.'), he: 'המקום הזה יפהפה.', itemId: 'es.phrase.talk.beautiful-place', correct: true, next: 'n2' },
+      { en: '¿Puede repetir, por favor?', tr: TR('Can you repeat that?', 'אפשר לחזור על זה?'), he: 'אפשר לחזור על זה?', itemId: 'es.phrase.recovery.repeat', correct: true, next: 'r1' },
     ] },
-    { id: 'n1b', who: 'npc', next: 'c1b', en: 'Tenemos varios colores — tómese su tiempo para mirar.', tr: TR('We have a few colors — take your time and have a look.', 'יש לנו כמה צבעים — קח את הזמן ותסתכל.'), he: 'יש לנו כמה צבעים — קח את הזמן ותסתכל.' },
+    { id: 'r1', who: 'npc', slow: true, next: 'c1b', en: '¿De dónde — es?', tr: TR('Where — are you — from?', 'מאיפה — אתה?'), he: 'מאיפה — אתה?' },
     { id: 'c1b', who: 'you', en: '', he: '', choices: [
-      { en: 'Solo estoy mirando, gracias.', tr: TR("I'm just looking, thanks.", 'אני רק מסתכל, תודה.'), he: 'אני רק מסתכל, תודה.', itemId: 'es.phrase.gift.just-looking', correct: true, next: 'n2' },
+      { en: 'Este lugar es precioso.', tr: TR('This place is beautiful.', 'המקום הזה יפהפה.'), he: 'המקום הזה יפהפה.', itemId: 'es.phrase.talk.beautiful-place', correct: true, next: 'n2' },
     ] },
-    { id: 'n2', who: 'npc', next: 'c2', en: 'Claro — estos cuencos pequeños están hechos a mano, muy populares.', tr: TR('Of course — these little bowls are handmade, very popular.', 'כמובן — הקערות הקטנות האלה בעבודת יד, מאוד פופולריות.'), he: 'כמובן — הקערות הקטנות האלה בעבודת יד, מאוד פופולריות.' },
+    { id: 'n2', who: 'npc', next: 'c2', en: 'Es verdad. ¿Es su primera vez aquí?', tr: TR('It really is. Is this your first time here?', 'באמת. זו הפעם הראשונה שלך כאן?'), he: 'באמת. זו הפעם הראשונה שלך כאן?' },
     { id: 'c2', who: 'you', en: '', he: '', choices: [
-      { en: '¿Cuánto cuesta este?', tr: TR('How much is this one?', 'כמה זה עולה?'), he: 'כמה זה עולה?', itemId: 'es.phrase.gift.how-much-this', correct: true, next: 'n3' },
-      { en: '¿Puede repetir, por favor?', tr: TR('Can you repeat that?', 'אפשר לחזור על זה?'), he: 'אפשר לחזור על זה?', itemId: 'es.phrase.recovery.repeat', correct: true, next: 'r2' },
+      { en: 'Me encanta la comida de aquí.', tr: TR('I love the food here.', 'אני אוהב את האוכל כאן.'), he: 'אני אוהב את האוכל כאן.', itemId: 'es.phrase.talk.love-food', correct: true, next: 'n3' },
+      { en: '¿Y usted?', tr: TR('How about you?', 'ואתה?'), he: 'ואתה?', itemId: 'es.phrase.talk.how-about-you', correct: true, next: 'n2b' },
     ] },
-    { id: 'r2', who: 'npc', slow: true, next: 'c2b', en: 'Están — hechos — a mano.', tr: TR('These — are — handmade.', 'אלה — בעבודת — יד.'), he: 'אלה — בעבודת — יד.' },
+    { id: 'n2b', who: 'npc', next: 'c2b', en: '¿Yo? Llevo veinte años viviendo aquí — nunca me cansa. ¿Y usted?', tr: TR("Me? I've lived here twenty years — never get tired of it. And you?", 'אני? גר כאן עשרים שנה — לא נמאס לי אף פעם. ואתה?'), he: 'אני? גר כאן עשרים שנה — לא נמאס לי אף פעם. ואתה?' },
     { id: 'c2b', who: 'you', en: '', he: '', choices: [
-      { en: '¿Cuánto cuesta este?', tr: TR('How much is this one?', 'כמה זה עולה?'), he: 'כמה זה עולה?', itemId: 'es.phrase.gift.how-much-this', correct: true, next: 'n3' },
+      { en: 'Me encanta la comida de aquí.', tr: TR('I love the food here.', 'אני אוהב את האוכל כאן.'), he: 'אני אוהב את האוכל כאן.', itemId: 'es.phrase.talk.love-food', correct: true, next: 'n3' },
     ] },
-    { id: 'n3', who: 'npc', next: 'c3', en: 'Ese cuesta quince. ¿Lo quiere?', tr: TR("That one's fifteen. Would you like it?", 'זה עולה חמש-עשרה. תרצה אותו?'), he: 'זה עולה חמש-עשרה. תרצה אותו?' },
+    { id: 'n3', who: 'npc', next: 'c3', en: '¡La comida es lo mejor! Debería visitar el casco antiguo — unos restaurantes pequeños maravillosos.', tr: TR('The food is the best part! You should try the old town — wonderful little restaurants.', 'האוכל זה הכי טוב! כדאי לך לנסות את העיר העתיקה — מסעדות קטנות נפלאות.'), he: 'האוכל זה הכי טוב! כדאי לך לנסות את העיר העתיקה — מסעדות קטנות נפלאות.' },
     { id: 'c3', who: 'you', en: '', he: '', choices: [
-      { en: 'Me llevo este.', tr: TR("I'll take this one.", 'אני אקח את זה.'), he: 'אני אקח את זה.', itemId: 'es.phrase.gift.take-this', correct: true, next: 'n4' },
+      { en: '¿Me puede recomendar un sitio?', tr: TR('Can you recommend a place?', 'אתה יכול להמליץ על מקום?'), he: 'אתה יכול להמליץ על מקום?', itemId: 'es.phrase.talk.recommend-place', correct: true, next: 'n4' },
       { en: 'Más despacio, por favor.', tr: TR('Please speak slowly.', 'דבר לאט, בבקשה.'), he: 'דבר לאט, בבקשה.', itemId: 'es.phrase.recovery.slowly', correct: true, next: 'r3' },
     ] },
-    { id: 'r3', who: 'npc', slow: true, next: 'c3b', en: 'Ese — cuesta — quince.', tr: TR('That one — is — fifteen.', 'זה — עולה — חמש-עשרה.'), he: 'זה — עולה — חמש-עשרה.' },
+    { id: 'r3', who: 'npc', slow: true, next: 'c3b', en: 'Debería — visitar — el casco antiguo.', tr: TR('You should — try — the old town.', 'כדאי לך — לנסות — את העיר העתיקה.'), he: 'כדאי לך — לנסות — את העיר העתיקה.' },
     { id: 'c3b', who: 'you', en: '', he: '', choices: [
-      { en: 'Me llevo este.', tr: TR("I'll take this one.", 'אני אקח את זה.'), he: 'אני אקח את זה.', itemId: 'es.phrase.gift.take-this', correct: true, next: 'n4' },
+      { en: '¿Me puede recomendar un sitio?', tr: TR('Can you recommend a place?', 'אתה יכול להמליץ על מקום?'), he: 'אתה יכול להמליץ על מקום?', itemId: 'es.phrase.talk.recommend-place', correct: true, next: 'n4' },
     ] },
-    { id: 'n4', who: 'npc', next: 'c4', en: 'Muy buena elección — ¿es para regalo?', tr: TR('Lovely choice — is it a gift?', 'בחירה נהדרת — זה מתנה?'), he: 'בחירה נהדרת — זה מתנה?' },
+    { id: 'n4', who: 'npc', next: 'c4', en: 'Claro — «Mamá Rosa». Pregunte por la dueña y dígale que la mando yo.', tr: TR("Of course — 'Mama Rosa'. Ask for the owner and tell her I sent you!", "בטח — 'מאמא רוזה'. תבקש את הבעלים ותגיד שאני שלחתי!"), he: "בטח — 'מאמא רוזה'. תבקש את הבעלים ותגיד שאני שלחתי!" },
     { id: 'c4', who: 'you', en: '', he: '', choices: [
-      { en: '¿Me lo puede envolver para regalo?', tr: TR('Could you gift-wrap it?', 'אפשר לעטוף למתנה?'), he: 'אפשר לעטוף למתנה?', itemId: 'es.phrase.gift.gift-wrap', correct: true, next: 'n5' },
-      { en: '¡Gracias!', tr: TR('Thank you!', 'תודה!'), he: 'תודה!', itemId: 'es.phrase.recovery.thank-you', correct: true, next: 'n5' },
+      { en: 'Ha sido un placer hablar con usted.', tr: TR('It was nice talking to you.', 'היה נעים לדבר איתך.'), he: 'היה נעים לדבר איתך.', itemId: 'es.phrase.talk.nice-talking', correct: true, next: 'n5' },
+      { en: '¿Puede repetir, por favor?', tr: TR('Can you repeat that?', 'אפשר לחזור על זה?'), he: 'אפשר לחזור על זה?', itemId: 'es.phrase.recovery.repeat', correct: true, next: 'r4' },
     ] },
-    { id: 'n5', who: 'npc', end: true, en: 'Ya está envuelto — aquí tiene. ¡Que lo disfrute, y buen viaje!', tr: TR('All wrapped up — here you go. Enjoy, and safe travels!', 'הכל עטוף — בבקשה. תיהנה, ונסיעה טובה!'), he: 'הכל עטוף — בבקשה. תיהנה, ונסיעה טובה!' },
+    { id: 'r4', who: 'npc', slow: true, next: 'c4b', en: '«Mamá Rosa» — pregunte — por la dueña.', tr: TR("'Mama Rosa' — ask — for the owner.", "'מאמא רוזה' — תבקש — את הבעלים."), he: "'מאמא רוזה' — תבקש — את הבעלים." },
+    { id: 'c4b', who: 'you', en: '', he: '', choices: [
+      { en: 'Ha sido un placer hablar con usted.', tr: TR('It was nice talking to you.', 'היה נעים לדבר איתך.'), he: 'היה נעים לדבר איתך.', itemId: 'es.phrase.talk.nice-talking', correct: true, next: 'n5' },
+    ] },
+    { id: 'n5', who: 'npc', end: true, en: '¡Yo también! ¡Que disfrute del resto del viaje!', tr: TR('You too! Enjoy the rest of your trip!', 'גם לי! תיהנה משאר הטיול!'), he: 'גם לי! תיהנה משאר הטיול!' },
   ],
 };
 
 export const DAY22_ES: BootcampDayContent = {
   day: 22,
-  title: T('מזכרות ומתנות', 'Souvenirs & Gifts'),
+  title: T('שיחת חולין', 'Small Talk'),
   items: DAY22_ES_ITEMS,
-  dialogues: { 'souvenir-shop': SCENE_SOUVENIR },
+  dialogues: { 'small-talk': SCENE_TALK },
   steps: [
-    { kind: 'talk', icon: '🎁', title: T('משימה 22: מזכרות ומתנות', 'Mission 22: Souvenirs & Gifts'),
+    { kind: 'talk', icon: '💬', title: T('משימה 22: שיחת חולין', 'Mission 22: Small Talk'),
       body: [
-        T('חנויות הן טריטוריה ידידותית. היום קונים מתנה — בלי לחץ ובלי מבוכה.', 'Shops are friendly territory. Today you buy a gift — no pressure, no awkwardness.'),
-        T('להסתכל בשקט, לשאול מחיר, לבקש צבע אחר, לעטוף. אתה קונה כמו בן אדם.', 'Browse in peace, ask a price, ask for another color, get it wrapped. You shop like a person.'),
-      ], cta: T('להיכנס לחנות', 'Walk into the shop') },
-    { kind: 'tool', itemId: 'es.phrase.gift.just-looking', index: 1, total: 4, label: T('להסתכל בשקט', 'Browse in peace') },
-    { kind: 'tool', itemId: 'es.phrase.gift.how-much-this', index: 2, total: 4, label: T('לשאול מחיר', 'Ask the price') },
-    { kind: 'tool', itemId: 'es.phrase.gift.different-color', index: 3, total: 4, label: T('לבקש גרסה אחרת', 'Ask for another version') },
-    { kind: 'tool', itemId: 'es.phrase.gift.gift-wrap', index: 4, total: 4, label: T('לעטוף למתנה', 'Have it wrapped') },
-    { kind: 'replies', saidItemId: 'es.phrase.gift.just-looking',
-      replyIds: ['es.reply.gift.help-find', 'es.reply.gift.handmade', 'es.reply.gift.which-color', 'es.reply.gift.is-it-gift'] },
-    { kind: 'receipt', text: T('אתה מזהה את פניות המוכר — עזרה, מידע על המוצר, צבע, עטיפה.', 'You recognize the shopkeeper’s lines — offer to help, product info, color, wrapping.') },
-    { kind: 'quiz', itemId: 'es.reply.gift.which-color', wrongIds: ['es.reply.gift.handmade', 'es.reply.gift.last-one'] },
-    { kind: 'quiz', itemId: 'es.reply.gift.is-it-gift', wrongIds: ['es.reply.gift.help-find', 'es.reply.gift.thatll-be'] },
-    { kind: 'dialogue', dialogueId: 'souvenir-shop' },
-    { kind: 'receipt', text: T('בחרת מתנה, שאלת מחיר, וביקשת עטיפה — קנייה שלמה ונינוחה.', 'You chose a gift, asked a price, and had it wrapped — a full, relaxed purchase.') },
+        T('עד עכשיו למדנו עסקאות. היום לומדים חיבור — שלוש דקות חמות עם זר.', 'So far we learned transactions. Today we learn connection — three warm minutes with a stranger.'),
+        T('מחמאה, שאלה בחזרה, המלצה, ופרידה חמה. את הטיול זוכרים דרך הרגעים האלה.', 'A compliment, a question back, a recommendation, a warm goodbye. A trip is remembered through these moments.'),
+      ], cta: T('להתחיל שיחה', 'Start a conversation') },
+    { kind: 'tool', itemId: 'es.phrase.talk.beautiful-place', index: 1, total: 4, label: T('מחמאה פותחת', 'An opening compliment') },
+    { kind: 'tool', itemId: 'es.phrase.talk.how-about-you', index: 2, total: 4, label: T('להחזיר את הכדור', 'Pass the ball back') },
+    { kind: 'tool', itemId: 'es.phrase.talk.recommend-place', index: 3, total: 4, label: T('לבקש המלצה', 'Ask for a tip') },
+    { kind: 'tool', itemId: 'es.phrase.talk.nice-talking', index: 4, total: 4, label: T('פרידה חמה', 'A warm goodbye') },
+    { kind: 'replies', saidItemId: 'es.phrase.talk.beautiful-place',
+      replyIds: ['es.reply.talk.first-time-q', 'es.reply.talk.where-from', 'es.reply.talk.you-should-try', 'es.reply.talk.how-long-here'] },
+    { kind: 'receipt', text: T('אתה מזהה את השאלות הסקרניות שכל מקומי ידידותי שואל.', 'You recognize the curious questions every friendly local asks.') },
+    { kind: 'quiz', itemId: 'es.reply.talk.you-should-try', wrongIds: ['es.reply.talk.first-time-q', 'es.reply.talk.enjoy-rest'] },
+    { kind: 'quiz', itemId: 'es.reply.talk.how-long-here', wrongIds: ['es.reply.talk.where-from', 'es.reply.talk.me-too'] },
+    { kind: 'dialogue', dialogueId: 'small-talk' },
+    { kind: 'receipt', text: T('ניהלת שיחת חולין שלמה — מחמאה, שאלות, המלצה, ופרידה חמה.', 'You held a full small-talk conversation — compliment, questions, recommendation, and a warm goodbye.') },
     { kind: 'swipe', itemIds: DAY22_ES_ITEMS.map((i) => i.id) },
-    { kind: 'ambush', npc: { en: 'Hoy tenemos una oferta, dos y el tercero gratis — ¿quiere añadir un segundo?', tr: TR("We've got a buy-two-get-one-free deal on today would you like to add a second one?", 'יש לנו היום מבצע קנה-שניים-קבל-אחד-חינם — תרצה להוסיף עוד אחד?'), he: 'יש לנו היום מבצע קנה-שניים-קבל-אחד-חינם — תרצה להוסיף עוד אחד?' },
-      correctItemId: 'es.phrase.recovery.slowly', wrongItemId: 'es.phrase.gift.gift-wrap' },
-    { kind: 'receipt', text: T('הצעת מבצע מהירה — וביקשת שיאט כדי להבין לפני שאתה מחליט.', 'A fast deal offer — and you asked them to slow down so you could understand before deciding.') },
+    { kind: 'ambush', npc: { en: 'Y, sinceramente, ¿qué es lo que más le ha gustado del viaje hasta ahora?', tr: TR("So honestly what's been your favorite thing about the trip so far?", 'אז בכנות — מה הדבר האהוב עליך בטיול עד עכשיו?'), he: 'אז בכנות — מה הדבר האהוב עליך בטיול עד עכשיו?' },
+      correctItemId: 'es.phrase.talk.love-food', wrongItemId: 'es.phrase.talk.recommend-place' },
+    { kind: 'receipt', text: T('שאלה אישית ופתוחה — וידעת לענות משהו אמיתי, בחיוך.', 'A personal, open question — and you knew how to answer something real, with a smile.') },
     { kind: 'summary' },
   ],
 };

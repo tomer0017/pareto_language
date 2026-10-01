@@ -50,14 +50,15 @@ export interface BootcampDialogue {
   id: string;
   start: string;
   nodes: DialogueNodeB[];
-  /** Coaching mode (Mission 1): label recovery lines as survival tools, and after each pick
-   *  explain why it's more/less useful before continuing. Opt-in — other missions run as-is. */
+  /** Coaching mode: label recovery lines as survival tools, and after each pick
+   *  explain why it's more/less useful before continuing. Opt-in — no current mission enables it
+   *  (it belonged to the retired Recovery Toolkit mission); every mission runs as-is. */
   coaching?: boolean;
 }
 
 /**
  * Optional intro/review video for a mission (Sprint: video-first). Lives in public/ and is
- * referenced by its public path (e.g. "/videos/En_day2.mp4"). Entirely optional — a mission
+ * referenced by its public path (e.g. "/videos/En_day1.mp4"). Entirely optional — a mission
  * without a video plays exactly as before, and a missing/failed file degrades gracefully.
  */
 export interface BootcampVideo {

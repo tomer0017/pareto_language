@@ -2,111 +2,93 @@ import { T, recovery } from './recovery.js';
 import type { BootcampDayContent, BootcampDialogue, BootcampItem } from './types.js';
 
 /**
- * Mission 14 — "Special Requests & Allergies" (Phase 3 · Food).
- * Rare need, catastrophic to lack. You learn to keep your body safe in any kitchen:
- * allergies, "without ___", vegetarian, and checking an ingredient before it reaches you.
- * Said clearly, once, calmly — the kitchen does the rest.
+ * Mission 14 — "Paying Anywhere" (Phase 3 · Food).
+ * The awkward payment moment disappears. Every transaction-closer in one place: card, cash,
+ * the smooth tip line, the receipt. Consolidates Mission 2's numbers into muscle memory
+ * across every counter you'll ever stand at.
  */
 export const DAY14_ITEMS: BootcampItem[] = [
   // say
-  { id: 'en.phrase.diet.allergic-nuts', text: "I'm allergic to nuts.", meaning: T('אני אלרגי לאגוזים.', "I'm allergic to nuts."),
-    tip: T('התבנית שמצילה: I’m allergic to ___. אומרים ברור, פעם אחת, בלי היסוס.', 'The life-saving template: I’m allergic to ___. Say it clearly, once, no hesitation.') },
-  { id: 'en.phrase.diet.without-onions', text: 'Without onions, please.', meaning: T('בלי בצל, בבקשה.', 'Without onions, please.'),
-    tip: T('התבנית: Without ___ — מסירה כל מרכיב שלא בא לך.', 'Template: Without ___ — removes any ingredient you don’t want.') },
-  { id: 'en.phrase.diet.vegetarian', text: "I'm vegetarian.", meaning: T('אני צמחוני.', "I'm vegetarian."),
-    tip: T('שתי מילים שחוסכות עשר שאלות.', 'Two words that save ten questions.') },
-  { id: 'en.phrase.diet.does-have-dairy', text: 'Does this have dairy?', meaning: T('יש בזה מוצרי חלב?', 'Does this have dairy?'),
-    tip: T('התבנית: Does this have ___? — בודקת כל מרכיב לפני שהוא מגיע אליך.', 'Template: Does this have ___? — checks any ingredient before it reaches you.') },
-  { id: 'en.phrase.diet.is-spicy', text: 'Is this spicy?', meaning: T('זה חריף?', 'Is this spicy?') },
-  // hear — the kitchen's replies
-  { id: 'en.reply.diet.let-me-check', text: 'Let me check with the kitchen.', meaning: T('אבדוק עם המטבח.', 'Let me check with the kitchen.') },
-  { id: 'en.reply.diet.make-without', text: 'We can make it without.', meaning: T('אפשר להכין בלי.', 'We can make it without.') },
-  { id: 'en.reply.diet.contains-nuts', text: 'That one contains nuts.', meaning: T('זה מכיל אגוזים.', 'That one contains nuts.') },
-  { id: 'en.reply.diet.not-spicy', text: "No, it's not spicy.", meaning: T('לא, זה לא חריף.', "No, it's not spicy.") },
-  { id: 'en.reply.diet.good-option', text: 'This one is a good option for you.', meaning: T('זו אפשרות טובה בשבילך.', 'This one is a good option for you.') },
-  { id: 'en.reply.diet.anything-else-allergic', text: "Anything else you're allergic to?", meaning: T('עוד משהו שאתה אלרגי אליו?', "Anything else you're allergic to?") },
+  { id: 'en.phrase.pay.by-card', text: "I'll pay by card.", meaning: T('אני אשלם בכרטיס.', "I'll pay by card."),
+    tip: T('התבנית: I’ll pay by ___ / in ___. by card · in cash.', 'Template: I’ll pay by ___ / in ___. by card · in cash.') },
+  { id: 'en.phrase.pay.by-cash', text: "I'll pay in cash.", meaning: T('אני אשלם במזומן.', "I'll pay in cash.") },
+  { id: 'en.phrase.pay.keep-change', text: 'Keep the change.', meaning: T('תשמור את העודף.', 'Keep the change.'),
+    tip: T('הדרך החלקה לתת טיפ במזומן. שלוש מילים, חיוך גדול.', 'The smooth way to tip in cash. Three words, big smile.') },
+  { id: 'en.phrase.pay.receipt-please', text: 'Could I have a receipt?', meaning: T('אפשר קבלה?', 'Could I have a receipt?') },
+  { id: 'en.phrase.pay.together', text: 'All together, please.', meaning: T('הכל ביחד, בבקשה.', 'All together, please.'),
+    tip: T('התשובה ל-"ביחד או בנפרד?" כשמשלמים על כולם.', 'The answer to “together or separate?” when you pay for everyone.') },
+  // hear — the counter's replies
+  { id: 'en.reply.pay.thatll-be', text: "That'll be twelve fifty.", meaning: T('זה יוצא שתים-עשרה וחצי.', "That'll be twelve fifty.") },
+  { id: 'en.reply.pay.cash-card', text: 'Cash or card?', meaning: T('מזומן או כרטיס?', 'Cash or card?') },
+  { id: 'en.reply.pay.tap-card', text: 'You can tap your card.', meaning: T('אפשר להצמיד את הכרטיס.', 'You can tap your card.') },
+  { id: 'en.reply.pay.receipt-q', text: 'Would you like a receipt?', meaning: T('תרצה קבלה?', 'Would you like a receipt?') },
+  { id: 'en.reply.pay.together-separate', text: 'Together or separate?', meaning: T('ביחד או בנפרד?', 'Together or separate?') },
+  { id: 'en.reply.pay.heres-change', text: "Here's your change.", meaning: T('הנה העודף שלך.', "Here's your change.") },
   ...recovery('en.phrase.recovery.repeat', 'en.phrase.recovery.slowly', 'en.phrase.recovery.thank-you'),
 ];
 
-const SCENE_ALLERGY: BootcampDialogue = {
-  id: 'allergy-order',
+const SCENE_CHECKOUT: BootcampDialogue = {
+  id: 'pay-checkout',
   start: 'n1',
   nodes: [
-    { id: 'n1', who: 'npc', next: 'c1', en: 'Hi there! Are you ready to order?', he: 'היי! מוכן להזמין?' },
+    { id: 'n1', who: 'npc', next: 'c1', en: "All done? That'll be twelve fifty.", he: 'סיימנו? זה יוצא שתים-עשרה וחצי.' },
     { id: 'c1', who: 'you', en: '', he: '', choices: [
-      { en: "I'm allergic to nuts.", he: 'אני אלרגי לאגוזים. (אומרים קודם כל — לפני ההזמנה)', itemId: 'en.phrase.diet.allergic-nuts', correct: true, next: 'n2' },
-      { en: 'Please speak slowly.', he: 'דבר לאט, בבקשה.', itemId: 'en.phrase.recovery.slowly', correct: true, next: 'r1' },
+      { en: "I'll pay by card.", he: 'אני אשלם בכרטיס.', itemId: 'en.phrase.pay.by-card', correct: true, next: 'n2' },
+      { en: "I'll pay in cash.", he: 'אני אשלם במזומן.', itemId: 'en.phrase.pay.by-cash', correct: true, next: 'n1b' },
     ] },
-    { id: 'r1', who: 'npc', slow: true, next: 'c1b', en: 'Sure — are you ready to order?', he: 'בטח — מוכן להזמין?' },
+    { id: 'n1b', who: 'npc', next: 'c1b', en: "Cash is perfect — here's your change from twenty.", he: 'מזומן מצוין — הנה העודף שלך מעשרים.' },
     { id: 'c1b', who: 'you', en: '', he: '', choices: [
-      { en: "I'm allergic to nuts.", he: 'אני אלרגי לאגוזים.', itemId: 'en.phrase.diet.allergic-nuts', correct: true, next: 'n2' },
+      { en: 'Keep the change.', he: 'תשמור את העודף.', itemId: 'en.phrase.pay.keep-change', correct: true, next: 'n3' },
+      { en: 'Thank you!', he: 'תודה!', itemId: 'en.phrase.recovery.thank-you', correct: true, next: 'n3' },
     ] },
-    { id: 'n2', who: 'npc', next: 'c2', en: "Thank you for telling me — that's important. Anything else you're allergic to?", he: 'תודה שאמרת — זה חשוב. עוד משהו שאתה אלרגי אליו?' },
+    { id: 'n2', who: 'npc', next: 'c2', en: 'Perfect — you can tap your card right here.', he: 'מצוין — אפשר להצמיד את הכרטיס כאן.' },
     { id: 'c2', who: 'you', en: '', he: '', choices: [
-      { en: "I'm vegetarian.", he: 'אני צמחוני.', itemId: 'en.phrase.diet.vegetarian', correct: true, next: 'n3' },
-      { en: 'Thank you!', he: 'תודה! (מנומס — אבל הוא שאל שאלה)', itemId: 'en.phrase.recovery.thank-you', correct: false, next: 'r2' },
+      { en: 'Could I have a receipt?', he: 'אפשר קבלה?', itemId: 'en.phrase.pay.receipt-please', correct: true, next: 'n3' },
+      { en: 'Can you repeat that?', he: 'אפשר לחזור על זה?', itemId: 'en.phrase.recovery.repeat', correct: true, next: 'r2' },
     ] },
-    { id: 'r2', who: 'npc', next: 'c2b', en: 'Of course — but is there anything else I should know?', he: 'כמובן — אבל יש עוד משהו שכדאי שאדע?' },
+    { id: 'r2', who: 'npc', slow: true, next: 'c2b', en: 'You can — tap — your card — here.', he: 'אפשר — להצמיד — את הכרטיס — כאן.' },
     { id: 'c2b', who: 'you', en: '', he: '', choices: [
-      { en: "I'm vegetarian.", he: 'אני צמחוני.', itemId: 'en.phrase.diet.vegetarian', correct: true, next: 'n3' },
+      { en: 'Could I have a receipt?', he: 'אפשר קבלה?', itemId: 'en.phrase.pay.receipt-please', correct: true, next: 'n3' },
     ] },
-    { id: 'n3', who: 'npc', next: 'c3', en: 'Got it — no nuts, vegetarian. The mushroom risotto is a good option for you.', he: 'הבנתי — בלי אגוזים, צמחוני. ריזוטו הפטריות אפשרות טובה בשבילך.' },
+    { id: 'n3', who: 'npc', next: 'c3', en: "That's very kind, thank you! Anything else?", he: 'מאוד נחמד, תודה! עוד משהו?' },
     { id: 'c3', who: 'you', en: '', he: '', choices: [
-      { en: 'Does this have dairy?', he: 'יש בזה מוצרי חלב?', itemId: 'en.phrase.diet.does-have-dairy', correct: true, next: 'n4' },
-      { en: 'Can you repeat that?', he: 'אפשר לחזור על זה?', itemId: 'en.phrase.recovery.repeat', correct: true, next: 'r3' },
+      { en: "That's all, thanks.", he: 'זה הכל, תודה.', correct: true, next: 'n4' },
+      { en: 'Please speak slowly.', he: 'דבר לאט, בבקשה.', itemId: 'en.phrase.recovery.slowly', correct: true, next: 'r3' },
     ] },
-    { id: 'r3', who: 'npc', slow: true, next: 'c3b', en: 'The — mushroom — risotto — is good for you.', he: 'ריזוטו — הפטריות — טוב — בשבילך.' },
+    { id: 'r3', who: 'npc', slow: true, next: 'c3b', en: 'Is there — anything — else?', he: 'יש — עוד — משהו?' },
     { id: 'c3b', who: 'you', en: '', he: '', choices: [
-      { en: 'Does this have dairy?', he: 'יש בזה מוצרי חלב?', itemId: 'en.phrase.diet.does-have-dairy', correct: true, next: 'n4' },
+      { en: "That's all, thanks.", he: 'זה הכל, תודה.', correct: true, next: 'n4' },
     ] },
-    { id: 'n4', who: 'npc', next: 'c4', en: 'Good question — it has a little cream, but we can make it without.', he: 'שאלה טובה — יש בו קצת שמנת, אבל אפשר להכין בלי.' },
-    { id: 'c4', who: 'you', en: '', he: '', choices: [
-      { en: 'Without onions, please.', he: 'בלי בצל, בבקשה.', itemId: 'en.phrase.diet.without-onions', correct: true, next: 'n5' },
-      { en: 'Is this spicy?', he: 'זה חריף?', itemId: 'en.phrase.diet.is-spicy', correct: true, next: 'n4b' },
-    ] },
-    { id: 'n4b', who: 'npc', next: 'c4b', en: "Not at all — it's very mild.", he: 'ממש לא — הוא עדין מאוד.' },
-    { id: 'c4b', who: 'you', en: '', he: '', choices: [
-      { en: 'Without onions, please.', he: 'בלי בצל, בבקשה.', itemId: 'en.phrase.diet.without-onions', correct: true, next: 'n5' },
-    ] },
-    { id: 'n5', who: 'npc', next: 'c5', en: "No onions, no problem — and I'll make sure the kitchen knows about the nuts.", he: 'בלי בצל, אין בעיה — ואוודא שהמטבח יודע על האגוזים.' },
-    { id: 'c5', who: 'you', en: '', he: '', choices: [
-      { en: 'Thank you!', he: 'תודה!', itemId: 'en.phrase.recovery.thank-you', correct: true, next: 'n6' },
-      { en: 'Please speak slowly.', he: 'דבר לאט, בבקשה.', itemId: 'en.phrase.recovery.slowly', correct: true, next: 'r5' },
-    ] },
-    { id: 'r5', who: 'npc', slow: true, next: 'c5b', en: "I'll tell — the kitchen — about the nuts.", he: 'אני אגיד — למטבח — על האגוזים.' },
-    { id: 'c5b', who: 'you', en: '', he: '', choices: [
-      { en: 'Thank you!', he: 'תודה!', itemId: 'en.phrase.recovery.thank-you', correct: true, next: 'n6' },
-    ] },
-    { id: 'n6', who: 'npc', end: true, en: 'Perfect. Your food will be completely safe. Enjoy!', he: 'מושלם. האוכל שלך יהיה בטוח לגמרי. בתיאבון!' },
+    { id: 'n4', who: 'npc', end: true, en: "Here's your receipt. Thank you — have a great day!", he: 'הנה הקבלה שלך. תודה — שיהיה יום מעולה!' },
   ],
 };
 
 export const DAY14: BootcampDayContent = {
   day: 14,
-  title: T('בקשות מיוחדות ואלרגיות', 'Special Requests & Allergies'),
+  title: T('לשלם בכל מקום', 'Paying Anywhere'),
   items: DAY14_ITEMS,
-  dialogues: { 'allergy-order': SCENE_ALLERGY },
+  dialogues: { 'pay-checkout': SCENE_CHECKOUT },
   steps: [
-    { kind: 'talk', icon: '🥜', title: T('משימה 14: בקשות מיוחדות ואלרגיות', 'Mission 14: Special Requests & Allergies'),
+    { kind: 'talk', icon: '💳', title: T('משימה 14: לשלם בכל מקום', 'Mission 14: Paying Anywhere'),
       body: [
-        T('יש מילים שאתה אולי תצטרך רק פעם אחת בחיים — אבל אז הן קריטיות.', 'Some words you may need only once in your life — but then they’re critical.'),
-        T('היום נלמד לשמור על הגוף שלך בכל מטבח: אלרגיה, "בלי", צמחוני, ובדיקת מרכיב.', 'Today we learn to keep your body safe in any kitchen: allergy, “without”, vegetarian, and checking an ingredient.'),
-      ], cta: T('לשבת ולהזמין בבטחה', 'Sit down and order safely') },
-    { kind: 'tool', itemId: 'en.phrase.diet.allergic-nuts', index: 1, total: 4, label: T('המשפט שמציל', 'The line that protects') },
-    { kind: 'tool', itemId: 'en.phrase.diet.without-onions', index: 2, total: 4, label: T('להסיר מרכיב', 'Remove an ingredient') },
-    { kind: 'tool', itemId: 'en.phrase.diet.vegetarian', index: 3, total: 4, label: T('להגדיר את עצמך', 'Define yourself') },
-    { kind: 'tool', itemId: 'en.phrase.diet.does-have-dairy', index: 4, total: 4, label: T('לבדוק מרכיב', 'Check an ingredient') },
-    { kind: 'replies', saidItemId: 'en.phrase.diet.allergic-nuts',
-      replyIds: ['en.reply.diet.let-me-check', 'en.reply.diet.make-without', 'en.reply.diet.contains-nuts', 'en.reply.diet.good-option'] },
-    { kind: 'receipt', text: T('אתה מזהה איך המטבח מגיב לאלרגיה — בדיקה, אזהרה, ופתרון.', 'You recognize how a kitchen responds to an allergy — check, warning, and solution.') },
-    { kind: 'quiz', itemId: 'en.reply.diet.contains-nuts', wrongIds: ['en.reply.diet.make-without', 'en.reply.diet.good-option'] },
-    { kind: 'quiz', itemId: 'en.reply.diet.let-me-check', wrongIds: ['en.reply.diet.not-spicy', 'en.reply.diet.contains-nuts'] },
-    { kind: 'dialogue', dialogueId: 'allergy-order' },
-    { kind: 'receipt', text: T('הזמנת ארוחה בטוחה לגמרי — אלרגיה, צמחוני, בלי בצל, בדיקת מרכיבים.', 'You ordered a completely safe meal — allergy, vegetarian, no onions, ingredients checked.') },
+        T('הרגע המביך של התשלום נעלם היום. כל דרך לסגור עסקה — במקום אחד.', 'The awkward payment moment disappears today. Every way to close a transaction — in one place.'),
+        T('כרטיס, מזומן, טיפ חלק, קבלה. אחרי היום אתה סוגר עסקאות בלי להסס.', 'Card, cash, a smooth tip, a receipt. After today you close transactions without hesitating.'),
+      ], cta: T('לגשת לקופה', 'Step up to the counter') },
+    { kind: 'tool', itemId: 'en.phrase.pay.by-card', index: 1, total: 4, label: T('לבחור אמצעי תשלום', 'Choose how to pay') },
+    { kind: 'tool', itemId: 'en.phrase.pay.by-cash', index: 2, total: 4, label: T('לשלם במזומן', 'Pay in cash') },
+    { kind: 'tool', itemId: 'en.phrase.pay.keep-change', index: 3, total: 4, label: T('הטיפ החלק', 'The smooth tip') },
+    { kind: 'tool', itemId: 'en.phrase.pay.receipt-please', index: 4, total: 4, label: T('לבקש קבלה', 'Ask for a receipt') },
+    { kind: 'replies', saidItemId: 'en.phrase.pay.by-card',
+      replyIds: ['en.reply.pay.cash-card', 'en.reply.pay.tap-card', 'en.reply.pay.receipt-q', 'en.reply.pay.together-separate'] },
+    { kind: 'receipt', text: T('אתה מזהה כל שאלה של קופאי — מזומן/כרטיס, קבלה, ביחד/בנפרד.', 'You recognize every cashier question — cash/card, receipt, together/separate.') },
+    { kind: 'quiz', itemId: 'en.reply.pay.cash-card', wrongIds: ['en.reply.pay.receipt-q', 'en.reply.pay.together-separate'] },
+    { kind: 'quiz', itemId: 'en.reply.pay.together-separate', wrongIds: ['en.reply.pay.tap-card', 'en.reply.pay.heres-change'] },
+    { kind: 'dialogue', dialogueId: 'pay-checkout' },
+    { kind: 'receipt', text: T('סגרת תשלום שלם — בחרת אמצעי, נתת טיפ, וביקשת קבלה. חלק לגמרי.', 'You closed a full payment — chose a method, tipped, and asked for a receipt. Completely smooth.') },
     { kind: 'swipe', itemIds: DAY14_ITEMS.map((i) => i.id) },
-    { kind: 'ambush', npc: { en: 'Just to be safe does your nut allergy mean we should avoid the shared fryer too?', he: 'רק ליתר ביטחון — האלרגיה לאגוזים אומרת שכדאי להימנע גם מהמטגן המשותף?' },
-      correctItemId: 'en.phrase.recovery.repeat', wrongItemId: 'en.phrase.diet.vegetarian' },
-    { kind: 'receipt', text: T('שאלת בטיחות מפורטת ומהירה — וביקשת שיחזרו במקום לנחש. עם אלרגיה, זה בדיוק הצעד הנכון.', 'A detailed, fast safety question — and you asked them to repeat instead of guessing. With an allergy, exactly the right move.') },
+    { kind: 'ambush', npc: { en: "Ah sorry the card machine is down right now do you have any cash on you?", he: 'אה, סליחה, מכונת הכרטיסים מושבתת כרגע — יש עליך מזומן?' },
+      correctItemId: 'en.phrase.pay.by-cash', wrongItemId: 'en.phrase.pay.receipt-please' },
+    { kind: 'receipt', text: T('הכרטיס לא עבד — ובלי היסוס עברת למזומן. גמישות היא ביטחון.', 'The card failed — and without hesitation you switched to cash. Flexibility is confidence.') },
     { kind: 'summary' },
   ],
 };

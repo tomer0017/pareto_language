@@ -3,6 +3,8 @@ import { useAppStore } from '../../shared/stores/appStore.js';
 import { L, t } from '../../shared/i18n/strings.js';
 import { success, tap } from '../../shared/ui/haptics.js';
 import { missionsFor, useBootcampStore } from '../bootcamp/bootcampStore.js';
+import { BackButton } from '../../shared/ui/PageHeader.js';
+import { Icon } from '../../shared/ui/Icon.js';
 import { VideoPlayer } from '../bootcamp/Bootcamp.js';
 import type { BootcampVideo } from '../bootcamp/types.js';
 import { pickOne } from '../../shared/util/shuffle.js';
@@ -12,8 +14,8 @@ import { pickOne } from '../../shared/util/shuffle.js';
  * ends (or the learner says so), ask "Did you understand everything?" → either load another random
  * video, or drop into the exact Mission Hub that owns this video (Practice / Transcript / Video,
  * unchanged). Videos are the missions' optional `introVideo`s — sourced from the ACTIVE learning
- * language's missions, so a language with no videos (e.g. French) shows the honest empty state
- * instead of leaking English videos. Only English Mission 2 ships one today.
+ * language's missions, so a language with no videos (e.g. Spanish) shows the honest empty state
+ * instead of leaking English videos.
  */
 interface VideoEntry { day: number; video: BootcampVideo }
 
@@ -56,7 +58,7 @@ export function Videos() {
     return (
       <div className="screen">
         <div className="topbar">
-          <button className="btn-ghost" onClick={() => app.navigate('home')}>{t('back')}</button>
+          <BackButton onBack={() => app.navigate('listen')} />
           <span className="chip">🎬 {t('videosTitle')}</span>
           <span style={{ width: 44 }} />
         </div>
@@ -68,7 +70,7 @@ export function Videos() {
           </div>
         </div>
         <div className="action-zone">
-          <button className="btn-primary" onClick={() => app.navigate('home')}>{t('backHome')}</button>
+          <button className="btn-primary" onClick={() => app.navigate('listen')}>{t('back')}</button>
         </div>
       </div>
     );
@@ -77,7 +79,7 @@ export function Videos() {
   return (
     <div className="screen">
       <div className="topbar">
-        <button className="btn-ghost" onClick={() => app.navigate('home')}>{t('back')}</button>
+        <BackButton onBack={() => app.navigate('listen')} />
         <span className="chip">🎬 {current.video.title ? L(current.video.title) : t('videosTitle')}</span>
         <span style={{ width: 44 }} />
       </div>
@@ -85,10 +87,11 @@ export function Videos() {
         <p className="dim center" style={{ marginBottom: 12 }}>{t('videosWatchHint')}</p>
         <VideoPlayer key={current.day} video={current.video} onEnded={() => success()} />
       </div>
-      {/* After watching, two honest next steps — no intermediate "I finished watching" popup. */}
+      {/* One guided next step (practice the situation this conversation belongs to); another video
+          is a quiet alternative. The learner is never asked to certify "I understood everything". */}
       <div className="action-zone">
-        <button className="btn-primary" onClick={practice}>🎯 {t('videoWantPractice')}</button>
-        <button className="btn-secondary" onClick={() => { tap(); next(); }}>✅ {t('videoUnderstoodAll')}</button>
+        <button className="btn-primary btn-icon" onClick={practice}>{t('videoWantPractice')}<Icon name="arrow" size={18} flip /></button>
+        <button className="btn-ghost" style={{ alignSelf: 'center' }} onClick={() => { tap(); next(); }}>{t('videoAnother')}</button>
       </div>
     </div>
   );

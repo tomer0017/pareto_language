@@ -1,4 +1,4 @@
-# READY Bootcamp — Conversations & Content (all 30 missions)
+# READY Bootcamp — Conversations & Content (all 29 missions)
 
 > **Auto-generated** from the Bootcamp source data by `scripts/gen-conversations.ts`.
 > Do not edit by hand — edit the mission files under `apps/web/src/features/bootcamp/`,
@@ -10,54 +10,12 @@
 **wrong / recovery branches** that teach why a pick is more or less useful.
 
 Missions are dialogue trees; the happy path is the canonical conversation used by the in-app
-transcript reader. Checkpoints (10, 18, 24, 30) and a few integration days reuse earlier items
+transcript reader. Checkpoints (9, 17, 23, 29) and a few integration days reuse earlier items
 and carry no new phrases — that is expected, not missing content.
 
 ---
 
-## Mission 1 — Recovery Toolkit · ערכת חילוץ — כשלא מבינים
-
-> Phase 1 · 🛟 Foundations
-
-**Objective:** The 7 survival tools — for when you don’t understand or get stuck. Optional, anytime. · שבעת כלי ההישרדות — למקרה שלא הבנת או נתקעת. אופציונלי, בכל רגע.
-
-**Confidence gain:** When you don’t understand — you always have a way out. · כשלא מבינים — תמיד יש מוצא.
-
-**Estimated time:** ~20 min
-
-**Video:** — (none yet)
-
-### Recovery tools reused
-`Sorry, I don't understand.` · `Can you repeat that?` · `Please speak slowly.` · `Can you show me?` · `One moment, please.` · `Thank you!` · `Sorry!`
-
-### Cold open (ambush)
-- 🧑 (fast) “Would you like the receipt with that or is email okay for you?” · רוצה קבלה מודפסת או שאימייל בסדר?
-  - ✅ best move: **Please speak slowly.** · דבר לאט, בבקשה.
-  - ✗ distractor: Thank you!
-
-### Dialogue: `stuck-traveler` — happy path
-- **🧑 Them:** “Hi there! What can I get you today — we've got a special on the flat white!” · היי! מה להביא לך היום — יש מבצע על flat white (אספרסו עם חלב מוקצף)!
-- **🫵 You:** “Sorry, I don't understand.” · סליחה, אני לא מבין.
-- **🧑 Them:** “No problem! Coffee? Tea?” · אין בעיה! קפה? תה?
-- **🫵 You:** “One moment, please.” · רגע אחד, בבקשה.
-- **🧑 Them:** “Sure, take your time.” · בטח, קח את הזמן.
-- **🫵 You:** “Coffee, please.” · קפה, בבקשה.
-- **🧑 Them:** “Here you go!” · בבקשה, הנה!
-- **🫵 You:** “Thank you!” · תודה!
-- **🧑 Them:** “Enjoy!” · תהנה!
-
-#### Wrong / recovery branches
-- ⚠︎ less useful: 🫵 “Goodbye!” — coach: _לצאת עכשיו זה לוותר על הקפה. כלי הישרדות היה משאיר אותך בפנים — בלי לחץ._ → 🧑 “Oh — wait, don't go! I can help. Coffee?” · רגע — אל תלך! אני אעזור. קפה?
-- ⚠︎ less useful: 🫵 “My name is Dan.” — coach: _הצגת את עצמך — אבל הוא שאל מה תרצה. פה כלי הישרדות עוזר לך יותר._ → 🧑 “Ha! Nice to meet you, Dan. So… coffee, or tea?” · נעים מאוד, דן! אז… קפה או תה?
-- ⚠︎ less useful: 🫵 “Please speak slowly.” — coach: _"דבר לאט" הוא כלי מעולה — אבל הוא רק אמר "בבקשה, הנה". פה תודה מתאימה יותר._ → 🧑 “Ha — I only said: HERE — YOU — GO!” · הא — רק אמרתי: בבקשה, הנה!
-
-### Review status
-- 🤖 AI-drafted (English + Hebrew) — **pending human / native-Hebrew review**
-- ✅ all items have Hebrew
-
----
-
-## Mission 2 — Introduce Myself · להציג את עצמי
+## Mission 1 — Introduce Myself · להציג את עצמי
 
 > Phase 1 · 🛟 Foundations
 
@@ -67,7 +25,7 @@ and carry no new phrases — that is expected, not missing content.
 
 **Estimated time:** ~20 min
 
-**Video:** `/videos/En_day2.mp4`
+**Video:** `/videos/En_day1.mp4`
 
 ### Core phrases (you say)
 - **My name is Dan.** · קוראים לי דן. — _התבנית: My name is ___ — פשוט תחליף את השם._
@@ -111,7 +69,7 @@ _Reply-training drill:_ “Where are you from?” · “Is this your first time 
 
 ---
 
-## Mission 3 — Numbers & Money · כסף ומספרים
+## Mission 2 — Numbers & Money · כסף ומספרים
 
 > Phase 1 · 🛟 Foundations
 
@@ -121,7 +79,7 @@ _Reply-training drill:_ “Where are you from?” · “Is this your first time 
 
 **Estimated time:** ~20 min
 
-**Video:** `/videos/En_day3.mp4`
+**Video:** `/videos/En_day2.mp4`
 
 ### Core phrases (you say)
 - **How much is it?** · כמה זה עולה? — _השאלה שפותחת כל עסקה. תלמד אותה עד הסוף._
@@ -165,7 +123,7 @@ _Reply-training drill:_ “That's five euros.” · “That'll be ten euros.” 
 
 ---
 
-## Mission 4 — Coffee Shop · בית קפה
+## Mission 3 — Coffee Shop · בית קפה
 
 > Phase 1 · 🛟 Foundations
 
@@ -175,7 +133,7 @@ _Reply-training drill:_ “That's five euros.” · “That'll be ten euros.” 
 
 **Estimated time:** ~22 min
 
-**Video:** `/videos/En_day4.mp4`
+**Video:** `/videos/En_day3.mp4`
 
 ### Core phrases (you say)
 - **I'd like an iced coffee, please.** · אני רוצה קפה קר, בבקשה. — _התבנית: I’d like ___, please — עובדת על הכל._
@@ -200,7 +158,7 @@ _Reply-training drill:_ “That's five euros.” · “That'll be ten euros.” 
 _Reply-training drill:_ “For here or to go?” · “Medium or large?” · “Milk and sugar?” · “Would you like anything else?”
 
 ### Recovery tools reused
-`Can you repeat that?` · `Please speak slowly.` · `One moment, please.` · `Thank you!`
+`One moment, please.` · `Can you repeat that?` · `Please speak slowly.` · `Thank you!`
 
 ### Cold open (ambush)
 - 🧑 (fast) “Sorry we are out of croissants would a muffin be okay instead?” · סליחה, נגמרו הקרואסונים — מאפין במקום זה בסדר?
@@ -233,7 +191,7 @@ _Reply-training drill:_ “For here or to go?” · “Medium or large?” · �
 
 ---
 
-## Mission 5 — Restaurant Meal · ארוחה במסעדה
+## Mission 4 — Restaurant Meal · ארוחה במסעדה
 
 > Phase 1 · 🛟 Foundations
 
@@ -243,7 +201,7 @@ _Reply-training drill:_ “For here or to go?” · “Medium or large?” · �
 
 **Estimated time:** ~22 min
 
-**Video:** `/videos/En_day5.mp4`
+**Video:** `/videos/En_day4.mp4`
 
 ### Core phrases (you say)
 - **A table for two, please.** · שולחן לשניים, בבקשה. — _הפתיח למסעדה. תבנית: a table for ___._
@@ -293,7 +251,7 @@ _Reply-training drill:_ “Anything to drink?” · “Are you ready to order?�
 
 ---
 
-## Mission 6 — Directions · כיוונים
+## Mission 5 — Directions · כיוונים
 
 > Phase 1 · 🛟 Foundations
 
@@ -348,7 +306,7 @@ _Reply-training drill:_ “It's on the left.” · “It's on the right.” · �
 
 ---
 
-## Mission 7 — Taxi / Uber · מונית
+## Mission 6 — Taxi / Uber · מונית
 
 > Phase 2 · 🛬 Arrival
 
@@ -358,7 +316,7 @@ _Reply-training drill:_ “It's on the left.” · “It's on the right.” · �
 
 **Estimated time:** ~20 min
 
-**Video:** `/videos/En_day7.mp4`
+**Video:** `/videos/En_day6.mp4`
 
 ### Core phrases (you say)
 - **To this address, please.** · לכתובת הזאת, בבקשה. — _הפתיח למונית — תגיד את זה ותראה את הכתובת בטלפון._
@@ -403,17 +361,17 @@ _Reply-training drill:_ “Where to?” · “It's about fifteen euros.” · �
 
 ---
 
-## Mission 8 — Hotel Check-in · צ'ק-אין במלון
+## Mission 7 — Hotel Check-in · צ'ק-אין במלון
 
 > Phase 2 · 🛬 Arrival
 
-**Objective:** Reservation → name → key → floor → breakfast. · הזמנה → שם → מפתח → קומה → ארוחת בוקר.
+**Objective:** Reservation → name → key → floor → breakfast. · הזמנה ← שם ← מפתח ← קומה ← ארוחת בוקר.
 
 **Confidence gain:** Home base secured. · בסיס הבית מובטח.
 
 **Estimated time:** ~20 min
 
-**Video:** `/videos/En_day8.mp4`
+**Video:** `/videos/En_day7.mp4`
 
 ### Core phrases (you say)
 - **I have a reservation.** · יש לי הזמנה. — _הפתיח לדלפק המלון. תבנית: I have a ___._
@@ -456,7 +414,7 @@ _Reply-training drill:_ “Your passport, please.” · “You're in room two-oh
 
 ---
 
-## Mission 9 — Shopping · קניות
+## Mission 8 — Shopping · קניות
 
 > Phase 2 · 🛬 Arrival
 
@@ -466,7 +424,7 @@ _Reply-training drill:_ “Your passport, please.” · “You're in room two-oh
 
 **Estimated time:** ~20 min
 
-**Video:** `/videos/En_day9.mp4`
+**Video:** `/videos/En_day8.mp4`
 
 ### Core phrases (you say)
 - **I'm just looking, thanks.** · אני רק מסתכל, תודה. — _משפט שקונה לך מרחב בלי לחץ מוכר._
@@ -510,11 +468,11 @@ _Reply-training drill:_ “What size are you?” · “The fitting room is over 
 
 ---
 
-## Mission 10 — Arrival Day Checkpoint · נקודת ביקורת: יום הגעה
+## Mission 9 — Arrival Day Checkpoint · נקודת ביקורת: יום הגעה
 
 > Phase 2 · 🛬 Arrival · 🏁 CHECKPOINT
 
-**Objective:** Cold chain: taxi → hotel. Unannounced, minimal subtitles. · שרשור קר: מונית → מלון. בלי הכנה, בלי כתוביות מלאות.
+**Objective:** Cold chain: taxi → hotel. Unannounced, minimal subtitles. · שרשור קר: מונית ← מלון. בלי הכנה, בלי כתוביות מלאות.
 
 **Confidence gain:** Proof: a full arrival day, survivable. · הוכחה: יום הגעה שלם — שריד.
 
@@ -566,7 +524,7 @@ _Reply-training drill:_ “What size are you?” · “The fitting room is over 
 
 ---
 
-## Mission 11 — Airport & Border · שדה תעופה וגבול
+## Mission 10 — Airport & Border · שדה תעופה וגבול
 
 > Phase 2 · 🛬 Arrival
 
@@ -576,7 +534,7 @@ _Reply-training drill:_ “What size are you?” · “The fitting room is over 
 
 **Estimated time:** ~20 min
 
-**Video:** `/videos/En_day11.mp4`
+**Video:** `/videos/En_day10.mp4`
 
 ### Core phrases (you say)
 - **Here is my passport.** · הנה הדרכון שלי. — _מגישים ואומרים. שלוש מילים שפותחות כל גבול._
@@ -626,7 +584,7 @@ _Reply-training drill:_ “What's the purpose of your visit?” · “How long a
 
 ---
 
-## Mission 12 — Hotel Requests & Problems · בקשות ובעיות במלון
+## Mission 11 — Hotel Requests & Problems · בקשות ובעיות במלון
 
 > Phase 2 · 🛬 Arrival
 
@@ -685,7 +643,7 @@ _Reply-training drill:_ “I'll send someone right away.” · “I'm so sorry a
 
 ---
 
-## Mission 13 — Restaurant Basics · מסעדה — בסיס
+## Mission 12 — Restaurant Basics · מסעדה — בסיס
 
 > Phase 3 · 🍽️ Food
 
@@ -747,7 +705,7 @@ _Reply-training drill:_ “Something to drink?” · “Are you ready to order?�
 
 ---
 
-## Mission 14 — Special Requests & Allergies · בקשות מיוחדות ואלרגיות
+## Mission 13 — Special Requests & Allergies · בקשות מיוחדות ואלרגיות
 
 > Phase 3 · 🍽️ Food
 
@@ -806,7 +764,7 @@ _Reply-training drill:_ “Let me check with the kitchen.” · “We can make i
 
 ---
 
-## Mission 15 — Paying Anywhere · לשלם בכל מקום
+## Mission 14 — Paying Anywhere · לשלם בכל מקום
 
 > Phase 3 · 🍽️ Food
 
@@ -858,7 +816,7 @@ _Reply-training drill:_ “Cash or card?” · “You can tap your card.” · �
 
 ---
 
-## Mission 16 — Street Food & Markets · אוכל רחוב ושווקים
+## Mission 15 — Street Food & Markets · אוכל רחוב ושווקים
 
 > Phase 3 · 🍽️ Food
 
@@ -912,7 +870,7 @@ _Reply-training drill:_ “How many?” · “Five each.” · “For you — be
 
 ---
 
-## Mission 17 — Supermarket · סופרמרקט
+## Mission 16 — Supermarket · סופרמרקט
 
 > Phase 3 · 🍽️ Food
 
@@ -967,7 +925,7 @@ _Reply-training drill:_ “It's in aisle three.” · “Over there, on the left
 
 ---
 
-## Mission 18 — CHECKPOINT: Food Day · נקודת ביקורת: יום אוכל
+## Mission 17 — CHECKPOINT: Food Day · נקודת ביקורת: יום אוכל
 
 > Phase 3 · 🍽️ Food · 🏁 CHECKPOINT
 
@@ -1031,7 +989,7 @@ _Reply-training drill:_ “It's in aisle three.” · “Over there, on the left
 
 ---
 
-## Mission 19 — Public Transport · תחבורה ציבורית
+## Mission 18 — Public Transport · תחבורה ציבורית
 
 > Phase 4 · 🏙️ City Life
 
@@ -1088,7 +1046,7 @@ _Reply-training drill:_ “Single or return?” · “Platform two.” · “Eve
 
 ---
 
-## Mission 20 — Tickets & Attractions · כרטיסים ואטרקציות
+## Mission 19 — Tickets & Attractions · כרטיסים ואטרקציות
 
 > Phase 4 · 🏙️ City Life
 
@@ -1143,7 +1101,7 @@ _Reply-training drill:_ “How many tickets?” · “We open at nine.” · “
 
 ---
 
-## Mission 21 — Wifi, SIM & Practical · וויי-פיי, סים ופרקטיקה
+## Mission 20 — Wifi, SIM & Practical · וויי-פיי, סים ופרקטיקה
 
 > Phase 4 · 🏙️ City Life
 
@@ -1198,7 +1156,7 @@ _Reply-training drill:_ “How long are you staying?” · “This one has ten g
 
 ---
 
-## Mission 22 — Souvenirs & Gifts · מזכרות ומתנות
+## Mission 21 — Souvenirs & Gifts · מזכרות ומתנות
 
 > Phase 4 · 🏙️ City Life
 
@@ -1252,7 +1210,7 @@ _Reply-training drill:_ “Can I help you find anything?” · “These are hand
 
 ---
 
-## Mission 23 — Small Talk · שיחת חולין
+## Mission 22 — Small Talk · שיחת חולין
 
 > Phase 4 · 🏙️ City Life
 
@@ -1306,11 +1264,11 @@ _Reply-training drill:_ “Is this your first time here?” · “Where are you 
 
 ---
 
-## Mission 24 — CHECKPOINT: City Day · נקודת ביקורת: יום עיר
+## Mission 23 — CHECKPOINT: City Day · נקודת ביקורת: יום עיר
 
 > Phase 4 · 🏙️ City Life · 🏁 CHECKPOINT
 
-**Objective:** Transport → attraction → shopping → chat. Cold, chained. · תחבורה → אטרקציה → קניות → שיחה. קר, ברצף.
+**Objective:** Transport → attraction → shopping → chat. Cold, chained. · תחבורה ← אטרקציה ← קניות ← שיחה. קר, ברצף.
 
 **Confidence gain:** A foreign city = home turf. · עיר זרה = מגרש ביתי.
 
@@ -1364,7 +1322,7 @@ _Reply-training drill:_ “Is this your first time here?” · “Where are you 
 
 ---
 
-## Mission 25 — Fixing Problems · לתקן בעיה
+## Mission 24 — Fixing Problems · לתקן בעיה
 
 > Phase 5 · 🎖️ Mastery
 
@@ -1423,7 +1381,7 @@ _Reply-training drill:_ “I'm so sorry about that.” · “I'll bring the righ
 
 ---
 
-## Mission 26 — Pharmacy & Health · בית מרקחת ובריאות
+## Mission 25 — Pharmacy & Health · בית מרקחת ובריאות
 
 > Phase 5 · 🎖️ Mastery
 
@@ -1482,7 +1440,7 @@ _Reply-training drill:_ “What's the matter?” · “Any allergies?” · “T
 
 ---
 
-## Mission 27 — Emergency · חירום
+## Mission 26 — Emergency · חירום
 
 > Phase 5 · 🎖️ Mastery
 
@@ -1541,7 +1499,7 @@ _Reply-training drill:_ “What's wrong?” · “Are you hurt?” · “Where a
 
 ---
 
-## Mission 28 — No Subtitles · בלי כתוביות
+## Mission 27 — No Subtitles · בלי כתוביות
 
 > Phase 5 · 🎖️ Mastery
 
@@ -1599,11 +1557,11 @@ _Reply-training drill:_ “What's wrong?” · “Are you hurt?” · “Where a
 
 ---
 
-## Mission 29 — Dress Rehearsal: Full Evening · חזרה גנרלית: ערב שלם
+## Mission 28 — Dress Rehearsal: Full Evening · חזרה גנרלית: ערב שלם
 
 > Phase 5 · 🎖️ Mastery
 
-**Objective:** Taxi → restaurant → problem → payment. One take. · מונית → מסעדה → תקלה → תשלום. טייק אחד.
+**Objective:** Taxi → restaurant → problem → payment. One take. · מונית ← מסעדה ← תקלה ← תשלום. טייק אחד.
 
 **Confidence gain:** Chained moments feel like one flow. · רצף רגעים = זרימה אחת.
 
@@ -1663,7 +1621,7 @@ _Reply-training drill:_ “What's wrong?” · “Are you hurt?” · “Where a
 
 ---
 
-## Mission 30 — A Complete Day Abroad Alone · יום שלם לבד בחו״ל
+## Mission 29 — A Complete Day Abroad Alone · יום שלם לבד בחו״ל
 
 > Phase 5 · 🎖️ Mastery · 🏁 CHECKPOINT
 

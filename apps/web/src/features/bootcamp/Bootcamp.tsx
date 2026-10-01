@@ -7,20 +7,19 @@ import { AnswerFeedback, type AnswerContext } from '../../shared/ui/AnswerFeedba
 import { buildComprehensionContext, buildRespondContext } from '../../shared/ui/answerContext.js';
 import { feedbackWrong } from '../../shared/ui/feedbackCue.js';
 import { success, tap } from '../../shared/ui/haptics.js';
-import { LangStrip } from '../../shared/ui/LangStrip.js';
-import { Modal, ModalActions } from '../../shared/ui/Modal.js';
-import { getAudioDiag, subscribeAudioDiag, testAudio, unlockAudio } from '../../shared/audio/tts.js';
-import { useSyncExternalStore } from 'react';
-import { BOOTCAMP_PLAN, CORE_MISSIONS, SPECIAL_MISSIONS, PHASES, missionNumber } from './plan.js';
+import { BOOTCAMP_PLAN, missionNumber, nextMission } from './plan.js';
+import { missionIcon, missionJourney, missionPhases, phaseOfIndex, primaryDialogue, type JourneyStepId, type JourneyStepState } from './missionFlow.js';
+import { Learn } from './Learn.js';
 import { missionsFor, useBootcampStore } from './bootcampStore.js';
-import type { BootcampItem, BootcampStep, BootcampDialogue, BootcampDayContent, BootcampVideo, DialogueChoice } from './types.js';
+import type { BootcampItem, BootcampStep, BootcampDialogue, BootcampVideo, DialogueChoice } from './types.js';
 import { dialogueTranscript } from './transcript.js';
 import { dialogueTr } from './i18n.js';
 import { shuffle, mulberry32, sessionSeed } from '../../shared/util/shuffle.js';
 import { FoundationHint } from '../foundation/FoundationHint.js';
-import { FoundationOnboarding } from '../foundation/FoundationOnboarding.js';
 import { TappableText, TargetText } from '../foundation/TappableText.js';
 import { useParrotPlayback, PlaybackControls, type PlaybackItem } from '../../shared/playback/index.js';
+import { Icon, type IconName } from '../../shared/ui/Icon.js';
+import { BackButton } from '../../shared/ui/PageHeader.js';
 
 /** Resolve a public asset path (e.g. "/videos/x.mp4") against the app's base so it works in
  *  dev, on the deployed sub-path, and inside the PWA. Absolute URLs pass through unchanged. */
@@ -37,15 +36,8 @@ function speakL(text: string, rate?: number): ReturnType<typeof speak> {
   return speak(text, useAppStore.getState().learningLang, rate);
 }
 
-/** The mission's canonical dialogue — used by the full-conversation reader (start + summary). */
-function primaryDialogue(day: BootcampDayContent): BootcampDialogue | null {
-  const step = day.steps.find((s): s is Extract<BootcampStep, { kind: 'dialogue' }> => s.kind === 'dialogue');
-  const byStep = step ? day.dialogues[step.dialogueId] : undefined;
-  return byStep ?? Object.values(day.dialogues)[0] ?? null;
-}
-
 /**
- * READY Missions (Sprint 7): phase map + the generic MissionPlayer.
+ * READY Missions: the Learn list, the guided mission overview and the generic MissionPlayer.
  * Dialogues render one line at a time (visual novel) — the user never sees the
  * conversation in advance; wrong choices branch through recovery beats and continue.
  * Every screen answers: does this reduce fear?
@@ -54,214 +46,161 @@ function primaryDialogue(day: BootcampDayContent): BootcampDialogue | null {
 export function Bootcamp() {
   const activeDay = useBootcampStore((s) => s.activeDay);
   const stage = useBootcampStore((s) => s.stage);
-  if (activeDay === null) return <MissionMap />;
+  if (activeDay === null) return <Learn />;
   return stage === 'play' ? <MissionPlayer /> : <MissionHub />;
 }
 
-/* ── Mission Hub: three ways to learn, always available ──────────────────── */
+/* ── Mission overview: one guided journey ────────────────────────────────── */
 
-/** The home of a mission (20/80). Exactly three learning modes — Practice, Transcript, Video —
- *  each always reachable. Completing a mission never removes access; it just becomes "Practice
- *  again". Practice enters the unchanged Bootcamp step-flow; Transcript/Video open as overlays. */
+/**
+ * The home of a mission — ONE guided path, not a menu of modes:
+ *
+ *   Watch (or Listen) → Learn → Practice → Watch again
+ *
+ * The journey is shown as a short list so the learner sees what is coming, but there is exactly ONE
+ * primary action — "start / continue" — and it always runs the next step (`missionJourney`). A
+ * first-time learner never has to choose between "Learn" and "Practice". Once the mission is
+ * COMPLETED the steps become shortcuts for revisiting (a learner may jump straight to practice
+ * then), and the primary action is the reward: watch the conversation again.
+ *
+ * Learn and Practice are entries into the SAME unchanged step-flow (see missionFlow.ts); the
+ * pedagogy engine is untouched. The transcript and the video are tools inside this journey.
+ */
 function MissionHub() {
   const bc = useBootcampStore();
   const [showReader, setShowReader] = useState(false);
   const [showVideo, setShowVideo] = useState(false);
-  const [showResume, setShowResume] = useState(false);
+  // "Watched" is not stored progress, so it only steers the highlight within this visit.
+  const [watched, setWatched] = useState(false);
   useEffect(() => () => cancelSpeech(), []);
   const day = bc.currentDay();
   if (!day) return null;
   const convo = primaryDialogue(day);
   const video = day.introVideo;
+  const phases = missionPhases(day);
   const done = bc.completedDays.includes(day.day);
-  const resumable = (bc.stepIndex[String(day.day)] ?? 0) > 0 && !done;
-  const practiceCta = done ? t('practiceAgain') : resumable ? t('continuePractice') : t('startPractice');
-  // An in-progress (started but not completed) mission asks before dropping the learner mid-flow.
-  // A fresh mission starts immediately; a completed one keeps the existing "Practice again" (from 0).
-  const onPractice = () => (resumable ? setShowResume(true) : bc.enterPractice());
+  const saved = done ? 0 : (bc.stepIndex[String(day.day)] ?? 0);
+  const journey = missionJourney({ phases, canWatch: Boolean(video) || Boolean(convo), done, saved, watched });
+  const { primary } = journey;
+  // Where the guided path goes after watching/listening.
+  const afterWatch = phases.hasLearn ? phases.learnStart : phases.practiceStart;
+
+  // Watch = the video when the mission has one; otherwise the conversation itself, read aloud.
+  const watch = (): void => {
+    setWatched(true);
+    if (video) setShowVideo(true);
+    else if (convo) setShowReader(true);
+  };
+  const run = (step: JourneyStepId, resume = false): void => {
+    tap();
+    if (step === 'watch' || step === 'again') watch();
+    else if (resume) bc.enterPractice(); // continue exactly where the learner stopped
+    else bc.enterPractice(step === 'learn' ? phases.learnStart : phases.practiceStart);
+  };
 
   if (showReader && convo) return <DialogueReader dialogue={convo} onClose={() => setShowReader(false)} onFinish={() => { setShowReader(false); bc.toHub(); }} />;
-  if (showVideo && video) return <VideoOverlay video={video} onClose={() => setShowVideo(false)} />;
+  if (showVideo && video) {
+    return (
+      <VideoOverlay
+        video={video}
+        onClose={() => setShowVideo(false)}
+        // First pass through the mission: one obvious way forward. After completion the video is the
+        // reward — there is nothing to continue to.
+        onContinue={done ? undefined : () => { setShowVideo(false); bc.enterPractice(afterWatch); }}
+        continueLabel={phases.hasLearn ? t('continueLearning') : t('journeyToPractice')}
+      />
+    );
+  }
+
+  const number = missionNumber(day.day) ?? day.day;
+  const label: Record<JourneyStepId, { title: string; sub: string; icon: IconName }> = {
+    watch: video ? { title: t('stepWatch'), sub: t('stepWatchSub'), icon: 'play' } : { title: t('stepListen'), sub: t('stepListenSub'), icon: 'listen' },
+    learn: { title: t('stepLearn'), sub: t('stepLearnSub'), icon: 'learn' },
+    practice: { title: t('stepPractice'), sub: t('stepPracticeSub'), icon: 'chat' },
+    again: { title: video ? t('stepWatchAgain') : t('stepListenAgain'), sub: t('stepAgainSub'), icon: video ? 'play' : 'listen' },
+  };
+  const primaryLabel = primary.step === 'watch' ? (video ? t('journeyWatch') : t('journeyListen'))
+    : primary.step === 'again' ? label.again.title
+      : primary.step === 'learn' ? (primary.resume || journey.steps[0]?.id !== 'learn' ? t('continueLearning') : t('startLearning'))
+        : t('journeyToPractice');
 
   return (
     <div className="screen">
       <div className="topbar">
-        <button className="btn-ghost" onClick={() => { cancelSpeech(); bc.exit(); }}>{t('back')}</button>
-        <span className="chip">{missionNumber(day.day) ? `${t('mission')} ${missionNumber(day.day)}` : '🛟'}</span>
+        <BackButton onBack={() => { cancelSpeech(); bc.exit(); }} />
+        <span className="chip">{t('situationOf', { n: number, total: BOOTCAMP_PLAN.length })}</span>
         <span style={{ width: 44 }} />
       </div>
       <div className="screen-scroll no-nav">
-        <LangStrip />
-        <h1 style={{ textAlign: 'center', margin: '4px 0 6px' }}>🎖️ {L(day.title)}</h1>
-        <p className="center" style={{ marginBottom: 14 }}>
-          {done
-            ? <span className="badge badge-ready">{t('completed')}</span>
-            : <span className="dim small">{t('threeWaysToLearn')}</span>}
-        </p>
-
-        <HubCard
-          icon="🎯" iconBg="var(--brand-soft)"
-          title={t('practice')} desc={t('practiceCardDesc')}
-          cta={practiceCta} ctaClass="btn-primary" onClick={onPractice}
-        />
-        <HubCard
-          icon="📖" iconBg="var(--accent-soft)"
-          title={t('transcriptTitle')} desc={t('transcriptCardDesc')}
-          cta={t('openTranscript')} ctaClass="btn-secondary"
-          onClick={() => setShowReader(true)} disabled={!convo}
-        />
-        <HubCard
-          icon="🎬" iconBg="#dbeafe"
-          title={t('videoCardTitle')} desc={video ? t('videoCardDesc') : t('videoComingSoonDesc')}
-          cta={video ? t('watchVideoCta') : t('comingSoon')} ctaClass="btn-secondary"
-          onClick={() => setShowVideo(true)} disabled={!video}
-        />
-
-        <p className="faint small center" style={{ margin: '6px 4px 0' }}>ℹ️ {t('hubHint')}</p>
-      </div>
-
-      {showResume && (
-        <Modal icon="🎯" title={t('resumeTitle')} body={t('resumeBody')} onClose={() => setShowResume(false)}>
-          <ModalActions>
-            <button className="btn-primary" onClick={() => { tap(); setShowResume(false); bc.enterPractice(); }}>
-              {t('resumeContinue')}
-            </button>
-            <button className="btn-secondary" onClick={() => { tap(); setShowResume(false); bc.restartDay(); }}>
-              {t('resumeRestart')}
-            </button>
-          </ModalActions>
-        </Modal>
-      )}
-    </div>
-  );
-}
-
-function HubCard({ icon, iconBg, title, desc, cta, ctaClass, onClick, disabled }: {
-  icon: string; iconBg: string; title: string; desc: string; cta: string; ctaClass: string; onClick: () => void; disabled?: boolean;
-}) {
-  return (
-    <div className="card" style={{ opacity: disabled ? 0.6 : 1 }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 14 }}>
-        <span className="hub-icon" style={{ background: iconBg }}>{icon}</span>
-        <span style={{ minWidth: 0 }}>
-          <p style={{ fontWeight: 800, fontSize: '1.12rem' }}>{title}</p>
-          <p className="dim small">{desc}</p>
-        </span>
-      </div>
-      <button className={ctaClass} onClick={onClick} disabled={disabled}>{cta}{disabled ? '' : ' →'}</button>
-    </div>
-  );
-}
-
-/* ── The map: 30 missions in 5 phases ───────────────────────────────────── */
-
-/** One mission row in the map. `badge` is the number (numbered journey) or an icon (special). */
-function MissionCard({ mission, badge, special }: { mission: (typeof BOOTCAMP_PLAN)[number]; badge: string; special?: boolean }) {
-  const bc = useBootcampStore();
-  const learningLang = useAppStore((s) => s.learningLang);
-  const built = mission.day in missionsFor(learningLang);
-  // Completion/resume are gated by `built`: an unbuilt mission (e.g. an Early-Access "Coming Soon"
-  // one, or a mission another language completed) must never render as done or in-progress here.
-  const isDone = built && bc.completedDays.includes(mission.day);
-  const resumable = built && (bc.stepIndex[String(mission.day)] ?? 0) > 0 && !isDone;
-  const sub = isDone
-    ? t('completed')
-    : built
-      ? special
-        ? t('optionalMission')
-        : resumable
-          ? t('continueDay', { n: missionNumber(mission.day) ?? mission.day })
-          : `${mission.minutes} ${t('min')} · ${L(mission.confidenceGain)}`
-      : t('comingSoon');
-  return (
-    <button
-      className="game-card card-press"
-      disabled={!built}
-      style={built ? undefined : { opacity: 0.45 }}
-      onClick={() => { tap(); bc.startDay(mission.day); }}
-    >
-      <span className="game-icon" style={{ background: isDone ? 'var(--good)' : special ? 'var(--accent)' : built ? 'var(--brand)' : 'var(--line)' }}>
-        {isDone ? '✓' : badge}
-      </span>
-      <span>
-        <p style={{ fontWeight: 800 }}>
-          {L(mission.title)} {mission.checkpoint && <span className="badge badge-fading">{t('checkpointTag')}</span>}
-        </p>
-        <p className="dim small">{sub}</p>
-      </span>
-    </button>
-  );
-}
-
-function MissionMap() {
-  const app = useAppStore();
-  const bc = useBootcampStore();
-  // Progress counts the numbered journey only — the optional Recovery Toolkit doesn't gate it.
-  const total = CORE_MISSIONS.length;
-  const done = CORE_MISSIONS.filter((m) => bc.completedDays.includes(m.day)).length;
-  return (
-    <div className="screen">
-      {/* First arrival at the Bootcamp (per learning language): introduce the 🛟 Foundation button. */}
-      <FoundationOnboarding />
-      <div className="topbar">
-        <h2 style={{ margin: 0 }}>{t('bootcamp')}</h2>
-        <button className="btn-ghost" onClick={() => app.navigate('languages')} aria-label={t('settings')}>🌐</button>
-      </div>
-      <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
-        <div className="progress-track" style={{ flex: 1 }}>
-          <div className="progress-fill" style={{ width: `${(done / total) * 100}%` }} />
+        <div className="hub-hero">
+          <span className="icon-tile icon-tile-brand icon-tile-lg" aria-hidden>{missionIcon(day)}</span>
+          <h1>{L(day.title)}</h1>
+          {done && <p style={{ marginTop: 8 }}><span className="badge badge-ready">{t('completed')}</span></p>}
         </div>
-        <span className="dim small">{t('missionsProgress', { done, total })}</span>
+
+        <ol className="journey" aria-label={t('journeySteps')}>
+          {journey.steps.map((step, i) => (
+            <JourneyStep
+              key={step.id}
+              n={i + 1}
+              state={step.state}
+              reward={step.id === 'again'}
+              title={label[step.id].title}
+              sub={label[step.id].sub}
+              icon={<Icon name={label[step.id].icon} />}
+              // Shortcuts only when revisiting a completed mission.
+              onClick={journey.shortcuts ? () => run(step.id) : undefined}
+            />
+          ))}
+        </ol>
+        {!done && <p className="hint-card">💡 {video ? t('hubAfterHint') : t('hubAfterHintListen')}</p>}
+
+        {/* Quiet tools — never competing with the primary action. */}
+        <div className="hub-tools">
+          {convo && video && (
+            <button className="btn-link btn-icon" onClick={() => { tap(); setShowReader(true); }}>
+              <Icon name="list" size={18} />{t('openTranscript')}
+            </button>
+          )}
+          {primary.resume && (
+            <button className="btn-link" onClick={() => { tap(); bc.enterPractice(afterWatch); }}>{t('resumeRestart')}</button>
+          )}
+        </div>
+        {!video && <p className="faint small center" style={{ marginTop: 8 }}>{t('videoComingSoonDesc')}</p>}
       </div>
-      <div className="screen-scroll no-nav">
-        <LangStrip />
-        <AudioEnable />
-        {PHASES.map((phase) => {
-          const missions = CORE_MISSIONS.filter((m) => m.phase === phase.n);
-          if (missions.length === 0) return null;
-          return (
-            <div key={phase.n}>
-              <h3 style={{ margin: '14px 0 8px' }}>{phase.icon} {L(phase.title)}</h3>
-              {missions.map((m) => (
-                <MissionCard key={m.day} mission={m} badge={String(missionNumber(m.day))} />
-              ))}
-            </div>
-          );
-        })}
-        {SPECIAL_MISSIONS.length > 0 && (
-          <div>
-            <h3 style={{ margin: '18px 0 8px' }}>🛟 {t('specialMissions')}</h3>
-            {SPECIAL_MISSIONS.map((m) => (
-              <MissionCard key={m.day} mission={m} badge="🛟" special />
-            ))}
-          </div>
-        )}
+
+      <div className="action-zone">
+        <button className="btn-primary btn-icon breathe" onClick={() => run(primary.step, primary.resume)}>
+          {primaryLabel}
+          <Icon name={primary.step === 'watch' || primary.step === 'again' ? label[primary.step].icon : 'arrow'} size={20} flip={primary.step === 'learn' || primary.step === 'practice'} />
+        </button>
       </div>
     </div>
   );
 }
 
-function AudioEnable() {
-  const diag = useSyncExternalStore(subscribeAudioDiag, getAudioDiag, getAudioDiag);
-  const learningLang = useAppStore((s) => s.learningLang);
-  const [testing, setTesting] = useState(false);
-  return (
-    <button
-      className="card card-press"
-      style={{ width: '100%', textAlign: 'start', display: 'flex', alignItems: 'center', gap: 10, background: diag.unlocked ? 'var(--good-soft)' : 'var(--warn-soft)' }}
-      onClick={async () => {
-        unlockAudio();
-        setTesting(true);
-        await testAudio(learningLang);
-        setTesting(false);
-      }}
-    >
-      <span style={{ fontSize: '1.4rem' }}>{diag.unlocked ? '🔊' : '🔈'}</span>
-      <span>
-        <p style={{ fontWeight: 700 }}>{testing ? t('listenFirst') : diag.unlocked ? t('audioReady') : t('testAudioBtn')}</p>
-        {!diag.unlocked && <p className="dim small">{t('audioHint')}</p>}
+/** One step of the mission journey. A plain list item on the guided path; a button (shortcut) only
+ *  when `onClick` is given — i.e. when revisiting a completed mission. */
+function JourneyStep({ n, title, sub, icon, state, reward, onClick }: {
+  n: number; title: string; sub: string; icon: React.ReactNode; state: JourneyStepState; reward: boolean; onClick?: () => void;
+}) {
+  const cls = `jstep ${state === 'current' ? 'is-current' : ''} ${state === 'done' ? 'is-done' : ''} ${reward ? 'is-reward' : ''}`;
+  const body = (
+    <>
+      <span className="jstep-num" aria-hidden>{state === 'done' || reward ? <Icon name="check" size={20} /> : n}</span>
+      <span className="jstep-body">
+        <span className="jstep-title">{title}</span>
+        <span className="jstep-sub">{sub}</span>
       </span>
-    </button>
+      <span className={`icon-tile ${state === 'current' ? 'icon-tile-brand' : ''}`} aria-hidden>{icon}</span>
+    </>
+  );
+  return (
+    <li aria-current={state === 'current' ? 'step' : undefined}>
+      {onClick
+        ? <button className={`${cls} card-press`} onClick={onClick}>{body}</button>
+        : <div className={cls}>{body}</div>}
+    </li>
   );
 }
 
@@ -300,18 +239,28 @@ function MissionPlayer() {
   if (showVideo && video) return <VideoOverlay video={video} onClose={() => setShowVideo(false)} />;
   if (!step || step.kind === 'summary') return <VictoryScreen />;
   const progress = Math.round((bc.index / day.steps.length) * 100);
+  const phases = missionPhases(day);
+  const phase = phaseOfIndex(phases, bc.index);
 
   return (
     <div className="screen">
       <CheckPop trigger={checkTrigger} />
       <div className="topbar">
-        <button className="btn-ghost" onClick={back}>{t('back')}</button>
-        <span className="chip">🎖️ {L(day.title)}</span>
+        <BackButton onBack={back} />
+        <span className="chip">{missionIcon(day)} {L(day.title)}</span>
         <span style={{ width: 44 }} />
       </div>
-      <div className="progress-track" style={{ marginBottom: 10 }}>
+      <div className="progress-track" style={{ marginBottom: 8 }}>
         <div className="progress-fill brand" style={{ width: `${progress}%` }} />
       </div>
+      {/* The one orientation cue inside a lesson: where this step sits in the journey. */}
+      {phases.hasLearn && step.kind !== 'video' && (
+        <p className="phase-steps" aria-label={phase === 'learn' ? t('stepLearn') : t('stepPractice')}>
+          <span className={phase === 'learn' ? 'on' : ''}>{t('stepLearn')}</span>
+          <span className="sep" aria-hidden />
+          <span className={phase === 'practice' ? 'on' : ''}>{t('stepPractice')}</span>
+        </p>
+      )}
       {/* Smart Foundation Detection: a tiny, non-blocking nudge for the first building-block word in
           this mission the learner has never viewed. Learn now / Dismiss — never gates the lesson. */}
       <FoundationHint targets={day.items.map((i) => i.text)} />
@@ -661,7 +610,7 @@ function SwipeStep({ itemIds, itemsById, onDone }: { itemIds: string[]; itemsByI
 }
 
 /** Visual-novel dialogue: ONE exchange on screen, choices branch, no transcript spoilers.
- *  Coaching mode (Mission 1): survival-tool badges, a "pick a way out" hint, and a pause after
+ *  Coaching mode (opt-in per dialogue; no current mission enables it): survival-tool badges, a "pick a way out" hint, and a pause after
  *  each choice that reframes it as more/less useful — never right/wrong — before continuing. */
 function DialogueStep({ dialogue, onDone }: { dialogue: BootcampDialogue; onDone: () => void }) {
   const bc = useBootcampStore();
@@ -790,7 +739,7 @@ function DialogueStep({ dialogue, onDone }: { dialogue: BootcampDialogue; onDone
                     tap();
                     if (c.itemId) bc.recordDrill(c.itemId, 'simulator', c.correct ? 'pass' : 'partial');
                     setYourLine(c.en);
-                    // A wrong pick ALWAYS pauses (coaching card in Mission 1, "Not quite" card
+                    // A wrong pick ALWAYS pauses (coaching card in a coaching dialogue, "Not quite" card
                     // elsewhere) so the mistake registers before the NPC reacts. A FULL correct
                     // answer (the natural line, not merely a survival tool) now earns a short success
                     // screen too — it never just flashes past. Survival-tool picks stay fast (an
@@ -963,11 +912,11 @@ function VictoryScreen() {
   // "Mastered phrases" = the say-phrases this mission taught (recovery tools + replies excluded).
   const mastered = day.items.filter((i) => i.id.includes('.phrase.') && !i.id.includes('.phrase.recovery.'));
   const missions = missionsFor(learningLang);
-  const nextBuilt = BOOTCAMP_PLAN.find((m) => m.day > day.day && m.day in missions && !m.special && !bc.completedDays.includes(m.day));
-  // Early Access end-state: no further built numbered mission to do, but the language still has
-  // numbered missions "Coming Soon". The learner reached the edge of the built content — never
+  const nextBuilt = nextMission(day.day, (m) => m.day in missions, (m) => bc.completedDays.includes(m.day));
+  // Early Access end-state: no further built mission to do, but the language still has
+  // missions "Coming Soon". The learner reached the edge of the built content — never
   // route them into an unbuilt mission; celebrate the available set honestly.
-  const earlyAccessDone = !nextBuilt && CORE_MISSIONS.some((m) => !(m.day in missions));
+  const earlyAccessDone = !nextBuilt && BOOTCAMP_PLAN.some((m) => !(m.day in missions));
 
   if (showReader && convo) return <DialogueReader dialogue={convo} onClose={() => setShowReader(false)} onFinish={() => { setShowReader(false); bc.toHub(); }} />;
   if (showVideo && video) return <VideoOverlay video={video} onClose={() => setShowVideo(false)} />;
@@ -982,8 +931,8 @@ function VictoryScreen() {
     <div className="screen">
       <Confetti />
       <div className="topbar">
-        <button className="btn-ghost" onClick={() => { cancelSpeech(); bc.toHub(); }}>{t('back')}</button>
-        <span className="chip">{missionNumber(day.day) ? `${t('mission')} ${missionNumber(day.day)}` : '🛟'}</span>
+        <BackButton onBack={() => { cancelSpeech(); bc.toHub(); }} />
+        <span className="chip">{t('situationOf', { n: missionNumber(day.day) ?? day.day, total: BOOTCAMP_PLAN.length })}</span>
         <span style={{ width: 44 }} />
       </div>
       <div className="screen-scroll no-nav">
@@ -1051,8 +1000,9 @@ function VictoryScreen() {
       <div className="action-zone">
         <button className="btn-primary breathe" onClick={watch}>{t('watchFullConvo')}</button>
         {nextBuilt ? (
-          <button className="btn-ghost" onClick={() => bc.startDay(nextBuilt.day)}>
-            ▶ {t('nextMission', { title: L(nextBuilt.title) })}
+          <button className="btn-ghost btn-icon" style={{ alignSelf: 'center' }} onClick={() => bc.startDay(nextBuilt.day)}>
+            {t('nextMission', { title: L(nextBuilt.title) })}
+            <Icon name="arrow" size={18} flip />
           </button>
         ) : earlyAccessDone ? (
           <button className="btn-ghost" onClick={() => { cancelSpeech(); bc.exit(); }}>{t('earlyAccessBackToMap')}</button>
@@ -1079,7 +1029,7 @@ function DialogueReader({ dialogue, onClose, onFinish }: { dialogue: BootcampDia
     id: `${i}`, target: line.en, targetLang: learningLang, translation: dialogueTr(line), translationLang: uiLang,
   })), [lines, learningLang, uiLang]);
   // Remember the last-listened line per dialogue (by stable id) so returning refocuses it.
-  const pb = useParrotPlayback(items, { bookmarkKey: `transcript:${learningLang}:${dialogue.id}` });
+  const pb = useParrotPlayback(items, { scope: 'transcript', bookmarkKey: `transcript:${learningLang}:${dialogue.id}` });
   const current = pb.currentIndex;
 
   // Auto-scroll: keep the active line centred as playback (or stepping) moves through the sheet.
@@ -1090,9 +1040,9 @@ function DialogueReader({ dialogue, onClose, onFinish }: { dialogue: BootcampDia
   return (
     <div className="reader">
       <div className="topbar">
-        <button className="reader-back" onClick={() => { pb.pause(); onClose(); }} aria-label={t('back')}>←</button>
+        <BackButton onBack={() => { pb.pause(); onClose(); }} />
         <span className="chip">📖 {t('fullConversationTitle')}</span>
-        <span style={{ width: 52 }} />
+        <span style={{ width: 44 }} />
       </div>
       <p className="dim small" style={{ margin: '0 0 8px' }}>{t('studySheetSub')} · {t('lineProgress', { i: pb.position, n: pb.total })}</p>
       <div className="reader-scroll">
@@ -1180,18 +1130,27 @@ function VideoStep({ video, mode, onNext }: { video?: BootcampVideo; mode: 'intr
   );
 }
 
-/** Full-screen "Watch full conversation" overlay — reachable any time during the mission. */
-function VideoOverlay({ video, onClose }: { video: BootcampVideo; onClose: () => void }) {
+/** Full-screen "Watch full conversation" overlay — reachable any time during the mission. When
+ *  `onContinue` is given (the guided first pass) it offers ONE way forward; it never asks the
+ *  learner to judge whether they "understood everything". */
+function VideoOverlay({ video, onClose, onContinue, continueLabel }: { video: BootcampVideo; onClose: () => void; onContinue?: () => void; continueLabel?: string }) {
   return (
     <div className="reader">
       <div className="topbar">
-        <button className="btn-ghost" onClick={onClose} aria-label={t('close')}>←</button>
+        <BackButton onBack={onClose} />
         <span className="chip">🎬 {video.title ? L(video.title) : t('fullConversationTitle')}</span>
         <span style={{ width: 44 }} />
       </div>
       <div className="reader-scroll" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
         <VideoPlayer video={video} />
       </div>
+      {onContinue && (
+        <div className="reader-transport">
+          <button className="btn-primary btn-icon" onClick={() => { tap(); onContinue(); }}>
+            {continueLabel ?? t('continue')}<Icon name="arrow" size={20} flip />
+          </button>
+        </div>
+      )}
     </div>
   );
 }

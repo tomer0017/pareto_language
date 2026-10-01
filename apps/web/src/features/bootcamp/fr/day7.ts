@@ -3,96 +3,94 @@ import type { BootcampDayContent, BootcampDialogue, BootcampItem } from '../type
 import { recoveryFr } from './recovery.js';
 
 /**
- * French Mission 7 — "Taxi / VTC". French parallel of English day 7: same objective (destination →
- * price → stop, the address-show move), same step structure, same engine. French target lines +
- * `tr:{en,he}` glosses; `fr.*` ids. No French video yet. AI-drafted, vous, pending review.
+ * French Mission 7 — "Arrivée à l’hôtel" (Hotel Check-in). French parallel of English mission 7: same
+ * objective (reservation → passport → key → floor → breakfast), same step structure, same engine.
+ * French target lines + `tr:{en,he}` glosses; `fr.*` ids. No French video yet. AI-drafted, vous, pending review.
  */
 const T = (he: string, en: string): LocalizedText => ({ he, en });
 const TR = (en: string, he: string): LocalizedText => ({ en, he });
 
 export const DAY7_FR_ITEMS: BootcampItem[] = [
-  { id: 'fr.phrase.taxi.to-address', text: 'À cette adresse, s’il vous plaît.', meaning: T('לכתובת הזאת, בבקשה.', 'To this address, please.'),
-    tip: T('הפתיח למונית — תגיד את זה ותראה את הכתובת בטלפון.', 'The taxi opener — say it and show the address on your phone.') },
-  { id: 'fr.phrase.taxi.to-airport', text: 'À l’aéroport, s’il vous plaît.', meaning: T('לשדה התעופה, בבקשה.', 'To the airport, please.') },
-  { id: 'fr.phrase.taxi.how-much', text: 'C’est combien pour le centre ?', meaning: T('כמה עד המרכז?', 'How much to the centre?'),
-    tip: T('לשאול מחיר לפני שנוסעים — חוסך הפתעות.', 'Ask the price before you ride — no surprises.') },
-  { id: 'fr.phrase.taxi.stop-here', text: 'Arrêtez-vous ici, s’il vous plaît.', meaning: T('עצור כאן, בבקשה.', 'Stop here, please.'),
-    tip: T('העיתוי חשוב — תגיד את זה קצת לפני היעד.', 'Timing matters — say it just before the destination.') },
-  { id: 'fr.phrase.taxi.keep-change', text: 'Gardez la monnaie.', meaning: T('תשאיר את העודף.', 'Keep the change.') },
+  { id: 'fr.phrase.hotel.reservation', text: 'J’ai une réservation.', meaning: T('יש לי הזמנה.', 'I have a reservation.'),
+    tip: T('הפתיח לדלפק המלון. תבנית: J’ai une ___.', 'The front-desk opener. Template: J’ai une ___.') },
+  { id: 'fr.phrase.hotel.under-name', text: 'Au nom de Cohen.', meaning: T('על השם כהן.', 'Under the name Cohen.') },
+  { id: 'fr.phrase.hotel.two-nights', text: 'Pour deux nuits.', meaning: T('לשני לילות.', 'For two nights.'),
+    tip: T('תבנית: Pour ___ nuits — משך השהות.', 'Template: Pour ___ nuits — the length of your stay.') },
+  { id: 'fr.phrase.hotel.breakfast', text: 'Le petit-déjeuner est compris ?', meaning: T('ארוחת הבוקר כלולה?', 'Is breakfast included?') },
+  { id: 'fr.phrase.hotel.wifi', text: 'C’est quoi le mot de passe du wifi ?', meaning: T('מה סיסמת הוויי-פיי?', "What's the wifi password?") },
   // hear
-  { id: 'fr.reply.taxi.where-to', text: 'Où allez-vous ?', meaning: T('לאן?', 'Where to?') },
-  { id: 'fr.reply.taxi.about-fifteen', text: 'C’est environ quinze euros.', meaning: T('זה בערך חמישה עשר יורו.', "It's about fifteen euros.") },
-  { id: 'fr.reply.taxi.traffic', text: 'Il y a beaucoup de circulation en ce moment.', meaning: T('יש הרבה פקקים עכשיו.', "There's a lot of traffic right now.") },
-  { id: 'fr.reply.taxi.here-good', text: 'Ici, ça va ?', meaning: T('כאן זה בסדר?', 'Is here okay?') },
-  { id: 'fr.reply.taxi.first-visit', text: 'C’est votre première fois dans la ville ?', meaning: T('פעם ראשונה בעיר?', 'First time in the city?') },
-  ...recoveryFr('fr.phrase.recovery.slowly', 'fr.phrase.recovery.show-me', 'fr.phrase.recovery.thank-you'),
+  { id: 'fr.reply.hotel.passport', text: 'Votre passeport, s’il vous plaît.', meaning: T('הדרכון שלך, בבקשה.', 'Your passport, please.') },
+  { id: 'fr.reply.hotel.sign-here', text: 'Signez ici, s’il vous plaît.', meaning: T('תחתום כאן, בבקשה.', 'Sign here, please.') },
+  { id: 'fr.reply.hotel.room-number', text: 'Vous êtes dans la chambre deux cent quatre.', meaning: T('אתה בחדר 204.', "You're in room two-oh-four.") },
+  { id: 'fr.reply.hotel.second-floor', text: 'C’est au deuxième étage.', meaning: T('זה בקומה השנייה.', "It's on the second floor.") },
+  { id: 'fr.reply.hotel.breakfast-time', text: 'Le petit-déjeuner est de sept heures à dix heures.', meaning: T('ארוחת בוקר משבע עד עשר.', 'Breakfast is from seven to ten.') },
+  { id: 'fr.reply.hotel.elevator', text: 'L’ascenseur est sur votre droite.', meaning: T('המעלית מימינך.', 'The elevator is on your right.') },
+  ...recoveryFr('fr.phrase.recovery.repeat', 'fr.phrase.recovery.slowly', 'fr.phrase.recovery.thank-you', 'fr.phrase.recovery.one-moment'),
 ];
 
 const SCENE: BootcampDialogue = {
-  id: 'taxi-ride',
+  id: 'hotel-checkin',
   start: 'n1',
   nodes: [
-    { id: 'n1', who: 'npc', next: 'c1', en: 'Bonjour ! Où allez-vous ?', tr: TR('Hello! Where to?', 'שלום! לאן?'), he: 'שלום! לאן?' },
+    { id: 'n1', who: 'npc', next: 'c1', en: 'Bonsoir ! Comment puis-je vous aider ?', tr: TR('Good evening! How can I help you?', 'ערב טוב! איך אפשר לעזור?'), he: 'ערב טוב! איך אפשר לעזור?' },
     { id: 'c1', who: 'you', en: '', he: '', choices: [
-      { en: 'À cette adresse, s’il vous plaît.', tr: TR('To this address, please.', 'לכתובת הזאת, בבקשה.'), he: 'לכתובת הזאת, בבקשה.', itemId: 'fr.phrase.taxi.to-address', correct: true, next: 'n2' },
-      { en: 'À l’aéroport, s’il vous plaît.', tr: TR('To the airport, please.', 'לשדה התעופה, בבקשה.'), he: 'לשדה התעופה, בבקשה.', itemId: 'fr.phrase.taxi.to-airport', correct: true, next: 'n2' },
+      { en: 'J’ai une réservation, au nom de Cohen.', tr: TR('I have a reservation, under the name Cohen.', 'יש לי הזמנה, על השם כהן.'), he: 'יש לי הזמנה, על השם כהן.', itemId: 'fr.phrase.hotel.reservation', correct: true, next: 'n2' },
+      { en: 'Vous pouvez répéter ?', tr: TR('Can you repeat that?', 'אפשר לחזור על זה?'), he: 'אפשר לחזור על זה?', itemId: 'fr.phrase.recovery.repeat', correct: true, next: 'r1' },
     ] },
-    { id: 'n2', who: 'npc', next: 'c2', en: 'D’accord. Vous pensiez payer combien ?', tr: TR('Got it. How much did you expect to pay?', 'הבנתי. כמה חשבת לשלם?'), he: 'הבנתי. כמה חשבת לשלם?' },
+    { id: 'r1', who: 'npc', slow: true, next: 'c1b', en: 'Comment — puis-je — vous — aider ?', tr: TR('How — can — I — help you?', 'איך — אפשר — לעזור — לך?'), he: 'איך — אפשר — לעזור — לך?' },
+    { id: 'c1b', who: 'you', en: '', he: '', choices: [
+      { en: 'J’ai une réservation, au nom de Cohen.', tr: TR('I have a reservation, under the name Cohen.', 'יש לי הזמנה, על השם כהן.'), he: 'יש לי הזמנה, על השם כהן.', itemId: 'fr.phrase.hotel.reservation', correct: true, next: 'n2' },
+    ] },
+    { id: 'n2', who: 'npc', next: 'c2', en: 'Bienvenue, monsieur Cohen. Votre passeport, s’il vous plaît.', tr: TR('Welcome, Mr. Cohen. Your passport, please.', 'ברוך הבא, מר כהן. הדרכון שלך, בבקשה.'), he: 'ברוך הבא, מר כהן. הדרכון שלך, בבקשה.' },
     { id: 'c2', who: 'you', en: '', he: '', choices: [
-      { en: 'C’est combien pour le centre ?', tr: TR('How much to the centre?', 'כמה עד המרכז?'), he: 'כמה עד המרכז?', itemId: 'fr.phrase.taxi.how-much', correct: true, next: 'n3' },
-      { en: 'Vous pouvez me montrer ?', tr: TR('Can you show me?', 'אתה יכול להראות לי? (בקש לראות את המונה)'), he: 'אתה יכול להראות לי?', itemId: 'fr.phrase.recovery.show-me', correct: true, next: 'n3' },
+      { en: 'Voilà, tenez.', tr: TR('Here you go.', 'בבקשה, הנה.'), he: 'בבקשה, הנה.', correct: true, next: 'n3' },
+      { en: 'Un instant, s’il vous plaît.', tr: TR('One moment, please.', 'רגע אחד, בבקשה.'), he: 'רגע אחד, בבקשה.', itemId: 'fr.phrase.recovery.one-moment', correct: true, next: 'n3' },
     ] },
-    { id: 'n3', who: 'npc', fast: true, next: 'c3', en: 'C’est environ quinze euros — il y a beaucoup de circulation en ce moment.', tr: TR("It's about fifteen euros — there's a lot of traffic right now.", 'זה בערך חמישה עשר יורו — יש הרבה פקקים עכשיו.'), he: 'זה בערך חמישה עשר יורו — יש הרבה פקקים עכשיו.' },
+    { id: 'n3', who: 'npc', fast: true, next: 'c3', en: 'Merci. Vous êtes dans la chambre deux cent quatre, au deuxième étage. Le petit-déjeuner est compris dans votre réservation ?', tr: TR("Thank you. You're in room two-oh-four, on the second floor. Is breakfast included in your booking?", 'תודה. אתה בחדר 204, בקומה השנייה. ארוחת בוקר כלולה בהזמנה שלך?'), he: 'תודה. אתה בחדר 204, בקומה השנייה. ארוחת בוקר כלולה בהזמנה שלך?' },
     { id: 'c3', who: 'you', en: '', he: '', choices: [
-      { en: 'Parlez lentement, s’il vous plaît.', tr: TR('Please speak slowly.', 'דבר לאט, בבקשה.'), he: 'דבר לאט, בבקשה.', itemId: 'fr.phrase.recovery.slowly', correct: true, next: 'r3' },
-      { en: 'D’accord, merci.', tr: TR('Okay, thank you.', 'בסדר, תודה.'), he: 'בסדר, תודה.', itemId: 'fr.phrase.recovery.thank-you', correct: true, next: 'n4' },
+      { en: 'Le petit-déjeuner est compris ?', tr: TR('Is breakfast included?', 'ארוחת הבוקר כלולה?'), he: 'ארוחת הבוקר כלולה?', itemId: 'fr.phrase.hotel.breakfast', correct: true, next: 'n4' },
+      { en: 'C’est quoi le mot de passe du wifi ?', tr: TR("What's the wifi password?", 'מה סיסמת הוויי-פיי?'), he: 'מה סיסמת הוויי-פיי?', itemId: 'fr.phrase.hotel.wifi', correct: true, next: 'n4w' },
     ] },
-    { id: 'r3', who: 'npc', slow: true, next: 'c3b', en: 'Quinze — euros. La circulation.', tr: TR('Fifteen — euros. Traffic.', 'חמישה עשר — יורו. פקקים.'), he: 'חמישה עשר — יורו. פקקים.' },
-    { id: 'c3b', who: 'you', en: '', he: '', choices: [
-      { en: 'D’accord, merci.', tr: TR('Okay, thank you.', 'בסדר, תודה.'), he: 'בסדר, תודה.', itemId: 'fr.phrase.recovery.thank-you', correct: true, next: 'n4' },
-    ] },
-    { id: 'n4', who: 'npc', next: 'c4', en: '…On est presque arrivés. Ici, ça va ?', tr: TR('…We are almost there. Is here okay?', '…כמעט הגענו. כאן זה בסדר?'), he: '…כמעט הגענו. כאן זה בסדר?' },
-    { id: 'c4', who: 'you', en: '', he: '', choices: [
-      { en: 'Arrêtez-vous ici, s’il vous plaît. Gardez la monnaie.', tr: TR('Stop here, please. Keep the change.', 'עצור כאן, בבקשה. תשאיר את העודף.'), he: 'עצור כאן, בבקשה. תשאיר את העודף.', itemId: 'fr.phrase.taxi.stop-here', correct: true, next: 'n5' },
-    ] },
-    { id: 'n5', who: 'npc', end: true, en: 'Merci beaucoup ! Bon voyage !', tr: TR('Thank you very much! Enjoy your trip!', 'תודה רבה! תיהנה מהטיול!'), he: 'תודה רבה! תיהנה מהטיול!' },
+    { id: 'n4', who: 'npc', next: 'n5', en: 'Oui ! Le petit-déjeuner est de sept heures à dix heures. L’ascenseur est sur votre droite.', tr: TR('Yes! Breakfast is from seven to ten. The elevator is on your right.', 'כן! ארוחת בוקר משבע עד עשר. המעלית מימינך.'), he: 'כן! ארוחת בוקר משבע עד עשר. המעלית מימינך.' },
+    { id: 'n4w', who: 'npc', next: 'n5', en: 'Le code wifi est sur votre carte de chambre. Et le petit-déjeuner est de sept à dix heures — l’ascenseur est sur votre droite.', tr: TR("The wifi code is on your key card. And breakfast's from seven to ten — the elevator's on your right.", 'קוד הוויי-פיי על כרטיס המפתח. וארוחת בוקר משבע עד עשר — המעלית מימינך.'), he: 'קוד הוויי-פיי על כרטיס המפתח. וארוחת בוקר משבע עד עשר — המעלית מימינך.' },
+    { id: 'n5', who: 'npc', end: true, en: 'Bon séjour !', tr: TR('Enjoy your stay!', 'תיהנה מהשהות!'), he: 'תיהנה מהשהות!' },
   ],
 };
 
 export const DAY7_FR: BootcampDayContent = {
   day: 7,
-  title: T('מונית', 'Taxi / Uber'),
+  title: T("צ'ק-אין במלון", 'Hotel Check-in'),
   items: DAY7_FR_ITEMS,
-  dialogues: { 'taxi-ride': SCENE },
+  dialogues: { 'hotel-checkin': SCENE },
   steps: [
-    { kind: 'talk', icon: '🚕', title: T('משימה 7: מונית', 'Mission 7: Taxi / Uber'),
+    { kind: 'talk', icon: '🏨', title: T('משימה 7: צ\'ק-אין במלון', 'Mission 7: Hotel Check-in'),
       body: [
-        T('שיחה של 60 שניות עם נהג — יעד, מחיר, עצירה. לחץ גבוה, זמן קצר.', 'A 60-second conversation with a driver — destination, price, stop. High pressure, short window.'),
-        T('הסוד: תגיד את היעד ותראה את הכתובת בטלפון. גם אם קפאת — יש לך את הכלים.', 'The trick: say the destination and show the address on your phone. Even if you freeze — you have the tools.'),
-      ], cta: T('להיכנס למונית', 'Get in') },
+        T('בסיס הבית שלך בטיול. הזמנה, דרכון, מפתח, קומה, ארוחת בוקר.', 'Your home base for the trip. Reservation, passport, key, floor, breakfast.'),
+        T('הפעם אחת — ותהיה רגוע כל השבוע.', 'Nail it once — and relax all week.'),
+      ], cta: T('להגיע לדלפק', 'Approach the desk') },
     { kind: 'prime', label: T('לפני שנדבר', 'Before we speak'),
-      intro: T('המילים שמכניסות אותך למונית ומוציאות אותך במקום הנכון.', 'The words that get you into the taxi and out at the right spot.'),
+      intro: T('המילים של הצ׳ק-אין — אחת מהן כבר מוכרת לך.', 'The check-in words — one of them you already know.'),
       words: [
-        { text: 'adresse', meaning: T('כתובת', 'address'), emoji: '🏠' },
-        { text: 'aéroport', meaning: T('שדה תעופה', 'airport'), emoji: '✈️' },
-        { text: 'arrêter', meaning: T('לעצור', 'stop'), emoji: '✋' },
-        { text: 'ici', meaning: T('כאן', 'here'), emoji: '📍' },
-        { text: 'combien', meaning: T('כמה (עולה)', 'how much') },
-      ], buildFromItemId: 'fr.phrase.taxi.to-address' },
-    { kind: 'tool', itemId: 'fr.phrase.taxi.to-address', index: 1, total: 4, label: T('הפתיח', 'The opener') },
-    { kind: 'tool', itemId: 'fr.phrase.taxi.how-much', index: 2, total: 4, label: T('לשאול מחיר', 'Ask the price') },
-    { kind: 'tool', itemId: 'fr.phrase.taxi.stop-here', index: 3, total: 4, label: T('לעצור', 'Stop it') },
-    { kind: 'tool', itemId: 'fr.phrase.taxi.keep-change', index: 4, total: 4, label: T('לסיים יפה', 'Finish smoothly') },
-    { kind: 'replies', saidItemId: 'fr.phrase.taxi.to-address',
-      replyIds: ['fr.reply.taxi.where-to', 'fr.reply.taxi.about-fifteen', 'fr.reply.taxi.here-good', 'fr.reply.taxi.first-visit'] },
-    { kind: 'receipt', text: T('אתה מזהה מה נהג מונית שואל — לאן, כמה, כאן בסדר?', 'You recognize what a taxi driver asks — where to, how much, is here okay?') },
-    { kind: 'quiz', itemId: 'fr.reply.taxi.about-fifteen', wrongIds: ['fr.reply.taxi.where-to', 'fr.reply.taxi.traffic'] },
-    { kind: 'dialogue', dialogueId: 'taxi-ride' },
-    { kind: 'receipt', text: T('נסיעה שלמה: יעד, מחיר, עצירה, תשלום. שרדת את המונית.', 'A full ride: destination, price, stop, payment. You survived the taxi.') },
+        { text: 'réservation', meaning: T('הזמנה', 'reservation'), emoji: '📅' },
+        { text: 'nom', meaning: T('שם', 'name'), emoji: '📛', review: true },
+        { text: 'nuit', meaning: T('לילה', 'night'), emoji: '🌙' },
+        { text: 'petit-déjeuner', meaning: T('ארוחת בוקר', 'breakfast'), emoji: '🍳' },
+        { text: 'passeport', meaning: T('דרכון', 'passport'), emoji: '🛂' },
+      ], buildFromItemId: 'fr.phrase.hotel.reservation' },
+    { kind: 'tool', itemId: 'fr.phrase.hotel.reservation', index: 1, total: 4, label: T('הפתיח', 'The opener') },
+    { kind: 'tool', itemId: 'fr.phrase.hotel.two-nights', index: 2, total: 4, label: T('משך השהות', 'Length of stay') },
+    { kind: 'tool', itemId: 'fr.phrase.hotel.breakfast', index: 3, total: 4, label: T('ארוחת בוקר', 'Breakfast') },
+    { kind: 'tool', itemId: 'fr.phrase.hotel.wifi', index: 4, total: 4, label: T('וויי-פיי', 'Wifi') },
+    { kind: 'replies', saidItemId: 'fr.phrase.hotel.reservation',
+      replyIds: ['fr.reply.hotel.passport', 'fr.reply.hotel.room-number', 'fr.reply.hotel.second-floor', 'fr.reply.hotel.breakfast-time'] },
+    { kind: 'receipt', text: T('אתה מזהה כל מה שפקיד הקבלה אומר — דרכון, חדר, קומה, שעות.', 'You recognize everything the receptionist says — passport, room, floor, hours.') },
+    { kind: 'quiz', itemId: 'fr.reply.hotel.second-floor', wrongIds: ['fr.reply.hotel.elevator', 'fr.reply.hotel.breakfast-time'] },
+    { kind: 'dialogue', dialogueId: 'hotel-checkin' },
+    { kind: 'receipt', text: T("צ'ק-אין שלם: הזמנה, דרכון, חדר, מידע — ואתה בפנים.", 'A full check-in: reservation, passport, room, info — and you’re in.') },
     { kind: 'swipe', itemIds: DAY7_FR_ITEMS.map((i) => i.id) },
-    { kind: 'ambush', npc: { en: 'Désolé, la route est barrée devant — ça vous va si je vous dépose au coin de la rue ?', tr: TR('Sorry the road ahead is closed is it alright if I drop you around the corner?', 'סליחה, הכביש קדימה חסום — בסדר שאוריד אותך מעבר לפינה?'), he: 'סליחה, הכביש קדימה חסום — בסדר שאוריד אותך מעבר לפינה?' },
-      correctItemId: 'fr.reply.taxi.here-good', wrongItemId: 'fr.reply.taxi.where-to' },
-    { kind: 'receipt', text: T('שינוי ברגע האחרון, מהיר — והבנת שהוא מציע להוריד אותך קרוב.', 'A fast last-minute change — and you understood he’s offering to drop you nearby.') },
+    { kind: 'ambush', npc: { en: 'Juste pour info, le petit-déjeuner est servi dans la salle au niveau inférieur, à côté de la piscine.', tr: TR('Just so you know breakfast is served in the room on the lower level next to the pool.', 'רק שתדע, ארוחת הבוקר מוגשת בחדר בקומה התחתונה ליד הבריכה.'), he: 'רק שתדע, ארוחת הבוקר מוגשת בחדר בקומה התחתונה ליד הבריכה.' },
+      correctItemId: 'fr.phrase.recovery.repeat', wrongItemId: 'fr.reply.hotel.passport' },
+    { kind: 'receipt', text: T('מידע ארוך ומהיר — ובמקום לקפוא, ביקשת לחזור עליו. זה כלי.', 'Long, fast info — and instead of freezing, you asked them to repeat. That’s a tool.') },
     { kind: 'summary' },
   ],
 };

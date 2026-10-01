@@ -4,7 +4,7 @@ import { languageDirection } from '../i18n/languages.js';
 import { useAppStore } from '../stores/appStore.js';
 import { PlaybackControls } from './PlaybackControls.js';
 import { useParrotPlayback } from './useParrotPlayback.js';
-import type { PlaybackItem } from './types.js';
+import type { PlaybackItem, PlaybackScope } from './types.js';
 
 /**
  * Reusable "now playing" listening screen for single-item surfaces (Core Words + Core Sentences share
@@ -14,9 +14,9 @@ import type { PlaybackItem } from './types.js';
  * in — no playback code is written twice. The Dialogue Transcript uses the same engine directly (it
  * needs its full-list + highlight presentation).
  */
-export function ListenPanel({ items, bookmarkKey, emptyText }: { items: PlaybackItem[]; bookmarkKey?: string; emptyText?: string }) {
+export function ListenPanel({ items, scope, bookmarkKey, emptyText }: { items: PlaybackItem[]; scope: PlaybackScope; bookmarkKey?: string; emptyText?: string }) {
   const uiLang = useAppStore((s) => s.uiLang);
-  const pb = useParrotPlayback(items, { bookmarkKey });
+  const pb = useParrotPlayback(items, { scope, bookmarkKey });
   const item = items[pb.currentIndex];
 
   const targetDir = useMemo(() => (item ? languageDirection(item.targetLang) : 'ltr'), [item]);

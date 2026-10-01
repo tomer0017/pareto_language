@@ -1,99 +1,145 @@
 import type { LocalizedText } from '@ready/content-schema';
-import type { BootcampDayContent, BootcampDialogue, BootcampItem } from '../types.js';
+import type { BootcampDayContent, BootcampItem, BootcampDialogue } from '../types.js';
 import { recoveryEs } from './recovery.js';
 
 /**
- * Spanish Mission (day 3) — "Números y dinero" (Numbers & Money). Spanish parallel of English day 3:
- * same objective (hear a price and pay without freezing), same step structure, same engine. Spanish
- * target lines + `tr:{en,he}` glosses; `es.*` ids. No Spanish video yet → the hub Watch card shows
- * "Coming Soon". AI-drafted, neutral international Spanish, pending native review.
+ * Spanish Mission 3 — "Cafetería" (Coffee Shop), the deep-moment exemplar in Spanish. Same
+ * objective and full follow-up chain as English mission 3 (order → size → milk/sugar → to eat → anything
+ * else → pay → receipt → goodbye), same engine. Spanish target lines + `tr:{en,he}` glosses; `es.*`
+ * ids. No Spanish video yet → the hub Watch card shows "Coming Soon". AI-drafted, pending review.
  */
 const T = (he: string, en: string): LocalizedText => ({ he, en });
 const TR = (en: string, he: string): LocalizedText => ({ en, he });
 
 export const DAY3_ES_ITEMS: BootcampItem[] = [
-  { id: 'es.phrase.money.how-much', text: '¿Cuánto es?', meaning: T('כמה זה עולה?', 'How much is it?'),
-    tip: T('השאלה שפותחת כל עסקה. תלמד אותה עד הסוף.', 'The question that opens every transaction. Learn it cold.') },
-  { id: 'es.phrase.money.by-card', text: 'Con tarjeta, por favor.', meaning: T('בכרטיס, בבקשה.', 'By card, please.') },
-  { id: 'es.phrase.money.in-cash', text: 'En efectivo.', meaning: T('במזומן.', 'In cash.') },
-  { id: 'es.phrase.money.too-expensive', text: 'Es muy caro.', meaning: T('זה יקר מדי.', "That's too expensive."),
-    tip: T('משפט מיקוח מנומס — ופתח למחיר טוב יותר.', 'A polite haggle — and an opening for a better price.') },
-  // hear — prices at speed (the real skill)
-  { id: 'es.reply.money.five-euros', text: 'Son cinco euros.', meaning: T('זה חמישה יורו.', "That's five euros."),
-    tip: T('cinco = 5. תתרגל לזהות מספרים במשפט.', 'cinco = 5. Train to catch numbers inside a sentence.') },
-  { id: 'es.reply.money.ten-euros', text: 'Serán diez euros.', meaning: T('זה יעלה עשרה יורו.', "That'll be ten euros.") },
-  { id: 'es.reply.money.twenty-euros', text: 'Veinte euros, por favor.', meaning: T('עשרים יורו, בבקשה.', 'Twenty euros, please.') },
-  { id: 'es.reply.money.fifteen-fifty', text: 'Quince con cincuenta.', meaning: T('חמש עשרה וחצי (15.50).', 'Fifteen fifty (15.50).') },
-  { id: 'es.reply.money.cash-or-card', text: '¿Efectivo o tarjeta?', meaning: T('מזומן או כרטיס?', 'Cash or card?') },
-  { id: 'es.reply.money.your-change', text: 'Aquí tiene su cambio.', meaning: T('הנה העודף שלך.', "Here's your change.") },
-  { id: 'es.reply.money.no-change', text: 'Lo siento, no tengo cambio.', meaning: T('סליחה, אין לי עודף.', "Sorry, I have no change.") },
-  ...recoveryEs('es.phrase.recovery.slowly', 'es.phrase.recovery.repeat', 'es.phrase.recovery.thank-you', 'es.phrase.recovery.one-moment'),
+  // say
+  { id: 'es.phrase.coffee.iced-coffee', text: 'Quiero un café con hielo, por favor.',
+    meaning: T('אני רוצה קפה קר, בבקשה.', "I'd like an iced coffee, please."),
+    tip: T('התבנית: Quiero ___, por favor — עובדת על הכל.', 'The template: Quiero ___, por favor — works for everything.') },
+  { id: 'es.phrase.coffee.to-go', text: 'Para llevar, por favor.',
+    meaning: T('לקחת, בבקשה.', 'To go, please.') },
+  { id: 'es.phrase.coffee.no-sugar', text: 'Con leche, sin azúcar.',
+    meaning: T('עם חלב, בלי סוכר.', 'Milk, no sugar.'),
+    tip: T('con = עם · sin = בלי. שתי מילים ששולטות בכל הזמנה.', 'con = with · sin = without — two words that control every order.') },
+  { id: 'es.phrase.coffee.croissant', text: 'Un cruasán, por favor.',
+    meaning: T('קרואסון, בבקשה.', 'A croissant, please.'),
+    tip: T('“cruasán” — מאפה חמאה. אותה מילה, כתיב ספרדי.', '“cruasán” — the same pastry, Spanish spelling.') },
+  { id: 'es.phrase.coffee.thats-all', text: 'Eso es todo, gracias.',
+    meaning: T('זה הכל, תודה.', "That's all, thanks."),
+    tip: T('סוגר כל הזמנה בנימוס.', 'Closes any order politely.') },
+  { id: 'es.phrase.coffee.card', text: 'Con tarjeta, por favor.',
+    meaning: T('בכרטיס, בבקשה.', 'Card, please.') },
+  // hear — the barista question-chain
+  { id: 'es.reply.coffee.what-can-i-get', text: '¿Qué le sirvo?', meaning: T('מה להביא לך?', 'What can I get you?') },
+  { id: 'es.reply.coffee.hot-or-iced', text: '¿Caliente o con hielo?', meaning: T('חם או קר?', 'Hot or iced?') },
+  { id: 'es.reply.coffee.here-or-to-go', text: '¿Para aquí o para llevar?', meaning: T('לשבת כאן או לקחת?', 'For here or to go?') },
+  { id: 'es.reply.coffee.medium-or-large', text: '¿Mediano o grande?', meaning: T('בינוני או גדול?', 'Medium or large?') },
+  { id: 'es.reply.coffee.milk-sugar', text: '¿Leche y azúcar?', meaning: T('חלב וסוכר?', 'Milk and sugar?') },
+  { id: 'es.reply.coffee.anything-to-eat', text: '¿Algo de comer?', meaning: T('משהו לאכול?', 'Anything to eat?') },
+  { id: 'es.reply.coffee.anything-else', text: '¿Algo más?', meaning: T('עוד משהו?', 'Would you like anything else?') },
+  { id: 'es.reply.coffee.cash-or-card', text: '¿Efectivo o tarjeta?', meaning: T('מזומן או כרטיס?', 'Cash or card?') },
+  { id: 'es.reply.coffee.receipt', text: '¿Quiere el recibo?', meaning: T('רוצה את הקבלה?', 'Would you like the receipt?') },
+  { id: 'es.reply.coffee.enjoy', text: '¡Que tenga un buen día!', meaning: T('שיהיה לך יום מעולה!', 'Enjoy your day!') },
 ];
 
-const SCENE: BootcampDialogue = {
-  id: 'market-stall',
+const SCENE_BREAKFAST: BootcampDialogue = {
+  id: 'breakfast-order',
   start: 'n1',
   nodes: [
-    { id: 'n1', who: 'npc', next: 'c1', en: '¡Fresas frescas! ¡Las mejores del mercado!', tr: TR('Fresh strawberries! Best in the market!', 'תותים טריים! הכי טובים בשוק!'), he: 'תותים טריים! הכי טובים בשוק!' },
+    { id: 'n1', who: 'npc', next: 'c1', en: '¡Buenos días! ¿Qué le sirvo?', tr: TR('Good morning! What can I get you?', 'בוקר טוב! מה להביא לך?'), he: 'בוקר טוב! מה להביא לך?' },
     { id: 'c1', who: 'you', en: '', he: '', choices: [
-      { en: '¿Cuánto es?', tr: TR('How much is it?', 'כמה זה עולה?'), he: 'כמה זה עולה?', itemId: 'es.phrase.money.how-much', correct: true, next: 'n2' },
-      { en: 'Un momento, por favor.', tr: TR('One moment, please.', 'רגע אחד, בבקשה.'), he: 'רגע אחד, בבקשה.', itemId: 'es.phrase.recovery.one-moment', correct: true, next: 'r1' },
+      { en: 'Quiero un café con hielo, por favor.', tr: TR("I'd like an iced coffee, please.", 'אני רוצה קפה קר, בבקשה.'), he: 'אני רוצה קפה קר, בבקשה.', itemId: 'es.phrase.coffee.iced-coffee', correct: true, next: 'n2' },
+      { en: 'Un momento, por favor.', tr: TR('One moment, please.', 'רגע אחד, בבקשה. (כלי הישרדות)'), he: 'רגע אחד, בבקשה.', itemId: 'es.phrase.recovery.one-moment', correct: true, next: 'r1' },
     ] },
-    { id: 'r1', who: 'npc', next: 'c1', en: '¡Tómese su tiempo, amigo!', tr: TR('Take your time, my friend!', 'קח את הזמן, חבר!'), he: 'קח את הזמן, חבר!' },
-    { id: 'n2', who: 'npc', fast: true, next: 'c2', en: '¡Cinco euros la caja, o dos por ocho!', tr: TR('Five euros a punnet, or two for eight!', 'חמישה יורו קופסה, או שתיים בשמונה!'), he: 'חמישה יורו קופסה, או שתיים בשמונה!' },
+    { id: 'r1', who: 'npc', slow: true, next: 'c1b', en: 'Claro — ¡tómese su tiempo!', tr: TR('Of course — take your time!', 'ברור — קח את הזמן!'), he: 'ברור — קח את הזמן!' },
+    { id: 'c1b', who: 'you', en: '', he: '', choices: [
+      { en: 'Quiero un café con hielo, por favor.', tr: TR("I'd like an iced coffee, please.", 'אני רוצה קפה קר, בבקשה.'), he: 'אני רוצה קפה קר, בבקשה.', itemId: 'es.phrase.coffee.iced-coffee', correct: true, next: 'n2' },
+    ] },
+    { id: 'n2', who: 'npc', fast: true, next: 'c2', en: '¡Perfecto! ¿Mediano o grande?', tr: TR('Sure! Medium or large?', 'סגור! בינוני או גדול?'), he: 'סגור! בינוני או גדול?' },
     { id: 'c2', who: 'you', en: '', he: '', choices: [
-      { en: 'Más despacio, por favor.', tr: TR('Please speak slowly.', 'דבר לאט, בבקשה. (מספרים מהירים? עצור אותו!)'), he: 'דבר לאט, בבקשה.', itemId: 'es.phrase.recovery.slowly', correct: true, next: 'r2' },
-      { en: 'Una caja, por favor.', tr: TR('One punnet, please.', 'קופסה אחת, בבקשה.'), he: 'קופסה אחת, בבקשה.', correct: true, next: 'n3' },
+      { en: 'Mediano, por favor.', tr: TR('Medium, please.', 'בינוני, בבקשה.'), he: 'בינוני, בבקשה.', correct: true, next: 'n3' },
+      { en: '¿Puede repetir, por favor?', tr: TR('Can you repeat that?', 'אפשר לחזור על זה?'), he: 'אפשר לחזור על זה?', itemId: 'es.phrase.recovery.repeat', correct: true, next: 'r2' },
     ] },
-    { id: 'r2', who: 'npc', slow: true, next: 'c2b', en: 'Cinco — euros — una caja.', tr: TR('Five — euros — one punnet.', 'חמישה — יורו — קופסה אחת.'), he: 'חמישה — יורו — קופסה אחת.' },
+    { id: 'r2', who: 'npc', slow: true, next: 'c2b', en: '¿MEDIANO — o GRANDE?', tr: TR('MEDIUM — or LARGE?', 'בינוני — או גדול?'), he: 'בינוני — או גדול?' },
     { id: 'c2b', who: 'you', en: '', he: '', choices: [
-      { en: 'Una caja, por favor.', tr: TR('One punnet, please.', 'קופסה אחת, בבקשה.'), he: 'קופסה אחת, בבקשה.', correct: true, next: 'n3' },
+      { en: 'Mediano, por favor.', tr: TR('Medium, please.', 'בינוני, בבקשה.'), he: 'בינוני, בבקשה.', correct: true, next: 'n3' },
     ] },
-    { id: 'n3', who: 'npc', next: 'c3', en: 'Perfecto. Son cinco euros. ¿Efectivo o tarjeta?', tr: TR("Perfect. That's five euros. Cash or card?", 'מצוין. זה חמישה יורו. מזומן או כרטיס?'), he: 'מצוין. זה חמישה יורו. מזומן או כרטיס?' },
+    { id: 'n3', who: 'npc', next: 'c3', en: '¿Leche y azúcar?', tr: TR('Milk and sugar?', 'חלב וסוכר?'), he: 'חלב וסוכר?' },
     { id: 'c3', who: 'you', en: '', he: '', choices: [
-      { en: 'Con tarjeta, por favor.', tr: TR('By card, please.', 'בכרטיס, בבקשה.'), he: 'בכרטיס, בבקשה.', itemId: 'es.phrase.money.by-card', correct: true, next: 'n4' },
-      { en: 'En efectivo.', tr: TR('In cash.', 'במזומן.'), he: 'במזומן.', itemId: 'es.phrase.money.in-cash', correct: true, next: 'n4' },
+      { en: 'Con leche, sin azúcar.', tr: TR('Milk, no sugar.', 'עם חלב, בלי סוכר.'), he: 'עם חלב, בלי סוכר.', itemId: 'es.phrase.coffee.no-sugar', correct: true, next: 'n4' },
+      { en: '¡Gracias!', tr: TR('Thank you!', 'תודה! (רגע — הוא שאל שאלה…)'), he: 'תודה!', correct: false, next: 'r3' },
     ] },
-    { id: 'n4', who: 'npc', end: true, en: '¡Gracias! ¡Que las disfrute!', tr: TR('Thank you! Enjoy the strawberries!', 'תודה! תיהנה מהתותים!'), he: 'תודה! תיהנה מהתותים!' },
+    { id: 'r3', who: 'npc', slow: true, next: 'c3b', en: '¡De nada! Pero — ¿leche? ¿azúcar?', tr: TR("You're welcome! But — milk? sugar?", 'בבקשה! אבל — חלב? סוכר?'), he: 'בבקשה! אבל — חלב? סוכר?' },
+    { id: 'c3b', who: 'you', en: '', he: '', choices: [
+      { en: 'Con leche, sin azúcar.', tr: TR('Milk, no sugar.', 'עם חלב, בלי סוכר.'), he: 'עם חלב, בלי סוכר.', itemId: 'es.phrase.coffee.no-sugar', correct: true, next: 'n4' },
+    ] },
+    { id: 'n4', who: 'npc', next: 'c4', en: '¿Algo de comer?', tr: TR('Anything to eat?', 'משהו לאכול?'), he: 'משהו לאכול?' },
+    { id: 'c4', who: 'you', en: '', he: '', choices: [
+      { en: 'Un cruasán, por favor.', tr: TR('A croissant, please.', 'קרואסון, בבקשה.'), he: 'קרואסון, בבקשה.', itemId: 'es.phrase.coffee.croissant', correct: true, next: 'n5' },
+      { en: 'Eso es todo, gracias.', tr: TR("That's all, thanks.", 'זה הכל, תודה.'), he: 'זה הכל, תודה.', itemId: 'es.phrase.coffee.thats-all', correct: true, next: 'n6' },
+    ] },
+    { id: 'n5', who: 'npc', next: 'c5', en: 'Buena elección. ¿Algo más?', tr: TR('Great choice. Would you like anything else?', 'בחירה מצוינת. עוד משהו?'), he: 'בחירה מצוינת. עוד משהו?' },
+    { id: 'c5', who: 'you', en: '', he: '', choices: [
+      { en: 'Eso es todo, gracias.', tr: TR("That's all, thanks.", 'זה הכל, תודה.'), he: 'זה הכל, תודה.', itemId: 'es.phrase.coffee.thats-all', correct: true, next: 'n6' },
+    ] },
+    { id: 'n6', who: 'npc', fast: true, next: 'c6', en: 'Son seis con cincuenta. ¿Efectivo o tarjeta?', tr: TR("That'll be six fifty. Cash or card?", 'שש חמישים בבקשה. מזומן או כרטיס?'), he: 'שש חמישים בבקשה. מזומן או כרטיס?' },
+    { id: 'c6', who: 'you', en: '', he: '', choices: [
+      { en: 'Con tarjeta, por favor.', tr: TR('Card, please.', 'בכרטיס, בבקשה.'), he: 'בכרטיס, בבקשה.', itemId: 'es.phrase.coffee.card', correct: true, next: 'n7' },
+      { en: 'Más despacio, por favor.', tr: TR('Please speak slowly.', 'דבר לאט בבקשה. (המספר ברח לך?)'), he: 'דבר לאט, בבקשה.', itemId: 'es.phrase.recovery.slowly', correct: true, next: 'r6' },
+    ] },
+    { id: 'r6', who: 'npc', slow: true, next: 'c6b', en: 'Seis — cincuenta. ¿Efectivo, o tarjeta?', tr: TR('Six — fifty. Cash, or card?', 'שש — חמישים. מזומן או כרטיס?'), he: 'שש — חמישים. מזומן או כרטיס?' },
+    { id: 'c6b', who: 'you', en: '', he: '', choices: [
+      { en: 'Con tarjeta, por favor.', tr: TR('Card, please.', 'בכרטיס, בבקשה.'), he: 'בכרטיס, בבקשה.', itemId: 'es.phrase.coffee.card', correct: true, next: 'n7' },
+    ] },
+    { id: 'n7', who: 'npc', next: 'c7', en: '¿Quiere el recibo?', tr: TR('Would you like the receipt?', 'רוצה את הקבלה?'), he: 'רוצה את הקבלה?' },
+    { id: 'c7', who: 'you', en: '', he: '', choices: [
+      { en: '¡No, gracias!', tr: TR('No, thank you!', 'לא, תודה!'), he: 'לא, תודה!', itemId: 'es.phrase.recovery.thank-you', correct: true, next: 'n8' },
+      { en: 'Sí, por favor.', tr: TR('Yes, please.', 'כן, בבקשה.'), he: 'כן, בבקשה.', correct: true, next: 'n8' },
+    ] },
+    { id: 'n8', who: 'npc', end: true, en: 'Aquí tiene — ¡que tenga un buen día!', tr: TR('Here you go — enjoy your day!', 'בבקשה — שיהיה יום מעולה!'), he: 'בבקשה — שיהיה יום מעולה!' },
   ],
 };
 
+const REUSED_RECOVERY = recoveryEs('es.phrase.recovery.one-moment', 'es.phrase.recovery.repeat', 'es.phrase.recovery.slowly', 'es.phrase.recovery.thank-you');
+
 export const DAY3_ES: BootcampDayContent = {
   day: 3,
-  title: T('כסף ומספרים', 'Numbers & Money'),
-  items: DAY3_ES_ITEMS,
-  dialogues: { 'market-stall': SCENE },
+  title: T('בית קפה', 'Coffee Shop'),
+  items: [...DAY3_ES_ITEMS, ...REUSED_RECOVERY],
+  dialogues: { 'breakfast-order': SCENE_BREAKFAST },
   steps: [
-    { kind: 'talk', icon: '💶', title: T('משימה 3: כסף ומספרים', 'Mission 3: Numbers & Money'),
+    { kind: 'talk', icon: '☕', title: T('משימה 3: בית קפה', 'Mission 3: Coffee Shop'),
       body: [
-        T('הכישלון הכי נפוץ של מטייל: לא הבנת את המחיר, אז פשוט הושטת שטר גדול וקיווית.', 'The most common traveler failure: you didn’t catch the price, so you just held out a big bill and hoped.'),
-        T('היום זה נגמר. אתה תשמע מחירים — ותבין אותם.', 'Today that ends. You’ll hear prices — and understand them.'),
-      ], cta: T('מתחילים', 'Start') },
-    // Numbers priming (Part 6) — the key price numbers a traveler hears at a stall or counter.
-    { kind: 'prime', label: T('לפני שנדבר: מספרים בספרדית', 'Before we speak: Spanish numbers'),
-      intro: T('כמה מספרים שחוזרים בכל מחיר. תכיר אותם מראש כדי לתפוס אותם במשפט מהיר.', 'A few numbers that recur in every price. Meet them first so you catch them in a fast sentence.'),
+        T('היום לא לומדים "מילים על קפה". היום לומדים לצאת מבית קפה עם ארוחת בוקר ביד.', 'Today we don’t learn “coffee words”. Today you walk out of a café holding breakfast.'),
+        T('הסוד: אחרי שאתה מזמין, הבריסטה שואל שאלות המשך. מי שמכיר אותן מראש — אף פעם לא קופא.', 'The secret: after you order, the barista fires follow-up questions. Know them in advance — never freeze.'),
+      ], cta: T('להיכנס', 'Walk in') },
+    // Vocabulary priming (Part 7), authored as Spanish: con/sin are the two order-control words.
+    // con + leche + sin + azúcar literally compose "Con leche, sin azúcar." — the assemble beat.
+    { kind: 'prime', label: T('לפני שנדבר', 'Before we speak'),
+      intro: T('שש מילים שולטות בכל הזמנה בבית קפה.', 'Six words control every café order.'),
       words: [
-        { text: 'cinco', meaning: T('חמש (5)', 'five (5)') },
-        { text: 'diez', meaning: T('עשר (10)', 'ten (10)') },
-        { text: 'veinte', meaning: T('עשרים (20)', 'twenty (20)') },
-        { text: 'setenta', meaning: T('שבעים (70)', 'seventy (70)') },
-        { text: 'ochenta', meaning: T('שמונים (80)', 'eighty (80)') },
-        { text: 'noventa', meaning: T('תשעים (90)', 'ninety (90)') },
-      ], buildFromItemId: 'es.reply.money.five-euros' },
-    { kind: 'tool', itemId: 'es.phrase.money.how-much', index: 1, total: 3, label: T('לשאול מחיר', 'Ask the price') },
-    { kind: 'tool', itemId: 'es.phrase.money.by-card', index: 2, total: 3, label: T('לשלם בכרטיס', 'Pay by card') },
-    { kind: 'tool', itemId: 'es.phrase.money.too-expensive', index: 3, total: 3, label: T('מיקוח מנומס', 'Polite haggle') },
-    { kind: 'replies', saidItemId: 'es.phrase.money.how-much',
-      replyIds: ['es.reply.money.five-euros', 'es.reply.money.ten-euros', 'es.reply.money.twenty-euros', 'es.reply.money.cash-or-card'] },
-    { kind: 'receipt', text: T('שמעת ארבעה מחירים שונים — וזיהית כל אחד.', 'You heard four different prices — and caught every one.') },
-    { kind: 'quiz', itemId: 'es.reply.money.twenty-euros', wrongIds: ['es.reply.money.ten-euros', 'es.reply.money.five-euros'] },
-    { kind: 'quiz', itemId: 'es.reply.money.your-change', wrongIds: ['es.reply.money.no-change', 'es.reply.money.cash-or-card'] },
-    { kind: 'dialogue', dialogueId: 'market-stall' },
-    { kind: 'receipt', text: T('קנית בשוק, הבנת את המחיר, ושילמת. עסקה שלמה.', 'You bought at the market, understood the price, and paid. A full transaction.') },
-    { kind: 'swipe', itemIds: DAY3_ES_ITEMS.map((i) => i.id) },
-    { kind: 'ambush', npc: { en: 'Son quince con cincuenta en total, ¿le parece bien?', tr: TR('That comes to fifteen fifty altogether, is that alright?', 'זה יוצא חמש עשרה וחצי בסך הכל, זה בסדר?'), he: 'זה יוצא חמש עשרה וחצי בסך הכל, זה בסדר?' },
-      correctItemId: 'es.reply.money.fifteen-fifty', wrongItemId: 'es.reply.money.five-euros' },
-    { kind: 'receipt', text: T('מספר עם אגורות, מהיר — ותפסת אותו. זה כסף בשליטה.', 'A fast decimal price — and you caught it. That’s money, under control.') },
+        { text: 'café', meaning: T('קפה', 'coffee'), emoji: '☕' },
+        { text: 'leche', meaning: T('חלב', 'milk'), emoji: '🥛' },
+        { text: 'azúcar', meaning: T('סוכר', 'sugar'), emoji: '🍬' },
+        { text: 'mediano', meaning: T('בינוני', 'medium') },
+        { text: 'con', meaning: T('עם', 'with') },
+        { text: 'sin', meaning: T('בלי', 'without') },
+      ], buildFromItemId: 'es.phrase.coffee.no-sugar' },
+    { kind: 'tool', itemId: 'es.phrase.coffee.iced-coffee', index: 1, total: 4, label: T('משפט הזהב', 'The golden template') },
+    { kind: 'tool', itemId: 'es.phrase.coffee.no-sugar', index: 2, total: 4, label: T('שליטה בהזמנה', 'Order control') },
+    { kind: 'tool', itemId: 'es.phrase.coffee.thats-all', index: 3, total: 4, label: T('הסוגר האוניברסלי', 'The universal closer') },
+    { kind: 'tool', itemId: 'es.phrase.coffee.card', index: 4, total: 4, label: T('סוגרים חשבון', 'Settling up') },
+    { kind: 'replies', saidItemId: 'es.phrase.coffee.iced-coffee',
+      replyIds: ['es.reply.coffee.here-or-to-go', 'es.reply.coffee.medium-or-large', 'es.reply.coffee.milk-sugar', 'es.reply.coffee.anything-else'] },
+    { kind: 'receipt', text: T('אתה כבר מזהה את ארבע שאלות ההמשך של כל בריסטה בעולם.', 'You now recognize the four follow-ups of every barista on earth.') },
+    { kind: 'quiz', itemId: 'es.reply.coffee.cash-or-card', wrongIds: ['es.reply.coffee.anything-to-eat', 'es.reply.coffee.receipt'] },
+    { kind: 'quiz', itemId: 'es.reply.coffee.anything-to-eat', wrongIds: ['es.reply.coffee.hot-or-iced', 'es.reply.coffee.enjoy'] },
+    { kind: 'dialogue', dialogueId: 'breakfast-order' },
+    { kind: 'receipt', text: T('הזמנת ארוחת בוקר שלמה: שתייה, גודל, חלב, מאפה, תשלום. הכל.', 'You ordered a full breakfast: drink, size, milk, pastry, payment. All of it.') },
+    { kind: 'swipe', itemIds: [...DAY3_ES_ITEMS, ...REUSED_RECOVERY].map((i) => i.id) },
+    { kind: 'ambush', npc: { en: 'Lo siento, se nos acabaron los cruasanes — ¿le va bien un muffin en su lugar?', tr: TR('Sorry, we are out of croissants — would a muffin be okay instead?', 'סליחה, נגמרו הקרואסונים — מאפין במקום זה בסדר?'), he: 'סליחה, נגמרו הקרואסונים — מאפין במקום זה בסדר?' },
+      correctItemId: 'es.phrase.recovery.repeat', wrongItemId: 'es.phrase.coffee.card' },
+    { kind: 'receipt', text: T('הפתעה מחוץ לתסריט — והגבת עם כלי. זה בדיוק מה שקורה בעולם האמיתי.', 'An off-script surprise — and you answered with a tool. Exactly how real life works.') },
     { kind: 'summary' },
   ],
 };

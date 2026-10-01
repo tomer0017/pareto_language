@@ -1,99 +1,110 @@
 import type { LocalizedText } from '@ready/content-schema';
 import type { BootcampDayContent, BootcampDialogue, BootcampItem } from '../types.js';
 import { recoveryEs } from './recovery.js';
+import { DAY3_ES_ITEMS } from './day3.js';
+import { DAY12_ES_ITEMS } from './day12.js';
+import { DAY15_ES_ITEMS } from './day15.js';
 
 /**
- * Spanish Mission 17 — "Supermercado" (Supermarket). Spanish parallel of English day 17: find it,
- * weigh it, pay for it — self-checkout included, zero dependence on anyone. `tr:{en,he}` glosses;
- * `es.*` ids. AI-drafted, pending review.
+ * Spanish Mission 17 — "Punto de control: día gastronómico" (Food Day Checkpoint). Cold integration,
+ * no new content: coffee morning → market noon → restaurant night, reusing missions 3, 12 & 15 items.
+ * Same structure as English mission 17. `tr:{en,he}` glosses; `es.*` ids. AI-drafted, pending review.
  */
 const T = (he: string, en: string): LocalizedText => ({ he, en });
 const TR = (en: string, he: string): LocalizedText => ({ en, he });
 
+const byId = new Map([...DAY3_ES_ITEMS, ...DAY12_ES_ITEMS, ...DAY15_ES_ITEMS].map((i) => [i.id, i]));
+const pick = (...ids: string[]): BootcampItem[] => ids.map((id) => byId.get(id)!).filter(Boolean);
+
 export const DAY17_ES_ITEMS: BootcampItem[] = [
-  // say
-  { id: 'es.phrase.super.where-is', text: '¿Dónde está la leche?', meaning: T('איפה החלב?', 'Where is the milk?'),
-    tip: T('התבנית: ¿Dónde está ___ ? — מוצאת כל מוצר בכל חנות.', 'Template: ¿Dónde está ___ ? — finds any product in any shop.') },
-  { id: 'es.phrase.super.do-you-have', text: '¿Tienen pan?', meaning: T('יש לכם לחם?', 'Do you have bread?'),
-    tip: T('התבנית: ¿Tienen ___ ? — בודקת אם קיים במלאי.', 'Template: ¿Tienen ___ ? — checks if it’s in stock.') },
-  { id: 'es.phrase.super.just-this', text: 'Solo esto, gracias.', meaning: T('רק את זה, תודה.', 'Just this, thanks.') },
-  { id: 'es.phrase.super.need-bag', text: '¿Me da una bolsa?', meaning: T('אפשר שקית?', 'Could I get a bag?') },
-  // hear — signs and cashier lines
-  { id: 'es.reply.super.aisle-three', text: 'Está en el pasillo tres.', meaning: T('זה במעבר שלוש.', "It's in aisle three.") },
-  { id: 'es.reply.super.over-there', text: 'Allí, a la izquierda.', meaning: T('שם, משמאל.', 'Over there, on the left.') },
-  { id: 'es.reply.super.weigh-it', text: 'Primero tiene que pesarlo.', meaning: T('צריך לשקול קודם.', 'You need to weigh it first.') },
-  { id: 'es.reply.super.bag-q', text: '¿Necesita una bolsa?', meaning: T('צריך שקית?', 'Do you need a bag?') },
-  { id: 'es.reply.super.card-here', text: 'Inserte su tarjeta aquí.', meaning: T('הכנס את הכרטיס כאן.', 'Insert your card here.') },
-  { id: 'es.reply.super.sold-out', text: 'Lo siento, se ha agotado.', meaning: T('סליחה, אזל המלאי.', "Sorry, we're sold out.") },
-  ...recoveryEs('es.phrase.recovery.repeat', 'es.phrase.recovery.slowly', 'es.phrase.recovery.show-me', 'es.phrase.recovery.thank-you'),
+  ...pick(
+    'es.phrase.coffee.iced-coffee', 'es.reply.coffee.milk-sugar',
+    'es.phrase.street.one-of-those', 'es.phrase.street.how-much', 'es.reply.street.how-many',
+    'es.phrase.rest.table-for-two', 'es.phrase.rest.ill-have', 'es.phrase.rest.bill-please',
+  ),
+  ...recoveryEs('es.phrase.recovery.repeat', 'es.phrase.recovery.slowly', 'es.phrase.recovery.thank-you'),
 ];
 
-const SCENE_SUPER: BootcampDialogue = {
-  id: 'supermarket',
+const COLD_COFFEE: BootcampDialogue = {
+  id: 'cold-coffee',
   start: 'n1',
   nodes: [
-    { id: 'n1', who: 'npc', next: 'c1', en: '¡Hola! ¿Le ayudo a encontrar algo?', tr: TR('Hi there! Can I help you find something?', 'היי! לעזור לך למצוא משהו?'), he: 'היי! לעזור לך למצוא משהו?' },
+    { id: 'n1', who: 'npc', fast: true, next: 'c1', en: '¡Buenos días! ¿Qué le sirvo?', tr: TR('Morning! What can I get you?', 'בוקר! מה להביא לך?'), he: 'בוקר! מה להביא לך?' },
     { id: 'c1', who: 'you', en: '', he: '', choices: [
-      { en: '¿Dónde está la leche?', tr: TR('Where is the milk?', 'איפה החלב?'), he: 'איפה החלב?', itemId: 'es.phrase.super.where-is', correct: true, next: 'n2' },
-      { en: '¿Tienen pan?', tr: TR('Do you have bread?', 'יש לכם לחם?'), he: 'יש לכם לחם?', itemId: 'es.phrase.super.do-you-have', correct: true, next: 'n1b' },
+      { en: 'Quiero un café con hielo, por favor.', tr: TR("I'd like an iced coffee, please.", 'אני רוצה קפה קר, בבקשה.'), he: 'אני רוצה קפה קר, בבקשה.', itemId: 'es.phrase.coffee.iced-coffee', correct: true, next: 'n2' },
+      { en: '¿Puede repetir, por favor?', tr: TR('Can you repeat that?', 'אפשר לחזור על זה?'), he: 'אפשר לחזור על זה?', itemId: 'es.phrase.recovery.repeat', correct: true, next: 'n2' },
     ] },
-    { id: 'n1b', who: 'npc', next: 'c1b', en: '¿Pan? Sí — recién hecho esta mañana, en el pasillo uno.', tr: TR('Bread? Yes — fresh this morning, in aisle one.', 'לחם? כן — טרי מהבוקר, במעבר אחת.'), he: 'לחם? כן — טרי מהבוקר, במעבר אחת.' },
-    { id: 'c1b', who: 'you', en: '', he: '', choices: [
-      { en: '¿Dónde está la leche?', tr: TR('Where is the milk?', 'איפה החלב?'), he: 'איפה החלב?', itemId: 'es.phrase.super.where-is', correct: true, next: 'n2' },
-    ] },
-    { id: 'n2', who: 'npc', next: 'c2', en: 'La leche está en el pasillo tres, a la izquierda.', tr: TR("The milk is in aisle three, on the left.", 'החלב במעבר שלוש, משמאל.'), he: 'החלב במעבר שלוש, משמאל.' },
+    { id: 'n2', who: 'npc', fast: true, next: 'c2', en: 'Claro — ¿leche y azúcar?', tr: TR('Sure — milk and sugar?', 'בטח — חלב וסוכר?'), he: 'בטח — חלב וסוכר?' },
     { id: 'c2', who: 'you', en: '', he: '', choices: [
-      { en: '¡Gracias!', tr: TR('Thank you!', 'תודה!'), he: 'תודה!', itemId: 'es.phrase.recovery.thank-you', correct: true, next: 'n3' },
-      { en: '¿Puede repetir, por favor?', tr: TR('Can you repeat that?', 'אפשר לחזור על זה?'), he: 'אפשר לחזור על זה?', itemId: 'es.phrase.recovery.repeat', correct: true, next: 'r2' },
+      { en: 'Con leche, sin azúcar.', tr: TR('Milk, no sugar.', 'עם חלב, בלי סוכר.'), he: 'עם חלב, בלי סוכר.', correct: true, next: 'n3' },
+      { en: 'Más despacio, por favor.', tr: TR('Please speak slowly.', 'דבר לאט, בבקשה.'), he: 'דבר לאט, בבקשה.', itemId: 'es.phrase.recovery.slowly', correct: true, next: 'n3' },
     ] },
-    { id: 'r2', who: 'npc', slow: true, next: 'c2b', en: 'Pasillo — tres — a la izquierda.', tr: TR('Aisle — three — on the left.', 'מעבר — שלוש — משמאל.'), he: 'מעבר — שלוש — משמאל.' },
-    { id: 'c2b', who: 'you', en: '', he: '', choices: [
-      { en: '¡Gracias!', tr: TR('Thank you!', 'תודה!'), he: 'תודה!', itemId: 'es.phrase.recovery.thank-you', correct: true, next: 'n3' },
+    { id: 'n3', who: 'npc', end: true, en: 'Enseguida se lo preparo. ¡Buenos días!', tr: TR('Coming right up. Have a great morning!', 'תכף מוכן. בוקר נהדר!'), he: 'תכף מוכן. בוקר נהדר!' },
+  ],
+};
+
+const COLD_MARKET: BootcampDialogue = {
+  id: 'cold-market',
+  start: 'n1',
+  nodes: [
+    { id: 'n1', who: 'npc', fast: true, next: 'c1', en: '¡Fruta fresca, fruta fresca! ¿Qué quiere?', tr: TR('Fresh fruit, fresh fruit! What would you like?', 'פירות טריים, פירות טריים! מה תרצה?'), he: 'פירות טריים, פירות טריים! מה תרצה?' },
+    { id: 'c1', who: 'you', en: '', he: '', choices: [
+      { en: '¿Cuánto es?', tr: TR('How much is it?', 'כמה זה עולה?'), he: 'כמה זה עולה?', itemId: 'es.phrase.street.how-much', correct: true, next: 'n2' },
+      { en: 'Uno de esos, por favor.', tr: TR('One of those, please.', 'אחד מאלה, בבקשה.'), he: 'אחד מאלה, בבקשה.', itemId: 'es.phrase.street.one-of-those', correct: true, next: 'n2' },
     ] },
-    { id: 'n3', who: 'npc', next: 'c3', en: 'En la caja — ¿solo esto? Primero tiene que pesar la fruta.', tr: TR("At the checkout — just these? You'll need to weigh the fruit first.", 'בקופה — רק אלה? צריך לשקול קודם את הפירות.'), he: 'בקופה — רק אלה? צריך לשקול קודם את הפירות.' },
+    { id: 'n2', who: 'npc', fast: true, next: 'c2', en: 'Mejor precio para usted — ¡seis! ¿Cuántos?', tr: TR('Best price for you — six! How many?', 'מחיר הכי טוב בשבילך — שישה! כמה?'), he: 'מחיר הכי טוב בשבילך — שישה! כמה?' },
+    { id: 'c2', who: 'you', en: '', he: '', choices: [
+      { en: 'Dos, por favor.', tr: TR('Two, please.', 'שניים, בבקשה.'), he: 'שניים, בבקשה.', correct: true, next: 'n3' },
+      { en: '¿Puede repetir, por favor?', tr: TR('Can you repeat that?', 'אפשר לחזור על זה?'), he: 'אפשר לחזור על זה?', itemId: 'es.phrase.recovery.repeat', correct: true, next: 'n3' },
+    ] },
+    { id: 'n3', who: 'npc', end: true, en: 'Tenga — ¡que aproveche, amigo!', tr: TR('Here you go — enjoy, my friend!', 'הנה לך — תיהנה, חבר!'), he: 'הנה לך — תיהנה, חבר!' },
+  ],
+};
+
+const COLD_RESTAURANT: BootcampDialogue = {
+  id: 'cold-restaurant',
+  start: 'n1',
+  nodes: [
+    { id: 'n1', who: 'npc', next: 'c1', en: '¡Buenas noches! ¿Cuántos son?', tr: TR('Good evening! How many people?', 'ערב טוב! כמה אנשים?'), he: 'ערב טוב! כמה אנשים?' },
+    { id: 'c1', who: 'you', en: '', he: '', choices: [
+      { en: 'Una mesa para dos, por favor.', tr: TR('A table for two, please.', 'שולחן לשניים, בבקשה.'), he: 'שולחן לשניים, בבקשה.', itemId: 'es.phrase.rest.table-for-two', correct: true, next: 'n2' },
+      { en: 'Más despacio, por favor.', tr: TR('Please speak slowly.', 'דבר לאט, בבקשה.'), he: 'דבר לאט, בבקשה.', itemId: 'es.phrase.recovery.slowly', correct: true, next: 'n2' },
+    ] },
+    { id: 'n2', who: 'npc', fast: true, next: 'c2', en: 'Síganme. ¿Están listos para pedir?', tr: TR('Right this way. Are you ready to order?', 'בבקשה אחריי. מוכנים להזמין?'), he: 'בבקשה אחריי. מוכנים להזמין?' },
+    { id: 'c2', who: 'you', en: '', he: '', choices: [
+      { en: 'Voy a tomar la pasta, por favor.', tr: TR("I'll have the pasta, please.", 'אני אקח את הפסטה, בבקשה.'), he: 'אני אקח את הפסטה, בבקשה.', itemId: 'es.phrase.rest.ill-have', correct: true, next: 'n3' },
+      { en: '¿Puede repetir, por favor?', tr: TR('Can you repeat that?', 'אפשר לחזור על זה?'), he: 'אפשר לחזור על זה?', itemId: 'es.phrase.recovery.repeat', correct: true, next: 'n3' },
+    ] },
+    { id: 'n3', who: 'npc', next: 'c3', en: 'Excelente. Se lo traigo enseguida. Avíseme cuando quiera la cuenta.', tr: TR("Excellent. I'll bring it right out. Just wave when you'd like the bill.", 'מצוין. אביא מיד. תסמן כשתרצה את החשבון.'), he: 'מצוין. אביא מיד. תסמן כשתרצה את החשבון.' },
     { id: 'c3', who: 'you', en: '', he: '', choices: [
-      { en: '¿Me lo puede mostrar?', tr: TR('Can you show me?', 'אתה יכול להראות לי? (כלי — כשמילים לא מספיקות)'), he: 'אתה יכול להראות לי?', itemId: 'es.phrase.recovery.show-me', correct: true, next: 'r3' },
-      { en: 'Solo esto, gracias.', tr: TR('Just this, thanks.', 'רק את זה, תודה.'), he: 'רק את זה, תודה.', itemId: 'es.phrase.super.just-this', correct: true, next: 'n4' },
+      { en: '¿Nos trae la cuenta, por favor?', tr: TR('Could we have the bill, please?', 'אפשר את החשבון, בבקשה?'), he: 'אפשר את החשבון, בבקשה?', itemId: 'es.phrase.rest.bill-please', correct: true, next: 'n4' },
+      { en: '¡Gracias!', tr: TR('Thank you!', 'תודה!'), he: 'תודה!', itemId: 'es.phrase.recovery.thank-you', correct: true, next: 'n4' },
     ] },
-    { id: 'r3', who: 'npc', slow: true, next: 'c3b', en: 'Claro — póngalo aquí, pulse la imagen, listo.', tr: TR('Of course — put it here, press the picture, done.', 'בטח — שים כאן, לחץ על התמונה, גמרנו.'), he: 'בטח — שים כאן, לחץ על התמונה, גמרנו.' },
-    { id: 'c3b', who: 'you', en: '', he: '', choices: [
-      { en: 'Solo esto, gracias.', tr: TR('Just this, thanks.', 'רק את זה, תודה.'), he: 'רק את זה, תודה.', itemId: 'es.phrase.super.just-this', correct: true, next: 'n4' },
-    ] },
-    { id: 'n4', who: 'npc', next: 'c4', en: '¿Necesita una bolsa?', tr: TR('Do you need a bag?', 'צריך שקית?'), he: 'צריך שקית?' },
-    { id: 'c4', who: 'you', en: '', he: '', choices: [
-      { en: '¿Me da una bolsa?', tr: TR('Could I get a bag?', 'אפשר שקית?'), he: 'אפשר שקית?', itemId: 'es.phrase.super.need-bag', correct: true, next: 'n5' },
-      { en: '¡Gracias!', tr: TR('Thank you!', 'תודה!'), he: 'תודה!', itemId: 'es.phrase.recovery.thank-you', correct: true, next: 'n5' },
-    ] },
-    { id: 'n5', who: 'npc', end: true, en: 'Inserte su tarjeta aquí… listo. ¡Que tenga un buen día!', tr: TR('Insert your card here… all done. Have a nice day!', 'הכנס את הכרטיס כאן… הכל מוכן. שיהיה יום נעים!'), he: 'הכנס את הכרטיס כאן… הכל מוכן. שיהיה יום נעים!' },
+    { id: 'n4', who: 'npc', end: true, en: 'Claro — aquí tiene. ¡Que pasen buena noche!', tr: TR('Of course — here you go. Have a lovely evening!', 'כמובן — בבקשה. ערב נפלא!'), he: 'כמובן — בבקשה. ערב נפלא!' },
   ],
 };
 
 export const DAY17_ES: BootcampDayContent = {
   day: 17,
-  title: T('סופרמרקט', 'Supermarket'),
+  title: T('נקודת ביקורת: יום אוכל', 'CHECKPOINT: Food Day'),
   items: DAY17_ES_ITEMS,
-  dialogues: { supermarket: SCENE_SUPER },
+  dialogues: { 'cold-coffee': COLD_COFFEE, 'cold-market': COLD_MARKET, 'cold-restaurant': COLD_RESTAURANT },
   steps: [
-    { kind: 'talk', icon: '🛒', title: T('משימה 17: סופרמרקט', 'Mission 17: Supermarket'),
+    { kind: 'talk', icon: '🍽️', title: T('נקודת ביקורת: יום אוכל', 'Checkpoint: Food Day'),
       body: [
-        T('היום-יום נהיה זול ופשוט. אתה מוצא, שוקל, ומשלם — לבד לגמרי.', 'Daily life just got cheap and easy. You find it, weigh it, and pay — completely on your own.'),
-        T('רוב העבודה כאן היא זיהוי: שלטים, מעברים, וקול הקופה האוטומטית.', 'Most of the work here is recognition: signs, aisles, and the self-checkout voice.'),
-      ], cta: T('להיכנס לסופר', 'Walk into the shop') },
-    { kind: 'tool', itemId: 'es.phrase.super.where-is', index: 1, total: 4, label: T('למצוא מוצר', 'Find a product') },
-    { kind: 'tool', itemId: 'es.phrase.super.do-you-have', index: 2, total: 4, label: T('לבדוק מלאי', 'Check stock') },
-    { kind: 'tool', itemId: 'es.phrase.super.just-this', index: 3, total: 4, label: T('בקופה', 'At the checkout') },
-    { kind: 'tool', itemId: 'es.phrase.super.need-bag', index: 4, total: 4, label: T('לבקש שקית', 'Ask for a bag') },
-    { kind: 'replies', saidItemId: 'es.phrase.super.where-is',
-      replyIds: ['es.reply.super.aisle-three', 'es.reply.super.over-there', 'es.reply.super.weigh-it', 'es.reply.super.bag-q'] },
-    { kind: 'receipt', text: T('אתה מזהה תשובות של סדרן וקופה — מעבר, כיוון, שקילה, שקית.', 'You recognize the answers of a shelf-stocker and a checkout — aisle, direction, weighing, bag.') },
-    { kind: 'quiz', itemId: 'es.reply.super.weigh-it', wrongIds: ['es.reply.super.bag-q', 'es.reply.super.card-here'] },
-    { kind: 'quiz', itemId: 'es.reply.super.aisle-three', wrongIds: ['es.reply.super.over-there', 'es.reply.super.sold-out'] },
-    { kind: 'dialogue', dialogueId: 'supermarket' },
-    { kind: 'receipt', text: T('מצאת מוצרים, שקלת פירות, ועברת קופה אוטומטית — לבד.', 'You found products, weighed fruit, and cleared a self-checkout — on your own.') },
-    { kind: 'swipe', itemIds: DAY17_ES_ITEMS.map((i) => i.id) },
-    { kind: 'ambush', npc: { en: 'Artículo inesperado en la zona de embolsado — espere asistencia, por favor.', tr: TR('Unexpected item in the bagging area — please wait for assistance.', 'פריט לא צפוי באזור האריזה — אנא המתן לסיוע.'), he: 'פריט לא צפוי באזור האריזה — אנא המתן לסיוע.' },
-      correctItemId: 'es.phrase.recovery.show-me', wrongItemId: 'es.phrase.super.just-this' },
-    { kind: 'receipt', text: T('הקופה האוטומטית נתקעה — וידעת לבקש שיראו לך במקום להיכנס ללחץ.', 'The self-checkout jammed — and you knew to ask someone to show you, instead of panicking.') },
+        T('אין חומר חדש היום. רק הוכחה — יום אוכל שלם, מהבוקר עד הלילה.', 'No new material today. Just proof — a full food day, morning to night.'),
+        T('קפה בבוקר, שוק בצהריים, מסעדה בערב. הכל קר, מהר, בלי הכנה.', 'Coffee in the morning, a market at noon, a restaurant at night. All cold, fast, unprepared.'),
+      ], cta: T('בוקר טוב — קדימה', 'Good morning — go') },
+    { kind: 'dialogue', dialogueId: 'cold-coffee' },
+    { kind: 'receipt', text: T('שרדת קפה בבוקר בקור — הזמנה וחלב/סוכר, בלי הכנה.', 'You survived a cold morning coffee — order and milk/sugar, no prep.') },
+    { kind: 'ambush', npc: { en: 'Perdone — recuérdeme, ¿era con leche y azúcar o solo con leche?', tr: TR('Sorry — remind me, was that with milk and sugar or just milk?', 'סליחה — תזכיר לי, זה היה עם חלב וסוכר או רק חלב?'), he: 'סליחה — תזכיר לי, זה היה עם חלב וסוכר או רק חלב?' },
+      correctItemId: 'es.phrase.recovery.repeat', wrongItemId: 'es.reply.coffee.milk-sugar' },
+    { kind: 'dialogue', dialogueId: 'cold-market' },
+    { kind: 'receipt', text: T('שרדת דוכן שוק רועש בקור — מחיר, כמות, וסגירה.', 'You survived a loud market stall cold — price, quantity, and a close.') },
+    { kind: 'ambush', npc: { en: 'Dos por seis o cinco por trece — ¿qué oferta quiere, jefe?', tr: TR('Two for six or five for thirteen — which deal do you want boss?', 'שניים בשישה או חמישה בשלוש-עשרה — איזו עסקה אתה רוצה, בוס?'), he: 'שניים בשישה או חמישה בשלוש-עשרה — איזו עסקה אתה רוצה, בוס?' },
+      correctItemId: 'es.phrase.recovery.slowly', wrongItemId: 'es.reply.street.how-many' },
+    { kind: 'dialogue', dialogueId: 'cold-restaurant' },
+    { kind: 'receipt', text: T('יום אוכל שלם — קפה, שוק, ומסעדה — בקור. אף אחד לא ירעיב אותך.', 'A full food day — coffee, market, and restaurant — cold. Nobody can starve you.') },
     { kind: 'summary' },
   ],
 };

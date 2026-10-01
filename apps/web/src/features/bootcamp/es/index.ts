@@ -28,7 +28,6 @@ import { DAY26_ES } from './day26.js';
 import { DAY27_ES } from './day27.js';
 import { DAY28_ES } from './day28.js';
 import { DAY29_ES } from './day29.js';
-import { DAY30_ES } from './day30.js';
 
 /**
  * Spanish Bootcamp missions (content-only). Same `BootcampDayContent` shape as the English and French
@@ -36,7 +35,7 @@ import { DAY30_ES } from './day30.js';
  * task, no engine change (the language-agnostic registry in bootcampStore selects the set by learning
  * language). Missions NOT present here would show as honest "not built" for Spanish — never English.
  *
- * Status: Spanish Bootcamp at full parity with the 30 English missions. Neutral international Spanish,
+ * Status: Spanish Bootcamp at full parity with the English missions. Neutral international Spanish,
  * AI-drafted, pending native review.
  */
 export const DAYS_ES: Record<number, BootcampDayContent> = {
@@ -69,5 +68,4 @@ export const DAYS_ES: Record<number, BootcampDayContent> = {
   27: DAY27_ES,
   28: DAY28_ES,
   29: DAY29_ES,
-  30: DAY30_ES,
 };

@@ -2,112 +2,121 @@ import { T, recovery } from './recovery.js';
 import type { BootcampDayContent, BootcampDialogue, BootcampItem } from './types.js';
 
 /**
- * Mission 12 — "Hotel Requests & Problems" (Phase 2 · Arrival).
- * The first "friction" mission: something isn't right and you ask for it to be fixed.
- * Towels, wifi, a broken AC, a noisy room — polite persistence is a confidence skill.
- * You learn you don't have to suffer quietly: you ask, and the hotel works for you.
+ * Mission 12 — "Restaurant Basics" (Phase 3 · Food, the deep exemplar).
+ * One situation taken ALL the way: greeting → table → menu → drinks → order →
+ * recommendation → waiter's follow-ups → the bill → goodbye. You leave able to sit down
+ * at a real restaurant and run the whole thing yourself. Depth before breadth.
  */
 export const DAY12_ITEMS: BootcampItem[] = [
   // say
-  { id: 'en.phrase.hotelreq.more-towels', text: 'Could I get some more towels?', meaning: T('אפשר לקבל עוד מגבות?', 'Could I get some more towels?'),
-    tip: T('התבנית: Could I get ___? — הדרך המנומסת לבקש כל דבר.', 'Template: Could I get ___? — the polite way to ask for anything.') },
-  { id: 'en.phrase.hotelreq.wifi-password', text: "What's the wifi password?", meaning: T('מה הסיסמה של הוויי-פיי?', "What's the wifi password?"),
-    tip: T('הבקשה הכי שימושית של המאה. שווה לדעת בעל פה.', 'The most useful request of the century. Worth knowing by heart.') },
-  { id: 'en.phrase.hotelreq.ac-not-working', text: "The air conditioning isn't working.", meaning: T('המזגן לא עובד.', "The air conditioning isn't working."),
-    tip: T('התבנית: The ___ isn’t working. עובדת על כל דבר שהתקלקל.', 'Template: The ___ isn’t working. Works for anything broken.') },
-  { id: 'en.phrase.hotelreq.room-noisy', text: 'My room is very noisy.', meaning: T('החדר שלי מאוד רועש.', 'My room is very noisy.'),
-    tip: T('לתאר בעיה זה לא להתלונן. זה לתת להם לתקן.', 'Describing a problem isn’t complaining. It’s letting them fix it.') },
-  { id: 'en.phrase.hotelreq.can-you-help', text: 'Could you help me with something?', meaning: T('אפשר עזרה במשהו?', 'Could you help me with something?'),
-    tip: T('פותח כל בקשה בנימוס. אף אחד לא מסרב לזה.', 'Opens any request politely. Nobody says no to it.') },
-  // hear — reception's replies
-  { id: 'en.reply.hotelreq.how-can-help', text: 'How can I help you?', meaning: T('איך אפשר לעזור לך?', 'How can I help you?') },
-  { id: 'en.reply.hotelreq.right-away', text: "I'll send someone right away.", meaning: T('אשלח מישהו מיד.', "I'll send someone right away.") },
-  { id: 'en.reply.hotelreq.so-sorry', text: "I'm so sorry about that.", meaning: T('אני מצטער על זה מאוד.', "I'm so sorry about that.") },
-  { id: 'en.reply.hotelreq.password-card', text: 'The password is on your key card.', meaning: T('הסיסמה על כרטיס המפתח.', 'The password is on your key card.') },
-  { id: 'en.reply.hotelreq.change-rooms', text: 'Would you like to change rooms?', meaning: T('תרצה להחליף חדר?', 'Would you like to change rooms?') },
-  { id: 'en.reply.hotelreq.anything-else', text: 'Anything else I can do?', meaning: T('עוד משהו שאוכל לעשות?', 'Anything else I can do?') },
-  ...recovery('en.phrase.recovery.repeat', 'en.phrase.recovery.slowly', 'en.phrase.recovery.thank-you'),
+  { id: 'en.phrase.rest.table-for-two', text: 'A table for two, please.', meaning: T('שולחן לשניים, בבקשה.', 'A table for two, please.'),
+    tip: T('התבנית: A table for ___ — פשוט מספר. for one / for four.', 'Template: A table for ___ — just a number. for one / for four.') },
+  { id: 'en.phrase.rest.menu-please', text: 'Could we see the menu?', meaning: T('אפשר לראות את התפריט?', 'Could we see the menu?') },
+  { id: 'en.phrase.rest.ill-have', text: "I'll have the pasta, please.", meaning: T('אני אקח את הפסטה, בבקשה.', "I'll have the pasta, please."),
+    tip: T('התבנית הגדולה של המסעדה: I’ll have the ___ — מזמינים כל דבר בתפריט.', 'The restaurant’s big template: I’ll have the ___ — order anything on the menu.') },
+  { id: 'en.phrase.rest.recommend', text: 'What do you recommend?', meaning: T('מה אתה ממליץ?', 'What do you recommend?'),
+    tip: T('אם התפריט מבלבל — תן למלצר להחליט. תמיד עובד.', 'If the menu confuses you — let the waiter decide. Always works.') },
+  { id: 'en.phrase.rest.water-please', text: 'A bottle of water, please.', meaning: T('בקבוק מים, בבקשה.', 'A bottle of water, please.') },
+  { id: 'en.phrase.rest.bill-please', text: 'Could we have the bill, please?', meaning: T('אפשר את החשבון, בבקשה?', 'Could we have the bill, please?'),
+    tip: T('המשפט שסוגר כל ארוחה. באנגליה: bill · באמריקה: check.', 'The line that closes every meal. UK: bill · US: check.') },
+  // hear — the waiter's chain
+  { id: 'en.reply.rest.how-many', text: 'How many people?', meaning: T('כמה אנשים?', 'How many people?') },
+  { id: 'en.reply.rest.something-drink', text: 'Something to drink?', meaning: T('משהו לשתות?', 'Something to drink?') },
+  { id: 'en.reply.rest.ready-order', text: 'Are you ready to order?', meaning: T('מוכנים להזמין?', 'Are you ready to order?') },
+  { id: 'en.reply.rest.anything-else', text: 'Anything else?', meaning: T('עוד משהו?', 'Anything else?') },
+  { id: 'en.reply.rest.everything-okay', text: 'Is everything okay?', meaning: T('הכל בסדר?', 'Is everything okay?') },
+  { id: 'en.reply.rest.enjoy-meal', text: 'Enjoy your meal!', meaning: T('בתיאבון!', 'Enjoy your meal!') },
+  ...recovery('en.phrase.recovery.repeat', 'en.phrase.recovery.slowly', 'en.phrase.recovery.one-moment', 'en.phrase.recovery.thank-you'),
 ];
 
-const SCENE_DESK: BootcampDialogue = {
-  id: 'hotel-desk',
+const SCENE_DINNER: BootcampDialogue = {
+  id: 'restaurant-dinner',
   start: 'n1',
   nodes: [
-    { id: 'n1', who: 'npc', next: 'c1', en: 'Good evening! How can I help you?', he: 'ערב טוב! איך אפשר לעזור?' },
+    { id: 'n1', who: 'npc', next: 'c1', en: 'Good evening, welcome! How many people?', he: 'ערב טוב, ברוכים הבאים! כמה אנשים?' },
     { id: 'c1', who: 'you', en: '', he: '', choices: [
-      { en: 'Could I get some more towels?', he: 'אפשר לקבל עוד מגבות?', itemId: 'en.phrase.hotelreq.more-towels', correct: true, next: 'n2' },
-      { en: 'Please speak slowly.', he: 'דבר לאט, בבקשה. (כלי — תמיד מותר)', itemId: 'en.phrase.recovery.slowly', correct: true, next: 'r1' },
+      { en: 'A table for two, please.', he: 'שולחן לשניים, בבקשה.', itemId: 'en.phrase.rest.table-for-two', correct: true, next: 'n2' },
+      { en: 'One moment, please.', he: 'רגע אחד, בבקשה. (כלי — לספור כמה אתם)', itemId: 'en.phrase.recovery.one-moment', correct: true, next: 'r1' },
     ] },
-    { id: 'r1', who: 'npc', slow: true, next: 'c1b', en: 'Of course — how can I help you?', he: 'כמובן — איך אפשר לעזור?' },
+    { id: 'r1', who: 'npc', slow: true, next: 'c1b', en: 'No problem — how many people?', he: 'אין בעיה — כמה אנשים?' },
     { id: 'c1b', who: 'you', en: '', he: '', choices: [
-      { en: 'Could I get some more towels?', he: 'אפשר לקבל עוד מגבות?', itemId: 'en.phrase.hotelreq.more-towels', correct: true, next: 'n2' },
+      { en: 'A table for two, please.', he: 'שולחן לשניים, בבקשה.', itemId: 'en.phrase.rest.table-for-two', correct: true, next: 'n2' },
     ] },
-    { id: 'n2', who: 'npc', next: 'c2', en: "Of course, I'll send some up right away. Anything else?", he: 'בטח, אשלח מיד. עוד משהו?' },
+    { id: 'n2', who: 'npc', next: 'c2', en: 'Perfect, right this way. Here are your menus. Something to drink?', he: 'מצוין, בבקשה אחריי. הנה התפריטים. משהו לשתות?' },
     { id: 'c2', who: 'you', en: '', he: '', choices: [
-      { en: "What's the wifi password?", he: 'מה הסיסמה של הוויי-פיי?', itemId: 'en.phrase.hotelreq.wifi-password', correct: true, next: 'n3' },
-      { en: 'Can you repeat that?', he: 'אפשר לחזור על זה?', itemId: 'en.phrase.recovery.repeat', correct: true, next: 'r2' },
+      { en: 'A bottle of water, please.', he: 'בקבוק מים, בבקשה.', itemId: 'en.phrase.rest.water-please', correct: true, next: 'n3' },
+      { en: 'Could we see the menu?', he: 'אפשר לראות את התפריט? (הוא בדיוק נתן — הקשב)', itemId: 'en.phrase.rest.menu-please', correct: false, next: 'r2' },
     ] },
-    { id: 'r2', who: 'npc', slow: true, next: 'c2b', en: 'I asked — is there anything else?', he: 'שאלתי — יש עוד משהו?' },
+    { id: 'r2', who: 'npc', next: 'c2b', en: "The menus are right there in front of you — anything to drink first?", he: 'התפריטים ממש מולך — משהו לשתות קודם?' },
     { id: 'c2b', who: 'you', en: '', he: '', choices: [
-      { en: "What's the wifi password?", he: 'מה הסיסמה של הוויי-פיי?', itemId: 'en.phrase.hotelreq.wifi-password', correct: true, next: 'n3' },
+      { en: 'A bottle of water, please.', he: 'בקבוק מים, בבקשה.', itemId: 'en.phrase.rest.water-please', correct: true, next: 'n3' },
     ] },
-    { id: 'n3', who: 'npc', next: 'c3', en: 'The password is on your key card. Anything else?', he: 'הסיסמה על כרטיס המפתח. עוד משהו?' },
+    { id: 'n3', who: 'npc', next: 'c3', en: "Great. I'll give you a minute… Are you ready to order?", he: 'יופי. אתן לכם רגע… מוכנים להזמין?' },
     { id: 'c3', who: 'you', en: '', he: '', choices: [
-      { en: "The air conditioning isn't working.", he: 'המזגן לא עובד.', itemId: 'en.phrase.hotelreq.ac-not-working', correct: true, next: 'n4' },
-      { en: 'Thank you!', he: 'תודה! (מנומס — אבל יש עוד בעיה לספר)', itemId: 'en.phrase.recovery.thank-you', correct: false, next: 'r3' },
+      { en: "I'll have the pasta, please.", he: 'אני אקח את הפסטה, בבקשה.', itemId: 'en.phrase.rest.ill-have', correct: true, next: 'n4' },
+      { en: 'What do you recommend?', he: 'מה אתה ממליץ? (מהלך חכם כשמתלבטים)', itemId: 'en.phrase.rest.recommend', correct: true, next: 'n3b' },
     ] },
-    { id: 'r3', who: 'npc', next: 'c3b', en: "You're welcome! Is the room itself okay?", he: 'בבקשה! והחדר עצמו בסדר?' },
+    { id: 'n3b', who: 'npc', next: 'c3b', en: 'The seafood pasta is our best — very fresh today.', he: 'פסטת פירות הים היא הכי טובה שלנו — טרייה מאוד היום.' },
     { id: 'c3b', who: 'you', en: '', he: '', choices: [
-      { en: "The air conditioning isn't working.", he: 'המזגן לא עובד.', itemId: 'en.phrase.hotelreq.ac-not-working', correct: true, next: 'n4' },
+      { en: "I'll have the pasta, please.", he: 'אני אקח את הפסטה, בבקשה.', itemId: 'en.phrase.rest.ill-have', correct: true, next: 'n4' },
     ] },
-    { id: 'n4', who: 'npc', next: 'c4', en: "Oh, I'm so sorry about that. I'll have it fixed today. Is the room comfortable otherwise?", he: 'אוי, אני מצטער מאוד. אדאג שיתקנו היום. החדר נוח חוץ מזה?' },
+    { id: 'n4', who: 'npc', fast: true, next: 'c4', en: 'Excellent choice. Anything else?', he: 'בחירה מצוינת. עוד משהו?' },
     { id: 'c4', who: 'you', en: '', he: '', choices: [
-      { en: 'My room is very noisy.', he: 'החדר שלי מאוד רועש.', itemId: 'en.phrase.hotelreq.room-noisy', correct: true, next: 'n5' },
-      { en: 'Please speak slowly.', he: 'דבר לאט, בבקשה.', itemId: 'en.phrase.recovery.slowly', correct: true, next: 'r4' },
+      { en: "That's all, thanks.", he: 'זה הכל, תודה.', correct: true, next: 'n5' },
+      { en: 'Can you repeat that?', he: 'אפשר לחזור על זה?', itemId: 'en.phrase.recovery.repeat', correct: true, next: 'r4' },
     ] },
-    { id: 'r4', who: 'npc', slow: true, next: 'c4b', en: 'Is the room — comfortable — otherwise?', he: 'החדר — נוח — חוץ מזה?' },
+    { id: 'r4', who: 'npc', slow: true, next: 'c4b', en: 'Would you like — anything else?', he: 'תרצו — עוד משהו?' },
     { id: 'c4b', who: 'you', en: '', he: '', choices: [
-      { en: 'My room is very noisy.', he: 'החדר שלי מאוד רועש.', itemId: 'en.phrase.hotelreq.room-noisy', correct: true, next: 'n5' },
+      { en: "That's all, thanks.", he: 'זה הכל, תודה.', correct: true, next: 'n5' },
     ] },
-    { id: 'n5', who: 'npc', next: 'c5', en: 'I understand. Would you like to change to a quieter room?', he: 'אני מבין. תרצה לעבור לחדר שקט יותר?' },
+    { id: 'n5', who: 'npc', next: 'c5', en: 'Here you are. Enjoy your meal!… Is everything okay?', he: 'בבקשה. בתיאבון!… הכל בסדר?' },
     { id: 'c5', who: 'you', en: '', he: '', choices: [
       { en: 'Yes, thank you!', he: 'כן, תודה!', itemId: 'en.phrase.recovery.thank-you', correct: true, next: 'n6' },
-      { en: 'Can you repeat that?', he: 'אפשר לחזור על זה?', itemId: 'en.phrase.recovery.repeat', correct: true, next: 'r5' },
+      { en: 'Please speak slowly.', he: 'דבר לאט, בבקשה.', itemId: 'en.phrase.recovery.slowly', correct: true, next: 'r5' },
     ] },
-    { id: 'r5', who: 'npc', slow: true, next: 'c5b', en: 'Would you — like — a quieter room?', he: 'תרצה — חדר — שקט יותר?' },
+    { id: 'r5', who: 'npc', slow: true, next: 'c5b', en: 'Is — everything — okay with the food?', he: 'הכל — בסדר — עם האוכל?' },
     { id: 'c5b', who: 'you', en: '', he: '', choices: [
       { en: 'Yes, thank you!', he: 'כן, תודה!', itemId: 'en.phrase.recovery.thank-you', correct: true, next: 'n6' },
     ] },
-    { id: 'n6', who: 'npc', end: true, en: "All sorted — room 305, and someone's on the way up. Have a lovely night!", he: 'הכל מסודר — חדר 305, ומישהו כבר בדרך. לילה נעים!' },
+    { id: 'n6', who: 'npc', next: 'c6', en: 'Wonderful. Let me know when you need anything.', he: 'נהדר. תגידו לי כשתצטרכו משהו.' },
+    { id: 'c6', who: 'you', en: '', he: '', choices: [
+      { en: 'Could we have the bill, please?', he: 'אפשר את החשבון, בבקשה?', itemId: 'en.phrase.rest.bill-please', correct: true, next: 'n7' },
+      { en: 'One moment, please.', he: 'רגע אחד, בבקשה.', itemId: 'en.phrase.recovery.one-moment', correct: true, next: 'r6' },
+    ] },
+    { id: 'r6', who: 'npc', slow: true, next: 'c6b', en: 'Of course — take your time.', he: 'כמובן — קחו את הזמן.' },
+    { id: 'c6b', who: 'you', en: '', he: '', choices: [
+      { en: 'Could we have the bill, please?', he: 'אפשר את החשבון, בבקשה?', itemId: 'en.phrase.rest.bill-please', correct: true, next: 'n7' },
+    ] },
+    { id: 'n7', who: 'npc', end: true, en: "Here's the bill. Thank you, and have a lovely evening!", he: 'הנה החשבון. תודה, וערב נפלא!' },
   ],
 };
 
 export const DAY12: BootcampDayContent = {
   day: 12,
-  title: T('בקשות ובעיות במלון', 'Hotel Requests & Problems'),
+  title: T('מסעדה — בסיס', 'Restaurant Basics'),
   items: DAY12_ITEMS,
-  dialogues: { 'hotel-desk': SCENE_DESK },
+  dialogues: { 'restaurant-dinner': SCENE_DINNER },
   steps: [
-    { kind: 'talk', icon: '🛎️', title: T('משימה 12: בקשות ובעיות במלון', 'Mission 12: Hotel Requests & Problems'),
+    { kind: 'talk', icon: '🍽️', title: T('משימה 12: מסעדה — בסיס', 'Mission 12: Restaurant Basics'),
       body: [
-        T('משהו לא בסדר בחדר? אתה לא צריך לסבול בשקט. אתה מבקש — והמלון עובד בשבילך.', 'Something wrong in the room? You don’t have to suffer quietly. You ask — and the hotel works for you.'),
-        T('לתאר בעיה בנימוס זה לא להתלונן. זה כלי. היום נלמד את הכלי הזה.', 'Describing a problem politely isn’t complaining. It’s a skill. Today we learn that skill.'),
-      ], cta: T('לגשת לקבלה', 'Go to reception') },
-    { kind: 'tool', itemId: 'en.phrase.hotelreq.more-towels', index: 1, total: 4, label: T('לבקש בנימוס', 'Ask politely') },
-    { kind: 'tool', itemId: 'en.phrase.hotelreq.wifi-password', index: 2, total: 4, label: T('הבקשה של המאה', 'The must-have request') },
-    { kind: 'tool', itemId: 'en.phrase.hotelreq.ac-not-working', index: 3, total: 4, label: T('לדווח על תקלה', 'Report a fault') },
-    { kind: 'tool', itemId: 'en.phrase.hotelreq.room-noisy', index: 4, total: 4, label: T('לתאר בעיה', 'Describe a problem') },
-    { kind: 'replies', saidItemId: 'en.phrase.hotelreq.ac-not-working',
-      replyIds: ['en.reply.hotelreq.right-away', 'en.reply.hotelreq.so-sorry', 'en.reply.hotelreq.change-rooms', 'en.reply.hotelreq.anything-else'] },
-    { kind: 'receipt', text: T('אתה מזהה איך צוות המלון מגיב לבקשה — כולל התנצלות ופתרון.', 'You recognize how hotel staff respond to a request — apology and solution included.') },
-    { kind: 'quiz', itemId: 'en.reply.hotelreq.change-rooms', wrongIds: ['en.reply.hotelreq.password-card', 'en.reply.hotelreq.how-can-help'] },
-    { kind: 'quiz', itemId: 'en.reply.hotelreq.right-away', wrongIds: ['en.reply.hotelreq.so-sorry', 'en.reply.hotelreq.anything-else'] },
-    { kind: 'dialogue', dialogueId: 'hotel-desk' },
-    { kind: 'receipt', text: T('ביקשת מגבות, וויי-פיי, ותיקון — ואפילו קיבלת חדר שקט יותר.', 'You asked for towels, wifi, and a repair — and even got a quieter room.') },
+        T('לב הטיול הוא ארוחת ערב. היום לא לומדים "מילים על אוכל" — לומדים לנהל מסעדה שלמה.', 'The heart of travel is dinner. Today we don’t learn “food words” — we learn to run a whole restaurant.'),
+        T('משולחן, דרך תפריט, הזמנה ושאלות המלצר — ועד החשבון. מקצה לקצה.', 'From the table, through the menu, the order, and the waiter’s questions — all the way to the bill. End to end.'),
+      ], cta: T('להיכנס למסעדה', 'Walk into the restaurant') },
+    { kind: 'tool', itemId: 'en.phrase.rest.table-for-two', index: 1, total: 4, label: T('להשיג שולחן', 'Get a table') },
+    { kind: 'tool', itemId: 'en.phrase.rest.ill-have', index: 2, total: 4, label: T('תבנית ההזמנה', 'The ordering template') },
+    { kind: 'tool', itemId: 'en.phrase.rest.recommend', index: 3, total: 4, label: T('כשמתלבטים', 'When unsure') },
+    { kind: 'tool', itemId: 'en.phrase.rest.bill-please', index: 4, total: 4, label: T('לסגור חשבון', 'Close the bill') },
+    { kind: 'replies', saidItemId: 'en.phrase.rest.ill-have',
+      replyIds: ['en.reply.rest.something-drink', 'en.reply.rest.ready-order', 'en.reply.rest.anything-else', 'en.reply.rest.everything-okay'] },
+    { kind: 'receipt', text: T('אתה מזהה את כל שאלות המלצר — לפני, במהלך, ואחרי הארוחה.', 'You recognize every waiter question — before, during, and after the meal.') },
+    { kind: 'quiz', itemId: 'en.reply.rest.ready-order', wrongIds: ['en.reply.rest.something-drink', 'en.reply.rest.enjoy-meal'] },
+    { kind: 'quiz', itemId: 'en.reply.rest.how-many', wrongIds: ['en.reply.rest.anything-else', 'en.reply.rest.everything-okay'] },
+    { kind: 'dialogue', dialogueId: 'restaurant-dinner' },
+    { kind: 'receipt', text: T('ניהלת ארוחת ערב שלמה באנגלית — שולחן, הזמנה, המלצה, חשבון.', 'You ran a full dinner in English — table, order, recommendation, bill.') },
     { kind: 'swipe', itemIds: DAY12_ITEMS.map((i) => i.id) },
-    { kind: 'ambush', npc: { en: "By the way there's been a small mix-up with your booking — could you come down to the desk?", he: 'אגב, הייתה אי-הבנה קטנה עם ההזמנה שלך — אפשר שתרד לקבלה?' },
-      correctItemId: 'en.phrase.recovery.repeat', wrongItemId: 'en.phrase.hotelreq.wifi-password' },
-    { kind: 'receipt', text: T('הודעה מפתיעה מהקבלה — וביקשת שיחזרו עליה במקום לקפוא.', 'A surprise message from the desk — and you asked them to repeat it instead of freezing.') },
+    { kind: 'ambush', npc: { en: 'And how would you like that cooked — rare, medium, or well done?', he: 'ואיך תרצה שיהיה מבושל — נא, בינוני, או עשוי היטב?' },
+      correctItemId: 'en.phrase.recovery.slowly', wrongItemId: 'en.phrase.rest.bill-please' },
+    { kind: 'receipt', text: T('המלצר ירה שלוש אפשרויות במהירות — וביקשת שיאט במקום לנחש.', 'The waiter fired three options fast — and you asked him to slow down instead of guessing.') },
     { kind: 'summary' },
   ],
 };

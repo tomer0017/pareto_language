@@ -2,97 +2,94 @@ import { T, recovery } from './recovery.js';
 import type { BootcampDayContent, BootcampDialogue, BootcampItem } from './types.js';
 
 /**
- * Mission 16 — "Street Food & Markets" (Phase 3 · Food).
- * Noisy, fast, informal — the perfect stress inoculation. You point, you order, you ask a
- * price, you haggle a little, you eat like a local. The best food is outside, and you're there.
+ * Mission 16 — "Supermarket" (Phase 3 · Food).
+ * The independence multiplier: find it, weigh it, pay for it — self-checkout included.
+ * Basic groceries with zero dependence on anyone. Cheap wins, heavy on recognition.
  */
 export const DAY16_ITEMS: BootcampItem[] = [
   // say
-  { id: 'en.phrase.street.one-of-those', text: 'One of those, please.', meaning: T('אחד מאלה, בבקשה.', 'One of those, please.'),
-    tip: T('לא יודע את השם? מצביע ואומר One of those. עובד בכל דוכן בעולם.', "Don't know the name? Point and say One of those. Works at every stall on earth.") },
-  { id: 'en.phrase.street.how-much', text: 'How much is it?', meaning: T('כמה זה עולה?', 'How much is it?'),
-    tip: T('השאלה שאסור לוותר עליה בשוק. תמיד שואלים לפני.', 'The one question you never skip at a market. Always ask first.') },
-  { id: 'en.phrase.street.two-please', text: 'Two, please.', meaning: T('שניים, בבקשה.', 'Two, please.') },
-  { id: 'en.phrase.street.too-expensive', text: "That's a bit much.", meaning: T('זה קצת יקר.', "That's a bit much."),
-    tip: T('פתיח עדין להתמקחות. חיוך, לא ריב.', 'A gentle haggling opener. A smile, not a fight.') },
-  { id: 'en.phrase.street.take-it', text: "I'll take it.", meaning: T('אני אקח.', "I'll take it."),
-    tip: T('סוגר את העסקה. שתי מילים, וגמרנו.', 'Closes the deal. Two words, and you’re done.') },
-  // hear — the vendor's calls
-  { id: 'en.reply.street.what-you-want', text: 'What would you like?', meaning: T('מה תרצה?', 'What would you like?') },
-  { id: 'en.reply.street.how-many', text: 'How many?', meaning: T('כמה?', 'How many?') },
-  { id: 'en.reply.street.five-each', text: 'Five each.', meaning: T('חמישה כל אחד.', 'Five each.') },
-  { id: 'en.reply.street.best-price', text: 'For you — best price, eight.', meaning: T('בשבילך — מחיר הכי טוב, שמונה.', 'For you — best price, eight.') },
-  { id: 'en.reply.street.fresh-today', text: "It's fresh today!", meaning: T('טרי היום!', "It's fresh today!") },
-  { id: 'en.reply.street.anything-else', text: 'Anything else, my friend?', meaning: T('עוד משהו, חבר?', 'Anything else, my friend?') },
+  { id: 'en.phrase.super.where-is', text: 'Where is the milk?', meaning: T('איפה החלב?', 'Where is the milk?'),
+    tip: T('התבנית: Where is the ___? — מוצאת כל מוצר בכל חנות.', 'Template: Where is the ___? — finds any product in any shop.') },
+  { id: 'en.phrase.super.do-you-have', text: 'Do you have bread?', meaning: T('יש לכם לחם?', 'Do you have bread?'),
+    tip: T('התבנית: Do you have ___? — בודקת אם קיים במלאי.', 'Template: Do you have ___? — checks if it’s in stock.') },
+  { id: 'en.phrase.super.just-this', text: 'Just this, thanks.', meaning: T('רק את זה, תודה.', 'Just this, thanks.') },
+  { id: 'en.phrase.super.need-bag', text: 'Could I get a bag?', meaning: T('אפשר שקית?', 'Could I get a bag?') },
+  // hear — signs and cashier lines
+  { id: 'en.reply.super.aisle-three', text: "It's in aisle three.", meaning: T('זה במעבר שלוש.', "It's in aisle three.") },
+  { id: 'en.reply.super.over-there', text: 'Over there, on the left.', meaning: T('שם, משמאל.', 'Over there, on the left.') },
+  { id: 'en.reply.super.weigh-it', text: 'You need to weigh it first.', meaning: T('צריך לשקול קודם.', 'You need to weigh it first.') },
+  { id: 'en.reply.super.bag-q', text: 'Do you need a bag?', meaning: T('צריך שקית?', 'Do you need a bag?') },
+  { id: 'en.reply.super.card-here', text: 'Insert your card here.', meaning: T('הכנס את הכרטיס כאן.', 'Insert your card here.') },
+  { id: 'en.reply.super.sold-out', text: "Sorry, we're sold out.", meaning: T('סליחה, אזל המלאי.', "Sorry, we're sold out.") },
   ...recovery('en.phrase.recovery.repeat', 'en.phrase.recovery.slowly', 'en.phrase.recovery.show-me', 'en.phrase.recovery.thank-you'),
 ];
 
-const SCENE_STALL: BootcampDialogue = {
-  id: 'market-stall',
+const SCENE_SUPER: BootcampDialogue = {
+  id: 'supermarket',
   start: 'n1',
   nodes: [
-    { id: 'n1', who: 'npc', fast: true, next: 'c1', en: 'Fresh today, fresh today! What would you like?', he: 'טרי היום, טרי היום! מה תרצה?' },
+    { id: 'n1', who: 'npc', next: 'c1', en: 'Hi there! Can I help you find something?', he: 'היי! לעזור לך למצוא משהו?' },
     { id: 'c1', who: 'you', en: '', he: '', choices: [
-      { en: 'One of those, please.', he: 'אחד מאלה, בבקשה. (מצביע!)', itemId: 'en.phrase.street.one-of-those', correct: true, next: 'n2' },
-      { en: 'Can you repeat that?', he: 'אפשר לחזור על זה?', itemId: 'en.phrase.recovery.repeat', correct: true, next: 'r1' },
+      { en: 'Where is the milk?', he: 'איפה החלב?', itemId: 'en.phrase.super.where-is', correct: true, next: 'n2' },
+      { en: 'Do you have bread?', he: 'יש לכם לחם?', itemId: 'en.phrase.super.do-you-have', correct: true, next: 'n1b' },
     ] },
-    { id: 'r1', who: 'npc', slow: true, next: 'c1b', en: 'What — would you — like?', he: 'מה — תרצה?' },
+    { id: 'n1b', who: 'npc', next: 'c1b', en: 'Bread? Yes — fresh this morning, in aisle one.', he: 'לחם? כן — טרי מהבוקר, במעבר אחת.' },
     { id: 'c1b', who: 'you', en: '', he: '', choices: [
-      { en: 'One of those, please.', he: 'אחד מאלה, בבקשה.', itemId: 'en.phrase.street.one-of-those', correct: true, next: 'n2' },
+      { en: 'Where is the milk?', he: 'איפה החלב?', itemId: 'en.phrase.super.where-is', correct: true, next: 'n2' },
     ] },
-    { id: 'n2', who: 'npc', fast: true, next: 'c2', en: 'These? Great choice — how many?', he: 'אלה? בחירה מעולה — כמה?' },
+    { id: 'n2', who: 'npc', next: 'c2', en: "The milk is in aisle three, on the left.", he: 'החלב במעבר שלוש, משמאל.' },
     { id: 'c2', who: 'you', en: '', he: '', choices: [
-      { en: 'Two, please.', he: 'שניים, בבקשה.', itemId: 'en.phrase.street.two-please', correct: true, next: 'n3' },
-      { en: 'How much is it?', he: 'כמה זה עולה?', itemId: 'en.phrase.street.how-much', correct: true, next: 'n2b' },
+      { en: 'Thank you!', he: 'תודה!', itemId: 'en.phrase.recovery.thank-you', correct: true, next: 'n3' },
+      { en: 'Can you repeat that?', he: 'אפשר לחזור על זה?', itemId: 'en.phrase.recovery.repeat', correct: true, next: 'r2' },
     ] },
-    { id: 'n2b', who: 'npc', next: 'c2b', en: 'Five each! So — how many?', he: 'חמישה כל אחד! אז — כמה?' },
+    { id: 'r2', who: 'npc', slow: true, next: 'c2b', en: 'Aisle — three — on the left.', he: 'מעבר — שלוש — משמאל.' },
     { id: 'c2b', who: 'you', en: '', he: '', choices: [
-      { en: 'Two, please.', he: 'שניים, בבקשה.', itemId: 'en.phrase.street.two-please', correct: true, next: 'n3' },
+      { en: 'Thank you!', he: 'תודה!', itemId: 'en.phrase.recovery.thank-you', correct: true, next: 'n3' },
     ] },
-    { id: 'n3', who: 'npc', next: 'c3', en: "Two — that's ten, my friend.", he: 'שניים — זה עשרה, חבר.' },
+    { id: 'n3', who: 'npc', next: 'c3', en: "At the checkout — just these? You'll need to weigh the fruit first.", he: 'בקופה — רק אלה? צריך לשקול קודם את הפירות.' },
     { id: 'c3', who: 'you', en: '', he: '', choices: [
-      { en: "That's a bit much.", he: 'זה קצת יקר. (חיוך — מתמקחים)', itemId: 'en.phrase.street.too-expensive', correct: true, next: 'n4' },
-      { en: "I'll take it.", he: 'אני אקח.', itemId: 'en.phrase.street.take-it', correct: true, next: 'n5' },
+      { en: 'Can you show me?', he: 'אתה יכול להראות לי? (כלי — כשמילים לא מספיקות)', itemId: 'en.phrase.recovery.show-me', correct: true, next: 'r3' },
+      { en: 'Just this, thanks.', he: 'רק את זה, תודה.', itemId: 'en.phrase.super.just-this', correct: true, next: 'n4' },
     ] },
-    { id: 'n4', who: 'npc', next: 'c4', en: 'Ha! Okay, okay — for you, eight. Best price!', he: 'הא! טוב, טוב — בשבילך, שמונה. מחיר הכי טוב!' },
+    { id: 'r3', who: 'npc', slow: true, next: 'c3b', en: 'Of course — put it here, press the picture, done.', he: 'בטח — שים כאן, לחץ על התמונה, גמרנו.' },
+    { id: 'c3b', who: 'you', en: '', he: '', choices: [
+      { en: 'Just this, thanks.', he: 'רק את זה, תודה.', itemId: 'en.phrase.super.just-this', correct: true, next: 'n4' },
+    ] },
+    { id: 'n4', who: 'npc', next: 'c4', en: 'Do you need a bag?', he: 'צריך שקית?' },
     { id: 'c4', who: 'you', en: '', he: '', choices: [
-      { en: "I'll take it.", he: 'אני אקח.', itemId: 'en.phrase.street.take-it', correct: true, next: 'n5' },
-      { en: 'Please speak slowly.', he: 'דבר לאט, בבקשה.', itemId: 'en.phrase.recovery.slowly', correct: true, next: 'r4' },
+      { en: 'Could I get a bag?', he: 'אפשר שקית?', itemId: 'en.phrase.super.need-bag', correct: true, next: 'n5' },
+      { en: 'Thank you!', he: 'תודה!', itemId: 'en.phrase.recovery.thank-you', correct: true, next: 'n5' },
     ] },
-    { id: 'r4', who: 'npc', slow: true, next: 'c4b', en: 'For you — eight. Best price!', he: 'בשבילך — שמונה. מחיר הכי טוב!' },
-    { id: 'c4b', who: 'you', en: '', he: '', choices: [
-      { en: "I'll take it.", he: 'אני אקח.', itemId: 'en.phrase.street.take-it', correct: true, next: 'n5' },
-    ] },
-    { id: 'n5', who: 'npc', end: true, en: 'Good choice, my friend! Here you go — enjoy!', he: 'בחירה טובה, חבר! הנה לך — תיהנה!' },
+    { id: 'n5', who: 'npc', end: true, en: 'Insert your card here… all done. Have a nice day!', he: 'הכנס את הכרטיס כאן… הכל מוכן. שיהיה יום נעים!' },
   ],
 };
 
 export const DAY16: BootcampDayContent = {
   day: 16,
-  title: T('אוכל רחוב ושווקים', 'Street Food & Markets'),
+  title: T('סופרמרקט', 'Supermarket'),
   items: DAY16_ITEMS,
-  dialogues: { 'market-stall': SCENE_STALL },
+  dialogues: { supermarket: SCENE_SUPER },
   steps: [
-    { kind: 'talk', icon: '🌮', title: T('משימה 16: אוכל רחוב ושווקים', 'Mission 16: Street Food & Markets'),
+    { kind: 'talk', icon: '🛒', title: T('משימה 16: סופרמרקט', 'Mission 16: Supermarket'),
       body: [
-        T('האוכל הכי טוב בטיול הוא בחוץ — בדוכן רועש, מהיר, בלי תפריט מסודר.', 'The best food on the trip is outside — a loud, fast stall with no tidy menu.'),
-        T('לא צריך לדעת שמות. מצביעים, שואלים מחיר, מתמקחים קצת, ואוכלים כמו מקומי.', 'You don’t need the names. You point, ask a price, haggle a little, and eat like a local.'),
-      ], cta: T('לגשת לדוכן', 'Walk up to the stall') },
-    { kind: 'tool', itemId: 'en.phrase.street.one-of-those', index: 1, total: 4, label: T('להזמין בלי שם', 'Order without the name') },
-    { kind: 'tool', itemId: 'en.phrase.street.how-much', index: 2, total: 4, label: T('לשאול מחיר', 'Ask the price') },
-    { kind: 'tool', itemId: 'en.phrase.street.too-expensive', index: 3, total: 4, label: T('להתמקח בעדינות', 'Haggle gently') },
-    { kind: 'tool', itemId: 'en.phrase.street.take-it', index: 4, total: 4, label: T('לסגור עסקה', 'Close the deal') },
-    { kind: 'replies', saidItemId: 'en.phrase.street.one-of-those',
-      replyIds: ['en.reply.street.how-many', 'en.reply.street.five-each', 'en.reply.street.best-price', 'en.reply.street.anything-else'] },
-    { kind: 'receipt', text: T('אתה מזהה את קריאות המוכר — כמות, מחיר, והצעת ההתמקחות.', 'You recognize the vendor’s calls — quantity, price, and the haggle offer.') },
-    { kind: 'quiz', itemId: 'en.reply.street.how-many', wrongIds: ['en.reply.street.best-price', 'en.reply.street.fresh-today'] },
-    { kind: 'quiz', itemId: 'en.reply.street.best-price', wrongIds: ['en.reply.street.five-each', 'en.reply.street.anything-else'] },
-    { kind: 'dialogue', dialogueId: 'market-stall' },
-    { kind: 'receipt', text: T('הזמנת בדוכן רועש, שאלת מחיר, התמקחת — וקיבלת מחיר טוב יותר.', 'You ordered at a loud stall, asked a price, haggled — and got a better price.') },
+        T('היום-יום נהיה זול ופשוט. אתה מוצא, שוקל, ומשלם — לבד לגמרי.', 'Daily life just got cheap and easy. You find it, weigh it, and pay — completely on your own.'),
+        T('רוב העבודה כאן היא זיהוי: שלטים, מעברים, וקול הקופה האוטומטית.', 'Most of the work here is recognition: signs, aisles, and the self-checkout voice.'),
+      ], cta: T('להיכנס לסופר', 'Walk into the shop') },
+    { kind: 'tool', itemId: 'en.phrase.super.where-is', index: 1, total: 4, label: T('למצוא מוצר', 'Find a product') },
+    { kind: 'tool', itemId: 'en.phrase.super.do-you-have', index: 2, total: 4, label: T('לבדוק מלאי', 'Check stock') },
+    { kind: 'tool', itemId: 'en.phrase.super.just-this', index: 3, total: 4, label: T('בקופה', 'At the checkout') },
+    { kind: 'tool', itemId: 'en.phrase.super.need-bag', index: 4, total: 4, label: T('לבקש שקית', 'Ask for a bag') },
+    { kind: 'replies', saidItemId: 'en.phrase.super.where-is',
+      replyIds: ['en.reply.super.aisle-three', 'en.reply.super.over-there', 'en.reply.super.weigh-it', 'en.reply.super.bag-q'] },
+    { kind: 'receipt', text: T('אתה מזהה תשובות של סדרן וקופה — מעבר, כיוון, שקילה, שקית.', 'You recognize the answers of a shelf-stocker and a checkout — aisle, direction, weighing, bag.') },
+    { kind: 'quiz', itemId: 'en.reply.super.weigh-it', wrongIds: ['en.reply.super.bag-q', 'en.reply.super.card-here'] },
+    { kind: 'quiz', itemId: 'en.reply.super.aisle-three', wrongIds: ['en.reply.super.over-there', 'en.reply.super.sold-out'] },
+    { kind: 'dialogue', dialogueId: 'supermarket' },
+    { kind: 'receipt', text: T('מצאת מוצרים, שקלת פירות, ועברת קופה אוטומטית — לבד.', 'You found products, weighed fruit, and cleared a self-checkout — on your own.') },
     { kind: 'swipe', itemIds: DAY16_ITEMS.map((i) => i.id) },
-    { kind: 'ambush', npc: { en: 'You want it with the hot sauce or no spice today boss?', he: 'רוצה את זה עם הרוטב החריף או בלי חריף היום, בוס?' },
-      correctItemId: 'en.phrase.recovery.slowly', wrongItemId: 'en.phrase.street.take-it' },
-    { kind: 'receipt', text: T('המוכר ירה שאלה מהירה על רקע רעש — וביקשת שיאט. באוזניים מנצחים.', 'The vendor fired a fast question over the noise — and you asked him to slow down. Ears win.') },
+    { kind: 'ambush', npc: { en: 'Unexpected item in the bagging area — please wait for assistance.', he: 'פריט לא צפוי באזור האריזה — אנא המתן לסיוע.' },
+      correctItemId: 'en.phrase.recovery.show-me', wrongItemId: 'en.phrase.super.just-this' },
+    { kind: 'receipt', text: T('הקופה האוטומטית נתקעה — וידעת לבקש שיראו לך במקום להיכנס ללחץ.', 'The self-checkout jammed — and you knew to ask someone to show you, instead of panicking.') },
     { kind: 'summary' },
   ],
 };

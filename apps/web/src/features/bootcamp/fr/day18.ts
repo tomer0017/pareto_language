@@ -1,110 +1,113 @@
 import type { LocalizedText } from '@ready/content-schema';
 import type { BootcampDayContent, BootcampDialogue, BootcampItem } from '../types.js';
 import { recoveryFr } from './recovery.js';
-import { DAY4_FR_ITEMS } from './day4.js';
-import { DAY13_FR_ITEMS } from './day13.js';
-import { DAY16_FR_ITEMS } from './day16.js';
 
 /**
- * French Mission 18 — "Point de contrôle : journée gastronomie" (Food Day Checkpoint). Cold
- * integration, no new content: coffee morning → market noon → restaurant night, reusing days 4, 13
- * & 16 items. Same structure as English day 18. `tr:{en,he}` glosses; `fr.*` ids. AI-drafted, vous, pending review.
+ * French Mission 18 — "Transports en commun" (Public Transport). French parallel of English mission 18:
+ * ticket, platform, direction, the right stop — half of it pure listening. `tr:{en,he}` glosses;
+ * `fr.*` ids. AI-drafted, vous, pending review.
  */
 const T = (he: string, en: string): LocalizedText => ({ he, en });
 const TR = (en: string, he: string): LocalizedText => ({ en, he });
 
-const byId = new Map([...DAY4_FR_ITEMS, ...DAY13_FR_ITEMS, ...DAY16_FR_ITEMS].map((i) => [i.id, i]));
-const pick = (...ids: string[]): BootcampItem[] => ids.map((id) => byId.get(id)!).filter(Boolean);
-
 export const DAY18_FR_ITEMS: BootcampItem[] = [
-  ...pick(
-    'fr.phrase.coffee.iced-coffee', 'fr.reply.coffee.milk-sugar',
-    'fr.phrase.street.one-of-those', 'fr.phrase.street.how-much', 'fr.reply.street.how-many',
-    'fr.phrase.rest.table-for-two', 'fr.phrase.rest.ill-have', 'fr.phrase.rest.bill-please',
-  ),
+  // say
+  { id: 'fr.phrase.trans.one-ticket', text: 'Un billet pour le centre, s’il vous plaît.', meaning: T('כרטיס אחד למרכז, בבקשה.', 'One ticket to the center, please.'),
+    tip: T('התבנית: Un billet pour ___ — קונה כרטיס לכל יעד.', 'Template: Un billet pour ___ — buys a ticket to anywhere.') },
+  { id: 'fr.phrase.trans.which-platform', text: 'Quel quai ?', meaning: T('איזה רציף?', 'Which platform?'),
+    tip: T('שתי מילים שמונעות עלייה לרכבת הלא נכונה.', 'Two words that stop you boarding the wrong train.') },
+  { id: 'fr.phrase.trans.does-stop', text: 'Ça s’arrête au musée ?', meaning: T('זה עוצר במוזיאון?', 'Does this stop at the museum?'),
+    tip: T('התבנית: Ça s’arrête à ___ ? — מוודאת שאתה יורד נכון.', 'Template: Ça s’arrête à ___? — makes sure you get off in the right place.') },
+  { id: 'fr.phrase.trans.next-one', text: 'Le prochain, c’est quand ?', meaning: T('מתי הבא?', "When's the next one?") },
+  // hear — booth + platform
+  { id: 'fr.reply.trans.single-return', text: 'Aller simple ou aller-retour ?', meaning: T('הלוך או הלוך-חזור?', 'Single or return?') },
+  { id: 'fr.reply.trans.platform-two', text: 'Quai numéro deux.', meaning: T('רציף שתיים.', 'Platform two.') },
+  { id: 'fr.reply.trans.every-ten', text: 'Toutes les dix minutes.', meaning: T('כל עשר דקות.', 'Every ten minutes.') },
+  { id: 'fr.reply.trans.three-stops', text: 'C’est à trois arrêts.', meaning: T('זה שלוש תחנות.', "It's three stops.") },
+  { id: 'fr.reply.trans.wrong-way', text: 'Vous allez dans le mauvais sens.', meaning: T('אתה בכיוון הלא נכון.', "You're going the wrong way.") },
+  { id: 'fr.reply.trans.stop-next', text: 'Votre arrêt est le prochain.', meaning: T('התחנה שלך הבאה.', 'Your stop is next.') },
   ...recoveryFr('fr.phrase.recovery.repeat', 'fr.phrase.recovery.slowly', 'fr.phrase.recovery.thank-you'),
 ];
 
-const COLD_COFFEE: BootcampDialogue = {
-  id: 'cold-coffee',
+const SCENE_TRANSPORT: BootcampDialogue = {
+  id: 'transport',
   start: 'n1',
   nodes: [
-    { id: 'n1', who: 'npc', fast: true, next: 'c1', en: 'Bonjour ! Qu’est-ce que je vous sers ?', tr: TR('Morning! What can I get you?', 'בוקר! מה להביא לך?'), he: 'בוקר! מה להביא לך?' },
+    { id: 'n1', who: 'npc', next: 'c1', en: 'Bonjour ! Vous allez où ?', tr: TR('Hello! Where are you headed?', 'שלום! לאן אתה נוסע?'), he: 'שלום! לאן אתה נוסע?' },
     { id: 'c1', who: 'you', en: '', he: '', choices: [
-      { en: 'Je voudrais un café glacé, s’il vous plaît.', tr: TR("I'd like an iced coffee, please.", 'אני רוצה קפה קר, בבקשה.'), he: 'אני רוצה קפה קר, בבקשה.', itemId: 'fr.phrase.coffee.iced-coffee', correct: true, next: 'n2' },
-      { en: 'Vous pouvez répéter ?', tr: TR('Can you repeat that?', 'אפשר לחזור על זה?'), he: 'אפשר לחזור על זה?', itemId: 'fr.phrase.recovery.repeat', correct: true, next: 'n2' },
+      { en: 'Un billet pour le centre, s’il vous plaît.', tr: TR('One ticket to the center, please.', 'כרטיס אחד למרכז, בבקשה.'), he: 'כרטיס אחד למרכז, בבקשה.', itemId: 'fr.phrase.trans.one-ticket', correct: true, next: 'n2' },
+      { en: 'Vous pouvez répéter ?', tr: TR('Can you repeat that?', 'אפשר לחזור על זה?'), he: 'אפשר לחזור על זה?', itemId: 'fr.phrase.recovery.repeat', correct: true, next: 'r1' },
     ] },
-    { id: 'n2', who: 'npc', fast: true, next: 'c2', en: 'Bien sûr — lait et sucre ?', tr: TR('Sure — milk and sugar?', 'בטח — חלב וסוכר?'), he: 'בטח — חלב וסוכר?' },
+    { id: 'r1', who: 'npc', slow: true, next: 'c1b', en: 'Vous — allez — où ?', tr: TR('Where — are you — going?', 'לאן — אתה — נוסע?'), he: 'לאן — אתה — נוסע?' },
+    { id: 'c1b', who: 'you', en: '', he: '', choices: [
+      { en: 'Un billet pour le centre, s’il vous plaît.', tr: TR('One ticket to the center, please.', 'כרטיס אחד למרכז, בבקשה.'), he: 'כרטיס אחד למרכז, בבקשה.', itemId: 'fr.phrase.trans.one-ticket', correct: true, next: 'n2' },
+    ] },
+    { id: 'n2', who: 'npc', next: 'c2', en: 'Aller simple ou aller-retour ?', tr: TR('Single or return?', 'הלוך או הלוך-חזור?'), he: 'הלוך או הלוך-חזור?' },
     { id: 'c2', who: 'you', en: '', he: '', choices: [
-      { en: 'Avec du lait, sans sucre.', tr: TR('Milk, no sugar.', 'עם חלב, בלי סוכר.'), he: 'עם חלב, בלי סוכר.', correct: true, next: 'n3' },
-      { en: 'Parlez lentement, s’il vous plaît.', tr: TR('Please speak slowly.', 'דבר לאט, בבקשה.'), he: 'דבר לאט, בבקשה.', itemId: 'fr.phrase.recovery.slowly', correct: true, next: 'n3' },
+      { en: 'Aller simple, s’il vous plaît.', tr: TR('Single, please.', 'הלוך, בבקשה.'), he: 'הלוך, בבקשה.', correct: true, next: 'n3' },
+      { en: 'Parlez lentement, s’il vous plaît.', tr: TR('Please speak slowly.', 'דבר לאט, בבקשה.'), he: 'דבר לאט, בבקשה.', itemId: 'fr.phrase.recovery.slowly', correct: true, next: 'r2' },
     ] },
-    { id: 'n3', who: 'npc', end: true, en: 'Ça arrive tout de suite. Bonne matinée !', tr: TR('Coming right up. Have a great morning!', 'תכף מוכן. בוקר נהדר!'), he: 'תכף מוכן. בוקר נהדר!' },
-  ],
-};
-
-const COLD_MARKET: BootcampDialogue = {
-  id: 'cold-market',
-  start: 'n1',
-  nodes: [
-    { id: 'n1', who: 'npc', fast: true, next: 'c1', en: 'Fruits frais, fruits frais ! Vous voulez quoi ?', tr: TR('Fresh fruit, fresh fruit! What would you like?', 'פירות טריים, פירות טריים! מה תרצה?'), he: 'פירות טריים, פירות טריים! מה תרצה?' },
-    { id: 'c1', who: 'you', en: '', he: '', choices: [
-      { en: 'C’est combien ?', tr: TR('How much is it?', 'כמה זה עולה?'), he: 'כמה זה עולה?', itemId: 'fr.phrase.street.how-much', correct: true, next: 'n2' },
-      { en: 'Un de ceux-là, s’il vous plaît.', tr: TR('One of those, please.', 'אחד מאלה, בבקשה.'), he: 'אחד מאלה, בבקשה.', itemId: 'fr.phrase.street.one-of-those', correct: true, next: 'n2' },
+    { id: 'r2', who: 'npc', slow: true, next: 'c2b', en: 'Aller simple — ou — aller-retour ?', tr: TR('Single — or — return?', 'הלוך — או — הלוך-חזור?'), he: 'הלוך — או — הלוך-חזור?' },
+    { id: 'c2b', who: 'you', en: '', he: '', choices: [
+      { en: 'Aller simple, s’il vous plaît.', tr: TR('Single, please.', 'הלוך, בבקשה.'), he: 'הלוך, בבקשה.', correct: true, next: 'n3' },
     ] },
-    { id: 'n2', who: 'npc', fast: true, next: 'c2', en: 'Meilleur prix pour vous — six ! Combien ?', tr: TR('Best price for you — six! How many?', 'מחיר הכי טוב בשבילך — שישה! כמה?'), he: 'מחיר הכי טוב בשבילך — שישה! כמה?' },
-    { id: 'c2', who: 'you', en: '', he: '', choices: [
-      { en: 'Deux, s’il vous plaît.', tr: TR('Two, please.', 'שניים, בבקשה.'), he: 'שניים, בבקשה.', correct: true, next: 'n3' },
-      { en: 'Vous pouvez répéter ?', tr: TR('Can you repeat that?', 'אפשר לחזור על זה?'), he: 'אפשר לחזור על זה?', itemId: 'fr.phrase.recovery.repeat', correct: true, next: 'n3' },
-    ] },
-    { id: 'n3', who: 'npc', end: true, en: 'Tenez — régalez-vous, mon ami !', tr: TR('Here you go — enjoy, my friend!', 'הנה לך — תיהנה, חבר!'), he: 'הנה לך — תיהנה, חבר!' },
-  ],
-};
-
-const COLD_RESTAURANT: BootcampDialogue = {
-  id: 'cold-restaurant',
-  start: 'n1',
-  nodes: [
-    { id: 'n1', who: 'npc', next: 'c1', en: 'Bonsoir ! Vous êtes combien ?', tr: TR('Good evening! How many people?', 'ערב טוב! כמה אנשים?'), he: 'ערב טוב! כמה אנשים?' },
-    { id: 'c1', who: 'you', en: '', he: '', choices: [
-      { en: 'Une table pour deux, s’il vous plaît.', tr: TR('A table for two, please.', 'שולחן לשניים, בבקשה.'), he: 'שולחן לשניים, בבקשה.', itemId: 'fr.phrase.rest.table-for-two', correct: true, next: 'n2' },
-      { en: 'Parlez lentement, s’il vous plaît.', tr: TR('Please speak slowly.', 'דבר לאט, בבקשה.'), he: 'דבר לאט, בבקשה.', itemId: 'fr.phrase.recovery.slowly', correct: true, next: 'n2' },
-    ] },
-    { id: 'n2', who: 'npc', fast: true, next: 'c2', en: 'Suivez-moi. Vous êtes prêts à commander ?', tr: TR('Right this way. Are you ready to order?', 'בבקשה אחריי. מוכנים להזמין?'), he: 'בבקשה אחריי. מוכנים להזמין?' },
-    { id: 'c2', who: 'you', en: '', he: '', choices: [
-      { en: 'Je vais prendre les pâtes, s’il vous plaît.', tr: TR("I'll have the pasta, please.", 'אני אקח את הפסטה, בבקשה.'), he: 'אני אקח את הפסטה, בבקשה.', itemId: 'fr.phrase.rest.ill-have', correct: true, next: 'n3' },
-      { en: 'Vous pouvez répéter ?', tr: TR('Can you repeat that?', 'אפשר לחזור על זה?'), he: 'אפשר לחזור על זה?', itemId: 'fr.phrase.recovery.repeat', correct: true, next: 'n3' },
-    ] },
-    { id: 'n3', who: 'npc', next: 'c3', en: 'Excellent. Je vous apporte ça tout de suite. Faites-moi signe quand vous voulez l’addition.', tr: TR("Excellent. I'll bring it right out. Just wave when you'd like the bill.", 'מצוין. אביא מיד. תסמן כשתרצה את החשבון.'), he: 'מצוין. אביא מיד. תסמן כשתרצה את החשבון.' },
+    { id: 'n3', who: 'npc', fast: true, next: 'c3', en: 'Ça fait trois euros. Quai numéro deux, ça part toutes les dix minutes.', tr: TR("That's three euros. Platform two, leaves every ten minutes.", 'זה שלושה יורו. רציף שתיים, יוצא כל עשר דקות.'), he: 'זה שלושה יורו. רציף שתיים, יוצא כל עשר דקות.' },
     { id: 'c3', who: 'you', en: '', he: '', choices: [
-      { en: 'On peut avoir l’addition, s’il vous plaît ?', tr: TR('Could we have the bill, please?', 'אפשר את החשבון, בבקשה?'), he: 'אפשר את החשבון, בבקשה?', itemId: 'fr.phrase.rest.bill-please', correct: true, next: 'n4' },
+      { en: 'Quel quai ?', tr: TR('Which platform?', 'איזה רציף?'), he: 'איזה רציף?', itemId: 'fr.phrase.trans.which-platform', correct: true, next: 'n3b' },
       { en: 'Merci !', tr: TR('Thank you!', 'תודה!'), he: 'תודה!', itemId: 'fr.phrase.recovery.thank-you', correct: true, next: 'n4' },
     ] },
-    { id: 'n4', who: 'npc', end: true, en: 'Bien sûr — voici. Bonne soirée !', tr: TR('Of course — here you go. Have a lovely evening!', 'כמובן — בבקשה. ערב נפלא!'), he: 'כמובן — בבקשה. ערב נפלא!' },
+    { id: 'n3b', who: 'npc', slow: true, next: 'c3b', en: 'Quai — deux. Tout droit.', tr: TR('Platform — two. Straight ahead.', 'רציף — שתיים. ישר קדימה.'), he: 'רציף — שתיים. ישר קדימה.' },
+    { id: 'c3b', who: 'you', en: '', he: '', choices: [
+      { en: 'Merci !', tr: TR('Thank you!', 'תודה!'), he: 'תודה!', itemId: 'fr.phrase.recovery.thank-you', correct: true, next: 'n4' },
+    ] },
+    { id: 'n4', who: 'npc', next: 'c4', en: 'Le train est juste là. Montez.', tr: TR("The train's right here. Hop on.", 'הרכבת ממש כאן. עלה.'), he: 'הרכבת ממש כאן. עלה.' },
+    { id: 'c4', who: 'you', en: '', he: '', choices: [
+      { en: 'Ça s’arrête au musée ?', tr: TR('Does this stop at the museum?', 'זה עוצר במוזיאון?'), he: 'זה עוצר במוזיאון?', itemId: 'fr.phrase.trans.does-stop', correct: true, next: 'n5' },
+      { en: 'Le prochain, c’est quand ?', tr: TR("When's the next one?", 'מתי הבא?'), he: 'מתי הבא?', itemId: 'fr.phrase.trans.next-one', correct: true, next: 'n4b' },
+    ] },
+    { id: 'n4b', who: 'npc', next: 'c4b', en: 'Le prochain ? Toutes les dix minutes — mais celui-là est bien, montez.', tr: TR('The next one? Every ten minutes — but this one is fine, hop on.', 'הבא? כל עשר דקות — אבל זה בסדר, עלה.'), he: 'הבא? כל עשר דקות — אבל זה בסדר, עלה.' },
+    { id: 'c4b', who: 'you', en: '', he: '', choices: [
+      { en: 'Ça s’arrête au musée ?', tr: TR('Does this stop at the museum?', 'זה עוצר במוזיאון?'), he: 'זה עוצר במוזיאון?', itemId: 'fr.phrase.trans.does-stop', correct: true, next: 'n5' },
+    ] },
+    { id: 'n5', who: 'npc', next: 'c5', en: 'Oui — c’est à trois arrêts. Je vous dirai quand.', tr: TR("Yes — it's three stops. I'll tell you when.", 'כן — זה שלוש תחנות. אני אגיד לך מתי.'), he: 'כן — זה שלוש תחנות. אני אגיד לך מתי.' },
+    { id: 'c5', who: 'you', en: '', he: '', choices: [
+      { en: 'Merci !', tr: TR('Thank you!', 'תודה!'), he: 'תודה!', itemId: 'fr.phrase.recovery.thank-you', correct: true, next: 'n6' },
+      { en: 'Vous pouvez répéter ?', tr: TR('Can you repeat that?', 'אפשר לחזור על זה?'), he: 'אפשר לחזור על זה?', itemId: 'fr.phrase.recovery.repeat', correct: true, next: 'r5' },
+    ] },
+    { id: 'r5', who: 'npc', slow: true, next: 'c5b', en: 'C’est — trois — arrêts.', tr: TR("It's — three — stops.", 'זה — שלוש — תחנות.'), he: 'זה — שלוש — תחנות.' },
+    { id: 'c5b', who: 'you', en: '', he: '', choices: [
+      { en: 'Merci !', tr: TR('Thank you!', 'תודה!'), he: 'תודה!', itemId: 'fr.phrase.recovery.thank-you', correct: true, next: 'n6' },
+    ] },
+    { id: 'n6', who: 'npc', end: true, en: 'Nous voilà — votre arrêt est le prochain. Bonne visite du musée !', tr: TR('Here we are — your stop is next. Enjoy the museum!', 'הגענו — התחנה שלך הבאה. תיהנה במוזיאון!'), he: 'הגענו — התחנה שלך הבאה. תיהנה במוזיאון!' },
   ],
 };
 
 export const DAY18_FR: BootcampDayContent = {
   day: 18,
-  title: T('נקודת ביקורת: יום אוכל', 'CHECKPOINT: Food Day'),
+  title: T('תחבורה ציבורית', 'Public Transport'),
   items: DAY18_FR_ITEMS,
-  dialogues: { 'cold-coffee': COLD_COFFEE, 'cold-market': COLD_MARKET, 'cold-restaurant': COLD_RESTAURANT },
+  dialogues: { transport: SCENE_TRANSPORT },
   steps: [
-    { kind: 'talk', icon: '🍽️', title: T('נקודת ביקורת: יום אוכל', 'Checkpoint: Food Day'),
+    { kind: 'talk', icon: '🚇', title: T('משימה 18: תחבורה ציבורית', 'Mission 18: Public Transport'),
       body: [
-        T('אין חומר חדש היום. רק הוכחה — יום אוכל שלם, מהבוקר עד הלילה.', 'No new material today. Just proof — a full food day, morning to night.'),
-        T('קפה בבוקר, שוק בצהריים, מסעדה בערב. הכל קר, מהר, בלי הכנה.', 'Coffee in the morning, a market at noon, a restaurant at night. All cold, fast, unprepared.'),
-      ], cta: T('בוקר טוב — קדימה', 'Good morning — go') },
-    { kind: 'dialogue', dialogueId: 'cold-coffee' },
-    { kind: 'receipt', text: T('שרדת קפה בבוקר בקור — הזמנה וחלב/סוכר, בלי הכנה.', 'You survived a cold morning coffee — order and milk/sugar, no prep.') },
-    { kind: 'ambush', npc: { en: 'Désolé — rappelez-moi, c’était avec lait et sucre ou juste du lait ?', tr: TR('Sorry — remind me, was that with milk and sugar or just milk?', 'סליחה — תזכיר לי, זה היה עם חלב וסוכר או רק חלב?'), he: 'סליחה — תזכיר לי, זה היה עם חלב וסוכר או רק חלב?' },
-      correctItemId: 'fr.phrase.recovery.repeat', wrongItemId: 'fr.reply.coffee.milk-sugar' },
-    { kind: 'dialogue', dialogueId: 'cold-market' },
-    { kind: 'receipt', text: T('שרדת דוכן שוק רועש בקור — מחיר, כמות, וסגירה.', 'You survived a loud market stall cold — price, quantity, and a close.') },
-    { kind: 'ambush', npc: { en: 'Deux pour six ou cinq pour treize — quelle offre vous voulez, chef ?', tr: TR('Two for six or five for thirteen — which deal do you want boss?', 'שניים בשישה או חמישה בשלוש-עשרה — איזו עסקה אתה רוצה, בוס?'), he: 'שניים בשישה או חמישה בשלוש-עשרה — איזו עסקה אתה רוצה, בוס?' },
-      correctItemId: 'fr.phrase.recovery.slowly', wrongItemId: 'fr.reply.street.how-many' },
-    { kind: 'dialogue', dialogueId: 'cold-restaurant' },
-    { kind: 'receipt', text: T('יום אוכל שלם — קפה, שוק, ומסעדה — בקור. אף אחד לא ירעיב אותך.', 'A full food day — coffee, market, and restaurant — cold. Nobody can starve you.') },
+        T('העיר זזה בשבילך — בזול. כרטיס, רציף, כיוון, והתחנה הנכונה.', 'The city moves for you — cheaply. Ticket, platform, direction, the right stop.'),
+        T('חצי מהמשימה הזאת היא האזנה: הכרזות ותשובות מהירות של איזה-רציף.', 'Half of this mission is listening: announcements and fast which-platform answers.'),
+      ], cta: T('לגשת לדלפק הכרטיסים', 'Step up to the ticket desk') },
+    { kind: 'tool', itemId: 'fr.phrase.trans.one-ticket', index: 1, total: 4, label: T('לקנות כרטיס', 'Buy a ticket') },
+    { kind: 'tool', itemId: 'fr.phrase.trans.which-platform', index: 2, total: 4, label: T('לאתר רציף', 'Find the platform') },
+    { kind: 'tool', itemId: 'fr.phrase.trans.does-stop', index: 3, total: 4, label: T('לוודא יעד', 'Confirm the stop') },
+    { kind: 'tool', itemId: 'fr.phrase.trans.next-one', index: 4, total: 4, label: T('לשאול על הבא', 'Ask about the next one') },
+    { kind: 'replies', saidItemId: 'fr.phrase.trans.one-ticket',
+      replyIds: ['fr.reply.trans.single-return', 'fr.reply.trans.platform-two', 'fr.reply.trans.every-ten', 'fr.reply.trans.three-stops'] },
+    { kind: 'receipt', text: T('אתה מזהה את תשובות הדלפק והרציף — הלוך/חזור, מספר רציף, תדירות.', 'You recognize the booth and platform answers — single/return, platform number, frequency.') },
+    { kind: 'quiz', itemId: 'fr.reply.trans.single-return', wrongIds: ['fr.reply.trans.platform-two', 'fr.reply.trans.three-stops'] },
+    { kind: 'quiz', itemId: 'fr.reply.trans.every-ten', wrongIds: ['fr.reply.trans.wrong-way', 'fr.reply.trans.stop-next'] },
+    { kind: 'dialogue', dialogueId: 'transport' },
+    { kind: 'receipt', text: T('קנית כרטיס, מצאת רציף, ווידאת שהרכבת עוצרת ביעד שלך.', 'You bought a ticket, found the platform, and confirmed the train stops at your destination.') },
+    { kind: 'swipe', itemIds: DAY18_FR_ITEMS.map((i) => i.id) },
+    { kind: 'ambush', npc: { en: 'Ce train a du retard — vous feriez mieux de prendre le bus de remplacement à l’arrêt C.', tr: TR("This train's been delayed — you'll want the replacement bus from stand C instead.", 'הרכבת הזאת מתעכבת — עדיף לך את האוטובוס החלופי מעמדה C.'), he: 'הרכבת הזאת מתעכבת — עדיף לך את האוטובוס החלופי מעמדה C.' },
+      correctItemId: 'fr.phrase.recovery.repeat', wrongItemId: 'fr.phrase.trans.which-platform' },
+    { kind: 'receipt', text: T('הודעת שיבוש מהירה — וביקשת שיחזרו במקום לעלות לרכבת הלא נכונה.', 'A fast disruption announcement — and you asked them to repeat instead of boarding the wrong train.') },
     { kind: 'summary' },
   ],
 };

@@ -22,6 +22,81 @@ loop (typecheck → lint → tests → build → smoke) green at every milestone
 
 ## What's done
 
+### Final frontend polish + stabilization (2026-10-01)
+- **Path / מסלול:** the Learn destination is labelled "מסלול" / "Path" (tab, rail, title). Internal
+  names (`bootcamp` view) unchanged.
+- **Playback ownership (bug fix):** Listen's repeats leaked into the story reader / transcript /
+  word listening through one shared settings record. Preferences are now per surface
+  (`ready.playback.<scope>`), each keeping only the options its screen exposes; the story reader
+  owns none. The engine's relative speed is removed entirely — ONE speech speed (Profile).
+- **Sentence identity:** `…rest.ill-have` meant "the chicken" in Restaurant Meal and "the pasta"
+  in Restaurant Basics → the Restaurant Meal sentence is now `…rest.ill-have-chicken` (EN/FR/ES).
+  New `sentenceCatalog`: one canonical sentence per wording; re-declared wordings are aliases.
+  Canonical counts: **EN 242 · FR 239 · ES 236** (was shown as 261).
+- **Stories:** a visual story card (real cover, next unfinished story) in Listen opens the reader.
+- **Mission entry:** one primary button on the mission overview; steps are shortcuts only after
+  completion; the video offers one way forward; Videos screen no longer offers "I understood
+  everything".
+- **Home:** Quick Review is hidden until there is something to review; new desktop heading.
+- **Removed from normal UI:** the dev diagnostics badges (now `?debug=1` + dev build only) and the
+  floating Foundation button (now a row under "More practice").
+- **Copy:** no directional arrows inside any interface string (tested); "ניגון רציף", "עוד דרכים
+  לתרגל"; Hebrew sequence arrows in four mission descriptions now point the reading direction.
+- **Conversation help:** six phrases is the correct set — "Sorry!" is defined in the kit but used by
+  no mission since the Recovery mission was removed.
+
+### Product IA + responsive UI refactor — Home · Learn · Listen · Profile (2026-10-01)
+> Entries below describe the earlier navigation (Home · Bootcamp · Core · Profile, Home as a card
+> menu, a three-tool Mission Hub). They are kept as history.
+- **Navigation:** four destinations from one model (`app/nav.ts`) and one component (`AppNav`):
+  bottom bar on phones/tablets, side rail on desktop (inline-start edge). "Core" is no longer a tab.
+- **Home = coach:** Travel Readiness · Your next step · Quick review · Quick listen. Theme, speech
+  speed, the mode grid, videos and stories left Home.
+- **Travel Readiness:** completed missions ÷ plan length, derived (never hard-coded); detail screen
+  listing every situation's real status. "Core sentences practiced" comes from the review log.
+- **Learn:** phases → compact mission cards, one highlighted next step; 1 / 2 / 3 columns.
+- **Mission overview:** Watch → Learn → Practice → Watch again (reward), over the unchanged
+  step-flow. No-video missions get Listen as step 1.
+- **Listen (new):** core sentences / dialogues / stories playlists from existing content; queue,
+  now playing, repeats (חזרות), non-stop, three listening modes, Quick listen (10 min).
+- **Profile:** all settings in one place (languages, the one speech speed + test, appearance).
+- **Design system:** layout tokens (`--page-max`, `--focus-max`, `--rail-w`), `Icon`, `AppNav`,
+  `PageHeader`/`BackButton`, `ProgressRing`, shared row/tile/tab classes; dark-mode contrast token.
+- **Debt closed:** the double arrow on "Next mission" (arrow is now one direction-aware icon; copy
+  carries none); recovery phrases moved last and renamed "עזרה בשיחה / Conversation help" in the
+  library, flashcards and Listen; the legacy content-pack Mission screen retired from the journey.
+- **Omitted on purpose (no real data):** achievements/badges, time-based progress bars, mission
+  photos, "learned" phrase counts (we show "practiced", which the log supports), favourites.
+- **Tests:** nav model, readiness, mission journey over all 87 missions, Listen playlists/modes,
+  review picker, UI copy rules, store entry point. 923 tests.
+
+### Bootcamp restructure — Recovery Toolkit removed, 30 → 29 missions (2026-10-01)
+> Entries below this one predate the change and use the OLD numbering (30 missions, Recovery
+> Toolkit as Mission 1 / "special" mission, checkpoints 10/18/24/30, videos `En_day2…`). They are
+> kept as history; subtract one from any mission/day number ≥ 2 to get today's number.
+- **Curriculum:** the Recovery Toolkit ("ערכת חילוץ — כשלא מבינים") is gone from the Bootcamp — no
+  mission, no special card, no progress slot. **29 missions**; Mission 1 = Introduce Myself, Mission
+  29 = A Complete Day Abroad Alone; checkpoints 9 / 17 / 23 / 29. Old mission N (2–30) = new N−1.
+- **Files:** `day1.ts` (EN/FR/ES Recovery mission) deleted; `day2..30.ts` → `day1..29.ts` in all three
+  languages, with `day:` keys, exports, cross-references and the in-mission "Mission N:" headline
+  shifted (this also closes the old "headline is off by one" follow-up from the Pilot UX sprint).
+- **Identity:** `BOOTCAMP_PLAN` entries gained stable `id` slugs; `special` / `CORE_MISSIONS` /
+  `SPECIAL_MISSIONS` removed; display number and next-mission logic derive from plan order
+  (`missionNumber`, `nextMission`).
+- **Progress:** localStorage moved to `ready.bootcamp.v2.<lang>`, keyed by mission id (`progress.ts`).
+  One-time migration from v1: old 2 → Introduce Myself … old 30 → finale; old Recovery completion,
+  receipts and resume point dropped. v1 keys left on disk.
+- **Videos:** renamed down by one — EN `2,3,4,5,7,8,9,11` → `1,2,3,4,6,7,8,10`; FR `2,3,4,5,6,9,11` →
+  `1,2,3,4,5,8,10`. Real gaps remain (EN 5, 9; FR 6, 7, 9; everything from 11 up; no Spanish videos).
+- **Recovery content kept:** `recovery.ts`, `fr/recovery.ts`, `es/recovery.ts` (reused by the other
+  missions). Coffee Shop (EN) now bundles its four tools from the shared kit instead of importing
+  the deleted mission. The dialogue player's `coaching` mode is dormant (nothing enables it).
+- **Priming:** "please" / "s’il vous plaît" / "por favor" in Mission 4 is now a new word, not a ♻️
+  review (it was introduced by the removed mission). Audit: 29 audited · 7 primed · 22 none.
+- **Tests:** `bootcamp.test.ts` (count, first/last, order, continuous numbering, ids, registry
+  parity, no Recovery mission, checkpoints, next-mission navigation, in-mission titles, video files
+  exist, graceful no-video), new `progress.test.ts` (migration + round-trip).
+
 ### Sprint 13 — Core World Audit + runtime homograph fix (corpus 532 → 633) (2026-07-21)
 Full audit of a user-supplied ~179-item Hebrew candidate list (the "why is `house` missing?" review) —
 see **[CORE-WORLD-AUDIT.md](./CORE-WORLD-AUDIT.md)** for the per-item table. 183 unique concepts →

@@ -1,127 +1,72 @@
-import type { LocalizedText } from '@ready/content-schema';
-import type { BootcampDayContent, BootcampItem, BootcampDialogue } from './types.js';
-import { DAY1_ITEMS } from './day1.js';
+import { RECOVERY_ITEMS, T, recovery } from './recovery.js';
+import type { BootcampDayContent, BootcampDialogue, BootcampItem } from './types.js';
 
-/**
- * Mission 4 — "Coffee Shop" (the Deep Moment exemplar, Sprint 7).
- * One situation, taken ALL the way: greeting → order → hot/cold → milk/sugar → to eat →
- * anything else → cash/card → receipt → goodbye. The user leaves able to order a real
- * breakfast — including every follow-up question a barista actually asks.
- */
-
-const T = (he: string, en: string): LocalizedText => ({ he, en });
-
+/** Mission 4 — "Restaurant Basics" (real objective: table to bill, a full sit-down meal). */
 export const DAY4_ITEMS: BootcampItem[] = [
-  // say
-  { id: 'en.phrase.coffee.iced-coffee', text: "I'd like an iced coffee, please.",
-    meaning: T('אני רוצה קפה קר, בבקשה.', "I'd like an iced coffee, please."),
-    tip: T('התבנית: I’d like ___, please — עובדת על הכל.', 'The template: I’d like ___, please — works for everything.') },
-  { id: 'en.phrase.coffee.to-go', text: 'To go, please.',
-    meaning: T('לקחת, בבקשה.', 'To go, please.') },
-  { id: 'en.phrase.coffee.no-sugar', text: 'Milk, no sugar.',
-    meaning: T('עם חלב, בלי סוכר.', 'Milk, no sugar.'),
-    tip: T('עם = with · בלי = no/without. שתי מילים ששולטות בכל הזמנה.', 'with / no — two words that control every order.') },
-  { id: 'en.phrase.coffee.croissant', text: 'A croissant, please.',
-    meaning: T('קרואסון, בבקשה.', 'A croissant, please.'),
-    tip: T('“Croissant” — מאפה חמאה צרפתי. כך בדיוק זה כתוב בתפריט בחו״ל.', '“Croissant” — a French pastry. That’s exactly how it’s written on the menu abroad.') },
-  { id: 'en.phrase.coffee.thats-all', text: "That's all, thanks.",
-    meaning: T('זה הכל, תודה.', "That's all, thanks."),
-    tip: T('סוגר כל הזמנה בנימוס. עובד בכל מקום בעולם.', 'Closes any order politely. Works everywhere on earth.') },
-  { id: 'en.phrase.coffee.card', text: 'Card, please.',
-    meaning: T('בכרטיס, בבקשה.', 'Card, please.') },
-  // hear — the expected replies (the barista question-chain)
-  { id: 'en.reply.coffee.what-can-i-get', text: 'What can I get you?',
-    meaning: T('מה להביא לך?', 'What can I get you?') },
-  { id: 'en.reply.coffee.hot-or-iced', text: 'Hot or iced?',
-    meaning: T('חם או קר?', 'Hot or iced?') },
-  { id: 'en.reply.coffee.here-or-to-go', text: 'For here or to go?',
-    meaning: T('לשבת כאן או לקחת?', 'For here or to go?') },
-  { id: 'en.reply.coffee.medium-or-large', text: 'Medium or large?',
-    meaning: T('בינוני או גדול?', 'Medium or large?') },
-  { id: 'en.reply.coffee.milk-sugar', text: 'Milk and sugar?',
-    meaning: T('חלב וסוכר?', 'Milk and sugar?') },
-  { id: 'en.reply.coffee.anything-to-eat', text: 'Anything to eat?',
-    meaning: T('משהו לאכול?', 'Anything to eat?') },
-  { id: 'en.reply.coffee.anything-else', text: 'Would you like anything else?',
-    meaning: T('עוד משהו?', 'Would you like anything else?') },
-  { id: 'en.reply.coffee.cash-or-card', text: 'Cash or card?',
-    meaning: T('מזומן או כרטיס?', 'Cash or card?') },
-  { id: 'en.reply.coffee.receipt', text: 'Would you like the receipt?',
-    meaning: T('רוצה את הקבלה?', 'Would you like the receipt?') },
-  { id: 'en.reply.coffee.enjoy', text: 'Enjoy your day!',
-    meaning: T('שיהיה לך יום מעולה!', 'Enjoy your day!') },
+  { id: 'en.phrase.rest.table-two', text: 'A table for two, please.', meaning: T('שולחן לשניים, בבקשה.', 'A table for two, please.'),
+    tip: T('הפתיח למסעדה. תבנית: a table for ___.', 'The restaurant opener. Template: a table for ___.') },
+  { id: 'en.phrase.rest.menu', text: 'The menu, please.', meaning: T('התפריט, בבקשה.', 'The menu, please.') },
+  { id: 'en.phrase.rest.ill-have-chicken', text: "I'll have the chicken.", meaning: T('אני אקח את העוף.', "I'll have the chicken."),
+    tip: T('תבנית ההזמנה: I’ll have the ___.', 'The ordering template: I’ll have the ___.') },
+  { id: 'en.phrase.rest.water', text: 'A bottle of water, please.', meaning: T('בקבוק מים, בבקשה.', 'A bottle of water, please.') },
+  { id: 'en.phrase.rest.no-onions', text: 'No onions, please.', meaning: T('בלי בצל, בבקשה.', 'No onions, please.'),
+    tip: T('תבנית: No ___, please — לכל מה שאתה לא רוצה בצלחת.', 'Template: No ___, please — for anything you don’t want on the plate.') },
+  { id: 'en.phrase.rest.the-bill', text: 'The bill, please.', meaning: T('החשבון, בבקשה.', 'The bill, please.') },
+  { id: 'en.phrase.rest.delicious', text: 'That was delicious!', meaning: T('זה היה טעים מאוד!', 'That was delicious!'),
+    tip: T('מחמאה קטנה שקונה חיוך גדול.', 'A small compliment that buys a big smile.') },
+  // hear
+  { id: 'en.reply.rest.reservation', text: 'Do you have a reservation?', meaning: T('יש לכם הזמנה?', 'Do you have a reservation?') },
+  { id: 'en.reply.rest.follow-me', text: 'Follow me, please.', meaning: T('בואו אחריי, בבקשה.', 'Follow me, please.') },
+  { id: 'en.reply.rest.ready-to-order', text: 'Are you ready to order?', meaning: T('מוכנים להזמין?', 'Are you ready to order?') },
+  { id: 'en.reply.rest.to-drink', text: 'Anything to drink?', meaning: T('משהו לשתות?', 'Anything to drink?') },
+  { id: 'en.reply.rest.how-was-it', text: 'How was everything?', meaning: T('איך היה הכל?', 'How was everything?') },
+  { id: 'en.reply.rest.dessert', text: 'Would you like dessert?', meaning: T('רוצים קינוח?', 'Would you like dessert?') },
+  ...recovery('en.phrase.recovery.repeat', 'en.phrase.recovery.slowly', 'en.phrase.recovery.thank-you', 'en.phrase.recovery.one-moment', 'en.phrase.recovery.dont-understand'),
 ];
 
-/** The full breakfast scene — every follow-up a real barista asks, one line at a time. */
-const SCENE_BREAKFAST: BootcampDialogue = {
-  id: 'breakfast-order',
+const SCENE: BootcampDialogue = {
+  id: 'sit-down-meal',
   start: 'n1',
   nodes: [
-    { id: 'n1', who: 'npc', next: 'c1', en: 'Good morning! What can I get you?', he: 'בוקר טוב! מה להביא לך?' },
+    { id: 'n1', who: 'npc', next: 'c1', en: 'Good evening! Do you have a reservation?', he: 'ערב טוב! יש לכם הזמנה?' },
     { id: 'c1', who: 'you', en: '', he: '', choices: [
-      { en: "I'd like an iced coffee, please.", he: 'אני רוצה קפה קר, בבקשה.', itemId: 'en.phrase.coffee.iced-coffee', correct: true, next: 'n2' },
-      { en: 'One moment, please.', he: 'רגע אחד, בבקשה. (כלי הישרדות — תמיד עובד)', itemId: 'en.phrase.recovery.one-moment', correct: true, next: 'r1' },
+      { en: 'No — a table for two, please.', he: 'לא — שולחן לשניים, בבקשה.', itemId: 'en.phrase.rest.table-two', correct: true, next: 'n2' },
+      { en: 'Sorry, I don’t understand.', he: 'סליחה, אני לא מבין.', itemId: 'en.phrase.recovery.dont-understand', correct: true, next: 'r1' },
     ] },
-    { id: 'r1', who: 'npc', slow: true, next: 'c1b', en: 'Of course — take your time!', he: 'ברור — קח את הזמן!' },
+    { id: 'r1', who: 'npc', slow: true, next: 'c1b', en: 'A table? For how many people?', he: 'שולחן? לכמה אנשים?' },
     { id: 'c1b', who: 'you', en: '', he: '', choices: [
-      { en: "I'd like an iced coffee, please.", he: 'אני רוצה קפה קר, בבקשה.', itemId: 'en.phrase.coffee.iced-coffee', correct: true, next: 'n2' },
+      { en: 'A table for two, please.', he: 'שולחן לשניים, בבקשה.', itemId: 'en.phrase.rest.table-two', correct: true, next: 'n2' },
     ] },
-    { id: 'n2', who: 'npc', fast: true, next: 'c2', en: 'Sure! Medium or large?', he: 'סגור! בינוני או גדול?' },
+    { id: 'n2', who: 'npc', next: 'n2b', en: 'Perfect, follow me. Here are your menus.', he: 'מצוין, בואו אחריי. הנה התפריטים.' },
+    { id: 'n2b', who: 'npc', next: 'c2', en: 'Are you ready to order?', he: 'מוכנים להזמין?' },
     { id: 'c2', who: 'you', en: '', he: '', choices: [
-      { en: 'Medium, please.', he: 'בינוני, בבקשה.', correct: true, next: 'n3' },
-      { en: 'Can you repeat that?', he: 'אפשר לחזור על זה? (לא הבנת? תשאל!)', itemId: 'en.phrase.recovery.repeat', correct: true, next: 'r2' },
+      { en: "I'll have the chicken.", he: 'אני אקח את העוף.', itemId: 'en.phrase.rest.ill-have-chicken', correct: true, next: 'n3' },
+      { en: 'One moment, please.', he: 'רגע אחד, בבקשה. (צריך עוד רגע? לגיטימי)', itemId: 'en.phrase.recovery.one-moment', correct: true, next: 'r2' },
     ] },
-    { id: 'r2', who: 'npc', slow: true, next: 'c2b', en: 'MEDIUM — or LARGE?', he: 'בינוני — או גדול?' },
-    { id: 'c2b', who: 'you', en: '', he: '', choices: [
-      { en: 'Medium, please.', he: 'בינוני, בבקשה.', correct: true, next: 'n3' },
-    ] },
-    { id: 'n3', who: 'npc', next: 'c3', en: 'Milk and sugar?', he: 'חלב וסוכר?' },
+    { id: 'r2', who: 'npc', next: 'n2b', en: 'Sure, take your time.', he: 'בטח, קחו את הזמן.' },
+    { id: 'n3', who: 'npc', next: 'c3', en: 'Excellent choice. Anything to drink?', he: 'בחירה מצוינת. משהו לשתות?' },
     { id: 'c3', who: 'you', en: '', he: '', choices: [
-      { en: 'Milk, no sugar.', he: 'עם חלב, בלי סוכר.', itemId: 'en.phrase.coffee.no-sugar', correct: true, next: 'n4' },
-      { en: 'Thank you!', he: 'תודה! (רגע — הוא שאל שאלה…)', correct: false, next: 'r3' },
+      { en: 'A bottle of water, please.', he: 'בקבוק מים, בבקשה.', itemId: 'en.phrase.rest.water', correct: true, next: 'n4' },
     ] },
-    { id: 'r3', who: 'npc', slow: true, next: 'c3b', en: "You're welcome! But — milk? sugar?", he: 'בבקשה! אבל — חלב? סוכר?' },
-    { id: 'c3b', who: 'you', en: '', he: '', choices: [
-      { en: 'Milk, no sugar.', he: 'עם חלב, בלי סוכר.', itemId: 'en.phrase.coffee.no-sugar', correct: true, next: 'n4' },
-    ] },
-    { id: 'n4', who: 'npc', next: 'c4', en: 'Anything to eat?', he: 'משהו לאכול?' },
+    { id: 'n4', who: 'npc', fast: true, next: 'c4', en: 'Great — and would you like anything else with that?', he: 'מצוין — ורוצים עוד משהו עם זה?' },
     { id: 'c4', who: 'you', en: '', he: '', choices: [
-      { en: 'A croissant, please.', he: 'קרואסון, בבקשה.', itemId: 'en.phrase.coffee.croissant', correct: true, next: 'n5' },
-      { en: "That's all, thanks.", he: 'זה הכל, תודה. (גם זה בסדר גמור!)', itemId: 'en.phrase.coffee.thats-all', correct: true, next: 'n6' },
+      { en: 'No onions, please.', he: 'בלי בצל, בבקשה.', itemId: 'en.phrase.rest.no-onions', correct: true, next: 'n5' },
+      { en: "That's all, thank you.", he: 'זה הכל, תודה.', itemId: 'en.phrase.recovery.thank-you', correct: true, next: 'n5' },
     ] },
-    { id: 'n5', who: 'npc', next: 'c5', en: 'Great choice. Would you like anything else?', he: 'בחירה מצוינת. עוד משהו?' },
+    { id: 'n5', who: 'npc', next: 'n5b', en: 'Coming right up!', he: 'מגיע עוד רגע!' },
+    { id: 'n5b', who: 'npc', next: 'c5', en: '…Later… How was everything?', he: '…אחר כך… איך היה הכל?' },
     { id: 'c5', who: 'you', en: '', he: '', choices: [
-      { en: "That's all, thanks.", he: 'זה הכל, תודה.', itemId: 'en.phrase.coffee.thats-all', correct: true, next: 'n6' },
+      { en: 'That was delicious! The bill, please.', he: 'זה היה טעים מאוד! החשבון, בבקשה.', itemId: 'en.phrase.rest.the-bill', correct: true, next: 'n6' },
     ] },
-    { id: 'n6', who: 'npc', fast: true, next: 'c6', en: "That'll be six fifty. Cash or card?", he: 'שש חמישים בבקשה. מזומן או כרטיס?' },
-    { id: 'c6', who: 'you', en: '', he: '', choices: [
-      { en: 'Card, please.', he: 'בכרטיס, בבקשה.', itemId: 'en.phrase.coffee.card', correct: true, next: 'n7' },
-      { en: 'Please speak slowly.', he: 'דבר לאט בבקשה. (המספר ברח לך? לגיטימי)', itemId: 'en.phrase.recovery.slowly', correct: true, next: 'r6' },
-    ] },
-    { id: 'r6', who: 'npc', slow: true, next: 'c6b', en: 'Six — fifty. Cash, or card?', he: 'שש — חמישים. מזומן או כרטיס?' },
-    { id: 'c6b', who: 'you', en: '', he: '', choices: [
-      { en: 'Card, please.', he: 'בכרטיס, בבקשה.', itemId: 'en.phrase.coffee.card', correct: true, next: 'n7' },
-    ] },
-    { id: 'n7', who: 'npc', next: 'c7', en: 'Would you like the receipt?', he: 'רוצה את הקבלה?' },
-    { id: 'c7', who: 'you', en: '', he: '', choices: [
-      { en: 'No, thank you!', he: 'לא, תודה!', itemId: 'en.phrase.recovery.thank-you', correct: true, next: 'n8' },
-      { en: 'Yes, please.', he: 'כן, בבקשה.', correct: true, next: 'n8' },
-    ] },
-    { id: 'n8', who: 'npc', end: true, en: 'Here you go — enjoy your day!', he: 'בבקשה — שיהיה יום מעולה!' },
+    { id: 'n6', who: 'npc', end: true, en: 'So glad you enjoyed it. Here you are — have a lovely evening!', he: 'שמח שנהניתם. בבקשה — ערב נעים!' },
   ],
 };
 
-/** Recovery tools reused inside this mission's scene — imported so every reference
- *  resolves AND the kit gets spaced review inside a real context. */
-const REUSED_RECOVERY = DAY1_ITEMS.filter((i) =>
-  ['en.phrase.recovery.one-moment', 'en.phrase.recovery.repeat', 'en.phrase.recovery.slowly', 'en.phrase.recovery.thank-you'].includes(i.id),
-);
-
 export const DAY4: BootcampDayContent = {
   day: 4,
-  title: T('בית קפה', 'Coffee Shop'),
-  items: [...DAY4_ITEMS, ...REUSED_RECOVERY],
-  dialogues: { 'breakfast-order': SCENE_BREAKFAST },
+  title: T('ארוחה במסעדה', 'Restaurant Meal'),
+  items: DAY4_ITEMS,
+  dialogues: { 'sit-down-meal': SCENE },
   introVideo: {
     src: '/videos/En_day4.mp4',
     title: T('השיחה המלאה', 'Full conversation'),
@@ -129,38 +74,35 @@ export const DAY4: BootcampDayContent = {
     type: 'intro',
   },
   steps: [
-    { kind: 'talk', icon: '☕', title: T('משימה 4: בית קפה', 'Mission 4: Coffee Shop'),
+    { kind: 'talk', icon: '🍽️', title: T('ארוחה במסעדה', 'Restaurant Meal'),
       body: [
-        T('היום לא לומדים "מילים על קפה". היום לומדים לצאת מבית קפה עם ארוחת בוקר ביד.', 'Today we don’t learn “coffee words”. Today you walk out of a café holding breakfast.'),
-        T('הסוד: אחרי שאתה מזמין, הבריסטה שואל שאלות המשך. מי שמכיר אותן מראש — אף פעם לא קופא.', 'The secret: after you order, the barista fires follow-up questions. Know them in advance — never freeze.'),
-      ], cta: T('להיכנס', 'Walk in') },
-    // Vocabulary priming (Part 7): the six café building blocks that control every order, taught
-    // before the full sentences. milk + no + sugar compose "Milk, no sugar." — the assemble beat.
+        T('ארוחת ערב אמיתית: שולחן, תפריט, הזמנה, שתייה, חשבון.', 'A real dinner: table, menu, order, drink, bill.'),
+        T('הבריח מתחיל ברגע שהמלצר מגיע ושואל שאלה. נכיר את השאלות מראש.', 'The freeze starts the second the waiter arrives with a question. We meet them in advance.'),
+      ], cta: T('להיכנס למסעדה', 'Walk in') },
     { kind: 'prime', label: T('לפני שנדבר', 'Before we speak'),
-      intro: T('שש מילים שולטות בכל הזמנה בבית קפה.', 'Six words control every café order.'),
+      intro: T('שמות המפתח של הארוחה — שאר המשפט כבר מוכר.', 'The meal’s key nouns — the rest of the sentence is already familiar.'),
       words: [
-        { text: 'coffee', meaning: T('קפה', 'coffee'), emoji: '☕' },
-        { text: 'milk', meaning: T('חלב', 'milk'), emoji: '🥛' },
-        { text: 'sugar', meaning: T('סוכר', 'sugar'), emoji: '🍬' },
-        { text: 'medium', meaning: T('בינוני', 'medium') },
-        { text: 'with', meaning: T('עם', 'with') },
-        { text: 'no / without', meaning: T('בלי', 'no / without') },
-      ], buildFromItemId: 'en.phrase.coffee.no-sugar' },
-    { kind: 'tool', itemId: 'en.phrase.coffee.iced-coffee', index: 1, total: 4, label: T('משפט הזהב', 'The golden template') },
-    { kind: 'tool', itemId: 'en.phrase.coffee.no-sugar', index: 2, total: 4, label: T('שליטה בהזמנה', 'Order control') },
-    { kind: 'tool', itemId: 'en.phrase.coffee.thats-all', index: 3, total: 4, label: T('הסוגר האוניברסלי', 'The universal closer') },
-    { kind: 'tool', itemId: 'en.phrase.coffee.card', index: 4, total: 4, label: T('סוגרים חשבון', 'Settling up') },
-    { kind: 'replies', saidItemId: 'en.phrase.coffee.iced-coffee',
-      replyIds: ['en.reply.coffee.here-or-to-go', 'en.reply.coffee.medium-or-large', 'en.reply.coffee.milk-sugar', 'en.reply.coffee.anything-else'] },
-    { kind: 'receipt', text: T('אתה כבר מזהה את ארבע שאלות ההמשך של כל בריסטה בעולם.', 'You now recognize the four follow-ups of every barista on earth.') },
-    { kind: 'quiz', itemId: 'en.reply.coffee.cash-or-card', wrongIds: ['en.reply.coffee.anything-to-eat', 'en.reply.coffee.receipt'] },
-    { kind: 'quiz', itemId: 'en.reply.coffee.anything-to-eat', wrongIds: ['en.reply.coffee.hot-or-iced', 'en.reply.coffee.enjoy'] },
-    { kind: 'dialogue', dialogueId: 'breakfast-order' },
-    { kind: 'receipt', text: T('הזמנת ארוחת בוקר שלמה: שתייה, גודל, חלב, מאפה, תשלום. הכל.', 'You ordered a full breakfast: drink, size, milk, pastry, payment. All of it.') },
-    { kind: 'swipe', itemIds: [...DAY4_ITEMS, ...REUSED_RECOVERY].map((i) => i.id) },
-    { kind: 'ambush', npc: { en: 'Sorry we are out of croissants would a muffin be okay instead?', he: 'סליחה, נגמרו הקרואסונים — מאפין במקום זה בסדר?' },
-      correctItemId: 'en.phrase.recovery.repeat', wrongItemId: 'en.phrase.coffee.card' },
-    { kind: 'receipt', text: T('הפתעה מחוץ לתסריט — והגבת עם כלי. זה בדיוק מה שקורה בעולם האמיתי.', 'An off-script surprise — and you answered with a tool. Exactly how real life works.') },
+        { text: 'table', meaning: T('שולחן', 'table'), emoji: '🍽️' },
+        { text: 'menu', meaning: T('תפריט', 'menu'), emoji: '📋' },
+        { text: 'water', meaning: T('מים', 'water'), emoji: '💧' },
+        { text: 'bill', meaning: T('חשבון', 'bill'), emoji: '🧾' },
+        { text: 'please', meaning: T('בבקשה', 'please') },
+      ], buildFromItemId: 'en.phrase.rest.the-bill' },
+    { kind: 'tool', itemId: 'en.phrase.rest.table-two', index: 1, total: 4, label: T('הפתיח', 'The opener') },
+    { kind: 'tool', itemId: 'en.phrase.rest.ill-have-chicken', index: 2, total: 4, label: T('להזמין', 'Order it') },
+    { kind: 'tool', itemId: 'en.phrase.rest.no-onions', index: 3, total: 4, label: T('בקשה מיוחדת', 'Special request') },
+    { kind: 'tool', itemId: 'en.phrase.rest.the-bill', index: 4, total: 4, label: T('לסגור', 'Close it out') },
+    { kind: 'replies', saidItemId: 'en.phrase.rest.ill-have-chicken',
+      replyIds: ['en.reply.rest.to-drink', 'en.reply.rest.ready-to-order', 'en.reply.rest.how-was-it', 'en.reply.rest.dessert'] },
+    { kind: 'receipt', text: T('אתה מזהה את כל שאלות המלצר — לפני שהן מפתיעות אותך.', 'You recognize every waiter question — before it can surprise you.') },
+    { kind: 'quiz', itemId: 'en.reply.rest.reservation', wrongIds: ['en.reply.rest.ready-to-order', 'en.reply.rest.dessert'] },
+    { kind: 'dialogue', dialogueId: 'sit-down-meal' },
+    { kind: 'receipt', text: T('ארוחת ערב שלמה: משולחן ועד חשבון, כולל בקשה מיוחדת.', 'A full dinner: from table to bill, special request included.') },
+    { kind: 'swipe', itemIds: DAY4_ITEMS.map((i) => i.id) },
+    { kind: 'ambush', npc: { en: 'Would you like to see the dessert menu before I bring the check?', he: 'רוצים לראות את תפריט הקינוחים לפני שאני מביא את החשבון?' },
+      correctItemId: 'en.reply.rest.dessert', wrongItemId: 'en.reply.rest.reservation' },
+    { kind: 'receipt', text: T('משפט ארוך ומהיר בסוף הארוחה — והבנת את העיקר.', 'A long, fast sentence at the end of the meal — and you caught the point.') },
     { kind: 'summary' },
   ],
 };
+void RECOVERY_ITEMS;

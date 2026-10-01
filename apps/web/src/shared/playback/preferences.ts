@@ -1,15 +1,39 @@
-import type { PlaybackItem, PlaybackSettings } from './types.js';
+import type { PlaybackItem, PlaybackScope, PlaybackSettings } from './types.js';
 
 /**
- * Parrot Mode persistence — shared preferences + per-surface listening bookmarks.
+ * Playback persistence — per-surface preferences + per-surface listening bookmarks.
  *
- * All persistence goes through the existing localStorage convention (the same one `tts.ts` uses for
- * the global speech rate); no new state library. The PURE `sanitizeSettings` / `resolveBookmarkIndex`
- * functions carry every validation rule and are unit-tested without a DOM. "Currently playing" is
- * never stored — playback must not auto-start after a refresh.
+ * OWNERSHIP RULE: a playback option must never affect a screen where the learner cannot see or
+ * change it. So preferences are stored PER SCOPE, and each scope may only keep the options its own
+ * screen exposes (`SCOPE_OWNS`); everything else is always the default there. The one deliberately
+ * GLOBAL audio preference — speech rate — is not a playback setting at all: it lives in
+ * `shared/audio/tts` (Profile) and the TTS layer applies it to every utterance.
+ *
+ *   global      speech rate                                   (tts.ts, `ready.speechRate`)
+ *   listen      repeats · non-stop · shuffle · quick-listen timer   (+ its mode in `listenMode.ts`)
+ *   story       nothing here — reading mode + voice order live in the Reading store
+ *   transcript  repeats · translation · order · loop · pause · sleep timer
+ *   words       repeats · translation · order · loop · pause · sleep timer
+ *
+ * All persistence goes through localStorage; the PURE `sanitizeSettings` / `scopedSettings` /
+ * `resolveBookmarkIndex` functions carry every rule and are unit-tested without a DOM. "Currently
+ * playing" is never stored — playback must not auto-start after a refresh. (The pre-scoping shared
+ * key `ready.parrot.settings` is no longer read: it is exactly the leak this replaces.)
  */
 
-const SETTINGS_KEY = 'ready.parrot.settings';
+const SETTINGS_PREFIX = 'ready.playback.';
+const settingsKey = (scope: PlaybackScope): string => SETTINGS_PREFIX + scope;
+
+type SettingKey = keyof PlaybackSettings;
+const CONTROLS_PANEL: readonly SettingKey[] = ['repeat', 'translation', 'order', 'loop', 'pause', 'sleepTimer'];
+
+/** The options each surface exposes — the ONLY ones it may change or remember. */
+export const SCOPE_OWNS: Record<PlaybackScope, readonly SettingKey[]> = {
+  listen: ['repeat', 'loop', 'order', 'sleepTimer'],
+  story: [],
+  transcript: CONTROLS_PANEL,
+  words: CONTROLS_PANEL,
+};
 const BOOKMARK_PREFIX = 'ready.parrot.bookmark.';
 
 export const DEFAULT_SETTINGS: PlaybackSettings = {
@@ -17,7 +41,6 @@ export const DEFAULT_SETTINGS: PlaybackSettings = {
   order: 'sequential',
   translation: true,
   loop: false,
-  speed: 1,
   pause: 'normal',
   sleepTimer: 0,
 };
@@ -30,26 +53,38 @@ export function sanitizeSettings(raw: unknown): PlaybackSettings {
     order: o.order === 'random' ? 'random' : 'sequential',
     translation: o.translation !== false, // default ON
     loop: o.loop === true,
-    speed: o.speed === 0.5 || o.speed === 0.75 || o.speed === 1.25 ? o.speed : 1,
     pause: o.pause === 'short' || o.pause === 'long' ? o.pause : 'normal',
     sleepTimer: o.sleepTimer === 10 || o.sleepTimer === 15 || o.sleepTimer === 30 || o.sleepTimer === 60 ? o.sleepTimer : 0,
   };
 }
 
-/** Load settings from storage, always returning a valid object (defaults on miss/corruption/SSR). */
-export function loadSettings(): PlaybackSettings {
+/** Keep only what `scope` owns; every other option is forced to its default. Pure. */
+export function scopedSettings(scope: PlaybackScope, s: PlaybackSettings): PlaybackSettings {
+  const out: PlaybackSettings = { ...DEFAULT_SETTINGS };
+  const write = out as unknown as Record<SettingKey, unknown>;
+  for (const key of SCOPE_OWNS[scope]) write[key] = s[key];
+  return out;
+}
+
+/** Whether a surface may change an option (i.e. its screen exposes it). */
+export function scopeOwns(scope: PlaybackScope, key: SettingKey): boolean {
+  return SCOPE_OWNS[scope].includes(key);
+}
+
+/** Load a surface's settings, always returning a valid object (defaults on miss/corruption/SSR). */
+export function loadSettings(scope: PlaybackScope): PlaybackSettings {
   try {
-    const raw = localStorage.getItem(SETTINGS_KEY);
-    return raw ? sanitizeSettings(JSON.parse(raw)) : DEFAULT_SETTINGS;
+    const raw = localStorage.getItem(settingsKey(scope));
+    return raw ? scopedSettings(scope, sanitizeSettings(JSON.parse(raw))) : DEFAULT_SETTINGS;
   } catch {
     return DEFAULT_SETTINGS;
   }
 }
 
-/** Persist settings; never throws (private mode / SSR safe). */
-export function persistSettings(s: PlaybackSettings): void {
+/** Persist a surface's settings (only what it owns); never throws (private mode / SSR safe). */
+export function persistSettings(scope: PlaybackScope, s: PlaybackSettings): void {
   try {
-    localStorage.setItem(SETTINGS_KEY, JSON.stringify(s));
+    localStorage.setItem(settingsKey(scope), JSON.stringify(scopedSettings(scope, s)));
   } catch {
     /* ignore persistence failure */
   }

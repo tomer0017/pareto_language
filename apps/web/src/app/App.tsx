@@ -1,11 +1,12 @@
 import { useEffect } from 'react';
 import { useAppStore, type View } from '../shared/stores/appStore.js';
-import { shouldShowNav, shouldShowFoundationFab } from './nav.js';
+import { hasAppShell, shouldShowNav } from './nav.js';
 import { t } from '../shared/i18n/strings.js';
 import { ErrorBoundary } from '../shared/ui/ErrorBoundary.js';
-import { BottomNav } from '../shared/ui/BottomNav.js';
+import { AppNav } from '../shared/ui/AppNav.js';
 import { AudioDebug } from '../shared/ui/AudioDebug.js';
 import { DataDebug } from '../shared/ui/DataDebug.js';
+import { resolveDebugOverlay } from '../shared/ui/devOverlay.js';
 import { Onboarding } from '../features/onboarding/Onboarding.js';
 import { Mission } from '../features/mission/Mission.js';
 import { Words } from '../features/phrasebook/Words.js';
@@ -21,16 +22,21 @@ import { Home } from '../features/home/Home.js';
 import { Core } from '../features/core/Core.js';
 import { Profile } from '../features/profile/Profile.js';
 import { Videos } from '../features/videos/Videos.js';
+import { Listen } from '../features/listen/Listen.js';
+import { Readiness } from '../features/readiness/Readiness.js';
+import { QuickReview } from '../features/core/QuickReview.js';
 import { Reading } from '../features/reading/Reading.js';
 import { ZeroStart } from '../features/zerostart/ZeroStart.js';
-import { FoundationFab } from '../features/foundation/FoundationFab.js';
 import { FoundationSheet } from '../features/foundation/FoundationSheet.js';
 import { useBootcampStore } from '../features/bootcamp/bootcampStore.js';
 
 
-// Views that render shipped content-pack material. During the English pilot no pack ships, so
-// these gate to an honest "coming soon" instead of showing Italian content or crashing on a
-// null pack. The Bootcamp (the pilot), the language screen and onboarding never gate.
+// LEGACY content-pack screens (the pre-Bootcamp trip-plan product: daily Mission, Words, Phrases,
+// Situations, Practice, Session, Emergency, Plan). No shipped learning language carries a content
+// pack, and nothing in the Home / Learn / Listen / Profile journey links to them — the missions
+// under Learn are the ONE route to the curriculum. They stay only so the content-pack systems
+// keep compiling; if one is ever reached without a pack it shows an honest notice and a way back
+// to Learn instead of crashing on a null pack.
 const PACK_GATED: View[] = ['mission', 'words', 'phrases', 'situations', 'practice', 'session', 'emergency', 'plan'];
 
 /** Honest placeholder for content surfaces not yet rebuilt for the English pilot. */
@@ -50,9 +56,16 @@ function ComingSoon() {
   );
 }
 
+// Developer diagnostics: never in production, and in development only when explicitly requested
+// (`?debug=1`). Decided once per page load — see shared/ui/devOverlay.ts.
+const showDebug = resolveDebugOverlay(import.meta.env.DEV);
+
 const SCREENS: Partial<Record<View, { feature: string; el: () => JSX.Element | null }>> = {
   onboarding: { feature: 'Onboarding', el: Onboarding },
   home: { feature: 'Home', el: Home },
+  listen: { feature: 'Listen', el: Listen },
+  readiness: { feature: 'Readiness', el: Readiness },
+  review: { feature: 'Review', el: QuickReview },
   core: { feature: 'Core', el: Core },
   profile: { feature: 'Profile', el: Profile },
   mission: { feature: 'Mission', el: Mission },
@@ -115,28 +128,25 @@ export function App() {
   const Screen = screen.el;
 
   const showNav = shouldShowNav(view, inMission, coreGameActive);
-  const showFoundation = shouldShowFoundationFab(view, inMission);
+
+  // The shell (and the desktop rail) exists everywhere except the first-run welcome.
+  const shell = hasAppShell(view);
 
   return (
-    <>
+    <div className={`app-shell ${shell ? 'has-rail' : ''}`}>
       <ErrorBoundary feature={screen.feature}>
         <Screen />
       </ErrorBoundary>
-      {showFoundation && (
-        <ErrorBoundary feature="Foundation">
-          <FoundationFab />
-        </ErrorBoundary>
-      )}
       <ErrorBoundary feature="Foundation">
         <FoundationSheet />
       </ErrorBoundary>
-      {showNav && <BottomNav />}
-      {import.meta.env.DEV && (
+      {shell && <AppNav barHidden={!showNav} />}
+      {showDebug && (
         <ErrorBoundary feature="DevDiagnostics">
           <AudioDebug />
           <DataDebug />
         </ErrorBoundary>
       )}
-    </>
+    </div>
   );
 }

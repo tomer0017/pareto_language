@@ -41,7 +41,7 @@ exports/dialogues/<lang>/ALL_DIALOGUES.md # every mission concatenated (always t
 `exports/` is git-ignored (generated; regenerate any time). Each `mission-NN.md`:
 
 ```
-# Mission 03 — Numbers & Money
+# Mission 02 — Numbers & Money
 
 ## Scene
 

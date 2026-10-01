@@ -285,3 +285,65 @@ Every non-obvious technical decision, with one line of reasoning. Referenced by 
   realizations, each with a `reviewNotes` flag — no fabricated `native_reviewed`. The one
   shipped-lineage Italian recovery phrase moved out of the non-production samples file into this
   production set.
+
+## Bootcamp curriculum — 29 missions (2026-10-01)
+
+- **D059 — The Recovery Toolkit is not a mission.** It was Mission 1, then an unnumbered "special"
+  card; both made a learner's first contact with a language a lesson in *not understanding*. It is
+  removed from the curriculum in every language (plan entry, `day1.ts` ×3, the special card, the
+  `special` flag). The Bootcamp is **29 missions**, Mission 1 = Introduce Myself, checkpoints at
+  9/17/23/29. Only the shared recovery phrases stay (`recovery.ts` per language) because every
+  remaining mission reuses them inside its dialogues. Supersedes the mission-numbering parts of D050 and D057 and
+  the "checkpoints at 10/18/24, finale at 30" note in Sprint 7.
+- **D060 — Mission identity ≠ display number.** Each `BOOTCAMP_PLAN` entry carries a stable semantic
+  `id`; the display number is its plan position; `day` is only the content-registry key. Persisted
+  progress is keyed by `id` (`ready.bootcamp.v2.<lang>`), so a future reorder cannot move a
+  learner's completions. Content files/registry keys stay numeric (`day1..29.ts`) — renaming 87
+  files to slugs was judged out of proportion for this change; a reorder still means renaming files,
+  but no longer touches progress, videos or item ids.
+- **D061 — Video paths are explicit asset metadata.** Files were renamed to match the new mission
+  numbers (`En_day2.mp4` → `En_day1.mp4`, …) and every `introVideo.src` updated, but the URL is never
+  computed from the mission number; a test checks each referenced file exists.
+
+## Product IA — Home · Learn · Listen · Profile (2026-10-01)
+
+- **D062 — Two modes, four destinations.** READY is used actively (Learn) and passively (Listen)
+  over the same content; Home decides the next action; Profile owns settings. "Core" stops being a
+  destination — its sentences power Learn, Listen and Quick Review, and the library is a secondary
+  screen. The internal view id for Learn stays `bootcamp` (renaming it would touch every caller for
+  no user-visible gain).
+- **D063 — Progress is Travel Readiness, and only what the data supports.** Readiness = completed
+  missions ÷ plan length. The secondary metric is "core sentences *practiced*" (a sentence with at
+  least one logged drill) — not "learned", which nothing measures today. No achievements, streaks,
+  XP or badges until they can be derived honestly.
+- **D064 — The mission overview guides; it does not offer tools.** Watch → Learn → Practice →
+  Watch again is a view over the existing step list (the first responding step starts Practice).
+  The pedagogy engine and mission content are unchanged; "watched" is not persisted, so it only
+  steers the highlight within a visit.
+- **D065 — Listen reuses the shared playback engine and never owns speed.** Repeats (1×/2×/3×) are
+  repetitions, labelled "חזרות"; Listen pins the engine's relative speed to 1 so the one global
+  speech-speed preference is the only speed. The engine's older relative-speed control still exists
+  inside the transcript/story "more settings" panel (see remaining debt in STATUS).
+- **D066 — Two column widths.** Browse pages use `--page-max`; focused flows use `--focus-max` and
+  stay narrow on desktop. One nav component; the desktop rail persists through lessons, the
+  phone bar does not.
+- **D067 — Recovery phrases are support, not identity.** They keep their content and ids (missions
+  depend on them) but are always ordered last and labelled "Conversation help / עזרה בשיחה".
+
+## Final polish before cloud (2026-10-01)
+
+- **D068 — "Path / מסלול", not "Learn".** Everything in READY is learning; the destination is the
+  structured path through the 29 situations. A label change only — no internal renaming.
+- **D069 — Audio preferences have explicit owners.** Speech rate is the only global one. Every other
+  playback option belongs to the surface that shows it and is stored under that surface's scope. A
+  surface cannot keep or change an option it does not expose. The engine's relative speed was removed
+  rather than hidden (supersedes the "relative speed" note in D065).
+- **D070 — One sentence, one identity.** A sentence id must never carry two wordings (fixed:
+  `ill-have` → `ill-have-chicken` in Restaurant Meal). Identical wording re-declared under other
+  ids is treated as ONE canonical sentence with aliases — in the catalog, not by renaming content
+  ids, so existing review logs stay valid. Merging those ids in the content itself is deferred.
+- **D071 — One primary action per mission.** The mission overview guides (start / continue); Learn
+  and Practice are shortcuts only on a completed mission. The learner is never asked to self-certify
+  understanding as an alternative to learning.
+- **D072 — Diagnostics are opt-in.** Developer badges need a dev build AND `?debug=1`.
+

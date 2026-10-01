@@ -28,10 +28,10 @@ import { isModuleComplete, moduleDoneCount, pathProgress } from './zeroStartProg
 /** A safe example name so introductions read naturally before the learner sets their own. */
 const EXAMPLE_NAME = 'Alex';
 
-/** The first real (non-special) Bootcamp mission for a language — the graduation target. */
+/** The first built Bootcamp mission for a language — the graduation target. */
 function firstBootcampDay(lang: string): number | undefined {
   const missions = missionsFor(lang);
-  return BOOTCAMP_PLAN.filter((m) => m.day in missions && !m.special)[0]?.day;
+  return BOOTCAMP_PLAN.filter((m) => m.day in missions)[0]?.day;
 }
 
 /** The chunk whose concept is "learned" by completing a step (drives Foundation sync). */
@@ -53,7 +53,7 @@ export function ZeroStart() {
   if (!lang) {
     return (
       <div className="screen">
-        <TopBar title={t('zeroStartTitle')} backTo="home" />
+        <TopBar title={t('zeroStartTitle')} backTo="bootcamp" />
         <div className="screen-scroll">
           <div className="drill-card center pop-in" style={{ marginTop: 24 }}>
             <p style={{ fontSize: '2.4rem' }}>🌱</p>
@@ -157,7 +157,7 @@ function Path({ lang }: { lang: ZeroLang }) {
   // ── Hub ──
   return (
     <div className="screen">
-      <TopBar title={t('zeroStartTitle')} backTo="home" />
+      <TopBar title={t('zeroStartTitle')} backTo="bootcamp" />
       <div className="screen-scroll">
         <p className="dim small" style={{ marginBottom: 4 }}>{t('zeroStartSubtitle')}</p>
         <p className="dim small" style={{ marginBottom: 12 }}>{t('zeroStartDesc')}</p>

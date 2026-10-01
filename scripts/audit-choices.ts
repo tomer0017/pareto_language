@@ -34,12 +34,11 @@ import { DAY26 } from '../apps/web/src/features/bootcamp/day26.js';
 import { DAY27 } from '../apps/web/src/features/bootcamp/day27.js';
 import { DAY28 } from '../apps/web/src/features/bootcamp/day28.js';
 import { DAY29 } from '../apps/web/src/features/bootcamp/day29.js';
-import { DAY30 } from '../apps/web/src/features/bootcamp/day30.js';
 
 const DAYS: BootcampDayContent[] = [
-  DAY1, DAY2, DAY3, DAY4, DAY5, DAY6, DAY7, DAY8, DAY9, DAY10,
-  DAY11, DAY12, DAY13, DAY14, DAY15, DAY16, DAY17, DAY18, DAY19, DAY20,
-  DAY21, DAY22, DAY23, DAY24, DAY25, DAY26, DAY27, DAY28, DAY29, DAY30,
+  DAY1, DAY2, DAY3, DAY4, DAY5, DAY6, DAY7, DAY8, DAY9,
+  DAY10, DAY11, DAY12, DAY13, DAY14, DAY15, DAY16, DAY17, DAY18, DAY19,
+  DAY20, DAY21, DAY22, DAY23, DAY24, DAY25, DAY26, DAY27, DAY28, DAY29,
 ];
 
 function precedingNpc(d: BootcampDialogue, nodeId: string): DialogueNodeB | undefined {

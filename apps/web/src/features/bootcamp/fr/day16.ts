@@ -3,100 +3,97 @@ import type { BootcampDayContent, BootcampDialogue, BootcampItem } from '../type
 import { recoveryFr } from './recovery.js';
 
 /**
- * French Mission 16 — "Street food et marchés" (Street Food & Markets). French parallel of English
- * day 16: point, order, ask a price, haggle a little, eat like a local. `tr:{en,he}` glosses;
- * `fr.*` ids. AI-drafted, vous, pending review.
+ * French Mission 16 — "Supermarché" (Supermarket). French parallel of English mission 16: find it, weigh
+ * it, pay for it — self-checkout included, zero dependence on anyone. `tr:{en,he}` glosses; `fr.*`
+ * ids. AI-drafted, vous, pending review.
  */
 const T = (he: string, en: string): LocalizedText => ({ he, en });
 const TR = (en: string, he: string): LocalizedText => ({ en, he });
 
 export const DAY16_FR_ITEMS: BootcampItem[] = [
   // say
-  { id: 'fr.phrase.street.one-of-those', text: 'Un de ceux-là, s’il vous plaît.', meaning: T('אחד מאלה, בבקשה.', 'One of those, please.'),
-    tip: T('לא יודע את השם? מצביע ואומר Un de ceux-là. עובד בכל דוכן בעולם.', "Don't know the name? Point and say Un de ceux-là. Works at every stall on earth.") },
-  { id: 'fr.phrase.street.how-much', text: 'C’est combien ?', meaning: T('כמה זה עולה?', 'How much is it?'),
-    tip: T('השאלה שאסור לוותר עליה בשוק. תמיד שואלים לפני.', 'The one question you never skip at a market. Always ask first.') },
-  { id: 'fr.phrase.street.two-please', text: 'Deux, s’il vous plaît.', meaning: T('שניים, בבקשה.', 'Two, please.') },
-  { id: 'fr.phrase.street.too-expensive', text: 'C’est un peu cher.', meaning: T('זה קצת יקר.', "That's a bit much."),
-    tip: T('פתיח עדין להתמקחות. חיוך, לא ריב.', 'A gentle haggling opener. A smile, not a fight.') },
-  { id: 'fr.phrase.street.take-it', text: 'Je le prends.', meaning: T('אני אקח.', "I'll take it."),
-    tip: T('סוגר את העסקה. שתי מילים, וגמרנו.', 'Closes the deal. Two words, and you’re done.') },
-  // hear — the vendor's calls
-  { id: 'fr.reply.street.what-you-want', text: 'Vous voulez quoi ?', meaning: T('מה תרצה?', 'What would you like?') },
-  { id: 'fr.reply.street.how-many', text: 'Combien ?', meaning: T('כמה?', 'How many?') },
-  { id: 'fr.reply.street.five-each', text: 'Cinq chacun.', meaning: T('חמישה כל אחד.', 'Five each.') },
-  { id: 'fr.reply.street.best-price', text: 'Pour vous — meilleur prix, huit.', meaning: T('בשבילך — מחיר הכי טוב, שמונה.', 'For you — best price, eight.') },
-  { id: 'fr.reply.street.fresh-today', text: 'C’est frais aujourd’hui !', meaning: T('טרי היום!', "It's fresh today!") },
-  { id: 'fr.reply.street.anything-else', text: 'Autre chose, mon ami ?', meaning: T('עוד משהו, חבר?', 'Anything else, my friend?') },
+  { id: 'fr.phrase.super.where-is', text: 'Où est le lait ?', meaning: T('איפה החלב?', 'Where is the milk?'),
+    tip: T('התבנית: Où est le/la ___ ? — מוצאת כל מוצר בכל חנות.', 'Template: Où est le/la ___ ? — finds any product in any shop.') },
+  { id: 'fr.phrase.super.do-you-have', text: 'Vous avez du pain ?', meaning: T('יש לכם לחם?', 'Do you have bread?'),
+    tip: T('התבנית: Vous avez ___ ? — בודקת אם קיים במלאי.', 'Template: Vous avez ___ ? — checks if it’s in stock.') },
+  { id: 'fr.phrase.super.just-this', text: 'Juste ça, merci.', meaning: T('רק את זה, תודה.', 'Just this, thanks.') },
+  { id: 'fr.phrase.super.need-bag', text: 'Je peux avoir un sac ?', meaning: T('אפשר שקית?', 'Could I get a bag?') },
+  // hear — signs and cashier lines
+  { id: 'fr.reply.super.aisle-three', text: 'C’est dans l’allée trois.', meaning: T('זה במעבר שלוש.', "It's in aisle three.") },
+  { id: 'fr.reply.super.over-there', text: 'Là-bas, sur la gauche.', meaning: T('שם, משמאל.', 'Over there, on the left.') },
+  { id: 'fr.reply.super.weigh-it', text: 'Vous devez d’abord le peser.', meaning: T('צריך לשקול קודם.', 'You need to weigh it first.') },
+  { id: 'fr.reply.super.bag-q', text: 'Vous avez besoin d’un sac ?', meaning: T('צריך שקית?', 'Do you need a bag?') },
+  { id: 'fr.reply.super.card-here', text: 'Insérez votre carte ici.', meaning: T('הכנס את הכרטיס כאן.', 'Insert your card here.') },
+  { id: 'fr.reply.super.sold-out', text: 'Désolé, c’est épuisé.', meaning: T('סליחה, אזל המלאי.', "Sorry, we're sold out.") },
   ...recoveryFr('fr.phrase.recovery.repeat', 'fr.phrase.recovery.slowly', 'fr.phrase.recovery.show-me', 'fr.phrase.recovery.thank-you'),
 ];
 
-const SCENE_STALL: BootcampDialogue = {
-  id: 'market-stall',
+const SCENE_SUPER: BootcampDialogue = {
+  id: 'supermarket',
   start: 'n1',
   nodes: [
-    { id: 'n1', who: 'npc', fast: true, next: 'c1', en: 'C’est frais aujourd’hui, c’est frais ! Vous voulez quoi ?', tr: TR('Fresh today, fresh today! What would you like?', 'טרי היום, טרי היום! מה תרצה?'), he: 'טרי היום, טרי היום! מה תרצה?' },
+    { id: 'n1', who: 'npc', next: 'c1', en: 'Bonjour ! Je peux vous aider à trouver quelque chose ?', tr: TR('Hi there! Can I help you find something?', 'היי! לעזור לך למצוא משהו?'), he: 'היי! לעזור לך למצוא משהו?' },
     { id: 'c1', who: 'you', en: '', he: '', choices: [
-      { en: 'Un de ceux-là, s’il vous plaît.', tr: TR('One of those, please.', 'אחד מאלה, בבקשה. (מצביע!)'), he: 'אחד מאלה, בבקשה.', itemId: 'fr.phrase.street.one-of-those', correct: true, next: 'n2' },
-      { en: 'Vous pouvez répéter ?', tr: TR('Can you repeat that?', 'אפשר לחזור על זה?'), he: 'אפשר לחזור על זה?', itemId: 'fr.phrase.recovery.repeat', correct: true, next: 'r1' },
+      { en: 'Où est le lait ?', tr: TR('Where is the milk?', 'איפה החלב?'), he: 'איפה החלב?', itemId: 'fr.phrase.super.where-is', correct: true, next: 'n2' },
+      { en: 'Vous avez du pain ?', tr: TR('Do you have bread?', 'יש לכם לחם?'), he: 'יש לכם לחם?', itemId: 'fr.phrase.super.do-you-have', correct: true, next: 'n1b' },
     ] },
-    { id: 'r1', who: 'npc', slow: true, next: 'c1b', en: 'Vous — voulez — quoi ?', tr: TR('What — would you — like?', 'מה — תרצה?'), he: 'מה — תרצה?' },
+    { id: 'n1b', who: 'npc', next: 'c1b', en: 'Du pain ? Oui — frais de ce matin, dans l’allée une.', tr: TR('Bread? Yes — fresh this morning, in aisle one.', 'לחם? כן — טרי מהבוקר, במעבר אחת.'), he: 'לחם? כן — טרי מהבוקר, במעבר אחת.' },
     { id: 'c1b', who: 'you', en: '', he: '', choices: [
-      { en: 'Un de ceux-là, s’il vous plaît.', tr: TR('One of those, please.', 'אחד מאלה, בבקשה.'), he: 'אחד מאלה, בבקשה.', itemId: 'fr.phrase.street.one-of-those', correct: true, next: 'n2' },
+      { en: 'Où est le lait ?', tr: TR('Where is the milk?', 'איפה החלב?'), he: 'איפה החלב?', itemId: 'fr.phrase.super.where-is', correct: true, next: 'n2' },
     ] },
-    { id: 'n2', who: 'npc', fast: true, next: 'c2', en: 'Ceux-là ? Excellent choix — combien ?', tr: TR('These? Great choice — how many?', 'אלה? בחירה מעולה — כמה?'), he: 'אלה? בחירה מעולה — כמה?' },
+    { id: 'n2', who: 'npc', next: 'c2', en: 'Le lait est dans l’allée trois, sur la gauche.', tr: TR("The milk is in aisle three, on the left.", 'החלב במעבר שלוש, משמאל.'), he: 'החלב במעבר שלוש, משמאל.' },
     { id: 'c2', who: 'you', en: '', he: '', choices: [
-      { en: 'Deux, s’il vous plaît.', tr: TR('Two, please.', 'שניים, בבקשה.'), he: 'שניים, בבקשה.', itemId: 'fr.phrase.street.two-please', correct: true, next: 'n3' },
-      { en: 'C’est combien ?', tr: TR('How much is it?', 'כמה זה עולה?'), he: 'כמה זה עולה?', itemId: 'fr.phrase.street.how-much', correct: true, next: 'n2b' },
+      { en: 'Merci !', tr: TR('Thank you!', 'תודה!'), he: 'תודה!', itemId: 'fr.phrase.recovery.thank-you', correct: true, next: 'n3' },
+      { en: 'Vous pouvez répéter ?', tr: TR('Can you repeat that?', 'אפשר לחזור על זה?'), he: 'אפשר לחזור על זה?', itemId: 'fr.phrase.recovery.repeat', correct: true, next: 'r2' },
     ] },
-    { id: 'n2b', who: 'npc', next: 'c2b', en: 'Cinq chacun ! Alors — combien ?', tr: TR('Five each! So — how many?', 'חמישה כל אחד! אז — כמה?'), he: 'חמישה כל אחד! אז — כמה?' },
+    { id: 'r2', who: 'npc', slow: true, next: 'c2b', en: 'Allée — trois — sur la gauche.', tr: TR('Aisle — three — on the left.', 'מעבר — שלוש — משמאל.'), he: 'מעבר — שלוש — משמאל.' },
     { id: 'c2b', who: 'you', en: '', he: '', choices: [
-      { en: 'Deux, s’il vous plaît.', tr: TR('Two, please.', 'שניים, בבקשה.'), he: 'שניים, בבקשה.', itemId: 'fr.phrase.street.two-please', correct: true, next: 'n3' },
+      { en: 'Merci !', tr: TR('Thank you!', 'תודה!'), he: 'תודה!', itemId: 'fr.phrase.recovery.thank-you', correct: true, next: 'n3' },
     ] },
-    { id: 'n3', who: 'npc', next: 'c3', en: 'Deux — ça fait dix, mon ami.', tr: TR("Two — that's ten, my friend.", 'שניים — זה עשרה, חבר.'), he: 'שניים — זה עשרה, חבר.' },
+    { id: 'n3', who: 'npc', next: 'c3', en: 'À la caisse — juste ça ? Vous devez d’abord peser les fruits.', tr: TR("At the checkout — just these? You'll need to weigh the fruit first.", 'בקופה — רק אלה? צריך לשקול קודם את הפירות.'), he: 'בקופה — רק אלה? צריך לשקול קודם את הפירות.' },
     { id: 'c3', who: 'you', en: '', he: '', choices: [
-      { en: 'C’est un peu cher.', tr: TR("That's a bit much.", 'זה קצת יקר. (חיוך — מתמקחים)'), he: 'זה קצת יקר.', itemId: 'fr.phrase.street.too-expensive', correct: true, next: 'n4' },
-      { en: 'Je le prends.', tr: TR("I'll take it.", 'אני אקח.'), he: 'אני אקח.', itemId: 'fr.phrase.street.take-it', correct: true, next: 'n5' },
+      { en: 'Vous pouvez me montrer ?', tr: TR('Can you show me?', 'אתה יכול להראות לי? (כלי — כשמילים לא מספיקות)'), he: 'אתה יכול להראות לי?', itemId: 'fr.phrase.recovery.show-me', correct: true, next: 'r3' },
+      { en: 'Juste ça, merci.', tr: TR('Just this, thanks.', 'רק את זה, תודה.'), he: 'רק את זה, תודה.', itemId: 'fr.phrase.super.just-this', correct: true, next: 'n4' },
     ] },
-    { id: 'n4', who: 'npc', next: 'c4', en: 'Ha ! Bon, bon — pour vous, huit. Meilleur prix !', tr: TR('Ha! Okay, okay — for you, eight. Best price!', 'הא! טוב, טוב — בשבילך, שמונה. מחיר הכי טוב!'), he: 'הא! טוב, טוב — בשבילך, שמונה. מחיר הכי טוב!' },
+    { id: 'r3', who: 'npc', slow: true, next: 'c3b', en: 'Bien sûr — posez-le ici, appuyez sur l’image, voilà.', tr: TR('Of course — put it here, press the picture, done.', 'בטח — שים כאן, לחץ על התמונה, גמרנו.'), he: 'בטח — שים כאן, לחץ על התמונה, גמרנו.' },
+    { id: 'c3b', who: 'you', en: '', he: '', choices: [
+      { en: 'Juste ça, merci.', tr: TR('Just this, thanks.', 'רק את זה, תודה.'), he: 'רק את זה, תודה.', itemId: 'fr.phrase.super.just-this', correct: true, next: 'n4' },
+    ] },
+    { id: 'n4', who: 'npc', next: 'c4', en: 'Vous avez besoin d’un sac ?', tr: TR('Do you need a bag?', 'צריך שקית?'), he: 'צריך שקית?' },
     { id: 'c4', who: 'you', en: '', he: '', choices: [
-      { en: 'Je le prends.', tr: TR("I'll take it.", 'אני אקח.'), he: 'אני אקח.', itemId: 'fr.phrase.street.take-it', correct: true, next: 'n5' },
-      { en: 'Parlez lentement, s’il vous plaît.', tr: TR('Please speak slowly.', 'דבר לאט, בבקשה.'), he: 'דבר לאט, בבקשה.', itemId: 'fr.phrase.recovery.slowly', correct: true, next: 'r4' },
+      { en: 'Je peux avoir un sac ?', tr: TR('Could I get a bag?', 'אפשר שקית?'), he: 'אפשר שקית?', itemId: 'fr.phrase.super.need-bag', correct: true, next: 'n5' },
+      { en: 'Merci !', tr: TR('Thank you!', 'תודה!'), he: 'תודה!', itemId: 'fr.phrase.recovery.thank-you', correct: true, next: 'n5' },
     ] },
-    { id: 'r4', who: 'npc', slow: true, next: 'c4b', en: 'Pour vous — huit. Meilleur prix !', tr: TR('For you — eight. Best price!', 'בשבילך — שמונה. מחיר הכי טוב!'), he: 'בשבילך — שמונה. מחיר הכי טוב!' },
-    { id: 'c4b', who: 'you', en: '', he: '', choices: [
-      { en: 'Je le prends.', tr: TR("I'll take it.", 'אני אקח.'), he: 'אני אקח.', itemId: 'fr.phrase.street.take-it', correct: true, next: 'n5' },
-    ] },
-    { id: 'n5', who: 'npc', end: true, en: 'Bon choix, mon ami ! Tenez — régalez-vous !', tr: TR('Good choice, my friend! Here you go — enjoy!', 'בחירה טובה, חבר! הנה לך — תיהנה!'), he: 'בחירה טובה, חבר! הנה לך — תיהנה!' },
+    { id: 'n5', who: 'npc', end: true, en: 'Insérez votre carte ici… c’est bon. Bonne journée !', tr: TR('Insert your card here… all done. Have a nice day!', 'הכנס את הכרטיס כאן… הכל מוכן. שיהיה יום נעים!'), he: 'הכנס את הכרטיס כאן… הכל מוכן. שיהיה יום נעים!' },
   ],
 };
 
 export const DAY16_FR: BootcampDayContent = {
   day: 16,
-  title: T('אוכל רחוב ושווקים', 'Street Food & Markets'),
+  title: T('סופרמרקט', 'Supermarket'),
   items: DAY16_FR_ITEMS,
-  dialogues: { 'market-stall': SCENE_STALL },
+  dialogues: { supermarket: SCENE_SUPER },
   steps: [
-    { kind: 'talk', icon: '🌮', title: T('משימה 16: אוכל רחוב ושווקים', 'Mission 16: Street Food & Markets'),
+    { kind: 'talk', icon: '🛒', title: T('משימה 16: סופרמרקט', 'Mission 16: Supermarket'),
       body: [
-        T('האוכל הכי טוב בטיול הוא בחוץ — בדוכן רועש, מהיר, בלי תפריט מסודר.', 'The best food on the trip is outside — a loud, fast stall with no tidy menu.'),
-        T('לא צריך לדעת שמות. מצביעים, שואלים מחיר, מתמקחים קצת, ואוכלים כמו מקומי.', 'You don’t need the names. You point, ask a price, haggle a little, and eat like a local.'),
-      ], cta: T('לגשת לדוכן', 'Walk up to the stall') },
-    { kind: 'tool', itemId: 'fr.phrase.street.one-of-those', index: 1, total: 4, label: T('להזמין בלי שם', 'Order without the name') },
-    { kind: 'tool', itemId: 'fr.phrase.street.how-much', index: 2, total: 4, label: T('לשאול מחיר', 'Ask the price') },
-    { kind: 'tool', itemId: 'fr.phrase.street.too-expensive', index: 3, total: 4, label: T('להתמקח בעדינות', 'Haggle gently') },
-    { kind: 'tool', itemId: 'fr.phrase.street.take-it', index: 4, total: 4, label: T('לסגור עסקה', 'Close the deal') },
-    { kind: 'replies', saidItemId: 'fr.phrase.street.one-of-those',
-      replyIds: ['fr.reply.street.how-many', 'fr.reply.street.five-each', 'fr.reply.street.best-price', 'fr.reply.street.anything-else'] },
-    { kind: 'receipt', text: T('אתה מזהה את קריאות המוכר — כמות, מחיר, והצעת ההתמקחות.', 'You recognize the vendor’s calls — quantity, price, and the haggle offer.') },
-    { kind: 'quiz', itemId: 'fr.reply.street.how-many', wrongIds: ['fr.reply.street.best-price', 'fr.reply.street.fresh-today'] },
-    { kind: 'quiz', itemId: 'fr.reply.street.best-price', wrongIds: ['fr.reply.street.five-each', 'fr.reply.street.anything-else'] },
-    { kind: 'dialogue', dialogueId: 'market-stall' },
-    { kind: 'receipt', text: T('הזמנת בדוכן רועש, שאלת מחיר, התמקחת — וקיבלת מחיר טוב יותר.', 'You ordered at a loud stall, asked a price, haggled — and got a better price.') },
+        T('היום-יום נהיה זול ופשוט. אתה מוצא, שוקל, ומשלם — לבד לגמרי.', 'Daily life just got cheap and easy. You find it, weigh it, and pay — completely on your own.'),
+        T('רוב העבודה כאן היא זיהוי: שלטים, מעברים, וקול הקופה האוטומטית.', 'Most of the work here is recognition: signs, aisles, and the self-checkout voice.'),
+      ], cta: T('להיכנס לסופר', 'Walk into the shop') },
+    { kind: 'tool', itemId: 'fr.phrase.super.where-is', index: 1, total: 4, label: T('למצוא מוצר', 'Find a product') },
+    { kind: 'tool', itemId: 'fr.phrase.super.do-you-have', index: 2, total: 4, label: T('לבדוק מלאי', 'Check stock') },
+    { kind: 'tool', itemId: 'fr.phrase.super.just-this', index: 3, total: 4, label: T('בקופה', 'At the checkout') },
+    { kind: 'tool', itemId: 'fr.phrase.super.need-bag', index: 4, total: 4, label: T('לבקש שקית', 'Ask for a bag') },
+    { kind: 'replies', saidItemId: 'fr.phrase.super.where-is',
+      replyIds: ['fr.reply.super.aisle-three', 'fr.reply.super.over-there', 'fr.reply.super.weigh-it', 'fr.reply.super.bag-q'] },
+    { kind: 'receipt', text: T('אתה מזהה תשובות של סדרן וקופה — מעבר, כיוון, שקילה, שקית.', 'You recognize the answers of a shelf-stocker and a checkout — aisle, direction, weighing, bag.') },
+    { kind: 'quiz', itemId: 'fr.reply.super.weigh-it', wrongIds: ['fr.reply.super.bag-q', 'fr.reply.super.card-here'] },
+    { kind: 'quiz', itemId: 'fr.reply.super.aisle-three', wrongIds: ['fr.reply.super.over-there', 'fr.reply.super.sold-out'] },
+    { kind: 'dialogue', dialogueId: 'supermarket' },
+    { kind: 'receipt', text: T('מצאת מוצרים, שקלת פירות, ועברת קופה אוטומטית — לבד.', 'You found products, weighed fruit, and cleared a self-checkout — on your own.') },
     { kind: 'swipe', itemIds: DAY16_FR_ITEMS.map((i) => i.id) },
-    { kind: 'ambush', npc: { en: 'Vous le voulez avec la sauce piquante ou sans piment aujourd’hui, chef ?', tr: TR('You want it with the hot sauce or no spice today boss?', 'רוצה את זה עם הרוטב החריף או בלי חריף היום, בוס?'), he: 'רוצה את זה עם הרוטב החריף או בלי חריף היום, בוס?' },
-      correctItemId: 'fr.phrase.recovery.slowly', wrongItemId: 'fr.phrase.street.take-it' },
-    { kind: 'receipt', text: T('המוכר ירה שאלה מהירה על רקע רעש — וביקשת שיאט. באוזניים מנצחים.', 'The vendor fired a fast question over the noise — and you asked him to slow down. Ears win.') },
+    { kind: 'ambush', npc: { en: 'Article inattendu dans la zone d’emballage — veuillez attendre de l’aide.', tr: TR('Unexpected item in the bagging area — please wait for assistance.', 'פריט לא צפוי באזור האריזה — אנא המתן לסיוע.'), he: 'פריט לא צפוי באזור האריזה — אנא המתן לסיוע.' },
+      correctItemId: 'fr.phrase.recovery.show-me', wrongItemId: 'fr.phrase.super.just-this' },
+    { kind: 'receipt', text: T('הקופה האוטומטית נתקעה — וידעת לבקש שיראו לך במקום להיכנס ללחץ.', 'The self-checkout jammed — and you knew to ask someone to show you, instead of panicking.') },
     { kind: 'summary' },
   ],
 };

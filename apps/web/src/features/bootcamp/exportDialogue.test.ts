@@ -15,14 +15,14 @@ describe('Dialogue export — cinematic screenplay', () => {
   });
 
   it('filters to a single mission by day number', () => {
-    const one = exportMissions('fr', 3);
+    const one = exportMissions('fr', 2);
     expect(one.length).toBe(1);
-    expect(one[0]!.filename).toBe('mission-03.md');
+    expect(one[0]!.filename).toBe('mission-02.md');
   });
 
   it('renders a clean French screenplay: French spoken + English + Hebrew, alternating speakers', () => {
-    const script = renderMissionScript(missionsFor('fr')[3]!); // Numbers & Money
-    expect(script).toContain('# Mission 03 — Numbers & Money');
+    const script = renderMissionScript(missionsFor('fr')[2]!); // Numbers & Money
+    expect(script).toContain('# Mission 02 — Numbers & Money');
     expect(script).toContain('## Scene');
     expect(script).toContain('👤 NPC');
     expect(script).toContain('🧑 You');
@@ -42,8 +42,8 @@ describe('Dialogue export — cinematic screenplay', () => {
   });
 
   it('exports the CINEMATIC happy path — direct answers, no recovery detours or wrong answers', () => {
-    const script = renderMissionScript(missionsFor('fr')[3]!);
-    const path = cinematicTranscript(missionsFor('fr')[3]!.dialogues['market-stall']!).map((l) => l.en);
+    const script = renderMissionScript(missionsFor('fr')[2]!);
+    const path = cinematicTranscript(missionsFor('fr')[2]!.dialogues['market-stall']!).map((l) => l.en);
     expect(path).toContain('Une barquette, s’il vous plaît.'); // the DIRECT correct answer is taken
     // The "speak slowly" recovery tool + its slow-repeat beat are NOT in the cinematic path:
     expect(path).not.toContain('Parlez lentement, s’il vous plaît.');
@@ -52,7 +52,7 @@ describe('Dialogue export — cinematic screenplay', () => {
   });
 
   it('has NO English leak as the SPOKEN line in a French export (target is French)', () => {
-    const lines = cinematicTranscript(missionsFor('fr')[3]!.dialogues['market-stall']!);
+    const lines = cinematicTranscript(missionsFor('fr')[2]!.dialogues['market-stall']!);
     for (const l of lines) {
       // The spoken (target) line must differ from its English gloss — i.e. it is French, not English.
       if (l.tr?.en) expect(l.en).not.toBe(l.tr.en);

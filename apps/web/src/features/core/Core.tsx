@@ -3,22 +3,20 @@ import { useAppStore } from '../../shared/stores/appStore.js';
 import { L, t, type StringKey } from '../../shared/i18n/strings.js';
 import { resolveLearningItem } from '../../shared/i18n/display.js';
 import { tap } from '../../shared/ui/haptics.js';
-import { LangStrip } from '../../shared/ui/LangStrip.js';
 import { SpeakerButton } from '../../shared/ui/SpeakerButton.js';
 import { TappableText } from '../foundation/TappableText.js';
 import { CoreWords } from './CoreWords.js';
 import { SentenceFlashcards } from './SentenceFlashcards.js';
-import { ListenPanel, type PlaybackItem } from '../../shared/playback/index.js';
-import { BOOTCAMP_PLAN } from '../bootcamp/plan.js';
-import { missionsFor } from '../bootcamp/bootcampStore.js';
+import { missionNumber } from '../bootcamp/plan.js';
 import type { BootcampItem } from '../bootcamp/types.js';
+import { BackButton } from '../../shared/ui/PageHeader.js';
+import { buildPhraseGroups } from './phraseGroups.js';
 
 /**
- * Core — the travel knowledge center. Navigation is two layers (Task 3): first a grid of
- * category cards, then (once a category is picked) the existing tabbed page with its top tabs and
- * content. The picked category lives in appStore (`coreCategory`) so Home's cards can deep-link
- * straight into a category, and the Core bottom-nav tab resets it to the card grid. Only "Core
- * Phrases" carries content today; the rest are honest "coming soon". Content is unchanged.
+ * The library — a SECONDARY surface under Learn: the words and the sentences the missions teach, to
+ * browse, hear and review. It is not a destination of its own (the missions are the product; this is
+ * support). Sentences are grouped exactly as `buildPhraseGroups` orders them — mission by mission,
+ * with the shared conversation-help phrases last. Passive listening lives in the Listen tab.
  */
 interface Group { title: string; items: BootcampItem[] }
 
@@ -32,84 +30,33 @@ const TABS: { id: CoreTab; key: StringKey }[] = [
   { id: 'phrases', key: 'coreTabPhrases' },
 ];
 
-const CATEGORIES: { id: CoreTab; key: StringKey; icon: string }[] = [
-  { id: 'words', key: 'coreTabWords', icon: '📝' },
-  { id: 'phrases', key: 'coreTabPhrases', icon: '📖' },
-];
-
-/** Every phrase READY teaches IN THE ACTIVE LEARNING LANGUAGE, grouped by mission (root-cause fix
- *  for the French Core-Phrases leak): sourced from that language's own missions, never English. The
- *  survival kit = the recovery tools the language teaches (deduped). Language-agnostic id matching
- *  (`.phrase.recovery.`) so it works for `en.*`, `fr.*`, and any future language. */
+/** Sentence groups for the active learning language, titled for display. */
 function buildGroups(lang: string): Group[] {
-  const missions = missionsFor(lang);
-  const seen = new Set<string>();
-  const recovery: BootcampItem[] = [];
-  for (const m of BOOTCAMP_PLAN) {
-    const day = missions[m.day];
-    if (!day) continue;
-    for (const i of day.items) {
-      if (i.id.includes('.phrase.recovery.') && !seen.has(i.id)) { seen.add(i.id); recovery.push(i); }
-    }
-  }
-  const groups: Group[] = recovery.length ? [{ title: t('survivalKit'), items: recovery }] : [];
-  for (const m of BOOTCAMP_PLAN) {
-    const day = missions[m.day];
-    if (!day) continue;
-    const items = day.items.filter((i) => !seen.has(i.id) && !i.id.includes('.phrase.recovery.'));
-    for (const i of items) seen.add(i.id);
-    if (items.length) groups.push({ title: `${t('mission')} ${m.day} · ${L(m.title)}`, items });
-  }
-  return groups;
+  return buildPhraseGroups(lang).map((g) => ({
+    title: g.mission ? `${t('mission')} ${missionNumber(g.mission.day) ?? g.mission.day} · ${L(g.mission.title)}` : t('survivalKit'),
+    items: g.items,
+  }));
 }
 
 export function Core() {
   const app = useAppStore();
-  const category = app.coreCategory as CoreTab | null;
+  // Opened from Learn with a category; defaults to the sentences.
+  const category = (app.coreCategory as CoreTab | null) ?? 'phrases';
   const groups = useMemo(() => buildGroups(app.learningLang), [app.learningLang]);
-  // Core Sentences entry: three cards (Listen · Flashcards · View All). 'entry' is the default landing.
-  const [phrasesView, setPhrasesView] = useState<'entry' | 'listen' | 'flashcards' | 'list'>('entry');
+  // Sentences entry: three cards (Listen · Flashcards · View All). 'entry' is the default landing.
+  const [phrasesView, setPhrasesView] = useState<'entry' | 'flashcards' | 'list'>('entry');
   const total = useMemo(() => groups.reduce((n, g) => n + g.items.length, 0), [groups]);
 
   // One canonical display model per phrase (target + app-gloss + audio + directions + review id).
   const model = (item: BootcampItem) => resolveLearningItem({ id: item.id, target: item.text, meaning: item.meaning }, app.uiLang, app.learningLang);
+  const backToLearn = (): void => { app.setCoreCategory(null); app.navigate('bootcamp'); };
 
-  // Parrot Mode items: every taught sentence, in mission order, reusing the same display model.
-  const listenItems = useMemo<PlaybackItem[]>(() => groups.flatMap((g) => g.items.map((item) => {
-    const dm = model(item);
-    return { id: dm.contentId, target: dm.audioText, targetLang: dm.audioLang, translation: dm.secondaryText, translationLang: app.uiLang } satisfies PlaybackItem;
-  })), [groups, app.uiLang, app.learningLang]); // eslint-disable-line react-hooks/exhaustive-deps
-
-  // Layer 1 — the category cards.
-  if (!category) {
-    return (
-      <div className="screen">
-        <div style={{ padding: '6px 0 2px' }}>
-          <LangStrip />
-          <h1>{t('coreTitle')}</h1>
-          <p className="dim" style={{ marginTop: 4 }}>{t('corePickCategory')}</p>
-        </div>
-        <div className="screen-scroll">
-          <div className="home-actions stagger">
-            {CATEGORIES.map((c) => (
-              <button key={c.id} className="action-card card-press" onClick={() => { tap(); app.setCoreCategory(c.id); }}>
-                <span className="action-icon">{c.icon}</span>
-                <span className="action-title">{t(c.key)}</span>
-              </button>
-            ))}
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  // Layer 2 — the existing tabbed page, opened on the chosen category.
   return (
     <div className="screen">
       <div style={{ padding: '6px 0 2px' }}>
         <div className="topbar" style={{ marginBottom: 6 }}>
-          <button className="btn-ghost" onClick={() => { tap(); app.setCoreCategory(null); }}>{t('back')}</button>
-          <h2 style={{ margin: 0 }}>{t('coreTitle')}</h2>
+          <BackButton onBack={backToLearn} />
+          <h2 style={{ margin: 0 }}>{category === 'words' ? t('coreTabWords') : t('phraseLibrary')}</h2>
           <span style={{ width: 44 }} />
         </div>
         <p className="dim" style={{ marginTop: 2 }}>{category === 'phrases' ? t('coreSub', { n: total }) : t('coreCenterSub')}</p>
@@ -133,15 +80,10 @@ export function Core() {
         ) : category === 'phrases' ? (
           phrasesView === 'flashcards' ? (
             <SentenceFlashcards onBack={() => setPhrasesView('entry')} />
-          ) : phrasesView === 'listen' ? (
-            <>
-              <button className="btn-ghost" style={{ marginTop: 8 }} onClick={() => { tap(); setPhrasesView('entry'); }}>{t('back')}</button>
-              <ListenPanel items={listenItems} bookmarkKey={`sentences:${app.learningLang}`} />
-            </>
           ) : phrasesView === 'entry' ? (
             // Square cards — pick how to review sentences.
             <div className="home-actions stagger" style={{ marginTop: 8 }}>
-              <button className="action-card card-press" onClick={() => { tap(); setPhrasesView('listen'); }}>
+              <button className="action-card card-press" onClick={() => { tap(); app.navigate('listen'); }}>
                 <span className="action-icon">🎧</span>
                 <span className="action-title">{t('listenMode')}</span>
               </button>

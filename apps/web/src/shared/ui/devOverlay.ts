@@ -1,15 +1,48 @@
 import type { CSSProperties } from 'react';
 
 /**
- * Shared anchor for the dev-only diagnostic badges (AudioDebug / DataDebug).
+ * Developer diagnostics (the AudioDebug / DataDebug badges) are OFF unless a developer asks for them.
  *
- * They live in the bottom-**inline-start** corner so they can NEVER cover or intercept the
- * Foundation 🛟 FAB, which is anchored bottom-**inline-end** (`.foundation-fab` in styles.css).
- * Opposite inline sides means the two never collide in either LTR or RTL — in RTL both flip
- * together, so they stay on opposite corners. Dev-only; no effect on production (these badges
- * render only under `import.meta.env.DEV`). Keep `insetInlineStart` here and `inset-inline-end`
- * on the FAB — the invariant is locked by `devOverlay.test.ts`.
+ * They are not part of the product, so the default app — including normal local development — renders
+ * exactly what a learner sees. They appear only when BOTH hold:
+ *   1. the build is a development build (a production build can never render them), and
+ *   2. diagnostics were explicitly enabled: open the app with `?debug=1` (remembered for the browser
+ *      until `?debug=0`).
  */
+const DEBUG_KEY = 'ready.debug';
+
+export interface DebugEnv {
+  /** `import.meta.env.DEV` */
+  dev: boolean;
+  /** `location.search` */
+  search: string;
+  /** The remembered flag (`localStorage['ready.debug']`), if any. */
+  stored: string | null;
+}
+
+/** Pure decision: should the diagnostics render? Never in production; in dev only on request. */
+export function debugOverlayEnabled(env: DebugEnv): boolean {
+  if (!env.dev) return false;
+  const param = new URLSearchParams(env.search).get('debug');
+  if (param === '1') return true;
+  if (param === '0') return false;
+  return env.stored === '1';
+}
+
+/** Read (and remember / forget) the developer's choice for this browser. Dev builds only. */
+export function resolveDebugOverlay(dev: boolean): boolean {
+  if (!dev || typeof window === 'undefined') return false;
+  try {
+    const param = new URLSearchParams(window.location.search).get('debug');
+    if (param === '1') localStorage.setItem(DEBUG_KEY, '1');
+    if (param === '0') localStorage.removeItem(DEBUG_KEY);
+    return debugOverlayEnabled({ dev, search: window.location.search, stored: localStorage.getItem(DEBUG_KEY) });
+  } catch {
+    return false;
+  }
+}
+
+/** Shared anchor for the diagnostic badges: the bottom-inline-start corner, above the content. */
 export const DEV_BADGE_ANCHOR = {
   position: 'fixed',
   insetInlineStart: 12,

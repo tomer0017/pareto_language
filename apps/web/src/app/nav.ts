@@ -1,28 +1,54 @@
 import type { View } from '../shared/stores/appStore.js';
 
-// The permanent English-pilot tabs. The bottom nav is shown on these — except inside a focused
-// full-screen flow (an active Bootcamp mission, or an active Core learning-game session).
-export const PILOT_TABS: View[] = ['home', 'bootcamp', 'core', 'profile'];
+/**
+ * READY's navigation model — ONE source of truth, pure and React-free (nav.test.ts). The same four
+ * destinations render as a bottom bar on phones/tablets and as a side rail on desktop; only the
+ * presentation differs (see `AppNav` + styles), never the model.
+ *
+ *   Home    — what to do next (the coach)
+ *   Learn   — the real-world missions (active learning); internally the `bootcamp` view
+ *   Listen  — passive listening over the same content
+ *   Profile — language, voice, appearance
+ */
+export const PRIMARY_TABS: View[] = ['home', 'bootcamp', 'listen', 'profile'];
+
+/** Secondary screens belong to a primary destination — it stays highlighted while they are open. */
+const PARENT_TAB: Partial<Record<View, View>> = {
+  readiness: 'home',
+  review: 'home',
+  core: 'bootcamp',
+  zerostart: 'bootcamp',
+  reading: 'listen',
+  videos: 'listen',
+  languages: 'profile',
+};
+
+/** The primary destination a view belongs to (itself for a tab), or null outside the app shell. */
+export function navTabOf(view: View): View | null {
+  if (PRIMARY_TABS.includes(view)) return view;
+  return PARENT_TAB[view] ?? null;
+}
+
+/** Views that keep the bottom bar on small screens: the four tabs plus the two browse-only
+ *  secondary screens. Everything else is a focused flow with its own back control. */
+const BAR_VIEWS: View[] = [...PRIMARY_TABS, 'core', 'readiness'];
 
 /**
- * Whether to show the permanent bottom nav. Pure + React-free so it is unit-testable (nav.test.ts).
+ * Whether the BOTTOM BAR (phone/tablet presentation) is shown.
  *
- * The nav is fixed at `bottom:0; z-index:20`. Focused flows render their primary control in a fixed
- * `.action-zone` at `bottom:0; z-index:15` — LOWER than the nav — so wherever both are visible the
- * nav physically covers that control. Bootcamp missions already hide the nav; a Core learning-game
- * session must too, otherwise the Picture Quiz "Continue" button sits behind the nav and the game
- * looks stuck on the feedback screen (the Part-F bug). Hidden ⇔ a focused flow is live.
+ * The bar is fixed at the bottom above focused flows' fixed `.action-zone`, so wherever both are
+ * visible the bar physically covers that primary control. An active mission and an active Core
+ * learning-game session therefore hide it (the Part-F bug). Hidden ⇔ a focused flow is live.
  */
 export function shouldShowNav(view: View, inMission: boolean, coreGameActive: boolean): boolean {
-  return PILOT_TABS.includes(view) && !(view === 'bootcamp' && inMission) && !coreGameActive;
+  return BAR_VIEWS.includes(view) && !(view === 'bootcamp' && inMission) && !coreGameActive;
 }
 
 /**
- * Whether the 🛟 Foundation FAB is shown. Pure + React-free (nav.test.ts). Foundation is the
- * Bootcamp's "grab the missing building block" surface, so the button lives on the Bootcamp map but
- * is hidden inside an active mission (a focused full-screen flow with its own controls) — mirroring
- * the bottom-nav rule so the two never fight for the same corner.
+ * Whether the app shell (and with it the DESKTOP rail) exists at all. The rail sits beside the
+ * content, never over it, so it stays put through focused flows as a calm way out. Only the
+ * first-run welcome has no shell.
  */
-export function shouldShowFoundationFab(view: View, inMission: boolean): boolean {
-  return view === 'bootcamp' && !inMission;
+export function hasAppShell(view: View): boolean {
+  return view !== 'onboarding';
 }

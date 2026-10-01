@@ -3,114 +3,114 @@ import type { BootcampDayContent, BootcampDialogue, BootcampItem } from '../type
 import { recoveryEs } from './recovery.js';
 
 /**
- * Spanish Mission 11 — "Aeropuerto y frontera" (Airport & Border). Spanish parallel of English day 11:
- * same objective (the officer's question-chain: passport → purpose → how long → where → declare),
- * same step structure, same engine. `tr:{en,he}` glosses; `es.*` ids. AI-drafted, pending review.
+ * Spanish Mission 11 — "Peticiones y problemas en el hotel" (Hotel Requests & Problems). Spanish
+ * parallel of English mission 11: same objective (polite persistence — towels, wifi, a fault, a noisy
+ * room), same step structure, same engine. `tr:{en,he}` glosses; `es.*` ids. AI-drafted, pending review.
  */
 const T = (he: string, en: string): LocalizedText => ({ he, en });
 const TR = (en: string, he: string): LocalizedText => ({ en, he });
 
 export const DAY11_ES_ITEMS: BootcampItem[] = [
   // say
-  { id: 'es.phrase.border.passport-here', text: 'Aquí tiene mi pasaporte.', meaning: T('הנה הדרכון שלי.', 'Here is my passport.'),
-    tip: T('מגישים ואומרים. שלוש מילים שפותחות כל גבול.', 'Hand it over and say it. Three words that open any border.') },
-  { id: 'es.phrase.border.on-holiday', text: 'Estoy de vacaciones.', meaning: T('אני כאן בחופשה.', "I'm here on holiday."),
-    tip: T('התשובה ל-"מטרת הביקור?". ידידותית ובטוחה.', 'The answer to “purpose of your visit?” — friendly and safe.') },
-  { id: 'es.phrase.border.two-weeks', text: 'Dos semanas.', meaning: T('לשבועיים.', 'For two weeks.'),
-    tip: T('התבנית: מספר + משך זמן. Tres días / Una semana.', 'Template: number + duration. Tres días / Una semana.') },
-  { id: 'es.phrase.border.staying-hotel', text: 'En un hotel en el centro.', meaning: T('במלון במרכז העיר.', 'At a hotel in the city center.'),
-    tip: T('התשובה ל-"איפה אתה מתאכסן?". שם המלון עדיף, אבל זה מספיק.', 'Answers “where are you staying?”. The hotel name is better, but this is enough.') },
-  { id: 'es.phrase.border.nothing-declare', text: 'Nada que declarar.', meaning: T('אין לי מה להצהיר.', 'Nothing to declare.'),
-    tip: T('המשפט הקבוע במכס. אומרים אותו רגוע.', 'The fixed customs line. Say it calmly.') },
-  // hear — the border question-chain
-  { id: 'es.reply.border.passport-please', text: 'Pasaporte, por favor.', meaning: T('דרכון, בבקשה.', 'Passport, please.') },
-  { id: 'es.reply.border.purpose', text: '¿Cuál es el motivo de su viaje?', meaning: T('מה מטרת הביקור?', "What's the purpose of your visit?") },
-  { id: 'es.reply.border.how-long', text: '¿Cuánto tiempo se queda?', meaning: T('לכמה זמן אתה נשאר?', 'How long are you staying?') },
-  { id: 'es.reply.border.where-staying', text: '¿Dónde se aloja?', meaning: T('איפה אתה מתאכסן?', 'Where are you staying?') },
-  { id: 'es.reply.border.anything-declare', text: '¿Algo que declarar?', meaning: T('יש לך מה להצהיר?', 'Anything to declare?') },
-  { id: 'es.reply.border.enjoy', text: '¡Que disfrute su estancia!', meaning: T('תיהנה מהשהות!', 'Enjoy your stay!') },
-  ...recoveryEs('es.phrase.recovery.repeat', 'es.phrase.recovery.slowly', 'es.phrase.recovery.one-moment', 'es.phrase.recovery.thank-you'),
+  { id: 'es.phrase.hotelreq.more-towels', text: '¿Me podría dar más toallas?', meaning: T('אפשר לקבל עוד מגבות?', 'Could I get some more towels?'),
+    tip: T('התבנית: ¿Me podría dar ___ ? — הדרך המנומסת לבקש כל דבר.', 'Template: ¿Me podría dar ___ ? — the polite way to ask for anything.') },
+  { id: 'es.phrase.hotelreq.wifi-password', text: '¿Cuál es la contraseña del wifi?', meaning: T('מה הסיסמה של הוויי-פיי?', "What's the wifi password?"),
+    tip: T('הבקשה הכי שימושית של המאה. שווה לדעת בעל פה.', 'The most useful request of the century. Worth knowing by heart.') },
+  { id: 'es.phrase.hotelreq.ac-not-working', text: 'El aire acondicionado no funciona.', meaning: T('המזגן לא עובד.', "The air conditioning isn't working."),
+    tip: T('התבנית: El/la ___ no funciona. עובדת על כל דבר שהתקלקל.', 'Template: El/la ___ no funciona. Works for anything broken.') },
+  { id: 'es.phrase.hotelreq.room-noisy', text: 'Mi habitación es muy ruidosa.', meaning: T('החדר שלי מאוד רועש.', 'My room is very noisy.'),
+    tip: T('לתאר בעיה זה לא להתלונן. זה לתת להם לתקן.', 'Describing a problem isn’t complaining. It’s letting them fix it.') },
+  { id: 'es.phrase.hotelreq.can-you-help', text: '¿Me podría ayudar con algo?', meaning: T('אפשר עזרה במשהו?', 'Could you help me with something?'),
+    tip: T('פותח כל בקשה בנימוס. אף אחד לא מסרב לזה.', 'Opens any request politely. Nobody says no to it.') },
+  // hear — reception's replies
+  { id: 'es.reply.hotelreq.how-can-help', text: '¿En qué puedo ayudarle?', meaning: T('איך אפשר לעזור לך?', 'How can I help you?') },
+  { id: 'es.reply.hotelreq.right-away', text: 'Enseguida mando a alguien.', meaning: T('אשלח מישהו מיד.', "I'll send someone right away.") },
+  { id: 'es.reply.hotelreq.so-sorry', text: 'Lo siento muchísimo.', meaning: T('אני מצטער על זה מאוד.', "I'm so sorry about that.") },
+  { id: 'es.reply.hotelreq.password-card', text: 'La contraseña está en su tarjeta.', meaning: T('הסיסמה על כרטיס המפתח.', 'The password is on your key card.') },
+  { id: 'es.reply.hotelreq.change-rooms', text: '¿Quiere cambiar de habitación?', meaning: T('תרצה להחליף חדר?', 'Would you like to change rooms?') },
+  { id: 'es.reply.hotelreq.anything-else', text: '¿Puedo hacer algo más?', meaning: T('עוד משהו שאוכל לעשות?', 'Anything else I can do?') },
+  ...recoveryEs('es.phrase.recovery.repeat', 'es.phrase.recovery.slowly', 'es.phrase.recovery.thank-you'),
 ];
 
-const SCENE_BORDER: BootcampDialogue = {
-  id: 'border-control',
+const SCENE_DESK: BootcampDialogue = {
+  id: 'hotel-desk',
   start: 'n1',
   nodes: [
-    { id: 'n1', who: 'npc', next: 'c1', en: 'El siguiente, por favor. ¿Pasaporte?', tr: TR('Next, please. Passport?', 'הבא בתור, בבקשה. דרכון?'), he: 'הבא בתור, בבקשה. דרכון?' },
+    { id: 'n1', who: 'npc', next: 'c1', en: '¡Buenas noches! ¿En qué puedo ayudarle?', tr: TR('Good evening! How can I help you?', 'ערב טוב! איך אפשר לעזור?'), he: 'ערב טוב! איך אפשר לעזור?' },
     { id: 'c1', who: 'you', en: '', he: '', choices: [
-      { en: 'Aquí tiene mi pasaporte.', tr: TR('Here is my passport.', 'הנה הדרכון שלי.'), he: 'הנה הדרכון שלי.', itemId: 'es.phrase.border.passport-here', correct: true, next: 'n2' },
-      { en: 'Un momento, por favor.', tr: TR('One moment, please.', 'רגע אחד, בבקשה. (כלי — לחפש את הדרכון)'), he: 'רגע אחד, בבקשה.', itemId: 'es.phrase.recovery.one-moment', correct: true, next: 'r1' },
+      { en: '¿Me podría dar más toallas?', tr: TR('Could I get some more towels?', 'אפשר לקבל עוד מגבות?'), he: 'אפשר לקבל עוד מגבות?', itemId: 'es.phrase.hotelreq.more-towels', correct: true, next: 'n2' },
+      { en: 'Más despacio, por favor.', tr: TR('Please speak slowly.', 'דבר לאט, בבקשה. (כלי — תמיד מותר)'), he: 'דבר לאט, בבקשה.', itemId: 'es.phrase.recovery.slowly', correct: true, next: 'r1' },
     ] },
-    { id: 'r1', who: 'npc', slow: true, next: 'c1b', en: 'Sin prisa. Cuando esté listo.', tr: TR("No rush. Whenever you're ready.", 'אין לחץ. מתי שתהיה מוכן.'), he: 'אין לחץ. מתי שתהיה מוכן.' },
+    { id: 'r1', who: 'npc', slow: true, next: 'c1b', en: 'Claro — ¿en qué puedo ayudarle?', tr: TR('Of course — how can I help you?', 'כמובן — איך אפשר לעזור?'), he: 'כמובן — איך אפשר לעזור?' },
     { id: 'c1b', who: 'you', en: '', he: '', choices: [
-      { en: 'Aquí tiene mi pasaporte.', tr: TR('Here is my passport.', 'הנה הדרכון שלי.'), he: 'הנה הדרכון שלי.', itemId: 'es.phrase.border.passport-here', correct: true, next: 'n2' },
+      { en: '¿Me podría dar más toallas?', tr: TR('Could I get some more towels?', 'אפשר לקבל עוד מגבות?'), he: 'אפשר לקבל עוד מגבות?', itemId: 'es.phrase.hotelreq.more-towels', correct: true, next: 'n2' },
     ] },
-    { id: 'n2', who: 'npc', fast: true, next: 'c2', en: 'Gracias. ¿Cuál es el motivo de su viaje?', tr: TR("Thank you. What's the purpose of your visit?", 'תודה. מה מטרת הביקור?'), he: 'תודה. מה מטרת הביקור?' },
+    { id: 'n2', who: 'npc', next: 'c2', en: 'Claro, se las subo enseguida. ¿Algo más?', tr: TR("Of course, I'll send some up right away. Anything else?", 'בטח, אשלח מיד. עוד משהו?'), he: 'בטח, אשלח מיד. עוד משהו?' },
     { id: 'c2', who: 'you', en: '', he: '', choices: [
-      { en: 'Estoy de vacaciones.', tr: TR("I'm here on holiday.", 'אני כאן בחופשה.'), he: 'אני כאן בחופשה.', itemId: 'es.phrase.border.on-holiday', correct: true, next: 'n3' },
-      { en: '¿Puede repetir, por favor?', tr: TR('Can you repeat that?', 'אפשר לחזור על זה? (לא הבנת? תשאל)'), he: 'אפשר לחזור על זה?', itemId: 'es.phrase.recovery.repeat', correct: true, next: 'r2' },
+      { en: '¿Cuál es la contraseña del wifi?', tr: TR("What's the wifi password?", 'מה הסיסמה של הוויי-פיי?'), he: 'מה הסיסמה של הוויי-פיי?', itemId: 'es.phrase.hotelreq.wifi-password', correct: true, next: 'n3' },
+      { en: '¿Puede repetir, por favor?', tr: TR('Can you repeat that?', 'אפשר לחזור על זה?'), he: 'אפשר לחזור על זה?', itemId: 'es.phrase.recovery.repeat', correct: true, next: 'r2' },
     ] },
-    { id: 'r2', who: 'npc', slow: true, next: 'c2b', en: 'El — motivo — de su viaje?', tr: TR('The — purpose — of your visit?', 'מה — מטרת — הביקור?'), he: 'מה — מטרת — הביקור?' },
+    { id: 'r2', who: 'npc', slow: true, next: 'c2b', en: 'Le preguntaba — ¿algo más?', tr: TR('I asked — is there anything else?', 'שאלתי — יש עוד משהו?'), he: 'שאלתי — יש עוד משהו?' },
     { id: 'c2b', who: 'you', en: '', he: '', choices: [
-      { en: 'Estoy de vacaciones.', tr: TR("I'm here on holiday.", 'אני כאן בחופשה.'), he: 'אני כאן בחופשה.', itemId: 'es.phrase.border.on-holiday', correct: true, next: 'n3' },
+      { en: '¿Cuál es la contraseña del wifi?', tr: TR("What's the wifi password?", 'מה הסיסמה של הוויי-פיי?'), he: 'מה הסיסמה של הוויי-פיי?', itemId: 'es.phrase.hotelreq.wifi-password', correct: true, next: 'n3' },
     ] },
-    { id: 'n3', who: 'npc', next: 'c3', en: 'Muy bien. ¿Cuánto tiempo se queda?', tr: TR('Lovely. How long are you staying?', 'נהדר. לכמה זמן אתה נשאר?'), he: 'נהדר. לכמה זמן אתה נשאר?' },
+    { id: 'n3', who: 'npc', next: 'c3', en: 'La contraseña está en su tarjeta. ¿Algo más?', tr: TR('The password is on your key card. Anything else?', 'הסיסמה על כרטיס המפתח. עוד משהו?'), he: 'הסיסמה על כרטיס המפתח. עוד משהו?' },
     { id: 'c3', who: 'you', en: '', he: '', choices: [
-      { en: 'Dos semanas.', tr: TR('For two weeks.', 'לשבועיים.'), he: 'לשבועיים.', itemId: 'es.phrase.border.two-weeks', correct: true, next: 'n4' },
-      { en: 'Aquí tiene mi pasaporte.', tr: TR('Here is my passport.', 'הנה הדרכון שלי. (כבר נתת — הוא שאל משהו אחר)'), he: 'הנה הדרכון שלי.', itemId: 'es.phrase.border.passport-here', correct: false, next: 'r3' },
+      { en: 'El aire acondicionado no funciona.', tr: TR("The air conditioning isn't working.", 'המזגן לא עובד.'), he: 'המזגן לא עובד.', itemId: 'es.phrase.hotelreq.ac-not-working', correct: true, next: 'n4' },
+      { en: '¡Gracias!', tr: TR('Thank you!', 'תודה! (מנומס — אבל יש עוד בעיה לספר)'), he: 'תודה!', itemId: 'es.phrase.recovery.thank-you', correct: false, next: 'r3' },
     ] },
-    { id: 'r3', who: 'npc', slow: true, next: 'c3b', en: 'Ya tengo su pasaporte — le pregunto cuánto tiempo se queda.', tr: TR("I have your passport — I asked how long you're staying.", 'הדרכון אצלי — שאלתי לכמה זמן אתה נשאר.'), he: 'הדרכון אצלי — שאלתי לכמה זמן אתה נשאר.' },
+    { id: 'r3', who: 'npc', next: 'c3b', en: '¡De nada! Y la habitación en sí, ¿está bien?', tr: TR("You're welcome! Is the room itself okay?", 'בבקשה! והחדר עצמו בסדר?'), he: 'בבקשה! והחדר עצמו בסדר?' },
     { id: 'c3b', who: 'you', en: '', he: '', choices: [
-      { en: 'Dos semanas.', tr: TR('For two weeks.', 'לשבועיים.'), he: 'לשבועיים.', itemId: 'es.phrase.border.two-weeks', correct: true, next: 'n4' },
+      { en: 'El aire acondicionado no funciona.', tr: TR("The air conditioning isn't working.", 'המזגן לא עובד.'), he: 'המזגן לא עובד.', itemId: 'es.phrase.hotelreq.ac-not-working', correct: true, next: 'n4' },
     ] },
-    { id: 'n4', who: 'npc', next: 'c4', en: '¿Y dónde se aloja?', tr: TR('And where are you staying?', 'ואיפה אתה מתאכסן?'), he: 'ואיפה אתה מתאכסן?' },
+    { id: 'n4', who: 'npc', next: 'c4', en: 'Ay, lo siento muchísimo. Haré que lo arreglen hoy. ¿Por lo demás, la habitación es cómoda?', tr: TR("Oh, I'm so sorry about that. I'll have it fixed today. Is the room comfortable otherwise?", 'אוי, אני מצטער מאוד. אדאג שיתקנו היום. החדר נוח חוץ מזה?'), he: 'אוי, אני מצטער מאוד. אדאג שיתקנו היום. החדר נוח חוץ מזה?' },
     { id: 'c4', who: 'you', en: '', he: '', choices: [
-      { en: 'En un hotel en el centro.', tr: TR('At a hotel in the city center.', 'במלון במרכז העיר.'), he: 'במלון במרכז העיר.', itemId: 'es.phrase.border.staying-hotel', correct: true, next: 'n5' },
-      { en: 'Más despacio, por favor.', tr: TR('Please speak slowly.', 'דבר לאט, בבקשה. (בשלב הזה מותר!)'), he: 'דבר לאט, בבקשה.', itemId: 'es.phrase.recovery.slowly', correct: true, next: 'r4' },
+      { en: 'Mi habitación es muy ruidosa.', tr: TR('My room is very noisy.', 'החדר שלי מאוד רועש.'), he: 'החדר שלי מאוד רועש.', itemId: 'es.phrase.hotelreq.room-noisy', correct: true, next: 'n5' },
+      { en: 'Más despacio, por favor.', tr: TR('Please speak slowly.', 'דבר לאט, בבקשה.'), he: 'דבר לאט, בבקשה.', itemId: 'es.phrase.recovery.slowly', correct: true, next: 'r4' },
     ] },
-    { id: 'r4', who: 'npc', slow: true, next: 'c4b', en: '¿Dónde — se — aloja?', tr: TR('Where — are you — staying?', 'איפה — אתה — מתאכסן?'), he: 'איפה — אתה — מתאכסן?' },
+    { id: 'r4', who: 'npc', slow: true, next: 'c4b', en: '¿La habitación es — cómoda — por lo demás?', tr: TR('Is the room — comfortable — otherwise?', 'החדר — נוח — חוץ מזה?'), he: 'החדר — נוח — חוץ מזה?' },
     { id: 'c4b', who: 'you', en: '', he: '', choices: [
-      { en: 'En un hotel en el centro.', tr: TR('At a hotel in the city center.', 'במלון במרכז העיר.'), he: 'במלון במרכז העיר.', itemId: 'es.phrase.border.staying-hotel', correct: true, next: 'n5' },
+      { en: 'Mi habitación es muy ruidosa.', tr: TR('My room is very noisy.', 'החדר שלי מאוד רועש.'), he: 'החדר שלי מאוד רועש.', itemId: 'es.phrase.hotelreq.room-noisy', correct: true, next: 'n5' },
     ] },
-    { id: 'n5', who: 'npc', next: 'c5', en: 'Ya casi está. ¿Algo que declarar?', tr: TR('Almost done. Anything to declare?', 'כמעט סיימנו. יש לך מה להצהיר?'), he: 'כמעט סיימנו. יש לך מה להצהיר?' },
+    { id: 'n5', who: 'npc', next: 'c5', en: 'Lo entiendo. ¿Quiere cambiarse a una habitación más tranquila?', tr: TR('I understand. Would you like to change to a quieter room?', 'אני מבין. תרצה לעבור לחדר שקט יותר?'), he: 'אני מבין. תרצה לעבור לחדר שקט יותר?' },
     { id: 'c5', who: 'you', en: '', he: '', choices: [
-      { en: 'Nada que declarar.', tr: TR('Nothing to declare.', 'אין לי מה להצהיר.'), he: 'אין לי מה להצהיר.', itemId: 'es.phrase.border.nothing-declare', correct: true, next: 'n6' },
-      { en: '¡Gracias!', tr: TR('Thank you!', 'תודה! (מנומס — אבל תגיד קודם שאין לך מה להצהיר)'), he: 'תודה!', itemId: 'es.phrase.recovery.thank-you', correct: false, next: 'r5' },
+      { en: '¡Sí, gracias!', tr: TR('Yes, thank you!', 'כן, תודה!'), he: 'כן, תודה!', itemId: 'es.phrase.recovery.thank-you', correct: true, next: 'n6' },
+      { en: '¿Puede repetir, por favor?', tr: TR('Can you repeat that?', 'אפשר לחזור על זה?'), he: 'אפשר לחזור על זה?', itemId: 'es.phrase.recovery.repeat', correct: true, next: 'r5' },
     ] },
-    { id: 'r5', who: 'npc', next: 'c5b', en: 'Ah — entonces, ¿algo que declarar? ¿Alguna mercancía?', tr: TR('Ha — so, anything to declare? Any goods?', 'הא — אז, יש מה להצהיר? סחורה כלשהי?'), he: 'הא — אז, יש מה להצהיר? סחורה כלשהי?' },
+    { id: 'r5', who: 'npc', slow: true, next: 'c5b', en: '¿Quiere — una habitación — más tranquila?', tr: TR('Would you — like — a quieter room?', 'תרצה — חדר — שקט יותר?'), he: 'תרצה — חדר — שקט יותר?' },
     { id: 'c5b', who: 'you', en: '', he: '', choices: [
-      { en: 'Nada que declarar.', tr: TR('Nothing to declare.', 'אין לי מה להצהיר.'), he: 'אין לי מה להצהיר.', itemId: 'es.phrase.border.nothing-declare', correct: true, next: 'n6' },
+      { en: '¡Sí, gracias!', tr: TR('Yes, thank you!', 'כן, תודה!'), he: 'כן, תודה!', itemId: 'es.phrase.recovery.thank-you', correct: true, next: 'n6' },
     ] },
-    { id: 'n6', who: 'npc', end: true, en: 'Bienvenido, ¡y que disfrute su estancia!', tr: TR('Welcome, and enjoy your stay!', 'ברוך הבא, ותיהנה מהשהות!'), he: 'ברוך הבא, ותיהנה מהשהות!' },
+    { id: 'n6', who: 'npc', end: true, en: 'Todo arreglado — habitación 305, y alguien ya sube. ¡Buenas noches!', tr: TR("All sorted — room 305, and someone's on the way up. Have a lovely night!", 'הכל מסודר — חדר 305, ומישהו כבר בדרך. לילה נעים!'), he: 'הכל מסודר — חדר 305, ומישהו כבר בדרך. לילה נעים!' },
   ],
 };
 
 export const DAY11_ES: BootcampDayContent = {
   day: 11,
-  title: T('שדה תעופה וגבול', 'Airport & Border'),
+  title: T('בקשות ובעיות במלון', 'Hotel Requests & Problems'),
   items: DAY11_ES_ITEMS,
-  dialogues: { 'border-control': SCENE_BORDER },
+  dialogues: { 'hotel-desk': SCENE_DESK },
   steps: [
-    { kind: 'talk', icon: '🛂', title: T('משימה 11: שדה תעופה וגבול', 'Mission 11: Airport & Border'),
+    { kind: 'talk', icon: '🛎️', title: T('משימה 11: בקשות ובעיות במלון', 'Mission 11: Hotel Requests & Problems'),
       body: [
-        T('הרגע הכי מפחיד בטיול הוא גם הצפוי ביותר. פקיד הגבול שואל תמיד את אותן שאלות.', 'The scariest moment of the trip is also the most predictable. The border officer always asks the same questions.'),
-        T('נכיר אותן מראש. אחר כך גבול זה בסך הכל תסריט שכבר קראת.', 'We’ll learn them in advance. After that, a border is just a script you’ve already read.'),
-      ], cta: T('להתקרב לדלפק', 'Approach the counter') },
-    { kind: 'tool', itemId: 'es.phrase.border.passport-here', index: 1, total: 4, label: T('המשפט הפותח', 'The opener') },
-    { kind: 'tool', itemId: 'es.phrase.border.on-holiday', index: 2, total: 4, label: T('מטרת הביקור', 'Purpose of visit') },
-    { kind: 'tool', itemId: 'es.phrase.border.two-weeks', index: 3, total: 4, label: T('כמה זמן', 'How long') },
-    { kind: 'tool', itemId: 'es.phrase.border.staying-hotel', index: 4, total: 4, label: T('איפה מתאכסן', 'Where staying') },
-    { kind: 'replies', saidItemId: 'es.phrase.border.passport-here',
-      replyIds: ['es.reply.border.purpose', 'es.reply.border.how-long', 'es.reply.border.where-staying', 'es.reply.border.anything-declare'] },
-    { kind: 'receipt', text: T('אתה מזהה את כל שרשרת השאלות של פקיד הגבול — מראש.', 'You recognize the border officer’s whole question-chain — in advance.') },
-    { kind: 'quiz', itemId: 'es.reply.border.purpose', wrongIds: ['es.reply.border.how-long', 'es.reply.border.enjoy'] },
-    { kind: 'quiz', itemId: 'es.reply.border.where-staying', wrongIds: ['es.reply.border.anything-declare', 'es.reply.border.passport-please'] },
-    { kind: 'dialogue', dialogueId: 'border-control' },
-    { kind: 'receipt', text: T('עברת ביקורת גבול שלמה בספרדית — דרכון, מטרה, משך, מקום, מכס.', 'You cleared a full border check in Spanish — passport, purpose, duration, place, customs.') },
+        T('משהו לא בסדר בחדר? אתה לא צריך לסבול בשקט. אתה מבקש — והמלון עובד בשבילך.', 'Something wrong in the room? You don’t have to suffer quietly. You ask — and the hotel works for you.'),
+        T('לתאר בעיה בנימוס זה לא להתלונן. זה כלי. היום נלמד את הכלי הזה.', 'Describing a problem politely isn’t complaining. It’s a skill. Today we learn that skill.'),
+      ], cta: T('לגשת לקבלה', 'Go to reception') },
+    { kind: 'tool', itemId: 'es.phrase.hotelreq.more-towels', index: 1, total: 4, label: T('לבקש בנימוס', 'Ask politely') },
+    { kind: 'tool', itemId: 'es.phrase.hotelreq.wifi-password', index: 2, total: 4, label: T('הבקשה של המאה', 'The must-have request') },
+    { kind: 'tool', itemId: 'es.phrase.hotelreq.ac-not-working', index: 3, total: 4, label: T('לדווח על תקלה', 'Report a fault') },
+    { kind: 'tool', itemId: 'es.phrase.hotelreq.room-noisy', index: 4, total: 4, label: T('לתאר בעיה', 'Describe a problem') },
+    { kind: 'replies', saidItemId: 'es.phrase.hotelreq.ac-not-working',
+      replyIds: ['es.reply.hotelreq.right-away', 'es.reply.hotelreq.so-sorry', 'es.reply.hotelreq.change-rooms', 'es.reply.hotelreq.anything-else'] },
+    { kind: 'receipt', text: T('אתה מזהה איך צוות המלון מגיב לבקשה — כולל התנצלות ופתרון.', 'You recognize how hotel staff respond to a request — apology and solution included.') },
+    { kind: 'quiz', itemId: 'es.reply.hotelreq.change-rooms', wrongIds: ['es.reply.hotelreq.password-card', 'es.reply.hotelreq.how-can-help'] },
+    { kind: 'quiz', itemId: 'es.reply.hotelreq.right-away', wrongIds: ['es.reply.hotelreq.so-sorry', 'es.reply.hotelreq.anything-else'] },
+    { kind: 'dialogue', dialogueId: 'hotel-desk' },
+    { kind: 'receipt', text: T('ביקשת מגבות, וויי-פיי, ותיקון — ואפילו קיבלת חדר שקט יותר.', 'You asked for towels, wifi, and a repair — and even got a quieter room.') },
     { kind: 'swipe', itemIds: DAY11_ES_ITEMS.map((i) => i.id) },
-    { kind: 'ambush', npc: { en: '¿Y tiene un boleto de vuelta reservado para su vuelo de regreso?', tr: TR('And do you have a return ticket booked for your flight home at all?', 'ויש לך בכלל כרטיס חזור מוזמן לטיסה הביתה?'), he: 'ויש לך בכלל כרטיס חזור מוזמן לטיסה הביתה?' },
-      correctItemId: 'es.phrase.recovery.one-moment', wrongItemId: 'es.phrase.border.two-weeks' },
-    { kind: 'receipt', text: T('שאלה שלא ציפית לה — ולא קפאת. קנית שנייה עם כלי.', 'A question you didn’t expect — and you didn’t freeze. You bought a second with a tool.') },
+    { kind: 'ambush', npc: { en: 'Por cierto, ha habido un pequeño lío con su reserva — ¿podría bajar a recepción?', tr: TR("By the way there's been a small mix-up with your booking — could you come down to the desk?", 'אגב, הייתה אי-הבנה קטנה עם ההזמנה שלך — אפשר שתרד לקבלה?'), he: 'אגב, הייתה אי-הבנה קטנה עם ההזמנה שלך — אפשר שתרד לקבלה?' },
+      correctItemId: 'es.phrase.recovery.repeat', wrongItemId: 'es.phrase.hotelreq.wifi-password' },
+    { kind: 'receipt', text: T('הודעה מפתיעה מהקבלה — וביקשת שיחזרו עליה במקום לקפוא.', 'A surprise message from the desk — and you asked them to repeat it instead of freezing.') },
     { kind: 'summary' },
   ],
 };

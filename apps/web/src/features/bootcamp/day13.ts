@@ -2,121 +2,111 @@ import { T, recovery } from './recovery.js';
 import type { BootcampDayContent, BootcampDialogue, BootcampItem } from './types.js';
 
 /**
- * Mission 13 — "Restaurant Basics" (Phase 3 · Food, the deep exemplar).
- * One situation taken ALL the way: greeting → table → menu → drinks → order →
- * recommendation → waiter's follow-ups → the bill → goodbye. You leave able to sit down
- * at a real restaurant and run the whole thing yourself. Depth before breadth.
+ * Mission 13 — "Special Requests & Allergies" (Phase 3 · Food).
+ * Rare need, catastrophic to lack. You learn to keep your body safe in any kitchen:
+ * allergies, "without ___", vegetarian, and checking an ingredient before it reaches you.
+ * Said clearly, once, calmly — the kitchen does the rest.
  */
 export const DAY13_ITEMS: BootcampItem[] = [
   // say
-  { id: 'en.phrase.rest.table-for-two', text: 'A table for two, please.', meaning: T('שולחן לשניים, בבקשה.', 'A table for two, please.'),
-    tip: T('התבנית: A table for ___ — פשוט מספר. for one / for four.', 'Template: A table for ___ — just a number. for one / for four.') },
-  { id: 'en.phrase.rest.menu-please', text: 'Could we see the menu?', meaning: T('אפשר לראות את התפריט?', 'Could we see the menu?') },
-  { id: 'en.phrase.rest.ill-have', text: "I'll have the pasta, please.", meaning: T('אני אקח את הפסטה, בבקשה.', "I'll have the pasta, please."),
-    tip: T('התבנית הגדולה של המסעדה: I’ll have the ___ — מזמינים כל דבר בתפריט.', 'The restaurant’s big template: I’ll have the ___ — order anything on the menu.') },
-  { id: 'en.phrase.rest.recommend', text: 'What do you recommend?', meaning: T('מה אתה ממליץ?', 'What do you recommend?'),
-    tip: T('אם התפריט מבלבל — תן למלצר להחליט. תמיד עובד.', 'If the menu confuses you — let the waiter decide. Always works.') },
-  { id: 'en.phrase.rest.water-please', text: 'A bottle of water, please.', meaning: T('בקבוק מים, בבקשה.', 'A bottle of water, please.') },
-  { id: 'en.phrase.rest.bill-please', text: 'Could we have the bill, please?', meaning: T('אפשר את החשבון, בבקשה?', 'Could we have the bill, please?'),
-    tip: T('המשפט שסוגר כל ארוחה. באנגליה: bill · באמריקה: check.', 'The line that closes every meal. UK: bill · US: check.') },
-  // hear — the waiter's chain
-  { id: 'en.reply.rest.how-many', text: 'How many people?', meaning: T('כמה אנשים?', 'How many people?') },
-  { id: 'en.reply.rest.something-drink', text: 'Something to drink?', meaning: T('משהו לשתות?', 'Something to drink?') },
-  { id: 'en.reply.rest.ready-order', text: 'Are you ready to order?', meaning: T('מוכנים להזמין?', 'Are you ready to order?') },
-  { id: 'en.reply.rest.anything-else', text: 'Anything else?', meaning: T('עוד משהו?', 'Anything else?') },
-  { id: 'en.reply.rest.everything-okay', text: 'Is everything okay?', meaning: T('הכל בסדר?', 'Is everything okay?') },
-  { id: 'en.reply.rest.enjoy-meal', text: 'Enjoy your meal!', meaning: T('בתיאבון!', 'Enjoy your meal!') },
-  ...recovery('en.phrase.recovery.repeat', 'en.phrase.recovery.slowly', 'en.phrase.recovery.one-moment', 'en.phrase.recovery.thank-you'),
+  { id: 'en.phrase.diet.allergic-nuts', text: "I'm allergic to nuts.", meaning: T('אני אלרגי לאגוזים.', "I'm allergic to nuts."),
+    tip: T('התבנית שמצילה: I’m allergic to ___. אומרים ברור, פעם אחת, בלי היסוס.', 'The life-saving template: I’m allergic to ___. Say it clearly, once, no hesitation.') },
+  { id: 'en.phrase.diet.without-onions', text: 'Without onions, please.', meaning: T('בלי בצל, בבקשה.', 'Without onions, please.'),
+    tip: T('התבנית: Without ___ — מסירה כל מרכיב שלא בא לך.', 'Template: Without ___ — removes any ingredient you don’t want.') },
+  { id: 'en.phrase.diet.vegetarian', text: "I'm vegetarian.", meaning: T('אני צמחוני.', "I'm vegetarian."),
+    tip: T('שתי מילים שחוסכות עשר שאלות.', 'Two words that save ten questions.') },
+  { id: 'en.phrase.diet.does-have-dairy', text: 'Does this have dairy?', meaning: T('יש בזה מוצרי חלב?', 'Does this have dairy?'),
+    tip: T('התבנית: Does this have ___? — בודקת כל מרכיב לפני שהוא מגיע אליך.', 'Template: Does this have ___? — checks any ingredient before it reaches you.') },
+  { id: 'en.phrase.diet.is-spicy', text: 'Is this spicy?', meaning: T('זה חריף?', 'Is this spicy?') },
+  // hear — the kitchen's replies
+  { id: 'en.reply.diet.let-me-check', text: 'Let me check with the kitchen.', meaning: T('אבדוק עם המטבח.', 'Let me check with the kitchen.') },
+  { id: 'en.reply.diet.make-without', text: 'We can make it without.', meaning: T('אפשר להכין בלי.', 'We can make it without.') },
+  { id: 'en.reply.diet.contains-nuts', text: 'That one contains nuts.', meaning: T('זה מכיל אגוזים.', 'That one contains nuts.') },
+  { id: 'en.reply.diet.not-spicy', text: "No, it's not spicy.", meaning: T('לא, זה לא חריף.', "No, it's not spicy.") },
+  { id: 'en.reply.diet.good-option', text: 'This one is a good option for you.', meaning: T('זו אפשרות טובה בשבילך.', 'This one is a good option for you.') },
+  { id: 'en.reply.diet.anything-else-allergic', text: "Anything else you're allergic to?", meaning: T('עוד משהו שאתה אלרגי אליו?', "Anything else you're allergic to?") },
+  ...recovery('en.phrase.recovery.repeat', 'en.phrase.recovery.slowly', 'en.phrase.recovery.thank-you'),
 ];
 
-const SCENE_DINNER: BootcampDialogue = {
-  id: 'restaurant-dinner',
+const SCENE_ALLERGY: BootcampDialogue = {
+  id: 'allergy-order',
   start: 'n1',
   nodes: [
-    { id: 'n1', who: 'npc', next: 'c1', en: 'Good evening, welcome! How many people?', he: 'ערב טוב, ברוכים הבאים! כמה אנשים?' },
+    { id: 'n1', who: 'npc', next: 'c1', en: 'Hi there! Are you ready to order?', he: 'היי! מוכן להזמין?' },
     { id: 'c1', who: 'you', en: '', he: '', choices: [
-      { en: 'A table for two, please.', he: 'שולחן לשניים, בבקשה.', itemId: 'en.phrase.rest.table-for-two', correct: true, next: 'n2' },
-      { en: 'One moment, please.', he: 'רגע אחד, בבקשה. (כלי — לספור כמה אתם)', itemId: 'en.phrase.recovery.one-moment', correct: true, next: 'r1' },
+      { en: "I'm allergic to nuts.", he: 'אני אלרגי לאגוזים. (אומרים קודם כל — לפני ההזמנה)', itemId: 'en.phrase.diet.allergic-nuts', correct: true, next: 'n2' },
+      { en: 'Please speak slowly.', he: 'דבר לאט, בבקשה.', itemId: 'en.phrase.recovery.slowly', correct: true, next: 'r1' },
     ] },
-    { id: 'r1', who: 'npc', slow: true, next: 'c1b', en: 'No problem — how many people?', he: 'אין בעיה — כמה אנשים?' },
+    { id: 'r1', who: 'npc', slow: true, next: 'c1b', en: 'Sure — are you ready to order?', he: 'בטח — מוכן להזמין?' },
     { id: 'c1b', who: 'you', en: '', he: '', choices: [
-      { en: 'A table for two, please.', he: 'שולחן לשניים, בבקשה.', itemId: 'en.phrase.rest.table-for-two', correct: true, next: 'n2' },
+      { en: "I'm allergic to nuts.", he: 'אני אלרגי לאגוזים.', itemId: 'en.phrase.diet.allergic-nuts', correct: true, next: 'n2' },
     ] },
-    { id: 'n2', who: 'npc', next: 'c2', en: 'Perfect, right this way. Here are your menus. Something to drink?', he: 'מצוין, בבקשה אחריי. הנה התפריטים. משהו לשתות?' },
+    { id: 'n2', who: 'npc', next: 'c2', en: "Thank you for telling me — that's important. Anything else you're allergic to?", he: 'תודה שאמרת — זה חשוב. עוד משהו שאתה אלרגי אליו?' },
     { id: 'c2', who: 'you', en: '', he: '', choices: [
-      { en: 'A bottle of water, please.', he: 'בקבוק מים, בבקשה.', itemId: 'en.phrase.rest.water-please', correct: true, next: 'n3' },
-      { en: 'Could we see the menu?', he: 'אפשר לראות את התפריט? (הוא בדיוק נתן — הקשב)', itemId: 'en.phrase.rest.menu-please', correct: false, next: 'r2' },
+      { en: "I'm vegetarian.", he: 'אני צמחוני.', itemId: 'en.phrase.diet.vegetarian', correct: true, next: 'n3' },
+      { en: 'Thank you!', he: 'תודה! (מנומס — אבל הוא שאל שאלה)', itemId: 'en.phrase.recovery.thank-you', correct: false, next: 'r2' },
     ] },
-    { id: 'r2', who: 'npc', next: 'c2b', en: "The menus are right there in front of you — anything to drink first?", he: 'התפריטים ממש מולך — משהו לשתות קודם?' },
+    { id: 'r2', who: 'npc', next: 'c2b', en: 'Of course — but is there anything else I should know?', he: 'כמובן — אבל יש עוד משהו שכדאי שאדע?' },
     { id: 'c2b', who: 'you', en: '', he: '', choices: [
-      { en: 'A bottle of water, please.', he: 'בקבוק מים, בבקשה.', itemId: 'en.phrase.rest.water-please', correct: true, next: 'n3' },
+      { en: "I'm vegetarian.", he: 'אני צמחוני.', itemId: 'en.phrase.diet.vegetarian', correct: true, next: 'n3' },
     ] },
-    { id: 'n3', who: 'npc', next: 'c3', en: "Great. I'll give you a minute… Are you ready to order?", he: 'יופי. אתן לכם רגע… מוכנים להזמין?' },
+    { id: 'n3', who: 'npc', next: 'c3', en: 'Got it — no nuts, vegetarian. The mushroom risotto is a good option for you.', he: 'הבנתי — בלי אגוזים, צמחוני. ריזוטו הפטריות אפשרות טובה בשבילך.' },
     { id: 'c3', who: 'you', en: '', he: '', choices: [
-      { en: "I'll have the pasta, please.", he: 'אני אקח את הפסטה, בבקשה.', itemId: 'en.phrase.rest.ill-have', correct: true, next: 'n4' },
-      { en: 'What do you recommend?', he: 'מה אתה ממליץ? (מהלך חכם כשמתלבטים)', itemId: 'en.phrase.rest.recommend', correct: true, next: 'n3b' },
+      { en: 'Does this have dairy?', he: 'יש בזה מוצרי חלב?', itemId: 'en.phrase.diet.does-have-dairy', correct: true, next: 'n4' },
+      { en: 'Can you repeat that?', he: 'אפשר לחזור על זה?', itemId: 'en.phrase.recovery.repeat', correct: true, next: 'r3' },
     ] },
-    { id: 'n3b', who: 'npc', next: 'c3b', en: 'The seafood pasta is our best — very fresh today.', he: 'פסטת פירות הים היא הכי טובה שלנו — טרייה מאוד היום.' },
+    { id: 'r3', who: 'npc', slow: true, next: 'c3b', en: 'The — mushroom — risotto — is good for you.', he: 'ריזוטו — הפטריות — טוב — בשבילך.' },
     { id: 'c3b', who: 'you', en: '', he: '', choices: [
-      { en: "I'll have the pasta, please.", he: 'אני אקח את הפסטה, בבקשה.', itemId: 'en.phrase.rest.ill-have', correct: true, next: 'n4' },
+      { en: 'Does this have dairy?', he: 'יש בזה מוצרי חלב?', itemId: 'en.phrase.diet.does-have-dairy', correct: true, next: 'n4' },
     ] },
-    { id: 'n4', who: 'npc', fast: true, next: 'c4', en: 'Excellent choice. Anything else?', he: 'בחירה מצוינת. עוד משהו?' },
+    { id: 'n4', who: 'npc', next: 'c4', en: 'Good question — it has a little cream, but we can make it without.', he: 'שאלה טובה — יש בו קצת שמנת, אבל אפשר להכין בלי.' },
     { id: 'c4', who: 'you', en: '', he: '', choices: [
-      { en: "That's all, thanks.", he: 'זה הכל, תודה.', correct: true, next: 'n5' },
-      { en: 'Can you repeat that?', he: 'אפשר לחזור על זה?', itemId: 'en.phrase.recovery.repeat', correct: true, next: 'r4' },
+      { en: 'Without onions, please.', he: 'בלי בצל, בבקשה.', itemId: 'en.phrase.diet.without-onions', correct: true, next: 'n5' },
+      { en: 'Is this spicy?', he: 'זה חריף?', itemId: 'en.phrase.diet.is-spicy', correct: true, next: 'n4b' },
     ] },
-    { id: 'r4', who: 'npc', slow: true, next: 'c4b', en: 'Would you like — anything else?', he: 'תרצו — עוד משהו?' },
+    { id: 'n4b', who: 'npc', next: 'c4b', en: "Not at all — it's very mild.", he: 'ממש לא — הוא עדין מאוד.' },
     { id: 'c4b', who: 'you', en: '', he: '', choices: [
-      { en: "That's all, thanks.", he: 'זה הכל, תודה.', correct: true, next: 'n5' },
+      { en: 'Without onions, please.', he: 'בלי בצל, בבקשה.', itemId: 'en.phrase.diet.without-onions', correct: true, next: 'n5' },
     ] },
-    { id: 'n5', who: 'npc', next: 'c5', en: 'Here you are. Enjoy your meal!… Is everything okay?', he: 'בבקשה. בתיאבון!… הכל בסדר?' },
+    { id: 'n5', who: 'npc', next: 'c5', en: "No onions, no problem — and I'll make sure the kitchen knows about the nuts.", he: 'בלי בצל, אין בעיה — ואוודא שהמטבח יודע על האגוזים.' },
     { id: 'c5', who: 'you', en: '', he: '', choices: [
-      { en: 'Yes, thank you!', he: 'כן, תודה!', itemId: 'en.phrase.recovery.thank-you', correct: true, next: 'n6' },
+      { en: 'Thank you!', he: 'תודה!', itemId: 'en.phrase.recovery.thank-you', correct: true, next: 'n6' },
       { en: 'Please speak slowly.', he: 'דבר לאט, בבקשה.', itemId: 'en.phrase.recovery.slowly', correct: true, next: 'r5' },
     ] },
-    { id: 'r5', who: 'npc', slow: true, next: 'c5b', en: 'Is — everything — okay with the food?', he: 'הכל — בסדר — עם האוכל?' },
+    { id: 'r5', who: 'npc', slow: true, next: 'c5b', en: "I'll tell — the kitchen — about the nuts.", he: 'אני אגיד — למטבח — על האגוזים.' },
     { id: 'c5b', who: 'you', en: '', he: '', choices: [
-      { en: 'Yes, thank you!', he: 'כן, תודה!', itemId: 'en.phrase.recovery.thank-you', correct: true, next: 'n6' },
+      { en: 'Thank you!', he: 'תודה!', itemId: 'en.phrase.recovery.thank-you', correct: true, next: 'n6' },
     ] },
-    { id: 'n6', who: 'npc', next: 'c6', en: 'Wonderful. Let me know when you need anything.', he: 'נהדר. תגידו לי כשתצטרכו משהו.' },
-    { id: 'c6', who: 'you', en: '', he: '', choices: [
-      { en: 'Could we have the bill, please?', he: 'אפשר את החשבון, בבקשה?', itemId: 'en.phrase.rest.bill-please', correct: true, next: 'n7' },
-      { en: 'One moment, please.', he: 'רגע אחד, בבקשה.', itemId: 'en.phrase.recovery.one-moment', correct: true, next: 'r6' },
-    ] },
-    { id: 'r6', who: 'npc', slow: true, next: 'c6b', en: 'Of course — take your time.', he: 'כמובן — קחו את הזמן.' },
-    { id: 'c6b', who: 'you', en: '', he: '', choices: [
-      { en: 'Could we have the bill, please?', he: 'אפשר את החשבון, בבקשה?', itemId: 'en.phrase.rest.bill-please', correct: true, next: 'n7' },
-    ] },
-    { id: 'n7', who: 'npc', end: true, en: "Here's the bill. Thank you, and have a lovely evening!", he: 'הנה החשבון. תודה, וערב נפלא!' },
+    { id: 'n6', who: 'npc', end: true, en: 'Perfect. Your food will be completely safe. Enjoy!', he: 'מושלם. האוכל שלך יהיה בטוח לגמרי. בתיאבון!' },
   ],
 };
 
 export const DAY13: BootcampDayContent = {
   day: 13,
-  title: T('מסעדה — בסיס', 'Restaurant Basics'),
+  title: T('בקשות מיוחדות ואלרגיות', 'Special Requests & Allergies'),
   items: DAY13_ITEMS,
-  dialogues: { 'restaurant-dinner': SCENE_DINNER },
+  dialogues: { 'allergy-order': SCENE_ALLERGY },
   steps: [
-    { kind: 'talk', icon: '🍽️', title: T('משימה 13: מסעדה — בסיס', 'Mission 13: Restaurant Basics'),
+    { kind: 'talk', icon: '🥜', title: T('משימה 13: בקשות מיוחדות ואלרגיות', 'Mission 13: Special Requests & Allergies'),
       body: [
-        T('לב הטיול הוא ארוחת ערב. היום לא לומדים "מילים על אוכל" — לומדים לנהל מסעדה שלמה.', 'The heart of travel is dinner. Today we don’t learn “food words” — we learn to run a whole restaurant.'),
-        T('משולחן, דרך תפריט, הזמנה ושאלות המלצר — ועד החשבון. מקצה לקצה.', 'From the table, through the menu, the order, and the waiter’s questions — all the way to the bill. End to end.'),
-      ], cta: T('להיכנס למסעדה', 'Walk into the restaurant') },
-    { kind: 'tool', itemId: 'en.phrase.rest.table-for-two', index: 1, total: 4, label: T('להשיג שולחן', 'Get a table') },
-    { kind: 'tool', itemId: 'en.phrase.rest.ill-have', index: 2, total: 4, label: T('תבנית ההזמנה', 'The ordering template') },
-    { kind: 'tool', itemId: 'en.phrase.rest.recommend', index: 3, total: 4, label: T('כשמתלבטים', 'When unsure') },
-    { kind: 'tool', itemId: 'en.phrase.rest.bill-please', index: 4, total: 4, label: T('לסגור חשבון', 'Close the bill') },
-    { kind: 'replies', saidItemId: 'en.phrase.rest.ill-have',
-      replyIds: ['en.reply.rest.something-drink', 'en.reply.rest.ready-order', 'en.reply.rest.anything-else', 'en.reply.rest.everything-okay'] },
-    { kind: 'receipt', text: T('אתה מזהה את כל שאלות המלצר — לפני, במהלך, ואחרי הארוחה.', 'You recognize every waiter question — before, during, and after the meal.') },
-    { kind: 'quiz', itemId: 'en.reply.rest.ready-order', wrongIds: ['en.reply.rest.something-drink', 'en.reply.rest.enjoy-meal'] },
-    { kind: 'quiz', itemId: 'en.reply.rest.how-many', wrongIds: ['en.reply.rest.anything-else', 'en.reply.rest.everything-okay'] },
-    { kind: 'dialogue', dialogueId: 'restaurant-dinner' },
-    { kind: 'receipt', text: T('ניהלת ארוחת ערב שלמה באנגלית — שולחן, הזמנה, המלצה, חשבון.', 'You ran a full dinner in English — table, order, recommendation, bill.') },
+        T('יש מילים שאתה אולי תצטרך רק פעם אחת בחיים — אבל אז הן קריטיות.', 'Some words you may need only once in your life — but then they’re critical.'),
+        T('היום נלמד לשמור על הגוף שלך בכל מטבח: אלרגיה, "בלי", צמחוני, ובדיקת מרכיב.', 'Today we learn to keep your body safe in any kitchen: allergy, “without”, vegetarian, and checking an ingredient.'),
+      ], cta: T('לשבת ולהזמין בבטחה', 'Sit down and order safely') },
+    { kind: 'tool', itemId: 'en.phrase.diet.allergic-nuts', index: 1, total: 4, label: T('המשפט שמציל', 'The line that protects') },
+    { kind: 'tool', itemId: 'en.phrase.diet.without-onions', index: 2, total: 4, label: T('להסיר מרכיב', 'Remove an ingredient') },
+    { kind: 'tool', itemId: 'en.phrase.diet.vegetarian', index: 3, total: 4, label: T('להגדיר את עצמך', 'Define yourself') },
+    { kind: 'tool', itemId: 'en.phrase.diet.does-have-dairy', index: 4, total: 4, label: T('לבדוק מרכיב', 'Check an ingredient') },
+    { kind: 'replies', saidItemId: 'en.phrase.diet.allergic-nuts',
+      replyIds: ['en.reply.diet.let-me-check', 'en.reply.diet.make-without', 'en.reply.diet.contains-nuts', 'en.reply.diet.good-option'] },
+    { kind: 'receipt', text: T('אתה מזהה איך המטבח מגיב לאלרגיה — בדיקה, אזהרה, ופתרון.', 'You recognize how a kitchen responds to an allergy — check, warning, and solution.') },
+    { kind: 'quiz', itemId: 'en.reply.diet.contains-nuts', wrongIds: ['en.reply.diet.make-without', 'en.reply.diet.good-option'] },
+    { kind: 'quiz', itemId: 'en.reply.diet.let-me-check', wrongIds: ['en.reply.diet.not-spicy', 'en.reply.diet.contains-nuts'] },
+    { kind: 'dialogue', dialogueId: 'allergy-order' },
+    { kind: 'receipt', text: T('הזמנת ארוחה בטוחה לגמרי — אלרגיה, צמחוני, בלי בצל, בדיקת מרכיבים.', 'You ordered a completely safe meal — allergy, vegetarian, no onions, ingredients checked.') },
     { kind: 'swipe', itemIds: DAY13_ITEMS.map((i) => i.id) },
-    { kind: 'ambush', npc: { en: 'And how would you like that cooked — rare, medium, or well done?', he: 'ואיך תרצה שיהיה מבושל — נא, בינוני, או עשוי היטב?' },
-      correctItemId: 'en.phrase.recovery.slowly', wrongItemId: 'en.phrase.rest.bill-please' },
-    { kind: 'receipt', text: T('המלצר ירה שלוש אפשרויות במהירות — וביקשת שיאט במקום לנחש.', 'The waiter fired three options fast — and you asked him to slow down instead of guessing.') },
+    { kind: 'ambush', npc: { en: 'Just to be safe does your nut allergy mean we should avoid the shared fryer too?', he: 'רק ליתר ביטחון — האלרגיה לאגוזים אומרת שכדאי להימנע גם מהמטגן המשותף?' },
+      correctItemId: 'en.phrase.recovery.repeat', wrongItemId: 'en.phrase.diet.vegetarian' },
+    { kind: 'receipt', text: T('שאלת בטיחות מפורטת ומהירה — וביקשת שיחזרו במקום לנחש. עם אלרגיה, זה בדיוק הצעד הנכון.', 'A detailed, fast safety question — and you asked them to repeat instead of guessing. With an allergy, exactly the right move.') },
     { kind: 'summary' },
   ],
 };
