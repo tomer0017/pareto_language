@@ -1,5 +1,6 @@
 import { RECOVERY_ITEMS, T, recovery } from './recovery.js';
 import type { BootcampDayContent, BootcampDialogue, BootcampItem } from './types.js';
+import { m07Flow } from './practiceArrival.js';
 
 /** Mission 7 — "Taxi / Uber" (real objective: destination, price, stop — the address-show move). */
 export const DAY6_ITEMS: BootcampItem[] = [
@@ -77,21 +78,8 @@ export const DAY6: BootcampDayContent = {
         { text: 'here', meaning: T('כאן', 'here'), emoji: '📍' },
         { text: 'how much', meaning: T('כמה (עולה)', 'how much'), review: true },
       ], buildFromItemId: 'en.phrase.taxi.to-address' },
-    { kind: 'tool', itemId: 'en.phrase.taxi.to-address', index: 1, total: 4, label: T('הפתיח', 'The opener') },
-    { kind: 'tool', itemId: 'en.phrase.taxi.how-much', index: 2, total: 4, label: T('לשאול מחיר', 'Ask the price') },
-    { kind: 'tool', itemId: 'en.phrase.taxi.stop-here', index: 3, total: 4, label: T('לעצור', 'Stop it') },
-    { kind: 'tool', itemId: 'en.phrase.taxi.keep-change', index: 4, total: 4, label: T('לסיים יפה', 'Finish smoothly') },
-    { kind: 'replies', saidItemId: 'en.phrase.taxi.to-address',
-      replyIds: ['en.reply.taxi.where-to', 'en.reply.taxi.about-fifteen', 'en.reply.taxi.here-good', 'en.reply.taxi.first-visit'] },
-    { kind: 'receipt', text: T('אתה מזהה מה נהג מונית שואל — לאן, כמה, כאן בסדר?', 'You recognize what a taxi driver asks — where to, how much, is here okay?') },
-    { kind: 'quiz', itemId: 'en.reply.taxi.about-fifteen', wrongIds: ['en.reply.taxi.where-to', 'en.reply.taxi.traffic'] },
-    { kind: 'dialogue', dialogueId: 'taxi-ride' },
-    { kind: 'receipt', text: T('נסיעה שלמה: יעד, מחיר, עצירה, תשלום. שרדת את המונית.', 'A full ride: destination, price, stop, payment. You survived the taxi.') },
-    { kind: 'swipe', itemIds: DAY6_ITEMS.map((i) => i.id) },
-    { kind: 'ambush', npc: { en: 'Sorry the road ahead is closed is it alright if I drop you around the corner?', he: 'סליחה, הכביש קדימה חסום — בסדר שאוריד אותך מעבר לפינה?' },
-      correctItemId: 'en.reply.taxi.here-good', wrongItemId: 'en.reply.taxi.where-to' },
-    { kind: 'receipt', text: T('שינוי ברגע האחרון, מהיר — והבנת שהוא מציע להוריד אותך קרוב.', 'A fast last-minute change — and you understood he’s offering to drop you nearby.') },
-    { kind: 'summary' },
+    // From the key sentences onward the flow is shared by all languages: see practiceArrival.ts.
+    ...m07Flow('en'),
   ],
 };
 void RECOVERY_ITEMS;

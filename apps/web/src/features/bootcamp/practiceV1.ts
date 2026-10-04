@@ -21,7 +21,7 @@ import type { BootcampStep, MapCell } from './types.js';
 const T = (c: Copy): LocalizedText => ({ he: c[0], en: c[1] });
 
 /** Small step factory for one language. */
-function kit(lang: MissionLang) {
+export function kit(lang: MissionLang) {
   const id = (suffix: string): string => `${lang}.${suffix}`;
   return {
     id,

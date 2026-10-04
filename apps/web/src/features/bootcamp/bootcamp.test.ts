@@ -370,14 +370,13 @@ describe('Dialogue integrity — the NPC never continues as if a wrong pick were
 });
 
 describe('Believability — a different answer gets a different, matching reaction', () => {
-  it('Mission 7: asking the wifi password is answered about wifi, not breakfast', () => {
+  it('Hotel Check-in: the breakfast question is answered about breakfast — and wifi is no longer part of this conversation', () => {
+    // Wifi / SIM moved to the Extended material: the check-in offers no wifi line and has no wifi reply.
     const scene = DAY7.dialogues['hotel-checkin']!;
     const byId = new Map(scene.nodes.map((n) => [n.id, n]));
-    const node = scene.nodes.find((n) => n.choices?.some((c) => c.en.includes('wifi password')))!;
-    const wifi = node.choices!.find((c) => c.en.includes('wifi password'))!;
-    const breakfast = node.choices!.find((c) => c.en.includes('breakfast'))!;
-    expect(wifi.next).not.toBe(breakfast.next); // no shared, one-size-fits-all answer
-    expect(byId.get(wifi.next)!.en.toLowerCase()).toContain('wifi'); // reacts to what was actually asked
+    expect(JSON.stringify(scene).toLowerCase()).not.toContain('wifi');
+    const breakfast = scene.nodes.flatMap((n) => n.choices ?? []).find((c) => c.en.includes('breakfast'))!;
+    expect(byId.get(breakfast.next)!.en.toLowerCase()).toContain('breakfast'); // reacts to what was actually asked
   });
 
   it('Mission 8: a price objection is acknowledged, not ignored', () => {

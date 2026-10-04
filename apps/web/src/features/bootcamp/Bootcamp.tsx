@@ -759,7 +759,8 @@ function DialogueStep({ dialogue, onDone }: { dialogue: BootcampDialogue; onDone
         {usedTool && <CompanionReaction kind="recovery" size={88} />}
         {displayNpc && (
           <div className="fade-in" key={displayNpc.id}>
-            <NpcLine npc={npc} gloss={dialogueTr(displayNpc)}><TappableText text={displayNpc.en} /></NpcLine>
+            {/* A cold (checkpoint) scene gives no translation before the learner answers. */}
+            <NpcLine npc={npc} gloss={dialogue.cold ? undefined : dialogueTr(displayNpc)}>{dialogue.cold ? displayNpc.en : <TappableText text={displayNpc.en} />}</NpcLine>
           </div>
         )}
         {yourLine && node.who !== 'you' && <YouLine>{yourLine}</YouLine>}

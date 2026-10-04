@@ -126,6 +126,11 @@ stable across re-renders. **Narrative dialogue order is never shuffled** — onl
   purely, whether a step gets one app-language line (the mission goal on its intro card; how to play
   the first game of each kind). `Bootcamp.tsx` renders it with `CompanionCoach`; answer cards take a
   reaction through `AnswerFeedback`'s `aside` slot. None of it writes to any store.
+- **Shared practice flows** — `practiceV1.ts` (Missions 01, 02, 03, 05) and `practiceArrival.ts`
+  (Missions 06–09) define the step lists of hand-written missions once for all languages. Checkpoint
+  scenes may be `cold` (no gloss before answering) and may offer `wrong` lines: a miss routes to its
+  own slow re-ask beat and back to the same choice. A Quick Reply step may be a speed `challenge`; a
+  Match Pairs answer tile may be a language-neutral `answerLabel`.
 - **Practice presentation** — each engine renders on an open `.pcanvas[data-engine]`, not a shared
   card. `ConvoScene.tsx` is the conversation shell (`NpcLine`, `YouLine`, `AudioBubble`, `useNpc`)
   used by dialogues and Quick Reply; `npcCast.ts` maps a mission id to who is speaking (a glyph today,

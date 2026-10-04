@@ -504,25 +504,31 @@ english:
 _Scene 1_
 **NPC:** Passport, please.
 **You:** Here you go.
+**NPC:** What's the purpose of your visit?
+**You:** I'm here on holiday.
 **NPC:** How long are you staying?
 **You:** For two weeks.
 **NPC:** Where are you staying?
 **You:** At a hotel in the city centre.
-**NPC:** Welcome. Enjoy your stay!
+**NPC:** Anything to declare?
+**You:** Nothing to declare.
+**NPC:** Welcome, and enjoy your stay!
 
 _Scene 2_
-**NPC:** Where to?
+**NPC:** Hello! Where to?
 **You:** To this address, please.
-**NPC:** About fifteen euros. Is that okay?
+**NPC:** It's about fifteen euros. There's a lot of traffic right now.
 **You:** Okay, thank you.
-**NPC:** We're here. Is here okay?
+**NPC:** …We are almost there. Is here okay?
 **You:** Stop here, please. Keep the change.
-**NPC:** Thank you! Have a good evening!
+**NPC:** Thank you very much! Enjoy your trip!
 
 _Scene 3_
-**NPC:** Good evening. Do you have a reservation?
+**NPC:** Good evening! How can I help you?
 **You:** I have a reservation, under the name Cohen.
-**NPC:** Here is your key. Room two-oh-four, second floor.
+**NPC:** Welcome, Mr. Cohen. Your passport, please.
+**You:** Here you go.
+**NPC:** Thank you. You're in room two-oh-four, on the second floor. Here is your key.
 **You:** Is breakfast included?
 **NPC:** Yes, from seven to ten. Enjoy your stay.
 
@@ -530,25 +536,31 @@ franch:
 _Scene 1_
 **NPC:** Passeport, s’il vous plaît.
 **You:** Voilà, tenez.
+**NPC:** Quel est le motif de votre visite ?
+**You:** Je suis en vacances.
 **NPC:** Vous restez combien de temps ?
 **You:** Pour deux semaines.
 **NPC:** Où logez-vous ?
 **You:** Dans un hôtel dans le centre-ville.
-**NPC:** Bienvenue. Bon séjour !
+**NPC:** Quelque chose à déclarer ?
+**You:** Rien à déclarer.
+**NPC:** Bienvenue, et bon séjour !
 
 _Scene 2_
-**NPC:** Où allez-vous ?
+**NPC:** Bonjour ! Où allez-vous ?
 **You:** À cette adresse, s’il vous plaît.
-**NPC:** Environ quinze euros. Ça vous va ?
+**NPC:** C’est environ quinze euros. Il y a beaucoup de circulation en ce moment.
 **You:** D’accord, merci.
-**NPC:** Nous sommes arrivés. Ici, ça va ?
+**NPC:** …On est presque arrivés. Ici, ça va ?
 **You:** Arrêtez-vous ici, s’il vous plaît. Gardez la monnaie.
-**NPC:** Merci ! Bonne soirée !
+**NPC:** Merci beaucoup ! Bon voyage !
 
 _Scene 3_
-**NPC:** Bonsoir. Vous avez une réservation ?
+**NPC:** Bonsoir ! Comment puis-je vous aider ?
 **You:** J’ai une réservation, au nom de Cohen.
-**NPC:** Voici votre clé. Chambre deux cent quatre, deuxième étage.
+**NPC:** Bienvenue, monsieur Cohen. Votre passeport, s’il vous plaît.
+**You:** Voilà, tenez.
+**NPC:** Merci. Vous êtes dans la chambre deux cent quatre, au deuxième étage. Voici votre clé.
 **You:** Le petit-déjeuner est compris ?
 **NPC:** Oui, de sept à dix heures. Bon séjour.
 
@@ -556,25 +568,31 @@ spanish:
 _Scene 1_
 **NPC:** Pasaporte, por favor.
 **You:** Aquí tiene.
+**NPC:** ¿Cuál es el motivo de su viaje?
+**You:** Estoy de vacaciones.
 **NPC:** ¿Cuánto tiempo se queda?
 **You:** Dos semanas.
 **NPC:** ¿Dónde se aloja?
 **You:** En un hotel en el centro.
-**NPC:** Bienvenido. ¡Que disfrute su estancia!
+**NPC:** ¿Algo que declarar?
+**You:** Nada que declarar.
+**NPC:** Bienvenido, ¡y que disfrute su estancia!
 
 _Scene 2_
-**NPC:** ¿A dónde va?
+**NPC:** ¡Hola! ¿A dónde va?
 **You:** A esta dirección, por favor.
-**NPC:** Unos quince euros. ¿Le parece bien?
+**NPC:** Son unos quince euros. Hay mucho tráfico ahora mismo.
 **You:** De acuerdo, gracias.
-**NPC:** Ya hemos llegado. ¿Aquí está bien?
+**NPC:** …Ya casi llegamos. ¿Aquí está bien?
 **You:** Pare aquí, por favor. Quédese con el cambio.
-**NPC:** ¡Gracias! ¡Buenas noches!
+**NPC:** ¡Muchas gracias! ¡Buen viaje!
 
 _Scene 3_
-**NPC:** Buenas noches. ¿Tiene una reserva?
+**NPC:** ¡Buenas noches! ¿En qué puedo ayudarle?
 **You:** Tengo una reserva, a nombre de Cohen.
-**NPC:** Aquí tiene su llave. Habitación doscientos cuatro, segundo piso.
+**NPC:** Bienvenido, señor Cohen. Su pasaporte, por favor.
+**You:** Aquí tiene.
+**NPC:** Gracias. Está en la habitación doscientos cuatro, en el segundo piso. Aquí tiene su llave.
 **You:** ¿El desayuno está incluido?
 **NPC:** Sí, de siete a diez. Que disfrute su estancia.
 
@@ -582,25 +600,31 @@ _Scene 3_
 _Scene 1_
 **NPC:** דרכון, בבקשה.
 **You:** בבקשה, הנה.
+**NPC:** מה מטרת הביקור?
+**You:** אני כאן בחופשה.
 **NPC:** לכמה זמן אתה נשאר?
 **You:** לשבועיים.
 **NPC:** איפה אתה מתאכסן?
 **You:** במלון במרכז העיר.
-**NPC:** ברוך הבא. תיהנה מהשהות!
+**NPC:** יש לך מה להצהיר?
+**You:** אין לי מה להצהיר.
+**NPC:** ברוך הבא, ותיהנה מהשהות!
 
 _Scene 2_
-**NPC:** לאן?
+**NPC:** שלום! לאן?
 **You:** לכתובת הזאת, בבקשה.
-**NPC:** בערך חמישה עשר יורו. זה בסדר?
+**NPC:** זה בערך חמישה עשר יורו. יש הרבה פקקים עכשיו.
 **You:** בסדר, תודה.
-**NPC:** הגענו. כאן זה בסדר?
+**NPC:** …כמעט הגענו. כאן זה בסדר?
 **You:** עצור כאן, בבקשה. תשאיר את העודף.
-**NPC:** תודה! ערב טוב!
+**NPC:** תודה רבה! תיהנה מהטיול!
 
 _Scene 3_
-**NPC:** ערב טוב. יש לך הזמנה?
+**NPC:** ערב טוב! איך אפשר לעזור?
 **You:** יש לי הזמנה, על השם כהן.
-**NPC:** הנה המפתח. חדר 204, קומה שנייה.
+**NPC:** ברוך הבא, מר כהן. הדרכון שלך, בבקשה.
+**You:** בבקשה, הנה.
+**NPC:** תודה. אתה בחדר 204, בקומה השנייה. הנה המפתח שלך.
 **You:** ארוחת הבוקר כלולה?
 **NPC:** כן, משבע עד עשר. תיהנה מהשהות.
 

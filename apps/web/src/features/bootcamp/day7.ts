@@ -1,5 +1,6 @@
 import { RECOVERY_ITEMS, T, recovery } from './recovery.js';
 import type { BootcampDayContent, BootcampDialogue, BootcampItem } from './types.js';
+import { m08Flow } from './practiceArrival.js';
 
 /** Mission 8 — "Hotel Check-in" (real objective: reservation → key → floor → breakfast). */
 export const DAY7_ITEMS: BootcampItem[] = [
@@ -42,11 +43,8 @@ const SCENE: BootcampDialogue = {
     { id: 'n3', who: 'npc', fast: true, next: 'c3', en: "Thank you. You're in room two-oh-four, on the second floor. Here is your key.", he: 'תודה. אתה בחדר 204, בקומה השנייה. הנה המפתח שלך.' },
     { id: 'c3', who: 'you', en: '', he: '', choices: [
       { en: 'Is breakfast included?', he: 'ארוחת הבוקר כלולה?', itemId: 'en.phrase.hotel.breakfast', correct: true, next: 'n4' },
-      // A different question gets a DIFFERENT, matching answer — the NPC never ignores what you said.
-      { en: "What's the wifi password?", he: 'מה סיסמת הוויי-פיי?', itemId: 'en.phrase.hotel.wifi', correct: true, next: 'n4w' },
     ] },
     { id: 'n4', who: 'npc', next: 'n5', en: 'Yes! Breakfast is from seven to ten. The elevator is on your right.', he: 'כן! ארוחת בוקר משבע עד עשר. המעלית מימינך.' },
-    { id: 'n4w', who: 'npc', next: 'n5', en: "The wifi code is on your key card. And breakfast's from seven to ten — the elevator's on your right.", he: 'קוד הוויי-פיי על כרטיס המפתח. וארוחת בוקר משבע עד עשר — המעלית מימינך.' },
     { id: 'n5', who: 'npc', end: true, en: 'Enjoy your stay!', he: 'תיהנה מהשהות!' },
   ],
 };
@@ -73,25 +71,11 @@ export const DAY7: BootcampDayContent = {
       words: [
         { text: 'reservation', meaning: T('הזמנה', 'reservation'), emoji: '📅' },
         { text: 'name', meaning: T('שם', 'name'), emoji: '📛', review: true },
-        { text: 'night', meaning: T('לילה', 'night'), emoji: '🌙' },
         { text: 'breakfast', meaning: T('ארוחת בוקר', 'breakfast'), emoji: '🍳' },
         { text: 'passport', meaning: T('דרכון', 'passport'), emoji: '🛂' },
       ], buildFromItemId: 'en.phrase.hotel.reservation' },
-    { kind: 'tool', itemId: 'en.phrase.hotel.reservation', index: 1, total: 4, label: T('הפתיח', 'The opener') },
-    { kind: 'tool', itemId: 'en.phrase.hotel.two-nights', index: 2, total: 4, label: T('משך השהות', 'Length of stay') },
-    { kind: 'tool', itemId: 'en.phrase.hotel.breakfast', index: 3, total: 4, label: T('ארוחת בוקר', 'Breakfast') },
-    { kind: 'tool', itemId: 'en.phrase.hotel.wifi', index: 4, total: 4, label: T('וויי-פיי', 'Wifi') },
-    { kind: 'replies', saidItemId: 'en.phrase.hotel.reservation',
-      replyIds: ['en.reply.hotel.passport', 'en.reply.hotel.room-number', 'en.reply.hotel.second-floor', 'en.reply.hotel.breakfast-time'] },
-    { kind: 'receipt', text: T('אתה מזהה כל מה שפקיד הקבלה אומר — דרכון, חדר, קומה, שעות.', 'You recognize everything the receptionist says — passport, room, floor, hours.') },
-    { kind: 'quiz', itemId: 'en.reply.hotel.second-floor', wrongIds: ['en.reply.hotel.elevator', 'en.reply.hotel.breakfast-time'] },
-    { kind: 'dialogue', dialogueId: 'hotel-checkin' },
-    { kind: 'receipt', text: T("צ'ק-אין שלם: הזמנה, דרכון, חדר, מידע — ואתה בפנים.", 'A full check-in: reservation, passport, room, info — and you’re in.') },
-    { kind: 'swipe', itemIds: DAY7_ITEMS.map((i) => i.id) },
-    { kind: 'ambush', npc: { en: 'Just so you know breakfast is served in the room on the lower level next to the pool.', he: 'רק שתדע, ארוחת הבוקר מוגשת בחדר בקומה התחתונה ליד הבריכה.' },
-      correctItemId: 'en.phrase.recovery.repeat', wrongItemId: 'en.reply.hotel.passport' },
-    { kind: 'receipt', text: T('מידע ארוך ומהיר — ובמקום לקפוא, ביקשת לחזור עליו. זה כלי.', 'Long, fast info — and instead of freezing, you asked them to repeat. That’s a tool.') },
-    { kind: 'summary' },
+    // From the key sentences onward the flow is shared by all languages: see practiceArrival.ts.
+    ...m08Flow('en'),
   ],
 };
 void RECOVERY_ITEMS;

@@ -66,9 +66,11 @@ export function QuickReplyStep({ step, itemsById, onDone }: { step: StepOf<'quic
   const options = useMemo(() => shuffle(round.options, mulberry32(seed + i)), [round, seed, i]);
   const npc = useNpc();
 
+  // A speed challenge is the same game at natural pace; the replay is slower, as on the board and map.
+  const rate = step.challenge ? 1.12 : undefined;
   useEffect(() => {
     shownAt.current = Date.now();
-    if (prompt.spoken) void speakL(prompt.spoken.en);
+    if (prompt.spoken) void speakL(prompt.spoken.en, rate);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [i]);
 
@@ -104,13 +106,13 @@ export function QuickReplyStep({ step, itemsById, onDone }: { step: StepOf<'quic
     <>
       {/* A conversation: someone speaks to you (you HEAR it — the bubble plays it), you answer. */}
       <div className="pcanvas" data-engine="quickReply">
-        <GameHead label={step.label ? L(step.label) : t(round.situation ? 'quickReplySituation' : 'quickReplyTitle')} i={i} n={step.rounds.length} />
+        <GameHead label={step.challenge ? `⚡ ${t('speedHeadsUp')}` : step.label ? L(step.label) : t(round.situation ? 'quickReplySituation' : 'quickReplyTitle')} i={i} n={step.rounds.length} />
         {round.situation ? (
           <p className="scene-note">{L(round.situation)}</p>
         ) : (
           <div className="convo-row npc" dir="ltr" key={i}>
             <NpcFigure npc={npc} />
-            {prompt.spoken && <AudioBubble onPlay={() => void speakL(prompt.spoken!.en)} />}
+            {prompt.spoken && <AudioBubble onPlay={() => void speakL(prompt.spoken!.en, step.challenge ? 0.85 : undefined)} />}
           </div>
         )}
         <div className="convo-aside"><CompanionWatch mood="listening" /></div>
@@ -352,7 +354,9 @@ export function MatchPairsStep({ step, itemsById, onDone }: { step: StepOf<'matc
   const [answerOrder] = useState(() => matchAnswerOrder(step.pairs.length, sessionSeed()));
   const complete = state.matched.length >= step.pairs.length;
   const promptText = (i: number): string => itemsById.get(step.pairs[i]!.promptItemId)?.text ?? '';
+  /** What a matched pair SAYS: the sentence. What its answer tile SHOWS may be a number or an icon. */
   const answerText = (i: number): string => step.pairs[i]!.answerText ?? itemsById.get(step.pairs[i]!.answerItemId)?.text ?? '';
+  const answerShown = (i: number): string => step.pairs[i]!.answerLabel ?? answerText(i);
 
   const onTap = (side: MatchSide, pair: number): void => {
     tap();
@@ -381,7 +385,7 @@ export function MatchPairsStep({ step, itemsById, onDone }: { step: StepOf<'matc
         onClick={() => onTap(side, pair)}
       >
         <span className="pmatch-mark" aria-hidden>{matched ? order + 1 : missed ? '✕' : picked ? '●' : side === 'prompt' ? '👂' : '🗣️'}</span>
-        <span dir="ltr"><TargetText text={side === 'prompt' ? promptText(pair) : answerText(pair)} /></span>
+        <span dir="ltr">{side === 'answer' && step.pairs[pair]!.answerLabel ? answerShown(pair) : <TargetText text={side === 'prompt' ? promptText(pair) : answerText(pair)} />}</span>
       </button>
     );
   };

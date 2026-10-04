@@ -52,6 +52,9 @@ export interface YouLine {
   alts?: SpecItem[];
   /** A conversation-help tool offered at this turn: the NPC repeats slowly, then the turn is asked again. */
   rec?: { tool: RecoveryTool; npc: L4 };
+  /** Checkpoints: plausible lines that do NOT fit here (they belong to another moment). Picking one
+   *  is a miss; the other speaker asks again and the same decision is offered again. */
+  wrong?: SpecItem[];
 }
 
 export type SpecLine = NpcLine | YouLine;
@@ -71,6 +74,8 @@ export interface AmbushSpec {
 
 export interface SceneSpec {
   id: string;
+  /** No translation of the other speaker's lines before the learner answers. */
+  cold?: boolean;
   lines: SpecLine[];
   receipt: Copy;
   /** Checkpoints only: a cold ambush right after this scene. */
@@ -87,6 +92,8 @@ export interface PrimeSpec {
 /* Active-practice steps, written once for every language (see the engines in practiceEngines.ts). */
 export interface QuickReplySpec {
   label?: Copy;
+  /** A final speed challenge: the lines are spoken fast. */
+  challenge?: boolean;
   rounds: {
     /** id of a "you will hear" sentence of the mission, or… */
     prompt?: string;
@@ -121,8 +128,9 @@ export interface MiniMapSpec {
 }
 export interface MatchPairsSpec {
   label?: Copy;
-  /** [heard sentence id, answer sentence id, what the answer tile says when it wraps the sentence] */
-  pairs: readonly (readonly [prompt: string, answer: string, answerText?: L3])[];
+  /** [heard sentence id, answer sentence id, what the answer tile says when it wraps the sentence,
+   *   a language-neutral answer tile (number / icon) instead of text] */
+  pairs: readonly (readonly [prompt: string, answer: string, answerText?: L3, answerLabel?: string])[];
 }
 export interface SentenceBuilderSpec {
   label?: Copy;
@@ -213,7 +221,7 @@ export function specItems(spec: MissionSpec): SpecItem[] {
   for (const scene of spec.scenes) {
     for (const line of scene.lines) {
       if (line.who !== 'you') continue;
-      said.push(line.item, ...(line.alts ?? []));
+      said.push(line.item, ...(line.alts ?? []), ...(line.wrong ?? []));
       if (line.rec) tools.push(tool(line.rec.tool));
     }
   }
@@ -256,8 +264,27 @@ function buildDialogue(scene: SceneSpec, lang: MissionLang): BootcampDialogue {
       return;
     }
     if (!next) throw new Error(`[author] scene "${scene.id}" must end on an NPC line`);
-    const choice = (t: L4, itemId: string, to: string): DialogueChoice => ({ ...spoken(t, lang), itemId: `${lang}.${itemId}`, correct: true, next: to });
+    const choice = (t: L4, itemId: string, to: string, correct = true): DialogueChoice => ({ ...spoken(t, lang), itemId: `${lang}.${itemId}`, correct, next: to });
     const direct = [line.item, ...(line.alts ?? [])].map((it, k) => choice(k === 0 && line.say ? line.say : it.t, it.id, next));
+    if (line.wrong?.length) {
+      // A real decision. A miss gets its own beat — the other speaker asks again, slowly (never
+      // carrying on as if the answer had fitted) — and then the SAME choice is offered again: no
+      // dead-end screen with one button.
+      const asked = scene.lines[i - 1];
+      if (!asked || asked.who !== 'npc') throw new Error(`[author] scene "${scene.id}": a turn with wrong options must follow an NPC line`);
+      const askAgain = `m${i + 1}`;
+      const misses = line.wrong.map((it) => choice(it.t, it.id, askAgain, false));
+      const reask: DialogueNodeB = { id: askAgain, who: 'npc', slow: true, next: id, ...spoken(asked.t, lang) };
+      if (!line.rec) {
+        nodes.push({ id, who: 'you', en: '', he: '', choices: [...direct, ...misses] }, reask);
+        return;
+      }
+      const helpTool = tool(line.rec.tool);
+      const again = `r${i + 1}`;
+      nodes.push({ id, who: 'you', en: '', he: '', choices: [...direct, ...misses, choice(helpTool.t, helpTool.id, again)] }, reask);
+      nodes.push({ id: again, who: 'npc', slow: true, next: id, ...spoken(line.rec.npc, lang) });
+      return;
+    }
     if (!line.rec) {
       nodes.push({ id, who: 'you', en: '', he: '', choices: direct });
       return;
@@ -269,7 +296,7 @@ function buildDialogue(scene: SceneSpec, lang: MissionLang): BootcampDialogue {
     nodes.push({ id: repeat, who: 'npc', slow: true, next: again, ...spoken(line.rec.npc, lang) });
     nodes.push({ id: again, who: 'you', en: '', he: '', choices: direct });
   });
-  return { id: scene.id, start: ids[0]!, nodes };
+  return { id: scene.id, start: ids[0]!, ...(scene.cold ? { cold: true } : {}), nodes };
 }
 
 /** A line the app speaks, with its glosses. */
@@ -281,14 +308,14 @@ export function buildPractice(p: PracticeSpec, lang: MissionLang): BootcampStep 
   const id = (suffix: string): string => `${lang}.${suffix}`;
   const label = p.label ? { label: T(p.label) } : {};
   if (p.kind === 'matchPairs') {
-    return { kind: 'matchPairs', ...label, pairs: p.pairs.map(([prompt, answer, text]) => ({ promptItemId: id(prompt), answerItemId: id(answer), ...(text ? { answerText: text[ix] } : {}) })) };
+    return { kind: 'matchPairs', ...label, pairs: p.pairs.map(([prompt, answer, text, icon]) => ({ promptItemId: id(prompt), answerItemId: id(answer), ...(text ? { answerText: text[ix] } : {}), ...(icon ? { answerLabel: icon } : {}) })) };
   }
   if (p.kind === 'sentenceBuilder') {
     return { kind: 'sentenceBuilder', ...label, rounds: p.rounds.map((r) => ({ itemId: id(r.itemId), chunks: [...r.chunks[ix]] })) };
   }
   if (p.kind === 'quickReply') {
     return {
-      kind: 'quickReply', ...label,
+      kind: 'quickReply', ...label, ...(p.challenge ? { challenge: true } : {}),
       rounds: p.rounds.map((r) => ({
         ...(r.prompt ? { promptItemId: id(r.prompt) } : {}),
         ...(r.npc ? { npc: spoken(r.npc, lang) } : {}),

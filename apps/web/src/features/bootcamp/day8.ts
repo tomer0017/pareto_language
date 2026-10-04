@@ -1,5 +1,6 @@
 import { RECOVERY_ITEMS, T, recovery } from './recovery.js';
 import type { BootcampDayContent, BootcampDialogue, BootcampItem } from './types.js';
+import { m09Flow } from './practiceArrival.js';
 
 /** Mission 9 — "Shopping" (real objective: browse, try, decide, pay — in control). */
 export const DAY8_ITEMS: BootcampItem[] = [
@@ -75,21 +76,8 @@ export const DAY8: BootcampDayContent = {
         T('חנות בגדים: להסתכל בשקט, למדוד, לבקש מידה, להחליט.', 'A clothing shop: browse in peace, try on, ask for a size, decide.'),
         T('לא צריך לקנות. צריך להרגיש בשליטה מול המוכר.', 'You don’t have to buy. You do have to feel in control with the seller.'),
       ], cta: T('להיכנס לחנות', 'Walk in') },
-    { kind: 'tool', itemId: 'en.phrase.shop.just-looking', index: 1, total: 4, label: T('מרחב אישי', 'Personal space') },
-    { kind: 'tool', itemId: 'en.phrase.shop.try-on', index: 2, total: 4, label: T('למדוד', 'Try it on') },
-    { kind: 'tool', itemId: 'en.phrase.shop.bigger', index: 3, total: 4, label: T('מידה', 'Sizes') },
-    { kind: 'tool', itemId: 'en.phrase.shop.take-it', index: 4, total: 4, label: T('להחליט', 'Decide') },
-    { kind: 'replies', saidItemId: 'en.phrase.shop.try-on',
-      replyIds: ['en.reply.shop.what-size', 'en.reply.shop.fitting-room', 'en.reply.shop.on-sale', 'en.reply.shop.anything-else'] },
-    { kind: 'receipt', text: T('אתה מזהה מה מוכר שואל — מידה, חדר הלבשה, מבצע.', 'You recognize what a seller asks — size, fitting room, sale.') },
-    { kind: 'quiz', itemId: 'en.reply.shop.out-of-stock', wrongIds: ['en.reply.shop.on-sale', 'en.reply.shop.fitting-room'] },
-    { kind: 'dialogue', dialogueId: 'clothing-shop' },
-    { kind: 'receipt', text: T('קניה שלמה: הסתכלת, מדדת, ביקשת מידה, החלטת. בשליטה מלאה.', 'A full shop: browsed, tried on, asked for a size, decided. Fully in control.') },
-    { kind: 'swipe', itemIds: DAY8_ITEMS.map((i) => i.id) },
-    { kind: 'ambush', npc: { en: 'That one is actually the last piece we have in that colour would you like me to hold it?', he: 'זה בעצם הפריט האחרון שיש לנו בצבע הזה — שאשמור לך אותו?' },
-      correctItemId: 'en.phrase.recovery.repeat', wrongItemId: 'en.reply.shop.what-size' },
-    { kind: 'receipt', text: T('משפט ארוך ומהיר — ובמקום לקפוא, ביקשת הבהרה. זה בדיוק הרפלקס.', 'A long, fast sentence — and instead of freezing, you asked for clarity. Exactly the reflex.') },
-    { kind: 'summary' },
+    // From the key sentences onward the flow is shared by all languages: see practiceArrival.ts.
+    ...m09Flow('en'),
   ],
 };
 void RECOVERY_ITEMS;

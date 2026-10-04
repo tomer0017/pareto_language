@@ -1,5 +1,6 @@
 import { T, recovery } from './recovery.js';
 import type { BootcampDayContent, BootcampDialogue, BootcampItem } from './types.js';
+import { m06Flow } from './practiceArrival.js';
 
 /**
  * Mission 6 — "Airport & Border" (Phase 2 · Arrival).
@@ -99,21 +100,7 @@ export const DAY10: BootcampDayContent = {
         T('הרגע הכי מפחיד בטיול הוא גם הצפוי ביותר. פקיד הגבול שואל תמיד את אותן שאלות.', 'The scariest moment of the trip is also the most predictable. The border officer always asks the same questions.'),
         T('נכיר אותן מראש. אחר כך גבול זה בסך הכל תסריט שכבר קראת.', 'We’ll learn them in advance. After that, a border is just a script you’ve already read.'),
       ], cta: T('להתקרב לדלפק', 'Approach the counter') },
-    { kind: 'tool', itemId: 'en.phrase.border.passport-here', index: 1, total: 4, label: T('המשפט הפותח', 'The opener') },
-    { kind: 'tool', itemId: 'en.phrase.border.on-holiday', index: 2, total: 4, label: T('מטרת הביקור', 'Purpose of visit') },
-    { kind: 'tool', itemId: 'en.phrase.border.two-weeks', index: 3, total: 4, label: T('כמה זמן', 'How long') },
-    { kind: 'tool', itemId: 'en.phrase.border.staying-hotel', index: 4, total: 4, label: T('איפה מתאכסן', 'Where staying') },
-    { kind: 'replies', saidItemId: 'en.phrase.border.passport-here',
-      replyIds: ['en.reply.border.purpose', 'en.reply.border.how-long', 'en.reply.border.where-staying', 'en.reply.border.anything-declare'] },
-    { kind: 'receipt', text: T('אתה מזהה את כל שרשרת השאלות של פקיד הגבול — מראש.', 'You recognize the border officer’s whole question-chain — in advance.') },
-    { kind: 'quiz', itemId: 'en.reply.border.purpose', wrongIds: ['en.reply.border.how-long', 'en.reply.border.enjoy'] },
-    { kind: 'quiz', itemId: 'en.reply.border.where-staying', wrongIds: ['en.reply.border.anything-declare', 'en.reply.border.passport-please'] },
-    { kind: 'dialogue', dialogueId: 'border-control' },
-    { kind: 'receipt', text: T('עברת ביקורת גבול שלמה באנגלית — דרכון, מטרה, משך, מקום, מכס.', 'You cleared a full border check in English — passport, purpose, duration, place, customs.') },
-    { kind: 'swipe', itemIds: DAY10_ITEMS.map((i) => i.id) },
-    { kind: 'ambush', npc: { en: 'And do you have a return ticket booked for your flight home at all?', he: 'ויש לך בכלל כרטיס חזור מוזמן לטיסה הביתה?' },
-      correctItemId: 'en.phrase.recovery.one-moment', wrongItemId: 'en.phrase.border.two-weeks' },
-    { kind: 'receipt', text: T('שאלה שלא ציפית לה — ולא קפאת. קנית שנייה עם כלי.', 'A question you didn’t expect — and you didn’t freeze. You bought a second with a tool.') },
-    { kind: 'summary' },
+    // From the key sentences onward the flow is shared by all languages: see practiceArrival.ts.
+    ...m06Flow('en'),
   ],
 };

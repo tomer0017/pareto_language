@@ -22,6 +22,33 @@ loop (typecheck → lint → tests → build → smoke) green at every milestone
 
 ## What's done
 
+### Practice depth — Missions 06–10, the Arrival phase (2026-10-04)
+Scope: Practice of Missions 06–10 only. Missions 01–05 and 11–30, the dialogues / sentences / intro
+cards of 06–09, mission order, the Companion and progression are fingerprinted or untouched.
+- **Shared flow:** `practiceArrival.ts` defines everything after the intro card (and word intro) of
+  Missions 06–09 once for EN / FR / ES; the 12 mission files keep sentences, dialogue, intro, video.
+- **06 Border:** both meaning quizzes removed; "Nothing to declare." is now a key sentence; Quick
+  Reply ×4 (purpose / how long / where / customs); Swap It "For ___" ×3; final = Border Rush, a
+  speed Quick Reply made of the officer's own lines. The untaught "return ticket" cold open is gone.
+- **07 Taxi:** quiz removed; fare board by ear (taught numbers only); Taxi Rush ×5 incl. the fast
+  fare line where "Please speak slowly." is accepted; final = the ride at speed (driver's own lines).
+- **08 Hotel:** "For two nights." and the wifi password are gone from the mission — not taught,
+  reviewed or offered (the wifi option and its reply were removed from the dialogue; both sentence
+  ids still exist for history / Extended); "night" left the word intro; Hotel Match (sentence ↔ number/icon),
+  room number by ear ×2, front-desk Quick Reply ×4; final = a real recovery challenge.
+- **09 Shopping:** Shop Rush ×4, size Swap It ×2 (EN bigger / smaller · FR plus grande / plus petite · ES más grande / más pequeña), out-of-stock stays receptive
+  (one listening quiz); final = a real recovery challenge.
+- **10 Checkpoint:** three cold scenes with 11 real decisions (the right line + a line from another
+  moment, 3 with a conversation-help tool), no translation before answering, one speed-listening
+  moment, zero vocabulary not met in Missions 01–09 (tested per language), no one-button screens.
+  A miss gets its own slow re-ask and the same decision again. **Mission 10's scenes changed** — the
+  one deliberate exception to "dialogues unchanged", required by the checkpoint brief.
+- **Small model additions (no new engine):** `quickReply.challenge`, `MatchPair.answerLabel`,
+  `BootcampDialogue.cold`, `YouLine.wrong` in `author.ts`.
+- **Review** of 06–09 is now selective (11–12 lines) instead of every sentence.
+- **Tests:** `practiceArrival.test.ts` (51). 1360 tests in all.
+- **Not done:** manual browser / device QA.
+
 ### Companion artwork, expressions and entry screen (2026-10-04)
 Presentation only — no curriculum, dialogue, scoring or progression change.
 - **Final character art:** 48 isolated transparent renders (6 stages × 8 poses) replace the scenery

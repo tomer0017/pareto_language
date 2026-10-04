@@ -60,7 +60,7 @@ export const MISSION_VOCAB_AUDIT: Record<number, MissionVocabAudit> = {
     justification: 'Address/airport/stop are new; "how much" is reviewed from the money mission.' }),
   7: A({ day: 7, decision: 'primed',
     globalWords: ['name', 'breakfast'], priorKnowledge: ['name'],
-    primingWords: ['reservation', 'name', 'night', 'breakfast', 'passport'],
+    primingWords: ['reservation', 'name', 'breakfast', 'passport'],
     excluded: ['room-amenity vocabulary — the reusable part lives in Fixing Problems'],
     justification: 'Check-in nouns are new; "name" is reviewed from the introduction mission.' }),
   8: A({ day: 8, decision: 'no-priming-needed',

@@ -138,6 +138,13 @@ export function validatePracticeStep(step: BootcampStep, itemIds: ReadonlySet<st
       if (!itemIds.has(p.promptItemId)) issues.push(`matchPairs pair ${i + 1}: prompt → ${p.promptItemId}`);
       if (!itemIds.has(p.answerItemId)) issues.push(`matchPairs pair ${i + 1}: answer → ${p.answerItemId}`);
     });
+    step.pairs.forEach((p, i) => {
+      if (p.answerLabel !== undefined && !p.answerLabel.trim()) issues.push(`matchPairs pair ${i + 1}: empty answer label`);
+      // The same sentence on both sides only makes sense when the answer tile is a number / icon.
+      if (p.promptItemId === p.answerItemId && !p.answerLabel) issues.push(`matchPairs pair ${i + 1}: a sentence is paired with itself`);
+    });
+    const shown = step.pairs.map((p) => p.answerLabel ?? p.answerText).filter((x): x is string => x !== undefined);
+    if (new Set(shown).size !== shown.length) issues.push('matchPairs: two answer tiles look the same');
     if (new Set(step.pairs.map((p) => p.promptItemId)).size !== step.pairs.length) issues.push('matchPairs: a prompt appears twice');
     if (new Set(step.pairs.map((p) => p.answerItemId)).size !== step.pairs.length) issues.push('matchPairs: an answer appears twice');
   }

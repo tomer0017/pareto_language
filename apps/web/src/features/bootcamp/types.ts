@@ -54,6 +54,8 @@ export interface BootcampDialogue {
    *  explain why it's more/less useful before continuing. Opt-in — no current mission enables it
    *  (it belonged to the retired Recovery Toolkit mission); every mission runs as-is. */
   coaching?: boolean;
+  /** A checkpoint scene: the other speaker's line is NOT translated before the learner answers. */
+  cold?: boolean;
 }
 
 /**
@@ -149,6 +151,9 @@ export interface MatchPair {
   answerItemId: string;
   /** What the answer tile says, when it wraps the sentence ("Yes, it's my first time here."). */
   answerText?: string;
+  /** A language-neutral answer tile — a number or an icon ("🚪 204") — for matching what was said to
+   *  what it means without any translation. The pair may then name the same sentence on both sides. */
+  answerLabel?: string;
 }
 
 /** Sentence Builder — rebuild a sentence the mission already taught from its chunks. The chunks are
@@ -173,7 +178,8 @@ export type BootcampStep =
   //  - 'recovery': the line is deliberately too hard; the winning move is a conversation-help tool.
   //  - 'speed':    the language is known; the challenge is catching it at speed. Never "use a tool".
   | { kind: 'ambush'; mode?: 'recovery' | 'speed'; npc: SpokenLine; correctItemId: string; wrongItemId: string }
-  | { kind: 'quickReply'; label?: LocalizedText; rounds: QuickReplyRound[] }
+  //  `challenge`: a final speed challenge — the same rounds, spoken fast (like the board and the map).
+  | { kind: 'quickReply'; label?: LocalizedText; rounds: QuickReplyRound[]; challenge?: boolean }
   | { kind: 'visualMatch'; label?: LocalizedText; tiles: MatchTile[]; rounds: { audio: SpokenLine; correct: string; itemId?: string }[]; challenge?: boolean }
   | { kind: 'swap'; label?: LocalizedText; rounds: SwapRound[] }
   | { kind: 'miniMap'; label?: LocalizedText; rounds: MiniMapRound[]; challenge?: boolean }

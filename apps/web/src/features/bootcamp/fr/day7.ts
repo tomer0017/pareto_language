@@ -1,6 +1,7 @@
 import type { LocalizedText } from '@ready/content-schema';
 import type { BootcampDayContent, BootcampDialogue, BootcampItem } from '../types.js';
 import { recoveryFr } from './recovery.js';
+import { m08Flow } from '../practiceArrival.js';
 
 /**
  * French Mission 8 — "Arrivée à l’hôtel" (Hotel Check-in). French parallel of English mission 7: same
@@ -50,10 +51,8 @@ const SCENE: BootcampDialogue = {
     { id: 'n3', who: 'npc', fast: true, next: 'c3', en: 'Merci. Vous êtes dans la chambre deux cent quatre, au deuxième étage. Voici votre clé.', tr: TR("Thank you. You're in room two-oh-four, on the second floor. Here is your key.", 'תודה. אתה בחדר 204, בקומה השנייה. הנה המפתח שלך.'), he: 'תודה. אתה בחדר 204, בקומה השנייה. הנה המפתח שלך.' },
     { id: 'c3', who: 'you', en: '', he: '', choices: [
       { en: 'Le petit-déjeuner est compris ?', tr: TR('Is breakfast included?', 'ארוחת הבוקר כלולה?'), he: 'ארוחת הבוקר כלולה?', itemId: 'fr.phrase.hotel.breakfast', correct: true, next: 'n4' },
-      { en: 'C’est quoi le mot de passe du wifi ?', tr: TR("What's the wifi password?", 'מה סיסמת הוויי-פיי?'), he: 'מה סיסמת הוויי-פיי?', itemId: 'fr.phrase.hotel.wifi', correct: true, next: 'n4w' },
     ] },
     { id: 'n4', who: 'npc', next: 'n5', en: 'Oui ! Le petit-déjeuner est de sept heures à dix heures. L’ascenseur est sur votre droite.', tr: TR('Yes! Breakfast is from seven to ten. The elevator is on your right.', 'כן! ארוחת בוקר משבע עד עשר. המעלית מימינך.'), he: 'כן! ארוחת בוקר משבע עד עשר. המעלית מימינך.' },
-    { id: 'n4w', who: 'npc', next: 'n5', en: 'Le code wifi est sur votre carte de chambre. Et le petit-déjeuner est de sept à dix heures — l’ascenseur est sur votre droite.', tr: TR("The wifi code is on your key card. And breakfast's from seven to ten — the elevator's on your right.", 'קוד הוויי-פיי על כרטיס המפתח. וארוחת בוקר משבע עד עשר — המעלית מימינך.'), he: 'קוד הוויי-פיי על כרטיס המפתח. וארוחת בוקר משבע עד עשר — המעלית מימינך.' },
     { id: 'n5', who: 'npc', end: true, en: 'Bon séjour !', tr: TR('Enjoy your stay!', 'תיהנה מהשהות!'), he: 'תיהנה מהשהות!' },
   ],
 };
@@ -74,24 +73,10 @@ export const DAY7_FR: BootcampDayContent = {
       words: [
         { text: 'réservation', meaning: T('הזמנה', 'reservation'), emoji: '📅' },
         { text: 'nom', meaning: T('שם', 'name'), emoji: '📛', review: true },
-        { text: 'nuit', meaning: T('לילה', 'night'), emoji: '🌙' },
         { text: 'petit-déjeuner', meaning: T('ארוחת בוקר', 'breakfast'), emoji: '🍳' },
         { text: 'passeport', meaning: T('דרכון', 'passport'), emoji: '🛂' },
       ], buildFromItemId: 'fr.phrase.hotel.reservation' },
-    { kind: 'tool', itemId: 'fr.phrase.hotel.reservation', index: 1, total: 4, label: T('הפתיח', 'The opener') },
-    { kind: 'tool', itemId: 'fr.phrase.hotel.two-nights', index: 2, total: 4, label: T('משך השהות', 'Length of stay') },
-    { kind: 'tool', itemId: 'fr.phrase.hotel.breakfast', index: 3, total: 4, label: T('ארוחת בוקר', 'Breakfast') },
-    { kind: 'tool', itemId: 'fr.phrase.hotel.wifi', index: 4, total: 4, label: T('וויי-פיי', 'Wifi') },
-    { kind: 'replies', saidItemId: 'fr.phrase.hotel.reservation',
-      replyIds: ['fr.reply.hotel.passport', 'fr.reply.hotel.room-number', 'fr.reply.hotel.second-floor', 'fr.reply.hotel.breakfast-time'] },
-    { kind: 'receipt', text: T('אתה מזהה כל מה שפקיד הקבלה אומר — דרכון, חדר, קומה, שעות.', 'You recognize everything the receptionist says — passport, room, floor, hours.') },
-    { kind: 'quiz', itemId: 'fr.reply.hotel.second-floor', wrongIds: ['fr.reply.hotel.elevator', 'fr.reply.hotel.breakfast-time'] },
-    { kind: 'dialogue', dialogueId: 'hotel-checkin' },
-    { kind: 'receipt', text: T("צ'ק-אין שלם: הזמנה, דרכון, חדר, מידע — ואתה בפנים.", 'A full check-in: reservation, passport, room, info — and you’re in.') },
-    { kind: 'swipe', itemIds: DAY7_FR_ITEMS.map((i) => i.id) },
-    { kind: 'ambush', npc: { en: 'Juste pour info, le petit-déjeuner est servi dans la salle au niveau inférieur, à côté de la piscine.', tr: TR('Just so you know breakfast is served in the room on the lower level next to the pool.', 'רק שתדע, ארוחת הבוקר מוגשת בחדר בקומה התחתונה ליד הבריכה.'), he: 'רק שתדע, ארוחת הבוקר מוגשת בחדר בקומה התחתונה ליד הבריכה.' },
-      correctItemId: 'fr.phrase.recovery.repeat', wrongItemId: 'fr.reply.hotel.passport' },
-    { kind: 'receipt', text: T('מידע ארוך ומהיר — ובמקום לקפוא, ביקשת לחזור עליו. זה כלי.', 'Long, fast info — and instead of freezing, you asked them to repeat. That’s a tool.') },
-    { kind: 'summary' },
+    // From the key sentences onward the flow is shared by all languages: see practiceArrival.ts.
+    ...m08Flow('fr'),
   ],
 };

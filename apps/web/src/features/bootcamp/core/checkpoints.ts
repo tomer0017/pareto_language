@@ -54,71 +54,99 @@ const ES: BootcampItem[] = [...DAY1_ES_ITEMS, ...DAY2_ES_ITEMS, ...DAY3_ES_ITEMS
 /** A sentence taught by one of the hand-written missions. */
 const known = (id: string): SpecItem => fromItems(id, EN, FR, ES);
 
+/**
+ * Arrival Day — the checkpoint of Missions 06–09. Nobody helps: three cold scenes in a row.
+ *   - Nothing is taught, quizzed or reviewed. Every word, in every language, is one the learner has
+ *     already met in Missions 01–09 (a test enforces it).
+ *   - The other speaker's lines are not translated before the learner answers (`cold`).
+ *   - Almost every turn is a real decision: the line that fits, a line that belongs to another
+ *     moment of the day, and — twice — a conversation-help tool, which counts as success.
+ *   - One moment is at natural speed with nothing new in it.
+ */
 export const ARRIVAL_DAY: MissionSpec = {
   day: 9,
   title: ['נקודת ביקורת: יום הגעה', 'CHECKPOINT: Arrival Day'],
   icon: '🛬',
   intro: [
     ['אין חומר חדש היום. רק הוכחה.', 'No new material today. Just proof.'],
-    ['נחתת. ביקורת גבולות, מונית למלון, צ\'ק-אין — ברצף, בלי הכנה.', 'You have landed. Border control, a taxi to the hotel, check-in — in a row, unprepared.'],
+    ['נחתת. ביקורת גבולות, מונית למלון, צ\'ק-אין — ברצף, בלי הכנה ובלי תרגום.', 'You have landed. Border control, a taxi to the hotel, check-in — in a row, unprepared and untranslated.'],
     ['בוא נראה מה באמת נשאר לך בראש.', 'Let’s see what actually stuck.'],
   ],
   cta: ['נחתנו — קדימה', 'We’ve landed — go'],
   scenes: [
     {
       id: 'cold-border',
-      receipt: ['עברת ביקורת גבולות: דרכון, כמה זמן, ואיפה אתה מתאכסן.', 'You cleared the border: passport, how long, and where you are staying.'],
+      cold: true,
+      receipt: ['עברת ביקורת גבולות: דרכון, מטרה, משך, מקום ומכס — בלי עזרה.', 'You cleared the border: passport, purpose, how long, where, and customs — with no help.'],
       lines: [
         npc('Passport, please.', 'Passeport, s’il vous plaît.', 'Pasaporte, por favor.', 'דרכון, בבקשה.', 'fast'),
-        you(known('phrase.hotel.here-you-go')),
+        you(known('phrase.hotel.here-you-go'), { wrong: [known('phrase.border.on-holiday')] }),
+        npc("What's the purpose of your visit?", 'Quel est le motif de votre visite ?', '¿Cuál es el motivo de su viaje?', 'מה מטרת הביקור?', 'fast'),
+        you(known('phrase.border.on-holiday'), { wrong: [known('phrase.border.two-weeks')] }),
         npc('How long are you staying?', 'Vous restez combien de temps ?', '¿Cuánto tiempo se queda?', 'לכמה זמן אתה נשאר?', 'fast'),
         you(known('phrase.border.two-weeks'), {
+          wrong: [known('phrase.border.staying-hotel')],
           rec: { tool: 'repeat', npc: ['How long? One week? Two weeks?', 'Combien de temps ? Une semaine ? Deux semaines ?', '¿Cuánto tiempo? ¿Una semana? ¿Dos semanas?', 'כמה זמן? שבוע? שבועיים?'] },
         }),
         npc('Where are you staying?', 'Où logez-vous ?', '¿Dónde se aloja?', 'איפה אתה מתאכסן?'),
-        you(known('phrase.border.staying-hotel')),
-        npc('Welcome. Enjoy your stay!', 'Bienvenue. Bon séjour !', 'Bienvenido. ¡Que disfrute su estancia!', 'ברוך הבא. תיהנה מהשהות!'),
+        you(known('phrase.border.staying-hotel'), { wrong: [known('phrase.border.nothing-declare')] }),
+        npc('Anything to declare?', 'Quelque chose à déclarer ?', '¿Algo que declarar?', 'יש לך מה להצהיר?'),
+        you(known('phrase.border.nothing-declare'), { wrong: [known('phrase.border.on-holiday')] }),
+        npc('Welcome, and enjoy your stay!', 'Bienvenue, et bon séjour !', 'Bienvenido, ¡y que disfrute su estancia!', 'ברוך הבא, ותיהנה מהשהות!'),
       ],
     },
     {
       id: 'cold-taxi',
+      cold: true,
       receipt: ['מונית בלי הכנה — יעד, מחיר, עצירה, עודף.', 'A cold taxi — destination, price, stop, change.'],
-      ambush: {
-        npc: ['Is here alright or would you prefer the main entrance just up ahead?', 'Ici, ça va, ou vous préférez l’entrée principale un peu plus loin ?', '¿Aquí está bien, o prefiere la entrada principal un poco más adelante?', 'כאן בסדר או שאתה מעדיף את הכניסה הראשית קצת קדימה?'],
-        correct: 'reply.taxi.here-good',
-        wrong: 'reply.taxi.about-fifteen',
-        receipt: ['שאלה ארוכה ומהירה — והבנת ששואלים אם כאן זה בסדר.', 'A long, fast question — and you understood you were asked whether here is okay.'],
-      },
       lines: [
-        npc('Where to?', 'Où allez-vous ?', '¿A dónde va?', 'לאן?', 'fast'),
-        you(known('phrase.taxi.to-address')),
-        npc('About fifteen euros. Is that okay?', 'Environ quinze euros. Ça vous va ?', 'Unos quince euros. ¿Le parece bien?', 'בערך חמישה עשר יורו. זה בסדר?'),
-        you(tool('thank-you'), { say: ['Okay, thank you.', 'D’accord, merci.', 'De acuerdo, gracias.', 'בסדר, תודה.'] }),
-        npc("We're here. Is here okay?", 'Nous sommes arrivés. Ici, ça va ?', 'Ya hemos llegado. ¿Aquí está bien?', 'הגענו. כאן זה בסדר?'),
-        you(known('phrase.taxi.stop-here'), { say: ['Stop here, please. Keep the change.', 'Arrêtez-vous ici, s’il vous plaît. Gardez la monnaie.', 'Pare aquí, por favor. Quédese con el cambio.', 'עצור כאן, בבקשה. תשאיר את העודף.'] }),
-        npc('Thank you! Have a good evening!', 'Merci ! Bonne soirée !', '¡Gracias! ¡Buenas noches!', 'תודה! ערב טוב!'),
+        npc('Hello! Where to?', 'Bonjour ! Où allez-vous ?', '¡Hola! ¿A dónde va?', 'שלום! לאן?', 'fast'),
+        you(known('phrase.taxi.to-address'), { wrong: [known('phrase.taxi.stop-here')] }),
+        npc("It's about fifteen euros. There's a lot of traffic right now.", 'C’est environ quinze euros. Il y a beaucoup de circulation en ce moment.', 'Son unos quince euros. Hay mucho tráfico ahora mismo.', 'זה בערך חמישה עשר יורו. יש הרבה פקקים עכשיו.', 'fast'),
+        you(tool('thank-you'), {
+          say: ['Okay, thank you.', 'D’accord, merci.', 'De acuerdo, gracias.', 'בסדר, תודה.'],
+          wrong: [known('phrase.taxi.how-much')],
+          rec: { tool: 'slowly', npc: ["Sure. About fifteen euros. There's a lot of traffic.", 'Bien sûr. Environ quinze euros. Il y a beaucoup de circulation.', 'Claro. Unos quince euros. Hay mucho tráfico.', 'בטח. בערך חמישה עשר יורו. יש הרבה פקקים.'] },
+        }),
+        npc('…We are almost there. Is here okay?', '…On est presque arrivés. Ici, ça va ?', '…Ya casi llegamos. ¿Aquí está bien?', '…כמעט הגענו. כאן זה בסדר?'),
+        you(known('phrase.taxi.stop-here'), {
+          say: ['Stop here, please. Keep the change.', 'Arrêtez-vous ici, s’il vous plaît. Gardez la monnaie.', 'Pare aquí, por favor. Quédese con el cambio.', 'עצור כאן, בבקשה. תשאיר את העודף.'],
+          wrong: [known('phrase.taxi.to-address')],
+        }),
+        npc('Thank you very much! Enjoy your trip!', 'Merci beaucoup ! Bon voyage !', '¡Muchas gracias! ¡Buen viaje!', 'תודה רבה! תיהנה מהטיול!'),
       ],
     },
     {
       id: 'cold-hotel',
-      receipt: ['צ\'ק-אין בלי הכנה — הזמנה, מפתח, חדר, ארוחת בוקר.', 'A cold check-in — reservation, key, room, breakfast.'],
+      cold: true,
+      receipt: ['צ\'ק-אין בלי הכנה — הזמנה, דרכון, חדר, ארוחת בוקר.', 'A cold check-in — reservation, passport, room, breakfast.'],
+      // One moment at natural speed, built only from what the receptionist already said in Mission 08.
       ambush: {
-        npc: ['Just so you have it breakfast is downstairs from seven and the wifi code is on your key card.', 'Juste pour info, le petit-déjeuner est en bas à partir de sept heures, et le code wifi est sur votre carte.', 'Solo para que lo tenga, el desayuno es abajo a partir de las siete, y la clave del wifi está en su tarjeta.', 'רק שיהיה לך — ארוחת בוקר למטה משבע, וקוד הוויי-פיי על כרטיס המפתח.'],
+        mode: 'speed',
+        npc: ['The elevator is on your right. Breakfast is from seven to ten. Enjoy your stay!', 'L’ascenseur est sur votre droite. Le petit-déjeuner est de sept heures à dix heures. Bon séjour !', 'El ascensor está a su derecha. El desayuno es de siete a diez. ¡Que disfrute su estancia!', 'המעלית מימינך. ארוחת בוקר משבע עד עשר. תיהנה מהשהות!'],
         correct: 'reply.hotel.breakfast-time',
-        wrong: 'reply.hotel.passport',
-        receipt: ['מידע מהיר בסוף הצ\'ק-אין — ותפסת את שעת ארוחת הבוקר.', 'Fast information at the end of check-in — and you caught the breakfast time.'],
+        wrong: 'reply.hotel.room-number',
+        receipt: ['מידע בקצב רגיל, בלי שום מילה חדשה — ותפסת את שעות ארוחת הבוקר.', 'Information at normal speed, with not one new word — and you caught the breakfast hours.'],
       },
       lines: [
-        npc('Good evening. Do you have a reservation?', 'Bonsoir. Vous avez une réservation ?', 'Buenas noches. ¿Tiene una reserva?', 'ערב טוב. יש לך הזמנה?', 'fast'),
-        you(known('phrase.hotel.reservation'), { say: ['I have a reservation, under the name Cohen.', 'J’ai une réservation, au nom de Cohen.', 'Tengo una reserva, a nombre de Cohen.', 'יש לי הזמנה, על השם כהן.'] }),
-        npc('Here is your key. Room two-oh-four, second floor.', 'Voici votre clé. Chambre deux cent quatre, deuxième étage.', 'Aquí tiene su llave. Habitación doscientos cuatro, segundo piso.', 'הנה המפתח. חדר 204, קומה שנייה.'),
-        you(known('phrase.hotel.breakfast')),
+        npc('Good evening! How can I help you?', 'Bonsoir ! Comment puis-je vous aider ?', '¡Buenas noches! ¿En qué puedo ayudarle?', 'ערב טוב! איך אפשר לעזור?', 'fast'),
+        you(known('phrase.hotel.reservation'), {
+          say: ['I have a reservation, under the name Cohen.', 'J’ai une réservation, au nom de Cohen.', 'Tengo una reserva, a nombre de Cohen.', 'יש לי הזמנה, על השם כהן.'],
+          wrong: [known('phrase.hotel.breakfast')],
+        }),
+        npc('Welcome, Mr. Cohen. Your passport, please.', 'Bienvenue, monsieur Cohen. Votre passeport, s’il vous plaît.', 'Bienvenido, señor Cohen. Su pasaporte, por favor.', 'ברוך הבא, מר כהן. הדרכון שלך, בבקשה.'),
+        you(known('phrase.hotel.here-you-go'), { wrong: [known('phrase.border.nothing-declare')] }),
+        npc("Thank you. You're in room two-oh-four, on the second floor. Here is your key.", 'Merci. Vous êtes dans la chambre deux cent quatre, au deuxième étage. Voici votre clé.', 'Gracias. Está en la habitación doscientos cuatro, en el segundo piso. Aquí tiene su llave.', 'תודה. אתה בחדר 204, בקומה השנייה. הנה המפתח שלך.', 'fast'),
+        you(known('phrase.hotel.breakfast'), {
+          wrong: [known('phrase.hotel.reservation')],
+          rec: { tool: 'repeat', npc: ["You're in room two-oh-four. It's on the second floor.", 'Vous êtes dans la chambre deux cent quatre. C’est au deuxième étage.', 'Está en la habitación doscientos cuatro. Está en el segundo piso.', 'אתה בחדר 204. זה בקומה השנייה.'] },
+        }),
         npc('Yes, from seven to ten. Enjoy your stay.', 'Oui, de sept à dix heures. Bon séjour.', 'Sí, de siete a diez. Que disfrute su estancia.', 'כן, משבע עד עשר. תיהנה מהשהות.'),
       ],
     },
   ],
-  hear: [known('reply.taxi.here-good'), known('reply.taxi.about-fifteen'), known('reply.hotel.breakfast-time'), known('reply.hotel.passport')],
-  closing: ['יום הגעה שלם — גבול, מונית ומלון — בקור. אתה מוכן לנחות באמת.', 'A full arrival day — border, taxi and hotel — cold. You are ready to actually land.'],
+  hear: [known('reply.hotel.breakfast-time'), known('reply.hotel.room-number')],
+  closing: ['יום הגעה שלם, בלי עזרה: עברת גבול, לקחת מונית והבנת את המחיר, עשית צ\'ק-אין — וגם כשזה היה מהיר, לא קפאת.', 'A full arrival day, alone: you cleared the border, took a taxi and understood the fare, checked in — and when it got fast, you did not freeze.'],
 };
 
 export const EVERYDAY_DAY: MissionSpec = {

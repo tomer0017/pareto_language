@@ -341,11 +341,6 @@ _Reply-training drill:_ “What's the purpose of your visit?” · “How long a
 ### Recovery tools reused
 `Can you repeat that?` · `Please speak slowly.` · `One moment, please.` · `Thank you!`
 
-### Cold open (ambush)
-- 🧑 (fast) “And do you have a return ticket booked for your flight home at all?” · ויש לך בכלל כרטיס חזור מוזמן לטיסה הביתה?
-  - ✅ best move: **One moment, please.** · רגע אחד, בבקשה.
-  - ✗ distractor: For two weeks.
-
 ### Dialogue: `border-control` — happy path
 - **🧑 Them:** “Next, please. Passport?” · הבא בתור, בבקשה. דרכון?
 - **🫵 You:** “Here is my passport.” · הנה הדרכון שלי.
@@ -399,11 +394,6 @@ _Reply-training drill:_ “Where to?” · “It's about fifteen euros.” · �
 
 ### Recovery tools reused
 `Please speak slowly.` · `Can you show me?` · `Thank you!`
-
-### Cold open (ambush)
-- 🧑 (fast) “Sorry the road ahead is closed is it alright if I drop you around the corner?” · סליחה, הכביש קדימה חסום — בסדר שאוריד אותך מעבר לפינה?
-  - ✅ best move: **Is here okay?** · כאן זה בסדר?
-  - ✗ distractor: Where to?
 
 ### Dialogue: `taxi-ride` — happy path
 - **🧑 Them:** “Hello! Where to?” · שלום! לאן?
@@ -460,7 +450,7 @@ _Reply-training drill:_ “Your passport, please.” · “You're in room two-oh
 ### Cold open (ambush)
 - 🧑 (fast) “Just so you know breakfast is served in the room on the lower level next to the pool.” · רק שתדע, ארוחת הבוקר מוגשת בחדר בקומה התחתונה ליד הבריכה.
   - ✅ best move: **Can you repeat that?** · אפשר לחזור על זה?
-  - ✗ distractor: Your passport, please.
+  - ✗ distractor: Here you go.
 
 ### Dialogue: `hotel-checkin` — happy path
 - **🧑 Them:** “Good evening! How can I help you?” · ערב טוב! איך אפשר לעזור?
@@ -513,7 +503,7 @@ _Reply-training drill:_ “What size are you?” · “The fitting room is over 
 ### Cold open (ambush)
 - 🧑 (fast) “That one is actually the last piece we have in that colour would you like me to hold it?” · זה בעצם הפריט האחרון שיש לנו בצבע הזה — שאשמור לך אותו?
   - ✅ best move: **Can you repeat that?** · אפשר לחזור על זה?
-  - ✗ distractor: What size are you?
+  - ✗ distractor: I'll take it.
 
 ### Dialogue: `clothing-shop` — happy path
 - **🧑 Them:** “Hi there! Can I help you find anything?” · היי! אפשר לעזור לך למצוא משהו?
@@ -546,54 +536,75 @@ _Reply-training drill:_ “What size are you?” · “The fitting room is over 
 
 ### Core phrases (you say)
 - **Here you go.** · בבקשה, הנה.
+- **I'm here on holiday.** · אני כאן בחופשה. — _התשובה ל-"מטרת הביקור?". ידידותית ובטוחה._
 - **For two weeks.** · לשבועיים. — _התבנית: For + משך זמן. For three days / For a week._
 - **At a hotel in the city centre.** · במלון במרכז העיר. — _התשובה ל-"איפה אתה מתאכסן?". שם המלון עדיף, אבל זה מספיק._
+- **Nothing to declare.** · אין לי מה להצהיר. — _המשפט הקבוע במכס. אומרים אותו רגוע._
 - **To this address, please.** · לכתובת הזאת, בבקשה. — _הפתיח למונית — תגיד את זה ותראה את הכתובת בטלפון._
 - **Stop here, please.** · עצור כאן, בבקשה. — _העיתוי חשוב — תגיד את זה קצת לפני היעד._
+- **How much to the centre?** · כמה עד המרכז? — _לשאול מחיר לפני שנוסעים — חוסך הפתעות._
 - **I have a reservation.** · יש לי הזמנה. — _הפתיח לדלפק המלון. תבנית: I have a ___._
 - **Is breakfast included?** · ארוחת הבוקר כלולה?
 
 ### Expected replies (you hear)
-- **Is here okay?** · כאן זה בסדר?
-- **It's about fifteen euros.** · זה בערך חמישה עשר יורו.
 - **Breakfast is from seven to ten.** · ארוחת בוקר משבע עד עשר.
-- **Your passport, please.** · הדרכון שלך, בבקשה.
+- **You're in room two-oh-four.** · אתה בחדר 204.
 
 ### Recovery tools reused
-`Thank you!` · `Can you repeat that?`
+`Thank you!` · `Can you repeat that?` · `Please speak slowly.`
 
 ### Cold open (ambush)
-- 🧑 (fast) “Is here alright or would you prefer the main entrance just up ahead?” · כאן בסדר או שאתה מעדיף את הכניסה הראשית קצת קדימה?
-  - ✅ best move: **Is here okay?** · כאן זה בסדר?
-  - ✗ distractor: It's about fifteen euros.
-- 🧑 (fast) “Just so you have it breakfast is downstairs from seven and the wifi code is on your key card.” · רק שיהיה לך — ארוחת בוקר למטה משבע, וקוד הוויי-פיי על כרטיס המפתח.
+- 🧑 (fast) “The elevator is on your right. Breakfast is from seven to ten. Enjoy your stay!” · המעלית מימינך. ארוחת בוקר משבע עד עשר. תיהנה מהשהות!
   - ✅ best move: **Breakfast is from seven to ten.** · ארוחת בוקר משבע עד עשר.
-  - ✗ distractor: Your passport, please.
+  - ✗ distractor: You're in room two-oh-four.
 
 ### Dialogue: `cold-border` — happy path
 - **🧑 Them:** “Passport, please.” · דרכון, בבקשה.
 - **🫵 You:** “Here you go.” · בבקשה, הנה.
+- **🧑 Them:** “What's the purpose of your visit?” · מה מטרת הביקור?
+- **🫵 You:** “I'm here on holiday.” · אני כאן בחופשה.
 - **🧑 Them:** “How long are you staying?” · לכמה זמן אתה נשאר?
 - **🫵 You:** “For two weeks.” · לשבועיים.
 - **🧑 Them:** “Where are you staying?” · איפה אתה מתאכסן?
 - **🫵 You:** “At a hotel in the city centre.” · במלון במרכז העיר.
-- **🧑 Them:** “Welcome. Enjoy your stay!” · ברוך הבא. תיהנה מהשהות!
+- **🧑 Them:** “Anything to declare?” · יש לך מה להצהיר?
+- **🫵 You:** “Nothing to declare.” · אין לי מה להצהיר.
+- **🧑 Them:** “Welcome, and enjoy your stay!” · ברוך הבא, ותיהנה מהשהות!
+
+#### Wrong / recovery branches
+- ⚠︎ less useful: 🫵 “I'm here on holiday.” → 🧑 “Passport, please.” · דרכון, בבקשה.
+- ⚠︎ less useful: 🫵 “For two weeks.” → 🧑 “What's the purpose of your visit?” · מה מטרת הביקור?
+- ⚠︎ less useful: 🫵 “At a hotel in the city centre.” → 🧑 “How long are you staying?” · לכמה זמן אתה נשאר?
+- ⚠︎ less useful: 🫵 “Nothing to declare.” → 🧑 “Where are you staying?” · איפה אתה מתאכסן?
+- ⚠︎ less useful: 🫵 “I'm here on holiday.” → 🧑 “Anything to declare?” · יש לך מה להצהיר?
 
 ### Dialogue: `cold-taxi` — happy path
-- **🧑 Them:** “Where to?” · לאן?
+- **🧑 Them:** “Hello! Where to?” · שלום! לאן?
 - **🫵 You:** “To this address, please.” · לכתובת הזאת, בבקשה.
-- **🧑 Them:** “About fifteen euros. Is that okay?” · בערך חמישה עשר יורו. זה בסדר?
+- **🧑 Them:** “It's about fifteen euros. There's a lot of traffic right now.” · זה בערך חמישה עשר יורו. יש הרבה פקקים עכשיו.
 - **🫵 You:** “Okay, thank you.” · בסדר, תודה.
-- **🧑 Them:** “We're here. Is here okay?” · הגענו. כאן זה בסדר?
+- **🧑 Them:** “…We are almost there. Is here okay?” · …כמעט הגענו. כאן זה בסדר?
 - **🫵 You:** “Stop here, please. Keep the change.” · עצור כאן, בבקשה. תשאיר את העודף.
-- **🧑 Them:** “Thank you! Have a good evening!” · תודה! ערב טוב!
+- **🧑 Them:** “Thank you very much! Enjoy your trip!” · תודה רבה! תיהנה מהטיול!
+
+#### Wrong / recovery branches
+- ⚠︎ less useful: 🫵 “Stop here, please.” → 🧑 “Hello! Where to?” · שלום! לאן?
+- ⚠︎ less useful: 🫵 “How much to the centre?” → 🧑 “It's about fifteen euros. There's a lot of traffic right now.” · זה בערך חמישה עשר יורו. יש הרבה פקקים עכשיו.
+- ⚠︎ less useful: 🫵 “To this address, please.” → 🧑 “…We are almost there. Is here okay?” · …כמעט הגענו. כאן זה בסדר?
 
 ### Dialogue: `cold-hotel` — happy path
-- **🧑 Them:** “Good evening. Do you have a reservation?” · ערב טוב. יש לך הזמנה?
+- **🧑 Them:** “Good evening! How can I help you?” · ערב טוב! איך אפשר לעזור?
 - **🫵 You:** “I have a reservation, under the name Cohen.” · יש לי הזמנה, על השם כהן.
-- **🧑 Them:** “Here is your key. Room two-oh-four, second floor.” · הנה המפתח. חדר 204, קומה שנייה.
+- **🧑 Them:** “Welcome, Mr. Cohen. Your passport, please.” · ברוך הבא, מר כהן. הדרכון שלך, בבקשה.
+- **🫵 You:** “Here you go.” · בבקשה, הנה.
+- **🧑 Them:** “Thank you. You're in room two-oh-four, on the second floor. Here is your key.” · תודה. אתה בחדר 204, בקומה השנייה. הנה המפתח שלך.
 - **🫵 You:** “Is breakfast included?” · ארוחת הבוקר כלולה?
 - **🧑 Them:** “Yes, from seven to ten. Enjoy your stay.” · כן, משבע עד עשר. תיהנה מהשהות.
+
+#### Wrong / recovery branches
+- ⚠︎ less useful: 🫵 “Is breakfast included?” → 🧑 “Good evening! How can I help you?” · ערב טוב! איך אפשר לעזור?
+- ⚠︎ less useful: 🫵 “Nothing to declare.” → 🧑 “Welcome, Mr. Cohen. Your passport, please.” · ברוך הבא, מר כהן. הדרכון שלך, בבקשה.
+- ⚠︎ less useful: 🫵 “I have a reservation.” → 🧑 “Thank you. You're in room two-oh-four, on the second floor. Here is your key.” · תודה. אתה בחדר 204, בקומה השנייה. הנה המפתח שלך.
 
 ### Review status
 - 🤖 AI-drafted (English + Hebrew) — **pending human / native-Hebrew review**
