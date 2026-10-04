@@ -39,6 +39,9 @@ export interface DialogueNodeB {
   he: string;
   /** Translation in the learner's APP language ({en,he,…}) — see DialogueChoice.tr. */
   tr?: LocalizedText;
+  /** A scene transition ("Later…") in the APP language: shown above the line, never spoken — it is
+   *  not something the other speaker says. */
+  cue?: LocalizedText;
   fast?: boolean;       // natural speed
   slow?: boolean;       // deliberately slowed (recovery beats)
   next?: string;        // linear advance (npc lines / scripted you-lines)
@@ -56,6 +59,9 @@ export interface BootcampDialogue {
   coaching?: boolean;
   /** A checkpoint scene: the other speaker's line is NOT translated before the learner answers. */
   cold?: boolean;
+  /** No Subtitles: the other speaker's line is not WRITTEN either before the learner answers — it is
+   *  only heard (a bubble that replays it). Always together with `cold`. */
+  audioOnly?: boolean;
 }
 
 /**

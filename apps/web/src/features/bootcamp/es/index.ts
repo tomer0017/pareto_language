@@ -13,7 +13,6 @@ import { DAY13_ES } from './day13.js';
 import { DAY16_ES } from './day16.js';
 import { DAY18_ES } from './day18.js';
 import { DAY25_ES } from './day25.js';
-import { DAY28_ES } from './day28.js';
 
 /**
  * Spanish Bootcamp missions (content-only). Same `BootcampDayContent` shape as the English and French
@@ -38,6 +37,5 @@ export const DAYS_ES: Record<number, BootcampDayContent> = {
   16: DAY16_ES,
   18: DAY18_ES,
   25: DAY25_ES,
-  28: DAY28_ES,
   ...specMissions('es'),
 };

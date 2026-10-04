@@ -13,7 +13,7 @@ import { Learn } from './Learn.js';
 import { CompanionCoach, CompanionIntro, CompanionReaction } from '../companion/Companion.js';
 import { GAME_MOOD, coachFor } from '../companion/companionCoach.js';
 import { completeChime } from '../../shared/audio/sfx.js';
-import { NpcLine, YouLine, useNpc } from './ConvoScene.js';
+import { NpcLine, NpcSpeech, YouLine, useNpc } from './ConvoScene.js';
 import { MatchPairsStep, MiniMapStep, QuickReplyStep, SentenceBuilderStep, SwapStep, VisualMatchStep } from './PracticeSteps.js';
 import { isHelpToolId } from './practiceEngines.js';
 import { missionsFor, useBootcampStore } from './bootcampStore.js';
@@ -759,8 +759,15 @@ function DialogueStep({ dialogue, onDone }: { dialogue: BootcampDialogue; onDone
         {usedTool && <CompanionReaction kind="recovery" size={88} />}
         {displayNpc && (
           <div className="fade-in" key={displayNpc.id}>
-            {/* A cold (checkpoint) scene gives no translation before the learner answers. */}
-            <NpcLine npc={npc} gloss={dialogue.cold ? undefined : dialogueTr(displayNpc)}>{dialogue.cold ? displayNpc.en : <TappableText text={displayNpc.en} />}</NpcLine>
+            {/* A scene transition ("Later…") is shown in the app language and never spoken. */}
+            {displayNpc.cue && <p className="faint small convo-cue" dir="auto">{L(displayNpc.cue)}</p>}
+            {/* A cold (checkpoint) scene gives no translation before the learner answers; an
+                audio-only scene (No Subtitles) does not write the line either — it is only heard. */}
+            <NpcLine npc={npc} gloss={dialogue.cold ? undefined : dialogueTr(displayNpc)}>
+              <NpcSpeech audioOnly={dialogue.audioOnly === true} onPlay={() => void speakL(displayNpc.en, displayNpc.fast ? 1.08 : displayNpc.slow ? 0.75 : 0.95)}>
+                {dialogue.cold ? displayNpc.en : <TappableText text={displayNpc.en} />}
+              </NpcSpeech>
+            </NpcLine>
           </div>
         )}
         {yourLine && node.who !== 'you' && <YouLine>{yourLine}</YouLine>}

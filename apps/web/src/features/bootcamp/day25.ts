@@ -1,4 +1,5 @@
 import { T, recovery } from './recovery.js';
+import { m26Flow } from './practiceMastery.js';
 import type { BootcampDayContent, BootcampDialogue, BootcampItem } from './types.js';
 
 /**
@@ -84,21 +85,6 @@ export const DAY25: BootcampDayContent = {
         T('יש מילים שתקווה לא להזדקק להן — אבל אם כן, הן חשובות מאוד.', 'Some words you hope never to need — but if you do, they matter a great deal.'),
         T('לתאר תסמין, להצהיר על אלרגיה, להבין מינון. גם חולה, אתה מסתדר בכל שפה.', 'Describe a symptom, state an allergy, understand the dosage. Even sick, you manage in any language.'),
       ], cta: T('להיכנס לבית המרקחת', 'Walk into the pharmacy') },
-    { kind: 'tool', itemId: 'en.phrase.pharm.headache', index: 1, total: 4, label: T('לתאר תסמין', 'Describe a symptom') },
-    { kind: 'tool', itemId: 'en.phrase.pharm.something-for', index: 2, total: 4, label: T('לבקש תרופה', 'Ask for a remedy') },
-    { kind: 'tool', itemId: 'en.phrase.pharm.allergic-penicillin', index: 3, total: 4, label: T('להצהיר על אלרגיה', 'State an allergy') },
-    { kind: 'tool', itemId: 'en.phrase.pharm.how-often', index: 4, total: 4, label: T('לוודא מינון', 'Confirm the dosage') },
-    { kind: 'replies', saidItemId: 'en.phrase.pharm.headache',
-      replyIds: ['en.reply.pharm.whats-matter', 'en.reply.pharm.any-allergies', 'en.reply.pharm.take-twice', 'en.reply.pharm.after-meals'] },
-    { kind: 'receipt', text: T('אתה מזהה את שאלות הרוקח — תסמין, אלרגיות, והוראות מינון.', 'You recognize the pharmacist’s questions — symptom, allergies, and dosage instructions.') },
-    { kind: 'quiz', itemId: 'en.reply.pharm.take-twice', wrongIds: ['en.reply.pharm.after-meals', 'en.reply.pharm.see-doctor'] },
-    { kind: 'quiz', itemId: 'en.reply.pharm.any-allergies', wrongIds: ['en.reply.pharm.whats-matter', 'en.reply.pharm.feel-better'] },
-    { kind: 'dialogue', dialogueId: 'pharmacy' },
-    { kind: 'receipt', text: T('תיארת תסמין, הצהרת על אלרגיה, ווידאת מינון — אתה מסביר את עצמך בכל בית מרקחת.', 'You described a symptom, stated an allergy, and confirmed the dosage — you can explain yourself in any pharmacy.') },
-    { kind: 'swipe', itemIds: DAY25_ITEMS.map((i) => i.id) },
-    { kind: 'ambush', npc: { en: "And if it doesn't improve in three days you'll really need to see a doctor okay?", he: 'ואם זה לא משתפר תוך שלושה ימים, תצטרך באמת לראות רופא, בסדר?' },
-      correctItemId: 'en.phrase.recovery.slowly', wrongItemId: 'en.phrase.pharm.headache' },
-    { kind: 'receipt', text: T('הוראת המשך רפואית מהירה — וביקשת שיאט. עם בריאות לא מנחשים.', 'A fast medical follow-up instruction — and you asked them to slow down. With health, you never guess.') },
-    { kind: 'summary' },
+    ...m26Flow('en'),
   ],
 };

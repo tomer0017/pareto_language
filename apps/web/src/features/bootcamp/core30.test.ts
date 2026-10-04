@@ -394,22 +394,30 @@ describe('Curriculum V1.0 lock — the final audit decisions stay decided', () =
       const earlier = new Map(BOOTCAMP_PLAN.slice(0, at).flatMap((m) => MISSIONS_BY_LANG[lang]![m.day]!.items).map((it) => [it.id, it.text]));
       for (const it of MISSIONS_BY_LANG[lang]![dayOf('no-subtitles')]!.items) expect(earlier.get(it.id), `${lang} ${it.id}`).toBe(it.text);
     }
-    expect(text('no-subtitles')).not.toMatch(/good call|last one in|gotta|got a second|first time here/i);
-    expect(answerTo('no-subtitles', /Beautiful place, right\?/)).toBe('This place is beautiful.');
+    // The idioms and the untaught surprises stay out.
+    expect(text('no-subtitles')).not.toMatch(/good call|last one in|gotta|got a second|platform's changed|about to close|heads up|sorry to rush/i);
+    // A question gets the answer to THAT question.
+    expect(answerTo('no-subtitles', /Beautiful view, isn't it\?/)).toBe('This place is beautiful.');
+    expect(answerTo('no-subtitles', /Is this your first time here\?/)).toBe("Yes, it's my first time here.");
   });
 
-  it('Mission 30 still contains a successful recovery: slow down → simpler repeat → understood', () => {
+  it('Mission 30 still contains a successful recovery: slow down → simpler repeat → the same decision again', () => {
+    const day = MISSIONS_BY_LANG.en![dayOf('complete-day-abroad')]!;
+    const evening = day.dialogues['fin-evening']!;
+    const dense = evening.nodes.find((n) => n.id === evening.start)!;
+    const decision = evening.nodes.find((n) => n.id === dense.next)!;
+    const slowly = decision.choices!.find((c) => c.itemId === 'en.phrase.recovery.slowly')!;
+    expect(slowly.correct).toBe(true); // asking for it slowly is a right answer
+    const again = evening.nodes.find((n) => n.id === slowly.next)!;
+    expect(again.slow).toBe(true);
+    expect(again.en.length).toBeLessThan(dense.en.length); // the repeat is simpler
+    expect(again.next).toBe(decision.id); // …and the learner then answers
+    // The opinion comes after the duration is stated, and is answered as an opinion.
     const t = turns('complete-day-abroad');
-    const ask = t.findIndex((x) => x.who === 'you' && x.text === 'Please speak slowly.');
-    expect(ask).toBeGreaterThan(0);
-    expect(t[ask - 1]!.text.length).toBeGreaterThan(t[ask + 1]!.text.length); // the repeat is simpler
-    expect(t[ask + 2]!.text).toBe('Okay, thank you.');
-    expect(text('complete-day-abroad')).toMatch(/Two weeks in Vietnam\? I think that's too short\./);
-    expect(answerTo('complete-day-abroad', /too short/)).toBe("I don't think so.");
-    // The duration is stated before anyone disputes it.
     const stated = t.findIndex((x) => x.text === "I'll be there for two weeks.");
     expect(stated).toBeGreaterThan(-1);
-    expect(stated).toBeLessThan(t.findIndex((x) => /Two weeks in Vietnam/.test(x.text)));
+    expect(stated).toBeLessThan(t.findIndex((x) => /I think Vietnam is too far/.test(x.text)));
+    expect(answerTo('complete-day-abroad', /too far/)).toBe("I don't think so.");
   });
 });
 

@@ -22,6 +22,41 @@ loop (typecheck → lint → tests → build → smoke) green at every milestone
 
 ## What's done
 
+### Final Core practice pass — Missions 25–30, Mastery (2026-10-04)
+Scope: Missions 25–30 only. Missions 01–24 are fingerprinted byte-for-byte; the conversations and
+sentences of 25–27, mission order, the Companion and progression are unchanged.
+- **Scaffolding decreases.** 25–27 still teach (key sentences, one drill of each question, then
+  answering in context); 28–30 teach nothing — no key sentences, quiz, review or translation before
+  the answer. Difficulty is speed and recombination: a per-language guard proves every word of 28 /
+  29 / 30 was met in Missions 01–27 / 01–28 / 01–29.
+- **25 Lost / Stolen / Police:** situation match (words beside the icon), the report Quick Reply ×5,
+  Swap It "I can't find ___ / I lost ___" ×3, the two scenes, review 16 → 8, a speed chain of the
+  scenes' own lines ×4, and one fast double question where asking for it slowly is the answer. The
+  quiz and the old cold open are gone: "Where did it happen?" is drilled once, then only answered.
+- **26 Pharmacy** (`practiceMastery.ts`, one flow for three languages): symptom match ×4, the counter
+  Quick Reply ×4, instruction match ×3, review 15 → 8, a chain ×3, then the instruction said fast —
+  "thank you" is the miss, "slowly" is the answer. No dose, duration or remedy is invented; the old
+  cold open ("if it doesn't improve in three days…") is gone. Language practice, not medical advice.
+- **27 Emergency:** the dispatcher's four questions, a service choice (injury → ambulance, danger or
+  crime → police), review 15 → 6, the whole call at speed ×5. No quiz, no cold open, no emergency
+  number, no promise that help arrives.
+- **28 No Subtitles:** a new `audioOnly` dialogue flag — the other speaker's line is not written and
+  not translated before the answer (the bubble is a replay button). 12 real decisions in 3 scenes,
+  Recovery on 2 lines. Before this pass the mission showed both the text and its translation.
+- **29 Dress Rehearsal:** now one multilingual spec (`DRESS_REHEARSAL` in `core/checkpoints.ts`; the
+  three hand-written `day28.ts` files are deleted). 13 real decisions, a Recovery budget of 2 that
+  actually repeats the line, one disruption (the wrong dish), one faster moment (the bill).
+- **30 A Complete Day Abroad Alone:** 21 real decisions + a goodnight across five scenes, 3 Recovery
+  moments, one real problem at the meal, no manufactured police / medical / emergency incident. The
+  final card lists what was demonstrated and does not claim fluency.
+- **Left the Core:** three Extended-only sentences Mission 29 borrowed (`phrase.rest.table-for-two`,
+  `phrase.rest.bill-please`, `phrase.pay.by-card`) — replaced by the Core sentences. They stay
+  defined in the Extended files, are not active Core sentences and are not in `retired.ts`. Each is a
+  legacy alias of the Core sentence now said at that turn (`rest.table-two`, `rest.the-bill`,
+  `money.by-card`), so practice stored under the old ids still counts.
+- **Mission 28's "Later…"** is a scene transition (`cue`): shown in the app language, never spoken.
+- **Tests:** `practiceMastery.test.ts` (69). **Not done:** manual browser / device QA.
+
 ### Practice depth — Missions 19–24, City & Conversation (2026-10-04)
 Scope: Practice of Missions 19–24 only. Missions 01–18 and 25–30, the dialogues of 19–23, mission
 order, the Companion and progression are fingerprinted or untouched. Nothing was retired.

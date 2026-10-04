@@ -76,9 +76,6 @@ describe('scope: only the Practice of Missions 11–18 changed', () => {
   it('Missions 01–10 are unchanged by this pass (their own fingerprint, incl. the later retirement of two hotel sentences, lives in practiceArrival.test.ts)', () => {
     expect(print((l) => slice(l, 0, 10))).toEqual(M01_10);
   });
-  it('Missions 25–30 are byte-for-byte unchanged (19–24 have their own pass — practiceCity.test.ts)', () => {
-    expect(print((l) => slice(l, 24, 30))).toEqual({ en: '82db671f', fr: '84ecc1ae', es: '7d6a6e76' });
-  });
   it('the locked dialogues of Missions 11–17 are byte-for-byte unchanged', () => {
     expect(print((l) => slice(l, 10, 17).map((d) => d.dialogues))).toEqual({ en: '66104490', fr: 'c4e783b1', es: 'fccb4e58' });
   });

@@ -28,7 +28,7 @@ export const EMERGENCY: MissionSpec = {
   cta: ['להתקשר', 'Make the call'],
   scenes: [{
     id: 'emergency',
-    receipt: ['שיחת חירום שלמה: עזרה, מה קרה, איפה אתה. עשית הכל נכון.', 'A complete emergency call: help, what happened, where you are. You did everything right.'],
+    receipt: ['שיחת חירום שלמה: עזרה, מה קרה, איפה אתה, ואתה נשאר במקום.', 'A complete emergency call: help, what happened, where you are, and that you are staying put.'],
     lines: [
       npc("Emergency services — what's wrong?", 'Services d’urgence — qu’est-ce qui se passe ?', 'Emergencias — ¿qué ocurre?', 'שירותי חירום — מה קרה?'),
       you(NEED_HELP),
@@ -65,12 +65,44 @@ export const EMERGENCY: MissionSpec = {
     said: 'phrase.emerg.need-help',
     replies: ['reply.emerg.whats-wrong', 'reply.emerg.are-you-hurt', 'reply.emerg.where-you', 'reply.emerg.stay-there'],
     repliesReceipt: ['אתה מזהה את שאלות המוקד: מה קרה, אתה פצוע, איפה אתה.', 'You recognize the dispatcher’s questions: what’s wrong, are you hurt, where are you.'],
-    quiz: ['reply.emerg.where-you', 'reply.emerg.are-you-hurt', 'reply.emerg.on-the-way'],
-    ambush: {
-      npc: ['Okay listen carefully I need to know exactly where are you right now?', 'D’accord, écoutez-moi bien, j’ai besoin de savoir exactement : où êtes-vous en ce moment ?', 'De acuerdo, escúcheme bien, necesito saber exactamente: ¿dónde está ahora mismo?', 'טוב, תקשיב טוב — אני צריך לדעת בדיוק: איפה אתה עכשיו?'],
-      correct: 'reply.emerg.where-you',
-      wrong: 'reply.emerg.stay-calm',
-      receipt: ['מהר ובלחץ — והבנת את השאלה הכי חשובה: איפה אתה.', 'Fast and under pressure — and you caught the most important question: where are you.'],
-    },
+    // "Where are you?" is drilled once above; from here on it is only ever ANSWERED.
+    practice: [
+      // The four questions of the call — the answer has to be automatic.
+      {
+        kind: 'quickReply',
+        label: ['המוקד שואל — מה עונים?', 'The dispatcher asks — what do you answer?'],
+        rounds: [
+          { prompt: 'reply.emerg.whats-wrong', options: [['phrase.emerg.need-help', true], ['phrase.emerg.im-at-station', false], ['phrase.emerg.stay-here', false]] },
+          { prompt: 'reply.emerg.are-you-hurt', options: [['phrase.emerg.someone-hurt', true, ['No, but someone is hurt.', 'Non, mais quelqu’un est blessé.', 'No, pero hay alguien herido.']], ['phrase.emerg.stay-here', false], ['phrase.emerg.where-hospital', false]] },
+          { prompt: 'reply.emerg.where-you', options: [['phrase.emerg.im-at-station', true], ['phrase.emerg.need-help', false], ['phrase.emerg.call-ambulance', false]] },
+          { prompt: 'reply.emerg.stay-there', options: [['phrase.emerg.stay-here', true], ['phrase.emerg.im-at-station', false], ['phrase.emerg.call-police', false]] },
+        ],
+      },
+      // Which service do you ask for?
+      {
+        kind: 'quickReply',
+        label: ['איזה שירות מבקשים?', 'Which service do you ask for?'],
+        rounds: [
+          { situation: ['מישהו נפצע.', 'Someone is injured.'], options: [['phrase.emerg.call-ambulance', true], ['phrase.emerg.call-police', false]] },
+          { situation: ['מישהו בסכנה, או שקרה פשע.', 'Someone is in danger, or there has been a crime.'], options: [['phrase.emerg.call-police', true], ['phrase.emerg.call-ambulance', false]] },
+        ],
+      },
+    ],
+    review: ['phrase.emerg.need-help', 'phrase.emerg.someone-hurt', 'phrase.emerg.call-ambulance', 'phrase.emerg.call-police', 'phrase.emerg.im-at-station', 'phrase.emerg.stay-here'],
+    // The whole call once more, in order, at natural speed — the call's own lines, not one new word.
+    finale: [{
+      practice: {
+        kind: 'quickReply',
+        challenge: true,
+        rounds: [
+          { npc: ["Emergency services — what's wrong?", 'Services d’urgence — qu’est-ce qui se passe ?', 'Emergencias — ¿qué ocurre?', 'שירותי חירום — מה קרה?'], options: [['phrase.emerg.need-help', true], ['phrase.emerg.stay-here', false], ['phrase.emerg.im-at-station', false]] },
+          { npc: ['Okay, stay calm. Are you hurt?', 'D’accord, restez calme. Vous êtes blessé ?', 'De acuerdo, mantenga la calma. ¿Está herido?', 'טוב, תישאר רגוע. אתה פצוע?'], options: [['phrase.emerg.someone-hurt', true, ['No, but someone is hurt.', 'Non, mais quelqu’un est blessé.', 'No, pero hay alguien herido.']], ['phrase.emerg.im-at-station', false], ['phrase.emerg.stay-here', false]] },
+          { npc: ['Do you need an ambulance or the police?', 'Vous avez besoin d’une ambulance ou de la police ?', '¿Necesita una ambulancia o a la policía?', 'אתה צריך אמבולנס או משטרה?'], options: [['phrase.emerg.call-ambulance', true], ['phrase.emerg.call-police', false], ['phrase.emerg.where-hospital', false]] },
+          { npc: ['An ambulance is on the way. Where are you?', 'Une ambulance arrive. Où êtes-vous ?', 'Una ambulancia va en camino. ¿Dónde está?', 'אמבולנס בדרך. איפה אתה?'], options: [['phrase.emerg.im-at-station', true], ['phrase.emerg.need-help', false], ['phrase.emerg.someone-hurt', false]] },
+          { npc: ['Good. Stay there, and stay with the person.', 'Très bien. Restez là, et restez avec la personne.', 'Muy bien. Quédese ahí, y quédese con la persona.', 'טוב. תישאר שם, ותישאר עם האדם.'], options: [['phrase.emerg.stay-here', true], ['phrase.emerg.call-doctor', false], ['phrase.emerg.im-at-station', false]] },
+        ],
+      },
+      receipt: ['שיחה שלמה בקצב רגיל: עזרה, מה קרה, איזה שירות, איפה אתה, ואתה נשאר. המשפטים האלה יוצאים לך בלי לחשוב.', 'A whole call at normal speed: help, what happened, which service, where you are, and that you are staying. These lines come out without thinking.'],
+    }],
   },
 };

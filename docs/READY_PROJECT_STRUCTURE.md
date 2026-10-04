@@ -88,6 +88,8 @@ stays as a calm way out. READY is used in two modes over the SAME content: **act
   (Foundations → Arrival → Everyday Life → City & Conversation → Mastery). **Mission 1 = Introduce
   Myself**, Mission 4 = Everyday Core (want / need / have / can), Mission 30 = A Complete Day Abroad
   Alone; checkpoints (cold integration days — they test, never teach) at **10 / 18 / 24 / 30**.
+  Missions 28–30 teach nothing: 28 is heard only (no transcript, no translation before the answer),
+  29 is one evening, 30 is one whole day of real decisions.
   Pareto-first: reusable sentence frames before nouns, and human conversation (plans, home, hobbies,
   past, future, opinions) alongside travel survival. Missions outside the Core live in the **Extended
   Mission Pool** (`EXTENDED_POOL`; content kept in `extended.ts`, never shown). The former

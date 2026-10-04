@@ -82,12 +82,92 @@ export const LOST_STOLEN: MissionSpec = {
     said: 'phrase.lost.phone-stolen',
     replies: ['reply.lost.where-happen', 'reply.lost.want-to-report', 'reply.lost.have-passport-q', 'reply.lost.go-to-police'],
     repliesReceipt: ['אתה מזהה את השאלות שישאלו אותך: איפה זה קרה, ואם אתה רוצה לדווח.', 'You recognize the questions you will be asked: where it happened, and whether you want to report it.'],
-    quiz: ['reply.lost.where-happen', 'reply.lost.did-you-lose-it', 'reply.lost.have-passport-q'],
+    // "Where did it happen?" is drilled once above; from here on it is only ever ANSWERED, in context.
+    practice: [
+      // What is the situation — still looking, taken, or lost? (Words beside the icon, never an icon alone.)
+      {
+        kind: 'matchPairs',
+        label: ['מה קרה? התאם כל משפט למצב', 'What happened? Match each sentence to its situation'],
+        pairs: [
+          ['phrase.lost.cant-find', 'phrase.lost.cant-find', undefined, '🔍', ['מחפש — ולא מוצא', 'Looking — it is not there']],
+          ['phrase.lost.phone-stolen', 'phrase.lost.phone-stolen', undefined, '🏃', ['מישהו לקח את הטלפון', 'Someone took the phone']],
+          ['phrase.emerg.lost-passport', 'phrase.emerg.lost-passport', undefined, '🛂', ['הדרכון אבד', 'The passport is lost']],
+        ],
+      },
+      // The report, question by question.
+      {
+        kind: 'quickReply',
+        label: ['מדווחים — מה עונים?', 'Making the report — what do you answer?'],
+        rounds: [
+          { npc: ['Hello. How can I help you?', 'Bonjour. Comment puis-je vous aider ?', 'Hola. ¿En qué puedo ayudarle?', 'שלום. איך אפשר לעזור?'], options: [['phrase.lost.phone-stolen', true], ['phrase.lost.on-the-bus', false], ['phrase.lost.have-passport', false]] },
+          { prompt: 'reply.lost.where-happen', options: [['phrase.lost.on-the-bus', true], ['phrase.lost.want-report', false], ['phrase.lost.phone-stolen', false]] },
+          { prompt: 'reply.lost.want-to-report', options: [['phrase.lost.want-report', true], ['phrase.lost.on-the-bus', false], ['phrase.lost.where-police', false]] },
+          { prompt: 'reply.lost.go-to-police', options: [['phrase.lost.where-police', true], ['phrase.lost.want-report', false], ['phrase.lost.have-passport', false]] },
+          { prompt: 'reply.lost.have-passport-q', options: [['phrase.lost.have-passport', true], ['phrase.lost.on-the-bus', false], ['phrase.lost.where-police', false]] },
+        ],
+      },
+      // The same two frames, another object.
+      {
+        kind: 'swap',
+        rounds: [
+          {
+            frame: ["I can't find my ___.", 'Je ne trouve pas mon ___.', 'No encuentro mi ___.'],
+            itemId: 'phrase.lost.cant-find-wallet',
+            cue: { emoji: '👛', text: ['הארנק לא בתיק', 'Your wallet is not in your bag'] },
+            options: [
+              [['wallet', 'portefeuille', 'cartera'], 'אני לא מוצא את הארנק שלי.', true],
+              [['phone', 'téléphone', 'teléfono'], 'אני לא מוצא את הטלפון שלי.', false],
+              [['passport', 'passeport', 'pasaporte'], 'אני לא מוצא את הדרכון שלי.', false],
+            ],
+          },
+          {
+            frame: ['I lost my ___.', 'J’ai perdu mon ___.', 'He perdido mi ___.'],
+            itemId: 'phrase.emerg.lost-passport',
+            cue: { emoji: '🛂', text: ['הדרכון אבד', 'Your passport is lost'] },
+            options: [
+              [['passport', 'passeport', 'pasaporte'], 'איבדתי את הדרכון.', true],
+              [['phone', 'téléphone', 'teléfono'], 'איבדתי את הטלפון.', false],
+              [['wallet', 'portefeuille', 'cartera'], 'איבדתי את הארנק.', false],
+            ],
+          },
+          {
+            frame: ['I lost my ___.', 'J’ai perdu mon ___.', 'He perdido mi ___.'],
+            cue: { emoji: '📱', text: ['הטלפון אבד', 'Your phone is lost'] },
+            options: [
+              [['phone', 'téléphone', 'teléfono'], 'איבדתי את הטלפון.', true],
+              [['wallet', 'portefeuille', 'cartera'], 'איבדתי את הארנק.', false],
+              [['passport', 'passeport', 'pasaporte'], 'איבדתי את הדרכון.', false],
+            ],
+          },
+        ],
+      },
+    ],
+    review: [
+      'phrase.lost.cant-find', 'phrase.lost.phone-stolen', 'phrase.emerg.lost-passport', 'phrase.lost.where-police',
+      'phrase.lost.on-the-bus', 'phrase.lost.want-report', 'reply.lost.where-happen', 'reply.lost.want-to-report',
+    ],
+    // Lost or stolen → help → report: the two conversations' own lines, at natural speed.
+    finale: [{
+      practice: {
+        kind: 'quickReply',
+        challenge: true,
+        rounds: [
+          { npc: ['Are you okay?', 'Ça va ?', '¿Está bien?', 'הכל בסדר?'], options: [['phrase.lost.cant-find', true, ["No. I can't find my phone.", 'Non. Je ne trouve pas mon téléphone.', 'No. No encuentro mi teléfono.']], ['phrase.lost.have-passport', false], ['phrase.lost.want-report', false]] },
+          { npc: ['You should go to the police.', 'Vous devriez aller à la police.', 'Debería ir a la policía.', 'כדאי לך ללכת למשטרה.'], options: [['phrase.lost.where-police', true], ['phrase.lost.on-the-bus', false], ['phrase.lost.have-passport', false]] },
+          { npc: ['Hello. How can I help you?', 'Bonjour. Comment puis-je vous aider ?', 'Hola. ¿En qué puedo ayudarle?', 'שלום. איך אפשר לעזור?'], options: [['phrase.lost.phone-stolen', true], ['phrase.lost.want-report', false], ['phrase.lost.on-the-bus', false]] },
+          { npc: ['Do you want to report it?', 'Vous voulez faire une déclaration ?', '¿Quiere denunciarlo?', 'אתה רוצה לדווח על זה?'], options: [['phrase.lost.want-report', true], ['phrase.lost.where-police', false], ['phrase.lost.cant-find', false]] },
+        ],
+      },
+      receipt: ['אבד או נגנב, עזרה, דיווח — ברצף ובקצב רגיל. אמרת מה קרה וענית על מה ששאלו.', 'Lost or stolen, help, report — in a row, at normal speed. You said what happened and answered what you were asked.'],
+    }],
+    // One fast follow-up: two questions at once. Every word is known — the pace is the difficulty,
+    // and asking for it slowly is the answer that works.
     ambush: {
-      npc: ['Okay try to remember where did it happen was it here or on the bus?', 'Bon, essayez de vous rappeler : ça s’est passé où, ici ou dans le bus ?', 'A ver, intente recordar: ¿dónde ha ocurrido, aquí o en el autobús?', 'טוב, נסה להיזכר — איפה זה קרה, כאן או באוטובוס?'],
-      correct: 'reply.lost.where-happen',
-      wrong: 'reply.lost.go-to-police',
-      receipt: ['גם בלחץ — הבנת ששואלים איפה זה קרה.', 'Even under stress — you understood you were asked where it happened.'],
+      mode: 'recovery',
+      npc: ['Okay. Was it here, near the station, or on the bus this morning? And do you have your passport?', 'D’accord. C’était ici, près de la gare, ou dans le bus ce matin ? Et vous avez votre passeport ?', 'De acuerdo. ¿Estaba aquí, cerca de la estación, o en el autobús esta mañana? ¿Y tiene su pasaporte?', 'בסדר. זה היה כאן, ליד התחנה, או באוטובוס הבוקר? ויש לך את הדרכון?'],
+      correct: 'phrase.recovery.slowly',
+      wrong: 'phrase.lost.want-report',
+      receipt: ['שתי שאלות ברצף, מהר — וביקשת לאט. בדיווח לא מנחשים: שואלים שוב.', 'Two questions at once, fast — and you asked for it slowly. In a report you do not guess: you ask again.'],
     },
   },
 };

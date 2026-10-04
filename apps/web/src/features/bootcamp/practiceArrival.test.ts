@@ -71,9 +71,6 @@ describe('scope: only the Practice of Missions 06–10 changed', () => {
   it('Missions 01–05 are byte-for-byte unchanged', () => {
     expect(print((l) => slice(l, 0, 5))).toEqual({ en: 'a991afd3', fr: '2d391b07', es: '423b53a8' });
   });
-  it('Missions 25–30 are byte-for-byte unchanged (11–18 and 19–24 have their own passes)', () => {
-    expect(print((l) => slice(l, 24, 30))).toEqual({ en: '82db671f', fr: '84ecc1ae', es: '7d6a6e76' });
-  });
   it('the locked dialogues of Missions 06, 07 and 09 are byte-for-byte unchanged', () => {
     const three = (l: Lang): BootcampDayContent[] => [slice(l, 5, 6)[0]!, slice(l, 6, 7)[0]!, slice(l, 8, 9)[0]!];
     expect(print((l) => three(l).map((d) => d.dialogues))).toEqual({ en: '2680b5d1', fr: '0d0e06f6', es: '4c53e21b' });
@@ -451,8 +448,8 @@ describe('Mission 10 — CHECKPOINT: Arrival Day', () => {
       expect(Object.keys(d.dialogues), lang).toEqual(['cold-border', 'cold-taxi', 'cold-hotel']);
       for (const dl of Object.values(d.dialogues)) { expect(dl.cold, `${lang} ${dl.id}`).toBe(true); expect(dl.nodes[0]!.who, `${lang} ${dl.id}`).toBe('npc'); }
     }
-    // Only the reworked checkpoints are cold: no teaching mission hides the translation.
-    for (const m of BOOTCAMP_PLAN) if (!['arrival-day-checkpoint', 'food-day-checkpoint', 'city-day-checkpoint'].includes(m.id)) for (const dl of Object.values(MISSIONS_BY_LANG.en![m.day]!.dialogues)) expect(dl.cold, m.id).toBeUndefined();
+    // Only the missions that prove instead of teach are cold: no teaching mission hides the translation.
+    for (const m of BOOTCAMP_PLAN) if (!['arrival-day-checkpoint', 'food-day-checkpoint', 'city-day-checkpoint', 'no-subtitles', 'dress-rehearsal', 'complete-day-abroad'].includes(m.id)) for (const dl of Object.values(MISSIONS_BY_LANG.en![m.day]!.dialogues)) expect(dl.cold, m.id).toBeUndefined();
   });
   it('real decisions: eleven screens offer the line that fits AND a line from another moment', () => {
     for (const lang of LANGS) {

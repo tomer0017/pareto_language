@@ -45,8 +45,8 @@ import { TIME_PLANS } from './timePlans.js';
 
 /**
  * The integration missions of the Core 30 — Arrival Day (10), Everyday Day (18), City &
- * Conversation (24), No Subtitles (28) and the finale, A Complete Day Abroad Alone (30). They are
- * retrieval tests, not lessons: EVERY
+ * Conversation (24), No Subtitles (28), the Dress Rehearsal (29) and the finale, A Complete Day
+ * Abroad Alone (30). They are retrieval tests, not lessons: EVERY
  * learner line here is a sentence an earlier mission already taught (same id, same wording), in a
  * new combination and at a more natural pace. Only the NPC lines are new.
  * AI linguistic review completed; native review still recommended.
@@ -380,153 +380,340 @@ export const CITY_CONVERSATION: MissionSpec = {
   closing: ['יום שלם בעיר, בלי עזרה: תחנה, שיחה עם מקומי, בעיה שנפתרה, ושיחה על מה שעשית ולאן אתה ממשיך — וגם כשזה היה מהיר, לא קפאת.', 'A whole day in a city, alone: the station, a chat with a local, a problem solved, and a talk about what you did and where you go next — and when it got fast, you did not freeze.'],
 };
 
+/**
+ * No Subtitles — Mission 28. Nothing is taught, and nothing the other speaker says is WRITTEN before
+ * the learner answers: every scene is `audio` (heard only — no transcript, no translation; a bubble
+ * replays the line). The learner's own possible answers are still written, in the target language.
+ *   - Zero new language: every word, in every language, was met in Missions 01–27 (a test enforces it).
+ *   - Twelve real decisions across a station, a restaurant and a chat with a local — the line that
+ *     fits against a real line from another moment.
+ *   - Natural speed throughout. Asking to hear it again is offered on the two densest lines only.
+ * After the answer the feedback card shows what was said, with its translation.
+ */
 export const NO_SUBTITLES: MissionSpec = {
   day: 27,
   title: ['בלי כתוביות', 'No Subtitles'],
   icon: '🎧',
   numbered: true,
   intro: [
-    ['אין כאן מילה חדשה. הקושי הוא המהירות.', 'There is not one new word here. The difficulty is the speed.'],
-    ['שלוש סצנות קצרות — תחנה, מסעדה, שיחה — בקצב של דוברים אמיתיים.', 'Three short scenes — a station, a restaurant, a chat — at the pace of real speakers.'],
-    ['על הנייר זה קל. באוזניים — זה האימון.', 'On paper this is easy. By ear — that is the training.'],
+    ['אין כאן מילה חדשה. הקושי הוא שאתה רק שומע.', 'There is not one new word here. The difficulty is that you only hear it.'],
+    ['מה שאומרים לך לא כתוב על המסך — לא בשפה שאתה לומד ולא בתרגום. מקשיבים, ועונים.', 'What people say to you is not written on the screen — not in the language you are learning, and not in translation. You listen, and you answer.'],
+    ['שלוש סצנות קצרות בקצב רגיל: תחנה, מסעדה, שיחה. אפשר תמיד לשמוע שוב.', 'Three short scenes at normal speed: a station, a restaurant, a chat. You can always hear a line again.'],
   ],
   cta: ['להוריד את הכתוביות', 'Take the subtitles off'],
   scenes: [
     {
       id: 'ns-transit',
-      receipt: ['תחנה בקצב אמיתי — כרטיס, רציף שהשתנה, ותחנה.', 'A station at real speed — ticket, a changed platform, and your stop.'],
-      ambush: {
-        npc: ['Heads up your stop is next get ready to get off', 'Attention, votre arrêt est le prochain, préparez-vous à descendre', 'Atención, su parada es la siguiente, prepárese para bajar', 'שים לב, התחנה שלך הבאה — תתכונן לרדת'],
-        correct: 'reply.trans.stop-next',
-        wrong: 'reply.trans.single-return',
-        receipt: ['הודעה מהירה — והבנת שהתחנה שלך הבאה.', 'A fast announcement — and you understood your stop is next.'],
-      },
+      audio: true,
+      receipt: ['תחנה, רק באוזניים: יעד, סוג כרטיס, תשלום ורציף.', 'A station, by ear alone: destination, ticket type, payment and platform.'],
       lines: [
-        npc('Right — where to?', 'Bon — vous allez où ?', 'A ver — ¿a dónde va?', 'טוב — לאן?', 'fast'),
-        you(known('phrase.trans.one-ticket'), {
-          rec: { tool: 'repeat', npc: ['Where — are you going?', 'Vous allez — où ?', '¿A dónde — va?', 'לאן — אתה נוסע?'] },
+        npc('Hello! Where to?', 'Bonjour ! Où allez-vous ?', '¡Hola! ¿A dónde va?', 'שלום! לאן?', 'fast'),
+        you(known('phrase.trans.one-ticket'), { wrong: [known('phrase.taxi.to-address')] }),
+        npc('Single or return?', 'Aller simple ou aller-retour ?', '¿Solo ida o ida y vuelta?', 'הלוך או הלוך-חזור?', 'fast'),
+        you(known('phrase.trans.single'), { wrong: [known('phrase.money.in-cash')] }),
+        npc("That's three euros. Cash or card?", 'Ça fait trois euros. Espèces ou carte ?', 'Son tres euros. ¿Efectivo o tarjeta?', 'זה שלושה יורו. מזומן או כרטיס?', 'fast'),
+        you(known('phrase.money.by-card'), { wrong: [known('phrase.trans.single')] }),
+        npc('Platform two. It leaves every ten minutes.', 'Quai numéro deux. Ça part toutes les dix minutes.', 'Andén número dos. Sale cada diez minutos.', 'רציף שתיים. יוצא כל עשר דקות.', 'fast'),
+        // The platform was just given: asking for it again shows the line was not caught.
+        you(known('phrase.trans.does-stop'), {
+          wrong: [known('phrase.trans.which-platform')],
+          rec: { tool: 'repeat', npc: ['Platform — two. Every — ten — minutes.', 'Quai — numéro deux. Toutes — les dix — minutes.', 'Andén — número dos. Cada — diez — minutos.', 'רציף — שתיים. כל — עשר — דקות.'] },
         }),
-        npc("Platform's changed. It's four now — quick!", 'Le quai a changé. C’est le quatre maintenant — vite !', 'Ha cambiado el andén. Ahora es el cuatro — ¡rápido!', 'הרציף השתנה. עכשיו זה ארבע — מהר!', 'fast'),
-        you(known('phrase.trans.does-stop')),
-        npc('Yes. Three stops.', 'Oui. Trois arrêts.', 'Sí. Tres paradas.', 'כן. שלוש תחנות.', 'fast'),
+        npc("Yes — it's three stops. I'll tell you when.", 'Oui — c’est à trois arrêts. Je vous dirai quand.', 'Sí — son tres paradas. Le aviso cuándo.', 'כן — זה שלוש תחנות. אני אגיד לך מתי.', 'fast'),
       ],
     },
     {
       id: 'ns-diner',
-      receipt: ['מסעדה בקצב אמיתי — שולחן והזמנה, רגע לפני שהמטבח נסגר.', 'A restaurant at real speed — a table and an order, just before the kitchen closes.'],
-      ambush: {
-        npc: ['Sorry to rush you is everything okay or do you need anything else?', 'Désolé de vous presser — tout va bien, ou vous avez besoin d’autre chose ?', 'Perdone las prisas — ¿va todo bien, o necesita algo más?', 'סליחה שאני מזרז — הכל בסדר, או שצריך עוד משהו?'],
-        correct: 'reply.rest.everything-okay',
-        wrong: 'reply.rest.ready-to-order',
-        receipt: ['שאלה מהירה באמצע הארוחה — והבנת ששואלים אם הכל בסדר.', 'A fast question mid-meal — and you understood you were asked whether everything is okay.'],
-      },
+      audio: true,
+      receipt: ['מסעדה, רק באוזניים: שולחן, שתייה, הזמנה וחשבון.', 'A restaurant, by ear alone: table, drink, order and bill.'],
       lines: [
-        npc('Evening — table for how many?', 'Bonsoir — une table pour combien ?', 'Buenas noches — ¿mesa para cuántos?', 'ערב טוב — שולחן לכמה?', 'fast'),
-        you(known('phrase.rest.table-two')),
-        npc("Kitchen's about to close. Ready to order?", 'La cuisine va fermer. Vous êtes prêt à commander ?', 'La cocina está a punto de cerrar. ¿Listo para pedir?', 'המטבח עומד להיסגר. מוכן להזמין?', 'fast'),
-        you(known('phrase.rest.ill-have')),
-        npc('Great. Coming up.', 'Très bien. Ça arrive.', 'Muy bien. Enseguida.', 'מצוין. תכף מגיע.', 'fast'),
+        npc('Good evening! A table for how many people?', 'Bonsoir ! Une table pour combien de personnes ?', '¡Buenas noches! ¿Una mesa para cuántas personas?', 'ערב טוב! שולחן לכמה אנשים?', 'fast'),
+        you(known('phrase.rest.table-two'), { wrong: [known('phrase.rest.ill-have')] }),
+        npc('Perfect, follow me. Here are your menus. Anything to drink?', 'Parfait, suivez-moi. Voici vos menus. Quelque chose à boire ?', 'Perfecto, sígame. Aquí tienen las cartas. ¿Algo de beber?', 'מצוין, בואו אחריי. הנה התפריטים. משהו לשתות?', 'fast'),
+        you(known('phrase.rest.water'), {
+          wrong: [known('phrase.rest.the-bill')],
+          rec: { tool: 'slowly', npc: ['Anything — to drink?', 'Quelque chose — à boire ?', '¿Algo — de beber?', 'משהו — לשתות?'] },
+        }),
+        npc('Are you ready to order?', 'Vous êtes prêts à commander ?', '¿Están listos para pedir?', 'מוכנים להזמין?', 'fast'),
+        you(known('phrase.rest.ill-have'), { wrong: [known('phrase.rest.delicious')] }),
+        // The jump in time is a scene transition, not something the waiter says: it is shown (in the
+        // app language) and never spoken, so it is not part of what the learner has to catch by ear.
+        { ...npc('Is everything okay?', 'Tout va bien ?', '¿Va todo bien?', 'הכל בסדר?', 'fast'), cue: ['מאוחר יותר…', 'Later…'] },
+        you(known('phrase.rest.the-bill'), {
+          say: ['Yes, that was delicious! The bill, please.', 'Oui, c’était délicieux ! L’addition, s’il vous plaît.', '¡Sí, estaba delicioso! La cuenta, por favor.', 'כן, היה טעים מאוד! החשבון, בבקשה.'],
+          wrong: [known('phrase.rest.no-onions')],
+        }),
+        npc('So glad you enjoyed it. Here you are — have a lovely evening!', 'Ravi que ça vous ait plu. Voici — passez une bonne soirée !', 'Me alegro de que les gustara. Aquí tienen — ¡que pasen buena noche!', 'שמח שנהניתם. בבקשה — ערב נעים!', 'fast'),
       ],
     },
     {
       id: 'ns-local',
-      receipt: ['שיחה עם מקומי בקצב אמיתי — מחמאה, המלצה, וזהו.', 'A chat with a local at real speed — a compliment, a recommendation, done.'],
+      audio: true,
+      receipt: ['שיחה עם מקומי, רק באוזניים: מחמאה, פעם ראשונה, המלצה ופרידה.', 'A chat with a local, by ear alone: a compliment, first time here, a recommendation and goodbye.'],
       lines: [
-        npc('Beautiful place, right?', 'Bel endroit, non ?', 'Bonito sitio, ¿verdad?', 'מקום יפה, נכון?', 'fast'),
-        you(itemOf(SMALL_TALK, 'phrase.talk.beautiful-place')),
-        npc('You should see the old town.', 'Vous devriez voir la vieille ville.', 'Debería ver el casco antiguo.', 'כדאי לך לראות את העיר העתיקה.', 'fast'),
-        you(itemOf(SMALL_TALK, 'phrase.talk.recommend-place')),
-        npc("Mama Rosa. It's very good.", '« Mama Rosa ». C’est très bon.', '«Mama Rosa». Es muy bueno.', "'מאמא רוזה'. מאוד טוב שם.", 'fast'),
+        npc("Hi! Beautiful view, isn't it?", 'Bonjour ! Belle vue, n’est-ce pas ?', '¡Hola! Bonita vista, ¿verdad?', 'היי! נוף יפה, נכון?', 'fast'),
+        you(itemOf(SMALL_TALK, 'phrase.talk.beautiful-place'), { wrong: [known('phrase.social.from-israel')] }),
+        npc('It really is. Is this your first time here?', 'C’est vrai. C’est votre première fois ici ?', 'Es verdad. ¿Es su primera vez aquí?', 'באמת. זו הפעם הראשונה שלך כאן?', 'fast'),
+        you(known('phrase.social.first-time'), {
+          say: ["Yes, it's my first time here.", 'Oui, c’est ma première fois ici.', 'Sí, es mi primera vez aquí.', 'כן, זו הפעם הראשונה שלי כאן.'],
+          wrong: [itemOf(SMALL_TALK, 'phrase.talk.i-like-it')],
+        }),
+        npc('Welcome! You should try the old town.', 'Bienvenue ! Vous devriez essayer la vieille ville.', '¡Bienvenido! Debería visitar el casco antiguo.', 'ברוך הבא! כדאי לך לנסות את העיר העתיקה.', 'fast'),
+        you(itemOf(SMALL_TALK, 'phrase.talk.recommend-place'), { wrong: [itemOf(SMALL_TALK, 'phrase.talk.nice-talking')] }),
+        npc("Of course — try 'Mama Rosa', in the old town. It's very good.", 'Bien sûr — essayez « Mama Rosa », dans la vieille ville. C’est très bon.', 'Claro — pruebe «Mama Rosa», en el casco antiguo. Es muy bueno.', "בטח — תנסה את 'מאמא רוזה', בעיר העתיקה. מאוד טוב שם.", 'fast'),
+        you(itemOf(SMALL_TALK, 'phrase.talk.nice-talking'), {
+          say: ['Thank you! It was nice talking to you.', 'Merci ! C’était sympa de discuter avec vous.', '¡Gracias! Ha sido un placer hablar con usted.', 'תודה! היה נעים לדבר איתך.'],
+          wrong: [itemOf(SMALL_TALK, 'phrase.talk.how-about-you')],
+        }),
+        npc('You too! Enjoy the rest of your trip!', 'Vous aussi ! Profitez bien du reste de votre voyage !', '¡Igualmente! ¡Que disfrute del resto del viaje!', 'גם אתה! תיהנה מהמשך הטיול!', 'fast'),
       ],
     },
   ],
-  hear: [known('reply.trans.stop-next'), known('reply.trans.single-return'), known('reply.rest.everything-okay'), known('reply.rest.ready-to-order')],
-  closing: ['שלוש סצנות בלי כתוביות — והאוזניים שלך עמדו בזה לבד.', 'Three scenes with no subtitles — and your ears managed alone.'],
+  hear: [],
+  closing: ['שלוש סצנות בלי כתוביות ובלי תרגום — שמעת, הבנת וענית. וכשזה היה צפוף מדי, ביקשת לשמוע שוב.', 'Three scenes with no subtitles and no translation — you heard, understood and answered. And when a line was too dense, you asked to hear it again.'],
 };
 
+/**
+ * Dress Rehearsal — Mission 29. One continuous evening: taxi → restaurant → the wrong dish →
+ * payment. Nothing is taught, quizzed or reviewed, and nothing is translated before the learner
+ * answers (`cold`).
+ *   - Zero new language: every word was met in Missions 01–28 (a test enforces it).
+ *   - Thirteen real decisions; the wrong option is a real line from another moment of the evening.
+ *   - Exactly one disruption (the wrong dish) and one faster moment (the bill).
+ *   - A Recovery budget of two: asking again is offered where a line is fast or unexpected, not on
+ *     every screen — and it changes what happens (the line is said again, slowly).
+ */
+export const DRESS_REHEARSAL: MissionSpec = {
+  day: 28,
+  title: ['חזרה גנרלית: ערב שלם', 'Dress Rehearsal: Full Evening'],
+  icon: '🎬',
+  numbered: true,
+  intro: [
+    ['אין חומר חדש, ואין תרגום. ערב שלם ברצף: מונית, מסעדה, תקלה אחת, תשלום.', 'No new material, and no translation. One evening in a row: taxi, restaurant, one thing that goes wrong, payment.'],
+    ['זו החזרה של הספורטאי לפני יום התחרות. בכל רגע בוחרים את המשפט שמתאים — לא כל משפט מתאים.', 'This is the athlete’s rehearsal before race day. At every turn you choose the line that fits — not every line does.'],
+  ],
+  cta: ['אקשן — מתחילים', 'Action — begin'],
+  scenes: [
+    {
+      id: 'dr-taxi',
+      cold: true,
+      receipt: ['מונית: יעד, שיחה קצרה ועצירה. הערב יצא לדרך.', 'Taxi: destination, a little chat and the stop. The evening is underway.'],
+      lines: [
+        npc('Good evening! Where to?', 'Bonsoir ! Où allez-vous ?', '¡Buenas noches! ¿A dónde va?', 'ערב טוב! לאן?'),
+        you(known('phrase.taxi.to-address'), { wrong: [known('phrase.rest.table-two')] }),
+        npc('No problem. First time in the city?', 'Pas de problème. C’est votre première fois dans la ville ?', 'Sin problema. ¿Es su primera vez en la ciudad?', 'אין בעיה. פעם ראשונה בעיר?'),
+        you(known('phrase.social.first-time'), {
+          say: ["Yes, it's my first time here.", 'Oui, c’est ma première fois ici.', 'Sí, es mi primera vez aquí.', 'כן, זו הפעם הראשונה שלי כאן.'],
+          wrong: [known('phrase.taxi.keep-change')],
+        }),
+        npc('…We are almost there. Is here okay?', '…On est presque arrivés. Ici, ça va ?', '…Ya casi llegamos. ¿Aquí está bien?', '…כמעט הגענו. כאן זה בסדר?'),
+        you(known('phrase.taxi.stop-here'), {
+          say: ['Stop here, please. Keep the change.', 'Arrêtez-vous ici, s’il vous plaît. Gardez la monnaie.', 'Pare aquí, por favor. Quédese con el cambio.', 'עצור כאן, בבקשה. תשאיר את העודף.'],
+          wrong: [known('phrase.taxi.to-address')],
+        }),
+        npc('Thank you very much! Have a lovely evening!', 'Merci beaucoup ! Passez une bonne soirée !', '¡Muchas gracias! ¡Buenas noches!', 'תודה רבה! ערב נעים!'),
+      ],
+    },
+    {
+      id: 'dr-order',
+      cold: true,
+      receipt: ['שולחן, הזמנה ושתייה — בלי הכנה.', 'Table, order and a drink — with no preparation.'],
+      lines: [
+        npc('Welcome! A table for how many people?', 'Bienvenue ! Une table pour combien de personnes ?', '¡Bienvenido! ¿Una mesa para cuántas personas?', 'ברוך הבא! שולחן לכמה אנשים?'),
+        you(known('phrase.rest.table-two'), { wrong: [known('phrase.border.two-weeks')] }),
+        npc('Perfect, follow me. Are you ready to order?', 'Parfait, suivez-moi. Vous êtes prêts à commander ?', 'Perfecto, sígame. ¿Están listos para pedir?', 'מצוין, בואו אחריי. מוכנים להזמין?'),
+        you(known('phrase.rest.ill-have'), { wrong: [known('phrase.rest.delicious')] }),
+        npc('Of course. Anything to drink?', 'Bien sûr. Quelque chose à boire ?', 'Claro. ¿Algo de beber?', 'כמובן. משהו לשתות?'),
+        you(known('phrase.rest.water'), { wrong: [known('phrase.rest.the-bill')] }),
+        npc('Anything else?', 'Autre chose ?', '¿Algo más?', 'עוד משהו?'),
+        you(known('phrase.coffee.thats-all'), { wrong: [known('phrase.rest.table-two')] }),
+        npc('Coming right up!', 'Ça arrive tout de suite !', '¡Enseguida se lo traigo!', 'תכף מגיע!'),
+      ],
+    },
+    {
+      id: 'dr-problem',
+      cold: true,
+      receipt: ['ההפתעה היחידה של הערב: מנה שגויה — ואמרת את זה, בנימוס, עד שזה סודר.', 'The one surprise of the evening: the wrong dish — and you said so, politely, until it was sorted.'],
+      lines: [
+        npc("Here's your meal — one steak!", 'Voici votre plat — un steak !', 'Aquí tiene su plato — ¡un filete!', 'הנה הארוחה שלך — סטייק אחד!'),
+        you(itemOf(FIXING_PROBLEMS, 'phrase.fix.not-ordered'), {
+          wrong: [known('phrase.rest.delicious')],
+          rec: { tool: 'repeat', npc: ['Your meal. One — steak.', 'Votre plat. Un — steak.', 'Su plato. Un — filete.', 'הארוחה שלך. סטייק — אחד.'] },
+        }),
+        npc("Oh no, I'm so sorry! What did you order?", 'Oh non, je suis vraiment désolé ! Qu’avez-vous commandé ?', '¡Ay, lo siento muchísimo! ¿Qué pidió?', 'אוי לא, אני מצטער מאוד! מה הזמנת?'),
+        // The same dish in the wrong tense: "I'll have…" orders it again instead of saying what was ordered.
+        you(itemOf(FIXING_PROBLEMS, 'phrase.fix.i-ordered'), { wrong: [known('phrase.rest.ill-have')] }),
+        npc("Of course — I'll bring the right one right away.", 'Bien sûr — je vous apporte le bon tout de suite.', 'Claro — le traigo el correcto enseguida.', 'כמובן — אביא את הנכון מיד.'),
+        you(itemOf(FIXING_PROBLEMS, 'phrase.fix.no-problem-thanks'), { wrong: [itemOf(FIXING_PROBLEMS, 'phrase.fix.can-you-fix')] }),
+        npc("Thank you for your patience. Here's your pasta.", 'Merci de votre patience. Voici vos pâtes.', 'Gracias por su paciencia. Aquí tiene su pasta.', 'תודה על הסבלנות. הנה הפסטה שלך.'),
+      ],
+    },
+    {
+      id: 'dr-pay',
+      cold: true,
+      receipt: ['חשבון ותשלום — גם כשזה נאמר מהר.', 'The bill and the payment — even when it was said fast.'],
+      lines: [
+        npc('…Later… Is everything okay?', '…Plus tard… Tout va bien ?', '…Más tarde… ¿Va todo bien?', '…אחר כך… הכל בסדר?'),
+        you(known('phrase.rest.the-bill'), {
+          say: ['Yes, that was delicious! The bill, please.', 'Oui, c’était délicieux ! L’addition, s’il vous plaît.', '¡Sí, estaba delicioso! La cuenta, por favor.', 'כן, היה טעים מאוד! החשבון, בבקשה.'],
+          wrong: [known('phrase.rest.water')],
+        }),
+        // The one faster moment of the evening.
+        npc("Here's your bill. That's twenty euros. Cash or card?", 'Voici l’addition. Ça fait vingt euros. Espèces ou carte ?', 'Aquí tiene la cuenta. Son veinte euros. ¿Efectivo o tarjeta?', 'הנה החשבון. זה עשרים יורו. מזומן או כרטיס?', 'fast'),
+        you(known('phrase.money.by-card'), {
+          wrong: [known('phrase.money.how-much')],
+          rec: { tool: 'slowly', npc: ['Twenty euros. Cash — or card?', 'Vingt euros. Espèces — ou carte ?', 'Veinte euros. ¿Efectivo — o tarjeta?', 'עשרים יורו. מזומן — או כרטיס?'] },
+        }),
+        npc('Insert your card here… all done. Would you like the receipt?', 'Insérez votre carte ici… c’est bon. Vous voulez le ticket ?', 'Inserte su tarjeta aquí… listo. ¿Quiere el recibo?', 'הכנס את הכרטיס כאן… הכל מוכן. רוצה קבלה?'),
+        you(known('phrase.coffee.yes-please'), { wrong: [known('phrase.taxi.keep-change')] }),
+        npc('Here you go. Have a lovely evening!', 'Voilà. Passez une bonne soirée !', 'Aquí tiene. ¡Buenas noches!', 'בבקשה. ערב נעים!'),
+      ],
+    },
+  ],
+  hear: [],
+  closing: ['ערב שלם בטייק אחד — מונית, הזמנה, מנה שגויה שתוקנה, ותשלום. בכל רגע בחרת את המשפט שמתאים.', 'A full evening in one take — taxi, order, a wrong dish put right, and payment. At every turn you chose the line that fits.'],
+};
+
+/**
+ * A Complete Day Abroad Alone — Mission 30, the final proof (not another checkpoint): one coherent
+ * day, morning to night. Nothing is taught, quizzed or reviewed; nothing is translated before the
+ * learner answers (`cold`).
+ *   - Zero new language: every word was met in Missions 01–29 (a test enforces it).
+ *   - Twenty-one real decisions and one closing line; a miss gets a brief slow re-ask and rejoins.
+ *   - Morning at the hotel desk → a taxi → a meal with ONE real problem (the dish arrives with what
+ *     was asked to be left out) → a conversation with another traveler (where from, what you did,
+ *     where next, an opinion, and asking back) → an evening line that is genuinely dense.
+ *   - Three Recovery moments, each on a fast or dense line. No police, medical or emergency incident
+ *     is manufactured: it is an ordinary day that goes well.
+ */
 export const COMPLETE_DAY: MissionSpec = {
   day: 29,
   title: ['יום שלם לבד בחו״ל', 'A Complete Day Abroad Alone'],
   icon: '🎖️',
   intro: [
-    ['זה היום. מבוקר עד לילה, לבד, בלי חומר חדש.', 'This is the day. Morning to night, alone, with nothing new.'],
-    ['מה שאתה צריך בבוקר, מונית, ארוחה שמשתבשת, שיחה עם מטייל — ורגע אחד שבו לא תבין הכל.', 'What you need in the morning, a taxi, a meal that goes wrong, a chat with a traveler — and one moment where you will not catch everything.'],
-    ['גם לזה יש לך כלי.', 'You have a tool for that too.'],
+    ['זה היום. מבוקר עד לילה, לבד — בלי חומר חדש, בלי חזרה ובלי תרגום.', 'This is the day. Morning to night, alone — with nothing new, no review and no translation.'],
+    ['בוקר במלון, מונית, ארוחה שמשהו בה משתבש, שיחה עם מטייל, וערב שבו מדברים אליך מהר.', 'A morning at the hotel, a taxi, a meal where something goes wrong, a talk with a traveler, and an evening where someone speaks to you fast.'],
+    ['בכל רגע בוחרים את המשפט שמתאים. וכשלא תופסים — מבקשים שוב. גם זה חלק מלדעת שפה.', 'At every turn you choose the line that fits. And when you do not catch it — you ask again. That is part of knowing a language, too.'],
   ],
   cta: ['לצאת ליום', 'Start the day'],
   scenes: [
     {
       id: 'fin-morning',
+      cold: true,
       receipt: ['בוקר: אמרת מה יש לך וביקשת מה שחסר.', 'Morning: you said what you have and asked for what you were missing.'],
       lines: [
         npc('Good morning! Do you have your key?', 'Bonjour ! Vous avez votre clé ?', '¡Buenos días! ¿Tiene su llave?', 'בוקר טוב! יש לך את המפתח?'),
-        you(itemOf(EVERYDAY_CORE, 'phrase.core.i-have')),
-        npc('Good. Do you need anything else?', 'Très bien. Vous avez besoin d’autre chose ?', 'Muy bien. ¿Necesita algo más?', 'יופי. אתה צריך עוד משהו?'),
-        you(itemOf(EVERYDAY_CORE, 'phrase.core.do-you-have')),
+        you(itemOf(EVERYDAY_CORE, 'phrase.core.i-have'), { wrong: [known('phrase.hotel.reservation')] }),
+        npc('Good. Do you need anything?', 'Très bien. Vous avez besoin de quelque chose ?', 'Muy bien. ¿Necesita algo?', 'יופי. אתה צריך משהו?'),
+        you(itemOf(EVERYDAY_CORE, 'phrase.core.do-you-have'), { wrong: [itemOf(EVERYDAY_CORE, 'phrase.core.i-know')] }),
         npc('Here you go. Have a great day!', 'Tenez. Bonne journée !', 'Aquí tiene. ¡Que tenga un buen día!', 'בבקשה. שיהיה יום מעולה!'),
       ],
     },
     {
       id: 'fin-taxi',
-      receipt: ['מונית: יעד, מחיר, עצירה.', 'Taxi: destination, price, stop.'],
-      ambush: {
-        npc: ['Sorry the road ahead is closed is it alright if I drop you around the corner?', 'Désolé, la route est barrée devant — ça vous va si je vous dépose au coin de la rue ?', 'Perdone, la calle está cortada más adelante — ¿le va bien si le dejo en la esquina?', 'סליחה, הכביש קדימה חסום — בסדר שאוריד אותך מעבר לפינה?'],
-        correct: 'reply.taxi.here-good',
-        wrong: 'reply.taxi.where-to',
-        receipt: ['שינוי של הרגע האחרון — והבנת שמציעים להוריד אותך קרוב.', 'A last-minute change — and you understood the offer to drop you nearby.'],
-      },
+      cold: true,
+      receipt: ['מונית: יעד, שיחה, מחיר ועצירה — גם כשהמחיר נאמר מהר.', 'Taxi: destination, a chat, the fare and the stop — even when the fare came fast.'],
       lines: [
-        npc('Where can I take you?', 'Où puis-je vous emmener ?', '¿A dónde le llevo?', 'לאן לקחת אותך?', 'fast'),
-        you(known('phrase.taxi.to-address')),
-        npc('About fifteen euros, with the traffic. Is here okay?', 'Environ quinze euros, avec la circulation. Ici, ça va ?', 'Unos quince euros, con el tráfico. ¿Aquí está bien?', 'בערך חמישה עשר יורו, עם הפקקים. כאן זה בסדר?'),
-        you(known('phrase.taxi.stop-here')),
-        npc('Here we are. Enjoy your day!', 'Nous y voilà. Bonne journée !', 'Ya estamos. ¡Que disfrute el día!', 'הגענו. תיהנה מהיום!'),
+        npc('Hello! Where to?', 'Bonjour ! Où allez-vous ?', '¡Hola! ¿A dónde va?', 'שלום! לאן?'),
+        you(known('phrase.taxi.to-address'), { wrong: [known('phrase.trans.one-ticket')] }),
+        npc('How long are you here for?', 'Vous êtes ici pour combien de temps ?', '¿Cuánto tiempo está aquí?', 'לכמה זמן אתה כאן?'),
+        you(known('phrase.border.two-weeks'), { wrong: [known('phrase.border.staying-hotel')] }),
+        npc("It's about fifteen euros. There's a lot of traffic right now.", 'C’est environ quinze euros. Il y a beaucoup de circulation en ce moment.', 'Son unos quince euros. Hay mucho tráfico ahora mismo.', 'זה בערך חמישה עשר יורו. יש הרבה פקקים עכשיו.', 'fast'),
+        you(tool('thank-you'), {
+          say: ['Okay, thank you.', 'D’accord, merci.', 'De acuerdo, gracias.', 'בסדר, תודה.'],
+          wrong: [known('phrase.taxi.how-much')],
+          rec: { tool: 'slowly', npc: ["Sure. About fifteen euros. There's a lot of traffic.", 'Bien sûr. Environ quinze euros. Il y a beaucoup de circulation.', 'Claro. Unos quince euros. Hay mucho tráfico.', 'בטח. בערך חמישה עשר יורו. יש הרבה פקקים.'] },
+        }),
+        npc('…We are almost there. Is here okay?', '…On est presque arrivés. Ici, ça va ?', '…Ya casi llegamos. ¿Aquí está bien?', '…כמעט הגענו. כאן זה בסדר?'),
+        you(known('phrase.taxi.stop-here'), {
+          say: ['Stop here, please. Keep the change.', 'Arrêtez-vous ici, s’il vous plaît. Gardez la monnaie.', 'Pare aquí, por favor. Quédese con el cambio.', 'עצור כאן, בבקשה. תשאיר את העודף.'],
+          wrong: [known('phrase.taxi.to-address')],
+        }),
+        npc('Thank you very much! Enjoy your day!', 'Merci beaucoup ! Bonne journée !', '¡Muchas gracias! ¡Que tenga un buen día!', 'תודה רבה! שיהיה יום נעים!'),
       ],
     },
     {
       id: 'fin-lunch',
-      receipt: ['הזמנת, קיבלת מנה לא נכונה — ותיקנת את זה ברוגע.', 'You ordered, got the wrong dish — and fixed it calmly.'],
+      cold: true,
+      receipt: ['ארוחה: הזמנת בלי בצל, קיבלת עם — אמרת את זה, זה תוקן, ושילמת.', 'A meal: you ordered it without onions, it came with them — you said so, it was put right, and you paid.'],
       lines: [
-        npc('Hello! How many people?', 'Bonjour ! Vous êtes combien ?', '¡Hola! ¿Cuántos son?', 'שלום! כמה אנשים?'),
-        you(known('phrase.rest.table-two')),
-        npc('Right this way. Ready to order?', 'Suivez-moi. Vous êtes prêt à commander ?', 'Sígame. ¿Listo para pedir?', 'בבקשה אחריי. מוכן להזמין?'),
-        you(known('phrase.rest.ill-have')),
-        npc("…Here's your meal — one steak!", '…Voici votre plat — un steak !', '…Aquí tiene su plato — ¡un filete!', '…הנה הארוחה שלך — סטייק אחד!', 'fast'),
-        you(itemOf(FIXING_PROBLEMS, 'phrase.fix.not-ordered')),
-        npc("Oh no — I'm so sorry! I'll bring the right one.", 'Oh non — je suis vraiment désolé ! Je vous apporte le bon.', '¡Ay, no — lo siento muchísimo! Le traigo el correcto.', 'אוי לא — אני מצטער מאוד! אביא את הנכון.'),
-        you(itemOf(FIXING_PROBLEMS, 'phrase.fix.no-problem-thanks')),
-        npc("Here's the pasta. Enjoy your meal!", 'Voici les pâtes. Bon appétit !', 'Aquí tiene la pasta. ¡Buen provecho!', 'הנה הפסטה. בתיאבון!'),
+        npc('Hello! Do you have a reservation?', 'Bonjour ! Vous avez une réservation ?', '¡Hola! ¿Tiene reserva?', 'שלום! יש לכם הזמנה?'),
+        you(known('phrase.rest.table-two'), {
+          say: ['No — a table for two, please.', 'Non — une table pour deux, s’il vous plaît.', 'No — una mesa para dos, por favor.', 'לא — שולחן לשניים, בבקשה.'],
+          wrong: [known('phrase.rest.the-bill')],
+        }),
+        npc('Are you ready to order?', 'Vous êtes prêts à commander ?', '¿Están listos para pedir?', 'מוכנים להזמין?'),
+        you(known('phrase.rest.ill-have-chicken'), {
+          say: ["I'll have the chicken, without onions, please.", 'Je vais prendre le poulet, sans oignons, s’il vous plaît.', 'Voy a tomar el pollo, sin cebolla, por favor.', 'אני אקח את העוף, בלי בצל, בבקשה.'],
+          wrong: [known('phrase.rest.delicious')],
+        }),
+        // The one real problem of the day, said fast.
+        npc("Here's your chicken — with onions!", 'Voici votre poulet — avec des oignons !', 'Aquí tiene su pollo — ¡con cebolla!', 'הנה העוף שלך — עם בצל!', 'fast'),
+        you(itemOf(FIXING_PROBLEMS, 'phrase.fix.not-ordered'), {
+          wrong: [known('phrase.rest.delicious')],
+          rec: { tool: 'repeat', npc: ['Your chicken. With — onions.', 'Votre poulet. Avec — des oignons.', 'Su pollo. Con — cebolla.', 'העוף שלך. עם — בצל.'] },
+        }),
+        npc("Oh no, I'm so sorry! What did you order?", 'Oh non, je suis vraiment désolé ! Qu’avez-vous commandé ?', '¡Ay, lo siento muchísimo! ¿Qué pidió?', 'אוי לא, אני מצטער מאוד! מה הזמנת?'),
+        // Remembering your own order: the pasta was never ordered today.
+        you(known('phrase.rest.no-onions'), {
+          say: ['The chicken. No onions, please.', 'Le poulet. Sans oignons, s’il vous plaît.', 'El pollo. Sin cebolla, por favor.', 'את העוף. בלי בצל, בבקשה.'],
+          wrong: [itemOf(FIXING_PROBLEMS, 'phrase.fix.i-ordered')],
+        }),
+        npc("Of course — I'll bring the right one right away.", 'Bien sûr — je vous apporte le bon tout de suite.', 'Claro — le traigo el correcto enseguida.', 'כמובן — אביא את הנכון מיד.'),
+        you(itemOf(FIXING_PROBLEMS, 'phrase.fix.no-problem-thanks'), { wrong: [itemOf(FIXING_PROBLEMS, 'phrase.fix.charged-twice')] }),
+        npc('…Later… Is everything okay?', '…Plus tard… Tout va bien ?', '…Más tarde… ¿Va todo bien?', '…אחר כך… הכל בסדר?'),
+        you(known('phrase.rest.the-bill'), {
+          say: ['Yes, that was delicious! The bill, please.', 'Oui, c’était délicieux ! L’addition, s’il vous plaît.', '¡Sí, estaba delicioso! La cuenta, por favor.', 'כן, היה טעים מאוד! החשבון, בבקשה.'],
+          wrong: [known('phrase.rest.water')],
+        }),
+        npc('So glad you enjoyed it. Here you are. Thank you!', 'Ravi que ça vous ait plu. Voici. Merci !', 'Me alegro de que les gustara. Aquí tienen. ¡Gracias!', 'שמח שנהניתם. בבקשה. תודה!'),
       ],
     },
     {
       id: 'fin-chat',
-      receipt: ['שיחה עם מטייל: מאיפה, מה עשית, לאן אתה נוסע — וגם לא הסכמת.', 'A chat with a traveler: where from, what you did, where next — and you disagreed, too.'],
+      cold: true,
+      receipt: ['שיחה עם מטייל: מאיפה אתה, מה עשית, לאן אתה נוסע ולכמה זמן, מה דעתך — ושאלת בחזרה.', 'A talk with a traveler: where you are from, what you did, where you are going and for how long, what you think — and you asked back.'],
       lines: [
-        npc('Hi! Where are you from?', 'Salut ! Tu viens d’où ?', '¡Hola! ¿De dónde eres?', 'היי! מאיפה אתה?'),
-        you(known('phrase.social.from-israel')),
+        npc("Hi! I'm from here. And you?", 'Salut ! Je suis d’ici. Et toi ?', '¡Hola! Soy de aquí. ¿Y tú?', 'היי! אני מכאן. ואתה?'),
+        you(known('phrase.social.from-israel'), { wrong: [known('phrase.social.first-time')] }),
         npc('Nice! What did you do today?', 'Sympa ! Tu as fait quoi aujourd’hui ?', '¡Qué bien! ¿Qué hiciste hoy?', 'יפה! מה עשית היום?'),
-        you(itemOf(PAST_EVENTS, 'phrase.past.i-went')),
-        npc('And where are you going next?', 'Et tu vas où après ?', '¿Y a dónde vas después?', 'ולאן אתה נוסע אחרי זה?'),
-        you(itemOf(FUTURE_PLANS, 'phrase.future.going-to-vietnam')),
-        npc('How long will you be there?', 'Tu restes combien de temps ?', '¿Cuánto tiempo vas a estar allí?', 'כמה זמן תהיה שם?'),
-        you(itemOf(FUTURE_PLANS, 'phrase.future.ill-be-there')),
-        npc("Two weeks in Vietnam? I think that's too short.", 'Deux semaines au Vietnam ? Je pense que c’est trop court.', '¿Dos semanas en Vietnam? Creo que es muy poco.', 'שבועיים בווייטנאם? אני חושב שזה קצר מדי.'),
-        you(itemOf(OPINIONS, 'phrase.opin.dont-think-so')),
-        npc("Ha! Maybe you're right. Have a great trip!", 'Ha ! Tu as peut-être raison. Bon voyage !', '¡Ja! Puede que tengas razón. ¡Buen viaje!', 'חה! אולי אתה צודק. נסיעה טובה!'),
+        you(itemOf(PAST_EVENTS, 'phrase.past.i-went'), { wrong: [itemOf(FUTURE_PLANS, 'phrase.future.going-to-vietnam')] }),
+        npc('Did you like it?', 'Tu as aimé ?', '¿Te gustó?', 'אהבת?'),
+        you(itemOf(PAST_EVENTS, 'phrase.past.it-was-great'), { wrong: [itemOf(PAST_EVENTS, 'phrase.past.i-stayed')] }),
+        npc('So, where are you going next?', 'Alors, tu vas où après ?', 'Bueno, ¿a dónde vas después?', 'אז לאן אתה נוסע אחרי זה?'),
+        you(itemOf(FUTURE_PLANS, 'phrase.future.going-to-vietnam'), { wrong: [itemOf(PAST_EVENTS, 'phrase.past.i-went')] }),
+        npc('Wow! How long will you be there?', 'Waouh ! Tu restes combien de temps ?', '¡Guau! ¿Cuánto tiempo vas a estar allí?', 'וואו! כמה זמן תהיה שם?'),
+        you(itemOf(FUTURE_PLANS, 'phrase.future.ill-be-there'), { wrong: [itemOf(FUTURE_PLANS, 'phrase.future.after-that')] }),
+        npc('Really? I think Vietnam is too far.', 'Vraiment ? Moi, je pense que le Vietnam, c’est trop loin.', '¿De verdad? Yo creo que Vietnam está muy lejos.', 'באמת? אני חושב שווייטנאם רחוקה מדי.'),
+        you(itemOf(OPINIONS, 'phrase.opin.dont-think-so'), { wrong: [itemOf(OPINIONS, 'phrase.opin.dont-like-it')] }),
+        npc("Ha! That's true.", 'Ha ! C’est vrai.', '¡Ja! Es verdad.', 'חה! זה נכון.'),
+        you(itemOf(FUTURE_PLANS, 'phrase.future.where-next'), {
+          say: ['And you? Where are you going next?', 'Et toi ? Tu vas où après ?', '¿Y tú? ¿A dónde vas después?', 'ואתה? לאן אתה נוסע אחרי זה?'],
+          wrong: [itemOf(OPINIONS, 'phrase.opin.of-course')],
+        }),
+        npc("Me? I'm going home. Have a great trip!", 'Moi ? Je rentre chez moi. Bon voyage !', '¿Yo? Me voy a casa. ¡Buen viaje!', 'אני? אני חוזר הביתה. נסיעה טובה!'),
       ],
     },
     {
       id: 'fin-evening',
-      receipt: ['לא הבנת הכל — ביקשת לאט, והבנת. זה בדיוק הכוח.', 'You did not catch everything — you asked for it slowly, and you got it. That is exactly the power.'],
+      cold: true,
+      receipt: ['ערב: שתי שאלות ברצף, מהר — לא ניחשת. ביקשת לאט, הבנת, וענית.', 'Evening: two questions in a row, fast — you did not guess. You asked for it slowly, understood, and answered.'],
       lines: [
-        npc('Welcome back! Is breakfast at seven okay for you tomorrow, or are you leaving early?', 'Bon retour ! Le petit-déjeuner à sept heures, ça vous va demain, ou vous partez tôt ?', '¡Bienvenido de nuevo! ¿Le va bien el desayuno a las siete mañana, o sale temprano?', 'ברוך השב! ארוחת בוקר בשבע מתאימה לך מחר, או שאתה יוצא מוקדם?', 'fast'),
-        you(tool('slowly')),
-        npc('Tomorrow. Breakfast — at seven. Okay?', 'Demain. Petit-déjeuner — à sept heures. D’accord ?', 'Mañana. Desayuno — a las siete. ¿De acuerdo?', 'מחר. ארוחת בוקר — בשבע. בסדר?', 'slow'),
-        you(tool('thank-you'), { say: ['Okay, thank you.', 'D’accord, merci.', 'De acuerdo, gracias.', 'בסדר, תודה.'] }),
-        npc('Good night — sleep well!', 'Bonne nuit — dormez bien !', 'Buenas noches — ¡que descanse!', 'לילה טוב — תישן טוב!'),
+        // Genuinely dense: two questions in one breath, every word known.
+        npc('Good evening! Is everything okay with your room? And breakfast tomorrow — is seven okay for you?', 'Bonsoir ! Tout va bien avec votre chambre ? Et le petit-déjeuner demain — sept heures, ça va ?', '¡Buenas noches! ¿Va todo bien con su habitación? ¿Y el desayuno mañana — a las siete está bien?', 'ערב טוב! הכל בסדר עם החדר? וארוחת הבוקר מחר — שבע מתאים לך?', 'fast'),
+        you(tool('thank-you'), {
+          say: ['Yes, thank you.', 'Oui, merci.', 'Sí, gracias.', 'כן, תודה.'],
+          wrong: [known('phrase.hotel.breakfast')],
+          rec: { tool: 'slowly', npc: ['Your room — is it okay? Breakfast — tomorrow — at seven?', 'Votre chambre — ça va ? Le petit-déjeuner — demain — à sept heures ?', 'Su habitación — ¿está bien? El desayuno — mañana — ¿a las siete?', 'החדר — בסדר? ארוחת בוקר — מחר — בשבע?'] },
+        }),
+        npc('Perfect. And how was your day?', 'Parfait. Et c’était comment, votre journée ?', 'Perfecto. ¿Y cómo estuvo su día?', 'מצוין. ואיך היה היום שלך?'),
+        you(itemOf(PAST_EVENTS, 'phrase.past.it-was-good'), { wrong: [itemOf(FUTURE_PLANS, 'phrase.future.tomorrow-morning')] }),
+        npc('So glad! Good night.', 'Ravi ! Bonne nuit.', '¡Me alegro! Buenas noches.', 'שמח לשמוע! לילה טוב.'),
+        you(tool('thank-you'), { say: ['Thank you. Good night!', 'Merci. Bonne nuit !', 'Gracias. ¡Buenas noches!', 'תודה. לילה טוב!'] }),
+        npc('See you tomorrow!', 'À demain !', '¡Nos vemos mañana!', 'נתראה מחר!'),
       ],
     },
   ],
-  hear: [known('reply.taxi.here-good'), known('reply.taxi.where-to')],
-  closing: ['יום שלם, לבד, בשפה אחרת. אתה מוכן. באמת מוכן.', 'A whole day, alone, in another language. You are ready. Actually ready.'],
+  hear: [],
+  closing: ['יום שלם, לבד, בשפה אחרת: השגת מה שהיית צריך, הגעת לאן שרצית, פתרת בעיה, סיפרת מה עשית ולאן אתה נוסע, אמרת מה דעתך — וכשדיברו מהר, ביקשת שוב. אתה מוכן. באמת מוכן.', 'A whole day, alone, in another language: you got what you needed, got where you were going, fixed a problem, said what you did and where you are going, gave your opinion — and when it came fast, you asked again. You are ready. Actually ready.'],
 };

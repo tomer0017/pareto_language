@@ -82,11 +82,15 @@ describe('one wording = one canonical sentence', () => {
     });
   }
 
-  it('"A table for two, please." is one sentence, first taught in Restaurant Meal, though two ids declare it', () => {
+  it('"A table for two, please." is one sentence, first taught in Restaurant Meal — and the id the old Dress Rehearsal used still resolves to it', () => {
     const catalog = sentenceCatalog('en');
     const hits = catalog.groups.flatMap((g) => g.items).filter((i) => i.text === 'A table for two, please.');
     expect(hits.map((i) => i.id)).toEqual(['en.phrase.rest.table-two']);
-    expect(catalog.aliases.get('en.phrase.rest.table-for-two')).toBe('en.phrase.rest.table-two');
+    // Mission 29 used to declare the same wording under an Extended id. It now uses the Core id; the
+    // old id stays a legacy alias so practice already stored under it still counts. (All three old Mission 29 ids:
+    // see practiceMastery.test.ts.)
+    expect(catalog.aliases.has('en.phrase.rest.table-for-two')).toBe(false);
+    for (const lang of LANGS) expect(canonicalSentenceId(lang, `${lang}.phrase.rest.table-for-two`)).toBe(`${lang}.phrase.rest.table-two`);
     expect(catalog.firstDay.get('en.phrase.rest.table-two')).toBe(BOOTCAMP_PLAN.find((m) => m.id === 'restaurant-meal')!.day);
   });
 });

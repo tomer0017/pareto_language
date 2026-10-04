@@ -131,6 +131,12 @@ stable across re-renders. **Narrative dialogue order is never shuffled** — onl
   scenes may be `cold` (no gloss before answering) and may offer `wrong` lines: a miss routes to its
   own slow re-ask beat and back to the same choice. A Quick Reply step may be a speed `challenge`; a
   Match Pairs answer tile may be a language-neutral `answerLabel`.
+  `practiceMastery.ts` holds Mission 26. A scene may also be `audio` (dialogue `audioOnly`, always
+  with `cold`): the other speaker's line is not written before the answer — `NpcSpeech` in
+  `ConvoScene.tsx` renders a replay button in its place (Mission 28 only). A line may carry a `cue` — a scene
+  transition in the app language, shown above the bubble and never spoken. Missions 28–30 are specs
+  in `core/checkpoints.ts` with no teaching steps. `canonicalSentenceId` also resolves legacy ids the
+  Core no longer declares (`LEGACY_ALIASES` in `core/phraseGroups.ts`), so stored practice keeps counting.
 - **Practice presentation** — each engine renders on an open `.pcanvas[data-engine]`, not a shared
   card. `ConvoScene.tsx` is the conversation shell (`NpcLine`, `YouLine`, `AudioBubble`, `useNpc`)
   used by dialogues and Quick Reply; `npcCast.ts` maps a mission id to who is speaking (a glyph today,

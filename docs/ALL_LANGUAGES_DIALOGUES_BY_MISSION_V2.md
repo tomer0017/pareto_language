@@ -2050,91 +2050,139 @@ spanish:
 
 english:
 _Scene 1_
-**NPC:** Right — where to?
+**NPC:** Hello! Where to?
 **You:** One ticket to the centre, please.
-**NPC:** Platform's changed. It's four now — quick!
+**NPC:** Single or return?
+**You:** Single, please.
+**NPC:** That's three euros. Cash or card?
+**You:** By card, please.
+**NPC:** Platform two. It leaves every ten minutes.
 **You:** Does this stop at the museum?
-**NPC:** Yes. Three stops.
+**NPC:** Yes — it's three stops. I'll tell you when.
 
 _Scene 2_
-**NPC:** Evening — table for how many?
+**NPC:** Good evening! A table for how many people?
 **You:** A table for two, please.
-**NPC:** Kitchen's about to close. Ready to order?
+**NPC:** Perfect, follow me. Here are your menus. Anything to drink?
+**You:** A bottle of water, please.
+**NPC:** Are you ready to order?
 **You:** I'll have the pasta, please.
-**NPC:** Great. Coming up.
+**NPC:** Is everything okay?
+**You:** Yes, that was delicious! The bill, please.
+**NPC:** So glad you enjoyed it. Here you are — have a lovely evening!
 
 _Scene 3_
-**NPC:** Beautiful place, right?
+**NPC:** Hi! Beautiful view, isn't it?
 **You:** This place is beautiful.
-**NPC:** You should see the old town.
+**NPC:** It really is. Is this your first time here?
+**You:** Yes, it's my first time here.
+**NPC:** Welcome! You should try the old town.
 **You:** Can you recommend a place?
-**NPC:** Mama Rosa. It's very good.
+**NPC:** Of course — try 'Mama Rosa', in the old town. It's very good.
+**You:** Thank you! It was nice talking to you.
+**NPC:** You too! Enjoy the rest of your trip!
 
 franch:
 _Scene 1_
-**NPC:** Bon — vous allez où ?
+**NPC:** Bonjour ! Où allez-vous ?
 **You:** Un billet pour le centre, s’il vous plaît.
-**NPC:** Le quai a changé. C’est le quatre maintenant — vite !
+**NPC:** Aller simple ou aller-retour ?
+**You:** Aller simple, s’il vous plaît.
+**NPC:** Ça fait trois euros. Espèces ou carte ?
+**You:** Par carte, s’il vous plaît.
+**NPC:** Quai numéro deux. Ça part toutes les dix minutes.
 **You:** Ça s’arrête au musée ?
-**NPC:** Oui. Trois arrêts.
+**NPC:** Oui — c’est à trois arrêts. Je vous dirai quand.
 
 _Scene 2_
-**NPC:** Bonsoir — une table pour combien ?
+**NPC:** Bonsoir ! Une table pour combien de personnes ?
 **You:** Une table pour deux, s’il vous plaît.
-**NPC:** La cuisine va fermer. Vous êtes prêt à commander ?
+**NPC:** Parfait, suivez-moi. Voici vos menus. Quelque chose à boire ?
+**You:** Une bouteille d’eau, s’il vous plaît.
+**NPC:** Vous êtes prêts à commander ?
 **You:** Je vais prendre les pâtes, s’il vous plaît.
-**NPC:** Très bien. Ça arrive.
+**NPC:** Tout va bien ?
+**You:** Oui, c’était délicieux ! L’addition, s’il vous plaît.
+**NPC:** Ravi que ça vous ait plu. Voici — passez une bonne soirée !
 
 _Scene 3_
-**NPC:** Bel endroit, non ?
+**NPC:** Bonjour ! Belle vue, n’est-ce pas ?
 **You:** Cet endroit est magnifique.
-**NPC:** Vous devriez voir la vieille ville.
+**NPC:** C’est vrai. C’est votre première fois ici ?
+**You:** Oui, c’est ma première fois ici.
+**NPC:** Bienvenue ! Vous devriez essayer la vieille ville.
 **You:** Vous pouvez recommander un endroit ?
-**NPC:** « Mama Rosa ». C’est très bon.
+**NPC:** Bien sûr — essayez « Mama Rosa », dans la vieille ville. C’est très bon.
+**You:** Merci ! C’était sympa de discuter avec vous.
+**NPC:** Vous aussi ! Profitez bien du reste de votre voyage !
 
 spanish:
 _Scene 1_
-**NPC:** A ver — ¿a dónde va?
+**NPC:** ¡Hola! ¿A dónde va?
 **You:** Un billete para el centro, por favor.
-**NPC:** Ha cambiado el andén. Ahora es el cuatro — ¡rápido!
+**NPC:** ¿Solo ida o ida y vuelta?
+**You:** Solo ida, por favor.
+**NPC:** Son tres euros. ¿Efectivo o tarjeta?
+**You:** Con tarjeta, por favor.
+**NPC:** Andén número dos. Sale cada diez minutos.
 **You:** ¿Para en el museo?
-**NPC:** Sí. Tres paradas.
+**NPC:** Sí — son tres paradas. Le aviso cuándo.
 
 _Scene 2_
-**NPC:** Buenas noches — ¿mesa para cuántos?
+**NPC:** ¡Buenas noches! ¿Una mesa para cuántas personas?
 **You:** Una mesa para dos, por favor.
-**NPC:** La cocina está a punto de cerrar. ¿Listo para pedir?
+**NPC:** Perfecto, sígame. Aquí tienen las cartas. ¿Algo de beber?
+**You:** Una botella de agua, por favor.
+**NPC:** ¿Están listos para pedir?
 **You:** Voy a tomar la pasta, por favor.
-**NPC:** Muy bien. Enseguida.
+**NPC:** ¿Va todo bien?
+**You:** ¡Sí, estaba delicioso! La cuenta, por favor.
+**NPC:** Me alegro de que les gustara. Aquí tienen — ¡que pasen buena noche!
 
 _Scene 3_
-**NPC:** Bonito sitio, ¿verdad?
+**NPC:** ¡Hola! Bonita vista, ¿verdad?
 **You:** Este lugar es precioso.
-**NPC:** Debería ver el casco antiguo.
+**NPC:** Es verdad. ¿Es su primera vez aquí?
+**You:** Sí, es mi primera vez aquí.
+**NPC:** ¡Bienvenido! Debería visitar el casco antiguo.
 **You:** ¿Me puede recomendar un sitio?
-**NPC:** «Mama Rosa». Es muy bueno.
+**NPC:** Claro — pruebe «Mama Rosa», en el casco antiguo. Es muy bueno.
+**You:** ¡Gracias! Ha sido un placer hablar con usted.
+**NPC:** ¡Igualmente! ¡Que disfrute del resto del viaje!
 
 עברית:
 _Scene 1_
-**NPC:** טוב — לאן?
+**NPC:** שלום! לאן?
 **You:** כרטיס אחד למרכז, בבקשה.
-**NPC:** הרציף השתנה. עכשיו זה ארבע — מהר!
+**NPC:** הלוך או הלוך-חזור?
+**You:** הלוך, בבקשה.
+**NPC:** זה שלושה יורו. מזומן או כרטיס?
+**You:** בכרטיס, בבקשה.
+**NPC:** רציף שתיים. יוצא כל עשר דקות.
 **You:** זה עוצר במוזיאון?
-**NPC:** כן. שלוש תחנות.
+**NPC:** כן — זה שלוש תחנות. אני אגיד לך מתי.
 
 _Scene 2_
-**NPC:** ערב טוב — שולחן לכמה?
+**NPC:** ערב טוב! שולחן לכמה אנשים?
 **You:** שולחן לשניים, בבקשה.
-**NPC:** המטבח עומד להיסגר. מוכן להזמין?
+**NPC:** מצוין, בואו אחריי. הנה התפריטים. משהו לשתות?
+**You:** בקבוק מים, בבקשה.
+**NPC:** מוכנים להזמין?
 **You:** אני אקח את הפסטה, בבקשה.
-**NPC:** מצוין. תכף מגיע.
+**NPC:** הכל בסדר?
+**You:** כן, היה טעים מאוד! החשבון, בבקשה.
+**NPC:** שמח שנהניתם. בבקשה — ערב נעים!
 
 _Scene 3_
-**NPC:** מקום יפה, נכון?
+**NPC:** היי! נוף יפה, נכון?
 **You:** המקום הזה יפהפה.
-**NPC:** כדאי לך לראות את העיר העתיקה.
+**NPC:** באמת. זו הפעם הראשונה שלך כאן?
+**You:** כן, זו הפעם הראשונה שלי כאן.
+**NPC:** ברוך הבא! כדאי לך לנסות את העיר העתיקה.
 **You:** אתה יכול להמליץ על מקום?
-**NPC:** 'מאמא רוזה'. מאוד טוב שם.
+**NPC:** בטח — תנסה את 'מאמא רוזה', בעיר העתיקה. מאוד טוב שם.
+**You:** תודה! היה נעים לדבר איתך.
+**NPC:** גם אתה! תיהנה מהמשך הטיול!
 
 ---
 
@@ -2142,119 +2190,159 @@ _Scene 3_
 
 english:
 _Scene 1_
-**NPC:** Evening! Where to?
+**NPC:** Good evening! Where to?
 **You:** To this address, please.
-**NPC:** About fifteen with the traffic. Here okay?
-**You:** Stop here, please.
-**NPC:** Here you are — have a good night!
+**NPC:** No problem. First time in the city?
+**You:** Yes, it's my first time here.
+**NPC:** …We are almost there. Is here okay?
+**You:** Stop here, please. Keep the change.
+**NPC:** Thank you very much! Have a lovely evening!
 
 _Scene 2_
-**NPC:** Welcome! How many people?
+**NPC:** Welcome! A table for how many people?
 **You:** A table for two, please.
-**NPC:** Right this way. Ready to order?
+**NPC:** Perfect, follow me. Are you ready to order?
 **You:** I'll have the pasta, please.
-**NPC:** Excellent — coming right up!
+**NPC:** Of course. Anything to drink?
+**You:** A bottle of water, please.
+**NPC:** Anything else?
+**You:** That's all, thanks.
+**NPC:** Coming right up!
 
 _Scene 3_
 **NPC:** Here's your meal — one steak!
 **You:** This isn't what I ordered.
-**NPC:** Oh no — so sorry! I'll bring the right one right away.
-**You:** Thank you!
-**NPC:** Here's the right dish — and it's on the house. Enjoy!
+**NPC:** Oh no, I'm so sorry! What did you order?
+**You:** I ordered the pasta.
+**NPC:** Of course — I'll bring the right one right away.
+**You:** No problem, thank you.
+**NPC:** Thank you for your patience. Here's your pasta.
 
 _Scene 4_
-**NPC:** All done? Anything else for you tonight?
-**You:** Could we have the bill, please?
-**NPC:** Here you go — that's thirty. Cash or card?
-**You:** I'll pay by card.
-**NPC:** Perfect — have a lovely evening!
+**NPC:** …Later… Is everything okay?
+**You:** Yes, that was delicious! The bill, please.
+**NPC:** Here's your bill. That's twenty euros. Cash or card?
+**You:** By card, please.
+**NPC:** Insert your card here… all done. Would you like the receipt?
+**You:** Yes, please.
+**NPC:** Here you go. Have a lovely evening!
 
 franch:
 _Scene 1_
 **NPC:** Bonsoir ! Où allez-vous ?
 **You:** À cette adresse, s’il vous plaît.
-**NPC:** Environ quinze avec la circulation. Ici, ça va ?
-**You:** Arrêtez-vous ici, s’il vous plaît.
-**NPC:** Nous voilà — bonne soirée !
+**NPC:** Pas de problème. C’est votre première fois dans la ville ?
+**You:** Oui, c’est ma première fois ici.
+**NPC:** …On est presque arrivés. Ici, ça va ?
+**You:** Arrêtez-vous ici, s’il vous plaît. Gardez la monnaie.
+**NPC:** Merci beaucoup ! Passez une bonne soirée !
 
 _Scene 2_
-**NPC:** Bienvenue ! Vous êtes combien ?
+**NPC:** Bienvenue ! Une table pour combien de personnes ?
 **You:** Une table pour deux, s’il vous plaît.
-**NPC:** Suivez-moi. Prêt à commander ?
+**NPC:** Parfait, suivez-moi. Vous êtes prêts à commander ?
 **You:** Je vais prendre les pâtes, s’il vous plaît.
-**NPC:** Excellent — ça arrive tout de suite !
+**NPC:** Bien sûr. Quelque chose à boire ?
+**You:** Une bouteille d’eau, s’il vous plaît.
+**NPC:** Autre chose ?
+**You:** C’est tout, merci.
+**NPC:** Ça arrive tout de suite !
 
 _Scene 3_
 **NPC:** Voici votre plat — un steak !
 **You:** Ce n’est pas ce que j’ai commandé.
-**NPC:** Oh non — vraiment désolé ! Je vous apporte le bon tout de suite.
-**You:** Merci !
-**NPC:** Voici le bon plat — et c’est offert par la maison. Bon appétit !
+**NPC:** Oh non, je suis vraiment désolé ! Qu’avez-vous commandé ?
+**You:** J’ai commandé les pâtes.
+**NPC:** Bien sûr — je vous apporte le bon tout de suite.
+**You:** Pas de problème, merci.
+**NPC:** Merci de votre patience. Voici vos pâtes.
 
 _Scene 4_
-**NPC:** C’est tout ? Autre chose pour vous ce soir ?
-**You:** On peut avoir l’addition, s’il vous plaît ?
-**NPC:** Voici — ça fait trente. Espèces ou carte ?
-**You:** Je vais payer par carte.
-**NPC:** Parfait — bonne soirée !
+**NPC:** …Plus tard… Tout va bien ?
+**You:** Oui, c’était délicieux ! L’addition, s’il vous plaît.
+**NPC:** Voici l’addition. Ça fait vingt euros. Espèces ou carte ?
+**You:** Par carte, s’il vous plaît.
+**NPC:** Insérez votre carte ici… c’est bon. Vous voulez le ticket ?
+**You:** Oui, s’il vous plaît.
+**NPC:** Voilà. Passez une bonne soirée !
 
 spanish:
 _Scene 1_
 **NPC:** ¡Buenas noches! ¿A dónde va?
 **You:** A esta dirección, por favor.
-**NPC:** Serán unos quince con el tráfico. ¿Aquí está bien?
-**You:** Pare aquí, por favor.
-**NPC:** Ya hemos llegado — ¡buenas noches!
+**NPC:** Sin problema. ¿Es su primera vez en la ciudad?
+**You:** Sí, es mi primera vez aquí.
+**NPC:** …Ya casi llegamos. ¿Aquí está bien?
+**You:** Pare aquí, por favor. Quédese con el cambio.
+**NPC:** ¡Muchas gracias! ¡Buenas noches!
 
 _Scene 2_
-**NPC:** ¡Bienvenido! ¿Cuántos son?
+**NPC:** ¡Bienvenido! ¿Una mesa para cuántas personas?
 **You:** Una mesa para dos, por favor.
-**NPC:** Sígame. ¿Listo para pedir?
+**NPC:** Perfecto, sígame. ¿Están listos para pedir?
 **You:** Voy a tomar la pasta, por favor.
-**NPC:** Excelente — ¡enseguida se lo traigo!
+**NPC:** Claro. ¿Algo de beber?
+**You:** Una botella de agua, por favor.
+**NPC:** ¿Algo más?
+**You:** Eso es todo, gracias.
+**NPC:** ¡Enseguida se lo traigo!
 
 _Scene 3_
 **NPC:** Aquí tiene su plato — ¡un filete!
 **You:** Esto no es lo que pedí.
-**NPC:** ¡Ay, no — lo siento muchísimo! Le traigo el correcto enseguida.
-**You:** ¡Gracias!
-**NPC:** Aquí tiene el plato correcto — y corre por cuenta de la casa. ¡Buen provecho!
+**NPC:** ¡Ay, lo siento muchísimo! ¿Qué pidió?
+**You:** Pedí la pasta.
+**NPC:** Claro — le traigo el correcto enseguida.
+**You:** No pasa nada, gracias.
+**NPC:** Gracias por su paciencia. Aquí tiene su pasta.
 
 _Scene 4_
-**NPC:** ¿Eso es todo? ¿Algo más esta noche?
-**You:** ¿Nos trae la cuenta, por favor?
-**NPC:** Aquí tiene — son treinta. ¿Efectivo o tarjeta?
-**You:** Voy a pagar con tarjeta.
-**NPC:** Perfecto — ¡que pase buena noche!
+**NPC:** …Más tarde… ¿Va todo bien?
+**You:** ¡Sí, estaba delicioso! La cuenta, por favor.
+**NPC:** Aquí tiene la cuenta. Son veinte euros. ¿Efectivo o tarjeta?
+**You:** Con tarjeta, por favor.
+**NPC:** Inserte su tarjeta aquí… listo. ¿Quiere el recibo?
+**You:** Sí, por favor.
+**NPC:** Aquí tiene. ¡Buenas noches!
 
 עברית:
 _Scene 1_
-**NPC:** ערב! לאן?
+**NPC:** ערב טוב! לאן?
 **You:** לכתובת הזאת, בבקשה.
-**NPC:** בערך חמש-עשרה עם הפקקים. כאן בסדר?
-**You:** עצור כאן, בבקשה.
-**NPC:** הגענו — לילה טוב!
+**NPC:** אין בעיה. פעם ראשונה בעיר?
+**You:** כן, זו הפעם הראשונה שלי כאן.
+**NPC:** …כמעט הגענו. כאן זה בסדר?
+**You:** עצור כאן, בבקשה. תשאיר את העודף.
+**NPC:** תודה רבה! ערב נעים!
 
 _Scene 2_
-**NPC:** ברוך הבא! כמה אנשים?
+**NPC:** ברוך הבא! שולחן לכמה אנשים?
 **You:** שולחן לשניים, בבקשה.
-**NPC:** בבקשה אחריי. מוכן להזמין?
+**NPC:** מצוין, בואו אחריי. מוכנים להזמין?
 **You:** אני אקח את הפסטה, בבקשה.
-**NPC:** מצוין — תכף מגיע!
+**NPC:** כמובן. משהו לשתות?
+**You:** בקבוק מים, בבקשה.
+**NPC:** עוד משהו?
+**You:** זה הכל, תודה.
+**NPC:** תכף מגיע!
 
 _Scene 3_
-**NPC:** הנה הארוחה — סטייק אחד!
+**NPC:** הנה הארוחה שלך — סטייק אחד!
 **You:** זה לא מה שהזמנתי.
-**NPC:** אוי לא — מצטער מאוד! אביא את הנכון מיד.
-**You:** תודה!
-**NPC:** הנה המנה הנכונה — והיא על חשבון הבית. בתיאבון!
+**NPC:** אוי לא, אני מצטער מאוד! מה הזמנת?
+**You:** הזמנתי את הפסטה.
+**NPC:** כמובן — אביא את הנכון מיד.
+**You:** אין בעיה, תודה.
+**NPC:** תודה על הסבלנות. הנה הפסטה שלך.
 
 _Scene 4_
-**NPC:** סיימנו? עוד משהו הערב?
-**You:** אפשר את החשבון, בבקשה?
-**NPC:** בבקשה — זה שלושים. מזומן או כרטיס?
-**You:** אני אשלם בכרטיס.
-**NPC:** מושלם — ערב נפלא!
+**NPC:** …אחר כך… הכל בסדר?
+**You:** כן, היה טעים מאוד! החשבון, בבקשה.
+**NPC:** הנה החשבון. זה עשרים יורו. מזומן או כרטיס?
+**You:** בכרטיס, בבקשה.
+**NPC:** הכנס את הכרטיס כאן… הכל מוכן. רוצה קבלה?
+**You:** כן, בבקשה.
+**NPC:** בבקשה. ערב נעים!
 
 ---
 
@@ -2264,182 +2352,238 @@ english:
 _Scene 1_
 **NPC:** Good morning! Do you have your key?
 **You:** Yes, I have my key.
-**NPC:** Good. Do you need anything else?
+**NPC:** Good. Do you need anything?
 **You:** Do you have a map?
 **NPC:** Here you go. Have a great day!
 
 _Scene 2_
-**NPC:** Where can I take you?
+**NPC:** Hello! Where to?
 **You:** To this address, please.
-**NPC:** About fifteen euros, with the traffic. Is here okay?
-**You:** Stop here, please.
-**NPC:** Here we are. Enjoy your day!
+**NPC:** How long are you here for?
+**You:** For two weeks.
+**NPC:** It's about fifteen euros. There's a lot of traffic right now.
+**You:** Okay, thank you.
+**NPC:** …We are almost there. Is here okay?
+**You:** Stop here, please. Keep the change.
+**NPC:** Thank you very much! Enjoy your day!
 
 _Scene 3_
-**NPC:** Hello! How many people?
-**You:** A table for two, please.
-**NPC:** Right this way. Ready to order?
-**You:** I'll have the pasta, please.
-**NPC:** …Here's your meal — one steak!
+**NPC:** Hello! Do you have a reservation?
+**You:** No — a table for two, please.
+**NPC:** Are you ready to order?
+**You:** I'll have the chicken, without onions, please.
+**NPC:** Here's your chicken — with onions!
 **You:** This isn't what I ordered.
-**NPC:** Oh no — I'm so sorry! I'll bring the right one.
+**NPC:** Oh no, I'm so sorry! What did you order?
+**You:** The chicken. No onions, please.
+**NPC:** Of course — I'll bring the right one right away.
 **You:** No problem, thank you.
-**NPC:** Here's the pasta. Enjoy your meal!
+**NPC:** …Later… Is everything okay?
+**You:** Yes, that was delicious! The bill, please.
+**NPC:** So glad you enjoyed it. Here you are. Thank you!
 
 _Scene 4_
-**NPC:** Hi! Where are you from?
+**NPC:** Hi! I'm from here. And you?
 **You:** I'm from Israel.
 **NPC:** Nice! What did you do today?
 **You:** I went to the old town.
-**NPC:** And where are you going next?
+**NPC:** Did you like it?
+**You:** Yes, it was great!
+**NPC:** So, where are you going next?
 **You:** I'm going to Vietnam.
-**NPC:** How long will you be there?
+**NPC:** Wow! How long will you be there?
 **You:** I'll be there for two weeks.
-**NPC:** Two weeks in Vietnam? I think that's too short.
+**NPC:** Really? I think Vietnam is too far.
 **You:** I don't think so.
-**NPC:** Ha! Maybe you're right. Have a great trip!
+**NPC:** Ha! That's true.
+**You:** And you? Where are you going next?
+**NPC:** Me? I'm going home. Have a great trip!
 
 _Scene 5_
-**NPC:** Welcome back! Is breakfast at seven okay for you tomorrow, or are you leaving early?
-**You:** Please speak slowly.
-**NPC:** Tomorrow. Breakfast — at seven. Okay?
-**You:** Okay, thank you.
-**NPC:** Good night — sleep well!
+**NPC:** Good evening! Is everything okay with your room? And breakfast tomorrow — is seven okay for you?
+**You:** Yes, thank you.
+**NPC:** Perfect. And how was your day?
+**You:** It was good.
+**NPC:** So glad! Good night.
+**You:** Thank you. Good night!
+**NPC:** See you tomorrow!
 
 franch:
 _Scene 1_
 **NPC:** Bonjour ! Vous avez votre clé ?
 **You:** Oui, j’ai ma clé.
-**NPC:** Très bien. Vous avez besoin d’autre chose ?
+**NPC:** Très bien. Vous avez besoin de quelque chose ?
 **You:** Vous avez une carte ?
 **NPC:** Tenez. Bonne journée !
 
 _Scene 2_
-**NPC:** Où puis-je vous emmener ?
+**NPC:** Bonjour ! Où allez-vous ?
 **You:** À cette adresse, s’il vous plaît.
-**NPC:** Environ quinze euros, avec la circulation. Ici, ça va ?
-**You:** Arrêtez-vous ici, s’il vous plaît.
-**NPC:** Nous y voilà. Bonne journée !
+**NPC:** Vous êtes ici pour combien de temps ?
+**You:** Pour deux semaines.
+**NPC:** C’est environ quinze euros. Il y a beaucoup de circulation en ce moment.
+**You:** D’accord, merci.
+**NPC:** …On est presque arrivés. Ici, ça va ?
+**You:** Arrêtez-vous ici, s’il vous plaît. Gardez la monnaie.
+**NPC:** Merci beaucoup ! Bonne journée !
 
 _Scene 3_
-**NPC:** Bonjour ! Vous êtes combien ?
-**You:** Une table pour deux, s’il vous plaît.
-**NPC:** Suivez-moi. Vous êtes prêt à commander ?
-**You:** Je vais prendre les pâtes, s’il vous plaît.
-**NPC:** …Voici votre plat — un steak !
+**NPC:** Bonjour ! Vous avez une réservation ?
+**You:** Non — une table pour deux, s’il vous plaît.
+**NPC:** Vous êtes prêts à commander ?
+**You:** Je vais prendre le poulet, sans oignons, s’il vous plaît.
+**NPC:** Voici votre poulet — avec des oignons !
 **You:** Ce n’est pas ce que j’ai commandé.
-**NPC:** Oh non — je suis vraiment désolé ! Je vous apporte le bon.
+**NPC:** Oh non, je suis vraiment désolé ! Qu’avez-vous commandé ?
+**You:** Le poulet. Sans oignons, s’il vous plaît.
+**NPC:** Bien sûr — je vous apporte le bon tout de suite.
 **You:** Pas de problème, merci.
-**NPC:** Voici les pâtes. Bon appétit !
+**NPC:** …Plus tard… Tout va bien ?
+**You:** Oui, c’était délicieux ! L’addition, s’il vous plaît.
+**NPC:** Ravi que ça vous ait plu. Voici. Merci !
 
 _Scene 4_
-**NPC:** Salut ! Tu viens d’où ?
+**NPC:** Salut ! Je suis d’ici. Et toi ?
 **You:** Je viens d’Israël.
 **NPC:** Sympa ! Tu as fait quoi aujourd’hui ?
 **You:** Je suis allé dans la vieille ville.
-**NPC:** Et tu vas où après ?
+**NPC:** Tu as aimé ?
+**You:** Oui, c’était super !
+**NPC:** Alors, tu vas où après ?
 **You:** Je vais au Vietnam.
-**NPC:** Tu restes combien de temps ?
+**NPC:** Waouh ! Tu restes combien de temps ?
 **You:** Je vais rester deux semaines.
-**NPC:** Deux semaines au Vietnam ? Je pense que c’est trop court.
+**NPC:** Vraiment ? Moi, je pense que le Vietnam, c’est trop loin.
 **You:** Je ne crois pas.
-**NPC:** Ha ! Tu as peut-être raison. Bon voyage !
+**NPC:** Ha ! C’est vrai.
+**You:** Et toi ? Tu vas où après ?
+**NPC:** Moi ? Je rentre chez moi. Bon voyage !
 
 _Scene 5_
-**NPC:** Bon retour ! Le petit-déjeuner à sept heures, ça vous va demain, ou vous partez tôt ?
-**You:** Parlez lentement, s’il vous plaît.
-**NPC:** Demain. Petit-déjeuner — à sept heures. D’accord ?
-**You:** D’accord, merci.
-**NPC:** Bonne nuit — dormez bien !
+**NPC:** Bonsoir ! Tout va bien avec votre chambre ? Et le petit-déjeuner demain — sept heures, ça va ?
+**You:** Oui, merci.
+**NPC:** Parfait. Et c’était comment, votre journée ?
+**You:** C’était bien.
+**NPC:** Ravi ! Bonne nuit.
+**You:** Merci. Bonne nuit !
+**NPC:** À demain !
 
 spanish:
 _Scene 1_
 **NPC:** ¡Buenos días! ¿Tiene su llave?
 **You:** Sí, tengo mi llave.
-**NPC:** Muy bien. ¿Necesita algo más?
+**NPC:** Muy bien. ¿Necesita algo?
 **You:** ¿Tiene un mapa?
 **NPC:** Aquí tiene. ¡Que tenga un buen día!
 
 _Scene 2_
-**NPC:** ¿A dónde le llevo?
+**NPC:** ¡Hola! ¿A dónde va?
 **You:** A esta dirección, por favor.
-**NPC:** Unos quince euros, con el tráfico. ¿Aquí está bien?
-**You:** Pare aquí, por favor.
-**NPC:** Ya estamos. ¡Que disfrute el día!
+**NPC:** ¿Cuánto tiempo está aquí?
+**You:** Dos semanas.
+**NPC:** Son unos quince euros. Hay mucho tráfico ahora mismo.
+**You:** De acuerdo, gracias.
+**NPC:** …Ya casi llegamos. ¿Aquí está bien?
+**You:** Pare aquí, por favor. Quédese con el cambio.
+**NPC:** ¡Muchas gracias! ¡Que tenga un buen día!
 
 _Scene 3_
-**NPC:** ¡Hola! ¿Cuántos son?
-**You:** Una mesa para dos, por favor.
-**NPC:** Sígame. ¿Listo para pedir?
-**You:** Voy a tomar la pasta, por favor.
-**NPC:** …Aquí tiene su plato — ¡un filete!
+**NPC:** ¡Hola! ¿Tiene reserva?
+**You:** No — una mesa para dos, por favor.
+**NPC:** ¿Están listos para pedir?
+**You:** Voy a tomar el pollo, sin cebolla, por favor.
+**NPC:** Aquí tiene su pollo — ¡con cebolla!
 **You:** Esto no es lo que pedí.
-**NPC:** ¡Ay, no — lo siento muchísimo! Le traigo el correcto.
+**NPC:** ¡Ay, lo siento muchísimo! ¿Qué pidió?
+**You:** El pollo. Sin cebolla, por favor.
+**NPC:** Claro — le traigo el correcto enseguida.
 **You:** No pasa nada, gracias.
-**NPC:** Aquí tiene la pasta. ¡Buen provecho!
+**NPC:** …Más tarde… ¿Va todo bien?
+**You:** ¡Sí, estaba delicioso! La cuenta, por favor.
+**NPC:** Me alegro de que les gustara. Aquí tienen. ¡Gracias!
 
 _Scene 4_
-**NPC:** ¡Hola! ¿De dónde eres?
+**NPC:** ¡Hola! Soy de aquí. ¿Y tú?
 **You:** Soy de Israel.
 **NPC:** ¡Qué bien! ¿Qué hiciste hoy?
 **You:** Fui al casco antiguo.
-**NPC:** ¿Y a dónde vas después?
+**NPC:** ¿Te gustó?
+**You:** ¡Sí, estuvo genial!
+**NPC:** Bueno, ¿a dónde vas después?
 **You:** Voy a Vietnam.
-**NPC:** ¿Cuánto tiempo vas a estar allí?
+**NPC:** ¡Guau! ¿Cuánto tiempo vas a estar allí?
 **You:** Voy a estar allí dos semanas.
-**NPC:** ¿Dos semanas en Vietnam? Creo que es muy poco.
+**NPC:** ¿De verdad? Yo creo que Vietnam está muy lejos.
 **You:** No lo creo.
-**NPC:** ¡Ja! Puede que tengas razón. ¡Buen viaje!
+**NPC:** ¡Ja! Es verdad.
+**You:** ¿Y tú? ¿A dónde vas después?
+**NPC:** ¿Yo? Me voy a casa. ¡Buen viaje!
 
 _Scene 5_
-**NPC:** ¡Bienvenido de nuevo! ¿Le va bien el desayuno a las siete mañana, o sale temprano?
-**You:** Más despacio, por favor.
-**NPC:** Mañana. Desayuno — a las siete. ¿De acuerdo?
-**You:** De acuerdo, gracias.
-**NPC:** Buenas noches — ¡que descanse!
+**NPC:** ¡Buenas noches! ¿Va todo bien con su habitación? ¿Y el desayuno mañana — a las siete está bien?
+**You:** Sí, gracias.
+**NPC:** Perfecto. ¿Y cómo estuvo su día?
+**You:** Estuvo bien.
+**NPC:** ¡Me alegro! Buenas noches.
+**You:** Gracias. ¡Buenas noches!
+**NPC:** ¡Nos vemos mañana!
 
 עברית:
 _Scene 1_
 **NPC:** בוקר טוב! יש לך את המפתח?
 **You:** כן, יש לי את המפתח.
-**NPC:** יופי. אתה צריך עוד משהו?
+**NPC:** יופי. אתה צריך משהו?
 **You:** יש לך מפה?
 **NPC:** בבקשה. שיהיה יום מעולה!
 
 _Scene 2_
-**NPC:** לאן לקחת אותך?
+**NPC:** שלום! לאן?
 **You:** לכתובת הזאת, בבקשה.
-**NPC:** בערך חמישה עשר יורו, עם הפקקים. כאן זה בסדר?
-**You:** עצור כאן, בבקשה.
-**NPC:** הגענו. תיהנה מהיום!
+**NPC:** לכמה זמן אתה כאן?
+**You:** לשבועיים.
+**NPC:** זה בערך חמישה עשר יורו. יש הרבה פקקים עכשיו.
+**You:** בסדר, תודה.
+**NPC:** …כמעט הגענו. כאן זה בסדר?
+**You:** עצור כאן, בבקשה. תשאיר את העודף.
+**NPC:** תודה רבה! שיהיה יום נעים!
 
 _Scene 3_
-**NPC:** שלום! כמה אנשים?
-**You:** שולחן לשניים, בבקשה.
-**NPC:** בבקשה אחריי. מוכן להזמין?
-**You:** אני אקח את הפסטה, בבקשה.
-**NPC:** …הנה הארוחה שלך — סטייק אחד!
+**NPC:** שלום! יש לכם הזמנה?
+**You:** לא — שולחן לשניים, בבקשה.
+**NPC:** מוכנים להזמין?
+**You:** אני אקח את העוף, בלי בצל, בבקשה.
+**NPC:** הנה העוף שלך — עם בצל!
 **You:** זה לא מה שהזמנתי.
-**NPC:** אוי לא — אני מצטער מאוד! אביא את הנכון.
+**NPC:** אוי לא, אני מצטער מאוד! מה הזמנת?
+**You:** את העוף. בלי בצל, בבקשה.
+**NPC:** כמובן — אביא את הנכון מיד.
 **You:** אין בעיה, תודה.
-**NPC:** הנה הפסטה. בתיאבון!
+**NPC:** …אחר כך… הכל בסדר?
+**You:** כן, היה טעים מאוד! החשבון, בבקשה.
+**NPC:** שמח שנהניתם. בבקשה. תודה!
 
 _Scene 4_
-**NPC:** היי! מאיפה אתה?
+**NPC:** היי! אני מכאן. ואתה?
 **You:** אני מישראל.
 **NPC:** יפה! מה עשית היום?
 **You:** הלכתי לעיר העתיקה.
-**NPC:** ולאן אתה נוסע אחרי זה?
+**NPC:** אהבת?
+**You:** כן, היה מעולה!
+**NPC:** אז לאן אתה נוסע אחרי זה?
 **You:** אני נוסע לווייטנאם.
-**NPC:** כמה זמן תהיה שם?
+**NPC:** וואו! כמה זמן תהיה שם?
 **You:** אני אהיה שם שבועיים.
-**NPC:** שבועיים בווייטנאם? אני חושב שזה קצר מדי.
+**NPC:** באמת? אני חושב שווייטנאם רחוקה מדי.
 **You:** לא נראה לי.
-**NPC:** חה! אולי אתה צודק. נסיעה טובה!
+**NPC:** חה! זה נכון.
+**You:** ואתה? לאן אתה נוסע אחרי זה?
+**NPC:** אני? אני חוזר הביתה. נסיעה טובה!
 
 _Scene 5_
-**NPC:** ברוך השב! ארוחת בוקר בשבע מתאימה לך מחר, או שאתה יוצא מוקדם?
-**You:** דבר לאט, בבקשה.
-**NPC:** מחר. ארוחת בוקר — בשבע. בסדר?
-**You:** בסדר, תודה.
-**NPC:** לילה טוב — תישן טוב!
+**NPC:** ערב טוב! הכל בסדר עם החדר? וארוחת הבוקר מחר — שבע מתאים לך?
+**You:** כן, תודה.
+**NPC:** מצוין. ואיך היה היום שלך?
+**You:** היה טוב.
+**NPC:** שמח לשמוע! לילה טוב.
+**You:** תודה. לילה טוב!
+**NPC:** נתראה מחר!

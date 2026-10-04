@@ -35,6 +35,12 @@ export function NpcLine({ npc, children, gloss }: { npc: NpcLook; children: Reac
   );
 }
 
+/** What goes inside the other speaker's bubble. In an audio-only scene (No Subtitles) the line is
+ *  never written before the learner answers: the bubble holds a button that plays it again. */
+export function NpcSpeech({ audioOnly, onPlay, children }: { audioOnly: boolean; onPlay: () => void; children: ReactNode }) {
+  return audioOnly ? <AudioBubble onPlay={onPlay} /> : <>{children}</>;
+}
+
 /** What the learner just said, on their side of the conversation. */
 export function YouLine({ children }: { children: ReactNode }) {
   return (

@@ -6,9 +6,8 @@ import type { BootcampDayContent, BootcampStep } from './types.js';
 
 /**
  * Practice V1 (Missions 01–05). The engines' data is validated in every language, the mission-level
- * decisions are pinned, and the missions no practice pass has touched yet (25–30) are fingerprinted.
- * (Missions 06–10, 11–18 and 19–24 got their own passes later — see practiceArrival.test.ts,
- * practiceEveryday.test.ts and practiceCity.test.ts.)
+ * decisions are pinned. (Missions 06–10, 11–18, 19–24 and 25–30 got their own passes later — see
+ * practiceArrival.test.ts, practiceEveryday.test.ts, practiceCity.test.ts and practiceMastery.test.ts.)
  */
 const LANGS = ['en', 'fr', 'es'] as const;
 type Lang = (typeof LANGS)[number];
@@ -27,23 +26,16 @@ function retrievable(day: BootcampDayContent): Set<string> {
   return ids;
 }
 const reviewed = (day: BootcampDayContent): string[] => stepsOf(day, 'swipe').flatMap((s) => s.itemIds.map(strip));
-const fnv = (s: string): string => { let h = 0x811c9dc5; for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 0x01000193) >>> 0; } return h.toString(16).padStart(8, '0'); };
 
 describe('scope: only the missions a practice pass was meant for changed', () => {
-  it('Missions 25–30 are byte-for-byte what they were before any practice pass, in every language', () => {
-    const print = (lang: Lang): string => fnv(JSON.stringify(BOOTCAMP_PLAN.slice(24).map((m) => MISSIONS_BY_LANG[lang]![m.day])));
-    expect({ en: print('en'), fr: print('fr'), es: print('es') }).toEqual({ en: '82db671f', fr: '84ecc1ae', es: '7d6a6e76' });
-  });
-
   it('mission order, ids and registry keys of 01–05 are unchanged', () => {
     expect(V1.map((m) => `${m.id}:${m.day}`)).toEqual(['introduce-myself:1', 'numbers-money:2', 'coffee-shop:3', 'everyday-core:30', 'directions:5']);
   });
 
-  it('none of the new step types is used outside 01–24', () => {
-    for (const lang of LANGS) for (const m of BOOTCAMP_PLAN.slice(24)) {
+  it('the three missions that teach nothing (28–30) use no practice engine and no cold open — only conversations', () => {
+    for (const lang of LANGS) for (const m of BOOTCAMP_PLAN.slice(27)) {
       for (const s of MISSIONS_BY_LANG[lang]![m.day]!.steps) {
-        expect(['quickReply', 'visualMatch', 'swap', 'miniMap', 'matchPairs', 'sentenceBuilder'], `${lang} ${m.id}`).not.toContain(s.kind);
-        if (s.kind === 'ambush') expect(s.mode, `${lang} ${m.id}`).toBeUndefined();
+        expect(['talk', 'dialogue', 'receipt', 'summary'], `${lang} ${m.id}`).toContain(s.kind);
       }
     }
   });

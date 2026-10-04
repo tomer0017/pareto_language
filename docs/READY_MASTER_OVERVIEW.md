@@ -188,6 +188,8 @@ stays as a calm way out. READY is used in two modes over the SAME content: **act
   AND hold a simple human conversation: plans, home and family, hobbies, yesterday, tomorrow, opinions.
   **Mission 1 is Introduce Myself**, Mission 4 is Everyday Core, Mission 30 is A Complete Day Abroad
   Alone. Checkpoints (cold integration days — they test, they never teach) sit at **10 / 18 / 24 / 30**.
+  The last three missions teach nothing: 28 (No Subtitles) is heard only — no transcript and no
+  translation before the answer; 29 is one evening; 30 is one whole day of real decisions.
   Eight missions are new (4, 12, 13, 16, 20, 21, 23, 25); Restaurant Basics, Hotel Requests and Paying
   Anywhere were merged away; Street Food, Tickets, Wifi/SIM and Souvenirs moved to the **Extended
   Mission Pool** (`plan.ts` `EXTENDED_POOL`, content in `extended.ts`) for a later 31+ track. See

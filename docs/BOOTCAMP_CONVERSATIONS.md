@@ -1590,12 +1590,12 @@ _Reply-training drill:_ “Really?” · “Why?” · “That's true.” · “
 _Reply-training drill:_ “Where did it happen?” · “Do you want to report it?” · “Do you have your passport?” · “You should go to the police.”
 
 ### Recovery tools reused
-`Thank you!` · `What does that mean?`
+`Thank you!` · `What does that mean?` · `Please speak slowly.`
 
 ### Cold open (ambush)
-- 🧑 (fast) “Okay try to remember where did it happen was it here or on the bus?” · טוב, נסה להיזכר — איפה זה קרה, כאן או באוטובוס?
-  - ✅ best move: **Where did it happen?** · איפה זה קרה?
-  - ✗ distractor: You should go to the police.
+- 🧑 (fast) “Okay. Was it here, near the station, or on the bus this morning? And do you have your passport?” · בסדר. זה היה כאן, ליד התחנה, או באוטובוס הבוקר? ויש לך את הדרכון?
+  - ✅ best move: **Please speak slowly.** · דבר לאט, בבקשה.
+  - ✗ distractor: Yes, I want to report it.
 
 ### Dialogue: `asking-for-help` — happy path
 - **🧑 Them:** “Are you okay?” · הכל בסדר?
@@ -1653,15 +1653,15 @@ _Reply-training drill:_ “Where did it happen?” · “Do you want to report i
 - **You should see a doctor.** · כדאי לך לראות רופא.
 - **Feel better soon!** · תרגיש טוב יותר!
 
-_Reply-training drill:_ “What's the matter?” · “Any allergies?” · “Take this twice a day.” · “After meals.”
+_Reply-training drill:_ “What's the matter?” · “Any allergies?” · “Feel better soon!”
 
 ### Recovery tools reused
 `Can you repeat that?` · `Please speak slowly.` · `Thank you!`
 
 ### Cold open (ambush)
-- 🧑 (fast) “And if it doesn't improve in three days you'll really need to see a doctor okay?” · ואם זה לא משתפר תוך שלושה ימים, תצטרך באמת לראות רופא, בסדר?
+- 🧑 (fast) “Take this twice a day, after meals, and please follow the instructions on the label. Any other allergies?” · קח את זה פעמיים ביום, אחרי הארוחות, ותפעל לפי ההוראות בעלון. יש עוד אלרגיות?
   - ✅ best move: **Please speak slowly.** · דבר לאט, בבקשה.
-  - ✗ distractor: I have a headache.
+  - ✗ distractor: Thank you!
 
 ### Dialogue: `pharmacy` — happy path
 - **🧑 Them:** “Hello! What's the matter?” · שלום! מה קרה?
@@ -1720,11 +1720,6 @@ _Reply-training drill:_ “What's wrong?” · “Are you hurt?” · “Where a
 ### Recovery tools reused
 `Please speak slowly.`
 
-### Cold open (ambush)
-- 🧑 (fast) “Okay listen carefully I need to know exactly where are you right now?” · טוב, תקשיב טוב — אני צריך לדעת בדיוק: איפה אתה עכשיו?
-  - ✅ best move: **Where are you?** · איפה אתה?
-  - ✗ distractor: Stay calm, help is coming.
-
 ### Dialogue: `emergency` — happy path
 - **🧑 Them:** “Emergency services — what's wrong?” · שירותי חירום — מה קרה?
 - **🫵 You:** “I need help.” · אני צריך עזרה.
@@ -1758,49 +1753,79 @@ _Reply-training drill:_ “What's wrong?” · “Are you hurt?” · “Where a
 
 ### Core phrases (you say)
 - **One ticket to the centre, please.** · כרטיס אחד למרכז, בבקשה. — _התבנית: One ticket to ___ — קונה כרטיס לכל יעד._
+- **To this address, please.** · לכתובת הזאת, בבקשה. — _הפתיח למונית — תגיד את זה ותראה את הכתובת בטלפון._
+- **Single, please.** · הלוך, בבקשה.
+- **In cash.** · במזומן.
+- **By card, please.** · בכרטיס, בבקשה.
 - **Does this stop at the museum?** · זה עוצר במוזיאון? — _התבנית: Does this stop at ___? — מוודאת שאתה יורד נכון._
+- **Which platform?** · איזה רציף? — _שתי מילים שמונעות עלייה לרכבת הלא נכונה._
 - **A table for two, please.** · שולחן לשניים, בבקשה. — _הפתיח למסעדה. תבנית: a table for ___._
 - **I'll have the pasta, please.** · אני אקח את הפסטה, בבקשה. — _התבנית הגדולה של המסעדה: I’ll have the ___ — מזמינים כל דבר בתפריט._
+- **A bottle of water, please.** · בקבוק מים, בבקשה.
+- **The bill, please.** · החשבון, בבקשה.
+- **That was delicious!** · זה היה טעים מאוד! — _מחמאה קטנה שקונה חיוך גדול._
+- **No onions, please.** · בלי בצל, בבקשה. — _תבנית: No ___, please — לכל מה שאתה לא רוצה בצלחת._
 - **This place is beautiful.** · המקום הזה יפהפה. — _מחמאה למקום פותחת כל שיחה._
+- **I'm from Israel.** · אני מישראל. — _התבנית: I’m from ___ — התשובה ל-Where are you from._
+- **It's my first time here.** · זו הפעם הראשונה שלי כאן. — _פותח שיחה ומזמין המלצות._
+- **I like it a lot.** · אני מאוד אוהב.
 - **Can you recommend a place?** · אתה יכול להמליץ על מקום? — _מקומיים יודעים הכי טוב. תשאל._
-
-### Expected replies (you hear)
-- **Your stop is next.** · התחנה שלך הבאה.
-- **Single or return?** · הלוך או הלוך-חזור?
-- **Is everything okay?** · הכל בסדר?
-- **Are you ready to order?** · מוכנים להזמין?
+- **It was nice talking to you.** · היה נעים לדבר איתך.
+- **How about you?** · ואתה? — _להחזיר את השאלה — וכבר יש שיחה._
 
 ### Recovery tools reused
-`Can you repeat that?`
-
-### Cold open (ambush)
-- 🧑 (fast) “Heads up your stop is next get ready to get off” · שים לב, התחנה שלך הבאה — תתכונן לרדת
-  - ✅ best move: **Your stop is next.** · התחנה שלך הבאה.
-  - ✗ distractor: Single or return?
-- 🧑 (fast) “Sorry to rush you is everything okay or do you need anything else?” · סליחה שאני מזרז — הכל בסדר, או שצריך עוד משהו?
-  - ✅ best move: **Is everything okay?** · הכל בסדר?
-  - ✗ distractor: Are you ready to order?
+`Can you repeat that?` · `Please speak slowly.`
 
 ### Dialogue: `ns-transit` — happy path
-- **🧑 Them:** “Right — where to?” · טוב — לאן?
+- **🧑 Them:** “Hello! Where to?” · שלום! לאן?
 - **🫵 You:** “One ticket to the centre, please.” · כרטיס אחד למרכז, בבקשה.
-- **🧑 Them:** “Platform's changed. It's four now — quick!” · הרציף השתנה. עכשיו זה ארבע — מהר!
+- **🧑 Them:** “Single or return?” · הלוך או הלוך-חזור?
+- **🫵 You:** “Single, please.” · הלוך, בבקשה.
+- **🧑 Them:** “That's three euros. Cash or card?” · זה שלושה יורו. מזומן או כרטיס?
+- **🫵 You:** “By card, please.” · בכרטיס, בבקשה.
+- **🧑 Them:** “Platform two. It leaves every ten minutes.” · רציף שתיים. יוצא כל עשר דקות.
 - **🫵 You:** “Does this stop at the museum?” · זה עוצר במוזיאון?
-- **🧑 Them:** “Yes. Three stops.” · כן. שלוש תחנות.
+- **🧑 Them:** “Yes — it's three stops. I'll tell you when.” · כן — זה שלוש תחנות. אני אגיד לך מתי.
+
+#### Wrong / recovery branches
+- ⚠︎ less useful: 🫵 “To this address, please.” → 🧑 “Hello! Where to?” · שלום! לאן?
+- ⚠︎ less useful: 🫵 “In cash.” → 🧑 “Single or return?” · הלוך או הלוך-חזור?
+- ⚠︎ less useful: 🫵 “Single, please.” → 🧑 “That's three euros. Cash or card?” · זה שלושה יורו. מזומן או כרטיס?
+- ⚠︎ less useful: 🫵 “Which platform?” → 🧑 “Platform two. It leaves every ten minutes.” · רציף שתיים. יוצא כל עשר דקות.
 
 ### Dialogue: `ns-diner` — happy path
-- **🧑 Them:** “Evening — table for how many?” · ערב טוב — שולחן לכמה?
+- **🧑 Them:** “Good evening! A table for how many people?” · ערב טוב! שולחן לכמה אנשים?
 - **🫵 You:** “A table for two, please.” · שולחן לשניים, בבקשה.
-- **🧑 Them:** “Kitchen's about to close. Ready to order?” · המטבח עומד להיסגר. מוכן להזמין?
+- **🧑 Them:** “Perfect, follow me. Here are your menus. Anything to drink?” · מצוין, בואו אחריי. הנה התפריטים. משהו לשתות?
+- **🫵 You:** “A bottle of water, please.” · בקבוק מים, בבקשה.
+- **🧑 Them:** “Are you ready to order?” · מוכנים להזמין?
 - **🫵 You:** “I'll have the pasta, please.” · אני אקח את הפסטה, בבקשה.
-- **🧑 Them:** “Great. Coming up.” · מצוין. תכף מגיע.
+- **🧑 Them:** “Is everything okay?” · הכל בסדר?
+- **🫵 You:** “Yes, that was delicious! The bill, please.” · כן, היה טעים מאוד! החשבון, בבקשה.
+- **🧑 Them:** “So glad you enjoyed it. Here you are — have a lovely evening!” · שמח שנהניתם. בבקשה — ערב נעים!
+
+#### Wrong / recovery branches
+- ⚠︎ less useful: 🫵 “I'll have the pasta, please.” → 🧑 “Good evening! A table for how many people?” · ערב טוב! שולחן לכמה אנשים?
+- ⚠︎ less useful: 🫵 “The bill, please.” → 🧑 “Perfect, follow me. Here are your menus. Anything to drink?” · מצוין, בואו אחריי. הנה התפריטים. משהו לשתות?
+- ⚠︎ less useful: 🫵 “That was delicious!” → 🧑 “Are you ready to order?” · מוכנים להזמין?
+- ⚠︎ less useful: 🫵 “No onions, please.” → 🧑 “Is everything okay?” · הכל בסדר?
 
 ### Dialogue: `ns-local` — happy path
-- **🧑 Them:** “Beautiful place, right?” · מקום יפה, נכון?
+- **🧑 Them:** “Hi! Beautiful view, isn't it?” · היי! נוף יפה, נכון?
 - **🫵 You:** “This place is beautiful.” · המקום הזה יפהפה.
-- **🧑 Them:** “You should see the old town.” · כדאי לך לראות את העיר העתיקה.
+- **🧑 Them:** “It really is. Is this your first time here?” · באמת. זו הפעם הראשונה שלך כאן?
+- **🫵 You:** “Yes, it's my first time here.” · כן, זו הפעם הראשונה שלי כאן.
+- **🧑 Them:** “Welcome! You should try the old town.” · ברוך הבא! כדאי לך לנסות את העיר העתיקה.
 - **🫵 You:** “Can you recommend a place?” · אתה יכול להמליץ על מקום?
-- **🧑 Them:** “Mama Rosa. It's very good.” · 'מאמא רוזה'. מאוד טוב שם.
+- **🧑 Them:** “Of course — try 'Mama Rosa', in the old town. It's very good.” · בטח — תנסה את 'מאמא רוזה', בעיר העתיקה. מאוד טוב שם.
+- **🫵 You:** “Thank you! It was nice talking to you.” · תודה! היה נעים לדבר איתך.
+- **🧑 Them:** “You too! Enjoy the rest of your trip!” · גם אתה! תיהנה מהמשך הטיול!
+
+#### Wrong / recovery branches
+- ⚠︎ less useful: 🫵 “I'm from Israel.” → 🧑 “Hi! Beautiful view, isn't it?” · היי! נוף יפה, נכון?
+- ⚠︎ less useful: 🫵 “I like it a lot.” → 🧑 “It really is. Is this your first time here?” · באמת. זו הפעם הראשונה שלך כאן?
+- ⚠︎ less useful: 🫵 “It was nice talking to you.” → 🧑 “Welcome! You should try the old town.” · ברוך הבא! כדאי לך לנסות את העיר העתיקה.
+- ⚠︎ less useful: 🫵 “How about you?” → 🧑 “Of course — try 'Mama Rosa', in the old town. It's very good.” · בטח — תנסה את 'מאמא רוזה', בעיר העתיקה. מאוד טוב שם.
 
 ### Review status
 - 🤖 AI-drafted (English + Hebrew) — **pending human / native-Hebrew review**
@@ -1822,49 +1847,85 @@ _Reply-training drill:_ “What's wrong?” · “Are you hurt?” · “Where a
 
 ### Core phrases (you say)
 - **To this address, please.** · לכתובת הזאת, בבקשה. — _הפתיח למונית — תגיד את זה ותראה את הכתובת בטלפון._
+- **A table for two, please.** · שולחן לשניים, בבקשה. — _הפתיח למסעדה. תבנית: a table for ___._
+- **It's my first time here.** · זו הפעם הראשונה שלי כאן. — _פותח שיחה ומזמין המלצות._
+- **Keep the change.** · תשאיר את העודף.
 - **Stop here, please.** · עצור כאן, בבקשה. — _העיתוי חשוב — תגיד את זה קצת לפני היעד._
-- **A table for two, please.** · שולחן לשניים, בבקשה. — _התבנית: A table for ___ — פשוט מספר. for one / for four._
+- **For two weeks.** · לשבועיים. — _התבנית: For + משך זמן. For three days / For a week._
 - **I'll have the pasta, please.** · אני אקח את הפסטה, בבקשה. — _התבנית הגדולה של המסעדה: I’ll have the ___ — מזמינים כל דבר בתפריט._
-- **Could we have the bill, please?** · אפשר את החשבון, בבקשה? — _המשפט שסוגר כל ארוחה. באנגליה: bill · באמריקה: check._
+- **That was delicious!** · זה היה טעים מאוד! — _מחמאה קטנה שקונה חיוך גדול._
+- **A bottle of water, please.** · בקבוק מים, בבקשה.
+- **The bill, please.** · החשבון, בבקשה.
+- **That's all, thanks.** · זה הכל, תודה. — _סוגר כל הזמנה בנימוס. עובד בכל מקום בעולם._
 - **This isn't what I ordered.** · זה לא מה שהזמנתי. — _רגוע וברור. לא צריך להתנצל._
-- **I was charged twice.** · חייבו אותי פעמיים.
-- **I'll pay by card.** · אני אשלם בכרטיס. — _התבנית: I’ll pay by ___ / in ___. by card · in cash._
+- **I ordered the pasta.** · הזמנתי את הפסטה.
+- **No problem, thank you.** · אין בעיה, תודה.
+- **Can you fix it?** · אפשר לתקן את זה?
+- **By card, please.** · בכרטיס, בבקשה.
+- **How much is it?** · כמה זה עולה? — _השאלה שפותחת כל עסקה. תלמד אותה עד הסוף._
+- **Yes, please.** · כן, בבקשה.
 
 ### Recovery tools reused
-`Can you repeat that?` · `Please speak slowly.` · `Thank you!`
-
-### Cold open (ambush)
-- 🧑 (fast) “While we fix that can I bring you a drink on the house to make up for it?” · בזמן שאנחנו מתקנים — שאביא לך משקה על חשבון הבית כפיצוי?
-  - ✅ best move: **Can you repeat that?** · אפשר לחזור על זה?
-  - ✗ distractor: I was charged twice.
+`Can you repeat that?` · `Please speak slowly.`
 
 ### Dialogue: `dr-taxi` — happy path
-- **🧑 Them:** “Evening! Where to?” · ערב! לאן?
+- **🧑 Them:** “Good evening! Where to?” · ערב טוב! לאן?
 - **🫵 You:** “To this address, please.” · לכתובת הזאת, בבקשה.
-- **🧑 Them:** “About fifteen with the traffic. Here okay?” · בערך חמש-עשרה עם הפקקים. כאן בסדר?
-- **🫵 You:** “Stop here, please.” · עצור כאן, בבקשה.
-- **🧑 Them:** “Here you are — have a good night!” · הגענו — לילה טוב!
+- **🧑 Them:** “No problem. First time in the city?” · אין בעיה. פעם ראשונה בעיר?
+- **🫵 You:** “Yes, it's my first time here.” · כן, זו הפעם הראשונה שלי כאן.
+- **🧑 Them:** “…We are almost there. Is here okay?” · …כמעט הגענו. כאן זה בסדר?
+- **🫵 You:** “Stop here, please. Keep the change.” · עצור כאן, בבקשה. תשאיר את העודף.
+- **🧑 Them:** “Thank you very much! Have a lovely evening!” · תודה רבה! ערב נעים!
+
+#### Wrong / recovery branches
+- ⚠︎ less useful: 🫵 “A table for two, please.” → 🧑 “Good evening! Where to?” · ערב טוב! לאן?
+- ⚠︎ less useful: 🫵 “Keep the change.” → 🧑 “No problem. First time in the city?” · אין בעיה. פעם ראשונה בעיר?
+- ⚠︎ less useful: 🫵 “To this address, please.” → 🧑 “…We are almost there. Is here okay?” · …כמעט הגענו. כאן זה בסדר?
 
 ### Dialogue: `dr-order` — happy path
-- **🧑 Them:** “Welcome! How many people?” · ברוך הבא! כמה אנשים?
+- **🧑 Them:** “Welcome! A table for how many people?” · ברוך הבא! שולחן לכמה אנשים?
 - **🫵 You:** “A table for two, please.” · שולחן לשניים, בבקשה.
-- **🧑 Them:** “Right this way. Ready to order?” · בבקשה אחריי. מוכן להזמין?
+- **🧑 Them:** “Perfect, follow me. Are you ready to order?” · מצוין, בואו אחריי. מוכנים להזמין?
 - **🫵 You:** “I'll have the pasta, please.” · אני אקח את הפסטה, בבקשה.
-- **🧑 Them:** “Excellent — coming right up!” · מצוין — תכף מגיע!
+- **🧑 Them:** “Of course. Anything to drink?” · כמובן. משהו לשתות?
+- **🫵 You:** “A bottle of water, please.” · בקבוק מים, בבקשה.
+- **🧑 Them:** “Anything else?” · עוד משהו?
+- **🫵 You:** “That's all, thanks.” · זה הכל, תודה.
+- **🧑 Them:** “Coming right up!” · תכף מגיע!
+
+#### Wrong / recovery branches
+- ⚠︎ less useful: 🫵 “For two weeks.” → 🧑 “Welcome! A table for how many people?” · ברוך הבא! שולחן לכמה אנשים?
+- ⚠︎ less useful: 🫵 “That was delicious!” → 🧑 “Perfect, follow me. Are you ready to order?” · מצוין, בואו אחריי. מוכנים להזמין?
+- ⚠︎ less useful: 🫵 “The bill, please.” → 🧑 “Of course. Anything to drink?” · כמובן. משהו לשתות?
+- ⚠︎ less useful: 🫵 “A table for two, please.” → 🧑 “Anything else?” · עוד משהו?
 
 ### Dialogue: `dr-problem` — happy path
-- **🧑 Them:** “Here's your meal — one steak!” · הנה הארוחה — סטייק אחד!
+- **🧑 Them:** “Here's your meal — one steak!” · הנה הארוחה שלך — סטייק אחד!
 - **🫵 You:** “This isn't what I ordered.” · זה לא מה שהזמנתי.
-- **🧑 Them:** “Oh no — so sorry! I'll bring the right one right away.” · אוי לא — מצטער מאוד! אביא את הנכון מיד.
-- **🫵 You:** “Thank you!” · תודה!
-- **🧑 Them:** “Here's the right dish — and it's on the house. Enjoy!” · הנה המנה הנכונה — והיא על חשבון הבית. בתיאבון!
+- **🧑 Them:** “Oh no, I'm so sorry! What did you order?” · אוי לא, אני מצטער מאוד! מה הזמנת?
+- **🫵 You:** “I ordered the pasta.” · הזמנתי את הפסטה.
+- **🧑 Them:** “Of course — I'll bring the right one right away.” · כמובן — אביא את הנכון מיד.
+- **🫵 You:** “No problem, thank you.” · אין בעיה, תודה.
+- **🧑 Them:** “Thank you for your patience. Here's your pasta.” · תודה על הסבלנות. הנה הפסטה שלך.
+
+#### Wrong / recovery branches
+- ⚠︎ less useful: 🫵 “That was delicious!” → 🧑 “Here's your meal — one steak!” · הנה הארוחה שלך — סטייק אחד!
+- ⚠︎ less useful: 🫵 “I'll have the pasta, please.” → 🧑 “Oh no, I'm so sorry! What did you order?” · אוי לא, אני מצטער מאוד! מה הזמנת?
+- ⚠︎ less useful: 🫵 “Can you fix it?” → 🧑 “Of course — I'll bring the right one right away.” · כמובן — אביא את הנכון מיד.
 
 ### Dialogue: `dr-pay` — happy path
-- **🧑 Them:** “All done? Anything else for you tonight?” · סיימנו? עוד משהו הערב?
-- **🫵 You:** “Could we have the bill, please?” · אפשר את החשבון, בבקשה?
-- **🧑 Them:** “Here you go — that's thirty. Cash or card?” · בבקשה — זה שלושים. מזומן או כרטיס?
-- **🫵 You:** “I'll pay by card.” · אני אשלם בכרטיס.
-- **🧑 Them:** “Perfect — have a lovely evening!” · מושלם — ערב נפלא!
+- **🧑 Them:** “…Later… Is everything okay?” · …אחר כך… הכל בסדר?
+- **🫵 You:** “Yes, that was delicious! The bill, please.” · כן, היה טעים מאוד! החשבון, בבקשה.
+- **🧑 Them:** “Here's your bill. That's twenty euros. Cash or card?” · הנה החשבון. זה עשרים יורו. מזומן או כרטיס?
+- **🫵 You:** “By card, please.” · בכרטיס, בבקשה.
+- **🧑 Them:** “Insert your card here… all done. Would you like the receipt?” · הכנס את הכרטיס כאן… הכל מוכן. רוצה קבלה?
+- **🫵 You:** “Yes, please.” · כן, בבקשה.
+- **🧑 Them:** “Here you go. Have a lovely evening!” · בבקשה. ערב נעים!
+
+#### Wrong / recovery branches
+- ⚠︎ less useful: 🫵 “A bottle of water, please.” → 🧑 “…Later… Is everything okay?” · …אחר כך… הכל בסדר?
+- ⚠︎ less useful: 🫵 “How much is it?” → 🧑 “Here's your bill. That's twenty euros. Cash or card?” · הנה החשבון. זה עשרים יורו. מזומן או כרטיס?
+- ⚠︎ less useful: 🫵 “Keep the change.” → 🧑 “Insert your card here… all done. Would you like the receipt?” · הכנס את הכרטיס כאן… הכל מוכן. רוצה קבלה?
 
 ### Review status
 - 🤖 AI-drafted (English + Hebrew) — **pending human / native-Hebrew review**
@@ -1886,75 +1947,133 @@ _Reply-training drill:_ “What's wrong?” · “Are you hurt?” · “Where a
 
 ### Core phrases (you say)
 - **Yes, I have my key.** · כן, יש לי את המפתח.
+- **I have a reservation.** · יש לי הזמנה. — _הפתיח לדלפק המלון. תבנית: I have a ___._
 - **Do you have a map?** · יש לך מפה? — _Do you have ___? — עובד בכל חנות, מלון ומסעדה._
+- **Yes, I know.** · כן, אני יודע.
 - **To this address, please.** · לכתובת הזאת, בבקשה. — _הפתיח למונית — תגיד את זה ותראה את הכתובת בטלפון._
+- **One ticket to the centre, please.** · כרטיס אחד למרכז, בבקשה. — _התבנית: One ticket to ___ — קונה כרטיס לכל יעד._
+- **For two weeks.** · לשבועיים. — _התבנית: For + משך זמן. For three days / For a week._
+- **At a hotel in the city centre.** · במלון במרכז העיר. — _התשובה ל-"איפה אתה מתאכסן?". שם המלון עדיף, אבל זה מספיק._
+- **How much to the centre?** · כמה עד המרכז? — _לשאול מחיר לפני שנוסעים — חוסך הפתעות._
 - **Stop here, please.** · עצור כאן, בבקשה. — _העיתוי חשוב — תגיד את זה קצת לפני היעד._
 - **A table for two, please.** · שולחן לשניים, בבקשה. — _הפתיח למסעדה. תבנית: a table for ___._
-- **I'll have the pasta, please.** · אני אקח את הפסטה, בבקשה. — _התבנית הגדולה של המסעדה: I’ll have the ___ — מזמינים כל דבר בתפריט._
+- **The bill, please.** · החשבון, בבקשה.
+- **I'll have the chicken.** · אני אקח את העוף. — _תבנית ההזמנה: I’ll have the ___._
+- **That was delicious!** · זה היה טעים מאוד! — _מחמאה קטנה שקונה חיוך גדול._
 - **This isn't what I ordered.** · זה לא מה שהזמנתי. — _רגוע וברור. לא צריך להתנצל._
+- **No onions, please.** · בלי בצל, בבקשה. — _תבנית: No ___, please — לכל מה שאתה לא רוצה בצלחת._
+- **I ordered the pasta.** · הזמנתי את הפסטה.
 - **No problem, thank you.** · אין בעיה, תודה.
+- **I was charged twice.** · חייבו אותי פעמיים.
+- **A bottle of water, please.** · בקבוק מים, בבקשה.
 - **I'm from Israel.** · אני מישראל. — _התבנית: I’m from ___ — התשובה ל-Where are you from._
+- **It's my first time here.** · זו הפעם הראשונה שלי כאן. — _פותח שיחה ומזמין המלצות._
 - **I went to the old town.** · הלכתי לעיר העתיקה. — _I went to ___ — התשובה ל"איפה היית?"_
 - **I'm going to Vietnam.** · אני נוסע לווייטנאם. — _I’m going to ___ — מדינה, עיר, או המקום הבא._
+- **Yes, it was great!** · כן, היה מעולה!
+- **I stayed in a hostel.** · ישנתי בהוסטל. — _I stayed in ___ — hostel, hotel, apartment._
 - **I'll be there for two weeks.** · אני אהיה שם שבועיים.
+- **After that I'm going to Thailand.** · אחרי זה אני נוסע לתאילנד.
 - **I don't think so.** · לא נראה לי.
-
-### Expected replies (you hear)
-- **Is here okay?** · כאן זה בסדר?
-- **Where to?** · לאן?
+- **I don't like it.** · זה לא מוצא חן בעיניי.
+- **Where are you going next?** · לאן אתה נוסע אחרי זה?
+- **Of course!** · ברור!
+- **Is breakfast included?** · ארוחת הבוקר כלולה?
+- **It was good.** · היה טוב.
+- **Tomorrow morning I'm going to the airport.** · מחר בבוקר אני נוסע לשדה התעופה.
 
 ### Recovery tools reused
-`Please speak slowly.` · `Thank you!`
-
-### Cold open (ambush)
-- 🧑 (fast) “Sorry the road ahead is closed is it alright if I drop you around the corner?” · סליחה, הכביש קדימה חסום — בסדר שאוריד אותך מעבר לפינה?
-  - ✅ best move: **Is here okay?** · כאן זה בסדר?
-  - ✗ distractor: Where to?
+`Thank you!` · `Please speak slowly.` · `Can you repeat that?`
 
 ### Dialogue: `fin-morning` — happy path
 - **🧑 Them:** “Good morning! Do you have your key?” · בוקר טוב! יש לך את המפתח?
 - **🫵 You:** “Yes, I have my key.” · כן, יש לי את המפתח.
-- **🧑 Them:** “Good. Do you need anything else?” · יופי. אתה צריך עוד משהו?
+- **🧑 Them:** “Good. Do you need anything?” · יופי. אתה צריך משהו?
 - **🫵 You:** “Do you have a map?” · יש לך מפה?
 - **🧑 Them:** “Here you go. Have a great day!” · בבקשה. שיהיה יום מעולה!
 
+#### Wrong / recovery branches
+- ⚠︎ less useful: 🫵 “I have a reservation.” → 🧑 “Good morning! Do you have your key?” · בוקר טוב! יש לך את המפתח?
+- ⚠︎ less useful: 🫵 “Yes, I know.” → 🧑 “Good. Do you need anything?” · יופי. אתה צריך משהו?
+
 ### Dialogue: `fin-taxi` — happy path
-- **🧑 Them:** “Where can I take you?” · לאן לקחת אותך?
+- **🧑 Them:** “Hello! Where to?” · שלום! לאן?
 - **🫵 You:** “To this address, please.” · לכתובת הזאת, בבקשה.
-- **🧑 Them:** “About fifteen euros, with the traffic. Is here okay?” · בערך חמישה עשר יורו, עם הפקקים. כאן זה בסדר?
-- **🫵 You:** “Stop here, please.” · עצור כאן, בבקשה.
-- **🧑 Them:** “Here we are. Enjoy your day!” · הגענו. תיהנה מהיום!
+- **🧑 Them:** “How long are you here for?” · לכמה זמן אתה כאן?
+- **🫵 You:** “For two weeks.” · לשבועיים.
+- **🧑 Them:** “It's about fifteen euros. There's a lot of traffic right now.” · זה בערך חמישה עשר יורו. יש הרבה פקקים עכשיו.
+- **🫵 You:** “Okay, thank you.” · בסדר, תודה.
+- **🧑 Them:** “…We are almost there. Is here okay?” · …כמעט הגענו. כאן זה בסדר?
+- **🫵 You:** “Stop here, please. Keep the change.” · עצור כאן, בבקשה. תשאיר את העודף.
+- **🧑 Them:** “Thank you very much! Enjoy your day!” · תודה רבה! שיהיה יום נעים!
+
+#### Wrong / recovery branches
+- ⚠︎ less useful: 🫵 “One ticket to the centre, please.” → 🧑 “Hello! Where to?” · שלום! לאן?
+- ⚠︎ less useful: 🫵 “At a hotel in the city centre.” → 🧑 “How long are you here for?” · לכמה זמן אתה כאן?
+- ⚠︎ less useful: 🫵 “How much to the centre?” → 🧑 “It's about fifteen euros. There's a lot of traffic right now.” · זה בערך חמישה עשר יורו. יש הרבה פקקים עכשיו.
+- ⚠︎ less useful: 🫵 “To this address, please.” → 🧑 “…We are almost there. Is here okay?” · …כמעט הגענו. כאן זה בסדר?
 
 ### Dialogue: `fin-lunch` — happy path
-- **🧑 Them:** “Hello! How many people?” · שלום! כמה אנשים?
-- **🫵 You:** “A table for two, please.” · שולחן לשניים, בבקשה.
-- **🧑 Them:** “Right this way. Ready to order?” · בבקשה אחריי. מוכן להזמין?
-- **🫵 You:** “I'll have the pasta, please.” · אני אקח את הפסטה, בבקשה.
-- **🧑 Them:** “…Here's your meal — one steak!” · …הנה הארוחה שלך — סטייק אחד!
+- **🧑 Them:** “Hello! Do you have a reservation?” · שלום! יש לכם הזמנה?
+- **🫵 You:** “No — a table for two, please.” · לא — שולחן לשניים, בבקשה.
+- **🧑 Them:** “Are you ready to order?” · מוכנים להזמין?
+- **🫵 You:** “I'll have the chicken, without onions, please.” · אני אקח את העוף, בלי בצל, בבקשה.
+- **🧑 Them:** “Here's your chicken — with onions!” · הנה העוף שלך — עם בצל!
 - **🫵 You:** “This isn't what I ordered.” · זה לא מה שהזמנתי.
-- **🧑 Them:** “Oh no — I'm so sorry! I'll bring the right one.” · אוי לא — אני מצטער מאוד! אביא את הנכון.
+- **🧑 Them:** “Oh no, I'm so sorry! What did you order?” · אוי לא, אני מצטער מאוד! מה הזמנת?
+- **🫵 You:** “The chicken. No onions, please.” · את העוף. בלי בצל, בבקשה.
+- **🧑 Them:** “Of course — I'll bring the right one right away.” · כמובן — אביא את הנכון מיד.
 - **🫵 You:** “No problem, thank you.” · אין בעיה, תודה.
-- **🧑 Them:** “Here's the pasta. Enjoy your meal!” · הנה הפסטה. בתיאבון!
+- **🧑 Them:** “…Later… Is everything okay?” · …אחר כך… הכל בסדר?
+- **🫵 You:** “Yes, that was delicious! The bill, please.” · כן, היה טעים מאוד! החשבון, בבקשה.
+- **🧑 Them:** “So glad you enjoyed it. Here you are. Thank you!” · שמח שנהניתם. בבקשה. תודה!
+
+#### Wrong / recovery branches
+- ⚠︎ less useful: 🫵 “The bill, please.” → 🧑 “Hello! Do you have a reservation?” · שלום! יש לכם הזמנה?
+- ⚠︎ less useful: 🫵 “That was delicious!” → 🧑 “Are you ready to order?” · מוכנים להזמין?
+- ⚠︎ less useful: 🫵 “That was delicious!” → 🧑 “Here's your chicken — with onions!” · הנה העוף שלך — עם בצל!
+- ⚠︎ less useful: 🫵 “I ordered the pasta.” → 🧑 “Oh no, I'm so sorry! What did you order?” · אוי לא, אני מצטער מאוד! מה הזמנת?
+- ⚠︎ less useful: 🫵 “I was charged twice.” → 🧑 “Of course — I'll bring the right one right away.” · כמובן — אביא את הנכון מיד.
+- ⚠︎ less useful: 🫵 “A bottle of water, please.” → 🧑 “…Later… Is everything okay?” · …אחר כך… הכל בסדר?
 
 ### Dialogue: `fin-chat` — happy path
-- **🧑 Them:** “Hi! Where are you from?” · היי! מאיפה אתה?
+- **🧑 Them:** “Hi! I'm from here. And you?” · היי! אני מכאן. ואתה?
 - **🫵 You:** “I'm from Israel.” · אני מישראל.
 - **🧑 Them:** “Nice! What did you do today?” · יפה! מה עשית היום?
 - **🫵 You:** “I went to the old town.” · הלכתי לעיר העתיקה.
-- **🧑 Them:** “And where are you going next?” · ולאן אתה נוסע אחרי זה?
+- **🧑 Them:** “Did you like it?” · אהבת?
+- **🫵 You:** “Yes, it was great!” · כן, היה מעולה!
+- **🧑 Them:** “So, where are you going next?” · אז לאן אתה נוסע אחרי זה?
 - **🫵 You:** “I'm going to Vietnam.” · אני נוסע לווייטנאם.
-- **🧑 Them:** “How long will you be there?” · כמה זמן תהיה שם?
+- **🧑 Them:** “Wow! How long will you be there?” · וואו! כמה זמן תהיה שם?
 - **🫵 You:** “I'll be there for two weeks.” · אני אהיה שם שבועיים.
-- **🧑 Them:** “Two weeks in Vietnam? I think that's too short.” · שבועיים בווייטנאם? אני חושב שזה קצר מדי.
+- **🧑 Them:** “Really? I think Vietnam is too far.” · באמת? אני חושב שווייטנאם רחוקה מדי.
 - **🫵 You:** “I don't think so.” · לא נראה לי.
-- **🧑 Them:** “Ha! Maybe you're right. Have a great trip!” · חה! אולי אתה צודק. נסיעה טובה!
+- **🧑 Them:** “Ha! That's true.” · חה! זה נכון.
+- **🫵 You:** “And you? Where are you going next?” · ואתה? לאן אתה נוסע אחרי זה?
+- **🧑 Them:** “Me? I'm going home. Have a great trip!” · אני? אני חוזר הביתה. נסיעה טובה!
+
+#### Wrong / recovery branches
+- ⚠︎ less useful: 🫵 “It's my first time here.” → 🧑 “Hi! I'm from here. And you?” · היי! אני מכאן. ואתה?
+- ⚠︎ less useful: 🫵 “I'm going to Vietnam.” → 🧑 “Nice! What did you do today?” · יפה! מה עשית היום?
+- ⚠︎ less useful: 🫵 “I stayed in a hostel.” → 🧑 “Did you like it?” · אהבת?
+- ⚠︎ less useful: 🫵 “I went to the old town.” → 🧑 “So, where are you going next?” · אז לאן אתה נוסע אחרי זה?
+- ⚠︎ less useful: 🫵 “After that I'm going to Thailand.” → 🧑 “Wow! How long will you be there?” · וואו! כמה זמן תהיה שם?
+- ⚠︎ less useful: 🫵 “I don't like it.” → 🧑 “Really? I think Vietnam is too far.” · באמת? אני חושב שווייטנאם רחוקה מדי.
+- ⚠︎ less useful: 🫵 “Of course!” → 🧑 “Ha! That's true.” · חה! זה נכון.
 
 ### Dialogue: `fin-evening` — happy path
-- **🧑 Them:** “Welcome back! Is breakfast at seven okay for you tomorrow, or are you leaving early?” · ברוך השב! ארוחת בוקר בשבע מתאימה לך מחר, או שאתה יוצא מוקדם?
-- **🫵 You:** “Please speak slowly.” · דבר לאט, בבקשה.
-- **🧑 Them:** “Tomorrow. Breakfast — at seven. Okay?” · מחר. ארוחת בוקר — בשבע. בסדר?
-- **🫵 You:** “Okay, thank you.” · בסדר, תודה.
-- **🧑 Them:** “Good night — sleep well!” · לילה טוב — תישן טוב!
+- **🧑 Them:** “Good evening! Is everything okay with your room? And breakfast tomorrow — is seven okay for you?” · ערב טוב! הכל בסדר עם החדר? וארוחת הבוקר מחר — שבע מתאים לך?
+- **🫵 You:** “Yes, thank you.” · כן, תודה.
+- **🧑 Them:** “Perfect. And how was your day?” · מצוין. ואיך היה היום שלך?
+- **🫵 You:** “It was good.” · היה טוב.
+- **🧑 Them:** “So glad! Good night.” · שמח לשמוע! לילה טוב.
+- **🫵 You:** “Thank you. Good night!” · תודה. לילה טוב!
+- **🧑 Them:** “See you tomorrow!” · נתראה מחר!
+
+#### Wrong / recovery branches
+- ⚠︎ less useful: 🫵 “Is breakfast included?” → 🧑 “Good evening! Is everything okay with your room? And breakfast tomorrow — is seven okay for you?” · ערב טוב! הכל בסדר עם החדר? וארוחת הבוקר מחר — שבע מתאים לך?
+- ⚠︎ less useful: 🫵 “Tomorrow morning I'm going to the airport.” → 🧑 “Perfect. And how was your day?” · מצוין. ואיך היה היום שלך?
 
 ### Review status
 - 🤖 AI-drafted (English + Hebrew) — **pending human / native-Hebrew review**

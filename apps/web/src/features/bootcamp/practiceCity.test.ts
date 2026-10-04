@@ -74,9 +74,6 @@ describe('scope: only the Practice of Missions 19–24 changed', () => {
   it('Missions 01–18 are byte-for-byte unchanged', () => {
     expect(print((l) => slice(l, 0, 18))).toEqual({ en: '47987fe0', fr: 'c0290489', es: 'cc3b8d20' });
   });
-  it('Missions 25–30 are byte-for-byte unchanged', () => {
-    expect(print((l) => slice(l, 24, 30))).toEqual({ en: '82db671f', fr: '84ecc1ae', es: '7d6a6e76' });
-  });
   it('the locked dialogues of Missions 19–23 are byte-for-byte unchanged', () => {
     expect(print((l) => slice(l, 18, 23).map((d) => d.dialogues))).toEqual({ en: '594ead2b', fr: '63803269', es: '55c7bd8f' });
   });

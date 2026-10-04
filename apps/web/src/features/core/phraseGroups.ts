@@ -81,9 +81,31 @@ export function buildPhraseGroups(lang: string): PhraseGroup[] {
   return sentenceCatalog(lang).groups;
 }
 
+/**
+ * Ids the Core used to practise and no longer declares. They are in no mission any more, so the
+ * catalog cannot derive them; practice already stored under one must keep counting for the Core
+ * sentence that took its place. (Suffixes — the language prefix is added per language.)
+ *
+ * All three were borrowed by the old Dress Rehearsal (Mission 29) from the Extended material; the
+ * mission now says the Core sentence at the same turn:
+ *   - `phrase.rest.table-for-two` → `phrase.rest.table-two`  ("A table for two, please." — same wording)
+ *   - `phrase.rest.bill-please`   → `phrase.rest.the-bill`   ("Could we have the bill, please?" → "The bill, please.")
+ *   - `phrase.pay.by-card`        → `phrase.money.by-card`   ("I'll pay by card." → "By card, please.")
+ * A target must be a sentence the Core declares (a test enforces it in every language).
+ */
+export const LEGACY_ALIASES: Readonly<Record<string, string>> = {
+  'phrase.rest.table-for-two': 'phrase.rest.table-two',
+  'phrase.rest.bill-please': 'phrase.rest.the-bill',
+  'phrase.pay.by-card': 'phrase.money.by-card',
+};
+
 /** The canonical id for any sentence id (itself, unless it is an alias of an earlier sentence). */
 export function canonicalSentenceId(lang: string, id: string): string {
-  return sentenceCatalog(lang).aliases.get(id) ?? id;
+  const hit = sentenceCatalog(lang).aliases.get(id);
+  if (hit) return hit;
+  const legacy = id.startsWith(`${lang}.`) ? LEGACY_ALIASES[id.slice(lang.length + 1)] : undefined;
+  // The target may itself be a later id of an earlier wording — resolve it to the canonical one.
+  return legacy ? (sentenceCatalog(lang).aliases.get(`${lang}.${legacy}`) ?? `${lang}.${legacy}`) : id;
 }
 
 export interface IdConflict {

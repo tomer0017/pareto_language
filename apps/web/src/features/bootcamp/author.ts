@@ -38,6 +38,8 @@ export interface SpecItem {
 export interface NpcLine {
   who: 'npc';
   t: L4;
+  /** A scene transition in the app language ("Later…"): shown, never spoken. */
+  cue?: Copy;
   fast?: boolean;
   slow?: boolean;
 }
@@ -76,6 +78,9 @@ export interface SceneSpec {
   id: string;
   /** No translation of the other speaker's lines before the learner answers. */
   cold?: boolean;
+  /** No Subtitles: the other speaker's lines are heard, never written, before the learner answers
+   *  (and not translated either — an audio scene is always cold). */
+  audio?: boolean;
   lines: SpecLine[];
   receipt: Copy;
   /** Checkpoints only: a cold ambush right after this scene. */
@@ -230,6 +235,9 @@ export function specItems(spec: MissionSpec): SpecItem[] {
     }
   }
   const isTool = (i: SpecItem): boolean => i.id.startsWith('phrase.recovery.');
+  // A final recovery challenge is answered with a conversation-help tool: it belongs to the mission.
+  const asked = spec.teach?.ambush?.correct;
+  if (asked?.startsWith('phrase.recovery.')) tools.push(tool(asked.slice('phrase.recovery.'.length) as RecoveryTool));
   const ordered = [...said.filter((i) => !isTool(i)), ...(spec.extra ?? []), ...spec.hear, ...said.filter(isTool), ...tools];
   const seen = new Set<string>();
   return ordered.filter((i) => (seen.has(i.id) ? false : (seen.add(i.id), true)));
@@ -263,7 +271,7 @@ function buildDialogue(scene: SceneSpec, lang: MissionLang): BootcampDialogue {
     const id = ids[i]!;
     const next = ids[i + 1];
     if (line.who === 'npc') {
-      const pace = { ...(line.fast ? { fast: true } : {}), ...(line.slow ? { slow: true } : {}) };
+      const pace = { ...(line.cue ? { cue: T(line.cue) } : {}), ...(line.fast ? { fast: true } : {}), ...(line.slow ? { slow: true } : {}) };
       nodes.push(next ? { id, who: 'npc', next, ...pace, ...spoken(line.t, lang) } : { id, who: 'npc', end: true, ...pace, ...spoken(line.t, lang) });
       return;
     }
@@ -300,7 +308,7 @@ function buildDialogue(scene: SceneSpec, lang: MissionLang): BootcampDialogue {
     nodes.push({ id: repeat, who: 'npc', slow: true, next: again, ...spoken(line.rec.npc, lang) });
     nodes.push({ id: again, who: 'you', en: '', he: '', choices: direct });
   });
-  return { id: scene.id, start: ids[0]!, ...(scene.cold ? { cold: true } : {}), nodes };
+  return { id: scene.id, start: ids[0]!, ...(scene.cold || scene.audio ? { cold: true } : {}), ...(scene.audio ? { audioOnly: true } : {}), nodes };
 }
 
 /** A line the app speaks, with its glosses. */
