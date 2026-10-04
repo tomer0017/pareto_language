@@ -5405,17 +5405,6 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Used in missions: 08
 - Exercised here as: key sentence (step 4); quick-reply response (step 11, round 2, accepted); sentence review (step 14)
 
-### Sentence: `phrase.hotel.two-nights`
-
-- EN: For two nights.
-- HE: לשני לילות.
-- FR: Pour deux nuits.
-- ES: Para dos noches.
-- Role: learner production
-- Tip / pattern note: "Template: for ___ nights — the length of your stay." / "תבנית: for ___ nights — משך השהות."
-- Used in missions: 08
-- Exercised here as: nothing (listed only)
-
 ### Sentence: `phrase.hotel.breakfast`
 
 - EN: Is breakfast included?
@@ -5426,17 +5415,6 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Tip / pattern note: none
 - Used in missions: 08, 10
 - Exercised here as: key sentence (step 6); quick-reply response (step 11, round 1, wrong option); quick-reply response (step 11, round 2, wrong option); quick-reply response (step 11, round 3, wrong option); quick-reply response (step 11, round 4, accepted); sentence review (step 14); dialogue choice hotel-checkin/c3 (accepted)
-
-### Sentence: `phrase.hotel.wifi`
-
-- EN: What's the wifi password?
-- HE: מה סיסמת הוויי-פיי?
-- FR: C’est quoi le mot de passe du wifi ?
-- ES: ¿Cuál es la contraseña del wifi?
-- Role: learner production
-- Tip / pattern note: none
-- Used in missions: 08
-- Exercised here as: nothing (listed only)
 
 ### Sentence: `phrase.hotel.here-you-go`
 
@@ -5960,8 +5938,6 @@ No choice screen offers two accepted non-toolkit lines.
 Learner sentences taught beside the dialogue (not a line in any scene):
 
 - `phrase.hotel.under-name` — Under the name Cohen.
-- `phrase.hotel.two-nights` — For two nights.
-- `phrase.hotel.wifi` — What's the wifi password?
 
 ## Receipts (proof cards)
 
@@ -5971,7 +5947,7 @@ Learner sentences taught beside the dialogue (not a line in any scene):
 
 ## Audit Metadata — DO NOT FIX YET
 
-- Learner-production sentences: 6
+- Learner-production sentences: 4
 - Receptive (expected-reply) sentences: 6
 - Toolkit phrases bundled: 4
 - Key-sentence steps: 4
@@ -5980,7 +5956,7 @@ Learner sentences taught beside the dialogue (not a line in any scene):
 - Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 10
 - Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 10
 - One-button dialogue screens: 2
-- Learner sentences never actively retrieved: 2
+- Learner sentences never actively retrieved: 0
 - Dialogue learner choices (screens): 4
 - Wrong-answer branches: 0
 - Cold-open prompts: 1
@@ -5991,13 +5967,11 @@ Learner sentences taught beside the dialogue (not a line in any scene):
 - Total interactive questions: 19 (answer choices: 60)
 - Approximate total learner interactions: 35 (questions + key sentences + review cards + word-intro screen)
 
-### AUTO-FLAG — requires human review (9)
+### AUTO-FLAG — requires human review (7)
 
 - AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "hotel-checkin" n1 — “Good evening! How can I help you?”
 - AUTO-FLAG — Practice item wording not in this mission's dialogue: `reply.hotel.sign-here` “Sign here, please.” (drilled as an expected reply / distractor, but no NPC line here says it).
 - AUTO-FLAG — Practice item wording not in this mission's dialogue: `reply.hotel.second-floor` “It's on the second floor.” (drilled as an expected reply / distractor, but no NPC line here says it).
-- AUTO-FLAG — Learner sentence never actively retrieved in this mission (0 choice screens, 0 quick-reply / swap / match / builder rounds, 0 cold-open options): `phrase.hotel.two-nights` “For two nights.” — appears in sentence review only (orphan in this mission).
-- AUTO-FLAG — Learner sentence never actively retrieved in this mission (0 choice screens, 0 quick-reply / swap / match / builder rounds, 0 cold-open options): `phrase.hotel.wifi` “What's the wifi password?” — appears in sentence review only (orphan in this mission).
 - AUTO-FLAG — Toolkit phrase listed in the mission but never offered in it: `phrase.recovery.slowly` “Please speak slowly.” (sentence review only).
 - AUTO-FLAG — Toolkit phrase listed in the mission but never offered in it: `phrase.recovery.thank-you` “Thank you!” (sentence review only).
 - AUTO-FLAG — 4 of 4 choice screens have NO wrong option (every button is accepted): hotel-checkin/c1, hotel-checkin/c1b, hotel-checkin/c2, hotel-checkin/c3.
@@ -22508,7 +22482,7 @@ Every learner sentence of this mission is a line in a scene.
 | 05 Directions | 14 (5 / 7 / 2) | 4 | 5 | 1 | 9 | 3 | 1 | 1 | 0 | 6 words | 0 | 17 | 5 |
 | 06 Airport & Border | 15 (5 / 6 / 4) | 4 | 4 | 0 | 11 | 10 | 5 | 3 | 0 | no | 0 | 25 | 4 |
 | 07 Taxi / Uber | 13 (5 / 5 / 3) | 4 | 4 | 0 | 11 | 5 | 2 | 2 | 0 | 5 words | 1 | 20 | 3 |
-| 08 Hotel Check-in | 16 (6 / 6 / 4) | 4 | 4 | 0 | 10 | 4 | 2 | 2 | 1 | 4 words | 0 | 19 | 9 |
+| 08 Hotel Check-in | 14 (4 / 6 / 4) | 4 | 4 | 0 | 10 | 4 | 2 | 2 | 1 | 4 words | 0 | 19 | 7 |
 | 09 Shopping | 15 (5 / 6 / 4) | 4 | 5 | 1 | 6 | 6 | 3 | 1 | 1 | no | 2 | 18 | 7 |
 | 10 CHECKPOINT: Arrival Day | 15 (10 / 2 / 3) | 0 | 0 | 0 | 0 | 11 | 0 | 3 | 1 | no | 0 | 12 | 8 |
 | 11 Small Talk & Recommendations | 17 (9 / 7 / 1) | 4 | 5 | 1 | 13 | 7 | 4 | 1 | 0 | no | 2 | 25 | 13 |
@@ -22584,9 +22558,7 @@ Every learner-production sentence id of the Core, in order of first appearance. 
 | `phrase.taxi.keep-change` | Keep the change. | 07 | — | 1 | 0 / 0 | 4 | 0 | 1 | no | no |  |
 | `phrase.hotel.reservation` | I have a reservation. | 08 | 10 | 1 | 3 / 1 | 3 | 0 | 1 | yes | no |  |
 | `phrase.hotel.under-name` | Under the name Cohen. | 08 | — | 1 | 0 / 0 | 1 | 0 | 1 | no | no |  |
-| `phrase.hotel.two-nights` | For two nights. | 08 | — | 0 | 0 / 0 | 0 | 0 | 0 | no | no | **0 active retrieval opportunities** |
 | `phrase.hotel.breakfast` | Is breakfast included? | 08 | 10 | 1 | 2 / 1 | 4 | 0 | 1 | yes | no |  |
-| `phrase.hotel.wifi` | What's the wifi password? | 08 | — | 0 | 0 / 0 | 0 | 0 | 0 | no | no | **0 active retrieval opportunities** |
 | `phrase.hotel.here-you-go` | Here you go. | 08 | 10 | 1 | 3 / 0 | 3 | 1 | 1 | yes | no |  |
 | `phrase.shop.just-looking` | I'm just looking, thanks. | 09 | — | 1 | 1 / 0 | 4 | 0 | 1 | no | no |  |
 | `phrase.shop.try-on` | Can I try this on? | 09 | — | 1 | 2 / 0 | 2 | 0 | 1 | no | no |  |
@@ -22707,7 +22679,7 @@ Every learner-production sentence id of the Core, in order of first appearance. 
 | `phrase.rest.bill-please` | Could we have the bill, please? | 29 | — | 0 | 1 / 0 | 0 | 0 | 0 | no | no |  |
 | `phrase.pay.by-card` | I'll pay by card. | 29 | — | 0 | 1 / 0 | 0 | 0 | 0 | no | no |  |
 
-Learner-production sentence ids: 166. With 0 active retrieval opportunities: 9.
+Learner-production sentence ids: 164. With 0 active retrieval opportunities: 7.
 
 # NPC Comprehension Coverage
 
@@ -27737,9 +27709,9 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 # Totals
 
 - Missions exported: 30
-- Learner-production sentence ids: 166
+- Learner-production sentence ids: 164
 - Expected-reply (receptive) sentence ids: 146
-- Sentence listings across missions (with reuse): 463
+- Sentence listings across missions (with reuse): 461
 - Expected-reply questions: 97
 - Meaning quizzes: 14
 - Active-practice questions: 181
@@ -27749,5 +27721,5 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Total answer choices: 1338
 - Wrong-answer branches: 32
 - Recovery opportunities: 57
-- Learner sentences with 0 active retrieval opportunities: 9
-- Auto-flags: 232
+- Learner sentences with 0 active retrieval opportunities: 7
+- Auto-flags: 230

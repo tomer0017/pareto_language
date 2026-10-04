@@ -58,6 +58,9 @@ Scope: Practice of Missions 11–18 only. Missions 01–10 and 19–30, the dial
   Listen, review or any mission. M15's match tiles now say checking / can make it without / contains
   nuts in words beside the icon. M17's intro promises find → aisle and side → checkout → bag. M14's
   word intro keeps "menu" (the waiter says "Here are your menus."); the French word is now "menu".
+- **Mission 08 follow-up:** "For two nights." and "What's the wifi password?" were retired the same
+  way (out of Mission 08's sentence list, into `retired.ts`); a fingerprint proves nothing else in
+  Missions 01–18 changed.
 - **Tests:** `practiceEveryday.test.ts` (71).
 - **Not done:** manual browser / device QA.
 

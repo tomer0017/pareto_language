@@ -6,6 +6,9 @@ import { fileURLToPath } from 'node:url';
 import { BOOTCAMP_PLAN } from './plan.js';
 import { fillFrame, isHelpToolId, validatePracticeStep } from './practiceEngines.js';
 import { MISSIONS_BY_LANG } from './registry.js';
+import { RETIRED_SENTENCES } from './retired.js';
+import { sentenceCatalog } from '../core/phraseGroups.js';
+import { learnedMaterial } from '../companion/companionLearned.js';
 import type { BootcampDayContent, BootcampStep } from './types.js';
 import type * as PlayerSteps from './PracticeSteps.js';
 
@@ -58,6 +61,9 @@ const unknownIn = (said: string[], known: Set<string>): string[] => [...new Set(
 
 /* ── what this pass was not allowed to touch ─────────────────────────────────────────────────── */
 
+/** Sentence lists of Missions 06, 07 and 09 (Mission 08's is pinned id by id below). */
+const ITEMS_06_07_09 = { en: '120e5651', fr: '8b5f5d9b', es: 'a561c5d4' };
+
 describe('scope: only the Practice of Missions 06–10 changed', () => {
   const slice = (lang: Lang, a: number, b: number): BootcampDayContent[] => BOOTCAMP_PLAN.slice(a, b).map((m) => MISSIONS_BY_LANG[lang]![m.day]!);
   const print = (f: (lang: Lang) => unknown): Record<Lang, string> => ({ en: fnv(JSON.stringify(f('en'))), fr: fnv(JSON.stringify(f('fr'))), es: fnv(JSON.stringify(f('es'))) });
@@ -91,13 +97,41 @@ describe('scope: only the Practice of Missions 06–10 changed', () => {
     expect(print((l) => pick(l, 9))).toEqual({ en: '60b489f1', fr: '5d4d6a20', es: 'a4ff1fc6' });
     expect(print((l) => pick(l, 8).steps.filter((s) => s.kind !== 'swap'))).toEqual({ en: '033e2741', fr: '1be8e9bb', es: '45d575fc' });
   });
-  it('no sentence of Missions 06–09 was deleted, renamed or reworded — including the two M08 no longer teaches', () => {
-    expect(print((l) => slice(l, 5, 9).map((d) => d.items))).toEqual({ en: '45d1c8e1', fr: '37806145', es: 'd0170065' });
+  it('Missions 01–18 are exactly as approved — the only difference is that two retired hotel sentences left Mission 08\'s list', () => {
+    // These hashes were taken from the approved build with ONLY those two sentences filtered out of
+    // Mission 08's sentence list. Matching them now proves nothing else in Missions 01–18 moved.
+    // (Mission 08 is serialised as [everything but its sentence list, its sentence list] — the shape the
+    // approved build was fingerprinted in, with the two sentences left out.)
+    const shaped = (l: Lang): unknown[] => slice(l, 0, 18).map((d, i) => { if (i !== 7) return d; const { items, ...rest } = d; return [rest, items]; });
+    expect(print(shaped)).toEqual({ en: '7456a4b6', fr: 'b7dd289b', es: 'd4172048' });
+  });
+  it('"For two nights." and the wifi password are retired: archived with their ids and wording, and shown nowhere', () => {
+    const gone = ['phrase.hotel.two-nights', 'phrase.hotel.wifi'];
     for (const lang of LANGS) {
-      const ids = mission(8, lang).items.map((i) => strip(i.id));
-      expect(ids, lang).toContain('phrase.hotel.two-nights');
-      expect(ids, lang).toContain('phrase.hotel.wifi');
+      expect(mission(8, lang).items.map((i) => strip(i.id)), lang).toEqual([
+        'phrase.hotel.reservation', 'phrase.hotel.under-name', 'phrase.hotel.breakfast', 'phrase.hotel.here-you-go',
+        'reply.hotel.passport', 'reply.hotel.sign-here', 'reply.hotel.room-number', 'reply.hotel.second-floor', 'reply.hotel.breakfast-time', 'reply.hotel.elevator',
+        'phrase.recovery.repeat', 'phrase.recovery.slowly', 'phrase.recovery.thank-you', 'phrase.recovery.one-moment',
+      ]);
+      const archived = RETIRED_SENTENCES[lang].filter((r) => r.retiredFrom === 'hotel-check-in');
+      expect(archived.map((r) => strip(r.id)), lang).toEqual(gone);
+      // In no Core mission at all — sentence list, step or dialogue line…
+      const everywhere = JSON.stringify(BOOTCAMP_PLAN.map((m) => MISSIONS_BY_LANG[lang]![m.day]!));
+      for (const r of archived) { expect(everywhere.includes(`"${r.id}"`), `${lang} ${r.id}`).toBe(false); expect(everywhere.includes(JSON.stringify(r.text)), `${lang} ${r.text}`).toBe(false); }
+      // …so not in the sentence library (which Core, Listen and the review / flashcards are built from)…
+      const library = sentenceCatalog(lang).groups.flatMap((g) => g.items);
+      for (const r of archived) { expect(library.some((i) => i.id === r.id || i.text === r.text), `${lang} library ${r.id}`).toBe(false); }
+      // …not in a mission's "what did I learn" list (its sentence list), and not in what the companion may say.
+      const allDays = BOOTCAMP_PLAN.map((m) => m.day);
+      const companion = learnedMaterial(lang, allDays);
+      for (const r of archived) expect(companion.sentences, `${lang} companion ${r.id}`).not.toContain(r.text);
     }
+    expect(RETIRED_SENTENCES.en.filter((r) => r.retiredFrom === 'hotel-check-in').map((r) => r.text)).toEqual(['For two nights.', "What's the wifi password?"]);
+    expect(RETIRED_SENTENCES.fr.filter((r) => r.retiredFrom === 'hotel-check-in').map((r) => r.text)).toEqual(['Pour deux nuits.', 'C’est quoi le mot de passe du wifi ?']);
+    expect(RETIRED_SENTENCES.es.filter((r) => r.retiredFrom === 'hotel-check-in').map((r) => r.text)).toEqual(['Para dos noches.', '¿Cuál es la contraseña del wifi?']);
+  });
+  it('no other sentence of Missions 06–09 was deleted, renamed or reworded', () => {
+    expect(print((l) => [slice(l, 5, 6)[0]!, slice(l, 6, 7)[0]!, slice(l, 8, 9)[0]!].map((d) => d.items))).toEqual(ITEMS_06_07_09);
   });
   it('their intro cards, titles and videos are unchanged', () => {
     expect(print((l) => slice(l, 5, 9).map((d) => [d.day, d.title, d.introVideo, d.steps[0]]))).toEqual({ en: 'c25a2848', fr: 'e83a143f', es: 'f4c8b176' });
@@ -308,11 +342,8 @@ describe('Mission 08 — Hotel Check-in', () => {
       const active = JSON.stringify([d.steps, d.dialogues]);
       expect(active, lang).not.toMatch(/hotel\.two-nights|hotel\.wifi/);
       expect(active.toLowerCase(), lang).not.toMatch(/wifi|wi-fi/);
-      for (const id of ['phrase.hotel.two-nights', 'phrase.hotel.wifi']) expect(active, `${lang} ${id}`).not.toContain(text(d, id));
+      for (const r of RETIRED_SENTENCES[lang].filter((x) => x.retiredFrom === 'hotel-check-in')) expect(JSON.stringify([d.steps, d.dialogues, d.items]), `${lang} ${r.id}`).not.toContain(r.text);
     }
-    // …but nothing was deleted: both sentence ids still exist (history, the Extended material).
-    expect(text(day, 'phrase.hotel.two-nights')).toBe('For two nights.');
-    expect(text(day, 'phrase.hotel.wifi')).toBe("What's the wifi password?");
   });
   it('the word intro holds only words the mission still uses — "night" is gone', () => {
     for (const lang of LANGS) {

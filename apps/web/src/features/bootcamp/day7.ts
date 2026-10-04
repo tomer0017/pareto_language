@@ -7,10 +7,7 @@ export const DAY7_ITEMS: BootcampItem[] = [
   { id: 'en.phrase.hotel.reservation', text: 'I have a reservation.', meaning: T('יש לי הזמנה.', 'I have a reservation.'),
     tip: T('הפתיח לדלפק המלון. תבנית: I have a ___.', 'The front-desk opener. Template: I have a ___.') },
   { id: 'en.phrase.hotel.under-name', text: 'Under the name Cohen.', meaning: T('על השם כהן.', 'Under the name Cohen.') },
-  { id: 'en.phrase.hotel.two-nights', text: 'For two nights.', meaning: T('לשני לילות.', 'For two nights.'),
-    tip: T('תבנית: for ___ nights — משך השהות.', 'Template: for ___ nights — the length of your stay.') },
   { id: 'en.phrase.hotel.breakfast', text: 'Is breakfast included?', meaning: T('ארוחת הבוקר כלולה?', 'Is breakfast included?') },
-  { id: 'en.phrase.hotel.wifi', text: "What's the wifi password?", meaning: T('מה סיסמת הוויי-פיי?', "What's the wifi password?") },
   { id: 'en.phrase.hotel.here-you-go', text: 'Here you go.', meaning: T('בבקשה, הנה.', 'Here you go.') },
   // hear
   { id: 'en.reply.hotel.passport', text: 'Your passport, please.', meaning: T('הדרכון שלך, בבקשה.', 'Your passport, please.') },

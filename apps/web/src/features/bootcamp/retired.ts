@@ -20,6 +20,8 @@ export interface RetiredSentence extends BootcampItem {
 
 export const RETIRED_SENTENCES: Record<'en' | 'fr' | 'es', RetiredSentence[]> = {
   en: [
+    { id: 'en.phrase.hotel.two-nights', text: 'For two nights.', meaning: T('לשני לילות.', 'For two nights.'), tip: T('תבנית: for ___ nights — משך השהות.', 'Template: for ___ nights — the length of your stay.'), retiredFrom: 'hotel-check-in', reason: "Not part of the check-in conversation; no longer taught or practised." },
+    { id: 'en.phrase.hotel.wifi', text: "What's the wifi password?", meaning: T('מה סיסמת הוויי-פיי?', "What's the wifi password?"), retiredFrom: 'hotel-check-in', reason: "Wifi / SIM belongs to the Extended material; removed from the check-in conversation." },
     { id: 'en.phrase.rest.menu', text: 'The menu, please.', meaning: T('התפריט, בבקשה.', 'The menu, please.'), retiredFrom: 'restaurant-meal', reason: "Not said in the current conversation and no longer practised." },
     { id: 'en.reply.rest.how-was-it', text: 'How was everything?', meaning: T('איך היה הכל?', 'How was everything?'), retiredFrom: 'restaurant-meal', reason: "The conversation now asks \"Is everything okay?\"." },
     { id: 'en.reply.rest.dessert', text: 'Would you like dessert?', meaning: T('רוצים קינוח?', 'Would you like dessert?'), retiredFrom: 'restaurant-meal', reason: "The conversation no longer offers dessert." },
@@ -27,6 +29,8 @@ export const RETIRED_SENTENCES: Record<'en' | 'fr' | 'es', RetiredSentence[]> = 
     { id: 'en.reply.super.weigh-it', text: 'You need to weigh it first.', meaning: T('צריך לשקול קודם.', 'You need to weigh it first.'), retiredFrom: 'supermarket', reason: "Weighing produce left the conversation." },
   ],
   fr: [
+    { id: 'fr.phrase.hotel.two-nights', text: 'Pour deux nuits.', meaning: T('לשני לילות.', 'For two nights.'), tip: T('תבנית: Pour ___ nuits — משך השהות.', 'Template: Pour ___ nuits — the length of your stay.'), retiredFrom: 'hotel-check-in', reason: "Not part of the check-in conversation; no longer taught or practised." },
+    { id: 'fr.phrase.hotel.wifi', text: 'C’est quoi le mot de passe du wifi ?', meaning: T('מה סיסמת הוויי-פיי?', "What's the wifi password?"), retiredFrom: 'hotel-check-in', reason: "Wifi / SIM belongs to the Extended material; removed from the check-in conversation." },
     { id: 'fr.phrase.rest.menu', text: 'La carte, s’il vous plaît.', meaning: T('התפריט, בבקשה.', 'The menu, please.'), retiredFrom: 'restaurant-meal', reason: "Not said in the current conversation and no longer practised." },
     { id: 'fr.reply.rest.how-was-it', text: 'Tout s’est bien passé ?', meaning: T('איך היה הכל?', 'How was everything?'), retiredFrom: 'restaurant-meal', reason: "The conversation now asks \"Is everything okay?\"." },
     { id: 'fr.reply.rest.dessert', text: 'Vous voulez un dessert ?', meaning: T('רוצים קינוח?', 'Would you like dessert?'), retiredFrom: 'restaurant-meal', reason: "The conversation no longer offers dessert." },
@@ -34,6 +38,8 @@ export const RETIRED_SENTENCES: Record<'en' | 'fr' | 'es', RetiredSentence[]> = 
     { id: 'fr.reply.super.weigh-it', text: 'Vous devez d’abord le peser.', meaning: T('צריך לשקול קודם.', 'You need to weigh it first.'), retiredFrom: 'supermarket', reason: "Weighing produce left the conversation." },
   ],
   es: [
+    { id: 'es.phrase.hotel.two-nights', text: 'Para dos noches.', meaning: T('לשני לילות.', 'For two nights.'), tip: T('תבנית: Para ___ noches — משך השהות.', 'Template: Para ___ noches — the length of your stay.'), retiredFrom: 'hotel-check-in', reason: "Not part of the check-in conversation; no longer taught or practised." },
+    { id: 'es.phrase.hotel.wifi', text: '¿Cuál es la contraseña del wifi?', meaning: T('מה סיסמת הוויי-פיי?', "What's the wifi password?"), retiredFrom: 'hotel-check-in', reason: "Wifi / SIM belongs to the Extended material; removed from the check-in conversation." },
     { id: 'es.phrase.rest.menu', text: 'La carta, por favor.', meaning: T('התפריט, בבקשה.', 'The menu, please.'), retiredFrom: 'restaurant-meal', reason: "Not said in the current conversation and no longer practised." },
     { id: 'es.reply.rest.how-was-it', text: '¿Qué tal todo?', meaning: T('איך היה הכל?', 'How was everything?'), retiredFrom: 'restaurant-meal', reason: "The conversation now asks \"Is everything okay?\"." },
     { id: 'es.reply.rest.dessert', text: '¿Quieren postre?', meaning: T('רוצים קינוח?', 'Would you like dessert?'), retiredFrom: 'restaurant-meal', reason: "The conversation no longer offers dessert." },

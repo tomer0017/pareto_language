@@ -65,6 +65,7 @@ const unknownIn = (said: string[], known: Set<string>): string[] => [...new Set(
 
 /* ── scope ───────────────────────────────────────────────────────────────────────────────────── */
 
+const M01_10 = { en: '1fbc79cf', fr: 'e3e53475', es: 'a9f1d680' };
 /** French Mission 14's steps without its first Quick Reply and its word intro (whose menu word was corrected). */
 const FR_M14_WITHOUT_PRIME = 'be5602cb';
 
@@ -72,8 +73,8 @@ describe('scope: only the Practice of Missions 11–18 changed', () => {
   const slice = (lang: Lang, a: number, b: number): BootcampDayContent[] => BOOTCAMP_PLAN.slice(a, b).map((m) => MISSIONS_BY_LANG[lang]![m.day]!);
   const print = (f: (lang: Lang) => unknown): Record<Lang, string> => ({ en: fnv(JSON.stringify(f('en'))), fr: fnv(JSON.stringify(f('fr'))), es: fnv(JSON.stringify(f('es'))) });
 
-  it('Missions 01–10 are byte-for-byte unchanged', () => {
-    expect(print((l) => slice(l, 0, 10))).toEqual({ en: 'c9e3a329', fr: '1c4705ef', es: '6ed07fa5' });
+  it('Missions 01–10 are unchanged by this pass (their own fingerprint, incl. the later retirement of two hotel sentences, lives in practiceArrival.test.ts)', () => {
+    expect(print((l) => slice(l, 0, 10))).toEqual(M01_10);
   });
   it('Missions 19–30 are byte-for-byte unchanged', () => {
     expect(print((l) => slice(l, 18, 30))).toEqual({ en: '937fd289', fr: '37d6c3c7', es: '68611717' });
@@ -111,10 +112,10 @@ describe('scope: only the Practice of Missions 11–18 changed', () => {
       const used = JSON.stringify(BOOTCAMP_PLAN.map((m) => [MISSIONS_BY_LANG[lang]![m.day]!.steps, MISSIONS_BY_LANG[lang]![m.day]!.dialogues]));
       for (const id of gone) expect(used.includes(`${lang}.${id}"`), `${lang} ${id}`).toBe(false);
       // …and they are kept, id and wording, in the archive.
-      expect(RETIRED_SENTENCES[lang].map((r) => strip(r.id)), lang).toEqual(gone);
+      expect(RETIRED_SENTENCES[lang].filter((r) => r.retiredFrom !== 'hotel-check-in').map((r) => strip(r.id)), lang).toEqual(gone);
       for (const r of RETIRED_SENTENCES[lang]) { expect(r.text.length, r.id).toBeGreaterThan(3); expect(r.meaning.he, r.id).toBeTruthy(); expect(BOOTCAMP_PLAN.some((m) => m.id === r.retiredFrom), r.id).toBe(true); }
     }
-    expect(RETIRED_SENTENCES.en.map((r) => r.text)).toEqual(['The menu, please.', 'How was everything?', 'Would you like dessert?', 'This one is a good option for you.', 'You need to weigh it first.']);
+    expect(RETIRED_SENTENCES.en.filter((r) => r.retiredFrom !== 'hotel-check-in').map((r) => r.text)).toEqual(['The menu, please.', 'How was everything?', 'Would you like dessert?', 'This one is a good option for you.', 'You need to weigh it first.']);
   });
   it('mission order, ids and registry keys are unchanged', () => {
     expect(BOOTCAMP_PLAN.slice(10, 18).map((m) => `${m.id}:${m.day}`)).toEqual([

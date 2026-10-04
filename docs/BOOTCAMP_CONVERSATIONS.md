@@ -429,9 +429,7 @@ _Reply-training drill:_ “Where to?” · “It's about fifteen euros.” · �
 ### Core phrases (you say)
 - **I have a reservation.** · יש לי הזמנה. — _הפתיח לדלפק המלון. תבנית: I have a ___._
 - **Under the name Cohen.** · על השם כהן.
-- **For two nights.** · לשני לילות. — _תבנית: for ___ nights — משך השהות._
 - **Is breakfast included?** · ארוחת הבוקר כלולה?
-- **What's the wifi password?** · מה סיסמת הוויי-פיי?
 - **Here you go.** · בבקשה, הנה.
 
 ### Expected replies (you hear)
