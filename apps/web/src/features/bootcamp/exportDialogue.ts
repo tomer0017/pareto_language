@@ -1,5 +1,6 @@
 import type { BootcampDayContent, BootcampDialogue } from './types.js';
 import type { TranscriptLine } from './transcript.js';
+import { BOOTCAMP_PLAN, missionNumber } from './plan.js';
 import { missionsFor } from './registry.js';
 import { LEARNING_LANGUAGES } from '../../shared/i18n/languages.js';
 
@@ -77,8 +78,8 @@ export function missionDialogues(day: BootcampDayContent): BootcampDialogue[] {
 
 /** Render one mission as a clean cinematic screenplay (Markdown, no tables/ids/metadata). */
 export function renderMissionScript(day: BootcampDayContent): string {
-  const number = String(day.day).padStart(2, '0');
-  const title = day.title.en ?? day.title.he ?? `Mission ${day.day}`;
+  const number = String(missionNumber(day.day) ?? day.day).padStart(2, '0');
+  const title = day.title.en ?? day.title.he ?? `Mission ${number}`;
   let out = `# Mission ${number} — ${title}\n`;
   const dialogues = missionDialogues(day);
   if (dialogues.length === 0) {
@@ -93,31 +94,33 @@ export function renderMissionScript(day: BootcampDayContent): string {
 }
 
 export interface ExportedMission {
+  /** The content-registry key — NOT the mission's number (see plan.ts). */
   day: number;
-  filename: string; // mission-07.md
+  /** The number the learner sees: the mission's 1-based position in the journey. */
+  number: number;
+  filename: string; // mission-07.md (by mission number)
   title: string;
   content: string;
 }
 
 /**
- * All missions to export for a language, in day order, optionally filtered to one mission (by day
- * number). Empty when the language has no built missions — nothing language-specific here.
+ * All missions to export for a language, in JOURNEY order, optionally filtered to one mission (by
+ * its mission number). Empty when the language has no built missions — nothing language-specific here.
  */
-export function exportMissions(lang: string, onlyDay?: number): ExportedMission[] {
+export function exportMissions(lang: string, onlyNumber?: number): ExportedMission[] {
   const missions = missionsFor(lang);
-  return Object.keys(missions)
-    .map(Number)
-    .filter((d) => onlyDay === undefined || d === onlyDay)
-    .sort((a, b) => a - b)
-    .map((day) => {
-      const content = missions[day]!;
-      return {
-        day,
-        filename: `mission-${String(day).padStart(2, '0')}.md`,
-        title: content.title.en ?? `Mission ${day}`,
-        content: renderMissionScript(content),
-      };
-    });
+  return BOOTCAMP_PLAN.flatMap((m, i) => {
+    const content = missions[m.day];
+    const number = i + 1;
+    if (!content || (onlyNumber !== undefined && number !== onlyNumber)) return [];
+    return [{
+      day: m.day,
+      number,
+      filename: `mission-${String(number).padStart(2, '0')}.md`,
+      title: content.title.en ?? `Mission ${number}`,
+      content: renderMissionScript(content),
+    }];
+  });
 }
 
 /** Concatenate a language's missions into one ALL_DIALOGUES.md body. */

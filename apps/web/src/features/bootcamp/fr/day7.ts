@@ -3,7 +3,7 @@ import type { BootcampDayContent, BootcampDialogue, BootcampItem } from '../type
 import { recoveryFr } from './recovery.js';
 
 /**
- * French Mission 7 — "Arrivée à l’hôtel" (Hotel Check-in). French parallel of English mission 7: same
+ * French Mission 8 — "Arrivée à l’hôtel" (Hotel Check-in). French parallel of English mission 7: same
  * objective (reservation → passport → key → floor → breakfast), same step structure, same engine.
  * French target lines + `tr:{en,he}` glosses; `fr.*` ids. No French video yet. AI-drafted, vous, pending review.
  */
@@ -18,6 +18,7 @@ export const DAY7_FR_ITEMS: BootcampItem[] = [
     tip: T('תבנית: Pour ___ nuits — משך השהות.', 'Template: Pour ___ nuits — the length of your stay.') },
   { id: 'fr.phrase.hotel.breakfast', text: 'Le petit-déjeuner est compris ?', meaning: T('ארוחת הבוקר כלולה?', 'Is breakfast included?') },
   { id: 'fr.phrase.hotel.wifi', text: 'C’est quoi le mot de passe du wifi ?', meaning: T('מה סיסמת הוויי-פיי?', "What's the wifi password?") },
+  { id: 'fr.phrase.hotel.here-you-go', text: 'Voilà, tenez.', meaning: T('בבקשה, הנה.', 'Here you go.') },
   // hear
   { id: 'fr.reply.hotel.passport', text: 'Votre passeport, s’il vous plaît.', meaning: T('הדרכון שלך, בבקשה.', 'Your passport, please.') },
   { id: 'fr.reply.hotel.sign-here', text: 'Signez ici, s’il vous plaît.', meaning: T('תחתום כאן, בבקשה.', 'Sign here, please.') },
@@ -43,10 +44,10 @@ const SCENE: BootcampDialogue = {
     ] },
     { id: 'n2', who: 'npc', next: 'c2', en: 'Bienvenue, monsieur Cohen. Votre passeport, s’il vous plaît.', tr: TR('Welcome, Mr. Cohen. Your passport, please.', 'ברוך הבא, מר כהן. הדרכון שלך, בבקשה.'), he: 'ברוך הבא, מר כהן. הדרכון שלך, בבקשה.' },
     { id: 'c2', who: 'you', en: '', he: '', choices: [
-      { en: 'Voilà, tenez.', tr: TR('Here you go.', 'בבקשה, הנה.'), he: 'בבקשה, הנה.', correct: true, next: 'n3' },
+      { en: 'Voilà, tenez.', tr: TR('Here you go.', 'בבקשה, הנה.'), he: 'בבקשה, הנה.', itemId: 'fr.phrase.hotel.here-you-go', correct: true, next: 'n3' },
       { en: 'Un instant, s’il vous plaît.', tr: TR('One moment, please.', 'רגע אחד, בבקשה.'), he: 'רגע אחד, בבקשה.', itemId: 'fr.phrase.recovery.one-moment', correct: true, next: 'n3' },
     ] },
-    { id: 'n3', who: 'npc', fast: true, next: 'c3', en: 'Merci. Vous êtes dans la chambre deux cent quatre, au deuxième étage. Le petit-déjeuner est compris dans votre réservation ?', tr: TR("Thank you. You're in room two-oh-four, on the second floor. Is breakfast included in your booking?", 'תודה. אתה בחדר 204, בקומה השנייה. ארוחת בוקר כלולה בהזמנה שלך?'), he: 'תודה. אתה בחדר 204, בקומה השנייה. ארוחת בוקר כלולה בהזמנה שלך?' },
+    { id: 'n3', who: 'npc', fast: true, next: 'c3', en: 'Merci. Vous êtes dans la chambre deux cent quatre, au deuxième étage. Voici votre clé.', tr: TR("Thank you. You're in room two-oh-four, on the second floor. Here is your key.", 'תודה. אתה בחדר 204, בקומה השנייה. הנה המפתח שלך.'), he: 'תודה. אתה בחדר 204, בקומה השנייה. הנה המפתח שלך.' },
     { id: 'c3', who: 'you', en: '', he: '', choices: [
       { en: 'Le petit-déjeuner est compris ?', tr: TR('Is breakfast included?', 'ארוחת הבוקר כלולה?'), he: 'ארוחת הבוקר כלולה?', itemId: 'fr.phrase.hotel.breakfast', correct: true, next: 'n4' },
       { en: 'C’est quoi le mot de passe du wifi ?', tr: TR("What's the wifi password?", 'מה סיסמת הוויי-פיי?'), he: 'מה סיסמת הוויי-פיי?', itemId: 'fr.phrase.hotel.wifi', correct: true, next: 'n4w' },
@@ -63,7 +64,7 @@ export const DAY7_FR: BootcampDayContent = {
   items: DAY7_FR_ITEMS,
   dialogues: { 'hotel-checkin': SCENE },
   steps: [
-    { kind: 'talk', icon: '🏨', title: T('משימה 7: צ\'ק-אין במלון', 'Mission 7: Hotel Check-in'),
+    { kind: 'talk', icon: '🏨', title: T('משימה 8: צ\'ק-אין במלון', 'Mission 8: Hotel Check-in'),
       body: [
         T('בסיס הבית שלך בטיול. הזמנה, דרכון, מפתח, קומה, ארוחת בוקר.', 'Your home base for the trip. Reservation, passport, key, floor, breakfast.'),
         T('הפעם אחת — ותהיה רגוע כל השבוע.', 'Nail it once — and relax all week.'),

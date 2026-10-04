@@ -10,6 +10,8 @@ import { success, tap } from '../../shared/ui/haptics.js';
 import { BOOTCAMP_PLAN, missionNumber, nextMission } from './plan.js';
 import { missionIcon, missionJourney, missionPhases, phaseOfIndex, primaryDialogue, type JourneyStepId, type JourneyStepState } from './missionFlow.js';
 import { Learn } from './Learn.js';
+import { CompanionReaction } from '../companion/Companion.js';
+import { MiniMapStep, QuickReplyStep, SwapStep, VisualMatchStep } from './PracticeSteps.js';
 import { missionsFor, useBootcampStore } from './bootcampStore.js';
 import type { BootcampItem, BootcampStep, BootcampDialogue, BootcampVideo, DialogueChoice } from './types.js';
 import { dialogueTranscript } from './transcript.js';
@@ -286,6 +288,10 @@ function MissionPlayer() {
         {step.kind === 'swipe' && <SwipeStep itemIds={step.itemIds} itemsById={itemsById} onDone={() => { pop(); advance(); }} />}
         {step.kind === 'dialogue' && <DialogueStep dialogue={day.dialogues[step.dialogueId]!} onDone={() => { pop(); advance(); }} />}
         {step.kind === 'ambush' && <AmbushStep step={step} itemsById={itemsById} onDone={(ok) => { if (ok) pop(); advance(); }} />}
+        {step.kind === 'quickReply' && <QuickReplyStep step={step} itemsById={itemsById} onDone={() => { pop(); advance(); }} />}
+        {step.kind === 'visualMatch' && <VisualMatchStep step={step} onDone={() => { pop(); advance(); }} />}
+        {step.kind === 'swap' && <SwapStep step={step} onDone={() => { pop(); advance(); }} />}
+        {step.kind === 'miniMap' && <MiniMapStep step={step} onDone={() => { pop(); advance(); }} />}
         {step.kind === 'receipt' && <ReceiptStep text={step.text} onNext={advance} />}
       </div>
     </div>
@@ -714,7 +720,7 @@ function DialogueStep({ dialogue, onDone }: { dialogue: BootcampDialogue; onDone
   return (
     <>
       <div className="drill-card" style={{ gap: 14, minHeight: 240 }}>
-        <p className="drill-label">{t('yourTurn')}</p>
+        <p className="drill-label">{t(node.who === 'you' && node.choices?.length === 1 ? 'yourTurnSay' : 'yourTurn')}</p>
         {recovered && <p className="faint small fade-in">🛟 {t('niceRecovery')}</p>}
         {displayNpc && (
           <div className="fade-in" key={displayNpc.id}>
@@ -793,6 +799,11 @@ function AmbushStep({ step, itemsById, onDone }: { step: Extract<BootcampStep, {
   const correct = itemsById.get(step.correctItemId)!;
   const wrong = itemsById.get(step.wrongItemId)!;
   const [order] = useState(() => shuffle([correct, wrong], mulberry32(sessionSeed())));
+  // What is being tested. No mode = the original behaviour (every option badged as a tool).
+  // 'recovery': the line is meant to be too hard — only the real conversation-help tool is badged.
+  // 'speed': known language at speed — no tool badge, and the screen never says "use a tool".
+  const isTool = (id: string): boolean => id.includes('.phrase.recovery.');
+  const badge = (id: string): string => (step.mode === 'speed' ? '' : step.mode === 'recovery' ? (isTool(id) ? '🛟 ' : '') : '🛟 ');
 
   // Answered — full context: WHAT YOU HEARD (the fast NPC line) → your pick → what fit. This is the
   // Money & Numbers case: "That comes to fifteen fifty…" is now shown, so "Fifteen fifty." makes sense.
@@ -808,7 +819,7 @@ function AmbushStep({ step, itemsById, onDone }: { step: Extract<BootcampStep, {
   return (
     <>
       <div className="drill-card">
-        <p className="drill-label">{t('fastOneComing')}</p>
+        <p className="drill-label">{t(step.mode === 'speed' ? 'speedHeadsUp' : 'fastOneComing')}</p>
         <p style={{ fontSize: '2.6rem' }}>⚡</p>
         {fired && <p className="faint small fade-in">“{step.npc.en}”</p>}
       </div>
@@ -829,7 +840,7 @@ function AmbushStep({ step, itemsById, onDone }: { step: Extract<BootcampStep, {
                 bc.recordDrill(correct.id, 'listen', o.id === correct.id ? 'pass' : 'fail', Date.now() - shownAt.current);
                 setPicked(o.id);
               }}>
-                🛟 {o.text}
+                {badge(o.id)}{o.text}
               </button>
             ))}
             <button className="btn-ghost" onClick={() => void speakL(step.npc.en, 0.85)}>🔊 {t('hearAgain')}</button>
@@ -940,6 +951,7 @@ function VictoryScreen() {
         <div className="center" style={{ padding: '10px 0 8px' }}>
           <p className="pop-in" style={{ fontSize: '3.8rem' }}>🎉</p>
           <h1 style={{ marginTop: 6 }}>{t('victoryCompleted', { title: L(day.title) })}</h1>
+          <CompanionReaction kind="missionComplete" />
         </div>
 
         {/* Early Access edge: honestly celebrate reaching the end of the available missions. */}

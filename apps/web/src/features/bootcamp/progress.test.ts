@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { BOOTCAMP_PLAN } from './plan.js';
+import { BOOTCAMP_PLAN, EXTENDED_POOL, MERGED_MISSIONS } from './plan.js';
 import { fromStored, migrateV1, toStored, type BootcampProgress } from './progress.js';
 
 /**
@@ -10,11 +10,19 @@ import { fromStored, migrateV1, toStored, type BootcampProgress } from './progre
 const dayOf = (id: string): number => BOOTCAMP_PLAN.find((m) => m.id === id)!.day;
 
 describe('v1 → v2 migration (30-mission day numbers → stable mission ids)', () => {
-  it('shifts every old mission 2–30 onto new missions 1–29, in order', () => {
+  it('maps every old mission 2–30 onto its stable id — the v1 curriculum is frozen history', () => {
     const v1 = { completedDays: Array.from({ length: 29 }, (_, i) => i + 2), receipts: [], stepIndex: {} };
     const migrated = migrateV1(v1);
-    expect(migrated.completed).toEqual(BOOTCAMP_PLAN.map((m) => m.id));
-    expect(fromStored(migrated).completedDays).toEqual(Array.from({ length: 29 }, (_, i) => i + 1));
+    expect(migrated.completed).toHaveLength(29);
+    expect(migrated.completed[0]).toBe('introduce-myself');
+    expect(migrated.completed.at(-1)).toBe('complete-day-abroad');
+    // Loaded into today's app: every mission that still exists keeps its completion — the Core ones
+    // and the Extended Pool ones. Only the three merged-away missions have nowhere to land.
+    const loaded = fromStored(migrated).completedDays;
+    const survivors = [...BOOTCAMP_PLAN, ...EXTENDED_POOL].filter((m) => migrated.completed.includes(m.id));
+    expect(loaded.slice().sort((a, b) => a - b)).toEqual(survivors.map((m) => m.day).sort((a, b) => a - b));
+    expect(loaded).toHaveLength(29 - MERGED_MISSIONS.length);
+    for (const gone of MERGED_MISSIONS) expect(migrated.completed).toContain(gone.id);
   });
 
   it('a learner who finished old Mission 2 keeps Introduce Myself completed', () => {
@@ -68,9 +76,9 @@ describe('v2 storage round-trip (keyed by mission id, not by number)', () => {
     expect(fromStored({})).toEqual({ completedDays: [], receipts: [], stepIndex: {} });
   });
 
-  it('a new learner has 0 of 29 missions complete', () => {
+  it('a new learner has 0 of 30 missions complete', () => {
     const fresh = fromStored({});
     const done = BOOTCAMP_PLAN.filter((m) => fresh.completedDays.includes(m.day)).length;
-    expect(`${done}/${BOOTCAMP_PLAN.length}`).toBe('0/29');
+    expect(`${done}/${BOOTCAMP_PLAN.length}`).toBe('0/30');
   });
 });

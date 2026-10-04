@@ -1,7 +1,7 @@
 import { RECOVERY_ITEMS, T, recovery } from './recovery.js';
 import type { BootcampDayContent, BootcampDialogue, BootcampItem } from './types.js';
 
-/** Mission 8 — "Shopping" (real objective: browse, try, decide, pay — in control). */
+/** Mission 9 — "Shopping" (real objective: browse, try, decide, pay — in control). */
 export const DAY8_ITEMS: BootcampItem[] = [
   { id: 'en.phrase.shop.just-looking', text: "I'm just looking, thanks.", meaning: T('אני רק מסתכל, תודה.', "I'm just looking, thanks."),
     tip: T('משפט שקונה לך מרחב בלי לחץ מוכר.', 'A phrase that buys you space from a pushy seller.') },
@@ -70,7 +70,7 @@ export const DAY8: BootcampDayContent = {
     type: 'intro',
   },
   steps: [
-    { kind: 'talk', icon: '🛍️', title: T('משימה 8: קניות', 'Mission 8: Shopping'),
+    { kind: 'talk', icon: '🛍️', title: T('משימה 9: קניות', 'Mission 9: Shopping'),
       body: [
         T('חנות בגדים: להסתכל בשקט, למדוד, לבקש מידה, להחליט.', 'A clothing shop: browse in peace, try on, ask for a size, decide.'),
         T('לא צריך לקנות. צריך להרגיש בשליטה מול המוכר.', 'You don’t have to buy. You do have to feel in control with the seller.'),

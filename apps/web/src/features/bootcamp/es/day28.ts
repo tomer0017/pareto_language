@@ -7,7 +7,7 @@ import { DAY14_ES_ITEMS } from './day14.js';
 import { DAY24_ES_ITEMS } from './day24.js';
 
 /**
- * Spanish Mission 28 — "Ensayo general: una noche completa" (Dress Rehearsal: Full Evening). Cold
+ * Spanish Mission 29 — "Ensayo general: una noche completa" (Dress Rehearsal: Full Evening). Cold
  * integration, no new content: taxi → restaurant → problem → payment, one take, one designed
  * surprise. Reuses missions 6, 12, 14 & 24 items. `tr:{en,he}` glosses; `es.*` ids. AI-drafted, pending review.
  */
@@ -77,7 +77,7 @@ const COLD_PROBLEM: BootcampDialogue = {
       { en: '¡Gracias!', tr: TR('Thank you!', 'תודה!'), he: 'תודה!', itemId: 'es.phrase.recovery.thank-you', correct: true, next: 'n3' },
       { en: '¿Puede repetir, por favor?', tr: TR('Can you repeat that?', 'אפשר לחזור על זה?'), he: 'אפשר לחזור על זה?', itemId: 'es.phrase.recovery.repeat', correct: true, next: 'n3' },
     ] },
-    { id: 'n3', who: 'npc', end: true, en: 'El plato correcto, e invita la casa. ¡Buen provecho!', tr: TR("The right dish, and it's on the house. Enjoy!", 'המנה הנכונה, ועל חשבון הבית. בתיאבון!'), he: 'המנה הנכונה, ועל חשבון הבית. בתיאבון!' },
+    { id: 'n3', who: 'npc', end: true, en: 'Aquí tiene el plato correcto — y corre por cuenta de la casa. ¡Buen provecho!', tr: TR("Here's the right dish — and it's on the house. Enjoy!", 'הנה המנה הנכונה — והיא על חשבון הבית. בתיאבון!'), he: 'הנה המנה הנכונה — והיא על חשבון הבית. בתיאבון!' },
   ],
 };
 
@@ -105,7 +105,7 @@ export const DAY28_ES: BootcampDayContent = {
   items: DAY28_ES_ITEMS,
   dialogues: { 'dr-taxi': COLD_TAXI, 'dr-order': COLD_ORDER, 'dr-problem': COLD_PROBLEM, 'dr-pay': COLD_PAY },
   steps: [
-    { kind: 'talk', icon: '🎬', title: T('משימה 28: חזרה גנרלית — ערב שלם', 'Mission 28: Dress Rehearsal — Full Evening'),
+    { kind: 'talk', icon: '🎬', title: T('משימה 29: חזרה גנרלית — ערב שלם', 'Mission 29: Dress Rehearsal — Full Evening'),
       body: [
         T('אין חומר חדש. ערב שלם בטייק אחד: מונית, מסעדה, תקלה, תשלום.', 'No new material. A full evening in one take: taxi, restaurant, a problem, payment.'),
         T('זו החזרה של הספורטאי לפני יום התחרות — עם הפתעה מתוכננת אחת. בוא נזרום.', 'This is the athlete’s rehearsal before race day — with one designed surprise. Let’s flow.'),

@@ -1,6 +1,7 @@
 import type { LocalizedText } from '@ready/content-schema';
 import type { BootcampDayContent, BootcampItem, BootcampDialogue } from './types.js';
 import { recovery } from './recovery.js';
+import { m03Steps } from './practiceV1.js';
 
 /**
  * Mission 3 — "Coffee Shop" (the Deep Moment exemplar, Sprint 7).
@@ -29,6 +30,8 @@ export const DAY3_ITEMS: BootcampItem[] = [
     tip: T('סוגר כל הזמנה בנימוס. עובד בכל מקום בעולם.', 'Closes any order politely. Works everywhere on earth.') },
   { id: 'en.phrase.coffee.card', text: 'Card, please.',
     meaning: T('בכרטיס, בבקשה.', 'Card, please.') },
+  { id: 'en.phrase.coffee.medium', text: 'Medium, please.', meaning: T('בינוני, בבקשה.', 'Medium, please.') },
+  { id: 'en.phrase.coffee.yes-please', text: 'Yes, please.', meaning: T('כן, בבקשה.', 'Yes, please.') },
   // hear — the expected replies (the barista question-chain)
   { id: 'en.reply.coffee.what-can-i-get', text: 'What can I get you?',
     meaning: T('מה להביא לך?', 'What can I get you?') },
@@ -68,12 +71,12 @@ const SCENE_BREAKFAST: BootcampDialogue = {
     ] },
     { id: 'n2', who: 'npc', fast: true, next: 'c2', en: 'Sure! Medium or large?', he: 'סגור! בינוני או גדול?' },
     { id: 'c2', who: 'you', en: '', he: '', choices: [
-      { en: 'Medium, please.', he: 'בינוני, בבקשה.', correct: true, next: 'n3' },
+      { en: 'Medium, please.', he: 'בינוני, בבקשה.', itemId: 'en.phrase.coffee.medium', correct: true, next: 'n3' },
       { en: 'Can you repeat that?', he: 'אפשר לחזור על זה? (לא הבנת? תשאל!)', itemId: 'en.phrase.recovery.repeat', correct: true, next: 'r2' },
     ] },
     { id: 'r2', who: 'npc', slow: true, next: 'c2b', en: 'MEDIUM — or LARGE?', he: 'בינוני — או גדול?' },
     { id: 'c2b', who: 'you', en: '', he: '', choices: [
-      { en: 'Medium, please.', he: 'בינוני, בבקשה.', correct: true, next: 'n3' },
+      { en: 'Medium, please.', he: 'בינוני, בבקשה.', itemId: 'en.phrase.coffee.medium', correct: true, next: 'n3' },
     ] },
     { id: 'n3', who: 'npc', next: 'c3', en: 'Milk and sugar?', he: 'חלב וסוכר?' },
     { id: 'c3', who: 'you', en: '', he: '', choices: [
@@ -105,7 +108,7 @@ const SCENE_BREAKFAST: BootcampDialogue = {
     { id: 'n7', who: 'npc', next: 'c7', en: 'Would you like the receipt?', he: 'רוצה את הקבלה?' },
     { id: 'c7', who: 'you', en: '', he: '', choices: [
       { en: 'No, thank you!', he: 'לא, תודה!', itemId: 'en.phrase.recovery.thank-you', correct: true, next: 'n8' },
-      { en: 'Yes, please.', he: 'כן, בבקשה.', correct: true, next: 'n8' },
+      { en: 'Yes, please.', he: 'כן, בבקשה.', itemId: 'en.phrase.coffee.yes-please', correct: true, next: 'n8' },
     ] },
     { id: 'n8', who: 'npc', end: true, en: 'Here you go — enjoy your day!', he: 'בבקשה — שיהיה יום מעולה!' },
   ],
@@ -126,39 +129,5 @@ export const DAY3: BootcampDayContent = {
     language: 'en',
     type: 'intro',
   },
-  steps: [
-    { kind: 'talk', icon: '☕', title: T('משימה 3: בית קפה', 'Mission 3: Coffee Shop'),
-      body: [
-        T('היום לא לומדים "מילים על קפה". היום לומדים לצאת מבית קפה עם ארוחת בוקר ביד.', 'Today we don’t learn “coffee words”. Today you walk out of a café holding breakfast.'),
-        T('הסוד: אחרי שאתה מזמין, הבריסטה שואל שאלות המשך. מי שמכיר אותן מראש — אף פעם לא קופא.', 'The secret: after you order, the barista fires follow-up questions. Know them in advance — never freeze.'),
-      ], cta: T('להיכנס', 'Walk in') },
-    // Vocabulary priming (Part 7): the six café building blocks that control every order, taught
-    // before the full sentences. milk + no + sugar compose "Milk, no sugar." — the assemble beat.
-    { kind: 'prime', label: T('לפני שנדבר', 'Before we speak'),
-      intro: T('שש מילים שולטות בכל הזמנה בבית קפה.', 'Six words control every café order.'),
-      words: [
-        { text: 'coffee', meaning: T('קפה', 'coffee'), emoji: '☕' },
-        { text: 'milk', meaning: T('חלב', 'milk'), emoji: '🥛' },
-        { text: 'sugar', meaning: T('סוכר', 'sugar'), emoji: '🍬' },
-        { text: 'medium', meaning: T('בינוני', 'medium') },
-        { text: 'with', meaning: T('עם', 'with') },
-        { text: 'no / without', meaning: T('בלי', 'no / without') },
-      ], buildFromItemId: 'en.phrase.coffee.no-sugar' },
-    { kind: 'tool', itemId: 'en.phrase.coffee.iced-coffee', index: 1, total: 4, label: T('משפט הזהב', 'The golden template') },
-    { kind: 'tool', itemId: 'en.phrase.coffee.no-sugar', index: 2, total: 4, label: T('שליטה בהזמנה', 'Order control') },
-    { kind: 'tool', itemId: 'en.phrase.coffee.thats-all', index: 3, total: 4, label: T('הסוגר האוניברסלי', 'The universal closer') },
-    { kind: 'tool', itemId: 'en.phrase.coffee.card', index: 4, total: 4, label: T('סוגרים חשבון', 'Settling up') },
-    { kind: 'replies', saidItemId: 'en.phrase.coffee.iced-coffee',
-      replyIds: ['en.reply.coffee.here-or-to-go', 'en.reply.coffee.medium-or-large', 'en.reply.coffee.milk-sugar', 'en.reply.coffee.anything-else'] },
-    { kind: 'receipt', text: T('אתה כבר מזהה את ארבע שאלות ההמשך של כל בריסטה בעולם.', 'You now recognize the four follow-ups of every barista on earth.') },
-    { kind: 'quiz', itemId: 'en.reply.coffee.cash-or-card', wrongIds: ['en.reply.coffee.anything-to-eat', 'en.reply.coffee.receipt'] },
-    { kind: 'quiz', itemId: 'en.reply.coffee.anything-to-eat', wrongIds: ['en.reply.coffee.hot-or-iced', 'en.reply.coffee.enjoy'] },
-    { kind: 'dialogue', dialogueId: 'breakfast-order' },
-    { kind: 'receipt', text: T('הזמנת ארוחת בוקר שלמה: שתייה, גודל, חלב, מאפה, תשלום. הכל.', 'You ordered a full breakfast: drink, size, milk, pastry, payment. All of it.') },
-    { kind: 'swipe', itemIds: [...DAY3_ITEMS, ...REUSED_RECOVERY].map((i) => i.id) },
-    { kind: 'ambush', npc: { en: 'Sorry we are out of croissants would a muffin be okay instead?', he: 'סליחה, נגמרו הקרואסונים — מאפין במקום זה בסדר?' },
-      correctItemId: 'en.phrase.recovery.repeat', wrongItemId: 'en.phrase.coffee.card' },
-    { kind: 'receipt', text: T('הפתעה מחוץ לתסריט — והגבת עם כלי. זה בדיוק מה שקורה בעולם האמיתי.', 'An off-script surprise — and you answered with a tool. Exactly how real life works.') },
-    { kind: 'summary' },
-  ],
+  steps: m03Steps('en'),
 };

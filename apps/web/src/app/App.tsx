@@ -28,6 +28,7 @@ import { QuickReview } from '../features/core/QuickReview.js';
 import { Reading } from '../features/reading/Reading.js';
 import { ZeroStart } from '../features/zerostart/ZeroStart.js';
 import { FoundationSheet } from '../features/foundation/FoundationSheet.js';
+import { CompanionHost, CompanionPage } from '../features/companion/Companion.js';
 import { useBootcampStore } from '../features/bootcamp/bootcampStore.js';
 
 
@@ -81,6 +82,7 @@ const SCREENS: Partial<Record<View, { feature: string; el: () => JSX.Element | n
   videos: { feature: 'Videos', el: Videos },
   reading: { feature: 'Reading', el: Reading },
   zerostart: { feature: 'ZeroStart', el: ZeroStart },
+  companion: { feature: 'Companion', el: CompanionPage },
 };
 
 export function App() {
@@ -140,6 +142,12 @@ export function App() {
       <ErrorBoundary feature="Foundation">
         <FoundationSheet />
       </ErrorBoundary>
+      {/* The Language Companion's evolution moment — owed at most once per stage, per language. */}
+      {shell && (
+        <ErrorBoundary feature="Companion">
+          <CompanionHost />
+        </ErrorBoundary>
+      )}
       {shell && <AppNav barHidden={!showNav} />}
       {showDebug && (
         <ErrorBoundary feature="DevDiagnostics">

@@ -24,9 +24,10 @@ describe('one id = one sentence', () => {
   }
 
   it('the detector really catches a conflict (it is not vacuously empty)', () => {
-    // The bug this replaced: Restaurant Meal said "the chicken", Restaurant Basics "the pasta" — same id.
+    // The bug this replaced: "the chicken" and "the pasta" once shared ONE id. Both orders now live in
+    // the merged Restaurant Meal mission, under two ids.
     const meal = MISSIONS_BY_LANG.en![4]!.items.find((i) => i.id === 'en.phrase.rest.ill-have-chicken')!;
-    const basics = MISSIONS_BY_LANG.en![12]!.items.find((i) => i.id === 'en.phrase.rest.ill-have')!;
+    const basics = MISSIONS_BY_LANG.en![4]!.items.find((i) => i.id === 'en.phrase.rest.ill-have')!;
     expect(meal.text).toBe("I'll have the chicken.");
     expect(basics.text).toBe("I'll have the pasta, please.");
     expect(meal.id).not.toBe(basics.id);
@@ -81,12 +82,12 @@ describe('one wording = one canonical sentence', () => {
     });
   }
 
-  it('"How much is it?" is one sentence, first taught in Numbers & Money, though three missions declare it', () => {
+  it('"A table for two, please." is one sentence, first taught in Restaurant Meal, though two ids declare it', () => {
     const catalog = sentenceCatalog('en');
-    const hits = catalog.groups.flatMap((g) => g.items).filter((i) => i.text === 'How much is it?');
-    expect(hits.map((i) => i.id)).toEqual(['en.phrase.money.how-much']);
-    expect(catalog.aliases.get('en.phrase.street.how-much')).toBe('en.phrase.money.how-much');
-    expect(catalog.aliases.get('en.phrase.sim.how-much')).toBe('en.phrase.money.how-much');
+    const hits = catalog.groups.flatMap((g) => g.items).filter((i) => i.text === 'A table for two, please.');
+    expect(hits.map((i) => i.id)).toEqual(['en.phrase.rest.table-two']);
+    expect(catalog.aliases.get('en.phrase.rest.table-for-two')).toBe('en.phrase.rest.table-two');
+    expect(catalog.firstDay.get('en.phrase.rest.table-two')).toBe(BOOTCAMP_PLAN.find((m) => m.id === 'restaurant-meal')!.day);
   });
 });
 
@@ -104,8 +105,9 @@ describe('ONE canonical count, read by every surface', () => {
   it('the count is whatever the content says — it is not pinned to a remembered number', () => {
     const counts = Object.fromEntries(LANGS.map((l) => [l, sentenceCatalog(l).count]));
     for (const lang of LANGS) {
+      const ids = new Set(BOOTCAMP_PLAN.flatMap((m) => MISSIONS_BY_LANG[lang]![m.day]!.items.map((i) => i.id))).size;
       expect(counts[lang]).toBeGreaterThan(200);
-      expect(counts[lang]).toBeLessThan(262); // 262 ids, minus the wordings declared more than once
+      expect(counts[lang]).toBeLessThan(ids); // every id, minus the wordings declared more than once
     }
   });
 
@@ -120,15 +122,15 @@ describe('practice counts once per sentence, under any of its ids', () => {
   const at = '2026-01-01T10:00:00Z';
 
   it('a drill logged under an alias id counts for the canonical sentence', () => {
-    const log = [{ itemId: 'en.phrase.street.how-much', outcome: 'pass', at }];
+    const log = [{ itemId: 'en.phrase.rest.table-for-two', outcome: 'pass', at }];
     expect(practicedIds(deck, log).size).toBe(0); // without canonicalisation the drill would be lost
-    expect(practicedIds(deck, log, canonical)).toEqual(new Set(['en.phrase.money.how-much']));
+    expect(practicedIds(deck, log, canonical)).toEqual(new Set(['en.phrase.rest.table-two']));
   });
 
-  it('drilling the same wording under three ids is ONE practiced sentence, not three', () => {
-    const log = ['en.phrase.money.how-much', 'en.phrase.street.how-much', 'en.phrase.sim.how-much'].map((itemId) => ({ itemId, outcome: 'pass', at }));
+  it('drilling the same wording under two ids is ONE practiced sentence, not two', () => {
+    const log = ['en.phrase.rest.table-two', 'en.phrase.rest.table-for-two'].map((itemId) => ({ itemId, outcome: 'pass', at }));
     expect(practicedIds(deck, log, canonical).size).toBe(1);
-    expect(pickReviewCards(deck, log, 5, canonical).map((c) => c.id)).toEqual(['en.phrase.money.how-much']);
+    expect(pickReviewCards(deck, log, 5, canonical).map((c) => c.id)).toEqual(['en.phrase.rest.table-two']);
   });
 
   it('practiced can never exceed the canonical total', () => {
@@ -137,22 +139,22 @@ describe('practice counts once per sentence, under any of its ids', () => {
   });
 });
 
-describe('conversation help — six phrases, last, never first', () => {
+describe('conversation help — seven phrases, last, never first', () => {
   it('the help group is exactly the kit phrases that missions actually use', () => {
     for (const lang of LANGS) {
       const groups = buildPhraseGroups(lang);
       const help = groups.at(-1)!;
       expect(help.kind, lang).toBe('help');
-      expect(help.items, lang).toHaveLength(6);
+      expect(help.items, lang).toHaveLength(7);
       expect(groups[0]!.kind, lang).toBe('mission');
       expect(groups.slice(0, -1).some((g) => g.items.some((i) => isConversationHelp(i.id))), lang).toBe(false);
     }
   });
 
-  it('the seventh kit phrase ("Sorry!") is defined but used by no mission — so it is not listed', () => {
+  it('the eighth kit phrase ("Sorry!") is defined but used by no mission — so it is not listed', () => {
     const used = new Set(BOOTCAMP_PLAN.flatMap((m) => MISSIONS_BY_LANG.en![m.day]!.items.map((i) => i.id)));
     const unused = RECOVERY_ITEMS.filter((i) => !used.has(i.id));
-    expect(RECOVERY_ITEMS).toHaveLength(7);
+    expect(RECOVERY_ITEMS).toHaveLength(8);
     expect(unused.map((i) => i.text)).toEqual(['Sorry!']);
     expect(buildSentenceDeck('en').some((c) => c.id === unused[0]!.id)).toBe(false);
   });

@@ -3,7 +3,7 @@ import type { BootcampDayContent, BootcampDialogue, BootcampItem } from '../type
 import { recoveryFr } from './recovery.js';
 
 /**
- * French Mission 16 — "Supermarché" (Supermarket). French parallel of English mission 16: find it, weigh
+ * French Mission 17 — "Supermarché" (Supermarket). French parallel of English mission 16: find it, weigh
  * it, pay for it — self-checkout included, zero dependence on anyone. `tr:{en,he}` glosses; `fr.*`
  * ids. AI-drafted, vous, pending review.
  */
@@ -50,7 +50,7 @@ const SCENE_SUPER: BootcampDialogue = {
     { id: 'c2b', who: 'you', en: '', he: '', choices: [
       { en: 'Merci !', tr: TR('Thank you!', 'תודה!'), he: 'תודה!', itemId: 'fr.phrase.recovery.thank-you', correct: true, next: 'n3' },
     ] },
-    { id: 'n3', who: 'npc', next: 'c3', en: 'À la caisse — juste ça ? Vous devez d’abord peser les fruits.', tr: TR("At the checkout — just these? You'll need to weigh the fruit first.", 'בקופה — רק אלה? צריך לשקול קודם את הפירות.'), he: 'בקופה — רק אלה? צריך לשקול קודם את הפירות.' },
+    { id: 'n3', who: 'npc', next: 'c3', en: '…À la caisse… Bonjour ! Ce sera tout ?', tr: TR("…At the checkout… Hi! Is that everything?", '…בקופה… היי! זה הכל?'), he: '…בקופה… היי! זה הכל?' },
     { id: 'c3', who: 'you', en: '', he: '', choices: [
       { en: 'Vous pouvez me montrer ?', tr: TR('Can you show me?', 'אתה יכול להראות לי? (כלי — כשמילים לא מספיקות)'), he: 'אתה יכול להראות לי?', itemId: 'fr.phrase.recovery.show-me', correct: true, next: 'r3' },
       { en: 'Juste ça, merci.', tr: TR('Just this, thanks.', 'רק את זה, תודה.'), he: 'רק את זה, תודה.', itemId: 'fr.phrase.super.just-this', correct: true, next: 'n4' },
@@ -70,11 +70,11 @@ const SCENE_SUPER: BootcampDialogue = {
 
 export const DAY16_FR: BootcampDayContent = {
   day: 16,
-  title: T('סופרמרקט', 'Supermarket'),
+  title: T('סופרמרקט וקניות יום-יום', 'Supermarket & Everyday Shopping'),
   items: DAY16_FR_ITEMS,
   dialogues: { supermarket: SCENE_SUPER },
   steps: [
-    { kind: 'talk', icon: '🛒', title: T('משימה 16: סופרמרקט', 'Mission 16: Supermarket'),
+    { kind: 'talk', icon: '🛒', title: T('משימה 17: סופרמרקט', 'Mission 17: Supermarket'),
       body: [
         T('היום-יום נהיה זול ופשוט. אתה מוצא, שוקל, ומשלם — לבד לגמרי.', 'Daily life just got cheap and easy. You find it, weigh it, and pay — completely on your own.'),
         T('רוב העבודה כאן היא זיהוי: שלטים, מעברים, וקול הקופה האוטומטית.', 'Most of the work here is recognition: signs, aisles, and the self-checkout voice.'),

@@ -28,7 +28,7 @@ const OUT_ROOT = fileURLToPath(new URL('../exports/dialogues/', import.meta.url)
 function main(): void {
   const langArg = arg('lang');
   const missionArg = arg('mission');
-  const onlyDay = missionArg ? Number(missionArg) : undefined;
+  const onlyNumber = missionArg ? Number(missionArg) : undefined;
   const langs = langArg ? [langArg] : exportableLanguages();
 
   if (langs.length === 0) {
@@ -39,13 +39,13 @@ function main(): void {
   let totalFiles = 0;
   for (const lang of langs) {
     const all = exportMissions(lang); // every built mission (for ALL_DIALOGUES.md)
-    const selected = onlyDay === undefined ? all : all.filter((m) => m.day === onlyDay);
+    const selected = onlyNumber === undefined ? all : all.filter((m) => m.number === onlyNumber);
     if (all.length === 0) {
       console.info(`· ${lang}: no built missions — skipped`);
       continue;
     }
     if (selected.length === 0) {
-      console.info(`· ${lang}: no mission for day ${onlyDay} — skipped`);
+      console.info(`· ${lang}: no mission number ${onlyNumber} — skipped`);
       continue;
     }
     const dir = `${OUT_ROOT}${lang}/`;
@@ -56,7 +56,7 @@ function main(): void {
     }
     // ALL_DIALOGUES.md ALWAYS contains every mission concatenated — never a filtered subset.
     writeFileSync(`${dir}ALL_DIALOGUES.md`, `# READY — ${lang.toUpperCase()} dialogues\n\n${renderAll(all)}`);
-    console.info(`✓ ${lang}: wrote ${selected.length} mission file(s)${onlyDay ? ` (day ${onlyDay})` : ''} + ALL_DIALOGUES.md → exports/dialogues/${lang}/`);
+    console.info(`✓ ${lang}: wrote ${selected.length} mission file(s)${onlyNumber ? ` (mission ${onlyNumber})` : ''} + ALL_DIALOGUES.md → exports/dialogues/${lang}/`);
   }
   console.info(`\nDone — ${totalFiles} mission file(s) across ${langs.length} language(s).`);
 }

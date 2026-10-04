@@ -1,0 +1,78 @@
+# Core 30 — Final Video Action Map
+
+_2026-10-04 · Curriculum V1.0 · for manual video adaptation_
+
+No video file was created, edited, renamed, moved or deleted in this pass.
+
+**How to read this.** A video is attached to a mission by an explicit path on the mission content. The file name carries the mission's **registry key**, not its displayed number: `En_day6.mp4` is Taxi (key 6), shown as Mission 07. Do not rename files to match mission numbers.
+
+**Basis.** Classification compares the final runtime dialogue with the dialogue each video was made for (the 29-mission runtime, archived in `docs/archive/DIALOGUES_BY_MISSION_V1_29-mission-runtime.md`). I did not watch any footage. The script for every mission is in `docs/ALL_LANGUAGES_DIALOGUES_BY_MISSION_V2.md`; per-language screenplays are in `exports/dialogues/<lang>/mission-NN.md`.
+
+Actions: **KEEP** · **MOVE / RELABEL** (same dialogue, new mission number) · **REPLACE — DIALOGUE CHANGED** · **NEW VIDEO** (none exists) · **CHECK MANUALLY**.
+
+## The 15 existing files
+
+| File | Mission | Action | Why |
+|---|---|---|---|
+| `En_day1.mp4` | 01 Introduce Myself | REPLACE — DIALOGUE CHANGED | Final NPC line changed in this pass: "Enjoy your stay! Have a great day!" |
+| `Fr_day1.mp4` | 01 Introduce Myself | REPLACE — DIALOGUE CHANGED | Same line: "Bon séjour ! Bonne journée !" |
+| `En_day2.mp4` | 02 Numbers & Money | KEEP | Dialogue unchanged. |
+| `Fr_day2.mp4` | 02 Numbers & Money | KEEP | Dialogue unchanged. |
+| `En_day3.mp4` | 03 Coffee Shop | KEEP | Dialogue unchanged. |
+| `Fr_day3.mp4` | 03 Coffee Shop | CHECK MANUALLY | Runtime dialogue unchanged, but the earlier reference Markdown was missing "Moyen ou grand ?" and "Lait et sucre ?". If the video was produced from that file, it lacks them. |
+| `En_day4.mp4` | 14 Restaurant Meal (was 04) | REPLACE — DIALOGUE CHANGED | Order, drink and closing lines changed (previous pass and this one). |
+| `Fr_day4.mp4` | 14 Restaurant Meal (was 04) | REPLACE — DIALOGUE CHANGED | Same. |
+| `Fr_day5.mp4` | 05 Directions | KEEP | Dialogue unchanged. |
+| `En_day6.mp4` | 07 Taxi / Uber (was 06) | REPLACE — DIALOGUE CHANGED | The "expect to pay" line (previous pass) and the slow-speech exchange (this pass). |
+| `En_day7.mp4` | 08 Hotel Check-in (was 07) | REPLACE — DIALOGUE CHANGED | The receptionist's room line now ends "Here is your key." (previous pass). |
+| `En_day8.mp4` | 09 Shopping (was 08) | MOVE / RELABEL | Dialogue unchanged. |
+| `Fr_day8.mp4` | 09 Shopping (was 08) | MOVE / RELABEL | Dialogue unchanged. |
+| `En_day10.mp4` | 06 Airport & Border (was 10) | REPLACE — DIALOGUE CHANGED | One spoken word changed in this pass: "Lovely." → "All right." The spelling change to "centre" is not audible. If one word is acceptable to you, treat as MOVE / RELABEL. |
+| `Fr_day10.mp4` | 06 Airport & Border (was 10) | MOVE / RELABEL | The French spoken lines did not change. |
+
+Totals: KEEP 4 · MOVE / RELABEL 3 · REPLACE 7 · CHECK MANUALLY 1 · = 15.
+
+## Every Core mission
+
+"Key" is the registry key (`day`). "EN" / "FR" list the existing file and its action; "—" means no file exists. There are no Spanish videos.
+
+| # | Mission | Key | Was # | EN | FR | Final action |
+|---|---|---|---|---|---|---|
+| 01 | Introduce Myself | 1 | 01 | `En_day1` REPLACE | `Fr_day1` REPLACE | REPLACE — DIALOGUE CHANGED |
+| 02 | Numbers & Money | 2 | 02 | `En_day2` KEEP | `Fr_day2` KEEP | KEEP |
+| 03 | Coffee Shop | 3 | 03 | `En_day3` KEEP | `Fr_day3` CHECK | KEEP (EN) · CHECK MANUALLY (FR) |
+| 04 | Everyday Core | 30 | new | — | — | NEW VIDEO |
+| 05 | Directions | 5 | 05 | — | `Fr_day5` KEEP | KEEP (FR) · NEW VIDEO (EN) |
+| 06 | Airport & Border | 10 | 10 | `En_day10` REPLACE | `Fr_day10` MOVE | REPLACE (EN, one word) · MOVE / RELABEL (FR) |
+| 07 | Taxi / Uber | 6 | 06 | `En_day6` REPLACE | — | REPLACE — DIALOGUE CHANGED (EN) · NEW VIDEO (FR) |
+| 08 | Hotel Check-in | 7 | 07 | `En_day7` REPLACE | — | REPLACE — DIALOGUE CHANGED (EN) · NEW VIDEO (FR) |
+| 09 | Shopping | 8 | 08 | `En_day8` MOVE | `Fr_day8` MOVE | MOVE / RELABEL |
+| 10 | CHECKPOINT: Arrival Day | 9 | 09 | — | — | NEW VIDEO |
+| 11 | Small Talk & Recommendations | 22 | 22 | — | — | NEW VIDEO |
+| 12 | Time & Plans | 31 | new | — | — | NEW VIDEO |
+| 13 | Home, Family & Daily Routine | 32 | new | — | — | NEW VIDEO |
+| 14 | Restaurant Meal | 4 | 04 | `En_day4` REPLACE | `Fr_day4` REPLACE | REPLACE — DIALOGUE CHANGED |
+| 15 | Food Preferences & Allergies | 13 | 13 | — | — | NEW VIDEO |
+| 16 | Hobbies & Free Time | 33 | new | — | — | NEW VIDEO |
+| 17 | Supermarket & Everyday Shopping | 16 | 16 | — | — | NEW VIDEO |
+| 18 | CHECKPOINT: Everyday Day | 17 | 17 | — | — | NEW VIDEO |
+| 19 | Public Transport | 18 | 18 | — | — | NEW VIDEO |
+| 20 | Past & Recent Events | 34 | new | — | — | NEW VIDEO |
+| 21 | Future Travel & Plans | 35 | new | — | — | NEW VIDEO |
+| 22 | Fixing Problems | 24 | 24 | — | — | NEW VIDEO |
+| 23 | Opinions, Feelings & Reactions | 36 | new | — | — | NEW VIDEO |
+| 24 | CHECKPOINT: City & Conversation | 23 | 23 | — | — | NEW VIDEO |
+| 25 | Lost / Stolen / Police | 37 | new | — | — | NEW VIDEO |
+| 26 | Pharmacy & Health | 25 | 25 | — | — | NEW VIDEO |
+| 27 | Emergency | 26 | 26 | — | — | NEW VIDEO |
+| 28 | No Subtitles | 27 | 27 | — | — | NEW VIDEO |
+| 29 | Dress Rehearsal: Full Evening | 28 | 28 | — | — | NEW VIDEO |
+| 30 | A Complete Day Abroad Alone | 29 | 29 | — | — | NEW VIDEO |
+
+Missions with no video in any language: 21 (04, 10–13, 15–30).
+
+## Naming new files
+
+The app looks for the path written on the mission content, so a new file is only picked up after its path is added there. Following the existing convention, a new file is named by registry key: for example Everyday Core (key 30) would be `En_day30.mp4`, Small Talk (key 22) `En_day22.mp4`. Replacement files keep their current names and need no code change.
+
+Until the seven REPLACE files are re-shot, they still play; the learner hears the old wording while the transcript shows the new one.

@@ -1,5 +1,6 @@
 import { RECOVERY_ITEMS, T, recovery } from './recovery.js';
 import type { BootcampDayContent, BootcampDialogue, BootcampItem } from './types.js';
+import { DAY12_ITEMS } from './day12.js';
 
 /** Mission 4 — "Restaurant Basics" (real objective: table to bill, a full sit-down meal). */
 export const DAY4_ITEMS: BootcampItem[] = [
@@ -21,6 +22,8 @@ export const DAY4_ITEMS: BootcampItem[] = [
   { id: 'en.reply.rest.to-drink', text: 'Anything to drink?', meaning: T('משהו לשתות?', 'Anything to drink?') },
   { id: 'en.reply.rest.how-was-it', text: 'How was everything?', meaning: T('איך היה הכל?', 'How was everything?') },
   { id: 'en.reply.rest.dessert', text: 'Would you like dessert?', meaning: T('רוצים קינוח?', 'Would you like dessert?') },
+  // Merged in from Restaurant Basics — same ids and wording, so earlier practice still counts.
+  ...DAY12_ITEMS.filter((i) => ['en.phrase.rest.ill-have', 'en.reply.rest.anything-else', 'en.reply.rest.everything-okay'].includes(i.id)),
   ...recovery('en.phrase.recovery.repeat', 'en.phrase.recovery.slowly', 'en.phrase.recovery.thank-you', 'en.phrase.recovery.one-moment', 'en.phrase.recovery.dont-understand'),
 ];
 
@@ -40,23 +43,23 @@ const SCENE: BootcampDialogue = {
     { id: 'n2', who: 'npc', next: 'n2b', en: 'Perfect, follow me. Here are your menus.', he: 'מצוין, בואו אחריי. הנה התפריטים.' },
     { id: 'n2b', who: 'npc', next: 'c2', en: 'Are you ready to order?', he: 'מוכנים להזמין?' },
     { id: 'c2', who: 'you', en: '', he: '', choices: [
-      { en: "I'll have the chicken.", he: 'אני אקח את העוף.', itemId: 'en.phrase.rest.ill-have-chicken', correct: true, next: 'n3' },
+      { en: "I'll have the chicken, without onions, please.", he: 'אני אקח את העוף, בלי בצל, בבקשה.', itemId: 'en.phrase.rest.ill-have-chicken', correct: true, next: 'n3' },
+      { en: "I'll have the pasta, please.", he: 'אני אקח את הפסטה, בבקשה.', itemId: 'en.phrase.rest.ill-have', correct: true, next: 'n3' },
       { en: 'One moment, please.', he: 'רגע אחד, בבקשה. (צריך עוד רגע? לגיטימי)', itemId: 'en.phrase.recovery.one-moment', correct: true, next: 'r2' },
     ] },
     { id: 'r2', who: 'npc', next: 'n2b', en: 'Sure, take your time.', he: 'בטח, קחו את הזמן.' },
-    { id: 'n3', who: 'npc', next: 'c3', en: 'Excellent choice. Anything to drink?', he: 'בחירה מצוינת. משהו לשתות?' },
+    { id: 'n3', who: 'npc', next: 'c3', en: 'Of course. Anything to drink?', he: 'כמובן. משהו לשתות?' },
     { id: 'c3', who: 'you', en: '', he: '', choices: [
       { en: 'A bottle of water, please.', he: 'בקבוק מים, בבקשה.', itemId: 'en.phrase.rest.water', correct: true, next: 'n4' },
     ] },
-    { id: 'n4', who: 'npc', fast: true, next: 'c4', en: 'Great — and would you like anything else with that?', he: 'מצוין — ורוצים עוד משהו עם זה?' },
+    { id: 'n4', who: 'npc', fast: true, next: 'c4', en: 'Anything else?', he: 'עוד משהו?' },
     { id: 'c4', who: 'you', en: '', he: '', choices: [
-      { en: 'No onions, please.', he: 'בלי בצל, בבקשה.', itemId: 'en.phrase.rest.no-onions', correct: true, next: 'n5' },
-      { en: "That's all, thank you.", he: 'זה הכל, תודה.', itemId: 'en.phrase.recovery.thank-you', correct: true, next: 'n5' },
+      { en: "That's all, thanks.", he: 'זה הכל, תודה.', itemId: 'en.phrase.recovery.thank-you', correct: true, next: 'n5' },
     ] },
     { id: 'n5', who: 'npc', next: 'n5b', en: 'Coming right up!', he: 'מגיע עוד רגע!' },
-    { id: 'n5b', who: 'npc', next: 'c5', en: '…Later… How was everything?', he: '…אחר כך… איך היה הכל?' },
+    { id: 'n5b', who: 'npc', next: 'c5', en: '…Later… Is everything okay?', he: '…אחר כך… הכל בסדר?' },
     { id: 'c5', who: 'you', en: '', he: '', choices: [
-      { en: 'That was delicious! The bill, please.', he: 'זה היה טעים מאוד! החשבון, בבקשה.', itemId: 'en.phrase.rest.the-bill', correct: true, next: 'n6' },
+      { en: 'Yes, that was delicious! The bill, please.', he: 'כן, היה טעים מאוד! החשבון, בבקשה.', itemId: 'en.phrase.rest.the-bill', correct: true, next: 'n6' },
     ] },
     { id: 'n6', who: 'npc', end: true, en: 'So glad you enjoyed it. Here you are — have a lovely evening!', he: 'שמח שנהניתם. בבקשה — ערב נעים!' },
   ],

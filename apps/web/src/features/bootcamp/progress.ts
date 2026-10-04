@@ -1,10 +1,17 @@
-import { BOOTCAMP_PLAN } from './plan.js';
+import { BOOTCAMP_PLAN, EXTENDED_POOL } from './plan.js';
 
 /**
  * Bootcamp progress persistence shapes — PURE (no store / no localStorage), so the migration is
  * unit-testable. In memory the runtime keeps addressing missions by their `day` registry key; ON
  * DISK progress is keyed by the mission's stable `id`, so reordering the plan (or renumbering the
  * content files) can never move a learner's completions onto a different mission.
+ *
+ * The Core 30 restructure needed NO storage migration: every mission that stayed kept its id, so
+ * reordering the journey moved nobody's progress. Missions that left the Core for the Extended Pool
+ * still round-trip (id ↔ day), so a completion earned before the restructure is kept on disk until
+ * the mission returns; it simply is not part of the journey or of Travel Readiness meanwhile.
+ * Missions that were merged away (Restaurant Basics, Hotel Requests, Paying Anywhere) no longer
+ * exist — their ids are ignored on read, like any id the plan does not know.
  */
 
 /** In-memory progress (what the store and UI read). */
@@ -39,12 +46,14 @@ const V1_MISSION_IDS: readonly string[] = [
 ];
 const v1MissionId = (day: number): string | undefined => V1_MISSION_IDS[day - V1_FIRST_DAY];
 
-const idOfDay = (day: number): string | undefined => BOOTCAMP_PLAN.find((m) => m.day === day)?.id;
-const dayOfId = (id: string): number | undefined => BOOTCAMP_PLAN.find((m) => m.id === id)?.day;
+/** Every mission progress can be stored for: the Core journey + the Extended Pool. */
+const STORABLE: readonly { id: string; day: number }[] = [...BOOTCAMP_PLAN, ...EXTENDED_POOL];
+const idOfDay = (day: number): string | undefined => STORABLE.find((m) => m.day === day)?.id;
+const dayOfId = (id: string): number | undefined => STORABLE.find((m) => m.id === id)?.day;
 
 const list = <T>(v: T[] | undefined): T[] => (Array.isArray(v) ? v : []);
 
-/** In-memory → on-disk. Days that are not in the plan have no id and are not written. */
+/** In-memory → on-disk. Days that are neither in the plan nor in the Extended Pool have no id and are not written. */
 export function toStored(p: BootcampProgress): StoredProgress {
   const stepIndex: Record<string, number> = {};
   for (const [day, index] of Object.entries(p.stepIndex)) {
@@ -61,7 +70,7 @@ export function toStored(p: BootcampProgress): StoredProgress {
   };
 }
 
-/** On-disk → in-memory. Ids the current plan no longer has are ignored (never crash on old data). */
+/** On-disk → in-memory. Ids that no longer exist (merged-away missions) are ignored — never crash on old data. */
 export function fromStored(s: Partial<StoredProgress>): BootcampProgress {
   const stepIndex: Record<string, number> = {};
   for (const [id, index] of Object.entries(s.stepIndex ?? {})) {

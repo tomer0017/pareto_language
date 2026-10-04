@@ -1,9 +1,10 @@
 import { describe, expect, it } from 'vitest';
 import { existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { BOOTCAMP_PLAN, PHASES, missionNumber, nextMission } from './plan.js';
+import { BOOTCAMP_PLAN, EXTENDED_POOL, MERGED_MISSIONS, PHASES, missionNumber, nextMission } from './plan.js';
 import { DAYS_FR } from './fr/index.js';
 import { DAYS_ES } from './es/index.js';
+import { DAYS } from './registry.js';
 import { DAY1 } from './day1.js';
 import { DAY2 } from './day2.js';
 import { DAY3 } from './day3.js';
@@ -12,34 +13,8 @@ import { DAY5 } from './day5.js';
 import { DAY6 } from './day6.js';
 import { DAY7 } from './day7.js';
 import { DAY8 } from './day8.js';
-import { DAY9 } from './day9.js';
 import { DAY10 } from './day10.js';
-import { DAY11 } from './day11.js';
-import { DAY12 } from './day12.js';
-import { DAY13 } from './day13.js';
-import { DAY14 } from './day14.js';
-import { DAY15 } from './day15.js';
-import { DAY16 } from './day16.js';
-import { DAY17 } from './day17.js';
-import { DAY18 } from './day18.js';
-import { DAY19 } from './day19.js';
-import { DAY20 } from './day20.js';
-import { DAY21 } from './day21.js';
-import { DAY22 } from './day22.js';
-import { DAY23 } from './day23.js';
-import { DAY24 } from './day24.js';
-import { DAY25 } from './day25.js';
-import { DAY26 } from './day26.js';
-import { DAY27 } from './day27.js';
-import { DAY28 } from './day28.js';
-import { DAY29 } from './day29.js';
 
-// Pure-data registry (avoids importing the store, which loads the app/zustand chain).
-const DAYS: Record<number, BootcampDayContent> = {
-  1: DAY1, 2: DAY2, 3: DAY3, 4: DAY4, 5: DAY5, 6: DAY6, 7: DAY7, 8: DAY8, 9: DAY9,
-  10: DAY10, 11: DAY11, 12: DAY12, 13: DAY13, 14: DAY14, 15: DAY15, 16: DAY16, 17: DAY17, 18: DAY18, 19: DAY19,
-  20: DAY20, 21: DAY21, 22: DAY22, 23: DAY23, 24: DAY24, 25: DAY25, 26: DAY26, 27: DAY27, 28: DAY28, 29: DAY29,
-};
 import type { BootcampDayContent, BootcampDialogue, BootcampStep } from './types.js';
 
 /**
@@ -118,9 +93,9 @@ function validateMission(day: BootcampDayContent): string[] {
   return issues;
 }
 
-describe('29-mission roadmap', () => {
-  it('has exactly 29 missions across 5 phases with full metadata', () => {
-    expect(BOOTCAMP_PLAN.length).toBe(29);
+describe('Core 30 roadmap', () => {
+  it('has exactly 30 missions across 5 phases with full metadata', () => {
+    expect(BOOTCAMP_PLAN.length).toBe(30);
     expect(PHASES.length).toBe(5);
     for (const m of BOOTCAMP_PLAN) {
       expect(PHASES.some((p) => p.n === m.phase)).toBe(true);
@@ -137,27 +112,49 @@ describe('29-mission roadmap', () => {
     expect(missionNumber(BOOTCAMP_PLAN[0]!.day)).toBe(1);
     expect(BOOTCAMP_PLAN.at(-1)!.id).toBe('complete-day-abroad');
     expect(BOOTCAMP_PLAN.at(-1)!.title.en).toBe('A Complete Day Abroad Alone');
-    expect(missionNumber(BOOTCAMP_PLAN.at(-1)!.day)).toBe(29);
+    expect(missionNumber(BOOTCAMP_PLAN.at(-1)!.day)).toBe(30);
   });
 
   it('walks the journey in the agreed order', () => {
     expect(BOOTCAMP_PLAN.map((m) => m.id)).toEqual([
-      'introduce-myself', 'numbers-money', 'coffee-shop', 'restaurant-meal', 'directions',
-      'taxi', 'hotel-check-in', 'shopping', 'arrival-day-checkpoint', 'airport-border',
-      'hotel-requests', 'restaurant-basics', 'special-requests-allergies', 'paying-anywhere',
-      'street-food-markets', 'supermarket', 'food-day-checkpoint', 'public-transport',
-      'tickets-attractions', 'wifi-sim-practical', 'souvenirs-gifts', 'small-talk',
-      'city-day-checkpoint', 'fixing-problems', 'pharmacy-health', 'emergency', 'no-subtitles',
-      'dress-rehearsal', 'complete-day-abroad',
+      'introduce-myself', 'numbers-money', 'coffee-shop', 'everyday-core', 'directions',
+      'airport-border', 'taxi', 'hotel-check-in', 'shopping', 'arrival-day-checkpoint',
+      'small-talk', 'time-plans', 'home-family', 'restaurant-meal', 'special-requests-allergies',
+      'hobbies-free-time', 'supermarket', 'food-day-checkpoint',
+      'public-transport', 'past-events', 'future-plans', 'fixing-problems', 'opinions-reactions', 'city-day-checkpoint',
+      'lost-stolen-police', 'pharmacy-health', 'emergency', 'no-subtitles', 'dress-rehearsal', 'complete-day-abroad',
     ]);
   });
 
-  it('display numbers are continuous 1–29 with no duplicates', () => {
+  it('shows the agreed Core 30 titles, in order', () => {
+    expect(BOOTCAMP_PLAN.map((m) => m.title.en)).toEqual([
+      'Introduce Myself', 'Numbers & Money', 'Coffee Shop', 'Everyday Core: Want / Need / Have / Can', 'Directions',
+      'Airport & Border', 'Taxi / Uber', 'Hotel Check-in', 'Shopping', 'CHECKPOINT: Arrival Day',
+      'Small Talk & Recommendations', 'Time & Plans', 'Home, Family & Daily Routine', 'Restaurant Meal',
+      'Food Preferences & Allergies', 'Hobbies & Free Time', 'Supermarket & Everyday Shopping', 'CHECKPOINT: Everyday Day',
+      'Public Transport', 'Past & Recent Events', 'Future Travel & Plans', 'Fixing Problems',
+      'Opinions, Feelings & Reactions', 'CHECKPOINT: City & Conversation',
+      'Lost / Stolen / Police', 'Pharmacy & Health', 'Emergency', 'No Subtitles', 'Dress Rehearsal: Full Evening',
+      'A Complete Day Abroad Alone',
+    ]);
+  });
+
+  it('a mission\'s registry key is not its position — reordering the journey renames nothing', () => {
+    // The whole point of the id / day / number split: Taxi kept its key (and its video file) when it
+    // moved from 6th to 7th; the new missions took fresh keys instead of shifting everyone else.
+    const taxi = BOOTCAMP_PLAN.find((m) => m.id === 'taxi')!;
+    expect(taxi.day).toBe(6);
+    expect(missionNumber(taxi.day)).toBe(7);
+    expect(BOOTCAMP_PLAN.find((m) => m.id === 'everyday-core')!.day).toBe(30);
+    expect(missionNumber(30)).toBe(4);
+  });
+
+  it('display numbers are continuous 1–30 with no duplicates', () => {
     const numbers = BOOTCAMP_PLAN.map((m) => missionNumber(m.day));
-    expect(numbers).toEqual(Array.from({ length: 29 }, (_, i) => i + 1));
+    expect(numbers).toEqual(Array.from({ length: 30 }, (_, i) => i + 1));
     expect(new Set(numbers).size).toBe(BOOTCAMP_PLAN.length);
     expect(missionNumber(0)).toBeNull();
-    expect(missionNumber(30)).toBeNull(); // the old 30th slot no longer exists
+    for (const m of [...EXTENDED_POOL, ...MERGED_MISSIONS]) expect(missionNumber(m.day), m.id).toBeNull(); // out of the Core: no number
   });
 
   it('mission ids are stable semantic slugs — unique, and never a number or a day key', () => {
@@ -173,8 +170,11 @@ describe('29-mission roadmap', () => {
       expect(Object.keys(set).map(Number).sort((a, b) => a - b), lang).toEqual(planDays);
       for (const m of BOOTCAMP_PLAN) expect(set[m.day]!.day, `${lang} ${m.id}`).toBe(m.day);
     }
-    // The plan card and the content it opens are the same mission.
-    for (const m of BOOTCAMP_PLAN) expect(DAYS[m.day]!.title.he, m.id).toBe(m.title.he);
+    // The plan card and the content it opens are the same mission — in both app languages.
+    for (const m of BOOTCAMP_PLAN) {
+      expect(DAYS[m.day]!.title.he, m.id).toBe(m.title.he);
+      expect(DAYS[m.day]!.title.en, m.id).toBe(m.title.en);
+    }
   });
 
   it('the Recovery Toolkit is not a Bootcamp mission — in the plan or in any language', () => {
@@ -193,9 +193,9 @@ describe('29-mission roadmap', () => {
     }
   });
 
-  it('checkpoints sit at 9, 17, 23 and the finale (29) — cold integration, no new content', () => {
+  it('checkpoints sit at 10, 18, 24 and the finale (30) — cold integration, no new content', () => {
     const cps = BOOTCAMP_PLAN.filter((m) => m.checkpoint);
-    expect(cps.map((m) => missionNumber(m.day))).toEqual([9, 17, 23, 29]);
+    expect(cps.map((m) => missionNumber(m.day))).toEqual([10, 18, 24, 30]);
     expect(cps.map((m) => m.id)).toEqual(['arrival-day-checkpoint', 'food-day-checkpoint', 'city-day-checkpoint', 'complete-day-abroad']);
     for (const cp of cps) {
       expect(cp.targets.concepts).toBe(0);
@@ -211,8 +211,10 @@ describe('next-mission navigation follows plan order', () => {
 
   it('Introduce Myself leads to Numbers & Money, and so on down the shifted journey', () => {
     expect(nextMission(dayOf('introduce-myself'), all, none)?.id).toBe('numbers-money');
+    expect(nextMission(dayOf('coffee-shop'), all, none)?.id).toBe('everyday-core');
+    expect(nextMission(dayOf('directions'), all, none)?.id).toBe('airport-border');
     expect(nextMission(dayOf('shopping'), all, none)?.id).toBe('arrival-day-checkpoint');
-    expect(nextMission(dayOf('arrival-day-checkpoint'), all, none)?.id).toBe('airport-border');
+    expect(nextMission(dayOf('arrival-day-checkpoint'), all, none)?.id).toBe('small-talk');
     expect(nextMission(dayOf('dress-rehearsal'), all, none)?.id).toBe('complete-day-abroad');
   });
 
@@ -238,7 +240,7 @@ describe('next-mission navigation follows plan order', () => {
 describe('all built missions are structurally sound', () => {
   const built = Object.entries(DAYS);
   it('has every mission of the plan built', () => {
-    expect(Object.keys(DAYS).map(Number).sort((a, b) => a - b)).toEqual(BOOTCAMP_PLAN.map((m) => m.day));
+    expect(Object.keys(DAYS).map(Number).sort((a, b) => a - b)).toEqual(BOOTCAMP_PLAN.map((m) => m.day).sort((a, b) => a - b));
   });
   for (const [num, day] of built) {
     it(`mission ${num} passes reference + dialogue-graph validation`, () => {
@@ -491,7 +493,7 @@ describe('video-first Bootcamp (intro/review video)', () => {
     // Missions 1–4, 6–8 and 10 ship the full-conversation video; 5 and 9 are real gaps.
     expect([...withVideo].sort((a, b) => a - b)).toEqual([1, 2, 3, 4, 6, 7, 8, 10]);
     expect(DAY5.introVideo).toBeUndefined();
-    expect(DAY9.introVideo).toBeUndefined();
+    expect(DAYS[9]!.introVideo).toBeUndefined();
     expect(DAY1.steps.some((s) => s.kind === 'video')).toBe(true);
   });
 });

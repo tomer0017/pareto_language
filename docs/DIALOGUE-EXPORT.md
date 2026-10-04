@@ -22,19 +22,19 @@ language-agnostic.
 npm run export:dialogues                       # every language that has built missions
 npm run export:dialogues -- --all              # (same as no args)
 npm run export:dialogues -- --lang=fr          # only French
-npm run export:dialogues -- --lang=en --mission=5   # English, mission (day) 5 only
+npm run export:dialogues -- --lang=en --mission=5   # English, Mission 5 only
 ```
 
 | Flag | Meaning |
 |---|---|
 | _(none)_ / `--all` | Export every language with ≥1 built mission. |
 | `--lang=<code>` | Only that learning language (`en`, `fr`, `es`, `ar`, …). |
-| `--mission=<n>` | Only mission **day number** `n` (writes that file; `ALL_DIALOGUES.md` still holds every mission). |
+| `--mission=<n>` | Only **Mission `n`** — the number the learner sees, i.e. its position in the journey (writes that file; `ALL_DIALOGUES.md` still holds every mission). |
 
 ## Output structure
 
 ```
-exports/dialogues/<lang>/mission-NN.md   # one per built mission (day number, zero-padded)
+exports/dialogues/<lang>/mission-NN.md   # one per Core mission (mission number, zero-padded, journey order)
 exports/dialogues/<lang>/ALL_DIALOGUES.md # every mission concatenated (always the full set)
 ```
 
@@ -88,3 +88,11 @@ learning language IS English, the identical English gloss is de-duplicated (spok
 `exportDialogue.test.ts` asserts: every built mission exports; the cinematic path takes direct answers
 and contains no recovery/wrong-answer lines; no ids/metadata/tables; French spoken lines are French
 (no English leak as the primary line); English glosses aren't duplicated. Run `npm run test`.
+
+## The four-language reference document
+
+`npm run gen:dialogues-doc` writes **`docs/ALL_LANGUAGES_DIALOGUES_BY_MISSION_V2.md`** — every Core
+mission's conversation in English, French, Spanish and Hebrew under the labels `english:` / `franch:`
+/ `spanish:` / `עברית:` (`franch:` is a compatibility label consumed outside the repo — do not rename
+it). It is rendered by the pure `dialogueDoc.ts` from the same runtime content, and `core30.test.ts`
+fails if the checked-in file differs from what the content renders — the document cannot go stale.

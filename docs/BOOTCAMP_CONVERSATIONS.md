@@ -1,4 +1,4 @@
-# READY Bootcamp — Conversations & Content (all 29 missions)
+# READY Bootcamp — Conversations & Content (all 30 missions)
 
 > **Auto-generated** from the Bootcamp source data by `scripts/gen-conversations.ts`.
 > Do not edit by hand — edit the mission files under `apps/web/src/features/bootcamp/`,
@@ -10,7 +10,7 @@
 **wrong / recovery branches** that teach why a pick is more or less useful.
 
 Missions are dialogue trees; the happy path is the canonical conversation used by the in-app
-transcript reader. Checkpoints (9, 17, 23, 29) and a few integration days reuse earlier items
+transcript reader. Checkpoints (10, 18, 24, 30) and a few integration days reuse earlier items
 and carry no new phrases — that is expected, not missing content.
 
 ---
@@ -19,7 +19,7 @@ and carry no new phrases — that is expected, not missing content.
 
 > Phase 1 · 🛟 Foundations
 
-**Objective:** Name, origin, purpose — with confidence and a smile. · שם, מאיפה, למה — בביטחון ובחיוך.
+**Objective:** Name, origin, first time here — with confidence and a smile. · שם, מאיפה, פעם ראשונה כאן — בביטחון ובחיוך.
 
 **Confidence gain:** First human connection. · חיבור אנושי ראשון.
 
@@ -31,25 +31,23 @@ and carry no new phrases — that is expected, not missing content.
 - **My name is Dan.** · קוראים לי דן. — _התבנית: My name is ___ — פשוט תחליף את השם._
 - **Nice to meet you!** · נעים להכיר! — _התשובה החמה לכל היכרות. תמיד עובד._
 - **I'm from Israel.** · אני מישראל. — _התבנית: I’m from ___ — התשובה ל-Where are you from._
-- **I'm here on holiday.** · אני כאן בחופשה. — _מטרת הביקור, בגרסה ידידותית._
 - **It's my first time here.** · זו הפעם הראשונה שלי כאן. — _פותח שיחה ומזמין המלצות._
 
 ### Expected replies (you hear)
 - **What's your name?** · איך קוראים לך?
 - **Where are you from?** · מאיפה אתה?
 - **Is this your first time here?** · זו הפעם הראשונה שלך כאן?
-- **How long are you staying?** · לכמה זמן אתה כאן?
 - **Enjoy your stay!** · תיהנה מהשהות!
 
-_Reply-training drill:_ “Where are you from?” · “Is this your first time here?” · “How long are you staying?” · “Enjoy your stay!”
+_Reply-training drill:_ “What's your name?” · “Where are you from?” · “Is this your first time here?” · “Enjoy your stay!”
 
 ### Recovery tools reused
-`Can you repeat that?` · `Please speak slowly.` · `Thank you!`
+`Can you repeat that?` · `Please speak slowly.`
 
 ### Cold open (ambush)
-- 🧑 (fast) “So what brings you all the way out here anyway?” · אז מה בכלל הביא אותך עד לכאן?
-  - ✅ best move: **I'm here on holiday.** · אני כאן בחופשה.
-  - ✗ distractor: My name is Dan.
+- 🧑 (fast) “And what do you do back home, if you don't mind me asking?” · ומה אתה עושה בחיים, אם מותר לשאול?
+  - ✅ best move: **Can you repeat that?** · אפשר לחזור על זה?
+  - ✗ distractor: Nice to meet you!
 
 ### Dialogue: `meeting-host` — happy path
 - **🧑 Them:** “Hi! Welcome. What's your name?” · היי! ברוך הבא. איך קוראים לך?
@@ -58,7 +56,7 @@ _Reply-training drill:_ “Where are you from?” · “Is this your first time 
 - **🫵 You:** “I'm from Israel.” · אני מישראל.
 - **🧑 Them:** “Israel, wonderful! Is this your first time here?” · ישראל, נהדר! זו הפעם הראשונה שלך כאן?
 - **🫵 You:** “Yes, it's my first time here.” · כן, זו הפעם הראשונה שלי כאן.
-- **🧑 Them:** “Well, enjoy your stay! Let me know if you need anything.” · אז תיהנה מהשהות! תגיד לי אם אתה צריך משהו.
+- **🧑 Them:** “Enjoy your stay! Have a great day!” · תיהנה מהשהות! שיהיה יום נהדר!
 
 #### Wrong / recovery branches
 - ⚠︎ less useful: 🫵 “Nice to meet you!” → 🧑 “Likewise! And where are you from?” · גם לי! ומאיפה אתה?
@@ -85,6 +83,7 @@ _Reply-training drill:_ “Where are you from?” · “Is this your first time 
 - **How much is it?** · כמה זה עולה? — _השאלה שפותחת כל עסקה. תלמד אותה עד הסוף._
 - **By card, please.** · בכרטיס, בבקשה.
 - **In cash.** · במזומן.
+- **One box, please.** · קופסה אחת, בבקשה. — _One ___, please — מספר + הדבר. כך קונים כל דבר._
 - **That's too expensive.** · זה יקר מדי. — _משפט מיקוח מנומס — ופתח למחיר טוב יותר._
 
 ### Expected replies (you hear)
@@ -99,12 +98,7 @@ _Reply-training drill:_ “Where are you from?” · “Is this your first time 
 _Reply-training drill:_ “That's five euros.” · “That'll be ten euros.” · “Twenty euros, please.” · “Cash or card?”
 
 ### Recovery tools reused
-`Please speak slowly.` · `Can you repeat that?` · `Thank you!` · `One moment, please.`
-
-### Cold open (ambush)
-- 🧑 (fast) “That comes to fifteen fifty altogether is that alright?” · זה יוצא חמש עשרה וחצי בסך הכל, זה בסדר?
-  - ✅ best move: **Fifteen fifty.** · חמש עשרה וחצי (15.50).
-  - ✗ distractor: That's five euros.
+`Please speak slowly.` · `One moment, please.`
 
 ### Dialogue: `market-stall` — happy path
 - **🧑 Them:** “Fresh strawberries! Best in the market!” · תותים טריים! הכי טובים בשוק!
@@ -142,6 +136,8 @@ _Reply-training drill:_ “That's five euros.” · “That'll be ten euros.” 
 - **A croissant, please.** · קרואסון, בבקשה. — _“Croissant” — מאפה חמאה צרפתי. כך בדיוק זה כתוב בתפריט בחו״ל._
 - **That's all, thanks.** · זה הכל, תודה. — _סוגר כל הזמנה בנימוס. עובד בכל מקום בעולם._
 - **Card, please.** · בכרטיס, בבקשה.
+- **Medium, please.** · בינוני, בבקשה.
+- **Yes, please.** · כן, בבקשה.
 
 ### Expected replies (you hear)
 - **What can I get you?** · מה להביא לך?
@@ -161,7 +157,7 @@ _Reply-training drill:_ “For here or to go?” · “Medium or large?” · �
 `One moment, please.` · `Can you repeat that?` · `Please speak slowly.` · `Thank you!`
 
 ### Cold open (ambush)
-- 🧑 (fast) “Sorry we are out of croissants would a muffin be okay instead?” · סליחה, נגמרו הקרואסונים — מאפין במקום זה בסדר?
+- 🧑 (fast) “Sorry, we are out of croissants — would a muffin be okay instead?” · סליחה, נגמרו הקרואסונים — מאפין במקום זה בסדר?
   - ✅ best move: **Can you repeat that?** · אפשר לחזור על זה?
   - ✗ distractor: Card, please.
 
@@ -191,59 +187,71 @@ _Reply-training drill:_ “For here or to go?” · “Medium or large?” · �
 
 ---
 
-## Mission 4 — Restaurant Meal · ארוחה במסעדה
+## Mission 4 — Everyday Core: Want / Need / Have / Can · רוצה, צריך, יש לי, יכול
 
 > Phase 1 · 🛟 Foundations
 
-**Objective:** A full dinner: table, menu, order, drink, bill — end to end. · ארוחת ערב שלמה: שולחן, תפריט, הזמנה, שתייה, חשבון — מקצה לקצה.
+**Objective:** I want, I need, I have, I can, I know — and their questions. · אני רוצה, אני צריך, יש לי, אני יכול, אני יודע — והשאלות שלהם.
 
-**Confidence gain:** The whole restaurant transaction — in my hands. · העסקה השלמה במסעדה — בידיים שלי.
+**Confidence gain:** Five words that build hundreds of sentences. · חמש מילים שבונות מאות משפטים.
 
 **Estimated time:** ~22 min
 
-**Video:** `/videos/En_day4.mp4`
+**Video:** — (none yet)
 
 ### Core phrases (you say)
-- **A table for two, please.** · שולחן לשניים, בבקשה. — _הפתיח למסעדה. תבנית: a table for ___._
-- **The menu, please.** · התפריט, בבקשה.
-- **I'll have the chicken.** · אני אקח את העוף. — _תבנית ההזמנה: I’ll have the ___._
-- **A bottle of water, please.** · בקבוק מים, בבקשה.
-- **No onions, please.** · בלי בצל, בבקשה. — _תבנית: No ___, please — לכל מה שאתה לא רוצה בצלחת._
-- **The bill, please.** · החשבון, בבקשה.
-- **That was delicious!** · זה היה טעים מאוד! — _מחמאה קטנה שקונה חיוך גדול._
+- **I need a towel.** · אני צריך מגבת. — _I need ___ — לכל דבר שחסר לך._
+- **Yes, I have my key.** · כן, יש לי את המפתח.
+- **I don't have it.** · אין לי אותה. — _I don’t have ___ — ההפך מ-I have. מילה אחת משנה הכל._
+- **Do you have a map?** · יש לך מפה? — _Do you have ___? — עובד בכל חנות, מלון ומסעדה._
+- **Yes, I want a coffee.** · כן, אני רוצה קפה. — _התבנית: I want ___. מחליפים רק את המילה האחרונה._
+- **I don't know.** · אני לא יודע. — _תשובה לגיטימית לגמרי. לא יודע — אומרים._
+- **I can walk.** · אני יכול ללכת ברגל.
+- **Sorry, I can't.** · סליחה, אני לא יכול.
+- **Yes, I know.** · כן, אני יודע.
+- **Can you help me?** · אתה יכול לעזור לי? — _Can you ___? — הדרך לבקש כל דבר._
 
 ### Expected replies (you hear)
-- **Do you have a reservation?** · יש לכם הזמנה?
-- **Follow me, please.** · בואו אחריי, בבקשה.
-- **Are you ready to order?** · מוכנים להזמין?
-- **Anything to drink?** · משהו לשתות?
-- **How was everything?** · איך היה הכל?
-- **Would you like dessert?** · רוצים קינוח?
+- **Do you want a coffee?** · רוצה קפה?
+- **Do you need anything?** · אתה צריך משהו?
+- **Do you have your key?** · יש לך את המפתח?
+- **Do you know how to get to the centre?** · אתה יודע איך להגיע למרכז?
+- **Can you come?** · אתה יכול לבוא?
+- **You can walk.** · אתה יכול ללכת ברגל.
 
-_Reply-training drill:_ “Anything to drink?” · “Are you ready to order?” · “How was everything?” · “Would you like dessert?”
+_Reply-training drill:_ “Do you need anything?” · “Do you have your key?” · “Do you know how to get to the centre?” · “Can you come?”
 
 ### Recovery tools reused
-`Can you repeat that?` · `Please speak slowly.` · `Thank you!` · `One moment, please.` · `Sorry, I don't understand.`
+`Can you show me?` · `Please speak slowly.`
 
 ### Cold open (ambush)
-- 🧑 (fast) “Would you like to see the dessert menu before I bring the check?” · רוצים לראות את תפריט הקינוחים לפני שאני מביא את החשבון?
-  - ✅ best move: **Would you like dessert?** · רוצים קינוח?
-  - ✗ distractor: Do you have a reservation?
+- 🧑 (fast) “Before you go out do you have your key with you or is it still in the room?” · לפני שאתה יוצא — המפתח עליך או שהוא עדיין בחדר?
+  - ✅ best move: **Do you have your key?** · יש לך את המפתח?
+  - ✗ distractor: Can you come?
 
-### Dialogue: `sit-down-meal` — happy path
-- **🧑 Them:** “Good evening! Do you have a reservation?” · ערב טוב! יש לכם הזמנה?
-- **🫵 You:** “No — a table for two, please.” · לא — שולחן לשניים, בבקשה.
-- **🧑 Them:** “Perfect, follow me. Here are your menus.” · מצוין, בואו אחריי. הנה התפריטים.
-- **🧑 Them:** “Are you ready to order?” · מוכנים להזמין?
-- **🫵 You:** “I'll have the chicken.” · אני אקח את העוף.
-- **🧑 Them:** “Excellent choice. Anything to drink?” · בחירה מצוינת. משהו לשתות?
-- **🫵 You:** “A bottle of water, please.” · בקבוק מים, בבקשה.
-- **🧑 Them:** “Great — and would you like anything else with that?” · מצוין — ורוצים עוד משהו עם זה?
-- **🫵 You:** “No onions, please.” · בלי בצל, בבקשה.
-- **🧑 Them:** “Coming right up!” · מגיע עוד רגע!
-- **🧑 Them:** “…Later… How was everything?” · …אחר כך… איך היה הכל?
-- **🫵 You:** “That was delicious! The bill, please.” · זה היה טעים מאוד! החשבון, בבקשה.
-- **🧑 Them:** “So glad you enjoyed it. Here you are — have a lovely evening!” · שמח שנהניתם. בבקשה — ערב נעים!
+### Dialogue: `hostel-desk` — happy path
+- **🧑 Them:** “Hi! Do you need anything?” · שלום! אתה צריך משהו?
+- **🫵 You:** “I need a towel.” · אני צריך מגבת.
+- **🧑 Them:** “Sure. Do you have your key?” · בטח. יש לך את המפתח?
+- **🫵 You:** “Yes, I have my key.” · כן, יש לי את המפתח.
+- **🧑 Them:** “And the wifi password?” · והסיסמה של הוויי-פיי?
+- **🫵 You:** “I don't have it.” · אין לי אותה.
+- **🧑 Them:** “It's here.” · היא כאן.
+- **🫵 You:** “Do you have a map?” · יש לך מפה?
+- **🧑 Them:** “Yes.” · כן.
+- **🫵 You:** “Can you show me?” · אתה יכול להראות לי?
+- **🧑 Them:** “Of course.” · בטח.
+
+### Dialogue: `coffee-with-a-friend` — happy path
+- **🧑 Them:** “Do you want a coffee?” · רוצה קפה?
+- **🫵 You:** “Yes, I want a coffee.” · כן, אני רוצה קפה.
+- **🧑 Them:** “Do you know how to get to the centre?” · אתה יודע איך להגיע למרכז?
+- **🫵 You:** “I don't know.” · אני לא יודע.
+- **🧑 Them:** “You can walk. It's about twenty minutes.” · אתה יכול ללכת ברגל. זה בערך עשרים דקות.
+- **🫵 You:** “I can walk.” · אני יכול ללכת ברגל.
+- **🧑 Them:** “We're having dinner at seven. Can you come?” · אנחנו אוכלים ארוחת ערב בשבע. אתה יכול לבוא?
+- **🫵 You:** “Sorry, I can't.” · סליחה, אני לא יכול.
+- **🧑 Them:** “No problem.” · אין בעיה.
 
 ### Review status
 - 🤖 AI-drafted (English + Hebrew) — **pending human / native-Hebrew review**
@@ -282,12 +290,7 @@ _Reply-training drill:_ “Anything to drink?” · “Are you ready to order?�
 _Reply-training drill:_ “It's on the left.” · “It's on the right.” · “Go straight ahead.” · “It's next to the bank.”
 
 ### Recovery tools reused
-`Can you repeat that?` · `Please speak slowly.` · `Can you show me?` · `Thank you!`
-
-### Cold open (ambush)
-- 🧑 (fast) “Go past the church take the second right and it is just opposite the pharmacy.” · תעבור את הכנסייה, פנה ימינה בשנייה, וזה ממש מול בית המרקחת.
-  - ✅ best move: **It's on the right.** · זה בצד ימין.
-  - ✗ distractor: It's on the left.
+`Can you repeat that?` · `Thank you!`
 
 ### Dialogue: `lost-in-town` — happy path
 - **🫵 You:** “Excuse me! Where is the station?” · סליחה! איפה התחנה?
@@ -306,7 +309,67 @@ _Reply-training drill:_ “It's on the left.” · “It's on the right.” · �
 
 ---
 
-## Mission 6 — Taxi / Uber · מונית
+## Mission 6 — Airport & Border · שדה תעופה וגבול
+
+> Phase 2 · 🛬 Arrival
+
+**Objective:** Counter, gate, and the border questions — calm. · דלפק, שער, ושאלות הגבול — רגוע.
+
+**Confidence gain:** Authority stops being frightening. · סמכות מפסיקה להפחיד.
+
+**Estimated time:** ~20 min
+
+**Video:** `/videos/En_day10.mp4`
+
+### Core phrases (you say)
+- **Here is my passport.** · הנה הדרכון שלי. — _מגישים ואומרים. שלוש מילים שפותחות כל גבול._
+- **I'm here on holiday.** · אני כאן בחופשה. — _התשובה ל-"מטרת הביקור?". ידידותית ובטוחה._
+- **For two weeks.** · לשבועיים. — _התבנית: For + משך זמן. For three days / For a week._
+- **At a hotel in the city centre.** · במלון במרכז העיר. — _התשובה ל-"איפה אתה מתאכסן?". שם המלון עדיף, אבל זה מספיק._
+- **Nothing to declare.** · אין לי מה להצהיר. — _המשפט הקבוע במכס. אומרים אותו רגוע._
+
+### Expected replies (you hear)
+- **Passport, please.** · דרכון, בבקשה.
+- **What's the purpose of your visit?** · מה מטרת הביקור?
+- **How long are you staying?** · לכמה זמן אתה נשאר?
+- **Where are you staying?** · איפה אתה מתאכסן?
+- **Anything to declare?** · יש לך מה להצהיר?
+- **Enjoy your stay!** · תיהנה מהשהות!
+
+_Reply-training drill:_ “What's the purpose of your visit?” · “How long are you staying?” · “Where are you staying?” · “Anything to declare?”
+
+### Recovery tools reused
+`Can you repeat that?` · `Please speak slowly.` · `One moment, please.` · `Thank you!`
+
+### Cold open (ambush)
+- 🧑 (fast) “And do you have a return ticket booked for your flight home at all?” · ויש לך בכלל כרטיס חזור מוזמן לטיסה הביתה?
+  - ✅ best move: **One moment, please.** · רגע אחד, בבקשה.
+  - ✗ distractor: For two weeks.
+
+### Dialogue: `border-control` — happy path
+- **🧑 Them:** “Next, please. Passport?” · הבא בתור, בבקשה. דרכון?
+- **🫵 You:** “Here is my passport.” · הנה הדרכון שלי.
+- **🧑 Them:** “Thank you. What's the purpose of your visit?” · תודה. מה מטרת הביקור?
+- **🫵 You:** “I'm here on holiday.” · אני כאן בחופשה.
+- **🧑 Them:** “All right. How long are you staying?” · בסדר. לכמה זמן אתה נשאר?
+- **🫵 You:** “For two weeks.” · לשבועיים.
+- **🧑 Them:** “And where are you staying?” · ואיפה אתה מתאכסן?
+- **🫵 You:** “At a hotel in the city centre.” · במלון במרכז העיר.
+- **🧑 Them:** “Almost done. Anything to declare?” · כמעט סיימנו. יש לך מה להצהיר?
+- **🫵 You:** “Nothing to declare.” · אין לי מה להצהיר.
+- **🧑 Them:** “Welcome, and enjoy your stay!” · ברוך הבא, ותיהנה מהשהות!
+
+#### Wrong / recovery branches
+- ⚠︎ less useful: 🫵 “Here is my passport.” → 🧑 “I have your passport — I asked how long you’re staying.” · הדרכון אצלי — שאלתי לכמה זמן אתה נשאר.
+- ⚠︎ less useful: 🫵 “Thank you!” → 🧑 “Ha — so, anything to declare? Any goods?” · הא — אז, יש מה להצהיר? סחורה כלשהי?
+
+### Review status
+- 🤖 AI-drafted (English + Hebrew) — **pending human / native-Hebrew review**
+- ✅ all items have Hebrew
+
+---
+
+## Mission 7 — Taxi / Uber · מונית
 
 > Phase 2 · 🛬 Arrival
 
@@ -345,11 +408,11 @@ _Reply-training drill:_ “Where to?” · “It's about fifteen euros.” · �
 ### Dialogue: `taxi-ride` — happy path
 - **🧑 Them:** “Hello! Where to?” · שלום! לאן?
 - **🫵 You:** “To this address, please.” · לכתובת הזאת, בבקשה.
-- **🧑 Them:** “Got it. How much did you expect to pay?” · הבנתי. כמה חשבת לשלם?
+- **🧑 Them:** “Got it. No problem — off we go!” · הבנתי. אין בעיה — יוצאים!
 - **🫵 You:** “How much to the centre?” · כמה עד המרכז?
-- **🧑 Them:** “It's about fifteen euros — there's a lot of traffic right now.” · זה בערך חמישה עשר יורו — יש הרבה פקקים עכשיו.
-- **🫵 You:** “Please speak slowly.” · דבר לאט, בבקשה.
-- **🧑 Them:** “Fifteen — euros. Traffic.” · חמישה עשר — יורו. פקקים.
+- **🧑 Them:** “It's about fifteen euros. There's a lot of traffic right now.” · זה בערך חמישה עשר יורו. יש הרבה פקקים עכשיו.
+- **🫵 You:** “Sorry, please speak slowly.” · סליחה, דבר לאט, בבקשה.
+- **🧑 Them:** “Sure. About fifteen euros. There's a lot of traffic.” · בטח. בערך חמישה עשר יורו. יש הרבה פקקים.
 - **🫵 You:** “Okay, thank you.” · בסדר, תודה.
 - **🧑 Them:** “…We are almost there. Is here okay?” · …כמעט הגענו. כאן זה בסדר?
 - **🫵 You:** “Stop here, please. Keep the change.” · עצור כאן, בבקשה. תשאיר את העודף.
@@ -361,7 +424,7 @@ _Reply-training drill:_ “Where to?” · “It's about fifteen euros.” · �
 
 ---
 
-## Mission 7 — Hotel Check-in · צ'ק-אין במלון
+## Mission 8 — Hotel Check-in · צ'ק-אין במלון
 
 > Phase 2 · 🛬 Arrival
 
@@ -379,6 +442,7 @@ _Reply-training drill:_ “Where to?” · “It's about fifteen euros.” · �
 - **For two nights.** · לשני לילות. — _תבנית: for ___ nights — משך השהות._
 - **Is breakfast included?** · ארוחת הבוקר כלולה?
 - **What's the wifi password?** · מה סיסמת הוויי-פיי?
+- **Here you go.** · בבקשה, הנה.
 
 ### Expected replies (you hear)
 - **Your passport, please.** · הדרכון שלך, בבקשה.
@@ -403,7 +467,7 @@ _Reply-training drill:_ “Your passport, please.” · “You're in room two-oh
 - **🫵 You:** “I have a reservation, under the name Cohen.” · יש לי הזמנה, על השם כהן.
 - **🧑 Them:** “Welcome, Mr. Cohen. Your passport, please.” · ברוך הבא, מר כהן. הדרכון שלך, בבקשה.
 - **🫵 You:** “Here you go.” · בבקשה, הנה.
-- **🧑 Them:** “Thank you. You're in room two-oh-four, on the second floor. Is breakfast included in your booking?” · תודה. אתה בחדר 204, בקומה השנייה. ארוחת בוקר כלולה בהזמנה שלך?
+- **🧑 Them:** “Thank you. You're in room two-oh-four, on the second floor. Here is your key.” · תודה. אתה בחדר 204, בקומה השנייה. הנה המפתח שלך.
 - **🫵 You:** “Is breakfast included?” · ארוחת הבוקר כלולה?
 - **🧑 Them:** “Yes! Breakfast is from seven to ten. The elevator is on your right.” · כן! ארוחת בוקר משבע עד עשר. המעלית מימינך.
 - **🧑 Them:** “Enjoy your stay!” · תיהנה מהשהות!
@@ -414,7 +478,7 @@ _Reply-training drill:_ “Your passport, please.” · “You're in room two-oh
 
 ---
 
-## Mission 8 — Shopping · קניות
+## Mission 9 — Shopping · קניות
 
 > Phase 2 · 🛬 Arrival
 
@@ -468,11 +532,11 @@ _Reply-training drill:_ “What size are you?” · “The fitting room is over 
 
 ---
 
-## Mission 9 — Arrival Day Checkpoint · נקודת ביקורת: יום הגעה
+## Mission 10 — CHECKPOINT: Arrival Day · נקודת ביקורת: יום הגעה
 
 > Phase 2 · 🛬 Arrival · 🏁 CHECKPOINT
 
-**Objective:** Cold chain: taxi → hotel. Unannounced, minimal subtitles. · שרשור קר: מונית ← מלון. בלי הכנה, בלי כתוביות מלאות.
+**Objective:** Cold chain: taxi → hotel. Only what you already know, unannounced. · שרשור קר: מונית ← מלון. רק מה שכבר למדת, בלי הכנה.
 
 **Confidence gain:** Proof: a full arrival day, survivable. · הוכחה: יום הגעה שלם — שריד.
 
@@ -481,20 +545,22 @@ _Reply-training drill:_ “What size are you?” · “The fitting room is over 
 **Video:** — (none yet)
 
 ### Core phrases (you say)
+- **Here you go.** · בבקשה, הנה.
+- **For two weeks.** · לשבועיים. — _התבנית: For + משך זמן. For three days / For a week._
+- **At a hotel in the city centre.** · במלון במרכז העיר. — _התשובה ל-"איפה אתה מתאכסן?". שם המלון עדיף, אבל זה מספיק._
 - **To this address, please.** · לכתובת הזאת, בבקשה. — _הפתיח למונית — תגיד את זה ותראה את הכתובת בטלפון._
 - **Stop here, please.** · עצור כאן, בבקשה. — _העיתוי חשוב — תגיד את זה קצת לפני היעד._
 - **I have a reservation.** · יש לי הזמנה. — _הפתיח לדלפק המלון. תבנית: I have a ___._
 - **Is breakfast included?** · ארוחת הבוקר כלולה?
 
 ### Expected replies (you hear)
-- **It's about fifteen euros.** · זה בערך חמישה עשר יורו.
 - **Is here okay?** · כאן זה בסדר?
-- **Your passport, please.** · הדרכון שלך, בבקשה.
-- **It's on the second floor.** · זה בקומה השנייה.
+- **It's about fifteen euros.** · זה בערך חמישה עשר יורו.
 - **Breakfast is from seven to ten.** · ארוחת בוקר משבע עד עשר.
+- **Your passport, please.** · הדרכון שלך, בבקשה.
 
 ### Recovery tools reused
-`Can you repeat that?` · `Please speak slowly.` · `Thank you!`
+`Thank you!` · `Can you repeat that?`
 
 ### Cold open (ambush)
 - 🧑 (fast) “Is here alright or would you prefer the main entrance just up ahead?” · כאן בסדר או שאתה מעדיף את הכניסה הראשית קצת קדימה?
@@ -504,19 +570,30 @@ _Reply-training drill:_ “What size are you?” · “The fitting room is over 
   - ✅ best move: **Breakfast is from seven to ten.** · ארוחת בוקר משבע עד עשר.
   - ✗ distractor: Your passport, please.
 
+### Dialogue: `cold-border` — happy path
+- **🧑 Them:** “Passport, please.” · דרכון, בבקשה.
+- **🫵 You:** “Here you go.” · בבקשה, הנה.
+- **🧑 Them:** “How long are you staying?” · לכמה זמן אתה נשאר?
+- **🫵 You:** “For two weeks.” · לשבועיים.
+- **🧑 Them:** “Where are you staying?” · איפה אתה מתאכסן?
+- **🫵 You:** “At a hotel in the city centre.” · במלון במרכז העיר.
+- **🧑 Them:** “Welcome. Enjoy your stay!” · ברוך הבא. תיהנה מהשהות!
+
 ### Dialogue: `cold-taxi` — happy path
-- **🧑 Them:** “Evening! Where can I take you?” · ערב! לאן לקחת אותך?
+- **🧑 Them:** “Where to?” · לאן?
 - **🫵 You:** “To this address, please.” · לכתובת הזאת, בבקשה.
-- **🧑 Them:** “Sure — it'll be about fifteen euros with the traffic.” · בטח — זה יהיה בערך חמישה עשר יורו עם הפקקים.
+- **🧑 Them:** “About fifteen euros. Is that okay?” · בערך חמישה עשר יורו. זה בסדר?
 - **🫵 You:** “Okay, thank you.” · בסדר, תודה.
-- **🧑 Them:** “Here we are. Have a great night!” · הגענו. לילה נהדר!
+- **🧑 Them:** “We're here. Is here okay?” · הגענו. כאן זה בסדר?
+- **🫵 You:** “Stop here, please. Keep the change.” · עצור כאן, בבקשה. תשאיר את העודף.
+- **🧑 Them:** “Thank you! Have a good evening!” · תודה! ערב טוב!
 
 ### Dialogue: `cold-hotel` — happy path
-- **🧑 Them:** “Welcome! Checking in tonight?” · ברוך הבא! עושה צ'ק-אין הערב?
-- **🫵 You:** “I have a reservation.” · יש לי הזמנה.
-- **🧑 Them:** “Great — room two-oh-four, second floor, breakfast is seven to ten.” · מצוין — חדר 204, קומה שנייה, ארוחת בוקר משבע עד עשר.
+- **🧑 Them:** “Good evening. Do you have a reservation?” · ערב טוב. יש לך הזמנה?
+- **🫵 You:** “I have a reservation, under the name Cohen.” · יש לי הזמנה, על השם כהן.
+- **🧑 Them:** “Here is your key. Room two-oh-four, second floor.” · הנה המפתח. חדר 204, קומה שנייה.
 - **🫵 You:** “Is breakfast included?” · ארוחת הבוקר כלולה?
-- **🧑 Them:** “Enjoy your stay!” · תיהנה מהשהות!
+- **🧑 Them:** “Yes, from seven to ten. Enjoy your stay.” · כן, משבע עד עשר. תיהנה מהשהות.
 
 ### Review status
 - 🤖 AI-drafted (English + Hebrew) — **pending human / native-Hebrew review**
@@ -524,118 +601,62 @@ _Reply-training drill:_ “What size are you?” · “The fitting room is over 
 
 ---
 
-## Mission 10 — Airport & Border · שדה תעופה וגבול
+## Mission 11 — Small Talk & Recommendations · שיחת חולין והמלצות
 
-> Phase 2 · 🛬 Arrival
+> Phase 3 · 🏡 Everyday Life
 
-**Objective:** Counter, gate, and the border questions — calm. · דלפק, שער, ושאלות הגבול — רגוע.
+**Objective:** Where from, first time here, what to try — three minutes with a stranger. · מאיפה אתה, פעם ראשונה כאן, מה מומלץ — שלוש דקות עם זר.
 
-**Confidence gain:** Authority stops being frightening. · סמכות מפסיקה להפחיד.
-
-**Estimated time:** ~20 min
-
-**Video:** `/videos/En_day10.mp4`
-
-### Core phrases (you say)
-- **Here is my passport.** · הנה הדרכון שלי. — _מגישים ואומרים. שלוש מילים שפותחות כל גבול._
-- **I'm here on holiday.** · אני כאן בחופשה. — _התשובה ל-"מטרת הביקור?". ידידותית ובטוחה._
-- **For two weeks.** · לשבועיים. — _התבנית: For + משך זמן. For three days / For a week._
-- **At a hotel in the city center.** · במלון במרכז העיר. — _התשובה ל-"איפה אתה מתאכסן?". שם המלון עדיף, אבל זה מספיק._
-- **Nothing to declare.** · אין לי מה להצהיר. — _המשפט הקבוע במכס. אומרים אותו רגוע._
-
-### Expected replies (you hear)
-- **Passport, please.** · דרכון, בבקשה.
-- **What's the purpose of your visit?** · מה מטרת הביקור?
-- **How long are you staying?** · לכמה זמן אתה נשאר?
-- **Where are you staying?** · איפה אתה מתאכסן?
-- **Anything to declare?** · יש לך מה להצהיר?
-- **Enjoy your stay!** · תיהנה מהשהות!
-
-_Reply-training drill:_ “What's the purpose of your visit?” · “How long are you staying?” · “Where are you staying?” · “Anything to declare?”
-
-### Recovery tools reused
-`Can you repeat that?` · `Please speak slowly.` · `One moment, please.` · `Thank you!`
-
-### Cold open (ambush)
-- 🧑 (fast) “And do you have a return ticket booked for your flight home at all?” · ויש לך בכלל כרטיס חזור מוזמן לטיסה הביתה?
-  - ✅ best move: **One moment, please.** · רגע אחד, בבקשה.
-  - ✗ distractor: For two weeks.
-
-### Dialogue: `border-control` — happy path
-- **🧑 Them:** “Next, please. Passport?” · הבא בתור, בבקשה. דרכון?
-- **🫵 You:** “Here is my passport.” · הנה הדרכון שלי.
-- **🧑 Them:** “Thank you. What's the purpose of your visit?” · תודה. מה מטרת הביקור?
-- **🫵 You:** “I'm here on holiday.” · אני כאן בחופשה.
-- **🧑 Them:** “Lovely. How long are you staying?” · נהדר. לכמה זמן אתה נשאר?
-- **🫵 You:** “For two weeks.” · לשבועיים.
-- **🧑 Them:** “And where are you staying?” · ואיפה אתה מתאכסן?
-- **🫵 You:** “At a hotel in the city center.” · במלון במרכז העיר.
-- **🧑 Them:** “Almost done. Anything to declare?” · כמעט סיימנו. יש לך מה להצהיר?
-- **🫵 You:** “Nothing to declare.” · אין לי מה להצהיר.
-- **🧑 Them:** “Welcome, and enjoy your stay!” · ברוך הבא, ותיהנה מהשהות!
-
-#### Wrong / recovery branches
-- ⚠︎ less useful: 🫵 “Here is my passport.” → 🧑 “I have your passport — I asked how long you’re staying.” · הדרכון אצלי — שאלתי לכמה זמן אתה נשאר.
-- ⚠︎ less useful: 🫵 “Thank you!” → 🧑 “Ha — so, anything to declare? Any goods?” · הא — אז, יש מה להצהיר? סחורה כלשהי?
-
-### Review status
-- 🤖 AI-drafted (English + Hebrew) — **pending human / native-Hebrew review**
-- ✅ all items have Hebrew
-
----
-
-## Mission 11 — Hotel Requests & Problems · בקשות ובעיות במלון
-
-> Phase 2 · 🛬 Arrival
-
-**Objective:** Towels, AC, wifi, noisy room — ask and receive. · מגבות, מזגן, וויי-פיי, חדר רועש — לבקש ולקבל.
-
-**Confidence gain:** I don't suffer quietly; I ask. · אני לא סובל בשקט; אני מבקש.
+**Confidence gain:** Connection, not just transactions. · חיבור, לא רק עסקאות.
 
 **Estimated time:** ~20 min
 
 **Video:** — (none yet)
 
 ### Core phrases (you say)
-- **Could I get some more towels?** · אפשר לקבל עוד מגבות? — _התבנית: Could I get ___? — הדרך המנומסת לבקש כל דבר._
-- **What's the wifi password?** · מה הסיסמה של הוויי-פיי? — _הבקשה הכי שימושית של המאה. שווה לדעת בעל פה._
-- **The air conditioning isn't working.** · המזגן לא עובד. — _התבנית: The ___ isn’t working. עובדת על כל דבר שהתקלקל._
-- **My room is very noisy.** · החדר שלי מאוד רועש. — _לתאר בעיה זה לא להתלונן. זה לתת להם לתקן._
-- **Could you help me with something?** · אפשר עזרה במשהו? — _פותח כל בקשה בנימוס. אף אחד לא מסרב לזה._
+- **This place is beautiful.** · המקום הזה יפהפה. — _מחמאה למקום פותחת כל שיחה._
+- **How about you?** · ואתה? — _להחזיר את השאלה — וכבר יש שיחה._
+- **It's my first time here.** · זו הפעם הראשונה שלי כאן. — _פותח שיחה ומזמין המלצות._
+- **I like it a lot.** · אני מאוד אוהב.
+- **I love the food here.** · אני אוהב את האוכל כאן.
+- **Can you recommend a place?** · אתה יכול להמליץ על מקום? — _מקומיים יודעים הכי טוב. תשאל._
+- **What do you recommend?** · מה אתה ממליץ? — _אם התפריט מבלבל — תן למלצר להחליט. תמיד עובד._
+- **It was nice talking to you.** · היה נעים לדבר איתך.
+- **I'm from Israel.** · אני מישראל. — _התבנית: I’m from ___ — התשובה ל-Where are you from._
 
 ### Expected replies (you hear)
-- **How can I help you?** · איך אפשר לעזור לך?
-- **I'll send someone right away.** · אשלח מישהו מיד.
-- **I'm so sorry about that.** · אני מצטער על זה מאוד.
-- **The password is on your key card.** · הסיסמה על כרטיס המפתח.
-- **Would you like to change rooms?** · תרצה להחליף חדר?
-- **Anything else I can do?** · עוד משהו שאוכל לעשות?
+- **Is this your first time here?** · זו הפעם הראשונה שלך כאן?
+- **Where are you from?** · מאיפה אתה?
+- **Do you like it here?** · אתה אוהב את המקום?
+- **You should try the old town.** · כדאי לך לנסות את העיר העתיקה.
+- **How long are you here for?** · לכמה זמן אתה כאן?
+- **Enjoy the rest of your trip!** · תיהנה משאר הטיול!
+- **Me too!** · גם אני!
 
-_Reply-training drill:_ “I'll send someone right away.” · “I'm so sorry about that.” · “Would you like to change rooms?” · “Anything else I can do?”
+_Reply-training drill:_ “Where are you from?” · “Is this your first time here?” · “Do you like it here?” · “You should try the old town.”
 
 ### Recovery tools reused
-`Can you repeat that?` · `Please speak slowly.` · `Thank you!`
+`Can you repeat that?`
 
 ### Cold open (ambush)
-- 🧑 (fast) “By the way there's been a small mix-up with your booking — could you come down to the desk?” · אגב, הייתה אי-הבנה קטנה עם ההזמנה שלך — אפשר שתרד לקבלה?
-  - ✅ best move: **Can you repeat that?** · אפשר לחזור על זה?
-  - ✗ distractor: What's the wifi password?
+- 🧑 (fast) “Oh nice so how long are you here for just a few days or longer?” · אה, יפה! ולכמה זמן אתה כאן — כמה ימים או יותר?
+  - ✅ best move: **How long are you here for?** · לכמה זמן אתה כאן?
+  - ✗ distractor: Me too!
 
-### Dialogue: `hotel-desk` — happy path
-- **🧑 Them:** “Good evening! How can I help you?” · ערב טוב! איך אפשר לעזור?
-- **🫵 You:** “Could I get some more towels?” · אפשר לקבל עוד מגבות?
-- **🧑 Them:** “Of course, I'll send some up right away. Anything else?” · בטח, אשלח מיד. עוד משהו?
-- **🫵 You:** “What's the wifi password?” · מה הסיסמה של הוויי-פיי?
-- **🧑 Them:** “The password is on your key card. Anything else?” · הסיסמה על כרטיס המפתח. עוד משהו?
-- **🫵 You:** “The air conditioning isn't working.” · המזגן לא עובד.
-- **🧑 Them:** “Oh, I'm so sorry about that. I'll have it fixed today. Is the room comfortable otherwise?” · אוי, אני מצטער מאוד. אדאג שיתקנו היום. החדר נוח חוץ מזה?
-- **🫵 You:** “My room is very noisy.” · החדר שלי מאוד רועש.
-- **🧑 Them:** “I understand. Would you like to change to a quieter room?” · אני מבין. תרצה לעבור לחדר שקט יותר?
-- **🫵 You:** “Yes, thank you!” · כן, תודה!
-- **🧑 Them:** “All sorted — room 305, and someone's on the way up. Have a lovely night!” · הכל מסודר — חדר 305, ומישהו כבר בדרך. לילה נעים!
-
-#### Wrong / recovery branches
-- ⚠︎ less useful: 🫵 “Thank you!” → 🧑 “You're welcome! Is the room itself okay?” · בבקשה! והחדר עצמו בסדר?
+### Dialogue: `small-talk` — happy path
+- **🧑 Them:** “Hi! Beautiful view, isn't it?” · היי! נוף יפה, נכון?
+- **🫵 You:** “This place is beautiful.” · המקום הזה יפהפה.
+- **🧑 Them:** “It really is. Where are you from?” · באמת. מאיפה אתה?
+- **🫵 You:** “I'm from Israel. How about you?” · אני מישראל. ואתה?
+- **🧑 Them:** “I'm from here! Is this your first time here?” · אני מכאן! זו הפעם הראשונה שלך כאן?
+- **🫵 You:** “Yes, it's my first time here.” · כן, זו הפעם הראשונה שלי כאן.
+- **🧑 Them:** “Welcome! Do you like it here?” · ברוך הבא! אתה אוהב את המקום?
+- **🫵 You:** “Yes, I like it a lot.” · כן, אני מאוד אוהב.
+- **🧑 Them:** “Me too. And the food here is wonderful.” · גם אני. והאוכל כאן נהדר.
+- **🫵 You:** “Can you recommend a place?” · אתה יכול להמליץ על מקום?
+- **🧑 Them:** “Of course — try 'Mama Rosa', in the old town. It's very good.” · בטח — תנסה את 'מאמא רוזה', בעיר העתיקה. מאוד טוב שם.
+- **🫵 You:** “Thank you! It was nice talking to you.” · תודה! היה נעים לדבר איתך.
+- **🧑 Them:** “You too! Enjoy the rest of your trip!” · גם לי! תיהנה משאר הטיול!
 
 ### Review status
 - 🤖 AI-drafted (English + Hebrew) — **pending human / native-Hebrew review**
@@ -643,61 +664,190 @@ _Reply-training drill:_ “I'll send someone right away.” · “I'm so sorry a
 
 ---
 
-## Mission 12 — Restaurant Basics · מסעדה — בסיס
+## Mission 12 — Time & Plans · זמן ותוכניות
 
-> Phase 3 · 🍽️ Food
+> Phase 3 · 🏡 Everyday Life
 
-**Objective:** Table, menu, order, bill — the core loop. · שולחן, תפריט, הזמנה, חשבון — הליבה.
+**Objective:** Today, tonight, tomorrow, later — decide what to do, and when. · היום, הערב, מחר, אחר כך — לקבוע מה עושים ומתי.
 
-**Confidence gain:** The heart of travel — in my hands. · לב הטיול — בידיים שלי.
+**Confidence gain:** I make plans with people. · אני קובע תוכניות עם אנשים.
+
+**Estimated time:** ~20 min
+
+**Video:** — (none yet)
+
+### Core phrases (you say)
+- **Maybe later.** · אולי אחר כך. — _התשובה הכי שימושית כשלא החלטת._
+- **I'm free tonight.** · אני פנוי הערב.
+- **What time?** · באיזו שעה?
+- **When?** · מתי?
+- **No, that's not too late.** · לא, זה לא מאוחר מדי.
+- **What are you doing tomorrow?** · מה אתה עושה מחר? — _מחליפים tomorrow ב-today / tonight ויש לך שלוש שאלות._
+- **Yes, I'm free tomorrow.** · כן, אני פנוי מחר.
+- **Let's meet here at seven.** · ניפגש כאן בשבע. — _Let’s meet ___ at ___ — מקום ושעה, וזהו._
+
+### Expected replies (you hear)
+- **What are you doing today?** · מה אתה עושה היום?
+- **What are you doing tonight?** · מה אתה עושה הערב?
+- **Do you want to come?** · רוצה לבוא?
+- **At eight.** · בשמונה.
+- **Is that too late for you?** · זה מאוחר מדי בשבילך?
+- **Are you free tomorrow?** · אתה פנוי מחר?
+- **We leave early.** · אנחנו יוצאים מוקדם.
+
+_Reply-training drill:_ “At eight.” · “Is that too late for you?” · “We leave early.” · “Are you free tomorrow?”
+
+### Recovery tools reused
+`Can you repeat that?`
+
+### Cold open (ambush)
+- 🧑 (fast) “Hey quick question are you free tomorrow or do you already have plans?” · היי, שאלה קצרה — אתה פנוי מחר או שכבר יש לך תוכניות?
+  - ✅ best move: **Are you free tomorrow?** · אתה פנוי מחר?
+  - ✗ distractor: At eight.
+
+### Dialogue: `making-plans` — happy path
+- **🧑 Them:** “Good morning! What are you doing today?” · בוקר טוב! מה אתה עושה היום?
+- **🫵 You:** “Nothing this morning. Maybe later.” · כלום הבוקר. אולי אחר כך.
+- **🧑 Them:** “And what are you doing tonight?” · ומה אתה עושה הערב?
+- **🫵 You:** “I'm free tonight.” · אני פנוי הערב.
+- **🧑 Them:** “We're going to eat in the centre. Do you want to come?” · אנחנו הולכים לאכול במרכז. רוצה לבוא?
+- **🫵 You:** “Yes! What time?” · כן! באיזו שעה?
+- **🧑 Them:** “At eight. Is that too late for you?” · בשמונה. זה מאוחר מדי בשבילך?
+- **🫵 You:** “No, that's not too late.” · לא, זה לא מאוחר מדי.
+- **🧑 Them:** “Great. It's very good there.” · מעולה. מאוד טוב שם.
+- **🫵 You:** “What are you doing tomorrow?” · מה אתה עושה מחר?
+- **🧑 Them:** “Tomorrow morning I'm going to the beach. Are you free tomorrow?” · מחר בבוקר אני הולך לים. אתה פנוי מחר?
+- **🫵 You:** “Yes, I'm free tomorrow.” · כן, אני פנוי מחר.
+- **🧑 Them:** “Then come with us! But we leave early.” · אז בוא איתנו! אבל אנחנו יוצאים מוקדם.
+- **🫵 You:** “No problem. Let's meet here at seven.” · אין בעיה. ניפגש כאן בשבע.
+- **🧑 Them:** “Perfect. I have to go now — see you tonight!” · מושלם. אני חייב ללכת עכשיו — נתראה הערב!
+
+### Review status
+- 🤖 AI-drafted (English + Hebrew) — **pending human / native-Hebrew review**
+- ✅ all items have Hebrew
+
+---
+
+## Mission 13 — Home, Family & Daily Routine · בית, משפחה ושגרה
+
+> Phase 3 · 🏡 Everyday Life
+
+**Objective:** I am going home, to eat at my grandmother’s, to sleep — ordinary life. · אני הולך הביתה, לאכול אצל סבתא, לישון — חיים רגילים.
+
+**Confidence gain:** I can talk about life, not only about the trip. · אני מדבר גם על החיים, לא רק על הטיול.
+
+**Estimated time:** ~20 min
+
+**Video:** — (none yet)
+
+### Core phrases (you say)
+- **Your home is beautiful.** · הבית שלך יפהפה.
+- **Is this sofa new?** · הספה הזאת חדשה? — _Is this ___ new? — מחליפים את החפץ._
+- **Where is your family?** · איפה המשפחה שלך? — _Where is ___? — אותה שאלה מהכיוונים, עכשיו על אנשים._
+- **Yes, I live with my family.** · כן, אני גר עם המשפחה שלי.
+- **I'm going to eat at my grandmother's.** · אני הולך לאכול אצל סבתא שלי. — _I’m going to ___ — התבנית לכל מה שאתה עומד לעשות._
+- **I'm tired.** · אני עייף.
+- **I'm going home.** · אני הולך הביתה.
+- **I'm going to sleep.** · אני הולך לישון.
+
+### Expected replies (you hear)
+- **Come in.** · תיכנס.
+- **Let's sit in the living room.** · בוא נשב בסלון.
+- **Do you live with your family?** · אתה גר עם המשפחה שלך?
+- **Are you hungry?** · אתה רעב?
+- **Do you want to eat with us?** · רוצה לאכול איתנו?
+
+_Reply-training drill:_ “Come in.” · “Let's sit in the living room.” · “Are you hungry?” · “Do you live with your family?”
+
+### Recovery tools reused
+`Sorry, I don't understand.`
+
+### Cold open (ambush)
+- 🧑 (fast) “Come in come in let us sit in the living room it is warmer there” · תיכנס, תיכנס, בוא נשב בסלון, יותר חם שם
+  - ✅ best move: **Let's sit in the living room.** · בוא נשב בסלון.
+  - ✗ distractor: Are you hungry?
+
+### Dialogue: `at-a-friends-home` — happy path
+- **🧑 Them:** “Hi! Come in.” · היי! תיכנס.
+- **🫵 You:** “Thanks. Your home is beautiful.” · תודה. הבית שלך יפהפה.
+- **🧑 Them:** “Thank you. Let's sit in the living room.” · תודה. בוא נשב בסלון.
+- **🫵 You:** “Is this sofa new?” · הספה הזאת חדשה?
+- **🧑 Them:** “Yes, it's new.” · כן, היא חדשה.
+- **🫵 You:** “Where is your family?” · איפה המשפחה שלך?
+- **🧑 Them:** “My mother is in the kitchen. Do you live with your family?” · אמא שלי במטבח. אתה גר עם המשפחה שלך?
+- **🫵 You:** “Yes, I live with my family.” · כן, אני גר עם המשפחה שלי.
+- **🧑 Them:** “Nice. Are you hungry? Do you want to eat with us?” · יפה. אתה רעב? רוצה לאכול איתנו?
+- **🫵 You:** “Thanks, but I'm going to eat at my grandmother's.” · תודה, אבל אני הולך לאכול אצל סבתא שלי.
+- **🧑 Them:** “Lovely! You look tired. Are you okay?” · איזה יופי! אתה נראה עייף. הכל בסדר?
+- **🫵 You:** “Yes, I'm just tired.” · כן, אני רק עייף.
+- **🧑 Them:** “Then go home and rest!” · אז לך הביתה ותנוח!
+- **🫵 You:** “Yes, I'm going home.” · כן, אני הולך הביתה.
+- **🧑 Them:** “And after dinner at your grandmother's?” · ואחרי הארוחה אצל סבתא?
+- **🫵 You:** “I'm going to sleep.” · אני הולך לישון.
+- **🧑 Them:** “Ha! Good night. Say hi to your family!” · חה! לילה טוב. תמסור ד״ש למשפחה!
+
+### Review status
+- 🤖 AI-drafted (English + Hebrew) — **pending human / native-Hebrew review**
+- ✅ all items have Hebrew
+
+---
+
+## Mission 14 — Restaurant Meal · ארוחה במסעדה
+
+> Phase 3 · 🏡 Everyday Life
+
+**Objective:** A whole meal: table, menu, order, drink, no onions, everything okay?, bill. · ארוחה שלמה: שולחן, תפריט, הזמנה, שתייה, בלי בצל, הכל בסדר?, חשבון.
+
+**Confidence gain:** The whole restaurant transaction — in my hands. · העסקה השלמה במסעדה — בידיים שלי.
 
 **Estimated time:** ~22 min
 
-**Video:** — (none yet)
+**Video:** `/videos/En_day4.mp4`
 
 ### Core phrases (you say)
-- **A table for two, please.** · שולחן לשניים, בבקשה. — _התבנית: A table for ___ — פשוט מספר. for one / for four._
-- **Could we see the menu?** · אפשר לראות את התפריט?
-- **I'll have the pasta, please.** · אני אקח את הפסטה, בבקשה. — _התבנית הגדולה של המסעדה: I’ll have the ___ — מזמינים כל דבר בתפריט._
-- **What do you recommend?** · מה אתה ממליץ? — _אם התפריט מבלבל — תן למלצר להחליט. תמיד עובד._
+- **A table for two, please.** · שולחן לשניים, בבקשה. — _הפתיח למסעדה. תבנית: a table for ___._
+- **The menu, please.** · התפריט, בבקשה.
+- **I'll have the chicken.** · אני אקח את העוף. — _תבנית ההזמנה: I’ll have the ___._
 - **A bottle of water, please.** · בקבוק מים, בבקשה.
-- **Could we have the bill, please?** · אפשר את החשבון, בבקשה? — _המשפט שסוגר כל ארוחה. באנגליה: bill · באמריקה: check._
+- **No onions, please.** · בלי בצל, בבקשה. — _תבנית: No ___, please — לכל מה שאתה לא רוצה בצלחת._
+- **The bill, please.** · החשבון, בבקשה.
+- **That was delicious!** · זה היה טעים מאוד! — _מחמאה קטנה שקונה חיוך גדול._
+- **I'll have the pasta, please.** · אני אקח את הפסטה, בבקשה. — _התבנית הגדולה של המסעדה: I’ll have the ___ — מזמינים כל דבר בתפריט._
 
 ### Expected replies (you hear)
-- **How many people?** · כמה אנשים?
-- **Something to drink?** · משהו לשתות?
+- **Do you have a reservation?** · יש לכם הזמנה?
+- **Follow me, please.** · בואו אחריי, בבקשה.
 - **Are you ready to order?** · מוכנים להזמין?
+- **Anything to drink?** · משהו לשתות?
+- **How was everything?** · איך היה הכל?
+- **Would you like dessert?** · רוצים קינוח?
 - **Anything else?** · עוד משהו?
 - **Is everything okay?** · הכל בסדר?
-- **Enjoy your meal!** · בתיאבון!
 
-_Reply-training drill:_ “Something to drink?” · “Are you ready to order?” · “Anything else?” · “Is everything okay?”
+_Reply-training drill:_ “Anything to drink?” · “Are you ready to order?” · “How was everything?” · “Would you like dessert?”
 
 ### Recovery tools reused
-`Can you repeat that?` · `Please speak slowly.` · `One moment, please.` · `Thank you!`
+`Can you repeat that?` · `Please speak slowly.` · `Thank you!` · `One moment, please.` · `Sorry, I don't understand.`
 
 ### Cold open (ambush)
-- 🧑 (fast) “And how would you like that cooked — rare, medium, or well done?” · ואיך תרצה שיהיה מבושל — נא, בינוני, או עשוי היטב?
-  - ✅ best move: **Please speak slowly.** · דבר לאט, בבקשה.
-  - ✗ distractor: Could we have the bill, please?
+- 🧑 (fast) “Would you like to see the dessert menu before I bring the check?” · רוצים לראות את תפריט הקינוחים לפני שאני מביא את החשבון?
+  - ✅ best move: **Would you like dessert?** · רוצים קינוח?
+  - ✗ distractor: Do you have a reservation?
 
-### Dialogue: `restaurant-dinner` — happy path
-- **🧑 Them:** “Good evening, welcome! How many people?” · ערב טוב, ברוכים הבאים! כמה אנשים?
-- **🫵 You:** “A table for two, please.” · שולחן לשניים, בבקשה.
-- **🧑 Them:** “Perfect, right this way. Here are your menus. Something to drink?” · מצוין, בבקשה אחריי. הנה התפריטים. משהו לשתות?
+### Dialogue: `sit-down-meal` — happy path
+- **🧑 Them:** “Good evening! Do you have a reservation?” · ערב טוב! יש לכם הזמנה?
+- **🫵 You:** “No — a table for two, please.” · לא — שולחן לשניים, בבקשה.
+- **🧑 Them:** “Perfect, follow me. Here are your menus.” · מצוין, בואו אחריי. הנה התפריטים.
+- **🧑 Them:** “Are you ready to order?” · מוכנים להזמין?
+- **🫵 You:** “I'll have the chicken, without onions, please.” · אני אקח את העוף, בלי בצל, בבקשה.
+- **🧑 Them:** “Of course. Anything to drink?” · כמובן. משהו לשתות?
 - **🫵 You:** “A bottle of water, please.” · בקבוק מים, בבקשה.
-- **🧑 Them:** “Great. I'll give you a minute… Are you ready to order?” · יופי. אתן לכם רגע… מוכנים להזמין?
-- **🫵 You:** “I'll have the pasta, please.” · אני אקח את הפסטה, בבקשה.
-- **🧑 Them:** “Excellent choice. Anything else?” · בחירה מצוינת. עוד משהו?
+- **🧑 Them:** “Anything else?” · עוד משהו?
 - **🫵 You:** “That's all, thanks.” · זה הכל, תודה.
-- **🧑 Them:** “Here you are. Enjoy your meal!… Is everything okay?” · בבקשה. בתיאבון!… הכל בסדר?
-- **🫵 You:** “Yes, thank you!” · כן, תודה!
-- **🧑 Them:** “Wonderful. Let me know when you need anything.” · נהדר. תגידו לי כשתצטרכו משהו.
-- **🫵 You:** “Could we have the bill, please?” · אפשר את החשבון, בבקשה?
-- **🧑 Them:** “Here's the bill. Thank you, and have a lovely evening!” · הנה החשבון. תודה, וערב נפלא!
-
-#### Wrong / recovery branches
-- ⚠︎ less useful: 🫵 “Could we see the menu?” → 🧑 “The menus are right there in front of you — anything to drink first?” · התפריטים ממש מולך — משהו לשתות קודם?
+- **🧑 Them:** “Coming right up!” · מגיע עוד רגע!
+- **🧑 Them:** “…Later… Is everything okay?” · …אחר כך… הכל בסדר?
+- **🫵 You:** “Yes, that was delicious! The bill, please.” · כן, היה טעים מאוד! החשבון, בבקשה.
+- **🧑 Them:** “So glad you enjoyed it. Here you are — have a lovely evening!” · שמח שנהניתם. בבקשה — ערב נעים!
 
 ### Review status
 - 🤖 AI-drafted (English + Hebrew) — **pending human / native-Hebrew review**
@@ -705,13 +855,13 @@ _Reply-training drill:_ “Something to drink?” · “Are you ready to order?�
 
 ---
 
-## Mission 13 — Special Requests & Allergies · בקשות מיוחדות ואלרגיות
+## Mission 15 — Food Preferences & Allergies · העדפות אוכל ואלרגיות
 
-> Phase 3 · 🍽️ Food
+> Phase 3 · 🏡 Everyday Life
 
 **Objective:** No onions, allergic to nuts, vegetarian — clear and safe. · בלי בצל, אלרגי לאגוזים, צמחוני — ברור ובטוח.
 
-**Confidence gain:** Food is safe for me too. · האוכל בטוח גם בשבילי.
+**Confidence gain:** I can say what I cannot eat — and make sure the kitchen knows. · אני יודע להגיד מה אסור לי — ולוודא שהמטבח יודע.
 
 **Estimated time:** ~20 min
 
@@ -721,7 +871,7 @@ _Reply-training drill:_ “Something to drink?” · “Are you ready to order?�
 - **I'm allergic to nuts.** · אני אלרגי לאגוזים. — _התבנית שמצילה: I’m allergic to ___. אומרים ברור, פעם אחת, בלי היסוס._
 - **Without onions, please.** · בלי בצל, בבקשה. — _התבנית: Without ___ — מסירה כל מרכיב שלא בא לך._
 - **I'm vegetarian.** · אני צמחוני. — _שתי מילים שחוסכות עשר שאלות._
-- **Does this have dairy?** · יש בזה מוצרי חלב? — _התבנית: Does this have ___? — בודקת כל מרכיב לפני שהוא מגיע אליך._
+- **Does it have dairy?** · יש בזה מוצרי חלב? — _התבנית: Does this have ___? — בודקת כל מרכיב לפני שהוא מגיע אליך._
 - **Is this spicy?** · זה חריף?
 
 ### Expected replies (you hear)
@@ -730,7 +880,7 @@ _Reply-training drill:_ “Something to drink?” · “Are you ready to order?�
 - **That one contains nuts.** · זה מכיל אגוזים.
 - **No, it's not spicy.** · לא, זה לא חריף.
 - **This one is a good option for you.** · זו אפשרות טובה בשבילך.
-- **Anything else you're allergic to?** · עוד משהו שאתה אלרגי אליו?
+- **Any other allergies?** · יש עוד אלרגיות?
 
 _Reply-training drill:_ “Let me check with the kitchen.” · “We can make it without.” · “That one contains nuts.” · “This one is a good option for you.”
 
@@ -745,15 +895,15 @@ _Reply-training drill:_ “Let me check with the kitchen.” · “We can make i
 ### Dialogue: `allergy-order` — happy path
 - **🧑 Them:** “Hi there! Are you ready to order?” · היי! מוכן להזמין?
 - **🫵 You:** “I'm allergic to nuts.” · אני אלרגי לאגוזים. (אומרים קודם כל — לפני ההזמנה)
-- **🧑 Them:** “Thank you for telling me — that's important. Anything else you're allergic to?” · תודה שאמרת — זה חשוב. עוד משהו שאתה אלרגי אליו?
+- **🧑 Them:** “Thank you for telling me. Any other allergies or dietary restrictions?” · תודה שאמרת. יש עוד אלרגיות או הגבלות תזונה?
 - **🫵 You:** “I'm vegetarian.” · אני צמחוני.
-- **🧑 Them:** “Got it — no nuts, vegetarian. The mushroom risotto is a good option for you.” · הבנתי — בלי אגוזים, צמחוני. ריזוטו הפטריות אפשרות טובה בשבילך.
-- **🫵 You:** “Does this have dairy?” · יש בזה מוצרי חלב?
-- **🧑 Them:** “Good question — it has a little cream, but we can make it without.” · שאלה טובה — יש בו קצת שמנת, אבל אפשר להכין בלי.
-- **🫵 You:** “Without onions, please.” · בלי בצל, בבקשה.
-- **🧑 Them:** “No onions, no problem — and I'll make sure the kitchen knows about the nuts.” · בלי בצל, אין בעיה — ואוודא שהמטבח יודע על האגוזים.
+- **🧑 Them:** “Got it. The mushroom risotto is vegetarian, but I'll check with the kitchen about the nuts.” · הבנתי. ריזוטו הפטריות צמחוני, אבל אבדוק עם המטבח לגבי האגוזים.
+- **🫵 You:** “Does it have dairy?” · יש בזה מוצרי חלב?
+- **🧑 Them:** “Yes, it has some cream, but we can make it without.” · כן, יש בו קצת שמנת, אבל אפשר להכין בלי.
+- **🫵 You:** “Great. Without onions, please.” · מעולה. בלי בצל, בבקשה.
+- **🧑 Them:** “Of course. I'll tell the kitchen about your allergy.” · כמובן. אגיד למטבח על האלרגיה שלך.
 - **🫵 You:** “Thank you!” · תודה!
-- **🧑 Them:** “Perfect. Your food will be completely safe. Enjoy!” · מושלם. האוכל שלך יהיה בטוח לגמרי. בתיאבון!
+- **🧑 Them:** “I'll check with them and come right back.” · אבדוק איתם ואחזור מיד.
 
 #### Wrong / recovery branches
 - ⚠︎ less useful: 🫵 “Thank you!” → 🧑 “Of course — but is there anything else I should know?” · כמובן — אבל יש עוד משהו שכדאי שאדע?
@@ -764,105 +914,64 @@ _Reply-training drill:_ “Let me check with the kitchen.” · “We can make i
 
 ---
 
-## Mission 14 — Paying Anywhere · לשלם בכל מקום
+## Mission 16 — Hobbies & Free Time · תחביבים וזמן פנוי
 
-> Phase 3 · 🍽️ Food
+> Phase 3 · 🏡 Everyday Life
 
-**Objective:** Cash/card/tip/receipt — every transaction closer. · מזומן/כרטיס/טיפ/קבלה — כל סוגר עסקה אפשרי.
+**Objective:** Like, don’t like, usually, want to try — and ask back. · אוהב, לא אוהב, בדרך כלל, רוצה לנסות — ולשאול בחזרה.
 
-**Confidence gain:** The awkward payment moment disappears. · הרגע המביך של התשלום נעלם.
-
-**Estimated time:** ~18 min
-
-**Video:** — (none yet)
-
-### Core phrases (you say)
-- **I'll pay by card.** · אני אשלם בכרטיס. — _התבנית: I’ll pay by ___ / in ___. by card · in cash._
-- **I'll pay in cash.** · אני אשלם במזומן.
-- **Keep the change.** · תשמור את העודף. — _הדרך החלקה לתת טיפ במזומן. שלוש מילים, חיוך גדול._
-- **Could I have a receipt?** · אפשר קבלה?
-- **All together, please.** · הכל ביחד, בבקשה. — _התשובה ל-"ביחד או בנפרד?" כשמשלמים על כולם._
-
-### Expected replies (you hear)
-- **That'll be twelve fifty.** · זה יוצא שתים-עשרה וחצי.
-- **Cash or card?** · מזומן או כרטיס?
-- **You can tap your card.** · אפשר להצמיד את הכרטיס.
-- **Would you like a receipt?** · תרצה קבלה?
-- **Together or separate?** · ביחד או בנפרד?
-- **Here's your change.** · הנה העודף שלך.
-
-_Reply-training drill:_ “Cash or card?” · “You can tap your card.” · “Would you like a receipt?” · “Together or separate?”
-
-### Recovery tools reused
-`Can you repeat that?` · `Please speak slowly.` · `Thank you!`
-
-### Cold open (ambush)
-- 🧑 (fast) “Ah sorry the card machine is down right now do you have any cash on you?” · אה, סליחה, מכונת הכרטיסים מושבתת כרגע — יש עליך מזומן?
-  - ✅ best move: **I'll pay in cash.** · אני אשלם במזומן.
-  - ✗ distractor: Could I have a receipt?
-
-### Dialogue: `pay-checkout` — happy path
-- **🧑 Them:** “All done? That'll be twelve fifty.” · סיימנו? זה יוצא שתים-עשרה וחצי.
-- **🫵 You:** “I'll pay by card.” · אני אשלם בכרטיס.
-- **🧑 Them:** “Perfect — you can tap your card right here.” · מצוין — אפשר להצמיד את הכרטיס כאן.
-- **🫵 You:** “Could I have a receipt?” · אפשר קבלה?
-- **🧑 Them:** “That's very kind, thank you! Anything else?” · מאוד נחמד, תודה! עוד משהו?
-- **🫵 You:** “That's all, thanks.” · זה הכל, תודה.
-- **🧑 Them:** “Here's your receipt. Thank you — have a great day!” · הנה הקבלה שלך. תודה — שיהיה יום מעולה!
-
-### Review status
-- 🤖 AI-drafted (English + Hebrew) — **pending human / native-Hebrew review**
-- ✅ all items have Hebrew
-
----
-
-## Mission 15 — Street Food & Markets · אוכל רחוב ושווקים
-
-> Phase 3 · 🍽️ Food
-
-**Objective:** Order at a stall, taste, light haggling. · להזמין בדוכן, לטעום, להתמקח קלות.
-
-**Confidence gain:** The best food is outside — and I’m there. · האוכל הכי טוב — בחוץ, ואני שם.
+**Confidence gain:** I have something to talk about. · יש לי על מה לדבר.
 
 **Estimated time:** ~20 min
 
 **Video:** — (none yet)
 
 ### Core phrases (you say)
-- **One of those, please.** · אחד מאלה, בבקשה. — _לא יודע את השם? מצביע ואומר One of those. עובד בכל דוכן בעולם._
-- **How much is it?** · כמה זה עולה? — _השאלה שאסור לוותר עליה בשוק. תמיד שואלים לפני._
-- **Two, please.** · שניים, בבקשה.
-- **That's a bit much.** · זה קצת יקר. — _פתיח עדין להתמקחות. חיוך, לא ריב._
-- **I'll take it.** · אני אקח. — _סוגר את העסקה. שתי מילים, וגמרנו._
+- **What do you do for fun?** · מה אתה אוהב לעשות בזמן הפנוי?
+- **I love surfing!** · אני מאוד אוהב לגלוש!
+- **I like drawing.** · אני אוהב לצייר. — _I like ___ — מחליפים את התחביב, המשפט נשאר._
+- **I usually draw in the evening.** · בדרך כלל אני מצייר בערב.
+- **I like to listen to music.** · אני אוהב לשמוע מוזיקה.
+- **I don't like running.** · אני לא אוהב לרוץ.
+- **I want to try diving.** · אני רוצה לנסות צלילה. — _I want to try ___ — לכל דבר חדש בטיול._
+- **Do you like diving?** · אתה אוהב לצלול?
 
 ### Expected replies (you hear)
-- **What would you like?** · מה תרצה?
-- **How many?** · כמה?
-- **Five each.** · חמישה כל אחד.
-- **For you — best price, eight.** · בשבילך — מחיר הכי טוב, שמונה.
-- **It's fresh today!** · טרי היום!
-- **Anything else, my friend?** · עוד משהו, חבר?
+- **Do you like surfing?** · אתה אוהב לגלוש?
+- **What else do you like?** · מה עוד אתה אוהב?
+- **Do you like music?** · אתה אוהב מוזיקה?
+- **Me neither!** · גם אני לא!
+- **Is there something you want to try?** · יש משהו שאתה רוצה לנסות?
+- **Let's go together.** · בוא נלך יחד.
 
-_Reply-training drill:_ “How many?” · “Five each.” · “For you — best price, eight.” · “Anything else, my friend?”
+_Reply-training drill:_ “What else do you like?” · “Do you like music?” · “Me neither!” · “Let's go together.”
 
 ### Recovery tools reused
-`Can you repeat that?` · `Please speak slowly.` · `Can you show me?` · `Thank you!`
+`What does that mean?`
 
 ### Cold open (ambush)
-- 🧑 (fast) “You want it with the hot sauce or no spice today boss?” · רוצה את זה עם הרוטב החריף או בלי חריף היום, בוס?
-  - ✅ best move: **Please speak slowly.** · דבר לאט, בבקשה.
-  - ✗ distractor: I'll take it.
+- 🧑 (fast) “So tell me do you like music or are you more of a sport person?” · אז תגיד — אתה אוהב מוזיקה או שאתה יותר טיפוס של ספורט?
+  - ✅ best move: **Do you like music?** · אתה אוהב מוזיקה?
+  - ✗ distractor: Let's go together.
 
-### Dialogue: `market-stall` — happy path
-- **🧑 Them:** “Fresh today, fresh today! What would you like?” · טרי היום, טרי היום! מה תרצה?
-- **🫵 You:** “One of those, please.” · אחד מאלה, בבקשה. (מצביע!)
-- **🧑 Them:** “These? Great choice — how many?” · אלה? בחירה מעולה — כמה?
-- **🫵 You:** “Two, please.” · שניים, בבקשה.
-- **🧑 Them:** “Two — that's ten, my friend.” · שניים — זה עשרה, חבר.
-- **🫵 You:** “That's a bit much.” · זה קצת יקר. (חיוך — מתמקחים)
-- **🧑 Them:** “Ha! Okay, okay — for you, eight. Best price!” · הא! טוב, טוב — בשבילך, שמונה. מחיר הכי טוב!
-- **🫵 You:** “I'll take it.” · אני אקח.
-- **🧑 Them:** “Good choice, my friend! Here you go — enjoy!” · בחירה טובה, חבר! הנה לך — תיהנה!
+### Dialogue: `free-time-chat` — happy path
+- **🧑 Them:** “Hi! Are you free today?” · היי! אתה פנוי היום?
+- **🫵 You:** “Yes! What do you do for fun?” · כן! מה אתה אוהב לעשות בזמן הפנוי?
+- **🧑 Them:** “I surf a lot. Do you like surfing?” · אני גולש הרבה. אתה אוהב לגלוש?
+- **🫵 You:** “I love surfing!” · אני מאוד אוהב לגלוש!
+- **🧑 Them:** “Great! And what else do you like?” · מעולה! ומה עוד אתה אוהב?
+- **🫵 You:** “I like drawing.” · אני אוהב לצייר.
+- **🧑 Them:** “Nice! When do you draw?” · יפה! מתי אתה מצייר?
+- **🫵 You:** “I usually draw in the evening.” · בדרך כלל אני מצייר בערב.
+- **🧑 Them:** “In the evening I like to listen to music. Do you like music?” · בערב אני אוהב לשמוע מוזיקה. אתה אוהב מוזיקה?
+- **🫵 You:** “Yes, I like to listen to music too.” · כן, גם אני אוהב לשמוע מוזיקה.
+- **🧑 Them:** “And sport? Do you like running?” · וספורט? אתה אוהב לרוץ?
+- **🫵 You:** “No, I don't like running.” · לא, אני לא אוהב לרוץ.
+- **🧑 Them:** “Me neither! Is there something you want to try here?” · גם אני לא! יש משהו שאתה רוצה לנסות כאן?
+- **🫵 You:** “I want to try diving.” · אני רוצה לנסות צלילה.
+- **🧑 Them:** “Good idea! There's a diving school near the beach.” · רעיון טוב! יש בית ספר לצלילה ליד החוף.
+- **🫵 You:** “Do you like diving?” · אתה אוהב לצלול?
+- **🧑 Them:** “I love it! Let's go together tomorrow.” · מאוד! בוא נלך יחד מחר.
 
 ### Review status
 - 🤖 AI-drafted (English + Hebrew) — **pending human / native-Hebrew review**
@@ -870,11 +979,11 @@ _Reply-training drill:_ “How many?” · “Five each.” · “For you — be
 
 ---
 
-## Mission 16 — Supermarket · סופרמרקט
+## Mission 17 — Supermarket & Everyday Shopping · סופרמרקט וקניות יום-יום
 
-> Phase 3 · 🍽️ Food
+> Phase 3 · 🏡 Everyday Life
 
-**Objective:** Find, weigh, pay — self-checkout included. · למצוא, לשקול, לשלם — כולל קופה אוטומטית.
+**Objective:** Find the product, pay at the checkout, ask for a bag. · למצוא מוצר, לשלם בקופה, לבקש שקית.
 
 **Confidence gain:** Basic groceries with zero dependence. · קניות בסיסיות בלי תלות באף אחד.
 
@@ -911,7 +1020,7 @@ _Reply-training drill:_ “It's in aisle three.” · “Over there, on the left
 - **🫵 You:** “Where is the milk?” · איפה החלב?
 - **🧑 Them:** “The milk is in aisle three, on the left.” · החלב במעבר שלוש, משמאל.
 - **🫵 You:** “Thank you!” · תודה!
-- **🧑 Them:** “At the checkout — just these? You'll need to weigh the fruit first.” · בקופה — רק אלה? צריך לשקול קודם את הפירות.
+- **🧑 Them:** “…At the checkout… Hi! Is that everything?” · …בקופה… היי! זה הכל?
 - **🫵 You:** “Can you show me?” · אתה יכול להראות לי? (כלי — כשמילים לא מספיקות)
 - **🧑 Them:** “Of course — put it here, press the picture, done.” · בטח — שים כאן, לחץ על התמונה, גמרנו.
 - **🫵 You:** “Just this, thanks.” · רק את זה, תודה.
@@ -925,13 +1034,13 @@ _Reply-training drill:_ “It's in aisle three.” · “Over there, on the left
 
 ---
 
-## Mission 17 — CHECKPOINT: Food Day · נקודת ביקורת: יום אוכל
+## Mission 18 — CHECKPOINT: Everyday Day · נקודת ביקורת: יום רגיל
 
-> Phase 3 · 🍽️ Food · 🏁 CHECKPOINT
+> Phase 3 · 🏡 Everyday Life · 🏁 CHECKPOINT
 
-**Objective:** Coffee morning, market noon, restaurant night — cold. · קפה בבוקר, שוק בצהריים, מסעדה בערב — קר.
+**Objective:** Morning coffee, plans with a friend, a small purchase, dinner — cold. · קפה בבוקר, תוכניות עם חבר, קנייה קטנה, ארוחת ערב — קר.
 
-**Confidence gain:** A full food day without the net. · יום אוכל שלם בלי רשת ביטחון.
+**Confidence gain:** A whole ordinary day without the net. · יום רגיל שלם בלי רשת ביטחון.
 
 **Estimated time:** ~20 min
 
@@ -939,49 +1048,76 @@ _Reply-training drill:_ “It's in aisle three.” · “Over there, on the left
 
 ### Core phrases (you say)
 - **I'd like an iced coffee, please.** · אני רוצה קפה קר, בבקשה. — _התבנית: I’d like ___, please — עובדת על הכל._
-- **One of those, please.** · אחד מאלה, בבקשה. — _לא יודע את השם? מצביע ואומר One of those. עובד בכל דוכן בעולם._
-- **How much is it?** · כמה זה עולה? — _השאלה שאסור לוותר עליה בשוק. תמיד שואלים לפני._
-- **A table for two, please.** · שולחן לשניים, בבקשה. — _התבנית: A table for ___ — פשוט מספר. for one / for four._
-- **I'll have the pasta, please.** · אני אקח את הפסטה, בבקשה. — _התבנית הגדולה של המסעדה: I’ll have the ___ — מזמינים כל דבר בתפריט._
-- **Could we have the bill, please?** · אפשר את החשבון, בבקשה? — _המשפט שסוגר כל ארוחה. באנגליה: bill · באמריקה: check._
+- **Maybe later.** · אולי אחר כך. — _התשובה הכי שימושית כשלא החלטת._
+- **By card, please.** · בכרטיס, בבקשה.
+- **Yes, I'm free tomorrow.** · כן, אני פנוי מחר.
+- **I love surfing!** · אני מאוד אוהב לגלוש!
+- **Let's meet here at seven.** · ניפגש כאן בשבע. — _Let’s meet ___ at ___ — מקום ושעה, וזהו._
+- **I'm going home.** · אני הולך הביתה.
+- **I'm just looking, thanks.** · אני רק מסתכל, תודה. — _משפט שקונה לך מרחב בלי לחץ מוכר._
+- **How much is it?** · כמה זה עולה? — _השאלה שפותחת כל עסקה. תלמד אותה עד הסוף._
+- **I'll take it.** · אני אקח את זה. — _החלטת? שתי מילים סוגרות עסקה._
+- **A table for two, please.** · שולחן לשניים, בבקשה. — _הפתיח למסעדה. תבנית: a table for ___._
+- **I'll have the chicken.** · אני אקח את העוף. — _תבנית ההזמנה: I’ll have the ___._
+- **A bottle of water, please.** · בקבוק מים, בבקשה.
+- **The bill, please.** · החשבון, בבקשה.
 
 ### Expected replies (you hear)
 - **Milk and sugar?** · חלב וסוכר?
-- **How many?** · כמה?
+- **Cash or card?** · מזומן או כרטיס?
+- **Would you like dessert?** · רוצים קינוח?
+- **Do you have a reservation?** · יש לכם הזמנה?
 
 ### Recovery tools reused
-`Can you repeat that?` · `Please speak slowly.` · `Thank you!`
+`Can you repeat that?`
 
 ### Cold open (ambush)
-- 🧑 (fast) “Sorry — remind me, was that with milk and sugar or just milk?” · סליחה — תזכיר לי, זה היה עם חלב וסוכר או רק חלב?
-  - ✅ best move: **Can you repeat that?** · אפשר לחזור על זה?
-  - ✗ distractor: Milk and sugar?
-- 🧑 (fast) “Two for six or five for thirteen — which deal do you want boss?” · שניים בשישה או חמישה בשלוש-עשרה — איזו עסקה אתה רוצה, בוס?
-  - ✅ best move: **Please speak slowly.** · דבר לאט, בבקשה.
-  - ✗ distractor: How many?
+- 🧑 (fast) “Sorry before I forget did you want milk and sugar in that?” · סליחה, לפני שאני שוכח — רצית בזה חלב וסוכר?
+  - ✅ best move: **Milk and sugar?** · חלב וסוכר?
+  - ✗ distractor: Cash or card?
+- 🧑 (fast) “Before I bring the bill would you like to see the dessert menu?” · לפני שאני מביא את החשבון — רוצה לראות את תפריט הקינוחים?
+  - ✅ best move: **Would you like dessert?** · רוצים קינוח?
+  - ✗ distractor: Do you have a reservation?
 
-### Dialogue: `cold-coffee` — happy path
+### Dialogue: `cold-morning` — happy path
 - **🧑 Them:** “Morning! What can I get you?” · בוקר! מה להביא לך?
 - **🫵 You:** “I'd like an iced coffee, please.” · אני רוצה קפה קר, בבקשה.
-- **🧑 Them:** “Sure — milk and sugar?” · בטח — חלב וסוכר?
-- **🫵 You:** “Milk, no sugar.” · עם חלב, בלי סוכר.
-- **🧑 Them:** “Coming right up. Have a great morning!” · תכף מוכן. בוקר נהדר!
+- **🧑 Them:** “Sure. Anything to eat?” · בטח. משהו לאכול?
+- **🫵 You:** “I don't know. Maybe later.” · אני לא יודע. אולי אחר כך.
+- **🧑 Them:** “No problem. That's four euros. Cash or card?” · אין בעיה. זה ארבעה יורו. מזומן או כרטיס?
+- **🫵 You:** “By card, please.” · בכרטיס, בבקשה.
+- **🧑 Them:** “Thank you — have a great morning!” · תודה — בוקר נהדר!
 
-### Dialogue: `cold-market` — happy path
-- **🧑 Them:** “Fresh fruit, fresh fruit! What would you like?” · פירות טריים, פירות טריים! מה תרצה?
+### Dialogue: `cold-plans` — happy path
+- **🧑 Them:** “Hey! Are you free tomorrow?” · היי! אתה פנוי מחר?
+- **🫵 You:** “Yes, I'm free tomorrow.” · כן, אני פנוי מחר.
+- **🧑 Them:** “We're going surfing. Do you like surfing?” · אנחנו הולכים לגלוש. אתה אוהב לגלוש?
+- **🫵 You:** “I love surfing!” · אני מאוד אוהב לגלוש!
+- **🧑 Them:** “Great! What time is good for you?” · מעולה! איזו שעה טובה לך?
+- **🫵 You:** “Let's meet here at seven.” · ניפגש כאן בשבע.
+- **🧑 Them:** “Perfect. And now? Are you coming to the beach?” · מושלם. ועכשיו? אתה בא לים?
+- **🫵 You:** “Not now, I'm tired. I'm going home.” · לא עכשיו, אני עייף. אני הולך הביתה.
+- **🧑 Them:** “Okay. See you tomorrow!” · בסדר. נתראה מחר!
+
+### Dialogue: `cold-shop` — happy path
+- **🧑 Them:** “Hi there! Can I help you find anything?” · היי! אפשר לעזור לך למצוא משהו?
+- **🫵 You:** “I'm just looking, thanks.” · אני רק מסתכל, תודה.
+- **🧑 Them:** “Of course. This one is on sale today.” · כמובן. זה במבצע היום.
 - **🫵 You:** “How much is it?” · כמה זה עולה?
-- **🧑 Them:** “Best price for you — six! How many?” · מחיר הכי טוב בשבילך — שישה! כמה?
-- **🫵 You:** “Two, please.” · שניים, בבקשה.
-- **🧑 Them:** “Here you go — enjoy, my friend!” · הנה לך — תיהנה, חבר!
+- **🧑 Them:** “Twenty euros.” · עשרים יורו.
+- **🫵 You:** “I'll take it.” · אני אקח את זה.
+- **🧑 Them:** “Great choice. Thank you!” · בחירה מצוינת. תודה!
 
-### Dialogue: `cold-restaurant` — happy path
+### Dialogue: `cold-dinner` — happy path
 - **🧑 Them:** “Good evening! How many people?” · ערב טוב! כמה אנשים?
 - **🫵 You:** “A table for two, please.” · שולחן לשניים, בבקשה.
 - **🧑 Them:** “Right this way. Are you ready to order?” · בבקשה אחריי. מוכנים להזמין?
-- **🫵 You:** “I'll have the pasta, please.” · אני אקח את הפסטה, בבקשה.
-- **🧑 Them:** “Excellent. I'll bring it right out. Just wave when you'd like the bill.” · מצוין. אביא מיד. תסמן כשתרצה את החשבון.
-- **🫵 You:** “Could we have the bill, please?” · אפשר את החשבון, בבקשה?
-- **🧑 Them:** “Of course — here you go. Have a lovely evening!” · כמובן — בבקשה. ערב נפלא!
+- **🫵 You:** “I'll have the chicken.” · אני אקח את העוף.
+- **🧑 Them:** “Excellent. Anything to drink?” · מצוין. משהו לשתות?
+- **🫵 You:** “A bottle of water, please.” · בקבוק מים, בבקשה.
+- **🧑 Them:** “…Later… Is everything okay?” · …אחר כך… הכל בסדר?
+- **🫵 You:** “Yes, that was delicious! The bill, please.” · כן, היה טעים מאוד! החשבון, בבקשה.
+- **🧑 Them:** “Here you are. Have a lovely evening!” · בבקשה. ערב נעים!
 
 ### Review status
 - 🤖 AI-drafted (English + Hebrew) — **pending human / native-Hebrew review**
@@ -989,9 +1125,9 @@ _Reply-training drill:_ “It's in aisle three.” · “Over there, on the left
 
 ---
 
-## Mission 18 — Public Transport · תחבורה ציבורית
+## Mission 19 — Public Transport · תחבורה ציבורית
 
-> Phase 4 · 🏙️ City Life
+> Phase 4 · 🏙️ City & Conversation
 
 **Objective:** Ticket, platform, direction, the right stop. · כרטיס, רציף, כיוון, ירידה נכונה.
 
@@ -1002,7 +1138,7 @@ _Reply-training drill:_ “It's in aisle three.” · “Over there, on the left
 **Video:** — (none yet)
 
 ### Core phrases (you say)
-- **One ticket to the center, please.** · כרטיס אחד למרכז, בבקשה. — _התבנית: One ticket to ___ — קונה כרטיס לכל יעד._
+- **One ticket to the centre, please.** · כרטיס אחד למרכז, בבקשה. — _התבנית: One ticket to ___ — קונה כרטיס לכל יעד._
 - **Which platform?** · איזה רציף? — _שתי מילים שמונעות עלייה לרכבת הלא נכונה._
 - **Does this stop at the museum?** · זה עוצר במוזיאון? — _התבנית: Does this stop at ___? — מוודאת שאתה יורד נכון._
 - **When's the next one?** · מתי הבא?
@@ -1027,12 +1163,12 @@ _Reply-training drill:_ “Single or return?” · “Platform two.” · “Eve
 
 ### Dialogue: `transport` — happy path
 - **🧑 Them:** “Hello! Where are you headed?” · שלום! לאן אתה נוסע?
-- **🫵 You:** “One ticket to the center, please.” · כרטיס אחד למרכז, בבקשה.
+- **🫵 You:** “One ticket to the centre, please.” · כרטיס אחד למרכז, בבקשה.
 - **🧑 Them:** “Single or return?” · הלוך או הלוך-חזור?
 - **🫵 You:** “Single, please.” · הלוך, בבקשה.
-- **🧑 Them:** “That's three euros. Platform two, leaves every ten minutes.” · זה שלושה יורו. רציף שתיים, יוצא כל עשר דקות.
+- **🧑 Them:** “That's three euros. It leaves every ten minutes.” · זה שלושה יורו. יוצא כל עשר דקות.
 - **🫵 You:** “Which platform?” · איזה רציף?
-- **🧑 Them:** “Platform — two. Straight ahead.” · רציף — שתיים. ישר קדימה.
+- **🧑 Them:** “Platform two. Straight ahead.” · רציף שתיים. ישר קדימה.
 - **🫵 You:** “Thank you!” · תודה!
 - **🧑 Them:** “The train's right here. Hop on.” · הרכבת ממש כאן. עלה.
 - **🫵 You:** “Does this stop at the museum?” · זה עוצר במוזיאון?
@@ -1046,163 +1182,60 @@ _Reply-training drill:_ “Single or return?” · “Platform two.” · “Eve
 
 ---
 
-## Mission 19 — Tickets & Attractions · כרטיסים ואטרקציות
+## Mission 20 — Past & Recent Events · עבר: מה עשיתי
 
-> Phase 4 · 🏙️ City Life
+> Phase 4 · 🏙️ City & Conversation
 
-**Objective:** Museum, tour, opening hours, discounts. · מוזיאון, סיור, שעות פתיחה, הנחות.
+**Objective:** I went, I saw, I ate, I stayed, it was good — say what you did. · הלכתי, ראיתי, אכלתי, ישנתי, היה טוב — לספר מה עשית.
 
-**Confidence gain:** Culture opens frictionlessly. · התרבות נפתחת בלי חיכוך.
-
-**Estimated time:** ~18 min
-
-**Video:** — (none yet)
-
-### Core phrases (you say)
-- **Two tickets, please.** · שני כרטיסים, בבקשה. — _התבנית: ___ tickets, please. שני מספרים וגמרנו._
-- **What time do you open?** · באיזו שעה אתם פותחים? — _התבנית: What time do you ___? — פותחת כל שאלת שעה._
-- **Is there a discount?** · יש הנחה? — _התבנית: Is there a ___? — בודקת אם קיים משהו. שאלה ששווה כסף._
-- **Is there a guided tour?** · יש סיור מודרך?
-
-### Expected replies (you hear)
-- **How many tickets?** · כמה כרטיסים?
-- **We open at nine.** · אנחנו פותחים בתשע.
-- **Last entry is at five.** · כניסה אחרונה בחמש.
-- **The tour starts at eleven.** · הסיור מתחיל באחת-עשרה.
-- **Students get half price.** · סטודנטים משלמים חצי מחיר.
-- **Today is sold out.** · היום אזל.
-
-_Reply-training drill:_ “How many tickets?” · “We open at nine.” · “Students get half price.” · “The tour starts at eleven.”
-
-### Recovery tools reused
-`Can you repeat that?` · `Please speak slowly.` · `Thank you!`
-
-### Cold open (ambush)
-- 🧑 (fast) “The main exhibit's closed today but the rooftop terrace is open would you prefer that instead?” · התערוכה הראשית סגורה היום, אבל גג הצפייה פתוח — אתה מעדיף את זה במקום?
-  - ✅ best move: **Please speak slowly.** · דבר לאט, בבקשה.
-  - ✗ distractor: Two tickets, please.
-
-### Dialogue: `ticket-desk` — happy path
-- **🧑 Them:** “Hi! Welcome to the museum. How many tickets?” · היי! ברוך הבא למוזיאון. כמה כרטיסים?
-- **🫵 You:** “Two tickets, please.” · שני כרטיסים, בבקשה.
-- **🧑 Them:** “Two — that's twenty euros. Anything else?” · שניים — זה עשרים יורו. עוד משהו?
-- **🫵 You:** “Is there a discount?” · יש הנחה?
-- **🧑 Them:** “Students get half price — do you have a student card?” · סטודנטים חצי מחיר — יש לך כרטיס סטודנט?
-- **🫵 You:** “Thank you!” · תודה!
-- **🧑 Them:** “Here are your tickets. Anything else I can help with?” · הנה הכרטיסים. עוד משהו שאוכל לעזור?
-- **🫵 You:** “Is there a guided tour?” · יש סיור מודרך?
-- **🧑 Them:** “Yes — the tour starts at eleven, in the main hall.” · כן — הסיור מתחיל באחת-עשרה, באולם המרכזי.
-- **🫵 You:** “Thank you!” · תודה!
-- **🧑 Them:** “Enjoy the museum — and the tour!” · תיהנה מהמוזיאון — ומהסיור!
-
-### Review status
-- 🤖 AI-drafted (English + Hebrew) — **pending human / native-Hebrew review**
-- ✅ all items have Hebrew
-
----
-
-## Mission 20 — Wifi, SIM & Practical · וויי-פיי, סים ופרקטיקה
-
-> Phase 4 · 🏙️ City Life
-
-**Objective:** SIM plan, wifi password, charger — 21st-century needs. · חבילת סים, סיסמת וויי-פיי, מטען — צרכי המאה ה-21.
-
-**Confidence gain:** I stay connected in any country. · אני מחובר בכל מדינה.
-
-**Estimated time:** ~18 min
-
-**Video:** — (none yet)
-
-### Core phrases (you say)
-- **I need a SIM card.** · אני צריך כרטיס סים. — _התבנית: I need a ___ — מבקשת כל דבר בפשטות ובביטחון._
-- **A data plan, please.** · חבילת גלישה, בבקשה.
-- **How much is it?** · כמה זה עולה? — _לפני שמתחייבים לחבילה — תמיד שואלים מחיר._
-- **Do you have a charger?** · יש לכם מטען?
-
-### Expected replies (you hear)
-- **How long are you staying?** · לכמה זמן אתה נשאר?
-- **This one has ten gigs.** · לזה יש עשרה ג'יגה.
-- **It's twenty euros.** · זה עשרים יורו.
-- **I'll need your passport.** · אצטרך את הדרכון שלך.
-- **I'll set it up now.** · אני אתקין עכשיו.
-- **The wifi password is on your receipt.** · סיסמת הוויי-פיי על הקבלה.
-
-_Reply-training drill:_ “How long are you staying?” · “This one has ten gigs.” · “It's twenty euros.” · “I'll need your passport.”
-
-### Recovery tools reused
-`Can you repeat that?` · `Please speak slowly.` · `Thank you!`
-
-### Cold open (ambush)
-- 🧑 (fast) “Would you like the plan to auto-renew each month or just the one-time top-up for now?” · תרצה שהחבילה תתחדש אוטומטית כל חודש או רק טעינה חד-פעמית לעכשיו?
-  - ✅ best move: **Can you repeat that?** · אפשר לחזור על זה?
-  - ✗ distractor: Do you have a charger?
-
-### Dialogue: `sim-shop` — happy path
-- **🧑 Them:** “Hi there! How can I help?” · היי! איך אפשר לעזור?
-- **🫵 You:** “I need a SIM card.” · אני צריך כרטיס סים.
-- **🧑 Them:** “Great — this tourist plan has ten gigs. How long are you staying?” · מעולה — לחבילה התיירותית הזאת יש עשרה ג'יגה. לכמה זמן אתה נשאר?
-- **🫵 You:** “How much is it?” · כמה זה עולה?
-- **🧑 Them:** “It's twenty euros, and I'll need your passport.” · זה עשרים יורו, ואצטרך את הדרכון שלך.
-- **🫵 You:** “Do you have a charger?” · יש לכם מטען?
-- **🧑 Them:** “A charger? Yes — right behind you. Anything else?” · מטען? כן — ממש מאחוריך. עוד משהו?
-- **🫵 You:** “Thank you!” · תודה!
-- **🧑 Them:** “All set — I'll set it up now. The wifi password is on your receipt.” · הכל מוכן — אני אתקין עכשיו. סיסמת הוויי-פיי על הקבלה.
-- **🫵 You:** “Thank you!” · תודה!
-- **🧑 Them:** “You're connected! Enjoy your trip.” · אתה מחובר! תיהנה מהטיול.
-
-### Review status
-- 🤖 AI-drafted (English + Hebrew) — **pending human / native-Hebrew review**
-- ✅ all items have Hebrew
-
----
-
-## Mission 21 — Souvenirs & Gifts · מזכרות ומתנות
-
-> Phase 4 · 🏙️ City Life
-
-**Objective:** Choose gifts, ask about wrapping, pay. · לבחור מתנות, לשאול על אריזה, לשלם.
-
-**Confidence gain:** Shops are friendly territory. · חנויות הן טריטוריה ידידותית.
+**Confidence gain:** I can tell what happened. · אני יכול לספר מה קרה.
 
 **Estimated time:** ~20 min
 
 **Video:** — (none yet)
 
 ### Core phrases (you say)
-- **I'm just looking, thanks.** · אני רק מסתכל, תודה. — _מוריד את כל הלחץ. אתה מסתכל בשקט, בלי התחייבות._
-- **How much is this one?** · כמה זה עולה?
-- **Do you have another color?** · יש בצבע אחר? — _התבנית: Do you have another ___? — מבקשת גרסה אחרת של כל דבר._
-- **Could you gift-wrap it?** · אפשר לעטוף למתנה?
-- **I'll take this one.** · אני אקח את זה. — _סוגר את הקנייה. בחירה, וגמרנו._
+- **I went to the old town.** · הלכתי לעיר העתיקה. — _I went to ___ — התשובה ל"איפה היית?"_
+- **I saw the market.** · ראיתי את השוק.
+- **Yes, I ate fish.** · כן, אכלתי דג.
+- **Yes, it was great!** · כן, היה מעולה!
+- **It was good.** · היה טוב.
+- **I stayed in a hostel.** · ישנתי בהוסטל. — _I stayed in ___ — hostel, hotel, apartment._
+- **What did you do yesterday?** · מה עשית אתמול?
+- **It was bad.** · היה רע.
 
 ### Expected replies (you hear)
-- **Can I help you find anything?** · לעזור לך למצוא משהו?
-- **These are handmade.** · אלה בעבודת יד.
-- **Which color would you like?** · איזה צבע תרצה?
-- **Of course — is it a gift?** · בטח — זה מתנה?
-- **This is the last one.** · זה האחרון.
-- **That'll be fifteen.** · זה יוצא חמש-עשרה.
+- **Where were you yesterday?** · איפה היית אתמול?
+- **What did you see?** · מה ראית?
+- **Did you eat there?** · אכלת שם?
+- **Did you like it?** · אהבת?
+- **Where did you stay?** · איפה ישנת?
+- **Was it good?** · היה טוב?
 
-_Reply-training drill:_ “Can I help you find anything?” · “These are handmade.” · “Which color would you like?” · “Of course — is it a gift?”
+_Reply-training drill:_ “What did you see?” · “Did you eat there?” · “Did you like it?” · “Where did you stay?”
 
 ### Recovery tools reused
-`Can you repeat that?` · `Please speak slowly.` · `Thank you!`
+`Can you repeat that?`
 
 ### Cold open (ambush)
-- 🧑 (fast) “We've got a buy-two-get-one-free deal on today would you like to add a second one?” · יש לנו היום מבצע קנה-שניים-קבל-אחד-חינם — תרצה להוסיף עוד אחד?
-  - ✅ best move: **Please speak slowly.** · דבר לאט, בבקשה.
-  - ✗ distractor: Could you gift-wrap it?
+- 🧑 (fast) “Wait so when you were in Argentina where did you stay was it a hotel?” · רגע, כשהיית בארגנטינה — איפה ישנת, במלון?
+  - ✅ best move: **Where did you stay?** · איפה ישנת?
+  - ✗ distractor: Did you eat there?
 
-### Dialogue: `souvenir-shop` — happy path
-- **🧑 Them:** “Hello! Can I help you find anything?” · שלום! לעזור לך למצוא משהו?
-- **🫵 You:** “I'm just looking, thanks.” · אני רק מסתכל, תודה.
-- **🧑 Them:** “Of course — these little bowls are handmade, very popular.” · כמובן — הקערות הקטנות האלה בעבודת יד, מאוד פופולריות.
-- **🫵 You:** “How much is this one?” · כמה זה עולה?
-- **🧑 Them:** “That one's fifteen. Would you like it?” · זה עולה חמש-עשרה. תרצה אותו?
-- **🫵 You:** “I'll take this one.” · אני אקח את זה.
-- **🧑 Them:** “Lovely choice — is it a gift?” · בחירה נהדרת — זה מתנה?
-- **🫵 You:** “Could you gift-wrap it?” · אפשר לעטוף למתנה?
-- **🧑 Them:** “All wrapped up — here you go. Enjoy, and safe travels!” · הכל עטוף — בבקשה. תיהנה, ונסיעה טובה!
+### Dialogue: `what-did-you-do` — happy path
+- **🧑 Them:** “Hey! Where were you yesterday?” · היי! איפה היית אתמול?
+- **🫵 You:** “I went to the old town.” · הלכתי לעיר העתיקה.
+- **🧑 Them:** “Nice! What did you see?” · יפה! מה ראית?
+- **🫵 You:** “I saw the market.” · ראיתי את השוק.
+- **🧑 Them:** “Did you eat there?” · אכלת שם?
+- **🫵 You:** “Yes, I ate fish.” · כן, אכלתי דג.
+- **🧑 Them:** “Did you like it?” · אהבת?
+- **🫵 You:** “Yes, it was great!” · כן, היה מעולה!
+- **🧑 Them:** “You were in Argentina last month, right? Where did you stay?” · היית בארגנטינה בחודש שעבר, נכון? איפה ישנת?
+- **🫵 You:** “I stayed in a hostel.” · ישנתי בהוסטל.
+- **🧑 Them:** “A hostel! Was it good?” · הוסטל! היה טוב?
+- **🫵 You:** “It was good. And you? What did you do yesterday?” · היה טוב. ואתה? מה עשית אתמול?
+- **🧑 Them:** “Me? Nothing! I was tired. I slept all day.” · אני? כלום! הייתי עייף. ישנתי כל היום.
 
 ### Review status
 - 🤖 AI-drafted (English + Hebrew) — **pending human / native-Hebrew review**
@@ -1210,53 +1243,63 @@ _Reply-training drill:_ “Can I help you find anything?” · “These are hand
 
 ---
 
-## Mission 22 — Small Talk · שיחת חולין
+## Mission 21 — Future Travel & Plans · לאן ממשיכים: תוכניות
 
-> Phase 4 · 🏙️ City Life
+> Phase 4 · 🏙️ City & Conversation
 
-**Objective:** Three warm minutes with a stranger. · שלוש דקות שיחה חמה עם זר.
+**Objective:** Where I am going, for how long, what I want to do, and what comes after. · לאן אני נוסע, לכמה זמן, מה אני רוצה לעשות, ומה אחרי זה.
 
-**Confidence gain:** Connection, not just transactions. · חיבור, לא רק עסקאות.
+**Confidence gain:** I can talk about my plans. · אני מספר על התוכניות שלי.
 
 **Estimated time:** ~20 min
 
 **Video:** — (none yet)
 
 ### Core phrases (you say)
-- **This place is beautiful.** · המקום הזה יפהפה. — _מחמאה קטנה פותחת חום מיידי. תמיד עובדת._
-- **How about you?** · ואתה? — _שלוש מילים שמחזירות את הכדור וממשיכות כל שיחה._
-- **Can you recommend a place?** · אתה יכול להמליץ על מקום?
-- **It was nice talking to you.** · היה נעים לדבר איתך. — _הדרך החמה לסיים שיחה. משאירה חיוך._
-- **I love the food here.** · אני אוהב את האוכל כאן.
+- **I'm going to Vietnam.** · אני נוסע לווייטנאם. — _I’m going to ___ — מדינה, עיר, או המקום הבא._
+- **I'll be there for two weeks.** · אני אהיה שם שבועיים.
+- **I want to visit Hanoi.** · אני רוצה לבקר בהאנוי.
+- **I want to try the food.** · אני רוצה לנסות את האוכל.
+- **I want to travel by motorbike.** · אני רוצה לטייל באופנוע.
+- **I want to ride horses there.** · אני רוצה לרכוב שם על סוסים.
+- **After that I'm going to Thailand.** · אחרי זה אני נוסע לתאילנד.
+- **Tomorrow morning I'm going to the airport.** · מחר בבוקר אני נוסע לשדה התעופה.
+- **Where are you going next?** · לאן אתה נוסע אחרי זה?
 
 ### Expected replies (you hear)
-- **Is this your first time here?** · זו הפעם הראשונה שלך כאן?
-- **Where are you from?** · מאיפה אתה?
-- **You should try the old town.** · כדאי לך לנסות את העיר העתיקה.
-- **How long are you here for?** · לכמה זמן אתה כאן?
-- **Enjoy the rest of your trip!** · תיהנה משאר הטיול!
-- **Me too!** · גם אני!
+- **How long will you be there?** · כמה זמן תהיה שם?
+- **What do you want to do there?** · מה אתה רוצה לעשות שם?
+- **And after that?** · ואחרי זה?
+- **What are you doing tomorrow morning?** · מה אתה עושה מחר בבוקר?
+- **Be careful.** · תיזהר.
+- **Have a great trip!** · נסיעה טובה!
 
-_Reply-training drill:_ “Is this your first time here?” · “Where are you from?” · “You should try the old town.” · “How long are you here for?”
+_Reply-training drill:_ “How long will you be there?” · “What do you want to do there?” · “And after that?” · “Be careful.”
 
 ### Recovery tools reused
-`Can you repeat that?` · `Please speak slowly.` · `Thank you!`
+`Please speak slowly.`
 
 ### Cold open (ambush)
-- 🧑 (fast) “So honestly what's been your favorite thing about the trip so far?” · אז בכנות — מה הדבר האהוב עליך בטיול עד עכשיו?
-  - ✅ best move: **I love the food here.** · אני אוהב את האוכל כאן.
-  - ✗ distractor: Can you recommend a place?
+- 🧑 (fast) “Hold on before you go what are you doing tomorrow morning do you have time for a coffee?” · רגע, לפני שאתה נוסע — מה אתה עושה מחר בבוקר, יש לך זמן לקפה?
+  - ✅ best move: **What are you doing tomorrow morning?** · מה אתה עושה מחר בבוקר?
+  - ✗ distractor: How long will you be there?
 
-### Dialogue: `small-talk` — happy path
-- **🧑 Them:** “Beautiful view, isn't it? Where are you from?” · נוף יפה, נכון? מאיפה אתה?
-- **🫵 You:** “This place is beautiful.” · המקום הזה יפהפה.
-- **🧑 Them:** “It really is. Is this your first time here?” · באמת. זו הפעם הראשונה שלך כאן?
-- **🫵 You:** “I love the food here.” · אני אוהב את האוכל כאן.
-- **🧑 Them:** “The food is the best part! You should try the old town — wonderful little restaurants.” · האוכל זה הכי טוב! כדאי לך לנסות את העיר העתיקה — מסעדות קטנות נפלאות.
-- **🫵 You:** “Can you recommend a place?” · אתה יכול להמליץ על מקום?
-- **🧑 Them:** “Of course — 'Mama Rosa'. Ask for the owner and tell her I sent you!” · בטח — 'מאמא רוזה'. תבקש את הבעלים ותגיד שאני שלחתי!
-- **🫵 You:** “It was nice talking to you.” · היה נעים לדבר איתך.
-- **🧑 Them:** “You too! Enjoy the rest of your trip!” · גם לי! תיהנה משאר הטיול!
+### Dialogue: `where-next` — happy path
+- **🧑 Them:** “So, where are you going next?” · אז לאן אתה נוסע אחרי זה?
+- **🫵 You:** “I'm going to Vietnam.” · אני נוסע לווייטנאם.
+- **🧑 Them:** “Wow! How long will you be there?” · וואו! כמה זמן תהיה שם?
+- **🫵 You:** “I'll be there for two weeks.” · אני אהיה שם שבועיים.
+- **🧑 Them:** “What do you want to do there?” · מה אתה רוצה לעשות שם?
+- **🫵 You:** “I want to visit Hanoi.” · אני רוצה לבקר בהאנוי.
+- **🧑 Them:** “Nice. Anything else?” · יפה. עוד משהו?
+- **🫵 You:** “I want to travel by motorbike.” · אני רוצה לטייל באופנוע.
+- **🧑 Them:** “Sounds amazing! Be careful. And after that?” · נשמע מדהים! תיזהר. ואחרי זה?
+- **🫵 You:** “After that I'm going to Thailand.” · אחרי זה אני נוסע לתאילנד.
+- **🧑 Them:** “Great plan. And what are you doing tomorrow morning?” · תוכנית מעולה. ומה אתה עושה מחר בבוקר?
+- **🫵 You:** “Tomorrow morning I'm going to the airport.” · מחר בבוקר אני נוסע לשדה התעופה.
+- **🧑 Them:** “Already! We'll miss you.” · כבר! נתגעגע אליך.
+- **🫵 You:** “And you? Where are you going next?” · ואתה? לאן אתה נוסע אחרי זה?
+- **🧑 Them:** “Me? I'm going home. Have a great trip!” · אני? אני חוזר הביתה. נסיעה טובה!
 
 ### Review status
 - 🤖 AI-drafted (English + Hebrew) — **pending human / native-Hebrew review**
@@ -1264,69 +1307,11 @@ _Reply-training drill:_ “Is this your first time here?” · “Where are you 
 
 ---
 
-## Mission 23 — CHECKPOINT: City Day · נקודת ביקורת: יום עיר
+## Mission 22 — Fixing Problems · לתקן בעיה
 
-> Phase 4 · 🏙️ City Life · 🏁 CHECKPOINT
+> Phase 4 · 🏙️ City & Conversation
 
-**Objective:** Transport → attraction → shopping → chat. Cold, chained. · תחבורה ← אטרקציה ← קניות ← שיחה. קר, ברצף.
-
-**Confidence gain:** A foreign city = home turf. · עיר זרה = מגרש ביתי.
-
-**Estimated time:** ~20 min
-
-**Video:** — (none yet)
-
-### Core phrases (you say)
-- **One ticket to the center, please.** · כרטיס אחד למרכז, בבקשה. — _התבנית: One ticket to ___ — קונה כרטיס לכל יעד._
-- **Does this stop at the museum?** · זה עוצר במוזיאון? — _התבנית: Does this stop at ___? — מוודאת שאתה יורד נכון._
-- **Two tickets, please.** · שני כרטיסים, בבקשה. — _התבנית: ___ tickets, please. שני מספרים וגמרנו._
-- **Is there a discount?** · יש הנחה? — _התבנית: Is there a ___? — בודקת אם קיים משהו. שאלה ששווה כסף._
-- **This place is beautiful.** · המקום הזה יפהפה. — _מחמאה קטנה פותחת חום מיידי. תמיד עובדת._
-- **Can you recommend a place?** · אתה יכול להמליץ על מקום?
-
-### Recovery tools reused
-`Can you repeat that?` · `Please speak slowly.` · `Thank you!`
-
-### Cold open (ambush)
-- 🧑 (fast) “Change of plan that platform's now platform four — better hurry along!” · שינוי — הרציף עכשיו רציף ארבע — כדאי שתמהר!
-  - ✅ best move: **Can you repeat that?** · אפשר לחזור על זה?
-  - ✗ distractor: Does this stop at the museum?
-- 🧑 (fast) “The English guided tour actually starts in two minutes would you like to join it?” · הסיור המודרך באנגלית מתחיל בעצם בעוד שתי דקות — תרצה להצטרף?
-  - ✅ best move: **Please speak slowly.** · דבר לאט, בבקשה.
-  - ✗ distractor: Is there a discount?
-
-### Dialogue: `cold-transport` — happy path
-- **🧑 Them:** “Where are you headed?” · לאן אתה נוסע?
-- **🫵 You:** “One ticket to the center, please.” · כרטיס אחד למרכז, בבקשה.
-- **🧑 Them:** “Platform two, leaves in five minutes.” · רציף שתיים, יוצא בעוד חמש דקות.
-- **🫵 You:** “Does this stop at the museum?” · זה עוצר במוזיאון?
-- **🧑 Them:** “Yep — three stops. Enjoy!” · כן — שלוש תחנות. תיהנה!
-
-### Dialogue: `cold-attraction` — happy path
-- **🧑 Them:** “Welcome! How many tickets?” · ברוך הבא! כמה כרטיסים?
-- **🫵 You:** “Two tickets, please.” · שני כרטיסים, בבקשה.
-- **🧑 Them:** “Twenty euros. We open at nine, last entry at five.” · עשרים יורו. פותחים בתשע, כניסה אחרונה בחמש.
-- **🫵 You:** “Is there a discount?” · יש הנחה?
-- **🧑 Them:** “Students get half price. Enjoy the museum!” · סטודנטים חצי מחיר. תיהנה במוזיאון!
-
-### Dialogue: `cold-chat` — happy path
-- **🧑 Them:** “Beautiful day! Where are you from?” · יום יפה! מאיפה אתה?
-- **🫵 You:** “This place is beautiful.” · המקום הזה יפהפה.
-- **🧑 Them:** “First time here? You should try the old town.” · פעם ראשונה כאן? כדאי לך לנסות את העיר העתיקה.
-- **🫵 You:** “Can you recommend a place?” · אתה יכול להמליץ על מקום?
-- **🧑 Them:** “'Mama Rosa' — tell her I sent you. Enjoy your trip!” · 'מאמא רוזה' — תגיד שאני שלחתי. תיהנה מהטיול!
-
-### Review status
-- 🤖 AI-drafted (English + Hebrew) — **pending human / native-Hebrew review**
-- ✅ all items have Hebrew
-
----
-
-## Mission 24 — Fixing Problems · לתקן בעיה
-
-> Phase 5 · 🎖️ Mastery
-
-**Objective:** Wrong order, double charge, noisy room — fixed with grace. · הזמנה שגויה, חיוב כפול, חדר רועש — נפתרים באלגנטיות.
+**Objective:** Wrong order, double charge, broken AC, noisy room — fixed with grace. · הזמנה שגויה, חיוב כפול, מזגן שלא עובד, חדר רועש — נפתרים באלגנטיות.
 
 **Confidence gain:** Friction is a script, not a crisis. · תקלה היא תסריט, לא משבר.
 
@@ -1335,45 +1320,62 @@ _Reply-training drill:_ “Is this your first time here?” · “Where are you 
 **Video:** — (none yet)
 
 ### Core phrases (you say)
-- **This isn't what I ordered.** · זה לא מה שהזמנתי. — _רגוע ועובדתי — לא ריב. מתארים, לא מאשימים._
-- **I think there's a mistake.** · אני חושב שיש טעות. — _הפתיח העדין לכל בעיה. פותח דלת במקום להרים קול._
+- **This isn't what I ordered.** · זה לא מה שהזמנתי. — _רגוע וברור. לא צריך להתנצל._
+- **I ordered the pasta.** · הזמנתי את הפסטה.
+- **I think there's a mistake.** · אני חושב שיש טעות.
 - **I was charged twice.** · חייבו אותי פעמיים.
+- **No problem, thank you.** · אין בעיה, תודה.
+- **There's a problem with my room.** · יש בעיה בחדר שלי. — _There’s a problem with ___ — פותח כל תלונה בנימוס._
+- **Can you help me?** · אתה יכול לעזור לי? — _Can you ___? — הדרך לבקש כל דבר._
+- **The air conditioning isn't working.** · המזגן לא עובד. — _התבנית: The ___ isn’t working. עובדת על כל דבר שהתקלקל._
 - **Can you fix it?** · אפשר לתקן את זה?
-- **No problem, thank you.** · אין בעיה, תודה. — _סוגר תקלה בחן. השארת אותם עם חיוך, לא עם מתח._
+- **My room is very noisy.** · החדר שלי מאוד רועש. — _לתאר בעיה זה לא להתלונן. זה לתת להם לתקן._
+- **Can I change rooms?** · אפשר להחליף חדר?
 
 ### Expected replies (you hear)
 - **I'm so sorry about that.** · אני מצטער על זה מאוד.
+- **What's the problem?** · מה הבעיה?
 - **I'll bring the right one.** · אביא את הנכון.
 - **Let me check the bill.** · תן לי לבדוק את החשבון.
 - **I'll refund it now.** · אחזיר לך את הכסף עכשיו.
 - **It's on the house.** · זה על חשבון הבית.
 - **Is there anything else?** · יש עוד משהו?
 
-_Reply-training drill:_ “I'm so sorry about that.” · “I'll bring the right one.” · “It's on the house.” · “I'll refund it now.”
+_Reply-training drill:_ “I'm so sorry about that.” · “I'll bring the right one.” · “What's the problem?” · “I'll refund it now.”
 
 ### Recovery tools reused
-`Can you repeat that?` · `Please speak slowly.` · `Thank you!`
+`Please speak slowly.`
 
 ### Cold open (ambush)
-- 🧑 (fast) “The manager says we can only refund to the original card is that alright with you?” · המנהל אומר שאפשר להחזיר רק לכרטיס המקורי — זה בסדר מבחינתך?
-  - ✅ best move: **Can you repeat that?** · אפשר לחזור על זה?
-  - ✗ distractor: I was charged twice.
+- 🧑 (fast) “So sorry about all of this is there anything else I can fix for you tonight?” · מצטער מאוד על כל זה — יש עוד משהו שאני יכול לסדר לך הערב?
+  - ✅ best move: **Is there anything else?** · יש עוד משהו?
+  - ✗ distractor: Let me check the bill.
 
 ### Dialogue: `fixing-problems` — happy path
 - **🧑 Them:** “Here's your meal — one steak!” · הנה הארוחה שלך — סטייק אחד!
 - **🫵 You:** “This isn't what I ordered.” · זה לא מה שהזמנתי.
 - **🧑 Them:** “Oh no, I'm so sorry! What did you order?” · אוי לא, אני מצטער מאוד! מה הזמנת?
-- **🫵 You:** “Can you fix it?” · אפשר לתקן את זה?
-- **🧑 Them:** “Of course — I'll bring the right one right away. And it's on the house.” · כמובן — אביא את הנכון מיד. וזה על חשבון הבית.
-- **🫵 You:** “Thank you!” · תודה!
-- **🧑 Them:** “Here's your bill for this evening.” · הנה החשבון לערב.
+- **🫵 You:** “I ordered the pasta.” · הזמנתי את הפסטה.
+- **🧑 Them:** “Of course — I'll bring the right one right away. … Later … Here's your bill.” · כמובן — אביא את הנכון מיד. … אחר כך … הנה החשבון.
+- **🫵 You:** “I think there's a mistake.” · אני חושב שיש טעות.
+- **🧑 Them:** “Let me check the bill. What's the problem?” · תן לי לבדוק את החשבון. מה הבעיה?
 - **🫵 You:** “I was charged twice.” · חייבו אותי פעמיים.
 - **🧑 Them:** “You're right — my mistake. I'll refund it now.” · אתה צודק — הטעות שלי. אחזיר לך עכשיו.
 - **🫵 You:** “No problem, thank you.” · אין בעיה, תודה.
-- **🧑 Them:** “All fixed. Thank you for your patience — the evening's on us!” · הכל תוקן. תודה על הסבלנות — הערב עלינו!
+- **🧑 Them:** “Thank you for your patience. Dessert is on the house!” · תודה על הסבלנות. הקינוח על חשבון הבית!
 
-#### Wrong / recovery branches
-- ⚠︎ less useful: 🫵 “No problem, thank you.” → 🧑 “Is everything alright with the bill?” · הכל בסדר עם החשבון?
+### Dialogue: `room-problem` — happy path
+- **🧑 Them:** “Good evening! How can I help you?” · ערב טוב! איך אפשר לעזור?
+- **🫵 You:** “There's a problem with my room.” · יש בעיה בחדר שלי.
+- **🧑 Them:** “I'm sorry to hear that. What's the problem?” · אני מצטער לשמוע. מה הבעיה?
+- **🫵 You:** “The air conditioning isn't working.” · המזגן לא עובד.
+- **🧑 Them:** “I'm so sorry about that.” · אני מצטער על זה מאוד.
+- **🫵 You:** “Can you fix it?” · אפשר לתקן את זה?
+- **🧑 Them:** “Yes, I'll send someone right away. Is everything else okay?” · כן, אשלח מישהו מיד. כל השאר בסדר?
+- **🫵 You:** “No. My room is very noisy.” · לא. החדר שלי מאוד רועש.
+- **🧑 Them:** “I understand. We have a quieter room.” · אני מבין. יש לנו חדר שקט יותר.
+- **🫵 You:** “Can I change rooms?” · אפשר להחליף חדר?
+- **🧑 Them:** “Of course — room 305. Here is your new key. Good night!” · כמובן — חדר 305. הנה המפתח החדש. לילה טוב!
 
 ### Review status
 - 🤖 AI-drafted (English + Hebrew) — **pending human / native-Hebrew review**
@@ -1381,11 +1383,222 @@ _Reply-training drill:_ “I'm so sorry about that.” · “I'll bring the righ
 
 ---
 
-## Mission 25 — Pharmacy & Health · בית מרקחת ובריאות
+## Mission 23 — Opinions, Feelings & Reactions · דעות, רגשות ותגובות
+
+> Phase 4 · 🏙️ City & Conversation
+
+**Objective:** I think, why, because, but, maybe, really?, of course. · אני חושב, למה, כי, אבל, אולי, באמת?, ברור.
+
+**Confidence gain:** I sound like a person, not a phrasebook. · אני נשמע כמו בן אדם, לא כמו שיחון.
+
+**Estimated time:** ~20 min
+
+**Video:** — (none yet)
+
+### Core phrases (you say)
+- **I think it's too expensive.** · אני חושב שזה יקר מדי. — _I think ___ — כל דעה מתחילה ככה._
+- **I don't think so.** · לא נראה לי.
+- **Because it's only one hour.** · כי זה רק שעה אחת. — _Because ___ — התשובה לכל "למה?"_
+- **Yes, I like it.** · כן, זה מוצא חן בעיניי.
+- **That's strange.** · זה מוזר.
+- **I'm not sure.** · אני לא בטוח. — _כשאתה לא יודע מה אתה חושב — זו תשובה שלמה._
+- **Okay, let's do it.** · בסדר, הולכים על זה.
+- **Of course!** · ברור!
+- **I don't like it.** · זה לא מוצא חן בעיניי.
+
+### Expected replies (you hear)
+- **What do you think?** · מה אתה חושב?
+- **Really?** · באמת?
+- **Why?** · למה?
+- **That's true.** · נכון.
+- **Do you like it?** · מוצא חן בעיניך?
+- **Are you coming?** · אתה בא?
+
+_Reply-training drill:_ “Really?” · “Why?” · “That's true.” · “What do you think?”
+
+### Recovery tools reused
+`Can you repeat that?`
+
+### Cold open (ambush)
+- 🧑 (fast) “Okay honestly this restaurant or the other one what do you think?” · טוב, בכנות — המסעדה הזאת או השנייה, מה אתה חושב?
+  - ✅ best move: **What do you think?** · מה אתה חושב?
+  - ✗ distractor: That's true.
+
+### Dialogue: `choosing-a-tour` — happy path
+- **🧑 Them:** “Look — a boat tour, fifty euros. What do you think?” · תראה — סיור בסירה, חמישים יורו. מה אתה חושב?
+- **🫵 You:** “I think it's too expensive.” · אני חושב שזה יקר מדי.
+- **🧑 Them:** “Really? I think it's a good price.” · באמת? אני חושב שזה מחיר טוב.
+- **🫵 You:** “I don't think so.” · לא נראה לי.
+- **🧑 Them:** “Why?” · למה?
+- **🫵 You:** “Because it's only one hour.” · כי זה רק שעה אחת.
+- **🧑 Them:** “That's true. Look at this one — a walking tour. Do you like it?” · נכון. תראה את זה — סיור רגלי. מוצא חן בעיניך?
+- **🫵 You:** “Yes, I like it.” · כן, זה מוצא חן בעיניי.
+- **🧑 Them:** “It's free. But it starts at six in the morning.” · זה בחינם. אבל זה מתחיל בשש בבוקר.
+- **🫵 You:** “At six? That's strange.” · בשש? זה מוזר.
+- **🧑 Them:** “It's because of the heat. Are you coming?” · זה בגלל החום. אתה בא?
+- **🫵 You:** “Maybe. I'm not sure — I'm tired.” · אולי. אני לא בטוח — אני עייף.
+- **🧑 Them:** “Come on — it's only two hours, and it's free.” · נו — זה רק שעתיים, וזה בחינם.
+- **🫵 You:** “Okay, let's do it.” · בסדר, הולכים על זה.
+- **🧑 Them:** “Great! See you at six!” · מעולה! נתראה בשש!
+
+### Review status
+- 🤖 AI-drafted (English + Hebrew) — **pending human / native-Hebrew review**
+- ✅ all items have Hebrew
+
+---
+
+## Mission 24 — CHECKPOINT: City & Conversation · נקודת ביקורת: עיר ושיחה
+
+> Phase 4 · 🏙️ City & Conversation · 🏁 CHECKPOINT
+
+**Objective:** Transport → a chat with a local → what I did and where I go next. Cold, chained. · תחבורה ← שיחה עם מקומי ← מה עשיתי ולאן אני ממשיך. קר, ברצף.
+
+**Confidence gain:** A foreign city = home turf. · עיר זרה = מגרש ביתי.
+
+**Estimated time:** ~20 min
+
+**Video:** — (none yet)
+
+### Core phrases (you say)
+- **One ticket to the centre, please.** · כרטיס אחד למרכז, בבקשה. — _התבנית: One ticket to ___ — קונה כרטיס לכל יעד._
+- **Does this stop at the museum?** · זה עוצר במוזיאון? — _התבנית: Does this stop at ___? — מוודאת שאתה יורד נכון._
+- **I'm from Israel.** · אני מישראל. — _התבנית: I’m from ___ — התשובה ל-Where are you from._
+- **I like it a lot.** · אני מאוד אוהב.
+- **I think it's too expensive.** · אני חושב שזה יקר מדי. — _I think ___ — כל דעה מתחילה ככה._
+- **Can you recommend a place?** · אתה יכול להמליץ על מקום? — _מקומיים יודעים הכי טוב. תשאל._
+- **I went to the old town.** · הלכתי לעיר העתיקה. — _I went to ___ — התשובה ל"איפה היית?"_
+- **Yes, it was great!** · כן, היה מעולה!
+- **I'm going to Vietnam.** · אני נוסע לווייטנאם. — _I’m going to ___ — מדינה, עיר, או המקום הבא._
+- **What are you doing tomorrow?** · מה אתה עושה מחר? — _מחליפים tomorrow ב-today / tonight ויש לך שלוש שאלות._
+- **Of course!** · ברור!
+
+### Expected replies (you hear)
+- **You're going the wrong way.** · אתה בכיוון הלא נכון.
+- **It's three stops.** · זה שלוש תחנות.
+- **How long will you be there?** · כמה זמן תהיה שם?
+- **Did you like it?** · אהבת?
+
+### Recovery tools reused
+`Please speak slowly.`
+
+### Cold open (ambush)
+- 🧑 (fast) “Careful this one is going the wrong way you need the other platform” · זהירות, זה נוסע בכיוון ההפוך — אתה צריך את הרציף השני
+  - ✅ best move: **You're going the wrong way.** · אתה בכיוון הלא נכון.
+  - ✗ distractor: It's three stops.
+- 🧑 (fast) “Vietnam nice so how long will you be there a week or more?” · וייטנאם, יפה! וכמה זמן תהיה שם — שבוע או יותר?
+  - ✅ best move: **How long will you be there?** · כמה זמן תהיה שם?
+  - ✗ distractor: Did you like it?
+
+### Dialogue: `cold-transport` — happy path
+- **🧑 Them:** “Where are you headed?” · לאן אתה נוסע?
+- **🫵 You:** “One ticket to the centre, please.” · כרטיס אחד למרכז, בבקשה.
+- **🧑 Them:** “Platform two — it leaves in five minutes.” · רציף שתיים — יוצא בעוד חמש דקות.
+- **🫵 You:** “Does this stop at the museum?” · זה עוצר במוזיאון?
+- **🧑 Them:** “Yes — three stops. Enjoy!” · כן — שלוש תחנות. תיהנה!
+
+### Dialogue: `cold-chat` — happy path
+- **🧑 Them:** “Hi! Where are you from?” · היי! מאיפה אתה?
+- **🫵 You:** “I'm from Israel.” · אני מישראל.
+- **🧑 Them:** “Welcome! Do you like it here?” · ברוך הבא! אתה אוהב את המקום?
+- **🫵 You:** “I like it a lot.” · אני מאוד אוהב.
+- **🧑 Them:** “You should take the boat tour. It's fifty euros.” · כדאי לך לעשות את הסיור בסירה. זה חמישים יורו.
+- **🫵 You:** “I think it's too expensive.” · אני חושב שזה יקר מדי.
+- **🧑 Them:** “Hmm, maybe. Then walk in the old town — it's free!” · הממ, אולי. אז תטייל בעיר העתיקה — זה בחינם!
+- **🫵 You:** “Can you recommend a place?” · אתה יכול להמליץ על מקום?
+- **🧑 Them:** “'Mama Rosa'. The food is wonderful. Enjoy!” · 'מאמא רוזה'. האוכל נהדר. תיהנה!
+
+### Dialogue: `cold-hostel` — happy path
+- **🧑 Them:** “Hey! Where were you today?” · היי! איפה היית היום?
+- **🫵 You:** “I went to the old town.” · הלכתי לעיר העתיקה.
+- **🧑 Them:** “Did you like it?” · אהבת?
+- **🫵 You:** “Yes, it was great!” · כן, היה מעולה!
+- **🧑 Them:** “Good! And where are you going next?” · יופי! ולאן אתה נוסע אחרי זה?
+- **🫵 You:** “I'm going to Vietnam.” · אני נוסע לווייטנאם.
+- **🧑 Them:** “Wow! I'm going home next week.” · וואו! אני חוזר הביתה בשבוע הבא.
+- **🫵 You:** “What are you doing tomorrow?” · מה אתה עושה מחר?
+- **🧑 Them:** “Tomorrow I'm free. Do you want to go to the beach?” · מחר אני פנוי. רוצה ללכת לים?
+- **🫵 You:** “Of course!” · ברור!
+- **🧑 Them:** “Great. See you tomorrow!” · מעולה. נתראה מחר!
+
+### Review status
+- 🤖 AI-drafted (English + Hebrew) — **pending human / native-Hebrew review**
+- ✅ all items have Hebrew
+
+---
+
+## Mission 25 — Lost / Stolen / Police · אבד, נגנב, משטרה
 
 > Phase 5 · 🎖️ Mastery
 
-**Objective:** Symptoms, dosage, allergies — clear and safe. · תסמינים, מינון, אלרגיות — ברור ובטוח.
+**Objective:** I lost, I can’t find, it was stolen, where the police are, I want to report it. · איבדתי, לא מוצא, נגנב, איפה המשטרה, אני רוצה לדווח.
+
+**Confidence gain:** Even when something disappears — I have a script. · גם כשמשהו נעלם — יש לי תסריט.
+
+**Estimated time:** ~20 min
+
+**Video:** — (none yet)
+
+### Core phrases (you say)
+- **I can't find my phone.** · אני לא מוצא את הטלפון שלי. — _I can’t find ___ — לפני שקובעים שזה אבד._
+- **I think it was stolen.** · אני חושב שגנבו לי אותו.
+- **Where is the police station?** · איפה תחנת המשטרה?
+- **My phone was stolen.** · גנבו לי את הטלפון. — _My ___ was stolen — phone, wallet, bag._
+- **On the bus this morning.** · באוטובוס, הבוקר.
+- **Yes, I want to report it.** · כן, אני רוצה לדווח על זה.
+- **Yes, I have my passport.** · כן, יש לי את הדרכון.
+- **I lost my passport.** · איבדתי את הדרכון. — _I lost my ___ — passport, phone, wallet._
+- **I can't find my wallet.** · אני לא מוצא את הארנק שלי.
+
+### Expected replies (you hear)
+- **Did you lose it?** · איבדת אותו?
+- **You should go to the police.** · כדאי לך ללכת למשטרה.
+- **Where did it happen?** · איפה זה קרה?
+- **Do you want to report it?** · אתה רוצה לדווח על זה?
+- **Do you have your passport?** · יש לך את הדרכון?
+
+_Reply-training drill:_ “Where did it happen?” · “Do you want to report it?” · “Do you have your passport?” · “You should go to the police.”
+
+### Recovery tools reused
+`Thank you!` · `What does that mean?`
+
+### Cold open (ambush)
+- 🧑 (fast) “Okay try to remember where did it happen was it here or on the bus?” · טוב, נסה להיזכר — איפה זה קרה, כאן או באוטובוס?
+  - ✅ best move: **Where did it happen?** · איפה זה קרה?
+  - ✗ distractor: You should go to the police.
+
+### Dialogue: `asking-for-help` — happy path
+- **🧑 Them:** “Are you okay?” · הכל בסדר?
+- **🫵 You:** “No. I can't find my phone.” · לא. אני לא מוצא את הטלפון שלי.
+- **🧑 Them:** “Did you lose it?” · איבדת אותו?
+- **🫵 You:** “I don't know. I think it was stolen.” · אני לא יודע. אני חושב שגנבו לי אותו.
+- **🧑 Them:** “You should go to the police.” · כדאי לך ללכת למשטרה.
+- **🫵 You:** “Where is the police station?” · איפה תחנת המשטרה?
+- **🧑 Them:** “It's near here, on the left.” · זה קרוב, משמאל.
+- **🫵 You:** “Thank you!” · תודה!
+- **🧑 Them:** “Good luck!” · בהצלחה!
+
+### Dialogue: `police-station` — happy path
+- **🧑 Them:** “Hello. How can I help you?” · שלום. איך אפשר לעזור?
+- **🫵 You:** “My phone was stolen.” · גנבו לי את הטלפון.
+- **🧑 Them:** “Where did it happen?” · איפה זה קרה?
+- **🫵 You:** “On the bus this morning.” · באוטובוס, הבוקר.
+- **🧑 Them:** “Do you want to report it?” · אתה רוצה לדווח על זה?
+- **🫵 You:** “Yes, I want to report it.” · כן, אני רוצה לדווח על זה.
+- **🧑 Them:** “Do you have your passport?” · יש לך את הדרכון?
+- **🫵 You:** “Yes, I have my passport.” · כן, יש לי את הדרכון.
+- **🧑 Them:** “Okay. Let's start the report.” · בסדר. בוא נתחיל את הדיווח.
+
+### Review status
+- 🤖 AI-drafted (English + Hebrew) — **pending human / native-Hebrew review**
+- ✅ all items have Hebrew
+
+---
+
+## Mission 26 — Pharmacy & Health · בית מרקחת ובריאות
+
+> Phase 5 · 🎖️ Mastery
+
+**Objective:** What hurts, allergies, how often — explain and understand. · מה כואב, אלרגיות, כל כמה זמן — להסביר ולהבין.
 
 **Confidence gain:** My body is cared for in any language. · הגוף שלי מטופל בכל שפה.
 
@@ -1399,6 +1612,7 @@ _Reply-training drill:_ “I'm so sorry about that.” · “I'll bring the righ
 - **How often do I take it?** · כל כמה זמן לוקחים? — _השאלה שאסור לוותר עליה עם תרופה. תמיד מוודאים מינון._
 - **I'm allergic to penicillin.** · אני אלרגי לפניצילין.
 - **I have a stomach ache.** · יש לי כאב בטן.
+- **It hurts here.** · כואב לי כאן. — _מצביעים על המקום ואומרים את זה. לא צריך לדעת איך קוראים לו._
 
 ### Expected replies (you hear)
 - **What's the matter?** · מה קרה?
@@ -1423,9 +1637,9 @@ _Reply-training drill:_ “What's the matter?” · “Any allergies?” · “T
 - **🫵 You:** “I have a headache.” · יש לי כאב ראש.
 - **🧑 Them:** “I see. Before I give you anything — any allergies?” · הבנתי. לפני שאתן לך משהו — יש אלרגיות?
 - **🫵 You:** “I'm allergic to penicillin.” · אני אלרגי לפניצילין.
-- **🧑 Them:** “Good to know. This one is safe for you — take it twice a day.” · טוב לדעת. זה בטוח בשבילך — קח פעמיים ביום.
+- **🧑 Them:** “Good to know. This may help.” · טוב לדעת. זה יכול לעזור.
 - **🫵 You:** “How often do I take it?” · כל כמה זמן לוקחים?
-- **🧑 Them:** “Twice a day, after meals.” · פעמיים ביום, אחרי הארוחות.
+- **🧑 Them:** “Twice a day, after meals. Please follow the instructions on the label.” · פעמיים ביום, אחרי הארוחות. תפעל לפי ההוראות בעלון.
 - **🫵 You:** “Thank you!” · תודה!
 - **🧑 Them:** “Is there anything else you need?” · עוד משהו שאתה צריך?
 - **🫵 You:** “Do you have something for a cold?” · יש לכם משהו לצינון?
@@ -1440,11 +1654,11 @@ _Reply-training drill:_ “What's the matter?” · “Any allergies?” · “T
 
 ---
 
-## Mission 26 — Emergency · חירום
+## Mission 27 — Emergency · חירום
 
 > Phase 5 · 🎖️ Mastery
 
-**Objective:** Help, doctor, police, lost items — automatic under stress. · עזרה, רופא, משטרה, אבידות — אוטומטי תחת לחץ.
+**Objective:** Help, ambulance, where I am — one emergency call, automatic under stress. · עזרה, אמבולנס, איפה אני — שיחת חירום אחת, אוטומטית תחת לחץ.
 
 **Confidence gain:** The worst case has a script. · לתרחיש הגרוע ביותר יש תסריט.
 
@@ -1453,9 +1667,12 @@ _Reply-training drill:_ “What's the matter?” · “Any allergies?” · “T
 **Video:** — (none yet)
 
 ### Core phrases (you say)
-- **I need help.** · אני צריך עזרה. — _שתי מילים שמזמנות עזרה בכל מקום בעולם. תגיד בקול._
+- **I need help.** · אני צריך עזרה. — _שלוש מילים. קודם כל אומרים את זה._
+- **Someone is hurt.** · מישהו נפצע.
+- **Please call an ambulance.** · תזמינו אמבולנס, בבקשה.
 - **Please call a doctor.** · תקראו לרופא, בבקשה.
-- **I lost my passport.** · איבדתי את הדרכון. — _התבנית: I lost my ___ — לדווח על כל אבידה. passport / bag / phone._
+- **I'm at the train station.** · אני בתחנת הרכבת. — _I’m at ___ — המקום הוא המידע הכי חשוב._
+- **Okay, I'll stay here.** · בסדר, אני נשאר כאן.
 - **Call the police!** · תקראו למשטרה!
 - **Where is the hospital?** · איפה בית החולים?
 
@@ -1465,33 +1682,30 @@ _Reply-training drill:_ “What's the matter?” · “Any allergies?” · “T
 - **Where are you?** · איפה אתה?
 - **Are you hurt?** · אתה פצוע?
 - **An ambulance is on the way.** · אמבולנס בדרך.
-- **You can report it here.** · אפשר לדווח כאן.
+- **Stay there.** · תישאר שם.
 
-_Reply-training drill:_ “What's wrong?” · “Are you hurt?” · “Where are you?” · “An ambulance is on the way.”
+_Reply-training drill:_ “What's wrong?” · “Are you hurt?” · “Where are you?” · “Stay there.”
 
 ### Recovery tools reused
-`Can you repeat that?` · `Please speak slowly.` · `Thank you!`
+`Please speak slowly.`
 
 ### Cold open (ambush)
-- 🧑 (fast) “Can you tell me exactly what the man looked like and which direction he ran off in?” · אתה יכול לומר לי בדיוק איך האיש נראה ולאיזה כיוון הוא ברח?
-  - ✅ best move: **Please speak slowly.** · דבר לאט, בבקשה.
-  - ✗ distractor: I need help.
+- 🧑 (fast) “Okay listen carefully I need to know exactly where are you right now?” · טוב, תקשיב טוב — אני צריך לדעת בדיוק: איפה אתה עכשיו?
+  - ✅ best move: **Where are you?** · איפה אתה?
+  - ✗ distractor: Stay calm, help is coming.
 
 ### Dialogue: `emergency` — happy path
 - **🧑 Them:** “Emergency services — what's wrong?” · שירותי חירום — מה קרה?
 - **🫵 You:** “I need help.” · אני צריך עזרה.
-- **🧑 Them:** “Okay, stay calm. Are you hurt, or is someone in danger?” · טוב, תישאר רגוע. אתה פצוע, או שמישהו בסכנה?
-- **🫵 You:** “Please call a doctor.” · תקראו לרופא, בבקשה.
+- **🧑 Them:** “Okay, stay calm. Are you hurt?” · טוב, תישאר רגוע. אתה פצוע?
+- **🫵 You:** “No, but someone is hurt.” · לא, אבל מישהו נפצע.
+- **🧑 Them:** “Do you need an ambulance or the police?” · אתה צריך אמבולנס או משטרה?
+- **🫵 You:** “Please call an ambulance.” · תזמינו אמבולנס, בבקשה.
 - **🧑 Them:** “An ambulance is on the way. Where are you?” · אמבולנס בדרך. איפה אתה?
 - **🫵 You:** “I'm at the train station.” · אני בתחנת הרכבת.
-- **🧑 Them:** “Good. Stay there. You also said something was lost?” · טוב. תישאר שם. אמרת גם שמשהו אבד?
-- **🫵 You:** “I lost my passport.” · איבדתי את הדרכון.
-- **🧑 Them:** “You can report it here — I'll help you with the form.” · אפשר לדווח כאן — אני אעזור לך עם הטופס.
-- **🫵 You:** “Thank you!” · תודה!
-- **🧑 Them:** “You did everything right. Help is here now. You're safe.” · עשית הכל נכון. העזרה כאן עכשיו. אתה בטוח.
-
-#### Wrong / recovery branches
-- ⚠︎ less useful: 🫵 “Where is the hospital?” → 🧑 “We'll get you to a hospital — but you mentioned something was lost?” · נדאג להביא אותך לבית חולים — אבל אמרת שמשהו אבד?
+- **🧑 Them:** “Good. Stay there, and stay with the person.” · טוב. תישאר שם, ותישאר עם האדם.
+- **🫵 You:** “Okay, I'll stay here.” · בסדר, אני נשאר כאן.
+- **🧑 Them:** “Help is on the way. You're doing everything right.” · העזרה בדרך. אתה עושה הכל נכון.
 
 ### Review status
 - 🤖 AI-drafted (English + Hebrew) — **pending human / native-Hebrew review**
@@ -1499,7 +1713,7 @@ _Reply-training drill:_ “What's wrong?” · “Are you hurt?” · “Where a
 
 ---
 
-## Mission 27 — No Subtitles · בלי כתוביות
+## Mission 28 — No Subtitles · בלי כתוביות
 
 > Phase 5 · 🎖️ Mastery
 
@@ -1512,44 +1726,50 @@ _Reply-training drill:_ “What's wrong?” · “Are you hurt?” · “Where a
 **Video:** — (none yet)
 
 ### Core phrases (you say)
-- **One ticket to the center, please.** · כרטיס אחד למרכז, בבקשה. — _התבנית: One ticket to ___ — קונה כרטיס לכל יעד._
+- **One ticket to the centre, please.** · כרטיס אחד למרכז, בבקשה. — _התבנית: One ticket to ___ — קונה כרטיס לכל יעד._
 - **Does this stop at the museum?** · זה עוצר במוזיאון? — _התבנית: Does this stop at ___? — מוודאת שאתה יורד נכון._
-- **A table for two, please.** · שולחן לשניים, בבקשה. — _התבנית: A table for ___ — פשוט מספר. for one / for four._
+- **A table for two, please.** · שולחן לשניים, בבקשה. — _הפתיח למסעדה. תבנית: a table for ___._
 - **I'll have the pasta, please.** · אני אקח את הפסטה, בבקשה. — _התבנית הגדולה של המסעדה: I’ll have the ___ — מזמינים כל דבר בתפריט._
-- **This place is beautiful.** · המקום הזה יפהפה. — _מחמאה קטנה פותחת חום מיידי. תמיד עובדת._
-- **Can you recommend a place?** · אתה יכול להמליץ על מקום?
+- **This place is beautiful.** · המקום הזה יפהפה. — _מחמאה למקום פותחת כל שיחה._
+- **Can you recommend a place?** · אתה יכול להמליץ על מקום? — _מקומיים יודעים הכי טוב. תשאל._
+
+### Expected replies (you hear)
+- **Your stop is next.** · התחנה שלך הבאה.
+- **Single or return?** · הלוך או הלוך-חזור?
+- **Is everything okay?** · הכל בסדר?
+- **Are you ready to order?** · מוכנים להזמין?
 
 ### Recovery tools reused
-`Can you repeat that?` · `Please speak slowly.` · `Thank you!`
+`Can you repeat that?`
 
 ### Cold open (ambush)
-- 🧑 (fast) “That machine's cash only by the way — you got coins on you?” · המכונה הזאת מקבלת רק מזומן, דרך אגב — יש עליך מטבעות?
-  - ✅ best move: **Can you repeat that?** · אפשר לחזור על זה?
-  - ✗ distractor: Does this stop at the museum?
-- 🧑 (fast) “We're actually all out of pasta tonight — the risotto instead maybe?” · בעצם נגמרה לנו הפסטה הערב — אולי ריזוטו במקום?
-  - ✅ best move: **Please speak slowly.** · דבר לאט, בבקשה.
-  - ✗ distractor: A table for two, please.
+- 🧑 (fast) “Heads up your stop is next get ready to get off” · שים לב, התחנה שלך הבאה — תתכונן לרדת
+  - ✅ best move: **Your stop is next.** · התחנה שלך הבאה.
+  - ✗ distractor: Single or return?
+- 🧑 (fast) “Sorry to rush you is everything okay or do you need anything else?” · סליחה שאני מזרז — הכל בסדר, או שצריך עוד משהו?
+  - ✅ best move: **Is everything okay?** · הכל בסדר?
+  - ✗ distractor: Are you ready to order?
 
 ### Dialogue: `ns-transit` — happy path
 - **🧑 Them:** “Right — where to?” · טוב — לאן?
-- **🫵 You:** “One ticket to the center, please.” · כרטיס אחד למרכז, בבקשה.
-- **🧑 Them:** “Platform's changed — it's four now, quick!” · הרציף השתנה — עכשיו ארבע, מהר!
+- **🫵 You:** “One ticket to the centre, please.” · כרטיס אחד למרכז, בבקשה.
+- **🧑 Them:** “Platform's changed. It's four now — quick!” · הרציף השתנה. עכשיו זה ארבע — מהר!
 - **🫵 You:** “Does this stop at the museum?” · זה עוצר במוזיאון?
-- **🧑 Them:** “Three stops — go, go!” · שלוש תחנות — קדימה, קדימה!
+- **🧑 Them:** “Yes. Three stops.” · כן. שלוש תחנות.
 
 ### Dialogue: `ns-diner` — happy path
-- **🧑 Them:** “Evening — table for how many?” · ערב — שולחן לכמה?
+- **🧑 Them:** “Evening — table for how many?” · ערב טוב — שולחן לכמה?
 - **🫵 You:** “A table for two, please.” · שולחן לשניים, בבקשה.
-- **🧑 Them:** “Kitchen's about to close — ready to order?” · המטבח עומד להיסגר — מוכן להזמין?
+- **🧑 Them:** “Kitchen's about to close. Ready to order?” · המטבח עומד להיסגר. מוכן להזמין?
 - **🫵 You:** “I'll have the pasta, please.” · אני אקח את הפסטה, בבקשה.
-- **🧑 Them:** “Good call — last one in! Coming up.” · בחירה טובה — האחרון שנכנס! תכף מגיע.
+- **🧑 Them:** “Great. Coming up.” · מצוין. תכף מגיע.
 
 ### Dialogue: `ns-local` — happy path
-- **🧑 Them:** “Gorgeous spot, right? First time here?” · מקום מהמם, נכון? פעם ראשונה כאן?
+- **🧑 Them:** “Beautiful place, right?” · מקום יפה, נכון?
 - **🫵 You:** “This place is beautiful.” · המקום הזה יפהפה.
-- **🧑 Them:** “You've gotta see the old town — got a second?” · אתה חייב לראות את העיר העתיקה — יש לך רגע?
+- **🧑 Them:** “You should see the old town.” · כדאי לך לראות את העיר העתיקה.
 - **🫵 You:** “Can you recommend a place?” · אתה יכול להמליץ על מקום?
-- **🧑 Them:** “Mama Rosa's — go now, tell 'em I sent you!” · 'מאמא רוזה' — לך עכשיו, תגיד שאני שלחתי!
+- **🧑 Them:** “Mama Rosa. It's very good.” · 'מאמא רוזה'. מאוד טוב שם.
 
 ### Review status
 - 🤖 AI-drafted (English + Hebrew) — **pending human / native-Hebrew review**
@@ -1557,7 +1777,7 @@ _Reply-training drill:_ “What's wrong?” · “Are you hurt?” · “Where a
 
 ---
 
-## Mission 28 — Dress Rehearsal: Full Evening · חזרה גנרלית: ערב שלם
+## Mission 29 — Dress Rehearsal: Full Evening · חזרה גנרלית: ערב שלם
 
 > Phase 5 · 🎖️ Mastery
 
@@ -1575,7 +1795,7 @@ _Reply-training drill:_ “What's wrong?” · “Are you hurt?” · “Where a
 - **A table for two, please.** · שולחן לשניים, בבקשה. — _התבנית: A table for ___ — פשוט מספר. for one / for four._
 - **I'll have the pasta, please.** · אני אקח את הפסטה, בבקשה. — _התבנית הגדולה של המסעדה: I’ll have the ___ — מזמינים כל דבר בתפריט._
 - **Could we have the bill, please?** · אפשר את החשבון, בבקשה? — _המשפט שסוגר כל ארוחה. באנגליה: bill · באמריקה: check._
-- **This isn't what I ordered.** · זה לא מה שהזמנתי. — _רגוע ועובדתי — לא ריב. מתארים, לא מאשימים._
+- **This isn't what I ordered.** · זה לא מה שהזמנתי. — _רגוע וברור. לא צריך להתנצל._
 - **I was charged twice.** · חייבו אותי פעמיים.
 - **I'll pay by card.** · אני אשלם בכרטיס. — _התבנית: I’ll pay by ___ / in ___. by card · in cash._
 
@@ -1606,7 +1826,7 @@ _Reply-training drill:_ “What's wrong?” · “Are you hurt?” · “Where a
 - **🫵 You:** “This isn't what I ordered.” · זה לא מה שהזמנתי.
 - **🧑 Them:** “Oh no — so sorry! I'll bring the right one right away.” · אוי לא — מצטער מאוד! אביא את הנכון מיד.
 - **🫵 You:** “Thank you!” · תודה!
-- **🧑 Them:** “The right dish, and it's on the house. Enjoy!” · המנה הנכונה, ועל חשבון הבית. בתיאבון!
+- **🧑 Them:** “Here's the right dish — and it's on the house. Enjoy!” · הנה המנה הנכונה — והיא על חשבון הבית. בתיאבון!
 
 ### Dialogue: `dr-pay` — happy path
 - **🧑 Them:** “All done? Anything else for you tonight?” · סיימנו? עוד משהו הערב?
@@ -1621,11 +1841,11 @@ _Reply-training drill:_ “What's wrong?” · “Are you hurt?” · “Where a
 
 ---
 
-## Mission 29 — A Complete Day Abroad Alone · יום שלם לבד בחו״ל
+## Mission 30 — A Complete Day Abroad Alone · יום שלם לבד בחו״ל
 
 > Phase 5 · 🎖️ Mastery · 🏁 CHECKPOINT
 
-**Objective:** Morning to night: a cold moment chain. One take. A real verdict. · מבוקר עד לילה: שרשרת רגעים קרים. טייק אחד. פסק דין אמיתי.
+**Objective:** Morning to night: what I need, a taxi, a meal that goes wrong, a chat with a traveler, and a moment I did not catch. · מבוקר עד לילה: מה שאני צריך, מונית, ארוחה שמשתבשת, שיחה עם מטייל, ורגע שלא הבנתי.
 
 **Confidence gain:** Independence — proven. · עצמאות — מוכחת.
 
@@ -1634,59 +1854,76 @@ _Reply-training drill:_ “What's wrong?” · “Are you hurt?” · “Where a
 **Video:** — (none yet)
 
 ### Core phrases (you say)
-- **I'd like an iced coffee, please.** · אני רוצה קפה קר, בבקשה. — _התבנית: I’d like ___, please — עובדת על הכל._
+- **Yes, I have my key.** · כן, יש לי את המפתח.
+- **Do you have a map?** · יש לך מפה? — _Do you have ___? — עובד בכל חנות, מלון ומסעדה._
 - **To this address, please.** · לכתובת הזאת, בבקשה. — _הפתיח למונית — תגיד את זה ותראה את הכתובת בטלפון._
-- **A table for two, please.** · שולחן לשניים, בבקשה. — _התבנית: A table for ___ — פשוט מספר. for one / for four._
+- **Stop here, please.** · עצור כאן, בבקשה. — _העיתוי חשוב — תגיד את זה קצת לפני היעד._
+- **A table for two, please.** · שולחן לשניים, בבקשה. — _הפתיח למסעדה. תבנית: a table for ___._
 - **I'll have the pasta, please.** · אני אקח את הפסטה, בבקשה. — _התבנית הגדולה של המסעדה: I’ll have the ___ — מזמינים כל דבר בתפריט._
-- **This isn't what I ordered.** · זה לא מה שהזמנתי. — _רגוע ועובדתי — לא ריב. מתארים, לא מאשימים._
-- **This place is beautiful.** · המקום הזה יפהפה. — _מחמאה קטנה פותחת חום מיידי. תמיד עובדת._
-- **It was nice talking to you.** · היה נעים לדבר איתך. — _הדרך החמה לסיים שיחה. משאירה חיוך._
+- **This isn't what I ordered.** · זה לא מה שהזמנתי. — _רגוע וברור. לא צריך להתנצל._
+- **No problem, thank you.** · אין בעיה, תודה.
+- **I'm from Israel.** · אני מישראל. — _התבנית: I’m from ___ — התשובה ל-Where are you from._
+- **I went to the old town.** · הלכתי לעיר העתיקה. — _I went to ___ — התשובה ל"איפה היית?"_
+- **I'm going to Vietnam.** · אני נוסע לווייטנאם. — _I’m going to ___ — מדינה, עיר, או המקום הבא._
+- **I'll be there for two weeks.** · אני אהיה שם שבועיים.
+- **I don't think so.** · לא נראה לי.
+
+### Expected replies (you hear)
+- **Is here okay?** · כאן זה בסדר?
+- **Where to?** · לאן?
 
 ### Recovery tools reused
-`Can you repeat that?` · `Please speak slowly.` · `Thank you!`
+`Please speak slowly.` · `Thank you!`
 
 ### Cold open (ambush)
-- 🧑 (fast) “Mind if I take the scenic route it might add a few minutes but no extra charge?” · אכפת לך אם אקח את הדרך היפה? זה אולי יוסיף כמה דקות אבל בלי תוספת תשלום.
-  - ✅ best move: **Can you repeat that?** · אפשר לחזור על זה?
-  - ✗ distractor: To this address, please.
-- 🧑 (fast) “And would you like me to box the wrong dish for you to take away as well no charge?” · ותרצה שאארוז לך גם את המנה השגויה לקחת, בלי תשלום?
-  - ✅ best move: **Please speak slowly.** · דבר לאט, בבקשה.
-  - ✗ distractor: This isn't what I ordered.
+- 🧑 (fast) “Sorry the road ahead is closed is it alright if I drop you around the corner?” · סליחה, הכביש קדימה חסום — בסדר שאוריד אותך מעבר לפינה?
+  - ✅ best move: **Is here okay?** · כאן זה בסדר?
+  - ✗ distractor: Where to?
 
 ### Dialogue: `fin-morning` — happy path
-- **🧑 Them:** “Morning! What can I get you?” · בוקר! מה להביא לך?
-- **🫵 You:** “I'd like an iced coffee, please.” · אני רוצה קפה קר, בבקשה.
-- **🧑 Them:** “Coming up — anything else this morning?” · תכף מוכן — עוד משהו הבוקר?
-- **🫵 You:** “That's all, thanks.” · זה הכל, תודה.
-- **🧑 Them:** “Have a wonderful day!” · שיהיה יום נפלא!
+- **🧑 Them:** “Good morning! Do you have your key?” · בוקר טוב! יש לך את המפתח?
+- **🫵 You:** “Yes, I have my key.” · כן, יש לי את המפתח.
+- **🧑 Them:** “Good. Do you need anything else?” · יופי. אתה צריך עוד משהו?
+- **🫵 You:** “Do you have a map?” · יש לך מפה?
+- **🧑 Them:** “Here you go. Have a great day!” · בבקשה. שיהיה יום מעולה!
 
 ### Dialogue: `fin-taxi` — happy path
 - **🧑 Them:** “Where can I take you?” · לאן לקחת אותך?
 - **🫵 You:** “To this address, please.” · לכתובת הזאת, בבקשה.
-- **🧑 Them:** “It'll be about ten. We're here.” · זה יהיה בערך עשרה. הגענו.
-- **🫵 You:** “Thank you!” · תודה!
-- **🧑 Them:** “Enjoy your day!” · תיהנה מהיום!
+- **🧑 Them:** “About fifteen euros, with the traffic. Is here okay?” · בערך חמישה עשר יורו, עם הפקקים. כאן זה בסדר?
+- **🫵 You:** “Stop here, please.” · עצור כאן, בבקשה.
+- **🧑 Them:** “Here we are. Enjoy your day!” · הגענו. תיהנה מהיום!
 
 ### Dialogue: `fin-lunch` — happy path
 - **🧑 Them:** “Hello! How many people?” · שלום! כמה אנשים?
 - **🫵 You:** “A table for two, please.” · שולחן לשניים, בבקשה.
-- **🧑 Them:** “Wonderful. Ready to order?” · נהדר. מוכן להזמין?
+- **🧑 Them:** “Right this way. Ready to order?” · בבקשה אחריי. מוכן להזמין?
 - **🫵 You:** “I'll have the pasta, please.” · אני אקח את הפסטה, בבקשה.
-- **🧑 Them:** “Great choice — coming right up!” · בחירה מעולה — תכף מגיע!
-
-### Dialogue: `fin-twist` — happy path
-- **🧑 Them:** “Here you are — the seafood risotto!” · בבקשה — ריזוטו פירות ים!
+- **🧑 Them:** “…Here's your meal — one steak!” · …הנה הארוחה שלך — סטייק אחד!
 - **🫵 You:** “This isn't what I ordered.” · זה לא מה שהזמנתי.
-- **🧑 Them:** “Oh — my apologies! The pasta, right? I'll fix it now.” · אוי — סליחה! הפסטה, נכון? אני מתקן עכשיו.
-- **🫵 You:** “Thank you!” · תודה!
-- **🧑 Them:** “The right dish, on the house. So sorry again!” · המנה הנכונה, על חשבון הבית. שוב סליחה!
+- **🧑 Them:** “Oh no — I'm so sorry! I'll bring the right one.” · אוי לא — אני מצטער מאוד! אביא את הנכון.
+- **🫵 You:** “No problem, thank you.” · אין בעיה, תודה.
+- **🧑 Them:** “Here's the pasta. Enjoy your meal!” · הנה הפסטה. בתיאבון!
+
+### Dialogue: `fin-chat` — happy path
+- **🧑 Them:** “Hi! Where are you from?” · היי! מאיפה אתה?
+- **🫵 You:** “I'm from Israel.” · אני מישראל.
+- **🧑 Them:** “Nice! What did you do today?” · יפה! מה עשית היום?
+- **🫵 You:** “I went to the old town.” · הלכתי לעיר העתיקה.
+- **🧑 Them:** “And where are you going next?” · ולאן אתה נוסע אחרי זה?
+- **🫵 You:** “I'm going to Vietnam.” · אני נוסע לווייטנאם.
+- **🧑 Them:** “How long will you be there?” · כמה זמן תהיה שם?
+- **🫵 You:** “I'll be there for two weeks.” · אני אהיה שם שבועיים.
+- **🧑 Them:** “Two weeks in Vietnam? I think that's too short.” · שבועיים בווייטנאם? אני חושב שזה קצר מדי.
+- **🫵 You:** “I don't think so.” · לא נראה לי.
+- **🧑 Them:** “Ha! Maybe you're right. Have a great trip!” · חה! אולי אתה צודק. נסיעה טובה!
 
 ### Dialogue: `fin-evening` — happy path
-- **🧑 Them:** “What a sunset. You've picked a beautiful spot.” · איזו שקיעה. בחרת מקום יפהפה.
-- **🫵 You:** “This place is beautiful.” · המקום הזה יפהפה.
-- **🧑 Them:** “It really is. Well — safe travels, my friend.” · באמת. אז — נסיעה טובה, חבר.
-- **🫵 You:** “It was nice talking to you.” · היה נעים לדבר איתך.
-- **🧑 Them:** “Take care — and come back one day!” · שמור על עצמך — ותחזור יום אחד!
+- **🧑 Them:** “Welcome back! Is breakfast at seven okay for you tomorrow, or are you leaving early?” · ברוך השב! ארוחת בוקר בשבע מתאימה לך מחר, או שאתה יוצא מוקדם?
+- **🫵 You:** “Please speak slowly.” · דבר לאט, בבקשה.
+- **🧑 Them:** “Tomorrow. Breakfast — at seven. Okay?” · מחר. ארוחת בוקר — בשבע. בסדר?
+- **🫵 You:** “Okay, thank you.” · בסדר, תודה.
+- **🧑 Them:** “Good night — sleep well!” · לילה טוב — תישן טוב!
 
 ### Review status
 - 🤖 AI-drafted (English + Hebrew) — **pending human / native-Hebrew review**

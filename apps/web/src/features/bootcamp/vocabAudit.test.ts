@@ -17,7 +17,7 @@ const primeWords = (day: number): string[] => {
 
 describe('mission vocabulary audit — complete and consistent (Part 9)', () => {
   it('audits every English mission in the plan', () => {
-    expect(Object.keys(MISSION_VOCAB_AUDIT).map(Number).sort((a, b) => a - b)).toEqual(BOOTCAMP_PLAN.map((m) => m.day));
+    expect(Object.keys(MISSION_VOCAB_AUDIT).map(Number).sort((a, b) => a - b)).toEqual(BOOTCAMP_PLAN.map((m) => m.day).sort((a, b) => a - b));
   });
 
   for (const { day } of BOOTCAMP_PLAN) {
@@ -42,8 +42,8 @@ describe('mission vocabulary audit — complete and consistent (Part 9)', () => 
     for (const cp of [9, 17, 23, 27, 28, 29]) expect(MISSION_VOCAB_AUDIT[cp]!.decision).toBe('no-priming-needed');
   });
 
-  it('reports the exact primed count (7 foundation missions)', () => {
+  it('reports the exact primed set (the 7 original foundation missions + Everyday Core)', () => {
     const primed = Object.values(MISSION_VOCAB_AUDIT).filter((a) => a.decision === 'primed').map((a) => a.day);
-    expect(primed).toEqual([1, 2, 3, 4, 5, 6, 7]);
+    expect(primed).toEqual([1, 2, 3, 4, 5, 6, 7, 30]); // registry keys; 30 = Everyday Core (Mission 4)
   });
 });

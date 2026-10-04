@@ -3,7 +3,7 @@ import type { BootcampDayContent, BootcampDialogue, BootcampItem } from '../type
 import { recoveryFr } from './recovery.js';
 
 /**
- * French Mission 6 — "Taxi / VTC". French parallel of English mission 6: same objective (destination →
+ * French Mission 7 — "Taxi / VTC". French parallel of English mission 6: same objective (destination →
  * price → stop, the address-show move), same step structure, same engine. French target lines +
  * `tr:{en,he}` glosses; `fr.*` ids. No French video yet. AI-drafted, vous, pending review.
  */
@@ -37,17 +37,17 @@ const SCENE: BootcampDialogue = {
       { en: 'À cette adresse, s’il vous plaît.', tr: TR('To this address, please.', 'לכתובת הזאת, בבקשה.'), he: 'לכתובת הזאת, בבקשה.', itemId: 'fr.phrase.taxi.to-address', correct: true, next: 'n2' },
       { en: 'À l’aéroport, s’il vous plaît.', tr: TR('To the airport, please.', 'לשדה התעופה, בבקשה.'), he: 'לשדה התעופה, בבקשה.', itemId: 'fr.phrase.taxi.to-airport', correct: true, next: 'n2' },
     ] },
-    { id: 'n2', who: 'npc', next: 'c2', en: 'D’accord. Vous pensiez payer combien ?', tr: TR('Got it. How much did you expect to pay?', 'הבנתי. כמה חשבת לשלם?'), he: 'הבנתי. כמה חשבת לשלם?' },
+    { id: 'n2', who: 'npc', next: 'c2', en: 'D’accord. Pas de problème — on y va !', tr: TR('Got it. No problem — off we go!', 'הבנתי. אין בעיה — יוצאים!'), he: 'הבנתי. אין בעיה — יוצאים!' },
     { id: 'c2', who: 'you', en: '', he: '', choices: [
       { en: 'C’est combien pour le centre ?', tr: TR('How much to the centre?', 'כמה עד המרכז?'), he: 'כמה עד המרכז?', itemId: 'fr.phrase.taxi.how-much', correct: true, next: 'n3' },
       { en: 'Vous pouvez me montrer ?', tr: TR('Can you show me?', 'אתה יכול להראות לי? (בקש לראות את המונה)'), he: 'אתה יכול להראות לי?', itemId: 'fr.phrase.recovery.show-me', correct: true, next: 'n3' },
     ] },
-    { id: 'n3', who: 'npc', fast: true, next: 'c3', en: 'C’est environ quinze euros — il y a beaucoup de circulation en ce moment.', tr: TR("It's about fifteen euros — there's a lot of traffic right now.", 'זה בערך חמישה עשר יורו — יש הרבה פקקים עכשיו.'), he: 'זה בערך חמישה עשר יורו — יש הרבה פקקים עכשיו.' },
+    { id: 'n3', who: 'npc', fast: true, next: 'c3', en: 'C’est environ quinze euros. Il y a beaucoup de circulation en ce moment.', tr: TR("It's about fifteen euros. There's a lot of traffic right now.", 'זה בערך חמישה עשר יורו. יש הרבה פקקים עכשיו.'), he: 'זה בערך חמישה עשר יורו. יש הרבה פקקים עכשיו.' },
     { id: 'c3', who: 'you', en: '', he: '', choices: [
-      { en: 'Parlez lentement, s’il vous plaît.', tr: TR('Please speak slowly.', 'דבר לאט, בבקשה.'), he: 'דבר לאט, בבקשה.', itemId: 'fr.phrase.recovery.slowly', correct: true, next: 'r3' },
+      { en: 'Pardon, parlez lentement, s’il vous plaît.', tr: TR('Sorry, please speak slowly.', 'סליחה, דבר לאט, בבקשה.'), he: 'סליחה, דבר לאט, בבקשה.', itemId: 'fr.phrase.recovery.slowly', correct: true, next: 'r3' },
       { en: 'D’accord, merci.', tr: TR('Okay, thank you.', 'בסדר, תודה.'), he: 'בסדר, תודה.', itemId: 'fr.phrase.recovery.thank-you', correct: true, next: 'n4' },
     ] },
-    { id: 'r3', who: 'npc', slow: true, next: 'c3b', en: 'Quinze — euros. La circulation.', tr: TR('Fifteen — euros. Traffic.', 'חמישה עשר — יורו. פקקים.'), he: 'חמישה עשר — יורו. פקקים.' },
+    { id: 'r3', who: 'npc', slow: true, next: 'c3b', en: 'Bien sûr. Environ quinze euros. Il y a beaucoup de circulation.', tr: TR("Sure. About fifteen euros. There's a lot of traffic.", 'בטח. בערך חמישה עשר יורו. יש הרבה פקקים.'), he: 'בטח. בערך חמישה עשר יורו. יש הרבה פקקים.' },
     { id: 'c3b', who: 'you', en: '', he: '', choices: [
       { en: 'D’accord, merci.', tr: TR('Okay, thank you.', 'בסדר, תודה.'), he: 'בסדר, תודה.', itemId: 'fr.phrase.recovery.thank-you', correct: true, next: 'n4' },
     ] },
@@ -65,7 +65,7 @@ export const DAY6_FR: BootcampDayContent = {
   items: DAY6_FR_ITEMS,
   dialogues: { 'taxi-ride': SCENE },
   steps: [
-    { kind: 'talk', icon: '🚕', title: T('משימה 6: מונית', 'Mission 6: Taxi / Uber'),
+    { kind: 'talk', icon: '🚕', title: T('משימה 7: מונית', 'Mission 7: Taxi / Uber'),
       body: [
         T('שיחה של 60 שניות עם נהג — יעד, מחיר, עצירה. לחץ גבוה, זמן קצר.', 'A 60-second conversation with a driver — destination, price, stop. High pressure, short window.'),
         T('הסוד: תגיד את היעד ותראה את הכתובת בטלפון. גם אם קפאת — יש לך את הכלים.', 'The trick: say the destination and show the address on your phone. Even if you freeze — you have the tools.'),

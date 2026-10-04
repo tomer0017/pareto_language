@@ -3,7 +3,7 @@ import type { BootcampDayContent, BootcampDialogue, BootcampItem } from '../type
 import { recoveryEs } from './recovery.js';
 
 /**
- * Spanish Mission 8 — "Compras" (Shopping). Spanish parallel of English mission 8: same objective (browse,
+ * Spanish Mission 9 — "Compras" (Shopping). Spanish parallel of English mission 8: same objective (browse,
  * try, decide, pay — in control), same step structure, same engine. Spanish target lines +
  * `tr:{en,he}` glosses; `es.*` ids. No Spanish video yet. AI-drafted, pending review.
  */
@@ -71,7 +71,7 @@ export const DAY8_ES: BootcampDayContent = {
   items: DAY8_ES_ITEMS,
   dialogues: { 'clothing-shop': SCENE },
   steps: [
-    { kind: 'talk', icon: '🛍️', title: T('משימה 8: קניות', 'Mission 8: Shopping'),
+    { kind: 'talk', icon: '🛍️', title: T('משימה 9: קניות', 'Mission 9: Shopping'),
       body: [
         T('חנות בגדים: להסתכל בשקט, למדוד, לבקש מידה, להחליט.', 'A clothing shop: browse in peace, try on, ask for a size, decide.'),
         T('לא צריך לקנות. צריך להרגיש בשליטה מול המוכר.', 'You don’t have to buy. You do have to feel in control with the seller.'),

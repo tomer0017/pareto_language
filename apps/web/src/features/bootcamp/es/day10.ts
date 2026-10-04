@@ -3,7 +3,7 @@ import type { BootcampDayContent, BootcampDialogue, BootcampItem } from '../type
 import { recoveryEs } from './recovery.js';
 
 /**
- * Spanish Mission 10 — "Aeropuerto y frontera" (Airport & Border). Spanish parallel of English mission 10:
+ * Spanish Mission 6 — "Aeropuerto y frontera" (Airport & Border). Spanish parallel of English mission 10:
  * same objective (the officer's question-chain: passport → purpose → how long → where → declare),
  * same step structure, same engine. `tr:{en,he}` glosses; `es.*` ids. AI-drafted, pending review.
  */
@@ -18,7 +18,7 @@ export const DAY10_ES_ITEMS: BootcampItem[] = [
     tip: T('התשובה ל-"מטרת הביקור?". ידידותית ובטוחה.', 'The answer to “purpose of your visit?” — friendly and safe.') },
   { id: 'es.phrase.border.two-weeks', text: 'Dos semanas.', meaning: T('לשבועיים.', 'For two weeks.'),
     tip: T('התבנית: מספר + משך זמן. Tres días / Una semana.', 'Template: number + duration. Tres días / Una semana.') },
-  { id: 'es.phrase.border.staying-hotel', text: 'En un hotel en el centro.', meaning: T('במלון במרכז העיר.', 'At a hotel in the city center.'),
+  { id: 'es.phrase.border.staying-hotel', text: 'En un hotel en el centro.', meaning: T('במלון במרכז העיר.', 'At a hotel in the city centre.'),
     tip: T('התשובה ל-"איפה אתה מתאכסן?". שם המלון עדיף, אבל זה מספיק.', 'Answers “where are you staying?”. The hotel name is better, but this is enough.') },
   { id: 'es.phrase.border.nothing-declare', text: 'Nada que declarar.', meaning: T('אין לי מה להצהיר.', 'Nothing to declare.'),
     tip: T('המשפט הקבוע במכס. אומרים אותו רגוע.', 'The fixed customs line. Say it calmly.') },
@@ -54,7 +54,7 @@ const SCENE_BORDER: BootcampDialogue = {
     { id: 'c2b', who: 'you', en: '', he: '', choices: [
       { en: 'Estoy de vacaciones.', tr: TR("I'm here on holiday.", 'אני כאן בחופשה.'), he: 'אני כאן בחופשה.', itemId: 'es.phrase.border.on-holiday', correct: true, next: 'n3' },
     ] },
-    { id: 'n3', who: 'npc', next: 'c3', en: 'Muy bien. ¿Cuánto tiempo se queda?', tr: TR('Lovely. How long are you staying?', 'נהדר. לכמה זמן אתה נשאר?'), he: 'נהדר. לכמה זמן אתה נשאר?' },
+    { id: 'n3', who: 'npc', next: 'c3', en: 'Muy bien. ¿Cuánto tiempo se queda?', tr: TR('All right. How long are you staying?', 'בסדר. לכמה זמן אתה נשאר?'), he: 'בסדר. לכמה זמן אתה נשאר?' },
     { id: 'c3', who: 'you', en: '', he: '', choices: [
       { en: 'Dos semanas.', tr: TR('For two weeks.', 'לשבועיים.'), he: 'לשבועיים.', itemId: 'es.phrase.border.two-weeks', correct: true, next: 'n4' },
       { en: 'Aquí tiene mi pasaporte.', tr: TR('Here is my passport.', 'הנה הדרכון שלי. (כבר נתת — הוא שאל משהו אחר)'), he: 'הנה הדרכון שלי.', itemId: 'es.phrase.border.passport-here', correct: false, next: 'r3' },
@@ -65,12 +65,12 @@ const SCENE_BORDER: BootcampDialogue = {
     ] },
     { id: 'n4', who: 'npc', next: 'c4', en: '¿Y dónde se aloja?', tr: TR('And where are you staying?', 'ואיפה אתה מתאכסן?'), he: 'ואיפה אתה מתאכסן?' },
     { id: 'c4', who: 'you', en: '', he: '', choices: [
-      { en: 'En un hotel en el centro.', tr: TR('At a hotel in the city center.', 'במלון במרכז העיר.'), he: 'במלון במרכז העיר.', itemId: 'es.phrase.border.staying-hotel', correct: true, next: 'n5' },
+      { en: 'En un hotel en el centro.', tr: TR('At a hotel in the city centre.', 'במלון במרכז העיר.'), he: 'במלון במרכז העיר.', itemId: 'es.phrase.border.staying-hotel', correct: true, next: 'n5' },
       { en: 'Más despacio, por favor.', tr: TR('Please speak slowly.', 'דבר לאט, בבקשה. (בשלב הזה מותר!)'), he: 'דבר לאט, בבקשה.', itemId: 'es.phrase.recovery.slowly', correct: true, next: 'r4' },
     ] },
     { id: 'r4', who: 'npc', slow: true, next: 'c4b', en: '¿Dónde — se — aloja?', tr: TR('Where — are you — staying?', 'איפה — אתה — מתאכסן?'), he: 'איפה — אתה — מתאכסן?' },
     { id: 'c4b', who: 'you', en: '', he: '', choices: [
-      { en: 'En un hotel en el centro.', tr: TR('At a hotel in the city center.', 'במלון במרכז העיר.'), he: 'במלון במרכז העיר.', itemId: 'es.phrase.border.staying-hotel', correct: true, next: 'n5' },
+      { en: 'En un hotel en el centro.', tr: TR('At a hotel in the city centre.', 'במלון במרכז העיר.'), he: 'במלון במרכז העיר.', itemId: 'es.phrase.border.staying-hotel', correct: true, next: 'n5' },
     ] },
     { id: 'n5', who: 'npc', next: 'c5', en: 'Ya casi está. ¿Algo que declarar?', tr: TR('Almost done. Anything to declare?', 'כמעט סיימנו. יש לך מה להצהיר?'), he: 'כמעט סיימנו. יש לך מה להצהיר?' },
     { id: 'c5', who: 'you', en: '', he: '', choices: [
@@ -91,7 +91,7 @@ export const DAY10_ES: BootcampDayContent = {
   items: DAY10_ES_ITEMS,
   dialogues: { 'border-control': SCENE_BORDER },
   steps: [
-    { kind: 'talk', icon: '🛂', title: T('משימה 10: שדה תעופה וגבול', 'Mission 10: Airport & Border'),
+    { kind: 'talk', icon: '🛂', title: T('משימה 6: שדה תעופה וגבול', 'Mission 6: Airport & Border'),
       body: [
         T('הרגע הכי מפחיד בטיול הוא גם הצפוי ביותר. פקיד הגבול שואל תמיד את אותן שאלות.', 'The scariest moment of the trip is also the most predictable. The border officer always asks the same questions.'),
         T('נכיר אותן מראש. אחר כך גבול זה בסך הכל תסריט שכבר קראת.', 'We’ll learn them in advance. After that, a border is just a script you’ve already read.'),
@@ -108,7 +108,7 @@ export const DAY10_ES: BootcampDayContent = {
     { kind: 'dialogue', dialogueId: 'border-control' },
     { kind: 'receipt', text: T('עברת ביקורת גבול שלמה בספרדית — דרכון, מטרה, משך, מקום, מכס.', 'You cleared a full border check in Spanish — passport, purpose, duration, place, customs.') },
     { kind: 'swipe', itemIds: DAY10_ES_ITEMS.map((i) => i.id) },
-    { kind: 'ambush', npc: { en: '¿Y tiene un boleto de vuelta reservado para su vuelo de regreso?', tr: TR('And do you have a return ticket booked for your flight home at all?', 'ויש לך בכלל כרטיס חזור מוזמן לטיסה הביתה?'), he: 'ויש לך בכלל כרטיס חזור מוזמן לטיסה הביתה?' },
+    { kind: 'ambush', npc: { en: '¿Y tiene un billete de vuelta reservado para su vuelo de regreso?', tr: TR('And do you have a return ticket booked for your flight home at all?', 'ויש לך בכלל כרטיס חזור מוזמן לטיסה הביתה?'), he: 'ויש לך בכלל כרטיס חזור מוזמן לטיסה הביתה?' },
       correctItemId: 'es.phrase.recovery.one-moment', wrongItemId: 'es.phrase.border.two-weeks' },
     { kind: 'receipt', text: T('שאלה שלא ציפית לה — ולא קפאת. קנית שנייה עם כלי.', 'A question you didn’t expect — and you didn’t freeze. You bought a second with a tool.') },
     { kind: 'summary' },

@@ -1,7 +1,7 @@
 import { RECOVERY_ITEMS, T, recovery } from './recovery.js';
 import type { BootcampDayContent, BootcampDialogue, BootcampItem } from './types.js';
 
-/** Mission 6 — "Taxi / Uber" (real objective: destination, price, stop — the address-show move). */
+/** Mission 7 — "Taxi / Uber" (real objective: destination, price, stop — the address-show move). */
 export const DAY6_ITEMS: BootcampItem[] = [
   { id: 'en.phrase.taxi.to-address', text: 'To this address, please.', meaning: T('לכתובת הזאת, בבקשה.', 'To this address, please.'),
     tip: T('הפתיח למונית — תגיד את זה ותראה את הכתובת בטלפון.', 'The taxi opener — say it and show the address on your phone.') },
@@ -29,17 +29,17 @@ const SCENE: BootcampDialogue = {
       { en: 'To this address, please.', he: 'לכתובת הזאת, בבקשה.', itemId: 'en.phrase.taxi.to-address', correct: true, next: 'n2' },
       { en: 'To the airport, please.', he: 'לשדה התעופה, בבקשה.', itemId: 'en.phrase.taxi.to-airport', correct: true, next: 'n2' },
     ] },
-    { id: 'n2', who: 'npc', next: 'c2', en: 'Got it. How much did you expect to pay?', he: 'הבנתי. כמה חשבת לשלם?' },
+    { id: 'n2', who: 'npc', next: 'c2', en: 'Got it. No problem — off we go!', he: 'הבנתי. אין בעיה — יוצאים!' },
     { id: 'c2', who: 'you', en: '', he: '', choices: [
       { en: 'How much to the centre?', he: 'כמה עד המרכז?', itemId: 'en.phrase.taxi.how-much', correct: true, next: 'n3' },
       { en: 'Can you show me?', he: 'אתה יכול להראות לי? (בקש לראות את המונה)', itemId: 'en.phrase.recovery.show-me', correct: true, next: 'n3' },
     ] },
-    { id: 'n3', who: 'npc', fast: true, next: 'c3', en: "It's about fifteen euros — there's a lot of traffic right now.", he: 'זה בערך חמישה עשר יורו — יש הרבה פקקים עכשיו.' },
+    { id: 'n3', who: 'npc', fast: true, next: 'c3', en: "It's about fifteen euros. There's a lot of traffic right now.", he: 'זה בערך חמישה עשר יורו. יש הרבה פקקים עכשיו.' },
     { id: 'c3', who: 'you', en: '', he: '', choices: [
-      { en: 'Please speak slowly.', he: 'דבר לאט, בבקשה.', itemId: 'en.phrase.recovery.slowly', correct: true, next: 'r3' },
+      { en: 'Sorry, please speak slowly.', he: 'סליחה, דבר לאט, בבקשה.', itemId: 'en.phrase.recovery.slowly', correct: true, next: 'r3' },
       { en: 'Okay, thank you.', he: 'בסדר, תודה.', itemId: 'en.phrase.recovery.thank-you', correct: true, next: 'n4' },
     ] },
-    { id: 'r3', who: 'npc', slow: true, next: 'c3b', en: 'Fifteen — euros. Traffic.', he: 'חמישה עשר — יורו. פקקים.' },
+    { id: 'r3', who: 'npc', slow: true, next: 'c3b', en: "Sure. About fifteen euros. There's a lot of traffic.", he: 'בטח. בערך חמישה עשר יורו. יש הרבה פקקים.' },
     { id: 'c3b', who: 'you', en: '', he: '', choices: [
       { en: 'Okay, thank you.', he: 'בסדר, תודה.', itemId: 'en.phrase.recovery.thank-you', correct: true, next: 'n4' },
     ] },
@@ -63,7 +63,7 @@ export const DAY6: BootcampDayContent = {
     type: 'intro',
   },
   steps: [
-    { kind: 'talk', icon: '🚕', title: T('משימה 6: מונית', 'Mission 6: Taxi / Uber'),
+    { kind: 'talk', icon: '🚕', title: T('משימה 7: מונית', 'Mission 7: Taxi / Uber'),
       body: [
         T('שיחה של 60 שניות עם נהג — יעד, מחיר, עצירה. לחץ גבוה, זמן קצר.', 'A 60-second conversation with a driver — destination, price, stop. High pressure, short window.'),
         T('הסוד: תגיד את היעד ותראה את הכתובת בטלפון. גם אם קפאת — יש לך את הכלים.', 'The trick: say the destination and show the address on your phone. Even if you freeze — you have the tools.'),

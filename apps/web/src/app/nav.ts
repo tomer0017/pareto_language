@@ -18,6 +18,7 @@ const PARENT_TAB: Partial<Record<View, View>> = {
   review: 'home',
   core: 'bootcamp',
   zerostart: 'bootcamp',
+  companion: 'bootcamp',
   reading: 'listen',
   videos: 'listen',
   languages: 'profile',
@@ -31,7 +32,7 @@ export function navTabOf(view: View): View | null {
 
 /** Views that keep the bottom bar on small screens: the four tabs plus the two browse-only
  *  secondary screens. Everything else is a focused flow with its own back control. */
-const BAR_VIEWS: View[] = [...PRIMARY_TABS, 'core', 'readiness'];
+const BAR_VIEWS: View[] = [...PRIMARY_TABS, 'core', 'readiness', 'companion'];
 
 /**
  * Whether the BOTTOM BAR (phone/tablet presentation) is shown.

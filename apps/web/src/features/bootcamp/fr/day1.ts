@@ -1,6 +1,7 @@
 import type { LocalizedText } from '@ready/content-schema';
 import type { BootcampDayContent, BootcampDialogue, BootcampItem } from '../types.js';
 import { recoveryFr } from './recovery.js';
+import { m01Steps } from '../practiceV1.js';
 
 /**
  * French Mission 1 — "Me présenter" (Introduce Myself). French parallel of English mission 1: same
@@ -18,17 +19,14 @@ export const DAY1_FR_ITEMS: BootcampItem[] = [
     tip: T('התשובה החמה לכל היכרות. אישה תאמר "Enchantée".', 'The warm answer to any introduction. A woman says “Enchantée”.') },
   { id: 'fr.phrase.social.from-israel', text: 'Je viens d’Israël.', meaning: T('אני מישראל.', "I'm from Israel."),
     tip: T('התבנית: Je viens de ___ — התשובה ל-"D’où venez-vous".', 'Template: Je viens de ___ — the answer to “Where are you from”.') },
-  { id: 'fr.phrase.social.here-on-holiday', text: 'Je suis en vacances.', meaning: T('אני כאן בחופשה.', "I'm here on holiday."),
-    tip: T('מטרת הביקור, בגרסה ידידותית.', 'Your purpose, the friendly version.') },
   { id: 'fr.phrase.social.first-time', text: 'C’est ma première fois ici.', meaning: T('זו הפעם הראשונה שלי כאן.', "It's my first time here."),
     tip: T('פותח שיחה ומזמין המלצות.', 'Opens conversation and invites recommendations.') },
   // hear
   { id: 'fr.reply.social.whats-your-name', text: 'Comment vous appelez-vous ?', meaning: T('איך קוראים לך?', "What's your name?") },
   { id: 'fr.reply.social.where-from', text: 'D’où venez-vous ?', meaning: T('מאיפה אתה?', 'Where are you from?') },
   { id: 'fr.reply.social.first-time-q', text: 'C’est votre première fois ici ?', meaning: T('זו הפעם הראשונה שלך כאן?', 'Is this your first time here?') },
-  { id: 'fr.reply.social.how-long', text: 'Vous restez combien de temps ?', meaning: T('לכמה זמן אתה כאן?', 'How long are you staying?') },
   { id: 'fr.reply.social.enjoy-stay', text: 'Bon séjour !', meaning: T('תיהנה מהשהות!', 'Enjoy your stay!') },
-  ...recoveryFr('fr.phrase.recovery.repeat', 'fr.phrase.recovery.slowly', 'fr.phrase.recovery.thank-you'),
+  ...recoveryFr('fr.phrase.recovery.repeat', 'fr.phrase.recovery.slowly'),
 ];
 
 const SCENE: BootcampDialogue = {
@@ -56,9 +54,13 @@ const SCENE: BootcampDialogue = {
     { id: 'n3', who: 'npc', fast: true, next: 'c3', en: 'Israël, magnifique ! C’est votre première fois ici ?', tr: TR('Israel, wonderful! Is this your first time here?', 'ישראל, נהדר! זו הפעם הראשונה שלך כאן?'), he: 'ישראל, נהדר! זו הפעם הראשונה שלך כאן?' },
     { id: 'c3', who: 'you', en: '', he: '', choices: [
       { en: 'Oui, c’est ma première fois ici.', tr: TR("Yes, it's my first time here.", 'כן, זו הפעם הראשונה שלי כאן.'), he: 'כן, זו הפעם הראשונה שלי כאן.', itemId: 'fr.phrase.social.first-time', correct: true, next: 'n4' },
-      { en: 'Je suis en vacances.', tr: TR("I'm here on holiday.", 'אני כאן בחופשה.'), he: 'אני כאן בחופשה.', itemId: 'fr.phrase.social.here-on-holiday', correct: true, next: 'n4' },
+      { en: 'Parlez lentement, s’il vous plaît.', tr: TR('Please speak slowly.', 'דבר לאט, בבקשה.'), he: 'דבר לאט, בבקשה.', itemId: 'fr.phrase.recovery.slowly', correct: true, next: 'r3' },
     ] },
-    { id: 'n4', who: 'npc', end: true, en: 'Eh bien, bon séjour ! Dites-moi si vous avez besoin de quelque chose.', tr: TR('Well, enjoy your stay! Let me know if you need anything.', 'אז תיהנה מהשהות! תגיד לי אם אתה צריך משהו.'), he: 'אז תיהנה מהשהות! תגיד לי אם אתה צריך משהו.' },
+    { id: 'r3', who: 'npc', slow: true, next: 'c3b', en: 'Bien sûr. C’est — votre première fois — ici ?', tr: TR('Sure. Is this — your first time — here?', 'בטח. זו — הפעם הראשונה שלך — כאן?'), he: 'בטח. זו — הפעם הראשונה שלך — כאן?' },
+    { id: 'c3b', who: 'you', en: '', he: '', choices: [
+      { en: 'Oui, c’est ma première fois ici.', tr: TR("Yes, it's my first time here.", 'כן, זו הפעם הראשונה שלי כאן.'), he: 'כן, זו הפעם הראשונה שלי כאן.', itemId: 'fr.phrase.social.first-time', correct: true, next: 'n4' },
+    ] },
+    { id: 'n4', who: 'npc', end: true, en: 'Bon séjour ! Bonne journée !', tr: TR('Enjoy your stay! Have a great day!', 'תיהנה מהשהות! שיהיה יום נהדר!'), he: 'תיהנה מהשהות! שיהיה יום נהדר!' },
   ],
 };
 
@@ -73,36 +75,5 @@ export const DAY1_FR: BootcampDayContent = {
     language: 'fr',
     type: 'intro',
   },
-  steps: [
-    { kind: 'video', mode: 'intro' },
-    { kind: 'talk', icon: '👋', title: T('משימה 1: להציג את עצמי', 'Mission 1: Introduce Myself'),
-      body: [
-        T('היום אתה פוגש בן אדם — לא דלפק. מארח, נהג, מישהו בבר.', 'Today you meet a person — not a counter. A host, a driver, someone at the bar.'),
-        T('בסוף המשימה תוכל לומר מי אתה, מאיפה, ולמה באת — בחיוך.', 'By the end you can say who you are, where you’re from, and why you came — with a smile.'),
-      ], cta: T('מתחילים', 'Start') },
-    { kind: 'prime', label: T('לפני שנדבר', 'Before we speak'),
-      intro: T('ארבע מילים שבונות את ההיכרות.', 'Four words that build the introduction.'),
-      words: [
-        { text: 'nom', meaning: T('שם', 'name'), emoji: '📛' },
-        { text: 'vacances', meaning: T('חופשה', 'holiday'), emoji: '🏖️' },
-        { text: 'première fois', meaning: T('פעם ראשונה', 'first time') },
-        { text: 'enchanté', meaning: T('נעים מאוד', 'nice to meet you') },
-      ], buildFromItemId: 'fr.phrase.social.here-on-holiday' },
-    { kind: 'tool', itemId: 'fr.phrase.social.my-name', index: 1, total: 4, label: T('מי אתה', 'Who you are') },
-    { kind: 'tool', itemId: 'fr.phrase.social.from-israel', index: 2, total: 4, label: T('מאיפה אתה', 'Where you’re from') },
-    { kind: 'tool', itemId: 'fr.phrase.social.here-on-holiday', index: 3, total: 4, label: T('למה באת', 'Why you came') },
-    { kind: 'tool', itemId: 'fr.phrase.social.nice-to-meet', index: 4, total: 4, label: T('התשובה החמה', 'The warm reply') },
-    { kind: 'replies', saidItemId: 'fr.phrase.social.my-name',
-      replyIds: ['fr.reply.social.where-from', 'fr.reply.social.first-time-q', 'fr.reply.social.how-long', 'fr.reply.social.enjoy-stay'] },
-    { kind: 'receipt', text: T('אתה מזהה את השאלות שכל מקומי סקרן ישאל אותך.', 'You recognize the questions every curious local will ask you.') },
-    { kind: 'quiz', itemId: 'fr.reply.social.where-from', wrongIds: ['fr.reply.social.how-long', 'fr.reply.social.enjoy-stay'] },
-    { kind: 'dialogue', dialogueId: 'meeting-host' },
-    { kind: 'receipt', text: T('ניהלת היכרות שלמה בצרפתית — שם, מוצא, מטרה.', 'You handled a full introduction in French — name, origin, purpose.') },
-    { kind: 'swipe', itemIds: DAY1_FR_ITEMS.map((i) => i.id) },
-    { kind: 'ambush', npc: { en: 'Alors, qu’est-ce qui vous amène jusqu’ici ?', tr: TR('So what brings you all the way out here anyway?', 'אז מה בכלל הביא אותך עד לכאן?'), he: 'אז מה בכלל הביא אותך עד לכאן?' },
-      correctItemId: 'fr.phrase.social.here-on-holiday', wrongItemId: 'fr.phrase.social.my-name' },
-    { kind: 'receipt', text: T('שאלה פתוחה ומהירה — וידעת בדיוק מה לענות.', 'An open, fast question — and you knew exactly what to answer.') },
-    { kind: 'video', mode: 'again' },
-    { kind: 'summary' },
-  ],
+  steps: m01Steps('fr'),
 };

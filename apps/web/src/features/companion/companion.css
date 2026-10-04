@@ -1,0 +1,125 @@
+/* ── READY Language Companion ───────────────────────────────────────────────────────────────────
+   Self-contained styles for the mascot. Motion is short (0.5–2s) and subtle by default; every
+   animation is switched off under `prefers-reduced-motion`. */
+
+.cmp-art {
+  display: inline-block; flex: none; position: relative; border-radius: 50%;
+  background: radial-gradient(circle at 50% 42%, #f3f1ff 0%, #e7e4fb 62%, #dcd8f7 100%);
+  overflow: hidden; line-height: 0;
+}
+.cmp-art img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  /* The stand-in art is cropped from an illustrated sheet: fade its edges so no scenery is cut hard. */
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 60%, transparent 73%);
+          mask-image: radial-gradient(circle at 50% 50%, #000 60%, transparent 73%);
+  transform-origin: 50% 60%;
+}
+.cmp-art.is-full { border-radius: 28px; }
+.cmp-art.is-full img {
+  -webkit-mask-image: radial-gradient(ellipse at 50% 50%, #000 66%, transparent 82%);
+          mask-image: radial-gradient(ellipse at 50% 50%, #000 66%, transparent 82%);
+}
+.cmp-art.is-silhouette img { filter: brightness(0) saturate(0); opacity: 0.22; }
+
+/* idle — barely there: a fish drifts, a parrot breathes */
+.cmp-art[data-anim='idle'][data-family='fish'] img,
+.cmp-art[data-anim='idle'][data-family='parrotfish'] img { animation: cmp-drift 5s ease-in-out infinite; }
+.cmp-art[data-anim='idle'][data-family='parrot'] img { animation: cmp-breathe 4.5s ease-in-out infinite; }
+.cmp-art[data-anim='rest'] img { animation: none; filter: saturate(0.85); }
+.cmp-art[data-anim='listening'] img { animation: cmp-lean 1.6s ease-in-out 1; }
+.cmp-art[data-anim='thinking'] img { animation: cmp-tilt 1.4s ease-in-out 1; }
+.cmp-art[data-anim='attention'] img { animation: cmp-wiggle 0.9s ease-in-out 1; }
+.cmp-art[data-anim='correct'] img { animation: cmp-pop 0.55s cubic-bezier(.2,1.4,.4,1) 1; }
+.cmp-art[data-anim='encouraging'] img { animation: cmp-nod 1s ease-in-out 1; }
+.cmp-art[data-anim='celebrate'] img,
+.cmp-art[data-anim='laughing'] img { animation: cmp-hop 0.9s cubic-bezier(.3,1.5,.5,1) 2; }
+.cmp-art[data-anim='missionComplete'] img { animation: cmp-hop 0.9s cubic-bezier(.3,1.5,.5,1) 2; }
+.cmp-art[data-anim='talking'] img,
+.cmp-art[data-anim='phone'] img,
+.cmp-art[data-anim='music'] img,
+.cmp-art[data-anim='watchingTV'] img { animation: cmp-chat 1.2s ease-in-out 2; }
+.cmp-art[data-anim='levelUp'] { animation: cmp-glow 1.6s ease-in-out 1; }
+
+@keyframes cmp-drift { 0%,100% { transform: translate(0,0) rotate(0); } 50% { transform: translate(1.5%, -2.5%) rotate(-1.5deg); } }
+@keyframes cmp-breathe { 0%,100% { transform: scale(1); } 50% { transform: scale(1.018); } }
+@keyframes cmp-lean { 0%,100% { transform: rotate(0); } 40% { transform: rotate(-5deg) translateX(-2%); } }
+@keyframes cmp-tilt { 0%,100% { transform: rotate(0); } 35% { transform: rotate(6deg); } 70% { transform: rotate(-3deg); } }
+@keyframes cmp-wiggle { 0%,100% { transform: rotate(0); } 25% { transform: rotate(-6deg); } 75% { transform: rotate(6deg); } }
+@keyframes cmp-pop { 0% { transform: scale(1); } 45% { transform: scale(1.1); } 100% { transform: scale(1); } }
+@keyframes cmp-nod { 0%,100% { transform: translateY(0); } 30% { transform: translateY(3%); } 60% { transform: translateY(-1%); } }
+@keyframes cmp-hop { 0%,100% { transform: translateY(0) rotate(0); } 35% { transform: translateY(-9%) rotate(-3deg); } 65% { transform: translateY(0) rotate(2deg); } }
+@keyframes cmp-chat { 0%,100% { transform: rotate(0) scale(1); } 25% { transform: rotate(-2deg) scale(1.02); } 75% { transform: rotate(2deg) scale(1.02); } }
+@keyframes cmp-glow { 0%,100% { box-shadow: 0 0 0 0 rgba(124, 92, 255, 0); } 50% { box-shadow: 0 0 0 14px rgba(124, 92, 255, 0.18); } }
+
+/* speech bubble — target-language lines keep their own direction inside a Hebrew screen */
+.cmp-bubble {
+  display: inline-block; max-width: 100%; padding: 8px 14px; border-radius: 18px;
+  background: var(--card); box-shadow: var(--shadow-card); font-weight: 800; color: #2a2a8f;
+  overflow-wrap: anywhere;
+}
+:root[data-theme='dark'] .cmp-bubble { color: var(--ink); }
+.cmp-bubble [dir='ltr'] { unicode-bidi: isolate; }
+
+/* Path card */
+.cmp-card { display: flex; align-items: center; gap: 14px; width: 100%; text-align: start; margin-top: 10px; padding: 12px 14px; }
+.cmp-card-body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+.cmp-card-body strong { font-size: 1.02rem; }
+.cmp-bar { height: 6px; border-radius: 999px; background: var(--line); overflow: hidden; }
+.cmp-bar > span { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #5b8def, #8b5cf6); }
+
+/* small reaction */
+.cmp-reaction { display: flex; align-items: center; gap: 12px; justify-content: center; margin: 6px 0; }
+.cmp-reaction .cmp-bubble { font-weight: 700; font-size: 0.95rem; color: var(--ink); }
+
+/* companion page */
+.cmp-hero { display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; padding: 18px 16px 20px; }
+.cmp-hero h2 { font-size: 1.5rem; margin: 2px 0 0; }
+.cmp-track { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.cmp-stage { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 10px 6px; border-radius: 18px; text-align: center; border: 1.5px solid transparent; }
+.cmp-stage.is-current { border-color: #8b5cf6; background: color-mix(in srgb, #8b5cf6 8%, transparent); }
+.cmp-stage .cmp-num { font-size: 0.72rem; font-weight: 800; color: var(--ink-dim); letter-spacing: 0.06em; }
+.cmp-stage .cmp-name { font-size: 0.82rem; font-weight: 700; line-height: 1.2; }
+.cmp-stage.is-locked .cmp-name { color: var(--ink-dim); }
+@media (min-width: 768px) { .cmp-track { grid-template-columns: repeat(6, 1fr); } }
+.cmp-next { display: flex; align-items: center; gap: 14px; }
+.cmp-next > div { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 6px; }
+
+/* evolution — the big moment */
+.cmp-evo {
+  position: fixed; inset: 0; z-index: 200; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 14px; padding: calc(env(safe-area-inset-top) + 20px) 22px calc(env(safe-area-inset-bottom) + 22px);
+  background: radial-gradient(circle at 50% 38%, #f6f4ff 0%, #e6e2fb 55%, #d5cff6 100%); color: #211f3a; text-align: center;
+  overflow-y: auto;
+}
+.cmp-evo-stage { position: relative; width: min(64vw, 260px, 38vh); aspect-ratio: 1 / 1; }
+.cmp-evo-stage .cmp-art { position: absolute; inset: 0; width: 100% !important; height: 100% !important; }
+.cmp-evo[data-phase='anticipation'] .cmp-evo-old { animation: cmp-tremble 0.22s linear infinite; }
+.cmp-evo[data-phase='anticipation'] .cmp-evo-new,
+.cmp-evo[data-phase='anticipation'] .cmp-evo-text { opacity: 0; }
+.cmp-evo[data-phase='transform'] .cmp-evo-old { animation: cmp-vanish 0.9s ease-in forwards; }
+.cmp-evo[data-phase='transform'] .cmp-evo-new { animation: cmp-appear 0.9s ease-out forwards; }
+.cmp-evo[data-phase='transform'] .cmp-evo-text { opacity: 0; }
+.cmp-evo[data-phase='reveal'] .cmp-evo-old,
+.cmp-evo[data-phase='done'] .cmp-evo-old { opacity: 0; }
+.cmp-evo[data-phase='reveal'] .cmp-evo-new { animation: cmp-hop 0.8s cubic-bezier(.3,1.5,.5,1) 1; }
+.cmp-evo[data-phase='reveal'] .cmp-evo-text { animation: cmp-rise 0.6s ease-out both; }
+.cmp-evo-burst { position: absolute; inset: -18%; border-radius: 50%; pointer-events: none; opacity: 0;
+  background: radial-gradient(circle, rgba(255,255,255,0.95) 0%, rgba(255,214,102,0.55) 35%, rgba(139,92,246,0) 68%); }
+.cmp-evo[data-phase='transform'] .cmp-evo-burst { animation: cmp-burst 0.9s ease-out 1; }
+.cmp-evo h1 { font-size: 1.9rem; margin: 0; letter-spacing: -0.01em; }
+.cmp-evo .cmp-evo-became { font-size: 1.12rem; font-weight: 700; margin: 0; }
+.cmp-evo .cmp-evo-meaning { font-size: 0.98rem; color: #55517a; margin: 0; max-width: 34ch; }
+.cmp-evo .btn-primary { width: min(100%, 320px); margin-top: 6px; }
+.cmp-evo-skip { position: absolute; inset: 0; background: transparent; border: 0; }
+
+@keyframes cmp-tremble { 0%,100% { transform: translate(0,0) rotate(0); } 25% { transform: translate(-1.5%, 1%) rotate(-1.2deg); } 75% { transform: translate(1.5%, -1%) rotate(1.2deg); } }
+@keyframes cmp-vanish { 0% { opacity: 1; transform: scale(1); filter: brightness(1); } 100% { opacity: 0; transform: scale(1.25); filter: brightness(2.2); } }
+@keyframes cmp-appear { 0% { opacity: 0; transform: scale(0.7); } 60% { opacity: 1; } 100% { opacity: 1; transform: scale(1); } }
+@keyframes cmp-burst { 0% { opacity: 0; transform: scale(0.4); } 40% { opacity: 1; } 100% { opacity: 0; transform: scale(1.5); } }
+@keyframes cmp-rise { 0% { opacity: 0; transform: translateY(12px); } 100% { opacity: 1; transform: translateY(0); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .cmp-art img, .cmp-art, .cmp-evo *, .cmp-evo { animation: none !important; transition: none !important; }
+  .cmp-evo .cmp-evo-new, .cmp-evo .cmp-evo-text { opacity: 1 !important; }
+  .cmp-evo .cmp-evo-old, .cmp-evo .cmp-evo-burst { opacity: 0 !important; }
+}

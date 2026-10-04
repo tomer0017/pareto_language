@@ -47,10 +47,10 @@ stays as a calm way out. READY is used in two modes over the SAME content: **act
 (the Path) and **passive listening** (Listen).
 
 - **Home** — the coach, not a menu. It answers "what is the single best thing to do now?" with
-  exactly four surfaces: **Travel Readiness** (ring + "X of 29 situations ready", plus "X of Y core
+  exactly four surfaces: **Travel Readiness** (ring + "X of 30 situations ready", plus "X of Y core
   sentences practiced" read from the real review log; Y is the canonical sentence count — one per
   distinct wording — from `sentenceCatalog`, the same number every screen shows), **Your next step** (the mission to continue
-  or start — icon, objective, "Situation N of 29", estimated minutes, one primary button), **Quick
+  or start — icon, objective, "Situation N of 30", estimated minutes, one primary button), **Quick
   review** (up to 5 sentences from the learner's own practice log; **hidden** until something was
   practiced — no empty disabled card) and **Quick listen** (10 hands-free minutes). No settings, libraries or
   tools on Home — they live in Learn / Listen / Profile. A brand-new learner additionally sees one
@@ -60,7 +60,7 @@ stays as a calm way out. READY is used in two modes over the SAME content: **act
   number. The detail screen (`readiness` view, opened from Home's ring or Learn's summary) lists
   every situation as ready / in progress / not started. Capability is the motivation — there are
   no points, streaks, hearts or invented achievement badges.
-- **Path (מסלול)** — the structured path through the 29 real situations and the ONE route to them
+- **Path (מסלול)** — the structured path through the 30 real situations and the ONE route to them
   (labelled "מסלול" / "Path" because everything in READY is learning; internally still the `bootcamp` view):
   a small readiness summary, the plan's phases as groups, compact mission cards (number, the
   mission's own icon, title, objective, status), and exactly ONE card highlighted as "your next
@@ -82,18 +82,22 @@ stays as a calm way out. READY is used in two modes over the SAME content: **act
 - **Videos** — an experience, not a list: plays a random available mission video, then asks "did
   you understand everything?" → load another random video, or drop into the exact Mission Hub that
   owns the video (Practice / Transcript / Video). Honest empty state. Videos ship for EN Missions
-  1–4, 6–8, 10 and FR Missions 1–5, 8, 10 (each mission's optional `introVideo`, auto-discovered per
+  1–3, 6–9, 14 and FR Missions 1–3, 5, 6, 9, 14 (each mission's optional `introVideo`, auto-discovered per
   learning language); missions without one show "Coming soon".
-- **Bootcamp** — the heart of the product: a **29-mission journey** in 5 phases
-  (Foundations → Arrival → Food → City Life → Mastery). **Mission 1 = Introduce Myself**, Mission 29 =
-  A Complete Day Abroad Alone; checkpoints (cold integration days) at **9 / 17 / 23 / 29**. The former
+- **Bootcamp** — the heart of the product: the **Core 30**, a 30-mission journey in 5 phases
+  (Foundations → Arrival → Everyday Life → City & Conversation → Mastery). **Mission 1 = Introduce
+  Myself**, Mission 4 = Everyday Core (want / need / have / can), Mission 30 = A Complete Day Abroad
+  Alone; checkpoints (cold integration days — they test, never teach) at **10 / 18 / 24 / 30**.
+  Pareto-first: reusable sentence frames before nouns, and human conversation (plans, home, hobbies,
+  past, future, opinions) alongside travel survival. Missions outside the Core live in the **Extended
+  Mission Pool** (`EXTENDED_POOL`; content kept in `extended.ts`, never shown). The former
   **Recovery Toolkit** mission is **removed** — no mission, special card, checkpoint or progress slot;
-  the header reads "0 of 29 missions" for a new learner. The shared recovery phrases remain only as
+  the header reads "0 of 30 missions" for a new learner. The shared recovery phrases remain only as
   reusable lines inside other missions (`recovery.ts`, `fr/recovery.ts`, `es/recovery.ts`).
   Identity vs. order: each plan entry has a stable semantic `id` (`introduce-myself`, …) that
   persisted progress is keyed by; the display number is derived from plan order
   (`missionNumber()`); `day` is only the content-registry key. `BOOTCAMP_PLAN` is the single source
-  of truth for count and order — nothing else hard-codes 29.
+  of truth for count and order — nothing else hard-codes 30.
 - **Foundation** — a row in the Path's "More practice" section (no longer a floating button; historically an action button on the Bootcamp map, hidden inside an active mission,
   via the pure `shouldShowFoundationFab`) opening a reusable bottom **Sheet**: 10 building-block
   categories → word list → word page (translation · audio · frequency · example · related missions).
@@ -125,9 +129,9 @@ stays as a calm way out. READY is used in two modes over the SAME content: **act
   category lives in `appStore.coreCategory`. Not "1500 words" yet — a validated 100-word pilot.
 - **Mission vocabulary priming** — a `{ kind: 'prime' }` mission step ("Before we speak") teaches 3–8
   building-block words before a longer sentence, optionally assembling into a canonical mission
-  sentence, with a ♻️ review hint for words seen earlier (`primeVocab.ts`). Primed: **Missions 1–7**
+  sentence, with a ♻️ review hint for words seen earlier (`primeVocab.ts`). Primed: **registry keys 1–7 + Everyday Core**
   (all languages in parity). Every mission's priming decision is recorded and test-bound in `vocabAudit.ts`
-  (29 audited · 7 primed · 22 no-priming-needed). Essential connectors/sizes (`with/without/and/or/
+  (30 audited · 8 primed · 22 no-priming-needed). Essential connectors/sizes (`with/without/and/or/
   here/there/can/more/less/medium/large`) are now **global Core** concepts (corpus 633, incl. the
   Core World Vocabulary Phase 1 — everyday world nouns/verbs that recur in beginner stories). French
   numbers (70/80/90 vigesimal) live in `fr/frenchNumbers.ts`. See **[VOCABULARY-AUDIT.md](./VOCABULARY-AUDIT.md)**.
@@ -158,8 +162,8 @@ stays as a calm way out. READY is used in two modes over the SAME content: **act
   current line highlighted + auto-scrolled. Its playback is driven by the shared **Parrot Mode**
   engine (`shared/playback`), so it gains repeat ×1–3, sequential/random and translation on/off
   alongside play / pause / resume / restart — the same controls Core Words & Core Sentences use.
-- **Video** — the full-conversation video (manual play, inline, replayable). EN Missions 1–4, 6–8, 10
-  and FR Missions 1–5, 8, 10 ship one (e.g. `/videos/En_day6.mp4` = Mission 6, Taxi); others show Coming Soon. Missing/broken
+- **Video** — the full-conversation video (manual play, inline, replayable). EN Missions 1–3, 6–9, 14
+  and FR Missions 1–3, 5, 6, 9, 14 ship one (e.g. `/videos/En_day6.mp4` = Taxi, registry key 6, shown as Mission 7); others show Coming Soon. Missing/broken
   video degrades gracefully.
 - **Victory Screen** — completion **celebrates** with minimal reading (Pareto): confetti +
   "{Mission} completed!" + three **large action cards** (Watch Conversation · Open Transcript ·
@@ -187,8 +191,11 @@ but no current mission enables it — it belonged to the retired Recovery Toolki
   (`app/nav.ts`: `PRIMARY_TABS`, `navTabOf`, `shouldShowNav`, `hasAppShell`): the bottom bar hides inside any focused full-screen flow
   — an active Bootcamp mission **or** an active Core learning-game session (`coreGameActive`), so a
   game's fixed action zone (Continue) is never occluded by the higher-z nav.
-- **Bootcamp data files** — `features/bootcamp/day1..29.ts` are **pure data** (no React, no store),
-  registered in `registry.ts`'s `DAYS`. `plan.ts` = 29-mission metadata (stable ids + order); `types.ts` = the
+- **Bootcamp data files** — **pure data** (no React, no store), registered in `registry.ts`'s `DAYS`
+  by `day` (a stable registry key, not the mission's position). Hand-written missions are
+  `features/bootcamp/dayN.ts` (+ `fr/`, `es/`); missions authored once for every language are
+  `features/bootcamp/core/*.ts` specs built by `author.ts`. `plan.ts` = 30-mission metadata (stable ids + order)
+  + the Extended Pool; `types.ts` = the
   content model; `transcript.ts` = happy-path linearizer; `recovery.ts` = the shared survival kit.
   A mission is data; the generic MissionPlayer renders it.
 - **Reusable UI/feedback (`shared/ui`, `shared/audio/sfx.ts`)** — `Modal` (confirm/choice dialogs),
@@ -285,6 +292,7 @@ And regenerate the content review surface when Bootcamp content changes:
 
 ```
 npm run gen:conversations   # rewrites docs/BOOTCAMP_CONVERSATIONS.md from source
+npm run gen:dialogues-doc    # rewrites docs/ALL_LANGUAGES_DIALOGUES_BY_MISSION_V2.md (EN / FR / ES / HE, test-bound)
 npm run export:dialogues     # cinematic screenplays per language → exports/ (dev tool, see DIALOGUE-EXPORT.md)
 ```
 

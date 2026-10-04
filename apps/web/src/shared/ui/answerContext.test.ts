@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { buildComprehensionContext, buildRespondContext } from './answerContext.js';
-import { DAY2 } from '../../features/bootcamp/day2.js';
+import { DAY3 } from '../../features/bootcamp/day3.js';
 import { DAY1 } from '../../features/bootcamp/day1.js';
 
 /**
@@ -32,21 +32,23 @@ describe('answer context — full learning hierarchy', () => {
     expect(ctx.why).toBe('because');
   });
 
-  it('MONEY REGRESSION — the ambush shows what you heard, not just the answer', () => {
-    const step = DAY2.steps.find((s) => s.kind === 'ambush');
-    if (!step || step.kind !== 'ambush') throw new Error('Mission 3 ambush missing');
-    const byId = new Map(DAY2.items.map((i) => [i.id, i]));
+  // Originally the Money mission's fast price (now a Visual Match speed challenge, which shows the
+  // spoken line after the tap). The same rule is checked on the Coffee Shop recovery ambush.
+  it('AMBUSH REGRESSION — the ambush shows what you heard, not just the answer', () => {
+    const step = DAY3.steps.find((s) => s.kind === 'ambush');
+    if (!step || step.kind !== 'ambush') throw new Error('Coffee Shop ambush missing');
+    const byId = new Map(DAY3.items.map((i) => [i.id, i]));
     const correct = byId.get(step.correctItemId)!;
     const wrong = byId.get(step.wrongItemId)!;
 
     const ctx = buildRespondContext({
       promptText: step.npc.en, promptTranslation: step.npc.he,
       chosen: wrong.text, expectedText: correct.text, expectedTranslation: correct.meaning.he,
-      why: 'The speaker gave the total price — repeat or identify the amount.',
+      why: 'The line was off-script — the winning move is to ask for it again.',
     });
 
     // What you heard = the original NPC sentence + its Hebrew — the context that used to be lost.
-    expect(ctx.prompt?.text).toContain('fifteen fifty');
+    expect(ctx.prompt?.text).toContain('croissants');
     expect(ctx.prompt?.translation).toBeTruthy();
     // Your answer (the wrong pick) and what you should answer (the total) are both present + distinct.
     expect(ctx.selected?.text).toBe(wrong.text);

@@ -1,6 +1,7 @@
 import type { LocalizedText } from '@ready/content-schema';
 import type { BootcampDayContent, BootcampItem, BootcampDialogue } from '../types.js';
 import { recoveryFr } from './recovery.js';
+import { m03Steps } from '../practiceV1.js';
 
 /**
  * French Mission 3 — "Café" (Coffee Shop), the deep-moment exemplar in French. Same objective
@@ -29,6 +30,8 @@ export const DAY3_FR_ITEMS: BootcampItem[] = [
     tip: T('סוגר כל הזמנה בנימוס.', 'Closes any order politely.') },
   { id: 'fr.phrase.coffee.card', text: 'Par carte, s’il vous plaît.',
     meaning: T('בכרטיס, בבקשה.', 'Card, please.') },
+  { id: 'fr.phrase.coffee.medium', text: 'Moyen, s’il vous plaît.', meaning: T('בינוני, בבקשה.', 'Medium, please.') },
+  { id: 'fr.phrase.coffee.yes-please', text: 'Oui, s’il vous plaît.', meaning: T('כן, בבקשה.', 'Yes, please.') },
   // hear — the barista question-chain
   { id: 'fr.reply.coffee.what-can-i-get', text: 'Qu’est-ce que je vous sers ?', meaning: T('מה להביא לך?', 'What can I get you?') },
   { id: 'fr.reply.coffee.hot-or-iced', text: 'Chaud ou glacé ?', meaning: T('חם או קר?', 'Hot or iced?') },
@@ -57,12 +60,12 @@ const SCENE_BREAKFAST: BootcampDialogue = {
     ] },
     { id: 'n2', who: 'npc', fast: true, next: 'c2', en: 'Parfait ! Moyen ou grand ?', tr: TR('Sure! Medium or large?', 'סגור! בינוני או גדול?'), he: 'סגור! בינוני או גדול?' },
     { id: 'c2', who: 'you', en: '', he: '', choices: [
-      { en: 'Moyen, s’il vous plaît.', tr: TR('Medium, please.', 'בינוני, בבקשה.'), he: 'בינוני, בבקשה.', correct: true, next: 'n3' },
+      { en: 'Moyen, s’il vous plaît.', tr: TR('Medium, please.', 'בינוני, בבקשה.'), he: 'בינוני, בבקשה.', itemId: 'fr.phrase.coffee.medium', correct: true, next: 'n3' },
       { en: 'Vous pouvez répéter ?', tr: TR('Can you repeat that?', 'אפשר לחזור על זה?'), he: 'אפשר לחזור על זה?', itemId: 'fr.phrase.recovery.repeat', correct: true, next: 'r2' },
     ] },
     { id: 'r2', who: 'npc', slow: true, next: 'c2b', en: 'MOYEN — ou GRAND ?', tr: TR('MEDIUM — or LARGE?', 'בינוני — או גדול?'), he: 'בינוני — או גדול?' },
     { id: 'c2b', who: 'you', en: '', he: '', choices: [
-      { en: 'Moyen, s’il vous plaît.', tr: TR('Medium, please.', 'בינוני, בבקשה.'), he: 'בינוני, בבקשה.', correct: true, next: 'n3' },
+      { en: 'Moyen, s’il vous plaît.', tr: TR('Medium, please.', 'בינוני, בבקשה.'), he: 'בינוני, בבקשה.', itemId: 'fr.phrase.coffee.medium', correct: true, next: 'n3' },
     ] },
     { id: 'n3', who: 'npc', next: 'c3', en: 'Lait et sucre ?', tr: TR('Milk and sugar?', 'חלב וסוכר?'), he: 'חלב וסוכר?' },
     { id: 'c3', who: 'you', en: '', he: '', choices: [
@@ -94,7 +97,7 @@ const SCENE_BREAKFAST: BootcampDialogue = {
     { id: 'n7', who: 'npc', next: 'c7', en: 'Vous voulez le ticket ?', tr: TR('Would you like the receipt?', 'רוצה את הקבלה?'), he: 'רוצה את הקבלה?' },
     { id: 'c7', who: 'you', en: '', he: '', choices: [
       { en: 'Non, merci !', tr: TR('No, thank you!', 'לא, תודה!'), he: 'לא, תודה!', itemId: 'fr.phrase.recovery.thank-you', correct: true, next: 'n8' },
-      { en: 'Oui, s’il vous plaît.', tr: TR('Yes, please.', 'כן, בבקשה.'), he: 'כן, בבקשה.', correct: true, next: 'n8' },
+      { en: 'Oui, s’il vous plaît.', tr: TR('Yes, please.', 'כן, בבקשה.'), he: 'כן, בבקשה.', itemId: 'fr.phrase.coffee.yes-please', correct: true, next: 'n8' },
     ] },
     { id: 'n8', who: 'npc', end: true, en: 'Voilà — bonne journée !', tr: TR('Here you go — enjoy your day!', 'בבקשה — שיהיה יום מעולה!'), he: 'בבקשה — שיהיה יום מעולה!' },
   ],
@@ -113,39 +116,5 @@ export const DAY3_FR: BootcampDayContent = {
     language: 'fr',
     type: 'intro',
   },
-  steps: [
-    { kind: 'talk', icon: '☕', title: T('משימה 3: בית קפה', 'Mission 3: Coffee Shop'),
-      body: [
-        T('היום לא לומדים "מילים על קפה". היום לומדים לצאת מבית קפה עם ארוחת בוקר ביד.', 'Today we don’t learn “coffee words”. Today you walk out of a café holding breakfast.'),
-        T('הסוד: אחרי שאתה מזמין, הבריסטה שואל שאלות המשך. מי שמכיר אותן מראש — אף פעם לא קופא.', 'The secret: after you order, the barista fires follow-up questions. Know them in advance — never freeze.'),
-      ], cta: T('להיכנס', 'Walk in') },
-    // Vocabulary priming (Part 7), authored as French: avec/sans are the two order-control words.
-    // avec + lait + sans + sucre literally compose "Avec du lait, sans sucre." — the assemble beat.
-    { kind: 'prime', label: T('לפני שנדבר', 'Before we speak'),
-      intro: T('שש מילים שולטות בכל הזמנה בבית קפה.', 'Six words control every café order.'),
-      words: [
-        { text: 'café', meaning: T('קפה', 'coffee'), emoji: '☕' },
-        { text: 'lait', meaning: T('חלב', 'milk'), emoji: '🥛' },
-        { text: 'sucre', meaning: T('סוכר', 'sugar'), emoji: '🍬' },
-        { text: 'moyen', meaning: T('בינוני', 'medium') },
-        { text: 'avec', meaning: T('עם', 'with') },
-        { text: 'sans', meaning: T('בלי', 'without') },
-      ], buildFromItemId: 'fr.phrase.coffee.no-sugar' },
-    { kind: 'tool', itemId: 'fr.phrase.coffee.iced-coffee', index: 1, total: 4, label: T('משפט הזהב', 'The golden template') },
-    { kind: 'tool', itemId: 'fr.phrase.coffee.no-sugar', index: 2, total: 4, label: T('שליטה בהזמנה', 'Order control') },
-    { kind: 'tool', itemId: 'fr.phrase.coffee.thats-all', index: 3, total: 4, label: T('הסוגר האוניברסלי', 'The universal closer') },
-    { kind: 'tool', itemId: 'fr.phrase.coffee.card', index: 4, total: 4, label: T('סוגרים חשבון', 'Settling up') },
-    { kind: 'replies', saidItemId: 'fr.phrase.coffee.iced-coffee',
-      replyIds: ['fr.reply.coffee.here-or-to-go', 'fr.reply.coffee.medium-or-large', 'fr.reply.coffee.milk-sugar', 'fr.reply.coffee.anything-else'] },
-    { kind: 'receipt', text: T('אתה כבר מזהה את ארבע שאלות ההמשך של כל בריסטה בעולם.', 'You now recognize the four follow-ups of every barista on earth.') },
-    { kind: 'quiz', itemId: 'fr.reply.coffee.cash-or-card', wrongIds: ['fr.reply.coffee.anything-to-eat', 'fr.reply.coffee.receipt'] },
-    { kind: 'quiz', itemId: 'fr.reply.coffee.anything-to-eat', wrongIds: ['fr.reply.coffee.hot-or-iced', 'fr.reply.coffee.enjoy'] },
-    { kind: 'dialogue', dialogueId: 'breakfast-order' },
-    { kind: 'receipt', text: T('הזמנת ארוחת בוקר שלמה: שתייה, גודל, חלב, מאפה, תשלום. הכל.', 'You ordered a full breakfast: drink, size, milk, pastry, payment. All of it.') },
-    { kind: 'swipe', itemIds: [...DAY3_FR_ITEMS, ...REUSED_RECOVERY].map((i) => i.id) },
-    { kind: 'ambush', npc: { en: 'Désolé, on n’a plus de croissants — un muffin à la place, ça vous va ?', tr: TR('Sorry, we are out of croissants — would a muffin be okay instead?', 'סליחה, נגמרו הקרואסונים — מאפין במקום זה בסדר?'), he: 'סליחה, נגמרו הקרואסונים — מאפין במקום זה בסדר?' },
-      correctItemId: 'fr.phrase.recovery.repeat', wrongItemId: 'fr.phrase.coffee.card' },
-    { kind: 'receipt', text: T('הפתעה מחוץ לתסריט — והגבת עם כלי. זה בדיוק מה שקורה בעולם האמיתי.', 'An off-script surprise — and you answered with a tool. Exactly how real life works.') },
-    { kind: 'summary' },
-  ],
+  steps: m03Steps('fr'),
 };

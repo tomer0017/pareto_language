@@ -1,5 +1,6 @@
 import { RECOVERY_ITEMS, T, recovery } from './recovery.js';
 import type { BootcampDayContent, BootcampDialogue, BootcampItem } from './types.js';
+import { m05Steps } from './practiceV1.js';
 
 /** Mission 5 — "Directions" (real objective: ask, then UNDERSTAND the answer; 90% listening). */
 export const DAY5_ITEMS: BootcampItem[] = [
@@ -20,7 +21,7 @@ export const DAY5_ITEMS: BootcampItem[] = [
   { id: 'en.reply.dir.next-to', text: "It's next to the bank.", meaning: T('זה ליד הבנק.', "It's next to the bank.") },
   { id: 'en.reply.dir.five-minutes', text: "It's about five minutes on foot.", meaning: T('זה בערך חמש דקות ברגל.', "It's about five minutes on foot.") },
   { id: 'en.reply.dir.cant-miss', text: "You can't miss it.", meaning: T('אי אפשר לפספס.', "You can't miss it.") },
-  ...recovery('en.phrase.recovery.repeat', 'en.phrase.recovery.slowly', 'en.phrase.recovery.show-me', 'en.phrase.recovery.thank-you'),
+  ...recovery('en.phrase.recovery.repeat', 'en.phrase.recovery.thank-you'),
 ];
 
 const SCENE: BootcampDialogue = {
@@ -52,37 +53,6 @@ export const DAY5: BootcampDayContent = {
   title: T('כיוונים', 'Directions'),
   items: DAY5_ITEMS,
   dialogues: { 'lost-in-town': SCENE },
-  steps: [
-    { kind: 'talk', icon: '🧭', title: T('משימה 5: כיוונים', 'Mission 5: Directions'),
-      body: [
-        T('לשאול "איפה?" זה קל. הקושי האמיתי: להבין את התשובה המהירה.', 'Asking “where?” is easy. The real challenge: understanding the fast answer.'),
-        T('היום זו בעיקר האזנה. שמאל, ימין, ישר, ליד — עד שזה טבעי.', 'Today is mostly listening. Left, right, straight, next to — until it’s automatic.'),
-      ], cta: T('מתחילים', 'Start') },
-    { kind: 'prime', label: T('לפני שנדבר', 'Before we speak'),
-      intro: T('שש מילות כיוון — כדי שתבין את התשובה, לא רק תשאל.', 'Six direction words — so you understand the answer, not just ask.'),
-      words: [
-        { text: 'excuse me', meaning: T('סליחה (לפנות)', 'excuse me') },
-        { text: 'left', meaning: T('שמאלה', 'left'), emoji: '⬅️' },
-        { text: 'right', meaning: T('ימינה', 'right'), emoji: '➡️' },
-        { text: 'straight', meaning: T('ישר', 'straight'), emoji: '⬆️' },
-        { text: 'near', meaning: T('קרוב', 'near') },
-        { text: 'far', meaning: T('רחוק', 'far') },
-      ], buildFromItemId: 'en.reply.dir.turn-left' },
-    { kind: 'tool', itemId: 'en.phrase.dir.where-is', index: 1, total: 3, label: T('לשאול איפה', 'Ask where') },
-    { kind: 'tool', itemId: 'en.phrase.dir.is-it-far', index: 2, total: 3, label: T('ללכת או מונית?', 'Walk or taxi?') },
-    { kind: 'tool', itemId: 'en.phrase.dir.show-me-map', index: 3, total: 3, label: T('לעבור לעיניים', 'Switch to eyes') },
-    { kind: 'replies', saidItemId: 'en.phrase.dir.where-is',
-      replyIds: ['en.reply.dir.left', 'en.reply.dir.right', 'en.reply.dir.straight', 'en.reply.dir.next-to'] },
-    { kind: 'receipt', text: T('שמאל, ימין, ישר, ליד — אתה מזהה כל כיוון במשפט.', 'Left, right, straight, next to — you catch every direction in a sentence.') },
-    { kind: 'quiz', itemId: 'en.reply.dir.turn-left', wrongIds: ['en.reply.dir.straight', 'en.reply.dir.right'] },
-    { kind: 'quiz', itemId: 'en.reply.dir.five-minutes', wrongIds: ['en.reply.dir.next-to', 'en.reply.dir.cant-miss'] },
-    { kind: 'dialogue', dialogueId: 'lost-in-town' },
-    { kind: 'receipt', text: T('שאלת דרך, הבנת הוראות מהירות, והגעת. ללכת לאיבוד כבר לא מפחיד.', 'You asked for directions, understood fast instructions, and arrived. Being lost isn’t scary anymore.') },
-    { kind: 'swipe', itemIds: DAY5_ITEMS.map((i) => i.id) },
-    { kind: 'ambush', npc: { en: 'Go past the church take the second right and it is just opposite the pharmacy.', he: 'תעבור את הכנסייה, פנה ימינה בשנייה, וזה ממש מול בית המרקחת.' },
-      correctItemId: 'en.reply.dir.right', wrongItemId: 'en.reply.dir.left' },
-    { kind: 'receipt', text: T('הוראה ארוכה ומהירה עם שלושה שלבים — ותפסת את הפנייה הנכונה.', 'A long, fast three-step instruction — and you caught the right turn.') },
-    { kind: 'summary' },
-  ],
+  steps: m05Steps('en'),
 };
 void RECOVERY_ITEMS;

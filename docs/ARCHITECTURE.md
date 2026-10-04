@@ -87,8 +87,7 @@ stable across re-renders. **Narrative dialogue order is never shuffled** — onl
   for the sentence library, the flashcard deck, Listen and every "N core sentences" count. One id
   never means two sentences (`sentenceIdConflicts` must be empty — tested); one wording is one
   canonical sentence, and later ids that re-declare the same wording are ALIASES, so a drill logged
-  under any of them counts once (`canonicalSentenceId`). Counts today: EN 242 · FR 239 · ES 236
-  (262 ids per language).
+  under any of them counts once (`canonicalSentenceId`). Counts today: EN 319 · FR 318 · ES 316.
 - **Developer diagnostics** — `shared/ui/devOverlay.ts`: rendered only when the build is a dev
   build AND `?debug=1` was requested (remembered until `?debug=0`). Never in production.
 - **Quick Review** — `features/core/review.ts` (pure) picks sentences from the real review-event
@@ -96,22 +95,43 @@ stable across re-renders. **Narrative dialogue order is never shuffled** — onl
 
 ## Bootcamp curriculum: identity, order, persistence
 
-- **One source of truth** — `features/bootcamp/plan.ts` `BOOTCAMP_PLAN` (29 entries). Its length is the
+- **One source of truth** — `features/bootcamp/plan.ts` `BOOTCAMP_PLAN` (30 entries — the Core 30). Its length is the
   mission count and its array order is the journey; UI progress (`Home`, the map header, Victory) and
-  tests read it — no other constant holds "29".
+  tests read it — no other constant holds "30".
 - **Three separate concepts per mission:** `id` (stable semantic slug, e.g. `introduce-myself` — what
   persisted progress is keyed by), display number (`missionNumber(day)` = 1-based plan position), and
   `day` (the numeric content-registry key shared by `DAYS` / `DAYS_FR` / `DAYS_ES` and the in-memory
-  store handle). `nextMission()` walks plan order, never `day` arithmetic.
+  store handle). `nextMission()` walks plan order, never `day` arithmetic. Since the Core 30
+  restructure `day` and number genuinely differ (Taxi: `day` 6, Mission 7; Everyday Core: `day` 30,
+  Mission 4) — nothing may order or number missions by `day`.
+- **Authoring** — `author.ts` (pure): a `MissionSpec` holds every line as `[en, fr, es, he]`;
+  `buildMission(spec, lang)` emits the ordinary `BootcampDayContent` (items, dialogue tree with
+  conversation-help branches, the standard step sequence). `core/index.ts` lists the spec missions
+  and `specMissions(lang)` feeds each language's registry — a spec mission cannot exist in one
+  language only. Checkpoint specs reuse earlier sentences by id (`fromItems` / `itemOf`), never retype them.
+- **Outside the Core** — `plan.ts` `EXTENDED_POOL` (kept for a 31+ track) and `MERGED_MISSIONS`
+  (merged into another mission); their content lives in `extended.ts`, is tested, and never reaches
+  the journey, Listen, the sentence library or Videos.
+- **Active-practice steps (Practice V1)** — four generic step kinds beside the original ones:
+  `quickReply`, `visualMatch`, `swap`, `miniMap`. Content is data (`types.ts`); what a round shows and
+  whether a step is well-formed is pure (`practiceEngines.ts`, `validatePracticeStep`); the screens are
+  `PracticeSteps.tsx`. Multilingual authoring goes through `author.ts` (`buildPractice`), used both by
+  spec missions and by `practiceV1.ts`, which holds the step lists of the hand-written Missions 01, 02,
+  03 and 05 once for all languages. `ambush.mode` (`recovery` / `speed`) states what a final challenge
+  tests. `PrimeWord.key` lets tests compare word-intro content across languages by concept.
+- **Turn parity gate** — `core30.test.ts` compares every Core dialogue tree across EN / FR / ES node
+  by node, and proves `docs/ALL_LANGUAGES_DIALOGUES_BY_MISSION_V2.md` equals `renderDialogueDoc()`.
 - **Persistence** — `progress.ts` (pure): in memory the store keeps `completedDays` / `receipts` /
   `stepIndex` by `day`; on disk (`ready.bootcamp.v2.<lang>`) the same data is keyed by mission `id`.
   `migrateV1` converts the old `ready.bootcamp.v1[.<lang>]` day-number data once (old 2 → Introduce
   Myself … old 30 → the finale; old day 1, the retired Recovery Toolkit, is dropped). v1 keys are
-  left untouched on disk.
+  left untouched on disk. The Core 30 restructure needed **no** migration: every surviving mission
+  kept its id. Extended Pool ids still round-trip (kept on disk, not counted as readiness); ids of
+  merged-away missions are ignored on read.
 - **Videos** — `introVideo.src` is an explicit asset path on the mission (`/videos/En_day1.mp4`),
   never computed from the mission number. A test asserts every referenced file exists in `public/`.
 - **Recovery phrases** — there is no recovery mission. `recovery.ts` / `fr/recovery.ts` /
-  `es/recovery.ts` hold the shared 7 tools that other missions bundle into their item lists and
+  `es/recovery.ts` hold the shared 8 tools (six help tools + two courtesies) that other missions bundle into their item lists and
   dialogue choices. The dialogue player's opt-in `coaching` mode is dormant (no mission sets it).
 
 ## Vocabulary priming & sentence flashcards
@@ -121,7 +141,7 @@ stable across re-renders. **Narrative dialogue order is never shuffled** — onl
   `PrimeStep` in `Bootcamp.tsx`. Opt-in, language-agnostic. `PrimeWord.review` + `primeVocab.ts`
   (`priorPrimeVocabulary`) track prior knowledge so a reused word shows a ♻️ review hint instead of
   being re-taught. Every mission's decision is recorded in `vocabAudit.ts` (`MISSION_VOCAB_AUDIT`,
-  all 29) and bound to the actual steps by tests. Currently primed: Missions 1–7 (all languages in parity).
+  all 30) and bound to the actual steps by tests. Currently primed: registry keys 1–7 + 30 (Everyday Core), all languages in parity.
 - `fr/frenchNumbers.ts` — the tested source of truth for spoken `fr-FR` numbers (0–9999) incl. the
   vigesimal 70/80/90 rules; feeds the French-numbers priming step in Mission 2.
 - `core/flashcards.ts` (pure) + `SentenceFlashcards.tsx` — flip-card review over the canonical mission

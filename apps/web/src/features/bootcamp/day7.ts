@@ -1,7 +1,7 @@
 import { RECOVERY_ITEMS, T, recovery } from './recovery.js';
 import type { BootcampDayContent, BootcampDialogue, BootcampItem } from './types.js';
 
-/** Mission 7 — "Hotel Check-in" (real objective: reservation → key → floor → breakfast). */
+/** Mission 8 — "Hotel Check-in" (real objective: reservation → key → floor → breakfast). */
 export const DAY7_ITEMS: BootcampItem[] = [
   { id: 'en.phrase.hotel.reservation', text: 'I have a reservation.', meaning: T('יש לי הזמנה.', 'I have a reservation.'),
     tip: T('הפתיח לדלפק המלון. תבנית: I have a ___.', 'The front-desk opener. Template: I have a ___.') },
@@ -10,6 +10,7 @@ export const DAY7_ITEMS: BootcampItem[] = [
     tip: T('תבנית: for ___ nights — משך השהות.', 'Template: for ___ nights — the length of your stay.') },
   { id: 'en.phrase.hotel.breakfast', text: 'Is breakfast included?', meaning: T('ארוחת הבוקר כלולה?', 'Is breakfast included?') },
   { id: 'en.phrase.hotel.wifi', text: "What's the wifi password?", meaning: T('מה סיסמת הוויי-פיי?', "What's the wifi password?") },
+  { id: 'en.phrase.hotel.here-you-go', text: 'Here you go.', meaning: T('בבקשה, הנה.', 'Here you go.') },
   // hear
   { id: 'en.reply.hotel.passport', text: 'Your passport, please.', meaning: T('הדרכון שלך, בבקשה.', 'Your passport, please.') },
   { id: 'en.reply.hotel.sign-here', text: 'Sign here, please.', meaning: T('תחתום כאן, בבקשה.', 'Sign here, please.') },
@@ -35,10 +36,10 @@ const SCENE: BootcampDialogue = {
     ] },
     { id: 'n2', who: 'npc', next: 'c2', en: 'Welcome, Mr. Cohen. Your passport, please.', he: 'ברוך הבא, מר כהן. הדרכון שלך, בבקשה.' },
     { id: 'c2', who: 'you', en: '', he: '', choices: [
-      { en: 'Here you go.', he: 'בבקשה, הנה.', correct: true, next: 'n3' },
+      { en: 'Here you go.', he: 'בבקשה, הנה.', itemId: 'en.phrase.hotel.here-you-go', correct: true, next: 'n3' },
       { en: 'One moment, please.', he: 'רגע אחד, בבקשה.', itemId: 'en.phrase.recovery.one-moment', correct: true, next: 'n3' },
     ] },
-    { id: 'n3', who: 'npc', fast: true, next: 'c3', en: "Thank you. You're in room two-oh-four, on the second floor. Is breakfast included in your booking?", he: 'תודה. אתה בחדר 204, בקומה השנייה. ארוחת בוקר כלולה בהזמנה שלך?' },
+    { id: 'n3', who: 'npc', fast: true, next: 'c3', en: "Thank you. You're in room two-oh-four, on the second floor. Here is your key.", he: 'תודה. אתה בחדר 204, בקומה השנייה. הנה המפתח שלך.' },
     { id: 'c3', who: 'you', en: '', he: '', choices: [
       { en: 'Is breakfast included?', he: 'ארוחת הבוקר כלולה?', itemId: 'en.phrase.hotel.breakfast', correct: true, next: 'n4' },
       // A different question gets a DIFFERENT, matching answer — the NPC never ignores what you said.
@@ -62,7 +63,7 @@ export const DAY7: BootcampDayContent = {
     type: 'intro',
   },
   steps: [
-    { kind: 'talk', icon: '🏨', title: T('משימה 7: צ\'ק-אין במלון', 'Mission 7: Hotel Check-in'),
+    { kind: 'talk', icon: '🏨', title: T('משימה 8: צ\'ק-אין במלון', 'Mission 8: Hotel Check-in'),
       body: [
         T('בסיס הבית שלך בטיול. הזמנה, דרכון, מפתח, קומה, ארוחת בוקר.', 'Your home base for the trip. Reservation, passport, key, floor, breakfast.'),
         T('הפעם אחת — ותהיה רגוע כל השבוע.', 'Nail it once — and relax all week.'),

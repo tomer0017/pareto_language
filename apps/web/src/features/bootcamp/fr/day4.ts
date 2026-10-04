@@ -1,6 +1,7 @@
 import type { LocalizedText } from '@ready/content-schema';
 import type { BootcampDayContent, BootcampDialogue, BootcampItem } from '../types.js';
 import { recoveryFr } from './recovery.js';
+import { DAY12_FR_ITEMS } from './day12.js';
 
 /**
  * French Mission 4 — "Repas au restaurant" (Restaurant Meal). French parallel of English mission 4:
@@ -29,6 +30,8 @@ export const DAY4_FR_ITEMS: BootcampItem[] = [
   { id: 'fr.reply.rest.to-drink', text: 'Quelque chose à boire ?', meaning: T('משהו לשתות?', 'Anything to drink?') },
   { id: 'fr.reply.rest.how-was-it', text: 'Tout s’est bien passé ?', meaning: T('איך היה הכל?', 'How was everything?') },
   { id: 'fr.reply.rest.dessert', text: 'Vous voulez un dessert ?', meaning: T('רוצים קינוח?', 'Would you like dessert?') },
+  // Merged in from Restaurant Basics — same ids and wording, so earlier practice still counts.
+  ...DAY12_FR_ITEMS.filter((i) => ['fr.phrase.rest.ill-have', 'fr.reply.rest.anything-else', 'fr.reply.rest.everything-okay'].includes(i.id)),
   ...recoveryFr('fr.phrase.recovery.repeat', 'fr.phrase.recovery.slowly', 'fr.phrase.recovery.thank-you', 'fr.phrase.recovery.one-moment', 'fr.phrase.recovery.dont-understand'),
 ];
 
@@ -48,23 +51,23 @@ const SCENE: BootcampDialogue = {
     { id: 'n2', who: 'npc', next: 'n2b', en: 'Parfait, suivez-moi. Voici vos menus.', tr: TR('Perfect, follow me. Here are your menus.', 'מצוין, בואו אחריי. הנה התפריטים.'), he: 'מצוין, בואו אחריי. הנה התפריטים.' },
     { id: 'n2b', who: 'npc', next: 'c2', en: 'Vous êtes prêts à commander ?', tr: TR('Are you ready to order?', 'מוכנים להזמין?'), he: 'מוכנים להזמין?' },
     { id: 'c2', who: 'you', en: '', he: '', choices: [
-      { en: 'Je vais prendre le poulet.', tr: TR("I'll have the chicken.", 'אני אקח את העוף.'), he: 'אני אקח את העוף.', itemId: 'fr.phrase.rest.ill-have-chicken', correct: true, next: 'n3' },
+      { en: 'Je vais prendre le poulet, sans oignons, s’il vous plaît.', tr: TR("I'll have the chicken, without onions, please.", 'אני אקח את העוף, בלי בצל, בבקשה.'), he: 'אני אקח את העוף, בלי בצל, בבקשה.', itemId: 'fr.phrase.rest.ill-have-chicken', correct: true, next: 'n3' },
+      { en: 'Je vais prendre les pâtes, s’il vous plaît.', tr: TR("I'll have the pasta, please.", 'אני אקח את הפסטה, בבקשה.'), he: 'אני אקח את הפסטה, בבקשה.', itemId: 'fr.phrase.rest.ill-have', correct: true, next: 'n3' },
       { en: 'Un instant, s’il vous plaît.', tr: TR('One moment, please.', 'רגע אחד, בבקשה. (צריך עוד רגע? לגיטימי)'), he: 'רגע אחד, בבקשה.', itemId: 'fr.phrase.recovery.one-moment', correct: true, next: 'r2' },
     ] },
     { id: 'r2', who: 'npc', next: 'n2b', en: 'Bien sûr, prenez votre temps.', tr: TR('Sure, take your time.', 'בטח, קחו את הזמן.'), he: 'בטח, קחו את הזמן.' },
-    { id: 'n3', who: 'npc', next: 'c3', en: 'Excellent choix. Quelque chose à boire ?', tr: TR('Excellent choice. Anything to drink?', 'בחירה מצוינת. משהו לשתות?'), he: 'בחירה מצוינת. משהו לשתות?' },
+    { id: 'n3', who: 'npc', next: 'c3', en: 'Bien sûr. Quelque chose à boire ?', tr: TR('Of course. Anything to drink?', 'כמובן. משהו לשתות?'), he: 'כמובן. משהו לשתות?' },
     { id: 'c3', who: 'you', en: '', he: '', choices: [
       { en: 'Une bouteille d’eau, s’il vous plaît.', tr: TR('A bottle of water, please.', 'בקבוק מים, בבקשה.'), he: 'בקבוק מים, בבקשה.', itemId: 'fr.phrase.rest.water', correct: true, next: 'n4' },
     ] },
-    { id: 'n4', who: 'npc', fast: true, next: 'c4', en: 'Très bien — et avec ça, vous voulez autre chose ?', tr: TR('Great — and would you like anything else with that?', 'מצוין — ורוצים עוד משהו עם זה?'), he: 'מצוין — ורוצים עוד משהו עם זה?' },
+    { id: 'n4', who: 'npc', fast: true, next: 'c4', en: 'Autre chose ?', tr: TR('Anything else?', 'עוד משהו?'), he: 'עוד משהו?' },
     { id: 'c4', who: 'you', en: '', he: '', choices: [
-      { en: 'Sans oignons, s’il vous plaît.', tr: TR('No onions, please.', 'בלי בצל, בבקשה.'), he: 'בלי בצל, בבקשה.', itemId: 'fr.phrase.rest.no-onions', correct: true, next: 'n5' },
-      { en: 'C’est tout, merci.', tr: TR("That's all, thank you.", 'זה הכל, תודה.'), he: 'זה הכל, תודה.', itemId: 'fr.phrase.recovery.thank-you', correct: true, next: 'n5' },
+      { en: 'C’est tout, merci.', tr: TR("That's all, thanks.", 'זה הכל, תודה.'), he: 'זה הכל, תודה.', itemId: 'fr.phrase.recovery.thank-you', correct: true, next: 'n5' },
     ] },
     { id: 'n5', who: 'npc', next: 'n5b', en: 'Ça arrive tout de suite !', tr: TR('Coming right up!', 'מגיע עוד רגע!'), he: 'מגיע עוד רגע!' },
-    { id: 'n5b', who: 'npc', next: 'c5', en: '…Plus tard… Tout s’est bien passé ?', tr: TR('…Later… How was everything?', '…אחר כך… איך היה הכל?'), he: '…אחר כך… איך היה הכל?' },
+    { id: 'n5b', who: 'npc', next: 'c5', en: '…Plus tard… Tout va bien ?', tr: TR('…Later… Is everything okay?', '…אחר כך… הכל בסדר?'), he: '…אחר כך… הכל בסדר?' },
     { id: 'c5', who: 'you', en: '', he: '', choices: [
-      { en: 'C’était délicieux ! L’addition, s’il vous plaît.', tr: TR('That was delicious! The bill, please.', 'זה היה טעים מאוד! החשבון, בבקשה.'), he: 'זה היה טעים מאוד! החשבון, בבקשה.', itemId: 'fr.phrase.rest.the-bill', correct: true, next: 'n6' },
+      { en: 'Oui, c’était délicieux ! L’addition, s’il vous plaît.', tr: TR('Yes, that was delicious! The bill, please.', 'כן, היה טעים מאוד! החשבון, בבקשה.'), he: 'כן, היה טעים מאוד! החשבון, בבקשה.', itemId: 'fr.phrase.rest.the-bill', correct: true, next: 'n6' },
     ] },
     { id: 'n6', who: 'npc', end: true, en: 'Ravi que ça vous ait plu. Voici — passez une bonne soirée !', tr: TR('So glad you enjoyed it. Here you are — have a lovely evening!', 'שמח שנהניתם. בבקשה — ערב נעים!'), he: 'שמח שנהניתם. בבקשה — ערב נעים!' },
   ],

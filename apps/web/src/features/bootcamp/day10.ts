@@ -2,7 +2,7 @@ import { T, recovery } from './recovery.js';
 import type { BootcampDayContent, BootcampDialogue, BootcampItem } from './types.js';
 
 /**
- * Mission 10 — "Airport & Border" (Phase 2 · Arrival).
+ * Mission 6 — "Airport & Border" (Phase 2 · Arrival).
  * The scariest moment abroad is also the most predictable script: passport → purpose →
  * how long → where staying → declare → welcome. Learn the officer's question-chain in
  * advance and authority stops being frightening. Listening-first, one line at a time.
@@ -15,7 +15,7 @@ export const DAY10_ITEMS: BootcampItem[] = [
     tip: T('התשובה ל-"מטרת הביקור?". ידידותית ובטוחה.', 'The answer to “purpose of your visit?” — friendly and safe.') },
   { id: 'en.phrase.border.two-weeks', text: 'For two weeks.', meaning: T('לשבועיים.', 'For two weeks.'),
     tip: T('התבנית: For + משך זמן. For three days / For a week.', 'Template: For + duration. For three days / For a week.') },
-  { id: 'en.phrase.border.staying-hotel', text: 'At a hotel in the city center.', meaning: T('במלון במרכז העיר.', 'At a hotel in the city center.'),
+  { id: 'en.phrase.border.staying-hotel', text: 'At a hotel in the city centre.', meaning: T('במלון במרכז העיר.', 'At a hotel in the city centre.'),
     tip: T('התשובה ל-"איפה אתה מתאכסן?". שם המלון עדיף, אבל זה מספיק.', 'Answers “where are you staying?”. The hotel name is better, but this is enough.') },
   { id: 'en.phrase.border.nothing-declare', text: 'Nothing to declare.', meaning: T('אין לי מה להצהיר.', 'Nothing to declare.'),
     tip: T('המשפט הקבוע במכס. אומרים אותו רגוע.', 'The fixed customs line. Say it calmly.') },
@@ -51,7 +51,7 @@ const SCENE_BORDER: BootcampDialogue = {
     { id: 'c2b', who: 'you', en: '', he: '', choices: [
       { en: "I'm here on holiday.", he: 'אני כאן בחופשה.', itemId: 'en.phrase.border.on-holiday', correct: true, next: 'n3' },
     ] },
-    { id: 'n3', who: 'npc', next: 'c3', en: 'Lovely. How long are you staying?', he: 'נהדר. לכמה זמן אתה נשאר?' },
+    { id: 'n3', who: 'npc', next: 'c3', en: 'All right. How long are you staying?', he: 'בסדר. לכמה זמן אתה נשאר?' },
     { id: 'c3', who: 'you', en: '', he: '', choices: [
       { en: 'For two weeks.', he: 'לשבועיים.', itemId: 'en.phrase.border.two-weeks', correct: true, next: 'n4' },
       { en: 'Here is my passport.', he: 'הנה הדרכון שלי. (כבר נתת — הוא שאל משהו אחר)', itemId: 'en.phrase.border.passport-here', correct: false, next: 'r3' },
@@ -62,12 +62,12 @@ const SCENE_BORDER: BootcampDialogue = {
     ] },
     { id: 'n4', who: 'npc', next: 'c4', en: 'And where are you staying?', he: 'ואיפה אתה מתאכסן?' },
     { id: 'c4', who: 'you', en: '', he: '', choices: [
-      { en: 'At a hotel in the city center.', he: 'במלון במרכז העיר.', itemId: 'en.phrase.border.staying-hotel', correct: true, next: 'n5' },
+      { en: 'At a hotel in the city centre.', he: 'במלון במרכז העיר.', itemId: 'en.phrase.border.staying-hotel', correct: true, next: 'n5' },
       { en: 'Please speak slowly.', he: 'דבר לאט, בבקשה. (בשלב הזה מותר!)', itemId: 'en.phrase.recovery.slowly', correct: true, next: 'r4' },
     ] },
     { id: 'r4', who: 'npc', slow: true, next: 'c4b', en: 'Where — are you — staying?', he: 'איפה — אתה — מתאכסן?' },
     { id: 'c4b', who: 'you', en: '', he: '', choices: [
-      { en: 'At a hotel in the city center.', he: 'במלון במרכז העיר.', itemId: 'en.phrase.border.staying-hotel', correct: true, next: 'n5' },
+      { en: 'At a hotel in the city centre.', he: 'במלון במרכז העיר.', itemId: 'en.phrase.border.staying-hotel', correct: true, next: 'n5' },
     ] },
     { id: 'n5', who: 'npc', next: 'c5', en: 'Almost done. Anything to declare?', he: 'כמעט סיימנו. יש לך מה להצהיר?' },
     { id: 'c5', who: 'you', en: '', he: '', choices: [
@@ -94,7 +94,7 @@ export const DAY10: BootcampDayContent = {
     type: 'intro',
   },
   steps: [
-    { kind: 'talk', icon: '🛂', title: T('משימה 10: שדה תעופה וגבול', 'Mission 10: Airport & Border'),
+    { kind: 'talk', icon: '🛂', title: T('משימה 6: שדה תעופה וגבול', 'Mission 6: Airport & Border'),
       body: [
         T('הרגע הכי מפחיד בטיול הוא גם הצפוי ביותר. פקיד הגבול שואל תמיד את אותן שאלות.', 'The scariest moment of the trip is also the most predictable. The border officer always asks the same questions.'),
         T('נכיר אותן מראש. אחר כך גבול זה בסך הכל תסריט שכבר קראת.', 'We’ll learn them in advance. After that, a border is just a script you’ve already read.'),

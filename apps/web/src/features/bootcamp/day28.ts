@@ -6,7 +6,7 @@ import { DAY24_ITEMS } from './day24.js';
 import type { BootcampDayContent, BootcampDialogue, BootcampItem } from './types.js';
 
 /**
- * Mission 28 — "Dress Rehearsal: Full Evening" (Phase 5, cold integration, no new content).
+ * Mission 29 — "Dress Rehearsal: Full Evening" (Phase 5, cold integration, no new content).
  * Taxi → restaurant → problem → payment, one take, with one designed surprise. The athlete's
  * rehearsal before race day: chained moments that finally feel like a single flow. Reuses 6, 12, 14 & 24.
  */
@@ -73,7 +73,7 @@ const COLD_PROBLEM: BootcampDialogue = {
       { en: 'Thank you!', he: 'תודה!', itemId: 'en.phrase.recovery.thank-you', correct: true, next: 'n3' },
       { en: 'Can you repeat that?', he: 'אפשר לחזור על זה?', itemId: 'en.phrase.recovery.repeat', correct: true, next: 'n3' },
     ] },
-    { id: 'n3', who: 'npc', end: true, en: 'The right dish, and it\'s on the house. Enjoy!', he: 'המנה הנכונה, ועל חשבון הבית. בתיאבון!' },
+    { id: 'n3', who: 'npc', end: true, en: "Here's the right dish — and it's on the house. Enjoy!", he: 'הנה המנה הנכונה — והיא על חשבון הבית. בתיאבון!' },
   ],
 };
 
@@ -101,7 +101,7 @@ export const DAY28: BootcampDayContent = {
   items: DAY28_ITEMS,
   dialogues: { 'dr-taxi': COLD_TAXI, 'dr-order': COLD_ORDER, 'dr-problem': COLD_PROBLEM, 'dr-pay': COLD_PAY },
   steps: [
-    { kind: 'talk', icon: '🎬', title: T('משימה 28: חזרה גנרלית — ערב שלם', 'Mission 28: Dress Rehearsal — Full Evening'),
+    { kind: 'talk', icon: '🎬', title: T('משימה 29: חזרה גנרלית — ערב שלם', 'Mission 29: Dress Rehearsal — Full Evening'),
       body: [
         T('אין חומר חדש. ערב שלם בטייק אחד: מונית, מסעדה, תקלה, תשלום.', 'No new material. A full evening in one take: taxi, restaurant, a problem, payment.'),
         T('זו החזרה של הספורטאי לפני יום התחרות — עם הפתעה מתוכננת אחת. בוא נזרום.', 'This is the athlete’s rehearsal before race day — with one designed surprise. Let’s flow.'),

@@ -75,6 +75,10 @@ export interface BootcampVideo {
  * the assembled sentence itself references a canonical mission item via `prime.buildFromItemId`.
  */
 export interface PrimeWord {
+  /** Stable, language-independent concept this word realizes (`direction.left`). Languages are
+   *  compared by KEY, never by array position — so "same word list" is a semantic claim a test can
+   *  check. A key starting with a language code (`fr.seventy`) is deliberately language-specific. */
+  key?: string;
   text: string;               // the word/particle in the learning language ("milk", "avec")
   meaning: LocalizedText;     // gloss ({en, he, …})
   emoji?: string;             // optional picture (adds a visual hook; degrades gracefully)
@@ -82,6 +86,58 @@ export interface PrimeWord {
    *  not brand-new vocabulary. Keeps later missions from re-teaching the same word as if unseen.
    *  Enforced by `prime.test.ts`: a review word must actually have appeared earlier. */
   review?: boolean;
+}
+
+/** A line the app speaks: the learning-language text plus its glosses (same shape as a dialogue line). */
+export interface SpokenLine {
+  en: string;           // the spoken line in the LEARNING language
+  he: string;
+  tr?: LocalizedText;
+}
+
+/** Quick Reply — hear a question (or read a situation), tap the right RESPONSE. The buttons are
+ *  learner sentences in the target language, never translations. */
+export interface QuickReplyRound {
+  /** The NPC line, as one of the mission's own "you will hear" sentences… */
+  promptItemId?: string;
+  /** …or a line written for this round… */
+  npc?: SpokenLine;
+  /** …or no audio at all: a situation described in the app language ("You are lost…"). */
+  situation?: LocalizedText;
+  options: { itemId: string; correct: boolean; /** what the button says, when it wraps the sentence */ text?: string }[];
+}
+
+/** Visual Match — hear something, tap the tile that shows it. Up to 9 tiles (3×3). */
+export interface MatchTile {
+  id: string;
+  label?: string;       // "€15.50", a word, a number
+  emoji?: string;
+  image?: string;       // public path — image-ready, unused so far
+}
+
+/** Swap It — one sentence frame, several slot values: the sentence is an engine, not a fixed line. */
+export interface SwapRound {
+  frame: string;        // "I need ___."
+  itemId?: string;      // the taught sentence this frame comes from (for practice history)
+  cue: { emoji?: string; text: LocalizedText };   // what to say, as a picture + app-language hint
+  /** Each value completes the frame (`fillFrame`); `meaning` glosses the COMPLETED sentence. */
+  options: { slot: string; meaning: LocalizedText; correct: boolean }[];
+}
+
+/** Mini Map — hear a direction, act on it: tap the direction / spot on a 3×3 schematic. */
+export interface MapCell {
+  id: string;
+  row: 0 | 1 | 2;
+  col: 0 | 1 | 2;
+  emoji?: string;
+  label?: string;       // a landmark name in the learning language
+  tappable?: boolean;
+}
+export interface MiniMapRound {
+  audio: SpokenLine;
+  itemId?: string;
+  cells: MapCell[];
+  correct: string;      // id of the tappable cell
 }
 
 export type BootcampStep =
@@ -95,7 +151,14 @@ export type BootcampStep =
   | { kind: 'replies'; saidItemId: string; replyIds: string[] }   // expected-reply training
   | { kind: 'swipe'; itemIds: string[] }
   | { kind: 'dialogue'; dialogueId: string }
-  | { kind: 'ambush'; npc: { en: string; he: string; tr?: LocalizedText }; correctItemId: string; wrongItemId: string }
+  // A fast, final challenge. `mode` says what is being tested (absent = the original behaviour):
+  //  - 'recovery': the line is deliberately too hard; the winning move is a conversation-help tool.
+  //  - 'speed':    the language is known; the challenge is catching it at speed. Never "use a tool".
+  | { kind: 'ambush'; mode?: 'recovery' | 'speed'; npc: SpokenLine; correctItemId: string; wrongItemId: string }
+  | { kind: 'quickReply'; label?: LocalizedText; rounds: QuickReplyRound[] }
+  | { kind: 'visualMatch'; label?: LocalizedText; tiles: MatchTile[]; rounds: { audio: SpokenLine; correct: string; itemId?: string }[]; challenge?: boolean }
+  | { kind: 'swap'; label?: LocalizedText; rounds: SwapRound[] }
+  | { kind: 'miniMap'; label?: LocalizedText; rounds: MiniMapRound[]; challenge?: boolean }
   | { kind: 'receipt'; text: LocalizedText }
   | { kind: 'video'; mode: 'intro' | 'again' }   // plays day.introVideo (intro = before, again = after)
   | { kind: 'summary' };

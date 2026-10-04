@@ -11,13 +11,13 @@ const dayOf = (id: string): number => BOOTCAMP_PLAN.find((m) => m.id === id)!.da
 const fresh = { completedDays: [], stepIndex: {} };
 
 describe('travelReadiness — real progress, never a guess', () => {
-  it('a new learner is 0 of 29 (0%), and the next step is Introduce Myself', () => {
+  it('a new learner is 0 of 30 (0%), and the next step is Introduce Myself', () => {
     const r = travelReadiness(fresh, all);
-    expect(r.total).toBe(29);
+    expect(r.total).toBe(30);
     expect(r.total).toBe(BOOTCAMP_PLAN.length);
     expect(r.ready).toBe(0);
     expect(r.pct).toBe(0);
-    expect(r.remaining).toBe(29);
+    expect(r.remaining).toBe(30);
     expect(r.allDone).toBe(false);
     expect(r.next?.id).toBe('introduce-myself');
     expect(r.nextIsResume).toBe(false);
@@ -27,8 +27,8 @@ describe('travelReadiness — real progress, never a guess', () => {
     const eight = BOOTCAMP_PLAN.slice(0, 8).map((m) => m.day);
     const r = travelReadiness({ completedDays: eight, stepIndex: {} }, all);
     expect(r.ready).toBe(8);
-    expect(r.pct).toBe(Math.round((8 / 29) * 100));
-    expect(r.remaining).toBe(21);
+    expect(r.pct).toBe(Math.round((8 / 30) * 100));
+    expect(r.remaining).toBe(22);
     expect(travelReadiness({ completedDays: [eight[0]!], stepIndex: {} }, all).pct).toBe(3);
   });
 
@@ -61,7 +61,7 @@ describe('travelReadiness — real progress, never a guess', () => {
     expect(r.statusOf(dayOf('coffee-shop'))).toBe('unavailable');
     expect(r.next?.id).toBe('numbers-money');
     expect(r.ready).toBe(0); // the completed mission is not built here, so it is not counted
-    expect(r.total).toBe(29); // the denominator stays the whole curriculum
+    expect(r.total).toBe(30); // the denominator stays the whole curriculum
     expect(travelReadiness(fresh, () => false).next).toBeUndefined();
   });
 

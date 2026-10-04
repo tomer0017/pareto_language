@@ -1,6 +1,7 @@
 import type { LocalizedText } from '@ready/content-schema';
 import type { BootcampDayContent, BootcampDialogue, BootcampItem } from '../types.js';
 import { recoveryEs } from './recovery.js';
+import { m05Steps } from '../practiceV1.js';
 
 /**
  * Spanish Mission 5 — "Direcciones" (Directions). Spanish parallel of English mission 5: same objective
@@ -28,7 +29,7 @@ export const DAY5_ES_ITEMS: BootcampItem[] = [
   { id: 'es.reply.dir.next-to', text: 'Está al lado del banco.', meaning: T('זה ליד הבנק.', "It's next to the bank.") },
   { id: 'es.reply.dir.five-minutes', text: 'Está a unos cinco minutos a pie.', meaning: T('זה בערך חמש דקות ברגל.', "It's about five minutes on foot.") },
   { id: 'es.reply.dir.cant-miss', text: 'No tiene pérdida.', meaning: T('אי אפשר לפספס.', "You can't miss it.") },
-  ...recoveryEs('es.phrase.recovery.repeat', 'es.phrase.recovery.slowly', 'es.phrase.recovery.show-me', 'es.phrase.recovery.thank-you'),
+  ...recoveryEs('es.phrase.recovery.repeat', 'es.phrase.recovery.thank-you'),
 ];
 
 const SCENE: BootcampDialogue = {
@@ -60,36 +61,5 @@ export const DAY5_ES: BootcampDayContent = {
   title: T('כיוונים', 'Directions'),
   items: DAY5_ES_ITEMS,
   dialogues: { 'lost-in-town': SCENE },
-  steps: [
-    { kind: 'talk', icon: '🧭', title: T('משימה 5: כיוונים', 'Mission 5: Directions'),
-      body: [
-        T('לשאול "איפה?" זה קל. הקושי האמיתי: להבין את התשובה המהירה.', 'Asking “where?” is easy. The real challenge: understanding the fast answer.'),
-        T('היום זו בעיקר האזנה. שמאל, ימין, ישר, ליד — עד שזה טבעי.', 'Today is mostly listening. Left, right, straight, next to — until it’s automatic.'),
-      ], cta: T('מתחילים', 'Start') },
-    { kind: 'prime', label: T('לפני שנדבר', 'Before we speak'),
-      intro: T('שש מילות כיוון — כדי שתבין את התשובה, לא רק תשאל.', 'Six direction words — so you understand the answer, not just ask.'),
-      words: [
-        { text: 'perdone', meaning: T('סליחה (לפנות)', 'excuse me') },
-        { text: 'izquierda', meaning: T('שמאלה', 'left'), emoji: '⬅️' },
-        { text: 'derecha', meaning: T('ימינה', 'right'), emoji: '➡️' },
-        { text: 'todo recto', meaning: T('ישר', 'straight'), emoji: '⬆️' },
-        { text: 'cerca', meaning: T('קרוב', 'near') },
-        { text: 'lejos', meaning: T('רחוק', 'far') },
-      ], buildFromItemId: 'es.reply.dir.turn-left' },
-    { kind: 'tool', itemId: 'es.phrase.dir.where-is', index: 1, total: 3, label: T('לשאול איפה', 'Ask where') },
-    { kind: 'tool', itemId: 'es.phrase.dir.is-it-far', index: 2, total: 3, label: T('ללכת או מונית?', 'Walk or taxi?') },
-    { kind: 'tool', itemId: 'es.phrase.dir.show-me-map', index: 3, total: 3, label: T('לעבור לעיניים', 'Switch to eyes') },
-    { kind: 'replies', saidItemId: 'es.phrase.dir.where-is',
-      replyIds: ['es.reply.dir.left', 'es.reply.dir.right', 'es.reply.dir.straight', 'es.reply.dir.next-to'] },
-    { kind: 'receipt', text: T('שמאל, ימין, ישר, ליד — אתה מזהה כל כיוון במשפט.', 'Left, right, straight, next to — you catch every direction in a sentence.') },
-    { kind: 'quiz', itemId: 'es.reply.dir.turn-left', wrongIds: ['es.reply.dir.straight', 'es.reply.dir.right'] },
-    { kind: 'quiz', itemId: 'es.reply.dir.five-minutes', wrongIds: ['es.reply.dir.next-to', 'es.reply.dir.cant-miss'] },
-    { kind: 'dialogue', dialogueId: 'lost-in-town' },
-    { kind: 'receipt', text: T('שאלת דרך, הבנת הוראות מהירות, והגעת. ללכת לאיבוד כבר לא מפחיד.', 'You asked for directions, understood fast instructions, and arrived. Being lost isn’t scary anymore.') },
-    { kind: 'swipe', itemIds: DAY5_ES_ITEMS.map((i) => i.id) },
-    { kind: 'ambush', npc: { en: 'Pase la iglesia, tome la segunda a la derecha, y está justo enfrente de la farmacia.', tr: TR('Go past the church take the second right and it is just opposite the pharmacy.', 'תעבור את הכנסייה, פנה ימינה בשנייה, וזה ממש מול בית המרקחת.'), he: 'תעבור את הכנסייה, פנה ימינה בשנייה, וזה ממש מול בית המרקחת.' },
-      correctItemId: 'es.reply.dir.right', wrongItemId: 'es.reply.dir.left' },
-    { kind: 'receipt', text: T('הוראה ארוכה ומהירה עם שלושה שלבים — ותפסת את הפנייה הנכונה.', 'A long, fast three-step instruction — and you caught the right turn.') },
-    { kind: 'summary' },
-  ],
+  steps: m05Steps('es'),
 };

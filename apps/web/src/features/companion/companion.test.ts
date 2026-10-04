@@ -1,0 +1,368 @@
+import { beforeAll, describe, expect, it, vi } from 'vitest';
+import { createElement } from 'react';
+import { renderToStaticMarkup } from 'react-dom/server';
+import { BOOTCAMP_PLAN } from '../bootcamp/plan.js';
+import { COMPANION_ART, artUrl } from './companionAssets.js';
+import { STAGE_COPY } from './companionCopy.js';
+import { learnedMaterial } from './companionLearned.js';
+import {
+  GROWTH_POINTS, LAST_STAGE, STAGES, STAGE_THRESHOLDS, acknowledge, animationsFor, applyEvents, companionLine, deriveFromHistory,
+  evolutionTimeline, missionEvents, motionFamily, newCompanion, pendingEvolution, resolveAnimation, sanitize, speechAbility, stageForPoints,
+  stageProgress, type CompanionEvent, type LanguageCompanion,
+} from './companionModel.js';
+import { existsSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+import type * as StoreModule from './companionStore.js';
+import type * as BootcampModule from '../bootcamp/bootcampStore.js';
+import type * as AppModule from '../../shared/stores/appStore.js';
+import type * as UiModule from './Companion.js';
+
+/**
+ * The Language Companion: a per-language, cumulative, monotonic progression that is NOT Trip
+ * Readiness. Pure rules first, then the real store (persistence, migration, language switching,
+ * the evolution firing once), then the rendered Path card.
+ */
+const isCheckpoint = (id: string): boolean => BOOTCAMP_PLAN.some((m) => m.id === id && m.checkpoint);
+const mission = (id: string): CompanionEvent => ({ kind: 'missionCompleted', key: `mission:${id}` });
+const missions = (n: number): CompanionEvent[] => Array.from({ length: n }, (_, i) => mission(`m${i}`));
+
+describe('stage thresholds — capability milestones, not equal slices', () => {
+  it('six stages, strictly rising thresholds that start at zero', () => {
+    expect(STAGES).toEqual([1, 2, 3, 4, 5, 6]);
+    expect(STAGE_THRESHOLDS).toHaveLength(6);
+    expect(STAGE_THRESHOLDS[0]).toBe(0);
+    STAGE_THRESHOLDS.forEach((t, i) => { if (i > 0) expect(t).toBeGreaterThan(STAGE_THRESHOLDS[i - 1]!); });
+    const gaps = STAGE_THRESHOLDS.slice(1).map((t, i) => t - STAGE_THRESHOLDS[i]!);
+    expect(new Set(gaps).size).toBe(gaps.length); // not a mechanical 1/6 each
+  });
+
+  it('points map to stages at the boundaries', () => {
+    expect(stageForPoints(0)).toBe(1);
+    expect(stageForPoints(19)).toBe(1);
+    expect(stageForPoints(20)).toBe(2);
+    expect(stageForPoints(69)).toBe(2);
+    expect(stageForPoints(70)).toBe(3);
+    expect(stageForPoints(150)).toBe(4);
+    expect(stageForPoints(300)).toBe(5);
+    expect(stageForPoints(599)).toBe(5);
+    expect(stageForPoints(600)).toBe(6);
+    expect(stageForPoints(99999)).toBe(6);
+  });
+
+  it('finishing the whole current Core is a major transformation — but not the Chatterbox', () => {
+    const core = deriveFromHistory(missionEvents(BOOTCAMP_PLAN.map((m) => m.id), isCheckpoint));
+    expect(core.points).toBe(BOOTCAMP_PLAN.reduce((n, m) => n + (m.checkpoint ? GROWTH_POINTS.checkpointCompleted : GROWTH_POINTS.missionCompleted), 0));
+    expect(core.stage).toBe(5);
+    expect(core.stage).toBeLessThan(LAST_STAGE);
+    expect(stageProgress(core).pointsToNext).toBeGreaterThan(100); // the last stage needs real continued use
+    // Two missions already calm the fish; a new learner is a scared fish.
+    expect(deriveFromHistory(missions(2)).stage).toBe(2);
+    expect(deriveFromHistory([]).stage).toBe(1);
+  });
+});
+
+describe('progression is cumulative, idempotent and monotonic', () => {
+  it('an event counts once, however often it is reported', () => {
+    const once = applyEvents(newCompanion(), [mission('taxi')]);
+    const twice = applyEvents(once, [mission('taxi'), mission('taxi')]);
+    expect(once.points).toBe(10);
+    expect(twice).toBe(once); // unchanged — same object
+  });
+
+  it('the stage never decreases as events arrive', () => {
+    let state = newCompanion();
+    let last = state.stage;
+    for (let i = 0; i < 80; i++) {
+      state = applyEvents(state, [mission(`x${i}`)]);
+      expect(state.stage).toBeGreaterThanOrEqual(last);
+      last = state.stage;
+    }
+    expect(last).toBe(6);
+  });
+
+  it('adding content or re-tuning thresholds can never move a learner back', () => {
+    const reached = applyEvents(newCompanion(), missions(16)); // 160 points → stage 4
+    expect(reached.stage).toBe(4);
+    // The course triples and every threshold is raised: the stored stage stands.
+    const harder = [0, 200, 700, 1500, 3000, 6000];
+    expect(stageForPoints(reached.points, harder)).toBe(1);
+    const after = applyEvents(reached, [mission('brand-new')], harder);
+    expect(after.stage).toBe(4);
+    expect(sanitize({ ...reached })!.stage).toBe(4);
+    // The stage does not depend on how many missions exist — there is no denominator anywhere.
+    expect(JSON.stringify(reached)).not.toMatch(/total|percent|pct/);
+  });
+
+  it('future growth sources are just event kinds', () => {
+    const state = applyEvents(newCompanion(), [
+      { kind: 'storyCompleted', key: 'story:1' }, { kind: 'reviewMastered', key: 'review:a' },
+      { kind: 'listeningMastered', key: 'listen:a' }, { kind: 'conversationCompleted', key: 'chat:1' },
+    ]);
+    expect(state.points).toBe(GROWTH_POINTS.storyCompleted + GROWTH_POINTS.reviewMastered + GROWTH_POINTS.listeningMastered + GROWTH_POINTS.conversationCompleted);
+  });
+
+  it('progress toward the next stage is a share of that stage only', () => {
+    expect(stageProgress(newCompanion())).toMatchObject({ stage: 1, next: 2, pct: 0, pointsToNext: 20 });
+    expect(stageProgress(applyEvents(newCompanion(), missions(1)))).toMatchObject({ pct: 50, pointsToNext: 10 });
+    expect(stageProgress({ points: 700, counted: [], stage: 6, seenStage: 6 })).toMatchObject({ next: null, pct: 100 });
+  });
+});
+
+describe('evolution is owed once', () => {
+  it('reaching a new stage owes an evolution until it is acknowledged', () => {
+    const grown = applyEvents(newCompanion(), missions(2));
+    expect(pendingEvolution(grown)).toEqual({ from: 1, to: 2 });
+    const seen = acknowledge(grown);
+    expect(pendingEvolution(seen)).toBeNull();
+    expect(acknowledge(seen)).toBe(seen);
+    // More growth inside the same stage owes nothing.
+    expect(pendingEvolution(applyEvents(seen, [mission('more')]))).toBeNull();
+  });
+
+  it('several stages at once reveal the last one', () => {
+    expect(pendingEvolution(applyEvents(newCompanion(), missions(16)))).toEqual({ from: 1, to: 4 });
+  });
+
+  it('migration: history is counted but never celebrated', () => {
+    const existing = deriveFromHistory(missionEvents(['introduce-myself', 'numbers-money', 'coffee-shop', 'arrival-day-checkpoint'], isCheckpoint));
+    expect(existing.points).toBe(10 + 10 + 10 + 20);
+    expect(existing.stage).toBe(2);
+    expect(pendingEvolution(existing)).toBeNull();
+  });
+});
+
+describe('storage is tolerant', () => {
+  it('sanitizes damaged data and never lowers a stage below what the points are worth', () => {
+    expect(sanitize(null)).toBeNull();
+    expect(sanitize('x')).toBeNull();
+    expect(sanitize({})).toEqual({ points: 0, counted: [], stage: 1, seenStage: 1 });
+    expect(sanitize({ points: 160, counted: ['a', 5], stage: 1, seenStage: 9 })).toEqual({ points: 160, counted: ['a'], stage: 4, seenStage: 4 });
+    expect(sanitize({ points: -5, stage: 99 })!.stage).toBe(6);
+  });
+});
+
+describe('animation system', () => {
+  it('every stage has the base states; parrots gain speech, the Chatterbox gains its props', () => {
+    for (const s of STAGES) for (const a of ['idle', 'listening', 'thinking', 'correct', 'encouraging', 'celebrate', 'missionComplete', 'levelUp', 'rest', 'attention'] as const) {
+      expect(animationsFor(s)).toContain(a);
+    }
+    expect(animationsFor(2)).not.toContain('talking');
+    expect(animationsFor(4)).toContain('talking');
+    expect(animationsFor(5)).not.toContain('phone');
+    expect(animationsFor(6)).toEqual(expect.arrayContaining(['phone', 'music', 'watchingTV', 'laughing']));
+    expect(resolveAnimation(1, 'phone')).toBe('idle'); // a fish cannot use a phone
+    expect(resolveAnimation(6, 'phone')).toBe('phone');
+    expect([1, 2, 3, 4, 5, 6].map((s) => motionFamily(s as 1))).toEqual(['fish', 'fish', 'parrotfish', 'parrot', 'parrot', 'parrot']);
+  });
+
+  it('reduced motion: no evolution sequence — the new stage is simply shown', () => {
+    expect(evolutionTimeline(true)).toEqual([{ phase: 'done', ms: 0 }]);
+    const full = evolutionTimeline(false);
+    expect(full.map((p) => p.phase)).toEqual(['anticipation', 'transform', 'reveal', 'done']);
+    expect(full.reduce((n, p) => n + p.ms, 0)).toBeLessThanOrEqual(3000);
+  });
+});
+
+describe('the companion never spoils new language', () => {
+  const learned = { words: ['name', 'first time', 'coffee'], sentences: ['My name is Dan.', 'Nice to meet you!', "I'd like an iced coffee, please."] };
+
+  it('speech ability grows with the stage', () => {
+    expect(STAGES.map(speechAbility)).toEqual(['none', 'listening', 'babble', 'phrase', 'sentence', 'chatter']);
+  });
+
+  it('fish say nothing; a parrotfish repeats ONE learned word; parrots use learned sentences only', () => {
+    expect(companionLine(1, learned)).toBeNull();
+    expect(companionLine(2, learned)).toBeNull();
+    expect(companionLine(3, learned)).toBe('Coffee?');
+    expect(companionLine(4, learned)).toBe('Nice to meet you!');
+    expect(learned.sentences).toContain(companionLine(5, learned));
+    expect(learned.sentences).toContain(companionLine(6, learned));
+  });
+
+  it('with nothing learned it stays silent in the target language', () => {
+    for (const s of STAGES) expect(companionLine(s, { words: [], sentences: [] })).toBeNull();
+  });
+
+  it('learned material comes only from COMPLETED missions of that language', () => {
+    const day1 = BOOTCAMP_PLAN[0]!.day;
+    expect(learnedMaterial('en', [])).toEqual({ words: [], sentences: [] });
+    const en = learnedMaterial('en', [day1]);
+    const fr = learnedMaterial('fr', [day1]);
+    expect(en.sentences).toContain('My name is Dan.');
+    expect(en.sentences.join(' ')).not.toMatch(/How much|coffee/i); // later missions are not exposed
+    expect(fr.sentences).toContain('Je m’appelle Dan.');
+    expect(fr.sentences).not.toContain('My name is Dan.');
+    expect(en.sentences.some((s) => /repeat|slowly/i.test(s))).toBe(false); // toolkit phrases are not "its" lines
+  });
+});
+
+describe('assets and copy are complete for every stage', () => {
+  it('each stage has a name, a meaning and artwork that exists on disk', () => {
+    const publicDir = fileURLToPath(new URL('../../../public', import.meta.url));
+    for (const s of STAGES) {
+      for (const key of ['name', 'feeling', 'meaning', 'speech', 'arrived'] as const) {
+        expect(STAGE_COPY[s][key].he, `stage ${s} ${key}`).toBeTruthy();
+        expect(STAGE_COPY[s][key].en, `stage ${s} ${key}`).toBeTruthy();
+      }
+      for (const variant of ['full', 'compact'] as const) expect(existsSync(publicDir + COMPANION_ART[s][variant]), `stage ${s} ${variant}`).toBe(true);
+    }
+    expect(artUrl(3, 'compact', '/app/')).toBe('/app/companion/stage-3.png');
+    expect(COMPANION_ART[6].compact).not.toBe(COMPANION_ART[6].full); // the living room is not squeezed into a small circle
+  });
+});
+
+/* ── the real store ────────────────────────────────────────────────────────────────────────────── */
+
+describe('companion store — per language, persisted, evolution fires once', () => {
+  const disk = new Map<string, string>();
+  let companion: typeof StoreModule;
+  let bootcamp: typeof BootcampModule;
+  let app: typeof AppModule;
+  let ui: typeof UiModule;
+  const dayOf = (id: string): number => BOOTCAMP_PLAN.find((m) => m.id === id)!.day;
+  const saved = (): Record<string, LanguageCompanion> => JSON.parse(disk.get('ready.companion.v1') ?? '{}') as Record<string, LanguageCompanion>;
+  /** The active language's companion, exactly as the screens read it. */
+  const active = () => companion.activeCompanion(companion.useCompanionStore.getState().byLang, app.useAppStore.getState().learningLang);
+  const card = (): string => { const a = active(); return renderToStaticMarkup(createElement(ui.CompanionCardView, { stage: a.stage, pct: a.progress.pct, language: ui.languageLabel(a.lang) })); };
+  /** What the app-shell host shows: the evolution, if one is owed for the active language. */
+  const host = (): string => { const a = active(); return a.evolution ? renderToStaticMarkup(createElement(ui.CompanionEvolution, { lang: a.lang, from: a.evolution.from, to: a.evolution.to, onDone: () => undefined })) : ''; };
+  const complete = (...ids: string[]): void => {
+    for (const id of ids) {
+      bootcamp.useBootcampStore.getState().startDay(dayOf(id));
+      bootcamp.useBootcampStore.getState().completeDay();
+    }
+  };
+
+  beforeAll(async () => {
+    vi.stubGlobal('localStorage', {
+      getItem: (k: string) => disk.get(k) ?? null,
+      setItem: (k: string, v: string) => void disk.set(k, v),
+      removeItem: (k: string) => void disk.delete(k),
+    });
+    // An existing English learner: three missions done BEFORE the companion existed.
+    disk.set('ready.bootcamp.v2.en', JSON.stringify({ completed: ['introduce-myself', 'numbers-money', 'coffee-shop'], receipts: [], stepIndex: {} }));
+    app = await import('../../shared/stores/appStore.js');
+    bootcamp = await import('../bootcamp/bootcampStore.js');
+    companion = await import('./companionStore.js');
+    ui = await import('./Companion.js');
+  });
+
+  it('migration: an existing learner starts at the stage their history earned, with nothing to replay', () => {
+    const en = companion.useCompanionStore.getState().byLang.en!;
+    expect(en).toMatchObject({ points: 30, stage: 2, seenStage: 2 });
+    expect(saved().en).toMatchObject({ points: 30, stage: 2, seenStage: 2 }); // persisted at once
+    expect(disk.get('ready.bootcamp.v2.en')).toContain('coffee-shop'); // mission progress untouched
+  });
+
+  it('the Path card renders the current companion, its stage and its language', () => {
+    const html = card();
+    expect(html).toContain('stage-2.png');
+    expect(html).toContain(STAGE_COPY[2].name.en);
+    expect(html).toContain('Stage 2 of 6');
+    expect(html).toMatch(/English/);
+    expect(html).toContain('data-anim="idle"');
+    expect(host()).toBe(''); // nothing owed → no overlay
+  });
+
+  it('completing missions grows the companion; a new stage owes exactly one evolution', () => {
+    complete('everyday-core', 'directions', 'airport-border'); // 60 points — still stage 2
+    expect(companion.useCompanionStore.getState().byLang.en).toMatchObject({ points: 60, stage: 2, seenStage: 2 });
+    complete('taxi'); // 70 points → Parrotfish
+    const en = companion.useCompanionStore.getState().byLang.en!;
+    expect(en).toMatchObject({ points: 70, stage: 3, seenStage: 2 });
+    const overlay = host();
+    expect(overlay).toContain('role="dialog"');
+    expect(overlay).toContain('stage-2.png');
+    expect(overlay).toContain('stage-3.png');
+    expect(overlay).toContain(STAGE_COPY[3].name.en);
+  });
+
+  it('replaying a completed mission adds nothing', () => {
+    complete('taxi', 'introduce-myself');
+    expect(companion.useCompanionStore.getState().byLang.en!.points).toBe(70);
+  });
+
+  it('once seen, the evolution is gone — and a reload does not bring it back', async () => {
+    companion.useCompanionStore.getState().acknowledge('en');
+    expect(host()).toBe('');
+    expect(saved().en).toMatchObject({ stage: 3, seenStage: 3 });
+    // "Reload": a fresh copy of the modules reads the same disk.
+    vi.resetModules();
+    const fresh = await import('./companionStore.js');
+    expect(fresh.useCompanionStore.getState().byLang.en).toMatchObject({ points: 70, stage: 3, seenStage: 3 });
+    expect(fresh.activeCompanion(fresh.useCompanionStore.getState().byLang, 'en').evolution).toBeNull();
+  });
+
+  it('an evolution owed before a reload is still shown after it — once', async () => {
+    disk.set('ready.companion.v1', JSON.stringify({ en: { points: 150, counted: [], stage: 4, seenStage: 3 } }));
+    vi.resetModules();
+    const fresh = await import('./companionStore.js');
+    const owed = (): unknown => fresh.activeCompanion(fresh.useCompanionStore.getState().byLang, 'en').evolution;
+    expect(owed()).toEqual({ from: 3, to: 4 });
+    fresh.useCompanionStore.getState().acknowledge('en');
+    expect(owed()).toBeNull();
+    expect((JSON.parse(disk.get('ready.companion.v1')!) as Record<string, LanguageCompanion>).en).toMatchObject({ stage: 4, seenStage: 4 });
+    // Put the session's own state back for the tests below.
+    disk.set('ready.companion.v1', JSON.stringify(companion.useCompanionStore.getState().byLang));
+  });
+
+  it('each language has its own companion: switching shows the right one and never leaks progress', () => {
+    app.useAppStore.setState({ learningLang: 'es' });
+    const state = companion.useCompanionStore.getState().byLang;
+    expect(state.es).toMatchObject({ points: 0, stage: 1, seenStage: 1 }); // a scared fish
+    expect(state.en!.stage).toBe(3);
+    const html = card();
+    expect(html).toContain('stage-1.png');
+    expect(html).toContain(STAGE_COPY[1].name.en);
+    expect(html).toMatch(/Spanish/);
+
+    complete('introduce-myself', 'numbers-money');
+    expect(companion.useCompanionStore.getState().byLang.es).toMatchObject({ points: 20, stage: 2, seenStage: 1 });
+    expect(companion.useCompanionStore.getState().byLang.en!.points).toBe(70); // English untouched
+
+    app.useAppStore.setState({ learningLang: 'en' });
+    expect(card()).toContain('stage-3.png');
+    expect(host()).toBe(''); // the Spanish evolution waits for Spanish
+    app.useAppStore.setState({ learningLang: 'es' });
+    expect(host()).toContain(STAGE_COPY[2].name.en);
+  });
+
+  it('an evolution never disturbs the mission flow: acknowledging it changes no mission state', () => {
+    // Spanish owes the Focused Fish evolution (previous test). Open a mission and sit on its victory.
+    const before = bootcamp.useBootcampStore.getState();
+    bootcamp.useBootcampStore.getState().startDay(dayOf('coffee-shop'));
+    bootcamp.useBootcampStore.getState().completeDay();
+    const mid = bootcamp.useBootcampStore.getState();
+    const snapshot = { activeDay: mid.activeDay, index: mid.index, stage: mid.stage, completed: [...mid.completedDays], steps: { ...mid.stepIndex } };
+    expect(host()).not.toBe(''); // the evolution is owed while the victory screen is up
+    companion.useCompanionStore.getState().acknowledge('es');
+    const after = bootcamp.useBootcampStore.getState();
+    expect({ activeDay: after.activeDay, index: after.index, stage: after.stage, completed: [...after.completedDays], steps: { ...after.stepIndex } }).toEqual(snapshot);
+    expect(after.completedDays).toContain(dayOf('coffee-shop')); // normal progress was written
+    expect(after.completedDays.length).toBe(before.completedDays.length + 1);
+    expect(companion.useCompanionStore.getState().byLang.es).toMatchObject({ points: 30, stage: 2, seenStage: 2 }); // counted once
+    expect(JSON.parse(disk.get('ready.bootcamp.v2.es')!).completed).toContain('coffee-shop');
+    bootcamp.useBootcampStore.getState().exit();
+  });
+
+  it('other growth sources can be recorded directly, per language', () => {
+    companion.useCompanionStore.getState().record('fr', [{ kind: 'storyCompleted', key: 'story:beach' }]);
+    companion.useCompanionStore.getState().record('fr', [{ kind: 'storyCompleted', key: 'story:beach' }]);
+    expect(companion.useCompanionStore.getState().byLang.fr!.points).toBe(GROWTH_POINTS.storyCompleted);
+    expect(Object.keys(saved()).sort()).toEqual(['en', 'es', 'fr']);
+  });
+
+  it('the reusable reaction and the page render for any stage, with target-language lines kept LTR', () => {
+    app.useAppStore.setState({ learningLang: 'en' });
+    const a = active();
+    const reaction = renderToStaticMarkup(createElement(ui.CompanionReactionView, { kind: 'missionComplete', stage: a.stage }));
+    expect(reaction).toContain('data-anim="missionComplete"');
+    expect(reaction).toContain('stage-3.png');
+    expect(renderToStaticMarkup(createElement(ui.CompanionReactionView, { kind: 'encouraging', stage: a.stage }))).not.toMatch(/wrong|fail|sad/i);
+    const speech = ui.companionSpeech(a.stage, a.lang, bootcamp.useBootcampStore.getState().completedDays);
+    const page = renderToStaticMarkup(createElement(ui.CompanionPageView, { lang: a.lang, language: ui.languageLabel(a.lang), stage: a.stage, progress: a.progress, speech }));
+    for (const s of STAGES) expect(page).toContain(STAGE_COPY[s].name.en); // the six-stage track
+    expect(page).toContain('is-silhouette'); // stages not reached yet are teased, not shown
+    expect(page).toMatch(/<span dir="ltr" lang="en">[^<]+\?<\/span>/); // a parrotfish repeats one learned word
+  });
+});

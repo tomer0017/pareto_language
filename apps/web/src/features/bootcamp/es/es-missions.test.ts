@@ -15,7 +15,7 @@ const builtDays = Object.keys(DAYS_ES).map(Number).sort((a, b) => a - b);
 
 describe('Spanish missions — full parity + content integrity', () => {
   it('covers every mission in the plan', () => {
-    expect(builtDays).toEqual(BOOTCAMP_PLAN.map((m) => m.day));
+    expect(builtDays).toEqual(BOOTCAMP_PLAN.map((m) => m.day).sort((a, b) => a - b));
   });
 
   it('every Spanish mission item uses an es.* id', () => {

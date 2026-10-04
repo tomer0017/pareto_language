@@ -9,7 +9,7 @@ import { missionIcon, missionJourney, missionPhases, phaseOfIndex, primaryDialog
  * starts where the learner first responds, and missions without a video or without new content
  * still get a sound journey.
  */
-const RESPONDING = new Set(['quiz', 'dialogue', 'swipe', 'ambush']);
+const RESPONDING = new Set(['quiz', 'dialogue', 'swipe', 'ambush', 'quickReply', 'visualMatch', 'swap', 'miniMap']);
 const TEACHING = new Set(['prime', 'tool', 'replies']);
 
 describe('missionPhases — where learning ends and practice begins', () => {
@@ -49,7 +49,7 @@ describe('missionPhases — where learning ends and practice begins', () => {
     expect(day.steps[0]!.kind).toBe('video');
     const p = missionPhases(day);
     expect(p.learnStart).toBe(1);
-    expect(day.steps[p.practiceStart]!.kind).toBe('quiz');
+    expect(day.steps[p.practiceStart]!.kind).toBe('quickReply'); // Practice V1: practice opens on a Quick Reply
   });
 
   it('phaseOfIndex labels each step of the flow', () => {

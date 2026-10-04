@@ -1,41 +1,11 @@
 import { describe, expect, it } from 'vitest';
 import { dialogueTranscript } from './transcript.js';
 import { DAY1 } from './day1.js';
-import { DAY2 } from './day2.js';
-import { DAY3 } from './day3.js';
-import { DAY4 } from './day4.js';
-import { DAY5 } from './day5.js';
-import { DAY6 } from './day6.js';
-import { DAY7 } from './day7.js';
-import { DAY8 } from './day8.js';
-import { DAY9 } from './day9.js';
-import { DAY10 } from './day10.js';
-import { DAY11 } from './day11.js';
-import { DAY12 } from './day12.js';
-import { DAY13 } from './day13.js';
-import { DAY14 } from './day14.js';
-import { DAY15 } from './day15.js';
-import { DAY16 } from './day16.js';
-import { DAY17 } from './day17.js';
-import { DAY18 } from './day18.js';
-import { DAY19 } from './day19.js';
-import { DAY20 } from './day20.js';
-import { DAY21 } from './day21.js';
-import { DAY22 } from './day22.js';
-import { DAY23 } from './day23.js';
-import { DAY24 } from './day24.js';
-import { DAY25 } from './day25.js';
-import { DAY26 } from './day26.js';
-import { DAY27 } from './day27.js';
-import { DAY28 } from './day28.js';
-import { DAY29 } from './day29.js';
+import { BOOTCAMP_PLAN } from './plan.js';
+import { DAYS as REGISTRY } from './registry.js';
 import type { BootcampDayContent, BootcampDialogue } from './types.js';
 
-const DAYS: BootcampDayContent[] = [
-  DAY1, DAY2, DAY3, DAY4, DAY5, DAY6, DAY7, DAY8, DAY9,
-  DAY10, DAY11, DAY12, DAY13, DAY14, DAY15, DAY16, DAY17, DAY18, DAY19,
-  DAY20, DAY21, DAY22, DAY23, DAY24, DAY25, DAY26, DAY27, DAY28, DAY29,
-];
+const DAYS: BootcampDayContent[] = BOOTCAMP_PLAN.map((m) => REGISTRY[m.day]!);
 
 /**
  * The full-dialogue study sheet (Sprint 9). The reader depends on the tree collapsing to the
@@ -80,7 +50,7 @@ describe('dialogueTranscript — the canonical happy-path conversation', () => {
 
   it('collapses Mission 1 to the ideal introduction (no recovery beats, ends on the host\'s goodbye)', () => {
     const lines = dialogueTranscript(DAY1.dialogues['meeting-host']!);
-    expect(lines.at(-1)!.en).toBe('Well, enjoy your stay! Let me know if you need anything.');
+    expect(lines.at(-1)!.en).toBe('Enjoy your stay! Have a great day!');
     // Recovery-only nodes (r1/r2) must not appear on the happy path.
     const texts = lines.map((l) => l.en);
     expect(texts).not.toContain('Of course — what — is — your — name?');

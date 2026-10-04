@@ -28,6 +28,7 @@ export type View =
   | 'core'
   | 'readiness'
   | 'review'
+  | 'companion'   // the Language Companion page (features/companion) — opened from the Path
   // Content-pack screens (gated to "coming soon" until an English pack ships)
   | 'mission'
   | 'words'

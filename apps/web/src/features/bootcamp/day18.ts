@@ -2,13 +2,13 @@ import { T, recovery } from './recovery.js';
 import type { BootcampDayContent, BootcampDialogue, BootcampItem } from './types.js';
 
 /**
- * Mission 18 — "Public Transport" (Phase 4 · City Life).
+ * Mission 19 — "Public Transport" (Phase 4 · City Life).
  * Independence beyond taxi budgets: ticket, platform, direction, the right stop. Half of this
  * is pure listening — announcements and which-platform answers — so the ears do the work.
  */
 export const DAY18_ITEMS: BootcampItem[] = [
   // say
-  { id: 'en.phrase.trans.one-ticket', text: 'One ticket to the center, please.', meaning: T('כרטיס אחד למרכז, בבקשה.', 'One ticket to the center, please.'),
+  { id: 'en.phrase.trans.one-ticket', text: 'One ticket to the centre, please.', meaning: T('כרטיס אחד למרכז, בבקשה.', 'One ticket to the centre, please.'),
     tip: T('התבנית: One ticket to ___ — קונה כרטיס לכל יעד.', 'Template: One ticket to ___ — buys a ticket to anywhere.') },
   { id: 'en.phrase.trans.which-platform', text: 'Which platform?', meaning: T('איזה רציף?', 'Which platform?'),
     tip: T('שתי מילים שמונעות עלייה לרכבת הלא נכונה.', 'Two words that stop you boarding the wrong train.') },
@@ -31,12 +31,12 @@ const SCENE_TRANSPORT: BootcampDialogue = {
   nodes: [
     { id: 'n1', who: 'npc', next: 'c1', en: 'Hello! Where are you headed?', he: 'שלום! לאן אתה נוסע?' },
     { id: 'c1', who: 'you', en: '', he: '', choices: [
-      { en: 'One ticket to the center, please.', he: 'כרטיס אחד למרכז, בבקשה.', itemId: 'en.phrase.trans.one-ticket', correct: true, next: 'n2' },
+      { en: 'One ticket to the centre, please.', he: 'כרטיס אחד למרכז, בבקשה.', itemId: 'en.phrase.trans.one-ticket', correct: true, next: 'n2' },
       { en: 'Can you repeat that?', he: 'אפשר לחזור על זה?', itemId: 'en.phrase.recovery.repeat', correct: true, next: 'r1' },
     ] },
     { id: 'r1', who: 'npc', slow: true, next: 'c1b', en: 'Where — are you — going?', he: 'לאן — אתה — נוסע?' },
     { id: 'c1b', who: 'you', en: '', he: '', choices: [
-      { en: 'One ticket to the center, please.', he: 'כרטיס אחד למרכז, בבקשה.', itemId: 'en.phrase.trans.one-ticket', correct: true, next: 'n2' },
+      { en: 'One ticket to the centre, please.', he: 'כרטיס אחד למרכז, בבקשה.', itemId: 'en.phrase.trans.one-ticket', correct: true, next: 'n2' },
     ] },
     { id: 'n2', who: 'npc', next: 'c2', en: 'Single or return?', he: 'הלוך או הלוך-חזור?' },
     { id: 'c2', who: 'you', en: '', he: '', choices: [
@@ -47,12 +47,12 @@ const SCENE_TRANSPORT: BootcampDialogue = {
     { id: 'c2b', who: 'you', en: '', he: '', choices: [
       { en: 'Single, please.', he: 'הלוך, בבקשה.', correct: true, next: 'n3' },
     ] },
-    { id: 'n3', who: 'npc', fast: true, next: 'c3', en: "That's three euros. Platform two, leaves every ten minutes.", he: 'זה שלושה יורו. רציף שתיים, יוצא כל עשר דקות.' },
+    { id: 'n3', who: 'npc', fast: true, next: 'c3', en: "That's three euros. It leaves every ten minutes.", he: 'זה שלושה יורו. יוצא כל עשר דקות.' },
     { id: 'c3', who: 'you', en: '', he: '', choices: [
       { en: 'Which platform?', he: 'איזה רציף?', itemId: 'en.phrase.trans.which-platform', correct: true, next: 'n3b' },
       { en: 'Thank you!', he: 'תודה!', itemId: 'en.phrase.recovery.thank-you', correct: true, next: 'n4' },
     ] },
-    { id: 'n3b', who: 'npc', slow: true, next: 'c3b', en: 'Platform — two. Straight ahead.', he: 'רציף — שתיים. ישר קדימה.' },
+    { id: 'n3b', who: 'npc', next: 'c3b', en: 'Platform two. Straight ahead.', he: 'רציף שתיים. ישר קדימה.' },
     { id: 'c3b', who: 'you', en: '', he: '', choices: [
       { en: 'Thank you!', he: 'תודה!', itemId: 'en.phrase.recovery.thank-you', correct: true, next: 'n4' },
     ] },
@@ -84,7 +84,7 @@ export const DAY18: BootcampDayContent = {
   items: DAY18_ITEMS,
   dialogues: { transport: SCENE_TRANSPORT },
   steps: [
-    { kind: 'talk', icon: '🚇', title: T('משימה 18: תחבורה ציבורית', 'Mission 18: Public Transport'),
+    { kind: 'talk', icon: '🚇', title: T('משימה 19: תחבורה ציבורית', 'Mission 19: Public Transport'),
       body: [
         T('העיר זזה בשבילך — בזול. כרטיס, רציף, כיוון, והתחנה הנכונה.', 'The city moves for you — cheaply. Ticket, platform, direction, the right stop.'),
         T('חצי מהמשימה הזאת היא האזנה: הכרזות ותשובות מהירות של איזה-רציף.', 'Half of this mission is listening: announcements and fast which-platform answers.'),

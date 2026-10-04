@@ -3,7 +3,7 @@ import type { BootcampDayContent, BootcampDialogue, BootcampItem } from '../type
 import { recoveryEs } from './recovery.js';
 
 /**
- * Spanish Mission 18 — "Transporte público" (Public Transport). Spanish parallel of English mission 18:
+ * Spanish Mission 19 — "Transporte público" (Public Transport). Spanish parallel of English mission 18:
  * ticket, platform, direction, the right stop — half of it pure listening. `tr:{en,he}` glosses;
  * `es.*` ids. AI-drafted, pending review.
  */
@@ -12,8 +12,8 @@ const TR = (en: string, he: string): LocalizedText => ({ en, he });
 
 export const DAY18_ES_ITEMS: BootcampItem[] = [
   // say
-  { id: 'es.phrase.trans.one-ticket', text: 'Un boleto para el centro, por favor.', meaning: T('כרטיס אחד למרכז, בבקשה.', 'One ticket to the center, please.'),
-    tip: T('התבנית: Un boleto para ___ — קונה כרטיס לכל יעד.', 'Template: Un boleto para ___ — buys a ticket to anywhere.') },
+  { id: 'es.phrase.trans.one-ticket', text: 'Un billete para el centro, por favor.', meaning: T('כרטיס אחד למרכז, בבקשה.', 'One ticket to the centre, please.'),
+    tip: T('התבנית: Un billete para ___ — קונה כרטיס לכל יעד.', 'Template: Un billete para ___ — buys a ticket to anywhere.') },
   { id: 'es.phrase.trans.which-platform', text: '¿Qué andén?', meaning: T('איזה רציף?', 'Which platform?'),
     tip: T('שתי מילים שמונעות עלייה לרכבת הלא נכונה.', 'Two words that stop you boarding the wrong train.') },
   { id: 'es.phrase.trans.does-stop', text: '¿Para en el museo?', meaning: T('זה עוצר במוזיאון?', 'Does this stop at the museum?'),
@@ -35,12 +35,12 @@ const SCENE_TRANSPORT: BootcampDialogue = {
   nodes: [
     { id: 'n1', who: 'npc', next: 'c1', en: '¡Hola! ¿A dónde va?', tr: TR('Hello! Where are you headed?', 'שלום! לאן אתה נוסע?'), he: 'שלום! לאן אתה נוסע?' },
     { id: 'c1', who: 'you', en: '', he: '', choices: [
-      { en: 'Un boleto para el centro, por favor.', tr: TR('One ticket to the center, please.', 'כרטיס אחד למרכז, בבקשה.'), he: 'כרטיס אחד למרכז, בבקשה.', itemId: 'es.phrase.trans.one-ticket', correct: true, next: 'n2' },
+      { en: 'Un billete para el centro, por favor.', tr: TR('One ticket to the centre, please.', 'כרטיס אחד למרכז, בבקשה.'), he: 'כרטיס אחד למרכז, בבקשה.', itemId: 'es.phrase.trans.one-ticket', correct: true, next: 'n2' },
       { en: '¿Puede repetir, por favor?', tr: TR('Can you repeat that?', 'אפשר לחזור על זה?'), he: 'אפשר לחזור על זה?', itemId: 'es.phrase.recovery.repeat', correct: true, next: 'r1' },
     ] },
     { id: 'r1', who: 'npc', slow: true, next: 'c1b', en: '¿A — dónde — va?', tr: TR('Where — are you — going?', 'לאן — אתה — נוסע?'), he: 'לאן — אתה — נוסע?' },
     { id: 'c1b', who: 'you', en: '', he: '', choices: [
-      { en: 'Un boleto para el centro, por favor.', tr: TR('One ticket to the center, please.', 'כרטיס אחד למרכז, בבקשה.'), he: 'כרטיס אחד למרכז, בבקשה.', itemId: 'es.phrase.trans.one-ticket', correct: true, next: 'n2' },
+      { en: 'Un billete para el centro, por favor.', tr: TR('One ticket to the centre, please.', 'כרטיס אחד למרכז, בבקשה.'), he: 'כרטיס אחד למרכז, בבקשה.', itemId: 'es.phrase.trans.one-ticket', correct: true, next: 'n2' },
     ] },
     { id: 'n2', who: 'npc', next: 'c2', en: '¿Solo ida o ida y vuelta?', tr: TR('Single or return?', 'הלוך או הלוך-חזור?'), he: 'הלוך או הלוך-חזור?' },
     { id: 'c2', who: 'you', en: '', he: '', choices: [
@@ -51,12 +51,12 @@ const SCENE_TRANSPORT: BootcampDialogue = {
     { id: 'c2b', who: 'you', en: '', he: '', choices: [
       { en: 'Solo ida, por favor.', tr: TR('Single, please.', 'הלוך, בבקשה.'), he: 'הלוך, בבקשה.', correct: true, next: 'n3' },
     ] },
-    { id: 'n3', who: 'npc', fast: true, next: 'c3', en: 'Son tres euros. Andén número dos, sale cada diez minutos.', tr: TR("That's three euros. Platform two, leaves every ten minutes.", 'זה שלושה יורו. רציף שתיים, יוצא כל עשר דקות.'), he: 'זה שלושה יורו. רציף שתיים, יוצא כל עשר דקות.' },
+    { id: 'n3', who: 'npc', fast: true, next: 'c3', en: 'Son tres euros. Sale cada diez minutos.', tr: TR("That's three euros. It leaves every ten minutes.", 'זה שלושה יורו. יוצא כל עשר דקות.'), he: 'זה שלושה יורו. יוצא כל עשר דקות.' },
     { id: 'c3', who: 'you', en: '', he: '', choices: [
       { en: '¿Qué andén?', tr: TR('Which platform?', 'איזה רציף?'), he: 'איזה רציף?', itemId: 'es.phrase.trans.which-platform', correct: true, next: 'n3b' },
       { en: '¡Gracias!', tr: TR('Thank you!', 'תודה!'), he: 'תודה!', itemId: 'es.phrase.recovery.thank-you', correct: true, next: 'n4' },
     ] },
-    { id: 'n3b', who: 'npc', slow: true, next: 'c3b', en: 'Andén — dos. Todo recto.', tr: TR('Platform — two. Straight ahead.', 'רציף — שתיים. ישר קדימה.'), he: 'רציף — שתיים. ישר קדימה.' },
+    { id: 'n3b', who: 'npc', next: 'c3b', en: 'Andén número dos. Todo recto.', tr: TR('Platform two. Straight ahead.', 'רציף שתיים. ישר קדימה.'), he: 'רציף שתיים. ישר קדימה.' },
     { id: 'c3b', who: 'you', en: '', he: '', choices: [
       { en: '¡Gracias!', tr: TR('Thank you!', 'תודה!'), he: 'תודה!', itemId: 'es.phrase.recovery.thank-you', correct: true, next: 'n4' },
     ] },
@@ -88,7 +88,7 @@ export const DAY18_ES: BootcampDayContent = {
   items: DAY18_ES_ITEMS,
   dialogues: { transport: SCENE_TRANSPORT },
   steps: [
-    { kind: 'talk', icon: '🚇', title: T('משימה 18: תחבורה ציבורית', 'Mission 18: Public Transport'),
+    { kind: 'talk', icon: '🚇', title: T('משימה 19: תחבורה ציבורית', 'Mission 19: Public Transport'),
       body: [
         T('העיר זזה בשבילך — בזול. כרטיס, רציף, כיוון, והתחנה הנכונה.', 'The city moves for you — cheaply. Ticket, platform, direction, the right stop.'),
         T('חצי מהמשימה הזאת היא האזנה: הכרזות ותשובות מהירות של איזה-רציף.', 'Half of this mission is listening: announcements and fast which-platform answers.'),

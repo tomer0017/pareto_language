@@ -3,7 +3,7 @@ import type { BootcampDayContent, BootcampDialogue, BootcampItem } from '../type
 import { recoveryFr } from './recovery.js';
 
 /**
- * French Mission 8 — "Shopping" (achats). French parallel of English mission 8: same objective (browse,
+ * French Mission 9 — "Shopping" (achats). French parallel of English mission 8: same objective (browse,
  * try, decide, pay — in control), same step structure, same engine. French target lines +
  * `tr:{en,he}` glosses; `fr.*` ids. No French video yet. AI-drafted, vous, pending review.
  */
@@ -77,7 +77,7 @@ export const DAY8_FR: BootcampDayContent = {
     type: 'intro',
   },
   steps: [
-    { kind: 'talk', icon: '🛍️', title: T('משימה 8: קניות', 'Mission 8: Shopping'),
+    { kind: 'talk', icon: '🛍️', title: T('משימה 9: קניות', 'Mission 9: Shopping'),
       body: [
         T('חנות בגדים: להסתכל בשקט, למדוד, לבקש מידה, להחליט.', 'A clothing shop: browse in peace, try on, ask for a size, decide.'),
         T('לא צריך לקנות. צריך להרגיש בשליטה מול המוכר.', 'You don’t have to buy. You do have to feel in control with the seller.'),

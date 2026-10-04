@@ -2,7 +2,7 @@ import { T, recovery } from './recovery.js';
 import type { BootcampDayContent, BootcampDialogue, BootcampItem } from './types.js';
 
 /**
- * Mission 16 — "Supermarket" (Phase 3 · Food).
+ * Mission 17 — "Supermarket" (Phase 3 · Food).
  * The independence multiplier: find it, weigh it, pay for it — self-checkout included.
  * Basic groceries with zero dependence on anyone. Cheap wins, heavy on recognition.
  */
@@ -46,7 +46,7 @@ const SCENE_SUPER: BootcampDialogue = {
     { id: 'c2b', who: 'you', en: '', he: '', choices: [
       { en: 'Thank you!', he: 'תודה!', itemId: 'en.phrase.recovery.thank-you', correct: true, next: 'n3' },
     ] },
-    { id: 'n3', who: 'npc', next: 'c3', en: "At the checkout — just these? You'll need to weigh the fruit first.", he: 'בקופה — רק אלה? צריך לשקול קודם את הפירות.' },
+    { id: 'n3', who: 'npc', next: 'c3', en: "…At the checkout… Hi! Is that everything?", he: '…בקופה… היי! זה הכל?' },
     { id: 'c3', who: 'you', en: '', he: '', choices: [
       { en: 'Can you show me?', he: 'אתה יכול להראות לי? (כלי — כשמילים לא מספיקות)', itemId: 'en.phrase.recovery.show-me', correct: true, next: 'r3' },
       { en: 'Just this, thanks.', he: 'רק את זה, תודה.', itemId: 'en.phrase.super.just-this', correct: true, next: 'n4' },
@@ -66,11 +66,11 @@ const SCENE_SUPER: BootcampDialogue = {
 
 export const DAY16: BootcampDayContent = {
   day: 16,
-  title: T('סופרמרקט', 'Supermarket'),
+  title: T('סופרמרקט וקניות יום-יום', 'Supermarket & Everyday Shopping'),
   items: DAY16_ITEMS,
   dialogues: { supermarket: SCENE_SUPER },
   steps: [
-    { kind: 'talk', icon: '🛒', title: T('משימה 16: סופרמרקט', 'Mission 16: Supermarket'),
+    { kind: 'talk', icon: '🛒', title: T('משימה 17: סופרמרקט', 'Mission 17: Supermarket'),
       body: [
         T('היום-יום נהיה זול ופשוט. אתה מוצא, שוקל, ומשלם — לבד לגמרי.', 'Daily life just got cheap and easy. You find it, weigh it, and pay — completely on your own.'),
         T('רוב העבודה כאן היא זיהוי: שלטים, מעברים, וקול הקופה האוטומטית.', 'Most of the work here is recognition: signs, aisles, and the self-checkout voice.'),

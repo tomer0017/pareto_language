@@ -26,7 +26,7 @@ describe('navigation labels', () => {
     expect(read('he', 'learnTitle')).toBe(read('he', 'bootcampTab'));
     expect(read('en', 'learnTitle')).toBe(read('en', 'bootcampTab'));
     expect(read('he', 'learnTitle')).toBe('מסלול');
-    expect(read('he', 'learnSub', { n: 29 })).toBe('29 מצבים אמיתיים — לומדים רק מה שצריך לטיול');
+    expect(read('he', 'learnSub', { n: 30 })).toBe('30 מצבים אמיתיים — לומדים רק מה שצריך לטיול');
   });
 });
 
@@ -45,10 +45,10 @@ describe('copy rules', () => {
 
   it('the mission count and position come from the plan, never from copy', () => {
     for (const lang of ['en', 'he']) {
-      expect(read(lang, 'learnSub', { n: BOOTCAMP_PLAN.length })).toContain('29');
-      expect(read(lang, 'learnSub', { n: 7 })).not.toContain('29');
-      expect(read(lang, 'situationOf', { n: 3, total: BOOTCAMP_PLAN.length })).toMatch(/3.*29/);
-      expect(read(lang, 'readinessSituations', { done: 8, total: BOOTCAMP_PLAN.length })).toMatch(/8.*29/);
+      expect(read(lang, 'learnSub', { n: BOOTCAMP_PLAN.length })).toContain('30');
+      expect(read(lang, 'learnSub', { n: 7 })).not.toContain('30');
+      expect(read(lang, 'situationOf', { n: 3, total: BOOTCAMP_PLAN.length })).toMatch(/3.*30/);
+      expect(read(lang, 'readinessSituations', { done: 8, total: BOOTCAMP_PLAN.length })).toMatch(/8.*30/);
     }
   });
 

@@ -123,11 +123,11 @@ function missionText(day: BootcampDayContent): string {
   return parts.join(' • ');
 }
 
-/** Precomputed { day → searchable text } index for the active language's missions. */
+/** Precomputed { day → searchable text } index for the active language's missions, in journey order. */
 export function buildMissionIndex(missions: Record<number, BootcampDayContent>): { day: number; text: string }[] {
   return Object.values(missions)
     .map((d) => ({ day: d.day, text: missionText(d) }))
-    .sort((a, b) => a.day - b.day);
+    .sort((a, b) => (missionNumber(a.day) ?? Infinity) - (missionNumber(b.day) ?? Infinity));
 }
 
 /** One authored sentence usable as an example: a learning-language line + its app-language gloss.

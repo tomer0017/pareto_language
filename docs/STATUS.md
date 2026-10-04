@@ -22,6 +22,101 @@ loop (typecheck → lint → tests → build → smoke) green at every milestone
 
 ## What's done
 
+### Language Companion V1 — fish → parrot, per language (2026-10-04)
+Source of truth: **[COMPANION_SYSTEM.md](./COMPANION_SYSTEM.md)**. Isolated feature `features/companion/`.
+- **Six stages** (Scared Fish → Focused Fish → Parrotfish → Young Parrot → Talking Parrot → Chatterbox),
+  one companion per learning language.
+- **Progression is separate from Trip Readiness:** cumulative growth points from keyed events, stage =
+  highest ever reached (stored, monotonic), no denominator. Thresholds 0 / 20 / 70 / 150 / 300 / 600;
+  the whole Core is 340 points, so Stage 6 is not reachable until another growth source is connected.
+- **Surfaces:** Path card, companion page, mission-complete reaction, full-screen evolution (once per
+  stage), reusable `CompanionReaction`. Not inserted into Practice questions.
+- **Never spoils:** target-language lines come only from completed missions of that language.
+- **Persistence:** `ready.companion.v1`; first record per language is derived from mission history and
+  marked as seen (no replay). The store listens to mission completions — mission code does not call it.
+- **Art:** crops of the concept sheet behind one asset table; stand-ins for final isolated assets.
+  Motion is CSS on still images; `prefers-reduced-motion` switches it off.
+- **Hooks:** `appStore` (view), `nav.ts`, `App.tsx`, `Learn.tsx` (card), `Bootcamp.tsx` (one line).
+- **Not done:** manual browser QA; real character animation; Stage-6 growth sources.
+
+### Practice V1 — Missions 01–05 (2026-10-04)
+Scope: Practice only, Missions 01–05 only. Missions 06–30 are fingerprinted by test and unchanged.
+- **Four reusable, data-driven step types** (`types.ts`, pure logic in `practiceEngines.ts`, UI in
+  `PracticeSteps.tsx`): `quickReply` (hear a question → tap your response), `visualMatch` (hear → tap
+  one of up to 9 tiles), `swap` (one sentence frame, several endings), `miniMap` (hear a direction →
+  tap the way / spot on a 3×3 schematic). Wrong answers still never block: Try again / Continue.
+- **Final challenge has two honest modes:** `ambush.mode` = `recovery` (the win is a
+  conversation-help tool) or `speed` (known language, fast; never "use a tool"). A visual-match or
+  mini-map step can be the speed challenge. Missions 06–30 keep the original, un-moded ambush.
+- **Shared step definitions:** `practiceV1.ts` defines the steps of Missions 01, 02, 03 and 05 once
+  for EN / FR / ES; Mission 04 gained `practice` / `review` in its spec (`author.ts`).
+- **Per mission:** 01 — holiday / how-long removed, Quick Reply ×3, true recovery ambush; 02 — price
+  board (Visual Match), "too expensive" retrieved, speed challenge on a price; 03 — Coffee Rush
+  (Quick Reply ×6), "To go" retrieved; 04 — Swap It ×7 + Quick Reply ×5 replace the quiz; 05 — Mini
+  Map ×4, "Where is the station?" retrieved, "How do I get to ___?" as a frame, map speed challenge.
+- **Word-intro parity (real bug, fixed for 01–05):** the three languages primed different words in
+  Missions 01 and 02. `PrimeWord.key` now names the concept; a test compares languages by key.
+  French keeps 70 / 80 as declared language-specific extras.
+- **Sentence ids:** added `phrase.money.one-box`, `phrase.coffee.medium`, `phrase.coffee.yes-please`;
+  removed from Mission 01 `phrase.social.here-on-holiday`, `reply.social.how-long`.
+- **Selective review:** 9–14 cards per mission instead of every sentence object.
+- **Dialogue UI:** a screen with exactly one line is headed "say your line", not "pick your line".
+- **Audit:** `READY_CORE30_COMPLETE_PRACTICE_AUDIT_SOURCE.md` regenerated; the generator knows the
+  new steps and pairs word-intro items by key. 01–05: questions 66 → 97, auto-flags 57 → 27.
+- **Not done:** manual browser QA (no browser tooling in this session); native review.
+- Gates green: typecheck · lint · **1220 tests** · build (PWA) · smoke · parity.
+
+### Core 30 — Curriculum V1.0 lock: final dialogue audit (2026-10-04)
+Full detail: **[CORE_30_FINAL_CURRICULUM_REPORT.md](./CORE_30_FINAL_CURRICULUM_REPORT.md)** · video actions:
+**[CORE_30_FINAL_VIDEO_ACTION_MAP.md](./CORE_30_FINAL_VIDEO_ACTION_MAP.md)**.
+- **Architecture untouched:** same 30 missions, order, ids and registry keys; checkpoints 10/18/24/30.
+- **Dialogues:** 12 missions unchanged; small fixes in 01, 06, 07, 12, 13, 14, 16, 19, 23, 26 (+ one-line
+  polish in 22, 29, 30); rewritten/rebuilt 04 (two scenes), 10 (border → taxi → hotel), 15 (allergy vs.
+  diet, no guarantees), 25 (passer-by + police station), 28 (known language only).
+- **Languages:** English "centre"; Spanish es-ES "billete"; French "Je ne crois pas"; Hebrew "לא נראה לי".
+  AI linguistic review completed; native review still recommended.
+- **Authoring:** Arrival Day (key 9) and No Subtitles (key 27) moved into the multilingual specs
+  (`core/checkpoints.ts`); `MissionSpec.numbered` lets a cold mission keep its "Mission N:" headline.
+- **Document:** multi-scene missions now print `_Scene N_` boundaries (`dialogueDoc.ts`).
+- **Guards:** 21 lock checks in `core30.test.ts` (ids/keys pinned, es-ES vocabulary, per-mission audit rules).
+- **Videos:** none touched. 15 files → KEEP 4 · MOVE 3 · REPLACE 7 · CHECK 1.
+- **Practice:** architecture untouched; stale references repaired in 04, 13, 23, 25; mismatches remain in
+  14, 15, 17, 26 (listed in the report). Sentence catalog: EN 315 · FR 314 · ES 312.
+- **Closing micro-fixes:** Mission 30 states the duration before it is disputed; Mission 10's "Here you go." is
+  scored as itself (`phrase.hotel.here-you-go`, an id for an existing Mission 08 line); six Spanish / Hebrew
+  wording fixes. Sentence catalog: EN 316 · FR 315 · ES 313.
+- Gates green: typecheck · lint · **1182 tests** · build (PWA) · smoke · parity. (Smoke has a pre-existing
+  clock-timing flake in the trip-plan check — see the report's open issues.)
+
+### Core 30 restructure — Pareto-first curriculum, 29 → 30 missions (2026-10-03)
+> Entries below this one use the previous numbering (29 missions, checkpoints 9/17/23/29). Full
+> detail, old → new mapping, video and Practice maps: **[CORE_30_RESTRUCTURE_REPORT.md](./CORE_30_RESTRUCTURE_REPORT.md)**.
+- **Curriculum:** the **Core 30**. 8 new missions (Everyday Core · Time & Plans · Home, Family & Daily
+  Routine · Hobbies & Free Time · Past & Recent Events · Future Travel & Plans · Opinions, Feelings &
+  Reactions · Lost / Stolen / Police); Small Talk moved from 22 → 11; checkpoints now 10 / 18 / 24 / 30.
+  Phases 3–4 renamed Everyday Life / City & Conversation.
+- **Merged / moved out:** Restaurant Basics → Restaurant Meal; Hotel Requests → Fixing Problems;
+  Paying Anywhere retired as a standalone mission. Street Food, Tickets, Wifi/SIM and Souvenirs →
+  Extended Mission Pool (`EXTENDED_POOL` + `extended.ts`; content kept and tested, never shown).
+- **Identity:** no id or registry key was renumbered. `day` is now visibly NOT the mission number
+  (Taxi = `day` 6 = Mission 7); new missions use keys 30–37. Progress needed **no migration**.
+- **Authoring:** `author.ts` + `core/*.ts` — 14 missions (8 new, 3 rewritten, 3 rebuilt checkpoints)
+  are written once with EN / FR / ES / HE side by side and built per language.
+- **Content repairs:** taxi ("how much did you expect to pay?"), hotel check-in (duplicated breakfast
+  question), arrival checkpoint (breakfast never answered), small talk (answers now match questions),
+  allergies + pharmacy (no safety guarantees), supermarket (unexplained fruit), emergency (lost
+  passport moved out), fixing problems ("What did you order?" now answered).
+- **Recovery:** 8th kit phrase "What does that mean?" (EN/FR/ES). The six help tools recur inside
+  Core dialogues; still no recovery mission.
+- **Audit finding:** the "missing French/Spanish lines" in the supplied reference Markdown were NOT in
+  the runtime — all 29 old missions were already turn-for-turn identical across EN/FR/ES. A test now
+  guarantees it for every Core mission.
+- **Docs/tools:** `npm run gen:dialogues-doc` → `docs/ALL_LANGUAGES_DIALOGUES_BY_MISSION_V2.md`
+  (test-bound); dialogue export numbered by mission number; pre-change snapshot in `docs/archive/`.
+- **Not done (by design):** no video was generated/replaced/deleted; Practice/games were not
+  redesigned (new missions use the existing step template). Sentence catalog: EN 316 · FR 315 · ES 313.
+- Gates green: typecheck · lint · **1129 tests** · build (PWA) · smoke.
+
 ### Final frontend polish + stabilization (2026-10-01)
 - **Path / מסלול:** the Learn destination is labelled "מסלול" / "Path" (tab, rail, title). Internal
   names (`bootcamp` view) unchanged.

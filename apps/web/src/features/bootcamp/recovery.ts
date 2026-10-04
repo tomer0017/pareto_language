@@ -1,7 +1,7 @@
 import type { LocalizedText } from '@ready/content-schema';
 import type { BootcampItem } from './types.js';
 
-/** The shared Recovery Kit — reused across every mission so the 7 tools stay warm in context. */
+/** The shared Recovery Kit — reused across every mission so the 8 tools stay warm in context. */
 export const T = (he: string, en: string): LocalizedText => ({ he, en });
 
 export const RECOVERY_ITEMS: BootcampItem[] = [
@@ -10,6 +10,7 @@ export const RECOVERY_ITEMS: BootcampItem[] = [
   { id: 'en.phrase.recovery.slowly', text: 'Please speak slowly.', meaning: T('דבר לאט, בבקשה.', 'Please speak slowly.') },
   { id: 'en.phrase.recovery.show-me', text: 'Can you show me?', meaning: T('אתה יכול להראות לי?', 'Can you show me?') },
   { id: 'en.phrase.recovery.one-moment', text: 'One moment, please.', meaning: T('רגע אחד, בבקשה.', 'One moment, please.') },
+  { id: 'en.phrase.recovery.what-mean', text: 'What does that mean?', meaning: T('מה זה אומר?', 'What does that mean?') },
   { id: 'en.phrase.recovery.thank-you', text: 'Thank you!', meaning: T('תודה!', 'Thank you!') },
   { id: 'en.phrase.recovery.sorry', text: 'Sorry!', meaning: T('סליחה!', 'Sorry!') },
 ];

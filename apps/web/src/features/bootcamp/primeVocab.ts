@@ -15,13 +15,13 @@ export function primeKey(w: PrimeWord | string): string {
   return text.toLowerCase().split(/[\s/]+/).filter(Boolean)[0] ?? text.toLowerCase();
 }
 
-/** The set of prime-word keys INTRODUCED as new (not review) in missions strictly before `day`,
- *  walked in plan (ascending day) order for the given learning language. */
+/** The set of prime-word keys INTRODUCED as new (not review) in the missions that come BEFORE `day`
+ *  in the journey (plan order — never `day` arithmetic: a mission's key is not its position). */
 export function priorPrimeVocabulary(lang: string, day: number): Set<string> {
   const missions = missionsFor(lang);
   const seen = new Set<string>();
   for (const plan of BOOTCAMP_PLAN) {
-    if (plan.day >= day) break;
+    if (plan.day === day) break;
     const d = missions[plan.day];
     if (!d) continue;
     for (const step of d.steps) {

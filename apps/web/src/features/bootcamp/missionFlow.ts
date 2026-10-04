@@ -12,7 +12,7 @@ export type MissionPhase = 'learn' | 'practice';
 /** Steps that TEACH (the essentials + the replies the learner will hear). */
 const TEACHING: ReadonlySet<BootcampStep['kind']> = new Set(['prime', 'tool', 'replies']);
 /** Steps where the learner RESPONDS. The first one marks the start of practice. */
-const RESPONDING: ReadonlySet<BootcampStep['kind']> = new Set(['quiz', 'dialogue', 'swipe', 'ambush']);
+const RESPONDING: ReadonlySet<BootcampStep['kind']> = new Set(['quiz', 'dialogue', 'swipe', 'ambush', 'quickReply', 'visualMatch', 'swap', 'miniMap']);
 
 export interface MissionPhases {
   /** First step of the learning flow (skips a leading in-flow video step — the overview's own

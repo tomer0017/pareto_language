@@ -72,7 +72,7 @@ Each principle exists to protect the promise in §2.
 ## 4. Learning architecture (the flow)
 
 ```
-ACTIVE   Home (next step) → Learn (29 missions) → Mission: Watch → Learn → Practice → Watch again → Victory → Next mission
+ACTIVE   Home (next step) → Learn (30 missions) → Mission: Watch → Learn → Practice → Watch again → Victory → Next mission
 PASSIVE  Listen: core sentences · dialogues · stories — the same content, hands-free
 ```
 
@@ -83,8 +83,8 @@ PASSIVE  Listen: core sentences · dialogues · stories — the same content, ha
   Pre-A1 path (8 modules, cumulative "one new brick at a time") that ends by **graduating the learner
   into the first real Bootcamp mission** (it never auto-completes the Bootcamp). Experienced learners
   skip it; it is recommended, never forced.
-- **Learn** — the heart: 29 real-world missions across 5 phases (Foundations → Arrival → Food →
-  City Life → Mastery). Depth before breadth — one situation, taken all the way, per mission.
+- **Learn** — the heart: the **Core 30** — 30 real-world missions across 5 phases (Foundations → Arrival →
+  Everyday Life → City & Conversation → Mastery). Depth before breadth — one situation, taken all the way, per mission.
 - **Mission overview** — ONE guided path, with ONE primary button: **Watch** (the video; with no
   video, **Listen** to the conversation in the transcript reader) → **Learn** (the words, sentences
   and expected replies) → **Practice** (respond) → **Watch again** (the reward). The journey is
@@ -96,7 +96,7 @@ PASSIVE  Listen: core sentences · dialogues · stories — the same content, ha
   checkpoints have no Learn step. "Watched" is not stored, so the Watch step is ticked only for a
   viewing in the current visit. The transcript stays one quiet tap away.
 - **Video** — watch the full conversation **before** learning and understand almost nothing. This
-  sets up the emotional payoff. (EN Missions 1–4, 6–8, 10 and FR Missions 1–5, 8, 10 ship a video; others
+  sets up the emotional payoff. (EN Missions 1–3, 6–9, 14 and FR Missions 1–3, 5, 6, 9, 14 ship a video; others
   show "Coming soon.")
 - **Practice** — the actual learning: watch/listen → understand → repeat (tools) → recognize
   (expected replies) → answer (quizzes/dialogue) → recover (recovery tools) → a cold-open ambush.
@@ -121,10 +121,10 @@ stays as a calm way out. READY is used in two modes over the SAME content: **act
 (the Path) and **passive listening** (Listen).
 
 - **Home** — the coach, not a menu. It answers "what is the single best thing to do now?" with
-  exactly four surfaces: **Travel Readiness** (ring + "X of 29 situations ready", plus "X of Y core
+  exactly four surfaces: **Travel Readiness** (ring + "X of 30 situations ready", plus "X of Y core
   sentences practiced" read from the real review log; Y is the canonical sentence count — one per
   distinct wording — from `sentenceCatalog`, the same number every screen shows), **Your next step** (the mission to continue
-  or start — icon, objective, "Situation N of 29", estimated minutes, one primary button), **Quick
+  or start — icon, objective, "Situation N of 30", estimated minutes, one primary button), **Quick
   review** (up to 5 sentences from the learner's own practice log; **hidden** until something was
   practiced — no empty disabled card) and **Quick listen** (10 hands-free minutes). No settings, libraries or
   tools on Home — they live in Learn / Listen / Profile. A brand-new learner additionally sees one
@@ -134,7 +134,7 @@ stays as a calm way out. READY is used in two modes over the SAME content: **act
   number. The detail screen (`readiness` view, opened from Home's ring or Learn's summary) lists
   every situation as ready / in progress / not started. Capability is the motivation — there are
   no points, streaks, hearts or invented achievement badges.
-- **Path (מסלול)** — the structured path through the 29 real situations and the ONE route to them
+- **Path (מסלול)** — the structured path through the 30 real situations and the ONE route to them
   (labelled "מסלול" / "Path" because everything in READY is learning; internally still the `bootcamp` view):
   a small readiness summary, the plan's phases as groups, compact mission cards (number, the
   mission's own icon, title, objective, status), and exactly ONE card highlighted as "your next
@@ -181,13 +181,27 @@ stays as a calm way out. READY is used in two modes over the SAME content: **act
   resumes from the first incomplete step. **Foundation sync:** learning a chunk marks its Foundation
   concept `viewed` (idempotent, deduped — no double-count), so Zero Start and the Foundation library
   share one progress signal rather than competing.
-- **Bootcamp** — a **29-mission** journey in 5 phases. **Mission 1 is Introduce Myself** — the first
-  encounter with a new language is a positive, useful exchange — and Mission 29 is A Complete Day
-  Abroad Alone. Checkpoints (cold integration days) sit at **9 / 17 / 23 / 29**. The former
-  **Recovery Toolkit** mission ("ערכת חילוץ") is **removed from the curriculum**: it is not a mission,
+- **Bootcamp** — the **Core 30**: a 30-mission journey in 5 phases (Foundations → Arrival → Everyday
+  Life → City & Conversation → Mastery). **Pareto-first:** the smallest amount of language that gives
+  the largest amount of real communication — reusable sentence frames (want / need / have / can,
+  I'm going to, I think, because) before nouns. A learner who finishes Mission 30 can survive travel
+  AND hold a simple human conversation: plans, home and family, hobbies, yesterday, tomorrow, opinions.
+  **Mission 1 is Introduce Myself**, Mission 4 is Everyday Core, Mission 30 is A Complete Day Abroad
+  Alone. Checkpoints (cold integration days — they test, they never teach) sit at **10 / 18 / 24 / 30**.
+  Eight missions are new (4, 12, 13, 16, 20, 21, 23, 25); Restaurant Basics, Hotel Requests and Paying
+  Anywhere were merged away; Street Food, Tickets, Wifi/SIM and Souvenirs moved to the **Extended
+  Mission Pool** (`plan.ts` `EXTENDED_POOL`, content in `extended.ts`) for a later 31+ track. See
+  **[CORE_30_FINAL_CURRICULUM_REPORT.md](./CORE_30_FINAL_CURRICULUM_REPORT.md)** (Curriculum V1.0 —
+  locked; AI linguistic review completed, native review still recommended). The **Recovery Toolkit** is
+  **not a mission** ("ערכת חילוץ" was removed from the curriculum): it is not a mission,
   a special card, a checkpoint, or part of the count/progress. Only the shared recovery phrases
   survive (`recovery.ts` per language), because other missions reuse them inside their dialogues.
   `plan.ts` (`BOOTCAMP_PLAN`) is the one source of truth for mission count and order.
+- **Language Companion (החבר שלי לשפה)** — a fish that cannot speak and grows, per learning language,
+  into a parrot that cannot stop: six stages shown on the Path, on its own page, at the end of a
+  mission and in a full-screen evolution. It answers "how alive is this language in me?" and is
+  deliberately NOT Trip Readiness: cumulative points, a stored highest stage, never a percentage of
+  a course. See **[COMPANION_SYSTEM.md](./COMPANION_SYSTEM.md)**.
 - **Foundation** — reached from a row in the Path's "More practice" section (it is no longer a
   floating button over the mission list), opening a bottom sheet of "building block" categories (People, Question Words,
   Connectors, Position, Essential Verbs, Colors, Numbers, Time, Quantity, Quick Responses) → word
@@ -217,7 +231,7 @@ stays as a calm way out. READY is used in two modes over the SAME content: **act
   with unique emoji, one offline pack per language. Core Patterns · Common Questions · Emergency · Favorites remain honest
   "coming soon".
 - **Mission vocabulary priming** — a "Before we speak" step primes 3–8 building-block words before a
-  longer sentence (Missions 1–7, all languages in parity), with new-vs-review tracking; every mission's
+  longer sentence (the foundation missions — registry keys 1–7 and Everyday Core — all languages in parity), with new-vs-review tracking; every mission's
   priming decision is audited in `vocabAudit.ts`. French 70/80/90 number patterns are tested in
   `fr/frenchNumbers.ts`. See VOCABULARY-AUDIT.md.
 - **Profile / Settings** — the one home for everything configurable: trip language (opens the
@@ -278,8 +292,10 @@ Each layer has one responsibility.
   (IndexedDB, via `@ready/data`) stores users/plans/events/packs and projects memory state offline.
   Videos are **runtime-cached** (not precached — too large) so first load never waits on them.
 - **Videos (`apps/web/public/videos`)** — referenced by a mission's optional `introVideo.src` (a
-  public path resolved against `BASE_URL`). File names follow the mission number (`En_day1.mp4` = Mission 1) but the
-  path is explicit asset metadata on the mission, never computed from its number. Shipped for EN
+  public path resolved against `BASE_URL`). File names follow the mission's registry key (`En_day6.mp4` = Taxi, `day: 6`, now Mission 7) — the
+  path is explicit asset metadata on the mission, never computed from its number, so reordering the journey breaks no video.
+  The Core 30 restructure changed some dialogues that already have a video (see the video migration map in
+  CORE_30_RESTRUCTURE_REPORT.md): those videos still play, but await the video audit. Shipped for EN
   missions 1–4, 6–8, 10 and FR missions 1–5, 8, 10; only Mission 1 (EN & FR) injects intro/again
   video steps, the rest surface it in the hub / Videos.
 - **Audio preference ownership** — a playback option never affects a screen where the learner
@@ -306,34 +322,42 @@ Each layer has one responsibility.
 - **Phrases** — usable sentences (`en.phrase.<situation>.<slug>`), the primary "you say" unit.
 - **Expected Replies** — what the learner will *hear* (`en.reply.<situation>.<slug>`), trained as a
   first-class comprehension skill before the live dialogue.
-- **Recovery Tools** — the shared 7-phrase survival kit (`en.phrase.recovery.*`, in `recovery.ts`),
+- **Recovery Tools** — the shared 8-phrase conversation-help kit (six help tools — don’t understand / say that again /
+  speak slowly / one moment / show me / **what does that mean?** — plus "Thank you!" and "Sorry!") (`en.phrase.recovery.*`, in `recovery.ts`),
   reused inside every mission so the safety net stays warm in context.
 - **Dialogues** — branching trees (visual-novel, one line at a time). The **happy path** is the
   canonical conversation; wrong picks route to **recovery beats** and rejoin — never a dead end.
 - **Moments** — a full situation taken end to end (greeting → order → follow-ups → pay → goodbye).
   A mission is one moment, deep.
 - **Cold Opens (ambush)** — a fast, off-script sentence that trains "don't freeze, use a tool."
-- **Missions** — pure-data files (`day1..29.ts`) combining items + dialogues + a step sequence,
-  registered in `registry.ts`. `plan.ts` holds the 29-mission metadata — each entry has a stable
-  semantic `id` (e.g. `introduce-myself`), separate from its display number, which is derived from
-  plan order (`missionNumber()`); `transcript.ts` linearizes a tree into its happy path; `types.ts`
+- **Missions** — pure data combining items + dialogues + a step sequence, registered in `registry.ts`.
+  Two authoring forms, one content model: hand-written `dayN.ts` files (per language), and missions
+  **authored once for every language** as a `MissionSpec` in `bootcamp/core/*.ts` and built by
+  `author.ts` (`buildMission`) — every line carries its English / French / Spanish / Hebrew wording
+  side by side, so a language can never lose a turn. `plan.ts` holds the 30-mission metadata — each
+  entry has a stable semantic `id` (e.g. `introduce-myself`), a `day` (the stable content-registry
+  key — NOT its position; Taxi is still `day: 6` though it is Mission 7), and a display number derived
+  from plan order (`missionNumber()`); `transcript.ts` linearizes a tree into its happy path; `types.ts`
   is the model.
 - **Core 1500** — the practical-vocabulary surface: an aggregated, audio-enabled view of every
   phrase the missions teach (the "vocabulary engine"), with spaced review planned.
 
 Human-review surface for all of the above: **[BOOTCAMP_CONVERSATIONS.md](./BOOTCAMP_CONVERSATIONS.md)**,
-auto-generated from source by `npm run gen:conversations`.
+auto-generated from source by `npm run gen:conversations`. The four-language dialogue reference
+(**[ALL_LANGUAGES_DIALOGUES_BY_MISSION_V2.md](./ALL_LANGUAGES_DIALOGUES_BY_MISSION_V2.md)** — English / French /
+Spanish / Hebrew, mission by mission) is generated by `npm run gen:dialogues-doc`; a test fails if it is stale.
 
 ## 8. Current project status (honest)
 
 **Done ✅**
 - English Bootcamp pilot, live and validated on a real device.
-- 29 Bootcamp missions (5 phases, checkpoints at 9/17/23/29), all structurally tested.
+- The **Core 30** (5 phases, checkpoints at 10/18/24/30), all structurally tested — including turn-for-turn
+  parity of every mission across English / French / Spanish (`core30.test.ts`).
 - Mission Hub (Practice / Transcript / Video), always replayable.
 - Transcript reader (bilingual, per-line replay, play-all).
-- Video system (EN 1–4, 6–8, 10 and FR 1–5, 8, 10 shipped; graceful fallback for the rest).
+- Video system (EN 1–3, 6–9, 14 and FR 1–3, 5, 6, 9, 14 shipped; graceful fallback for the rest).
 - Victory Screen (confetti, watch-first reward order).
-- Product IA: Home (coach) · Learn (29 missions) · Listen (passive) · Profile (settings), with an
+- Product IA: Home (coach) · Learn (30 missions) · Listen (passive) · Profile (settings), with an
   intentional desktop layout (side rail, wide browse pages, narrow lesson column).
 - Travel Readiness derived from real mission completion; Quick Review from the real review log.
 - **Zero Start ("מתחילים מאפס")** guided zero-beginner path — built, routed, tested (validation +
@@ -358,12 +382,12 @@ auto-generated from source by `npm run gen:conversations`.
   phrasing/politeness). Same status as the Bootcamp content: shipped as pilot/Early-Access quality,
   pending a native pass. Do not describe FR/ES Zero Start as native-reviewed.
 - **Core review engine** — spaced/weak-word review over Bootcamp sentences (currently browsable only).
-- **More mission videos** (EN 1–4, 6–8, 10 and FR 1–5, 8, 10 shipped; remaining missions pending).
+- **More mission videos** (EN 1–3, 6–9, 14 and FR 1–3, 5, 6, 9, 14 shipped; remaining missions pending).
 - **Auth + sync** (Google sign-in) and per-user server-side settings/statistics.
 - **Future languages** (Italian/Spanish/French/Arabic) — infrastructure exists; not user-facing yet.
 
 **Active trip languages**
-- **English** (full pilot), **French** (Early Access, AI-drafted) and **Spanish** (`es-ES`, full 29/29
+- **English** (full pilot), **French** (Early Access, AI-drafted) and **Spanish** (`es-ES`, full 30/30
   Bootcamp + Core 633 + Foundation examples, Early Access / AI-drafted, pending native review) are all
   selectable and fully usable. Italian/Arabic and the rest remain honest "coming soon" until their
   reviewed content ships. Adding a learning language stays content-only (registry + mission set + a
@@ -424,4 +448,5 @@ in the same sprint.** When Bootcamp content changes, also regenerate the convers
 
 ```
 npm run gen:conversations
+npm run gen:dialogues-doc
 ```
