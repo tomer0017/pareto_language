@@ -1,26 +1,32 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState, type ReactNode } from 'react';
 import { L } from '../../shared/i18n/strings.js';
 import { languageInfo } from '../../shared/i18n/languages.js';
+import { evolveChime } from '../../shared/audio/sfx.js';
 import { useAppStore } from '../../shared/stores/appStore.js';
 import { success, tap } from '../../shared/ui/haptics.js';
-import { Icon } from '../../shared/ui/Icon.js';
 import { PageHeader } from '../../shared/ui/PageHeader.js';
 import { useBootcampStore } from '../bootcamp/bootcampStore.js';
-import { artUrl, type ArtVariant } from './companionAssets.js';
+import { BOOTCAMP_PLAN } from '../bootcamp/plan.js';
+import { useTravelReadiness } from '../bootcamp/useReadiness.js';
+import { artUrl, isTransparentArt, type ArtVariant } from './companionAssets.js';
+import { presenceFor, type Presence } from './companionCoach.js';
 import { COPY, STAGE_COPY } from './companionCopy.js';
 import { learnedMaterial } from './companionLearned.js';
 import {
-  LAST_STAGE, STAGES, companionLine, evolutionTimeline, motionFamily, resolveAnimation, speechAbility,
-  type CompanionAnimation, type CompanionStage, type EvolutionPhase, type StageProgress,
+  LAST_STAGE, companionLine, evolutionTimeline, motionFamily, resolveAnimation, speechAbility,
+  type CompanionStage, type EvolutionPhase,
 } from './companionModel.js';
+import { MOOD_ANIMATION, MOOD_POSE, moodEffect, resolveMood, type CompanionMood } from './companionMood.js';
 import { useCompanion, useCompanionStore } from './companionStore.js';
 import './companion.css';
 
 /**
- * The Language Companion's screens and reusable pieces. Everything visual goes through
- * `CompanionAvatar`, so the artwork (and, later, real animation files) is swapped in one place.
- * The mascot appears at meaningful moments only — the Path card, its own page, the end of a
- * mission and an evolution — and never competes with learning content for attention.
+ * The learner's language buddy: one living character that is with them on Home, on the Route,
+ * inside a mission and when they finish one. Everything visual goes through `CompanionFigure`, so
+ * the artwork (and, later, real animation files) is swapped in one place.
+ *
+ * The evolution is a DISCOVERY. No screen here names a stage, counts stages, or shows a form the
+ * learner has not reached. The character is only ever "your buddy".
  */
 
 export function prefersReducedMotion(): boolean {
@@ -39,20 +45,29 @@ function useLanguageName(lang: string): string {
 
 /* ── the character ─────────────────────────────────────────────────────────────────────────────── */
 
-export function CompanionAvatar({ stage, size = 64, variant = 'compact', anim = 'idle', silhouette = false, label, className = '' }: {
-  stage: CompanionStage; size?: number; variant?: ArtVariant; anim?: CompanionAnimation; silhouette?: boolean; label?: string; className?: string;
+/**
+ * The character itself — no frame, no circle, no badge. Its mood picks a pose (when the artwork has
+ * one), a motion and a small effect; the mood is never written on screen. With today's stand-in art
+ * (scenery crops) the edges are feathered into the page; transparent art is shown as it is.
+ */
+export function CompanionFigure({ stage, size = 72, variant = 'compact', mood = 'idle', className = '' }: {
+  stage: CompanionStage; size?: number; variant?: ArtVariant; mood?: CompanionMood; className?: string;
 }) {
+  const shown = resolveMood(stage, mood);
+  const fx = moodEffect(stage, shown);
   return (
     <span
-      className={`cmp-art ${variant === 'full' ? 'is-full' : ''} ${silhouette ? 'is-silhouette' : ''} ${className}`}
+      className={`cmp-fig ${isTransparentArt(stage) ? 'is-clean' : ''} ${className}`}
       style={{ width: size, height: size }}
       data-stage={stage}
-      data-anim={silhouette ? 'rest' : resolveAnimation(stage, anim)}
+      data-mood={shown}
+      data-anim={resolveAnimation(stage, MOOD_ANIMATION[shown])}
       data-family={motionFamily(stage)}
       role="img"
-      aria-label={label ?? L(STAGE_COPY[stage].name)}
+      aria-label={L(COPY.buddy)}
     >
-      <img src={artUrl(stage, variant)} alt="" draggable={false} />
+      <img src={artUrl(stage, variant, undefined, MOOD_POSE[shown])} alt="" draggable={false} />
+      {fx !== 'none' && <span className="cmp-fx" data-fx={fx} aria-hidden><i /><i /><i /></span>}
     </span>
   );
 }
@@ -73,26 +88,35 @@ function useCompanionSpeech(stage: CompanionStage, lang: string): CompanionSpeec
   return useMemo(() => companionSpeech(stage, lang, completedDays), [stage, lang, completedDays]);
 }
 
-/** A speech bubble. A target-language line keeps its own direction inside a Hebrew screen. */
-export function SpeechBubble({ speech, lang }: { speech: CompanionSpeech; lang: string }) {
+/** How an app-language line is attached to the character: a creature that cannot talk yet THINKS it
+ *  (a bubble trailing small bubbles); one that talks says it. Never a label, never a caption. */
+export type BubbleVoice = 'thought' | 'speech';
+export const bubbleVoice = (stage: CompanionStage): BubbleVoice => (stage <= 3 ? 'thought' : 'speech');
+
+/** A bubble. A target-language line keeps its own direction inside a Hebrew screen. */
+export function SpeechBubble({ speech, lang, voice = 'speech' }: { speech: CompanionSpeech; lang: string; voice?: BubbleVoice }) {
   return (
-    <span className="cmp-bubble">
+    <span className="cmp-bubble" data-voice={voice}>
       {speech.target ? <span dir="ltr" lang={lang}>{speech.text}</span> : speech.text}
     </span>
   );
+}
+function Bubble({ stage, children }: { stage: CompanionStage; children: ReactNode }) {
+  return <span className="cmp-bubble" data-voice={bubbleVoice(stage)}>{children}</span>;
 }
 
 /* ── reusable reaction ─────────────────────────────────────────────────────────────────────────── */
 
 export type ReactionKind = 'correct' | 'encouraging' | 'thinking' | 'recovery' | 'celebrate' | 'missionComplete';
-const REACTION_ANIM: Record<ReactionKind, CompanionAnimation> = {
-  correct: 'correct', encouraging: 'encouraging', thinking: 'thinking', recovery: 'celebrate', celebrate: 'celebrate', missionComplete: 'missionComplete',
+const REACTION_MOOD: Record<ReactionKind, CompanionMood> = {
+  correct: 'happy', encouraging: 'encouraging', thinking: 'thinking', recovery: 'recovery', celebrate: 'celebrating', missionComplete: 'missionComplete',
 };
 
 /**
- * A small mascot reaction: the current companion, one short animation, optionally one short line
- * in the app language. Never negative — a wrong answer gets a thinking face and encouragement, and
- * using a conversation-help tool is celebrated as the win it is. Drop it into any screen.
+ * The buddy reacting to something the learner did: one short gesture (well under a second),
+ * optionally one short app-language line. Never negative — a wrong answer gets a tilted head and
+ * encouragement, and using a conversation-help tool is applauded as the smart move it is. Display
+ * only: it reads the companion and writes nothing.
  */
 export function CompanionReaction({ kind, text, size = 56 }: { kind: ReactionKind; text?: string | false; size?: number }) {
   const { stage, companion } = useCompanion();
@@ -109,136 +133,159 @@ export function CompanionReactionView({ kind, stage, seed = 0, text, size = 56 }
               : L(COPY.reactions.celebrate));
   return (
     <div className="cmp-reaction" data-kind={kind}>
-      <CompanionAvatar stage={stage} size={size} anim={REACTION_ANIM[kind]} />
-      {line && <span className="cmp-bubble">{line}</span>}
+      <CompanionFigure stage={stage} size={size} mood={REACTION_MOOD[kind]} />
+      {line && <Bubble stage={stage}>{line}</Bubble>}
     </div>
   );
+}
+
+/** The buddy simply being there beside a screen — watching, listening. No line. */
+export function CompanionWatch({ mood = 'listening', size = 52 }: { mood?: CompanionMood; size?: number }) {
+  const { stage } = useCompanion();
+  return <span className="cmp-watch"><CompanionFigure stage={stage} size={size} mood={mood} /></span>;
 }
 
 /* ── inside a mission ──────────────────────────────────────────────────────────────────────────── */
 
-/**
- * The companion beside one short app-language line — the mission's goal, or how to play a game.
- * Compact by design (an avatar and a line). Until it can say whole phrases (Stages 1–3) the line is
- * a plain caption NEXT to the character — coaching about it, not speech by it; from the Young Parrot
- * on it is the character's own bubble.
- */
-export function CompanionCoachView({ stage, line, size = 40 }: { stage: CompanionStage; line: string; size?: number }) {
-  const voice = stage <= 3 ? 'caption' : 'bubble';
+/** The buddy explaining what to do, the first time a game appears: character + one bubble. */
+export function CompanionCoachView({ stage, line, mood = 'attentive', size = 60 }: { stage: CompanionStage; line: string; mood?: CompanionMood; size?: number }) {
   return (
-    <div className="cmp-coach" data-voice={voice}>
-      <CompanionAvatar stage={stage} size={size} anim="attention" />
-      <span className={voice === 'bubble' ? 'cmp-bubble' : 'cmp-caption'}>{line}</span>
+    <div className="cmp-coach">
+      <CompanionFigure stage={stage} size={size} mood={mood} />
+      <Bubble stage={stage}>{line}</Bubble>
     </div>
   );
 }
-export function CompanionCoach({ line, size }: { line: string; size?: number }) {
+export function CompanionCoach({ line, mood, size }: { line: string; mood?: CompanionMood; size?: number }) {
   const { stage } = useCompanion();
-  return <CompanionCoachView stage={stage} line={line} size={size} />;
+  return <CompanionCoachView stage={stage} line={line} mood={mood} size={size} />;
 }
 
-/* ── Path card ─────────────────────────────────────────────────────────────────────────────────── */
-
-/** The companion on the Path, beside Trip Readiness. The percentage stays the readiness card's;
- *  this card is the character and its stage, and opens the companion page. */
-export function CompanionCard() {
-  const navigate = useAppStore((s) => s.navigate);
-  const { lang, stage, progress } = useCompanion();
-  const language = useLanguageName(lang);
-  return <CompanionCardView stage={stage} pct={progress.pct} language={language} onOpen={() => { tap(); navigate('companion'); }} />;
-}
-
-export function CompanionCardView({ stage, pct, language, onOpen }: { stage: CompanionStage; pct: number; language: string; onOpen?: () => void }) {
-  const progress = { pct };
+/**
+ * The buddy introducing a mission: a larger pose, looking at a prop that stands for the mission's
+ * theme (today the mission's own icon — a coffee, a map, a price tag), and the goal in one bubble.
+ * A themed pose, when the artwork has one, replaces the prop without any change here.
+ */
+export function CompanionIntroView({ stage, line, prop, size = 112 }: { stage: CompanionStage; line: string; prop?: string; size?: number }) {
   return (
-    <button className="card card-press cmp-card" onClick={onOpen} aria-label={L(COPY.open)}>
-      <CompanionAvatar stage={stage} size={60} />
-      <span className="cmp-card-body">
-        <strong>{L(STAGE_COPY[stage].name)}</strong>
-        <span className="dim small">{L(COPY.cardTitle(language))} · {L(COPY.stageOf(stage))}</span>
-        <span className="cmp-bar" aria-hidden><span style={{ width: `${progress.pct}%` }} /></span>
+    <div className="cmp-intro">
+      <Bubble stage={stage}>{line}</Bubble>
+      <span className="cmp-intro-scene">
+        <CompanionFigure stage={stage} size={size} mood="curious" />
+        {prop && <span className="cmp-prop" aria-hidden>{prop}</span>}
       </span>
-      <Icon name="chevron" size={20} flip />
+    </div>
+  );
+}
+export function CompanionIntro({ line, prop }: { line: string; prop?: string }) {
+  const { stage } = useCompanion();
+  return <CompanionIntroView stage={stage} line={line} prop={prop} />;
+}
+
+/* ── Route + Home ──────────────────────────────────────────────────────────────────────────────── */
+
+function usePresence(): Presence {
+  const readiness = useTravelReadiness();
+  return presenceFor({ done: readiness.ready, resume: readiness.nextIsResume, allDone: readiness.allDone });
+}
+
+/** The buddy on the Route: floating beside the path, saying one thing about where you are. It is a
+ *  character, not a statistic — no name, no number, no bar. Tapping it opens its own page. */
+export function CompanionPresence() {
+  const navigate = useAppStore((s) => s.navigate);
+  const { lang, stage } = useCompanion();
+  const language = useLanguageName(lang);
+  const presence = usePresence();
+  return <CompanionPresenceView stage={stage} language={language} line={L(presence.line)} mood={presence.mood} onOpen={() => { tap(); navigate('companion'); }} />;
+}
+
+export function CompanionPresenceView({ stage, language, line, mood = 'attentive', onOpen }: { stage: CompanionStage; language: string; line: string; mood?: CompanionMood; onOpen?: () => void }) {
+  return (
+    <button className="cmp-presence card-press" onClick={onOpen} aria-label={L(COPY.open)}>
+      <CompanionFigure stage={stage} size={92} mood={mood} />
+      <span className="cmp-presence-body">
+        <Bubble stage={stage}>{line}</Bubble>
+        <span className="cmp-whose">{L(COPY.buddyFor(language))}</span>
+      </span>
     </button>
   );
 }
 
-/* ── companion page ────────────────────────────────────────────────────────────────────────────── */
+/** The same buddy on Home, peeking over the "next step" card. No line, no card of its own. */
+export function CompanionPeek() {
+  const navigate = useAppStore((s) => s.navigate);
+  const { stage } = useCompanion();
+  const presence = usePresence();
+  return <CompanionPeekView stage={stage} mood={presence.mood} onOpen={() => { tap(); navigate('companion'); }} />;
+}
+export function CompanionPeekView({ stage, mood = 'attentive', onOpen }: { stage: CompanionStage; mood?: CompanionMood; onOpen?: () => void }) {
+  return (
+    <button className="cmp-peek" onClick={onOpen} aria-label={L(COPY.open)}>
+      <CompanionFigure stage={stage} size={64} mood={mood} />
+    </button>
+  );
+}
+
+/* ── the buddy's own page ──────────────────────────────────────────────────────────────────────── */
+
+/** Titles of the missions done in this language, most recent first. */
+export function recentMilestones(completedDays: readonly number[], limit = 3): string[] {
+  return [...completedDays].reverse().map((d) => BOOTCAMP_PLAN.find((m) => m.day === d)).filter((m) => m !== undefined).slice(0, limit).map((m) => L(m.title));
+}
+
+/** How close to its next change the buddy must be before the page lets on that something is up. */
+const STIRRING_FROM_PCT = 75;
 
 export function CompanionPage() {
   const navigate = useAppStore((s) => s.navigate);
   const { lang, stage, progress } = useCompanion();
   const language = useLanguageName(lang);
   const speech = useCompanionSpeech(stage, lang);
-  return <CompanionPageView lang={lang} language={language} stage={stage} progress={progress} speech={speech} onBack={() => navigate('bootcamp')} />;
+  const completedDays = useBootcampStore((s) => s.completedDays);
+  const milestones = useMemo(() => recentMilestones(completedDays), [completedDays]);
+  const stirring = progress.next !== null && progress.pct >= STIRRING_FROM_PCT;
+  return <CompanionPageView lang={lang} language={language} stage={stage} stirring={stirring} speech={speech} milestones={milestones} onBack={() => navigate('bootcamp')} />;
 }
 
-export function CompanionPageView({ lang, language, stage, progress, speech, onBack }: {
-  lang: string; language: string; stage: CompanionStage; progress: StageProgress; speech: CompanionSpeech; onBack?: () => void;
+/** A character page, not an evolution menu: who it is right now and what you have done together.
+ *  At most a hint that something is stirring — never what, never when. */
+export function CompanionPageView({ lang, language, stage, stirring = false, speech, milestones = [], onBack }: {
+  lang: string; language: string; stage: CompanionStage; stirring?: boolean; speech: CompanionSpeech; milestones?: readonly string[]; onBack?: () => void;
 }) {
-  const copy = STAGE_COPY[stage];
-  const next = progress.next;
   return (
     <div className="screen screen-wide">
-      <PageHeader title={L(COPY.pageTitle)} sub={L(COPY.perLanguage(language))} onBack={onBack ?? (() => undefined)} />
+      <PageHeader title={L(COPY.buddyFor(language))} onBack={onBack ?? (() => undefined)} />
       <div className="screen-scroll">
-        <div className="card cmp-hero">
-          <SpeechBubble speech={speech} lang={lang} />
-          <CompanionAvatar stage={stage} size={220} variant="full" anim={stage === LAST_STAGE ? 'phone' : 'idle'} />
-          <span className="chip">{L(COPY.stageOf(stage))}</span>
-          <h2>{L(copy.name)}</h2>
-          <p style={{ fontWeight: 700 }}>{L(copy.feeling)}</p>
-          <p className="dim">{L(copy.meaning)}</p>
-          <p className="faint small">{L(COPY.whatItSays)}: {L(copy.speech)}</p>
+        <div className={`cmp-hero ${stirring ? 'is-stirring' : ''}`}>
+          <SpeechBubble speech={speech} lang={lang} voice={speech.target ? 'speech' : 'thought'} />
+          <CompanionFigure stage={stage} size={232} variant="full" mood={stage === LAST_STAGE ? 'talking' : 'idle'} />
+          <p className="cmp-behaviour">{L(STAGE_COPY[stage].behaviour)}</p>
+          {stirring && <p className="cmp-stirring">{L(COPY.stirring)}</p>}
         </div>
 
-        <div className="card" style={{ padding: 16 }}>
-          {next ? (
-            <div className="cmp-next">
-              <CompanionAvatar stage={next} size={72} silhouette label={L(COPY.nextStage)} />
-              <div>
-                <span className="dim small">{L(COPY.nextStage)}</span>
-                <strong>{L(STAGE_COPY[next].name)}</strong>
-                <span className="cmp-bar" role="progressbar" aria-valuenow={progress.pct} aria-valuemin={0} aria-valuemax={100}><span style={{ width: `${progress.pct}%` }} /></span>
-                <span className="faint small">{L(COPY.toNext(progress.pct))}</span>
-                <span className="faint small">{L(next === LAST_STAGE ? COPY.beyondCore : COPY.howToGrow)}</span>
-              </div>
-            </div>
-          ) : (
-            <p style={{ fontWeight: 700, textAlign: 'center' }}>{L(COPY.finalStage)}</p>
+        <div className="section-head"><h2>{L(COPY.together)}</h2></div>
+        <div className="card cmp-together">
+          {milestones.length === 0 ? <p className="dim">{L(COPY.noMilestones)}</p> : (
+            <ul>
+              {milestones.map((title) => <li key={title}><span aria-hidden>✓</span>{title}</li>)}
+            </ul>
           )}
         </div>
 
-        <div className="section-head"><h2>{L(COPY.journey)}</h2></div>
-        <div className="card" style={{ padding: 12 }}>
-          <div className="cmp-track">
-            {STAGES.map((s) => {
-              const reached = s <= stage;
-              return (
-                <div key={s} className={`cmp-stage ${s === stage ? 'is-current' : ''} ${reached ? '' : 'is-locked'}`}>
-                  <CompanionAvatar stage={s} size={64} silhouette={!reached} anim="rest" />
-                  <span className="cmp-num">{s === stage ? L(COPY.now) : s}</span>
-                  <span className="cmp-name">{L(STAGE_COPY[s].name)}</span>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-
-        <div className="section-head"><h2>{L(COPY.whyTitle)}</h2></div>
-        <div className="card" style={{ padding: 16, display: 'flex', flexDirection: 'column', gap: 8 }}>
-          <p>{L(COPY.why)}</p>
-          <p className="dim small">{L(COPY.notReadiness)}</p>
-        </div>
+        <p className="cmp-note">{L(COPY.learnsWithYou)} {L(COPY.changes)}</p>
+        <p className="cmp-note faint small">{L(COPY.perLanguage)}</p>
       </div>
     </div>
   );
 }
 
-/* ── evolution ─────────────────────────────────────────────────────────────────────────────────── */
+/* ── the change ────────────────────────────────────────────────────────────────────────────────── */
 
-/** The level-up moment: old character → anticipation → transformation → reveal → what changed.
- *  A tap anywhere skips the build-up; with reduced motion the new stage is simply shown. */
+/**
+ * The moment the buddy changes: it pauses, light gathers, and a different creature is there. The
+ * learner is told only that something changed — the new look is theirs to discover. A tap skips the
+ * build-up; with reduced motion the new look is simply shown.
+ */
 export function CompanionEvolution({ lang, from, to, onDone }: { lang: string; from: CompanionStage; to: CompanionStage; onDone: () => void }) {
   const speech = useCompanionSpeech(to, lang);
   const timeline = useMemo(() => evolutionTimeline(prefersReducedMotion()), []);
@@ -252,24 +299,22 @@ export function CompanionEvolution({ lang, from, to, onDone }: { lang: string; f
     return () => clearTimeout(id);
   }, [at, timeline]);
   useEffect(() => {
-    if (phase === 'reveal') success();
+    if (phase === 'reveal') { success(); evolveChime(); }
   }, [phase]);
 
   const revealed = phase === 'reveal' || phase === 'done';
   return (
-    <div className="cmp-evo" data-phase={phase} role="dialog" aria-modal="true" aria-label={L(COPY.levelUp)}>
+    <div className="cmp-evo" data-phase={phase} role="dialog" aria-modal="true" aria-label={L(COPY.changedTitle)}>
       {!revealed && <button className="cmp-evo-skip" aria-label={L(COPY.continue)} onClick={() => setAt(timeline.length - 1)} />}
       <div className="cmp-evo-stage">
         <span className="cmp-evo-burst" aria-hidden />
-        <CompanionAvatar stage={from} variant="full" size={260} anim="rest" className="cmp-evo-old" />
-        <CompanionAvatar stage={to} variant="full" size={260} anim={phase === 'done' ? 'celebrate' : 'rest'} className="cmp-evo-new" />
+        <CompanionFigure stage={from} variant="full" size={260} mood="resting" className="cmp-evo-old" />
+        <CompanionFigure stage={to} variant="full" size={260} mood={phase === 'done' ? 'celebrating' : 'resting'} className="cmp-evo-new" />
       </div>
-      <div className="cmp-evo-text" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8 }}>
-        <span className="chip">{L(COPY.stageOf(to))}</span>
-        <h1>{L(COPY.levelUp)}</h1>
-        <p className="cmp-evo-became">{L(COPY.became(L(STAGE_COPY[from].name), L(STAGE_COPY[to].name)))}</p>
-        <p className="cmp-evo-meaning">{L(STAGE_COPY[to].meaning)}</p>
-        {revealed && <SpeechBubble speech={speech} lang={lang} />}
+      <div className="cmp-evo-text">
+        <h1>{L(COPY.changedTitle)}</h1>
+        <p className="cmp-evo-line">{L(COPY.changedLine)}</p>
+        {revealed && <SpeechBubble speech={speech} lang={lang} voice={speech.target ? 'speech' : 'thought'} />}
         {revealed && <button className="btn-primary" onClick={() => { tap(); onDone(); }}>{L(COPY.continue)}</button>}
       </div>
     </div>
@@ -277,9 +322,9 @@ export function CompanionEvolution({ lang, from, to, onDone }: { lang: string; f
 }
 
 /**
- * Mounted once in the app shell. When the active language's companion has reached a stage the
- * learner has not seen yet, it takes over the screen with the evolution — once. Acknowledging it
- * is persisted, so a reload never replays it.
+ * Mounted once in the app shell. When the active language's buddy has changed and the learner has
+ * not seen it yet, it takes over the screen — once. Acknowledging it is persisted, so a reload
+ * never replays it.
  */
 export function CompanionHost() {
   const { lang, evolution } = useCompanion();

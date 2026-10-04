@@ -10,7 +10,9 @@ import { mulberry32, sessionSeed, shuffle } from '../../shared/util/shuffle.js';
 import { TargetText } from '../foundation/TappableText.js';
 import { useBootcampStore } from './bootcampStore.js';
 import { dialogueTr } from './i18n.js';
-import { CompanionReaction } from '../companion/Companion.js';
+import { CompanionReaction, CompanionWatch } from '../companion/Companion.js';
+import { completeChime, matchChime, placeTick, softChime } from '../../shared/audio/sfx.js';
+import { AudioBubble, NpcFigure, useNpc } from './ConvoScene.js';
 import {
   builderHint, builderPool, builderSentence, builderSolved, fillFrame, frameParts, isHelpToolId, matchAnswerOrder, matchRecord, matchSpeaks, matchTap, newMatch,
   quickReplyLabel, quickReplyPrompt, type MatchSide, type StepOf,
@@ -22,7 +24,26 @@ import type { BootcampItem, MapCell } from './types.js';
  * rounds, the engine supplies the interaction. They share one rhythm — hear (or read a cue) → act →
  * see what it was → next — and READY's rule that a wrong answer teaches and never traps: "Try
  * again" and "Continue" are always both there. No translation is shown before the learner acts.
+ *
+ * Each engine has its OWN look on an open canvas (no shared white card): a conversation, a board, a
+ * map, a sentence being put together. What is asked and what is accepted is unchanged.
  */
+
+/** A right answer inside a game: a light buzz and a quiet chime (speech usually follows). */
+const good = (): void => { success(); softChime(); };
+
+/** The top of a game: what to do, how far along — and, where it helps, the buddy watching. */
+function GameHead({ label, i, n, children }: { label: string; i: number; n: number; children?: React.ReactNode }) {
+  return (
+    <div className="pc-head">
+      <span className="pc-head-text">
+        <p className="drill-label">{label}</p>
+        <Progress i={i} n={n} />
+      </span>
+      {children}
+    </div>
+  );
+}
 
 const speakL = (text: string, rate?: number): ReturnType<typeof speak> => speak(text, useAppStore.getState().learningLang, rate);
 
@@ -43,6 +64,7 @@ export function QuickReplyStep({ step, itemsById, onDone }: { step: StepOf<'quic
   const round = step.rounds[i]!;
   const prompt = quickReplyPrompt(round, itemsById);
   const options = useMemo(() => shuffle(round.options, mulberry32(seed + i)), [round, seed, i]);
+  const npc = useNpc();
 
   useEffect(() => {
     shownAt.current = Date.now();
@@ -74,22 +96,30 @@ export function QuickReplyStep({ step, itemsById, onDone }: { step: StepOf<'quic
     const kind = !chosen.correct ? 'encouraging' : isHelpToolId(chosen.itemId) ? 'recovery' : 'correct';
     return (
       <AnswerFeedback ok={chosen.correct} ctx={ctx} onRetry={chosen.correct ? undefined : () => setPicked(null)} onContinue={next}
-        aside={<CompanionReaction kind={kind} text={kind === 'correct' ? false : undefined} size={40} />} />
+        aside={<CompanionReaction kind={kind} text={kind === 'correct' ? false : undefined} size={64} />} />
     );
   }
 
   return (
     <>
-      <div className="drill-card practice-card">
-        <p className="drill-label">{step.label ? L(step.label) : t(round.situation ? 'quickReplySituation' : 'quickReplyTitle')}</p>
-        <Progress i={i} n={step.rounds.length} />
-        {round.situation ? <p className="drill-phrase" style={{ fontSize: '1.2rem' }}>{L(round.situation)}</p> : <p style={{ fontSize: '2.6rem' }}>👂</p>}
+      {/* A conversation: someone speaks to you (you HEAR it — the bubble plays it), you answer. */}
+      <div className="pcanvas" data-engine="quickReply">
+        <GameHead label={step.label ? L(step.label) : t(round.situation ? 'quickReplySituation' : 'quickReplyTitle')} i={i} n={step.rounds.length} />
+        {round.situation ? (
+          <p className="scene-note">{L(round.situation)}</p>
+        ) : (
+          <div className="convo-row npc" dir="ltr" key={i}>
+            <NpcFigure npc={npc} />
+            {prompt.spoken && <AudioBubble onPlay={() => void speakL(prompt.spoken!.en)} />}
+          </div>
+        )}
+        <div className="convo-aside"><CompanionWatch mood="listening" /></div>
       </div>
       <div className="action-zone">
         {options.map((o) => (
-          <button key={o.itemId} className="btn-secondary" onClick={() => {
+          <button key={o.itemId} className="btn-secondary btn-reply" onClick={() => {
             tap();
-            if (o.correct) success(); else feedbackWrong();
+            if (o.correct) good(); else feedbackWrong();
             const scored = o.correct ? o.itemId : round.options.find((x) => x.correct)!.itemId;
             bc.recordDrill(scored, 'simulator', o.correct ? 'pass' : 'fail', Date.now() - shownAt.current);
             setPicked(o.itemId);
@@ -98,7 +128,6 @@ export function QuickReplyStep({ step, itemsById, onDone }: { step: StepOf<'quic
             <TargetText text={quickReplyLabel(o, itemsById)} />
           </button>
         ))}
-        {prompt.spoken && <button className="btn-ghost" onClick={() => void speakL(prompt.spoken!.en)}>🔊 {t('hearAgain')}</button>}
       </div>
     </>
   );
@@ -109,8 +138,7 @@ export function QuickReplyStep({ step, itemsById, onDone }: { step: StepOf<'quic
 function Heard({ ok, text, gloss, onReplay }: { ok: boolean; text: string; gloss: string; onReplay: () => void }) {
   return (
     <div className="fade-in" style={{ display: 'flex', flexDirection: 'column', gap: 4, alignItems: 'center' }}>
-      <span className={`feedback-head ${ok ? 'ok' : 'bad'}`}>{ok ? `✓ ${t('correctHeader')}` : `❌ ${t('wrongHeader')}`}</span>
-      <CompanionReaction kind={ok ? 'correct' : 'encouraging'} text={ok ? false : undefined} size={40} />
+      <div className="feedback-top"><CompanionReaction kind={ok ? 'correct' : 'encouraging'} text={ok ? false : undefined} size={56} /><span className={`feedback-head ${ok ? 'ok' : 'bad'}`}>{ok ? `✓ ${t('correctHeader')}` : t('wrongHeader')}</span></div>
       <p className="drill-phrase" style={{ fontSize: '1.15rem' }}><TargetText text={text} /></p>
       <p className="drill-meaning" style={{ fontSize: '0.95rem' }}>{gloss}</p>
       <button className="btn-ghost" style={{ minHeight: 36, padding: '4px 10px' }} onClick={onReplay} aria-label={t('replayAudio')}>🔊</button>
@@ -150,9 +178,11 @@ export function VisualMatchStep({ step, onDone }: { step: StepOf<'visualMatch'>;
   const last = i + 1 >= step.rounds.length;
   return (
     <>
-      <div className="drill-card practice-card">
-        <p className="drill-label">{step.challenge ? `⚡ ${t('speedHeadsUp')}` : step.label ? L(step.label) : t('visualMatchTitle')}</p>
-        <Progress i={i} n={step.rounds.length} />
+      {/* Sound → board, nothing in between: the bubble is the price being said, the tiles are the answer. */}
+      <div className="pcanvas" data-engine="visualMatch">
+        <GameHead label={step.challenge ? `⚡ ${t('speedHeadsUp')}` : step.label ? L(step.label) : t('visualMatchTitle')} i={i} n={step.rounds.length}>
+          <AudioBubble onPlay={() => void speakL(round.audio.en, step.challenge ? 0.85 : undefined)} />
+        </GameHead>
         <div className="pgrid">
           {tiles.map((tile) => (
             <button
@@ -162,7 +192,7 @@ export function VisualMatchStep({ step, onDone }: { step: StepOf<'visualMatch'>;
               onClick={() => {
                 tap();
                 const right = tile.id === round.correct;
-                if (right) success(); else feedbackWrong();
+                if (right) good(); else feedbackWrong();
                 if (round.itemId) bc.recordDrill(round.itemId, 'numberSprint', right ? 'pass' : 'fail', Date.now() - shownAt.current);
                 setPicked(tile.id);
               }}
@@ -174,11 +204,7 @@ export function VisualMatchStep({ step, onDone }: { step: StepOf<'visualMatch'>;
         </div>
         {picked !== null && <Heard ok={ok} text={round.audio.en} gloss={dialogueTr(round.audio)} onReplay={() => void speakL(round.audio.en)} />}
       </div>
-      {picked === null ? (
-        <div className="action-zone">
-          <button className="btn-ghost" onClick={() => void speakL(round.audio.en, step.challenge ? 0.85 : undefined)}>🔊 {t('hearAgain')}</button>
-        </div>
-      ) : (
+      {picked === null ? null : (
         <ResultActions ok={ok} last={last} onRetry={() => { setPicked(null); play(); }} onNext={() => { setPicked(null); if (last) onDone(); else setI(i + 1); }} />
       )}
     </>
@@ -207,33 +233,34 @@ export function SwapStep({ step, onDone }: { step: StepOf<'swap'>; onDone: () =>
 
   return (
     <>
-      <div className="drill-card practice-card">
-        <p className="drill-label">{step.label ? L(step.label) : t('swapTitle')}</p>
-        <Progress i={i} n={step.rounds.length} />
-        <p style={{ fontSize: '2.4rem' }} aria-hidden>{round.cue.emoji}</p>
-        <p className="drill-meaning">{L(round.cue.text)}</p>
+      {/* One sentence with a gap, and the pieces that can go in it — you are changing a sentence,
+          not answering a multiple-choice question. */}
+      <div className="pcanvas" data-engine="swap">
+        <GameHead label={step.label ? L(step.label) : t('swapTitle')} i={i} n={step.rounds.length} />
+        <p className="pswap-cue"><span aria-hidden>{round.cue.emoji}</span> {L(round.cue.text)}</p>
         <p className="pframe">
-          {before}<span className="pslot">{chosen ? chosen.slot : ' '}</span>{after}
+          {before}<span className={`pslot ${chosen ? 'is-filled' : ''}`} key={chosen?.slot ?? 'empty'}>{chosen ? chosen.slot : ' '}</span>{after}
         </p>
+        {!chosen && (
+          <div className="pswap-pieces" dir="ltr">
+            {options.map((o) => (
+              <button key={o.slot} className="pchip" onClick={() => {
+                tap();
+                if (o.correct) good(); else feedbackWrong();
+                if (round.itemId) bc.recordDrill(round.itemId, 'flashRecall', o.correct ? 'pass' : 'fail', Date.now() - shownAt.current);
+                setPicked(o.slot);
+                void speakL(fillFrame(round.frame, o.slot), 0.92);
+              }}>
+                <TargetText text={o.slot} />
+              </button>
+            ))}
+          </div>
+        )}
         {chosen && (
           <Heard ok={chosen.correct} text={fillFrame(round.frame, chosen.slot)} gloss={L(chosen.meaning)} onReplay={() => void speakL(fillFrame(round.frame, chosen.slot))} />
         )}
       </div>
-      {!chosen ? (
-        <div className="action-zone">
-          {options.map((o) => (
-            <button key={o.slot} className="btn-secondary" onClick={() => {
-              tap();
-              if (o.correct) success(); else feedbackWrong();
-              if (round.itemId) bc.recordDrill(round.itemId, 'flashRecall', o.correct ? 'pass' : 'fail', Date.now() - shownAt.current);
-              setPicked(o.slot);
-              void speakL(fillFrame(round.frame, o.slot), 0.92);
-            }}>
-              <TargetText text={o.slot} />
-            </button>
-          ))}
-        </div>
-      ) : (
+      {!chosen ? null : (
         <ResultActions ok={chosen.correct} last={last} onRetry={() => setPicked(null)} onNext={() => { setPicked(null); if (last) onDone(); else setI(i + 1); }} />
       )}
     </>
@@ -265,11 +292,14 @@ export function MiniMapStep({ step, onDone }: { step: StepOf<'miniMap'>; onDone:
   const last = i + 1 >= step.rounds.length;
   return (
     <>
-      <div className="drill-card practice-card">
-        <p className="drill-label">{step.challenge ? `⚡ ${t('speedHeadsUp')}` : step.label ? L(step.label) : t('miniMapTitle')}</p>
-        <Progress i={i} n={step.rounds.length} />
+      {/* The map is the screen. The buddy listens to the direction with you. */}
+      <div className="pcanvas" data-engine="miniMap">
+        <GameHead label={step.challenge ? `⚡ ${t('speedHeadsUp')}` : step.label ? L(step.label) : t('miniMapTitle')} i={i} n={step.rounds.length}>
+          <AudioBubble onPlay={() => void speakL(round.audio.en, step.challenge ? 0.85 : undefined)} />
+          <CompanionWatch mood="listening" size={48} />
+        </GameHead>
         {/* The map is a picture, not text: it keeps one orientation in Hebrew and English alike. */}
-        <div className="pgrid" dir="ltr">
+        <div className="pgrid pmap" dir="ltr">
           {GRID.map(([row, col]) => {
             const cell = at(row, col);
             const inner = cell && (
@@ -289,7 +319,7 @@ export function MiniMapStep({ step, onDone }: { step: StepOf<'miniMap'>; onDone:
                 onClick={() => {
                   tap();
                   const right = cell.id === round.correct;
-                  if (right) success(); else feedbackWrong();
+                  if (right) good(); else feedbackWrong();
                   if (round.itemId) bc.recordDrill(round.itemId, 'listen', right ? 'pass' : 'fail', Date.now() - shownAt.current);
                   setPicked(cell.id);
                 }}
@@ -301,11 +331,7 @@ export function MiniMapStep({ step, onDone }: { step: StepOf<'miniMap'>; onDone:
         </div>
         {picked !== null && <Heard ok={ok} text={round.audio.en} gloss={dialogueTr(round.audio)} onReplay={() => void speakL(round.audio.en)} />}
       </div>
-      {picked === null ? (
-        <div className="action-zone">
-          <button className="btn-ghost" onClick={() => void speakL(round.audio.en, step.challenge ? 0.85 : undefined)}>🔊 {t('hearAgain')}</button>
-        </div>
-      ) : (
+      {picked === null ? null : (
         <ResultActions ok={ok} last={last} onRetry={() => { setPicked(null); play(); }} onNext={() => { setPicked(null); if (last) onDone(); else setI(i + 1); }} />
       )}
     </>
@@ -333,7 +359,7 @@ export function MatchPairsStep({ step, itemsById, onDone }: { step: StepOf<'matc
     const result = matchTap(step.pairs.length, state, side, pair);
     const record = matchRecord(step.pairs, result);
     if (record) bc.recordDrill(record.itemId, 'simulator', record.outcome);
-    if (result.outcome === 'matched') success();
+    if (result.outcome === 'matched') { success(); if (result.complete) completeChime(); else matchChime(); }
     if (result.outcome === 'missed') { feedbackWrong(); setMiss({ side, pair }); setTimeout(() => setMiss(null), 450); }
     const heard = matchSpeaks(result, side);
     if (heard === 'answer') void speakL(answerText(pair), 0.92);
@@ -362,14 +388,15 @@ export function MatchPairsStep({ step, itemsById, onDone }: { step: StepOf<'matc
 
   return (
     <>
-      <div className="drill-card practice-card">
-        <p className="drill-label">{step.label ? L(step.label) : t('matchTitle')}</p>
+      {/* A small game board, not a form: two rows of tiles that click together. */}
+      <div className="pcanvas" data-engine="matchPairs">
+        <GameHead label={step.label ? L(step.label) : t('matchTitle')} i={0} n={1} />
         <div className="pmatch" dir="ltr">
           {step.pairs.map((_, i) => tile('prompt', i))}
           <span className="pmatch-sep" aria-hidden />
           {answerOrder.map((i) => tile('answer', i))}
         </div>
-        {complete && <CompanionReaction kind="celebrate" size={44} />}
+        {complete && <CompanionReaction kind="celebrate" size={64} />}
       </div>
       {complete && (
         <div className="action-zone">
@@ -402,12 +429,12 @@ export function SentenceBuilderStep({ step, itemsById, onDone }: { step: StepOf<
   const finished = status === 'right' || status === 'shown';
   const last = i + 1 >= step.rounds.length;
 
-  const place = (chunk: number): void => { tap(); setStatus('building'); setPlaced((p) => [...p, chunk]); };
+  const place = (chunk: number): void => { tap(); placeTick(); setStatus('building'); setPlaced((p) => [...p, chunk]); };
   const takeBack = (at: number): void => { tap(); setStatus('building'); setPlaced((p) => p.filter((_, k) => k !== at)); };
   const check = (): void => {
     const ok = builderSolved(round.chunks, placed);
     bc.recordDrill(item.id, 'flashRecall', ok ? 'pass' : 'fail');
-    if (ok) { success(); setStatus('right'); void speakL(sentence, 0.92); }
+    if (ok) { success(); completeChime(); setStatus('right'); void speakL(sentence, 0.92); }
     else { feedbackWrong(); setStatus('wrong'); setMisses((n) => n + 1); }
   };
   const next = (): void => {
@@ -417,10 +444,10 @@ export function SentenceBuilderStep({ step, itemsById, onDone }: { step: StepOf<
 
   return (
     <>
-      <div className="drill-card practice-card">
-        <p className="drill-label">{step.label ? L(step.label) : t('builderTitle')}</p>
-        <Progress i={i} n={step.rounds.length} />
-        <p className="drill-meaning" style={{ fontWeight: 700 }}>{L(item.meaning)}</p>
+      {/* Something you put together with your fingers: the meaning, a rail, and the pieces. */}
+      <div className="pcanvas" data-engine="sentenceBuilder">
+        <GameHead label={step.label ? L(step.label) : t('builderTitle')} i={i} n={step.rounds.length} />
+        <p className="pbuild-cue">{L(item.meaning)}</p>
         <div className={`pbuild-answer ${status === 'right' || status === 'shown' ? 'is-ok' : status === 'wrong' ? 'is-bad' : ''}`} dir="ltr" lang={useAppStore.getState().learningLang} aria-live="polite">
           {status === 'shown'
             ? round.chunks.map((c, k) => <span key={k} className="pchip">{c}</span>)
@@ -439,10 +466,8 @@ export function SentenceBuilderStep({ step, itemsById, onDone }: { step: StepOf<
             ))}
           </div>
         )}
-        {status === 'wrong' && <p className="feedback-head bad">❌ {t('builderNotYet')}</p>}
-        {status === 'wrong' && <CompanionReaction kind="encouraging" size={40} />}
-        {status === 'right' && <span className="feedback-head ok">✓ {t('correctHeader')}</span>}
-        {status === 'right' && <CompanionReaction kind="correct" text={false} size={40} />}
+        {status === 'wrong' && <div className="feedback-top"><CompanionReaction kind="thinking" text={false} size={56} /><span className="feedback-head bad">{t('builderNotYet')}</span></div>}
+        {status === 'right' && <div className="feedback-top"><CompanionReaction kind="correct" text={false} size={56} /><span className="feedback-head ok">✓ {t('correctHeader')}</span></div>}
         {finished && <button className="btn-ghost" style={{ alignSelf: 'center' }} onClick={() => void speakL(sentence)} aria-label={t('replayAudio')}>🔊 {t('hearAgain')}</button>}
       </div>
       <div className="action-zone">

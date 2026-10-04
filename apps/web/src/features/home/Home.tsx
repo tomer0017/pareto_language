@@ -12,6 +12,7 @@ import { useTravelReadiness } from '../bootcamp/useReadiness.js';
 import { useSentenceProgress } from '../core/useSentenceProgress.js';
 import { ZERO_LANGS } from '../zerostart/types.js';
 import { useZeroStartStore } from '../zerostart/zeroStartStore.js';
+import { CompanionPeek } from '../companion/Companion.js';
 
 /**
  * Home — the coach, not a menu. It answers one question: "what is the single best thing for me to
@@ -80,6 +81,8 @@ export function Home() {
           {/* 2 — The next step */}
           {next && (
             <section className="card next-card" aria-labelledby="home-next">
+              {/* The same buddy as on the Route and in missions, peeking over the next step. */}
+              <CompanionPeek />
               <p className="eyebrow" id="home-next"><Icon name="flag" size={18} />{readiness.allDone ? t('allMissionsDone') : t('nextStepTitle')}</p>
               <div className="next-head">
                 <span className="icon-tile icon-tile-brand icon-tile-lg" aria-hidden>{missionIcon(missions[next.day])}</span>

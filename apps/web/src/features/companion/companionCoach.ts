@@ -1,4 +1,6 @@
 import type { LocalizedText } from '@ready/content-schema';
+import { COPY } from './companionCopy.js';
+import type { CompanionMood } from './companionMood.js';
 
 /**
  * What the companion says INSIDE a mission — always in the app language, so it can never expose
@@ -73,4 +75,21 @@ export function coachFor(steps: readonly { kind: string }[], index: number, miss
   if (step.kind === 'talk') return { line: (missionId && MISSION_INTRO[missionId]) || MISSION_INTRO_FALLBACK, role: 'intro' };
   const game = GAME_INTRO[step.kind];
   return game ? { line: game, role: 'game' } : null;
+}
+
+/** The mood the buddy brings to each game's instruction. */
+export const GAME_MOOD: Record<string, CompanionMood> = {
+  matchPairs: 'curious', visualMatch: 'listening', miniMap: 'listening', sentenceBuilder: 'thinking', swap: 'curious', quickReply: 'listening',
+};
+
+export interface Presence { line: LocalizedText; mood: CompanionMood }
+/**
+ * The buddy on the Route and on Home: one contextual line and a mood, from where the learner stands.
+ * It rests when everything is done, perks up when a mission is waiting, and greets a new learner.
+ */
+export function presenceFor(at: { done: number; resume: boolean; allDone: boolean }): Presence {
+  if (at.allDone) return { line: COPY.presence.allDone, mood: 'resting' };
+  if (at.resume) return { line: COPY.presence.resume, mood: 'attentive' };
+  if (at.done === 0) return { line: COPY.presence.fresh, mood: 'curious' };
+  return { line: COPY.presence.next, mood: 'attentive' };
 }

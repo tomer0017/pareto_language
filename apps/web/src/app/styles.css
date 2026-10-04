@@ -1408,3 +1408,123 @@ div.jstep { box-shadow: none; border-color: var(--line); }
 .pchip.is-used { visibility: hidden; }
 @keyframes pshake { 0%,100% { transform: translateX(0); } 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
 @media (prefers-reduced-motion: reduce) { .pmatch-tile.is-miss, .pbuild-answer.is-bad { animation: none; } }
+
+/* ── Learning that feels alive (experience redesign) ──────────────────────────────────────────────
+   Open canvases instead of one white card for everything; conversations that look like
+   conversations; pieces that move when you touch them. Content and scoring are unchanged.
+   Target-language content stays left-to-right inside a right-to-left app. */
+
+/* the buddy's reaction sits WITH the verdict, at the top of an answer card */
+.feedback-top { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; }
+.feedback-top .cmp-reaction { margin: 0; }
+.feedback-top .feedback-head { font-size: 1.05rem; }
+
+/* mission intro — the buddy introduces it; no card */
+.mission-intro { display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; padding: 10px 6px 0; }
+.mission-intro-title { font-size: 1.5rem; margin-top: 8px; }
+.mission-intro-body { color: var(--ink-dim); font-size: 1.02rem; line-height: 1.5; max-width: 34ch; margin: 0; }
+
+/* an open game canvas */
+.pcanvas { display: flex; flex-direction: column; align-items: center; gap: 16px; width: 100%; padding: 4px 2px 0; text-align: center; }
+.pc-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%; min-height: 48px; }
+.pc-head-text { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; text-align: start; min-width: 0; }
+.pcanvas[data-engine='swap'] .pc-head, .pcanvas[data-engine='sentenceBuilder'] .pc-head,
+.pcanvas[data-engine='matchPairs'] .pc-head, .pcanvas[data-engine='quickReply'] .pc-head { justify-content: center; }
+.pcanvas[data-engine='swap'] .pc-head-text, .pcanvas[data-engine='sentenceBuilder'] .pc-head-text,
+.pcanvas[data-engine='matchPairs'] .pc-head-text, .pcanvas[data-engine='quickReply'] .pc-head-text { align-items: center; text-align: center; }
+
+/* a line you HEAR: tap the bubble to hear it again */
+.audio-bubble {
+  display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 10px 18px; border-radius: 22px; flex: none;
+  background: var(--brand-soft); color: var(--brand-ink); border: 0; box-shadow: var(--shadow-card); font-size: 1.2rem;
+}
+.audio-wave { display: inline-flex; align-items: center; gap: 3px; height: 22px; }
+.audio-wave i { width: 3px; border-radius: 3px; background: currentColor; height: 40%; animation: wave 1.1s ease-in-out infinite; }
+.audio-wave i:nth-child(2) { height: 85%; animation-delay: 0.12s; }
+.audio-wave i:nth-child(3) { height: 60%; animation-delay: 0.24s; }
+.audio-wave i:nth-child(4) { height: 100%; animation-delay: 0.36s; }
+.audio-wave i:nth-child(5) { height: 50%; animation-delay: 0.48s; }
+@keyframes wave { 0%,100% { transform: scaleY(0.55); } 50% { transform: scaleY(1); } }
+
+/* conversation shell: the other person on the left, you on the right — always, it is their language */
+.convo { display: flex; flex-direction: column; gap: 14px; width: 100%; padding: 8px 0 0; }
+.convo-row { display: flex; align-items: flex-end; gap: 10px; width: 100%; direction: ltr; unicode-bidi: isolate; }
+.convo-row.you { justify-content: flex-end; }
+.npc-fig { flex: none; width: 56px; height: 56px; font-size: 2.6rem; line-height: 56px; text-align: center; object-fit: contain; }
+.convo-bubble { position: relative; max-width: 82%; padding: 12px 16px; border-radius: 20px; text-align: left; box-shadow: var(--shadow-card); }
+.convo-bubble.npc { background: var(--card); border-bottom-left-radius: 6px; }
+.convo-bubble.you { background: var(--brand); color: #fff; border-bottom-right-radius: 6px; font-weight: 700; }
+.convo-text { font-size: 1.22rem; font-weight: 800; line-height: 1.35; }
+.convo-gloss { margin: 6px 0 0; font-size: 0.9rem; color: var(--ink-dim); }
+.convo-turn { text-align: center; margin-top: 4px; }
+.convo-aside { display: flex; justify-content: flex-end; width: 100%; min-height: 52px; }
+.scene-note { font-size: 1.15rem; font-weight: 700; line-height: 1.45; max-width: 30ch; padding: 14px 16px; border-radius: 18px; background: var(--brand-soft); color: var(--brand-ink); }
+/* your possible replies: speech bubbles on your side, not form buttons */
+.btn-reply { border-radius: 20px 20px 6px 20px; text-align: left; direction: ltr; unicode-bidi: isolate; font-weight: 700; }
+.btn-reply:active { transform: scale(0.98); }
+
+/* swap: a sentence with a socket, and the pieces that fit it */
+.pswap-cue { font-size: 1.05rem; font-weight: 700; color: var(--ink-dim); }
+.pswap-cue > span { font-size: 2rem; vertical-align: middle; margin-inline-end: 6px; }
+.pcanvas[data-engine='swap'] .pframe { font-size: 1.5rem; padding: 16px 12px; width: 100%; border-radius: 20px; background: var(--card); box-shadow: var(--shadow-card); }
+.pcanvas[data-engine='swap'] .pslot { border: 2px dashed var(--accent); border-radius: 12px; padding: 2px 10px; margin: 0 4px; min-width: 3.6em; }
+.pcanvas[data-engine='swap'] .pslot.is-filled { border-style: solid; background: color-mix(in srgb, var(--accent) 12%, transparent); animation: piece-in 0.28s cubic-bezier(.2,1.5,.4,1) 1; }
+.pswap-pieces { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; width: 100%; direction: ltr; unicode-bidi: isolate; }
+.pswap-pieces .pchip { min-height: 50px; padding: 10px 18px; border-color: var(--accent); }
+.pchip:active { transform: translateY(2px) scale(0.97); }
+
+/* mini map: the map IS the screen */
+.pmap { padding: 12px; border-radius: 24px; gap: 10px; background: color-mix(in srgb, var(--good) 9%, var(--card)); box-shadow: var(--shadow-card); }
+.pmap .ptile.is-road { background: color-mix(in srgb, var(--ink) 5%, transparent); border-radius: 10px; }
+.pmap .ptile .ptile-emoji { font-size: 2rem; }
+
+/* match pairs: tiles that click together */
+.pcanvas[data-engine='matchPairs'] .pmatch { gap: 10px; }
+.pmatch-tile { transition: transform 0.12s ease, border-color 0.12s ease; }
+.pmatch-tile.is-picked { transform: scale(1.02); }
+.pmatch-tile.is-matched { animation: pair-lock 0.45s cubic-bezier(.2,1.5,.4,1) 1; background: color-mix(in srgb, var(--good) 8%, var(--card)); }
+@keyframes pair-lock { 0% { transform: scale(1); } 45% { transform: scale(1.04); } 100% { transform: scale(1); } }
+
+/* sentence builder: pieces drop onto a rail */
+.pbuild-cue { font-size: 1.15rem; font-weight: 800; line-height: 1.4; }
+.pcanvas[data-engine='sentenceBuilder'] .pbuild-answer { min-height: 72px; border: 0; border-bottom: 3px solid var(--line); border-radius: 0; padding: 10px 4px; }
+.pcanvas[data-engine='sentenceBuilder'] .pbuild-answer.is-ok { border-bottom-color: var(--good); }
+.pcanvas[data-engine='sentenceBuilder'] .pbuild-answer.is-bad { border-bottom-color: var(--danger); }
+.pbuild-answer .pchip { animation: piece-in 0.24s cubic-bezier(.2,1.5,.4,1) 1; }
+.pbuild-answer.is-ok .pchip { border-color: var(--good); }
+@keyframes piece-in { 0% { opacity: 0; transform: translateY(14px) scale(0.85); } 100% { opacity: 1; transform: none; } }
+
+/* mission complete: the buddy is the picture of the moment */
+.victory-buddy .cmp-reaction { flex-direction: column-reverse; gap: 16px; }
+.victory-buddy .cmp-bubble { font-size: 1.02rem; }
+.victory-buddy .cmp-bubble[data-voice='speech']::before { inset-inline-start: calc(50% - 6px); top: auto; bottom: -5px; }
+.victory-buddy .cmp-bubble[data-voice='thought']::before { inset-inline-start: calc(50% - 4px); bottom: -12px; }
+.victory-buddy .cmp-bubble[data-voice='thought']::after { inset-inline-start: calc(50% + 6px); bottom: -20px; }
+
+/* Home: the buddy peeks over the next-step card */
+.next-card { position: relative; }
+
+/* video: the clip is the screen, with a READY poster until its first frame is there */
+.video-step { display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; width: 100%; }
+.video-step-title { font-size: 1.35rem; }
+.video-step .video-frame { margin-top: 8px; }
+.video-frame.is-loading { width: min(100%, 300px); aspect-ratio: 9 / 16; max-height: 62vh; }
+.video-frame.is-loading .video-player { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; }
+.video-poster {
+  position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: space-between; gap: 12px; padding: 16% 20px 14%;
+  background: linear-gradient(160deg, var(--brand) 0%, var(--brand-deep) 100%); color: #fff; line-height: 1.3; text-align: center;
+}
+.video-poster-icon { font-size: 3.2rem; line-height: 1; }
+.video-poster-title { font-size: 1.05rem; font-weight: 800; }
+.video-play-overlay::before {
+  background: var(--brand); box-shadow: 0 0 0 8px color-mix(in srgb, #fff 28%, transparent), 0 10px 24px rgba(30, 20, 90, 0.35);
+  width: 72px; height: 72px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .audio-wave i, .pmatch-tile.is-matched, .pbuild-answer .pchip, .pcanvas[data-engine='swap'] .pslot.is-filled { animation: none; }
+  .pmatch-tile, .pchip { transition: none; }
+}
+
+/* When the buddy is already explaining this game above the canvas, it is not ALSO shown watching it. */
+.cmp-coach ~ .pcanvas .cmp-watch, .cmp-coach ~ .pcanvas .convo-aside { display: none; }

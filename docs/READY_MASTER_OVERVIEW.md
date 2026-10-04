@@ -197,12 +197,12 @@ stays as a calm way out. READY is used in two modes over the SAME content: **act
   a special card, a checkpoint, or part of the count/progress. Only the shared recovery phrases
   survive (`recovery.ts` per language), because other missions reuse them inside their dialogues.
   `plan.ts` (`BOOTCAMP_PLAN`) is the one source of truth for mission count and order.
-- **Language Companion (החבר שלי לשפה)** — a fish that cannot speak and grows, per learning language,
-  into a parrot that cannot stop: six stages shown on the Path, on its own page, at the end of a
-  mission and in a full-screen evolution. It answers "how alive is this language in me?" and is
-  deliberately NOT Trip Readiness: cumulative points, a stored highest stage, never a percentage of
-  a course. Inside a mission it gives one short app-language line (the goal; how to play a new game)
-  and small reactions to answers — never target-language text, never growth for an answer.
+- **Language buddy (החבר שלך)** — one living character per learning language that is with the learner
+  on Home, on the Route, inside missions and when they finish one. It reacts to what they do and,
+  over time, changes. The change is a DISCOVERY: the app never names a stage, counts stages or shows
+  what it will become. Internally it is a six-stage, cumulative, monotonic progression that is
+  deliberately NOT Trip Readiness. It never shows target-language text the learner has not learned
+  and never awards growth for an answer.
   See **[COMPANION_SYSTEM.md](./COMPANION_SYSTEM.md)**.
 - **Foundation** — reached from a row in the Path's "More practice" section (it is no longer a
   floating button over the mission list), opening a bottom sheet of "building block" categories (People, Question Words,

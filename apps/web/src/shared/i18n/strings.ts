@@ -315,6 +315,10 @@ const en = {
   darkMode: 'Theme',
   lightTheme: 'Light',
   darkTheme: 'Dark',
+  soundsTitle: 'Sounds',
+  soundsOn: 'On',
+  soundsOff: 'Off',
+  soundsSub: 'Short feedback sounds. Speech is not affected.',
   audioSettings: 'Audio',
   sound: 'Sound',
   audioOff: 'Off',
@@ -871,6 +875,10 @@ const he: Partial<Record<StringKey, string>> = {
   darkMode: 'ערכת נושא',
   lightTheme: 'בהיר',
   darkTheme: 'כהה',
+  soundsTitle: 'צלילים',
+  soundsOn: 'פועל',
+  soundsOff: 'כבוי',
+  soundsSub: 'צלילי משוב קצרים. הדיבור לא מושפע.',
   audioSettings: 'שמע',
   sound: 'קול',
   audioOff: 'כבוי',
@@ -1192,6 +1200,9 @@ const DICTS: Record<string, Partial<Record<StringKey, string>>> = { en, he };
 export const UI_DICTIONARIES: Readonly<Record<string, Readonly<Partial<Record<StringKey, string>>>>> = DICTS;
 
 let currentUiLang = 'en';
+
+/** The app language the dictionary is currently serving. */
+export const uiLangCode = (): string => currentUiLang;
 
 export function setUiLangDict(lang: string): void {
   currentUiLang = DICTS[lang] ? lang : 'en';

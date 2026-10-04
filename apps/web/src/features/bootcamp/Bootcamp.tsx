@@ -10,8 +10,10 @@ import { success, tap } from '../../shared/ui/haptics.js';
 import { BOOTCAMP_PLAN, missionNumber, nextMission } from './plan.js';
 import { missionIcon, missionJourney, missionPhases, phaseOfIndex, primaryDialogue, type JourneyStepId, type JourneyStepState } from './missionFlow.js';
 import { Learn } from './Learn.js';
-import { CompanionCoach, CompanionReaction } from '../companion/Companion.js';
-import { coachFor } from '../companion/companionCoach.js';
+import { CompanionCoach, CompanionIntro, CompanionReaction } from '../companion/Companion.js';
+import { GAME_MOOD, coachFor } from '../companion/companionCoach.js';
+import { completeChime } from '../../shared/audio/sfx.js';
+import { NpcLine, YouLine, useNpc } from './ConvoScene.js';
 import { MatchPairsStep, MiniMapStep, QuickReplyStep, SentenceBuilderStep, SwapStep, VisualMatchStep } from './PracticeSteps.js';
 import { isHelpToolId } from './practiceEngines.js';
 import { missionsFor, useBootcampStore } from './bootcampStore.js';
@@ -284,9 +286,9 @@ function MissionPlayer() {
         </button>
       )}
       <div className="fade-in mission-step-body" key={bc.index}>
-        {coach && <CompanionCoach line={L(coach.line)} />}
-        {step.kind === 'video' && <VideoStep video={video} mode={step.mode} onNext={advance} />}
-        {step.kind === 'talk' && <TalkStep step={step} onNext={advance} />}
+        {coach?.role === 'game' && <CompanionCoach line={L(coach.line)} mood={GAME_MOOD[step.kind]} />}
+        {step.kind === 'video' && <VideoStep video={video} mode={step.mode} icon={missionIcon(day)} onNext={advance} />}
+        {step.kind === 'talk' && <TalkStep step={step} intro={coach?.role === 'intro' ? L(coach.line) : undefined} onNext={advance} />}
         {step.kind === 'prime' && <PrimeStep step={step} itemsById={itemsById} onNext={advance} />}
         {step.kind === 'tool' && <ToolStep step={step} item={itemsById.get(step.itemId)!} onDone={() => { pop(); advance(); }} />}
         {step.kind === 'quiz' && <QuizStep step={step} itemsById={itemsById} onDone={(ok) => { if (ok) pop(); advance(); }} />}
@@ -308,7 +310,23 @@ function MissionPlayer() {
 
 /* ── Steps ──────────────────────────────────────────────────────────────── */
 
-function TalkStep({ step, onNext }: { step: Extract<BootcampStep, { kind: 'talk' }>; onNext: () => void }) {
+/** An intro card. The mission's FIRST one is introduced by the buddy: it says the goal, looking at
+ *  the thing the mission is about. Later intro cards stay plain. */
+function TalkStep({ step, intro, onNext }: { step: Extract<BootcampStep, { kind: 'talk' }>; intro?: string; onNext: () => void }) {
+  if (intro) {
+    return (
+      <>
+        <div className="mission-intro">
+          <CompanionIntro line={intro} prop={step.icon} />
+          <h1 className="mission-intro-title">{L(step.title)}</h1>
+          {step.body.map((b, i) => <p key={i} className="mission-intro-body">{L(b)}</p>)}
+        </div>
+        <div className="action-zone">
+          <button className="btn-primary" onClick={onNext}>{step.cta ? L(step.cta) : t('continue')}</button>
+        </div>
+      </>
+    );
+  }
   return (
     <>
       <div className="drill-card" style={{ textAlign: 'start', gap: 16 }}>
@@ -518,7 +536,7 @@ function AnsweredView({ ok, en, meaning, yourAnswer, why, tip, prompt, comprehen
   // The companion reacts, small and never in the way: a pop for a right answer, encouragement for a
   // wrong one, and real applause when the winning move was a conversation-help tool.
   const kind = !ok ? 'encouraging' : recovery ? 'recovery' : 'correct';
-  return <AnswerFeedback ok={ok} ctx={ctx} onRetry={onRetry} onContinue={onNext} aside={<CompanionReaction kind={kind} text={kind === 'correct' ? false : undefined} size={40} />} />;
+  return <AnswerFeedback ok={ok} ctx={ctx} onRetry={onRetry} onContinue={onNext} aside={<CompanionReaction kind={kind} text={kind === 'correct' ? false : undefined} size={64} />} />;
 }
 
 /** Expected Replies: "you said X — here's what they might answer." Comprehension-first. */
@@ -639,6 +657,7 @@ function DialogueStep({ dialogue, onDone }: { dialogue: BootcampDialogue; onDone
   const [recovered, setRecovered] = useState(false);
   const [picked, setPicked] = useState<DialogueChoice | null>(null); // coaching feedback pause
   const [usedTool, setUsedTool] = useState(false); // a conversation-help tool was just used — cheer it
+  const npc = useNpc();
   const node = nodesById.get(nodeId);
 
   useEffect(() => {
@@ -702,7 +721,7 @@ function DialogueStep({ dialogue, onDone }: { dialogue: BootcampDialogue; onDone
       <AnswerFeedback
         ok
         ctx={ctx}
-        aside={<CompanionReaction kind="correct" text={false} size={40} />}
+        aside={<CompanionReaction kind="correct" text={false} size={64} />}
         onContinue={() => { const next = picked.next; setPicked(null); setNodeId(next); }}
       />
     );
@@ -725,7 +744,7 @@ function DialogueStep({ dialogue, onDone }: { dialogue: BootcampDialogue; onDone
       <AnswerFeedback
         ok={false}
         ctx={ctx}
-        aside={<CompanionReaction kind="encouraging" size={40} />}
+        aside={<CompanionReaction kind="encouraging" size={64} />}
         onRetry={() => setPicked(null)}
         onContinue={() => { const next = picked.next; setPicked(null); setRecovered(true); setNodeId(next); }}
       />
@@ -734,18 +753,17 @@ function DialogueStep({ dialogue, onDone }: { dialogue: BootcampDialogue; onDone
 
   return (
     <>
-      <div className="drill-card" style={{ gap: 14, minHeight: 240 }}>
-        <p className="drill-label">{t(node.who === 'you' && node.choices?.length === 1 ? 'yourTurnSay' : 'yourTurn')}</p>
+      {/* A conversation, not a form: the other person speaks from their side, you answer from yours. */}
+      <div className="convo">
         {recovered && <p className="faint small fade-in">🛟 {t('niceRecovery')}</p>}
-        {usedTool && <CompanionReaction kind="recovery" size={40} />}
+        {usedTool && <CompanionReaction kind="recovery" size={64} />}
         {displayNpc && (
           <div className="fade-in" key={displayNpc.id}>
-            <p style={{ fontSize: '1.9rem' }}>🧑‍🍳</p>
-            <p className="drill-phrase" style={{ fontSize: '1.25rem' }}>“<TappableText text={displayNpc.en} />”</p>
-            <p className="dim small">{dialogueTr(displayNpc)}</p>
+            <NpcLine npc={npc} gloss={dialogueTr(displayNpc)}><TappableText text={displayNpc.en} /></NpcLine>
           </div>
         )}
-        {yourLine && node.who !== 'you' && <p className="faint small">🫵 {yourLine}</p>}
+        {yourLine && node.who !== 'you' && <YouLine>{yourLine}</YouLine>}
+        <p className="drill-label convo-turn">{t(node.who === 'you' && node.choices?.length === 1 ? 'yourTurnSay' : 'yourTurn')}</p>
       </div>
       <div className="action-zone">
         {node.who === 'you' && node.choices ? (
@@ -756,7 +774,7 @@ function DialogueStep({ dialogue, onDone }: { dialogue: BootcampDialogue; onDone
               return (
                 <button
                   key={i}
-                  className="btn-secondary"
+                  className="btn-secondary btn-reply"
                   onClick={() => {
                     tap();
                     if (c.itemId) bc.recordDrill(c.itemId, 'simulator', c.correct ? 'pass' : 'partial');
@@ -926,6 +944,7 @@ function VictoryScreen() {
     if (!recorded.current) {
       recorded.current = true;
       success();
+      completeChime();
       bc.completeDay();
     }
     return () => cancelSpeech();
@@ -966,9 +985,9 @@ function VictoryScreen() {
       <div className="screen-scroll no-nav">
         {/* Celebrate — no wall of text. One line: the mission is done. */}
         <div className="center" style={{ padding: '10px 0 8px' }}>
-          <p className="pop-in" style={{ fontSize: '3.8rem' }}>🎉</p>
-          <h1 style={{ marginTop: 6 }}>{t('victoryCompleted', { title: L(day.title) })}</h1>
-          <CompanionReaction kind="missionComplete" />
+          {/* The buddy celebrates with you — it is the picture of this moment, not a footnote to it. */}
+          <div className="victory-buddy"><CompanionReaction kind="missionComplete" size={132} /></div>
+          <h1 style={{ marginTop: 10 }}>{t('victoryCompleted', { title: L(day.title) })}</h1>
         </div>
 
         {/* Early Access edge: honestly celebrate reaching the end of the available missions. */}
@@ -1109,9 +1128,10 @@ function DialogueReader({ dialogue, onClose, onFinish }: { dialogue: BootcampDia
  *  overlay, no letterbox bars. One tap toggles play/pause; a centered ▶︎ shows while paused. The
  *  video stays fully visible (frame == video box). A missing/broken file degrades to a friendly
  *  note — never crashes. Videos are short (20–35s), so play/pause is the only control needed. */
-export function VideoPlayer({ video, onEnded }: { video: BootcampVideo; onEnded?: () => void }) {
+export function VideoPlayer({ video, icon, onEnded }: { video: BootcampVideo; /** shown on the poster until the first frame is ready */ icon?: string; onEnded?: () => void }) {
   const [failed, setFailed] = useState(false);
   const [playing, setPlaying] = useState(false);
+  const [ready, setReady] = useState(false);
   const ref = useRef<HTMLVideoElement>(null);
   if (failed || !video.src) return <p className="dim small" style={{ padding: '20px 0' }}>{t('videoUnavailable')}</p>;
   const toggle = (): void => {
@@ -1121,16 +1141,25 @@ export function VideoPlayer({ video, onEnded }: { video: BootcampVideo; onEnded?
     else v.pause();
   };
   return (
-    <div className="video-frame" onClick={toggle} role="button" aria-label={t('playBtn')}>
+    <div className={`video-frame ${ready ? '' : 'is-loading'}`} onClick={toggle} role="button" aria-label={t('playBtn')}>
+      {/* Until the clip's own first frame is there, a READY poster — never an empty rectangle. */}
+      {!ready && (
+        <span className="video-poster" aria-hidden>
+          {icon && <span className="video-poster-icon">{icon}</span>}
+          <span className="video-poster-title">{video.title ? L(video.title) : t('fullConversationTitle')}</span>
+        </span>
+      )}
       <video
         ref={ref}
         className="video-player"
-        src={resolveAsset(video.src)}
+        // The time fragment makes the browser paint the clip's first frame as its own poster.
+        src={`${resolveAsset(video.src)}#t=0.1`}
+        onLoadedData={() => setReady(true)}
         playsInline
         preload="metadata"
         disablePictureInPicture
         controlsList="nodownload noplaybackrate nofullscreen"
-        onPlay={() => setPlaying(true)}
+        onPlay={() => { setPlaying(true); setReady(true); }}
         onPause={() => setPlaying(false)}
         onError={() => setFailed(true)}
         onEnded={() => { setPlaying(false); onEnded?.(); }}
@@ -1142,15 +1171,15 @@ export function VideoPlayer({ video, onEnded }: { video: BootcampVideo; onEnded?
 
 /** A mission step that shows the full-conversation video — before practice (intro) and again
  *  near the end (again). The learner presses Play; then a single button moves the mission on. */
-function VideoStep({ video, mode, onNext }: { video?: BootcampVideo; mode: 'intro' | 'again'; onNext: () => void }) {
+function VideoStep({ video, mode, icon, onNext }: { video?: BootcampVideo; mode: 'intro' | 'again'; icon?: string; onNext: () => void }) {
   const intro = mode === 'intro';
   return (
     <>
-      <div className="drill-card" style={{ gap: 14 }}>
-        <p style={{ fontSize: '2.2rem' }}>🎬</p>
-        <p className="drill-phrase" style={{ fontSize: '1.3rem' }}>{intro ? t('videoIntroTitle') : t('videoAgainTitle')}</p>
-        <p className="drill-meaning" style={{ fontSize: '0.98rem' }}>{intro ? t('videoIntroSub') : t('videoAgainSub')}</p>
-        {video ? <VideoPlayer video={video} /> : <p className="dim small">{t('videoUnavailable')}</p>}
+      {/* The clip is the screen: a short heading, then the video — no card around it. */}
+      <div className="video-step">
+        <h1 className="video-step-title">{intro ? t('videoIntroTitle') : t('videoAgainTitle')}</h1>
+        <p className="dim">{intro ? t('videoIntroSub') : t('videoAgainSub')}</p>
+        {video ? <VideoPlayer video={video} icon={icon} /> : <p className="dim small">{t('videoUnavailable')}</p>}
       </div>
       <div className="action-zone">
         <button className="btn-primary" onClick={onNext}>{intro ? t('startPractice') : t('continue')}</button>

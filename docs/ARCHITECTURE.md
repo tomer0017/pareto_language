@@ -126,6 +126,12 @@ stable across re-renders. **Narrative dialogue order is never shuffled** — onl
   purely, whether a step gets one app-language line (the mission goal on its intro card; how to play
   the first game of each kind). `Bootcamp.tsx` renders it with `CompanionCoach`; answer cards take a
   reaction through `AnswerFeedback`'s `aside` slot. None of it writes to any store.
+- **Practice presentation** — each engine renders on an open `.pcanvas[data-engine]`, not a shared
+  card. `ConvoScene.tsx` is the conversation shell (`NpcLine`, `YouLine`, `AudioBubble`, `useNpc`)
+  used by dialogues and Quick Reply; `npcCast.ts` maps a mission id to who is speaking (a glyph today,
+  `art` when illustrations exist). Game sounds live in `shared/audio/sfx.ts` behind one on/off switch.
+- **No-spoiler rule** — companion surfaces never show a stage name, count, threshold or unreached
+  form; see `COMPANION_SYSTEM.md`. Stage data stays in `companionModel.ts` and is not rendered.
 - **Turn parity gate** — `core30.test.ts` compares every Core dialogue tree across EN / FR / ES node
   by node, and proves `docs/ALL_LANGUAGES_DIALOGUES_BY_MISSION_V2.md` equals `renderDialogueDoc()`.
 - **Persistence** — `progress.ts` (pure): in memory the store keeps `completedDays` / `receipts` /

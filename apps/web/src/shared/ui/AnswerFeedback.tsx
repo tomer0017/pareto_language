@@ -61,7 +61,7 @@ export function AnswerFeedback({
   ctx: AnswerContext;
   onRetry?: () => void;
   onContinue: () => void;
-  /** Optional small element shown under the header (e.g. a companion reaction). Never interactive. */
+  /** Optional element shown with the header (the buddy's reaction). Never interactive. */
   aside?: ReactNode;
 }) {
   const [burst] = useState(() => Date.now());
@@ -71,8 +71,7 @@ export function AnswerFeedback({
     return (
       <>
         <div className="drill-card fx-correct pop-in" style={{ gap: 10, minHeight: 220 }}>
-          <span className="feedback-head ok">✓ {t('correctHeader')}</span>
-          {aside}
+          <div className="feedback-top">{aside}<span className="feedback-head ok">✓ {t('correctHeader')}</span></div>
           <Line party={ctx.expected} big />
           {ctx.expected.translation && <p className="answer-pill">{ctx.expected.translation}</p>}
           {/* The strongest reinforcement is right after a CORRECT answer — keep the sentence
@@ -101,8 +100,7 @@ export function AnswerFeedback({
   return (
     <>
       <div className="drill-card fx-wrong pop-in" style={{ gap: 12, minHeight: 240, textAlign: 'center' }}>
-        <span className="feedback-head bad">❌ {t('wrongHeader')}</span>
-        {aside}
+        <div className="feedback-top">{aside}<span className="feedback-head bad">{t('wrongHeader')}</span></div>
 
         {ctx.prompt && (
           <div>

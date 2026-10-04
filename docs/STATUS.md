@@ -22,6 +22,33 @@ loop (typecheck → lint → tests → build → smoke) green at every milestone
 
 ## What's done
 
+### Companion & learning experience redesign (2026-10-04)
+A presentation / emotional-design pass after mobile QA. No curriculum, dialogue, scoring or
+progression change (Missions 06–30 fingerprint, dialogue sync and practice-audit sync are green).
+- **The evolution is hidden.** Removed from every screen: stage names, "Stage X of 6", the progress
+  bar, the six-stage track, next-stage name / silhouette / percentage, "Level up!", "X became Y".
+  The character is only "your buddy". Product rule + test in `COMPANION_SYSTEM.md`.
+- **A character, not an avatar.** `CompanionFigure`: no circle or frame; moods (`companionMood.ts`)
+  pick pose, motion and a small effect; the asset table supports per-pose art with fallback.
+- **Where it lives:** Home (peeks over the next step), Route (floats beside the path with one
+  contextual line), mission intro (introduces the mission, looking at its icon), first appearance
+  of a game, beside Quick Reply and the Mini Map, answer cards, mission complete (replaces 🎉), and
+  the change itself ("Wait… something changed!").
+- **Practice no longer shares one white card.** Each engine has its own open canvas: Quick Reply and
+  dialogues are conversations (other speaker + bubble, reply bubbles; `ConvoScene.tsx`, `npcCast.ts`);
+  the price board and the map lead with an audio bubble; Swap It is a sentence with a socket and
+  pieces; Match Pairs tiles lock with a pulse; Sentence Builder pieces drop onto a rail.
+- **Sound:** READY's own soft cues for a placed piece, a match, a finished sentence / mission and the
+  change; a Sounds on/off setting in Profile (speech unaffected).
+- **Video:** the clip paints its own first frame as poster; until then a READY poster (mission icon
+  + title) — never an empty rectangle. No card around it.
+- **Onboarding:** the app starts in the device language before one is chosen, and the language
+  question is asked in both languages.
+- **Tests:** 1304. New `experience.test.ts`; `companion.test.ts` inverted where it used to assert
+  stage labels, plus mood / pose / same-character / no-spoiler coverage.
+- **Not done:** manual browser / device QA (no browser tooling in the build environment); final
+  transparent artwork, per-pose and per-mission art, NPC illustrations (the structure is ready).
+
 ### Practice V1.1 + Companion inside the learning flow (2026-10-04)
 Scope: two more games in Missions 01–03, and the companion present inside missions. Missions 06–30
 content is fingerprinted by test and unchanged; no dialogue changed; companion progression unchanged.

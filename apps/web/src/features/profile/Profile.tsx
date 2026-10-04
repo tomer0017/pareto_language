@@ -2,6 +2,7 @@ import { useState, useSyncExternalStore } from 'react';
 import { useAppStore } from '../../shared/stores/appStore.js';
 import { t } from '../../shared/i18n/strings.js';
 import { tap } from '../../shared/ui/haptics.js';
+import { setSfxEnabled, sfxEnabled, softChime } from '../../shared/audio/sfx.js';
 import { Icon } from '../../shared/ui/Icon.js';
 import { PageHeader } from '../../shared/ui/PageHeader.js';
 import { UI_LANGUAGES, languageInfo, languageName } from '../../shared/i18n/languages.js';
@@ -17,6 +18,7 @@ export function Profile() {
   const app = useAppStore();
   const diag = useSyncExternalStore(subscribeAudioDiag, getAudioDiag, getAudioDiag);
   const [rate, setRate] = useState(getSpeechRate());
+  const [sfx, setSfx] = useState(sfxEnabled);
   const learning = languageInfo(app.learningLang);
   const onRate = (value: number): void => {
     setRate(value);
@@ -92,6 +94,16 @@ export function Profile() {
             <div className="btn-row">
               <button className={app.theme === 'light' ? 'btn-soft' : 'btn-secondary'} aria-pressed={app.theme === 'light'} onClick={() => { tap(); app.setTheme('light'); }}>☀️ {t('lightTheme')}</button>
               <button className={app.theme === 'dark' ? 'btn-soft' : 'btn-secondary'} aria-pressed={app.theme === 'dark'} onClick={() => { tap(); app.setTheme('dark'); }}>🌙 {t('darkTheme')}</button>
+            </div>
+          </section>
+
+          {/* ── Sounds ── */}
+          <section className="card" aria-labelledby="set-sfx">
+            <h2 className="setting-title" id="set-sfx">{t('soundsTitle')}</h2>
+            <p className="dim small" style={{ marginBottom: 10 }}>{t('soundsSub')}</p>
+            <div className="btn-row">
+              <button className={sfx ? 'btn-soft' : 'btn-secondary'} aria-pressed={sfx} onClick={() => { tap(); setSfxEnabled(true); setSfx(true); softChime(); }}>🔔 {t('soundsOn')}</button>
+              <button className={!sfx ? 'btn-soft' : 'btn-secondary'} aria-pressed={!sfx} onClick={() => { tap(); setSfxEnabled(false); setSfx(false); }}>🔕 {t('soundsOff')}</button>
             </div>
           </section>
 

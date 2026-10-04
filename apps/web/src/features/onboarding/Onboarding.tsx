@@ -3,7 +3,7 @@ import type { SituationPriority } from '@ready/content-schema';
 import { selectTier, DAY_MS } from '@ready/engine';
 import { useAppStore } from '../../shared/stores/appStore.js';
 import { LEARNING_LANGUAGES, UI_LANGUAGES, languageInfo, languageName, PILOT_LANG } from '../../shared/i18n/languages.js';
-import { L, t } from '../../shared/i18n/strings.js';
+import { L, UI_DICTIONARIES, t, uiLangCode } from '../../shared/i18n/strings.js';
 import { tap } from '../../shared/ui/haptics.js';
 
 const MINUTE_CHOICES = [10, 20, 30, 45];
@@ -72,6 +72,10 @@ export function Onboarding() {
           <div className="screen-scroll no-nav fade-in" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
             <p style={{ fontSize: '2.8rem', textAlign: 'center' }}>🌍</p>
             <h1 style={{ textAlign: 'center' }}>{t('appLangTitle')}</h1>
+            {/* Nobody has chosen a language yet, so the question is also asked in the other one. */}
+            {UI_LANGUAGES.filter((l) => l.code !== uiLangCode()).map((l) => (
+              <p key={l.code} className="dim center" dir={l.dir} lang={l.code} style={{ marginTop: 4, fontWeight: 700 }}>{UI_DICTIONARIES[l.code]?.appLangTitle}</p>
+            ))}
             <p className="dim center" style={{ margin: '8px 0 22px' }}>{t('appLangSub')}</p>
             <div className="stagger" style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
               {UI_LANGUAGES.map((l) => (

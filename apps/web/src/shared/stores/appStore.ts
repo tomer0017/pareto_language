@@ -130,7 +130,17 @@ function makeProvider(): DataProvider {
 const storedTheme: 'light' | 'dark' = localStorage.getItem('ready.theme') === 'dark' ? 'dark' : 'light';
 if (typeof document !== 'undefined') document.documentElement.dataset.theme = storedTheme;
 
-const storedUiLang = localStorage.getItem('ready.uiLang') ?? 'en';
+/** Before the learner has chosen an app language, start in their device's — so the very first
+ *  screens (including the language choice itself) are not in a language they did not pick. */
+export function deviceUiLang(languages: readonly string[] = typeof navigator !== 'undefined' ? (navigator.languages?.length ? navigator.languages : [navigator.language]) : []): string {
+  for (const tag of languages) {
+    const code = (tag ?? '').toLowerCase().split('-')[0];
+    if (code === 'he' || code === 'iw') return 'he';
+    if (code === 'en') return 'en';
+  }
+  return 'en';
+}
+const storedUiLang = localStorage.getItem('ready.uiLang') ?? deviceUiLang();
 // English is the current pilot language (see languages.ts / PILOT_LANG). Any legacy 'it'
 // preference from before the switch is normalized to the pilot so no user is stuck on Italian.
 const rawLearningLang = localStorage.getItem('ready.lang') ?? PILOT_LANG;

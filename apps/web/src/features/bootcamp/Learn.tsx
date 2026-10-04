@@ -12,7 +12,7 @@ import { missionsFor, useBootcampStore } from './bootcampStore.js';
 import { missionIcon } from './missionFlow.js';
 import { MissionCard } from './MissionCard.js';
 import { useTravelReadiness } from './useReadiness.js';
-import { CompanionCard } from '../companion/Companion.js';
+import { CompanionPresence } from '../companion/Companion.js';
 
 /**
  * Learn — the real-world travel curriculum, and the ONE route to it. The plan's missions grouped by
@@ -52,8 +52,8 @@ export function Learn() {
           </span>
           <Icon name="chevron" size={20} flip />
         </button>
-        {/* The language companion: a separate idea from Trip Readiness — how alive the language is. */}
-        <CompanionCard />
+        {/* The learner's buddy lives on the Route: a character beside the path, not another statistic. */}
+        <CompanionPresence />
 
         {PHASES.map((phase) => {
           const inPhase = BOOTCAMP_PLAN.filter((m) => m.phase === phase.n);

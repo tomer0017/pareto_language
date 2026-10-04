@@ -3,9 +3,12 @@ import { createElement } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { BOOTCAMP_PLAN } from '../bootcamp/plan.js';
 import { MISSIONS_BY_LANG } from '../bootcamp/registry.js';
-import { COMPANION_ART, artUrl } from './companionAssets.js';
+import { ART_POSES, COMPANION_ART, artPath, artUrl } from './companionAssets.js';
 import { GAME_INTRO, MISSION_INTRO, coachFor } from './companionCoach.js';
-import { STAGE_COPY } from './companionCopy.js';
+import { COPY, STAGE_COPY } from './companionCopy.js';
+import { BASE_MOODS, MOOD_ANIMATION, MOOD_POSE, PARROT_MOODS, moodEffect, resolveMood } from './companionMood.js';
+import { presenceFor } from './companionCoach.js';
+import { setUiLangDict } from '../../shared/i18n/strings.js';
 import { learnedMaterial } from './companionLearned.js';
 import {
   GROWTH_POINTS, LAST_STAGE, STAGES, STAGE_THRESHOLDS, acknowledge, animationsFor, applyEvents, companionLine, deriveFromHistory,
@@ -13,6 +16,7 @@ import {
   stageProgress, type CompanionEvent, type LanguageCompanion,
 } from './companionModel.js';
 import { existsSync, readFileSync } from 'node:fs';
+import { L } from '../../shared/i18n/strings.js';
 import { fileURLToPath } from 'node:url';
 import type * as StoreModule from './companionStore.js';
 import type * as BootcampModule from '../bootcamp/bootcampStore.js';
@@ -199,17 +203,65 @@ describe('the companion never spoils new language', () => {
 });
 
 describe('assets and copy are complete for every stage', () => {
-  it('each stage has a name, a meaning and artwork that exists on disk', () => {
+  it('each stage has an internal label, a behaviour line and artwork that exists on disk', () => {
     const publicDir = fileURLToPath(new URL('../../../public', import.meta.url));
     for (const s of STAGES) {
-      for (const key of ['name', 'feeling', 'meaning', 'speech', 'arrived'] as const) {
+      for (const key of ['name', 'behaviour'] as const) {
         expect(STAGE_COPY[s][key].he, `stage ${s} ${key}`).toBeTruthy();
         expect(STAGE_COPY[s][key].en, `stage ${s} ${key}`).toBeTruthy();
       }
       for (const variant of ['full', 'compact'] as const) expect(existsSync(publicDir + COMPANION_ART[s][variant]), `stage ${s} ${variant}`).toBe(true);
     }
     expect(artUrl(3, 'compact', '/app/')).toBe('/app/companion/stage-3.png');
-    expect(COMPANION_ART[6].compact).not.toBe(COMPANION_ART[6].full); // the living room is not squeezed into a small circle
+    expect(COMPANION_ART[6].compact).not.toBe(COMPANION_ART[6].full); // the living room is not squeezed into a small figure
+  });
+
+  it('artwork is asked for by pose; a pose without its own image falls back to the stage image', () => {
+    expect(ART_POSES).toEqual(['idle', 'happy', 'thinking', 'listening', 'celebrate', 'encouraging', 'talking']);
+    for (const s of STAGES) for (const pose of ART_POSES) for (const variant of ['full', 'compact'] as const) {
+      expect(artPath(s, variant, pose), `stage ${s} ${pose}`).toBe(COMPANION_ART[s].poses?.[pose]?.[variant] ?? COMPANION_ART[s][variant]);
+    }
+    expect(artUrl(3, 'compact', '/app/', 'happy')).toBe('/app/companion/stage-3.png');
+    // …and a pose image, once it exists, is picked up with no other change.
+    COMPANION_ART[1].poses = { happy: { compact: '/companion/stage-1-happy.png' } };
+    expect(artUrl(1, 'compact', '/', 'happy')).toBe('/companion/stage-1-happy.png');
+    expect(artUrl(1, 'full', '/', 'happy')).toBe('/companion/stage-1.png');
+    expect(artUrl(1, 'compact', '/', 'thinking')).toBe('/companion/stage-1.png');
+    delete COMPANION_ART[1].poses;
+  });
+});
+
+describe('moods — how the buddy feels, never written on screen', () => {
+  const ALL = [...BASE_MOODS, ...PARROT_MOODS];
+  it('covers every required emotional state', () => {
+    for (const m of ['idle', 'attentive', 'listening', 'curious', 'thinking', 'happy', 'proud', 'encouraging', 'surprised', 'celebrating', 'recovery', 'missionComplete']) expect(BASE_MOODS).toContain(m);
+    expect(PARROT_MOODS).toEqual(['talking', 'laughing', 'excited', 'confident']);
+  });
+  it('every mood resolves, for every stage, to an animation that stage has and a pose the art table knows', () => {
+    for (const s of STAGES) for (const m of ALL) {
+      const shown = resolveMood(s, m);
+      expect(animationsFor(s), `stage ${s} ${m}`).toContain(resolveAnimation(s, MOOD_ANIMATION[shown]));
+      expect(ART_POSES, `${m}`).toContain(MOOD_POSE[shown]);
+    }
+  });
+  it('a creature that cannot talk yet shows a quiet version of a talking mood', () => {
+    for (const s of [1, 2, 3] as const) for (const m of PARROT_MOODS) expect(PARROT_MOODS as readonly string[]).not.toContain(resolveMood(s, m));
+    for (const s of [4, 5, 6] as const) for (const m of PARROT_MOODS) expect(resolveMood(s, m)).toBe(m);
+  });
+  it('there is no negative mood: nothing sad, ashamed or angry exists to show', () => {
+    expect(ALL.join(' ')).not.toMatch(/sad|cry|asham|angry|fail|wrong|disappoint/i);
+  });
+  it('a fish makes bubbles, a bird sparkles; a recovery win always sparkles; calm moods have no flourish', () => {
+    expect(moodEffect(1, 'happy')).toBe('bubbles');
+    expect(moodEffect(5, 'happy')).toBe('sparkle');
+    for (const s of STAGES) expect(moodEffect(s, 'recovery')).toBe('sparkle');
+    for (const s of STAGES) for (const m of ['idle', 'resting', 'listening', 'thinking', 'encouraging'] as const) expect(moodEffect(s, m)).toBe('none');
+  });
+  it('on the Route it greets a new learner, perks up for a waiting mission, and rests when all is done', () => {
+    expect(presenceFor({ done: 0, resume: false, allDone: false })).toEqual({ line: COPY.presence.fresh, mood: 'curious' });
+    expect(presenceFor({ done: 0, resume: true, allDone: false })).toEqual({ line: COPY.presence.resume, mood: 'attentive' });
+    expect(presenceFor({ done: 4, resume: false, allDone: false })).toEqual({ line: COPY.presence.next, mood: 'attentive' });
+    expect(presenceFor({ done: 30, resume: false, allDone: true })).toEqual({ line: COPY.presence.allDone, mood: 'resting' });
   });
 });
 
@@ -296,7 +348,12 @@ describe('companion store — per language, persisted, evolution fires once', ()
   const saved = (): Record<string, LanguageCompanion> => JSON.parse(disk.get('ready.companion.v1') ?? '{}') as Record<string, LanguageCompanion>;
   /** The active language's companion, exactly as the screens read it. */
   const active = () => companion.activeCompanion(companion.useCompanionStore.getState().byLang, app.useAppStore.getState().learningLang);
-  const card = (): string => { const a = active(); return renderToStaticMarkup(createElement(ui.CompanionCardView, { stage: a.stage, pct: a.progress.pct, language: ui.languageLabel(a.lang) })); };
+  /** The buddy on the Route, exactly as the Route renders it. */
+  const card = (): string => {
+    const a = active();
+    const presence = presenceFor({ done: bootcamp.useBootcampStore.getState().completedDays.length, resume: false, allDone: false });
+    return renderToStaticMarkup(createElement(ui.CompanionPresenceView, { stage: a.stage, language: ui.languageLabel(a.lang), line: presence.line.en!, mood: presence.mood }));
+  };
   /** What the app-shell host shows: the evolution, if one is owed for the active language. */
   const host = (): string => { const a = active(); return a.evolution ? renderToStaticMarkup(createElement(ui.CompanionEvolution, { lang: a.lang, from: a.evolution.from, to: a.evolution.to, onDone: () => undefined })) : ''; };
   const complete = (...ids: string[]): void => {
@@ -330,10 +387,11 @@ describe('companion store — per language, persisted, evolution fires once', ()
   it('the Path card renders the current companion, its stage and its language', () => {
     const html = card();
     expect(html).toContain('stage-2.png');
-    expect(html).toContain(STAGE_COPY[2].name.en);
-    expect(html).toContain('Stage 2 of 6');
+    expect(html).toContain('Your English buddy');
+    expect(html).not.toContain(STAGE_COPY[2].name.en); // it has no name on screen
+    expect(html).not.toMatch(/of 6|Stage|%|cmp-bar/); // …and no number, no bar
     expect(html).toMatch(/English/);
-    expect(html).toContain('data-anim="idle"');
+    expect(html).toContain('data-mood="attentive"'); // a mission is waiting
     expect(host()).toBe(''); // nothing owed → no overlay
   });
 
@@ -347,7 +405,10 @@ describe('companion store — per language, persisted, evolution fires once', ()
     expect(overlay).toContain('role="dialog"');
     expect(overlay).toContain('stage-2.png');
     expect(overlay).toContain('stage-3.png');
-    expect(overlay).toContain(STAGE_COPY[3].name.en);
+    expect(overlay).toContain(COPY.changedTitle.en);
+    expect(overlay).toContain(COPY.changedLine.en);
+    for (const s of STAGES) expect(overlay).not.toContain(STAGE_COPY[s].name.en); // the change is shown, never named
+    expect(overlay).not.toMatch(/Stage|Level|of 6/);
   });
 
   it('replaying a completed mission adds nothing', () => {
@@ -386,7 +447,7 @@ describe('companion store — per language, persisted, evolution fires once', ()
     expect(state.en!.stage).toBe(3);
     const html = card();
     expect(html).toContain('stage-1.png');
-    expect(html).toContain(STAGE_COPY[1].name.en);
+    expect(html).not.toContain('stage-3.png');
     expect(html).toMatch(/Spanish/);
 
     complete('introduce-myself', 'numbers-money');
@@ -397,7 +458,7 @@ describe('companion store — per language, persisted, evolution fires once', ()
     expect(card()).toContain('stage-3.png');
     expect(host()).toBe(''); // the Spanish evolution waits for Spanish
     app.useAppStore.setState({ learningLang: 'es' });
-    expect(host()).toContain(STAGE_COPY[2].name.en);
+    expect(host()).toContain('stage-2.png');
   });
 
   it('an evolution never disturbs the mission flow: acknowledging it changes no mission state', () => {
@@ -433,21 +494,25 @@ describe('companion store — per language, persisted, evolution fires once', ()
     expect(reaction).toContain('stage-3.png');
     expect(renderToStaticMarkup(createElement(ui.CompanionReactionView, { kind: 'encouraging', stage: a.stage }))).not.toMatch(/wrong|fail|sad/i);
     const speech = ui.companionSpeech(a.stage, a.lang, bootcamp.useBootcampStore.getState().completedDays);
-    const page = renderToStaticMarkup(createElement(ui.CompanionPageView, { lang: a.lang, language: ui.languageLabel(a.lang), stage: a.stage, progress: a.progress, speech }));
-    for (const s of STAGES) expect(page).toContain(STAGE_COPY[s].name.en); // the six-stage track
-    expect(page).toContain('is-silhouette'); // stages not reached yet are teased, not shown
+    const milestones = ui.recentMilestones(bootcamp.useBootcampStore.getState().completedDays);
+    const page = renderToStaticMarkup(createElement(ui.CompanionPageView, { lang: a.lang, language: ui.languageLabel(a.lang), stage: a.stage, speech, milestones }));
+    expect(page).toContain(STAGE_COPY[3].behaviour.en!.replace(/'/g, '&#x27;')); // who it is right now
+    expect(page).toContain('Your English buddy');
+    expect(milestones.length).toBe(3);
+    for (const title of milestones) expect(page).toContain(title.replace(/&/g, '&amp;').replace(/'/g, '&#x27;')); // what you did together
+    expect(page.match(/<img /g)).toHaveLength(1); // one character: the current one — no track, no silhouette
+    expect(page).not.toMatch(/is-silhouette|cmp-track|cmp-bar|progressbar/);
     expect(page).toMatch(/<span dir="ltr" lang="en">[^<]+\?<\/span>/); // a parrotfish repeats one learned word
   });
-  it('in a mission the fish does not talk: the coach line is a caption beside it; a parrot says it itself — never in the target language', () => {
+  it('in a mission a creature that cannot talk yet THINKS the coach line; one that talks says it — never in the target language', () => {
     const line = MISSION_INTRO['introduce-myself']!.he!;
     for (const stage of STAGES) {
       const html = renderToStaticMarkup(createElement(ui.CompanionCoachView, { stage, line }));
       expect(html, `stage ${stage}`).toContain(`data-stage="${stage}"`);
       expect(html, `stage ${stage}`).toContain(line);
       expect(html, `stage ${stage}`).not.toMatch(/lang="(en|fr|es)"/); // no target-language speech in the coach row
-      expect(html.includes('cmp-bubble'), `stage ${stage}`).toBe(stage >= 4);
-      expect(html.includes('cmp-caption'), `stage ${stage}`).toBe(stage <= 3);
-      expect(html, `stage ${stage}`).toMatch(/width="40"|width:40px/); // compact — never a hero
+      expect(html, `stage ${stage}`).toContain(`data-voice="${stage <= 3 ? 'thought' : 'speech'}"`);
+      expect(html, `stage ${stage}`).toMatch(/width:60px/); // present, but never bigger than the content
     }
   });
 
@@ -503,13 +568,106 @@ describe('companion store — per language, persisted, evolution fires once', ()
   it('reduced motion: the in-mission companion is still, like every other companion animation', () => {
     const css = readFileSync(fileURLToPath(new URL('./companion.css', import.meta.url)), 'utf8');
     const reduced = css.slice(css.indexOf('@media (prefers-reduced-motion: reduce)'));
-    expect(reduced).toMatch(/\.cmp-art img, \.cmp-art[^{]*\{ animation: none !important; transition: none !important; \}/);
-    // The coach row and reactions add no animation of their own: all movement lives on .cmp-art.
-    for (const sel of ['.cmp-coach', '.cmp-caption', '.cmp-reaction']) {
-      const rules = css.split('\n').filter((l) => l.startsWith(sel));
-      expect(rules.length, sel).toBeGreaterThan(0);
-      for (const r of rules) expect(r, sel).not.toMatch(/animation|transition/);
+    expect(reduced).toMatch(/\.cmp-fig img, \.cmp-fig, \.cmp-prop, \.cmp-hero::before, \.cmp-evo \*, \.cmp-evo \{ animation: none !important; transition: none !important; \}/);
+    expect(reduced).toMatch(/\.cmp-fx \{ display: none; \}/); // no bubbles or sparkles either
+    // Every animated companion selector is one the reduced-motion block switches off.
+    const animated = [...css.slice(0, css.indexOf('@media (prefers-reduced-motion: reduce)')).matchAll(/^(\.[^{\n]+)\{[^}]*animation:/gm)].map((m) => m[1]!);
+    expect(animated.length).toBeGreaterThan(10);
+    for (const sel of animated) expect(/\.cmp-fig|\.cmp-fx|\.cmp-prop|\.cmp-hero|\.cmp-evo/.test(sel), sel).toBe(true);
+    expect(css).toMatch(/\.cmp-reaction \{[^}]*pointer-events: none;/); // can never swallow a tap meant for an answer
+    expect(css).toMatch(/\.cmp-watch \{[^}]*pointer-events: none;/);
+    expect(css).not.toMatch(/\.cmp-fig \{[^}]*(border-radius|overflow: hidden|background)/); // a character, not an avatar in a circle
+  });
+
+  it('PRODUCT RULE — no surface names a stage, counts stages, shows a threshold or shows a form not yet reached', () => {
+    const names = STAGES.flatMap((n) => [STAGE_COPY[n].name.he!, STAGE_COPY[n].name.en!]);
+    const speech = { text: '? ? ?', target: false };
+    /** What a person can perceive: visible text, screen-reader labels, and which pictures are shown. */
+    const perceived = (html: string) => ({
+      text: `${html.replace(/<[^>]+>/g, ' ')} ${[...html.matchAll(/aria-label="([^"]*)"/g)].map((m) => m[1]).join(' ')}`,
+      art: [...html.matchAll(/<img[^>]* src="([^"]+)"/g)].map((m) => m[1]!),
+    });
+    for (const uiLang of ['en', 'he']) {
+      setUiLangDict(uiLang);
+      for (const stage of STAGES) {
+        const own = new Set([artUrl(stage, 'compact'), artUrl(stage, 'full')]);
+        const surfaces: Record<string, string> = {
+          route: renderToStaticMarkup(createElement(ui.CompanionPresenceView, { stage, language: ui.languageLabel('es'), line: 'x' })),
+          home: renderToStaticMarkup(createElement(ui.CompanionPeekView, { stage })),
+          page: renderToStaticMarkup(createElement(ui.CompanionPageView, { lang: 'es', language: ui.languageLabel('es'), stage, speech, stirring: true, milestones: [] })),
+          intro: renderToStaticMarkup(createElement(ui.CompanionIntroView, { stage, line: 'x', prop: '☕' })),
+          coach: renderToStaticMarkup(createElement(ui.CompanionCoachView, { stage, line: 'x' })),
+          ...Object.fromEntries((['correct', 'encouraging', 'thinking', 'recovery', 'celebrate', 'missionComplete'] as const).map((kind) => [kind, renderToStaticMarkup(createElement(ui.CompanionReactionView, { kind, stage }))])),
+        };
+        for (const [where, html] of Object.entries(surfaces)) {
+          const { text, art } = perceived(html);
+          const at = `${uiLang} stage ${stage} ${where}`;
+          for (const name of names) expect(text.includes(name), `${at} names “${name}”`).toBe(false);
+          expect(text, at).not.toMatch(/\d\s*(of|\/|מתוך)\s*6|stage|level|שלב|רמה|%/i);
+          expect(text, at).not.toMatch(/\b(20|70|150|300|600)\b/);
+          expect(text, at).not.toMatch(/parrot|chatterbox|תוכי|פטפטן|next form|הצורה הבאה/i); // what it will become is never said
+          expect(art.length, at).toBeGreaterThan(0);
+          for (const src of art) expect(own.has(src), `${at} shows ${src}`).toBe(true); // only the character as it is NOW
+          expect(html, at).not.toMatch(/silhouette|cmp-track|cmp-next|cmp-bar/);
+        }
+        // The change itself: the old look and the new one — which the learner is seeing this second — and nothing beyond.
+        if (stage > 1) {
+          const from = (stage - 1) as (typeof STAGES)[number];
+          const { text, art } = perceived(renderToStaticMarkup(createElement(ui.CompanionEvolution, { lang: 'es', from, to: stage, onDone: () => undefined })));
+          for (const name of names) expect(text.includes(name), `${uiLang} change to ${stage} names “${name}”`).toBe(false);
+          expect(text).not.toMatch(/\d\s*(of|\/|מתוך)\s*6|stage|level|שלב|רמה|%|parrot|chatterbox|תוכי|פטפטן/i);
+          expect(new Set(art)).toEqual(new Set([artUrl(from, 'full'), artUrl(stage, 'full')]));
+          expect(text).toContain(L(COPY.changedTitle));
+        }
+      }
     }
-    expect(css).toMatch(/\.cmp-reaction \{ pointer-events: none; \}/); // can never swallow a tap meant for an answer
+    setUiLangDict('en');
+    // The copy that reaches the screen holds no name either (the internal labels live only in STAGE_COPY.name).
+    const screenCopy = JSON.stringify([COPY, STAGES.map((n) => STAGE_COPY[n].behaviour), MISSION_INTRO, GAME_INTRO]);
+    for (const name of names) expect(screenCopy.includes(name), name).toBe(false);
+    expect(screenCopy).not.toMatch(/Stage \d|שלב \d|of 6|מתוך 6/);
+  });
+
+  it('Home, the Route, a mission and its end all show the SAME current character — per language', () => {
+    // Every surface draws the character the same way, from the same stage…
+    const everywhere = (stage: (typeof STAGES)[number]): string[] => [
+      renderToStaticMarkup(createElement(ui.CompanionPeekView, { stage })),                                  // Home
+      renderToStaticMarkup(createElement(ui.CompanionPresenceView, { stage, language: 'x', line: 'x' })),    // Route
+      renderToStaticMarkup(createElement(ui.CompanionIntroView, { stage, line: 'x', prop: '☕' })),           // mission intro
+      renderToStaticMarkup(createElement(ui.CompanionCoachView, { stage, line: 'x' })),                      // a game's instruction
+      renderToStaticMarkup(createElement(ui.CompanionReactionView, { kind: 'correct', stage })),             // an answer
+      renderToStaticMarkup(createElement(ui.CompanionReactionView, { kind: 'missionComplete', stage })),     // mission complete
+    ];
+    const stages: number[] = [];
+    for (const lang of ['en', 'es', 'fr']) {
+      app.useAppStore.setState({ learningLang: lang });
+      const stage = active().stage;
+      stages.push(stage);
+      const shown = everywhere(stage).map((html) => /<img[^>]* src="([^"]+)"/.exec(html)?.[1]);
+      expect(new Set(shown), lang).toEqual(new Set([artUrl(stage, 'compact')]));
+    }
+    expect(new Set(stages).size).toBeGreaterThan(1); // the languages really are at different points
+    app.useAppStore.setState({ learningLang: 'en' });
+    // …and every connected surface gets that stage from the one place: the active language's companion.
+    const source = readFileSync(fileURLToPath(new URL('./Companion.tsx', import.meta.url)), 'utf8');
+    for (const name of ['CompanionReaction', 'CompanionWatch', 'CompanionCoach', 'CompanionIntro', 'CompanionPresence', 'CompanionPeek', 'CompanionPage', 'CompanionHost']) {
+      const at = source.indexOf(`export function ${name}(`);
+      expect(at, name).toBeGreaterThan(-1);
+      expect(source.slice(at, source.indexOf('\n}\n', at)), name).toContain('useCompanion()');
+    }
+    // No screen outside the feature draws the character itself or picks a stage for it.
+    for (const file of ['../bootcamp/Bootcamp.tsx', '../bootcamp/PracticeSteps.tsx', '../bootcamp/Learn.tsx', '../home/Home.tsx']) {
+      const code = readFileSync(fileURLToPath(new URL(file, import.meta.url)), 'utf8');
+      expect(code, file).toMatch(/from '\.\.\/companion\/Companion\.js'/);
+      expect(code, file).not.toMatch(/CompanionFigure|View\b.*stage=|companionAssets/);
+    }
+  });
+
+  it('the page only hints that something is stirring — close to a change, and never at the last form', () => {
+    const page = (stirring: boolean): string => renderToStaticMarkup(createElement(ui.CompanionPageView, { lang: 'en', language: 'English', stage: 2, speech: { text: '👂 …', target: false }, stirring }));
+    expect(page(true)).toContain(COPY.stirring.en);
+    expect(page(true)).toContain('is-stirring');
+    expect(page(false)).not.toContain(COPY.stirring.en);
+    expect(page(false)).toContain(COPY.changes.en); // "the more you understand and speak, the more it changes" — how, and when, is not said
   });
 });
