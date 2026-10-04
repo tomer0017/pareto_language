@@ -22,6 +22,40 @@ loop (typecheck → lint → tests → build → smoke) green at every milestone
 
 ## What's done
 
+### Practice depth — Missions 19–24, City & Conversation (2026-10-04)
+Scope: Practice of Missions 19–24 only. Missions 01–18 and 25–30, the dialogues of 19–23, mission
+order, the Companion and progression are fingerprinted or untouched. Nothing was retired.
+- **Where it lives:** Mission 19 takes its flow from the new `practiceCity.ts`; Missions 20–23 are
+  specs — their `teach` blocks in `core/*.ts`.
+- **Every teaching mission** ends on a chain at natural speed built only from its own conversation's
+  lines, has a 12-card review, and no meaning quiz: each line that used to be re-tested is drilled
+  once and then answered.
+- **19 Transport:** station board by ear (platform / stops / minutes), station Quick Reply ×6, Swap
+  It ticket to centre / museum / airport, ticket → platform → stop at speed, and a fast correction
+  made only of known words where asking again is the answer. One sentence id was added —
+  `phrase.trans.single` ("Single, please."), the conversation's own answer, which had no id.
+  Spanish already said "billete"; there was no "boleto".
+- **20 Past:** answering about yesterday ×6, Swap It place / bed / verdict ×5, builder ×2, the story
+  at speed ×6; the ask-back is retrieved four ways.
+- **21 Future:** plans Quick Reply ×6, Swap It duration (the three lengths of stay from Mission 06)
+  and destination, builder ×2, the itinerary at speed ×5.
+- **22 Fixing Problems:** line ↔ situation Match (written out), a restaurant chain ×5 and a hotel
+  chain ×5 (asking to slow down accepted on the fast line), Swap It "There's a problem with ___",
+  builder ×2, both problems at speed ×6; review 19 → 12.
+- **23 Opinions:** opinion chat ×6, reactions ×3, Swap It "I think it's ___" ×3, opinion + reason
+  builder, the conversation at speed ×6. "Because…" is only ever retrieved as the answer to "Why?".
+- **24 Checkpoint:** four cold scenes (station, a local, the wrong dish, a traveler) with 16 real
+  decisions — several with the same idea in the wrong time as the distractor — 3 recovery offers,
+  one speed-listening moment, zero vocabulary not met in Missions 01–23 (tested per language).
+  **Mission 24's scenes changed**, as the earlier checkpoints' did.
+- **Final micro-pass:** Mission 19's intro no longer promises announcements (it now names the
+  numbers by ear and the one fast correction). Mission 22 lost its sentence builder and its speed
+  chain went from 6 to 4 decisions (dish, bill, room, fix) — 26 → 22 active retrieval, both domains
+  and all four problem types kept. Mission 24's "You should take the boat tour." is kept: Mission 11
+  drills and answers "You should try…" in all three languages, so it is recombination, not new language.
+- **Tests:** `practiceCity.test.ts` (69).
+- **Not done:** manual browser / device QA.
+
 ### Practice depth — Missions 11–18, Everyday Life (2026-10-04)
 Scope: Practice of Missions 11–18 only. Missions 01–10 and 19–30, the dialogues and sentences of
 11–17, mission order, the Companion and progression are fingerprinted or untouched.

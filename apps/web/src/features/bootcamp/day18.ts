@@ -1,10 +1,11 @@
 import { T, recovery } from './recovery.js';
 import type { BootcampDayContent, BootcampDialogue, BootcampItem } from './types.js';
+import { m19Flow } from './practiceCity.js';
 
 /**
  * Mission 19 — "Public Transport" (Phase 4 · City Life).
  * Independence beyond taxi budgets: ticket, platform, direction, the right stop. Half of this
- * is pure listening — announcements and which-platform answers — so the ears do the work.
+ * is pure listening — the platform number, how many stops, how often it leaves — so the ears do the work.
  */
 export const DAY18_ITEMS: BootcampItem[] = [
   // say
@@ -15,6 +16,7 @@ export const DAY18_ITEMS: BootcampItem[] = [
   { id: 'en.phrase.trans.does-stop', text: 'Does this stop at the museum?', meaning: T('זה עוצר במוזיאון?', 'Does this stop at the museum?'),
     tip: T('התבנית: Does this stop at ___? — מוודאת שאתה יורד נכון.', 'Template: Does this stop at ___? — makes sure you get off in the right place.') },
   { id: 'en.phrase.trans.next-one', text: "When's the next one?", meaning: T('מתי הבא?', "When's the next one?") },
+  { id: 'en.phrase.trans.single', text: 'Single, please.', meaning: T('הלוך, בבקשה.', 'Single, please.') },
   // hear — booth + platform
   { id: 'en.reply.trans.single-return', text: 'Single or return?', meaning: T('הלוך או הלוך-חזור?', 'Single or return?') },
   { id: 'en.reply.trans.platform-two', text: 'Platform two.', meaning: T('רציף שתיים.', 'Platform two.') },
@@ -87,23 +89,9 @@ export const DAY18: BootcampDayContent = {
     { kind: 'talk', icon: '🚇', title: T('משימה 19: תחבורה ציבורית', 'Mission 19: Public Transport'),
       body: [
         T('העיר זזה בשבילך — בזול. כרטיס, רציף, כיוון, והתחנה הנכונה.', 'The city moves for you — cheaply. Ticket, platform, direction, the right stop.'),
-        T('חצי מהמשימה הזאת היא האזנה: הכרזות ותשובות מהירות של איזה-רציף.', 'Half of this mission is listening: announcements and fast which-platform answers.'),
+        T('חצי מהמשימה הזאת היא האזנה: מספר הרציף, כמה תחנות, כל כמה דקות — ותיקון מהיר אחד בסוף.', 'Half of this mission is listening: the platform number, how many stops, how often it leaves — and one fast correction at the end.'),
       ], cta: T('לגשת לדלפק הכרטיסים', 'Step up to the ticket desk') },
-    { kind: 'tool', itemId: 'en.phrase.trans.one-ticket', index: 1, total: 4, label: T('לקנות כרטיס', 'Buy a ticket') },
-    { kind: 'tool', itemId: 'en.phrase.trans.which-platform', index: 2, total: 4, label: T('לאתר רציף', 'Find the platform') },
-    { kind: 'tool', itemId: 'en.phrase.trans.does-stop', index: 3, total: 4, label: T('לוודא יעד', 'Confirm the stop') },
-    { kind: 'tool', itemId: 'en.phrase.trans.next-one', index: 4, total: 4, label: T('לשאול על הבא', 'Ask about the next one') },
-    { kind: 'replies', saidItemId: 'en.phrase.trans.one-ticket',
-      replyIds: ['en.reply.trans.single-return', 'en.reply.trans.platform-two', 'en.reply.trans.every-ten', 'en.reply.trans.three-stops'] },
-    { kind: 'receipt', text: T('אתה מזהה את תשובות הדלפק והרציף — הלוך/חזור, מספר רציף, תדירות.', 'You recognize the booth and platform answers — single/return, platform number, frequency.') },
-    { kind: 'quiz', itemId: 'en.reply.trans.single-return', wrongIds: ['en.reply.trans.platform-two', 'en.reply.trans.three-stops'] },
-    { kind: 'quiz', itemId: 'en.reply.trans.every-ten', wrongIds: ['en.reply.trans.wrong-way', 'en.reply.trans.stop-next'] },
-    { kind: 'dialogue', dialogueId: 'transport' },
-    { kind: 'receipt', text: T('קנית כרטיס, מצאת רציף, ווידאת שהרכבת עוצרת ביעד שלך.', 'You bought a ticket, found the platform, and confirmed the train stops at your destination.') },
-    { kind: 'swipe', itemIds: DAY18_ITEMS.map((i) => i.id) },
-    { kind: 'ambush', npc: { en: "This train's been delayed — you'll want the replacement bus from stand C instead.", he: 'הרכבת הזאת מתעכבת — עדיף לך את האוטובוס החלופי מעמדה C.' },
-      correctItemId: 'en.phrase.recovery.repeat', wrongItemId: 'en.phrase.trans.which-platform' },
-    { kind: 'receipt', text: T('הודעת שיבוש מהירה — וביקשת שיחזרו במקום לעלות לרכבת הלא נכונה.', 'A fast disruption announcement — and you asked them to repeat instead of boarding the wrong train.') },
-    { kind: 'summary' },
+    // From the key sentences onward the flow is shared by all languages: see practiceCity.ts.
+    ...m19Flow('en'),
   ],
 };

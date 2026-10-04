@@ -67,13 +67,100 @@ export const PAST_EVENTS: MissionSpec = {
     ],
     said: 'phrase.past.i-went',
     replies: ['reply.past.what-did-you-see', 'reply.past.did-you-eat', 'reply.past.did-you-like', 'reply.past.where-did-you-stay'],
-    repliesReceipt: ['אתה מזהה שאלה על העבר — גם בלי להבין כל מילה.', 'You recognize a question about the past — even without catching every word.'],
-    quiz: ['reply.past.where-did-you-stay', 'reply.past.where-were-you', 'reply.past.did-you-like'],
-    ambush: {
-      npc: ['Wait so when you were in Argentina where did you stay was it a hotel?', 'Attends, quand tu étais en Argentine, tu as logé où, à l’hôtel ?', 'Espera, cuando estuviste en Argentina, ¿dónde te quedaste, en un hotel?', 'רגע, כשהיית בארגנטינה — איפה ישנת, במלון?'],
-      correct: 'reply.past.where-did-you-stay',
-      wrong: 'reply.past.did-you-eat',
-      receipt: ['"איפה ישנת בארגנטינה?" — מהר, ובאמצע משפט. הבנת.', '"Where did you stay in Argentina?" — fast, mid-sentence. You got it.'],
-    },
+    repliesReceipt: ['אתה מזהה שאלה על אתמול — גם בלי להבין כל מילה.', 'You recognize a question about yesterday — even without catching every word.'],
+    practice: [
+      // Telling someone about yesterday: their questions, your answers — and then you ask back.
+      {
+        kind: 'quickReply',
+        label: ['שואלים אותך על אתמול — מה עונים?', 'They ask about yesterday — what do you say?'],
+        rounds: [
+          { prompt: 'reply.past.what-did-you-see', options: [['phrase.past.i-saw', true], ['phrase.past.i-ate', false], ['phrase.past.i-stayed', false]] },
+          { prompt: 'reply.past.did-you-eat', options: [['phrase.past.i-ate', true], ['phrase.past.i-saw', false], ['phrase.past.i-went', false]] },
+          { prompt: 'reply.past.did-you-like', options: [['phrase.past.it-was-great', true], ['phrase.past.it-was-good', true], ['phrase.past.i-stayed', false]] },
+          { prompt: 'reply.past.where-did-you-stay', options: [['phrase.past.i-stayed', true], ['phrase.past.i-went', false], ['phrase.past.i-ate', false]] },
+          { prompt: 'reply.past.was-it-good', options: [
+            ['phrase.past.what-did-you-do', true, ['It was good. And you? What did you do yesterday?', 'C’était bien. Et toi ? Tu as fait quoi hier ?', 'Estuvo bien. ¿Y tú? ¿Qué hiciste ayer?']],
+            ['phrase.past.i-saw', false], ['phrase.past.i-went', false],
+          ] },
+          { situation: ['סיפרת על אתמול שלך. עכשיו תורך לשאול אותו.', 'You have told them about your day. Now it is your turn to ask.'],
+            options: [['phrase.past.what-did-you-do', true], ['phrase.past.it-was-good', false], ['phrase.past.i-went', false]] },
+        ],
+      },
+      // The same story with another place, another bed, another verdict. Each language says it its own way.
+      {
+        kind: 'swap',
+        label: ['איך היה אתמול?', 'How was yesterday?'],
+        rounds: [
+          ...([['market', '🧺', ['אתמול היית בשוק', 'Yesterday you were at the market']], ['beach', '🏖️', ['אתמול היית בים', 'Yesterday you were at the beach']]] as const).map(([right, emoji, cue]) => ({
+            frame: ['I went to ___.', 'Je suis allé ___.', 'Fui ___.'] as const,
+            itemId: 'phrase.past.i-went',
+            cue: { emoji, text: cue },
+            options: [
+              [['the old town', 'dans la vieille ville', 'al casco antiguo'], 'הלכתי לעיר העתיקה.', false],
+              [['the market', 'au marché', 'al mercado'], 'הלכתי לשוק.', right === 'market'],
+              [['the beach', 'à la plage', 'a la playa'], 'הלכתי לים.', right === 'beach'],
+            ] as const,
+          })),
+          {
+            frame: ['I stayed in ___.', 'J’ai logé dans ___.', 'Me quedé en ___.'] as const,
+            itemId: 'phrase.past.i-stayed',
+            cue: { emoji: '🏨', text: ['ישנת במלון', 'You stayed in a hotel'] },
+            options: [
+              [['a hostel', 'une auberge', 'un hostal'], 'ישנתי בהוסטל.', false],
+              [['a hotel', 'un hôtel', 'un hotel'], 'ישנתי במלון.', true],
+            ] as const,
+          },
+          ...([['good', 'phrase.past.it-was-good', '🙂', ['היה בסדר, טוב', 'It was fine — good']], ['bad', 'phrase.past.it-was-bad', '😕', ['לא היה טוב', 'It was not good']]] as const).map(([right, itemId, emoji, cue]) => ({
+            frame: ['It was ___.', 'C’était ___.', 'Estuvo ___.'] as const,
+            itemId,
+            cue: { emoji, text: cue },
+            options: [
+              [['great', 'super', 'genial'], 'היה מעולה.', false],
+              [['good', 'bien', 'bien'], 'היה טוב.', right === 'good'],
+              [['bad', 'mauvais', 'mal'], 'היה רע.', right === 'bad'],
+            ] as const,
+          })),
+        ],
+      },
+      // Where you went — and the question that hands the conversation back.
+      {
+        kind: 'sentenceBuilder',
+        rounds: [
+          { itemId: 'phrase.past.i-went', chunks: [['I went', 'to', 'the old town.'], ['Je suis allé', 'dans', 'la vieille ville.'], ['Fui', 'al', 'casco antiguo.']] },
+          { itemId: 'phrase.past.what-did-you-do', chunks: [['What', 'did you do', 'yesterday?'], ['Tu as fait', 'quoi', 'hier ?'], ['¿Qué', 'hiciste', 'ayer?']] },
+        ],
+      },
+    ],
+    review: [
+      'phrase.past.i-went', 'phrase.past.i-saw', 'phrase.past.i-ate', 'phrase.past.i-stayed', 'phrase.past.it-was-great', 'phrase.past.it-was-good',
+      'phrase.past.what-did-you-do',
+      'reply.past.where-were-you', 'reply.past.what-did-you-see', 'reply.past.did-you-eat', 'reply.past.where-did-you-stay',
+      'phrase.recovery.repeat',
+    ],
+    // The whole story at natural speed — your friend's own questions.
+    finale: [{
+      practice: {
+        kind: 'quickReply',
+        challenge: true,
+        rounds: [
+          { npc: ['Hey! Where were you yesterday?', 'Salut ! Tu étais où hier ?', '¡Hola! ¿Dónde estuviste ayer?', 'היי! איפה היית אתמול?'],
+            options: [['phrase.past.i-went', true], ['phrase.past.i-stayed', false], ['phrase.past.it-was-great', false]] },
+          { npc: ['Nice! What did you see?', 'Sympa ! Tu as vu quoi ?', '¡Qué bien! ¿Qué viste?', 'יפה! מה ראית?'],
+            options: [['phrase.past.i-saw', true], ['phrase.past.i-ate', false], ['phrase.past.i-went', false]] },
+          { npc: ['Did you eat there?', 'Tu as mangé là-bas ?', '¿Comiste allí?', 'אכלת שם?'],
+            options: [['phrase.past.i-ate', true], ['phrase.past.i-saw', false], ['phrase.past.i-stayed', false]] },
+          { npc: ['Did you like it?', 'Tu as aimé ?', '¿Te gustó?', 'אהבת?'],
+            options: [['phrase.past.it-was-great', true], ['phrase.past.i-went', false], ['phrase.past.what-did-you-do', false]] },
+          { npc: ['You were in Argentina last month, right? Where did you stay?', 'Tu étais en Argentine le mois dernier, non ? Tu as logé où ?', 'Estuviste en Argentina el mes pasado, ¿no? ¿Dónde te quedaste?', 'היית בארגנטינה בחודש שעבר, נכון? איפה ישנת?'],
+            options: [['phrase.past.i-stayed', true], ['phrase.past.i-went', false], ['phrase.past.i-ate', false]] },
+          { npc: ['A hostel! Was it good?', 'Une auberge ! C’était bien ?', '¡Un hostal! ¿Estuvo bien?', 'הוסטל! היה טוב?'],
+            options: [
+              ['phrase.past.what-did-you-do', true, ['It was good. And you? What did you do yesterday?', 'C’était bien. Et toi ? Tu as fait quoi hier ?', 'Estuvo bien. ¿Y tú? ¿Qué hiciste ayer?']],
+              ['phrase.past.i-saw', false], ['phrase.past.i-ate', false],
+            ] },
+        ],
+      },
+      receipt: ['סיפרת סיפור קטן על אתמול — לאן הלכת, מה ראית, מה אכלת, איפה ישנת ואיך היה — ושאלת בחזרה.', 'You told a small story about yesterday — where you went, what you saw, what you ate, where you stayed and how it was — and asked back.'],
+    }],
   },
 };

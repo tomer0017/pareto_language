@@ -1147,6 +1147,7 @@ _Reply-training drill:_ “It's in aisle three.” · “Over there, on the left
 - **Which platform?** · איזה רציף? — _שתי מילים שמונעות עלייה לרכבת הלא נכונה._
 - **Does this stop at the museum?** · זה עוצר במוזיאון? — _התבנית: Does this stop at ___? — מוודאת שאתה יורד נכון._
 - **When's the next one?** · מתי הבא?
+- **Single, please.** · הלוך, בבקשה.
 
 ### Expected replies (you hear)
 - **Single or return?** · הלוך או הלוך-חזור?
@@ -1162,9 +1163,9 @@ _Reply-training drill:_ “Single or return?” · “Platform two.” · “Eve
 `Can you repeat that?` · `Please speak slowly.` · `Thank you!`
 
 ### Cold open (ambush)
-- 🧑 (fast) “This train's been delayed — you'll want the replacement bus from stand C instead.” · הרכבת הזאת מתעכבת — עדיף לך את האוטובוס החלופי מעמדה C.
+- 🧑 (fast) “You're going the wrong way. Not this one — platform two. The next one is in ten minutes, and your stop is three stops.” · אתה בכיוון הלא נכון. לא זה — רציף שתיים. הבא בעוד עשר דקות, והתחנה שלך בעוד שלוש תחנות.
   - ✅ best move: **Can you repeat that?** · אפשר לחזור על זה?
-  - ✗ distractor: Which platform?
+  - ✗ distractor: Does this stop at the museum?
 
 ### Dialogue: `transport` — happy path
 - **🧑 Them:** “Hello! Where are you headed?” · שלום! לאן אתה נוסע?
@@ -1221,11 +1222,6 @@ _Reply-training drill:_ “What did you see?” · “Did you eat there?” · �
 
 ### Recovery tools reused
 `Can you repeat that?`
-
-### Cold open (ambush)
-- 🧑 (fast) “Wait so when you were in Argentina where did you stay was it a hotel?” · רגע, כשהיית בארגנטינה — איפה ישנת, במלון?
-  - ✅ best move: **Where did you stay?** · איפה ישנת?
-  - ✗ distractor: Did you eat there?
 
 ### Dialogue: `what-did-you-do` — happy path
 - **🧑 Them:** “Hey! Where were you yesterday?” · היי! איפה היית אתמול?
@@ -1284,11 +1280,6 @@ _Reply-training drill:_ “How long will you be there?” · “What do you want
 ### Recovery tools reused
 `Please speak slowly.`
 
-### Cold open (ambush)
-- 🧑 (fast) “Hold on before you go what are you doing tomorrow morning do you have time for a coffee?” · רגע, לפני שאתה נוסע — מה אתה עושה מחר בבוקר, יש לך זמן לקפה?
-  - ✅ best move: **What are you doing tomorrow morning?** · מה אתה עושה מחר בבוקר?
-  - ✗ distractor: How long will you be there?
-
 ### Dialogue: `where-next` — happy path
 - **🧑 Them:** “So, where are you going next?” · אז לאן אתה נוסע אחרי זה?
 - **🫵 You:** “I'm going to Vietnam.” · אני נוסע לווייטנאם.
@@ -1346,15 +1337,10 @@ _Reply-training drill:_ “How long will you be there?” · “What do you want
 - **It's on the house.** · זה על חשבון הבית.
 - **Is there anything else?** · יש עוד משהו?
 
-_Reply-training drill:_ “I'm so sorry about that.” · “I'll bring the right one.” · “What's the problem?” · “I'll refund it now.”
+_Reply-training drill:_ “I'm so sorry about that.” · “What's the problem?” · “I'll bring the right one.” · “I'll refund it now.” · “Is there anything else?”
 
 ### Recovery tools reused
 `Please speak slowly.`
-
-### Cold open (ambush)
-- 🧑 (fast) “So sorry about all of this is there anything else I can fix for you tonight?” · מצטער מאוד על כל זה — יש עוד משהו שאני יכול לסדר לך הערב?
-  - ✅ best move: **Is there anything else?** · יש עוד משהו?
-  - ✗ distractor: Let me check the bill.
 
 ### Dialogue: `fixing-problems` — happy path
 - **🧑 Them:** “Here's your meal — one steak!” · הנה הארוחה שלך — סטייק אחד!
@@ -1424,11 +1410,6 @@ _Reply-training drill:_ “Really?” · “Why?” · “That's true.” · “
 ### Recovery tools reused
 `Can you repeat that?`
 
-### Cold open (ambush)
-- 🧑 (fast) “Okay honestly this restaurant or the other one what do you think?” · טוב, בכנות — המסעדה הזאת או השנייה, מה אתה חושב?
-  - ✅ best move: **What do you think?** · מה אתה חושב?
-  - ✗ distractor: That's true.
-
 ### Dialogue: `choosing-a-tour` — happy path
 - **🧑 Them:** “Look — a boat tour, fifty euros. What do you think?” · תראה — סיור בסירה, חמישים יורו. מה אתה חושב?
 - **🫵 You:** “I think it's too expensive.” · אני חושב שזה יקר מדי.
@@ -1467,63 +1448,108 @@ _Reply-training drill:_ “Really?” · “Why?” · “That's true.” · “
 ### Core phrases (you say)
 - **One ticket to the centre, please.** · כרטיס אחד למרכז, בבקשה. — _התבנית: One ticket to ___ — קונה כרטיס לכל יעד._
 - **Does this stop at the museum?** · זה עוצר במוזיאון? — _התבנית: Does this stop at ___? — מוודאת שאתה יורד נכון._
-- **I'm from Israel.** · אני מישראל. — _התבנית: I’m from ___ — התשובה ל-Where are you from._
+- **Single, please.** · הלוך, בבקשה.
+- **Which platform?** · איזה רציף? — _שתי מילים שמונעות עלייה לרכבת הלא נכונה._
 - **I like it a lot.** · אני מאוד אוהב.
+- **It was nice talking to you.** · היה נעים לדבר איתך.
 - **I think it's too expensive.** · אני חושב שזה יקר מדי. — _I think ___ — כל דעה מתחילה ככה._
+- **Because it's only one hour.** · כי זה רק שעה אחת. — _Because ___ — התשובה לכל "למה?"_
 - **Can you recommend a place?** · אתה יכול להמליץ על מקום? — _מקומיים יודעים הכי טוב. תשאל._
+- **I don't think so.** · לא נראה לי.
+- **This isn't what I ordered.** · זה לא מה שהזמנתי. — _רגוע וברור. לא צריך להתנצל._
+- **No problem, thank you.** · אין בעיה, תודה.
+- **I ordered the pasta.** · הזמנתי את הפסטה.
+- **I was charged twice.** · חייבו אותי פעמיים.
+- **Can you fix it?** · אפשר לתקן את זה?
 - **I went to the old town.** · הלכתי לעיר העתיקה. — _I went to ___ — התשובה ל"איפה היית?"_
-- **Yes, it was great!** · כן, היה מעולה!
 - **I'm going to Vietnam.** · אני נוסע לווייטנאם. — _I’m going to ___ — מדינה, עיר, או המקום הבא._
-- **What are you doing tomorrow?** · מה אתה עושה מחר? — _מחליפים tomorrow ב-today / tonight ויש לך שלוש שאלות._
-- **Of course!** · ברור!
+- **Yes, it was great!** · כן, היה מעולה!
+- **I stayed in a hostel.** · ישנתי בהוסטל. — _I stayed in ___ — hostel, hotel, apartment._
+- **I'll be there for two weeks.** · אני אהיה שם שבועיים.
+- **After that I'm going to Thailand.** · אחרי זה אני נוסע לתאילנד.
+- **Where are you going next?** · לאן אתה נוסע אחרי זה?
+- **It was good.** · היה טוב.
+- **I'm not sure.** · אני לא בטוח. — _כשאתה לא יודע מה אתה חושב — זו תשובה שלמה._
 
 ### Expected replies (you hear)
 - **You're going the wrong way.** · אתה בכיוון הלא נכון.
 - **It's three stops.** · זה שלוש תחנות.
-- **How long will you be there?** · כמה זמן תהיה שם?
-- **Did you like it?** · אהבת?
 
 ### Recovery tools reused
-`Please speak slowly.`
+`Please speak slowly.` · `Can you repeat that?`
 
 ### Cold open (ambush)
-- 🧑 (fast) “Careful this one is going the wrong way you need the other platform” · זהירות, זה נוסע בכיוון ההפוך — אתה צריך את הרציף השני
+- 🧑 (fast) “You're going the wrong way. Platform two — it leaves every ten minutes.” · אתה בכיוון הלא נכון. רציף שתיים — יוצא כל עשר דקות.
   - ✅ best move: **You're going the wrong way.** · אתה בכיוון הלא נכון.
   - ✗ distractor: It's three stops.
-- 🧑 (fast) “Vietnam nice so how long will you be there a week or more?” · וייטנאם, יפה! וכמה זמן תהיה שם — שבוע או יותר?
-  - ✅ best move: **How long will you be there?** · כמה זמן תהיה שם?
-  - ✗ distractor: Did you like it?
 
 ### Dialogue: `cold-transport` — happy path
-- **🧑 Them:** “Where are you headed?” · לאן אתה נוסע?
+- **🧑 Them:** “Hello! Where are you headed?” · שלום! לאן אתה נוסע?
 - **🫵 You:** “One ticket to the centre, please.” · כרטיס אחד למרכז, בבקשה.
-- **🧑 Them:** “Platform two — it leaves in five minutes.” · רציף שתיים — יוצא בעוד חמש דקות.
+- **🧑 Them:** “Single or return?” · הלוך או הלוך-חזור?
+- **🫵 You:** “Single, please.” · הלוך, בבקשה.
+- **🧑 Them:** “That's three euros. It leaves every ten minutes.” · זה שלושה יורו. יוצא כל עשר דקות.
+- **🫵 You:** “Which platform?” · איזה רציף?
+- **🧑 Them:** “Platform two. Straight ahead.” · רציף שתיים. ישר קדימה.
 - **🫵 You:** “Does this stop at the museum?” · זה עוצר במוזיאון?
-- **🧑 Them:** “Yes — three stops. Enjoy!” · כן — שלוש תחנות. תיהנה!
+- **🧑 Them:** “Yes — it's three stops. I'll tell you when.” · כן — זה שלוש תחנות. אני אגיד לך מתי.
+
+#### Wrong / recovery branches
+- ⚠︎ less useful: 🫵 “Does this stop at the museum?” → 🧑 “Hello! Where are you headed?” · שלום! לאן אתה נוסע?
+- ⚠︎ less useful: 🫵 “Which platform?” → 🧑 “Single or return?” · הלוך או הלוך-חזור?
+- ⚠︎ less useful: 🫵 “One ticket to the centre, please.” → 🧑 “That's three euros. It leaves every ten minutes.” · זה שלושה יורו. יוצא כל עשר דקות.
+- ⚠︎ less useful: 🫵 “Single, please.” → 🧑 “Platform two. Straight ahead.” · רציף שתיים. ישר קדימה.
 
 ### Dialogue: `cold-chat` — happy path
-- **🧑 Them:** “Hi! Where are you from?” · היי! מאיפה אתה?
-- **🫵 You:** “I'm from Israel.” · אני מישראל.
 - **🧑 Them:** “Welcome! Do you like it here?” · ברוך הבא! אתה אוהב את המקום?
-- **🫵 You:** “I like it a lot.” · אני מאוד אוהב.
+- **🫵 You:** “Yes, I like it a lot.” · כן, אני מאוד אוהב.
 - **🧑 Them:** “You should take the boat tour. It's fifty euros.” · כדאי לך לעשות את הסיור בסירה. זה חמישים יורו.
 - **🫵 You:** “I think it's too expensive.” · אני חושב שזה יקר מדי.
-- **🧑 Them:** “Hmm, maybe. Then walk in the old town — it's free!” · הממ, אולי. אז תטייל בעיר העתיקה — זה בחינם!
+- **🧑 Them:** “Really? Then you should try the old town. It's free.” · באמת? אז כדאי לך לנסות את העיר העתיקה. זה בחינם.
 - **🫵 You:** “Can you recommend a place?” · אתה יכול להמליץ על מקום?
-- **🧑 Them:** “'Mama Rosa'. The food is wonderful. Enjoy!” · 'מאמא רוזה'. האוכל נהדר. תיהנה!
+- **🧑 Them:** “Of course — try 'Mama Rosa', in the old town. It's very good.” · בטח — תנסה את 'מאמא רוזה', בעיר העתיקה. מאוד טוב שם.
+
+#### Wrong / recovery branches
+- ⚠︎ less useful: 🫵 “It was nice talking to you.” → 🧑 “Welcome! Do you like it here?” · ברוך הבא! אתה אוהב את המקום?
+- ⚠︎ less useful: 🫵 “Because it's only one hour.” → 🧑 “You should take the boat tour. It's fifty euros.” · כדאי לך לעשות את הסיור בסירה. זה חמישים יורו.
+- ⚠︎ less useful: 🫵 “I don't think so.” → 🧑 “Really? Then you should try the old town. It's free.” · באמת? אז כדאי לך לנסות את העיר העתיקה. זה בחינם.
+
+### Dialogue: `cold-problem` — happy path
+- **🧑 Them:** “Here's your meal — one steak!” · הנה הארוחה שלך — סטייק אחד!
+- **🫵 You:** “This isn't what I ordered.” · זה לא מה שהזמנתי.
+- **🧑 Them:** “Oh no, I'm so sorry! What did you order?” · אוי לא, אני מצטער מאוד! מה הזמנת?
+- **🫵 You:** “I ordered the pasta.” · הזמנתי את הפסטה.
+- **🧑 Them:** “Of course — I'll bring the right one right away.” · כמובן — אביא את הנכון מיד.
+- **🫵 You:** “No problem, thank you.” · אין בעיה, תודה.
+- **🧑 Them:** “Thank you for your patience. Dessert is on the house!” · תודה על הסבלנות. הקינוח על חשבון הבית!
+
+#### Wrong / recovery branches
+- ⚠︎ less useful: 🫵 “No problem, thank you.” → 🧑 “Here's your meal — one steak!” · הנה הארוחה שלך — סטייק אחד!
+- ⚠︎ less useful: 🫵 “I was charged twice.” → 🧑 “Oh no, I'm so sorry! What did you order?” · אוי לא, אני מצטער מאוד! מה הזמנת?
+- ⚠︎ less useful: 🫵 “Can you fix it?” → 🧑 “Of course — I'll bring the right one right away.” · כמובן — אביא את הנכון מיד.
 
 ### Dialogue: `cold-hostel` — happy path
-- **🧑 Them:** “Hey! Where were you today?” · היי! איפה היית היום?
+- **🧑 Them:** “Hey! Where were you yesterday?” · היי! איפה היית אתמול?
 - **🫵 You:** “I went to the old town.” · הלכתי לעיר העתיקה.
 - **🧑 Them:** “Did you like it?” · אהבת?
 - **🫵 You:** “Yes, it was great!” · כן, היה מעולה!
-- **🧑 Them:** “Good! And where are you going next?” · יופי! ולאן אתה נוסע אחרי זה?
+- **🧑 Them:** “So, where are you going next?” · אז לאן אתה נוסע אחרי זה?
 - **🫵 You:** “I'm going to Vietnam.” · אני נוסע לווייטנאם.
-- **🧑 Them:** “Wow! I'm going home next week.” · וואו! אני חוזר הביתה בשבוע הבא.
-- **🫵 You:** “What are you doing tomorrow?” · מה אתה עושה מחר?
-- **🧑 Them:** “Tomorrow I'm free. Do you want to go to the beach?” · מחר אני פנוי. רוצה ללכת לים?
-- **🫵 You:** “Of course!” · ברור!
-- **🧑 Them:** “Great. See you tomorrow!” · מעולה. נתראה מחר!
+- **🧑 Them:** “Wow! How long will you be there?” · וואו! כמה זמן תהיה שם?
+- **🫵 You:** “I'll be there for two weeks.” · אני אהיה שם שבועיים.
+- **🧑 Them:** “Already! We'll miss you.” · כבר! נתגעגע אליך.
+- **🫵 You:** “And you? Where are you going next?” · ואתה? לאן אתה נוסע אחרי זה?
+- **🧑 Them:** “Me? I'm going home. Are you coming?” · אני? אני חוזר הביתה. אתה בא?
+- **🫵 You:** “Maybe. I'm not sure — I'm tired.” · אולי. אני לא בטוח — אני עייף.
+- **🧑 Them:** “Great! See you at six!” · מעולה! נתראה בשש!
+
+#### Wrong / recovery branches
+- ⚠︎ less useful: 🫵 “I'm going to Vietnam.” → 🧑 “Hey! Where were you yesterday?” · היי! איפה היית אתמול?
+- ⚠︎ less useful: 🫵 “I stayed in a hostel.” → 🧑 “Did you like it?” · אהבת?
+- ⚠︎ less useful: 🫵 “I went to the old town.” → 🧑 “So, where are you going next?” · אז לאן אתה נוסע אחרי זה?
+- ⚠︎ less useful: 🫵 “After that I'm going to Thailand.” → 🧑 “Wow! How long will you be there?” · וואו! כמה זמן תהיה שם?
+- ⚠︎ less useful: 🫵 “It was good.” → 🧑 “Already! We'll miss you.” · כבר! נתגעגע אליך.
+- ⚠︎ less useful: 🫵 “Because it's only one hour.” → 🧑 “Me? I'm going home. Are you coming?” · אני? אני חוזר הביתה. אתה בא?
 
 ### Review status
 - 🤖 AI-drafted (English + Hebrew) — **pending human / native-Hebrew review**

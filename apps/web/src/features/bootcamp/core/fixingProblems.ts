@@ -91,14 +91,96 @@ export const FIXING_PROBLEMS: MissionSpec = {
       { id: 'phrase.fix.change-rooms', label: ['לבקש להחליף', 'Ask to change'] },
     ],
     said: 'phrase.fix.not-ordered',
-    replies: ['reply.fix.so-sorry', 'reply.fix.bring-right', 'reply.fix.whats-problem', 'reply.fix.refund-now'],
-    repliesReceipt: ['אתה מזהה התנצלות, הצעת פתרון, ו"מה הבעיה?"', 'You recognize an apology, an offered fix, and "what\'s the problem?"'],
-    quiz: ['reply.fix.refund-now', 'reply.fix.bring-right', 'reply.fix.on-the-house'],
-    ambush: {
-      npc: ['So sorry about all of this is there anything else I can fix for you tonight?', 'Vraiment désolé pour tout ça, il y a autre chose que je peux arranger pour vous ce soir ?', 'Lo siento mucho por todo esto, ¿hay algo más que pueda arreglarle esta noche?', 'מצטער מאוד על כל זה — יש עוד משהו שאני יכול לסדר לך הערב?'],
-      correct: 'reply.fix.anything-else',
-      wrong: 'reply.fix.check-bill',
-      receipt: ['גם אחרי תקלה — הבנת ששואלים אם יש עוד משהו.', 'Even after a mishap — you understood you were asked whether there is anything else.'],
-    },
+    // What staff say back: an apology, a question, three kinds of solution.
+    replies: ['reply.fix.so-sorry', 'reply.fix.whats-problem', 'reply.fix.bring-right', 'reply.fix.refund-now', 'reply.fix.anything-else'],
+    repliesReceipt: ['אתה מזהה התנצלות, "מה הבעיה?", והצעת פתרון.', 'You recognize an apology, "what\'s the problem?", and an offered fix.'],
+    practice: [
+      // Which line fits which problem? Each situation is written out next to its icon.
+      {
+        kind: 'matchPairs',
+        label: ['מה קרה — ומה אומרים?', 'What went wrong — and what do you say?'],
+        pairs: [
+          ['phrase.fix.not-ordered', 'phrase.fix.not-ordered', undefined, '🍽️', ['קיבלת מנה שלא הזמנת', 'You got a dish you did not order']],
+          ['phrase.fix.charged-twice', 'phrase.fix.charged-twice', undefined, '🧾', ['חייבו אותך פעמיים', 'You were billed two times']],
+          ['phrase.hotelreq.ac-not-working', 'phrase.hotelreq.ac-not-working', undefined, '❄️', ['המזגן בחדר מת', 'The AC in your room is dead']],
+          ['phrase.hotelreq.room-noisy', 'phrase.hotelreq.room-noisy', undefined, '🔊', ['רעש בחדר — אי אפשר לישון', 'Too much noise in your room to sleep']],
+        ],
+      },
+      // At the table: the wrong dish, then the bill.
+      {
+        kind: 'quickReply',
+        label: ['במסעדה משהו השתבש — מה אומרים?', 'Something went wrong at the restaurant — what do you say?'],
+        rounds: [
+          { npc: ["Here's your meal — one steak!", 'Voici votre plat — un steak !', 'Aquí tiene su plato — ¡un filete!', 'הנה הארוחה שלך — סטייק אחד!'],
+            options: [['phrase.fix.not-ordered', true], ['phrase.fix.no-problem-thanks', false], ['phrase.fix.charged-twice', false]] },
+          { npc: ["Oh no, I'm so sorry! What did you order?", 'Oh non, je suis vraiment désolé ! Qu’avez-vous commandé ?', '¡Ay, lo siento muchísimo! ¿Qué pidió?', 'אוי לא, אני מצטער מאוד! מה הזמנת?'],
+            options: [['phrase.fix.i-ordered', true], ['phrase.fix.not-ordered', false], ['phrase.fix.can-you-fix', false]] },
+          { situation: ['הגיע החשבון, והסכום לא נראה נכון.', 'The bill has arrived, and the amount does not look right.'],
+            options: [['phrase.fix.theres-mistake', true], ['phrase.fix.no-problem-thanks', false], ['phrase.fix.change-rooms', false]] },
+          { npc: ["Let me check the bill. What's the problem?", 'Laissez-moi vérifier l’addition. Quel est le problème ?', 'Déjeme revisar la cuenta. ¿Cuál es el problema?', 'תן לי לבדוק את החשבון. מה הבעיה?'],
+            options: [['phrase.fix.charged-twice', true], ['phrase.hotelreq.ac-not-working', false], ['phrase.fix.i-ordered', false]] },
+          { prompt: 'reply.fix.refund-now', options: [['phrase.fix.no-problem-thanks', true], ['phrase.fix.can-you-fix', false], ['phrase.fix.not-ordered', false]] },
+        ],
+      },
+      // At the hotel desk: name the problem, ask for the fix. On the fast line, asking them to slow down counts.
+      {
+        kind: 'quickReply',
+        label: ['בעיה בחדר — מה אומרים?', 'A problem with your room — what do you say?'],
+        rounds: [
+          { npc: ['Good evening! How can I help you?', 'Bonsoir ! Comment puis-je vous aider ?', '¡Buenas noches! ¿En qué puedo ayudarle?', 'ערב טוב! איך אפשר לעזור?'],
+            options: [['phrase.fix.theres-problem', true], ['phrase.fix.i-ordered', false], ['phrase.fix.no-problem-thanks', false]] },
+          { npc: ["I'm sorry to hear that. What's the problem?", 'Je suis désolé. Quel est le problème ?', 'Lo siento. ¿Cuál es el problema?', 'אני מצטער לשמוע. מה הבעיה?'],
+            options: [['phrase.hotelreq.ac-not-working', true], ['phrase.fix.charged-twice', false], ['phrase.fix.i-ordered', false]] },
+          { prompt: 'reply.fix.so-sorry', options: [['phrase.fix.can-you-fix', true], ['phrase.fix.i-ordered', false], ['phrase.fix.charged-twice', false]] },
+          { npc: ["Yes, I'll send someone right away. Is everything else okay?", 'Oui, j’envoie quelqu’un tout de suite. Tout le reste va bien ?', 'Sí, mando a alguien ahora mismo. ¿Todo lo demás está bien?', 'כן, אשלח מישהו מיד. כל השאר בסדר?'],
+            options: [
+              ['phrase.hotelreq.room-noisy', true, ['No. My room is very noisy.', 'Non. Ma chambre est très bruyante.', 'No. Mi habitación es muy ruidosa.']],
+              ['phrase.recovery.slowly', true], ['phrase.fix.i-ordered', false],
+            ] },
+          { npc: ['I understand. We have a quieter room.', 'Je comprends. Nous avons une chambre plus calme.', 'Lo entiendo. Tenemos una habitación más tranquila.', 'אני מבין. יש לנו חדר שקט יותר.'],
+            options: [['phrase.fix.change-rooms', true], ['phrase.fix.not-ordered', false], ['phrase.fix.i-ordered', false]] },
+        ],
+      },
+      // One opener for any complaint.
+      {
+        kind: 'swap',
+        label: ['עם מה יש בעיה?', 'What is the problem with?'],
+        rounds: ([['room', '🏨', ['הבעיה בחדר שלך', 'The problem is with your room']], ['bill', '🧾', ['הבעיה בחשבון', 'The problem is with the bill']]] as const).map(([right, emoji, cue]) => ({
+          frame: ["There's a problem with ___.", 'Il y a un problème avec ___.', 'Hay un problema con ___.'] as const,
+          itemId: 'phrase.fix.theres-problem',
+          cue: { emoji, text: cue },
+          options: [
+            [['my room', 'ma chambre', 'mi habitación'], 'יש בעיה בחדר שלי.', right === 'room'],
+            [['the bill', 'l’addition', 'la cuenta'], 'יש בעיה בחשבון.', right === 'bill'],
+          ] as const,
+        })),
+      },
+    ],
+    review: [
+      'phrase.fix.not-ordered', 'phrase.fix.theres-mistake', 'phrase.fix.charged-twice', 'phrase.fix.theres-problem', 'phrase.hotelreq.ac-not-working',
+      'phrase.hotelreq.room-noisy', 'phrase.fix.can-you-fix', 'phrase.fix.change-rooms',
+      'reply.fix.whats-problem', 'reply.fix.bring-right', 'reply.fix.refund-now',
+      'phrase.recovery.slowly',
+    ],
+    // Things go wrong twice in one evening — at natural speed, in the staff's own words. Four
+    // decisions: the dish, the bill, the room, the fix. (The noisy room and the room change are
+    // retrieved in the hotel chain above.)
+    finale: [{
+      practice: {
+        kind: 'quickReply',
+        challenge: true,
+        rounds: [
+          { npc: ["Here's your meal — one steak!", 'Voici votre plat — un steak !', 'Aquí tiene su plato — ¡un filete!', 'הנה הארוחה שלך — סטייק אחד!'],
+            options: [['phrase.fix.not-ordered', true], ['phrase.fix.change-rooms', false], ['phrase.fix.no-problem-thanks', false]] },
+          { npc: ["Let me check the bill. What's the problem?", 'Laissez-moi vérifier l’addition. Quel est le problème ?', 'Déjeme revisar la cuenta. ¿Cuál es el problema?', 'תן לי לבדוק את החשבון. מה הבעיה?'],
+            options: [['phrase.fix.charged-twice', true], ['phrase.hotelreq.room-noisy', false], ['phrase.fix.i-ordered', false]] },
+          { npc: ["I'm sorry to hear that. What's the problem?", 'Je suis désolé. Quel est le problème ?', 'Lo siento. ¿Cuál es el problema?', 'אני מצטער לשמוע. מה הבעיה?'],
+            options: [['phrase.hotelreq.ac-not-working', true], ['phrase.fix.i-ordered', false], ['phrase.fix.charged-twice', false]] },
+          { npc: ["I'm so sorry about that.", 'Je suis vraiment désolé.', 'Lo siento muchísimo.', 'אני מצטער על זה מאוד.'],
+            options: [['phrase.fix.can-you-fix', true], ['phrase.fix.i-ordered', false], ['phrase.fix.charged-twice', false]] },
+        ],
+      },
+      receipt: ['מנה שגויה, חיוב כפול ומזגן שלא עובד — אמרת מה הבעיה וביקשת שיתקנו, בקצב רגיל ובנימוס.', 'A wrong dish, a double charge and a dead AC — you said what was wrong and asked for a fix, at normal pace and politely.'],
+    }],
   },
 };

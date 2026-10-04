@@ -1658,131 +1658,183 @@ spanish:
 
 english:
 _Scene 1_
-**NPC:** Where are you headed?
+**NPC:** Hello! Where are you headed?
 **You:** One ticket to the centre, please.
-**NPC:** Platform two — it leaves in five minutes.
+**NPC:** Single or return?
+**You:** Single, please.
+**NPC:** That's three euros. It leaves every ten minutes.
+**You:** Which platform?
+**NPC:** Platform two. Straight ahead.
 **You:** Does this stop at the museum?
-**NPC:** Yes — three stops. Enjoy!
+**NPC:** Yes — it's three stops. I'll tell you when.
 
 _Scene 2_
-**NPC:** Hi! Where are you from?
-**You:** I'm from Israel.
 **NPC:** Welcome! Do you like it here?
-**You:** I like it a lot.
+**You:** Yes, I like it a lot.
 **NPC:** You should take the boat tour. It's fifty euros.
 **You:** I think it's too expensive.
-**NPC:** Hmm, maybe. Then walk in the old town — it's free!
+**NPC:** Really? Then you should try the old town. It's free.
 **You:** Can you recommend a place?
-**NPC:** 'Mama Rosa'. The food is wonderful. Enjoy!
+**NPC:** Of course — try 'Mama Rosa', in the old town. It's very good.
 
 _Scene 3_
-**NPC:** Hey! Where were you today?
+**NPC:** Here's your meal — one steak!
+**You:** This isn't what I ordered.
+**NPC:** Oh no, I'm so sorry! What did you order?
+**You:** I ordered the pasta.
+**NPC:** Of course — I'll bring the right one right away.
+**You:** No problem, thank you.
+**NPC:** Thank you for your patience. Dessert is on the house!
+
+_Scene 4_
+**NPC:** Hey! Where were you yesterday?
 **You:** I went to the old town.
 **NPC:** Did you like it?
 **You:** Yes, it was great!
-**NPC:** Good! And where are you going next?
+**NPC:** So, where are you going next?
 **You:** I'm going to Vietnam.
-**NPC:** Wow! I'm going home next week.
-**You:** What are you doing tomorrow?
-**NPC:** Tomorrow I'm free. Do you want to go to the beach?
-**You:** Of course!
-**NPC:** Great. See you tomorrow!
+**NPC:** Wow! How long will you be there?
+**You:** I'll be there for two weeks.
+**NPC:** Already! We'll miss you.
+**You:** And you? Where are you going next?
+**NPC:** Me? I'm going home. Are you coming?
+**You:** Maybe. I'm not sure — I'm tired.
+**NPC:** Great! See you at six!
 
 franch:
 _Scene 1_
-**NPC:** Vous allez où ?
+**NPC:** Bonjour ! Vous allez où ?
 **You:** Un billet pour le centre, s’il vous plaît.
-**NPC:** Quai numéro deux — il part dans cinq minutes.
+**NPC:** Aller simple ou aller-retour ?
+**You:** Aller simple, s’il vous plaît.
+**NPC:** Ça fait trois euros. Ça part toutes les dix minutes.
+**You:** Quel quai ?
+**NPC:** Quai numéro deux. Tout droit.
 **You:** Ça s’arrête au musée ?
-**NPC:** Oui — trois arrêts. Bonne visite !
+**NPC:** Oui — c’est à trois arrêts. Je vous dirai quand.
 
 _Scene 2_
-**NPC:** Bonjour ! Vous venez d’où ?
-**You:** Je viens d’Israël.
 **NPC:** Bienvenue ! Ça vous plaît ici ?
-**You:** J’aime beaucoup.
+**You:** Oui, j’aime beaucoup.
 **NPC:** Vous devriez faire le tour en bateau. C’est cinquante euros.
 **You:** Je pense que c’est trop cher.
-**NPC:** Hmm, peut-être. Alors promenez-vous dans la vieille ville — c’est gratuit !
+**NPC:** Vraiment ? Alors vous devriez essayer la vieille ville. C’est gratuit.
 **You:** Vous pouvez recommander un endroit ?
-**NPC:** « Mama Rosa ». La cuisine est excellente. Bonne journée !
+**NPC:** Bien sûr — essayez « Mama Rosa », dans la vieille ville. C’est très bon.
 
 _Scene 3_
-**NPC:** Salut ! Tu étais où aujourd’hui ?
+**NPC:** Voici votre plat — un steak !
+**You:** Ce n’est pas ce que j’ai commandé.
+**NPC:** Oh non, je suis vraiment désolé ! Qu’avez-vous commandé ?
+**You:** J’ai commandé les pâtes.
+**NPC:** Bien sûr — je vous apporte le bon tout de suite.
+**You:** Pas de problème, merci.
+**NPC:** Merci de votre patience. Le dessert est offert par la maison !
+
+_Scene 4_
+**NPC:** Salut ! Tu étais où hier ?
 **You:** Je suis allé dans la vieille ville.
 **NPC:** Tu as aimé ?
 **You:** Oui, c’était super !
-**NPC:** Super ! Et tu vas où après ?
+**NPC:** Alors, tu vas où après ?
 **You:** Je vais au Vietnam.
-**NPC:** Waouh ! Moi, je rentre chez moi la semaine prochaine.
-**You:** Tu fais quoi demain ?
-**NPC:** Demain, je suis libre. Tu veux aller à la plage ?
-**You:** Bien sûr !
-**NPC:** Super. À demain !
+**NPC:** Waouh ! Tu restes combien de temps ?
+**You:** Je vais rester deux semaines.
+**NPC:** Déjà ! Tu vas nous manquer.
+**You:** Et toi ? Tu vas où après ?
+**NPC:** Moi ? Je rentre chez moi. Tu viens ?
+**You:** Peut-être. Je ne suis pas sûr — je suis fatigué.
+**NPC:** Super ! À six heures !
 
 spanish:
 _Scene 1_
-**NPC:** ¿A dónde va?
+**NPC:** ¡Hola! ¿A dónde va?
 **You:** Un billete para el centro, por favor.
-**NPC:** Andén número dos — sale en cinco minutos.
+**NPC:** ¿Solo ida o ida y vuelta?
+**You:** Solo ida, por favor.
+**NPC:** Son tres euros. Sale cada diez minutos.
+**You:** ¿Qué andén?
+**NPC:** Andén número dos. Todo recto.
 **You:** ¿Para en el museo?
-**NPC:** Sí — tres paradas. ¡Que lo disfrute!
+**NPC:** Sí — son tres paradas. Le aviso cuándo.
 
 _Scene 2_
-**NPC:** ¡Hola! ¿De dónde es?
-**You:** Soy de Israel.
 **NPC:** ¡Bienvenido! ¿Le gusta este lugar?
-**You:** Me gusta mucho.
+**You:** Sí, me gusta mucho.
 **NPC:** Debería hacer el paseo en barco. Son cincuenta euros.
 **You:** Creo que es demasiado caro.
-**NPC:** Mmm, puede ser. Entonces pasee por el casco antiguo — ¡es gratis!
+**NPC:** ¿De verdad? Entonces debería visitar el casco antiguo. Es gratis.
 **You:** ¿Me puede recomendar un sitio?
-**NPC:** «Mama Rosa». La comida es estupenda. ¡Que disfrute!
+**NPC:** Claro — pruebe «Mama Rosa», en el casco antiguo. Es muy bueno.
 
 _Scene 3_
-**NPC:** ¡Hola! ¿Dónde estuviste hoy?
+**NPC:** Aquí tiene su plato — ¡un filete!
+**You:** Esto no es lo que pedí.
+**NPC:** ¡Ay, lo siento muchísimo! ¿Qué pidió?
+**You:** Pedí la pasta.
+**NPC:** Claro — le traigo el correcto enseguida.
+**You:** No pasa nada, gracias.
+**NPC:** Gracias por su paciencia. ¡El postre corre por cuenta de la casa!
+
+_Scene 4_
+**NPC:** ¡Hola! ¿Dónde estuviste ayer?
 **You:** Fui al casco antiguo.
 **NPC:** ¿Te gustó?
 **You:** ¡Sí, estuvo genial!
-**NPC:** ¡Qué bien! ¿Y a dónde vas después?
+**NPC:** Bueno, ¿a dónde vas después?
 **You:** Voy a Vietnam.
-**NPC:** ¡Guau! Yo me voy a casa la semana que viene.
-**You:** ¿Qué haces mañana?
-**NPC:** Mañana estoy libre. ¿Quieres ir a la playa?
-**You:** ¡Claro!
-**NPC:** Genial. ¡Hasta mañana!
+**NPC:** ¡Guau! ¿Cuánto tiempo vas a estar allí?
+**You:** Voy a estar allí dos semanas.
+**NPC:** ¡Ya! Te vamos a echar de menos.
+**You:** ¿Y tú? ¿A dónde vas después?
+**NPC:** ¿Yo? Me voy a casa. ¿Vienes?
+**You:** Quizás. No estoy seguro — estoy cansado.
+**NPC:** ¡Genial! ¡Nos vemos a las seis!
 
 עברית:
 _Scene 1_
-**NPC:** לאן אתה נוסע?
+**NPC:** שלום! לאן אתה נוסע?
 **You:** כרטיס אחד למרכז, בבקשה.
-**NPC:** רציף שתיים — יוצא בעוד חמש דקות.
+**NPC:** הלוך או הלוך-חזור?
+**You:** הלוך, בבקשה.
+**NPC:** זה שלושה יורו. יוצא כל עשר דקות.
+**You:** איזה רציף?
+**NPC:** רציף שתיים. ישר קדימה.
 **You:** זה עוצר במוזיאון?
-**NPC:** כן — שלוש תחנות. תיהנה!
+**NPC:** כן — זה שלוש תחנות. אני אגיד לך מתי.
 
 _Scene 2_
-**NPC:** היי! מאיפה אתה?
-**You:** אני מישראל.
 **NPC:** ברוך הבא! אתה אוהב את המקום?
-**You:** אני מאוד אוהב.
+**You:** כן, אני מאוד אוהב.
 **NPC:** כדאי לך לעשות את הסיור בסירה. זה חמישים יורו.
 **You:** אני חושב שזה יקר מדי.
-**NPC:** הממ, אולי. אז תטייל בעיר העתיקה — זה בחינם!
+**NPC:** באמת? אז כדאי לך לנסות את העיר העתיקה. זה בחינם.
 **You:** אתה יכול להמליץ על מקום?
-**NPC:** 'מאמא רוזה'. האוכל נהדר. תיהנה!
+**NPC:** בטח — תנסה את 'מאמא רוזה', בעיר העתיקה. מאוד טוב שם.
 
 _Scene 3_
-**NPC:** היי! איפה היית היום?
+**NPC:** הנה הארוחה שלך — סטייק אחד!
+**You:** זה לא מה שהזמנתי.
+**NPC:** אוי לא, אני מצטער מאוד! מה הזמנת?
+**You:** הזמנתי את הפסטה.
+**NPC:** כמובן — אביא את הנכון מיד.
+**You:** אין בעיה, תודה.
+**NPC:** תודה על הסבלנות. הקינוח על חשבון הבית!
+
+_Scene 4_
+**NPC:** היי! איפה היית אתמול?
 **You:** הלכתי לעיר העתיקה.
 **NPC:** אהבת?
 **You:** כן, היה מעולה!
-**NPC:** יופי! ולאן אתה נוסע אחרי זה?
+**NPC:** אז לאן אתה נוסע אחרי זה?
 **You:** אני נוסע לווייטנאם.
-**NPC:** וואו! אני חוזר הביתה בשבוע הבא.
-**You:** מה אתה עושה מחר?
-**NPC:** מחר אני פנוי. רוצה ללכת לים?
-**You:** ברור!
-**NPC:** מעולה. נתראה מחר!
+**NPC:** וואו! כמה זמן תהיה שם?
+**You:** אני אהיה שם שבועיים.
+**NPC:** כבר! נתגעגע אליך.
+**You:** ואתה? לאן אתה נוסע אחרי זה?
+**NPC:** אני? אני חוזר הביתה. אתה בא?
+**You:** אולי. אני לא בטוח — אני עייף.
+**NPC:** מעולה! נתראה בשש!
 
 ---
 

@@ -67,12 +67,85 @@ export const FUTURE_PLANS: MissionSpec = {
     said: 'phrase.future.going-to-vietnam',
     replies: ['reply.future.how-long', 'reply.future.what-do-there', 'reply.future.and-after', 'reply.future.be-careful'],
     repliesReceipt: ['אתה מזהה את שאלות ההמשך: לכמה זמן, מה תעשה, ומה אחר כך.', 'You recognize the follow-ups: how long, what will you do, and what next.'],
-    quiz: ['reply.future.how-long', 'reply.future.and-after', 'reply.future.tomorrow-morning-q'],
-    ambush: {
-      npc: ['Hold on before you go what are you doing tomorrow morning do you have time for a coffee?', 'Attends, avant de partir : tu fais quoi demain matin, tu as le temps pour un café ?', 'Espera, antes de irte: ¿qué haces mañana por la mañana, tienes tiempo para un café?', 'רגע, לפני שאתה נוסע — מה אתה עושה מחר בבוקר, יש לך זמן לקפה?'],
-      correct: 'reply.future.tomorrow-morning-q',
-      wrong: 'reply.future.how-long',
-      receipt: ['שאלה ארוכה על מחר בבוקר — והבנת מה שואלים.', 'A long question about tomorrow morning — and you understood what was asked.'],
-    },
+    practice: [
+      // A traveler asks about your plans: where, how long, what, and then — and you ask back.
+      {
+        kind: 'quickReply',
+        label: ['שואלים על התוכניות שלך — מה עונים?', 'They ask about your plans — what do you say?'],
+        rounds: [
+          { npc: ['So, where are you going next?', 'Alors, tu vas où après ?', 'Bueno, ¿a dónde vas después?', 'אז לאן אתה נוסע אחרי זה?'],
+            options: [['phrase.future.going-to-vietnam', true], ['phrase.future.ill-be-there', false], ['phrase.future.want-to-visit', false]] },
+          { prompt: 'reply.future.how-long', options: [['phrase.future.ill-be-there', true], ['phrase.future.tomorrow-morning', false], ['phrase.future.going-to-vietnam', false]] },
+          { prompt: 'reply.future.what-do-there', options: [['phrase.future.want-to-visit', true], ['phrase.future.want-to-try-food', true], ['phrase.future.ill-be-there', false]] },
+          { prompt: 'reply.future.and-after', options: [['phrase.future.after-that', true], ['phrase.future.want-to-visit', false], ['phrase.future.ill-be-there', false]] },
+          { prompt: 'reply.future.tomorrow-morning-q', options: [['phrase.future.tomorrow-morning', true], ['phrase.future.after-that', false], ['phrase.future.ill-be-there', false]] },
+          { situation: ['סיפרת לאן אתה נוסע. עכשיו תשאל אותו לאן הוא ממשיך.', 'You have said where you are going. Now ask where they are going.'],
+            options: [['phrase.future.where-next', true], ['phrase.future.going-to-vietnam', false], ['phrase.future.after-that', false]] },
+        ],
+      },
+      // The same plan with another length of stay and another place. Durations come from Mission 06.
+      {
+        kind: 'swap',
+        label: ['התוכנית שלך', 'Your plan'],
+        rounds: [
+          ...([['days', ['אתה נשאר שם שלושה ימים', 'You will stay three days']], ['week', ['אתה נשאר שם שבוע', 'You will stay a week']], ['weeks', ['אתה נשאר שם שבועיים', 'You will stay two weeks']]] as const).map(([right, cue]) => ({
+            frame: ["I'll be there for ___.", 'Je vais rester ___.', 'Voy a estar allí ___.'] as const,
+            itemId: 'phrase.future.ill-be-there',
+            cue: { emoji: '📅', text: cue },
+            options: [
+              [['three days', 'trois jours', 'tres días'], 'אני אהיה שם שלושה ימים.', right === 'days'],
+              [['a week', 'une semaine', 'una semana'], 'אני אהיה שם שבוע.', right === 'week'],
+              [['two weeks', 'deux semaines', 'dos semanas'], 'אני אהיה שם שבועיים.', right === 'weeks'],
+            ] as const,
+          })),
+          ...([['vietnam', '🇻🇳', ['אתה נוסע לווייטנאם', 'You are going to Vietnam']], ['thailand', '🇹🇭', ['אתה נוסע לתאילנד', 'You are going to Thailand']]] as const).map(([right, emoji, cue]) => ({
+            frame: ["I'm going to ___.", 'Je vais ___.', 'Voy a ___.'] as const,
+            itemId: 'phrase.future.going-to-vietnam',
+            cue: { emoji, text: cue },
+            options: [
+              [['Vietnam', 'au Vietnam', 'Vietnam'], 'אני נוסע לווייטנאם.', right === 'vietnam'],
+              [['Thailand', 'en Thaïlande', 'Tailandia'], 'אני נוסע לתאילנד.', right === 'thailand'],
+            ] as const,
+          })),
+        ],
+      },
+      // "After that…" and the question that hands the conversation back.
+      {
+        kind: 'sentenceBuilder',
+        rounds: [
+          { itemId: 'phrase.future.after-that', chunks: [['After that', "I'm going", 'to Thailand.'], ['Après ça,', 'je vais', 'en Thaïlande.'], ['Después de eso', 'voy', 'a Tailandia.']] },
+          { itemId: 'phrase.future.where-next', chunks: [['Where', 'are you going', 'next?'], ['Tu vas', 'où', 'après ?'], ['¿A dónde', 'vas', 'después?']] },
+        ],
+      },
+    ],
+    review: [
+      'phrase.future.going-to-vietnam', 'phrase.future.ill-be-there', 'phrase.future.want-to-visit', 'phrase.future.by-motorbike', 'phrase.future.after-that',
+      'phrase.future.tomorrow-morning', 'phrase.future.where-next',
+      'reply.future.how-long', 'reply.future.what-do-there', 'reply.future.and-after', 'reply.future.tomorrow-morning-q',
+      'phrase.recovery.slowly',
+    ],
+    // The itinerary at natural speed — the traveler's own questions.
+    finale: [{
+      practice: {
+        kind: 'quickReply',
+        challenge: true,
+        rounds: [
+          { npc: ['So, where are you going next?', 'Alors, tu vas où après ?', 'Bueno, ¿a dónde vas después?', 'אז לאן אתה נוסע אחרי זה?'],
+            options: [['phrase.future.going-to-vietnam', true], ['phrase.future.after-that', false], ['phrase.future.where-next', false]] },
+          { npc: ['Wow! How long will you be there?', 'Waouh ! Tu restes combien de temps ?', '¡Guau! ¿Cuánto tiempo vas a estar allí?', 'וואו! כמה זמן תהיה שם?'],
+            options: [['phrase.future.ill-be-there', true], ['phrase.future.tomorrow-morning', false], ['phrase.future.want-to-visit', false]] },
+          { npc: ['What do you want to do there?', 'Tu veux faire quoi là-bas ?', '¿Qué quieres hacer allí?', 'מה אתה רוצה לעשות שם?'],
+            options: [['phrase.future.want-to-visit', true], ['phrase.future.ill-be-there', false], ['phrase.future.after-that', false]] },
+          { npc: ['Sounds amazing! Be careful. And after that?', 'Ça a l’air génial ! Fais attention. Et après ça ?', '¡Suena increíble! Ten cuidado. ¿Y después de eso?', 'נשמע מדהים! תיזהר. ואחרי זה?'],
+            options: [['phrase.future.after-that', true], ['phrase.future.going-to-vietnam', false], ['phrase.future.want-to-visit', false]] },
+          { npc: ["Already! We'll miss you.", 'Déjà ! Tu vas nous manquer.', '¡Ya! Te vamos a echar de menos.', 'כבר! נתגעגע אליך.'],
+            options: [
+              ['phrase.future.where-next', true, ['And you? Where are you going next?', 'Et toi ? Tu vas où après ?', '¿Y tú? ¿A dónde vas después?']],
+              ['phrase.future.ill-be-there', false], ['phrase.future.want-to-visit', false],
+            ] },
+        ],
+      },
+      receipt: ['לאן, לכמה זמן, מה תעשה ומה אחר כך — סיפרת את התוכנית שלך בקצב רגיל, ושאלת בחזרה.', 'Where, how long, what you will do and what comes after — you told your plan at normal pace, and asked back.'],
+    }],
   },
 };

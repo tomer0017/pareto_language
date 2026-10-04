@@ -1,6 +1,7 @@
 import type { LocalizedText } from '@ready/content-schema';
 import type { BootcampDayContent, BootcampDialogue, BootcampItem } from '../types.js';
 import { recoveryEs } from './recovery.js';
+import { m19Flow } from '../practiceCity.js';
 
 /**
  * Spanish Mission 19 — "Transporte público" (Public Transport). Spanish parallel of English mission 18:
@@ -19,6 +20,7 @@ export const DAY18_ES_ITEMS: BootcampItem[] = [
   { id: 'es.phrase.trans.does-stop', text: '¿Para en el museo?', meaning: T('זה עוצר במוזיאון?', 'Does this stop at the museum?'),
     tip: T('התבנית: ¿Para en ___ ? — מוודאת שאתה יורד נכון.', 'Template: ¿Para en ___ ? — makes sure you get off in the right place.') },
   { id: 'es.phrase.trans.next-one', text: '¿Cuándo es el próximo?', meaning: T('מתי הבא?', "When's the next one?") },
+  { id: 'es.phrase.trans.single', text: 'Solo ida, por favor.', meaning: T('הלוך, בבקשה.', 'Single, please.') },
   // hear — booth + platform
   { id: 'es.reply.trans.single-return', text: '¿Solo ida o ida y vuelta?', meaning: T('הלוך או הלוך-חזור?', 'Single or return?') },
   { id: 'es.reply.trans.platform-two', text: 'Andén número dos.', meaning: T('רציף שתיים.', 'Platform two.') },
@@ -91,23 +93,9 @@ export const DAY18_ES: BootcampDayContent = {
     { kind: 'talk', icon: '🚇', title: T('משימה 19: תחבורה ציבורית', 'Mission 19: Public Transport'),
       body: [
         T('העיר זזה בשבילך — בזול. כרטיס, רציף, כיוון, והתחנה הנכונה.', 'The city moves for you — cheaply. Ticket, platform, direction, the right stop.'),
-        T('חצי מהמשימה הזאת היא האזנה: הכרזות ותשובות מהירות של איזה-רציף.', 'Half of this mission is listening: announcements and fast which-platform answers.'),
+        T('חצי מהמשימה הזאת היא האזנה: מספר הרציף, כמה תחנות, כל כמה דקות — ותיקון מהיר אחד בסוף.', 'Half of this mission is listening: the platform number, how many stops, how often it leaves — and one fast correction at the end.'),
       ], cta: T('לגשת לדלפק הכרטיסים', 'Step up to the ticket desk') },
-    { kind: 'tool', itemId: 'es.phrase.trans.one-ticket', index: 1, total: 4, label: T('לקנות כרטיס', 'Buy a ticket') },
-    { kind: 'tool', itemId: 'es.phrase.trans.which-platform', index: 2, total: 4, label: T('לאתר רציף', 'Find the platform') },
-    { kind: 'tool', itemId: 'es.phrase.trans.does-stop', index: 3, total: 4, label: T('לוודא יעד', 'Confirm the stop') },
-    { kind: 'tool', itemId: 'es.phrase.trans.next-one', index: 4, total: 4, label: T('לשאול על הבא', 'Ask about the next one') },
-    { kind: 'replies', saidItemId: 'es.phrase.trans.one-ticket',
-      replyIds: ['es.reply.trans.single-return', 'es.reply.trans.platform-two', 'es.reply.trans.every-ten', 'es.reply.trans.three-stops'] },
-    { kind: 'receipt', text: T('אתה מזהה את תשובות הדלפק והרציף — הלוך/חזור, מספר רציף, תדירות.', 'You recognize the booth and platform answers — single/return, platform number, frequency.') },
-    { kind: 'quiz', itemId: 'es.reply.trans.single-return', wrongIds: ['es.reply.trans.platform-two', 'es.reply.trans.three-stops'] },
-    { kind: 'quiz', itemId: 'es.reply.trans.every-ten', wrongIds: ['es.reply.trans.wrong-way', 'es.reply.trans.stop-next'] },
-    { kind: 'dialogue', dialogueId: 'transport' },
-    { kind: 'receipt', text: T('קנית כרטיס, מצאת רציף, ווידאת שהרכבת עוצרת ביעד שלך.', 'You bought a ticket, found the platform, and confirmed the train stops at your destination.') },
-    { kind: 'swipe', itemIds: DAY18_ES_ITEMS.map((i) => i.id) },
-    { kind: 'ambush', npc: { en: 'Este tren lleva retraso — mejor coja el autobús alternativo en la parada C.', tr: TR("This train's been delayed — you'll want the replacement bus from stand C instead.", 'הרכבת הזאת מתעכבת — עדיף לך את האוטובוס החלופי מעמדה C.'), he: 'הרכבת הזאת מתעכבת — עדיף לך את האוטובוס החלופי מעמדה C.' },
-      correctItemId: 'es.phrase.recovery.repeat', wrongItemId: 'es.phrase.trans.which-platform' },
-    { kind: 'receipt', text: T('הודעת שיבוש מהירה — וביקשת שיחזרו במקום לעלות לרכבת הלא נכונה.', 'A fast disruption announcement — and you asked them to repeat instead of boarding the wrong train.') },
-    { kind: 'summary' },
+    // From the key sentences onward the flow is shared by all languages: see practiceCity.ts.
+    ...m19Flow('es'),
   ],
 };

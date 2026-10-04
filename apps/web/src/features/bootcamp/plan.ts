@@ -196,7 +196,7 @@ export const BOOTCAMP_PLAN: MissionPlan[] = [
     objective: T('כרטיס, רציף, כיוון, ירידה נכונה.', 'Ticket, platform, direction, the right stop.'),
     confidenceGain: T('העיר זזה בשבילי, בזול.', 'The city moves for me, cheaply.'),
     situations: ['transport'], targets: { concepts: 8, phrases: 4, dialogues: 1 },
-    listeningSkill: 'announcements + which-platform answers', speakingSkill: 'ticket + does-it-stop',
+    listeningSkill: 'platform / stops / frequency by ear + one fast correction', speakingSkill: 'ticket + does-it-stop',
     minutes: 20, feeling: T('אני זז כמו מקומי.', 'I move like a local.'),
     why: 'Unlocks independence beyond taxi budgets.',
     preparesNext: 'City movement; then talking about where you went.' },

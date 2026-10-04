@@ -74,12 +74,96 @@ export const OPINIONS: MissionSpec = {
     said: 'phrase.opin.i-think-expensive',
     replies: ['reply.opin.really', 'reply.opin.why', 'reply.opin.thats-true', 'reply.opin.what-do-you-think'],
     repliesReceipt: ['אתה מזהה כששואלים לדעתך — וכשמגיבים אליה.', 'You recognize when your opinion is asked for — and when someone reacts to it.'],
-    quiz: ['reply.opin.why', 'reply.opin.really', 'reply.opin.are-you-coming'],
-    ambush: {
-      npc: ['Okay honestly this restaurant or the other one what do you think?', 'Bon, franchement, ce restaurant ou l’autre, tu en penses quoi ?', 'A ver, sinceramente, este restaurante o el otro, ¿qué te parece?', 'טוב, בכנות — המסעדה הזאת או השנייה, מה אתה חושב?'],
-      correct: 'reply.opin.what-do-you-think',
-      wrong: 'reply.opin.thats-true',
-      receipt: ['שאלו לדעתך, מהר ובין שתי אפשרויות — והבנת.', 'You were asked for your opinion, fast, between two options — and you got it.'],
-    },
+    practice: [
+      // Saying what you think: an opinion, a disagreement, a reason, a doubt, a decision.
+      {
+        kind: 'quickReply',
+        label: ['מה אתה חושב? — מה אומרים?', 'What do you think? — what do you say?'],
+        rounds: [
+          { prompt: 'reply.opin.what-do-you-think', options: [['phrase.opin.i-think-expensive', true], ['phrase.opin.because', false], ['phrase.opin.of-course', false]] },
+          { situation: ['הוא חושב שהמחיר טוב. אתה לא מסכים.', 'They think the price is good. You do not agree.'],
+            options: [['phrase.opin.dont-think-so', true], ['phrase.opin.i-like-it', false], ['phrase.opin.of-course', false]] },
+          { prompt: 'reply.opin.why', options: [['phrase.opin.because', true], ['phrase.opin.of-course', false], ['phrase.opin.lets-do-it', false]] },
+          { prompt: 'reply.opin.do-you-like-it', options: [['phrase.opin.i-like-it', true], ['phrase.opin.dont-like-it', true], ['phrase.opin.because', false]] },
+          { prompt: 'reply.opin.are-you-coming', options: [
+            ['phrase.opin.not-sure', true, ["Maybe. I'm not sure — I'm tired.", 'Peut-être. Je ne suis pas sûr — je suis fatigué.', 'Quizás. No estoy seguro — estoy cansado.']],
+            ['phrase.opin.of-course', true], ['phrase.opin.because', false],
+          ] },
+          { situation: ['החלטת. אתה בא.', 'You have decided. You are in.'],
+            options: [['phrase.opin.lets-do-it', true], ['phrase.opin.dont-think-so', false], ['phrase.opin.not-sure', false]] },
+        ],
+      },
+      // Short reactions keep a conversation alive without a long sentence.
+      {
+        kind: 'quickReply',
+        label: ['להגיב בקצרה', 'React in a word or two'],
+        rounds: [
+          { npc: ["It's free. But it starts at six in the morning.", 'C’est gratuit. Mais ça commence à six heures du matin.', 'Es gratis. Pero empieza a las seis de la mañana.', 'זה בחינם. אבל זה מתחיל בשש בבוקר.'],
+            options: [
+              ['reply.opin.really', true],
+              ['phrase.opin.thats-strange', true, ["At six? That's strange.", 'À six heures ? C’est bizarre.', '¿A las seis? Qué raro.']],
+              ['phrase.opin.because', false],
+            ] },
+          { npc: ["Come on — it's only two hours, and it's free.", 'Allez — c’est seulement deux heures, et c’est gratuit.', 'Venga — son solo dos horas, y es gratis.', 'נו — זה רק שעתיים, וזה בחינם.'],
+            options: [['reply.opin.thats-true', true], ['phrase.opin.lets-do-it', true], ['phrase.opin.i-think-expensive', false]] },
+          { npc: ['Great! See you at six!', 'Super ! À six heures !', '¡Genial! ¡Nos vemos a las seis!', 'מעולה! נתראה בשש!'],
+            options: [['phrase.opin.of-course', true], ['phrase.opin.dont-think-so', false], ['phrase.opin.because', false]] },
+        ],
+      },
+      // "I think it's ___" with three verdicts the conversation already uses.
+      {
+        kind: 'swap',
+        label: ['מה אתה חושב על זה?', 'What do you think of it?'],
+        rounds: ([['expensive', '💸', ['זה יקר לך מדי', 'It costs too much for you']], ['good', '👍', ['המחיר נראה לך טוב', 'The price looks good to you']], ['strange', '🤔', ['זה נראה לך מוזר', 'It seems odd to you']]] as const).map(([right, emoji, cue]) => ({
+          frame: ["I think it's ___.", 'Je pense que c’est ___.', 'Creo que es ___.'] as const,
+          itemId: 'phrase.opin.i-think-expensive',
+          cue: { emoji, text: cue },
+          options: [
+            [['too expensive', 'trop cher', 'demasiado caro'], 'אני חושב שזה יקר מדי.', right === 'expensive'],
+            [['a good price', 'un bon prix', 'un buen precio'], 'אני חושב שזה מחיר טוב.', right === 'good'],
+            [['strange', 'bizarre', 'raro'], 'אני חושב שזה מוזר.', right === 'strange'],
+          ] as const,
+        })),
+      },
+      // An opinion, then its reason — the two halves of one thought.
+      {
+        kind: 'sentenceBuilder',
+        rounds: [
+          { itemId: 'phrase.opin.i-think-expensive', chunks: [['I think', "it's", 'too expensive.'], ['Je pense', 'que c’est', 'trop cher.'], ['Creo', 'que es', 'demasiado caro.']] },
+          { itemId: 'phrase.opin.because', chunks: [['Because', "it's only", 'one hour.'], ['Parce que', 'c’est seulement', 'une heure.'], ['Porque', 'es solo', 'una hora.']] },
+        ],
+      },
+    ],
+    review: [
+      'phrase.opin.i-think-expensive', 'phrase.opin.dont-think-so', 'phrase.opin.because', 'phrase.opin.not-sure', 'phrase.opin.i-like-it', 'phrase.opin.of-course',
+      'phrase.opin.lets-do-it',
+      'reply.opin.what-do-you-think', 'reply.opin.really', 'reply.opin.why', 'reply.opin.thats-true',
+      'phrase.recovery.repeat',
+    ],
+    // Choosing a tour with a friend, at natural speed — their own lines.
+    finale: [{
+      practice: {
+        kind: 'quickReply',
+        challenge: true,
+        rounds: [
+          { npc: ['Look — a boat tour, fifty euros. What do you think?', 'Regarde — un tour en bateau, cinquante euros. Tu en penses quoi ?', 'Mira — un paseo en barco, cincuenta euros. ¿Qué te parece?', 'תראה — סיור בסירה, חמישים יורו. מה אתה חושב?'],
+            options: [['phrase.opin.i-think-expensive', true], ['phrase.opin.because', false], ['phrase.opin.of-course', false]] },
+          { npc: ["Really? I think it's a good price.", 'Vraiment ? Moi, je pense que c’est un bon prix.', '¿De verdad? Yo creo que es un buen precio.', 'באמת? אני חושב שזה מחיר טוב.'],
+            options: [['phrase.opin.dont-think-so', true], ['phrase.opin.because', false], ['phrase.opin.i-like-it', false]] },
+          { npc: ['Why?', 'Pourquoi ?', '¿Por qué?', 'למה?'],
+            options: [['phrase.opin.because', true], ['phrase.opin.of-course', false], ['phrase.opin.lets-do-it', false]] },
+          { npc: ["That's true. Look at this one — a walking tour. Do you like it?", 'C’est vrai. Regarde celui-ci — une visite à pied. Ça te plaît ?', 'Es verdad. Mira este — un paseo a pie. ¿Te gusta?', 'נכון. תראה את זה — סיור רגלי. מוצא חן בעיניך?'],
+            options: [['phrase.opin.i-like-it', true], ['phrase.opin.because', false], ['phrase.opin.dont-think-so', false]] },
+          { npc: ["It's because of the heat. Are you coming?", 'C’est à cause de la chaleur. Tu viens ?', 'Es por el calor. ¿Vienes?', 'זה בגלל החום. אתה בא?'],
+            options: [
+              ['phrase.opin.not-sure', true, ["Maybe. I'm not sure — I'm tired.", 'Peut-être. Je ne suis pas sûr — je suis fatigué.', 'Quizás. No estoy seguro — estoy cansado.']],
+              ['phrase.opin.because', false], ['phrase.opin.i-think-expensive', false],
+            ] },
+          { npc: ["Come on — it's only two hours, and it's free.", 'Allez — c’est seulement deux heures, et c’est gratuit.', 'Venga — son solo dos horas, y es gratis.', 'נו — זה רק שעתיים, וזה בחינם.'],
+            options: [['phrase.opin.lets-do-it', true], ['phrase.opin.because', false], ['phrase.opin.i-think-expensive', false]] },
+        ],
+      },
+      receipt: ['אמרת מה אתה חושב, לא הסכמת, הסברת למה, התלבטת — והחלטת. בקצב של שיחה אמיתית.', 'You said what you think, disagreed, explained why, hesitated — and decided. At the pace of a real conversation.'],
+    }],
   },
 };

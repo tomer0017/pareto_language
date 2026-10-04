@@ -266,76 +266,118 @@ export const EVERYDAY_DAY: MissionSpec = {
   closing: ['יום רגיל שלם, בלי עזרה: קפה, תוכניות עם חבר, סופר וארוחת ערב — וגם כשזה היה מהיר, לא קפאת.', 'A whole ordinary day, alone: coffee, plans with a friend, the supermarket and dinner — and when it got fast, you did not freeze.'],
 };
 
+/**
+ * City & Conversation — the checkpoint of Missions 19–23: one day in a city, cold. The station, a
+ * chat with a local, a meal that goes wrong, and an evening talk with another traveler about what
+ * you did and where you are going. Same rules as the earlier checkpoints: nothing is taught, quizzed
+ * or reviewed; no translation before the learner answers; every word was met in Missions 01–23 (a
+ * test enforces it); every turn is a real decision between the line that fits and a real line from
+ * another moment — often the same idea in the wrong time (went / going); a conversation-help tool
+ * counts as success; one moment is at natural speed.
+ */
 export const CITY_CONVERSATION: MissionSpec = {
   day: 23,
   title: ['נקודת ביקורת: עיר ושיחה', 'CHECKPOINT: City & Conversation'],
   icon: '🏙️',
   intro: [
     ['אין חומר חדש היום. רק הוכחה.', 'No new material today. Just proof.'],
-    ['לזוז בעיר — וגם להחזיק שיחה: מאיפה אתה, מה עשית, לאן אתה ממשיך, מה אתה חושב.', 'Move through the city — and hold a conversation too: where you are from, what you did, where you go next, what you think.'],
+    ['יום אחד בעיר: תחנה, שיחה עם מקומי, ארוחה שמשתבשת, ושיחת ערב עם מטייל — בלי הכנה ובלי תרגום.', 'One day in a city: the station, a chat with a local, a meal that goes wrong, and an evening talk with a traveler — unprepared and untranslated.'],
   ],
   cta: ['לצאת לעיר', 'Head into the city'],
   scenes: [
     {
       id: 'cold-transport',
+      cold: true,
       receipt: ['כרטיס, רציף ותחנה — בקצב של תחנה אמיתית.', 'Ticket, platform and stop — at the pace of a real station.'],
+      // A correction at natural speed, made only of what Mission 19 already said.
       ambush: {
-        npc: ['Careful this one is going the wrong way you need the other platform', 'Attention, celui-ci va dans le mauvais sens, il vous faut l’autre quai', 'Cuidado, este va en dirección contraria, necesita el otro andén', 'זהירות, זה נוסע בכיוון ההפוך — אתה צריך את הרציף השני'],
+        mode: 'speed',
+        npc: ["You're going the wrong way. Platform two — it leaves every ten minutes.", 'Vous allez dans le mauvais sens. Quai numéro deux — ça part toutes les dix minutes.', 'Va en dirección contraria. Andén número dos — sale cada diez minutos.', 'אתה בכיוון הלא נכון. רציף שתיים — יוצא כל עשר דקות.'],
         correct: 'reply.trans.wrong-way',
         wrong: 'reply.trans.three-stops',
-        receipt: ['אזהרה מהירה — והבנת שאתה בכיוון הלא נכון.', 'A quick warning — and you understood you were going the wrong way.'],
+        receipt: ['תיקון מהיר על הרציף, בלי מילה חדשה — והבנת שאתה בכיוון הלא נכון.', 'A quick correction on the platform, with not one new word — and you understood you were going the wrong way.'],
       },
       lines: [
-        npc('Where are you headed?', 'Vous allez où ?', '¿A dónde va?', 'לאן אתה נוסע?', 'fast'),
-        you(known('phrase.trans.one-ticket')),
-        npc('Platform two — it leaves in five minutes.', 'Quai numéro deux — il part dans cinq minutes.', 'Andén número dos — sale en cinco minutos.', 'רציף שתיים — יוצא בעוד חמש דקות.'),
-        you(known('phrase.trans.does-stop')),
-        npc('Yes — three stops. Enjoy!', 'Oui — trois arrêts. Bonne visite !', 'Sí — tres paradas. ¡Que lo disfrute!', 'כן — שלוש תחנות. תיהנה!'),
+        npc('Hello! Where are you headed?', 'Bonjour ! Vous allez où ?', '¡Hola! ¿A dónde va?', 'שלום! לאן אתה נוסע?', 'fast'),
+        you(known('phrase.trans.one-ticket'), { wrong: [known('phrase.trans.does-stop')] }),
+        npc('Single or return?', 'Aller simple ou aller-retour ?', '¿Solo ida o ida y vuelta?', 'הלוך או הלוך-חזור?', 'fast'),
+        you(known('phrase.trans.single'), {
+          wrong: [known('phrase.trans.which-platform')],
+          rec: { tool: 'slowly', npc: ['Single — or — return?', 'Aller simple — ou — aller-retour ?', '¿Solo ida — o — ida y vuelta?', 'הלוך — או — הלוך-חזור?'] },
+        }),
+        npc("That's three euros. It leaves every ten minutes.", 'Ça fait trois euros. Ça part toutes les dix minutes.', 'Son tres euros. Sale cada diez minutos.', 'זה שלושה יורו. יוצא כל עשר דקות.'),
+        you(known('phrase.trans.which-platform'), { wrong: [known('phrase.trans.one-ticket')] }),
+        npc('Platform two. Straight ahead.', 'Quai numéro deux. Tout droit.', 'Andén número dos. Todo recto.', 'רציף שתיים. ישר קדימה.'),
+        you(known('phrase.trans.does-stop'), { wrong: [known('phrase.trans.single')] }),
+        npc("Yes — it's three stops. I'll tell you when.", 'Oui — c’est à trois arrêts. Je vous dirai quand.', 'Sí — son tres paradas. Le aviso cuándo.', 'כן — זה שלוש תחנות. אני אגיד לך מתי.'),
       ],
     },
     {
       id: 'cold-chat',
-      receipt: ['שיחה עם מקומי: מאיפה אתה, מה אתה חושב, ומה מומלץ.', 'A chat with a local: where you are from, what you think, and what to try.'],
+      cold: true,
+      receipt: ['שיחה עם מקומי: מה אתה אוהב, מה אתה חושב, ומה מומלץ.', 'A chat with a local: what you like, what you think, and what to try.'],
       lines: [
-        npc('Hi! Where are you from?', 'Bonjour ! Vous venez d’où ?', '¡Hola! ¿De dónde es?', 'היי! מאיפה אתה?'),
-        you(known('phrase.social.from-israel')),
         npc('Welcome! Do you like it here?', 'Bienvenue ! Ça vous plaît ici ?', '¡Bienvenido! ¿Le gusta este lugar?', 'ברוך הבא! אתה אוהב את המקום?'),
-        you(itemOf(SMALL_TALK, 'phrase.talk.i-like-it')),
+        you(itemOf(SMALL_TALK, 'phrase.talk.i-like-it'), {
+          say: ['Yes, I like it a lot.', 'Oui, j’aime beaucoup.', 'Sí, me gusta mucho.', 'כן, אני מאוד אוהב.'],
+          wrong: [itemOf(SMALL_TALK, 'phrase.talk.nice-talking')],
+        }),
         npc("You should take the boat tour. It's fifty euros.", 'Vous devriez faire le tour en bateau. C’est cinquante euros.', 'Debería hacer el paseo en barco. Son cincuenta euros.', 'כדאי לך לעשות את הסיור בסירה. זה חמישים יורו.'),
-        you(itemOf(OPINIONS, 'phrase.opin.i-think-expensive')),
-        npc("Hmm, maybe. Then walk in the old town — it's free!", 'Hmm, peut-être. Alors promenez-vous dans la vieille ville — c’est gratuit !', 'Mmm, puede ser. Entonces pasee por el casco antiguo — ¡es gratis!', 'הממ, אולי. אז תטייל בעיר העתיקה — זה בחינם!'),
-        you(itemOf(SMALL_TALK, 'phrase.talk.recommend-place')),
-        npc("'Mama Rosa'. The food is wonderful. Enjoy!", '« Mama Rosa ». La cuisine est excellente. Bonne journée !', '«Mama Rosa». La comida es estupenda. ¡Que disfrute!', "'מאמא רוזה'. האוכל נהדר. תיהנה!"),
+        you(itemOf(OPINIONS, 'phrase.opin.i-think-expensive'), { wrong: [itemOf(OPINIONS, 'phrase.opin.because')] }),
+        npc("Really? Then you should try the old town. It's free.", 'Vraiment ? Alors vous devriez essayer la vieille ville. C’est gratuit.', '¿De verdad? Entonces debería visitar el casco antiguo. Es gratis.', 'באמת? אז כדאי לך לנסות את העיר העתיקה. זה בחינם.'),
+        you(itemOf(SMALL_TALK, 'phrase.talk.recommend-place'), { wrong: [itemOf(OPINIONS, 'phrase.opin.dont-think-so')] }),
+        npc("Of course — try 'Mama Rosa', in the old town. It's very good.", 'Bien sûr — essayez « Mama Rosa », dans la vieille ville. C’est très bon.', 'Claro — pruebe «Mama Rosa», en el casco antiguo. Es muy bueno.', "בטח — תנסה את 'מאמא רוזה', בעיר העתיקה. מאוד טוב שם."),
+      ],
+    },
+    {
+      id: 'cold-problem',
+      cold: true,
+      receipt: ['המנה הלא נכונה הגיעה — ואמרת את זה, בנימוס, עד שזה סודר.', 'The wrong dish arrived — and you said so, politely, until it was sorted.'],
+      lines: [
+        npc("Here's your meal — one steak!", 'Voici votre plat — un steak !', 'Aquí tiene su plato — ¡un filete!', 'הנה הארוחה שלך — סטייק אחד!', 'fast'),
+        you(itemOf(FIXING_PROBLEMS, 'phrase.fix.not-ordered'), {
+          wrong: [itemOf(FIXING_PROBLEMS, 'phrase.fix.no-problem-thanks')],
+          rec: { tool: 'repeat', npc: ['Your meal. One — steak.', 'Votre plat. Un — steak.', 'Su plato. Un — filete.', 'הארוחה שלך. סטייק — אחד.'] },
+        }),
+        npc("Oh no, I'm so sorry! What did you order?", 'Oh non, je suis vraiment désolé ! Qu’avez-vous commandé ?', '¡Ay, lo siento muchísimo! ¿Qué pidió?', 'אוי לא, אני מצטער מאוד! מה הזמנת?'),
+        you(itemOf(FIXING_PROBLEMS, 'phrase.fix.i-ordered'), { wrong: [itemOf(FIXING_PROBLEMS, 'phrase.fix.charged-twice')] }),
+        npc("Of course — I'll bring the right one right away.", 'Bien sûr — je vous apporte le bon tout de suite.', 'Claro — le traigo el correcto enseguida.', 'כמובן — אביא את הנכון מיד.'),
+        you(itemOf(FIXING_PROBLEMS, 'phrase.fix.no-problem-thanks'), { wrong: [itemOf(FIXING_PROBLEMS, 'phrase.fix.can-you-fix')] }),
+        npc('Thank you for your patience. Dessert is on the house!', 'Merci de votre patience. Le dessert est offert par la maison !', 'Gracias por su paciencia. ¡El postre corre por cuenta de la casa!', 'תודה על הסבלנות. הקינוח על חשבון הבית!'),
       ],
     },
     {
       id: 'cold-hostel',
-      receipt: ['סיפרת מה עשית, לאן אתה נוסע, ושאלת על מחר. זו כבר שיחה אמיתית.', 'You said what you did, where you are going, and asked about tomorrow. That is a real conversation.'],
-      ambush: {
-        npc: ['Vietnam nice so how long will you be there a week or more?', 'Le Vietnam, sympa ! Et tu restes combien de temps, une semaine ou plus ?', 'Vietnam, ¡qué bien! ¿Y cuánto tiempo vas a estar allí, una semana o más?', 'וייטנאם, יפה! וכמה זמן תהיה שם — שבוע או יותר?'],
-        correct: 'reply.future.how-long',
-        wrong: 'reply.past.did-you-like',
-        receipt: ['שאלת המשך על התוכניות שלך — והבנת.', 'A follow-up about your plans — and you understood.'],
-      },
+      cold: true,
+      receipt: ['סיפרת מה עשית, לאן אתה נוסע ולכמה זמן — ושאלת בחזרה. זו כבר שיחה אמיתית.', 'You said what you did, where you are going and for how long — and asked back. That is a real conversation.'],
       lines: [
-        npc('Hey! Where were you today?', 'Salut ! Tu étais où aujourd’hui ?', '¡Hola! ¿Dónde estuviste hoy?', 'היי! איפה היית היום?', 'fast'),
+        npc('Hey! Where were you yesterday?', 'Salut ! Tu étais où hier ?', '¡Hola! ¿Dónde estuviste ayer?', 'היי! איפה היית אתמול?', 'fast'),
         you(itemOf(PAST_EVENTS, 'phrase.past.i-went'), {
-          rec: { tool: 'slowly', npc: ['Today. Where — were you?', 'Aujourd’hui. Tu étais — où ?', 'Hoy. ¿Dónde — estuviste?', 'היום. איפה — היית?'] },
+          wrong: [itemOf(FUTURE_PLANS, 'phrase.future.going-to-vietnam')],
+          rec: { tool: 'slowly', npc: ['Yesterday. Where — were you?', 'Hier. Tu étais — où ?', 'Ayer. ¿Dónde — estuviste?', 'אתמול. איפה — היית?'] },
         }),
         npc('Did you like it?', 'Tu as aimé ?', '¿Te gustó?', 'אהבת?'),
-        you(itemOf(PAST_EVENTS, 'phrase.past.it-was-great')),
-        npc('Good! And where are you going next?', 'Super ! Et tu vas où après ?', '¡Qué bien! ¿Y a dónde vas después?', 'יופי! ולאן אתה נוסע אחרי זה?'),
-        you(itemOf(FUTURE_PLANS, 'phrase.future.going-to-vietnam')),
-        npc("Wow! I'm going home next week.", 'Waouh ! Moi, je rentre chez moi la semaine prochaine.', '¡Guau! Yo me voy a casa la semana que viene.', 'וואו! אני חוזר הביתה בשבוע הבא.'),
-        you(itemOf(TIME_PLANS, 'phrase.time.what-doing-tomorrow')),
-        npc("Tomorrow I'm free. Do you want to go to the beach?", 'Demain, je suis libre. Tu veux aller à la plage ?', 'Mañana estoy libre. ¿Quieres ir a la playa?', 'מחר אני פנוי. רוצה ללכת לים?'),
-        you(itemOf(OPINIONS, 'phrase.opin.of-course')),
-        npc('Great. See you tomorrow!', 'Super. À demain !', 'Genial. ¡Hasta mañana!', 'מעולה. נתראה מחר!'),
+        you(itemOf(PAST_EVENTS, 'phrase.past.it-was-great'), { wrong: [itemOf(PAST_EVENTS, 'phrase.past.i-stayed')] }),
+        npc('So, where are you going next?', 'Alors, tu vas où après ?', 'Bueno, ¿a dónde vas después?', 'אז לאן אתה נוסע אחרי זה?'),
+        you(itemOf(FUTURE_PLANS, 'phrase.future.going-to-vietnam'), { wrong: [itemOf(PAST_EVENTS, 'phrase.past.i-went')] }),
+        npc('Wow! How long will you be there?', 'Waouh ! Tu restes combien de temps ?', '¡Guau! ¿Cuánto tiempo vas a estar allí?', 'וואו! כמה זמן תהיה שם?'),
+        you(itemOf(FUTURE_PLANS, 'phrase.future.ill-be-there'), { wrong: [itemOf(FUTURE_PLANS, 'phrase.future.after-that')] }),
+        npc("Already! We'll miss you.", 'Déjà ! Tu vas nous manquer.', '¡Ya! Te vamos a echar de menos.', 'כבר! נתגעגע אליך.'),
+        you(itemOf(FUTURE_PLANS, 'phrase.future.where-next'), {
+          say: ['And you? Where are you going next?', 'Et toi ? Tu vas où après ?', '¿Y tú? ¿A dónde vas después?', 'ואתה? לאן אתה נוסע אחרי זה?'],
+          wrong: [itemOf(PAST_EVENTS, 'phrase.past.it-was-good')],
+        }),
+        npc("Me? I'm going home. Are you coming?", 'Moi ? Je rentre chez moi. Tu viens ?', '¿Yo? Me voy a casa. ¿Vienes?', 'אני? אני חוזר הביתה. אתה בא?'),
+        you(itemOf(OPINIONS, 'phrase.opin.not-sure'), {
+          say: ["Maybe. I'm not sure — I'm tired.", 'Peut-être. Je ne suis pas sûr — je suis fatigué.', 'Quizás. No estoy seguro — estoy cansado.', 'אולי. אני לא בטוח — אני עייף.'],
+          wrong: [itemOf(OPINIONS, 'phrase.opin.because')],
+        }),
+        npc('Great! See you at six!', 'Super ! À six heures !', '¡Genial! ¡Nos vemos a las seis!', 'מעולה! נתראה בשש!'),
       ],
     },
   ],
-  hear: [known('reply.trans.wrong-way'), known('reply.trans.three-stops'), itemOf(FUTURE_PLANS, 'reply.future.how-long'), itemOf(PAST_EVENTS, 'reply.past.did-you-like')],
-  closing: ['עיר זרה — וגם שיחה של בני אדם. שלוש הוכחות, אפס קפיאות.', 'A foreign city — and a human conversation too. Three proofs, zero freezes.'],
+  hear: [known('reply.trans.wrong-way'), known('reply.trans.three-stops')],
+  closing: ['יום שלם בעיר, בלי עזרה: תחנה, שיחה עם מקומי, בעיה שנפתרה, ושיחה על מה שעשית ולאן אתה ממשיך — וגם כשזה היה מהיר, לא קפאת.', 'A whole day in a city, alone: the station, a chat with a local, a problem solved, and a talk about what you did and where you go next — and when it got fast, you did not freeze.'],
 };
 
 export const NO_SUBTITLES: MissionSpec = {
