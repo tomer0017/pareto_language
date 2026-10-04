@@ -317,7 +317,7 @@ function TalkStep({ step, intro, onNext }: { step: Extract<BootcampStep, { kind:
     return (
       <>
         <div className="mission-intro">
-          <CompanionIntro line={intro} prop={step.icon} />
+          <CompanionIntro line={intro} />
           <h1 className="mission-intro-title">{L(step.title)}</h1>
           {step.body.map((b, i) => <p key={i} className="mission-intro-body">{L(b)}</p>)}
         </div>
@@ -536,7 +536,7 @@ function AnsweredView({ ok, en, meaning, yourAnswer, why, tip, prompt, comprehen
   // The companion reacts, small and never in the way: a pop for a right answer, encouragement for a
   // wrong one, and real applause when the winning move was a conversation-help tool.
   const kind = !ok ? 'encouraging' : recovery ? 'recovery' : 'correct';
-  return <AnswerFeedback ok={ok} ctx={ctx} onRetry={onRetry} onContinue={onNext} aside={<CompanionReaction kind={kind} text={kind === 'correct' ? false : undefined} size={64} />} />;
+  return <AnswerFeedback ok={ok} ctx={ctx} onRetry={onRetry} onContinue={onNext} aside={<CompanionReaction kind={kind} text={kind === 'correct' ? false : undefined} size={88} />} />;
 }
 
 /** Expected Replies: "you said X — here's what they might answer." Comprehension-first. */
@@ -721,7 +721,7 @@ function DialogueStep({ dialogue, onDone }: { dialogue: BootcampDialogue; onDone
       <AnswerFeedback
         ok
         ctx={ctx}
-        aside={<CompanionReaction kind="correct" text={false} size={64} />}
+        aside={<CompanionReaction kind="correct" text={false} size={88} />}
         onContinue={() => { const next = picked.next; setPicked(null); setNodeId(next); }}
       />
     );
@@ -744,7 +744,7 @@ function DialogueStep({ dialogue, onDone }: { dialogue: BootcampDialogue; onDone
       <AnswerFeedback
         ok={false}
         ctx={ctx}
-        aside={<CompanionReaction kind="encouraging" size={64} />}
+        aside={<CompanionReaction kind="encouraging" size={88} />}
         onRetry={() => setPicked(null)}
         onContinue={() => { const next = picked.next; setPicked(null); setRecovered(true); setNodeId(next); }}
       />
@@ -756,7 +756,7 @@ function DialogueStep({ dialogue, onDone }: { dialogue: BootcampDialogue; onDone
       {/* A conversation, not a form: the other person speaks from their side, you answer from yours. */}
       <div className="convo">
         {recovered && <p className="faint small fade-in">🛟 {t('niceRecovery')}</p>}
-        {usedTool && <CompanionReaction kind="recovery" size={64} />}
+        {usedTool && <CompanionReaction kind="recovery" size={88} />}
         {displayNpc && (
           <div className="fade-in" key={displayNpc.id}>
             <NpcLine npc={npc} gloss={dialogueTr(displayNpc)}><TappableText text={displayNpc.en} /></NpcLine>
@@ -894,8 +894,9 @@ function ReceiptStep({ text, onNext }: { text: Record<string, string>; onNext: (
   }, []);
   return (
     <>
-      <div className="drill-card pop-in">
-        <p style={{ fontSize: '2.6rem' }}>🧾</p>
+      {/* Something earned: the buddy brings the crown, and the proof is what you did. */}
+      <div className="proud-step pop-in">
+        <CompanionReaction kind="proud" text={false} size={148} />
         <p className="drill-phrase" style={{ fontSize: '1.25rem' }}>{L(text)}</p>
       </div>
       <div className="action-zone">
@@ -986,7 +987,7 @@ function VictoryScreen() {
         {/* Celebrate — no wall of text. One line: the mission is done. */}
         <div className="center" style={{ padding: '10px 0 8px' }}>
           {/* The buddy celebrates with you — it is the picture of this moment, not a footnote to it. */}
-          <div className="victory-buddy"><CompanionReaction kind="missionComplete" size={132} /></div>
+          <div className="victory-buddy"><CompanionReaction kind="missionComplete" size={190} /></div>
           <h1 style={{ marginTop: 10 }}>{t('victoryCompleted', { title: L(day.title) })}</h1>
         </div>
 

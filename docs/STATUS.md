@@ -22,6 +22,22 @@ loop (typecheck → lint → tests → build → smoke) green at every milestone
 
 ## What's done
 
+### Companion artwork, expressions and entry screen (2026-10-04)
+Presentation only — no curriculum, dialogue, scoring or progression change.
+- **Final character art:** 48 isolated transparent renders (6 stages × 8 poses) replace the scenery
+  crops. `companionAssets.ts` maps stage + pose → file; `companionMood.ts` maps each moment to a pose
+  (hello / winner / celebrate / learning / sad / crown / cheer / idle). Table in `COMPANION_SYSTEM.md` §8.
+- **Only its own artwork:** the emoji prop beside the character and the generated bubble / sparkle
+  effects are gone.
+- **Entry screen:** classroom hero, READY, a warm line, the app-language choice (live switch) and
+  Continue; then the buddy waves hello on the welcome screen.
+- **Where poses appear:** Route (hello), Home (cheer), mission intro (cheer), game instructions
+  (learning), right answer (winner), wrong answer (sad + supportive line), recovery tool and proof
+  cards (crown), mission complete and the change (celebrate).
+- **Offline / spoilers:** companion art is outside the precache; only the reached stage is fetched
+  and warmed.
+- **Not done:** manual browser / device QA.
+
 ### Companion & learning experience redesign (2026-10-04)
 A presentation / emotional-design pass after mobile QA. No curriculum, dialogue, scoring or
 progression change (Missions 06–30 fingerprint, dialogue sync and practice-audit sync are green).
@@ -85,7 +101,7 @@ Source of truth: **[COMPANION_SYSTEM.md](./COMPANION_SYSTEM.md)**. Isolated feat
 - **Never spoils:** target-language lines come only from completed missions of that language.
 - **Persistence:** `ready.companion.v1`; first record per language is derived from mission history and
   marked as seen (no replay). The store listens to mission completions — mission code does not call it.
-- **Art:** crops of the concept sheet behind one asset table; stand-ins for final isolated assets.
+- **Art:** (superseded — see the artwork entry above) originally crops of the concept sheet.
   Motion is CSS on still images; `prefers-reduced-motion` switches it off.
 - **Hooks:** `appStore` (view), `nav.ts`, `App.tsx`, `Learn.tsx` (card), `Bootcamp.tsx` (one line).
 - **Not done:** manual browser QA; real character animation; Stage-6 growth sources.

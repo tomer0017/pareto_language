@@ -8,7 +8,7 @@ import { PageHeader } from '../../shared/ui/PageHeader.js';
 import { useBootcampStore } from '../bootcamp/bootcampStore.js';
 import { BOOTCAMP_PLAN } from '../bootcamp/plan.js';
 import { useTravelReadiness } from '../bootcamp/useReadiness.js';
-import { artUrl, isTransparentArt, type ArtVariant } from './companionAssets.js';
+import { artUrl, isTransparentArt, preloadStageArt, type ArtVariant } from './companionAssets.js';
 import { presenceFor, type Presence } from './companionCoach.js';
 import { COPY, STAGE_COPY } from './companionCopy.js';
 import { learnedMaterial } from './companionLearned.js';
@@ -16,7 +16,7 @@ import {
   LAST_STAGE, companionLine, evolutionTimeline, motionFamily, resolveAnimation, speechAbility,
   type CompanionStage, type EvolutionPhase,
 } from './companionModel.js';
-import { MOOD_ANIMATION, MOOD_POSE, moodEffect, resolveMood, type CompanionMood } from './companionMood.js';
+import { MOOD_ANIMATION, MOOD_POSE, resolveMood, type CompanionMood } from './companionMood.js';
 import { useCompanion, useCompanionStore } from './companionStore.js';
 import './companion.css';
 
@@ -46,15 +46,14 @@ function useLanguageName(lang: string): string {
 /* ── the character ─────────────────────────────────────────────────────────────────────────────── */
 
 /**
- * The character itself — no frame, no circle, no badge. Its mood picks a pose (when the artwork has
- * one), a motion and a small effect; the mood is never written on screen. With today's stand-in art
- * (scenery crops) the edges are feathered into the page; transparent art is shown as it is.
+ * The character itself — no frame, no circle, no badge. Its mood picks one of its own drawn poses
+ * (waving, winning, celebrating, studying, sad, proud, cheering) and a short motion; the mood is
+ * never written on screen. Only its own artwork is used — nothing is pasted beside it.
  */
 export function CompanionFigure({ stage, size = 72, variant = 'compact', mood = 'idle', className = '' }: {
   stage: CompanionStage; size?: number; variant?: ArtVariant; mood?: CompanionMood; className?: string;
 }) {
   const shown = resolveMood(stage, mood);
-  const fx = moodEffect(stage, shown);
   return (
     <span
       className={`cmp-fig ${isTransparentArt(stage) ? 'is-clean' : ''} ${className}`}
@@ -67,7 +66,6 @@ export function CompanionFigure({ stage, size = 72, variant = 'compact', mood = 
       aria-label={L(COPY.buddy)}
     >
       <img src={artUrl(stage, variant, undefined, MOOD_POSE[shown])} alt="" draggable={false} />
-      {fx !== 'none' && <span className="cmp-fx" data-fx={fx} aria-hidden><i /><i /><i /></span>}
     </span>
   );
 }
@@ -107,16 +105,16 @@ function Bubble({ stage, children }: { stage: CompanionStage; children: ReactNod
 
 /* ── reusable reaction ─────────────────────────────────────────────────────────────────────────── */
 
-export type ReactionKind = 'correct' | 'encouraging' | 'thinking' | 'recovery' | 'celebrate' | 'missionComplete';
+export type ReactionKind = 'correct' | 'encouraging' | 'thinking' | 'recovery' | 'proud' | 'celebrate' | 'missionComplete';
 const REACTION_MOOD: Record<ReactionKind, CompanionMood> = {
-  correct: 'happy', encouraging: 'encouraging', thinking: 'thinking', recovery: 'recovery', celebrate: 'celebrating', missionComplete: 'missionComplete',
+  correct: 'happy', encouraging: 'encouraging', thinking: 'thinking', recovery: 'recovery', proud: 'proud', celebrate: 'celebrating', missionComplete: 'missionComplete',
 };
 
 /**
  * The buddy reacting to something the learner did: one short gesture (well under a second),
- * optionally one short app-language line. Never negative — a wrong answer gets a tilted head and
- * encouragement, and using a conversation-help tool is applauded as the smart move it is. Display
- * only: it reads the companion and writes nothing.
+ * optionally one short app-language line. A wrong answer gets its sad face WITH a supportive line —
+ * it is on your side, never punishing — and using a conversation-help tool gets the crown, as the
+ * smart move it is. Display only: it reads the companion and writes nothing.
  */
 export function CompanionReaction({ kind, text, size = 56 }: { kind: ReactionKind; text?: string | false; size?: number }) {
   const { stage, companion } = useCompanion();
@@ -130,6 +128,7 @@ export function CompanionReactionView({ kind, stage, seed = 0, text, size = 56 }
         : kind === 'encouraging' ? L(COPY.reactions.encouraging)
           : kind === 'thinking' ? L(COPY.reactions.thinking)
             : kind === 'recovery' ? L(COPY.reactions.recovery)
+              : kind === 'proud' ? L(COPY.reactions.proud)
               : L(COPY.reactions.celebrate));
   return (
     <div className="cmp-reaction" data-kind={kind}>
@@ -147,8 +146,8 @@ export function CompanionWatch({ mood = 'listening', size = 52 }: { mood?: Compa
 
 /* ── inside a mission ──────────────────────────────────────────────────────────────────────────── */
 
-/** The buddy explaining what to do, the first time a game appears: character + one bubble. */
-export function CompanionCoachView({ stage, line, mood = 'attentive', size = 60 }: { stage: CompanionStage; line: string; mood?: CompanionMood; size?: number }) {
+/** The buddy explaining something — how a game works, a hint: its studying pose + one bubble. */
+export function CompanionCoachView({ stage, line, mood = 'teaching', size = 76 }: { stage: CompanionStage; line: string; mood?: CompanionMood; size?: number }) {
   return (
     <div className="cmp-coach">
       <CompanionFigure stage={stage} size={size} mood={mood} />
@@ -162,24 +161,26 @@ export function CompanionCoach({ line, mood, size }: { line: string; mood?: Comp
 }
 
 /**
- * The buddy introducing a mission: a larger pose, looking at a prop that stands for the mission's
- * theme (today the mission's own icon — a coffee, a map, a price tag), and the goal in one bubble.
- * A themed pose, when the artwork has one, replaces the prop without any change here.
+ * The buddy opening a mission: large, cheering you on ("let's go"), with the goal in one bubble.
+ * Only its own artwork — no emoji or prop is placed beside it.
  */
-export function CompanionIntroView({ stage, line, prop, size = 112 }: { stage: CompanionStage; line: string; prop?: string; size?: number }) {
+export function CompanionIntroView({ stage, line, mood = 'cheering', size = 168 }: { stage: CompanionStage; line: string; mood?: CompanionMood; size?: number }) {
   return (
     <div className="cmp-intro">
       <Bubble stage={stage}>{line}</Bubble>
-      <span className="cmp-intro-scene">
-        <CompanionFigure stage={stage} size={size} mood="curious" />
-        {prop && <span className="cmp-prop" aria-hidden>{prop}</span>}
-      </span>
+      <CompanionFigure stage={stage} size={size} mood={mood} />
     </div>
   );
 }
-export function CompanionIntro({ line, prop }: { line: string; prop?: string }) {
+export function CompanionIntro({ line, mood }: { line: string; mood?: CompanionMood }) {
   const { stage } = useCompanion();
-  return <CompanionIntroView stage={stage} line={line} prop={prop} />;
+  return <CompanionIntroView stage={stage} line={line} mood={mood} />;
+}
+
+/** The very first hello (onboarding): the buddy waving, with one welcoming line. */
+export function CompanionHello() {
+  const { stage } = useCompanion();
+  return <CompanionIntroView stage={stage} line={L(COPY.welcome)} mood="greeting" size={176} />;
 }
 
 /* ── Route + Home ──────────────────────────────────────────────────────────────────────────────── */
@@ -199,10 +200,10 @@ export function CompanionPresence() {
   return <CompanionPresenceView stage={stage} language={language} line={L(presence.line)} mood={presence.mood} onOpen={() => { tap(); navigate('companion'); }} />;
 }
 
-export function CompanionPresenceView({ stage, language, line, mood = 'attentive', onOpen }: { stage: CompanionStage; language: string; line: string; mood?: CompanionMood; onOpen?: () => void }) {
+export function CompanionPresenceView({ stage, language, line, mood = 'greeting', onOpen }: { stage: CompanionStage; language: string; line: string; mood?: CompanionMood; onOpen?: () => void }) {
   return (
     <button className="cmp-presence card-press" onClick={onOpen} aria-label={L(COPY.open)}>
-      <CompanionFigure stage={stage} size={92} mood={mood} />
+      <CompanionFigure stage={stage} size={112} mood={mood} />
       <span className="cmp-presence-body">
         <Bubble stage={stage}>{line}</Bubble>
         <span className="cmp-whose">{L(COPY.buddyFor(language))}</span>
@@ -216,12 +217,13 @@ export function CompanionPeek() {
   const navigate = useAppStore((s) => s.navigate);
   const { stage } = useCompanion();
   const presence = usePresence();
-  return <CompanionPeekView stage={stage} mood={presence.mood} onOpen={() => { tap(); navigate('companion'); }} />;
+  // Beside the "start" button it cheers you on; with everything done it simply rests.
+  return <CompanionPeekView stage={stage} mood={presence.mood === 'resting' ? 'resting' : 'cheering'} onOpen={() => { tap(); navigate('companion'); }} />;
 }
-export function CompanionPeekView({ stage, mood = 'attentive', onOpen }: { stage: CompanionStage; mood?: CompanionMood; onOpen?: () => void }) {
+export function CompanionPeekView({ stage, mood = 'cheering', onOpen }: { stage: CompanionStage; mood?: CompanionMood; onOpen?: () => void }) {
   return (
     <button className="cmp-peek" onClick={onOpen} aria-label={L(COPY.open)}>
-      <CompanionFigure stage={stage} size={64} mood={mood} />
+      <CompanionFigure stage={stage} size={84} mood={mood} />
     </button>
   );
 }
@@ -327,8 +329,10 @@ export function CompanionEvolution({ lang, from, to, onDone }: { lang: string; f
  * never replays it.
  */
 export function CompanionHost() {
-  const { lang, evolution } = useCompanion();
+  const { lang, stage, evolution } = useCompanion();
   const acknowledge = useCompanionStore((s) => s.acknowledge);
+  // Warm the CURRENT character's expressions (and only those) so reactions are instant and work offline.
+  useEffect(() => { preloadStageArt(stage); }, [stage]);
   if (!evolution) return null;
   return <CompanionEvolution key={`${lang}-${evolution.to}`} lang={lang} from={evolution.from} to={evolution.to} onDone={() => acknowledge(lang)} />;
 }

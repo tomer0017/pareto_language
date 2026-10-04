@@ -4,14 +4,13 @@
    a big moment. Every animation is switched off under `prefers-reduced-motion`. */
 
 .cmp-fig { display: inline-block; flex: none; position: relative; line-height: 0; }
-.cmp-fig img {
-  width: 100%; height: 100%; object-fit: cover; display: block; transform-origin: 50% 62%;
-  /* Stand-in art is cropped from an illustrated sheet: feather it into the page so there is no
-     frame and no hard edge. Isolated (transparent) art needs none of this — see .is-clean. */
+.cmp-fig img { width: 100%; height: 100%; object-fit: contain; display: block; transform-origin: 50% 70%; }
+/* Only for art that is NOT an isolated render (none today): feather a scenery crop into the page. */
+.cmp-fig:not(.is-clean) img {
+  object-fit: cover;
   -webkit-mask-image: radial-gradient(closest-side, #000 56%, rgba(0,0,0,0.55) 78%, transparent 100%);
           mask-image: radial-gradient(closest-side, #000 56%, rgba(0,0,0,0.55) 78%, transparent 100%);
 }
-.cmp-fig.is-clean img { -webkit-mask-image: none; mask-image: none; object-fit: contain; }
 
 /* ambient — it is alive even when nothing happens */
 .cmp-fig[data-family='fish'] img, .cmp-fig[data-family='parrotfish'] img { animation: cmp-drift 5.5s ease-in-out infinite; }
@@ -23,8 +22,11 @@
 .cmp-fig[data-mood='attentive'][data-family='parrot'] img { animation: cmp-wiggle 0.9s ease-in-out 1, cmp-breathe 4.5s ease-in-out 0.9s infinite; }
 .cmp-fig[data-mood='listening'] img { animation: cmp-lean 1.4s ease-in-out 1, cmp-drift 6s ease-in-out 1.4s infinite; }
 .cmp-fig[data-mood='curious'] img { animation: cmp-peer 1.2s ease-in-out 1, cmp-drift 6s ease-in-out 1.2s infinite; }
+.cmp-fig[data-mood='greeting'] img { animation: cmp-wiggle 0.9s ease-in-out 2; }
+.cmp-fig[data-mood='teaching'] img { animation: cmp-appear-pose 0.45s ease-out 1; }
+.cmp-fig[data-mood='cheering'] img { animation: cmp-hop 0.8s cubic-bezier(.3,1.5,.5,1) 2; }
 .cmp-fig[data-mood='thinking'] img { animation: cmp-tilt 1.1s ease-in-out 1; }
-.cmp-fig[data-mood='encouraging'] img { animation: cmp-tilt 0.9s ease-in-out 1; }
+.cmp-fig[data-mood='encouraging'] img { animation: cmp-nod 1s ease-in-out 1; }
 .cmp-fig[data-mood='happy'] img { animation: cmp-pop 0.6s cubic-bezier(.2,1.4,.4,1) 1; }
 .cmp-fig[data-mood='surprised'] img { animation: cmp-start 0.5s cubic-bezier(.2,1.4,.4,1) 1; }
 .cmp-fig[data-mood='proud'] img { animation: cmp-swell 0.9s ease-out 1; }
@@ -38,24 +40,14 @@
 @keyframes cmp-lean { 0%,100% { transform: rotate(0); } 40% { transform: rotate(-6deg) translateX(-2%); } }
 @keyframes cmp-peer { 0%,100% { transform: translate(0,0) rotate(0); } 45% { transform: translate(4%, 2%) rotate(5deg) scale(1.04); } }
 @keyframes cmp-tilt { 0%,100% { transform: rotate(0); } 35% { transform: rotate(8deg); } 70% { transform: rotate(-3deg); } }
+@keyframes cmp-nod { 0%,100% { transform: translateY(0); } 35% { transform: translateY(4%) rotate(-2deg); } 70% { transform: translateY(-1%); } }
+@keyframes cmp-appear-pose { 0% { opacity: 0; transform: translateY(8%) scale(0.92); } 100% { opacity: 1; transform: none; } }
 @keyframes cmp-wiggle { 0%,100% { transform: rotate(0); } 25% { transform: rotate(-6deg); } 75% { transform: rotate(6deg); } }
 @keyframes cmp-pop { 0% { transform: scale(1); filter: brightness(1); } 45% { transform: scale(1.14) translateY(-4%); filter: brightness(1.12); } 100% { transform: scale(1); filter: brightness(1); } }
 @keyframes cmp-start { 0% { transform: scale(1); } 40% { transform: scale(1.12) translateY(-6%); } 100% { transform: scale(1); } }
 @keyframes cmp-swell { 0% { transform: scale(1); } 50% { transform: scale(1.08) translateY(-3%); } 100% { transform: scale(1); } }
 @keyframes cmp-hop { 0%,100% { transform: translateY(0) rotate(0); } 35% { transform: translateY(-11%) rotate(-4deg); } 65% { transform: translateY(0) rotate(3deg); } }
 @keyframes cmp-chat { 0%,100% { transform: rotate(0) scale(1); } 25% { transform: rotate(-2deg) scale(1.02); } 75% { transform: rotate(2deg) scale(1.02); } }
-
-/* the small flourish: a fish makes bubbles, a bird gets a sparkle */
-.cmp-fx { position: absolute; inset: -6% -10% 30% -10%; pointer-events: none; }
-.cmp-fx i { position: absolute; bottom: 0; opacity: 0; animation: cmp-rise-out 0.8s ease-out 1 both; }
-.cmp-fx i:nth-child(1) { left: 12%; animation-delay: 0.05s; }
-.cmp-fx i:nth-child(2) { left: 46%; animation-delay: 0.16s; }
-.cmp-fx i:nth-child(3) { left: 78%; animation-delay: 0.1s; }
-.cmp-fx[data-fx='bubbles'] i { width: 16%; aspect-ratio: 1; border-radius: 50%; border: 1.5px solid color-mix(in srgb, var(--accent) 55%, #fff); background: color-mix(in srgb, #fff 55%, transparent); }
-.cmp-fx[data-fx='bubbles'] i:nth-child(2) { width: 11%; }
-.cmp-fx[data-fx='sparkle'] i { font-style: normal; font-size: 0.9rem; line-height: 1; color: #f5b301; }
-.cmp-fx[data-fx='sparkle'] i::before { content: '✦'; }
-@keyframes cmp-rise-out { 0% { opacity: 0; transform: translateY(40%) scale(0.5); } 30% { opacity: 1; } 100% { opacity: 0; transform: translateY(-170%) scale(1.1); } }
 
 /* bubbles — a creature that cannot talk yet THINKS the line; one that talks SAYS it */
 .cmp-bubble {
@@ -81,29 +73,23 @@
 .cmp-watch { display: inline-flex; pointer-events: none; }
 
 /* explaining a game: character + one bubble */
-.cmp-coach { display: flex; align-items: center; gap: 14px; margin: 0 0 8px; }
+.cmp-coach { display: flex; align-items: center; gap: 10px; margin: 0 0 8px; }
 .cmp-coach .cmp-bubble { font-size: 0.95rem; }
 
-/* introducing a mission: the goal, the character, and the thing the mission is about */
-.cmp-intro { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+/* opening a mission: the goal in a bubble, the character cheering you on */
+.cmp-intro { display: flex; flex-direction: column; align-items: center; gap: 14px; }
 .cmp-intro .cmp-bubble { font-size: 1.1rem; font-weight: 800; text-align: center; padding: 12px 18px; }
-.cmp-intro-scene { position: relative; display: inline-flex; align-items: flex-end; }
-.cmp-prop {
-  position: absolute; inset-inline-end: -26px; bottom: 8px; font-size: 2.4rem; line-height: 1;
-  filter: drop-shadow(0 4px 6px rgba(40, 30, 90, 0.18)); animation: cmp-prop-in 0.6s cubic-bezier(.2,1.4,.4,1) 0.25s 1 both;
-}
-@keyframes cmp-prop-in { 0% { opacity: 0; transform: translateY(30%) scale(0.6); } 100% { opacity: 1; transform: none; } }
 
 /* on the Route: floating beside the path — not a card, not a statistic */
 .cmp-presence {
   display: flex; align-items: center; gap: 12px; width: 100%; margin: 6px 0 2px; padding: 2px 4px; text-align: start;
-  background: transparent; border: 0; box-shadow: none; color: inherit; min-height: 92px;
+  background: transparent; border: 0; box-shadow: none; color: inherit; min-height: 112px;
 }
 .cmp-presence-body { flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
 .cmp-whose { font-size: 0.8rem; font-weight: 700; color: var(--ink-dim); padding-inline-start: 4px; }
 
 /* on Home: peeking over the next-step card */
-.cmp-peek { position: absolute; inset-block-start: -20px; inset-inline-end: 10px; padding: 0; background: transparent; border: 0; box-shadow: none; min-height: 0; line-height: 0; z-index: 1; }
+.cmp-peek { position: absolute; inset-block-start: -34px; inset-inline-end: 10px; padding: 0; background: transparent; border: 0; box-shadow: none; min-height: 0; line-height: 0; z-index: 1; }
 
 /* its own page */
 .cmp-hero { position: relative; isolation: isolate; display: flex; flex-direction: column; align-items: center; gap: 18px; text-align: center; padding: 14px 8px 10px; }
@@ -161,8 +147,7 @@
 @keyframes cmp-rise { 0% { opacity: 0; transform: translateY(12px); } 100% { opacity: 1; transform: translateY(0); } }
 
 @media (prefers-reduced-motion: reduce) {
-  .cmp-fig img, .cmp-fig, .cmp-prop, .cmp-hero::before, .cmp-evo *, .cmp-evo { animation: none !important; transition: none !important; }
-  .cmp-fx { display: none; }
+  .cmp-fig img, .cmp-fig, .cmp-hero::before, .cmp-evo *, .cmp-evo { animation: none !important; transition: none !important; }
   .cmp-evo .cmp-evo-new, .cmp-evo .cmp-evo-text { opacity: 1 !important; }
   .cmp-evo .cmp-evo-old, .cmp-evo .cmp-evo-burst { opacity: 0 !important; }
 }

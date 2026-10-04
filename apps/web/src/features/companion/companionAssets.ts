@@ -1,51 +1,50 @@
-import type { CompanionStage } from './companionModel.js';
+import { STAGES, type CompanionStage } from './companionModel.js';
 
 /**
- * The ONE place the companion's artwork is named. Screens ask for "stage 3, compact, happy" — never
- * for a file. Replacing the art (clean transparent renders, per-mood poses, sprite sheets, Lottie /
- * Rive) is a change to this table and, for animated formats, to `CompanionFigure`; no screen and no
- * logic changes.
+ * The ONE place the companion's artwork is named. Screens never ask for a file: the figure asks for
+ * "stage 3, hello" and this table answers. Replacing the art (new renders, sprite sheets, Lottie /
+ * Rive) is a change here and, for animated formats, in `CompanionFigure`; no screen or logic changes.
  *
- * Current art: square crops of the approved concept illustration, one per stage. They are NOT
- * transparent — they carry some of the sheet's scenery — so the figure feathers their edges into the
- * page (`transparent: false`). They are stand-ins, not final production art. A final isolated render
- * sets `transparent: true` and is then shown with no feathering at all.
+ * Art: one isolated, transparent render per stage and pose, cut from the approved expression sheets
+ * (eight poses per stage). Every image of a stage is the same square size with the character
+ * centred, so switching pose never makes it jump or resize.
  *
- * Poses: a stage may name a different image per pose (`poses.happy`, `poses.thinking`, …). Any pose
- * without its own image falls back to the stage's base image, where motion alone carries the mood.
+ * Naming: `public/companion/s<stage>-<pose>.png`.
  *
- * Naming: `public/companion/stage-<n>.png` (full) and `stage-<n>-avatar.png` (compact, only where
- * the full scene is too busy to read small — today that is Stage 6's living room).
+ * These files are NOT part of the app's precache: only the stage the learner has reached is ever
+ * requested (and warmed for offline use — see `preloadStageArt`), so a device never even downloads
+ * a form its owner has not met.
  */
 export type ArtVariant = 'full' | 'compact';
-/** The poses final artwork is expected to supply. `idle` is the base image. */
-export const ART_POSES = ['idle', 'happy', 'thinking', 'listening', 'celebrate', 'encouraging', 'talking'] as const;
+
+/** The eight poses of the expression sheets, in sheet order. `idle` is the neutral one. */
+export const ART_POSES = ['idle', 'hello', 'winner', 'celebrate', 'learning', 'sad', 'crown', 'cheer'] as const;
 export type ArtPose = (typeof ART_POSES)[number];
 
 export interface StageArt {
-  /** The full character — the companion's own page, the evolution reveal, celebrations. */
+  /** The neutral pose — also the fallback for any pose a stage has no image for. */
   full: string;
-  /** The compact version for small placements. */
   compact: string;
-  /** Intrinsic pixel size of the two images (they are square). */
+  /** Intrinsic pixel size (the images are square). */
   size: { full: number; compact: number };
-  /** true once the art is an isolated render on a transparent background. */
+  /** true = an isolated render on a transparent background (shown as it is, no edge feathering). */
   transparent?: boolean;
-  /** Per-pose images, when they exist. Missing poses use `full` / `compact`. */
+  /** Per-pose images. A missing pose falls back to `full` / `compact`. */
   poses?: Partial<Record<ArtPose, Partial<Record<ArtVariant, string>>>>;
 }
 
-export const COMPANION_ART: Record<CompanionStage, StageArt> = {
-  1: { full: '/companion/stage-1.png', compact: '/companion/stage-1.png', size: { full: 210, compact: 210 } },
-  2: { full: '/companion/stage-2.png', compact: '/companion/stage-2.png', size: { full: 250, compact: 250 } },
-  3: { full: '/companion/stage-3.png', compact: '/companion/stage-3.png', size: { full: 250, compact: 250 } },
-  4: { full: '/companion/stage-4.png', compact: '/companion/stage-4.png', size: { full: 285, compact: 285 } },
-  5: { full: '/companion/stage-5.png', compact: '/companion/stage-5.png', size: { full: 310, compact: 310 } },
-  // Stage 6's full scene is reserved for the big moments; ordinary UI shows the simplified crop.
-  6: { full: '/companion/stage-6.png', compact: '/companion/stage-6-avatar.png', size: { full: 417, compact: 215 } },
-};
+const file = (stage: CompanionStage, pose: ArtPose): string => `/companion/s${stage}-${pose}.png`;
+const stageArt = (stage: CompanionStage): StageArt => ({
+  full: file(stage, 'idle'),
+  compact: file(stage, 'idle'),
+  size: { full: 320, compact: 320 },
+  transparent: true,
+  poses: Object.fromEntries(ART_POSES.map((pose) => [pose, { full: file(stage, pose), compact: file(stage, pose) }])),
+});
 
-/** The image path for a stage / variant / pose, falling back to the stage's base image. */
+export const COMPANION_ART: Record<CompanionStage, StageArt> = Object.fromEntries(STAGES.map((s) => [s, stageArt(s)])) as Record<CompanionStage, StageArt>;
+
+/** The image path for a stage / variant / pose, falling back to the stage's neutral image. */
 export function artPath(stage: CompanionStage, variant: ArtVariant, pose: ArtPose = 'idle'): string {
   const art = COMPANION_ART[stage];
   return art.poses?.[pose]?.[variant] ?? art[variant];
@@ -57,3 +56,13 @@ export function artUrl(stage: CompanionStage, variant: ArtVariant, base: string 
 }
 
 export const isTransparentArt = (stage: CompanionStage): boolean => COMPANION_ART[stage].transparent === true;
+
+/** Every image of ONE stage — the current one. Nothing here ever lists another stage's art. */
+export const stageArtUrls = (stage: CompanionStage, base?: string): string[] => [...new Set(ART_POSES.map((pose) => artUrl(stage, 'compact', base, pose)))];
+
+/** Fetch the current stage's poses in the background, so a reaction never pops in late and the
+ *  character still has every expression offline. No-op outside a browser. */
+export function preloadStageArt(stage: CompanionStage): void {
+  if (typeof Image === 'undefined') return;
+  for (const url of stageArtUrls(stage)) { const img = new Image(); img.decoding = 'async'; img.src = url; }
+}

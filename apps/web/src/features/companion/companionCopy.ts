@@ -71,16 +71,19 @@ export const COPY = {
   /** Short reactions, for the reusable reaction component. */
   reactions: {
     correct: T('כן!', 'Yes!'),
-    encouraging: T('הממ… עוד פעם?', 'Hmm… one more go?'),
+    encouraging: T('כמעט. אני איתך — עוד פעם?', 'So close. I’m with you — one more go?'),
     thinking: T('הממ…', 'Hmm…'),
     recovery: T('בדיוק. זה מהלך חכם — ככה לא נתקעים.', 'Exactly. That is the smart move — that is how you never get stuck.'),
     celebrate: T('איזה יופי!', 'Lovely!'),
+    proud: T('זה שלך. הרווחת את זה.', 'That one is yours. You earned it.'),
   },
+  /** The very first hello, before the first mission. */
+  welcome: T('היי! אני החבר שלך למסע הזה.', 'Hi! I’m your buddy for this journey.'),
   /** What the buddy says on the Route, by where the learner stands. */
   presence: {
     fresh: T('נעים מאוד. מתחילים?', 'Nice to meet you. Shall we start?'),
-    resume: T('עצרנו באמצע. ממשיכים?', 'We stopped halfway. Carry on?'),
-    next: T('המשימה הבאה מחכה לנו.', 'The next mission is waiting for us.'),
+    resume: T('טוב שחזרת! עצרנו באמצע — ממשיכים?', 'Good to see you! We stopped halfway — carry on?'),
+    next: T('טוב שחזרת! המשימה הבאה מחכה לנו.', 'Welcome back! The next mission is waiting for us.'),
     allDone: T('עברנו את הכול. רוצה לחזור על משהו?', 'We have done it all. Fancy going over something?'),
   },
 } as const;

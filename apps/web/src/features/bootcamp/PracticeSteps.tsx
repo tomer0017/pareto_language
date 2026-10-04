@@ -96,7 +96,7 @@ export function QuickReplyStep({ step, itemsById, onDone }: { step: StepOf<'quic
     const kind = !chosen.correct ? 'encouraging' : isHelpToolId(chosen.itemId) ? 'recovery' : 'correct';
     return (
       <AnswerFeedback ok={chosen.correct} ctx={ctx} onRetry={chosen.correct ? undefined : () => setPicked(null)} onContinue={next}
-        aside={<CompanionReaction kind={kind} text={kind === 'correct' ? false : undefined} size={64} />} />
+        aside={<CompanionReaction kind={kind} text={kind === 'correct' ? false : undefined} size={88} />} />
     );
   }
 
@@ -138,7 +138,7 @@ export function QuickReplyStep({ step, itemsById, onDone }: { step: StepOf<'quic
 function Heard({ ok, text, gloss, onReplay }: { ok: boolean; text: string; gloss: string; onReplay: () => void }) {
   return (
     <div className="fade-in" style={{ display: 'flex', flexDirection: 'column', gap: 4, alignItems: 'center' }}>
-      <div className="feedback-top"><CompanionReaction kind={ok ? 'correct' : 'encouraging'} text={ok ? false : undefined} size={56} /><span className={`feedback-head ${ok ? 'ok' : 'bad'}`}>{ok ? `✓ ${t('correctHeader')}` : t('wrongHeader')}</span></div>
+      <div className="feedback-top"><CompanionReaction kind={ok ? 'correct' : 'encouraging'} text={ok ? false : undefined} size={76} /><span className={`feedback-head ${ok ? 'ok' : 'bad'}`}>{ok ? `✓ ${t('correctHeader')}` : t('wrongHeader')}</span></div>
       <p className="drill-phrase" style={{ fontSize: '1.15rem' }}><TargetText text={text} /></p>
       <p className="drill-meaning" style={{ fontSize: '0.95rem' }}>{gloss}</p>
       <button className="btn-ghost" style={{ minHeight: 36, padding: '4px 10px' }} onClick={onReplay} aria-label={t('replayAudio')}>🔊</button>
@@ -396,7 +396,7 @@ export function MatchPairsStep({ step, itemsById, onDone }: { step: StepOf<'matc
           <span className="pmatch-sep" aria-hidden />
           {answerOrder.map((i) => tile('answer', i))}
         </div>
-        {complete && <CompanionReaction kind="celebrate" size={64} />}
+        {complete && <CompanionReaction kind="correct" size={88} />}
       </div>
       {complete && (
         <div className="action-zone">
@@ -466,8 +466,8 @@ export function SentenceBuilderStep({ step, itemsById, onDone }: { step: StepOf<
             ))}
           </div>
         )}
-        {status === 'wrong' && <div className="feedback-top"><CompanionReaction kind="thinking" text={false} size={56} /><span className="feedback-head bad">{t('builderNotYet')}</span></div>}
-        {status === 'right' && <div className="feedback-top"><CompanionReaction kind="correct" text={false} size={56} /><span className="feedback-head ok">✓ {t('correctHeader')}</span></div>}
+        {status === 'wrong' && <div className="feedback-top"><CompanionReaction kind="encouraging" text={false} size={76} /><span className="feedback-head bad">{t('builderNotYet')}</span></div>}
+        {status === 'right' && <div className="feedback-top"><CompanionReaction kind="correct" text={false} size={76} /><span className="feedback-head ok">✓ {t('correctHeader')}</span></div>}
         {finished && <button className="btn-ghost" style={{ alignSelf: 'center' }} onClick={() => void speakL(sentence)} aria-label={t('replayAudio')}>🔊 {t('hearAgain')}</button>}
       </div>
       <div className="action-zone">

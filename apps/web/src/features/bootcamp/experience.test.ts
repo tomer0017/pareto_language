@@ -1,7 +1,7 @@
 import { beforeAll, describe, expect, it, vi } from 'vitest';
 import { createElement, type ReactElement } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { BOOTCAMP_PLAN } from './plan.js';
 import { npcFor } from './npcCast.js';
@@ -193,24 +193,52 @@ describe('the experience', () => {
       expect(rule('.video-poster')).toMatch(/var\(--brand\)/); // READY's own colours, no invented artwork
     });
 
-    it('before an app language is chosen the app starts in the device\'s language, and asks the question in both', () => {
+    it('before an app language is chosen the app starts in the device\'s language', () => {
       expect(app.deviceUiLang(['he-IL', 'en-US'])).toBe('he');
       expect(app.deviceUiLang(['iw'])).toBe('he');
       expect(app.deviceUiLang(['fr-FR', 'en-GB'])).toBe('en');
       expect(app.deviceUiLang(['fr-FR'])).toBe('en');
       expect(app.deviceUiLang([])).toBe('en');
+    });
+
+    it('the entry screen: the classroom, READY, a warm line, the language choice and one way forward — in the learner\'s language', () => {
       disk.delete('ready.uiLang');
-      for (const [lang, own, other] of [['he', 'בחרו שפה', 'Choose your language'], ['en', 'Choose your language', 'בחרו שפה']] as const) {
+      for (const lang of ['he', 'en'] as const) {
         strings.setUiLangDict(lang);
         app.useAppStore.setState({ uiLang: lang, pack: null });
         const out = html(createElement(onboarding.Onboarding));
-        expect(out, lang).toContain(`<h1 style="text-align:center">${own}</h1>`);
-        expect(out, lang).toContain(other);
-        expect(out, lang).toContain(strings.t('appLangSub'));
-        if (lang === 'he') expect(out).not.toContain('You can change this anytime in Settings.');
+        expect(out, lang).toMatch(/<div class="entry-hero" aria-hidden="true"><img src="[^"]*\/onboarding\/classroom\.jpg"/);
+        expect(out.indexOf('entry-hero'), lang).toBeLessThan(out.indexOf('entry-sheet')); // the picture leads
+        expect(out, lang).toContain('READY');
+        expect(out, lang).toContain(`<h1>${strings.t('entryTitle')}</h1>`);
+        expect(out, lang).toContain(strings.t('entrySub'));
+        expect(out, lang).toContain(strings.t('entryChoose'));
+        // both languages are offered, each in its own script; the current one is marked — not by colour alone
+        expect(out, lang).toMatch(/role="radiogroup"/);
+        for (const [code, name] of [['en', 'English'], ['he', 'עברית']] as const) {
+          expect(out, `${lang} ${code}`).toContain(`<button role="radio" aria-checked="${code === lang}" class="entry-lang ${code === lang ? 'is-selected' : ''}">`);
+          expect(out, `${lang} ${code}`).toMatch(new RegExp(`<span class="entry-lang-name" lang="${code}" dir="(ltr|rtl)">${name}</span>`));
+        }
+        expect(out.match(/<button class="btn-primary btn-icon">/g), lang).toHaveLength(1); // one clear way forward
+        expect(out, lang).toContain(strings.t('continue'));
       }
+      strings.setUiLangDict('he');
+      const he = html(createElement(onboarding.Onboarding));
+      expect(he).not.toMatch(/Choose your language|You can change this|Learn a language/); // no English sentences in a Hebrew screen
+      expect(existsSync(fileURLToPath(new URL('../../../public/onboarding/classroom.jpg', import.meta.url)))).toBe(true);
+      expect(rule('.entry-sheet')).toMatch(/env\(safe-area-inset-bottom\)/);
       strings.setUiLangDict('en');
       app.useAppStore.setState({ uiLang: 'en' });
+    });
+
+    it('after the choice, the buddy says hello before anything is asked', () => {
+      disk.set('ready.uiLang', 'en');
+      app.useAppStore.setState({ pack: null });
+      const out = html(createElement(onboarding.Onboarding));
+      disk.delete('ready.uiLang');
+      expect(out).not.toContain('entry-hero');
+      expect(out).toMatch(/<div class="cmp-intro"><span class="cmp-bubble" data-voice="thought">Hi! I’m your buddy for this journey\.<\/span><span class="cmp-fig[^>]*data-mood="greeting"[^>]*><img src="[^"]*\/companion\/s1-hello\.png"/);
+      expect(out.indexOf('cmp-intro')).toBeLessThan(out.indexOf(strings.t('pilotWelcomeTitle')));
     });
   });
 });

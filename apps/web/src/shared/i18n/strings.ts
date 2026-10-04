@@ -400,6 +400,9 @@ const en = {
   // Sprint — Pilot UX improvements
   finishToHub: 'Finish',
   appLangTitle: 'Choose your language',
+  entryTitle: 'Learn a language your way',
+  entrySub: 'Your buddy will lead you the fastest way to being ready for your trip.',
+  entryChoose: 'Choose your language',
   appLangSub: 'You can change this anytime in Settings.',
   coreCenterSub: 'Your travel knowledge center.',
   coreTabPhrases: 'Core Sentences',
@@ -960,6 +963,9 @@ const he: Partial<Record<StringKey, string>> = {
   // Sprint — Pilot UX improvements
   finishToHub: 'סיום',
   appLangTitle: 'בחרו שפה',
+  entryTitle: 'למד שפה בדרך שלך',
+  entrySub: 'החבר שלך יוביל אותך בדרך המהירה להיות מוכן לטיול.',
+  entryChoose: 'בחר את השפה שלך',
   appLangSub: 'אפשר לשנות בכל רגע בהגדרות.',
   coreCenterSub: 'מרכז הידע לטיול שלך.',
   coreTabPhrases: 'משפטי ליבה',

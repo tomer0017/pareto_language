@@ -3,8 +3,13 @@ import type { SituationPriority } from '@ready/content-schema';
 import { selectTier, DAY_MS } from '@ready/engine';
 import { useAppStore } from '../../shared/stores/appStore.js';
 import { LEARNING_LANGUAGES, UI_LANGUAGES, languageInfo, languageName, PILOT_LANG } from '../../shared/i18n/languages.js';
-import { L, UI_DICTIONARIES, t, uiLangCode } from '../../shared/i18n/strings.js';
+import { L, t, uiLangCode } from '../../shared/i18n/strings.js';
 import { tap } from '../../shared/ui/haptics.js';
+import { Icon } from '../../shared/ui/Icon.js';
+import { CompanionHello } from '../companion/Companion.js';
+
+/** A flag for each app language on the entry screen. */
+const ENTRY_FLAGS: Record<string, string> = { en: '🇺🇸', he: '🇮🇱' };
 
 const MINUTE_CHOICES = [10, 20, 30, 45];
 
@@ -67,28 +72,37 @@ export function Onboarding() {
   if (!app.pack) {
     // Step 1 (first launch only): choose the app language before the learning language (Task 3).
     if (askAppLang) {
+      // The first thing a new learner sees: a classroom where a language is being taught, READY, a
+      // warm line, and one choice. Tapping a language switches the whole screen to it at once.
+      const chosen = uiLangCode();
       return (
-        <div className="screen">
-          <div className="screen-scroll no-nav fade-in" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-            <p style={{ fontSize: '2.8rem', textAlign: 'center' }}>🌍</p>
-            <h1 style={{ textAlign: 'center' }}>{t('appLangTitle')}</h1>
-            {/* Nobody has chosen a language yet, so the question is also asked in the other one. */}
-            {UI_LANGUAGES.filter((l) => l.code !== uiLangCode()).map((l) => (
-              <p key={l.code} className="dim center" dir={l.dir} lang={l.code} style={{ marginTop: 4, fontWeight: 700 }}>{UI_DICTIONARIES[l.code]?.appLangTitle}</p>
-            ))}
-            <p className="dim center" style={{ margin: '8px 0 22px' }}>{t('appLangSub')}</p>
-            <div className="stagger" style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+        <div className="entry fade-in">
+          <div className="entry-hero" aria-hidden>
+            <img src={`${(import.meta.env.BASE_URL || '/').replace(/\/$/, '')}/onboarding/classroom.jpg`} alt="" draggable={false} />
+          </div>
+          <div className="entry-sheet">
+            <span className="brand-mark entry-brand">READY <Icon name="plane" size={26} /></span>
+            <h1>{t('entryTitle')}</h1>
+            <p className="dim entry-sub">{t('entrySub')}</p>
+            <p className="entry-choose" id="entry-choose">{t('entryChoose')}</p>
+            <div className="entry-langs" role="radiogroup" aria-labelledby="entry-choose">
               {UI_LANGUAGES.map((l) => (
                 <button
                   key={l.code}
-                  className="btn-secondary"
-                  style={{ fontSize: '1.25rem', padding: '18px', minHeight: 60 }}
-                  onClick={() => { tap(); app.setUiLang(l.code); setAskAppLang(false); }}
+                  role="radio"
+                  aria-checked={l.code === chosen}
+                  className={`entry-lang ${l.code === chosen ? 'is-selected' : ''}`}
+                  onClick={() => { tap(); app.setUiLang(l.code); }}
                 >
-                  {l.nativeName}
+                  <span className="entry-flag" aria-hidden>{ENTRY_FLAGS[l.code] ?? '🌍'}</span>
+                  <span className="entry-lang-name" lang={l.code} dir={l.dir}>{l.nativeName}</span>
+                  <Icon name={l.code === chosen ? 'check' : 'chevron'} size={20} flip={l.code !== chosen} />
                 </button>
               ))}
             </div>
+            <button className="btn-primary btn-icon" onClick={() => { tap(); app.setUiLang(chosen); setAskAppLang(false); }}>
+              {t('continue')}<Icon name="arrow" size={20} flip />
+            </button>
           </div>
         </div>
       );
@@ -96,8 +110,10 @@ export function Onboarding() {
     return (
       <div className="screen">
         <div className="screen-scroll no-nav fade-in">
-          <h1>{t('pilotWelcomeTitle')}</h1>
-          <p className="dim" style={{ margin: '8px 0 20px' }}>{t('pilotWelcomeSub')}</p>
+          {/* The buddy says hello before anything is asked of the learner. */}
+          <CompanionHello />
+          <h1 style={{ textAlign: 'center' }}>{t('pilotWelcomeTitle')}</h1>
+          <p className="dim center" style={{ margin: '8px 0 20px' }}>{t('pilotWelcomeSub')}</p>
           <p className="drill-label" style={{ marginBottom: 10 }}>{t('pilotLanguageLabel')}</p>
           <div className="lang-grid stagger">
             {LEARNING_LANGUAGES.map((l) => (

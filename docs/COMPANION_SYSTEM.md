@@ -109,10 +109,12 @@ The same character — the active language's current one — everywhere. Never i
 | Home | `CompanionPeek`: the buddy peeks over the "next step" card. No line, no card of its own. Opens its page. |
 | Route (מסלול) | `CompanionPresence`: the character floating beside the path with ONE contextual line (new learner / mission in progress / next mission waiting / all done) and "your {language} buddy". No name, no number, no bar. Trip Readiness is unchanged. Opens its page. |
 | Its own page | A character page: the character large, what it "says" (symbols, or a learned line), ONE line about how it behaves right now, the last missions you did together, and "the more you understand and speak, the more it changes". Close to a change it glows and says only "something is changing…". No track, no next form, no percentage. |
-| Mission intro | `CompanionIntro`: on a mission's existing first intro screen — the goal in a bubble, a larger pose, and the mission's icon beside it as the thing it is looking at. Themed poses can replace the icon later. |
-| First time a game appears | `CompanionCoach`: character + one instruction in a bubble. |
+| Onboarding | The entry screen opens on the classroom illustration; on the welcome screen the buddy waves hello (`CompanionHello`). |
+| Mission intro | `CompanionIntro`: on a mission's existing first intro screen — the goal in a bubble and the character, large, cheering. |
+| Proof card | The buddy brings the crown (`proud`). |
+| First time a game appears | `CompanionCoach`: its studying pose + one instruction in a bubble. |
 | Beside a game | `CompanionWatch`: it listens next to Quick Reply and the Mini Map (hidden when it is already explaining the game). |
-| An answer | `CompanionReaction` on the answer card, beside the verdict: right → a short happy gesture with bubbles / a sparkle; not quite → a tilted head and "Hmm… one more go?"; a conversation-help tool as the winning move → a hop, a sparkle and "Exactly. That is the smart move". |
+| An answer | `CompanionReaction` on the answer card, beside the verdict: right → the winner pose; not quite → its sad face WITH a supportive line ("So close. I'm with you — one more go?"); a conversation-help tool as the winning move → the crown and "Exactly. That is the smart move". |
 | Mission complete | The buddy, large, celebrating, with one line — it replaces the 🎉. |
 | The change | Full screen, once: the character pauses, light gathers, a different creature is there. Text: "Wait… something changed!" / "Your buddy changed with you ✨". Nothing is named or numbered. Tap to skip the build-up. |
 
@@ -127,11 +129,10 @@ content wins.
 ## 7. Moods and motion
 
 Screens ask for a **mood** (`companionMood.ts`), never an animation: `idle` `resting` `attentive`
-`listening` `curious` `thinking` `happy` `proud` `encouraging` `surprised` `celebrating` `recovery`
-`missionComplete`, and for talking stages `talking` `laughing` `excited` `confident` (an earlier
-stage shows the nearest quiet mood). There is no negative mood. A mood picks a pose (when the art
-has one), a motion and a small effect — bubbles for a fish, a sparkle for a bird, always a sparkle
-for a recovery win. The mood name is never written on screen.
+`listening` `curious` `thinking` `teaching` `greeting` `cheering` `happy` `proud` `encouraging`
+`surprised` `celebrating` `recovery` `missionComplete`, and for talking stages `talking` `laughing` `excited` `confident` (an earlier
+stage shows the nearest quiet mood). The one sad drawing is used only for a miss and always with support. A mood picks a pose (when the art
+has one) and a short motion (see the table in §8). The mood name is never written on screen.
 
 Idle is calm and continuous (a fish drifts, a bird breathes); a reaction is one short gesture
 (0.5–0.9s); only the change is long. Motion is CSS on still artwork — no drawn frames yet.
@@ -140,20 +141,35 @@ new look.
 
 ## 8. Assets
 
-One table names all artwork: `companionAssets.ts` (`COMPANION_ART`). The figure asks for a stage, a
-variant (`full` / `compact`) and a **pose** (`idle` `happy` `thinking` `listening` `celebrate`
-`encouraging` `talking`) — never for a file. A pose with no image of its own falls back to the
-stage image, so poses can be added one at a time (`poses: { happy: { compact: '…' } }`).
+One table names all artwork: `companionAssets.ts` (`COMPANION_ART`). The figure asks for a stage and
+a **pose** — never for a file.
 
-- `public/companion/stage-<n>.png` — the full character.
-- `public/companion/stage-6-avatar.png` — the compact Chatterbox.
+- `public/companion/s<stage>-<pose>.png` — 48 isolated, transparent renders (6 stages × 8 poses),
+  cut from the approved expression sheets. Every image of a stage is the same 320px square with the
+  character centred, so a pose change never moves or resizes it.
+- Poses: `idle` `hello` `winner` `celebrate` `learning` `sad` `crown` `cheer`.
 
-**Current art is a stand-in:** square crops of the approved concept sheet. They include a little of
-the sheet's scenery (bubbles, plants, fragments of arrows), softened by an edge mask. Replacing them
-with clean transparent renders — or with sprite sheets / Lottie / Rive — means editing this table and,
-for animated formats, `CompanionFigure`. No screen or logic changes. Because the stand-ins are not
-transparent, the figure feathers their edges into the page; an entry marked `transparent: true` is
-shown with no feathering. The crop style is not baked into any screen.
+| Moment | Pose | Moods |
+|---|---|---|
+| Greeting, welcome back (onboarding hello, Route) | `hello` | `greeting` |
+| A right answer | `winner` | `happy`, `surprised` |
+| Mission / checkpoint complete, the change | `celebrate` | `celebrating`, `missionComplete` |
+| Explaining a game, a hint | `learning` | `teaching`, `thinking` |
+| A wrong answer — always with a supportive line | `sad` | `encouraging` |
+| A proud moment: a proof card, a conversation-help tool as the winning move | `crown` | `proud`, `recovery` |
+| "Let's go": mission intro, beside Home's start button | `cheer` | `cheering` |
+| Just being there: watching, listening, resting, its own page | `idle` | `idle`, `resting`, `listening`, … |
+
+Stage *n* only ever shows stage *n*'s drawings. Nothing is placed beside the character (no emoji,
+no props, no generated effects) — only its own artwork.
+
+**Not precached.** `companion/**` is excluded from the service-worker precache and cached on first
+use; the shell warms the eight poses of the CURRENT stage only (`preloadStageArt`). A device never
+downloads a form its owner has not reached.
+
+How the files were produced (one-off, not part of the build): each 1448×1086 sheet was split into
+its 4×2 cells at the emptiest row / column near each boundary, stray pixels and neighbouring-pose
+fragments were removed, each pose was centred on a common square per stage, then resized to 320px.
 
 ## 9. Persistence and migration
 

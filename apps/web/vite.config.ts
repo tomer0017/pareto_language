@@ -16,9 +16,17 @@ export default defineConfig({
         // Precache the app shell and the content packs — fully offline after first load (P7).
         // Videos are deliberately NOT precached (too large to bloat the SW install); they are
         // cached at runtime on first view so offline replay works without gating first load.
-        globPatterns: ['**/*.{js,css,html,svg,png,json}'],
+        globPatterns: ['**/*.{js,css,html,svg,png,jpg,json}'],
+        // The companion's artwork is NOT precached: a device only ever fetches the character its
+        // owner has reached (cached on first use, below), never the forms still ahead of them.
+        globIgnores: ['**/companion/**'],
         navigateFallback: '/index.html',
         runtimeCaching: [
+          {
+            urlPattern: /\/companion\/.*\.png$/,
+            handler: 'CacheFirst',
+            options: { cacheName: 'ready-companion', cacheableResponse: { statuses: [0, 200] }, expiration: { maxEntries: 64 } },
+          },
           {
             urlPattern: /\.mp4$/,
             handler: 'CacheFirst',

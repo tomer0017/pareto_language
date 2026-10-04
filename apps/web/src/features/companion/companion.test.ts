@@ -3,10 +3,10 @@ import { createElement } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { BOOTCAMP_PLAN } from '../bootcamp/plan.js';
 import { MISSIONS_BY_LANG } from '../bootcamp/registry.js';
-import { ART_POSES, COMPANION_ART, artPath, artUrl } from './companionAssets.js';
+import { ART_POSES, COMPANION_ART, artPath, artUrl, preloadStageArt, stageArtUrls } from './companionAssets.js';
 import { GAME_INTRO, MISSION_INTRO, coachFor } from './companionCoach.js';
 import { COPY, STAGE_COPY } from './companionCopy.js';
-import { BASE_MOODS, MOOD_ANIMATION, MOOD_POSE, PARROT_MOODS, moodEffect, resolveMood } from './companionMood.js';
+import { BASE_MOODS, MOOD_ANIMATION, MOOD_POSE, PARROT_MOODS, resolveMood } from './companionMood.js';
 import { presenceFor } from './companionCoach.js';
 import { setUiLangDict } from '../../shared/i18n/strings.js';
 import { learnedMaterial } from './companionLearned.js';
@@ -212,22 +212,54 @@ describe('assets and copy are complete for every stage', () => {
       }
       for (const variant of ['full', 'compact'] as const) expect(existsSync(publicDir + COMPANION_ART[s][variant]), `stage ${s} ${variant}`).toBe(true);
     }
-    expect(artUrl(3, 'compact', '/app/')).toBe('/app/companion/stage-3.png');
-    expect(COMPANION_ART[6].compact).not.toBe(COMPANION_ART[6].full); // the living room is not squeezed into a small figure
+    expect(artUrl(3, 'compact', '/app/')).toBe('/app/companion/s3-idle.png');
   });
 
-  it('artwork is asked for by pose; a pose without its own image falls back to the stage image', () => {
-    expect(ART_POSES).toEqual(['idle', 'happy', 'thinking', 'listening', 'celebrate', 'encouraging', 'talking']);
-    for (const s of STAGES) for (const pose of ART_POSES) for (const variant of ['full', 'compact'] as const) {
-      expect(artPath(s, variant, pose), `stage ${s} ${pose}`).toBe(COMPANION_ART[s].poses?.[pose]?.[variant] ?? COMPANION_ART[s][variant]);
+  it('every stage has its OWN eight poses from the expression sheets, on disk, isolated and equally sized', () => {
+    const publicDir = fileURLToPath(new URL('../../../public', import.meta.url));
+    expect(ART_POSES).toEqual(['idle', 'hello', 'winner', 'celebrate', 'learning', 'sad', 'crown', 'cheer']);
+    const seen = new Set<string>();
+    for (const s of STAGES) {
+      expect(COMPANION_ART[s].transparent, `stage ${s}`).toBe(true);
+      for (const pose of ART_POSES) {
+        const path = artPath(s, 'compact', pose);
+        expect(path, `stage ${s} ${pose}`).toBe(`/companion/s${s}-${pose}.png`); // stage n shows stage n's pose — never another stage's
+        expect(artPath(s, 'full', pose)).toBe(path);
+        expect(existsSync(publicDir + path), path).toBe(true);
+        const png = readFileSync(publicDir + path);
+        expect(png.readUInt32BE(16), path).toBe(320);  // width
+        expect(png.readUInt32BE(20), path).toBe(320);  // height — square, so a pose change never resizes the character
+        expect(png[25], path).toBe(6);                 // RGBA: a transparent, isolated render
+        seen.add(path);
+      }
     }
-    expect(artUrl(3, 'compact', '/app/', 'happy')).toBe('/app/companion/stage-3.png');
-    // …and a pose image, once it exists, is picked up with no other change.
-    COMPANION_ART[1].poses = { happy: { compact: '/companion/stage-1-happy.png' } };
-    expect(artUrl(1, 'compact', '/', 'happy')).toBe('/companion/stage-1-happy.png');
-    expect(artUrl(1, 'full', '/', 'happy')).toBe('/companion/stage-1.png');
-    expect(artUrl(1, 'compact', '/', 'thinking')).toBe('/companion/stage-1.png');
-    delete COMPANION_ART[1].poses;
+    expect(seen.size).toBe(48);
+  });
+
+  it('a pose a stage has no image for falls back to its neutral image', () => {
+    const saved = COMPANION_ART[1].poses;
+    COMPANION_ART[1].poses = { hello: { compact: '/companion/s1-hello.png' } };
+    expect(artUrl(1, 'compact', '/', 'hello')).toBe('/companion/s1-hello.png');
+    expect(artUrl(1, 'full', '/', 'hello')).toBe('/companion/s1-idle.png');
+    expect(artUrl(1, 'compact', '/', 'crown')).toBe('/companion/s1-idle.png');
+    COMPANION_ART[1].poses = saved;
+  });
+
+  it('only the reached stage\'s art is ever fetched: it is outside the precache and warmed per stage', () => {
+    for (const s of STAGES) {
+      const urls = stageArtUrls(s, '/');
+      expect(urls).toHaveLength(8);
+      for (const u of urls) expect(u.startsWith(`/companion/s${s}-`), u).toBe(true);
+    }
+    const config = readFileSync(fileURLToPath(new URL('../../../vite.config.ts', import.meta.url)), 'utf8');
+    expect(config).toContain("globIgnores: ['**/companion/**']");
+    expect(config).toMatch(/urlPattern: \/\\\/companion\\\/\.\*\\\.png\$\/,\s+handler: 'CacheFirst'/);
+    const requested: string[] = [];
+    vi.stubGlobal('Image', class { decoding = ''; set src(v: string) { requested.push(v); } });
+    preloadStageArt(2);
+    vi.unstubAllGlobals();
+    expect(requested).toEqual(stageArtUrls(2));
+    expect(requested.join(' ')).not.toMatch(/\/s[13456]-/);
   });
 });
 
@@ -251,16 +283,22 @@ describe('moods — how the buddy feels, never written on screen', () => {
   it('there is no negative mood: nothing sad, ashamed or angry exists to show', () => {
     expect(ALL.join(' ')).not.toMatch(/sad|cry|asham|angry|fail|wrong|disappoint/i);
   });
-  it('a fish makes bubbles, a bird sparkles; a recovery win always sparkles; calm moods have no flourish', () => {
-    expect(moodEffect(1, 'happy')).toBe('bubbles');
-    expect(moodEffect(5, 'happy')).toBe('sparkle');
-    for (const s of STAGES) expect(moodEffect(s, 'recovery')).toBe('sparkle');
-    for (const s of STAGES) for (const m of ['idle', 'resting', 'listening', 'thinking', 'encouraging'] as const) expect(moodEffect(s, m)).toBe('none');
+  it('each moment shows the pose the expression sheets give it', () => {
+    const pose = (m: Parameters<typeof resolveMood>[1], stage: (typeof STAGES)[number] = 1) => MOOD_POSE[resolveMood(stage, m)];
+    expect(pose('greeting')).toBe('hello');                                             // A — hello / welcome back
+    expect([pose('happy'), pose('surprised')]).toEqual(['winner', 'winner']);           // B — a right answer
+    expect([pose('celebrating'), pose('missionComplete')]).toEqual(['celebrate', 'celebrate']); // C — a big win
+    expect([pose('teaching'), pose('thinking')]).toEqual(['learning', 'learning']);     // D — explaining, hinting
+    expect(pose('encouraging')).toBe('sad');                                            // E — not quite
+    expect([pose('proud'), pose('recovery')]).toEqual(['crown', 'crown']);              // F — a proud moment
+    expect(pose('cheering')).toBe('cheer');                                             // G — let's go
+    for (const m of ['idle', 'resting', 'attentive', 'listening', 'curious'] as const) expect(pose(m)).toBe('idle');
+    for (const s of STAGES) for (const m of ALL) expect(ART_POSES).toContain(pose(m, s));
   });
-  it('on the Route it greets a new learner, perks up for a waiting mission, and rests when all is done', () => {
-    expect(presenceFor({ done: 0, resume: false, allDone: false })).toEqual({ line: COPY.presence.fresh, mood: 'curious' });
-    expect(presenceFor({ done: 0, resume: true, allDone: false })).toEqual({ line: COPY.presence.resume, mood: 'attentive' });
-    expect(presenceFor({ done: 4, resume: false, allDone: false })).toEqual({ line: COPY.presence.next, mood: 'attentive' });
+  it('on the Route it waves hello — to a new learner and to one coming back — and rests when all is done', () => {
+    expect(presenceFor({ done: 0, resume: false, allDone: false })).toEqual({ line: COPY.presence.fresh, mood: 'greeting' });
+    expect(presenceFor({ done: 0, resume: true, allDone: false })).toEqual({ line: COPY.presence.resume, mood: 'greeting' });
+    expect(presenceFor({ done: 4, resume: false, allDone: false })).toEqual({ line: COPY.presence.next, mood: 'greeting' });
     expect(presenceFor({ done: 30, resume: false, allDone: true })).toEqual({ line: COPY.presence.allDone, mood: 'resting' });
   });
 });
@@ -386,12 +424,13 @@ describe('companion store — per language, persisted, evolution fires once', ()
 
   it('the Path card renders the current companion, its stage and its language', () => {
     const html = card();
-    expect(html).toContain('stage-2.png');
+    expect(html).toContain('/companion/s2-');
     expect(html).toContain('Your English buddy');
     expect(html).not.toContain(STAGE_COPY[2].name.en); // it has no name on screen
     expect(html).not.toMatch(/of 6|Stage|%|cmp-bar/); // …and no number, no bar
     expect(html).toMatch(/English/);
-    expect(html).toContain('data-mood="attentive"'); // a mission is waiting
+    expect(html).toContain('data-mood="greeting"'); // it waves: welcome back
+    expect(html).toContain('s2-hello.png');
     expect(host()).toBe(''); // nothing owed → no overlay
   });
 
@@ -403,8 +442,8 @@ describe('companion store — per language, persisted, evolution fires once', ()
     expect(en).toMatchObject({ points: 70, stage: 3, seenStage: 2 });
     const overlay = host();
     expect(overlay).toContain('role="dialog"');
-    expect(overlay).toContain('stage-2.png');
-    expect(overlay).toContain('stage-3.png');
+    expect(overlay).toContain('/companion/s2-');
+    expect(overlay).toContain('/companion/s3-');
     expect(overlay).toContain(COPY.changedTitle.en);
     expect(overlay).toContain(COPY.changedLine.en);
     for (const s of STAGES) expect(overlay).not.toContain(STAGE_COPY[s].name.en); // the change is shown, never named
@@ -446,8 +485,8 @@ describe('companion store — per language, persisted, evolution fires once', ()
     expect(state.es).toMatchObject({ points: 0, stage: 1, seenStage: 1 }); // a scared fish
     expect(state.en!.stage).toBe(3);
     const html = card();
-    expect(html).toContain('stage-1.png');
-    expect(html).not.toContain('stage-3.png');
+    expect(html).toContain('/companion/s1-');
+    expect(html).not.toContain('/companion/s3-');
     expect(html).toMatch(/Spanish/);
 
     complete('introduce-myself', 'numbers-money');
@@ -455,10 +494,10 @@ describe('companion store — per language, persisted, evolution fires once', ()
     expect(companion.useCompanionStore.getState().byLang.en!.points).toBe(70); // English untouched
 
     app.useAppStore.setState({ learningLang: 'en' });
-    expect(card()).toContain('stage-3.png');
+    expect(card()).toContain('/companion/s3-');
     expect(host()).toBe(''); // the Spanish evolution waits for Spanish
     app.useAppStore.setState({ learningLang: 'es' });
-    expect(host()).toContain('stage-2.png');
+    expect(host()).toContain('/companion/s2-');
   });
 
   it('an evolution never disturbs the mission flow: acknowledging it changes no mission state', () => {
@@ -491,8 +530,9 @@ describe('companion store — per language, persisted, evolution fires once', ()
     const a = active();
     const reaction = renderToStaticMarkup(createElement(ui.CompanionReactionView, { kind: 'missionComplete', stage: a.stage }));
     expect(reaction).toContain('data-anim="missionComplete"');
-    expect(reaction).toContain('stage-3.png');
-    expect(renderToStaticMarkup(createElement(ui.CompanionReactionView, { kind: 'encouraging', stage: a.stage }))).not.toMatch(/wrong|fail|sad/i);
+    expect(reaction).toContain('/companion/s3-');
+    // What it SAYS on a miss is supportive (the pose is its own drawn sad face — checked in the reactions test).
+    expect(renderToStaticMarkup(createElement(ui.CompanionReactionView, { kind: 'encouraging', stage: a.stage })).replace(/<[^>]+>/g, ' ')).not.toMatch(/wrong|fail|sad/i);
     const speech = ui.companionSpeech(a.stage, a.lang, bootcamp.useBootcampStore.getState().completedDays);
     const milestones = ui.recentMilestones(bootcamp.useBootcampStore.getState().completedDays);
     const page = renderToStaticMarkup(createElement(ui.CompanionPageView, { lang: a.lang, language: ui.languageLabel(a.lang), stage: a.stage, speech, milestones }));
@@ -512,24 +552,47 @@ describe('companion store — per language, persisted, evolution fires once', ()
       expect(html, `stage ${stage}`).toContain(line);
       expect(html, `stage ${stage}`).not.toMatch(/lang="(en|fr|es)"/); // no target-language speech in the coach row
       expect(html, `stage ${stage}`).toContain(`data-voice="${stage <= 3 ? 'thought' : 'speech'}"`);
-      expect(html, `stage ${stage}`).toMatch(/width:60px/); // present, but never bigger than the content
+      expect(html, `stage ${stage}`).toMatch(/width:76px/); // present, but never bigger than the content
+      expect(html, `stage ${stage}`).toContain(`s${stage}-learning.png`); // explaining = its studying pose
     }
   });
 
-  it('reactions: a small pop for a right answer, encouragement for a wrong one, applause for a recovery tool', () => {
-    const view = (kind: UiModule.ReactionKind, text?: string | false): string => renderToStaticMarkup(createElement(ui.CompanionReactionView, { kind, stage: 1, text, size: 40 }));
+  it('reactions: the winner for a right answer, a sad face WITH support for a wrong one, the crown for a recovery tool', () => {
+    const view = (kind: UiModule.ReactionKind, text?: string | false, stage: (typeof STAGES)[number] = 1): string => renderToStaticMarkup(createElement(ui.CompanionReactionView, { kind, stage, text, size: 40 }));
+    const said = (html: string): string => html.replace(/<[^>]+>/g, ' ');
     const correct = view('correct', false);
     expect(correct).toContain('data-kind="correct"');
-    expect(correct).not.toContain('cmp-bubble'); // avatar only — it must not crowd the answer card
+    expect(correct).toContain('s1-winner.png');
+    expect(correct).not.toContain('cmp-bubble'); // the pose says it — no words crowd the answer card
     const wrong = view('encouraging');
-    expect(wrong).toContain('data-anim="encouraging"');
-    expect(wrong).not.toMatch(/wrong|fail|sad|bad|טעות|לא נכון/i);
+    expect(wrong).toContain('s1-sad.png');
+    expect(said(wrong)).toContain('So close. I’m with you — one more go?'); // on your side…
+    expect(said(wrong)).not.toMatch(/wrong|fail|bad|mistake|טעות|לא נכון/i); // …never punishing
     const recovery = view('recovery');
     expect(recovery).toContain('data-kind="recovery"');
-    expect(recovery).toContain('data-anim="celebrate"'); // bigger than a plain right answer
+    expect(recovery).toContain('s1-crown.png'); // more than a plain right answer: it is the smart move
     expect(recovery).toContain('cmp-bubble');
-    expect(recovery).not.toBe(view('celebrate'));
+    expect(view('proud', false)).toContain('s1-crown.png');
+    expect(view('celebrate', false)).toContain('s1-celebrate.png');
+    expect(view('missionComplete')).toContain('s1-celebrate.png');
+    // every stage reacts with ITS OWN drawing of the pose
+    for (const stage of STAGES) for (const [kind, pose] of [['correct', 'winner'], ['encouraging', 'sad'], ['recovery', 'crown'], ['missionComplete', 'celebrate']] as const) {
+      expect(view(kind, false, stage), `stage ${stage} ${kind}`).toContain(`/companion/s${stage}-${pose}.png`);
+    }
     for (const html of [correct, wrong, recovery]) expect(html).not.toMatch(/lang="(en|fr|es)"/);
+  });
+
+  it('it greets, cheers and teaches in the right places', () => {
+    for (const stage of STAGES) {
+      expect(renderToStaticMarkup(createElement(ui.CompanionPresenceView, { stage, language: 'x', line: 'x' })), 'route').toContain(`s${stage}-hello.png`);
+      expect(renderToStaticMarkup(createElement(ui.CompanionIntroView, { stage, line: 'x' })), 'mission intro').toContain(`s${stage}-cheer.png`);
+      expect(renderToStaticMarkup(createElement(ui.CompanionPeekView, { stage })), 'home, beside the start button').toContain(`s${stage}-cheer.png`);
+      expect(renderToStaticMarkup(createElement(ui.CompanionCoachView, { stage, line: 'x' })), 'explaining').toContain(`s${stage}-learning.png`);
+      expect(renderToStaticMarkup(createElement(ui.CompanionPresenceView, { stage, language: 'x', line: 'x', mood: 'resting' })), 'all done').toContain(`s${stage}-idle.png`);
+    }
+    const intro = renderToStaticMarkup(createElement(ui.CompanionIntroView, { stage: 1, line: 'x' }));
+    expect(intro.match(/<img /g)).toHaveLength(1);
+    expect(intro).not.toMatch(/cmp-prop|👋/); // only its own artwork — nothing pasted beside it
   });
 
   it('showing reactions and answering practice questions changes neither the mission nor the companion', () => {
@@ -568,12 +631,11 @@ describe('companion store — per language, persisted, evolution fires once', ()
   it('reduced motion: the in-mission companion is still, like every other companion animation', () => {
     const css = readFileSync(fileURLToPath(new URL('./companion.css', import.meta.url)), 'utf8');
     const reduced = css.slice(css.indexOf('@media (prefers-reduced-motion: reduce)'));
-    expect(reduced).toMatch(/\.cmp-fig img, \.cmp-fig, \.cmp-prop, \.cmp-hero::before, \.cmp-evo \*, \.cmp-evo \{ animation: none !important; transition: none !important; \}/);
-    expect(reduced).toMatch(/\.cmp-fx \{ display: none; \}/); // no bubbles or sparkles either
+    expect(reduced).toMatch(/\.cmp-fig img, \.cmp-fig, \.cmp-hero::before, \.cmp-evo \*, \.cmp-evo \{ animation: none !important; transition: none !important; \}/);
     // Every animated companion selector is one the reduced-motion block switches off.
     const animated = [...css.slice(0, css.indexOf('@media (prefers-reduced-motion: reduce)')).matchAll(/^(\.[^{\n]+)\{[^}]*animation:/gm)].map((m) => m[1]!);
     expect(animated.length).toBeGreaterThan(10);
-    for (const sel of animated) expect(/\.cmp-fig|\.cmp-fx|\.cmp-prop|\.cmp-hero|\.cmp-evo/.test(sel), sel).toBe(true);
+    for (const sel of animated) expect(/\.cmp-fig|\.cmp-hero|\.cmp-evo/.test(sel), sel).toBe(true);
     expect(css).toMatch(/\.cmp-reaction \{[^}]*pointer-events: none;/); // can never swallow a tap meant for an answer
     expect(css).toMatch(/\.cmp-watch \{[^}]*pointer-events: none;/);
     expect(css).not.toMatch(/\.cmp-fig \{[^}]*(border-radius|overflow: hidden|background)/); // a character, not an avatar in a circle
@@ -590,12 +652,12 @@ describe('companion store — per language, persisted, evolution fires once', ()
     for (const uiLang of ['en', 'he']) {
       setUiLangDict(uiLang);
       for (const stage of STAGES) {
-        const own = new Set([artUrl(stage, 'compact'), artUrl(stage, 'full')]);
+        const own = new Set(stageArtUrls(stage));
         const surfaces: Record<string, string> = {
           route: renderToStaticMarkup(createElement(ui.CompanionPresenceView, { stage, language: ui.languageLabel('es'), line: 'x' })),
           home: renderToStaticMarkup(createElement(ui.CompanionPeekView, { stage })),
           page: renderToStaticMarkup(createElement(ui.CompanionPageView, { lang: 'es', language: ui.languageLabel('es'), stage, speech, stirring: true, milestones: [] })),
-          intro: renderToStaticMarkup(createElement(ui.CompanionIntroView, { stage, line: 'x', prop: '☕' })),
+          intro: renderToStaticMarkup(createElement(ui.CompanionIntroView, { stage, line: 'x' })),
           coach: renderToStaticMarkup(createElement(ui.CompanionCoachView, { stage, line: 'x' })),
           ...Object.fromEntries((['correct', 'encouraging', 'thinking', 'recovery', 'celebrate', 'missionComplete'] as const).map((kind) => [kind, renderToStaticMarkup(createElement(ui.CompanionReactionView, { kind, stage }))])),
         };
@@ -616,7 +678,9 @@ describe('companion store — per language, persisted, evolution fires once', ()
           const { text, art } = perceived(renderToStaticMarkup(createElement(ui.CompanionEvolution, { lang: 'es', from, to: stage, onDone: () => undefined })));
           for (const name of names) expect(text.includes(name), `${uiLang} change to ${stage} names “${name}”`).toBe(false);
           expect(text).not.toMatch(/\d\s*(of|\/|מתוך)\s*6|stage|level|שלב|רמה|%|parrot|chatterbox|תוכי|פטפטן/i);
-          expect(new Set(art)).toEqual(new Set([artUrl(from, 'full'), artUrl(stage, 'full')]));
+          expect(art).toHaveLength(2);
+          expect(stageArtUrls(from)).toContain(art[0]);
+          expect(stageArtUrls(stage)).toContain(art[1]);
           expect(text).toContain(L(COPY.changedTitle));
         }
       }
@@ -633,7 +697,7 @@ describe('companion store — per language, persisted, evolution fires once', ()
     const everywhere = (stage: (typeof STAGES)[number]): string[] => [
       renderToStaticMarkup(createElement(ui.CompanionPeekView, { stage })),                                  // Home
       renderToStaticMarkup(createElement(ui.CompanionPresenceView, { stage, language: 'x', line: 'x' })),    // Route
-      renderToStaticMarkup(createElement(ui.CompanionIntroView, { stage, line: 'x', prop: '☕' })),           // mission intro
+      renderToStaticMarkup(createElement(ui.CompanionIntroView, { stage, line: 'x' })),           // mission intro
       renderToStaticMarkup(createElement(ui.CompanionCoachView, { stage, line: 'x' })),                      // a game's instruction
       renderToStaticMarkup(createElement(ui.CompanionReactionView, { kind: 'correct', stage })),             // an answer
       renderToStaticMarkup(createElement(ui.CompanionReactionView, { kind: 'missionComplete', stage })),     // mission complete
@@ -644,7 +708,7 @@ describe('companion store — per language, persisted, evolution fires once', ()
       const stage = active().stage;
       stages.push(stage);
       const shown = everywhere(stage).map((html) => /<img[^>]* src="([^"]+)"/.exec(html)?.[1]);
-      expect(new Set(shown), lang).toEqual(new Set([artUrl(stage, 'compact')]));
+      for (const src of shown) expect(stageArtUrls(stage), `${lang} ${src}`).toContain(src);
     }
     expect(new Set(stages).size).toBeGreaterThan(1); // the languages really are at different points
     app.useAppStore.setState({ learningLang: 'en' });

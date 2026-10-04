@@ -77,19 +77,19 @@ export function coachFor(steps: readonly { kind: string }[], index: number, miss
   return game ? { line: game, role: 'game' } : null;
 }
 
-/** The mood the buddy brings to each game's instruction. */
+/** The mood the buddy brings to each game's instruction: explaining is always its studying pose. */
 export const GAME_MOOD: Record<string, CompanionMood> = {
-  matchPairs: 'curious', visualMatch: 'listening', miniMap: 'listening', sentenceBuilder: 'thinking', swap: 'curious', quickReply: 'listening',
+  matchPairs: 'teaching', visualMatch: 'teaching', miniMap: 'teaching', sentenceBuilder: 'teaching', swap: 'teaching', quickReply: 'teaching',
 };
 
 export interface Presence { line: LocalizedText; mood: CompanionMood }
 /**
  * The buddy on the Route and on Home: one contextual line and a mood, from where the learner stands.
- * It rests when everything is done, perks up when a mission is waiting, and greets a new learner.
+ * It waves hello — to a new learner and to one coming back — and rests when everything is done.
  */
 export function presenceFor(at: { done: number; resume: boolean; allDone: boolean }): Presence {
   if (at.allDone) return { line: COPY.presence.allDone, mood: 'resting' };
-  if (at.resume) return { line: COPY.presence.resume, mood: 'attentive' };
-  if (at.done === 0) return { line: COPY.presence.fresh, mood: 'curious' };
-  return { line: COPY.presence.next, mood: 'attentive' };
+  if (at.resume) return { line: COPY.presence.resume, mood: 'greeting' };
+  if (at.done === 0) return { line: COPY.presence.fresh, mood: 'greeting' };
+  return { line: COPY.presence.next, mood: 'greeting' };
 }
