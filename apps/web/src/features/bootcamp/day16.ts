@@ -1,5 +1,6 @@
 import { T, recovery } from './recovery.js';
 import type { BootcampDayContent, BootcampDialogue, BootcampItem } from './types.js';
+import { m17Flow } from './practiceEveryday.js';
 
 /**
  * Mission 17 — "Supermarket" (Phase 3 · Food).
@@ -17,7 +18,6 @@ export const DAY16_ITEMS: BootcampItem[] = [
   // hear — signs and cashier lines
   { id: 'en.reply.super.aisle-three', text: "It's in aisle three.", meaning: T('זה במעבר שלוש.', "It's in aisle three.") },
   { id: 'en.reply.super.over-there', text: 'Over there, on the left.', meaning: T('שם, משמאל.', 'Over there, on the left.') },
-  { id: 'en.reply.super.weigh-it', text: 'You need to weigh it first.', meaning: T('צריך לשקול קודם.', 'You need to weigh it first.') },
   { id: 'en.reply.super.bag-q', text: 'Do you need a bag?', meaning: T('צריך שקית?', 'Do you need a bag?') },
   { id: 'en.reply.super.card-here', text: 'Insert your card here.', meaning: T('הכנס את הכרטיס כאן.', 'Insert your card here.') },
   { id: 'en.reply.super.sold-out', text: "Sorry, we're sold out.", meaning: T('סליחה, אזל המלאי.', "Sorry, we're sold out.") },
@@ -72,24 +72,10 @@ export const DAY16: BootcampDayContent = {
   steps: [
     { kind: 'talk', icon: '🛒', title: T('משימה 17: סופרמרקט', 'Mission 17: Supermarket'),
       body: [
-        T('היום-יום נהיה זול ופשוט. אתה מוצא, שוקל, ומשלם — לבד לגמרי.', 'Daily life just got cheap and easy. You find it, weigh it, and pay — completely on your own.'),
-        T('רוב העבודה כאן היא זיהוי: שלטים, מעברים, וקול הקופה האוטומטית.', 'Most of the work here is recognition: signs, aisles, and the self-checkout voice.'),
+        T('סופר, לבד: למצוא מוצר, להבין באיזה מעבר ובאיזה צד הוא, לעבור קופה ולבקש שקית.', 'The supermarket, on your own: find a product, understand which aisle and which side it is on, get through the checkout and ask for a bag.'),
+        T('כמה שאלות קצרות — וכמה תשובות שכדאי לזהות כשאומרים אותן מהר.', 'A few short questions — and a few answers worth recognizing when they are said fast.'),
       ], cta: T('להיכנס לסופר', 'Walk into the shop') },
-    { kind: 'tool', itemId: 'en.phrase.super.where-is', index: 1, total: 4, label: T('למצוא מוצר', 'Find a product') },
-    { kind: 'tool', itemId: 'en.phrase.super.do-you-have', index: 2, total: 4, label: T('לבדוק מלאי', 'Check stock') },
-    { kind: 'tool', itemId: 'en.phrase.super.just-this', index: 3, total: 4, label: T('בקופה', 'At the checkout') },
-    { kind: 'tool', itemId: 'en.phrase.super.need-bag', index: 4, total: 4, label: T('לבקש שקית', 'Ask for a bag') },
-    { kind: 'replies', saidItemId: 'en.phrase.super.where-is',
-      replyIds: ['en.reply.super.aisle-three', 'en.reply.super.over-there', 'en.reply.super.weigh-it', 'en.reply.super.bag-q'] },
-    { kind: 'receipt', text: T('אתה מזהה תשובות של סדרן וקופה — מעבר, כיוון, שקילה, שקית.', 'You recognize the answers of a shelf-stocker and a checkout — aisle, direction, weighing, bag.') },
-    { kind: 'quiz', itemId: 'en.reply.super.weigh-it', wrongIds: ['en.reply.super.bag-q', 'en.reply.super.card-here'] },
-    { kind: 'quiz', itemId: 'en.reply.super.aisle-three', wrongIds: ['en.reply.super.over-there', 'en.reply.super.sold-out'] },
-    { kind: 'dialogue', dialogueId: 'supermarket' },
-    { kind: 'receipt', text: T('מצאת מוצרים, שקלת פירות, ועברת קופה אוטומטית — לבד.', 'You found products, weighed fruit, and cleared a self-checkout — on your own.') },
-    { kind: 'swipe', itemIds: DAY16_ITEMS.map((i) => i.id) },
-    { kind: 'ambush', npc: { en: 'Unexpected item in the bagging area — please wait for assistance.', he: 'פריט לא צפוי באזור האריזה — אנא המתן לסיוע.' },
-      correctItemId: 'en.phrase.recovery.show-me', wrongItemId: 'en.phrase.super.just-this' },
-    { kind: 'receipt', text: T('הקופה האוטומטית נתקעה — וידעת לבקש שיראו לך במקום להיכנס ללחץ.', 'The self-checkout jammed — and you knew to ask someone to show you, instead of panicking.') },
-    { kind: 'summary' },
+    // From the key sentences onward the flow is shared by all languages: see practiceEveryday.ts.
+    ...m17Flow('en'),
   ],
 };

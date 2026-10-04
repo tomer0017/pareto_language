@@ -1,5 +1,6 @@
 import { T, recovery } from './recovery.js';
 import type { BootcampDayContent, BootcampDialogue, BootcampItem } from './types.js';
+import { m15Flow } from './practiceEveryday.js';
 
 /**
  * Mission 15 — "Special Requests & Allergies" (Phase 3 · Food).
@@ -23,7 +24,6 @@ export const DAY13_ITEMS: BootcampItem[] = [
   { id: 'en.reply.diet.make-without', text: 'We can make it without.', meaning: T('אפשר להכין בלי.', 'We can make it without.') },
   { id: 'en.reply.diet.contains-nuts', text: 'That one contains nuts.', meaning: T('זה מכיל אגוזים.', 'That one contains nuts.') },
   { id: 'en.reply.diet.not-spicy', text: "No, it's not spicy.", meaning: T('לא, זה לא חריף.', "No, it's not spicy.") },
-  { id: 'en.reply.diet.good-option', text: 'This one is a good option for you.', meaning: T('זו אפשרות טובה בשבילך.', 'This one is a good option for you.') },
   { id: 'en.reply.diet.anything-else-allergic', text: "Any other allergies?", meaning: T('יש עוד אלרגיות?', "Any other allergies?") },
   ...recovery('en.phrase.recovery.repeat', 'en.phrase.recovery.slowly', 'en.phrase.recovery.thank-you'),
 ];
@@ -92,21 +92,7 @@ export const DAY13: BootcampDayContent = {
         T('יש מילים שאתה אולי תצטרך רק פעם אחת בחיים — אבל אז הן קריטיות.', 'Some words you may need only once in your life — but then they’re critical.'),
         T('היום נלמד לשמור על הגוף שלך בכל מטבח: אלרגיה, "בלי", צמחוני, ובדיקת מרכיב.', 'Today we learn to keep your body safe in any kitchen: allergy, “without”, vegetarian, and checking an ingredient.'),
       ], cta: T('לשבת ולהזמין בבטחה', 'Sit down and order safely') },
-    { kind: 'tool', itemId: 'en.phrase.diet.allergic-nuts', index: 1, total: 4, label: T('המשפט שמציל', 'The line that protects') },
-    { kind: 'tool', itemId: 'en.phrase.diet.without-onions', index: 2, total: 4, label: T('להסיר מרכיב', 'Remove an ingredient') },
-    { kind: 'tool', itemId: 'en.phrase.diet.vegetarian', index: 3, total: 4, label: T('להגדיר את עצמך', 'Define yourself') },
-    { kind: 'tool', itemId: 'en.phrase.diet.does-have-dairy', index: 4, total: 4, label: T('לבדוק מרכיב', 'Check an ingredient') },
-    { kind: 'replies', saidItemId: 'en.phrase.diet.allergic-nuts',
-      replyIds: ['en.reply.diet.let-me-check', 'en.reply.diet.make-without', 'en.reply.diet.contains-nuts', 'en.reply.diet.good-option'] },
-    { kind: 'receipt', text: T('אתה מזהה איך המטבח מגיב לאלרגיה — בדיקה, אזהרה, ופתרון.', 'You recognize how a kitchen responds to an allergy — check, warning, and solution.') },
-    { kind: 'quiz', itemId: 'en.reply.diet.contains-nuts', wrongIds: ['en.reply.diet.make-without', 'en.reply.diet.good-option'] },
-    { kind: 'quiz', itemId: 'en.reply.diet.let-me-check', wrongIds: ['en.reply.diet.not-spicy', 'en.reply.diet.contains-nuts'] },
-    { kind: 'dialogue', dialogueId: 'allergy-order' },
-    { kind: 'receipt', text: T('הזמנת ארוחה שמתאימה לך — אלרגיה, צמחוני, בלי בצל, בדיקת מרכיבים.', 'You ordered a meal that works for you — allergy, vegetarian, no onions, ingredients checked.') },
-    { kind: 'swipe', itemIds: DAY13_ITEMS.map((i) => i.id) },
-    { kind: 'ambush', npc: { en: 'Just to be safe does your nut allergy mean we should avoid the shared fryer too?', he: 'רק ליתר ביטחון — האלרגיה לאגוזים אומרת שכדאי להימנע גם מהמטגן המשותף?' },
-      correctItemId: 'en.phrase.recovery.repeat', wrongItemId: 'en.phrase.diet.vegetarian' },
-    { kind: 'receipt', text: T('שאלת בטיחות מפורטת ומהירה — וביקשת שיחזרו במקום לנחש. עם אלרגיה, זה בדיוק הצעד הנכון.', 'A detailed, fast safety question — and you asked them to repeat instead of guessing. With an allergy, exactly the right move.') },
-    { kind: 'summary' },
+    // From the key sentences onward the flow is shared by all languages: see practiceEveryday.ts.
+    ...m15Flow('en'),
   ],
 };

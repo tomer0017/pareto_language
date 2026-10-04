@@ -69,12 +69,84 @@ export const TIME_PLANS: MissionSpec = {
     said: 'phrase.time.what-time',
     replies: ['reply.time.at-eight', 'reply.time.too-late', 'reply.time.leave-early', 'reply.time.free-tomorrow-q'],
     repliesReceipt: ['אתה מזהה שעה, "מוקדם" ו"מאוחר" — גם כשזה נאמר מהר.', 'You recognize a time, "early" and "late" — even when it is said fast.'],
-    quiz: ['reply.time.free-tomorrow-q', 'reply.time.what-doing-tonight', 'reply.time.too-late'],
-    ambush: {
-      npc: ['Hey quick question are you free tomorrow or do you already have plans?', 'Dis, petite question : tu es libre demain ou tu as déjà quelque chose de prévu ?', 'Oye, una pregunta rápida: ¿estás libre mañana o ya tienes planes?', 'היי, שאלה קצרה — אתה פנוי מחר או שכבר יש לך תוכניות?'],
-      correct: 'reply.time.free-tomorrow-q',
-      wrong: 'reply.time.at-eight',
-      receipt: ['שאלו אותך מהר אם אתה פנוי מחר — והבנת.', 'You were asked, fast, whether you are free tomorrow — and you got it.'],
-    },
+    practice: [
+      // A meeting time, by ear. Only numbers the learner already has.
+      {
+        kind: 'visualMatch',
+        label: ['באיזו שעה? הקש על השעה ששמעת', 'What time? Tap the time you hear'],
+        tiles: [{ id: 't2', label: '2:00' }, { id: 't5', label: '5:00' }, { id: 't7', label: '7:00' }, { id: 't8', label: '8:00' }, { id: 't10', label: '10:00' }, { id: 't3', label: '3:00' }],
+        rounds: [
+          { audio: ['At eight.', 'À huit heures.', 'A las ocho.', 'בשמונה.'], correct: 't8', itemId: 'reply.time.at-eight' },
+          { audio: ["Let's meet here at seven.", 'On se retrouve ici à sept heures.', 'Quedamos aquí a las siete.', 'ניפגש כאן בשבע.'], correct: 't7' },
+          { audio: ['At ten.', 'À dix heures.', 'A las diez.', 'בעשר.'], correct: 't10' },
+          { audio: ['At five.', 'À cinq heures.', 'A las cinco.', 'בחמש.'], correct: 't5' },
+        ],
+      },
+      // A friend making plans with you: five moments, five answers.
+      {
+        kind: 'quickReply',
+        label: ['חבר קובע איתך — מה עונים?', 'A friend is making plans — what do you say?'],
+        rounds: [
+          { prompt: 'reply.time.what-doing-today', options: [
+            ['phrase.time.maybe-later', true, ['Nothing this morning. Maybe later.', 'Rien ce matin. Peut-être plus tard.', 'Nada esta mañana. Quizás más tarde.']],
+            ['phrase.time.not-too-late', false], ['phrase.time.lets-meet', false],
+          ] },
+          { prompt: 'reply.time.what-doing-tonight', options: [['phrase.time.free-tonight', true], ['phrase.time.free-tomorrow', false], ['phrase.time.what-time', false]] },
+          { prompt: 'reply.time.want-to-come', options: [
+            ['phrase.time.what-time', true, ['Yes! What time?', 'Oui ! À quelle heure ?', '¡Sí! ¿A qué hora?']],
+            ['phrase.time.not-too-late', false], ['phrase.time.free-tomorrow', false],
+          ] },
+          { prompt: 'reply.time.too-late', options: [['phrase.time.not-too-late', true], ['phrase.time.lets-meet', false], ['phrase.time.what-doing-tomorrow', false]] },
+          { prompt: 'reply.time.free-tomorrow-q', options: [['phrase.time.free-tomorrow', true], ['phrase.time.free-tonight', false], ['phrase.time.what-time', false]] },
+        ],
+      },
+      // The same question for today, tonight and tomorrow.
+      {
+        kind: 'swap',
+        label: ['על מתי שואלים?', 'Which day are you asking about?'],
+        rounds: (['today', 'tonight', 'tomorrow'] as const).map((right) => ({
+          frame: ['What are you doing ___?', 'Tu fais quoi ___ ?', '¿Qué haces ___?'] as const,
+          itemId: 'phrase.time.what-doing-tomorrow',
+          cue: { emoji: '🗓️', text: ({ today: ['אתה רוצה לדעת מה הוא עושה היום', 'You want to know their plans for today'], tonight: ['אתה רוצה לדעת מה הוא עושה הערב', 'You want to know their plans for tonight'], tomorrow: ['אתה רוצה לדעת מה הוא עושה מחר', 'You want to know their plans for tomorrow'] } as const)[right] },
+          options: [
+            [['today', 'aujourd’hui', 'hoy'], 'מה אתה עושה היום?', right === 'today'],
+            [['tonight', 'ce soir', 'esta noche'], 'מה אתה עושה הערב?', right === 'tonight'],
+            [['tomorrow', 'demain', 'mañana'], 'מה אתה עושה מחר?', right === 'tomorrow'],
+          ] as const,
+        })),
+      },
+      // The sentence that settles a plan: a place and a time.
+      {
+        kind: 'sentenceBuilder',
+        rounds: [{ itemId: 'phrase.time.lets-meet', chunks: [["Let's meet", 'here', 'at seven.'], ['On se retrouve', 'ici', 'à sept heures.'], ['Quedamos', 'aquí', 'a las siete.']] }],
+      },
+    ],
+    review: [
+      'phrase.time.what-doing-tomorrow', 'phrase.time.free-tonight', 'phrase.time.free-tomorrow', 'phrase.time.what-time', 'phrase.time.not-too-late',
+      'phrase.time.lets-meet', 'phrase.time.maybe-later',
+      'reply.time.at-eight', 'reply.time.too-late', 'reply.time.free-tomorrow-q', 'reply.time.want-to-come',
+      'phrase.recovery.repeat',
+    ],
+    // Making the plan at natural speed — your friend's own lines.
+    finale: [{
+      practice: {
+        kind: 'quickReply',
+        challenge: true,
+        rounds: [
+          { npc: ['And what are you doing tonight?', 'Et tu fais quoi ce soir ?', '¿Y qué haces esta noche?', 'ומה אתה עושה הערב?'],
+            options: [['phrase.time.free-tonight', true], ['phrase.time.not-too-late', false], ['phrase.time.lets-meet', false]] },
+          { npc: ['At eight. Is that too late for you?', 'À huit heures. C’est trop tard pour toi ?', 'A las ocho. ¿Es muy tarde para ti?', 'בשמונה. זה מאוחר מדי בשבילך?'],
+            options: [['phrase.time.not-too-late', true], ['phrase.time.maybe-later', false], ['phrase.time.what-doing-tomorrow', false]] },
+          { npc: ["Tomorrow morning I'm going to the beach. Are you free tomorrow?", 'Demain matin, je vais à la plage. Tu es libre demain ?', 'Mañana por la mañana voy a la playa. ¿Estás libre mañana?', 'מחר בבוקר אני הולך לים. אתה פנוי מחר?'],
+            options: [['phrase.time.free-tomorrow', true], ['phrase.time.free-tonight', false], ['phrase.time.what-time', false]] },
+          { npc: ['Then come with us! But we leave early.', 'Alors viens avec nous ! Mais on part tôt.', '¡Entonces ven con nosotros! Pero salimos temprano.', 'אז בוא איתנו! אבל אנחנו יוצאים מוקדם.'],
+            options: [
+              ['phrase.time.lets-meet', true, ["No problem. Let's meet here at seven.", 'Pas de problème. On se retrouve ici à sept heures.', 'No hay problema. Quedamos aquí a las siete.']],
+              ['phrase.time.free-tonight', false], ['phrase.time.maybe-later', false],
+            ] },
+        ],
+      },
+      receipt: ['הערב, מחר, באיזו שעה ואיפה — קבעת הכל בקצב של שיחה אמיתית.', 'Tonight, tomorrow, what time and where — you settled it all at the pace of a real chat.'],
+    }],
   },
 };

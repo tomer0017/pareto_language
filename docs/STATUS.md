@@ -22,6 +22,45 @@ loop (typecheck → lint → tests → build → smoke) green at every milestone
 
 ## What's done
 
+### Practice depth — Missions 11–18, Everyday Life (2026-10-04)
+Scope: Practice of Missions 11–18 only. Missions 01–10 and 19–30, the dialogues and sentences of
+11–17, mission order, the Companion and progression are fingerprinted or untouched.
+- **Where it lives:** Missions 11, 12, 13, 16 are specs — their `teach` blocks in `core/*.ts`;
+  Missions 14, 15, 17 take their flow from the new `practiceEveryday.ts` (once for EN / FR / ES).
+- **Every teaching mission** now ends on a chain at natural speed built only from its own
+  conversation's lines (tested: no new word), has a selective review (11–12 cards) and 15–17 active
+  retrieval moments (was 1–5). All redundant meaning quizzes and the old un-labelled cold opens with
+  untaught words are gone.
+- **11 Small Talk:** chat Quick Reply ×6, "How about you?" retrieved 3×, the recommendation request
+  chosen / built / at speed. **12 Time & Plans:** time board by ear ×4, plan Quick Reply ×5, Swap It
+  today / tonight / tomorrow, builder "Let's meet here at seven."
+- **13 Home:** Swap It "I'm going…" (each language's own verbs), builder ×2, home Quick Reply ×5,
+  "I'm tired." in context. **16 Hobbies:** Swap It like / love / don't like, builder "usually",
+  chat Quick Reply ×6 ending on the ask-back.
+- **14 Restaurant:** the listening drill now matches the dialogue ("How was everything?" and the
+  dessert offer are no longer drilled); Restaurant Rush ×6 incl. "Anything else?" → "That's all,
+  thanks." and "Is everything okay?"; Swap It chicken / pasta; review 21 → 12.
+- **15 Allergies:** both duplicate quizzes removed; icon Match for checking / can-make-without /
+  contains nuts (no "safe" label); safety Quick Reply ×5 where asking again is accepted on a warning;
+  the recovery challenge is kept and labelled. "Good option for you" is no longer drilled.
+- **17 Supermarket:** "weigh it first" removed from drill, quiz, review, the intro card and the proof
+  card; aisle + side board by ear ×3; Swap It milk / bread / water; shelf-to-checkout Quick Reply ×5.
+- **18 Checkpoint:** four cold scenes (coffee, a friend, the supermarket — replacing the clothes
+  shop — and dinner) with 15 real decisions, 3 recovery offers, one speed-listening moment, no
+  translation before answering, zero vocabulary not met in Missions 01–17 (tested per language).
+  **Mission 18's scenes changed**, as Mission 10's did.
+- **Model:** `TeachSpec.finale` lets a spec mission end on practice steps instead of (or before) a
+  cold open. No new engine.
+- **Final cleanup:** five sentences retired from their missions and moved to the archive
+  `features/bootcamp/retired.ts` (EN / FR / ES, ids and wording kept, registered nowhere): M14 "The
+  menu, please.", "How was everything?", "Would you like dessert?"; M15 "This one is a good option
+  for you."; M17 "You need to weigh it first." They no longer appear in the sentence library (Core),
+  Listen, review or any mission. M15's match tiles now say checking / can make it without / contains
+  nuts in words beside the icon. M17's intro promises find → aisle and side → checkout → bag. M14's
+  word intro keeps "menu" (the waiter says "Here are your menus."); the French word is now "menu".
+- **Tests:** `practiceEveryday.test.ts` (71).
+- **Not done:** manual browser / device QA.
+
 ### Practice depth — Missions 06–10, the Arrival phase (2026-10-04)
 Scope: Practice of Missions 06–10 only. Missions 01–05 and 11–30, the dialogues / sentences / intro
 cards of 06–09, mission order, the Companion and progression are fingerprinted or untouched.

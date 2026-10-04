@@ -1,6 +1,7 @@
 import type { LocalizedText } from '@ready/content-schema';
 import type { BootcampDayContent, BootcampDialogue, BootcampItem } from '../types.js';
 import { recoveryEs } from './recovery.js';
+import { m15Flow } from '../practiceEveryday.js';
 
 /**
  * Spanish Mission 15 — "Peticiones especiales y alergias" (Special Requests & Allergies). Spanish
@@ -26,7 +27,6 @@ export const DAY13_ES_ITEMS: BootcampItem[] = [
   { id: 'es.reply.diet.make-without', text: 'Se lo podemos hacer sin eso.', meaning: T('אפשר להכין בלי.', 'We can make it without.') },
   { id: 'es.reply.diet.contains-nuts', text: 'Ese lleva frutos secos.', meaning: T('זה מכיל אגוזים.', 'That one contains nuts.') },
   { id: 'es.reply.diet.not-spicy', text: 'No, no pica.', meaning: T('לא, זה לא חריף.', "No, it's not spicy.") },
-  { id: 'es.reply.diet.good-option', text: 'Este es una buena opción para usted.', meaning: T('זו אפשרות טובה בשבילך.', 'This one is a good option for you.') },
   { id: 'es.reply.diet.anything-else-allergic', text: '¿Alguna otra alergia?', meaning: T('יש עוד אלרגיות?', "Any other allergies?") },
   ...recoveryEs('es.phrase.recovery.repeat', 'es.phrase.recovery.slowly', 'es.phrase.recovery.thank-you'),
 ];
@@ -95,21 +95,7 @@ export const DAY13_ES: BootcampDayContent = {
         T('יש מילים שאתה אולי תצטרך רק פעם אחת בחיים — אבל אז הן קריטיות.', 'Some words you may need only once in your life — but then they’re critical.'),
         T('היום נלמד לשמור על הגוף שלך בכל מטבח: אלרגיה, "בלי", צמחוני, ובדיקת מרכיב.', 'Today we learn to keep your body safe in any kitchen: allergy, “without”, vegetarian, and checking an ingredient.'),
       ], cta: T('לשבת ולהזמין בבטחה', 'Sit down and order safely') },
-    { kind: 'tool', itemId: 'es.phrase.diet.allergic-nuts', index: 1, total: 4, label: T('המשפט שמציל', 'The line that protects') },
-    { kind: 'tool', itemId: 'es.phrase.diet.without-onions', index: 2, total: 4, label: T('להסיר מרכיב', 'Remove an ingredient') },
-    { kind: 'tool', itemId: 'es.phrase.diet.vegetarian', index: 3, total: 4, label: T('להגדיר את עצמך', 'Define yourself') },
-    { kind: 'tool', itemId: 'es.phrase.diet.does-have-dairy', index: 4, total: 4, label: T('לבדוק מרכיב', 'Check an ingredient') },
-    { kind: 'replies', saidItemId: 'es.phrase.diet.allergic-nuts',
-      replyIds: ['es.reply.diet.let-me-check', 'es.reply.diet.make-without', 'es.reply.diet.contains-nuts', 'es.reply.diet.good-option'] },
-    { kind: 'receipt', text: T('אתה מזהה איך המטבח מגיב לאלרגיה — בדיקה, אזהרה, ופתרון.', 'You recognize how a kitchen responds to an allergy — check, warning, and solution.') },
-    { kind: 'quiz', itemId: 'es.reply.diet.contains-nuts', wrongIds: ['es.reply.diet.make-without', 'es.reply.diet.good-option'] },
-    { kind: 'quiz', itemId: 'es.reply.diet.let-me-check', wrongIds: ['es.reply.diet.not-spicy', 'es.reply.diet.contains-nuts'] },
-    { kind: 'dialogue', dialogueId: 'allergy-order' },
-    { kind: 'receipt', text: T('הזמנת ארוחה שמתאימה לך — אלרגיה, צמחוני, בלי בצל, בדיקת מרכיבים.', 'You ordered a meal that works for you — allergy, vegetarian, no onions, ingredients checked.') },
-    { kind: 'swipe', itemIds: DAY13_ES_ITEMS.map((i) => i.id) },
-    { kind: 'ambush', npc: { en: 'Solo para asegurarme, ¿su alergia a los frutos secos significa que también debemos evitar la freidora compartida?', tr: TR('Just to be safe does your nut allergy mean we should avoid the shared fryer too?', 'רק ליתר ביטחון — האלרגיה לאגוזים אומרת שכדאי להימנע גם מהמטגן המשותף?'), he: 'רק ליתר ביטחון — האלרגיה לאגוזים אומרת שכדאי להימנע גם מהמטגן המשותף?' },
-      correctItemId: 'es.phrase.recovery.repeat', wrongItemId: 'es.phrase.diet.vegetarian' },
-    { kind: 'receipt', text: T('שאלת בטיחות מפורטת ומהירה — וביקשת שיחזרו במקום לנחש. עם אלרגיה, זה בדיוק הצעד הנכון.', 'A detailed, fast safety question — and you asked them to repeat instead of guessing. With an allergy, exactly the right move.') },
-    { kind: 'summary' },
+    // From the key sentences onward the flow is shared by all languages: see practiceEveryday.ts.
+    ...m15Flow('es'),
   ],
 };

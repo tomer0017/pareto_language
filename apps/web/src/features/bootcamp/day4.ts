@@ -1,12 +1,12 @@
 import { RECOVERY_ITEMS, T, recovery } from './recovery.js';
 import type { BootcampDayContent, BootcampDialogue, BootcampItem } from './types.js';
 import { DAY12_ITEMS } from './day12.js';
+import { m14Flow } from './practiceEveryday.js';
 
 /** Mission 4 — "Restaurant Basics" (real objective: table to bill, a full sit-down meal). */
 export const DAY4_ITEMS: BootcampItem[] = [
   { id: 'en.phrase.rest.table-two', text: 'A table for two, please.', meaning: T('שולחן לשניים, בבקשה.', 'A table for two, please.'),
     tip: T('הפתיח למסעדה. תבנית: a table for ___.', 'The restaurant opener. Template: a table for ___.') },
-  { id: 'en.phrase.rest.menu', text: 'The menu, please.', meaning: T('התפריט, בבקשה.', 'The menu, please.') },
   { id: 'en.phrase.rest.ill-have-chicken', text: "I'll have the chicken.", meaning: T('אני אקח את העוף.', "I'll have the chicken."),
     tip: T('תבנית ההזמנה: I’ll have the ___.', 'The ordering template: I’ll have the ___.') },
   { id: 'en.phrase.rest.water', text: 'A bottle of water, please.', meaning: T('בקבוק מים, בבקשה.', 'A bottle of water, please.') },
@@ -20,8 +20,6 @@ export const DAY4_ITEMS: BootcampItem[] = [
   { id: 'en.reply.rest.follow-me', text: 'Follow me, please.', meaning: T('בואו אחריי, בבקשה.', 'Follow me, please.') },
   { id: 'en.reply.rest.ready-to-order', text: 'Are you ready to order?', meaning: T('מוכנים להזמין?', 'Are you ready to order?') },
   { id: 'en.reply.rest.to-drink', text: 'Anything to drink?', meaning: T('משהו לשתות?', 'Anything to drink?') },
-  { id: 'en.reply.rest.how-was-it', text: 'How was everything?', meaning: T('איך היה הכל?', 'How was everything?') },
-  { id: 'en.reply.rest.dessert', text: 'Would you like dessert?', meaning: T('רוצים קינוח?', 'Would you like dessert?') },
   // Merged in from Restaurant Basics — same ids and wording, so earlier practice still counts.
   ...DAY12_ITEMS.filter((i) => ['en.phrase.rest.ill-have', 'en.reply.rest.anything-else', 'en.reply.rest.everything-okay'].includes(i.id)),
   ...recovery('en.phrase.recovery.repeat', 'en.phrase.recovery.slowly', 'en.phrase.recovery.thank-you', 'en.phrase.recovery.one-moment', 'en.phrase.recovery.dont-understand'),
@@ -91,21 +89,8 @@ export const DAY4: BootcampDayContent = {
         { text: 'bill', meaning: T('חשבון', 'bill'), emoji: '🧾' },
         { text: 'please', meaning: T('בבקשה', 'please') },
       ], buildFromItemId: 'en.phrase.rest.the-bill' },
-    { kind: 'tool', itemId: 'en.phrase.rest.table-two', index: 1, total: 4, label: T('הפתיח', 'The opener') },
-    { kind: 'tool', itemId: 'en.phrase.rest.ill-have-chicken', index: 2, total: 4, label: T('להזמין', 'Order it') },
-    { kind: 'tool', itemId: 'en.phrase.rest.no-onions', index: 3, total: 4, label: T('בקשה מיוחדת', 'Special request') },
-    { kind: 'tool', itemId: 'en.phrase.rest.the-bill', index: 4, total: 4, label: T('לסגור', 'Close it out') },
-    { kind: 'replies', saidItemId: 'en.phrase.rest.ill-have-chicken',
-      replyIds: ['en.reply.rest.to-drink', 'en.reply.rest.ready-to-order', 'en.reply.rest.how-was-it', 'en.reply.rest.dessert'] },
-    { kind: 'receipt', text: T('אתה מזהה את כל שאלות המלצר — לפני שהן מפתיעות אותך.', 'You recognize every waiter question — before it can surprise you.') },
-    { kind: 'quiz', itemId: 'en.reply.rest.reservation', wrongIds: ['en.reply.rest.ready-to-order', 'en.reply.rest.dessert'] },
-    { kind: 'dialogue', dialogueId: 'sit-down-meal' },
-    { kind: 'receipt', text: T('ארוחת ערב שלמה: משולחן ועד חשבון, כולל בקשה מיוחדת.', 'A full dinner: from table to bill, special request included.') },
-    { kind: 'swipe', itemIds: DAY4_ITEMS.map((i) => i.id) },
-    { kind: 'ambush', npc: { en: 'Would you like to see the dessert menu before I bring the check?', he: 'רוצים לראות את תפריט הקינוחים לפני שאני מביא את החשבון?' },
-      correctItemId: 'en.reply.rest.dessert', wrongItemId: 'en.reply.rest.reservation' },
-    { kind: 'receipt', text: T('משפט ארוך ומהיר בסוף הארוחה — והבנת את העיקר.', 'A long, fast sentence at the end of the meal — and you caught the point.') },
-    { kind: 'summary' },
+    // From the key sentences onward the flow is shared by all languages: see practiceEveryday.ts.
+    ...m14Flow('en'),
   ],
 };
 void RECOVERY_ITEMS;

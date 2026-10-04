@@ -1,6 +1,7 @@
 import type { LocalizedText } from '@ready/content-schema';
 import type { BootcampDayContent, BootcampDialogue, BootcampItem } from '../types.js';
 import { recoveryEs } from './recovery.js';
+import { m17Flow } from '../practiceEveryday.js';
 
 /**
  * Spanish Mission 17 — "Supermercado" (Supermarket). Spanish parallel of English mission 16: find it,
@@ -21,7 +22,6 @@ export const DAY16_ES_ITEMS: BootcampItem[] = [
   // hear — signs and cashier lines
   { id: 'es.reply.super.aisle-three', text: 'Está en el pasillo tres.', meaning: T('זה במעבר שלוש.', "It's in aisle three.") },
   { id: 'es.reply.super.over-there', text: 'Allí, a la izquierda.', meaning: T('שם, משמאל.', 'Over there, on the left.') },
-  { id: 'es.reply.super.weigh-it', text: 'Primero tiene que pesarlo.', meaning: T('צריך לשקול קודם.', 'You need to weigh it first.') },
   { id: 'es.reply.super.bag-q', text: '¿Necesita una bolsa?', meaning: T('צריך שקית?', 'Do you need a bag?') },
   { id: 'es.reply.super.card-here', text: 'Inserte su tarjeta aquí.', meaning: T('הכנס את הכרטיס כאן.', 'Insert your card here.') },
   { id: 'es.reply.super.sold-out', text: 'Lo siento, se ha agotado.', meaning: T('סליחה, אזל המלאי.', "Sorry, we're sold out.") },
@@ -76,24 +76,10 @@ export const DAY16_ES: BootcampDayContent = {
   steps: [
     { kind: 'talk', icon: '🛒', title: T('משימה 17: סופרמרקט', 'Mission 17: Supermarket'),
       body: [
-        T('היום-יום נהיה זול ופשוט. אתה מוצא, שוקל, ומשלם — לבד לגמרי.', 'Daily life just got cheap and easy. You find it, weigh it, and pay — completely on your own.'),
-        T('רוב העבודה כאן היא זיהוי: שלטים, מעברים, וקול הקופה האוטומטית.', 'Most of the work here is recognition: signs, aisles, and the self-checkout voice.'),
+        T('סופר, לבד: למצוא מוצר, להבין באיזה מעבר ובאיזה צד הוא, לעבור קופה ולבקש שקית.', 'The supermarket, on your own: find a product, understand which aisle and which side it is on, get through the checkout and ask for a bag.'),
+        T('כמה שאלות קצרות — וכמה תשובות שכדאי לזהות כשאומרים אותן מהר.', 'A few short questions — and a few answers worth recognizing when they are said fast.'),
       ], cta: T('להיכנס לסופר', 'Walk into the shop') },
-    { kind: 'tool', itemId: 'es.phrase.super.where-is', index: 1, total: 4, label: T('למצוא מוצר', 'Find a product') },
-    { kind: 'tool', itemId: 'es.phrase.super.do-you-have', index: 2, total: 4, label: T('לבדוק מלאי', 'Check stock') },
-    { kind: 'tool', itemId: 'es.phrase.super.just-this', index: 3, total: 4, label: T('בקופה', 'At the checkout') },
-    { kind: 'tool', itemId: 'es.phrase.super.need-bag', index: 4, total: 4, label: T('לבקש שקית', 'Ask for a bag') },
-    { kind: 'replies', saidItemId: 'es.phrase.super.where-is',
-      replyIds: ['es.reply.super.aisle-three', 'es.reply.super.over-there', 'es.reply.super.weigh-it', 'es.reply.super.bag-q'] },
-    { kind: 'receipt', text: T('אתה מזהה תשובות של סדרן וקופה — מעבר, כיוון, שקילה, שקית.', 'You recognize the answers of a shelf-stocker and a checkout — aisle, direction, weighing, bag.') },
-    { kind: 'quiz', itemId: 'es.reply.super.weigh-it', wrongIds: ['es.reply.super.bag-q', 'es.reply.super.card-here'] },
-    { kind: 'quiz', itemId: 'es.reply.super.aisle-three', wrongIds: ['es.reply.super.over-there', 'es.reply.super.sold-out'] },
-    { kind: 'dialogue', dialogueId: 'supermarket' },
-    { kind: 'receipt', text: T('מצאת מוצרים, שקלת פירות, ועברת קופה אוטומטית — לבד.', 'You found products, weighed fruit, and cleared a self-checkout — on your own.') },
-    { kind: 'swipe', itemIds: DAY16_ES_ITEMS.map((i) => i.id) },
-    { kind: 'ambush', npc: { en: 'Artículo inesperado en la zona de embolsado — espere asistencia, por favor.', tr: TR('Unexpected item in the bagging area — please wait for assistance.', 'פריט לא צפוי באזור האריזה — אנא המתן לסיוע.'), he: 'פריט לא צפוי באזור האריזה — אנא המתן לסיוע.' },
-      correctItemId: 'es.phrase.recovery.show-me', wrongItemId: 'es.phrase.super.just-this' },
-    { kind: 'receipt', text: T('הקופה האוטומטית נתקעה — וידעת לבקש שיראו לך במקום להיכנס ללחץ.', 'The self-checkout jammed — and you knew to ask someone to show you, instead of panicking.') },
-    { kind: 'summary' },
+    // From the key sentences onward the flow is shared by all languages: see practiceEveryday.ts.
+    ...m17Flow('es'),
   ],
 };

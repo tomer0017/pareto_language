@@ -130,7 +130,7 @@ export interface MatchPairsSpec {
   label?: Copy;
   /** [heard sentence id, answer sentence id, what the answer tile says when it wraps the sentence,
    *   a language-neutral answer tile (number / icon) instead of text] */
-  pairs: readonly (readonly [prompt: string, answer: string, answerText?: L3, answerLabel?: string])[];
+  pairs: readonly (readonly [prompt: string, answer: string, answerText?: L3, answerLabel?: string, answerGloss?: Copy])[];
 }
 export interface SentenceBuilderSpec {
   label?: Copy;
@@ -159,7 +159,11 @@ export interface TeachSpec {
   practice?: PracticeSpec[];
   /** Sentences shown in the closing review, in order. Default: every sentence of the mission. */
   review?: string[];
-  ambush: AmbushSpec;
+  /** The final challenge as a two-button cold open… */
+  ambush?: AmbushSpec;
+  /** …or as one or more practice steps (a speed chain), each followed by its proof card. When both
+   *  are given the practice steps come first. */
+  finale?: { practice: PracticeSpec; receipt: Copy }[];
 }
 
 export interface MissionSpec {
@@ -308,7 +312,7 @@ export function buildPractice(p: PracticeSpec, lang: MissionLang): BootcampStep 
   const id = (suffix: string): string => `${lang}.${suffix}`;
   const label = p.label ? { label: T(p.label) } : {};
   if (p.kind === 'matchPairs') {
-    return { kind: 'matchPairs', ...label, pairs: p.pairs.map(([prompt, answer, text, icon]) => ({ promptItemId: id(prompt), answerItemId: id(answer), ...(text ? { answerText: text[ix] } : {}), ...(icon ? { answerLabel: icon } : {}) })) };
+    return { kind: 'matchPairs', ...label, pairs: p.pairs.map(([prompt, answer, text, icon, gloss]) => ({ promptItemId: id(prompt), answerItemId: id(answer), ...(text ? { answerText: text[ix] } : {}), ...(icon ? { answerLabel: icon } : {}), ...(gloss ? { answerGloss: T(gloss) } : {}) })) };
   }
   if (p.kind === 'sentenceBuilder') {
     return { kind: 'sentenceBuilder', ...label, rounds: p.rounds.map((r) => ({ itemId: id(r.itemId), chunks: [...r.chunks[ix]] })) };
@@ -403,7 +407,8 @@ export function buildMission(spec: MissionSpec, lang: MissionLang): BootcampDayC
   }
   if (teach) {
     steps.push({ kind: 'swipe', itemIds: teach.review ? teach.review.map(id) : items.map((i) => i.id) });
-    steps.push(...ambushStep(teach.ambush, lang));
+    for (const f of teach.finale ?? []) steps.push(buildPractice(f.practice, lang), { kind: 'receipt', text: T(f.receipt) });
+    if (teach.ambush) steps.push(...ambushStep(teach.ambush, lang));
   }
   if (spec.closing) steps.push({ kind: 'receipt', text: T(spec.closing) });
   steps.push({ kind: 'summary' });

@@ -2,6 +2,7 @@ import type { LocalizedText } from '@ready/content-schema';
 import type { BootcampDayContent, BootcampDialogue, BootcampItem } from '../types.js';
 import { recoveryEs } from './recovery.js';
 import { DAY12_ES_ITEMS } from './day12.js';
+import { m14Flow } from '../practiceEveryday.js';
 
 /**
  * Spanish Mission 4 — "Comida en el restaurante" (Restaurant Meal). Spanish parallel of English mission
@@ -14,7 +15,6 @@ const TR = (en: string, he: string): LocalizedText => ({ en, he });
 export const DAY4_ES_ITEMS: BootcampItem[] = [
   { id: 'es.phrase.rest.table-two', text: 'Una mesa para dos, por favor.', meaning: T('שולחן לשניים, בבקשה.', 'A table for two, please.'),
     tip: T('הפתיח למסעדה. התבנית: Una mesa para ___.', 'The restaurant opener. Template: Una mesa para ___.') },
-  { id: 'es.phrase.rest.menu', text: 'La carta, por favor.', meaning: T('התפריט, בבקשה.', 'The menu, please.') },
   { id: 'es.phrase.rest.ill-have-chicken', text: 'Voy a tomar el pollo.', meaning: T('אני אקח את העוף.', "I'll have the chicken."),
     tip: T('תבנית ההזמנה: Voy a tomar ___.', 'The ordering template: Voy a tomar ___.') },
   { id: 'es.phrase.rest.water', text: 'Una botella de agua, por favor.', meaning: T('בקבוק מים, בבקשה.', 'A bottle of water, please.') },
@@ -28,8 +28,6 @@ export const DAY4_ES_ITEMS: BootcampItem[] = [
   { id: 'es.reply.rest.follow-me', text: 'Sígame, por favor.', meaning: T('בואו אחריי, בבקשה.', 'Follow me, please.') },
   { id: 'es.reply.rest.ready-to-order', text: '¿Están listos para pedir?', meaning: T('מוכנים להזמין?', 'Are you ready to order?') },
   { id: 'es.reply.rest.to-drink', text: '¿Algo de beber?', meaning: T('משהו לשתות?', 'Anything to drink?') },
-  { id: 'es.reply.rest.how-was-it', text: '¿Qué tal todo?', meaning: T('איך היה הכל?', 'How was everything?') },
-  { id: 'es.reply.rest.dessert', text: '¿Quieren postre?', meaning: T('רוצים קינוח?', 'Would you like dessert?') },
   // Merged in from Restaurant Basics — same ids and wording, so earlier practice still counts.
   ...DAY12_ES_ITEMS.filter((i) => ['es.phrase.rest.ill-have', 'es.reply.rest.anything-else', 'es.reply.rest.everything-okay'].includes(i.id)),
   ...recoveryEs('es.phrase.recovery.repeat', 'es.phrase.recovery.slowly', 'es.phrase.recovery.thank-you', 'es.phrase.recovery.one-moment', 'es.phrase.recovery.dont-understand'),
@@ -93,20 +91,7 @@ export const DAY4_ES: BootcampDayContent = {
         { text: 'cuenta', meaning: T('חשבון', 'bill'), emoji: '🧾' },
         { text: 'por favor', meaning: T('בבקשה', 'please') },
       ], buildFromItemId: 'es.phrase.rest.the-bill' },
-    { kind: 'tool', itemId: 'es.phrase.rest.table-two', index: 1, total: 4, label: T('הפתיח', 'The opener') },
-    { kind: 'tool', itemId: 'es.phrase.rest.ill-have-chicken', index: 2, total: 4, label: T('להזמין', 'Order it') },
-    { kind: 'tool', itemId: 'es.phrase.rest.no-onions', index: 3, total: 4, label: T('בקשה מיוחדת', 'Special request') },
-    { kind: 'tool', itemId: 'es.phrase.rest.the-bill', index: 4, total: 4, label: T('לסגור', 'Close it out') },
-    { kind: 'replies', saidItemId: 'es.phrase.rest.ill-have-chicken',
-      replyIds: ['es.reply.rest.to-drink', 'es.reply.rest.ready-to-order', 'es.reply.rest.how-was-it', 'es.reply.rest.dessert'] },
-    { kind: 'receipt', text: T('אתה מזהה את כל שאלות המלצר — לפני שהן מפתיעות אותך.', 'You recognize every waiter question — before it can surprise you.') },
-    { kind: 'quiz', itemId: 'es.reply.rest.reservation', wrongIds: ['es.reply.rest.ready-to-order', 'es.reply.rest.dessert'] },
-    { kind: 'dialogue', dialogueId: 'sit-down-meal' },
-    { kind: 'receipt', text: T('ארוחת ערב שלמה: משולחן ועד חשבון, כולל בקשה מיוחדת.', 'A full dinner: from table to bill, special request included.') },
-    { kind: 'swipe', itemIds: DAY4_ES_ITEMS.map((i) => i.id) },
-    { kind: 'ambush', npc: { en: '¿Quieren ver la carta de postres antes de que traiga la cuenta?', tr: TR('Would you like to see the dessert menu before I bring the check?', 'רוצים לראות את תפריט הקינוחים לפני שאני מביא את החשבון?'), he: 'רוצים לראות את תפריט הקינוחים לפני שאני מביא את החשבון?' },
-      correctItemId: 'es.reply.rest.dessert', wrongItemId: 'es.reply.rest.reservation' },
-    { kind: 'receipt', text: T('משפט ארוך ומהיר בסוף הארוחה — והבנת את העיקר.', 'A long, fast sentence at the end of the meal — and you caught the point.') },
-    { kind: 'summary' },
+    // From the key sentences onward the flow is shared by all languages: see practiceEveryday.ts.
+    ...m14Flow('es'),
   ],
 };

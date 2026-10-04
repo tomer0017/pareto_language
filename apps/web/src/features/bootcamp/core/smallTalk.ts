@@ -78,12 +78,80 @@ export const SMALL_TALK: MissionSpec = {
     said: 'phrase.talk.beautiful-place',
     replies: ['reply.talk.where-from', 'reply.talk.first-time-q', 'reply.talk.do-you-like-it', 'reply.talk.you-should-try'],
     repliesReceipt: ['אתה מזהה את השאלות שזרים שואלים — מאיפה, פעם ראשונה, אוהב?', 'You recognize what strangers ask — where from, first time, do you like it?'],
+    // "How long are you here for?" is not part of the chat itself — it is understood by ear, once.
     quiz: ['reply.talk.how-long-here', 'reply.talk.where-from', 'reply.talk.enjoy-rest'],
-    ambush: {
-      npc: ['Oh nice so how long are you here for just a few days or longer?', 'Ah, sympa ! Et vous êtes ici pour combien de temps, quelques jours ou plus ?', '¡Ah, qué bien! ¿Y cuánto tiempo está aquí, unos días o más?', 'אה, יפה! ולכמה זמן אתה כאן — כמה ימים או יותר?'],
-      correct: 'reply.talk.how-long-here',
-      wrong: 'reply.talk.me-too',
-      receipt: ['שאלת המשך מהירה — והבנת ששואלים לכמה זמן אתה כאן.', 'A fast follow-up — and you understood you were asked how long you are staying.'],
-    },
+    practice: [
+      // The chat as six moments. "How about you?" is retrieved twice: wrapped in an answer, and alone.
+      {
+        kind: 'quickReply',
+        label: ['שיחה עם מקומי — מה אומרים?', 'A chat with a local — what do you say?'],
+        rounds: [
+          { prompt: 'reply.talk.where-from', options: [
+            ['phrase.talk.how-about-you', true, ["I'm from Israel. How about you?", 'Je viens d’Israël. Et vous ?', 'Soy de Israel. ¿Y usted?']],
+            ['phrase.social.first-time', false], ['phrase.talk.i-like-it', false],
+          ] },
+          { prompt: 'reply.talk.first-time-q', options: [
+            ['phrase.social.first-time', true, ["Yes, it's my first time here.", 'Oui, c’est ma première fois ici.', 'Sí, es mi primera vez aquí.']],
+            ['phrase.social.from-israel', false], ['phrase.talk.nice-talking', false],
+          ] },
+          { prompt: 'reply.talk.do-you-like-it', options: [
+            ['phrase.talk.i-like-it', true, ['Yes, I like it a lot.', 'Oui, j’aime beaucoup.', 'Sí, me gusta mucho.']],
+            ['phrase.talk.love-food', true], ['phrase.talk.recommend-place', false],
+          ] },
+          { situation: ['אמרת שאתה אוהב את המקום. עכשיו תורך לשאול בחזרה.', 'You said you like it here. Now it is your turn to ask back.'],
+            options: [['phrase.talk.how-about-you', true], ['phrase.talk.nice-talking', false], ['phrase.talk.beautiful-place', false]] },
+          { npc: ['Me too. And the food here is wonderful.', 'Moi aussi. Et la cuisine ici est excellente.', 'Yo también. Y la comida de aquí es estupenda.', 'גם אני. והאוכל כאן נהדר.'],
+            options: [['phrase.talk.recommend-place', true], ['phrase.rest.recommend', true], ['phrase.talk.nice-talking', false]] },
+          { prompt: 'reply.talk.you-should-try', options: [
+            ['phrase.talk.nice-talking', true, ['Thank you! It was nice talking to you.', 'Merci ! C’était sympa de discuter avec vous.', '¡Gracias! Ha sido un placer hablar con usted.']],
+            ['phrase.talk.beautiful-place', false], ['phrase.social.first-time', false],
+          ] },
+        ],
+      },
+      // Asking a local for a tip — put together piece by piece.
+      {
+        kind: 'sentenceBuilder',
+        rounds: [{ itemId: 'phrase.talk.recommend-place', chunks: [['Can you', 'recommend', 'a place?'], ['Vous pouvez', 'recommander', 'un endroit ?'], ['¿Me puede', 'recomendar', 'un sitio?']] }],
+      },
+    ],
+    review: [
+      'phrase.talk.beautiful-place', 'phrase.talk.how-about-you', 'phrase.talk.i-like-it', 'phrase.talk.love-food', 'phrase.talk.recommend-place', 'phrase.talk.nice-talking',
+      'reply.talk.where-from', 'reply.talk.first-time-q', 'reply.talk.do-you-like-it', 'reply.talk.you-should-try',
+      'phrase.recovery.repeat',
+    ],
+    // The whole chat at natural speed — the local's own lines, one after another.
+    finale: [{
+      practice: {
+        kind: 'quickReply',
+        challenge: true,
+        rounds: [
+          { npc: ["Hi! Beautiful view, isn't it?", 'Bonjour ! Belle vue, n’est-ce pas ?', '¡Hola! Bonita vista, ¿verdad?', 'היי! נוף יפה, נכון?'],
+            options: [['phrase.talk.beautiful-place', true], ['phrase.talk.nice-talking', false], ['phrase.social.from-israel', false]] },
+          { npc: ['It really is. Where are you from?', 'C’est vrai. Vous venez d’où ?', 'Es verdad. ¿De dónde es?', 'באמת. מאיפה אתה?'],
+            options: [
+              ['phrase.talk.how-about-you', true, ["I'm from Israel. How about you?", 'Je viens d’Israël. Et vous ?', 'Soy de Israel. ¿Y usted?']],
+              ['phrase.talk.recommend-place', false], ['phrase.talk.i-like-it', false],
+            ] },
+          { npc: ["I'm from here! Is this your first time here?", 'Je suis d’ici ! C’est votre première fois ici ?', '¡Soy de aquí! ¿Es su primera vez aquí?', 'אני מכאן! זו הפעם הראשונה שלך כאן?'],
+            options: [
+              ['phrase.social.first-time', true, ["Yes, it's my first time here.", 'Oui, c’est ma première fois ici.', 'Sí, es mi primera vez aquí.']],
+              ['phrase.talk.beautiful-place', false], ['phrase.talk.nice-talking', false],
+            ] },
+          { npc: ['Welcome! Do you like it here?', 'Bienvenue ! Ça vous plaît ici ?', '¡Bienvenido! ¿Le gusta este lugar?', 'ברוך הבא! אתה אוהב את המקום?'],
+            options: [
+              ['phrase.talk.i-like-it', true, ['Yes, I like it a lot.', 'Oui, j’aime beaucoup.', 'Sí, me gusta mucho.']],
+              ['phrase.social.from-israel', false], ['phrase.talk.nice-talking', false],
+            ] },
+          { npc: ['Me too. And the food here is wonderful.', 'Moi aussi. Et la cuisine ici est excellente.', 'Yo también. Y la comida de aquí es estupenda.', 'גם אני. והאוכל כאן נהדר.'],
+            options: [['phrase.talk.recommend-place', true], ['phrase.social.first-time', false], ['phrase.talk.beautiful-place', false]] },
+          { npc: ["Of course — try 'Mama Rosa', in the old town. It's very good.", 'Bien sûr — essayez « Mama Rosa », dans la vieille ville. C’est très bon.', 'Claro — pruebe «Mama Rosa», en el casco antiguo. Es muy bueno.', "בטח — תנסה את 'מאמא רוזה', בעיר העתיקה. מאוד טוב שם."],
+            options: [
+              ['phrase.talk.nice-talking', true, ['Thank you! It was nice talking to you.', 'Merci ! C’était sympa de discuter avec vous.', '¡Gracias! Ha sido un placer hablar con usted.']],
+              ['phrase.talk.how-about-you', false], ['phrase.talk.i-like-it', false],
+            ] },
+        ],
+      },
+      receipt: ['שיחה שלמה, בקצב של שיחה אמיתית — פתחת, ענית, שאלת בחזרה, ביקשת המלצה ונפרדת.', 'A whole chat at the pace of a real one — you opened, answered, asked back, got a tip and said goodbye.'],
+    }],
   },
 };

@@ -71,12 +71,96 @@ export const HOME_FAMILY: MissionSpec = {
     said: 'phrase.home.beautiful-home',
     replies: ['reply.home.come-in', 'reply.home.sit-living-room', 'reply.home.are-you-hungry', 'reply.home.live-with-family-q'],
     repliesReceipt: ['אתה מבין כשמזמינים אותך להיכנס, לשבת ולאכול.', 'You understand when someone invites you in, to sit, and to eat.'],
-    quiz: ['reply.home.are-you-hungry', 'reply.home.sit-living-room', 'reply.home.eat-with-us'],
-    ambush: {
-      npc: ['Come in come in let us sit in the living room it is warmer there', 'Entre, entre, on s’assoit dans le salon, il y fait plus chaud', 'Pasa, pasa, vamos a sentarnos en el salón, que hace más calor', 'תיכנס, תיכנס, בוא נשב בסלון, יותר חם שם'],
-      correct: 'reply.home.sit-living-room',
-      wrong: 'reply.home.are-you-hungry',
-      receipt: ['מהר וחם — והבנת שמזמינים אותך לשבת.', 'Fast and warm — and you understood you were being invited to sit.'],
-    },
+    practice: [
+      // Where you are off to: home, to bed, to eat. Each language says it its own way — English
+      // keeps "I'm going…", French and Spanish change the verb.
+      {
+        kind: 'swap',
+        label: ['לאן אתה הולך?', 'Where are you off to?'],
+        rounds: ([
+          ['home', 'phrase.home.going-home', '🏠', ['אתה הולך הביתה', 'You are heading home']],
+          ['sleep', 'phrase.home.going-to-sleep', '😴', ['אתה הולך לישון', 'You are off to bed']],
+          ['eat', 'phrase.home.eat-at-grandmothers', '🍽️', ['אתה הולך לאכול אצל סבתא', "You are going to eat at your grandmother's"]],
+        ] as const).map(([right, itemId, emoji, cue]) => ({
+          frame: ["I'm going ___.", 'Je ___.', '___.'] as const,
+          itemId,
+          cue: { emoji, text: cue },
+          options: [
+            [['home', 'rentre chez moi', 'Me voy a casa'], 'אני הולך הביתה.', right === 'home'],
+            [['to sleep', 'vais dormir', 'Me voy a dormir'], 'אני הולך לישון.', right === 'sleep'],
+            [["to eat at my grandmother's", 'vais manger chez ma grand-mère', 'Voy a comer en casa de mi abuela'], 'אני הולך לאכול אצל סבתא שלי.', right === 'eat'],
+          ] as const,
+        })),
+      },
+      // Two everyday statements, put together piece by piece.
+      {
+        kind: 'sentenceBuilder',
+        rounds: [
+          { itemId: 'phrase.home.eat-at-grandmothers', chunks: [["I'm going", 'to eat', 'at my', "grandmother's."], ['Je vais', 'manger', 'chez', 'ma grand-mère.'], ['Voy a', 'comer', 'en casa de', 'mi abuela.']] },
+          { itemId: 'phrase.home.live-with-family', chunks: [['Yes,', 'I live', 'with', 'my family.'], ['Oui,', 'j’habite', 'avec', 'ma famille.'], ['Sí,', 'vivo', 'con', 'mi familia.']] },
+        ],
+      },
+      // At a friend's home: what they say, what you say.
+      {
+        kind: 'quickReply',
+        label: ['אצל חבר בבית — מה אומרים?', "At a friend's home — what do you say?"],
+        rounds: [
+          { prompt: 'reply.home.come-in', options: [
+            ['phrase.home.beautiful-home', true, ['Thanks. Your home is beautiful.', 'Merci. Ta maison est très belle.', 'Gracias. Tu casa es preciosa.']],
+            ['phrase.home.going-home', false], ['phrase.home.im-tired', false],
+          ] },
+          { situation: ['אתה רוצה לדעת איפה המשפחה של החבר.', "You want to know where your friend's family is."],
+            options: [['phrase.home.where-family', true], ['phrase.home.is-this-new', false], ['phrase.home.live-with-family', false]] },
+          { prompt: 'reply.home.live-with-family-q', options: [['phrase.home.live-with-family', true], ['phrase.home.where-family', false], ['phrase.home.going-to-sleep', false]] },
+          { prompt: 'reply.home.eat-with-us', options: [
+            ['phrase.home.eat-at-grandmothers', true, ["Thanks, but I'm going to eat at my grandmother's.", 'Merci, mais je vais manger chez ma grand-mère.', 'Gracias, pero voy a comer en casa de mi abuela.']],
+            ['phrase.home.is-this-new', false], ['phrase.home.beautiful-home', false],
+          ] },
+          { npc: ['Lovely! You look tired. Are you okay?', 'C’est bien ! Tu as l’air fatigué. Ça va ?', '¡Qué bien! Pareces cansado. ¿Estás bien?', 'איזה יופי! אתה נראה עייף. הכל בסדר?'],
+            options: [
+              ['phrase.home.im-tired', true, ["Yes, I'm just tired.", 'Oui, je suis juste fatigué.', 'Sí, solo estoy cansado.']],
+              ['phrase.home.live-with-family', false], ['phrase.home.is-this-new', false],
+            ] },
+        ],
+      },
+    ],
+    review: [
+      'phrase.home.eat-at-grandmothers', 'phrase.home.going-home', 'phrase.home.going-to-sleep', 'phrase.home.im-tired', 'phrase.home.where-family',
+      'phrase.home.live-with-family', 'phrase.home.beautiful-home',
+      'reply.home.come-in', 'reply.home.live-with-family-q', 'reply.home.are-you-hungry', 'reply.home.eat-with-us',
+      'phrase.recovery.dont-understand',
+    ],
+    // The visit at natural speed — your friend's own lines.
+    finale: [{
+      practice: {
+        kind: 'quickReply',
+        challenge: true,
+        rounds: [
+          { npc: ['Hi! Come in.', 'Salut ! Entre.', '¡Hola! Pasa.', 'היי! תיכנס.'],
+            options: [
+              ['phrase.home.beautiful-home', true, ['Thanks. Your home is beautiful.', 'Merci. Ta maison est très belle.', 'Gracias. Tu casa es preciosa.']],
+              ['phrase.home.im-tired', false], ['phrase.home.going-home', false],
+            ] },
+          { npc: ['My mother is in the kitchen. Do you live with your family?', 'Ma mère est dans la cuisine. Tu habites avec ta famille ?', 'Mi madre está en la cocina. ¿Vives con tu familia?', 'אמא שלי במטבח. אתה גר עם המשפחה שלך?'],
+            options: [['phrase.home.live-with-family', true], ['phrase.home.where-family', false], ['phrase.home.going-to-sleep', false]] },
+          { npc: ['Nice. Are you hungry? Do you want to eat with us?', 'Super. Tu as faim ? Tu veux manger avec nous ?', 'Qué bien. ¿Tienes hambre? ¿Quieres comer con nosotros?', 'יפה. אתה רעב? רוצה לאכול איתנו?'],
+            options: [
+              ['phrase.home.eat-at-grandmothers', true, ["Thanks, but I'm going to eat at my grandmother's.", 'Merci, mais je vais manger chez ma grand-mère.', 'Gracias, pero voy a comer en casa de mi abuela.']],
+              ['phrase.home.beautiful-home', false], ['phrase.home.live-with-family', false],
+            ] },
+          { npc: ['Lovely! You look tired. Are you okay?', 'C’est bien ! Tu as l’air fatigué. Ça va ?', '¡Qué bien! Pareces cansado. ¿Estás bien?', 'איזה יופי! אתה נראה עייף. הכל בסדר?'],
+            options: [
+              ['phrase.home.im-tired', true, ["Yes, I'm just tired.", 'Oui, je suis juste fatigué.', 'Sí, solo estoy cansado.']],
+              ['phrase.home.is-this-new', false], ['phrase.home.where-family', false],
+            ] },
+          { npc: ['Then go home and rest!', 'Alors rentre chez toi et repose-toi !', '¡Entonces vete a casa y descansa!', 'אז לך הביתה ותנוח!'],
+            options: [
+              ['phrase.home.going-home', true, ["Yes, I'm going home.", 'Oui, je rentre chez moi.', 'Sí, me voy a casa.']],
+              ['phrase.home.where-family', false], ['phrase.home.beautiful-home', false],
+            ] },
+        ],
+      },
+      receipt: ['ביקור שלם אצל חבר, בקצב רגיל: נכנסת, דיברת על המשפחה, אמרת מה אתה עושה ואיך אתה מרגיש.', "A whole visit to a friend's home, at normal pace: you came in, talked about family, said what you are doing and how you feel."],
+    }],
   },
 };

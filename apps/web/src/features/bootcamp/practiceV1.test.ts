@@ -6,8 +6,9 @@ import type { BootcampDayContent, BootcampStep } from './types.js';
 
 /**
  * Practice V1 (Missions 01–05). The engines' data is validated in every language, the mission-level
- * decisions are pinned, and the missions no practice pass has touched yet (11–30) are fingerprinted.
- * (Missions 06–10 got their own pass later — see practiceArrival.test.ts.)
+ * decisions are pinned, and the missions no practice pass has touched yet (19–30) are fingerprinted.
+ * (Missions 06–10 and 11–18 got their own passes later — see practiceArrival.test.ts and
+ * practiceEveryday.test.ts.)
  */
 const LANGS = ['en', 'fr', 'es'] as const;
 type Lang = (typeof LANGS)[number];
@@ -29,17 +30,17 @@ const reviewed = (day: BootcampDayContent): string[] => stepsOf(day, 'swipe').fl
 const fnv = (s: string): string => { let h = 0x811c9dc5; for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 0x01000193) >>> 0; } return h.toString(16).padStart(8, '0'); };
 
 describe('scope: only the missions a practice pass was meant for changed', () => {
-  it('Missions 11–30 are byte-for-byte what they were before any practice pass, in every language', () => {
-    const print = (lang: Lang): string => fnv(JSON.stringify(BOOTCAMP_PLAN.slice(10).map((m) => MISSIONS_BY_LANG[lang]![m.day])));
-    expect({ en: print('en'), fr: print('fr'), es: print('es') }).toEqual({ en: '1cd82a22', fr: 'acf0404d', es: 'ddccbb6a' });
+  it('Missions 19–30 are byte-for-byte what they were before any practice pass, in every language', () => {
+    const print = (lang: Lang): string => fnv(JSON.stringify(BOOTCAMP_PLAN.slice(18).map((m) => MISSIONS_BY_LANG[lang]![m.day])));
+    expect({ en: print('en'), fr: print('fr'), es: print('es') }).toEqual({ en: '937fd289', fr: '37d6c3c7', es: '68611717' });
   });
 
   it('mission order, ids and registry keys of 01–05 are unchanged', () => {
     expect(V1.map((m) => `${m.id}:${m.day}`)).toEqual(['introduce-myself:1', 'numbers-money:2', 'coffee-shop:3', 'everyday-core:30', 'directions:5']);
   });
 
-  it('none of the new step types is used outside 01–10', () => {
-    for (const lang of LANGS) for (const m of BOOTCAMP_PLAN.slice(10)) {
+  it('none of the new step types is used outside 01–18', () => {
+    for (const lang of LANGS) for (const m of BOOTCAMP_PLAN.slice(18)) {
       for (const s of MISSIONS_BY_LANG[lang]![m.day]!.steps) {
         expect(['quickReply', 'visualMatch', 'swap', 'miniMap', 'matchPairs', 'sentenceBuilder'], `${lang} ${m.id}`).not.toContain(s.kind);
         if (s.kind === 'ambush') expect(s.mode, `${lang} ${m.id}`).toBeUndefined();

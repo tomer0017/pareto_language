@@ -356,7 +356,7 @@ export function MatchPairsStep({ step, itemsById, onDone }: { step: StepOf<'matc
   const promptText = (i: number): string => itemsById.get(step.pairs[i]!.promptItemId)?.text ?? '';
   /** What a matched pair SAYS: the sentence. What its answer tile SHOWS may be a number or an icon. */
   const answerText = (i: number): string => step.pairs[i]!.answerText ?? itemsById.get(step.pairs[i]!.answerItemId)?.text ?? '';
-  const answerShown = (i: number): string => step.pairs[i]!.answerLabel ?? answerText(i);
+  const answerShown = (i: number): string => { const p = step.pairs[i]!; return p.answerLabel ? `${p.answerLabel}${p.answerGloss ? ` ${L(p.answerGloss)}` : ''}` : answerText(i); };
 
   const onTap = (side: MatchSide, pair: number): void => {
     tap();
@@ -385,7 +385,7 @@ export function MatchPairsStep({ step, itemsById, onDone }: { step: StepOf<'matc
         onClick={() => onTap(side, pair)}
       >
         <span className="pmatch-mark" aria-hidden>{matched ? order + 1 : missed ? '✕' : picked ? '●' : side === 'prompt' ? '👂' : '🗣️'}</span>
-        <span dir="ltr">{side === 'answer' && step.pairs[pair]!.answerLabel ? answerShown(pair) : <TargetText text={side === 'prompt' ? promptText(pair) : answerText(pair)} />}</span>
+        <span dir={side === 'answer' && step.pairs[pair]!.answerGloss ? 'auto' : 'ltr'}>{side === 'answer' && step.pairs[pair]!.answerLabel ? answerShown(pair) : <TargetText text={side === 'prompt' ? promptText(pair) : answerText(pair)} />}</span>
       </button>
     );
   };

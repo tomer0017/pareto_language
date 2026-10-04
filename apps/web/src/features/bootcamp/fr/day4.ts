@@ -2,6 +2,7 @@ import type { LocalizedText } from '@ready/content-schema';
 import type { BootcampDayContent, BootcampDialogue, BootcampItem } from '../types.js';
 import { recoveryFr } from './recovery.js';
 import { DAY12_FR_ITEMS } from './day12.js';
+import { m14Flow } from '../practiceEveryday.js';
 
 /**
  * French Mission 4 — "Repas au restaurant" (Restaurant Meal). French parallel of English mission 4:
@@ -14,7 +15,6 @@ const TR = (en: string, he: string): LocalizedText => ({ en, he });
 export const DAY4_FR_ITEMS: BootcampItem[] = [
   { id: 'fr.phrase.rest.table-two', text: 'Une table pour deux, s’il vous plaît.', meaning: T('שולחן לשניים, בבקשה.', 'A table for two, please.'),
     tip: T('הפתיח למסעדה. התבנית: Une table pour ___.', 'The restaurant opener. Template: Une table pour ___.') },
-  { id: 'fr.phrase.rest.menu', text: 'La carte, s’il vous plaît.', meaning: T('התפריט, בבקשה.', 'The menu, please.') },
   { id: 'fr.phrase.rest.ill-have-chicken', text: 'Je vais prendre le poulet.', meaning: T('אני אקח את העוף.', "I'll have the chicken."),
     tip: T('תבנית ההזמנה: Je vais prendre ___.', 'The ordering template: Je vais prendre ___.') },
   { id: 'fr.phrase.rest.water', text: 'Une bouteille d’eau, s’il vous plaît.', meaning: T('בקבוק מים, בבקשה.', 'A bottle of water, please.') },
@@ -28,8 +28,6 @@ export const DAY4_FR_ITEMS: BootcampItem[] = [
   { id: 'fr.reply.rest.follow-me', text: 'Suivez-moi, s’il vous plaît.', meaning: T('בואו אחריי, בבקשה.', 'Follow me, please.') },
   { id: 'fr.reply.rest.ready-to-order', text: 'Vous êtes prêts à commander ?', meaning: T('מוכנים להזמין?', 'Are you ready to order?') },
   { id: 'fr.reply.rest.to-drink', text: 'Quelque chose à boire ?', meaning: T('משהו לשתות?', 'Anything to drink?') },
-  { id: 'fr.reply.rest.how-was-it', text: 'Tout s’est bien passé ?', meaning: T('איך היה הכל?', 'How was everything?') },
-  { id: 'fr.reply.rest.dessert', text: 'Vous voulez un dessert ?', meaning: T('רוצים קינוח?', 'Would you like dessert?') },
   // Merged in from Restaurant Basics — same ids and wording, so earlier practice still counts.
   ...DAY12_FR_ITEMS.filter((i) => ['fr.phrase.rest.ill-have', 'fr.reply.rest.anything-else', 'fr.reply.rest.everything-okay'].includes(i.id)),
   ...recoveryFr('fr.phrase.recovery.repeat', 'fr.phrase.recovery.slowly', 'fr.phrase.recovery.thank-you', 'fr.phrase.recovery.one-moment', 'fr.phrase.recovery.dont-understand'),
@@ -94,25 +92,12 @@ export const DAY4_FR: BootcampDayContent = {
       intro: T('שמות המפתח של הארוחה — שאר המשפט כבר מוכר.', 'The meal’s key nouns — the rest of the sentence is already familiar.'),
       words: [
         { text: 'table', meaning: T('שולחן', 'table'), emoji: '🍽️' },
-        { text: 'carte', meaning: T('תפריט', 'menu'), emoji: '📋' },
+        { text: 'menu', meaning: T('תפריט', 'menu'), emoji: '📋' },
         { text: 'eau', meaning: T('מים', 'water'), emoji: '💧' },
         { text: 'addition', meaning: T('חשבון', 'bill'), emoji: '🧾' },
         { text: 's’il vous plaît', meaning: T('בבקשה', 'please') },
       ], buildFromItemId: 'fr.phrase.rest.the-bill' },
-    { kind: 'tool', itemId: 'fr.phrase.rest.table-two', index: 1, total: 4, label: T('הפתיח', 'The opener') },
-    { kind: 'tool', itemId: 'fr.phrase.rest.ill-have-chicken', index: 2, total: 4, label: T('להזמין', 'Order it') },
-    { kind: 'tool', itemId: 'fr.phrase.rest.no-onions', index: 3, total: 4, label: T('בקשה מיוחדת', 'Special request') },
-    { kind: 'tool', itemId: 'fr.phrase.rest.the-bill', index: 4, total: 4, label: T('לסגור', 'Close it out') },
-    { kind: 'replies', saidItemId: 'fr.phrase.rest.ill-have-chicken',
-      replyIds: ['fr.reply.rest.to-drink', 'fr.reply.rest.ready-to-order', 'fr.reply.rest.how-was-it', 'fr.reply.rest.dessert'] },
-    { kind: 'receipt', text: T('אתה מזהה את כל שאלות המלצר — לפני שהן מפתיעות אותך.', 'You recognize every waiter question — before it can surprise you.') },
-    { kind: 'quiz', itemId: 'fr.reply.rest.reservation', wrongIds: ['fr.reply.rest.ready-to-order', 'fr.reply.rest.dessert'] },
-    { kind: 'dialogue', dialogueId: 'sit-down-meal' },
-    { kind: 'receipt', text: T('ארוחת ערב שלמה: משולחן ועד חשבון, כולל בקשה מיוחדת.', 'A full dinner: from table to bill, special request included.') },
-    { kind: 'swipe', itemIds: DAY4_FR_ITEMS.map((i) => i.id) },
-    { kind: 'ambush', npc: { en: 'Vous voulez voir la carte des desserts avant que j’apporte l’addition ?', tr: TR('Would you like to see the dessert menu before I bring the check?', 'רוצים לראות את תפריט הקינוחים לפני שאני מביא את החשבון?'), he: 'רוצים לראות את תפריט הקינוחים לפני שאני מביא את החשבון?' },
-      correctItemId: 'fr.reply.rest.dessert', wrongItemId: 'fr.reply.rest.reservation' },
-    { kind: 'receipt', text: T('משפט ארוך ומהיר בסוף הארוחה — והבנת את העיקר.', 'A long, fast sentence at the end of the meal — and you caught the point.') },
-    { kind: 'summary' },
+    // From the key sentences onward the flow is shared by all languages: see practiceEveryday.ts.
+    ...m14Flow('fr'),
   ],
 };

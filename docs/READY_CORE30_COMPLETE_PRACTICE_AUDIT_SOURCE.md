@@ -33,7 +33,7 @@ Read from the mission player (`Bootcamp.tsx`). Per-mission sections list only co
 | `visualMatch` — visual match | "Tap what you hear" / "הקש על מה ששמעת" (or the step's label); the line auto-plays; a 3×3 board of up to 9 tiles; tap the tile that shows what was said. An audio bubble at the top replays the line. | tiles shuffled once per step | Inline: correct tile turns green, a wrong pick red; the spoken line and its translation appear only now; Try again / Next. | "numberSprint" pass/fail + response time, when the round names a sentence |
 | `swap` — swap it | "Finish the sentence" / "השלם את המשפט": a cue (emoji + short app-language hint), the sentence frame with a blank, and 2–3 slot values as tappable pieces under the sentence. | shuffled per session | Inline: the blank is filled, the completed sentence is SPOKEN and translated — also for a non-matching value, which is still a real sentence; Try again / Next. | "flashRecall" pass/fail + response time on the frame's sentence |
 | `miniMap` — mini map | "Tap where to go" / "הקש לאן הולכים": the instruction auto-plays; a 3×3 schematic (landmarks, "you", tappable arrows or pins); tap where the instruction leads. An audio bubble at the top replays it. No translation before the tap. | fixed (it is a map) | Inline, as visual match. | "listen" pass/fail + response time, when the round names a sentence |
-| `matchPairs` — match pairs | "Match each question to your answer" / "חבר כל שאלה לתשובה שלך": one screen, two groups of tiles in the target language — the questions, then the answers. Tap one tile, then its partner (either side first). Tapping a question plays it. An answer tile may be a number or an icon instead of a sentence (matching what was said to what it means). No translation anywhere before a match. | answers shuffled per session | A right pair locks, turns green, gets a shared number and the answer is spoken. A wrong pair shakes, shows ✕ and clears — nothing locks, nothing is lost. Continue appears when every pair is locked. | "simulator" pass/fail on the pair's answer sentence |
+| `matchPairs` — match pairs | "Match each question to your answer" / "חבר כל שאלה לתשובה שלך": one screen, two groups of tiles in the target language — the questions, then the answers. Tap one tile, then its partner (either side first). Tapping a question plays it. An answer tile may be a number or an icon instead of a sentence (matching what was said to what it means); where an icon alone could be misread it carries a few app-language words. No translation anywhere before a match. | answers shuffled per session | A right pair locks, turns green, gets a shared number and the answer is spoken. A wrong pair shakes, shows ✕ and clears — nothing locks, nothing is lost. Continue appears when every pair is locked. | "simulator" pass/fail on the pair's answer sentence |
 | `sentenceBuilder` — sentence builder | "Build the sentence" / "בנה את המשפט": the sentence's meaning in the app language, an empty answer line, and 3–6 tiles (authored chunks of the sentence, per language). Tap a tile to place it, tap a placed tile to take it back. "Check" / "בדיקה" unlocks when every tile is used. | tiles shuffled per session, never already in order | Right: the sentence is spoken and translated; Next. Wrong: "Not yet — try another order." / "עוד לא — נסה סדר אחר." — the answer is not shown; after one miss "Hint" / "רמז" marks how it starts; after two, the learner may reveal it. | "flashRecall" pass/fail + response time on the sentence |
 | `swipe` — sentence review | Each sentence in turn: auto-played, shown with translation and tip; 🔊 "Hear again" / "לשמוע שוב", Next. | fixed | none | nothing |
 | `ambush` with a mode — final challenge | Same screen as the cold open below, with an explicit purpose. **recovery**: "Heads up: a fast one is coming. Use a tool." / "שים לב: מגיע משפט מהיר. השתמש בכלי."; the line is meant to be too hard, the accepted answer is a conversation-help tool, and only that button carries 🛟. **speed**: "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."; known language at speed, no 🛟 anywhere. A quick-reply, visual-match or mini-map step marked "speed challenge" plays the same role with its own screen instead of two buttons (line spoken at 1.12, replay at 0.85). | shuffled | as below | as below |
@@ -59,11 +59,11 @@ Not a mission. Eight phrases shared by all missions; a mission bundles the ones 
 
 - `phrase.recovery.dont-understand` — EN "Sorry, I don't understand." · FR "Désolé, je ne comprends pas." · ES "Perdón, no entiendo." · HE "סליחה, אני לא מבין." — help tool — bundled in missions: 13, 14
 - `phrase.recovery.repeat` — EN "Can you repeat that?" · FR "Vous pouvez répéter ?" · ES "¿Puede repetir, por favor?" · HE "אפשר לחזור על זה?" — help tool — bundled in missions: 01, 03, 05, 06, 08, 09, 10, 11, 12, 14, 15, 17, 18, 19, 20, 23, 26, 28, 29
-- `phrase.recovery.slowly` — EN "Please speak slowly." · FR "Parlez lentement, s’il vous plaît." · ES "Más despacio, por favor." · HE "דבר לאט, בבקשה." — help tool — bundled in missions: 01, 02, 03, 04, 06, 07, 08, 09, 10, 14, 15, 17, 19, 21, 22, 24, 26, 27, 29, 30
+- `phrase.recovery.slowly` — EN "Please speak slowly." · FR "Parlez lentement, s’il vous plaît." · ES "Más despacio, por favor." · HE "דבר לאט, בבקשה." — help tool — bundled in missions: 01, 02, 03, 04, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 26, 27, 29, 30
 - `phrase.recovery.show-me` — EN "Can you show me?" · FR "Vous pouvez me montrer ?" · ES "¿Me lo puede mostrar?" · HE "אתה יכול להראות לי?" — help tool — bundled in missions: 04, 07, 09, 17
 - `phrase.recovery.one-moment` — EN "One moment, please." · FR "Un instant, s’il vous plaît." · ES "Un momento, por favor." · HE "רגע אחד, בבקשה." — help tool — bundled in missions: 02, 03, 06, 08, 14
 - `phrase.recovery.what-mean` — EN "What does that mean?" · FR "Qu’est-ce que ça veut dire ?" · ES "¿Qué significa eso?" · HE "מה זה אומר?" — help tool — bundled in missions: 16, 25
-- `phrase.recovery.thank-you` — EN "Thank you!" · FR "Merci !" · ES "¡Gracias!" · HE "תודה!" — courtesy — bundled in missions: 03, 05, 06, 07, 08, 09, 10, 14, 15, 17, 19, 25, 26, 29, 30
+- `phrase.recovery.thank-you` — EN "Thank you!" · FR "Merci !" · ES "¡Gracias!" · HE "תודה!" — courtesy — bundled in missions: 03, 05, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 25, 26, 29, 30
 - `phrase.recovery.sorry` — EN "Sorry!" · FR "(not used by any Core mission)" · ES "(not used by any Core mission)" · HE "סליחה!" — courtesy — bundled in missions: none
 
 Trigger: none. A tool is available only where a mission's author placed it as a button on a choice screen. Typical behaviour: the NPC repeats more slowly or more simply, then the same question is asked again without the tool button.
@@ -253,7 +253,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 08, 09, 10, 14, 15, 17, 19, 21, 22, 24, 26, 27, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 26, 27, 29, 30
 - Exercised here as: dialogue choice meeting-host/c3 (accepted)
 
 ## Expected replies / listening items
@@ -750,7 +750,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Cuánto es?
 - Role: learner production
 - Tip / pattern note: "The question that opens every transaction. Learn it cold." / "השאלה שפותחת כל עסקה. תלמד אותה עד הסוף."
-- Used in missions: 02, 18
+- Used in missions: 02
 - Exercised here as: built by the word intro (step 2); key sentence (step 3); "you said" lead-in of the expected-replies drill (step 6); quick-reply response (step 10, round 1, wrong option); quick-reply response (step 10, round 2, wrong option); sentence review (step 14); dialogue choice market-stall/c1 (accepted)
 
 ### Sentence: `phrase.money.by-card`
@@ -882,7 +882,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 08, 09, 10, 14, 15, 17, 19, 21, 22, 24, 26, 27, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 26, 27, 29, 30
 - Exercised here as: sentence review (step 14); dialogue choice market-stall/c2 (accepted)
 
 ### Sentence: `phrase.recovery.one-moment`
@@ -1448,7 +1448,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Para llevar, por favor.
 - Role: learner production
 - Tip / pattern note: none
-- Used in missions: 03
+- Used in missions: 03, 18
 - Exercised here as: quick-reply response (step 9, round 1, accepted); quick-reply response (step 9, round 5, wrong option); quick-reply response (step 9, round 6, wrong option); sentence review (step 13)
 
 ### Sentence: `phrase.coffee.no-sugar`
@@ -1569,7 +1569,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Leche y azúcar?
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
-- Used in missions: 03, 18
+- Used in missions: 03
 - Exercised here as: expected-reply audio (step 7); quick-reply prompt (step 9, round 3); sentence review (step 13)
 
 ### Sentence: `reply.coffee.anything-to-eat`
@@ -1602,7 +1602,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Efectivo o tarjeta?
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
-- Used in missions: 03, 18
+- Used in missions: 03
 - Exercised here as: quick-reply prompt (step 9, round 5); sentence review (step 13)
 
 ### Sentence: `reply.coffee.receipt`
@@ -1657,7 +1657,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 08, 09, 10, 14, 15, 17, 19, 21, 22, 24, 26, 27, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 26, 27, 29, 30
 - Exercised here as: dialogue choice breakfast-order/c6 (accepted)
 
 ### Sentence: `phrase.recovery.thank-you`
@@ -1668,7 +1668,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¡Gracias!
 - Role: courtesy from the Recovery Toolkit
 - Tip / pattern note: none
-- Used in missions: 03, 05, 06, 07, 08, 09, 10, 14, 15, 17, 19, 25, 26, 29, 30
+- Used in missions: 03, 05, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 25, 26, 29, 30
 - Exercised here as: dialogue choice breakfast-order/c7 (accepted)
 
 ## Expected replies / listening items
@@ -2542,7 +2542,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 08, 09, 10, 14, 15, 17, 19, 21, 22, 24, 26, 27, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 26, 27, 29, 30
 - Exercised here as: dialogue choice coffee-with-a-friend/c4 (accepted)
 
 ## Expected replies / listening items
@@ -3389,7 +3389,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¡Gracias!
 - Role: courtesy from the Recovery Toolkit
 - Tip / pattern note: none
-- Used in missions: 03, 05, 06, 07, 08, 09, 10, 14, 15, 17, 19, 25, 26, 29, 30
+- Used in missions: 03, 05, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 25, 26, 29, 30
 - Exercised here as: dialogue choice lost-in-town/c2 (accepted)
 
 ## Expected replies / listening items
@@ -3990,7 +3990,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 08, 09, 10, 14, 15, 17, 19, 21, 22, 24, 26, 27, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 26, 27, 29, 30
 - Exercised here as: dialogue choice border-control/c4 (accepted)
 
 ### Sentence: `phrase.recovery.one-moment`
@@ -4012,7 +4012,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¡Gracias!
 - Role: courtesy from the Recovery Toolkit
 - Tip / pattern note: none
-- Used in missions: 03, 05, 06, 07, 08, 09, 10, 14, 15, 17, 19, 25, 26, 29, 30
+- Used in missions: 03, 05, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 25, 26, 29, 30
 - Exercised here as: dialogue choice border-control/c5 (WRONG option)
 
 ## Expected replies / listening items
@@ -4808,7 +4808,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 08, 09, 10, 14, 15, 17, 19, 21, 22, 24, 26, 27, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 26, 27, 29, 30
 - Exercised here as: quick-reply response (step 10, round 3, accepted); sentence review (step 13); dialogue choice taxi-ride/c3 (accepted)
 
 ### Sentence: `phrase.recovery.show-me`
@@ -4830,7 +4830,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¡Gracias!
 - Role: courtesy from the Recovery Toolkit
 - Tip / pattern note: none
-- Used in missions: 03, 05, 06, 07, 08, 09, 10, 14, 15, 17, 19, 25, 26, 29, 30
+- Used in missions: 03, 05, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 25, 26, 29, 30
 - Exercised here as: quick-reply response (step 10, round 3, accepted); quick-reply response (step 14, round 2, accepted); dialogue choice taxi-ride/c3 (accepted); dialogue choice taxi-ride/c3b (accepted)
 
 ## Expected replies / listening items
@@ -5534,7 +5534,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 08, 09, 10, 14, 15, 17, 19, 21, 22, 24, 26, 27, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 26, 27, 29, 30
 - Exercised here as: nothing (listed only)
 
 ### Sentence: `phrase.recovery.thank-you`
@@ -5545,7 +5545,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¡Gracias!
 - Role: courtesy from the Recovery Toolkit
 - Tip / pattern note: none
-- Used in missions: 03, 05, 06, 07, 08, 09, 10, 14, 15, 17, 19, 25, 26, 29, 30
+- Used in missions: 03, 05, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 25, 26, 29, 30
 - Exercised here as: nothing (listed only)
 
 ### Sentence: `phrase.recovery.one-moment`
@@ -6077,7 +6077,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Solo estoy mirando, gracias.
 - Role: learner production
 - Tip / pattern note: "A phrase that buys you space from a pushy seller." / "משפט שקונה לך מרחב בלי לחץ מוכר."
-- Used in missions: 09, 18
+- Used in missions: 09
 - Exercised here as: key sentence (step 2); quick-reply response (step 9, round 1, accepted); quick-reply response (step 9, round 2, wrong option); quick-reply response (step 9, round 3, wrong option); quick-reply response (step 9, round 4, wrong option); sentence review (step 13); dialogue choice clothing-shop/c1 (accepted)
 
 ### Sentence: `phrase.shop.try-on`
@@ -6110,7 +6110,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Me lo llevo.
 - Role: learner production
 - Tip / pattern note: "Decided? Two words close the deal." / "החלטת? שתי מילים סוגרות עסקה."
-- Used in missions: 09, 18
+- Used in missions: 09
 - Exercised here as: key sentence (step 5); quick-reply response (step 9, round 1, wrong option); quick-reply response (step 9, round 2, wrong option); quick-reply response (step 9, round 3, accepted); quick-reply response (step 9, round 4, wrong option); sentence review (step 13); cold-open wrong option (step 14); dialogue choice clothing-shop/c3 (accepted); dialogue choice clothing-shop/c3b (accepted)
 
 ### Sentence: `phrase.shop.too-expensive`
@@ -6198,7 +6198,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 08, 09, 10, 14, 15, 17, 19, 21, 22, 24, 26, 27, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 26, 27, 29, 30
 - Exercised here as: sentence review (step 13); dialogue choice clothing-shop/c2 (accepted)
 
 ### Sentence: `phrase.recovery.repeat`
@@ -6220,7 +6220,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¡Gracias!
 - Role: courtesy from the Recovery Toolkit
 - Tip / pattern note: none
-- Used in missions: 03, 05, 06, 07, 08, 09, 10, 14, 15, 17, 19, 25, 26, 29, 30
+- Used in missions: 03, 05, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 25, 26, 29, 30
 - Exercised here as: nothing (listed only)
 
 ### Sentence: `phrase.recovery.show-me`
@@ -6871,7 +6871,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¡Gracias!
 - Role: courtesy from the Recovery Toolkit
 - Tip / pattern note: none
-- Used in missions: 03, 05, 06, 07, 08, 09, 10, 14, 15, 17, 19, 25, 26, 29, 30
+- Used in missions: 03, 05, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 25, 26, 29, 30
 - Exercised here as: dialogue choice cold-taxi/c4 (accepted)
 
 ### Sentence: `phrase.recovery.repeat`
@@ -6893,7 +6893,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 08, 09, 10, 14, 15, 17, 19, 21, 22, 24, 26, 27, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 26, 27, 29, 30
 - Exercised here as: dialogue choice cold-taxi/c4 (accepted)
 
 ## Expected replies / listening items
@@ -7586,12 +7586,14 @@ Intro screen (first Practice step; identical in the English, French and Spanish 
 7. `replies` — expected replies (listening drill) — after `phrase.talk.beautiful-place`: 4 replies
 8. `receipt` — receipt (proof card) — "You recognize what strangers ask — where from, first time, do you like it?" / "אתה מזהה את השאלות שזרים שואלים — מאיפה, פעם ראשונה, אוהב?"
 9. `quiz` — meaning quiz (listening) — hears `reply.talk.how-long-here`
-10. `dialogue` — dialogue (choose your line) — scene `small-talk`
-11. `receipt` — receipt (proof card) — "A whole chat with a stranger: where from, first time, what you like, a recommendation and a goodbye." / "שיחה שלמה עם זר: מאיפה, פעם ראשונה, מה אהבת, המלצה ופרידה."
-12. `swipe` — sentence review — 17 sentences
-13. `ambush` — cold open (fast line) — mode not set · correct `reply.talk.how-long-here`, wrong `reply.talk.me-too`
-14. `receipt` — receipt (proof card) — "A fast follow-up — and you understood you were asked how long you are staying." / "שאלת המשך מהירה — והבנת ששואלים לכמה זמן אתה כאן."
-15. `summary` — victory screen
+10. `quickReply` — quick reply (hear → pick your response) — 6 round(s)
+11. `sentenceBuilder` — sentence builder (put the chunks in order) — 1 round(s)
+12. `dialogue` — dialogue (choose your line) — scene `small-talk`
+13. `receipt` — receipt (proof card) — "A whole chat with a stranger: where from, first time, what you like, a recommendation and a goodbye." / "שיחה שלמה עם זר: מאיפה, פעם ראשונה, מה אהבת, המלצה ופרידה."
+14. `swipe` — sentence review — 11 sentences
+15. `quickReply` — quick reply (hear → pick your response) — 6 round(s) · speed challenge
+16. `receipt` — receipt (proof card) — "A whole chat at the pace of a real one — you opened, answered, asked back, got a tip and said goodbye." / "שיחה שלמה, בקצב של שיחה אמיתית — פתחת, ענית, שאלת בחזרה, ביקשת המלצה ונפרדת."
+17. `summary` — victory screen
 
 Step sequence identical in EN / FR / ES: yes.
 
@@ -7612,7 +7614,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "A compliment about the place opens any conversation." / "מחמאה למקום פותחת כל שיחה."
 - Used in missions: 11, 28
-- Exercised here as: key sentence (step 2); "you said" lead-in of the expected-replies drill (step 7); sentence review (step 12); dialogue choice small-talk/c2 (accepted)
+- Exercised here as: key sentence (step 2); "you said" lead-in of the expected-replies drill (step 7); quick-reply response (step 10, round 4, wrong option); quick-reply response (step 10, round 6, wrong option); sentence review (step 14); quick-reply response (step 15, round 1, accepted); quick-reply response (step 15, round 3, wrong option); quick-reply response (step 15, round 5, wrong option); dialogue choice small-talk/c2 (accepted)
 
 ### Sentence: `phrase.talk.how-about-you`
 
@@ -7623,7 +7625,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "Return the question — and you have a conversation." / "להחזיר את השאלה — וכבר יש שיחה."
 - Used in missions: 11
-- Exercised here as: key sentence (step 3); sentence review (step 12); dialogue choice small-talk/c4 (accepted)
+- Exercised here as: key sentence (step 3); quick-reply response (step 10, round 1, accepted); quick-reply response (step 10, round 4, accepted); sentence review (step 14); quick-reply response (step 15, round 2, accepted); quick-reply response (step 15, round 6, wrong option); dialogue choice small-talk/c4 (accepted)
 
 ### Sentence: `phrase.social.first-time`
 
@@ -7634,7 +7636,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "Opens conversation and invites recommendations." / "פותח שיחה ומזמין המלצות."
 - Used in missions: 01, 11
-- Exercised here as: sentence review (step 12); dialogue choice small-talk/c6 (accepted); dialogue choice small-talk/c6b (accepted)
+- Exercised here as: quick-reply response (step 10, round 1, wrong option); quick-reply response (step 10, round 2, accepted); quick-reply response (step 10, round 6, wrong option); quick-reply response (step 15, round 3, accepted); quick-reply response (step 15, round 5, wrong option); dialogue choice small-talk/c6 (accepted); dialogue choice small-talk/c6b (accepted)
 
 ### Sentence: `phrase.talk.i-like-it`
 
@@ -7645,7 +7647,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 11, 24
-- Exercised here as: key sentence (step 4); sentence review (step 12); dialogue choice small-talk/c8 (accepted)
+- Exercised here as: key sentence (step 4); quick-reply response (step 10, round 1, wrong option); quick-reply response (step 10, round 3, accepted); sentence review (step 14); quick-reply response (step 15, round 2, wrong option); quick-reply response (step 15, round 4, accepted); quick-reply response (step 15, round 6, wrong option); dialogue choice small-talk/c8 (accepted)
 
 ### Sentence: `phrase.talk.love-food`
 
@@ -7656,7 +7658,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 11
-- Exercised here as: sentence review (step 12); dialogue choice small-talk/c8 (accepted)
+- Exercised here as: quick-reply response (step 10, round 3, accepted); sentence review (step 14); dialogue choice small-talk/c8 (accepted)
 
 ### Sentence: `phrase.talk.recommend-place`
 
@@ -7667,7 +7669,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "Locals know best. Ask." / "מקומיים יודעים הכי טוב. תשאל."
 - Used in missions: 11, 24, 28
-- Exercised here as: key sentence (step 5); sentence review (step 12); dialogue choice small-talk/c10 (accepted)
+- Exercised here as: key sentence (step 5); quick-reply response (step 10, round 3, wrong option); quick-reply response (step 10, round 5, accepted); sentence-builder target (step 11, round 1); sentence review (step 14); quick-reply response (step 15, round 2, wrong option); quick-reply response (step 15, round 5, accepted); dialogue choice small-talk/c10 (accepted)
 
 ### Sentence: `phrase.rest.recommend`
 
@@ -7678,7 +7680,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "If the menu confuses you — let the waiter decide. Always works." / "אם התפריט מבלבל — תן למלצר להחליט. תמיד עובד."
 - Used in missions: 11
-- Exercised here as: sentence review (step 12); dialogue choice small-talk/c10 (accepted)
+- Exercised here as: quick-reply response (step 10, round 5, accepted); dialogue choice small-talk/c10 (accepted)
 
 ### Sentence: `phrase.talk.nice-talking`
 
@@ -7689,7 +7691,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 11
-- Exercised here as: key sentence (step 6); sentence review (step 12); dialogue choice small-talk/c12 (accepted)
+- Exercised here as: key sentence (step 6); quick-reply response (step 10, round 2, wrong option); quick-reply response (step 10, round 4, wrong option); quick-reply response (step 10, round 5, wrong option); quick-reply response (step 10, round 6, accepted); sentence review (step 14); quick-reply response (step 15, round 1, wrong option); quick-reply response (step 15, round 3, wrong option); quick-reply response (step 15, round 4, wrong option); quick-reply response (step 15, round 6, accepted); dialogue choice small-talk/c12 (accepted)
 
 ### Sentence: `phrase.social.from-israel`
 
@@ -7700,7 +7702,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "Template: I’m from ___ — the answer to “Where are you from”." / "התבנית: I’m from ___ — התשובה ל-Where are you from."
 - Used in missions: 01, 11, 24, 30
-- Exercised here as: sentence review (step 12)
+- Exercised here as: quick-reply response (step 10, round 2, wrong option); quick-reply response (step 15, round 1, wrong option); quick-reply response (step 15, round 4, wrong option)
 
 ### Sentence: `reply.talk.first-time-q`
 
@@ -7711,7 +7713,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 11
-- Exercised here as: expected-reply audio (step 7); sentence review (step 12)
+- Exercised here as: expected-reply audio (step 7); quick-reply prompt (step 10, round 2); sentence review (step 14)
 
 ### Sentence: `reply.talk.where-from`
 
@@ -7722,7 +7724,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 11
-- Exercised here as: expected-reply audio (step 7); meaning-quiz distractor (step 9); sentence review (step 12)
+- Exercised here as: expected-reply audio (step 7); meaning-quiz distractor (step 9); quick-reply prompt (step 10, round 1); sentence review (step 14)
 
 ### Sentence: `reply.talk.do-you-like-it`
 
@@ -7733,7 +7735,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 11
-- Exercised here as: expected-reply audio (step 7); sentence review (step 12)
+- Exercised here as: expected-reply audio (step 7); quick-reply prompt (step 10, round 3); sentence review (step 14)
 
 ### Sentence: `reply.talk.you-should-try`
 
@@ -7744,7 +7746,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 11
-- Exercised here as: expected-reply audio (step 7); sentence review (step 12)
+- Exercised here as: expected-reply audio (step 7); quick-reply prompt (step 10, round 6); sentence review (step 14)
 
 ### Sentence: `reply.talk.how-long-here`
 
@@ -7755,7 +7757,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 11
-- Exercised here as: meaning-quiz audio (step 9); sentence review (step 12); cold-open correct option (step 13)
+- Exercised here as: meaning-quiz audio (step 9)
 
 ### Sentence: `reply.talk.enjoy-rest`
 
@@ -7766,7 +7768,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 11
-- Exercised here as: meaning-quiz distractor (step 9); sentence review (step 12)
+- Exercised here as: meaning-quiz distractor (step 9)
 
 ### Sentence: `reply.talk.me-too`
 
@@ -7777,7 +7779,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 11
-- Exercised here as: sentence review (step 12); cold-open wrong option (step 13)
+- Exercised here as: nothing (listed only)
 
 ### Sentence: `phrase.recovery.repeat`
 
@@ -7788,7 +7790,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
 - Used in missions: 01, 03, 05, 06, 08, 09, 10, 11, 12, 14, 15, 17, 18, 19, 20, 23, 26, 28, 29
-- Exercised here as: sentence review (step 12); dialogue choice small-talk/c6 (accepted)
+- Exercised here as: sentence review (step 14); dialogue choice small-talk/c6 (accepted)
 
 ## Expected replies / listening items
 
@@ -7864,7 +7866,172 @@ Linked learner sentence: `phrase.talk.beautiful-place`. Each reply below is play
 
 ## Active practice — Quick Reply · Visual Match · Swap It · Mini Map
 
-None in this mission.
+### M11-Q06 — quick-reply (step 10, round 1 of 6)
+
+- Prompt displayed: "A chat with a local — what do you say?" / "שיחה עם מקומי — מה אומרים?"
+- Audio played: EN "Where are you from?" · FR "Vous venez d’où ?" · ES "¿De dónde es?"
+- Meaning of the audio (HE): "מאיפה אתה?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "I'm from Israel. How about you?" · FR "Je viens d’Israël. Et vous ?" · ES "Soy de Israel. ¿Y usted?" · (HE gloss "ואתה?") — `phrase.talk.how-about-you` — ✅ accepted
+  2. EN "It's my first time here." · FR "C’est ma première fois ici." · ES "Es mi primera vez aquí." · (HE gloss "זו הפעם הראשונה שלי כאן.") — `phrase.social.first-time` — ❌ wrong
+  3. EN "I like it a lot." · FR "J’aime beaucoup." · ES "Me gusta mucho." · (HE gloss "אני מאוד אוהב.") — `phrase.talk.i-like-it` — ❌ wrong
+- Tests: phrase.talk.how-about-you
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M11-Q07 — quick-reply (step 10, round 2 of 6)
+
+- Prompt displayed: "A chat with a local — what do you say?" / "שיחה עם מקומי — מה אומרים?"
+- Audio played: EN "Is this your first time here?" · FR "C’est votre première fois ici ?" · ES "¿Es su primera vez aquí?"
+- Meaning of the audio (HE): "זו הפעם הראשונה שלך כאן?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Yes, it's my first time here." · FR "Oui, c’est ma première fois ici." · ES "Sí, es mi primera vez aquí." · (HE gloss "זו הפעם הראשונה שלי כאן.") — `phrase.social.first-time` — ✅ accepted
+  2. EN "I'm from Israel." · FR "Je viens d’Israël." · ES "Soy de Israel." · (HE gloss "אני מישראל.") — `phrase.social.from-israel` — ❌ wrong
+  3. EN "It was nice talking to you." · FR "C’était sympa de discuter avec vous." · ES "Ha sido un placer hablar con usted." · (HE gloss "היה נעים לדבר איתך.") — `phrase.talk.nice-talking` — ❌ wrong
+- Tests: phrase.social.first-time
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M11-Q08 — quick-reply (step 10, round 3 of 6)
+
+- Prompt displayed: "A chat with a local — what do you say?" / "שיחה עם מקומי — מה אומרים?"
+- Audio played: EN "Do you like it here?" · FR "Ça vous plaît ici ?" · ES "¿Le gusta este lugar?"
+- Meaning of the audio (HE): "אתה אוהב את המקום?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Yes, I like it a lot." · FR "Oui, j’aime beaucoup." · ES "Sí, me gusta mucho." · (HE gloss "אני מאוד אוהב.") — `phrase.talk.i-like-it` — ✅ accepted
+  2. EN "I love the food here." · FR "J’adore la nourriture ici." · ES "Me encanta la comida de aquí." · (HE gloss "אני אוהב את האוכל כאן.") — `phrase.talk.love-food` — ✅ accepted
+  3. EN "Can you recommend a place?" · FR "Vous pouvez recommander un endroit ?" · ES "¿Me puede recomendar un sitio?" · (HE gloss "אתה יכול להמליץ על מקום?") — `phrase.talk.recommend-place` — ❌ wrong
+- Tests: phrase.talk.i-like-it, phrase.talk.love-food
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M11-Q09 — quick-reply (step 10, round 4 of 6)
+
+- Prompt displayed: "A chat with a local — what do you say?" / "שיחה עם מקומי — מה אומרים?" — situation shown: "You said you like it here. Now it is your turn to ask back." / "אמרת שאתה אוהב את המקום. עכשיו תורך לשאול בחזרה."
+- Audio played: EN "(nothing is played — a situation is shown)" · FR "(nothing is played — a situation is shown)" · ES "(nothing is played — a situation is shown)"
+- Meaning of the audio (HE): —
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "How about you?" · FR "Et vous ?" · ES "¿Y usted?" · (HE gloss "ואתה?") — `phrase.talk.how-about-you` — ✅ accepted
+  2. EN "It was nice talking to you." · FR "C’était sympa de discuter avec vous." · ES "Ha sido un placer hablar con usted." · (HE gloss "היה נעים לדבר איתך.") — `phrase.talk.nice-talking` — ❌ wrong
+  3. EN "This place is beautiful." · FR "Cet endroit est magnifique." · ES "Este lugar es precioso." · (HE gloss "המקום הזה יפהפה.") — `phrase.talk.beautiful-place` — ❌ wrong
+- Tests: phrase.talk.how-about-you
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M11-Q10 — quick-reply (step 10, round 5 of 6)
+
+- Prompt displayed: "A chat with a local — what do you say?" / "שיחה עם מקומי — מה אומרים?"
+- Audio played: EN "Me too. And the food here is wonderful." · FR "Moi aussi. Et la cuisine ici est excellente." · ES "Yo también. Y la comida de aquí es estupenda."
+- Meaning of the audio (HE): "גם אני. והאוכל כאן נהדר."
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Can you recommend a place?" · FR "Vous pouvez recommander un endroit ?" · ES "¿Me puede recomendar un sitio?" · (HE gloss "אתה יכול להמליץ על מקום?") — `phrase.talk.recommend-place` — ✅ accepted
+  2. EN "What do you recommend?" · FR "Qu’est-ce que vous recommandez ?" · ES "¿Qué me recomienda?" · (HE gloss "מה אתה ממליץ?") — `phrase.rest.recommend` — ✅ accepted
+  3. EN "It was nice talking to you." · FR "C’était sympa de discuter avec vous." · ES "Ha sido un placer hablar con usted." · (HE gloss "היה נעים לדבר איתך.") — `phrase.talk.nice-talking` — ❌ wrong
+- Tests: phrase.talk.recommend-place, phrase.rest.recommend
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M11-Q11 — quick-reply (step 10, round 6 of 6)
+
+- Prompt displayed: "A chat with a local — what do you say?" / "שיחה עם מקומי — מה אומרים?"
+- Audio played: EN "You should try the old town." · FR "Vous devriez essayer la vieille ville." · ES "Debería visitar el casco antiguo."
+- Meaning of the audio (HE): "כדאי לך לנסות את העיר העתיקה."
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Thank you! It was nice talking to you." · FR "Merci ! C’était sympa de discuter avec vous." · ES "¡Gracias! Ha sido un placer hablar con usted." · (HE gloss "היה נעים לדבר איתך.") — `phrase.talk.nice-talking` — ✅ accepted
+  2. EN "This place is beautiful." · FR "Cet endroit est magnifique." · ES "Este lugar es precioso." · (HE gloss "המקום הזה יפהפה.") — `phrase.talk.beautiful-place` — ❌ wrong
+  3. EN "It's my first time here." · FR "C’est ma première fois ici." · ES "Es mi primera vez aquí." · (HE gloss "זו הפעם הראשונה שלי כאן.") — `phrase.social.first-time` — ❌ wrong
+- Tests: phrase.talk.nice-talking
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M11-Q12 — sentence-builder (step 11, round 1 of 1)
+
+- Prompt displayed: "Build the sentence" / "בנה את המשפט" — cue shown: the sentence's MEANING in the app language ("אתה יכול להמליץ על מקום?")
+- Audio played: EN "(nothing before Check; the built sentence is spoken once it is right)" · FR "(same)" · ES "(same)"
+- Meaning of the audio (HE): —
+- Buttons show: the authored CHUNKS of the sentence as tiles (listed here in the correct order, separated by "|"), shuffled; each language has its own chunks; Check unlocks when every tile is placed
+- Choices:
+  1. EN "Can you  |  recommend  |  a place?" · FR "Vous pouvez  |  recommander  |  un endroit ?" · ES "¿Me puede  |  recomendar  |  un sitio?" · (HE gloss "אתה יכול להמליץ על מקום?") — `phrase.talk.recommend-place` — ✅ accepted
+- Tests: phrase.talk.recommend-place
+- Explanation shown after answering: right: the sentence is spoken and its translation shown. Wrong: "not yet" — the tiles stay, the answer is NOT shown; after one miss a hint marks the start; after two misses the learner may reveal it
+
+### M11-Q20 — quick-reply (step 15, round 1 of 6 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "Hi! Beautiful view, isn't it?" · FR "Bonjour ! Belle vue, n’est-ce pas ?" · ES "¡Hola! Bonita vista, ¿verdad?"
+- Meaning of the audio (HE): "היי! נוף יפה, נכון?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "This place is beautiful." · FR "Cet endroit est magnifique." · ES "Este lugar es precioso." · (HE gloss "המקום הזה יפהפה.") — `phrase.talk.beautiful-place` — ✅ accepted
+  2. EN "It was nice talking to you." · FR "C’était sympa de discuter avec vous." · ES "Ha sido un placer hablar con usted." · (HE gloss "היה נעים לדבר איתך.") — `phrase.talk.nice-talking` — ❌ wrong
+  3. EN "I'm from Israel." · FR "Je viens d’Israël." · ES "Soy de Israel." · (HE gloss "אני מישראל.") — `phrase.social.from-israel` — ❌ wrong
+- Tests: phrase.talk.beautiful-place
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M11-Q21 — quick-reply (step 15, round 2 of 6 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "It really is. Where are you from?" · FR "C’est vrai. Vous venez d’où ?" · ES "Es verdad. ¿De dónde es?"
+- Meaning of the audio (HE): "באמת. מאיפה אתה?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "I'm from Israel. How about you?" · FR "Je viens d’Israël. Et vous ?" · ES "Soy de Israel. ¿Y usted?" · (HE gloss "ואתה?") — `phrase.talk.how-about-you` — ✅ accepted
+  2. EN "Can you recommend a place?" · FR "Vous pouvez recommander un endroit ?" · ES "¿Me puede recomendar un sitio?" · (HE gloss "אתה יכול להמליץ על מקום?") — `phrase.talk.recommend-place` — ❌ wrong
+  3. EN "I like it a lot." · FR "J’aime beaucoup." · ES "Me gusta mucho." · (HE gloss "אני מאוד אוהב.") — `phrase.talk.i-like-it` — ❌ wrong
+- Tests: phrase.talk.how-about-you
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M11-Q22 — quick-reply (step 15, round 3 of 6 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "I'm from here! Is this your first time here?" · FR "Je suis d’ici ! C’est votre première fois ici ?" · ES "¡Soy de aquí! ¿Es su primera vez aquí?"
+- Meaning of the audio (HE): "אני מכאן! זו הפעם הראשונה שלך כאן?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Yes, it's my first time here." · FR "Oui, c’est ma première fois ici." · ES "Sí, es mi primera vez aquí." · (HE gloss "זו הפעם הראשונה שלי כאן.") — `phrase.social.first-time` — ✅ accepted
+  2. EN "This place is beautiful." · FR "Cet endroit est magnifique." · ES "Este lugar es precioso." · (HE gloss "המקום הזה יפהפה.") — `phrase.talk.beautiful-place` — ❌ wrong
+  3. EN "It was nice talking to you." · FR "C’était sympa de discuter avec vous." · ES "Ha sido un placer hablar con usted." · (HE gloss "היה נעים לדבר איתך.") — `phrase.talk.nice-talking` — ❌ wrong
+- Tests: phrase.social.first-time
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M11-Q23 — quick-reply (step 15, round 4 of 6 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "Welcome! Do you like it here?" · FR "Bienvenue ! Ça vous plaît ici ?" · ES "¡Bienvenido! ¿Le gusta este lugar?"
+- Meaning of the audio (HE): "ברוך הבא! אתה אוהב את המקום?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Yes, I like it a lot." · FR "Oui, j’aime beaucoup." · ES "Sí, me gusta mucho." · (HE gloss "אני מאוד אוהב.") — `phrase.talk.i-like-it` — ✅ accepted
+  2. EN "I'm from Israel." · FR "Je viens d’Israël." · ES "Soy de Israel." · (HE gloss "אני מישראל.") — `phrase.social.from-israel` — ❌ wrong
+  3. EN "It was nice talking to you." · FR "C’était sympa de discuter avec vous." · ES "Ha sido un placer hablar con usted." · (HE gloss "היה נעים לדבר איתך.") — `phrase.talk.nice-talking` — ❌ wrong
+- Tests: phrase.talk.i-like-it
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M11-Q24 — quick-reply (step 15, round 5 of 6 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "Me too. And the food here is wonderful." · FR "Moi aussi. Et la cuisine ici est excellente." · ES "Yo también. Y la comida de aquí es estupenda."
+- Meaning of the audio (HE): "גם אני. והאוכל כאן נהדר."
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Can you recommend a place?" · FR "Vous pouvez recommander un endroit ?" · ES "¿Me puede recomendar un sitio?" · (HE gloss "אתה יכול להמליץ על מקום?") — `phrase.talk.recommend-place` — ✅ accepted
+  2. EN "It's my first time here." · FR "C’est ma première fois ici." · ES "Es mi primera vez aquí." · (HE gloss "זו הפעם הראשונה שלי כאן.") — `phrase.social.first-time` — ❌ wrong
+  3. EN "This place is beautiful." · FR "Cet endroit est magnifique." · ES "Este lugar es precioso." · (HE gloss "המקום הזה יפהפה.") — `phrase.talk.beautiful-place` — ❌ wrong
+- Tests: phrase.talk.recommend-place
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M11-Q25 — quick-reply (step 15, round 6 of 6 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "Of course — try 'Mama Rosa', in the old town. It's very good." · FR "Bien sûr — essayez « Mama Rosa », dans la vieille ville. C’est très bon." · ES "Claro — pruebe «Mama Rosa», en el casco antiguo. Es muy bueno."
+- Meaning of the audio (HE): "בטח — תנסה את 'מאמא רוזה', בעיר העתיקה. מאוד טוב שם."
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Thank you! It was nice talking to you." · FR "Merci ! C’était sympa de discuter avec vous." · ES "¡Gracias! Ha sido un placer hablar con usted." · (HE gloss "היה נעים לדבר איתך.") — `phrase.talk.nice-talking` — ✅ accepted
+  2. EN "How about you?" · FR "Et vous ?" · ES "¿Y usted?" · (HE gloss "ואתה?") — `phrase.talk.how-about-you` — ❌ wrong
+  3. EN "I like it a lot." · FR "J’aime beaucoup." · ES "Me gusta mucho." · (HE gloss "אני מאוד אוהב.") — `phrase.talk.i-like-it` — ❌ wrong
+- Tests: phrase.talk.nice-talking
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
 ## Dialogue — full tree
 
@@ -8001,7 +8168,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 
 ## Learner choice screens
 
-### M11-Q06 — dialogue-choice (step 10, scene "small-talk" · node c2)
+### M11-Q13 — dialogue-choice (step 12, scene "small-talk" · node c2)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Hi! Beautiful view, isn't it?" · FR "Bonjour ! Belle vue, n’est-ce pas ?" · ES "¡Hola! Bonita vista, ¿verdad?"
@@ -8012,7 +8179,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.talk.beautiful-place
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M11-Q07 — dialogue-choice (step 10, scene "small-talk" · node c4)
+### M11-Q14 — dialogue-choice (step 12, scene "small-talk" · node c4)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "It really is. Where are you from?" · FR "C’est vrai. Vous venez d’où ?" · ES "Es verdad. ¿De dónde es?"
@@ -8023,7 +8190,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.talk.how-about-you
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M11-Q08 — dialogue-choice (step 10, scene "small-talk" · node c6)
+### M11-Q15 — dialogue-choice (step 12, scene "small-talk" · node c6)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "I'm from here! Is this your first time here?" · FR "Je suis d’ici ! C’est votre première fois ici ?" · ES "¡Soy de aquí! ¿Es su primera vez aquí?"
@@ -8035,7 +8202,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.social.first-time, phrase.recovery.repeat
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M11-Q09 — dialogue-choice (step 10, scene "small-talk" · node c6b)
+### M11-Q16 — dialogue-choice (step 12, scene "small-talk" · node c6b)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Your first time — here?" · FR "Votre première fois — ici ?" · ES "¿Su primera vez — aquí?"
@@ -8046,7 +8213,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.social.first-time
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M11-Q10 — dialogue-choice (step 10, scene "small-talk" · node c8)
+### M11-Q17 — dialogue-choice (step 12, scene "small-talk" · node c8)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Welcome! Do you like it here?" · FR "Bienvenue ! Ça vous plaît ici ?" · ES "¡Bienvenido! ¿Le gusta este lugar?"
@@ -8058,7 +8225,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.talk.i-like-it, phrase.talk.love-food
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M11-Q11 — dialogue-choice (step 10, scene "small-talk" · node c10)
+### M11-Q18 — dialogue-choice (step 12, scene "small-talk" · node c10)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Me too. And the food here is wonderful." · FR "Moi aussi. Et la cuisine ici est excellente." · ES "Yo también. Y la comida de aquí es estupenda."
@@ -8070,7 +8237,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.talk.recommend-place, phrase.rest.recommend
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M11-Q12 — dialogue-choice (step 10, scene "small-talk" · node c12)
+### M11-Q19 — dialogue-choice (step 12, scene "small-talk" · node c12)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Of course — try 'Mama Rosa', in the old town. It's very good." · FR "Bien sûr — essayez « Mama Rosa », dans la vieille ville. C’est très bon." · ES "Claro — pruebe «Mama Rosa», en el casco antiguo. Es muy bueno."
@@ -8096,45 +8263,23 @@ None — no choice in this mission is marked wrong.
 
 ## Sentence review
 
-Step 12. 17 sentences, in this fixed order. Each is played automatically (TTS), shown with its translation and tip; buttons: 🔊 "Hear again" / "לשמוע שוב" and Next. No speaking prompt, no grading, no scoring; nothing is recorded.
+Step 14. 11 sentences, in this fixed order. Each is played automatically (TTS), shown with its translation and tip; buttons: 🔊 "Hear again" / "לשמוע שוב" and Next. No speaking prompt, no grading, no scoring; nothing is recorded.
 
 1. `phrase.talk.beautiful-place` — This place is beautiful. — המקום הזה יפהפה.
 2. `phrase.talk.how-about-you` — How about you? — ואתה?
-3. `phrase.social.first-time` — It's my first time here. — זו הפעם הראשונה שלי כאן.
-4. `phrase.talk.i-like-it` — I like it a lot. — אני מאוד אוהב.
-5. `phrase.talk.love-food` — I love the food here. — אני אוהב את האוכל כאן.
-6. `phrase.talk.recommend-place` — Can you recommend a place? — אתה יכול להמליץ על מקום?
-7. `phrase.rest.recommend` — What do you recommend? — מה אתה ממליץ?
-8. `phrase.talk.nice-talking` — It was nice talking to you. — היה נעים לדבר איתך.
-9. `phrase.social.from-israel` — I'm from Israel. — אני מישראל.
-10. `reply.talk.first-time-q` — Is this your first time here? — זו הפעם הראשונה שלך כאן?
-11. `reply.talk.where-from` — Where are you from? — מאיפה אתה?
-12. `reply.talk.do-you-like-it` — Do you like it here? — אתה אוהב את המקום?
-13. `reply.talk.you-should-try` — You should try the old town. — כדאי לך לנסות את העיר העתיקה.
-14. `reply.talk.how-long-here` — How long are you here for? — לכמה זמן אתה כאן?
-15. `reply.talk.enjoy-rest` — Enjoy the rest of your trip! — תיהנה משאר הטיול!
-16. `reply.talk.me-too` — Me too! — גם אני!
-17. `phrase.recovery.repeat` — Can you repeat that? — אפשר לחזור על זה?
+3. `phrase.talk.i-like-it` — I like it a lot. — אני מאוד אוהב.
+4. `phrase.talk.love-food` — I love the food here. — אני אוהב את האוכל כאן.
+5. `phrase.talk.recommend-place` — Can you recommend a place? — אתה יכול להמליץ על מקום?
+6. `phrase.talk.nice-talking` — It was nice talking to you. — היה נעים לדבר איתך.
+7. `reply.talk.where-from` — Where are you from? — מאיפה אתה?
+8. `reply.talk.first-time-q` — Is this your first time here? — זו הפעם הראשונה שלך כאן?
+9. `reply.talk.do-you-like-it` — Do you like it here? — אתה אוהב את המקום?
+10. `reply.talk.you-should-try` — You should try the old town. — כדאי לך לנסות את העיר העתיקה.
+11. `phrase.recovery.repeat` — Can you repeat that? — אפשר לחזור על זה?
 
 ## Cold open / ambush
 
-### M11-Q13 — cold-open (step 13, single prompt · mode: not set (original behaviour))
-
-- Prompt displayed: "Heads up: a fast one is coming. Use a tool." / "שים לב: מגיע משפט מהיר. השתמש בכלי."
-- Audio played: EN "Oh nice so how long are you here for just a few days or longer?" · FR "Ah, sympa ! Et vous êtes ici pour combien de temps, quelques jours ou plus ?" · ES "¡Ah, qué bien! ¿Y cuánto tiempo está aquí, unos días o más?"
-- Meaning of the audio (HE): "אה, יפה! ולכמה זמן אתה כאן — כמה ימים או יותר?"
-- Buttons show: TARGET-LANGUAGE text of the two sentences, each prefixed with 🛟; order shuffled
-- Choices:
-  1. EN "How long are you here for?" · FR "Vous êtes ici pour combien de temps ?" · ES "¿Cuánto tiempo está aquí?" · (HE gloss "לכמה זמן אתה כאן?") — `reply.talk.how-long-here` — ✅ accepted
-  2. EN "Me too!" · FR "Moi aussi !" · ES "¡Yo también!" · (HE gloss "גם אני!") — `reply.talk.me-too` — ❌ wrong
-- Tests: reply.talk.how-long-here
-- Explanation shown after answering: generic: “How long are you here for?” means “לכמה זמן אתה כאן?”.
-
-- Flow: screen shows ⚡ and "Heads up: a fast one is coming. Use a tool." / "שים לב: מגיע משפט מהיר. השתמש בכלי." with one button 👂 "I'm ready" / "אני מוכן"; on tap the line is spoken at TTS rate 1.12 and printed small; two shuffled buttons appear; 🔊 "Hear again" / "לשמוע שוב" replays at 0.85.
-- Success criterion: picking the accepted sentence. A wrong pick shows the feedback card (what you heard + translation, your answer, the sentence that fit) with Try again / Continue; Continue proceeds either way. Response time is recorded.
-- Recovery options offered: none
-- Receipt shown next: "A fast follow-up — and you understood you were asked how long you are staying." / "שאלת המשך מהירה — והבנת ששואלים לכמה זמן אתה כאן."
-- Potential new-language exposure: YES — English words not met in any sentence or dialogue line of Missions 01–11: few, days, longer
+No cold open in this mission.
 
 ## Swap-in / variable content
 
@@ -8152,8 +8297,8 @@ Learner sentences taught beside the dialogue (not a line in any scene):
 ## Receipts (proof cards)
 
 - Step 8: "You recognize what strangers ask — where from, first time, do you like it?" / "אתה מזהה את השאלות שזרים שואלים — מאיפה, פעם ראשונה, אוהב?"
-- Step 11: "A whole chat with a stranger: where from, first time, what you like, a recommendation and a goodbye." / "שיחה שלמה עם זר: מאיפה, פעם ראשונה, מה אהבת, המלצה ופרידה."
-- Step 14: "A fast follow-up — and you understood you were asked how long you are staying." / "שאלת המשך מהירה — והבנת ששואלים לכמה זמן אתה כאן."
+- Step 13: "A whole chat with a stranger: where from, first time, what you like, a recommendation and a goodbye." / "שיחה שלמה עם זר: מאיפה, פעם ראשונה, מה אהבת, המלצה ופרידה."
+- Step 16: "A whole chat at the pace of a real one — you opened, answered, asked back, got a tip and said goodbye." / "שיחה שלמה, בקצב של שיחה אמיתית — פתחת, ענית, שאלת בחזרה, ביקשת המלצה ונפרדת."
 
 ## Audit Metadata — DO NOT FIX YET
 
@@ -8163,30 +8308,35 @@ Learner sentences taught beside the dialogue (not a line in any scene):
 - Key-sentence steps: 5
 - Expected-reply/listening items: 4
 - Questions/quizzes (meaning quiz): 1
-- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 0
-- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 3
+- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 13
+- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 16
 - One-button dialogue screens: 4
-- Learner sentences never actively retrieved: 1
+- Learner sentences never actively retrieved: 0
 - Dialogue learner choices (screens): 7
 - Wrong-answer branches: 0
-- Cold-open prompts: 1
+- Cold-open prompts: 0
 - Recovery opportunities: 1
 - Vocabulary pre-items: 0
 - Swap variants (extra accepted lines): 2
-- Sentences in review: 17
-- Total interactive questions: 13 (answer choices: 27)
-- Approximate total learner interactions: 35 (questions + key sentences + review cards + word-intro screen)
+- Sentences in review: 11
+- Total interactive questions: 25 (answer choices: 62)
+- Approximate total learner interactions: 41 (questions + key sentences + review cards + word-intro screen)
 
-### AUTO-FLAG — requires human review (8)
+### AUTO-FLAG — requires human review (13)
 
 - AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "small-talk" n1 — “Hi! Beautiful view, isn't it?”
 - AUTO-FLAG — Practice item wording not in this mission's dialogue: `reply.talk.you-should-try` “You should try the old town.” (drilled as an expected reply / distractor, but no NPC line here says it).
 - AUTO-FLAG — Practice item wording not in this mission's dialogue: `reply.talk.how-long-here` “How long are you here for?” (drilled as an expected reply / distractor, but no NPC line here says it).
-- AUTO-FLAG — Learner sentence never actively retrieved in this mission (0 choice screens, 0 quick-reply / swap / match / builder rounds, 0 cold-open options): `phrase.social.from-israel` “I'm from Israel.” — appears in sentence review only (orphan in this mission).
 - AUTO-FLAG — 7 of 7 choice screens have NO wrong option (every button is accepted): small-talk/c2, small-talk/c4, small-talk/c6, small-talk/c6b, small-talk/c8, small-talk/c10, small-talk/c12.
 - AUTO-FLAG — 4 choice screens offer exactly ONE button (no decision): small-talk/c2, small-talk/c4, small-talk/c6b, small-talk/c12.
-- AUTO-FLAG — M11-Q13: cold-open line contains English words not met in any sentence or dialogue line up to this mission: few, days, longer.
-- AUTO-FLAG — M11-Q13: the screen says "Heads up: a fast one is coming. Use a tool." / "שים לב: מגיע משפט מהיר. השתמש בכלי." and marks both buttons with 🛟, but neither option is a conversation-help tool.
+- AUTO-FLAG — M11-Q06: answer choice “It's my first time here.” (`phrase.social.first-time`) was first taught in Mission 01, not here.
+- AUTO-FLAG — M11-Q07: answer choice “Yes, it's my first time here.” (`phrase.social.first-time`) was first taught in Mission 01, not here.
+- AUTO-FLAG — M11-Q07: answer choice “I'm from Israel.” (`phrase.social.from-israel`) was first taught in Mission 01, not here.
+- AUTO-FLAG — M11-Q11: answer choice “It's my first time here.” (`phrase.social.first-time`) was first taught in Mission 01, not here.
+- AUTO-FLAG — M11-Q20: answer choice “I'm from Israel.” (`phrase.social.from-israel`) was first taught in Mission 01, not here.
+- AUTO-FLAG — M11-Q22: answer choice “Yes, it's my first time here.” (`phrase.social.first-time`) was first taught in Mission 01, not here.
+- AUTO-FLAG — M11-Q23: answer choice “I'm from Israel.” (`phrase.social.from-israel`) was first taught in Mission 01, not here.
+- AUTO-FLAG — M11-Q24: answer choice “It's my first time here.” (`phrase.social.first-time`) was first taught in Mission 01, not here.
 
 ---
 
@@ -8235,13 +8385,16 @@ Intro screen (first Practice step; identical in the English, French and Spanish 
 6. `tool` — key sentence (listen → reveal → say aloud) — `phrase.time.maybe-later` “Maybe later.” · label "Maybe later" / "אולי אחר כך" (5/5)
 7. `replies` — expected replies (listening drill) — after `phrase.time.what-time`: 4 replies
 8. `receipt` — receipt (proof card) — "You recognize a time, "early" and "late" — even when it is said fast." / "אתה מזהה שעה, "מוקדם" ו"מאוחר" — גם כשזה נאמר מהר."
-9. `quiz` — meaning quiz (listening) — hears `reply.time.free-tomorrow-q`
-10. `dialogue` — dialogue (choose your line) — scene `making-plans`
-11. `receipt` — receipt (proof card) — "You planned an evening and a morning: when, what time, and where to meet." / "קבעת ערב ובוקר: מתי, באיזו שעה, ואיפה נפגשים."
-12. `swipe` — sentence review — 16 sentences
-13. `ambush` — cold open (fast line) — mode not set · correct `reply.time.free-tomorrow-q`, wrong `reply.time.at-eight`
-14. `receipt` — receipt (proof card) — "You were asked, fast, whether you are free tomorrow — and you got it." / "שאלו אותך מהר אם אתה פנוי מחר — והבנת."
-15. `summary` — victory screen
+9. `visualMatch` — visual match (hear → tap the tile) — 4 round(s)
+10. `quickReply` — quick reply (hear → pick your response) — 5 round(s)
+11. `swap` — swap it (one frame, several endings) — 3 round(s)
+12. `sentenceBuilder` — sentence builder (put the chunks in order) — 1 round(s)
+13. `dialogue` — dialogue (choose your line) — scene `making-plans`
+14. `receipt` — receipt (proof card) — "You planned an evening and a morning: when, what time, and where to meet." / "קבעת ערב ובוקר: מתי, באיזו שעה, ואיפה נפגשים."
+15. `swipe` — sentence review — 12 sentences
+16. `quickReply` — quick reply (hear → pick your response) — 4 round(s) · speed challenge
+17. `receipt` — receipt (proof card) — "Tonight, tomorrow, what time and where — you settled it all at the pace of a real chat." / "הערב, מחר, באיזו שעה ואיפה — קבעת הכל בקצב של שיחה אמיתית."
+18. `summary` — victory screen
 
 Step sequence identical in EN / FR / ES: yes.
 
@@ -8262,7 +8415,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "The most useful answer when you have not decided." / "התשובה הכי שימושית כשלא החלטת."
 - Used in missions: 12, 18
-- Exercised here as: key sentence (step 6); sentence review (step 12); dialogue choice making-plans/c2 (accepted)
+- Exercised here as: key sentence (step 6); quick-reply response (step 10, round 1, accepted); sentence review (step 15); quick-reply response (step 16, round 2, wrong option); quick-reply response (step 16, round 4, wrong option); dialogue choice making-plans/c2 (accepted)
 
 ### Sentence: `phrase.time.free-tonight`
 
@@ -8272,8 +8425,8 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Estoy libre esta noche.
 - Role: learner production
 - Tip / pattern note: none
-- Used in missions: 12
-- Exercised here as: key sentence (step 3); sentence review (step 12); dialogue choice making-plans/c4 (accepted)
+- Used in missions: 12, 18
+- Exercised here as: key sentence (step 3); quick-reply response (step 10, round 2, accepted); quick-reply response (step 10, round 5, wrong option); sentence review (step 15); quick-reply response (step 16, round 1, accepted); quick-reply response (step 16, round 3, wrong option); quick-reply response (step 16, round 4, wrong option); dialogue choice making-plans/c4 (accepted)
 
 ### Sentence: `phrase.time.what-time`
 
@@ -8284,7 +8437,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 12
-- Exercised here as: key sentence (step 4); "you said" lead-in of the expected-replies drill (step 7); sentence review (step 12); dialogue choice making-plans/c6 (accepted)
+- Exercised here as: key sentence (step 4); "you said" lead-in of the expected-replies drill (step 7); quick-reply response (step 10, round 2, wrong option); quick-reply response (step 10, round 3, accepted); quick-reply response (step 10, round 5, wrong option); sentence review (step 15); quick-reply response (step 16, round 3, wrong option); dialogue choice making-plans/c6 (accepted)
 
 ### Sentence: `phrase.time.when`
 
@@ -8295,7 +8448,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 12
-- Exercised here as: sentence review (step 12); dialogue choice making-plans/c6 (accepted)
+- Exercised here as: dialogue choice making-plans/c6 (accepted)
 
 ### Sentence: `phrase.time.not-too-late`
 
@@ -8305,8 +8458,8 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: No, no es muy tarde.
 - Role: learner production
 - Tip / pattern note: none
-- Used in missions: 12
-- Exercised here as: sentence review (step 12); dialogue choice making-plans/c8 (accepted); dialogue choice making-plans/c8b (accepted)
+- Used in missions: 12, 18
+- Exercised here as: quick-reply response (step 10, round 1, wrong option); quick-reply response (step 10, round 3, wrong option); quick-reply response (step 10, round 4, accepted); sentence review (step 15); quick-reply response (step 16, round 1, wrong option); quick-reply response (step 16, round 2, accepted); dialogue choice making-plans/c8 (accepted); dialogue choice making-plans/c8b (accepted)
 
 ### Sentence: `phrase.time.what-doing-tomorrow`
 
@@ -8317,7 +8470,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "Swap tomorrow for today / tonight and you have three questions." / "מחליפים tomorrow ב-today / tonight ויש לך שלוש שאלות."
 - Used in missions: 12, 24
-- Exercised here as: key sentence (step 2); sentence review (step 12); dialogue choice making-plans/c10 (accepted)
+- Exercised here as: key sentence (step 2); quick-reply response (step 10, round 4, wrong option); swap-it frame (step 11, round 1); swap-it frame (step 11, round 2); swap-it frame (step 11, round 3); sentence review (step 15); quick-reply response (step 16, round 2, wrong option); dialogue choice making-plans/c10 (accepted)
 
 ### Sentence: `phrase.time.free-tomorrow`
 
@@ -8328,7 +8481,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 12, 18
-- Exercised here as: sentence review (step 12); dialogue choice making-plans/c12 (accepted)
+- Exercised here as: quick-reply response (step 10, round 2, wrong option); quick-reply response (step 10, round 3, wrong option); quick-reply response (step 10, round 5, accepted); sentence review (step 15); quick-reply response (step 16, round 3, accepted); dialogue choice making-plans/c12 (accepted)
 
 ### Sentence: `phrase.time.lets-meet`
 
@@ -8339,7 +8492,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "Let’s meet ___ at ___ — a place and a time, and you are done." / "Let’s meet ___ at ___ — מקום ושעה, וזהו."
 - Used in missions: 12, 18
-- Exercised here as: key sentence (step 5); sentence review (step 12); dialogue choice making-plans/c14 (accepted)
+- Exercised here as: key sentence (step 5); quick-reply response (step 10, round 1, wrong option); quick-reply response (step 10, round 4, wrong option); sentence-builder target (step 12, round 1); sentence review (step 15); quick-reply response (step 16, round 1, wrong option); quick-reply response (step 16, round 4, accepted); dialogue choice making-plans/c14 (accepted)
 
 ### Sentence: `reply.time.what-doing-today`
 
@@ -8350,7 +8503,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 12
-- Exercised here as: sentence review (step 12)
+- Exercised here as: quick-reply prompt (step 10, round 1)
 
 ### Sentence: `reply.time.what-doing-tonight`
 
@@ -8361,7 +8514,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 12
-- Exercised here as: meaning-quiz distractor (step 9); sentence review (step 12)
+- Exercised here as: quick-reply prompt (step 10, round 2)
 
 ### Sentence: `reply.time.want-to-come`
 
@@ -8372,7 +8525,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 12
-- Exercised here as: sentence review (step 12)
+- Exercised here as: quick-reply prompt (step 10, round 3); sentence review (step 15)
 
 ### Sentence: `reply.time.at-eight`
 
@@ -8383,7 +8536,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 12
-- Exercised here as: expected-reply audio (step 7); sentence review (step 12); cold-open wrong option (step 13)
+- Exercised here as: expected-reply audio (step 7); visual-match audio (step 9, round 1); sentence review (step 15)
 
 ### Sentence: `reply.time.too-late`
 
@@ -8394,7 +8547,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 12
-- Exercised here as: expected-reply audio (step 7); meaning-quiz distractor (step 9); sentence review (step 12)
+- Exercised here as: expected-reply audio (step 7); quick-reply prompt (step 10, round 4); sentence review (step 15)
 
 ### Sentence: `reply.time.free-tomorrow-q`
 
@@ -8405,7 +8558,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 12
-- Exercised here as: expected-reply audio (step 7); meaning-quiz audio (step 9); sentence review (step 12); cold-open correct option (step 13)
+- Exercised here as: expected-reply audio (step 7); quick-reply prompt (step 10, round 5); sentence review (step 15)
 
 ### Sentence: `reply.time.leave-early`
 
@@ -8416,7 +8569,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 12
-- Exercised here as: expected-reply audio (step 7); sentence review (step 12)
+- Exercised here as: expected-reply audio (step 7)
 
 ### Sentence: `phrase.recovery.repeat`
 
@@ -8427,7 +8580,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
 - Used in missions: 01, 03, 05, 06, 08, 09, 10, 11, 12, 14, 15, 17, 18, 19, 20, 23, 26, 28, 29
-- Exercised here as: sentence review (step 12); dialogue choice making-plans/c8 (accepted)
+- Exercised here as: sentence review (step 15); dialogue choice making-plans/c8 (accepted)
 
 ## Expected replies / listening items
 
@@ -8488,22 +8641,240 @@ Linked learner sentence: `phrase.time.what-time`. Each reply below is played onc
 
 ## Quizzes
 
-### M12-Q05 — meaning-quiz (step 9, single question)
-
-- Prompt displayed: "What did it mean?" / "מה זה אומר?"
-- Audio played: EN "Are you free tomorrow?" · FR "Tu es libre demain ?" · ES "¿Estás libre mañana?"
-- Meaning of the audio (HE): "אתה פנוי מחר?"
-- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
-- Choices:
-  1. HE "אתה פנוי מחר?" / EN "Are you free tomorrow?" — `reply.time.free-tomorrow-q` — ✅ accepted
-  2. HE "מה אתה עושה הערב?" / EN "What are you doing tonight?" — `reply.time.what-doing-tonight` — ❌ wrong
-  3. HE "זה מאוחר מדי בשבילך?" / EN "Is that too late for you?" — `reply.time.too-late` — ❌ wrong
-- Tests: reply.time.free-tomorrow-q
-- Explanation shown after answering: generic: “Are you free tomorrow?” means “אתה פנוי מחר?”.
+No meaning quiz in this mission.
 
 ## Active practice — Quick Reply · Visual Match · Swap It · Mini Map
 
-None in this mission.
+### M12-Q05 — visual-match (step 9, round 1 of 4)
+
+- Prompt displayed: "What time? Tap the time you hear" / "באיזו שעה? הקש על השעה ששמעת"
+- Audio played: EN "At eight." · FR "À huit heures." · ES "A las ocho."
+- Meaning of the audio (HE): "בשמונה."
+- Buttons show: a 3×3 board of 6 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "2:00" — no sentence id — ❌ wrong
+  2. "5:00" — no sentence id — ❌ wrong
+  3. "7:00" — no sentence id — ❌ wrong
+  4. "8:00" — `reply.time.at-eight` — ✅ accepted
+  5. "10:00" — no sentence id — ❌ wrong
+  6. "3:00" — no sentence id — ❌ wrong
+- Tests: reply.time.at-eight
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M12-Q06 — visual-match (step 9, round 2 of 4)
+
+- Prompt displayed: "What time? Tap the time you hear" / "באיזו שעה? הקש על השעה ששמעת"
+- Audio played: EN "Let's meet here at seven." · FR "On se retrouve ici à sept heures." · ES "Quedamos aquí a las siete."
+- Meaning of the audio (HE): "ניפגש כאן בשבע."
+- Buttons show: a 3×3 board of 6 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "2:00" — no sentence id — ❌ wrong
+  2. "5:00" — no sentence id — ❌ wrong
+  3. "7:00" — no sentence id — ✅ accepted
+  4. "8:00" — no sentence id — ❌ wrong
+  5. "10:00" — no sentence id — ❌ wrong
+  6. "3:00" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M12-Q07 — visual-match (step 9, round 3 of 4)
+
+- Prompt displayed: "What time? Tap the time you hear" / "באיזו שעה? הקש על השעה ששמעת"
+- Audio played: EN "At ten." · FR "À dix heures." · ES "A las diez."
+- Meaning of the audio (HE): "בעשר."
+- Buttons show: a 3×3 board of 6 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "2:00" — no sentence id — ❌ wrong
+  2. "5:00" — no sentence id — ❌ wrong
+  3. "7:00" — no sentence id — ❌ wrong
+  4. "8:00" — no sentence id — ❌ wrong
+  5. "10:00" — no sentence id — ✅ accepted
+  6. "3:00" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M12-Q08 — visual-match (step 9, round 4 of 4)
+
+- Prompt displayed: "What time? Tap the time you hear" / "באיזו שעה? הקש על השעה ששמעת"
+- Audio played: EN "At five." · FR "À cinq heures." · ES "A las cinco."
+- Meaning of the audio (HE): "בחמש."
+- Buttons show: a 3×3 board of 6 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "2:00" — no sentence id — ❌ wrong
+  2. "5:00" — no sentence id — ✅ accepted
+  3. "7:00" — no sentence id — ❌ wrong
+  4. "8:00" — no sentence id — ❌ wrong
+  5. "10:00" — no sentence id — ❌ wrong
+  6. "3:00" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M12-Q09 — quick-reply (step 10, round 1 of 5)
+
+- Prompt displayed: "A friend is making plans — what do you say?" / "חבר קובע איתך — מה עונים?"
+- Audio played: EN "What are you doing today?" · FR "Tu fais quoi aujourd’hui ?" · ES "¿Qué haces hoy?"
+- Meaning of the audio (HE): "מה אתה עושה היום?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Nothing this morning. Maybe later." · FR "Rien ce matin. Peut-être plus tard." · ES "Nada esta mañana. Quizás más tarde." · (HE gloss "אולי אחר כך.") — `phrase.time.maybe-later` — ✅ accepted
+  2. EN "No, that's not too late." · FR "Non, ce n’est pas trop tard." · ES "No, no es muy tarde." · (HE gloss "לא, זה לא מאוחר מדי.") — `phrase.time.not-too-late` — ❌ wrong
+  3. EN "Let's meet here at seven." · FR "On se retrouve ici à sept heures." · ES "Quedamos aquí a las siete." · (HE gloss "ניפגש כאן בשבע.") — `phrase.time.lets-meet` — ❌ wrong
+- Tests: phrase.time.maybe-later
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M12-Q10 — quick-reply (step 10, round 2 of 5)
+
+- Prompt displayed: "A friend is making plans — what do you say?" / "חבר קובע איתך — מה עונים?"
+- Audio played: EN "What are you doing tonight?" · FR "Tu fais quoi ce soir ?" · ES "¿Qué haces esta noche?"
+- Meaning of the audio (HE): "מה אתה עושה הערב?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "I'm free tonight." · FR "Je suis libre ce soir." · ES "Estoy libre esta noche." · (HE gloss "אני פנוי הערב.") — `phrase.time.free-tonight` — ✅ accepted
+  2. EN "Yes, I'm free tomorrow." · FR "Oui, je suis libre demain." · ES "Sí, estoy libre mañana." · (HE gloss "כן, אני פנוי מחר.") — `phrase.time.free-tomorrow` — ❌ wrong
+  3. EN "What time?" · FR "À quelle heure ?" · ES "¿A qué hora?" · (HE gloss "באיזו שעה?") — `phrase.time.what-time` — ❌ wrong
+- Tests: phrase.time.free-tonight
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M12-Q11 — quick-reply (step 10, round 3 of 5)
+
+- Prompt displayed: "A friend is making plans — what do you say?" / "חבר קובע איתך — מה עונים?"
+- Audio played: EN "Do you want to come?" · FR "Tu veux venir ?" · ES "¿Quieres venir?"
+- Meaning of the audio (HE): "רוצה לבוא?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Yes! What time?" · FR "Oui ! À quelle heure ?" · ES "¡Sí! ¿A qué hora?" · (HE gloss "באיזו שעה?") — `phrase.time.what-time` — ✅ accepted
+  2. EN "No, that's not too late." · FR "Non, ce n’est pas trop tard." · ES "No, no es muy tarde." · (HE gloss "לא, זה לא מאוחר מדי.") — `phrase.time.not-too-late` — ❌ wrong
+  3. EN "Yes, I'm free tomorrow." · FR "Oui, je suis libre demain." · ES "Sí, estoy libre mañana." · (HE gloss "כן, אני פנוי מחר.") — `phrase.time.free-tomorrow` — ❌ wrong
+- Tests: phrase.time.what-time
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M12-Q12 — quick-reply (step 10, round 4 of 5)
+
+- Prompt displayed: "A friend is making plans — what do you say?" / "חבר קובע איתך — מה עונים?"
+- Audio played: EN "Is that too late for you?" · FR "C’est trop tard pour toi ?" · ES "¿Es muy tarde para ti?"
+- Meaning of the audio (HE): "זה מאוחר מדי בשבילך?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "No, that's not too late." · FR "Non, ce n’est pas trop tard." · ES "No, no es muy tarde." · (HE gloss "לא, זה לא מאוחר מדי.") — `phrase.time.not-too-late` — ✅ accepted
+  2. EN "Let's meet here at seven." · FR "On se retrouve ici à sept heures." · ES "Quedamos aquí a las siete." · (HE gloss "ניפגש כאן בשבע.") — `phrase.time.lets-meet` — ❌ wrong
+  3. EN "What are you doing tomorrow?" · FR "Tu fais quoi demain ?" · ES "¿Qué haces mañana?" · (HE gloss "מה אתה עושה מחר?") — `phrase.time.what-doing-tomorrow` — ❌ wrong
+- Tests: phrase.time.not-too-late
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M12-Q13 — quick-reply (step 10, round 5 of 5)
+
+- Prompt displayed: "A friend is making plans — what do you say?" / "חבר קובע איתך — מה עונים?"
+- Audio played: EN "Are you free tomorrow?" · FR "Tu es libre demain ?" · ES "¿Estás libre mañana?"
+- Meaning of the audio (HE): "אתה פנוי מחר?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Yes, I'm free tomorrow." · FR "Oui, je suis libre demain." · ES "Sí, estoy libre mañana." · (HE gloss "כן, אני פנוי מחר.") — `phrase.time.free-tomorrow` — ✅ accepted
+  2. EN "I'm free tonight." · FR "Je suis libre ce soir." · ES "Estoy libre esta noche." · (HE gloss "אני פנוי הערב.") — `phrase.time.free-tonight` — ❌ wrong
+  3. EN "What time?" · FR "À quelle heure ?" · ES "¿A qué hora?" · (HE gloss "באיזו שעה?") — `phrase.time.what-time` — ❌ wrong
+- Tests: phrase.time.free-tomorrow
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M12-Q14 — swap-it (step 11, round 1 of 3)
+
+- Prompt displayed: "Which day are you asking about?" / "על מתי שואלים?" — cue 🗓️ "You want to know their plans for today" / "אתה רוצה לדעת מה הוא עושה היום" — frame EN "What are you doing ___?" · FR "Tu fais quoi ___ ?" · ES "¿Qué haces ___?"
+- Audio played: EN "(nothing before the tap; the completed sentence is spoken after it)" · FR "(same)" · ES "(same)"
+- Meaning of the audio (HE): —
+- Buttons show: the SLOT VALUES in the target language (shown here as "value → completed sentence"); order shuffled; a "wrong" value still produces and speaks a real sentence, with its translation
+- Choices:
+  1. EN "today → What are you doing today?" · FR "aujourd’hui → Tu fais quoi aujourd’hui ?" · ES "hoy → ¿Qué haces hoy?" · (HE gloss "מה אתה עושה היום?") — `phrase.time.what-doing-tomorrow` — ✅ accepted
+  2. EN "tonight → What are you doing tonight?" · FR "ce soir → Tu fais quoi ce soir ?" · ES "esta noche → ¿Qué haces esta noche?" · (HE gloss "מה אתה עושה הערב?") — no sentence id — ❌ wrong
+  3. EN "tomorrow → What are you doing tomorrow?" · FR "demain → Tu fais quoi demain ?" · ES "mañana → ¿Qué haces mañana?" · (HE gloss "מה אתה עושה מחר?") — no sentence id — ❌ wrong
+- Tests: phrase.time.what-doing-tomorrow
+- Explanation shown after answering: after the tap: the completed sentence, spoken, with its translation
+
+### M12-Q15 — swap-it (step 11, round 2 of 3)
+
+- Prompt displayed: "Which day are you asking about?" / "על מתי שואלים?" — cue 🗓️ "You want to know their plans for tonight" / "אתה רוצה לדעת מה הוא עושה הערב" — frame EN "What are you doing ___?" · FR "Tu fais quoi ___ ?" · ES "¿Qué haces ___?"
+- Audio played: EN "(nothing before the tap; the completed sentence is spoken after it)" · FR "(same)" · ES "(same)"
+- Meaning of the audio (HE): —
+- Buttons show: the SLOT VALUES in the target language (shown here as "value → completed sentence"); order shuffled; a "wrong" value still produces and speaks a real sentence, with its translation
+- Choices:
+  1. EN "today → What are you doing today?" · FR "aujourd’hui → Tu fais quoi aujourd’hui ?" · ES "hoy → ¿Qué haces hoy?" · (HE gloss "מה אתה עושה היום?") — no sentence id — ❌ wrong
+  2. EN "tonight → What are you doing tonight?" · FR "ce soir → Tu fais quoi ce soir ?" · ES "esta noche → ¿Qué haces esta noche?" · (HE gloss "מה אתה עושה הערב?") — `phrase.time.what-doing-tomorrow` — ✅ accepted
+  3. EN "tomorrow → What are you doing tomorrow?" · FR "demain → Tu fais quoi demain ?" · ES "mañana → ¿Qué haces mañana?" · (HE gloss "מה אתה עושה מחר?") — no sentence id — ❌ wrong
+- Tests: phrase.time.what-doing-tomorrow
+- Explanation shown after answering: after the tap: the completed sentence, spoken, with its translation
+
+### M12-Q16 — swap-it (step 11, round 3 of 3)
+
+- Prompt displayed: "Which day are you asking about?" / "על מתי שואלים?" — cue 🗓️ "You want to know their plans for tomorrow" / "אתה רוצה לדעת מה הוא עושה מחר" — frame EN "What are you doing ___?" · FR "Tu fais quoi ___ ?" · ES "¿Qué haces ___?"
+- Audio played: EN "(nothing before the tap; the completed sentence is spoken after it)" · FR "(same)" · ES "(same)"
+- Meaning of the audio (HE): —
+- Buttons show: the SLOT VALUES in the target language (shown here as "value → completed sentence"); order shuffled; a "wrong" value still produces and speaks a real sentence, with its translation
+- Choices:
+  1. EN "today → What are you doing today?" · FR "aujourd’hui → Tu fais quoi aujourd’hui ?" · ES "hoy → ¿Qué haces hoy?" · (HE gloss "מה אתה עושה היום?") — no sentence id — ❌ wrong
+  2. EN "tonight → What are you doing tonight?" · FR "ce soir → Tu fais quoi ce soir ?" · ES "esta noche → ¿Qué haces esta noche?" · (HE gloss "מה אתה עושה הערב?") — no sentence id — ❌ wrong
+  3. EN "tomorrow → What are you doing tomorrow?" · FR "demain → Tu fais quoi demain ?" · ES "mañana → ¿Qué haces mañana?" · (HE gloss "מה אתה עושה מחר?") — `phrase.time.what-doing-tomorrow` — ✅ accepted
+- Tests: phrase.time.what-doing-tomorrow
+- Explanation shown after answering: after the tap: the completed sentence, spoken, with its translation
+
+### M12-Q17 — sentence-builder (step 12, round 1 of 1)
+
+- Prompt displayed: "Build the sentence" / "בנה את המשפט" — cue shown: the sentence's MEANING in the app language ("ניפגש כאן בשבע.")
+- Audio played: EN "(nothing before Check; the built sentence is spoken once it is right)" · FR "(same)" · ES "(same)"
+- Meaning of the audio (HE): —
+- Buttons show: the authored CHUNKS of the sentence as tiles (listed here in the correct order, separated by "|"), shuffled; each language has its own chunks; Check unlocks when every tile is placed
+- Choices:
+  1. EN "Let's meet  |  here  |  at seven." · FR "On se retrouve  |  ici  |  à sept heures." · ES "Quedamos  |  aquí  |  a las siete." · (HE gloss "ניפגש כאן בשבע.") — `phrase.time.lets-meet` — ✅ accepted
+- Tests: phrase.time.lets-meet
+- Explanation shown after answering: right: the sentence is spoken and its translation shown. Wrong: "not yet" — the tiles stay, the answer is NOT shown; after one miss a hint marks the start; after two misses the learner may reveal it
+
+### M12-Q26 — quick-reply (step 16, round 1 of 4 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "And what are you doing tonight?" · FR "Et tu fais quoi ce soir ?" · ES "¿Y qué haces esta noche?"
+- Meaning of the audio (HE): "ומה אתה עושה הערב?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "I'm free tonight." · FR "Je suis libre ce soir." · ES "Estoy libre esta noche." · (HE gloss "אני פנוי הערב.") — `phrase.time.free-tonight` — ✅ accepted
+  2. EN "No, that's not too late." · FR "Non, ce n’est pas trop tard." · ES "No, no es muy tarde." · (HE gloss "לא, זה לא מאוחר מדי.") — `phrase.time.not-too-late` — ❌ wrong
+  3. EN "Let's meet here at seven." · FR "On se retrouve ici à sept heures." · ES "Quedamos aquí a las siete." · (HE gloss "ניפגש כאן בשבע.") — `phrase.time.lets-meet` — ❌ wrong
+- Tests: phrase.time.free-tonight
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M12-Q27 — quick-reply (step 16, round 2 of 4 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "At eight. Is that too late for you?" · FR "À huit heures. C’est trop tard pour toi ?" · ES "A las ocho. ¿Es muy tarde para ti?"
+- Meaning of the audio (HE): "בשמונה. זה מאוחר מדי בשבילך?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "No, that's not too late." · FR "Non, ce n’est pas trop tard." · ES "No, no es muy tarde." · (HE gloss "לא, זה לא מאוחר מדי.") — `phrase.time.not-too-late` — ✅ accepted
+  2. EN "Maybe later." · FR "Peut-être plus tard." · ES "Quizás más tarde." · (HE gloss "אולי אחר כך.") — `phrase.time.maybe-later` — ❌ wrong
+  3. EN "What are you doing tomorrow?" · FR "Tu fais quoi demain ?" · ES "¿Qué haces mañana?" · (HE gloss "מה אתה עושה מחר?") — `phrase.time.what-doing-tomorrow` — ❌ wrong
+- Tests: phrase.time.not-too-late
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M12-Q28 — quick-reply (step 16, round 3 of 4 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "Tomorrow morning I'm going to the beach. Are you free tomorrow?" · FR "Demain matin, je vais à la plage. Tu es libre demain ?" · ES "Mañana por la mañana voy a la playa. ¿Estás libre mañana?"
+- Meaning of the audio (HE): "מחר בבוקר אני הולך לים. אתה פנוי מחר?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Yes, I'm free tomorrow." · FR "Oui, je suis libre demain." · ES "Sí, estoy libre mañana." · (HE gloss "כן, אני פנוי מחר.") — `phrase.time.free-tomorrow` — ✅ accepted
+  2. EN "I'm free tonight." · FR "Je suis libre ce soir." · ES "Estoy libre esta noche." · (HE gloss "אני פנוי הערב.") — `phrase.time.free-tonight` — ❌ wrong
+  3. EN "What time?" · FR "À quelle heure ?" · ES "¿A qué hora?" · (HE gloss "באיזו שעה?") — `phrase.time.what-time` — ❌ wrong
+- Tests: phrase.time.free-tomorrow
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M12-Q29 — quick-reply (step 16, round 4 of 4 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "Then come with us! But we leave early." · FR "Alors viens avec nous ! Mais on part tôt." · ES "¡Entonces ven con nosotros! Pero salimos temprano."
+- Meaning of the audio (HE): "אז בוא איתנו! אבל אנחנו יוצאים מוקדם."
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "No problem. Let's meet here at seven." · FR "Pas de problème. On se retrouve ici à sept heures." · ES "No hay problema. Quedamos aquí a las siete." · (HE gloss "ניפגש כאן בשבע.") — `phrase.time.lets-meet` — ✅ accepted
+  2. EN "I'm free tonight." · FR "Je suis libre ce soir." · ES "Estoy libre esta noche." · (HE gloss "אני פנוי הערב.") — `phrase.time.free-tonight` — ❌ wrong
+  3. EN "Maybe later." · FR "Peut-être plus tard." · ES "Quizás más tarde." · (HE gloss "אולי אחר כך.") — `phrase.time.maybe-later` — ❌ wrong
+- Tests: phrase.time.lets-meet
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
 ## Dialogue — full tree
 
@@ -8650,7 +9021,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 
 ## Learner choice screens
 
-### M12-Q06 — dialogue-choice (step 10, scene "making-plans" · node c2)
+### M12-Q18 — dialogue-choice (step 13, scene "making-plans" · node c2)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Good morning! What are you doing today?" · FR "Bonjour ! Tu fais quoi aujourd’hui ?" · ES "¡Buenos días! ¿Qué haces hoy?"
@@ -8661,7 +9032,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.time.maybe-later
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M12-Q07 — dialogue-choice (step 10, scene "making-plans" · node c4)
+### M12-Q19 — dialogue-choice (step 13, scene "making-plans" · node c4)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "And what are you doing tonight?" · FR "Et tu fais quoi ce soir ?" · ES "¿Y qué haces esta noche?"
@@ -8672,7 +9043,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.time.free-tonight
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M12-Q08 — dialogue-choice (step 10, scene "making-plans" · node c6)
+### M12-Q20 — dialogue-choice (step 13, scene "making-plans" · node c6)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "We're going to eat in the centre. Do you want to come?" · FR "On va manger dans le centre. Tu veux venir ?" · ES "Vamos a comer en el centro. ¿Quieres venir?"
@@ -8684,7 +9055,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.time.what-time, phrase.time.when
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M12-Q09 — dialogue-choice (step 10, scene "making-plans" · node c8)
+### M12-Q21 — dialogue-choice (step 13, scene "making-plans" · node c8)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "At eight. Is that too late for you?" · FR "À huit heures. C’est trop tard pour toi ?" · ES "A las ocho. ¿Es muy tarde para ti?"
@@ -8696,7 +9067,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.time.not-too-late, phrase.recovery.repeat
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M12-Q10 — dialogue-choice (step 10, scene "making-plans" · node c8b)
+### M12-Q22 — dialogue-choice (step 13, scene "making-plans" · node c8b)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "At eight. Too late?" · FR "À huit heures. Trop tard ?" · ES "A las ocho. ¿Muy tarde?"
@@ -8707,7 +9078,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.time.not-too-late
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M12-Q11 — dialogue-choice (step 10, scene "making-plans" · node c10)
+### M12-Q23 — dialogue-choice (step 13, scene "making-plans" · node c10)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Great. It's very good there." · FR "Super. C’est très bon là-bas." · ES "Genial. Allí se come muy bien."
@@ -8718,7 +9089,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.time.what-doing-tomorrow
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M12-Q12 — dialogue-choice (step 10, scene "making-plans" · node c12)
+### M12-Q24 — dialogue-choice (step 13, scene "making-plans" · node c12)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Tomorrow morning I'm going to the beach. Are you free tomorrow?" · FR "Demain matin, je vais à la plage. Tu es libre demain ?" · ES "Mañana por la mañana voy a la playa. ¿Estás libre mañana?"
@@ -8729,7 +9100,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.time.free-tomorrow
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M12-Q13 — dialogue-choice (step 10, scene "making-plans" · node c14)
+### M12-Q25 — dialogue-choice (step 13, scene "making-plans" · node c14)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Then come with us! But we leave early." · FR "Alors viens avec nous ! Mais on part tôt." · ES "¡Entonces ven con nosotros! Pero salimos temprano."
@@ -8755,44 +9126,24 @@ None — no choice in this mission is marked wrong.
 
 ## Sentence review
 
-Step 12. 16 sentences, in this fixed order. Each is played automatically (TTS), shown with its translation and tip; buttons: 🔊 "Hear again" / "לשמוע שוב" and Next. No speaking prompt, no grading, no scoring; nothing is recorded.
+Step 15. 12 sentences, in this fixed order. Each is played automatically (TTS), shown with its translation and tip; buttons: 🔊 "Hear again" / "לשמוע שוב" and Next. No speaking prompt, no grading, no scoring; nothing is recorded.
 
-1. `phrase.time.maybe-later` — Maybe later. — אולי אחר כך.
+1. `phrase.time.what-doing-tomorrow` — What are you doing tomorrow? — מה אתה עושה מחר?
 2. `phrase.time.free-tonight` — I'm free tonight. — אני פנוי הערב.
-3. `phrase.time.what-time` — What time? — באיזו שעה?
-4. `phrase.time.when` — When? — מתי?
+3. `phrase.time.free-tomorrow` — Yes, I'm free tomorrow. — כן, אני פנוי מחר.
+4. `phrase.time.what-time` — What time? — באיזו שעה?
 5. `phrase.time.not-too-late` — No, that's not too late. — לא, זה לא מאוחר מדי.
-6. `phrase.time.what-doing-tomorrow` — What are you doing tomorrow? — מה אתה עושה מחר?
-7. `phrase.time.free-tomorrow` — Yes, I'm free tomorrow. — כן, אני פנוי מחר.
-8. `phrase.time.lets-meet` — Let's meet here at seven. — ניפגש כאן בשבע.
-9. `reply.time.what-doing-today` — What are you doing today? — מה אתה עושה היום?
-10. `reply.time.what-doing-tonight` — What are you doing tonight? — מה אתה עושה הערב?
+6. `phrase.time.lets-meet` — Let's meet here at seven. — ניפגש כאן בשבע.
+7. `phrase.time.maybe-later` — Maybe later. — אולי אחר כך.
+8. `reply.time.at-eight` — At eight. — בשמונה.
+9. `reply.time.too-late` — Is that too late for you? — זה מאוחר מדי בשבילך?
+10. `reply.time.free-tomorrow-q` — Are you free tomorrow? — אתה פנוי מחר?
 11. `reply.time.want-to-come` — Do you want to come? — רוצה לבוא?
-12. `reply.time.at-eight` — At eight. — בשמונה.
-13. `reply.time.too-late` — Is that too late for you? — זה מאוחר מדי בשבילך?
-14. `reply.time.free-tomorrow-q` — Are you free tomorrow? — אתה פנוי מחר?
-15. `reply.time.leave-early` — We leave early. — אנחנו יוצאים מוקדם.
-16. `phrase.recovery.repeat` — Can you repeat that? — אפשר לחזור על זה?
+12. `phrase.recovery.repeat` — Can you repeat that? — אפשר לחזור על זה?
 
 ## Cold open / ambush
 
-### M12-Q14 — cold-open (step 13, single prompt · mode: not set (original behaviour))
-
-- Prompt displayed: "Heads up: a fast one is coming. Use a tool." / "שים לב: מגיע משפט מהיר. השתמש בכלי."
-- Audio played: EN "Hey quick question are you free tomorrow or do you already have plans?" · FR "Dis, petite question : tu es libre demain ou tu as déjà quelque chose de prévu ?" · ES "Oye, una pregunta rápida: ¿estás libre mañana o ya tienes planes?"
-- Meaning of the audio (HE): "היי, שאלה קצרה — אתה פנוי מחר או שכבר יש לך תוכניות?"
-- Buttons show: TARGET-LANGUAGE text of the two sentences, each prefixed with 🛟; order shuffled
-- Choices:
-  1. EN "Are you free tomorrow?" · FR "Tu es libre demain ?" · ES "¿Estás libre mañana?" · (HE gloss "אתה פנוי מחר?") — `reply.time.free-tomorrow-q` — ✅ accepted
-  2. EN "At eight." · FR "À huit heures." · ES "A las ocho." · (HE gloss "בשמונה.") — `reply.time.at-eight` — ❌ wrong
-- Tests: reply.time.free-tomorrow-q
-- Explanation shown after answering: generic: “Are you free tomorrow?” means “אתה פנוי מחר?”.
-
-- Flow: screen shows ⚡ and "Heads up: a fast one is coming. Use a tool." / "שים לב: מגיע משפט מהיר. השתמש בכלי." with one button 👂 "I'm ready" / "אני מוכן"; on tap the line is spoken at TTS rate 1.12 and printed small; two shuffled buttons appear; 🔊 "Hear again" / "לשמוע שוב" replays at 0.85.
-- Success criterion: picking the accepted sentence. A wrong pick shows the feedback card (what you heard + translation, your answer, the sentence that fit) with Try again / Continue; Continue proceeds either way. Response time is recorded.
-- Recovery options offered: none
-- Receipt shown next: "You were asked, fast, whether you are free tomorrow — and you got it." / "שאלו אותך מהר אם אתה פנוי מחר — והבנת."
-- Potential new-language exposure: YES — English words not met in any sentence or dialogue line of Missions 01–12: hey, quick, question, plans
+No cold open in this mission.
 
 ## Swap-in / variable content
 
@@ -8808,8 +9159,8 @@ Every learner sentence of this mission is a line in a scene.
 ## Receipts (proof cards)
 
 - Step 8: "You recognize a time, "early" and "late" — even when it is said fast." / "אתה מזהה שעה, "מוקדם" ו"מאוחר" — גם כשזה נאמר מהר."
-- Step 11: "You planned an evening and a morning: when, what time, and where to meet." / "קבעת ערב ובוקר: מתי, באיזו שעה, ואיפה נפגשים."
-- Step 14: "You were asked, fast, whether you are free tomorrow — and you got it." / "שאלו אותך מהר אם אתה פנוי מחר — והבנת."
+- Step 14: "You planned an evening and a morning: when, what time, and where to meet." / "קבעת ערב ובוקר: מתי, באיזו שעה, ואיפה נפגשים."
+- Step 17: "Tonight, tomorrow, what time and where — you settled it all at the pace of a real chat." / "הערב, מחר, באיזו שעה ואיפה — קבעת הכל בקצב של שיחה אמיתית."
 
 ## Audit Metadata — DO NOT FIX YET
 
@@ -8818,28 +9169,25 @@ Every learner sentence of this mission is a line in a scene.
 - Toolkit phrases bundled: 1
 - Key-sentence steps: 5
 - Expected-reply/listening items: 4
-- Questions/quizzes (meaning quiz): 1
-- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 0
-- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 2
+- Questions/quizzes (meaning quiz): 0
+- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 17
+- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 15
 - One-button dialogue screens: 6
 - Learner sentences never actively retrieved: 0
 - Dialogue learner choices (screens): 8
 - Wrong-answer branches: 0
-- Cold-open prompts: 1
+- Cold-open prompts: 0
 - Recovery opportunities: 1
 - Vocabulary pre-items: 0
 - Swap variants (extra accepted lines): 1
-- Sentences in review: 16
-- Total interactive questions: 14 (answer choices: 27)
-- Approximate total learner interactions: 35 (questions + key sentences + review cards + word-intro screen)
+- Sentences in review: 12
+- Total interactive questions: 29 (answer choices: 83)
+- Approximate total learner interactions: 46 (questions + key sentences + review cards + word-intro screen)
 
-### AUTO-FLAG — requires human review (5)
+### AUTO-FLAG — requires human review (2)
 
-- AUTO-FLAG — Same prompt tested repeatedly: “Are you free tomorrow?” is the audio of M12-Q04 and M12-Q05.
 - AUTO-FLAG — 8 of 8 choice screens have NO wrong option (every button is accepted): making-plans/c2, making-plans/c4, making-plans/c6, making-plans/c8, making-plans/c8b, making-plans/c10, making-plans/c12, making-plans/c14.
 - AUTO-FLAG — 6 choice screens offer exactly ONE button (no decision): making-plans/c2, making-plans/c4, making-plans/c8b, making-plans/c10, making-plans/c12, making-plans/c14.
-- AUTO-FLAG — M12-Q14: cold-open line contains English words not met in any sentence or dialogue line up to this mission: hey, quick, question, plans.
-- AUTO-FLAG — M12-Q14: the screen says "Heads up: a fast one is coming. Use a tool." / "שים לב: מגיע משפט מהיר. השתמש בכלי." and marks both buttons with 🛟, but neither option is a conversation-help tool.
 
 ---
 
@@ -8889,13 +9237,15 @@ Intro screen (first Practice step; identical in the English, French and Spanish 
 7. `tool` — key sentence (listen → reveal → say aloud) — `phrase.home.beautiful-home` “Your home is beautiful.” · label "A compliment" / "מחמאה" (6/6)
 8. `replies` — expected replies (listening drill) — after `phrase.home.beautiful-home`: 4 replies
 9. `receipt` — receipt (proof card) — "You understand when someone invites you in, to sit, and to eat." / "אתה מבין כשמזמינים אותך להיכנס, לשבת ולאכול."
-10. `quiz` — meaning quiz (listening) — hears `reply.home.are-you-hungry`
-11. `dialogue` — dialogue (choose your line) — scene `at-a-friends-home`
-12. `receipt` — receipt (proof card) — "You talked about home, family and what you are about to do — without a single tourist word." / "דיברת על בית, משפחה ועל מה שאתה עומד לעשות — בלי מילה אחת על תיירות."
-13. `swipe` — sentence review — 14 sentences
-14. `ambush` — cold open (fast line) — mode not set · correct `reply.home.sit-living-room`, wrong `reply.home.are-you-hungry`
-15. `receipt` — receipt (proof card) — "Fast and warm — and you understood you were being invited to sit." / "מהר וחם — והבנת שמזמינים אותך לשבת."
-16. `summary` — victory screen
+10. `swap` — swap it (one frame, several endings) — 3 round(s)
+11. `sentenceBuilder` — sentence builder (put the chunks in order) — 2 round(s)
+12. `quickReply` — quick reply (hear → pick your response) — 5 round(s)
+13. `dialogue` — dialogue (choose your line) — scene `at-a-friends-home`
+14. `receipt` — receipt (proof card) — "You talked about home, family and what you are about to do — without a single tourist word." / "דיברת על בית, משפחה ועל מה שאתה עומד לעשות — בלי מילה אחת על תיירות."
+15. `swipe` — sentence review — 12 sentences
+16. `quickReply` — quick reply (hear → pick your response) — 5 round(s) · speed challenge
+17. `receipt` — receipt (proof card) — "A whole visit to a friend's home, at normal pace: you came in, talked about family, said what you are doing and how you feel." / "ביקור שלם אצל חבר, בקצב רגיל: נכנסת, דיברת על המשפחה, אמרת מה אתה עושה ואיך אתה מרגיש."
+18. `summary` — victory screen
 
 Step sequence identical in EN / FR / ES: yes.
 
@@ -8916,7 +9266,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 13
-- Exercised here as: key sentence (step 7); "you said" lead-in of the expected-replies drill (step 8); sentence review (step 13); dialogue choice at-a-friends-home/c2 (accepted)
+- Exercised here as: key sentence (step 7); "you said" lead-in of the expected-replies drill (step 8); quick-reply response (step 12, round 1, accepted); quick-reply response (step 12, round 4, wrong option); sentence review (step 15); quick-reply response (step 16, round 1, accepted); quick-reply response (step 16, round 3, wrong option); quick-reply response (step 16, round 5, wrong option); dialogue choice at-a-friends-home/c2 (accepted)
 
 ### Sentence: `phrase.home.is-this-new`
 
@@ -8927,7 +9277,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "Is this ___ new? — swap the object." / "Is this ___ new? — מחליפים את החפץ."
 - Used in missions: 13
-- Exercised here as: sentence review (step 13); dialogue choice at-a-friends-home/c4 (accepted)
+- Exercised here as: quick-reply response (step 12, round 2, wrong option); quick-reply response (step 12, round 4, wrong option); quick-reply response (step 12, round 5, wrong option); quick-reply response (step 16, round 4, wrong option); dialogue choice at-a-friends-home/c4 (accepted)
 
 ### Sentence: `phrase.home.where-family`
 
@@ -8937,8 +9287,8 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Dónde está tu familia?
 - Role: learner production
 - Tip / pattern note: "Where is ___? — the same question from Directions, now about people." / "Where is ___? — אותה שאלה מהכיוונים, עכשיו על אנשים."
-- Used in missions: 13
-- Exercised here as: key sentence (step 6); sentence review (step 13); dialogue choice at-a-friends-home/c6 (accepted)
+- Used in missions: 13, 18
+- Exercised here as: key sentence (step 6); quick-reply response (step 12, round 2, accepted); quick-reply response (step 12, round 3, wrong option); sentence review (step 15); quick-reply response (step 16, round 2, wrong option); quick-reply response (step 16, round 4, wrong option); quick-reply response (step 16, round 5, wrong option); dialogue choice at-a-friends-home/c6 (accepted)
 
 ### Sentence: `phrase.home.live-with-family`
 
@@ -8949,7 +9299,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 13
-- Exercised here as: sentence review (step 13); dialogue choice at-a-friends-home/c8 (accepted); dialogue choice at-a-friends-home/c8b (accepted)
+- Exercised here as: sentence-builder target (step 11, round 2); quick-reply response (step 12, round 2, wrong option); quick-reply response (step 12, round 3, accepted); quick-reply response (step 12, round 5, wrong option); sentence review (step 15); quick-reply response (step 16, round 2, accepted); quick-reply response (step 16, round 3, wrong option); dialogue choice at-a-friends-home/c8 (accepted); dialogue choice at-a-friends-home/c8b (accepted)
 
 ### Sentence: `phrase.home.eat-at-grandmothers`
 
@@ -8960,7 +9310,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "I’m going to ___ — the frame for anything you are about to do." / "I’m going to ___ — התבנית לכל מה שאתה עומד לעשות."
 - Used in missions: 13
-- Exercised here as: key sentence (step 2); sentence review (step 13); dialogue choice at-a-friends-home/c10 (accepted)
+- Exercised here as: key sentence (step 2); swap-it frame (step 10, round 3); sentence-builder target (step 11, round 1); quick-reply response (step 12, round 4, accepted); sentence review (step 15); quick-reply response (step 16, round 3, accepted); dialogue choice at-a-friends-home/c10 (accepted)
 
 ### Sentence: `phrase.home.im-tired`
 
@@ -8971,7 +9321,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 13
-- Exercised here as: key sentence (step 4); sentence review (step 13); dialogue choice at-a-friends-home/c12 (accepted)
+- Exercised here as: key sentence (step 4); quick-reply response (step 12, round 1, wrong option); quick-reply response (step 12, round 5, accepted); sentence review (step 15); quick-reply response (step 16, round 1, wrong option); quick-reply response (step 16, round 4, accepted); dialogue choice at-a-friends-home/c12 (accepted)
 
 ### Sentence: `phrase.home.going-home`
 
@@ -8982,7 +9332,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 13, 18
-- Exercised here as: key sentence (step 3); sentence review (step 13); dialogue choice at-a-friends-home/c14 (accepted)
+- Exercised here as: key sentence (step 3); swap-it frame (step 10, round 1); quick-reply response (step 12, round 1, wrong option); sentence review (step 15); quick-reply response (step 16, round 1, wrong option); quick-reply response (step 16, round 5, accepted); dialogue choice at-a-friends-home/c14 (accepted)
 
 ### Sentence: `phrase.home.going-to-sleep`
 
@@ -8993,7 +9343,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 13
-- Exercised here as: key sentence (step 5); sentence review (step 13); dialogue choice at-a-friends-home/c16 (accepted)
+- Exercised here as: key sentence (step 5); swap-it frame (step 10, round 2); quick-reply response (step 12, round 3, wrong option); sentence review (step 15); quick-reply response (step 16, round 2, wrong option); dialogue choice at-a-friends-home/c16 (accepted)
 
 ### Sentence: `reply.home.come-in`
 
@@ -9004,7 +9354,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 13
-- Exercised here as: expected-reply audio (step 8); sentence review (step 13)
+- Exercised here as: expected-reply audio (step 8); quick-reply prompt (step 12, round 1); sentence review (step 15)
 
 ### Sentence: `reply.home.sit-living-room`
 
@@ -9015,7 +9365,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 13
-- Exercised here as: expected-reply audio (step 8); meaning-quiz distractor (step 10); sentence review (step 13); cold-open correct option (step 14)
+- Exercised here as: expected-reply audio (step 8)
 
 ### Sentence: `reply.home.live-with-family-q`
 
@@ -9026,7 +9376,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 13
-- Exercised here as: expected-reply audio (step 8); sentence review (step 13)
+- Exercised here as: expected-reply audio (step 8); quick-reply prompt (step 12, round 3); sentence review (step 15)
 
 ### Sentence: `reply.home.are-you-hungry`
 
@@ -9037,7 +9387,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 13
-- Exercised here as: expected-reply audio (step 8); meaning-quiz audio (step 10); sentence review (step 13); cold-open wrong option (step 14)
+- Exercised here as: expected-reply audio (step 8); sentence review (step 15)
 
 ### Sentence: `reply.home.eat-with-us`
 
@@ -9048,7 +9398,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 13
-- Exercised here as: meaning-quiz distractor (step 10); sentence review (step 13)
+- Exercised here as: quick-reply prompt (step 12, round 4); sentence review (step 15)
 
 ### Sentence: `phrase.recovery.dont-understand`
 
@@ -9059,7 +9409,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
 - Used in missions: 13, 14
-- Exercised here as: sentence review (step 13); dialogue choice at-a-friends-home/c8 (accepted)
+- Exercised here as: sentence review (step 15); dialogue choice at-a-friends-home/c8 (accepted)
 
 ## Expected replies / listening items
 
@@ -9120,22 +9470,200 @@ Linked learner sentence: `phrase.home.beautiful-home`. Each reply below is playe
 
 ## Quizzes
 
-### M13-Q05 — meaning-quiz (step 10, single question)
-
-- Prompt displayed: "What did it mean?" / "מה זה אומר?"
-- Audio played: EN "Are you hungry?" · FR "Tu as faim ?" · ES "¿Tienes hambre?"
-- Meaning of the audio (HE): "אתה רעב?"
-- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
-- Choices:
-  1. HE "אתה רעב?" / EN "Are you hungry?" — `reply.home.are-you-hungry` — ✅ accepted
-  2. HE "בוא נשב בסלון." / EN "Let's sit in the living room." — `reply.home.sit-living-room` — ❌ wrong
-  3. HE "רוצה לאכול איתנו?" / EN "Do you want to eat with us?" — `reply.home.eat-with-us` — ❌ wrong
-- Tests: reply.home.are-you-hungry
-- Explanation shown after answering: generic: “Are you hungry?” means “אתה רעב?”.
+No meaning quiz in this mission.
 
 ## Active practice — Quick Reply · Visual Match · Swap It · Mini Map
 
-None in this mission.
+### M13-Q05 — swap-it (step 10, round 1 of 3)
+
+- Prompt displayed: "Where are you off to?" / "לאן אתה הולך?" — cue 🏠 "You are heading home" / "אתה הולך הביתה" — frame EN "I'm going ___." · FR "Je ___." · ES "___."
+- Audio played: EN "(nothing before the tap; the completed sentence is spoken after it)" · FR "(same)" · ES "(same)"
+- Meaning of the audio (HE): —
+- Buttons show: the SLOT VALUES in the target language (shown here as "value → completed sentence"); order shuffled; a "wrong" value still produces and speaks a real sentence, with its translation
+- Choices:
+  1. EN "home → I'm going home." · FR "rentre chez moi → Je rentre chez moi." · ES "Me voy a casa → Me voy a casa." · (HE gloss "אני הולך הביתה.") — `phrase.home.going-home` — ✅ accepted
+  2. EN "to sleep → I'm going to sleep." · FR "vais dormir → Je vais dormir." · ES "Me voy a dormir → Me voy a dormir." · (HE gloss "אני הולך לישון.") — no sentence id — ❌ wrong
+  3. EN "to eat at my grandmother's → I'm going to eat at my grandmother's." · FR "vais manger chez ma grand-mère → Je vais manger chez ma grand-mère." · ES "Voy a comer en casa de mi abuela → Voy a comer en casa de mi abuela." · (HE gloss "אני הולך לאכול אצל סבתא שלי.") — no sentence id — ❌ wrong
+- Tests: phrase.home.going-home
+- Explanation shown after answering: after the tap: the completed sentence, spoken, with its translation
+
+### M13-Q06 — swap-it (step 10, round 2 of 3)
+
+- Prompt displayed: "Where are you off to?" / "לאן אתה הולך?" — cue 😴 "You are off to bed" / "אתה הולך לישון" — frame EN "I'm going ___." · FR "Je ___." · ES "___."
+- Audio played: EN "(nothing before the tap; the completed sentence is spoken after it)" · FR "(same)" · ES "(same)"
+- Meaning of the audio (HE): —
+- Buttons show: the SLOT VALUES in the target language (shown here as "value → completed sentence"); order shuffled; a "wrong" value still produces and speaks a real sentence, with its translation
+- Choices:
+  1. EN "home → I'm going home." · FR "rentre chez moi → Je rentre chez moi." · ES "Me voy a casa → Me voy a casa." · (HE gloss "אני הולך הביתה.") — no sentence id — ❌ wrong
+  2. EN "to sleep → I'm going to sleep." · FR "vais dormir → Je vais dormir." · ES "Me voy a dormir → Me voy a dormir." · (HE gloss "אני הולך לישון.") — `phrase.home.going-to-sleep` — ✅ accepted
+  3. EN "to eat at my grandmother's → I'm going to eat at my grandmother's." · FR "vais manger chez ma grand-mère → Je vais manger chez ma grand-mère." · ES "Voy a comer en casa de mi abuela → Voy a comer en casa de mi abuela." · (HE gloss "אני הולך לאכול אצל סבתא שלי.") — no sentence id — ❌ wrong
+- Tests: phrase.home.going-to-sleep
+- Explanation shown after answering: after the tap: the completed sentence, spoken, with its translation
+
+### M13-Q07 — swap-it (step 10, round 3 of 3)
+
+- Prompt displayed: "Where are you off to?" / "לאן אתה הולך?" — cue 🍽️ "You are going to eat at your grandmother's" / "אתה הולך לאכול אצל סבתא" — frame EN "I'm going ___." · FR "Je ___." · ES "___."
+- Audio played: EN "(nothing before the tap; the completed sentence is spoken after it)" · FR "(same)" · ES "(same)"
+- Meaning of the audio (HE): —
+- Buttons show: the SLOT VALUES in the target language (shown here as "value → completed sentence"); order shuffled; a "wrong" value still produces and speaks a real sentence, with its translation
+- Choices:
+  1. EN "home → I'm going home." · FR "rentre chez moi → Je rentre chez moi." · ES "Me voy a casa → Me voy a casa." · (HE gloss "אני הולך הביתה.") — no sentence id — ❌ wrong
+  2. EN "to sleep → I'm going to sleep." · FR "vais dormir → Je vais dormir." · ES "Me voy a dormir → Me voy a dormir." · (HE gloss "אני הולך לישון.") — no sentence id — ❌ wrong
+  3. EN "to eat at my grandmother's → I'm going to eat at my grandmother's." · FR "vais manger chez ma grand-mère → Je vais manger chez ma grand-mère." · ES "Voy a comer en casa de mi abuela → Voy a comer en casa de mi abuela." · (HE gloss "אני הולך לאכול אצל סבתא שלי.") — `phrase.home.eat-at-grandmothers` — ✅ accepted
+- Tests: phrase.home.eat-at-grandmothers
+- Explanation shown after answering: after the tap: the completed sentence, spoken, with its translation
+
+### M13-Q08 — sentence-builder (step 11, round 1 of 2)
+
+- Prompt displayed: "Build the sentence" / "בנה את המשפט" — cue shown: the sentence's MEANING in the app language ("אני הולך לאכול אצל סבתא שלי.")
+- Audio played: EN "(nothing before Check; the built sentence is spoken once it is right)" · FR "(same)" · ES "(same)"
+- Meaning of the audio (HE): —
+- Buttons show: the authored CHUNKS of the sentence as tiles (listed here in the correct order, separated by "|"), shuffled; each language has its own chunks; Check unlocks when every tile is placed
+- Choices:
+  1. EN "I'm going  |  to eat  |  at my  |  grandmother's." · FR "Je vais  |  manger  |  chez  |  ma grand-mère." · ES "Voy a  |  comer  |  en casa de  |  mi abuela." · (HE gloss "אני הולך לאכול אצל סבתא שלי.") — `phrase.home.eat-at-grandmothers` — ✅ accepted
+- Tests: phrase.home.eat-at-grandmothers
+- Explanation shown after answering: right: the sentence is spoken and its translation shown. Wrong: "not yet" — the tiles stay, the answer is NOT shown; after one miss a hint marks the start; after two misses the learner may reveal it
+
+### M13-Q09 — sentence-builder (step 11, round 2 of 2)
+
+- Prompt displayed: "Build the sentence" / "בנה את המשפט" — cue shown: the sentence's MEANING in the app language ("כן, אני גר עם המשפחה שלי.")
+- Audio played: EN "(nothing before Check; the built sentence is spoken once it is right)" · FR "(same)" · ES "(same)"
+- Meaning of the audio (HE): —
+- Buttons show: the authored CHUNKS of the sentence as tiles (listed here in the correct order, separated by "|"), shuffled; each language has its own chunks; Check unlocks when every tile is placed
+- Choices:
+  1. EN "Yes,  |  I live  |  with  |  my family." · FR "Oui,  |  j’habite  |  avec  |  ma famille." · ES "Sí,  |  vivo  |  con  |  mi familia." · (HE gloss "כן, אני גר עם המשפחה שלי.") — `phrase.home.live-with-family` — ✅ accepted
+- Tests: phrase.home.live-with-family
+- Explanation shown after answering: right: the sentence is spoken and its translation shown. Wrong: "not yet" — the tiles stay, the answer is NOT shown; after one miss a hint marks the start; after two misses the learner may reveal it
+
+### M13-Q10 — quick-reply (step 12, round 1 of 5)
+
+- Prompt displayed: "At a friend's home — what do you say?" / "אצל חבר בבית — מה אומרים?"
+- Audio played: EN "Come in." · FR "Entre." · ES "Pasa."
+- Meaning of the audio (HE): "תיכנס."
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Thanks. Your home is beautiful." · FR "Merci. Ta maison est très belle." · ES "Gracias. Tu casa es preciosa." · (HE gloss "הבית שלך יפהפה.") — `phrase.home.beautiful-home` — ✅ accepted
+  2. EN "I'm going home." · FR "Je rentre chez moi." · ES "Me voy a casa." · (HE gloss "אני הולך הביתה.") — `phrase.home.going-home` — ❌ wrong
+  3. EN "I'm tired." · FR "Je suis fatigué." · ES "Estoy cansado." · (HE gloss "אני עייף.") — `phrase.home.im-tired` — ❌ wrong
+- Tests: phrase.home.beautiful-home
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M13-Q11 — quick-reply (step 12, round 2 of 5)
+
+- Prompt displayed: "At a friend's home — what do you say?" / "אצל חבר בבית — מה אומרים?" — situation shown: "You want to know where your friend's family is." / "אתה רוצה לדעת איפה המשפחה של החבר."
+- Audio played: EN "(nothing is played — a situation is shown)" · FR "(nothing is played — a situation is shown)" · ES "(nothing is played — a situation is shown)"
+- Meaning of the audio (HE): —
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Where is your family?" · FR "Où est ta famille ?" · ES "¿Dónde está tu familia?" · (HE gloss "איפה המשפחה שלך?") — `phrase.home.where-family` — ✅ accepted
+  2. EN "Is this sofa new?" · FR "Ce canapé est nouveau ?" · ES "¿Este sofá es nuevo?" · (HE gloss "הספה הזאת חדשה?") — `phrase.home.is-this-new` — ❌ wrong
+  3. EN "Yes, I live with my family." · FR "Oui, j’habite avec ma famille." · ES "Sí, vivo con mi familia." · (HE gloss "כן, אני גר עם המשפחה שלי.") — `phrase.home.live-with-family` — ❌ wrong
+- Tests: phrase.home.where-family
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M13-Q12 — quick-reply (step 12, round 3 of 5)
+
+- Prompt displayed: "At a friend's home — what do you say?" / "אצל חבר בבית — מה אומרים?"
+- Audio played: EN "Do you live with your family?" · FR "Tu habites avec ta famille ?" · ES "¿Vives con tu familia?"
+- Meaning of the audio (HE): "אתה גר עם המשפחה שלך?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Yes, I live with my family." · FR "Oui, j’habite avec ma famille." · ES "Sí, vivo con mi familia." · (HE gloss "כן, אני גר עם המשפחה שלי.") — `phrase.home.live-with-family` — ✅ accepted
+  2. EN "Where is your family?" · FR "Où est ta famille ?" · ES "¿Dónde está tu familia?" · (HE gloss "איפה המשפחה שלך?") — `phrase.home.where-family` — ❌ wrong
+  3. EN "I'm going to sleep." · FR "Je vais dormir." · ES "Me voy a dormir." · (HE gloss "אני הולך לישון.") — `phrase.home.going-to-sleep` — ❌ wrong
+- Tests: phrase.home.live-with-family
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M13-Q13 — quick-reply (step 12, round 4 of 5)
+
+- Prompt displayed: "At a friend's home — what do you say?" / "אצל חבר בבית — מה אומרים?"
+- Audio played: EN "Do you want to eat with us?" · FR "Tu veux manger avec nous ?" · ES "¿Quieres comer con nosotros?"
+- Meaning of the audio (HE): "רוצה לאכול איתנו?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Thanks, but I'm going to eat at my grandmother's." · FR "Merci, mais je vais manger chez ma grand-mère." · ES "Gracias, pero voy a comer en casa de mi abuela." · (HE gloss "אני הולך לאכול אצל סבתא שלי.") — `phrase.home.eat-at-grandmothers` — ✅ accepted
+  2. EN "Is this sofa new?" · FR "Ce canapé est nouveau ?" · ES "¿Este sofá es nuevo?" · (HE gloss "הספה הזאת חדשה?") — `phrase.home.is-this-new` — ❌ wrong
+  3. EN "Your home is beautiful." · FR "Ta maison est très belle." · ES "Tu casa es preciosa." · (HE gloss "הבית שלך יפהפה.") — `phrase.home.beautiful-home` — ❌ wrong
+- Tests: phrase.home.eat-at-grandmothers
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M13-Q14 — quick-reply (step 12, round 5 of 5)
+
+- Prompt displayed: "At a friend's home — what do you say?" / "אצל חבר בבית — מה אומרים?"
+- Audio played: EN "Lovely! You look tired. Are you okay?" · FR "C’est bien ! Tu as l’air fatigué. Ça va ?" · ES "¡Qué bien! Pareces cansado. ¿Estás bien?"
+- Meaning of the audio (HE): "איזה יופי! אתה נראה עייף. הכל בסדר?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Yes, I'm just tired." · FR "Oui, je suis juste fatigué." · ES "Sí, solo estoy cansado." · (HE gloss "אני עייף.") — `phrase.home.im-tired` — ✅ accepted
+  2. EN "Yes, I live with my family." · FR "Oui, j’habite avec ma famille." · ES "Sí, vivo con mi familia." · (HE gloss "כן, אני גר עם המשפחה שלי.") — `phrase.home.live-with-family` — ❌ wrong
+  3. EN "Is this sofa new?" · FR "Ce canapé est nouveau ?" · ES "¿Este sofá es nuevo?" · (HE gloss "הספה הזאת חדשה?") — `phrase.home.is-this-new` — ❌ wrong
+- Tests: phrase.home.im-tired
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M13-Q24 — quick-reply (step 16, round 1 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "Hi! Come in." · FR "Salut ! Entre." · ES "¡Hola! Pasa."
+- Meaning of the audio (HE): "היי! תיכנס."
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Thanks. Your home is beautiful." · FR "Merci. Ta maison est très belle." · ES "Gracias. Tu casa es preciosa." · (HE gloss "הבית שלך יפהפה.") — `phrase.home.beautiful-home` — ✅ accepted
+  2. EN "I'm tired." · FR "Je suis fatigué." · ES "Estoy cansado." · (HE gloss "אני עייף.") — `phrase.home.im-tired` — ❌ wrong
+  3. EN "I'm going home." · FR "Je rentre chez moi." · ES "Me voy a casa." · (HE gloss "אני הולך הביתה.") — `phrase.home.going-home` — ❌ wrong
+- Tests: phrase.home.beautiful-home
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M13-Q25 — quick-reply (step 16, round 2 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "My mother is in the kitchen. Do you live with your family?" · FR "Ma mère est dans la cuisine. Tu habites avec ta famille ?" · ES "Mi madre está en la cocina. ¿Vives con tu familia?"
+- Meaning of the audio (HE): "אמא שלי במטבח. אתה גר עם המשפחה שלך?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Yes, I live with my family." · FR "Oui, j’habite avec ma famille." · ES "Sí, vivo con mi familia." · (HE gloss "כן, אני גר עם המשפחה שלי.") — `phrase.home.live-with-family` — ✅ accepted
+  2. EN "Where is your family?" · FR "Où est ta famille ?" · ES "¿Dónde está tu familia?" · (HE gloss "איפה המשפחה שלך?") — `phrase.home.where-family` — ❌ wrong
+  3. EN "I'm going to sleep." · FR "Je vais dormir." · ES "Me voy a dormir." · (HE gloss "אני הולך לישון.") — `phrase.home.going-to-sleep` — ❌ wrong
+- Tests: phrase.home.live-with-family
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M13-Q26 — quick-reply (step 16, round 3 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "Nice. Are you hungry? Do you want to eat with us?" · FR "Super. Tu as faim ? Tu veux manger avec nous ?" · ES "Qué bien. ¿Tienes hambre? ¿Quieres comer con nosotros?"
+- Meaning of the audio (HE): "יפה. אתה רעב? רוצה לאכול איתנו?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Thanks, but I'm going to eat at my grandmother's." · FR "Merci, mais je vais manger chez ma grand-mère." · ES "Gracias, pero voy a comer en casa de mi abuela." · (HE gloss "אני הולך לאכול אצל סבתא שלי.") — `phrase.home.eat-at-grandmothers` — ✅ accepted
+  2. EN "Your home is beautiful." · FR "Ta maison est très belle." · ES "Tu casa es preciosa." · (HE gloss "הבית שלך יפהפה.") — `phrase.home.beautiful-home` — ❌ wrong
+  3. EN "Yes, I live with my family." · FR "Oui, j’habite avec ma famille." · ES "Sí, vivo con mi familia." · (HE gloss "כן, אני גר עם המשפחה שלי.") — `phrase.home.live-with-family` — ❌ wrong
+- Tests: phrase.home.eat-at-grandmothers
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M13-Q27 — quick-reply (step 16, round 4 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "Lovely! You look tired. Are you okay?" · FR "C’est bien ! Tu as l’air fatigué. Ça va ?" · ES "¡Qué bien! Pareces cansado. ¿Estás bien?"
+- Meaning of the audio (HE): "איזה יופי! אתה נראה עייף. הכל בסדר?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Yes, I'm just tired." · FR "Oui, je suis juste fatigué." · ES "Sí, solo estoy cansado." · (HE gloss "אני עייף.") — `phrase.home.im-tired` — ✅ accepted
+  2. EN "Is this sofa new?" · FR "Ce canapé est nouveau ?" · ES "¿Este sofá es nuevo?" · (HE gloss "הספה הזאת חדשה?") — `phrase.home.is-this-new` — ❌ wrong
+  3. EN "Where is your family?" · FR "Où est ta famille ?" · ES "¿Dónde está tu familia?" · (HE gloss "איפה המשפחה שלך?") — `phrase.home.where-family` — ❌ wrong
+- Tests: phrase.home.im-tired
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M13-Q28 — quick-reply (step 16, round 5 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "Then go home and rest!" · FR "Alors rentre chez toi et repose-toi !" · ES "¡Entonces vete a casa y descansa!"
+- Meaning of the audio (HE): "אז לך הביתה ותנוח!"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Yes, I'm going home." · FR "Oui, je rentre chez moi." · ES "Sí, me voy a casa." · (HE gloss "אני הולך הביתה.") — `phrase.home.going-home` — ✅ accepted
+  2. EN "Where is your family?" · FR "Où est ta famille ?" · ES "¿Dónde está tu familia?" · (HE gloss "איפה המשפחה שלך?") — `phrase.home.where-family` — ❌ wrong
+  3. EN "Your home is beautiful." · FR "Ta maison est très belle." · ES "Tu casa es preciosa." · (HE gloss "הבית שלך יפהפה.") — `phrase.home.beautiful-home` — ❌ wrong
+- Tests: phrase.home.going-home
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
 ## Dialogue — full tree
 
@@ -9292,7 +9820,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 
 ## Learner choice screens
 
-### M13-Q06 — dialogue-choice (step 11, scene "at-a-friends-home" · node c2)
+### M13-Q15 — dialogue-choice (step 13, scene "at-a-friends-home" · node c2)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Hi! Come in." · FR "Salut ! Entre." · ES "¡Hola! Pasa."
@@ -9303,7 +9831,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.home.beautiful-home
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M13-Q07 — dialogue-choice (step 11, scene "at-a-friends-home" · node c4)
+### M13-Q16 — dialogue-choice (step 13, scene "at-a-friends-home" · node c4)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Thank you. Let's sit in the living room." · FR "Merci. On s’assoit dans le salon." · ES "Gracias. Vamos a sentarnos en el salón."
@@ -9314,7 +9842,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.home.is-this-new
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M13-Q08 — dialogue-choice (step 11, scene "at-a-friends-home" · node c6)
+### M13-Q17 — dialogue-choice (step 13, scene "at-a-friends-home" · node c6)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Yes, it's new." · FR "Oui, il est nouveau." · ES "Sí, es nuevo."
@@ -9325,7 +9853,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.home.where-family
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M13-Q09 — dialogue-choice (step 11, scene "at-a-friends-home" · node c8)
+### M13-Q18 — dialogue-choice (step 13, scene "at-a-friends-home" · node c8)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "My mother is in the kitchen. Do you live with your family?" · FR "Ma mère est dans la cuisine. Tu habites avec ta famille ?" · ES "Mi madre está en la cocina. ¿Vives con tu familia?"
@@ -9337,7 +9865,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.home.live-with-family, phrase.recovery.dont-understand
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M13-Q10 — dialogue-choice (step 11, scene "at-a-friends-home" · node c8b)
+### M13-Q19 — dialogue-choice (step 13, scene "at-a-friends-home" · node c8b)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "You — and your family. One home?" · FR "Toi — et ta famille. La même maison ?" · ES "Tú — y tu familia. ¿La misma casa?"
@@ -9348,7 +9876,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.home.live-with-family
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M13-Q11 — dialogue-choice (step 11, scene "at-a-friends-home" · node c10)
+### M13-Q20 — dialogue-choice (step 13, scene "at-a-friends-home" · node c10)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Nice. Are you hungry? Do you want to eat with us?" · FR "Super. Tu as faim ? Tu veux manger avec nous ?" · ES "Qué bien. ¿Tienes hambre? ¿Quieres comer con nosotros?"
@@ -9359,7 +9887,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.home.eat-at-grandmothers
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M13-Q12 — dialogue-choice (step 11, scene "at-a-friends-home" · node c12)
+### M13-Q21 — dialogue-choice (step 13, scene "at-a-friends-home" · node c12)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Lovely! You look tired. Are you okay?" · FR "C’est bien ! Tu as l’air fatigué. Ça va ?" · ES "¡Qué bien! Pareces cansado. ¿Estás bien?"
@@ -9370,7 +9898,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.home.im-tired
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M13-Q13 — dialogue-choice (step 11, scene "at-a-friends-home" · node c14)
+### M13-Q22 — dialogue-choice (step 13, scene "at-a-friends-home" · node c14)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Then go home and rest!" · FR "Alors rentre chez toi et repose-toi !" · ES "¡Entonces vete a casa y descansa!"
@@ -9381,7 +9909,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.home.going-home
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M13-Q14 — dialogue-choice (step 11, scene "at-a-friends-home" · node c16)
+### M13-Q23 — dialogue-choice (step 13, scene "at-a-friends-home" · node c16)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "And after dinner at your grandmother's?" · FR "Et après le dîner chez ta grand-mère ?" · ES "¿Y después de la cena en casa de tu abuela?"
@@ -9407,42 +9935,24 @@ None — no choice in this mission is marked wrong.
 
 ## Sentence review
 
-Step 13. 14 sentences, in this fixed order. Each is played automatically (TTS), shown with its translation and tip; buttons: 🔊 "Hear again" / "לשמוע שוב" and Next. No speaking prompt, no grading, no scoring; nothing is recorded.
+Step 15. 12 sentences, in this fixed order. Each is played automatically (TTS), shown with its translation and tip; buttons: 🔊 "Hear again" / "לשמוע שוב" and Next. No speaking prompt, no grading, no scoring; nothing is recorded.
 
-1. `phrase.home.beautiful-home` — Your home is beautiful. — הבית שלך יפהפה.
-2. `phrase.home.is-this-new` — Is this sofa new? — הספה הזאת חדשה?
-3. `phrase.home.where-family` — Where is your family? — איפה המשפחה שלך?
-4. `phrase.home.live-with-family` — Yes, I live with my family. — כן, אני גר עם המשפחה שלי.
-5. `phrase.home.eat-at-grandmothers` — I'm going to eat at my grandmother's. — אני הולך לאכול אצל סבתא שלי.
-6. `phrase.home.im-tired` — I'm tired. — אני עייף.
-7. `phrase.home.going-home` — I'm going home. — אני הולך הביתה.
-8. `phrase.home.going-to-sleep` — I'm going to sleep. — אני הולך לישון.
-9. `reply.home.come-in` — Come in. — תיכנס.
-10. `reply.home.sit-living-room` — Let's sit in the living room. — בוא נשב בסלון.
-11. `reply.home.live-with-family-q` — Do you live with your family? — אתה גר עם המשפחה שלך?
-12. `reply.home.are-you-hungry` — Are you hungry? — אתה רעב?
-13. `reply.home.eat-with-us` — Do you want to eat with us? — רוצה לאכול איתנו?
-14. `phrase.recovery.dont-understand` — Sorry, I don't understand. — סליחה, אני לא מבין.
+1. `phrase.home.eat-at-grandmothers` — I'm going to eat at my grandmother's. — אני הולך לאכול אצל סבתא שלי.
+2. `phrase.home.going-home` — I'm going home. — אני הולך הביתה.
+3. `phrase.home.going-to-sleep` — I'm going to sleep. — אני הולך לישון.
+4. `phrase.home.im-tired` — I'm tired. — אני עייף.
+5. `phrase.home.where-family` — Where is your family? — איפה המשפחה שלך?
+6. `phrase.home.live-with-family` — Yes, I live with my family. — כן, אני גר עם המשפחה שלי.
+7. `phrase.home.beautiful-home` — Your home is beautiful. — הבית שלך יפהפה.
+8. `reply.home.come-in` — Come in. — תיכנס.
+9. `reply.home.live-with-family-q` — Do you live with your family? — אתה גר עם המשפחה שלך?
+10. `reply.home.are-you-hungry` — Are you hungry? — אתה רעב?
+11. `reply.home.eat-with-us` — Do you want to eat with us? — רוצה לאכול איתנו?
+12. `phrase.recovery.dont-understand` — Sorry, I don't understand. — סליחה, אני לא מבין.
 
 ## Cold open / ambush
 
-### M13-Q15 — cold-open (step 14, single prompt · mode: not set (original behaviour))
-
-- Prompt displayed: "Heads up: a fast one is coming. Use a tool." / "שים לב: מגיע משפט מהיר. השתמש בכלי."
-- Audio played: EN "Come in come in let us sit in the living room it is warmer there" · FR "Entre, entre, on s’assoit dans le salon, il y fait plus chaud" · ES "Pasa, pasa, vamos a sentarnos en el salón, que hace más calor"
-- Meaning of the audio (HE): "תיכנס, תיכנס, בוא נשב בסלון, יותר חם שם"
-- Buttons show: TARGET-LANGUAGE text of the two sentences, each prefixed with 🛟; order shuffled
-- Choices:
-  1. EN "Let's sit in the living room." · FR "On s’assoit dans le salon." · ES "Vamos a sentarnos en el salón." · (HE gloss "בוא נשב בסלון.") — `reply.home.sit-living-room` — ✅ accepted
-  2. EN "Are you hungry?" · FR "Tu as faim ?" · ES "¿Tienes hambre?" · (HE gloss "אתה רעב?") — `reply.home.are-you-hungry` — ❌ wrong
-- Tests: reply.home.sit-living-room
-- Explanation shown after answering: generic: “Let's sit in the living room.” means “בוא נשב בסלון.”.
-
-- Flow: screen shows ⚡ and "Heads up: a fast one is coming. Use a tool." / "שים לב: מגיע משפט מהיר. השתמש בכלי." with one button 👂 "I'm ready" / "אני מוכן"; on tap the line is spoken at TTS rate 1.12 and printed small; two shuffled buttons appear; 🔊 "Hear again" / "לשמוע שוב" replays at 0.85.
-- Success criterion: picking the accepted sentence. A wrong pick shows the feedback card (what you heard + translation, your answer, the sentence that fit) with Try again / Continue; Continue proceeds either way. Response time is recorded.
-- Recovery options offered: none
-- Receipt shown next: "Fast and warm — and you understood you were being invited to sit." / "מהר וחם — והבנת שמזמינים אותך לשבת."
-- Potential new-language exposure: YES — English words not met in any sentence or dialogue line of Missions 01–13: warmer
+No cold open in this mission.
 
 ## Swap-in / variable content
 
@@ -9457,8 +9967,8 @@ Every learner sentence of this mission is a line in a scene.
 ## Receipts (proof cards)
 
 - Step 9: "You understand when someone invites you in, to sit, and to eat." / "אתה מבין כשמזמינים אותך להיכנס, לשבת ולאכול."
-- Step 12: "You talked about home, family and what you are about to do — without a single tourist word." / "דיברת על בית, משפחה ועל מה שאתה עומד לעשות — בלי מילה אחת על תיירות."
-- Step 15: "Fast and warm — and you understood you were being invited to sit." / "מהר וחם — והבנת שמזמינים אותך לשבת."
+- Step 14: "You talked about home, family and what you are about to do — without a single tourist word." / "דיברת על בית, משפחה ועל מה שאתה עומד לעשות — בלי מילה אחת על תיירות."
+- Step 17: "A whole visit to a friend's home, at normal pace: you came in, talked about family, said what you are doing and how you feel." / "ביקור שלם אצל חבר, בקצב רגיל: נכנסת, דיברת על המשפחה, אמרת מה אתה עושה ואיך אתה מרגיש."
 
 ## Audit Metadata — DO NOT FIX YET
 
@@ -9467,31 +9977,28 @@ Every learner sentence of this mission is a line in a scene.
 - Toolkit phrases bundled: 1
 - Key-sentence steps: 6
 - Expected-reply/listening items: 4
-- Questions/quizzes (meaning quiz): 1
-- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 0
-- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 1
+- Questions/quizzes (meaning quiz): 0
+- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 15
+- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 16
 - One-button dialogue screens: 8
 - Learner sentences never actively retrieved: 0
 - Dialogue learner choices (screens): 9
 - Wrong-answer branches: 0
-- Cold-open prompts: 1
+- Cold-open prompts: 0
 - Recovery opportunities: 1
 - Vocabulary pre-items: 0
 - Swap variants (extra accepted lines): 0
-- Sentences in review: 14
-- Total interactive questions: 15 (answer choices: 27)
-- Approximate total learner interactions: 35 (questions + key sentences + review cards + word-intro screen)
+- Sentences in review: 12
+- Total interactive questions: 28 (answer choices: 63)
+- Approximate total learner interactions: 46 (questions + key sentences + review cards + word-intro screen)
 
-### AUTO-FLAG — requires human review (8)
+### AUTO-FLAG — requires human review (5)
 
-- AUTO-FLAG — Same prompt tested repeatedly: “Are you hungry?” is the audio of M13-Q03 and M13-Q05.
 - AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "at-a-friends-home" n11 — “Lovely! You look tired. Are you okay?”
 - AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "at-a-friends-home" n15 — “And after dinner at your grandmother's?”
 - AUTO-FLAG — Line shown differs from the sentence it is scored as: scene "at-a-friends-home" c12 — shown “Yes, I'm just tired.”, scored as `phrase.home.im-tired` “I'm tired.”.
 - AUTO-FLAG — 9 of 9 choice screens have NO wrong option (every button is accepted): at-a-friends-home/c2, at-a-friends-home/c4, at-a-friends-home/c6, at-a-friends-home/c8, at-a-friends-home/c8b, at-a-friends-home/c10, at-a-friends-home/c12, at-a-friends-home/c14, at-a-friends-home/c16.
 - AUTO-FLAG — 8 choice screens offer exactly ONE button (no decision): at-a-friends-home/c2, at-a-friends-home/c4, at-a-friends-home/c6, at-a-friends-home/c8b, at-a-friends-home/c10, at-a-friends-home/c12, at-a-friends-home/c14, at-a-friends-home/c16.
-- AUTO-FLAG — M13-Q15: cold-open line contains English words not met in any sentence or dialogue line up to this mission: warmer.
-- AUTO-FLAG — M13-Q15: the screen says "Heads up: a fast one is coming. Use a tool." / "שים לב: מגיע משפט מהיר. השתמש בכלי." and marks both buttons with 🛟, but neither option is a conversation-help tool.
 
 ---
 
@@ -9538,15 +10045,16 @@ Intro screen (first Practice step; identical in the English, French and Spanish 
 4. `tool` — key sentence (listen → reveal → say aloud) — `phrase.rest.ill-have-chicken` “I'll have the chicken.” · label "Order it" / "להזמין" (2/4)
 5. `tool` — key sentence (listen → reveal → say aloud) — `phrase.rest.no-onions` “No onions, please.” · label "Special request" / "בקשה מיוחדת" (3/4)
 6. `tool` — key sentence (listen → reveal → say aloud) — `phrase.rest.the-bill` “The bill, please.” · label "Close it out" / "לסגור" (4/4)
-7. `replies` — expected replies (listening drill) — after `phrase.rest.ill-have-chicken`: 4 replies
+7. `replies` — expected replies (listening drill) — after `phrase.rest.ill-have-chicken`: 5 replies
 8. `receipt` — receipt (proof card) — "You recognize every waiter question — before it can surprise you." / "אתה מזהה את כל שאלות המלצר — לפני שהן מפתיעות אותך."
-9. `quiz` — meaning quiz (listening) — hears `reply.rest.reservation`
-10. `dialogue` — dialogue (choose your line) — scene `sit-down-meal`
-11. `receipt` — receipt (proof card) — "A full dinner: from table to bill, special request included." / "ארוחת ערב שלמה: משולחן ועד חשבון, כולל בקשה מיוחדת."
-12. `swipe` — sentence review — 21 sentences
-13. `ambush` — cold open (fast line) — mode not set · correct `reply.rest.dessert`, wrong `reply.rest.reservation`
-14. `receipt` — receipt (proof card) — "A long, fast sentence at the end of the meal — and you caught the point." / "משפט ארוך ומהיר בסוף הארוחה — והבנת את העיקר."
-15. `summary` — victory screen
+9. `quickReply` — quick reply (hear → pick your response) — 6 round(s)
+10. `swap` — swap it (one frame, several endings) — 2 round(s)
+11. `dialogue` — dialogue (choose your line) — scene `sit-down-meal`
+12. `receipt` — receipt (proof card) — "A full dinner: from table to bill, special request included." / "ארוחת ערב שלמה: משולחן ועד חשבון, כולל בקשה מיוחדת."
+13. `swipe` — sentence review — 12 sentences
+14. `quickReply` — quick reply (hear → pick your response) — 5 round(s) · speed challenge
+15. `receipt` — receipt (proof card) — "A whole meal at a real waiter’s pace — from table to bill." / "ארוחה שלמה בקצב של מלצר אמיתי — משולחן ועד חשבון."
+16. `summary` — victory screen
 
 Step sequence identical in EN / FR / ES: yes.
 
@@ -9565,7 +10073,7 @@ EN:
   5. "please" — meaning "בבקשה" / "please" — icon none — new
 FR:
   1. "table" — meaning "שולחן" / "table" — icon 🍽️ — new
-  2. "carte" — meaning "תפריט" / "menu" — icon 📋 — new
+  2. "menu" — meaning "תפריט" / "menu" — icon 📋 — new
   3. "eau" — meaning "מים" / "water" — icon 💧 — new
   4. "addition" — meaning "חשבון" / "bill" — icon 🧾 — new
   5. "s’il vous plaît" — meaning "בבקשה" / "please" — icon none — new
@@ -9591,18 +10099,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "The restaurant opener. Template: a table for ___." / "הפתיח למסעדה. תבנית: a table for ___."
 - Used in missions: 14, 18, 28, 30
-- Exercised here as: key sentence (step 3); sentence review (step 12); dialogue choice sit-down-meal/c1 (accepted); dialogue choice sit-down-meal/c1b (accepted)
-
-### Sentence: `phrase.rest.menu`
-
-- EN: The menu, please.
-- HE: התפריט, בבקשה.
-- FR: La carte, s’il vous plaît.
-- ES: La carta, por favor.
-- Role: learner production
-- Tip / pattern note: none
-- Used in missions: 14
-- Exercised here as: sentence review (step 12)
+- Exercised here as: key sentence (step 3); quick-reply response (step 9, round 1, accepted); quick-reply response (step 9, round 3, wrong option); quick-reply response (step 9, round 4, wrong option); quick-reply response (step 9, round 6, wrong option); sentence review (step 13); quick-reply response (step 14, round 1, accepted); quick-reply response (step 14, round 2, wrong option); quick-reply response (step 14, round 3, wrong option); quick-reply response (step 14, round 4, wrong option); quick-reply response (step 14, round 5, wrong option); dialogue choice sit-down-meal/c1 (accepted); dialogue choice sit-down-meal/c1b (accepted)
 
 ### Sentence: `phrase.rest.ill-have-chicken`
 
@@ -9613,7 +10110,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "The ordering template: I’ll have the ___." / "תבנית ההזמנה: I’ll have the ___."
 - Used in missions: 14, 18
-- Exercised here as: key sentence (step 4); "you said" lead-in of the expected-replies drill (step 7); sentence review (step 12); dialogue choice sit-down-meal/c2 (accepted)
+- Exercised here as: key sentence (step 4); "you said" lead-in of the expected-replies drill (step 7); quick-reply response (step 9, round 2, accepted); swap-it frame (step 10, round 1); sentence review (step 13); quick-reply response (step 14, round 2, accepted); quick-reply response (step 14, round 5, wrong option); dialogue choice sit-down-meal/c2 (accepted)
 
 ### Sentence: `phrase.rest.water`
 
@@ -9624,7 +10121,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 14, 18
-- Exercised here as: sentence review (step 12); dialogue choice sit-down-meal/c3 (accepted)
+- Exercised here as: quick-reply response (step 9, round 1, wrong option); quick-reply response (step 9, round 3, accepted); quick-reply response (step 9, round 5, wrong option); sentence review (step 13); quick-reply response (step 14, round 1, wrong option); quick-reply response (step 14, round 3, accepted); dialogue choice sit-down-meal/c3 (accepted)
 
 ### Sentence: `phrase.rest.no-onions`
 
@@ -9635,7 +10132,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "Template: No ___, please — for anything you don’t want on the plate." / "תבנית: No ___, please — לכל מה שאתה לא רוצה בצלחת."
 - Used in missions: 14
-- Exercised here as: key sentence (step 5); sentence review (step 12)
+- Exercised here as: key sentence (step 5); quick-reply response (step 9, round 3, wrong option); quick-reply response (step 9, round 5, accepted); sentence review (step 13); quick-reply response (step 14, round 3, wrong option)
 
 ### Sentence: `phrase.rest.the-bill`
 
@@ -9646,7 +10143,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 14, 18
-- Exercised here as: built by the word intro (step 2); key sentence (step 6); sentence review (step 12); dialogue choice sit-down-meal/c5 (accepted)
+- Exercised here as: built by the word intro (step 2); key sentence (step 6); quick-reply response (step 9, round 1, wrong option); quick-reply response (step 9, round 2, wrong option); quick-reply response (step 9, round 5, wrong option); quick-reply response (step 9, round 6, accepted); sentence review (step 13); quick-reply response (step 14, round 1, wrong option); quick-reply response (step 14, round 2, wrong option); quick-reply response (step 14, round 5, accepted); dialogue choice sit-down-meal/c5 (accepted)
 
 ### Sentence: `phrase.rest.delicious`
 
@@ -9657,7 +10154,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "A small compliment that buys a big smile." / "מחמאה קטנה שקונה חיוך גדול."
 - Used in missions: 14
-- Exercised here as: sentence review (step 12)
+- Exercised here as: quick-reply response (step 9, round 4, wrong option); quick-reply response (step 9, round 6, accepted); quick-reply response (step 14, round 4, wrong option)
 
 ### Sentence: `reply.rest.reservation`
 
@@ -9667,8 +10164,8 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Tiene reserva?
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
-- Used in missions: 14, 18
-- Exercised here as: meaning-quiz audio (step 9); sentence review (step 12); cold-open wrong option (step 13)
+- Used in missions: 14
+- Exercised here as: expected-reply audio (step 7); quick-reply prompt (step 9, round 1); sentence review (step 13)
 
 ### Sentence: `reply.rest.follow-me`
 
@@ -9679,7 +10176,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 14
-- Exercised here as: sentence review (step 12)
+- Exercised here as: nothing (listed only)
 
 ### Sentence: `reply.rest.ready-to-order`
 
@@ -9689,8 +10186,8 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Están listos para pedir?
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
-- Used in missions: 14, 28
-- Exercised here as: expected-reply audio (step 7); meaning-quiz distractor (step 9); sentence review (step 12)
+- Used in missions: 14, 18, 28
+- Exercised here as: expected-reply audio (step 7); quick-reply prompt (step 9, round 2); sentence review (step 13)
 
 ### Sentence: `reply.rest.to-drink`
 
@@ -9700,30 +10197,8 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Algo de beber?
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
-- Used in missions: 14
-- Exercised here as: expected-reply audio (step 7); sentence review (step 12)
-
-### Sentence: `reply.rest.how-was-it`
-
-- EN: How was everything?
-- HE: איך היה הכל?
-- FR: Tout s’est bien passé ?
-- ES: ¿Qué tal todo?
-- Role: receptive — an expected reply the learner hears
-- Tip / pattern note: none
-- Used in missions: 14
-- Exercised here as: expected-reply audio (step 7); sentence review (step 12)
-
-### Sentence: `reply.rest.dessert`
-
-- EN: Would you like dessert?
-- HE: רוצים קינוח?
-- FR: Vous voulez un dessert ?
-- ES: ¿Quieren postre?
-- Role: receptive — an expected reply the learner hears
-- Tip / pattern note: none
 - Used in missions: 14, 18
-- Exercised here as: expected-reply audio (step 7); meaning-quiz distractor (step 9); sentence review (step 12); cold-open correct option (step 13)
+- Exercised here as: expected-reply audio (step 7); quick-reply prompt (step 9, round 3); sentence review (step 13)
 
 ### Sentence: `phrase.rest.ill-have`
 
@@ -9734,7 +10209,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "The restaurant’s big template: I’ll have the ___ — order anything on the menu." / "התבנית הגדולה של המסעדה: I’ll have the ___ — מזמינים כל דבר בתפריט."
 - Used in missions: 14, 28, 29, 30
-- Exercised here as: sentence review (step 12); dialogue choice sit-down-meal/c2 (accepted)
+- Exercised here as: quick-reply response (step 9, round 2, accepted); swap-it frame (step 10, round 2); sentence review (step 13); dialogue choice sit-down-meal/c2 (accepted)
 
 ### Sentence: `reply.rest.anything-else`
 
@@ -9745,7 +10220,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 14
-- Exercised here as: sentence review (step 12)
+- Exercised here as: expected-reply audio (step 7); quick-reply prompt (step 9, round 4); sentence review (step 13)
 
 ### Sentence: `reply.rest.everything-okay`
 
@@ -9756,7 +10231,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 14, 28
-- Exercised here as: sentence review (step 12)
+- Exercised here as: expected-reply audio (step 7); quick-reply prompt (step 9, round 6); sentence review (step 13)
 
 ### Sentence: `phrase.recovery.repeat`
 
@@ -9767,7 +10242,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
 - Used in missions: 01, 03, 05, 06, 08, 09, 10, 11, 12, 14, 15, 17, 18, 19, 20, 23, 26, 28, 29
-- Exercised here as: sentence review (step 12)
+- Exercised here as: nothing (listed only)
 
 ### Sentence: `phrase.recovery.slowly`
 
@@ -9777,8 +10252,8 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 08, 09, 10, 14, 15, 17, 19, 21, 22, 24, 26, 27, 29, 30
-- Exercised here as: sentence review (step 12)
+- Used in missions: 01, 02, 03, 04, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 26, 27, 29, 30
+- Exercised here as: nothing (listed only)
 
 ### Sentence: `phrase.recovery.thank-you`
 
@@ -9788,8 +10263,8 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¡Gracias!
 - Role: courtesy from the Recovery Toolkit
 - Tip / pattern note: none
-- Used in missions: 03, 05, 06, 07, 08, 09, 10, 14, 15, 17, 19, 25, 26, 29, 30
-- Exercised here as: sentence review (step 12); dialogue choice sit-down-meal/c4 (accepted)
+- Used in missions: 03, 05, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 25, 26, 29, 30
+- Exercised here as: quick-reply response (step 9, round 4, accepted); quick-reply response (step 14, round 4, accepted); dialogue choice sit-down-meal/c4 (accepted)
 
 ### Sentence: `phrase.recovery.one-moment`
 
@@ -9800,7 +10275,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
 - Used in missions: 02, 03, 06, 08, 14
-- Exercised here as: sentence review (step 12); dialogue choice sit-down-meal/c2 (accepted)
+- Exercised here as: dialogue choice sit-down-meal/c2 (accepted)
 
 ### Sentence: `phrase.recovery.dont-understand`
 
@@ -9811,83 +10286,250 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
 - Used in missions: 13, 14
-- Exercised here as: sentence review (step 12); dialogue choice sit-down-meal/c1 (accepted)
+- Exercised here as: sentence review (step 13); dialogue choice sit-down-meal/c1 (accepted)
 
 ## Expected replies / listening items
 
 Lead-in screen: "You said:" / "אמרת:" — EN "I'll have the chicken." · FR "Je vais prendre le poulet." · ES "Voy a tomar el pollo." — then "What might they answer? Learn the replies before they surprise you." / "מה הם עלולים לענות? נלמד את התשובות לפני שהן מפתיעות אותך." — button 👂 "I'm ready" / "אני מוכן".
 Linked learner sentence: `phrase.rest.ill-have-chicken`. Each reply below is played once automatically; the learner picks its MEANING from three buttons. Distractors are always the first two OTHER replies of this same drill, in drill order (runtime rule), so the three choices are shuffled per session.
 
-### M14-Q01 — expected-reply (step 7, reply 1 of 4)
+### M14-Q01 — expected-reply (step 7, reply 1 of 5)
 
-- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (1/4)
-- Audio played: EN "Anything to drink?" · FR "Quelque chose à boire ?" · ES "¿Algo de beber?"
-- Meaning of the audio (HE): "משהו לשתות?"
-- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
-- Choices:
-  1. HE "משהו לשתות?" / EN "Anything to drink?" — `reply.rest.to-drink` — ✅ accepted
-  2. HE "מוכנים להזמין?" / EN "Are you ready to order?" — `reply.rest.ready-to-order` — ❌ wrong
-  3. HE "איך היה הכל?" / EN "How was everything?" — `reply.rest.how-was-it` — ❌ wrong
-- Tests: reply.rest.to-drink
-- Explanation shown after answering: generic: “Anything to drink?” means “משהו לשתות?”.
-
-### M14-Q02 — expected-reply (step 7, reply 2 of 4)
-
-- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (2/4)
-- Audio played: EN "Are you ready to order?" · FR "Vous êtes prêts à commander ?" · ES "¿Están listos para pedir?"
-- Meaning of the audio (HE): "מוכנים להזמין?"
-- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
-- Choices:
-  1. HE "מוכנים להזמין?" / EN "Are you ready to order?" — `reply.rest.ready-to-order` — ✅ accepted
-  2. HE "משהו לשתות?" / EN "Anything to drink?" — `reply.rest.to-drink` — ❌ wrong
-  3. HE "איך היה הכל?" / EN "How was everything?" — `reply.rest.how-was-it` — ❌ wrong
-- Tests: reply.rest.ready-to-order
-- Explanation shown after answering: generic: “Are you ready to order?” means “מוכנים להזמין?”.
-
-### M14-Q03 — expected-reply (step 7, reply 3 of 4)
-
-- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (3/4)
-- Audio played: EN "How was everything?" · FR "Tout s’est bien passé ?" · ES "¿Qué tal todo?"
-- Meaning of the audio (HE): "איך היה הכל?"
-- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
-- Choices:
-  1. HE "איך היה הכל?" / EN "How was everything?" — `reply.rest.how-was-it` — ✅ accepted
-  2. HE "משהו לשתות?" / EN "Anything to drink?" — `reply.rest.to-drink` — ❌ wrong
-  3. HE "מוכנים להזמין?" / EN "Are you ready to order?" — `reply.rest.ready-to-order` — ❌ wrong
-- Tests: reply.rest.how-was-it
-- Explanation shown after answering: generic: “How was everything?” means “איך היה הכל?”.
-
-### M14-Q04 — expected-reply (step 7, reply 4 of 4)
-
-- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (4/4)
-- Audio played: EN "Would you like dessert?" · FR "Vous voulez un dessert ?" · ES "¿Quieren postre?"
-- Meaning of the audio (HE): "רוצים קינוח?"
-- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
-- Choices:
-  1. HE "רוצים קינוח?" / EN "Would you like dessert?" — `reply.rest.dessert` — ✅ accepted
-  2. HE "משהו לשתות?" / EN "Anything to drink?" — `reply.rest.to-drink` — ❌ wrong
-  3. HE "מוכנים להזמין?" / EN "Are you ready to order?" — `reply.rest.ready-to-order` — ❌ wrong
-- Tests: reply.rest.dessert
-- Explanation shown after answering: generic: “Would you like dessert?” means “רוצים קינוח?”.
-
-## Quizzes
-
-### M14-Q05 — meaning-quiz (step 9, single question)
-
-- Prompt displayed: "What did it mean?" / "מה זה אומר?"
+- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (1/5)
 - Audio played: EN "Do you have a reservation?" · FR "Vous avez une réservation ?" · ES "¿Tiene reserva?"
 - Meaning of the audio (HE): "יש לכם הזמנה?"
 - Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
 - Choices:
   1. HE "יש לכם הזמנה?" / EN "Do you have a reservation?" — `reply.rest.reservation` — ✅ accepted
   2. HE "מוכנים להזמין?" / EN "Are you ready to order?" — `reply.rest.ready-to-order` — ❌ wrong
-  3. HE "רוצים קינוח?" / EN "Would you like dessert?" — `reply.rest.dessert` — ❌ wrong
+  3. HE "משהו לשתות?" / EN "Anything to drink?" — `reply.rest.to-drink` — ❌ wrong
 - Tests: reply.rest.reservation
 - Explanation shown after answering: generic: “Do you have a reservation?” means “יש לכם הזמנה?”.
 
+### M14-Q02 — expected-reply (step 7, reply 2 of 5)
+
+- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (2/5)
+- Audio played: EN "Are you ready to order?" · FR "Vous êtes prêts à commander ?" · ES "¿Están listos para pedir?"
+- Meaning of the audio (HE): "מוכנים להזמין?"
+- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
+- Choices:
+  1. HE "מוכנים להזמין?" / EN "Are you ready to order?" — `reply.rest.ready-to-order` — ✅ accepted
+  2. HE "יש לכם הזמנה?" / EN "Do you have a reservation?" — `reply.rest.reservation` — ❌ wrong
+  3. HE "משהו לשתות?" / EN "Anything to drink?" — `reply.rest.to-drink` — ❌ wrong
+- Tests: reply.rest.ready-to-order
+- Explanation shown after answering: generic: “Are you ready to order?” means “מוכנים להזמין?”.
+
+### M14-Q03 — expected-reply (step 7, reply 3 of 5)
+
+- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (3/5)
+- Audio played: EN "Anything to drink?" · FR "Quelque chose à boire ?" · ES "¿Algo de beber?"
+- Meaning of the audio (HE): "משהו לשתות?"
+- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
+- Choices:
+  1. HE "משהו לשתות?" / EN "Anything to drink?" — `reply.rest.to-drink` — ✅ accepted
+  2. HE "יש לכם הזמנה?" / EN "Do you have a reservation?" — `reply.rest.reservation` — ❌ wrong
+  3. HE "מוכנים להזמין?" / EN "Are you ready to order?" — `reply.rest.ready-to-order` — ❌ wrong
+- Tests: reply.rest.to-drink
+- Explanation shown after answering: generic: “Anything to drink?” means “משהו לשתות?”.
+
+### M14-Q04 — expected-reply (step 7, reply 4 of 5)
+
+- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (4/5)
+- Audio played: EN "Anything else?" · FR "Autre chose ?" · ES "¿Algo más?"
+- Meaning of the audio (HE): "עוד משהו?"
+- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
+- Choices:
+  1. HE "עוד משהו?" / EN "Anything else?" — `reply.rest.anything-else` — ✅ accepted
+  2. HE "יש לכם הזמנה?" / EN "Do you have a reservation?" — `reply.rest.reservation` — ❌ wrong
+  3. HE "מוכנים להזמין?" / EN "Are you ready to order?" — `reply.rest.ready-to-order` — ❌ wrong
+- Tests: reply.rest.anything-else
+- Explanation shown after answering: generic: “Anything else?” means “עוד משהו?”.
+
+### M14-Q05 — expected-reply (step 7, reply 5 of 5)
+
+- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (5/5)
+- Audio played: EN "Is everything okay?" · FR "Tout va bien ?" · ES "¿Va todo bien?"
+- Meaning of the audio (HE): "הכל בסדר?"
+- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
+- Choices:
+  1. HE "הכל בסדר?" / EN "Is everything okay?" — `reply.rest.everything-okay` — ✅ accepted
+  2. HE "יש לכם הזמנה?" / EN "Do you have a reservation?" — `reply.rest.reservation` — ❌ wrong
+  3. HE "מוכנים להזמין?" / EN "Are you ready to order?" — `reply.rest.ready-to-order` — ❌ wrong
+- Tests: reply.rest.everything-okay
+- Explanation shown after answering: generic: “Is everything okay?” means “הכל בסדר?”.
+
+## Quizzes
+
+No meaning quiz in this mission.
+
 ## Active practice — Quick Reply · Visual Match · Swap It · Mini Map
 
-None in this mission.
+### M14-Q06 — quick-reply (step 9, round 1 of 6)
+
+- Prompt displayed: "The waiter asks — what do you say?" / "המלצר שואל — מה עונים?"
+- Audio played: EN "Do you have a reservation?" · FR "Vous avez une réservation ?" · ES "¿Tiene reserva?"
+- Meaning of the audio (HE): "יש לכם הזמנה?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "No — a table for two, please." · FR "Non — une table pour deux, s’il vous plaît." · ES "No — una mesa para dos, por favor." · (HE gloss "שולחן לשניים, בבקשה.") — `phrase.rest.table-two` — ✅ accepted
+  2. EN "The bill, please." · FR "L’addition, s’il vous plaît." · ES "La cuenta, por favor." · (HE gloss "החשבון, בבקשה.") — `phrase.rest.the-bill` — ❌ wrong
+  3. EN "A bottle of water, please." · FR "Une bouteille d’eau, s’il vous plaît." · ES "Una botella de agua, por favor." · (HE gloss "בקבוק מים, בבקשה.") — `phrase.rest.water` — ❌ wrong
+- Tests: phrase.rest.table-two
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M14-Q07 — quick-reply (step 9, round 2 of 6)
+
+- Prompt displayed: "The waiter asks — what do you say?" / "המלצר שואל — מה עונים?"
+- Audio played: EN "Are you ready to order?" · FR "Vous êtes prêts à commander ?" · ES "¿Están listos para pedir?"
+- Meaning of the audio (HE): "מוכנים להזמין?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "I'll have the chicken, without onions, please." · FR "Je vais prendre le poulet, sans oignons, s’il vous plaît." · ES "Voy a tomar el pollo, sin cebolla, por favor." · (HE gloss "אני אקח את העוף.") — `phrase.rest.ill-have-chicken` — ✅ accepted
+  2. EN "I'll have the pasta, please." · FR "Je vais prendre les pâtes, s’il vous plaît." · ES "Voy a tomar la pasta, por favor." · (HE gloss "אני אקח את הפסטה, בבקשה.") — `phrase.rest.ill-have` — ✅ accepted
+  3. EN "The bill, please." · FR "L’addition, s’il vous plaît." · ES "La cuenta, por favor." · (HE gloss "החשבון, בבקשה.") — `phrase.rest.the-bill` — ❌ wrong
+- Tests: phrase.rest.ill-have-chicken, phrase.rest.ill-have
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M14-Q08 — quick-reply (step 9, round 3 of 6)
+
+- Prompt displayed: "The waiter asks — what do you say?" / "המלצר שואל — מה עונים?"
+- Audio played: EN "Anything to drink?" · FR "Quelque chose à boire ?" · ES "¿Algo de beber?"
+- Meaning of the audio (HE): "משהו לשתות?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "A bottle of water, please." · FR "Une bouteille d’eau, s’il vous plaît." · ES "Una botella de agua, por favor." · (HE gloss "בקבוק מים, בבקשה.") — `phrase.rest.water` — ✅ accepted
+  2. EN "No onions, please." · FR "Sans oignons, s’il vous plaît." · ES "Sin cebolla, por favor." · (HE gloss "בלי בצל, בבקשה.") — `phrase.rest.no-onions` — ❌ wrong
+  3. EN "A table for two, please." · FR "Une table pour deux, s’il vous plaît." · ES "Una mesa para dos, por favor." · (HE gloss "שולחן לשניים, בבקשה.") — `phrase.rest.table-two` — ❌ wrong
+- Tests: phrase.rest.water
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M14-Q09 — quick-reply (step 9, round 4 of 6)
+
+- Prompt displayed: "The waiter asks — what do you say?" / "המלצר שואל — מה עונים?"
+- Audio played: EN "Anything else?" · FR "Autre chose ?" · ES "¿Algo más?"
+- Meaning of the audio (HE): "עוד משהו?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "That's all, thanks." · FR "C’est tout, merci." · ES "Eso es todo, gracias." · (HE gloss "תודה!") — `phrase.recovery.thank-you` — ✅ accepted
+  2. EN "A table for two, please." · FR "Une table pour deux, s’il vous plaît." · ES "Una mesa para dos, por favor." · (HE gloss "שולחן לשניים, בבקשה.") — `phrase.rest.table-two` — ❌ wrong
+  3. EN "That was delicious!" · FR "C’était délicieux !" · ES "¡Estaba delicioso!" · (HE gloss "זה היה טעים מאוד!") — `phrase.rest.delicious` — ❌ wrong
+- Tests: phrase.recovery.thank-you
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M14-Q10 — quick-reply (step 9, round 5 of 6)
+
+- Prompt displayed: "The waiter asks — what do you say?" / "המלצר שואל — מה עונים?" — situation shown: "You do not want onions in your dish." / "אתה לא רוצה בצל במנה."
+- Audio played: EN "(nothing is played — a situation is shown)" · FR "(nothing is played — a situation is shown)" · ES "(nothing is played — a situation is shown)"
+- Meaning of the audio (HE): —
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "No onions, please." · FR "Sans oignons, s’il vous plaît." · ES "Sin cebolla, por favor." · (HE gloss "בלי בצל, בבקשה.") — `phrase.rest.no-onions` — ✅ accepted
+  2. EN "A bottle of water, please." · FR "Une bouteille d’eau, s’il vous plaît." · ES "Una botella de agua, por favor." · (HE gloss "בקבוק מים, בבקשה.") — `phrase.rest.water` — ❌ wrong
+  3. EN "The bill, please." · FR "L’addition, s’il vous plaît." · ES "La cuenta, por favor." · (HE gloss "החשבון, בבקשה.") — `phrase.rest.the-bill` — ❌ wrong
+- Tests: phrase.rest.no-onions
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M14-Q11 — quick-reply (step 9, round 6 of 6)
+
+- Prompt displayed: "The waiter asks — what do you say?" / "המלצר שואל — מה עונים?"
+- Audio played: EN "Is everything okay?" · FR "Tout va bien ?" · ES "¿Va todo bien?"
+- Meaning of the audio (HE): "הכל בסדר?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Yes, that was delicious! The bill, please." · FR "Oui, c’était délicieux ! L’addition, s’il vous plaît." · ES "¡Sí, estaba delicioso! La cuenta, por favor." · (HE gloss "החשבון, בבקשה.") — `phrase.rest.the-bill` — ✅ accepted
+  2. EN "That was delicious!" · FR "C’était délicieux !" · ES "¡Estaba delicioso!" · (HE gloss "זה היה טעים מאוד!") — `phrase.rest.delicious` — ✅ accepted
+  3. EN "A table for two, please." · FR "Une table pour deux, s’il vous plaît." · ES "Una mesa para dos, por favor." · (HE gloss "שולחן לשניים, בבקשה.") — `phrase.rest.table-two` — ❌ wrong
+- Tests: phrase.rest.the-bill, phrase.rest.delicious
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M14-Q12 — swap-it (step 10, round 1 of 2)
+
+- Prompt displayed: "What are you having?" / "מה מזמינים?" — cue 🍗 "You want the chicken" / "אתה רוצה את העוף" — frame EN "I'll have the ___, please." · FR "Je vais prendre ___, s’il vous plaît." · ES "Voy a tomar ___, por favor."
+- Audio played: EN "(nothing before the tap; the completed sentence is spoken after it)" · FR "(same)" · ES "(same)"
+- Meaning of the audio (HE): —
+- Buttons show: the SLOT VALUES in the target language (shown here as "value → completed sentence"); order shuffled; a "wrong" value still produces and speaks a real sentence, with its translation
+- Choices:
+  1. EN "chicken → I'll have the chicken, please." · FR "le poulet → Je vais prendre le poulet, s’il vous plaît." · ES "el pollo → Voy a tomar el pollo, por favor." · (HE gloss "אני אקח את העוף, בבקשה.") — `phrase.rest.ill-have-chicken` — ✅ accepted
+  2. EN "pasta → I'll have the pasta, please." · FR "les pâtes → Je vais prendre les pâtes, s’il vous plaît." · ES "la pasta → Voy a tomar la pasta, por favor." · (HE gloss "אני אקח את הפסטה, בבקשה.") — no sentence id — ❌ wrong
+- Tests: phrase.rest.ill-have-chicken
+- Explanation shown after answering: after the tap: the completed sentence, spoken, with its translation
+
+### M14-Q13 — swap-it (step 10, round 2 of 2)
+
+- Prompt displayed: "What are you having?" / "מה מזמינים?" — cue 🍝 "You want the pasta" / "אתה רוצה את הפסטה" — frame EN "I'll have the ___, please." · FR "Je vais prendre ___, s’il vous plaît." · ES "Voy a tomar ___, por favor."
+- Audio played: EN "(nothing before the tap; the completed sentence is spoken after it)" · FR "(same)" · ES "(same)"
+- Meaning of the audio (HE): —
+- Buttons show: the SLOT VALUES in the target language (shown here as "value → completed sentence"); order shuffled; a "wrong" value still produces and speaks a real sentence, with its translation
+- Choices:
+  1. EN "chicken → I'll have the chicken, please." · FR "le poulet → Je vais prendre le poulet, s’il vous plaît." · ES "el pollo → Voy a tomar el pollo, por favor." · (HE gloss "אני אקח את העוף, בבקשה.") — no sentence id — ❌ wrong
+  2. EN "pasta → I'll have the pasta, please." · FR "les pâtes → Je vais prendre les pâtes, s’il vous plaît." · ES "la pasta → Voy a tomar la pasta, por favor." · (HE gloss "אני אקח את הפסטה, בבקשה.") — `phrase.rest.ill-have` — ✅ accepted
+- Tests: phrase.rest.ill-have
+- Explanation shown after answering: after the tap: the completed sentence, spoken, with its translation
+
+### M14-Q20 — quick-reply (step 14, round 1 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "Good evening! Do you have a reservation?" · FR "Bonsoir ! Vous avez une réservation ?" · ES "¡Buenas noches! ¿Tiene reserva?"
+- Meaning of the audio (HE): "ערב טוב! יש לכם הזמנה?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "No — a table for two, please." · FR "Non — une table pour deux, s’il vous plaît." · ES "No — una mesa para dos, por favor." · (HE gloss "שולחן לשניים, בבקשה.") — `phrase.rest.table-two` — ✅ accepted
+  2. EN "The bill, please." · FR "L’addition, s’il vous plaît." · ES "La cuenta, por favor." · (HE gloss "החשבון, בבקשה.") — `phrase.rest.the-bill` — ❌ wrong
+  3. EN "A bottle of water, please." · FR "Une bouteille d’eau, s’il vous plaît." · ES "Una botella de agua, por favor." · (HE gloss "בקבוק מים, בבקשה.") — `phrase.rest.water` — ❌ wrong
+- Tests: phrase.rest.table-two
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M14-Q21 — quick-reply (step 14, round 2 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "Are you ready to order?" · FR "Vous êtes prêts à commander ?" · ES "¿Están listos para pedir?"
+- Meaning of the audio (HE): "מוכנים להזמין?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "I'll have the chicken, without onions, please." · FR "Je vais prendre le poulet, sans oignons, s’il vous plaît." · ES "Voy a tomar el pollo, sin cebolla, por favor." · (HE gloss "אני אקח את העוף.") — `phrase.rest.ill-have-chicken` — ✅ accepted
+  2. EN "The bill, please." · FR "L’addition, s’il vous plaît." · ES "La cuenta, por favor." · (HE gloss "החשבון, בבקשה.") — `phrase.rest.the-bill` — ❌ wrong
+  3. EN "A table for two, please." · FR "Une table pour deux, s’il vous plaît." · ES "Una mesa para dos, por favor." · (HE gloss "שולחן לשניים, בבקשה.") — `phrase.rest.table-two` — ❌ wrong
+- Tests: phrase.rest.ill-have-chicken
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M14-Q22 — quick-reply (step 14, round 3 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "Of course. Anything to drink?" · FR "Bien sûr. Quelque chose à boire ?" · ES "Claro. ¿Algo de beber?"
+- Meaning of the audio (HE): "כמובן. משהו לשתות?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "A bottle of water, please." · FR "Une bouteille d’eau, s’il vous plaît." · ES "Una botella de agua, por favor." · (HE gloss "בקבוק מים, בבקשה.") — `phrase.rest.water` — ✅ accepted
+  2. EN "No onions, please." · FR "Sans oignons, s’il vous plaît." · ES "Sin cebolla, por favor." · (HE gloss "בלי בצל, בבקשה.") — `phrase.rest.no-onions` — ❌ wrong
+  3. EN "A table for two, please." · FR "Une table pour deux, s’il vous plaît." · ES "Una mesa para dos, por favor." · (HE gloss "שולחן לשניים, בבקשה.") — `phrase.rest.table-two` — ❌ wrong
+- Tests: phrase.rest.water
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M14-Q23 — quick-reply (step 14, round 4 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "Anything else?" · FR "Autre chose ?" · ES "¿Algo más?"
+- Meaning of the audio (HE): "עוד משהו?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "That's all, thanks." · FR "C’est tout, merci." · ES "Eso es todo, gracias." · (HE gloss "תודה!") — `phrase.recovery.thank-you` — ✅ accepted
+  2. EN "A table for two, please." · FR "Une table pour deux, s’il vous plaît." · ES "Una mesa para dos, por favor." · (HE gloss "שולחן לשניים, בבקשה.") — `phrase.rest.table-two` — ❌ wrong
+  3. EN "That was delicious!" · FR "C’était délicieux !" · ES "¡Estaba delicioso!" · (HE gloss "זה היה טעים מאוד!") — `phrase.rest.delicious` — ❌ wrong
+- Tests: phrase.recovery.thank-you
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M14-Q24 — quick-reply (step 14, round 5 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "…Later… Is everything okay?" · FR "…Plus tard… Tout va bien ?" · ES "…Más tarde… ¿Va todo bien?"
+- Meaning of the audio (HE): "…אחר כך… הכל בסדר?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Yes, that was delicious! The bill, please." · FR "Oui, c’était délicieux ! L’addition, s’il vous plaît." · ES "¡Sí, estaba delicioso! La cuenta, por favor." · (HE gloss "החשבון, בבקשה.") — `phrase.rest.the-bill` — ✅ accepted
+  2. EN "I'll have the chicken." · FR "Je vais prendre le poulet." · ES "Voy a tomar el pollo." · (HE gloss "אני אקח את העוף.") — `phrase.rest.ill-have-chicken` — ❌ wrong
+  3. EN "A table for two, please." · FR "Une table pour deux, s’il vous plaît." · ES "Una mesa para dos, por favor." · (HE gloss "שולחן לשניים, בבקשה.") — `phrase.rest.table-two` — ❌ wrong
+- Tests: phrase.rest.the-bill
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
 ## Dialogue — full tree
 
@@ -10028,7 +10670,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 
 ## Learner choice screens
 
-### M14-Q06 — dialogue-choice (step 10, scene "sit-down-meal" · node c1)
+### M14-Q14 — dialogue-choice (step 11, scene "sit-down-meal" · node c1)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Good evening! Do you have a reservation?" · FR "Bonsoir ! Vous avez une réservation ?" · ES "¡Buenas noches! ¿Tiene reserva?"
@@ -10040,7 +10682,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.rest.table-two, phrase.recovery.dont-understand
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M14-Q07 — dialogue-choice (step 10, scene "sit-down-meal" · node c1b)
+### M14-Q15 — dialogue-choice (step 11, scene "sit-down-meal" · node c1b)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "A table? For how many people?" · FR "Une table ? Pour combien de personnes ?" · ES "¿Una mesa? ¿Para cuántas personas?"
@@ -10051,7 +10693,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.rest.table-two
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M14-Q08 — dialogue-choice (step 10, scene "sit-down-meal" · node c2)
+### M14-Q16 — dialogue-choice (step 11, scene "sit-down-meal" · node c2)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Are you ready to order?" · FR "Vous êtes prêts à commander ?" · ES "¿Están listos para pedir?"
@@ -10064,7 +10706,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.rest.ill-have-chicken, phrase.rest.ill-have, phrase.recovery.one-moment
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M14-Q09 — dialogue-choice (step 10, scene "sit-down-meal" · node c3)
+### M14-Q17 — dialogue-choice (step 11, scene "sit-down-meal" · node c3)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Of course. Anything to drink?" · FR "Bien sûr. Quelque chose à boire ?" · ES "Claro. ¿Algo de beber?"
@@ -10075,7 +10717,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.rest.water
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M14-Q10 — dialogue-choice (step 10, scene "sit-down-meal" · node c4)
+### M14-Q18 — dialogue-choice (step 11, scene "sit-down-meal" · node c4)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Anything else?" · FR "Autre chose ?" · ES "¿Algo más?"
@@ -10086,7 +10728,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.recovery.thank-you
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M14-Q11 — dialogue-choice (step 10, scene "sit-down-meal" · node c5)
+### M14-Q19 — dialogue-choice (step 11, scene "sit-down-meal" · node c5)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "…Later… Is everything okay?" · FR "…Plus tard… Tout va bien ?" · ES "…Más tarde… ¿Va todo bien?"
@@ -10113,49 +10755,24 @@ None — no choice in this mission is marked wrong.
 
 ## Sentence review
 
-Step 12. 21 sentences, in this fixed order. Each is played automatically (TTS), shown with its translation and tip; buttons: 🔊 "Hear again" / "לשמוע שוב" and Next. No speaking prompt, no grading, no scoring; nothing is recorded.
+Step 13. 12 sentences, in this fixed order. Each is played automatically (TTS), shown with its translation and tip; buttons: 🔊 "Hear again" / "לשמוע שוב" and Next. No speaking prompt, no grading, no scoring; nothing is recorded.
 
 1. `phrase.rest.table-two` — A table for two, please. — שולחן לשניים, בבקשה.
-2. `phrase.rest.menu` — The menu, please. — התפריט, בבקשה.
-3. `phrase.rest.ill-have-chicken` — I'll have the chicken. — אני אקח את העוף.
-4. `phrase.rest.water` — A bottle of water, please. — בקבוק מים, בבקשה.
-5. `phrase.rest.no-onions` — No onions, please. — בלי בצל, בבקשה.
+2. `phrase.rest.ill-have-chicken` — I'll have the chicken. — אני אקח את העוף.
+3. `phrase.rest.ill-have` — I'll have the pasta, please. — אני אקח את הפסטה, בבקשה.
+4. `phrase.rest.no-onions` — No onions, please. — בלי בצל, בבקשה.
+5. `phrase.rest.water` — A bottle of water, please. — בקבוק מים, בבקשה.
 6. `phrase.rest.the-bill` — The bill, please. — החשבון, בבקשה.
-7. `phrase.rest.delicious` — That was delicious! — זה היה טעים מאוד!
-8. `reply.rest.reservation` — Do you have a reservation? — יש לכם הזמנה?
-9. `reply.rest.follow-me` — Follow me, please. — בואו אחריי, בבקשה.
-10. `reply.rest.ready-to-order` — Are you ready to order? — מוכנים להזמין?
-11. `reply.rest.to-drink` — Anything to drink? — משהו לשתות?
-12. `reply.rest.how-was-it` — How was everything? — איך היה הכל?
-13. `reply.rest.dessert` — Would you like dessert? — רוצים קינוח?
-14. `phrase.rest.ill-have` — I'll have the pasta, please. — אני אקח את הפסטה, בבקשה.
-15. `reply.rest.anything-else` — Anything else? — עוד משהו?
-16. `reply.rest.everything-okay` — Is everything okay? — הכל בסדר?
-17. `phrase.recovery.repeat` — Can you repeat that? — אפשר לחזור על זה?
-18. `phrase.recovery.slowly` — Please speak slowly. — דבר לאט, בבקשה.
-19. `phrase.recovery.thank-you` — Thank you! — תודה!
-20. `phrase.recovery.one-moment` — One moment, please. — רגע אחד, בבקשה.
-21. `phrase.recovery.dont-understand` — Sorry, I don't understand. — סליחה, אני לא מבין.
+7. `reply.rest.reservation` — Do you have a reservation? — יש לכם הזמנה?
+8. `reply.rest.ready-to-order` — Are you ready to order? — מוכנים להזמין?
+9. `reply.rest.to-drink` — Anything to drink? — משהו לשתות?
+10. `reply.rest.anything-else` — Anything else? — עוד משהו?
+11. `reply.rest.everything-okay` — Is everything okay? — הכל בסדר?
+12. `phrase.recovery.dont-understand` — Sorry, I don't understand. — סליחה, אני לא מבין.
 
 ## Cold open / ambush
 
-### M14-Q12 — cold-open (step 13, single prompt · mode: not set (original behaviour))
-
-- Prompt displayed: "Heads up: a fast one is coming. Use a tool." / "שים לב: מגיע משפט מהיר. השתמש בכלי."
-- Audio played: EN "Would you like to see the dessert menu before I bring the check?" · FR "Vous voulez voir la carte des desserts avant que j’apporte l’addition ?" · ES "¿Quieren ver la carta de postres antes de que traiga la cuenta?"
-- Meaning of the audio (HE): "רוצים לראות את תפריט הקינוחים לפני שאני מביא את החשבון?"
-- Buttons show: TARGET-LANGUAGE text of the two sentences, each prefixed with 🛟; order shuffled
-- Choices:
-  1. EN "Would you like dessert?" · FR "Vous voulez un dessert ?" · ES "¿Quieren postre?" · (HE gloss "רוצים קינוח?") — `reply.rest.dessert` — ✅ accepted
-  2. EN "Do you have a reservation?" · FR "Vous avez une réservation ?" · ES "¿Tiene reserva?" · (HE gloss "יש לכם הזמנה?") — `reply.rest.reservation` — ❌ wrong
-- Tests: reply.rest.dessert
-- Explanation shown after answering: generic: “Would you like dessert?” means “רוצים קינוח?”.
-
-- Flow: screen shows ⚡ and "Heads up: a fast one is coming. Use a tool." / "שים לב: מגיע משפט מהיר. השתמש בכלי." with one button 👂 "I'm ready" / "אני מוכן"; on tap the line is spoken at TTS rate 1.12 and printed small; two shuffled buttons appear; 🔊 "Hear again" / "לשמוע שוב" replays at 0.85.
-- Success criterion: picking the accepted sentence. A wrong pick shows the feedback card (what you heard + translation, your answer, the sentence that fit) with Try again / Continue; Continue proceeds either way. Response time is recorded.
-- Recovery options offered: none
-- Receipt shown next: "A long, fast sentence at the end of the meal — and you caught the point." / "משפט ארוך ומהיר בסוף הארוחה — והבנת את העיקר."
-- Potential new-language exposure: YES — English words not met in any sentence or dialogue line of Missions 01–14: before, bring, check
+No cold open in this mission.
 
 ## Swap-in / variable content
 
@@ -10167,54 +10784,46 @@ Alternative accepted lines:
 
 Learner sentences taught beside the dialogue (not a line in any scene):
 
-- `phrase.rest.menu` — The menu, please.
 - `phrase.rest.no-onions` — No onions, please.
 - `phrase.rest.delicious` — That was delicious!
 
 ## Receipts (proof cards)
 
 - Step 8: "You recognize every waiter question — before it can surprise you." / "אתה מזהה את כל שאלות המלצר — לפני שהן מפתיעות אותך."
-- Step 11: "A full dinner: from table to bill, special request included." / "ארוחת ערב שלמה: משולחן ועד חשבון, כולל בקשה מיוחדת."
-- Step 14: "A long, fast sentence at the end of the meal — and you caught the point." / "משפט ארוך ומהיר בסוף הארוחה — והבנת את העיקר."
+- Step 12: "A full dinner: from table to bill, special request included." / "ארוחת ערב שלמה: משולחן ועד חשבון, כולל בקשה מיוחדת."
+- Step 15: "A whole meal at a real waiter’s pace — from table to bill." / "ארוחה שלמה בקצב של מלצר אמיתי — משולחן ועד חשבון."
 
 ## Audit Metadata — DO NOT FIX YET
 
-- Learner-production sentences: 8
-- Receptive (expected-reply) sentences: 8
+- Learner-production sentences: 7
+- Receptive (expected-reply) sentences: 6
 - Toolkit phrases bundled: 5
 - Key-sentence steps: 4
-- Expected-reply/listening items: 4
-- Questions/quizzes (meaning quiz): 1
-- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 0
-- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 2
+- Expected-reply/listening items: 5
+- Questions/quizzes (meaning quiz): 0
+- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 13
+- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 15
 - One-button dialogue screens: 4
-- Learner sentences never actively retrieved: 3
+- Learner sentences never actively retrieved: 0
 - Dialogue learner choices (screens): 6
 - Wrong-answer branches: 0
-- Cold-open prompts: 1
+- Cold-open prompts: 0
 - Recovery opportunities: 2
 - Vocabulary pre-items: 5
 - Swap variants (extra accepted lines): 1
-- Sentences in review: 21
-- Total interactive questions: 12 (answer choices: 26)
-- Approximate total learner interactions: 38 (questions + key sentences + review cards + word-intro screen)
+- Sentences in review: 12
+- Total interactive questions: 24 (answer choices: 61)
+- Approximate total learner interactions: 41 (questions + key sentences + review cards + word-intro screen)
 
-### AUTO-FLAG — requires human review (14)
+### AUTO-FLAG — requires human review (7)
 
 - AUTO-FLAG — Practice item wording not in this mission's dialogue: `reply.rest.follow-me` “Follow me, please.” (drilled as an expected reply / distractor, but no NPC line here says it).
-- AUTO-FLAG — Practice item wording not in this mission's dialogue: `reply.rest.how-was-it` “How was everything?” (drilled as an expected reply / distractor, but no NPC line here says it).
-- AUTO-FLAG — Practice item wording not in this mission's dialogue: `reply.rest.dessert` “Would you like dessert?” (drilled as an expected reply / distractor, but no NPC line here says it).
-- AUTO-FLAG — Learner sentence never actively retrieved in this mission (0 choice screens, 0 quick-reply / swap / match / builder rounds, 0 cold-open options): `phrase.rest.menu` “The menu, please.” — appears in sentence review only (orphan in this mission).
-- AUTO-FLAG — Learner sentence never actively retrieved in this mission (0 choice screens, 0 quick-reply / swap / match / builder rounds, 0 cold-open options): `phrase.rest.no-onions` “No onions, please.” — shown as a key sentence / in review only.
-- AUTO-FLAG — Learner sentence never actively retrieved in this mission (0 choice screens, 0 quick-reply / swap / match / builder rounds, 0 cold-open options): `phrase.rest.delicious` “That was delicious!” — appears in sentence review only (orphan in this mission).
 - AUTO-FLAG — Toolkit phrase listed in the mission but never offered in it: `phrase.recovery.repeat` “Can you repeat that?” (sentence review only).
 - AUTO-FLAG — Toolkit phrase listed in the mission but never offered in it: `phrase.recovery.slowly` “Please speak slowly.” (sentence review only).
 - AUTO-FLAG — Line shown differs from the sentence it is scored as: scene "sit-down-meal" c1 — shown “Sorry, I don’t understand.”, scored as `phrase.recovery.dont-understand` “Sorry, I don't understand.”.
 - AUTO-FLAG — Line shown differs from the sentence it is scored as: scene "sit-down-meal" c4 — shown “That's all, thanks.”, scored as `phrase.recovery.thank-you` “Thank you!”.
 - AUTO-FLAG — 6 of 6 choice screens have NO wrong option (every button is accepted): sit-down-meal/c1, sit-down-meal/c1b, sit-down-meal/c2, sit-down-meal/c3, sit-down-meal/c4, sit-down-meal/c5.
 - AUTO-FLAG — 4 choice screens offer exactly ONE button (no decision): sit-down-meal/c1b, sit-down-meal/c3, sit-down-meal/c4, sit-down-meal/c5.
-- AUTO-FLAG — M14-Q12: cold-open line contains English words not met in any sentence or dialogue line up to this mission: before, bring, check.
-- AUTO-FLAG — M14-Q12: the screen says "Heads up: a fast one is coming. Use a tool." / "שים לב: מגיע משפט מהיר. השתמש בכלי." and marks both buttons with 🛟, but neither option is a conversation-help tool.
 
 ---
 
@@ -10262,14 +10871,16 @@ Intro screen (first Practice step; identical in the English, French and Spanish 
 5. `tool` — key sentence (listen → reveal → say aloud) — `phrase.diet.does-have-dairy` “Does it have dairy?” · label "Check an ingredient" / "לבדוק מרכיב" (4/4)
 6. `replies` — expected replies (listening drill) — after `phrase.diet.allergic-nuts`: 4 replies
 7. `receipt` — receipt (proof card) — "You recognize how a kitchen responds to an allergy — check, warning, and solution." / "אתה מזהה איך המטבח מגיב לאלרגיה — בדיקה, אזהרה, ופתרון."
-8. `quiz` — meaning quiz (listening) — hears `reply.diet.contains-nuts`
-9. `quiz` — meaning quiz (listening) — hears `reply.diet.let-me-check`
+8. `matchPairs` — match pairs (connect each question to its answer) — 3 pairs on one screen
+9. `quickReply` — quick reply (hear → pick your response) — 5 round(s)
 10. `dialogue` — dialogue (choose your line) — scene `allergy-order`
 11. `receipt` — receipt (proof card) — "You ordered a meal that works for you — allergy, vegetarian, no onions, ingredients checked." / "הזמנת ארוחה שמתאימה לך — אלרגיה, צמחוני, בלי בצל, בדיקת מרכיבים."
-12. `swipe` — sentence review — 14 sentences
-13. `ambush` — cold open (fast line) — mode not set · correct `phrase.recovery.repeat`, wrong `phrase.diet.vegetarian`
-14. `receipt` — receipt (proof card) — "A detailed, fast safety question — and you asked them to repeat instead of guessing. With an allergy, exactly the right move." / "שאלת בטיחות מפורטת ומהירה — וביקשת שיחזרו במקום לנחש. עם אלרגיה, זה בדיוק הצעד הנכון."
-15. `summary` — victory screen
+12. `swipe` — sentence review — 11 sentences
+13. `quickReply` — quick reply (hear → pick your response) — 4 round(s) · speed challenge
+14. `receipt` — receipt (proof card) — "The allergy, what you eat, what is in the dish and what to leave out — you said it all, clearly and in the right order." / "אלרגיה, מה אתה אוכל, מה יש במנה ומה להוריד — אמרת הכל, ברור ובסדר הנכון."
+15. `ambush` — cold open (fast line) — mode recovery · correct `phrase.recovery.repeat`, wrong `phrase.diet.vegetarian`
+16. `receipt` — receipt (proof card) — "A detailed, fast safety question — and you asked them to repeat instead of guessing. With an allergy, exactly the right move." / "שאלת בטיחות מפורטת ומהירה — וביקשת שיחזרו במקום לנחש. עם אלרגיה, זה בדיוק הצעד הנכון."
+17. `summary` — victory screen
 
 Step sequence identical in EN / FR / ES: yes.
 
@@ -10290,7 +10901,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "The life-saving template: I’m allergic to ___. Say it clearly, once, no hesitation." / "התבנית שמצילה: I’m allergic to ___. אומרים ברור, פעם אחת, בלי היסוס."
 - Used in missions: 15
-- Exercised here as: key sentence (step 2); "you said" lead-in of the expected-replies drill (step 6); sentence review (step 12); dialogue choice allergy-order/c1 (accepted); dialogue choice allergy-order/c1b (accepted)
+- Exercised here as: key sentence (step 2); "you said" lead-in of the expected-replies drill (step 6); quick-reply response (step 9, round 1, accepted); quick-reply response (step 9, round 4, wrong option); quick-reply response (step 9, round 5, accepted); sentence review (step 12); quick-reply response (step 13, round 1, accepted); quick-reply response (step 13, round 4, wrong option); dialogue choice allergy-order/c1 (accepted); dialogue choice allergy-order/c1b (accepted)
 
 ### Sentence: `phrase.diet.without-onions`
 
@@ -10301,7 +10912,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "Template: Without ___ — removes any ingredient you don’t want." / "התבנית: Without ___ — מסירה כל מרכיב שלא בא לך."
 - Used in missions: 15
-- Exercised here as: key sentence (step 3); sentence review (step 12); dialogue choice allergy-order/c4 (accepted); dialogue choice allergy-order/c4b (accepted)
+- Exercised here as: key sentence (step 3); quick-reply response (step 9, round 1, wrong option); quick-reply response (step 9, round 2, wrong option); quick-reply response (step 9, round 4, accepted); quick-reply response (step 9, round 5, wrong option); sentence review (step 12); quick-reply response (step 13, round 1, wrong option); quick-reply response (step 13, round 2, wrong option); quick-reply response (step 13, round 4, accepted); dialogue choice allergy-order/c4 (accepted); dialogue choice allergy-order/c4b (accepted)
 
 ### Sentence: `phrase.diet.vegetarian`
 
@@ -10312,7 +10923,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "Two words that save ten questions." / "שתי מילים שחוסכות עשר שאלות."
 - Used in missions: 15
-- Exercised here as: key sentence (step 4); sentence review (step 12); cold-open wrong option (step 13); dialogue choice allergy-order/c2 (accepted); dialogue choice allergy-order/c2b (accepted)
+- Exercised here as: key sentence (step 4); quick-reply response (step 9, round 2, accepted); quick-reply response (step 9, round 3, wrong option); quick-reply response (step 9, round 4, wrong option); sentence review (step 12); quick-reply response (step 13, round 2, accepted); quick-reply response (step 13, round 3, wrong option); quick-reply response (step 13, round 4, wrong option); cold-open wrong option (step 15); dialogue choice allergy-order/c2 (accepted); dialogue choice allergy-order/c2b (accepted)
 
 ### Sentence: `phrase.diet.does-have-dairy`
 
@@ -10323,7 +10934,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "Template: Does this have ___? — checks any ingredient before it reaches you." / "התבנית: Does this have ___? — בודקת כל מרכיב לפני שהוא מגיע אליך."
 - Used in missions: 15
-- Exercised here as: key sentence (step 5); sentence review (step 12); dialogue choice allergy-order/c3 (accepted); dialogue choice allergy-order/c3b (accepted)
+- Exercised here as: key sentence (step 5); quick-reply response (step 9, round 3, accepted); sentence review (step 12); quick-reply response (step 13, round 3, accepted); dialogue choice allergy-order/c3 (accepted); dialogue choice allergy-order/c3b (accepted)
 
 ### Sentence: `phrase.diet.is-spicy`
 
@@ -10334,7 +10945,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 15
-- Exercised here as: sentence review (step 12); dialogue choice allergy-order/c4 (accepted)
+- Exercised here as: quick-reply response (step 9, round 1, wrong option); quick-reply response (step 9, round 2, wrong option); quick-reply response (step 9, round 3, wrong option); sentence review (step 12); quick-reply response (step 13, round 1, wrong option); quick-reply response (step 13, round 2, wrong option); dialogue choice allergy-order/c4 (accepted)
 
 ### Sentence: `reply.diet.let-me-check`
 
@@ -10345,7 +10956,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 15
-- Exercised here as: expected-reply audio (step 6); meaning-quiz audio (step 9); sentence review (step 12)
+- Exercised here as: expected-reply audio (step 6); match-pairs question tile (step 8, pair 1); match-pairs answer tile (step 8, pair 1); sentence review (step 12)
 
 ### Sentence: `reply.diet.make-without`
 
@@ -10356,7 +10967,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 15
-- Exercised here as: expected-reply audio (step 6); meaning-quiz distractor (step 8); sentence review (step 12)
+- Exercised here as: expected-reply audio (step 6); match-pairs question tile (step 8, pair 2); match-pairs answer tile (step 8, pair 2); quick-reply prompt (step 9, round 4); sentence review (step 12)
 
 ### Sentence: `reply.diet.contains-nuts`
 
@@ -10367,7 +10978,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 15
-- Exercised here as: expected-reply audio (step 6); meaning-quiz audio (step 8); meaning-quiz distractor (step 9); sentence review (step 12)
+- Exercised here as: expected-reply audio (step 6); match-pairs question tile (step 8, pair 3); match-pairs answer tile (step 8, pair 3); quick-reply prompt (step 9, round 5); sentence review (step 12)
 
 ### Sentence: `reply.diet.not-spicy`
 
@@ -10378,18 +10989,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 15
-- Exercised here as: meaning-quiz distractor (step 9); sentence review (step 12)
-
-### Sentence: `reply.diet.good-option`
-
-- EN: This one is a good option for you.
-- HE: זו אפשרות טובה בשבילך.
-- FR: Celui-ci est une bonne option pour vous.
-- ES: Este es una buena opción para usted.
-- Role: receptive — an expected reply the learner hears
-- Tip / pattern note: none
-- Used in missions: 15
-- Exercised here as: expected-reply audio (step 6); meaning-quiz distractor (step 8); sentence review (step 12)
+- Exercised here as: nothing (listed only)
 
 ### Sentence: `reply.diet.anything-else-allergic`
 
@@ -10400,7 +11000,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 15
-- Exercised here as: sentence review (step 12)
+- Exercised here as: expected-reply audio (step 6); sentence review (step 12)
 
 ### Sentence: `phrase.recovery.repeat`
 
@@ -10411,7 +11011,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
 - Used in missions: 01, 03, 05, 06, 08, 09, 10, 11, 12, 14, 15, 17, 18, 19, 20, 23, 26, 28, 29
-- Exercised here as: sentence review (step 12); cold-open correct option (step 13); dialogue choice allergy-order/c3 (accepted)
+- Exercised here as: quick-reply response (step 9, round 5, accepted); sentence review (step 12); quick-reply response (step 13, round 3, accepted); cold-open correct option (step 15); dialogue choice allergy-order/c3 (accepted)
 
 ### Sentence: `phrase.recovery.slowly`
 
@@ -10421,7 +11021,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 08, 09, 10, 14, 15, 17, 19, 21, 22, 24, 26, 27, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 26, 27, 29, 30
 - Exercised here as: sentence review (step 12); dialogue choice allergy-order/c1 (accepted); dialogue choice allergy-order/c5 (accepted)
 
 ### Sentence: `phrase.recovery.thank-you`
@@ -10432,8 +11032,8 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¡Gracias!
 - Role: courtesy from the Recovery Toolkit
 - Tip / pattern note: none
-- Used in missions: 03, 05, 06, 07, 08, 09, 10, 14, 15, 17, 19, 25, 26, 29, 30
-- Exercised here as: sentence review (step 12); dialogue choice allergy-order/c2 (WRONG option); dialogue choice allergy-order/c5 (accepted); dialogue choice allergy-order/c5b (accepted)
+- Used in missions: 03, 05, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 25, 26, 29, 30
+- Exercised here as: dialogue choice allergy-order/c2 (WRONG option); dialogue choice allergy-order/c5 (accepted); dialogue choice allergy-order/c5b (accepted)
 
 ## Expected replies / listening items
 
@@ -10482,47 +11082,177 @@ Linked learner sentence: `phrase.diet.allergic-nuts`. Each reply below is played
 ### M15-Q04 — expected-reply (step 6, reply 4 of 4)
 
 - Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (4/4)
-- Audio played: EN "This one is a good option for you." · FR "Celui-ci est une bonne option pour vous." · ES "Este es una buena opción para usted."
-- Meaning of the audio (HE): "זו אפשרות טובה בשבילך."
+- Audio played: EN "Any other allergies?" · FR "D’autres allergies ?" · ES "¿Alguna otra alergia?"
+- Meaning of the audio (HE): "יש עוד אלרגיות?"
 - Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
 - Choices:
-  1. HE "זו אפשרות טובה בשבילך." / EN "This one is a good option for you." — `reply.diet.good-option` — ✅ accepted
+  1. HE "יש עוד אלרגיות?" / EN "Any other allergies?" — `reply.diet.anything-else-allergic` — ✅ accepted
   2. HE "אבדוק עם המטבח." / EN "Let me check with the kitchen." — `reply.diet.let-me-check` — ❌ wrong
   3. HE "אפשר להכין בלי." / EN "We can make it without." — `reply.diet.make-without` — ❌ wrong
-- Tests: reply.diet.good-option
-- Explanation shown after answering: generic: “This one is a good option for you.” means “זו אפשרות טובה בשבילך.”.
+- Tests: reply.diet.anything-else-allergic
+- Explanation shown after answering: generic: “Any other allergies?” means “יש עוד אלרגיות?”.
 
 ## Quizzes
 
-### M15-Q05 — meaning-quiz (step 8, single question)
-
-- Prompt displayed: "What did it mean?" / "מה זה אומר?"
-- Audio played: EN "That one contains nuts." · FR "Celui-là contient des noix." · ES "Ese lleva frutos secos."
-- Meaning of the audio (HE): "זה מכיל אגוזים."
-- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
-- Choices:
-  1. HE "זה מכיל אגוזים." / EN "That one contains nuts." — `reply.diet.contains-nuts` — ✅ accepted
-  2. HE "אפשר להכין בלי." / EN "We can make it without." — `reply.diet.make-without` — ❌ wrong
-  3. HE "זו אפשרות טובה בשבילך." / EN "This one is a good option for you." — `reply.diet.good-option` — ❌ wrong
-- Tests: reply.diet.contains-nuts
-- Explanation shown after answering: generic: “That one contains nuts.” means “זה מכיל אגוזים.”.
-
-### M15-Q06 — meaning-quiz (step 9, single question)
-
-- Prompt displayed: "What did it mean?" / "מה זה אומר?"
-- Audio played: EN "Let me check with the kitchen." · FR "Je vérifie avec la cuisine." · ES "Lo consulto con la cocina."
-- Meaning of the audio (HE): "אבדוק עם המטבח."
-- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
-- Choices:
-  1. HE "אבדוק עם המטבח." / EN "Let me check with the kitchen." — `reply.diet.let-me-check` — ✅ accepted
-  2. HE "לא, זה לא חריף." / EN "No, it's not spicy." — `reply.diet.not-spicy` — ❌ wrong
-  3. HE "זה מכיל אגוזים." / EN "That one contains nuts." — `reply.diet.contains-nuts` — ❌ wrong
-- Tests: reply.diet.let-me-check
-- Explanation shown after answering: generic: “Let me check with the kitchen.” means “אבדוק עם המטבח.”.
+No meaning quiz in this mission.
 
 ## Active practice — Quick Reply · Visual Match · Swap It · Mini Map
 
-None in this mission.
+### M15-Q05 — match-pairs (step 8, pair 1 of 3 (all pairs are on one screen))
+
+- Prompt displayed: "What are you being told? Checking, changing it, or a warning?" / "מה אומרים לך? בודקים, משנים, או מזהירים?" — tile to match (target language, no translation): EN "Let me check with the kitchen." · FR "Je vérifie avec la cuisine." · ES "Lo consulto con la cocina."
+- Audio played: EN "Let me check with the kitchen." · FR "Je vérifie avec la cuisine." · ES "Lo consulto con la cocina."
+- Meaning of the audio (HE): "אבדוק עם המטבח."
+- Buttons show: the ANSWER tiles, target language only; their order is shuffled; a matched pair locks and leaves the board, so later pairs have fewer live tiles
+- Choices:
+  1. EN "🔍 They will check / בודקים במטבח" · FR "🔍 They will check / בודקים במטבח" · ES "🔍 They will check / בודקים במטבח" · (HE gloss "אבדוק עם המטבח.") — `reply.diet.let-me-check` — ✅ accepted
+  2. EN "➖ They can make it without / אפשר להכין בלי" · FR "➖ They can make it without / אפשר להכין בלי" · ES "➖ They can make it without / אפשר להכין בלי" · (HE gloss "אפשר להכין בלי.") — `reply.diet.make-without` — ❌ wrong
+  3. EN "⚠️ 🥜 It contains nuts / יש בזה אגוזים" · FR "⚠️ 🥜 It contains nuts / יש בזה אגוזים" · ES "⚠️ 🥜 It contains nuts / יש בזה אגוזים" · (HE gloss "זה מכיל אגוזים.") — `reply.diet.contains-nuts` — ❌ wrong
+- Tests: reply.diet.let-me-check
+- Explanation shown after answering: none — a correct match locks both tiles under a shared number and speaks the answer; a miss shakes, shows ✕ and clears (no penalty)
+
+### M15-Q06 — match-pairs (step 8, pair 2 of 3 (all pairs are on one screen))
+
+- Prompt displayed: "What are you being told? Checking, changing it, or a warning?" / "מה אומרים לך? בודקים, משנים, או מזהירים?" — tile to match (target language, no translation): EN "We can make it without." · FR "On peut le faire sans." · ES "Se lo podemos hacer sin eso."
+- Audio played: EN "We can make it without." · FR "On peut le faire sans." · ES "Se lo podemos hacer sin eso."
+- Meaning of the audio (HE): "אפשר להכין בלי."
+- Buttons show: the ANSWER tiles, target language only; their order is shuffled; a matched pair locks and leaves the board, so later pairs have fewer live tiles
+- Choices:
+  1. EN "🔍 They will check / בודקים במטבח" · FR "🔍 They will check / בודקים במטבח" · ES "🔍 They will check / בודקים במטבח" · (HE gloss "אבדוק עם המטבח.") — `reply.diet.let-me-check` — ❌ wrong
+  2. EN "➖ They can make it without / אפשר להכין בלי" · FR "➖ They can make it without / אפשר להכין בלי" · ES "➖ They can make it without / אפשר להכין בלי" · (HE gloss "אפשר להכין בלי.") — `reply.diet.make-without` — ✅ accepted
+  3. EN "⚠️ 🥜 It contains nuts / יש בזה אגוזים" · FR "⚠️ 🥜 It contains nuts / יש בזה אגוזים" · ES "⚠️ 🥜 It contains nuts / יש בזה אגוזים" · (HE gloss "זה מכיל אגוזים.") — `reply.diet.contains-nuts` — ❌ wrong
+- Tests: reply.diet.make-without
+- Explanation shown after answering: none — a correct match locks both tiles under a shared number and speaks the answer; a miss shakes, shows ✕ and clears (no penalty)
+
+### M15-Q07 — match-pairs (step 8, pair 3 of 3 (all pairs are on one screen))
+
+- Prompt displayed: "What are you being told? Checking, changing it, or a warning?" / "מה אומרים לך? בודקים, משנים, או מזהירים?" — tile to match (target language, no translation): EN "That one contains nuts." · FR "Celui-là contient des noix." · ES "Ese lleva frutos secos."
+- Audio played: EN "That one contains nuts." · FR "Celui-là contient des noix." · ES "Ese lleva frutos secos."
+- Meaning of the audio (HE): "זה מכיל אגוזים."
+- Buttons show: the ANSWER tiles, target language only; their order is shuffled; a matched pair locks and leaves the board, so later pairs have fewer live tiles
+- Choices:
+  1. EN "🔍 They will check / בודקים במטבח" · FR "🔍 They will check / בודקים במטבח" · ES "🔍 They will check / בודקים במטבח" · (HE gloss "אבדוק עם המטבח.") — `reply.diet.let-me-check` — ❌ wrong
+  2. EN "➖ They can make it without / אפשר להכין בלי" · FR "➖ They can make it without / אפשר להכין בלי" · ES "➖ They can make it without / אפשר להכין בלי" · (HE gloss "אפשר להכין בלי.") — `reply.diet.make-without` — ❌ wrong
+  3. EN "⚠️ 🥜 It contains nuts / יש בזה אגוזים" · FR "⚠️ 🥜 It contains nuts / יש בזה אגוזים" · ES "⚠️ 🥜 It contains nuts / יש בזה אגוזים" · (HE gloss "זה מכיל אגוזים.") — `reply.diet.contains-nuts` — ✅ accepted
+- Tests: reply.diet.contains-nuts
+- Explanation shown after answering: none — a correct match locks both tiles under a shared number and speaks the answer; a miss shakes, shows ✕ and clears (no penalty)
+
+### M15-Q08 — quick-reply (step 9, round 1 of 5)
+
+- Prompt displayed: "Ordering safely — what do you say?" / "להזמין בבטחה — מה אומרים?"
+- Audio played: EN "Hi there! Are you ready to order?" · FR "Bonjour ! Vous êtes prêt à commander ?" · ES "¡Hola! ¿Está listo para pedir?"
+- Meaning of the audio (HE): "היי! מוכן להזמין?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "I'm allergic to nuts." · FR "Je suis allergique aux noix." · ES "Soy alérgico a los frutos secos." · (HE gloss "אני אלרגי לאגוזים.") — `phrase.diet.allergic-nuts` — ✅ accepted
+  2. EN "Is this spicy?" · FR "C’est épicé ?" · ES "¿Esto pica?" · (HE gloss "זה חריף?") — `phrase.diet.is-spicy` — ❌ wrong
+  3. EN "Without onions, please." · FR "Sans oignons, s’il vous plaît." · ES "Sin cebolla, por favor." · (HE gloss "בלי בצל, בבקשה.") — `phrase.diet.without-onions` — ❌ wrong
+- Tests: phrase.diet.allergic-nuts
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M15-Q09 — quick-reply (step 9, round 2 of 5)
+
+- Prompt displayed: "Ordering safely — what do you say?" / "להזמין בבטחה — מה אומרים?"
+- Audio played: EN "Thank you for telling me. Any other allergies or dietary restrictions?" · FR "Merci de me le dire. D’autres allergies ou restrictions alimentaires ?" · ES "Gracias por avisarme. ¿Alguna otra alergia o restricción alimentaria?"
+- Meaning of the audio (HE): "תודה שאמרת. יש עוד אלרגיות או הגבלות תזונה?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "I'm vegetarian." · FR "Je suis végétarien." · ES "Soy vegetariano." · (HE gloss "אני צמחוני.") — `phrase.diet.vegetarian` — ✅ accepted
+  2. EN "Is this spicy?" · FR "C’est épicé ?" · ES "¿Esto pica?" · (HE gloss "זה חריף?") — `phrase.diet.is-spicy` — ❌ wrong
+  3. EN "Without onions, please." · FR "Sans oignons, s’il vous plaît." · ES "Sin cebolla, por favor." · (HE gloss "בלי בצל, בבקשה.") — `phrase.diet.without-onions` — ❌ wrong
+- Tests: phrase.diet.vegetarian
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M15-Q10 — quick-reply (step 9, round 3 of 5)
+
+- Prompt displayed: "Ordering safely — what do you say?" / "להזמין בבטחה — מה אומרים?" — situation shown: "The waiter suggests a dish. You need to know whether there is dairy in it." / "המלצר מציע מנה. אתה צריך לדעת אם יש בה מוצרי חלב."
+- Audio played: EN "(nothing is played — a situation is shown)" · FR "(nothing is played — a situation is shown)" · ES "(nothing is played — a situation is shown)"
+- Meaning of the audio (HE): —
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Does it have dairy?" · FR "Est-ce qu’il y a des produits laitiers dedans ?" · ES "¿Esto lleva lácteos?" · (HE gloss "יש בזה מוצרי חלב?") — `phrase.diet.does-have-dairy` — ✅ accepted
+  2. EN "Is this spicy?" · FR "C’est épicé ?" · ES "¿Esto pica?" · (HE gloss "זה חריף?") — `phrase.diet.is-spicy` — ❌ wrong
+  3. EN "I'm vegetarian." · FR "Je suis végétarien." · ES "Soy vegetariano." · (HE gloss "אני צמחוני.") — `phrase.diet.vegetarian` — ❌ wrong
+- Tests: phrase.diet.does-have-dairy
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M15-Q11 — quick-reply (step 9, round 4 of 5)
+
+- Prompt displayed: "Ordering safely — what do you say?" / "להזמין בבטחה — מה אומרים?"
+- Audio played: EN "We can make it without." · FR "On peut le faire sans." · ES "Se lo podemos hacer sin eso."
+- Meaning of the audio (HE): "אפשר להכין בלי."
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Great. Without onions, please." · FR "Parfait. Sans oignons, s’il vous plaît." · ES "Genial. Sin cebolla, por favor." · (HE gloss "בלי בצל, בבקשה.") — `phrase.diet.without-onions` — ✅ accepted
+  2. EN "I'm vegetarian." · FR "Je suis végétarien." · ES "Soy vegetariano." · (HE gloss "אני צמחוני.") — `phrase.diet.vegetarian` — ❌ wrong
+  3. EN "I'm allergic to nuts." · FR "Je suis allergique aux noix." · ES "Soy alérgico a los frutos secos." · (HE gloss "אני אלרגי לאגוזים.") — `phrase.diet.allergic-nuts` — ❌ wrong
+- Tests: phrase.diet.without-onions
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M15-Q12 — quick-reply (step 9, round 5 of 5)
+
+- Prompt displayed: "Ordering safely — what do you say?" / "להזמין בבטחה — מה אומרים?"
+- Audio played: EN "That one contains nuts." · FR "Celui-là contient des noix." · ES "Ese lleva frutos secos."
+- Meaning of the audio (HE): "זה מכיל אגוזים."
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "I'm allergic to nuts." · FR "Je suis allergique aux noix." · ES "Soy alérgico a los frutos secos." · (HE gloss "אני אלרגי לאגוזים.") — `phrase.diet.allergic-nuts` — ✅ accepted
+  2. EN "Can you repeat that?" · FR "Vous pouvez répéter ?" · ES "¿Puede repetir, por favor?" · (HE gloss "אפשר לחזור על זה?") — `phrase.recovery.repeat` — ✅ accepted
+  3. EN "Without onions, please." · FR "Sans oignons, s’il vous plaît." · ES "Sin cebolla, por favor." · (HE gloss "בלי בצל, בבקשה.") — `phrase.diet.without-onions` — ❌ wrong
+- Tests: phrase.diet.allergic-nuts, phrase.recovery.repeat
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M15-Q23 — quick-reply (step 13, round 1 of 4 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "Hi there! Are you ready to order?" · FR "Bonjour ! Vous êtes prêt à commander ?" · ES "¡Hola! ¿Está listo para pedir?"
+- Meaning of the audio (HE): "היי! מוכן להזמין?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "I'm allergic to nuts." · FR "Je suis allergique aux noix." · ES "Soy alérgico a los frutos secos." · (HE gloss "אני אלרגי לאגוזים.") — `phrase.diet.allergic-nuts` — ✅ accepted
+  2. EN "Without onions, please." · FR "Sans oignons, s’il vous plaît." · ES "Sin cebolla, por favor." · (HE gloss "בלי בצל, בבקשה.") — `phrase.diet.without-onions` — ❌ wrong
+  3. EN "Is this spicy?" · FR "C’est épicé ?" · ES "¿Esto pica?" · (HE gloss "זה חריף?") — `phrase.diet.is-spicy` — ❌ wrong
+- Tests: phrase.diet.allergic-nuts
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M15-Q24 — quick-reply (step 13, round 2 of 4 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "Thank you for telling me. Any other allergies or dietary restrictions?" · FR "Merci de me le dire. D’autres allergies ou restrictions alimentaires ?" · ES "Gracias por avisarme. ¿Alguna otra alergia o restricción alimentaria?"
+- Meaning of the audio (HE): "תודה שאמרת. יש עוד אלרגיות או הגבלות תזונה?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "I'm vegetarian." · FR "Je suis végétarien." · ES "Soy vegetariano." · (HE gloss "אני צמחוני.") — `phrase.diet.vegetarian` — ✅ accepted
+  2. EN "Without onions, please." · FR "Sans oignons, s’il vous plaît." · ES "Sin cebolla, por favor." · (HE gloss "בלי בצל, בבקשה.") — `phrase.diet.without-onions` — ❌ wrong
+  3. EN "Is this spicy?" · FR "C’est épicé ?" · ES "¿Esto pica?" · (HE gloss "זה חריף?") — `phrase.diet.is-spicy` — ❌ wrong
+- Tests: phrase.diet.vegetarian
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M15-Q25 — quick-reply (step 13, round 3 of 4 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "Got it. The mushroom risotto is vegetarian, but I'll check with the kitchen about the nuts." · FR "Compris. Le risotto aux champignons est végétarien, mais je vérifie avec la cuisine pour les noix." · ES "Entendido. El risotto de champiñones es vegetariano, pero lo compruebo con la cocina por los frutos secos."
+- Meaning of the audio (HE): "הבנתי. ריזוטו הפטריות צמחוני, אבל אבדוק עם המטבח לגבי האגוזים."
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Does it have dairy?" · FR "Est-ce qu’il y a des produits laitiers dedans ?" · ES "¿Esto lleva lácteos?" · (HE gloss "יש בזה מוצרי חלב?") — `phrase.diet.does-have-dairy` — ✅ accepted
+  2. EN "Can you repeat that?" · FR "Vous pouvez répéter ?" · ES "¿Puede repetir, por favor?" · (HE gloss "אפשר לחזור על זה?") — `phrase.recovery.repeat` — ✅ accepted
+  3. EN "I'm vegetarian." · FR "Je suis végétarien." · ES "Soy vegetariano." · (HE gloss "אני צמחוני.") — `phrase.diet.vegetarian` — ❌ wrong
+- Tests: phrase.diet.does-have-dairy, phrase.recovery.repeat
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M15-Q26 — quick-reply (step 13, round 4 of 4 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "Yes, it has some cream, but we can make it without." · FR "Oui, il y a un peu de crème, mais on peut le faire sans." · ES "Sí, lleva un poco de nata, pero se lo podemos hacer sin ella."
+- Meaning of the audio (HE): "כן, יש בו קצת שמנת, אבל אפשר להכין בלי."
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Great. Without onions, please." · FR "Parfait. Sans oignons, s’il vous plaît." · ES "Genial. Sin cebolla, por favor." · (HE gloss "בלי בצל, בבקשה.") — `phrase.diet.without-onions` — ✅ accepted
+  2. EN "I'm allergic to nuts." · FR "Je suis allergique aux noix." · ES "Soy alérgico a los frutos secos." · (HE gloss "אני אלרגי לאגוזים.") — `phrase.diet.allergic-nuts` — ❌ wrong
+  3. EN "I'm vegetarian." · FR "Je suis végétarien." · ES "Soy vegetariano." · (HE gloss "אני צמחוני.") — `phrase.diet.vegetarian` — ❌ wrong
+- Tests: phrase.diet.without-onions
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
 ## Dialogue — full tree
 
@@ -10698,7 +11428,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 
 ## Learner choice screens
 
-### M15-Q07 — dialogue-choice (step 10, scene "allergy-order" · node c1)
+### M15-Q13 — dialogue-choice (step 10, scene "allergy-order" · node c1)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Hi there! Are you ready to order?" · FR "Bonjour ! Vous êtes prêt à commander ?" · ES "¡Hola! ¿Está listo para pedir?"
@@ -10710,7 +11440,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.diet.allergic-nuts, phrase.recovery.slowly
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M15-Q08 — dialogue-choice (step 10, scene "allergy-order" · node c1b)
+### M15-Q14 — dialogue-choice (step 10, scene "allergy-order" · node c1b)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Sure — are you ready to order?" · FR "Bien sûr — vous êtes prêt à commander ?" · ES "Claro — ¿está listo para pedir?"
@@ -10721,7 +11451,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.diet.allergic-nuts
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M15-Q09 — dialogue-choice (step 10, scene "allergy-order" · node c2)
+### M15-Q15 — dialogue-choice (step 10, scene "allergy-order" · node c2)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Thank you for telling me. Any other allergies or dietary restrictions?" · FR "Merci de me le dire. D’autres allergies ou restrictions alimentaires ?" · ES "Gracias por avisarme. ¿Alguna otra alergia o restricción alimentaria?"
@@ -10733,7 +11463,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.diet.vegetarian, phrase.recovery.thank-you
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M15-Q10 — dialogue-choice (step 10, scene "allergy-order" · node c2b)
+### M15-Q16 — dialogue-choice (step 10, scene "allergy-order" · node c2b)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Of course — but is there anything else I should know?" · FR "Bien sûr — mais y a-t-il autre chose que je devrais savoir ?" · ES "Claro — pero, ¿hay algo más que deba saber?"
@@ -10744,7 +11474,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.diet.vegetarian
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M15-Q11 — dialogue-choice (step 10, scene "allergy-order" · node c3)
+### M15-Q17 — dialogue-choice (step 10, scene "allergy-order" · node c3)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Got it. The mushroom risotto is vegetarian, but I'll check with the kitchen about the nuts." · FR "Compris. Le risotto aux champignons est végétarien, mais je vérifie avec la cuisine pour les noix." · ES "Entendido. El risotto de champiñones es vegetariano, pero lo compruebo con la cocina por los frutos secos."
@@ -10756,7 +11486,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.diet.does-have-dairy, phrase.recovery.repeat
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M15-Q12 — dialogue-choice (step 10, scene "allergy-order" · node c3b)
+### M15-Q18 — dialogue-choice (step 10, scene "allergy-order" · node c3b)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "The mushroom risotto — is vegetarian." · FR "Le risotto aux champignons — est végétarien." · ES "El risotto de champiñones — es vegetariano."
@@ -10767,7 +11497,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.diet.does-have-dairy
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M15-Q13 — dialogue-choice (step 10, scene "allergy-order" · node c4)
+### M15-Q19 — dialogue-choice (step 10, scene "allergy-order" · node c4)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Yes, it has some cream, but we can make it without." · FR "Oui, il y a un peu de crème, mais on peut le faire sans." · ES "Sí, lleva un poco de nata, pero se lo podemos hacer sin ella."
@@ -10779,7 +11509,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.diet.without-onions, phrase.diet.is-spicy
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M15-Q14 — dialogue-choice (step 10, scene "allergy-order" · node c4b)
+### M15-Q20 — dialogue-choice (step 10, scene "allergy-order" · node c4b)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Not at all — it's very mild." · FR "Pas du tout — c’est très doux." · ES "Para nada — es muy suave."
@@ -10790,7 +11520,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.diet.without-onions
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M15-Q15 — dialogue-choice (step 10, scene "allergy-order" · node c5)
+### M15-Q21 — dialogue-choice (step 10, scene "allergy-order" · node c5)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Of course. I'll tell the kitchen about your allergy." · FR "Bien sûr. Je préviens la cuisine pour votre allergie." · ES "Claro. Aviso a la cocina de su alergia."
@@ -10802,7 +11532,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.recovery.thank-you, phrase.recovery.slowly
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M15-Q16 — dialogue-choice (step 10, scene "allergy-order" · node c5b)
+### M15-Q22 — dialogue-choice (step 10, scene "allergy-order" · node c5b)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "I'll tell — the kitchen — about your allergy." · FR "Je préviens — la cuisine — pour votre allergie." · ES "Aviso — a la cocina — de su alergia."
@@ -10835,31 +11565,28 @@ Where a conversation-help tool can be selected, and what happens:
 
 ## Sentence review
 
-Step 12. 14 sentences, in this fixed order. Each is played automatically (TTS), shown with its translation and tip; buttons: 🔊 "Hear again" / "לשמוע שוב" and Next. No speaking prompt, no grading, no scoring; nothing is recorded.
+Step 12. 11 sentences, in this fixed order. Each is played automatically (TTS), shown with its translation and tip; buttons: 🔊 "Hear again" / "לשמוע שוב" and Next. No speaking prompt, no grading, no scoring; nothing is recorded.
 
 1. `phrase.diet.allergic-nuts` — I'm allergic to nuts. — אני אלרגי לאגוזים.
-2. `phrase.diet.without-onions` — Without onions, please. — בלי בצל, בבקשה.
-3. `phrase.diet.vegetarian` — I'm vegetarian. — אני צמחוני.
-4. `phrase.diet.does-have-dairy` — Does it have dairy? — יש בזה מוצרי חלב?
+2. `phrase.diet.vegetarian` — I'm vegetarian. — אני צמחוני.
+3. `phrase.diet.does-have-dairy` — Does it have dairy? — יש בזה מוצרי חלב?
+4. `phrase.diet.without-onions` — Without onions, please. — בלי בצל, בבקשה.
 5. `phrase.diet.is-spicy` — Is this spicy? — זה חריף?
 6. `reply.diet.let-me-check` — Let me check with the kitchen. — אבדוק עם המטבח.
 7. `reply.diet.make-without` — We can make it without. — אפשר להכין בלי.
 8. `reply.diet.contains-nuts` — That one contains nuts. — זה מכיל אגוזים.
-9. `reply.diet.not-spicy` — No, it's not spicy. — לא, זה לא חריף.
-10. `reply.diet.good-option` — This one is a good option for you. — זו אפשרות טובה בשבילך.
-11. `reply.diet.anything-else-allergic` — Any other allergies? — יש עוד אלרגיות?
-12. `phrase.recovery.repeat` — Can you repeat that? — אפשר לחזור על זה?
-13. `phrase.recovery.slowly` — Please speak slowly. — דבר לאט, בבקשה.
-14. `phrase.recovery.thank-you` — Thank you! — תודה!
+9. `reply.diet.anything-else-allergic` — Any other allergies? — יש עוד אלרגיות?
+10. `phrase.recovery.repeat` — Can you repeat that? — אפשר לחזור על זה?
+11. `phrase.recovery.slowly` — Please speak slowly. — דבר לאט, בבקשה.
 
 ## Cold open / ambush
 
-### M15-Q17 — cold-open (step 13, single prompt · mode: not set (original behaviour))
+### M15-Q27 — cold-open (step 15, single prompt · mode: recovery)
 
 - Prompt displayed: "Heads up: a fast one is coming. Use a tool." / "שים לב: מגיע משפט מהיר. השתמש בכלי."
 - Audio played: EN "Just to be safe does your nut allergy mean we should avoid the shared fryer too?" · FR "Juste pour être sûr, votre allergie aux noix veut dire qu’on doit aussi éviter la friteuse partagée ?" · ES "Solo para asegurarme, ¿su alergia a los frutos secos significa que también debemos evitar la freidora compartida?"
 - Meaning of the audio (HE): "רק ליתר ביטחון — האלרגיה לאגוזים אומרת שכדאי להימנע גם מהמטגן המשותף?"
-- Buttons show: TARGET-LANGUAGE text of the two sentences, each prefixed with 🛟; order shuffled
+- Buttons show: TARGET-LANGUAGE text of the two sentences; only the conversation-help tool carries 🛟; order shuffled
 - Choices:
   1. EN "Can you repeat that?" · FR "Vous pouvez répéter ?" · ES "¿Puede repetir, por favor?" · (HE gloss "אפשר לחזור על זה?") — `phrase.recovery.repeat` — ✅ accepted
   2. EN "I'm vegetarian." · FR "Je suis végétarien." · ES "Soy vegetariano." · (HE gloss "אני צמחוני.") — `phrase.diet.vegetarian` — ❌ wrong
@@ -10887,18 +11614,19 @@ Every learner sentence of this mission is a line in a scene.
 
 - Step 7: "You recognize how a kitchen responds to an allergy — check, warning, and solution." / "אתה מזהה איך המטבח מגיב לאלרגיה — בדיקה, אזהרה, ופתרון."
 - Step 11: "You ordered a meal that works for you — allergy, vegetarian, no onions, ingredients checked." / "הזמנת ארוחה שמתאימה לך — אלרגיה, צמחוני, בלי בצל, בדיקת מרכיבים."
-- Step 14: "A detailed, fast safety question — and you asked them to repeat instead of guessing. With an allergy, exactly the right move." / "שאלת בטיחות מפורטת ומהירה — וביקשת שיחזרו במקום לנחש. עם אלרגיה, זה בדיוק הצעד הנכון."
+- Step 14: "The allergy, what you eat, what is in the dish and what to leave out — you said it all, clearly and in the right order." / "אלרגיה, מה אתה אוכל, מה יש במנה ומה להוריד — אמרת הכל, ברור ובסדר הנכון."
+- Step 16: "A detailed, fast safety question — and you asked them to repeat instead of guessing. With an allergy, exactly the right move." / "שאלת בטיחות מפורטת ומהירה — וביקשת שיחזרו במקום לנחש. עם אלרגיה, זה בדיוק הצעד הנכון."
 
 ## Audit Metadata — DO NOT FIX YET
 
 - Learner-production sentences: 5
-- Receptive (expected-reply) sentences: 6
+- Receptive (expected-reply) sentences: 5
 - Toolkit phrases bundled: 3
 - Key-sentence steps: 4
 - Expected-reply/listening items: 4
-- Questions/quizzes (meaning quiz): 2
-- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 0
-- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 5
+- Questions/quizzes (meaning quiz): 0
+- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 12
+- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 17
 - One-button dialogue screens: 5
 - Learner sentences never actively retrieved: 0
 - Dialogue learner choices (screens): 10
@@ -10907,22 +11635,18 @@ Every learner sentence of this mission is a line in a scene.
 - Recovery opportunities: 3
 - Vocabulary pre-items: 0
 - Swap variants (extra accepted lines): 1
-- Sentences in review: 14
-- Total interactive questions: 17 (answer choices: 35)
-- Approximate total learner interactions: 35 (questions + key sentences + review cards + word-intro screen)
+- Sentences in review: 11
+- Total interactive questions: 27 (answer choices: 65)
+- Approximate total learner interactions: 42 (questions + key sentences + review cards + word-intro screen)
 
-### AUTO-FLAG — requires human review (10)
+### AUTO-FLAG — requires human review (6)
 
-- AUTO-FLAG — Same prompt tested repeatedly: “Let me check with the kitchen.” is the audio of M15-Q01 and M15-Q06.
-- AUTO-FLAG — Same prompt tested repeatedly: “That one contains nuts.” is the audio of M15-Q03 and M15-Q05.
 - AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "allergy-order" n1 — “Hi there! Are you ready to order?”
 - AUTO-FLAG — Practice item wording not in this mission's dialogue: `reply.diet.let-me-check` “Let me check with the kitchen.” (drilled as an expected reply / distractor, but no NPC line here says it).
 - AUTO-FLAG — Practice item wording not in this mission's dialogue: `reply.diet.contains-nuts` “That one contains nuts.” (drilled as an expected reply / distractor, but no NPC line here says it).
 - AUTO-FLAG — Practice item wording not in this mission's dialogue: `reply.diet.not-spicy` “No, it's not spicy.” (drilled as an expected reply / distractor, but no NPC line here says it).
-- AUTO-FLAG — Practice item wording not in this mission's dialogue: `reply.diet.good-option` “This one is a good option for you.” (drilled as an expected reply / distractor, but no NPC line here says it).
 - AUTO-FLAG — 9 of 10 choice screens have NO wrong option (every button is accepted): allergy-order/c1, allergy-order/c1b, allergy-order/c2b, allergy-order/c3, allergy-order/c3b, allergy-order/c4, allergy-order/c4b, allergy-order/c5, allergy-order/c5b.
 - AUTO-FLAG — 5 choice screens offer exactly ONE button (no decision): allergy-order/c1b, allergy-order/c2b, allergy-order/c3b, allergy-order/c4b, allergy-order/c5b.
-- AUTO-FLAG — M15-Q17: cold-open line contains English words not met in any sentence or dialogue line up to this mission: safe, nut, mean, avoid, shared, fryer.
 
 ---
 
@@ -10972,13 +11696,15 @@ Intro screen (first Practice step; identical in the English, French and Spanish 
 7. `tool` — key sentence (listen → reveal → say aloud) — `phrase.hobby.what-for-fun` “What do you do for fun?” · label "Ask back" / "לשאול בחזרה" (6/6)
 8. `replies` — expected replies (listening drill) — after `phrase.hobby.i-like-drawing`: 4 replies
 9. `receipt` — receipt (proof card) — "You recognize it when someone asks what you like — and what else." / "אתה מזהה כששואלים מה אתה אוהב — ומה עוד."
-10. `quiz` — meaning quiz (listening) — hears `reply.hobby.want-to-try-q`
-11. `dialogue` — dialogue (choose your line) — scene `free-time-chat`
-12. `receipt` — receipt (proof card) — "You said what you like, what you don’t, and what you want to try — and asked back." / "סיפרת מה אתה אוהב, מה לא, ומה אתה רוצה לנסות — ושאלת בחזרה."
-13. `swipe` — sentence review — 15 sentences
-14. `ambush` — cold open (fast line) — mode not set · correct `reply.hobby.do-you-like-music`, wrong `reply.hobby.go-together`
-15. `receipt` — receipt (proof card) — "A fast double question — and you caught that it is about what you like." / "שאלה כפולה ומהירה — ותפסת שהיא על מה שאתה אוהב."
-16. `summary` — victory screen
+10. `swap` — swap it (one frame, several endings) — 3 round(s)
+11. `sentenceBuilder` — sentence builder (put the chunks in order) — 1 round(s)
+12. `quickReply` — quick reply (hear → pick your response) — 6 round(s)
+13. `dialogue` — dialogue (choose your line) — scene `free-time-chat`
+14. `receipt` — receipt (proof card) — "You said what you like, what you don’t, and what you want to try — and asked back." / "סיפרת מה אתה אוהב, מה לא, ומה אתה רוצה לנסות — ושאלת בחזרה."
+15. `swipe` — sentence review — 12 sentences
+16. `quickReply` — quick reply (hear → pick your response) — 5 round(s) · speed challenge
+17. `receipt` — receipt (proof card) — "A whole chat about what you like, at normal pace — without hunting for words." / "שיחה שלמה על מה שאתה אוהב, בקצב רגיל — בלי לחפש מילים."
+18. `summary` — victory screen
 
 Step sequence identical in EN / FR / ES: yes.
 
@@ -10999,7 +11725,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 16
-- Exercised here as: key sentence (step 7); sentence review (step 13); dialogue choice free-time-chat/c2 (accepted)
+- Exercised here as: key sentence (step 7); quick-reply response (step 12, round 4, wrong option); quick-reply response (step 12, round 6, accepted); sentence review (step 15); quick-reply response (step 16, round 1, wrong option); quick-reply response (step 16, round 2, wrong option); dialogue choice free-time-chat/c2 (accepted)
 
 ### Sentence: `phrase.hobby.i-love-surfing`
 
@@ -11010,7 +11736,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 16, 18
-- Exercised here as: key sentence (step 3); sentence review (step 13); dialogue choice free-time-chat/c4 (accepted)
+- Exercised here as: key sentence (step 3); swap-it frame (step 10, round 2); quick-reply response (step 12, round 1, accepted); sentence review (step 15); quick-reply response (step 16, round 1, accepted); quick-reply response (step 16, round 3, wrong option); dialogue choice free-time-chat/c4 (accepted)
 
 ### Sentence: `phrase.hobby.i-like-drawing`
 
@@ -11021,7 +11747,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "I like ___ — swap the hobby, the sentence stays." / "I like ___ — מחליפים את התחביב, המשפט נשאר."
 - Used in missions: 16
-- Exercised here as: key sentence (step 2); "you said" lead-in of the expected-replies drill (step 8); sentence review (step 13); dialogue choice free-time-chat/c6 (accepted)
+- Exercised here as: key sentence (step 2); "you said" lead-in of the expected-replies drill (step 8); swap-it frame (step 10, round 3); quick-reply response (step 12, round 2, accepted); quick-reply response (step 12, round 3, wrong option); quick-reply response (step 12, round 6, wrong option); sentence review (step 15); quick-reply response (step 16, round 2, accepted); quick-reply response (step 16, round 5, wrong option); dialogue choice free-time-chat/c6 (accepted)
 
 ### Sentence: `phrase.hobby.i-usually`
 
@@ -11031,8 +11757,8 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Normalmente dibujo por la noche.
 - Role: learner production
 - Tip / pattern note: none
-- Used in missions: 16
-- Exercised here as: key sentence (step 5); sentence review (step 13); dialogue choice free-time-chat/c8 (accepted)
+- Used in missions: 16, 18
+- Exercised here as: key sentence (step 5); sentence-builder target (step 11, round 1); quick-reply response (step 12, round 1, wrong option); quick-reply response (step 12, round 3, accepted); quick-reply response (step 12, round 4, wrong option); quick-reply response (step 12, round 5, wrong option); sentence review (step 15); quick-reply response (step 16, round 1, wrong option); quick-reply response (step 16, round 3, accepted); quick-reply response (step 16, round 5, wrong option); dialogue choice free-time-chat/c8 (accepted)
 
 ### Sentence: `phrase.hobby.like-to-listen`
 
@@ -11043,7 +11769,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 16
-- Exercised here as: sentence review (step 13); dialogue choice free-time-chat/c10 (accepted)
+- Exercised here as: quick-reply response (step 12, round 2, accepted); quick-reply response (step 12, round 5, wrong option); sentence review (step 15); quick-reply response (step 16, round 4, accepted); dialogue choice free-time-chat/c10 (accepted)
 
 ### Sentence: `phrase.hobby.dont-like-running`
 
@@ -11054,7 +11780,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 16
-- Exercised here as: key sentence (step 4); sentence review (step 13); dialogue choice free-time-chat/c12 (accepted)
+- Exercised here as: key sentence (step 4); swap-it frame (step 10, round 1); quick-reply response (step 12, round 4, accepted); sentence review (step 15); quick-reply response (step 16, round 4, wrong option); dialogue choice free-time-chat/c12 (accepted)
 
 ### Sentence: `phrase.hobby.want-to-try`
 
@@ -11065,7 +11791,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "I want to try ___ — for anything new on a trip." / "I want to try ___ — לכל דבר חדש בטיול."
 - Used in missions: 16
-- Exercised here as: key sentence (step 6); sentence review (step 13); dialogue choice free-time-chat/c14 (accepted); dialogue choice free-time-chat/c14b (accepted)
+- Exercised here as: key sentence (step 6); quick-reply response (step 12, round 1, wrong option); quick-reply response (step 12, round 3, wrong option); quick-reply response (step 12, round 5, accepted); quick-reply response (step 12, round 6, wrong option); sentence review (step 15); quick-reply response (step 16, round 3, wrong option); quick-reply response (step 16, round 4, wrong option); quick-reply response (step 16, round 5, accepted); dialogue choice free-time-chat/c14 (accepted); dialogue choice free-time-chat/c14b (accepted)
 
 ### Sentence: `phrase.hobby.do-you-like`
 
@@ -11076,7 +11802,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 16
-- Exercised here as: sentence review (step 13); dialogue choice free-time-chat/c16 (accepted)
+- Exercised here as: quick-reply response (step 12, round 2, wrong option); sentence review (step 15); quick-reply response (step 16, round 2, wrong option); dialogue choice free-time-chat/c16 (accepted)
 
 ### Sentence: `reply.hobby.do-you-like-surfing`
 
@@ -11087,7 +11813,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 16
-- Exercised here as: sentence review (step 13)
+- Exercised here as: quick-reply prompt (step 12, round 1)
 
 ### Sentence: `reply.hobby.what-else`
 
@@ -11098,7 +11824,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 16
-- Exercised here as: expected-reply audio (step 8); sentence review (step 13)
+- Exercised here as: expected-reply audio (step 8); quick-reply prompt (step 12, round 2); sentence review (step 15)
 
 ### Sentence: `reply.hobby.do-you-like-music`
 
@@ -11109,7 +11835,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 16
-- Exercised here as: expected-reply audio (step 8); meaning-quiz distractor (step 10); sentence review (step 13); cold-open correct option (step 14)
+- Exercised here as: expected-reply audio (step 8)
 
 ### Sentence: `reply.hobby.me-neither`
 
@@ -11120,7 +11846,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 16
-- Exercised here as: expected-reply audio (step 8); meaning-quiz distractor (step 10); sentence review (step 13)
+- Exercised here as: expected-reply audio (step 8); sentence review (step 15)
 
 ### Sentence: `reply.hobby.want-to-try-q`
 
@@ -11131,7 +11857,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 16
-- Exercised here as: meaning-quiz audio (step 10); sentence review (step 13)
+- Exercised here as: quick-reply prompt (step 12, round 5); sentence review (step 15)
 
 ### Sentence: `reply.hobby.go-together`
 
@@ -11142,7 +11868,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 16
-- Exercised here as: expected-reply audio (step 8); sentence review (step 13); cold-open wrong option (step 14)
+- Exercised here as: expected-reply audio (step 8)
 
 ### Sentence: `phrase.recovery.what-mean`
 
@@ -11153,7 +11879,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
 - Used in missions: 16, 25
-- Exercised here as: sentence review (step 13); dialogue choice free-time-chat/c14 (accepted)
+- Exercised here as: sentence review (step 15); dialogue choice free-time-chat/c14 (accepted)
 
 ## Expected replies / listening items
 
@@ -11214,22 +11940,202 @@ Linked learner sentence: `phrase.hobby.i-like-drawing`. Each reply below is play
 
 ## Quizzes
 
-### M16-Q05 — meaning-quiz (step 10, single question)
-
-- Prompt displayed: "What did it mean?" / "מה זה אומר?"
-- Audio played: EN "Is there something you want to try?" · FR "Il y a quelque chose que tu veux essayer ?" · ES "¿Hay algo que quieras probar?"
-- Meaning of the audio (HE): "יש משהו שאתה רוצה לנסות?"
-- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
-- Choices:
-  1. HE "יש משהו שאתה רוצה לנסות?" / EN "Is there something you want to try?" — `reply.hobby.want-to-try-q` — ✅ accepted
-  2. HE "אתה אוהב מוזיקה?" / EN "Do you like music?" — `reply.hobby.do-you-like-music` — ❌ wrong
-  3. HE "גם אני לא!" / EN "Me neither!" — `reply.hobby.me-neither` — ❌ wrong
-- Tests: reply.hobby.want-to-try-q
-- Explanation shown after answering: generic: “Is there something you want to try?” means “יש משהו שאתה רוצה לנסות?”.
+No meaning quiz in this mission.
 
 ## Active practice — Quick Reply · Visual Match · Swap It · Mini Map
 
-None in this mission.
+### M16-Q05 — swap-it (step 10, round 1 of 3)
+
+- Prompt displayed: "Like it, love it, or not for you?" / "אוהב, מאוד אוהב, או לא אוהב?" — cue 🙅 "Running — not for you" / "ריצה — זה לא בשבילך" — frame EN "I ___ running." · FR "___ courir." · ES "___ correr."
+- Audio played: EN "(nothing before the tap; the completed sentence is spoken after it)" · FR "(same)" · ES "(same)"
+- Meaning of the audio (HE): —
+- Buttons show: the SLOT VALUES in the target language (shown here as "value → completed sentence"); order shuffled; a "wrong" value still produces and speaks a real sentence, with its translation
+- Choices:
+  1. EN "like → I like running." · FR "J’aime → J’aime courir." · ES "Me gusta → Me gusta correr." · (HE gloss "אני אוהב לרוץ.") — no sentence id — ❌ wrong
+  2. EN "love → I love running." · FR "J’adore → J’adore courir." · ES "Me encanta → Me encanta correr." · (HE gloss "אני מאוד אוהב לרוץ.") — no sentence id — ❌ wrong
+  3. EN "don't like → I don't like running." · FR "Je n’aime pas → Je n’aime pas courir." · ES "No me gusta → No me gusta correr." · (HE gloss "אני לא אוהב לרוץ.") — `phrase.hobby.dont-like-running` — ✅ accepted
+- Tests: phrase.hobby.dont-like-running
+- Explanation shown after answering: after the tap: the completed sentence, spoken, with its translation
+
+### M16-Q06 — swap-it (step 10, round 2 of 3)
+
+- Prompt displayed: "Like it, love it, or not for you?" / "אוהב, מאוד אוהב, או לא אוהב?" — cue 😍 "Surfing — you love it" / "גלישה — אתה מת על זה" — frame EN "I ___ surfing!" · FR "___ le surf !" · ES "¡___ el surf!"
+- Audio played: EN "(nothing before the tap; the completed sentence is spoken after it)" · FR "(same)" · ES "(same)"
+- Meaning of the audio (HE): —
+- Buttons show: the SLOT VALUES in the target language (shown here as "value → completed sentence"); order shuffled; a "wrong" value still produces and speaks a real sentence, with its translation
+- Choices:
+  1. EN "like → I like surfing!" · FR "J’aime → J’aime le surf !" · ES "Me gusta → ¡Me gusta el surf!" · (HE gloss "אני אוהב לגלוש.") — no sentence id — ❌ wrong
+  2. EN "love → I love surfing!" · FR "J’adore → J’adore le surf !" · ES "Me encanta → ¡Me encanta el surf!" · (HE gloss "אני מאוד אוהב לגלוש.") — `phrase.hobby.i-love-surfing` — ✅ accepted
+  3. EN "don't like → I don't like surfing!" · FR "Je n’aime pas → Je n’aime pas le surf !" · ES "No me gusta → ¡No me gusta el surf!" · (HE gloss "אני לא אוהב לגלוש.") — no sentence id — ❌ wrong
+- Tests: phrase.hobby.i-love-surfing
+- Explanation shown after answering: after the tap: the completed sentence, spoken, with its translation
+
+### M16-Q07 — swap-it (step 10, round 3 of 3)
+
+- Prompt displayed: "Like it, love it, or not for you?" / "אוהב, מאוד אוהב, או לא אוהב?" — cue 🙂 "Drawing — you like it" / "ציור — אתה אוהב את זה" — frame EN "I ___ drawing." · FR "___ dessiner." · ES "___ dibujar."
+- Audio played: EN "(nothing before the tap; the completed sentence is spoken after it)" · FR "(same)" · ES "(same)"
+- Meaning of the audio (HE): —
+- Buttons show: the SLOT VALUES in the target language (shown here as "value → completed sentence"); order shuffled; a "wrong" value still produces and speaks a real sentence, with its translation
+- Choices:
+  1. EN "like → I like drawing." · FR "J’aime → J’aime dessiner." · ES "Me gusta → Me gusta dibujar." · (HE gloss "אני אוהב לצייר.") — `phrase.hobby.i-like-drawing` — ✅ accepted
+  2. EN "love → I love drawing." · FR "J’adore → J’adore dessiner." · ES "Me encanta → Me encanta dibujar." · (HE gloss "אני מאוד אוהב לצייר.") — no sentence id — ❌ wrong
+  3. EN "don't like → I don't like drawing." · FR "Je n’aime pas → Je n’aime pas dessiner." · ES "No me gusta → No me gusta dibujar." · (HE gloss "אני לא אוהב לצייר.") — no sentence id — ❌ wrong
+- Tests: phrase.hobby.i-like-drawing
+- Explanation shown after answering: after the tap: the completed sentence, spoken, with its translation
+
+### M16-Q08 — sentence-builder (step 11, round 1 of 1)
+
+- Prompt displayed: "Build the sentence" / "בנה את המשפט" — cue shown: the sentence's MEANING in the app language ("בדרך כלל אני מצייר בערב.")
+- Audio played: EN "(nothing before Check; the built sentence is spoken once it is right)" · FR "(same)" · ES "(same)"
+- Meaning of the audio (HE): —
+- Buttons show: the authored CHUNKS of the sentence as tiles (listed here in the correct order, separated by "|"), shuffled; each language has its own chunks; Check unlocks when every tile is placed
+- Choices:
+  1. EN "I usually  |  draw  |  in the evening." · FR "D’habitude,  |  je dessine  |  le soir." · ES "Normalmente  |  dibujo  |  por la noche." · (HE gloss "בדרך כלל אני מצייר בערב.") — `phrase.hobby.i-usually` — ✅ accepted
+- Tests: phrase.hobby.i-usually
+- Explanation shown after answering: right: the sentence is spoken and its translation shown. Wrong: "not yet" — the tiles stay, the answer is NOT shown; after one miss a hint marks the start; after two misses the learner may reveal it
+
+### M16-Q09 — quick-reply (step 12, round 1 of 6)
+
+- Prompt displayed: "A chat about free time — what do you say?" / "שיחה על זמן פנוי — מה עונים?"
+- Audio played: EN "Do you like surfing?" · FR "Tu aimes le surf ?" · ES "¿Te gusta el surf?"
+- Meaning of the audio (HE): "אתה אוהב לגלוש?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "I love surfing!" · FR "J’adore le surf !" · ES "¡Me encanta el surf!" · (HE gloss "אני מאוד אוהב לגלוש!") — `phrase.hobby.i-love-surfing` — ✅ accepted
+  2. EN "I want to try diving." · FR "Je veux essayer la plongée." · ES "Quiero probar el buceo." · (HE gloss "אני רוצה לנסות צלילה.") — `phrase.hobby.want-to-try` — ❌ wrong
+  3. EN "I usually draw in the evening." · FR "D’habitude, je dessine le soir." · ES "Normalmente dibujo por la noche." · (HE gloss "בדרך כלל אני מצייר בערב.") — `phrase.hobby.i-usually` — ❌ wrong
+- Tests: phrase.hobby.i-love-surfing
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M16-Q10 — quick-reply (step 12, round 2 of 6)
+
+- Prompt displayed: "A chat about free time — what do you say?" / "שיחה על זמן פנוי — מה עונים?"
+- Audio played: EN "What else do you like?" · FR "Tu aimes quoi d’autre ?" · ES "¿Qué más te gusta?"
+- Meaning of the audio (HE): "מה עוד אתה אוהב?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "I like drawing." · FR "J’aime dessiner." · ES "Me gusta dibujar." · (HE gloss "אני אוהב לצייר.") — `phrase.hobby.i-like-drawing` — ✅ accepted
+  2. EN "I like to listen to music." · FR "J’aime écouter de la musique." · ES "Me gusta escuchar música." · (HE gloss "אני אוהב לשמוע מוזיקה.") — `phrase.hobby.like-to-listen` — ✅ accepted
+  3. EN "Do you like diving?" · FR "Tu aimes la plongée ?" · ES "¿Te gusta el buceo?" · (HE gloss "אתה אוהב לצלול?") — `phrase.hobby.do-you-like` — ❌ wrong
+- Tests: phrase.hobby.i-like-drawing, phrase.hobby.like-to-listen
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M16-Q11 — quick-reply (step 12, round 3 of 6)
+
+- Prompt displayed: "A chat about free time — what do you say?" / "שיחה על זמן פנוי — מה עונים?"
+- Audio played: EN "Nice! When do you draw?" · FR "Sympa ! Tu dessines quand ?" · ES "¡Qué bien! ¿Cuándo dibujas?"
+- Meaning of the audio (HE): "יפה! מתי אתה מצייר?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "I usually draw in the evening." · FR "D’habitude, je dessine le soir." · ES "Normalmente dibujo por la noche." · (HE gloss "בדרך כלל אני מצייר בערב.") — `phrase.hobby.i-usually` — ✅ accepted
+  2. EN "I like drawing." · FR "J’aime dessiner." · ES "Me gusta dibujar." · (HE gloss "אני אוהב לצייר.") — `phrase.hobby.i-like-drawing` — ❌ wrong
+  3. EN "I want to try diving." · FR "Je veux essayer la plongée." · ES "Quiero probar el buceo." · (HE gloss "אני רוצה לנסות צלילה.") — `phrase.hobby.want-to-try` — ❌ wrong
+- Tests: phrase.hobby.i-usually
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M16-Q12 — quick-reply (step 12, round 4 of 6)
+
+- Prompt displayed: "A chat about free time — what do you say?" / "שיחה על זמן פנוי — מה עונים?"
+- Audio played: EN "And sport? Do you like running?" · FR "Et le sport ? Tu aimes courir ?" · ES "¿Y el deporte? ¿Te gusta correr?"
+- Meaning of the audio (HE): "וספורט? אתה אוהב לרוץ?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "No, I don't like running." · FR "Non, je n’aime pas courir." · ES "No, no me gusta correr." · (HE gloss "אני לא אוהב לרוץ.") — `phrase.hobby.dont-like-running` — ✅ accepted
+  2. EN "I usually draw in the evening." · FR "D’habitude, je dessine le soir." · ES "Normalmente dibujo por la noche." · (HE gloss "בדרך כלל אני מצייר בערב.") — `phrase.hobby.i-usually` — ❌ wrong
+  3. EN "What do you do for fun?" · FR "Qu’est-ce que tu aimes faire ?" · ES "¿Qué te gusta hacer?" · (HE gloss "מה אתה אוהב לעשות בזמן הפנוי?") — `phrase.hobby.what-for-fun` — ❌ wrong
+- Tests: phrase.hobby.dont-like-running
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M16-Q13 — quick-reply (step 12, round 5 of 6)
+
+- Prompt displayed: "A chat about free time — what do you say?" / "שיחה על זמן פנוי — מה עונים?"
+- Audio played: EN "Is there something you want to try?" · FR "Il y a quelque chose que tu veux essayer ?" · ES "¿Hay algo que quieras probar?"
+- Meaning of the audio (HE): "יש משהו שאתה רוצה לנסות?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "I want to try diving." · FR "Je veux essayer la plongée." · ES "Quiero probar el buceo." · (HE gloss "אני רוצה לנסות צלילה.") — `phrase.hobby.want-to-try` — ✅ accepted
+  2. EN "I usually draw in the evening." · FR "D’habitude, je dessine le soir." · ES "Normalmente dibujo por la noche." · (HE gloss "בדרך כלל אני מצייר בערב.") — `phrase.hobby.i-usually` — ❌ wrong
+  3. EN "I like to listen to music." · FR "J’aime écouter de la musique." · ES "Me gusta escuchar música." · (HE gloss "אני אוהב לשמוע מוזיקה.") — `phrase.hobby.like-to-listen` — ❌ wrong
+- Tests: phrase.hobby.want-to-try
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M16-Q14 — quick-reply (step 12, round 6 of 6)
+
+- Prompt displayed: "A chat about free time — what do you say?" / "שיחה על זמן פנוי — מה עונים?" — situation shown: "You have talked about yourself. Now ask what they like doing." / "סיפרת על עצמך. עכשיו תשאל אותו מה הוא אוהב לעשות."
+- Audio played: EN "(nothing is played — a situation is shown)" · FR "(nothing is played — a situation is shown)" · ES "(nothing is played — a situation is shown)"
+- Meaning of the audio (HE): —
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "What do you do for fun?" · FR "Qu’est-ce que tu aimes faire ?" · ES "¿Qué te gusta hacer?" · (HE gloss "מה אתה אוהב לעשות בזמן הפנוי?") — `phrase.hobby.what-for-fun` — ✅ accepted
+  2. EN "I like drawing." · FR "J’aime dessiner." · ES "Me gusta dibujar." · (HE gloss "אני אוהב לצייר.") — `phrase.hobby.i-like-drawing` — ❌ wrong
+  3. EN "I want to try diving." · FR "Je veux essayer la plongée." · ES "Quiero probar el buceo." · (HE gloss "אני רוצה לנסות צלילה.") — `phrase.hobby.want-to-try` — ❌ wrong
+- Tests: phrase.hobby.what-for-fun
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M16-Q24 — quick-reply (step 16, round 1 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "I surf a lot. Do you like surfing?" · FR "Je fais beaucoup de surf. Tu aimes le surf ?" · ES "Hago mucho surf. ¿Te gusta el surf?"
+- Meaning of the audio (HE): "אני גולש הרבה. אתה אוהב לגלוש?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "I love surfing!" · FR "J’adore le surf !" · ES "¡Me encanta el surf!" · (HE gloss "אני מאוד אוהב לגלוש!") — `phrase.hobby.i-love-surfing` — ✅ accepted
+  2. EN "I usually draw in the evening." · FR "D’habitude, je dessine le soir." · ES "Normalmente dibujo por la noche." · (HE gloss "בדרך כלל אני מצייר בערב.") — `phrase.hobby.i-usually` — ❌ wrong
+  3. EN "What do you do for fun?" · FR "Qu’est-ce que tu aimes faire ?" · ES "¿Qué te gusta hacer?" · (HE gloss "מה אתה אוהב לעשות בזמן הפנוי?") — `phrase.hobby.what-for-fun` — ❌ wrong
+- Tests: phrase.hobby.i-love-surfing
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M16-Q25 — quick-reply (step 16, round 2 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "Great! And what else do you like?" · FR "Super ! Et tu aimes quoi d’autre ?" · ES "¡Genial! ¿Y qué más te gusta?"
+- Meaning of the audio (HE): "מעולה! ומה עוד אתה אוהב?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "I like drawing." · FR "J’aime dessiner." · ES "Me gusta dibujar." · (HE gloss "אני אוהב לצייר.") — `phrase.hobby.i-like-drawing` — ✅ accepted
+  2. EN "Do you like diving?" · FR "Tu aimes la plongée ?" · ES "¿Te gusta el buceo?" · (HE gloss "אתה אוהב לצלול?") — `phrase.hobby.do-you-like` — ❌ wrong
+  3. EN "What do you do for fun?" · FR "Qu’est-ce que tu aimes faire ?" · ES "¿Qué te gusta hacer?" · (HE gloss "מה אתה אוהב לעשות בזמן הפנוי?") — `phrase.hobby.what-for-fun` — ❌ wrong
+- Tests: phrase.hobby.i-like-drawing
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M16-Q26 — quick-reply (step 16, round 3 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "Nice! When do you draw?" · FR "Sympa ! Tu dessines quand ?" · ES "¡Qué bien! ¿Cuándo dibujas?"
+- Meaning of the audio (HE): "יפה! מתי אתה מצייר?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "I usually draw in the evening." · FR "D’habitude, je dessine le soir." · ES "Normalmente dibujo por la noche." · (HE gloss "בדרך כלל אני מצייר בערב.") — `phrase.hobby.i-usually` — ✅ accepted
+  2. EN "I want to try diving." · FR "Je veux essayer la plongée." · ES "Quiero probar el buceo." · (HE gloss "אני רוצה לנסות צלילה.") — `phrase.hobby.want-to-try` — ❌ wrong
+  3. EN "I love surfing!" · FR "J’adore le surf !" · ES "¡Me encanta el surf!" · (HE gloss "אני מאוד אוהב לגלוש!") — `phrase.hobby.i-love-surfing` — ❌ wrong
+- Tests: phrase.hobby.i-usually
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M16-Q27 — quick-reply (step 16, round 4 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "In the evening I like to listen to music. Do you like music?" · FR "Le soir, j’aime écouter de la musique. Tu aimes la musique ?" · ES "Por la noche me gusta escuchar música. ¿Te gusta la música?"
+- Meaning of the audio (HE): "בערב אני אוהב לשמוע מוזיקה. אתה אוהב מוזיקה?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Yes, I like to listen to music too." · FR "Oui, moi aussi j’aime écouter de la musique." · ES "Sí, a mí también me gusta escuchar música." · (HE gloss "אני אוהב לשמוע מוזיקה.") — `phrase.hobby.like-to-listen` — ✅ accepted
+  2. EN "I don't like running." · FR "Je n’aime pas courir." · ES "No me gusta correr." · (HE gloss "אני לא אוהב לרוץ.") — `phrase.hobby.dont-like-running` — ❌ wrong
+  3. EN "I want to try diving." · FR "Je veux essayer la plongée." · ES "Quiero probar el buceo." · (HE gloss "אני רוצה לנסות צלילה.") — `phrase.hobby.want-to-try` — ❌ wrong
+- Tests: phrase.hobby.like-to-listen
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M16-Q28 — quick-reply (step 16, round 5 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "Me neither! Is there something you want to try here?" · FR "Moi non plus ! Il y a quelque chose que tu veux essayer ici ?" · ES "¡Yo tampoco! ¿Hay algo que quieras probar aquí?"
+- Meaning of the audio (HE): "גם אני לא! יש משהו שאתה רוצה לנסות כאן?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "I want to try diving." · FR "Je veux essayer la plongée." · ES "Quiero probar el buceo." · (HE gloss "אני רוצה לנסות צלילה.") — `phrase.hobby.want-to-try` — ✅ accepted
+  2. EN "I usually draw in the evening." · FR "D’habitude, je dessine le soir." · ES "Normalmente dibujo por la noche." · (HE gloss "בדרך כלל אני מצייר בערב.") — `phrase.hobby.i-usually` — ❌ wrong
+  3. EN "I like drawing." · FR "J’aime dessiner." · ES "Me gusta dibujar." · (HE gloss "אני אוהב לצייר.") — `phrase.hobby.i-like-drawing` — ❌ wrong
+- Tests: phrase.hobby.want-to-try
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
 ## Dialogue — full tree
 
@@ -11386,7 +12292,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 
 ## Learner choice screens
 
-### M16-Q06 — dialogue-choice (step 11, scene "free-time-chat" · node c2)
+### M16-Q15 — dialogue-choice (step 13, scene "free-time-chat" · node c2)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Hi! Are you free today?" · FR "Salut ! Tu es libre aujourd’hui ?" · ES "¡Hola! ¿Estás libre hoy?"
@@ -11397,7 +12303,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.hobby.what-for-fun
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M16-Q07 — dialogue-choice (step 11, scene "free-time-chat" · node c4)
+### M16-Q16 — dialogue-choice (step 13, scene "free-time-chat" · node c4)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "I surf a lot. Do you like surfing?" · FR "Je fais beaucoup de surf. Tu aimes le surf ?" · ES "Hago mucho surf. ¿Te gusta el surf?"
@@ -11408,7 +12314,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.hobby.i-love-surfing
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M16-Q08 — dialogue-choice (step 11, scene "free-time-chat" · node c6)
+### M16-Q17 — dialogue-choice (step 13, scene "free-time-chat" · node c6)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Great! And what else do you like?" · FR "Super ! Et tu aimes quoi d’autre ?" · ES "¡Genial! ¿Y qué más te gusta?"
@@ -11419,7 +12325,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.hobby.i-like-drawing
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M16-Q09 — dialogue-choice (step 11, scene "free-time-chat" · node c8)
+### M16-Q18 — dialogue-choice (step 13, scene "free-time-chat" · node c8)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Nice! When do you draw?" · FR "Sympa ! Tu dessines quand ?" · ES "¡Qué bien! ¿Cuándo dibujas?"
@@ -11430,7 +12336,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.hobby.i-usually
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M16-Q10 — dialogue-choice (step 11, scene "free-time-chat" · node c10)
+### M16-Q19 — dialogue-choice (step 13, scene "free-time-chat" · node c10)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "In the evening I like to listen to music. Do you like music?" · FR "Le soir, j’aime écouter de la musique. Tu aimes la musique ?" · ES "Por la noche me gusta escuchar música. ¿Te gusta la música?"
@@ -11441,7 +12347,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.hobby.like-to-listen
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M16-Q11 — dialogue-choice (step 11, scene "free-time-chat" · node c12)
+### M16-Q20 — dialogue-choice (step 13, scene "free-time-chat" · node c12)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "And sport? Do you like running?" · FR "Et le sport ? Tu aimes courir ?" · ES "¿Y el deporte? ¿Te gusta correr?"
@@ -11452,7 +12358,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.hobby.dont-like-running
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M16-Q12 — dialogue-choice (step 11, scene "free-time-chat" · node c14)
+### M16-Q21 — dialogue-choice (step 13, scene "free-time-chat" · node c14)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Me neither! Is there something you want to try here?" · FR "Moi non plus ! Il y a quelque chose que tu veux essayer ici ?" · ES "¡Yo tampoco! ¿Hay algo que quieras probar aquí?"
@@ -11464,7 +12370,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.hobby.want-to-try, phrase.recovery.what-mean
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M16-Q13 — dialogue-choice (step 11, scene "free-time-chat" · node c14b)
+### M16-Q22 — dialogue-choice (step 13, scene "free-time-chat" · node c14b)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Something new. What do you want — to try?" · FR "Quelque chose de nouveau. Tu veux essayer — quoi ?" · ES "Algo nuevo. ¿Qué quieres — probar?"
@@ -11475,7 +12381,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.hobby.want-to-try
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M16-Q14 — dialogue-choice (step 11, scene "free-time-chat" · node c16)
+### M16-Q23 — dialogue-choice (step 13, scene "free-time-chat" · node c16)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Good idea! There's a diving school near the beach." · FR "Bonne idée ! Il y a une école de plongée près de la plage." · ES "¡Buena idea! Hay una escuela de buceo cerca de la playa."
@@ -11501,43 +12407,24 @@ None — no choice in this mission is marked wrong.
 
 ## Sentence review
 
-Step 13. 15 sentences, in this fixed order. Each is played automatically (TTS), shown with its translation and tip; buttons: 🔊 "Hear again" / "לשמוע שוב" and Next. No speaking prompt, no grading, no scoring; nothing is recorded.
+Step 15. 12 sentences, in this fixed order. Each is played automatically (TTS), shown with its translation and tip; buttons: 🔊 "Hear again" / "לשמוע שוב" and Next. No speaking prompt, no grading, no scoring; nothing is recorded.
 
 1. `phrase.hobby.what-for-fun` — What do you do for fun? — מה אתה אוהב לעשות בזמן הפנוי?
-2. `phrase.hobby.i-love-surfing` — I love surfing! — אני מאוד אוהב לגלוש!
-3. `phrase.hobby.i-like-drawing` — I like drawing. — אני אוהב לצייר.
-4. `phrase.hobby.i-usually` — I usually draw in the evening. — בדרך כלל אני מצייר בערב.
-5. `phrase.hobby.like-to-listen` — I like to listen to music. — אני אוהב לשמוע מוזיקה.
-6. `phrase.hobby.dont-like-running` — I don't like running. — אני לא אוהב לרוץ.
+2. `phrase.hobby.i-like-drawing` — I like drawing. — אני אוהב לצייר.
+3. `phrase.hobby.i-love-surfing` — I love surfing! — אני מאוד אוהב לגלוש!
+4. `phrase.hobby.dont-like-running` — I don't like running. — אני לא אוהב לרוץ.
+5. `phrase.hobby.i-usually` — I usually draw in the evening. — בדרך כלל אני מצייר בערב.
+6. `phrase.hobby.like-to-listen` — I like to listen to music. — אני אוהב לשמוע מוזיקה.
 7. `phrase.hobby.want-to-try` — I want to try diving. — אני רוצה לנסות צלילה.
 8. `phrase.hobby.do-you-like` — Do you like diving? — אתה אוהב לצלול?
-9. `reply.hobby.do-you-like-surfing` — Do you like surfing? — אתה אוהב לגלוש?
-10. `reply.hobby.what-else` — What else do you like? — מה עוד אתה אוהב?
-11. `reply.hobby.do-you-like-music` — Do you like music? — אתה אוהב מוזיקה?
-12. `reply.hobby.me-neither` — Me neither! — גם אני לא!
-13. `reply.hobby.want-to-try-q` — Is there something you want to try? — יש משהו שאתה רוצה לנסות?
-14. `reply.hobby.go-together` — Let's go together. — בוא נלך יחד.
-15. `phrase.recovery.what-mean` — What does that mean? — מה זה אומר?
+9. `reply.hobby.what-else` — What else do you like? — מה עוד אתה אוהב?
+10. `reply.hobby.want-to-try-q` — Is there something you want to try? — יש משהו שאתה רוצה לנסות?
+11. `reply.hobby.me-neither` — Me neither! — גם אני לא!
+12. `phrase.recovery.what-mean` — What does that mean? — מה זה אומר?
 
 ## Cold open / ambush
 
-### M16-Q15 — cold-open (step 14, single prompt · mode: not set (original behaviour))
-
-- Prompt displayed: "Heads up: a fast one is coming. Use a tool." / "שים לב: מגיע משפט מהיר. השתמש בכלי."
-- Audio played: EN "So tell me do you like music or are you more of a sport person?" · FR "Alors dis-moi, tu aimes la musique ou tu es plutôt sport ?" · ES "A ver, dime: ¿te gusta la música o eres más de deporte?"
-- Meaning of the audio (HE): "אז תגיד — אתה אוהב מוזיקה או שאתה יותר טיפוס של ספורט?"
-- Buttons show: TARGET-LANGUAGE text of the two sentences, each prefixed with 🛟; order shuffled
-- Choices:
-  1. EN "Do you like music?" · FR "Tu aimes la musique ?" · ES "¿Te gusta la música?" · (HE gloss "אתה אוהב מוזיקה?") — `reply.hobby.do-you-like-music` — ✅ accepted
-  2. EN "Let's go together." · FR "On y va ensemble." · ES "Vamos juntos." · (HE gloss "בוא נלך יחד.") — `reply.hobby.go-together` — ❌ wrong
-- Tests: reply.hobby.do-you-like-music
-- Explanation shown after answering: generic: “Do you like music?” means “אתה אוהב מוזיקה?”.
-
-- Flow: screen shows ⚡ and "Heads up: a fast one is coming. Use a tool." / "שים לב: מגיע משפט מהיר. השתמש בכלי." with one button 👂 "I'm ready" / "אני מוכן"; on tap the line is spoken at TTS rate 1.12 and printed small; two shuffled buttons appear; 🔊 "Hear again" / "לשמוע שוב" replays at 0.85.
-- Success criterion: picking the accepted sentence. A wrong pick shows the feedback card (what you heard + translation, your answer, the sentence that fit) with Try again / Continue; Continue proceeds either way. Response time is recorded.
-- Recovery options offered: none
-- Receipt shown next: "A fast double question — and you caught that it is about what you like." / "שאלה כפולה ומהירה — ותפסת שהיא על מה שאתה אוהב."
-- Potential new-language exposure: YES — English words not met in any sentence or dialogue line of Missions 01–16: more, person
+No cold open in this mission.
 
 ## Swap-in / variable content
 
@@ -11552,8 +12439,8 @@ Every learner sentence of this mission is a line in a scene.
 ## Receipts (proof cards)
 
 - Step 9: "You recognize it when someone asks what you like — and what else." / "אתה מזהה כששואלים מה אתה אוהב — ומה עוד."
-- Step 12: "You said what you like, what you don’t, and what you want to try — and asked back." / "סיפרת מה אתה אוהב, מה לא, ומה אתה רוצה לנסות — ושאלת בחזרה."
-- Step 15: "A fast double question — and you caught that it is about what you like." / "שאלה כפולה ומהירה — ותפסת שהיא על מה שאתה אוהב."
+- Step 14: "You said what you like, what you don’t, and what you want to try — and asked back." / "סיפרת מה אתה אוהב, מה לא, ומה אתה רוצה לנסות — ושאלת בחזרה."
+- Step 17: "A whole chat about what you like, at normal pace — without hunting for words." / "שיחה שלמה על מה שאתה אוהב, בקצב רגיל — בלי לחפש מילים."
 
 ## Audit Metadata — DO NOT FIX YET
 
@@ -11562,30 +12449,28 @@ Every learner sentence of this mission is a line in a scene.
 - Toolkit phrases bundled: 1
 - Key-sentence steps: 6
 - Expected-reply/listening items: 4
-- Questions/quizzes (meaning quiz): 1
-- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 0
-- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 1
+- Questions/quizzes (meaning quiz): 0
+- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 15
+- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 16
 - One-button dialogue screens: 8
 - Learner sentences never actively retrieved: 0
 - Dialogue learner choices (screens): 9
 - Wrong-answer branches: 0
-- Cold-open prompts: 1
+- Cold-open prompts: 0
 - Recovery opportunities: 1
 - Vocabulary pre-items: 0
 - Swap variants (extra accepted lines): 0
-- Sentences in review: 15
-- Total interactive questions: 15 (answer choices: 27)
-- Approximate total learner interactions: 36 (questions + key sentences + review cards + word-intro screen)
+- Sentences in review: 12
+- Total interactive questions: 28 (answer choices: 65)
+- Approximate total learner interactions: 46 (questions + key sentences + review cards + word-intro screen)
 
-### AUTO-FLAG — requires human review (7)
+### AUTO-FLAG — requires human review (5)
 
 - AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "free-time-chat" n1 — “Hi! Are you free today?”
 - AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "free-time-chat" n7 — “Nice! When do you draw?”
 - AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "free-time-chat" n11 — “And sport? Do you like running?”
 - AUTO-FLAG — 9 of 9 choice screens have NO wrong option (every button is accepted): free-time-chat/c2, free-time-chat/c4, free-time-chat/c6, free-time-chat/c8, free-time-chat/c10, free-time-chat/c12, free-time-chat/c14, free-time-chat/c14b, free-time-chat/c16.
 - AUTO-FLAG — 8 choice screens offer exactly ONE button (no decision): free-time-chat/c2, free-time-chat/c4, free-time-chat/c6, free-time-chat/c8, free-time-chat/c10, free-time-chat/c12, free-time-chat/c14b, free-time-chat/c16.
-- AUTO-FLAG — M16-Q15: cold-open line contains English words not met in any sentence or dialogue line up to this mission: more, person.
-- AUTO-FLAG — M16-Q15: the screen says "Heads up: a fast one is coming. Use a tool." / "שים לב: מגיע משפט מהיר. השתמש בכלי." and marks both buttons with 🛟, but neither option is a conversation-help tool.
 
 ---
 
@@ -11620,8 +12505,8 @@ Intro screen (first Practice step; identical in the English, French and Spanish 
 
 - Icon: 🛒
 - Title: "Mission 17: Supermarket" / "משימה 17: סופרמרקט"
-- Text 1: "Daily life just got cheap and easy. You find it, weigh it, and pay — completely on your own." / "היום-יום נהיה זול ופשוט. אתה מוצא, שוקל, ומשלם — לבד לגמרי."
-- Text 2: "Most of the work here is recognition: signs, aisles, and the self-checkout voice." / "רוב העבודה כאן היא זיהוי: שלטים, מעברים, וקול הקופה האוטומטית."
+- Text 1: "The supermarket, on your own: find a product, understand which aisle and which side it is on, get through the checkout and ask for a bag." / "סופר, לבד: למצוא מוצר, להבין באיזה מעבר ובאיזה צד הוא, לעבור קופה ולבקש שקית."
+- Text 2: "A few short questions — and a few answers worth recognizing when they are said fast." / "כמה שאלות קצרות — וכמה תשובות שכדאי לזהות כשאומרים אותן מהר."
 - Button: "Walk into the shop" / "להיכנס לסופר"
 
 ## Current Practice flow
@@ -11632,15 +12517,18 @@ Intro screen (first Practice step; identical in the English, French and Spanish 
 4. `tool` — key sentence (listen → reveal → say aloud) — `phrase.super.just-this` “Just this, thanks.” · label "At the checkout" / "בקופה" (3/4)
 5. `tool` — key sentence (listen → reveal → say aloud) — `phrase.super.need-bag` “Could I get a bag?” · label "Ask for a bag" / "לבקש שקית" (4/4)
 6. `replies` — expected replies (listening drill) — after `phrase.super.where-is`: 4 replies
-7. `receipt` — receipt (proof card) — "You recognize the answers of a shelf-stocker and a checkout — aisle, direction, weighing, bag." / "אתה מזהה תשובות של סדרן וקופה — מעבר, כיוון, שקילה, שקית."
-8. `quiz` — meaning quiz (listening) — hears `reply.super.weigh-it`
-9. `quiz` — meaning quiz (listening) — hears `reply.super.aisle-three`
-10. `dialogue` — dialogue (choose your line) — scene `supermarket`
-11. `receipt` — receipt (proof card) — "You found products, weighed fruit, and cleared a self-checkout — on your own." / "מצאת מוצרים, שקלת פירות, ועברת קופה אוטומטית — לבד."
-12. `swipe` — sentence review — 14 sentences
-13. `ambush` — cold open (fast line) — mode not set · correct `phrase.recovery.show-me`, wrong `phrase.super.just-this`
-14. `receipt` — receipt (proof card) — "The self-checkout jammed — and you knew to ask someone to show you, instead of panicking." / "הקופה האוטומטית נתקעה — וידעת לבקש שיראו לך במקום להיכנס ללחץ."
-15. `summary` — victory screen
+7. `receipt` — receipt (proof card) — "You recognize what an assistant and a checkout say — aisle, direction, bag, card." / "אתה מזהה תשובות של עובד וקופה — מעבר, כיוון, שקית, כרטיס."
+8. `visualMatch` — visual match (hear → tap the tile) — 3 round(s)
+9. `swap` — swap it (one frame, several endings) — 3 round(s)
+10. `quickReply` — quick reply (hear → pick your response) — 5 round(s)
+11. `dialogue` — dialogue (choose your line) — scene `supermarket`
+12. `receipt` — receipt (proof card) — "You found a product, understood which aisle it is in, and got through the checkout — on your own." / "מצאת מוצר, הבנת באיזה מעבר הוא, ועברת קופה — לבד."
+13. `swipe` — sentence review — 11 sentences
+14. `quickReply` — quick reply (hear → pick your response) — 4 round(s) · speed challenge
+15. `receipt` — receipt (proof card) — "From shelf to checkout at normal pace — you found it, understood where, and paid." / "מהמדף ועד הקופה, בקצב רגיל — מצאת, הבנת איפה, ושילמת."
+16. `ambush` — cold open (fast line) — mode recovery · correct `phrase.recovery.show-me`, wrong `phrase.super.just-this`
+17. `receipt` — receipt (proof card) — "The self-checkout jammed — and you knew to ask someone to show you, instead of panicking." / "הקופה האוטומטית נתקעה — וידעת לבקש שיראו לך במקום להיכנס ללחץ."
+18. `summary` — victory screen
 
 Step sequence identical in EN / FR / ES: yes.
 
@@ -11660,8 +12548,8 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Dónde está la leche?
 - Role: learner production
 - Tip / pattern note: "Template: Where is the ___? — finds any product in any shop." / "התבנית: Where is the ___? — מוצאת כל מוצר בכל חנות."
-- Used in missions: 17
-- Exercised here as: key sentence (step 2); "you said" lead-in of the expected-replies drill (step 6); sentence review (step 12); dialogue choice supermarket/c1 (accepted); dialogue choice supermarket/c1b (accepted)
+- Used in missions: 17, 18
+- Exercised here as: key sentence (step 2); "you said" lead-in of the expected-replies drill (step 6); swap-it frame (step 9, round 1); swap-it frame (step 9, round 2); swap-it frame (step 9, round 3); quick-reply response (step 10, round 1, accepted); quick-reply response (step 10, round 4, wrong option); quick-reply response (step 10, round 5, wrong option); sentence review (step 13); quick-reply response (step 14, round 1, accepted); quick-reply response (step 14, round 3, wrong option); quick-reply response (step 14, round 4, wrong option); dialogue choice supermarket/c1 (accepted); dialogue choice supermarket/c1b (accepted)
 
 ### Sentence: `phrase.super.do-you-have`
 
@@ -11671,8 +12559,8 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Tienen pan?
 - Role: learner production
 - Tip / pattern note: "Template: Do you have ___? — checks if it’s in stock." / "התבנית: Do you have ___? — בודקת אם קיים במלאי."
-- Used in missions: 17
-- Exercised here as: key sentence (step 3); sentence review (step 12); dialogue choice supermarket/c1 (accepted)
+- Used in missions: 17, 18
+- Exercised here as: key sentence (step 3); quick-reply response (step 10, round 1, accepted); quick-reply response (step 10, round 2, accepted); quick-reply response (step 10, round 4, wrong option); quick-reply response (step 10, round 5, wrong option); sentence review (step 13); quick-reply response (step 14, round 2, wrong option); quick-reply response (step 14, round 3, wrong option); dialogue choice supermarket/c1 (accepted)
 
 ### Sentence: `phrase.super.just-this`
 
@@ -11682,8 +12570,8 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Solo esto, gracias.
 - Role: learner production
 - Tip / pattern note: none
-- Used in missions: 17
-- Exercised here as: key sentence (step 4); sentence review (step 12); cold-open wrong option (step 13); dialogue choice supermarket/c3 (accepted); dialogue choice supermarket/c3b (accepted)
+- Used in missions: 17, 18
+- Exercised here as: key sentence (step 4); quick-reply response (step 10, round 1, wrong option); quick-reply response (step 10, round 2, wrong option); quick-reply response (step 10, round 4, accepted); sentence review (step 13); quick-reply response (step 14, round 1, wrong option); quick-reply response (step 14, round 2, wrong option); quick-reply response (step 14, round 3, accepted); quick-reply response (step 14, round 4, wrong option); cold-open wrong option (step 16); dialogue choice supermarket/c3 (accepted); dialogue choice supermarket/c3b (accepted)
 
 ### Sentence: `phrase.super.need-bag`
 
@@ -11693,8 +12581,8 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Me da una bolsa?
 - Role: learner production
 - Tip / pattern note: none
-- Used in missions: 17
-- Exercised here as: key sentence (step 5); sentence review (step 12); dialogue choice supermarket/c4 (accepted)
+- Used in missions: 17, 18
+- Exercised here as: key sentence (step 5); quick-reply response (step 10, round 2, wrong option); quick-reply response (step 10, round 3, wrong option); quick-reply response (step 10, round 5, accepted); sentence review (step 13); quick-reply response (step 14, round 1, wrong option); quick-reply response (step 14, round 4, accepted); dialogue choice supermarket/c4 (accepted)
 
 ### Sentence: `reply.super.aisle-three`
 
@@ -11705,7 +12593,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 17
-- Exercised here as: expected-reply audio (step 6); meaning-quiz audio (step 9); sentence review (step 12)
+- Exercised here as: expected-reply audio (step 6); visual-match audio (step 8, round 1); quick-reply prompt (step 10, round 3); sentence review (step 13)
 
 ### Sentence: `reply.super.over-there`
 
@@ -11716,18 +12604,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 17
-- Exercised here as: expected-reply audio (step 6); meaning-quiz distractor (step 9); sentence review (step 12)
-
-### Sentence: `reply.super.weigh-it`
-
-- EN: You need to weigh it first.
-- HE: צריך לשקול קודם.
-- FR: Vous devez d’abord le peser.
-- ES: Primero tiene que pesarlo.
-- Role: receptive — an expected reply the learner hears
-- Tip / pattern note: none
-- Used in missions: 17
-- Exercised here as: expected-reply audio (step 6); meaning-quiz audio (step 8); sentence review (step 12)
+- Exercised here as: expected-reply audio (step 6); sentence review (step 13)
 
 ### Sentence: `reply.super.bag-q`
 
@@ -11738,7 +12615,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 17
-- Exercised here as: expected-reply audio (step 6); meaning-quiz distractor (step 8); sentence review (step 12)
+- Exercised here as: expected-reply audio (step 6); quick-reply prompt (step 10, round 5); sentence review (step 13)
 
 ### Sentence: `reply.super.card-here`
 
@@ -11749,7 +12626,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 17
-- Exercised here as: meaning-quiz distractor (step 8); sentence review (step 12)
+- Exercised here as: expected-reply audio (step 6); sentence review (step 13)
 
 ### Sentence: `reply.super.sold-out`
 
@@ -11760,7 +12637,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 17
-- Exercised here as: meaning-quiz distractor (step 9); sentence review (step 12)
+- Exercised here as: sentence review (step 13)
 
 ### Sentence: `phrase.recovery.repeat`
 
@@ -11771,7 +12648,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
 - Used in missions: 01, 03, 05, 06, 08, 09, 10, 11, 12, 14, 15, 17, 18, 19, 20, 23, 26, 28, 29
-- Exercised here as: sentence review (step 12); dialogue choice supermarket/c2 (accepted)
+- Exercised here as: quick-reply response (step 10, round 3, accepted); sentence review (step 13); dialogue choice supermarket/c2 (accepted)
 
 ### Sentence: `phrase.recovery.slowly`
 
@@ -11781,8 +12658,8 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 08, 09, 10, 14, 15, 17, 19, 21, 22, 24, 26, 27, 29, 30
-- Exercised here as: sentence review (step 12)
+- Used in missions: 01, 02, 03, 04, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 26, 27, 29, 30
+- Exercised here as: nothing (listed only)
 
 ### Sentence: `phrase.recovery.show-me`
 
@@ -11793,7 +12670,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
 - Used in missions: 04, 07, 09, 17
-- Exercised here as: sentence review (step 12); cold-open correct option (step 13); dialogue choice supermarket/c3 (accepted)
+- Exercised here as: sentence review (step 13); cold-open correct option (step 16); dialogue choice supermarket/c3 (accepted)
 
 ### Sentence: `phrase.recovery.thank-you`
 
@@ -11803,8 +12680,8 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¡Gracias!
 - Role: courtesy from the Recovery Toolkit
 - Tip / pattern note: none
-- Used in missions: 03, 05, 06, 07, 08, 09, 10, 14, 15, 17, 19, 25, 26, 29, 30
-- Exercised here as: sentence review (step 12); dialogue choice supermarket/c2 (accepted); dialogue choice supermarket/c2b (accepted); dialogue choice supermarket/c4 (accepted)
+- Used in missions: 03, 05, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 25, 26, 29, 30
+- Exercised here as: quick-reply response (step 10, round 3, accepted); quick-reply response (step 14, round 2, accepted); dialogue choice supermarket/c2 (accepted); dialogue choice supermarket/c2b (accepted); dialogue choice supermarket/c4 (accepted)
 
 ## Expected replies / listening items
 
@@ -11820,7 +12697,7 @@ Linked learner sentence: `phrase.super.where-is`. Each reply below is played onc
 - Choices:
   1. HE "זה במעבר שלוש." / EN "It's in aisle three." — `reply.super.aisle-three` — ✅ accepted
   2. HE "שם, משמאל." / EN "Over there, on the left." — `reply.super.over-there` — ❌ wrong
-  3. HE "צריך לשקול קודם." / EN "You need to weigh it first." — `reply.super.weigh-it` — ❌ wrong
+  3. HE "צריך שקית?" / EN "Do you need a bag?" — `reply.super.bag-q` — ❌ wrong
 - Tests: reply.super.aisle-three
 - Explanation shown after answering: generic: “It's in aisle three.” means “זה במעבר שלוש.”.
 
@@ -11833,26 +12710,13 @@ Linked learner sentence: `phrase.super.where-is`. Each reply below is played onc
 - Choices:
   1. HE "שם, משמאל." / EN "Over there, on the left." — `reply.super.over-there` — ✅ accepted
   2. HE "זה במעבר שלוש." / EN "It's in aisle three." — `reply.super.aisle-three` — ❌ wrong
-  3. HE "צריך לשקול קודם." / EN "You need to weigh it first." — `reply.super.weigh-it` — ❌ wrong
+  3. HE "צריך שקית?" / EN "Do you need a bag?" — `reply.super.bag-q` — ❌ wrong
 - Tests: reply.super.over-there
 - Explanation shown after answering: generic: “Over there, on the left.” means “שם, משמאל.”.
 
 ### M17-Q03 — expected-reply (step 6, reply 3 of 4)
 
 - Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (3/4)
-- Audio played: EN "You need to weigh it first." · FR "Vous devez d’abord le peser." · ES "Primero tiene que pesarlo."
-- Meaning of the audio (HE): "צריך לשקול קודם."
-- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
-- Choices:
-  1. HE "צריך לשקול קודם." / EN "You need to weigh it first." — `reply.super.weigh-it` — ✅ accepted
-  2. HE "זה במעבר שלוש." / EN "It's in aisle three." — `reply.super.aisle-three` — ❌ wrong
-  3. HE "שם, משמאל." / EN "Over there, on the left." — `reply.super.over-there` — ❌ wrong
-- Tests: reply.super.weigh-it
-- Explanation shown after answering: generic: “You need to weigh it first.” means “צריך לשקול קודם.”.
-
-### M17-Q04 — expected-reply (step 6, reply 4 of 4)
-
-- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (4/4)
 - Audio played: EN "Do you need a bag?" · FR "Vous avez besoin d’un sac ?" · ES "¿Necesita una bolsa?"
 - Meaning of the audio (HE): "צריך שקית?"
 - Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
@@ -11863,37 +12727,228 @@ Linked learner sentence: `phrase.super.where-is`. Each reply below is played onc
 - Tests: reply.super.bag-q
 - Explanation shown after answering: generic: “Do you need a bag?” means “צריך שקית?”.
 
+### M17-Q04 — expected-reply (step 6, reply 4 of 4)
+
+- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (4/4)
+- Audio played: EN "Insert your card here." · FR "Insérez votre carte ici." · ES "Inserte su tarjeta aquí."
+- Meaning of the audio (HE): "הכנס את הכרטיס כאן."
+- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
+- Choices:
+  1. HE "הכנס את הכרטיס כאן." / EN "Insert your card here." — `reply.super.card-here` — ✅ accepted
+  2. HE "זה במעבר שלוש." / EN "It's in aisle three." — `reply.super.aisle-three` — ❌ wrong
+  3. HE "שם, משמאל." / EN "Over there, on the left." — `reply.super.over-there` — ❌ wrong
+- Tests: reply.super.card-here
+- Explanation shown after answering: generic: “Insert your card here.” means “הכנס את הכרטיס כאן.”.
+
 ## Quizzes
 
-### M17-Q05 — meaning-quiz (step 8, single question)
-
-- Prompt displayed: "What did it mean?" / "מה זה אומר?"
-- Audio played: EN "You need to weigh it first." · FR "Vous devez d’abord le peser." · ES "Primero tiene que pesarlo."
-- Meaning of the audio (HE): "צריך לשקול קודם."
-- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
-- Choices:
-  1. HE "צריך לשקול קודם." / EN "You need to weigh it first." — `reply.super.weigh-it` — ✅ accepted
-  2. HE "צריך שקית?" / EN "Do you need a bag?" — `reply.super.bag-q` — ❌ wrong
-  3. HE "הכנס את הכרטיס כאן." / EN "Insert your card here." — `reply.super.card-here` — ❌ wrong
-- Tests: reply.super.weigh-it
-- Explanation shown after answering: generic: “You need to weigh it first.” means “צריך לשקול קודם.”.
-
-### M17-Q06 — meaning-quiz (step 9, single question)
-
-- Prompt displayed: "What did it mean?" / "מה זה אומר?"
-- Audio played: EN "It's in aisle three." · FR "C’est dans l’allée trois." · ES "Está en el pasillo tres."
-- Meaning of the audio (HE): "זה במעבר שלוש."
-- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
-- Choices:
-  1. HE "זה במעבר שלוש." / EN "It's in aisle three." — `reply.super.aisle-three` — ✅ accepted
-  2. HE "שם, משמאל." / EN "Over there, on the left." — `reply.super.over-there` — ❌ wrong
-  3. HE "סליחה, אזל המלאי." / EN "Sorry, we're sold out." — `reply.super.sold-out` — ❌ wrong
-- Tests: reply.super.aisle-three
-- Explanation shown after answering: generic: “It's in aisle three.” means “זה במעבר שלוש.”.
+No meaning quiz in this mission.
 
 ## Active practice — Quick Reply · Visual Match · Swap It · Mini Map
 
-None in this mission.
+### M17-Q05 — visual-match (step 8, round 1 of 3)
+
+- Prompt displayed: "Where is it? Tap the aisle and the side you hear" / "איפה זה? הקש על המעבר והצד ששמעת"
+- Audio played: EN "The milk is in aisle three, on the left." · FR "Le lait est dans l’allée trois, sur la gauche." · ES "La leche está en el pasillo tres, a la izquierda."
+- Meaning of the audio (HE): "החלב במעבר שלוש, משמאל."
+- Buttons show: a 3×3 board of 6 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "1 ⬅️" — no sentence id — ❌ wrong
+  2. "1 ➡️" — no sentence id — ❌ wrong
+  3. "2 ⬅️" — no sentence id — ❌ wrong
+  4. "2 ➡️" — no sentence id — ❌ wrong
+  5. "3 ⬅️" — `reply.super.aisle-three` — ✅ accepted
+  6. "3 ➡️" — no sentence id — ❌ wrong
+- Tests: reply.super.aisle-three
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M17-Q06 — visual-match (step 8, round 2 of 3)
+
+- Prompt displayed: "Where is it? Tap the aisle and the side you hear" / "איפה זה? הקש על המעבר והצד ששמעת"
+- Audio played: EN "It's in aisle one, on the right." · FR "C’est dans l’allée une, sur la droite." · ES "Está en el pasillo uno, a la derecha."
+- Meaning of the audio (HE): "זה במעבר אחת, מימין."
+- Buttons show: a 3×3 board of 6 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "1 ⬅️" — no sentence id — ❌ wrong
+  2. "1 ➡️" — no sentence id — ✅ accepted
+  3. "2 ⬅️" — no sentence id — ❌ wrong
+  4. "2 ➡️" — no sentence id — ❌ wrong
+  5. "3 ⬅️" — no sentence id — ❌ wrong
+  6. "3 ➡️" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M17-Q07 — visual-match (step 8, round 3 of 3)
+
+- Prompt displayed: "Where is it? Tap the aisle and the side you hear" / "איפה זה? הקש על המעבר והצד ששמעת"
+- Audio played: EN "It's in aisle two, on the left." · FR "C’est dans l’allée deux, sur la gauche." · ES "Está en el pasillo dos, a la izquierda."
+- Meaning of the audio (HE): "זה במעבר שתיים, משמאל."
+- Buttons show: a 3×3 board of 6 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "1 ⬅️" — no sentence id — ❌ wrong
+  2. "1 ➡️" — no sentence id — ❌ wrong
+  3. "2 ⬅️" — no sentence id — ✅ accepted
+  4. "2 ➡️" — no sentence id — ❌ wrong
+  5. "3 ⬅️" — no sentence id — ❌ wrong
+  6. "3 ➡️" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M17-Q08 — swap-it (step 9, round 1 of 3)
+
+- Prompt displayed: "What are you looking for?" / "מה אתה מחפש?" — cue 🥛 "You are looking for milk" / "אתה מחפש חלב" — frame EN "Where is the ___?" · FR "Où est ___ ?" · ES "¿Dónde está ___?"
+- Audio played: EN "(nothing before the tap; the completed sentence is spoken after it)" · FR "(same)" · ES "(same)"
+- Meaning of the audio (HE): —
+- Buttons show: the SLOT VALUES in the target language (shown here as "value → completed sentence"); order shuffled; a "wrong" value still produces and speaks a real sentence, with its translation
+- Choices:
+  1. EN "milk → Where is the milk?" · FR "le lait → Où est le lait ?" · ES "la leche → ¿Dónde está la leche?" · (HE gloss "איפה החלב?") — `phrase.super.where-is` — ✅ accepted
+  2. EN "bread → Where is the bread?" · FR "le pain → Où est le pain ?" · ES "el pan → ¿Dónde está el pan?" · (HE gloss "איפה הלחם?") — no sentence id — ❌ wrong
+  3. EN "water → Where is the water?" · FR "l’eau → Où est l’eau ?" · ES "el agua → ¿Dónde está el agua?" · (HE gloss "איפה המים?") — no sentence id — ❌ wrong
+- Tests: phrase.super.where-is
+- Explanation shown after answering: after the tap: the completed sentence, spoken, with its translation
+
+### M17-Q09 — swap-it (step 9, round 2 of 3)
+
+- Prompt displayed: "What are you looking for?" / "מה אתה מחפש?" — cue 🍞 "You are looking for bread" / "אתה מחפש לחם" — frame EN "Where is the ___?" · FR "Où est ___ ?" · ES "¿Dónde está ___?"
+- Audio played: EN "(nothing before the tap; the completed sentence is spoken after it)" · FR "(same)" · ES "(same)"
+- Meaning of the audio (HE): —
+- Buttons show: the SLOT VALUES in the target language (shown here as "value → completed sentence"); order shuffled; a "wrong" value still produces and speaks a real sentence, with its translation
+- Choices:
+  1. EN "milk → Where is the milk?" · FR "le lait → Où est le lait ?" · ES "la leche → ¿Dónde está la leche?" · (HE gloss "איפה החלב?") — no sentence id — ❌ wrong
+  2. EN "bread → Where is the bread?" · FR "le pain → Où est le pain ?" · ES "el pan → ¿Dónde está el pan?" · (HE gloss "איפה הלחם?") — `phrase.super.where-is` — ✅ accepted
+  3. EN "water → Where is the water?" · FR "l’eau → Où est l’eau ?" · ES "el agua → ¿Dónde está el agua?" · (HE gloss "איפה המים?") — no sentence id — ❌ wrong
+- Tests: phrase.super.where-is
+- Explanation shown after answering: after the tap: the completed sentence, spoken, with its translation
+
+### M17-Q10 — swap-it (step 9, round 3 of 3)
+
+- Prompt displayed: "What are you looking for?" / "מה אתה מחפש?" — cue 💧 "You are looking for water" / "אתה מחפש מים" — frame EN "Where is the ___?" · FR "Où est ___ ?" · ES "¿Dónde está ___?"
+- Audio played: EN "(nothing before the tap; the completed sentence is spoken after it)" · FR "(same)" · ES "(same)"
+- Meaning of the audio (HE): —
+- Buttons show: the SLOT VALUES in the target language (shown here as "value → completed sentence"); order shuffled; a "wrong" value still produces and speaks a real sentence, with its translation
+- Choices:
+  1. EN "milk → Where is the milk?" · FR "le lait → Où est le lait ?" · ES "la leche → ¿Dónde está la leche?" · (HE gloss "איפה החלב?") — no sentence id — ❌ wrong
+  2. EN "bread → Where is the bread?" · FR "le pain → Où est le pain ?" · ES "el pan → ¿Dónde está el pan?" · (HE gloss "איפה הלחם?") — no sentence id — ❌ wrong
+  3. EN "water → Where is the water?" · FR "l’eau → Où est l’eau ?" · ES "el agua → ¿Dónde está el agua?" · (HE gloss "איפה המים?") — `phrase.super.where-is` — ✅ accepted
+- Tests: phrase.super.where-is
+- Explanation shown after answering: after the tap: the completed sentence, spoken, with its translation
+
+### M17-Q11 — quick-reply (step 10, round 1 of 5)
+
+- Prompt displayed: "In the supermarket — what do you say?" / "בסופר — מה אומרים?"
+- Audio played: EN "Hi there! Can I help you find something?" · FR "Bonjour ! Je peux vous aider à trouver quelque chose ?" · ES "¡Hola! ¿Le ayudo a encontrar algo?"
+- Meaning of the audio (HE): "היי! לעזור לך למצוא משהו?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Where is the milk?" · FR "Où est le lait ?" · ES "¿Dónde está la leche?" · (HE gloss "איפה החלב?") — `phrase.super.where-is` — ✅ accepted
+  2. EN "Do you have bread?" · FR "Vous avez du pain ?" · ES "¿Tienen pan?" · (HE gloss "יש לכם לחם?") — `phrase.super.do-you-have` — ✅ accepted
+  3. EN "Just this, thanks." · FR "Juste ça, merci." · ES "Solo esto, gracias." · (HE gloss "רק את זה, תודה.") — `phrase.super.just-this` — ❌ wrong
+- Tests: phrase.super.where-is, phrase.super.do-you-have
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M17-Q12 — quick-reply (step 10, round 2 of 5)
+
+- Prompt displayed: "In the supermarket — what do you say?" / "בסופר — מה אומרים?" — situation shown: "You cannot find any bread. Ask whether they have it." / "אתה לא מוצא לחם. שואלים אם יש."
+- Audio played: EN "(nothing is played — a situation is shown)" · FR "(nothing is played — a situation is shown)" · ES "(nothing is played — a situation is shown)"
+- Meaning of the audio (HE): —
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Do you have bread?" · FR "Vous avez du pain ?" · ES "¿Tienen pan?" · (HE gloss "יש לכם לחם?") — `phrase.super.do-you-have` — ✅ accepted
+  2. EN "Could I get a bag?" · FR "Je peux avoir un sac ?" · ES "¿Me da una bolsa?" · (HE gloss "אפשר שקית?") — `phrase.super.need-bag` — ❌ wrong
+  3. EN "Just this, thanks." · FR "Juste ça, merci." · ES "Solo esto, gracias." · (HE gloss "רק את זה, תודה.") — `phrase.super.just-this` — ❌ wrong
+- Tests: phrase.super.do-you-have
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M17-Q13 — quick-reply (step 10, round 3 of 5)
+
+- Prompt displayed: "In the supermarket — what do you say?" / "בסופר — מה אומרים?"
+- Audio played: EN "It's in aisle three." · FR "C’est dans l’allée trois." · ES "Está en el pasillo tres."
+- Meaning of the audio (HE): "זה במעבר שלוש."
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Thank you!" · FR "Merci !" · ES "¡Gracias!" · (HE gloss "תודה!") — `phrase.recovery.thank-you` — ✅ accepted
+  2. EN "Can you repeat that?" · FR "Vous pouvez répéter ?" · ES "¿Puede repetir, por favor?" · (HE gloss "אפשר לחזור על זה?") — `phrase.recovery.repeat` — ✅ accepted
+  3. EN "Could I get a bag?" · FR "Je peux avoir un sac ?" · ES "¿Me da una bolsa?" · (HE gloss "אפשר שקית?") — `phrase.super.need-bag` — ❌ wrong
+- Tests: phrase.recovery.thank-you, phrase.recovery.repeat
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M17-Q14 — quick-reply (step 10, round 4 of 5)
+
+- Prompt displayed: "In the supermarket — what do you say?" / "בסופר — מה אומרים?"
+- Audio played: EN "Hi! Is that everything?" · FR "Bonjour ! Ce sera tout ?" · ES "¡Hola! ¿Eso es todo?"
+- Meaning of the audio (HE): "היי! זה הכל?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Just this, thanks." · FR "Juste ça, merci." · ES "Solo esto, gracias." · (HE gloss "רק את זה, תודה.") — `phrase.super.just-this` — ✅ accepted
+  2. EN "Where is the milk?" · FR "Où est le lait ?" · ES "¿Dónde está la leche?" · (HE gloss "איפה החלב?") — `phrase.super.where-is` — ❌ wrong
+  3. EN "Do you have bread?" · FR "Vous avez du pain ?" · ES "¿Tienen pan?" · (HE gloss "יש לכם לחם?") — `phrase.super.do-you-have` — ❌ wrong
+- Tests: phrase.super.just-this
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M17-Q15 — quick-reply (step 10, round 5 of 5)
+
+- Prompt displayed: "In the supermarket — what do you say?" / "בסופר — מה אומרים?"
+- Audio played: EN "Do you need a bag?" · FR "Vous avez besoin d’un sac ?" · ES "¿Necesita una bolsa?"
+- Meaning of the audio (HE): "צריך שקית?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Could I get a bag?" · FR "Je peux avoir un sac ?" · ES "¿Me da una bolsa?" · (HE gloss "אפשר שקית?") — `phrase.super.need-bag` — ✅ accepted
+  2. EN "Where is the milk?" · FR "Où est le lait ?" · ES "¿Dónde está la leche?" · (HE gloss "איפה החלב?") — `phrase.super.where-is` — ❌ wrong
+  3. EN "Do you have bread?" · FR "Vous avez du pain ?" · ES "¿Tienen pan?" · (HE gloss "יש לכם לחם?") — `phrase.super.do-you-have` — ❌ wrong
+- Tests: phrase.super.need-bag
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M17-Q23 — quick-reply (step 14, round 1 of 4 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "Hi there! Can I help you find something?" · FR "Bonjour ! Je peux vous aider à trouver quelque chose ?" · ES "¡Hola! ¿Le ayudo a encontrar algo?"
+- Meaning of the audio (HE): "היי! לעזור לך למצוא משהו?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Where is the milk?" · FR "Où est le lait ?" · ES "¿Dónde está la leche?" · (HE gloss "איפה החלב?") — `phrase.super.where-is` — ✅ accepted
+  2. EN "Just this, thanks." · FR "Juste ça, merci." · ES "Solo esto, gracias." · (HE gloss "רק את זה, תודה.") — `phrase.super.just-this` — ❌ wrong
+  3. EN "Could I get a bag?" · FR "Je peux avoir un sac ?" · ES "¿Me da una bolsa?" · (HE gloss "אפשר שקית?") — `phrase.super.need-bag` — ❌ wrong
+- Tests: phrase.super.where-is
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M17-Q24 — quick-reply (step 14, round 2 of 4 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "The milk is in aisle three, on the left." · FR "Le lait est dans l’allée trois, sur la gauche." · ES "La leche está en el pasillo tres, a la izquierda."
+- Meaning of the audio (HE): "החלב במעבר שלוש, משמאל."
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Thank you!" · FR "Merci !" · ES "¡Gracias!" · (HE gloss "תודה!") — `phrase.recovery.thank-you` — ✅ accepted
+  2. EN "Just this, thanks." · FR "Juste ça, merci." · ES "Solo esto, gracias." · (HE gloss "רק את זה, תודה.") — `phrase.super.just-this` — ❌ wrong
+  3. EN "Do you have bread?" · FR "Vous avez du pain ?" · ES "¿Tienen pan?" · (HE gloss "יש לכם לחם?") — `phrase.super.do-you-have` — ❌ wrong
+- Tests: phrase.recovery.thank-you
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M17-Q25 — quick-reply (step 14, round 3 of 4 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "…At the checkout… Hi! Is that everything?" · FR "…À la caisse… Bonjour ! Ce sera tout ?" · ES "…En la caja… ¡Hola! ¿Eso es todo?"
+- Meaning of the audio (HE): "…בקופה… היי! זה הכל?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Just this, thanks." · FR "Juste ça, merci." · ES "Solo esto, gracias." · (HE gloss "רק את זה, תודה.") — `phrase.super.just-this` — ✅ accepted
+  2. EN "Where is the milk?" · FR "Où est le lait ?" · ES "¿Dónde está la leche?" · (HE gloss "איפה החלב?") — `phrase.super.where-is` — ❌ wrong
+  3. EN "Do you have bread?" · FR "Vous avez du pain ?" · ES "¿Tienen pan?" · (HE gloss "יש לכם לחם?") — `phrase.super.do-you-have` — ❌ wrong
+- Tests: phrase.super.just-this
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M17-Q26 — quick-reply (step 14, round 4 of 4 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "Do you need a bag?" · FR "Vous avez besoin d’un sac ?" · ES "¿Necesita una bolsa?"
+- Meaning of the audio (HE): "צריך שקית?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Could I get a bag?" · FR "Je peux avoir un sac ?" · ES "¿Me da una bolsa?" · (HE gloss "אפשר שקית?") — `phrase.super.need-bag` — ✅ accepted
+  2. EN "Where is the milk?" · FR "Où est le lait ?" · ES "¿Dónde está la leche?" · (HE gloss "איפה החלב?") — `phrase.super.where-is` — ❌ wrong
+  3. EN "Just this, thanks." · FR "Juste ça, merci." · ES "Solo esto, gracias." · (HE gloss "רק את זה, תודה.") — `phrase.super.just-this` — ❌ wrong
+- Tests: phrase.super.need-bag
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
 ## Dialogue — full tree
 
@@ -12027,7 +13082,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 
 ## Learner choice screens
 
-### M17-Q07 — dialogue-choice (step 10, scene "supermarket" · node c1)
+### M17-Q16 — dialogue-choice (step 11, scene "supermarket" · node c1)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Hi there! Can I help you find something?" · FR "Bonjour ! Je peux vous aider à trouver quelque chose ?" · ES "¡Hola! ¿Le ayudo a encontrar algo?"
@@ -12039,7 +13094,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.super.where-is, phrase.super.do-you-have
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M17-Q08 — dialogue-choice (step 10, scene "supermarket" · node c1b)
+### M17-Q17 — dialogue-choice (step 11, scene "supermarket" · node c1b)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Bread? Yes — fresh this morning, in aisle one." · FR "Du pain ? Oui — frais de ce matin, dans l’allée une." · ES "¿Pan? Sí — recién hecho esta mañana, en el pasillo uno."
@@ -12050,7 +13105,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.super.where-is
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M17-Q09 — dialogue-choice (step 10, scene "supermarket" · node c2)
+### M17-Q18 — dialogue-choice (step 11, scene "supermarket" · node c2)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "The milk is in aisle three, on the left." · FR "Le lait est dans l’allée trois, sur la gauche." · ES "La leche está en el pasillo tres, a la izquierda."
@@ -12062,7 +13117,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.recovery.thank-you, phrase.recovery.repeat
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M17-Q10 — dialogue-choice (step 10, scene "supermarket" · node c2b)
+### M17-Q19 — dialogue-choice (step 11, scene "supermarket" · node c2b)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Aisle — three — on the left." · FR "Allée — trois — sur la gauche." · ES "Pasillo — tres — a la izquierda."
@@ -12073,7 +13128,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.recovery.thank-you
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M17-Q11 — dialogue-choice (step 10, scene "supermarket" · node c3)
+### M17-Q20 — dialogue-choice (step 11, scene "supermarket" · node c3)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "…At the checkout… Hi! Is that everything?" · FR "…À la caisse… Bonjour ! Ce sera tout ?" · ES "…En la caja… ¡Hola! ¿Eso es todo?"
@@ -12085,7 +13140,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.recovery.show-me, phrase.super.just-this
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M17-Q12 — dialogue-choice (step 10, scene "supermarket" · node c3b)
+### M17-Q21 — dialogue-choice (step 11, scene "supermarket" · node c3b)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Of course — put it here, press the picture, done." · FR "Bien sûr — posez-le ici, appuyez sur l’image, voilà." · ES "Claro — póngalo aquí, pulse la imagen, listo."
@@ -12096,7 +13151,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.super.just-this
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M17-Q13 — dialogue-choice (step 10, scene "supermarket" · node c4)
+### M17-Q22 — dialogue-choice (step 11, scene "supermarket" · node c4)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Do you need a bag?" · FR "Vous avez besoin d’un sac ?" · ES "¿Necesita una bolsa?"
@@ -12124,7 +13179,7 @@ None — no choice in this mission is marked wrong.
 
 ## Sentence review
 
-Step 12. 14 sentences, in this fixed order. Each is played automatically (TTS), shown with its translation and tip; buttons: 🔊 "Hear again" / "לשמוע שוב" and Next. No speaking prompt, no grading, no scoring; nothing is recorded.
+Step 13. 11 sentences, in this fixed order. Each is played automatically (TTS), shown with its translation and tip; buttons: 🔊 "Hear again" / "לשמוע שוב" and Next. No speaking prompt, no grading, no scoring; nothing is recorded.
 
 1. `phrase.super.where-is` — Where is the milk? — איפה החלב?
 2. `phrase.super.do-you-have` — Do you have bread? — יש לכם לחם?
@@ -12132,23 +13187,20 @@ Step 12. 14 sentences, in this fixed order. Each is played automatically (TTS), 
 4. `phrase.super.need-bag` — Could I get a bag? — אפשר שקית?
 5. `reply.super.aisle-three` — It's in aisle three. — זה במעבר שלוש.
 6. `reply.super.over-there` — Over there, on the left. — שם, משמאל.
-7. `reply.super.weigh-it` — You need to weigh it first. — צריך לשקול קודם.
-8. `reply.super.bag-q` — Do you need a bag? — צריך שקית?
-9. `reply.super.card-here` — Insert your card here. — הכנס את הכרטיס כאן.
-10. `reply.super.sold-out` — Sorry, we're sold out. — סליחה, אזל המלאי.
-11. `phrase.recovery.repeat` — Can you repeat that? — אפשר לחזור על זה?
-12. `phrase.recovery.slowly` — Please speak slowly. — דבר לאט, בבקשה.
-13. `phrase.recovery.show-me` — Can you show me? — אתה יכול להראות לי?
-14. `phrase.recovery.thank-you` — Thank you! — תודה!
+7. `reply.super.bag-q` — Do you need a bag? — צריך שקית?
+8. `reply.super.card-here` — Insert your card here. — הכנס את הכרטיס כאן.
+9. `reply.super.sold-out` — Sorry, we're sold out. — סליחה, אזל המלאי.
+10. `phrase.recovery.repeat` — Can you repeat that? — אפשר לחזור על זה?
+11. `phrase.recovery.show-me` — Can you show me? — אתה יכול להראות לי?
 
 ## Cold open / ambush
 
-### M17-Q14 — cold-open (step 13, single prompt · mode: not set (original behaviour))
+### M17-Q27 — cold-open (step 16, single prompt · mode: recovery)
 
 - Prompt displayed: "Heads up: a fast one is coming. Use a tool." / "שים לב: מגיע משפט מהיר. השתמש בכלי."
 - Audio played: EN "Unexpected item in the bagging area — please wait for assistance." · FR "Article inattendu dans la zone d’emballage — veuillez attendre de l’aide." · ES "Artículo inesperado en la zona de embolsado — espere asistencia, por favor."
 - Meaning of the audio (HE): "פריט לא צפוי באזור האריזה — אנא המתן לסיוע."
-- Buttons show: TARGET-LANGUAGE text of the two sentences, each prefixed with 🛟; order shuffled
+- Buttons show: TARGET-LANGUAGE text of the two sentences; only the conversation-help tool carries 🛟; order shuffled
 - Choices:
   1. EN "Can you show me?" · FR "Vous pouvez me montrer ?" · ES "¿Me lo puede mostrar?" · (HE gloss "אתה יכול להראות לי?") — `phrase.recovery.show-me` — ✅ accepted
   2. EN "Just this, thanks." · FR "Juste ça, merci." · ES "Solo esto, gracias." · (HE gloss "רק את זה, תודה.") — `phrase.super.just-this` — ❌ wrong
@@ -12174,20 +13226,21 @@ Every learner sentence of this mission is a line in a scene.
 
 ## Receipts (proof cards)
 
-- Step 7: "You recognize the answers of a shelf-stocker and a checkout — aisle, direction, weighing, bag." / "אתה מזהה תשובות של סדרן וקופה — מעבר, כיוון, שקילה, שקית."
-- Step 11: "You found products, weighed fruit, and cleared a self-checkout — on your own." / "מצאת מוצרים, שקלת פירות, ועברת קופה אוטומטית — לבד."
-- Step 14: "The self-checkout jammed — and you knew to ask someone to show you, instead of panicking." / "הקופה האוטומטית נתקעה — וידעת לבקש שיראו לך במקום להיכנס ללחץ."
+- Step 7: "You recognize what an assistant and a checkout say — aisle, direction, bag, card." / "אתה מזהה תשובות של עובד וקופה — מעבר, כיוון, שקית, כרטיס."
+- Step 12: "You found a product, understood which aisle it is in, and got through the checkout — on your own." / "מצאת מוצר, הבנת באיזה מעבר הוא, ועברת קופה — לבד."
+- Step 15: "From shelf to checkout at normal pace — you found it, understood where, and paid." / "מהמדף ועד הקופה, בקצב רגיל — מצאת, הבנת איפה, ושילמת."
+- Step 17: "The self-checkout jammed — and you knew to ask someone to show you, instead of panicking." / "הקופה האוטומטית נתקעה — וידעת לבקש שיראו לך במקום להיכנס ללחץ."
 
 ## Audit Metadata — DO NOT FIX YET
 
 - Learner-production sentences: 4
-- Receptive (expected-reply) sentences: 6
+- Receptive (expected-reply) sentences: 5
 - Toolkit phrases bundled: 4
 - Key-sentence steps: 4
 - Expected-reply/listening items: 4
-- Questions/quizzes (meaning quiz): 2
-- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 0
-- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 4
+- Questions/quizzes (meaning quiz): 0
+- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 15
+- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 16
 - One-button dialogue screens: 3
 - Learner sentences never actively retrieved: 0
 - Dialogue learner choices (screens): 7
@@ -12196,24 +13249,20 @@ Every learner sentence of this mission is a line in a scene.
 - Recovery opportunities: 2
 - Vocabulary pre-items: 0
 - Swap variants (extra accepted lines): 1
-- Sentences in review: 14
-- Total interactive questions: 14 (answer choices: 31)
-- Approximate total learner interactions: 32 (questions + key sentences + review cards + word-intro screen)
+- Sentences in review: 11
+- Total interactive questions: 27 (answer choices: 79)
+- Approximate total learner interactions: 42 (questions + key sentences + review cards + word-intro screen)
 
-### AUTO-FLAG — requires human review (12)
+### AUTO-FLAG — requires human review (8)
 
-- AUTO-FLAG — Same prompt tested repeatedly: “It's in aisle three.” is the audio of M17-Q01 and M17-Q06.
-- AUTO-FLAG — Same prompt tested repeatedly: “You need to weigh it first.” is the audio of M17-Q03 and M17-Q05.
 - AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "supermarket" n1 — “Hi there! Can I help you find something?”
 - AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "supermarket" n3 — “…At the checkout… Hi! Is that everything?”
 - AUTO-FLAG — Practice item wording not in this mission's dialogue: `reply.super.aisle-three` “It's in aisle three.” (drilled as an expected reply / distractor, but no NPC line here says it).
 - AUTO-FLAG — Practice item wording not in this mission's dialogue: `reply.super.over-there` “Over there, on the left.” (drilled as an expected reply / distractor, but no NPC line here says it).
-- AUTO-FLAG — Practice item wording not in this mission's dialogue: `reply.super.weigh-it` “You need to weigh it first.” (drilled as an expected reply / distractor, but no NPC line here says it).
 - AUTO-FLAG — Practice item wording not in this mission's dialogue: `reply.super.sold-out` “Sorry, we're sold out.” (drilled as an expected reply / distractor, but no NPC line here says it).
 - AUTO-FLAG — Toolkit phrase listed in the mission but never offered in it: `phrase.recovery.slowly` “Please speak slowly.” (sentence review only).
 - AUTO-FLAG — 7 of 7 choice screens have NO wrong option (every button is accepted): supermarket/c1, supermarket/c1b, supermarket/c2, supermarket/c2b, supermarket/c3, supermarket/c3b, supermarket/c4.
 - AUTO-FLAG — 3 choice screens offer exactly ONE button (no decision): supermarket/c1b, supermarket/c2b, supermarket/c3b.
-- AUTO-FLAG — M17-Q14: cold-open line contains English words not met in any sentence or dialogue line up to this mission: unexpected, item, bagging, area, wait, assistance.
 
 ---
 
@@ -12249,8 +13298,8 @@ Intro screen (first Practice step; identical in the English, French and Spanish 
 - Icon: ☀️
 - Title: "CHECKPOINT: Everyday Day" / "נקודת ביקורת: יום רגיל"
 - Text 1: "No new material today. Just proof." / "אין חומר חדש היום. רק הוכחה."
-- Text 2: "One ordinary day: a morning coffee, plans with a friend, a small purchase, and dinner." / "יום רגיל אחד: קפה בבוקר, תוכניות עם חבר, קנייה קטנה, וארוחת ערב."
-- Text 3: "Every line is one you already know — in a new order, at normal speed." / "הכל משפטים שכבר למדת — בסדר חדש, ובקצב רגיל."
+- Text 2: "One ordinary day: a morning coffee, plans with a friend, the supermarket, and dinner." / "יום רגיל אחד: קפה בבוקר, תוכניות עם חבר, קנייה בסופר, וארוחת ערב."
+- Text 3: "Every line is one you already know — in a new order, at normal speed, with no translation." / "הכל משפטים שכבר למדת — בסדר חדש, בקצב רגיל, ובלי תרגום."
 - Button: "Start the day" / "להתחיל את היום"
 
 ## Current Practice flow
@@ -12258,18 +13307,16 @@ Intro screen (first Practice step; identical in the English, French and Spanish 
 1. `talk` — intro screen — "CHECKPOINT: Everyday Day"
 2. `dialogue` — dialogue (choose your line) — scene `cold-morning`
 3. `receipt` — receipt (proof card) — "Morning: you ordered, hesitated and paid — with no preparation." / "בוקר: הזמנת, התלבטת ושילמת — בלי הכנה."
-4. `ambush` — cold open (fast line) — mode not set · correct `reply.coffee.milk-sugar`, wrong `reply.coffee.cash-or-card`
-5. `receipt` — receipt (proof card) — "A question that came back late — and you understood it." / "שאלה שחזרה אליך באיחור — והבנת אותה."
-6. `dialogue` — dialogue (choose your line) — scene `cold-plans`
-7. `receipt` — receipt (proof card) — "You made plans for tomorrow and said what you are doing now." / "קבעת תוכניות למחר ואמרת מה אתה עושה עכשיו."
-8. `dialogue` — dialogue (choose your line) — scene `cold-shop`
-9. `receipt` — receipt (proof card) — "A small purchase: you browsed, asked the price and decided." / "קנייה קטנה: הסתכלת, שאלת מחיר והחלטת."
-10. `dialogue` — dialogue (choose your line) — scene `cold-dinner`
-11. `receipt` — receipt (proof card) — "A whole dinner — table, order, drink, bill — at normal speed." / "ארוחת ערב שלמה — שולחן, הזמנה, שתייה, חשבון — בקצב רגיל."
-12. `ambush` — cold open (fast line) — mode not set · correct `reply.rest.dessert`, wrong `reply.rest.reservation`
-13. `receipt` — receipt (proof card) — "A quick offer at the end of the meal — and you understood it was dessert." / "הצעה מהירה בסוף הארוחה — והבנת שמציעים קינוח."
-14. `receipt` — receipt (proof card) — "A whole ordinary day — coffee, a friend, a purchase and a meal — without the safety net." / "יום רגיל שלם — קפה, חבר, קנייה וארוחה — בלי רשת ביטחון."
-15. `summary` — victory screen
+4. `dialogue` — dialogue (choose your line) — scene `cold-plans`
+5. `receipt` — receipt (proof card) — "You made plans for tomorrow, said what you like and what you are doing now." / "קבעת תוכניות למחר, אמרת מה אתה אוהב ומה אתה עושה עכשיו."
+6. `dialogue` — dialogue (choose your line) — scene `cold-shop`
+7. `receipt` — receipt (proof card) — "The supermarket: you found a product, understood which aisle, and got through the checkout." / "סופר: מצאת מוצר, הבנת באיזה מעבר, ועברת קופה."
+8. `dialogue` — dialogue (choose your line) — scene `cold-dinner`
+9. `receipt` — receipt (proof card) — "A whole dinner — table, order, drink, bill — at normal speed." / "ארוחת ערב שלמה — שולחן, הזמנה, שתייה, חשבון — בקצב רגיל."
+10. `ambush` — cold open (fast line) — mode speed · correct `reply.rest.ready-to-order`, wrong `reply.rest.to-drink`
+11. `receipt` — receipt (proof card) — "Three sentences in a row, at normal speed, with not one new word — and you caught that you were being asked to order." / "שלושה משפטים ברצף, בקצב רגיל ובלי מילה חדשה — ותפסת ששואלים אם אתה מוכן להזמין."
+12. `receipt` — receipt (proof card) — "A whole ordinary day, alone: coffee, plans with a friend, the supermarket and dinner — and when it got fast, you did not freeze." / "יום רגיל שלם, בלי עזרה: קפה, תוכניות עם חבר, סופר וארוחת ערב — וגם כשזה היה מהיר, לא קפאת."
+13. `summary` — victory screen
 
 Step sequence identical in EN / FR / ES: yes.
 
@@ -12292,6 +13339,17 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Used in missions: 03, 18
 - Exercised here as: dialogue choice cold-morning/c2 (accepted)
 
+### Sentence: `phrase.rest.table-two`
+
+- EN: A table for two, please.
+- HE: שולחן לשניים, בבקשה.
+- FR: Une table pour deux, s’il vous plaît.
+- ES: Una mesa para dos, por favor.
+- Role: learner production
+- Tip / pattern note: "The restaurant opener. Template: a table for ___." / "הפתיח למסעדה. תבנית: a table for ___."
+- Used in missions: 14, 18, 28, 30
+- Exercised here as: dialogue choice cold-morning/c2 (WRONG option); dialogue choice cold-dinner/c2 (accepted); dialogue choice cold-dinner/c6 (WRONG option)
+
 ### Sentence: `phrase.time.maybe-later`
 
 - EN: Maybe later.
@@ -12312,7 +13370,18 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 02, 18
-- Exercised here as: dialogue choice cold-morning/c6 (accepted)
+- Exercised here as: dialogue choice cold-morning/c4 (WRONG option); dialogue choice cold-morning/c6 (accepted)
+
+### Sentence: `phrase.coffee.to-go`
+
+- EN: To go, please.
+- HE: לקחת, בבקשה.
+- FR: À emporter, s’il vous plaît.
+- ES: Para llevar, por favor.
+- Role: learner production
+- Tip / pattern note: none
+- Used in missions: 03, 18
+- Exercised here as: dialogue choice cold-morning/c6 (WRONG option)
 
 ### Sentence: `phrase.time.free-tomorrow`
 
@@ -12323,7 +13392,18 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 12, 18
-- Exercised here as: dialogue choice cold-plans/c2 (accepted); dialogue choice cold-plans/c2b (accepted)
+- Exercised here as: dialogue choice cold-plans/c2 (accepted)
+
+### Sentence: `phrase.time.free-tonight`
+
+- EN: I'm free tonight.
+- HE: אני פנוי הערב.
+- FR: Je suis libre ce soir.
+- ES: Estoy libre esta noche.
+- Role: learner production
+- Tip / pattern note: none
+- Used in missions: 12, 18
+- Exercised here as: dialogue choice cold-plans/c2 (WRONG option)
 
 ### Sentence: `phrase.hobby.i-love-surfing`
 
@@ -12336,6 +13416,17 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Used in missions: 16, 18
 - Exercised here as: dialogue choice cold-plans/c4 (accepted)
 
+### Sentence: `phrase.hobby.i-usually`
+
+- EN: I usually draw in the evening.
+- HE: בדרך כלל אני מצייר בערב.
+- FR: D’habitude, je dessine le soir.
+- ES: Normalmente dibujo por la noche.
+- Role: learner production
+- Tip / pattern note: none
+- Used in missions: 16, 18
+- Exercised here as: dialogue choice cold-plans/c4 (WRONG option)
+
 ### Sentence: `phrase.time.lets-meet`
 
 - EN: Let's meet here at seven.
@@ -12346,6 +13437,17 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Tip / pattern note: "Let’s meet ___ at ___ — a place and a time, and you are done." / "Let’s meet ___ at ___ — מקום ושעה, וזהו."
 - Used in missions: 12, 18
 - Exercised here as: dialogue choice cold-plans/c6 (accepted)
+
+### Sentence: `phrase.time.not-too-late`
+
+- EN: No, that's not too late.
+- HE: לא, זה לא מאוחר מדי.
+- FR: Non, ce n’est pas trop tard.
+- ES: No, no es muy tarde.
+- Role: learner production
+- Tip / pattern note: none
+- Used in missions: 12, 18
+- Exercised here as: dialogue choice cold-plans/c6 (WRONG option)
 
 ### Sentence: `phrase.home.going-home`
 
@@ -12358,71 +13460,60 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Used in missions: 13, 18
 - Exercised here as: dialogue choice cold-plans/c8 (accepted)
 
-### Sentence: `phrase.shop.just-looking`
+### Sentence: `phrase.home.where-family`
 
-- EN: I'm just looking, thanks.
-- HE: אני רק מסתכל, תודה.
-- FR: Je regarde seulement, merci.
-- ES: Solo estoy mirando, gracias.
+- EN: Where is your family?
+- HE: איפה המשפחה שלך?
+- FR: Où est ta famille ?
+- ES: ¿Dónde está tu familia?
 - Role: learner production
-- Tip / pattern note: "A phrase that buys you space from a pushy seller." / "משפט שקונה לך מרחב בלי לחץ מוכר."
-- Used in missions: 09, 18
-- Exercised here as: dialogue choice cold-shop/c2 (accepted)
+- Tip / pattern note: "Where is ___? — the same question from Directions, now about people." / "Where is ___? — אותה שאלה מהכיוונים, עכשיו על אנשים."
+- Used in missions: 13, 18
+- Exercised here as: dialogue choice cold-plans/c8 (WRONG option)
 
-### Sentence: `phrase.money.how-much`
+### Sentence: `phrase.super.where-is`
 
-- EN: How much is it?
-- HE: כמה זה עולה?
-- FR: C’est combien ?
-- ES: ¿Cuánto es?
+- EN: Where is the milk?
+- HE: איפה החלב?
+- FR: Où est le lait ?
+- ES: ¿Dónde está la leche?
 - Role: learner production
-- Tip / pattern note: "The question that opens every transaction. Learn it cold." / "השאלה שפותחת כל עסקה. תלמד אותה עד הסוף."
-- Used in missions: 02, 18
-- Exercised here as: dialogue choice cold-shop/c4 (accepted)
+- Tip / pattern note: "Template: Where is the ___? — finds any product in any shop." / "התבנית: Where is the ___? — מוצאת כל מוצר בכל חנות."
+- Used in missions: 17, 18
+- Exercised here as: dialogue choice cold-shop/c2 (accepted); dialogue choice cold-shop/c6 (WRONG option)
 
-### Sentence: `phrase.shop.take-it`
+### Sentence: `phrase.super.need-bag`
 
-- EN: I'll take it.
-- HE: אני אקח את זה.
-- FR: Je le prends.
-- ES: Me lo llevo.
-- Role: learner production
-- Tip / pattern note: "Decided? Two words close the deal." / "החלטת? שתי מילים סוגרות עסקה."
-- Used in missions: 09, 18
-- Exercised here as: dialogue choice cold-shop/c6 (accepted)
-
-### Sentence: `phrase.rest.table-two`
-
-- EN: A table for two, please.
-- HE: שולחן לשניים, בבקשה.
-- FR: Une table pour deux, s’il vous plaît.
-- ES: Una mesa para dos, por favor.
-- Role: learner production
-- Tip / pattern note: "The restaurant opener. Template: a table for ___." / "הפתיח למסעדה. תבנית: a table for ___."
-- Used in missions: 14, 18, 28, 30
-- Exercised here as: dialogue choice cold-dinner/c2 (accepted)
-
-### Sentence: `phrase.rest.ill-have-chicken`
-
-- EN: I'll have the chicken.
-- HE: אני אקח את העוף.
-- FR: Je vais prendre le poulet.
-- ES: Voy a tomar el pollo.
-- Role: learner production
-- Tip / pattern note: "The ordering template: I’ll have the ___." / "תבנית ההזמנה: I’ll have the ___."
-- Used in missions: 14, 18
-- Exercised here as: dialogue choice cold-dinner/c4 (accepted)
-
-### Sentence: `phrase.rest.water`
-
-- EN: A bottle of water, please.
-- HE: בקבוק מים, בבקשה.
-- FR: Une bouteille d’eau, s’il vous plaît.
-- ES: Una botella de agua, por favor.
+- EN: Could I get a bag?
+- HE: אפשר שקית?
+- FR: Je peux avoir un sac ?
+- ES: ¿Me da una bolsa?
 - Role: learner production
 - Tip / pattern note: none
-- Used in missions: 14, 18
-- Exercised here as: dialogue choice cold-dinner/c6 (accepted)
+- Used in missions: 17, 18
+- Exercised here as: dialogue choice cold-shop/c2 (WRONG option); dialogue choice cold-shop/c8 (accepted)
+
+### Sentence: `phrase.super.just-this`
+
+- EN: Just this, thanks.
+- HE: רק את זה, תודה.
+- FR: Juste ça, merci.
+- ES: Solo esto, gracias.
+- Role: learner production
+- Tip / pattern note: none
+- Used in missions: 17, 18
+- Exercised here as: dialogue choice cold-shop/c4 (WRONG option); dialogue choice cold-shop/c6 (accepted)
+
+### Sentence: `phrase.super.do-you-have`
+
+- EN: Do you have bread?
+- HE: יש לכם לחם?
+- FR: Vous avez du pain ?
+- ES: ¿Tienen pan?
+- Role: learner production
+- Tip / pattern note: "Template: Do you have ___? — checks if it’s in stock." / "התבנית: Do you have ___? — בודקת אם קיים במלאי."
+- Used in missions: 17, 18
+- Exercised here as: dialogue choice cold-shop/c8 (WRONG option)
 
 ### Sentence: `phrase.rest.the-bill`
 
@@ -12433,51 +13524,73 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 14, 18
-- Exercised here as: dialogue choice cold-dinner/c8 (accepted)
+- Exercised here as: dialogue choice cold-dinner/c2 (WRONG option); dialogue choice cold-dinner/c8 (accepted)
 
-### Sentence: `reply.coffee.milk-sugar`
+### Sentence: `phrase.rest.ill-have-chicken`
 
-- EN: Milk and sugar?
-- HE: חלב וסוכר?
-- FR: Lait et sucre ?
-- ES: ¿Leche y azúcar?
+- EN: I'll have the chicken.
+- HE: אני אקח את העוף.
+- FR: Je vais prendre le poulet.
+- ES: Voy a tomar el pollo.
+- Role: learner production
+- Tip / pattern note: "The ordering template: I’ll have the ___." / "תבנית ההזמנה: I’ll have the ___."
+- Used in missions: 14, 18
+- Exercised here as: dialogue choice cold-dinner/c4 (accepted); dialogue choice cold-dinner/c8 (WRONG option)
+
+### Sentence: `phrase.rest.water`
+
+- EN: A bottle of water, please.
+- HE: בקבוק מים, בבקשה.
+- FR: Une bouteille d’eau, s’il vous plaît.
+- ES: Una botella de agua, por favor.
+- Role: learner production
+- Tip / pattern note: none
+- Used in missions: 14, 18
+- Exercised here as: dialogue choice cold-dinner/c4 (WRONG option); dialogue choice cold-dinner/c6 (accepted)
+
+### Sentence: `reply.rest.ready-to-order`
+
+- EN: Are you ready to order?
+- HE: מוכנים להזמין?
+- FR: Vous êtes prêts à commander ?
+- ES: ¿Están listos para pedir?
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
-- Used in missions: 03, 18
-- Exercised here as: cold-open correct option (step 4)
+- Used in missions: 14, 18, 28
+- Exercised here as: cold-open correct option (step 10)
 
-### Sentence: `reply.coffee.cash-or-card`
+### Sentence: `reply.rest.to-drink`
 
-- EN: Cash or card?
-- HE: מזומן או כרטיס?
-- FR: Espèces ou carte ?
-- ES: ¿Efectivo o tarjeta?
-- Role: receptive — an expected reply the learner hears
-- Tip / pattern note: none
-- Used in missions: 03, 18
-- Exercised here as: cold-open wrong option (step 4)
-
-### Sentence: `reply.rest.dessert`
-
-- EN: Would you like dessert?
-- HE: רוצים קינוח?
-- FR: Vous voulez un dessert ?
-- ES: ¿Quieren postre?
+- EN: Anything to drink?
+- HE: משהו לשתות?
+- FR: Quelque chose à boire ?
+- ES: ¿Algo de beber?
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 14, 18
-- Exercised here as: cold-open correct option (step 12)
+- Exercised here as: cold-open wrong option (step 10)
 
-### Sentence: `reply.rest.reservation`
+### Sentence: `phrase.recovery.thank-you`
 
-- EN: Do you have a reservation?
-- HE: יש לכם הזמנה?
-- FR: Vous avez une réservation ?
-- ES: ¿Tiene reserva?
-- Role: receptive — an expected reply the learner hears
+- EN: Thank you!
+- HE: תודה!
+- FR: Merci !
+- ES: ¡Gracias!
+- Role: courtesy from the Recovery Toolkit
 - Tip / pattern note: none
-- Used in missions: 14, 18
-- Exercised here as: cold-open wrong option (step 12)
+- Used in missions: 03, 05, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 25, 26, 29, 30
+- Exercised here as: dialogue choice cold-shop/c4 (accepted)
+
+### Sentence: `phrase.recovery.slowly`
+
+- EN: Please speak slowly.
+- HE: דבר לאט, בבקשה.
+- FR: Parlez lentement, s’il vous plaît.
+- ES: Más despacio, por favor.
+- Role: conversation-help tool (global Recovery Toolkit)
+- Tip / pattern note: none
+- Used in missions: 01, 02, 03, 04, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 26, 27, 29, 30
+- Exercised here as: dialogue choice cold-morning/c6 (accepted)
 
 ### Sentence: `phrase.recovery.repeat`
 
@@ -12488,7 +13601,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
 - Used in missions: 01, 03, 05, 06, 08, 09, 10, 11, 12, 14, 15, 17, 18, 19, 20, 23, 26, 28, 29
-- Exercised here as: dialogue choice cold-plans/c2 (accepted)
+- Exercised here as: dialogue choice cold-plans/c2 (accepted); dialogue choice cold-shop/c4 (accepted)
 
 ## Expected replies / listening items
 
@@ -12507,16 +13620,26 @@ None in this mission.
 ### Scene 1 — `cold-morning` (start: n1; coaching mode: off)
 
 - **n1** · NPC · fast (TTS rate 1.08) → c2
-  - EN: Morning! What can I get you?
+  - EN: Good morning! What can I get you?
   - FR: Bonjour ! Qu’est-ce que je vous sers ?
   - ES: ¡Buenos días! ¿Qué le sirvo?
-  - HE: בוקר! מה להביא לך?
+  - HE: בוקר טוב! מה להביא לך?
 - **c2** · LEARNER choice screen
   - choice 1 — ✅ accepted → n3 — `phrase.coffee.iced-coffee`
     - EN: I'd like an iced coffee, please.
     - FR: Je voudrais un café glacé, s’il vous plaît.
     - ES: Quiero un café con hielo, por favor.
     - HE: אני רוצה קפה קר, בבקשה.
+  - choice 2 — ❌ WRONG → m2 — `phrase.rest.table-two`
+    - EN: A table for two, please.
+    - FR: Une table pour deux, s’il vous plaît.
+    - ES: Una mesa para dos, por favor.
+    - HE: שולחן לשניים, בבקשה.
+- **m2** · NPC · slow (TTS rate 0.75) · off the happy path → c2
+  - EN: Good morning! What can I get you?
+  - FR: Bonjour ! Qu’est-ce que je vous sers ?
+  - ES: ¡Buenos días! ¿Qué le sirvo?
+  - HE: בוקר טוב! מה להביא לך?
 - **n3** · NPC · normal (TTS rate 0.95) → c4
   - EN: Sure. Anything to eat?
   - FR: Très bien. Quelque chose à manger ?
@@ -12524,48 +13647,78 @@ None in this mission.
   - HE: בטח. משהו לאכול?
 - **c4** · LEARNER choice screen
   - choice 1 — ✅ accepted → n5 — `phrase.time.maybe-later`
-    - EN: I don't know. Maybe later.
-    - FR: Je ne sais pas. Peut-être plus tard.
-    - ES: No lo sé. Quizás más tarde.
-    - HE: אני לא יודע. אולי אחר כך.
-- **n5** · NPC · normal (TTS rate 0.95) → c6
-  - EN: No problem. That's four euros. Cash or card?
-  - FR: Pas de problème. Ça fait quatre euros. Espèces ou carte ?
-  - ES: No pasa nada. Son cuatro euros. ¿Efectivo o tarjeta?
-  - HE: אין בעיה. זה ארבעה יורו. מזומן או כרטיס?
+    - EN: Maybe later.
+    - FR: Peut-être plus tard.
+    - ES: Quizás más tarde.
+    - HE: אולי אחר כך.
+  - choice 2 — ❌ WRONG → m4 — `phrase.money.by-card`
+    - EN: By card, please.
+    - FR: Par carte, s’il vous plaît.
+    - ES: Con tarjeta, por favor.
+    - HE: בכרטיס, בבקשה.
+- **m4** · NPC · slow (TTS rate 0.75) · off the happy path → c4
+  - EN: Sure. Anything to eat?
+  - FR: Très bien. Quelque chose à manger ?
+  - ES: Claro. ¿Algo de comer?
+  - HE: בטח. משהו לאכול?
+- **n5** · NPC · fast (TTS rate 1.08) → c6
+  - EN: No problem. Cash or card?
+  - FR: Pas de problème. Espèces ou carte ?
+  - ES: Sin problema. ¿Efectivo o tarjeta?
+  - HE: אין בעיה. מזומן או כרטיס?
 - **c6** · LEARNER choice screen
   - choice 1 — ✅ accepted → n7 — `phrase.money.by-card`
     - EN: By card, please.
     - FR: Par carte, s’il vous plaît.
     - ES: Con tarjeta, por favor.
     - HE: בכרטיס, בבקשה.
+  - choice 2 — ❌ WRONG → m6 — `phrase.coffee.to-go`
+    - EN: To go, please.
+    - FR: À emporter, s’il vous plaît.
+    - ES: Para llevar, por favor.
+    - HE: לקחת, בבקשה.
+  - choice 3 — 🛟 accepted — conversation-help tool → r6 — `phrase.recovery.slowly`
+    - EN: Please speak slowly.
+    - FR: Parlez lentement, s’il vous plaît.
+    - ES: Más despacio, por favor.
+    - HE: דבר לאט, בבקשה.
+- **m6** · NPC · slow (TTS rate 0.75) · off the happy path → c6
+  - EN: No problem. Cash or card?
+  - FR: Pas de problème. Espèces ou carte ?
+  - ES: Sin problema. ¿Efectivo o tarjeta?
+  - HE: אין בעיה. מזומן או כרטיס?
+- **r6** · NPC · slow (TTS rate 0.75) · off the happy path → c6
+  - EN: Cash — or card?
+  - FR: Espèces — ou carte ?
+  - ES: ¿Efectivo — o tarjeta?
+  - HE: מזומן — או כרטיס?
 - **n7** · NPC · normal (TTS rate 0.95) · END of scene
-  - EN: Thank you — have a great morning!
-  - FR: Merci — bonne matinée !
-  - ES: Gracias — ¡que tenga una buena mañana!
-  - HE: תודה — בוקר נהדר!
+  - EN: Thank you! Have a nice day!
+  - FR: Merci ! Bonne journée !
+  - ES: ¡Gracias! ¡Que tenga un buen día!
+  - HE: תודה! שיהיה יום נעים!
 
 #### Canonical happy path — Scene 1
 
-- **NPC:** Morning! What can I get you?
-  - FR: Bonjour ! Qu’est-ce que je vous sers ? · ES: ¡Buenos días! ¿Qué le sirvo? · HE: בוקר! מה להביא לך?
+- **NPC:** Good morning! What can I get you?
+  - FR: Bonjour ! Qu’est-ce que je vous sers ? · ES: ¡Buenos días! ¿Qué le sirvo? · HE: בוקר טוב! מה להביא לך?
 - **You:** I'd like an iced coffee, please.
   - FR: Je voudrais un café glacé, s’il vous plaît. · ES: Quiero un café con hielo, por favor. · HE: אני רוצה קפה קר, בבקשה.
 - **NPC:** Sure. Anything to eat?
   - FR: Très bien. Quelque chose à manger ? · ES: Claro. ¿Algo de comer? · HE: בטח. משהו לאכול?
-- **You:** I don't know. Maybe later.
-  - FR: Je ne sais pas. Peut-être plus tard. · ES: No lo sé. Quizás más tarde. · HE: אני לא יודע. אולי אחר כך.
-- **NPC:** No problem. That's four euros. Cash or card?
-  - FR: Pas de problème. Ça fait quatre euros. Espèces ou carte ? · ES: No pasa nada. Son cuatro euros. ¿Efectivo o tarjeta? · HE: אין בעיה. זה ארבעה יורו. מזומן או כרטיס?
+- **You:** Maybe later.
+  - FR: Peut-être plus tard. · ES: Quizás más tarde. · HE: אולי אחר כך.
+- **NPC:** No problem. Cash or card?
+  - FR: Pas de problème. Espèces ou carte ? · ES: Sin problema. ¿Efectivo o tarjeta? · HE: אין בעיה. מזומן או כרטיס?
 - **You:** By card, please.
   - FR: Par carte, s’il vous plaît. · ES: Con tarjeta, por favor. · HE: בכרטיס, בבקשה.
-- **NPC:** Thank you — have a great morning!
-  - FR: Merci — bonne matinée ! · ES: Gracias — ¡que tenga una buena mañana! · HE: תודה — בוקר נהדר!
+- **NPC:** Thank you! Have a nice day!
+  - FR: Merci ! Bonne journée ! · ES: ¡Gracias! ¡Que tenga un buen día! · HE: תודה! שיהיה יום נעים!
 
 ### Scene 2 — `cold-plans` (start: n1; coaching mode: off)
 
 - **n1** · NPC · fast (TTS rate 1.08) → c2
-  - EN: Hey! Are you free tomorrow?
+  - EN: Hi! Are you free tomorrow?
   - FR: Salut ! Tu es libre demain ?
   - ES: ¡Hola! ¿Estás libre mañana?
   - HE: היי! אתה פנוי מחר?
@@ -12575,175 +13728,304 @@ None in this mission.
     - FR: Oui, je suis libre demain.
     - ES: Sí, estoy libre mañana.
     - HE: כן, אני פנוי מחר.
-  - choice 2 — 🛟 accepted — conversation-help tool → r2 — `phrase.recovery.repeat`
+  - choice 2 — ❌ WRONG → m2 — `phrase.time.free-tonight`
+    - EN: I'm free tonight.
+    - FR: Je suis libre ce soir.
+    - ES: Estoy libre esta noche.
+    - HE: אני פנוי הערב.
+  - choice 3 — 🛟 accepted — conversation-help tool → r2 — `phrase.recovery.repeat`
     - EN: Can you repeat that?
     - FR: Vous pouvez répéter ?
     - ES: ¿Puede repetir, por favor?
     - HE: אפשר לחזור על זה?
-- **r2** · NPC · slow (TTS rate 0.75) · off the happy path → c2b
+- **m2** · NPC · slow (TTS rate 0.75) · off the happy path → c2
+  - EN: Hi! Are you free tomorrow?
+  - FR: Salut ! Tu es libre demain ?
+  - ES: ¡Hola! ¿Estás libre mañana?
+  - HE: היי! אתה פנוי מחר?
+- **r2** · NPC · slow (TTS rate 0.75) · off the happy path → c2
   - EN: Tomorrow. Are you — free?
   - FR: Demain. Tu es — libre ?
   - ES: Mañana. ¿Estás — libre?
   - HE: מחר. אתה — פנוי?
-- **c2b** · LEARNER choice screen · off the happy path
-  - choice 1 — ✅ accepted → n3 — `phrase.time.free-tomorrow`
-    - EN: Yes, I'm free tomorrow.
-    - FR: Oui, je suis libre demain.
-    - ES: Sí, estoy libre mañana.
-    - HE: כן, אני פנוי מחר.
 - **n3** · NPC · normal (TTS rate 0.95) → c4
-  - EN: We're going surfing. Do you like surfing?
-  - FR: On va faire du surf. Tu aimes le surf ?
-  - ES: Vamos a hacer surf. ¿Te gusta el surf?
-  - HE: אנחנו הולכים לגלוש. אתה אוהב לגלוש?
+  - EN: I surf a lot. Do you like surfing?
+  - FR: Je fais beaucoup de surf. Tu aimes le surf ?
+  - ES: Hago mucho surf. ¿Te gusta el surf?
+  - HE: אני גולש הרבה. אתה אוהב לגלוש?
 - **c4** · LEARNER choice screen
   - choice 1 — ✅ accepted → n5 — `phrase.hobby.i-love-surfing`
     - EN: I love surfing!
     - FR: J’adore le surf !
     - ES: ¡Me encanta el surf!
     - HE: אני מאוד אוהב לגלוש!
+  - choice 2 — ❌ WRONG → m4 — `phrase.hobby.i-usually`
+    - EN: I usually draw in the evening.
+    - FR: D’habitude, je dessine le soir.
+    - ES: Normalmente dibujo por la noche.
+    - HE: בדרך כלל אני מצייר בערב.
+- **m4** · NPC · slow (TTS rate 0.75) · off the happy path → c4
+  - EN: I surf a lot. Do you like surfing?
+  - FR: Je fais beaucoup de surf. Tu aimes le surf ?
+  - ES: Hago mucho surf. ¿Te gusta el surf?
+  - HE: אני גולש הרבה. אתה אוהב לגלוש?
 - **n5** · NPC · normal (TTS rate 0.95) → c6
-  - EN: Great! What time is good for you?
-  - FR: Super ! Quelle heure te convient ?
-  - ES: ¡Genial! ¿Qué hora te va bien?
-  - HE: מעולה! איזו שעה טובה לך?
+  - EN: Then come with us! But we leave early.
+  - FR: Alors viens avec nous ! Mais on part tôt.
+  - ES: ¡Entonces ven con nosotros! Pero salimos temprano.
+  - HE: אז בוא איתנו! אבל אנחנו יוצאים מוקדם.
 - **c6** · LEARNER choice screen
   - choice 1 — ✅ accepted → n7 — `phrase.time.lets-meet`
     - EN: Let's meet here at seven.
     - FR: On se retrouve ici à sept heures.
     - ES: Quedamos aquí a las siete.
     - HE: ניפגש כאן בשבע.
+  - choice 2 — ❌ WRONG → m6 — `phrase.time.not-too-late`
+    - EN: No, that's not too late.
+    - FR: Non, ce n’est pas trop tard.
+    - ES: No, no es muy tarde.
+    - HE: לא, זה לא מאוחר מדי.
+- **m6** · NPC · slow (TTS rate 0.75) · off the happy path → c6
+  - EN: Then come with us! But we leave early.
+  - FR: Alors viens avec nous ! Mais on part tôt.
+  - ES: ¡Entonces ven con nosotros! Pero salimos temprano.
+  - HE: אז בוא איתנו! אבל אנחנו יוצאים מוקדם.
 - **n7** · NPC · normal (TTS rate 0.95) → c8
-  - EN: Perfect. And now? Are you coming to the beach?
-  - FR: Parfait. Et maintenant ? Tu viens à la plage ?
-  - ES: Perfecto. ¿Y ahora? ¿Vienes a la playa?
-  - HE: מושלם. ועכשיו? אתה בא לים?
+  - EN: Perfect. And what are you doing tonight?
+  - FR: Parfait. Et tu fais quoi ce soir ?
+  - ES: Perfecto. ¿Y qué haces esta noche?
+  - HE: מושלם. ומה אתה עושה הערב?
 - **c8** · LEARNER choice screen
   - choice 1 — ✅ accepted → n9 — `phrase.home.going-home`
-    - EN: Not now, I'm tired. I'm going home.
-    - FR: Pas maintenant, je suis fatigué. Je rentre chez moi.
-    - ES: Ahora no, estoy cansado. Me voy a casa.
-    - HE: לא עכשיו, אני עייף. אני הולך הביתה.
+    - EN: I'm tired. I'm going home.
+    - FR: Je suis fatigué. Je rentre chez moi.
+    - ES: Estoy cansado. Me voy a casa.
+    - HE: אני עייף. אני הולך הביתה.
+  - choice 2 — ❌ WRONG → m8 — `phrase.home.where-family`
+    - EN: Where is your family?
+    - FR: Où est ta famille ?
+    - ES: ¿Dónde está tu familia?
+    - HE: איפה המשפחה שלך?
+- **m8** · NPC · slow (TTS rate 0.75) · off the happy path → c8
+  - EN: Perfect. And what are you doing tonight?
+  - FR: Parfait. Et tu fais quoi ce soir ?
+  - ES: Perfecto. ¿Y qué haces esta noche?
+  - HE: מושלם. ומה אתה עושה הערב?
 - **n9** · NPC · normal (TTS rate 0.95) · END of scene
-  - EN: Okay. See you tomorrow!
-  - FR: D’accord. À demain !
-  - ES: Vale. ¡Hasta mañana!
-  - HE: בסדר. נתראה מחר!
+  - EN: Good night. See you tomorrow!
+  - FR: Bonne nuit. À demain !
+  - ES: Buenas noches. ¡Nos vemos mañana!
+  - HE: לילה טוב. נתראה מחר!
 
 #### Canonical happy path — Scene 2
 
-- **NPC:** Hey! Are you free tomorrow?
+- **NPC:** Hi! Are you free tomorrow?
   - FR: Salut ! Tu es libre demain ? · ES: ¡Hola! ¿Estás libre mañana? · HE: היי! אתה פנוי מחר?
 - **You:** Yes, I'm free tomorrow.
   - FR: Oui, je suis libre demain. · ES: Sí, estoy libre mañana. · HE: כן, אני פנוי מחר.
-- **NPC:** We're going surfing. Do you like surfing?
-  - FR: On va faire du surf. Tu aimes le surf ? · ES: Vamos a hacer surf. ¿Te gusta el surf? · HE: אנחנו הולכים לגלוש. אתה אוהב לגלוש?
+- **NPC:** I surf a lot. Do you like surfing?
+  - FR: Je fais beaucoup de surf. Tu aimes le surf ? · ES: Hago mucho surf. ¿Te gusta el surf? · HE: אני גולש הרבה. אתה אוהב לגלוש?
 - **You:** I love surfing!
   - FR: J’adore le surf ! · ES: ¡Me encanta el surf! · HE: אני מאוד אוהב לגלוש!
-- **NPC:** Great! What time is good for you?
-  - FR: Super ! Quelle heure te convient ? · ES: ¡Genial! ¿Qué hora te va bien? · HE: מעולה! איזו שעה טובה לך?
+- **NPC:** Then come with us! But we leave early.
+  - FR: Alors viens avec nous ! Mais on part tôt. · ES: ¡Entonces ven con nosotros! Pero salimos temprano. · HE: אז בוא איתנו! אבל אנחנו יוצאים מוקדם.
 - **You:** Let's meet here at seven.
   - FR: On se retrouve ici à sept heures. · ES: Quedamos aquí a las siete. · HE: ניפגש כאן בשבע.
-- **NPC:** Perfect. And now? Are you coming to the beach?
-  - FR: Parfait. Et maintenant ? Tu viens à la plage ? · ES: Perfecto. ¿Y ahora? ¿Vienes a la playa? · HE: מושלם. ועכשיו? אתה בא לים?
-- **You:** Not now, I'm tired. I'm going home.
-  - FR: Pas maintenant, je suis fatigué. Je rentre chez moi. · ES: Ahora no, estoy cansado. Me voy a casa. · HE: לא עכשיו, אני עייף. אני הולך הביתה.
-- **NPC:** Okay. See you tomorrow!
-  - FR: D’accord. À demain ! · ES: Vale. ¡Hasta mañana! · HE: בסדר. נתראה מחר!
+- **NPC:** Perfect. And what are you doing tonight?
+  - FR: Parfait. Et tu fais quoi ce soir ? · ES: Perfecto. ¿Y qué haces esta noche? · HE: מושלם. ומה אתה עושה הערב?
+- **You:** I'm tired. I'm going home.
+  - FR: Je suis fatigué. Je rentre chez moi. · ES: Estoy cansado. Me voy a casa. · HE: אני עייף. אני הולך הביתה.
+- **NPC:** Good night. See you tomorrow!
+  - FR: Bonne nuit. À demain ! · ES: Buenas noches. ¡Nos vemos mañana! · HE: לילה טוב. נתראה מחר!
 
 ### Scene 3 — `cold-shop` (start: n1; coaching mode: off)
 
 - **n1** · NPC · fast (TTS rate 1.08) → c2
-  - EN: Hi there! Can I help you find anything?
+  - EN: Hi there! Can I help you find something?
   - FR: Bonjour ! Je peux vous aider à trouver quelque chose ?
   - ES: ¡Hola! ¿Le ayudo a encontrar algo?
-  - HE: היי! אפשר לעזור לך למצוא משהו?
+  - HE: היי! לעזור לך למצוא משהו?
 - **c2** · LEARNER choice screen
-  - choice 1 — ✅ accepted → n3 — `phrase.shop.just-looking`
-    - EN: I'm just looking, thanks.
-    - FR: Je regarde seulement, merci.
-    - ES: Solo estoy mirando, gracias.
-    - HE: אני רק מסתכל, תודה.
-- **n3** · NPC · normal (TTS rate 0.95) → c4
-  - EN: Of course. This one is on sale today.
-  - FR: Bien sûr. Celui-ci est en solde aujourd’hui.
-  - ES: Claro. Este está rebajado hoy.
-  - HE: כמובן. זה במבצע היום.
+  - choice 1 — ✅ accepted → n3 — `phrase.super.where-is`
+    - EN: Where is the milk?
+    - FR: Où est le lait ?
+    - ES: ¿Dónde está la leche?
+    - HE: איפה החלב?
+  - choice 2 — ❌ WRONG → m2 — `phrase.super.need-bag`
+    - EN: Could I get a bag?
+    - FR: Je peux avoir un sac ?
+    - ES: ¿Me da una bolsa?
+    - HE: אפשר שקית?
+- **m2** · NPC · slow (TTS rate 0.75) · off the happy path → c2
+  - EN: Hi there! Can I help you find something?
+  - FR: Bonjour ! Je peux vous aider à trouver quelque chose ?
+  - ES: ¡Hola! ¿Le ayudo a encontrar algo?
+  - HE: היי! לעזור לך למצוא משהו?
+- **n3** · NPC · fast (TTS rate 1.08) → c4
+  - EN: The milk is in aisle three, on the left.
+  - FR: Le lait est dans l’allée trois, sur la gauche.
+  - ES: La leche está en el pasillo tres, a la izquierda.
+  - HE: החלב במעבר שלוש, משמאל.
 - **c4** · LEARNER choice screen
-  - choice 1 — ✅ accepted → n5 — `phrase.money.how-much`
-    - EN: How much is it?
-    - FR: C’est combien ?
-    - ES: ¿Cuánto es?
-    - HE: כמה זה עולה?
+  - choice 1 — ✅ accepted → n5 — `phrase.recovery.thank-you`
+    - EN: Thank you!
+    - FR: Merci !
+    - ES: ¡Gracias!
+    - HE: תודה!
+  - choice 2 — ❌ WRONG → m4 — `phrase.super.just-this`
+    - EN: Just this, thanks.
+    - FR: Juste ça, merci.
+    - ES: Solo esto, gracias.
+    - HE: רק את זה, תודה.
+  - choice 3 — 🛟 accepted — conversation-help tool → r4 — `phrase.recovery.repeat`
+    - EN: Can you repeat that?
+    - FR: Vous pouvez répéter ?
+    - ES: ¿Puede repetir, por favor?
+    - HE: אפשר לחזור על זה?
+- **m4** · NPC · slow (TTS rate 0.75) · off the happy path → c4
+  - EN: The milk is in aisle three, on the left.
+  - FR: Le lait est dans l’allée trois, sur la gauche.
+  - ES: La leche está en el pasillo tres, a la izquierda.
+  - HE: החלב במעבר שלוש, משמאל.
+- **r4** · NPC · slow (TTS rate 0.75) · off the happy path → c4
+  - EN: Aisle — three — on the left.
+  - FR: Allée — trois — sur la gauche.
+  - ES: Pasillo — tres — a la izquierda.
+  - HE: מעבר — שלוש — משמאל.
 - **n5** · NPC · normal (TTS rate 0.95) → c6
-  - EN: Twenty euros.
-  - FR: Vingt euros.
-  - ES: Veinte euros.
-  - HE: עשרים יורו.
+  - EN: …At the checkout… Hi! Is that everything?
+  - FR: …À la caisse… Bonjour ! Ce sera tout ?
+  - ES: …En la caja… ¡Hola! ¿Eso es todo?
+  - HE: …בקופה… היי! זה הכל?
 - **c6** · LEARNER choice screen
-  - choice 1 — ✅ accepted → n7 — `phrase.shop.take-it`
-    - EN: I'll take it.
-    - FR: Je le prends.
-    - ES: Me lo llevo.
-    - HE: אני אקח את זה.
-- **n7** · NPC · normal (TTS rate 0.95) · END of scene
-  - EN: Great choice. Thank you!
-  - FR: Excellent choix. Merci !
-  - ES: Buena elección. ¡Gracias!
-  - HE: בחירה מצוינת. תודה!
+  - choice 1 — ✅ accepted → n7 — `phrase.super.just-this`
+    - EN: Just this, thanks.
+    - FR: Juste ça, merci.
+    - ES: Solo esto, gracias.
+    - HE: רק את זה, תודה.
+  - choice 2 — ❌ WRONG → m6 — `phrase.super.where-is`
+    - EN: Where is the milk?
+    - FR: Où est le lait ?
+    - ES: ¿Dónde está la leche?
+    - HE: איפה החלב?
+- **m6** · NPC · slow (TTS rate 0.75) · off the happy path → c6
+  - EN: …At the checkout… Hi! Is that everything?
+  - FR: …À la caisse… Bonjour ! Ce sera tout ?
+  - ES: …En la caja… ¡Hola! ¿Eso es todo?
+  - HE: …בקופה… היי! זה הכל?
+- **n7** · NPC · normal (TTS rate 0.95) → c8
+  - EN: Do you need a bag?
+  - FR: Vous avez besoin d’un sac ?
+  - ES: ¿Necesita una bolsa?
+  - HE: צריך שקית?
+- **c8** · LEARNER choice screen
+  - choice 1 — ✅ accepted → n9 — `phrase.super.need-bag`
+    - EN: Could I get a bag?
+    - FR: Je peux avoir un sac ?
+    - ES: ¿Me da una bolsa?
+    - HE: אפשר שקית?
+  - choice 2 — ❌ WRONG → m8 — `phrase.super.do-you-have`
+    - EN: Do you have bread?
+    - FR: Vous avez du pain ?
+    - ES: ¿Tienen pan?
+    - HE: יש לכם לחם?
+- **m8** · NPC · slow (TTS rate 0.75) · off the happy path → c8
+  - EN: Do you need a bag?
+  - FR: Vous avez besoin d’un sac ?
+  - ES: ¿Necesita una bolsa?
+  - HE: צריך שקית?
+- **n9** · NPC · normal (TTS rate 0.95) · END of scene
+  - EN: Insert your card here… all done. Have a nice day!
+  - FR: Insérez votre carte ici… c’est bon. Bonne journée !
+  - ES: Inserte su tarjeta aquí… listo. ¡Que tenga un buen día!
+  - HE: הכנס את הכרטיס כאן… הכל מוכן. שיהיה יום נעים!
 
 #### Canonical happy path — Scene 3
 
-- **NPC:** Hi there! Can I help you find anything?
-  - FR: Bonjour ! Je peux vous aider à trouver quelque chose ? · ES: ¡Hola! ¿Le ayudo a encontrar algo? · HE: היי! אפשר לעזור לך למצוא משהו?
-- **You:** I'm just looking, thanks.
-  - FR: Je regarde seulement, merci. · ES: Solo estoy mirando, gracias. · HE: אני רק מסתכל, תודה.
-- **NPC:** Of course. This one is on sale today.
-  - FR: Bien sûr. Celui-ci est en solde aujourd’hui. · ES: Claro. Este está rebajado hoy. · HE: כמובן. זה במבצע היום.
-- **You:** How much is it?
-  - FR: C’est combien ? · ES: ¿Cuánto es? · HE: כמה זה עולה?
-- **NPC:** Twenty euros.
-  - FR: Vingt euros. · ES: Veinte euros. · HE: עשרים יורו.
-- **You:** I'll take it.
-  - FR: Je le prends. · ES: Me lo llevo. · HE: אני אקח את זה.
-- **NPC:** Great choice. Thank you!
-  - FR: Excellent choix. Merci ! · ES: Buena elección. ¡Gracias! · HE: בחירה מצוינת. תודה!
+- **NPC:** Hi there! Can I help you find something?
+  - FR: Bonjour ! Je peux vous aider à trouver quelque chose ? · ES: ¡Hola! ¿Le ayudo a encontrar algo? · HE: היי! לעזור לך למצוא משהו?
+- **You:** Where is the milk?
+  - FR: Où est le lait ? · ES: ¿Dónde está la leche? · HE: איפה החלב?
+- **NPC:** The milk is in aisle three, on the left.
+  - FR: Le lait est dans l’allée trois, sur la gauche. · ES: La leche está en el pasillo tres, a la izquierda. · HE: החלב במעבר שלוש, משמאל.
+- **You:** Thank you!
+  - FR: Merci ! · ES: ¡Gracias! · HE: תודה!
+- **NPC:** …At the checkout… Hi! Is that everything?
+  - FR: …À la caisse… Bonjour ! Ce sera tout ? · ES: …En la caja… ¡Hola! ¿Eso es todo? · HE: …בקופה… היי! זה הכל?
+- **You:** Just this, thanks.
+  - FR: Juste ça, merci. · ES: Solo esto, gracias. · HE: רק את זה, תודה.
+- **NPC:** Do you need a bag?
+  - FR: Vous avez besoin d’un sac ? · ES: ¿Necesita una bolsa? · HE: צריך שקית?
+- **You:** Could I get a bag?
+  - FR: Je peux avoir un sac ? · ES: ¿Me da una bolsa? · HE: אפשר שקית?
+- **NPC:** Insert your card here… all done. Have a nice day!
+  - FR: Insérez votre carte ici… c’est bon. Bonne journée ! · ES: Inserte su tarjeta aquí… listo. ¡Que tenga un buen día! · HE: הכנס את הכרטיס כאן… הכל מוכן. שיהיה יום נעים!
 
 ### Scene 4 — `cold-dinner` (start: n1; coaching mode: off)
 
 - **n1** · NPC · fast (TTS rate 1.08) → c2
-  - EN: Good evening! How many people?
-  - FR: Bonsoir ! Vous êtes combien ?
-  - ES: ¡Buenas noches! ¿Cuántos son?
-  - HE: ערב טוב! כמה אנשים?
+  - EN: Good evening! Do you have a reservation?
+  - FR: Bonsoir ! Vous avez une réservation ?
+  - ES: ¡Buenas noches! ¿Tiene reserva?
+  - HE: ערב טוב! יש לכם הזמנה?
 - **c2** · LEARNER choice screen
   - choice 1 — ✅ accepted → n3 — `phrase.rest.table-two`
-    - EN: A table for two, please.
-    - FR: Une table pour deux, s’il vous plaît.
-    - ES: Una mesa para dos, por favor.
-    - HE: שולחן לשניים, בבקשה.
+    - EN: No — a table for two, please.
+    - FR: Non — une table pour deux, s’il vous plaît.
+    - ES: No — una mesa para dos, por favor.
+    - HE: לא — שולחן לשניים, בבקשה.
+  - choice 2 — ❌ WRONG → m2 — `phrase.rest.the-bill`
+    - EN: The bill, please.
+    - FR: L’addition, s’il vous plaît.
+    - ES: La cuenta, por favor.
+    - HE: החשבון, בבקשה.
+- **m2** · NPC · slow (TTS rate 0.75) · off the happy path → c2
+  - EN: Good evening! Do you have a reservation?
+  - FR: Bonsoir ! Vous avez une réservation ?
+  - ES: ¡Buenas noches! ¿Tiene reserva?
+  - HE: ערב טוב! יש לכם הזמנה?
 - **n3** · NPC · normal (TTS rate 0.95) → c4
-  - EN: Right this way. Are you ready to order?
-  - FR: Suivez-moi. Vous êtes prêts à commander ?
-  - ES: Síganme. ¿Están listos para pedir?
-  - HE: בבקשה אחריי. מוכנים להזמין?
+  - EN: Are you ready to order?
+  - FR: Vous êtes prêts à commander ?
+  - ES: ¿Están listos para pedir?
+  - HE: מוכנים להזמין?
 - **c4** · LEARNER choice screen
   - choice 1 — ✅ accepted → n5 — `phrase.rest.ill-have-chicken`
-    - EN: I'll have the chicken.
-    - FR: Je vais prendre le poulet.
-    - ES: Voy a tomar el pollo.
-    - HE: אני אקח את העוף.
+    - EN: I'll have the chicken, without onions, please.
+    - FR: Je vais prendre le poulet, sans oignons, s’il vous plaît.
+    - ES: Voy a tomar el pollo, sin cebolla, por favor.
+    - HE: אני אקח את העוף, בלי בצל, בבקשה.
+  - choice 2 — ❌ WRONG → m4 — `phrase.rest.water`
+    - EN: A bottle of water, please.
+    - FR: Une bouteille d’eau, s’il vous plaît.
+    - ES: Una botella de agua, por favor.
+    - HE: בקבוק מים, בבקשה.
+- **m4** · NPC · slow (TTS rate 0.75) · off the happy path → c4
+  - EN: Are you ready to order?
+  - FR: Vous êtes prêts à commander ?
+  - ES: ¿Están listos para pedir?
+  - HE: מוכנים להזמין?
 - **n5** · NPC · normal (TTS rate 0.95) → c6
-  - EN: Excellent. Anything to drink?
-  - FR: Excellent. Quelque chose à boire ?
-  - ES: Excelente. ¿Algo de beber?
-  - HE: מצוין. משהו לשתות?
+  - EN: Of course. Anything to drink?
+  - FR: Bien sûr. Quelque chose à boire ?
+  - ES: Claro. ¿Algo de beber?
+  - HE: כמובן. משהו לשתות?
 - **c6** · LEARNER choice screen
   - choice 1 — ✅ accepted → n7 — `phrase.rest.water`
     - EN: A bottle of water, please.
     - FR: Une bouteille d’eau, s’il vous plaît.
     - ES: Una botella de agua, por favor.
     - HE: בקבוק מים, בבקשה.
+  - choice 2 — ❌ WRONG → m6 — `phrase.rest.table-two`
+    - EN: A table for two, please.
+    - FR: Une table pour deux, s’il vous plaît.
+    - ES: Una mesa para dos, por favor.
+    - HE: שולחן לשניים, בבקשה.
+- **m6** · NPC · slow (TTS rate 0.75) · off the happy path → c6
+  - EN: Of course. Anything to drink?
+  - FR: Bien sûr. Quelque chose à boire ?
+  - ES: Claro. ¿Algo de beber?
+  - HE: כמובן. משהו לשתות?
 - **n7** · NPC · normal (TTS rate 0.95) → c8
   - EN: …Later… Is everything okay?
   - FR: …Plus tard… Tout va bien ?
@@ -12755,32 +14037,42 @@ None in this mission.
     - FR: Oui, c’était délicieux ! L’addition, s’il vous plaît.
     - ES: ¡Sí, estaba delicioso! La cuenta, por favor.
     - HE: כן, היה טעים מאוד! החשבון, בבקשה.
+  - choice 2 — ❌ WRONG → m8 — `phrase.rest.ill-have-chicken`
+    - EN: I'll have the chicken.
+    - FR: Je vais prendre le poulet.
+    - ES: Voy a tomar el pollo.
+    - HE: אני אקח את העוף.
+- **m8** · NPC · slow (TTS rate 0.75) · off the happy path → c8
+  - EN: …Later… Is everything okay?
+  - FR: …Plus tard… Tout va bien ?
+  - ES: …Más tarde… ¿Va todo bien?
+  - HE: …אחר כך… הכל בסדר?
 - **n9** · NPC · normal (TTS rate 0.95) · END of scene
-  - EN: Here you are. Have a lovely evening!
-  - FR: Voici. Passez une bonne soirée !
-  - ES: Aquí tienen. ¡Que pasen buena noche!
-  - HE: בבקשה. ערב נעים!
+  - EN: So glad you enjoyed it. Here you are — have a lovely evening!
+  - FR: Ravi que ça vous ait plu. Voici — passez une bonne soirée !
+  - ES: Me alegro de que les gustara. Aquí tienen — ¡que pasen buena noche!
+  - HE: שמח שנהניתם. בבקשה — ערב נעים!
 
 #### Canonical happy path — Scene 4
 
-- **NPC:** Good evening! How many people?
-  - FR: Bonsoir ! Vous êtes combien ? · ES: ¡Buenas noches! ¿Cuántos son? · HE: ערב טוב! כמה אנשים?
-- **You:** A table for two, please.
-  - FR: Une table pour deux, s’il vous plaît. · ES: Una mesa para dos, por favor. · HE: שולחן לשניים, בבקשה.
-- **NPC:** Right this way. Are you ready to order?
-  - FR: Suivez-moi. Vous êtes prêts à commander ? · ES: Síganme. ¿Están listos para pedir? · HE: בבקשה אחריי. מוכנים להזמין?
-- **You:** I'll have the chicken.
-  - FR: Je vais prendre le poulet. · ES: Voy a tomar el pollo. · HE: אני אקח את העוף.
-- **NPC:** Excellent. Anything to drink?
-  - FR: Excellent. Quelque chose à boire ? · ES: Excelente. ¿Algo de beber? · HE: מצוין. משהו לשתות?
+- **NPC:** Good evening! Do you have a reservation?
+  - FR: Bonsoir ! Vous avez une réservation ? · ES: ¡Buenas noches! ¿Tiene reserva? · HE: ערב טוב! יש לכם הזמנה?
+- **You:** No — a table for two, please.
+  - FR: Non — une table pour deux, s’il vous plaît. · ES: No — una mesa para dos, por favor. · HE: לא — שולחן לשניים, בבקשה.
+- **NPC:** Are you ready to order?
+  - FR: Vous êtes prêts à commander ? · ES: ¿Están listos para pedir? · HE: מוכנים להזמין?
+- **You:** I'll have the chicken, without onions, please.
+  - FR: Je vais prendre le poulet, sans oignons, s’il vous plaît. · ES: Voy a tomar el pollo, sin cebolla, por favor. · HE: אני אקח את העוף, בלי בצל, בבקשה.
+- **NPC:** Of course. Anything to drink?
+  - FR: Bien sûr. Quelque chose à boire ? · ES: Claro. ¿Algo de beber? · HE: כמובן. משהו לשתות?
 - **You:** A bottle of water, please.
   - FR: Une bouteille d’eau, s’il vous plaît. · ES: Una botella de agua, por favor. · HE: בקבוק מים, בבקשה.
 - **NPC:** …Later… Is everything okay?
   - FR: …Plus tard… Tout va bien ? · ES: …Más tarde… ¿Va todo bien? · HE: …אחר כך… הכל בסדר?
 - **You:** Yes, that was delicious! The bill, please.
   - FR: Oui, c’était délicieux ! L’addition, s’il vous plaît. · ES: ¡Sí, estaba delicioso! La cuenta, por favor. · HE: כן, היה טעים מאוד! החשבון, בבקשה.
-- **NPC:** Here you are. Have a lovely evening!
-  - FR: Voici. Passez une bonne soirée ! · ES: Aquí tienen. ¡Que pasen buena noche! · HE: בבקשה. ערב נעים!
+- **NPC:** So glad you enjoyed it. Here you are — have a lovely evening!
+  - FR: Ravi que ça vous ait plu. Voici — passez une bonne soirée ! · ES: Me alegro de que les gustara. Aquí tienen — ¡que pasen buena noche! · HE: שמח שנהניתם. בבקשה — ערב נעים!
 
 Happy-path rule: at each choice screen the first accepted line that is not a toolkit phrase; if every accepted line is a toolkit phrase, the first one.
 
@@ -12789,12 +14081,13 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 ### M18-Q01 — dialogue-choice (step 2, scene "cold-morning" · node c2)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio played: EN "Morning! What can I get you?" · FR "Bonjour ! Qu’est-ce que je vous sers ?" · ES "¡Buenos días! ¿Qué le sirvo?"
-- Meaning of the audio (HE): "בוקר! מה להביא לך?"
+- Audio played: EN "Good morning! What can I get you?" · FR "Bonjour ! Qu’est-ce que je vous sers ?" · ES "¡Buenos días! ¿Qué le sirvo?"
+- Meaning of the audio (HE): "בוקר טוב! מה להביא לך?"
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
   1. EN "I'd like an iced coffee, please." · FR "Je voudrais un café glacé, s’il vous plaît." · ES "Quiero un café con hielo, por favor." · (HE gloss "אני רוצה קפה קר, בבקשה.") — `phrase.coffee.iced-coffee` — ✅ accepted → n3
-- Tests: phrase.coffee.iced-coffee
+  2. EN "A table for two, please." · FR "Une table pour deux, s’il vous plaît." · ES "Una mesa para dos, por favor." · (HE gloss "שולחן לשניים, בבקשה.") — `phrase.rest.table-two` — ❌ wrong → m2
+- Tests: phrase.coffee.iced-coffee, phrase.rest.table-two
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
 ### M18-Q02 — dialogue-choice (step 2, scene "cold-morning" · node c4)
@@ -12804,144 +14097,159 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Meaning of the audio (HE): "בטח. משהו לאכול?"
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
-  1. EN "I don't know. Maybe later." · FR "Je ne sais pas. Peut-être plus tard." · ES "No lo sé. Quizás más tarde." · (HE gloss "אני לא יודע. אולי אחר כך.") — `phrase.time.maybe-later` — ✅ accepted → n5
-- Tests: phrase.time.maybe-later
+  1. EN "Maybe later." · FR "Peut-être plus tard." · ES "Quizás más tarde." · (HE gloss "אולי אחר כך.") — `phrase.time.maybe-later` — ✅ accepted → n5
+  2. EN "By card, please." · FR "Par carte, s’il vous plaît." · ES "Con tarjeta, por favor." · (HE gloss "בכרטיס, בבקשה.") — `phrase.money.by-card` — ❌ wrong → m4
+- Tests: phrase.time.maybe-later, phrase.money.by-card
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
 ### M18-Q03 — dialogue-choice (step 2, scene "cold-morning" · node c6)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio played: EN "No problem. That's four euros. Cash or card?" · FR "Pas de problème. Ça fait quatre euros. Espèces ou carte ?" · ES "No pasa nada. Son cuatro euros. ¿Efectivo o tarjeta?"
-- Meaning of the audio (HE): "אין בעיה. זה ארבעה יורו. מזומן או כרטיס?"
+- Audio played: EN "No problem. Cash or card?" · FR "Pas de problème. Espèces ou carte ?" · ES "Sin problema. ¿Efectivo o tarjeta?"
+- Meaning of the audio (HE): "אין בעיה. מזומן או כרטיס?"
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
   1. EN "By card, please." · FR "Par carte, s’il vous plaît." · ES "Con tarjeta, por favor." · (HE gloss "בכרטיס, בבקשה.") — `phrase.money.by-card` — ✅ accepted → n7
-- Tests: phrase.money.by-card
+  2. EN "To go, please." · FR "À emporter, s’il vous plaît." · ES "Para llevar, por favor." · (HE gloss "לקחת, בבקשה.") — `phrase.coffee.to-go` — ❌ wrong → m6
+  3. EN "Please speak slowly." · FR "Parlez lentement, s’il vous plaît." · ES "Más despacio, por favor." · (HE gloss "דבר לאט, בבקשה.") — `phrase.recovery.slowly` — ✅ accepted → r6
+- Tests: phrase.money.by-card, phrase.coffee.to-go, phrase.recovery.slowly
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M18-Q05 — dialogue-choice (step 6, scene "cold-plans" · node c2)
+### M18-Q04 — dialogue-choice (step 4, scene "cold-plans" · node c2)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio played: EN "Hey! Are you free tomorrow?" · FR "Salut ! Tu es libre demain ?" · ES "¡Hola! ¿Estás libre mañana?"
+- Audio played: EN "Hi! Are you free tomorrow?" · FR "Salut ! Tu es libre demain ?" · ES "¡Hola! ¿Estás libre mañana?"
 - Meaning of the audio (HE): "היי! אתה פנוי מחר?"
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
   1. EN "Yes, I'm free tomorrow." · FR "Oui, je suis libre demain." · ES "Sí, estoy libre mañana." · (HE gloss "כן, אני פנוי מחר.") — `phrase.time.free-tomorrow` — ✅ accepted → n3
-  2. EN "Can you repeat that?" · FR "Vous pouvez répéter ?" · ES "¿Puede repetir, por favor?" · (HE gloss "אפשר לחזור על זה?") — `phrase.recovery.repeat` — ✅ accepted → r2
-- Tests: phrase.time.free-tomorrow, phrase.recovery.repeat
+  2. EN "I'm free tonight." · FR "Je suis libre ce soir." · ES "Estoy libre esta noche." · (HE gloss "אני פנוי הערב.") — `phrase.time.free-tonight` — ❌ wrong → m2
+  3. EN "Can you repeat that?" · FR "Vous pouvez répéter ?" · ES "¿Puede repetir, por favor?" · (HE gloss "אפשר לחזור על זה?") — `phrase.recovery.repeat` — ✅ accepted → r2
+- Tests: phrase.time.free-tomorrow, phrase.time.free-tonight, phrase.recovery.repeat
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M18-Q06 — dialogue-choice (step 6, scene "cold-plans" · node c2b)
+### M18-Q05 — dialogue-choice (step 4, scene "cold-plans" · node c4)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio played: EN "Tomorrow. Are you — free?" · FR "Demain. Tu es — libre ?" · ES "Mañana. ¿Estás — libre?"
-- Meaning of the audio (HE): "מחר. אתה — פנוי?"
-- Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
-- Choices:
-  1. EN "Yes, I'm free tomorrow." · FR "Oui, je suis libre demain." · ES "Sí, estoy libre mañana." · (HE gloss "כן, אני פנוי מחר.") — `phrase.time.free-tomorrow` — ✅ accepted → n3
-- Tests: phrase.time.free-tomorrow
-- Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
-
-### M18-Q07 — dialogue-choice (step 6, scene "cold-plans" · node c4)
-
-- Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio played: EN "We're going surfing. Do you like surfing?" · FR "On va faire du surf. Tu aimes le surf ?" · ES "Vamos a hacer surf. ¿Te gusta el surf?"
-- Meaning of the audio (HE): "אנחנו הולכים לגלוש. אתה אוהב לגלוש?"
+- Audio played: EN "I surf a lot. Do you like surfing?" · FR "Je fais beaucoup de surf. Tu aimes le surf ?" · ES "Hago mucho surf. ¿Te gusta el surf?"
+- Meaning of the audio (HE): "אני גולש הרבה. אתה אוהב לגלוש?"
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
   1. EN "I love surfing!" · FR "J’adore le surf !" · ES "¡Me encanta el surf!" · (HE gloss "אני מאוד אוהב לגלוש!") — `phrase.hobby.i-love-surfing` — ✅ accepted → n5
-- Tests: phrase.hobby.i-love-surfing
+  2. EN "I usually draw in the evening." · FR "D’habitude, je dessine le soir." · ES "Normalmente dibujo por la noche." · (HE gloss "בדרך כלל אני מצייר בערב.") — `phrase.hobby.i-usually` — ❌ wrong → m4
+- Tests: phrase.hobby.i-love-surfing, phrase.hobby.i-usually
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M18-Q08 — dialogue-choice (step 6, scene "cold-plans" · node c6)
+### M18-Q06 — dialogue-choice (step 4, scene "cold-plans" · node c6)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio played: EN "Great! What time is good for you?" · FR "Super ! Quelle heure te convient ?" · ES "¡Genial! ¿Qué hora te va bien?"
-- Meaning of the audio (HE): "מעולה! איזו שעה טובה לך?"
+- Audio played: EN "Then come with us! But we leave early." · FR "Alors viens avec nous ! Mais on part tôt." · ES "¡Entonces ven con nosotros! Pero salimos temprano."
+- Meaning of the audio (HE): "אז בוא איתנו! אבל אנחנו יוצאים מוקדם."
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
   1. EN "Let's meet here at seven." · FR "On se retrouve ici à sept heures." · ES "Quedamos aquí a las siete." · (HE gloss "ניפגש כאן בשבע.") — `phrase.time.lets-meet` — ✅ accepted → n7
-- Tests: phrase.time.lets-meet
+  2. EN "No, that's not too late." · FR "Non, ce n’est pas trop tard." · ES "No, no es muy tarde." · (HE gloss "לא, זה לא מאוחר מדי.") — `phrase.time.not-too-late` — ❌ wrong → m6
+- Tests: phrase.time.lets-meet, phrase.time.not-too-late
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M18-Q09 — dialogue-choice (step 6, scene "cold-plans" · node c8)
+### M18-Q07 — dialogue-choice (step 4, scene "cold-plans" · node c8)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio played: EN "Perfect. And now? Are you coming to the beach?" · FR "Parfait. Et maintenant ? Tu viens à la plage ?" · ES "Perfecto. ¿Y ahora? ¿Vienes a la playa?"
-- Meaning of the audio (HE): "מושלם. ועכשיו? אתה בא לים?"
+- Audio played: EN "Perfect. And what are you doing tonight?" · FR "Parfait. Et tu fais quoi ce soir ?" · ES "Perfecto. ¿Y qué haces esta noche?"
+- Meaning of the audio (HE): "מושלם. ומה אתה עושה הערב?"
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
-  1. EN "Not now, I'm tired. I'm going home." · FR "Pas maintenant, je suis fatigué. Je rentre chez moi." · ES "Ahora no, estoy cansado. Me voy a casa." · (HE gloss "לא עכשיו, אני עייף. אני הולך הביתה.") — `phrase.home.going-home` — ✅ accepted → n9
-- Tests: phrase.home.going-home
+  1. EN "I'm tired. I'm going home." · FR "Je suis fatigué. Je rentre chez moi." · ES "Estoy cansado. Me voy a casa." · (HE gloss "אני עייף. אני הולך הביתה.") — `phrase.home.going-home` — ✅ accepted → n9
+  2. EN "Where is your family?" · FR "Où est ta famille ?" · ES "¿Dónde está tu familia?" · (HE gloss "איפה המשפחה שלך?") — `phrase.home.where-family` — ❌ wrong → m8
+- Tests: phrase.home.going-home, phrase.home.where-family
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M18-Q10 — dialogue-choice (step 8, scene "cold-shop" · node c2)
+### M18-Q08 — dialogue-choice (step 6, scene "cold-shop" · node c2)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio played: EN "Hi there! Can I help you find anything?" · FR "Bonjour ! Je peux vous aider à trouver quelque chose ?" · ES "¡Hola! ¿Le ayudo a encontrar algo?"
-- Meaning of the audio (HE): "היי! אפשר לעזור לך למצוא משהו?"
+- Audio played: EN "Hi there! Can I help you find something?" · FR "Bonjour ! Je peux vous aider à trouver quelque chose ?" · ES "¡Hola! ¿Le ayudo a encontrar algo?"
+- Meaning of the audio (HE): "היי! לעזור לך למצוא משהו?"
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
-  1. EN "I'm just looking, thanks." · FR "Je regarde seulement, merci." · ES "Solo estoy mirando, gracias." · (HE gloss "אני רק מסתכל, תודה.") — `phrase.shop.just-looking` — ✅ accepted → n3
-- Tests: phrase.shop.just-looking
+  1. EN "Where is the milk?" · FR "Où est le lait ?" · ES "¿Dónde está la leche?" · (HE gloss "איפה החלב?") — `phrase.super.where-is` — ✅ accepted → n3
+  2. EN "Could I get a bag?" · FR "Je peux avoir un sac ?" · ES "¿Me da una bolsa?" · (HE gloss "אפשר שקית?") — `phrase.super.need-bag` — ❌ wrong → m2
+- Tests: phrase.super.where-is, phrase.super.need-bag
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M18-Q11 — dialogue-choice (step 8, scene "cold-shop" · node c4)
+### M18-Q09 — dialogue-choice (step 6, scene "cold-shop" · node c4)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio played: EN "Of course. This one is on sale today." · FR "Bien sûr. Celui-ci est en solde aujourd’hui." · ES "Claro. Este está rebajado hoy."
-- Meaning of the audio (HE): "כמובן. זה במבצע היום."
+- Audio played: EN "The milk is in aisle three, on the left." · FR "Le lait est dans l’allée trois, sur la gauche." · ES "La leche está en el pasillo tres, a la izquierda."
+- Meaning of the audio (HE): "החלב במעבר שלוש, משמאל."
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
-  1. EN "How much is it?" · FR "C’est combien ?" · ES "¿Cuánto es?" · (HE gloss "כמה זה עולה?") — `phrase.money.how-much` — ✅ accepted → n5
-- Tests: phrase.money.how-much
+  1. EN "Thank you!" · FR "Merci !" · ES "¡Gracias!" · (HE gloss "תודה!") — `phrase.recovery.thank-you` — ✅ accepted → n5
+  2. EN "Just this, thanks." · FR "Juste ça, merci." · ES "Solo esto, gracias." · (HE gloss "רק את זה, תודה.") — `phrase.super.just-this` — ❌ wrong → m4
+  3. EN "Can you repeat that?" · FR "Vous pouvez répéter ?" · ES "¿Puede repetir, por favor?" · (HE gloss "אפשר לחזור על זה?") — `phrase.recovery.repeat` — ✅ accepted → r4
+- Tests: phrase.recovery.thank-you, phrase.super.just-this, phrase.recovery.repeat
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M18-Q12 — dialogue-choice (step 8, scene "cold-shop" · node c6)
+### M18-Q10 — dialogue-choice (step 6, scene "cold-shop" · node c6)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio played: EN "Twenty euros." · FR "Vingt euros." · ES "Veinte euros."
-- Meaning of the audio (HE): "עשרים יורו."
+- Audio played: EN "…At the checkout… Hi! Is that everything?" · FR "…À la caisse… Bonjour ! Ce sera tout ?" · ES "…En la caja… ¡Hola! ¿Eso es todo?"
+- Meaning of the audio (HE): "…בקופה… היי! זה הכל?"
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
-  1. EN "I'll take it." · FR "Je le prends." · ES "Me lo llevo." · (HE gloss "אני אקח את זה.") — `phrase.shop.take-it` — ✅ accepted → n7
-- Tests: phrase.shop.take-it
+  1. EN "Just this, thanks." · FR "Juste ça, merci." · ES "Solo esto, gracias." · (HE gloss "רק את זה, תודה.") — `phrase.super.just-this` — ✅ accepted → n7
+  2. EN "Where is the milk?" · FR "Où est le lait ?" · ES "¿Dónde está la leche?" · (HE gloss "איפה החלב?") — `phrase.super.where-is` — ❌ wrong → m6
+- Tests: phrase.super.just-this, phrase.super.where-is
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M18-Q13 — dialogue-choice (step 10, scene "cold-dinner" · node c2)
+### M18-Q11 — dialogue-choice (step 6, scene "cold-shop" · node c8)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio played: EN "Good evening! How many people?" · FR "Bonsoir ! Vous êtes combien ?" · ES "¡Buenas noches! ¿Cuántos son?"
-- Meaning of the audio (HE): "ערב טוב! כמה אנשים?"
+- Audio played: EN "Do you need a bag?" · FR "Vous avez besoin d’un sac ?" · ES "¿Necesita una bolsa?"
+- Meaning of the audio (HE): "צריך שקית?"
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
-  1. EN "A table for two, please." · FR "Une table pour deux, s’il vous plaît." · ES "Una mesa para dos, por favor." · (HE gloss "שולחן לשניים, בבקשה.") — `phrase.rest.table-two` — ✅ accepted → n3
-- Tests: phrase.rest.table-two
+  1. EN "Could I get a bag?" · FR "Je peux avoir un sac ?" · ES "¿Me da una bolsa?" · (HE gloss "אפשר שקית?") — `phrase.super.need-bag` — ✅ accepted → n9
+  2. EN "Do you have bread?" · FR "Vous avez du pain ?" · ES "¿Tienen pan?" · (HE gloss "יש לכם לחם?") — `phrase.super.do-you-have` — ❌ wrong → m8
+- Tests: phrase.super.need-bag, phrase.super.do-you-have
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M18-Q14 — dialogue-choice (step 10, scene "cold-dinner" · node c4)
+### M18-Q12 — dialogue-choice (step 8, scene "cold-dinner" · node c2)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio played: EN "Right this way. Are you ready to order?" · FR "Suivez-moi. Vous êtes prêts à commander ?" · ES "Síganme. ¿Están listos para pedir?"
-- Meaning of the audio (HE): "בבקשה אחריי. מוכנים להזמין?"
+- Audio played: EN "Good evening! Do you have a reservation?" · FR "Bonsoir ! Vous avez une réservation ?" · ES "¡Buenas noches! ¿Tiene reserva?"
+- Meaning of the audio (HE): "ערב טוב! יש לכם הזמנה?"
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
-  1. EN "I'll have the chicken." · FR "Je vais prendre le poulet." · ES "Voy a tomar el pollo." · (HE gloss "אני אקח את העוף.") — `phrase.rest.ill-have-chicken` — ✅ accepted → n5
-- Tests: phrase.rest.ill-have-chicken
+  1. EN "No — a table for two, please." · FR "Non — une table pour deux, s’il vous plaît." · ES "No — una mesa para dos, por favor." · (HE gloss "לא — שולחן לשניים, בבקשה.") — `phrase.rest.table-two` — ✅ accepted → n3
+  2. EN "The bill, please." · FR "L’addition, s’il vous plaît." · ES "La cuenta, por favor." · (HE gloss "החשבון, בבקשה.") — `phrase.rest.the-bill` — ❌ wrong → m2
+- Tests: phrase.rest.table-two, phrase.rest.the-bill
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M18-Q15 — dialogue-choice (step 10, scene "cold-dinner" · node c6)
+### M18-Q13 — dialogue-choice (step 8, scene "cold-dinner" · node c4)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio played: EN "Excellent. Anything to drink?" · FR "Excellent. Quelque chose à boire ?" · ES "Excelente. ¿Algo de beber?"
-- Meaning of the audio (HE): "מצוין. משהו לשתות?"
+- Audio played: EN "Are you ready to order?" · FR "Vous êtes prêts à commander ?" · ES "¿Están listos para pedir?"
+- Meaning of the audio (HE): "מוכנים להזמין?"
+- Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
+- Choices:
+  1. EN "I'll have the chicken, without onions, please." · FR "Je vais prendre le poulet, sans oignons, s’il vous plaît." · ES "Voy a tomar el pollo, sin cebolla, por favor." · (HE gloss "אני אקח את העוף, בלי בצל, בבקשה.") — `phrase.rest.ill-have-chicken` — ✅ accepted → n5
+  2. EN "A bottle of water, please." · FR "Une bouteille d’eau, s’il vous plaît." · ES "Una botella de agua, por favor." · (HE gloss "בקבוק מים, בבקשה.") — `phrase.rest.water` — ❌ wrong → m4
+- Tests: phrase.rest.ill-have-chicken, phrase.rest.water
+- Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
+
+### M18-Q14 — dialogue-choice (step 8, scene "cold-dinner" · node c6)
+
+- Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
+- Audio played: EN "Of course. Anything to drink?" · FR "Bien sûr. Quelque chose à boire ?" · ES "Claro. ¿Algo de beber?"
+- Meaning of the audio (HE): "כמובן. משהו לשתות?"
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
   1. EN "A bottle of water, please." · FR "Une bouteille d’eau, s’il vous plaît." · ES "Una botella de agua, por favor." · (HE gloss "בקבוק מים, בבקשה.") — `phrase.rest.water` — ✅ accepted → n7
-- Tests: phrase.rest.water
+  2. EN "A table for two, please." · FR "Une table pour deux, s’il vous plaît." · ES "Una mesa para dos, por favor." · (HE gloss "שולחן לשניים, בבקשה.") — `phrase.rest.table-two` — ❌ wrong → m6
+- Tests: phrase.rest.water, phrase.rest.table-two
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M18-Q16 — dialogue-choice (step 10, scene "cold-dinner" · node c8)
+### M18-Q15 — dialogue-choice (step 8, scene "cold-dinner" · node c8)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "…Later… Is everything okay?" · FR "…Plus tard… Tout va bien ?" · ES "…Más tarde… ¿Va todo bien?"
@@ -12949,21 +14257,99 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
   1. EN "Yes, that was delicious! The bill, please." · FR "Oui, c’était délicieux ! L’addition, s’il vous plaît." · ES "¡Sí, estaba delicioso! La cuenta, por favor." · (HE gloss "כן, היה טעים מאוד! החשבון, בבקשה.") — `phrase.rest.the-bill` — ✅ accepted → n9
-- Tests: phrase.rest.the-bill
+  2. EN "I'll have the chicken." · FR "Je vais prendre le poulet." · ES "Voy a tomar el pollo." · (HE gloss "אני אקח את העוף.") — `phrase.rest.ill-have-chicken` — ❌ wrong → m8
+- Tests: phrase.rest.the-bill, phrase.rest.ill-have-chicken
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
 ## Recovery tools in this mission
 
-Toolkit phrases bundled into this mission's sentence list: `phrase.recovery.repeat` "Can you repeat that?".
+Toolkit phrases bundled into this mission's sentence list: `phrase.recovery.thank-you` "Thank you!" · `phrase.recovery.slowly` "Please speak slowly." · `phrase.recovery.repeat` "Can you repeat that?".
 
 Where a conversation-help tool can be selected, and what happens:
 
-- Scene `cold-plans`, c2 — `phrase.recovery.repeat` "Can you repeat that?" ("אפשר לחזור על זה?") — after NPC "Hey! Are you free tomorrow?" → r2: NPC "Tomorrow. Are you — free?" (slow) → r2 → c2b → rejoins the happy path at n3. Counts as success (recorded as "pass"); no feedback card — the dialogue simply continues.
+- Scene `cold-morning`, c6 — `phrase.recovery.slowly` "Please speak slowly." ("דבר לאט, בבקשה.") — after NPC "No problem. Cash or card?" → r6: NPC "Cash — or card?" (slow) → r6 → rejoins the happy path at c6. Counts as success (recorded as "pass"); no feedback card — the dialogue simply continues.
+- Scene `cold-plans`, c2 — `phrase.recovery.repeat` "Can you repeat that?" ("אפשר לחזור על זה?") — after NPC "Hi! Are you free tomorrow?" → r2: NPC "Tomorrow. Are you — free?" (slow) → r2 → rejoins the happy path at c2. Counts as success (recorded as "pass"); no feedback card — the dialogue simply continues.
+- Scene `cold-shop`, c4 — `phrase.recovery.repeat` "Can you repeat that?" ("אפשר לחזור על זה?") — after NPC "The milk is in aisle three, on the left." → r4: NPC "Aisle — three — on the left." (slow) → r4 → rejoins the happy path at c4. Counts as success (recorded as "pass"); no feedback card — the dialogue simply continues.
 
 ## Wrong answer branches
 
-None — no choice in this mission is marked wrong.
+15 reachable wrong-answer branch(es):
 
+- Scene `cold-morning`, c2 — after NPC "Good morning! What can I get you?"
+  - Wrong choice: "A table for two, please." ("שולחן לשניים, בבקשה.") — `phrase.rest.table-two`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("I'd like an iced coffee, please."), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m2): "Good morning! What can I get you?" — HE "בוקר טוב! מה להביא לך?"
+  - Then: m2 → rejoins the happy path at c2. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
+- Scene `cold-morning`, c4 — after NPC "Sure. Anything to eat?"
+  - Wrong choice: "By card, please." ("בכרטיס, בבקשה.") — `phrase.money.by-card`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("Maybe later."), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m4): "Sure. Anything to eat?" — HE "בטח. משהו לאכול?"
+  - Then: m4 → rejoins the happy path at c4. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
+- Scene `cold-morning`, c6 — after NPC "No problem. Cash or card?"
+  - Wrong choice: "To go, please." ("לקחת, בבקשה.") — `phrase.coffee.to-go`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("By card, please."), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m6): "No problem. Cash or card?" — HE "אין בעיה. מזומן או כרטיס?"
+  - Then: m6 → rejoins the happy path at c6. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
+- Scene `cold-plans`, c2 — after NPC "Hi! Are you free tomorrow?"
+  - Wrong choice: "I'm free tonight." ("אני פנוי הערב.") — `phrase.time.free-tonight`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("Yes, I'm free tomorrow."), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m2): "Hi! Are you free tomorrow?" — HE "היי! אתה פנוי מחר?"
+  - Then: m2 → rejoins the happy path at c2. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
+- Scene `cold-plans`, c4 — after NPC "I surf a lot. Do you like surfing?"
+  - Wrong choice: "I usually draw in the evening." ("בדרך כלל אני מצייר בערב.") — `phrase.hobby.i-usually`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("I love surfing!"), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m4): "I surf a lot. Do you like surfing?" — HE "אני גולש הרבה. אתה אוהב לגלוש?"
+  - Then: m4 → rejoins the happy path at c4. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
+- Scene `cold-plans`, c6 — after NPC "Then come with us! But we leave early."
+  - Wrong choice: "No, that's not too late." ("לא, זה לא מאוחר מדי.") — `phrase.time.not-too-late`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("Let's meet here at seven."), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m6): "Then come with us! But we leave early." — HE "אז בוא איתנו! אבל אנחנו יוצאים מוקדם."
+  - Then: m6 → rejoins the happy path at c6. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
+- Scene `cold-plans`, c8 — after NPC "Perfect. And what are you doing tonight?"
+  - Wrong choice: "Where is your family?" ("איפה המשפחה שלך?") — `phrase.home.where-family`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("I'm tired. I'm going home."), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m8): "Perfect. And what are you doing tonight?" — HE "מושלם. ומה אתה עושה הערב?"
+  - Then: m8 → rejoins the happy path at c8. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
+- Scene `cold-shop`, c2 — after NPC "Hi there! Can I help you find something?"
+  - Wrong choice: "Could I get a bag?" ("אפשר שקית?") — `phrase.super.need-bag`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("Where is the milk?"), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m2): "Hi there! Can I help you find something?" — HE "היי! לעזור לך למצוא משהו?"
+  - Then: m2 → rejoins the happy path at c2. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
+- Scene `cold-shop`, c4 — after NPC "The milk is in aisle three, on the left."
+  - Wrong choice: "Just this, thanks." ("רק את זה, תודה.") — `phrase.super.just-this`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("Thank you!"), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m4): "The milk is in aisle three, on the left." — HE "החלב במעבר שלוש, משמאל."
+  - Then: m4 → rejoins the happy path at c4. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
+- Scene `cold-shop`, c6 — after NPC "…At the checkout… Hi! Is that everything?"
+  - Wrong choice: "Where is the milk?" ("איפה החלב?") — `phrase.super.where-is`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("Just this, thanks."), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m6): "…At the checkout… Hi! Is that everything?" — HE "…בקופה… היי! זה הכל?"
+  - Then: m6 → rejoins the happy path at c6. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
+- Scene `cold-shop`, c8 — after NPC "Do you need a bag?"
+  - Wrong choice: "Do you have bread?" ("יש לכם לחם?") — `phrase.super.do-you-have`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("Could I get a bag?"), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m8): "Do you need a bag?" — HE "צריך שקית?"
+  - Then: m8 → rejoins the happy path at c8. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
+- Scene `cold-dinner`, c2 — after NPC "Good evening! Do you have a reservation?"
+  - Wrong choice: "The bill, please." ("החשבון, בבקשה.") — `phrase.rest.the-bill`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("No — a table for two, please."), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m2): "Good evening! Do you have a reservation?" — HE "ערב טוב! יש לכם הזמנה?"
+  - Then: m2 → rejoins the happy path at c2. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
+- Scene `cold-dinner`, c4 — after NPC "Are you ready to order?"
+  - Wrong choice: "A bottle of water, please." ("בקבוק מים, בבקשה.") — `phrase.rest.water`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("I'll have the chicken, without onions, please."), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m4): "Are you ready to order?" — HE "מוכנים להזמין?"
+  - Then: m4 → rejoins the happy path at c4. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
+- Scene `cold-dinner`, c6 — after NPC "Of course. Anything to drink?"
+  - Wrong choice: "A table for two, please." ("שולחן לשניים, בבקשה.") — `phrase.rest.table-two`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("A bottle of water, please."), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m6): "Of course. Anything to drink?" — HE "כמובן. משהו לשתות?"
+  - Then: m6 → rejoins the happy path at c6. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
+- Scene `cold-dinner`, c8 — after NPC "…Later… Is everything okay?"
+  - Wrong choice: "I'll have the chicken." ("אני אקח את העוף.") — `phrase.rest.ill-have-chicken`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("Yes, that was delicious! The bill, please."), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m8): "…Later… Is everything okay?" — HE "…אחר כך… הכל בסדר?"
+  - Then: m8 → rejoins the happy path at c8. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
 
 ## Sentence review
 
@@ -12971,41 +14357,23 @@ No sentence-review step in this mission.
 
 ## Cold open / ambush
 
-### M18-Q04 — cold-open (step 4, single prompt · mode: not set (original behaviour))
+### M18-Q16 — cold-open (step 10, single prompt · mode: speed)
 
-- Prompt displayed: "Heads up: a fast one is coming. Use a tool." / "שים לב: מגיע משפט מהיר. השתמש בכלי."
-- Audio played: EN "Sorry before I forget did you want milk and sugar in that?" · FR "Pardon, avant que j’oublie : vous vouliez du lait et du sucre dedans ?" · ES "Perdone, antes de que se me olvide: ¿lo quería con leche y azúcar?"
-- Meaning of the audio (HE): "סליחה, לפני שאני שוכח — רצית בזה חלב וסוכר?"
-- Buttons show: TARGET-LANGUAGE text of the two sentences, each prefixed with 🛟; order shuffled
+- Prompt displayed: "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "Perfect, follow me. Here are your menus. Are you ready to order?" · FR "Parfait, suivez-moi. Voici vos menus. Vous êtes prêts à commander ?" · ES "Perfecto, sígame. Aquí tienen las cartas. ¿Están listos para pedir?"
+- Meaning of the audio (HE): "מצוין, בואו אחריי. הנה התפריטים. מוכנים להזמין?"
+- Buttons show: TARGET-LANGUAGE text of the two sentences, no badge; order shuffled
 - Choices:
-  1. EN "Milk and sugar?" · FR "Lait et sucre ?" · ES "¿Leche y azúcar?" · (HE gloss "חלב וסוכר?") — `reply.coffee.milk-sugar` — ✅ accepted
-  2. EN "Cash or card?" · FR "Espèces ou carte ?" · ES "¿Efectivo o tarjeta?" · (HE gloss "מזומן או כרטיס?") — `reply.coffee.cash-or-card` — ❌ wrong
-- Tests: reply.coffee.milk-sugar
-- Explanation shown after answering: generic: “Milk and sugar?” means “חלב וסוכר?”.
+  1. EN "Are you ready to order?" · FR "Vous êtes prêts à commander ?" · ES "¿Están listos para pedir?" · (HE gloss "מוכנים להזמין?") — `reply.rest.ready-to-order` — ✅ accepted
+  2. EN "Anything to drink?" · FR "Quelque chose à boire ?" · ES "¿Algo de beber?" · (HE gloss "משהו לשתות?") — `reply.rest.to-drink` — ❌ wrong
+- Tests: reply.rest.ready-to-order
+- Explanation shown after answering: generic: “Are you ready to order?” means “מוכנים להזמין?”.
 
 - Flow: screen shows ⚡ and "Heads up: a fast one is coming. Use a tool." / "שים לב: מגיע משפט מהיר. השתמש בכלי." with one button 👂 "I'm ready" / "אני מוכן"; on tap the line is spoken at TTS rate 1.12 and printed small; two shuffled buttons appear; 🔊 "Hear again" / "לשמוע שוב" replays at 0.85.
 - Success criterion: picking the accepted sentence. A wrong pick shows the feedback card (what you heard + translation, your answer, the sentence that fit) with Try again / Continue; Continue proceeds either way. Response time is recorded.
 - Recovery options offered: none
-- Receipt shown next: "A question that came back late — and you understood it." / "שאלה שחזרה אליך באיחור — והבנת אותה."
-- Potential new-language exposure: YES — English words not met in any sentence or dialogue line of Missions 01–18: before, forget, did
-
-### M18-Q17 — cold-open (step 12, single prompt · mode: not set (original behaviour))
-
-- Prompt displayed: "Heads up: a fast one is coming. Use a tool." / "שים לב: מגיע משפט מהיר. השתמש בכלי."
-- Audio played: EN "Before I bring the bill would you like to see the dessert menu?" · FR "Avant que j’apporte l’addition, vous voulez voir la carte des desserts ?" · ES "Antes de traerle la cuenta, ¿quiere ver la carta de postres?"
-- Meaning of the audio (HE): "לפני שאני מביא את החשבון — רוצה לראות את תפריט הקינוחים?"
-- Buttons show: TARGET-LANGUAGE text of the two sentences, each prefixed with 🛟; order shuffled
-- Choices:
-  1. EN "Would you like dessert?" · FR "Vous voulez un dessert ?" · ES "¿Quieren postre?" · (HE gloss "רוצים קינוח?") — `reply.rest.dessert` — ✅ accepted
-  2. EN "Do you have a reservation?" · FR "Vous avez une réservation ?" · ES "¿Tiene reserva?" · (HE gloss "יש לכם הזמנה?") — `reply.rest.reservation` — ❌ wrong
-- Tests: reply.rest.dessert
-- Explanation shown after answering: generic: “Would you like dessert?” means “רוצים קינוח?”.
-
-- Flow: screen shows ⚡ and "Heads up: a fast one is coming. Use a tool." / "שים לב: מגיע משפט מהיר. השתמש בכלי." with one button 👂 "I'm ready" / "אני מוכן"; on tap the line is spoken at TTS rate 1.12 and printed small; two shuffled buttons appear; 🔊 "Hear again" / "לשמוע שוב" replays at 0.85.
-- Success criterion: picking the accepted sentence. A wrong pick shows the feedback card (what you heard + translation, your answer, the sentence that fit) with Try again / Continue; Continue proceeds either way. Response time is recorded.
-- Recovery options offered: none
-- Receipt shown next: "A quick offer at the end of the meal — and you understood it was dessert." / "הצעה מהירה בסוף הארוחה — והבנת שמציעים קינוח."
-- Potential new-language exposure: YES — English words not met in any sentence or dialogue line of Missions 01–18: before, bring
+- Receipt shown next: "Three sentences in a row, at normal speed, with not one new word — and you caught that you were being asked to order." / "שלושה משפטים ברצף, בקצב רגיל ובלי מילה חדשה — ותפסת ששואלים אם אתה מוכן להזמין."
+- Potential new-language exposure: NO — every English word of the line appears in a sentence or dialogue line of Missions 01–18
 
 ## Swap-in / variable content
 
@@ -13020,57 +14388,47 @@ Every learner sentence of this mission is a line in a scene.
 ## Receipts (proof cards)
 
 - Step 3: "Morning: you ordered, hesitated and paid — with no preparation." / "בוקר: הזמנת, התלבטת ושילמת — בלי הכנה."
-- Step 5: "A question that came back late — and you understood it." / "שאלה שחזרה אליך באיחור — והבנת אותה."
-- Step 7: "You made plans for tomorrow and said what you are doing now." / "קבעת תוכניות למחר ואמרת מה אתה עושה עכשיו."
-- Step 9: "A small purchase: you browsed, asked the price and decided." / "קנייה קטנה: הסתכלת, שאלת מחיר והחלטת."
-- Step 11: "A whole dinner — table, order, drink, bill — at normal speed." / "ארוחת ערב שלמה — שולחן, הזמנה, שתייה, חשבון — בקצב רגיל."
-- Step 13: "A quick offer at the end of the meal — and you understood it was dessert." / "הצעה מהירה בסוף הארוחה — והבנת שמציעים קינוח."
-- Step 14: "A whole ordinary day — coffee, a friend, a purchase and a meal — without the safety net." / "יום רגיל שלם — קפה, חבר, קנייה וארוחה — בלי רשת ביטחון."
+- Step 5: "You made plans for tomorrow, said what you like and what you are doing now." / "קבעת תוכניות למחר, אמרת מה אתה אוהב ומה אתה עושה עכשיו."
+- Step 7: "The supermarket: you found a product, understood which aisle, and got through the checkout." / "סופר: מצאת מוצר, הבנת באיזה מעבר, ועברת קופה."
+- Step 9: "A whole dinner — table, order, drink, bill — at normal speed." / "ארוחת ערב שלמה — שולחן, הזמנה, שתייה, חשבון — בקצב רגיל."
+- Step 11: "Three sentences in a row, at normal speed, with not one new word — and you caught that you were being asked to order." / "שלושה משפטים ברצף, בקצב רגיל ובלי מילה חדשה — ותפסת ששואלים אם אתה מוכן להזמין."
+- Step 12: "A whole ordinary day, alone: coffee, plans with a friend, the supermarket and dinner — and when it got fast, you did not freeze." / "יום רגיל שלם, בלי עזרה: קפה, תוכניות עם חבר, סופר וארוחת ערב — וגם כשזה היה מהיר, לא קפאת."
 
 ## Audit Metadata — DO NOT FIX YET
 
-- Learner-production sentences: 14
-- Receptive (expected-reply) sentences: 4
-- Toolkit phrases bundled: 1
+- Learner-production sentences: 20
+- Receptive (expected-reply) sentences: 2
+- Toolkit phrases bundled: 3
 - Key-sentence steps: 0
 - Expected-reply/listening items: 0
 - Questions/quizzes (meaning quiz): 0
 - Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 0
-- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 1
-- One-button dialogue screens: 14
+- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 15
+- One-button dialogue screens: 0
 - Learner sentences never actively retrieved: 0
 - Dialogue learner choices (screens): 15
-- Wrong-answer branches: 0
-- Cold-open prompts: 2
-- Recovery opportunities: 1
+- Wrong-answer branches: 15
+- Cold-open prompts: 1
+- Recovery opportunities: 3
 - Vocabulary pre-items: 0
 - Swap variants (extra accepted lines): 0
 - Sentences in review: 0
-- Total interactive questions: 17 (answer choices: 20)
-- Approximate total learner interactions: 17 (questions + key sentences + review cards + word-intro screen)
+- Total interactive questions: 16 (answer choices: 35)
+- Approximate total learner interactions: 16 (questions + key sentences + review cards + word-intro screen)
 
-### AUTO-FLAG — requires human review (20)
+### AUTO-FLAG — requires human review (11)
 
-- AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "cold-morning" n1 — “Morning! What can I get you?”
+- AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "cold-morning" n1 — “Good morning! What can I get you?”
 - AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "cold-morning" n3 — “Sure. Anything to eat?”
-- AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "cold-plans" n1 — “Hey! Are you free tomorrow?”
-- AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "cold-plans" n3 — “We're going surfing. Do you like surfing?”
-- AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "cold-plans" n5 — “Great! What time is good for you?”
-- AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "cold-plans" n7 — “Perfect. And now? Are you coming to the beach?”
-- AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "cold-shop" n1 — “Hi there! Can I help you find anything?”
-- AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "cold-dinner" n1 — “Good evening! How many people?”
-- AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "cold-dinner" n3 — “Right this way. Are you ready to order?”
-- AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "cold-dinner" n5 — “Excellent. Anything to drink?”
+- AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "cold-morning" n5 — “No problem. Cash or card?”
+- AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "cold-plans" n1 — “Hi! Are you free tomorrow?”
+- AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "cold-plans" n3 — “I surf a lot. Do you like surfing?”
+- AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "cold-plans" n7 — “Perfect. And what are you doing tonight?”
+- AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "cold-shop" n1 — “Hi there! Can I help you find something?”
+- AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "cold-shop" n5 — “…At the checkout… Hi! Is that everything?”
+- AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "cold-shop" n7 — “Do you need a bag?”
+- AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "cold-dinner" n1 — “Good evening! Do you have a reservation?”
 - AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "cold-dinner" n7 — “…Later… Is everything okay?”
-- AUTO-FLAG — Practice item wording not in this mission's dialogue: `reply.coffee.milk-sugar` “Milk and sugar?” (drilled as an expected reply / distractor, but no NPC line here says it).
-- AUTO-FLAG — Practice item wording not in this mission's dialogue: `reply.rest.dessert` “Would you like dessert?” (drilled as an expected reply / distractor, but no NPC line here says it).
-- AUTO-FLAG — Practice item wording not in this mission's dialogue: `reply.rest.reservation` “Do you have a reservation?” (drilled as an expected reply / distractor, but no NPC line here says it).
-- AUTO-FLAG — 15 of 15 choice screens have NO wrong option (every button is accepted): cold-morning/c2, cold-morning/c4, cold-morning/c6, cold-plans/c2, cold-plans/c2b, cold-plans/c4, cold-plans/c6, cold-plans/c8, cold-shop/c2, cold-shop/c4, cold-shop/c6, cold-dinner/c2, cold-dinner/c4, cold-dinner/c6, cold-dinner/c8.
-- AUTO-FLAG — 14 choice screens offer exactly ONE button (no decision): cold-morning/c2, cold-morning/c4, cold-morning/c6, cold-plans/c2b, cold-plans/c4, cold-plans/c6, cold-plans/c8, cold-shop/c2, cold-shop/c4, cold-shop/c6, cold-dinner/c2, cold-dinner/c4, cold-dinner/c6, cold-dinner/c8.
-- AUTO-FLAG — M18-Q04: cold-open line contains English words not met in any sentence or dialogue line up to this mission: before, forget, did.
-- AUTO-FLAG — M18-Q04: the screen says "Heads up: a fast one is coming. Use a tool." / "שים לב: מגיע משפט מהיר. השתמש בכלי." and marks both buttons with 🛟, but neither option is a conversation-help tool.
-- AUTO-FLAG — M18-Q17: cold-open line contains English words not met in any sentence or dialogue line up to this mission: before, bring.
-- AUTO-FLAG — M18-Q17: the screen says "Heads up: a fast one is coming. Use a tool." / "שים לב: מגיע משפט מהיר. השתמש בכלי." and marks both buttons with 🛟, but neither option is a conversation-help tool.
 
 ---
 
@@ -13266,7 +14624,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 08, 09, 10, 14, 15, 17, 19, 21, 22, 24, 26, 27, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 26, 27, 29, 30
 - Exercised here as: sentence review (step 12); dialogue choice transport/c2 (accepted)
 
 ### Sentence: `phrase.recovery.thank-you`
@@ -13277,7 +14635,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¡Gracias!
 - Role: courtesy from the Recovery Toolkit
 - Tip / pattern note: none
-- Used in missions: 03, 05, 06, 07, 08, 09, 10, 14, 15, 17, 19, 25, 26, 29, 30
+- Used in missions: 03, 05, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 25, 26, 29, 30
 - Exercised here as: sentence review (step 12); dialogue choice transport/c3 (accepted); dialogue choice transport/c3b (accepted); dialogue choice transport/c5 (accepted); dialogue choice transport/c5b (accepted)
 
 ## Expected replies / listening items
@@ -14623,7 +15981,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 08, 09, 10, 14, 15, 17, 19, 21, 22, 24, 26, 27, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 26, 27, 29, 30
 - Exercised here as: sentence review (step 12); dialogue choice where-next/c4 (accepted)
 
 ## Expected replies / listening items
@@ -15321,7 +16679,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 08, 09, 10, 14, 15, 17, 19, 21, 22, 24, 26, 27, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 26, 27, 29, 30
 - Exercised here as: sentence review (step 15); dialogue choice room-problem/c8 (accepted)
 
 ## Expected replies / listening items
@@ -16722,7 +18080,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 08, 09, 10, 14, 15, 17, 19, 21, 22, 24, 26, 27, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 26, 27, 29, 30
 - Exercised here as: dialogue choice cold-hostel/c2 (accepted)
 
 ## Expected replies / listening items
@@ -17438,7 +18796,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¡Gracias!
 - Role: courtesy from the Recovery Toolkit
 - Tip / pattern note: none
-- Used in missions: 03, 05, 06, 07, 08, 09, 10, 14, 15, 17, 19, 25, 26, 29, 30
+- Used in missions: 03, 05, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 25, 26, 29, 30
 - Exercised here as: sentence review (step 14); dialogue choice asking-for-help/c8 (accepted)
 
 ### Sentence: `phrase.recovery.what-mean`
@@ -18119,7 +19477,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 08, 09, 10, 14, 15, 17, 19, 21, 22, 24, 26, 27, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 26, 27, 29, 30
 - Exercised here as: sentence review (step 12); cold-open correct option (step 13); dialogue choice pharmacy/c1 (accepted)
 
 ### Sentence: `phrase.recovery.thank-you`
@@ -18130,7 +19488,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¡Gracias!
 - Role: courtesy from the Recovery Toolkit
 - Tip / pattern note: none
-- Used in missions: 03, 05, 06, 07, 08, 09, 10, 14, 15, 17, 19, 25, 26, 29, 30
+- Used in missions: 03, 05, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 25, 26, 29, 30
 - Exercised here as: sentence review (step 12); dialogue choice pharmacy/c3b (accepted); dialogue choice pharmacy/c4 (accepted)
 
 ## Expected replies / listening items
@@ -18803,7 +20161,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 08, 09, 10, 14, 15, 17, 19, 21, 22, 24, 26, 27, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 26, 27, 29, 30
 - Exercised here as: sentence review (step 12); dialogue choice emergency/c8 (accepted)
 
 ## Expected replies / listening items
@@ -19342,7 +20700,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Están listos para pedir?
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
-- Used in missions: 14, 28
+- Used in missions: 14, 18, 28
 - Exercised here as: cold-open wrong option (step 8)
 
 ### Sentence: `phrase.recovery.repeat`
@@ -19877,7 +21235,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 08, 09, 10, 14, 15, 17, 19, 21, 22, 24, 26, 27, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 26, 27, 29, 30
 - Exercised here as: dialogue choice dr-taxi/c2 (accepted); dialogue choice dr-order/c2 (accepted); dialogue choice dr-problem/c1 (accepted); dialogue choice dr-pay/c2 (accepted)
 
 ### Sentence: `phrase.recovery.thank-you`
@@ -19888,7 +21246,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¡Gracias!
 - Role: courtesy from the Recovery Toolkit
 - Tip / pattern note: none
-- Used in missions: 03, 05, 06, 07, 08, 09, 10, 14, 15, 17, 19, 25, 26, 29, 30
+- Used in missions: 03, 05, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 25, 26, 29, 30
 - Exercised here as: dialogue choice dr-problem/c2 (accepted)
 
 ## Expected replies / listening items
@@ -20551,7 +21909,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 08, 09, 10, 14, 15, 17, 19, 21, 22, 24, 26, 27, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 26, 27, 29, 30
 - Exercised here as: dialogue choice fin-evening/c2 (accepted)
 
 ### Sentence: `phrase.recovery.thank-you`
@@ -20562,7 +21920,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¡Gracias!
 - Role: courtesy from the Recovery Toolkit
 - Tip / pattern note: none
-- Used in missions: 03, 05, 06, 07, 08, 09, 10, 14, 15, 17, 19, 25, 26, 29, 30
+- Used in missions: 03, 05, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 25, 26, 29, 30
 - Exercised here as: dialogue choice fin-evening/c4 (accepted)
 
 ## Expected replies / listening items
@@ -21153,14 +22511,14 @@ Every learner sentence of this mission is a line in a scene.
 | 08 Hotel Check-in | 16 (6 / 6 / 4) | 4 | 4 | 0 | 10 | 4 | 2 | 2 | 1 | 4 words | 0 | 19 | 9 |
 | 09 Shopping | 15 (5 / 6 / 4) | 4 | 5 | 1 | 6 | 6 | 3 | 1 | 1 | no | 2 | 18 | 7 |
 | 10 CHECKPOINT: Arrival Day | 15 (10 / 2 / 3) | 0 | 0 | 0 | 0 | 11 | 0 | 3 | 1 | no | 0 | 12 | 8 |
-| 11 Small Talk & Recommendations | 17 (9 / 7 / 1) | 4 | 5 | 1 | 0 | 7 | 4 | 1 | 1 | no | 2 | 13 | 8 |
-| 12 Time & Plans | 16 (8 / 7 / 1) | 4 | 5 | 1 | 0 | 8 | 6 | 1 | 1 | no | 1 | 14 | 5 |
-| 13 Home, Family & Daily Routine | 14 (8 / 5 / 1) | 4 | 5 | 1 | 0 | 9 | 8 | 1 | 1 | no | 0 | 15 | 8 |
-| 14 Restaurant Meal | 21 (8 / 8 / 5) | 4 | 5 | 1 | 0 | 6 | 4 | 2 | 1 | 5 words | 1 | 12 | 14 |
-| 15 Food Preferences & Allergies | 14 (5 / 6 / 3) | 4 | 6 | 2 | 0 | 10 | 5 | 3 | 1 | no | 1 | 17 | 10 |
-| 16 Hobbies & Free Time | 15 (8 / 6 / 1) | 4 | 5 | 1 | 0 | 9 | 8 | 1 | 1 | no | 0 | 15 | 7 |
-| 17 Supermarket & Everyday Shopping | 14 (4 / 6 / 4) | 4 | 6 | 2 | 0 | 7 | 3 | 2 | 1 | no | 1 | 14 | 12 |
-| 18 CHECKPOINT: Everyday Day | 19 (14 / 4 / 1) | 0 | 0 | 0 | 0 | 15 | 14 | 1 | 2 | no | 0 | 17 | 20 |
+| 11 Small Talk & Recommendations | 17 (9 / 7 / 1) | 4 | 5 | 1 | 13 | 7 | 4 | 1 | 0 | no | 2 | 25 | 13 |
+| 12 Time & Plans | 16 (8 / 7 / 1) | 4 | 4 | 0 | 17 | 8 | 6 | 1 | 0 | no | 1 | 29 | 2 |
+| 13 Home, Family & Daily Routine | 14 (8 / 5 / 1) | 4 | 4 | 0 | 15 | 9 | 8 | 1 | 0 | no | 0 | 28 | 5 |
+| 14 Restaurant Meal | 18 (7 / 6 / 5) | 5 | 5 | 0 | 13 | 6 | 4 | 2 | 0 | 5 words | 1 | 24 | 7 |
+| 15 Food Preferences & Allergies | 13 (5 / 5 / 3) | 4 | 4 | 0 | 12 | 10 | 5 | 3 | 1 | no | 1 | 27 | 6 |
+| 16 Hobbies & Free Time | 15 (8 / 6 / 1) | 4 | 4 | 0 | 15 | 9 | 8 | 1 | 0 | no | 0 | 28 | 5 |
+| 17 Supermarket & Everyday Shopping | 13 (4 / 5 / 4) | 4 | 4 | 0 | 15 | 7 | 3 | 2 | 1 | no | 1 | 27 | 8 |
+| 18 CHECKPOINT: Everyday Day | 25 (20 / 2 / 3) | 0 | 0 | 0 | 0 | 15 | 0 | 3 | 1 | no | 0 | 16 | 11 |
 | 19 Public Transport | 13 (4 / 6 / 3) | 4 | 6 | 2 | 0 | 10 | 5 | 3 | 1 | no | 1 | 17 | 9 |
 | 20 Past & Recent Events | 15 (8 / 6 / 1) | 4 | 5 | 1 | 0 | 7 | 5 | 1 | 1 | no | 1 | 13 | 7 |
 | 21 Future Travel & Plans | 16 (9 / 6 / 1) | 4 | 5 | 1 | 0 | 8 | 5 | 1 | 1 | no | 2 | 14 | 7 |
@@ -21184,15 +22542,15 @@ Every learner-production sentence id of the Core, in order of first appearance. 
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | `phrase.social.my-name` | My name is Dan. | 01 | — | 1 | 2 / 0 | 2 | 0 | 1 | no | no |  |
 | `phrase.social.nice-to-meet` | Nice to meet you! | 01 | — | 1 | 0 / 1 | 1 | 1 | 1 | no | no |  |
-| `phrase.social.from-israel` | I'm from Israel. | 01 | 11, 24, 30 | 1 | 4 / 0 | 3 | 0 | 2 | yes | no |  |
-| `phrase.social.first-time` | It's my first time here. | 01 | 11 | 1 | 4 / 0 | 3 | 0 | 2 | no | no |  |
-| `phrase.money.how-much` | How much is it? | 02 | 18 | 1 | 2 / 0 | 2 | 0 | 1 | yes | no |  |
-| `phrase.money.by-card` | By card, please. | 02 | 18 | 1 | 2 / 0 | 1 | 0 | 1 | yes | no |  |
+| `phrase.social.from-israel` | I'm from Israel. | 01 | 11, 24, 30 | 1 | 4 / 0 | 6 | 0 | 1 | yes | no |  |
+| `phrase.social.first-time` | It's my first time here. | 01 | 11 | 1 | 4 / 0 | 8 | 0 | 1 | no | no |  |
+| `phrase.money.how-much` | How much is it? | 02 | — | 1 | 1 / 0 | 2 | 0 | 1 | no | no |  |
+| `phrase.money.by-card` | By card, please. | 02 | 18 | 1 | 2 / 1 | 1 | 0 | 1 | yes | no |  |
 | `phrase.money.in-cash` | In cash. | 02 | — | 0 | 1 / 0 | 1 | 0 | 1 | no | no |  |
 | `phrase.money.one-box` | One box, please. | 02 | — | 0 | 2 / 0 | 1 | 0 | 1 | no | no |  |
 | `phrase.money.too-expensive` | That's too expensive. | 02 | — | 1 | 0 / 0 | 2 | 0 | 1 | no | no |  |
 | `phrase.coffee.iced-coffee` | I'd like an iced coffee, please. | 03 | 18 | 1 | 3 / 0 | 2 | 0 | 1 | yes | no |  |
-| `phrase.coffee.to-go` | To go, please. | 03 | — | 0 | 0 / 0 | 3 | 0 | 1 | no | no |  |
+| `phrase.coffee.to-go` | To go, please. | 03 | 18 | 0 | 0 / 1 | 3 | 0 | 1 | yes | no |  |
 | `phrase.coffee.no-sugar` | Milk, no sugar. | 03 | — | 1 | 2 / 0 | 3 | 0 | 1 | no | no |  |
 | `phrase.coffee.croissant` | A croissant, please. | 03 | — | 0 | 1 / 0 | 2 | 0 | 1 | no | no |  |
 | `phrase.coffee.thats-all` | That's all, thanks. | 03 | — | 1 | 2 / 0 | 2 | 0 | 1 | no | no |  |
@@ -21230,59 +22588,58 @@ Every learner-production sentence id of the Core, in order of first appearance. 
 | `phrase.hotel.breakfast` | Is breakfast included? | 08 | 10 | 1 | 2 / 1 | 4 | 0 | 1 | yes | no |  |
 | `phrase.hotel.wifi` | What's the wifi password? | 08 | — | 0 | 0 / 0 | 0 | 0 | 0 | no | no | **0 active retrieval opportunities** |
 | `phrase.hotel.here-you-go` | Here you go. | 08 | 10 | 1 | 3 / 0 | 3 | 1 | 1 | yes | no |  |
-| `phrase.shop.just-looking` | I'm just looking, thanks. | 09 | 18 | 1 | 2 / 0 | 4 | 0 | 1 | yes | no |  |
+| `phrase.shop.just-looking` | I'm just looking, thanks. | 09 | — | 1 | 1 / 0 | 4 | 0 | 1 | no | no |  |
 | `phrase.shop.try-on` | Can I try this on? | 09 | — | 1 | 2 / 0 | 2 | 0 | 1 | no | no |  |
 | `phrase.shop.bigger` | Do you have a bigger size? | 09 | — | 1 | 2 / 0 | 3 | 0 | 1 | no | no |  |
-| `phrase.shop.take-it` | I'll take it. | 09 | 18 | 1 | 3 / 0 | 4 | 1 | 1 | yes | no |  |
+| `phrase.shop.take-it` | I'll take it. | 09 | — | 1 | 2 / 0 | 4 | 1 | 1 | no | no |  |
 | `phrase.shop.too-expensive` | It's a bit expensive. | 09 | — | 0 | 1 / 0 | 1 | 0 | 1 | no | no |  |
-| `phrase.talk.beautiful-place` | This place is beautiful. | 11 | 28 | 1 | 2 / 0 | 0 | 0 | 1 | no | no |  |
-| `phrase.talk.how-about-you` | How about you? | 11 | — | 1 | 1 / 0 | 0 | 0 | 1 | no | no |  |
-| `phrase.talk.i-like-it` | I like it a lot. | 11 | 24 | 1 | 2 / 0 | 0 | 0 | 1 | yes | no |  |
-| `phrase.talk.love-food` | I love the food here. | 11 | — | 0 | 1 / 0 | 0 | 0 | 1 | no | no |  |
-| `phrase.talk.recommend-place` | Can you recommend a place? | 11 | 24, 28 | 1 | 3 / 0 | 0 | 0 | 1 | yes | no |  |
-| `phrase.rest.recommend` | What do you recommend? | 11 | — | 0 | 1 / 0 | 0 | 0 | 1 | no | no |  |
-| `phrase.talk.nice-talking` | It was nice talking to you. | 11 | — | 1 | 1 / 0 | 0 | 0 | 1 | no | no |  |
-| `phrase.time.maybe-later` | Maybe later. | 12 | 18 | 1 | 2 / 0 | 0 | 0 | 1 | yes | no |  |
-| `phrase.time.free-tonight` | I'm free tonight. | 12 | — | 1 | 1 / 0 | 0 | 0 | 1 | no | no |  |
-| `phrase.time.what-time` | What time? | 12 | — | 1 | 1 / 0 | 0 | 0 | 1 | no | no |  |
-| `phrase.time.when` | When? | 12 | — | 0 | 1 / 0 | 0 | 0 | 1 | no | no |  |
-| `phrase.time.not-too-late` | No, that's not too late. | 12 | — | 0 | 2 / 0 | 0 | 0 | 1 | no | no |  |
-| `phrase.time.what-doing-tomorrow` | What are you doing tomorrow? | 12 | 24 | 1 | 2 / 0 | 0 | 0 | 1 | yes | no |  |
-| `phrase.time.free-tomorrow` | Yes, I'm free tomorrow. | 12 | 18 | 0 | 3 / 0 | 0 | 0 | 1 | yes | no |  |
-| `phrase.time.lets-meet` | Let's meet here at seven. | 12 | 18 | 1 | 2 / 0 | 0 | 0 | 1 | yes | no |  |
-| `phrase.home.beautiful-home` | Your home is beautiful. | 13 | — | 1 | 1 / 0 | 0 | 0 | 1 | no | no |  |
-| `phrase.home.is-this-new` | Is this sofa new? | 13 | — | 0 | 1 / 0 | 0 | 0 | 1 | no | no |  |
-| `phrase.home.where-family` | Where is your family? | 13 | — | 1 | 1 / 0 | 0 | 0 | 1 | no | no |  |
-| `phrase.home.live-with-family` | Yes, I live with my family. | 13 | — | 0 | 2 / 0 | 0 | 0 | 1 | no | no |  |
-| `phrase.home.eat-at-grandmothers` | I'm going to eat at my grandmother's. | 13 | — | 1 | 1 / 0 | 0 | 0 | 1 | no | no |  |
-| `phrase.home.im-tired` | I'm tired. | 13 | — | 1 | 1 / 0 | 0 | 0 | 1 | no | no |  |
-| `phrase.home.going-home` | I'm going home. | 13 | 18 | 1 | 2 / 0 | 0 | 0 | 1 | yes | no |  |
-| `phrase.home.going-to-sleep` | I'm going to sleep. | 13 | — | 1 | 1 / 0 | 0 | 0 | 1 | no | no |  |
-| `phrase.rest.table-two` | A table for two, please. | 14 | 18, 28, 30 | 1 | 5 / 0 | 0 | 0 | 1 | yes | no |  |
-| `phrase.rest.menu` | The menu, please. | 14 | — | 0 | 0 / 0 | 0 | 0 | 1 | no | no | **0 active retrieval opportunities** |
-| `phrase.rest.ill-have-chicken` | I'll have the chicken. | 14 | 18 | 1 | 2 / 0 | 0 | 0 | 1 | yes | no |  |
-| `phrase.rest.water` | A bottle of water, please. | 14 | 18 | 0 | 2 / 0 | 0 | 0 | 1 | yes | no |  |
-| `phrase.rest.no-onions` | No onions, please. | 14 | — | 1 | 0 / 0 | 0 | 0 | 1 | no | no | **0 active retrieval opportunities** |
-| `phrase.rest.the-bill` | The bill, please. | 14 | 18 | 1 | 2 / 0 | 0 | 0 | 1 | yes | no |  |
-| `phrase.rest.delicious` | That was delicious! | 14 | — | 0 | 0 / 0 | 0 | 0 | 1 | no | no | **0 active retrieval opportunities** |
-| `phrase.rest.ill-have` | I'll have the pasta, please. | 14 | 28, 29, 30 | 0 | 4 / 0 | 0 | 0 | 1 | yes | no |  |
-| `phrase.diet.allergic-nuts` | I'm allergic to nuts. | 15 | — | 1 | 2 / 0 | 0 | 0 | 1 | no | no |  |
-| `phrase.diet.without-onions` | Without onions, please. | 15 | — | 1 | 2 / 0 | 0 | 0 | 1 | no | no |  |
-| `phrase.diet.vegetarian` | I'm vegetarian. | 15 | — | 1 | 2 / 0 | 0 | 1 | 1 | no | no |  |
-| `phrase.diet.does-have-dairy` | Does it have dairy? | 15 | — | 1 | 2 / 0 | 0 | 0 | 1 | no | no |  |
-| `phrase.diet.is-spicy` | Is this spicy? | 15 | — | 0 | 1 / 0 | 0 | 0 | 1 | no | no |  |
-| `phrase.hobby.what-for-fun` | What do you do for fun? | 16 | — | 1 | 1 / 0 | 0 | 0 | 1 | no | no |  |
-| `phrase.hobby.i-love-surfing` | I love surfing! | 16 | 18 | 1 | 2 / 0 | 0 | 0 | 1 | yes | no |  |
-| `phrase.hobby.i-like-drawing` | I like drawing. | 16 | — | 1 | 1 / 0 | 0 | 0 | 1 | no | no |  |
-| `phrase.hobby.i-usually` | I usually draw in the evening. | 16 | — | 1 | 1 / 0 | 0 | 0 | 1 | no | no |  |
-| `phrase.hobby.like-to-listen` | I like to listen to music. | 16 | — | 0 | 1 / 0 | 0 | 0 | 1 | no | no |  |
-| `phrase.hobby.dont-like-running` | I don't like running. | 16 | — | 1 | 1 / 0 | 0 | 0 | 1 | no | no |  |
-| `phrase.hobby.want-to-try` | I want to try diving. | 16 | — | 1 | 2 / 0 | 0 | 0 | 1 | no | no |  |
-| `phrase.hobby.do-you-like` | Do you like diving? | 16 | — | 0 | 1 / 0 | 0 | 0 | 1 | no | no |  |
-| `phrase.super.where-is` | Where is the milk? | 17 | — | 1 | 2 / 0 | 0 | 0 | 1 | no | no |  |
-| `phrase.super.do-you-have` | Do you have bread? | 17 | — | 1 | 1 / 0 | 0 | 0 | 1 | no | no |  |
-| `phrase.super.just-this` | Just this, thanks. | 17 | — | 1 | 2 / 0 | 0 | 1 | 1 | no | no |  |
-| `phrase.super.need-bag` | Could I get a bag? | 17 | — | 1 | 1 / 0 | 0 | 0 | 1 | no | no |  |
+| `phrase.talk.beautiful-place` | This place is beautiful. | 11 | 28 | 1 | 2 / 0 | 5 | 0 | 1 | no | no |  |
+| `phrase.talk.how-about-you` | How about you? | 11 | — | 1 | 1 / 0 | 4 | 0 | 1 | no | no |  |
+| `phrase.talk.i-like-it` | I like it a lot. | 11 | 24 | 1 | 2 / 0 | 5 | 0 | 1 | yes | no |  |
+| `phrase.talk.love-food` | I love the food here. | 11 | — | 0 | 1 / 0 | 1 | 0 | 1 | no | no |  |
+| `phrase.talk.recommend-place` | Can you recommend a place? | 11 | 24, 28 | 1 | 3 / 0 | 5 | 0 | 1 | yes | no |  |
+| `phrase.rest.recommend` | What do you recommend? | 11 | — | 0 | 1 / 0 | 1 | 0 | 0 | no | no |  |
+| `phrase.talk.nice-talking` | It was nice talking to you. | 11 | — | 1 | 1 / 0 | 8 | 0 | 1 | no | no |  |
+| `phrase.time.maybe-later` | Maybe later. | 12 | 18 | 1 | 2 / 0 | 3 | 0 | 1 | yes | no |  |
+| `phrase.time.free-tonight` | I'm free tonight. | 12 | 18 | 1 | 1 / 1 | 5 | 0 | 1 | yes | no |  |
+| `phrase.time.what-time` | What time? | 12 | — | 1 | 1 / 0 | 4 | 0 | 1 | no | no |  |
+| `phrase.time.when` | When? | 12 | — | 0 | 1 / 0 | 0 | 0 | 0 | no | no |  |
+| `phrase.time.not-too-late` | No, that's not too late. | 12 | 18 | 0 | 2 / 1 | 5 | 0 | 1 | yes | no |  |
+| `phrase.time.what-doing-tomorrow` | What are you doing tomorrow? | 12 | 24 | 1 | 2 / 0 | 5 | 0 | 1 | yes | no |  |
+| `phrase.time.free-tomorrow` | Yes, I'm free tomorrow. | 12 | 18 | 0 | 2 / 0 | 4 | 0 | 1 | yes | no |  |
+| `phrase.time.lets-meet` | Let's meet here at seven. | 12 | 18 | 1 | 2 / 0 | 5 | 0 | 1 | yes | no |  |
+| `phrase.home.beautiful-home` | Your home is beautiful. | 13 | — | 1 | 1 / 0 | 5 | 0 | 1 | no | no |  |
+| `phrase.home.is-this-new` | Is this sofa new? | 13 | — | 0 | 1 / 0 | 4 | 0 | 0 | no | no |  |
+| `phrase.home.where-family` | Where is your family? | 13 | 18 | 1 | 1 / 1 | 5 | 0 | 1 | yes | no |  |
+| `phrase.home.live-with-family` | Yes, I live with my family. | 13 | — | 0 | 2 / 0 | 6 | 0 | 1 | no | no |  |
+| `phrase.home.eat-at-grandmothers` | I'm going to eat at my grandmother's. | 13 | — | 1 | 1 / 0 | 4 | 0 | 1 | no | no |  |
+| `phrase.home.im-tired` | I'm tired. | 13 | — | 1 | 1 / 0 | 4 | 0 | 1 | no | no |  |
+| `phrase.home.going-home` | I'm going home. | 13 | 18 | 1 | 2 / 0 | 4 | 0 | 1 | yes | no |  |
+| `phrase.home.going-to-sleep` | I'm going to sleep. | 13 | — | 1 | 1 / 0 | 3 | 0 | 1 | no | no |  |
+| `phrase.rest.table-two` | A table for two, please. | 14 | 18, 28, 30 | 1 | 5 / 2 | 9 | 0 | 1 | yes | no |  |
+| `phrase.rest.ill-have-chicken` | I'll have the chicken. | 14 | 18 | 1 | 2 / 1 | 4 | 0 | 1 | yes | no |  |
+| `phrase.rest.water` | A bottle of water, please. | 14 | 18 | 0 | 2 / 1 | 5 | 0 | 1 | yes | no |  |
+| `phrase.rest.no-onions` | No onions, please. | 14 | — | 1 | 0 / 0 | 3 | 0 | 1 | no | no |  |
+| `phrase.rest.the-bill` | The bill, please. | 14 | 18 | 1 | 2 / 1 | 7 | 0 | 1 | yes | no |  |
+| `phrase.rest.delicious` | That was delicious! | 14 | — | 0 | 0 / 0 | 3 | 0 | 0 | no | no |  |
+| `phrase.rest.ill-have` | I'll have the pasta, please. | 14 | 28, 29, 30 | 0 | 4 / 0 | 2 | 0 | 1 | yes | no |  |
+| `phrase.diet.allergic-nuts` | I'm allergic to nuts. | 15 | — | 1 | 2 / 0 | 5 | 0 | 1 | no | no |  |
+| `phrase.diet.without-onions` | Without onions, please. | 15 | — | 1 | 2 / 0 | 7 | 0 | 1 | no | no |  |
+| `phrase.diet.vegetarian` | I'm vegetarian. | 15 | — | 1 | 2 / 0 | 6 | 1 | 1 | no | no |  |
+| `phrase.diet.does-have-dairy` | Does it have dairy? | 15 | — | 1 | 2 / 0 | 2 | 0 | 1 | no | no |  |
+| `phrase.diet.is-spicy` | Is this spicy? | 15 | — | 0 | 1 / 0 | 5 | 0 | 1 | no | no |  |
+| `phrase.hobby.what-for-fun` | What do you do for fun? | 16 | — | 1 | 1 / 0 | 4 | 0 | 1 | no | no |  |
+| `phrase.hobby.i-love-surfing` | I love surfing! | 16 | 18 | 1 | 2 / 0 | 4 | 0 | 1 | yes | no |  |
+| `phrase.hobby.i-like-drawing` | I like drawing. | 16 | — | 1 | 1 / 0 | 6 | 0 | 1 | no | no |  |
+| `phrase.hobby.i-usually` | I usually draw in the evening. | 16 | 18 | 1 | 1 / 1 | 8 | 0 | 1 | yes | no |  |
+| `phrase.hobby.like-to-listen` | I like to listen to music. | 16 | — | 0 | 1 / 0 | 3 | 0 | 1 | no | no |  |
+| `phrase.hobby.dont-like-running` | I don't like running. | 16 | — | 1 | 1 / 0 | 3 | 0 | 1 | no | no |  |
+| `phrase.hobby.want-to-try` | I want to try diving. | 16 | — | 1 | 2 / 0 | 7 | 0 | 1 | no | no |  |
+| `phrase.hobby.do-you-like` | Do you like diving? | 16 | — | 0 | 1 / 0 | 2 | 0 | 1 | no | no |  |
+| `phrase.super.where-is` | Where is the milk? | 17 | 18 | 1 | 3 / 1 | 9 | 0 | 1 | yes | no |  |
+| `phrase.super.do-you-have` | Do you have bread? | 17 | 18 | 1 | 1 / 1 | 6 | 0 | 1 | yes | no |  |
+| `phrase.super.just-this` | Just this, thanks. | 17 | 18 | 1 | 3 / 1 | 7 | 1 | 1 | yes | no |  |
+| `phrase.super.need-bag` | Could I get a bag? | 17 | 18 | 1 | 2 / 1 | 5 | 0 | 1 | yes | no |  |
 | `phrase.trans.one-ticket` | One ticket to the centre, please. | 19 | 24, 28 | 1 | 5 / 0 | 0 | 0 | 1 | yes | no |  |
 | `phrase.trans.which-platform` | Which platform? | 19 | — | 1 | 1 / 0 | 0 | 1 | 1 | no | no |  |
 | `phrase.trans.does-stop` | Does this stop at the museum? | 19 | 24, 28 | 1 | 4 / 0 | 0 | 0 | 1 | yes | no |  |
@@ -21350,7 +22707,7 @@ Every learner-production sentence id of the Core, in order of first appearance. 
 | `phrase.rest.bill-please` | Could we have the bill, please? | 29 | — | 0 | 1 / 0 | 0 | 0 | 0 | no | no |  |
 | `phrase.pay.by-card` | I'll pay by card. | 29 | — | 0 | 1 / 0 | 0 | 0 | 0 | no | no |  |
 
-Learner-production sentence ids: 167. With 0 active retrieval opportunities: 12.
+Learner-production sentence ids: 166. With 0 active retrieval opportunities: 9.
 
 # NPC Comprehension Coverage
 
@@ -21375,10 +22732,10 @@ Every expected-reply sentence id. "Quick response" does not exist as an exercise
 | `reply.coffee.hot-or-iced` | Hot or iced? | 03 | — | no | 0 / 0 | 0 / 0 | no | **no** |
 | `reply.coffee.here-or-to-go` | For here or to go? | 03 | — | yes (1) | 0 / 0 | 0 / 0 | no | **no** |
 | `reply.coffee.medium-or-large` | Medium or large? | 03 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
-| `reply.coffee.milk-sugar` | Milk and sugar? | 03 | 18 | yes (1) | 0 / 0 | 1 / 0 | yes | yes |
+| `reply.coffee.milk-sugar` | Milk and sugar? | 03 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
 | `reply.coffee.anything-to-eat` | Anything to eat? | 03 | — | no | 0 / 0 | 0 / 0 | no | yes |
 | `reply.coffee.anything-else` | Would you like anything else? | 03 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
-| `reply.coffee.cash-or-card` | Cash or card? | 03 | 18 | no | 0 / 0 | 0 / 1 | yes | yes |
+| `reply.coffee.cash-or-card` | Cash or card? | 03 | — | no | 0 / 0 | 0 / 0 | no | yes |
 | `reply.coffee.receipt` | Would you like the receipt? | 03 | — | no | 0 / 0 | 0 / 0 | no | yes |
 | `reply.coffee.enjoy` | Enjoy your day! | 03 | — | no | 0 / 0 | 0 / 0 | no | yes |
 | `reply.core.do-you-want` | Do you want a coffee? | 04 | — | no | 0 / 0 | 0 / 0 | no | yes |
@@ -21421,47 +22778,43 @@ Every expected-reply sentence id. "Quick response" does not exist as an exercise
 | `reply.talk.where-from` | Where are you from? | 11 | — | yes (1) | 0 / 1 | 0 / 0 | no | yes |
 | `reply.talk.do-you-like-it` | Do you like it here? | 11 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
 | `reply.talk.you-should-try` | You should try the old town. | 11 | — | yes (1) | 0 / 0 | 0 / 0 | no | **no** |
-| `reply.talk.how-long-here` | How long are you here for? | 11 | — | no | 1 / 0 | 1 / 0 | no | **no** |
+| `reply.talk.how-long-here` | How long are you here for? | 11 | — | no | 1 / 0 | 0 / 0 | no | **no** |
 | `reply.talk.enjoy-rest` | Enjoy the rest of your trip! | 11 | — | no | 0 / 1 | 0 / 0 | no | yes |
-| `reply.talk.me-too` | Me too! | 11 | — | no | 0 / 0 | 0 / 1 | no | yes |
+| `reply.talk.me-too` | Me too! | 11 | — | no | 0 / 0 | 0 / 0 | no | yes |
 | `reply.time.what-doing-today` | What are you doing today? | 12 | — | no | 0 / 0 | 0 / 0 | no | yes |
-| `reply.time.what-doing-tonight` | What are you doing tonight? | 12 | — | no | 0 / 1 | 0 / 0 | no | yes |
+| `reply.time.what-doing-tonight` | What are you doing tonight? | 12 | — | no | 0 / 0 | 0 / 0 | no | yes |
 | `reply.time.want-to-come` | Do you want to come? | 12 | — | no | 0 / 0 | 0 / 0 | no | yes |
-| `reply.time.at-eight` | At eight. | 12 | — | yes (1) | 0 / 0 | 0 / 1 | no | yes |
-| `reply.time.too-late` | Is that too late for you? | 12 | — | yes (1) | 0 / 1 | 0 / 0 | no | yes |
-| `reply.time.free-tomorrow-q` | Are you free tomorrow? | 12 | — | yes (1) | 1 / 0 | 1 / 0 | no | yes |
+| `reply.time.at-eight` | At eight. | 12 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
+| `reply.time.too-late` | Is that too late for you? | 12 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
+| `reply.time.free-tomorrow-q` | Are you free tomorrow? | 12 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
 | `reply.time.leave-early` | We leave early. | 12 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
 | `reply.home.come-in` | Come in. | 13 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
-| `reply.home.sit-living-room` | Let's sit in the living room. | 13 | — | yes (1) | 0 / 1 | 1 / 0 | no | yes |
+| `reply.home.sit-living-room` | Let's sit in the living room. | 13 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
 | `reply.home.live-with-family-q` | Do you live with your family? | 13 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
-| `reply.home.are-you-hungry` | Are you hungry? | 13 | — | yes (1) | 1 / 0 | 0 / 1 | no | yes |
-| `reply.home.eat-with-us` | Do you want to eat with us? | 13 | — | no | 0 / 1 | 0 / 0 | no | yes |
-| `reply.rest.reservation` | Do you have a reservation? | 14 | 18 | no | 1 / 0 | 0 / 2 | yes | yes |
+| `reply.home.are-you-hungry` | Are you hungry? | 13 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
+| `reply.home.eat-with-us` | Do you want to eat with us? | 13 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.rest.reservation` | Do you have a reservation? | 14 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
 | `reply.rest.follow-me` | Follow me, please. | 14 | — | no | 0 / 0 | 0 / 0 | no | **no** |
-| `reply.rest.ready-to-order` | Are you ready to order? | 14 | 28 | yes (1) | 0 / 1 | 0 / 1 | no | yes |
-| `reply.rest.to-drink` | Anything to drink? | 14 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
-| `reply.rest.how-was-it` | How was everything? | 14 | — | yes (1) | 0 / 0 | 0 / 0 | no | **no** |
-| `reply.rest.dessert` | Would you like dessert? | 14 | 18 | yes (1) | 0 / 1 | 2 / 0 | yes | **no** |
-| `reply.rest.anything-else` | Anything else? | 14 | — | no | 0 / 0 | 0 / 0 | no | yes |
-| `reply.rest.everything-okay` | Is everything okay? | 14 | 28 | no | 0 / 0 | 1 / 0 | no | yes |
-| `reply.diet.let-me-check` | Let me check with the kitchen. | 15 | — | yes (1) | 1 / 0 | 0 / 0 | no | **no** |
-| `reply.diet.make-without` | We can make it without. | 15 | — | yes (1) | 0 / 1 | 0 / 0 | no | yes |
-| `reply.diet.contains-nuts` | That one contains nuts. | 15 | — | yes (1) | 1 / 1 | 0 / 0 | no | **no** |
-| `reply.diet.not-spicy` | No, it's not spicy. | 15 | — | no | 0 / 1 | 0 / 0 | no | **no** |
-| `reply.diet.good-option` | This one is a good option for you. | 15 | — | yes (1) | 0 / 1 | 0 / 0 | no | **no** |
-| `reply.diet.anything-else-allergic` | Any other allergies? | 15 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.rest.ready-to-order` | Are you ready to order? | 14 | 18, 28 | yes (1) | 0 / 0 | 1 / 1 | yes | yes |
+| `reply.rest.to-drink` | Anything to drink? | 14 | 18 | yes (1) | 0 / 0 | 0 / 1 | yes | yes |
+| `reply.rest.anything-else` | Anything else? | 14 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
+| `reply.rest.everything-okay` | Is everything okay? | 14 | 28 | yes (1) | 0 / 0 | 1 / 0 | no | yes |
+| `reply.diet.let-me-check` | Let me check with the kitchen. | 15 | — | yes (1) | 0 / 0 | 0 / 0 | no | **no** |
+| `reply.diet.make-without` | We can make it without. | 15 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
+| `reply.diet.contains-nuts` | That one contains nuts. | 15 | — | yes (1) | 0 / 0 | 0 / 0 | no | **no** |
+| `reply.diet.not-spicy` | No, it's not spicy. | 15 | — | no | 0 / 0 | 0 / 0 | no | **no** |
+| `reply.diet.anything-else-allergic` | Any other allergies? | 15 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
 | `reply.hobby.do-you-like-surfing` | Do you like surfing? | 16 | — | no | 0 / 0 | 0 / 0 | no | yes |
 | `reply.hobby.what-else` | What else do you like? | 16 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
-| `reply.hobby.do-you-like-music` | Do you like music? | 16 | — | yes (1) | 0 / 1 | 1 / 0 | no | yes |
-| `reply.hobby.me-neither` | Me neither! | 16 | — | yes (1) | 0 / 1 | 0 / 0 | no | yes |
-| `reply.hobby.want-to-try-q` | Is there something you want to try? | 16 | — | no | 1 / 0 | 0 / 0 | no | yes |
-| `reply.hobby.go-together` | Let's go together. | 16 | — | yes (1) | 0 / 0 | 0 / 1 | no | yes |
-| `reply.super.aisle-three` | It's in aisle three. | 17 | — | yes (1) | 1 / 0 | 0 / 0 | no | **no** |
-| `reply.super.over-there` | Over there, on the left. | 17 | — | yes (1) | 0 / 1 | 0 / 0 | no | **no** |
-| `reply.super.weigh-it` | You need to weigh it first. | 17 | — | yes (1) | 1 / 0 | 0 / 0 | no | **no** |
-| `reply.super.bag-q` | Do you need a bag? | 17 | — | yes (1) | 0 / 1 | 0 / 0 | no | yes |
-| `reply.super.card-here` | Insert your card here. | 17 | — | no | 0 / 1 | 0 / 0 | no | yes |
-| `reply.super.sold-out` | Sorry, we're sold out. | 17 | — | no | 0 / 1 | 0 / 0 | no | **no** |
+| `reply.hobby.do-you-like-music` | Do you like music? | 16 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
+| `reply.hobby.me-neither` | Me neither! | 16 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
+| `reply.hobby.want-to-try-q` | Is there something you want to try? | 16 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.hobby.go-together` | Let's go together. | 16 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
+| `reply.super.aisle-three` | It's in aisle three. | 17 | — | yes (1) | 0 / 0 | 0 / 0 | no | **no** |
+| `reply.super.over-there` | Over there, on the left. | 17 | — | yes (1) | 0 / 0 | 0 / 0 | no | **no** |
+| `reply.super.bag-q` | Do you need a bag? | 17 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
+| `reply.super.card-here` | Insert your card here. | 17 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
+| `reply.super.sold-out` | Sorry, we're sold out. | 17 | — | no | 0 / 0 | 0 / 0 | no | **no** |
 | `reply.trans.single-return` | Single or return? | 19 | 28 | yes (1) | 1 / 0 | 0 / 1 | no | yes |
 | `reply.trans.platform-two` | Platform two. | 19 | — | yes (1) | 0 / 1 | 0 / 0 | no | yes |
 | `reply.trans.every-ten` | Every ten minutes. | 19 | — | yes (1) | 1 / 0 | 0 / 0 | no | yes |
@@ -21536,16 +22889,16 @@ Happy-path NPC lines containing a question, for which the mission has no expecte
 | 16 | free-time-chat / n11 | And sport? Do you like running? |
 | 17 | supermarket / n1 | Hi there! Can I help you find something? |
 | 17 | supermarket / n3 | …At the checkout… Hi! Is that everything? |
-| 18 | cold-morning / n1 | Morning! What can I get you? |
+| 18 | cold-morning / n1 | Good morning! What can I get you? |
 | 18 | cold-morning / n3 | Sure. Anything to eat? |
-| 18 | cold-plans / n1 | Hey! Are you free tomorrow? |
-| 18 | cold-plans / n3 | We're going surfing. Do you like surfing? |
-| 18 | cold-plans / n5 | Great! What time is good for you? |
-| 18 | cold-plans / n7 | Perfect. And now? Are you coming to the beach? |
-| 18 | cold-shop / n1 | Hi there! Can I help you find anything? |
-| 18 | cold-dinner / n1 | Good evening! How many people? |
-| 18 | cold-dinner / n3 | Right this way. Are you ready to order? |
-| 18 | cold-dinner / n5 | Excellent. Anything to drink? |
+| 18 | cold-morning / n5 | No problem. Cash or card? |
+| 18 | cold-plans / n1 | Hi! Are you free tomorrow? |
+| 18 | cold-plans / n3 | I surf a lot. Do you like surfing? |
+| 18 | cold-plans / n7 | Perfect. And what are you doing tonight? |
+| 18 | cold-shop / n1 | Hi there! Can I help you find something? |
+| 18 | cold-shop / n5 | …At the checkout… Hi! Is that everything? |
+| 18 | cold-shop / n7 | Do you need a bag? |
+| 18 | cold-dinner / n1 | Good evening! Do you have a reservation? |
 | 18 | cold-dinner / n7 | …Later… Is everything okay? |
 | 19 | transport / n1 | Hello! Where are you headed? |
 | 20 | what-did-you-do / n13 | Me? Nothing! I was tired. I slept all day. |
@@ -23367,21 +24720,82 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Correct: How long are you here for?
 - Tests: reply.talk.how-long-here
 
-**M11-Q06** — dialogue-choice
+**M11-Q06** — quick-reply
+- Prompt: "A chat with a local — what do you say?" / "שיחה עם מקומי — מה אומרים?"
+- Audio: Where are you from? — (מאיפה אתה?)
+- A: I'm from Israel. How about you? ✅
+- B: It's my first time here.
+- C: I like it a lot.
+- Correct: I'm from Israel. How about you?
+- Tests: phrase.talk.how-about-you
+
+**M11-Q07** — quick-reply
+- Prompt: "A chat with a local — what do you say?" / "שיחה עם מקומי — מה אומרים?"
+- Audio: Is this your first time here? — (זו הפעם הראשונה שלך כאן?)
+- A: Yes, it's my first time here. ✅
+- B: I'm from Israel.
+- C: It was nice talking to you.
+- Correct: Yes, it's my first time here.
+- Tests: phrase.social.first-time
+
+**M11-Q08** — quick-reply
+- Prompt: "A chat with a local — what do you say?" / "שיחה עם מקומי — מה אומרים?"
+- Audio: Do you like it here? — (אתה אוהב את המקום?)
+- A: Yes, I like it a lot. ✅
+- B: I love the food here. ✅
+- C: Can you recommend a place?
+- Correct: Yes, I like it a lot. | I love the food here.
+- Tests: phrase.talk.i-like-it, phrase.talk.love-food
+
+**M11-Q09** — quick-reply
+- Prompt: "A chat with a local — what do you say?" / "שיחה עם מקומי — מה אומרים?" — situation shown: "You said you like it here. Now it is your turn to ask back." / "אמרת שאתה אוהב את המקום. עכשיו תורך לשאול בחזרה."
+- Audio: (nothing is played — a situation is shown) — ()
+- A: How about you? ✅
+- B: It was nice talking to you.
+- C: This place is beautiful.
+- Correct: How about you?
+- Tests: phrase.talk.how-about-you
+
+**M11-Q10** — quick-reply
+- Prompt: "A chat with a local — what do you say?" / "שיחה עם מקומי — מה אומרים?"
+- Audio: Me too. And the food here is wonderful. — (גם אני. והאוכל כאן נהדר.)
+- A: Can you recommend a place? ✅
+- B: What do you recommend? ✅
+- C: It was nice talking to you.
+- Correct: Can you recommend a place? | What do you recommend?
+- Tests: phrase.talk.recommend-place, phrase.rest.recommend
+
+**M11-Q11** — quick-reply
+- Prompt: "A chat with a local — what do you say?" / "שיחה עם מקומי — מה אומרים?"
+- Audio: You should try the old town. — (כדאי לך לנסות את העיר העתיקה.)
+- A: Thank you! It was nice talking to you. ✅
+- B: This place is beautiful.
+- C: It's my first time here.
+- Correct: Thank you! It was nice talking to you.
+- Tests: phrase.talk.nice-talking
+
+**M11-Q12** — sentence-builder
+- Prompt: "Build the sentence" / "בנה את המשפט" — cue shown: the sentence's MEANING in the app language ("אתה יכול להמליץ על מקום?")
+- Audio: (nothing before Check; the built sentence is spoken once it is right) — ()
+- A: Can you  |  recommend  |  a place? ✅
+- Correct: Can you  |  recommend  |  a place?
+- Tests: phrase.talk.recommend-place
+
+**M11-Q13** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Hi! Beautiful view, isn't it? — (היי! נוף יפה, נכון?)
 - A: This place is beautiful. ✅
 - Correct: This place is beautiful.
 - Tests: phrase.talk.beautiful-place
 
-**M11-Q07** — dialogue-choice
+**M11-Q14** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: It really is. Where are you from? — (באמת. מאיפה אתה?)
 - A: I'm from Israel. How about you? ✅
 - Correct: I'm from Israel. How about you?
 - Tests: phrase.talk.how-about-you
 
-**M11-Q08** — dialogue-choice
+**M11-Q15** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: I'm from here! Is this your first time here? — (אני מכאן! זו הפעם הראשונה שלך כאן?)
 - A: Yes, it's my first time here. ✅
@@ -23389,14 +24803,14 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Correct: Yes, it's my first time here. | Can you repeat that?
 - Tests: phrase.social.first-time, phrase.recovery.repeat
 
-**M11-Q09** — dialogue-choice
+**M11-Q16** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Your first time — here? — (הפעם הראשונה שלך — כאן?)
 - A: Yes, it's my first time here. ✅
 - Correct: Yes, it's my first time here.
 - Tests: phrase.social.first-time
 
-**M11-Q10** — dialogue-choice
+**M11-Q17** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Welcome! Do you like it here? — (ברוך הבא! אתה אוהב את המקום?)
 - A: Yes, I like it a lot. ✅
@@ -23404,7 +24818,7 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Correct: Yes, I like it a lot. | I love the food here.
 - Tests: phrase.talk.i-like-it, phrase.talk.love-food
 
-**M11-Q11** — dialogue-choice
+**M11-Q18** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Me too. And the food here is wonderful. — (גם אני. והאוכל כאן נהדר.)
 - A: Can you recommend a place? ✅
@@ -23412,20 +24826,66 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Correct: Can you recommend a place? | What do you recommend?
 - Tests: phrase.talk.recommend-place, phrase.rest.recommend
 
-**M11-Q12** — dialogue-choice
+**M11-Q19** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Of course — try 'Mama Rosa', in the old town. It's very good. — (בטח — תנסה את 'מאמא רוזה', בעיר העתיקה. מאוד טוב שם.)
 - A: Thank you! It was nice talking to you. ✅
 - Correct: Thank you! It was nice talking to you.
 - Tests: phrase.talk.nice-talking
 
-**M11-Q13** — cold-open
-- Prompt: "Heads up: a fast one is coming. Use a tool." / "שים לב: מגיע משפט מהיר. השתמש בכלי."
-- Audio: Oh nice so how long are you here for just a few days or longer? — (אה, יפה! ולכמה זמן אתה כאן — כמה ימים או יותר?)
-- A: How long are you here for? ✅
-- B: Me too!
-- Correct: How long are you here for?
-- Tests: reply.talk.how-long-here
+**M11-Q20** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Hi! Beautiful view, isn't it? — (היי! נוף יפה, נכון?)
+- A: This place is beautiful. ✅
+- B: It was nice talking to you.
+- C: I'm from Israel.
+- Correct: This place is beautiful.
+- Tests: phrase.talk.beautiful-place
+
+**M11-Q21** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: It really is. Where are you from? — (באמת. מאיפה אתה?)
+- A: I'm from Israel. How about you? ✅
+- B: Can you recommend a place?
+- C: I like it a lot.
+- Correct: I'm from Israel. How about you?
+- Tests: phrase.talk.how-about-you
+
+**M11-Q22** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: I'm from here! Is this your first time here? — (אני מכאן! זו הפעם הראשונה שלך כאן?)
+- A: Yes, it's my first time here. ✅
+- B: This place is beautiful.
+- C: It was nice talking to you.
+- Correct: Yes, it's my first time here.
+- Tests: phrase.social.first-time
+
+**M11-Q23** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Welcome! Do you like it here? — (ברוך הבא! אתה אוהב את המקום?)
+- A: Yes, I like it a lot. ✅
+- B: I'm from Israel.
+- C: It was nice talking to you.
+- Correct: Yes, I like it a lot.
+- Tests: phrase.talk.i-like-it
+
+**M11-Q24** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Me too. And the food here is wonderful. — (גם אני. והאוכל כאן נהדר.)
+- A: Can you recommend a place? ✅
+- B: It's my first time here.
+- C: This place is beautiful.
+- Correct: Can you recommend a place?
+- Tests: phrase.talk.recommend-place
+
+**M11-Q25** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Of course — try 'Mama Rosa', in the old town. It's very good. — (בטח — תנסה את 'מאמא רוזה', בעיר העתיקה. מאוד טוב שם.)
+- A: Thank you! It was nice talking to you. ✅
+- B: How about you?
+- C: I like it a lot.
+- Correct: Thank you! It was nice talking to you.
+- Tests: phrase.talk.nice-talking
 
 ## Mission 12 — Time & Plans
 
@@ -23465,30 +24925,148 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Correct: Are you free tomorrow?
 - Tests: reply.time.free-tomorrow-q
 
-**M12-Q05** — meaning-quiz
-- Prompt: "What did it mean?" / "מה זה אומר?"
-- Audio: Are you free tomorrow? — (אתה פנוי מחר?)
-- A: אתה פנוי מחר? / Are you free tomorrow? ✅
-- B: מה אתה עושה הערב? / What are you doing tonight?
-- C: זה מאוחר מדי בשבילך? / Is that too late for you?
-- Correct: Are you free tomorrow?
-- Tests: reply.time.free-tomorrow-q
+**M12-Q05** — visual-match
+- Prompt: "What time? Tap the time you hear" / "באיזו שעה? הקש על השעה ששמעת"
+- Audio: At eight. — (בשמונה.)
+- A: 2:00
+- B: 5:00
+- C: 7:00
+- D: 8:00 ✅
+- E: 10:00
+- F: 3:00
+- Correct: 8:00
+- Tests: reply.time.at-eight
 
-**M12-Q06** — dialogue-choice
+**M12-Q06** — visual-match
+- Prompt: "What time? Tap the time you hear" / "באיזו שעה? הקש על השעה ששמעת"
+- Audio: Let's meet here at seven. — (ניפגש כאן בשבע.)
+- A: 2:00
+- B: 5:00
+- C: 7:00 ✅
+- D: 8:00
+- E: 10:00
+- F: 3:00
+- Correct: 7:00
+- Tests: (no sentence id — not recorded)
+
+**M12-Q07** — visual-match
+- Prompt: "What time? Tap the time you hear" / "באיזו שעה? הקש על השעה ששמעת"
+- Audio: At ten. — (בעשר.)
+- A: 2:00
+- B: 5:00
+- C: 7:00
+- D: 8:00
+- E: 10:00 ✅
+- F: 3:00
+- Correct: 10:00
+- Tests: (no sentence id — not recorded)
+
+**M12-Q08** — visual-match
+- Prompt: "What time? Tap the time you hear" / "באיזו שעה? הקש על השעה ששמעת"
+- Audio: At five. — (בחמש.)
+- A: 2:00
+- B: 5:00 ✅
+- C: 7:00
+- D: 8:00
+- E: 10:00
+- F: 3:00
+- Correct: 5:00
+- Tests: (no sentence id — not recorded)
+
+**M12-Q09** — quick-reply
+- Prompt: "A friend is making plans — what do you say?" / "חבר קובע איתך — מה עונים?"
+- Audio: What are you doing today? — (מה אתה עושה היום?)
+- A: Nothing this morning. Maybe later. ✅
+- B: No, that's not too late.
+- C: Let's meet here at seven.
+- Correct: Nothing this morning. Maybe later.
+- Tests: phrase.time.maybe-later
+
+**M12-Q10** — quick-reply
+- Prompt: "A friend is making plans — what do you say?" / "חבר קובע איתך — מה עונים?"
+- Audio: What are you doing tonight? — (מה אתה עושה הערב?)
+- A: I'm free tonight. ✅
+- B: Yes, I'm free tomorrow.
+- C: What time?
+- Correct: I'm free tonight.
+- Tests: phrase.time.free-tonight
+
+**M12-Q11** — quick-reply
+- Prompt: "A friend is making plans — what do you say?" / "חבר קובע איתך — מה עונים?"
+- Audio: Do you want to come? — (רוצה לבוא?)
+- A: Yes! What time? ✅
+- B: No, that's not too late.
+- C: Yes, I'm free tomorrow.
+- Correct: Yes! What time?
+- Tests: phrase.time.what-time
+
+**M12-Q12** — quick-reply
+- Prompt: "A friend is making plans — what do you say?" / "חבר קובע איתך — מה עונים?"
+- Audio: Is that too late for you? — (זה מאוחר מדי בשבילך?)
+- A: No, that's not too late. ✅
+- B: Let's meet here at seven.
+- C: What are you doing tomorrow?
+- Correct: No, that's not too late.
+- Tests: phrase.time.not-too-late
+
+**M12-Q13** — quick-reply
+- Prompt: "A friend is making plans — what do you say?" / "חבר קובע איתך — מה עונים?"
+- Audio: Are you free tomorrow? — (אתה פנוי מחר?)
+- A: Yes, I'm free tomorrow. ✅
+- B: I'm free tonight.
+- C: What time?
+- Correct: Yes, I'm free tomorrow.
+- Tests: phrase.time.free-tomorrow
+
+**M12-Q14** — swap-it
+- Prompt: "Which day are you asking about?" / "על מתי שואלים?" — cue 🗓️ "You want to know their plans for today" / "אתה רוצה לדעת מה הוא עושה היום" — frame EN "What are you doing ___?" · FR "Tu fais quoi ___ ?" · ES "¿Qué haces ___?"
+- Audio: (nothing before the tap; the completed sentence is spoken after it) — ()
+- A: today → What are you doing today? ✅
+- B: tonight → What are you doing tonight?
+- C: tomorrow → What are you doing tomorrow?
+- Correct: today → What are you doing today?
+- Tests: phrase.time.what-doing-tomorrow
+
+**M12-Q15** — swap-it
+- Prompt: "Which day are you asking about?" / "על מתי שואלים?" — cue 🗓️ "You want to know their plans for tonight" / "אתה רוצה לדעת מה הוא עושה הערב" — frame EN "What are you doing ___?" · FR "Tu fais quoi ___ ?" · ES "¿Qué haces ___?"
+- Audio: (nothing before the tap; the completed sentence is spoken after it) — ()
+- A: today → What are you doing today?
+- B: tonight → What are you doing tonight? ✅
+- C: tomorrow → What are you doing tomorrow?
+- Correct: tonight → What are you doing tonight?
+- Tests: phrase.time.what-doing-tomorrow
+
+**M12-Q16** — swap-it
+- Prompt: "Which day are you asking about?" / "על מתי שואלים?" — cue 🗓️ "You want to know their plans for tomorrow" / "אתה רוצה לדעת מה הוא עושה מחר" — frame EN "What are you doing ___?" · FR "Tu fais quoi ___ ?" · ES "¿Qué haces ___?"
+- Audio: (nothing before the tap; the completed sentence is spoken after it) — ()
+- A: today → What are you doing today?
+- B: tonight → What are you doing tonight?
+- C: tomorrow → What are you doing tomorrow? ✅
+- Correct: tomorrow → What are you doing tomorrow?
+- Tests: phrase.time.what-doing-tomorrow
+
+**M12-Q17** — sentence-builder
+- Prompt: "Build the sentence" / "בנה את המשפט" — cue shown: the sentence's MEANING in the app language ("ניפגש כאן בשבע.")
+- Audio: (nothing before Check; the built sentence is spoken once it is right) — ()
+- A: Let's meet  |  here  |  at seven. ✅
+- Correct: Let's meet  |  here  |  at seven.
+- Tests: phrase.time.lets-meet
+
+**M12-Q18** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Good morning! What are you doing today? — (בוקר טוב! מה אתה עושה היום?)
 - A: Nothing this morning. Maybe later. ✅
 - Correct: Nothing this morning. Maybe later.
 - Tests: phrase.time.maybe-later
 
-**M12-Q07** — dialogue-choice
+**M12-Q19** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: And what are you doing tonight? — (ומה אתה עושה הערב?)
 - A: I'm free tonight. ✅
 - Correct: I'm free tonight.
 - Tests: phrase.time.free-tonight
 
-**M12-Q08** — dialogue-choice
+**M12-Q20** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: We're going to eat in the centre. Do you want to come? — (אנחנו הולכים לאכול במרכז. רוצה לבוא?)
 - A: Yes! What time? ✅
@@ -23496,7 +25074,7 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Correct: Yes! What time? | When?
 - Tests: phrase.time.what-time, phrase.time.when
 
-**M12-Q09** — dialogue-choice
+**M12-Q21** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: At eight. Is that too late for you? — (בשמונה. זה מאוחר מדי בשבילך?)
 - A: No, that's not too late. ✅
@@ -23504,41 +25082,69 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Correct: No, that's not too late. | Can you repeat that?
 - Tests: phrase.time.not-too-late, phrase.recovery.repeat
 
-**M12-Q10** — dialogue-choice
+**M12-Q22** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: At eight. Too late? — (בשמונה. מאוחר מדי?)
 - A: No, that's not too late. ✅
 - Correct: No, that's not too late.
 - Tests: phrase.time.not-too-late
 
-**M12-Q11** — dialogue-choice
+**M12-Q23** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Great. It's very good there. — (מעולה. מאוד טוב שם.)
 - A: What are you doing tomorrow? ✅
 - Correct: What are you doing tomorrow?
 - Tests: phrase.time.what-doing-tomorrow
 
-**M12-Q12** — dialogue-choice
+**M12-Q24** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Tomorrow morning I'm going to the beach. Are you free tomorrow? — (מחר בבוקר אני הולך לים. אתה פנוי מחר?)
 - A: Yes, I'm free tomorrow. ✅
 - Correct: Yes, I'm free tomorrow.
 - Tests: phrase.time.free-tomorrow
 
-**M12-Q13** — dialogue-choice
+**M12-Q25** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Then come with us! But we leave early. — (אז בוא איתנו! אבל אנחנו יוצאים מוקדם.)
 - A: No problem. Let's meet here at seven. ✅
 - Correct: No problem. Let's meet here at seven.
 - Tests: phrase.time.lets-meet
 
-**M12-Q14** — cold-open
-- Prompt: "Heads up: a fast one is coming. Use a tool." / "שים לב: מגיע משפט מהיר. השתמש בכלי."
-- Audio: Hey quick question are you free tomorrow or do you already have plans? — (היי, שאלה קצרה — אתה פנוי מחר או שכבר יש לך תוכניות?)
-- A: Are you free tomorrow? ✅
-- B: At eight.
-- Correct: Are you free tomorrow?
-- Tests: reply.time.free-tomorrow-q
+**M12-Q26** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: And what are you doing tonight? — (ומה אתה עושה הערב?)
+- A: I'm free tonight. ✅
+- B: No, that's not too late.
+- C: Let's meet here at seven.
+- Correct: I'm free tonight.
+- Tests: phrase.time.free-tonight
+
+**M12-Q27** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: At eight. Is that too late for you? — (בשמונה. זה מאוחר מדי בשבילך?)
+- A: No, that's not too late. ✅
+- B: Maybe later.
+- C: What are you doing tomorrow?
+- Correct: No, that's not too late.
+- Tests: phrase.time.not-too-late
+
+**M12-Q28** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Tomorrow morning I'm going to the beach. Are you free tomorrow? — (מחר בבוקר אני הולך לים. אתה פנוי מחר?)
+- A: Yes, I'm free tomorrow. ✅
+- B: I'm free tonight.
+- C: What time?
+- Correct: Yes, I'm free tomorrow.
+- Tests: phrase.time.free-tomorrow
+
+**M12-Q29** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Then come with us! But we leave early. — (אז בוא איתנו! אבל אנחנו יוצאים מוקדם.)
+- A: No problem. Let's meet here at seven. ✅
+- B: I'm free tonight.
+- C: Maybe later.
+- Correct: No problem. Let's meet here at seven.
+- Tests: phrase.time.lets-meet
 
 ## Mission 13 — Home, Family & Daily Routine
 
@@ -23578,37 +25184,114 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Correct: Do you live with your family?
 - Tests: reply.home.live-with-family-q
 
-**M13-Q05** — meaning-quiz
-- Prompt: "What did it mean?" / "מה זה אומר?"
-- Audio: Are you hungry? — (אתה רעב?)
-- A: אתה רעב? / Are you hungry? ✅
-- B: בוא נשב בסלון. / Let's sit in the living room.
-- C: רוצה לאכול איתנו? / Do you want to eat with us?
-- Correct: Are you hungry?
-- Tests: reply.home.are-you-hungry
+**M13-Q05** — swap-it
+- Prompt: "Where are you off to?" / "לאן אתה הולך?" — cue 🏠 "You are heading home" / "אתה הולך הביתה" — frame EN "I'm going ___." · FR "Je ___." · ES "___."
+- Audio: (nothing before the tap; the completed sentence is spoken after it) — ()
+- A: home → I'm going home. ✅
+- B: to sleep → I'm going to sleep.
+- C: to eat at my grandmother's → I'm going to eat at my grandmother's.
+- Correct: home → I'm going home.
+- Tests: phrase.home.going-home
 
-**M13-Q06** — dialogue-choice
+**M13-Q06** — swap-it
+- Prompt: "Where are you off to?" / "לאן אתה הולך?" — cue 😴 "You are off to bed" / "אתה הולך לישון" — frame EN "I'm going ___." · FR "Je ___." · ES "___."
+- Audio: (nothing before the tap; the completed sentence is spoken after it) — ()
+- A: home → I'm going home.
+- B: to sleep → I'm going to sleep. ✅
+- C: to eat at my grandmother's → I'm going to eat at my grandmother's.
+- Correct: to sleep → I'm going to sleep.
+- Tests: phrase.home.going-to-sleep
+
+**M13-Q07** — swap-it
+- Prompt: "Where are you off to?" / "לאן אתה הולך?" — cue 🍽️ "You are going to eat at your grandmother's" / "אתה הולך לאכול אצל סבתא" — frame EN "I'm going ___." · FR "Je ___." · ES "___."
+- Audio: (nothing before the tap; the completed sentence is spoken after it) — ()
+- A: home → I'm going home.
+- B: to sleep → I'm going to sleep.
+- C: to eat at my grandmother's → I'm going to eat at my grandmother's. ✅
+- Correct: to eat at my grandmother's → I'm going to eat at my grandmother's.
+- Tests: phrase.home.eat-at-grandmothers
+
+**M13-Q08** — sentence-builder
+- Prompt: "Build the sentence" / "בנה את המשפט" — cue shown: the sentence's MEANING in the app language ("אני הולך לאכול אצל סבתא שלי.")
+- Audio: (nothing before Check; the built sentence is spoken once it is right) — ()
+- A: I'm going  |  to eat  |  at my  |  grandmother's. ✅
+- Correct: I'm going  |  to eat  |  at my  |  grandmother's.
+- Tests: phrase.home.eat-at-grandmothers
+
+**M13-Q09** — sentence-builder
+- Prompt: "Build the sentence" / "בנה את המשפט" — cue shown: the sentence's MEANING in the app language ("כן, אני גר עם המשפחה שלי.")
+- Audio: (nothing before Check; the built sentence is spoken once it is right) — ()
+- A: Yes,  |  I live  |  with  |  my family. ✅
+- Correct: Yes,  |  I live  |  with  |  my family.
+- Tests: phrase.home.live-with-family
+
+**M13-Q10** — quick-reply
+- Prompt: "At a friend's home — what do you say?" / "אצל חבר בבית — מה אומרים?"
+- Audio: Come in. — (תיכנס.)
+- A: Thanks. Your home is beautiful. ✅
+- B: I'm going home.
+- C: I'm tired.
+- Correct: Thanks. Your home is beautiful.
+- Tests: phrase.home.beautiful-home
+
+**M13-Q11** — quick-reply
+- Prompt: "At a friend's home — what do you say?" / "אצל חבר בבית — מה אומרים?" — situation shown: "You want to know where your friend's family is." / "אתה רוצה לדעת איפה המשפחה של החבר."
+- Audio: (nothing is played — a situation is shown) — ()
+- A: Where is your family? ✅
+- B: Is this sofa new?
+- C: Yes, I live with my family.
+- Correct: Where is your family?
+- Tests: phrase.home.where-family
+
+**M13-Q12** — quick-reply
+- Prompt: "At a friend's home — what do you say?" / "אצל חבר בבית — מה אומרים?"
+- Audio: Do you live with your family? — (אתה גר עם המשפחה שלך?)
+- A: Yes, I live with my family. ✅
+- B: Where is your family?
+- C: I'm going to sleep.
+- Correct: Yes, I live with my family.
+- Tests: phrase.home.live-with-family
+
+**M13-Q13** — quick-reply
+- Prompt: "At a friend's home — what do you say?" / "אצל חבר בבית — מה אומרים?"
+- Audio: Do you want to eat with us? — (רוצה לאכול איתנו?)
+- A: Thanks, but I'm going to eat at my grandmother's. ✅
+- B: Is this sofa new?
+- C: Your home is beautiful.
+- Correct: Thanks, but I'm going to eat at my grandmother's.
+- Tests: phrase.home.eat-at-grandmothers
+
+**M13-Q14** — quick-reply
+- Prompt: "At a friend's home — what do you say?" / "אצל חבר בבית — מה אומרים?"
+- Audio: Lovely! You look tired. Are you okay? — (איזה יופי! אתה נראה עייף. הכל בסדר?)
+- A: Yes, I'm just tired. ✅
+- B: Yes, I live with my family.
+- C: Is this sofa new?
+- Correct: Yes, I'm just tired.
+- Tests: phrase.home.im-tired
+
+**M13-Q15** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Hi! Come in. — (היי! תיכנס.)
 - A: Thanks. Your home is beautiful. ✅
 - Correct: Thanks. Your home is beautiful.
 - Tests: phrase.home.beautiful-home
 
-**M13-Q07** — dialogue-choice
+**M13-Q16** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Thank you. Let's sit in the living room. — (תודה. בוא נשב בסלון.)
 - A: Is this sofa new? ✅
 - Correct: Is this sofa new?
 - Tests: phrase.home.is-this-new
 
-**M13-Q08** — dialogue-choice
+**M13-Q17** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Yes, it's new. — (כן, היא חדשה.)
 - A: Where is your family? ✅
 - Correct: Where is your family?
 - Tests: phrase.home.where-family
 
-**M13-Q09** — dialogue-choice
+**M13-Q18** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: My mother is in the kitchen. Do you live with your family? — (אמא שלי במטבח. אתה גר עם המשפחה שלך?)
 - A: Yes, I live with my family. ✅
@@ -23616,97 +25299,204 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Correct: Yes, I live with my family. | Sorry, I don't understand.
 - Tests: phrase.home.live-with-family, phrase.recovery.dont-understand
 
-**M13-Q10** — dialogue-choice
+**M13-Q19** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: You — and your family. One home? — (אתה — והמשפחה שלך. אותו בית?)
 - A: Yes, I live with my family. ✅
 - Correct: Yes, I live with my family.
 - Tests: phrase.home.live-with-family
 
-**M13-Q11** — dialogue-choice
+**M13-Q20** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Nice. Are you hungry? Do you want to eat with us? — (יפה. אתה רעב? רוצה לאכול איתנו?)
 - A: Thanks, but I'm going to eat at my grandmother's. ✅
 - Correct: Thanks, but I'm going to eat at my grandmother's.
 - Tests: phrase.home.eat-at-grandmothers
 
-**M13-Q12** — dialogue-choice
+**M13-Q21** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Lovely! You look tired. Are you okay? — (איזה יופי! אתה נראה עייף. הכל בסדר?)
 - A: Yes, I'm just tired. ✅
 - Correct: Yes, I'm just tired.
 - Tests: phrase.home.im-tired
 
-**M13-Q13** — dialogue-choice
+**M13-Q22** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Then go home and rest! — (אז לך הביתה ותנוח!)
 - A: Yes, I'm going home. ✅
 - Correct: Yes, I'm going home.
 - Tests: phrase.home.going-home
 
-**M13-Q14** — dialogue-choice
+**M13-Q23** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: And after dinner at your grandmother's? — (ואחרי הארוחה אצל סבתא?)
 - A: I'm going to sleep. ✅
 - Correct: I'm going to sleep.
 - Tests: phrase.home.going-to-sleep
 
-**M13-Q15** — cold-open
-- Prompt: "Heads up: a fast one is coming. Use a tool." / "שים לב: מגיע משפט מהיר. השתמש בכלי."
-- Audio: Come in come in let us sit in the living room it is warmer there — (תיכנס, תיכנס, בוא נשב בסלון, יותר חם שם)
-- A: Let's sit in the living room. ✅
-- B: Are you hungry?
-- Correct: Let's sit in the living room.
-- Tests: reply.home.sit-living-room
+**M13-Q24** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Hi! Come in. — (היי! תיכנס.)
+- A: Thanks. Your home is beautiful. ✅
+- B: I'm tired.
+- C: I'm going home.
+- Correct: Thanks. Your home is beautiful.
+- Tests: phrase.home.beautiful-home
+
+**M13-Q25** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: My mother is in the kitchen. Do you live with your family? — (אמא שלי במטבח. אתה גר עם המשפחה שלך?)
+- A: Yes, I live with my family. ✅
+- B: Where is your family?
+- C: I'm going to sleep.
+- Correct: Yes, I live with my family.
+- Tests: phrase.home.live-with-family
+
+**M13-Q26** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Nice. Are you hungry? Do you want to eat with us? — (יפה. אתה רעב? רוצה לאכול איתנו?)
+- A: Thanks, but I'm going to eat at my grandmother's. ✅
+- B: Your home is beautiful.
+- C: Yes, I live with my family.
+- Correct: Thanks, but I'm going to eat at my grandmother's.
+- Tests: phrase.home.eat-at-grandmothers
+
+**M13-Q27** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Lovely! You look tired. Are you okay? — (איזה יופי! אתה נראה עייף. הכל בסדר?)
+- A: Yes, I'm just tired. ✅
+- B: Is this sofa new?
+- C: Where is your family?
+- Correct: Yes, I'm just tired.
+- Tests: phrase.home.im-tired
+
+**M13-Q28** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Then go home and rest! — (אז לך הביתה ותנוח!)
+- A: Yes, I'm going home. ✅
+- B: Where is your family?
+- C: Your home is beautiful.
+- Correct: Yes, I'm going home.
+- Tests: phrase.home.going-home
 
 ## Mission 14 — Restaurant Meal
 
 **M14-Q01** — expected-reply
-- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (1/4)
-- Audio: Anything to drink? — (משהו לשתות?)
-- A: משהו לשתות? / Anything to drink? ✅
+- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (1/5)
+- Audio: Do you have a reservation? — (יש לכם הזמנה?)
+- A: יש לכם הזמנה? / Do you have a reservation? ✅
 - B: מוכנים להזמין? / Are you ready to order?
-- C: איך היה הכל? / How was everything?
-- Correct: Anything to drink?
-- Tests: reply.rest.to-drink
+- C: משהו לשתות? / Anything to drink?
+- Correct: Do you have a reservation?
+- Tests: reply.rest.reservation
 
 **M14-Q02** — expected-reply
-- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (2/4)
+- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (2/5)
 - Audio: Are you ready to order? — (מוכנים להזמין?)
 - A: מוכנים להזמין? / Are you ready to order? ✅
-- B: משהו לשתות? / Anything to drink?
-- C: איך היה הכל? / How was everything?
+- B: יש לכם הזמנה? / Do you have a reservation?
+- C: משהו לשתות? / Anything to drink?
 - Correct: Are you ready to order?
 - Tests: reply.rest.ready-to-order
 
 **M14-Q03** — expected-reply
-- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (3/4)
-- Audio: How was everything? — (איך היה הכל?)
-- A: איך היה הכל? / How was everything? ✅
-- B: משהו לשתות? / Anything to drink?
+- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (3/5)
+- Audio: Anything to drink? — (משהו לשתות?)
+- A: משהו לשתות? / Anything to drink? ✅
+- B: יש לכם הזמנה? / Do you have a reservation?
 - C: מוכנים להזמין? / Are you ready to order?
-- Correct: How was everything?
-- Tests: reply.rest.how-was-it
+- Correct: Anything to drink?
+- Tests: reply.rest.to-drink
 
 **M14-Q04** — expected-reply
-- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (4/4)
-- Audio: Would you like dessert? — (רוצים קינוח?)
-- A: רוצים קינוח? / Would you like dessert? ✅
-- B: משהו לשתות? / Anything to drink?
+- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (4/5)
+- Audio: Anything else? — (עוד משהו?)
+- A: עוד משהו? / Anything else? ✅
+- B: יש לכם הזמנה? / Do you have a reservation?
 - C: מוכנים להזמין? / Are you ready to order?
-- Correct: Would you like dessert?
-- Tests: reply.rest.dessert
+- Correct: Anything else?
+- Tests: reply.rest.anything-else
 
-**M14-Q05** — meaning-quiz
-- Prompt: "What did it mean?" / "מה זה אומר?"
+**M14-Q05** — expected-reply
+- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (5/5)
+- Audio: Is everything okay? — (הכל בסדר?)
+- A: הכל בסדר? / Is everything okay? ✅
+- B: יש לכם הזמנה? / Do you have a reservation?
+- C: מוכנים להזמין? / Are you ready to order?
+- Correct: Is everything okay?
+- Tests: reply.rest.everything-okay
+
+**M14-Q06** — quick-reply
+- Prompt: "The waiter asks — what do you say?" / "המלצר שואל — מה עונים?"
 - Audio: Do you have a reservation? — (יש לכם הזמנה?)
-- A: יש לכם הזמנה? / Do you have a reservation? ✅
-- B: מוכנים להזמין? / Are you ready to order?
-- C: רוצים קינוח? / Would you like dessert?
-- Correct: Do you have a reservation?
-- Tests: reply.rest.reservation
+- A: No — a table for two, please. ✅
+- B: The bill, please.
+- C: A bottle of water, please.
+- Correct: No — a table for two, please.
+- Tests: phrase.rest.table-two
 
-**M14-Q06** — dialogue-choice
+**M14-Q07** — quick-reply
+- Prompt: "The waiter asks — what do you say?" / "המלצר שואל — מה עונים?"
+- Audio: Are you ready to order? — (מוכנים להזמין?)
+- A: I'll have the chicken, without onions, please. ✅
+- B: I'll have the pasta, please. ✅
+- C: The bill, please.
+- Correct: I'll have the chicken, without onions, please. | I'll have the pasta, please.
+- Tests: phrase.rest.ill-have-chicken, phrase.rest.ill-have
+
+**M14-Q08** — quick-reply
+- Prompt: "The waiter asks — what do you say?" / "המלצר שואל — מה עונים?"
+- Audio: Anything to drink? — (משהו לשתות?)
+- A: A bottle of water, please. ✅
+- B: No onions, please.
+- C: A table for two, please.
+- Correct: A bottle of water, please.
+- Tests: phrase.rest.water
+
+**M14-Q09** — quick-reply
+- Prompt: "The waiter asks — what do you say?" / "המלצר שואל — מה עונים?"
+- Audio: Anything else? — (עוד משהו?)
+- A: That's all, thanks. ✅
+- B: A table for two, please.
+- C: That was delicious!
+- Correct: That's all, thanks.
+- Tests: phrase.recovery.thank-you
+
+**M14-Q10** — quick-reply
+- Prompt: "The waiter asks — what do you say?" / "המלצר שואל — מה עונים?" — situation shown: "You do not want onions in your dish." / "אתה לא רוצה בצל במנה."
+- Audio: (nothing is played — a situation is shown) — ()
+- A: No onions, please. ✅
+- B: A bottle of water, please.
+- C: The bill, please.
+- Correct: No onions, please.
+- Tests: phrase.rest.no-onions
+
+**M14-Q11** — quick-reply
+- Prompt: "The waiter asks — what do you say?" / "המלצר שואל — מה עונים?"
+- Audio: Is everything okay? — (הכל בסדר?)
+- A: Yes, that was delicious! The bill, please. ✅
+- B: That was delicious! ✅
+- C: A table for two, please.
+- Correct: Yes, that was delicious! The bill, please. | That was delicious!
+- Tests: phrase.rest.the-bill, phrase.rest.delicious
+
+**M14-Q12** — swap-it
+- Prompt: "What are you having?" / "מה מזמינים?" — cue 🍗 "You want the chicken" / "אתה רוצה את העוף" — frame EN "I'll have the ___, please." · FR "Je vais prendre ___, s’il vous plaît." · ES "Voy a tomar ___, por favor."
+- Audio: (nothing before the tap; the completed sentence is spoken after it) — ()
+- A: chicken → I'll have the chicken, please. ✅
+- B: pasta → I'll have the pasta, please.
+- Correct: chicken → I'll have the chicken, please.
+- Tests: phrase.rest.ill-have-chicken
+
+**M14-Q13** — swap-it
+- Prompt: "What are you having?" / "מה מזמינים?" — cue 🍝 "You want the pasta" / "אתה רוצה את הפסטה" — frame EN "I'll have the ___, please." · FR "Je vais prendre ___, s’il vous plaît." · ES "Voy a tomar ___, por favor."
+- Audio: (nothing before the tap; the completed sentence is spoken after it) — ()
+- A: chicken → I'll have the chicken, please.
+- B: pasta → I'll have the pasta, please. ✅
+- Correct: pasta → I'll have the pasta, please.
+- Tests: phrase.rest.ill-have
+
+**M14-Q14** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Good evening! Do you have a reservation? — (ערב טוב! יש לכם הזמנה?)
 - A: No — a table for two, please. ✅
@@ -23714,14 +25504,14 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Correct: No — a table for two, please. | Sorry, I don’t understand.
 - Tests: phrase.rest.table-two, phrase.recovery.dont-understand
 
-**M14-Q07** — dialogue-choice
+**M14-Q15** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: A table? For how many people? — (שולחן? לכמה אנשים?)
 - A: A table for two, please. ✅
 - Correct: A table for two, please.
 - Tests: phrase.rest.table-two
 
-**M14-Q08** — dialogue-choice
+**M14-Q16** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Are you ready to order? — (מוכנים להזמין?)
 - A: I'll have the chicken, without onions, please. ✅
@@ -23730,34 +25520,71 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Correct: I'll have the chicken, without onions, please. | I'll have the pasta, please. | One moment, please.
 - Tests: phrase.rest.ill-have-chicken, phrase.rest.ill-have, phrase.recovery.one-moment
 
-**M14-Q09** — dialogue-choice
+**M14-Q17** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Of course. Anything to drink? — (כמובן. משהו לשתות?)
 - A: A bottle of water, please. ✅
 - Correct: A bottle of water, please.
 - Tests: phrase.rest.water
 
-**M14-Q10** — dialogue-choice
+**M14-Q18** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Anything else? — (עוד משהו?)
 - A: That's all, thanks. ✅
 - Correct: That's all, thanks.
 - Tests: phrase.recovery.thank-you
 
-**M14-Q11** — dialogue-choice
+**M14-Q19** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: …Later… Is everything okay? — (…אחר כך… הכל בסדר?)
 - A: Yes, that was delicious! The bill, please. ✅
 - Correct: Yes, that was delicious! The bill, please.
 - Tests: phrase.rest.the-bill
 
-**M14-Q12** — cold-open
-- Prompt: "Heads up: a fast one is coming. Use a tool." / "שים לב: מגיע משפט מהיר. השתמש בכלי."
-- Audio: Would you like to see the dessert menu before I bring the check? — (רוצים לראות את תפריט הקינוחים לפני שאני מביא את החשבון?)
-- A: Would you like dessert? ✅
-- B: Do you have a reservation?
-- Correct: Would you like dessert?
-- Tests: reply.rest.dessert
+**M14-Q20** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Good evening! Do you have a reservation? — (ערב טוב! יש לכם הזמנה?)
+- A: No — a table for two, please. ✅
+- B: The bill, please.
+- C: A bottle of water, please.
+- Correct: No — a table for two, please.
+- Tests: phrase.rest.table-two
+
+**M14-Q21** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Are you ready to order? — (מוכנים להזמין?)
+- A: I'll have the chicken, without onions, please. ✅
+- B: The bill, please.
+- C: A table for two, please.
+- Correct: I'll have the chicken, without onions, please.
+- Tests: phrase.rest.ill-have-chicken
+
+**M14-Q22** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Of course. Anything to drink? — (כמובן. משהו לשתות?)
+- A: A bottle of water, please. ✅
+- B: No onions, please.
+- C: A table for two, please.
+- Correct: A bottle of water, please.
+- Tests: phrase.rest.water
+
+**M14-Q23** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Anything else? — (עוד משהו?)
+- A: That's all, thanks. ✅
+- B: A table for two, please.
+- C: That was delicious!
+- Correct: That's all, thanks.
+- Tests: phrase.recovery.thank-you
+
+**M14-Q24** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: …Later… Is everything okay? — (…אחר כך… הכל בסדר?)
+- A: Yes, that was delicious! The bill, please. ✅
+- B: I'll have the chicken.
+- C: A table for two, please.
+- Correct: Yes, that was delicious! The bill, please.
+- Tests: phrase.rest.the-bill
 
 ## Mission 15 — Food Preferences & Allergies
 
@@ -23790,32 +25617,86 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 
 **M15-Q04** — expected-reply
 - Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (4/4)
-- Audio: This one is a good option for you. — (זו אפשרות טובה בשבילך.)
-- A: זו אפשרות טובה בשבילך. / This one is a good option for you. ✅
+- Audio: Any other allergies? — (יש עוד אלרגיות?)
+- A: יש עוד אלרגיות? / Any other allergies? ✅
 - B: אבדוק עם המטבח. / Let me check with the kitchen.
 - C: אפשר להכין בלי. / We can make it without.
-- Correct: This one is a good option for you.
-- Tests: reply.diet.good-option
+- Correct: Any other allergies?
+- Tests: reply.diet.anything-else-allergic
 
-**M15-Q05** — meaning-quiz
-- Prompt: "What did it mean?" / "מה זה אומר?"
-- Audio: That one contains nuts. — (זה מכיל אגוזים.)
-- A: זה מכיל אגוזים. / That one contains nuts. ✅
-- B: אפשר להכין בלי. / We can make it without.
-- C: זו אפשרות טובה בשבילך. / This one is a good option for you.
-- Correct: That one contains nuts.
-- Tests: reply.diet.contains-nuts
-
-**M15-Q06** — meaning-quiz
-- Prompt: "What did it mean?" / "מה זה אומר?"
+**M15-Q05** — match-pairs
+- Prompt: "What are you being told? Checking, changing it, or a warning?" / "מה אומרים לך? בודקים, משנים, או מזהירים?" — tile to match (target language, no translation): EN "Let me check with the kitchen." · FR "Je vérifie avec la cuisine." · ES "Lo consulto con la cocina."
 - Audio: Let me check with the kitchen. — (אבדוק עם המטבח.)
-- A: אבדוק עם המטבח. / Let me check with the kitchen. ✅
-- B: לא, זה לא חריף. / No, it's not spicy.
-- C: זה מכיל אגוזים. / That one contains nuts.
-- Correct: Let me check with the kitchen.
+- A: 🔍 They will check / בודקים במטבח ✅
+- B: ➖ They can make it without / אפשר להכין בלי
+- C: ⚠️ 🥜 It contains nuts / יש בזה אגוזים
+- Correct: 🔍 They will check / בודקים במטבח
 - Tests: reply.diet.let-me-check
 
-**M15-Q07** — dialogue-choice
+**M15-Q06** — match-pairs
+- Prompt: "What are you being told? Checking, changing it, or a warning?" / "מה אומרים לך? בודקים, משנים, או מזהירים?" — tile to match (target language, no translation): EN "We can make it without." · FR "On peut le faire sans." · ES "Se lo podemos hacer sin eso."
+- Audio: We can make it without. — (אפשר להכין בלי.)
+- A: 🔍 They will check / בודקים במטבח
+- B: ➖ They can make it without / אפשר להכין בלי ✅
+- C: ⚠️ 🥜 It contains nuts / יש בזה אגוזים
+- Correct: ➖ They can make it without / אפשר להכין בלי
+- Tests: reply.diet.make-without
+
+**M15-Q07** — match-pairs
+- Prompt: "What are you being told? Checking, changing it, or a warning?" / "מה אומרים לך? בודקים, משנים, או מזהירים?" — tile to match (target language, no translation): EN "That one contains nuts." · FR "Celui-là contient des noix." · ES "Ese lleva frutos secos."
+- Audio: That one contains nuts. — (זה מכיל אגוזים.)
+- A: 🔍 They will check / בודקים במטבח
+- B: ➖ They can make it without / אפשר להכין בלי
+- C: ⚠️ 🥜 It contains nuts / יש בזה אגוזים ✅
+- Correct: ⚠️ 🥜 It contains nuts / יש בזה אגוזים
+- Tests: reply.diet.contains-nuts
+
+**M15-Q08** — quick-reply
+- Prompt: "Ordering safely — what do you say?" / "להזמין בבטחה — מה אומרים?"
+- Audio: Hi there! Are you ready to order? — (היי! מוכן להזמין?)
+- A: I'm allergic to nuts. ✅
+- B: Is this spicy?
+- C: Without onions, please.
+- Correct: I'm allergic to nuts.
+- Tests: phrase.diet.allergic-nuts
+
+**M15-Q09** — quick-reply
+- Prompt: "Ordering safely — what do you say?" / "להזמין בבטחה — מה אומרים?"
+- Audio: Thank you for telling me. Any other allergies or dietary restrictions? — (תודה שאמרת. יש עוד אלרגיות או הגבלות תזונה?)
+- A: I'm vegetarian. ✅
+- B: Is this spicy?
+- C: Without onions, please.
+- Correct: I'm vegetarian.
+- Tests: phrase.diet.vegetarian
+
+**M15-Q10** — quick-reply
+- Prompt: "Ordering safely — what do you say?" / "להזמין בבטחה — מה אומרים?" — situation shown: "The waiter suggests a dish. You need to know whether there is dairy in it." / "המלצר מציע מנה. אתה צריך לדעת אם יש בה מוצרי חלב."
+- Audio: (nothing is played — a situation is shown) — ()
+- A: Does it have dairy? ✅
+- B: Is this spicy?
+- C: I'm vegetarian.
+- Correct: Does it have dairy?
+- Tests: phrase.diet.does-have-dairy
+
+**M15-Q11** — quick-reply
+- Prompt: "Ordering safely — what do you say?" / "להזמין בבטחה — מה אומרים?"
+- Audio: We can make it without. — (אפשר להכין בלי.)
+- A: Great. Without onions, please. ✅
+- B: I'm vegetarian.
+- C: I'm allergic to nuts.
+- Correct: Great. Without onions, please.
+- Tests: phrase.diet.without-onions
+
+**M15-Q12** — quick-reply
+- Prompt: "Ordering safely — what do you say?" / "להזמין בבטחה — מה אומרים?"
+- Audio: That one contains nuts. — (זה מכיל אגוזים.)
+- A: I'm allergic to nuts. ✅
+- B: Can you repeat that? ✅
+- C: Without onions, please.
+- Correct: I'm allergic to nuts. | Can you repeat that?
+- Tests: phrase.diet.allergic-nuts, phrase.recovery.repeat
+
+**M15-Q13** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Hi there! Are you ready to order? — (היי! מוכן להזמין?)
 - A: I'm allergic to nuts. ✅
@@ -23823,14 +25704,14 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Correct: I'm allergic to nuts. | Please speak slowly.
 - Tests: phrase.diet.allergic-nuts, phrase.recovery.slowly
 
-**M15-Q08** — dialogue-choice
+**M15-Q14** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Sure — are you ready to order? — (בטח — מוכן להזמין?)
 - A: I'm allergic to nuts. ✅
 - Correct: I'm allergic to nuts.
 - Tests: phrase.diet.allergic-nuts
 
-**M15-Q09** — dialogue-choice
+**M15-Q15** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Thank you for telling me. Any other allergies or dietary restrictions? — (תודה שאמרת. יש עוד אלרגיות או הגבלות תזונה?)
 - A: I'm vegetarian. ✅
@@ -23838,14 +25719,14 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Correct: I'm vegetarian.
 - Tests: phrase.diet.vegetarian, phrase.recovery.thank-you
 
-**M15-Q10** — dialogue-choice
+**M15-Q16** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Of course — but is there anything else I should know? — (כמובן — אבל יש עוד משהו שכדאי שאדע?)
 - A: I'm vegetarian. ✅
 - Correct: I'm vegetarian.
 - Tests: phrase.diet.vegetarian
 
-**M15-Q11** — dialogue-choice
+**M15-Q17** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Got it. The mushroom risotto is vegetarian, but I'll check with the kitchen about the nuts. — (הבנתי. ריזוטו הפטריות צמחוני, אבל אבדוק עם המטבח לגבי האגוזים.)
 - A: Does it have dairy? ✅
@@ -23853,14 +25734,14 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Correct: Does it have dairy? | Can you repeat that?
 - Tests: phrase.diet.does-have-dairy, phrase.recovery.repeat
 
-**M15-Q12** — dialogue-choice
+**M15-Q18** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: The mushroom risotto — is vegetarian. — (ריזוטו הפטריות — צמחוני.)
 - A: Does it have dairy? ✅
 - Correct: Does it have dairy?
 - Tests: phrase.diet.does-have-dairy
 
-**M15-Q13** — dialogue-choice
+**M15-Q19** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Yes, it has some cream, but we can make it without. — (כן, יש בו קצת שמנת, אבל אפשר להכין בלי.)
 - A: Great. Without onions, please. ✅
@@ -23868,14 +25749,14 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Correct: Great. Without onions, please. | Is this spicy?
 - Tests: phrase.diet.without-onions, phrase.diet.is-spicy
 
-**M15-Q14** — dialogue-choice
+**M15-Q20** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Not at all — it's very mild. — (ממש לא — הוא עדין מאוד.)
 - A: Without onions, please. ✅
 - Correct: Without onions, please.
 - Tests: phrase.diet.without-onions
 
-**M15-Q15** — dialogue-choice
+**M15-Q21** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Of course. I'll tell the kitchen about your allergy. — (כמובן. אגיד למטבח על האלרגיה שלך.)
 - A: Thank you! ✅
@@ -23883,14 +25764,50 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Correct: Thank you! | Please speak slowly.
 - Tests: phrase.recovery.thank-you, phrase.recovery.slowly
 
-**M15-Q16** — dialogue-choice
+**M15-Q22** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: I'll tell — the kitchen — about your allergy. — (אני אגיד — למטבח — על האלרגיה.)
 - A: Thank you! ✅
 - Correct: Thank you!
 - Tests: phrase.recovery.thank-you
 
-**M15-Q17** — cold-open
+**M15-Q23** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Hi there! Are you ready to order? — (היי! מוכן להזמין?)
+- A: I'm allergic to nuts. ✅
+- B: Without onions, please.
+- C: Is this spicy?
+- Correct: I'm allergic to nuts.
+- Tests: phrase.diet.allergic-nuts
+
+**M15-Q24** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Thank you for telling me. Any other allergies or dietary restrictions? — (תודה שאמרת. יש עוד אלרגיות או הגבלות תזונה?)
+- A: I'm vegetarian. ✅
+- B: Without onions, please.
+- C: Is this spicy?
+- Correct: I'm vegetarian.
+- Tests: phrase.diet.vegetarian
+
+**M15-Q25** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Got it. The mushroom risotto is vegetarian, but I'll check with the kitchen about the nuts. — (הבנתי. ריזוטו הפטריות צמחוני, אבל אבדוק עם המטבח לגבי האגוזים.)
+- A: Does it have dairy? ✅
+- B: Can you repeat that? ✅
+- C: I'm vegetarian.
+- Correct: Does it have dairy? | Can you repeat that?
+- Tests: phrase.diet.does-have-dairy, phrase.recovery.repeat
+
+**M15-Q26** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Yes, it has some cream, but we can make it without. — (כן, יש בו קצת שמנת, אבל אפשר להכין בלי.)
+- A: Great. Without onions, please. ✅
+- B: I'm allergic to nuts.
+- C: I'm vegetarian.
+- Correct: Great. Without onions, please.
+- Tests: phrase.diet.without-onions
+
+**M15-Q27** — cold-open
 - Prompt: "Heads up: a fast one is coming. Use a tool." / "שים לב: מגיע משפט מהיר. השתמש בכלי."
 - Audio: Just to be safe does your nut allergy mean we should avoid the shared fryer too? — (רק ליתר ביטחון — האלרגיה לאגוזים אומרת שכדאי להימנע גם מהמטגן המשותף?)
 - A: Can you repeat that? ✅
@@ -23936,58 +25853,137 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Correct: Let's go together.
 - Tests: reply.hobby.go-together
 
-**M16-Q05** — meaning-quiz
-- Prompt: "What did it mean?" / "מה זה אומר?"
-- Audio: Is there something you want to try? — (יש משהו שאתה רוצה לנסות?)
-- A: יש משהו שאתה רוצה לנסות? / Is there something you want to try? ✅
-- B: אתה אוהב מוזיקה? / Do you like music?
-- C: גם אני לא! / Me neither!
-- Correct: Is there something you want to try?
-- Tests: reply.hobby.want-to-try-q
+**M16-Q05** — swap-it
+- Prompt: "Like it, love it, or not for you?" / "אוהב, מאוד אוהב, או לא אוהב?" — cue 🙅 "Running — not for you" / "ריצה — זה לא בשבילך" — frame EN "I ___ running." · FR "___ courir." · ES "___ correr."
+- Audio: (nothing before the tap; the completed sentence is spoken after it) — ()
+- A: like → I like running.
+- B: love → I love running.
+- C: don't like → I don't like running. ✅
+- Correct: don't like → I don't like running.
+- Tests: phrase.hobby.dont-like-running
 
-**M16-Q06** — dialogue-choice
+**M16-Q06** — swap-it
+- Prompt: "Like it, love it, or not for you?" / "אוהב, מאוד אוהב, או לא אוהב?" — cue 😍 "Surfing — you love it" / "גלישה — אתה מת על זה" — frame EN "I ___ surfing!" · FR "___ le surf !" · ES "¡___ el surf!"
+- Audio: (nothing before the tap; the completed sentence is spoken after it) — ()
+- A: like → I like surfing!
+- B: love → I love surfing! ✅
+- C: don't like → I don't like surfing!
+- Correct: love → I love surfing!
+- Tests: phrase.hobby.i-love-surfing
+
+**M16-Q07** — swap-it
+- Prompt: "Like it, love it, or not for you?" / "אוהב, מאוד אוהב, או לא אוהב?" — cue 🙂 "Drawing — you like it" / "ציור — אתה אוהב את זה" — frame EN "I ___ drawing." · FR "___ dessiner." · ES "___ dibujar."
+- Audio: (nothing before the tap; the completed sentence is spoken after it) — ()
+- A: like → I like drawing. ✅
+- B: love → I love drawing.
+- C: don't like → I don't like drawing.
+- Correct: like → I like drawing.
+- Tests: phrase.hobby.i-like-drawing
+
+**M16-Q08** — sentence-builder
+- Prompt: "Build the sentence" / "בנה את המשפט" — cue shown: the sentence's MEANING in the app language ("בדרך כלל אני מצייר בערב.")
+- Audio: (nothing before Check; the built sentence is spoken once it is right) — ()
+- A: I usually  |  draw  |  in the evening. ✅
+- Correct: I usually  |  draw  |  in the evening.
+- Tests: phrase.hobby.i-usually
+
+**M16-Q09** — quick-reply
+- Prompt: "A chat about free time — what do you say?" / "שיחה על זמן פנוי — מה עונים?"
+- Audio: Do you like surfing? — (אתה אוהב לגלוש?)
+- A: I love surfing! ✅
+- B: I want to try diving.
+- C: I usually draw in the evening.
+- Correct: I love surfing!
+- Tests: phrase.hobby.i-love-surfing
+
+**M16-Q10** — quick-reply
+- Prompt: "A chat about free time — what do you say?" / "שיחה על זמן פנוי — מה עונים?"
+- Audio: What else do you like? — (מה עוד אתה אוהב?)
+- A: I like drawing. ✅
+- B: I like to listen to music. ✅
+- C: Do you like diving?
+- Correct: I like drawing. | I like to listen to music.
+- Tests: phrase.hobby.i-like-drawing, phrase.hobby.like-to-listen
+
+**M16-Q11** — quick-reply
+- Prompt: "A chat about free time — what do you say?" / "שיחה על זמן פנוי — מה עונים?"
+- Audio: Nice! When do you draw? — (יפה! מתי אתה מצייר?)
+- A: I usually draw in the evening. ✅
+- B: I like drawing.
+- C: I want to try diving.
+- Correct: I usually draw in the evening.
+- Tests: phrase.hobby.i-usually
+
+**M16-Q12** — quick-reply
+- Prompt: "A chat about free time — what do you say?" / "שיחה על זמן פנוי — מה עונים?"
+- Audio: And sport? Do you like running? — (וספורט? אתה אוהב לרוץ?)
+- A: No, I don't like running. ✅
+- B: I usually draw in the evening.
+- C: What do you do for fun?
+- Correct: No, I don't like running.
+- Tests: phrase.hobby.dont-like-running
+
+**M16-Q13** — quick-reply
+- Prompt: "A chat about free time — what do you say?" / "שיחה על זמן פנוי — מה עונים?"
+- Audio: Is there something you want to try? — (יש משהו שאתה רוצה לנסות?)
+- A: I want to try diving. ✅
+- B: I usually draw in the evening.
+- C: I like to listen to music.
+- Correct: I want to try diving.
+- Tests: phrase.hobby.want-to-try
+
+**M16-Q14** — quick-reply
+- Prompt: "A chat about free time — what do you say?" / "שיחה על זמן פנוי — מה עונים?" — situation shown: "You have talked about yourself. Now ask what they like doing." / "סיפרת על עצמך. עכשיו תשאל אותו מה הוא אוהב לעשות."
+- Audio: (nothing is played — a situation is shown) — ()
+- A: What do you do for fun? ✅
+- B: I like drawing.
+- C: I want to try diving.
+- Correct: What do you do for fun?
+- Tests: phrase.hobby.what-for-fun
+
+**M16-Q15** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Hi! Are you free today? — (היי! אתה פנוי היום?)
 - A: Yes! What do you do for fun? ✅
 - Correct: Yes! What do you do for fun?
 - Tests: phrase.hobby.what-for-fun
 
-**M16-Q07** — dialogue-choice
+**M16-Q16** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: I surf a lot. Do you like surfing? — (אני גולש הרבה. אתה אוהב לגלוש?)
 - A: I love surfing! ✅
 - Correct: I love surfing!
 - Tests: phrase.hobby.i-love-surfing
 
-**M16-Q08** — dialogue-choice
+**M16-Q17** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Great! And what else do you like? — (מעולה! ומה עוד אתה אוהב?)
 - A: I like drawing. ✅
 - Correct: I like drawing.
 - Tests: phrase.hobby.i-like-drawing
 
-**M16-Q09** — dialogue-choice
+**M16-Q18** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Nice! When do you draw? — (יפה! מתי אתה מצייר?)
 - A: I usually draw in the evening. ✅
 - Correct: I usually draw in the evening.
 - Tests: phrase.hobby.i-usually
 
-**M16-Q10** — dialogue-choice
+**M16-Q19** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: In the evening I like to listen to music. Do you like music? — (בערב אני אוהב לשמוע מוזיקה. אתה אוהב מוזיקה?)
 - A: Yes, I like to listen to music too. ✅
 - Correct: Yes, I like to listen to music too.
 - Tests: phrase.hobby.like-to-listen
 
-**M16-Q11** — dialogue-choice
+**M16-Q20** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: And sport? Do you like running? — (וספורט? אתה אוהב לרוץ?)
 - A: No, I don't like running. ✅
 - Correct: No, I don't like running.
 - Tests: phrase.hobby.dont-like-running
 
-**M16-Q12** — dialogue-choice
+**M16-Q21** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Me neither! Is there something you want to try here? — (גם אני לא! יש משהו שאתה רוצה לנסות כאן?)
 - A: I want to try diving. ✅
@@ -23995,27 +25991,64 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Correct: I want to try diving. | What does that mean?
 - Tests: phrase.hobby.want-to-try, phrase.recovery.what-mean
 
-**M16-Q13** — dialogue-choice
+**M16-Q22** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Something new. What do you want — to try? — (משהו חדש. מה אתה רוצה — לנסות?)
 - A: I want to try diving. ✅
 - Correct: I want to try diving.
 - Tests: phrase.hobby.want-to-try
 
-**M16-Q14** — dialogue-choice
+**M16-Q23** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Good idea! There's a diving school near the beach. — (רעיון טוב! יש בית ספר לצלילה ליד החוף.)
 - A: Do you like diving? ✅
 - Correct: Do you like diving?
 - Tests: phrase.hobby.do-you-like
 
-**M16-Q15** — cold-open
-- Prompt: "Heads up: a fast one is coming. Use a tool." / "שים לב: מגיע משפט מהיר. השתמש בכלי."
-- Audio: So tell me do you like music or are you more of a sport person? — (אז תגיד — אתה אוהב מוזיקה או שאתה יותר טיפוס של ספורט?)
-- A: Do you like music? ✅
-- B: Let's go together.
-- Correct: Do you like music?
-- Tests: reply.hobby.do-you-like-music
+**M16-Q24** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: I surf a lot. Do you like surfing? — (אני גולש הרבה. אתה אוהב לגלוש?)
+- A: I love surfing! ✅
+- B: I usually draw in the evening.
+- C: What do you do for fun?
+- Correct: I love surfing!
+- Tests: phrase.hobby.i-love-surfing
+
+**M16-Q25** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Great! And what else do you like? — (מעולה! ומה עוד אתה אוהב?)
+- A: I like drawing. ✅
+- B: Do you like diving?
+- C: What do you do for fun?
+- Correct: I like drawing.
+- Tests: phrase.hobby.i-like-drawing
+
+**M16-Q26** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Nice! When do you draw? — (יפה! מתי אתה מצייר?)
+- A: I usually draw in the evening. ✅
+- B: I want to try diving.
+- C: I love surfing!
+- Correct: I usually draw in the evening.
+- Tests: phrase.hobby.i-usually
+
+**M16-Q27** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: In the evening I like to listen to music. Do you like music? — (בערב אני אוהב לשמוע מוזיקה. אתה אוהב מוזיקה?)
+- A: Yes, I like to listen to music too. ✅
+- B: I don't like running.
+- C: I want to try diving.
+- Correct: Yes, I like to listen to music too.
+- Tests: phrase.hobby.like-to-listen
+
+**M16-Q28** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Me neither! Is there something you want to try here? — (גם אני לא! יש משהו שאתה רוצה לנסות כאן?)
+- A: I want to try diving. ✅
+- B: I usually draw in the evening.
+- C: I like drawing.
+- Correct: I want to try diving.
+- Tests: phrase.hobby.want-to-try
 
 ## Mission 17 — Supermarket & Everyday Shopping
 
@@ -24024,7 +26057,7 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Audio: It's in aisle three. — (זה במעבר שלוש.)
 - A: זה במעבר שלוש. / It's in aisle three. ✅
 - B: שם, משמאל. / Over there, on the left.
-- C: צריך לשקול קודם. / You need to weigh it first.
+- C: צריך שקית? / Do you need a bag?
 - Correct: It's in aisle three.
 - Tests: reply.super.aisle-three
 
@@ -24033,21 +26066,12 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Audio: Over there, on the left. — (שם, משמאל.)
 - A: שם, משמאל. / Over there, on the left. ✅
 - B: זה במעבר שלוש. / It's in aisle three.
-- C: צריך לשקול קודם. / You need to weigh it first.
+- C: צריך שקית? / Do you need a bag?
 - Correct: Over there, on the left.
 - Tests: reply.super.over-there
 
 **M17-Q03** — expected-reply
 - Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (3/4)
-- Audio: You need to weigh it first. — (צריך לשקול קודם.)
-- A: צריך לשקול קודם. / You need to weigh it first. ✅
-- B: זה במעבר שלוש. / It's in aisle three.
-- C: שם, משמאל. / Over there, on the left.
-- Correct: You need to weigh it first.
-- Tests: reply.super.weigh-it
-
-**M17-Q04** — expected-reply
-- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (4/4)
 - Audio: Do you need a bag? — (צריך שקית?)
 - A: צריך שקית? / Do you need a bag? ✅
 - B: זה במעבר שלוש. / It's in aisle three.
@@ -24055,25 +26079,124 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Correct: Do you need a bag?
 - Tests: reply.super.bag-q
 
-**M17-Q05** — meaning-quiz
-- Prompt: "What did it mean?" / "מה זה אומר?"
-- Audio: You need to weigh it first. — (צריך לשקול קודם.)
-- A: צריך לשקול קודם. / You need to weigh it first. ✅
-- B: צריך שקית? / Do you need a bag?
-- C: הכנס את הכרטיס כאן. / Insert your card here.
-- Correct: You need to weigh it first.
-- Tests: reply.super.weigh-it
+**M17-Q04** — expected-reply
+- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (4/4)
+- Audio: Insert your card here. — (הכנס את הכרטיס כאן.)
+- A: הכנס את הכרטיס כאן. / Insert your card here. ✅
+- B: זה במעבר שלוש. / It's in aisle three.
+- C: שם, משמאל. / Over there, on the left.
+- Correct: Insert your card here.
+- Tests: reply.super.card-here
 
-**M17-Q06** — meaning-quiz
-- Prompt: "What did it mean?" / "מה זה אומר?"
-- Audio: It's in aisle three. — (זה במעבר שלוש.)
-- A: זה במעבר שלוש. / It's in aisle three. ✅
-- B: שם, משמאל. / Over there, on the left.
-- C: סליחה, אזל המלאי. / Sorry, we're sold out.
-- Correct: It's in aisle three.
+**M17-Q05** — visual-match
+- Prompt: "Where is it? Tap the aisle and the side you hear" / "איפה זה? הקש על המעבר והצד ששמעת"
+- Audio: The milk is in aisle three, on the left. — (החלב במעבר שלוש, משמאל.)
+- A: 1 ⬅️
+- B: 1 ➡️
+- C: 2 ⬅️
+- D: 2 ➡️
+- E: 3 ⬅️ ✅
+- F: 3 ➡️
+- Correct: 3 ⬅️
 - Tests: reply.super.aisle-three
 
-**M17-Q07** — dialogue-choice
+**M17-Q06** — visual-match
+- Prompt: "Where is it? Tap the aisle and the side you hear" / "איפה זה? הקש על המעבר והצד ששמעת"
+- Audio: It's in aisle one, on the right. — (זה במעבר אחת, מימין.)
+- A: 1 ⬅️
+- B: 1 ➡️ ✅
+- C: 2 ⬅️
+- D: 2 ➡️
+- E: 3 ⬅️
+- F: 3 ➡️
+- Correct: 1 ➡️
+- Tests: (no sentence id — not recorded)
+
+**M17-Q07** — visual-match
+- Prompt: "Where is it? Tap the aisle and the side you hear" / "איפה זה? הקש על המעבר והצד ששמעת"
+- Audio: It's in aisle two, on the left. — (זה במעבר שתיים, משמאל.)
+- A: 1 ⬅️
+- B: 1 ➡️
+- C: 2 ⬅️ ✅
+- D: 2 ➡️
+- E: 3 ⬅️
+- F: 3 ➡️
+- Correct: 2 ⬅️
+- Tests: (no sentence id — not recorded)
+
+**M17-Q08** — swap-it
+- Prompt: "What are you looking for?" / "מה אתה מחפש?" — cue 🥛 "You are looking for milk" / "אתה מחפש חלב" — frame EN "Where is the ___?" · FR "Où est ___ ?" · ES "¿Dónde está ___?"
+- Audio: (nothing before the tap; the completed sentence is spoken after it) — ()
+- A: milk → Where is the milk? ✅
+- B: bread → Where is the bread?
+- C: water → Where is the water?
+- Correct: milk → Where is the milk?
+- Tests: phrase.super.where-is
+
+**M17-Q09** — swap-it
+- Prompt: "What are you looking for?" / "מה אתה מחפש?" — cue 🍞 "You are looking for bread" / "אתה מחפש לחם" — frame EN "Where is the ___?" · FR "Où est ___ ?" · ES "¿Dónde está ___?"
+- Audio: (nothing before the tap; the completed sentence is spoken after it) — ()
+- A: milk → Where is the milk?
+- B: bread → Where is the bread? ✅
+- C: water → Where is the water?
+- Correct: bread → Where is the bread?
+- Tests: phrase.super.where-is
+
+**M17-Q10** — swap-it
+- Prompt: "What are you looking for?" / "מה אתה מחפש?" — cue 💧 "You are looking for water" / "אתה מחפש מים" — frame EN "Where is the ___?" · FR "Où est ___ ?" · ES "¿Dónde está ___?"
+- Audio: (nothing before the tap; the completed sentence is spoken after it) — ()
+- A: milk → Where is the milk?
+- B: bread → Where is the bread?
+- C: water → Where is the water? ✅
+- Correct: water → Where is the water?
+- Tests: phrase.super.where-is
+
+**M17-Q11** — quick-reply
+- Prompt: "In the supermarket — what do you say?" / "בסופר — מה אומרים?"
+- Audio: Hi there! Can I help you find something? — (היי! לעזור לך למצוא משהו?)
+- A: Where is the milk? ✅
+- B: Do you have bread? ✅
+- C: Just this, thanks.
+- Correct: Where is the milk? | Do you have bread?
+- Tests: phrase.super.where-is, phrase.super.do-you-have
+
+**M17-Q12** — quick-reply
+- Prompt: "In the supermarket — what do you say?" / "בסופר — מה אומרים?" — situation shown: "You cannot find any bread. Ask whether they have it." / "אתה לא מוצא לחם. שואלים אם יש."
+- Audio: (nothing is played — a situation is shown) — ()
+- A: Do you have bread? ✅
+- B: Could I get a bag?
+- C: Just this, thanks.
+- Correct: Do you have bread?
+- Tests: phrase.super.do-you-have
+
+**M17-Q13** — quick-reply
+- Prompt: "In the supermarket — what do you say?" / "בסופר — מה אומרים?"
+- Audio: It's in aisle three. — (זה במעבר שלוש.)
+- A: Thank you! ✅
+- B: Can you repeat that? ✅
+- C: Could I get a bag?
+- Correct: Thank you! | Can you repeat that?
+- Tests: phrase.recovery.thank-you, phrase.recovery.repeat
+
+**M17-Q14** — quick-reply
+- Prompt: "In the supermarket — what do you say?" / "בסופר — מה אומרים?"
+- Audio: Hi! Is that everything? — (היי! זה הכל?)
+- A: Just this, thanks. ✅
+- B: Where is the milk?
+- C: Do you have bread?
+- Correct: Just this, thanks.
+- Tests: phrase.super.just-this
+
+**M17-Q15** — quick-reply
+- Prompt: "In the supermarket — what do you say?" / "בסופר — מה אומרים?"
+- Audio: Do you need a bag? — (צריך שקית?)
+- A: Could I get a bag? ✅
+- B: Where is the milk?
+- C: Do you have bread?
+- Correct: Could I get a bag?
+- Tests: phrase.super.need-bag
+
+**M17-Q16** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Hi there! Can I help you find something? — (היי! לעזור לך למצוא משהו?)
 - A: Where is the milk? ✅
@@ -24081,14 +26204,14 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Correct: Where is the milk? | Do you have bread?
 - Tests: phrase.super.where-is, phrase.super.do-you-have
 
-**M17-Q08** — dialogue-choice
+**M17-Q17** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Bread? Yes — fresh this morning, in aisle one. — (לחם? כן — טרי מהבוקר, במעבר אחת.)
 - A: Where is the milk? ✅
 - Correct: Where is the milk?
 - Tests: phrase.super.where-is
 
-**M17-Q09** — dialogue-choice
+**M17-Q18** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: The milk is in aisle three, on the left. — (החלב במעבר שלוש, משמאל.)
 - A: Thank you! ✅
@@ -24096,14 +26219,14 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Correct: Thank you! | Can you repeat that?
 - Tests: phrase.recovery.thank-you, phrase.recovery.repeat
 
-**M17-Q10** — dialogue-choice
+**M17-Q19** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Aisle — three — on the left. — (מעבר — שלוש — משמאל.)
 - A: Thank you! ✅
 - Correct: Thank you!
 - Tests: phrase.recovery.thank-you
 
-**M17-Q11** — dialogue-choice
+**M17-Q20** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: …At the checkout… Hi! Is that everything? — (…בקופה… היי! זה הכל?)
 - A: Can you show me? ✅
@@ -24111,14 +26234,14 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Correct: Can you show me? | Just this, thanks.
 - Tests: phrase.recovery.show-me, phrase.super.just-this
 
-**M17-Q12** — dialogue-choice
+**M17-Q21** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Of course — put it here, press the picture, done. — (בטח — שים כאן, לחץ על התמונה, גמרנו.)
 - A: Just this, thanks. ✅
 - Correct: Just this, thanks.
 - Tests: phrase.super.just-this
 
-**M17-Q13** — dialogue-choice
+**M17-Q22** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Do you need a bag? — (צריך שקית?)
 - A: Could I get a bag? ✅
@@ -24126,7 +26249,43 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Correct: Could I get a bag? | Thank you!
 - Tests: phrase.super.need-bag, phrase.recovery.thank-you
 
-**M17-Q14** — cold-open
+**M17-Q23** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Hi there! Can I help you find something? — (היי! לעזור לך למצוא משהו?)
+- A: Where is the milk? ✅
+- B: Just this, thanks.
+- C: Could I get a bag?
+- Correct: Where is the milk?
+- Tests: phrase.super.where-is
+
+**M17-Q24** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: The milk is in aisle three, on the left. — (החלב במעבר שלוש, משמאל.)
+- A: Thank you! ✅
+- B: Just this, thanks.
+- C: Do you have bread?
+- Correct: Thank you!
+- Tests: phrase.recovery.thank-you
+
+**M17-Q25** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: …At the checkout… Hi! Is that everything? — (…בקופה… היי! זה הכל?)
+- A: Just this, thanks. ✅
+- B: Where is the milk?
+- C: Do you have bread?
+- Correct: Just this, thanks.
+- Tests: phrase.super.just-this
+
+**M17-Q26** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Do you need a bag? — (צריך שקית?)
+- A: Could I get a bag? ✅
+- B: Where is the milk?
+- C: Just this, thanks.
+- Correct: Could I get a bag?
+- Tests: phrase.super.need-bag
+
+**M17-Q27** — cold-open
 - Prompt: "Heads up: a fast one is coming. Use a tool." / "שים לב: מגיע משפט מהיר. השתמש בכלי."
 - Audio: Unexpected item in the bagging area — please wait for assistance. — (פריט לא צפוי באזור האריזה — אנא המתן לסיוע.)
 - A: Can you show me? ✅
@@ -24138,125 +26297,134 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 
 **M18-Q01** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio: Morning! What can I get you? — (בוקר! מה להביא לך?)
+- Audio: Good morning! What can I get you? — (בוקר טוב! מה להביא לך?)
 - A: I'd like an iced coffee, please. ✅
+- B: A table for two, please.
 - Correct: I'd like an iced coffee, please.
-- Tests: phrase.coffee.iced-coffee
+- Tests: phrase.coffee.iced-coffee, phrase.rest.table-two
 
 **M18-Q02** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Sure. Anything to eat? — (בטח. משהו לאכול?)
-- A: I don't know. Maybe later. ✅
-- Correct: I don't know. Maybe later.
-- Tests: phrase.time.maybe-later
+- A: Maybe later. ✅
+- B: By card, please.
+- Correct: Maybe later.
+- Tests: phrase.time.maybe-later, phrase.money.by-card
 
 **M18-Q03** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio: No problem. That's four euros. Cash or card? — (אין בעיה. זה ארבעה יורו. מזומן או כרטיס?)
+- Audio: No problem. Cash or card? — (אין בעיה. מזומן או כרטיס?)
 - A: By card, please. ✅
-- Correct: By card, please.
-- Tests: phrase.money.by-card
+- B: To go, please.
+- C: Please speak slowly. ✅
+- Correct: By card, please. | Please speak slowly.
+- Tests: phrase.money.by-card, phrase.coffee.to-go, phrase.recovery.slowly
 
-**M18-Q04** — cold-open
-- Prompt: "Heads up: a fast one is coming. Use a tool." / "שים לב: מגיע משפט מהיר. השתמש בכלי."
-- Audio: Sorry before I forget did you want milk and sugar in that? — (סליחה, לפני שאני שוכח — רצית בזה חלב וסוכר?)
-- A: Milk and sugar? ✅
-- B: Cash or card?
-- Correct: Milk and sugar?
-- Tests: reply.coffee.milk-sugar
+**M18-Q04** — dialogue-choice
+- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
+- Audio: Hi! Are you free tomorrow? — (היי! אתה פנוי מחר?)
+- A: Yes, I'm free tomorrow. ✅
+- B: I'm free tonight.
+- C: Can you repeat that? ✅
+- Correct: Yes, I'm free tomorrow. | Can you repeat that?
+- Tests: phrase.time.free-tomorrow, phrase.time.free-tonight, phrase.recovery.repeat
 
 **M18-Q05** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio: Hey! Are you free tomorrow? — (היי! אתה פנוי מחר?)
-- A: Yes, I'm free tomorrow. ✅
-- B: Can you repeat that? ✅
-- Correct: Yes, I'm free tomorrow. | Can you repeat that?
-- Tests: phrase.time.free-tomorrow, phrase.recovery.repeat
+- Audio: I surf a lot. Do you like surfing? — (אני גולש הרבה. אתה אוהב לגלוש?)
+- A: I love surfing! ✅
+- B: I usually draw in the evening.
+- Correct: I love surfing!
+- Tests: phrase.hobby.i-love-surfing, phrase.hobby.i-usually
 
 **M18-Q06** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio: Tomorrow. Are you — free? — (מחר. אתה — פנוי?)
-- A: Yes, I'm free tomorrow. ✅
-- Correct: Yes, I'm free tomorrow.
-- Tests: phrase.time.free-tomorrow
+- Audio: Then come with us! But we leave early. — (אז בוא איתנו! אבל אנחנו יוצאים מוקדם.)
+- A: Let's meet here at seven. ✅
+- B: No, that's not too late.
+- Correct: Let's meet here at seven.
+- Tests: phrase.time.lets-meet, phrase.time.not-too-late
 
 **M18-Q07** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio: We're going surfing. Do you like surfing? — (אנחנו הולכים לגלוש. אתה אוהב לגלוש?)
-- A: I love surfing! ✅
-- Correct: I love surfing!
-- Tests: phrase.hobby.i-love-surfing
+- Audio: Perfect. And what are you doing tonight? — (מושלם. ומה אתה עושה הערב?)
+- A: I'm tired. I'm going home. ✅
+- B: Where is your family?
+- Correct: I'm tired. I'm going home.
+- Tests: phrase.home.going-home, phrase.home.where-family
 
 **M18-Q08** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio: Great! What time is good for you? — (מעולה! איזו שעה טובה לך?)
-- A: Let's meet here at seven. ✅
-- Correct: Let's meet here at seven.
-- Tests: phrase.time.lets-meet
+- Audio: Hi there! Can I help you find something? — (היי! לעזור לך למצוא משהו?)
+- A: Where is the milk? ✅
+- B: Could I get a bag?
+- Correct: Where is the milk?
+- Tests: phrase.super.where-is, phrase.super.need-bag
 
 **M18-Q09** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio: Perfect. And now? Are you coming to the beach? — (מושלם. ועכשיו? אתה בא לים?)
-- A: Not now, I'm tired. I'm going home. ✅
-- Correct: Not now, I'm tired. I'm going home.
-- Tests: phrase.home.going-home
+- Audio: The milk is in aisle three, on the left. — (החלב במעבר שלוש, משמאל.)
+- A: Thank you! ✅
+- B: Just this, thanks.
+- C: Can you repeat that? ✅
+- Correct: Thank you! | Can you repeat that?
+- Tests: phrase.recovery.thank-you, phrase.super.just-this, phrase.recovery.repeat
 
 **M18-Q10** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio: Hi there! Can I help you find anything? — (היי! אפשר לעזור לך למצוא משהו?)
-- A: I'm just looking, thanks. ✅
-- Correct: I'm just looking, thanks.
-- Tests: phrase.shop.just-looking
+- Audio: …At the checkout… Hi! Is that everything? — (…בקופה… היי! זה הכל?)
+- A: Just this, thanks. ✅
+- B: Where is the milk?
+- Correct: Just this, thanks.
+- Tests: phrase.super.just-this, phrase.super.where-is
 
 **M18-Q11** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio: Of course. This one is on sale today. — (כמובן. זה במבצע היום.)
-- A: How much is it? ✅
-- Correct: How much is it?
-- Tests: phrase.money.how-much
+- Audio: Do you need a bag? — (צריך שקית?)
+- A: Could I get a bag? ✅
+- B: Do you have bread?
+- Correct: Could I get a bag?
+- Tests: phrase.super.need-bag, phrase.super.do-you-have
 
 **M18-Q12** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio: Twenty euros. — (עשרים יורו.)
-- A: I'll take it. ✅
-- Correct: I'll take it.
-- Tests: phrase.shop.take-it
+- Audio: Good evening! Do you have a reservation? — (ערב טוב! יש לכם הזמנה?)
+- A: No — a table for two, please. ✅
+- B: The bill, please.
+- Correct: No — a table for two, please.
+- Tests: phrase.rest.table-two, phrase.rest.the-bill
 
 **M18-Q13** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio: Good evening! How many people? — (ערב טוב! כמה אנשים?)
-- A: A table for two, please. ✅
-- Correct: A table for two, please.
-- Tests: phrase.rest.table-two
+- Audio: Are you ready to order? — (מוכנים להזמין?)
+- A: I'll have the chicken, without onions, please. ✅
+- B: A bottle of water, please.
+- Correct: I'll have the chicken, without onions, please.
+- Tests: phrase.rest.ill-have-chicken, phrase.rest.water
 
 **M18-Q14** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio: Right this way. Are you ready to order? — (בבקשה אחריי. מוכנים להזמין?)
-- A: I'll have the chicken. ✅
-- Correct: I'll have the chicken.
-- Tests: phrase.rest.ill-have-chicken
+- Audio: Of course. Anything to drink? — (כמובן. משהו לשתות?)
+- A: A bottle of water, please. ✅
+- B: A table for two, please.
+- Correct: A bottle of water, please.
+- Tests: phrase.rest.water, phrase.rest.table-two
 
 **M18-Q15** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio: Excellent. Anything to drink? — (מצוין. משהו לשתות?)
-- A: A bottle of water, please. ✅
-- Correct: A bottle of water, please.
-- Tests: phrase.rest.water
-
-**M18-Q16** — dialogue-choice
-- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: …Later… Is everything okay? — (…אחר כך… הכל בסדר?)
 - A: Yes, that was delicious! The bill, please. ✅
+- B: I'll have the chicken.
 - Correct: Yes, that was delicious! The bill, please.
-- Tests: phrase.rest.the-bill
+- Tests: phrase.rest.the-bill, phrase.rest.ill-have-chicken
 
-**M18-Q17** — cold-open
-- Prompt: "Heads up: a fast one is coming. Use a tool." / "שים לב: מגיע משפט מהיר. השתמש בכלי."
-- Audio: Before I bring the bill would you like to see the dessert menu? — (לפני שאני מביא את החשבון — רוצה לראות את תפריט הקינוחים?)
-- A: Would you like dessert? ✅
-- B: Do you have a reservation?
-- Correct: Would you like dessert?
-- Tests: reply.rest.dessert
+**M18-Q16** — cold-open
+- Prompt: "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Perfect, follow me. Here are your menus. Are you ready to order? — (מצוין, בואו אחריי. הנה התפריטים. מוכנים להזמין?)
+- A: Are you ready to order? ✅
+- B: Anything to drink?
+- Correct: Are you ready to order?
+- Tests: reply.rest.ready-to-order
 
 ## Mission 19 — Public Transport
 
@@ -25569,17 +27737,17 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 # Totals
 
 - Missions exported: 30
-- Learner-production sentence ids: 167
-- Expected-reply (receptive) sentence ids: 150
-- Sentence listings across missions (with reuse): 462
-- Expected-reply questions: 96
-- Meaning quizzes: 22
-- Active-practice questions: 81
+- Learner-production sentence ids: 166
+- Expected-reply (receptive) sentence ids: 146
+- Sentence listings across missions (with reuse): 463
+- Expected-reply questions: 97
+- Meaning quizzes: 14
+- Active-practice questions: 181
 - Dialogue choice screens: 250
-- Cold opens: 29
-- Total interactive questions: 478
-- Total answer choices: 1045
-- Wrong-answer branches: 17
-- Recovery opportunities: 55
-- Learner sentences with 0 active retrieval opportunities: 12
-- Auto-flags: 259
+- Cold opens: 23
+- Total interactive questions: 565
+- Total answer choices: 1338
+- Wrong-answer branches: 32
+- Recovery opportunities: 57
+- Learner sentences with 0 active retrieval opportunities: 9
+- Auto-flags: 232

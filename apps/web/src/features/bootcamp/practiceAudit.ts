@@ -231,7 +231,7 @@ function questionsOf(day: number): Question[] {
         const s2 = c.steps[i];
         const p = s2?.kind === 'matchPairs' ? s2.pairs[k] : undefined;
         if (!p) return '∅ MISSING';
-        if (side === 'answer' && p.answerLabel) return p.answerLabel;
+        if (side === 'answer' && p.answerLabel) return `${p.answerLabel}${p.answerGloss ? ` ${p.answerGloss.en} / ${p.answerGloss.he}` : ''}`;
         return side === 'answer' && p.answerText ? p.answerText : c.items.find((x) => x.id === (side === 'prompt' ? p.promptItemId : p.answerItemId))?.text ?? '∅ MISSING';
       };
       step.pairs.forEach((pair, k) => {
@@ -334,7 +334,10 @@ function flagsOf(day: number, plan: MissionPlan, questions: Question[], use: Map
   for (const qu of questions) {
     for (const key of ['en', 'he'] as const) {
       if (qu.choices.some((c) => !c[key])) continue; // boards have no gloss
-      const labels = qu.choices.map((c) => norm(c[key]));
+      // Board tiles and icon answers are compared as written: "1 ⬅️" and "1 ➡️", or two different
+      // icons, are different tiles even though they normalise to the same (or to no) text.
+      const tiles = qu.kind === 'visual-match' || qu.kind === 'mini-map' || qu.kind === 'match-pairs';
+      const labels = qu.choices.map((c) => (tiles ? c[key].trim() : norm(c[key]) || c[key].trim()));
       const dup = labels.find((l, i) => labels.indexOf(l) !== i);
       if (dup !== undefined) flags.push(`${qu.ref}: two answer choices are identical in ${key === 'en' ? 'English' : 'Hebrew'} (“${qu.choices[labels.indexOf(dup)]![key]}”).`);
     }
@@ -821,7 +824,7 @@ function build(): { text: string; stats: PracticeAuditStats } {
   o.push(`| \`visualMatch\` — visual match | ${ui('visualMatchTitle')} (or the step's label); the line auto-plays; a 3×3 board of up to 9 tiles; tap the tile that shows what was said. An audio bubble at the top replays the line. | tiles shuffled once per step | Inline: correct tile turns green, a wrong pick red; the spoken line and its translation appear only now; Try again / Next. | "numberSprint" pass/fail + response time, when the round names a sentence |`);
   o.push(`| \`swap\` — swap it | ${ui('swapTitle')}: a cue (emoji + short app-language hint), the sentence frame with a blank, and 2–3 slot values as tappable pieces under the sentence. | shuffled per session | Inline: the blank is filled, the completed sentence is SPOKEN and translated — also for a non-matching value, which is still a real sentence; Try again / Next. | "flashRecall" pass/fail + response time on the frame's sentence |`);
   o.push(`| \`miniMap\` — mini map | ${ui('miniMapTitle')}: the instruction auto-plays; a 3×3 schematic (landmarks, "you", tappable arrows or pins); tap where the instruction leads. An audio bubble at the top replays it. No translation before the tap. | fixed (it is a map) | Inline, as visual match. | "listen" pass/fail + response time, when the round names a sentence |`);
-  o.push(`| \`matchPairs\` — match pairs | ${ui('matchTitle')}: one screen, two groups of tiles in the target language — the questions, then the answers. Tap one tile, then its partner (either side first). Tapping a question plays it. An answer tile may be a number or an icon instead of a sentence (matching what was said to what it means). No translation anywhere before a match. | answers shuffled per session | A right pair locks, turns green, gets a shared number and the answer is spoken. A wrong pair shakes, shows ✕ and clears — nothing locks, nothing is lost. Continue appears when every pair is locked. | "simulator" pass/fail on the pair's answer sentence |`);
+  o.push(`| \`matchPairs\` — match pairs | ${ui('matchTitle')}: one screen, two groups of tiles in the target language — the questions, then the answers. Tap one tile, then its partner (either side first). Tapping a question plays it. An answer tile may be a number or an icon instead of a sentence (matching what was said to what it means); where an icon alone could be misread it carries a few app-language words. No translation anywhere before a match. | answers shuffled per session | A right pair locks, turns green, gets a shared number and the answer is spoken. A wrong pair shakes, shows ✕ and clears — nothing locks, nothing is lost. Continue appears when every pair is locked. | "simulator" pass/fail on the pair's answer sentence |`);
   o.push(`| \`sentenceBuilder\` — sentence builder | ${ui('builderTitle')}: the sentence's meaning in the app language, an empty answer line, and 3–6 tiles (authored chunks of the sentence, per language). Tap a tile to place it, tap a placed tile to take it back. ${ui('builderCheck')} unlocks when every tile is used. | tiles shuffled per session, never already in order | Right: the sentence is spoken and translated; Next. Wrong: ${ui('builderNotYet')} — the answer is not shown; after one miss ${ui('builderHint')} marks how it starts; after two, the learner may reveal it. | "flashRecall" pass/fail + response time on the sentence |`);
   o.push(`| \`swipe\` — sentence review | Each sentence in turn: auto-played, shown with translation and tip; 🔊 ${ui('hearAgain')}, Next. | fixed | none | nothing |`);
   o.push(`| \`ambush\` with a mode — final challenge | Same screen as the cold open below, with an explicit purpose. **recovery**: ${ui('fastOneComing')}; the line is meant to be too hard, the accepted answer is a conversation-help tool, and only that button carries 🛟. **speed**: ${ui('speedHeadsUp')}; known language at speed, no 🛟 anywhere. A quick-reply, visual-match or mini-map step marked "speed challenge" plays the same role with its own screen instead of two buttons (line spoken at 1.12, replay at 0.85). | shuffled | as below | as below |`);
