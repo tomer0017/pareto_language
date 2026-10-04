@@ -33,6 +33,8 @@ Read from the mission player (`Bootcamp.tsx`). Per-mission sections list only co
 | `visualMatch` — visual match | "Tap what you hear" / "הקש על מה ששמעת" (or the step's label); the line auto-plays; a 3×3 board of up to 9 tiles; tap the tile that shows what was said. | tiles shuffled once per step | Inline: correct tile turns green, a wrong pick red; the spoken line and its translation appear only now; Try again / Next. | "numberSprint" pass/fail + response time, when the round names a sentence |
 | `swap` — swap it | "Finish the sentence" / "השלם את המשפט": a cue (emoji + short app-language hint), the sentence frame with a blank, and 2–3 slot values as buttons. | shuffled per session | Inline: the blank is filled, the completed sentence is SPOKEN and translated — also for a non-matching value, which is still a real sentence; Try again / Next. | "flashRecall" pass/fail + response time on the frame's sentence |
 | `miniMap` — mini map | "Tap where to go" / "הקש לאן הולכים": the instruction auto-plays; a 3×3 schematic (landmarks, "you", tappable arrows or pins); tap where the instruction leads. No translation before the tap. | fixed (it is a map) | Inline, as visual match. | "listen" pass/fail + response time, when the round names a sentence |
+| `matchPairs` — match pairs | "Match each question to your answer" / "חבר כל שאלה לתשובה שלך": one screen, two groups of tiles in the target language — the questions, then the answers. Tap one tile, then its partner (either side first). Tapping a question plays it. No translation anywhere before a match. | answers shuffled per session | A right pair locks, turns green, gets a shared number and the answer is spoken. A wrong pair shakes, shows ✕ and clears — nothing locks, nothing is lost. Continue appears when every pair is locked. | "simulator" pass/fail on the pair's answer sentence |
+| `sentenceBuilder` — sentence builder | "Build the sentence" / "בנה את המשפט": the sentence's meaning in the app language, an empty answer line, and 3–6 tiles (authored chunks of the sentence, per language). Tap a tile to place it, tap a placed tile to take it back. "Check" / "בדיקה" unlocks when every tile is used. | tiles shuffled per session, never already in order | Right: the sentence is spoken and translated; Next. Wrong: "Not yet — try another order." / "עוד לא — נסה סדר אחר." — the answer is not shown; after one miss "Hint" / "רמז" marks how it starts; after two, the learner may reveal it. | "flashRecall" pass/fail + response time on the sentence |
 | `swipe` — sentence review | Each sentence in turn: auto-played, shown with translation and tip; 🔊 "Hear again" / "לשמוע שוב", Next. | fixed | none | nothing |
 | `ambush` with a mode — final challenge | Same screen as the cold open below, with an explicit purpose. **recovery**: "Heads up: a fast one is coming. Use a tool." / "שים לב: מגיע משפט מהיר. השתמש בכלי."; the line is meant to be too hard, the accepted answer is a conversation-help tool, and only that button carries 🛟. **speed**: "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."; known language at speed, no 🛟 anywhere. A visual-match or mini-map step marked "speed challenge" plays the same role with a board instead of two buttons (line spoken at 1.12, replay at 0.85). | shuffled | as below | as below |
 | `ambush` — cold open | ⚡ "Heads up: a fast one is coming. Use a tool." / "שים לב: מגיע משפט מהיר. השתמש בכלי.", button 👂 "I'm ready" / "אני מוכן"; the line is spoken fast (1.12) and printed small; two buttons, each "🛟 + a target-language sentence". | shuffled | ❌/✓ card: what you heard + translation, your answer, the sentence that fit; Try again / Continue | "listen" pass/fail + response time |
@@ -114,14 +116,15 @@ Intro screen (first Practice step; identical in the English, French and Spanish 
 7. `tool` — key sentence (listen → reveal → say aloud) — `phrase.social.nice-to-meet` “Nice to meet you!” · label "The warm reply" / "התשובה החמה" (4/4)
 8. `replies` — expected replies (listening drill) — after `phrase.social.my-name`: 4 replies
 9. `receipt` — receipt (proof card) — "You recognize the questions every curious local will ask you." / "אתה מזהה את השאלות שכל מקומי סקרן ישאל אותך."
-10. `quickReply` — quick reply (hear → pick your response) — 3 round(s)
-11. `dialogue` — dialogue (choose your line) — scene `meeting-host`
-12. `receipt` — receipt (proof card) — "You handled a full introduction — name, origin, first time here." / "ניהלת היכרות שלמה — שם, מוצא, פעם ראשונה כאן."
-13. `swipe` — sentence review — 9 sentences
-14. `ambush` — cold open (fast line) — mode recovery · correct `phrase.recovery.repeat`, wrong `phrase.social.nice-to-meet`
-15. `receipt` — receipt (proof card) — "You didn’t understand — and you had a move. Not understanding is not the end of the conversation." / "לא הבנת — והיה לך מה לעשות. לא להבין זה לא סוף השיחה."
-16. `video` — video — mode again
-17. `summary` — victory screen
+10. `matchPairs` — match pairs (connect each question to its answer) — 3 pairs on one screen
+11. `quickReply` — quick reply (hear → pick your response) — 2 round(s)
+12. `dialogue` — dialogue (choose your line) — scene `meeting-host`
+13. `receipt` — receipt (proof card) — "You handled a full introduction — name, origin, first time here." / "ניהלת היכרות שלמה — שם, מוצא, פעם ראשונה כאן."
+14. `swipe` — sentence review — 9 sentences
+15. `ambush` — cold open (fast line) — mode recovery · correct `phrase.recovery.repeat`, wrong `phrase.social.nice-to-meet`
+16. `receipt` — receipt (proof card) — "You didn’t understand — and you had a move. Not understanding is not the end of the conversation." / "לא הבנת — והיה לך מה לעשות. לא להבין זה לא סוף השיחה."
+17. `video` — video — mode again
+18. `summary` — victory screen
 
 Step sequence identical in EN / FR / ES: yes.
 
@@ -152,7 +155,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "Template: My name is ___ — just swap the name." / "התבנית: My name is ___ — פשוט תחליף את השם."
 - Used in missions: 01
-- Exercised here as: key sentence (step 4); "you said" lead-in of the expected-replies drill (step 8); quick-reply response (step 10, round 1, wrong option); quick-reply response (step 10, round 2, accepted); sentence review (step 13); dialogue choice meeting-host/c1 (accepted); dialogue choice meeting-host/c1b (accepted)
+- Exercised here as: key sentence (step 4); "you said" lead-in of the expected-replies drill (step 8); match-pairs answer tile (step 10, pair 1); quick-reply response (step 11, round 1, wrong option); sentence review (step 14); dialogue choice meeting-host/c1 (accepted); dialogue choice meeting-host/c1b (accepted)
 
 ### Sentence: `phrase.social.nice-to-meet`
 
@@ -163,7 +166,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "The warm answer to any introduction. Always works." / "התשובה החמה לכל היכרות. תמיד עובד."
 - Used in missions: 01
-- Exercised here as: key sentence (step 7); quick-reply response (step 10, round 2, wrong option); quick-reply response (step 10, round 3, wrong option); sentence review (step 13); cold-open wrong option (step 14); dialogue choice meeting-host/c2 (WRONG option)
+- Exercised here as: key sentence (step 7); quick-reply response (step 11, round 2, wrong option); sentence review (step 14); cold-open wrong option (step 15); dialogue choice meeting-host/c2 (WRONG option)
 
 ### Sentence: `phrase.social.from-israel`
 
@@ -174,7 +177,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "Template: I’m from ___ — the answer to “Where are you from”." / "התבנית: I’m from ___ — התשובה ל-Where are you from."
 - Used in missions: 01, 11, 24, 30
-- Exercised here as: key sentence (step 5); quick-reply response (step 10, round 1, accepted); quick-reply response (step 10, round 2, wrong option); quick-reply response (step 10, round 3, wrong option); sentence review (step 13); dialogue choice meeting-host/c2 (accepted); dialogue choice meeting-host/c2b (accepted)
+- Exercised here as: key sentence (step 5); match-pairs answer tile (step 10, pair 2); quick-reply response (step 11, round 1, accepted); quick-reply response (step 11, round 2, wrong option); sentence review (step 14); dialogue choice meeting-host/c2 (accepted); dialogue choice meeting-host/c2b (accepted)
 
 ### Sentence: `phrase.social.first-time`
 
@@ -185,7 +188,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "Opens conversation and invites recommendations." / "פותח שיחה ומזמין המלצות."
 - Used in missions: 01, 11
-- Exercised here as: key sentence (step 6); quick-reply response (step 10, round 1, wrong option); quick-reply response (step 10, round 3, accepted); sentence review (step 13); dialogue choice meeting-host/c3 (accepted); dialogue choice meeting-host/c3b (accepted)
+- Exercised here as: key sentence (step 6); match-pairs answer tile (step 10, pair 3); quick-reply response (step 11, round 1, wrong option); quick-reply response (step 11, round 2, accepted); sentence review (step 14); dialogue choice meeting-host/c3 (accepted); dialogue choice meeting-host/c3b (accepted)
 
 ### Sentence: `reply.social.whats-your-name`
 
@@ -196,7 +199,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 01
-- Exercised here as: expected-reply audio (step 8); quick-reply prompt (step 10, round 2); sentence review (step 13)
+- Exercised here as: expected-reply audio (step 8); match-pairs question tile (step 10, pair 1); sentence review (step 14)
 
 ### Sentence: `reply.social.where-from`
 
@@ -207,7 +210,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 01
-- Exercised here as: expected-reply audio (step 8); quick-reply prompt (step 10, round 1); sentence review (step 13)
+- Exercised here as: expected-reply audio (step 8); match-pairs question tile (step 10, pair 2); quick-reply prompt (step 11, round 1); sentence review (step 14)
 
 ### Sentence: `reply.social.first-time-q`
 
@@ -218,7 +221,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 01
-- Exercised here as: expected-reply audio (step 8); quick-reply prompt (step 10, round 3); sentence review (step 13)
+- Exercised here as: expected-reply audio (step 8); match-pairs question tile (step 10, pair 3); quick-reply prompt (step 11, round 2); sentence review (step 14)
 
 ### Sentence: `reply.social.enjoy-stay`
 
@@ -229,7 +232,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 01
-- Exercised here as: expected-reply audio (step 8); sentence review (step 13)
+- Exercised here as: expected-reply audio (step 8); sentence review (step 14)
 
 ### Sentence: `phrase.recovery.repeat`
 
@@ -240,7 +243,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
 - Used in missions: 01, 03, 05, 06, 08, 09, 10, 11, 12, 14, 15, 17, 18, 19, 20, 23, 26, 28, 29
-- Exercised here as: sentence review (step 13); cold-open correct option (step 14); dialogue choice meeting-host/c1 (accepted)
+- Exercised here as: sentence review (step 14); cold-open correct option (step 15); dialogue choice meeting-host/c1 (accepted)
 
 ### Sentence: `phrase.recovery.slowly`
 
@@ -316,7 +319,46 @@ No meaning quiz in this mission.
 
 ## Active practice — Quick Reply · Visual Match · Swap It · Mini Map
 
-### M01-Q05 — quick-reply (step 10, round 1 of 3)
+### M01-Q05 — match-pairs (step 10, pair 1 of 3 (all pairs are on one screen))
+
+- Prompt displayed: "Match each question to your answer" / "חבר כל שאלה לתשובה שלך" — tile to match (target language, no translation): EN "What's your name?" · FR "Comment vous appelez-vous ?" · ES "¿Cómo se llama?"
+- Audio played: EN "What's your name?" · FR "Comment vous appelez-vous ?" · ES "¿Cómo se llama?"
+- Meaning of the audio (HE): "איך קוראים לך?"
+- Buttons show: the ANSWER tiles, target language only; their order is shuffled; a matched pair locks and leaves the board, so later pairs have fewer live tiles
+- Choices:
+  1. EN "My name is Dan." · FR "Je m’appelle Dan." · ES "Me llamo Dan." · (HE gloss "קוראים לי דן.") — `phrase.social.my-name` — ✅ accepted
+  2. EN "I'm from Israel." · FR "Je viens d’Israël." · ES "Soy de Israel." · (HE gloss "אני מישראל.") — `phrase.social.from-israel` — ❌ wrong
+  3. EN "Yes, it's my first time here." · FR "Oui, c’est ma première fois ici." · ES "Sí, es mi primera vez aquí." · (HE gloss "זו הפעם הראשונה שלי כאן.") — `phrase.social.first-time` — ❌ wrong
+- Tests: phrase.social.my-name
+- Explanation shown after answering: none — a correct match locks both tiles under a shared number and speaks the answer; a miss shakes, shows ✕ and clears (no penalty)
+
+### M01-Q06 — match-pairs (step 10, pair 2 of 3 (all pairs are on one screen))
+
+- Prompt displayed: "Match each question to your answer" / "חבר כל שאלה לתשובה שלך" — tile to match (target language, no translation): EN "Where are you from?" · FR "D’où venez-vous ?" · ES "¿De dónde es?"
+- Audio played: EN "Where are you from?" · FR "D’où venez-vous ?" · ES "¿De dónde es?"
+- Meaning of the audio (HE): "מאיפה אתה?"
+- Buttons show: the ANSWER tiles, target language only; their order is shuffled; a matched pair locks and leaves the board, so later pairs have fewer live tiles
+- Choices:
+  1. EN "My name is Dan." · FR "Je m’appelle Dan." · ES "Me llamo Dan." · (HE gloss "קוראים לי דן.") — `phrase.social.my-name` — ❌ wrong
+  2. EN "I'm from Israel." · FR "Je viens d’Israël." · ES "Soy de Israel." · (HE gloss "אני מישראל.") — `phrase.social.from-israel` — ✅ accepted
+  3. EN "Yes, it's my first time here." · FR "Oui, c’est ma première fois ici." · ES "Sí, es mi primera vez aquí." · (HE gloss "זו הפעם הראשונה שלי כאן.") — `phrase.social.first-time` — ❌ wrong
+- Tests: phrase.social.from-israel
+- Explanation shown after answering: none — a correct match locks both tiles under a shared number and speaks the answer; a miss shakes, shows ✕ and clears (no penalty)
+
+### M01-Q07 — match-pairs (step 10, pair 3 of 3 (all pairs are on one screen))
+
+- Prompt displayed: "Match each question to your answer" / "חבר כל שאלה לתשובה שלך" — tile to match (target language, no translation): EN "Is this your first time here?" · FR "C’est votre première fois ici ?" · ES "¿Es su primera vez aquí?"
+- Audio played: EN "Is this your first time here?" · FR "C’est votre première fois ici ?" · ES "¿Es su primera vez aquí?"
+- Meaning of the audio (HE): "זו הפעם הראשונה שלך כאן?"
+- Buttons show: the ANSWER tiles, target language only; their order is shuffled; a matched pair locks and leaves the board, so later pairs have fewer live tiles
+- Choices:
+  1. EN "My name is Dan." · FR "Je m’appelle Dan." · ES "Me llamo Dan." · (HE gloss "קוראים לי דן.") — `phrase.social.my-name` — ❌ wrong
+  2. EN "I'm from Israel." · FR "Je viens d’Israël." · ES "Soy de Israel." · (HE gloss "אני מישראל.") — `phrase.social.from-israel` — ❌ wrong
+  3. EN "Yes, it's my first time here." · FR "Oui, c’est ma première fois ici." · ES "Sí, es mi primera vez aquí." · (HE gloss "זו הפעם הראשונה שלי כאן.") — `phrase.social.first-time` — ✅ accepted
+- Tests: phrase.social.first-time
+- Explanation shown after answering: none — a correct match locks both tiles under a shared number and speaks the answer; a miss shakes, shows ✕ and clears (no penalty)
+
+### M01-Q08 — quick-reply (step 11, round 1 of 2)
 
 - Prompt displayed: "What do you say?" / "מה עונים?"
 - Audio played: EN "Where are you from?" · FR "D’où venez-vous ?" · ES "¿De dónde es?"
@@ -329,20 +371,7 @@ No meaning quiz in this mission.
 - Tests: phrase.social.from-israel
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M01-Q06 — quick-reply (step 10, round 2 of 3)
-
-- Prompt displayed: "What do you say?" / "מה עונים?"
-- Audio played: EN "What's your name?" · FR "Comment vous appelez-vous ?" · ES "¿Cómo se llama?"
-- Meaning of the audio (HE): "איך קוראים לך?"
-- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
-- Choices:
-  1. EN "My name is Dan." · FR "Je m’appelle Dan." · ES "Me llamo Dan." · (HE gloss "קוראים לי דן.") — `phrase.social.my-name` — ✅ accepted
-  2. EN "I'm from Israel." · FR "Je viens d’Israël." · ES "Soy de Israel." · (HE gloss "אני מישראל.") — `phrase.social.from-israel` — ❌ wrong
-  3. EN "Nice to meet you!" · FR "Enchanté !" · ES "¡Mucho gusto!" · (HE gloss "נעים להכיר!") — `phrase.social.nice-to-meet` — ❌ wrong
-- Tests: phrase.social.my-name
-- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
-
-### M01-Q07 — quick-reply (step 10, round 3 of 3)
+### M01-Q09 — quick-reply (step 11, round 2 of 2)
 
 - Prompt displayed: "What do you say?" / "מה עונים?"
 - Audio played: EN "Is this your first time here?" · FR "C’est votre première fois ici ?" · ES "¿Es su primera vez aquí?"
@@ -467,7 +496,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 
 ## Learner choice screens
 
-### M01-Q08 — dialogue-choice (step 11, scene "meeting-host" · node c1)
+### M01-Q10 — dialogue-choice (step 12, scene "meeting-host" · node c1)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Hi! Welcome. What's your name?" · FR "Bonjour ! Bienvenue. Comment vous appelez-vous ?" · ES "¡Hola! Bienvenido. ¿Cómo se llama?"
@@ -479,7 +508,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.social.my-name, phrase.recovery.repeat
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M01-Q09 — dialogue-choice (step 11, scene "meeting-host" · node c1b)
+### M01-Q11 — dialogue-choice (step 12, scene "meeting-host" · node c1b)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Of course — what — is — your — name?" · FR "Bien sûr — comment — vous — appelez-vous ?" · ES "Claro — ¿cómo — se — llama?"
@@ -490,7 +519,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.social.my-name
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M01-Q10 — dialogue-choice (step 11, scene "meeting-host" · node c2)
+### M01-Q12 — dialogue-choice (step 12, scene "meeting-host" · node c2)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Nice to meet you, Dan! Where are you from?" · FR "Enchanté, Dan ! D’où venez-vous ?" · ES "¡Mucho gusto, Dan! ¿De dónde es?"
@@ -502,7 +531,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.social.from-israel, phrase.social.nice-to-meet
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M01-Q11 — dialogue-choice (step 11, scene "meeting-host" · node c2b)
+### M01-Q13 — dialogue-choice (step 12, scene "meeting-host" · node c2b)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Likewise! And where are you from?" · FR "Moi de même ! Et d’où venez-vous ?" · ES "¡Igualmente! ¿Y de dónde es?"
@@ -513,7 +542,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.social.from-israel
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M01-Q12 — dialogue-choice (step 11, scene "meeting-host" · node c3)
+### M01-Q14 — dialogue-choice (step 12, scene "meeting-host" · node c3)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Israel, wonderful! Is this your first time here?" · FR "Israël, magnifique ! C’est votre première fois ici ?" · ES "¡Israel, qué maravilla! ¿Es su primera vez aquí?"
@@ -525,7 +554,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.social.first-time, phrase.recovery.slowly
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M01-Q13 — dialogue-choice (step 11, scene "meeting-host" · node c3b)
+### M01-Q15 — dialogue-choice (step 12, scene "meeting-host" · node c3b)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Sure. Is this — your first time — here?" · FR "Bien sûr. C’est — votre première fois — ici ?" · ES "Claro. ¿Es — su primera vez — aquí?"
@@ -557,7 +586,7 @@ Where a conversation-help tool can be selected, and what happens:
 
 ## Sentence review
 
-Step 13. 9 sentences, in this fixed order. Each is played automatically (TTS), shown with its translation and tip; buttons: 🔊 "Hear again" / "לשמוע שוב" and Next. No speaking prompt, no grading, no scoring; nothing is recorded.
+Step 14. 9 sentences, in this fixed order. Each is played automatically (TTS), shown with its translation and tip; buttons: 🔊 "Hear again" / "לשמוע שוב" and Next. No speaking prompt, no grading, no scoring; nothing is recorded.
 
 1. `phrase.social.my-name` — My name is Dan. — קוראים לי דן.
 2. `phrase.social.from-israel` — I'm from Israel. — אני מישראל.
@@ -571,7 +600,7 @@ Step 13. 9 sentences, in this fixed order. Each is played automatically (TTS), s
 
 ## Cold open / ambush
 
-### M01-Q14 — cold-open (step 14, single prompt · mode: recovery)
+### M01-Q16 — cold-open (step 15, single prompt · mode: recovery)
 
 - Prompt displayed: "Heads up: a fast one is coming. Use a tool." / "שים לב: מגיע משפט מהיר. השתמש בכלי."
 - Audio played: EN "And what do you do back home, if you don't mind me asking?" · FR "Et vous faites quoi dans la vie, si ce n’est pas indiscret ?" · ES "¿Y a qué se dedica, si no es indiscreción?"
@@ -602,8 +631,8 @@ Every learner sentence of this mission is a line in a scene.
 ## Receipts (proof cards)
 
 - Step 9: "You recognize the questions every curious local will ask you." / "אתה מזהה את השאלות שכל מקומי סקרן ישאל אותך."
-- Step 12: "You handled a full introduction — name, origin, first time here." / "ניהלת היכרות שלמה — שם, מוצא, פעם ראשונה כאן."
-- Step 15: "You didn’t understand — and you had a move. Not understanding is not the end of the conversation." / "לא הבנת — והיה לך מה לעשות. לא להבין זה לא סוף השיחה."
+- Step 13: "You handled a full introduction — name, origin, first time here." / "ניהלת היכרות שלמה — שם, מוצא, פעם ראשונה כאן."
+- Step 16: "You didn’t understand — and you had a move. Not understanding is not the end of the conversation." / "לא הבנת — והיה לך מה לעשות. לא להבין זה לא סוף השיחה."
 
 ## Audit Metadata — DO NOT FIX YET
 
@@ -613,8 +642,8 @@ Every learner sentence of this mission is a line in a scene.
 - Key-sentence steps: 4
 - Expected-reply/listening items: 4
 - Questions/quizzes (meaning quiz): 0
-- Active-practice questions (quick reply / visual match / swap it / mini map): 3
-- Active retrieval opportunities (quick-reply rounds + swap rounds + dialogue screens with a real choice): 6
+- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 5
+- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 8
 - One-button dialogue screens: 3
 - Learner sentences never actively retrieved: 0
 - Dialogue learner choices (screens): 6
@@ -624,8 +653,8 @@ Every learner sentence of this mission is a line in a scene.
 - Vocabulary pre-items: 4
 - Swap variants (extra accepted lines): 0
 - Sentences in review: 9
-- Total interactive questions: 14 (answer choices: 32)
-- Approximate total learner interactions: 28 (questions + key sentences + review cards + word-intro screen)
+- Total interactive questions: 16 (answer choices: 38)
+- Approximate total learner interactions: 30 (questions + key sentences + review cards + word-intro screen)
 
 ### AUTO-FLAG — requires human review (2)
 
@@ -681,12 +710,13 @@ Intro screen (first Practice step; identical in the English, French and Spanish 
 8. `visualMatch` — visual match (hear → tap the tile) — 5 round(s)
 9. `quiz` — meaning quiz (listening) — hears `reply.money.your-change`
 10. `quickReply` — quick reply (hear → pick your response) — 2 round(s)
-11. `dialogue` — dialogue (choose your line) — scene `market-stall`
-12. `receipt` — receipt (proof card) — "You bought at the market, understood the price, and paid. A full transaction." / "קנית בשוק, הבנת את המחיר, ושילמת. עסקה שלמה."
-13. `swipe` — sentence review — 11 sentences
-14. `visualMatch` — visual match (hear → tap the tile) — 1 round(s) · speed challenge
-15. `receipt` — receipt (proof card) — "A fast decimal price — and you caught it. That’s money, under control." / "מספר עם אגורות, מהיר — ותפסת אותו. זה כסף בשליטה."
-16. `summary` — victory screen
+11. `sentenceBuilder` — sentence builder (put the chunks in order) — 1 round(s)
+12. `dialogue` — dialogue (choose your line) — scene `market-stall`
+13. `receipt` — receipt (proof card) — "You bought at the market, understood the price, and paid. A full transaction." / "קנית בשוק, הבנת את המחיר, ושילמת. עסקה שלמה."
+14. `swipe` — sentence review — 11 sentences
+15. `visualMatch` — visual match (hear → tap the tile) — 1 round(s) · speed challenge
+16. `receipt` — receipt (proof card) — "A fast decimal price — and you caught it. That’s money, under control." / "מספר עם אגורות, מהיר — ותפסת אותו. זה כסף בשליטה."
+17. `summary` — victory screen
 
 Step sequence identical in EN / FR / ES: yes.
 
@@ -721,7 +751,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "The question that opens every transaction. Learn it cold." / "השאלה שפותחת כל עסקה. תלמד אותה עד הסוף."
 - Used in missions: 02, 18
-- Exercised here as: built by the word intro (step 2); key sentence (step 3); "you said" lead-in of the expected-replies drill (step 6); quick-reply response (step 10, round 1, wrong option); quick-reply response (step 10, round 2, wrong option); sentence review (step 13); dialogue choice market-stall/c1 (accepted)
+- Exercised here as: built by the word intro (step 2); key sentence (step 3); "you said" lead-in of the expected-replies drill (step 6); quick-reply response (step 10, round 1, wrong option); quick-reply response (step 10, round 2, wrong option); sentence review (step 14); dialogue choice market-stall/c1 (accepted)
 
 ### Sentence: `phrase.money.by-card`
 
@@ -732,7 +762,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 02, 18
-- Exercised here as: key sentence (step 4); quick-reply response (step 10, round 2, accepted); sentence review (step 13); dialogue choice market-stall/c3 (accepted)
+- Exercised here as: key sentence (step 4); quick-reply response (step 10, round 2, accepted); sentence review (step 14); dialogue choice market-stall/c3 (accepted)
 
 ### Sentence: `phrase.money.in-cash`
 
@@ -743,7 +773,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 02
-- Exercised here as: quick-reply response (step 10, round 2, accepted); sentence review (step 13); dialogue choice market-stall/c3 (accepted)
+- Exercised here as: quick-reply response (step 10, round 2, accepted); sentence review (step 14); dialogue choice market-stall/c3 (accepted)
 
 ### Sentence: `phrase.money.one-box`
 
@@ -754,7 +784,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "One ___, please — a number + the thing. That is how you buy anything." / "One ___, please — מספר + הדבר. כך קונים כל דבר."
 - Used in missions: 02
-- Exercised here as: quick-reply response (step 10, round 1, wrong option); sentence review (step 13); dialogue choice market-stall/c2 (accepted); dialogue choice market-stall/c2b (accepted)
+- Exercised here as: quick-reply response (step 10, round 1, wrong option); sentence review (step 14); dialogue choice market-stall/c2 (accepted); dialogue choice market-stall/c2b (accepted)
 
 ### Sentence: `phrase.money.too-expensive`
 
@@ -765,7 +795,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "A polite haggle — and an opening for a better price." / "משפט מיקוח מנומס — ופתח למחיר טוב יותר."
 - Used in missions: 02
-- Exercised here as: key sentence (step 5); quick-reply response (step 10, round 1, accepted); sentence review (step 13)
+- Exercised here as: key sentence (step 5); quick-reply response (step 10, round 1, accepted); sentence-builder target (step 11, round 1); sentence review (step 14)
 
 ### Sentence: `reply.money.five-euros`
 
@@ -776,7 +806,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: "five = 5. Train to catch numbers inside a sentence." / "five = 5. תתרגל לזהות מספרים במשפט."
 - Used in missions: 02
-- Exercised here as: expected-reply audio (step 6); visual-match audio (step 8, round 1); sentence review (step 13)
+- Exercised here as: expected-reply audio (step 6); visual-match audio (step 8, round 1); sentence review (step 14)
 
 ### Sentence: `reply.money.ten-euros`
 
@@ -798,7 +828,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 02
-- Exercised here as: expected-reply audio (step 6); visual-match audio (step 8, round 2); sentence review (step 13)
+- Exercised here as: expected-reply audio (step 6); visual-match audio (step 8, round 2); sentence review (step 14)
 
 ### Sentence: `reply.money.fifteen-fifty`
 
@@ -809,7 +839,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 02
-- Exercised here as: visual-match audio (step 8, round 5); sentence review (step 13); visual-match audio (step 14, round 1)
+- Exercised here as: visual-match audio (step 8, round 5); sentence review (step 14); visual-match audio (step 15, round 1)
 
 ### Sentence: `reply.money.cash-or-card`
 
@@ -820,7 +850,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 02
-- Exercised here as: expected-reply audio (step 6); meaning-quiz distractor (step 9); quick-reply prompt (step 10, round 2); sentence review (step 13)
+- Exercised here as: expected-reply audio (step 6); meaning-quiz distractor (step 9); quick-reply prompt (step 10, round 2); sentence review (step 14)
 
 ### Sentence: `reply.money.your-change`
 
@@ -831,7 +861,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 02
-- Exercised here as: meaning-quiz audio (step 9); sentence review (step 13)
+- Exercised here as: meaning-quiz audio (step 9); sentence review (step 14)
 
 ### Sentence: `reply.money.no-change`
 
@@ -853,7 +883,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
 - Used in missions: 01, 02, 03, 04, 06, 07, 08, 09, 14, 15, 17, 19, 21, 22, 24, 26, 27, 29, 30
-- Exercised here as: sentence review (step 13); dialogue choice market-stall/c2 (accepted)
+- Exercised here as: sentence review (step 14); dialogue choice market-stall/c2 (accepted)
 
 ### Sentence: `phrase.recovery.one-moment`
 
@@ -1061,7 +1091,18 @@ Linked learner sentence: `phrase.money.how-much`. Each reply below is played onc
 - Tests: phrase.money.by-card, phrase.money.in-cash
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M02-Q17 — visual-match (step 14, round 1 of 1 · SPEED CHALLENGE (spoken at rate 1.12))
+### M02-Q13 — sentence-builder (step 11, round 1 of 1)
+
+- Prompt displayed: "Build the sentence" / "בנה את המשפט" — cue shown: the sentence's MEANING in the app language ("זה יקר מדי.")
+- Audio played: EN "(nothing before Check; the built sentence is spoken once it is right)" · FR "(same)" · ES "(same)"
+- Meaning of the audio (HE): —
+- Buttons show: the authored CHUNKS of the sentence as tiles (listed here in the correct order, separated by "|"), shuffled; each language has its own chunks; Check unlocks when every tile is placed
+- Choices:
+  1. EN "That's  |  too  |  expensive." · FR "C’est  |  trop  |  cher." · ES "Es  |  muy  |  caro." · (HE gloss "זה יקר מדי.") — `phrase.money.too-expensive` — ✅ accepted
+- Tests: phrase.money.too-expensive
+- Explanation shown after answering: right: the sentence is spoken and its translation shown. Wrong: "not yet" — the tiles stay, the answer is NOT shown; after one miss a hint marks the start; after two misses the learner may reveal it
+
+### M02-Q18 — visual-match (step 15, round 1 of 1 · SPEED CHALLENGE (spoken at rate 1.12))
 
 - Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio played: EN "That comes to fifteen fifty altogether, is that alright?" · FR "Ça fait quinze cinquante en tout, c’est bon pour vous ?" · ES "Son quince con cincuenta en total, ¿le parece bien?"
@@ -1175,7 +1216,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 
 ## Learner choice screens
 
-### M02-Q13 — dialogue-choice (step 11, scene "market-stall" · node c1)
+### M02-Q14 — dialogue-choice (step 12, scene "market-stall" · node c1)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Fresh strawberries! Best in the market!" · FR "Fraises fraîches ! Les meilleures du marché !" · ES "¡Fresas frescas! ¡Las mejores del mercado!"
@@ -1187,7 +1228,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.money.how-much, phrase.recovery.one-moment
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M02-Q14 — dialogue-choice (step 11, scene "market-stall" · node c2)
+### M02-Q15 — dialogue-choice (step 12, scene "market-stall" · node c2)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Five euros a box, or two for eight!" · FR "Cinq euros la barquette, ou deux pour huit !" · ES "¡Cinco euros la caja, o dos por ocho!"
@@ -1199,7 +1240,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.recovery.slowly, phrase.money.one-box
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M02-Q15 — dialogue-choice (step 11, scene "market-stall" · node c2b)
+### M02-Q16 — dialogue-choice (step 12, scene "market-stall" · node c2b)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Five — euros — one box." · FR "Cinq — euros — une barquette." · ES "Cinco — euros — una caja."
@@ -1210,7 +1251,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.money.one-box
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M02-Q16 — dialogue-choice (step 11, scene "market-stall" · node c3)
+### M02-Q17 — dialogue-choice (step 12, scene "market-stall" · node c3)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Perfect. That's five euros. Cash or card?" · FR "Parfait. Ça fait cinq euros. Espèces ou carte ?" · ES "Perfecto. Son cinco euros. ¿Efectivo o tarjeta?"
@@ -1238,7 +1279,7 @@ None — no choice in this mission is marked wrong.
 
 ## Sentence review
 
-Step 13. 11 sentences, in this fixed order. Each is played automatically (TTS), shown with its translation and tip; buttons: 🔊 "Hear again" / "לשמוע שוב" and Next. No speaking prompt, no grading, no scoring; nothing is recorded.
+Step 14. 11 sentences, in this fixed order. Each is played automatically (TTS), shown with its translation and tip; buttons: 🔊 "Hear again" / "לשמוע שוב" and Next. No speaking prompt, no grading, no scoring; nothing is recorded.
 
 1. `phrase.money.how-much` — How much is it? — כמה זה עולה?
 2. `phrase.money.one-box` — One box, please. — קופסה אחת, בבקשה.
@@ -1271,8 +1312,8 @@ Learner sentences taught beside the dialogue (not a line in any scene):
 ## Receipts (proof cards)
 
 - Step 7: "You heard different prices — and caught every one." / "שמעת מחירים שונים — וזיהית כל אחד."
-- Step 12: "You bought at the market, understood the price, and paid. A full transaction." / "קנית בשוק, הבנת את המחיר, ושילמת. עסקה שלמה."
-- Step 15: "A fast decimal price — and you caught it. That’s money, under control." / "מספר עם אגורות, מהיר — ותפסת אותו. זה כסף בשליטה."
+- Step 13: "You bought at the market, understood the price, and paid. A full transaction." / "קנית בשוק, הבנת את המחיר, ושילמת. עסקה שלמה."
+- Step 16: "A fast decimal price — and you caught it. That’s money, under control." / "מספר עם אגורות, מהיר — ותפסת אותו. זה כסף בשליטה."
 
 ## Audit Metadata — DO NOT FIX YET
 
@@ -1282,8 +1323,8 @@ Learner sentences taught beside the dialogue (not a line in any scene):
 - Key-sentence steps: 3
 - Expected-reply/listening items: 4
 - Questions/quizzes (meaning quiz): 1
-- Active-practice questions (quick reply / visual match / swap it / mini map): 8
-- Active retrieval opportunities (quick-reply rounds + swap rounds + dialogue screens with a real choice): 5
+- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 9
+- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 6
 - One-button dialogue screens: 1
 - Learner sentences never actively retrieved: 0
 - Dialogue learner choices (screens): 4
@@ -1293,8 +1334,8 @@ Learner sentences taught beside the dialogue (not a line in any scene):
 - Vocabulary pre-items: 6
 - Swap variants (extra accepted lines): 1
 - Sentences in review: 11
-- Total interactive questions: 17 (answer choices: 82)
-- Approximate total learner interactions: 32 (questions + key sentences + review cards + word-intro screen)
+- Total interactive questions: 18 (answer choices: 83)
+- Approximate total learner interactions: 33 (questions + key sentences + review cards + word-intro screen)
 
 ### AUTO-FLAG — requires human review (11)
 
@@ -1305,7 +1346,7 @@ Learner sentences taught beside the dialogue (not a line in any scene):
 - AUTO-FLAG — Practice item wording not in this mission's dialogue: `reply.money.no-change` “Sorry, I have no change.” (drilled as an expected reply / distractor, but no NPC line here says it).
 - AUTO-FLAG — 4 of 4 choice screens have NO wrong option (every button is accepted): market-stall/c1, market-stall/c2, market-stall/c2b, market-stall/c3.
 - AUTO-FLAG — 1 choice screens offer exactly ONE button (no decision): market-stall/c2b.
-- AUTO-FLAG — M02-Q17: speed-challenge line contains English words not met in any sentence or dialogue line up to this mission: comes, altogether, alright.
+- AUTO-FLAG — M02-Q18: speed-challenge line contains English words not met in any sentence or dialogue line up to this mission: comes, altogether, alright.
 - AUTO-FLAG — English gloss differs from the English sentence: `reply.money.fifteen-fifty` text “Fifteen fifty.” vs gloss “Fifteen fifty (15.50).”.
 - AUTO-FLAG — FR English gloss differs from the English mission's sentence: `reply.money.fifteen-fifty` gloss “Fifteen fifty (15.50).” vs English “Fifteen fifty.”.
 - AUTO-FLAG — ES English gloss differs from the English mission's sentence: `reply.money.fifteen-fifty` gloss “Fifteen fifty (15.50).” vs English “Fifteen fifty.”.
@@ -1358,12 +1399,13 @@ Intro screen (first Practice step; identical in the English, French and Spanish 
 7. `replies` — expected replies (listening drill) — after `phrase.coffee.iced-coffee`: 4 replies
 8. `receipt` — receipt (proof card) — "You now recognize the four follow-ups of every barista on earth." / "אתה כבר מזהה את ארבע שאלות ההמשך של כל בריסטה בעולם."
 9. `quickReply` — quick reply (hear → pick your response) — 6 round(s)
-10. `dialogue` — dialogue (choose your line) — scene `breakfast-order`
-11. `receipt` — receipt (proof card) — "You ordered a full breakfast: drink, size, milk, pastry, payment. All of it." / "הזמנת ארוחת בוקר שלמה: שתייה, גודל, חלב, מאפה, תשלום. הכל."
-12. `swipe` — sentence review — 14 sentences
-13. `ambush` — cold open (fast line) — mode recovery · correct `phrase.recovery.repeat`, wrong `phrase.coffee.card`
-14. `receipt` — receipt (proof card) — "An off-script surprise — and you answered with a tool. Exactly how real life works." / "הפתעה מחוץ לתסריט — והגבת עם כלי. זה בדיוק מה שקורה בעולם האמיתי."
-15. `summary` — victory screen
+10. `sentenceBuilder` — sentence builder (put the chunks in order) — 2 round(s)
+11. `dialogue` — dialogue (choose your line) — scene `breakfast-order`
+12. `receipt` — receipt (proof card) — "You ordered a full breakfast: drink, size, milk, pastry, payment. All of it." / "הזמנת ארוחת בוקר שלמה: שתייה, גודל, חלב, מאפה, תשלום. הכל."
+13. `swipe` — sentence review — 14 sentences
+14. `ambush` — cold open (fast line) — mode recovery · correct `phrase.recovery.repeat`, wrong `phrase.coffee.card`
+15. `receipt` — receipt (proof card) — "An off-script surprise — and you answered with a tool. Exactly how real life works." / "הפתעה מחוץ לתסריט — והגבת עם כלי. זה בדיוק מה שקורה בעולם האמיתי."
+16. `summary` — victory screen
 
 Step sequence identical in EN / FR / ES: yes.
 
@@ -1396,7 +1438,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "The template: I’d like ___, please — works for everything." / "התבנית: I’d like ___, please — עובדת על הכל."
 - Used in missions: 03, 18
-- Exercised here as: key sentence (step 3); "you said" lead-in of the expected-replies drill (step 7); quick-reply response (step 9, round 6, wrong option); sentence review (step 12); dialogue choice breakfast-order/c1 (accepted); dialogue choice breakfast-order/c1b (accepted)
+- Exercised here as: key sentence (step 3); "you said" lead-in of the expected-replies drill (step 7); quick-reply response (step 9, round 6, wrong option); sentence-builder target (step 10, round 1); sentence review (step 13); dialogue choice breakfast-order/c1 (accepted); dialogue choice breakfast-order/c1b (accepted)
 
 ### Sentence: `phrase.coffee.to-go`
 
@@ -1407,7 +1449,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 03
-- Exercised here as: quick-reply response (step 9, round 1, accepted); quick-reply response (step 9, round 5, wrong option); quick-reply response (step 9, round 6, wrong option); sentence review (step 12)
+- Exercised here as: quick-reply response (step 9, round 1, accepted); quick-reply response (step 9, round 5, wrong option); quick-reply response (step 9, round 6, wrong option); sentence review (step 13)
 
 ### Sentence: `phrase.coffee.no-sugar`
 
@@ -1418,7 +1460,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "with / no — two words that control every order." / "עם = with · בלי = no/without. שתי מילים ששולטות בכל הזמנה."
 - Used in missions: 03
-- Exercised here as: built by the word intro (step 2); key sentence (step 4); quick-reply response (step 9, round 2, wrong option); quick-reply response (step 9, round 3, accepted); sentence review (step 12); dialogue choice breakfast-order/c3 (accepted); dialogue choice breakfast-order/c3b (accepted)
+- Exercised here as: built by the word intro (step 2); key sentence (step 4); quick-reply response (step 9, round 2, wrong option); quick-reply response (step 9, round 3, accepted); sentence-builder target (step 10, round 2); sentence review (step 13); dialogue choice breakfast-order/c3 (accepted); dialogue choice breakfast-order/c3b (accepted)
 
 ### Sentence: `phrase.coffee.croissant`
 
@@ -1429,7 +1471,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "“Croissant” — a French pastry. That’s exactly how it’s written on the menu abroad." / "“Croissant” — מאפה חמאה צרפתי. כך בדיוק זה כתוב בתפריט בחו״ל."
 - Used in missions: 03
-- Exercised here as: quick-reply response (step 9, round 2, wrong option); quick-reply response (step 9, round 4, accepted); sentence review (step 12); dialogue choice breakfast-order/c4 (accepted)
+- Exercised here as: quick-reply response (step 9, round 2, wrong option); quick-reply response (step 9, round 4, accepted); sentence review (step 13); dialogue choice breakfast-order/c4 (accepted)
 
 ### Sentence: `phrase.coffee.thats-all`
 
@@ -1440,7 +1482,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "Closes any order politely. Works everywhere on earth." / "סוגר כל הזמנה בנימוס. עובד בכל מקום בעולם."
 - Used in missions: 03
-- Exercised here as: key sentence (step 5); quick-reply response (step 9, round 1, wrong option); quick-reply response (step 9, round 4, accepted); sentence review (step 12); dialogue choice breakfast-order/c4 (accepted); dialogue choice breakfast-order/c5 (accepted)
+- Exercised here as: key sentence (step 5); quick-reply response (step 9, round 1, wrong option); quick-reply response (step 9, round 4, accepted); sentence review (step 13); dialogue choice breakfast-order/c4 (accepted); dialogue choice breakfast-order/c5 (accepted)
 
 ### Sentence: `phrase.coffee.card`
 
@@ -1451,7 +1493,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 03
-- Exercised here as: key sentence (step 6); quick-reply response (step 9, round 1, wrong option); quick-reply response (step 9, round 3, wrong option); quick-reply response (step 9, round 4, wrong option); quick-reply response (step 9, round 5, accepted); sentence review (step 12); cold-open wrong option (step 13); dialogue choice breakfast-order/c6 (accepted); dialogue choice breakfast-order/c6b (accepted)
+- Exercised here as: key sentence (step 6); quick-reply response (step 9, round 1, wrong option); quick-reply response (step 9, round 3, wrong option); quick-reply response (step 9, round 4, wrong option); quick-reply response (step 9, round 5, accepted); sentence review (step 13); cold-open wrong option (step 14); dialogue choice breakfast-order/c6 (accepted); dialogue choice breakfast-order/c6b (accepted)
 
 ### Sentence: `phrase.coffee.medium`
 
@@ -1462,7 +1504,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 03
-- Exercised here as: quick-reply response (step 9, round 2, accepted); quick-reply response (step 9, round 3, wrong option); quick-reply response (step 9, round 5, wrong option); sentence review (step 12); dialogue choice breakfast-order/c2 (accepted); dialogue choice breakfast-order/c2b (accepted)
+- Exercised here as: quick-reply response (step 9, round 2, accepted); quick-reply response (step 9, round 3, wrong option); quick-reply response (step 9, round 5, wrong option); sentence review (step 13); dialogue choice breakfast-order/c2 (accepted); dialogue choice breakfast-order/c2b (accepted)
 
 ### Sentence: `phrase.coffee.yes-please`
 
@@ -1473,7 +1515,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 03
-- Exercised here as: quick-reply response (step 9, round 6, accepted); sentence review (step 12); dialogue choice breakfast-order/c7 (accepted)
+- Exercised here as: quick-reply response (step 9, round 6, accepted); sentence review (step 13); dialogue choice breakfast-order/c7 (accepted)
 
 ### Sentence: `reply.coffee.what-can-i-get`
 
@@ -1506,7 +1548,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 03
-- Exercised here as: expected-reply audio (step 7); quick-reply prompt (step 9, round 1); sentence review (step 12)
+- Exercised here as: expected-reply audio (step 7); quick-reply prompt (step 9, round 1); sentence review (step 13)
 
 ### Sentence: `reply.coffee.medium-or-large`
 
@@ -1517,7 +1559,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 03
-- Exercised here as: expected-reply audio (step 7); quick-reply prompt (step 9, round 2); sentence review (step 12)
+- Exercised here as: expected-reply audio (step 7); quick-reply prompt (step 9, round 2); sentence review (step 13)
 
 ### Sentence: `reply.coffee.milk-sugar`
 
@@ -1528,7 +1570,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 03, 18
-- Exercised here as: expected-reply audio (step 7); quick-reply prompt (step 9, round 3); sentence review (step 12)
+- Exercised here as: expected-reply audio (step 7); quick-reply prompt (step 9, round 3); sentence review (step 13)
 
 ### Sentence: `reply.coffee.anything-to-eat`
 
@@ -1539,7 +1581,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 03
-- Exercised here as: quick-reply prompt (step 9, round 4); sentence review (step 12)
+- Exercised here as: quick-reply prompt (step 9, round 4); sentence review (step 13)
 
 ### Sentence: `reply.coffee.anything-else`
 
@@ -1561,7 +1603,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 03, 18
-- Exercised here as: quick-reply prompt (step 9, round 5); sentence review (step 12)
+- Exercised here as: quick-reply prompt (step 9, round 5); sentence review (step 13)
 
 ### Sentence: `reply.coffee.receipt`
 
@@ -1605,7 +1647,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
 - Used in missions: 01, 03, 05, 06, 08, 09, 10, 11, 12, 14, 15, 17, 18, 19, 20, 23, 26, 28, 29
-- Exercised here as: sentence review (step 12); cold-open correct option (step 13); dialogue choice breakfast-order/c2 (accepted)
+- Exercised here as: sentence review (step 13); cold-open correct option (step 14); dialogue choice breakfast-order/c2 (accepted)
 
 ### Sentence: `phrase.recovery.slowly`
 
@@ -1769,6 +1811,28 @@ No meaning quiz in this mission.
   3. EN "I'd like an iced coffee, please." · FR "Je voudrais un café glacé, s’il vous plaît." · ES "Quiero un café con hielo, por favor." · (HE gloss "אני רוצה קפה קר, בבקשה.") — `phrase.coffee.iced-coffee` — ❌ wrong
 - Tests: phrase.coffee.yes-please
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M03-Q11 — sentence-builder (step 10, round 1 of 2)
+
+- Prompt displayed: "Build the sentence" / "בנה את המשפט" — cue shown: the sentence's MEANING in the app language ("אני רוצה קפה קר, בבקשה.")
+- Audio played: EN "(nothing before Check; the built sentence is spoken once it is right)" · FR "(same)" · ES "(same)"
+- Meaning of the audio (HE): —
+- Buttons show: the authored CHUNKS of the sentence as tiles (listed here in the correct order, separated by "|"), shuffled; each language has its own chunks; Check unlocks when every tile is placed
+- Choices:
+  1. EN "I'd like  |  an iced  |  coffee,  |  please." · FR "Je voudrais  |  un café  |  glacé,  |  s’il vous plaît." · ES "Quiero  |  un café  |  con hielo,  |  por favor." · (HE gloss "אני רוצה קפה קר, בבקשה.") — `phrase.coffee.iced-coffee` — ✅ accepted
+- Tests: phrase.coffee.iced-coffee
+- Explanation shown after answering: right: the sentence is spoken and its translation shown. Wrong: "not yet" — the tiles stay, the answer is NOT shown; after one miss a hint marks the start; after two misses the learner may reveal it
+
+### M03-Q12 — sentence-builder (step 10, round 2 of 2)
+
+- Prompt displayed: "Build the sentence" / "בנה את המשפט" — cue shown: the sentence's MEANING in the app language ("עם חלב, בלי סוכר.")
+- Audio played: EN "(nothing before Check; the built sentence is spoken once it is right)" · FR "(same)" · ES "(same)"
+- Meaning of the audio (HE): —
+- Buttons show: the authored CHUNKS of the sentence as tiles (listed here in the correct order, separated by "|"), shuffled; each language has its own chunks; Check unlocks when every tile is placed
+- Choices:
+  1. EN "Milk,  |  no  |  sugar." · FR "Avec  |  du lait,  |  sans  |  sucre." · ES "Con  |  leche,  |  sin  |  azúcar." · (HE gloss "עם חלב, בלי סוכר.") — `phrase.coffee.no-sugar` — ✅ accepted
+- Tests: phrase.coffee.no-sugar
+- Explanation shown after answering: right: the sentence is spoken and its translation shown. Wrong: "not yet" — the tiles stay, the answer is NOT shown; after one miss a hint marks the start; after two misses the learner may reveal it
 
 ## Dialogue — full tree
 
@@ -1968,7 +2032,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 
 ## Learner choice screens
 
-### M03-Q11 — dialogue-choice (step 10, scene "breakfast-order" · node c1)
+### M03-Q13 — dialogue-choice (step 11, scene "breakfast-order" · node c1)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Good morning! What can I get you?" · FR "Bonjour ! Qu’est-ce que je vous sers ?" · ES "¡Buenos días! ¿Qué le sirvo?"
@@ -1980,7 +2044,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.coffee.iced-coffee, phrase.recovery.one-moment
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M03-Q12 — dialogue-choice (step 10, scene "breakfast-order" · node c1b)
+### M03-Q14 — dialogue-choice (step 11, scene "breakfast-order" · node c1b)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Of course — take your time!" · FR "Bien sûr — prenez votre temps !" · ES "Claro — ¡tómese su tiempo!"
@@ -1991,7 +2055,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.coffee.iced-coffee
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M03-Q13 — dialogue-choice (step 10, scene "breakfast-order" · node c2)
+### M03-Q15 — dialogue-choice (step 11, scene "breakfast-order" · node c2)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Sure! Medium or large?" · FR "Parfait ! Moyen ou grand ?" · ES "¡Perfecto! ¿Mediano o grande?"
@@ -2003,7 +2067,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.coffee.medium, phrase.recovery.repeat
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M03-Q14 — dialogue-choice (step 10, scene "breakfast-order" · node c2b)
+### M03-Q16 — dialogue-choice (step 11, scene "breakfast-order" · node c2b)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "MEDIUM — or LARGE?" · FR "MOYEN — ou GRAND ?" · ES "¿MEDIANO — o GRANDE?"
@@ -2014,7 +2078,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.coffee.medium
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M03-Q15 — dialogue-choice (step 10, scene "breakfast-order" · node c3)
+### M03-Q17 — dialogue-choice (step 11, scene "breakfast-order" · node c3)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Milk and sugar?" · FR "Lait et sucre ?" · ES "¿Leche y azúcar?"
@@ -2026,7 +2090,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.coffee.no-sugar
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M03-Q16 — dialogue-choice (step 10, scene "breakfast-order" · node c3b)
+### M03-Q18 — dialogue-choice (step 11, scene "breakfast-order" · node c3b)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "You're welcome! But — milk? sugar?" · FR "De rien ! Mais — du lait ? du sucre ?" · ES "¡De nada! Pero — ¿leche? ¿azúcar?"
@@ -2037,7 +2101,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.coffee.no-sugar
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M03-Q17 — dialogue-choice (step 10, scene "breakfast-order" · node c4)
+### M03-Q19 — dialogue-choice (step 11, scene "breakfast-order" · node c4)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Anything to eat?" · FR "Quelque chose à manger ?" · ES "¿Algo de comer?"
@@ -2049,7 +2113,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.coffee.croissant, phrase.coffee.thats-all
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M03-Q18 — dialogue-choice (step 10, scene "breakfast-order" · node c5)
+### M03-Q20 — dialogue-choice (step 11, scene "breakfast-order" · node c5)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Great choice. Would you like anything else?" · FR "Excellent choix. Vous désirez autre chose ?" · ES "Buena elección. ¿Algo más?"
@@ -2060,7 +2124,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.coffee.thats-all
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M03-Q19 — dialogue-choice (step 10, scene "breakfast-order" · node c6)
+### M03-Q21 — dialogue-choice (step 11, scene "breakfast-order" · node c6)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "That'll be six fifty. Cash or card?" · FR "Ça fait six euros cinquante. Espèces ou carte ?" · ES "Son seis con cincuenta. ¿Efectivo o tarjeta?"
@@ -2072,7 +2136,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.coffee.card, phrase.recovery.slowly
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M03-Q20 — dialogue-choice (step 10, scene "breakfast-order" · node c6b)
+### M03-Q22 — dialogue-choice (step 11, scene "breakfast-order" · node c6b)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Six — fifty. Cash, or card?" · FR "Six — cinquante. Espèces, ou carte ?" · ES "Seis — cincuenta. ¿Efectivo, o tarjeta?"
@@ -2083,7 +2147,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.coffee.card
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M03-Q21 — dialogue-choice (step 10, scene "breakfast-order" · node c7)
+### M03-Q23 — dialogue-choice (step 11, scene "breakfast-order" · node c7)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Would you like the receipt?" · FR "Vous voulez le ticket ?" · ES "¿Quiere el recibo?"
@@ -2117,7 +2181,7 @@ Where a conversation-help tool can be selected, and what happens:
 
 ## Sentence review
 
-Step 12. 14 sentences, in this fixed order. Each is played automatically (TTS), shown with its translation and tip; buttons: 🔊 "Hear again" / "לשמוע שוב" and Next. No speaking prompt, no grading, no scoring; nothing is recorded.
+Step 13. 14 sentences, in this fixed order. Each is played automatically (TTS), shown with its translation and tip; buttons: 🔊 "Hear again" / "לשמוע שוב" and Next. No speaking prompt, no grading, no scoring; nothing is recorded.
 
 1. `phrase.coffee.iced-coffee` — I'd like an iced coffee, please. — אני רוצה קפה קר, בבקשה.
 2. `phrase.coffee.to-go` — To go, please. — לקחת, בבקשה.
@@ -2136,7 +2200,7 @@ Step 12. 14 sentences, in this fixed order. Each is played automatically (TTS), 
 
 ## Cold open / ambush
 
-### M03-Q22 — cold-open (step 13, single prompt · mode: recovery)
+### M03-Q24 — cold-open (step 14, single prompt · mode: recovery)
 
 - Prompt displayed: "Heads up: a fast one is coming. Use a tool." / "שים לב: מגיע משפט מהיר. השתמש בכלי."
 - Audio played: EN "Sorry, we are out of croissants — would a muffin be okay instead?" · FR "Désolé, on n’a plus de croissants — un muffin à la place, ça vous va ?" · ES "Lo siento, se nos acabaron los cruasanes — ¿le va bien un muffin en su lugar?"
@@ -2169,8 +2233,8 @@ Learner sentences taught beside the dialogue (not a line in any scene):
 ## Receipts (proof cards)
 
 - Step 8: "You now recognize the four follow-ups of every barista on earth." / "אתה כבר מזהה את ארבע שאלות ההמשך של כל בריסטה בעולם."
-- Step 11: "You ordered a full breakfast: drink, size, milk, pastry, payment. All of it." / "הזמנת ארוחת בוקר שלמה: שתייה, גודל, חלב, מאפה, תשלום. הכל."
-- Step 14: "An off-script surprise — and you answered with a tool. Exactly how real life works." / "הפתעה מחוץ לתסריט — והגבת עם כלי. זה בדיוק מה שקורה בעולם האמיתי."
+- Step 12: "You ordered a full breakfast: drink, size, milk, pastry, payment. All of it." / "הזמנת ארוחת בוקר שלמה: שתייה, גודל, חלב, מאפה, תשלום. הכל."
+- Step 15: "An off-script surprise — and you answered with a tool. Exactly how real life works." / "הפתעה מחוץ לתסריט — והגבת עם כלי. זה בדיוק מה שקורה בעולם האמיתי."
 
 ## Audit Metadata — DO NOT FIX YET
 
@@ -2180,8 +2244,8 @@ Learner sentences taught beside the dialogue (not a line in any scene):
 - Key-sentence steps: 4
 - Expected-reply/listening items: 4
 - Questions/quizzes (meaning quiz): 0
-- Active-practice questions (quick reply / visual match / swap it / mini map): 6
-- Active retrieval opportunities (quick-reply rounds + swap rounds + dialogue screens with a real choice): 12
+- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 8
+- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 14
 - One-button dialogue screens: 5
 - Learner sentences never actively retrieved: 0
 - Dialogue learner choices (screens): 11
@@ -2191,8 +2255,8 @@ Learner sentences taught beside the dialogue (not a line in any scene):
 - Vocabulary pre-items: 6
 - Swap variants (extra accepted lines): 1
 - Sentences in review: 14
-- Total interactive questions: 22 (answer choices: 49)
-- Approximate total learner interactions: 41 (questions + key sentences + review cards + word-intro screen)
+- Total interactive questions: 24 (answer choices: 51)
+- Approximate total learner interactions: 43 (questions + key sentences + review cards + word-intro screen)
 
 ### AUTO-FLAG — requires human review (5)
 
@@ -3074,8 +3138,8 @@ Learner sentences taught beside the dialogue (not a line in any scene):
 - Key-sentence steps: 6
 - Expected-reply/listening items: 4
 - Questions/quizzes (meaning quiz): 0
-- Active-practice questions (quick reply / visual match / swap it / mini map): 12
-- Active retrieval opportunities (quick-reply rounds + swap rounds + dialogue screens with a real choice): 13
+- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 12
+- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 13
 - One-button dialogue screens: 9
 - Learner sentences never actively retrieved: 0
 - Dialogue learner choices (screens): 10
@@ -3698,8 +3762,8 @@ Learner sentences taught beside the dialogue (not a line in any scene):
 - Key-sentence steps: 3
 - Expected-reply/listening items: 4
 - Questions/quizzes (meaning quiz): 1
-- Active-practice questions (quick reply / visual match / swap it / mini map): 9
-- Active retrieval opportunities (quick-reply rounds + swap rounds + dialogue screens with a real choice): 6
+- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 9
+- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 6
 - One-button dialogue screens: 1
 - Learner sentences never actively retrieved: 1
 - Dialogue learner choices (screens): 3
@@ -3716,7 +3780,7 @@ Learner sentences taught beside the dialogue (not a line in any scene):
 
 - AUTO-FLAG — Practice item wording not in this mission's dialogue: `reply.dir.left` “It's on the left.” (drilled as an expected reply / distractor, but no NPC line here says it).
 - AUTO-FLAG — Practice item wording not in this mission's dialogue: `reply.dir.right` “It's on the right.” (drilled as an expected reply / distractor, but no NPC line here says it).
-- AUTO-FLAG — Learner sentence never actively retrieved in this mission (0 choice screens, 0 quick-reply / swap rounds, 0 cold-open options): `phrase.dir.excuse-me` “Excuse me!” — appears in sentence review only (orphan in this mission).
+- AUTO-FLAG — Learner sentence never actively retrieved in this mission (0 choice screens, 0 quick-reply / swap / match / builder rounds, 0 cold-open options): `phrase.dir.excuse-me` “Excuse me!” — appears in sentence review only (orphan in this mission).
 - AUTO-FLAG — 3 of 3 choice screens have NO wrong option (every button is accepted): lost-in-town/c1, lost-in-town/c1b, lost-in-town/c2.
 - AUTO-FLAG — 1 choice screens offer exactly ONE button (no decision): lost-in-town/c1b.
 
@@ -4417,8 +4481,8 @@ Every learner sentence of this mission is a line in a scene.
 - Key-sentence steps: 4
 - Expected-reply/listening items: 4
 - Questions/quizzes (meaning quiz): 2
-- Active-practice questions (quick reply / visual match / swap it / mini map): 0
-- Active retrieval opportunities (quick-reply rounds + swap rounds + dialogue screens with a real choice): 5
+- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 0
+- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 5
 - One-button dialogue screens: 5
 - Learner sentences never actively retrieved: 0
 - Dialogue learner choices (screens): 10
@@ -4994,8 +5058,8 @@ Learner sentences taught beside the dialogue (not a line in any scene):
 - Key-sentence steps: 4
 - Expected-reply/listening items: 4
 - Questions/quizzes (meaning quiz): 1
-- Active-practice questions (quick reply / visual match / swap it / mini map): 0
-- Active retrieval opportunities (quick-reply rounds + swap rounds + dialogue screens with a real choice): 3
+- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 0
+- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 3
 - One-button dialogue screens: 2
 - Learner sentences never actively retrieved: 1
 - Dialogue learner choices (screens): 5
@@ -5012,7 +5076,7 @@ Learner sentences taught beside the dialogue (not a line in any scene):
 
 - AUTO-FLAG — Same prompt tested repeatedly: “It's about fifteen euros.” is the audio of M07-Q02 and M07-Q05.
 - AUTO-FLAG — Practice item wording not in this mission's dialogue: `reply.taxi.first-visit` “First time in the city?” (drilled as an expected reply / distractor, but no NPC line here says it).
-- AUTO-FLAG — Learner sentence never actively retrieved in this mission (0 choice screens, 0 quick-reply / swap rounds, 0 cold-open options): `phrase.taxi.keep-change` “Keep the change.” — shown as a key sentence / in review only.
+- AUTO-FLAG — Learner sentence never actively retrieved in this mission (0 choice screens, 0 quick-reply / swap / match / builder rounds, 0 cold-open options): `phrase.taxi.keep-change` “Keep the change.” — shown as a key sentence / in review only.
 - AUTO-FLAG — 5 of 5 choice screens have NO wrong option (every button is accepted): taxi-ride/c1, taxi-ride/c2, taxi-ride/c3, taxi-ride/c3b, taxi-ride/c4.
 - AUTO-FLAG — 2 choice screens offer exactly ONE button (no decision): taxi-ride/c3b, taxi-ride/c4.
 - AUTO-FLAG — M07-Q11: cold-open line contains English words not met in any sentence or dialogue line up to this mission: road, closed, alright, if, drop, around.
@@ -5590,8 +5654,8 @@ Learner sentences taught beside the dialogue (not a line in any scene):
 - Key-sentence steps: 4
 - Expected-reply/listening items: 4
 - Questions/quizzes (meaning quiz): 1
-- Active-practice questions (quick reply / visual match / swap it / mini map): 0
-- Active retrieval opportunities (quick-reply rounds + swap rounds + dialogue screens with a real choice): 3
+- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 0
+- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 3
 - One-button dialogue screens: 1
 - Learner sentences never actively retrieved: 2
 - Dialogue learner choices (screens): 4
@@ -5610,8 +5674,8 @@ Learner sentences taught beside the dialogue (not a line in any scene):
 - AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "hotel-checkin" n1 — “Good evening! How can I help you?”
 - AUTO-FLAG — Practice item wording not in this mission's dialogue: `reply.hotel.sign-here` “Sign here, please.” (drilled as an expected reply / distractor, but no NPC line here says it).
 - AUTO-FLAG — Practice item wording not in this mission's dialogue: `reply.hotel.second-floor` “It's on the second floor.” (drilled as an expected reply / distractor, but no NPC line here says it).
-- AUTO-FLAG — Learner sentence never actively retrieved in this mission (0 choice screens, 0 quick-reply / swap rounds, 0 cold-open options): `phrase.hotel.under-name` “Under the name Cohen.” — appears in sentence review only (orphan in this mission).
-- AUTO-FLAG — Learner sentence never actively retrieved in this mission (0 choice screens, 0 quick-reply / swap rounds, 0 cold-open options): `phrase.hotel.two-nights` “For two nights.” — shown as a key sentence / in review only.
+- AUTO-FLAG — Learner sentence never actively retrieved in this mission (0 choice screens, 0 quick-reply / swap / match / builder rounds, 0 cold-open options): `phrase.hotel.under-name` “Under the name Cohen.” — appears in sentence review only (orphan in this mission).
+- AUTO-FLAG — Learner sentence never actively retrieved in this mission (0 choice screens, 0 quick-reply / swap / match / builder rounds, 0 cold-open options): `phrase.hotel.two-nights` “For two nights.” — shown as a key sentence / in review only.
 - AUTO-FLAG — Toolkit phrase listed in the mission but never offered in it: `phrase.recovery.slowly` “Please speak slowly.” (sentence review only).
 - AUTO-FLAG — Toolkit phrase listed in the mission but never offered in it: `phrase.recovery.thank-you` “Thank you!” (sentence review only).
 - AUTO-FLAG — 4 of 4 choice screens have NO wrong option (every button is accepted): hotel-checkin/c1, hotel-checkin/c1b, hotel-checkin/c2, hotel-checkin/c3.
@@ -6187,8 +6251,8 @@ Every learner sentence of this mission is a line in a scene.
 - Key-sentence steps: 4
 - Expected-reply/listening items: 4
 - Questions/quizzes (meaning quiz): 1
-- Active-practice questions (quick reply / visual match / swap it / mini map): 0
-- Active retrieval opportunities (quick-reply rounds + swap rounds + dialogue screens with a real choice): 3
+- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 0
+- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 3
 - One-button dialogue screens: 3
 - Learner sentences never actively retrieved: 0
 - Dialogue learner choices (screens): 6
@@ -6794,8 +6858,8 @@ Every learner sentence of this mission is a line in a scene.
 - Key-sentence steps: 0
 - Expected-reply/listening items: 0
 - Questions/quizzes (meaning quiz): 0
-- Active-practice questions (quick reply / visual match / swap it / mini map): 0
-- Active retrieval opportunities (quick-reply rounds + swap rounds + dialogue screens with a real choice): 1
+- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 0
+- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 1
 - One-button dialogue screens: 8
 - Learner sentences never actively retrieved: 0
 - Dialogue learner choices (screens): 9
@@ -7450,8 +7514,8 @@ Learner sentences taught beside the dialogue (not a line in any scene):
 - Key-sentence steps: 5
 - Expected-reply/listening items: 4
 - Questions/quizzes (meaning quiz): 1
-- Active-practice questions (quick reply / visual match / swap it / mini map): 0
-- Active retrieval opportunities (quick-reply rounds + swap rounds + dialogue screens with a real choice): 3
+- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 0
+- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 3
 - One-button dialogue screens: 4
 - Learner sentences never actively retrieved: 1
 - Dialogue learner choices (screens): 7
@@ -7469,7 +7533,7 @@ Learner sentences taught beside the dialogue (not a line in any scene):
 - AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "small-talk" n1 — “Hi! Beautiful view, isn't it?”
 - AUTO-FLAG — Practice item wording not in this mission's dialogue: `reply.talk.you-should-try` “You should try the old town.” (drilled as an expected reply / distractor, but no NPC line here says it).
 - AUTO-FLAG — Practice item wording not in this mission's dialogue: `reply.talk.how-long-here` “How long are you here for?” (drilled as an expected reply / distractor, but no NPC line here says it).
-- AUTO-FLAG — Learner sentence never actively retrieved in this mission (0 choice screens, 0 quick-reply / swap rounds, 0 cold-open options): `phrase.social.from-israel` “I'm from Israel.” — appears in sentence review only (orphan in this mission).
+- AUTO-FLAG — Learner sentence never actively retrieved in this mission (0 choice screens, 0 quick-reply / swap / match / builder rounds, 0 cold-open options): `phrase.social.from-israel` “I'm from Israel.” — appears in sentence review only (orphan in this mission).
 - AUTO-FLAG — 7 of 7 choice screens have NO wrong option (every button is accepted): small-talk/c2, small-talk/c4, small-talk/c6, small-talk/c6b, small-talk/c8, small-talk/c10, small-talk/c12.
 - AUTO-FLAG — 4 choice screens offer exactly ONE button (no decision): small-talk/c2, small-talk/c4, small-talk/c6b, small-talk/c12.
 - AUTO-FLAG — M11-Q13: cold-open line contains English words not met in any sentence or dialogue line up to this mission: few, days, longer.
@@ -8106,8 +8170,8 @@ Every learner sentence of this mission is a line in a scene.
 - Key-sentence steps: 5
 - Expected-reply/listening items: 4
 - Questions/quizzes (meaning quiz): 1
-- Active-practice questions (quick reply / visual match / swap it / mini map): 0
-- Active retrieval opportunities (quick-reply rounds + swap rounds + dialogue screens with a real choice): 2
+- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 0
+- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 2
 - One-button dialogue screens: 6
 - Learner sentences never actively retrieved: 0
 - Dialogue learner choices (screens): 8
@@ -8755,8 +8819,8 @@ Every learner sentence of this mission is a line in a scene.
 - Key-sentence steps: 6
 - Expected-reply/listening items: 4
 - Questions/quizzes (meaning quiz): 1
-- Active-practice questions (quick reply / visual match / swap it / mini map): 0
-- Active retrieval opportunities (quick-reply rounds + swap rounds + dialogue screens with a real choice): 1
+- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 0
+- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 1
 - One-button dialogue screens: 8
 - Learner sentences never actively retrieved: 0
 - Dialogue learner choices (screens): 9
@@ -9472,8 +9536,8 @@ Learner sentences taught beside the dialogue (not a line in any scene):
 - Key-sentence steps: 4
 - Expected-reply/listening items: 4
 - Questions/quizzes (meaning quiz): 1
-- Active-practice questions (quick reply / visual match / swap it / mini map): 0
-- Active retrieval opportunities (quick-reply rounds + swap rounds + dialogue screens with a real choice): 2
+- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 0
+- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 2
 - One-button dialogue screens: 4
 - Learner sentences never actively retrieved: 3
 - Dialogue learner choices (screens): 6
@@ -9491,9 +9555,9 @@ Learner sentences taught beside the dialogue (not a line in any scene):
 - AUTO-FLAG — Practice item wording not in this mission's dialogue: `reply.rest.follow-me` “Follow me, please.” (drilled as an expected reply / distractor, but no NPC line here says it).
 - AUTO-FLAG — Practice item wording not in this mission's dialogue: `reply.rest.how-was-it` “How was everything?” (drilled as an expected reply / distractor, but no NPC line here says it).
 - AUTO-FLAG — Practice item wording not in this mission's dialogue: `reply.rest.dessert` “Would you like dessert?” (drilled as an expected reply / distractor, but no NPC line here says it).
-- AUTO-FLAG — Learner sentence never actively retrieved in this mission (0 choice screens, 0 quick-reply / swap rounds, 0 cold-open options): `phrase.rest.menu` “The menu, please.” — appears in sentence review only (orphan in this mission).
-- AUTO-FLAG — Learner sentence never actively retrieved in this mission (0 choice screens, 0 quick-reply / swap rounds, 0 cold-open options): `phrase.rest.no-onions` “No onions, please.” — shown as a key sentence / in review only.
-- AUTO-FLAG — Learner sentence never actively retrieved in this mission (0 choice screens, 0 quick-reply / swap rounds, 0 cold-open options): `phrase.rest.delicious` “That was delicious!” — appears in sentence review only (orphan in this mission).
+- AUTO-FLAG — Learner sentence never actively retrieved in this mission (0 choice screens, 0 quick-reply / swap / match / builder rounds, 0 cold-open options): `phrase.rest.menu` “The menu, please.” — appears in sentence review only (orphan in this mission).
+- AUTO-FLAG — Learner sentence never actively retrieved in this mission (0 choice screens, 0 quick-reply / swap / match / builder rounds, 0 cold-open options): `phrase.rest.no-onions` “No onions, please.” — shown as a key sentence / in review only.
+- AUTO-FLAG — Learner sentence never actively retrieved in this mission (0 choice screens, 0 quick-reply / swap / match / builder rounds, 0 cold-open options): `phrase.rest.delicious` “That was delicious!” — appears in sentence review only (orphan in this mission).
 - AUTO-FLAG — Toolkit phrase listed in the mission but never offered in it: `phrase.recovery.repeat` “Can you repeat that?” (sentence review only).
 - AUTO-FLAG — Toolkit phrase listed in the mission but never offered in it: `phrase.recovery.slowly` “Please speak slowly.” (sentence review only).
 - AUTO-FLAG — Line shown differs from the sentence it is scored as: scene "sit-down-meal" c1 — shown “Sorry, I don’t understand.”, scored as `phrase.recovery.dont-understand` “Sorry, I don't understand.”.
@@ -10184,8 +10248,8 @@ Every learner sentence of this mission is a line in a scene.
 - Key-sentence steps: 4
 - Expected-reply/listening items: 4
 - Questions/quizzes (meaning quiz): 2
-- Active-practice questions (quick reply / visual match / swap it / mini map): 0
-- Active retrieval opportunities (quick-reply rounds + swap rounds + dialogue screens with a real choice): 5
+- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 0
+- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 5
 - One-button dialogue screens: 5
 - Learner sentences never actively retrieved: 0
 - Dialogue learner choices (screens): 10
@@ -10850,8 +10914,8 @@ Every learner sentence of this mission is a line in a scene.
 - Key-sentence steps: 6
 - Expected-reply/listening items: 4
 - Questions/quizzes (meaning quiz): 1
-- Active-practice questions (quick reply / visual match / swap it / mini map): 0
-- Active retrieval opportunities (quick-reply rounds + swap rounds + dialogue screens with a real choice): 1
+- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 0
+- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 1
 - One-button dialogue screens: 8
 - Learner sentences never actively retrieved: 0
 - Dialogue learner choices (screens): 9
@@ -11473,8 +11537,8 @@ Every learner sentence of this mission is a line in a scene.
 - Key-sentence steps: 4
 - Expected-reply/listening items: 4
 - Questions/quizzes (meaning quiz): 2
-- Active-practice questions (quick reply / visual match / swap it / mini map): 0
-- Active retrieval opportunities (quick-reply rounds + swap rounds + dialogue screens with a real choice): 4
+- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 0
+- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 4
 - One-button dialogue screens: 3
 - Learner sentences never actively retrieved: 0
 - Dialogue learner choices (screens): 7
@@ -12322,8 +12386,8 @@ Every learner sentence of this mission is a line in a scene.
 - Key-sentence steps: 0
 - Expected-reply/listening items: 0
 - Questions/quizzes (meaning quiz): 0
-- Active-practice questions (quick reply / visual match / swap it / mini map): 0
-- Active retrieval opportunities (quick-reply rounds + swap rounds + dialogue screens with a real choice): 1
+- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 0
+- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 1
 - One-button dialogue screens: 14
 - Learner sentences never actively retrieved: 0
 - Dialogue learner choices (screens): 15
@@ -13027,8 +13091,8 @@ Every learner sentence of this mission is a line in a scene.
 - Key-sentence steps: 4
 - Expected-reply/listening items: 4
 - Questions/quizzes (meaning quiz): 2
-- Active-practice questions (quick reply / visual match / swap it / mini map): 0
-- Active retrieval opportunities (quick-reply rounds + swap rounds + dialogue screens with a real choice): 5
+- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 0
+- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 5
 - One-button dialogue screens: 5
 - Learner sentences never actively retrieved: 0
 - Dialogue learner choices (screens): 10
@@ -13648,8 +13712,8 @@ Learner sentences taught beside the dialogue (not a line in any scene):
 - Key-sentence steps: 6
 - Expected-reply/listening items: 4
 - Questions/quizzes (meaning quiz): 1
-- Active-practice questions (quick reply / visual match / swap it / mini map): 0
-- Active retrieval opportunities (quick-reply rounds + swap rounds + dialogue screens with a real choice): 2
+- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 0
+- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 2
 - One-button dialogue screens: 5
 - Learner sentences never actively retrieved: 1
 - Dialogue learner choices (screens): 7
@@ -13666,7 +13730,7 @@ Learner sentences taught beside the dialogue (not a line in any scene):
 
 - AUTO-FLAG — Same prompt tested repeatedly: “Where did you stay?” is the audio of M20-Q04 and M20-Q05.
 - AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "what-did-you-do" n13 — “Me? Nothing! I was tired. I slept all day.”
-- AUTO-FLAG — Learner sentence never actively retrieved in this mission (0 choice screens, 0 quick-reply / swap rounds, 0 cold-open options): `phrase.past.it-was-bad` “It was bad.” — appears in sentence review only (orphan in this mission).
+- AUTO-FLAG — Learner sentence never actively retrieved in this mission (0 choice screens, 0 quick-reply / swap / match / builder rounds, 0 cold-open options): `phrase.past.it-was-bad` “It was bad.” — appears in sentence review only (orphan in this mission).
 - AUTO-FLAG — 7 of 7 choice screens have NO wrong option (every button is accepted): what-did-you-do/c2, what-did-you-do/c4, what-did-you-do/c6, what-did-you-do/c8, what-did-you-do/c10, what-did-you-do/c10b, what-did-you-do/c12.
 - AUTO-FLAG — 5 choice screens offer exactly ONE button (no decision): what-did-you-do/c2, what-did-you-do/c4, what-did-you-do/c6, what-did-you-do/c10b, what-did-you-do/c12.
 - AUTO-FLAG — M20-Q13: cold-open line contains English words not met in any sentence or dialogue line up to this mission: wait.
@@ -14310,8 +14374,8 @@ Every learner sentence of this mission is a line in a scene.
 - Key-sentence steps: 5
 - Expected-reply/listening items: 4
 - Questions/quizzes (meaning quiz): 1
-- Active-practice questions (quick reply / visual match / swap it / mini map): 0
-- Active retrieval opportunities (quick-reply rounds + swap rounds + dialogue screens with a real choice): 3
+- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 0
+- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 3
 - One-button dialogue screens: 5
 - Learner sentences never actively retrieved: 0
 - Dialogue learner choices (screens): 8
@@ -15096,8 +15160,8 @@ Every learner sentence of this mission is a line in a scene.
 - Key-sentence steps: 6
 - Expected-reply/listening items: 4
 - Questions/quizzes (meaning quiz): 1
-- Active-practice questions (quick reply / visual match / swap it / mini map): 0
-- Active retrieval opportunities (quick-reply rounds + swap rounds + dialogue screens with a real choice): 2
+- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 0
+- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 2
 - One-button dialogue screens: 9
 - Learner sentences never actively retrieved: 0
 - Dialogue learner choices (screens): 11
@@ -15749,8 +15813,8 @@ Learner sentences taught beside the dialogue (not a line in any scene):
 - Key-sentence steps: 6
 - Expected-reply/listening items: 4
 - Questions/quizzes (meaning quiz): 1
-- Active-practice questions (quick reply / visual match / swap it / mini map): 0
-- Active retrieval opportunities (quick-reply rounds + swap rounds + dialogue screens with a real choice): 1
+- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 0
+- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 1
 - One-button dialogue screens: 7
 - Learner sentences never actively retrieved: 2
 - Dialogue learner choices (screens): 8
@@ -15766,8 +15830,8 @@ Learner sentences taught beside the dialogue (not a line in any scene):
 ### AUTO-FLAG — requires human review (7)
 
 - AUTO-FLAG — Same prompt tested repeatedly: “Why?” is the audio of M23-Q02 and M23-Q05.
-- AUTO-FLAG — Learner sentence never actively retrieved in this mission (0 choice screens, 0 quick-reply / swap rounds, 0 cold-open options): `phrase.opin.of-course` “Of course!” — shown as a key sentence / in review only.
-- AUTO-FLAG — Learner sentence never actively retrieved in this mission (0 choice screens, 0 quick-reply / swap rounds, 0 cold-open options): `phrase.opin.dont-like-it` “I don't like it.” — appears in sentence review only (orphan in this mission).
+- AUTO-FLAG — Learner sentence never actively retrieved in this mission (0 choice screens, 0 quick-reply / swap / match / builder rounds, 0 cold-open options): `phrase.opin.of-course` “Of course!” — shown as a key sentence / in review only.
+- AUTO-FLAG — Learner sentence never actively retrieved in this mission (0 choice screens, 0 quick-reply / swap / match / builder rounds, 0 cold-open options): `phrase.opin.dont-like-it` “I don't like it.” — appears in sentence review only (orphan in this mission).
 - AUTO-FLAG — 8 of 8 choice screens have NO wrong option (every button is accepted): choosing-a-tour/c2, choosing-a-tour/c4, choosing-a-tour/c6, choosing-a-tour/c8, choosing-a-tour/c10, choosing-a-tour/c10b, choosing-a-tour/c12, choosing-a-tour/c14.
 - AUTO-FLAG — 7 choice screens offer exactly ONE button (no decision): choosing-a-tour/c2, choosing-a-tour/c4, choosing-a-tour/c6, choosing-a-tour/c8, choosing-a-tour/c10b, choosing-a-tour/c12, choosing-a-tour/c14.
 - AUTO-FLAG — M23-Q14: cold-open line contains English words not met in any sentence or dialogue line up to this mission: honestly, restaurant.
@@ -16465,8 +16529,8 @@ Every learner sentence of this mission is a line in a scene.
 - Key-sentence steps: 0
 - Expected-reply/listening items: 0
 - Questions/quizzes (meaning quiz): 0
-- Active-practice questions (quick reply / visual match / swap it / mini map): 0
-- Active retrieval opportunities (quick-reply rounds + swap rounds + dialogue screens with a real choice): 1
+- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 0
+- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 1
 - One-button dialogue screens: 11
 - Learner sentences never actively retrieved: 0
 - Dialogue learner choices (screens): 12
@@ -17164,8 +17228,8 @@ Learner sentences taught beside the dialogue (not a line in any scene):
 - Key-sentence steps: 5
 - Expected-reply/listening items: 4
 - Questions/quizzes (meaning quiz): 1
-- Active-practice questions (quick reply / visual match / swap it / mini map): 0
-- Active retrieval opportunities (quick-reply rounds + swap rounds + dialogue screens with a real choice): 1
+- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 0
+- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 1
 - One-button dialogue screens: 8
 - Learner sentences never actively retrieved: 2
 - Dialogue learner choices (screens): 9
@@ -17183,8 +17247,8 @@ Learner sentences taught beside the dialogue (not a line in any scene):
 - AUTO-FLAG — Same prompt tested repeatedly: “Where did it happen?” is the audio of M25-Q01 and M25-Q05.
 - AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "asking-for-help" n1 — “Are you okay?”
 - AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "police-station" n1 — “Hello. How can I help you?”
-- AUTO-FLAG — Learner sentence never actively retrieved in this mission (0 choice screens, 0 quick-reply / swap rounds, 0 cold-open options): `phrase.emerg.lost-passport` “I lost my passport.” — shown as a key sentence / in review only.
-- AUTO-FLAG — Learner sentence never actively retrieved in this mission (0 choice screens, 0 quick-reply / swap rounds, 0 cold-open options): `phrase.lost.cant-find-wallet` “I can't find my wallet.” — appears in sentence review only (orphan in this mission).
+- AUTO-FLAG — Learner sentence never actively retrieved in this mission (0 choice screens, 0 quick-reply / swap / match / builder rounds, 0 cold-open options): `phrase.emerg.lost-passport` “I lost my passport.” — shown as a key sentence / in review only.
+- AUTO-FLAG — Learner sentence never actively retrieved in this mission (0 choice screens, 0 quick-reply / swap / match / builder rounds, 0 cold-open options): `phrase.lost.cant-find-wallet` “I can't find my wallet.” — appears in sentence review only (orphan in this mission).
 - AUTO-FLAG — 9 of 9 choice screens have NO wrong option (every button is accepted): asking-for-help/c2, asking-for-help/c4, asking-for-help/c6, asking-for-help/c8, police-station/c2, police-station/c4, police-station/c4b, police-station/c6, police-station/c8.
 - AUTO-FLAG — 8 choice screens offer exactly ONE button (no decision): asking-for-help/c2, asking-for-help/c4, asking-for-help/c6, asking-for-help/c8, police-station/c2, police-station/c4b, police-station/c6, police-station/c8.
 - AUTO-FLAG — M25-Q15: cold-open line contains English words not met in any sentence or dialogue line up to this mission: remember.
@@ -17838,8 +17902,8 @@ Every learner sentence of this mission is a line in a scene.
 - Key-sentence steps: 4
 - Expected-reply/listening items: 4
 - Questions/quizzes (meaning quiz): 2
-- Active-practice questions (quick reply / visual match / swap it / mini map): 0
-- Active retrieval opportunities (quick-reply rounds + swap rounds + dialogue screens with a real choice): 4
+- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 0
+- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 4
 - One-button dialogue screens: 4
 - Learner sentences never actively retrieved: 0
 - Dialogue learner choices (screens): 8
@@ -18432,8 +18496,8 @@ Learner sentences taught beside the dialogue (not a line in any scene):
 - Key-sentence steps: 5
 - Expected-reply/listening items: 4
 - Questions/quizzes (meaning quiz): 1
-- Active-practice questions (quick reply / visual match / swap it / mini map): 0
-- Active retrieval opportunities (quick-reply rounds + swap rounds + dialogue screens with a real choice): 2
+- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 0
+- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 2
 - One-button dialogue screens: 4
 - Learner sentences never actively retrieved: 2
 - Dialogue learner choices (screens): 6
@@ -18451,8 +18515,8 @@ Learner sentences taught beside the dialogue (not a line in any scene):
 - AUTO-FLAG — Same prompt tested repeatedly: “Where are you?” is the audio of M27-Q03 and M27-Q05.
 - AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "emergency" n5 — “Do you need an ambulance or the police?”
 - AUTO-FLAG — Practice item wording not in this mission's dialogue: `reply.emerg.stay-calm` “Stay calm, help is coming.” (drilled as an expected reply / distractor, but no NPC line here says it).
-- AUTO-FLAG — Learner sentence never actively retrieved in this mission (0 choice screens, 0 quick-reply / swap rounds, 0 cold-open options): `phrase.emerg.call-police` “Call the police!” — shown as a key sentence / in review only.
-- AUTO-FLAG — Learner sentence never actively retrieved in this mission (0 choice screens, 0 quick-reply / swap rounds, 0 cold-open options): `phrase.emerg.where-hospital` “Where is the hospital?” — appears in sentence review only (orphan in this mission).
+- AUTO-FLAG — Learner sentence never actively retrieved in this mission (0 choice screens, 0 quick-reply / swap / match / builder rounds, 0 cold-open options): `phrase.emerg.call-police` “Call the police!” — shown as a key sentence / in review only.
+- AUTO-FLAG — Learner sentence never actively retrieved in this mission (0 choice screens, 0 quick-reply / swap / match / builder rounds, 0 cold-open options): `phrase.emerg.where-hospital` “Where is the hospital?” — appears in sentence review only (orphan in this mission).
 - AUTO-FLAG — 6 of 6 choice screens have NO wrong option (every button is accepted): emergency/c2, emergency/c4, emergency/c6, emergency/c8, emergency/c8b, emergency/c10.
 - AUTO-FLAG — 4 choice screens offer exactly ONE button (no decision): emergency/c2, emergency/c4, emergency/c8b, emergency/c10.
 - AUTO-FLAG — M27-Q12: cold-open line contains English words not met in any sentence or dialogue line up to this mission: carefully, exactly.
@@ -18966,8 +19030,8 @@ Every learner sentence of this mission is a line in a scene.
 - Key-sentence steps: 0
 - Expected-reply/listening items: 0
 - Questions/quizzes (meaning quiz): 0
-- Active-practice questions (quick reply / visual match / swap it / mini map): 0
-- Active retrieval opportunities (quick-reply rounds + swap rounds + dialogue screens with a real choice): 1
+- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 0
+- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 1
 - One-button dialogue screens: 6
 - Learner sentences never actively retrieved: 0
 - Dialogue learner choices (screens): 7
@@ -19574,8 +19638,8 @@ Learner sentences taught beside the dialogue (not a line in any scene):
 - Key-sentence steps: 0
 - Expected-reply/listening items: 0
 - Questions/quizzes (meaning quiz): 0
-- Active-practice questions (quick reply / visual match / swap it / mini map): 0
-- Active retrieval opportunities (quick-reply rounds + swap rounds + dialogue screens with a real choice): 8
+- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 0
+- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 8
 - One-button dialogue screens: 0
 - Learner sentences never actively retrieved: 0
 - Dialogue learner choices (screens): 8
@@ -20390,8 +20454,8 @@ Every learner sentence of this mission is a line in a scene.
 - Key-sentence steps: 0
 - Expected-reply/listening items: 0
 - Questions/quizzes (meaning quiz): 0
-- Active-practice questions (quick reply / visual match / swap it / mini map): 0
-- Active retrieval opportunities (quick-reply rounds + swap rounds + dialogue screens with a real choice): 0
+- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 0
+- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 0
 - One-button dialogue screens: 15
 - Learner sentences never actively retrieved: 0
 - Dialogue learner choices (screens): 15
@@ -20430,9 +20494,9 @@ Every learner sentence of this mission is a line in a scene.
 
 | Mission | Sentences (prod / heard / kit) | Expected replies | Listening questions | Meaning questions | Active-practice questions | Dialogue-choice questions | One-button screens | Recovery moments | Cold open | Vocabulary pre-step | Swap variants | Total interactive questions | Auto-flags |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 01 Introduce Myself | 10 (4 / 4 / 2) | 4 | 4 | 0 | 3 | 6 | 3 | 2 | 1 | 4 words | 0 | 14 | 2 |
-| 02 Numbers & Money | 14 (5 / 7 / 2) | 4 | 5 | 1 | 8 | 4 | 1 | 2 | 0 | 6 words | 1 | 17 | 11 |
-| 03 Coffee Shop | 22 (8 / 10 / 4) | 4 | 4 | 0 | 6 | 11 | 5 | 3 | 1 | 6 words | 1 | 22 | 5 |
+| 01 Introduce Myself | 10 (4 / 4 / 2) | 4 | 4 | 0 | 5 | 6 | 3 | 2 | 1 | 4 words | 0 | 16 | 2 |
+| 02 Numbers & Money | 14 (5 / 7 / 2) | 4 | 5 | 1 | 9 | 4 | 1 | 2 | 0 | 6 words | 1 | 18 | 11 |
+| 03 Coffee Shop | 22 (8 / 10 / 4) | 4 | 4 | 0 | 8 | 11 | 5 | 3 | 1 | 6 words | 1 | 24 | 5 |
 | 04 Everyday Core: Want / Need / Have / Can | 18 (10 / 6 / 2) | 4 | 4 | 0 | 12 | 10 | 9 | 2 | 1 | 5 words | 0 | 27 | 4 |
 | 05 Directions | 14 (5 / 7 / 2) | 4 | 5 | 1 | 9 | 3 | 1 | 1 | 0 | 6 words | 0 | 17 | 5 |
 | 06 Airport & Border | 15 (5 / 6 / 4) | 4 | 6 | 2 | 0 | 10 | 5 | 3 | 1 | no | 0 | 17 | 7 |
@@ -20470,17 +20534,17 @@ Every learner-production sentence id of the Core, in order of first appearance. 
 | Sentence id | English | First | Reused in | Key | Select (ok / wrong) | Quick reply / swap rounds | Cold-open option | Review cards | In a checkpoint | Listening-only | Flag |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | `phrase.social.my-name` | My name is Dan. | 01 | — | 1 | 2 / 0 | 2 | 0 | 1 | no | no |  |
-| `phrase.social.nice-to-meet` | Nice to meet you! | 01 | — | 1 | 0 / 1 | 2 | 1 | 1 | no | no |  |
+| `phrase.social.nice-to-meet` | Nice to meet you! | 01 | — | 1 | 0 / 1 | 1 | 1 | 1 | no | no |  |
 | `phrase.social.from-israel` | I'm from Israel. | 01 | 11, 24, 30 | 1 | 4 / 0 | 3 | 0 | 2 | yes | no |  |
-| `phrase.social.first-time` | It's my first time here. | 01 | 11 | 1 | 4 / 0 | 2 | 0 | 2 | no | no |  |
+| `phrase.social.first-time` | It's my first time here. | 01 | 11 | 1 | 4 / 0 | 3 | 0 | 2 | no | no |  |
 | `phrase.money.how-much` | How much is it? | 02 | 18 | 1 | 2 / 0 | 2 | 0 | 1 | yes | no |  |
 | `phrase.money.by-card` | By card, please. | 02 | 18 | 1 | 2 / 0 | 1 | 0 | 1 | yes | no |  |
 | `phrase.money.in-cash` | In cash. | 02 | — | 0 | 1 / 0 | 1 | 0 | 1 | no | no |  |
 | `phrase.money.one-box` | One box, please. | 02 | — | 0 | 2 / 0 | 1 | 0 | 1 | no | no |  |
-| `phrase.money.too-expensive` | That's too expensive. | 02 | — | 1 | 0 / 0 | 1 | 0 | 1 | no | no |  |
-| `phrase.coffee.iced-coffee` | I'd like an iced coffee, please. | 03 | 18 | 1 | 3 / 0 | 1 | 0 | 1 | yes | no |  |
+| `phrase.money.too-expensive` | That's too expensive. | 02 | — | 1 | 0 / 0 | 2 | 0 | 1 | no | no |  |
+| `phrase.coffee.iced-coffee` | I'd like an iced coffee, please. | 03 | 18 | 1 | 3 / 0 | 2 | 0 | 1 | yes | no |  |
 | `phrase.coffee.to-go` | To go, please. | 03 | — | 0 | 0 / 0 | 3 | 0 | 1 | no | no |  |
-| `phrase.coffee.no-sugar` | Milk, no sugar. | 03 | — | 1 | 2 / 0 | 2 | 0 | 1 | no | no |  |
+| `phrase.coffee.no-sugar` | Milk, no sugar. | 03 | — | 1 | 2 / 0 | 3 | 0 | 1 | no | no |  |
 | `phrase.coffee.croissant` | A croissant, please. | 03 | — | 0 | 1 / 0 | 2 | 0 | 1 | no | no |  |
 | `phrase.coffee.thats-all` | That's all, thanks. | 03 | — | 1 | 2 / 0 | 2 | 0 | 1 | no | no |  |
 | `phrase.coffee.card` | Card, please. | 03 | — | 1 | 2 / 0 | 4 | 1 | 1 | no | no |  |
@@ -20876,7 +20940,7 @@ Total: 67.
 
 # Complete Existing Question Bank
 
-Every encoded question, compact. Listening questions (expected-reply, meaning-quiz) show MEANINGS on the buttons; quick-reply, dialogue-choice and cold-open show target-language lines; visual-match shows tiles; swap-it shows slot values; mini-map shows tappable map cells. ✅ marks every accepted choice; a dialogue screen can have several.
+Every encoded question, compact. Listening questions (expected-reply, meaning-quiz) show MEANINGS on the buttons; quick-reply, dialogue-choice and cold-open show target-language lines; visual-match shows tiles; swap-it shows slot values; mini-map shows tappable map cells; match-pairs shows the answer tiles; sentence-builder shows the chunks in their correct order. ✅ marks every accepted choice; a dialogue screen can have several.
 
 ## Mission 01 — Introduce Myself
 
@@ -20916,7 +20980,34 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Correct: Enjoy your stay!
 - Tests: reply.social.enjoy-stay
 
-**M01-Q05** — quick-reply
+**M01-Q05** — match-pairs
+- Prompt: "Match each question to your answer" / "חבר כל שאלה לתשובה שלך" — tile to match (target language, no translation): EN "What's your name?" · FR "Comment vous appelez-vous ?" · ES "¿Cómo se llama?"
+- Audio: What's your name? — (איך קוראים לך?)
+- A: My name is Dan. ✅
+- B: I'm from Israel.
+- C: Yes, it's my first time here.
+- Correct: My name is Dan.
+- Tests: phrase.social.my-name
+
+**M01-Q06** — match-pairs
+- Prompt: "Match each question to your answer" / "חבר כל שאלה לתשובה שלך" — tile to match (target language, no translation): EN "Where are you from?" · FR "D’où venez-vous ?" · ES "¿De dónde es?"
+- Audio: Where are you from? — (מאיפה אתה?)
+- A: My name is Dan.
+- B: I'm from Israel. ✅
+- C: Yes, it's my first time here.
+- Correct: I'm from Israel.
+- Tests: phrase.social.from-israel
+
+**M01-Q07** — match-pairs
+- Prompt: "Match each question to your answer" / "חבר כל שאלה לתשובה שלך" — tile to match (target language, no translation): EN "Is this your first time here?" · FR "C’est votre première fois ici ?" · ES "¿Es su primera vez aquí?"
+- Audio: Is this your first time here? — (זו הפעם הראשונה שלך כאן?)
+- A: My name is Dan.
+- B: I'm from Israel.
+- C: Yes, it's my first time here. ✅
+- Correct: Yes, it's my first time here.
+- Tests: phrase.social.first-time
+
+**M01-Q08** — quick-reply
 - Prompt: "What do you say?" / "מה עונים?"
 - Audio: Where are you from? — (מאיפה אתה?)
 - A: I'm from Israel. ✅
@@ -20925,16 +21016,7 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Correct: I'm from Israel.
 - Tests: phrase.social.from-israel
 
-**M01-Q06** — quick-reply
-- Prompt: "What do you say?" / "מה עונים?"
-- Audio: What's your name? — (איך קוראים לך?)
-- A: My name is Dan. ✅
-- B: I'm from Israel.
-- C: Nice to meet you!
-- Correct: My name is Dan.
-- Tests: phrase.social.my-name
-
-**M01-Q07** — quick-reply
+**M01-Q09** — quick-reply
 - Prompt: "What do you say?" / "מה עונים?"
 - Audio: Is this your first time here? — (זו הפעם הראשונה שלך כאן?)
 - A: Yes, it's my first time here. ✅
@@ -20943,7 +21025,7 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Correct: Yes, it's my first time here.
 - Tests: phrase.social.first-time
 
-**M01-Q08** — dialogue-choice
+**M01-Q10** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Hi! Welcome. What's your name? — (היי! ברוך הבא. איך קוראים לך?)
 - A: My name is Dan. ✅
@@ -20951,14 +21033,14 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Correct: My name is Dan. | Can you repeat that?
 - Tests: phrase.social.my-name, phrase.recovery.repeat
 
-**M01-Q09** — dialogue-choice
+**M01-Q11** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Of course — what — is — your — name? — (כמובן — איך — קוראים — לך?)
 - A: My name is Dan. ✅
 - Correct: My name is Dan.
 - Tests: phrase.social.my-name
 
-**M01-Q10** — dialogue-choice
+**M01-Q12** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Nice to meet you, Dan! Where are you from? — (נעים להכיר, דן! מאיפה אתה?)
 - A: I'm from Israel. ✅
@@ -20966,14 +21048,14 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Correct: I'm from Israel.
 - Tests: phrase.social.from-israel, phrase.social.nice-to-meet
 
-**M01-Q11** — dialogue-choice
+**M01-Q13** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Likewise! And where are you from? — (גם לי! ומאיפה אתה?)
 - A: I'm from Israel. ✅
 - Correct: I'm from Israel.
 - Tests: phrase.social.from-israel
 
-**M01-Q12** — dialogue-choice
+**M01-Q14** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Israel, wonderful! Is this your first time here? — (ישראל, נהדר! זו הפעם הראשונה שלך כאן?)
 - A: Yes, it's my first time here. ✅
@@ -20981,14 +21063,14 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Correct: Yes, it's my first time here. | Please speak slowly.
 - Tests: phrase.social.first-time, phrase.recovery.slowly
 
-**M01-Q13** — dialogue-choice
+**M01-Q15** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Sure. Is this — your first time — here? — (בטח. זו — הפעם הראשונה שלך — כאן?)
 - A: Yes, it's my first time here. ✅
 - Correct: Yes, it's my first time here.
 - Tests: phrase.social.first-time
 
-**M01-Q14** — cold-open
+**M01-Q16** — cold-open
 - Prompt: "Heads up: a fast one is coming. Use a tool." / "שים לב: מגיע משפט מהיר. השתמש בכלי."
 - Audio: And what do you do back home, if you don't mind me asking? — (ומה אתה עושה בחיים, אם מותר לשאול?)
 - A: Can you repeat that? ✅
@@ -21136,7 +21218,14 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Correct: By card, please. | In cash.
 - Tests: phrase.money.by-card, phrase.money.in-cash
 
-**M02-Q13** — dialogue-choice
+**M02-Q13** — sentence-builder
+- Prompt: "Build the sentence" / "בנה את המשפט" — cue shown: the sentence's MEANING in the app language ("זה יקר מדי.")
+- Audio: (nothing before Check; the built sentence is spoken once it is right) — ()
+- A: That's  |  too  |  expensive. ✅
+- Correct: That's  |  too  |  expensive.
+- Tests: phrase.money.too-expensive
+
+**M02-Q14** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Fresh strawberries! Best in the market! — (תותים טריים! הכי טובים בשוק!)
 - A: How much is it? ✅
@@ -21144,7 +21233,7 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Correct: How much is it? | One moment, please.
 - Tests: phrase.money.how-much, phrase.recovery.one-moment
 
-**M02-Q14** — dialogue-choice
+**M02-Q15** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Five euros a box, or two for eight! — (חמישה יורו קופסה, או שתיים בשמונה!)
 - A: Please speak slowly. ✅
@@ -21152,14 +21241,14 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Correct: Please speak slowly. | One box, please.
 - Tests: phrase.recovery.slowly, phrase.money.one-box
 
-**M02-Q15** — dialogue-choice
+**M02-Q16** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Five — euros — one box. — (חמישה — יורו — קופסה אחת.)
 - A: One box, please. ✅
 - Correct: One box, please.
 - Tests: phrase.money.one-box
 
-**M02-Q16** — dialogue-choice
+**M02-Q17** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Perfect. That's five euros. Cash or card? — (מצוין. זה חמישה יורו. מזומן או כרטיס?)
 - A: By card, please. ✅
@@ -21167,7 +21256,7 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Correct: By card, please. | In cash.
 - Tests: phrase.money.by-card, phrase.money.in-cash
 
-**M02-Q17** — visual-match
+**M02-Q18** — visual-match
 - Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio: That comes to fifteen fifty altogether, is that alright? — (זה יוצא חמש עשרה וחצי בסך הכל, זה בסדר?)
 - A: €2
@@ -21274,7 +21363,21 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Correct: Yes, please.
 - Tests: phrase.coffee.yes-please
 
-**M03-Q11** — dialogue-choice
+**M03-Q11** — sentence-builder
+- Prompt: "Build the sentence" / "בנה את המשפט" — cue shown: the sentence's MEANING in the app language ("אני רוצה קפה קר, בבקשה.")
+- Audio: (nothing before Check; the built sentence is spoken once it is right) — ()
+- A: I'd like  |  an iced  |  coffee,  |  please. ✅
+- Correct: I'd like  |  an iced  |  coffee,  |  please.
+- Tests: phrase.coffee.iced-coffee
+
+**M03-Q12** — sentence-builder
+- Prompt: "Build the sentence" / "בנה את המשפט" — cue shown: the sentence's MEANING in the app language ("עם חלב, בלי סוכר.")
+- Audio: (nothing before Check; the built sentence is spoken once it is right) — ()
+- A: Milk,  |  no  |  sugar. ✅
+- Correct: Milk,  |  no  |  sugar.
+- Tests: phrase.coffee.no-sugar
+
+**M03-Q13** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Good morning! What can I get you? — (בוקר טוב! מה להביא לך?)
 - A: I'd like an iced coffee, please. ✅
@@ -21282,14 +21385,14 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Correct: I'd like an iced coffee, please. | One moment, please.
 - Tests: phrase.coffee.iced-coffee, phrase.recovery.one-moment
 
-**M03-Q12** — dialogue-choice
+**M03-Q14** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Of course — take your time! — (ברור — קח את הזמן!)
 - A: I'd like an iced coffee, please. ✅
 - Correct: I'd like an iced coffee, please.
 - Tests: phrase.coffee.iced-coffee
 
-**M03-Q13** — dialogue-choice
+**M03-Q15** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Sure! Medium or large? — (סגור! בינוני או גדול?)
 - A: Medium, please. ✅
@@ -21297,14 +21400,14 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Correct: Medium, please. | Can you repeat that?
 - Tests: phrase.coffee.medium, phrase.recovery.repeat
 
-**M03-Q14** — dialogue-choice
+**M03-Q16** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: MEDIUM — or LARGE? — (בינוני — או גדול?)
 - A: Medium, please. ✅
 - Correct: Medium, please.
 - Tests: phrase.coffee.medium
 
-**M03-Q15** — dialogue-choice
+**M03-Q17** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Milk and sugar? — (חלב וסוכר?)
 - A: Milk, no sugar. ✅
@@ -21312,14 +21415,14 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Correct: Milk, no sugar.
 - Tests: phrase.coffee.no-sugar
 
-**M03-Q16** — dialogue-choice
+**M03-Q18** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: You're welcome! But — milk? sugar? — (בבקשה! אבל — חלב? סוכר?)
 - A: Milk, no sugar. ✅
 - Correct: Milk, no sugar.
 - Tests: phrase.coffee.no-sugar
 
-**M03-Q17** — dialogue-choice
+**M03-Q19** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Anything to eat? — (משהו לאכול?)
 - A: A croissant, please. ✅
@@ -21327,14 +21430,14 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Correct: A croissant, please. | That's all, thanks.
 - Tests: phrase.coffee.croissant, phrase.coffee.thats-all
 
-**M03-Q18** — dialogue-choice
+**M03-Q20** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Great choice. Would you like anything else? — (בחירה מצוינת. עוד משהו?)
 - A: That's all, thanks. ✅
 - Correct: That's all, thanks.
 - Tests: phrase.coffee.thats-all
 
-**M03-Q19** — dialogue-choice
+**M03-Q21** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: That'll be six fifty. Cash or card? — (שש חמישים בבקשה. מזומן או כרטיס?)
 - A: Card, please. ✅
@@ -21342,14 +21445,14 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Correct: Card, please. | Please speak slowly.
 - Tests: phrase.coffee.card, phrase.recovery.slowly
 
-**M03-Q20** — dialogue-choice
+**M03-Q22** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Six — fifty. Cash, or card? — (שש — חמישים. מזומן או כרטיס?)
 - A: Card, please. ✅
 - Correct: Card, please.
 - Tests: phrase.coffee.card
 
-**M03-Q21** — dialogue-choice
+**M03-Q23** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Would you like the receipt? — (רוצה את הקבלה?)
 - A: No, thank you! ✅
@@ -21357,7 +21460,7 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Correct: No, thank you! | Yes, please.
 - Tests: phrase.recovery.thank-you, phrase.coffee.yes-please
 
-**M03-Q22** — cold-open
+**M03-Q24** — cold-open
 - Prompt: "Heads up: a fast one is coming. Use a tool." / "שים לב: מגיע משפט מהיר. השתמש בכלי."
 - Audio: Sorry, we are out of croissants — would a muffin be okay instead? — (סליחה, נגמרו הקרואסונים — מאפין במקום זה בסדר?)
 - A: Can you repeat that? ✅
@@ -24495,11 +24598,11 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Sentence listings across missions (with reuse): 460
 - Expected-reply questions: 96
 - Meaning quizzes: 26
-- Active-practice questions: 38
+- Active-practice questions: 43
 - Dialogue choice screens: 248
 - Cold opens: 32
-- Total interactive questions: 440
-- Total answer choices: 909
+- Total interactive questions: 445
+- Total answer choices: 918
 - Wrong-answer branches: 6
 - Recovery opportunities: 53
 - Learner sentences with 0 active retrieval opportunities: 13

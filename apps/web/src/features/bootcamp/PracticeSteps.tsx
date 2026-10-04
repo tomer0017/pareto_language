@@ -10,11 +10,15 @@ import { mulberry32, sessionSeed, shuffle } from '../../shared/util/shuffle.js';
 import { TargetText } from '../foundation/TappableText.js';
 import { useBootcampStore } from './bootcampStore.js';
 import { dialogueTr } from './i18n.js';
-import { fillFrame, frameParts, quickReplyLabel, quickReplyPrompt, type StepOf } from './practiceEngines.js';
+import { CompanionReaction } from '../companion/Companion.js';
+import {
+  builderHint, builderPool, builderSentence, builderSolved, fillFrame, frameParts, isHelpToolId, matchAnswerOrder, matchRecord, matchSpeaks, matchTap, newMatch,
+  quickReplyLabel, quickReplyPrompt, type MatchSide, type StepOf,
+} from './practiceEngines.js';
 import type { BootcampItem, MapCell } from './types.js';
 
 /**
- * The four active-practice engines. Each is a generic, data-driven step: the mission supplies
+ * The active-practice engines. Each is a generic, data-driven step: the mission supplies
  * rounds, the engine supplies the interaction. They share one rhythm — hear (or read a cue) → act →
  * see what it was → next — and READY's rule that a wrong answer teaches and never traps: "Try
  * again" and "Continue" are always both there. No translation is shown before the learner acts.
@@ -66,7 +70,12 @@ export function QuickReplyStep({ step, itemsById, onDone }: { step: StepOf<'quic
       expectedText: fitText, expectedTranslation: L(fitItem.meaning), onReplayExpected: () => void speakL(fitText),
       why: fitItem.tip ? L(fitItem.tip) : t('meansMapping', { en: fitItem.text, meaning: L(fitItem.meaning) }),
     });
-    return <AnswerFeedback ok={chosen.correct} ctx={ctx} onRetry={chosen.correct ? undefined : () => setPicked(null)} onContinue={next} />;
+    // Choosing a conversation-help tool where it is accepted is a win of its own — the companion says so.
+    const kind = !chosen.correct ? 'encouraging' : isHelpToolId(chosen.itemId) ? 'recovery' : 'correct';
+    return (
+      <AnswerFeedback ok={chosen.correct} ctx={ctx} onRetry={chosen.correct ? undefined : () => setPicked(null)} onContinue={next}
+        aside={<CompanionReaction kind={kind} text={kind === 'correct' ? false : undefined} size={40} />} />
+    );
   }
 
   return (
@@ -101,6 +110,7 @@ function Heard({ ok, text, gloss, onReplay }: { ok: boolean; text: string; gloss
   return (
     <div className="fade-in" style={{ display: 'flex', flexDirection: 'column', gap: 4, alignItems: 'center' }}>
       <span className={`feedback-head ${ok ? 'ok' : 'bad'}`}>{ok ? `✓ ${t('correctHeader')}` : `❌ ${t('wrongHeader')}`}</span>
+      <CompanionReaction kind={ok ? 'correct' : 'encouraging'} text={ok ? false : undefined} size={40} />
       <p className="drill-phrase" style={{ fontSize: '1.15rem' }}><TargetText text={text} /></p>
       <p className="drill-meaning" style={{ fontSize: '0.95rem' }}>{gloss}</p>
       <button className="btn-ghost" style={{ minHeight: 36, padding: '4px 10px' }} onClick={onReplay} aria-label={t('replayAudio')}>🔊</button>
@@ -298,6 +308,158 @@ export function MiniMapStep({ step, onDone }: { step: StepOf<'miniMap'>; onDone:
       ) : (
         <ResultActions ok={ok} last={last} onRetry={() => { setPicked(null); play(); }} onNext={() => { setPicked(null); if (last) onDone(); else setI(i + 1); }} />
       )}
+    </>
+  );
+}
+
+/* ── Match Pairs ─────────────────────────────────────────────────────────────────────────────── */
+
+/**
+ * Connect each question you HEAR to the line you SAY. Two groups of tiles: tap one, then its
+ * partner (either order). A right pair locks under a shared number; a wrong one shakes and lets go.
+ * The board is laid out left-to-right in every app language — it shows target-language sentences.
+ */
+export function MatchPairsStep({ step, itemsById, onDone }: { step: StepOf<'matchPairs'>; itemsById: Map<string, BootcampItem>; onDone: () => void }) {
+  const bc = useBootcampStore();
+  const [state, setState] = useState(newMatch);
+  const [miss, setMiss] = useState<{ side: MatchSide; pair: number } | null>(null);
+  const [answerOrder] = useState(() => matchAnswerOrder(step.pairs.length, sessionSeed()));
+  const complete = state.matched.length >= step.pairs.length;
+  const promptText = (i: number): string => itemsById.get(step.pairs[i]!.promptItemId)?.text ?? '';
+  const answerText = (i: number): string => step.pairs[i]!.answerText ?? itemsById.get(step.pairs[i]!.answerItemId)?.text ?? '';
+
+  const onTap = (side: MatchSide, pair: number): void => {
+    tap();
+    const result = matchTap(step.pairs.length, state, side, pair);
+    const record = matchRecord(step.pairs, result);
+    if (record) bc.recordDrill(record.itemId, 'simulator', record.outcome);
+    if (result.outcome === 'matched') success();
+    if (result.outcome === 'missed') { feedbackWrong(); setMiss({ side, pair }); setTimeout(() => setMiss(null), 450); }
+    const heard = matchSpeaks(result, side);
+    if (heard === 'answer') void speakL(answerText(pair), 0.92);
+    if (heard === 'prompt') void speakL(promptText(pair));
+    setState(result.state);
+  };
+
+  const tile = (side: MatchSide, pair: number) => {
+    const order = state.matched.indexOf(pair);
+    const matched = order !== -1;
+    const picked = state.picked?.side === side && state.picked.pair === pair;
+    const missed = miss?.side === side && miss.pair === pair;
+    return (
+      <button
+        key={`${side}-${pair}`}
+        className={`pmatch-tile ${picked ? 'is-picked' : ''} ${matched ? 'is-matched' : ''} ${missed ? 'is-miss' : ''}`}
+        disabled={matched}
+        aria-pressed={picked}
+        onClick={() => onTap(side, pair)}
+      >
+        <span className="pmatch-mark" aria-hidden>{matched ? order + 1 : missed ? '✕' : picked ? '●' : side === 'prompt' ? '👂' : '🗣️'}</span>
+        <span dir="ltr"><TargetText text={side === 'prompt' ? promptText(pair) : answerText(pair)} /></span>
+      </button>
+    );
+  };
+
+  return (
+    <>
+      <div className="drill-card practice-card">
+        <p className="drill-label">{step.label ? L(step.label) : t('matchTitle')}</p>
+        <div className="pmatch" dir="ltr">
+          {step.pairs.map((_, i) => tile('prompt', i))}
+          <span className="pmatch-sep" aria-hidden />
+          {answerOrder.map((i) => tile('answer', i))}
+        </div>
+        {complete && <CompanionReaction kind="celebrate" size={44} />}
+      </div>
+      {complete && (
+        <div className="action-zone">
+          <button className="btn-primary" onClick={onDone}>{t('continue')}</button>
+        </div>
+      )}
+    </>
+  );
+}
+
+/* ── Sentence Builder ────────────────────────────────────────────────────────────────────────── */
+
+/**
+ * Rebuild a sentence the mission already taught. Its meaning is the cue; the chunks are tapped into
+ * place (tap a placed chunk to take it back). Check appears once every chunk is used. A miss keeps
+ * the learner in control: nothing is revealed, a hint is offered after one miss, and after two the
+ * learner may simply continue. The chunks are the language's own, authored — never generated.
+ */
+export function SentenceBuilderStep({ step, itemsById, onDone }: { step: StepOf<'sentenceBuilder'>; itemsById: Map<string, BootcampItem>; onDone: () => void }) {
+  const bc = useBootcampStore();
+  const [i, setI] = useState(0);
+  const [placed, setPlaced] = useState<number[]>([]);
+  const [status, setStatus] = useState<'building' | 'wrong' | 'right' | 'shown'>('building');
+  const [misses, setMisses] = useState(0);
+  const [seed] = useState(sessionSeed);
+  const round = step.rounds[i]!;
+  const item = itemsById.get(round.itemId)!;
+  const pool = useMemo(() => builderPool(round.chunks, seed + i), [round, seed, i]);
+  const sentence = builderSentence(round.chunks);
+  const finished = status === 'right' || status === 'shown';
+  const last = i + 1 >= step.rounds.length;
+
+  const place = (chunk: number): void => { tap(); setStatus('building'); setPlaced((p) => [...p, chunk]); };
+  const takeBack = (at: number): void => { tap(); setStatus('building'); setPlaced((p) => p.filter((_, k) => k !== at)); };
+  const check = (): void => {
+    const ok = builderSolved(round.chunks, placed);
+    bc.recordDrill(item.id, 'flashRecall', ok ? 'pass' : 'fail');
+    if (ok) { success(); setStatus('right'); void speakL(sentence, 0.92); }
+    else { feedbackWrong(); setStatus('wrong'); setMisses((n) => n + 1); }
+  };
+  const next = (): void => {
+    setPlaced([]); setStatus('building'); setMisses(0);
+    if (last) onDone(); else setI(i + 1);
+  };
+
+  return (
+    <>
+      <div className="drill-card practice-card">
+        <p className="drill-label">{step.label ? L(step.label) : t('builderTitle')}</p>
+        <Progress i={i} n={step.rounds.length} />
+        <p className="drill-meaning" style={{ fontWeight: 700 }}>{L(item.meaning)}</p>
+        <div className={`pbuild-answer ${status === 'right' || status === 'shown' ? 'is-ok' : status === 'wrong' ? 'is-bad' : ''}`} dir="ltr" lang={useAppStore.getState().learningLang} aria-live="polite">
+          {status === 'shown'
+            ? round.chunks.map((c, k) => <span key={k} className="pchip">{c}</span>)
+            : placed.length === 0
+              ? <span className="faint small" dir="auto" style={{ margin: '0 auto' }}>{t('builderEmpty')}</span>
+              : placed.map((chunk, k) => (
+                <button key={`${chunk}-${k}`} className="pchip" disabled={finished} onClick={() => takeBack(k)}>{round.chunks[chunk]}</button>
+              ))}
+        </div>
+        {!finished && (
+          <div className="pbuild-pool" dir="ltr">
+            {pool.map((chunk) => (
+              <button key={chunk} className={`pchip ${placed.includes(chunk) ? 'is-used' : ''}`} disabled={placed.includes(chunk)} aria-hidden={placed.includes(chunk)} onClick={() => place(chunk)}>
+                {round.chunks[chunk]}
+              </button>
+            ))}
+          </div>
+        )}
+        {status === 'wrong' && <p className="feedback-head bad">❌ {t('builderNotYet')}</p>}
+        {status === 'wrong' && <CompanionReaction kind="encouraging" size={40} />}
+        {status === 'right' && <span className="feedback-head ok">✓ {t('correctHeader')}</span>}
+        {status === 'right' && <CompanionReaction kind="correct" text={false} size={40} />}
+        {finished && <button className="btn-ghost" style={{ alignSelf: 'center' }} onClick={() => void speakL(sentence)} aria-label={t('replayAudio')}>🔊 {t('hearAgain')}</button>}
+      </div>
+      <div className="action-zone">
+        {finished ? (
+          <button className="btn-primary" onClick={next}>{last ? t('continue') : t('nextBtn')}</button>
+        ) : (
+          <>
+            {misses >= 1 && status !== 'building' && (
+              <button className="btn-ghost" onClick={() => { tap(); setStatus('building'); setPlaced(builderHint(round.chunks, placed)); }}>💡 {t('builderHint')}</button>
+            )}
+            {misses >= 2 && status === 'wrong' && (
+              <button className="btn-secondary" onClick={() => { setStatus('shown'); void speakL(sentence, 0.92); }}>{t('continue')}</button>
+            )}
+            <button className="btn-primary" disabled={placed.length !== round.chunks.length} onClick={check}>{t('builderCheck')}</button>
+          </>
+        )}
+      </div>
     </>
   );
 }

@@ -1377,3 +1377,34 @@ div.jstep { box-shadow: none; border-color: var(--line); }
 .pframe { font-size: 1.35rem; font-weight: 800; line-height: 1.4; direction: ltr; unicode-bidi: isolate; }
 .pframe .pslot { display: inline-block; min-width: 3.2em; padding: 0 6px; border-bottom: 3px solid var(--accent); color: var(--accent); }
 .practice-card { min-height: 0; padding: 22px 16px; gap: 10px; }
+
+/* Match Pairs + Sentence Builder. Target-language content is always laid out left-to-right,
+   whatever the app direction; state is never signalled by colour alone (badges / marks). */
+.pmatch { display: flex; flex-direction: column; gap: 8px; width: 100%; direction: ltr; unicode-bidi: isolate; }
+.pmatch-sep { height: 1px; background: var(--line); margin: 2px 12px; }
+.pmatch-tile {
+  width: 100%; min-height: 52px; padding: 10px 12px; border-radius: 16px; text-align: left; direction: ltr; unicode-bidi: isolate;
+  background: var(--card); border: 1.5px solid var(--line); box-shadow: var(--shadow-card); color: var(--ink);
+  display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1rem; line-height: 1.25;
+}
+.pmatch-tile .pmatch-mark { flex: none; width: 26px; height: 26px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 800; background: var(--line); color: var(--ink-dim); }
+.pmatch-tile.is-picked { border-color: var(--accent); border-width: 2.5px; }
+.pmatch-tile.is-picked .pmatch-mark { background: var(--accent); color: #fff; }
+.pmatch-tile.is-matched { border-style: dashed; border-color: var(--good); box-shadow: none; }
+.pmatch-tile.is-matched .pmatch-mark { background: var(--good); color: #fff; }
+.pmatch-tile.is-miss { border-color: var(--danger); animation: pshake 0.35s ease-in-out 1; }
+.pmatch-tile:disabled { opacity: 1; }
+.pbuild-answer {
+  min-height: 64px; width: 100%; padding: 10px; border-radius: 18px; border: 2px dashed var(--line);
+  display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: flex-start; direction: ltr; unicode-bidi: isolate;
+}
+.pbuild-answer.is-ok { border-style: solid; border-color: var(--good); }
+.pbuild-answer.is-bad { border-style: solid; border-color: var(--danger); animation: pshake 0.35s ease-in-out 1; }
+.pbuild-pool { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; direction: ltr; unicode-bidi: isolate; width: 100%; }
+.pchip {
+  min-height: 46px; padding: 8px 14px; border-radius: 14px; font-weight: 800; font-size: 1.05rem; direction: ltr; unicode-bidi: isolate;
+  background: var(--card); border: 1.5px solid var(--line); box-shadow: var(--shadow-card); color: var(--ink);
+}
+.pchip.is-used { visibility: hidden; }
+@keyframes pshake { 0%,100% { transform: translateX(0); } 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
+@media (prefers-reduced-motion: reduce) { .pmatch-tile.is-miss, .pbuild-answer.is-bad { animation: none; } }

@@ -10,8 +10,10 @@ import { success, tap } from '../../shared/ui/haptics.js';
 import { BOOTCAMP_PLAN, missionNumber, nextMission } from './plan.js';
 import { missionIcon, missionJourney, missionPhases, phaseOfIndex, primaryDialogue, type JourneyStepId, type JourneyStepState } from './missionFlow.js';
 import { Learn } from './Learn.js';
-import { CompanionReaction } from '../companion/Companion.js';
-import { MiniMapStep, QuickReplyStep, SwapStep, VisualMatchStep } from './PracticeSteps.js';
+import { CompanionCoach, CompanionReaction } from '../companion/Companion.js';
+import { coachFor } from '../companion/companionCoach.js';
+import { MatchPairsStep, MiniMapStep, QuickReplyStep, SentenceBuilderStep, SwapStep, VisualMatchStep } from './PracticeSteps.js';
+import { isHelpToolId } from './practiceEngines.js';
 import { missionsFor, useBootcampStore } from './bootcampStore.js';
 import type { BootcampItem, BootcampStep, BootcampDialogue, BootcampVideo, DialogueChoice } from './types.js';
 import { dialogueTranscript } from './transcript.js';
@@ -243,6 +245,9 @@ function MissionPlayer() {
   const progress = Math.round((bc.index / day.steps.length) * 100);
   const phases = missionPhases(day);
   const phase = phaseOfIndex(phases, bc.index);
+  // The companion's one line for this step, if it has one: the mission's goal on the intro card, or
+  // how to play the first game of each kind. Most steps have none.
+  const coach = coachFor(day.steps, bc.index, BOOTCAMP_PLAN.find((m) => m.day === day.day)?.id);
 
   return (
     <div className="screen">
@@ -279,6 +284,7 @@ function MissionPlayer() {
         </button>
       )}
       <div className="fade-in mission-step-body" key={bc.index}>
+        {coach && <CompanionCoach line={L(coach.line)} />}
         {step.kind === 'video' && <VideoStep video={video} mode={step.mode} onNext={advance} />}
         {step.kind === 'talk' && <TalkStep step={step} onNext={advance} />}
         {step.kind === 'prime' && <PrimeStep step={step} itemsById={itemsById} onNext={advance} />}
@@ -292,6 +298,8 @@ function MissionPlayer() {
         {step.kind === 'visualMatch' && <VisualMatchStep step={step} onDone={() => { pop(); advance(); }} />}
         {step.kind === 'swap' && <SwapStep step={step} onDone={() => { pop(); advance(); }} />}
         {step.kind === 'miniMap' && <MiniMapStep step={step} onDone={() => { pop(); advance(); }} />}
+        {step.kind === 'matchPairs' && <MatchPairsStep step={step} itemsById={itemsById} onDone={() => { pop(); advance(); }} />}
+        {step.kind === 'sentenceBuilder' && <SentenceBuilderStep step={step} itemsById={itemsById} onDone={() => { pop(); advance(); }} />}
         {step.kind === 'receipt' && <ReceiptStep text={step.text} onNext={advance} />}
       </div>
     </div>
@@ -491,9 +499,10 @@ function QuizStep({ step, itemsById, onDone }: { step: Extract<BootcampStep, { k
  *    expected = the response that fit (+ translation + replay). This restores the lost context that
  *    made "That comes to fifteen fifty…" → "Fifteen fifty." confusing.
  */
-function AnsweredView({ ok, en, meaning, yourAnswer, why, tip, prompt, comprehension, onRetry, onNext }: {
+function AnsweredView({ ok, en, meaning, yourAnswer, why, tip, prompt, comprehension, recovery, onRetry, onNext }: {
   ok: boolean; en: string; meaning: string; yourAnswer?: string; why?: string; tip?: string;
-  prompt?: { en: string; he?: string }; comprehension?: boolean; onRetry?: () => void; onNext: () => void;
+  prompt?: { en: string; he?: string }; comprehension?: boolean; /** the right answer was a conversation-help tool */ recovery?: boolean;
+  onRetry?: () => void; onNext: () => void;
 }) {
   const reason = why ?? tip ?? t('meansMapping', { en, meaning });
   const ctx = comprehension
@@ -506,7 +515,10 @@ function AnsweredView({ ok, en, meaning, yourAnswer, why, tip, prompt, comprehen
         chosen: yourAnswer, expectedText: en, expectedTranslation: meaning, onReplayExpected: () => void speakL(en),
         why: reason,
       });
-  return <AnswerFeedback ok={ok} ctx={ctx} onRetry={onRetry} onContinue={onNext} />;
+  // The companion reacts, small and never in the way: a pop for a right answer, encouragement for a
+  // wrong one, and real applause when the winning move was a conversation-help tool.
+  const kind = !ok ? 'encouraging' : recovery ? 'recovery' : 'correct';
+  return <AnswerFeedback ok={ok} ctx={ctx} onRetry={onRetry} onContinue={onNext} aside={<CompanionReaction kind={kind} text={kind === 'correct' ? false : undefined} size={40} />} />;
 }
 
 /** Expected Replies: "you said X — here's what they might answer." Comprehension-first. */
@@ -626,6 +638,7 @@ function DialogueStep({ dialogue, onDone }: { dialogue: BootcampDialogue; onDone
   const [yourLine, setYourLine] = useState<string | null>(null); // your last spoken line (briefly shown)
   const [recovered, setRecovered] = useState(false);
   const [picked, setPicked] = useState<DialogueChoice | null>(null); // coaching feedback pause
+  const [usedTool, setUsedTool] = useState(false); // a conversation-help tool was just used — cheer it
   const node = nodesById.get(nodeId);
 
   useEffect(() => {
@@ -689,6 +702,7 @@ function DialogueStep({ dialogue, onDone }: { dialogue: BootcampDialogue; onDone
       <AnswerFeedback
         ok
         ctx={ctx}
+        aside={<CompanionReaction kind="correct" text={false} size={40} />}
         onContinue={() => { const next = picked.next; setPicked(null); setNodeId(next); }}
       />
     );
@@ -711,6 +725,7 @@ function DialogueStep({ dialogue, onDone }: { dialogue: BootcampDialogue; onDone
       <AnswerFeedback
         ok={false}
         ctx={ctx}
+        aside={<CompanionReaction kind="encouraging" size={40} />}
         onRetry={() => setPicked(null)}
         onContinue={() => { const next = picked.next; setPicked(null); setRecovered(true); setNodeId(next); }}
       />
@@ -722,6 +737,7 @@ function DialogueStep({ dialogue, onDone }: { dialogue: BootcampDialogue; onDone
       <div className="drill-card" style={{ gap: 14, minHeight: 240 }}>
         <p className="drill-label">{t(node.who === 'you' && node.choices?.length === 1 ? 'yourTurnSay' : 'yourTurn')}</p>
         {recovered && <p className="faint small fade-in">🛟 {t('niceRecovery')}</p>}
+        {usedTool && <CompanionReaction kind="recovery" size={40} />}
         {displayNpc && (
           <div className="fade-in" key={displayNpc.id}>
             <p style={{ fontSize: '1.9rem' }}>🧑‍🍳</p>
@@ -745,6 +761,7 @@ function DialogueStep({ dialogue, onDone }: { dialogue: BootcampDialogue; onDone
                     tap();
                     if (c.itemId) bc.recordDrill(c.itemId, 'simulator', c.correct ? 'pass' : 'partial');
                     setYourLine(c.en);
+                    setUsedTool(c.correct && isHelpToolId(c.itemId));
                     // A wrong pick ALWAYS pauses (coaching card in a coaching dialogue, "Not quite" card
                     // elsewhere) so the mistake registers before the NPC reacts. A FULL correct
                     // answer (the natural line, not merely a survival tool) now earns a short success
@@ -811,7 +828,7 @@ function AmbushStep({ step, itemsById, onDone }: { step: Extract<BootcampStep, {
     const ok = picked === correct.id;
     return (
       <AnsweredView ok={ok} en={correct.text} meaning={L(correct.meaning)} tip={correct.tip ? L(correct.tip) : undefined}
-        prompt={{ en: step.npc.en, he: dialogueTr(step.npc) }} yourAnswer={ok ? undefined : wrong.text}
+        prompt={{ en: step.npc.en, he: dialogueTr(step.npc) }} yourAnswer={ok ? undefined : wrong.text} recovery={isHelpToolId(correct.id)}
         onRetry={ok ? undefined : () => setPicked(null)} onNext={() => onDone(ok)} />
     );
   }

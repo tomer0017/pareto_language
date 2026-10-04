@@ -140,6 +140,24 @@ export interface MiniMapRound {
   correct: string;      // id of the tappable cell
 }
 
+/** Match Pairs — connect each heard line to the learner's own answer. Both sides are existing
+ *  sentences of the mission; the engine shuffles one side. */
+export interface MatchPair {
+  /** The line the learner HEARS (an expected-reply sentence of the mission). */
+  promptItemId: string;
+  /** The line the learner SAYS in reply. */
+  answerItemId: string;
+  /** What the answer tile says, when it wraps the sentence ("Yes, it's my first time here."). */
+  answerText?: string;
+}
+
+/** Sentence Builder — rebuild a sentence the mission already taught from its chunks. The chunks are
+ *  AUTHORED PER LANGUAGE, in the correct order; joined with spaces they are exactly the sentence. */
+export interface BuilderRound {
+  itemId: string;
+  chunks: string[];
+}
+
 export type BootcampStep =
   | { kind: 'talk'; icon: string; title: LocalizedText; body: LocalizedText[]; cta?: LocalizedText }
   | { kind: 'tool'; itemId: string; index: number; total: number; label?: LocalizedText }
@@ -159,6 +177,8 @@ export type BootcampStep =
   | { kind: 'visualMatch'; label?: LocalizedText; tiles: MatchTile[]; rounds: { audio: SpokenLine; correct: string; itemId?: string }[]; challenge?: boolean }
   | { kind: 'swap'; label?: LocalizedText; rounds: SwapRound[] }
   | { kind: 'miniMap'; label?: LocalizedText; rounds: MiniMapRound[]; challenge?: boolean }
+  | { kind: 'matchPairs'; label?: LocalizedText; pairs: MatchPair[] }
+  | { kind: 'sentenceBuilder'; label?: LocalizedText; rounds: BuilderRound[] }
   | { kind: 'receipt'; text: LocalizedText }
   | { kind: 'video'; mode: 'intro' | 'again' }   // plays day.introVideo (intro = before, again = after)
   | { kind: 'summary' };

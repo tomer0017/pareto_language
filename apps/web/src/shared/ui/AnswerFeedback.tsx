@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, type ReactNode } from 'react';
 import { t } from '../i18n/strings.js';
 import { feedback } from './feedbackCue.js';
 import { Feedback } from './Feedback.js';
@@ -55,11 +55,14 @@ export function AnswerFeedback({
   ctx,
   onRetry,
   onContinue,
+  aside,
 }: {
   ok: boolean;
   ctx: AnswerContext;
   onRetry?: () => void;
   onContinue: () => void;
+  /** Optional small element shown under the header (e.g. a companion reaction). Never interactive. */
+  aside?: ReactNode;
 }) {
   const [burst] = useState(() => Date.now());
   useEffect(() => { feedback(ok); }, [ok]);
@@ -69,6 +72,7 @@ export function AnswerFeedback({
       <>
         <div className="drill-card fx-correct pop-in" style={{ gap: 10, minHeight: 220 }}>
           <span className="feedback-head ok">✓ {t('correctHeader')}</span>
+          {aside}
           <Line party={ctx.expected} big />
           {ctx.expected.translation && <p className="answer-pill">{ctx.expected.translation}</p>}
           {/* The strongest reinforcement is right after a CORRECT answer — keep the sentence
@@ -98,6 +102,7 @@ export function AnswerFeedback({
     <>
       <div className="drill-card fx-wrong pop-in" style={{ gap: 12, minHeight: 240, textAlign: 'center' }}>
         <span className="feedback-head bad">❌ {t('wrongHeader')}</span>
+        {aside}
 
         {ctx.prompt && (
           <div>

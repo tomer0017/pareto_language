@@ -1,7 +1,9 @@
-import type { BootcampItem, BootcampStep, MapCell, QuickReplyRound, SpokenLine, SwapRound } from './types.js';
+import { mulberry32, shuffle } from '../../shared/util/shuffle.js';
+import type { BootcampItem, BootcampStep, MapCell, MatchPair, QuickReplyRound, SpokenLine, SwapRound } from './types.js';
 
 /**
- * Pure logic of the four active-practice engines (Quick Reply · Visual Match · Swap It · Mini Map).
+ * Pure logic of the active-practice engines (Quick Reply · Visual Match · Swap It · Mini Map ·
+ * Match Pairs · Sentence Builder).
  * Everything a test needs — what a round shows, which answers are accepted, whether an authored
  * step is well-formed — lives here, free of React, so the content can be validated without a browser.
  */
@@ -41,9 +43,114 @@ export const tappableCells = (cells: MapCell[]): MapCell[] => cells.filter((c) =
 
 type StepOf<K extends BootcampStep['kind']> = Extract<BootcampStep, { kind: K }>;
 
-/** Authoring mistakes in one practice step (empty = sound). `itemIds` are the mission's sentences. */
-export function validatePracticeStep(step: BootcampStep, itemIds: ReadonlySet<string>): string[] {
+/** The six conversation-help tools of the Recovery Toolkit (not the courtesies "Thank you!" / "Sorry!"). */
+export const isHelpToolId = (id: string | undefined): boolean =>
+  /\.phrase\.recovery\.(dont-understand|repeat|slowly|one-moment|show-me|what-mean)$/.test(id ?? '');
+
+/* ── Match Pairs ───────────────────────────────────────────────────────────────────────────────── */
+
+export type MatchSide = 'prompt' | 'answer';
+export interface MatchState {
+  /** Pair indexes already connected (locked). */
+  matched: number[];
+  /** The tile waiting for its partner. */
+  picked: { side: MatchSide; pair: number } | null;
+  misses: number;
+}
+export const newMatch = (): MatchState => ({ matched: [], picked: null, misses: 0 });
+
+export interface MatchTap {
+  state: MatchState;
+  /** selected = waiting for the other side · matched = pair locked · missed = wrong partner · ignored = tile already locked */
+  outcome: 'selected' | 'matched' | 'missed' | 'ignored';
+  /** The pair whose prompt was being answered — what a hit or a miss is recorded against. */
+  attempted?: number;
+  complete: boolean;
+}
+
+/** One tap on the board. A tile is addressed by the pair it belongs to, whatever its position. */
+export function matchTap(pairCount: number, state: MatchState, side: MatchSide, pair: number): MatchTap {
+  const complete = (st: MatchState): boolean => st.matched.length >= pairCount;
+  if (state.matched.includes(pair)) return { state, outcome: 'ignored', complete: complete(state) };
+  // First tap, or a second tap on the same side: (re)select.
+  if (!state.picked || state.picked.side === side) {
+    const next = { ...state, picked: { side, pair } };
+    return { state: next, outcome: 'selected', complete: false };
+  }
+  const attempted = side === 'prompt' ? pair : state.picked.pair;
+  if (state.picked.pair === pair) {
+    const next = { ...state, matched: [...state.matched, pair], picked: null };
+    return { state: next, outcome: 'matched', attempted, complete: complete(next) };
+  }
+  return { state: { ...state, picked: null, misses: state.misses + 1 }, outcome: 'missed', attempted, complete: false };
+}
+
+/** What a tap is worth in the practice history: nothing for a selection, pass/fail for an attempt —
+ *  recorded on the learner's ANSWER sentence of the pair whose question was being answered. */
+export function matchRecord(pairs: MatchPair[], tap: MatchTap): { itemId: string; outcome: 'pass' | 'fail' } | null {
+  if (tap.attempted === undefined || (tap.outcome !== 'matched' && tap.outcome !== 'missed')) return null;
+  return { itemId: pairs[tap.attempted]!.answerItemId, outcome: tap.outcome === 'matched' ? 'pass' : 'fail' };
+}
+
+/** What a tap makes audible: a question is something you HEAR, so selecting it plays it; a locked
+ *  pair plays the learner's answer. Selecting an answer, a miss or a dead tile plays nothing. */
+export const matchSpeaks = (tap: MatchTap, side: MatchSide): MatchSide | null =>
+  tap.outcome === 'matched' ? 'answer' : tap.outcome === 'selected' && side === 'prompt' ? 'prompt' : null;
+
+/** The order the answer tiles are shown in (a permutation of pair indexes). */
+export const matchAnswerOrder = (pairCount: number, seed: number): number[] => shuffle(Array.from({ length: pairCount }, (_, i) => i), mulberry32(seed));
+
+/* ── Sentence Builder ──────────────────────────────────────────────────────────────────────────── */
+
+/** The sentence a list of chunks spells: chunks joined by single spaces — nothing is generated. */
+export const builderSentence = (chunks: readonly string[], order?: readonly number[]): string =>
+  (order ? order.map((i) => chunks[i] ?? '') : chunks).join(' ');
+
+/** The order the chunk tiles are offered in — shuffled, and never already solved when that is avoidable. */
+export function builderPool(chunks: readonly string[], seed: number): number[] {
+  const solved = builderSentence(chunks);
+  let order = chunks.map((_, i) => i);
+  for (let attempt = 0; attempt < 8; attempt++) {
+    order = shuffle(chunks.map((_, i) => i), mulberry32(seed + attempt));
+    if (builderSentence(chunks, order) !== solved) break;
+  }
+  return order;
+}
+
+/** All chunks placed, and they read as the sentence. Compared as TEXT, so two identical chunks may swap. */
+export const builderSolved = (chunks: readonly string[], placed: readonly number[]): boolean =>
+  placed.length === chunks.length && builderSentence(chunks, placed) === builderSentence(chunks);
+
+/** A hint: keep what is already right from the start, and place the next chunk. */
+export function builderHint(chunks: readonly string[], placed: readonly number[]): number[] {
+  let k = 0;
+  while (k < placed.length && k < chunks.length && chunks[placed[k]!] === chunks[k]) k++;
+  return chunks.map((_, i) => i).slice(0, Math.min(chunks.length, k + 1));
+}
+
+/** Authoring mistakes in one practice step (empty = sound). `itemIds` are the mission's sentences;
+ *  `textOf` (optional) gives a sentence's wording, for checks that need it. */
+export function validatePracticeStep(step: BootcampStep, itemIds: ReadonlySet<string>, textOf?: (id: string) => string | undefined): string[] {
   const issues: string[] = [];
+  if (step.kind === 'matchPairs') {
+    if (step.pairs.length < 2 || step.pairs.length > 4) issues.push('matchPairs: needs 2–4 pairs');
+    step.pairs.forEach((p, i) => {
+      if (!itemIds.has(p.promptItemId)) issues.push(`matchPairs pair ${i + 1}: prompt → ${p.promptItemId}`);
+      if (!itemIds.has(p.answerItemId)) issues.push(`matchPairs pair ${i + 1}: answer → ${p.answerItemId}`);
+    });
+    if (new Set(step.pairs.map((p) => p.promptItemId)).size !== step.pairs.length) issues.push('matchPairs: a prompt appears twice');
+    if (new Set(step.pairs.map((p) => p.answerItemId)).size !== step.pairs.length) issues.push('matchPairs: an answer appears twice');
+  }
+  if (step.kind === 'sentenceBuilder') {
+    step.rounds.forEach((r, i) => {
+      const at = `sentenceBuilder round ${i + 1}`;
+      if (!itemIds.has(r.itemId)) issues.push(`${at}: item → ${r.itemId}`);
+      if (r.chunks.length < 3 || r.chunks.length > 6) issues.push(`${at}: needs 3–6 chunks`);
+      if (r.chunks.some((c) => !c.trim() || c !== c.trim())) issues.push(`${at}: empty or padded chunk`);
+      const text = textOf?.(r.itemId);
+      if (text !== undefined && builderSentence(r.chunks) !== text) issues.push(`${at}: chunks spell “${builderSentence(r.chunks)}”, the sentence is “${text}”`);
+    });
+  }
   if (step.kind === 'quickReply') {
     step.rounds.forEach((r, i) => {
       const at = `quickReply round ${i + 1}`;
@@ -101,6 +208,8 @@ export const swapSentences = (round: SwapRound): string[] => round.options.map((
 export function retrievedItemIds(step: BootcampStep): string[] {
   if (step.kind === 'quickReply') return step.rounds.flatMap((r) => r.options.map((o) => o.itemId));
   if (step.kind === 'swap') return step.rounds.flatMap((r) => (r.itemId ? [r.itemId] : []));
+  if (step.kind === 'matchPairs') return step.pairs.map((p) => p.answerItemId);
+  if (step.kind === 'sentenceBuilder') return step.rounds.map((r) => r.itemId);
   return [];
 }
 

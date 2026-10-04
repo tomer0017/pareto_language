@@ -12,7 +12,7 @@ import type { BootcampStep, MapCell } from './types.js';
  * only. The backbone is unchanged: intro → before we speak → key sentences → expected replies →
  * active practice → dialogue → review → final challenge → victory. What changed is the middle:
  * hear-and-translate repeats were replaced by acting on what was heard (Quick Reply · Visual Match
- * · Swap It · Mini Map), the closing review is selective, and each final challenge is honestly one
+ * · Swap It · Mini Map · Match Pairs · Sentence Builder), the closing review is selective, and each final challenge is honestly one
  * of two things — a recovery ambush (the win is a conversation-help tool) or a speed challenge.
  *
  * All French and Spanish wording: AI linguistic review completed; native review still recommended.
@@ -67,11 +67,19 @@ export function m01Steps(lang: MissionLang): BootcampStep[] {
     ]),
     k.replies('phrase.social.my-name', ['reply.social.whats-your-name', 'reply.social.where-from', 'reply.social.first-time-q', 'reply.social.enjoy-stay']),
     k.receipt(['אתה מזהה את השאלות שכל מקומי סקרן ישאל אותך.', 'You recognize the questions every curious local will ask you.']),
+    // The game-like moment of the mission: connect each question to your own answer.
+    k.practice({
+      kind: 'matchPairs',
+      pairs: [
+        ['reply.social.whats-your-name', 'phrase.social.my-name'],
+        ['reply.social.where-from', 'phrase.social.from-israel'],
+        ['reply.social.first-time-q', 'phrase.social.first-time', ["Yes, it's my first time here.", 'Oui, c’est ma première fois ici.', 'Sí, es mi primera vez aquí.']],
+      ],
+    }),
     k.practice({
       kind: 'quickReply',
       rounds: [
         { prompt: 'reply.social.where-from', options: [['phrase.social.from-israel', true], ['phrase.social.my-name', false], ['phrase.social.first-time', false]] },
-        { prompt: 'reply.social.whats-your-name', options: [['phrase.social.my-name', true], ['phrase.social.from-israel', false], ['phrase.social.nice-to-meet', false]] },
         { prompt: 'reply.social.first-time-q', options: [
           ['phrase.social.first-time', true, ["Yes, it's my first time here.", 'Oui, c’est ma première fois ici.', 'Sí, es mi primera vez aquí.']],
           ['phrase.social.from-israel', false], ['phrase.social.nice-to-meet', false],
@@ -159,6 +167,11 @@ export function m02Steps(lang: MissionLang): BootcampStep[] {
         { prompt: 'reply.money.cash-or-card', options: [['phrase.money.by-card', true], ['phrase.money.in-cash', true], ['phrase.money.how-much', false]] },
       ],
     }),
+    // One sentence, rebuilt from its pieces — the haggle line the learner must be able to produce.
+    k.practice({
+      kind: 'sentenceBuilder',
+      rounds: [{ itemId: 'phrase.money.too-expensive', chunks: [["That's", 'too', 'expensive.'], ['C’est', 'trop', 'cher.'], ['Es', 'muy', 'caro.']] }],
+    }),
     k.dialogue('market-stall'),
     k.receipt(['קנית בשוק, הבנת את המחיר, ושילמת. עסקה שלמה.', 'You bought at the market, understood the price, and paid. A full transaction.']),
     k.review([
@@ -220,6 +233,14 @@ export function m03Steps(lang: MissionLang): BootcampStep[] {
         { prompt: 'reply.coffee.anything-to-eat', options: [['phrase.coffee.croissant', true], ['phrase.coffee.thats-all', true], ['phrase.coffee.card', false]] },
         { prompt: 'reply.coffee.cash-or-card', options: [['phrase.coffee.card', true], ['phrase.coffee.medium', false], ['phrase.coffee.to-go', false]] },
         { prompt: 'reply.coffee.receipt', options: [['phrase.coffee.yes-please', true], ['phrase.coffee.to-go', false], ['phrase.coffee.iced-coffee', false]] },
+      ],
+    }),
+    // Two orders rebuilt from their pieces. Each language has its own chunks and its own word order.
+    k.practice({
+      kind: 'sentenceBuilder',
+      rounds: [
+        { itemId: 'phrase.coffee.iced-coffee', chunks: [["I'd like", 'an iced', 'coffee,', 'please.'], ['Je voudrais', 'un café', 'glacé,', 's’il vous plaît.'], ['Quiero', 'un café', 'con hielo,', 'por favor.']] },
+        { itemId: 'phrase.coffee.no-sugar', chunks: [['Milk,', 'no', 'sugar.'], ['Avec', 'du lait,', 'sans', 'sucre.'], ['Con', 'leche,', 'sin', 'azúcar.']] },
       ],
     }),
     k.dialogue('breakfast-order'),

@@ -40,7 +40,7 @@ describe('scope: only Missions 01–05 changed', () => {
   it('none of the new step types is used outside 01–05', () => {
     for (const lang of LANGS) for (const m of BOOTCAMP_PLAN.slice(5)) {
       for (const s of MISSIONS_BY_LANG[lang]![m.day]!.steps) {
-        expect(['quickReply', 'visualMatch', 'swap', 'miniMap'], `${lang} ${m.id}`).not.toContain(s.kind);
+        expect(['quickReply', 'visualMatch', 'swap', 'miniMap', 'matchPairs', 'sentenceBuilder'], `${lang} ${m.id}`).not.toContain(s.kind);
         if (s.kind === 'ambush') expect(s.mode, `${lang} ${m.id}`).toBeUndefined();
       }
     }
@@ -53,7 +53,8 @@ describe('the engines: authored content is well-formed in every language', () =>
       for (const m of V1) {
         const day = MISSIONS_BY_LANG[lang]![m.day]!;
         const ids = new Set(day.items.map((i) => i.id));
-        for (const s of day.steps) expect(validatePracticeStep(s, ids), `${lang} ${m.id} ${s.kind}`).toEqual([]);
+        const textOf = (id: string): string | undefined => day.items.find((i) => i.id === id)?.text;
+        for (const s of day.steps) expect(validatePracticeStep(s, ids, textOf), `${lang} ${m.id} ${s.kind}`).toEqual([]);
       }
     });
   }
@@ -72,6 +73,9 @@ describe('the engines: authored content is well-formed in every language', () =>
       if (s.kind === 'visualMatch') return [s.tiles, s.challenge ?? false, s.rounds.map((r) => [r.correct, strip(r.itemId)])];
       if (s.kind === 'swap') return s.rounds.map((r) => [strip(r.itemId), r.cue, r.options.map((o) => [o.correct, o.meaning])]);
       if (s.kind === 'miniMap') return [s.challenge ?? false, s.rounds.map((r) => [r.correct, strip(r.itemId), r.cells.map((c) => [c.id, c.row, c.col, c.emoji, c.tappable ?? false])])];
+      if (s.kind === 'matchPairs') return s.pairs.map((p) => [strip(p.promptItemId), strip(p.answerItemId), Boolean(p.answerText)]);
+      // A sentence is chunked per language, so only WHICH sentences are built must agree.
+      if (s.kind === 'sentenceBuilder') return s.rounds.map((r) => strip(r.itemId));
       if (s.kind === 'ambush') return [s.mode, strip(s.correctItemId), strip(s.wrongItemId)];
       return s.kind;
     };

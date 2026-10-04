@@ -2,7 +2,9 @@ import { beforeAll, describe, expect, it, vi } from 'vitest';
 import { createElement } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { BOOTCAMP_PLAN } from '../bootcamp/plan.js';
+import { MISSIONS_BY_LANG } from '../bootcamp/registry.js';
 import { COMPANION_ART, artUrl } from './companionAssets.js';
+import { GAME_INTRO, MISSION_INTRO, coachFor } from './companionCoach.js';
 import { STAGE_COPY } from './companionCopy.js';
 import { learnedMaterial } from './companionLearned.js';
 import {
@@ -10,7 +12,7 @@ import {
   evolutionTimeline, missionEvents, motionFamily, newCompanion, pendingEvolution, resolveAnimation, sanitize, speechAbility, stageForPoints,
   stageProgress, type CompanionEvent, type LanguageCompanion,
 } from './companionModel.js';
-import { existsSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import type * as StoreModule from './companionStore.js';
 import type * as BootcampModule from '../bootcamp/bootcampStore.js';
@@ -211,6 +213,77 @@ describe('assets and copy are complete for every stage', () => {
   });
 });
 
+/* ── inside a mission ──────────────────────────────────────────────────────────────────────────── */
+
+describe('the companion inside a mission — one short app-language line, only where it helps', () => {
+  const steps = (id: string) => MISSIONS_BY_LANG.en![BOOTCAMP_PLAN.find((m) => m.id === id)!.day]!.steps;
+
+  it('every Core mission has its own intro line, in Hebrew and English', () => {
+    expect(Object.keys(MISSION_INTRO).sort()).toEqual(BOOTCAMP_PLAN.map((m) => m.id).sort());
+    for (const m of BOOTCAMP_PLAN) {
+      const line = MISSION_INTRO[m.id]!;
+      expect(line.he!.length, m.id).toBeGreaterThan(5);
+      expect(line.en!.length, m.id).toBeLessThanOrEqual(70); // one short line, not a lecture
+    }
+    expect(MISSION_INTRO['introduce-myself']!.en).toBe('Today we learn how to start a conversation.');
+    expect(MISSION_INTRO['numbers-money']!.en).toBe('Let’s practise prices and numbers.');
+  });
+
+  it('the intro line rides on the mission\'s existing intro card — no extra screen', () => {
+    for (const m of BOOTCAMP_PLAN) {
+      const all = steps(m.id);
+      const first = all.findIndex((x) => x.kind === 'talk');
+      expect(first, m.id).toBeGreaterThanOrEqual(0);
+      expect(coachFor(all, first, m.id), m.id).toEqual({ line: MISSION_INTRO[m.id], role: 'intro' });
+      // later intro-style cards stay quiet
+      all.forEach((x, i) => { if (x.kind === 'talk' && i !== first) expect(coachFor(all, i, m.id), m.id).toBeNull(); });
+    }
+  });
+
+  it('a game is explained the first time it appears in a mission, and only then', () => {
+    const m1 = steps('introduce-myself');
+    const at = m1.findIndex((x) => x.kind === 'matchPairs');
+    expect(coachFor(m1, at, 'introduce-myself')).toEqual({ line: GAME_INTRO.matchPairs, role: 'game' });
+    expect(GAME_INTRO.matchPairs!.en).toBe('Match each question to its answer.');
+    const m2 = steps('numbers-money');
+    const boards = m2.map((x, i) => (x.kind === 'visualMatch' ? i : -1)).filter((i) => i >= 0);
+    expect(boards.length).toBe(2);
+    expect(coachFor(m2, boards[0]!, 'numbers-money')?.line.en).toBe('Hear the price and find it.');
+    expect(coachFor(m2, boards[1]!, 'numbers-money')).toBeNull();
+    expect(coachFor(steps('directions'), steps('directions').findIndex((x) => x.kind === 'miniMap'), 'directions')?.line.en).toBe('Listen to the direction and choose the way.');
+    expect(coachFor(steps('coffee-shop'), steps('coffee-shop').findIndex((x) => x.kind === 'sentenceBuilder'), 'coffee-shop')?.line.en).toBe('Build the sentence.');
+  });
+
+  it('it stays out of the way everywhere else: sentences, quizzes, dialogues, receipts, the victory screen', () => {
+    for (const m of BOOTCAMP_PLAN) {
+      const all = steps(m.id);
+      all.forEach((x, i) => {
+        if (['tool', 'prime', 'replies', 'quiz', 'dialogue', 'swipe', 'ambush', 'receipt', 'summary', 'video'].includes(x.kind)) expect(coachFor(all, i, m.id), `${m.id} ${x.kind}`).toBeNull();
+      });
+      const lines = all.filter((_, i) => coachFor(all, i, m.id)).length;
+      expect(lines, m.id).toBeLessThanOrEqual(1 + new Set(all.map((x) => x.kind).filter((k) => k in GAME_INTRO)).size);
+    }
+    expect(coachFor([], 0, 'x')).toBeNull();
+  });
+
+  it('never names an engine and never spoils the language: Hebrew lines hold no foreign words, and no line quotes a mission sentence', () => {
+    const lines = [...Object.values(MISSION_INTRO), ...Object.values(GAME_INTRO)];
+    for (const l of lines) {
+      expect(l.he, l.en).not.toMatch(/[A-Za-zÀ-ÿ]/);
+      expect(l.en, l.en).not.toMatch(/quick reply|visual match|mini ?map|swap it|match pairs|sentence builder|engine/i);
+      expect(`${l.he} ${l.en}`).not.toMatch(/grammar|verb|noun|tense|דקדוק|פועל/i);
+    }
+    for (const m of BOOTCAMP_PLAN) for (const lang of ['en', 'fr', 'es'] as const) {
+      const line = MISSION_INTRO[m.id]!;
+      for (const it of MISSIONS_BY_LANG[lang]![m.day]!.items) {
+        if (it.text.split(' ').length < 2) continue;
+        expect(line.en!.toLowerCase().includes(it.text.toLowerCase()), `${m.id} ${lang} “${it.text}”`).toBe(false);
+        expect(line.he!.includes(it.text), `${m.id} ${lang}`).toBe(false);
+      }
+    }
+  });
+});
+
 /* ── the real store ────────────────────────────────────────────────────────────────────────────── */
 
 describe('companion store — per language, persisted, evolution fires once', () => {
@@ -364,5 +437,79 @@ describe('companion store — per language, persisted, evolution fires once', ()
     for (const s of STAGES) expect(page).toContain(STAGE_COPY[s].name.en); // the six-stage track
     expect(page).toContain('is-silhouette'); // stages not reached yet are teased, not shown
     expect(page).toMatch(/<span dir="ltr" lang="en">[^<]+\?<\/span>/); // a parrotfish repeats one learned word
+  });
+  it('in a mission the fish does not talk: the coach line is a caption beside it; a parrot says it itself — never in the target language', () => {
+    const line = MISSION_INTRO['introduce-myself']!.he!;
+    for (const stage of STAGES) {
+      const html = renderToStaticMarkup(createElement(ui.CompanionCoachView, { stage, line }));
+      expect(html, `stage ${stage}`).toContain(`data-stage="${stage}"`);
+      expect(html, `stage ${stage}`).toContain(line);
+      expect(html, `stage ${stage}`).not.toMatch(/lang="(en|fr|es)"/); // no target-language speech in the coach row
+      expect(html.includes('cmp-bubble'), `stage ${stage}`).toBe(stage >= 4);
+      expect(html.includes('cmp-caption'), `stage ${stage}`).toBe(stage <= 3);
+      expect(html, `stage ${stage}`).toMatch(/width="40"|width:40px/); // compact — never a hero
+    }
+  });
+
+  it('reactions: a small pop for a right answer, encouragement for a wrong one, applause for a recovery tool', () => {
+    const view = (kind: UiModule.ReactionKind, text?: string | false): string => renderToStaticMarkup(createElement(ui.CompanionReactionView, { kind, stage: 1, text, size: 40 }));
+    const correct = view('correct', false);
+    expect(correct).toContain('data-kind="correct"');
+    expect(correct).not.toContain('cmp-bubble'); // avatar only — it must not crowd the answer card
+    const wrong = view('encouraging');
+    expect(wrong).toContain('data-anim="encouraging"');
+    expect(wrong).not.toMatch(/wrong|fail|sad|bad|טעות|לא נכון/i);
+    const recovery = view('recovery');
+    expect(recovery).toContain('data-kind="recovery"');
+    expect(recovery).toContain('data-anim="celebrate"'); // bigger than a plain right answer
+    expect(recovery).toContain('cmp-bubble');
+    expect(recovery).not.toBe(view('celebrate'));
+    for (const html of [correct, wrong, recovery]) expect(html).not.toMatch(/lang="(en|fr|es)"/);
+  });
+
+  it('showing reactions and answering practice questions changes neither the mission nor the companion', () => {
+    app.useAppStore.setState({ learningLang: 'en' });
+    const bc = bootcamp.useBootcampStore.getState();
+    bc.startDay(dayOf('hotel-check-in'));
+    const flow = () => { const x = bootcamp.useBootcampStore.getState(); return { activeDay: x.activeDay, index: x.index, stage: x.stage, completed: [...x.completedDays] }; };
+    const before = { mission: flow(), companion: JSON.stringify(companion.useCompanionStore.getState().byLang), disk: disk.get('ready.companion.v1') };
+    for (const kind of ['correct', 'encouraging', 'thinking', 'recovery', 'celebrate'] as const) renderToStaticMarkup(createElement(ui.CompanionReaction, { kind }));
+    renderToStaticMarkup(createElement(ui.CompanionCoach, { line: 'x' }));
+    // Thirty answers — right, wrong, recovered — across every practice mode the games record.
+    for (let i = 0; i < 30; i++) {
+      bootcamp.useBootcampStore.getState().recordDrill('en.phrase.social.my-name', i % 2 ? 'simulator' : 'flashRecall', i % 3 ? 'pass' : 'fail', 900);
+      bootcamp.useBootcampStore.getState().recordDrill('en.phrase.recovery.slowly', 'listen', 'pass');
+    }
+    expect(flow()).toEqual(before.mission);
+    expect(JSON.stringify(companion.useCompanionStore.getState().byLang)).toBe(before.companion); // answers award no growth
+    expect(disk.get('ready.companion.v1')).toBe(before.disk);
+    // Finishing the mission is what counts — once.
+    const points = companion.useCompanionStore.getState().byLang.en!.points;
+    bootcamp.useBootcampStore.getState().completeDay();
+    expect(companion.useCompanionStore.getState().byLang.en!.points).toBe(points + GROWTH_POINTS.missionCompleted);
+    bootcamp.useBootcampStore.getState().completeDay();
+    complete('hotel-check-in');
+    expect(companion.useCompanionStore.getState().byLang.en!.points).toBe(points + GROWTH_POINTS.missionCompleted);
+    bootcamp.useBootcampStore.getState().exit();
+  });
+
+  it('progression is untouched by this work: same thresholds, same points, the Chatterbox still out of reach of the current Core alone', () => {
+    expect(STAGE_THRESHOLDS).toEqual([0, 20, 70, 150, 300, 600]);
+    const all = deriveFromHistory(missionEvents(BOOTCAMP_PLAN.map((m) => m.id), isCheckpoint));
+    expect(all.stage).toBeLessThan(LAST_STAGE);
+    expect(Object.keys(GROWTH_POINTS).some((k) => /answer|drill|practice|question/i.test(k))).toBe(false);
+  });
+
+  it('reduced motion: the in-mission companion is still, like every other companion animation', () => {
+    const css = readFileSync(fileURLToPath(new URL('./companion.css', import.meta.url)), 'utf8');
+    const reduced = css.slice(css.indexOf('@media (prefers-reduced-motion: reduce)'));
+    expect(reduced).toMatch(/\.cmp-art img, \.cmp-art[^{]*\{ animation: none !important; transition: none !important; \}/);
+    // The coach row and reactions add no animation of their own: all movement lives on .cmp-art.
+    for (const sel of ['.cmp-coach', '.cmp-caption', '.cmp-reaction']) {
+      const rules = css.split('\n').filter((l) => l.startsWith(sel));
+      expect(rules.length, sel).toBeGreaterThan(0);
+      for (const r of rules) expect(r, sel).not.toMatch(/animation|transition/);
+    }
+    expect(css).toMatch(/\.cmp-reaction \{ pointer-events: none; \}/); // can never swallow a tap meant for an answer
   });
 });

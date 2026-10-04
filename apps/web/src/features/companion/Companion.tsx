@@ -115,6 +115,28 @@ export function CompanionReactionView({ kind, stage, seed = 0, text, size = 56 }
   );
 }
 
+/* ── inside a mission ──────────────────────────────────────────────────────────────────────────── */
+
+/**
+ * The companion beside one short app-language line — the mission's goal, or how to play a game.
+ * Compact by design (an avatar and a line). Until it can say whole phrases (Stages 1–3) the line is
+ * a plain caption NEXT to the character — coaching about it, not speech by it; from the Young Parrot
+ * on it is the character's own bubble.
+ */
+export function CompanionCoachView({ stage, line, size = 40 }: { stage: CompanionStage; line: string; size?: number }) {
+  const voice = stage <= 3 ? 'caption' : 'bubble';
+  return (
+    <div className="cmp-coach" data-voice={voice}>
+      <CompanionAvatar stage={stage} size={size} anim="attention" />
+      <span className={voice === 'bubble' ? 'cmp-bubble' : 'cmp-caption'}>{line}</span>
+    </div>
+  );
+}
+export function CompanionCoach({ line, size }: { line: string; size?: number }) {
+  const { stage } = useCompanion();
+  return <CompanionCoachView stage={stage} line={line} size={size} />;
+}
+
 /* ── Path card ─────────────────────────────────────────────────────────────────────────────────── */
 
 /** The companion on the Path, beside Trip Readiness. The percentage stays the readiness card's;

@@ -100,7 +100,7 @@ Target-language lines render left-to-right inside a Hebrew screen.
 | Mission complete | built | One small celebrating reaction with one short line on the victory screen. |
 | Evolution | built | Full screen, once per stage: old character → anticipation → transformation → reveal → what changed → Continue. Tap to skip the build-up. |
 | Reusable reaction | built | `CompanionReaction` — `correct`, `encouraging`, `thinking`, `recovery`, `celebrate`, `missionComplete`. |
-| Mission intro, correct / wrong answer, recovery success | **not placed yet** | The reaction component supports them; they are not inserted into Practice screens in V1. |
+| Inside a mission | built | `CompanionCoach` + `companionCoach.ts`: one app-language line on the mission's intro card and the first time each game appears; reactions on answer cards (right: avatar only · wrong: encouragement · conversation-help tool: applause). Stages 1–3 caption beside the character, Stage 4+ its own bubble. No target-language text; display only — no growth, no mission state. |
 
 Rules: it does not occupy the screen permanently; it never delays starting a mission; no large
 animation after every answer; if character and learning content compete, learning content wins.

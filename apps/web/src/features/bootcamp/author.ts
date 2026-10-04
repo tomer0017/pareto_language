@@ -119,7 +119,19 @@ export interface MiniMapSpec {
   challenge?: boolean;
   rounds: { audio: L4; itemId?: string; correct: string; cells: (Omit<MapCell, 'label'> & { label?: L3 })[] }[];
 }
+export interface MatchPairsSpec {
+  label?: Copy;
+  /** [heard sentence id, answer sentence id, what the answer tile says when it wraps the sentence] */
+  pairs: readonly (readonly [prompt: string, answer: string, answerText?: L3])[];
+}
+export interface SentenceBuilderSpec {
+  label?: Copy;
+  /** Chunks are written out for EACH language, in that language's own order — never derived. */
+  rounds: { itemId: string; chunks: readonly [en: readonly string[], fr: readonly string[], es: readonly string[]] }[];
+}
 export type PracticeSpec =
+  | ({ kind: 'matchPairs' } & MatchPairsSpec)
+  | ({ kind: 'sentenceBuilder' } & SentenceBuilderSpec)
   | ({ kind: 'quickReply' } & QuickReplySpec)
   | ({ kind: 'visualMatch' } & VisualMatchSpec)
   | ({ kind: 'swap' } & SwapSpec)
@@ -268,6 +280,12 @@ export function buildPractice(p: PracticeSpec, lang: MissionLang): BootcampStep 
   const ix = LANG_INDEX[lang];
   const id = (suffix: string): string => `${lang}.${suffix}`;
   const label = p.label ? { label: T(p.label) } : {};
+  if (p.kind === 'matchPairs') {
+    return { kind: 'matchPairs', ...label, pairs: p.pairs.map(([prompt, answer, text]) => ({ promptItemId: id(prompt), answerItemId: id(answer), ...(text ? { answerText: text[ix] } : {}) })) };
+  }
+  if (p.kind === 'sentenceBuilder') {
+    return { kind: 'sentenceBuilder', ...label, rounds: p.rounds.map((r) => ({ itemId: id(r.itemId), chunks: [...r.chunks[ix]] })) };
+  }
   if (p.kind === 'quickReply') {
     return {
       kind: 'quickReply', ...label,

@@ -119,6 +119,13 @@ stable across re-renders. **Narrative dialogue order is never shuffled** — onl
   spec missions and by `practiceV1.ts`, which holds the step lists of the hand-written Missions 01, 02,
   03 and 05 once for all languages. `ambush.mode` (`recovery` / `speed`) states what a final challenge
   tests. `PrimeWord.key` lets tests compare word-intro content across languages by concept.
+  Practice V1.1 added `matchPairs` and `sentenceBuilder` the same way (pure rules `matchTap`,
+  `matchRecord`, `builderPool`, `builderSolved`, `builderHint`); builder chunks are authored per
+  language and validated to spell the taught sentence exactly.
+- **Companion inside a mission** — `companionCoach.ts` (`coachFor(steps, index, missionId)`) decides,
+  purely, whether a step gets one app-language line (the mission goal on its intro card; how to play
+  the first game of each kind). `Bootcamp.tsx` renders it with `CompanionCoach`; answer cards take a
+  reaction through `AnswerFeedback`'s `aside` slot. None of it writes to any store.
 - **Turn parity gate** — `core30.test.ts` compares every Core dialogue tree across EN / FR / ES node
   by node, and proves `docs/ALL_LANGUAGES_DIALOGUES_BY_MISSION_V2.md` equals `renderDialogueDoc()`.
 - **Persistence** — `progress.ts` (pure): in memory the store keeps `completedDays` / `receipts` /

@@ -55,6 +55,8 @@ describe('practice audit export', () => {
         if (s.kind === 'swap') for (const r of s.rounds) { questions++; choices += r.options.length; }
         if (s.kind === 'visualMatch') { questions += s.rounds.length; choices += s.rounds.length * s.tiles.length; }
         if (s.kind === 'miniMap') for (const r of s.rounds) { questions++; choices += r.cells.filter((c) => c.tappable).length; }
+        if (s.kind === 'matchPairs') { questions += s.pairs.length; choices += s.pairs.length * s.pairs.length; }
+        if (s.kind === 'sentenceBuilder') { questions += s.rounds.length; choices += s.rounds.length; }
         if (s.kind === 'dialogue') {
           for (const node of day.dialogues[s.dialogueId]!.nodes) {
             if (!node.choices?.length) continue;

@@ -201,7 +201,9 @@ stays as a calm way out. READY is used in two modes over the SAME content: **act
   into a parrot that cannot stop: six stages shown on the Path, on its own page, at the end of a
   mission and in a full-screen evolution. It answers "how alive is this language in me?" and is
   deliberately NOT Trip Readiness: cumulative points, a stored highest stage, never a percentage of
-  a course. See **[COMPANION_SYSTEM.md](./COMPANION_SYSTEM.md)**.
+  a course. Inside a mission it gives one short app-language line (the goal; how to play a new game)
+  and small reactions to answers — never target-language text, never growth for an answer.
+  See **[COMPANION_SYSTEM.md](./COMPANION_SYSTEM.md)**.
 - **Foundation** — reached from a row in the Path's "More practice" section (it is no longer a
   floating button over the mission list), opening a bottom sheet of "building block" categories (People, Question Words,
   Connectors, Position, Essential Verbs, Colors, Numbers, Time, Quantity, Quick Responses) → word

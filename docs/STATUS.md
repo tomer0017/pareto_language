@@ -22,6 +22,30 @@ loop (typecheck → lint → tests → build → smoke) green at every milestone
 
 ## What's done
 
+### Practice V1.1 + Companion inside the learning flow (2026-10-04)
+Scope: two more games in Missions 01–03, and the companion present inside missions. Missions 06–30
+content is fingerprinted by test and unchanged; no dialogue changed; companion progression unchanged.
+- **Match Pairs** (`matchPairs`): 2–4 question ↔ answer pairs on one screen, tap one then its partner
+  (either side first). A right pair locks under a shared number and is spoken; a wrong one shakes and
+  lets go — no lives. No translation before answering. Records `simulator` pass/fail on the answer.
+- **Sentence Builder** (`sentenceBuilder`): rebuild a taught sentence from 3–6 **authored** chunks per
+  language (validated to spell the sentence exactly — nothing is generated). Tap to place, tap to take
+  back, Check when all are used. A miss shows nothing; a hint after one miss, reveal after two.
+- **Placement:** 01 — one Match Pairs board (name / from / first time) after the listening drill;
+  Quick Reply trimmed 3 → 2 rounds (the name round moved to the board). 02 — one builder round
+  ("too expensive"). 03 — two builder rounds (iced coffee; milk, no sugar). 04, 05 — unchanged.
+- **Companion in missions:** one app-language line on the mission's existing intro card (30 lines,
+  `companionCoach.ts`, keyed by mission id — mission content untouched); one instruction the first
+  time each game appears in a mission; small reactions on answer cards (avatar-only pop when right,
+  encouragement when wrong, applause when a conversation-help tool was the winning move). Stages 1–3
+  show the line as a caption beside the character; from Stage 4 it is the character's own bubble.
+  Never target-language text. Practice answers award no growth; thresholds and points are unchanged.
+- **Direction:** every target-language board / tile / answer line is `direction: ltr` +
+  `unicode-bidi: isolate` under the Hebrew UI; tested by rendering under a Hebrew UI.
+- **Tests:** `practiceV11.test.ts` (rules, authored content, placement, rendered markup) and new
+  companion cases in `companion.test.ts`. 1282 tests.
+- **Not done:** manual browser / device QA (no browser tooling in the build environment).
+
 ### Language Companion V1 — fish → parrot, per language (2026-10-04)
 Source of truth: **[COMPANION_SYSTEM.md](./COMPANION_SYSTEM.md)**. Isolated feature `features/companion/`.
 - **Six stages** (Scared Fish → Focused Fish → Parrotfish → Young Parrot → Talking Parrot → Chatterbox),

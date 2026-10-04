@@ -72,9 +72,9 @@ function usage(): Map<string, number[]> {
 
 /* ── questions ─────────────────────────────────────────────────────────────────────────────────── */
 
-type QuestionKind = 'expected-reply' | 'meaning-quiz' | 'quick-reply' | 'visual-match' | 'swap-it' | 'mini-map' | 'dialogue-choice' | 'cold-open';
+type QuestionKind = 'expected-reply' | 'meaning-quiz' | 'quick-reply' | 'visual-match' | 'swap-it' | 'mini-map' | 'match-pairs' | 'sentence-builder' | 'dialogue-choice' | 'cold-open';
 const LISTEN_KINDS: readonly QuestionKind[] = ['expected-reply', 'meaning-quiz'];
-const ACTIVE_KINDS: readonly QuestionKind[] = ['quick-reply', 'visual-match', 'swap-it', 'mini-map'];
+const ACTIVE_KINDS: readonly QuestionKind[] = ['quick-reply', 'visual-match', 'swap-it', 'mini-map', 'match-pairs', 'sentence-builder'];
 interface Choice { en: string; fr: string; es: string; he: string; itemId: string; correct: boolean; routesTo?: string }
 interface Question {
   ref: string;            // M01-Q03
@@ -224,6 +224,43 @@ function questionsOf(day: number): Question[] {
         });
       });
     }
+    if (step.kind === 'matchPairs') {
+      // What a tile shows in each language: the authored short answer, or the sentence itself.
+      const tile = (lang: Lang, k: number, side: 'prompt' | 'answer'): string => {
+        const c = content(lang, day);
+        const s2 = c.steps[i];
+        const p = s2?.kind === 'matchPairs' ? s2.pairs[k] : undefined;
+        if (!p) return '∅ MISSING';
+        return side === 'answer' && p.answerText ? p.answerText : c.items.find((x) => x.id === (side === 'prompt' ? p.promptItemId : p.answerItemId))?.text ?? '∅ MISSING';
+      };
+      step.pairs.forEach((pair, k) => {
+        push({
+          kind: 'match-pairs', step: i + 1, where: `pair ${k + 1} of ${step.pairs.length} (all pairs are on one screen)`,
+          promptUi: `${step.label ? `${q(step.label.en)} / ${q(step.label.he)}` : ui('matchTitle')} — tile to match (target language, no translation): EN ${q(tile('en', k, 'prompt'))} · FR ${q(tile('fr', k, 'prompt'))} · ES ${q(tile('es', k, 'prompt'))}`,
+          audio: { en: tile('en', k, 'prompt'), fr: tile('fr', k, 'prompt'), es: tile('es', k, 'prompt') }, audioHe: sent.get(strip(pair.promptItemId))?.he ?? '',
+          choices: step.pairs.map((p2, j) => ({ en: tile('en', j, 'answer'), fr: tile('fr', j, 'answer'), es: tile('es', j, 'answer'), he: sent.get(strip(p2.answerItemId))?.he ?? '', itemId: strip(p2.answerItemId), correct: j === k })),
+          choiceDisplay: 'the ANSWER tiles, target language only; their order is shuffled; a matched pair locks and leaves the board, so later pairs have fewer live tiles',
+          tests: strip(pair.answerItemId),
+          explanation: 'none — a correct match locks both tiles under a shared number and speaks the answer; a miss shakes, shows ✕ and clears (no penalty)',
+        });
+      });
+    }
+    if (step.kind === 'sentenceBuilder') {
+      step.rounds.forEach((round, k) => {
+        const chunksAt = (lang: Lang): string => { const s2 = content(lang, day).steps[i]; const r = s2?.kind === 'sentenceBuilder' ? s2.rounds[k] : undefined; return r ? r.chunks.join('  |  ') : '∅ MISSING'; };
+        const id = strip(round.itemId);
+        const s = sent.get(id)!;
+        push({
+          kind: 'sentence-builder', step: i + 1, where: `round ${k + 1} of ${step.rounds.length}`,
+          promptUi: `${step.label ? `${q(step.label.en)} / ${q(step.label.he)}` : ui('builderTitle')} — cue shown: the sentence's MEANING in the app language (${q(s.he)})`,
+          audio: { en: '(nothing before Check; the built sentence is spoken once it is right)', fr: '(same)', es: '(same)' }, audioHe: '',
+          choices: [{ en: chunksAt('en'), fr: chunksAt('fr'), es: chunksAt('es'), he: s.he, itemId: id, correct: true }],
+          choiceDisplay: 'the authored CHUNKS of the sentence as tiles (listed here in the correct order, separated by "|"), shuffled; each language has its own chunks; Check unlocks when every tile is placed',
+          tests: id,
+          explanation: 'right: the sentence is spoken and its translation shown. Wrong: "not yet" — the tiles stay, the answer is NOT shown; after one miss a hint marks the start; after two misses the learner may reveal it',
+        });
+      });
+    }
     if (step.kind === 'ambush') {
       const at = (lang: Lang): string => {
         const s2 = content(lang, day).steps[i];
@@ -337,11 +374,13 @@ function flagsOf(day: number, plan: MissionPlan, questions: Question[], use: Map
   for (const s of en.steps) {
     if (s.kind === 'quickReply') for (const r of s.rounds) for (const o2 of r.options) selectable.add(strip(o2.itemId));
     if (s.kind === 'swap') for (const r of s.rounds) if (r.itemId) selectable.add(strip(r.itemId));
+    if (s.kind === 'matchPairs') for (const p of s.pairs) selectable.add(strip(p.answerItemId));
+    if (s.kind === 'sentenceBuilder') for (const r of s.rounds) selectable.add(strip(r.itemId));
   }
   const coldOptions = new Set(en.steps.flatMap((s) => (s.kind === 'ambush' ? [strip(s.correctItemId), strip(s.wrongItemId)] : [])));
   for (const s of sent) {
     if (isProduction(s.id) && !selectable.has(s.id) && !coldOptions.has(s.id)) {
-      flags.push(`Learner sentence never actively retrieved in this mission (0 choice screens, 0 quick-reply / swap rounds, 0 cold-open options): \`${s.id}\` “${s.en}”${referenced.has(s.id) ? ' — shown as a key sentence / in review only' : ' — appears in sentence review only (orphan in this mission)'}.`);
+      flags.push(`Learner sentence never actively retrieved in this mission (0 choice screens, 0 quick-reply / swap / match / builder rounds, 0 cold-open options): \`${s.id}\` “${s.en}”${referenced.has(s.id) ? ' — shown as a key sentence / in review only' : ' — appears in sentence review only (orphan in this mission)'}.`);
     }
     if (isKit(s.id) && !selectable.has(s.id) && !referenced.has(s.id)) flags.push(`Toolkit phrase listed in the mission but never offered in it: \`${s.id}\` “${s.en}” (sentence review only).`);
   }
@@ -405,6 +444,7 @@ const STEP_NAME: Record<BootcampStep['kind'], string> = {
   video: 'video', talk: 'intro screen', prime: 'before-we-speak (word intro)', tool: 'key sentence (listen → reveal → say aloud)',
   replies: 'expected replies (listening drill)', quiz: 'meaning quiz (listening)', dialogue: 'dialogue (choose your line)',
   quickReply: 'quick reply (hear → pick your response)', visualMatch: 'visual match (hear → tap the tile)', swap: 'swap it (one frame, several endings)', miniMap: 'mini map (hear → tap the direction / spot)',
+  matchPairs: 'match pairs (connect each question to its answer)', sentenceBuilder: 'sentence builder (put the chunks in order)',
   swipe: 'sentence review', ambush: 'cold open (fast line)', receipt: 'receipt (proof card)', summary: 'victory screen',
 };
 
@@ -461,6 +501,8 @@ function renderMission(plan: MissionPlan, index: number, use: Map<string, number
     if (s.kind === 'dialogue') detail = ` — scene \`${s.dialogueId}\``;
     if (s.kind === 'swipe') detail = ` — ${s.itemIds.length} sentences`;
     if (s.kind === 'quickReply' || s.kind === 'swap' || s.kind === 'miniMap' || s.kind === 'visualMatch') detail = ` — ${s.rounds.length} round(s)${(s.kind === 'miniMap' || s.kind === 'visualMatch') && s.challenge ? ' · speed challenge' : ''}`;
+    if (s.kind === 'matchPairs') detail = ` — ${s.pairs.length} pairs on one screen`;
+    if (s.kind === 'sentenceBuilder') detail = ` — ${s.rounds.length} round(s)`;
     if (s.kind === 'ambush') detail = ` — mode ${s.mode ?? 'not set'} · correct \`${strip(s.correctItemId)}\`, wrong \`${strip(s.wrongItemId)}\``;
     if (s.kind === 'receipt') detail = ` — ${q(s.text.en)} / ${q(s.text.he)}`;
     if (s.kind === 'video') detail = ` — mode ${s.mode}`;
@@ -523,6 +565,11 @@ function renderMission(plan: MissionPlan, index: number, use: Map<string, number
         for (const o2 of r.options) if (strip(o2.itemId) === id) list.push(`quick-reply response (step ${i + 1}, round ${k + 1}, ${o2.correct ? 'accepted' : 'wrong option'})`);
       });
       if (s.kind === 'swap') s.rounds.forEach((r, k) => { if (strip(r.itemId) === id) list.push(`swap-it frame (step ${i + 1}, round ${k + 1})`); });
+      if (s.kind === 'matchPairs') s.pairs.forEach((p, k) => {
+        if (strip(p.promptItemId) === id) list.push(`match-pairs question tile (step ${i + 1}, pair ${k + 1})`);
+        if (strip(p.answerItemId) === id) list.push(`match-pairs answer tile (step ${i + 1}, pair ${k + 1})`);
+      });
+      if (s.kind === 'sentenceBuilder') s.rounds.forEach((r, k) => { if (strip(r.itemId) === id) list.push(`sentence-builder target (step ${i + 1}, round ${k + 1})`); });
       if (s.kind === 'visualMatch' || s.kind === 'miniMap') s.rounds.forEach((r, k) => { if (strip(r.itemId) === id) list.push(`${s.kind === 'miniMap' ? 'mini-map' : 'visual-match'} audio (step ${i + 1}, round ${k + 1})`); });
     });
     for (const d of Object.values(en.dialogues)) for (const node of d.nodes) for (const c of node.choices ?? []) {
@@ -707,7 +754,7 @@ function renderMission(plan: MissionPlan, index: number, use: Map<string, number
     listening: byKind('expected-reply').length,
     activePractice: active.length,
     oneButton: Object.values(en.dialogues).reduce((k, d) => k + d.nodes.filter((x) => x.choices?.length === 1).length, 0),
-    activeRetrieval: byKind('quick-reply').length + byKind('swap-it').length + Object.values(en.dialogues).reduce((k, d) => k + d.nodes.filter((x) => (x.choices?.length ?? 0) > 1).length, 0),
+    activeRetrieval: byKind('quick-reply').length + byKind('swap-it').length + byKind('match-pairs').length + byKind('sentence-builder').length + Object.values(en.dialogues).reduce((k, d) => k + d.nodes.filter((x) => (x.choices?.length ?? 0) > 1).length, 0),
     unusedSentences: flags.filter((f) => f.startsWith('Learner sentence never actively retrieved')).length,
     meaning: byKind('meaning-quiz').length,
     dialogueChoices: byKind('dialogue-choice').length,
@@ -721,8 +768,8 @@ function renderMission(plan: MissionPlan, index: number, use: Map<string, number
   o.push('## Audit Metadata — DO NOT FIX YET', '');
   o.push(`- Learner-production sentences: ${counts.production}`, `- Receptive (expected-reply) sentences: ${counts.receptive}`, `- Toolkit phrases bundled: ${counts.kit}`);
   o.push(`- Key-sentence steps: ${keySentences}`, `- Expected-reply/listening items: ${counts.replyItems}`, `- Questions/quizzes (meaning quiz): ${counts.meaning}`);
-  o.push(`- Active-practice questions (quick reply / visual match / swap it / mini map): ${counts.activePractice}`);
-  o.push(`- Active retrieval opportunities (quick-reply rounds + swap rounds + dialogue screens with a real choice): ${counts.activeRetrieval}`);
+  o.push(`- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): ${counts.activePractice}`);
+  o.push(`- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): ${counts.activeRetrieval}`);
   o.push(`- One-button dialogue screens: ${counts.oneButton}`, `- Learner sentences never actively retrieved: ${counts.unusedSentences}`);
   o.push(`- Dialogue learner choices (screens): ${counts.dialogueChoices}`, `- Wrong-answer branches: ${counts.wrongBranches}`, `- Cold-open prompts: ${counts.coldOpens}`);
   o.push(`- Recovery opportunities: ${counts.recovery}`, `- Vocabulary pre-items: ${counts.vocab}`, `- Swap variants (extra accepted lines): ${counts.swaps}`, `- Sentences in review: ${counts.review}`);
@@ -773,6 +820,8 @@ function build(): { text: string; stats: PracticeAuditStats } {
   o.push(`| \`visualMatch\` — visual match | ${ui('visualMatchTitle')} (or the step's label); the line auto-plays; a 3×3 board of up to 9 tiles; tap the tile that shows what was said. | tiles shuffled once per step | Inline: correct tile turns green, a wrong pick red; the spoken line and its translation appear only now; Try again / Next. | "numberSprint" pass/fail + response time, when the round names a sentence |`);
   o.push(`| \`swap\` — swap it | ${ui('swapTitle')}: a cue (emoji + short app-language hint), the sentence frame with a blank, and 2–3 slot values as buttons. | shuffled per session | Inline: the blank is filled, the completed sentence is SPOKEN and translated — also for a non-matching value, which is still a real sentence; Try again / Next. | "flashRecall" pass/fail + response time on the frame's sentence |`);
   o.push(`| \`miniMap\` — mini map | ${ui('miniMapTitle')}: the instruction auto-plays; a 3×3 schematic (landmarks, "you", tappable arrows or pins); tap where the instruction leads. No translation before the tap. | fixed (it is a map) | Inline, as visual match. | "listen" pass/fail + response time, when the round names a sentence |`);
+  o.push(`| \`matchPairs\` — match pairs | ${ui('matchTitle')}: one screen, two groups of tiles in the target language — the questions, then the answers. Tap one tile, then its partner (either side first). Tapping a question plays it. No translation anywhere before a match. | answers shuffled per session | A right pair locks, turns green, gets a shared number and the answer is spoken. A wrong pair shakes, shows ✕ and clears — nothing locks, nothing is lost. Continue appears when every pair is locked. | "simulator" pass/fail on the pair's answer sentence |`);
+  o.push(`| \`sentenceBuilder\` — sentence builder | ${ui('builderTitle')}: the sentence's meaning in the app language, an empty answer line, and 3–6 tiles (authored chunks of the sentence, per language). Tap a tile to place it, tap a placed tile to take it back. ${ui('builderCheck')} unlocks when every tile is used. | tiles shuffled per session, never already in order | Right: the sentence is spoken and translated; Next. Wrong: ${ui('builderNotYet')} — the answer is not shown; after one miss ${ui('builderHint')} marks how it starts; after two, the learner may reveal it. | "flashRecall" pass/fail + response time on the sentence |`);
   o.push(`| \`swipe\` — sentence review | Each sentence in turn: auto-played, shown with translation and tip; 🔊 ${ui('hearAgain')}, Next. | fixed | none | nothing |`);
   o.push(`| \`ambush\` with a mode — final challenge | Same screen as the cold open below, with an explicit purpose. **recovery**: ${ui('fastOneComing')}; the line is meant to be too hard, the accepted answer is a conversation-help tool, and only that button carries 🛟. **speed**: ${ui('speedHeadsUp')}; known language at speed, no 🛟 anywhere. A visual-match or mini-map step marked "speed challenge" plays the same role with a board instead of two buttons (line spoken at 1.12, replay at 0.85). | shuffled | as below | as below |`);
   o.push(`| \`ambush\` — cold open | ⚡ ${ui('fastOneComing')}, button 👂 ${ui('imReady')}; the line is spoken fast (1.12) and printed small; two buttons, each "🛟 + a target-language sentence". | shuffled | ❌/✓ card: what you heard + translation, your answer, the sentence that fit; Try again / Continue | "listen" pass/fail + response time |`);
@@ -840,7 +889,9 @@ function build(): { text: string; stats: PracticeAuditStats } {
     const heard = count(id, (s) => (s.kind === 'quiz' && strip(s.itemId) === id) || (s.kind === 'replies' && s.replyIds.map(strip).includes(id)));
     const engines = BOOTCAMP_PLAN.reduce((k, m) => k + content('en', m.day).steps.reduce((n2, st) => n2
       + (st.kind === 'quickReply' ? st.rounds.filter((r) => r.options.some((o2) => strip(o2.itemId) === id)).length : 0)
-      + (st.kind === 'swap' ? st.rounds.filter((r) => strip(r.itemId) === id).length : 0), 0), 0);
+      + (st.kind === 'swap' ? st.rounds.filter((r) => strip(r.itemId) === id).length : 0)
+      + (st.kind === 'matchPairs' ? st.pairs.filter((p) => strip(p.answerItemId) === id).length : 0)
+      + (st.kind === 'sentenceBuilder' ? st.rounds.filter((r) => strip(r.itemId) === id).length : 0), 0), 0);
     const active = sel.accepted + sel.wrong + coldOpt + engines;
     if (active === 0) zeroRetrieval++;
     o.push(`| \`${id}\` | ${firstEn.get(id)} | ${pad(ms[0] ?? 0)} | ${ms.slice(1).map(pad).join(', ') || '—'} | ${key} | ${sel.accepted} / ${sel.wrong} | ${engines} | ${coldOpt} | ${review} | ${inCheckpoint(id) ? 'yes' : 'no'} | ${active === 0 && key === 0 && heard > 0 ? 'yes' : 'no'} | ${active === 0 ? '**0 active retrieval opportunities**' : ''} |`);
@@ -878,7 +929,7 @@ function build(): { text: string; stats: PracticeAuditStats } {
 
   // question bank
   o.push('# Complete Existing Question Bank', '');
-  o.push('Every encoded question, compact. Listening questions (expected-reply, meaning-quiz) show MEANINGS on the buttons; quick-reply, dialogue-choice and cold-open show target-language lines; visual-match shows tiles; swap-it shows slot values; mini-map shows tappable map cells. ✅ marks every accepted choice; a dialogue screen can have several.', '');
+  o.push('Every encoded question, compact. Listening questions (expected-reply, meaning-quiz) show MEANINGS on the buttons; quick-reply, dialogue-choice and cold-open show target-language lines; visual-match shows tiles; swap-it shows slot values; mini-map shows tappable map cells; match-pairs shows the answer tiles; sentence-builder shows the chunks in their correct order. ✅ marks every accepted choice; a dialogue screen can have several.', '');
   missions.forEach((m, i) => {
     o.push(`## Mission ${pad(i + 1)} — ${m.plan.title.en}`, '');
     if (!m.questions.length) o.push('No questions.', '');
