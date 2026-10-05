@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useAppStore } from '../../shared/stores/appStore.js';
 import { L, t, type StringKey } from '../../shared/i18n/strings.js';
 import { resolveLearningItem } from '../../shared/i18n/display.js';
@@ -43,13 +43,16 @@ export function Core() {
   // Opened from Learn with a category; defaults to the sentences.
   const category = (app.coreCategory as CoreTab | null) ?? 'phrases';
   const groups = useMemo(() => buildGroups(app.learningLang), [app.learningLang]);
+  // Free learning may ask for one tool straight away (and where Back returns); read once, then cleared.
+  const [intent] = useState(() => useAppStore.getState().coreIntent);
+  useEffect(() => { if (useAppStore.getState().coreIntent) app.setCoreIntent(null); }, []); // eslint-disable-line react-hooks/exhaustive-deps
   // Sentences entry: three cards (Listen · Flashcards · View All). 'entry' is the default landing.
-  const [phrasesView, setPhrasesView] = useState<'entry' | 'flashcards' | 'list'>('entry');
+  const [phrasesView, setPhrasesView] = useState<'entry' | 'flashcards' | 'list'>(intent?.mode === 'sentenceCards' ? 'flashcards' : intent?.mode === 'sentenceList' ? 'list' : 'entry');
   const total = useMemo(() => groups.reduce((n, g) => n + g.items.length, 0), [groups]);
 
   // One canonical display model per phrase (target + app-gloss + audio + directions + review id).
   const model = (item: BootcampItem) => resolveLearningItem({ id: item.id, target: item.text, meaning: item.meaning }, app.uiLang, app.learningLang);
-  const backToLearn = (): void => { app.setCoreCategory(null); app.navigate('bootcamp'); };
+  const backToLearn = (): void => { app.setCoreCategory(null); app.navigate(intent?.returnTo ?? 'bootcamp'); };
 
   return (
     <div className="screen">
@@ -76,7 +79,7 @@ export function Core() {
       </div>
       <div className="screen-scroll">
         {category === 'words' ? (
-          <CoreWords />
+          <CoreWords start={intent?.mode === 'wordCards' ? 'recall' : intent?.mode === 'wordPlayer' ? 'listen' : 'menu'} />
         ) : category === 'phrases' ? (
           phrasesView === 'flashcards' ? (
             <SentenceFlashcards onBack={() => setPhrasesView('entry')} />

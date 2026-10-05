@@ -23,6 +23,8 @@ import { CompanionPeek } from '../companion/Companion.js';
  *   3. Quick review     — a few sentences from the learner's own practice log. Shown only once
  *                          there is something to review: an empty, disabled card is noise.
  *   4. Quick listen     — ten hands-free minutes.
+ *   5. Free learning    — the door to every self-directed tool (cards, players, stories, dialogues,
+ *                          foundations). Secondary to the next step, but always in plain sight.
  *
  * Every number is derived from stored progress. Settings, libraries and tools live in Learn, Listen
  * and Profile.
@@ -120,6 +122,16 @@ export function Home() {
             </button>
           </section>
           )}
+
+          {/* 5 — Free learning: the second way to learn, one tap away and never hidden in a tab. */}
+          <button className="card card-press summary-card free-entry span-2" onClick={() => { tap(); app.navigate('free'); }} aria-label={t('freeLearningTitle')}>
+            <span className="icon-tile icon-tile-brand icon-tile-lg" aria-hidden><Icon name="learn" size={28} /></span>
+            <span style={{ minWidth: 0 }}>
+              <strong style={{ display: 'block', fontSize: '1.15rem' }}>{t('freeLearningTitle')}</strong>
+              <span className="dim small" style={{ display: 'block' }}>{t('freeLearningHomeSub')}</span>
+            </span>
+            <Icon name="chevron" size={20} flip />
+          </button>
 
           {/* 4 — Quick listen */}
           <section className={`card quick-card listen ${reviewCount > 0 ? '' : 'span-2'}`} aria-labelledby="home-listen">

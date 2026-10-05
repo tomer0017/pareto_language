@@ -25,6 +25,7 @@ export type View =
   | 'listen'
   | 'profile'
   // Secondary screens
+  | 'free'        // Free learning — every self-directed tool, one tap from Home (features/free)
   | 'core'
   | 'readiness'
   | 'review'
@@ -42,6 +43,10 @@ export type View =
   | 'videos'
   | 'reading'
   | 'zerostart';
+
+export type ListenIntent = 'quick' | 'phrases' | 'dialogues';
+export type CoreMode = 'wordCards' | 'wordPlayer' | 'sentenceCards' | 'sentenceList';
+export interface CoreIntent { mode: CoreMode; returnTo: View }
 
 export interface OnboardingInput {
   departureAt: string;
@@ -80,14 +85,19 @@ interface AppState {
    *  is reachable instead of being covered by the higher-z nav — the same focused-flow rule an
    *  active Bootcamp mission already uses. Purely navigational; never persisted. */
   coreGameActive: boolean;
-  /** A one-shot request handed to the Listen screen by another surface (Home's Quick Listen):
-   *  consumed and cleared by Listen on arrival. Navigational only; never persisted. */
-  listenIntent: 'quick' | null;
+  /** A one-shot request handed to the Listen screen by another surface — Home's Quick Listen, or
+   *  Free learning asking for the sentence player / the dialogues: consumed and cleared by Listen on
+   *  arrival. Navigational only; never persisted. */
+  listenIntent: ListenIntent | null;
+  /** A one-shot request handed to the Core library by Free learning: which tool to open straight
+   *  away (swipe cards, a player) and where its Back returns. Consumed on arrival; never persisted. */
+  coreIntent: CoreIntent | null;
   /** A one-shot request to open a specific story (Listen's story card): consumed by Reading. */
   readingIntent: string | null;
 
   navigate(view: View): void;
-  setListenIntent(intent: 'quick' | null): void;
+  setListenIntent(intent: ListenIntent | null): void;
+  setCoreIntent(intent: CoreIntent | null): void;
   setReadingIntent(storyId: string | null): void;
   setUiLang(lang: string): void;
   setLearningLang(lang: string): Promise<void>;
@@ -164,10 +174,15 @@ export const useAppStore = create<AppState>((set, get) => ({
   coreCategory: null,
   coreGameActive: false,
   listenIntent: null,
+  coreIntent: null,
   readingIntent: null,
 
   setListenIntent(intent) {
     set({ listenIntent: intent });
+  },
+
+  setCoreIntent(intent) {
+    set({ coreIntent: intent });
   },
 
   setReadingIntent(storyId) {

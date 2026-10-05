@@ -37,12 +37,14 @@ const CATEGORIES: { id: ListenCategory; key: StringKey; icon: IconName }[] = [
  *
  * Stories are the third thing to do here, and the warmest: besides the Stories category in the
  * player, one real story (the learner's next unfinished one) is shown as a visual card that opens
- * the story reader. Stories stay under Listen — they are support, not a destination of their own.
+ * the story reader. Browsing tools (cards, the library, foundations) are not here: they live under
+ * Free learning, so this screen stays about listening.
  */
 export function Listen() {
   const app = useAppStore();
   const intent = useAppStore((s) => s.listenIntent);
-  const [category, setCategory] = useState<ListenCategory>('phrases');
+  // Free learning may ask for a category (the sentence player, the dialogues); Quick Listen plays the sentences.
+  const [category, setCategory] = useState<ListenCategory>(intent === 'dialogues' ? 'dialogues' : 'phrases');
   const [stories, setStories] = useState<Story[] | null>(null);
   // Capture a one-shot Quick Listen request from Home, then clear it (it must not replay on revisit).
   const [quick] = useState(intent === 'quick');
@@ -65,9 +67,8 @@ export function Listen() {
     return stories ? buildStoryPlaylist(stories, readingLang, app.uiLang) : null;
   }, [category, stories, app.learningLang, app.uiLang, readingLang]);
 
-  const open = (view: 'reading' | 'videos' | 'core', storyId?: string): void => {
+  const open = (view: 'reading' | 'videos', storyId?: string): void => {
     tap();
-    if (view === 'core') app.setCoreCategory('phrases');
     if (storyId) app.setReadingIntent(storyId);
     app.navigate(view);
   };
@@ -107,11 +108,6 @@ export function Listen() {
           <button className="link-row card-press" onClick={() => open('videos')}>
             <span className="icon-tile" aria-hidden>🎬</span>
             <span className="link-row-body"><span className="link-row-title">{t('listenWatchVideos')}</span><span className="link-row-sub">{t('homeVideosSub')}</span></span>
-            <Icon name="chevron" size={20} flip />
-          </button>
-          <button className="link-row card-press" onClick={() => open('core')}>
-            <span className="icon-tile" aria-hidden>💬</span>
-            <span className="link-row-body"><span className="link-row-title">{t('phraseLibrary')}</span><span className="link-row-sub">{t('phraseLibrarySub')}</span></span>
             <Icon name="chevron" size={20} flip />
           </button>
         </div>

@@ -585,7 +585,7 @@ describe('companion store — per language, persisted, evolution fires once', ()
   it('it greets, cheers and teaches in the right places', () => {
     for (const stage of STAGES) {
       expect(renderToStaticMarkup(createElement(ui.CompanionPresenceView, { stage, language: 'x', line: 'x' })), 'route').toContain(`s${stage}-hello.png`);
-      expect(renderToStaticMarkup(createElement(ui.CompanionIntroView, { stage, line: 'x' })), 'mission intro').toContain(`s${stage}-cheer.png`);
+      expect(renderToStaticMarkup(createElement(ui.CompanionIntroView, { stage, line: 'x' })), 'mission intro').toContain(`s${stage}-hello.png`); // greets — never the pom-poms
       expect(renderToStaticMarkup(createElement(ui.CompanionPeekView, { stage })), 'home, beside the start button').toContain(`s${stage}-cheer.png`);
       expect(renderToStaticMarkup(createElement(ui.CompanionCoachView, { stage, line: 'x' })), 'explaining').toContain(`s${stage}-learning.png`);
       expect(renderToStaticMarkup(createElement(ui.CompanionPresenceView, { stage, language: 'x', line: 'x', mood: 'resting' })), 'all done').toContain(`s${stage}-idle.png`);

@@ -22,6 +22,25 @@ loop (typecheck → lint → tests → build → smoke) green at every milestone
 
 ## What's done
 
+### Free learning restored — one obvious door to every self-directed tool (2026-10-05)
+- **Root cause (from git):** the 29-mission refactor (`752463f`) turned Home into a coach and moved
+  every self-directed tool under Learn → "More practice" → the Core library's inner menus; the
+  Foundation button and its one-time introduction were deleted. Nothing was removed from the code —
+  the swipe word cards (`SwipeRecall`), sentence cards (`SentenceFlashcards`), both players
+  (`ListenPanel`, Listen's playlists), Stories and the Foundation sheet all still worked, three or
+  four taps deep.
+- **Two learning modes, both on Home:** the Journey ("your next step") and a full-width card
+  "למידה באופן חופשי" → `features/free/FreeLearning.tsx` (view `free`, under the Home tab): seven
+  cards — word cards, sentence cards, word player, sentence player, stories, dialogues, foundations —
+  each opening the EXISTING surface through a one-shot intent (`coreIntent`, `listenIntent` in the
+  app store). Core's Back returns to the hub when opened from it.
+- **Listen** lost only its duplicate "sentence library" row; everything audible stays.
+- **Foundations:** the Journey row works (it opens the shared sheet); the one-time introduction is
+  back on the Journey (`FoundationOnboarding`, per-language `ready.foundation.onboarded.*`), with
+  "Open Foundations" / "Later"; the sheet stays reachable from the Journey and the hub.
+- **Mascot:** a mission introduction now greets (`hello`); the pom-poms (`cheer`) were its default.
+- Tests: `features/free/freeLearning.test.ts`. Not done: browser / device QA.
+
 ### Mission videos are auto-discovered by language and number (2026-10-05)
 - **Convention:** `apps/web/public/videos/{language}/{language}_{displayedMissionNumber}.mp4` — the language being
   learned and the mission number the learner sees, no zero padding (M04 Spanish = `videos/es/es_4.mp4`).

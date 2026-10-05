@@ -17,7 +17,8 @@ import { ListenPanel, type PlaybackItem } from '../../shared/playback/index.js';
  * obvious next action: Browse · Picture Quiz · Swipe Recall. Games receive only icon-eligible
  * words (unique emoji); non-visual words appear in Browse with a neutral bullet.
  */
-type Mode = 'menu' | 'browse' | 'quiz' | 'recall' | 'listen';
+export type CoreWordsMode = 'menu' | 'browse' | 'quiz' | 'recall' | 'listen';
+type Mode = CoreWordsMode;
 
 const CAT_LABEL: Record<string, LocalizedText> = {
   glue: { en: 'Conversation glue', he: 'ביטויי שיחה' },
@@ -47,12 +48,13 @@ const CAT_LABEL: Record<string, LocalizedText> = {
   people: { en: 'People & family', he: 'אנשים ומשפחה' },
 };
 
-export function CoreWords() {
+/** `start`: the tool to open at once (Free learning's word cards / word player); default = the menu. */
+export function CoreWords({ start = 'menu' }: { start?: CoreWordsMode }) {
   const learningLang = useAppStore((s) => s.learningLang);
   const uiLang = useAppStore((s) => s.uiLang);
   const setCoreGameActive = useAppStore((s) => s.setCoreGameActive);
   const [words, setWords] = useState<CoreWord[] | null>(null);
-  const [mode, setMode] = useState<Mode>('menu');
+  const [mode, setMode] = useState<Mode>(start);
 
   useEffect(() => { void loadCoreWords(learningLang).then(setWords); }, [learningLang]);
   // A game session is a focused, nav-less flow: hide the bottom nav so the game's fixed action zone

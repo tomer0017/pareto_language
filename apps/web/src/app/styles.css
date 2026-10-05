@@ -531,6 +531,12 @@ input:focus, select:focus { outline: 2px solid var(--brand); border-color: trans
 }
 .action-title { font-weight: 800; font-size: 1.02rem; line-height: 1.2; }
 .action-sub { font-size: 0.78rem; color: var(--ink-dim); line-height: 1.3; }
+/* Free learning: the hub's cards (two per row on phones), and its door on Home. */
+.free-grid { margin-top: 4px; }
+.free-card { min-height: 132px; }
+.free-card .action-title { font-size: 1.08rem; }
+.free-entry { background: linear-gradient(160deg, var(--brand-soft), var(--card) 70%); }
+.free-entry .icon-dir { color: var(--ink-faint); margin-inline-start: auto; }
 .ac-words .action-icon { background: var(--good-soft); }
 .ac-phrases .action-icon { background: var(--accent-soft); }
 .ac-videos .action-icon { background: #dbeafe; }

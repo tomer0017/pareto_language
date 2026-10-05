@@ -6,6 +6,7 @@ import { LangStrip } from '../../shared/ui/LangStrip.js';
 import { PageHeader } from '../../shared/ui/PageHeader.js';
 import { ProgressRing } from '../../shared/ui/ProgressRing.js';
 import { useFoundationStore } from '../foundation/foundationStore.js';
+import { FoundationOnboarding } from '../foundation/FoundationOnboarding.js';
 import { ZERO_LANGS } from '../zerostart/types.js';
 import { BOOTCAMP_PLAN, PHASES } from './plan.js';
 import { missionsFor, useBootcampStore } from './bootcampStore.js';
@@ -54,6 +55,8 @@ export function Learn() {
         </button>
         {/* The learner's buddy lives on the Route: a character beside the path, not another statistic. */}
         <CompanionPresence />
+        {/* Once per language: where the Foundation building blocks are (and a way to open them now). */}
+        <FoundationOnboarding />
 
         {PHASES.map((phase) => {
           const inPhase = BOOTCAMP_PLAN.filter((m) => m.phase === phase.n);

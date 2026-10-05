@@ -161,10 +161,11 @@ export function CompanionCoach({ line, mood, size }: { line: string; mood?: Comp
 }
 
 /**
- * The buddy opening a mission: large, cheering you on ("let's go"), with the goal in one bubble.
- * Only its own artwork — no emoji or prop is placed beside it.
+ * The buddy opening a mission: large, waving hello, with the goal in one bubble. It GREETS here —
+ * the pom-poms (`cheering` / `celebrating`) are for finishing, not for an introduction. Only its own
+ * artwork — no emoji or prop is placed beside it.
  */
-export function CompanionIntroView({ stage, line, mood = 'cheering', size = 168 }: { stage: CompanionStage; line: string; mood?: CompanionMood; size?: number }) {
+export function CompanionIntroView({ stage, line, mood = 'greeting', size = 168 }: { stage: CompanionStage; line: string; mood?: CompanionMood; size?: number }) {
   return (
     <div className="cmp-intro">
       <Bubble stage={stage}>{line}</Bubble>

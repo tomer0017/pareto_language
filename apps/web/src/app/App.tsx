@@ -19,6 +19,7 @@ import { PlanSettings } from '../features/plan/PlanSettings.js';
 import { LanguageSelect } from '../features/languages/LanguageSelect.js';
 import { Bootcamp } from '../features/bootcamp/Bootcamp.js';
 import { Home } from '../features/home/Home.js';
+import { FreeLearning } from '../features/free/FreeLearning.js';
 import { Core } from '../features/core/Core.js';
 import { Profile } from '../features/profile/Profile.js';
 import { Videos } from '../features/videos/Videos.js';
@@ -64,6 +65,7 @@ const showDebug = resolveDebugOverlay(import.meta.env.DEV);
 const SCREENS: Partial<Record<View, { feature: string; el: () => JSX.Element | null }>> = {
   onboarding: { feature: 'Onboarding', el: Onboarding },
   home: { feature: 'Home', el: Home },
+  free: { feature: 'FreeLearning', el: FreeLearning },
   listen: { feature: 'Listen', el: Listen },
   readiness: { feature: 'Readiness', el: Readiness },
   review: { feature: 'Review', el: QuickReview },
