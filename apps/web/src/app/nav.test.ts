@@ -91,11 +91,12 @@ describe('the Foundation building blocks no longer float over the mission list',
     expect(read('./styles.css')).not.toMatch(/foundation-fab/);
   });
 
-  it('Foundation is an ordinary row in the Path screen\'s "More practice" section', () => {
+  it('Foundation is ONE ordinary card at the top of Phase 1 of the Path — before Mission 01, never floating, never duplicated below', () => {
     const learn = read('../features/bootcamp/Learn.tsx');
-    const support = learn.slice(learn.indexOf("t('morePractice')"));
-    expect(support).toContain("t('foundationTitle')");
-    expect(support).toContain('openFoundation()');
-    expect(learn.indexOf("t('foundationTitle')")).toBeGreaterThan(learn.indexOf('PHASES.map')); // after the missions, never above them
+    expect(learn.match(/openFoundation\(\)/g)).toHaveLength(1); // exactly one Journey entry
+    expect(learn).toContain("t('foundationEntryTitle')");
+    expect(learn.indexOf("t('foundationEntryTitle')")).toBeGreaterThan(learn.indexOf('PHASES.map')); // inside the phase list…
+    expect(learn.indexOf("t('foundationEntryTitle')")).toBeLessThan(learn.indexOf('<MissionCard')); // …before the first mission card
+    expect(learn.slice(learn.indexOf("t('morePractice')"))).not.toContain('openFoundation'); // no duplicate under More practice
   });
 });

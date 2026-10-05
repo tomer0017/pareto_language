@@ -176,7 +176,7 @@ describe('Free learning', () => {
     expect(src('./FreeLearning.tsx')).toContain('useFoundationStore((s) => s.openSheet)');
     const journey = src('../bootcamp/Learn.tsx');
     expect(journey).toContain('useFoundationStore((s) => s.openSheet)');
-    expect(journey).toContain("t('foundationTitle')");
+    expect(journey).toContain("t('foundationEntryTitle')");
     expect(journey).toContain('openFoundation()');
     // The row is a real button that opens the sheet (not dead): the action is the store's.
     foundation.useFoundationStore.getState().close();
@@ -187,6 +187,24 @@ describe('Free learning', () => {
     // The sheet itself is mounted by the app shell on every screen, so both openers reach it.
     expect(src('../../app/App.tsx')).toContain('<FoundationSheet />');
     expect(html(createElement(learn.Learn))).toContain('יסודות');
+  });
+  it('Journey: the Phase 1 heading "יסודות" is a section title; the one real entry "יסודות בשפה" is a card before Mission 01', () => {
+    const page = html(createElement(learn.Learn));
+    const heading = page.indexOf('class="phase-title">יסודות<');
+    const entry = page.indexOf('foundation-entry');
+    const mission1 = page.indexOf('להציג את עצמי'); // Mission 01's title
+    expect(heading).toBeGreaterThan(-1);
+    expect(entry).toBeGreaterThan(heading);
+    expect(mission1).toBeGreaterThan(entry);
+    // The heading is not a control; the entry is a real button with the card affordance and a chevron.
+    expect(page.slice(heading - 300, heading)).not.toContain('<button');
+    expect(page).toMatch(/<button class="link-row card-press foundation-entry"[^>]*aria-label="יסודות בשפה"/);
+    expect(page).toContain('יסודות בשפה');
+    expect(page).toContain('אני, אתה, שאלות, צבעים, מספרים, זמן ועוד');
+    expect(page.match(/foundation-entry/g)).toHaveLength(1); // exactly one persistent Journey card
+    // Mission order is untouched: the 30 cards still come in plan order.
+    const order = [...page.matchAll(/class="mcard-num"[^>]*>(\d+)</g)].map((m) => Number(m[1]));
+    expect(order).toEqual(Array.from({ length: 30 }, (_, i) => i + 1));
   });
   it('the first-time Foundations introduction: shown once per language, dismissable, persisted, and never the only way in', () => {
     disk.delete('ready.foundation.onboarded.en');

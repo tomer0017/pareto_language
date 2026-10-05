@@ -20,9 +20,10 @@ import { CompanionPresence } from '../companion/Companion.js';
  * its phases, with a small readiness summary and exactly one mission highlighted as the next step,
  * so a glance answers: where am I, what have I finished, what comes next.
  *
- * Supporting practice (the zero-beginner path, the Foundation building blocks, words, the sentence
- * library) sits below the curriculum in ordinary rows — useful, but never competing with it and
- * never floating over it.
+ * The Foundation building blocks are the one supporting tool that belongs BEFORE Mission 01: a real
+ * card at the top of Phase 1 (the phase heading above it is a section title, not a control). The
+ * other supporting practice (the zero-beginner path, words, the sentence library) sits below the
+ * curriculum in ordinary rows — useful, but never competing with it and never floating over it.
  */
 export function Learn() {
   const app = useAppStore();
@@ -64,11 +65,19 @@ export function Learn() {
           const done = inPhase.filter((m) => readiness.statusOf(m.day) === 'ready').length;
           return (
             <section key={phase.n} className="phase" aria-label={L(phase.title)}>
-              <div className="phase-head">
+              <div className="phase-head" role="presentation">
                 <span className="icon-tile icon-tile-brand" aria-hidden>{phase.icon}</span>
                 <h2 className="phase-title">{L(phase.title)}</h2>
                 <span className="phase-count">{t('phaseCount', { done, total: inPhase.length })}</span>
               </div>
+              {/* The building blocks come first — the real Foundations entry, before Mission 01. */}
+              {phase.n === 1 && (
+                <button className="link-row card-press foundation-entry" onClick={() => { tap(); openFoundation(); }} aria-label={t('foundationEntryTitle')}>
+                  <span className="icon-tile icon-tile-brand" aria-hidden>🛟</span>
+                  <span className="link-row-body"><span className="link-row-title">{t('foundationEntryTitle')}</span><span className="link-row-sub">{t('foundationEntryBody')}</span></span>
+                  <Icon name="chevron" size={20} flip />
+                </button>
+              )}
               <div className="mission-grid">
                 {inPhase.map((m) => (
                   <MissionCard
@@ -94,11 +103,6 @@ export function Learn() {
               <Icon name="chevron" size={20} flip />
             </button>
           )}
-          <button className="link-row card-press" onClick={() => { tap(); openFoundation(); }}>
-            <span className="icon-tile" aria-hidden>🧱</span>
-            <span className="link-row-body"><span className="link-row-title">{t('foundationTitle')}</span><span className="link-row-sub">{t('foundationEntrySub')}</span></span>
-            <Icon name="chevron" size={20} flip />
-          </button>
           <button className="link-row card-press" onClick={() => open('core', 'words')}>
             <span className="icon-tile" aria-hidden>📝</span>
             <span className="link-row-body"><span className="link-row-title">{t('homeLearnWords')}</span><span className="link-row-sub">{t('homeLearnWordsSub')}</span></span>

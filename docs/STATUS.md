@@ -35,7 +35,9 @@ loop (typecheck → lint → tests → build → smoke) green at every milestone
   each opening the EXISTING surface through a one-shot intent (`coreIntent`, `listenIntent` in the
   app store). Core's Back returns to the hub when opened from it.
 - **Listen** lost only its duplicate "sentence library" row; everything audible stays.
-- **Foundations:** the Journey row works (it opens the shared sheet); the one-time introduction is
+- **Foundations:** the Journey's one entry is now a card at the top of Phase 1, before Mission 01
+  ("יסודות בשפה"; the phase heading above it is a section title, not a control); the duplicate row
+  under More practice is gone. The one-time introduction is
   back on the Journey (`FoundationOnboarding`, per-language `ready.foundation.onboarded.*`), with
   "Open Foundations" / "Later"; the sheet stays reachable from the Journey and the hub.
 - **Mascot:** a mission introduction now greets (`hello`); the pom-poms (`cheer`) were its default.
