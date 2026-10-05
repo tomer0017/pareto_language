@@ -51,12 +51,6 @@ export const DAY7: BootcampDayContent = {
   title: T("צ'ק-אין במלון", 'Hotel Check-in'),
   items: DAY7_ITEMS,
   dialogues: { 'hotel-checkin': SCENE },
-  introVideo: {
-    src: '/videos/En_day7.mp4',
-    title: T('השיחה המלאה', 'Full conversation'),
-    language: 'en',
-    type: 'intro',
-  },
   steps: [
     { kind: 'talk', icon: '🏨', title: T('משימה 8: צ\'ק-אין במלון', 'Mission 8: Hotel Check-in'),
       body: [

@@ -82,8 +82,8 @@ stays as a calm way out. READY is used in two modes over the SAME content: **act
 - **Videos** — an experience, not a list: plays a random available mission video, then asks "did
   you understand everything?" → load another random video, or drop into the exact Mission Hub that
   owns the video (Practice / Transcript / Video). Honest empty state. Videos ship for EN Missions
-  1–3, 6–9, 14 and FR Missions 1–3, 5, 6, 9, 14 (each mission's optional `introVideo`, auto-discovered per
-  learning language); missions without one show "Coming soon".
+  1–3, 6–9, 14, ES Missions 1–7 and FR Missions 1–3, 5, 6, 9, 14 (whatever files exist under
+  `public/videos/{language}/`, discovered at build time per learning language); missions without one show "Coming soon".
 - **Bootcamp** — the heart of the product: the **Core 30**, a 30-mission journey in 5 phases
   (Foundations → Arrival → Everyday Life → City & Conversation → Mastery). **Mission 1 = Introduce
   Myself**, Mission 4 = Everyday Core (want / need / have / can), Mission 30 = A Complete Day Abroad
@@ -165,7 +165,7 @@ stays as a calm way out. READY is used in two modes over the SAME content: **act
   engine (`shared/playback`), so it gains repeat ×1–3, sequential/random and translation on/off
   alongside play / pause / resume / restart — the same controls Core Words & Core Sentences use.
 - **Video** — the full-conversation video (manual play, inline, replayable). EN Missions 1–3, 6–9, 14
-  and FR Missions 1–3, 5, 6, 9, 14 ship one (e.g. `/videos/En_day6.mp4` = Taxi, registry key 6, shown as Mission 7); others show Coming Soon. Missing/broken
+  , ES Missions 1–7 and FR Missions 1–3, 5, 6, 9, 14 ship one (`videos/en/en_7.mp4` = Taxi, Mission 7); others show Coming Soon. Missing/broken
   video degrades gracefully.
 - **Victory Screen** — completion **celebrates** with minimal reading (Pareto): confetti +
   "{Mission} completed!" + three **large action cards** (Watch Conversation · Open Transcript ·
@@ -240,8 +240,9 @@ but no current mission enables it — it belonged to the retired Recovery Toolki
 - **TTS / audio (`shared/audio/tts.ts`)** — Web Speech with a Chrome keep-alive + visibility
   resume (the "works then stops" fix), a gesture unlock, and the **single global speech-rate**
   multiplier (`getSpeechRate`/`setSpeechRate`) applied to every `speak()`. Asset-first, TTS fallback.
-- **Videos (`apps/web/public/videos`)** — referenced by a mission's optional `introVideo.src`
-  (public path, resolved against `BASE_URL`). Shipped for EN days 2–5, 7–9, 11 and FR days 2–4.
+- **Videos** — `apps/web/public/videos/{language}/{language}_{displayedMissionNumber}.mp4`, discovered at build
+  time (`apps/web/videoManifest.ts`) and resolved by `features/videos/missionVideo.ts`. Adding a video
+  is dropping a correctly named file into the folder; no code or mission file changes.
 
 ## 8. Important constraints (rules for every future change)
 

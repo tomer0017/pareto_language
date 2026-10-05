@@ -123,11 +123,5 @@ export const DAY3: BootcampDayContent = {
   title: T('בית קפה', 'Coffee Shop'),
   items: [...DAY3_ITEMS, ...REUSED_RECOVERY],
   dialogues: { 'breakfast-order': SCENE_BREAKFAST },
-  introVideo: {
-    src: '/videos/En_day3.mp4',
-    title: T('השיחה המלאה', 'Full conversation'),
-    language: 'en',
-    type: 'intro',
-  },
   steps: m03Steps('en'),
 };

@@ -7,7 +7,7 @@ import { m14Flow } from '../practiceEveryday.js';
 /**
  * French Mission 4 — "Repas au restaurant" (Restaurant Meal). French parallel of English mission 4:
  * same objective (table → menu → order → drink → bill), same step structure, same engine. French
- * target lines + `tr:{en,he}` glosses; `fr.*` ids. Full-conversation video (Fr_day5.mp4). AI-drafted, vous, pending review.
+ * target lines + `tr:{en,he}` glosses; `fr.*` ids. AI-drafted, vous, pending review.
  */
 const T = (he: string, en: string): LocalizedText => ({ he, en });
 const TR = (en: string, he: string): LocalizedText => ({ en, he });
@@ -76,12 +76,6 @@ export const DAY4_FR: BootcampDayContent = {
   title: T('ארוחה במסעדה', 'Restaurant Meal'),
   items: DAY4_FR_ITEMS,
   dialogues: { 'sit-down-meal': SCENE },
-  introVideo: {
-    src: '/videos/Fr_day4.mp4',
-    title: T('השיחה המלאה', 'Full conversation'),
-    language: 'fr',
-    type: 'intro',
-  },
   steps: [
     { kind: 'talk', icon: '🍽️', title: T('ארוחה במסעדה', 'Restaurant Meal'),
       body: [

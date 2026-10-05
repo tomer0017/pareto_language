@@ -75,9 +75,8 @@ describe('Spanish missions — full parity + content integrity', () => {
     expect(report.complete).toBe(true);
   });
 
-  it('Spanish references no video file yet (video steps degrade to an honest "unavailable")', () => {
-    // Parity keeps Mission 1's intro/again video steps, but no Es_day*.mp4 exists, so no mission
-    // sets introVideo — the VideoStep renderer shows "video unavailable" (never an English video).
-    for (const d of builtDays) expect(DAYS_ES[d]!.introVideo).toBeUndefined();
+  it('Spanish missions name no video file — Spanish videos are found by convention, like every language', () => {
+    // (That the Spanish files in public/videos/es/ are picked up: features/videos/missionVideo.test.ts.)
+    for (const d of builtDays) expect(JSON.stringify(DAYS_ES[d]!)).not.toMatch(/\.mp4|introVideo/);
   });
 });

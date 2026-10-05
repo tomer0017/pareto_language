@@ -25,7 +25,7 @@ and carry no new phrases — that is expected, not missing content.
 
 **Estimated time:** ~20 min
 
-**Video:** `/videos/En_day1.mp4`
+**Video:** `videos/{language}/{language}_1.mp4` — played automatically when the file exists
 
 ### Core phrases (you say)
 - **My name is Dan.** · קוראים לי דן. — _התבנית: My name is ___ — פשוט תחליף את השם._
@@ -77,7 +77,7 @@ _Reply-training drill:_ “What's your name?” · “Where are you from?” · 
 
 **Estimated time:** ~20 min
 
-**Video:** `/videos/En_day2.mp4`
+**Video:** `videos/{language}/{language}_2.mp4` — played automatically when the file exists
 
 ### Core phrases (you say)
 - **How much is it?** · כמה זה עולה? — _השאלה שפותחת כל עסקה. תלמד אותה עד הסוף._
@@ -127,7 +127,7 @@ _Reply-training drill:_ “That's five euros.” · “That'll be ten euros.” 
 
 **Estimated time:** ~22 min
 
-**Video:** `/videos/En_day3.mp4`
+**Video:** `videos/{language}/{language}_3.mp4` — played automatically when the file exists
 
 ### Core phrases (you say)
 - **I'd like an iced coffee, please.** · אני רוצה קפה קר, בבקשה. — _התבנית: I’d like ___, please — עובדת על הכל._
@@ -197,7 +197,7 @@ _Reply-training drill:_ “For here or to go?” · “Medium or large?” · �
 
 **Estimated time:** ~22 min
 
-**Video:** — (none yet)
+**Video:** `videos/{language}/{language}_4.mp4` — played automatically when the file exists
 
 ### Core phrases (you say)
 - **I need a towel.** · אני צריך מגבת. — _I need ___ — לכל דבר שחסר לך._
@@ -269,7 +269,7 @@ _Reply-training drill:_ “Do you need anything?” · “Do you have your key?�
 
 **Estimated time:** ~20 min
 
-**Video:** — (none yet)
+**Video:** `videos/{language}/{language}_5.mp4` — played automatically when the file exists
 
 ### Core phrases (you say)
 - **Excuse me!** · סליחה! — _פותח כל פנייה לזר ברחוב._
@@ -319,7 +319,7 @@ _Reply-training drill:_ “It's on the left.” · “It's on the right.” · �
 
 **Estimated time:** ~20 min
 
-**Video:** `/videos/En_day10.mp4`
+**Video:** `videos/{language}/{language}_6.mp4` — played automatically when the file exists
 
 ### Core phrases (you say)
 - **Here is my passport.** · הנה הדרכון שלי. — _מגישים ואומרים. שלוש מילים שפותחות כל גבול._
@@ -374,7 +374,7 @@ _Reply-training drill:_ “What's the purpose of your visit?” · “How long a
 
 **Estimated time:** ~20 min
 
-**Video:** `/videos/En_day6.mp4`
+**Video:** `videos/{language}/{language}_7.mp4` — played automatically when the file exists
 
 ### Core phrases (you say)
 - **To this address, please.** · לכתובת הזאת, בבקשה. — _הפתיח למונית — תגיד את זה ותראה את הכתובת בטלפון._
@@ -424,7 +424,7 @@ _Reply-training drill:_ “Where to?” · “It's about fifteen euros.” · �
 
 **Estimated time:** ~20 min
 
-**Video:** `/videos/En_day7.mp4`
+**Video:** `videos/{language}/{language}_8.mp4` — played automatically when the file exists
 
 ### Core phrases (you say)
 - **I have a reservation.** · יש לי הזמנה. — _הפתיח לדלפק המלון. תבנית: I have a ___._
@@ -476,7 +476,7 @@ _Reply-training drill:_ “Your passport, please.” · “You're in room two-oh
 
 **Estimated time:** ~20 min
 
-**Video:** `/videos/En_day8.mp4`
+**Video:** `videos/{language}/{language}_9.mp4` — played automatically when the file exists
 
 ### Core phrases (you say)
 - **I'm just looking, thanks.** · אני רק מסתכל, תודה. — _משפט שקונה לך מרחב בלי לחץ מוכר._
@@ -530,7 +530,7 @@ _Reply-training drill:_ “What size are you?” · “The fitting room is over 
 
 **Estimated time:** ~20 min
 
-**Video:** — (none yet)
+**Video:** `videos/{language}/{language}_10.mp4` — played automatically when the file exists
 
 ### Core phrases (you say)
 - **Here you go.** · בבקשה, הנה.
@@ -620,7 +620,7 @@ _Reply-training drill:_ “What size are you?” · “The fitting room is over 
 
 **Estimated time:** ~20 min
 
-**Video:** — (none yet)
+**Video:** `videos/{language}/{language}_11.mp4` — played automatically when the file exists
 
 ### Core phrases (you say)
 - **This place is beautiful.** · המקום הזה יפהפה. — _מחמאה למקום פותחת כל שיחה._
@@ -678,7 +678,7 @@ _Reply-training drill:_ “Where are you from?” · “Is this your first time 
 
 **Estimated time:** ~20 min
 
-**Video:** — (none yet)
+**Video:** `videos/{language}/{language}_12.mp4` — played automatically when the file exists
 
 ### Core phrases (you say)
 - **Maybe later.** · אולי אחר כך. — _התשובה הכי שימושית כשלא החלטת._
@@ -737,7 +737,7 @@ _Reply-training drill:_ “At eight.” · “Is that too late for you?” · �
 
 **Estimated time:** ~20 min
 
-**Video:** — (none yet)
+**Video:** `videos/{language}/{language}_13.mp4` — played automatically when the file exists
 
 ### Core phrases (you say)
 - **Your home is beautiful.** · הבית שלך יפהפה.
@@ -796,7 +796,7 @@ _Reply-training drill:_ “Come in.” · “Let's sit in the living room.” ·
 
 **Estimated time:** ~22 min
 
-**Video:** `/videos/En_day4.mp4`
+**Video:** `videos/{language}/{language}_14.mp4` — played automatically when the file exists
 
 ### Core phrases (you say)
 - **A table for two, please.** · שולחן לשניים, בבקשה. — _הפתיח למסעדה. תבנית: a table for ___._
@@ -851,7 +851,7 @@ _Reply-training drill:_ “Do you have a reservation?” · “Are you ready to 
 
 **Estimated time:** ~20 min
 
-**Video:** — (none yet)
+**Video:** `videos/{language}/{language}_15.mp4` — played automatically when the file exists
 
 ### Core phrases (you say)
 - **I'm allergic to nuts.** · אני אלרגי לאגוזים. — _התבנית שמצילה: I’m allergic to ___. אומרים ברור, פעם אחת, בלי היסוס._
@@ -909,7 +909,7 @@ _Reply-training drill:_ “Let me check with the kitchen.” · “We can make i
 
 **Estimated time:** ~20 min
 
-**Video:** — (none yet)
+**Video:** `videos/{language}/{language}_16.mp4` — played automatically when the file exists
 
 ### Core phrases (you say)
 - **What do you do for fun?** · מה אתה אוהב לעשות בזמן הפנוי?
@@ -969,7 +969,7 @@ _Reply-training drill:_ “What else do you like?” · “Do you like music?”
 
 **Estimated time:** ~18 min
 
-**Video:** — (none yet)
+**Video:** `videos/{language}/{language}_17.mp4` — played automatically when the file exists
 
 ### Core phrases (you say)
 - **Where is the milk?** · איפה החלב? — _התבנית: Where is the ___? — מוצאת כל מוצר בכל חנות._
@@ -1023,7 +1023,7 @@ _Reply-training drill:_ “It's in aisle three.” · “Over there, on the left
 
 **Estimated time:** ~20 min
 
-**Video:** — (none yet)
+**Video:** `videos/{language}/{language}_18.mp4` — played automatically when the file exists
 
 ### Core phrases (you say)
 - **I'd like an iced coffee, please.** · אני רוצה קפה קר, בבקשה. — _התבנית: I’d like ___, please — עובדת על הכל._
@@ -1140,7 +1140,7 @@ _Reply-training drill:_ “It's in aisle three.” · “Over there, on the left
 
 **Estimated time:** ~20 min
 
-**Video:** — (none yet)
+**Video:** `videos/{language}/{language}_19.mp4` — played automatically when the file exists
 
 ### Core phrases (you say)
 - **One ticket to the centre, please.** · כרטיס אחד למרכז, בבקשה. — _התבנית: One ticket to ___ — קונה כרטיס לכל יעד._
@@ -1198,7 +1198,7 @@ _Reply-training drill:_ “Single or return?” · “Platform two.” · “Eve
 
 **Estimated time:** ~20 min
 
-**Video:** — (none yet)
+**Video:** `videos/{language}/{language}_20.mp4` — played automatically when the file exists
 
 ### Core phrases (you say)
 - **I went to the old town.** · הלכתי לעיר העתיקה. — _I went to ___ — התשובה ל"איפה היית?"_
@@ -1254,7 +1254,7 @@ _Reply-training drill:_ “What did you see?” · “Did you eat there?” · �
 
 **Estimated time:** ~20 min
 
-**Video:** — (none yet)
+**Video:** `videos/{language}/{language}_21.mp4` — played automatically when the file exists
 
 ### Core phrases (you say)
 - **I'm going to Vietnam.** · אני נוסע לווייטנאם. — _I’m going to ___ — מדינה, עיר, או המקום הבא._
@@ -1313,7 +1313,7 @@ _Reply-training drill:_ “How long will you be there?” · “What do you want
 
 **Estimated time:** ~22 min
 
-**Video:** — (none yet)
+**Video:** `videos/{language}/{language}_22.mp4` — played automatically when the file exists
 
 ### Core phrases (you say)
 - **This isn't what I ordered.** · זה לא מה שהזמנתי. — _רגוע וברור. לא צריך להתנצל._
@@ -1385,7 +1385,7 @@ _Reply-training drill:_ “I'm so sorry about that.” · “What's the problem?
 
 **Estimated time:** ~20 min
 
-**Video:** — (none yet)
+**Video:** `videos/{language}/{language}_23.mp4` — played automatically when the file exists
 
 ### Core phrases (you say)
 - **I think it's too expensive.** · אני חושב שזה יקר מדי. — _I think ___ — כל דעה מתחילה ככה._
@@ -1444,7 +1444,7 @@ _Reply-training drill:_ “Really?” · “Why?” · “That's true.” · “
 
 **Estimated time:** ~20 min
 
-**Video:** — (none yet)
+**Video:** `videos/{language}/{language}_24.mp4` — played automatically when the file exists
 
 ### Core phrases (you say)
 - **One ticket to the centre, please.** · כרטיס אחד למרכז, בבקשה. — _התבנית: One ticket to ___ — קונה כרטיס לכל יעד._
@@ -1568,7 +1568,7 @@ _Reply-training drill:_ “Really?” · “Why?” · “That's true.” · “
 
 **Estimated time:** ~20 min
 
-**Video:** — (none yet)
+**Video:** `videos/{language}/{language}_25.mp4` — played automatically when the file exists
 
 ### Core phrases (you say)
 - **I can't find my phone.** · אני לא מוצא את הטלפון שלי. — _I can’t find ___ — לפני שקובעים שזה אבד._
@@ -1636,7 +1636,7 @@ _Reply-training drill:_ “Where did it happen?” · “Do you want to report i
 
 **Estimated time:** ~20 min
 
-**Video:** — (none yet)
+**Video:** `videos/{language}/{language}_26.mp4` — played automatically when the file exists
 
 ### Core phrases (you say)
 - **I have a headache.** · יש לי כאב ראש. — _התבנית: I have a ___ — מתארת כל תסמין. headache / cough / fever._
@@ -1696,7 +1696,7 @@ _Reply-training drill:_ “What's the matter?” · “Any allergies?” · “F
 
 **Estimated time:** ~20 min
 
-**Video:** — (none yet)
+**Video:** `videos/{language}/{language}_27.mp4` — played automatically when the file exists
 
 ### Core phrases (you say)
 - **I need help.** · אני צריך עזרה. — _שלוש מילים. קודם כל אומרים את זה._
@@ -1750,7 +1750,7 @@ _Reply-training drill:_ “What's wrong?” · “Are you hurt?” · “Where a
 
 **Estimated time:** ~20 min
 
-**Video:** — (none yet)
+**Video:** `videos/{language}/{language}_28.mp4` — played automatically when the file exists
 
 ### Core phrases (you say)
 - **One ticket to the centre, please.** · כרטיס אחד למרכז, בבקשה. — _התבנית: One ticket to ___ — קונה כרטיס לכל יעד._
@@ -1844,7 +1844,7 @@ _Reply-training drill:_ “What's wrong?” · “Are you hurt?” · “Where a
 
 **Estimated time:** ~22 min
 
-**Video:** — (none yet)
+**Video:** `videos/{language}/{language}_29.mp4` — played automatically when the file exists
 
 ### Core phrases (you say)
 - **To this address, please.** · לכתובת הזאת, בבקשה. — _הפתיח למונית — תגיד את זה ותראה את הכתובת בטלפון._
@@ -1944,7 +1944,7 @@ _Reply-training drill:_ “What's wrong?” · “Are you hurt?” · “Where a
 
 **Estimated time:** ~25 min
 
-**Video:** — (none yet)
+**Video:** `videos/{language}/{language}_30.mp4` — played automatically when the file exists
 
 ### Core phrases (you say)
 - **Yes, I have my key.** · כן, יש לי את המפתח.

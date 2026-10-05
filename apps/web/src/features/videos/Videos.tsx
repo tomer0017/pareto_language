@@ -2,30 +2,25 @@ import { useMemo, useState } from 'react';
 import { useAppStore } from '../../shared/stores/appStore.js';
 import { L, t } from '../../shared/i18n/strings.js';
 import { success, tap } from '../../shared/ui/haptics.js';
-import { missionsFor, useBootcampStore } from '../bootcamp/bootcampStore.js';
+import { useBootcampStore } from '../bootcamp/bootcampStore.js';
 import { BackButton } from '../../shared/ui/PageHeader.js';
 import { Icon } from '../../shared/ui/Icon.js';
 import { VideoPlayer } from '../bootcamp/Bootcamp.js';
 import type { BootcampVideo } from '../bootcamp/types.js';
 import { pickOne } from '../../shared/util/shuffle.js';
+import { missionVideos } from './missionVideo.js';
 
 /**
  * Videos — an experience, not a list (Task 2). Play a random available mission video; when it
  * ends (or the learner says so), ask "Did you understand everything?" → either load another random
  * video, or drop into the exact Mission Hub that owns this video (Practice / Transcript / Video,
- * unchanged). Videos are the missions' optional `introVideo`s — sourced from the ACTIVE learning
- * language's missions, so a language with no videos (e.g. Spanish) shows the honest empty state
- * instead of leaking English videos.
+ * unchanged). The videos are whatever exists for the ACTIVE learning language (the central resolver,
+ * `missionVideo.ts`), so a language with no videos shows the honest empty state instead of leaking
+ * another language's.
  */
 interface VideoEntry { day: number; video: BootcampVideo }
 
-function allVideos(lang: string): VideoEntry[] {
-  const out: VideoEntry[] = [];
-  for (const d of Object.values(missionsFor(lang))) {
-    if (d.introVideo) out.push({ day: d.day, video: d.introVideo });
-  }
-  return out;
-}
+const allVideos = (lang: string): VideoEntry[] => missionVideos(lang).map(({ day, video }) => ({ day, video }));
 
 function pickRandom(pool: VideoEntry[], exclude: Set<number>): VideoEntry | null {
   return pickOne(pool.filter((v) => !exclude.has(v.day))) ?? null;

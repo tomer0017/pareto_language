@@ -77,11 +77,10 @@ describe('mission overview data — always available, video or not', () => {
     }
   });
 
-  it('missions without a video (Spanish has none) still offer Listen + Learn + Practice', () => {
+  it('a mission needs no video: every Spanish mission still offers Listen + Learn + Practice', () => {
     const es = MISSIONS_BY_LANG.es!;
     for (const m of BOOTCAMP_PLAN) {
       const day = es[m.day]!;
-      expect(day.introVideo).toBeUndefined();
       expect(primaryDialogue(day)!.nodes.length).toBeGreaterThan(0);
     }
   });

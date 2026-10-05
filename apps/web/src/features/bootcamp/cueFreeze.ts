@@ -28,7 +28,28 @@ function relabel(line: SpokenLine, cueEn: string, lang: L, join: (label: string,
   if (line.tr) { line.tr.en = join(label.en, line.tr.en ?? ''); line.tr.he = join(label.he, line.tr.he ?? ''); }
 }
 
-export function beforeCueFreeze(day: BootcampDayContent, lang: string): BootcampDayContent {
+/**
+ * The second thing those fingerprints contained: until 2026-10-05 a mission with a video named its
+ * file in its content (`introVideo`, keyed by registry key — `En_day6.mp4` was Taxi). Videos are now
+ * found by convention (`features/videos/videoConvention.ts`) and mission content no longer mentions
+ * them. `LEGACY_VIDEO_KEYS` is that old wiring, kept ONLY so the fingerprints can be reproduced.
+ */
+const LEGACY_VIDEO_KEYS: Record<string, readonly number[]> = { en: [1, 2, 3, 4, 6, 7, 8, 10], fr: [1, 2, 3, 4, 5, 8, 10] };
+export type FrozenDay = BootcampDayContent & { introVideo?: { src: string; title: { he: string; en: string }; language: string; type: string } };
+
+function withLegacyVideo(day: BootcampDayContent, lang: string): FrozenDay {
+  if (!LEGACY_VIDEO_KEYS[lang]?.includes(day.day)) return day;
+  const { steps, ...rest } = day; // the field sat between the dialogues and the steps
+  return { ...rest, introVideo: { src: `/videos/${lang === 'en' ? 'En' : 'Fr'}_day${day.day}.mp4`, title: { he: 'השיחה המלאה', en: 'Full conversation' }, language: lang, type: 'intro' }, steps };
+}
+
+/** A mission as it was serialised before the production freeze: transition labels back inside the
+ *  spoken lines, and the old explicit video path back in the content. */
+export function beforeCueFreeze(day: BootcampDayContent, lang: string): FrozenDay {
+  return withLegacyVideo(relabelled(day, lang), lang);
+}
+
+function relabelled(day: BootcampDayContent, lang: string): BootcampDayContent {
   if (!FROZEN_DAYS.has(day.day)) return day;
   const copy = JSON.parse(JSON.stringify(day)) as BootcampDayContent; // JSON round-trip keeps key order
   const l = lang as L;

@@ -73,8 +73,10 @@ function renderMission(day: BootcampDayContent): string {
     lines.push(`**Estimated time:** ~${plan.minutes} min`);
     lines.push('');
   }
-  const video = day.introVideo;
-  lines.push(`**Video:** ${video ? `\`${video.src}\`` : '— (none yet)'}`);
+  // Videos are found by naming convention (features/videos/videoConvention.ts), not listed here:
+  // this document must not change when a video file is added.
+  const n = missionNumber(day.day);
+  lines.push(`**Video:** ${n ? `\`videos/{language}/{language}_${n}.mp4\` — played automatically when the file exists` : '—'}`);
   lines.push('');
 
   if (phrases.length) {

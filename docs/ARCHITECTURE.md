@@ -154,8 +154,13 @@ stable across re-renders. **Narrative dialogue order is never shuffled** — onl
   left untouched on disk. The Core 30 restructure needed **no** migration: every surviving mission
   kept its id. Extended Pool ids still round-trip (kept on disk, not counted as readiness); ids of
   merged-away missions are ignored on read.
-- **Videos** — `introVideo.src` is an explicit asset path on the mission (`/videos/En_day1.mp4`),
-  never computed from the mission number. A test asserts every referenced file exists in `public/`.
+- **Videos** — found by ONE convention, never wired by hand: `apps/web/public/videos/{language}/{language}_{displayedMissionNumber}.mp4`
+  (learning language + the mission number the learner sees, no zero padding — `videos/es/es_4.mp4`).
+  `apps/web/videoManifest.ts` scans the folders at build time (a Vite plugin serving
+  `virtual:ready-video-manifest`, also loaded by Vitest) and fails the build on a malformed name;
+  `features/videos/videoConvention.ts` is the pure convention; `features/videos/missionVideo.ts` is
+  the single resolver every video entry point asks. Mission content names no video. A mission with
+  no file has no video UI (its video steps are skipped). MP4s are never precached.
 - **Recovery phrases** — there is no recovery mission. `recovery.ts` / `fr/recovery.ts` /
   `es/recovery.ts` hold the shared 8 tools (six help tools + two courtesies) that other missions bundle into their item lists and
   dialogue choices. The dialogue player's opt-in `coaching` mode is dormant (no mission sets it).

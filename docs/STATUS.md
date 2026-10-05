@@ -22,6 +22,20 @@ loop (typecheck → lint → tests → build → smoke) green at every milestone
 
 ## What's done
 
+### Mission videos are auto-discovered by language and number (2026-10-05)
+- **Convention:** `apps/web/public/videos/{language}/{language}_{displayedMissionNumber}.mp4` — the language being
+  learned and the mission number the learner sees, no zero padding (M04 Spanish = `videos/es/es_4.mp4`).
+- **Build-time manifest:** `apps/web/videoManifest.ts` scans the three folders on every dev start,
+  build and test run (Vite plugin, module `virtual:ready-video-manifest`; nothing generated is
+  committed). A malformed name fails the build with the convention spelled out.
+- **One resolver:** `features/videos/missionVideo.ts`. The hub, the in-lesson "watch the full
+  conversation" button, the video steps, the victory screen and the Videos screen all ask it. No
+  file → no video UI; Mission 1's video steps are skipped.
+- **Mission content no longer names videos** (`introVideo` is gone). The 15 older files were renamed
+  from registry-key names to displayed numbers, byte-for-byte unchanged; 7 Spanish videos joined.
+- **To add a video:** put the MP4 at its path, commit, push, `npm run deploy`. Nothing else.
+- Tests: `features/videos/missionVideo.test.ts`. Not done: browser / device QA.
+
 ### Production freeze for video — scene transitions are cues (2026-10-05)
 - Seven lines carried a time / place jump inside the spoken text ("…Later…", "…At the checkout…"),
   so text-to-speech read the label aloud. Each is now a `cue` on the line — shown in the app

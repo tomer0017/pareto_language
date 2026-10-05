@@ -295,9 +295,11 @@ Each layer has one responsibility.
 - **Offline / PWA** — `vite-plugin-pwa` precaches the app shell + content JSON; `LocalProvider`
   (IndexedDB, via `@ready/data`) stores users/plans/events/packs and projects memory state offline.
   Videos are **runtime-cached** (not precached — too large) so first load never waits on them.
-- **Videos (`apps/web/public/videos`)** — referenced by a mission's optional `introVideo.src` (a
-  public path resolved against `BASE_URL`). File names follow the mission's registry key (`En_day6.mp4` = Taxi, `day: 6`, now Mission 7) — the
-  path is explicit asset metadata on the mission, never computed from its number, so reordering the journey breaks no video.
+- **Videos** — `apps/web/public/videos/{language}/{language}_{displayedMissionNumber}.mp4`:
+  the language being learned and the mission number the learner sees (`videos/es/es_4.mp4`). The build
+  scans the folders; nothing lists videos by hand. To add one, drop the file in, commit, push, deploy —
+  no mission file or code changes. (The file number follows the displayed number, so reordering the
+  journey means renaming the affected video files.)
   The Core 30 restructure changed some dialogues that already have a video (see the video migration map in
   CORE_30_RESTRUCTURE_REPORT.md): those videos still play, but await the video audit. Shipped for EN
   missions 1–4, 6–8, 10 and FR missions 1–5, 8, 10; only Mission 1 (EN & FR) injects intro/again

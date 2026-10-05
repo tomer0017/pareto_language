@@ -66,11 +66,5 @@ export const DAY2_FR: BootcampDayContent = {
   title: T('כסף ומספרים', 'Numbers & Money'),
   items: DAY2_FR_ITEMS,
   dialogues: { 'market-stall': SCENE },
-  introVideo: {
-    src: '/videos/Fr_day2.mp4',
-    title: T('השיחה המלאה', 'Full conversation'),
-    language: 'fr',
-    type: 'intro',
-  },
   steps: m02Steps('fr'),
 };

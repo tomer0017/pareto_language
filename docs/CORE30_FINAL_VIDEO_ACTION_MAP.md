@@ -4,7 +4,9 @@ _Generated from the runtime mission content by `scripts/export-core30-video-docs
 
 **This is the canonical video action map.** Regenerate it with `npm run export:video-docs` (never edit by hand). The earlier map of 2026-10-04 is archived as `docs/archive/CORE_30_FINAL_VIDEO_ACTION_MAP_2026-10-04_superseded.md` and must not be used. No video file was created, edited, renamed, moved or deleted by this export.
 
-**Basis of every verdict.** The existing videos were added in July 2026 and renamed in commit `752463f` (the 29-mission runtime). For all 15 files, the NPC lines in the mission source at the commit the video was added are identical to those at `752463f`, so the dialogue each video was made for is the 29-mission runtime, archived in `docs/archive/DIALOGUES_BY_MISSION_V1_29-mission-runtime.md`. Each verdict is an exact line-by-line comparison of that archived conversation with today's canonical conversation. **Nobody watched the videos**: a verdict says what the script was, not what is audible in the file.
+**Canonical video path:** `apps/web/public/videos/{language}/{language}_{displayedMissionNumber}.mp4` — for example M04 Spanish `apps/web/public/videos/es/es_4.mp4`, M14 English `apps/web/public/videos/en/en_14.mp4`, M30 Spanish `apps/web/public/videos/es/es_30.mp4`. The number is the mission number the learner sees (no zero padding); the language is the one being learned. The app finds videos by scanning those folders at build time: adding a correctly named file is all it takes — no code, mission file or list is edited.
+
+**Basis of every verdict.** The 15 videos that predate the Core 30 were added in July 2026; the NPC lines in the mission source at the commit each was added are identical to those of the 29-mission runtime (`752463f`), archived in `docs/archive/DIALOGUES_BY_MISSION_V1_29-mission-runtime.md`. Their verdict is an exact line-by-line comparison of that archived conversation with today's canonical conversation. A video added since then has no script history in the repository and is marked CHECK MANUALLY. **Nobody watched the videos**: a verdict says what the script was, not what is audible in the file.
 
 Statuses: **KEEP** · **MOVE / RELABEL** (same dialogue, mission changed position) · **REPLACE** (a spoken line changed) · **NEW VIDEO** (none exists) · **CHECK MANUALLY** (history cannot prove it).
 
@@ -15,47 +17,52 @@ Statuses: **KEEP** · **MOVE / RELABEL** (same dialogue, mission changed positio
 | KEEP | 4 | 4 |
 | MOVE / RELABEL | 4 | 4 |
 | REPLACE | 6 | 6 |
-| NEW VIDEO | 75 | — |
-| CHECK MANUALLY | 1 | 1 |
-| **Total** | **90** | **15** |
+| NEW VIDEO | 68 | — |
+| CHECK MANUALLY | 8 | 8 |
+| **Total** | **90** | **22** |
 
 ## A. Current video inventory
 
-Folder: `apps/web/public/videos/` — 15 files. A video is attached to a mission by an explicit path in that mission's content (`introVideo`). The number in a file name is the mission's **registry key**, not its displayed number.
+22 files (English 8, Spanish 7, French 7), read from the folders by the build's own scanner. The number in a file name is the mission number the learner sees.
 
-| File | Language | Size | Registry key | Position when made (29-mission course) | Current mission | Same dialogue as when made? |
+| File | Language | Size | Current mission | Former name | Position when made (29-mission course) | Same dialogue as when made? |
 |---|---|---|---|---|---|---|
-| `En_day1.mp4` | English | 3.7 MB | 1 | 01 Introduce Myself | **M01** Introduce Myself | No |
-| `En_day2.mp4` | English | 4.1 MB | 2 | 02 Numbers & Money | **M02** Numbers & Money | Yes |
-| `En_day3.mp4` | English | 3.9 MB | 3 | 03 Coffee Shop | **M03** Coffee Shop | Yes |
-| `En_day4.mp4` | English | 3.5 MB | 4 | 04 Restaurant Meal | **M14** Restaurant Meal | No |
-| `En_day6.mp4` | English | 2.8 MB | 6 | 06 Taxi / Uber | **M07** Taxi / Uber | No |
-| `En_day7.mp4` | English | 3.0 MB | 7 | 07 Hotel Check-in | **M08** Hotel Check-in | No |
-| `En_day8.mp4` | English | 4.1 MB | 8 | 08 Shopping | **M09** Shopping | Yes |
-| `En_day10.mp4` | English | 2.8 MB | 10 | 10 Airport & Border | **M06** Airport & Border | Yes |
-| `Fr_day1.mp4` | French | 2.7 MB | 1 | 01 Introduce Myself | **M01** Introduce Myself | No |
-| `Fr_day2.mp4` | French | 3.6 MB | 2 | 02 Numbers & Money | **M02** Numbers & Money | Yes |
-| `Fr_day3.mp4` | French | 2.4 MB | 3 | 03 Coffee Shop | **M03** Coffee Shop | Script yes — video unverified |
-| `Fr_day4.mp4` | French | 5.0 MB | 4 | 04 Restaurant Meal | **M14** Restaurant Meal | No |
-| `Fr_day5.mp4` | French | 3.2 MB | 5 | 05 Directions | **M05** Directions | Yes |
-| `Fr_day8.mp4` | French | 4.2 MB | 8 | 08 Shopping | **M09** Shopping | Yes |
-| `Fr_day10.mp4` | French | 3.3 MB | 10 | 10 Airport & Border | **M06** Airport & Border | Yes |
+| `videos/en/en_1.mp4` | English | 3.7 MB | **M01** Introduce Myself | `En_day1.mp4` | 01 Introduce Myself | No |
+| `videos/en/en_2.mp4` | English | 4.1 MB | **M02** Numbers & Money | `En_day2.mp4` | 02 Numbers & Money | Yes |
+| `videos/en/en_3.mp4` | English | 3.9 MB | **M03** Coffee Shop | `En_day3.mp4` | 03 Coffee Shop | Yes |
+| `videos/en/en_6.mp4` | English | 2.8 MB | **M06** Airport & Border | `En_day10.mp4` | 10 Airport & Border | One word differs (accepted) |
+| `videos/en/en_7.mp4` | English | 2.8 MB | **M07** Taxi / Uber | `En_day6.mp4` | 06 Taxi / Uber | No |
+| `videos/en/en_8.mp4` | English | 3.0 MB | **M08** Hotel Check-in | `En_day7.mp4` | 07 Hotel Check-in | No |
+| `videos/en/en_9.mp4` | English | 4.1 MB | **M09** Shopping | `En_day8.mp4` | 08 Shopping | Yes |
+| `videos/en/en_14.mp4` | English | 3.5 MB | **M14** Restaurant Meal | `En_day4.mp4` | 04 Restaurant Meal | No |
+| `videos/es/es_1.mp4` | Spanish | 2.0 MB | **M01** Introduce Myself | — (new) | — | Not recorded |
+| `videos/es/es_2.mp4` | Spanish | 3.5 MB | **M02** Numbers & Money | — (new) | — | Not recorded |
+| `videos/es/es_3.mp4` | Spanish | 3.4 MB | **M03** Coffee Shop | — (new) | — | Not recorded |
+| `videos/es/es_4.mp4` | Spanish | 8.9 MB | **M04** Everyday Core: Want / Need / Have / Can | — (new) | — | Not recorded |
+| `videos/es/es_5.mp4` | Spanish | 2.6 MB | **M05** Directions | — (new) | — | Not recorded |
+| `videos/es/es_6.mp4` | Spanish | 2.8 MB | **M06** Airport & Border | — (new) | — | Not recorded |
+| `videos/es/es_7.mp4` | Spanish | 3.3 MB | **M07** Taxi / Uber | — (new) | — | Not recorded |
+| `videos/fr/fr_1.mp4` | French | 2.7 MB | **M01** Introduce Myself | `Fr_day1.mp4` | 01 Introduce Myself | No |
+| `videos/fr/fr_2.mp4` | French | 3.6 MB | **M02** Numbers & Money | `Fr_day2.mp4` | 02 Numbers & Money | Yes |
+| `videos/fr/fr_3.mp4` | French | 2.4 MB | **M03** Coffee Shop | `Fr_day3.mp4` | 03 Coffee Shop | Script yes — video unverified |
+| `videos/fr/fr_5.mp4` | French | 3.2 MB | **M05** Directions | `Fr_day5.mp4` | 05 Directions | Yes |
+| `videos/fr/fr_6.mp4` | French | 3.3 MB | **M06** Airport & Border | `Fr_day10.mp4` | 10 Airport & Border | Yes |
+| `videos/fr/fr_9.mp4` | French | 4.2 MB | **M09** Shopping | `Fr_day8.mp4` | 08 Shopping | Yes |
+| `videos/fr/fr_14.mp4` | French | 5.0 MB | **M14** Restaurant Meal | `Fr_day4.mp4` | 04 Restaurant Meal | No |
 
-Spanish has no video files. Every file in the folder is referenced by exactly one mission, and every path the runtime references exists.
-
-Before the 29-mission refactor the same files were named one number higher (`En_day2.mp4` … `En_day11.mp4`), because a Recovery Toolkit mission then occupied position 1.
+The 15 older files were renamed on 2026-10-05 from registry-key names (`En_day6.mp4` was Taxi) to displayed mission numbers, byte-for-byte unchanged. "Former name" is history only; nothing reads it.
 
 ## C. Master action table
 
 | Mission | Title | English | Spanish | French |
 |---|---|---|---|---|
-| 01 | Introduce Myself | REPLACE | NEW VIDEO | REPLACE |
-| 02 | Numbers & Money | KEEP | NEW VIDEO | KEEP |
-| 03 | Coffee Shop | KEEP | NEW VIDEO | CHECK MANUALLY |
-| 04 | Everyday Core: Want / Need / Have / Can | NEW VIDEO | NEW VIDEO | NEW VIDEO |
-| 05 | Directions | NEW VIDEO | NEW VIDEO | KEEP |
-| 06 | Airport & Border | MOVE / RELABEL — ACCEPTABLE MINOR SPOKEN VARIANT | NEW VIDEO | MOVE / RELABEL |
-| 07 | Taxi / Uber | REPLACE | NEW VIDEO | NEW VIDEO |
+| 01 | Introduce Myself | REPLACE | CHECK MANUALLY | REPLACE |
+| 02 | Numbers & Money | KEEP | CHECK MANUALLY | KEEP |
+| 03 | Coffee Shop | KEEP | CHECK MANUALLY | CHECK MANUALLY |
+| 04 | Everyday Core: Want / Need / Have / Can | NEW VIDEO | CHECK MANUALLY | NEW VIDEO |
+| 05 | Directions | NEW VIDEO | CHECK MANUALLY | KEEP |
+| 06 | Airport & Border | MOVE / RELABEL — ACCEPTABLE MINOR SPOKEN VARIANT | CHECK MANUALLY | MOVE / RELABEL |
+| 07 | Taxi / Uber | REPLACE | CHECK MANUALLY | NEW VIDEO |
 | 08 | Hotel Check-in | REPLACE | NEW VIDEO | NEW VIDEO |
 | 09 | Shopping | MOVE / RELABEL | NEW VIDEO | MOVE / RELABEL |
 | 10 | CHECKPOINT: Arrival Day | NEW VIDEO | NEW VIDEO | NEW VIDEO |
@@ -82,7 +89,7 @@ Before the 29-mission refactor the same files were named one number higher (`En_
 
 ## D. Existing video detail
 
-### `En_day1.mp4`
+### `videos/en/en_1.mp4`
 
 Current mission: M01 — Introduce Myself (English)
 
@@ -95,9 +102,9 @@ Exact spoken changes (OLD = the 29-mission script the video was made for; CURREN
 - OLD: `NPC: Well, enjoy your stay! Let me know if you need anything.`
 - CURRENT: `NPC: Enjoy your stay! Have a great day!`
 
-Production note: regenerate the full video from the Mission 01 English script (1 line affected). Keep the file name — the runtime already points at it.
+Production note: regenerate the full video from the Mission 01 English script (1 line affected). Save the new file under the same name — the app picks it up on the next build.
 
-### `En_day2.mp4`
+### `videos/en/en_2.mp4`
 
 Current mission: M02 — Numbers & Money (English)
 
@@ -107,7 +114,7 @@ Why: Spoken dialogue is line-for-line identical, and the mission kept its positi
 
 Production note: nothing to do.
 
-### `En_day3.mp4`
+### `videos/en/en_3.mp4`
 
 Current mission: M03 — Coffee Shop (English)
 
@@ -117,7 +124,70 @@ Why: Spoken dialogue is line-for-line identical, and the mission kept its positi
 
 Production note: nothing to do.
 
-### `En_day4.mp4`
+### `videos/en/en_6.mp4`
+
+Current mission: M06 — Airport & Border (English)
+
+Status: **MOVE / RELABEL — ACCEPTABLE MINOR SPOKEN VARIANT**
+
+Why: ACCEPTABLE MINOR SPOKEN VARIANT — the only audible difference is one word: the video says "Lovely. How long are you staying?", the app now says "All right. How long are you staying?". ("center" → "centre" is spelling only.) Accepted for production; the runtime dialogue was not changed to match the video. The mission moved from position 10 to 06.
+
+The accepted difference:
+
+- VIDEO SAYS: `NPC: Lovely. How long are you staying?`
+- VIDEO SAYS: `YOU: At a hotel in the city center.`
+- APP SAYS: `NPC: All right. How long are you staying?`
+- APP SAYS: `YOU: At a hotel in the city centre.`
+
+Production note: nothing to re-shoot. If this video is ever re-shot for another reason, use the current line.
+
+### `videos/en/en_7.mp4`
+
+Current mission: M07 — Taxi / Uber (English)
+
+Status: **REPLACE**
+
+Why: 4 spoken line(s) differ from the dialogue the video was made for.
+
+Exact spoken changes (OLD = the 29-mission script the video was made for; CURRENT = today):
+
+- OLD: `NPC: Got it. How much did you expect to pay?`
+- OLD: `NPC: It's about fifteen euros — there's a lot of traffic right now.`
+- OLD: `YOU: Please speak slowly.`
+- OLD: `NPC: Fifteen — euros. Traffic.`
+- CURRENT: `NPC: Got it. No problem — off we go!`
+- CURRENT: `NPC: It's about fifteen euros. There's a lot of traffic right now.`
+- CURRENT: `YOU: Sorry, please speak slowly.`
+- CURRENT: `NPC: Sure. About fifteen euros. There's a lot of traffic.`
+
+Production note: regenerate the full video from the Mission 07 English script (4 lines affected). Save the new file under the same name — the app picks it up on the next build.
+
+### `videos/en/en_8.mp4`
+
+Current mission: M08 — Hotel Check-in (English)
+
+Status: **REPLACE**
+
+Why: 1 spoken line(s) differ from the dialogue the video was made for.
+
+Exact spoken changes (OLD = the 29-mission script the video was made for; CURRENT = today):
+
+- OLD: `NPC: Thank you. You're in room two-oh-four, on the second floor. Is breakfast included in your booking?`
+- CURRENT: `NPC: Thank you. You're in room two-oh-four, on the second floor. Here is your key.`
+
+Production note: regenerate the full video from the Mission 08 English script (1 line affected). Save the new file under the same name — the app picks it up on the next build.
+
+### `videos/en/en_9.mp4`
+
+Current mission: M09 — Shopping (English)
+
+Status: **MOVE / RELABEL**
+
+Why: Spoken dialogue is line-for-line identical. The mission moved from position 08 to 09.
+
+Production note: nothing to re-shoot. The mission was number 08 when the video was made and is number 09 now; the file is already named for the current number. Only update any on-screen "Mission 8" title card or caption inside the video, if it has one.
+
+### `videos/en/en_14.mp4`
 
 Current mission: M14 — Restaurant Meal (English)
 
@@ -140,72 +210,79 @@ Exact spoken changes (OLD = the 29-mission script the video was made for; CURREN
 - CURRENT: `NPC: Is everything okay?`
 - CURRENT: `YOU: Yes, that was delicious! The bill, please.`
 
-Production note: regenerate the full video from the Mission 14 English script (6 lines affected). Keep the file name — the runtime already points at it.
+Production note: regenerate the full video from the Mission 14 English script (6 lines affected). Save the new file under the same name — the app picks it up on the next build.
 
-### `En_day6.mp4`
+### `videos/es/es_1.mp4`
 
-Current mission: M07 — Taxi / Uber (English)
+Current mission: M01 — Introduce Myself (Spanish)
 
-Status: **REPLACE**
+Status: **CHECK MANUALLY**
 
-Why: 4 spoken line(s) differ from the dialogue the video was made for.
+Why: Added after the dialogue freeze; the repository holds no record of the script it was produced from. If it was made from the current master script (dialogue hash `0076057823e8fdf1`, section I), it is current — nothing to do.
 
-Exact spoken changes (OLD = the 29-mission script the video was made for; CURRENT = today):
+Production note: watch the file once and compare it with the current script before deciding.
 
-- OLD: `NPC: Got it. How much did you expect to pay?`
-- OLD: `NPC: It's about fifteen euros — there's a lot of traffic right now.`
-- OLD: `YOU: Please speak slowly.`
-- OLD: `NPC: Fifteen — euros. Traffic.`
-- CURRENT: `NPC: Got it. No problem — off we go!`
-- CURRENT: `NPC: It's about fifteen euros. There's a lot of traffic right now.`
-- CURRENT: `YOU: Sorry, please speak slowly.`
-- CURRENT: `NPC: Sure. About fifteen euros. There's a lot of traffic.`
+### `videos/es/es_2.mp4`
 
-Production note: regenerate the full video from the Mission 07 English script (4 lines affected). Keep the file name — the runtime already points at it.
+Current mission: M02 — Numbers & Money (Spanish)
 
-### `En_day7.mp4`
+Status: **CHECK MANUALLY**
 
-Current mission: M08 — Hotel Check-in (English)
+Why: Added after the dialogue freeze; the repository holds no record of the script it was produced from. If it was made from the current master script (dialogue hash `4e852eb6ea702f71`, section I), it is current — nothing to do.
 
-Status: **REPLACE**
+Production note: watch the file once and compare it with the current script before deciding.
 
-Why: 1 spoken line(s) differ from the dialogue the video was made for.
+### `videos/es/es_3.mp4`
 
-Exact spoken changes (OLD = the 29-mission script the video was made for; CURRENT = today):
+Current mission: M03 — Coffee Shop (Spanish)
 
-- OLD: `NPC: Thank you. You're in room two-oh-four, on the second floor. Is breakfast included in your booking?`
-- CURRENT: `NPC: Thank you. You're in room two-oh-four, on the second floor. Here is your key.`
+Status: **CHECK MANUALLY**
 
-Production note: regenerate the full video from the Mission 08 English script (1 line affected). Keep the file name — the runtime already points at it.
+Why: Added after the dialogue freeze; the repository holds no record of the script it was produced from. If it was made from the current master script (dialogue hash `5069feb800385baa`, section I), it is current — nothing to do.
 
-### `En_day8.mp4`
+Production note: watch the file once and compare it with the current script before deciding.
 
-Current mission: M09 — Shopping (English)
+### `videos/es/es_4.mp4`
 
-Status: **MOVE / RELABEL**
+Current mission: M04 — Everyday Core: Want / Need / Have / Can (Spanish)
 
-Why: Spoken dialogue is line-for-line identical. The mission moved from position 08 to 09.
+Status: **CHECK MANUALLY**
 
-Production note: nothing to re-shoot. Old displayed position 08, current displayed position 09. Do not rename the file: the runtime references `En_day8.mp4` by path. Only update any on-screen "Mission 8" title card or caption inside the video, if it has one.
+Why: Added after the dialogue freeze; the repository holds no record of the script it was produced from. If it was made from the current master script (dialogue hash `a7a952a3d2b9c5dd`, section I), it is current — nothing to do.
 
-### `En_day10.mp4`
+Production note: watch the file once and compare it with the current script before deciding.
 
-Current mission: M06 — Airport & Border (English)
+### `videos/es/es_5.mp4`
 
-Status: **MOVE / RELABEL — ACCEPTABLE MINOR SPOKEN VARIANT**
+Current mission: M05 — Directions (Spanish)
 
-Why: ACCEPTABLE MINOR SPOKEN VARIANT — the only audible difference is one word: the video says "Lovely. How long are you staying?", the app now says "All right. How long are you staying?". ("center" → "centre" is spelling only.) Accepted for production; the runtime dialogue was not changed to match the video. The mission moved from position 10 to 06.
+Status: **CHECK MANUALLY**
 
-The accepted difference:
+Why: Added after the dialogue freeze; the repository holds no record of the script it was produced from. If it was made from the current master script (dialogue hash `db0ca7568e4cb930`, section I), it is current — nothing to do.
 
-- VIDEO SAYS: `NPC: Lovely. How long are you staying?`
-- VIDEO SAYS: `YOU: At a hotel in the city center.`
-- APP SAYS: `NPC: All right. How long are you staying?`
-- APP SAYS: `YOU: At a hotel in the city centre.`
+Production note: watch the file once and compare it with the current script before deciding.
 
-Production note: nothing to re-shoot. Do not rename the file. If this video is ever re-shot for another reason, use the current line.
+### `videos/es/es_6.mp4`
 
-### `Fr_day1.mp4`
+Current mission: M06 — Airport & Border (Spanish)
+
+Status: **CHECK MANUALLY**
+
+Why: Added after the dialogue freeze; the repository holds no record of the script it was produced from. If it was made from the current master script (dialogue hash `c9aac385bbec3394`, section I), it is current — nothing to do.
+
+Production note: watch the file once and compare it with the current script before deciding.
+
+### `videos/es/es_7.mp4`
+
+Current mission: M07 — Taxi / Uber (Spanish)
+
+Status: **CHECK MANUALLY**
+
+Why: Added after the dialogue freeze; the repository holds no record of the script it was produced from. If it was made from the current master script (dialogue hash `c25482ad43491420`, section I), it is current — nothing to do.
+
+Production note: watch the file once and compare it with the current script before deciding.
+
+### `videos/fr/fr_1.mp4`
 
 Current mission: M01 — Introduce Myself (French)
 
@@ -218,9 +295,9 @@ Exact spoken changes (OLD = the 29-mission script the video was made for; CURREN
 - OLD: `NPC: Eh bien, bon séjour ! Dites-moi si vous avez besoin de quelque chose.`
 - CURRENT: `NPC: Bon séjour ! Bonne journée !`
 
-Production note: regenerate the full video from the Mission 01 French script (1 line affected). Keep the file name — the runtime already points at it.
+Production note: regenerate the full video from the Mission 01 French script (1 line affected). Save the new file under the same name — the app picks it up on the next build.
 
-### `Fr_day2.mp4`
+### `videos/fr/fr_2.mp4`
 
 Current mission: M02 — Numbers & Money (French)
 
@@ -230,7 +307,7 @@ Why: Spoken dialogue is line-for-line identical, and the mission kept its positi
 
 Production note: nothing to do.
 
-### `Fr_day3.mp4`
+### `videos/fr/fr_3.mp4`
 
 Current mission: M03 — Coffee Shop (French)
 
@@ -240,7 +317,37 @@ Why: The runtime dialogue is unchanged since the video was added, but the refere
 
 Production note: watch the file once and compare it with the current script before deciding.
 
-### `Fr_day4.mp4`
+### `videos/fr/fr_5.mp4`
+
+Current mission: M05 — Directions (French)
+
+Status: **KEEP**
+
+Why: Spoken dialogue is line-for-line identical, and the mission kept its position.
+
+Production note: nothing to do.
+
+### `videos/fr/fr_6.mp4`
+
+Current mission: M06 — Airport & Border (French)
+
+Status: **MOVE / RELABEL**
+
+Why: Spoken dialogue is line-for-line identical. The mission moved from position 10 to 06.
+
+Production note: nothing to re-shoot. The mission was number 10 when the video was made and is number 06 now; the file is already named for the current number. Only update any on-screen "Mission 10" title card or caption inside the video, if it has one.
+
+### `videos/fr/fr_9.mp4`
+
+Current mission: M09 — Shopping (French)
+
+Status: **MOVE / RELABEL**
+
+Why: Spoken dialogue is line-for-line identical. The mission moved from position 08 to 09.
+
+Production note: nothing to re-shoot. The mission was number 08 when the video was made and is number 09 now; the file is already named for the current number. Only update any on-screen "Mission 8" title card or caption inside the video, if it has one.
+
+### `videos/fr/fr_14.mp4`
 
 Current mission: M14 — Restaurant Meal (French)
 
@@ -263,45 +370,15 @@ Exact spoken changes (OLD = the 29-mission script the video was made for; CURREN
 - CURRENT: `NPC: Tout va bien ?`
 - CURRENT: `YOU: Oui, c’était délicieux ! L’addition, s’il vous plaît.`
 
-Production note: regenerate the full video from the Mission 14 French script (6 lines affected). Keep the file name — the runtime already points at it.
-
-### `Fr_day5.mp4`
-
-Current mission: M05 — Directions (French)
-
-Status: **KEEP**
-
-Why: Spoken dialogue is line-for-line identical, and the mission kept its position.
-
-Production note: nothing to do.
-
-### `Fr_day8.mp4`
-
-Current mission: M09 — Shopping (French)
-
-Status: **MOVE / RELABEL**
-
-Why: Spoken dialogue is line-for-line identical. The mission moved from position 08 to 09.
-
-Production note: nothing to re-shoot. Old displayed position 08, current displayed position 09. Do not rename the file: the runtime references `Fr_day8.mp4` by path. Only update any on-screen "Mission 8" title card or caption inside the video, if it has one.
-
-### `Fr_day10.mp4`
-
-Current mission: M06 — Airport & Border (French)
-
-Status: **MOVE / RELABEL**
-
-Why: Spoken dialogue is line-for-line identical. The mission moved from position 10 to 06.
-
-Production note: nothing to re-shoot. Old displayed position 10, current displayed position 06. Do not rename the file: the runtime references `Fr_day10.mp4` by path. Only update any on-screen "Mission 10" title card or caption inside the video, if it has one.
+Production note: regenerate the full video from the Mission 14 French script (6 lines affected). Save the new file under the same name — the app picks it up on the next build.
 
 ## E. What changed across the curriculum
 
 The old course had 29 missions; the final Core has 30.
 
-**Final displayed order** (registry key in brackets — the number used in video file names):
+**Final displayed order** — these numbers are the ones in video file names:
 
-01 Introduce Myself [1] · 02 Numbers & Money [2] · 03 Coffee Shop [3] · 04 Everyday Core: Want / Need / Have / Can [30] · 05 Directions [5] · 06 Airport & Border [10] · 07 Taxi / Uber [6] · 08 Hotel Check-in [7] · 09 Shopping [8] · 10 CHECKPOINT: Arrival Day [9] · 11 Small Talk & Recommendations [22] · 12 Time & Plans [31] · 13 Home, Family & Daily Routine [32] · 14 Restaurant Meal [4] · 15 Food Preferences & Allergies [13] · 16 Hobbies & Free Time [33] · 17 Supermarket & Everyday Shopping [16] · 18 CHECKPOINT: Everyday Day [17] · 19 Public Transport [18] · 20 Past & Recent Events [34] · 21 Future Travel & Plans [35] · 22 Fixing Problems [24] · 23 Opinions, Feelings & Reactions [36] · 24 CHECKPOINT: City & Conversation [23] · 25 Lost / Stolen / Police [37] · 26 Pharmacy & Health [25] · 27 Emergency [26] · 28 No Subtitles [27] · 29 Dress Rehearsal: Full Evening [28] · 30 A Complete Day Abroad Alone [29]
+01 Introduce Myself · 02 Numbers & Money · 03 Coffee Shop · 04 Everyday Core: Want / Need / Have / Can · 05 Directions · 06 Airport & Border · 07 Taxi / Uber · 08 Hotel Check-in · 09 Shopping · 10 CHECKPOINT: Arrival Day · 11 Small Talk & Recommendations · 12 Time & Plans · 13 Home, Family & Daily Routine · 14 Restaurant Meal · 15 Food Preferences & Allergies · 16 Hobbies & Free Time · 17 Supermarket & Everyday Shopping · 18 CHECKPOINT: Everyday Day · 19 Public Transport · 20 Past & Recent Events · 21 Future Travel & Plans · 22 Fixing Problems · 23 Opinions, Feelings & Reactions · 24 CHECKPOINT: City & Conversation · 25 Lost / Stolen / Police · 26 Pharmacy & Health · 27 Emergency · 28 No Subtitles · 29 Dress Rehearsal: Full Evening · 30 A Complete Day Abroad Alone
 
 - **Kept their position (4):** 01 Introduce Myself, 02 Numbers & Money, 03 Coffee Shop, 05 Directions.
 - **Moved (18):** Airport & Border 10 → 06, Taxi / Uber 06 → 07, Hotel Check-in 07 → 08, Shopping 08 → 09, CHECKPOINT: Arrival Day 09 → 10, Small Talk & Recommendations 22 → 11, Restaurant Meal 04 → 14, Food Preferences & Allergies 13 → 15, Supermarket & Everyday Shopping 16 → 17, CHECKPOINT: Everyday Day 17 → 18, Public Transport 18 → 19, Fixing Problems 24 → 22, CHECKPOINT: City & Conversation 23 → 24, Pharmacy & Health 25 → 26, Emergency 26 → 27, No Subtitles 27 → 28, Dress Rehearsal: Full Evening 28 → 29, A Complete Day Abroad Alone 29 → 30.
@@ -312,7 +389,7 @@ The old course had 29 missions; the final Core has 30.
 
 ## F. New and merged Core missions
 
-**No equivalent standalone script existed in the old course** (verified: their registry keys 30–37 are absent from the 29-mission archive):
+**No equivalent standalone script existed in the old course** (verified: they are absent from the 29-mission archive):
 
 - M04 — Everyday Core: Want / Need / Have / Can
 - M12 — Time & Plans
@@ -333,44 +410,44 @@ The old course had 29 missions; the final Core has 30.
 
 # Things to pay attention to before generating videos
 
-### 1. Displayed mission number vs file name
+### 1. File name = language + displayed mission number
 
-File names carry the registry key. Only Missions 01, 02, 03 and 05 have a key equal to their number. Use this table, not the file name:
+`apps/web/public/videos/{language}/{language}_{displayedMissionNumber}.mp4` — lower-case language code (`en`, `es`, `fr`), the mission number the learner sees, no zero padding. The build fails with an explanation if a file in those folders is named any other way (`Es_1.mp4`, `es_01.mp4`, `es_day1.mp4`, `es_31.mp4`).
 
-| Mission | Key | File name a video for it uses |
-|---|---|---|
-| 01 Introduce Myself | 1 | `En_day1.mp4` · `Es_day1.mp4` · `Fr_day1.mp4` |
-| 02 Numbers & Money | 2 | `En_day2.mp4` · `Es_day2.mp4` · `Fr_day2.mp4` |
-| 03 Coffee Shop | 3 | `En_day3.mp4` · `Es_day3.mp4` · `Fr_day3.mp4` |
-| 04 Everyday Core: Want / Need / Have / Can | 30 | `En_day30.mp4` · `Es_day30.mp4` · `Fr_day30.mp4` |
-| 05 Directions | 5 | `En_day5.mp4` · `Es_day5.mp4` · `Fr_day5.mp4` |
-| 06 Airport & Border | 10 | `En_day10.mp4` · `Es_day10.mp4` · `Fr_day10.mp4` |
-| 07 Taxi / Uber | 6 | `En_day6.mp4` · `Es_day6.mp4` · `Fr_day6.mp4` |
-| 08 Hotel Check-in | 7 | `En_day7.mp4` · `Es_day7.mp4` · `Fr_day7.mp4` |
-| 09 Shopping | 8 | `En_day8.mp4` · `Es_day8.mp4` · `Fr_day8.mp4` |
-| 10 CHECKPOINT: Arrival Day | 9 | `En_day9.mp4` · `Es_day9.mp4` · `Fr_day9.mp4` |
-| 11 Small Talk & Recommendations | 22 | `En_day22.mp4` · `Es_day22.mp4` · `Fr_day22.mp4` |
-| 12 Time & Plans | 31 | `En_day31.mp4` · `Es_day31.mp4` · `Fr_day31.mp4` |
-| 13 Home, Family & Daily Routine | 32 | `En_day32.mp4` · `Es_day32.mp4` · `Fr_day32.mp4` |
-| 14 Restaurant Meal | 4 | `En_day4.mp4` · `Es_day4.mp4` · `Fr_day4.mp4` |
-| 15 Food Preferences & Allergies | 13 | `En_day13.mp4` · `Es_day13.mp4` · `Fr_day13.mp4` |
-| 16 Hobbies & Free Time | 33 | `En_day33.mp4` · `Es_day33.mp4` · `Fr_day33.mp4` |
-| 17 Supermarket & Everyday Shopping | 16 | `En_day16.mp4` · `Es_day16.mp4` · `Fr_day16.mp4` |
-| 18 CHECKPOINT: Everyday Day | 17 | `En_day17.mp4` · `Es_day17.mp4` · `Fr_day17.mp4` |
-| 19 Public Transport | 18 | `En_day18.mp4` · `Es_day18.mp4` · `Fr_day18.mp4` |
-| 20 Past & Recent Events | 34 | `En_day34.mp4` · `Es_day34.mp4` · `Fr_day34.mp4` |
-| 21 Future Travel & Plans | 35 | `En_day35.mp4` · `Es_day35.mp4` · `Fr_day35.mp4` |
-| 22 Fixing Problems | 24 | `En_day24.mp4` · `Es_day24.mp4` · `Fr_day24.mp4` |
-| 23 Opinions, Feelings & Reactions | 36 | `En_day36.mp4` · `Es_day36.mp4` · `Fr_day36.mp4` |
-| 24 CHECKPOINT: City & Conversation | 23 | `En_day23.mp4` · `Es_day23.mp4` · `Fr_day23.mp4` |
-| 25 Lost / Stolen / Police | 37 | `En_day37.mp4` · `Es_day37.mp4` · `Fr_day37.mp4` |
-| 26 Pharmacy & Health | 25 | `En_day25.mp4` · `Es_day25.mp4` · `Fr_day25.mp4` |
-| 27 Emergency | 26 | `En_day26.mp4` · `Es_day26.mp4` · `Fr_day26.mp4` |
-| 28 No Subtitles | 27 | `En_day27.mp4` · `Es_day27.mp4` · `Fr_day27.mp4` |
-| 29 Dress Rehearsal: Full Evening | 28 | `En_day28.mp4` · `Es_day28.mp4` · `Fr_day28.mp4` |
-| 30 A Complete Day Abroad Alone | 29 | `En_day29.mp4` · `Es_day29.mp4` · `Fr_day29.mp4` |
+| Mission | English | Spanish | French |
+|---|---|---|---|
+| 01 Introduce Myself | `videos/en/en_1.mp4` ✓ | `videos/es/es_1.mp4` ✓ | `videos/fr/fr_1.mp4` ✓ |
+| 02 Numbers & Money | `videos/en/en_2.mp4` ✓ | `videos/es/es_2.mp4` ✓ | `videos/fr/fr_2.mp4` ✓ |
+| 03 Coffee Shop | `videos/en/en_3.mp4` ✓ | `videos/es/es_3.mp4` ✓ | `videos/fr/fr_3.mp4` ✓ |
+| 04 Everyday Core: Want / Need / Have / Can | `videos/en/en_4.mp4` | `videos/es/es_4.mp4` ✓ | `videos/fr/fr_4.mp4` |
+| 05 Directions | `videos/en/en_5.mp4` | `videos/es/es_5.mp4` ✓ | `videos/fr/fr_5.mp4` ✓ |
+| 06 Airport & Border | `videos/en/en_6.mp4` ✓ | `videos/es/es_6.mp4` ✓ | `videos/fr/fr_6.mp4` ✓ |
+| 07 Taxi / Uber | `videos/en/en_7.mp4` ✓ | `videos/es/es_7.mp4` ✓ | `videos/fr/fr_7.mp4` |
+| 08 Hotel Check-in | `videos/en/en_8.mp4` ✓ | `videos/es/es_8.mp4` | `videos/fr/fr_8.mp4` |
+| 09 Shopping | `videos/en/en_9.mp4` ✓ | `videos/es/es_9.mp4` | `videos/fr/fr_9.mp4` ✓ |
+| 10 CHECKPOINT: Arrival Day | `videos/en/en_10.mp4` | `videos/es/es_10.mp4` | `videos/fr/fr_10.mp4` |
+| 11 Small Talk & Recommendations | `videos/en/en_11.mp4` | `videos/es/es_11.mp4` | `videos/fr/fr_11.mp4` |
+| 12 Time & Plans | `videos/en/en_12.mp4` | `videos/es/es_12.mp4` | `videos/fr/fr_12.mp4` |
+| 13 Home, Family & Daily Routine | `videos/en/en_13.mp4` | `videos/es/es_13.mp4` | `videos/fr/fr_13.mp4` |
+| 14 Restaurant Meal | `videos/en/en_14.mp4` ✓ | `videos/es/es_14.mp4` | `videos/fr/fr_14.mp4` ✓ |
+| 15 Food Preferences & Allergies | `videos/en/en_15.mp4` | `videos/es/es_15.mp4` | `videos/fr/fr_15.mp4` |
+| 16 Hobbies & Free Time | `videos/en/en_16.mp4` | `videos/es/es_16.mp4` | `videos/fr/fr_16.mp4` |
+| 17 Supermarket & Everyday Shopping | `videos/en/en_17.mp4` | `videos/es/es_17.mp4` | `videos/fr/fr_17.mp4` |
+| 18 CHECKPOINT: Everyday Day | `videos/en/en_18.mp4` | `videos/es/es_18.mp4` | `videos/fr/fr_18.mp4` |
+| 19 Public Transport | `videos/en/en_19.mp4` | `videos/es/es_19.mp4` | `videos/fr/fr_19.mp4` |
+| 20 Past & Recent Events | `videos/en/en_20.mp4` | `videos/es/es_20.mp4` | `videos/fr/fr_20.mp4` |
+| 21 Future Travel & Plans | `videos/en/en_21.mp4` | `videos/es/es_21.mp4` | `videos/fr/fr_21.mp4` |
+| 22 Fixing Problems | `videos/en/en_22.mp4` | `videos/es/es_22.mp4` | `videos/fr/fr_22.mp4` |
+| 23 Opinions, Feelings & Reactions | `videos/en/en_23.mp4` | `videos/es/es_23.mp4` | `videos/fr/fr_23.mp4` |
+| 24 CHECKPOINT: City & Conversation | `videos/en/en_24.mp4` | `videos/es/es_24.mp4` | `videos/fr/fr_24.mp4` |
+| 25 Lost / Stolen / Police | `videos/en/en_25.mp4` | `videos/es/es_25.mp4` | `videos/fr/fr_25.mp4` |
+| 26 Pharmacy & Health | `videos/en/en_26.mp4` | `videos/es/es_26.mp4` | `videos/fr/fr_26.mp4` |
+| 27 Emergency | `videos/en/en_27.mp4` | `videos/es/es_27.mp4` | `videos/fr/fr_27.mp4` |
+| 28 No Subtitles | `videos/en/en_28.mp4` | `videos/es/es_28.mp4` | `videos/fr/fr_28.mp4` |
+| 29 Dress Rehearsal: Full Evening | `videos/en/en_29.mp4` | `videos/es/es_29.mp4` | `videos/fr/fr_29.mp4` |
+| 30 A Complete Day Abroad Alone | `videos/en/en_30.mp4` | `videos/es/es_30.mp4` | `videos/fr/fr_30.mp4` |
 
-A replacement for an existing file keeps its name and needs no code change. A video for a mission that has none is only picked up by the app after its path is added to that mission's content (`introVideo`) — a small code change per file, not done here.
+✓ = the file exists today. To add or replace a video: put the MP4 at its path, commit, push and deploy (`npm run deploy`). Nothing else is edited — no mission file, no list, no code.
 
 ### 2. Multi-scene missions
 
@@ -439,7 +516,7 @@ Current dialogue status: changed
 
 Important history: Same conversation as the old Mission 01; the host's closing line was rewritten in the final curriculum audit.
 
-Video impact: EN REPLACE (`En_day1.mp4`) · ES NEW VIDEO · FR REPLACE (`Fr_day1.mp4`)
+Video impact: EN REPLACE (`en_1.mp4`) · ES CHECK MANUALLY (`es_1.mp4`) · FR REPLACE (`fr_1.mp4`)
 
 ### M02 — Numbers & Money
 
@@ -447,7 +524,7 @@ Current dialogue status: unchanged
 
 Important history: Market-stall conversation, unchanged since the videos were made.
 
-Video impact: EN KEEP (`En_day2.mp4`) · ES NEW VIDEO · FR KEEP (`Fr_day2.mp4`)
+Video impact: EN KEEP (`en_2.mp4`) · ES CHECK MANUALLY (`es_2.mp4`) · FR KEEP (`fr_2.mp4`)
 
 ### M03 — Coffee Shop
 
@@ -455,7 +532,7 @@ Current dialogue status: unchanged
 
 Important history: Coffee order, unchanged since the videos were made.
 
-Video impact: EN KEEP (`En_day3.mp4`) · ES NEW VIDEO · FR CHECK MANUALLY (`Fr_day3.mp4`)
+Video impact: EN KEEP (`en_3.mp4`) · ES CHECK MANUALLY (`es_3.mp4`) · FR CHECK MANUALLY (`fr_3.mp4`)
 
 Watch for: The French video was produced when the reference Markdown lacked two lines — see its detail block.
 
@@ -465,7 +542,7 @@ Current dialogue status: new
 
 Important history: New Core mission (want / need / have / can). No equivalent script existed in the old course.
 
-Video impact: EN NEW VIDEO · ES NEW VIDEO · FR NEW VIDEO
+Video impact: EN NEW VIDEO · ES CHECK MANUALLY (`es_4.mp4`) · FR NEW VIDEO
 
 Watch for: Two scenes with different people and registers: a hostel desk (formal), then coffee with a friend (informal). 2 scenes.
 
@@ -475,7 +552,7 @@ Current dialogue status: unchanged
 
 Important history: Asking the way to the station, unchanged since the French video was made. There has never been an English video.
 
-Video impact: EN NEW VIDEO · ES NEW VIDEO · FR KEEP (`Fr_day5.mp4`)
+Video impact: EN NEW VIDEO · ES CHECK MANUALLY (`es_5.mp4`) · FR KEEP (`fr_5.mp4`)
 
 ### M06 — Airport & Border
 
@@ -483,7 +560,7 @@ Current dialogue status: changed (EN, one audible word) / unchanged (FR)
 
 Important history: Was Mission 10. Moved forward so the arrival story runs border → taxi → hotel.
 
-Video impact: EN MOVE / RELABEL (`En_day10.mp4`) · ES NEW VIDEO · FR MOVE / RELABEL (`Fr_day10.mp4`)
+Video impact: EN MOVE / RELABEL (`en_6.mp4`) · ES CHECK MANUALLY (`es_6.mp4`) · FR MOVE / RELABEL (`fr_6.mp4`)
 
 Watch for: English: the existing video says "Lovely." where the app now says "All right." — accepted as a minor spoken variant, so the file is kept.
 
@@ -493,7 +570,7 @@ Current dialogue status: changed
 
 Important history: Was Mission 06. The fare exchange and the slow-speech beat were rewritten.
 
-Video impact: EN REPLACE (`En_day6.mp4`) · ES NEW VIDEO · FR NEW VIDEO
+Video impact: EN REPLACE (`en_7.mp4`) · ES CHECK MANUALLY (`es_7.mp4`) · FR NEW VIDEO
 
 ### M08 — Hotel Check-in
 
@@ -501,7 +578,7 @@ Current dialogue status: changed
 
 Important history: Was Mission 07. One line changed: the receptionist's room line now ends "Here is your key." instead of asking about breakfast.
 
-Video impact: EN REPLACE (`En_day7.mp4`) · ES NEW VIDEO · FR NEW VIDEO
+Video impact: EN REPLACE (`en_8.mp4`) · ES NEW VIDEO · FR NEW VIDEO
 
 ### M09 — Shopping
 
@@ -509,7 +586,7 @@ Current dialogue status: unchanged
 
 Important history: Was Mission 08. Clothing-shop conversation, unchanged.
 
-Video impact: EN MOVE / RELABEL (`En_day8.mp4`) · ES NEW VIDEO · FR MOVE / RELABEL (`Fr_day8.mp4`)
+Video impact: EN MOVE / RELABEL (`en_9.mp4`) · ES NEW VIDEO · FR MOVE / RELABEL (`fr_9.mp4`)
 
 ### M10 — CHECKPOINT: Arrival Day
 
@@ -555,7 +632,7 @@ Current dialogue status: changed
 
 Important history: Was Mission 04. Absorbed the old Restaurant Basics (Mission 12): order, drink and closing lines changed.
 
-Video impact: EN REPLACE (`En_day4.mp4`) · ES NEW VIDEO · FR REPLACE (`Fr_day4.mp4`)
+Video impact: EN REPLACE (`en_14.mp4`) · ES NEW VIDEO · FR REPLACE (`fr_14.mp4`)
 
 Watch for: One non-spoken cue ("Later…").
 
@@ -757,5 +834,5 @@ One fingerprint per mission × language for the final canonical spoken dialogue.
 - Extended missions in the export: none.
 - Lines with no Hebrew: 0.
 - Hebrew attached to the Spanish / French line differing from the Hebrew of the English line: 0.
-- Video inventory: 15 files, 15 referenced, 0 unreferenced. Action cells filled: 90 of 90.
+- Video inventory: 22 files, every one a valid mission video (the scan fails otherwise). Action cells filled: 90 of 90.
 - Problems found: none.

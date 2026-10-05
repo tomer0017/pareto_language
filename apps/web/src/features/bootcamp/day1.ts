@@ -60,12 +60,6 @@ export const DAY1: BootcampDayContent = {
   title: T('להציג את עצמי', 'Introduce Myself'),
   items: DAY1_ITEMS,
   dialogues: { 'meeting-host': SCENE },
-  introVideo: {
-    src: '/videos/En_day1.mp4',
-    title: T('השיחה המלאה', 'Full conversation'),
-    language: 'en',
-    type: 'intro',
-  },
   steps: m01Steps('en'),
 };
 void RECOVERY_ITEMS;

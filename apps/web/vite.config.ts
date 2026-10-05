@@ -2,6 +2,7 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
 import { fileURLToPath } from 'node:url';
+import { videoManifestPlugin } from './videoManifest.js';
 
 const r = (p: string) => fileURLToPath(new URL(p, import.meta.url));
 
@@ -9,6 +10,8 @@ export default defineConfig({
   base: '/pareto_language/',
   plugins: [
     react(),
+    // Which mission videos exist — scanned from public/videos/{en,es,fr}/ on every dev start and build.
+    videoManifestPlugin(r('./public')),
     VitePWA({
       registerType: 'autoUpdate',
       includeAssets: ['content/*.json'],

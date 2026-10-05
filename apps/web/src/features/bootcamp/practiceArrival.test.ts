@@ -5,7 +5,7 @@ import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { BOOTCAMP_PLAN } from './plan.js';
 import { fillFrame, isHelpToolId, validatePracticeStep } from './practiceEngines.js';
-import { beforeCueFreeze } from './cueFreeze.js';
+import { beforeCueFreeze, type FrozenDay } from './cueFreeze.js';
 import { MISSIONS_BY_LANG } from './registry.js';
 import { RETIRED_SENTENCES } from './retired.js';
 import { sentenceCatalog } from '../core/phraseGroups.js';
@@ -68,7 +68,7 @@ const ITEMS_06_07_09 = { en: '120e5651', fr: '8b5f5d9b', es: 'a561c5d4' };
 describe('scope: only the Practice of Missions 06–10 changed', () => {
   // Scene transitions became non-spoken cues after these fingerprints were taken; `beforeCueFreeze`
   // puts the labels back, so the fingerprints still prove nothing else moved (see cueFreeze.ts).
-  const slice = (lang: Lang, a: number, b: number): BootcampDayContent[] => BOOTCAMP_PLAN.slice(a, b).map((m) => beforeCueFreeze(MISSIONS_BY_LANG[lang]![m.day]!, lang));
+  const slice = (lang: Lang, a: number, b: number): FrozenDay[] => BOOTCAMP_PLAN.slice(a, b).map((m) => beforeCueFreeze(MISSIONS_BY_LANG[lang]![m.day]!, lang));
   const print = (f: (lang: Lang) => unknown): Record<Lang, string> => ({ en: fnv(JSON.stringify(f('en'))), fr: fnv(JSON.stringify(f('fr'))), es: fnv(JSON.stringify(f('es'))) });
 
   it('Missions 01–05 are byte-for-byte unchanged', () => {

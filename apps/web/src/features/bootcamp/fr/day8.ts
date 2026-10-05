@@ -71,12 +71,6 @@ export const DAY8_FR: BootcampDayContent = {
   title: T('קניות', 'Shopping'),
   items: DAY8_FR_ITEMS,
   dialogues: { 'clothing-shop': SCENE },
-  introVideo: {
-    src: '/videos/Fr_day8.mp4',
-    title: T('השיחה המלאה', 'Full conversation'),
-    language: 'fr',
-    type: 'intro',
-  },
   steps: [
     { kind: 'talk', icon: '🛍️', title: T('משימה 9: קניות', 'Mission 9: Shopping'),
       body: [

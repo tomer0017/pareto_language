@@ -57,12 +57,6 @@ export const DAY6: BootcampDayContent = {
   title: T('מונית', 'Taxi / Uber'),
   items: DAY6_ITEMS,
   dialogues: { 'taxi-ride': SCENE },
-  introVideo: {
-    src: '/videos/En_day6.mp4',
-    title: T('השיחה המלאה', 'Full conversation'),
-    language: 'en',
-    type: 'intro',
-  },
   steps: [
     { kind: 'talk', icon: '🚕', title: T('משימה 7: מונית', 'Mission 7: Taxi / Uber'),
       body: [

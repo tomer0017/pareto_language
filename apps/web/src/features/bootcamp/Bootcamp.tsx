@@ -13,6 +13,7 @@ import { Learn } from './Learn.js';
 import { CompanionCoach, CompanionIntro, CompanionReaction } from '../companion/Companion.js';
 import { GAME_MOOD, coachFor } from '../companion/companionCoach.js';
 import { completeChime } from '../../shared/audio/sfx.js';
+import { missionVideo } from '../videos/missionVideo.js';
 import { NpcLine, NpcSpeech, YouLine, useNpc } from './ConvoScene.js';
 import { MatchPairsStep, MiniMapStep, QuickReplyStep, SentenceBuilderStep, SwapStep, VisualMatchStep } from './PracticeSteps.js';
 import { isHelpToolId } from './practiceEngines.js';
@@ -32,6 +33,7 @@ import { BackButton } from '../../shared/ui/PageHeader.js';
 function resolveAsset(src: string): string {
   if (/^https?:\/\//.test(src) || src.startsWith('blob:') || src.startsWith('data:')) return src;
   const base = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
+  if (base && src.startsWith(`${base}/`)) return src; // already resolved (the mission-video resolver returns final URLs)
   return src.startsWith('/') ? base + src : `${base}/${src}`;
 }
 
@@ -82,7 +84,7 @@ function MissionHub() {
   const day = bc.currentDay();
   if (!day) return null;
   const convo = primaryDialogue(day);
-  const video = day.introVideo;
+  const video = missionVideo(useAppStore.getState().learningLang, day.day);
   const phases = missionPhases(day);
   const done = bc.completedDays.includes(day.day);
   const saved = done ? 0 : (bc.stepIndex[String(day.day)] ?? 0);
@@ -224,7 +226,7 @@ function MissionPlayer() {
   const step = day.steps[bc.index];
   const itemsById = new Map(day.items.map((i) => [i.id, i]));
   const convo = primaryDialogue(day);
-  const video = day.introVideo;
+  const video = missionVideo(useAppStore.getState().learningLang, day.day);
 
   const pop = (): void => {
     success();
@@ -287,7 +289,9 @@ function MissionPlayer() {
       )}
       <div className="fade-in mission-step-body" key={bc.index}>
         {coach?.role === 'game' && <CompanionCoach line={L(coach.line)} mood={GAME_MOOD[step.kind]} />}
-        {step.kind === 'video' && <VideoStep video={video} mode={step.mode} icon={missionIcon(day)} onNext={advance} />}
+        {/* A video step exists only where there is a video to play: with no file for this language
+            and mission the step is passed over silently — never a broken or empty player. */}
+        {step.kind === 'video' && (video ? <VideoStep video={video} mode={step.mode} icon={missionIcon(day)} onNext={advance} /> : <SkipStep onNext={advance} />)}
         {step.kind === 'talk' && <TalkStep step={step} intro={coach?.role === 'intro' ? L(coach.line) : undefined} onNext={advance} />}
         {step.kind === 'prime' && <PrimeStep step={step} itemsById={itemsById} onNext={advance} />}
         {step.kind === 'tool' && <ToolStep step={step} item={itemsById.get(step.itemId)!} onDone={() => { pop(); advance(); }} />}
@@ -963,7 +967,7 @@ function VictoryScreen() {
   if (!day) return null;
   const receipts = bc.receipts.filter((r) => r.day === day.day);
   const convo = primaryDialogue(day);
-  const video = day.introVideo;
+  const video = missionVideo(useAppStore.getState().learningLang, day.day);
   const meta = BOOTCAMP_PLAN.find((m) => m.day === day.day);
   // "Mastered phrases" = the say-phrases this mission taught (recovery tools + replies excluded).
   const mastered = day.items.filter((i) => i.id.includes('.phrase.') && !i.id.includes('.phrase.recovery.'));
@@ -1178,9 +1182,16 @@ export function VideoPlayer({ video, icon, onEnded }: { video: BootcampVideo; /*
   );
 }
 
+/** A step with nothing to show for this learner (a video step whose video does not exist): move on. */
+function SkipStep({ onNext }: { onNext: () => void }) {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => { onNext(); }, []);
+  return null;
+}
+
 /** A mission step that shows the full-conversation video — before practice (intro) and again
  *  near the end (again). The learner presses Play; then a single button moves the mission on. */
-function VideoStep({ video, mode, icon, onNext }: { video?: BootcampVideo; mode: 'intro' | 'again'; icon?: string; onNext: () => void }) {
+function VideoStep({ video, mode, icon, onNext }: { video: BootcampVideo; mode: 'intro' | 'again'; icon?: string; onNext: () => void }) {
   const intro = mode === 'intro';
   return (
     <>
@@ -1188,7 +1199,7 @@ function VideoStep({ video, mode, icon, onNext }: { video?: BootcampVideo; mode:
       <div className="video-step">
         <h1 className="video-step-title">{intro ? t('videoIntroTitle') : t('videoAgainTitle')}</h1>
         <p className="dim">{intro ? t('videoIntroSub') : t('videoAgainSub')}</p>
-        {video ? <VideoPlayer video={video} icon={icon} /> : <p className="dim small">{t('videoUnavailable')}</p>}
+        <VideoPlayer video={video} icon={icon} />
       </div>
       <div className="action-zone">
         <button className="btn-primary" onClick={onNext}>{intro ? t('startPractice') : t('continue')}</button>

@@ -11,12 +11,16 @@
  *   - CORE30_FINAL_VIDEO_ACTION_MAP.md — which existing video still matches, which must be re-shot,
  *     which are missing, plus a per-mission × language dialogue hash to detect stale videos later.
  *
- * "What the video was made for" is the 29-mission runtime (commit 752463f), archived in
- * docs/archive/DIALOGUES_BY_MISSION_V1_29-mission-runtime.md. In that runtime a mission's displayed
- * number equalled its registry key, so `En_day6.mp4` is that document's Mission 06.
+ * Which videos exist is read from the folders by the same scanner the app's build uses
+ * (apps/web/videoManifest.ts): apps/web/public/videos/{language}/{language}_{mission number}.mp4.
+ *
+ * "What a video was made for": the 15 videos that predate the Core 30 were made for the 29-mission
+ * runtime (commit 752463f), archived in docs/archive/DIALOGUES_BY_MISSION_V1_29-mission-runtime.md.
+ * `LEGACY` below records which of today's files they are. A video added since then has no script
+ * history in the repository.
  */
 import { createHash } from 'node:crypto';
-import { existsSync, readFileSync, readdirSync, statSync, writeFileSync } from 'node:fs';
+import { readFileSync, statSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { cinematicTranscript, missionDialogues } from '../apps/web/src/features/bootcamp/exportDialogue.js';
@@ -24,9 +28,11 @@ import { EXTENDED_MISSIONS } from '../apps/web/src/features/bootcamp/extended.js
 import { BOOTCAMP_PLAN } from '../apps/web/src/features/bootcamp/plan.js';
 import { MISSIONS_BY_LANG } from '../apps/web/src/features/bootcamp/registry.js';
 import type { BootcampDayContent, BootcampDialogue } from '../apps/web/src/features/bootcamp/types.js';
+import { videoFileName, videoPublicPath } from '../apps/web/src/features/videos/videoConvention.js';
+import { readVideoManifest } from '../apps/web/videoManifest.js';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const VIDEO_DIR = resolve(ROOT, 'apps/web/public/videos');
+const PUBLIC_DIR = resolve(ROOT, 'apps/web/public');
 const ARCHIVE = resolve(ROOT, 'docs/archive/DIALOGUES_BY_MISSION_V1_29-mission-runtime.md');
 const OUT_SCRIPT = resolve(ROOT, 'docs/CORE30_FINAL_DIALOGUES_EN_ES_FR_HE.md');
 const OUT_MAP = resolve(ROOT, 'docs/CORE30_FINAL_VIDEO_ACTION_MAP.md');
@@ -158,9 +164,23 @@ function diff(a: string[], b: string[]): { old: string[]; now: string[] } {
 type Status = 'KEEP' | 'MOVE / RELABEL' | 'REPLACE' | 'NEW VIDEO' | 'CHECK MANUALLY';
 interface Cell { status: Status; file?: string; why: string; old: string[]; now: string[]; variant?: boolean }
 
+/**
+ * Provenance of the 15 videos that predate the Core 30. Each was made for a mission of the 29-mission
+ * course (`was` = its number there) and used to be called `oldName`; on 2026-10-05 it was renamed to
+ * the displayed mission number. History only — the app never reads this.
+ */
+const LEGACY: Record<string, { oldName: string; was: number }> = {
+  'en_1.mp4': { oldName: 'En_day1.mp4', was: 1 }, 'en_2.mp4': { oldName: 'En_day2.mp4', was: 2 }, 'en_3.mp4': { oldName: 'En_day3.mp4', was: 3 },
+  'en_14.mp4': { oldName: 'En_day4.mp4', was: 4 }, 'en_7.mp4': { oldName: 'En_day6.mp4', was: 6 }, 'en_8.mp4': { oldName: 'En_day7.mp4', was: 7 },
+  'en_9.mp4': { oldName: 'En_day8.mp4', was: 8 }, 'en_6.mp4': { oldName: 'En_day10.mp4', was: 10 },
+  'fr_1.mp4': { oldName: 'Fr_day1.mp4', was: 1 }, 'fr_2.mp4': { oldName: 'Fr_day2.mp4', was: 2 }, 'fr_3.mp4': { oldName: 'Fr_day3.mp4', was: 3 },
+  'fr_14.mp4': { oldName: 'Fr_day4.mp4', was: 4 }, 'fr_5.mp4': { oldName: 'Fr_day5.mp4', was: 5 }, 'fr_9.mp4': { oldName: 'Fr_day8.mp4', was: 8 },
+  'fr_6.mp4': { oldName: 'Fr_day10.mp4', was: 10 },
+};
+
 /** Evidence the repository cannot settle: carried over from the previous action map. */
 const MANUAL: Record<string, string> = {
-  'Fr_day3.mp4': 'The runtime dialogue is unchanged since the video was added, but the reference Markdown that existed when it was produced was missing two spoken lines ("Moyen ou grand ?" and "Lait et sucre ?"). If the video followed that file it lacks them. Watch it once: if both lines are spoken, treat as KEEP.',
+  'fr_3.mp4': 'The runtime dialogue is unchanged since the video was added, but the reference Markdown that existed when it was produced was missing two spoken lines ("Moyen ou grand ?" and "Lait et sucre ?"). If the video followed that file it lacks them. Watch it once: if both lines are spoken, treat as KEEP.',
 };
 
 /**
@@ -169,24 +189,27 @@ const MANUAL: Record<string, string> = {
  * line turns the file back into REPLACE.
  */
 const ACCEPTED: Record<string, { old: string[]; now: string[]; note: string }> = {
-  'En_day10.mp4': {
+  'en_6.mp4': {
     old: ['NPC: Lovely. How long are you staying?', 'YOU: At a hotel in the city center.'],
     now: ['NPC: All right. How long are you staying?', 'YOU: At a hotel in the city centre.'],
     note: 'ACCEPTABLE MINOR SPOKEN VARIANT — the only audible difference is one word: the video says "Lovely. How long are you staying?", the app now says "All right. How long are you staying?". ("center" → "centre" is spelling only.) Accepted for production; the runtime dialogue was not changed to match the video.',
   },
 };
 
-const files = existsSync(VIDEO_DIR) ? readdirSync(VIDEO_DIR).filter((f) => /\.(mp4|webm|mov)$/i.test(f)).sort((a, b) => a.localeCompare(b, 'en', { numeric: true })) : [];
-const referenced = new Map<string, { lang: Lang; n: number }>();
+// The same scan the app's build runs: it throws on any file that breaks the naming convention.
+const manifest = readVideoManifest(PUBLIC_DIR);
+const files: { lang: Lang; n: number; file: string; path: string }[] = LANGS.flatMap((lang) => manifest[lang].map((n) => ({ lang, n, file: videoFileName(lang, n), path: videoPublicPath(lang, n) })));
 const cells = new Map<string, Cell>();
-for (const { n, plan, by } of ALL) for (const lang of LANGS) {
-  const src = content(lang, plan.day).introVideo?.src;
-  const file = src ? src.split('/').pop()! : undefined;
+for (const { n, by } of ALL) for (const lang of LANGS) {
   const key = `${n}:${lang}`;
-  if (!file) { cells.set(key, { status: 'NEW VIDEO', why: 'No video exists for this mission in this language.', old: [], now: [] }); continue; }
-  if (!files.includes(file)) { problems.push(`M${pad(n)} ${NAME[lang]}: runtime points at ${file}, which is not in the video folder`); cells.set(key, { status: 'NEW VIDEO', file, why: `The runtime points at \`${file}\`, but the file is missing.`, old: [], now: [] }); continue; }
-  referenced.set(file, { lang, n });
-  const oldNumber = plan.day; // 29-mission runtime: displayed number = registry key
+  if (!manifest[lang].includes(n)) { cells.set(key, { status: 'NEW VIDEO', why: 'No video exists for this mission in this language.', old: [], now: [] }); continue; }
+  const file = videoFileName(lang, n);
+  const legacy = LEGACY[file];
+  if (!legacy) {
+    cells.set(key, { status: 'CHECK MANUALLY', file, why: `Added after the dialogue freeze; the repository holds no record of the script it was produced from. If it was made from the current master script (dialogue hash \`${hash(by[lang])}\`, section I), it is current — nothing to do.`, old: [], now: [] });
+    continue;
+  }
+  const oldNumber = legacy.was;
   const before = archive.get(oldNumber)?.[lang];
   const now = spoken(by[lang]).split('\n').filter(Boolean);
   if (!before?.length) { cells.set(key, { status: 'CHECK MANUALLY', file, why: 'No archived dialogue to compare with.', old: [], now: [] }); continue; }
@@ -198,8 +221,6 @@ for (const { n, plan, by } of ALL) for (const lang of LANGS) {
   else if (oldNumber !== n) cells.set(key, { status: 'MOVE / RELABEL', file, why: `Spoken dialogue is line-for-line identical. The mission moved from position ${pad(oldNumber)} to ${pad(n)}.`, old: [], now: [] });
   else cells.set(key, { status: 'KEEP', file, why: 'Spoken dialogue is line-for-line identical, and the mission kept its position.', old: [], now: [] });
 }
-const orphans = files.filter((f) => !referenced.has(f));
-for (const f of orphans) problems.push(`video file ${f} is not referenced by any Core mission`);
 const cell = (n: number, lang: Lang): Cell => cells.get(`${n}:${lang}`)!;
 const count = (s: Status, onlyExisting = false): number => [...cells.values()].filter((c) => c.status === s && (!onlyExisting || c.file)).length;
 
@@ -278,7 +299,8 @@ const o: string[] = [];
 o.push('# Core 30 — Final Video Action Map', '');
 o.push('_Generated from the runtime mission content by `scripts/export-core30-video-docs.ts` (`npm run export:video-docs`). Companion file: `CORE30_FINAL_DIALOGUES_EN_ES_FR_HE.md` (the scripts to shoot from). The dialogue hashes in section I identify the exact dialogue this map describes._', '');
 o.push('**This is the canonical video action map.** Regenerate it with `npm run export:video-docs` (never edit by hand). The earlier map of 2026-10-04 is archived as `docs/archive/CORE_30_FINAL_VIDEO_ACTION_MAP_2026-10-04_superseded.md` and must not be used. No video file was created, edited, renamed, moved or deleted by this export.', '');
-o.push('**Basis of every verdict.** The existing videos were added in July 2026 and renamed in commit `752463f` (the 29-mission runtime). For all 15 files, the NPC lines in the mission source at the commit the video was added are identical to those at `752463f`, so the dialogue each video was made for is the 29-mission runtime, archived in `docs/archive/DIALOGUES_BY_MISSION_V1_29-mission-runtime.md`. Each verdict is an exact line-by-line comparison of that archived conversation with today\'s canonical conversation. **Nobody watched the videos**: a verdict says what the script was, not what is audible in the file.', '');
+o.push('**Canonical video path:** `apps/web/public/videos/{language}/{language}_{displayedMissionNumber}.mp4` — for example M04 Spanish `apps/web/public/videos/es/es_4.mp4`, M14 English `apps/web/public/videos/en/en_14.mp4`, M30 Spanish `apps/web/public/videos/es/es_30.mp4`. The number is the mission number the learner sees (no zero padding); the language is the one being learned. The app finds videos by scanning those folders at build time: adding a correctly named file is all it takes — no code, mission file or list is edited.', '');
+o.push('**Basis of every verdict.** The 15 videos that predate the Core 30 were added in July 2026; the NPC lines in the mission source at the commit each was added are identical to those of the 29-mission runtime (`752463f`), archived in `docs/archive/DIALOGUES_BY_MISSION_V1_29-mission-runtime.md`. Their verdict is an exact line-by-line comparison of that archived conversation with today\'s canonical conversation. A video added since then has no script history in the repository and is marked CHECK MANUALLY. **Nobody watched the videos**: a verdict says what the script was, not what is audible in the file.', '');
 o.push('Statuses: **KEEP** · **MOVE / RELABEL** (same dialogue, mission changed position) · **REPLACE** (a spoken line changed) · **NEW VIDEO** (none exists) · **CHECK MANUALLY** (history cannot prove it).', '');
 
 o.push('## Totals', '');
@@ -287,17 +309,14 @@ for (const s of ['KEEP', 'MOVE / RELABEL', 'REPLACE', 'NEW VIDEO', 'CHECK MANUAL
 o.push(`| **Total** | **${cells.size}** | **${files.length}** |`, '');
 
 o.push('## A. Current video inventory', '');
-o.push(`Folder: \`apps/web/public/videos/\` — ${files.length} files. A video is attached to a mission by an explicit path in that mission's content (\`introVideo\`). The number in a file name is the mission's **registry key**, not its displayed number.`, '');
-o.push('| File | Language | Size | Registry key | Position when made (29-mission course) | Current mission | Same dialogue as when made? |', '|---|---|---|---|---|---|---|');
+o.push(`${files.length} files (${LANGS.map((l) => `${NAME[l]} ${manifest[l].length}`).join(', ')}), read from the folders by the build's own scanner. The number in a file name is the mission number the learner sees.`, '');
+o.push('| File | Language | Size | Current mission | Former name | Position when made (29-mission course) | Same dialogue as when made? |', '|---|---|---|---|---|---|---|');
 for (const f of files) {
-  const ref = referenced.get(f);
-  const size = `${(statSync(resolve(VIDEO_DIR, f)).size / 1_048_576).toFixed(1)} MB`;
-  if (!ref) { o.push(`| \`${f}\` | ? | ${size} | ? | ? | not referenced by the runtime | — |`); continue; }
-  const m = ALL[ref.n - 1]!; const c = cell(ref.n, ref.lang);
-  o.push(`| \`${f}\` | ${NAME[ref.lang]} | ${size} | ${m.plan.day} | ${pad(m.plan.day)} ${archiveTitle.get(m.plan.day) ?? ''} | **M${pad(ref.n)}** ${m.plan.title.en} | ${c.status === 'REPLACE' ? 'No' : c.status === 'CHECK MANUALLY' ? 'Script yes — video unverified' : 'Yes'} |`);
+  const m = ALL[f.n - 1]!; const c = cell(f.n, f.lang); const legacy = LEGACY[f.file];
+  const size = `${(statSync(resolve(PUBLIC_DIR, f.path)).size / 1_048_576).toFixed(1)} MB`;
+  o.push(`| \`${f.path}\` | ${NAME[f.lang]} | ${size} | **M${pad(f.n)}** ${m.plan.title.en} | ${legacy ? `\`${legacy.oldName}\`` : '— (new)'} | ${legacy ? `${pad(legacy.was)} ${archiveTitle.get(legacy.was) ?? ''}` : '—'} | ${!legacy ? 'Not recorded' : c.status === 'REPLACE' ? 'No' : c.status === 'CHECK MANUALLY' ? 'Script yes — video unverified' : c.variant ? 'One word differs (accepted)' : 'Yes'} |`);
 }
-o.push('', `Spanish has no video files. ${orphans.length ? `Unreferenced files: ${orphans.map((f) => `\`${f}\``).join(', ')}.` : 'Every file in the folder is referenced by exactly one mission, and every path the runtime references exists.'}`, '');
-o.push('Before the 29-mission refactor the same files were named one number higher (`En_day2.mp4` … `En_day11.mp4`), because a Recovery Toolkit mission then occupied position 1.', '');
+o.push('', 'The 15 older files were renamed on 2026-10-05 from registry-key names (`En_day6.mp4` was Taxi) to displayed mission numbers, byte-for-byte unchanged. "Former name" is history only; nothing reads it.', '');
 
 o.push('## C. Master action table', '');
 o.push('| Mission | Title | English | Spanish | French |', '|---|---|---|---|---|');
@@ -306,8 +325,8 @@ for (const m of ALL) o.push(`| ${pad(m.n)} | ${m.plan.title.en} | ${shown(cell(m
 o.push('');
 
 o.push('## D. Existing video detail', '');
-for (const f of files) {
-  const ref = referenced.get(f); if (!ref) continue;
+for (const item of files) {
+  const f = item.path; const ref = item;
   const m = ALL[ref.n - 1]!; const c = cell(ref.n, ref.lang);
   o.push(`### \`${f}\``, '');
   o.push(`Current mission: M${pad(ref.n)} — ${m.plan.title.en} (${NAME[ref.lang]})`, '');
@@ -318,14 +337,14 @@ for (const f of files) {
     for (const l of c.old) o.push(`- OLD: \`${l}\``);
     for (const l of c.now) o.push(`- CURRENT: \`${l}\``);
     const share = Math.max(c.old.length, c.now.length);
-    o.push('', `Production note: regenerate the full video from the Mission ${pad(ref.n)} ${NAME[ref.lang]} script (${share} line${share === 1 ? '' : 's'} affected). Keep the file name — the runtime already points at it.`, '');
+    o.push('', `Production note: regenerate the full video from the Mission ${pad(ref.n)} ${NAME[ref.lang]} script (${share} line${share === 1 ? '' : 's'} affected). Save the new file under the same name — the app picks it up on the next build.`, '');
   } else if (c.variant) {
     o.push('The accepted difference:', '');
     for (const l of c.old) o.push(`- VIDEO SAYS: \`${l}\``);
     for (const l of c.now) o.push(`- APP SAYS: \`${l}\``);
-    o.push('', 'Production note: nothing to re-shoot. Do not rename the file. If this video is ever re-shot for another reason, use the current line.', '');
+    o.push('', 'Production note: nothing to re-shoot. If this video is ever re-shot for another reason, use the current line.', '');
   } else if (c.status === 'MOVE / RELABEL') {
-    o.push(`Production note: nothing to re-shoot. Old displayed position ${pad(m.plan.day)}, current displayed position ${pad(ref.n)}. Do not rename the file: the runtime references \`${f}\` by path. Only update any on-screen "Mission ${m.plan.day}" title card or caption inside the video, if it has one.`, '');
+    o.push(`Production note: nothing to re-shoot. The mission was number ${pad(LEGACY[item.file]?.was ?? ref.n)} when the video was made and is number ${pad(ref.n)} now; the file is already named for the current number. Only update any on-screen "Mission ${LEGACY[item.file]?.was ?? ref.n}" title card or caption inside the video, if it has one.`, '');
   } else if (c.status === 'KEEP') {
     o.push('Production note: nothing to do.', '');
   } else {
@@ -335,8 +354,8 @@ for (const f of files) {
 
 o.push('## E. What changed across the curriculum', '');
 o.push('The old course had 29 missions; the final Core has 30.', '');
-o.push('**Final displayed order** (registry key in brackets — the number used in video file names):', '');
-o.push(ALL.map((m) => `${pad(m.n)} ${m.plan.title.en} [${m.plan.day}]`).join(' · '), '');
+o.push('**Final displayed order** — these numbers are the ones in video file names:', '');
+o.push(ALL.map((m) => `${pad(m.n)} ${m.plan.title.en}`).join(' · '), '');
 const moved = ALL.filter((m) => archive.has(m.plan.day) && m.plan.day !== m.n);
 const stayed = ALL.filter((m) => archive.has(m.plan.day) && m.plan.day === m.n);
 const fresh = ALL.filter((m) => !archive.has(m.plan.day));
@@ -349,7 +368,7 @@ o.push('- **Checkpoints / integrated missions rebuilt** (their old scripts are o
 o.push('- **Final Mastery changes (Missions 25–30):** the conversations of 25, 26 and 27 were not touched by the last pass; 28, 29 and 30 were rebuilt. 28 is audio-only in the app and carries one non-spoken cue; 29 is one evening in four scenes; 30 is one whole day in five scenes.', '');
 
 o.push('## F. New and merged Core missions', '');
-o.push('**No equivalent standalone script existed in the old course** (verified: their registry keys 30–37 are absent from the 29-mission archive):', '');
+o.push('**No equivalent standalone script existed in the old course** (verified: they are absent from the 29-mission archive):', '');
 for (const m of fresh) o.push(`- M${pad(m.n)} — ${m.plan.title.en}`);
 o.push('', '**Old standalone topics and where they went** (verified against `plan.ts` / `extended.ts`):', '');
 o.push('- Old 12 **Restaurant Basics** → merged into M14 Restaurant Meal.');
@@ -359,11 +378,12 @@ o.push('- Old 15 **Street Food & Markets**, 19 **Tickets & Attractions**, 20 **W
 o.push('- The lost-passport exchange that used to sit inside Emergency → M25 Lost / Stolen / Police.', '');
 
 o.push('# Things to pay attention to before generating videos', '');
-o.push('### 1. Displayed mission number vs file name', '');
-o.push('File names carry the registry key. Only Missions 01, 02, 03 and 05 have a key equal to their number. Use this table, not the file name:', '');
-o.push('| Mission | Key | File name a video for it uses |', '|---|---|---|');
-for (const m of ALL) o.push(`| ${pad(m.n)} ${m.plan.title.en} | ${m.plan.day} | \`En_day${m.plan.day}.mp4\` · \`Es_day${m.plan.day}.mp4\` · \`Fr_day${m.plan.day}.mp4\` |`);
-o.push('', 'A replacement for an existing file keeps its name and needs no code change. A video for a mission that has none is only picked up by the app after its path is added to that mission\'s content (`introVideo`) — a small code change per file, not done here.', '');
+o.push('### 1. File name = language + displayed mission number', '');
+o.push('`apps/web/public/videos/{language}/{language}_{displayedMissionNumber}.mp4` — lower-case language code (`en`, `es`, `fr`), the mission number the learner sees, no zero padding. The build fails with an explanation if a file in those folders is named any other way (`Es_1.mp4`, `es_01.mp4`, `es_day1.mp4`, `es_31.mp4`).', '');
+o.push('| Mission | English | Spanish | French |', '|---|---|---|---|');
+const mark = (lang: Lang, n: number): string => `\`${videoPublicPath(lang, n)}\`${manifest[lang].includes(n) ? ' ✓' : ''}`;
+for (const m of ALL) o.push(`| ${pad(m.n)} ${m.plan.title.en} | ${mark('en', m.n)} | ${mark('es', m.n)} | ${mark('fr', m.n)} |`);
+o.push('', '✓ = the file exists today. To add or replace a video: put the MP4 at its path, commit, push and deploy (`npm run deploy`). Nothing else is edited — no mission file, no list, no code.', '');
 o.push('### 2. Multi-scene missions', '');
 o.push(`${multi.length} missions have more than one scene: ${multi.map((m) => `M${pad(m.n)} (${m.by.en.length})`).join(', ')}. The other ${ALL.length - multi.length} are a single scene.`, '');
 o.push('### 3. Spoken vs non-spoken cues', '');
@@ -410,7 +430,7 @@ o.push(`- Extended missions in the export: none.`);
 o.push(`- Lines with no Hebrew: ${missingHebrew.length}.${missingHebrew.length ? ` ${missingHebrew.join('; ')}` : ''}`);
 o.push(`- Hebrew attached to the Spanish / French line differing from the Hebrew of the English line: ${hebrewDrift.length}.${hebrewDrift.length ? ' The master script uses the English-track Hebrew. Differences:' : ''}`);
 for (const d of hebrewDrift) o.push(`  - ${d}`);
-o.push(`- Video inventory: ${files.length} files, ${referenced.size} referenced, ${orphans.length} unreferenced. Action cells filled: ${cells.size} of 90.`);
+o.push(`- Video inventory: ${files.length} files, every one a valid mission video (the scan fails otherwise). Action cells filled: ${cells.size} of 90.`);
 o.push(`- Problems found: ${problems.length ? '' : 'none.'}`);
 for (const p of problems) o.push(`  - ${p}`);
 o.push('');

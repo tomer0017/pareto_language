@@ -1,19 +1,12 @@
 import { describe, expect, it } from 'vitest';
-import { existsSync } from 'node:fs';
-import { fileURLToPath } from 'node:url';
 import { BOOTCAMP_PLAN, EXTENDED_POOL, MERGED_MISSIONS, PHASES, missionNumber, nextMission } from './plan.js';
 import { DAYS_FR } from './fr/index.js';
 import { DAYS_ES } from './es/index.js';
 import { DAYS } from './registry.js';
 import { DAY1 } from './day1.js';
-import { DAY2 } from './day2.js';
 import { DAY3 } from './day3.js';
-import { DAY4 } from './day4.js';
-import { DAY5 } from './day5.js';
-import { DAY6 } from './day6.js';
 import { DAY7 } from './day7.js';
 import { DAY8 } from './day8.js';
-import { DAY10 } from './day10.js';
 
 import type { BootcampDayContent, BootcampDialogue, BootcampStep } from './types.js';
 
@@ -435,13 +428,15 @@ describe('Mission 3 — Coffee Shop (Deep Moment exemplar)', () => {
 });
 
 describe('video-first Bootcamp (intro/review video)', () => {
-  const publicDir = fileURLToPath(new URL('../../../public', import.meta.url));
-
-  it('Mission 1 carries the intro video at the documented public path', () => {
-    expect(DAY1.introVideo).toBeDefined();
-    expect(DAY1.introVideo?.src).toBe('/videos/En_day1.mp4');
-    expect(DAY1.introVideo?.language).toBe('en');
-    expect(DAYS_FR[1]!.introVideo?.src).toBe('/videos/Fr_day1.mp4');
+  // Which videos exist, and where they live, is no longer mission content: it is a naming
+  // convention resolved centrally (see features/videos/missionVideo.test.ts).
+  it('no mission, in any language, names a video file', () => {
+    for (const [lang, set] of Object.entries({ en: DAYS, fr: DAYS_FR, es: DAYS_ES })) {
+      for (const day of Object.values(set)) {
+        expect(Object.keys(day), `${lang} day ${day.day}`).not.toContain('introVideo');
+        expect(JSON.stringify(day), `${lang} day ${day.day}`).not.toMatch(/\.mp4|\/videos\//);
+      }
+    }
   });
 
   it('Mission 1 opens with a video-intro step and replays it before the summary', () => {
@@ -454,45 +449,10 @@ describe('video-first Bootcamp (intro/review video)', () => {
     expect(kinds.at(-1)).toBe('summary');
   });
 
-  it('Missions 2–4, 6–8 and 10 ship a full-conversation video (hub / Videos experience), without injecting video steps', () => {
-    for (const [day, src] of [
-      [DAY2, 'En_day2'], [DAY3, 'En_day3'], [DAY4, 'En_day4'],
-      [DAY6, 'En_day6'], [DAY7, 'En_day7'], [DAY8, 'En_day8'], [DAY10, 'En_day10'],
-    ] as const) {
-      expect(day.introVideo).toBeDefined();
-      expect(day.introVideo?.src).toBe(`/videos/${src}.mp4`);
-      expect(day.introVideo?.language).toBe('en');
-      expect(day.steps.some((s) => s.kind === 'video')).toBe(false);
+  it('only Mission 1 has video steps; every mission can be read aloud whether or not it has a video', () => {
+    for (const set of [DAYS, DAYS_FR, DAYS_ES]) for (const day of Object.values(set)) {
+      expect(day.steps.some((s) => s.kind === 'video'), `day ${day.day}`).toBe(day.day === 1);
+      expect(Object.keys(day.dialogues).length).toBeGreaterThan(0); // the transcript reader still works
     }
-  });
-
-  it('every video reference, in every language, resolves to a real file in public/', () => {
-    let referenced = 0;
-    for (const [lang, set] of Object.entries({ en: DAYS, fr: DAYS_FR, es: DAYS_ES })) {
-      for (const day of Object.values(set)) {
-        if (!day.introVideo) continue;
-        referenced++;
-        expect(day.introVideo.src).toMatch(/^\/videos\/[A-Za-z]+_day\d+\.mp4$/);
-        expect(existsSync(publicDir + day.introVideo.src), `${lang} day ${day.day} → ${day.introVideo.src}`).toBe(true);
-      }
-    }
-    expect(referenced).toBe(15); // 8 English + 7 French; nothing was lost or invented in the rename
-  });
-
-  it('videos are opt-in per mission; a mission without one degrades gracefully (no video step, hub still has a transcript)', () => {
-    const withVideo = new Set<number>();
-    for (const [num, day] of Object.entries(DAYS)) {
-      const hasVideoStep = day.steps.some((s) => s.kind === 'video');
-      if (day.introVideo) withVideo.add(Number(num));
-      else {
-        expect(hasVideoStep).toBe(false); // never a placeholder video step without a video
-        expect(Object.keys(day.dialogues).length).toBeGreaterThan(0); // the transcript reader still works
-      }
-    }
-    // Missions 1–4, 6–8 and 10 ship the full-conversation video; 5 and 9 are real gaps.
-    expect([...withVideo].sort((a, b) => a - b)).toEqual([1, 2, 3, 4, 6, 7, 8, 10]);
-    expect(DAY5.introVideo).toBeUndefined();
-    expect(DAYS[9]!.introVideo).toBeUndefined();
-    expect(DAY1.steps.some((s) => s.kind === 'video')).toBe(true);
   });
 });

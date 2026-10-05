@@ -1,3 +1,4 @@
+import { videoPublicPath } from '../videos/videoConvention.js';
 import { UI_DICTIONARIES } from '../../shared/i18n/strings.js';
 import { cinematicTranscript, missionDialogues } from './exportDialogue.js';
 import { BOOTCAMP_PLAN, PHASES, type MissionPlan } from './plan.js';
@@ -474,7 +475,7 @@ function renderMission(plan: MissionPlan, index: number, use: Map<string, number
   o.push(`- Displayed number: ${pad(n)}`, `- Mission ID: \`${plan.id}\``, `- Registry key/day: ${day}`, `- Checkpoint: ${plan.checkpoint ? 'yes' : 'no'}`);
   o.push(`- Phase: ${phase.n} — ${phase.title.en} / ${phase.title.he} ${phase.icon}`);
   o.push(`- Source runtime file(s): ${spec ? `\`${DIR}${spec}\` — one multilingual spec, built per language by \`${DIR}author.ts\`` : LANGS.map((l) => `\`${DIR}${l === 'en' ? '' : `${l}/`}day${day}.ts\``).join(' · ')}`);
-  o.push(`- Video reference: ${LANGS.map((l) => `${LANG_NAME[l]} ${content(l, day).introVideo ? `\`${content(l, day).introVideo!.src}\`` : 'none'}`).join(' · ')}`);
+  o.push(`- Video: found by convention, never written into mission content — ${LANGS.map((l) => `${LANG_NAME[l]} \`${videoPublicPath(l, n)}\``).join(' · ')}. Played only where that file exists (inventory: \`docs/CORE30_FINAL_VIDEO_ACTION_MAP.md\`).`);
   o.push(`- Video steps inside the Practice flow: ${en.steps.some((s) => s.kind === 'video') ? 'yes (see flow)' : 'no'}`, '');
 
   // ── intro

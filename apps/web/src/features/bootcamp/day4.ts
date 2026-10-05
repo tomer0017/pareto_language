@@ -68,12 +68,6 @@ export const DAY4: BootcampDayContent = {
   title: T('ארוחה במסעדה', 'Restaurant Meal'),
   items: DAY4_ITEMS,
   dialogues: { 'sit-down-meal': SCENE },
-  introVideo: {
-    src: '/videos/En_day4.mp4',
-    title: T('השיחה המלאה', 'Full conversation'),
-    language: 'en',
-    type: 'intro',
-  },
   steps: [
     { kind: 'talk', icon: '🍽️', title: T('ארוחה במסעדה', 'Restaurant Meal'),
       body: [

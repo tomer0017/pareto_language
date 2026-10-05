@@ -6,7 +6,7 @@ import { m05Steps } from '../practiceV1.js';
 /**
  * French Mission 5 — "Directions". French parallel of English mission 5: same objective (ask, then
  * UNDERSTAND the fast answer — 90% listening), same step structure, same engine. French target
- * lines + `tr:{en,he}` glosses; `fr.*` ids. Full-conversation video (Fr_day6.mp4). AI-drafted, vous, pending review.
+ * lines + `tr:{en,he}` glosses; `fr.*` ids. AI-drafted, vous, pending review.
  */
 const T = (he: string, en: string): LocalizedText => ({ he, en });
 const TR = (en: string, he: string): LocalizedText => ({ en, he });
@@ -61,11 +61,5 @@ export const DAY5_FR: BootcampDayContent = {
   title: T('כיוונים', 'Directions'),
   items: DAY5_FR_ITEMS,
   dialogues: { 'lost-in-town': SCENE },
-  introVideo: {
-    src: '/videos/Fr_day5.mp4',
-    title: T('השיחה המלאה', 'Full conversation'),
-    language: 'fr',
-    type: 'intro',
-  },
   steps: m05Steps('fr'),
 };

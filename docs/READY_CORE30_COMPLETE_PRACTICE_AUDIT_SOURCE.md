@@ -78,7 +78,7 @@ Trigger: none. A tool is available only where a mission's author placed it as a 
 - Checkpoint: no
 - Phase: 1 — Foundations / יסודות 🛟
 - Source runtime file(s): `apps/web/src/features/bootcamp/day1.ts` · `apps/web/src/features/bootcamp/fr/day1.ts` · `apps/web/src/features/bootcamp/es/day1.ts`
-- Video reference: EN `/videos/En_day1.mp4` · FR `/videos/Fr_day1.mp4` · ES none
+- Video: found by convention, never written into mission content — EN `videos/en/en_1.mp4` · FR `videos/fr/fr_1.mp4` · ES `videos/es/es_1.mp4`. Played only where that file exists (inventory: `docs/CORE30_FINAL_VIDEO_ACTION_MAP.md`).
 - Video steps inside the Practice flow: yes (see flow)
 
 ## Learning goal / intro screen
@@ -671,7 +671,7 @@ Every learner sentence of this mission is a line in a scene.
 - Checkpoint: no
 - Phase: 1 — Foundations / יסודות 🛟
 - Source runtime file(s): `apps/web/src/features/bootcamp/day2.ts` · `apps/web/src/features/bootcamp/fr/day2.ts` · `apps/web/src/features/bootcamp/es/day2.ts`
-- Video reference: EN `/videos/En_day2.mp4` · FR `/videos/Fr_day2.mp4` · ES none
+- Video: found by convention, never written into mission content — EN `videos/en/en_2.mp4` · FR `videos/fr/fr_2.mp4` · ES `videos/es/es_2.mp4`. Played only where that file exists (inventory: `docs/CORE30_FINAL_VIDEO_ACTION_MAP.md`).
 - Video steps inside the Practice flow: no
 
 ## Learning goal / intro screen
@@ -1361,7 +1361,7 @@ Learner sentences taught beside the dialogue (not a line in any scene):
 - Checkpoint: no
 - Phase: 1 — Foundations / יסודות 🛟
 - Source runtime file(s): `apps/web/src/features/bootcamp/day3.ts` · `apps/web/src/features/bootcamp/fr/day3.ts` · `apps/web/src/features/bootcamp/es/day3.ts`
-- Video reference: EN `/videos/En_day3.mp4` · FR `/videos/Fr_day3.mp4` · ES none
+- Video: found by convention, never written into mission content — EN `videos/en/en_3.mp4` · FR `videos/fr/fr_3.mp4` · ES `videos/es/es_3.mp4`. Played only where that file exists (inventory: `docs/CORE30_FINAL_VIDEO_ACTION_MAP.md`).
 - Video steps inside the Practice flow: no
 
 ## Learning goal / intro screen
@@ -2276,7 +2276,7 @@ Learner sentences taught beside the dialogue (not a line in any scene):
 - Checkpoint: no
 - Phase: 1 — Foundations / יסודות 🛟
 - Source runtime file(s): `apps/web/src/features/bootcamp/core/everydayCore.ts` — one multilingual spec, built per language by `apps/web/src/features/bootcamp/author.ts`
-- Video reference: EN none · FR none · ES none
+- Video: found by convention, never written into mission content — EN `videos/en/en_4.mp4` · FR `videos/fr/fr_4.mp4` · ES `videos/es/es_4.mp4`. Played only where that file exists (inventory: `docs/CORE30_FINAL_VIDEO_ACTION_MAP.md`).
 - Video steps inside the Practice flow: no
 
 ## Learning goal / intro screen
@@ -3169,7 +3169,7 @@ Learner sentences taught beside the dialogue (not a line in any scene):
 - Checkpoint: no
 - Phase: 1 — Foundations / יסודות 🛟
 - Source runtime file(s): `apps/web/src/features/bootcamp/day5.ts` · `apps/web/src/features/bootcamp/fr/day5.ts` · `apps/web/src/features/bootcamp/es/day5.ts`
-- Video reference: EN none · FR `/videos/Fr_day5.mp4` · ES none
+- Video: found by convention, never written into mission content — EN `videos/en/en_5.mp4` · FR `videos/fr/fr_5.mp4` · ES `videos/es/es_5.mp4`. Played only where that file exists (inventory: `docs/CORE30_FINAL_VIDEO_ACTION_MAP.md`).
 - Video steps inside the Practice flow: no
 
 ## Learning goal / intro screen
@@ -3794,7 +3794,7 @@ Learner sentences taught beside the dialogue (not a line in any scene):
 - Checkpoint: no
 - Phase: 2 — Arrival / הגעה 🛬
 - Source runtime file(s): `apps/web/src/features/bootcamp/day10.ts` · `apps/web/src/features/bootcamp/fr/day10.ts` · `apps/web/src/features/bootcamp/es/day10.ts`
-- Video reference: EN `/videos/En_day10.mp4` · FR `/videos/Fr_day10.mp4` · ES none
+- Video: found by convention, never written into mission content — EN `videos/en/en_6.mp4` · FR `videos/fr/fr_6.mp4` · ES `videos/es/es_6.mp4`. Played only where that file exists (inventory: `docs/CORE30_FINAL_VIDEO_ACTION_MAP.md`).
 - Video steps inside the Practice flow: no
 
 ## Learning goal / intro screen
@@ -4610,7 +4610,7 @@ Every learner sentence of this mission is a line in a scene.
 - Checkpoint: no
 - Phase: 2 — Arrival / הגעה 🛬
 - Source runtime file(s): `apps/web/src/features/bootcamp/day6.ts` · `apps/web/src/features/bootcamp/fr/day6.ts` · `apps/web/src/features/bootcamp/es/day6.ts`
-- Video reference: EN `/videos/En_day6.mp4` · FR none · ES none
+- Video: found by convention, never written into mission content — EN `videos/en/en_7.mp4` · FR `videos/fr/fr_7.mp4` · ES `videos/es/es_7.mp4`. Played only where that file exists (inventory: `docs/CORE30_FINAL_VIDEO_ACTION_MAP.md`).
 - Video steps inside the Practice flow: no
 
 ## Learning goal / intro screen
@@ -5305,7 +5305,7 @@ Learner sentences taught beside the dialogue (not a line in any scene):
 - Checkpoint: no
 - Phase: 2 — Arrival / הגעה 🛬
 - Source runtime file(s): `apps/web/src/features/bootcamp/day7.ts` · `apps/web/src/features/bootcamp/fr/day7.ts` · `apps/web/src/features/bootcamp/es/day7.ts`
-- Video reference: EN `/videos/En_day7.mp4` · FR none · ES none
+- Video: found by convention, never written into mission content — EN `videos/en/en_8.mp4` · FR `videos/fr/fr_8.mp4` · ES `videos/es/es_8.mp4`. Played only where that file exists (inventory: `docs/CORE30_FINAL_VIDEO_ACTION_MAP.md`).
 - Video steps inside the Practice flow: no
 
 ## Learning goal / intro screen
@@ -5987,7 +5987,7 @@ Learner sentences taught beside the dialogue (not a line in any scene):
 - Checkpoint: no
 - Phase: 2 — Arrival / הגעה 🛬
 - Source runtime file(s): `apps/web/src/features/bootcamp/day8.ts` · `apps/web/src/features/bootcamp/fr/day8.ts` · `apps/web/src/features/bootcamp/es/day8.ts`
-- Video reference: EN `/videos/En_day8.mp4` · FR `/videos/Fr_day8.mp4` · ES none
+- Video: found by convention, never written into mission content — EN `videos/en/en_9.mp4` · FR `videos/fr/fr_9.mp4` · ES `videos/es/es_9.mp4`. Played only where that file exists (inventory: `docs/CORE30_FINAL_VIDEO_ACTION_MAP.md`).
 - Video steps inside the Practice flow: no
 
 ## Learning goal / intro screen
@@ -6653,7 +6653,7 @@ Every learner sentence of this mission is a line in a scene.
 - Checkpoint: yes
 - Phase: 2 — Arrival / הגעה 🛬
 - Source runtime file(s): `apps/web/src/features/bootcamp/core/checkpoints.ts (ARRIVAL_DAY)` — one multilingual spec, built per language by `apps/web/src/features/bootcamp/author.ts`
-- Video reference: EN none · FR none · ES none
+- Video: found by convention, never written into mission content — EN `videos/en/en_10.mp4` · FR `videos/fr/fr_10.mp4` · ES `videos/es/es_10.mp4`. Played only where that file exists (inventory: `docs/CORE30_FINAL_VIDEO_ACTION_MAP.md`).
 - Video steps inside the Practice flow: no
 
 ## Learning goal / intro screen
@@ -7522,7 +7522,7 @@ Every learner sentence of this mission is a line in a scene.
 - Checkpoint: no
 - Phase: 3 — Everyday Life / חיי יום-יום 🏡
 - Source runtime file(s): `apps/web/src/features/bootcamp/core/smallTalk.ts` — one multilingual spec, built per language by `apps/web/src/features/bootcamp/author.ts`
-- Video reference: EN none · FR none · ES none
+- Video: found by convention, never written into mission content — EN `videos/en/en_11.mp4` · FR `videos/fr/fr_11.mp4` · ES `videos/es/es_11.mp4`. Played only where that file exists (inventory: `docs/CORE30_FINAL_VIDEO_ACTION_MAP.md`).
 - Video steps inside the Practice flow: no
 
 ## Learning goal / intro screen
@@ -8322,7 +8322,7 @@ Learner sentences taught beside the dialogue (not a line in any scene):
 - Checkpoint: no
 - Phase: 3 — Everyday Life / חיי יום-יום 🏡
 - Source runtime file(s): `apps/web/src/features/bootcamp/core/timePlans.ts` — one multilingual spec, built per language by `apps/web/src/features/bootcamp/author.ts`
-- Video reference: EN none · FR none · ES none
+- Video: found by convention, never written into mission content — EN `videos/en/en_12.mp4` · FR `videos/fr/fr_12.mp4` · ES `videos/es/es_12.mp4`. Played only where that file exists (inventory: `docs/CORE30_FINAL_VIDEO_ACTION_MAP.md`).
 - Video steps inside the Practice flow: no
 
 ## Learning goal / intro screen
@@ -9173,7 +9173,7 @@ Every learner sentence of this mission is a line in a scene.
 - Checkpoint: no
 - Phase: 3 — Everyday Life / חיי יום-יום 🏡
 - Source runtime file(s): `apps/web/src/features/bootcamp/core/homeFamily.ts` — one multilingual spec, built per language by `apps/web/src/features/bootcamp/author.ts`
-- Video reference: EN none · FR none · ES none
+- Video: found by convention, never written into mission content — EN `videos/en/en_13.mp4` · FR `videos/fr/fr_13.mp4` · ES `videos/es/es_13.mp4`. Played only where that file exists (inventory: `docs/CORE30_FINAL_VIDEO_ACTION_MAP.md`).
 - Video steps inside the Practice flow: no
 
 ## Learning goal / intro screen
@@ -9984,7 +9984,7 @@ Every learner sentence of this mission is a line in a scene.
 - Checkpoint: no
 - Phase: 3 — Everyday Life / חיי יום-יום 🏡
 - Source runtime file(s): `apps/web/src/features/bootcamp/day4.ts` · `apps/web/src/features/bootcamp/fr/day4.ts` · `apps/web/src/features/bootcamp/es/day4.ts`
-- Video reference: EN `/videos/En_day4.mp4` · FR `/videos/Fr_day4.mp4` · ES none
+- Video: found by convention, never written into mission content — EN `videos/en/en_14.mp4` · FR `videos/fr/fr_14.mp4` · ES `videos/es/es_14.mp4`. Played only where that file exists (inventory: `docs/CORE30_FINAL_VIDEO_ACTION_MAP.md`).
 - Video steps inside the Practice flow: no
 
 ## Learning goal / intro screen
@@ -10809,7 +10809,7 @@ Learner sentences taught beside the dialogue (not a line in any scene):
 - Checkpoint: no
 - Phase: 3 — Everyday Life / חיי יום-יום 🏡
 - Source runtime file(s): `apps/web/src/features/bootcamp/day13.ts` · `apps/web/src/features/bootcamp/fr/day13.ts` · `apps/web/src/features/bootcamp/es/day13.ts`
-- Video reference: EN none · FR none · ES none
+- Video: found by convention, never written into mission content — EN `videos/en/en_15.mp4` · FR `videos/fr/fr_15.mp4` · ES `videos/es/es_15.mp4`. Played only where that file exists (inventory: `docs/CORE30_FINAL_VIDEO_ACTION_MAP.md`).
 - Video steps inside the Practice flow: no
 
 ## Learning goal / intro screen
@@ -11632,7 +11632,7 @@ Every learner sentence of this mission is a line in a scene.
 - Checkpoint: no
 - Phase: 3 — Everyday Life / חיי יום-יום 🏡
 - Source runtime file(s): `apps/web/src/features/bootcamp/core/hobbies.ts` — one multilingual spec, built per language by `apps/web/src/features/bootcamp/author.ts`
-- Video reference: EN none · FR none · ES none
+- Video: found by convention, never written into mission content — EN `videos/en/en_16.mp4` · FR `videos/fr/fr_16.mp4` · ES `videos/es/es_16.mp4`. Played only where that file exists (inventory: `docs/CORE30_FINAL_VIDEO_ACTION_MAP.md`).
 - Video steps inside the Practice flow: no
 
 ## Learning goal / intro screen
@@ -12456,7 +12456,7 @@ Every learner sentence of this mission is a line in a scene.
 - Checkpoint: no
 - Phase: 3 — Everyday Life / חיי יום-יום 🏡
 - Source runtime file(s): `apps/web/src/features/bootcamp/day16.ts` · `apps/web/src/features/bootcamp/fr/day16.ts` · `apps/web/src/features/bootcamp/es/day16.ts`
-- Video reference: EN none · FR none · ES none
+- Video: found by convention, never written into mission content — EN `videos/en/en_17.mp4` · FR `videos/fr/fr_17.mp4` · ES `videos/es/es_17.mp4`. Played only where that file exists (inventory: `docs/CORE30_FINAL_VIDEO_ACTION_MAP.md`).
 - Video steps inside the Practice flow: no
 
 ## Learning goal / intro screen
@@ -13248,7 +13248,7 @@ Every learner sentence of this mission is a line in a scene.
 - Checkpoint: yes
 - Phase: 3 — Everyday Life / חיי יום-יום 🏡
 - Source runtime file(s): `apps/web/src/features/bootcamp/core/checkpoints.ts (EVERYDAY_DAY)` — one multilingual spec, built per language by `apps/web/src/features/bootcamp/author.ts`
-- Video reference: EN none · FR none · ES none
+- Video: found by convention, never written into mission content — EN `videos/en/en_18.mp4` · FR `videos/fr/fr_18.mp4` · ES `videos/es/es_18.mp4`. Played only where that file exists (inventory: `docs/CORE30_FINAL_VIDEO_ACTION_MAP.md`).
 - Video steps inside the Practice flow: no
 
 ## Learning goal / intro screen
@@ -14414,7 +14414,7 @@ Every learner sentence of this mission is a line in a scene.
 - Checkpoint: no
 - Phase: 4 — City & Conversation / עיר ושיחה 🏙️
 - Source runtime file(s): `apps/web/src/features/bootcamp/day18.ts` · `apps/web/src/features/bootcamp/fr/day18.ts` · `apps/web/src/features/bootcamp/es/day18.ts`
-- Video reference: EN none · FR none · ES none
+- Video: found by convention, never written into mission content — EN `videos/en/en_19.mp4` · FR `videos/fr/fr_19.mp4` · ES `videos/es/es_19.mp4`. Played only where that file exists (inventory: `docs/CORE30_FINAL_VIDEO_ACTION_MAP.md`).
 - Video steps inside the Practice flow: no
 
 ## Learning goal / intro screen
@@ -15327,7 +15327,7 @@ Learner sentences taught beside the dialogue (not a line in any scene):
 - Checkpoint: no
 - Phase: 4 — City & Conversation / עיר ושיחה 🏙️
 - Source runtime file(s): `apps/web/src/features/bootcamp/core/pastEvents.ts` — one multilingual spec, built per language by `apps/web/src/features/bootcamp/author.ts`
-- Video reference: EN none · FR none · ES none
+- Video: found by convention, never written into mission content — EN `videos/en/en_20.mp4` · FR `videos/fr/fr_20.mp4` · ES `videos/es/es_20.mp4`. Played only where that file exists (inventory: `docs/CORE30_FINAL_VIDEO_ACTION_MAP.md`).
 - Video steps inside the Practice flow: no
 
 ## Learning goal / intro screen
@@ -16154,7 +16154,7 @@ Learner sentences taught beside the dialogue (not a line in any scene):
 - Checkpoint: no
 - Phase: 4 — City & Conversation / עיר ושיחה 🏙️
 - Source runtime file(s): `apps/web/src/features/bootcamp/core/futurePlans.ts` — one multilingual spec, built per language by `apps/web/src/features/bootcamp/author.ts`
-- Video reference: EN none · FR none · ES none
+- Video: found by convention, never written into mission content — EN `videos/en/en_21.mp4` · FR `videos/fr/fr_21.mp4` · ES `videos/es/es_21.mp4`. Played only where that file exists (inventory: `docs/CORE30_FINAL_VIDEO_ACTION_MAP.md`).
 - Video steps inside the Practice flow: no
 
 ## Learning goal / intro screen
@@ -17010,7 +17010,7 @@ Every learner sentence of this mission is a line in a scene.
 - Checkpoint: no
 - Phase: 4 — City & Conversation / עיר ושיחה 🏙️
 - Source runtime file(s): `apps/web/src/features/bootcamp/core/fixingProblems.ts` — one multilingual spec, built per language by `apps/web/src/features/bootcamp/author.ts`
-- Video reference: EN none · FR none · ES none
+- Video: found by convention, never written into mission content — EN `videos/en/en_22.mp4` · FR `videos/fr/fr_22.mp4` · ES `videos/es/es_22.mp4`. Played only where that file exists (inventory: `docs/CORE30_FINAL_VIDEO_ACTION_MAP.md`).
 - Video steps inside the Practice flow: no
 
 ## Learning goal / intro screen
@@ -18045,7 +18045,7 @@ Every learner sentence of this mission is a line in a scene.
 - Checkpoint: no
 - Phase: 4 — City & Conversation / עיר ושיחה 🏙️
 - Source runtime file(s): `apps/web/src/features/bootcamp/core/opinions.ts` — one multilingual spec, built per language by `apps/web/src/features/bootcamp/author.ts`
-- Video reference: EN none · FR none · ES none
+- Video: found by convention, never written into mission content — EN `videos/en/en_23.mp4` · FR `videos/fr/fr_23.mp4` · ES `videos/es/es_23.mp4`. Played only where that file exists (inventory: `docs/CORE30_FINAL_VIDEO_ACTION_MAP.md`).
 - Video steps inside the Practice flow: no
 
 ## Learning goal / intro screen
@@ -18917,7 +18917,7 @@ Learner sentences taught beside the dialogue (not a line in any scene):
 - Checkpoint: yes
 - Phase: 4 — City & Conversation / עיר ושיחה 🏙️
 - Source runtime file(s): `apps/web/src/features/bootcamp/core/checkpoints.ts (CITY_CONVERSATION)` — one multilingual spec, built per language by `apps/web/src/features/bootcamp/author.ts`
-- Video reference: EN none · FR none · ES none
+- Video: found by convention, never written into mission content — EN `videos/en/en_24.mp4` · FR `videos/fr/fr_24.mp4` · ES `videos/es/es_24.mp4`. Played only where that file exists (inventory: `docs/CORE30_FINAL_VIDEO_ACTION_MAP.md`).
 - Video steps inside the Practice flow: no
 
 ## Learning goal / intro screen
@@ -20157,7 +20157,7 @@ Every learner sentence of this mission is a line in a scene.
 - Checkpoint: no
 - Phase: 5 — Mastery / שליטה 🎖️
 - Source runtime file(s): `apps/web/src/features/bootcamp/core/lostStolen.ts` — one multilingual spec, built per language by `apps/web/src/features/bootcamp/author.ts`
-- Video reference: EN none · FR none · ES none
+- Video: found by convention, never written into mission content — EN `videos/en/en_25.mp4` · FR `videos/fr/fr_25.mp4` · ES `videos/es/es_25.mp4`. Played only where that file exists (inventory: `docs/CORE30_FINAL_VIDEO_ACTION_MAP.md`).
 - Video steps inside the Practice flow: no
 
 ## Learning goal / intro screen
@@ -21036,7 +21036,7 @@ Learner sentences taught beside the dialogue (not a line in any scene):
 - Checkpoint: no
 - Phase: 5 — Mastery / שליטה 🎖️
 - Source runtime file(s): `apps/web/src/features/bootcamp/day25.ts` · `apps/web/src/features/bootcamp/fr/day25.ts` · `apps/web/src/features/bootcamp/es/day25.ts`
-- Video reference: EN none · FR none · ES none
+- Video: found by convention, never written into mission content — EN `videos/en/en_26.mp4` · FR `videos/fr/fr_26.mp4` · ES `videos/es/es_26.mp4`. Played only where that file exists (inventory: `docs/CORE30_FINAL_VIDEO_ACTION_MAP.md`).
 - Video steps inside the Practice flow: no
 
 ## Learning goal / intro screen
@@ -21850,7 +21850,7 @@ Every learner sentence of this mission is a line in a scene.
 - Checkpoint: no
 - Phase: 5 — Mastery / שליטה 🎖️
 - Source runtime file(s): `apps/web/src/features/bootcamp/core/emergency.ts` — one multilingual spec, built per language by `apps/web/src/features/bootcamp/author.ts`
-- Video reference: EN none · FR none · ES none
+- Video: found by convention, never written into mission content — EN `videos/en/en_27.mp4` · FR `videos/fr/fr_27.mp4` · ES `videos/es/es_27.mp4`. Played only where that file exists (inventory: `docs/CORE30_FINAL_VIDEO_ACTION_MAP.md`).
 - Video steps inside the Practice flow: no
 
 ## Learning goal / intro screen
@@ -22544,7 +22544,7 @@ Learner sentences taught beside the dialogue (not a line in any scene):
 - Checkpoint: no
 - Phase: 5 — Mastery / שליטה 🎖️
 - Source runtime file(s): `apps/web/src/features/bootcamp/core/checkpoints.ts (NO_SUBTITLES)` — one multilingual spec, built per language by `apps/web/src/features/bootcamp/author.ts`
-- Video reference: EN none · FR none · ES none
+- Video: found by convention, never written into mission content — EN `videos/en/en_28.mp4` · FR `videos/fr/fr_28.mp4` · ES `videos/es/es_28.mp4`. Played only where that file exists (inventory: `docs/CORE30_FINAL_VIDEO_ACTION_MAP.md`).
 - Video steps inside the Practice flow: no
 
 ## Learning goal / intro screen
@@ -23502,7 +23502,7 @@ Every learner sentence of this mission is a line in a scene.
 - Checkpoint: no
 - Phase: 5 — Mastery / שליטה 🎖️
 - Source runtime file(s): `apps/web/src/features/bootcamp/core/checkpoints.ts (DRESS_REHEARSAL)` — one multilingual spec, built per language by `apps/web/src/features/bootcamp/author.ts`
-- Video reference: EN none · FR none · ES none
+- Video: found by convention, never written into mission content — EN `videos/en/en_29.mp4` · FR `videos/fr/fr_29.mp4` · ES `videos/es/es_29.mp4`. Played only where that file exists (inventory: `docs/CORE30_FINAL_VIDEO_ACTION_MAP.md`).
 - Video steps inside the Practice flow: no
 
 ## Learning goal / intro screen
@@ -24497,7 +24497,7 @@ Every learner sentence of this mission is a line in a scene.
 - Checkpoint: yes
 - Phase: 5 — Mastery / שליטה 🎖️
 - Source runtime file(s): `apps/web/src/features/bootcamp/core/checkpoints.ts (COMPLETE_DAY)` — one multilingual spec, built per language by `apps/web/src/features/bootcamp/author.ts`
-- Video reference: EN none · FR none · ES none
+- Video: found by convention, never written into mission content — EN `videos/en/en_30.mp4` · FR `videos/fr/fr_30.mp4` · ES `videos/es/es_30.mp4`. Played only where that file exists (inventory: `docs/CORE30_FINAL_VIDEO_ACTION_MAP.md`).
 - Video steps inside the Practice flow: no
 
 ## Learning goal / intro screen

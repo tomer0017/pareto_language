@@ -1,10 +1,13 @@
 import { defineConfig } from 'vitest/config';
 import { fileURLToPath } from 'node:url';
+import { videoManifestPlugin } from './apps/web/videoManifest.js';
 
 const r = (p: string) => fileURLToPath(new URL(p, import.meta.url));
 
 export default defineConfig({
   base: '/pareto_language/',
+  // The same build-time video manifest the app gets (scans apps/web/public/videos/).
+  plugins: [videoManifestPlugin(r('./apps/web/public'))],
   resolve: {
     alias: {
       '@ready/content-schema': r('./packages/content-schema/src/index.ts'),

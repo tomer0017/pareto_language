@@ -66,11 +66,12 @@ export interface BootcampDialogue {
 
 /**
  * Optional intro/review video for a mission (Sprint: video-first). Lives in public/ and is
- * referenced by its public path (e.g. "/videos/En_day1.mp4"). Entirely optional — a mission
+ * found by convention — `videos/{language}/{language}_{mission number}.mp4`, see
+ * `features/videos/videoConvention.ts` — never written into mission content. Entirely optional — a mission
  * without a video plays exactly as before, and a missing/failed file degrades gracefully.
  */
 export interface BootcampVideo {
-  src: string;                     // public path, resolved against the app's BASE_URL at render
+  src: string;                     // the URL to play (the resolver returns it with the site base)
   title?: LocalizedText | string;
   language?: string;
   type?: string;
@@ -195,7 +196,7 @@ export type BootcampStep =
   | { kind: 'matchPairs'; label?: LocalizedText; pairs: MatchPair[] }
   | { kind: 'sentenceBuilder'; label?: LocalizedText; rounds: BuilderRound[] }
   | { kind: 'receipt'; text: LocalizedText }
-  | { kind: 'video'; mode: 'intro' | 'again' }   // plays day.introVideo (intro = before, again = after)
+  | { kind: 'video'; mode: 'intro' | 'again' }   // plays the mission's video if one exists, else is skipped (intro = before, again = after)
   | { kind: 'summary' };
 
 export interface BootcampDayContent {
@@ -204,5 +205,4 @@ export interface BootcampDayContent {
   items: BootcampItem[];
   dialogues: Record<string, BootcampDialogue>;
   steps: BootcampStep[];
-  introVideo?: BootcampVideo;      // optional — only missions with a shot video set this
 }

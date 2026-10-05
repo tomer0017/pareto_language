@@ -55,20 +55,10 @@ describe('French missions — content integrity (no English leaks)', () => {
     expect(report.covered).toBe(builtDays.length);
   });
 
-  it('French full-conversation videos map to Fr_day{n}.mp4 (fr locale); discovered via missionsFor(fr)', () => {
-    // Each video-carrying mission points at its own French file. Mission 1 mirrors English Mission 1
-    // (intro/again video steps); the others only surface the video in the hub / Videos experience.
-    for (const [day, src] of [[1, 'Fr_day1'], [2, 'Fr_day2'], [3, 'Fr_day3'], [4, 'Fr_day4'], [5, 'Fr_day5'], [8, 'Fr_day8'], [10, 'Fr_day10']] as const) {
-      const m = DAYS_FR[day]!;
-      expect(m.introVideo?.src).toBe(`/videos/${src}.mp4`);
-      expect(m.introVideo?.language).toBe('fr');
-    }
-    for (const day of [2, 3, 4, 5, 8, 10] as const) {
-      expect(DAYS_FR[day]!.steps.some((s) => s.kind === 'video')).toBe(false);
-    }
-    // Video is opt-in — a mission without one never fakes a video step.
+  it('French missions name no video file (videos are found by convention); only Mission 1 has video steps', () => {
     for (const d of builtDays) {
-      if (!DAYS_FR[d]!.introVideo) expect(DAYS_FR[d]!.steps.some((s) => s.kind === 'video')).toBe(false);
+      expect(JSON.stringify(DAYS_FR[d]!)).not.toMatch(/\.mp4|introVideo/);
+      expect(DAYS_FR[d]!.steps.some((s) => s.kind === 'video')).toBe(d === 1);
     }
   });
 });

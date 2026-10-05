@@ -88,12 +88,6 @@ export const DAY10: BootcampDayContent = {
   title: T('שדה תעופה וגבול', 'Airport & Border'),
   items: DAY10_ITEMS,
   dialogues: { 'border-control': SCENE_BORDER },
-  introVideo: {
-    src: '/videos/En_day10.mp4',
-    title: T('השיחה המלאה', 'Full conversation'),
-    language: 'en',
-    type: 'intro',
-  },
   steps: [
     { kind: 'talk', icon: '🛂', title: T('משימה 6: שדה תעופה וגבול', 'Mission 6: Airport & Border'),
       body: [
