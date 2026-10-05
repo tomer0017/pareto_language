@@ -16,7 +16,6 @@
  * number equalled its registry key, so `En_day6.mp4` is that document's Mission 06.
  */
 import { createHash } from 'node:crypto';
-import { execSync } from 'node:child_process';
 import { existsSync, readFileSync, readdirSync, statSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -275,10 +274,9 @@ const cues = ALL.flatMap((m) => m.by.en.flatMap((sc, k) => sc.filter((l) => l.cu
 
 /* ── Deliverable 2: the action map ───────────────────────────────────────────────────────────── */
 
-const head = execSync('git rev-parse --short HEAD', { cwd: ROOT }).toString().trim();
 const o: string[] = [];
 o.push('# Core 30 — Final Video Action Map', '');
-o.push(`_Generated from the runtime at commit \`${head}\` by \`scripts/export-core30-video-docs.ts\`. Companion file: \`CORE30_FINAL_DIALOGUES_EN_ES_FR_HE.md\` (the scripts to shoot from)._`, '');
+o.push('_Generated from the runtime mission content by `scripts/export-core30-video-docs.ts` (`npm run export:video-docs`). Companion file: `CORE30_FINAL_DIALOGUES_EN_ES_FR_HE.md` (the scripts to shoot from). The dialogue hashes in section I identify the exact dialogue this map describes._', '');
 o.push('**This is the canonical video action map.** Regenerate it with `npm run export:video-docs` (never edit by hand). The earlier map of 2026-10-04 is archived as `docs/archive/CORE_30_FINAL_VIDEO_ACTION_MAP_2026-10-04_superseded.md` and must not be used. No video file was created, edited, renamed, moved or deleted by this export.', '');
 o.push('**Basis of every verdict.** The existing videos were added in July 2026 and renamed in commit `752463f` (the 29-mission runtime). For all 15 files, the NPC lines in the mission source at the commit the video was added are identical to those at `752463f`, so the dialogue each video was made for is the 29-mission runtime, archived in `docs/archive/DIALOGUES_BY_MISSION_V1_29-mission-runtime.md`. Each verdict is an exact line-by-line comparison of that archived conversation with today\'s canonical conversation. **Nobody watched the videos**: a verdict says what the script was, not what is audible in the file.', '');
 o.push('Statuses: **KEEP** · **MOVE / RELABEL** (same dialogue, mission changed position) · **REPLACE** (a spoken line changed) · **NEW VIDEO** (none exists) · **CHECK MANUALLY** (history cannot prove it).', '');

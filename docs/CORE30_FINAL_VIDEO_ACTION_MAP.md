@@ -1,6 +1,6 @@
 # Core 30 — Final Video Action Map
 
-_Generated from the runtime at commit `dfdad8a` by `scripts/export-core30-video-docs.ts`. Companion file: `CORE30_FINAL_DIALOGUES_EN_ES_FR_HE.md` (the scripts to shoot from)._
+_Generated from the runtime mission content by `scripts/export-core30-video-docs.ts` (`npm run export:video-docs`). Companion file: `CORE30_FINAL_DIALOGUES_EN_ES_FR_HE.md` (the scripts to shoot from). The dialogue hashes in section I identify the exact dialogue this map describes._
 
 **This is the canonical video action map.** Regenerate it with `npm run export:video-docs` (never edit by hand). The earlier map of 2026-10-04 is archived as `docs/archive/CORE_30_FINAL_VIDEO_ACTION_MAP_2026-10-04_superseded.md` and must not be used. No video file was created, edited, renamed, moved or deleted by this export.
 
