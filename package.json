@@ -40,7 +40,8 @@
     "seed:content-packs": "tsx server/src/seed/cli.ts content-packs",
     "pipeline": "tsx content/pipeline/run.ts",
     "parity": "tsx scripts/parity.ts",
-    "export:dialogues": "tsx scripts/export-dialogues.ts"
+    "export:dialogues": "tsx scripts/export-dialogues.ts",
+    "export:video-docs": "tsx scripts/export-core30-video-docs.ts"
   },
   "devDependencies": {
     "@eslint/js": "^9.12.0",

@@ -831,7 +831,7 @@ _Reply-training drill:_ “Do you have a reservation?” · “Are you ready to 
 - **🧑 Them:** “Anything else?” · עוד משהו?
 - **🫵 You:** “That's all, thanks.” · זה הכל, תודה.
 - **🧑 Them:** “Coming right up!” · מגיע עוד רגע!
-- **🧑 Them:** “…Later… Is everything okay?” · …אחר כך… הכל בסדר?
+- **🧑 Them:** “Is everything okay?” · הכל בסדר?
 - **🫵 You:** “Yes, that was delicious! The bill, please.” · כן, היה טעים מאוד! החשבון, בבקשה.
 - **🧑 Them:** “So glad you enjoyed it. Here you are — have a lovely evening!” · שמח שנהניתם. בבקשה — ערב נעים!
 
@@ -999,7 +999,7 @@ _Reply-training drill:_ “It's in aisle three.” · “Over there, on the left
 - **🫵 You:** “Where is the milk?” · איפה החלב?
 - **🧑 Them:** “The milk is in aisle three, on the left.” · החלב במעבר שלוש, משמאל.
 - **🫵 You:** “Thank you!” · תודה!
-- **🧑 Them:** “…At the checkout… Hi! Is that everything?” · …בקופה… היי! זה הכל?
+- **🧑 Them:** “Hi! Is that everything?” · היי! זה הכל?
 - **🫵 You:** “Can you show me?” · אתה יכול להראות לי? (כלי — כשמילים לא מספיקות)
 - **🧑 Them:** “Of course — put it here, press the picture, done.” · בטח — שים כאן, לחץ על התמונה, גמרנו.
 - **🫵 You:** “Just this, thanks.” · רק את זה, תודה.
@@ -1095,7 +1095,7 @@ _Reply-training drill:_ “It's in aisle three.” · “Over there, on the left
 - **🫵 You:** “Where is the milk?” · איפה החלב?
 - **🧑 Them:** “The milk is in aisle three, on the left.” · החלב במעבר שלוש, משמאל.
 - **🫵 You:** “Thank you!” · תודה!
-- **🧑 Them:** “…At the checkout… Hi! Is that everything?” · …בקופה… היי! זה הכל?
+- **🧑 Them:** “Hi! Is that everything?” · היי! זה הכל?
 - **🫵 You:** “Just this, thanks.” · רק את זה, תודה.
 - **🧑 Them:** “Do you need a bag?” · צריך שקית?
 - **🫵 You:** “Could I get a bag?” · אפשר שקית?
@@ -1104,7 +1104,7 @@ _Reply-training drill:_ “It's in aisle three.” · “Over there, on the left
 #### Wrong / recovery branches
 - ⚠︎ less useful: 🫵 “Could I get a bag?” → 🧑 “Hi there! Can I help you find something?” · היי! לעזור לך למצוא משהו?
 - ⚠︎ less useful: 🫵 “Just this, thanks.” → 🧑 “The milk is in aisle three, on the left.” · החלב במעבר שלוש, משמאל.
-- ⚠︎ less useful: 🫵 “Where is the milk?” → 🧑 “…At the checkout… Hi! Is that everything?” · …בקופה… היי! זה הכל?
+- ⚠︎ less useful: 🫵 “Where is the milk?” → 🧑 “Hi! Is that everything?” · היי! זה הכל?
 - ⚠︎ less useful: 🫵 “Do you have bread?” → 🧑 “Do you need a bag?” · צריך שקית?
 
 ### Dialogue: `cold-dinner` — happy path
@@ -1114,7 +1114,7 @@ _Reply-training drill:_ “It's in aisle three.” · “Over there, on the left
 - **🫵 You:** “I'll have the chicken, without onions, please.” · אני אקח את העוף, בלי בצל, בבקשה.
 - **🧑 Them:** “Of course. Anything to drink?” · כמובן. משהו לשתות?
 - **🫵 You:** “A bottle of water, please.” · בקבוק מים, בבקשה.
-- **🧑 Them:** “…Later… Is everything okay?” · …אחר כך… הכל בסדר?
+- **🧑 Them:** “Is everything okay?” · הכל בסדר?
 - **🫵 You:** “Yes, that was delicious! The bill, please.” · כן, היה טעים מאוד! החשבון, בבקשה.
 - **🧑 Them:** “So glad you enjoyed it. Here you are — have a lovely evening!” · שמח שנהניתם. בבקשה — ערב נעים!
 
@@ -1122,7 +1122,7 @@ _Reply-training drill:_ “It's in aisle three.” · “Over there, on the left
 - ⚠︎ less useful: 🫵 “The bill, please.” → 🧑 “Good evening! Do you have a reservation?” · ערב טוב! יש לכם הזמנה?
 - ⚠︎ less useful: 🫵 “A bottle of water, please.” → 🧑 “Are you ready to order?” · מוכנים להזמין?
 - ⚠︎ less useful: 🫵 “A table for two, please.” → 🧑 “Of course. Anything to drink?” · כמובן. משהו לשתות?
-- ⚠︎ less useful: 🫵 “I'll have the chicken.” → 🧑 “…Later… Is everything okay?” · …אחר כך… הכל בסדר?
+- ⚠︎ less useful: 🫵 “I'll have the chicken.” → 🧑 “Is everything okay?” · הכל בסדר?
 
 ### Review status
 - 🤖 AI-drafted (English + Hebrew) — **pending human / native-Hebrew review**
@@ -1347,7 +1347,8 @@ _Reply-training drill:_ “I'm so sorry about that.” · “What's the problem?
 - **🫵 You:** “This isn't what I ordered.” · זה לא מה שהזמנתי.
 - **🧑 Them:** “Oh no, I'm so sorry! What did you order?” · אוי לא, אני מצטער מאוד! מה הזמנת?
 - **🫵 You:** “I ordered the pasta.” · הזמנתי את הפסטה.
-- **🧑 Them:** “Of course — I'll bring the right one right away. … Later … Here's your bill.” · כמובן — אביא את הנכון מיד. … אחר כך … הנה החשבון.
+- **🧑 Them:** “Of course — I'll bring the right one right away.” · כמובן — אביא את הנכון מיד.
+- **🧑 Them:** “Here's your bill.” · הנה החשבון.
 - **🫵 You:** “I think there's a mistake.” · אני חושב שיש טעות.
 - **🧑 Them:** “Let me check the bill. What's the problem?” · תן לי לבדוק את החשבון. מה הבעיה?
 - **🫵 You:** “I was charged twice.” · חייבו אותי פעמיים.
@@ -1914,7 +1915,7 @@ _Reply-training drill:_ “What's wrong?” · “Are you hurt?” · “Where a
 - ⚠︎ less useful: 🫵 “Can you fix it?” → 🧑 “Of course — I'll bring the right one right away.” · כמובן — אביא את הנכון מיד.
 
 ### Dialogue: `dr-pay` — happy path
-- **🧑 Them:** “…Later… Is everything okay?” · …אחר כך… הכל בסדר?
+- **🧑 Them:** “Is everything okay?” · הכל בסדר?
 - **🫵 You:** “Yes, that was delicious! The bill, please.” · כן, היה טעים מאוד! החשבון, בבקשה.
 - **🧑 Them:** “Here's your bill. That's twenty euros. Cash or card?” · הנה החשבון. זה עשרים יורו. מזומן או כרטיס?
 - **🫵 You:** “By card, please.” · בכרטיס, בבקשה.
@@ -1923,7 +1924,7 @@ _Reply-training drill:_ “What's wrong?” · “Are you hurt?” · “Where a
 - **🧑 Them:** “Here you go. Have a lovely evening!” · בבקשה. ערב נעים!
 
 #### Wrong / recovery branches
-- ⚠︎ less useful: 🫵 “A bottle of water, please.” → 🧑 “…Later… Is everything okay?” · …אחר כך… הכל בסדר?
+- ⚠︎ less useful: 🫵 “A bottle of water, please.” → 🧑 “Is everything okay?” · הכל בסדר?
 - ⚠︎ less useful: 🫵 “How much is it?” → 🧑 “Here's your bill. That's twenty euros. Cash or card?” · הנה החשבון. זה עשרים יורו. מזומן או כרטיס?
 - ⚠︎ less useful: 🫵 “Keep the change.” → 🧑 “Insert your card here… all done. Would you like the receipt?” · הכנס את הכרטיס כאן… הכל מוכן. רוצה קבלה?
 
@@ -2024,7 +2025,7 @@ _Reply-training drill:_ “What's wrong?” · “Are you hurt?” · “Where a
 - **🫵 You:** “The chicken. No onions, please.” · את העוף. בלי בצל, בבקשה.
 - **🧑 Them:** “Of course — I'll bring the right one right away.” · כמובן — אביא את הנכון מיד.
 - **🫵 You:** “No problem, thank you.” · אין בעיה, תודה.
-- **🧑 Them:** “…Later… Is everything okay?” · …אחר כך… הכל בסדר?
+- **🧑 Them:** “Is everything okay?” · הכל בסדר?
 - **🫵 You:** “Yes, that was delicious! The bill, please.” · כן, היה טעים מאוד! החשבון, בבקשה.
 - **🧑 Them:** “So glad you enjoyed it. Here you are. Thank you!” · שמח שנהניתם. בבקשה. תודה!
 
@@ -2034,7 +2035,7 @@ _Reply-training drill:_ “What's wrong?” · “Are you hurt?” · “Where a
 - ⚠︎ less useful: 🫵 “That was delicious!” → 🧑 “Here's your chicken — with onions!” · הנה העוף שלך — עם בצל!
 - ⚠︎ less useful: 🫵 “I ordered the pasta.” → 🧑 “Oh no, I'm so sorry! What did you order?” · אוי לא, אני מצטער מאוד! מה הזמנת?
 - ⚠︎ less useful: 🫵 “I was charged twice.” → 🧑 “Of course — I'll bring the right one right away.” · כמובן — אביא את הנכון מיד.
-- ⚠︎ less useful: 🫵 “A bottle of water, please.” → 🧑 “…Later… Is everything okay?” · …אחר כך… הכל בסדר?
+- ⚠︎ less useful: 🫵 “A bottle of water, please.” → 🧑 “Is everything okay?” · הכל בסדר?
 
 ### Dialogue: `fin-chat` — happy path
 - **🧑 Them:** “Hi! I'm from here. And you?” · היי! אני מכאן. ואתה?

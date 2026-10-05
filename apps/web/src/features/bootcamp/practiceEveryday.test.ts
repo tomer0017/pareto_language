@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { BOOTCAMP_PLAN } from './plan.js';
 import { fillFrame, isHelpToolId, validatePracticeStep } from './practiceEngines.js';
+import { beforeCueFreeze } from './cueFreeze.js';
 import { MISSIONS_BY_LANG } from './registry.js';
 import { RETIRED_SENTENCES } from './retired.js';
 import { sentenceCatalog } from '../core/phraseGroups.js';
@@ -70,7 +71,9 @@ const M01_10 = { en: '1fbc79cf', fr: 'e3e53475', es: 'a9f1d680' };
 const FR_M14_WITHOUT_PRIME = 'be5602cb';
 
 describe('scope: only the Practice of Missions 11–18 changed', () => {
-  const slice = (lang: Lang, a: number, b: number): BootcampDayContent[] => BOOTCAMP_PLAN.slice(a, b).map((m) => MISSIONS_BY_LANG[lang]![m.day]!);
+  // Scene transitions became non-spoken cues after these fingerprints were taken; `beforeCueFreeze`
+  // puts the labels back, so the fingerprints still prove nothing else moved (see cueFreeze.ts).
+  const slice = (lang: Lang, a: number, b: number): BootcampDayContent[] => BOOTCAMP_PLAN.slice(a, b).map((m) => beforeCueFreeze(MISSIONS_BY_LANG[lang]![m.day]!, lang));
   const print = (f: (lang: Lang) => unknown): Record<Lang, string> => ({ en: fnv(JSON.stringify(f('en'))), fr: fnv(JSON.stringify(f('fr'))), es: fnv(JSON.stringify(f('es'))) });
 
   it('Missions 01–10 are unchanged by this pass (their own fingerprint, incl. the later retirement of two hotel sentences, lives in practiceArrival.test.ts)', () => {
@@ -80,7 +83,7 @@ describe('scope: only the Practice of Missions 11–18 changed', () => {
     expect(print((l) => slice(l, 10, 17).map((d) => d.dialogues))).toEqual({ en: '66104490', fr: 'c4e783b1', es: 'fccb4e58' });
   });
   it('the approved practice is otherwise exactly as approved (after the final cleanup)', () => {
-    const d = (l: Lang, n: number): BootcampDayContent => MISSIONS_BY_LANG[l]![BOOTCAMP_PLAN[n - 1]!.day]!;
+    const d = (l: Lang, n: number): BootcampDayContent => beforeCueFreeze(MISSIONS_BY_LANG[l]![BOOTCAMP_PLAN[n - 1]!.day]!, l);
     // Missions 11, 12, 13, 16 and 18, whole — sentences, dialogues and steps.
     expect(print((l) => [11, 12, 13, 16, 18].map((n) => d(l, n)))).toEqual({ en: 'fefb99b2', fr: 'efbedefa', es: '14e713f6' });
     // Mission 14 apart from one distractor in Restaurant Rush, 15 apart from the match tiles, 17 apart from its intro card.

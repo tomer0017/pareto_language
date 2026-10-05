@@ -40,6 +40,9 @@ export interface NpcLine {
   t: L4;
   /** A scene transition in the app language ("Later…"): shown, never spoken. */
   cue?: Copy;
+  /** A second beat of the same speaker after a transition ("…Later… Here's your bill."): its own
+   *  line, introduced by its cue. Node id = this line's id + "b", so no other id moves. */
+  after?: { cue: Copy; t: L4 };
   fast?: boolean;
   slow?: boolean;
 }
@@ -272,7 +275,13 @@ function buildDialogue(scene: SceneSpec, lang: MissionLang): BootcampDialogue {
     const next = ids[i + 1];
     if (line.who === 'npc') {
       const pace = { ...(line.cue ? { cue: T(line.cue) } : {}), ...(line.fast ? { fast: true } : {}), ...(line.slow ? { slow: true } : {}) };
-      nodes.push(next ? { id, who: 'npc', next, ...pace, ...spoken(line.t, lang) } : { id, who: 'npc', end: true, ...pace, ...spoken(line.t, lang) });
+      const to = next ? { next } : { end: true };
+      if (line.after) {
+        nodes.push({ id, who: 'npc', next: `${id}b`, ...pace, ...spoken(line.t, lang) });
+        nodes.push({ id: `${id}b`, who: 'npc', ...to, cue: T(line.after.cue), ...spoken(line.after.t, lang) });
+        return;
+      }
+      nodes.push({ id, who: 'npc', ...to, ...pace, ...spoken(line.t, lang) });
       return;
     }
     if (!next) throw new Error(`[author] scene "${scene.id}" must end on an NPC line`);
@@ -286,7 +295,7 @@ function buildDialogue(scene: SceneSpec, lang: MissionLang): BootcampDialogue {
       if (!asked || asked.who !== 'npc') throw new Error(`[author] scene "${scene.id}": a turn with wrong options must follow an NPC line`);
       const askAgain = `m${i + 1}`;
       const misses = line.wrong.map((it) => choice(it.t, it.id, askAgain, false));
-      const reask: DialogueNodeB = { id: askAgain, who: 'npc', slow: true, next: id, ...spoken(asked.t, lang) };
+      const reask: DialogueNodeB = { id: askAgain, who: 'npc', slow: true, next: id, ...spoken(asked.after?.t ?? asked.t, lang) };
       if (!line.rec) {
         nodes.push({ id, who: 'you', en: '', he: '', choices: [...direct, ...misses] }, reask);
         return;

@@ -63,7 +63,7 @@ const SCENE: BootcampDialogue = {
       { en: 'C’est tout, merci.', tr: TR("That's all, thanks.", 'זה הכל, תודה.'), he: 'זה הכל, תודה.', itemId: 'fr.phrase.recovery.thank-you', correct: true, next: 'n5' },
     ] },
     { id: 'n5', who: 'npc', next: 'n5b', en: 'Ça arrive tout de suite !', tr: TR('Coming right up!', 'מגיע עוד רגע!'), he: 'מגיע עוד רגע!' },
-    { id: 'n5b', who: 'npc', next: 'c5', en: '…Plus tard… Tout va bien ?', tr: TR('…Later… Is everything okay?', '…אחר כך… הכל בסדר?'), he: '…אחר כך… הכל בסדר?' },
+    { id: 'n5b', who: 'npc', next: 'c5', cue: T('מאוחר יותר…', 'Later…'), en: 'Tout va bien ?', tr: TR('Is everything okay?', 'הכל בסדר?'), he: 'הכל בסדר?' },
     { id: 'c5', who: 'you', en: '', he: '', choices: [
       { en: 'Oui, c’était délicieux ! L’addition, s’il vous plaît.', tr: TR('Yes, that was delicious! The bill, please.', 'כן, היה טעים מאוד! החשבון, בבקשה.'), he: 'כן, היה טעים מאוד! החשבון, בבקשה.', itemId: 'fr.phrase.rest.the-bill', correct: true, next: 'n6' },
     ] },

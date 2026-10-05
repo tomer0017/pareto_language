@@ -10495,8 +10495,8 @@ No meaning quiz in this mission.
 ### M14-Q24 — quick-reply (step 14, round 5 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
 
 - Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
-- Audio played: EN "…Later… Is everything okay?" · FR "…Plus tard… Tout va bien ?" · ES "…Más tarde… ¿Va todo bien?"
-- Meaning of the audio (HE): "…אחר כך… הכל בסדר?"
+- Audio played: EN "Is everything okay?" · FR "Tout va bien ?" · ES "¿Va todo bien?"
+- Meaning of the audio (HE): "הכל בסדר?"
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
   1. EN "Yes, that was delicious! The bill, please." · FR "Oui, c’était délicieux ! L’addition, s’il vous plaît." · ES "¡Sí, estaba delicioso! La cuenta, por favor." · (HE gloss "החשבון, בבקשה.") — `phrase.rest.the-bill` — ✅ accepted
@@ -10595,10 +10595,10 @@ No meaning quiz in this mission.
   - ES: ¡Enseguida se lo traigo!
   - HE: מגיע עוד רגע!
 - **n5b** · NPC · normal (TTS rate 0.95) → c5
-  - EN: …Later… Is everything okay?
-  - FR: …Plus tard… Tout va bien ?
-  - ES: …Más tarde… ¿Va todo bien?
-  - HE: …אחר כך… הכל בסדר?
+  - EN: Is everything okay?
+  - FR: Tout va bien ?
+  - ES: ¿Va todo bien?
+  - HE: הכל בסדר?
 - **c5** · LEARNER choice screen
   - choice 1 — ✅ accepted → n6 — `phrase.rest.the-bill`
     - EN: Yes, that was delicious! The bill, please.
@@ -10633,8 +10633,8 @@ No meaning quiz in this mission.
   - FR: C’est tout, merci. · ES: Eso es todo, gracias. · HE: זה הכל, תודה.
 - **NPC:** Coming right up!
   - FR: Ça arrive tout de suite ! · ES: ¡Enseguida se lo traigo! · HE: מגיע עוד רגע!
-- **NPC:** …Later… Is everything okay?
-  - FR: …Plus tard… Tout va bien ? · ES: …Más tarde… ¿Va todo bien? · HE: …אחר כך… הכל בסדר?
+- **NPC:** Is everything okay?
+  - FR: Tout va bien ? · ES: ¿Va todo bien? · HE: הכל בסדר?
 - **You:** Yes, that was delicious! The bill, please.
   - FR: Oui, c’était délicieux ! L’addition, s’il vous plaît. · ES: ¡Sí, estaba delicioso! La cuenta, por favor. · HE: כן, היה טעים מאוד! החשבון, בבקשה.
 - **NPC:** So glad you enjoyed it. Here you are — have a lovely evening!
@@ -10705,8 +10705,8 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 ### M14-Q19 — dialogue-choice (step 11, scene "sit-down-meal" · node c5)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio played: EN "…Later… Is everything okay?" · FR "…Plus tard… Tout va bien ?" · ES "…Más tarde… ¿Va todo bien?"
-- Meaning of the audio (HE): "…אחר כך… הכל בסדר?"
+- Audio played: EN "Is everything okay?" · FR "Tout va bien ?" · ES "¿Va todo bien?"
+- Meaning of the audio (HE): "הכל בסדר?"
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
   1. EN "Yes, that was delicious! The bill, please." · FR "Oui, c’était délicieux ! L’addition, s’il vous plaît." · ES "¡Sí, estaba delicioso! La cuenta, por favor." · (HE gloss "כן, היה טעים מאוד! החשבון, בבקשה.") — `phrase.rest.the-bill` — ✅ accepted → n6
@@ -12901,8 +12901,8 @@ No meaning quiz in this mission.
 ### M17-Q25 — quick-reply (step 14, round 3 of 4 · SPEED CHALLENGE (spoken at rate 1.12))
 
 - Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
-- Audio played: EN "…At the checkout… Hi! Is that everything?" · FR "…À la caisse… Bonjour ! Ce sera tout ?" · ES "…En la caja… ¡Hola! ¿Eso es todo?"
-- Meaning of the audio (HE): "…בקופה… היי! זה הכל?"
+- Audio played: EN "Hi! Is that everything?" · FR "Bonjour ! Ce sera tout ?" · ES "¡Hola! ¿Eso es todo?"
+- Meaning of the audio (HE): "היי! זה הכל?"
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
   1. EN "Just this, thanks." · FR "Juste ça, merci." · ES "Solo esto, gracias." · (HE gloss "רק את זה, תודה.") — `phrase.super.just-this` — ✅ accepted
@@ -12983,10 +12983,10 @@ No meaning quiz in this mission.
     - ES: ¡Gracias!
     - HE: תודה!
 - **n3** · NPC · normal (TTS rate 0.95) → c3
-  - EN: …At the checkout… Hi! Is that everything?
-  - FR: …À la caisse… Bonjour ! Ce sera tout ?
-  - ES: …En la caja… ¡Hola! ¿Eso es todo?
-  - HE: …בקופה… היי! זה הכל?
+  - EN: Hi! Is that everything?
+  - FR: Bonjour ! Ce sera tout ?
+  - ES: ¡Hola! ¿Eso es todo?
+  - HE: היי! זה הכל?
 - **c3** · LEARNER choice screen
   - choice 1 — 🛟 accepted — conversation-help tool → r3 — `phrase.recovery.show-me`
     - EN: Can you show me?
@@ -13041,8 +13041,8 @@ No meaning quiz in this mission.
   - FR: Le lait est dans l’allée trois, sur la gauche. · ES: La leche está en el pasillo tres, a la izquierda. · HE: החלב במעבר שלוש, משמאל.
 - **You:** Thank you!
   - FR: Merci ! · ES: ¡Gracias! · HE: תודה!
-- **NPC:** …At the checkout… Hi! Is that everything?
-  - FR: …À la caisse… Bonjour ! Ce sera tout ? · ES: …En la caja… ¡Hola! ¿Eso es todo? · HE: …בקופה… היי! זה הכל?
+- **NPC:** Hi! Is that everything?
+  - FR: Bonjour ! Ce sera tout ? · ES: ¡Hola! ¿Eso es todo? · HE: היי! זה הכל?
 - **You:** Just this, thanks.
   - FR: Juste ça, merci. · ES: Solo esto, gracias. · HE: רק את זה, תודה.
 - **NPC:** Do you need a bag?
@@ -13105,8 +13105,8 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 ### M17-Q20 — dialogue-choice (step 11, scene "supermarket" · node c3)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio played: EN "…At the checkout… Hi! Is that everything?" · FR "…À la caisse… Bonjour ! Ce sera tout ?" · ES "…En la caja… ¡Hola! ¿Eso es todo?"
-- Meaning of the audio (HE): "…בקופה… היי! זה הכל?"
+- Audio played: EN "Hi! Is that everything?" · FR "Bonjour ! Ce sera tout ?" · ES "¡Hola! ¿Eso es todo?"
+- Meaning of the audio (HE): "היי! זה הכל?"
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
   1. EN "Can you show me?" · FR "Vous pouvez me montrer ?" · ES "¿Me lo puede mostrar?" · (HE gloss "אתה יכול להראות לי? (כלי — כשמילים לא מספיקות)") — `phrase.recovery.show-me` — ✅ accepted → r3
@@ -13144,7 +13144,7 @@ Toolkit phrases bundled into this mission's sentence list: `phrase.recovery.repe
 Where a conversation-help tool can be selected, and what happens:
 
 - Scene `supermarket`, c2 — `phrase.recovery.repeat` "Can you repeat that?" ("אפשר לחזור על זה?") — after NPC "The milk is in aisle three, on the left." → r2: NPC "Aisle — three — on the left." (slow) → r2 → c2b → rejoins the happy path at n3. Counts as success (recorded as "pass"); no feedback card — the dialogue simply continues.
-- Scene `supermarket`, c3 — `phrase.recovery.show-me` "Can you show me?" ("אתה יכול להראות לי? (כלי — כשמילים לא מספיקות)") — after NPC "…At the checkout… Hi! Is that everything?" → r3: NPC "Of course — put it here, press the picture, done." (slow) → r3 → c3b → rejoins the happy path at n4. Counts as success (recorded as "pass"); no feedback card — the dialogue simply continues.
+- Scene `supermarket`, c3 — `phrase.recovery.show-me` "Can you show me?" ("אתה יכול להראות לי? (כלי — כשמילים לא מספיקות)") — after NPC "Hi! Is that everything?" → r3: NPC "Of course — put it here, press the picture, done." (slow) → r3 → c3b → rejoins the happy path at n4. Counts as success (recorded as "pass"); no feedback card — the dialogue simply continues.
 
 ## Wrong answer branches
 
@@ -13230,7 +13230,7 @@ Every learner sentence of this mission is a line in a scene.
 ### AUTO-FLAG — requires human review (8)
 
 - AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "supermarket" n1 — “Hi there! Can I help you find something?”
-- AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "supermarket" n3 — “…At the checkout… Hi! Is that everything?”
+- AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "supermarket" n3 — “Hi! Is that everything?”
 - AUTO-FLAG — Practice item wording not in this mission's dialogue: `reply.super.aisle-three` “It's in aisle three.” (drilled as an expected reply / distractor, but no NPC line here says it).
 - AUTO-FLAG — Practice item wording not in this mission's dialogue: `reply.super.over-there` “Over there, on the left.” (drilled as an expected reply / distractor, but no NPC line here says it).
 - AUTO-FLAG — Practice item wording not in this mission's dialogue: `reply.super.sold-out` “Sorry, we're sold out.” (drilled as an expected reply / distractor, but no NPC line here says it).
@@ -13867,10 +13867,10 @@ None in this mission.
   - ES: Pasillo — tres — a la izquierda.
   - HE: מעבר — שלוש — משמאל.
 - **n5** · NPC · normal (TTS rate 0.95) → c6
-  - EN: …At the checkout… Hi! Is that everything?
-  - FR: …À la caisse… Bonjour ! Ce sera tout ?
-  - ES: …En la caja… ¡Hola! ¿Eso es todo?
-  - HE: …בקופה… היי! זה הכל?
+  - EN: Hi! Is that everything?
+  - FR: Bonjour ! Ce sera tout ?
+  - ES: ¡Hola! ¿Eso es todo?
+  - HE: היי! זה הכל?
 - **c6** · LEARNER choice screen
   - choice 1 — ✅ accepted → n7 — `phrase.super.just-this`
     - EN: Just this, thanks.
@@ -13883,10 +13883,10 @@ None in this mission.
     - ES: ¿Dónde está la leche?
     - HE: איפה החלב?
 - **m6** · NPC · slow (TTS rate 0.75) · off the happy path → c6
-  - EN: …At the checkout… Hi! Is that everything?
-  - FR: …À la caisse… Bonjour ! Ce sera tout ?
-  - ES: …En la caja… ¡Hola! ¿Eso es todo?
-  - HE: …בקופה… היי! זה הכל?
+  - EN: Hi! Is that everything?
+  - FR: Bonjour ! Ce sera tout ?
+  - ES: ¡Hola! ¿Eso es todo?
+  - HE: היי! זה הכל?
 - **n7** · NPC · normal (TTS rate 0.95) → c8
   - EN: Do you need a bag?
   - FR: Vous avez besoin d’un sac ?
@@ -13924,8 +13924,8 @@ None in this mission.
   - FR: Le lait est dans l’allée trois, sur la gauche. · ES: La leche está en el pasillo tres, a la izquierda. · HE: החלב במעבר שלוש, משמאל.
 - **You:** Thank you!
   - FR: Merci ! · ES: ¡Gracias! · HE: תודה!
-- **NPC:** …At the checkout… Hi! Is that everything?
-  - FR: …À la caisse… Bonjour ! Ce sera tout ? · ES: …En la caja… ¡Hola! ¿Eso es todo? · HE: …בקופה… היי! זה הכל?
+- **NPC:** Hi! Is that everything?
+  - FR: Bonjour ! Ce sera tout ? · ES: ¡Hola! ¿Eso es todo? · HE: היי! זה הכל?
 - **You:** Just this, thanks.
   - FR: Juste ça, merci. · ES: Solo esto, gracias. · HE: רק את זה, תודה.
 - **NPC:** Do you need a bag?
@@ -14001,10 +14001,10 @@ None in this mission.
   - ES: Claro. ¿Algo de beber?
   - HE: כמובן. משהו לשתות?
 - **n7** · NPC · normal (TTS rate 0.95) → c8
-  - EN: …Later… Is everything okay?
-  - FR: …Plus tard… Tout va bien ?
-  - ES: …Más tarde… ¿Va todo bien?
-  - HE: …אחר כך… הכל בסדר?
+  - EN: Is everything okay?
+  - FR: Tout va bien ?
+  - ES: ¿Va todo bien?
+  - HE: הכל בסדר?
 - **c8** · LEARNER choice screen
   - choice 1 — ✅ accepted → n9 — `phrase.rest.the-bill`
     - EN: Yes, that was delicious! The bill, please.
@@ -14017,10 +14017,10 @@ None in this mission.
     - ES: Voy a tomar el pollo.
     - HE: אני אקח את העוף.
 - **m8** · NPC · slow (TTS rate 0.75) · off the happy path → c8
-  - EN: …Later… Is everything okay?
-  - FR: …Plus tard… Tout va bien ?
-  - ES: …Más tarde… ¿Va todo bien?
-  - HE: …אחר כך… הכל בסדר?
+  - EN: Is everything okay?
+  - FR: Tout va bien ?
+  - ES: ¿Va todo bien?
+  - HE: הכל בסדר?
 - **n9** · NPC · normal (TTS rate 0.95) · END of scene
   - EN: So glad you enjoyed it. Here you are — have a lovely evening!
   - FR: Ravi que ça vous ait plu. Voici — passez une bonne soirée !
@@ -14041,8 +14041,8 @@ None in this mission.
   - FR: Bien sûr. Quelque chose à boire ? · ES: Claro. ¿Algo de beber? · HE: כמובן. משהו לשתות?
 - **You:** A bottle of water, please.
   - FR: Une bouteille d’eau, s’il vous plaît. · ES: Una botella de agua, por favor. · HE: בקבוק מים, בבקשה.
-- **NPC:** …Later… Is everything okay?
-  - FR: …Plus tard… Tout va bien ? · ES: …Más tarde… ¿Va todo bien? · HE: …אחר כך… הכל בסדר?
+- **NPC:** Is everything okay?
+  - FR: Tout va bien ? · ES: ¿Va todo bien? · HE: הכל בסדר?
 - **You:** Yes, that was delicious! The bill, please.
   - FR: Oui, c’était délicieux ! L’addition, s’il vous plaît. · ES: ¡Sí, estaba delicioso! La cuenta, por favor. · HE: כן, היה טעים מאוד! החשבון, בבקשה.
 - **NPC:** So glad you enjoyed it. Here you are — have a lovely evening!
@@ -14166,8 +14166,8 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 ### M18-Q10 — dialogue-choice (step 6, scene "cold-shop" · node c6)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio played: EN "…At the checkout… Hi! Is that everything?" · FR "…À la caisse… Bonjour ! Ce sera tout ?" · ES "…En la caja… ¡Hola! ¿Eso es todo?"
-- Meaning of the audio (HE): "…בקופה… היי! זה הכל?"
+- Audio played: EN "Hi! Is that everything?" · FR "Bonjour ! Ce sera tout ?" · ES "¡Hola! ¿Eso es todo?"
+- Meaning of the audio (HE): "היי! זה הכל?"
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
   1. EN "Just this, thanks." · FR "Juste ça, merci." · ES "Solo esto, gracias." · (HE gloss "רק את זה, תודה.") — `phrase.super.just-this` — ✅ accepted → n7
@@ -14226,8 +14226,8 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 ### M18-Q15 — dialogue-choice (step 8, scene "cold-dinner" · node c8)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio played: EN "…Later… Is everything okay?" · FR "…Plus tard… Tout va bien ?" · ES "…Más tarde… ¿Va todo bien?"
-- Meaning of the audio (HE): "…אחר כך… הכל בסדר?"
+- Audio played: EN "Is everything okay?" · FR "Tout va bien ?" · ES "¿Va todo bien?"
+- Meaning of the audio (HE): "הכל בסדר?"
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
   1. EN "Yes, that was delicious! The bill, please." · FR "Oui, c’était délicieux ! L’addition, s’il vous plaît." · ES "¡Sí, estaba delicioso! La cuenta, por favor." · (HE gloss "כן, היה טעים מאוד! החשבון, בבקשה.") — `phrase.rest.the-bill` — ✅ accepted → n9
@@ -14294,10 +14294,10 @@ Where a conversation-help tool can be selected, and what happens:
   - Feedback card: ❌ header, what you heard, your answer, what you should answer ("Thank you!"), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
   - NPC response (m4): "The milk is in aisle three, on the left." — HE "החלב במעבר שלוש, משמאל."
   - Then: m4 → rejoins the happy path at c4. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
-- Scene `cold-shop`, c6 — after NPC "…At the checkout… Hi! Is that everything?"
+- Scene `cold-shop`, c6 — after NPC "Hi! Is that everything?"
   - Wrong choice: "Where is the milk?" ("איפה החלב?") — `phrase.super.where-is`
   - Feedback card: ❌ header, what you heard, your answer, what you should answer ("Just this, thanks."), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
-  - NPC response (m6): "…At the checkout… Hi! Is that everything?" — HE "…בקופה… היי! זה הכל?"
+  - NPC response (m6): "Hi! Is that everything?" — HE "היי! זה הכל?"
   - Then: m6 → rejoins the happy path at c6. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
 - Scene `cold-shop`, c8 — after NPC "Do you need a bag?"
   - Wrong choice: "Do you have bread?" ("יש לכם לחם?") — `phrase.super.do-you-have`
@@ -14319,10 +14319,10 @@ Where a conversation-help tool can be selected, and what happens:
   - Feedback card: ❌ header, what you heard, your answer, what you should answer ("A bottle of water, please."), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
   - NPC response (m6): "Of course. Anything to drink?" — HE "כמובן. משהו לשתות?"
   - Then: m6 → rejoins the happy path at c6. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
-- Scene `cold-dinner`, c8 — after NPC "…Later… Is everything okay?"
+- Scene `cold-dinner`, c8 — after NPC "Is everything okay?"
   - Wrong choice: "I'll have the chicken." ("אני אקח את העוף.") — `phrase.rest.ill-have-chicken`
   - Feedback card: ❌ header, what you heard, your answer, what you should answer ("Yes, that was delicious! The bill, please."), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
-  - NPC response (m8): "…Later… Is everything okay?" — HE "…אחר כך… הכל בסדר?"
+  - NPC response (m8): "Is everything okay?" — HE "הכל בסדר?"
   - Then: m8 → rejoins the happy path at c8. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
 
 ## Sentence review
@@ -14399,10 +14399,10 @@ Every learner sentence of this mission is a line in a scene.
 - AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "cold-plans" n3 — “I surf a lot. Do you like surfing?”
 - AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "cold-plans" n7 — “Perfect. And what are you doing tonight?”
 - AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "cold-shop" n1 — “Hi there! Can I help you find something?”
-- AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "cold-shop" n5 — “…At the checkout… Hi! Is that everything?”
+- AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "cold-shop" n5 — “Hi! Is that everything?”
 - AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "cold-shop" n7 — “Do you need a bag?”
 - AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "cold-dinner" n1 — “Good evening! Do you have a reservation?”
-- AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "cold-dinner" n7 — “…Later… Is everything okay?”
+- AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "cold-dinner" n7 — “Is everything okay?”
 
 ---
 
@@ -17644,11 +17644,16 @@ No meaning quiz in this mission.
     - FR: J’ai commandé les pâtes.
     - ES: Pedí la pasta.
     - HE: הזמנתי את הפסטה.
-- **n5** · NPC · normal (TTS rate 0.95) → c6
-  - EN: Of course — I'll bring the right one right away. … Later … Here's your bill.
-  - FR: Bien sûr — je vous apporte le bon tout de suite. … Plus tard … Voici l’addition.
-  - ES: Claro — le traigo el correcto enseguida. … Más tarde … Aquí tiene la cuenta.
-  - HE: כמובן — אביא את הנכון מיד. … אחר כך … הנה החשבון.
+- **n5** · NPC · normal (TTS rate 0.95) → n5b
+  - EN: Of course — I'll bring the right one right away.
+  - FR: Bien sûr — je vous apporte le bon tout de suite.
+  - ES: Claro — le traigo el correcto enseguida.
+  - HE: כמובן — אביא את הנכון מיד.
+- **n5b** · NPC · normal (TTS rate 0.95) → c6
+  - EN: Here's your bill.
+  - FR: Voici l’addition.
+  - ES: Aquí tiene la cuenta.
+  - HE: הנה החשבון.
 - **c6** · LEARNER choice screen
   - choice 1 — ✅ accepted → n7 — `phrase.fix.theres-mistake`
     - EN: I think there's a mistake.
@@ -17693,8 +17698,10 @@ No meaning quiz in this mission.
   - FR: Oh non, je suis vraiment désolé ! Qu’avez-vous commandé ? · ES: ¡Ay, lo siento muchísimo! ¿Qué pidió? · HE: אוי לא, אני מצטער מאוד! מה הזמנת?
 - **You:** I ordered the pasta.
   - FR: J’ai commandé les pâtes. · ES: Pedí la pasta. · HE: הזמנתי את הפסטה.
-- **NPC:** Of course — I'll bring the right one right away. … Later … Here's your bill.
-  - FR: Bien sûr — je vous apporte le bon tout de suite. … Plus tard … Voici l’addition. · ES: Claro — le traigo el correcto enseguida. … Más tarde … Aquí tiene la cuenta. · HE: כמובן — אביא את הנכון מיד. … אחר כך … הנה החשבון.
+- **NPC:** Of course — I'll bring the right one right away.
+  - FR: Bien sûr — je vous apporte le bon tout de suite. · ES: Claro — le traigo el correcto enseguida. · HE: כמובן — אביא את הנכון מיד.
+- **NPC:** Here's your bill.
+  - FR: Voici l’addition. · ES: Aquí tiene la cuenta. · HE: הנה החשבון.
 - **You:** I think there's a mistake.
   - FR: Je crois qu’il y a une erreur. · ES: Creo que hay un error. · HE: אני חושב שיש טעות.
 - **NPC:** Let me check the bill. What's the problem?
@@ -17846,8 +17853,8 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 ### M22-Q24 — dialogue-choice (step 14, scene "fixing-problems" · node c6)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio played: EN "Of course — I'll bring the right one right away. … Later … Here's your bill." · FR "Bien sûr — je vous apporte le bon tout de suite. … Plus tard … Voici l’addition." · ES "Claro — le traigo el correcto enseguida. … Más tarde … Aquí tiene la cuenta."
-- Meaning of the audio (HE): "כמובן — אביא את הנכון מיד. … אחר כך … הנה החשבון."
+- Audio played: EN "Here's your bill." · FR "Voici l’addition." · ES "Aquí tiene la cuenta."
+- Meaning of the audio (HE): "הנה החשבון."
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
   1. EN "I think there's a mistake." · FR "Je crois qu’il y a une erreur." · ES "Creo que hay un error." · (HE gloss "אני חושב שיש טעות.") — `phrase.fix.theres-mistake` — ✅ accepted → n7
@@ -24082,10 +24089,10 @@ None in this mission.
 ### Scene 4 — `dr-pay` (start: n1; coaching mode: off)
 
 - **n1** · NPC · normal (TTS rate 0.95) → c2
-  - EN: …Later… Is everything okay?
-  - FR: …Plus tard… Tout va bien ?
-  - ES: …Más tarde… ¿Va todo bien?
-  - HE: …אחר כך… הכל בסדר?
+  - EN: Is everything okay?
+  - FR: Tout va bien ?
+  - ES: ¿Va todo bien?
+  - HE: הכל בסדר?
 - **c2** · LEARNER choice screen
   - choice 1 — ✅ accepted → n3 — `phrase.rest.the-bill`
     - EN: Yes, that was delicious! The bill, please.
@@ -24098,10 +24105,10 @@ None in this mission.
     - ES: Una botella de agua, por favor.
     - HE: בקבוק מים, בבקשה.
 - **m2** · NPC · slow (TTS rate 0.75) · off the happy path → c2
-  - EN: …Later… Is everything okay?
-  - FR: …Plus tard… Tout va bien ?
-  - ES: …Más tarde… ¿Va todo bien?
-  - HE: …אחר כך… הכל בסדר?
+  - EN: Is everything okay?
+  - FR: Tout va bien ?
+  - ES: ¿Va todo bien?
+  - HE: הכל בסדר?
 - **n3** · NPC · fast (TTS rate 1.08) → c4
   - EN: Here's your bill. That's twenty euros. Cash or card?
   - FR: Voici l’addition. Ça fait vingt euros. Espèces ou carte ?
@@ -24162,8 +24169,8 @@ None in this mission.
 
 #### Canonical happy path — Scene 4
 
-- **NPC:** …Later… Is everything okay?
-  - FR: …Plus tard… Tout va bien ? · ES: …Más tarde… ¿Va todo bien? · HE: …אחר כך… הכל בסדר?
+- **NPC:** Is everything okay?
+  - FR: Tout va bien ? · ES: ¿Va todo bien? · HE: הכל בסדר?
 - **You:** Yes, that was delicious! The bill, please.
   - FR: Oui, c’était délicieux ! L’addition, s’il vous plaît. · ES: ¡Sí, estaba delicioso! La cuenta, por favor. · HE: כן, היה טעים מאוד! החשבון, בבקשה.
 - **NPC:** Here's your bill. That's twenty euros. Cash or card?
@@ -24305,8 +24312,8 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 ### M29-Q11 — dialogue-choice (step 8, scene "dr-pay" · node c2)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio played: EN "…Later… Is everything okay?" · FR "…Plus tard… Tout va bien ?" · ES "…Más tarde… ¿Va todo bien?"
-- Meaning of the audio (HE): "…אחר כך… הכל בסדר?"
+- Audio played: EN "Is everything okay?" · FR "Tout va bien ?" · ES "¿Va todo bien?"
+- Meaning of the audio (HE): "הכל בסדר?"
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
   1. EN "Yes, that was delicious! The bill, please." · FR "Oui, c’était délicieux ! L’addition, s’il vous plaît." · ES "¡Sí, estaba delicioso! La cuenta, por favor." · (HE gloss "כן, היה טעים מאוד! החשבון, בבקשה.") — `phrase.rest.the-bill` — ✅ accepted → n3
@@ -24402,10 +24409,10 @@ Where a conversation-help tool can be selected, and what happens:
   - Feedback card: ❌ header, what you heard, your answer, what you should answer ("No problem, thank you."), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
   - NPC response (m6): "Of course — I'll bring the right one right away." — HE "כמובן — אביא את הנכון מיד."
   - Then: m6 → rejoins the happy path at c6. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
-- Scene `dr-pay`, c2 — after NPC "…Later… Is everything okay?"
+- Scene `dr-pay`, c2 — after NPC "Is everything okay?"
   - Wrong choice: "A bottle of water, please." ("בקבוק מים, בבקשה.") — `phrase.rest.water`
   - Feedback card: ❌ header, what you heard, your answer, what you should answer ("Yes, that was delicious! The bill, please."), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
-  - NPC response (m2): "…Later… Is everything okay?" — HE "…אחר כך… הכל בסדר?"
+  - NPC response (m2): "Is everything okay?" — HE "הכל בסדר?"
   - Then: m2 → rejoins the happy path at c2. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
 - Scene `dr-pay`, c4 — after NPC "Here's your bill. That's twenty euros. Cash or card?"
   - Wrong choice: "How much is it?" ("כמה זה עולה?") — `phrase.money.how-much`
@@ -24476,7 +24483,7 @@ Every learner sentence of this mission is a line in a scene.
 - AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "dr-order" n5 — “Of course. Anything to drink?”
 - AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "dr-order" n7 — “Anything else?”
 - AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "dr-problem" n3 — “Oh no, I'm so sorry! What did you order?”
-- AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "dr-pay" n1 — “…Later… Is everything okay?”
+- AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "dr-pay" n1 — “Is everything okay?”
 - AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "dr-pay" n3 — “Here's your bill. That's twenty euros. Cash or card?”
 - AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "dr-pay" n5 — “Insert your card here… all done. Would you like the receipt?”
 
@@ -25280,10 +25287,10 @@ None in this mission.
   - ES: Claro — le traigo el correcto enseguida.
   - HE: כמובן — אביא את הנכון מיד.
 - **n11** · NPC · normal (TTS rate 0.95) → c12
-  - EN: …Later… Is everything okay?
-  - FR: …Plus tard… Tout va bien ?
-  - ES: …Más tarde… ¿Va todo bien?
-  - HE: …אחר כך… הכל בסדר?
+  - EN: Is everything okay?
+  - FR: Tout va bien ?
+  - ES: ¿Va todo bien?
+  - HE: הכל בסדר?
 - **c12** · LEARNER choice screen
   - choice 1 — ✅ accepted → n13 — `phrase.rest.the-bill`
     - EN: Yes, that was delicious! The bill, please.
@@ -25296,10 +25303,10 @@ None in this mission.
     - ES: Una botella de agua, por favor.
     - HE: בקבוק מים, בבקשה.
 - **m12** · NPC · slow (TTS rate 0.75) · off the happy path → c12
-  - EN: …Later… Is everything okay?
-  - FR: …Plus tard… Tout va bien ?
-  - ES: …Más tarde… ¿Va todo bien?
-  - HE: …אחר כך… הכל בסדר?
+  - EN: Is everything okay?
+  - FR: Tout va bien ?
+  - ES: ¿Va todo bien?
+  - HE: הכל בסדר?
 - **n13** · NPC · normal (TTS rate 0.95) · END of scene
   - EN: So glad you enjoyed it. Here you are. Thank you!
   - FR: Ravi que ça vous ait plu. Voici. Merci !
@@ -25328,8 +25335,8 @@ None in this mission.
   - FR: Bien sûr — je vous apporte le bon tout de suite. · ES: Claro — le traigo el correcto enseguida. · HE: כמובן — אביא את הנכון מיד.
 - **You:** No problem, thank you.
   - FR: Pas de problème, merci. · ES: No pasa nada, gracias. · HE: אין בעיה, תודה.
-- **NPC:** …Later… Is everything okay?
-  - FR: …Plus tard… Tout va bien ? · ES: …Más tarde… ¿Va todo bien? · HE: …אחר כך… הכל בסדר?
+- **NPC:** Is everything okay?
+  - FR: Tout va bien ? · ES: ¿Va todo bien? · HE: הכל בסדר?
 - **You:** Yes, that was delicious! The bill, please.
   - FR: Oui, c’était délicieux ! L’addition, s’il vous plaît. · ES: ¡Sí, estaba delicioso! La cuenta, por favor. · HE: כן, היה טעים מאוד! החשבון, בבקשה.
 - **NPC:** So glad you enjoyed it. Here you are. Thank you!
@@ -25752,8 +25759,8 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 ### M30-Q12 — dialogue-choice (step 6, scene "fin-lunch" · node c12)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio played: EN "…Later… Is everything okay?" · FR "…Plus tard… Tout va bien ?" · ES "…Más tarde… ¿Va todo bien?"
-- Meaning of the audio (HE): "…אחר כך… הכל בסדר?"
+- Audio played: EN "Is everything okay?" · FR "Tout va bien ?" · ES "¿Va todo bien?"
+- Meaning of the audio (HE): "הכל בסדר?"
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
   1. EN "Yes, that was delicious! The bill, please." · FR "Oui, c’était délicieux ! L’addition, s’il vous plaît." · ES "¡Sí, estaba delicioso! La cuenta, por favor." · (HE gloss "כן, היה טעים מאוד! החשבון, בבקשה.") — `phrase.rest.the-bill` — ✅ accepted → n13
@@ -25950,10 +25957,10 @@ Where a conversation-help tool can be selected, and what happens:
   - Feedback card: ❌ header, what you heard, your answer, what you should answer ("No problem, thank you."), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
   - NPC response (m10): "Of course — I'll bring the right one right away." — HE "כמובן — אביא את הנכון מיד."
   - Then: m10 → rejoins the happy path at c10. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
-- Scene `fin-lunch`, c12 — after NPC "…Later… Is everything okay?"
+- Scene `fin-lunch`, c12 — after NPC "Is everything okay?"
   - Wrong choice: "A bottle of water, please." ("בקבוק מים, בבקשה.") — `phrase.rest.water`
   - Feedback card: ❌ header, what you heard, your answer, what you should answer ("Yes, that was delicious! The bill, please."), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
-  - NPC response (m12): "…Later… Is everything okay?" — HE "…אחר כך… הכל בסדר?"
+  - NPC response (m12): "Is everything okay?" — HE "הכל בסדר?"
   - Then: m12 → rejoins the happy path at c12. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
 - Scene `fin-chat`, c2 — after NPC "Hi! I'm from here. And you?"
   - Wrong choice: "It's my first time here." ("זו הפעם הראשונה שלי כאן.") — `phrase.social.first-time`
@@ -26060,7 +26067,7 @@ Every learner sentence of this mission is a line in a scene.
 - AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "fin-lunch" n1 — “Hello! Do you have a reservation?”
 - AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "fin-lunch" n3 — “Are you ready to order?”
 - AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "fin-lunch" n7 — “Oh no, I'm so sorry! What did you order?”
-- AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "fin-lunch" n11 — “…Later… Is everything okay?”
+- AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "fin-lunch" n11 — “Is everything okay?”
 - AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "fin-chat" n1 — “Hi! I'm from here. And you?”
 - AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "fin-chat" n3 — “Nice! What did you do today?”
 - AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "fin-chat" n5 — “Did you like it?”
@@ -26462,7 +26469,7 @@ Happy-path NPC lines containing a question, for which the mission has no expecte
 | 16 | free-time-chat / n7 | Nice! When do you draw? |
 | 16 | free-time-chat / n11 | And sport? Do you like running? |
 | 17 | supermarket / n1 | Hi there! Can I help you find something? |
-| 17 | supermarket / n3 | …At the checkout… Hi! Is that everything? |
+| 17 | supermarket / n3 | Hi! Is that everything? |
 | 18 | cold-morning / n1 | Good morning! What can I get you? |
 | 18 | cold-morning / n3 | Sure. Anything to eat? |
 | 18 | cold-morning / n5 | No problem. Cash or card? |
@@ -26470,10 +26477,10 @@ Happy-path NPC lines containing a question, for which the mission has no expecte
 | 18 | cold-plans / n3 | I surf a lot. Do you like surfing? |
 | 18 | cold-plans / n7 | Perfect. And what are you doing tonight? |
 | 18 | cold-shop / n1 | Hi there! Can I help you find something? |
-| 18 | cold-shop / n5 | …At the checkout… Hi! Is that everything? |
+| 18 | cold-shop / n5 | Hi! Is that everything? |
 | 18 | cold-shop / n7 | Do you need a bag? |
 | 18 | cold-dinner / n1 | Good evening! Do you have a reservation? |
-| 18 | cold-dinner / n7 | …Later… Is everything okay? |
+| 18 | cold-dinner / n7 | Is everything okay? |
 | 19 | transport / n1 | Hello! Where are you headed? |
 | 20 | what-did-you-do / n13 | Me? Nothing! I was tired. I slept all day. |
 | 21 | where-next / n1 | So, where are you going next? |
@@ -26512,7 +26519,7 @@ Happy-path NPC lines containing a question, for which the mission has no expecte
 | 29 | dr-order / n5 | Of course. Anything to drink? |
 | 29 | dr-order / n7 | Anything else? |
 | 29 | dr-problem / n3 | Oh no, I'm so sorry! What did you order? |
-| 29 | dr-pay / n1 | …Later… Is everything okay? |
+| 29 | dr-pay / n1 | Is everything okay? |
 | 29 | dr-pay / n3 | Here's your bill. That's twenty euros. Cash or card? |
 | 29 | dr-pay / n5 | Insert your card here… all done. Would you like the receipt? |
 | 30 | fin-morning / n1 | Good morning! Do you have your key? |
@@ -26523,7 +26530,7 @@ Happy-path NPC lines containing a question, for which the mission has no expecte
 | 30 | fin-lunch / n1 | Hello! Do you have a reservation? |
 | 30 | fin-lunch / n3 | Are you ready to order? |
 | 30 | fin-lunch / n7 | Oh no, I'm so sorry! What did you order? |
-| 30 | fin-lunch / n11 | …Later… Is everything okay? |
+| 30 | fin-lunch / n11 | Is everything okay? |
 | 30 | fin-chat / n1 | Hi! I'm from here. And you? |
 | 30 | fin-chat / n3 | Nice! What did you do today? |
 | 30 | fin-chat / n5 | Did you like it? |
@@ -29130,7 +29137,7 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 
 **M14-Q19** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio: …Later… Is everything okay? — (…אחר כך… הכל בסדר?)
+- Audio: Is everything okay? — (הכל בסדר?)
 - A: Yes, that was delicious! The bill, please. ✅
 - Correct: Yes, that was delicious! The bill, please.
 - Tests: phrase.rest.the-bill
@@ -29173,7 +29180,7 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 
 **M14-Q24** — quick-reply
 - Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
-- Audio: …Later… Is everything okay? — (…אחר כך… הכל בסדר?)
+- Audio: Is everything okay? — (הכל בסדר?)
 - A: Yes, that was delicious! The bill, please. ✅
 - B: I'll have the chicken.
 - C: A table for two, please.
@@ -29822,7 +29829,7 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 
 **M17-Q20** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio: …At the checkout… Hi! Is that everything? — (…בקופה… היי! זה הכל?)
+- Audio: Hi! Is that everything? — (היי! זה הכל?)
 - A: Can you show me? ✅
 - B: Just this, thanks. ✅
 - Correct: Can you show me? | Just this, thanks.
@@ -29863,7 +29870,7 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 
 **M17-Q25** — quick-reply
 - Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
-- Audio: …At the checkout… Hi! Is that everything? — (…בקופה… היי! זה הכל?)
+- Audio: Hi! Is that everything? — (היי! זה הכל?)
 - A: Just this, thanks. ✅
 - B: Where is the milk?
 - C: Do you have bread?
@@ -29966,7 +29973,7 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 
 **M18-Q10** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio: …At the checkout… Hi! Is that everything? — (…בקופה… היי! זה הכל?)
+- Audio: Hi! Is that everything? — (היי! זה הכל?)
 - A: Just this, thanks. ✅
 - B: Where is the milk?
 - Correct: Just this, thanks.
@@ -30006,7 +30013,7 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 
 **M18-Q15** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio: …Later… Is everything okay? — (…אחר כך… הכל בסדר?)
+- Audio: Is everything okay? — (הכל בסדר?)
 - A: Yes, that was delicious! The bill, please. ✅
 - B: I'll have the chicken.
 - Correct: Yes, that was delicious! The bill, please.
@@ -31023,7 +31030,7 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 
 **M22-Q24** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio: Of course — I'll bring the right one right away. … Later … Here's your bill. — (כמובן — אביא את הנכון מיד. … אחר כך … הנה החשבון.)
+- Audio: Here's your bill. — (הנה החשבון.)
 - A: I think there's a mistake. ✅
 - Correct: I think there's a mistake.
 - Tests: phrase.fix.theres-mistake
@@ -32371,7 +32378,7 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 
 **M29-Q11** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio: …Later… Is everything okay? — (…אחר כך… הכל בסדר?)
+- Audio: Is everything okay? — (הכל בסדר?)
 - A: Yes, that was delicious! The bill, please. ✅
 - B: A bottle of water, please.
 - Correct: Yes, that was delicious! The bill, please.
@@ -32488,7 +32495,7 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 
 **M30-Q12** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio: …Later… Is everything okay? — (…אחר כך… הכל בסדר?)
+- Audio: Is everything okay? — (הכל בסדר?)
 - A: Yes, that was delicious! The bill, please. ✅
 - B: A bottle of water, please.
 - Correct: Yes, that was delicious! The bill, please.

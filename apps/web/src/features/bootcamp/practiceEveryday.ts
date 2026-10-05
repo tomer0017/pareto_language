@@ -87,7 +87,7 @@ export function m14Flow(lang: MissionLang): BootcampStep[] {
           options: [['phrase.rest.water', true], ['phrase.rest.no-onions', false], ['phrase.rest.table-two', false]] },
         { npc: ['Anything else?', 'Autre chose ?', '¿Algo más?', 'עוד משהו?'],
           options: [['phrase.recovery.thank-you', true, THATS_ALL], ['phrase.rest.table-two', false], ['phrase.rest.delicious', false]] },
-        { npc: ['…Later… Is everything okay?', '…Plus tard… Tout va bien ?', '…Más tarde… ¿Va todo bien?', '…אחר כך… הכל בסדר?'],
+        { npc: ['Is everything okay?', 'Tout va bien ?', '¿Va todo bien?', 'הכל בסדר?'],
           options: [['phrase.rest.the-bill', true, DELICIOUS_BILL], ['phrase.rest.ill-have-chicken', false], ['phrase.rest.table-two', false]] },
       ],
     }),
@@ -253,7 +253,7 @@ export function m17Flow(lang: MissionLang): BootcampStep[] {
       rounds: [
         { npc: CAN_I_HELP, options: [['phrase.super.where-is', true], ['phrase.super.just-this', false], ['phrase.super.need-bag', false]] },
         { npc: AISLE_THREE_LEFT, options: [['phrase.recovery.thank-you', true], ['phrase.super.just-this', false], ['phrase.super.do-you-have', false]] },
-        { npc: ['…At the checkout… Hi! Is that everything?', '…À la caisse… Bonjour ! Ce sera tout ?', '…En la caja… ¡Hola! ¿Eso es todo?', '…בקופה… היי! זה הכל?'],
+        { npc: ['Hi! Is that everything?', 'Bonjour ! Ce sera tout ?', '¡Hola! ¿Eso es todo?', 'היי! זה הכל?'],
           options: [['phrase.super.just-this', true], ['phrase.super.where-is', false], ['phrase.super.do-you-have', false]] },
         { npc: ['Do you need a bag?', 'Vous avez besoin d’un sac ?', '¿Necesita una bolsa?', 'צריך שקית?'],
           options: [['phrase.super.need-bag', true], ['phrase.super.where-is', false], ['phrase.super.just-this', false]] },

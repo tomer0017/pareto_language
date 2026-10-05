@@ -859,7 +859,7 @@ english:
 **NPC:** Anything else?
 **You:** That's all, thanks.
 **NPC:** Coming right up!
-**NPC:** …Later… Is everything okay?
+**NPC:** Is everything okay?
 **You:** Yes, that was delicious! The bill, please.
 **NPC:** So glad you enjoyed it. Here you are — have a lovely evening!
 
@@ -874,7 +874,7 @@ franch:
 **NPC:** Autre chose ?
 **You:** C’est tout, merci.
 **NPC:** Ça arrive tout de suite !
-**NPC:** …Plus tard… Tout va bien ?
+**NPC:** Tout va bien ?
 **You:** Oui, c’était délicieux ! L’addition, s’il vous plaît.
 **NPC:** Ravi que ça vous ait plu. Voici — passez une bonne soirée !
 
@@ -889,7 +889,7 @@ spanish:
 **NPC:** ¿Algo más?
 **You:** Eso es todo, gracias.
 **NPC:** ¡Enseguida se lo traigo!
-**NPC:** …Más tarde… ¿Va todo bien?
+**NPC:** ¿Va todo bien?
 **You:** ¡Sí, estaba delicioso! La cuenta, por favor.
 **NPC:** Me alegro de que les gustara. Aquí tienen — ¡que pasen buena noche!
 
@@ -904,7 +904,7 @@ spanish:
 **NPC:** עוד משהו?
 **You:** זה הכל, תודה.
 **NPC:** מגיע עוד רגע!
-**NPC:** …אחר כך… הכל בסדר?
+**NPC:** הכל בסדר?
 **You:** כן, היה טעים מאוד! החשבון, בבקשה.
 **NPC:** שמח שנהניתם. בבקשה — ערב נעים!
 
@@ -1053,7 +1053,7 @@ english:
 **You:** Where is the milk?
 **NPC:** The milk is in aisle three, on the left.
 **You:** Thank you!
-**NPC:** …At the checkout… Hi! Is that everything?
+**NPC:** Hi! Is that everything?
 **You:** Just this, thanks.
 **NPC:** Do you need a bag?
 **You:** Could I get a bag?
@@ -1064,7 +1064,7 @@ franch:
 **You:** Où est le lait ?
 **NPC:** Le lait est dans l’allée trois, sur la gauche.
 **You:** Merci !
-**NPC:** …À la caisse… Bonjour ! Ce sera tout ?
+**NPC:** Bonjour ! Ce sera tout ?
 **You:** Juste ça, merci.
 **NPC:** Vous avez besoin d’un sac ?
 **You:** Je peux avoir un sac ?
@@ -1075,7 +1075,7 @@ spanish:
 **You:** ¿Dónde está la leche?
 **NPC:** La leche está en el pasillo tres, a la izquierda.
 **You:** ¡Gracias!
-**NPC:** …En la caja… ¡Hola! ¿Eso es todo?
+**NPC:** ¡Hola! ¿Eso es todo?
 **You:** Solo esto, gracias.
 **NPC:** ¿Necesita una bolsa?
 **You:** ¿Me da una bolsa?
@@ -1086,7 +1086,7 @@ spanish:
 **You:** איפה החלב?
 **NPC:** החלב במעבר שלוש, משמאל.
 **You:** תודה!
-**NPC:** …בקופה… היי! זה הכל?
+**NPC:** היי! זה הכל?
 **You:** רק את זה, תודה.
 **NPC:** צריך שקית?
 **You:** אפשר שקית?
@@ -1122,7 +1122,7 @@ _Scene 3_
 **You:** Where is the milk?
 **NPC:** The milk is in aisle three, on the left.
 **You:** Thank you!
-**NPC:** …At the checkout… Hi! Is that everything?
+**NPC:** Hi! Is that everything?
 **You:** Just this, thanks.
 **NPC:** Do you need a bag?
 **You:** Could I get a bag?
@@ -1135,7 +1135,7 @@ _Scene 4_
 **You:** I'll have the chicken, without onions, please.
 **NPC:** Of course. Anything to drink?
 **You:** A bottle of water, please.
-**NPC:** …Later… Is everything okay?
+**NPC:** Is everything okay?
 **You:** Yes, that was delicious! The bill, please.
 **NPC:** So glad you enjoyed it. Here you are — have a lovely evening!
 
@@ -1165,7 +1165,7 @@ _Scene 3_
 **You:** Où est le lait ?
 **NPC:** Le lait est dans l’allée trois, sur la gauche.
 **You:** Merci !
-**NPC:** …À la caisse… Bonjour ! Ce sera tout ?
+**NPC:** Bonjour ! Ce sera tout ?
 **You:** Juste ça, merci.
 **NPC:** Vous avez besoin d’un sac ?
 **You:** Je peux avoir un sac ?
@@ -1178,7 +1178,7 @@ _Scene 4_
 **You:** Je vais prendre le poulet, sans oignons, s’il vous plaît.
 **NPC:** Bien sûr. Quelque chose à boire ?
 **You:** Une bouteille d’eau, s’il vous plaît.
-**NPC:** …Plus tard… Tout va bien ?
+**NPC:** Tout va bien ?
 **You:** Oui, c’était délicieux ! L’addition, s’il vous plaît.
 **NPC:** Ravi que ça vous ait plu. Voici — passez une bonne soirée !
 
@@ -1208,7 +1208,7 @@ _Scene 3_
 **You:** ¿Dónde está la leche?
 **NPC:** La leche está en el pasillo tres, a la izquierda.
 **You:** ¡Gracias!
-**NPC:** …En la caja… ¡Hola! ¿Eso es todo?
+**NPC:** ¡Hola! ¿Eso es todo?
 **You:** Solo esto, gracias.
 **NPC:** ¿Necesita una bolsa?
 **You:** ¿Me da una bolsa?
@@ -1221,7 +1221,7 @@ _Scene 4_
 **You:** Voy a tomar el pollo, sin cebolla, por favor.
 **NPC:** Claro. ¿Algo de beber?
 **You:** Una botella de agua, por favor.
-**NPC:** …Más tarde… ¿Va todo bien?
+**NPC:** ¿Va todo bien?
 **You:** ¡Sí, estaba delicioso! La cuenta, por favor.
 **NPC:** Me alegro de que les gustara. Aquí tienen — ¡que pasen buena noche!
 
@@ -1251,7 +1251,7 @@ _Scene 3_
 **You:** איפה החלב?
 **NPC:** החלב במעבר שלוש, משמאל.
 **You:** תודה!
-**NPC:** …בקופה… היי! זה הכל?
+**NPC:** היי! זה הכל?
 **You:** רק את זה, תודה.
 **NPC:** צריך שקית?
 **You:** אפשר שקית?
@@ -1264,7 +1264,7 @@ _Scene 4_
 **You:** אני אקח את העוף, בלי בצל, בבקשה.
 **NPC:** כמובן. משהו לשתות?
 **You:** בקבוק מים, בבקשה.
-**NPC:** …אחר כך… הכל בסדר?
+**NPC:** הכל בסדר?
 **You:** כן, היה טעים מאוד! החשבון, בבקשה.
 **NPC:** שמח שנהניתם. בבקשה — ערב נעים!
 
@@ -1478,7 +1478,8 @@ _Scene 1_
 **You:** This isn't what I ordered.
 **NPC:** Oh no, I'm so sorry! What did you order?
 **You:** I ordered the pasta.
-**NPC:** Of course — I'll bring the right one right away. … Later … Here's your bill.
+**NPC:** Of course — I'll bring the right one right away.
+**NPC:** Here's your bill.
 **You:** I think there's a mistake.
 **NPC:** Let me check the bill. What's the problem?
 **You:** I was charged twice.
@@ -1505,7 +1506,8 @@ _Scene 1_
 **You:** Ce n’est pas ce que j’ai commandé.
 **NPC:** Oh non, je suis vraiment désolé ! Qu’avez-vous commandé ?
 **You:** J’ai commandé les pâtes.
-**NPC:** Bien sûr — je vous apporte le bon tout de suite. … Plus tard … Voici l’addition.
+**NPC:** Bien sûr — je vous apporte le bon tout de suite.
+**NPC:** Voici l’addition.
 **You:** Je crois qu’il y a une erreur.
 **NPC:** Laissez-moi vérifier l’addition. Quel est le problème ?
 **You:** On m’a facturé deux fois.
@@ -1532,7 +1534,8 @@ _Scene 1_
 **You:** Esto no es lo que pedí.
 **NPC:** ¡Ay, lo siento muchísimo! ¿Qué pidió?
 **You:** Pedí la pasta.
-**NPC:** Claro — le traigo el correcto enseguida. … Más tarde … Aquí tiene la cuenta.
+**NPC:** Claro — le traigo el correcto enseguida.
+**NPC:** Aquí tiene la cuenta.
 **You:** Creo que hay un error.
 **NPC:** Déjeme revisar la cuenta. ¿Cuál es el problema?
 **You:** Me han cobrado dos veces.
@@ -1559,7 +1562,8 @@ _Scene 1_
 **You:** זה לא מה שהזמנתי.
 **NPC:** אוי לא, אני מצטער מאוד! מה הזמנת?
 **You:** הזמנתי את הפסטה.
-**NPC:** כמובן — אביא את הנכון מיד. … אחר כך … הנה החשבון.
+**NPC:** כמובן — אביא את הנכון מיד.
+**NPC:** הנה החשבון.
 **You:** אני חושב שיש טעות.
 **NPC:** תן לי לבדוק את החשבון. מה הבעיה?
 **You:** חייבו אותי פעמיים.
@@ -2219,7 +2223,7 @@ _Scene 3_
 **NPC:** Thank you for your patience. Here's your pasta.
 
 _Scene 4_
-**NPC:** …Later… Is everything okay?
+**NPC:** Is everything okay?
 **You:** Yes, that was delicious! The bill, please.
 **NPC:** Here's your bill. That's twenty euros. Cash or card?
 **You:** By card, please.
@@ -2258,7 +2262,7 @@ _Scene 3_
 **NPC:** Merci de votre patience. Voici vos pâtes.
 
 _Scene 4_
-**NPC:** …Plus tard… Tout va bien ?
+**NPC:** Tout va bien ?
 **You:** Oui, c’était délicieux ! L’addition, s’il vous plaît.
 **NPC:** Voici l’addition. Ça fait vingt euros. Espèces ou carte ?
 **You:** Par carte, s’il vous plaît.
@@ -2297,7 +2301,7 @@ _Scene 3_
 **NPC:** Gracias por su paciencia. Aquí tiene su pasta.
 
 _Scene 4_
-**NPC:** …Más tarde… ¿Va todo bien?
+**NPC:** ¿Va todo bien?
 **You:** ¡Sí, estaba delicioso! La cuenta, por favor.
 **NPC:** Aquí tiene la cuenta. Son veinte euros. ¿Efectivo o tarjeta?
 **You:** Con tarjeta, por favor.
@@ -2336,7 +2340,7 @@ _Scene 3_
 **NPC:** תודה על הסבלנות. הנה הפסטה שלך.
 
 _Scene 4_
-**NPC:** …אחר כך… הכל בסדר?
+**NPC:** הכל בסדר?
 **You:** כן, היה טעים מאוד! החשבון, בבקשה.
 **NPC:** הנה החשבון. זה עשרים יורו. מזומן או כרטיס?
 **You:** בכרטיס, בבקשה.
@@ -2378,7 +2382,7 @@ _Scene 3_
 **You:** The chicken. No onions, please.
 **NPC:** Of course — I'll bring the right one right away.
 **You:** No problem, thank you.
-**NPC:** …Later… Is everything okay?
+**NPC:** Is everything okay?
 **You:** Yes, that was delicious! The bill, please.
 **NPC:** So glad you enjoyed it. Here you are. Thank you!
 
@@ -2438,7 +2442,7 @@ _Scene 3_
 **You:** Le poulet. Sans oignons, s’il vous plaît.
 **NPC:** Bien sûr — je vous apporte le bon tout de suite.
 **You:** Pas de problème, merci.
-**NPC:** …Plus tard… Tout va bien ?
+**NPC:** Tout va bien ?
 **You:** Oui, c’était délicieux ! L’addition, s’il vous plaît.
 **NPC:** Ravi que ça vous ait plu. Voici. Merci !
 
@@ -2498,7 +2502,7 @@ _Scene 3_
 **You:** El pollo. Sin cebolla, por favor.
 **NPC:** Claro — le traigo el correcto enseguida.
 **You:** No pasa nada, gracias.
-**NPC:** …Más tarde… ¿Va todo bien?
+**NPC:** ¿Va todo bien?
 **You:** ¡Sí, estaba delicioso! La cuenta, por favor.
 **NPC:** Me alegro de que les gustara. Aquí tienen. ¡Gracias!
 
@@ -2558,7 +2562,7 @@ _Scene 3_
 **You:** את העוף. בלי בצל, בבקשה.
 **NPC:** כמובן — אביא את הנכון מיד.
 **You:** אין בעיה, תודה.
-**NPC:** …אחר כך… הכל בסדר?
+**NPC:** הכל בסדר?
 **You:** כן, היה טעים מאוד! החשבון, בבקשה.
 **NPC:** שמח שנהניתם. בבקשה. תודה!
 

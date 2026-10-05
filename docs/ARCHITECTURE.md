@@ -134,7 +134,9 @@ stable across re-renders. **Narrative dialogue order is never shuffled** — onl
   `practiceMastery.ts` holds Mission 26. A scene may also be `audio` (dialogue `audioOnly`, always
   with `cold`): the other speaker's line is not written before the answer — `NpcSpeech` in
   `ConvoScene.tsx` renders a replay button in its place (Mission 28 only). A line may carry a `cue` — a scene
-  transition in the app language, shown above the bubble and never spoken. Missions 28–30 are specs
+  transition in the app language, shown above the bubble and never spoken. No transition label may
+  sit inside spoken text (tested for every mission and language). `scripts/export-core30-video-docs.ts`
+  (`npm run export:video-docs`) is the one generator of the video master script and action map. Missions 28–30 are specs
   in `core/checkpoints.ts` with no teaching steps. `canonicalSentenceId` also resolves legacy ids the
   Core no longer declares (`LEGACY_ALIASES` in `core/phraseGroups.ts`), so stored practice keeps counting.
 - **Practice presentation** — each engine renders on an open `.pcanvas[data-engine]`, not a shared

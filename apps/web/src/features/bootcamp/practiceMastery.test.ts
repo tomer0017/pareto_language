@@ -8,6 +8,8 @@ import { LEGACY_ALIASES, canonicalSentenceId, sentenceCatalog } from '../core/ph
 import { practicedIds } from '../core/review.js';
 import { BOOTCAMP_PLAN } from './plan.js';
 import { fillFrame, isHelpToolId, validatePracticeStep } from './practiceEngines.js';
+import { beforeCueFreeze } from './cueFreeze.js';
+import { cinematicTranscript } from './exportDialogue.js';
 import { MISSIONS_BY_LANG } from './registry.js';
 import { RETIRED_SENTENCES } from './retired.js';
 import type { BootcampDayContent, BootcampDialogue, BootcampStep, DialogueNodeB } from './types.js';
@@ -87,7 +89,9 @@ const allCopy = (day: BootcampDayContent): string => JSON.stringify(day);
 /* ── scope ───────────────────────────────────────────────────────────────────────────────────── */
 
 describe('scope: only Missions 25–30 changed', () => {
-  const slice = (lang: Lang, a: number, b: number): BootcampDayContent[] => BOOTCAMP_PLAN.slice(a, b).map((m) => MISSIONS_BY_LANG[lang]![m.day]!);
+  // Scene transitions became non-spoken cues after these fingerprints were taken; `beforeCueFreeze`
+  // puts the labels back, so the fingerprints still prove nothing else moved (see cueFreeze.ts).
+  const slice = (lang: Lang, a: number, b: number): BootcampDayContent[] => BOOTCAMP_PLAN.slice(a, b).map((m) => beforeCueFreeze(MISSIONS_BY_LANG[lang]![m.day]!, lang));
   const print = (f: (lang: Lang) => unknown): Record<Lang, string> => ({ en: fnv(JSON.stringify(f('en'))), fr: fnv(JSON.stringify(f('fr'))), es: fnv(JSON.stringify(f('es'))) });
 
   it('Missions 01–24 are byte-for-byte unchanged, in every language', () => {
@@ -131,6 +135,78 @@ describe('scope: only Missions 25–30 changed', () => {
       expect(canonicalSentenceId(lang, `${lang}.phrase.rest.table-for-two`)).toBe(`${lang}.phrase.rest.table-two`);
     }
     expect(JSON.stringify(mission(29))).not.toMatch(/Could we have the bill|I'll pay by card/);
+  });
+});
+
+describe('production freeze: a time or place jump is a cue — shown, never spoken', () => {
+  /** "…label…" — a jump in time or place written between dots (not a mere pause such as "Straight… then… left…"). */
+  const LABEL = /…\s*(Later|At the checkout|Plus tard|À la caisse|Más tarde|En la caja|אחר כך|בקופה)\s*…/u;
+  /** Everything the app hands to text-to-speech for a mission. */
+  const speech = (day: BootcampDayContent): string[] => [
+    ...Object.values(day.dialogues).flatMap((d) => d.nodes.flatMap((n) => [n.en, ...(n.choices ?? []).map((c) => c.en)])),
+    ...day.steps.flatMap((s) => (s.kind === 'quickReply' ? s.rounds.flatMap((r) => [r.npc?.en ?? '', ...r.options.map((o) => o.text ?? '')]) : s.kind === 'ambush' ? [s.npc.en] : s.kind === 'visualMatch' || s.kind === 'miniMap' ? s.rounds.map((r) => r.audio.en) : [])),
+    ...day.items.map((i) => i.text),
+  ].filter(Boolean);
+
+  it('the eight cues of the Core, exactly where the conversation jumps', () => {
+    const cues = (lang: Lang): string[] => BOOTCAMP_PLAN.flatMap((m, i) => stepsOf(MISSIONS_BY_LANG[lang]![m.day]!, 'dialogue').flatMap((s, k) =>
+      MISSIONS_BY_LANG[lang]![m.day]!.dialogues[s.dialogueId]!.nodes.filter((n) => n.cue).map((n) => `M${i + 1} scene ${k + 1} ${n.id}: [${n.cue!.en}] ${n.en}`)));
+    expect(cues('en')).toEqual([
+      'M14 scene 1 n5b: [Later…] Is everything okay?',
+      'M17 scene 1 n3: [At the checkout…] Hi! Is that everything?',
+      'M18 scene 3 n5: [At the checkout…] Hi! Is that everything?',
+      'M18 scene 4 n7: [Later…] Is everything okay?',
+      "M22 scene 1 n5b: [Later…] Here's your bill.",
+      'M28 scene 2 n7: [Later…] Is everything okay?',
+      'M29 scene 4 n1: [Later…] Is everything okay?',
+      'M30 scene 3 n11: [Later…] Is everything okay?',
+    ]);
+    // Same places in French and Spanish, each with its own words; the cue itself is app-language copy.
+    const where = (l: Lang): string[] => cues(l).map((c) => c.slice(0, c.indexOf(']') + 1));
+    expect(where('fr')).toEqual(where('en'));
+    expect(where('es')).toEqual(where('en'));
+    for (const lang of LANGS) for (const m of BOOTCAMP_PLAN) for (const d of Object.values(MISSIONS_BY_LANG[lang]![m.day]!.dialogues)) for (const n of d.nodes.filter((x) => x.cue)) {
+      expect([n.who, (n.cue!.he ?? '').trim() !== '', (n.cue!.en ?? '').trim() !== ''], `${lang} ${m.id} ${n.id}`).toEqual(['npc', true, true]);
+    }
+  });
+  it('no transition label is left inside anything that is spoken — any mission, any language, any branch, practice included', () => {
+    for (const lang of LANGS) for (const m of BOOTCAMP_PLAN) for (const line of speech(MISSIONS_BY_LANG[lang]![m.day]!)) {
+      expect(line, `${lang} ${m.id}`).not.toMatch(LABEL);
+    }
+    // …nor in the translation shown with the line.
+    for (const m of BOOTCAMP_PLAN) for (const d of Object.values(MISSIONS_BY_LANG.en![m.day]!.dialogues)) for (const n of d.nodes) expect(`${n.he} ${n.tr?.he ?? ''} ${n.tr?.en ?? ''}`, `${m.id} ${n.id}`).not.toMatch(LABEL);
+  });
+  it('every spoken word around the jump is kept, and a pause is still a pause', () => {
+    // Mission 22: one line became two beats of the same speaker — same words, the label between them is now the cue.
+    for (const [lang, a, b] of [['en', "Of course — I'll bring the right one right away.", "Here's your bill."], ['fr', 'Bien sûr — je vous apporte le bon tout de suite.', 'Voici l’addition.'], ['es', 'Claro — le traigo el correcto enseguida.', 'Aquí tiene la cuenta.']] as const) {
+      const d = mission(22, lang).dialogues['fixing-problems']!;
+      const first = node(d, 'n5'); const second = node(d, 'n5b');
+      expect([first.who, first.en, first.next, first.cue], lang).toEqual(['npc', a, 'n5b', undefined]);
+      expect([second.who, second.en, second.next, second.cue?.en], lang).toEqual(['npc', b, 'c6', 'Later…']);
+    }
+    // The other conversations: the line is what it was, minus the label.
+    expect(node(mission(14).dialogues['sit-down-meal']!, 'n5b').en).toBe('Is everything okay?');
+    expect(node(mission(17).dialogues['supermarket']!, 'n3').en).toBe('Hi! Is that everything?');
+    expect(node(mission(17, 'fr').dialogues['supermarket']!, 'n3').en).toBe('Bonjour ! Ce sera tout ?');
+    expect(node(mission(17, 'es').dialogues['supermarket']!, 'n3').en).toBe('¡Hola! ¿Eso es todo?');
+    // A line that merely opens with a pause is ordinary speech and stays spoken.
+    for (const n of [7, 10, 29, 30]) expect(speech(mission(n)).filter((l) => l.startsWith('…')), `M${n}`).toContain('…We are almost there. Is here okay?');
+  });
+  it('scene count and the learner\'s turns did not move: only Mission 22 gained a beat, by the same speaker', () => {
+    const turns = (n: number, lang: Lang): string => scenes(mission(n, lang)).map((d) => cinematicTranscript(d).map((l) => l.who[0]).join('')).join('|');
+    for (const lang of LANGS) {
+      expect(BOOTCAMP_PLAN.reduce((k, _m, i) => k + scenes(mission(i + 1, lang)).length, 0), lang).toBe(50);
+      for (let n = 1; n <= 30; n++) expect(turns(n, lang), `${lang} M${n}`).toBe(turns(n, 'en'));
+    }
+    expect(turns(22, 'en')).toBe('nynynnynynyn|nynynynynyn');
+    expect(turns(14, 'en')).toBe('nynnynynynnyn');
+  });
+  it('the practice that quotes those lines quotes them without the label too', () => {
+    for (const lang of LANGS) for (const n of [14, 17]) {
+      const d = mission(n, lang);
+      const said = new Set(Object.values(d.dialogues).flatMap((x) => x.nodes.filter((y) => y.who === 'npc').map((y) => y.en)));
+      for (const r of rush(d).rounds) if (r.npc) expect(said.has(r.npc.en), `${lang} M${n}: ${r.npc.en}`).toBe(true);
+    }
   });
 });
 
@@ -584,8 +660,6 @@ describe('Mission 28 — No Subtitles', () => {
     const player = readFileSync(fileURLToPath(new URL('./Bootcamp.tsx', import.meta.url)), 'utf8');
     expect(player).toContain('{displayNpc.cue && <p className="faint small convo-cue" dir="auto">{L(displayNpc.cue)}</p>}');
     expect(player).not.toMatch(/speakL\([^)]*cue/); // the cue is never handed to speech
-    // Only Mission 28 uses a cue; every other mission's lines are exactly as they were.
-    for (const m of BOOTCAMP_PLAN) if (m.id !== 'no-subtitles') for (const dl of Object.values(MISSIONS_BY_LANG.en![m.day]!.dialogues)) expect(dl.nodes.some((n) => n.cue), m.id).toBe(false);
   });
   it('audio-only is opt-in: Mission 28 hides transcript and gloss; 29 and 30 show the transcript without a gloss; every other mission is unaffected', () => {
     const flags = (n: number): [boolean, boolean][] => scenes(mission(n)).map((d) => [d.cold === true, d.audioOnly === true]);

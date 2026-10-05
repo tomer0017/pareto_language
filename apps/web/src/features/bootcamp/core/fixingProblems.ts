@@ -42,7 +42,11 @@ export const FIXING_PROBLEMS: MissionSpec = {
         you(NOT_ORDERED),
         npc("Oh no, I'm so sorry! What did you order?", 'Oh non, je suis vraiment désolé ! Qu’avez-vous commandé ?', '¡Ay, lo siento muchísimo! ¿Qué pidió?', 'אוי לא, אני מצטער מאוד! מה הזמנת?'),
         you(I_ORDERED),
-        npc("Of course — I'll bring the right one right away. … Later … Here's your bill.", 'Bien sûr — je vous apporte le bon tout de suite. … Plus tard … Voici l’addition.', 'Claro — le traigo el correcto enseguida. … Más tarde … Aquí tiene la cuenta.', 'כמובן — אביא את הנכון מיד. … אחר כך … הנה החשבון.'),
+        // The jump in time is a scene transition, shown and never spoken: the line is two beats.
+        {
+          ...npc("Of course — I'll bring the right one right away.", 'Bien sûr — je vous apporte le bon tout de suite.', 'Claro — le traigo el correcto enseguida.', 'כמובן — אביא את הנכון מיד.'),
+          after: { cue: ['מאוחר יותר…', 'Later…'], t: ["Here's your bill.", 'Voici l’addition.', 'Aquí tiene la cuenta.', 'הנה החשבון.'] },
+        },
         you(MISTAKE),
         npc("Let me check the bill. What's the problem?", 'Laissez-moi vérifier l’addition. Quel est le problème ?', 'Déjeme revisar la cuenta. ¿Cuál es el problema?', 'תן לי לבדוק את החשבון. מה הבעיה?'),
         you(CHARGED_TWICE),

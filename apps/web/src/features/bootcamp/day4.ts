@@ -55,7 +55,7 @@ const SCENE: BootcampDialogue = {
       { en: "That's all, thanks.", he: 'זה הכל, תודה.', itemId: 'en.phrase.recovery.thank-you', correct: true, next: 'n5' },
     ] },
     { id: 'n5', who: 'npc', next: 'n5b', en: 'Coming right up!', he: 'מגיע עוד רגע!' },
-    { id: 'n5b', who: 'npc', next: 'c5', en: '…Later… Is everything okay?', he: '…אחר כך… הכל בסדר?' },
+    { id: 'n5b', who: 'npc', next: 'c5', cue: T('מאוחר יותר…', 'Later…'), en: 'Is everything okay?', he: 'הכל בסדר?' },
     { id: 'c5', who: 'you', en: '', he: '', choices: [
       { en: 'Yes, that was delicious! The bill, please.', he: 'כן, היה טעים מאוד! החשבון, בבקשה.', itemId: 'en.phrase.rest.the-bill', correct: true, next: 'n6' },
     ] },

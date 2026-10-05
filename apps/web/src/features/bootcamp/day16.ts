@@ -46,7 +46,7 @@ const SCENE_SUPER: BootcampDialogue = {
     { id: 'c2b', who: 'you', en: '', he: '', choices: [
       { en: 'Thank you!', he: 'תודה!', itemId: 'en.phrase.recovery.thank-you', correct: true, next: 'n3' },
     ] },
-    { id: 'n3', who: 'npc', next: 'c3', en: "…At the checkout… Hi! Is that everything?", he: '…בקופה… היי! זה הכל?' },
+    { id: 'n3', who: 'npc', next: 'c3', cue: T('בקופה…', 'At the checkout…'), en: 'Hi! Is that everything?', he: 'היי! זה הכל?' },
     { id: 'c3', who: 'you', en: '', he: '', choices: [
       { en: 'Can you show me?', he: 'אתה יכול להראות לי? (כלי — כשמילים לא מספיקות)', itemId: 'en.phrase.recovery.show-me', correct: true, next: 'r3' },
       { en: 'Just this, thanks.', he: 'רק את זה, תודה.', itemId: 'en.phrase.super.just-this', correct: true, next: 'n4' },

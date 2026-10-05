@@ -7,7 +7,7 @@ _2026-10-04 · final dialogue audit pass on the Core 30 · English / French / Sp
 Files:
 
 - Final dialogues: [ALL_LANGUAGES_DIALOGUES_BY_MISSION_V2.md](./ALL_LANGUAGES_DIALOGUES_BY_MISSION_V2.md) (generated from the runtime; a test fails if it is stale)
-- Video actions: [CORE_30_FINAL_VIDEO_ACTION_MAP.md](./CORE_30_FINAL_VIDEO_ACTION_MAP.md)
+- Video actions: [CORE30_FINAL_VIDEO_ACTION_MAP.md](./CORE30_FINAL_VIDEO_ACTION_MAP.md) (canonical; the 2026-10-04 map is archived as superseded)
 - Snapshot before this pass: [archive/ALL_LANGUAGES_DIALOGUES_BY_MISSION_V2-pre-final-audit.md](./archive/ALL_LANGUAGES_DIALOGUES_BY_MISSION_V2-pre-final-audit.md)
 - The restructure that preceded this pass: [CORE_30_RESTRUCTURE_REPORT.md](./CORE_30_RESTRUCTURE_REPORT.md) (historical; where the two differ, this report is current)
 
@@ -203,7 +203,7 @@ Canonical sentence count: EN 316 · FR 315 · ES 313.
 
 ## 6. Video action summary
 
-Full table: **[CORE_30_FINAL_VIDEO_ACTION_MAP.md](./CORE_30_FINAL_VIDEO_ACTION_MAP.md)**.
+Full table: **[CORE30_FINAL_VIDEO_ACTION_MAP.md](./CORE30_FINAL_VIDEO_ACTION_MAP.md) (canonical; the 2026-10-04 map is archived as superseded)**.
 
 15 existing files: KEEP 4 · MOVE / RELABEL 3 · REPLACE — DIALOGUE CHANGED 7 · CHECK MANUALLY 1. 21 missions have no video in any language.
 

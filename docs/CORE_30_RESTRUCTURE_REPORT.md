@@ -1,6 +1,6 @@
 # Core 30 Restructure Report
 
-> **Superseded in part.** A final curriculum pass followed this report. For the current dialogues, video actions and Practice map see **[CORE_30_FINAL_CURRICULUM_REPORT.md](./CORE_30_FINAL_CURRICULUM_REPORT.md)** and **[CORE_30_FINAL_VIDEO_ACTION_MAP.md](./CORE_30_FINAL_VIDEO_ACTION_MAP.md)**. This file remains the record of the 29 → 30 restructure.
+> **Superseded in part.** A final curriculum pass followed this report. For the current dialogues, video actions and Practice map see **[CORE_30_FINAL_CURRICULUM_REPORT.md](./CORE_30_FINAL_CURRICULUM_REPORT.md)** and **[CORE30_FINAL_VIDEO_ACTION_MAP.md](./CORE30_FINAL_VIDEO_ACTION_MAP.md)**. This file remains the record of the 29 → 30 restructure.
 
 _2026-10-03 · READY Bootcamp, 29 missions → the Core 30 · English / French / Spanish learning content, Hebrew + English glosses_
 

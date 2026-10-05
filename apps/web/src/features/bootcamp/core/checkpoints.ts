@@ -221,7 +221,7 @@ export const EVERYDAY_DAY: MissionSpec = {
           wrong: [known('phrase.super.just-this')],
           rec: { tool: 'repeat', npc: ['Aisle — three — on the left.', 'Allée — trois — sur la gauche.', 'Pasillo — tres — a la izquierda.', 'מעבר — שלוש — משמאל.'] },
         }),
-        npc('…At the checkout… Hi! Is that everything?', '…À la caisse… Bonjour ! Ce sera tout ?', '…En la caja… ¡Hola! ¿Eso es todo?', '…בקופה… היי! זה הכל?'),
+        { ...npc('Hi! Is that everything?', 'Bonjour ! Ce sera tout ?', '¡Hola! ¿Eso es todo?', 'היי! זה הכל?'), cue: ['בקופה…', 'At the checkout…'] },
         you(known('phrase.super.just-this'), { wrong: [known('phrase.super.where-is')] }),
         npc('Do you need a bag?', 'Vous avez besoin d’un sac ?', '¿Necesita una bolsa?', 'צריך שקית?'),
         you(known('phrase.super.need-bag'), { wrong: [known('phrase.super.do-you-have')] }),
@@ -253,7 +253,7 @@ export const EVERYDAY_DAY: MissionSpec = {
         }),
         npc('Of course. Anything to drink?', 'Bien sûr. Quelque chose à boire ?', 'Claro. ¿Algo de beber?', 'כמובן. משהו לשתות?'),
         you(known('phrase.rest.water'), { wrong: [known('phrase.rest.table-two')] }),
-        npc('…Later… Is everything okay?', '…Plus tard… Tout va bien ?', '…Más tarde… ¿Va todo bien?', '…אחר כך… הכל בסדר?'),
+        { ...npc('Is everything okay?', 'Tout va bien ?', '¿Va todo bien?', 'הכל בסדר?'), cue: ['מאוחר יותר…', 'Later…'] },
         you(known('phrase.rest.the-bill'), {
           say: ['Yes, that was delicious! The bill, please.', 'Oui, c’était délicieux ! L’addition, s’il vous plaît.', '¡Sí, estaba delicioso! La cuenta, por favor.', 'כן, היה טעים מאוד! החשבון, בבקשה.'],
           wrong: [known('phrase.rest.ill-have-chicken')],
@@ -553,7 +553,7 @@ export const DRESS_REHEARSAL: MissionSpec = {
       cold: true,
       receipt: ['חשבון ותשלום — גם כשזה נאמר מהר.', 'The bill and the payment — even when it was said fast.'],
       lines: [
-        npc('…Later… Is everything okay?', '…Plus tard… Tout va bien ?', '…Más tarde… ¿Va todo bien?', '…אחר כך… הכל בסדר?'),
+        { ...npc('Is everything okay?', 'Tout va bien ?', '¿Va todo bien?', 'הכל בסדר?'), cue: ['מאוחר יותר…', 'Later…'] },
         you(known('phrase.rest.the-bill'), {
           say: ['Yes, that was delicious! The bill, please.', 'Oui, c’était délicieux ! L’addition, s’il vous plaît.', '¡Sí, estaba delicioso! La cuenta, por favor.', 'כן, היה טעים מאוד! החשבון, בבקשה.'],
           wrong: [known('phrase.rest.water')],
@@ -661,7 +661,7 @@ export const COMPLETE_DAY: MissionSpec = {
         }),
         npc("Of course — I'll bring the right one right away.", 'Bien sûr — je vous apporte le bon tout de suite.', 'Claro — le traigo el correcto enseguida.', 'כמובן — אביא את הנכון מיד.'),
         you(itemOf(FIXING_PROBLEMS, 'phrase.fix.no-problem-thanks'), { wrong: [itemOf(FIXING_PROBLEMS, 'phrase.fix.charged-twice')] }),
-        npc('…Later… Is everything okay?', '…Plus tard… Tout va bien ?', '…Más tarde… ¿Va todo bien?', '…אחר כך… הכל בסדר?'),
+        { ...npc('Is everything okay?', 'Tout va bien ?', '¿Va todo bien?', 'הכל בסדר?'), cue: ['מאוחר יותר…', 'Later…'] },
         you(known('phrase.rest.the-bill'), {
           say: ['Yes, that was delicious! The bill, please.', 'Oui, c’était délicieux ! L’addition, s’il vous plaît.', '¡Sí, estaba delicioso! La cuenta, por favor.', 'כן, היה טעים מאוד! החשבון, בבקשה.'],
           wrong: [known('phrase.rest.water')],

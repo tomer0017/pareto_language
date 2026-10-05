@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { BOOTCAMP_PLAN } from './plan.js';
 import { fillFrame, isHelpToolId, validatePracticeStep } from './practiceEngines.js';
+import { beforeCueFreeze } from './cueFreeze.js';
 import { MISSIONS_BY_LANG } from './registry.js';
 import { RETIRED_SENTENCES } from './retired.js';
 import type { BootcampDayContent, BootcampStep } from './types.js';
@@ -68,7 +69,9 @@ const unknownIn = (said: string[], known: Set<string>): string[] => [...new Set(
 /* ── scope ───────────────────────────────────────────────────────────────────────────────────── */
 
 describe('scope: only the Practice of Missions 19–24 changed', () => {
-  const slice = (lang: Lang, a: number, b: number): BootcampDayContent[] => BOOTCAMP_PLAN.slice(a, b).map((m) => MISSIONS_BY_LANG[lang]![m.day]!);
+  // Scene transitions became non-spoken cues after these fingerprints were taken; `beforeCueFreeze`
+  // puts the labels back, so the fingerprints still prove nothing else moved (see cueFreeze.ts).
+  const slice = (lang: Lang, a: number, b: number): BootcampDayContent[] => BOOTCAMP_PLAN.slice(a, b).map((m) => beforeCueFreeze(MISSIONS_BY_LANG[lang]![m.day]!, lang));
   const print = (f: (lang: Lang) => unknown): Record<Lang, string> => ({ en: fnv(JSON.stringify(f('en'))), fr: fnv(JSON.stringify(f('fr'))), es: fnv(JSON.stringify(f('es'))) });
 
   it('Missions 01–18 are byte-for-byte unchanged', () => {
@@ -81,7 +84,7 @@ describe('scope: only the Practice of Missions 19–24 changed', () => {
     expect(print((l) => slice(l, 19, 23).map((d) => [d.day, d.title, d.steps[0]]))).toEqual({ en: 'b59d67b6', fr: 'b59d67b6', es: 'b59d67b6' });
   });
   it('after the final micro-pass the approved practice is otherwise exactly as approved', () => {
-    const d = (l: Lang, n: number): BootcampDayContent => MISSIONS_BY_LANG[l]![BOOTCAMP_PLAN[n - 1]!.day]!;
+    const d = (l: Lang, n: number): BootcampDayContent => beforeCueFreeze(MISSIONS_BY_LANG[l]![BOOTCAMP_PLAN[n - 1]!.day]!, l);
     // Missions 20, 21, 23 and 24, whole.
     expect(print((l) => [20, 21, 23, 24].map((n) => d(l, n)))).toEqual({ en: '369ee46b', fr: 'd43599e4', es: '723bbe78' });
     // Mission 19 apart from its intro card; Mission 22 apart from the removed builder and the shortened speed chain.

@@ -22,6 +22,19 @@ loop (typecheck → lint → tests → build → smoke) green at every milestone
 
 ## What's done
 
+### Production freeze for video — scene transitions are cues (2026-10-05)
+- Seven lines carried a time / place jump inside the spoken text ("…Later…", "…At the checkout…"),
+  so text-to-speech read the label aloud. Each is now a `cue` on the line — shown in the app
+  language, never spoken (Missions 14, 17, 18 ×2, 22, 29, 30; Mission 28 already had one). In
+  Mission 22 the label sat mid-line, so that line is now two beats of the same speaker (`after`).
+  No spoken word was changed. The speed chains of 14 and 17 quote the same lines without the label.
+- The earlier byte-for-byte fingerprints of Missions 01–24 still pass: `cueFreeze.ts` (test support)
+  puts the labels back before hashing, proving nothing else moved.
+- **Video production docs** are generated: `npm run export:video-docs` writes
+  `docs/CORE30_FINAL_DIALOGUES_EN_ES_FR_HE.md` (master script) and
+  `docs/CORE30_FINAL_VIDEO_ACTION_MAP.md` (the one canonical action map, with a dialogue hash per
+  mission × language to detect stale videos). The 2026-10-04 map is archived as superseded.
+
 ### Final Core practice pass — Missions 25–30, Mastery (2026-10-04)
 Scope: Missions 25–30 only. Missions 01–24 are fingerprinted byte-for-byte; the conversations and
 sentences of 25–27, mission order, the Companion and progression are unchanged.
@@ -273,7 +286,7 @@ Scope: Practice only, Missions 01–05 only. Missions 06–30 are fingerprinted 
 
 ### Core 30 — Curriculum V1.0 lock: final dialogue audit (2026-10-04)
 Full detail: **[CORE_30_FINAL_CURRICULUM_REPORT.md](./CORE_30_FINAL_CURRICULUM_REPORT.md)** · video actions:
-**[CORE_30_FINAL_VIDEO_ACTION_MAP.md](./CORE_30_FINAL_VIDEO_ACTION_MAP.md)**.
+**[CORE30_FINAL_VIDEO_ACTION_MAP.md](./CORE30_FINAL_VIDEO_ACTION_MAP.md) (canonical; the 2026-10-04 map is archived as superseded)**.
 - **Architecture untouched:** same 30 missions, order, ids and registry keys; checkpoints 10/18/24/30.
 - **Dialogues:** 12 missions unchanged; small fixes in 01, 06, 07, 12, 13, 14, 16, 19, 23, 26 (+ one-line
   polish in 22, 29, 30); rewritten/rebuilt 04 (two scenes), 10 (border → taxi → hotel), 15 (allergy vs.
