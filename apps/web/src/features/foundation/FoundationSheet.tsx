@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { t } from '../../shared/i18n/strings.js';
-import { cancelSpeech } from '../../shared/audio/tts.js';
+import { cancelSpeech, speak } from '../../shared/audio/tts.js';
+import { sessionSeed } from '../../shared/util/shuffle.js';
 import { tap } from '../../shared/ui/haptics.js';
 import { Sheet } from '../../shared/ui/Sheet.js';
 import { SpeakerButton } from '../../shared/ui/SpeakerButton.js';
@@ -14,6 +15,8 @@ import { missionsFor } from '../bootcamp/bootcampStore.js';
 import { buildFoundation, buildWord, type FoundationCategoryModel, type FoundationWord } from './foundationContent.js';
 import { foundationProgress } from './foundationProgress.js';
 import { useFoundationStore } from './foundationStore.js';
+import { categoriesOf, swatchOf, tileOrder } from './foundationTiles.js';
+import { FOUNDATION_TAXONOMY } from './taxonomy.js';
 
 /**
  * Foundation sheet — ONE component renders every mode from the data model, no per-category screen:
@@ -22,6 +25,10 @@ import { useFoundationStore } from './foundationStore.js';
  *  • the mission "Learn now" opens a GUIDED mini-session (`store.session`) with a header, progress bar
  *    and Prev / Next / ✓ Back to Mission over EXACTLY the current mission's Foundation words.
  * It is the single shared word sheet; opening a word page marks the concept viewed (progress).
+ *
+ * Browsing is built for a thumb: categories are tiles in two groups (the building blocks, then the
+ * world — animals, colours, food…), and a category is a grid of tappable tiles — tap to HEAR the
+ * word (and count it as seen), ⓘ for its page. Colour tiles are painted in their colour.
  */
 
 type BrowseLevel =
@@ -56,11 +63,15 @@ export function FoundationSheet() {
   const sessionGo = useFoundationStore((s) => s.sessionGo);
   const close = useFoundationStore((s) => s.close);
   const viewed = useFoundationStore((s) => s.viewed);
+  const markViewed = useFoundationStore((s) => s.markViewed);
   const learningLang = useAppStore((s) => s.learningLang);
   const uiLang = useAppStore((s) => s.uiLang);
 
   const [words, setWords] = useState<CoreWord[] | null>(null);
   const [browse, setBrowse] = useState<BrowseLevel>({ level: 'categories' });
+  // One tile order per visit to a category (lively, but never reshuffling under the thumb).
+  const [seed, setSeed] = useState(sessionSeed);
+  const [said, setSaid] = useState<string | null>(null); // the tile that is being heard right now
 
   const missions = useMemo(() => missionsFor(learningLang), [learningLang]);
 
@@ -105,7 +116,17 @@ export function FoundationSheet() {
   const onBrowseBack = () => {
     tap();
     cancelSpeech();
+    setSaid(null);
     setBrowse((n) => (n.level === 'word' ? { level: 'words', cat: n.cat } : { level: 'categories' }));
+  };
+  const openCategory = (cat: FoundationCategoryModel): void => { tap(); setSeed(sessionSeed()); setSaid(null); setBrowse({ level: 'words', cat }); };
+  /** Tap a tile: hear the word, count it as seen, light the tile while it plays. */
+  const hear = (w: FoundationWord): void => {
+    tap();
+    cancelSpeech();
+    markViewed(w.conceptId);
+    setSaid(w.conceptId);
+    void speak(w.display.audioText, w.display.audioLang).then(() => setSaid((cur) => (cur === w.conceptId ? null : cur)));
   };
 
   // Header: a word page NEVER repeats the word in the header (the big page title is the sole word).
@@ -183,38 +204,54 @@ export function FoundationSheet() {
               </div>
               <Bar pct={progress.overall.pct} />
             </div>
-            <div className="foundation-cats">
-              {model.map((c) => {
-                const p = progress.byCategory[c.id] ?? { id: c.id, viewed: 0, total: c.words.length, pct: 0 };
+            {(['world', 'blocks'] as const).map((group) => {
+              const cats = categoriesOf(model, FOUNDATION_TAXONOMY, group);
+              if (cats.length === 0) return null;
+              return (
+                <section key={group} className={`foundation-group foundation-group-${group}`} aria-label={t(group === 'world' ? 'foundationGroupWorld' : 'foundationGroupBlocks')}>
+                  <h3 className="foundation-group-title">{t(group === 'world' ? 'foundationGroupWorld' : 'foundationGroupBlocks')}</h3>
+                  <p className="dim small foundation-group-sub">{t(group === 'world' ? 'foundationGroupWorldSub' : 'foundationGroupBlocksSub')}</p>
+                  <div className="foundation-cats">
+                    {cats.map((c) => {
+                      const p = progress.byCategory[c.id] ?? { id: c.id, viewed: 0, total: c.words.length, pct: 0 };
+                      return (
+                        <button key={c.id} className={`foundation-cat card-press ${p.pct === 100 ? 'is-done' : ''}`} onClick={() => openCategory(c)} aria-label={`${t(c.titleKey)} · ${p.viewed}/${p.total}`}>
+                          <span className="foundation-cat-icon" aria-hidden>{c.icon}</span>
+                          <span className="foundation-cat-title">{t(c.titleKey)}</span>
+                          <span className="foundation-cat-count dim">{p.pct === 100 ? '✓' : `${p.viewed}/${p.total}`}</span>
+                          <Bar pct={p.pct} />
+                        </button>
+                      );
+                    })}
+                  </div>
+                </section>
+              );
+            })}
+          </>
+        ) : (
+          <div className="foundation-tiles-wrap">
+            <p className="dim small foundation-tiles-hint"><span aria-hidden>🔊</span> {t('foundationTileHint')} · {t('foundationWordsN', { n: browse.cat.words.length })}</p>
+            <div className="foundation-tiles" role="list">
+              {tileOrder(browse.cat.words, seed, viewed).map((w) => {
+                const dm = w.display;
+                const seen = viewed.has(w.conceptId);
+                const swatch = swatchOf(w.conceptId);
+                const playing = said === w.conceptId;
                 return (
-                  <button key={c.id} className="foundation-cat card-press" onClick={() => { tap(); setBrowse({ level: 'words', cat: c }); }}>
-                    <span className="foundation-cat-icon" aria-hidden>{c.icon}</span>
-                    <span className="foundation-cat-title">{t(c.titleKey)}</span>
-                    <span className="foundation-cat-count dim">{p.viewed}/{p.total}</span>
-                    <Bar pct={p.pct} />
-                  </button>
+                  <div key={dm.contentId} role="listitem" className={`foundation-tile ${swatch ? 'is-color' : ''} ${seen ? 'is-seen' : ''} ${playing ? 'is-playing' : ''}`} style={swatch ? { background: swatch.bg, color: swatch.ink } : undefined}>
+                    <button className="foundation-tile-hear" onClick={() => hear(w)} aria-label={`🔊 ${dm.primaryText}`}>
+                      {!swatch && <span className="foundation-tile-emoji" aria-hidden>{dm.emoji ?? '✦'}</span>}
+                      <span dir={dm.primaryDirection} className="foundation-tile-word">{dm.primaryText}</span>
+                      {dm.secondaryText && dm.secondaryText !== dm.primaryText && <span dir={dm.secondaryDirection} className="foundation-tile-gloss">{dm.secondaryText}</span>}
+                      <span className="foundation-tile-play" aria-hidden><Icon name={playing ? 'volume' : 'play'} size={14} /></span>
+                    </button>
+                    <button className="foundation-tile-info" onClick={() => { tap(); cancelSpeech(); setSaid(null); setBrowse({ level: 'word', word: w, cat: browse.cat }); }} aria-label={`${t('foundationTileDetails')}: ${dm.primaryText}`}>ⓘ</button>
+                    {seen && <span className="foundation-tile-seen" aria-label={t('foundationViewed')}>✓</span>}
+                  </div>
                 );
               })}
             </div>
-          </>
-        ) : (
-          <div>
-            {browse.cat.words.map((w) => {
-              const dm = w.display;
-              const seen = viewed.has(w.conceptId);
-              return (
-                <div key={dm.contentId} className="foundation-word-row">
-                  <button className="foundation-word-open" onClick={() => { tap(); setBrowse({ level: 'word', word: w, cat: browse.cat }); }}>
-                    {seen && <span className="foundation-seen" aria-label={t('foundationViewed')}>✓</span>}
-                    <span style={{ minWidth: 0 }}>
-                      <span dir={dm.primaryDirection} className="foundation-word-target">{dm.primaryText}</span>
-                      {dm.secondaryText && dm.secondaryText !== dm.primaryText && <span dir={dm.secondaryDirection} className="dim small foundation-word-gloss">{dm.secondaryText}</span>}
-                    </span>
-                  </button>
-                  <SpeakerButton text={dm.audioText} lang={dm.audioLang} stop size={40} />
-                </div>
-              );
-            })}
+            <div className="foundation-tiles-fade" aria-hidden />
           </div>
         )}
       </div>

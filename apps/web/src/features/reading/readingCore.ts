@@ -147,3 +147,10 @@ export function featuredStory(
   const story = started ?? unread ?? stories[0]!;
   return { story, inProgress: started !== undefined, allDone: unread === undefined };
 }
+
+/** The story before and after `id` in a collection (null at the ends), and where it sits. Pure. */
+export function adjacentStories<T extends { id: string }>(stories: readonly T[], id: string): { prev: T | null; next: T | null; index: number } {
+  const index = stories.findIndex((s) => s.id === id);
+  if (index === -1) return { prev: null, next: null, index: -1 };
+  return { prev: stories[index - 1] ?? null, next: stories[index + 1] ?? null, index };
+}

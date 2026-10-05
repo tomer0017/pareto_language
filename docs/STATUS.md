@@ -22,6 +22,24 @@ loop (typecheck → lint → tests → build → smoke) green at every milestone
 
 ## What's done
 
+### Mobile UX pass — Listen module, story player, visual Foundations (2026-10-06)
+- **Listen:** the tabs and what they switch are now ONE card (`listen-module`: tabs as header, a
+  `tabpanel` body that fades in on switch; inner cards flat). The story card moved into the Stories
+  tab. Nothing audible changed.
+- **Story reader:** the bottom controls were stacking vertically (two same-specificity rules; the
+  later `flex-direction: column` won), which pushed the player low and tall. The player is now a solid
+  card that names the story it plays (cover thumbnail, title, line i/n) over one row of controls, and
+  carries previous / next story arrows; the cover has the same arrows (`adjacentStories`, pure).
+- **Foundations:** the sheet is a visual, tappable area. Categories are 3-up tiles in two groups —
+  "The world around you" (colours, animals, fruits & vegetables, food & drink, home & furniture,
+  nature & garden, sports, transport, body, clothing, weather, places — 11 new, all slices of the
+  existing Core packs via `taxonomy.ts`, every word in exactly one topic) and the building blocks.
+  Words are 3-up tiles: tap = hear it (+ counts as seen), ⓘ = the word page; colour tiles are painted
+  in their colour (`foundationTiles.ts`, by concept id); order is a seeded per-visit shuffle with
+  unseen words first. In-mission nudges stay limited to the building blocks.
+- Not done: browser / device QA. Limitation: world-topic words have no authored FR/ES example
+  sentence yet (the page shows the meaning; it never falls back to English).
+
 ### Free learning restored — one obvious door to every self-directed tool (2026-10-05)
 - **Root cause (from git):** the 29-mission refactor (`752463f`) turned Home into a coach and moved
   every self-directed tool under Learn → "More practice" → the Core library's inner menus; the

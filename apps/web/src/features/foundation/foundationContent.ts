@@ -297,8 +297,8 @@ function buildWordWithIndex(
 }
 
 /**
- * The Foundation building-block words that appear in a set of learning-language lines (a mission's
- * items), in order of first appearance, deduped by concept. Powers the guided "Learn now" session
+ * The Foundation BUILDING-BLOCK words (the `blocks` group — never the world topics) that appear in a
+ * set of learning-language lines (a mission's items), in order of first appearance, deduped by concept. Powers the guided "Learn now" session
  * and Smart Detection so both traverse EXACTLY the words relevant to the current mission — never the
  * whole Foundation database.
  */
@@ -310,7 +310,9 @@ export function missionFoundationWords(targets: string[], index: CorpusIndex): C
       const w = seg.word;
       if (!w || seen.has(w.conceptId)) continue;
       seen.add(w.conceptId);
-      if (isFoundationWord(w)) out.push(w);
+      // Only the BUILDING BLOCKS nudge inside a mission (the small words a sentence needs); the
+      // world topics (animals, food…) are for browsing and never interrupt a lesson.
+      if (foundationCategoryOf(w)?.group === 'blocks') out.push(w);
     }
   }
   return out;

@@ -239,17 +239,19 @@ describe('buildFoundation over the REAL packs (data-driven coverage gate)', () =
   // Registry-driven: EVERY installed example language is validated automatically — adding a language
   // to `EXAMPLES_BY_LANG` auto-extends this coverage gate, no test edit needed (scalability guard).
   for (const lang of EXAMPLE_LANGS) {
-    it(`every ${lang} Foundation word has an authored ${lang} example (coverage — no English fallback)`, () => {
+    it(`every ${lang} building-block word has an authored ${lang} example (coverage — no English fallback)`, () => {
+      // The promise covers the BUILDING BLOCKS. A world-topic word (animals, food…) with no authored
+      // example shows its meaning only — never an English sentence as the target (buildExample).
       const ids = new Set(authoredExampleIds(lang));
       const missing = loadPack(lang)
-        .filter((w) => FOUNDATION_TAXONOMY.some((c) => matchesCategory(w, c)))
+        .filter((w) => FOUNDATION_TAXONOMY.some((c) => c.group === 'blocks' && matchesCategory(w, c)))
         .filter((w) => !ids.has(w.conceptId))
         .map((w) => `${w.conceptId} (${w.word})`);
       expect(missing, `${lang} Foundation words missing an example:\n${missing.join('\n')}`).toEqual([]);
     });
   }
 
-  it('keeps categories in declared order and drops none of the ten', () => {
+  it('keeps categories in declared order and drops none of them', () => {
     const model = buildFoundation(loadPack('en'), {}, 'en', 'en');
     expect(model).toHaveLength(FOUNDATION_TAXONOMY.length);
     expect(model.map((c) => c.id)).toEqual([...FOUNDATION_TAXONOMY].sort((a, b) => a.order - b.order).map((c) => c.id));

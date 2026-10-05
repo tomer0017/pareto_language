@@ -79,29 +79,35 @@ export function Listen() {
       <LangStrip />
       <PageHeader title={t('listenTitle')} sub={t('listenSub')} icon={<Icon name="listen" />} />
       <div className="screen-scroll">
-        <div className="tabs" role="tablist" aria-label={t('listenTitle')}>
-          {CATEGORIES.map((c) => (
-            <button key={c.id} role="tab" aria-selected={category === c.id} className={`tab ${category === c.id ? 'active' : ''}`} onClick={() => { tap(); setCategory(c.id); }}>
-              <Icon name={c.icon} size={17} />{t(c.key)}
-            </button>
-          ))}
-        </div>
+        {/* ONE module: the tabs are its header, what plays is its body — switching a tab visibly
+            swaps the body of the same card, so the relationship never has to be guessed. */}
+        <section className="card listen-module" aria-label={t('listenTitle')}>
+          <div className="tabs listen-tabs" role="tablist" aria-label={t('listenTitle')}>
+            {CATEGORIES.map((c) => (
+              <button key={c.id} role="tab" aria-selected={category === c.id} aria-controls="listen-panel" className={`tab ${category === c.id ? 'active' : ''}`} onClick={() => { tap(); setCategory(c.id); }}>
+                <Icon name={c.icon} size={17} />{t(c.key)}
+              </button>
+            ))}
+          </div>
+          <div id="listen-panel" role="tabpanel" className="listen-panel" key={category}>
+            {/* The Stories tab leads with the story itself (its cover, read or listen); the player below plays them. */}
+            {category === 'stories' && stories && stories.length > 0 && <StoryCard stories={stories} lang={readingLang} onOpen={(id) => open('reading', id)} onAll={() => open('reading')} />}
 
-        {stories && stories.length > 0 && <StoryCard stories={stories} lang={readingLang} onOpen={(id) => open('reading', id)} onAll={() => open('reading')} />}
-
-        {playlist === null ? (
-          <p className="dim center" style={{ padding: '32px 0' }}>{t('listenStoriesLoading')}</p>
-        ) : playlist.items.length === 0 ? (
-          <div className="card center"><p className="dim">{t('listenEmpty')}</p></div>
-        ) : (
-          // Keyed by category + languages: switching any of them is a clean new session.
-          <ListenPlayer
-            key={`${category}:${app.learningLang}:${app.uiLang}`}
-            playlist={playlist}
-            bookmarkKey={`listen:${category}:${app.learningLang}`}
-            autoQuick={quick && category === 'phrases'}
-          />
-        )}
+            {playlist === null ? (
+              <p className="dim center" style={{ padding: '32px 0' }}>{t('listenStoriesLoading')}</p>
+            ) : playlist.items.length === 0 ? (
+              <div className="card center"><p className="dim">{t('listenEmpty')}</p></div>
+            ) : (
+              // Keyed by category + languages: switching any of them is a clean new session.
+              <ListenPlayer
+                key={`${category}:${app.learningLang}:${app.uiLang}`}
+                playlist={playlist}
+                bookmarkKey={`listen:${category}:${app.learningLang}`}
+                autoQuick={quick && category === 'phrases'}
+              />
+            )}
+          </div>
+        </section>
 
         <div className="section-head"><h2>{t('listenMore')}</h2></div>
         <div className="support-grid">

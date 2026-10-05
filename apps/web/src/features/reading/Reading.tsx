@@ -9,7 +9,7 @@ import { TappableText } from '../foundation/TappableText.js';
 import { useParrotPlayback } from '../../shared/playback/index.js';
 import { Sheet } from '../../shared/ui/Sheet.js';
 import { READING_COLLECTIONS } from './collections.js';
-import { LEVEL_BAND, buildStoryItems, readingTimeMin, scoreQuiz } from './readingCore.js';
+import { LEVEL_BAND, adjacentStories, buildStoryItems, readingTimeMin, scoreQuiz } from './readingCore.js';
 import { useReadingStore, type ReadingPlayback } from './readingStore.js';
 import { COLLECTION_HERO, collectionHeroUrls, storyImageUrl } from './storyImages.js';
 import { READING_LANGS, type QuizResponse, type ReadingCollection, type ReadingLang, type Story } from './types.js';
@@ -65,7 +65,7 @@ export function Reading() {
     return () => { live = false; };
   }, [requested]);
 
-  if (story) return <StoryReader story={story} onExit={() => setStory(null)} />;
+  if (story) return <StoryReader story={story} siblings={collection?.stories ?? [story]} onNavigate={(st) => { tap(); setStory(st); }} onExit={() => setStory(null)} />;
 
   const openCollection = async (id: string): Promise<void> => {
     const meta = READING_COLLECTIONS.find((c) => c.id === id);
@@ -168,7 +168,7 @@ function StoryCard({ story, rl, onOpen }: { story: Story; rl: ReadingLang; onOpe
 }
 
 /** The full-screen story reader: modes, per-sentence audio (shared engine), Universal Tap, transport. */
-function StoryReader({ story, onExit }: { story: Story; onExit: () => void }) {
+function StoryReader({ story, siblings, onNavigate, onExit }: { story: Story; /** the stories of the open collection, for previous / next */ siblings: Story[]; onNavigate: (story: Story) => void; onExit: () => void }) {
   const rl = useReadingLang();
   const uiLang = useAppStore((s) => s.uiLang);
   const mode = useReadingStore((s) => s.mode);
@@ -198,6 +198,8 @@ function StoryReader({ story, onExit }: { story: Story; onExit: () => void }) {
   const pb = useParrotPlayback(items, { scope: 'story', bookmarkKey: `reading:${rl}:${story.id}`, order: 'sequential', speakOrder });
   const playing = pb.status === 'playing';
   const current = pb.currentIndex;
+  const nav = adjacentStories(siblings, story.id);
+  const goStory = (st: Story | null): void => { if (!st) return; pb.pause(); onNavigate(st); };
 
   const setPlayOrder = (o: ReadingPlayback): void => { tap(); pb.pause(); setPlayback(o); };
   const PLAY_ORDERS = [
@@ -226,7 +228,17 @@ function StoryReader({ story, onExit }: { story: Story; onExit: () => void }) {
           illustration leads so a beginner grasps the context BEFORE meeting the foreign text. */}
       <div className="reader-scroll">
         <div className="reader-hero fade-in">
-          <StoryImage src={storyImageUrl(story)} alt={story.title.target.en} className="reader-hero-img" />
+          <div className="reader-hero-frame">
+            <StoryImage src={storyImageUrl(story)} alt={story.title.target.en} className="reader-hero-img" />
+            {/* Previous / next story: physical arrows on the cover (a cover reads the same in every direction). */}
+            {siblings.length > 1 && (
+              <div className="reader-story-nav" dir="ltr">
+                <button type="button" className="reader-story-arrow" disabled={!nav.prev} onClick={() => goStory(nav.prev)} aria-label={t('readingPrevStory')}>‹</button>
+                <span className="reader-story-pos">{t('readingStoryOf', { i: nav.index + 1, n: siblings.length })}</span>
+                <button type="button" className="reader-story-arrow" disabled={!nav.next} onClick={() => goStory(nav.next)} aria-label={t('readingNextStory')}>›</button>
+              </div>
+            )}
+          </div>
           <h2 className="reader-hero-title">{story.title.target[rl]}</h2>
           <p className="reader-hero-sub dim">{L(story.title.tr)}</p>
           <p className="reader-hero-meta dim small">
@@ -248,15 +260,31 @@ function StoryReader({ story, onExit }: { story: Story; onExit: () => void }) {
         ))}
       </div>
 
-      {/* Essential controls only: media transport (LTR, consistent) + settings + go to quiz. */}
+      {/* The player is a card of its own, visibly about THIS story: its cover and title ride on it,
+          with where you are in it; then the transport (LTR, consistent) + settings + the quiz. */}
       <div className="reader-transport reading-transport">
-        <div className="parrot-transport" dir="ltr">
-          <button type="button" className="parrot-step" onClick={() => { tap(); pb.prev(); }} aria-label={t('parrotPrev')}>‹</button>
-          <button type="button" className="parrot-play" onClick={() => { tap(); pb.toggle(); }} aria-label={playing ? t('parrotPause') : t('parrotPlay')}>{playing ? '❚❚' : '▶'}</button>
-          <button type="button" className="parrot-step" onClick={() => { tap(); pb.next(); }} aria-label={t('parrotNext')}>›</button>
+        <div className="reader-now">
+          <StoryImage src={storyImageUrl(story)} alt="" className="reader-now-img" />
+          <span className="reader-now-body">
+            <span className="reader-now-title">{story.title.target[rl]}</span>
+            <span className="dim small">{t('lineProgress', { i: pb.position, n: pb.total })}{siblings.length > 1 ? ` · ${t('readingStoryOf', { i: nav.index + 1, n: siblings.length })}` : ''}</span>
+          </span>
+          {siblings.length > 1 && (
+            <span className="reader-now-arrows" dir="ltr">
+              <button type="button" className="reader-now-arrow" disabled={!nav.prev} onClick={() => goStory(nav.prev)} aria-label={t('readingPrevStory')}>‹</button>
+              <button type="button" className="reader-now-arrow" disabled={!nav.next} onClick={() => goStory(nav.next)} aria-label={t('readingNextStory')}>›</button>
+            </span>
+          )}
         </div>
-        <button type="button" className="reading-gear btn-secondary" onClick={() => { tap(); setSettingsOpen(true); }} aria-label={t('readingSettings')}>⚙</button>
-        <button type="button" className="btn-accent reading-quiz-btn" onClick={() => { tap(); pb.pause(); setShowQuiz(true); }}>✓ {t('readingToQuiz')}</button>
+        <div className="reader-controls">
+          <div className="parrot-transport" dir="ltr">
+            <button type="button" className="parrot-step" onClick={() => { tap(); pb.prev(); }} aria-label={t('parrotPrev')}>‹</button>
+            <button type="button" className="parrot-play" onClick={() => { tap(); pb.toggle(); }} aria-label={playing ? t('parrotPause') : t('parrotPlay')}>{playing ? '❚❚' : '▶'}</button>
+            <button type="button" className="parrot-step" onClick={() => { tap(); pb.next(); }} aria-label={t('parrotNext')}>›</button>
+          </div>
+          <button type="button" className="reading-gear btn-secondary" onClick={() => { tap(); setSettingsOpen(true); }} aria-label={t('readingSettings')}>⚙</button>
+          <button type="button" className="btn-accent reading-quiz-btn" onClick={() => { tap(); pb.pause(); setShowQuiz(true); }}>✓ {t('readingToQuiz')}</button>
+        </div>
       </div>
 
       {/* Secondary settings (only what's meaningful while reading) live in a compact bottom sheet. */}
