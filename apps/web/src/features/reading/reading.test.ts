@@ -172,6 +172,7 @@ describe('Reading — progress store (mode, resume, completion, persistence)', (
     expect(useReadingStore.getState().streak.count).toBe(1);
     // durably persisted
     const saved = JSON.parse(storage.get('ready.reading.v1')!);
-    expect(saved.stories['bs-little-apple'].done).toBe(true);
+    expect(saved.byLang[useReadingStore.getState().lang].stories['bs-little-apple'].done).toBe(true);
+    expect(saved.stories).toBeUndefined(); // progress is never written unscoped
   });
 });

@@ -1,4 +1,3 @@
-import { mulberry32, shuffle } from '../../shared/util/shuffle.js';
 import type { FoundationCategoryModel, FoundationWord } from './foundationContent.js';
 import type { FoundationCategory } from './taxonomy.js';
 
@@ -26,14 +25,13 @@ export const COLOR_SWATCH: Readonly<Record<string, { bg: string; ink: string }>>
 export const swatchOf = (conceptId: string): { bg: string; ink: string } | undefined => COLOR_SWATCH[conceptId];
 
 /**
- * The order tiles are laid out in: a light, session-stable shuffle so a category never reads as the
- * same rigid list twice — but words the learner has not yet looked at always come first, so the
- * next thing to tap is near the top and the ones already seen sink below. Seeded, so re-renders
- * never reorder what is on screen.
+ * The order tiles are laid out in: the category's own order (the corpus ranking — the most useful
+ * words first), and NOTHING moves it. Tapping, hearing, marking a word seen, a re-render: the grid
+ * stays exactly where the thumb left it. (A per-tap "unseen first" reshuffle was tried and removed
+ * on 2026-10-06 — on a phone it made the grid jump under the finger.)
  */
-export function tileOrder<T extends Pick<FoundationWord, 'conceptId'>>(words: readonly T[], seed: number, viewed: ReadonlySet<string>): T[] {
-  const mixed = shuffle(words, mulberry32(seed));
-  return [...mixed.filter((w) => !viewed.has(w.conceptId)), ...mixed.filter((w) => viewed.has(w.conceptId))];
+export function tileOrder<T extends Pick<FoundationWord, 'conceptId'>>(words: readonly T[]): T[] {
+  return [...words];
 }
 
 /** The categories of one group, in their declared order. */

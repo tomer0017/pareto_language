@@ -22,6 +22,27 @@ loop (typecheck → lint → tests → build → smoke) green at every milestone
 
 ## What's done
 
+### Real-device QA fixes — stable tiles, progress per language, 9:16 video, whole hero, first-run languages (2026-10-06)
+- **Foundations tiles no longer move:** the "unseen first" ordering re-sorted the grid on every tap
+  (marking a word seen changed the sort key). The order is now the category's own and nothing
+  reorders it (`tileOrder` is an identity copy; no shuffle).
+- **Progress is per learning language.** Audit: missions (`ready.bootcamp.v2.<lang>`), companion and
+  zero-start were already keyed by language; the Foundation `viewed` / `dismissed` sets and the
+  reading progress were global. Both now live under `byLang` (`ready.foundation.v2`;
+  `ready.reading.v1` keeps its key with a `byLang` field) and follow `learningLang` through one
+  store subscription. Migration: old unscoped data is assigned ONCE to the language that was active
+  when it was saved (`ready.lang`, else English) and the legacy keys removed — never copied to other
+  languages. Shared, by design: theme, app language, speech rate, playback preferences, listen mode,
+  reading mode / voice order.
+- **9:16 video:** the frame is a portrait 9:16 box, as wide as the column but never taller than the
+  viewport minus the heading and the Continue zone; the clip is `object-fit: contain` — the whole
+  frame and burned-in subtitles are always visible.
+- **First-run hero:** the classroom (851×968) is shown whole (own-ratio box, `contain`, 14px overlap).
+- **First-run languages:** the welcome drew Spanish and French as plain cards marked READY. Every
+  picker now uses one model (`languageBadge` / `isSelectableLanguage` in `languages.ts`): en / es / fr
+  selectable on the very first run, it / ar coming soon and disabled.
+- Tests: `languageProgress.test.ts`, `firstRun.test.ts`. Not done: browser / device QA.
+
 ### Mobile UX pass — Listen module, story player, visual Foundations (2026-10-06)
 - **Listen:** the tabs and what they switch are now ONE card (`listen-module`: tabs as header, a
   `tabpanel` body that fades in on switch; inner cards flat). The story card moved into the Stories

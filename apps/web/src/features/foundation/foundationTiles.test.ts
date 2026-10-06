@@ -6,6 +6,7 @@ import { adjacentStories } from '../reading/readingCore.js';
 import { buildFoundation, matchesCategory } from './foundationContent.js';
 import { COLOR_SWATCH, categoriesOf, swatchOf, tileOrder } from './foundationTiles.js';
 import { FOUNDATION_TAXONOMY } from './taxonomy.js';
+import { useFoundationStore } from './foundationStore.js';
 import type { CoreWord } from '../../shared/content/coreWords.js';
 
 /**
@@ -48,21 +49,26 @@ describe('the world topics', () => {
 
 describe('the tiles', () => {
   const words = ['a', 'b', 'c', 'd', 'e', 'f'].map((id) => ({ conceptId: `concept.word.${id}` }));
-  it('order is a seeded shuffle — stable for a seed, different between seeds, unseen words first', () => {
-    const none = new Set<string>();
-    expect(tileOrder(words, 7, none)).toEqual(tileOrder(words, 7, none));
-    expect(tileOrder(words, 7, none).map((w) => w.conceptId).sort()).toEqual(words.map((w) => w.conceptId).sort());
-    const seeds = new Set([1, 2, 3, 4, 5, 6, 7, 8].map((s) => tileOrder(words, s, none).map((w) => w.conceptId).join()));
-    expect(seeds.size).toBeGreaterThan(1);
-    const seen = new Set(['concept.word.a', 'concept.word.b']);
-    const ordered = tileOrder(words, 7, seen).map((w) => w.conceptId);
-    expect(ordered.slice(-2).sort()).toEqual(['concept.word.a', 'concept.word.b']);
+  it('order is the category\'s own order and NOTHING moves it — not a tap, not hearing a word, not marking it seen', () => {
+    const before = tileOrder(words).map((w) => w.conceptId);
+    expect(before).toEqual(words.map((w) => w.conceptId)); // corpus order, no shuffle
+    // Tapping tile 3 = speak + markViewed; the order the next render lays out is identical.
+    const store = useFoundationStore.getState();
+    store.markViewed('concept.word.c');
+    store.markViewed('concept.word.a');
+    expect(tileOrder(words).map((w) => w.conceptId)).toEqual(before);
+    expect(tileOrder(words)).not.toBe(words); // a copy — the model is never mutated
+    // Nothing in the sheet reorders on state: no seed, no shuffle, no viewed-dependent sort.
+    const sheet = src('./FoundationSheet.tsx');
+    expect(sheet).toContain('tileOrder(browse.cat.words).map((w) => {');
+    expect(sheet).not.toMatch(/sessionSeed|shuffle\(/);
+    expect(src('./foundationTiles.ts')).not.toMatch(/import [^\n]*shuffle|viewed\.has|sort\(/);
   });
   it('the sheet lays categories out as a 3-up tile grid in two groups, and words as 3-up tiles that play on tap', () => {
     const sheet = src('./FoundationSheet.tsx');
     expect(sheet).toContain("(['world', 'blocks'] as const).map((group) =>");
     expect(sheet).toContain('categoriesOf(model, FOUNDATION_TAXONOMY, group)');
-    expect(sheet).toContain('tileOrder(browse.cat.words, seed, viewed)');
+    expect(sheet).toContain('tileOrder(browse.cat.words)');
     expect(sheet).toContain('onClick={() => hear(w)}'); // the whole tile hears the word
     expect(sheet).toContain('void speak(w.display.audioText, w.display.audioLang)');
     expect(sheet).toContain('markViewed(w.conceptId);'); // hearing counts as seen

@@ -58,6 +58,16 @@ export function languageName(code: string): string {
   return L(languageInfo(code).names);
 }
 
+/** What every language picker shows and allows — first run and in-app alike. ONE rule: a language
+ *  with a shipped pack is selectable (badge "ready", or "early access" while its Bootcamp is still
+ *  being authored); anything else is "coming soon" and cannot be chosen. */
+export function languageBadge(code: string): 'ready' | 'earlyAccess' | 'comingSoon' {
+  const i = LEARNING_LANGUAGES.find((l) => l.code === code);
+  if (!i?.available) return 'comingSoon';
+  return i.earlyAccess ? 'earlyAccess' : 'ready';
+}
+export const isSelectableLanguage = (code: string): boolean => languageBadge(code) !== 'comingSoon';
+
 /** The current pilot / default trip language. Single source of truth for the default. */
 export const PILOT_LANG = 'en';
 

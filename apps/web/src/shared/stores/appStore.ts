@@ -13,7 +13,7 @@ import type {
 } from '@ready/content-schema';
 import { ApiProvider, LocalProvider, type DataProvider } from '@ready/data';
 import { buildPlan, computeReadiness, DAY_MS } from '@ready/engine';
-import { applyLanguageTheme, applyUiDirection, languageInfo, PILOT_LANG } from '../i18n/languages.js';
+import { applyLanguageTheme, applyUiDirection, isSelectableLanguage, languageInfo, PILOT_LANG } from '../i18n/languages.js';
 import { setUiLangDict } from '../i18n/strings.js';
 import { reportContentSource, setProviderDiag } from '../data/dataDiag.js';
 
@@ -137,7 +137,9 @@ function makeProvider(): DataProvider {
     : local;
 }
 
-const storedTheme: 'light' | 'dark' = localStorage.getItem('ready.theme') === 'dark' ? 'dark' : 'light';
+/** A stored value, or null where storage is unavailable (private mode, a test without a browser). */
+const stored = (key: string): string | null => { try { return localStorage.getItem(key); } catch { return null; } };
+const storedTheme: 'light' | 'dark' = stored('ready.theme') === 'dark' ? 'dark' : 'light';
 if (typeof document !== 'undefined') document.documentElement.dataset.theme = storedTheme;
 
 /** Before the learner has chosen an app language, start in their device's — so the very first
@@ -150,10 +152,10 @@ export function deviceUiLang(languages: readonly string[] = typeof navigator !==
   }
   return 'en';
 }
-const storedUiLang = localStorage.getItem('ready.uiLang') ?? deviceUiLang();
+const storedUiLang = stored('ready.uiLang') ?? deviceUiLang();
 // English is the current pilot language (see languages.ts / PILOT_LANG). Any legacy 'it'
 // preference from before the switch is normalized to the pilot so no user is stuck on Italian.
-const rawLearningLang = localStorage.getItem('ready.lang') ?? PILOT_LANG;
+const rawLearningLang = stored('ready.lang') ?? PILOT_LANG;
 const storedLearningLang = languageInfo(rawLearningLang).available ? rawLearningLang : PILOT_LANG;
 setUiLangDict(storedUiLang);
 
@@ -217,7 +219,7 @@ export const useAppStore = create<AppState>((set, get) => ({
   },
 
   async setLearningLang(lang) {
-    if (!languageInfo(lang).available) return; // only shipped packs are selectable (R1)
+    if (!isSelectableLanguage(lang)) return; // the one readiness rule every picker uses (languages.ts)
     localStorage.setItem('ready.lang', lang);
     applyLanguageTheme(lang);
     set({ learningLang: lang });

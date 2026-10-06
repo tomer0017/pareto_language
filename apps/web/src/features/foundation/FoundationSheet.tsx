@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { t } from '../../shared/i18n/strings.js';
 import { cancelSpeech, speak } from '../../shared/audio/tts.js';
-import { sessionSeed } from '../../shared/util/shuffle.js';
 import { tap } from '../../shared/ui/haptics.js';
 import { Sheet } from '../../shared/ui/Sheet.js';
 import { SpeakerButton } from '../../shared/ui/SpeakerButton.js';
@@ -69,8 +68,6 @@ export function FoundationSheet() {
 
   const [words, setWords] = useState<CoreWord[] | null>(null);
   const [browse, setBrowse] = useState<BrowseLevel>({ level: 'categories' });
-  // One tile order per visit to a category (lively, but never reshuffling under the thumb).
-  const [seed, setSeed] = useState(sessionSeed);
   const [said, setSaid] = useState<string | null>(null); // the tile that is being heard right now
 
   const missions = useMemo(() => missionsFor(learningLang), [learningLang]);
@@ -119,7 +116,7 @@ export function FoundationSheet() {
     setSaid(null);
     setBrowse((n) => (n.level === 'word' ? { level: 'words', cat: n.cat } : { level: 'categories' }));
   };
-  const openCategory = (cat: FoundationCategoryModel): void => { tap(); setSeed(sessionSeed()); setSaid(null); setBrowse({ level: 'words', cat }); };
+  const openCategory = (cat: FoundationCategoryModel): void => { tap(); setSaid(null); setBrowse({ level: 'words', cat }); };
   /** Tap a tile: hear the word, count it as seen, light the tile while it plays. */
   const hear = (w: FoundationWord): void => {
     tap();
@@ -232,7 +229,7 @@ export function FoundationSheet() {
           <div className="foundation-tiles-wrap">
             <p className="dim small foundation-tiles-hint"><span aria-hidden>🔊</span> {t('foundationTileHint')} · {t('foundationWordsN', { n: browse.cat.words.length })}</p>
             <div className="foundation-tiles" role="list">
-              {tileOrder(browse.cat.words, seed, viewed).map((w) => {
+              {tileOrder(browse.cat.words).map((w) => {
                 const dm = w.display;
                 const seen = viewed.has(w.conceptId);
                 const swatch = swatchOf(w.conceptId);

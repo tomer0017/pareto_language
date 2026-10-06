@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react';
 import type { SituationPriority } from '@ready/content-schema';
 import { selectTier, DAY_MS } from '@ready/engine';
 import { useAppStore } from '../../shared/stores/appStore.js';
-import { LEARNING_LANGUAGES, UI_LANGUAGES, languageInfo, languageName, PILOT_LANG } from '../../shared/i18n/languages.js';
+import { LEARNING_LANGUAGES, UI_LANGUAGES, isSelectableLanguage, languageBadge, languageInfo, languageName } from '../../shared/i18n/languages.js';
 import { L, t, uiLangCode } from '../../shared/i18n/strings.js';
 import { tap } from '../../shared/ui/haptics.js';
 import { Icon } from '../../shared/ui/Icon.js';
@@ -115,20 +115,31 @@ export function Onboarding() {
           <h1 style={{ textAlign: 'center' }}>{t('pilotWelcomeTitle')}</h1>
           <p className="dim center" style={{ margin: '8px 0 20px' }}>{t('pilotWelcomeSub')}</p>
           <p className="drill-label" style={{ marginBottom: 10 }}>{t('pilotLanguageLabel')}</p>
-          <div className="lang-grid stagger">
-            {LEARNING_LANGUAGES.map((l) => (
-              <div
-                key={l.code}
-                className={`lang-card ${l.code === PILOT_LANG ? 'selected' : 'locked'}`}
-                aria-disabled={!l.available}
-              >
-                <span className="lang-flag">{l.flag}</span>
-                <span className="lang-native" style={{ color: l.accent }}>{languageName(l.code)}</span>
-                {l.available
-                  ? <span className="badge badge-ready">{t('ready')}</span>
-                  : <span className="badge badge-notStarted">{t('comingSoon')}</span>}
-              </div>
-            ))}
+          {/* The same readiness model as the in-app picker: a READY language is a real button and can
+              be chosen right here, on the very first run. */}
+          <div className="lang-grid stagger" role="radiogroup" aria-label={t('pilotLanguageLabel')}>
+            {LEARNING_LANGUAGES.map((l) => {
+              const badge = languageBadge(l.code);
+              const selectable = isSelectableLanguage(l.code);
+              const selected = l.code === app.learningLang;
+              return (
+                <button
+                  key={l.code}
+                  type="button"
+                  role="radio"
+                  aria-checked={selected}
+                  disabled={!selectable}
+                  className={`lang-card ${selectable ? 'card-press' : 'locked'} ${selected ? 'selected' : ''}`}
+                  onClick={() => { if (!selectable) return; tap(); void app.setLearningLang(l.code); }}
+                >
+                  <span className="lang-flag">{l.flag}</span>
+                  <span className="lang-native" style={{ color: l.accent }}>{languageName(l.code)}</span>
+                  {badge === 'comingSoon' && <span className="badge badge-notStarted">{t('comingSoon')}</span>}
+                  {badge === 'earlyAccess' && <span className="badge badge-ready">{t('earlyAccess')}</span>}
+                  {badge === 'ready' && <span className="badge badge-ready">{t('ready')}</span>}
+                </button>
+              );
+            })}
           </div>
           <p className="faint small" style={{ marginTop: 14 }}>{t('moreLanguagesSoon')}</p>
         </div>
@@ -159,17 +170,18 @@ export function Onboarding() {
               {LEARNING_LANGUAGES.map((l) => (
                 <button
                   key={l.code}
-                  className={`lang-card card-press ${l.code === app.learningLang ? 'selected' : ''} ${l.available ? '' : 'locked'}`}
+                  className={`lang-card card-press ${l.code === app.learningLang ? 'selected' : ''} ${isSelectableLanguage(l.code) ? '' : 'locked'}`}
+                  disabled={!isSelectableLanguage(l.code)}
                   onClick={() => {
-                    if (!l.available) return;
+                    if (!isSelectableLanguage(l.code)) return;
                     tap();
                     void app.setLearningLang(l.code);
                   }}
                 >
                   <span className="lang-flag">{l.flag}</span>
                   <span className="lang-native" style={{ color: l.accent }}>{languageName(l.code)}</span>
-                  {!l.available && <span className="badge badge-notStarted">{t('comingSoon')}</span>}
-                  {l.available && l.earlyAccess && <span className="badge badge-ready">{t('earlyAccess')}</span>}
+                  {languageBadge(l.code) === 'comingSoon' && <span className="badge badge-notStarted">{t('comingSoon')}</span>}
+                  {languageBadge(l.code) === 'earlyAccess' && <span className="badge badge-ready">{t('earlyAccess')}</span>}
                 </button>
               ))}
             </div>

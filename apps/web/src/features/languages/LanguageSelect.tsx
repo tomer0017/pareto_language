@@ -1,4 +1,4 @@
-import { LEARNING_LANGUAGES, UI_LANGUAGES, languageName } from '../../shared/i18n/languages.js';
+import { LEARNING_LANGUAGES, UI_LANGUAGES, isSelectableLanguage, languageBadge, languageName } from '../../shared/i18n/languages.js';
 import { t } from '../../shared/i18n/strings.js';
 import { useAppStore } from '../../shared/stores/appStore.js';
 import { TopBar } from '../../shared/ui/TopBar.js';
@@ -20,13 +20,15 @@ export function LanguageSelect() {
         <div className="lang-grid stagger">
           {LEARNING_LANGUAGES.map((l) => {
             const selected = l.code === app.learningLang;
+            const badge = languageBadge(l.code);
             return (
               <button
                 key={l.code}
-                className={`lang-card card-press ${selected ? 'selected' : ''} ${l.available ? '' : 'locked'}`}
+                className={`lang-card card-press ${selected ? 'selected' : ''} ${isSelectableLanguage(l.code) ? '' : 'locked'}`}
                 style={selected ? undefined : { borderColor: 'transparent' }}
+                disabled={!isSelectableLanguage(l.code)}
                 onClick={() => {
-                  if (!l.available) return;
+                  if (!isSelectableLanguage(l.code)) return;
                   tap();
                   void app.setLearningLang(l.code).then(() => app.navigate('bootcamp'));
                 }}
@@ -34,8 +36,8 @@ export function LanguageSelect() {
               >
                 <span className="lang-flag">{l.flag}</span>
                 <span className="lang-native" style={{ color: l.accent }}>{languageName(l.code)}</span>
-                {!l.available && <span className="badge badge-notStarted">{t('comingSoon')}</span>}
-                {l.available && l.earlyAccess && <span className="badge badge-ready">{t('earlyAccess')}</span>}
+                {badge === 'comingSoon' && <span className="badge badge-notStarted">{t('comingSoon')}</span>}
+                {badge === 'earlyAccess' && <span className="badge badge-ready">{t('earlyAccess')}</span>}
               </button>
             );
           })}
