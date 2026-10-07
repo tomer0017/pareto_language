@@ -196,11 +196,13 @@ describe('authored content — every language has its own', () => {
 describe('placement in Missions 01–05', () => {
   const count = (n: number, kind: BootcampStep['kind'], lang: Lang = 'en'): number => stepsOf(mission(n, lang), kind).length;
 
-  it('Mission 01 has exactly one Match Pairs screen, with exactly the three intended pairs', () => {
+  it('Mission 01 has ONE question ↔ answer board with exactly the three intended pairs (and, since the Mission 01 gold-standard pass, a meaning match for the warm words after it)', () => {
     for (const lang of LANGS) {
       const day = mission(1, lang);
       const steps = stepsOf(day, 'matchPairs');
-      expect(steps, lang).toHaveLength(1);
+      expect(steps, lang).toHaveLength(2);
+      expect(steps.filter((s) => s.pairs.every((p) => !p.answerLabel)), lang).toHaveLength(1); // one Q↔A board
+      expect(steps[1]!.pairs.every((p) => p.answerLabel && p.answerGloss), lang).toBe(true); // the second is icon + words
       expect(steps[0]!.pairs.map((p) => [strip(p.promptItemId), strip(p.answerItemId)]), lang).toEqual([
         ['reply.social.whats-your-name', 'phrase.social.my-name'],
         ['reply.social.where-from', 'phrase.social.from-israel'],
@@ -232,14 +234,15 @@ describe('placement in Missions 01–05', () => {
     for (const id of ids) expect(met.has(id), id).toBe(true);
     expect(at).toBeLessThan(steps.findIndex((s) => s.kind === 'dialogue'));
     expect(at).toBeLessThan(steps.findIndex((s) => s.kind === 'ambush'));
-    // The name question is now practised on the board, so Quick Reply no longer repeats it.
+    // Quick Reply asks all three questions (Mission 01 gold-standard pass: the name question is
+    // paired on the board AND answered on its own — question → answer must become automatic).
     const quick = stepsOf(mission(1), 'quickReply')[0]!.rounds.map((r) => strip(r.promptItemId));
-    expect(quick).toEqual(['reply.social.where-from', 'reply.social.first-time-q']);
+    expect(quick).toEqual(['reply.social.whats-your-name', 'reply.social.where-from', 'reply.social.first-time-q']);
   });
 
-  it('Mission 02 builds one sentence; Mission 03 two; Missions 04 and 05 gained nothing', () => {
+  it('Mission 01 builds its three answers; Mission 02 one sentence; Mission 03 two; Missions 04 and 05 none', () => {
     const rounds = (n: number): string[] => stepsOf(mission(n), 'sentenceBuilder').flatMap((s) => s.rounds.map((r) => strip(r.itemId)));
-    expect(rounds(1)).toEqual([]);
+    expect(rounds(1)).toEqual(['phrase.social.my-name', 'phrase.social.from-israel', 'phrase.social.first-time']);
     expect(rounds(2)).toEqual(['phrase.money.too-expensive']);
     expect(rounds(3)).toEqual(['phrase.coffee.iced-coffee', 'phrase.coffee.no-sugar']);
     expect(rounds(4)).toEqual([]);

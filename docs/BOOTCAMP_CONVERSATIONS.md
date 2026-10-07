@@ -38,8 +38,12 @@ and carry no new phrases — that is expected, not missing content.
 - **Where are you from?** · מאיפה אתה?
 - **Is this your first time here?** · זו הפעם הראשונה שלך כאן?
 - **Enjoy your stay!** · תיהנה מהשהות!
+- **Hi!** · היי!
+- **Welcome!** · ברוך הבא!
+- **Wonderful!** · נהדר!
+- **Have a great day!** · שיהיה יום נהדר!
 
-_Reply-training drill:_ “What's your name?” · “Where are you from?” · “Is this your first time here?” · “Enjoy your stay!”
+_Reply-training drill:_ “What's your name?” · “Where are you from?” · “Is this your first time here?” · “Nice to meet you!” · “Hi!” · “Welcome!” · “Wonderful!” · “Enjoy your stay!” · “Have a great day!”
 
 ### Recovery tools reused
 `Can you repeat that?` · `Please speak slowly.`

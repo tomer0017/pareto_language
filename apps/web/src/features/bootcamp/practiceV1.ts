@@ -42,21 +42,39 @@ export function kit(lang: MissionLang) {
 
 /* ── Mission 01 — Introduce Myself ───────────────────────────────────────────────────────────── */
 
+/**
+ * Mission 01 is the gold standard: finishing it must mean "I understand this conversation", not "I
+ * memorised my three answers". The conversation is LOCKED; everything here is the journey around it.
+ *
+ *   orientation → building blocks → your three answers → what you will HEAR (the questions, then the
+ *   warm words) → question ↔ answer → build your answers → answer on your own → the conversation →
+ *   review → the conversation's own lines at speed → one line you cannot know (ask again) →
+ *   the video with no translation → did you catch it?
+ *
+ * Every meaningful chunk of the conversation — the host's lines as much as the learner's — is met at
+ * least three times, in different ways (meaning, listening, retrieval / association). That promise
+ * is written down in `mission01Coverage.ts` and enforced by `mission01.test.ts`: a phrase that is in
+ * the video can never again lose all of its practice.
+ */
 export function m01Steps(lang: MissionLang): BootcampStep[] {
   const k = kit(lang);
+  const YES_FIRST_TIME: L3 = ["Yes, it's my first time here.", 'Oui, c’est ma première fois ici.', 'Sí, es mi primera vez aquí.'];
   return [
     { kind: 'video', mode: 'intro' },
     k.talk('👋', ['משימה 1: להציג את עצמי', 'Mission 1: Introduce Myself'], [
       ['היום אתה פוגש בן אדם — לא דלפק. מארח, נהג, מישהו בבר.', 'Today you meet a person — not a counter. A host, a driver, someone at the bar.'],
-      ['בסוף המשימה תוכל לומר מי אתה, מאיפה אתה, ושזו הפעם הראשונה שלך כאן — בחיוך.', 'By the end you can say who you are, where you’re from, and that it’s your first time here — with a smile.'],
+      ['בסוף המשימה תוכל לומר מי אתה, מאיפה אתה, ושזו הפעם הראשונה שלך כאן — ותבין כל מה שעונים לך.', 'By the end you can say who you are, where you’re from, and that it’s your first time here — and understand everything said back to you.'],
     ], ['מתחילים', 'Start']),
     k.prime({
-      intro: ['ארבעה צירופים שבונים כל היכרות.', 'Four building blocks of every introduction.'],
+      intro: ['אבני הבניין של כל היכרות — גם מה שתגיד, וגם מה שתשמע.', 'The building blocks of every introduction — what you say, and what you hear.'],
       words: [
+        { key: 'intro.hello', t: ['Hi', 'Bonjour', 'Hola'], meaning: ['היי / שלום', 'hi / hello'], emoji: '👋' },
+        { key: 'intro.welcome', t: ['welcome', 'bienvenue', 'bienvenido'], meaning: ['ברוך הבא', 'welcome'], emoji: '🤗' },
         { key: 'intro.name', t: ['name', 'nom', 'nombre'], meaning: ['שם', 'name'], emoji: '📛' },
         { key: 'intro.from', t: ['from', 'de', 'de'], meaning: ['מ־ (מאיפה)', 'from'], emoji: '🌍' },
         { key: 'intro.first-time', t: ['first time', 'première fois', 'primera vez'], meaning: ['פעם ראשונה', 'first time'] },
         { key: 'intro.nice-to-meet', t: ['nice to meet you', 'enchanté', 'mucho gusto'], meaning: ['נעים להכיר', 'nice to meet you'], emoji: '🤝' },
+        { key: 'intro.yes', t: ['yes', 'oui', 'sí'], meaning: ['כן', 'yes'], emoji: '✅' },
       ],
     }),
     ...k.tools([
@@ -65,23 +83,48 @@ export function m01Steps(lang: MissionLang): BootcampStep[] {
       ['phrase.social.first-time', ['פעם ראשונה כאן', 'First time here']],
       ['phrase.social.nice-to-meet', ['התשובה החמה', 'The warm reply']],
     ]),
-    k.replies('phrase.social.my-name', ['reply.social.whats-your-name', 'reply.social.where-from', 'reply.social.first-time-q', 'reply.social.enjoy-stay']),
+    // LISTENING 1 — the three questions, and the warm thing said right after your name.
+    k.replies('phrase.social.my-name', ['reply.social.whats-your-name', 'reply.social.where-from', 'reply.social.first-time-q', 'phrase.social.nice-to-meet']),
     k.receipt(['אתה מזהה את השאלות שכל מקומי סקרן ישאל אותך.', 'You recognize the questions every curious local will ask you.']),
-    // The game-like moment of the mission: connect each question to your own answer.
+    // QUESTION ↔ ANSWER — the game-like moment of the mission: connect each question to your own answer.
     k.practice({
       kind: 'matchPairs',
       pairs: [
         ['reply.social.whats-your-name', 'phrase.social.my-name'],
         ['reply.social.where-from', 'phrase.social.from-israel'],
-        ['reply.social.first-time-q', 'phrase.social.first-time', ["Yes, it's my first time here.", 'Oui, c’est ma première fois ici.', 'Sí, es mi primera vez aquí.']],
+        ['reply.social.first-time-q', 'phrase.social.first-time', YES_FIRST_TIME],
       ],
     }),
+    // LISTENING 2 — the warm words. Nobody asks you to say them; you only have to know them when you hear them.
+    k.replies('phrase.social.first-time', ['reply.social.hello', 'reply.social.welcome', 'reply.social.wonderful', 'reply.social.enjoy-stay', 'reply.social.great-day']),
+    // …and what each of them means, at a glance (words beside the icon, never an icon alone).
+    k.practice({
+      kind: 'matchPairs',
+      label: ['מילים חמות שתשמע — מה כל אחת אומרת?', 'Warm words you will hear — what does each one say?'],
+      pairs: [
+        ['reply.social.hello', 'reply.social.hello', undefined, '👋', ['היי / שלום', 'Hi / hello']],
+        ['reply.social.welcome', 'reply.social.welcome', undefined, '🤗', ['ברוך הבא', 'Welcome']],
+        ['reply.social.wonderful', 'reply.social.wonderful', undefined, '🤩', ['נהדר', 'Wonderful']],
+        ['reply.social.great-day', 'reply.social.great-day', undefined, '☀️', ['שיהיה יום נהדר', 'Have a great day']],
+      ],
+    }),
+    // BUILD — your three answers, put together piece by piece (each language in its own order).
+    k.practice({
+      kind: 'sentenceBuilder',
+      rounds: [
+        { itemId: 'phrase.social.my-name', chunks: [['My name', 'is', 'Dan.'], ['Je', 'm’appelle', 'Dan.'], ['Me', 'llamo', 'Dan.']] },
+        { itemId: 'phrase.social.from-israel', chunks: [["I'm", 'from', 'Israel.'], ['Je', 'viens', 'd’Israël.'], ['Soy', 'de', 'Israel.']] },
+        { itemId: 'phrase.social.first-time', chunks: [["It's", 'my', 'first time', 'here.'], ['C’est', 'ma', 'première fois', 'ici.'], ['Es', 'mi', 'primera vez', 'aquí.']] },
+      ],
+    }),
+    // ANSWER — all three questions, one after another: hear it, pick your answer.
     k.practice({
       kind: 'quickReply',
       rounds: [
+        { prompt: 'reply.social.whats-your-name', options: [['phrase.social.my-name', true], ['phrase.social.from-israel', false], ['phrase.social.nice-to-meet', false]] },
         { prompt: 'reply.social.where-from', options: [['phrase.social.from-israel', true], ['phrase.social.my-name', false], ['phrase.social.first-time', false]] },
         { prompt: 'reply.social.first-time-q', options: [
-          ['phrase.social.first-time', true, ["Yes, it's my first time here.", 'Oui, c’est ma première fois ici.', 'Sí, es mi primera vez aquí.']],
+          ['phrase.social.first-time', true, YES_FIRST_TIME],
           ['phrase.social.from-israel', false], ['phrase.social.nice-to-meet', false],
         ] },
       ],
@@ -90,14 +133,38 @@ export function m01Steps(lang: MissionLang): BootcampStep[] {
     k.receipt(['ניהלת היכרות שלמה — שם, מוצא, פעם ראשונה כאן.', 'You handled a full introduction — name, origin, first time here.']),
     k.review([
       'phrase.social.my-name', 'phrase.social.from-israel', 'phrase.social.first-time', 'phrase.social.nice-to-meet',
-      'reply.social.whats-your-name', 'reply.social.where-from', 'reply.social.first-time-q', 'reply.social.enjoy-stay',
+      'reply.social.whats-your-name', 'reply.social.where-from', 'reply.social.first-time-q',
+      // (kept to ten cards: the greeting, the welcome and the reaction already had their own meaning match)
+      'reply.social.enjoy-stay', 'reply.social.great-day',
       'phrase.recovery.repeat',
     ]),
+    // FAST — the host's own three lines, word for word, at natural speed and with no translation.
+    k.practice({
+      kind: 'quickReply',
+      challenge: true,
+      rounds: [
+        { npc: ["Hi! Welcome. What's your name?", 'Bonjour ! Bienvenue. Comment vous appelez-vous ?', '¡Hola! Bienvenido. ¿Cómo se llama?', 'היי! ברוך הבא. איך קוראים לך?'],
+          options: [['phrase.social.my-name', true], ['phrase.social.from-israel', false], ['phrase.social.first-time', false]] },
+        { npc: ['Nice to meet you, Dan! Where are you from?', 'Enchanté, Dan ! D’où venez-vous ?', '¡Mucho gusto, Dan! ¿De dónde es?', 'נעים להכיר, דן! מאיפה אתה?'],
+          options: [['phrase.social.from-israel', true], ['phrase.social.my-name', false], ['phrase.social.nice-to-meet', false]] },
+        { npc: ['Israel, wonderful! Is this your first time here?', 'Israël, magnifique ! C’est votre première fois ici ?', '¡Israel, qué maravilla! ¿Es su primera vez aquí?', 'ישראל, נהדר! זו הפעם הראשונה שלך כאן?'],
+          options: [['phrase.social.first-time', true, YES_FIRST_TIME], ['phrase.social.from-israel', false], ['phrase.social.my-name', false]] },
+      ],
+    }),
+    k.receipt(['שלוש שאלות ברצף, בקצב רגיל ובלי תרגום — וענית על כולן.', 'Three questions in a row, at normal speed and with no translation — and you answered them all.']),
     k.ambush('recovery',
       ["And what do you do back home, if you don't mind me asking?", 'Et vous faites quoi dans la vie, si ce n’est pas indiscret ?', '¿Y a qué se dedica, si no es indiscreción?', 'ומה אתה עושה בחיים, אם מותר לשאול?'],
       'phrase.recovery.repeat', 'phrase.social.nice-to-meet'),
     k.receipt(['לא הבנת — והיה לך מה לעשות. לא להבין זה לא סוף השיחה.', 'You didn’t understand — and you had a move. Not understanding is not the end of the conversation.']),
+    // THE GATE — first the whole conversation again with no help (the video)…
     { kind: 'video', mode: 'again' },
+    // …then: did you catch it? The four things the host says that nobody asked you to say — the
+    // welcome, the reaction, and the two wishes that close the conversation.
+    k.quiz('reply.social.welcome', 'reply.social.great-day', 'reply.social.where-from'),
+    k.quiz('reply.social.wonderful', 'phrase.social.nice-to-meet', 'reply.social.first-time-q'),
+    k.quiz('reply.social.enjoy-stay', 'reply.social.great-day', 'reply.social.welcome'),
+    k.quiz('reply.social.great-day', 'reply.social.enjoy-stay', 'reply.social.hello'),
+    k.receipt(['הבנת את כל השיחה — מה"היי" ועד "שיהיה יום נהדר". בלי תרגום.', 'You understood the whole conversation — from “Hi” to “Have a great day”. No translation.']),
     { kind: 'summary' },
   ];
 }

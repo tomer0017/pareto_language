@@ -30,9 +30,9 @@ const A = (a: MissionVocabAudit): MissionVocabAudit => a;
 export const MISSION_VOCAB_AUDIT: Record<number, MissionVocabAudit> = {
   1: A({ day: 1, decision: 'primed',
     globalWords: ['i', 'you'], priorKnowledge: [],
-    primingWords: ['name', 'from', 'first time', 'nice to meet you'],
+    primingWords: ['Hi', 'welcome', 'name', 'from', 'first time', 'nice to meet you', 'yes'],
     excluded: ['occupation / age vocabulary — not needed to survive a first introduction'],
-    justification: 'The first mission, zero prior knowledge: name, from, first time and the greeting are all new blocks.' }),
+    justification: 'The first mission, zero prior knowledge: the greeting, welcome, name, from, first time and yes are all new blocks — what the learner says AND what the host says.' }),
   2: A({ day: 2, decision: 'primed',
     globalWords: ['five', 'ten', 'twenty', 'how-much'], priorKnowledge: [],
     primingWords: ['how much', 'euros', 'cash', 'card', 'five', 'ten'],

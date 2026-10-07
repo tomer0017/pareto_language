@@ -22,6 +22,24 @@ loop (typecheck → lint → tests → build → smoke) green at every milestone
 
 ## What's done
 
+### Mission 01 — the gold-standard pedagogical pass (2026-10-07)
+The dialogue is LOCKED (byte-identical, pinned); only the journey around it changed.
+- **Before:** "Hi / Welcome", "wonderful" and "Have a great day" were heard only in the conversation
+  and the video; "Nice to meet you" was taught only as something to SAY; the name question was not
+  in Quick Reply; the three answers were never built or retrieved at speed; nothing checked
+  comprehension after the final video.
+- **Now:** building blocks (7, incl. hi / welcome / yes) → 4 key sentences → listening: the questions
+  → question ↔ answer match → listening: the warm words → their meaning match → sentence builder (the
+  three answers) → Quick Reply ×3 → the conversation → 10-card review → speed round of the host's own
+  three lines → the recovery line → **video again → a 4-question check of what the host says**.
+- Four comprehension-only sentences were added per language (`reply.social.hello / welcome /
+  wonderful / great-day`). Polite forms are taught as heard; no informal variants, no grammar talk.
+- **Coverage is machine-checked:** `mission01Coverage.ts` lists the 14 meaningful chunks and counts
+  each one's encounters from the runtime steps; `mission01.test.ts` fails if any chunk is left to the
+  conversation alone (≥3 encounters, ≥2 kinds, meaning shown; host lines heard-and-understood;
+  learner lines retrieved, ≥5). This is the prototype for auditing Missions 02–30.
+- Earlier fingerprints now pin Missions 02–N. Not done: browser / device QA.
+
 ### Real-device QA fixes — stable tiles, progress per language, 9:16 video, whole hero, first-run languages (2026-10-06)
 - **Foundations tiles no longer move:** the "unseen first" ordering re-sorted the grid on every tap
   (marking a word seen changed the sort key). The order is now the category's own and nothing

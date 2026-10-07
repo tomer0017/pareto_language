@@ -102,14 +102,14 @@ Intro screen (first Practice step; identical in the English, French and Spanish 
 - Icon: 👋
 - Title: "Mission 1: Introduce Myself" / "משימה 1: להציג את עצמי"
 - Text 1: "Today you meet a person — not a counter. A host, a driver, someone at the bar." / "היום אתה פוגש בן אדם — לא דלפק. מארח, נהג, מישהו בבר."
-- Text 2: "By the end you can say who you are, where you’re from, and that it’s your first time here — with a smile." / "בסוף המשימה תוכל לומר מי אתה, מאיפה אתה, ושזו הפעם הראשונה שלך כאן — בחיוך."
+- Text 2: "By the end you can say who you are, where you’re from, and that it’s your first time here — and understand everything said back to you." / "בסוף המשימה תוכל לומר מי אתה, מאיפה אתה, ושזו הפעם הראשונה שלך כאן — ותבין כל מה שעונים לך."
 - Button: "Start" / "מתחילים"
 
 ## Current Practice flow
 
 1. `video` — video — mode intro
 2. `talk` — intro screen — "Mission 1: Introduce Myself"
-3. `prime` — before-we-speak (word intro) — 4 words → builds ``
+3. `prime` — before-we-speak (word intro) — 7 words → builds ``
 4. `tool` — key sentence (listen → reveal → say aloud) — `phrase.social.my-name` “My name is Dan.” · label "Who you are" / "מי אתה" (1/4)
 5. `tool` — key sentence (listen → reveal → say aloud) — `phrase.social.from-israel` “I'm from Israel.” · label "Where you’re from" / "מאיפה אתה" (2/4)
 6. `tool` — key sentence (listen → reveal → say aloud) — `phrase.social.first-time` “It's my first time here.” · label "First time here" / "פעם ראשונה כאן" (3/4)
@@ -117,28 +117,41 @@ Intro screen (first Practice step; identical in the English, French and Spanish 
 8. `replies` — expected replies (listening drill) — after `phrase.social.my-name`: 4 replies
 9. `receipt` — receipt (proof card) — "You recognize the questions every curious local will ask you." / "אתה מזהה את השאלות שכל מקומי סקרן ישאל אותך."
 10. `matchPairs` — match pairs (connect each question to its answer) — 3 pairs on one screen
-11. `quickReply` — quick reply (hear → pick your response) — 2 round(s)
-12. `dialogue` — dialogue (choose your line) — scene `meeting-host`
-13. `receipt` — receipt (proof card) — "You handled a full introduction — name, origin, first time here." / "ניהלת היכרות שלמה — שם, מוצא, פעם ראשונה כאן."
-14. `swipe` — sentence review — 9 sentences
-15. `ambush` — cold open (fast line) — mode recovery · correct `phrase.recovery.repeat`, wrong `phrase.social.nice-to-meet`
-16. `receipt` — receipt (proof card) — "You didn’t understand — and you had a move. Not understanding is not the end of the conversation." / "לא הבנת — והיה לך מה לעשות. לא להבין זה לא סוף השיחה."
-17. `video` — video — mode again
-18. `summary` — victory screen
+11. `replies` — expected replies (listening drill) — after `phrase.social.first-time`: 5 replies
+12. `matchPairs` — match pairs (connect each question to its answer) — 4 pairs on one screen
+13. `sentenceBuilder` — sentence builder (put the chunks in order) — 3 round(s)
+14. `quickReply` — quick reply (hear → pick your response) — 3 round(s)
+15. `dialogue` — dialogue (choose your line) — scene `meeting-host`
+16. `receipt` — receipt (proof card) — "You handled a full introduction — name, origin, first time here." / "ניהלת היכרות שלמה — שם, מוצא, פעם ראשונה כאן."
+17. `swipe` — sentence review — 10 sentences
+18. `quickReply` — quick reply (hear → pick your response) — 3 round(s) · speed challenge
+19. `receipt` — receipt (proof card) — "Three questions in a row, at normal speed and with no translation — and you answered them all." / "שלוש שאלות ברצף, בקצב רגיל ובלי תרגום — וענית על כולן."
+20. `ambush` — cold open (fast line) — mode recovery · correct `phrase.recovery.repeat`, wrong `phrase.social.nice-to-meet`
+21. `receipt` — receipt (proof card) — "You didn’t understand — and you had a move. Not understanding is not the end of the conversation." / "לא הבנת — והיה לך מה לעשות. לא להבין זה לא סוף השיחה."
+22. `video` — video — mode again
+23. `quiz` — meaning quiz (listening) — hears `reply.social.welcome`
+24. `quiz` — meaning quiz (listening) — hears `reply.social.wonderful`
+25. `quiz` — meaning quiz (listening) — hears `reply.social.enjoy-stay`
+26. `quiz` — meaning quiz (listening) — hears `reply.social.great-day`
+27. `receipt` — receipt (proof card) — "You understood the whole conversation — from “Hi” to “Have a great day”. No translation." / "הבנת את כל השיחה — מה"היי" ועד "שיהיה יום נהדר". בלי תרגום."
+28. `summary` — victory screen
 
 Step sequence identical in EN / FR / ES: yes.
 
 ## Before we speak / word intro
 
-Step 3. Label: "Before we speak" / "לפני שנדבר". Intro: "Four building blocks of every introduction." / "ארבעה צירופים שבונים כל היכרות.".
+Step 3. Label: "Before we speak" / "לפני שנדבר". Intro: "The building blocks of every introduction — what you say, and what you hear." / "אבני הבניין של כל היכרות — גם מה שתגיד, וגם מה שתשמע.".
 The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `intro.name` — EN "name" · FR "nom" · ES "nombre" — meaning "שם" / "name" — icon 📛 — new
-2. `intro.from` — EN "from" · FR "de" · ES "de" — meaning "מ־ (מאיפה)" / "from" — icon 🌍 — new
-3. `intro.first-time` — EN "first time" · FR "première fois" · ES "primera vez" — meaning "פעם ראשונה" / "first time" — icon none — new
-4. `intro.nice-to-meet` — EN "nice to meet you" · FR "enchanté" · ES "mucho gusto" — meaning "נעים להכיר" / "nice to meet you" — icon 🤝 — new
+1. `intro.hello` — EN "Hi" · FR "Bonjour" · ES "Hola" — meaning "היי / שלום" / "hi / hello" — icon 👋 — new
+2. `intro.welcome` — EN "welcome" · FR "bienvenue" · ES "bienvenido" — meaning "ברוך הבא" / "welcome" — icon 🤗 — new
+3. `intro.name` — EN "name" · FR "nom" · ES "nombre" — meaning "שם" / "name" — icon 📛 — new
+4. `intro.from` — EN "from" · FR "de" · ES "de" — meaning "מ־ (מאיפה)" / "from" — icon 🌍 — new
+5. `intro.first-time` — EN "first time" · FR "première fois" · ES "primera vez" — meaning "פעם ראשונה" / "first time" — icon none — new
+6. `intro.nice-to-meet` — EN "nice to meet you" · FR "enchanté" · ES "mucho gusto" — meaning "נעים להכיר" / "nice to meet you" — icon 🤝 — new
+7. `intro.yes` — EN "yes" · FR "oui" · ES "sí" — meaning "כן" / "yes" — icon ✅ — new
 
 No build-sentence card.
 
@@ -155,7 +168,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "Template: My name is ___ — just swap the name." / "התבנית: My name is ___ — פשוט תחליף את השם."
 - Used in missions: 01
-- Exercised here as: key sentence (step 4); "you said" lead-in of the expected-replies drill (step 8); match-pairs answer tile (step 10, pair 1); quick-reply response (step 11, round 1, wrong option); sentence review (step 14); dialogue choice meeting-host/c1 (accepted); dialogue choice meeting-host/c1b (accepted)
+- Exercised here as: key sentence (step 4); "you said" lead-in of the expected-replies drill (step 8); match-pairs answer tile (step 10, pair 1); sentence-builder target (step 13, round 1); quick-reply response (step 14, round 1, accepted); quick-reply response (step 14, round 2, wrong option); sentence review (step 17); quick-reply response (step 18, round 1, accepted); quick-reply response (step 18, round 2, wrong option); quick-reply response (step 18, round 3, wrong option); dialogue choice meeting-host/c1 (accepted); dialogue choice meeting-host/c1b (accepted)
 
 ### Sentence: `phrase.social.nice-to-meet`
 
@@ -166,7 +179,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "The warm answer to any introduction. Always works." / "התשובה החמה לכל היכרות. תמיד עובד."
 - Used in missions: 01
-- Exercised here as: key sentence (step 7); quick-reply response (step 11, round 2, wrong option); sentence review (step 14); cold-open wrong option (step 15); dialogue choice meeting-host/c2 (WRONG option)
+- Exercised here as: key sentence (step 7); expected-reply audio (step 8); quick-reply response (step 14, round 1, wrong option); quick-reply response (step 14, round 3, wrong option); sentence review (step 17); quick-reply response (step 18, round 2, wrong option); cold-open wrong option (step 20); meaning-quiz distractor (step 24); dialogue choice meeting-host/c2 (WRONG option)
 
 ### Sentence: `phrase.social.from-israel`
 
@@ -177,7 +190,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "Template: I’m from ___ — the answer to “Where are you from”." / "התבנית: I’m from ___ — התשובה ל-Where are you from."
 - Used in missions: 01, 11, 28, 30
-- Exercised here as: key sentence (step 5); match-pairs answer tile (step 10, pair 2); quick-reply response (step 11, round 1, accepted); quick-reply response (step 11, round 2, wrong option); sentence review (step 14); dialogue choice meeting-host/c2 (accepted); dialogue choice meeting-host/c2b (accepted)
+- Exercised here as: key sentence (step 5); match-pairs answer tile (step 10, pair 2); sentence-builder target (step 13, round 2); quick-reply response (step 14, round 1, wrong option); quick-reply response (step 14, round 2, accepted); quick-reply response (step 14, round 3, wrong option); sentence review (step 17); quick-reply response (step 18, round 1, wrong option); quick-reply response (step 18, round 2, accepted); quick-reply response (step 18, round 3, wrong option); dialogue choice meeting-host/c2 (accepted); dialogue choice meeting-host/c2b (accepted)
 
 ### Sentence: `phrase.social.first-time`
 
@@ -188,7 +201,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "Opens conversation and invites recommendations." / "פותח שיחה ומזמין המלצות."
 - Used in missions: 01, 11, 28, 29, 30
-- Exercised here as: key sentence (step 6); match-pairs answer tile (step 10, pair 3); quick-reply response (step 11, round 1, wrong option); quick-reply response (step 11, round 2, accepted); sentence review (step 14); dialogue choice meeting-host/c3 (accepted); dialogue choice meeting-host/c3b (accepted)
+- Exercised here as: key sentence (step 6); match-pairs answer tile (step 10, pair 3); "you said" lead-in of the expected-replies drill (step 11); sentence-builder target (step 13, round 3); quick-reply response (step 14, round 2, wrong option); quick-reply response (step 14, round 3, accepted); sentence review (step 17); quick-reply response (step 18, round 1, wrong option); quick-reply response (step 18, round 3, accepted); dialogue choice meeting-host/c3 (accepted); dialogue choice meeting-host/c3b (accepted)
 
 ### Sentence: `reply.social.whats-your-name`
 
@@ -199,7 +212,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 01
-- Exercised here as: expected-reply audio (step 8); match-pairs question tile (step 10, pair 1); sentence review (step 14)
+- Exercised here as: expected-reply audio (step 8); match-pairs question tile (step 10, pair 1); quick-reply prompt (step 14, round 1); sentence review (step 17)
 
 ### Sentence: `reply.social.where-from`
 
@@ -210,7 +223,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 01
-- Exercised here as: expected-reply audio (step 8); match-pairs question tile (step 10, pair 2); quick-reply prompt (step 11, round 1); sentence review (step 14)
+- Exercised here as: expected-reply audio (step 8); match-pairs question tile (step 10, pair 2); quick-reply prompt (step 14, round 2); sentence review (step 17); meaning-quiz distractor (step 23)
 
 ### Sentence: `reply.social.first-time-q`
 
@@ -221,7 +234,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 01
-- Exercised here as: expected-reply audio (step 8); match-pairs question tile (step 10, pair 3); quick-reply prompt (step 11, round 2); sentence review (step 14)
+- Exercised here as: expected-reply audio (step 8); match-pairs question tile (step 10, pair 3); quick-reply prompt (step 14, round 3); sentence review (step 17); meaning-quiz distractor (step 24)
 
 ### Sentence: `reply.social.enjoy-stay`
 
@@ -232,7 +245,51 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 01
-- Exercised here as: expected-reply audio (step 8); sentence review (step 14)
+- Exercised here as: expected-reply audio (step 11); sentence review (step 17); meaning-quiz audio (step 25); meaning-quiz distractor (step 26)
+
+### Sentence: `reply.social.hello`
+
+- EN: Hi!
+- HE: היי!
+- FR: Bonjour !
+- ES: ¡Hola!
+- Role: receptive — an expected reply the learner hears
+- Tip / pattern note: none
+- Used in missions: 01
+- Exercised here as: expected-reply audio (step 11); match-pairs question tile (step 12, pair 1); match-pairs answer tile (step 12, pair 1); meaning-quiz distractor (step 26)
+
+### Sentence: `reply.social.welcome`
+
+- EN: Welcome!
+- HE: ברוך הבא!
+- FR: Bienvenue !
+- ES: ¡Bienvenido!
+- Role: receptive — an expected reply the learner hears
+- Tip / pattern note: none
+- Used in missions: 01
+- Exercised here as: expected-reply audio (step 11); match-pairs question tile (step 12, pair 2); match-pairs answer tile (step 12, pair 2); meaning-quiz audio (step 23); meaning-quiz distractor (step 25)
+
+### Sentence: `reply.social.wonderful`
+
+- EN: Wonderful!
+- HE: נהדר!
+- FR: Magnifique !
+- ES: ¡Qué maravilla!
+- Role: receptive — an expected reply the learner hears
+- Tip / pattern note: none
+- Used in missions: 01
+- Exercised here as: expected-reply audio (step 11); match-pairs question tile (step 12, pair 3); match-pairs answer tile (step 12, pair 3); meaning-quiz audio (step 24)
+
+### Sentence: `reply.social.great-day`
+
+- EN: Have a great day!
+- HE: שיהיה יום נהדר!
+- FR: Bonne journée !
+- ES: ¡Que tenga un buen día!
+- Role: receptive — an expected reply the learner hears
+- Tip / pattern note: none
+- Used in missions: 01
+- Exercised here as: expected-reply audio (step 11); match-pairs question tile (step 12, pair 4); match-pairs answer tile (step 12, pair 4); sentence review (step 17); meaning-quiz distractor (step 23); meaning-quiz distractor (step 25); meaning-quiz audio (step 26)
 
 ### Sentence: `phrase.recovery.repeat`
 
@@ -243,7 +300,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
 - Used in missions: 01, 03, 05, 06, 08, 09, 10, 11, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
-- Exercised here as: sentence review (step 14); cold-open correct option (step 15); dialogue choice meeting-host/c1 (accepted)
+- Exercised here as: sentence review (step 17); cold-open correct option (step 20); dialogue choice meeting-host/c1 (accepted)
 
 ### Sentence: `phrase.recovery.slowly`
 
@@ -260,6 +317,9 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 
 Lead-in screen: "You said:" / "אמרת:" — EN "My name is Dan." · FR "Je m’appelle Dan." · ES "Me llamo Dan." — then "What might they answer? Learn the replies before they surprise you." / "מה הם עלולים לענות? נלמד את התשובות לפני שהן מפתיעות אותך." — button 👂 "I'm ready" / "אני מוכן".
 Linked learner sentence: `phrase.social.my-name`. Each reply below is played once automatically; the learner picks its MEANING from three buttons. Distractors are always the first two OTHER replies of this same drill, in drill order (runtime rule), so the three choices are shuffled per session.
+
+Lead-in screen: "You said:" / "אמרת:" — EN "It's my first time here." · FR "C’est ma première fois ici." · ES "Es mi primera vez aquí." — then "What might they answer? Learn the replies before they surprise you." / "מה הם עלולים לענות? נלמד את התשובות לפני שהן מפתיעות אותך." — button 👂 "I'm ready" / "אני מוכן".
+Linked learner sentence: `phrase.social.first-time`. Each reply below is played once automatically; the learner picks its MEANING from three buttons. Distractors are always the first two OTHER replies of this same drill, in drill order (runtime rule), so the three choices are shuffled per session.
 
 ### M01-Q01 — expected-reply (step 8, reply 1 of 4)
 
@@ -303,19 +363,134 @@ Linked learner sentence: `phrase.social.my-name`. Each reply below is played onc
 ### M01-Q04 — expected-reply (step 8, reply 4 of 4)
 
 - Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (4/4)
+- Audio played: EN "Nice to meet you!" · FR "Enchanté !" · ES "¡Mucho gusto!"
+- Meaning of the audio (HE): "נעים להכיר!"
+- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
+- Choices:
+  1. HE "נעים להכיר!" / EN "Nice to meet you!" — `phrase.social.nice-to-meet` — ✅ accepted
+  2. HE "איך קוראים לך?" / EN "What's your name?" — `reply.social.whats-your-name` — ❌ wrong
+  3. HE "מאיפה אתה?" / EN "Where are you from?" — `reply.social.where-from` — ❌ wrong
+- Tests: phrase.social.nice-to-meet
+- Explanation shown after answering: tip: התשובה החמה לכל היכרות. תמיד עובד. / The warm answer to any introduction. Always works.
+
+### M01-Q08 — expected-reply (step 11, reply 1 of 5)
+
+- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (1/5)
+- Audio played: EN "Hi!" · FR "Bonjour !" · ES "¡Hola!"
+- Meaning of the audio (HE): "היי!"
+- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
+- Choices:
+  1. HE "היי!" / EN "Hi!" — `reply.social.hello` — ✅ accepted
+  2. HE "ברוך הבא!" / EN "Welcome!" — `reply.social.welcome` — ❌ wrong
+  3. HE "נהדר!" / EN "Wonderful!" — `reply.social.wonderful` — ❌ wrong
+- Tests: reply.social.hello
+- Explanation shown after answering: generic: “Hi!” means “היי!”.
+
+### M01-Q09 — expected-reply (step 11, reply 2 of 5)
+
+- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (2/5)
+- Audio played: EN "Welcome!" · FR "Bienvenue !" · ES "¡Bienvenido!"
+- Meaning of the audio (HE): "ברוך הבא!"
+- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
+- Choices:
+  1. HE "ברוך הבא!" / EN "Welcome!" — `reply.social.welcome` — ✅ accepted
+  2. HE "היי!" / EN "Hi!" — `reply.social.hello` — ❌ wrong
+  3. HE "נהדר!" / EN "Wonderful!" — `reply.social.wonderful` — ❌ wrong
+- Tests: reply.social.welcome
+- Explanation shown after answering: generic: “Welcome!” means “ברוך הבא!”.
+
+### M01-Q10 — expected-reply (step 11, reply 3 of 5)
+
+- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (3/5)
+- Audio played: EN "Wonderful!" · FR "Magnifique !" · ES "¡Qué maravilla!"
+- Meaning of the audio (HE): "נהדר!"
+- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
+- Choices:
+  1. HE "נהדר!" / EN "Wonderful!" — `reply.social.wonderful` — ✅ accepted
+  2. HE "היי!" / EN "Hi!" — `reply.social.hello` — ❌ wrong
+  3. HE "ברוך הבא!" / EN "Welcome!" — `reply.social.welcome` — ❌ wrong
+- Tests: reply.social.wonderful
+- Explanation shown after answering: generic: “Wonderful!” means “נהדר!”.
+
+### M01-Q11 — expected-reply (step 11, reply 4 of 5)
+
+- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (4/5)
 - Audio played: EN "Enjoy your stay!" · FR "Bon séjour !" · ES "¡Que disfrute su estancia!"
 - Meaning of the audio (HE): "תיהנה מהשהות!"
 - Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
 - Choices:
   1. HE "תיהנה מהשהות!" / EN "Enjoy your stay!" — `reply.social.enjoy-stay` — ✅ accepted
-  2. HE "איך קוראים לך?" / EN "What's your name?" — `reply.social.whats-your-name` — ❌ wrong
-  3. HE "מאיפה אתה?" / EN "Where are you from?" — `reply.social.where-from` — ❌ wrong
+  2. HE "היי!" / EN "Hi!" — `reply.social.hello` — ❌ wrong
+  3. HE "ברוך הבא!" / EN "Welcome!" — `reply.social.welcome` — ❌ wrong
 - Tests: reply.social.enjoy-stay
 - Explanation shown after answering: generic: “Enjoy your stay!” means “תיהנה מהשהות!”.
 
+### M01-Q12 — expected-reply (step 11, reply 5 of 5)
+
+- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (5/5)
+- Audio played: EN "Have a great day!" · FR "Bonne journée !" · ES "¡Que tenga un buen día!"
+- Meaning of the audio (HE): "שיהיה יום נהדר!"
+- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
+- Choices:
+  1. HE "שיהיה יום נהדר!" / EN "Have a great day!" — `reply.social.great-day` — ✅ accepted
+  2. HE "היי!" / EN "Hi!" — `reply.social.hello` — ❌ wrong
+  3. HE "ברוך הבא!" / EN "Welcome!" — `reply.social.welcome` — ❌ wrong
+- Tests: reply.social.great-day
+- Explanation shown after answering: generic: “Have a great day!” means “שיהיה יום נהדר!”.
+
 ## Quizzes
 
-No meaning quiz in this mission.
+### M01-Q33 — meaning-quiz (step 23, single question)
+
+- Prompt displayed: "What did it mean?" / "מה זה אומר?"
+- Audio played: EN "Welcome!" · FR "Bienvenue !" · ES "¡Bienvenido!"
+- Meaning of the audio (HE): "ברוך הבא!"
+- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
+- Choices:
+  1. HE "ברוך הבא!" / EN "Welcome!" — `reply.social.welcome` — ✅ accepted
+  2. HE "שיהיה יום נהדר!" / EN "Have a great day!" — `reply.social.great-day` — ❌ wrong
+  3. HE "מאיפה אתה?" / EN "Where are you from?" — `reply.social.where-from` — ❌ wrong
+- Tests: reply.social.welcome
+- Explanation shown after answering: generic: “Welcome!” means “ברוך הבא!”.
+
+### M01-Q34 — meaning-quiz (step 24, single question)
+
+- Prompt displayed: "What did it mean?" / "מה זה אומר?"
+- Audio played: EN "Wonderful!" · FR "Magnifique !" · ES "¡Qué maravilla!"
+- Meaning of the audio (HE): "נהדר!"
+- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
+- Choices:
+  1. HE "נהדר!" / EN "Wonderful!" — `reply.social.wonderful` — ✅ accepted
+  2. HE "נעים להכיר!" / EN "Nice to meet you!" — `phrase.social.nice-to-meet` — ❌ wrong
+  3. HE "זו הפעם הראשונה שלך כאן?" / EN "Is this your first time here?" — `reply.social.first-time-q` — ❌ wrong
+- Tests: reply.social.wonderful
+- Explanation shown after answering: generic: “Wonderful!” means “נהדר!”.
+
+### M01-Q35 — meaning-quiz (step 25, single question)
+
+- Prompt displayed: "What did it mean?" / "מה זה אומר?"
+- Audio played: EN "Enjoy your stay!" · FR "Bon séjour !" · ES "¡Que disfrute su estancia!"
+- Meaning of the audio (HE): "תיהנה מהשהות!"
+- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
+- Choices:
+  1. HE "תיהנה מהשהות!" / EN "Enjoy your stay!" — `reply.social.enjoy-stay` — ✅ accepted
+  2. HE "שיהיה יום נהדר!" / EN "Have a great day!" — `reply.social.great-day` — ❌ wrong
+  3. HE "ברוך הבא!" / EN "Welcome!" — `reply.social.welcome` — ❌ wrong
+- Tests: reply.social.enjoy-stay
+- Explanation shown after answering: generic: “Enjoy your stay!” means “תיהנה מהשהות!”.
+
+### M01-Q36 — meaning-quiz (step 26, single question)
+
+- Prompt displayed: "What did it mean?" / "מה זה אומר?"
+- Audio played: EN "Have a great day!" · FR "Bonne journée !" · ES "¡Que tenga un buen día!"
+- Meaning of the audio (HE): "שיהיה יום נהדר!"
+- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
+- Choices:
+  1. HE "שיהיה יום נהדר!" / EN "Have a great day!" — `reply.social.great-day` — ✅ accepted
+  2. HE "תיהנה מהשהות!" / EN "Enjoy your stay!" — `reply.social.enjoy-stay` — ❌ wrong
+  3. HE "היי!" / EN "Hi!" — `reply.social.hello` — ❌ wrong
+- Tests: reply.social.great-day
+- Explanation shown after answering: generic: “Have a great day!” means “שיהיה יום נהדר!”.
 
 ## Active practice — Quick Reply · Visual Match · Swap It · Mini Map
 
@@ -358,7 +533,109 @@ No meaning quiz in this mission.
 - Tests: phrase.social.first-time
 - Explanation shown after answering: none — a correct match locks both tiles under a shared number and speaks the answer; a miss shakes, shows ✕ and clears (no penalty)
 
-### M01-Q08 — quick-reply (step 11, round 1 of 2)
+### M01-Q13 — match-pairs (step 12, pair 1 of 4 (all pairs are on one screen))
+
+- Prompt displayed: "Warm words you will hear — what does each one say?" / "מילים חמות שתשמע — מה כל אחת אומרת?" — tile to match (target language, no translation): EN "Hi!" · FR "Bonjour !" · ES "¡Hola!"
+- Audio played: EN "Hi!" · FR "Bonjour !" · ES "¡Hola!"
+- Meaning of the audio (HE): "היי!"
+- Buttons show: the ANSWER tiles, target language only; their order is shuffled; a matched pair locks and leaves the board, so later pairs have fewer live tiles
+- Choices:
+  1. EN "👋 Hi / hello / היי / שלום" · FR "👋 Hi / hello / היי / שלום" · ES "👋 Hi / hello / היי / שלום" · (HE gloss "היי!") — `reply.social.hello` — ✅ accepted
+  2. EN "🤗 Welcome / ברוך הבא" · FR "🤗 Welcome / ברוך הבא" · ES "🤗 Welcome / ברוך הבא" · (HE gloss "ברוך הבא!") — `reply.social.welcome` — ❌ wrong
+  3. EN "🤩 Wonderful / נהדר" · FR "🤩 Wonderful / נהדר" · ES "🤩 Wonderful / נהדר" · (HE gloss "נהדר!") — `reply.social.wonderful` — ❌ wrong
+  4. EN "☀️ Have a great day / שיהיה יום נהדר" · FR "☀️ Have a great day / שיהיה יום נהדר" · ES "☀️ Have a great day / שיהיה יום נהדר" · (HE gloss "שיהיה יום נהדר!") — `reply.social.great-day` — ❌ wrong
+- Tests: reply.social.hello
+- Explanation shown after answering: none — a correct match locks both tiles under a shared number and speaks the answer; a miss shakes, shows ✕ and clears (no penalty)
+
+### M01-Q14 — match-pairs (step 12, pair 2 of 4 (all pairs are on one screen))
+
+- Prompt displayed: "Warm words you will hear — what does each one say?" / "מילים חמות שתשמע — מה כל אחת אומרת?" — tile to match (target language, no translation): EN "Welcome!" · FR "Bienvenue !" · ES "¡Bienvenido!"
+- Audio played: EN "Welcome!" · FR "Bienvenue !" · ES "¡Bienvenido!"
+- Meaning of the audio (HE): "ברוך הבא!"
+- Buttons show: the ANSWER tiles, target language only; their order is shuffled; a matched pair locks and leaves the board, so later pairs have fewer live tiles
+- Choices:
+  1. EN "👋 Hi / hello / היי / שלום" · FR "👋 Hi / hello / היי / שלום" · ES "👋 Hi / hello / היי / שלום" · (HE gloss "היי!") — `reply.social.hello` — ❌ wrong
+  2. EN "🤗 Welcome / ברוך הבא" · FR "🤗 Welcome / ברוך הבא" · ES "🤗 Welcome / ברוך הבא" · (HE gloss "ברוך הבא!") — `reply.social.welcome` — ✅ accepted
+  3. EN "🤩 Wonderful / נהדר" · FR "🤩 Wonderful / נהדר" · ES "🤩 Wonderful / נהדר" · (HE gloss "נהדר!") — `reply.social.wonderful` — ❌ wrong
+  4. EN "☀️ Have a great day / שיהיה יום נהדר" · FR "☀️ Have a great day / שיהיה יום נהדר" · ES "☀️ Have a great day / שיהיה יום נהדר" · (HE gloss "שיהיה יום נהדר!") — `reply.social.great-day` — ❌ wrong
+- Tests: reply.social.welcome
+- Explanation shown after answering: none — a correct match locks both tiles under a shared number and speaks the answer; a miss shakes, shows ✕ and clears (no penalty)
+
+### M01-Q15 — match-pairs (step 12, pair 3 of 4 (all pairs are on one screen))
+
+- Prompt displayed: "Warm words you will hear — what does each one say?" / "מילים חמות שתשמע — מה כל אחת אומרת?" — tile to match (target language, no translation): EN "Wonderful!" · FR "Magnifique !" · ES "¡Qué maravilla!"
+- Audio played: EN "Wonderful!" · FR "Magnifique !" · ES "¡Qué maravilla!"
+- Meaning of the audio (HE): "נהדר!"
+- Buttons show: the ANSWER tiles, target language only; their order is shuffled; a matched pair locks and leaves the board, so later pairs have fewer live tiles
+- Choices:
+  1. EN "👋 Hi / hello / היי / שלום" · FR "👋 Hi / hello / היי / שלום" · ES "👋 Hi / hello / היי / שלום" · (HE gloss "היי!") — `reply.social.hello` — ❌ wrong
+  2. EN "🤗 Welcome / ברוך הבא" · FR "🤗 Welcome / ברוך הבא" · ES "🤗 Welcome / ברוך הבא" · (HE gloss "ברוך הבא!") — `reply.social.welcome` — ❌ wrong
+  3. EN "🤩 Wonderful / נהדר" · FR "🤩 Wonderful / נהדר" · ES "🤩 Wonderful / נהדר" · (HE gloss "נהדר!") — `reply.social.wonderful` — ✅ accepted
+  4. EN "☀️ Have a great day / שיהיה יום נהדר" · FR "☀️ Have a great day / שיהיה יום נהדר" · ES "☀️ Have a great day / שיהיה יום נהדר" · (HE gloss "שיהיה יום נהדר!") — `reply.social.great-day` — ❌ wrong
+- Tests: reply.social.wonderful
+- Explanation shown after answering: none — a correct match locks both tiles under a shared number and speaks the answer; a miss shakes, shows ✕ and clears (no penalty)
+
+### M01-Q16 — match-pairs (step 12, pair 4 of 4 (all pairs are on one screen))
+
+- Prompt displayed: "Warm words you will hear — what does each one say?" / "מילים חמות שתשמע — מה כל אחת אומרת?" — tile to match (target language, no translation): EN "Have a great day!" · FR "Bonne journée !" · ES "¡Que tenga un buen día!"
+- Audio played: EN "Have a great day!" · FR "Bonne journée !" · ES "¡Que tenga un buen día!"
+- Meaning of the audio (HE): "שיהיה יום נהדר!"
+- Buttons show: the ANSWER tiles, target language only; their order is shuffled; a matched pair locks and leaves the board, so later pairs have fewer live tiles
+- Choices:
+  1. EN "👋 Hi / hello / היי / שלום" · FR "👋 Hi / hello / היי / שלום" · ES "👋 Hi / hello / היי / שלום" · (HE gloss "היי!") — `reply.social.hello` — ❌ wrong
+  2. EN "🤗 Welcome / ברוך הבא" · FR "🤗 Welcome / ברוך הבא" · ES "🤗 Welcome / ברוך הבא" · (HE gloss "ברוך הבא!") — `reply.social.welcome` — ❌ wrong
+  3. EN "🤩 Wonderful / נהדר" · FR "🤩 Wonderful / נהדר" · ES "🤩 Wonderful / נהדר" · (HE gloss "נהדר!") — `reply.social.wonderful` — ❌ wrong
+  4. EN "☀️ Have a great day / שיהיה יום נהדר" · FR "☀️ Have a great day / שיהיה יום נהדר" · ES "☀️ Have a great day / שיהיה יום נהדר" · (HE gloss "שיהיה יום נהדר!") — `reply.social.great-day` — ✅ accepted
+- Tests: reply.social.great-day
+- Explanation shown after answering: none — a correct match locks both tiles under a shared number and speaks the answer; a miss shakes, shows ✕ and clears (no penalty)
+
+### M01-Q17 — sentence-builder (step 13, round 1 of 3)
+
+- Prompt displayed: "Build the sentence" / "בנה את המשפט" — cue shown: the sentence's MEANING in the app language ("קוראים לי דן.")
+- Audio played: EN "(nothing before Check; the built sentence is spoken once it is right)" · FR "(same)" · ES "(same)"
+- Meaning of the audio (HE): —
+- Buttons show: the authored CHUNKS of the sentence as tiles (listed here in the correct order, separated by "|"), shuffled; each language has its own chunks; Check unlocks when every tile is placed
+- Choices:
+  1. EN "My name  |  is  |  Dan." · FR "Je  |  m’appelle  |  Dan." · ES "Me  |  llamo  |  Dan." · (HE gloss "קוראים לי דן.") — `phrase.social.my-name` — ✅ accepted
+- Tests: phrase.social.my-name
+- Explanation shown after answering: right: the sentence is spoken and its translation shown. Wrong: "not yet" — the tiles stay, the answer is NOT shown; after one miss a hint marks the start; after two misses the learner may reveal it
+
+### M01-Q18 — sentence-builder (step 13, round 2 of 3)
+
+- Prompt displayed: "Build the sentence" / "בנה את המשפט" — cue shown: the sentence's MEANING in the app language ("אני מישראל.")
+- Audio played: EN "(nothing before Check; the built sentence is spoken once it is right)" · FR "(same)" · ES "(same)"
+- Meaning of the audio (HE): —
+- Buttons show: the authored CHUNKS of the sentence as tiles (listed here in the correct order, separated by "|"), shuffled; each language has its own chunks; Check unlocks when every tile is placed
+- Choices:
+  1. EN "I'm  |  from  |  Israel." · FR "Je  |  viens  |  d’Israël." · ES "Soy  |  de  |  Israel." · (HE gloss "אני מישראל.") — `phrase.social.from-israel` — ✅ accepted
+- Tests: phrase.social.from-israel
+- Explanation shown after answering: right: the sentence is spoken and its translation shown. Wrong: "not yet" — the tiles stay, the answer is NOT shown; after one miss a hint marks the start; after two misses the learner may reveal it
+
+### M01-Q19 — sentence-builder (step 13, round 3 of 3)
+
+- Prompt displayed: "Build the sentence" / "בנה את המשפט" — cue shown: the sentence's MEANING in the app language ("זו הפעם הראשונה שלי כאן.")
+- Audio played: EN "(nothing before Check; the built sentence is spoken once it is right)" · FR "(same)" · ES "(same)"
+- Meaning of the audio (HE): —
+- Buttons show: the authored CHUNKS of the sentence as tiles (listed here in the correct order, separated by "|"), shuffled; each language has its own chunks; Check unlocks when every tile is placed
+- Choices:
+  1. EN "It's  |  my  |  first time  |  here." · FR "C’est  |  ma  |  première fois  |  ici." · ES "Es  |  mi  |  primera vez  |  aquí." · (HE gloss "זו הפעם הראשונה שלי כאן.") — `phrase.social.first-time` — ✅ accepted
+- Tests: phrase.social.first-time
+- Explanation shown after answering: right: the sentence is spoken and its translation shown. Wrong: "not yet" — the tiles stay, the answer is NOT shown; after one miss a hint marks the start; after two misses the learner may reveal it
+
+### M01-Q20 — quick-reply (step 14, round 1 of 3)
+
+- Prompt displayed: "What do you say?" / "מה עונים?"
+- Audio played: EN "What's your name?" · FR "Comment vous appelez-vous ?" · ES "¿Cómo se llama?"
+- Meaning of the audio (HE): "איך קוראים לך?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "My name is Dan." · FR "Je m’appelle Dan." · ES "Me llamo Dan." · (HE gloss "קוראים לי דן.") — `phrase.social.my-name` — ✅ accepted
+  2. EN "I'm from Israel." · FR "Je viens d’Israël." · ES "Soy de Israel." · (HE gloss "אני מישראל.") — `phrase.social.from-israel` — ❌ wrong
+  3. EN "Nice to meet you!" · FR "Enchanté !" · ES "¡Mucho gusto!" · (HE gloss "נעים להכיר!") — `phrase.social.nice-to-meet` — ❌ wrong
+- Tests: phrase.social.my-name
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M01-Q21 — quick-reply (step 14, round 2 of 3)
 
 - Prompt displayed: "What do you say?" / "מה עונים?"
 - Audio played: EN "Where are you from?" · FR "D’où venez-vous ?" · ES "¿De dónde es?"
@@ -371,7 +648,7 @@ No meaning quiz in this mission.
 - Tests: phrase.social.from-israel
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M01-Q09 — quick-reply (step 11, round 2 of 2)
+### M01-Q22 — quick-reply (step 14, round 3 of 3)
 
 - Prompt displayed: "What do you say?" / "מה עונים?"
 - Audio played: EN "Is this your first time here?" · FR "C’est votre première fois ici ?" · ES "¿Es su primera vez aquí?"
@@ -381,6 +658,45 @@ No meaning quiz in this mission.
   1. EN "Yes, it's my first time here." · FR "Oui, c’est ma première fois ici." · ES "Sí, es mi primera vez aquí." · (HE gloss "זו הפעם הראשונה שלי כאן.") — `phrase.social.first-time` — ✅ accepted
   2. EN "I'm from Israel." · FR "Je viens d’Israël." · ES "Soy de Israel." · (HE gloss "אני מישראל.") — `phrase.social.from-israel` — ❌ wrong
   3. EN "Nice to meet you!" · FR "Enchanté !" · ES "¡Mucho gusto!" · (HE gloss "נעים להכיר!") — `phrase.social.nice-to-meet` — ❌ wrong
+- Tests: phrase.social.first-time
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M01-Q29 — quick-reply (step 18, round 1 of 3 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "Hi! Welcome. What's your name?" · FR "Bonjour ! Bienvenue. Comment vous appelez-vous ?" · ES "¡Hola! Bienvenido. ¿Cómo se llama?"
+- Meaning of the audio (HE): "היי! ברוך הבא. איך קוראים לך?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "My name is Dan." · FR "Je m’appelle Dan." · ES "Me llamo Dan." · (HE gloss "קוראים לי דן.") — `phrase.social.my-name` — ✅ accepted
+  2. EN "I'm from Israel." · FR "Je viens d’Israël." · ES "Soy de Israel." · (HE gloss "אני מישראל.") — `phrase.social.from-israel` — ❌ wrong
+  3. EN "It's my first time here." · FR "C’est ma première fois ici." · ES "Es mi primera vez aquí." · (HE gloss "זו הפעם הראשונה שלי כאן.") — `phrase.social.first-time` — ❌ wrong
+- Tests: phrase.social.my-name
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M01-Q30 — quick-reply (step 18, round 2 of 3 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "Nice to meet you, Dan! Where are you from?" · FR "Enchanté, Dan ! D’où venez-vous ?" · ES "¡Mucho gusto, Dan! ¿De dónde es?"
+- Meaning of the audio (HE): "נעים להכיר, דן! מאיפה אתה?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "I'm from Israel." · FR "Je viens d’Israël." · ES "Soy de Israel." · (HE gloss "אני מישראל.") — `phrase.social.from-israel` — ✅ accepted
+  2. EN "My name is Dan." · FR "Je m’appelle Dan." · ES "Me llamo Dan." · (HE gloss "קוראים לי דן.") — `phrase.social.my-name` — ❌ wrong
+  3. EN "Nice to meet you!" · FR "Enchanté !" · ES "¡Mucho gusto!" · (HE gloss "נעים להכיר!") — `phrase.social.nice-to-meet` — ❌ wrong
+- Tests: phrase.social.from-israel
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M01-Q31 — quick-reply (step 18, round 3 of 3 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "Israel, wonderful! Is this your first time here?" · FR "Israël, magnifique ! C’est votre première fois ici ?" · ES "¡Israel, qué maravilla! ¿Es su primera vez aquí?"
+- Meaning of the audio (HE): "ישראל, נהדר! זו הפעם הראשונה שלך כאן?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Yes, it's my first time here." · FR "Oui, c’est ma première fois ici." · ES "Sí, es mi primera vez aquí." · (HE gloss "זו הפעם הראשונה שלי כאן.") — `phrase.social.first-time` — ✅ accepted
+  2. EN "I'm from Israel." · FR "Je viens d’Israël." · ES "Soy de Israel." · (HE gloss "אני מישראל.") — `phrase.social.from-israel` — ❌ wrong
+  3. EN "My name is Dan." · FR "Je m’appelle Dan." · ES "Me llamo Dan." · (HE gloss "קוראים לי דן.") — `phrase.social.my-name` — ❌ wrong
 - Tests: phrase.social.first-time
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
@@ -496,7 +812,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 
 ## Learner choice screens
 
-### M01-Q10 — dialogue-choice (step 12, scene "meeting-host" · node c1)
+### M01-Q23 — dialogue-choice (step 15, scene "meeting-host" · node c1)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Hi! Welcome. What's your name?" · FR "Bonjour ! Bienvenue. Comment vous appelez-vous ?" · ES "¡Hola! Bienvenido. ¿Cómo se llama?"
@@ -508,7 +824,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.social.my-name, phrase.recovery.repeat
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M01-Q11 — dialogue-choice (step 12, scene "meeting-host" · node c1b)
+### M01-Q24 — dialogue-choice (step 15, scene "meeting-host" · node c1b)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Of course — what — is — your — name?" · FR "Bien sûr — comment — vous — appelez-vous ?" · ES "Claro — ¿cómo — se — llama?"
@@ -519,7 +835,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.social.my-name
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M01-Q12 — dialogue-choice (step 12, scene "meeting-host" · node c2)
+### M01-Q25 — dialogue-choice (step 15, scene "meeting-host" · node c2)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Nice to meet you, Dan! Where are you from?" · FR "Enchanté, Dan ! D’où venez-vous ?" · ES "¡Mucho gusto, Dan! ¿De dónde es?"
@@ -531,7 +847,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.social.from-israel, phrase.social.nice-to-meet
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M01-Q13 — dialogue-choice (step 12, scene "meeting-host" · node c2b)
+### M01-Q26 — dialogue-choice (step 15, scene "meeting-host" · node c2b)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Likewise! And where are you from?" · FR "Moi de même ! Et d’où venez-vous ?" · ES "¡Igualmente! ¿Y de dónde es?"
@@ -542,7 +858,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.social.from-israel
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M01-Q14 — dialogue-choice (step 12, scene "meeting-host" · node c3)
+### M01-Q27 — dialogue-choice (step 15, scene "meeting-host" · node c3)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Israel, wonderful! Is this your first time here?" · FR "Israël, magnifique ! C’est votre première fois ici ?" · ES "¡Israel, qué maravilla! ¿Es su primera vez aquí?"
@@ -554,7 +870,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.social.first-time, phrase.recovery.slowly
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M01-Q15 — dialogue-choice (step 12, scene "meeting-host" · node c3b)
+### M01-Q28 — dialogue-choice (step 15, scene "meeting-host" · node c3b)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Sure. Is this — your first time — here?" · FR "Bien sûr. C’est — votre première fois — ici ?" · ES "Claro. ¿Es — su primera vez — aquí?"
@@ -586,7 +902,7 @@ Where a conversation-help tool can be selected, and what happens:
 
 ## Sentence review
 
-Step 14. 9 sentences, in this fixed order. Each is played automatically (TTS), shown with its translation and tip; buttons: 🔊 "Hear again" / "לשמוע שוב" and Next. No speaking prompt, no grading, no scoring; nothing is recorded.
+Step 17. 10 sentences, in this fixed order. Each is played automatically (TTS), shown with its translation and tip; buttons: 🔊 "Hear again" / "לשמוע שוב" and Next. No speaking prompt, no grading, no scoring; nothing is recorded.
 
 1. `phrase.social.my-name` — My name is Dan. — קוראים לי דן.
 2. `phrase.social.from-israel` — I'm from Israel. — אני מישראל.
@@ -596,11 +912,12 @@ Step 14. 9 sentences, in this fixed order. Each is played automatically (TTS), s
 6. `reply.social.where-from` — Where are you from? — מאיפה אתה?
 7. `reply.social.first-time-q` — Is this your first time here? — זו הפעם הראשונה שלך כאן?
 8. `reply.social.enjoy-stay` — Enjoy your stay! — תיהנה מהשהות!
-9. `phrase.recovery.repeat` — Can you repeat that? — אפשר לחזור על זה?
+9. `reply.social.great-day` — Have a great day! — שיהיה יום נהדר!
+10. `phrase.recovery.repeat` — Can you repeat that? — אפשר לחזור על זה?
 
 ## Cold open / ambush
 
-### M01-Q16 — cold-open (step 15, single prompt · mode: recovery)
+### M01-Q32 — cold-open (step 20, single prompt · mode: recovery)
 
 - Prompt displayed: "Heads up: a fast one is coming. Use a tool." / "שים לב: מגיע משפט מהיר. השתמש בכלי."
 - Audio played: EN "And what do you do back home, if you don't mind me asking?" · FR "Et vous faites quoi dans la vie, si ce n’est pas indiscret ?" · ES "¿Y a qué se dedica, si no es indiscreción?"
@@ -631,35 +948,43 @@ Every learner sentence of this mission is a line in a scene.
 ## Receipts (proof cards)
 
 - Step 9: "You recognize the questions every curious local will ask you." / "אתה מזהה את השאלות שכל מקומי סקרן ישאל אותך."
-- Step 13: "You handled a full introduction — name, origin, first time here." / "ניהלת היכרות שלמה — שם, מוצא, פעם ראשונה כאן."
-- Step 16: "You didn’t understand — and you had a move. Not understanding is not the end of the conversation." / "לא הבנת — והיה לך מה לעשות. לא להבין זה לא סוף השיחה."
+- Step 16: "You handled a full introduction — name, origin, first time here." / "ניהלת היכרות שלמה — שם, מוצא, פעם ראשונה כאן."
+- Step 19: "Three questions in a row, at normal speed and with no translation — and you answered them all." / "שלוש שאלות ברצף, בקצב רגיל ובלי תרגום — וענית על כולן."
+- Step 21: "You didn’t understand — and you had a move. Not understanding is not the end of the conversation." / "לא הבנת — והיה לך מה לעשות. לא להבין זה לא סוף השיחה."
+- Step 27: "You understood the whole conversation — from “Hi” to “Have a great day”. No translation." / "הבנת את כל השיחה — מה"היי" ועד "שיהיה יום נהדר". בלי תרגום."
 
 ## Audit Metadata — DO NOT FIX YET
 
 - Learner-production sentences: 4
-- Receptive (expected-reply) sentences: 4
+- Receptive (expected-reply) sentences: 8
 - Toolkit phrases bundled: 2
 - Key-sentence steps: 4
-- Expected-reply/listening items: 4
-- Questions/quizzes (meaning quiz): 0
-- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 5
-- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 8
+- Expected-reply/listening items: 9
+- Questions/quizzes (meaning quiz): 4
+- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 16
+- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 19
 - One-button dialogue screens: 3
 - Learner sentences never actively retrieved: 0
 - Dialogue learner choices (screens): 6
 - Wrong-answer branches: 1
 - Cold-open prompts: 1
 - Recovery opportunities: 2
-- Vocabulary pre-items: 4
+- Vocabulary pre-items: 7
 - Swap variants (extra accepted lines): 0
-- Sentences in review: 9
-- Total interactive questions: 16 (answer choices: 38)
-- Approximate total learner interactions: 30 (questions + key sentences + review cards + word-intro screen)
+- Sentences in review: 10
+- Total interactive questions: 36 (answer choices: 96)
+- Approximate total learner interactions: 51 (questions + key sentences + review cards + word-intro screen)
 
-### AUTO-FLAG — requires human review (2)
+### AUTO-FLAG — requires human review (8)
 
+- AUTO-FLAG — Same prompt tested repeatedly: “Welcome!” is the audio of M01-Q09 and M01-Q33.
+- AUTO-FLAG — Same prompt tested repeatedly: “Wonderful!” is the audio of M01-Q10 and M01-Q34.
+- AUTO-FLAG — Same prompt tested repeatedly: “Enjoy your stay!” is the audio of M01-Q11 and M01-Q35.
+- AUTO-FLAG — Same prompt tested repeatedly: “Have a great day!” is the audio of M01-Q12 and M01-Q36.
 - AUTO-FLAG — 5 of 6 choice screens have NO wrong option (every button is accepted): meeting-host/c1, meeting-host/c1b, meeting-host/c2b, meeting-host/c3, meeting-host/c3b.
 - AUTO-FLAG — 3 choice screens offer exactly ONE button (no decision): meeting-host/c1b, meeting-host/c2b, meeting-host/c3b.
+- AUTO-FLAG — FR English gloss differs from the English mission's sentence: `reply.social.hello` gloss “Hello!” vs English “Hi!”.
+- AUTO-FLAG — FR Hebrew gloss differs from the English mission's Hebrew gloss: `reply.social.hello` “שלום!” vs “היי!”.
 
 ---
 
@@ -26086,7 +26411,7 @@ Every learner sentence of this mission is a line in a scene.
 
 | Mission | Sentences (prod / heard / kit) | Expected replies | Listening questions | Meaning questions | Active-practice questions | Dialogue-choice questions | One-button screens | Recovery moments | Cold open | Vocabulary pre-step | Swap variants | Total interactive questions | Auto-flags |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 01 Introduce Myself | 10 (4 / 4 / 2) | 4 | 4 | 0 | 5 | 6 | 3 | 2 | 1 | 4 words | 0 | 16 | 2 |
+| 01 Introduce Myself | 14 (4 / 8 / 2) | 9 | 13 | 4 | 16 | 6 | 3 | 2 | 1 | 7 words | 0 | 36 | 8 |
 | 02 Numbers & Money | 14 (5 / 7 / 2) | 4 | 5 | 1 | 9 | 4 | 1 | 2 | 0 | 6 words | 1 | 18 | 11 |
 | 03 Coffee Shop | 22 (8 / 10 / 4) | 4 | 4 | 0 | 8 | 11 | 5 | 3 | 1 | 6 words | 1 | 24 | 5 |
 | 04 Everyday Core: Want / Need / Have / Can | 18 (10 / 6 / 2) | 4 | 4 | 0 | 12 | 10 | 9 | 2 | 1 | 5 words | 0 | 27 | 4 |
@@ -26125,10 +26450,10 @@ Every learner-production sentence id of the Core, in order of first appearance. 
 
 | Sentence id | English | First | Reused in | Key | Select (ok / wrong) | Quick reply / swap rounds | Cold-open option | Review cards | In a checkpoint | Listening-only | Flag |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `phrase.social.my-name` | My name is Dan. | 01 | — | 1 | 2 / 0 | 2 | 0 | 1 | no | no |  |
-| `phrase.social.nice-to-meet` | Nice to meet you! | 01 | — | 1 | 0 / 1 | 1 | 1 | 1 | no | no |  |
-| `phrase.social.from-israel` | I'm from Israel. | 01 | 11, 28, 30 | 1 | 3 / 1 | 6 | 0 | 1 | yes | no |  |
-| `phrase.social.first-time` | It's my first time here. | 01 | 11, 28, 29, 30 | 1 | 6 / 1 | 8 | 0 | 1 | yes | no |  |
+| `phrase.social.my-name` | My name is Dan. | 01 | — | 1 | 2 / 0 | 7 | 0 | 1 | no | no |  |
+| `phrase.social.nice-to-meet` | Nice to meet you! | 01 | — | 1 | 0 / 1 | 3 | 1 | 1 | no | no |  |
+| `phrase.social.from-israel` | I'm from Israel. | 01 | 11, 28, 30 | 1 | 3 / 1 | 11 | 0 | 1 | yes | no |  |
+| `phrase.social.first-time` | It's my first time here. | 01 | 11, 28, 29, 30 | 1 | 6 / 1 | 11 | 0 | 1 | yes | no |  |
 | `phrase.money.how-much` | How much is it? | 02 | 29 | 1 | 1 / 1 | 2 | 0 | 1 | no | no |  |
 | `phrase.money.by-card` | By card, please. | 02 | 18, 28, 29 | 1 | 4 / 1 | 1 | 0 | 1 | yes | no |  |
 | `phrase.money.in-cash` | In cash. | 02 | 28 | 0 | 1 / 1 | 1 | 0 | 1 | no | no |  |
@@ -26299,9 +26624,13 @@ Every expected-reply sentence id. "Quick response" does not exist as an exercise
 | Sentence id | English | First | Repeated in | Listening drill | Meaning quiz (audio / distractor) | Cold open (correct / wrong) | Checkpoint exposure | Said in a dialogue |
 |---|---|---|---|---|---|---|---|---|
 | `reply.social.whats-your-name` | What's your name? | 01 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
-| `reply.social.where-from` | Where are you from? | 01 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
-| `reply.social.first-time-q` | Is this your first time here? | 01 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
-| `reply.social.enjoy-stay` | Enjoy your stay! | 01 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
+| `reply.social.where-from` | Where are you from? | 01 | — | yes (1) | 0 / 1 | 0 / 0 | no | yes |
+| `reply.social.first-time-q` | Is this your first time here? | 01 | — | yes (1) | 0 / 1 | 0 / 0 | no | yes |
+| `reply.social.enjoy-stay` | Enjoy your stay! | 01 | — | yes (1) | 1 / 1 | 0 / 0 | no | yes |
+| `reply.social.hello` | Hi! | 01 | — | yes (1) | 0 / 1 | 0 / 0 | no | yes |
+| `reply.social.welcome` | Welcome! | 01 | — | yes (1) | 1 / 1 | 0 / 0 | no | yes |
+| `reply.social.wonderful` | Wonderful! | 01 | — | yes (1) | 1 / 0 | 0 / 0 | no | yes |
+| `reply.social.great-day` | Have a great day! | 01 | — | yes (1) | 1 / 2 | 0 / 0 | no | yes |
 | `reply.money.five-euros` | That's five euros. | 02 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
 | `reply.money.ten-euros` | That'll be ten euros. | 02 | — | yes (1) | 0 / 0 | 0 / 0 | no | **no** |
 | `reply.money.twenty-euros` | Twenty euros, please. | 02 | — | yes (1) | 0 / 0 | 0 / 0 | no | **no** |
@@ -26578,12 +26907,12 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 
 **M01-Q04** — expected-reply
 - Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (4/4)
-- Audio: Enjoy your stay! — (תיהנה מהשהות!)
-- A: תיהנה מהשהות! / Enjoy your stay! ✅
+- Audio: Nice to meet you! — (נעים להכיר!)
+- A: נעים להכיר! / Nice to meet you! ✅
 - B: איך קוראים לך? / What's your name?
 - C: מאיפה אתה? / Where are you from?
-- Correct: Enjoy your stay!
-- Tests: reply.social.enjoy-stay
+- Correct: Nice to meet you!
+- Tests: phrase.social.nice-to-meet
 
 **M01-Q05** — match-pairs
 - Prompt: "Match each question to your answer" / "חבר כל שאלה לתשובה שלך" — tile to match (target language, no translation): EN "What's your name?" · FR "Comment vous appelez-vous ?" · ES "¿Cómo se llama?"
@@ -26612,7 +26941,122 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Correct: Yes, it's my first time here.
 - Tests: phrase.social.first-time
 
-**M01-Q08** — quick-reply
+**M01-Q08** — expected-reply
+- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (1/5)
+- Audio: Hi! — (היי!)
+- A: היי! / Hi! ✅
+- B: ברוך הבא! / Welcome!
+- C: נהדר! / Wonderful!
+- Correct: Hi!
+- Tests: reply.social.hello
+
+**M01-Q09** — expected-reply
+- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (2/5)
+- Audio: Welcome! — (ברוך הבא!)
+- A: ברוך הבא! / Welcome! ✅
+- B: היי! / Hi!
+- C: נהדר! / Wonderful!
+- Correct: Welcome!
+- Tests: reply.social.welcome
+
+**M01-Q10** — expected-reply
+- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (3/5)
+- Audio: Wonderful! — (נהדר!)
+- A: נהדר! / Wonderful! ✅
+- B: היי! / Hi!
+- C: ברוך הבא! / Welcome!
+- Correct: Wonderful!
+- Tests: reply.social.wonderful
+
+**M01-Q11** — expected-reply
+- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (4/5)
+- Audio: Enjoy your stay! — (תיהנה מהשהות!)
+- A: תיהנה מהשהות! / Enjoy your stay! ✅
+- B: היי! / Hi!
+- C: ברוך הבא! / Welcome!
+- Correct: Enjoy your stay!
+- Tests: reply.social.enjoy-stay
+
+**M01-Q12** — expected-reply
+- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (5/5)
+- Audio: Have a great day! — (שיהיה יום נהדר!)
+- A: שיהיה יום נהדר! / Have a great day! ✅
+- B: היי! / Hi!
+- C: ברוך הבא! / Welcome!
+- Correct: Have a great day!
+- Tests: reply.social.great-day
+
+**M01-Q13** — match-pairs
+- Prompt: "Warm words you will hear — what does each one say?" / "מילים חמות שתשמע — מה כל אחת אומרת?" — tile to match (target language, no translation): EN "Hi!" · FR "Bonjour !" · ES "¡Hola!"
+- Audio: Hi! — (היי!)
+- A: 👋 Hi / hello / היי / שלום ✅
+- B: 🤗 Welcome / ברוך הבא
+- C: 🤩 Wonderful / נהדר
+- D: ☀️ Have a great day / שיהיה יום נהדר
+- Correct: 👋 Hi / hello / היי / שלום
+- Tests: reply.social.hello
+
+**M01-Q14** — match-pairs
+- Prompt: "Warm words you will hear — what does each one say?" / "מילים חמות שתשמע — מה כל אחת אומרת?" — tile to match (target language, no translation): EN "Welcome!" · FR "Bienvenue !" · ES "¡Bienvenido!"
+- Audio: Welcome! — (ברוך הבא!)
+- A: 👋 Hi / hello / היי / שלום
+- B: 🤗 Welcome / ברוך הבא ✅
+- C: 🤩 Wonderful / נהדר
+- D: ☀️ Have a great day / שיהיה יום נהדר
+- Correct: 🤗 Welcome / ברוך הבא
+- Tests: reply.social.welcome
+
+**M01-Q15** — match-pairs
+- Prompt: "Warm words you will hear — what does each one say?" / "מילים חמות שתשמע — מה כל אחת אומרת?" — tile to match (target language, no translation): EN "Wonderful!" · FR "Magnifique !" · ES "¡Qué maravilla!"
+- Audio: Wonderful! — (נהדר!)
+- A: 👋 Hi / hello / היי / שלום
+- B: 🤗 Welcome / ברוך הבא
+- C: 🤩 Wonderful / נהדר ✅
+- D: ☀️ Have a great day / שיהיה יום נהדר
+- Correct: 🤩 Wonderful / נהדר
+- Tests: reply.social.wonderful
+
+**M01-Q16** — match-pairs
+- Prompt: "Warm words you will hear — what does each one say?" / "מילים חמות שתשמע — מה כל אחת אומרת?" — tile to match (target language, no translation): EN "Have a great day!" · FR "Bonne journée !" · ES "¡Que tenga un buen día!"
+- Audio: Have a great day! — (שיהיה יום נהדר!)
+- A: 👋 Hi / hello / היי / שלום
+- B: 🤗 Welcome / ברוך הבא
+- C: 🤩 Wonderful / נהדר
+- D: ☀️ Have a great day / שיהיה יום נהדר ✅
+- Correct: ☀️ Have a great day / שיהיה יום נהדר
+- Tests: reply.social.great-day
+
+**M01-Q17** — sentence-builder
+- Prompt: "Build the sentence" / "בנה את המשפט" — cue shown: the sentence's MEANING in the app language ("קוראים לי דן.")
+- Audio: (nothing before Check; the built sentence is spoken once it is right) — ()
+- A: My name  |  is  |  Dan. ✅
+- Correct: My name  |  is  |  Dan.
+- Tests: phrase.social.my-name
+
+**M01-Q18** — sentence-builder
+- Prompt: "Build the sentence" / "בנה את המשפט" — cue shown: the sentence's MEANING in the app language ("אני מישראל.")
+- Audio: (nothing before Check; the built sentence is spoken once it is right) — ()
+- A: I'm  |  from  |  Israel. ✅
+- Correct: I'm  |  from  |  Israel.
+- Tests: phrase.social.from-israel
+
+**M01-Q19** — sentence-builder
+- Prompt: "Build the sentence" / "בנה את המשפט" — cue shown: the sentence's MEANING in the app language ("זו הפעם הראשונה שלי כאן.")
+- Audio: (nothing before Check; the built sentence is spoken once it is right) — ()
+- A: It's  |  my  |  first time  |  here. ✅
+- Correct: It's  |  my  |  first time  |  here.
+- Tests: phrase.social.first-time
+
+**M01-Q20** — quick-reply
+- Prompt: "What do you say?" / "מה עונים?"
+- Audio: What's your name? — (איך קוראים לך?)
+- A: My name is Dan. ✅
+- B: I'm from Israel.
+- C: Nice to meet you!
+- Correct: My name is Dan.
+- Tests: phrase.social.my-name
+
+**M01-Q21** — quick-reply
 - Prompt: "What do you say?" / "מה עונים?"
 - Audio: Where are you from? — (מאיפה אתה?)
 - A: I'm from Israel. ✅
@@ -26621,7 +27065,7 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Correct: I'm from Israel.
 - Tests: phrase.social.from-israel
 
-**M01-Q09** — quick-reply
+**M01-Q22** — quick-reply
 - Prompt: "What do you say?" / "מה עונים?"
 - Audio: Is this your first time here? — (זו הפעם הראשונה שלך כאן?)
 - A: Yes, it's my first time here. ✅
@@ -26630,7 +27074,7 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Correct: Yes, it's my first time here.
 - Tests: phrase.social.first-time
 
-**M01-Q10** — dialogue-choice
+**M01-Q23** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Hi! Welcome. What's your name? — (היי! ברוך הבא. איך קוראים לך?)
 - A: My name is Dan. ✅
@@ -26638,14 +27082,14 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Correct: My name is Dan. | Can you repeat that?
 - Tests: phrase.social.my-name, phrase.recovery.repeat
 
-**M01-Q11** — dialogue-choice
+**M01-Q24** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Of course — what — is — your — name? — (כמובן — איך — קוראים — לך?)
 - A: My name is Dan. ✅
 - Correct: My name is Dan.
 - Tests: phrase.social.my-name
 
-**M01-Q12** — dialogue-choice
+**M01-Q25** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Nice to meet you, Dan! Where are you from? — (נעים להכיר, דן! מאיפה אתה?)
 - A: I'm from Israel. ✅
@@ -26653,14 +27097,14 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Correct: I'm from Israel.
 - Tests: phrase.social.from-israel, phrase.social.nice-to-meet
 
-**M01-Q13** — dialogue-choice
+**M01-Q26** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Likewise! And where are you from? — (גם לי! ומאיפה אתה?)
 - A: I'm from Israel. ✅
 - Correct: I'm from Israel.
 - Tests: phrase.social.from-israel
 
-**M01-Q14** — dialogue-choice
+**M01-Q27** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Israel, wonderful! Is this your first time here? — (ישראל, נהדר! זו הפעם הראשונה שלך כאן?)
 - A: Yes, it's my first time here. ✅
@@ -26668,20 +27112,83 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Correct: Yes, it's my first time here. | Please speak slowly.
 - Tests: phrase.social.first-time, phrase.recovery.slowly
 
-**M01-Q15** — dialogue-choice
+**M01-Q28** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Sure. Is this — your first time — here? — (בטח. זו — הפעם הראשונה שלך — כאן?)
 - A: Yes, it's my first time here. ✅
 - Correct: Yes, it's my first time here.
 - Tests: phrase.social.first-time
 
-**M01-Q16** — cold-open
+**M01-Q29** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Hi! Welcome. What's your name? — (היי! ברוך הבא. איך קוראים לך?)
+- A: My name is Dan. ✅
+- B: I'm from Israel.
+- C: It's my first time here.
+- Correct: My name is Dan.
+- Tests: phrase.social.my-name
+
+**M01-Q30** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Nice to meet you, Dan! Where are you from? — (נעים להכיר, דן! מאיפה אתה?)
+- A: I'm from Israel. ✅
+- B: My name is Dan.
+- C: Nice to meet you!
+- Correct: I'm from Israel.
+- Tests: phrase.social.from-israel
+
+**M01-Q31** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Israel, wonderful! Is this your first time here? — (ישראל, נהדר! זו הפעם הראשונה שלך כאן?)
+- A: Yes, it's my first time here. ✅
+- B: I'm from Israel.
+- C: My name is Dan.
+- Correct: Yes, it's my first time here.
+- Tests: phrase.social.first-time
+
+**M01-Q32** — cold-open
 - Prompt: "Heads up: a fast one is coming. Use a tool." / "שים לב: מגיע משפט מהיר. השתמש בכלי."
 - Audio: And what do you do back home, if you don't mind me asking? — (ומה אתה עושה בחיים, אם מותר לשאול?)
 - A: Can you repeat that? ✅
 - B: Nice to meet you!
 - Correct: Can you repeat that?
 - Tests: phrase.recovery.repeat
+
+**M01-Q33** — meaning-quiz
+- Prompt: "What did it mean?" / "מה זה אומר?"
+- Audio: Welcome! — (ברוך הבא!)
+- A: ברוך הבא! / Welcome! ✅
+- B: שיהיה יום נהדר! / Have a great day!
+- C: מאיפה אתה? / Where are you from?
+- Correct: Welcome!
+- Tests: reply.social.welcome
+
+**M01-Q34** — meaning-quiz
+- Prompt: "What did it mean?" / "מה זה אומר?"
+- Audio: Wonderful! — (נהדר!)
+- A: נהדר! / Wonderful! ✅
+- B: נעים להכיר! / Nice to meet you!
+- C: זו הפעם הראשונה שלך כאן? / Is this your first time here?
+- Correct: Wonderful!
+- Tests: reply.social.wonderful
+
+**M01-Q35** — meaning-quiz
+- Prompt: "What did it mean?" / "מה זה אומר?"
+- Audio: Enjoy your stay! — (תיהנה מהשהות!)
+- A: תיהנה מהשהות! / Enjoy your stay! ✅
+- B: שיהיה יום נהדר! / Have a great day!
+- C: ברוך הבא! / Welcome!
+- Correct: Enjoy your stay!
+- Tests: reply.social.enjoy-stay
+
+**M01-Q36** — meaning-quiz
+- Prompt: "What did it mean?" / "מה זה אומר?"
+- Audio: Have a great day! — (שיהיה יום נהדר!)
+- A: שיהיה יום נהדר! / Have a great day! ✅
+- B: תיהנה מהשהות! / Enjoy your stay!
+- C: היי! / Hi!
+- Correct: Have a great day!
+- Tests: reply.social.great-day
 
 ## Mission 02 — Numbers & Money
 
@@ -32585,16 +33092,16 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 
 - Missions exported: 30
 - Learner-production sentence ids: 162
-- Expected-reply (receptive) sentence ids: 146
-- Sentence listings across missions (with reuse): 516
-- Expected-reply questions: 97
-- Meaning quizzes: 4
-- Active-practice questions: 315
+- Expected-reply (receptive) sentence ids: 150
+- Sentence listings across missions (with reuse): 520
+- Expected-reply questions: 102
+- Meaning quizzes: 8
+- Active-practice questions: 326
 - Dialogue choice screens: 271
 - Cold opens: 13
-- Total interactive questions: 700
-- Total answer choices: 1774
+- Total interactive questions: 720
+- Total answer choices: 1832
 - Wrong-answer branches: 94
 - Recovery opportunities: 56
 - Learner sentences with 0 active retrieval opportunities: 1
-- Auto-flags: 199
+- Auto-flags: 205

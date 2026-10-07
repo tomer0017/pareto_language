@@ -17,6 +17,11 @@ export const DAY1_ITEMS: BootcampItem[] = [
   { id: 'en.reply.social.where-from', text: 'Where are you from?', meaning: T('מאיפה אתה?', 'Where are you from?') },
   { id: 'en.reply.social.first-time-q', text: 'Is this your first time here?', meaning: T('זו הפעם הראשונה שלך כאן?', 'Is this your first time here?') },
   { id: 'en.reply.social.enjoy-stay', text: 'Enjoy your stay!', meaning: T('תיהנה מהשהות!', 'Enjoy your stay!') },
+  // heard in the conversation (and the video) — comprehension, not production
+  { id: 'en.reply.social.hello', text: 'Hi!', meaning: T('היי!', 'Hi!') },
+  { id: 'en.reply.social.welcome', text: 'Welcome!', meaning: T('ברוך הבא!', 'Welcome!') },
+  { id: 'en.reply.social.wonderful', text: 'Wonderful!', meaning: T('נהדר!', 'Wonderful!') },
+  { id: 'en.reply.social.great-day', text: 'Have a great day!', meaning: T('שיהיה יום נהדר!', 'Have a great day!') },
   ...recovery('en.phrase.recovery.repeat', 'en.phrase.recovery.slowly'),
 ];
 

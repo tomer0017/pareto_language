@@ -74,8 +74,8 @@ describe('scope: only the Practice of Missions 19–24 changed', () => {
   const slice = (lang: Lang, a: number, b: number): BootcampDayContent[] => BOOTCAMP_PLAN.slice(a, b).map((m) => beforeCueFreeze(MISSIONS_BY_LANG[lang]![m.day]!, lang));
   const print = (f: (lang: Lang) => unknown): Record<Lang, string> => ({ en: fnv(JSON.stringify(f('en'))), fr: fnv(JSON.stringify(f('fr'))), es: fnv(JSON.stringify(f('es'))) });
 
-  it('Missions 01–18 are byte-for-byte unchanged', () => {
-    expect(print((l) => slice(l, 0, 18))).toEqual({ en: '47987fe0', fr: 'c0290489', es: 'cc3b8d20' });
+  it('Missions 02–18 are byte-for-byte unchanged (Mission 01 has its own pass — mission01.test.ts)', () => {
+    expect(print((l) => slice(l, 1, 18))).toEqual({ en: '0a882011', fr: 'd4a6a68e', es: 'fcbddaf5' });
   });
   it('the locked dialogues of Missions 19–23 are byte-for-byte unchanged', () => {
     expect(print((l) => slice(l, 18, 23).map((d) => d.dialogues))).toEqual({ en: '594ead2b', fr: '63803269', es: '55c7bd8f' });

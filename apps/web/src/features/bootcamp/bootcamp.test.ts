@@ -444,8 +444,9 @@ describe('video-first Bootcamp (intro/review video)', () => {
     expect(kinds[0]).toBe('video'); // watch the full conversation first
     const videoSteps = DAY1.steps.filter((s) => s.kind === 'video') as Extract<BootcampStep, { kind: 'video' }>[];
     expect(videoSteps.map((s) => s.mode)).toEqual(['intro', 'again']);
-    // "watch again" sits immediately before the final summary.
-    expect(kinds[kinds.length - 2]).toBe('video');
+    // "watch again" opens the final gate: after it comes only the comprehension check, then the summary.
+    const again = DAY1.steps.findIndex((s) => s.kind === 'video' && s.mode === 'again');
+    expect(kinds.slice(again + 1)).toEqual(['quiz', 'quiz', 'quiz', 'quiz', 'receipt', 'summary']);
     expect(kinds.at(-1)).toBe('summary');
   });
 
