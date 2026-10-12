@@ -84,6 +84,7 @@ export function encounters(day: BootcampDayContent, chunk: string): Encounter[] 
         else if (hit(text(p.promptItemId)) || hit(p.answerText ?? text(p.answerItemId))) add('retrieval', 'question ↔ answer match');
       }
     } else if (s.kind === 'sentenceBuilder') { for (const r of s.rounds) if (hit(r.chunks.join(' '))) add('retrieval', 'sentence builder'); }
+    else if (s.kind === 'visualMatch' || s.kind === 'miniMap') { for (const r of s.rounds) if (hit(r.audio.en)) add('listening', s.challenge ? 'speed board (heard → tapped)' : 'visual board (heard → tapped)'); }
     else if (s.kind === 'swap') { for (const r of s.rounds) if (r.options.some((o) => o.correct && hit(fillFrame(r.frame, o.slot)))) add('retrieval', 'swap'); }
     else if (s.kind === 'quickReply') {
       for (const r of s.rounds) {
@@ -108,8 +109,8 @@ export interface ConceptCoverage { id: string; role: 'hear' | 'say'; total: numb
  *   - a host line (`hear`) is at least once heard-and-understood (a listening exercise);
  *   - a learner line (`say`) is at least once retrieved, and met five times or more.
  */
-export function coverageOf(day: BootcampDayContent, lang: CoverageLang): ConceptCoverage[] {
-  return M01_CONCEPTS.map((c) => {
+export function coverageOf(day: BootcampDayContent, lang: CoverageLang, concepts: readonly CoverageConcept[] = M01_CONCEPTS): ConceptCoverage[] {
+  return concepts.map((c) => {
     const list = encounters(day, c.chunk[lang]);
     const byKind: Record<EncounterKind, number> = { meaning: 0, listening: 0, retrieval: 0, context: 0 };
     for (const e of list) byKind[e.kind]++;

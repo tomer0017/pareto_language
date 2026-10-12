@@ -71,8 +71,8 @@ describe('scope: only the Practice of Missions 06–10 changed', () => {
   const slice = (lang: Lang, a: number, b: number): FrozenDay[] => BOOTCAMP_PLAN.slice(a, b).map((m) => beforeCueFreeze(MISSIONS_BY_LANG[lang]![m.day]!, lang));
   const print = (f: (lang: Lang) => unknown): Record<Lang, string> => ({ en: fnv(JSON.stringify(f('en'))), fr: fnv(JSON.stringify(f('fr'))), es: fnv(JSON.stringify(f('es'))) });
 
-  it('Missions 02–05 are byte-for-byte unchanged (Mission 01 has its own pass — mission01.test.ts)', () => {
-    expect(print((l) => slice(l, 1, 5))).toEqual({ en: '30bd5d4e', fr: 'f50c8622', es: '44e71fd9' });
+  it('Missions 03–05 are byte-for-byte unchanged (Missions 01 and 02 have their own passes — mission01.test.ts, mission02.test.ts)', () => {
+    expect(print((l) => slice(l, 2, 5))).toEqual({ en: '0b6386a5', fr: 'c13dd3a2', es: '142d30e5' });
   });
   it('the locked dialogues of Missions 06, 07 and 09 are byte-for-byte unchanged', () => {
     const three = (l: Lang): BootcampDayContent[] => [slice(l, 5, 6)[0]!, slice(l, 6, 7)[0]!, slice(l, 8, 9)[0]!];
@@ -97,14 +97,14 @@ describe('scope: only the Practice of Missions 06–10 changed', () => {
     expect(print((l) => pick(l, 9))).toEqual({ en: '60b489f1', fr: '5d4d6a20', es: 'a4ff1fc6' });
     expect(print((l) => pick(l, 8).steps.filter((s) => s.kind !== 'swap'))).toEqual({ en: '033e2741', fr: '1be8e9bb', es: '45d575fc' });
   });
-  it('Missions 02–18 are exactly as approved — the only difference is that two retired hotel sentences left Mission 08\'s list', () => {
+  it('Missions 03–18 are exactly as approved — the only difference is that two retired hotel sentences left Mission 08\'s list', () => {
     // These hashes were taken from the approved build with ONLY those two sentences filtered out of
     // Mission 08's sentence list. Matching them now proves nothing else in Missions 01–18 moved.
     // (Mission 08 is serialised as [everything but its sentence list, its sentence list] — the shape the
     // approved build was fingerprinted in, with the two sentences left out.)
-    // (Mission 01 is no longer part of this fingerprint: it has its own pass — mission01.test.ts.)
-    const shaped = (l: Lang): unknown[] => slice(l, 1, 18).map((d, i) => { if (i !== 6) return d; const { items, ...rest } = d; return [rest, items]; });
-    expect(print(shaped)).toEqual({ en: '8b5f024b', fr: 'ba7467fc', es: '44b14e45' });
+    // (Missions 01 and 02 are no longer part of this fingerprint: each has its own pass.)
+    const shaped = (l: Lang): unknown[] => slice(l, 2, 18).map((d, i) => { if (i !== 5) return d; const { items, ...rest } = d; return [rest, items]; });
+    expect(print(shaped)).toEqual({ en: 'a4b777e8', fr: 'fa2cff7c', es: '137867b9' });
   });
   it('"For two nights." and the wifi password are retired: archived with their ids and wording, and shown nowhere', () => {
     const gone = ['phrase.hotel.two-nights', 'phrase.hotel.wifi'];

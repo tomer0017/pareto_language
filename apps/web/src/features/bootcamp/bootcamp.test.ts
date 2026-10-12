@@ -450,9 +450,9 @@ describe('video-first Bootcamp (intro/review video)', () => {
     expect(kinds.at(-1)).toBe('summary');
   });
 
-  it('only Mission 1 has video steps; every mission can be read aloud whether or not it has a video', () => {
+  it('only Missions 1 and 2 have video steps (skipped where no file exists); every mission can be read aloud whether or not it has a video', () => {
     for (const set of [DAYS, DAYS_FR, DAYS_ES]) for (const day of Object.values(set)) {
-      expect(day.steps.some((s) => s.kind === 'video'), `day ${day.day}`).toBe(day.day === 1);
+      expect(day.steps.some((s) => s.kind === 'video'), `day ${day.day}`).toBe(day.day === 1 || day.day === 2);
       expect(Object.keys(day.dialogues).length).toBeGreaterThan(0); // the transcript reader still works
     }
   });

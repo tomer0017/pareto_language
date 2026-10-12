@@ -95,6 +95,8 @@ export interface PrimeSpec {
   words: { key?: string; t: L3; meaning: Copy; emoji?: string; review?: boolean }[];
   /** The sentence the words assemble into — only when they genuinely build one. */
   build?: string;
+  /** Step 0 of the mission: an optional preparation the learner may skip. */
+  gate?: boolean;
 }
 
 /* Active-practice steps, written once for every language (see the engines in practiceEngines.ts). */
@@ -384,6 +386,7 @@ export function buildPrime(prime: PrimeSpec, lang: MissionLang): BootcampStep {
       ...(w.review ? { review: true } : {}),
     })),
     ...(prime.build ? { buildFromItemId: `${lang}.${prime.build}` } : {}),
+    ...(prime.gate ? { gate: true } : {}),
   };
 }
 

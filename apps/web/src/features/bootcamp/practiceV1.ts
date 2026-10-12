@@ -1,6 +1,5 @@
 import type { LocalizedText } from '@ready/content-schema';
 import { buildPractice, buildPrime, spokenLine, type Copy, type L3, type L4, type MissionLang, type PracticeSpec, type PrimeSpec } from './author.js';
-import { frenchNumber } from './fr/frenchNumbers.js';
 import type { BootcampStep, MapCell } from './types.js';
 
 /**
@@ -178,74 +177,159 @@ const PRICE_TILES = [
   { id: 'e50', label: '€50' }, { id: 'e5_50', label: '€5.50' }, { id: 'e15_50', label: '€15.50' },
 ];
 
+/** The market stall — what is sold, the two prices of the offer, how many, how to pay. */
+const STALL_TILES = [
+  { id: 'berries', emoji: '🍓' },
+  { id: 'one5', emoji: '🍓', label: '= €5' }, { id: 'two8', emoji: '🍓🍓', label: '= €8' }, { id: 'two16', emoji: '🍓🍓', label: '= €16' },
+  { id: 'box1', emoji: '📦', label: '×1' }, { id: 'box2', emoji: '📦📦', label: '×2' },
+  { id: 'cash', emoji: '💵' }, { id: 'card', emoji: '💳' },
+];
+/** After the video: what happened at the stall? The offer is one tile — both prices at once. */
+const AFTER_VIDEO_TILES = [
+  { id: 'berries', emoji: '🍓' }, { id: 'bye', emoji: '🙏😋' },
+  { id: 'offer', emoji: '🍓', label: '1 = €5 · 2 = €8' }, { id: 'offer16', emoji: '🍓', label: '1 = €5 · 2 = €16' }, { id: 'offer58', emoji: '🍓', label: '1 = €8 · 2 = €5' },
+  { id: 'box1', emoji: '📦', label: '×1' }, { id: 'box2', emoji: '📦📦', label: '×2' },
+  { id: 'cash', emoji: '💵' }, { id: 'card', emoji: '💳' },
+];
+const STALL_OPENS: L4 = ['Fresh strawberries! Best in the market!', 'Fraises fraîches ! Les meilleures du marché !', '¡Fresas frescas! ¡Las mejores del mercado!', 'תותים טריים! הכי טובים בשוק!'];
+const STALL_OFFER: L4 = ['Five euros a box, or two for eight!', 'Cinq euros la barquette, ou deux pour huit !', '¡Cinco euros la caja, o dos por ocho!', 'חמישה יורו קופסה, או שתיים בשמונה!'];
+const STALL_TOTAL: L4 = ["Perfect. That's five euros. Cash or card?", 'Parfait. Ça fait cinq euros. Espèces ou carte ?', 'Perfecto. Son cinco euros. ¿Efectivo o tarjeta?', 'מצוין. זה חמישה יורו. מזומן או כרטיס?'];
+const ONE_BOX: L4 = ['One box, please.', 'Une barquette, s’il vous plaît.', 'Una caja, por favor.', 'קופסה אחת, בבקשה.'];
+const STALL_CLOSES: L4 = ['Thank you! Enjoy the strawberries!', 'Merci ! Bonne dégustation !', '¡Gracias! ¡Que las disfrute!', 'תודה! תיהנה מהתותים!'];
+const BY_CARD: L4 = ['By card, please.', 'Par carte, s’il vous plaît.', 'Con tarjeta, por favor.', 'בכרטיס, בבקשה.'];
+
+/**
+ * Mission 02 follows the Mission 01 standard: finishing it must mean "I understand the whole market
+ * conversation". The conversation is LOCKED; everything here is the journey around it.
+ *
+ *   Step 0 (optional building blocks: how much, 1 · 2 · 5 · 8, box, cash, card) → your sentences →
+ *   what the vendor answers (the price, the offer, the payment question) → hear the prices → the
+ *   stall board (what the offer MEANS: one = €5, two = €8 together) → the vendor's friendly words →
+ *   question ↔ answer → build your two orders → answer on your own → the conversation → review →
+ *   the vendor's own lines at speed → one fast price → the video → what happened at the stall?
+ *
+ * Every Quick Reply prompt is a real line of the conversation or one that plainly belongs at a
+ * stall; no prompt is invented to force a "please repeat" answer (recovery stays where it has a
+ * reason: inside the conversation, on the fast offer). The coverage promise is written down in
+ * `mission02Coverage.ts` and enforced by `mission02.test.ts`.
+ */
 export function m02Steps(lang: MissionLang): BootcampStep[] {
   const k = kit(lang);
-  const prime = k.prime({
-    intro: ['המילים ששולטות בכל תשלום — כולל המספרים שתשמע.', 'The words that control every payment — including the numbers you’ll hear.'],
-    words: [
-      { key: 'money.how-much', t: ['how much', 'c’est combien', '¿cuánto es?'], meaning: ['כמה (עולה)', 'how much'] },
-      { key: 'money.euros', t: ['euros', 'euros', 'euros'], meaning: ['יורו', 'euros'], emoji: '💶' },
-      { key: 'money.cash', t: ['cash', 'espèces', 'efectivo'], meaning: ['מזומן', 'cash'], emoji: '💵' },
-      { key: 'money.card', t: ['card', 'par carte', 'tarjeta'], meaning: ['כרטיס', 'card'], emoji: '💳' },
-      { key: 'number.five', t: ['five', 'cinq', 'cinco'], meaning: ['חמש (5)', 'five (5)'] },
-      { key: 'number.ten', t: ['ten', 'dix', 'diez'], meaning: ['עשר (10)', 'ten (10)'] },
-    ],
-    build: 'phrase.money.how-much',
-  });
-  // French only: 70 and 80 are built unlike any other language here (60+10, 4×20) and turn up in
-  // prices — a genuine language-specific need, so the keys are marked `fr.`.
-  if (lang === 'fr' && prime.kind === 'prime') {
-    prime.words.push(
-      { key: 'fr.seventy', text: frenchNumber(70), meaning: T(['שבעים (60+10)', 'seventy (60+10)']) },
-      { key: 'fr.eighty', text: frenchNumber(80), meaning: T(['שמונים (4×20)', 'eighty (4×20)']) },
-    );
-  }
   return [
     k.talk('💶', ['משימה 2: כסף ומספרים', 'Mission 2: Numbers & Money'], [
       ['הכישלון הכי נפוץ של מטייל: לא הבנת את המחיר, אז פשוט הושטת שטר גדול וקיווית.', 'The most common traveler failure: you didn’t catch the price, so you just held out a big bill and hoped.'],
-      ['היום זה נגמר. אתה תשמע מחירים — ותבין אותם.', 'Today that ends. You’ll hear prices — and understand them.'],
+      ['היום זה נגמר. דוכן תותים בשוק: תשאל כמה, תבין את המחיר ואת המבצע, תזמין ותשלם.', 'Today that ends. A strawberry stall at the market: you ask how much, understand the price and the offer, order and pay.'],
     ], ['מתחילים', 'Start']),
-    prime,
+    // STEP 0 — optional, short: only what helps decode THIS conversation.
+    k.prime({
+      gate: true,
+      intro: ['המספרים והמילים של הדוכן. הקש על כל אחד כדי לשמוע.', 'The numbers and words of the stall. Tap each one to hear it.'],
+      words: [
+        { key: 'money.how-much', t: ['how much', 'c’est combien', '¿cuánto es?'], meaning: ['כמה (עולה)', 'how much'] },
+        { key: 'number.one', t: ['one', 'une', 'una'], meaning: ['אחת (1)', 'one (1)'], emoji: '1️⃣' },
+        { key: 'number.two', t: ['two', 'deux', 'dos'], meaning: ['שתיים (2)', 'two (2)'], emoji: '2️⃣' },
+        { key: 'number.five', t: ['five', 'cinq', 'cinco'], meaning: ['חמש (5)', 'five (5)'], emoji: '5️⃣' },
+        { key: 'number.eight', t: ['eight', 'huit', 'ocho'], meaning: ['שמונה (8)', 'eight (8)'], emoji: '8️⃣' },
+        { key: 'money.box', t: ['box', 'barquette', 'caja'], meaning: ['קופסה', 'box'], emoji: '📦' },
+        { key: 'money.cash', t: ['cash', 'espèces', 'efectivo'], meaning: ['מזומן', 'cash'], emoji: '💵' },
+        { key: 'money.card', t: ['card', 'carte', 'tarjeta'], meaning: ['כרטיס', 'card'], emoji: '💳' },
+      ],
+      build: 'phrase.money.how-much',
+    }),
     ...k.tools([
       ['phrase.money.how-much', ['לשאול מחיר', 'Ask the price']],
+      ['phrase.money.one-box', ['להזמין', 'Order']],
       ['phrase.money.by-card', ['לשלם בכרטיס', 'Pay by card']],
       ['phrase.money.too-expensive', ['מיקוח מנומס', 'Polite haggle']],
     ]),
-    k.replies('phrase.money.how-much', ['reply.money.five-euros', 'reply.money.ten-euros', 'reply.money.twenty-euros', 'reply.money.cash-or-card']),
-    k.receipt(['שמעת מחירים שונים — וזיהית כל אחד.', 'You heard different prices — and caught every one.']),
+    // LISTENING — what the vendor says back: the price, the offer, "perfect", the payment question, the goodbye.
+    k.replies('phrase.money.how-much', ['reply.money.five-euros', 'reply.money.offer', 'reply.money.perfect', 'reply.money.cash-or-card', 'reply.money.enjoy-strawberries']),
+    k.receipt(['שמעת מחיר, מבצע ושאלת תשלום — וזיהית כל אחד.', 'You heard a price, an offer and the payment question — and caught every one.']),
+    // NUMBERS BY EAR — the price tag you hear.
     k.practice({
       kind: 'visualMatch',
       label: ['הקש על המחיר ששמעת', 'Tap the price you hear'],
       tiles: PRICE_TILES,
       rounds: [
         { audio: ["That's five euros.", 'Ça fait cinq euros.', 'Son cinco euros.', 'זה חמישה יורו.'], correct: 'e5', itemId: 'reply.money.five-euros' },
-        { audio: ['Twenty euros, please.', 'Vingt euros, s’il vous plaît.', 'Veinte euros, por favor.', 'עשרים יורו, בבקשה.'], correct: 'e20', itemId: 'reply.money.twenty-euros' },
         { audio: ['Eight euros.', 'Huit euros.', 'Ocho euros.', 'שמונה יורו.'], correct: 'e8' },
+        { audio: ['Two euros.', 'Deux euros.', 'Dos euros.', 'שני יורו.'], correct: 'e2' },
+        { audio: ['Twenty euros, please.', 'Vingt euros, s’il vous plaît.', 'Veinte euros, por favor.', 'עשרים יורו, בבקשה.'], correct: 'e20', itemId: 'reply.money.twenty-euros' },
         { audio: ["That'll be ten euros.", 'Ça fera dix euros.', 'Serán diez euros.', 'זה יעלה עשרה יורו.'], correct: 'e10', itemId: 'reply.money.ten-euros' },
-        { audio: ['Fifteen fifty.', 'Quinze cinquante.', 'Quince con cincuenta.', 'חמש עשרה וחצי.'], correct: 'e15_50', itemId: 'reply.money.fifteen-fifty' },
       ],
     }),
-    k.quiz('reply.money.your-change', 'reply.money.no-change', 'reply.money.cash-or-card'),
+    // THE STALL — what the offer means: one box is €5, two boxes are €8 TOGETHER (never €16).
+    k.practice({
+      kind: 'visualMatch',
+      label: ['בדוכן — הקש על מה ששמעת', 'At the stall — tap what you hear'],
+      tiles: STALL_TILES,
+      rounds: [
+        { audio: ['Fresh strawberries!', 'Fraises fraîches !', '¡Fresas frescas!', 'תותים טריים!'], correct: 'berries', itemId: 'reply.money.fresh-strawberries' },
+        { audio: ['Five euros a box.', 'Cinq euros la barquette.', 'Cinco euros la caja.', 'חמישה יורו קופסה.'], correct: 'one5' },
+        { audio: ['Two for eight.', 'Deux pour huit.', 'Dos por ocho.', 'שתיים בשמונה.'], correct: 'two8' },
+        { audio: ONE_BOX, correct: 'box1', itemId: 'phrase.money.one-box' },
+        { audio: BY_CARD, correct: 'card', itemId: 'phrase.money.by-card' },
+      ],
+    }),
+    // THE VENDOR'S FRIENDLY WORDS — nobody asks you to say them; you only have to know them.
+    k.practice({
+      kind: 'matchPairs',
+      label: ['מה המוכר אומר? התאם כל משפט למשמעות שלו', 'What does the vendor say? Match each line to its meaning'],
+      pairs: [
+        ['reply.money.fresh-strawberries', 'reply.money.fresh-strawberries', undefined, '🍓', ['תותים טריים', 'Fresh strawberries']],
+        ['reply.money.best-market', 'reply.money.best-market', undefined, '🏆', ['הכי טובים בשוק', 'Best in the market']],
+        ['reply.money.perfect', 'reply.money.perfect', undefined, '👌', ['מצוין', 'Perfect']],
+        ['reply.money.enjoy-strawberries', 'reply.money.enjoy-strawberries', undefined, '😋', ['תודה! תיהנה מהתותים', 'Thank you! Enjoy the strawberries']],
+      ],
+    }),
+    // QUESTION ↔ ANSWER — why each line follows the one before: price, order, payment.
+    k.practice({
+      kind: 'matchPairs',
+      label: ['מה בא אחרי מה? חבר כל משפט לתשובה שלו', 'What follows what? Connect each line to its reply'],
+      pairs: [
+        ['phrase.money.how-much', 'reply.money.five-euros'],
+        ['reply.money.offer', 'phrase.money.one-box'],
+        ['reply.money.cash-or-card', 'phrase.money.by-card'],
+      ],
+    }),
+    // BUILD — your two orders, piece by piece (each language in its own order).
+    k.practice({
+      kind: 'sentenceBuilder',
+      rounds: [
+        { itemId: 'phrase.money.one-box', chunks: [['One', 'box,', 'please.'], ['Une', 'barquette,', 's’il vous plaît.'], ['Una', 'caja,', 'por favor.']] },
+        { itemId: 'phrase.money.by-card', chunks: [['By', 'card,', 'please.'], ['Par', 'carte,', 's’il vous plaît.'], ['Con', 'tarjeta,', 'por favor.']] },
+      ],
+    }),
+    // ANSWER — the vendor's real lines, and one more that plainly belongs at a stall.
     k.practice({
       kind: 'quickReply',
       rounds: [
+        { npc: STALL_OPENS, options: [['phrase.money.how-much', true], ['phrase.money.by-card', false], ['phrase.money.in-cash', false]] },
+        { prompt: 'reply.money.offer', options: [['phrase.money.one-box', true], ['phrase.money.by-card', false], ['phrase.money.how-much', false]] },
+        { prompt: 'reply.money.cash-or-card', options: [['phrase.money.by-card', true], ['phrase.money.in-cash', true], ['phrase.money.how-much', false]] },
         { npc: ["That's fifty euros.", 'Ça fait cinquante euros.', 'Son cincuenta euros.', 'זה חמישים יורו.'],
           options: [['phrase.money.too-expensive', true], ['phrase.money.how-much', false], ['phrase.money.one-box', false]] },
-        { prompt: 'reply.money.cash-or-card', options: [['phrase.money.by-card', true], ['phrase.money.in-cash', true], ['phrase.money.how-much', false]] },
       ],
-    }),
-    // One sentence, rebuilt from its pieces — the haggle line the learner must be able to produce.
-    k.practice({
-      kind: 'sentenceBuilder',
-      rounds: [{ itemId: 'phrase.money.too-expensive', chunks: [["That's", 'too', 'expensive.'], ['C’est', 'trop', 'cher.'], ['Es', 'muy', 'caro.']] }],
     }),
     k.dialogue('market-stall'),
     k.receipt(['קנית בשוק, הבנת את המחיר, ושילמת. עסקה שלמה.', 'You bought at the market, understood the price, and paid. A full transaction.']),
     k.review([
       'phrase.money.how-much', 'phrase.money.one-box', 'phrase.money.by-card', 'phrase.money.in-cash', 'phrase.money.too-expensive',
-      'reply.money.five-euros', 'reply.money.twenty-euros', 'reply.money.fifteen-fifty', 'reply.money.cash-or-card', 'reply.money.your-change',
-      'phrase.recovery.slowly',
+      'reply.money.offer', 'reply.money.five-euros', 'reply.money.cash-or-card', 'reply.money.your-change',
+      'reply.money.fresh-strawberries', 'reply.money.enjoy-strawberries', 'phrase.recovery.slowly',
     ]),
+    // FAST — the vendor's own three lines, word for word, at natural speed and with no translation.
+    k.practice({
+      kind: 'quickReply',
+      challenge: true,
+      rounds: [
+        { npc: STALL_OPENS, options: [['phrase.money.how-much', true], ['phrase.money.one-box', false], ['phrase.money.by-card', false]] },
+        { npc: STALL_OFFER, options: [['phrase.money.one-box', true], ['phrase.money.how-much', false], ['phrase.money.in-cash', false]] },
+        { npc: STALL_TOTAL, options: [['phrase.money.by-card', true], ['phrase.money.one-box', false], ['phrase.money.too-expensive', false]] },
+      ],
+    }),
+    k.receipt(['שלוש השורות של המוכר, בקצב רגיל ובלי תרגום — וענית על כולן.', 'The vendor’s three lines, at normal speed and with no translation — and you answered them all.']),
+    // …and one price said fast, with pennies: the mission's real skill.
     k.practice({
       kind: 'visualMatch',
       challenge: true,
@@ -256,6 +340,22 @@ export function m02Steps(lang: MissionLang): BootcampStep[] {
       }],
     }),
     k.receipt(['מספר עם אגורות, מהיר — ותפסת אותו. זה כסף בשליטה.', 'A fast decimal price — and you caught it. That’s money, under control.']),
+    // THE GATE — the whole conversation again with no help (the video, where one exists)…
+    { kind: 'video', mode: 'again' },
+    // …then: what happened at the stall? Answered by tapping, not by translating.
+    k.practice({
+      kind: 'visualMatch',
+      label: ['מה קרה בדוכן? הקש על מה ששמעת', 'What happened at the stall? Tap what you hear'],
+      tiles: AFTER_VIDEO_TILES,
+      rounds: [
+        { audio: STALL_OPENS, correct: 'berries' },
+        { audio: STALL_OFFER, correct: 'offer', itemId: 'reply.money.offer' },
+        { audio: ONE_BOX, correct: 'box1', itemId: 'phrase.money.one-box' },
+        { audio: BY_CARD, correct: 'card', itemId: 'phrase.money.by-card' },
+        { audio: STALL_CLOSES, correct: 'bye', itemId: 'reply.money.enjoy-strawberries' },
+      ],
+    }),
+    k.receipt(['הבנת את כל מה שקרה בדוכן — מה נמכר, כמה זה עולה, מה המבצע, כמה לקחת ואיך שילמת.', 'You understood everything at the stall — what was sold, the price, the offer, how many you took and how you paid.']),
     { kind: 'summary' },
   ];
 }

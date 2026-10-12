@@ -22,6 +22,25 @@ loop (typecheck → lint → tests → build → smoke) green at every milestone
 
 ## What's done
 
+### Mission 02 — Numbers & Money, on the Mission 01 standard (2026-10-12)
+The dialogue is LOCKED (byte-identical, pinned); Mission 01 is byte-identical too.
+- **Before:** the vendor's opening pitch, the whole offer line ("Five euros a box, or two for
+  eight!"), "Perfect" and the closing thanks were heard only in the conversation; "How much is it?"
+  and "One box, please" were never retrieved outside it; nothing showed that two boxes cost €8 in total.
+- **Now:** intro → **Step 0** (an optional, skippable building-blocks step: how much, 1 · 2 · 5 · 8,
+  box, cash, card — `prime.gate`) → 4 key sentences → listening (price, offer, "perfect", cash or
+  card, the goodbye) → prices by ear → **the stall board** (🍓 = €5, 🍓🍓 = €8, with "= €16" as the
+  wrong reading) → the vendor's words ↔ meaning → what follows what → builder (the two orders) →
+  Quick Reply ×4 → the conversation → review → the vendor's three lines at speed → one fast price →
+  **video again → "what happened at the stall?"** (five taps, the offer as one tile).
+- Five comprehension-only sentences per language (`reply.money.fresh-strawberries / best-market /
+  offer / perfect / enjoy-strawberries`). Removed: the "change" quiz, the fifteen-fifty round of the
+  price board, the "too expensive" builder round, ten and French 70/80 from the building blocks.
+- **Rule (all missions):** no Quick Reply prompt is invented to force a recovery phrase; recovery
+  stays where it has a reason (here: inside the conversation, on the fast offer). Tested.
+- Coverage is machine-checked: `mission02Coverage.ts` (14 chunks) + `mission02.test.ts`, on the
+  Mission 01 counting rule. Earlier fingerprints now pin Missions 03–N. Not done: device QA.
+
 ### Mission 01 — the gold-standard pedagogical pass (2026-10-07)
 The dialogue is LOCKED (byte-identical, pinned); only the journey around it changed.
 - **Before:** "Hi / Welcome", "wonderful" and "Have a great day" were heard only in the conversation

@@ -141,11 +141,14 @@ describe('Mission 01 — Introduce Myself', () => {
 describe('Mission 02 — Numbers & Money', () => {
   const day = mission(2);
   it('Visual Match accepts the tile that shows the spoken price', () => {
-    const [board, finale] = stepsOf(day, 'visualMatch');
+    // (Mission 02 gold-standard pass: the price board now drills the numbers of the offer — 5, 8, 2 —
+    //  and is followed by the stall board; the fast decimal price is still the speed finale.)
+    const [board] = stepsOf(day, 'visualMatch');
+    const finale = stepsOf(day, 'visualMatch').find((s) => s.challenge);
     const label = (s: typeof board, id: string): string => s!.tiles.find((t) => t.id === id)!.label!;
     expect(board!.tiles).toHaveLength(9);
     expect(board!.rounds.map((r) => [r.audio.en, label(board, r.correct)])).toEqual([
-      ["That's five euros.", '€5'], ['Twenty euros, please.', '€20'], ['Eight euros.', '€8'], ["That'll be ten euros.", '€10'], ['Fifteen fifty.', '€15.50'],
+      ["That's five euros.", '€5'], ['Eight euros.', '€8'], ['Two euros.', '€2'], ['Twenty euros, please.', '€20'], ["That'll be ten euros.", '€10'],
     ]);
     expect(finale!.challenge).toBe(true);
     expect(label(finale, finale!.rounds[0]!.correct)).toBe('€15.50');

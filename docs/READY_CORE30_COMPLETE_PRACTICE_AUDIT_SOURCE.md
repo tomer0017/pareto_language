@@ -997,7 +997,7 @@ Every learner sentence of this mission is a line in a scene.
 - Phase: 1 — Foundations / יסודות 🛟
 - Source runtime file(s): `apps/web/src/features/bootcamp/day2.ts` · `apps/web/src/features/bootcamp/fr/day2.ts` · `apps/web/src/features/bootcamp/es/day2.ts`
 - Video: found by convention, never written into mission content — EN `videos/en/en_2.mp4` · FR `videos/fr/fr_2.mp4` · ES `videos/es/es_2.mp4`. Played only where that file exists (inventory: `docs/CORE30_FINAL_VIDEO_ACTION_MAP.md`).
-- Video steps inside the Practice flow: no
+- Video steps inside the Practice flow: yes (see flow)
 
 ## Learning goal / intro screen
 
@@ -1020,46 +1020,54 @@ Intro screen (first Practice step; identical in the English, French and Spanish 
 - Icon: 💶
 - Title: "Mission 2: Numbers & Money" / "משימה 2: כסף ומספרים"
 - Text 1: "The most common traveler failure: you didn’t catch the price, so you just held out a big bill and hoped." / "הכישלון הכי נפוץ של מטייל: לא הבנת את המחיר, אז פשוט הושטת שטר גדול וקיווית."
-- Text 2: "Today that ends. You’ll hear prices — and understand them." / "היום זה נגמר. אתה תשמע מחירים — ותבין אותם."
+- Text 2: "Today that ends. A strawberry stall at the market: you ask how much, understand the price and the offer, order and pay." / "היום זה נגמר. דוכן תותים בשוק: תשאל כמה, תבין את המחיר ואת המבצע, תזמין ותשלם."
 - Button: "Start" / "מתחילים"
 
 ## Current Practice flow
 
 1. `talk` — intro screen — "Mission 2: Numbers & Money"
-2. `prime` — before-we-speak (word intro) — 6 words → builds `phrase.money.how-much`
-3. `tool` — key sentence (listen → reveal → say aloud) — `phrase.money.how-much` “How much is it?” · label "Ask the price" / "לשאול מחיר" (1/3)
-4. `tool` — key sentence (listen → reveal → say aloud) — `phrase.money.by-card` “By card, please.” · label "Pay by card" / "לשלם בכרטיס" (2/3)
-5. `tool` — key sentence (listen → reveal → say aloud) — `phrase.money.too-expensive` “That's too expensive.” · label "Polite haggle" / "מיקוח מנומס" (3/3)
-6. `replies` — expected replies (listening drill) — after `phrase.money.how-much`: 4 replies
-7. `receipt` — receipt (proof card) — "You heard different prices — and caught every one." / "שמעת מחירים שונים — וזיהית כל אחד."
-8. `visualMatch` — visual match (hear → tap the tile) — 5 round(s)
-9. `quiz` — meaning quiz (listening) — hears `reply.money.your-change`
-10. `quickReply` — quick reply (hear → pick your response) — 2 round(s)
-11. `sentenceBuilder` — sentence builder (put the chunks in order) — 1 round(s)
-12. `dialogue` — dialogue (choose your line) — scene `market-stall`
-13. `receipt` — receipt (proof card) — "You bought at the market, understood the price, and paid. A full transaction." / "קנית בשוק, הבנת את המחיר, ושילמת. עסקה שלמה."
-14. `swipe` — sentence review — 11 sentences
-15. `visualMatch` — visual match (hear → tap the tile) — 1 round(s) · speed challenge
-16. `receipt` — receipt (proof card) — "A fast decimal price — and you caught it. That’s money, under control." / "מספר עם אגורות, מהיר — ותפסת אותו. זה כסף בשליטה."
-17. `summary` — victory screen
+2. `prime` — before-we-speak (word intro) — 8 words → builds `phrase.money.how-much`
+3. `tool` — key sentence (listen → reveal → say aloud) — `phrase.money.how-much` “How much is it?” · label "Ask the price" / "לשאול מחיר" (1/4)
+4. `tool` — key sentence (listen → reveal → say aloud) — `phrase.money.one-box` “One box, please.” · label "Order" / "להזמין" (2/4)
+5. `tool` — key sentence (listen → reveal → say aloud) — `phrase.money.by-card` “By card, please.” · label "Pay by card" / "לשלם בכרטיס" (3/4)
+6. `tool` — key sentence (listen → reveal → say aloud) — `phrase.money.too-expensive` “That's too expensive.” · label "Polite haggle" / "מיקוח מנומס" (4/4)
+7. `replies` — expected replies (listening drill) — after `phrase.money.how-much`: 5 replies
+8. `receipt` — receipt (proof card) — "You heard a price, an offer and the payment question — and caught every one." / "שמעת מחיר, מבצע ושאלת תשלום — וזיהית כל אחד."
+9. `visualMatch` — visual match (hear → tap the tile) — 5 round(s)
+10. `visualMatch` — visual match (hear → tap the tile) — 5 round(s)
+11. `matchPairs` — match pairs (connect each question to its answer) — 4 pairs on one screen
+12. `matchPairs` — match pairs (connect each question to its answer) — 3 pairs on one screen
+13. `sentenceBuilder` — sentence builder (put the chunks in order) — 2 round(s)
+14. `quickReply` — quick reply (hear → pick your response) — 4 round(s)
+15. `dialogue` — dialogue (choose your line) — scene `market-stall`
+16. `receipt` — receipt (proof card) — "You bought at the market, understood the price, and paid. A full transaction." / "קנית בשוק, הבנת את המחיר, ושילמת. עסקה שלמה."
+17. `swipe` — sentence review — 12 sentences
+18. `quickReply` — quick reply (hear → pick your response) — 3 round(s) · speed challenge
+19. `receipt` — receipt (proof card) — "The vendor’s three lines, at normal speed and with no translation — and you answered them all." / "שלוש השורות של המוכר, בקצב רגיל ובלי תרגום — וענית על כולן."
+20. `visualMatch` — visual match (hear → tap the tile) — 1 round(s) · speed challenge
+21. `receipt` — receipt (proof card) — "A fast decimal price — and you caught it. That’s money, under control." / "מספר עם אגורות, מהיר — ותפסת אותו. זה כסף בשליטה."
+22. `video` — video — mode again
+23. `visualMatch` — visual match (hear → tap the tile) — 5 round(s)
+24. `receipt` — receipt (proof card) — "You understood everything at the stall — what was sold, the price, the offer, how many you took and how you paid." / "הבנת את כל מה שקרה בדוכן — מה נמכר, כמה זה עולה, מה המבצע, כמה לקחת ואיך שילמת."
+25. `summary` — victory screen
 
 Step sequence identical in EN / FR / ES: yes.
 
 ## Before we speak / word intro
 
-Step 2. Label: "Before we speak" / "לפני שנדבר". Intro: "The words that control every payment — including the numbers you’ll hear." / "המילים ששולטות בכל תשלום — כולל המספרים שתשמע.".
+Step 2. Label: "Before we speak" / "לפני שנדבר". Intro: "The numbers and words of the stall. Tap each one to hear it." / "המספרים והמילים של הדוכן. הקש על כל אחד כדי לשמוע.".
 The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
 
 Words are paired across languages by their concept KEY (not by position).
 
 1. `money.how-much` — EN "how much" · FR "c’est combien" · ES "¿cuánto es?" — meaning "כמה (עולה)" / "how much" — icon none — new
-2. `money.euros` — EN "euros" · FR "euros" · ES "euros" — meaning "יורו" / "euros" — icon 💶 — new
-3. `money.cash` — EN "cash" · FR "espèces" · ES "efectivo" — meaning "מזומן" / "cash" — icon 💵 — new
-4. `money.card` — EN "card" · FR "par carte" · ES "tarjeta" — meaning "כרטיס" / "card" — icon 💳 — new
-5. `number.five` — EN "five" · FR "cinq" · ES "cinco" — meaning "חמש (5)" / "five (5)" — icon none — new
-6. `number.ten` — EN "ten" · FR "dix" · ES "diez" — meaning "עשר (10)" / "ten (10)" — icon none — new
-7. `fr.seventy` — EN — · FR "soixante-dix" · ES — — meaning "שבעים (60+10)" / "seventy (60+10)" — icon none — new — language-specific on purpose
-8. `fr.eighty` — EN — · FR "quatre-vingts" · ES — — meaning "שמונים (4×20)" / "eighty (4×20)" — icon none — new — language-specific on purpose
+2. `number.one` — EN "one" · FR "une" · ES "una" — meaning "אחת (1)" / "one (1)" — icon 1️⃣ — new
+3. `number.two` — EN "two" · FR "deux" · ES "dos" — meaning "שתיים (2)" / "two (2)" — icon 2️⃣ — new
+4. `number.five` — EN "five" · FR "cinq" · ES "cinco" — meaning "חמש (5)" / "five (5)" — icon 5️⃣ — new
+5. `number.eight` — EN "eight" · FR "huit" · ES "ocho" — meaning "שמונה (8)" / "eight (8)" — icon 8️⃣ — new
+6. `money.box` — EN "box" · FR "barquette" · ES "caja" — meaning "קופסה" / "box" — icon 📦 — new
+7. `money.cash` — EN "cash" · FR "espèces" · ES "efectivo" — meaning "מזומן" / "cash" — icon 💵 — new
+8. `money.card` — EN "card" · FR "carte" · ES "tarjeta" — meaning "כרטיס" / "card" — icon 💳 — new
 
 "These build the sentence:" card: `phrase.money.how-much` — EN "How much is it?" · FR "C’est combien ?" · ES "¿Cuánto es?" · HE "כמה זה עולה?" (with its own play button).
 
@@ -1076,7 +1084,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "The question that opens every transaction. Learn it cold." / "השאלה שפותחת כל עסקה. תלמד אותה עד הסוף."
 - Used in missions: 02, 29
-- Exercised here as: built by the word intro (step 2); key sentence (step 3); "you said" lead-in of the expected-replies drill (step 6); quick-reply response (step 10, round 1, wrong option); quick-reply response (step 10, round 2, wrong option); sentence review (step 14); dialogue choice market-stall/c1 (accepted)
+- Exercised here as: built by the word intro (step 2); key sentence (step 3); "you said" lead-in of the expected-replies drill (step 7); match-pairs question tile (step 12, pair 1); quick-reply response (step 14, round 1, accepted); quick-reply response (step 14, round 2, wrong option); quick-reply response (step 14, round 3, wrong option); quick-reply response (step 14, round 4, wrong option); sentence review (step 17); quick-reply response (step 18, round 1, accepted); quick-reply response (step 18, round 2, wrong option); dialogue choice market-stall/c1 (accepted)
 
 ### Sentence: `phrase.money.by-card`
 
@@ -1087,7 +1095,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 02, 18, 28, 29
-- Exercised here as: key sentence (step 4); quick-reply response (step 10, round 2, accepted); sentence review (step 14); dialogue choice market-stall/c3 (accepted)
+- Exercised here as: key sentence (step 5); visual-match audio (step 10, round 5); match-pairs answer tile (step 12, pair 3); sentence-builder target (step 13, round 2); quick-reply response (step 14, round 1, wrong option); quick-reply response (step 14, round 2, wrong option); quick-reply response (step 14, round 3, accepted); sentence review (step 17); quick-reply response (step 18, round 1, wrong option); quick-reply response (step 18, round 3, accepted); visual-match audio (step 23, round 4); dialogue choice market-stall/c3 (accepted)
 
 ### Sentence: `phrase.money.in-cash`
 
@@ -1098,7 +1106,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 02, 28
-- Exercised here as: quick-reply response (step 10, round 2, accepted); sentence review (step 14); dialogue choice market-stall/c3 (accepted)
+- Exercised here as: quick-reply response (step 14, round 1, wrong option); quick-reply response (step 14, round 3, accepted); sentence review (step 17); quick-reply response (step 18, round 2, wrong option); dialogue choice market-stall/c3 (accepted)
 
 ### Sentence: `phrase.money.one-box`
 
@@ -1109,7 +1117,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "One ___, please — a number + the thing. That is how you buy anything." / "One ___, please — מספר + הדבר. כך קונים כל דבר."
 - Used in missions: 02
-- Exercised here as: quick-reply response (step 10, round 1, wrong option); sentence review (step 14); dialogue choice market-stall/c2 (accepted); dialogue choice market-stall/c2b (accepted)
+- Exercised here as: key sentence (step 4); visual-match audio (step 10, round 4); match-pairs answer tile (step 12, pair 2); sentence-builder target (step 13, round 1); quick-reply response (step 14, round 2, accepted); quick-reply response (step 14, round 4, wrong option); sentence review (step 17); quick-reply response (step 18, round 1, wrong option); quick-reply response (step 18, round 2, accepted); quick-reply response (step 18, round 3, wrong option); visual-match audio (step 23, round 3); dialogue choice market-stall/c2 (accepted); dialogue choice market-stall/c2b (accepted)
 
 ### Sentence: `phrase.money.too-expensive`
 
@@ -1120,7 +1128,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "A polite haggle — and an opening for a better price." / "משפט מיקוח מנומס — ופתח למחיר טוב יותר."
 - Used in missions: 02
-- Exercised here as: key sentence (step 5); quick-reply response (step 10, round 1, accepted); sentence-builder target (step 11, round 1); sentence review (step 14)
+- Exercised here as: key sentence (step 6); quick-reply response (step 14, round 4, accepted); sentence review (step 17); quick-reply response (step 18, round 3, wrong option)
 
 ### Sentence: `reply.money.five-euros`
 
@@ -1131,7 +1139,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: "five = 5. Train to catch numbers inside a sentence." / "five = 5. תתרגל לזהות מספרים במשפט."
 - Used in missions: 02
-- Exercised here as: expected-reply audio (step 6); visual-match audio (step 8, round 1); sentence review (step 14)
+- Exercised here as: expected-reply audio (step 7); visual-match audio (step 9, round 1); match-pairs answer tile (step 12, pair 1); sentence review (step 17)
 
 ### Sentence: `reply.money.ten-euros`
 
@@ -1142,7 +1150,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 02
-- Exercised here as: expected-reply audio (step 6); visual-match audio (step 8, round 4)
+- Exercised here as: visual-match audio (step 9, round 5)
 
 ### Sentence: `reply.money.twenty-euros`
 
@@ -1153,7 +1161,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 02
-- Exercised here as: expected-reply audio (step 6); visual-match audio (step 8, round 2); sentence review (step 14)
+- Exercised here as: visual-match audio (step 9, round 4)
 
 ### Sentence: `reply.money.fifteen-fifty`
 
@@ -1164,7 +1172,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 02
-- Exercised here as: visual-match audio (step 8, round 5); sentence review (step 14); visual-match audio (step 15, round 1)
+- Exercised here as: visual-match audio (step 20, round 1)
 
 ### Sentence: `reply.money.cash-or-card`
 
@@ -1175,7 +1183,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 02
-- Exercised here as: expected-reply audio (step 6); meaning-quiz distractor (step 9); quick-reply prompt (step 10, round 2); sentence review (step 14)
+- Exercised here as: expected-reply audio (step 7); match-pairs question tile (step 12, pair 3); quick-reply prompt (step 14, round 3); sentence review (step 17)
 
 ### Sentence: `reply.money.your-change`
 
@@ -1186,7 +1194,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 02
-- Exercised here as: meaning-quiz audio (step 9); sentence review (step 14)
+- Exercised here as: sentence review (step 17)
 
 ### Sentence: `reply.money.no-change`
 
@@ -1197,7 +1205,62 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 02
-- Exercised here as: meaning-quiz distractor (step 9)
+- Exercised here as: nothing (listed only)
+
+### Sentence: `reply.money.fresh-strawberries`
+
+- EN: Fresh strawberries!
+- HE: תותים טריים!
+- FR: Fraises fraîches !
+- ES: ¡Fresas frescas!
+- Role: receptive — an expected reply the learner hears
+- Tip / pattern note: none
+- Used in missions: 02
+- Exercised here as: visual-match audio (step 10, round 1); match-pairs question tile (step 11, pair 1); match-pairs answer tile (step 11, pair 1); sentence review (step 17)
+
+### Sentence: `reply.money.best-market`
+
+- EN: Best in the market!
+- HE: הכי טובים בשוק!
+- FR: Les meilleures du marché !
+- ES: ¡Las mejores del mercado!
+- Role: receptive — an expected reply the learner hears
+- Tip / pattern note: none
+- Used in missions: 02
+- Exercised here as: match-pairs question tile (step 11, pair 2); match-pairs answer tile (step 11, pair 2)
+
+### Sentence: `reply.money.offer`
+
+- EN: Five euros a box, or two for eight!
+- HE: חמישה יורו קופסה, או שתיים בשמונה!
+- FR: Cinq euros la barquette, ou deux pour huit !
+- ES: ¡Cinco euros la caja, o dos por ocho!
+- Role: receptive — an expected reply the learner hears
+- Tip / pattern note: "One box = 5 euros. Two boxes = 8 euros together (not 8 each)." / "קופסה אחת = 5 יורו. שתי קופסאות = 8 יורו ביחד (לא 8 לכל אחת)."
+- Used in missions: 02
+- Exercised here as: expected-reply audio (step 7); match-pairs question tile (step 12, pair 2); quick-reply prompt (step 14, round 2); sentence review (step 17); visual-match audio (step 23, round 2)
+
+### Sentence: `reply.money.perfect`
+
+- EN: Perfect.
+- HE: מצוין.
+- FR: Parfait.
+- ES: Perfecto.
+- Role: receptive — an expected reply the learner hears
+- Tip / pattern note: none
+- Used in missions: 02
+- Exercised here as: expected-reply audio (step 7); match-pairs question tile (step 11, pair 3); match-pairs answer tile (step 11, pair 3)
+
+### Sentence: `reply.money.enjoy-strawberries`
+
+- EN: Thank you! Enjoy the strawberries!
+- HE: תודה! תיהנה מהתותים!
+- FR: Merci ! Bonne dégustation !
+- ES: ¡Gracias! ¡Que las disfrute!
+- Role: receptive — an expected reply the learner hears
+- Tip / pattern note: none
+- Used in missions: 02
+- Exercised here as: expected-reply audio (step 7); match-pairs question tile (step 11, pair 4); match-pairs answer tile (step 11, pair 4); sentence review (step 17); visual-match audio (step 23, round 5)
 
 ### Sentence: `phrase.recovery.slowly`
 
@@ -1208,7 +1271,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
 - Used in missions: 01, 02, 03, 04, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
-- Exercised here as: sentence review (step 14); dialogue choice market-stall/c2 (accepted)
+- Exercised here as: sentence review (step 17); dialogue choice market-stall/c2 (accepted)
 
 ### Sentence: `phrase.recovery.one-moment`
 
@@ -1226,76 +1289,78 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 Lead-in screen: "You said:" / "אמרת:" — EN "How much is it?" · FR "C’est combien ?" · ES "¿Cuánto es?" — then "What might they answer? Learn the replies before they surprise you." / "מה הם עלולים לענות? נלמד את התשובות לפני שהן מפתיעות אותך." — button 👂 "I'm ready" / "אני מוכן".
 Linked learner sentence: `phrase.money.how-much`. Each reply below is played once automatically; the learner picks its MEANING from three buttons. Distractors are always the first two OTHER replies of this same drill, in drill order (runtime rule), so the three choices are shuffled per session.
 
-### M02-Q01 — expected-reply (step 6, reply 1 of 4)
+### M02-Q01 — expected-reply (step 7, reply 1 of 5)
 
-- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (1/4)
+- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (1/5)
 - Audio played: EN "That's five euros." · FR "Ça fait cinq euros." · ES "Son cinco euros."
 - Meaning of the audio (HE): "זה חמישה יורו."
 - Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
 - Choices:
   1. HE "זה חמישה יורו." / EN "That's five euros." — `reply.money.five-euros` — ✅ accepted
-  2. HE "זה יעלה עשרה יורו." / EN "That'll be ten euros." — `reply.money.ten-euros` — ❌ wrong
-  3. HE "עשרים יורו, בבקשה." / EN "Twenty euros, please." — `reply.money.twenty-euros` — ❌ wrong
+  2. HE "חמישה יורו קופסה, או שתיים בשמונה!" / EN "Five euros a box, or two for eight!" — `reply.money.offer` — ❌ wrong
+  3. HE "מצוין." / EN "Perfect." — `reply.money.perfect` — ❌ wrong
 - Tests: reply.money.five-euros
 - Explanation shown after answering: tip: five = 5. תתרגל לזהות מספרים במשפט. / five = 5. Train to catch numbers inside a sentence.
 
-### M02-Q02 — expected-reply (step 6, reply 2 of 4)
+### M02-Q02 — expected-reply (step 7, reply 2 of 5)
 
-- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (2/4)
-- Audio played: EN "That'll be ten euros." · FR "Ça fera dix euros." · ES "Serán diez euros."
-- Meaning of the audio (HE): "זה יעלה עשרה יורו."
+- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (2/5)
+- Audio played: EN "Five euros a box, or two for eight!" · FR "Cinq euros la barquette, ou deux pour huit !" · ES "¡Cinco euros la caja, o dos por ocho!"
+- Meaning of the audio (HE): "חמישה יורו קופסה, או שתיים בשמונה!"
 - Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
 - Choices:
-  1. HE "זה יעלה עשרה יורו." / EN "That'll be ten euros." — `reply.money.ten-euros` — ✅ accepted
+  1. HE "חמישה יורו קופסה, או שתיים בשמונה!" / EN "Five euros a box, or two for eight!" — `reply.money.offer` — ✅ accepted
   2. HE "זה חמישה יורו." / EN "That's five euros." — `reply.money.five-euros` — ❌ wrong
-  3. HE "עשרים יורו, בבקשה." / EN "Twenty euros, please." — `reply.money.twenty-euros` — ❌ wrong
-- Tests: reply.money.ten-euros
-- Explanation shown after answering: generic: “That'll be ten euros.” means “זה יעלה עשרה יורו.”.
+  3. HE "מצוין." / EN "Perfect." — `reply.money.perfect` — ❌ wrong
+- Tests: reply.money.offer
+- Explanation shown after answering: tip: קופסה אחת = 5 יורו. שתי קופסאות = 8 יורו ביחד (לא 8 לכל אחת). / One box = 5 euros. Two boxes = 8 euros together (not 8 each).
 
-### M02-Q03 — expected-reply (step 6, reply 3 of 4)
+### M02-Q03 — expected-reply (step 7, reply 3 of 5)
 
-- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (3/4)
-- Audio played: EN "Twenty euros, please." · FR "Vingt euros, s’il vous plaît." · ES "Veinte euros, por favor."
-- Meaning of the audio (HE): "עשרים יורו, בבקשה."
+- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (3/5)
+- Audio played: EN "Perfect." · FR "Parfait." · ES "Perfecto."
+- Meaning of the audio (HE): "מצוין."
 - Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
 - Choices:
-  1. HE "עשרים יורו, בבקשה." / EN "Twenty euros, please." — `reply.money.twenty-euros` — ✅ accepted
+  1. HE "מצוין." / EN "Perfect." — `reply.money.perfect` — ✅ accepted
   2. HE "זה חמישה יורו." / EN "That's five euros." — `reply.money.five-euros` — ❌ wrong
-  3. HE "זה יעלה עשרה יורו." / EN "That'll be ten euros." — `reply.money.ten-euros` — ❌ wrong
-- Tests: reply.money.twenty-euros
-- Explanation shown after answering: generic: “Twenty euros, please.” means “עשרים יורו, בבקשה.”.
+  3. HE "חמישה יורו קופסה, או שתיים בשמונה!" / EN "Five euros a box, or two for eight!" — `reply.money.offer` — ❌ wrong
+- Tests: reply.money.perfect
+- Explanation shown after answering: generic: “Perfect.” means “מצוין.”.
 
-### M02-Q04 — expected-reply (step 6, reply 4 of 4)
+### M02-Q04 — expected-reply (step 7, reply 4 of 5)
 
-- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (4/4)
+- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (4/5)
 - Audio played: EN "Cash or card?" · FR "Espèces ou carte ?" · ES "¿Efectivo o tarjeta?"
 - Meaning of the audio (HE): "מזומן או כרטיס?"
 - Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
 - Choices:
   1. HE "מזומן או כרטיס?" / EN "Cash or card?" — `reply.money.cash-or-card` — ✅ accepted
   2. HE "זה חמישה יורו." / EN "That's five euros." — `reply.money.five-euros` — ❌ wrong
-  3. HE "זה יעלה עשרה יורו." / EN "That'll be ten euros." — `reply.money.ten-euros` — ❌ wrong
+  3. HE "חמישה יורו קופסה, או שתיים בשמונה!" / EN "Five euros a box, or two for eight!" — `reply.money.offer` — ❌ wrong
 - Tests: reply.money.cash-or-card
 - Explanation shown after answering: generic: “Cash or card?” means “מזומן או כרטיס?”.
 
-## Quizzes
+### M02-Q05 — expected-reply (step 7, reply 5 of 5)
 
-### M02-Q10 — meaning-quiz (step 9, single question)
-
-- Prompt displayed: "What did it mean?" / "מה זה אומר?"
-- Audio played: EN "Here's your change." · FR "Voici votre monnaie." · ES "Aquí tiene su cambio."
-- Meaning of the audio (HE): "הנה העודף שלך."
+- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (5/5)
+- Audio played: EN "Thank you! Enjoy the strawberries!" · FR "Merci ! Bonne dégustation !" · ES "¡Gracias! ¡Que las disfrute!"
+- Meaning of the audio (HE): "תודה! תיהנה מהתותים!"
 - Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
 - Choices:
-  1. HE "הנה העודף שלך." / EN "Here's your change." — `reply.money.your-change` — ✅ accepted
-  2. HE "סליחה, אין לי עודף." / EN "Sorry, I have no change." — `reply.money.no-change` — ❌ wrong
-  3. HE "מזומן או כרטיס?" / EN "Cash or card?" — `reply.money.cash-or-card` — ❌ wrong
-- Tests: reply.money.your-change
-- Explanation shown after answering: generic: “Here's your change.” means “הנה העודף שלך.”.
+  1. HE "תודה! תיהנה מהתותים!" / EN "Thank you! Enjoy the strawberries!" — `reply.money.enjoy-strawberries` — ✅ accepted
+  2. HE "זה חמישה יורו." / EN "That's five euros." — `reply.money.five-euros` — ❌ wrong
+  3. HE "חמישה יורו קופסה, או שתיים בשמונה!" / EN "Five euros a box, or two for eight!" — `reply.money.offer` — ❌ wrong
+- Tests: reply.money.enjoy-strawberries
+- Explanation shown after answering: generic: “Thank you! Enjoy the strawberries!” means “תודה! תיהנה מהתותים!”.
+
+## Quizzes
+
+No meaning quiz in this mission.
 
 ## Active practice — Quick Reply · Visual Match · Swap It · Mini Map
 
-### M02-Q05 — visual-match (step 8, round 1 of 5)
+### M02-Q06 — visual-match (step 9, round 1 of 5)
 
 - Prompt displayed: "Tap the price you hear" / "הקש על המחיר ששמעת"
 - Audio played: EN "That's five euros." · FR "Ça fait cinq euros." · ES "Son cinco euros."
@@ -1314,26 +1379,7 @@ Linked learner sentence: `phrase.money.how-much`. Each reply below is played onc
 - Tests: reply.money.five-euros
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
-### M02-Q06 — visual-match (step 8, round 2 of 5)
-
-- Prompt displayed: "Tap the price you hear" / "הקש על המחיר ששמעת"
-- Audio played: EN "Twenty euros, please." · FR "Vingt euros, s’il vous plaît." · ES "Veinte euros, por favor."
-- Meaning of the audio (HE): "עשרים יורו, בבקשה."
-- Buttons show: a 3×3 board of 9 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
-- Choices:
-  1. "€2" — no sentence id — ❌ wrong
-  2. "€5" — no sentence id — ❌ wrong
-  3. "€8" — no sentence id — ❌ wrong
-  4. "€10" — no sentence id — ❌ wrong
-  5. "€15" — no sentence id — ❌ wrong
-  6. "€20" — `reply.money.twenty-euros` — ✅ accepted
-  7. "€50" — no sentence id — ❌ wrong
-  8. "€5.50" — no sentence id — ❌ wrong
-  9. "€15.50" — no sentence id — ❌ wrong
-- Tests: reply.money.twenty-euros
-- Explanation shown after answering: after the tap: the spoken line and its translation
-
-### M02-Q07 — visual-match (step 8, round 3 of 5)
+### M02-Q07 — visual-match (step 9, round 2 of 5)
 
 - Prompt displayed: "Tap the price you hear" / "הקש על המחיר ששמעת"
 - Audio played: EN "Eight euros." · FR "Huit euros." · ES "Ocho euros."
@@ -1352,7 +1398,45 @@ Linked learner sentence: `phrase.money.how-much`. Each reply below is played onc
 - Tests: (no sentence id — not recorded)
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
-### M02-Q08 — visual-match (step 8, round 4 of 5)
+### M02-Q08 — visual-match (step 9, round 3 of 5)
+
+- Prompt displayed: "Tap the price you hear" / "הקש על המחיר ששמעת"
+- Audio played: EN "Two euros." · FR "Deux euros." · ES "Dos euros."
+- Meaning of the audio (HE): "שני יורו."
+- Buttons show: a 3×3 board of 9 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "€2" — no sentence id — ✅ accepted
+  2. "€5" — no sentence id — ❌ wrong
+  3. "€8" — no sentence id — ❌ wrong
+  4. "€10" — no sentence id — ❌ wrong
+  5. "€15" — no sentence id — ❌ wrong
+  6. "€20" — no sentence id — ❌ wrong
+  7. "€50" — no sentence id — ❌ wrong
+  8. "€5.50" — no sentence id — ❌ wrong
+  9. "€15.50" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M02-Q09 — visual-match (step 9, round 4 of 5)
+
+- Prompt displayed: "Tap the price you hear" / "הקש על המחיר ששמעת"
+- Audio played: EN "Twenty euros, please." · FR "Vingt euros, s’il vous plaît." · ES "Veinte euros, por favor."
+- Meaning of the audio (HE): "עשרים יורו, בבקשה."
+- Buttons show: a 3×3 board of 9 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "€2" — no sentence id — ❌ wrong
+  2. "€5" — no sentence id — ❌ wrong
+  3. "€8" — no sentence id — ❌ wrong
+  4. "€10" — no sentence id — ❌ wrong
+  5. "€15" — no sentence id — ❌ wrong
+  6. "€20" — `reply.money.twenty-euros` — ✅ accepted
+  7. "€50" — no sentence id — ❌ wrong
+  8. "€5.50" — no sentence id — ❌ wrong
+  9. "€15.50" — no sentence id — ❌ wrong
+- Tests: reply.money.twenty-euros
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M02-Q10 — visual-match (step 9, round 5 of 5)
 
 - Prompt displayed: "Tap the price you hear" / "הקש על המחיר ששמעת"
 - Audio played: EN "That'll be ten euros." · FR "Ça fera dix euros." · ES "Serán diez euros."
@@ -1371,39 +1455,240 @@ Linked learner sentence: `phrase.money.how-much`. Each reply below is played onc
 - Tests: reply.money.ten-euros
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
-### M02-Q09 — visual-match (step 8, round 5 of 5)
+### M02-Q11 — visual-match (step 10, round 1 of 5)
 
-- Prompt displayed: "Tap the price you hear" / "הקש על המחיר ששמעת"
-- Audio played: EN "Fifteen fifty." · FR "Quinze cinquante." · ES "Quince con cincuenta."
-- Meaning of the audio (HE): "חמש עשרה וחצי."
-- Buttons show: a 3×3 board of 9 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Prompt displayed: "At the stall — tap what you hear" / "בדוכן — הקש על מה ששמעת"
+- Audio played: EN "Fresh strawberries!" · FR "Fraises fraîches !" · ES "¡Fresas frescas!"
+- Meaning of the audio (HE): "תותים טריים!"
+- Buttons show: a 3×3 board of 8 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. "€2" — no sentence id — ❌ wrong
-  2. "€5" — no sentence id — ❌ wrong
-  3. "€8" — no sentence id — ❌ wrong
-  4. "€10" — no sentence id — ❌ wrong
-  5. "€15" — no sentence id — ❌ wrong
-  6. "€20" — no sentence id — ❌ wrong
-  7. "€50" — no sentence id — ❌ wrong
-  8. "€5.50" — no sentence id — ❌ wrong
-  9. "€15.50" — `reply.money.fifteen-fifty` — ✅ accepted
-- Tests: reply.money.fifteen-fifty
+  1. "🍓" — `reply.money.fresh-strawberries` — ✅ accepted
+  2. "🍓= €5" — no sentence id — ❌ wrong
+  3. "🍓🍓= €8" — no sentence id — ❌ wrong
+  4. "🍓🍓= €16" — no sentence id — ❌ wrong
+  5. "📦×1" — no sentence id — ❌ wrong
+  6. "📦📦×2" — no sentence id — ❌ wrong
+  7. "💵" — no sentence id — ❌ wrong
+  8. "💳" — no sentence id — ❌ wrong
+- Tests: reply.money.fresh-strawberries
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
-### M02-Q11 — quick-reply (step 10, round 1 of 2)
+### M02-Q12 — visual-match (step 10, round 2 of 5)
+
+- Prompt displayed: "At the stall — tap what you hear" / "בדוכן — הקש על מה ששמעת"
+- Audio played: EN "Five euros a box." · FR "Cinq euros la barquette." · ES "Cinco euros la caja."
+- Meaning of the audio (HE): "חמישה יורו קופסה."
+- Buttons show: a 3×3 board of 8 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "🍓" — no sentence id — ❌ wrong
+  2. "🍓= €5" — no sentence id — ✅ accepted
+  3. "🍓🍓= €8" — no sentence id — ❌ wrong
+  4. "🍓🍓= €16" — no sentence id — ❌ wrong
+  5. "📦×1" — no sentence id — ❌ wrong
+  6. "📦📦×2" — no sentence id — ❌ wrong
+  7. "💵" — no sentence id — ❌ wrong
+  8. "💳" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M02-Q13 — visual-match (step 10, round 3 of 5)
+
+- Prompt displayed: "At the stall — tap what you hear" / "בדוכן — הקש על מה ששמעת"
+- Audio played: EN "Two for eight." · FR "Deux pour huit." · ES "Dos por ocho."
+- Meaning of the audio (HE): "שתיים בשמונה."
+- Buttons show: a 3×3 board of 8 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "🍓" — no sentence id — ❌ wrong
+  2. "🍓= €5" — no sentence id — ❌ wrong
+  3. "🍓🍓= €8" — no sentence id — ✅ accepted
+  4. "🍓🍓= €16" — no sentence id — ❌ wrong
+  5. "📦×1" — no sentence id — ❌ wrong
+  6. "📦📦×2" — no sentence id — ❌ wrong
+  7. "💵" — no sentence id — ❌ wrong
+  8. "💳" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M02-Q14 — visual-match (step 10, round 4 of 5)
+
+- Prompt displayed: "At the stall — tap what you hear" / "בדוכן — הקש על מה ששמעת"
+- Audio played: EN "One box, please." · FR "Une barquette, s’il vous plaît." · ES "Una caja, por favor."
+- Meaning of the audio (HE): "קופסה אחת, בבקשה."
+- Buttons show: a 3×3 board of 8 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "🍓" — no sentence id — ❌ wrong
+  2. "🍓= €5" — no sentence id — ❌ wrong
+  3. "🍓🍓= €8" — no sentence id — ❌ wrong
+  4. "🍓🍓= €16" — no sentence id — ❌ wrong
+  5. "📦×1" — `phrase.money.one-box` — ✅ accepted
+  6. "📦📦×2" — no sentence id — ❌ wrong
+  7. "💵" — no sentence id — ❌ wrong
+  8. "💳" — no sentence id — ❌ wrong
+- Tests: phrase.money.one-box
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M02-Q15 — visual-match (step 10, round 5 of 5)
+
+- Prompt displayed: "At the stall — tap what you hear" / "בדוכן — הקש על מה ששמעת"
+- Audio played: EN "By card, please." · FR "Par carte, s’il vous plaît." · ES "Con tarjeta, por favor."
+- Meaning of the audio (HE): "בכרטיס, בבקשה."
+- Buttons show: a 3×3 board of 8 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "🍓" — no sentence id — ❌ wrong
+  2. "🍓= €5" — no sentence id — ❌ wrong
+  3. "🍓🍓= €8" — no sentence id — ❌ wrong
+  4. "🍓🍓= €16" — no sentence id — ❌ wrong
+  5. "📦×1" — no sentence id — ❌ wrong
+  6. "📦📦×2" — no sentence id — ❌ wrong
+  7. "💵" — no sentence id — ❌ wrong
+  8. "💳" — `phrase.money.by-card` — ✅ accepted
+- Tests: phrase.money.by-card
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M02-Q16 — match-pairs (step 11, pair 1 of 4 (all pairs are on one screen))
+
+- Prompt displayed: "What does the vendor say? Match each line to its meaning" / "מה המוכר אומר? התאם כל משפט למשמעות שלו" — tile to match (target language, no translation): EN "Fresh strawberries!" · FR "Fraises fraîches !" · ES "¡Fresas frescas!"
+- Audio played: EN "Fresh strawberries!" · FR "Fraises fraîches !" · ES "¡Fresas frescas!"
+- Meaning of the audio (HE): "תותים טריים!"
+- Buttons show: the ANSWER tiles, target language only; their order is shuffled; a matched pair locks and leaves the board, so later pairs have fewer live tiles
+- Choices:
+  1. EN "🍓 Fresh strawberries / תותים טריים" · FR "🍓 Fresh strawberries / תותים טריים" · ES "🍓 Fresh strawberries / תותים טריים" · (HE gloss "תותים טריים!") — `reply.money.fresh-strawberries` — ✅ accepted
+  2. EN "🏆 Best in the market / הכי טובים בשוק" · FR "🏆 Best in the market / הכי טובים בשוק" · ES "🏆 Best in the market / הכי טובים בשוק" · (HE gloss "הכי טובים בשוק!") — `reply.money.best-market` — ❌ wrong
+  3. EN "👌 Perfect / מצוין" · FR "👌 Perfect / מצוין" · ES "👌 Perfect / מצוין" · (HE gloss "מצוין.") — `reply.money.perfect` — ❌ wrong
+  4. EN "😋 Thank you! Enjoy the strawberries / תודה! תיהנה מהתותים" · FR "😋 Thank you! Enjoy the strawberries / תודה! תיהנה מהתותים" · ES "😋 Thank you! Enjoy the strawberries / תודה! תיהנה מהתותים" · (HE gloss "תודה! תיהנה מהתותים!") — `reply.money.enjoy-strawberries` — ❌ wrong
+- Tests: reply.money.fresh-strawberries
+- Explanation shown after answering: none — a correct match locks both tiles under a shared number and speaks the answer; a miss shakes, shows ✕ and clears (no penalty)
+
+### M02-Q17 — match-pairs (step 11, pair 2 of 4 (all pairs are on one screen))
+
+- Prompt displayed: "What does the vendor say? Match each line to its meaning" / "מה המוכר אומר? התאם כל משפט למשמעות שלו" — tile to match (target language, no translation): EN "Best in the market!" · FR "Les meilleures du marché !" · ES "¡Las mejores del mercado!"
+- Audio played: EN "Best in the market!" · FR "Les meilleures du marché !" · ES "¡Las mejores del mercado!"
+- Meaning of the audio (HE): "הכי טובים בשוק!"
+- Buttons show: the ANSWER tiles, target language only; their order is shuffled; a matched pair locks and leaves the board, so later pairs have fewer live tiles
+- Choices:
+  1. EN "🍓 Fresh strawberries / תותים טריים" · FR "🍓 Fresh strawberries / תותים טריים" · ES "🍓 Fresh strawberries / תותים טריים" · (HE gloss "תותים טריים!") — `reply.money.fresh-strawberries` — ❌ wrong
+  2. EN "🏆 Best in the market / הכי טובים בשוק" · FR "🏆 Best in the market / הכי טובים בשוק" · ES "🏆 Best in the market / הכי טובים בשוק" · (HE gloss "הכי טובים בשוק!") — `reply.money.best-market` — ✅ accepted
+  3. EN "👌 Perfect / מצוין" · FR "👌 Perfect / מצוין" · ES "👌 Perfect / מצוין" · (HE gloss "מצוין.") — `reply.money.perfect` — ❌ wrong
+  4. EN "😋 Thank you! Enjoy the strawberries / תודה! תיהנה מהתותים" · FR "😋 Thank you! Enjoy the strawberries / תודה! תיהנה מהתותים" · ES "😋 Thank you! Enjoy the strawberries / תודה! תיהנה מהתותים" · (HE gloss "תודה! תיהנה מהתותים!") — `reply.money.enjoy-strawberries` — ❌ wrong
+- Tests: reply.money.best-market
+- Explanation shown after answering: none — a correct match locks both tiles under a shared number and speaks the answer; a miss shakes, shows ✕ and clears (no penalty)
+
+### M02-Q18 — match-pairs (step 11, pair 3 of 4 (all pairs are on one screen))
+
+- Prompt displayed: "What does the vendor say? Match each line to its meaning" / "מה המוכר אומר? התאם כל משפט למשמעות שלו" — tile to match (target language, no translation): EN "Perfect." · FR "Parfait." · ES "Perfecto."
+- Audio played: EN "Perfect." · FR "Parfait." · ES "Perfecto."
+- Meaning of the audio (HE): "מצוין."
+- Buttons show: the ANSWER tiles, target language only; their order is shuffled; a matched pair locks and leaves the board, so later pairs have fewer live tiles
+- Choices:
+  1. EN "🍓 Fresh strawberries / תותים טריים" · FR "🍓 Fresh strawberries / תותים טריים" · ES "🍓 Fresh strawberries / תותים טריים" · (HE gloss "תותים טריים!") — `reply.money.fresh-strawberries` — ❌ wrong
+  2. EN "🏆 Best in the market / הכי טובים בשוק" · FR "🏆 Best in the market / הכי טובים בשוק" · ES "🏆 Best in the market / הכי טובים בשוק" · (HE gloss "הכי טובים בשוק!") — `reply.money.best-market` — ❌ wrong
+  3. EN "👌 Perfect / מצוין" · FR "👌 Perfect / מצוין" · ES "👌 Perfect / מצוין" · (HE gloss "מצוין.") — `reply.money.perfect` — ✅ accepted
+  4. EN "😋 Thank you! Enjoy the strawberries / תודה! תיהנה מהתותים" · FR "😋 Thank you! Enjoy the strawberries / תודה! תיהנה מהתותים" · ES "😋 Thank you! Enjoy the strawberries / תודה! תיהנה מהתותים" · (HE gloss "תודה! תיהנה מהתותים!") — `reply.money.enjoy-strawberries` — ❌ wrong
+- Tests: reply.money.perfect
+- Explanation shown after answering: none — a correct match locks both tiles under a shared number and speaks the answer; a miss shakes, shows ✕ and clears (no penalty)
+
+### M02-Q19 — match-pairs (step 11, pair 4 of 4 (all pairs are on one screen))
+
+- Prompt displayed: "What does the vendor say? Match each line to its meaning" / "מה המוכר אומר? התאם כל משפט למשמעות שלו" — tile to match (target language, no translation): EN "Thank you! Enjoy the strawberries!" · FR "Merci ! Bonne dégustation !" · ES "¡Gracias! ¡Que las disfrute!"
+- Audio played: EN "Thank you! Enjoy the strawberries!" · FR "Merci ! Bonne dégustation !" · ES "¡Gracias! ¡Que las disfrute!"
+- Meaning of the audio (HE): "תודה! תיהנה מהתותים!"
+- Buttons show: the ANSWER tiles, target language only; their order is shuffled; a matched pair locks and leaves the board, so later pairs have fewer live tiles
+- Choices:
+  1. EN "🍓 Fresh strawberries / תותים טריים" · FR "🍓 Fresh strawberries / תותים טריים" · ES "🍓 Fresh strawberries / תותים טריים" · (HE gloss "תותים טריים!") — `reply.money.fresh-strawberries` — ❌ wrong
+  2. EN "🏆 Best in the market / הכי טובים בשוק" · FR "🏆 Best in the market / הכי טובים בשוק" · ES "🏆 Best in the market / הכי טובים בשוק" · (HE gloss "הכי טובים בשוק!") — `reply.money.best-market` — ❌ wrong
+  3. EN "👌 Perfect / מצוין" · FR "👌 Perfect / מצוין" · ES "👌 Perfect / מצוין" · (HE gloss "מצוין.") — `reply.money.perfect` — ❌ wrong
+  4. EN "😋 Thank you! Enjoy the strawberries / תודה! תיהנה מהתותים" · FR "😋 Thank you! Enjoy the strawberries / תודה! תיהנה מהתותים" · ES "😋 Thank you! Enjoy the strawberries / תודה! תיהנה מהתותים" · (HE gloss "תודה! תיהנה מהתותים!") — `reply.money.enjoy-strawberries` — ✅ accepted
+- Tests: reply.money.enjoy-strawberries
+- Explanation shown after answering: none — a correct match locks both tiles under a shared number and speaks the answer; a miss shakes, shows ✕ and clears (no penalty)
+
+### M02-Q20 — match-pairs (step 12, pair 1 of 3 (all pairs are on one screen))
+
+- Prompt displayed: "What follows what? Connect each line to its reply" / "מה בא אחרי מה? חבר כל משפט לתשובה שלו" — tile to match (target language, no translation): EN "How much is it?" · FR "C’est combien ?" · ES "¿Cuánto es?"
+- Audio played: EN "How much is it?" · FR "C’est combien ?" · ES "¿Cuánto es?"
+- Meaning of the audio (HE): "כמה זה עולה?"
+- Buttons show: the ANSWER tiles, target language only; their order is shuffled; a matched pair locks and leaves the board, so later pairs have fewer live tiles
+- Choices:
+  1. EN "That's five euros." · FR "Ça fait cinq euros." · ES "Son cinco euros." · (HE gloss "זה חמישה יורו.") — `reply.money.five-euros` — ✅ accepted
+  2. EN "One box, please." · FR "Une barquette, s’il vous plaît." · ES "Una caja, por favor." · (HE gloss "קופסה אחת, בבקשה.") — `phrase.money.one-box` — ❌ wrong
+  3. EN "By card, please." · FR "Par carte, s’il vous plaît." · ES "Con tarjeta, por favor." · (HE gloss "בכרטיס, בבקשה.") — `phrase.money.by-card` — ❌ wrong
+- Tests: reply.money.five-euros
+- Explanation shown after answering: none — a correct match locks both tiles under a shared number and speaks the answer; a miss shakes, shows ✕ and clears (no penalty)
+
+### M02-Q21 — match-pairs (step 12, pair 2 of 3 (all pairs are on one screen))
+
+- Prompt displayed: "What follows what? Connect each line to its reply" / "מה בא אחרי מה? חבר כל משפט לתשובה שלו" — tile to match (target language, no translation): EN "Five euros a box, or two for eight!" · FR "Cinq euros la barquette, ou deux pour huit !" · ES "¡Cinco euros la caja, o dos por ocho!"
+- Audio played: EN "Five euros a box, or two for eight!" · FR "Cinq euros la barquette, ou deux pour huit !" · ES "¡Cinco euros la caja, o dos por ocho!"
+- Meaning of the audio (HE): "חמישה יורו קופסה, או שתיים בשמונה!"
+- Buttons show: the ANSWER tiles, target language only; their order is shuffled; a matched pair locks and leaves the board, so later pairs have fewer live tiles
+- Choices:
+  1. EN "That's five euros." · FR "Ça fait cinq euros." · ES "Son cinco euros." · (HE gloss "זה חמישה יורו.") — `reply.money.five-euros` — ❌ wrong
+  2. EN "One box, please." · FR "Une barquette, s’il vous plaît." · ES "Una caja, por favor." · (HE gloss "קופסה אחת, בבקשה.") — `phrase.money.one-box` — ✅ accepted
+  3. EN "By card, please." · FR "Par carte, s’il vous plaît." · ES "Con tarjeta, por favor." · (HE gloss "בכרטיס, בבקשה.") — `phrase.money.by-card` — ❌ wrong
+- Tests: phrase.money.one-box
+- Explanation shown after answering: none — a correct match locks both tiles under a shared number and speaks the answer; a miss shakes, shows ✕ and clears (no penalty)
+
+### M02-Q22 — match-pairs (step 12, pair 3 of 3 (all pairs are on one screen))
+
+- Prompt displayed: "What follows what? Connect each line to its reply" / "מה בא אחרי מה? חבר כל משפט לתשובה שלו" — tile to match (target language, no translation): EN "Cash or card?" · FR "Espèces ou carte ?" · ES "¿Efectivo o tarjeta?"
+- Audio played: EN "Cash or card?" · FR "Espèces ou carte ?" · ES "¿Efectivo o tarjeta?"
+- Meaning of the audio (HE): "מזומן או כרטיס?"
+- Buttons show: the ANSWER tiles, target language only; their order is shuffled; a matched pair locks and leaves the board, so later pairs have fewer live tiles
+- Choices:
+  1. EN "That's five euros." · FR "Ça fait cinq euros." · ES "Son cinco euros." · (HE gloss "זה חמישה יורו.") — `reply.money.five-euros` — ❌ wrong
+  2. EN "One box, please." · FR "Une barquette, s’il vous plaît." · ES "Una caja, por favor." · (HE gloss "קופסה אחת, בבקשה.") — `phrase.money.one-box` — ❌ wrong
+  3. EN "By card, please." · FR "Par carte, s’il vous plaît." · ES "Con tarjeta, por favor." · (HE gloss "בכרטיס, בבקשה.") — `phrase.money.by-card` — ✅ accepted
+- Tests: phrase.money.by-card
+- Explanation shown after answering: none — a correct match locks both tiles under a shared number and speaks the answer; a miss shakes, shows ✕ and clears (no penalty)
+
+### M02-Q23 — sentence-builder (step 13, round 1 of 2)
+
+- Prompt displayed: "Build the sentence" / "בנה את המשפט" — cue shown: the sentence's MEANING in the app language ("קופסה אחת, בבקשה.")
+- Audio played: EN "(nothing before Check; the built sentence is spoken once it is right)" · FR "(same)" · ES "(same)"
+- Meaning of the audio (HE): —
+- Buttons show: the authored CHUNKS of the sentence as tiles (listed here in the correct order, separated by "|"), shuffled; each language has its own chunks; Check unlocks when every tile is placed
+- Choices:
+  1. EN "One  |  box,  |  please." · FR "Une  |  barquette,  |  s’il vous plaît." · ES "Una  |  caja,  |  por favor." · (HE gloss "קופסה אחת, בבקשה.") — `phrase.money.one-box` — ✅ accepted
+- Tests: phrase.money.one-box
+- Explanation shown after answering: right: the sentence is spoken and its translation shown. Wrong: "not yet" — the tiles stay, the answer is NOT shown; after one miss a hint marks the start; after two misses the learner may reveal it
+
+### M02-Q24 — sentence-builder (step 13, round 2 of 2)
+
+- Prompt displayed: "Build the sentence" / "בנה את המשפט" — cue shown: the sentence's MEANING in the app language ("בכרטיס, בבקשה.")
+- Audio played: EN "(nothing before Check; the built sentence is spoken once it is right)" · FR "(same)" · ES "(same)"
+- Meaning of the audio (HE): —
+- Buttons show: the authored CHUNKS of the sentence as tiles (listed here in the correct order, separated by "|"), shuffled; each language has its own chunks; Check unlocks when every tile is placed
+- Choices:
+  1. EN "By  |  card,  |  please." · FR "Par  |  carte,  |  s’il vous plaît." · ES "Con  |  tarjeta,  |  por favor." · (HE gloss "בכרטיס, בבקשה.") — `phrase.money.by-card` — ✅ accepted
+- Tests: phrase.money.by-card
+- Explanation shown after answering: right: the sentence is spoken and its translation shown. Wrong: "not yet" — the tiles stay, the answer is NOT shown; after one miss a hint marks the start; after two misses the learner may reveal it
+
+### M02-Q25 — quick-reply (step 14, round 1 of 4)
 
 - Prompt displayed: "What do you say?" / "מה עונים?"
-- Audio played: EN "That's fifty euros." · FR "Ça fait cinquante euros." · ES "Son cincuenta euros."
-- Meaning of the audio (HE): "זה חמישים יורו."
+- Audio played: EN "Fresh strawberries! Best in the market!" · FR "Fraises fraîches ! Les meilleures du marché !" · ES "¡Fresas frescas! ¡Las mejores del mercado!"
+- Meaning of the audio (HE): "תותים טריים! הכי טובים בשוק!"
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
-  1. EN "That's too expensive." · FR "C’est trop cher." · ES "Es muy caro." · (HE gloss "זה יקר מדי.") — `phrase.money.too-expensive` — ✅ accepted
-  2. EN "How much is it?" · FR "C’est combien ?" · ES "¿Cuánto es?" · (HE gloss "כמה זה עולה?") — `phrase.money.how-much` — ❌ wrong
-  3. EN "One box, please." · FR "Une barquette, s’il vous plaît." · ES "Una caja, por favor." · (HE gloss "קופסה אחת, בבקשה.") — `phrase.money.one-box` — ❌ wrong
-- Tests: phrase.money.too-expensive
+  1. EN "How much is it?" · FR "C’est combien ?" · ES "¿Cuánto es?" · (HE gloss "כמה זה עולה?") — `phrase.money.how-much` — ✅ accepted
+  2. EN "By card, please." · FR "Par carte, s’il vous plaît." · ES "Con tarjeta, por favor." · (HE gloss "בכרטיס, בבקשה.") — `phrase.money.by-card` — ❌ wrong
+  3. EN "In cash." · FR "En espèces." · ES "En efectivo." · (HE gloss "במזומן.") — `phrase.money.in-cash` — ❌ wrong
+- Tests: phrase.money.how-much
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M02-Q12 — quick-reply (step 10, round 2 of 2)
+### M02-Q26 — quick-reply (step 14, round 2 of 4)
+
+- Prompt displayed: "What do you say?" / "מה עונים?"
+- Audio played: EN "Five euros a box, or two for eight!" · FR "Cinq euros la barquette, ou deux pour huit !" · ES "¡Cinco euros la caja, o dos por ocho!"
+- Meaning of the audio (HE): "חמישה יורו קופסה, או שתיים בשמונה!"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "One box, please." · FR "Une barquette, s’il vous plaît." · ES "Una caja, por favor." · (HE gloss "קופסה אחת, בבקשה.") — `phrase.money.one-box` — ✅ accepted
+  2. EN "By card, please." · FR "Par carte, s’il vous plaît." · ES "Con tarjeta, por favor." · (HE gloss "בכרטיס, בבקשה.") — `phrase.money.by-card` — ❌ wrong
+  3. EN "How much is it?" · FR "C’est combien ?" · ES "¿Cuánto es?" · (HE gloss "כמה זה עולה?") — `phrase.money.how-much` — ❌ wrong
+- Tests: phrase.money.one-box
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M02-Q27 — quick-reply (step 14, round 3 of 4)
 
 - Prompt displayed: "What do you say?" / "מה עונים?"
 - Audio played: EN "Cash or card?" · FR "Espèces ou carte ?" · ES "¿Efectivo o tarjeta?"
@@ -1416,18 +1701,59 @@ Linked learner sentence: `phrase.money.how-much`. Each reply below is played onc
 - Tests: phrase.money.by-card, phrase.money.in-cash
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M02-Q13 — sentence-builder (step 11, round 1 of 1)
+### M02-Q28 — quick-reply (step 14, round 4 of 4)
 
-- Prompt displayed: "Build the sentence" / "בנה את המשפט" — cue shown: the sentence's MEANING in the app language ("זה יקר מדי.")
-- Audio played: EN "(nothing before Check; the built sentence is spoken once it is right)" · FR "(same)" · ES "(same)"
-- Meaning of the audio (HE): —
-- Buttons show: the authored CHUNKS of the sentence as tiles (listed here in the correct order, separated by "|"), shuffled; each language has its own chunks; Check unlocks when every tile is placed
+- Prompt displayed: "What do you say?" / "מה עונים?"
+- Audio played: EN "That's fifty euros." · FR "Ça fait cinquante euros." · ES "Son cincuenta euros."
+- Meaning of the audio (HE): "זה חמישים יורו."
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
-  1. EN "That's  |  too  |  expensive." · FR "C’est  |  trop  |  cher." · ES "Es  |  muy  |  caro." · (HE gloss "זה יקר מדי.") — `phrase.money.too-expensive` — ✅ accepted
+  1. EN "That's too expensive." · FR "C’est trop cher." · ES "Es muy caro." · (HE gloss "זה יקר מדי.") — `phrase.money.too-expensive` — ✅ accepted
+  2. EN "How much is it?" · FR "C’est combien ?" · ES "¿Cuánto es?" · (HE gloss "כמה זה עולה?") — `phrase.money.how-much` — ❌ wrong
+  3. EN "One box, please." · FR "Une barquette, s’il vous plaît." · ES "Una caja, por favor." · (HE gloss "קופסה אחת, בבקשה.") — `phrase.money.one-box` — ❌ wrong
 - Tests: phrase.money.too-expensive
-- Explanation shown after answering: right: the sentence is spoken and its translation shown. Wrong: "not yet" — the tiles stay, the answer is NOT shown; after one miss a hint marks the start; after two misses the learner may reveal it
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M02-Q18 — visual-match (step 15, round 1 of 1 · SPEED CHALLENGE (spoken at rate 1.12))
+### M02-Q33 — quick-reply (step 18, round 1 of 3 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "Fresh strawberries! Best in the market!" · FR "Fraises fraîches ! Les meilleures du marché !" · ES "¡Fresas frescas! ¡Las mejores del mercado!"
+- Meaning of the audio (HE): "תותים טריים! הכי טובים בשוק!"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "How much is it?" · FR "C’est combien ?" · ES "¿Cuánto es?" · (HE gloss "כמה זה עולה?") — `phrase.money.how-much` — ✅ accepted
+  2. EN "One box, please." · FR "Une barquette, s’il vous plaît." · ES "Una caja, por favor." · (HE gloss "קופסה אחת, בבקשה.") — `phrase.money.one-box` — ❌ wrong
+  3. EN "By card, please." · FR "Par carte, s’il vous plaît." · ES "Con tarjeta, por favor." · (HE gloss "בכרטיס, בבקשה.") — `phrase.money.by-card` — ❌ wrong
+- Tests: phrase.money.how-much
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M02-Q34 — quick-reply (step 18, round 2 of 3 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "Five euros a box, or two for eight!" · FR "Cinq euros la barquette, ou deux pour huit !" · ES "¡Cinco euros la caja, o dos por ocho!"
+- Meaning of the audio (HE): "חמישה יורו קופסה, או שתיים בשמונה!"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "One box, please." · FR "Une barquette, s’il vous plaît." · ES "Una caja, por favor." · (HE gloss "קופסה אחת, בבקשה.") — `phrase.money.one-box` — ✅ accepted
+  2. EN "How much is it?" · FR "C’est combien ?" · ES "¿Cuánto es?" · (HE gloss "כמה זה עולה?") — `phrase.money.how-much` — ❌ wrong
+  3. EN "In cash." · FR "En espèces." · ES "En efectivo." · (HE gloss "במזומן.") — `phrase.money.in-cash` — ❌ wrong
+- Tests: phrase.money.one-box
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M02-Q35 — quick-reply (step 18, round 3 of 3 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "Perfect. That's five euros. Cash or card?" · FR "Parfait. Ça fait cinq euros. Espèces ou carte ?" · ES "Perfecto. Son cinco euros. ¿Efectivo o tarjeta?"
+- Meaning of the audio (HE): "מצוין. זה חמישה יורו. מזומן או כרטיס?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "By card, please." · FR "Par carte, s’il vous plaît." · ES "Con tarjeta, por favor." · (HE gloss "בכרטיס, בבקשה.") — `phrase.money.by-card` — ✅ accepted
+  2. EN "One box, please." · FR "Une barquette, s’il vous plaît." · ES "Una caja, por favor." · (HE gloss "קופסה אחת, בבקשה.") — `phrase.money.one-box` — ❌ wrong
+  3. EN "That's too expensive." · FR "C’est trop cher." · ES "Es muy caro." · (HE gloss "זה יקר מדי.") — `phrase.money.too-expensive` — ❌ wrong
+- Tests: phrase.money.by-card
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M02-Q36 — visual-match (step 20, round 1 of 1 · SPEED CHALLENGE (spoken at rate 1.12))
 
 - Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio played: EN "That comes to fifteen fifty altogether, is that alright?" · FR "Ça fait quinze cinquante en tout, c’est bon pour vous ?" · ES "Son quince con cincuenta en total, ¿le parece bien?"
@@ -1444,6 +1770,101 @@ Linked learner sentence: `phrase.money.how-much`. Each reply below is played onc
   8. "€5.50" — no sentence id — ❌ wrong
   9. "€15.50" — `reply.money.fifteen-fifty` — ✅ accepted
 - Tests: reply.money.fifteen-fifty
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M02-Q37 — visual-match (step 23, round 1 of 5)
+
+- Prompt displayed: "What happened at the stall? Tap what you hear" / "מה קרה בדוכן? הקש על מה ששמעת"
+- Audio played: EN "Fresh strawberries! Best in the market!" · FR "Fraises fraîches ! Les meilleures du marché !" · ES "¡Fresas frescas! ¡Las mejores del mercado!"
+- Meaning of the audio (HE): "תותים טריים! הכי טובים בשוק!"
+- Buttons show: a 3×3 board of 9 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "🍓" — no sentence id — ✅ accepted
+  2. "🙏😋" — no sentence id — ❌ wrong
+  3. "🍓1 = €5 · 2 = €8" — no sentence id — ❌ wrong
+  4. "🍓1 = €5 · 2 = €16" — no sentence id — ❌ wrong
+  5. "🍓1 = €8 · 2 = €5" — no sentence id — ❌ wrong
+  6. "📦×1" — no sentence id — ❌ wrong
+  7. "📦📦×2" — no sentence id — ❌ wrong
+  8. "💵" — no sentence id — ❌ wrong
+  9. "💳" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M02-Q38 — visual-match (step 23, round 2 of 5)
+
+- Prompt displayed: "What happened at the stall? Tap what you hear" / "מה קרה בדוכן? הקש על מה ששמעת"
+- Audio played: EN "Five euros a box, or two for eight!" · FR "Cinq euros la barquette, ou deux pour huit !" · ES "¡Cinco euros la caja, o dos por ocho!"
+- Meaning of the audio (HE): "חמישה יורו קופסה, או שתיים בשמונה!"
+- Buttons show: a 3×3 board of 9 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "🍓" — no sentence id — ❌ wrong
+  2. "🙏😋" — no sentence id — ❌ wrong
+  3. "🍓1 = €5 · 2 = €8" — `reply.money.offer` — ✅ accepted
+  4. "🍓1 = €5 · 2 = €16" — no sentence id — ❌ wrong
+  5. "🍓1 = €8 · 2 = €5" — no sentence id — ❌ wrong
+  6. "📦×1" — no sentence id — ❌ wrong
+  7. "📦📦×2" — no sentence id — ❌ wrong
+  8. "💵" — no sentence id — ❌ wrong
+  9. "💳" — no sentence id — ❌ wrong
+- Tests: reply.money.offer
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M02-Q39 — visual-match (step 23, round 3 of 5)
+
+- Prompt displayed: "What happened at the stall? Tap what you hear" / "מה קרה בדוכן? הקש על מה ששמעת"
+- Audio played: EN "One box, please." · FR "Une barquette, s’il vous plaît." · ES "Una caja, por favor."
+- Meaning of the audio (HE): "קופסה אחת, בבקשה."
+- Buttons show: a 3×3 board of 9 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "🍓" — no sentence id — ❌ wrong
+  2. "🙏😋" — no sentence id — ❌ wrong
+  3. "🍓1 = €5 · 2 = €8" — no sentence id — ❌ wrong
+  4. "🍓1 = €5 · 2 = €16" — no sentence id — ❌ wrong
+  5. "🍓1 = €8 · 2 = €5" — no sentence id — ❌ wrong
+  6. "📦×1" — `phrase.money.one-box` — ✅ accepted
+  7. "📦📦×2" — no sentence id — ❌ wrong
+  8. "💵" — no sentence id — ❌ wrong
+  9. "💳" — no sentence id — ❌ wrong
+- Tests: phrase.money.one-box
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M02-Q40 — visual-match (step 23, round 4 of 5)
+
+- Prompt displayed: "What happened at the stall? Tap what you hear" / "מה קרה בדוכן? הקש על מה ששמעת"
+- Audio played: EN "By card, please." · FR "Par carte, s’il vous plaît." · ES "Con tarjeta, por favor."
+- Meaning of the audio (HE): "בכרטיס, בבקשה."
+- Buttons show: a 3×3 board of 9 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "🍓" — no sentence id — ❌ wrong
+  2. "🙏😋" — no sentence id — ❌ wrong
+  3. "🍓1 = €5 · 2 = €8" — no sentence id — ❌ wrong
+  4. "🍓1 = €5 · 2 = €16" — no sentence id — ❌ wrong
+  5. "🍓1 = €8 · 2 = €5" — no sentence id — ❌ wrong
+  6. "📦×1" — no sentence id — ❌ wrong
+  7. "📦📦×2" — no sentence id — ❌ wrong
+  8. "💵" — no sentence id — ❌ wrong
+  9. "💳" — `phrase.money.by-card` — ✅ accepted
+- Tests: phrase.money.by-card
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M02-Q41 — visual-match (step 23, round 5 of 5)
+
+- Prompt displayed: "What happened at the stall? Tap what you hear" / "מה קרה בדוכן? הקש על מה ששמעת"
+- Audio played: EN "Thank you! Enjoy the strawberries!" · FR "Merci ! Bonne dégustation !" · ES "¡Gracias! ¡Que las disfrute!"
+- Meaning of the audio (HE): "תודה! תיהנה מהתותים!"
+- Buttons show: a 3×3 board of 9 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "🍓" — no sentence id — ❌ wrong
+  2. "🙏😋" — `reply.money.enjoy-strawberries` — ✅ accepted
+  3. "🍓1 = €5 · 2 = €8" — no sentence id — ❌ wrong
+  4. "🍓1 = €5 · 2 = €16" — no sentence id — ❌ wrong
+  5. "🍓1 = €8 · 2 = €5" — no sentence id — ❌ wrong
+  6. "📦×1" — no sentence id — ❌ wrong
+  7. "📦📦×2" — no sentence id — ❌ wrong
+  8. "💵" — no sentence id — ❌ wrong
+  9. "💳" — no sentence id — ❌ wrong
+- Tests: reply.money.enjoy-strawberries
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
 ## Dialogue — full tree
@@ -1541,7 +1962,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 
 ## Learner choice screens
 
-### M02-Q14 — dialogue-choice (step 12, scene "market-stall" · node c1)
+### M02-Q29 — dialogue-choice (step 15, scene "market-stall" · node c1)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Fresh strawberries! Best in the market!" · FR "Fraises fraîches ! Les meilleures du marché !" · ES "¡Fresas frescas! ¡Las mejores del mercado!"
@@ -1553,7 +1974,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.money.how-much, phrase.recovery.one-moment
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M02-Q15 — dialogue-choice (step 12, scene "market-stall" · node c2)
+### M02-Q30 — dialogue-choice (step 15, scene "market-stall" · node c2)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Five euros a box, or two for eight!" · FR "Cinq euros la barquette, ou deux pour huit !" · ES "¡Cinco euros la caja, o dos por ocho!"
@@ -1565,7 +1986,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.recovery.slowly, phrase.money.one-box
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M02-Q16 — dialogue-choice (step 12, scene "market-stall" · node c2b)
+### M02-Q31 — dialogue-choice (step 15, scene "market-stall" · node c2b)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Five — euros — one box." · FR "Cinq — euros — une barquette." · ES "Cinco — euros — una caja."
@@ -1576,7 +1997,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.money.one-box
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M02-Q17 — dialogue-choice (step 12, scene "market-stall" · node c3)
+### M02-Q32 — dialogue-choice (step 15, scene "market-stall" · node c3)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Perfect. That's five euros. Cash or card?" · FR "Parfait. Ça fait cinq euros. Espèces ou carte ?" · ES "Perfecto. Son cinco euros. ¿Efectivo o tarjeta?"
@@ -1604,19 +2025,20 @@ None — no choice in this mission is marked wrong.
 
 ## Sentence review
 
-Step 14. 11 sentences, in this fixed order. Each is played automatically (TTS), shown with its translation and tip; buttons: 🔊 "Hear again" / "לשמוע שוב" and Next. No speaking prompt, no grading, no scoring; nothing is recorded.
+Step 17. 12 sentences, in this fixed order. Each is played automatically (TTS), shown with its translation and tip; buttons: 🔊 "Hear again" / "לשמוע שוב" and Next. No speaking prompt, no grading, no scoring; nothing is recorded.
 
 1. `phrase.money.how-much` — How much is it? — כמה זה עולה?
 2. `phrase.money.one-box` — One box, please. — קופסה אחת, בבקשה.
 3. `phrase.money.by-card` — By card, please. — בכרטיס, בבקשה.
 4. `phrase.money.in-cash` — In cash. — במזומן.
 5. `phrase.money.too-expensive` — That's too expensive. — זה יקר מדי.
-6. `reply.money.five-euros` — That's five euros. — זה חמישה יורו.
-7. `reply.money.twenty-euros` — Twenty euros, please. — עשרים יורו, בבקשה.
-8. `reply.money.fifteen-fifty` — Fifteen fifty. — חמש עשרה וחצי (15.50).
-9. `reply.money.cash-or-card` — Cash or card? — מזומן או כרטיס?
-10. `reply.money.your-change` — Here's your change. — הנה העודף שלך.
-11. `phrase.recovery.slowly` — Please speak slowly. — דבר לאט, בבקשה.
+6. `reply.money.offer` — Five euros a box, or two for eight! — חמישה יורו קופסה, או שתיים בשמונה!
+7. `reply.money.five-euros` — That's five euros. — זה חמישה יורו.
+8. `reply.money.cash-or-card` — Cash or card? — מזומן או כרטיס?
+9. `reply.money.your-change` — Here's your change. — הנה העודף שלך.
+10. `reply.money.fresh-strawberries` — Fresh strawberries! — תותים טריים!
+11. `reply.money.enjoy-strawberries` — Thank you! Enjoy the strawberries! — תודה! תיהנה מהתותים!
+12. `phrase.recovery.slowly` — Please speak slowly. — דבר לאט, בבקשה.
 
 ## Cold open / ambush
 
@@ -1636,31 +2058,33 @@ Learner sentences taught beside the dialogue (not a line in any scene):
 
 ## Receipts (proof cards)
 
-- Step 7: "You heard different prices — and caught every one." / "שמעת מחירים שונים — וזיהית כל אחד."
-- Step 13: "You bought at the market, understood the price, and paid. A full transaction." / "קנית בשוק, הבנת את המחיר, ושילמת. עסקה שלמה."
-- Step 16: "A fast decimal price — and you caught it. That’s money, under control." / "מספר עם אגורות, מהיר — ותפסת אותו. זה כסף בשליטה."
+- Step 8: "You heard a price, an offer and the payment question — and caught every one." / "שמעת מחיר, מבצע ושאלת תשלום — וזיהית כל אחד."
+- Step 16: "You bought at the market, understood the price, and paid. A full transaction." / "קנית בשוק, הבנת את המחיר, ושילמת. עסקה שלמה."
+- Step 19: "The vendor’s three lines, at normal speed and with no translation — and you answered them all." / "שלוש השורות של המוכר, בקצב רגיל ובלי תרגום — וענית על כולן."
+- Step 21: "A fast decimal price — and you caught it. That’s money, under control." / "מספר עם אגורות, מהיר — ותפסת אותו. זה כסף בשליטה."
+- Step 24: "You understood everything at the stall — what was sold, the price, the offer, how many you took and how you paid." / "הבנת את כל מה שקרה בדוכן — מה נמכר, כמה זה עולה, מה המבצע, כמה לקחת ואיך שילמת."
 
 ## Audit Metadata — DO NOT FIX YET
 
 - Learner-production sentences: 5
-- Receptive (expected-reply) sentences: 7
+- Receptive (expected-reply) sentences: 12
 - Toolkit phrases bundled: 2
-- Key-sentence steps: 3
-- Expected-reply/listening items: 4
-- Questions/quizzes (meaning quiz): 1
-- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 9
-- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 6
+- Key-sentence steps: 4
+- Expected-reply/listening items: 5
+- Questions/quizzes (meaning quiz): 0
+- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 32
+- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 19
 - One-button dialogue screens: 1
 - Learner sentences never actively retrieved: 0
 - Dialogue learner choices (screens): 4
 - Wrong-answer branches: 0
 - Cold-open prompts: 0
 - Recovery opportunities: 2
-- Vocabulary pre-items: 6
+- Vocabulary pre-items: 8
 - Swap variants (extra accepted lines): 1
-- Sentences in review: 11
-- Total interactive questions: 18 (answer choices: 83)
-- Approximate total learner interactions: 33 (questions + key sentences + review cards + word-intro screen)
+- Sentences in review: 12
+- Total interactive questions: 41 (answer choices: 209)
+- Approximate total learner interactions: 58 (questions + key sentences + review cards + word-intro screen)
 
 ### AUTO-FLAG — requires human review (11)
 
@@ -1671,7 +2095,7 @@ Learner sentences taught beside the dialogue (not a line in any scene):
 - AUTO-FLAG — Practice item wording not in this mission's dialogue: `reply.money.no-change` “Sorry, I have no change.” (drilled as an expected reply / distractor, but no NPC line here says it).
 - AUTO-FLAG — 4 of 4 choice screens have NO wrong option (every button is accepted): market-stall/c1, market-stall/c2, market-stall/c2b, market-stall/c3.
 - AUTO-FLAG — 1 choice screens offer exactly ONE button (no decision): market-stall/c2b.
-- AUTO-FLAG — M02-Q18: speed-challenge line contains English words not met in any sentence or dialogue line up to this mission: comes, altogether, alright.
+- AUTO-FLAG — M02-Q36: speed-challenge line contains English words not met in any sentence or dialogue line up to this mission: comes, altogether, alright.
 - AUTO-FLAG — English gloss differs from the English sentence: `reply.money.fifteen-fifty` text “Fifteen fifty.” vs gloss “Fifteen fifty (15.50).”.
 - AUTO-FLAG — FR English gloss differs from the English mission's sentence: `reply.money.fifteen-fifty` gloss “Fifteen fifty (15.50).” vs English “Fifteen fifty.”.
 - AUTO-FLAG — ES English gloss differs from the English mission's sentence: `reply.money.fifteen-fifty` gloss “Fifteen fifty (15.50).” vs English “Fifteen fifty.”.
@@ -26412,7 +26836,7 @@ Every learner sentence of this mission is a line in a scene.
 | Mission | Sentences (prod / heard / kit) | Expected replies | Listening questions | Meaning questions | Active-practice questions | Dialogue-choice questions | One-button screens | Recovery moments | Cold open | Vocabulary pre-step | Swap variants | Total interactive questions | Auto-flags |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 01 Introduce Myself | 14 (4 / 8 / 2) | 9 | 13 | 4 | 16 | 6 | 3 | 2 | 1 | 7 words | 0 | 36 | 8 |
-| 02 Numbers & Money | 14 (5 / 7 / 2) | 4 | 5 | 1 | 9 | 4 | 1 | 2 | 0 | 6 words | 1 | 18 | 11 |
+| 02 Numbers & Money | 19 (5 / 12 / 2) | 5 | 5 | 0 | 32 | 4 | 1 | 2 | 0 | 8 words | 1 | 41 | 11 |
 | 03 Coffee Shop | 22 (8 / 10 / 4) | 4 | 4 | 0 | 8 | 11 | 5 | 3 | 1 | 6 words | 1 | 24 | 5 |
 | 04 Everyday Core: Want / Need / Have / Can | 18 (10 / 6 / 2) | 4 | 4 | 0 | 12 | 10 | 9 | 2 | 1 | 5 words | 0 | 27 | 4 |
 | 05 Directions | 14 (5 / 7 / 2) | 4 | 5 | 1 | 9 | 3 | 1 | 1 | 0 | 6 words | 0 | 17 | 5 |
@@ -26454,10 +26878,10 @@ Every learner-production sentence id of the Core, in order of first appearance. 
 | `phrase.social.nice-to-meet` | Nice to meet you! | 01 | — | 1 | 0 / 1 | 3 | 1 | 1 | no | no |  |
 | `phrase.social.from-israel` | I'm from Israel. | 01 | 11, 28, 30 | 1 | 3 / 1 | 11 | 0 | 1 | yes | no |  |
 | `phrase.social.first-time` | It's my first time here. | 01 | 11, 28, 29, 30 | 1 | 6 / 1 | 11 | 0 | 1 | yes | no |  |
-| `phrase.money.how-much` | How much is it? | 02 | 29 | 1 | 1 / 1 | 2 | 0 | 1 | no | no |  |
-| `phrase.money.by-card` | By card, please. | 02 | 18, 28, 29 | 1 | 4 / 1 | 1 | 0 | 1 | yes | no |  |
-| `phrase.money.in-cash` | In cash. | 02 | 28 | 0 | 1 / 1 | 1 | 0 | 1 | no | no |  |
-| `phrase.money.one-box` | One box, please. | 02 | — | 0 | 2 / 0 | 1 | 0 | 1 | no | no |  |
+| `phrase.money.how-much` | How much is it? | 02 | 29 | 1 | 1 / 1 | 6 | 0 | 1 | no | no |  |
+| `phrase.money.by-card` | By card, please. | 02 | 18, 28, 29 | 1 | 4 / 1 | 7 | 0 | 1 | yes | no |  |
+| `phrase.money.in-cash` | In cash. | 02 | 28 | 0 | 1 / 1 | 3 | 0 | 1 | no | no |  |
+| `phrase.money.one-box` | One box, please. | 02 | — | 1 | 2 / 0 | 7 | 0 | 1 | no | no |  |
 | `phrase.money.too-expensive` | That's too expensive. | 02 | — | 1 | 0 / 0 | 2 | 0 | 1 | no | no |  |
 | `phrase.coffee.iced-coffee` | I'd like an iced coffee, please. | 03 | 18 | 1 | 3 / 0 | 2 | 0 | 1 | yes | no |  |
 | `phrase.coffee.to-go` | To go, please. | 03 | 18 | 0 | 0 / 1 | 3 | 0 | 1 | yes | no |  |
@@ -26632,12 +27056,17 @@ Every expected-reply sentence id. "Quick response" does not exist as an exercise
 | `reply.social.wonderful` | Wonderful! | 01 | — | yes (1) | 1 / 0 | 0 / 0 | no | yes |
 | `reply.social.great-day` | Have a great day! | 01 | — | yes (1) | 1 / 2 | 0 / 0 | no | yes |
 | `reply.money.five-euros` | That's five euros. | 02 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
-| `reply.money.ten-euros` | That'll be ten euros. | 02 | — | yes (1) | 0 / 0 | 0 / 0 | no | **no** |
-| `reply.money.twenty-euros` | Twenty euros, please. | 02 | — | yes (1) | 0 / 0 | 0 / 0 | no | **no** |
+| `reply.money.ten-euros` | That'll be ten euros. | 02 | — | no | 0 / 0 | 0 / 0 | no | **no** |
+| `reply.money.twenty-euros` | Twenty euros, please. | 02 | — | no | 0 / 0 | 0 / 0 | no | **no** |
 | `reply.money.fifteen-fifty` | Fifteen fifty. | 02 | — | no | 0 / 0 | 0 / 0 | no | **no** |
-| `reply.money.cash-or-card` | Cash or card? | 02 | — | yes (1) | 0 / 1 | 0 / 0 | no | yes |
-| `reply.money.your-change` | Here's your change. | 02 | — | no | 1 / 0 | 0 / 0 | no | **no** |
-| `reply.money.no-change` | Sorry, I have no change. | 02 | — | no | 0 / 1 | 0 / 0 | no | **no** |
+| `reply.money.cash-or-card` | Cash or card? | 02 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
+| `reply.money.your-change` | Here's your change. | 02 | — | no | 0 / 0 | 0 / 0 | no | **no** |
+| `reply.money.no-change` | Sorry, I have no change. | 02 | — | no | 0 / 0 | 0 / 0 | no | **no** |
+| `reply.money.fresh-strawberries` | Fresh strawberries! | 02 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.money.best-market` | Best in the market! | 02 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.money.offer` | Five euros a box, or two for eight! | 02 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
+| `reply.money.perfect` | Perfect. | 02 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
+| `reply.money.enjoy-strawberries` | Thank you! Enjoy the strawberries! | 02 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
 | `reply.coffee.what-can-i-get` | What can I get you? | 03 | — | no | 0 / 0 | 0 / 0 | no | yes |
 | `reply.coffee.hot-or-iced` | Hot or iced? | 03 | — | no | 0 / 0 | 0 / 0 | no | **no** |
 | `reply.coffee.here-or-to-go` | For here or to go? | 03 | — | yes (1) | 0 / 0 | 0 / 0 | no | **no** |
@@ -27193,42 +27622,51 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 ## Mission 02 — Numbers & Money
 
 **M02-Q01** — expected-reply
-- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (1/4)
+- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (1/5)
 - Audio: That's five euros. — (זה חמישה יורו.)
 - A: זה חמישה יורו. / That's five euros. ✅
-- B: זה יעלה עשרה יורו. / That'll be ten euros.
-- C: עשרים יורו, בבקשה. / Twenty euros, please.
+- B: חמישה יורו קופסה, או שתיים בשמונה! / Five euros a box, or two for eight!
+- C: מצוין. / Perfect.
 - Correct: That's five euros.
 - Tests: reply.money.five-euros
 
 **M02-Q02** — expected-reply
-- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (2/4)
-- Audio: That'll be ten euros. — (זה יעלה עשרה יורו.)
-- A: זה יעלה עשרה יורו. / That'll be ten euros. ✅
+- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (2/5)
+- Audio: Five euros a box, or two for eight! — (חמישה יורו קופסה, או שתיים בשמונה!)
+- A: חמישה יורו קופסה, או שתיים בשמונה! / Five euros a box, or two for eight! ✅
 - B: זה חמישה יורו. / That's five euros.
-- C: עשרים יורו, בבקשה. / Twenty euros, please.
-- Correct: That'll be ten euros.
-- Tests: reply.money.ten-euros
+- C: מצוין. / Perfect.
+- Correct: Five euros a box, or two for eight!
+- Tests: reply.money.offer
 
 **M02-Q03** — expected-reply
-- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (3/4)
-- Audio: Twenty euros, please. — (עשרים יורו, בבקשה.)
-- A: עשרים יורו, בבקשה. / Twenty euros, please. ✅
+- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (3/5)
+- Audio: Perfect. — (מצוין.)
+- A: מצוין. / Perfect. ✅
 - B: זה חמישה יורו. / That's five euros.
-- C: זה יעלה עשרה יורו. / That'll be ten euros.
-- Correct: Twenty euros, please.
-- Tests: reply.money.twenty-euros
+- C: חמישה יורו קופסה, או שתיים בשמונה! / Five euros a box, or two for eight!
+- Correct: Perfect.
+- Tests: reply.money.perfect
 
 **M02-Q04** — expected-reply
-- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (4/4)
+- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (4/5)
 - Audio: Cash or card? — (מזומן או כרטיס?)
 - A: מזומן או כרטיס? / Cash or card? ✅
 - B: זה חמישה יורו. / That's five euros.
-- C: זה יעלה עשרה יורו. / That'll be ten euros.
+- C: חמישה יורו קופסה, או שתיים בשמונה! / Five euros a box, or two for eight!
 - Correct: Cash or card?
 - Tests: reply.money.cash-or-card
 
-**M02-Q05** — visual-match
+**M02-Q05** — expected-reply
+- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (5/5)
+- Audio: Thank you! Enjoy the strawberries! — (תודה! תיהנה מהתותים!)
+- A: תודה! תיהנה מהתותים! / Thank you! Enjoy the strawberries! ✅
+- B: זה חמישה יורו. / That's five euros.
+- C: חמישה יורו קופסה, או שתיים בשמונה! / Five euros a box, or two for eight!
+- Correct: Thank you! Enjoy the strawberries!
+- Tests: reply.money.enjoy-strawberries
+
+**M02-Q06** — visual-match
 - Prompt: "Tap the price you hear" / "הקש על המחיר ששמעת"
 - Audio: That's five euros. — (זה חמישה יורו.)
 - A: €2
@@ -27242,21 +27680,6 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - I: €15.50
 - Correct: €5
 - Tests: reply.money.five-euros
-
-**M02-Q06** — visual-match
-- Prompt: "Tap the price you hear" / "הקש על המחיר ששמעת"
-- Audio: Twenty euros, please. — (עשרים יורו, בבקשה.)
-- A: €2
-- B: €5
-- C: €8
-- D: €10
-- E: €15
-- F: €20 ✅
-- G: €50
-- H: €5.50
-- I: €15.50
-- Correct: €20
-- Tests: reply.money.twenty-euros
 
 **M02-Q07** — visual-match
 - Prompt: "Tap the price you hear" / "הקש על המחיר ששמעת"
@@ -27275,6 +27698,36 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 
 **M02-Q08** — visual-match
 - Prompt: "Tap the price you hear" / "הקש על המחיר ששמעת"
+- Audio: Two euros. — (שני יורו.)
+- A: €2 ✅
+- B: €5
+- C: €8
+- D: €10
+- E: €15
+- F: €20
+- G: €50
+- H: €5.50
+- I: €15.50
+- Correct: €2
+- Tests: (no sentence id — not recorded)
+
+**M02-Q09** — visual-match
+- Prompt: "Tap the price you hear" / "הקש על המחיר ששמעת"
+- Audio: Twenty euros, please. — (עשרים יורו, בבקשה.)
+- A: €2
+- B: €5
+- C: €8
+- D: €10
+- E: €15
+- F: €20 ✅
+- G: €50
+- H: €5.50
+- I: €15.50
+- Correct: €20
+- Tests: reply.money.twenty-euros
+
+**M02-Q10** — visual-match
+- Prompt: "Tap the price you hear" / "הקש על המחיר ששמעת"
 - Audio: That'll be ten euros. — (זה יעלה עשרה יורו.)
 - A: €2
 - B: €5
@@ -27288,40 +27741,176 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Correct: €10
 - Tests: reply.money.ten-euros
 
-**M02-Q09** — visual-match
-- Prompt: "Tap the price you hear" / "הקש על המחיר ששמעת"
-- Audio: Fifteen fifty. — (חמש עשרה וחצי.)
-- A: €2
-- B: €5
-- C: €8
-- D: €10
-- E: €15
-- F: €20
-- G: €50
-- H: €5.50
-- I: €15.50 ✅
-- Correct: €15.50
-- Tests: reply.money.fifteen-fifty
+**M02-Q11** — visual-match
+- Prompt: "At the stall — tap what you hear" / "בדוכן — הקש על מה ששמעת"
+- Audio: Fresh strawberries! — (תותים טריים!)
+- A: 🍓 ✅
+- B: 🍓= €5
+- C: 🍓🍓= €8
+- D: 🍓🍓= €16
+- E: 📦×1
+- F: 📦📦×2
+- G: 💵
+- H: 💳
+- Correct: 🍓
+- Tests: reply.money.fresh-strawberries
 
-**M02-Q10** — meaning-quiz
-- Prompt: "What did it mean?" / "מה זה אומר?"
-- Audio: Here's your change. — (הנה העודף שלך.)
-- A: הנה העודף שלך. / Here's your change. ✅
-- B: סליחה, אין לי עודף. / Sorry, I have no change.
-- C: מזומן או כרטיס? / Cash or card?
-- Correct: Here's your change.
-- Tests: reply.money.your-change
+**M02-Q12** — visual-match
+- Prompt: "At the stall — tap what you hear" / "בדוכן — הקש על מה ששמעת"
+- Audio: Five euros a box. — (חמישה יורו קופסה.)
+- A: 🍓
+- B: 🍓= €5 ✅
+- C: 🍓🍓= €8
+- D: 🍓🍓= €16
+- E: 📦×1
+- F: 📦📦×2
+- G: 💵
+- H: 💳
+- Correct: 🍓= €5
+- Tests: (no sentence id — not recorded)
 
-**M02-Q11** — quick-reply
+**M02-Q13** — visual-match
+- Prompt: "At the stall — tap what you hear" / "בדוכן — הקש על מה ששמעת"
+- Audio: Two for eight. — (שתיים בשמונה.)
+- A: 🍓
+- B: 🍓= €5
+- C: 🍓🍓= €8 ✅
+- D: 🍓🍓= €16
+- E: 📦×1
+- F: 📦📦×2
+- G: 💵
+- H: 💳
+- Correct: 🍓🍓= €8
+- Tests: (no sentence id — not recorded)
+
+**M02-Q14** — visual-match
+- Prompt: "At the stall — tap what you hear" / "בדוכן — הקש על מה ששמעת"
+- Audio: One box, please. — (קופסה אחת, בבקשה.)
+- A: 🍓
+- B: 🍓= €5
+- C: 🍓🍓= €8
+- D: 🍓🍓= €16
+- E: 📦×1 ✅
+- F: 📦📦×2
+- G: 💵
+- H: 💳
+- Correct: 📦×1
+- Tests: phrase.money.one-box
+
+**M02-Q15** — visual-match
+- Prompt: "At the stall — tap what you hear" / "בדוכן — הקש על מה ששמעת"
+- Audio: By card, please. — (בכרטיס, בבקשה.)
+- A: 🍓
+- B: 🍓= €5
+- C: 🍓🍓= €8
+- D: 🍓🍓= €16
+- E: 📦×1
+- F: 📦📦×2
+- G: 💵
+- H: 💳 ✅
+- Correct: 💳
+- Tests: phrase.money.by-card
+
+**M02-Q16** — match-pairs
+- Prompt: "What does the vendor say? Match each line to its meaning" / "מה המוכר אומר? התאם כל משפט למשמעות שלו" — tile to match (target language, no translation): EN "Fresh strawberries!" · FR "Fraises fraîches !" · ES "¡Fresas frescas!"
+- Audio: Fresh strawberries! — (תותים טריים!)
+- A: 🍓 Fresh strawberries / תותים טריים ✅
+- B: 🏆 Best in the market / הכי טובים בשוק
+- C: 👌 Perfect / מצוין
+- D: 😋 Thank you! Enjoy the strawberries / תודה! תיהנה מהתותים
+- Correct: 🍓 Fresh strawberries / תותים טריים
+- Tests: reply.money.fresh-strawberries
+
+**M02-Q17** — match-pairs
+- Prompt: "What does the vendor say? Match each line to its meaning" / "מה המוכר אומר? התאם כל משפט למשמעות שלו" — tile to match (target language, no translation): EN "Best in the market!" · FR "Les meilleures du marché !" · ES "¡Las mejores del mercado!"
+- Audio: Best in the market! — (הכי טובים בשוק!)
+- A: 🍓 Fresh strawberries / תותים טריים
+- B: 🏆 Best in the market / הכי טובים בשוק ✅
+- C: 👌 Perfect / מצוין
+- D: 😋 Thank you! Enjoy the strawberries / תודה! תיהנה מהתותים
+- Correct: 🏆 Best in the market / הכי טובים בשוק
+- Tests: reply.money.best-market
+
+**M02-Q18** — match-pairs
+- Prompt: "What does the vendor say? Match each line to its meaning" / "מה המוכר אומר? התאם כל משפט למשמעות שלו" — tile to match (target language, no translation): EN "Perfect." · FR "Parfait." · ES "Perfecto."
+- Audio: Perfect. — (מצוין.)
+- A: 🍓 Fresh strawberries / תותים טריים
+- B: 🏆 Best in the market / הכי טובים בשוק
+- C: 👌 Perfect / מצוין ✅
+- D: 😋 Thank you! Enjoy the strawberries / תודה! תיהנה מהתותים
+- Correct: 👌 Perfect / מצוין
+- Tests: reply.money.perfect
+
+**M02-Q19** — match-pairs
+- Prompt: "What does the vendor say? Match each line to its meaning" / "מה המוכר אומר? התאם כל משפט למשמעות שלו" — tile to match (target language, no translation): EN "Thank you! Enjoy the strawberries!" · FR "Merci ! Bonne dégustation !" · ES "¡Gracias! ¡Que las disfrute!"
+- Audio: Thank you! Enjoy the strawberries! — (תודה! תיהנה מהתותים!)
+- A: 🍓 Fresh strawberries / תותים טריים
+- B: 🏆 Best in the market / הכי טובים בשוק
+- C: 👌 Perfect / מצוין
+- D: 😋 Thank you! Enjoy the strawberries / תודה! תיהנה מהתותים ✅
+- Correct: 😋 Thank you! Enjoy the strawberries / תודה! תיהנה מהתותים
+- Tests: reply.money.enjoy-strawberries
+
+**M02-Q20** — match-pairs
+- Prompt: "What follows what? Connect each line to its reply" / "מה בא אחרי מה? חבר כל משפט לתשובה שלו" — tile to match (target language, no translation): EN "How much is it?" · FR "C’est combien ?" · ES "¿Cuánto es?"
+- Audio: How much is it? — (כמה זה עולה?)
+- A: That's five euros. ✅
+- B: One box, please.
+- C: By card, please.
+- Correct: That's five euros.
+- Tests: reply.money.five-euros
+
+**M02-Q21** — match-pairs
+- Prompt: "What follows what? Connect each line to its reply" / "מה בא אחרי מה? חבר כל משפט לתשובה שלו" — tile to match (target language, no translation): EN "Five euros a box, or two for eight!" · FR "Cinq euros la barquette, ou deux pour huit !" · ES "¡Cinco euros la caja, o dos por ocho!"
+- Audio: Five euros a box, or two for eight! — (חמישה יורו קופסה, או שתיים בשמונה!)
+- A: That's five euros.
+- B: One box, please. ✅
+- C: By card, please.
+- Correct: One box, please.
+- Tests: phrase.money.one-box
+
+**M02-Q22** — match-pairs
+- Prompt: "What follows what? Connect each line to its reply" / "מה בא אחרי מה? חבר כל משפט לתשובה שלו" — tile to match (target language, no translation): EN "Cash or card?" · FR "Espèces ou carte ?" · ES "¿Efectivo o tarjeta?"
+- Audio: Cash or card? — (מזומן או כרטיס?)
+- A: That's five euros.
+- B: One box, please.
+- C: By card, please. ✅
+- Correct: By card, please.
+- Tests: phrase.money.by-card
+
+**M02-Q23** — sentence-builder
+- Prompt: "Build the sentence" / "בנה את המשפט" — cue shown: the sentence's MEANING in the app language ("קופסה אחת, בבקשה.")
+- Audio: (nothing before Check; the built sentence is spoken once it is right) — ()
+- A: One  |  box,  |  please. ✅
+- Correct: One  |  box,  |  please.
+- Tests: phrase.money.one-box
+
+**M02-Q24** — sentence-builder
+- Prompt: "Build the sentence" / "בנה את המשפט" — cue shown: the sentence's MEANING in the app language ("בכרטיס, בבקשה.")
+- Audio: (nothing before Check; the built sentence is spoken once it is right) — ()
+- A: By  |  card,  |  please. ✅
+- Correct: By  |  card,  |  please.
+- Tests: phrase.money.by-card
+
+**M02-Q25** — quick-reply
 - Prompt: "What do you say?" / "מה עונים?"
-- Audio: That's fifty euros. — (זה חמישים יורו.)
-- A: That's too expensive. ✅
-- B: How much is it?
-- C: One box, please.
-- Correct: That's too expensive.
-- Tests: phrase.money.too-expensive
+- Audio: Fresh strawberries! Best in the market! — (תותים טריים! הכי טובים בשוק!)
+- A: How much is it? ✅
+- B: By card, please.
+- C: In cash.
+- Correct: How much is it?
+- Tests: phrase.money.how-much
 
-**M02-Q12** — quick-reply
+**M02-Q26** — quick-reply
+- Prompt: "What do you say?" / "מה עונים?"
+- Audio: Five euros a box, or two for eight! — (חמישה יורו קופסה, או שתיים בשמונה!)
+- A: One box, please. ✅
+- B: By card, please.
+- C: How much is it?
+- Correct: One box, please.
+- Tests: phrase.money.one-box
+
+**M02-Q27** — quick-reply
 - Prompt: "What do you say?" / "מה עונים?"
 - Audio: Cash or card? — (מזומן או כרטיס?)
 - A: By card, please. ✅
@@ -27330,14 +27919,16 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Correct: By card, please. | In cash.
 - Tests: phrase.money.by-card, phrase.money.in-cash
 
-**M02-Q13** — sentence-builder
-- Prompt: "Build the sentence" / "בנה את המשפט" — cue shown: the sentence's MEANING in the app language ("זה יקר מדי.")
-- Audio: (nothing before Check; the built sentence is spoken once it is right) — ()
-- A: That's  |  too  |  expensive. ✅
-- Correct: That's  |  too  |  expensive.
+**M02-Q28** — quick-reply
+- Prompt: "What do you say?" / "מה עונים?"
+- Audio: That's fifty euros. — (זה חמישים יורו.)
+- A: That's too expensive. ✅
+- B: How much is it?
+- C: One box, please.
+- Correct: That's too expensive.
 - Tests: phrase.money.too-expensive
 
-**M02-Q14** — dialogue-choice
+**M02-Q29** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Fresh strawberries! Best in the market! — (תותים טריים! הכי טובים בשוק!)
 - A: How much is it? ✅
@@ -27345,7 +27936,7 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Correct: How much is it? | One moment, please.
 - Tests: phrase.money.how-much, phrase.recovery.one-moment
 
-**M02-Q15** — dialogue-choice
+**M02-Q30** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Five euros a box, or two for eight! — (חמישה יורו קופסה, או שתיים בשמונה!)
 - A: Please speak slowly. ✅
@@ -27353,14 +27944,14 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Correct: Please speak slowly. | One box, please.
 - Tests: phrase.recovery.slowly, phrase.money.one-box
 
-**M02-Q16** — dialogue-choice
+**M02-Q31** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Five — euros — one box. — (חמישה — יורו — קופסה אחת.)
 - A: One box, please. ✅
 - Correct: One box, please.
 - Tests: phrase.money.one-box
 
-**M02-Q17** — dialogue-choice
+**M02-Q32** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Perfect. That's five euros. Cash or card? — (מצוין. זה חמישה יורו. מזומן או כרטיס?)
 - A: By card, please. ✅
@@ -27368,7 +27959,34 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Correct: By card, please. | In cash.
 - Tests: phrase.money.by-card, phrase.money.in-cash
 
-**M02-Q18** — visual-match
+**M02-Q33** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Fresh strawberries! Best in the market! — (תותים טריים! הכי טובים בשוק!)
+- A: How much is it? ✅
+- B: One box, please.
+- C: By card, please.
+- Correct: How much is it?
+- Tests: phrase.money.how-much
+
+**M02-Q34** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Five euros a box, or two for eight! — (חמישה יורו קופסה, או שתיים בשמונה!)
+- A: One box, please. ✅
+- B: How much is it?
+- C: In cash.
+- Correct: One box, please.
+- Tests: phrase.money.one-box
+
+**M02-Q35** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Perfect. That's five euros. Cash or card? — (מצוין. זה חמישה יורו. מזומן או כרטיס?)
+- A: By card, please. ✅
+- B: One box, please.
+- C: That's too expensive.
+- Correct: By card, please.
+- Tests: phrase.money.by-card
+
+**M02-Q36** — visual-match
 - Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio: That comes to fifteen fifty altogether, is that alright? — (זה יוצא חמש עשרה וחצי בסך הכל, זה בסדר?)
 - A: €2
@@ -27382,6 +28000,81 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - I: €15.50 ✅
 - Correct: €15.50
 - Tests: reply.money.fifteen-fifty
+
+**M02-Q37** — visual-match
+- Prompt: "What happened at the stall? Tap what you hear" / "מה קרה בדוכן? הקש על מה ששמעת"
+- Audio: Fresh strawberries! Best in the market! — (תותים טריים! הכי טובים בשוק!)
+- A: 🍓 ✅
+- B: 🙏😋
+- C: 🍓1 = €5 · 2 = €8
+- D: 🍓1 = €5 · 2 = €16
+- E: 🍓1 = €8 · 2 = €5
+- F: 📦×1
+- G: 📦📦×2
+- H: 💵
+- I: 💳
+- Correct: 🍓
+- Tests: (no sentence id — not recorded)
+
+**M02-Q38** — visual-match
+- Prompt: "What happened at the stall? Tap what you hear" / "מה קרה בדוכן? הקש על מה ששמעת"
+- Audio: Five euros a box, or two for eight! — (חמישה יורו קופסה, או שתיים בשמונה!)
+- A: 🍓
+- B: 🙏😋
+- C: 🍓1 = €5 · 2 = €8 ✅
+- D: 🍓1 = €5 · 2 = €16
+- E: 🍓1 = €8 · 2 = €5
+- F: 📦×1
+- G: 📦📦×2
+- H: 💵
+- I: 💳
+- Correct: 🍓1 = €5 · 2 = €8
+- Tests: reply.money.offer
+
+**M02-Q39** — visual-match
+- Prompt: "What happened at the stall? Tap what you hear" / "מה קרה בדוכן? הקש על מה ששמעת"
+- Audio: One box, please. — (קופסה אחת, בבקשה.)
+- A: 🍓
+- B: 🙏😋
+- C: 🍓1 = €5 · 2 = €8
+- D: 🍓1 = €5 · 2 = €16
+- E: 🍓1 = €8 · 2 = €5
+- F: 📦×1 ✅
+- G: 📦📦×2
+- H: 💵
+- I: 💳
+- Correct: 📦×1
+- Tests: phrase.money.one-box
+
+**M02-Q40** — visual-match
+- Prompt: "What happened at the stall? Tap what you hear" / "מה קרה בדוכן? הקש על מה ששמעת"
+- Audio: By card, please. — (בכרטיס, בבקשה.)
+- A: 🍓
+- B: 🙏😋
+- C: 🍓1 = €5 · 2 = €8
+- D: 🍓1 = €5 · 2 = €16
+- E: 🍓1 = €8 · 2 = €5
+- F: 📦×1
+- G: 📦📦×2
+- H: 💵
+- I: 💳 ✅
+- Correct: 💳
+- Tests: phrase.money.by-card
+
+**M02-Q41** — visual-match
+- Prompt: "What happened at the stall? Tap what you hear" / "מה קרה בדוכן? הקש על מה ששמעת"
+- Audio: Thank you! Enjoy the strawberries! — (תודה! תיהנה מהתותים!)
+- A: 🍓
+- B: 🙏😋 ✅
+- C: 🍓1 = €5 · 2 = €8
+- D: 🍓1 = €5 · 2 = €16
+- E: 🍓1 = €8 · 2 = €5
+- F: 📦×1
+- G: 📦📦×2
+- H: 💵
+- I: 💳
+- Correct: 🙏😋
+- Tests: reply.money.enjoy-strawberries
 
 ## Mission 03 — Coffee Shop
 
@@ -33092,15 +33785,15 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 
 - Missions exported: 30
 - Learner-production sentence ids: 162
-- Expected-reply (receptive) sentence ids: 150
-- Sentence listings across missions (with reuse): 520
-- Expected-reply questions: 102
-- Meaning quizzes: 8
-- Active-practice questions: 326
+- Expected-reply (receptive) sentence ids: 155
+- Sentence listings across missions (with reuse): 525
+- Expected-reply questions: 103
+- Meaning quizzes: 7
+- Active-practice questions: 349
 - Dialogue choice screens: 271
 - Cold opens: 13
-- Total interactive questions: 720
-- Total answer choices: 1832
+- Total interactive questions: 743
+- Total answer choices: 1958
 - Wrong-answer branches: 94
 - Recovery opportunities: 56
 - Learner sentences with 0 active retrieval opportunities: 1

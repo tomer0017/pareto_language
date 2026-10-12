@@ -356,12 +356,29 @@ function TalkStep({ step, intro, onNext }: { step: Extract<BootcampStep, { kind:
  */
 function PrimeStep({ step, itemsById, onNext }: { step: Extract<BootcampStep, { kind: 'prime' }>; itemsById: Map<string, BootcampItem>; onNext: () => void }) {
   const [playing, setPlaying] = useState<string | null>(null);
+  // Step 0: an invitation first — the learner may start the building blocks or skip them.
+  const [started, setStarted] = useState(!step.gate);
   const built = step.buildFromItemId ? itemsById.get(step.buildFromItemId) : undefined;
   const say = (key: string, text: string, rate?: number): void => {
     tap();
     setPlaying(key);
     void speakL(text, rate).then((r) => { if (r !== 'interrupted') setPlaying((p) => (p === key ? null : p)); });
   };
+  if (!started) {
+    return (
+      <>
+        <div className="drill-card pop-in center prime-gate" style={{ gap: 12 }}>
+          <p style={{ fontSize: '3rem', lineHeight: 1 }} aria-hidden>🧱</p>
+          <p className="drill-phrase" style={{ fontSize: '1.3rem' }}>{t('primeGateTitle')}</p>
+          <p className="drill-meaning">{t('primeGateBody')}</p>
+        </div>
+        <div className="action-zone">
+          <button className="btn-primary" onClick={() => { tap(); setStarted(true); }}>{t('primeGateStart')}</button>
+          <button className="btn-ghost" onClick={() => { tap(); cancelSpeech(); onNext(); }}>{t('primeGateSkip')}</button>
+        </div>
+      </>
+    );
+  }
   return (
     <>
       <div className="drill-card" style={{ textAlign: 'start', gap: 12 }}>

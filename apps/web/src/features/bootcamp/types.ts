@@ -179,7 +179,9 @@ export type BootcampStep =
   // Vocabulary priming (Part 5): 3–6 essential building-block words shown BEFORE a longer sentence,
   // to cut cognitive overload. Optionally reveals how they combine into a canonical mission sentence
   // (`buildFromItemId`). Sentences stay the learning unit; words are preparation, not the destination.
-  | { kind: 'prime'; label?: LocalizedText; intro?: LocalizedText; words: PrimeWord[]; buildFromItemId?: string }
+  | { kind: 'prime'; label?: LocalizedText; intro?: LocalizedText; words: PrimeWord[]; buildFromItemId?: string;
+      /** Step 0: open on a short invitation — start, or "I already know this — skip". */
+      gate?: boolean }
   | { kind: 'quiz'; itemId: string; wrongIds: [string, string] }
   | { kind: 'replies'; saidItemId: string; replyIds: string[] }   // expected-reply training
   | { kind: 'swipe'; itemIds: string[] }

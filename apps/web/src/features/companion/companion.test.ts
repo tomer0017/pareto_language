@@ -337,9 +337,9 @@ describe('the companion inside a mission — one short app-language line, only w
     expect(GAME_INTRO.matchPairs!.en).toBe('Match each question to its answer.');
     const m2 = steps('numbers-money');
     const boards = m2.map((x, i) => (x.kind === 'visualMatch' ? i : -1)).filter((i) => i >= 0);
-    expect(boards.length).toBe(2);
+    expect(boards.length).toBe(4); // prices by ear · the stall · the fast price · after the video
     expect(coachFor(m2, boards[0]!, 'numbers-money')?.line.en).toBe('Hear the price and find it.');
-    expect(coachFor(m2, boards[1]!, 'numbers-money')).toBeNull();
+    for (const later of boards.slice(1)) expect(coachFor(m2, later, 'numbers-money')).toBeNull();
     expect(coachFor(steps('directions'), steps('directions').findIndex((x) => x.kind === 'miniMap'), 'directions')?.line.en).toBe('Listen to the direction and choose the way.');
     expect(coachFor(steps('coffee-shop'), steps('coffee-shop').findIndex((x) => x.kind === 'sentenceBuilder'), 'coffee-shop')?.line.en).toBe('Build the sentence.');
   });

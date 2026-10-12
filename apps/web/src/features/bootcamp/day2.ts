@@ -21,6 +21,13 @@ export const DAY2_ITEMS: BootcampItem[] = [
   { id: 'en.reply.money.cash-or-card', text: 'Cash or card?', meaning: T('מזומן או כרטיס?', 'Cash or card?') },
   { id: 'en.reply.money.your-change', text: "Here's your change.", meaning: T('הנה העודף שלך.', "Here's your change.") },
   { id: 'en.reply.money.no-change', text: "Sorry, I have no change.", meaning: T('סליחה, אין לי עודף.', "Sorry, I have no change.") },
+  // heard at the stall (and in the video) — comprehension, not production
+  { id: 'en.reply.money.fresh-strawberries', text: 'Fresh strawberries!', meaning: T('תותים טריים!', 'Fresh strawberries!') },
+  { id: 'en.reply.money.best-market', text: 'Best in the market!', meaning: T('הכי טובים בשוק!', 'Best in the market!') },
+  { id: 'en.reply.money.offer', text: 'Five euros a box, or two for eight!', meaning: T('חמישה יורו קופסה, או שתיים בשמונה!', 'Five euros a box, or two for eight!'),
+    tip: T('קופסה אחת = 5 יורו. שתי קופסאות = 8 יורו ביחד (לא 8 לכל אחת).', 'One box = 5 euros. Two boxes = 8 euros together (not 8 each).') },
+  { id: 'en.reply.money.perfect', text: 'Perfect.', meaning: T('מצוין.', 'Perfect.') },
+  { id: 'en.reply.money.enjoy-strawberries', text: 'Thank you! Enjoy the strawberries!', meaning: T('תודה! תיהנה מהתותים!', 'Thank you! Enjoy the strawberries!') },
   ...recovery('en.phrase.recovery.slowly', 'en.phrase.recovery.one-moment'),
 ];
 

@@ -98,8 +98,13 @@ _Reply-training drill:_ “What's your name?” · “Where are you from?” · 
 - **Cash or card?** · מזומן או כרטיס?
 - **Here's your change.** · הנה העודף שלך.
 - **Sorry, I have no change.** · סליחה, אין לי עודף.
+- **Fresh strawberries!** · תותים טריים!
+- **Best in the market!** · הכי טובים בשוק!
+- **Five euros a box, or two for eight!** · חמישה יורו קופסה, או שתיים בשמונה! — _קופסה אחת = 5 יורו. שתי קופסאות = 8 יורו ביחד (לא 8 לכל אחת)._
+- **Perfect.** · מצוין.
+- **Thank you! Enjoy the strawberries!** · תודה! תיהנה מהתותים!
 
-_Reply-training drill:_ “That's five euros.” · “That'll be ten euros.” · “Twenty euros, please.” · “Cash or card?”
+_Reply-training drill:_ “That's five euros.” · “Five euros a box, or two for eight!” · “Perfect.” · “Cash or card?” · “Thank you! Enjoy the strawberries!”
 
 ### Recovery tools reused
 `Please speak slowly.` · `One moment, please.`

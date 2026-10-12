@@ -17,13 +17,13 @@ Statuses: **KEEP** · **MOVE / RELABEL** (same dialogue, mission changed positio
 | KEEP | 4 | 4 |
 | MOVE / RELABEL | 4 | 4 |
 | REPLACE | 6 | 6 |
-| NEW VIDEO | 68 | — |
-| CHECK MANUALLY | 8 | 8 |
-| **Total** | **90** | **22** |
+| NEW VIDEO | 67 | — |
+| CHECK MANUALLY | 9 | 9 |
+| **Total** | **90** | **23** |
 
 ## A. Current video inventory
 
-22 files (English 8, Spanish 7, French 7), read from the folders by the build's own scanner. The number in a file name is the mission number the learner sees.
+23 files (English 8, Spanish 7, French 8), read from the folders by the build's own scanner. The number in a file name is the mission number the learner sees.
 
 | File | Language | Size | Current mission | Former name | Position when made (29-mission course) | Same dialogue as when made? |
 |---|---|---|---|---|---|---|
@@ -42,9 +42,10 @@ Statuses: **KEEP** · **MOVE / RELABEL** (same dialogue, mission changed positio
 | `videos/es/es_5.mp4` | Spanish | 2.6 MB | **M05** Directions | — (new) | — | Not recorded |
 | `videos/es/es_6.mp4` | Spanish | 2.8 MB | **M06** Airport & Border | — (new) | — | Not recorded |
 | `videos/es/es_7.mp4` | Spanish | 3.3 MB | **M07** Taxi / Uber | — (new) | — | Not recorded |
-| `videos/fr/fr_1.mp4` | French | 2.7 MB | **M01** Introduce Myself | `Fr_day1.mp4` | 01 Introduce Myself | No |
-| `videos/fr/fr_2.mp4` | French | 3.6 MB | **M02** Numbers & Money | `Fr_day2.mp4` | 02 Numbers & Money | Yes |
+| `videos/fr/fr_1.mp4` | French | 1.4 MB | **M01** Introduce Myself | `Fr_day1.mp4` | 01 Introduce Myself | No |
+| `videos/fr/fr_2.mp4` | French | 3.2 MB | **M02** Numbers & Money | `Fr_day2.mp4` | 02 Numbers & Money | Yes |
 | `videos/fr/fr_3.mp4` | French | 2.4 MB | **M03** Coffee Shop | `Fr_day3.mp4` | 03 Coffee Shop | Script yes — video unverified |
+| `videos/fr/fr_4.mp4` | French | 5.1 MB | **M04** Everyday Core: Want / Need / Have / Can | — (new) | — | Not recorded |
 | `videos/fr/fr_5.mp4` | French | 3.2 MB | **M05** Directions | `Fr_day5.mp4` | 05 Directions | Yes |
 | `videos/fr/fr_6.mp4` | French | 3.3 MB | **M06** Airport & Border | `Fr_day10.mp4` | 10 Airport & Border | Yes |
 | `videos/fr/fr_9.mp4` | French | 4.2 MB | **M09** Shopping | `Fr_day8.mp4` | 08 Shopping | Yes |
@@ -59,7 +60,7 @@ The 15 older files were renamed on 2026-10-05 from registry-key names (`En_day6.
 | 01 | Introduce Myself | REPLACE | CHECK MANUALLY | REPLACE |
 | 02 | Numbers & Money | KEEP | CHECK MANUALLY | KEEP |
 | 03 | Coffee Shop | KEEP | CHECK MANUALLY | CHECK MANUALLY |
-| 04 | Everyday Core: Want / Need / Have / Can | NEW VIDEO | CHECK MANUALLY | NEW VIDEO |
+| 04 | Everyday Core: Want / Need / Have / Can | NEW VIDEO | CHECK MANUALLY | CHECK MANUALLY |
 | 05 | Directions | NEW VIDEO | CHECK MANUALLY | KEEP |
 | 06 | Airport & Border | MOVE / RELABEL — ACCEPTABLE MINOR SPOKEN VARIANT | CHECK MANUALLY | MOVE / RELABEL |
 | 07 | Taxi / Uber | REPLACE | CHECK MANUALLY | NEW VIDEO |
@@ -317,6 +318,16 @@ Why: The runtime dialogue is unchanged since the video was added, but the refere
 
 Production note: watch the file once and compare it with the current script before deciding.
 
+### `videos/fr/fr_4.mp4`
+
+Current mission: M04 — Everyday Core: Want / Need / Have / Can (French)
+
+Status: **CHECK MANUALLY**
+
+Why: Added after the dialogue freeze; the repository holds no record of the script it was produced from. If it was made from the current master script (dialogue hash `09935f717a459cc3`, section I), it is current — nothing to do.
+
+Production note: watch the file once and compare it with the current script before deciding.
+
 ### `videos/fr/fr_5.mp4`
 
 Current mission: M05 — Directions (French)
@@ -419,7 +430,7 @@ The old course had 29 missions; the final Core has 30.
 | 01 Introduce Myself | `videos/en/en_1.mp4` ✓ | `videos/es/es_1.mp4` ✓ | `videos/fr/fr_1.mp4` ✓ |
 | 02 Numbers & Money | `videos/en/en_2.mp4` ✓ | `videos/es/es_2.mp4` ✓ | `videos/fr/fr_2.mp4` ✓ |
 | 03 Coffee Shop | `videos/en/en_3.mp4` ✓ | `videos/es/es_3.mp4` ✓ | `videos/fr/fr_3.mp4` ✓ |
-| 04 Everyday Core: Want / Need / Have / Can | `videos/en/en_4.mp4` | `videos/es/es_4.mp4` ✓ | `videos/fr/fr_4.mp4` |
+| 04 Everyday Core: Want / Need / Have / Can | `videos/en/en_4.mp4` | `videos/es/es_4.mp4` ✓ | `videos/fr/fr_4.mp4` ✓ |
 | 05 Directions | `videos/en/en_5.mp4` | `videos/es/es_5.mp4` ✓ | `videos/fr/fr_5.mp4` ✓ |
 | 06 Airport & Border | `videos/en/en_6.mp4` ✓ | `videos/es/es_6.mp4` ✓ | `videos/fr/fr_6.mp4` ✓ |
 | 07 Taxi / Uber | `videos/en/en_7.mp4` ✓ | `videos/es/es_7.mp4` ✓ | `videos/fr/fr_7.mp4` |
@@ -542,7 +553,7 @@ Current dialogue status: new
 
 Important history: New Core mission (want / need / have / can). No equivalent script existed in the old course.
 
-Video impact: EN NEW VIDEO · ES CHECK MANUALLY (`es_4.mp4`) · FR NEW VIDEO
+Video impact: EN NEW VIDEO · ES CHECK MANUALLY (`es_4.mp4`) · FR CHECK MANUALLY (`fr_4.mp4`)
 
 Watch for: Two scenes with different people and registers: a hostel desk (formal), then coffee with a friend (informal). 2 scenes.
 
@@ -834,5 +845,5 @@ One fingerprint per mission × language for the final canonical spoken dialogue.
 - Extended missions in the export: none.
 - Lines with no Hebrew: 0.
 - Hebrew attached to the Spanish / French line differing from the Hebrew of the English line: 0.
-- Video inventory: 22 files, every one a valid mission video (the scan fails otherwise). Action cells filled: 90 of 90.
+- Video inventory: 23 files, every one a valid mission video (the scan fails otherwise). Action cells filled: 90 of 90.
 - Problems found: none.
