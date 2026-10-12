@@ -38,6 +38,11 @@ The dialogue is LOCKED (byte-identical, pinned); Mission 01 is byte-identical to
   price board, the "too expensive" builder round, ten and French 70/80 from the building blocks.
 - **Rule (all missions):** no Quick Reply prompt is invented to force a recovery phrase; recovery
   stays where it has a reason (here: inside the conversation, on the fast offer). Tested.
+- **Nothing unexplained (cleanup, same day):** an in-order audit (`mission02.test.ts`) walks the
+  mission and fails if any line that TESTS uses a word not yet met with its meaning. It found three:
+  the fast €15.50 line ("altogether / alright" — now just "That's fifteen fifty."), "fifty" in a
+  Quick Reply prompt (now taught first on the price board as "Fifteen fifty.") and "In cash." offered
+  as an answer before it was introduced (now a stall-board round first). The dialogue is untouched.
 - Coverage is machine-checked: `mission02Coverage.ts` (14 chunks) + `mission02.test.ts`, on the
   Mission 01 counting rule. Earlier fingerprints now pin Missions 03–N. Not done: device QA.
 

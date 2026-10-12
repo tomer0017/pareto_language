@@ -96,7 +96,7 @@ describe('every meaningful chunk of the video is learned before the video', () =
         "perfect": "4 = meaning 1 · listening 1 · retrieval 0 · context 2",
         "thank-you": "5 = meaning 2 · listening 2 · retrieval 0 · context 1",
         "thats-five": "6 = meaning 1 · listening 2 · retrieval 1 · context 2",
-        "two": "10 = meaning 2 · listening 5 · retrieval 1 · context 2",
+        "two": "9 = meaning 2 · listening 4 · retrieval 1 · context 2",
         "two-for-eight": "8 = meaning 1 · listening 4 · retrieval 1 · context 2",
       }
     `);
@@ -136,7 +136,7 @@ describe('numbers are caught BY EAR', () => {
   it('the price board: a spoken price → its tag', () => {
     const b = boards(day('en'))[0]!;
     expect(b.rounds.map((r) => [r.audio.en, label(b, r.correct)])).toEqual([
-      ["That's five euros.", ' €5'], ['Eight euros.', ' €8'], ['Two euros.', ' €2'], ['Twenty euros, please.', ' €20'], ["That'll be ten euros.", ' €10'],
+      ["That's five euros.", ' €5'], ['Eight euros.', ' €8'], ['Fifteen fifty.', ' €15.50'], ['Twenty euros, please.', ' €20'], ["That'll be ten euros.", ' €10'],
     ]);
   });
 });
@@ -146,11 +146,11 @@ describe('the market offer is understood: one box = €5, two boxes = €8 TOGET
     for (const lang of LANGS) {
       const b = boards(day(lang))[1]!;
       expect(b.tiles.map((t) => `${t.emoji}${t.label ? ` ${t.label}` : ''}`), lang).toEqual(['🍓', '🍓 = €5', '🍓🍓 = €8', '🍓🍓 = €16', '📦 ×1', '📦📦 ×2', '💵', '💳']);
-      expect(b.rounds.map((r) => label(b, r.correct)), lang).toEqual(['🍓', '🍓 = €5', '🍓🍓 = €8', '📦 ×1', '💳']);
+      expect(b.rounds.map((r) => label(b, r.correct)), lang).toEqual(['🍓', '🍓 = €5', '🍓🍓 = €8', '📦 ×1', '💳', '💵']);
     }
-    expect(boards(day('en'))[1]!.rounds.map((r) => r.audio.en)).toEqual(['Fresh strawberries!', 'Five euros a box.', 'Two for eight.', 'One box, please.', 'By card, please.']);
-    expect(boards(day('es'))[1]!.rounds.map((r) => r.audio.en)).toEqual(['¡Fresas frescas!', 'Cinco euros la caja.', 'Dos por ocho.', 'Una caja, por favor.', 'Con tarjeta, por favor.']);
-    expect(boards(day('fr'))[1]!.rounds.map((r) => r.audio.en)).toEqual(['Fraises fraîches !', 'Cinq euros la barquette.', 'Deux pour huit.', 'Une barquette, s’il vous plaît.', 'Par carte, s’il vous plaît.']);
+    expect(boards(day('en'))[1]!.rounds.map((r) => r.audio.en)).toEqual(['Fresh strawberries!', 'Five euros a box.', 'Two for eight.', 'One box, please.', 'By card, please.', 'In cash.']);
+    expect(boards(day('es'))[1]!.rounds.map((r) => r.audio.en)).toEqual(['¡Fresas frescas!', 'Cinco euros la caja.', 'Dos por ocho.', 'Una caja, por favor.', 'Con tarjeta, por favor.', 'En efectivo.']);
+    expect(boards(day('fr'))[1]!.rounds.map((r) => r.audio.en)).toEqual(['Fraises fraîches !', 'Cinq euros la barquette.', 'Deux pour huit.', 'Une barquette, s’il vous plaît.', 'Par carte, s’il vous plaît.', 'En espèces.']);
   });
   it('the offer line is a sentence of its own, with the explanation on its card — never "8 each"', () => {
     for (const lang of LANGS) {
@@ -214,6 +214,56 @@ describe('the recovery-phrase rule: no prompt is invented to force "please repea
   });
 });
 
+describe('nothing unexplained: every target-language word the learner meets was prepared first', () => {
+  const words = (s: string): string[] => plain(s).trim().split(' ').filter(Boolean);
+  /**
+   * Walk the mission in order. A word is PREPARED once the learner has met it with its meaning: a
+   * building block, a key sentence, a listening-drill sentence (the answer card shows the meaning), a
+   * match tile, a review card, a line of the conversation (shown with its translation), or a board
+   * round that teaches by its picture. Lines that TEST — a Quick Reply prompt, a speed round, a
+   * speed board, the check after the video — may use only words already prepared.
+   */
+  const unexplained = (lang: CoverageLang): string[] => {
+    const d = day(lang);
+    const text = (id: string | undefined): string => d.items.find((i) => i.id === id)?.text ?? '';
+    const known = new Set<string>();
+    const learn = (s: string): void => { for (const w of words(s)) known.add(w); };
+    const out: string[] = [];
+    const test = (s: string, where: string): void => { for (const w of words(s)) if (!known.has(w)) out.push(`${where}: “${w}” in “${s}”`); };
+    let afterVideo = false;
+    d.steps.forEach((s, i) => {
+      const at = `step ${i + 1} ${s.kind}`;
+      if (s.kind === 'video' && s.mode === 'again') afterVideo = true;
+      else if (s.kind === 'prime') { s.words.forEach((w) => learn(w.text)); if (s.buildFromItemId) learn(text(s.buildFromItemId)); }
+      else if (s.kind === 'tool') learn(text(s.itemId));
+      else if (s.kind === 'replies') s.replyIds.forEach((id) => learn(text(id)));
+      else if (s.kind === 'swipe') s.itemIds.forEach((id) => learn(text(id)));
+      else if (s.kind === 'matchPairs') s.pairs.forEach((p) => { learn(text(p.promptItemId)); learn(p.answerText ?? text(p.answerItemId)); });
+      else if (s.kind === 'sentenceBuilder') s.rounds.forEach((r) => test(r.chunks.join(' '), at));
+      else if (s.kind === 'dialogue') d.dialogues[s.dialogueId]!.nodes.forEach((n) => { if (n.en) learn(n.en); n.choices?.forEach((c) => learn(c.en)); });
+      else if (s.kind === 'visualMatch') s.rounds.forEach((r) => { if (s.challenge || afterVideo) test(r.audio.en, at); else learn(r.audio.en); });
+      else if (s.kind === 'quickReply') s.rounds.forEach((r) => { test(r.npc?.en ?? text(r.promptItemId), at); r.options.forEach((o) => test(o.text ?? text(o.itemId), at)); });
+      else if (s.kind === 'quiz') test(text(s.itemId), at);
+      else if (s.kind === 'ambush') test(s.npc.en, at);
+    });
+    return out;
+  };
+  for (const lang of LANGS) {
+    it(`${lang}: no test line contains a word that was not prepared earlier in the mission`, () => {
+      expect(unexplained(lang)).toEqual([]);
+    });
+  }
+  it('the fast price is the number alone, in words the learner already has — the old "altogether / alright" line is gone', () => {
+    const fast = (lang: CoverageLang): string => boards(day(lang)).find((b) => b.challenge)!.rounds[0]!.audio.en;
+    expect([fast('en'), fast('fr'), fast('es')]).toEqual(["That's fifteen fifty.", 'Ça fait quinze cinquante.', 'Son quince con cincuenta.']);
+    for (const lang of LANGS) expect(JSON.stringify(day(lang).steps), lang).not.toMatch(/altogether|alright|comes to|en tout|c’est bon pour vous|en total|le parece/i);
+    // …and "fifteen fifty" itself is taught on the price board before it is asked for at speed.
+    const b = boards(day('en'))[0]!;
+    expect(b.rounds.map((r) => r.audio.en)).toContain('Fifteen fifty.');
+    expect(label(b, b.rounds.find((r) => r.audio.en === 'Fifteen fifty.')!.correct)).toBe(' €15.50');
+  });
+});
+
 describe('the learning arc', () => {
   it('Step 0 → sentences → what you hear → prices by ear → the stall → the vendor\'s words → pairs → build → answer → conversation → review → speed → video → what happened?', () => {
     const kinds = day('en').steps.map((s) => (s.kind === 'quickReply' && s.challenge ? 'quickReply:speed' : s.kind === 'visualMatch' && s.challenge ? 'visualMatch:speed' : s.kind === 'video' ? `video:${s.mode}` : s.kind === 'prime' && s.gate ? 'prime:step0' : s.kind));
@@ -252,7 +302,7 @@ describe('the learning arc', () => {
       expect(gate.rounds.map((r) => r.audio.en)).toEqual([0, 2, 3, 5, 6].map((i) => LOCKED[lang][i]!.slice(5)));
     }
   });
-  it('same journey in the three languages; every step is valid; the mission is 40 quick questions — most of them one tap', () => {
+  it('same journey in the three languages; every step is valid; the mission is 41 quick questions — most of them one tap', () => {
     const shape = (d: BootcampDayContent): unknown => d.steps.map((s) => {
       if (s.kind === 'quickReply') return [s.kind, s.challenge ?? false, s.rounds.map((r) => [strip(r.promptItemId), Boolean(r.npc), r.options.map((o) => [strip(o.itemId), o.correct])])];
       if (s.kind === 'visualMatch') return [s.kind, s.challenge ?? false, s.tiles, s.rounds.map((r) => [r.correct, strip(r.itemId)])];
@@ -272,7 +322,7 @@ describe('the learning arc', () => {
       for (const s of d.steps) expect(validatePracticeStep(s, ids, (id) => d.items.find((i) => i.id === id)?.text), `${lang} ${s.kind}`).toEqual([]);
       const questions = stepsOf(d, 'replies').reduce((k, s) => k + s.replyIds.length, 0) + stepsOf(d, 'quickReply').reduce((k, s) => k + s.rounds.length, 0) + stepsOf(d, 'visualMatch').reduce((k, s) => k + s.rounds.length, 0)
         + stepsOf(d, 'matchPairs').reduce((k, s) => k + s.pairs.length, 0) + stepsOf(d, 'sentenceBuilder').reduce((k, s) => k + s.rounds.length, 0) + 3;
-      expect(questions, lang).toBe(40);
+      expect(questions, lang).toBe(41);
     }
   });
 });

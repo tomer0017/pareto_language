@@ -148,7 +148,7 @@ describe('Mission 02 — Numbers & Money', () => {
     const label = (s: typeof board, id: string): string => s!.tiles.find((t) => t.id === id)!.label!;
     expect(board!.tiles).toHaveLength(9);
     expect(board!.rounds.map((r) => [r.audio.en, label(board, r.correct)])).toEqual([
-      ["That's five euros.", '€5'], ['Eight euros.', '€8'], ['Two euros.', '€2'], ['Twenty euros, please.', '€20'], ["That'll be ten euros.", '€10'],
+      ["That's five euros.", '€5'], ['Eight euros.', '€8'], ['Fifteen fifty.', '€15.50'], ['Twenty euros, please.', '€20'], ["That'll be ten euros.", '€10'],
     ]);
     expect(finale!.challenge).toBe(true);
     expect(label(finale, finale!.rounds[0]!.correct)).toBe('€15.50');

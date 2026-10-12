@@ -253,7 +253,8 @@ export function m02Steps(lang: MissionLang): BootcampStep[] {
       rounds: [
         { audio: ["That's five euros.", 'Ça fait cinq euros.', 'Son cinco euros.', 'זה חמישה יורו.'], correct: 'e5', itemId: 'reply.money.five-euros' },
         { audio: ['Eight euros.', 'Huit euros.', 'Ocho euros.', 'שמונה יורו.'], correct: 'e8' },
-        { audio: ['Two euros.', 'Deux euros.', 'Dos euros.', 'שני יורו.'], correct: 'e2' },
+        // taught here, with its tag, before it is asked for at speed (and before "fifty" is heard in a prompt)
+        { audio: ['Fifteen fifty.', 'Quinze cinquante.', 'Quince con cincuenta.', 'חמש עשרה וחצי.'], correct: 'e15_50', itemId: 'reply.money.fifteen-fifty' },
         { audio: ['Twenty euros, please.', 'Vingt euros, s’il vous plaît.', 'Veinte euros, por favor.', 'עשרים יורו, בבקשה.'], correct: 'e20', itemId: 'reply.money.twenty-euros' },
         { audio: ["That'll be ten euros.", 'Ça fera dix euros.', 'Serán diez euros.', 'זה יעלה עשרה יורו.'], correct: 'e10', itemId: 'reply.money.ten-euros' },
       ],
@@ -269,6 +270,8 @@ export function m02Steps(lang: MissionLang): BootcampStep[] {
         { audio: ['Two for eight.', 'Deux pour huit.', 'Dos por ocho.', 'שתיים בשמונה.'], correct: 'two8' },
         { audio: ONE_BOX, correct: 'box1', itemId: 'phrase.money.one-box' },
         { audio: BY_CARD, correct: 'card', itemId: 'phrase.money.by-card' },
+        // the other way to pay — met here, with its picture, before it is offered as an answer
+        { audio: ['In cash.', 'En espèces.', 'En efectivo.', 'במזומן.'], correct: 'cash', itemId: 'phrase.money.in-cash' },
       ],
     }),
     // THE VENDOR'S FRIENDLY WORDS — nobody asks you to say them; you only have to know them.
@@ -329,13 +332,14 @@ export function m02Steps(lang: MissionLang): BootcampStep[] {
       ],
     }),
     k.receipt(['שלוש השורות של המוכר, בקצב רגיל ובלי תרגום — וענית על כולן.', 'The vendor’s three lines, at normal speed and with no translation — and you answered them all.']),
-    // …and one price said fast, with pennies: the mission's real skill.
+    // …and one price said fast, with pennies: the mission's real skill. The line is the number
+    // alone, in words already met ("That's…" + "fifteen fifty") — nothing unexplained.
     k.practice({
       kind: 'visualMatch',
       challenge: true,
       tiles: PRICE_TILES,
       rounds: [{
-        audio: ['That comes to fifteen fifty altogether, is that alright?', 'Ça fait quinze cinquante en tout, c’est bon pour vous ?', 'Son quince con cincuenta en total, ¿le parece bien?', 'זה יוצא חמש עשרה וחצי בסך הכל, זה בסדר?'],
+        audio: ["That's fifteen fifty.", 'Ça fait quinze cinquante.', 'Son quince con cincuenta.', 'זה חמש עשרה וחצי.'],
         correct: 'e15_50', itemId: 'reply.money.fifteen-fifty',
       }],
     }),
