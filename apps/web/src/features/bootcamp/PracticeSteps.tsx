@@ -31,6 +31,8 @@ import type { BootcampItem, MapCell } from './types.js';
 
 /** A right answer inside a game: a light buzz and a quiet chime (speech usually follows). */
 const good = (): void => { success(); softChime(); };
+/** A tile picture's public path, resolved against the deploy base (dev `/`, Pages sub-path, PWA). */
+const publicAsset = (path: string): string => `${(import.meta.env.BASE_URL || '/').replace(/\/$/, '')}/${path.replace(/^\//, '')}`;
 
 /** The top of a game: what to do, how far along — and, where it helps, the buddy watching. */
 function GameHead({ label, i, n, children }: { label: string; i: number; n: number; children?: React.ReactNode }) {
@@ -189,8 +191,9 @@ export function VisualMatchStep({ step, onDone }: { step: StepOf<'visualMatch'>;
           {tiles.map((tile) => (
             <button
               key={tile.id}
-              className={`ptile ${picked !== null && tile.id === round.correct ? 'is-ok' : ''} ${picked === tile.id && !ok ? 'is-bad' : ''}`}
+              className={`ptile ${tile.image ? 'has-image' : ''} ${picked !== null && tile.id === round.correct ? 'is-ok' : ''} ${picked === tile.id && !ok ? 'is-bad' : ''}`}
               disabled={picked !== null}
+              aria-label={tile.label ? undefined : tile.alt}
               onClick={() => {
                 tap();
                 const right = tile.id === round.correct;
@@ -199,6 +202,7 @@ export function VisualMatchStep({ step, onDone }: { step: StepOf<'visualMatch'>;
                 setPicked(tile.id);
               }}
             >
+              {tile.image && <img className="ptile-img" src={publicAsset(tile.image)} alt="" draggable={false} decoding="async" />}
               {tile.emoji && <span className="ptile-emoji" aria-hidden>{tile.emoji}</span>}
               {tile.label && <span dir="ltr">{tile.label}</span>}
             </button>

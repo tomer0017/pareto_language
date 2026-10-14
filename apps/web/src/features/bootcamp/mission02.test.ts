@@ -1,5 +1,7 @@
 import { beforeAll, describe, expect, it, vi } from 'vitest';
 import { createElement } from 'react';
+import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { cinematicTranscript, missionDialogues } from './exportDialogue.js';
 import { coverageOf, encounters, hasChunk, plain, type CoverageLang } from './mission01Coverage.js';
@@ -81,20 +83,20 @@ describe('every meaningful chunk of the video is learned before the video', () =
     const same = (lang: CoverageLang): Record<string, string> => ({ ...counts(lang), 'how-much': '' });
     expect(same('es')).toEqual(same('en'));
     expect(same('fr')).toEqual(same('en'));
-    expect([counts('es')['how-much'], counts('fr')['how-much']]).toEqual(['8 = meaning 3 · listening 0 · retrieval 4 · context 1', '8 = meaning 3 · listening 0 · retrieval 4 · context 1']);
+    expect([counts('es')['how-much'], counts('fr')['how-much']]).toEqual(['9 = meaning 3 · listening 1 · retrieval 4 · context 1', '9 = meaning 3 · listening 1 · retrieval 4 · context 1']);
     expect(counts('en')).toMatchInlineSnapshot(`
       {
         "best-market": "5 = meaning 1 · listening 1 · retrieval 0 · context 3",
         "box": "16 = meaning 3 · listening 6 · retrieval 5 · context 2",
         "by-card": "10 = meaning 2 · listening 2 · retrieval 5 · context 1",
-        "cash-or-card": "6 = meaning 1 · listening 2 · retrieval 1 · context 2",
-        "enjoy": "5 = meaning 2 · listening 2 · retrieval 0 · context 1",
+        "cash-or-card": "7 = meaning 1 · listening 3 · retrieval 1 · context 2",
+        "enjoy": "6 = meaning 2 · listening 3 · retrieval 0 · context 1",
         "five-euros": "11 = meaning 1 · listening 5 · retrieval 2 · context 3",
         "fresh-strawberries": "7 = meaning 2 · listening 2 · retrieval 0 · context 3",
-        "how-much": "7 = meaning 2 · listening 0 · retrieval 4 · context 1",
+        "how-much": "8 = meaning 2 · listening 1 · retrieval 4 · context 1",
         "one-box": "10 = meaning 2 · listening 2 · retrieval 5 · context 1",
         "perfect": "4 = meaning 1 · listening 1 · retrieval 0 · context 2",
-        "thank-you": "5 = meaning 2 · listening 2 · retrieval 0 · context 1",
+        "thank-you": "6 = meaning 2 · listening 3 · retrieval 0 · context 1",
         "thats-five": "6 = meaning 1 · listening 2 · retrieval 1 · context 2",
         "two": "9 = meaning 2 · listening 4 · retrieval 1 · context 2",
         "two-for-eight": "8 = meaning 1 · listening 4 · retrieval 1 · context 2",
@@ -141,16 +143,70 @@ describe('numbers are caught BY EAR', () => {
   });
 });
 
+describe('the stall board: nine approved pictures, one 3×3 board, the purchase in the order it happens', () => {
+  const stall = (lang: CoverageLang) => boards(day(lang))[1]!;
+  const picture = (b: ReturnType<typeof stall>, id: string): string => b.tiles.find((t) => t.id === id)!.image!.replace('images/mission02/', '');
+  const PUBLIC = fileURLToPath(new URL('../../../public/', import.meta.url));
+  /** Heard → the picture that shows it. One picture per meaning, the same file in every language. */
+  const HEARD: Record<CoverageLang, string[]> = {
+    en: ['Fresh strawberries!', 'How much is it?', 'Five euros a box.', 'Two for eight.', 'One box, please.', 'Cash or card?', 'By card, please.', 'In cash.', 'Thank you! Enjoy the strawberries!'],
+    es: ['¡Fresas frescas!', '¿Cuánto es?', 'Cinco euros la caja.', 'Dos por ocho.', 'Una caja, por favor.', '¿Efectivo o tarjeta?', 'Con tarjeta, por favor.', 'En efectivo.', '¡Gracias! ¡Que las disfrute!'],
+    fr: ['Fraises fraîches !', 'C’est combien ?', 'Cinq euros la barquette.', 'Deux pour huit.', 'Une barquette, s’il vous plaît.', 'Espèces ou carte ?', 'Par carte, s’il vous plaît.', 'En espèces.', 'Merci ! Bonne dégustation !'],
+  };
+  const PICTURES = ['fresh-strawberries.jpg', 'how-much.jpg', 'five-euros.jpg', 'two-for-eight.jpg', 'one-box.jpg', 'cash-or-card.jpg', 'pay-card.jpg', 'cash.jpg', 'enjoy.jpg'];
+
+  it('exactly nine tiles — a full 3×3 board with no empty cell — on the 3-column grid', () => {
+    for (const lang of LANGS) {
+      expect(stall(lang).tiles, lang).toHaveLength(9);
+      expect(stall(lang).tiles.length % 3, lang).toBe(0);
+    }
+    const css = readFileSync(fileURLToPath(new URL('../../app/styles.css', import.meta.url)), 'utf8');
+    expect(css).toContain('.pgrid { display: grid; grid-template-columns: repeat(3, 1fr);');
+  });
+  it('every tile is a real picture, never an emoji, and every picture is in the app', () => {
+    for (const lang of LANGS) {
+      for (const t of stall(lang).tiles) {
+        expect(t.emoji, `${lang} ${t.id}`).toBeUndefined();
+        expect(t.image, `${lang} ${t.id}`).toMatch(/^images\/mission02\/[a-z-]+\.jpg$/);
+        expect(t.alt, `${lang} ${t.id}`).toBeTruthy();
+        expect(existsSync(PUBLIC + t.image!), `${t.image} on disk`).toBe(true);
+        expect(statSync(PUBLIC + t.image!).size, t.image).toBeGreaterThan(10_000);
+      }
+      expect(new Set(stall(lang).tiles.map((t) => t.image)).size, lang).toBe(9);
+    }
+  });
+  it('one shared set of pictures — English, Spanish and French use the very same tiles', () => {
+    expect(stall('es').tiles).toEqual(stall('en').tiles);
+    expect(stall('fr').tiles).toEqual(stall('en').tiles);
+    expect(readdirSync(PUBLIC + 'images/mission02').sort()).toEqual([...PICTURES].sort());
+  });
+  for (const lang of LANGS) {
+    it(`${lang}: each sentence heard lands on the picture of what it means, in the order of the purchase`, () => {
+      const b = stall(lang);
+      expect(b.rounds.map((r) => r.audio.en)).toEqual(HEARD[lang]);
+      expect(b.rounds.map((r) => picture(b, r.correct))).toEqual(PICTURES);
+    });
+  }
+  it('the key meanings: two for eight → two boxes / €8 · by card → the terminal · in cash → the hand with cash · the goodbye → the happy customer', () => {
+    for (const lang of LANGS) {
+      const b = stall(lang);
+      const at = (heard: number): string => picture(b, b.rounds.find((r) => r.audio.en === HEARD[lang][heard])!.correct);
+      expect([at(3), at(6), at(7), at(8)], lang).toEqual(['two-for-eight.jpg', 'pay-card.jpg', 'cash.jpg', 'enjoy.jpg']);
+      // the closing line is the locked vendor line itself — comprehension only, never asked to be said
+      expect(`NPC: ${HEARD[lang][8]}`).toBe(LOCKED[lang][6]);
+    }
+  });
+});
+
 describe('the market offer is understood: one box = €5, two boxes = €8 TOGETHER', () => {
-  it('the stall board teaches each half of the offer, with "two = €16" as the wrong reading on offer', () => {
+  it('"two for eight" is its own picture (two boxes, one €8 tag); the "two = €16" reading is checked on the offer tiles after the video', () => {
     for (const lang of LANGS) {
       const b = boards(day(lang))[1]!;
-      expect(b.tiles.map((t) => `${t.emoji}${t.label ? ` ${t.label}` : ''}`), lang).toEqual(['🍓', '🍓 = €5', '🍓🍓 = €8', '🍓🍓 = €16', '📦 ×1', '📦📦 ×2', '💵', '💳']);
-      expect(b.rounds.map((r) => label(b, r.correct)), lang).toEqual(['🍓', '🍓 = €5', '🍓🍓 = €8', '📦 ×1', '💳', '💵']);
+      expect(b.rounds.find((r) => r.correct === 'two8')!.audio.en, lang).toBe({ en: 'Two for eight.', es: 'Dos por ocho.', fr: 'Deux pour huit.' }[lang]);
+      expect(b.rounds.find((r) => r.correct === 'one5')!.audio.en, lang).toBe({ en: 'Five euros a box.', es: 'Cinco euros la caja.', fr: 'Cinq euros la barquette.' }[lang]);
+      const gate = boards(day(lang)).find((x) => x.tiles.some((t) => t.id === 'offer'))!;
+      expect(gate.tiles.map((t) => t.label), lang).toContain('1 = €5 · 2 = €16');
     }
-    expect(boards(day('en'))[1]!.rounds.map((r) => r.audio.en)).toEqual(['Fresh strawberries!', 'Five euros a box.', 'Two for eight.', 'One box, please.', 'By card, please.', 'In cash.']);
-    expect(boards(day('es'))[1]!.rounds.map((r) => r.audio.en)).toEqual(['¡Fresas frescas!', 'Cinco euros la caja.', 'Dos por ocho.', 'Una caja, por favor.', 'Con tarjeta, por favor.', 'En efectivo.']);
-    expect(boards(day('fr'))[1]!.rounds.map((r) => r.audio.en)).toEqual(['Fraises fraîches !', 'Cinq euros la barquette.', 'Deux pour huit.', 'Une barquette, s’il vous plaît.', 'Par carte, s’il vous plaît.', 'En espèces.']);
   });
   it('the offer line is a sentence of its own, with the explanation on its card — never "8 each"', () => {
     for (const lang of LANGS) {
@@ -302,7 +358,7 @@ describe('the learning arc', () => {
       expect(gate.rounds.map((r) => r.audio.en)).toEqual([0, 2, 3, 5, 6].map((i) => LOCKED[lang][i]!.slice(5)));
     }
   });
-  it('same journey in the three languages; every step is valid; the mission is 41 quick questions — most of them one tap', () => {
+  it('same journey in the three languages; every step is valid; the mission is 44 quick questions — most of them one tap', () => {
     const shape = (d: BootcampDayContent): unknown => d.steps.map((s) => {
       if (s.kind === 'quickReply') return [s.kind, s.challenge ?? false, s.rounds.map((r) => [strip(r.promptItemId), Boolean(r.npc), r.options.map((o) => [strip(o.itemId), o.correct])])];
       if (s.kind === 'visualMatch') return [s.kind, s.challenge ?? false, s.tiles, s.rounds.map((r) => [r.correct, strip(r.itemId)])];
@@ -322,7 +378,7 @@ describe('the learning arc', () => {
       for (const s of d.steps) expect(validatePracticeStep(s, ids, (id) => d.items.find((i) => i.id === id)?.text), `${lang} ${s.kind}`).toEqual([]);
       const questions = stepsOf(d, 'replies').reduce((k, s) => k + s.replyIds.length, 0) + stepsOf(d, 'quickReply').reduce((k, s) => k + s.rounds.length, 0) + stepsOf(d, 'visualMatch').reduce((k, s) => k + s.rounds.length, 0)
         + stepsOf(d, 'matchPairs').reduce((k, s) => k + s.pairs.length, 0) + stepsOf(d, 'sentenceBuilder').reduce((k, s) => k + s.rounds.length, 0) + 3;
-      expect(questions, lang).toBe(41);
+      expect(questions, lang).toBe(44);
     }
   });
 });

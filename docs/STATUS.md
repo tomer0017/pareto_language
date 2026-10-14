@@ -43,6 +43,12 @@ The dialogue is LOCKED (byte-identical, pinned); Mission 01 is byte-identical to
   the fast €15.50 line ("altogether / alright" — now just "That's fifteen fifty."), "fifty" in a
   Quick Reply prompt (now taught first on the price board as "Fifteen fifty.") and "In cash." offered
   as an answer before it was introduced (now a stall-board round first). The dialogue is untouched.
+- **Picture stall board (2026-10-14):** the stall board is now nine approved illustrations
+  (`apps/web/public/images/mission02/*.jpg`, one shared set for EN/ES/FR) on a full 3×3 grid, no
+  emoji. Nine rounds in purchase order: fresh strawberries → how much → €5 a box → two for €8 → one
+  box → cash or card → by card → in cash (off-script) → thank you / enjoy. The "two = €16" misreading
+  lives on the after-video offer tiles only. `MatchTile.image` / `alt` are now rendered by Visual
+  Match. Mission total 41 → 44 questions. Checked in headless Chrome at 390/360 px, not on a device.
 - Coverage is machine-checked: `mission02Coverage.ts` (14 chunks) + `mission02.test.ts`, on the
   Mission 01 counting rule. Earlier fingerprints now pin Missions 03–N. Not done: device QA.
 

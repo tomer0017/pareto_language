@@ -121,7 +121,8 @@ export interface MatchTile {
   id: string;
   label?: string;       // "€15.50", a word, a number
   emoji?: string;
-  image?: string;       // public path — image-ready, unused so far
+  image?: string;       // public path under the deploy base, e.g. "images/mission02/one-box.jpg"
+  alt?: string;         // what the picture shows — the tile's accessible name when it has no label
 }
 
 /** Swap It — one sentence frame, several slot values: the sentence is an engine, not a fixed line. */

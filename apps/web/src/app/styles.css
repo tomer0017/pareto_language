@@ -1461,6 +1461,12 @@ div.jstep { box-shadow: none; border-color: var(--line); }
 }
 .ptile .ptile-emoji { font-size: 1.7rem; line-height: 1; }
 .ptile .ptile-label { font-size: 0.72rem; font-weight: 700; color: var(--ink-dim); }
+/* Picture tiles: the art is a full-bleed rounded square; show all of it (contain, never cropped) and
+   round the corners to match the art so its square edges never peek out inside the tile. */
+.ptile.has-image { padding: 3px; overflow: hidden; }
+.ptile .ptile-img { display: block; width: 100%; height: 100%; min-height: 0; object-fit: contain; border-radius: 13%; user-select: none; -webkit-user-drag: none; }
+.ptile.has-image.is-ok .ptile-img { outline: 3px solid var(--good); outline-offset: -3px; }
+.ptile.has-image.is-bad .ptile-img { outline: 3px solid var(--danger); outline-offset: -3px; }
 .ptile.is-static { background: transparent; border-style: dashed; box-shadow: none; }
 .ptile.is-road { background: transparent; border-color: transparent; box-shadow: none; }
 .ptile.is-ok { border-color: var(--good); box-shadow: 0 0 0 3px color-mix(in srgb, var(--good) 28%, transparent); }

@@ -177,12 +177,22 @@ const PRICE_TILES = [
   { id: 'e50', label: '€50' }, { id: 'e5_50', label: '€5.50' }, { id: 'e15_50', label: '€15.50' },
 ];
 
-/** The market stall — what is sold, the two prices of the offer, how many, how to pay. */
+/**
+ * The market stall — nine pictures, one per moment of the purchase (3×3, no empty cell), shared by
+ * English, French and Spanish: only the audio is per language. The "two = €16" misreading is checked
+ * after the video, on the offer tiles of AFTER_VIDEO_TILES — not as a tenth tile here.
+ */
+const M02_IMG = 'images/mission02/';
 const STALL_TILES = [
-  { id: 'berries', emoji: '🍓' },
-  { id: 'one5', emoji: '🍓', label: '= €5' }, { id: 'two8', emoji: '🍓🍓', label: '= €8' }, { id: 'two16', emoji: '🍓🍓', label: '= €16' },
-  { id: 'box1', emoji: '📦', label: '×1' }, { id: 'box2', emoji: '📦📦', label: '×2' },
-  { id: 'cash', emoji: '💵' }, { id: 'card', emoji: '💳' },
+  { id: 'berries', image: `${M02_IMG}fresh-strawberries.jpg`, alt: 'A crate of fresh strawberries' },
+  { id: 'how-much', image: `${M02_IMG}how-much.jpg`, alt: 'A strawberry with a price tag and a question mark' },
+  { id: 'one5', image: `${M02_IMG}five-euros.jpg`, alt: 'One strawberry box with a €5 tag' },
+  { id: 'two8', image: `${M02_IMG}two-for-eight.jpg`, alt: 'Two strawberry boxes with one €8 tag' },
+  { id: 'box1', image: `${M02_IMG}one-box.jpg`, alt: 'One strawberry box, chosen' },
+  { id: 'cash-or-card', image: `${M02_IMG}cash-or-card.jpg`, alt: 'Cash and a bank card side by side' },
+  { id: 'card', image: `${M02_IMG}pay-card.jpg`, alt: 'A card tapped on a payment terminal' },
+  { id: 'cash', image: `${M02_IMG}cash.jpg`, alt: 'A hand handing over banknotes' },
+  { id: 'enjoy', image: `${M02_IMG}enjoy.jpg`, alt: 'A happy customer receiving the strawberries' },
 ];
 /** After the video: what happened at the stall? The offer is one tile — both prices at once. */
 const AFTER_VIDEO_TILES = [
@@ -259,19 +269,23 @@ export function m02Steps(lang: MissionLang): BootcampStep[] {
         { audio: ["That'll be ten euros.", 'Ça fera dix euros.', 'Serán diez euros.', 'זה יעלה עשרה יורו.'], correct: 'e10', itemId: 'reply.money.ten-euros' },
       ],
     }),
-    // THE STALL — what the offer means: one box is €5, two boxes are €8 TOGETHER (never €16).
+    // THE STALL — the whole purchase in pictures, in the order it happens: what is sold, the price
+    // question, one box = €5, two boxes = €8 TOGETHER, the order, the payment question, card, cash, goodbye.
     k.practice({
       kind: 'visualMatch',
       label: ['בדוכן — הקש על מה ששמעת', 'At the stall — tap what you hear'],
       tiles: STALL_TILES,
       rounds: [
         { audio: ['Fresh strawberries!', 'Fraises fraîches !', '¡Fresas frescas!', 'תותים טריים!'], correct: 'berries', itemId: 'reply.money.fresh-strawberries' },
+        { audio: ['How much is it?', 'C’est combien ?', '¿Cuánto es?', 'כמה זה עולה?'], correct: 'how-much', itemId: 'phrase.money.how-much' },
         { audio: ['Five euros a box.', 'Cinq euros la barquette.', 'Cinco euros la caja.', 'חמישה יורו קופסה.'], correct: 'one5' },
         { audio: ['Two for eight.', 'Deux pour huit.', 'Dos por ocho.', 'שתיים בשמונה.'], correct: 'two8' },
         { audio: ONE_BOX, correct: 'box1', itemId: 'phrase.money.one-box' },
+        { audio: ['Cash or card?', 'Espèces ou carte ?', '¿Efectivo o tarjeta?', 'מזומן או כרטיס?'], correct: 'cash-or-card', itemId: 'reply.money.cash-or-card' },
         { audio: BY_CARD, correct: 'card', itemId: 'phrase.money.by-card' },
-        // the other way to pay — met here, with its picture, before it is offered as an answer
+        // the other way to pay — off the locked script; met here, with its picture, before it is offered as an answer
         { audio: ['In cash.', 'En espèces.', 'En efectivo.', 'במזומן.'], correct: 'cash', itemId: 'phrase.money.in-cash' },
+        { audio: STALL_CLOSES, correct: 'enjoy', itemId: 'reply.money.enjoy-strawberries' },
       ],
     }),
     // THE VENDOR'S FRIENDLY WORDS — nobody asks you to say them; you only have to know them.
