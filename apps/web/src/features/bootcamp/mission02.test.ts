@@ -178,7 +178,8 @@ describe('the stall board: nine approved pictures, one 3×3 board, the purchase 
   it('one shared set of pictures — English, Spanish and French use the very same tiles', () => {
     expect(stall('es').tiles).toEqual(stall('en').tiles);
     expect(stall('fr').tiles).toEqual(stall('en').tiles);
-    expect(readdirSync(PUBLIC + 'images/mission02').sort()).toEqual([...PICTURES].sort());
+    // the folder holds the nine stall pictures plus the two wrong offer readings of the after-video gate
+    expect(readdirSync(PUBLIC + 'images/mission02').sort()).toEqual([...PICTURES, 'offer-two-for-sixteen.jpg', 'offer-prices-swapped.jpg'].sort());
   });
   for (const lang of LANGS) {
     it(`${lang}: each sentence heard lands on the picture of what it means, in the order of the purchase`, () => {
@@ -218,9 +219,14 @@ describe('the market offer is understood: one box = €5, two boxes = €8 TOGET
   it('after the video, the offer is ONE tile showing both prices — the two-for-eight picture with its numbers, against the two wrong readings', () => {
     const gate = boards(day('en')).find((b) => b.tiles.some((t) => t.id === 'offer'))!;
     expect(gate.tiles.filter((t) => t.id.startsWith('offer')).map((t) => t.label)).toEqual(['1 box = €5\n2 = €8 total', '1 box = €5\n2 = €16 total', '1 box = €8\n2 = €5 total']);
-    expect(gate.tiles.find((t) => t.id === 'offer')!.image).toBe('images/mission02/two-for-eight.jpg');
-    // the wrong readings have no approved picture: plain text in the same form — never an emoji, never a borrowed picture
-    for (const id of ['offer16', 'offer58']) { const t = gate.tiles.find((x) => x.id === id)!; expect([t.image, t.emoji], id).toEqual([undefined, undefined]); }
+    // all three are picture + short label, in the same form: no picture-vs-text shortcut to the right one
+    expect(gate.tiles.filter((t) => t.id.startsWith('offer')).map((t) => t.image)).toEqual(['two-for-eight', 'offer-two-for-sixteen', 'offer-prices-swapped'].map((f) => `images/mission02/${f}.jpg`));
+    for (const t of gate.tiles.filter((x) => x.id.startsWith('offer'))) {
+      expect(t.emoji, t.id).toBeUndefined();
+      expect(t.alt, t.id).toBeTruthy();
+      expect(t.label, t.id).toMatch(/^1 box = €\d+\n2 = €\d+ total$/);
+      expect(Object.keys(t).sort(), t.id).toEqual(['alt', 'id', 'image', 'label']);
+    }
     expect(gate.rounds.find((r) => r.correct === 'offer')!.audio.en).toBe('Five euros a box, or two for eight!');
   });
 });
@@ -228,14 +234,15 @@ describe('the market offer is understood: one box = €5, two boxes = €8 TOGET
 describe('the gate after the video: the same approved pictures, wherever one exists', () => {
   const gate = (lang: CoverageLang) => boards(day(lang)).find((b) => b.tiles.some((t) => t.id === 'offer'))!;
   const PUBLIC = fileURLToPath(new URL('../../../public/', import.meta.url));
-  it('nine tiles (3×3), no emoji at all; every picture is an approved Mission 02 file on disk', () => {
+  it('nine tiles (3×3), every one a picture — no emoji, no text-only tile; every picture is an approved Mission 02 file on disk', () => {
     for (const lang of LANGS) {
       const g = gate(lang);
       expect(g.tiles, lang).toHaveLength(9);
       for (const t of g.tiles) {
         expect(t.emoji, `${lang} ${t.id}`).toBeUndefined();
-        expect(t.image ?? t.label, `${lang} ${t.id} shows something`).toBeTruthy();
-        if (t.image) { expect(existsSync(PUBLIC + t.image), t.image).toBe(true); expect(t.alt, t.id).toBeTruthy(); }
+        expect(t.image, `${lang} ${t.id} is a picture`).toBeTruthy();
+        expect(existsSync(PUBLIC + t.image!), t.image).toBe(true);
+        expect(t.alt, t.id).toBeTruthy();
       }
       expect(g.tiles, lang).toEqual(gate('en').tiles);
     }
@@ -243,7 +250,7 @@ describe('the gate after the video: the same approved pictures, wherever one exi
   it('each meaning uses its approved picture: sold · offer · one box · card · cash · goodbye', () => {
     const pic = Object.fromEntries(gate('en').tiles.map((t) => [t.id, t.image?.replace('images/mission02/', '')]));
     expect(pic).toEqual({
-      berries: 'fresh-strawberries.jpg', offer: 'two-for-eight.jpg', offer16: undefined, offer58: undefined,
+      berries: 'fresh-strawberries.jpg', offer: 'two-for-eight.jpg', offer16: 'offer-two-for-sixteen.jpg', offer58: 'offer-prices-swapped.jpg',
       box1: 'one-box.jpg', 'cash-or-card': 'cash-or-card.jpg', card: 'pay-card.jpg', cash: 'cash.jpg', bye: 'enjoy.jpg',
     });
     // the very same tiles the stall board taught — same picture, same description

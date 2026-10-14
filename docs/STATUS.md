@@ -53,6 +53,9 @@ The dialogue is LOCKED (byte-identical, pinned); Mission 01 is byte-identical to
   one box, card, cash, cash-or-card, enjoy). The offer tile is two-for-eight.jpg + "1 box = €5 /
   2 = €8 total"; the two wrong readings (€16 / swapped) have no picture and are plain text in the
   same form. 📦📦 ×2 is gone (no picture); the two-box offer picture still traps "one box". No emoji left.
+- **Offer gate, final (same day):** the two wrong offer readings now have approved pictures too
+  (`offer-two-for-sixteen.jpg`, `offer-prices-swapped.jpg`), so all three offer tiles are picture +
+  short label in the same form — no picture-vs-text shortcut to the right answer.
 - Coverage is machine-checked: `mission02Coverage.ts` (14 chunks) + `mission02.test.ts`, on the
   Mission 01 counting rule. Earlier fingerprints now pin Missions 03–N. Not done: device QA.
 

@@ -1862,8 +1862,8 @@ No meaning quiz in this mission.
 - Choices:
   1. "[picture fresh-strawberries.jpg]" — no sentence id — ✅ accepted
   2. "[picture two-for-eight.jpg]1 box = €5 / 2 = €8 total" — no sentence id — ❌ wrong
-  3. "1 box = €5 / 2 = €16 total" — no sentence id — ❌ wrong
-  4. "1 box = €8 / 2 = €5 total" — no sentence id — ❌ wrong
+  3. "[picture offer-two-for-sixteen.jpg]1 box = €5 / 2 = €16 total" — no sentence id — ❌ wrong
+  4. "[picture offer-prices-swapped.jpg]1 box = €8 / 2 = €5 total" — no sentence id — ❌ wrong
   5. "[picture one-box.jpg]" — no sentence id — ❌ wrong
   6. "[picture cash-or-card.jpg]" — no sentence id — ❌ wrong
   7. "[picture pay-card.jpg]" — no sentence id — ❌ wrong
@@ -1881,8 +1881,8 @@ No meaning quiz in this mission.
 - Choices:
   1. "[picture fresh-strawberries.jpg]" — no sentence id — ❌ wrong
   2. "[picture two-for-eight.jpg]1 box = €5 / 2 = €8 total" — `reply.money.offer` — ✅ accepted
-  3. "1 box = €5 / 2 = €16 total" — no sentence id — ❌ wrong
-  4. "1 box = €8 / 2 = €5 total" — no sentence id — ❌ wrong
+  3. "[picture offer-two-for-sixteen.jpg]1 box = €5 / 2 = €16 total" — no sentence id — ❌ wrong
+  4. "[picture offer-prices-swapped.jpg]1 box = €8 / 2 = €5 total" — no sentence id — ❌ wrong
   5. "[picture one-box.jpg]" — no sentence id — ❌ wrong
   6. "[picture cash-or-card.jpg]" — no sentence id — ❌ wrong
   7. "[picture pay-card.jpg]" — no sentence id — ❌ wrong
@@ -1900,8 +1900,8 @@ No meaning quiz in this mission.
 - Choices:
   1. "[picture fresh-strawberries.jpg]" — no sentence id — ❌ wrong
   2. "[picture two-for-eight.jpg]1 box = €5 / 2 = €8 total" — no sentence id — ❌ wrong
-  3. "1 box = €5 / 2 = €16 total" — no sentence id — ❌ wrong
-  4. "1 box = €8 / 2 = €5 total" — no sentence id — ❌ wrong
+  3. "[picture offer-two-for-sixteen.jpg]1 box = €5 / 2 = €16 total" — no sentence id — ❌ wrong
+  4. "[picture offer-prices-swapped.jpg]1 box = €8 / 2 = €5 total" — no sentence id — ❌ wrong
   5. "[picture one-box.jpg]" — `phrase.money.one-box` — ✅ accepted
   6. "[picture cash-or-card.jpg]" — no sentence id — ❌ wrong
   7. "[picture pay-card.jpg]" — no sentence id — ❌ wrong
@@ -1919,8 +1919,8 @@ No meaning quiz in this mission.
 - Choices:
   1. "[picture fresh-strawberries.jpg]" — no sentence id — ❌ wrong
   2. "[picture two-for-eight.jpg]1 box = €5 / 2 = €8 total" — no sentence id — ❌ wrong
-  3. "1 box = €5 / 2 = €16 total" — no sentence id — ❌ wrong
-  4. "1 box = €8 / 2 = €5 total" — no sentence id — ❌ wrong
+  3. "[picture offer-two-for-sixteen.jpg]1 box = €5 / 2 = €16 total" — no sentence id — ❌ wrong
+  4. "[picture offer-prices-swapped.jpg]1 box = €8 / 2 = €5 total" — no sentence id — ❌ wrong
   5. "[picture one-box.jpg]" — no sentence id — ❌ wrong
   6. "[picture cash-or-card.jpg]" — no sentence id — ❌ wrong
   7. "[picture pay-card.jpg]" — `phrase.money.by-card` — ✅ accepted
@@ -1938,8 +1938,8 @@ No meaning quiz in this mission.
 - Choices:
   1. "[picture fresh-strawberries.jpg]" — no sentence id — ❌ wrong
   2. "[picture two-for-eight.jpg]1 box = €5 / 2 = €8 total" — no sentence id — ❌ wrong
-  3. "1 box = €5 / 2 = €16 total" — no sentence id — ❌ wrong
-  4. "1 box = €8 / 2 = €5 total" — no sentence id — ❌ wrong
+  3. "[picture offer-two-for-sixteen.jpg]1 box = €5 / 2 = €16 total" — no sentence id — ❌ wrong
+  4. "[picture offer-prices-swapped.jpg]1 box = €8 / 2 = €5 total" — no sentence id — ❌ wrong
   5. "[picture one-box.jpg]" — no sentence id — ❌ wrong
   6. "[picture cash-or-card.jpg]" — no sentence id — ❌ wrong
   7. "[picture pay-card.jpg]" — no sentence id — ❌ wrong
@@ -28151,8 +28151,8 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Audio: Fresh strawberries! Best in the market! — (תותים טריים! הכי טובים בשוק!)
 - A: [picture fresh-strawberries.jpg] ✅
 - B: [picture two-for-eight.jpg]1 box = €5 / 2 = €8 total
-- C: 1 box = €5 / 2 = €16 total
-- D: 1 box = €8 / 2 = €5 total
+- C: [picture offer-two-for-sixteen.jpg]1 box = €5 / 2 = €16 total
+- D: [picture offer-prices-swapped.jpg]1 box = €8 / 2 = €5 total
 - E: [picture one-box.jpg]
 - F: [picture cash-or-card.jpg]
 - G: [picture pay-card.jpg]
@@ -28166,8 +28166,8 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Audio: Five euros a box, or two for eight! — (חמישה יורו קופסה, או שתיים בשמונה!)
 - A: [picture fresh-strawberries.jpg]
 - B: [picture two-for-eight.jpg]1 box = €5 / 2 = €8 total ✅
-- C: 1 box = €5 / 2 = €16 total
-- D: 1 box = €8 / 2 = €5 total
+- C: [picture offer-two-for-sixteen.jpg]1 box = €5 / 2 = €16 total
+- D: [picture offer-prices-swapped.jpg]1 box = €8 / 2 = €5 total
 - E: [picture one-box.jpg]
 - F: [picture cash-or-card.jpg]
 - G: [picture pay-card.jpg]
@@ -28181,8 +28181,8 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Audio: One box, please. — (קופסה אחת, בבקשה.)
 - A: [picture fresh-strawberries.jpg]
 - B: [picture two-for-eight.jpg]1 box = €5 / 2 = €8 total
-- C: 1 box = €5 / 2 = €16 total
-- D: 1 box = €8 / 2 = €5 total
+- C: [picture offer-two-for-sixteen.jpg]1 box = €5 / 2 = €16 total
+- D: [picture offer-prices-swapped.jpg]1 box = €8 / 2 = €5 total
 - E: [picture one-box.jpg] ✅
 - F: [picture cash-or-card.jpg]
 - G: [picture pay-card.jpg]
@@ -28196,8 +28196,8 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Audio: By card, please. — (בכרטיס, בבקשה.)
 - A: [picture fresh-strawberries.jpg]
 - B: [picture two-for-eight.jpg]1 box = €5 / 2 = €8 total
-- C: 1 box = €5 / 2 = €16 total
-- D: 1 box = €8 / 2 = €5 total
+- C: [picture offer-two-for-sixteen.jpg]1 box = €5 / 2 = €16 total
+- D: [picture offer-prices-swapped.jpg]1 box = €8 / 2 = €5 total
 - E: [picture one-box.jpg]
 - F: [picture cash-or-card.jpg]
 - G: [picture pay-card.jpg] ✅
@@ -28211,8 +28211,8 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Audio: Thank you! Enjoy the strawberries! — (תודה! תיהנה מהתותים!)
 - A: [picture fresh-strawberries.jpg]
 - B: [picture two-for-eight.jpg]1 box = €5 / 2 = €8 total
-- C: 1 box = €5 / 2 = €16 total
-- D: 1 box = €8 / 2 = €5 total
+- C: [picture offer-two-for-sixteen.jpg]1 box = €5 / 2 = €16 total
+- D: [picture offer-prices-swapped.jpg]1 box = €8 / 2 = €5 total
 - E: [picture one-box.jpg]
 - F: [picture cash-or-card.jpg]
 - G: [picture pay-card.jpg]

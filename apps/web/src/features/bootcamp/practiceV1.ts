@@ -196,15 +196,16 @@ const STALL_TILES = [
 ];
 /**
  * After the video: what happened at the stall? The same approved pictures as the stall board, so
- * the answer is the meaning already learned. The offer is one tile — both prices at once, the picture
- * plus a short label, because this round tests the numbers — against the two wrong readings, which
- * have no picture of their own and are said in the same label form ("€8 each" = €16).
+ * the answer is the meaning already learned. The offer is one tile — both prices at once — against
+ * the two wrong readings ("€8 each" = €16, and the prices swapped). All three are picture + short
+ * label in the same form, so nothing but the numbers tells them apart.
  */
 const offerLabel = (one: number, two: number): string => `1 box = €${one}\n2 = €${two} total`;
 const AFTER_VIDEO_TILES = [
   STALL_TILES.find((t) => t.id === 'berries')!,
   { id: 'offer', image: `${M02_IMG}two-for-eight.jpg`, alt: 'Two strawberry boxes with one €8 tag', label: offerLabel(5, 8) },
-  { id: 'offer16', label: offerLabel(5, 16) }, { id: 'offer58', label: offerLabel(8, 5) },
+  { id: 'offer16', image: `${M02_IMG}offer-two-for-sixteen.jpg`, alt: 'Two strawberry boxes with one €16 tag', label: offerLabel(5, 16) },
+  { id: 'offer58', image: `${M02_IMG}offer-prices-swapped.jpg`, alt: 'One box tagged €8 beside two boxes tagged €5', label: offerLabel(8, 5) },
   STALL_TILES.find((t) => t.id === 'box1')!,
   STALL_TILES.find((t) => t.id === 'cash-or-card')!,
   STALL_TILES.find((t) => t.id === 'card')!,
