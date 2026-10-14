@@ -165,6 +165,9 @@ export interface MatchPair {
   /** A few app-language words shown beside `answerLabel`, where the icon alone could be misread
    *  (safety-critical meaning). The board then tests meaning, so the app language is the point. */
   answerGloss?: LocalizedText;
+  /** A picture (public path) shown in place of the `answerLabel` icon — the same picture the mission
+   *  uses for this meaning elsewhere. The icon stays as the tile's text form. Needs a label. */
+  answerImage?: string;
 }
 
 /** Sentence Builder — rebuild a sentence the mission already taught from its chunks. The chunks are

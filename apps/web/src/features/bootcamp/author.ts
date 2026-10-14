@@ -140,7 +140,7 @@ export interface MatchPairsSpec {
   label?: Copy;
   /** [heard sentence id, answer sentence id, what the answer tile says when it wraps the sentence,
    *   a language-neutral answer tile (number / icon) instead of text] */
-  pairs: readonly (readonly [prompt: string, answer: string, answerText?: L3, answerLabel?: string, answerGloss?: Copy])[];
+  pairs: readonly (readonly [prompt: string, answer: string, answerText?: L3, answerLabel?: string, answerGloss?: Copy, answerImage?: string])[];
 }
 export interface SentenceBuilderSpec {
   label?: Copy;
@@ -331,7 +331,7 @@ export function buildPractice(p: PracticeSpec, lang: MissionLang): BootcampStep 
   const id = (suffix: string): string => `${lang}.${suffix}`;
   const label = p.label ? { label: T(p.label) } : {};
   if (p.kind === 'matchPairs') {
-    return { kind: 'matchPairs', ...label, pairs: p.pairs.map(([prompt, answer, text, icon, gloss]) => ({ promptItemId: id(prompt), answerItemId: id(answer), ...(text ? { answerText: text[ix] } : {}), ...(icon ? { answerLabel: icon } : {}), ...(gloss ? { answerGloss: T(gloss) } : {}) })) };
+    return { kind: 'matchPairs', ...label, pairs: p.pairs.map(([prompt, answer, text, icon, gloss, image]) => ({ promptItemId: id(prompt), answerItemId: id(answer), ...(text ? { answerText: text[ix] } : {}), ...(icon ? { answerLabel: icon } : {}), ...(gloss ? { answerGloss: T(gloss) } : {}), ...(image ? { answerImage: image } : {}) })) };
   }
   if (p.kind === 'sentenceBuilder') {
     return { kind: 'sentenceBuilder', ...label, rounds: p.rounds.map((r) => ({ itemId: id(r.itemId), chunks: [...r.chunks[ix]] })) };

@@ -360,7 +360,14 @@ export function MatchPairsStep({ step, itemsById, onDone }: { step: StepOf<'matc
   const promptText = (i: number): string => itemsById.get(step.pairs[i]!.promptItemId)?.text ?? '';
   /** What a matched pair SAYS: the sentence. What its answer tile SHOWS may be a number or an icon. */
   const answerText = (i: number): string => step.pairs[i]!.answerText ?? itemsById.get(step.pairs[i]!.answerItemId)?.text ?? '';
-  const answerShown = (i: number): string => { const p = step.pairs[i]!; return p.answerLabel ? `${p.answerLabel}${p.answerGloss ? ` ${L(p.answerGloss)}` : ''}` : answerText(i); };
+  const answerShown = (i: number): React.ReactNode => {
+    const p = step.pairs[i]!;
+    if (!p.answerLabel) return answerText(i);
+    const gloss = p.answerGloss ? L(p.answerGloss) : '';
+    return p.answerImage
+      ? <><img className="pmatch-img" src={publicAsset(p.answerImage)} alt="" draggable={false} decoding="async" />{gloss}</>
+      : `${p.answerLabel}${gloss ? ` ${gloss}` : ''}`;
+  };
 
   const onTap = (side: MatchSide, pair: number): void => {
     tap();

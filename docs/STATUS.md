@@ -56,6 +56,12 @@ The dialogue is LOCKED (byte-identical, pinned); Mission 01 is byte-identical to
 - **Offer gate, final (same day):** the two wrong offer readings now have approved pictures too
   (`offer-two-for-sixteen.jpg`, `offer-prices-swapped.jpg`), so all three offer tiles are picture +
   short label in the same form — no picture-vs-text shortcut to the right answer.
+- **One picture = one meaning (same day):** new approved pictures for "fresh strawberries"
+  (`fresh-strawberries-v2.jpg`), "best in the market" (`best-in-market.jpg`, the #1 medal) and the
+  closing wish (`enjoy-strawberries.jpg`, eating one); the two superseded files are removed. The
+  vendor's-words match now shows the same pictures (`MatchPair.answerImage`; 👌 "perfect" has none).
+  A test fails if any picture stands for two meanings anywhere in the mission. Open risk: the plain
+  fresh crate and the one-box crate (green check) are still alike.
 - Coverage is machine-checked: `mission02Coverage.ts` (14 chunks) + `mission02.test.ts`, on the
   Mission 01 counting rule. Earlier fingerprints now pin Missions 03–N. Not done: device QA.
 

@@ -153,7 +153,7 @@ describe('the stall board: nine approved pictures, one 3×3 board, the purchase 
     es: ['¡Fresas frescas!', '¿Cuánto es?', 'Cinco euros la caja.', 'Dos por ocho.', 'Una caja, por favor.', '¿Efectivo o tarjeta?', 'Con tarjeta, por favor.', 'En efectivo.', '¡Gracias! ¡Que las disfrute!'],
     fr: ['Fraises fraîches !', 'C’est combien ?', 'Cinq euros la barquette.', 'Deux pour huit.', 'Une barquette, s’il vous plaît.', 'Espèces ou carte ?', 'Par carte, s’il vous plaît.', 'En espèces.', 'Merci ! Bonne dégustation !'],
   };
-  const PICTURES = ['fresh-strawberries.jpg', 'how-much.jpg', 'five-euros.jpg', 'two-for-eight.jpg', 'one-box.jpg', 'cash-or-card.jpg', 'pay-card.jpg', 'cash.jpg', 'enjoy.jpg'];
+  const PICTURES = ['fresh-strawberries-v2.jpg', 'how-much.jpg', 'five-euros.jpg', 'two-for-eight.jpg', 'one-box.jpg', 'cash-or-card.jpg', 'pay-card.jpg', 'cash.jpg', 'enjoy-strawberries.jpg'];
 
   it('exactly nine tiles — a full 3×3 board with no empty cell — on the 3-column grid', () => {
     for (const lang of LANGS) {
@@ -167,7 +167,7 @@ describe('the stall board: nine approved pictures, one 3×3 board, the purchase 
     for (const lang of LANGS) {
       for (const t of stall(lang).tiles) {
         expect(t.emoji, `${lang} ${t.id}`).toBeUndefined();
-        expect(t.image, `${lang} ${t.id}`).toMatch(/^images\/mission02\/[a-z-]+\.jpg$/);
+        expect(t.image, `${lang} ${t.id}`).toMatch(/^images\/mission02\/[a-z0-9-]+\.jpg$/);
         expect(t.alt, `${lang} ${t.id}`).toBeTruthy();
         expect(existsSync(PUBLIC + t.image!), `${t.image} on disk`).toBe(true);
         expect(statSync(PUBLIC + t.image!).size, t.image).toBeGreaterThan(10_000);
@@ -178,8 +178,8 @@ describe('the stall board: nine approved pictures, one 3×3 board, the purchase 
   it('one shared set of pictures — English, Spanish and French use the very same tiles', () => {
     expect(stall('es').tiles).toEqual(stall('en').tiles);
     expect(stall('fr').tiles).toEqual(stall('en').tiles);
-    // the folder holds the nine stall pictures plus the two wrong offer readings of the after-video gate
-    expect(readdirSync(PUBLIC + 'images/mission02').sort()).toEqual([...PICTURES, 'offer-two-for-sixteen.jpg', 'offer-prices-swapped.jpg'].sort());
+    // the folder holds the nine stall pictures, the two wrong offer readings of the gate and "best in the market"
+    expect(readdirSync(PUBLIC + 'images/mission02').sort()).toEqual([...PICTURES, 'offer-two-for-sixteen.jpg', 'offer-prices-swapped.jpg', 'best-in-market.jpg'].sort());
   });
   for (const lang of LANGS) {
     it(`${lang}: each sentence heard lands on the picture of what it means, in the order of the purchase`, () => {
@@ -188,11 +188,11 @@ describe('the stall board: nine approved pictures, one 3×3 board, the purchase 
       expect(b.rounds.map((r) => picture(b, r.correct))).toEqual(PICTURES);
     });
   }
-  it('the key meanings: two for eight → two boxes / €8 · by card → the terminal · in cash → the hand with cash · the goodbye → the happy customer', () => {
+  it('the key meanings: two for eight → two boxes / €8 · by card → the terminal · in cash → the hand with cash · the goodbye → the customer eating a strawberry', () => {
     for (const lang of LANGS) {
       const b = stall(lang);
       const at = (heard: number): string => picture(b, b.rounds.find((r) => r.audio.en === HEARD[lang][heard])!.correct);
-      expect([at(3), at(6), at(7), at(8)], lang).toEqual(['two-for-eight.jpg', 'pay-card.jpg', 'cash.jpg', 'enjoy.jpg']);
+      expect([at(3), at(6), at(7), at(8)], lang).toEqual(['two-for-eight.jpg', 'pay-card.jpg', 'cash.jpg', 'enjoy-strawberries.jpg']);
       // the closing line is the locked vendor line itself — comprehension only, never asked to be said
       expect(`NPC: ${HEARD[lang][8]}`).toBe(LOCKED[lang][6]);
     }
@@ -250,12 +250,61 @@ describe('the gate after the video: the same approved pictures, wherever one exi
   it('each meaning uses its approved picture: sold · offer · one box · card · cash · goodbye', () => {
     const pic = Object.fromEntries(gate('en').tiles.map((t) => [t.id, t.image?.replace('images/mission02/', '')]));
     expect(pic).toEqual({
-      berries: 'fresh-strawberries.jpg', offer: 'two-for-eight.jpg', offer16: 'offer-two-for-sixteen.jpg', offer58: 'offer-prices-swapped.jpg',
-      box1: 'one-box.jpg', 'cash-or-card': 'cash-or-card.jpg', card: 'pay-card.jpg', cash: 'cash.jpg', bye: 'enjoy.jpg',
+      berries: 'fresh-strawberries-v2.jpg', offer: 'two-for-eight.jpg', offer16: 'offer-two-for-sixteen.jpg', offer58: 'offer-prices-swapped.jpg',
+      box1: 'one-box.jpg', 'cash-or-card': 'cash-or-card.jpg', card: 'pay-card.jpg', cash: 'cash.jpg', bye: 'enjoy-strawberries.jpg',
     });
     // the very same tiles the stall board taught — same picture, same description
     const stall = boards(day('en'))[1]!;
     for (const id of ['berries', 'box1', 'cash-or-card', 'card', 'cash']) expect(gate('en').tiles.find((t) => t.id === id)).toEqual(stall.tiles.find((t) => t.id === id));
+  });
+});
+
+describe('one picture = one meaning, everywhere in the mission', () => {
+  const PUBLIC = fileURLToPath(new URL('../../../public/', import.meta.url));
+  /** Every picture the mission shows, wherever it is shown, with the meaning it stands for there. */
+  const meanings = (lang: CoverageLang): [string, string][] => {
+    const d = day(lang);
+    const fromBoards = boards(d).flatMap((b) => b.tiles.filter((t) => t.image).map((t): [string, string] => [t.image!, t.id === 'bye' ? 'enjoy' : t.id]));
+    const fromPairs = stepsOf(d, 'matchPairs').flatMap((s) => s.pairs.filter((p) => p.answerImage).map((p): [string, string] => [p.answerImage!, strip(p.answerItemId)]));
+    return [...fromBoards, ...fromPairs];
+  };
+  /** Ids that name the same meaning in different exercises: the gate's offer tile IS the board's "two for eight". */
+  const PAIR_MEANING: Record<string, string> = { 'reply.money.fresh-strawberries': 'berries', 'reply.money.best-market': 'best', 'reply.money.enjoy-strawberries': 'enjoy', offer: 'two8' };
+  it('fresh strawberries · best in the market · enjoy: three distinct, approved pictures', () => {
+    for (const lang of LANGS) {
+      const d = day(lang);
+      const stall = boards(d)[1]!;
+      const vendor = stepsOf(d, 'matchPairs').find((s) => s.pairs.some((p) => strip(p.answerItemId) === 'reply.money.best-market'))!;
+      const pairPic = (id: string): string | undefined => vendor.pairs.find((p) => strip(p.answerItemId) === id)!.answerImage;
+      const fresh = stall.tiles.find((t) => t.id === 'berries')!.image;
+      const enjoy = stall.tiles.find((t) => t.id === 'enjoy')!.image;
+      const best = pairPic('reply.money.best-market');
+      expect([fresh, best, enjoy], lang).toEqual(['fresh-strawberries-v2', 'best-in-market', 'enjoy-strawberries'].map((f) => `images/mission02/${f}.jpg`));
+      expect(new Set([fresh, best, enjoy]).size, lang).toBe(3);
+      // …and the vendor's-words match shows the very same pictures as the stall board
+      expect([pairPic('reply.money.fresh-strawberries'), pairPic('reply.money.enjoy-strawberries')], lang).toEqual([fresh, enjoy]);
+      for (const f of [fresh, best, enjoy]) expect(existsSync(PUBLIC + f!), f).toBe(true);
+      // the sentence each of them stands for, heard on the stall board / named in the match
+      expect(stall.rounds.find((r) => r.correct === 'berries')!.itemId).toBe(`${lang}.reply.money.fresh-strawberries`);
+      expect(stall.rounds.find((r) => r.correct === 'enjoy')!.itemId).toBe(`${lang}.reply.money.enjoy-strawberries`);
+    }
+  });
+  it('no picture stands for two meanings, and no meaning has two pictures — across the board, the gate and the match', () => {
+    for (const lang of LANGS) {
+      const byPic = new Map<string, Set<string>>();
+      const byMeaning = new Map<string, Set<string>>();
+      for (const [pic, raw] of meanings(lang)) {
+        const m = PAIR_MEANING[raw] ?? raw;
+        byPic.set(pic, (byPic.get(pic) ?? new Set()).add(m));
+        byMeaning.set(m, (byMeaning.get(m) ?? new Set()).add(pic));
+        expect(existsSync(PUBLIC + pic), pic).toBe(true);
+      }
+      for (const [pic, ms] of byPic) expect([...ms], `${lang} ${pic}`).toHaveLength(1);
+      for (const [m, ps] of byMeaning) expect([...ps], `${lang} ${m}`).toHaveLength(1);
+      expect(byPic.size, lang).toBe(12); // every file in the folder is used, each for exactly one meaning
+    }
+    expect(meanings('es')).toEqual(meanings('en'));
+    expect(meanings('fr')).toEqual(meanings('en'));
   });
 });
 
@@ -391,7 +440,7 @@ describe('the learning arc', () => {
       const gate = after[0] as Extract<BootcampStep, { kind: 'visualMatch' }>;
       // What is sold · the offer · how many · how you pay — the conversation's own lines, heard again.
       // …each answered with the approved picture of its meaning (the offer also carries its numbers).
-      expect(gate.rounds.map((r) => gate.tiles.find((t) => t.id === r.correct)!.image), lang).toEqual(['fresh-strawberries', 'two-for-eight', 'one-box', 'pay-card', 'enjoy'].map((f) => `images/mission02/${f}.jpg`));
+      expect(gate.rounds.map((r) => gate.tiles.find((t) => t.id === r.correct)!.image), lang).toEqual(['fresh-strawberries-v2', 'two-for-eight', 'one-box', 'pay-card', 'enjoy-strawberries'].map((f) => `images/mission02/${f}.jpg`));
       // What is sold · the offer · how many · how you pay · the goodbye — the conversation's own lines.
       expect(gate.rounds.map((r) => r.audio.en)).toEqual([0, 2, 3, 5, 6].map((i) => LOCKED[lang][i]!.slice(5)));
     }

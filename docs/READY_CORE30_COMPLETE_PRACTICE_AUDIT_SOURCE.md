@@ -1462,7 +1462,7 @@ No meaning quiz in this mission.
 - Meaning of the audio (HE): "תותים טריים!"
 - Buttons show: a 3×3 board of 9 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. "[picture fresh-strawberries.jpg]" — `reply.money.fresh-strawberries` — ✅ accepted
+  1. "[picture fresh-strawberries-v2.jpg]" — `reply.money.fresh-strawberries` — ✅ accepted
   2. "[picture how-much.jpg]" — no sentence id — ❌ wrong
   3. "[picture five-euros.jpg]" — no sentence id — ❌ wrong
   4. "[picture two-for-eight.jpg]" — no sentence id — ❌ wrong
@@ -1470,7 +1470,7 @@ No meaning quiz in this mission.
   6. "[picture cash-or-card.jpg]" — no sentence id — ❌ wrong
   7. "[picture pay-card.jpg]" — no sentence id — ❌ wrong
   8. "[picture cash.jpg]" — no sentence id — ❌ wrong
-  9. "[picture enjoy.jpg]" — no sentence id — ❌ wrong
+  9. "[picture enjoy-strawberries.jpg]" — no sentence id — ❌ wrong
 - Tests: reply.money.fresh-strawberries
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
@@ -1481,7 +1481,7 @@ No meaning quiz in this mission.
 - Meaning of the audio (HE): "כמה זה עולה?"
 - Buttons show: a 3×3 board of 9 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. "[picture fresh-strawberries.jpg]" — no sentence id — ❌ wrong
+  1. "[picture fresh-strawberries-v2.jpg]" — no sentence id — ❌ wrong
   2. "[picture how-much.jpg]" — `phrase.money.how-much` — ✅ accepted
   3. "[picture five-euros.jpg]" — no sentence id — ❌ wrong
   4. "[picture two-for-eight.jpg]" — no sentence id — ❌ wrong
@@ -1489,7 +1489,7 @@ No meaning quiz in this mission.
   6. "[picture cash-or-card.jpg]" — no sentence id — ❌ wrong
   7. "[picture pay-card.jpg]" — no sentence id — ❌ wrong
   8. "[picture cash.jpg]" — no sentence id — ❌ wrong
-  9. "[picture enjoy.jpg]" — no sentence id — ❌ wrong
+  9. "[picture enjoy-strawberries.jpg]" — no sentence id — ❌ wrong
 - Tests: phrase.money.how-much
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
@@ -1500,7 +1500,7 @@ No meaning quiz in this mission.
 - Meaning of the audio (HE): "חמישה יורו קופסה."
 - Buttons show: a 3×3 board of 9 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. "[picture fresh-strawberries.jpg]" — no sentence id — ❌ wrong
+  1. "[picture fresh-strawberries-v2.jpg]" — no sentence id — ❌ wrong
   2. "[picture how-much.jpg]" — no sentence id — ❌ wrong
   3. "[picture five-euros.jpg]" — no sentence id — ✅ accepted
   4. "[picture two-for-eight.jpg]" — no sentence id — ❌ wrong
@@ -1508,7 +1508,7 @@ No meaning quiz in this mission.
   6. "[picture cash-or-card.jpg]" — no sentence id — ❌ wrong
   7. "[picture pay-card.jpg]" — no sentence id — ❌ wrong
   8. "[picture cash.jpg]" — no sentence id — ❌ wrong
-  9. "[picture enjoy.jpg]" — no sentence id — ❌ wrong
+  9. "[picture enjoy-strawberries.jpg]" — no sentence id — ❌ wrong
 - Tests: (no sentence id — not recorded)
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
@@ -1519,7 +1519,7 @@ No meaning quiz in this mission.
 - Meaning of the audio (HE): "שתיים בשמונה."
 - Buttons show: a 3×3 board of 9 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. "[picture fresh-strawberries.jpg]" — no sentence id — ❌ wrong
+  1. "[picture fresh-strawberries-v2.jpg]" — no sentence id — ❌ wrong
   2. "[picture how-much.jpg]" — no sentence id — ❌ wrong
   3. "[picture five-euros.jpg]" — no sentence id — ❌ wrong
   4. "[picture two-for-eight.jpg]" — no sentence id — ✅ accepted
@@ -1527,7 +1527,7 @@ No meaning quiz in this mission.
   6. "[picture cash-or-card.jpg]" — no sentence id — ❌ wrong
   7. "[picture pay-card.jpg]" — no sentence id — ❌ wrong
   8. "[picture cash.jpg]" — no sentence id — ❌ wrong
-  9. "[picture enjoy.jpg]" — no sentence id — ❌ wrong
+  9. "[picture enjoy-strawberries.jpg]" — no sentence id — ❌ wrong
 - Tests: (no sentence id — not recorded)
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
@@ -1538,7 +1538,7 @@ No meaning quiz in this mission.
 - Meaning of the audio (HE): "קופסה אחת, בבקשה."
 - Buttons show: a 3×3 board of 9 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. "[picture fresh-strawberries.jpg]" — no sentence id — ❌ wrong
+  1. "[picture fresh-strawberries-v2.jpg]" — no sentence id — ❌ wrong
   2. "[picture how-much.jpg]" — no sentence id — ❌ wrong
   3. "[picture five-euros.jpg]" — no sentence id — ❌ wrong
   4. "[picture two-for-eight.jpg]" — no sentence id — ❌ wrong
@@ -1546,7 +1546,7 @@ No meaning quiz in this mission.
   6. "[picture cash-or-card.jpg]" — no sentence id — ❌ wrong
   7. "[picture pay-card.jpg]" — no sentence id — ❌ wrong
   8. "[picture cash.jpg]" — no sentence id — ❌ wrong
-  9. "[picture enjoy.jpg]" — no sentence id — ❌ wrong
+  9. "[picture enjoy-strawberries.jpg]" — no sentence id — ❌ wrong
 - Tests: phrase.money.one-box
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
@@ -1557,7 +1557,7 @@ No meaning quiz in this mission.
 - Meaning of the audio (HE): "מזומן או כרטיס?"
 - Buttons show: a 3×3 board of 9 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. "[picture fresh-strawberries.jpg]" — no sentence id — ❌ wrong
+  1. "[picture fresh-strawberries-v2.jpg]" — no sentence id — ❌ wrong
   2. "[picture how-much.jpg]" — no sentence id — ❌ wrong
   3. "[picture five-euros.jpg]" — no sentence id — ❌ wrong
   4. "[picture two-for-eight.jpg]" — no sentence id — ❌ wrong
@@ -1565,7 +1565,7 @@ No meaning quiz in this mission.
   6. "[picture cash-or-card.jpg]" — `reply.money.cash-or-card` — ✅ accepted
   7. "[picture pay-card.jpg]" — no sentence id — ❌ wrong
   8. "[picture cash.jpg]" — no sentence id — ❌ wrong
-  9. "[picture enjoy.jpg]" — no sentence id — ❌ wrong
+  9. "[picture enjoy-strawberries.jpg]" — no sentence id — ❌ wrong
 - Tests: reply.money.cash-or-card
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
@@ -1576,7 +1576,7 @@ No meaning quiz in this mission.
 - Meaning of the audio (HE): "בכרטיס, בבקשה."
 - Buttons show: a 3×3 board of 9 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. "[picture fresh-strawberries.jpg]" — no sentence id — ❌ wrong
+  1. "[picture fresh-strawberries-v2.jpg]" — no sentence id — ❌ wrong
   2. "[picture how-much.jpg]" — no sentence id — ❌ wrong
   3. "[picture five-euros.jpg]" — no sentence id — ❌ wrong
   4. "[picture two-for-eight.jpg]" — no sentence id — ❌ wrong
@@ -1584,7 +1584,7 @@ No meaning quiz in this mission.
   6. "[picture cash-or-card.jpg]" — no sentence id — ❌ wrong
   7. "[picture pay-card.jpg]" — `phrase.money.by-card` — ✅ accepted
   8. "[picture cash.jpg]" — no sentence id — ❌ wrong
-  9. "[picture enjoy.jpg]" — no sentence id — ❌ wrong
+  9. "[picture enjoy-strawberries.jpg]" — no sentence id — ❌ wrong
 - Tests: phrase.money.by-card
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
@@ -1595,7 +1595,7 @@ No meaning quiz in this mission.
 - Meaning of the audio (HE): "במזומן."
 - Buttons show: a 3×3 board of 9 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. "[picture fresh-strawberries.jpg]" — no sentence id — ❌ wrong
+  1. "[picture fresh-strawberries-v2.jpg]" — no sentence id — ❌ wrong
   2. "[picture how-much.jpg]" — no sentence id — ❌ wrong
   3. "[picture five-euros.jpg]" — no sentence id — ❌ wrong
   4. "[picture two-for-eight.jpg]" — no sentence id — ❌ wrong
@@ -1603,7 +1603,7 @@ No meaning quiz in this mission.
   6. "[picture cash-or-card.jpg]" — no sentence id — ❌ wrong
   7. "[picture pay-card.jpg]" — no sentence id — ❌ wrong
   8. "[picture cash.jpg]" — `phrase.money.in-cash` — ✅ accepted
-  9. "[picture enjoy.jpg]" — no sentence id — ❌ wrong
+  9. "[picture enjoy-strawberries.jpg]" — no sentence id — ❌ wrong
 - Tests: phrase.money.in-cash
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
@@ -1614,7 +1614,7 @@ No meaning quiz in this mission.
 - Meaning of the audio (HE): "תודה! תיהנה מהתותים!"
 - Buttons show: a 3×3 board of 9 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. "[picture fresh-strawberries.jpg]" — no sentence id — ❌ wrong
+  1. "[picture fresh-strawberries-v2.jpg]" — no sentence id — ❌ wrong
   2. "[picture how-much.jpg]" — no sentence id — ❌ wrong
   3. "[picture five-euros.jpg]" — no sentence id — ❌ wrong
   4. "[picture two-for-eight.jpg]" — no sentence id — ❌ wrong
@@ -1622,7 +1622,7 @@ No meaning quiz in this mission.
   6. "[picture cash-or-card.jpg]" — no sentence id — ❌ wrong
   7. "[picture pay-card.jpg]" — no sentence id — ❌ wrong
   8. "[picture cash.jpg]" — no sentence id — ❌ wrong
-  9. "[picture enjoy.jpg]" — `reply.money.enjoy-strawberries` — ✅ accepted
+  9. "[picture enjoy-strawberries.jpg]" — `reply.money.enjoy-strawberries` — ✅ accepted
 - Tests: reply.money.enjoy-strawberries
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
@@ -1633,10 +1633,10 @@ No meaning quiz in this mission.
 - Meaning of the audio (HE): "תותים טריים!"
 - Buttons show: the ANSWER tiles, target language only; their order is shuffled; a matched pair locks and leaves the board, so later pairs have fewer live tiles
 - Choices:
-  1. EN "🍓 Fresh strawberries / תותים טריים" · FR "🍓 Fresh strawberries / תותים טריים" · ES "🍓 Fresh strawberries / תותים טריים" · (HE gloss "תותים טריים!") — `reply.money.fresh-strawberries` — ✅ accepted
-  2. EN "🏆 Best in the market / הכי טובים בשוק" · FR "🏆 Best in the market / הכי טובים בשוק" · ES "🏆 Best in the market / הכי טובים בשוק" · (HE gloss "הכי טובים בשוק!") — `reply.money.best-market` — ❌ wrong
+  1. EN "[picture fresh-strawberries-v2.jpg] 🍓 Fresh strawberries / תותים טריים" · FR "[picture fresh-strawberries-v2.jpg] 🍓 Fresh strawberries / תותים טריים" · ES "[picture fresh-strawberries-v2.jpg] 🍓 Fresh strawberries / תותים טריים" · (HE gloss "תותים טריים!") — `reply.money.fresh-strawberries` — ✅ accepted
+  2. EN "[picture best-in-market.jpg] 🏆 Best in the market / הכי טובים בשוק" · FR "[picture best-in-market.jpg] 🏆 Best in the market / הכי טובים בשוק" · ES "[picture best-in-market.jpg] 🏆 Best in the market / הכי טובים בשוק" · (HE gloss "הכי טובים בשוק!") — `reply.money.best-market` — ❌ wrong
   3. EN "👌 Perfect / מצוין" · FR "👌 Perfect / מצוין" · ES "👌 Perfect / מצוין" · (HE gloss "מצוין.") — `reply.money.perfect` — ❌ wrong
-  4. EN "😋 Thank you! Enjoy the strawberries / תודה! תיהנה מהתותים" · FR "😋 Thank you! Enjoy the strawberries / תודה! תיהנה מהתותים" · ES "😋 Thank you! Enjoy the strawberries / תודה! תיהנה מהתותים" · (HE gloss "תודה! תיהנה מהתותים!") — `reply.money.enjoy-strawberries` — ❌ wrong
+  4. EN "[picture enjoy-strawberries.jpg] 😋 Thank you! Enjoy the strawberries / תודה! תיהנה מהתותים" · FR "[picture enjoy-strawberries.jpg] 😋 Thank you! Enjoy the strawberries / תודה! תיהנה מהתותים" · ES "[picture enjoy-strawberries.jpg] 😋 Thank you! Enjoy the strawberries / תודה! תיהנה מהתותים" · (HE gloss "תודה! תיהנה מהתותים!") — `reply.money.enjoy-strawberries` — ❌ wrong
 - Tests: reply.money.fresh-strawberries
 - Explanation shown after answering: none — a correct match locks both tiles under a shared number and speaks the answer; a miss shakes, shows ✕ and clears (no penalty)
 
@@ -1647,10 +1647,10 @@ No meaning quiz in this mission.
 - Meaning of the audio (HE): "הכי טובים בשוק!"
 - Buttons show: the ANSWER tiles, target language only; their order is shuffled; a matched pair locks and leaves the board, so later pairs have fewer live tiles
 - Choices:
-  1. EN "🍓 Fresh strawberries / תותים טריים" · FR "🍓 Fresh strawberries / תותים טריים" · ES "🍓 Fresh strawberries / תותים טריים" · (HE gloss "תותים טריים!") — `reply.money.fresh-strawberries` — ❌ wrong
-  2. EN "🏆 Best in the market / הכי טובים בשוק" · FR "🏆 Best in the market / הכי טובים בשוק" · ES "🏆 Best in the market / הכי טובים בשוק" · (HE gloss "הכי טובים בשוק!") — `reply.money.best-market` — ✅ accepted
+  1. EN "[picture fresh-strawberries-v2.jpg] 🍓 Fresh strawberries / תותים טריים" · FR "[picture fresh-strawberries-v2.jpg] 🍓 Fresh strawberries / תותים טריים" · ES "[picture fresh-strawberries-v2.jpg] 🍓 Fresh strawberries / תותים טריים" · (HE gloss "תותים טריים!") — `reply.money.fresh-strawberries` — ❌ wrong
+  2. EN "[picture best-in-market.jpg] 🏆 Best in the market / הכי טובים בשוק" · FR "[picture best-in-market.jpg] 🏆 Best in the market / הכי טובים בשוק" · ES "[picture best-in-market.jpg] 🏆 Best in the market / הכי טובים בשוק" · (HE gloss "הכי טובים בשוק!") — `reply.money.best-market` — ✅ accepted
   3. EN "👌 Perfect / מצוין" · FR "👌 Perfect / מצוין" · ES "👌 Perfect / מצוין" · (HE gloss "מצוין.") — `reply.money.perfect` — ❌ wrong
-  4. EN "😋 Thank you! Enjoy the strawberries / תודה! תיהנה מהתותים" · FR "😋 Thank you! Enjoy the strawberries / תודה! תיהנה מהתותים" · ES "😋 Thank you! Enjoy the strawberries / תודה! תיהנה מהתותים" · (HE gloss "תודה! תיהנה מהתותים!") — `reply.money.enjoy-strawberries` — ❌ wrong
+  4. EN "[picture enjoy-strawberries.jpg] 😋 Thank you! Enjoy the strawberries / תודה! תיהנה מהתותים" · FR "[picture enjoy-strawberries.jpg] 😋 Thank you! Enjoy the strawberries / תודה! תיהנה מהתותים" · ES "[picture enjoy-strawberries.jpg] 😋 Thank you! Enjoy the strawberries / תודה! תיהנה מהתותים" · (HE gloss "תודה! תיהנה מהתותים!") — `reply.money.enjoy-strawberries` — ❌ wrong
 - Tests: reply.money.best-market
 - Explanation shown after answering: none — a correct match locks both tiles under a shared number and speaks the answer; a miss shakes, shows ✕ and clears (no penalty)
 
@@ -1661,10 +1661,10 @@ No meaning quiz in this mission.
 - Meaning of the audio (HE): "מצוין."
 - Buttons show: the ANSWER tiles, target language only; their order is shuffled; a matched pair locks and leaves the board, so later pairs have fewer live tiles
 - Choices:
-  1. EN "🍓 Fresh strawberries / תותים טריים" · FR "🍓 Fresh strawberries / תותים טריים" · ES "🍓 Fresh strawberries / תותים טריים" · (HE gloss "תותים טריים!") — `reply.money.fresh-strawberries` — ❌ wrong
-  2. EN "🏆 Best in the market / הכי טובים בשוק" · FR "🏆 Best in the market / הכי טובים בשוק" · ES "🏆 Best in the market / הכי טובים בשוק" · (HE gloss "הכי טובים בשוק!") — `reply.money.best-market` — ❌ wrong
+  1. EN "[picture fresh-strawberries-v2.jpg] 🍓 Fresh strawberries / תותים טריים" · FR "[picture fresh-strawberries-v2.jpg] 🍓 Fresh strawberries / תותים טריים" · ES "[picture fresh-strawberries-v2.jpg] 🍓 Fresh strawberries / תותים טריים" · (HE gloss "תותים טריים!") — `reply.money.fresh-strawberries` — ❌ wrong
+  2. EN "[picture best-in-market.jpg] 🏆 Best in the market / הכי טובים בשוק" · FR "[picture best-in-market.jpg] 🏆 Best in the market / הכי טובים בשוק" · ES "[picture best-in-market.jpg] 🏆 Best in the market / הכי טובים בשוק" · (HE gloss "הכי טובים בשוק!") — `reply.money.best-market` — ❌ wrong
   3. EN "👌 Perfect / מצוין" · FR "👌 Perfect / מצוין" · ES "👌 Perfect / מצוין" · (HE gloss "מצוין.") — `reply.money.perfect` — ✅ accepted
-  4. EN "😋 Thank you! Enjoy the strawberries / תודה! תיהנה מהתותים" · FR "😋 Thank you! Enjoy the strawberries / תודה! תיהנה מהתותים" · ES "😋 Thank you! Enjoy the strawberries / תודה! תיהנה מהתותים" · (HE gloss "תודה! תיהנה מהתותים!") — `reply.money.enjoy-strawberries` — ❌ wrong
+  4. EN "[picture enjoy-strawberries.jpg] 😋 Thank you! Enjoy the strawberries / תודה! תיהנה מהתותים" · FR "[picture enjoy-strawberries.jpg] 😋 Thank you! Enjoy the strawberries / תודה! תיהנה מהתותים" · ES "[picture enjoy-strawberries.jpg] 😋 Thank you! Enjoy the strawberries / תודה! תיהנה מהתותים" · (HE gloss "תודה! תיהנה מהתותים!") — `reply.money.enjoy-strawberries` — ❌ wrong
 - Tests: reply.money.perfect
 - Explanation shown after answering: none — a correct match locks both tiles under a shared number and speaks the answer; a miss shakes, shows ✕ and clears (no penalty)
 
@@ -1675,10 +1675,10 @@ No meaning quiz in this mission.
 - Meaning of the audio (HE): "תודה! תיהנה מהתותים!"
 - Buttons show: the ANSWER tiles, target language only; their order is shuffled; a matched pair locks and leaves the board, so later pairs have fewer live tiles
 - Choices:
-  1. EN "🍓 Fresh strawberries / תותים טריים" · FR "🍓 Fresh strawberries / תותים טריים" · ES "🍓 Fresh strawberries / תותים טריים" · (HE gloss "תותים טריים!") — `reply.money.fresh-strawberries` — ❌ wrong
-  2. EN "🏆 Best in the market / הכי טובים בשוק" · FR "🏆 Best in the market / הכי טובים בשוק" · ES "🏆 Best in the market / הכי טובים בשוק" · (HE gloss "הכי טובים בשוק!") — `reply.money.best-market` — ❌ wrong
+  1. EN "[picture fresh-strawberries-v2.jpg] 🍓 Fresh strawberries / תותים טריים" · FR "[picture fresh-strawberries-v2.jpg] 🍓 Fresh strawberries / תותים טריים" · ES "[picture fresh-strawberries-v2.jpg] 🍓 Fresh strawberries / תותים טריים" · (HE gloss "תותים טריים!") — `reply.money.fresh-strawberries` — ❌ wrong
+  2. EN "[picture best-in-market.jpg] 🏆 Best in the market / הכי טובים בשוק" · FR "[picture best-in-market.jpg] 🏆 Best in the market / הכי טובים בשוק" · ES "[picture best-in-market.jpg] 🏆 Best in the market / הכי טובים בשוק" · (HE gloss "הכי טובים בשוק!") — `reply.money.best-market` — ❌ wrong
   3. EN "👌 Perfect / מצוין" · FR "👌 Perfect / מצוין" · ES "👌 Perfect / מצוין" · (HE gloss "מצוין.") — `reply.money.perfect` — ❌ wrong
-  4. EN "😋 Thank you! Enjoy the strawberries / תודה! תיהנה מהתותים" · FR "😋 Thank you! Enjoy the strawberries / תודה! תיהנה מהתותים" · ES "😋 Thank you! Enjoy the strawberries / תודה! תיהנה מהתותים" · (HE gloss "תודה! תיהנה מהתותים!") — `reply.money.enjoy-strawberries` — ✅ accepted
+  4. EN "[picture enjoy-strawberries.jpg] 😋 Thank you! Enjoy the strawberries / תודה! תיהנה מהתותים" · FR "[picture enjoy-strawberries.jpg] 😋 Thank you! Enjoy the strawberries / תודה! תיהנה מהתותים" · ES "[picture enjoy-strawberries.jpg] 😋 Thank you! Enjoy the strawberries / תודה! תיהנה מהתותים" · (HE gloss "תודה! תיהנה מהתותים!") — `reply.money.enjoy-strawberries` — ✅ accepted
 - Tests: reply.money.enjoy-strawberries
 - Explanation shown after answering: none — a correct match locks both tiles under a shared number and speaks the answer; a miss shakes, shows ✕ and clears (no penalty)
 
@@ -1860,7 +1860,7 @@ No meaning quiz in this mission.
 - Meaning of the audio (HE): "תותים טריים! הכי טובים בשוק!"
 - Buttons show: a 3×3 board of 9 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. "[picture fresh-strawberries.jpg]" — no sentence id — ✅ accepted
+  1. "[picture fresh-strawberries-v2.jpg]" — no sentence id — ✅ accepted
   2. "[picture two-for-eight.jpg]1 box = €5 / 2 = €8 total" — no sentence id — ❌ wrong
   3. "[picture offer-two-for-sixteen.jpg]1 box = €5 / 2 = €16 total" — no sentence id — ❌ wrong
   4. "[picture offer-prices-swapped.jpg]1 box = €8 / 2 = €5 total" — no sentence id — ❌ wrong
@@ -1868,7 +1868,7 @@ No meaning quiz in this mission.
   6. "[picture cash-or-card.jpg]" — no sentence id — ❌ wrong
   7. "[picture pay-card.jpg]" — no sentence id — ❌ wrong
   8. "[picture cash.jpg]" — no sentence id — ❌ wrong
-  9. "[picture enjoy.jpg]" — no sentence id — ❌ wrong
+  9. "[picture enjoy-strawberries.jpg]" — no sentence id — ❌ wrong
 - Tests: (no sentence id — not recorded)
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
@@ -1879,7 +1879,7 @@ No meaning quiz in this mission.
 - Meaning of the audio (HE): "חמישה יורו קופסה, או שתיים בשמונה!"
 - Buttons show: a 3×3 board of 9 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. "[picture fresh-strawberries.jpg]" — no sentence id — ❌ wrong
+  1. "[picture fresh-strawberries-v2.jpg]" — no sentence id — ❌ wrong
   2. "[picture two-for-eight.jpg]1 box = €5 / 2 = €8 total" — `reply.money.offer` — ✅ accepted
   3. "[picture offer-two-for-sixteen.jpg]1 box = €5 / 2 = €16 total" — no sentence id — ❌ wrong
   4. "[picture offer-prices-swapped.jpg]1 box = €8 / 2 = €5 total" — no sentence id — ❌ wrong
@@ -1887,7 +1887,7 @@ No meaning quiz in this mission.
   6. "[picture cash-or-card.jpg]" — no sentence id — ❌ wrong
   7. "[picture pay-card.jpg]" — no sentence id — ❌ wrong
   8. "[picture cash.jpg]" — no sentence id — ❌ wrong
-  9. "[picture enjoy.jpg]" — no sentence id — ❌ wrong
+  9. "[picture enjoy-strawberries.jpg]" — no sentence id — ❌ wrong
 - Tests: reply.money.offer
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
@@ -1898,7 +1898,7 @@ No meaning quiz in this mission.
 - Meaning of the audio (HE): "קופסה אחת, בבקשה."
 - Buttons show: a 3×3 board of 9 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. "[picture fresh-strawberries.jpg]" — no sentence id — ❌ wrong
+  1. "[picture fresh-strawberries-v2.jpg]" — no sentence id — ❌ wrong
   2. "[picture two-for-eight.jpg]1 box = €5 / 2 = €8 total" — no sentence id — ❌ wrong
   3. "[picture offer-two-for-sixteen.jpg]1 box = €5 / 2 = €16 total" — no sentence id — ❌ wrong
   4. "[picture offer-prices-swapped.jpg]1 box = €8 / 2 = €5 total" — no sentence id — ❌ wrong
@@ -1906,7 +1906,7 @@ No meaning quiz in this mission.
   6. "[picture cash-or-card.jpg]" — no sentence id — ❌ wrong
   7. "[picture pay-card.jpg]" — no sentence id — ❌ wrong
   8. "[picture cash.jpg]" — no sentence id — ❌ wrong
-  9. "[picture enjoy.jpg]" — no sentence id — ❌ wrong
+  9. "[picture enjoy-strawberries.jpg]" — no sentence id — ❌ wrong
 - Tests: phrase.money.one-box
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
@@ -1917,7 +1917,7 @@ No meaning quiz in this mission.
 - Meaning of the audio (HE): "בכרטיס, בבקשה."
 - Buttons show: a 3×3 board of 9 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. "[picture fresh-strawberries.jpg]" — no sentence id — ❌ wrong
+  1. "[picture fresh-strawberries-v2.jpg]" — no sentence id — ❌ wrong
   2. "[picture two-for-eight.jpg]1 box = €5 / 2 = €8 total" — no sentence id — ❌ wrong
   3. "[picture offer-two-for-sixteen.jpg]1 box = €5 / 2 = €16 total" — no sentence id — ❌ wrong
   4. "[picture offer-prices-swapped.jpg]1 box = €8 / 2 = €5 total" — no sentence id — ❌ wrong
@@ -1925,7 +1925,7 @@ No meaning quiz in this mission.
   6. "[picture cash-or-card.jpg]" — no sentence id — ❌ wrong
   7. "[picture pay-card.jpg]" — `phrase.money.by-card` — ✅ accepted
   8. "[picture cash.jpg]" — no sentence id — ❌ wrong
-  9. "[picture enjoy.jpg]" — no sentence id — ❌ wrong
+  9. "[picture enjoy-strawberries.jpg]" — no sentence id — ❌ wrong
 - Tests: phrase.money.by-card
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
@@ -1936,7 +1936,7 @@ No meaning quiz in this mission.
 - Meaning of the audio (HE): "תודה! תיהנה מהתותים!"
 - Buttons show: a 3×3 board of 9 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. "[picture fresh-strawberries.jpg]" — no sentence id — ❌ wrong
+  1. "[picture fresh-strawberries-v2.jpg]" — no sentence id — ❌ wrong
   2. "[picture two-for-eight.jpg]1 box = €5 / 2 = €8 total" — no sentence id — ❌ wrong
   3. "[picture offer-two-for-sixteen.jpg]1 box = €5 / 2 = €16 total" — no sentence id — ❌ wrong
   4. "[picture offer-prices-swapped.jpg]1 box = €8 / 2 = €5 total" — no sentence id — ❌ wrong
@@ -1944,7 +1944,7 @@ No meaning quiz in this mission.
   6. "[picture cash-or-card.jpg]" — no sentence id — ❌ wrong
   7. "[picture pay-card.jpg]" — no sentence id — ❌ wrong
   8. "[picture cash.jpg]" — no sentence id — ❌ wrong
-  9. "[picture enjoy.jpg]" — `reply.money.enjoy-strawberries` — ✅ accepted
+  9. "[picture enjoy-strawberries.jpg]" — `reply.money.enjoy-strawberries` — ✅ accepted
 - Tests: reply.money.enjoy-strawberries
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
@@ -27824,7 +27824,7 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 **M02-Q11** — visual-match
 - Prompt: "At the stall — tap what you hear" / "בדוכן — הקש על מה ששמעת"
 - Audio: Fresh strawberries! — (תותים טריים!)
-- A: [picture fresh-strawberries.jpg] ✅
+- A: [picture fresh-strawberries-v2.jpg] ✅
 - B: [picture how-much.jpg]
 - C: [picture five-euros.jpg]
 - D: [picture two-for-eight.jpg]
@@ -27832,14 +27832,14 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - F: [picture cash-or-card.jpg]
 - G: [picture pay-card.jpg]
 - H: [picture cash.jpg]
-- I: [picture enjoy.jpg]
-- Correct: [picture fresh-strawberries.jpg]
+- I: [picture enjoy-strawberries.jpg]
+- Correct: [picture fresh-strawberries-v2.jpg]
 - Tests: reply.money.fresh-strawberries
 
 **M02-Q12** — visual-match
 - Prompt: "At the stall — tap what you hear" / "בדוכן — הקש על מה ששמעת"
 - Audio: How much is it? — (כמה זה עולה?)
-- A: [picture fresh-strawberries.jpg]
+- A: [picture fresh-strawberries-v2.jpg]
 - B: [picture how-much.jpg] ✅
 - C: [picture five-euros.jpg]
 - D: [picture two-for-eight.jpg]
@@ -27847,14 +27847,14 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - F: [picture cash-or-card.jpg]
 - G: [picture pay-card.jpg]
 - H: [picture cash.jpg]
-- I: [picture enjoy.jpg]
+- I: [picture enjoy-strawberries.jpg]
 - Correct: [picture how-much.jpg]
 - Tests: phrase.money.how-much
 
 **M02-Q13** — visual-match
 - Prompt: "At the stall — tap what you hear" / "בדוכן — הקש על מה ששמעת"
 - Audio: Five euros a box. — (חמישה יורו קופסה.)
-- A: [picture fresh-strawberries.jpg]
+- A: [picture fresh-strawberries-v2.jpg]
 - B: [picture how-much.jpg]
 - C: [picture five-euros.jpg] ✅
 - D: [picture two-for-eight.jpg]
@@ -27862,14 +27862,14 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - F: [picture cash-or-card.jpg]
 - G: [picture pay-card.jpg]
 - H: [picture cash.jpg]
-- I: [picture enjoy.jpg]
+- I: [picture enjoy-strawberries.jpg]
 - Correct: [picture five-euros.jpg]
 - Tests: (no sentence id — not recorded)
 
 **M02-Q14** — visual-match
 - Prompt: "At the stall — tap what you hear" / "בדוכן — הקש על מה ששמעת"
 - Audio: Two for eight. — (שתיים בשמונה.)
-- A: [picture fresh-strawberries.jpg]
+- A: [picture fresh-strawberries-v2.jpg]
 - B: [picture how-much.jpg]
 - C: [picture five-euros.jpg]
 - D: [picture two-for-eight.jpg] ✅
@@ -27877,14 +27877,14 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - F: [picture cash-or-card.jpg]
 - G: [picture pay-card.jpg]
 - H: [picture cash.jpg]
-- I: [picture enjoy.jpg]
+- I: [picture enjoy-strawberries.jpg]
 - Correct: [picture two-for-eight.jpg]
 - Tests: (no sentence id — not recorded)
 
 **M02-Q15** — visual-match
 - Prompt: "At the stall — tap what you hear" / "בדוכן — הקש על מה ששמעת"
 - Audio: One box, please. — (קופסה אחת, בבקשה.)
-- A: [picture fresh-strawberries.jpg]
+- A: [picture fresh-strawberries-v2.jpg]
 - B: [picture how-much.jpg]
 - C: [picture five-euros.jpg]
 - D: [picture two-for-eight.jpg]
@@ -27892,14 +27892,14 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - F: [picture cash-or-card.jpg]
 - G: [picture pay-card.jpg]
 - H: [picture cash.jpg]
-- I: [picture enjoy.jpg]
+- I: [picture enjoy-strawberries.jpg]
 - Correct: [picture one-box.jpg]
 - Tests: phrase.money.one-box
 
 **M02-Q16** — visual-match
 - Prompt: "At the stall — tap what you hear" / "בדוכן — הקש על מה ששמעת"
 - Audio: Cash or card? — (מזומן או כרטיס?)
-- A: [picture fresh-strawberries.jpg]
+- A: [picture fresh-strawberries-v2.jpg]
 - B: [picture how-much.jpg]
 - C: [picture five-euros.jpg]
 - D: [picture two-for-eight.jpg]
@@ -27907,14 +27907,14 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - F: [picture cash-or-card.jpg] ✅
 - G: [picture pay-card.jpg]
 - H: [picture cash.jpg]
-- I: [picture enjoy.jpg]
+- I: [picture enjoy-strawberries.jpg]
 - Correct: [picture cash-or-card.jpg]
 - Tests: reply.money.cash-or-card
 
 **M02-Q17** — visual-match
 - Prompt: "At the stall — tap what you hear" / "בדוכן — הקש על מה ששמעת"
 - Audio: By card, please. — (בכרטיס, בבקשה.)
-- A: [picture fresh-strawberries.jpg]
+- A: [picture fresh-strawberries-v2.jpg]
 - B: [picture how-much.jpg]
 - C: [picture five-euros.jpg]
 - D: [picture two-for-eight.jpg]
@@ -27922,14 +27922,14 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - F: [picture cash-or-card.jpg]
 - G: [picture pay-card.jpg] ✅
 - H: [picture cash.jpg]
-- I: [picture enjoy.jpg]
+- I: [picture enjoy-strawberries.jpg]
 - Correct: [picture pay-card.jpg]
 - Tests: phrase.money.by-card
 
 **M02-Q18** — visual-match
 - Prompt: "At the stall — tap what you hear" / "בדוכן — הקש על מה ששמעת"
 - Audio: In cash. — (במזומן.)
-- A: [picture fresh-strawberries.jpg]
+- A: [picture fresh-strawberries-v2.jpg]
 - B: [picture how-much.jpg]
 - C: [picture five-euros.jpg]
 - D: [picture two-for-eight.jpg]
@@ -27937,14 +27937,14 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - F: [picture cash-or-card.jpg]
 - G: [picture pay-card.jpg]
 - H: [picture cash.jpg] ✅
-- I: [picture enjoy.jpg]
+- I: [picture enjoy-strawberries.jpg]
 - Correct: [picture cash.jpg]
 - Tests: phrase.money.in-cash
 
 **M02-Q19** — visual-match
 - Prompt: "At the stall — tap what you hear" / "בדוכן — הקש על מה ששמעת"
 - Audio: Thank you! Enjoy the strawberries! — (תודה! תיהנה מהתותים!)
-- A: [picture fresh-strawberries.jpg]
+- A: [picture fresh-strawberries-v2.jpg]
 - B: [picture how-much.jpg]
 - C: [picture five-euros.jpg]
 - D: [picture two-for-eight.jpg]
@@ -27952,48 +27952,48 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - F: [picture cash-or-card.jpg]
 - G: [picture pay-card.jpg]
 - H: [picture cash.jpg]
-- I: [picture enjoy.jpg] ✅
-- Correct: [picture enjoy.jpg]
+- I: [picture enjoy-strawberries.jpg] ✅
+- Correct: [picture enjoy-strawberries.jpg]
 - Tests: reply.money.enjoy-strawberries
 
 **M02-Q20** — match-pairs
 - Prompt: "What does the vendor say? Match each line to its meaning" / "מה המוכר אומר? התאם כל משפט למשמעות שלו" — tile to match (target language, no translation): EN "Fresh strawberries!" · FR "Fraises fraîches !" · ES "¡Fresas frescas!"
 - Audio: Fresh strawberries! — (תותים טריים!)
-- A: 🍓 Fresh strawberries / תותים טריים ✅
-- B: 🏆 Best in the market / הכי טובים בשוק
+- A: [picture fresh-strawberries-v2.jpg] 🍓 Fresh strawberries / תותים טריים ✅
+- B: [picture best-in-market.jpg] 🏆 Best in the market / הכי טובים בשוק
 - C: 👌 Perfect / מצוין
-- D: 😋 Thank you! Enjoy the strawberries / תודה! תיהנה מהתותים
-- Correct: 🍓 Fresh strawberries / תותים טריים
+- D: [picture enjoy-strawberries.jpg] 😋 Thank you! Enjoy the strawberries / תודה! תיהנה מהתותים
+- Correct: [picture fresh-strawberries-v2.jpg] 🍓 Fresh strawberries / תותים טריים
 - Tests: reply.money.fresh-strawberries
 
 **M02-Q21** — match-pairs
 - Prompt: "What does the vendor say? Match each line to its meaning" / "מה המוכר אומר? התאם כל משפט למשמעות שלו" — tile to match (target language, no translation): EN "Best in the market!" · FR "Les meilleures du marché !" · ES "¡Las mejores del mercado!"
 - Audio: Best in the market! — (הכי טובים בשוק!)
-- A: 🍓 Fresh strawberries / תותים טריים
-- B: 🏆 Best in the market / הכי טובים בשוק ✅
+- A: [picture fresh-strawberries-v2.jpg] 🍓 Fresh strawberries / תותים טריים
+- B: [picture best-in-market.jpg] 🏆 Best in the market / הכי טובים בשוק ✅
 - C: 👌 Perfect / מצוין
-- D: 😋 Thank you! Enjoy the strawberries / תודה! תיהנה מהתותים
-- Correct: 🏆 Best in the market / הכי טובים בשוק
+- D: [picture enjoy-strawberries.jpg] 😋 Thank you! Enjoy the strawberries / תודה! תיהנה מהתותים
+- Correct: [picture best-in-market.jpg] 🏆 Best in the market / הכי טובים בשוק
 - Tests: reply.money.best-market
 
 **M02-Q22** — match-pairs
 - Prompt: "What does the vendor say? Match each line to its meaning" / "מה המוכר אומר? התאם כל משפט למשמעות שלו" — tile to match (target language, no translation): EN "Perfect." · FR "Parfait." · ES "Perfecto."
 - Audio: Perfect. — (מצוין.)
-- A: 🍓 Fresh strawberries / תותים טריים
-- B: 🏆 Best in the market / הכי טובים בשוק
+- A: [picture fresh-strawberries-v2.jpg] 🍓 Fresh strawberries / תותים טריים
+- B: [picture best-in-market.jpg] 🏆 Best in the market / הכי טובים בשוק
 - C: 👌 Perfect / מצוין ✅
-- D: 😋 Thank you! Enjoy the strawberries / תודה! תיהנה מהתותים
+- D: [picture enjoy-strawberries.jpg] 😋 Thank you! Enjoy the strawberries / תודה! תיהנה מהתותים
 - Correct: 👌 Perfect / מצוין
 - Tests: reply.money.perfect
 
 **M02-Q23** — match-pairs
 - Prompt: "What does the vendor say? Match each line to its meaning" / "מה המוכר אומר? התאם כל משפט למשמעות שלו" — tile to match (target language, no translation): EN "Thank you! Enjoy the strawberries!" · FR "Merci ! Bonne dégustation !" · ES "¡Gracias! ¡Que las disfrute!"
 - Audio: Thank you! Enjoy the strawberries! — (תודה! תיהנה מהתותים!)
-- A: 🍓 Fresh strawberries / תותים טריים
-- B: 🏆 Best in the market / הכי טובים בשוק
+- A: [picture fresh-strawberries-v2.jpg] 🍓 Fresh strawberries / תותים טריים
+- B: [picture best-in-market.jpg] 🏆 Best in the market / הכי טובים בשוק
 - C: 👌 Perfect / מצוין
-- D: 😋 Thank you! Enjoy the strawberries / תודה! תיהנה מהתותים ✅
-- Correct: 😋 Thank you! Enjoy the strawberries / תודה! תיהנה מהתותים
+- D: [picture enjoy-strawberries.jpg] 😋 Thank you! Enjoy the strawberries / תודה! תיהנה מהתותים ✅
+- Correct: [picture enjoy-strawberries.jpg] 😋 Thank you! Enjoy the strawberries / תודה! תיהנה מהתותים
 - Tests: reply.money.enjoy-strawberries
 
 **M02-Q24** — match-pairs
@@ -28149,7 +28149,7 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 **M02-Q41** — visual-match
 - Prompt: "What happened at the stall? Tap what you hear" / "מה קרה בדוכן? הקש על מה ששמעת"
 - Audio: Fresh strawberries! Best in the market! — (תותים טריים! הכי טובים בשוק!)
-- A: [picture fresh-strawberries.jpg] ✅
+- A: [picture fresh-strawberries-v2.jpg] ✅
 - B: [picture two-for-eight.jpg]1 box = €5 / 2 = €8 total
 - C: [picture offer-two-for-sixteen.jpg]1 box = €5 / 2 = €16 total
 - D: [picture offer-prices-swapped.jpg]1 box = €8 / 2 = €5 total
@@ -28157,14 +28157,14 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - F: [picture cash-or-card.jpg]
 - G: [picture pay-card.jpg]
 - H: [picture cash.jpg]
-- I: [picture enjoy.jpg]
-- Correct: [picture fresh-strawberries.jpg]
+- I: [picture enjoy-strawberries.jpg]
+- Correct: [picture fresh-strawberries-v2.jpg]
 - Tests: (no sentence id — not recorded)
 
 **M02-Q42** — visual-match
 - Prompt: "What happened at the stall? Tap what you hear" / "מה קרה בדוכן? הקש על מה ששמעת"
 - Audio: Five euros a box, or two for eight! — (חמישה יורו קופסה, או שתיים בשמונה!)
-- A: [picture fresh-strawberries.jpg]
+- A: [picture fresh-strawberries-v2.jpg]
 - B: [picture two-for-eight.jpg]1 box = €5 / 2 = €8 total ✅
 - C: [picture offer-two-for-sixteen.jpg]1 box = €5 / 2 = €16 total
 - D: [picture offer-prices-swapped.jpg]1 box = €8 / 2 = €5 total
@@ -28172,14 +28172,14 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - F: [picture cash-or-card.jpg]
 - G: [picture pay-card.jpg]
 - H: [picture cash.jpg]
-- I: [picture enjoy.jpg]
+- I: [picture enjoy-strawberries.jpg]
 - Correct: [picture two-for-eight.jpg]1 box = €5 / 2 = €8 total
 - Tests: reply.money.offer
 
 **M02-Q43** — visual-match
 - Prompt: "What happened at the stall? Tap what you hear" / "מה קרה בדוכן? הקש על מה ששמעת"
 - Audio: One box, please. — (קופסה אחת, בבקשה.)
-- A: [picture fresh-strawberries.jpg]
+- A: [picture fresh-strawberries-v2.jpg]
 - B: [picture two-for-eight.jpg]1 box = €5 / 2 = €8 total
 - C: [picture offer-two-for-sixteen.jpg]1 box = €5 / 2 = €16 total
 - D: [picture offer-prices-swapped.jpg]1 box = €8 / 2 = €5 total
@@ -28187,14 +28187,14 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - F: [picture cash-or-card.jpg]
 - G: [picture pay-card.jpg]
 - H: [picture cash.jpg]
-- I: [picture enjoy.jpg]
+- I: [picture enjoy-strawberries.jpg]
 - Correct: [picture one-box.jpg]
 - Tests: phrase.money.one-box
 
 **M02-Q44** — visual-match
 - Prompt: "What happened at the stall? Tap what you hear" / "מה קרה בדוכן? הקש על מה ששמעת"
 - Audio: By card, please. — (בכרטיס, בבקשה.)
-- A: [picture fresh-strawberries.jpg]
+- A: [picture fresh-strawberries-v2.jpg]
 - B: [picture two-for-eight.jpg]1 box = €5 / 2 = €8 total
 - C: [picture offer-two-for-sixteen.jpg]1 box = €5 / 2 = €16 total
 - D: [picture offer-prices-swapped.jpg]1 box = €8 / 2 = €5 total
@@ -28202,14 +28202,14 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - F: [picture cash-or-card.jpg]
 - G: [picture pay-card.jpg] ✅
 - H: [picture cash.jpg]
-- I: [picture enjoy.jpg]
+- I: [picture enjoy-strawberries.jpg]
 - Correct: [picture pay-card.jpg]
 - Tests: phrase.money.by-card
 
 **M02-Q45** — visual-match
 - Prompt: "What happened at the stall? Tap what you hear" / "מה קרה בדוכן? הקש על מה ששמעת"
 - Audio: Thank you! Enjoy the strawberries! — (תודה! תיהנה מהתותים!)
-- A: [picture fresh-strawberries.jpg]
+- A: [picture fresh-strawberries-v2.jpg]
 - B: [picture two-for-eight.jpg]1 box = €5 / 2 = €8 total
 - C: [picture offer-two-for-sixteen.jpg]1 box = €5 / 2 = €16 total
 - D: [picture offer-prices-swapped.jpg]1 box = €8 / 2 = €5 total
@@ -28217,8 +28217,8 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - F: [picture cash-or-card.jpg]
 - G: [picture pay-card.jpg]
 - H: [picture cash.jpg]
-- I: [picture enjoy.jpg] ✅
-- Correct: [picture enjoy.jpg]
+- I: [picture enjoy-strawberries.jpg] ✅
+- Correct: [picture enjoy-strawberries.jpg]
 - Tests: reply.money.enjoy-strawberries
 
 ## Mission 03 — Coffee Shop

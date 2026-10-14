@@ -184,7 +184,7 @@ const PRICE_TILES = [
  */
 const M02_IMG = 'images/mission02/';
 const STALL_TILES = [
-  { id: 'berries', image: `${M02_IMG}fresh-strawberries.jpg`, alt: 'A crate of fresh strawberries' },
+  { id: 'berries', image: `${M02_IMG}fresh-strawberries-v2.jpg`, alt: 'A crate of fresh strawberries' },
   { id: 'how-much', image: `${M02_IMG}how-much.jpg`, alt: 'A strawberry with a price tag and a question mark' },
   { id: 'one5', image: `${M02_IMG}five-euros.jpg`, alt: 'One strawberry box with a €5 tag' },
   { id: 'two8', image: `${M02_IMG}two-for-eight.jpg`, alt: 'Two strawberry boxes with one €8 tag' },
@@ -192,7 +192,7 @@ const STALL_TILES = [
   { id: 'cash-or-card', image: `${M02_IMG}cash-or-card.jpg`, alt: 'Cash and a bank card side by side' },
   { id: 'card', image: `${M02_IMG}pay-card.jpg`, alt: 'A card tapped on a payment terminal' },
   { id: 'cash', image: `${M02_IMG}cash.jpg`, alt: 'A hand handing over banknotes' },
-  { id: 'enjoy', image: `${M02_IMG}enjoy.jpg`, alt: 'A happy customer receiving the strawberries' },
+  { id: 'enjoy', image: `${M02_IMG}enjoy-strawberries.jpg`, alt: 'A happy customer eating one of the strawberries' },
 ];
 /**
  * After the video: what happened at the stall? The same approved pictures as the stall board, so
@@ -304,10 +304,11 @@ export function m02Steps(lang: MissionLang): BootcampStep[] {
       kind: 'matchPairs',
       label: ['מה המוכר אומר? התאם כל משפט למשמעות שלו', 'What does the vendor say? Match each line to its meaning'],
       pairs: [
-        ['reply.money.fresh-strawberries', 'reply.money.fresh-strawberries', undefined, '🍓', ['תותים טריים', 'Fresh strawberries']],
-        ['reply.money.best-market', 'reply.money.best-market', undefined, '🏆', ['הכי טובים בשוק', 'Best in the market']],
+        // the same picture per meaning as on the stall board and the gate ("perfect" has no picture)
+        ['reply.money.fresh-strawberries', 'reply.money.fresh-strawberries', undefined, '🍓', ['תותים טריים', 'Fresh strawberries'], `${M02_IMG}fresh-strawberries-v2.jpg`],
+        ['reply.money.best-market', 'reply.money.best-market', undefined, '🏆', ['הכי טובים בשוק', 'Best in the market'], `${M02_IMG}best-in-market.jpg`],
         ['reply.money.perfect', 'reply.money.perfect', undefined, '👌', ['מצוין', 'Perfect']],
-        ['reply.money.enjoy-strawberries', 'reply.money.enjoy-strawberries', undefined, '😋', ['תודה! תיהנה מהתותים', 'Thank you! Enjoy the strawberries']],
+        ['reply.money.enjoy-strawberries', 'reply.money.enjoy-strawberries', undefined, '😋', ['תודה! תיהנה מהתותים', 'Thank you! Enjoy the strawberries'], `${M02_IMG}enjoy-strawberries.jpg`],
       ],
     }),
     // QUESTION ↔ ANSWER — why each line follows the one before: price, order, payment.

@@ -232,7 +232,7 @@ function questionsOf(day: number): Question[] {
         const s2 = c.steps[i];
         const p = s2?.kind === 'matchPairs' ? s2.pairs[k] : undefined;
         if (!p) return '∅ MISSING';
-        if (side === 'answer' && p.answerLabel) return `${p.answerLabel}${p.answerGloss ? ` ${p.answerGloss.en} / ${p.answerGloss.he}` : ''}`;
+        if (side === 'answer' && p.answerLabel) return `${p.answerImage ? `[picture ${p.answerImage.split('/').pop()}] ` : ''}${p.answerLabel}${p.answerGloss ? ` ${p.answerGloss.en} / ${p.answerGloss.he}` : ''}`;
         return side === 'answer' && p.answerText ? p.answerText : c.items.find((x) => x.id === (side === 'prompt' ? p.promptItemId : p.answerItemId))?.text ?? '∅ MISSING';
       };
       step.pairs.forEach((pair, k) => {

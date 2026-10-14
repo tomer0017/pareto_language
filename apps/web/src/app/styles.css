@@ -1489,6 +1489,7 @@ div.jstep { box-shadow: none; border-color: var(--line); }
   display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1rem; line-height: 1.25;
 }
 .pmatch-tile .pmatch-mark { flex: none; width: 26px; height: 26px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 800; background: var(--line); color: var(--ink-dim); }
+.pmatch-tile .pmatch-img { display: inline-block; width: 48px; height: 48px; object-fit: contain; border-radius: 13%; vertical-align: middle; margin-inline-end: 10px; }
 .pmatch-tile.is-picked { border-color: var(--accent); border-width: 2.5px; }
 .pmatch-tile.is-picked .pmatch-mark { background: var(--accent); color: #fff; }
 .pmatch-tile.is-matched { border-style: dashed; border-color: var(--good); box-shadow: none; }
