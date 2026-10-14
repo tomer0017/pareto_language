@@ -194,12 +194,22 @@ const STALL_TILES = [
   { id: 'cash', image: `${M02_IMG}cash.jpg`, alt: 'A hand handing over banknotes' },
   { id: 'enjoy', image: `${M02_IMG}enjoy.jpg`, alt: 'A happy customer receiving the strawberries' },
 ];
-/** After the video: what happened at the stall? The offer is one tile — both prices at once. */
+/**
+ * After the video: what happened at the stall? The same approved pictures as the stall board, so
+ * the answer is the meaning already learned. The offer is one tile — both prices at once, the picture
+ * plus a short label, because this round tests the numbers — against the two wrong readings, which
+ * have no picture of their own and are said in the same label form ("€8 each" = €16).
+ */
+const offerLabel = (one: number, two: number): string => `1 box = €${one}\n2 = €${two} total`;
 const AFTER_VIDEO_TILES = [
-  { id: 'berries', emoji: '🍓' }, { id: 'bye', emoji: '🙏😋' },
-  { id: 'offer', emoji: '🍓', label: '1 = €5 · 2 = €8' }, { id: 'offer16', emoji: '🍓', label: '1 = €5 · 2 = €16' }, { id: 'offer58', emoji: '🍓', label: '1 = €8 · 2 = €5' },
-  { id: 'box1', emoji: '📦', label: '×1' }, { id: 'box2', emoji: '📦📦', label: '×2' },
-  { id: 'cash', emoji: '💵' }, { id: 'card', emoji: '💳' },
+  STALL_TILES.find((t) => t.id === 'berries')!,
+  { id: 'offer', image: `${M02_IMG}two-for-eight.jpg`, alt: 'Two strawberry boxes with one €8 tag', label: offerLabel(5, 8) },
+  { id: 'offer16', label: offerLabel(5, 16) }, { id: 'offer58', label: offerLabel(8, 5) },
+  STALL_TILES.find((t) => t.id === 'box1')!,
+  STALL_TILES.find((t) => t.id === 'cash-or-card')!,
+  STALL_TILES.find((t) => t.id === 'card')!,
+  STALL_TILES.find((t) => t.id === 'cash')!,
+  { ...STALL_TILES.find((t) => t.id === 'enjoy')!, id: 'bye' },
 ];
 const STALL_OPENS: L4 = ['Fresh strawberries! Best in the market!', 'Fraises fraîches ! Les meilleures du marché !', '¡Fresas frescas! ¡Las mejores del mercado!', 'תותים טריים! הכי טובים בשוק!'];
 const STALL_OFFER: L4 = ['Five euros a box, or two for eight!', 'Cinq euros la barquette, ou deux pour huit !', '¡Cinco euros la caja, o dos por ocho!', 'חמישה יורו קופסה, או שתיים בשמונה!'];

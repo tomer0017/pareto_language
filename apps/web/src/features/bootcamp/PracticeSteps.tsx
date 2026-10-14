@@ -204,7 +204,7 @@ export function VisualMatchStep({ step, onDone }: { step: StepOf<'visualMatch'>;
             >
               {tile.image && <img className="ptile-img" src={publicAsset(tile.image)} alt="" draggable={false} decoding="async" />}
               {tile.emoji && <span className="ptile-emoji" aria-hidden>{tile.emoji}</span>}
-              {tile.label && <span dir="ltr">{tile.label}</span>}
+              {tile.label && <span dir="ltr" className={tile.label.includes('\n') ? 'ptile-lines' : undefined}>{tile.label}</span>}
             </button>
           ))}
         </div>

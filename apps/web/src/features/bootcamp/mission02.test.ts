@@ -205,7 +205,7 @@ describe('the market offer is understood: one box = €5, two boxes = €8 TOGET
       expect(b.rounds.find((r) => r.correct === 'two8')!.audio.en, lang).toBe({ en: 'Two for eight.', es: 'Dos por ocho.', fr: 'Deux pour huit.' }[lang]);
       expect(b.rounds.find((r) => r.correct === 'one5')!.audio.en, lang).toBe({ en: 'Five euros a box.', es: 'Cinco euros la caja.', fr: 'Cinq euros la barquette.' }[lang]);
       const gate = boards(day(lang)).find((x) => x.tiles.some((t) => t.id === 'offer'))!;
-      expect(gate.tiles.map((t) => t.label), lang).toContain('1 = €5 · 2 = €16');
+      expect(gate.tiles.map((t) => t.label), lang).toContain('1 box = €5\n2 = €16 total');
     }
   });
   it('the offer line is a sentence of its own, with the explanation on its card — never "8 each"', () => {
@@ -215,10 +215,40 @@ describe('the market offer is understood: one box = €5, two boxes = €8 TOGET
       expect(offer.tip!.en).toBe('One box = 5 euros. Two boxes = 8 euros together (not 8 each).');
     }
   });
-  it('after the video, the offer is ONE tile showing both prices — against the two wrong readings', () => {
+  it('after the video, the offer is ONE tile showing both prices — the two-for-eight picture with its numbers, against the two wrong readings', () => {
     const gate = boards(day('en')).find((b) => b.tiles.some((t) => t.id === 'offer'))!;
-    expect(gate.tiles.filter((t) => t.id.startsWith('offer')).map((t) => t.label)).toEqual(['1 = €5 · 2 = €8', '1 = €5 · 2 = €16', '1 = €8 · 2 = €5']);
+    expect(gate.tiles.filter((t) => t.id.startsWith('offer')).map((t) => t.label)).toEqual(['1 box = €5\n2 = €8 total', '1 box = €5\n2 = €16 total', '1 box = €8\n2 = €5 total']);
+    expect(gate.tiles.find((t) => t.id === 'offer')!.image).toBe('images/mission02/two-for-eight.jpg');
+    // the wrong readings have no approved picture: plain text in the same form — never an emoji, never a borrowed picture
+    for (const id of ['offer16', 'offer58']) { const t = gate.tiles.find((x) => x.id === id)!; expect([t.image, t.emoji], id).toEqual([undefined, undefined]); }
     expect(gate.rounds.find((r) => r.correct === 'offer')!.audio.en).toBe('Five euros a box, or two for eight!');
+  });
+});
+
+describe('the gate after the video: the same approved pictures, wherever one exists', () => {
+  const gate = (lang: CoverageLang) => boards(day(lang)).find((b) => b.tiles.some((t) => t.id === 'offer'))!;
+  const PUBLIC = fileURLToPath(new URL('../../../public/', import.meta.url));
+  it('nine tiles (3×3), no emoji at all; every picture is an approved Mission 02 file on disk', () => {
+    for (const lang of LANGS) {
+      const g = gate(lang);
+      expect(g.tiles, lang).toHaveLength(9);
+      for (const t of g.tiles) {
+        expect(t.emoji, `${lang} ${t.id}`).toBeUndefined();
+        expect(t.image ?? t.label, `${lang} ${t.id} shows something`).toBeTruthy();
+        if (t.image) { expect(existsSync(PUBLIC + t.image), t.image).toBe(true); expect(t.alt, t.id).toBeTruthy(); }
+      }
+      expect(g.tiles, lang).toEqual(gate('en').tiles);
+    }
+  });
+  it('each meaning uses its approved picture: sold · offer · one box · card · cash · goodbye', () => {
+    const pic = Object.fromEntries(gate('en').tiles.map((t) => [t.id, t.image?.replace('images/mission02/', '')]));
+    expect(pic).toEqual({
+      berries: 'fresh-strawberries.jpg', offer: 'two-for-eight.jpg', offer16: undefined, offer58: undefined,
+      box1: 'one-box.jpg', 'cash-or-card': 'cash-or-card.jpg', card: 'pay-card.jpg', cash: 'cash.jpg', bye: 'enjoy.jpg',
+    });
+    // the very same tiles the stall board taught — same picture, same description
+    const stall = boards(day('en'))[1]!;
+    for (const id of ['berries', 'box1', 'cash-or-card', 'card', 'cash']) expect(gate('en').tiles.find((t) => t.id === id)).toEqual(stall.tiles.find((t) => t.id === id));
   });
 });
 
@@ -353,7 +383,8 @@ describe('the learning arc', () => {
       expect(stepsOf(d, 'quiz'), lang).toHaveLength(0); // nothing is checked by re-translating
       const gate = after[0] as Extract<BootcampStep, { kind: 'visualMatch' }>;
       // What is sold · the offer · how many · how you pay — the conversation's own lines, heard again.
-      expect(gate.rounds.map((r) => `${r.audio.en} → ${label(gate, r.correct)}`.replace(/^.*→/, '→')), lang).toEqual(['→ 🍓', '→ 🍓 1 = €5 · 2 = €8', '→ 📦 ×1', '→ 💳', '→ 🙏😋']);
+      // …each answered with the approved picture of its meaning (the offer also carries its numbers).
+      expect(gate.rounds.map((r) => gate.tiles.find((t) => t.id === r.correct)!.image), lang).toEqual(['fresh-strawberries', 'two-for-eight', 'one-box', 'pay-card', 'enjoy'].map((f) => `images/mission02/${f}.jpg`));
       // What is sold · the offer · how many · how you pay · the goodbye — the conversation's own lines.
       expect(gate.rounds.map((r) => r.audio.en)).toEqual([0, 2, 3, 5, 6].map((i) => LOCKED[lang][i]!.slice(5)));
     }

@@ -183,7 +183,7 @@ function questionsOf(day: number): Question[] {
           kind: 'visual-match', step: i + 1, where: `round ${k + 1} of ${step.rounds.length}${step.challenge ? ' · SPEED CHALLENGE (spoken at rate 1.12)' : ''}`,
           promptUi: step.challenge ? `⚡ ${ui('speedHeadsUp')}` : step.label ? `${q(step.label.en)} / ${q(step.label.he)}` : ui('visualMatchTitle'),
           audio: { en: at('en'), fr: at('fr'), es: at('es') }, audioHe: round.audio.he,
-          choices: step.tiles.map((tile) => { const label = `${tile.image ? `[picture ${tile.image.split('/').pop()}]` : ''}${tile.emoji ?? ''}${tile.label ?? ''}`; return { en: label, fr: label, es: label, he: '', itemId: tile.id === round.correct ? strip(round.itemId) : '', correct: tile.id === round.correct }; }),
+          choices: step.tiles.map((tile) => { const label = `${tile.image ? `[picture ${tile.image.split('/').pop()}]` : ''}${tile.emoji ?? ''}${(tile.label ?? '').replace(/\n/g, ' / ')}`; return { en: label, fr: label, es: label, he: '', itemId: tile.id === round.correct ? strip(round.itemId) : '', correct: tile.id === round.correct }; }),
           choiceDisplay: `a 3×3 board of ${step.tiles.length} tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap`,
           tests: strip(round.itemId) || '(no sentence id — not recorded)',
           explanation: 'after the tap: the spoken line and its translation',

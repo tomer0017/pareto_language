@@ -1860,15 +1860,15 @@ No meaning quiz in this mission.
 - Meaning of the audio (HE): "תותים טריים! הכי טובים בשוק!"
 - Buttons show: a 3×3 board of 9 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. "🍓" — no sentence id — ✅ accepted
-  2. "🙏😋" — no sentence id — ❌ wrong
-  3. "🍓1 = €5 · 2 = €8" — no sentence id — ❌ wrong
-  4. "🍓1 = €5 · 2 = €16" — no sentence id — ❌ wrong
-  5. "🍓1 = €8 · 2 = €5" — no sentence id — ❌ wrong
-  6. "📦×1" — no sentence id — ❌ wrong
-  7. "📦📦×2" — no sentence id — ❌ wrong
-  8. "💵" — no sentence id — ❌ wrong
-  9. "💳" — no sentence id — ❌ wrong
+  1. "[picture fresh-strawberries.jpg]" — no sentence id — ✅ accepted
+  2. "[picture two-for-eight.jpg]1 box = €5 / 2 = €8 total" — no sentence id — ❌ wrong
+  3. "1 box = €5 / 2 = €16 total" — no sentence id — ❌ wrong
+  4. "1 box = €8 / 2 = €5 total" — no sentence id — ❌ wrong
+  5. "[picture one-box.jpg]" — no sentence id — ❌ wrong
+  6. "[picture cash-or-card.jpg]" — no sentence id — ❌ wrong
+  7. "[picture pay-card.jpg]" — no sentence id — ❌ wrong
+  8. "[picture cash.jpg]" — no sentence id — ❌ wrong
+  9. "[picture enjoy.jpg]" — no sentence id — ❌ wrong
 - Tests: (no sentence id — not recorded)
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
@@ -1879,15 +1879,15 @@ No meaning quiz in this mission.
 - Meaning of the audio (HE): "חמישה יורו קופסה, או שתיים בשמונה!"
 - Buttons show: a 3×3 board of 9 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. "🍓" — no sentence id — ❌ wrong
-  2. "🙏😋" — no sentence id — ❌ wrong
-  3. "🍓1 = €5 · 2 = €8" — `reply.money.offer` — ✅ accepted
-  4. "🍓1 = €5 · 2 = €16" — no sentence id — ❌ wrong
-  5. "🍓1 = €8 · 2 = €5" — no sentence id — ❌ wrong
-  6. "📦×1" — no sentence id — ❌ wrong
-  7. "📦📦×2" — no sentence id — ❌ wrong
-  8. "💵" — no sentence id — ❌ wrong
-  9. "💳" — no sentence id — ❌ wrong
+  1. "[picture fresh-strawberries.jpg]" — no sentence id — ❌ wrong
+  2. "[picture two-for-eight.jpg]1 box = €5 / 2 = €8 total" — `reply.money.offer` — ✅ accepted
+  3. "1 box = €5 / 2 = €16 total" — no sentence id — ❌ wrong
+  4. "1 box = €8 / 2 = €5 total" — no sentence id — ❌ wrong
+  5. "[picture one-box.jpg]" — no sentence id — ❌ wrong
+  6. "[picture cash-or-card.jpg]" — no sentence id — ❌ wrong
+  7. "[picture pay-card.jpg]" — no sentence id — ❌ wrong
+  8. "[picture cash.jpg]" — no sentence id — ❌ wrong
+  9. "[picture enjoy.jpg]" — no sentence id — ❌ wrong
 - Tests: reply.money.offer
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
@@ -1898,15 +1898,15 @@ No meaning quiz in this mission.
 - Meaning of the audio (HE): "קופסה אחת, בבקשה."
 - Buttons show: a 3×3 board of 9 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. "🍓" — no sentence id — ❌ wrong
-  2. "🙏😋" — no sentence id — ❌ wrong
-  3. "🍓1 = €5 · 2 = €8" — no sentence id — ❌ wrong
-  4. "🍓1 = €5 · 2 = €16" — no sentence id — ❌ wrong
-  5. "🍓1 = €8 · 2 = €5" — no sentence id — ❌ wrong
-  6. "📦×1" — `phrase.money.one-box` — ✅ accepted
-  7. "📦📦×2" — no sentence id — ❌ wrong
-  8. "💵" — no sentence id — ❌ wrong
-  9. "💳" — no sentence id — ❌ wrong
+  1. "[picture fresh-strawberries.jpg]" — no sentence id — ❌ wrong
+  2. "[picture two-for-eight.jpg]1 box = €5 / 2 = €8 total" — no sentence id — ❌ wrong
+  3. "1 box = €5 / 2 = €16 total" — no sentence id — ❌ wrong
+  4. "1 box = €8 / 2 = €5 total" — no sentence id — ❌ wrong
+  5. "[picture one-box.jpg]" — `phrase.money.one-box` — ✅ accepted
+  6. "[picture cash-or-card.jpg]" — no sentence id — ❌ wrong
+  7. "[picture pay-card.jpg]" — no sentence id — ❌ wrong
+  8. "[picture cash.jpg]" — no sentence id — ❌ wrong
+  9. "[picture enjoy.jpg]" — no sentence id — ❌ wrong
 - Tests: phrase.money.one-box
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
@@ -1917,15 +1917,15 @@ No meaning quiz in this mission.
 - Meaning of the audio (HE): "בכרטיס, בבקשה."
 - Buttons show: a 3×3 board of 9 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. "🍓" — no sentence id — ❌ wrong
-  2. "🙏😋" — no sentence id — ❌ wrong
-  3. "🍓1 = €5 · 2 = €8" — no sentence id — ❌ wrong
-  4. "🍓1 = €5 · 2 = €16" — no sentence id — ❌ wrong
-  5. "🍓1 = €8 · 2 = €5" — no sentence id — ❌ wrong
-  6. "📦×1" — no sentence id — ❌ wrong
-  7. "📦📦×2" — no sentence id — ❌ wrong
-  8. "💵" — no sentence id — ❌ wrong
-  9. "💳" — `phrase.money.by-card` — ✅ accepted
+  1. "[picture fresh-strawberries.jpg]" — no sentence id — ❌ wrong
+  2. "[picture two-for-eight.jpg]1 box = €5 / 2 = €8 total" — no sentence id — ❌ wrong
+  3. "1 box = €5 / 2 = €16 total" — no sentence id — ❌ wrong
+  4. "1 box = €8 / 2 = €5 total" — no sentence id — ❌ wrong
+  5. "[picture one-box.jpg]" — no sentence id — ❌ wrong
+  6. "[picture cash-or-card.jpg]" — no sentence id — ❌ wrong
+  7. "[picture pay-card.jpg]" — `phrase.money.by-card` — ✅ accepted
+  8. "[picture cash.jpg]" — no sentence id — ❌ wrong
+  9. "[picture enjoy.jpg]" — no sentence id — ❌ wrong
 - Tests: phrase.money.by-card
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
@@ -1936,15 +1936,15 @@ No meaning quiz in this mission.
 - Meaning of the audio (HE): "תודה! תיהנה מהתותים!"
 - Buttons show: a 3×3 board of 9 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. "🍓" — no sentence id — ❌ wrong
-  2. "🙏😋" — `reply.money.enjoy-strawberries` — ✅ accepted
-  3. "🍓1 = €5 · 2 = €8" — no sentence id — ❌ wrong
-  4. "🍓1 = €5 · 2 = €16" — no sentence id — ❌ wrong
-  5. "🍓1 = €8 · 2 = €5" — no sentence id — ❌ wrong
-  6. "📦×1" — no sentence id — ❌ wrong
-  7. "📦📦×2" — no sentence id — ❌ wrong
-  8. "💵" — no sentence id — ❌ wrong
-  9. "💳" — no sentence id — ❌ wrong
+  1. "[picture fresh-strawberries.jpg]" — no sentence id — ❌ wrong
+  2. "[picture two-for-eight.jpg]1 box = €5 / 2 = €8 total" — no sentence id — ❌ wrong
+  3. "1 box = €5 / 2 = €16 total" — no sentence id — ❌ wrong
+  4. "1 box = €8 / 2 = €5 total" — no sentence id — ❌ wrong
+  5. "[picture one-box.jpg]" — no sentence id — ❌ wrong
+  6. "[picture cash-or-card.jpg]" — no sentence id — ❌ wrong
+  7. "[picture pay-card.jpg]" — no sentence id — ❌ wrong
+  8. "[picture cash.jpg]" — no sentence id — ❌ wrong
+  9. "[picture enjoy.jpg]" — `reply.money.enjoy-strawberries` — ✅ accepted
 - Tests: reply.money.enjoy-strawberries
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
@@ -28149,76 +28149,76 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 **M02-Q41** — visual-match
 - Prompt: "What happened at the stall? Tap what you hear" / "מה קרה בדוכן? הקש על מה ששמעת"
 - Audio: Fresh strawberries! Best in the market! — (תותים טריים! הכי טובים בשוק!)
-- A: 🍓 ✅
-- B: 🙏😋
-- C: 🍓1 = €5 · 2 = €8
-- D: 🍓1 = €5 · 2 = €16
-- E: 🍓1 = €8 · 2 = €5
-- F: 📦×1
-- G: 📦📦×2
-- H: 💵
-- I: 💳
-- Correct: 🍓
+- A: [picture fresh-strawberries.jpg] ✅
+- B: [picture two-for-eight.jpg]1 box = €5 / 2 = €8 total
+- C: 1 box = €5 / 2 = €16 total
+- D: 1 box = €8 / 2 = €5 total
+- E: [picture one-box.jpg]
+- F: [picture cash-or-card.jpg]
+- G: [picture pay-card.jpg]
+- H: [picture cash.jpg]
+- I: [picture enjoy.jpg]
+- Correct: [picture fresh-strawberries.jpg]
 - Tests: (no sentence id — not recorded)
 
 **M02-Q42** — visual-match
 - Prompt: "What happened at the stall? Tap what you hear" / "מה קרה בדוכן? הקש על מה ששמעת"
 - Audio: Five euros a box, or two for eight! — (חמישה יורו קופסה, או שתיים בשמונה!)
-- A: 🍓
-- B: 🙏😋
-- C: 🍓1 = €5 · 2 = €8 ✅
-- D: 🍓1 = €5 · 2 = €16
-- E: 🍓1 = €8 · 2 = €5
-- F: 📦×1
-- G: 📦📦×2
-- H: 💵
-- I: 💳
-- Correct: 🍓1 = €5 · 2 = €8
+- A: [picture fresh-strawberries.jpg]
+- B: [picture two-for-eight.jpg]1 box = €5 / 2 = €8 total ✅
+- C: 1 box = €5 / 2 = €16 total
+- D: 1 box = €8 / 2 = €5 total
+- E: [picture one-box.jpg]
+- F: [picture cash-or-card.jpg]
+- G: [picture pay-card.jpg]
+- H: [picture cash.jpg]
+- I: [picture enjoy.jpg]
+- Correct: [picture two-for-eight.jpg]1 box = €5 / 2 = €8 total
 - Tests: reply.money.offer
 
 **M02-Q43** — visual-match
 - Prompt: "What happened at the stall? Tap what you hear" / "מה קרה בדוכן? הקש על מה ששמעת"
 - Audio: One box, please. — (קופסה אחת, בבקשה.)
-- A: 🍓
-- B: 🙏😋
-- C: 🍓1 = €5 · 2 = €8
-- D: 🍓1 = €5 · 2 = €16
-- E: 🍓1 = €8 · 2 = €5
-- F: 📦×1 ✅
-- G: 📦📦×2
-- H: 💵
-- I: 💳
-- Correct: 📦×1
+- A: [picture fresh-strawberries.jpg]
+- B: [picture two-for-eight.jpg]1 box = €5 / 2 = €8 total
+- C: 1 box = €5 / 2 = €16 total
+- D: 1 box = €8 / 2 = €5 total
+- E: [picture one-box.jpg] ✅
+- F: [picture cash-or-card.jpg]
+- G: [picture pay-card.jpg]
+- H: [picture cash.jpg]
+- I: [picture enjoy.jpg]
+- Correct: [picture one-box.jpg]
 - Tests: phrase.money.one-box
 
 **M02-Q44** — visual-match
 - Prompt: "What happened at the stall? Tap what you hear" / "מה קרה בדוכן? הקש על מה ששמעת"
 - Audio: By card, please. — (בכרטיס, בבקשה.)
-- A: 🍓
-- B: 🙏😋
-- C: 🍓1 = €5 · 2 = €8
-- D: 🍓1 = €5 · 2 = €16
-- E: 🍓1 = €8 · 2 = €5
-- F: 📦×1
-- G: 📦📦×2
-- H: 💵
-- I: 💳 ✅
-- Correct: 💳
+- A: [picture fresh-strawberries.jpg]
+- B: [picture two-for-eight.jpg]1 box = €5 / 2 = €8 total
+- C: 1 box = €5 / 2 = €16 total
+- D: 1 box = €8 / 2 = €5 total
+- E: [picture one-box.jpg]
+- F: [picture cash-or-card.jpg]
+- G: [picture pay-card.jpg] ✅
+- H: [picture cash.jpg]
+- I: [picture enjoy.jpg]
+- Correct: [picture pay-card.jpg]
 - Tests: phrase.money.by-card
 
 **M02-Q45** — visual-match
 - Prompt: "What happened at the stall? Tap what you hear" / "מה קרה בדוכן? הקש על מה ששמעת"
 - Audio: Thank you! Enjoy the strawberries! — (תודה! תיהנה מהתותים!)
-- A: 🍓
-- B: 🙏😋 ✅
-- C: 🍓1 = €5 · 2 = €8
-- D: 🍓1 = €5 · 2 = €16
-- E: 🍓1 = €8 · 2 = €5
-- F: 📦×1
-- G: 📦📦×2
-- H: 💵
-- I: 💳
-- Correct: 🙏😋
+- A: [picture fresh-strawberries.jpg]
+- B: [picture two-for-eight.jpg]1 box = €5 / 2 = €8 total
+- C: 1 box = €5 / 2 = €16 total
+- D: 1 box = €8 / 2 = €5 total
+- E: [picture one-box.jpg]
+- F: [picture cash-or-card.jpg]
+- G: [picture pay-card.jpg]
+- H: [picture cash.jpg]
+- I: [picture enjoy.jpg] ✅
+- Correct: [picture enjoy.jpg]
 - Tests: reply.money.enjoy-strawberries
 
 ## Mission 03 — Coffee Shop

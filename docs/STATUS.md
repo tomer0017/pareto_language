@@ -49,6 +49,10 @@ The dialogue is LOCKED (byte-identical, pinned); Mission 01 is byte-identical to
   box → cash or card → by card → in cash (off-script) → thank you / enjoy. The "two = €16" misreading
   lives on the after-video offer tiles only. `MatchTile.image` / `alt` are now rendered by Visual
   Match. Mission total 41 → 44 questions. Checked in headless Chrome at 390/360 px, not on a device.
+- **Picture gate (same day):** the after-video gate uses the same approved pictures (strawberries,
+  one box, card, cash, cash-or-card, enjoy). The offer tile is two-for-eight.jpg + "1 box = €5 /
+  2 = €8 total"; the two wrong readings (€16 / swapped) have no picture and are plain text in the
+  same form. 📦📦 ×2 is gone (no picture); the two-box offer picture still traps "one box". No emoji left.
 - Coverage is machine-checked: `mission02Coverage.ts` (14 chunks) + `mission02.test.ts`, on the
   Mission 01 counting rule. Earlier fingerprints now pin Missions 03–N. Not done: device QA.
 

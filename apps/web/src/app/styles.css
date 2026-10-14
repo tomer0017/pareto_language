@@ -1465,6 +1465,9 @@ div.jstep { box-shadow: none; border-color: var(--line); }
    round the corners to match the art so its square edges never peek out inside the tile. */
 .ptile.has-image { padding: 3px; overflow: hidden; }
 .ptile .ptile-img { display: block; width: 100%; height: 100%; min-height: 0; object-fit: contain; border-radius: 13%; user-select: none; -webkit-user-drag: none; }
+.ptile .ptile-lines { white-space: pre-line; font-size: 0.78rem; line-height: 1.25; }
+.ptile.has-image .ptile-img:not(:only-child) { flex: 1 1 0; height: auto; width: auto; max-width: 100%; aspect-ratio: 1 / 1; }
+.ptile.has-image .ptile-lines { font-size: 0.66rem; line-height: 1.15; padding-bottom: 2px; }
 .ptile.has-image.is-ok .ptile-img { outline: 3px solid var(--good); outline-offset: -3px; }
 .ptile.has-image.is-bad .ptile-img { outline: 3px solid var(--danger); outline-offset: -3px; }
 .ptile.is-static { background: transparent; border-style: dashed; box-shadow: none; }
