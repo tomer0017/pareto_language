@@ -91,6 +91,12 @@ export interface PrimeWord {
   text: string;               // the word/particle in the learning language ("milk", "avec")
   meaning: LocalizedText;     // gloss ({en, he, …})
   emoji?: string;             // optional picture (adds a visual hook; degrades gracefully)
+  /** An approved picture (public path) of what the line MEANS — a teaching card shows it in place of
+   *  the emoji, so the meaning is seen before the line is ever tested. */
+  image?: string;
+  /** `true` = a whole LINE of the conversation taught with its picture (a teaching card), not a
+   *  building-block word — so it is left out of the new-vs-review vocabulary tracking. */
+  line?: boolean;
   /** `true` = a QUICK REVIEW of a word introduced in an earlier mission (shown with a ♻️ hint),
    *  not brand-new vocabulary. Keeps later missions from re-teaching the same word as if unseen.
    *  Enforced by `prime.test.ts`: a review word must actually have appeared earlier. */
@@ -139,6 +145,16 @@ export interface CustomizeRound {
   /** The options that are ✓ in this order; every other option is ✕. */
   on: string[];
   itemId?: string;
+}
+
+/** One Visual Match round. `show` limits the round to some of the step's tiles — the meaning and its
+ *  own contrast (iced vs hot), so no other tile can also be a fair answer. One tile shown = a TEACHING
+ *  round: hear it, see what it means, tap it; it cannot be missed. */
+export interface VisualMatchRound {
+  audio: SpokenLine;
+  correct: string;
+  itemId?: string;
+  show?: string[];
 }
 
 /** Swap It — one sentence frame, several slot values: the sentence is an engine, not a fixed line. */
@@ -212,8 +228,9 @@ export type BootcampStep =
   | { kind: 'ambush'; mode?: 'recovery' | 'speed'; npc: SpokenLine; correctItemId: string; wrongItemId: string }
   //  `challenge`: a final speed challenge — the same rounds, spoken fast (like the board and the map).
   | { kind: 'quickReply'; label?: LocalizedText; rounds: QuickReplyRound[]; challenge?: boolean }
-  | { kind: 'visualMatch'; label?: LocalizedText; tiles: MatchTile[]; rounds: { audio: SpokenLine; correct: string; itemId?: string }[]; challenge?: boolean }
+  | { kind: 'visualMatch'; label?: LocalizedText; tiles: MatchTile[]; rounds: VisualMatchRound[]; challenge?: boolean }
   | { kind: 'swap'; label?: LocalizedText; rounds: SwapRound[] }
+  /** `base`: what is being made — an emoji, or an approved picture's public path ("images/…"). */
   | { kind: 'customize'; label?: LocalizedText; base: string; options: CustomizeOption[]; rounds: CustomizeRound[] }
   | { kind: 'miniMap'; label?: LocalizedText; rounds: MiniMapRound[]; challenge?: boolean }
   | { kind: 'matchPairs'; label?: LocalizedText; pairs: MatchPair[] }

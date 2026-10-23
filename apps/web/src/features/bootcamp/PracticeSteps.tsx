@@ -169,6 +169,9 @@ export function VisualMatchStep({ step, onDone }: { step: StepOf<'visualMatch'>;
   const [tiles] = useState(() => shuffle(step.tiles, mulberry32(sessionSeed())));
   const shownAt = useRef(0);
   const round = step.rounds[i]!;
+  // A round may show only some tiles: the meaning and its own contrast. One tile = a teaching round.
+  const shown = round.show ? tiles.filter((x) => round.show!.includes(x.id)) : tiles;
+  const grid = shown.length === 1 ? 'is-one' : shown.length === 2 || shown.length === 4 ? 'is-two' : '';
   const rate = step.challenge ? 1.12 : undefined;
   const play = (): void => void speakL(round.audio.en, rate);
 
@@ -187,8 +190,8 @@ export function VisualMatchStep({ step, onDone }: { step: StepOf<'visualMatch'>;
         <GameHead label={step.challenge ? `⚡ ${t('speedHeadsUp')}` : step.label ? L(step.label) : t('visualMatchTitle')} i={i} n={step.rounds.length}>
           <AudioBubble onPlay={() => void speakL(round.audio.en, step.challenge ? 0.85 : undefined)} />
         </GameHead>
-        <div className="pgrid">
-          {tiles.map((tile) => (
+        <div className={grid ? `pgrid ${grid}` : 'pgrid'}>
+          {shown.map((tile) => (
             <button
               key={tile.id}
               className={`ptile ${tile.image ? 'has-image' : ''} ${picked !== null && tile.id === round.correct ? 'is-ok' : ''} ${picked === tile.id && !ok ? 'is-bad' : ''}`}
@@ -250,7 +253,9 @@ export function CustomizeStep({ step, onDone }: { step: StepOf<'customize'>; onD
         </GameHead>
         {/* The cup: what is being made, and every add-in set to ✓ so far. */}
         <div className="pcup" aria-hidden>
-          <span className="pcup-base">{step.base}</span>
+          {step.base.startsWith('images/')
+            ? <img className="pcup-img" src={publicAsset(step.base)} alt="" draggable={false} decoding="async" />
+            : <span className="pcup-base">{step.base}</span>}
           {step.options.filter((o) => picks[o.id]).map((o) => <span key={o.id} className="pcup-add">+{o.emoji}</span>)}
         </div>
         <div className="pcust">

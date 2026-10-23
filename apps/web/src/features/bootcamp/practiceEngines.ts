@@ -181,12 +181,19 @@ export function validatePracticeStep(step: BootcampStep, itemIds: ReadonlySet<st
   }
   if (step.kind === 'visualMatch') {
     const ids = step.tiles.map((x) => x.id);
-    if (step.tiles.length < 2 || step.tiles.length > 9) issues.push('visualMatch: needs 2–9 tiles');
+    // A board shows at most 9 tiles at once; when every round shows only its own pair, the step may hold more.
+    const most = step.rounds.every((r) => r.show && r.show.length <= 4) ? 16 : 9;
+    if (step.tiles.length < 2 || step.tiles.length > most) issues.push(`visualMatch: needs 2–${most} tiles`);
     if (new Set(ids).size !== ids.length) issues.push('visualMatch: duplicate tile id');
     if (new Set(step.tiles.map((x) => `${x.emoji ?? ''}${x.label ?? ''}${x.image ?? ''}`)).size !== ids.length) issues.push('visualMatch: two tiles look the same');
     for (const x of step.tiles) if (!x.label && !x.emoji && !x.image) issues.push(`visualMatch: tile ${x.id} shows nothing`);
     step.rounds.forEach((r, i) => {
       if (!ids.includes(r.correct)) issues.push(`visualMatch round ${i + 1}: correct tile → ${r.correct}`);
+      if (r.show) {
+        for (const id of r.show) if (!ids.includes(id)) issues.push(`visualMatch round ${i + 1}: shows unknown tile ${id}`);
+        if (!r.show.includes(r.correct)) issues.push(`visualMatch round ${i + 1}: the answer is not among the tiles shown`);
+        if (new Set(r.show).size !== r.show.length) issues.push(`visualMatch round ${i + 1}: a tile is shown twice`);
+      }
       if (r.itemId && !itemIds.has(r.itemId)) issues.push(`visualMatch round ${i + 1}: item → ${r.itemId}`);
       if (!r.audio.en.trim()) issues.push(`visualMatch round ${i + 1}: nothing to hear`);
     });

@@ -1,7 +1,7 @@
 import { beforeAll, describe, expect, it, vi } from 'vitest';
 import { createElement } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { readFileSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { cinematicTranscript, missionDialogues } from './exportDialogue.js';
 import { coverageOf, encounters, hasChunk, plain, type CoverageLang } from './mission01Coverage.js';
@@ -108,30 +108,30 @@ describe('every meaningful chunk of the video is learned before the video', () =
     expect(same('fr')).toEqual(same('en'));
     expect(counts('en')).toMatchInlineSnapshot(`
       {
-        "anything-else": "6 = meaning 1 · listening 2 · retrieval 1 · context 2",
+        "anything-else": "7 = meaning 2 · listening 2 · retrieval 1 · context 2",
         "anything-to-eat": "6 = meaning 1 · listening 2 · retrieval 1 · context 2",
-        "card": "6 = meaning 1 · listening 1 · retrieval 3 · context 1",
+        "card": "8 = meaning 2 · listening 2 · retrieval 3 · context 1",
         "cash-or-card": "5 = meaning 1 · listening 1 · retrieval 1 · context 2",
-        "croissant": "8 = meaning 1 · listening 2 · retrieval 4 · context 1",
-        "enjoy-day": "4 = meaning 1 · listening 2 · retrieval 0 · context 1",
-        "good-morning": "6 = meaning 2 · listening 1 · retrieval 1 · context 2",
-        "great-choice": "7 = meaning 2 · listening 2 · retrieval 1 · context 2",
-        "here-you-go": "4 = meaning 1 · listening 2 · retrieval 0 · context 1",
+        "croissant": "9 = meaning 2 · listening 2 · retrieval 4 · context 1",
+        "enjoy-day": "4 = meaning 2 · listening 1 · retrieval 0 · context 1",
+        "good-morning": "7 = meaning 3 · listening 1 · retrieval 1 · context 2",
+        "great-choice": "8 = meaning 3 · listening 2 · retrieval 1 · context 2",
+        "here-you-go": "4 = meaning 2 · listening 1 · retrieval 0 · context 1",
         "iced-coffee": "10 = meaning 2 · listening 2 · retrieval 5 · context 1",
         "id-like": "9 = meaning 1 · listening 2 · retrieval 5 · context 1",
-        "medium": "7 = meaning 1 · listening 2 · retrieval 3 · context 1",
+        "medium": "8 = meaning 2 · listening 2 · retrieval 3 · context 1",
         "medium-or-large": "5 = meaning 1 · listening 1 · retrieval 1 · context 2",
-        "milk": "15 = meaning 3 · listening 5 · retrieval 5 · context 2",
+        "milk": "15 = meaning 4 · listening 4 · retrieval 5 · context 2",
         "milk-sugar": "6 = meaning 1 · listening 2 · retrieval 1 · context 2",
-        "no-sugar": "9 = meaning 1 · listening 2 · retrieval 5 · context 1",
-        "please": "25 = meaning 2 · listening 7 · retrieval 15 · context 1",
-        "receipt": "7 = meaning 1 · listening 3 · retrieval 1 · context 2",
-        "six-fifty": "7 = meaning 1 · listening 3 · retrieval 1 · context 2",
+        "no-sugar": "10 = meaning 2 · listening 2 · retrieval 5 · context 1",
+        "please": "27 = meaning 3 · listening 8 · retrieval 15 · context 1",
+        "receipt": "8 = meaning 2 · listening 3 · retrieval 1 · context 2",
+        "six-fifty": "9 = meaning 1 · listening 5 · retrieval 1 · context 2",
         "sure": "6 = meaning 2 · listening 1 · retrieval 1 · context 2",
         "thanks": "8 = meaning 1 · listening 2 · retrieval 4 · context 1",
         "thats-all": "8 = meaning 1 · listening 2 · retrieval 4 · context 1",
-        "what-can-i-get": "5 = meaning 1 · listening 1 · retrieval 1 · context 2",
-        "yes": "6 = meaning 1 · listening 0 · retrieval 4 · context 1",
+        "what-can-i-get": "6 = meaning 2 · listening 1 · retrieval 1 · context 2",
+        "yes": "7 = meaning 2 · listening 0 · retrieval 4 · context 1",
       }
     `);
   });
@@ -203,29 +203,115 @@ describe('question → answer: the seven pairs of the order', () => {
   });
 });
 
-describe('the café games', () => {
-  it('the order board: hear it → tap it, in the order it happens (drink · size · food · anything else? · that\'s all · receipt)', () => {
-    for (const lang of LANGS) {
-      const b = boards(day(lang))[0]!;
-      expect(b.tiles.map((t) => t.id), lang).toEqual(['iced', 'hot', 'medium', 'large', 'croissant', 'muffin', 'more', 'done', 'receipt']);
-      expect(b.rounds.map((r) => r.correct)).toEqual(['iced', 'medium', 'croissant', 'more', 'done', 'receipt']);
-      expect(b.rounds.map((r) => r.audio.en)).toEqual([1, 3, 7, 8, 9, 12].map((i) => line(lang, i)));
+const PUBLIC = fileURLToPath(new URL('../../../public/', import.meta.url));
+type Board = Extract<BootcampStep, { kind: 'visualMatch' }>;
+/** What a round puts on screen: its own tiles (`show`), or the whole board. */
+const shown = (b: Board, r: Board['rounds'][number]) => (r.show ? b.tiles.filter((t) => r.show!.includes(t.id)) : b.tiles);
+const pic = (path: string | undefined): string => (path ?? '').replace(/^images\//, '');
+const orderBoard = (d: BootcampDayContent): Board => boards(d).find((b) => b.tiles.some((t) => t.id === 'more') && !afterVideo(d).includes(b))!;
+const priceBoard = (d: BootcampDayContent): Board => boards(d).find((b) => b.tiles.every((t) => t.id.startsWith('e')))!;
+const cards = (d: BootcampDayContent) => stepsOf(d, 'prime').flatMap((p) => p.words);
+
+describe('the café in approved pictures — one picture, one meaning', () => {
+  /** meaning → the approved picture that shows it, everywhere in the mission (EN = ES = FR). */
+  const MEANING: Record<string, string> = {
+    iced: 'mission03/iced-coffee.jpg', hot: 'mission03/hot-coffee.jpg', medium: 'mission03/medium.jpg', large: 'mission03/large.jpg',
+    croissant: 'mission03/croissant.jpg', muffin: 'mission03/muffin.jpg', more: 'mission03/anything-else.jpg', done: 'mission03/order-complete.jpg',
+    receipt: 'mission03/receipt-question.jpg', 'milk-no-sugar': 'mission03/milk-no-sugar.jpg', 'milk-and-sugar': 'mission03/milk-and-sugar.jpg',
+    bye: 'mission03/handoff-good-day.jpg', card: 'mission02/pay-card.jpg', cash: 'mission02/cash.jpg',
+  };
+  it('every picture tile of every board is an approved picture of its meaning — no emoji tile anywhere in the mission', () => {
+    for (const lang of LANGS) for (const b of boards(day(lang))) for (const t of b.tiles) {
+      if (t.label && !t.image) { expect(t.label, `${lang} price`).toMatch(/^€\d+\.\d\d$/); continue; } // prices are written, not drawn
+      expect(t.emoji, `${lang} ${t.id}`).toBeUndefined();
+      expect(pic(t.image), `${lang} ${t.id}`).toBe(MEANING[t.id]);
+      expect(t.alt, `${lang} ${t.id}`).toBeTruthy();
     }
   });
-  it('medium and large are told apart by size: the same cup, the large one visibly bigger', () => {
-    const b = boards(day('en'))[0]!;
-    expect([tileOf(b, 'medium').emoji, tileOf(b, 'medium').label]).toEqual(['🥤', 'M']);
-    expect([tileOf(b, 'large').emoji, tileOf(b, 'large').label]).toEqual(['🥤', 'L']);
-    expect(tileOf(b, 'large').scale! / tileOf(b, 'medium').scale!).toBeGreaterThan(1.3);
+  it('the same meaning is the same picture in every step — teaching cards, boards, matches, the configurator and the final gate', () => {
+    for (const lang of LANGS) {
+      const d = day(lang);
+      const byPicture = new Map<string, Set<string>>();
+      const note = (path: string | undefined, meaning: string): void => { if (path) byPicture.set(pic(path), (byPicture.get(pic(path)) ?? new Set()).add(meaning)); };
+      for (const b of boards(d)) for (const t of b.tiles) note(t.image, t.id);
+      const CARD_MEANING: Record<string, string> = {
+        'cafe.iced-coffee': 'iced', 'size.medium': 'medium', 'size.large': 'large', 'cafe.line.opening': 'opening', 'cafe.line.anything-else': 'more',
+        'cafe.line.receipt': 'receipt', 'cafe.line.handoff': 'bye', 'cafe.line.medium': 'medium', 'cafe.line.milk-no-sugar': 'milk-no-sugar',
+        'cafe.line.croissant': 'croissant', 'cafe.line.thats-all': 'done', 'cafe.line.card': 'card',
+      };
+      for (const w of cards(d)) if (w.image) note(w.image, CARD_MEANING[w.key!] ?? `?${w.key}`);
+      for (const s of stepsOf(d, 'matchPairs')) for (const p of s.pairs) if (p.answerImage) note(p.answerImage, strip(p.answerItemId) === 'reply.coffee.enjoy' ? 'bye' : strip(p.answerItemId));
+      note(stepsOf(d, 'customize')[0]!.base, 'iced');
+      for (const [path, meanings] of byPicture) expect([...meanings], `${lang} ${path}`).toHaveLength(1);
+      expect(byPicture.get('mission03/what-can-i-get.jpg')).toEqual(new Set(['opening']));
+      expect(byPicture.get('mission03/good-morning.jpg')).toEqual(new Set(['reply.coffee.good-morning']));
+    }
   });
-  it('the milk & sugar configurator: "Milk, no sugar." is SET — milk ✓, sugar ✕, nothing pre-set — then the pattern, swapped', () => {
+  it('the distinctions are real: iced ≠ hot · M ≠ L · iced coffee ≠ milk-no-sugar ≠ milk-and-sugar · croissant ≠ order complete · receipt question ≠ anything else ≠ that\'s all', () => {
+    const files = Object.values(MEANING);
+    expect(new Set(files).size).toBe(files.length);
+    for (const f of files) { expect(existsSync(PUBLIC + 'images/' + f), f).toBe(true); expect(statSync(PUBLIC + 'images/' + f).size, f).toBeGreaterThan(10_000); }
+    // the generic "iced coffee" is the standalone glass — never a picture that also says milk / sugar
+    for (const lang of LANGS) {
+      expect(pic(tileOf(orderBoard(day(lang)), 'iced').image)).toBe('mission03/iced-coffee.jpg');
+      expect(pic(cards(day(lang)).find((w) => w.key === 'cafe.iced-coffee')!.image)).toBe('mission03/iced-coffee.jpg');
+    }
+  });
+  it('the Mission 03 folder holds exactly the fourteen approved pictures; card and cash are Mission 02\'s, reused, not copied', () => {
+    const mine = readdirSync(PUBLIC + 'images/mission03').sort();
+    expect(mine).toEqual(['anything-else.jpg', 'croissant.jpg', 'good-morning.jpg', 'handoff-good-day.jpg', 'hot-coffee.jpg', 'iced-coffee.jpg', 'large.jpg', 'medium.jpg',
+      'milk-and-sugar.jpg', 'milk-no-sugar.jpg', 'muffin.jpg', 'order-complete.jpg', 'receipt-question.jpg', 'what-can-i-get.jpg']);
+    const m02 = readdirSync(PUBLIC + 'images/mission02').map((f) => readFileSync(PUBLIC + 'images/mission02/' + f).toString('base64'));
+    for (const f of mine) expect(m02, f).not.toContain(readFileSync(PUBLIC + 'images/mission03/' + f).toString('base64'));
+  });
+  it('no symbol stands in for a conversational meaning: no ✋ for "that\'s all", no ➕❓ for "anything else?", no lone 🧾 for the receipt QUESTION', () => {
+    for (const lang of LANGS) {
+      const json = JSON.stringify(boards(day(lang)));
+      expect(json, lang).not.toMatch(/✋|➕|❓|👋|☀️/);
+      expect(json, lang).not.toContain('"emoji":"🧾"');
+    }
+  });
+  it('croissant and muffin are pictures of the same quality — the right answer never looks better than its contrast', () => {
+    for (const lang of LANGS) for (const b of boards(day(lang))) for (const r of b.rounds) {
+      const kinds = new Set(shown(b, r).map((t) => (t.image ? 'picture' : 'text')));
+      expect(kinds.size, `${lang} ${r.audio.en}`).toBe(1);
+    }
+  });
+});
+
+describe('the café games', () => {
+  it('the order board, moment by moment: each round shows the meaning beside ITS contrast — never a picture that could also be right', () => {
+    for (const lang of LANGS) {
+      const b = orderBoard(day(lang));
+      expect(b.rounds.map((r) => [r.correct, r.show])).toEqual([
+        ['iced', ['iced', 'hot']], ['medium', ['medium', 'large']], ['croissant', ['croissant', 'muffin']],
+        ['more', ['more', 'done']], ['done', ['done', 'more']], ['card', ['card', 'cash']], ['receipt', ['receipt', 'more']],
+      ]);
+      expect(b.rounds.map((r) => r.audio.en)).toEqual([1, 3, 7, 8, 9, 11, 12].map((i) => line(lang, i)));
+    }
+  });
+  it('"anything else?" and "that\'s all" are taught as a pair: the barista offering more vs the order complete', () => {
+    const b = orderBoard(day('en'));
+    expect([pic(tileOf(b, 'more').image), pic(tileOf(b, 'done').image)]).toEqual(['mission03/anything-else.jpg', 'mission03/order-complete.jpg']);
+    expect(b.rounds.filter((r) => r.correct === 'more' || r.correct === 'done').every((r) => r.show!.includes('more') && r.show!.includes('done'))).toBe(true);
+  });
+  it('medium and large are a pair: the M cup and the larger L cup, always shown together', () => {
+    const b = orderBoard(day('en'));
+    expect([pic(tileOf(b, 'medium').image), pic(tileOf(b, 'large').image)]).toEqual(['mission03/medium.jpg', 'mission03/large.jpg']);
+    for (const g of [b, gates(day('en'))[0]!]) expect(g.rounds.find((r) => r.correct === 'medium')!.show).toEqual(['medium', 'large']);
+  });
+  it('the milk & sugar configurator: "Milk, no sugar." is SET — milk ✓, sugar ✕, nothing pre-set — on the iced-coffee picture; one round only', () => {
     for (const lang of LANGS) {
       const c = stepsOf(day(lang), 'customize')[0]!;
+      expect(pic(c.base)).toBe('mission03/iced-coffee.jpg');
       expect(c.options.map((o) => [o.id, o.emoji]), lang).toEqual([['milk', '🥛'], ['sugar', '🍬']]);
-      expect(c.rounds[0]!.audio.en, lang).toBe(line(lang, 5));
-      expect(c.rounds[0]!.on).toEqual(['milk']);
-      expect(c.rounds[1]!.on).toEqual(['sugar']);
-      expect(c.rounds[1]!.audio.en).toBe({ en: 'Sugar, no milk.', es: 'Con azúcar, sin leche.', fr: 'Avec du sucre, sans lait.' }[lang]);
+      expect(c.rounds.map((r) => [r.audio.en, r.on]), lang).toEqual([[line(lang, 5), ['milk']]]);
+      // before it: milk, sugar, with, without (Step 0), the key sentence, and its picture card
+      const d = day(lang);
+      const at = d.steps.indexOf(c);
+      const before = d.steps.slice(0, at);
+      expect(before.some((s) => s.kind === 'tool' && strip(s.itemId) === 'phrase.coffee.no-sugar'), lang).toBe(true);
+      expect(before.flatMap((s) => (s.kind === 'prime' ? s.words.map((w) => w.key) : []))).toEqual(expect.arrayContaining(['cafe.milk', 'cafe.sugar', 'core.with', 'core.without', 'cafe.line.milk-no-sugar']));
     }
     const ids = ['milk', 'sugar'];
     expect(customizeResult({}, ids, ['milk'])).toBe('unset');
@@ -234,13 +320,17 @@ describe('the café games', () => {
     expect(customizeResult({ milk: true, sugar: true }, ids, ['milk'])).toBe('wrong');
     expect(customizeResult({ milk: false, sugar: true }, ids, ['milk'])).toBe('wrong');
   });
-  it('six fifty by ear — Mission 02\'s skill, reactivated fast: two rounds, against €6.05, €16.50 and €60.50', () => {
+  it('six fifty is TAUGHT, then earned: one tile (hear it, see €6.50) → two choices → three — never six', () => {
     for (const lang of LANGS) {
-      const price = boards(day(lang)).find((b) => b.tiles.some((t) => t.id === 'e6_05'))!;
-      expect(price.tiles.map((t) => t.label)).toEqual(['€6.50', '€6.05', '€16.50', '€60.50', '€5.60', '€6']);
-      expect(price.rounds.map((r) => r.correct)).toEqual(['e6_50', 'e16_50']);
-      expect(price.rounds[0]!.audio.en, lang).toBe({ en: "That'll be six fifty.", es: 'Son seis con cincuenta.', fr: 'Ça fait six euros cinquante.' }[lang]);
-      expect(line(lang, 10).startsWith(price.rounds[0]!.audio.en.replace(/\.$/, '')), lang).toBe(true);
+      const d = day(lang);
+      const b = priceBoard(d);
+      expect(b.rounds.map((r) => shown(b, r).map((t) => t.label))).toEqual([['€6.50'], ['€6.50', '€16.50'], ['€6.50', '€6.05', '€16.50']].map((x) => expect.arrayContaining(x)));
+      expect(b.rounds.map((r) => shown(b, r).length)).toEqual([1, 2, 3]);
+      expect(b.rounds.every((r) => r.correct === 'e6_50')).toBe(true);
+      expect(b.rounds[0]!.audio.en).toBe({ en: "That'll be six fifty.", es: 'Son seis con cincuenta.', fr: 'Ça fait six euros cinquante.' }[lang]);
+      expect(line(lang, 10).startsWith(b.rounds[0]!.audio.en.replace(/\.$/, ''))).toBe(true);
+      // nowhere in the mission are more than three prices on screen at once
+      for (const g of boards(d)) for (const r of g.rounds) expect(shown(g, r).filter((t) => t.id.startsWith('e')).length, lang).toBeLessThanOrEqual(3);
     }
   });
   it('your order, at a glance, before the conversation: drink, size, milk ✓ sugar ✕, croissant, €6.50, card, receipt', () => {
@@ -248,19 +338,17 @@ describe('the café games', () => {
     const summary = d.steps.findIndex((s) => s.kind === 'talk' && s.icon === '🧾');
     expect(summary).toBeGreaterThan(0);
     expect(summary).toBeLessThan(d.steps.findIndex((s) => s.kind === 'dialogue'));
-    const card = d.steps[summary] as Extract<BootcampStep, { kind: 'talk' }>;
-    expect(card.body.map((b) => b.en).join(' | ')).toBe('☕🧊 Iced coffee · 🥤 medium (M) | 🥛 Milk ✓ · 🍬 sugar ✕ | 🥐 A croissant — ✋ and that’s all | 💶 €6.50 · 💳 by card · 🧾 receipt — yes');
   });
-  it('one picture = one meaning: across every board of the mission, a picture always means the same thing, and no two meanings share a picture', () => {
+  it('"What can I get you?" is taught with its ordering picture before it is answered, before the speed run', () => {
     for (const lang of LANGS) {
-      const byLook = new Map<string, string>();
-      for (const b of boards(day(lang))) for (const t of b.tiles) {
-        const look = `${t.emoji ?? ''}|${t.label ?? ''}`;
-        expect(byLook.get(look) ?? t.id, `${lang} ${look}`).toBe(t.id);
-        byLook.set(look, t.id);
-      }
-      const ids = [...byLook.values()];
-      expect(new Set(ids).size, lang).toBe(ids.length);
+      const d = day(lang);
+      const cardAt = d.steps.findIndex((s) => s.kind === 'prime' && s.words.some((w) => w.key === 'cafe.line.opening'));
+      const card = cards(d).find((w) => w.key === 'cafe.line.opening')!;
+      expect(card.text).toBe(line(lang, 0));
+      expect(pic(card.image)).toBe('mission03/what-can-i-get.jpg');
+      expect(card.meaning.en).toMatch(/what would you like to order\?/i);
+      expect(cardAt).toBeLessThan(d.steps.findIndex((s) => s.kind === 'quickReply'));
+      expect(cardAt).toBeLessThan(d.steps.findIndex((s) => s.kind === 'quickReply' && s.challenge));
     }
   });
   it('the coach names the order board for what it is (not "the price")', () => {
@@ -270,26 +358,26 @@ describe('the café games', () => {
   });
 });
 
-describe('the final gate: the video, then what you ordered and how you paid — answered by tapping', () => {
+describe('the final gate: the video, then what you ordered and how you paid — with the pictures that taught it', () => {
   for (const lang of LANGS) {
     it(`${lang}: drink · size · milk / sugar · food · that's all, then price · card · receipt · goodbye — the conversation's own lines`, () => {
       const d = day(lang);
       expect(afterVideo(d).map((s) => s.kind)).toEqual(['visualMatch', 'visualMatch', 'receipt', 'summary']);
       const [order, pay] = gates(d);
-      expect(order!.rounds.map((r) => [r.audio.en, r.correct])).toEqual([
-        [line(lang, 1), 'iced'], [line(lang, 3), 'medium'], [line(lang, 5), 'milk-no-sugar'], [line(lang, 7), 'croissant'], [line(lang, 9), 'done'],
+      expect(order!.rounds.map((r) => [r.audio.en, r.correct, r.show])).toEqual([
+        [line(lang, 1), 'iced', ['iced', 'hot']], [line(lang, 3), 'medium', ['medium', 'large']], [line(lang, 5), 'milk-no-sugar', ['milk-no-sugar', 'milk-and-sugar']],
+        [line(lang, 7), 'croissant', ['croissant', 'muffin']], [line(lang, 9), 'done', ['done', 'more']],
       ]);
-      expect(pay!.rounds.map((r) => [r.audio.en, r.correct])).toEqual([
-        [{ en: "That'll be six fifty.", es: 'Son seis con cincuenta.', fr: 'Ça fait six euros cinquante.' }[lang], 'e6_50'], [line(lang, 11), 'card'], [line(lang, 12), 'receipt'], [line(lang, 14), 'bye'],
+      expect(pay!.rounds.map((r) => [r.audio.en, r.correct, r.show])).toEqual([
+        [{ en: "That'll be six fifty.", es: 'Son seis con cincuenta.', fr: 'Ça fait six euros cinquante.' }[lang], 'e6_50', ['e6_50', 'e16_50']],
+        [line(lang, 11), 'card', ['card', 'cash']], [line(lang, 12), 'receipt', ['receipt', 'more']], [line(lang, 14), 'bye', ['bye', 'receipt']],
       ]);
       expect(stepsOf(d, 'quiz'), lang).toHaveLength(0); // nothing is checked by re-translating
     });
   }
-  it('each gate answer has its wrong reading beside it: hot vs iced, L vs M, sugar ✓ vs ✕, muffin vs croissant, €16.50 vs €6.50, cash vs card', () => {
-    const [order, pay] = gates(day('en'));
-    expect(order!.tiles.map((t) => t.id)).toEqual(['iced', 'hot', 'medium', 'large', 'milk-no-sugar', 'milk-and-sugar', 'croissant', 'muffin', 'done']);
-    expect([tileOf(order!, 'milk-no-sugar').label, tileOf(order!, 'milk-and-sugar').label]).toEqual(['🥛✓ 🍬✕', '🥛✓ 🍬✓']);
-    expect(pay!.tiles.map((t) => t.id)).toEqual(['e6_50', 'e16_50', 'cash', 'card', 'receipt', 'bye']);
+  it('milk-no-sugar and milk-and-sugar are two different approved pictures, side by side', () => {
+    const [order] = gates(day('en'));
+    expect([pic(tileOf(order!, 'milk-no-sugar').image), pic(tileOf(order!, 'milk-and-sugar').image)]).toEqual(['mission03/milk-no-sugar.jpg', 'mission03/milk-and-sugar.jpg']);
   });
 });
 
@@ -306,66 +394,108 @@ describe('the recovery-phrase rule: no prompt is invented to force "please repea
       expect(stepsOf(d, 'ambush'), lang).toHaveLength(0);
       expect(JSON.stringify(d.steps), lang).not.toMatch(/muffin à la place|muffin en su lugar|muffin be okay/);
     }
-    // Recovery keeps its natural home — inside the conversation, where the reason is shown.
     const scene = day('en').dialogues['breakfast-order']!;
     expect(scene.nodes.flatMap((n) => n.choices ?? []).map((c) => strip(c.itemId)).filter((id) => id.startsWith('phrase.recovery.'))).toEqual(['phrase.recovery.one-moment', 'phrase.recovery.repeat', 'phrase.recovery.slowly', 'phrase.recovery.thank-you']);
   });
+  it('"To go, please." is gone: not in the mission, not in its review, and no checkpoint offers it', () => {
+    for (const lang of LANGS) {
+      expect(day(lang).items.map((i) => strip(i.id)), lang).not.toContain('phrase.coffee.to-go');
+      const everywhere = JSON.stringify(BOOTCAMP_PLAN.map((m) => MISSIONS_BY_LANG[lang]![m.day]!));
+      expect(everywhere, lang).not.toMatch(/coffee\.(to-go|here-or-to-go|hot-or-iced)/);
+    }
+  });
 });
 
-describe('nothing unexplained: every target-language word the learner meets was prepared first', () => {
+describe('TEACH before TEST: nothing is tested that was not meaningfully prepared first', () => {
   const words = (s: string): string[] => plain(s).trim().split(' ').filter(Boolean);
   /**
-   * Walk the mission in order (the Mission 02 rule). A word is PREPARED once the learner has met it
-   * with its meaning: a building block, a key sentence, a listening-drill sentence (the answer card
-   * shows the meaning), a match tile, a review card, a line of the conversation (shown with its
-   * translation), or a board / configurator round before the video (it teaches by its picture and
-   * shows the line after the tap). Lines that TEST — a Quick Reply prompt or answer, a speed round, a
-   * sentence builder, the checks after the video — may use only words already prepared.
+   * Walk the mission in order, with a STRICT notion of "prepared" (the real-device rule): a line is
+   * prepared only where its MEANING is shown — a building block or picture card (with its meaning),
+   * a key sentence, a listening drill (its answer reveals the meaning), a meaning match, a review
+   * card, the conversation (shown with its translation), or a ONE-tile teaching round. A picture
+   * board with two or more choices, the configurator, a question ↔ answer match, a builder, a Quick
+   * Reply, the speed run and the final checks are TESTS: they prepare nothing.
    */
-  const unexplainedIn = (d: BootcampDayContent): string[] => {
-    const known = new Set<string>();
-    const learn = (s: string): void => { for (const w of words(s)) known.add(w); };
-    const out: string[] = [];
-    const test = (s: string, where: string): void => { for (const w of words(s)) if (!known.has(w)) out.push(`${where}: “${w}” in “${s}”`); };
-    let after = false;
-    d.steps.forEach((s, i) => {
-      const at = `step ${i + 1} ${s.kind}`;
-      if (s.kind === 'video' && s.mode === 'again') after = true;
-      else if (s.kind === 'prime') { s.words.forEach((w) => learn(w.text)); if (s.buildFromItemId) learn(text(d, s.buildFromItemId)); }
-      else if (s.kind === 'tool') learn(text(d, s.itemId));
-      else if (s.kind === 'replies') s.replyIds.forEach((id) => learn(text(d, id)));
-      else if (s.kind === 'swipe') s.itemIds.forEach((id) => learn(text(d, id)));
-      else if (s.kind === 'matchPairs') s.pairs.forEach((p) => { learn(text(d, p.promptItemId)); learn(p.answerText ?? text(d, p.answerItemId)); });
-      else if (s.kind === 'sentenceBuilder') s.rounds.forEach((r) => test(r.chunks.join(' '), at));
-      else if (s.kind === 'dialogue') d.dialogues[s.dialogueId]!.nodes.forEach((n) => { if (n.en) learn(n.en); n.choices?.forEach((c) => learn(c.en)); });
-      else if (s.kind === 'visualMatch') s.rounds.forEach((r) => { if (s.challenge || after) test(r.audio.en, at); else learn(r.audio.en); });
-      else if (s.kind === 'customize') s.rounds.forEach((r) => { if (after) test(r.audio.en, at); else learn(r.audio.en); });
-      else if (s.kind === 'quickReply') s.rounds.forEach((r) => { test(r.npc?.en ?? text(d, r.promptItemId), at); r.options.forEach((o) => test(o.text ?? text(d, o.itemId), at)); });
-      else if (s.kind === 'quiz') test(text(d, s.itemId), at);
-      else if (s.kind === 'ambush') test(s.npc.en, at);
+  type Event = { at: number; text: string };
+  const walk = (d: BootcampDayContent): { taught: Event[]; tested: (Event & { where: string })[] } => {
+    const taught: Event[] = [];
+    const tested: (Event & { where: string })[] = [];
+    const teach = (at: number, t: string): void => { if (t) taught.push({ at, text: t }); };
+    const test = (at: number, t: string, where: string): void => { if (t) tested.push({ at, text: t, where }); };
+    d.steps.forEach((s, at) => {
+      const where = `step ${at + 1} ${s.kind}`;
+      if (s.kind === 'prime') { s.words.forEach((w) => teach(at, w.text)); if (s.buildFromItemId) teach(at, text(d, s.buildFromItemId)); }
+      else if (s.kind === 'tool') teach(at, text(d, s.itemId));
+      else if (s.kind === 'replies') s.replyIds.forEach((id) => teach(at, text(d, id)));
+      else if (s.kind === 'swipe') s.itemIds.forEach((id) => teach(at, text(d, id)));
+      else if (s.kind === 'dialogue') d.dialogues[s.dialogueId]!.nodes.forEach((n) => { teach(at, n.en); n.choices?.forEach((c) => teach(at, c.en)); });
+      else if (s.kind === 'matchPairs') s.pairs.forEach((p) => { if (p.answerLabel) teach(at, text(d, p.promptItemId)); else { test(at, text(d, p.promptItemId), where); test(at, p.answerText ?? text(d, p.answerItemId), where); } });
+      else if (s.kind === 'visualMatch') s.rounds.forEach((r) => { if (r.show?.length === 1) teach(at, r.audio.en); else test(at, r.audio.en, where); });
+      else if (s.kind === 'customize') s.rounds.forEach((r) => test(at, r.audio.en, where));
+      else if (s.kind === 'sentenceBuilder') s.rounds.forEach((r) => test(at, r.chunks.join(' '), where));
+      else if (s.kind === 'quickReply') s.rounds.forEach((r) => { test(at, r.npc?.en ?? text(d, r.promptItemId), where); r.options.forEach((o) => test(at, o.text ?? text(d, o.itemId), where)); });
+      else if (s.kind === 'quiz') test(at, text(d, s.itemId), where);
+      else if (s.kind === 'ambush') test(at, s.npc.en, where);
     });
+    return { taught, tested };
+  };
+  /** Words: every word of a tested line was in a line taught at an EARLIER step. */
+  const unpreparedWords = (d: BootcampDayContent): string[] => {
+    const { taught, tested } = walk(d);
+    return tested.flatMap((t) => words(t.text).filter((w) => !taught.some((e) => e.at < t.at && words(e.text).includes(w))).map((w) => `${t.where}: “${w}” in “${t.text}”`));
+  };
+  /** Chunks: every meaningful chunk inside a tested line was itself in a line taught at an earlier step. */
+  const unpreparedChunks = (d: BootcampDayContent, lang: CoverageLang): string[] => {
+    const { taught, tested } = walk(d);
+    const out: string[] = [];
+    for (const t of tested) for (const c of M03_CONCEPTS) {
+      if (!hasChunk(t.text, c.chunk[lang])) continue;
+      if (!taught.some((e) => e.at < t.at && hasChunk(e.text, c.chunk[lang]))) out.push(`${t.where}: ${c.id} (“${c.chunk[lang]}”) in “${t.text}”`);
+    }
     return out;
   };
   for (const lang of LANGS) {
-    it(`${lang}: no test line contains a word that was not prepared earlier in the mission`, () => {
-      expect(unexplainedIn(day(lang))).toEqual([]);
-    });
+    it(`${lang}: no tested line has a word that was not taught, with its meaning, earlier`, () => { expect(unpreparedWords(day(lang))).toEqual([]); });
+    it(`${lang}: no tested line has a chunk of the conversation that was not taught, with its meaning, earlier`, () => { expect(unpreparedChunks(day(lang), lang)).toEqual([]); });
   }
-  it('the audit has teeth: a speed round with an unprepared line is caught', () => {
+  it('the audit has teeth: a board round no longer counts as teaching, and an unprepared line is caught', () => {
     const d = day('en');
+    // Without the picture cards, the board would be testing "anything else?" and "that's all" cold.
+    const noCards: BootcampDayContent = { ...d, steps: d.steps.filter((s) => !(s.kind === 'prime' && s.words.some((w) => w.line))) };
+    expect(unpreparedChunks(noCards, 'en').join(' | ')).toMatch(/croissant|receipt|card/);
+    // Without the one-tile teaching round, the price would be tested before it is taught — caught at the word level.
+    const price = priceBoard(d);
+    const noTeach: BootcampDayContent = { ...d, steps: d.steps.map((s) => (s === price ? { ...price, rounds: price.rounds.slice(1) } : s)) };
+    expect(walk(noTeach).taught.some((e) => e.text === "That'll be six fifty.")).toBe(false);
     const sneaky = stepsOf(d, 'quickReply').find((s) => s.challenge)!;
     const bad: BootcampStep = { ...sneaky, rounds: [{ ...sneaky.rounds[0]!, npc: { en: 'Would you like oat milk instead?', he: 'x' } }] };
-    const probe: BootcampDayContent = { ...d, steps: d.steps.map((s) => (s === sneaky ? bad : s)) };
-    expect(unexplainedIn(probe).join(' ')).toMatch(/“oat”/);
-    expect(unexplainedIn(probe).join(' ')).toMatch(/“instead”/);
+    expect(unpreparedWords({ ...d, steps: d.steps.map((s) => (s === sneaky ? bad : s)) }).join(' ')).toMatch(/“oat”.*|“instead”/);
+  });
+  it('every learner line goes TEACH → RECOGNISE → RETRIEVE → the conversation, in that order', () => {
+    // [chunk, recognised on a picture board?] — "Yes, please." has no picture of its own: taught, then retrieved.
+    const LINES: [string, boolean][] = [['iced-coffee', true], ['medium', true], ['no-sugar', true], ['croissant', true], ['thats-all', true], ['card', true], ['yes', false]];
+    for (const lang of LANGS) {
+      const d = day(lang);
+      const { taught } = walk(d);
+      const conversation = d.steps.findIndex((s) => s.kind === 'dialogue');
+      for (const [id, pictured] of LINES) {
+        const chunk = M03_CONCEPTS.find((c) => c.id === id)!.chunk[lang];
+        const teach = Math.min(...taught.filter((e) => hasChunk(e.text, chunk)).map((e) => e.at));
+        const recognise = d.steps.findIndex((s) => (s.kind === 'visualMatch' && s.rounds.some((r) => (r.show?.length ?? 2) >= 2 && hasChunk(r.audio.en, chunk))) || (s.kind === 'customize' && s.rounds.some((r) => hasChunk(r.audio.en, chunk))));
+        const retrieve = d.steps.findIndex((s) => (s.kind === 'matchPairs' && s.pairs.some((p) => !p.answerLabel && hasChunk(text(d, p.answerItemId), chunk))) || (s.kind === 'sentenceBuilder' && s.rounds.some((r) => hasChunk(r.chunks.join(' '), chunk))) || (s.kind === 'quickReply' && s.rounds.some((r) => r.options.some((o) => o.correct && hasChunk(text(d, o.itemId), chunk)))));
+        expect(teach, `${lang} ${id} taught`).toBeLessThan(retrieve);
+        if (pictured) { expect(teach, `${lang} ${id}`).toBeLessThan(recognise); expect(recognise, `${lang} ${id}`).toBeLessThan(retrieve); }
+        expect(retrieve, `${lang} ${id}`).toBeLessThan(conversation);
+      }
+    }
   });
 });
 
 describe('the learning arc and the pacing', () => {
-  it('Step 0 → three key sentences → what the barista says → the order board → milk & sugar → the barista\'s words → ordering pairs → build → six fifty → finishing pairs → answer → your order → conversation → review → speed run → video → what you ordered / how you paid', () => {
-    const kinds = day('en').steps.map((s) => (s.kind === 'quickReply' && s.challenge ? 'quickReply:speed' : s.kind === 'video' ? `video:${s.mode}` : s.kind === 'prime' && s.gate ? 'prime:step0' : s.kind));
+  it('Step 0 → key sentences → the barista in pictures → your answers in pictures → by ear → the order board → milk & sugar → the barista\'s words → ordering pairs → build → six fifty (taught, 2, 3) → finishing pairs → answer → your order → conversation → review → speed run → video → what you ordered / how you paid', () => {
+    const kinds = day('en').steps.map((s) => (s.kind === 'quickReply' && s.challenge ? 'quickReply:speed' : s.kind === 'video' ? `video:${s.mode}` : s.kind === 'prime' && s.gate ? 'prime:step0' : s.kind === 'prime' && s.words.every((w) => w.line) ? 'prime:pictures' : s.kind));
     expect(kinds).toEqual([
-      'talk', 'prime:step0', 'tool', 'tool', 'tool', 'replies', 'receipt',
+      'talk', 'prime:step0', 'tool', 'tool', 'prime:pictures', 'prime:pictures', 'replies', 'receipt',
       'visualMatch', 'customize', 'matchPairs', 'matchPairs', 'sentenceBuilder', 'visualMatch', 'matchPairs', 'quickReply',
       'talk', 'dialogue', 'receipt', 'swipe', 'quickReply:speed', 'receipt',
       'video:again', 'visualMatch', 'visualMatch', 'receipt', 'summary',
@@ -381,17 +511,24 @@ describe('the learning arc and the pacing', () => {
     expect(stepsOf(day('fr'), 'prime')[0]!.words.map((w) => w.text)).toEqual(['café glacé', 'moyen', 'grand', 'lait', 'sucre', 'avec', 'sans', 'ticket']);
     expect(stepsOf(day('en'), 'prime')[0]!.words.map((w) => w.text)).toEqual(['iced coffee', 'medium', 'large', 'milk', 'sugar', 'with', 'no', 'receipt']);
   });
-  it('same journey in the three languages; every step is valid; the mission is 49 quick questions — most of them one tap', () => {
+  it('the picture cards are the conversation\'s own lines, word for word, each with its meaning', () => {
+    for (const lang of LANGS) {
+      const lines = stepsOf(day(lang), 'prime').filter((p) => p.words.every((w) => w.line)).flatMap((p) => p.words);
+      expect(lines.map((w) => w.key)).toEqual(['cafe.line.opening', 'cafe.line.anything-else', 'cafe.line.receipt', 'cafe.line.handoff', 'cafe.line.medium', 'cafe.line.milk-no-sugar', 'cafe.line.croissant', 'cafe.line.thats-all', 'cafe.line.card', 'cafe.line.yes']);
+      for (const w of lines) { expect(LOCKED[lang].map((l) => l.slice(5)), `${lang} ${w.key}`).toContain(w.text); expect(w.meaning.he && w.meaning.en).toBeTruthy(); }
+    }
+  });
+  it('same journey in the three languages; every step is valid; the mission is still 49 quick questions — not one more', () => {
     const shape = (d: BootcampDayContent): unknown => d.steps.map((s) => {
       if (s.kind === 'quickReply') return [s.kind, s.challenge ?? false, s.rounds.map((r) => [strip(r.promptItemId), Boolean(r.npc), r.options.map((o) => [strip(o.itemId), o.correct])])];
-      if (s.kind === 'visualMatch') return [s.kind, s.challenge ?? false, s.tiles, s.rounds.map((r) => [r.correct, strip(r.itemId)])];
+      if (s.kind === 'visualMatch') return [s.kind, s.challenge ?? false, s.tiles, s.rounds.map((r) => [r.correct, strip(r.itemId), r.show])];
       if (s.kind === 'customize') return [s.kind, s.base, s.options, s.rounds.map((r) => [r.on, strip(r.itemId)])];
-      if (s.kind === 'matchPairs') return [s.kind, s.pairs.map((p) => [strip(p.promptItemId), strip(p.answerItemId), p.answerLabel, p.answerGloss])];
+      if (s.kind === 'matchPairs') return [s.kind, s.pairs.map((p) => [strip(p.promptItemId), strip(p.answerItemId), p.answerLabel, p.answerGloss, p.answerImage])];
       if (s.kind === 'sentenceBuilder') return [s.kind, s.rounds.map((r) => strip(r.itemId))]; // each language cuts its sentence its own way
       if (s.kind === 'replies') return [s.kind, strip(s.saidItemId), s.replyIds.map(strip)];
       if (s.kind === 'tool') return [s.kind, strip(s.itemId)];
       if (s.kind === 'swipe') return [s.kind, s.itemIds.map(strip)];
-      if (s.kind === 'prime') return [s.kind, s.gate, s.words.map((w) => w.key)];
+      if (s.kind === 'prime') return [s.kind, s.gate, s.words.map((w) => [w.key, w.image, w.line])];
       return s;
     });
     for (const lang of LANGS) {
@@ -418,7 +555,7 @@ describe('the configurator on screen', () => {
     const step = stepsOf(day('en'), 'customize')[0]!;
     const out = renderToStaticMarkup(createElement(steps.CustomizeStep, { step, onDone: () => undefined }));
     expect(out).toContain('data-engine="customize"');
-    expect(out).toContain('class="pcup-base">☕🧊</span>');
+    expect(out).toMatch(/<img class="pcup-img" src="[^"]*images\/mission03\/iced-coffee\.jpg"/);
     expect(out.match(/class="pcust-row /g)).toHaveLength(2);
     expect(out.match(/pcust-btn is-yes/g)).toHaveLength(2);
     expect(out.match(/pcust-btn is-no/g)).toHaveLength(2);

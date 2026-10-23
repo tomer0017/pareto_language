@@ -66,6 +66,7 @@ describe('prior-knowledge tracking — new vs review words are honest', () => {
       for (const p of primes(day)) {
         const prior = priorPrimeVocabulary(lang, Number(num));
         for (const w of p.words) {
+          if (w.line) continue; // a whole line taught with its picture — not a vocabulary word
           if (w.review) {
             it(`${lang} mission ${num}: review word "${w.text}" was introduced earlier`, () => {
               expect(prior.has(primeKey(w))).toBe(true);

@@ -393,7 +393,9 @@ function PrimeStep({ step, itemsById, onNext }: { step: Extract<BootcampStep, { 
               style={{ width: '100%', textAlign: 'start', background: 'var(--card)', borderRadius: 'var(--r-md)', border: 'none', padding: '10px 14px', boxShadow: 'var(--shadow-card)', display: 'flex', alignItems: 'center', gap: 12 }}
               onClick={() => say(`w${i}`, w.text)}
             >
-              {w.emoji && <span style={{ fontSize: '1.6rem', width: 30, textAlign: 'center' }} aria-hidden>{w.emoji}</span>}
+              {w.image
+                ? <img className="prime-img" src={resolveAsset(w.image)} alt="" draggable={false} decoding="async" />
+                : w.emoji && <span style={{ fontSize: '1.6rem', width: 30, textAlign: 'center' }} aria-hidden>{w.emoji}</span>}
               <span style={{ minWidth: 0, flex: 1 }}>
                 <span style={{ display: "block", fontWeight: 700 }}><TargetText text={w.text} />{w.review && <span title={t('primeReview')} aria-label={t('primeReview')}> ♻️</span>}</span>
                 <span className="dim small" style={{ display: 'block' }}>{L(w.meaning)}</span>

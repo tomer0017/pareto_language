@@ -1453,6 +1453,11 @@ div.jstep { box-shadow: none; border-color: var(--line); }
 
 /* ── Active-practice engines (Quick Reply · Visual Match · Swap It · Mini Map) ──────────────── */
 .pgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; width: 100%; }
+/* A round that shows only its own pair (2 or 4 tiles) is a 2-column board; one tile is a teaching card. */
+.pgrid.is-two { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.pgrid.is-one { grid-template-columns: minmax(0, 200px); justify-content: center; }
+.pgrid.is-one .ptile { font-size: 2.2rem; }
+.prime-img { flex: none; width: 76px; height: 76px; object-fit: contain; border-radius: 14px; }
 .ptile {
   aspect-ratio: 1 / 1; min-height: 0; padding: 4px; border-radius: var(--r-md, 16px);
   background: var(--card); border: 1.5px solid var(--line); box-shadow: var(--shadow-card);
@@ -1491,6 +1496,7 @@ div.jstep { box-shadow: none; border-color: var(--line); }
 .pmatch-tile .pmatch-mark { flex: none; width: 26px; height: 26px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 800; background: var(--line); color: var(--ink-dim); }
 .pcup { display: flex; align-items: center; justify-content: center; gap: 6px; min-height: 76px; direction: ltr; }
 .pcup-base { font-size: 3.4rem; line-height: 1; }
+.pcup-img { width: 96px; height: 96px; object-fit: contain; border-radius: 13%; }
 .pcup-add { font-size: 1.9rem; line-height: 1; animation: piece-in 0.28s cubic-bezier(.2,1.5,.4,1) 1; }
 .pcust { display: flex; flex-direction: column; gap: 10px; width: 100%; }
 .pcust-row {

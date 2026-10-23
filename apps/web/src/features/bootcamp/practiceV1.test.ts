@@ -171,9 +171,11 @@ describe('Mission 02 — Numbers & Money', () => {
 
 describe('Mission 03 — Coffee Shop', () => {
   const day = mission(3);
-  it('"To go, please." is not in this conversation: met once as a review card, never asked for (the Mission 03 pass)', () => {
-    expect(retrievable(day).has('phrase.coffee.to-go')).toBe(false);
-    expect(stepsOf(day, 'swipe').flatMap((s) => s.itemIds.map(strip))).toContain('phrase.coffee.to-go');
+  it('"To go, please." is not in this conversation: retired, in no Core mission, and no checkpoint offers it', () => {
+    for (const lang of LANGS) {
+      const everywhere = JSON.stringify(BOOTCAMP_PLAN.map((m) => MISSIONS_BY_LANG[lang]![m.day]!));
+      expect(everywhere, lang).not.toContain(`${lang}.phrase.coffee.to-go`);
+    }
   });
   it('the Quick Reply uses only sentences the mission already taught', () => {
     const rush = stepsOf(day, 'quickReply')[0]!;
@@ -282,9 +284,7 @@ describe('selective review (01–05)', () => {
       const can = retrievable(day);
       const never = day.items.map((x) => strip(x.id)).filter((id) => id.startsWith('phrase.') && !id.startsWith('phrase.recovery.') && !can.has(id));
       // "Excuse me!" is retrieved inside the wrapped line "Excuse me! Where is the station?".
-      // "To go, please." left Mission 03's practice with the Mission 03 pass (it is not in the
-      // conversation); it stays a review card because a later checkpoint offers it as a wrong option.
-      expect(never.filter((id) => id !== 'phrase.dir.excuse-me' && id !== 'phrase.coffee.to-go'), `Mission ${i + 1}`).toEqual([]);
+      expect(never.filter((id) => id !== 'phrase.dir.excuse-me'), `Mission ${i + 1}`).toEqual([]);
     }
   });
 });

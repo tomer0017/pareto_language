@@ -119,9 +119,10 @@ describe('scope: only Missions 25–30 changed', () => {
     const allowed = ['video', 'talk', 'prime', 'tool', 'replies', 'quiz', 'dialogue', 'swipe', 'ambush', 'receipt', 'summary', 'quickReply', 'visualMatch', 'swap', 'miniMap', 'matchPairs', 'sentenceBuilder'];
     for (const lang of LANGS) for (let n = 25; n <= 30; n++) for (const s of mission(n, lang).steps) expect(allowed, `${lang} M${n}`).toContain(s.kind);
   });
-  it('archived sentences stay archived: the archive still holds the same seven, none of them back in a mission', () => {
+  it('archived sentences stay archived: the archive still holds the same seven (plus the Mission 03 pass\'s three), none of them back in a mission', () => {
     for (const lang of LANGS) {
-      expect(RETIRED_SENTENCES[lang], lang).toHaveLength(7);
+      expect(RETIRED_SENTENCES[lang].filter((r) => r.retiredFrom !== 'coffee-shop'), lang).toHaveLength(7);
+      expect(RETIRED_SENTENCES[lang].filter((r) => r.retiredFrom === 'coffee-shop').map((r) => r.id.slice(3)), lang).toEqual(['phrase.coffee.to-go', 'reply.coffee.hot-or-iced', 'reply.coffee.here-or-to-go']);
       const live = new Set(BOOTCAMP_PLAN.flatMap((m) => MISSIONS_BY_LANG[lang]![m.day]!.items.map((i) => i.id)));
       for (const r of RETIRED_SENTENCES[lang]) expect(live.has(r.id), r.id).toBe(false);
     }

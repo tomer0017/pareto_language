@@ -398,7 +398,8 @@ describe('Mission 3 — Coffee Shop (Deep Moment exemplar)', () => {
 
   it('covers the full barista question-chain as expected replies', () => {
     const replyIds = DAY3.items.filter((i) => i.id.startsWith('en.reply.')).map((i) => i.id);
-    for (const key of ['here-or-to-go', 'medium-or-large', 'milk-sugar', 'anything-to-eat', 'anything-else', 'cash-or-card', 'receipt', 'enjoy']) {
+    // ("For here or to go?" left with the Mission 03 pass — it is not in the conversation.)
+    for (const key of ['what-can-i-get', 'medium-or-large', 'milk-sugar', 'anything-to-eat', 'anything-else', 'cash-or-card', 'receipt', 'enjoy']) {
       expect(replyIds.some((id) => id.includes(key))).toBe(true);
     }
     expect(replyIds.length).toBeGreaterThanOrEqual(8); // depth before breadth

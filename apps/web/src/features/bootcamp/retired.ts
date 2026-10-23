@@ -27,6 +27,9 @@ export const RETIRED_SENTENCES: Record<'en' | 'fr' | 'es', RetiredSentence[]> = 
     { id: 'en.reply.rest.dessert', text: 'Would you like dessert?', meaning: T('רוצים קינוח?', 'Would you like dessert?'), retiredFrom: 'restaurant-meal', reason: "The conversation no longer offers dessert." },
     { id: 'en.reply.diet.good-option', text: 'This one is a good option for you.', meaning: T('זו אפשרות טובה בשבילך.', 'This one is a good option for you.'), retiredFrom: 'special-requests-allergies', reason: "Removed with the allergy pass: nothing in the mission may read as a safety assurance." },
     { id: 'en.reply.super.weigh-it', text: 'You need to weigh it first.', meaning: T('צריך לשקול קודם.', 'You need to weigh it first.'), retiredFrom: 'supermarket', reason: "Weighing produce left the conversation." },
+    { id: 'en.phrase.coffee.to-go', text: 'To go, please.', meaning: T('לקחת, בבקשה.', 'To go, please.'), retiredFrom: 'coffee-shop', reason: 'Not in the coffee-shop conversation; the Mission 03 pass stopped teaching it, so nothing may use it as taught.' },
+    { id: 'en.reply.coffee.hot-or-iced', text: 'Hot or iced?', meaning: T('חם או קר?', 'Hot or iced?'), retiredFrom: 'coffee-shop', reason: 'Not in the coffee-shop conversation; never practised.' },
+    { id: 'en.reply.coffee.here-or-to-go', text: 'For here or to go?', meaning: T('לשבת כאן או לקחת?', 'For here or to go?'), retiredFrom: 'coffee-shop', reason: 'Not in the coffee-shop conversation; no longer practised after the Mission 03 pass.' },
   ],
   fr: [
     { id: 'fr.phrase.hotel.two-nights', text: 'Pour deux nuits.', meaning: T('לשני לילות.', 'For two nights.'), tip: T('תבנית: Pour ___ nuits — משך השהות.', 'Template: Pour ___ nuits — the length of your stay.'), retiredFrom: 'hotel-check-in', reason: "Not part of the check-in conversation; no longer taught or practised." },
@@ -36,6 +39,9 @@ export const RETIRED_SENTENCES: Record<'en' | 'fr' | 'es', RetiredSentence[]> = 
     { id: 'fr.reply.rest.dessert', text: 'Vous voulez un dessert ?', meaning: T('רוצים קינוח?', 'Would you like dessert?'), retiredFrom: 'restaurant-meal', reason: "The conversation no longer offers dessert." },
     { id: 'fr.reply.diet.good-option', text: 'Celui-ci est une bonne option pour vous.', meaning: T('זו אפשרות טובה בשבילך.', 'This one is a good option for you.'), retiredFrom: 'special-requests-allergies', reason: "Removed with the allergy pass: nothing in the mission may read as a safety assurance." },
     { id: 'fr.reply.super.weigh-it', text: 'Vous devez d’abord le peser.', meaning: T('צריך לשקול קודם.', 'You need to weigh it first.'), retiredFrom: 'supermarket', reason: "Weighing produce left the conversation." },
+    { id: 'fr.phrase.coffee.to-go', text: 'À emporter, s’il vous plaît.', meaning: T('לקחת, בבקשה.', 'To go, please.'), retiredFrom: 'coffee-shop', reason: 'Not in the coffee-shop conversation; the Mission 03 pass stopped teaching it, so nothing may use it as taught.' },
+    { id: 'fr.reply.coffee.hot-or-iced', text: 'Chaud ou glacé ?', meaning: T('חם או קר?', 'Hot or iced?'), retiredFrom: 'coffee-shop', reason: 'Not in the coffee-shop conversation; never practised.' },
+    { id: 'fr.reply.coffee.here-or-to-go', text: 'Sur place ou à emporter ?', meaning: T('לשבת כאן או לקחת?', 'For here or to go?'), retiredFrom: 'coffee-shop', reason: 'Not in the coffee-shop conversation; no longer practised after the Mission 03 pass.' },
   ],
   es: [
     { id: 'es.phrase.hotel.two-nights', text: 'Para dos noches.', meaning: T('לשני לילות.', 'For two nights.'), tip: T('תבנית: Para ___ noches — משך השהות.', 'Template: Para ___ noches — the length of your stay.'), retiredFrom: 'hotel-check-in', reason: "Not part of the check-in conversation; no longer taught or practised." },
@@ -45,5 +51,8 @@ export const RETIRED_SENTENCES: Record<'en' | 'fr' | 'es', RetiredSentence[]> = 
     { id: 'es.reply.rest.dessert', text: '¿Quieren postre?', meaning: T('רוצים קינוח?', 'Would you like dessert?'), retiredFrom: 'restaurant-meal', reason: "The conversation no longer offers dessert." },
     { id: 'es.reply.diet.good-option', text: 'Este es una buena opción para usted.', meaning: T('זו אפשרות טובה בשבילך.', 'This one is a good option for you.'), retiredFrom: 'special-requests-allergies', reason: "Removed with the allergy pass: nothing in the mission may read as a safety assurance." },
     { id: 'es.reply.super.weigh-it', text: 'Primero tiene que pesarlo.', meaning: T('צריך לשקול קודם.', 'You need to weigh it first.'), retiredFrom: 'supermarket', reason: "Weighing produce left the conversation." },
+    { id: 'es.phrase.coffee.to-go', text: 'Para llevar, por favor.', meaning: T('לקחת, בבקשה.', 'To go, please.'), retiredFrom: 'coffee-shop', reason: 'Not in the coffee-shop conversation; the Mission 03 pass stopped teaching it, so nothing may use it as taught.' },
+    { id: 'es.reply.coffee.hot-or-iced', text: '¿Caliente o con hielo?', meaning: T('חם או קר?', 'Hot or iced?'), retiredFrom: 'coffee-shop', reason: 'Not in the coffee-shop conversation; never practised.' },
+    { id: 'es.reply.coffee.here-or-to-go', text: '¿Para aquí o para llevar?', meaning: T('לשבת כאן או לקחת?', 'For here or to go?'), retiredFrom: 'coffee-shop', reason: 'Not in the coffee-shop conversation; no longer practised after the Mission 03 pass.' },
   ],
 };

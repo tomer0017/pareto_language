@@ -110,8 +110,8 @@ describe('scope: only the Practice of Missions 19–24 changed', () => {
     }
     expect(text(mission(19), 'phrase.trans.single')).toBe('Single, please.');
   });
-  it('nothing was retired in this pass: the archive still holds the same seven sentences', () => {
-    for (const lang of LANGS) expect(RETIRED_SENTENCES[lang], lang).toHaveLength(7);
+  it('nothing was retired in this pass: the archive still holds the same seven sentences (plus the three the later Mission 03 pass retired)', () => {
+    for (const lang of LANGS) expect(RETIRED_SENTENCES[lang].filter((r) => r.retiredFrom !== 'coffee-shop'), lang).toHaveLength(7);
     expect(RETIRED_SENTENCES.en.some((r) => /trans\.|past\.|future\.|fix\.|opin\./.test(r.id))).toBe(false);
   });
   it('mission order, ids and registry keys are unchanged', () => {

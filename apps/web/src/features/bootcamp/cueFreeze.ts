@@ -1,3 +1,4 @@
+import { RETIRED_SENTENCES } from './retired.js';
 import type { BootcampDayContent, SpokenLine } from './types.js';
 
 /**
@@ -43,10 +44,35 @@ function withLegacyVideo(day: BootcampDayContent, lang: string): FrozenDay {
   return { ...rest, introVideo: { src: `/videos/${lang === 'en' ? 'En' : 'Fr'}_day${day.day}.mp4`, title: { he: 'השיחה המלאה', en: 'Full conversation' }, language: lang, type: 'intro' }, steps };
 }
 
+/**
+ * The third: the Mission 03 pass (2026-10-23) retired "To go, please." — Mission 03 no longer
+ * teaches it — so the Everyday Day checkpoint (key 17), which offered it as a WRONG option, now
+ * offers "A croissant, please." (taught in Mission 03) in the same place. `withToGoDistractor` puts
+ * the retired sentence back in that one slot (its sentence-list entry and its dialogue choice), from
+ * the archive, so the older fingerprints keep proving nothing else moved.
+ */
+function withToGoDistractor(day: BootcampDayContent, lang: string): BootcampDayContent {
+  if (day.day !== 17) return day;
+  const toGo = RETIRED_SENTENCES[lang as L]?.find((r) => r.id === `${lang}.phrase.coffee.to-go`);
+  if (!toGo) return day;
+  const croissant = `${lang}.phrase.coffee.croissant`;
+  const copy = JSON.parse(JSON.stringify(day)) as BootcampDayContent; // JSON round-trip keeps key order
+  copy.items = copy.items.map((i) => (i.id === croissant ? { id: toGo.id, text: toGo.text, meaning: toGo.meaning } : i));
+  for (const d of Object.values(copy.dialogues)) for (const n of d.nodes) for (const c of n.choices ?? []) {
+    if (c.itemId !== croissant || c.correct) continue;
+    c.en = toGo.text;
+    c.he = toGo.meaning.he ?? '';
+    if (c.tr) { c.tr.en = toGo.meaning.en ?? ''; c.tr.he = toGo.meaning.he ?? ''; }
+    c.itemId = toGo.id;
+  }
+  return copy;
+}
+
 /** A mission as it was serialised before the production freeze: transition labels back inside the
- *  spoken lines, and the old explicit video path back in the content. */
+ *  spoken lines, the old explicit video path back in the content, and the retired "To go" option back
+ *  in its checkpoint slot. */
 export function beforeCueFreeze(day: BootcampDayContent, lang: string): FrozenDay {
-  return withLegacyVideo(relabelled(day, lang), lang);
+  return withLegacyVideo(relabelled(withToGoDistractor(day, lang), lang), lang);
 }
 
 function relabelled(day: BootcampDayContent, lang: string): BootcampDayContent {

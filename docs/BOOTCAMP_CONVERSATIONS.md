@@ -140,7 +140,6 @@ _Reply-training drill:_ “That's five euros.” · “Five euros a box, or two 
 
 ### Core phrases (you say)
 - **I'd like an iced coffee, please.** · אני רוצה קפה קר, בבקשה. — _התבנית: I’d like ___, please — עובדת על הכל._
-- **To go, please.** · לקחת, בבקשה.
 - **Milk, no sugar.** · עם חלב, בלי סוכר. — _עם = with · בלי = no/without. שתי מילים ששולטות בכל הזמנה._
 - **A croissant, please.** · קרואסון, בבקשה. — _“Croissant” — מאפה חמאה צרפתי. כך בדיוק זה כתוב בתפריט בחו״ל._
 - **That's all, thanks.** · זה הכל, תודה. — _סוגר כל הזמנה בנימוס. עובד בכל מקום בעולם._
@@ -150,8 +149,6 @@ _Reply-training drill:_ “That's five euros.” · “Five euros a box, or two 
 
 ### Expected replies (you hear)
 - **Good morning! What can I get you?** · בוקר טוב! מה להביא לך? — _“What can I get you?” = מה תרצה להזמין? כך מתחילה כל הזמנה._
-- **Hot or iced?** · חם או קר?
-- **For here or to go?** · לשבת כאן או לקחת?
 - **Sure! Medium or large?** · סגור! בינוני או גדול?
 - **Milk and sugar?** · חלב וסוכר?
 - **Anything to eat?** · משהו לאכול?
@@ -163,7 +160,7 @@ _Reply-training drill:_ “That's five euros.” · “Five euros a box, or two 
 - **Sure!** · בטח! / סגור!
 - **Great choice.** · בחירה מצוינת.
 
-_Reply-training drill:_ “Sure! Medium or large?” · “Milk and sugar?” · “Anything to eat?” · “Great choice. Would you like anything else?” · “That'll be six fifty. Cash or card?” · “Here you go — enjoy your day!”
+_Reply-training drill:_ “Sure! Medium or large?” · “Milk and sugar?” · “Anything to eat?” · “Great choice. Would you like anything else?” · “That'll be six fifty. Cash or card?”
 
 ### Recovery tools reused
 `One moment, please.` · `Can you repeat that?` · `Please speak slowly.` · `Thank you!`
@@ -1037,7 +1034,7 @@ _Reply-training drill:_ “It's in aisle three.” · “Over there, on the left
 - **A table for two, please.** · שולחן לשניים, בבקשה. — _הפתיח למסעדה. תבנית: a table for ___._
 - **Maybe later.** · אולי אחר כך. — _התשובה הכי שימושית כשלא החלטת._
 - **By card, please.** · בכרטיס, בבקשה.
-- **To go, please.** · לקחת, בבקשה.
+- **A croissant, please.** · קרואסון, בבקשה. — _“Croissant” — מאפה חמאה צרפתי. כך בדיוק זה כתוב בתפריט בחו״ל._
 - **Yes, I'm free tomorrow.** · כן, אני פנוי מחר.
 - **I'm free tonight.** · אני פנוי הערב.
 - **I love surfing!** · אני מאוד אוהב לגלוש!
@@ -1078,7 +1075,7 @@ _Reply-training drill:_ “It's in aisle three.” · “Over there, on the left
 #### Wrong / recovery branches
 - ⚠︎ less useful: 🫵 “A table for two, please.” → 🧑 “Good morning! What can I get you?” · בוקר טוב! מה להביא לך?
 - ⚠︎ less useful: 🫵 “By card, please.” → 🧑 “Sure. Anything to eat?” · בטח. משהו לאכול?
-- ⚠︎ less useful: 🫵 “To go, please.” → 🧑 “No problem. Cash or card?” · אין בעיה. מזומן או כרטיס?
+- ⚠︎ less useful: 🫵 “A croissant, please.” → 🧑 “No problem. Cash or card?” · אין בעיה. מזומן או כרטיס?
 
 ### Dialogue: `cold-plans` — happy path
 - **🧑 Them:** “Hi! Are you free tomorrow?” · היי! אתה פנוי מחר?

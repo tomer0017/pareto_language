@@ -17,8 +17,6 @@ export const DAY3_ES_ITEMS: BootcampItem[] = [
   { id: 'es.phrase.coffee.iced-coffee', text: 'Quiero un café con hielo, por favor.',
     meaning: T('אני רוצה קפה קר, בבקשה.', "I'd like an iced coffee, please."),
     tip: T('התבנית: Quiero ___, por favor — עובדת על הכל.', 'The template: Quiero ___, por favor — works for everything.') },
-  { id: 'es.phrase.coffee.to-go', text: 'Para llevar, por favor.',
-    meaning: T('לקחת, בבקשה.', 'To go, please.') },
   { id: 'es.phrase.coffee.no-sugar', text: 'Con leche, sin azúcar.',
     meaning: T('עם חלב, בלי סוכר.', 'Milk, no sugar.'),
     tip: T('con = עם · sin = בלי. שתי מילים ששולטות בכל הזמנה.', 'con = with · sin = without — two words that control every order.') },
@@ -35,8 +33,6 @@ export const DAY3_ES_ITEMS: BootcampItem[] = [
   // hear — the barista's lines. Each is EXACTLY a line of the locked conversation (what the video says).
   { id: 'es.reply.coffee.what-can-i-get', text: '¡Buenos días! ¿Qué le sirvo?', meaning: T('בוקר טוב! מה להביא לך?', 'Good morning! What can I get you?'),
     tip: T('“¿Qué le sirvo?” = מה תרצה להזמין? (בנימוס). כך מתחילה כל הזמנה.', '“¿Qué le sirvo?” = what would you like to order? (polite). Every order starts here.') },
-  { id: 'es.reply.coffee.hot-or-iced', text: '¿Caliente o con hielo?', meaning: T('חם או קר?', 'Hot or iced?') },
-  { id: 'es.reply.coffee.here-or-to-go', text: '¿Para aquí o para llevar?', meaning: T('לשבת כאן או לקחת?', 'For here or to go?') },
   { id: 'es.reply.coffee.medium-or-large', text: '¡Perfecto! ¿Mediano o grande?', meaning: T('מצוין! בינוני או גדול?', 'Sure! Medium or large?') },
   { id: 'es.reply.coffee.milk-sugar', text: '¿Leche y azúcar?', meaning: T('חלב וסוכר?', 'Milk and sugar?') },
   { id: 'es.reply.coffee.anything-to-eat', text: '¿Algo de comer?', meaning: T('משהו לאכול?', 'Anything to eat?') },

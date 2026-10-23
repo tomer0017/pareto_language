@@ -125,6 +125,11 @@ stable across re-renders. **Narrative dialogue order is never shuffled** — onl
   The Mission 03 pass added `customize` (hear an order → set each add-in ✓ / ✕ → check; nothing is
   pre-set, so "no sugar" is a choice of its own; pure rule `customizeResult`; counted as listening by
   the coverage audit). Board tiles may carry `scale` (emoji size), so a large cup reads larger.
+  The Mission 03 real-device pass added: `VisualMatchRound.show` (a round shows only its own tiles — the
+  meaning and its contrast; ONE tile = a teaching round that cannot be missed; 2 / 4 tiles lay out as
+  a 2-column board), `PrimeWord.image` (an approved picture on a building-block row) and
+  `PrimeWord.line` (a whole conversation line taught with its picture — left out of the new-vs-review
+  vocabulary tracking), and an image `base` for `customize`.
 - **Companion inside a mission** — `companionCoach.ts` (`coachFor(steps, index, missionId)`) decides,
   purely, whether a step gets one app-language line (the mission goal on its intro card; how to play
   the first game of each kind; `MISSION_GAME_INTRO` overrides that line where a mission's first game of

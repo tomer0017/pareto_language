@@ -26,7 +26,7 @@ export function priorPrimeVocabulary(lang: string, day: number): Set<string> {
     if (!d) continue;
     for (const step of d.steps) {
       if (step.kind !== 'prime') continue;
-      for (const w of step.words) if (!w.review) seen.add(primeKey(w));
+      for (const w of step.words) if (!w.review && !w.line) seen.add(primeKey(w)); // a taught LINE is not vocabulary
     }
   }
   return seen;

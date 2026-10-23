@@ -22,6 +22,27 @@ loop (typecheck → lint → tests → build → smoke) green at every milestone
 
 ## What's done
 
+### Mission 03 — real-device pass: teach before test, approved pictures (2026-10-23)
+iPhone QA showed "appeared before the test" was not enough: symbols (✋, ➕❓, 🧾, 👋☀️, emoji milk/sugar)
+did not teach their meanings, and €6.50 was guessed among six prices.
+- **14 approved pictures** in `apps/web/public/images/mission03/` (JPEG q92, 314 px, 516 KB); card and
+  cash reuse Mission 02's pictures. No emoji tile is left on any Mission 03 board.
+- **Teaching first:** two picture-card steps — the barista's lines (what can I get you · anything else ·
+  receipt · here you go) and your answers (medium · milk-no-sugar · croissant · that's all · card · yes),
+  each a locked line with its picture and meaning, tap to hear.
+- **Boards in pairs:** almost every scene contains an iced coffee, so each round shows the meaning
+  beside its own contrast (iced/hot, M/L, croissant/muffin, anything else/that's all, card/cash,
+  receipt/anything else) — the 3×3 board would have had several fair answers.
+- **Price earned:** one tile (taught) → €6.50 / €16.50 → €6.50 / €6.05 / €16.50. Never six.
+- Configurator: one round ("Sugar, no milk" removed), on the iced-coffee picture. Still 49 questions.
+- **Stricter audit** (`mission03.test.ts`): boards with 2+ choices, the configurator, Q↔A matches and
+  Quick Replies count as TESTS, never as teaching; every word and every chunk of a tested line must
+  have been TAUGHT (meaning shown) earlier, and each learner line goes teach → recognise → retrieve →
+  conversation.
+- **"To go, please."** (and the never-used "Hot or iced?", "For here or to go?") retired to
+  `retired.ts`; the Everyday Day checkpoint's wrong option is now "A croissant, please." (taught).
+  Older fingerprints stay valid via `beforeCueFreeze`, which puts the old option back.
+
 ### Mission 03 — Coffee Shop, on the Mission 01/02 standard (2026-10-23)
 The dialogue is LOCKED (byte-identical, pinned: `mission03.test.ts`); Missions 01, 02 and 04–30 are
 byte-identical too (their fingerprints were narrowed to 04+ and re-derived from the previous build).

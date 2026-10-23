@@ -181,7 +181,7 @@ export const EVERYDAY_DAY: MissionSpec = {
         you(itemOf(TIME_PLANS, 'phrase.time.maybe-later'), { wrong: [known('phrase.money.by-card')] }),
         npc('No problem. Cash or card?', 'Pas de problème. Espèces ou carte ?', 'Sin problema. ¿Efectivo o tarjeta?', 'אין בעיה. מזומן או כרטיס?', 'fast'),
         you(known('phrase.money.by-card'), {
-          wrong: [known('phrase.coffee.to-go')],
+          wrong: [known('phrase.coffee.croissant')], // was "To go, please." — retired when Mission 03 stopped teaching it
           rec: { tool: 'slowly', npc: ['Cash — or card?', 'Espèces — ou carte ?', '¿Efectivo — o tarjeta?', 'מזומן — או כרטיס?'] },
         }),
         npc('Thank you! Have a nice day!', 'Merci ! Bonne journée !', '¡Gracias! ¡Que tenga un buen día!', 'תודה! שיהיה יום נעים!'),

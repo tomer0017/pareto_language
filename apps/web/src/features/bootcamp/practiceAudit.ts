@@ -183,8 +183,8 @@ function questionsOf(day: number): Question[] {
           kind: 'visual-match', step: i + 1, where: `round ${k + 1} of ${step.rounds.length}${step.challenge ? ' · SPEED CHALLENGE (spoken at rate 1.12)' : ''}`,
           promptUi: step.challenge ? `⚡ ${ui('speedHeadsUp')}` : step.label ? `${q(step.label.en)} / ${q(step.label.he)}` : ui('visualMatchTitle'),
           audio: { en: at('en'), fr: at('fr'), es: at('es') }, audioHe: round.audio.he,
-          choices: step.tiles.map((tile) => { const label = `${tile.image ? `[picture ${tile.image.split('/').pop()}]` : ''}${tile.emoji ?? ''}${(tile.label ?? '').replace(/\n/g, ' / ')}`; return { en: label, fr: label, es: label, he: '', itemId: tile.id === round.correct ? strip(round.itemId) : '', correct: tile.id === round.correct }; }),
-          choiceDisplay: `a 3×3 board of ${step.tiles.length} tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap`,
+          choices: (round.show ? step.tiles.filter((x) => round.show!.includes(x.id)) : step.tiles).map((tile) => { const label = `${tile.image ? `[picture ${tile.image.split('/').pop()}]` : ''}${tile.emoji ?? ''}${(tile.label ?? '').replace(/\n/g, ' / ')}`; return { en: label, fr: label, es: label, he: '', itemId: tile.id === round.correct ? strip(round.itemId) : '', correct: tile.id === round.correct }; }),
+          choiceDisplay: round.show ? (round.show.length === 1 ? 'ONE tile — a teaching round: hear it, see what it means, tap it (cannot be missed); then the line and its translation' : `only this round's ${round.show.length} tiles (the meaning and its contrast), same in every language; the sentence and its translation appear only AFTER the tap`) : `a 3×3 board of ${step.tiles.length} tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap`,
           tests: strip(round.itemId) || '(no sentence id — not recorded)',
           explanation: 'after the tap: the spoken line and its translation',
         });

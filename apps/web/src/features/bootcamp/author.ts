@@ -92,7 +92,9 @@ export interface SceneSpec {
 
 export interface PrimeSpec {
   intro: Copy;
-  words: { key?: string; t: L3; meaning: Copy; emoji?: string; review?: boolean }[];
+  words: { key?: string; t: L3; meaning: Copy; emoji?: string; image?: string; line?: boolean; review?: boolean }[];
+  /** The step's heading (default "Before we speak"). */
+  label?: Copy;
   /** The sentence the words assemble into — only when they genuinely build one. */
   build?: string;
   /** Step 0 of the mission: an optional preparation the learner may skip. */
@@ -119,7 +121,7 @@ export interface VisualMatchSpec {
   label?: Copy;
   challenge?: boolean;
   tiles: MatchTile[];
-  rounds: { audio: L4; correct: string; itemId?: string }[];
+  rounds: { audio: L4; correct: string; itemId?: string; show?: string[] }[];
 }
 export interface SwapSpec {
   label?: Copy;
@@ -358,7 +360,7 @@ export function buildPractice(p: PracticeSpec, lang: MissionLang): BootcampStep 
   if (p.kind === 'visualMatch') {
     return {
       kind: 'visualMatch', ...label, ...(p.challenge ? { challenge: true } : {}), tiles: p.tiles,
-      rounds: p.rounds.map((r) => ({ audio: spoken(r.audio, lang), correct: r.correct, ...(r.itemId ? { itemId: id(r.itemId) } : {}) })),
+      rounds: p.rounds.map((r) => ({ audio: spoken(r.audio, lang), correct: r.correct, ...(r.itemId ? { itemId: id(r.itemId) } : {}), ...(r.show ? { show: [...r.show] } : {}) })),
     };
   }
   if (p.kind === 'customize') {
@@ -390,13 +392,15 @@ export function buildPractice(p: PracticeSpec, lang: MissionLang): BootcampStep 
 export function buildPrime(prime: PrimeSpec, lang: MissionLang): BootcampStep {
   return {
     kind: 'prime',
-    label: { he: 'לפני שנדבר', en: 'Before we speak' },
+    label: prime.label ? T(prime.label) : { he: 'לפני שנדבר', en: 'Before we speak' },
     intro: T(prime.intro),
     words: prime.words.map((w) => ({
       ...(w.key ? { key: w.key } : {}),
       text: w.t[LANG_INDEX[lang]],
       meaning: T(w.meaning),
       ...(w.emoji ? { emoji: w.emoji } : {}),
+      ...(w.image ? { image: w.image } : {}),
+      ...(w.line ? { line: true } : {}),
       ...(w.review ? { review: true } : {}),
     })),
     ...(prime.build ? { buildFromItemId: `${lang}.${prime.build}` } : {}),
