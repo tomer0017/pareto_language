@@ -131,6 +131,13 @@ export interface SwapSpec {
     options: readonly (readonly [slot: L3, he: string, correct: boolean])[];
   }[];
 }
+export interface CustomizeSpec {
+  label?: Copy;
+  /** What is being made (☕). */
+  base: string;
+  options: { id: string; emoji: string; label: Copy }[];
+  rounds: { audio: L4; on: string[]; itemId?: string }[];
+}
 export interface MiniMapSpec {
   label?: Copy;
   challenge?: boolean;
@@ -153,7 +160,8 @@ export type PracticeSpec =
   | ({ kind: 'quickReply' } & QuickReplySpec)
   | ({ kind: 'visualMatch' } & VisualMatchSpec)
   | ({ kind: 'swap' } & SwapSpec)
-  | ({ kind: 'miniMap' } & MiniMapSpec);
+  | ({ kind: 'miniMap' } & MiniMapSpec)
+  | ({ kind: 'customize' } & CustomizeSpec);
 
 /** The teaching section of a content mission. A checkpoint has none — it only proves. */
 export interface TeachSpec {
@@ -351,6 +359,12 @@ export function buildPractice(p: PracticeSpec, lang: MissionLang): BootcampStep 
     return {
       kind: 'visualMatch', ...label, ...(p.challenge ? { challenge: true } : {}), tiles: p.tiles,
       rounds: p.rounds.map((r) => ({ audio: spoken(r.audio, lang), correct: r.correct, ...(r.itemId ? { itemId: id(r.itemId) } : {}) })),
+    };
+  }
+  if (p.kind === 'customize') {
+    return {
+      kind: 'customize', ...label, base: p.base, options: p.options.map((o) => ({ id: o.id, emoji: o.emoji, label: T(o.label) })),
+      rounds: p.rounds.map((r) => ({ audio: spoken(r.audio, lang), on: [...r.on], ...(r.itemId ? { itemId: id(r.itemId) } : {}) })),
     };
   }
   if (p.kind === 'swap') {

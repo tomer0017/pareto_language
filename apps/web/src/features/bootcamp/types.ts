@@ -123,6 +123,22 @@ export interface MatchTile {
   emoji?: string;
   image?: string;       // public path under the deploy base, e.g. "images/mission02/one-box.jpg"
   alt?: string;         // what the picture shows — the tile's accessible name when it has no label
+  scale?: number;       // emoji size multiplier — so a large cup is visibly larger than a medium one
+}
+
+/** Customize — hear an order, then set each add-in ✓ or ✕ ("Milk, no sugar." → milk ✓ · sugar ✕).
+ *  "With / without" learned by doing, not by reading. */
+export interface CustomizeOption {
+  id: string;
+  emoji: string;
+  /** The add-in's name in the app language (the target word is what is heard, not shown). */
+  label: LocalizedText;
+}
+export interface CustomizeRound {
+  audio: SpokenLine;
+  /** The options that are ✓ in this order; every other option is ✕. */
+  on: string[];
+  itemId?: string;
 }
 
 /** Swap It — one sentence frame, several slot values: the sentence is an engine, not a fixed line. */
@@ -198,6 +214,7 @@ export type BootcampStep =
   | { kind: 'quickReply'; label?: LocalizedText; rounds: QuickReplyRound[]; challenge?: boolean }
   | { kind: 'visualMatch'; label?: LocalizedText; tiles: MatchTile[]; rounds: { audio: SpokenLine; correct: string; itemId?: string }[]; challenge?: boolean }
   | { kind: 'swap'; label?: LocalizedText; rounds: SwapRound[] }
+  | { kind: 'customize'; label?: LocalizedText; base: string; options: CustomizeOption[]; rounds: CustomizeRound[] }
   | { kind: 'miniMap'; label?: LocalizedText; rounds: MiniMapRound[]; challenge?: boolean }
   | { kind: 'matchPairs'; label?: LocalizedText; pairs: MatchPair[] }
   | { kind: 'sentenceBuilder'; label?: LocalizedText; rounds: BuilderRound[] }

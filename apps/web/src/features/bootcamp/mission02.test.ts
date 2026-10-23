@@ -424,8 +424,8 @@ describe('the learning arc', () => {
     }
     expect(stepsOf(day('es'), 'prime')[0]!.words.map((w) => w.text)).toEqual(['¿cuánto es?', 'una', 'dos', 'cinco', 'ocho', 'caja', 'efectivo', 'tarjeta']);
     expect(stepsOf(day('fr'), 'prime')[0]!.words.map((w) => w.text)).toEqual(['c’est combien', 'une', 'deux', 'cinq', 'huit', 'barquette', 'espèces', 'carte']);
-    // No other mission has the gate (Mission 01 is unchanged).
-    for (let n = 1; n <= 30; n++) if (n !== 2) for (const s of stepsOf(day('en', n), 'prime')) expect(s.gate, `M${n}`).toBeUndefined();
+    // No other mission has the gate (Mission 01 is unchanged) — except Mission 03, whose own pass added its Step 0.
+    for (let n = 1; n <= 30; n++) if (n !== 2 && n !== 3) for (const s of stepsOf(day('en', n), 'prime')) expect(s.gate, `M${n}`).toBeUndefined();
     for (const key of ['primeGateTitle', 'primeGateBody', 'primeGateStart', 'primeGateSkip'] as const) { expect(UI_DICTIONARIES.he![key]).toBeTruthy(); expect(UI_DICTIONARIES.en![key]).toBeTruthy(); }
     expect(UI_DICTIONARIES.he!.primeGateStart).toBe('בואו נתחיל');
     expect(UI_DICTIONARIES.he!.primeGateSkip).toBe('אני כבר יודע — דלג');

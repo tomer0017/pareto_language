@@ -1,6 +1,5 @@
 import { describe, expect, it } from 'vitest';
 import { buildComprehensionContext, buildRespondContext } from './answerContext.js';
-import { DAY3 } from '../../features/bootcamp/day3.js';
 import { DAY1 } from '../../features/bootcamp/day1.js';
 
 /**
@@ -33,11 +32,12 @@ describe('answer context — full learning hierarchy', () => {
   });
 
   // Originally the Money mission's fast price (now a Visual Match speed challenge, which shows the
-  // spoken line after the tap). The same rule is checked on the Coffee Shop recovery ambush.
+  // spoken line after the tap), then the Coffee Shop ambush (gone in the Mission 03 pass — no
+  // off-script surprise). The same rule is checked on Mission 01's recovery ambush.
   it('AMBUSH REGRESSION — the ambush shows what you heard, not just the answer', () => {
-    const step = DAY3.steps.find((s) => s.kind === 'ambush');
-    if (!step || step.kind !== 'ambush') throw new Error('Coffee Shop ambush missing');
-    const byId = new Map(DAY3.items.map((i) => [i.id, i]));
+    const step = DAY1.steps.find((s) => s.kind === 'ambush');
+    if (!step || step.kind !== 'ambush') throw new Error('Mission 01 ambush missing');
+    const byId = new Map(DAY1.items.map((i) => [i.id, i]));
     const correct = byId.get(step.correctItemId)!;
     const wrong = byId.get(step.wrongItemId)!;
 
@@ -48,7 +48,8 @@ describe('answer context — full learning hierarchy', () => {
     });
 
     // What you heard = the original NPC sentence + its Hebrew — the context that used to be lost.
-    expect(ctx.prompt?.text).toContain('croissants');
+    expect(ctx.prompt?.text).toBe(step.npc.en);
+    expect(ctx.prompt?.text.length).toBeGreaterThan(10);
     expect(ctx.prompt?.translation).toBeTruthy();
     // Your answer (the wrong pick) and what you should answer (the total) are both present + distinct.
     expect(ctx.selected?.text).toBe(wrong.text);

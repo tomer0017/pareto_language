@@ -14,7 +14,7 @@ import { CompanionReaction, CompanionWatch } from '../companion/Companion.js';
 import { completeChime, matchChime, placeTick, softChime } from '../../shared/audio/sfx.js';
 import { AudioBubble, NpcFigure, useNpc } from './ConvoScene.js';
 import {
-  builderHint, builderPool, builderSentence, builderSolved, fillFrame, frameParts, isHelpToolId, matchAnswerOrder, matchRecord, matchSpeaks, matchTap, newMatch,
+  builderHint, builderPool, builderSentence, builderSolved, customizeResult, fillFrame, frameParts, isHelpToolId, matchAnswerOrder, matchRecord, matchSpeaks, matchTap, newMatch,
   quickReplyLabel, quickReplyPrompt, type MatchSide, type StepOf,
 } from './practiceEngines.js';
 import type { BootcampItem, MapCell } from './types.js';
@@ -203,7 +203,7 @@ export function VisualMatchStep({ step, onDone }: { step: StepOf<'visualMatch'>;
               }}
             >
               {tile.image && <img className="ptile-img" src={publicAsset(tile.image)} alt="" draggable={false} decoding="async" />}
-              {tile.emoji && <span className="ptile-emoji" aria-hidden>{tile.emoji}</span>}
+              {tile.emoji && <span className="ptile-emoji" aria-hidden style={tile.scale ? { fontSize: `${1.7 * tile.scale}rem` } : undefined}>{tile.emoji}</span>}
               {tile.label && <span dir="ltr" className={tile.label.includes('\n') ? 'ptile-lines' : undefined}>{tile.label}</span>}
             </button>
           ))}
@@ -212,6 +212,77 @@ export function VisualMatchStep({ step, onDone }: { step: StepOf<'visualMatch'>;
       </div>
       {picked === null ? null : (
         <ResultActions ok={ok} last={last} onRetry={() => { setPicked(null); play(); }} onNext={() => { setPicked(null); if (last) onDone(); else setI(i + 1); }} />
+      )}
+    </>
+  );
+}
+
+/* ── Customize ───────────────────────────────────────────────────────────────────────────────── */
+
+/** Hear the order → set each add-in ✓ or ✕ → check. "Milk, no sugar." is understood by DOING it:
+ *  the cup fills with what was asked for, and "no" is a choice of its own, not a default. */
+export function CustomizeStep({ step, onDone }: { step: StepOf<'customize'>; onDone: () => void }) {
+  const bc = useBootcampStore();
+  const [i, setI] = useState(0);
+  const [picks, setPicks] = useState<Record<string, boolean | undefined>>({});
+  const [checked, setChecked] = useState(false);
+  const shownAt = useRef(0);
+  const round = step.rounds[i]!;
+  const ids = step.options.map((o) => o.id);
+  const result = customizeResult(picks, ids, round.on);
+  const ok = result === 'right';
+  const last = i + 1 >= step.rounds.length;
+  const play = (rate?: number): void => void speakL(round.audio.en, rate);
+
+  useEffect(() => {
+    shownAt.current = Date.now();
+    play();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [i]);
+
+  const set = (id: string, value: boolean): void => { if (checked) return; placeTick(); setPicks((p) => ({ ...p, [id]: value })); };
+  const reset = (): void => { setPicks({}); setChecked(false); };
+  return (
+    <>
+      <div className="pcanvas" data-engine="customize">
+        <GameHead label={step.label ? L(step.label) : t('customizeTitle')} i={i} n={step.rounds.length}>
+          <AudioBubble onPlay={() => play(0.85)} />
+        </GameHead>
+        {/* The cup: what is being made, and every add-in set to ✓ so far. */}
+        <div className="pcup" aria-hidden>
+          <span className="pcup-base">{step.base}</span>
+          {step.options.filter((o) => picks[o.id]).map((o) => <span key={o.id} className="pcup-add">+{o.emoji}</span>)}
+        </div>
+        <div className="pcust">
+          {step.options.map((o) => {
+            const want = round.on.includes(o.id);
+            const mark = checked ? (picks[o.id] === want ? 'is-ok' : 'is-bad') : '';
+            return (
+              <div key={o.id} className={`pcust-row ${mark}`}>
+                <span className="pcust-name"><span className="pcust-emoji" aria-hidden>{o.emoji}</span>{L(o.label)}</span>
+                <button className={`pcust-btn is-yes ${picks[o.id] === true ? 'is-on' : ''}`} aria-pressed={picks[o.id] === true} disabled={checked} aria-label={`${L(o.label)} ✓`} onClick={() => set(o.id, true)}>✓</button>
+                <button className={`pcust-btn is-no ${picks[o.id] === false ? 'is-on' : ''}`} aria-pressed={picks[o.id] === false} disabled={checked} aria-label={`${L(o.label)} ✕`} onClick={() => set(o.id, false)}>✕</button>
+              </div>
+            );
+          })}
+        </div>
+        {checked && <Heard ok={ok} text={round.audio.en} gloss={dialogueTr(round.audio)} onReplay={() => play()} />}
+      </div>
+      {!checked ? (
+        <div className="action-zone">
+          <button
+            className="btn-primary"
+            disabled={result === 'unset'}
+            onClick={() => {
+              tap();
+              if (ok) good(); else feedbackWrong();
+              if (round.itemId) bc.recordDrill(round.itemId, 'listen', ok ? 'pass' : 'fail', Date.now() - shownAt.current);
+              setChecked(true);
+            }}
+          >{t('customizeCheck')}</button>
+        </div>
+      ) : (
+        <ResultActions ok={ok} last={last} onRetry={() => { reset(); play(); }} onNext={() => { reset(); if (last) onDone(); else setI(i + 1); }} />
       )}
     </>
   );

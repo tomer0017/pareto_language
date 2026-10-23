@@ -130,6 +130,12 @@ export function builderHint(chunks: readonly string[], placed: readonly number[]
 
 /** Authoring mistakes in one practice step (empty = sound). `itemIds` are the mission's sentences;
  *  `textOf` (optional) gives a sentence's wording, for checks that need it. */
+/** Customize: the order is right when every add-in is set — ✓ exactly for the ones that were asked for. */
+export function customizeResult(picks: Readonly<Record<string, boolean | undefined>>, optionIds: readonly string[], on: readonly string[]): 'unset' | 'right' | 'wrong' {
+  if (optionIds.some((id) => picks[id] === undefined)) return 'unset';
+  return optionIds.every((id) => picks[id] === on.includes(id)) ? 'right' : 'wrong';
+}
+
 export function validatePracticeStep(step: BootcampStep, itemIds: ReadonlySet<string>, textOf?: (id: string) => string | undefined): string[] {
   const issues: string[] = [];
   if (step.kind === 'matchPairs') {
@@ -183,6 +189,19 @@ export function validatePracticeStep(step: BootcampStep, itemIds: ReadonlySet<st
       if (!ids.includes(r.correct)) issues.push(`visualMatch round ${i + 1}: correct tile → ${r.correct}`);
       if (r.itemId && !itemIds.has(r.itemId)) issues.push(`visualMatch round ${i + 1}: item → ${r.itemId}`);
       if (!r.audio.en.trim()) issues.push(`visualMatch round ${i + 1}: nothing to hear`);
+    });
+  }
+  if (step.kind === 'customize') {
+    const ids = step.options.map((o) => o.id);
+    if (!step.base.trim()) issues.push('customize: nothing is being made');
+    if (ids.length < 2 || ids.length > 4) issues.push('customize: needs 2–4 add-ins');
+    if (new Set(ids).size !== ids.length) issues.push('customize: duplicate add-in');
+    for (const o of step.options) if (!o.emoji || !o.label.he || !o.label.en) issues.push(`customize: add-in ${o.id} is incomplete`);
+    step.rounds.forEach((r, i) => {
+      const at = `customize round ${i + 1}`;
+      for (const id of r.on) if (!ids.includes(id)) issues.push(`${at}: unknown add-in ${id}`);
+      if (r.itemId && !itemIds.has(r.itemId)) issues.push(`${at}: item → ${r.itemId}`);
+      if (!r.audio.en.trim()) issues.push(`${at}: nothing to hear`);
     });
   }
   if (step.kind === 'swap') {

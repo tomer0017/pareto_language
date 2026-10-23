@@ -240,7 +240,7 @@ describe('placement in Missions 01–05', () => {
     expect(quick).toEqual(['reply.social.whats-your-name', 'reply.social.where-from', 'reply.social.first-time-q']);
   });
 
-  it('Mission 01 builds its three answers; Mission 02 its two orders; Mission 03 two; Missions 04 and 05 none', () => {
+  it('Mission 01 builds its three answers; Mission 02 its two orders; Mission 03 its two longest lines; Missions 04 and 05 none', () => {
     const rounds = (n: number): string[] => stepsOf(mission(n), 'sentenceBuilder').flatMap((s) => s.rounds.map((r) => strip(r.itemId)));
     expect(rounds(1)).toEqual(['phrase.social.my-name', 'phrase.social.from-israel', 'phrase.social.first-time']);
     expect(rounds(2)).toEqual(['phrase.money.one-box', 'phrase.money.by-card']);
@@ -248,7 +248,8 @@ describe('placement in Missions 01–05', () => {
     expect(rounds(4)).toEqual([]);
     expect(rounds(5)).toEqual([]);
     expect(count(2, 'matchPairs')).toBe(2); // Mission 02 pass: the vendor's words ↔ meaning, and what follows what
-    for (const n of [3, 4, 5]) expect(count(n, 'matchPairs'), `M0${n}`).toBe(0);
+    expect(count(3, 'matchPairs')).toBe(3); // Mission 03 pass: the barista's words ↔ meaning, ordering, finishing & paying
+    for (const n of [4, 5]) expect(count(n, 'matchPairs'), `M0${n}`).toBe(0);
     for (const lang of LANGS) for (const n of [2, 3]) {
       const steps = mission(n, lang).steps;
       expect(steps.findIndex((s) => s.kind === 'sentenceBuilder'), `${lang} M0${n}`).toBeLessThan(steps.findIndex((s) => s.kind === 'dialogue'));

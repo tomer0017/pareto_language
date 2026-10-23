@@ -32,17 +32,25 @@ export const DAY3_FR_ITEMS: BootcampItem[] = [
     meaning: T('בכרטיס, בבקשה.', 'Card, please.') },
   { id: 'fr.phrase.coffee.medium', text: 'Moyen, s’il vous plaît.', meaning: T('בינוני, בבקשה.', 'Medium, please.') },
   { id: 'fr.phrase.coffee.yes-please', text: 'Oui, s’il vous plaît.', meaning: T('כן, בבקשה.', 'Yes, please.') },
-  // hear — the barista question-chain
-  { id: 'fr.reply.coffee.what-can-i-get', text: 'Qu’est-ce que je vous sers ?', meaning: T('מה להביא לך?', 'What can I get you?') },
+  // hear — the barista's lines. Each is EXACTLY a line of the locked conversation (what the video says).
+  { id: 'fr.reply.coffee.what-can-i-get', text: 'Bonjour ! Qu’est-ce que je vous sers ?', meaning: T('בוקר טוב! מה להביא לך?', 'Good morning! What can I get you?'),
+    tip: T('“Qu’est-ce que je vous sers ?” = מה תרצה להזמין? כך מתחילה כל הזמנה.', '“Qu’est-ce que je vous sers ?” = what would you like to order? Every order starts here.') },
   { id: 'fr.reply.coffee.hot-or-iced', text: 'Chaud ou glacé ?', meaning: T('חם או קר?', 'Hot or iced?') },
   { id: 'fr.reply.coffee.here-or-to-go', text: 'Sur place ou à emporter ?', meaning: T('לשבת כאן או לקחת?', 'For here or to go?') },
-  { id: 'fr.reply.coffee.medium-or-large', text: 'Moyen ou grand ?', meaning: T('בינוני או גדול?', 'Medium or large?') },
+  { id: 'fr.reply.coffee.medium-or-large', text: 'Parfait ! Moyen ou grand ?', meaning: T('מצוין! בינוני או גדול?', 'Sure! Medium or large?') },
   { id: 'fr.reply.coffee.milk-sugar', text: 'Lait et sucre ?', meaning: T('חלב וסוכר?', 'Milk and sugar?') },
   { id: 'fr.reply.coffee.anything-to-eat', text: 'Quelque chose à manger ?', meaning: T('משהו לאכול?', 'Anything to eat?') },
-  { id: 'fr.reply.coffee.anything-else', text: 'Vous désirez autre chose ?', meaning: T('עוד משהו?', 'Would you like anything else?') },
-  { id: 'fr.reply.coffee.cash-or-card', text: 'Espèces ou carte ?', meaning: T('מזומן או כרטיס?', 'Cash or card?') },
-  { id: 'fr.reply.coffee.receipt', text: 'Vous voulez le ticket ?', meaning: T('רוצה את הקבלה?', 'Would you like the receipt?') },
-  { id: 'fr.reply.coffee.enjoy', text: 'Bonne journée !', meaning: T('שיהיה לך יום מעולה!', 'Enjoy your day!') },
+  { id: 'fr.reply.coffee.anything-else', text: 'Excellent choix. Vous désirez autre chose ?', meaning: T('בחירה מצוינת. עוד משהו?', 'Great choice. Would you like anything else?'),
+    tip: T('“Vous désirez autre chose ?” — כשסיימת, התשובה הקבועה: C’est tout, merci.', '“Vous désirez autre chose ?” — when you are done, the answer is always: C’est tout, merci.') },
+  { id: 'fr.reply.coffee.cash-or-card', text: 'Ça fait six euros cinquante. Espèces ou carte ?', meaning: T('זה שש יורו וחמישים (‎€6.50). מזומן או כרטיס?', "That'll be six fifty (€6.50). Cash or card?"),
+    tip: T('“six euros cinquante” = 6.50 — היורו קודם, הסנטים אחריו.', '“six euros cinquante” = 6.50 — the euros first, then the cents.') },
+  { id: 'fr.reply.coffee.receipt', text: 'Vous voulez le ticket ?', meaning: T('רוצה את הקבלה?', 'Would you like the receipt?'),
+    tip: T('“le ticket” = הקבלה (בבית קפה בצרפת).', '“le ticket” = the receipt (at a French café).') },
+  { id: 'fr.reply.coffee.enjoy', text: 'Voilà — bonne journée !', meaning: T('בבקשה (הנה) — שיהיה לך יום מעולה!', 'Here you go — enjoy your day!') },
+  // the barista's friendly words, on their own — you only have to know them
+  { id: 'fr.reply.coffee.good-morning', text: 'Bonjour !', meaning: T('בוקר טוב! / שלום!', 'Good morning! / Hello!') },
+  { id: 'fr.reply.coffee.sure', text: 'Parfait !', meaning: T('מצוין! / סגור!', 'Perfect! / Sure!') },
+  { id: 'fr.reply.coffee.great-choice', text: 'Excellent choix.', meaning: T('בחירה מצוינת.', 'Great choice.') },
 ];
 
 const SCENE_BREAKFAST: BootcampDialogue = {

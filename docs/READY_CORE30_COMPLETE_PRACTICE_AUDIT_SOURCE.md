@@ -31,6 +31,7 @@ Read from the mission player (`Bootcamp.tsx`). Per-mission sections list only co
 | `dialogue` — choose your line | (In a checkpoint's cold scene the NPC line is shown WITHOUT its translation, and a wrong pick leads to a slow re-ask and the same choice again.) (In an audio-only scene — Mission 28 — the NPC line is not WRITTEN either before the answer: the bubble holds only a replay button; the text and its translation appear on the feedback card after the pick. A scene transition there — "Later…" — is a cue: shown in the app language above the bubble, never spoken.) One exchange on screen, laid out as a conversation: the NPC line (target language + translation) in a speech bubble beside the other speaker, spoken by TTS; then "Your turn — pick your line" / "תורך — בחר את השורה שלך" with buttons showing TARGET-LANGUAGE lines only; 🔊 "Replay question" / "השמע שוב את השאלה". | fixed, as authored — never shuffled | Accepted natural line: ✓ card (question + your answer, replayable) then Next. Accepted toolkit phrase: no card, the scene continues. Wrong line: ❌ card with "Why" = "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים." (no per-choice explanation is authored), Try again / Continue; Continue plays the NPC's reaction and shows "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה.". | "simulator" pass (accepted) / partial (wrong), only if the choice has a sentence id |
 | `quickReply` — quick reply | "What do you say?" / "מה עונים?" (or, for a situation round, the situation text and "What do you say here?" / "מה אומרים כאן?"); the NPC line auto-plays; 2–3 buttons showing the learner's possible RESPONSES in the target language, drawn as reply bubbles; the other speaker is shown beside an audio bubble that replays the line when tapped (the line is heard, not written). Several rounds in one step, counted "i of n". | shuffled per session | ✓/❌ card: what you heard + translation, your answer, the response that fit (replayable), "Why" = tip or generic line; Try again / Continue. An accepted pick is spoken. | "simulator" pass/fail + response time, on the accepted sentence |
 | `visualMatch` — visual match | "Tap what you hear" / "הקש על מה ששמעת" (or the step's label); the line auto-plays; a 3×3 board of up to 9 tiles; tap the tile that shows what was said. An audio bubble at the top replays the line. | tiles shuffled once per step | Inline: correct tile turns green, a wrong pick red; the spoken line and its translation appear only now; Try again / Next. | "numberSprint" pass/fail + response time, when the round names a sentence |
+| `customize` — customize | "Make it the way you heard it" / "הכן את זה בדיוק כמו ששמעת": the order auto-plays; a cup (what is being made) and one row per add-in, each with a ✓ and a ✕ button — nothing is pre-set, so "no sugar" is a choice of its own. The cup shows every add-in set to ✓. "Check my order" / "בדוק את ההזמנה" unlocks when every row is set. An audio bubble replays the order. | fixed | Each row turns green or red; the spoken order and its translation appear only now; Try again / Next. | "listen" pass/fail + response time, when the round names a sentence |
 | `swap` — swap it | "Finish the sentence" / "השלם את המשפט": a cue (emoji + short app-language hint), the sentence frame with a blank, and 2–3 slot values as tappable pieces under the sentence. | shuffled per session | Inline: the blank is filled, the completed sentence is SPOKEN and translated — also for a non-matching value, which is still a real sentence; Try again / Next. | "flashRecall" pass/fail + response time on the frame's sentence |
 | `miniMap` — mini map | "Tap where to go" / "הקש לאן הולכים": the instruction auto-plays; a 3×3 schematic (landmarks, "you", tappable arrows or pins); tap where the instruction leads. An audio bubble at the top replays it. No translation before the tap. | fixed (it is a map) | Inline, as visual match. | "listen" pass/fail + response time, when the round names a sentence |
 | `matchPairs` — match pairs | "Match each question to your answer" / "חבר כל שאלה לתשובה שלך": one screen, two groups of tiles in the target language — the questions, then the answers. Tap one tile, then its partner (either side first). Tapping a question plays it. An answer tile may be a number or an icon instead of a sentence (matching what was said to what it means); where an icon alone could be misread it carries a few app-language words. No translation anywhere before a match. | answers shuffled per session | A right pair locks, turns green, gets a shared number and the answer is spoken. A wrong pair shakes, shows ✕ and clears — nothing locks, nothing is lost. Continue appears when every pair is locked. | "simulator" pass/fail on the pair's answer sentence |
@@ -2191,7 +2192,7 @@ Learner sentences taught beside the dialogue (not a line in any scene):
 - Phase: 1 — Foundations / יסודות 🛟
 - Source runtime file(s): `apps/web/src/features/bootcamp/day3.ts` · `apps/web/src/features/bootcamp/fr/day3.ts` · `apps/web/src/features/bootcamp/es/day3.ts`
 - Video: found by convention, never written into mission content — EN `videos/en/en_3.mp4` · FR `videos/fr/fr_3.mp4` · ES `videos/es/es_3.mp4`. Played only where that file exists (inventory: `docs/CORE30_FINAL_VIDEO_ACTION_MAP.md`).
-- Video steps inside the Practice flow: no
+- Video steps inside the Practice flow: yes (see flow)
 
 ## Learning goal / intro screen
 
@@ -2209,7 +2210,7 @@ Mission card (plan metadata, shown on Home / Path / mission overview):
 - Why (internal note): THE depth exemplar: one situation, every realistic follow-up (deep moment system).
 - Prepares next (internal note): The reply-chain pattern reused in every service mission; then the want/need/have/can frames.
 
-Intro screen (first Practice step; identical in the English, French and Spanish missions unless flagged):
+Intro screen 1 (first Practice step; identical in the English, French and Spanish missions unless flagged):
 
 - Icon: ☕
 - Title: "Mission 3: Coffee Shop" / "משימה 3: בית קפה"
@@ -2217,40 +2218,62 @@ Intro screen (first Practice step; identical in the English, French and Spanish 
 - Text 2: "The secret: after you order, the barista fires follow-up questions. Know them in advance — never freeze." / "הסוד: אחרי שאתה מזמין, הבריסטה שואל שאלות המשך. מי שמכיר אותן מראש — אף פעם לא קופא."
 - Button: "Walk in" / "להיכנס"
 
+Intro screen 2 (first Practice step; identical in the English, French and Spanish missions unless flagged):
+
+- Icon: 🧾
+- Title: "Your order" / "ההזמנה שלך"
+- Text 1: "☕🧊 Iced coffee · 🥤 medium (M)" / "☕🧊 קפה קר · 🥤 בינוני (M)"
+- Text 2: "🥛 Milk ✓ · 🍬 sugar ✕" / "🥛 חלב ✓ · 🍬 סוכר ✕"
+- Text 3: "🥐 A croissant — ✋ and that’s all" / "🥐 קרואסון — ✋ וזה הכל"
+- Text 4: "💶 €6.50 · 💳 by card · 🧾 receipt — yes" / "💶 ‎€6.50 · 💳 בכרטיס · 🧾 קבלה — כן"
+- Button: "Order it" / "להזמין"
+
 ## Current Practice flow
 
 1. `talk` — intro screen — "Mission 3: Coffee Shop"
-2. `prime` — before-we-speak (word intro) — 6 words → builds `phrase.coffee.no-sugar`
-3. `tool` — key sentence (listen → reveal → say aloud) — `phrase.coffee.iced-coffee` “I'd like an iced coffee, please.” · label "The golden template" / "משפט הזהב" (1/4)
-4. `tool` — key sentence (listen → reveal → say aloud) — `phrase.coffee.no-sugar` “Milk, no sugar.” · label "Order control" / "שליטה בהזמנה" (2/4)
-5. `tool` — key sentence (listen → reveal → say aloud) — `phrase.coffee.thats-all` “That's all, thanks.” · label "The universal closer" / "הסוגר האוניברסלי" (3/4)
-6. `tool` — key sentence (listen → reveal → say aloud) — `phrase.coffee.card` “Card, please.” · label "Settling up" / "סוגרים חשבון" (4/4)
-7. `replies` — expected replies (listening drill) — after `phrase.coffee.iced-coffee`: 4 replies
-8. `receipt` — receipt (proof card) — "You now recognize the four follow-ups of every barista on earth." / "אתה כבר מזהה את ארבע שאלות ההמשך של כל בריסטה בעולם."
-9. `quickReply` — quick reply (hear → pick your response) — 6 round(s)
-10. `sentenceBuilder` — sentence builder (put the chunks in order) — 2 round(s)
-11. `dialogue` — dialogue (choose your line) — scene `breakfast-order`
-12. `receipt` — receipt (proof card) — "You ordered a full breakfast: drink, size, milk, pastry, payment. All of it." / "הזמנת ארוחת בוקר שלמה: שתייה, גודל, חלב, מאפה, תשלום. הכל."
-13. `swipe` — sentence review — 14 sentences
-14. `ambush` — cold open (fast line) — mode recovery · correct `phrase.recovery.repeat`, wrong `phrase.coffee.card`
-15. `receipt` — receipt (proof card) — "An off-script surprise — and you answered with a tool. Exactly how real life works." / "הפתעה מחוץ לתסריט — והגבת עם כלי. זה בדיוק מה שקורה בעולם האמיתי."
-16. `summary` — victory screen
+2. `prime` — before-we-speak (word intro) — 8 words → builds `phrase.coffee.no-sugar`
+3. `tool` — key sentence (listen → reveal → say aloud) — `phrase.coffee.iced-coffee` “I'd like an iced coffee, please.” · label "The golden template" / "משפט הזהב" (1/3)
+4. `tool` — key sentence (listen → reveal → say aloud) — `phrase.coffee.no-sugar` “Milk, no sugar.” · label "Order control" / "שליטה בהזמנה" (2/3)
+5. `tool` — key sentence (listen → reveal → say aloud) — `phrase.coffee.thats-all` “That's all, thanks.” · label "The universal closer" / "הסוגר האוניברסלי" (3/3)
+6. `replies` — expected replies (listening drill) — after `phrase.coffee.iced-coffee`: 6 replies
+7. `receipt` — receipt (proof card) — "You now recognize everything the barista says after you order — size, milk, food, anything else, payment and goodbye." / "אתה כבר מזהה את כל מה שהבריסטה אומר אחרי שהזמנת — גודל, חלב, אוכל, עוד משהו, תשלום ופרידה."
+8. `visualMatch` — visual match (hear → tap the tile) — 6 round(s)
+9. `customize` — customize (hear the order → set ✓ / ✕) — 2 round(s)
+10. `matchPairs` — match pairs (connect each question to its answer) — 4 pairs on one screen
+11. `matchPairs` — match pairs (connect each question to its answer) — 4 pairs on one screen
+12. `sentenceBuilder` — sentence builder (put the chunks in order) — 2 round(s)
+13. `visualMatch` — visual match (hear → tap the tile) — 2 round(s)
+14. `matchPairs` — match pairs (connect each question to its answer) — 3 pairs on one screen
+15. `quickReply` — quick reply (hear → pick your response) — 4 round(s)
+16. `talk` — intro screen — "Your order"
+17. `dialogue` — dialogue (choose your line) — scene `breakfast-order`
+18. `receipt` — receipt (proof card) — "You ordered a full breakfast: drink, size, milk, pastry, payment and receipt. All of it." / "הזמנת ארוחת בוקר שלמה: שתייה, גודל, חלב, מאפה, תשלום וקבלה. הכל."
+19. `swipe` — sentence review — 13 sentences
+20. `quickReply` — quick reply (hear → pick your response) — 7 round(s) · speed challenge
+21. `receipt` — receipt (proof card) — "Seven barista questions, at real speed and with no translation — and you got through all of them." / "שבע שאלות של בריסטה, בקצב אמיתי ובלי תרגום — ושרדת את כולן."
+22. `video` — video — mode again
+23. `visualMatch` — visual match (hear → tap the tile) — 5 round(s)
+24. `visualMatch` — visual match (hear → tap the tile) — 4 round(s)
+25. `receipt` — receipt (proof card) — "You understood the whole café conversation — what you ordered, the size, with and without, what you ate, the price and how you paid." / "הבנת את כל השיחה בבית הקפה — מה הזמנת, איזה גודל, עם מה ובלי מה, מה אכלת, כמה שילמת ואיך."
+26. `summary` — victory screen
 
 Step sequence identical in EN / FR / ES: yes.
 
 ## Before we speak / word intro
 
-Step 2. Label: "Before we speak" / "לפני שנדבר". Intro: "Six words control every café order." / "שש מילים שולטות בכל הזמנה בבית קפה.".
+Step 2. Label: "Before we speak" / "לפני שנדבר". Intro: "The things of the order. Tap each one to hear it." / "הדברים של ההזמנה. הקש על כל אחד כדי לשמוע.".
 The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `cafe.coffee` — EN "coffee" · FR "café" · ES "café" — meaning "קפה" / "coffee" — icon ☕ — new
-2. `cafe.milk` — EN "milk" · FR "lait" · ES "leche" — meaning "חלב" / "milk" — icon 🥛 — new
-3. `cafe.sugar` — EN "sugar" · FR "sucre" · ES "azúcar" — meaning "סוכר" / "sugar" — icon 🍬 — new
-4. `size.medium` — EN "medium" · FR "moyen" · ES "mediano" — meaning "בינוני" / "medium" — icon none — new
-5. `core.with` — EN "with" · FR "avec" · ES "con" — meaning "עם" / "with" — icon none — new
-6. `core.without` — EN "no / without" · FR "sans" · ES "sin" — meaning "בלי" / "no / without" — icon none — new
+1. `cafe.iced-coffee` — EN "iced coffee" · FR "café glacé" · ES "café con hielo" — meaning "קפה קר (עם קרח)" / "iced coffee" — icon 🧊 — new
+2. `size.medium` — EN "medium" · FR "moyen" · ES "mediano" — meaning "בינוני (M)" / "medium (M)" — icon 🥤 — new
+3. `size.large` — EN "large" · FR "grand" · ES "grande" — meaning "גדול (L)" / "large (L)" — icon none — new
+4. `cafe.milk` — EN "milk" · FR "lait" · ES "leche" — meaning "חלב" / "milk" — icon 🥛 — new
+5. `cafe.sugar` — EN "sugar" · FR "sucre" · ES "azúcar" — meaning "סוכר" / "sugar" — icon 🍬 — new
+6. `core.with` — EN "with" · FR "avec" · ES "con" — meaning "עם" / "with" — icon ✓ — new
+7. `core.without` — EN "no" · FR "sans" · ES "sin" — meaning "בלי" / "no / without" — icon ✕ — new
+8. `cafe.receipt` — EN "receipt" · FR "ticket" · ES "recibo" — meaning "קבלה" / "receipt" — icon 🧾 — new
 
 "These build the sentence:" card: `phrase.coffee.no-sugar` — EN "Milk, no sugar." · FR "Avec du lait, sans sucre." · ES "Con leche, sin azúcar." · HE "עם חלב, בלי סוכר." (with its own play button).
 
@@ -2267,7 +2290,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "The template: I’d like ___, please — works for everything." / "התבנית: I’d like ___, please — עובדת על הכל."
 - Used in missions: 03, 18
-- Exercised here as: key sentence (step 3); "you said" lead-in of the expected-replies drill (step 7); quick-reply response (step 9, round 6, wrong option); sentence-builder target (step 10, round 1); sentence review (step 13); dialogue choice breakfast-order/c1 (accepted); dialogue choice breakfast-order/c1b (accepted)
+- Exercised here as: key sentence (step 3); "you said" lead-in of the expected-replies drill (step 6); visual-match audio (step 8, round 1); match-pairs answer tile (step 11, pair 1); sentence-builder target (step 12, round 1); quick-reply response (step 15, round 1, accepted); quick-reply response (step 20, round 1, accepted); visual-match audio (step 23, round 1); dialogue choice breakfast-order/c1 (accepted); dialogue choice breakfast-order/c1b (accepted)
 
 ### Sentence: `phrase.coffee.to-go`
 
@@ -2278,7 +2301,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 03, 18
-- Exercised here as: quick-reply response (step 9, round 1, accepted); quick-reply response (step 9, round 5, wrong option); quick-reply response (step 9, round 6, wrong option); sentence review (step 13)
+- Exercised here as: sentence review (step 19)
 
 ### Sentence: `phrase.coffee.no-sugar`
 
@@ -2289,7 +2312,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "with / no — two words that control every order." / "עם = with · בלי = no/without. שתי מילים ששולטות בכל הזמנה."
 - Used in missions: 03
-- Exercised here as: built by the word intro (step 2); key sentence (step 4); quick-reply response (step 9, round 2, wrong option); quick-reply response (step 9, round 3, accepted); sentence-builder target (step 10, round 2); sentence review (step 13); dialogue choice breakfast-order/c3 (accepted); dialogue choice breakfast-order/c3b (accepted)
+- Exercised here as: built by the word intro (step 2); key sentence (step 4); customize audio (step 9, round 1); match-pairs answer tile (step 11, pair 3); sentence-builder target (step 12, round 2); quick-reply response (step 15, round 2, accepted); quick-reply response (step 20, round 2, wrong option); quick-reply response (step 20, round 3, accepted); quick-reply response (step 20, round 5, wrong option); visual-match audio (step 23, round 3); dialogue choice breakfast-order/c3 (accepted); dialogue choice breakfast-order/c3b (accepted)
 
 ### Sentence: `phrase.coffee.croissant`
 
@@ -2300,7 +2323,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "“Croissant” — a French pastry. That’s exactly how it’s written on the menu abroad." / "“Croissant” — מאפה חמאה צרפתי. כך בדיוק זה כתוב בתפריט בחו״ל."
 - Used in missions: 03
-- Exercised here as: quick-reply response (step 9, round 2, wrong option); quick-reply response (step 9, round 4, accepted); sentence review (step 13); dialogue choice breakfast-order/c4 (accepted)
+- Exercised here as: visual-match audio (step 8, round 3); match-pairs answer tile (step 11, pair 4); quick-reply response (step 15, round 3, accepted); quick-reply response (step 15, round 4, wrong option); sentence review (step 19); quick-reply response (step 20, round 3, wrong option); quick-reply response (step 20, round 4, accepted); quick-reply response (step 20, round 6, wrong option); visual-match audio (step 23, round 4); dialogue choice breakfast-order/c4 (accepted)
 
 ### Sentence: `phrase.coffee.thats-all`
 
@@ -2311,7 +2334,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "Closes any order politely. Works everywhere on earth." / "סוגר כל הזמנה בנימוס. עובד בכל מקום בעולם."
 - Used in missions: 03, 29
-- Exercised here as: key sentence (step 5); quick-reply response (step 9, round 1, wrong option); quick-reply response (step 9, round 4, accepted); sentence review (step 13); dialogue choice breakfast-order/c4 (accepted); dialogue choice breakfast-order/c5 (accepted)
+- Exercised here as: key sentence (step 5); visual-match audio (step 8, round 5); match-pairs answer tile (step 14, pair 1); quick-reply response (step 15, round 3, accepted); quick-reply response (step 20, round 5, accepted); quick-reply response (step 20, round 6, wrong option); visual-match audio (step 23, round 5); dialogue choice breakfast-order/c4 (accepted); dialogue choice breakfast-order/c5 (accepted)
 
 ### Sentence: `phrase.coffee.card`
 
@@ -2322,7 +2345,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 03
-- Exercised here as: key sentence (step 6); quick-reply response (step 9, round 1, wrong option); quick-reply response (step 9, round 3, wrong option); quick-reply response (step 9, round 4, wrong option); quick-reply response (step 9, round 5, accepted); sentence review (step 13); cold-open wrong option (step 14); dialogue choice breakfast-order/c6 (accepted); dialogue choice breakfast-order/c6b (accepted)
+- Exercised here as: match-pairs answer tile (step 14, pair 2); quick-reply response (step 15, round 1, wrong option); quick-reply response (step 15, round 2, wrong option); quick-reply response (step 15, round 3, wrong option); sentence review (step 19); quick-reply response (step 20, round 1, wrong option); quick-reply response (step 20, round 4, wrong option); quick-reply response (step 20, round 5, wrong option); quick-reply response (step 20, round 6, accepted); quick-reply response (step 20, round 7, wrong option); visual-match audio (step 24, round 2); dialogue choice breakfast-order/c6 (accepted); dialogue choice breakfast-order/c6b (accepted)
 
 ### Sentence: `phrase.coffee.medium`
 
@@ -2333,7 +2356,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 03
-- Exercised here as: quick-reply response (step 9, round 2, accepted); quick-reply response (step 9, round 3, wrong option); quick-reply response (step 9, round 5, wrong option); sentence review (step 13); dialogue choice breakfast-order/c2 (accepted); dialogue choice breakfast-order/c2b (accepted)
+- Exercised here as: visual-match audio (step 8, round 2); match-pairs answer tile (step 11, pair 2); quick-reply response (step 15, round 1, wrong option); quick-reply response (step 15, round 2, wrong option); quick-reply response (step 15, round 4, wrong option); sentence review (step 19); quick-reply response (step 20, round 1, wrong option); quick-reply response (step 20, round 2, accepted); quick-reply response (step 20, round 3, wrong option); quick-reply response (step 20, round 4, wrong option); quick-reply response (step 20, round 7, wrong option); visual-match audio (step 23, round 2); dialogue choice breakfast-order/c2 (accepted); dialogue choice breakfast-order/c2b (accepted)
 
 ### Sentence: `phrase.coffee.yes-please`
 
@@ -2344,18 +2367,18 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 03, 29
-- Exercised here as: quick-reply response (step 9, round 6, accepted); sentence review (step 13); dialogue choice breakfast-order/c7 (accepted)
+- Exercised here as: match-pairs answer tile (step 14, pair 3); quick-reply response (step 15, round 4, accepted); sentence review (step 19); quick-reply response (step 20, round 2, wrong option); quick-reply response (step 20, round 7, accepted); dialogue choice breakfast-order/c7 (accepted)
 
 ### Sentence: `reply.coffee.what-can-i-get`
 
-- EN: What can I get you?
-- HE: מה להביא לך?
-- FR: Qu’est-ce que je vous sers ?
-- ES: ¿Qué le sirvo?
+- EN: Good morning! What can I get you?
+- HE: בוקר טוב! מה להביא לך?
+- FR: Bonjour ! Qu’est-ce que je vous sers ?
+- ES: ¡Buenos días! ¿Qué le sirvo?
 - Role: receptive — an expected reply the learner hears
-- Tip / pattern note: none
+- Tip / pattern note: "“What can I get you?” = what would you like to order? Every order starts here." / "“What can I get you?” = מה תרצה להזמין? כך מתחילה כל הזמנה."
 - Used in missions: 03
-- Exercised here as: nothing (listed only)
+- Exercised here as: match-pairs question tile (step 11, pair 1); quick-reply prompt (step 15, round 1); sentence review (step 19)
 
 ### Sentence: `reply.coffee.hot-or-iced`
 
@@ -2377,18 +2400,18 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 03
-- Exercised here as: expected-reply audio (step 7); quick-reply prompt (step 9, round 1); sentence review (step 13)
+- Exercised here as: nothing (listed only)
 
 ### Sentence: `reply.coffee.medium-or-large`
 
-- EN: Medium or large?
-- HE: בינוני או גדול?
-- FR: Moyen ou grand ?
-- ES: ¿Mediano o grande?
+- EN: Sure! Medium or large?
+- HE: סגור! בינוני או גדול?
+- FR: Parfait ! Moyen ou grand ?
+- ES: ¡Perfecto! ¿Mediano o grande?
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 03
-- Exercised here as: expected-reply audio (step 7); quick-reply prompt (step 9, round 2); sentence review (step 13)
+- Exercised here as: expected-reply audio (step 6); match-pairs question tile (step 11, pair 2); sentence review (step 19)
 
 ### Sentence: `reply.coffee.milk-sugar`
 
@@ -2399,7 +2422,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 03
-- Exercised here as: expected-reply audio (step 7); quick-reply prompt (step 9, round 3); sentence review (step 13)
+- Exercised here as: expected-reply audio (step 6); match-pairs question tile (step 11, pair 3); quick-reply prompt (step 15, round 2); sentence review (step 19)
 
 ### Sentence: `reply.coffee.anything-to-eat`
 
@@ -2410,29 +2433,29 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 03
-- Exercised here as: quick-reply prompt (step 9, round 4); sentence review (step 13)
+- Exercised here as: expected-reply audio (step 6); match-pairs question tile (step 11, pair 4); quick-reply prompt (step 15, round 3); sentence review (step 19)
 
 ### Sentence: `reply.coffee.anything-else`
 
-- EN: Would you like anything else?
-- HE: עוד משהו?
-- FR: Vous désirez autre chose ?
-- ES: ¿Algo más?
+- EN: Great choice. Would you like anything else?
+- HE: בחירה מצוינת. עוד משהו?
+- FR: Excellent choix. Vous désirez autre chose ?
+- ES: Buena elección. ¿Algo más?
 - Role: receptive — an expected reply the learner hears
-- Tip / pattern note: none
+- Tip / pattern note: "“Anything else?” — when you are done, the answer is always: That’s all, thanks." / "“Anything else?” — כשסיימת, התשובה הקבועה: That’s all, thanks."
 - Used in missions: 03
-- Exercised here as: expected-reply audio (step 7)
+- Exercised here as: expected-reply audio (step 6); visual-match audio (step 8, round 4); match-pairs question tile (step 14, pair 1); sentence review (step 19)
 
 ### Sentence: `reply.coffee.cash-or-card`
 
-- EN: Cash or card?
-- HE: מזומן או כרטיס?
-- FR: Espèces ou carte ?
-- ES: ¿Efectivo o tarjeta?
+- EN: That'll be six fifty. Cash or card?
+- HE: זה שש יורו וחמישים (‎€6.50). מזומן או כרטיס?
+- FR: Ça fait six euros cinquante. Espèces ou carte ?
+- ES: Son seis con cincuenta. ¿Efectivo o tarjeta?
 - Role: receptive — an expected reply the learner hears
-- Tip / pattern note: none
+- Tip / pattern note: "“six fifty” = 6.50 — both parts of the price, without saying “euros”." / "“six fifty” = 6.50 — אומרים את שני החלקים של המחיר, בלי המילה “יורו”."
 - Used in missions: 03
-- Exercised here as: quick-reply prompt (step 9, round 5); sentence review (step 13)
+- Exercised here as: expected-reply audio (step 6); match-pairs question tile (step 14, pair 2); sentence review (step 19)
 
 ### Sentence: `reply.coffee.receipt`
 
@@ -2443,18 +2466,51 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 03
-- Exercised here as: quick-reply prompt (step 9, round 6)
+- Exercised here as: visual-match audio (step 8, round 6); match-pairs question tile (step 14, pair 3); quick-reply prompt (step 15, round 4); sentence review (step 19); visual-match audio (step 24, round 3)
 
 ### Sentence: `reply.coffee.enjoy`
 
-- EN: Enjoy your day!
-- HE: שיהיה לך יום מעולה!
-- FR: Bonne journée !
-- ES: ¡Que tenga un buen día!
+- EN: Here you go — enjoy your day!
+- HE: בבקשה (הנה) — שיהיה לך יום מעולה!
+- FR: Voilà — bonne journée !
+- ES: Aquí tiene — ¡que tenga un buen día!
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 03
-- Exercised here as: nothing (listed only)
+- Exercised here as: expected-reply audio (step 6); match-pairs question tile (step 10, pair 4); match-pairs answer tile (step 10, pair 4); visual-match audio (step 24, round 4)
+
+### Sentence: `reply.coffee.good-morning`
+
+- EN: Good morning!
+- HE: בוקר טוב!
+- FR: Bonjour !
+- ES: ¡Buenos días!
+- Role: receptive — an expected reply the learner hears
+- Tip / pattern note: none
+- Used in missions: 03
+- Exercised here as: match-pairs question tile (step 10, pair 1); match-pairs answer tile (step 10, pair 1)
+
+### Sentence: `reply.coffee.sure`
+
+- EN: Sure!
+- HE: בטח! / סגור!
+- FR: Parfait !
+- ES: ¡Perfecto!
+- Role: receptive — an expected reply the learner hears
+- Tip / pattern note: none
+- Used in missions: 03
+- Exercised here as: match-pairs question tile (step 10, pair 2); match-pairs answer tile (step 10, pair 2)
+
+### Sentence: `reply.coffee.great-choice`
+
+- EN: Great choice.
+- HE: בחירה מצוינת.
+- FR: Excellent choix.
+- ES: Buena elección.
+- Role: receptive — an expected reply the learner hears
+- Tip / pattern note: none
+- Used in missions: 03
+- Exercised here as: match-pairs question tile (step 10, pair 3); match-pairs answer tile (step 10, pair 3)
 
 ### Sentence: `phrase.recovery.one-moment`
 
@@ -2476,7 +2532,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
 - Used in missions: 01, 03, 05, 06, 08, 09, 10, 11, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
-- Exercised here as: sentence review (step 13); cold-open correct option (step 14); dialogue choice breakfast-order/c2 (accepted)
+- Exercised here as: sentence review (step 19); dialogue choice breakfast-order/c2 (accepted)
 
 ### Sentence: `phrase.recovery.slowly`
 
@@ -2505,57 +2561,83 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 Lead-in screen: "You said:" / "אמרת:" — EN "I'd like an iced coffee, please." · FR "Je voudrais un café glacé, s’il vous plaît." · ES "Quiero un café con hielo, por favor." — then "What might they answer? Learn the replies before they surprise you." / "מה הם עלולים לענות? נלמד את התשובות לפני שהן מפתיעות אותך." — button 👂 "I'm ready" / "אני מוכן".
 Linked learner sentence: `phrase.coffee.iced-coffee`. Each reply below is played once automatically; the learner picks its MEANING from three buttons. Distractors are always the first two OTHER replies of this same drill, in drill order (runtime rule), so the three choices are shuffled per session.
 
-### M03-Q01 — expected-reply (step 7, reply 1 of 4)
+### M03-Q01 — expected-reply (step 6, reply 1 of 6)
 
-- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (1/4)
-- Audio played: EN "For here or to go?" · FR "Sur place ou à emporter ?" · ES "¿Para aquí o para llevar?"
-- Meaning of the audio (HE): "לשבת כאן או לקחת?"
+- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (1/6)
+- Audio played: EN "Sure! Medium or large?" · FR "Parfait ! Moyen ou grand ?" · ES "¡Perfecto! ¿Mediano o grande?"
+- Meaning of the audio (HE): "סגור! בינוני או גדול?"
 - Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
 - Choices:
-  1. HE "לשבת כאן או לקחת?" / EN "For here or to go?" — `reply.coffee.here-or-to-go` — ✅ accepted
-  2. HE "בינוני או גדול?" / EN "Medium or large?" — `reply.coffee.medium-or-large` — ❌ wrong
-  3. HE "חלב וסוכר?" / EN "Milk and sugar?" — `reply.coffee.milk-sugar` — ❌ wrong
-- Tests: reply.coffee.here-or-to-go
-- Explanation shown after answering: generic: “For here or to go?” means “לשבת כאן או לקחת?”.
-
-### M03-Q02 — expected-reply (step 7, reply 2 of 4)
-
-- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (2/4)
-- Audio played: EN "Medium or large?" · FR "Moyen ou grand ?" · ES "¿Mediano o grande?"
-- Meaning of the audio (HE): "בינוני או גדול?"
-- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
-- Choices:
-  1. HE "בינוני או גדול?" / EN "Medium or large?" — `reply.coffee.medium-or-large` — ✅ accepted
-  2. HE "לשבת כאן או לקחת?" / EN "For here or to go?" — `reply.coffee.here-or-to-go` — ❌ wrong
-  3. HE "חלב וסוכר?" / EN "Milk and sugar?" — `reply.coffee.milk-sugar` — ❌ wrong
+  1. HE "סגור! בינוני או גדול?" / EN "Sure! Medium or large?" — `reply.coffee.medium-or-large` — ✅ accepted
+  2. HE "חלב וסוכר?" / EN "Milk and sugar?" — `reply.coffee.milk-sugar` — ❌ wrong
+  3. HE "משהו לאכול?" / EN "Anything to eat?" — `reply.coffee.anything-to-eat` — ❌ wrong
 - Tests: reply.coffee.medium-or-large
-- Explanation shown after answering: generic: “Medium or large?” means “בינוני או גדול?”.
+- Explanation shown after answering: generic: “Sure! Medium or large?” means “סגור! בינוני או גדול?”.
 
-### M03-Q03 — expected-reply (step 7, reply 3 of 4)
+### M03-Q02 — expected-reply (step 6, reply 2 of 6)
 
-- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (3/4)
+- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (2/6)
 - Audio played: EN "Milk and sugar?" · FR "Lait et sucre ?" · ES "¿Leche y azúcar?"
 - Meaning of the audio (HE): "חלב וסוכר?"
 - Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
 - Choices:
   1. HE "חלב וסוכר?" / EN "Milk and sugar?" — `reply.coffee.milk-sugar` — ✅ accepted
-  2. HE "לשבת כאן או לקחת?" / EN "For here or to go?" — `reply.coffee.here-or-to-go` — ❌ wrong
-  3. HE "בינוני או גדול?" / EN "Medium or large?" — `reply.coffee.medium-or-large` — ❌ wrong
+  2. HE "סגור! בינוני או גדול?" / EN "Sure! Medium or large?" — `reply.coffee.medium-or-large` — ❌ wrong
+  3. HE "משהו לאכול?" / EN "Anything to eat?" — `reply.coffee.anything-to-eat` — ❌ wrong
 - Tests: reply.coffee.milk-sugar
 - Explanation shown after answering: generic: “Milk and sugar?” means “חלב וסוכר?”.
 
-### M03-Q04 — expected-reply (step 7, reply 4 of 4)
+### M03-Q03 — expected-reply (step 6, reply 3 of 6)
 
-- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (4/4)
-- Audio played: EN "Would you like anything else?" · FR "Vous désirez autre chose ?" · ES "¿Algo más?"
-- Meaning of the audio (HE): "עוד משהו?"
+- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (3/6)
+- Audio played: EN "Anything to eat?" · FR "Quelque chose à manger ?" · ES "¿Algo de comer?"
+- Meaning of the audio (HE): "משהו לאכול?"
 - Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
 - Choices:
-  1. HE "עוד משהו?" / EN "Would you like anything else?" — `reply.coffee.anything-else` — ✅ accepted
-  2. HE "לשבת כאן או לקחת?" / EN "For here or to go?" — `reply.coffee.here-or-to-go` — ❌ wrong
-  3. HE "בינוני או גדול?" / EN "Medium or large?" — `reply.coffee.medium-or-large` — ❌ wrong
+  1. HE "משהו לאכול?" / EN "Anything to eat?" — `reply.coffee.anything-to-eat` — ✅ accepted
+  2. HE "סגור! בינוני או גדול?" / EN "Sure! Medium or large?" — `reply.coffee.medium-or-large` — ❌ wrong
+  3. HE "חלב וסוכר?" / EN "Milk and sugar?" — `reply.coffee.milk-sugar` — ❌ wrong
+- Tests: reply.coffee.anything-to-eat
+- Explanation shown after answering: generic: “Anything to eat?” means “משהו לאכול?”.
+
+### M03-Q04 — expected-reply (step 6, reply 4 of 6)
+
+- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (4/6)
+- Audio played: EN "Great choice. Would you like anything else?" · FR "Excellent choix. Vous désirez autre chose ?" · ES "Buena elección. ¿Algo más?"
+- Meaning of the audio (HE): "בחירה מצוינת. עוד משהו?"
+- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
+- Choices:
+  1. HE "בחירה מצוינת. עוד משהו?" / EN "Great choice. Would you like anything else?" — `reply.coffee.anything-else` — ✅ accepted
+  2. HE "סגור! בינוני או גדול?" / EN "Sure! Medium or large?" — `reply.coffee.medium-or-large` — ❌ wrong
+  3. HE "חלב וסוכר?" / EN "Milk and sugar?" — `reply.coffee.milk-sugar` — ❌ wrong
 - Tests: reply.coffee.anything-else
-- Explanation shown after answering: generic: “Would you like anything else?” means “עוד משהו?”.
+- Explanation shown after answering: tip: “Anything else?” — כשסיימת, התשובה הקבועה: That’s all, thanks. / “Anything else?” — when you are done, the answer is always: That’s all, thanks.
+
+### M03-Q05 — expected-reply (step 6, reply 5 of 6)
+
+- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (5/6)
+- Audio played: EN "That'll be six fifty. Cash or card?" · FR "Ça fait six euros cinquante. Espèces ou carte ?" · ES "Son seis con cincuenta. ¿Efectivo o tarjeta?"
+- Meaning of the audio (HE): "זה שש יורו וחמישים (‎€6.50). מזומן או כרטיס?"
+- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
+- Choices:
+  1. HE "זה שש יורו וחמישים (‎€6.50). מזומן או כרטיס?" / EN "That'll be six fifty. Cash or card?" — `reply.coffee.cash-or-card` — ✅ accepted
+  2. HE "סגור! בינוני או גדול?" / EN "Sure! Medium or large?" — `reply.coffee.medium-or-large` — ❌ wrong
+  3. HE "חלב וסוכר?" / EN "Milk and sugar?" — `reply.coffee.milk-sugar` — ❌ wrong
+- Tests: reply.coffee.cash-or-card
+- Explanation shown after answering: tip: “six fifty” = 6.50 — אומרים את שני החלקים של המחיר, בלי המילה “יורו”. / “six fifty” = 6.50 — both parts of the price, without saying “euros”.
+
+### M03-Q06 — expected-reply (step 6, reply 6 of 6)
+
+- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (6/6)
+- Audio played: EN "Here you go — enjoy your day!" · FR "Voilà — bonne journée !" · ES "Aquí tiene — ¡que tenga un buen día!"
+- Meaning of the audio (HE): "בבקשה (הנה) — שיהיה לך יום מעולה!"
+- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
+- Choices:
+  1. HE "בבקשה (הנה) — שיהיה לך יום מעולה!" / EN "Here you go — enjoy your day!" — `reply.coffee.enjoy` — ✅ accepted
+  2. HE "סגור! בינוני או גדול?" / EN "Sure! Medium or large?" — `reply.coffee.medium-or-large` — ❌ wrong
+  3. HE "חלב וסוכר?" / EN "Milk and sugar?" — `reply.coffee.milk-sugar` — ❌ wrong
+- Tests: reply.coffee.enjoy
+- Explanation shown after answering: generic: “Here you go — enjoy your day!” means “בבקשה (הנה) — שיהיה לך יום מעולה!”.
 
 ## Quizzes
 
@@ -2563,33 +2645,363 @@ No meaning quiz in this mission.
 
 ## Active practice — Quick Reply · Visual Match · Swap It · Mini Map
 
-### M03-Q05 — quick-reply (step 9, round 1 of 6)
+### M03-Q07 — visual-match (step 8, round 1 of 6)
 
-- Prompt displayed: "The barista asks — what do you say?" / "הבריסטה שואל — מה עונים?"
-- Audio played: EN "For here or to go?" · FR "Sur place ou à emporter ?" · ES "¿Para aquí o para llevar?"
-- Meaning of the audio (HE): "לשבת כאן או לקחת?"
-- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Prompt displayed: "The order — tap what you hear" / "ההזמנה — הקש על מה ששמעת"
+- Audio played: EN "I'd like an iced coffee, please." · FR "Je voudrais un café glacé, s’il vous plaît." · ES "Quiero un café con hielo, por favor."
+- Meaning of the audio (HE): "אני רוצה קפה קר, בבקשה."
+- Buttons show: a 3×3 board of 9 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. EN "To go, please." · FR "À emporter, s’il vous plaît." · ES "Para llevar, por favor." · (HE gloss "לקחת, בבקשה.") — `phrase.coffee.to-go` — ✅ accepted
-  2. EN "That's all, thanks." · FR "C’est tout, merci." · ES "Eso es todo, gracias." · (HE gloss "זה הכל, תודה.") — `phrase.coffee.thats-all` — ❌ wrong
-  3. EN "Card, please." · FR "Par carte, s’il vous plaît." · ES "Con tarjeta, por favor." · (HE gloss "בכרטיס, בבקשה.") — `phrase.coffee.card` — ❌ wrong
-- Tests: phrase.coffee.to-go
-- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+  1. "☕🧊" — `phrase.coffee.iced-coffee` — ✅ accepted
+  2. "☕🔥" — no sentence id — ❌ wrong
+  3. "🥤M" — no sentence id — ❌ wrong
+  4. "🥤L" — no sentence id — ❌ wrong
+  5. "🥐" — no sentence id — ❌ wrong
+  6. "🧁" — no sentence id — ❌ wrong
+  7. "➕❓" — no sentence id — ❌ wrong
+  8. "✋" — no sentence id — ❌ wrong
+  9. "🧾" — no sentence id — ❌ wrong
+- Tests: phrase.coffee.iced-coffee
+- Explanation shown after answering: after the tap: the spoken line and its translation
 
-### M03-Q06 — quick-reply (step 9, round 2 of 6)
+### M03-Q08 — visual-match (step 8, round 2 of 6)
 
-- Prompt displayed: "The barista asks — what do you say?" / "הבריסטה שואל — מה עונים?"
-- Audio played: EN "Medium or large?" · FR "Moyen ou grand ?" · ES "¿Mediano o grande?"
-- Meaning of the audio (HE): "בינוני או גדול?"
-- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Prompt displayed: "The order — tap what you hear" / "ההזמנה — הקש על מה ששמעת"
+- Audio played: EN "Medium, please." · FR "Moyen, s’il vous plaît." · ES "Mediano, por favor."
+- Meaning of the audio (HE): "בינוני, בבקשה."
+- Buttons show: a 3×3 board of 9 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. EN "Medium, please." · FR "Moyen, s’il vous plaît." · ES "Mediano, por favor." · (HE gloss "בינוני, בבקשה.") — `phrase.coffee.medium` — ✅ accepted
-  2. EN "Milk, no sugar." · FR "Avec du lait, sans sucre." · ES "Con leche, sin azúcar." · (HE gloss "עם חלב, בלי סוכר.") — `phrase.coffee.no-sugar` — ❌ wrong
-  3. EN "A croissant, please." · FR "Un croissant, s’il vous plaît." · ES "Un cruasán, por favor." · (HE gloss "קרואסון, בבקשה.") — `phrase.coffee.croissant` — ❌ wrong
+  1. "☕🧊" — no sentence id — ❌ wrong
+  2. "☕🔥" — no sentence id — ❌ wrong
+  3. "🥤M" — `phrase.coffee.medium` — ✅ accepted
+  4. "🥤L" — no sentence id — ❌ wrong
+  5. "🥐" — no sentence id — ❌ wrong
+  6. "🧁" — no sentence id — ❌ wrong
+  7. "➕❓" — no sentence id — ❌ wrong
+  8. "✋" — no sentence id — ❌ wrong
+  9. "🧾" — no sentence id — ❌ wrong
 - Tests: phrase.coffee.medium
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M03-Q09 — visual-match (step 8, round 3 of 6)
+
+- Prompt displayed: "The order — tap what you hear" / "ההזמנה — הקש על מה ששמעת"
+- Audio played: EN "A croissant, please." · FR "Un croissant, s’il vous plaît." · ES "Un cruasán, por favor."
+- Meaning of the audio (HE): "קרואסון, בבקשה."
+- Buttons show: a 3×3 board of 9 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "☕🧊" — no sentence id — ❌ wrong
+  2. "☕🔥" — no sentence id — ❌ wrong
+  3. "🥤M" — no sentence id — ❌ wrong
+  4. "🥤L" — no sentence id — ❌ wrong
+  5. "🥐" — `phrase.coffee.croissant` — ✅ accepted
+  6. "🧁" — no sentence id — ❌ wrong
+  7. "➕❓" — no sentence id — ❌ wrong
+  8. "✋" — no sentence id — ❌ wrong
+  9. "🧾" — no sentence id — ❌ wrong
+- Tests: phrase.coffee.croissant
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M03-Q10 — visual-match (step 8, round 4 of 6)
+
+- Prompt displayed: "The order — tap what you hear" / "ההזמנה — הקש על מה ששמעת"
+- Audio played: EN "Great choice. Would you like anything else?" · FR "Excellent choix. Vous désirez autre chose ?" · ES "Buena elección. ¿Algo más?"
+- Meaning of the audio (HE): "בחירה מצוינת. עוד משהו?"
+- Buttons show: a 3×3 board of 9 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "☕🧊" — no sentence id — ❌ wrong
+  2. "☕🔥" — no sentence id — ❌ wrong
+  3. "🥤M" — no sentence id — ❌ wrong
+  4. "🥤L" — no sentence id — ❌ wrong
+  5. "🥐" — no sentence id — ❌ wrong
+  6. "🧁" — no sentence id — ❌ wrong
+  7. "➕❓" — `reply.coffee.anything-else` — ✅ accepted
+  8. "✋" — no sentence id — ❌ wrong
+  9. "🧾" — no sentence id — ❌ wrong
+- Tests: reply.coffee.anything-else
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M03-Q11 — visual-match (step 8, round 5 of 6)
+
+- Prompt displayed: "The order — tap what you hear" / "ההזמנה — הקש על מה ששמעת"
+- Audio played: EN "That's all, thanks." · FR "C’est tout, merci." · ES "Eso es todo, gracias."
+- Meaning of the audio (HE): "זה הכל, תודה."
+- Buttons show: a 3×3 board of 9 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "☕🧊" — no sentence id — ❌ wrong
+  2. "☕🔥" — no sentence id — ❌ wrong
+  3. "🥤M" — no sentence id — ❌ wrong
+  4. "🥤L" — no sentence id — ❌ wrong
+  5. "🥐" — no sentence id — ❌ wrong
+  6. "🧁" — no sentence id — ❌ wrong
+  7. "➕❓" — no sentence id — ❌ wrong
+  8. "✋" — `phrase.coffee.thats-all` — ✅ accepted
+  9. "🧾" — no sentence id — ❌ wrong
+- Tests: phrase.coffee.thats-all
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M03-Q12 — visual-match (step 8, round 6 of 6)
+
+- Prompt displayed: "The order — tap what you hear" / "ההזמנה — הקש על מה ששמעת"
+- Audio played: EN "Would you like the receipt?" · FR "Vous voulez le ticket ?" · ES "¿Quiere el recibo?"
+- Meaning of the audio (HE): "רוצה את הקבלה?"
+- Buttons show: a 3×3 board of 9 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "☕🧊" — no sentence id — ❌ wrong
+  2. "☕🔥" — no sentence id — ❌ wrong
+  3. "🥤M" — no sentence id — ❌ wrong
+  4. "🥤L" — no sentence id — ❌ wrong
+  5. "🥐" — no sentence id — ❌ wrong
+  6. "🧁" — no sentence id — ❌ wrong
+  7. "➕❓" — no sentence id — ❌ wrong
+  8. "✋" — no sentence id — ❌ wrong
+  9. "🧾" — `reply.coffee.receipt` — ✅ accepted
+- Tests: reply.coffee.receipt
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M03-Q13 — customize (step 9, round 1 of 2)
+
+- Prompt displayed: "Milk and sugar? — make the coffee exactly as you heard it" / "חלב וסוכר? — הכן את הקפה בדיוק כמו ששמעת"
+- Audio played: EN "Milk, no sugar." · FR "Avec du lait, sans sucre." · ES "Con leche, sin azúcar."
+- Meaning of the audio (HE): "עם חלב, בלי סוכר."
+- Buttons show: ☕🧊 + one row per add-in, each with a ✓ and a ✕ button (nothing pre-set); "Check my order" / "בדוק את ההזמנה" unlocks when every row is set — the ORDER that is right is listed below
+- Choices:
+  1. "🥛 Milk ✓" / "חלב ✓" — no sentence id — ✅ accepted
+  2. "🍬 Sugar ✕" / "סוכר ✕" — no sentence id — ✅ accepted
+- Tests: phrase.coffee.no-sugar
+- Explanation shown after answering: after the check: each row turns green or red, then the spoken order and its translation
+
+### M03-Q14 — customize (step 9, round 2 of 2)
+
+- Prompt displayed: "Milk and sugar? — make the coffee exactly as you heard it" / "חלב וסוכר? — הכן את הקפה בדיוק כמו ששמעת"
+- Audio played: EN "Sugar, no milk." · FR "Avec du sucre, sans lait." · ES "Con azúcar, sin leche."
+- Meaning of the audio (HE): "עם סוכר, בלי חלב."
+- Buttons show: ☕🧊 + one row per add-in, each with a ✓ and a ✕ button (nothing pre-set); "Check my order" / "בדוק את ההזמנה" unlocks when every row is set — the ORDER that is right is listed below
+- Choices:
+  1. "🥛 Milk ✕" / "חלב ✕" — no sentence id — ✅ accepted
+  2. "🍬 Sugar ✓" / "סוכר ✓" — no sentence id — ✅ accepted
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the check: each row turns green or red, then the spoken order and its translation
+
+### M03-Q15 — match-pairs (step 10, pair 1 of 4 (all pairs are on one screen))
+
+- Prompt displayed: "What does the barista say? Match each line to its meaning" / "מה הבריסטה אומר? התאם כל משפט למשמעות שלו" — tile to match (target language, no translation): EN "Good morning!" · FR "Bonjour !" · ES "¡Buenos días!"
+- Audio played: EN "Good morning!" · FR "Bonjour !" · ES "¡Buenos días!"
+- Meaning of the audio (HE): "בוקר טוב!"
+- Buttons show: the ANSWER tiles, target language only; their order is shuffled; a matched pair locks and leaves the board, so later pairs have fewer live tiles
+- Choices:
+  1. EN "🌅 Good morning / בוקר טוב" · FR "🌅 Good morning / בוקר טוב" · ES "🌅 Good morning / בוקר טוב" · (HE gloss "בוקר טוב!") — `reply.coffee.good-morning` — ✅ accepted
+  2. EN "👍 Sure / perfect / בטח / מצוין" · FR "👍 Sure / perfect / בטח / מצוין" · ES "👍 Sure / perfect / בטח / מצוין" · (HE gloss "בטח! / סגור!") — `reply.coffee.sure` — ❌ wrong
+  3. EN "👌 Great choice / בחירה מצוינת" · FR "👌 Great choice / בחירה מצוינת" · ES "👌 Great choice / בחירה מצוינת" · (HE gloss "בחירה מצוינת.") — `reply.coffee.great-choice` — ❌ wrong
+  4. EN "👋☀️ Here you go — enjoy your day / בבקשה — שיהיה לך יום מעולה" · FR "👋☀️ Here you go — enjoy your day / בבקשה — שיהיה לך יום מעולה" · ES "👋☀️ Here you go — enjoy your day / בבקשה — שיהיה לך יום מעולה" · (HE gloss "בבקשה (הנה) — שיהיה לך יום מעולה!") — `reply.coffee.enjoy` — ❌ wrong
+- Tests: reply.coffee.good-morning
+- Explanation shown after answering: none — a correct match locks both tiles under a shared number and speaks the answer; a miss shakes, shows ✕ and clears (no penalty)
+
+### M03-Q16 — match-pairs (step 10, pair 2 of 4 (all pairs are on one screen))
+
+- Prompt displayed: "What does the barista say? Match each line to its meaning" / "מה הבריסטה אומר? התאם כל משפט למשמעות שלו" — tile to match (target language, no translation): EN "Sure!" · FR "Parfait !" · ES "¡Perfecto!"
+- Audio played: EN "Sure!" · FR "Parfait !" · ES "¡Perfecto!"
+- Meaning of the audio (HE): "בטח! / סגור!"
+- Buttons show: the ANSWER tiles, target language only; their order is shuffled; a matched pair locks and leaves the board, so later pairs have fewer live tiles
+- Choices:
+  1. EN "🌅 Good morning / בוקר טוב" · FR "🌅 Good morning / בוקר טוב" · ES "🌅 Good morning / בוקר טוב" · (HE gloss "בוקר טוב!") — `reply.coffee.good-morning` — ❌ wrong
+  2. EN "👍 Sure / perfect / בטח / מצוין" · FR "👍 Sure / perfect / בטח / מצוין" · ES "👍 Sure / perfect / בטח / מצוין" · (HE gloss "בטח! / סגור!") — `reply.coffee.sure` — ✅ accepted
+  3. EN "👌 Great choice / בחירה מצוינת" · FR "👌 Great choice / בחירה מצוינת" · ES "👌 Great choice / בחירה מצוינת" · (HE gloss "בחירה מצוינת.") — `reply.coffee.great-choice` — ❌ wrong
+  4. EN "👋☀️ Here you go — enjoy your day / בבקשה — שיהיה לך יום מעולה" · FR "👋☀️ Here you go — enjoy your day / בבקשה — שיהיה לך יום מעולה" · ES "👋☀️ Here you go — enjoy your day / בבקשה — שיהיה לך יום מעולה" · (HE gloss "בבקשה (הנה) — שיהיה לך יום מעולה!") — `reply.coffee.enjoy` — ❌ wrong
+- Tests: reply.coffee.sure
+- Explanation shown after answering: none — a correct match locks both tiles under a shared number and speaks the answer; a miss shakes, shows ✕ and clears (no penalty)
+
+### M03-Q17 — match-pairs (step 10, pair 3 of 4 (all pairs are on one screen))
+
+- Prompt displayed: "What does the barista say? Match each line to its meaning" / "מה הבריסטה אומר? התאם כל משפט למשמעות שלו" — tile to match (target language, no translation): EN "Great choice." · FR "Excellent choix." · ES "Buena elección."
+- Audio played: EN "Great choice." · FR "Excellent choix." · ES "Buena elección."
+- Meaning of the audio (HE): "בחירה מצוינת."
+- Buttons show: the ANSWER tiles, target language only; their order is shuffled; a matched pair locks and leaves the board, so later pairs have fewer live tiles
+- Choices:
+  1. EN "🌅 Good morning / בוקר טוב" · FR "🌅 Good morning / בוקר טוב" · ES "🌅 Good morning / בוקר טוב" · (HE gloss "בוקר טוב!") — `reply.coffee.good-morning` — ❌ wrong
+  2. EN "👍 Sure / perfect / בטח / מצוין" · FR "👍 Sure / perfect / בטח / מצוין" · ES "👍 Sure / perfect / בטח / מצוין" · (HE gloss "בטח! / סגור!") — `reply.coffee.sure` — ❌ wrong
+  3. EN "👌 Great choice / בחירה מצוינת" · FR "👌 Great choice / בחירה מצוינת" · ES "👌 Great choice / בחירה מצוינת" · (HE gloss "בחירה מצוינת.") — `reply.coffee.great-choice` — ✅ accepted
+  4. EN "👋☀️ Here you go — enjoy your day / בבקשה — שיהיה לך יום מעולה" · FR "👋☀️ Here you go — enjoy your day / בבקשה — שיהיה לך יום מעולה" · ES "👋☀️ Here you go — enjoy your day / בבקשה — שיהיה לך יום מעולה" · (HE gloss "בבקשה (הנה) — שיהיה לך יום מעולה!") — `reply.coffee.enjoy` — ❌ wrong
+- Tests: reply.coffee.great-choice
+- Explanation shown after answering: none — a correct match locks both tiles under a shared number and speaks the answer; a miss shakes, shows ✕ and clears (no penalty)
+
+### M03-Q18 — match-pairs (step 10, pair 4 of 4 (all pairs are on one screen))
+
+- Prompt displayed: "What does the barista say? Match each line to its meaning" / "מה הבריסטה אומר? התאם כל משפט למשמעות שלו" — tile to match (target language, no translation): EN "Here you go — enjoy your day!" · FR "Voilà — bonne journée !" · ES "Aquí tiene — ¡que tenga un buen día!"
+- Audio played: EN "Here you go — enjoy your day!" · FR "Voilà — bonne journée !" · ES "Aquí tiene — ¡que tenga un buen día!"
+- Meaning of the audio (HE): "בבקשה (הנה) — שיהיה לך יום מעולה!"
+- Buttons show: the ANSWER tiles, target language only; their order is shuffled; a matched pair locks and leaves the board, so later pairs have fewer live tiles
+- Choices:
+  1. EN "🌅 Good morning / בוקר טוב" · FR "🌅 Good morning / בוקר טוב" · ES "🌅 Good morning / בוקר טוב" · (HE gloss "בוקר טוב!") — `reply.coffee.good-morning` — ❌ wrong
+  2. EN "👍 Sure / perfect / בטח / מצוין" · FR "👍 Sure / perfect / בטח / מצוין" · ES "👍 Sure / perfect / בטח / מצוין" · (HE gloss "בטח! / סגור!") — `reply.coffee.sure` — ❌ wrong
+  3. EN "👌 Great choice / בחירה מצוינת" · FR "👌 Great choice / בחירה מצוינת" · ES "👌 Great choice / בחירה מצוינת" · (HE gloss "בחירה מצוינת.") — `reply.coffee.great-choice` — ❌ wrong
+  4. EN "👋☀️ Here you go — enjoy your day / בבקשה — שיהיה לך יום מעולה" · FR "👋☀️ Here you go — enjoy your day / בבקשה — שיהיה לך יום מעולה" · ES "👋☀️ Here you go — enjoy your day / בבקשה — שיהיה לך יום מעולה" · (HE gloss "בבקשה (הנה) — שיהיה לך יום מעולה!") — `reply.coffee.enjoy` — ✅ accepted
+- Tests: reply.coffee.enjoy
+- Explanation shown after answering: none — a correct match locks both tiles under a shared number and speaks the answer; a miss shakes, shows ✕ and clears (no penalty)
+
+### M03-Q19 — match-pairs (step 11, pair 1 of 4 (all pairs are on one screen))
+
+- Prompt displayed: "What do you answer the barista? Connect each question to its answer" / "מה עונים לבריסטה? חבר כל שאלה לתשובה שלה" — tile to match (target language, no translation): EN "Good morning! What can I get you?" · FR "Bonjour ! Qu’est-ce que je vous sers ?" · ES "¡Buenos días! ¿Qué le sirvo?"
+- Audio played: EN "Good morning! What can I get you?" · FR "Bonjour ! Qu’est-ce que je vous sers ?" · ES "¡Buenos días! ¿Qué le sirvo?"
+- Meaning of the audio (HE): "בוקר טוב! מה להביא לך?"
+- Buttons show: the ANSWER tiles, target language only; their order is shuffled; a matched pair locks and leaves the board, so later pairs have fewer live tiles
+- Choices:
+  1. EN "I'd like an iced coffee, please." · FR "Je voudrais un café glacé, s’il vous plaît." · ES "Quiero un café con hielo, por favor." · (HE gloss "אני רוצה קפה קר, בבקשה.") — `phrase.coffee.iced-coffee` — ✅ accepted
+  2. EN "Medium, please." · FR "Moyen, s’il vous plaît." · ES "Mediano, por favor." · (HE gloss "בינוני, בבקשה.") — `phrase.coffee.medium` — ❌ wrong
+  3. EN "Milk, no sugar." · FR "Avec du lait, sans sucre." · ES "Con leche, sin azúcar." · (HE gloss "עם חלב, בלי סוכר.") — `phrase.coffee.no-sugar` — ❌ wrong
+  4. EN "A croissant, please." · FR "Un croissant, s’il vous plaît." · ES "Un cruasán, por favor." · (HE gloss "קרואסון, בבקשה.") — `phrase.coffee.croissant` — ❌ wrong
+- Tests: phrase.coffee.iced-coffee
+- Explanation shown after answering: none — a correct match locks both tiles under a shared number and speaks the answer; a miss shakes, shows ✕ and clears (no penalty)
+
+### M03-Q20 — match-pairs (step 11, pair 2 of 4 (all pairs are on one screen))
+
+- Prompt displayed: "What do you answer the barista? Connect each question to its answer" / "מה עונים לבריסטה? חבר כל שאלה לתשובה שלה" — tile to match (target language, no translation): EN "Sure! Medium or large?" · FR "Parfait ! Moyen ou grand ?" · ES "¡Perfecto! ¿Mediano o grande?"
+- Audio played: EN "Sure! Medium or large?" · FR "Parfait ! Moyen ou grand ?" · ES "¡Perfecto! ¿Mediano o grande?"
+- Meaning of the audio (HE): "סגור! בינוני או גדול?"
+- Buttons show: the ANSWER tiles, target language only; their order is shuffled; a matched pair locks and leaves the board, so later pairs have fewer live tiles
+- Choices:
+  1. EN "I'd like an iced coffee, please." · FR "Je voudrais un café glacé, s’il vous plaît." · ES "Quiero un café con hielo, por favor." · (HE gloss "אני רוצה קפה קר, בבקשה.") — `phrase.coffee.iced-coffee` — ❌ wrong
+  2. EN "Medium, please." · FR "Moyen, s’il vous plaît." · ES "Mediano, por favor." · (HE gloss "בינוני, בבקשה.") — `phrase.coffee.medium` — ✅ accepted
+  3. EN "Milk, no sugar." · FR "Avec du lait, sans sucre." · ES "Con leche, sin azúcar." · (HE gloss "עם חלב, בלי סוכר.") — `phrase.coffee.no-sugar` — ❌ wrong
+  4. EN "A croissant, please." · FR "Un croissant, s’il vous plaît." · ES "Un cruasán, por favor." · (HE gloss "קרואסון, בבקשה.") — `phrase.coffee.croissant` — ❌ wrong
+- Tests: phrase.coffee.medium
+- Explanation shown after answering: none — a correct match locks both tiles under a shared number and speaks the answer; a miss shakes, shows ✕ and clears (no penalty)
+
+### M03-Q21 — match-pairs (step 11, pair 3 of 4 (all pairs are on one screen))
+
+- Prompt displayed: "What do you answer the barista? Connect each question to its answer" / "מה עונים לבריסטה? חבר כל שאלה לתשובה שלה" — tile to match (target language, no translation): EN "Milk and sugar?" · FR "Lait et sucre ?" · ES "¿Leche y azúcar?"
+- Audio played: EN "Milk and sugar?" · FR "Lait et sucre ?" · ES "¿Leche y azúcar?"
+- Meaning of the audio (HE): "חלב וסוכר?"
+- Buttons show: the ANSWER tiles, target language only; their order is shuffled; a matched pair locks and leaves the board, so later pairs have fewer live tiles
+- Choices:
+  1. EN "I'd like an iced coffee, please." · FR "Je voudrais un café glacé, s’il vous plaît." · ES "Quiero un café con hielo, por favor." · (HE gloss "אני רוצה קפה קר, בבקשה.") — `phrase.coffee.iced-coffee` — ❌ wrong
+  2. EN "Medium, please." · FR "Moyen, s’il vous plaît." · ES "Mediano, por favor." · (HE gloss "בינוני, בבקשה.") — `phrase.coffee.medium` — ❌ wrong
+  3. EN "Milk, no sugar." · FR "Avec du lait, sans sucre." · ES "Con leche, sin azúcar." · (HE gloss "עם חלב, בלי סוכר.") — `phrase.coffee.no-sugar` — ✅ accepted
+  4. EN "A croissant, please." · FR "Un croissant, s’il vous plaît." · ES "Un cruasán, por favor." · (HE gloss "קרואסון, בבקשה.") — `phrase.coffee.croissant` — ❌ wrong
+- Tests: phrase.coffee.no-sugar
+- Explanation shown after answering: none — a correct match locks both tiles under a shared number and speaks the answer; a miss shakes, shows ✕ and clears (no penalty)
+
+### M03-Q22 — match-pairs (step 11, pair 4 of 4 (all pairs are on one screen))
+
+- Prompt displayed: "What do you answer the barista? Connect each question to its answer" / "מה עונים לבריסטה? חבר כל שאלה לתשובה שלה" — tile to match (target language, no translation): EN "Anything to eat?" · FR "Quelque chose à manger ?" · ES "¿Algo de comer?"
+- Audio played: EN "Anything to eat?" · FR "Quelque chose à manger ?" · ES "¿Algo de comer?"
+- Meaning of the audio (HE): "משהו לאכול?"
+- Buttons show: the ANSWER tiles, target language only; their order is shuffled; a matched pair locks and leaves the board, so later pairs have fewer live tiles
+- Choices:
+  1. EN "I'd like an iced coffee, please." · FR "Je voudrais un café glacé, s’il vous plaît." · ES "Quiero un café con hielo, por favor." · (HE gloss "אני רוצה קפה קר, בבקשה.") — `phrase.coffee.iced-coffee` — ❌ wrong
+  2. EN "Medium, please." · FR "Moyen, s’il vous plaît." · ES "Mediano, por favor." · (HE gloss "בינוני, בבקשה.") — `phrase.coffee.medium` — ❌ wrong
+  3. EN "Milk, no sugar." · FR "Avec du lait, sans sucre." · ES "Con leche, sin azúcar." · (HE gloss "עם חלב, בלי סוכר.") — `phrase.coffee.no-sugar` — ❌ wrong
+  4. EN "A croissant, please." · FR "Un croissant, s’il vous plaît." · ES "Un cruasán, por favor." · (HE gloss "קרואסון, בבקשה.") — `phrase.coffee.croissant` — ✅ accepted
+- Tests: phrase.coffee.croissant
+- Explanation shown after answering: none — a correct match locks both tiles under a shared number and speaks the answer; a miss shakes, shows ✕ and clears (no penalty)
+
+### M03-Q23 — sentence-builder (step 12, round 1 of 2)
+
+- Prompt displayed: "Build the sentence" / "בנה את המשפט" — cue shown: the sentence's MEANING in the app language ("אני רוצה קפה קר, בבקשה.")
+- Audio played: EN "(nothing before Check; the built sentence is spoken once it is right)" · FR "(same)" · ES "(same)"
+- Meaning of the audio (HE): —
+- Buttons show: the authored CHUNKS of the sentence as tiles (listed here in the correct order, separated by "|"), shuffled; each language has its own chunks; Check unlocks when every tile is placed
+- Choices:
+  1. EN "I'd like  |  an iced  |  coffee,  |  please." · FR "Je voudrais  |  un café  |  glacé,  |  s’il vous plaît." · ES "Quiero  |  un café  |  con hielo,  |  por favor." · (HE gloss "אני רוצה קפה קר, בבקשה.") — `phrase.coffee.iced-coffee` — ✅ accepted
+- Tests: phrase.coffee.iced-coffee
+- Explanation shown after answering: right: the sentence is spoken and its translation shown. Wrong: "not yet" — the tiles stay, the answer is NOT shown; after one miss a hint marks the start; after two misses the learner may reveal it
+
+### M03-Q24 — sentence-builder (step 12, round 2 of 2)
+
+- Prompt displayed: "Build the sentence" / "בנה את המשפט" — cue shown: the sentence's MEANING in the app language ("עם חלב, בלי סוכר.")
+- Audio played: EN "(nothing before Check; the built sentence is spoken once it is right)" · FR "(same)" · ES "(same)"
+- Meaning of the audio (HE): —
+- Buttons show: the authored CHUNKS of the sentence as tiles (listed here in the correct order, separated by "|"), shuffled; each language has its own chunks; Check unlocks when every tile is placed
+- Choices:
+  1. EN "Milk,  |  no  |  sugar." · FR "Avec  |  du lait,  |  sans  |  sucre." · ES "Con  |  leche,  |  sin  |  azúcar." · (HE gloss "עם חלב, בלי סוכר.") — `phrase.coffee.no-sugar` — ✅ accepted
+- Tests: phrase.coffee.no-sugar
+- Explanation shown after answering: right: the sentence is spoken and its translation shown. Wrong: "not yet" — the tiles stay, the answer is NOT shown; after one miss a hint marks the start; after two misses the learner may reveal it
+
+### M03-Q25 — visual-match (step 13, round 1 of 2)
+
+- Prompt displayed: "How much? Tap the price you hear" / "כמה זה? הקש על המחיר ששמעת"
+- Audio played: EN "That'll be six fifty." · FR "Ça fait six euros cinquante." · ES "Son seis con cincuenta."
+- Meaning of the audio (HE): "זה שש יורו וחמישים."
+- Buttons show: a 3×3 board of 6 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "€6.50" — no sentence id — ✅ accepted
+  2. "€6.05" — no sentence id — ❌ wrong
+  3. "€16.50" — no sentence id — ❌ wrong
+  4. "€60.50" — no sentence id — ❌ wrong
+  5. "€5.60" — no sentence id — ❌ wrong
+  6. "€6" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M03-Q26 — visual-match (step 13, round 2 of 2)
+
+- Prompt displayed: "How much? Tap the price you hear" / "כמה זה? הקש על המחיר ששמעת"
+- Audio played: EN "Sixteen fifty." · FR "Seize euros cinquante." · ES "Dieciséis con cincuenta."
+- Meaning of the audio (HE): "שש עשרה וחמישים."
+- Buttons show: a 3×3 board of 6 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "€6.50" — no sentence id — ❌ wrong
+  2. "€6.05" — no sentence id — ❌ wrong
+  3. "€16.50" — no sentence id — ✅ accepted
+  4. "€60.50" — no sentence id — ❌ wrong
+  5. "€5.60" — no sentence id — ❌ wrong
+  6. "€6" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M03-Q27 — match-pairs (step 14, pair 1 of 3 (all pairs are on one screen))
+
+- Prompt displayed: "Finishing and paying — connect each question to its answer" / "מסיימים ומשלמים — חבר כל שאלה לתשובה שלה" — tile to match (target language, no translation): EN "Great choice. Would you like anything else?" · FR "Excellent choix. Vous désirez autre chose ?" · ES "Buena elección. ¿Algo más?"
+- Audio played: EN "Great choice. Would you like anything else?" · FR "Excellent choix. Vous désirez autre chose ?" · ES "Buena elección. ¿Algo más?"
+- Meaning of the audio (HE): "בחירה מצוינת. עוד משהו?"
+- Buttons show: the ANSWER tiles, target language only; their order is shuffled; a matched pair locks and leaves the board, so later pairs have fewer live tiles
+- Choices:
+  1. EN "That's all, thanks." · FR "C’est tout, merci." · ES "Eso es todo, gracias." · (HE gloss "זה הכל, תודה.") — `phrase.coffee.thats-all` — ✅ accepted
+  2. EN "Card, please." · FR "Par carte, s’il vous plaît." · ES "Con tarjeta, por favor." · (HE gloss "בכרטיס, בבקשה.") — `phrase.coffee.card` — ❌ wrong
+  3. EN "Yes, please." · FR "Oui, s’il vous plaît." · ES "Sí, por favor." · (HE gloss "כן, בבקשה.") — `phrase.coffee.yes-please` — ❌ wrong
+- Tests: phrase.coffee.thats-all
+- Explanation shown after answering: none — a correct match locks both tiles under a shared number and speaks the answer; a miss shakes, shows ✕ and clears (no penalty)
+
+### M03-Q28 — match-pairs (step 14, pair 2 of 3 (all pairs are on one screen))
+
+- Prompt displayed: "Finishing and paying — connect each question to its answer" / "מסיימים ומשלמים — חבר כל שאלה לתשובה שלה" — tile to match (target language, no translation): EN "That'll be six fifty. Cash or card?" · FR "Ça fait six euros cinquante. Espèces ou carte ?" · ES "Son seis con cincuenta. ¿Efectivo o tarjeta?"
+- Audio played: EN "That'll be six fifty. Cash or card?" · FR "Ça fait six euros cinquante. Espèces ou carte ?" · ES "Son seis con cincuenta. ¿Efectivo o tarjeta?"
+- Meaning of the audio (HE): "זה שש יורו וחמישים (‎€6.50). מזומן או כרטיס?"
+- Buttons show: the ANSWER tiles, target language only; their order is shuffled; a matched pair locks and leaves the board, so later pairs have fewer live tiles
+- Choices:
+  1. EN "That's all, thanks." · FR "C’est tout, merci." · ES "Eso es todo, gracias." · (HE gloss "זה הכל, תודה.") — `phrase.coffee.thats-all` — ❌ wrong
+  2. EN "Card, please." · FR "Par carte, s’il vous plaît." · ES "Con tarjeta, por favor." · (HE gloss "בכרטיס, בבקשה.") — `phrase.coffee.card` — ✅ accepted
+  3. EN "Yes, please." · FR "Oui, s’il vous plaît." · ES "Sí, por favor." · (HE gloss "כן, בבקשה.") — `phrase.coffee.yes-please` — ❌ wrong
+- Tests: phrase.coffee.card
+- Explanation shown after answering: none — a correct match locks both tiles under a shared number and speaks the answer; a miss shakes, shows ✕ and clears (no penalty)
+
+### M03-Q29 — match-pairs (step 14, pair 3 of 3 (all pairs are on one screen))
+
+- Prompt displayed: "Finishing and paying — connect each question to its answer" / "מסיימים ומשלמים — חבר כל שאלה לתשובה שלה" — tile to match (target language, no translation): EN "Would you like the receipt?" · FR "Vous voulez le ticket ?" · ES "¿Quiere el recibo?"
+- Audio played: EN "Would you like the receipt?" · FR "Vous voulez le ticket ?" · ES "¿Quiere el recibo?"
+- Meaning of the audio (HE): "רוצה את הקבלה?"
+- Buttons show: the ANSWER tiles, target language only; their order is shuffled; a matched pair locks and leaves the board, so later pairs have fewer live tiles
+- Choices:
+  1. EN "That's all, thanks." · FR "C’est tout, merci." · ES "Eso es todo, gracias." · (HE gloss "זה הכל, תודה.") — `phrase.coffee.thats-all` — ❌ wrong
+  2. EN "Card, please." · FR "Par carte, s’il vous plaît." · ES "Con tarjeta, por favor." · (HE gloss "בכרטיס, בבקשה.") — `phrase.coffee.card` — ❌ wrong
+  3. EN "Yes, please." · FR "Oui, s’il vous plaît." · ES "Sí, por favor." · (HE gloss "כן, בבקשה.") — `phrase.coffee.yes-please` — ✅ accepted
+- Tests: phrase.coffee.yes-please
+- Explanation shown after answering: none — a correct match locks both tiles under a shared number and speaks the answer; a miss shakes, shows ✕ and clears (no penalty)
+
+### M03-Q30 — quick-reply (step 15, round 1 of 4)
+
+- Prompt displayed: "The barista asks — what do you say?" / "הבריסטה שואל — מה עונים?"
+- Audio played: EN "Good morning! What can I get you?" · FR "Bonjour ! Qu’est-ce que je vous sers ?" · ES "¡Buenos días! ¿Qué le sirvo?"
+- Meaning of the audio (HE): "בוקר טוב! מה להביא לך?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "I'd like an iced coffee, please." · FR "Je voudrais un café glacé, s’il vous plaît." · ES "Quiero un café con hielo, por favor." · (HE gloss "אני רוצה קפה קר, בבקשה.") — `phrase.coffee.iced-coffee` — ✅ accepted
+  2. EN "Medium, please." · FR "Moyen, s’il vous plaît." · ES "Mediano, por favor." · (HE gloss "בינוני, בבקשה.") — `phrase.coffee.medium` — ❌ wrong
+  3. EN "Card, please." · FR "Par carte, s’il vous plaît." · ES "Con tarjeta, por favor." · (HE gloss "בכרטיס, בבקשה.") — `phrase.coffee.card` — ❌ wrong
+- Tests: phrase.coffee.iced-coffee
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M03-Q07 — quick-reply (step 9, round 3 of 6)
+### M03-Q31 — quick-reply (step 15, round 2 of 4)
 
 - Prompt displayed: "The barista asks — what do you say?" / "הבריסטה שואל — מה עונים?"
 - Audio played: EN "Milk and sugar?" · FR "Lait et sucre ?" · ES "¿Leche y azúcar?"
@@ -2602,7 +3014,7 @@ No meaning quiz in this mission.
 - Tests: phrase.coffee.no-sugar
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M03-Q08 — quick-reply (step 9, round 4 of 6)
+### M03-Q32 — quick-reply (step 15, round 3 of 4)
 
 - Prompt displayed: "The barista asks — what do you say?" / "הבריסטה שואל — מה עונים?"
 - Audio played: EN "Anything to eat?" · FR "Quelque chose à manger ?" · ES "¿Algo de comer?"
@@ -2615,20 +3027,7 @@ No meaning quiz in this mission.
 - Tests: phrase.coffee.croissant, phrase.coffee.thats-all
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M03-Q09 — quick-reply (step 9, round 5 of 6)
-
-- Prompt displayed: "The barista asks — what do you say?" / "הבריסטה שואל — מה עונים?"
-- Audio played: EN "Cash or card?" · FR "Espèces ou carte ?" · ES "¿Efectivo o tarjeta?"
-- Meaning of the audio (HE): "מזומן או כרטיס?"
-- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
-- Choices:
-  1. EN "Card, please." · FR "Par carte, s’il vous plaît." · ES "Con tarjeta, por favor." · (HE gloss "בכרטיס, בבקשה.") — `phrase.coffee.card` — ✅ accepted
-  2. EN "Medium, please." · FR "Moyen, s’il vous plaît." · ES "Mediano, por favor." · (HE gloss "בינוני, בבקשה.") — `phrase.coffee.medium` — ❌ wrong
-  3. EN "To go, please." · FR "À emporter, s’il vous plaît." · ES "Para llevar, por favor." · (HE gloss "לקחת, בבקשה.") — `phrase.coffee.to-go` — ❌ wrong
-- Tests: phrase.coffee.card
-- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
-
-### M03-Q10 — quick-reply (step 9, round 6 of 6)
+### M03-Q33 — quick-reply (step 15, round 4 of 4)
 
 - Prompt displayed: "The barista asks — what do you say?" / "הבריסטה שואל — מה עונים?"
 - Audio played: EN "Would you like the receipt?" · FR "Vous voulez le ticket ?" · ES "¿Quiere el recibo?"
@@ -2636,32 +3035,260 @@ No meaning quiz in this mission.
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
   1. EN "Yes, please." · FR "Oui, s’il vous plaît." · ES "Sí, por favor." · (HE gloss "כן, בבקשה.") — `phrase.coffee.yes-please` — ✅ accepted
-  2. EN "To go, please." · FR "À emporter, s’il vous plaît." · ES "Para llevar, por favor." · (HE gloss "לקחת, בבקשה.") — `phrase.coffee.to-go` — ❌ wrong
-  3. EN "I'd like an iced coffee, please." · FR "Je voudrais un café glacé, s’il vous plaît." · ES "Quiero un café con hielo, por favor." · (HE gloss "אני רוצה קפה קר, בבקשה.") — `phrase.coffee.iced-coffee` — ❌ wrong
+  2. EN "Medium, please." · FR "Moyen, s’il vous plaît." · ES "Mediano, por favor." · (HE gloss "בינוני, בבקשה.") — `phrase.coffee.medium` — ❌ wrong
+  3. EN "A croissant, please." · FR "Un croissant, s’il vous plaît." · ES "Un cruasán, por favor." · (HE gloss "קרואסון, בבקשה.") — `phrase.coffee.croissant` — ❌ wrong
 - Tests: phrase.coffee.yes-please
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M03-Q11 — sentence-builder (step 10, round 1 of 2)
+### M03-Q45 — quick-reply (step 20, round 1 of 7 · SPEED CHALLENGE (spoken at rate 1.12))
 
-- Prompt displayed: "Build the sentence" / "בנה את המשפט" — cue shown: the sentence's MEANING in the app language ("אני רוצה קפה קר, בבקשה.")
-- Audio played: EN "(nothing before Check; the built sentence is spoken once it is right)" · FR "(same)" · ES "(same)"
-- Meaning of the audio (HE): —
-- Buttons show: the authored CHUNKS of the sentence as tiles (listed here in the correct order, separated by "|"), shuffled; each language has its own chunks; Check unlocks when every tile is placed
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "Good morning! What can I get you?" · FR "Bonjour ! Qu’est-ce que je vous sers ?" · ES "¡Buenos días! ¿Qué le sirvo?"
+- Meaning of the audio (HE): "בוקר טוב! מה להביא לך?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
-  1. EN "I'd like  |  an iced  |  coffee,  |  please." · FR "Je voudrais  |  un café  |  glacé,  |  s’il vous plaît." · ES "Quiero  |  un café  |  con hielo,  |  por favor." · (HE gloss "אני רוצה קפה קר, בבקשה.") — `phrase.coffee.iced-coffee` — ✅ accepted
+  1. EN "I'd like an iced coffee, please." · FR "Je voudrais un café glacé, s’il vous plaît." · ES "Quiero un café con hielo, por favor." · (HE gloss "אני רוצה קפה קר, בבקשה.") — `phrase.coffee.iced-coffee` — ✅ accepted
+  2. EN "Medium, please." · FR "Moyen, s’il vous plaît." · ES "Mediano, por favor." · (HE gloss "בינוני, בבקשה.") — `phrase.coffee.medium` — ❌ wrong
+  3. EN "Card, please." · FR "Par carte, s’il vous plaît." · ES "Con tarjeta, por favor." · (HE gloss "בכרטיס, בבקשה.") — `phrase.coffee.card` — ❌ wrong
 - Tests: phrase.coffee.iced-coffee
-- Explanation shown after answering: right: the sentence is spoken and its translation shown. Wrong: "not yet" — the tiles stay, the answer is NOT shown; after one miss a hint marks the start; after two misses the learner may reveal it
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M03-Q12 — sentence-builder (step 10, round 2 of 2)
+### M03-Q46 — quick-reply (step 20, round 2 of 7 · SPEED CHALLENGE (spoken at rate 1.12))
 
-- Prompt displayed: "Build the sentence" / "בנה את המשפט" — cue shown: the sentence's MEANING in the app language ("עם חלב, בלי סוכר.")
-- Audio played: EN "(nothing before Check; the built sentence is spoken once it is right)" · FR "(same)" · ES "(same)"
-- Meaning of the audio (HE): —
-- Buttons show: the authored CHUNKS of the sentence as tiles (listed here in the correct order, separated by "|"), shuffled; each language has its own chunks; Check unlocks when every tile is placed
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "Sure! Medium or large?" · FR "Parfait ! Moyen ou grand ?" · ES "¡Perfecto! ¿Mediano o grande?"
+- Meaning of the audio (HE): "סגור! בינוני או גדול?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
-  1. EN "Milk,  |  no  |  sugar." · FR "Avec  |  du lait,  |  sans  |  sucre." · ES "Con  |  leche,  |  sin  |  azúcar." · (HE gloss "עם חלב, בלי סוכר.") — `phrase.coffee.no-sugar` — ✅ accepted
+  1. EN "Medium, please." · FR "Moyen, s’il vous plaît." · ES "Mediano, por favor." · (HE gloss "בינוני, בבקשה.") — `phrase.coffee.medium` — ✅ accepted
+  2. EN "Milk, no sugar." · FR "Avec du lait, sans sucre." · ES "Con leche, sin azúcar." · (HE gloss "עם חלב, בלי סוכר.") — `phrase.coffee.no-sugar` — ❌ wrong
+  3. EN "Yes, please." · FR "Oui, s’il vous plaît." · ES "Sí, por favor." · (HE gloss "כן, בבקשה.") — `phrase.coffee.yes-please` — ❌ wrong
+- Tests: phrase.coffee.medium
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M03-Q47 — quick-reply (step 20, round 3 of 7 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "Milk and sugar?" · FR "Lait et sucre ?" · ES "¿Leche y azúcar?"
+- Meaning of the audio (HE): "חלב וסוכר?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Milk, no sugar." · FR "Avec du lait, sans sucre." · ES "Con leche, sin azúcar." · (HE gloss "עם חלב, בלי סוכר.") — `phrase.coffee.no-sugar` — ✅ accepted
+  2. EN "Medium, please." · FR "Moyen, s’il vous plaît." · ES "Mediano, por favor." · (HE gloss "בינוני, בבקשה.") — `phrase.coffee.medium` — ❌ wrong
+  3. EN "A croissant, please." · FR "Un croissant, s’il vous plaît." · ES "Un cruasán, por favor." · (HE gloss "קרואסון, בבקשה.") — `phrase.coffee.croissant` — ❌ wrong
 - Tests: phrase.coffee.no-sugar
-- Explanation shown after answering: right: the sentence is spoken and its translation shown. Wrong: "not yet" — the tiles stay, the answer is NOT shown; after one miss a hint marks the start; after two misses the learner may reveal it
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M03-Q48 — quick-reply (step 20, round 4 of 7 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "Anything to eat?" · FR "Quelque chose à manger ?" · ES "¿Algo de comer?"
+- Meaning of the audio (HE): "משהו לאכול?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "A croissant, please." · FR "Un croissant, s’il vous plaît." · ES "Un cruasán, por favor." · (HE gloss "קרואסון, בבקשה.") — `phrase.coffee.croissant` — ✅ accepted
+  2. EN "Card, please." · FR "Par carte, s’il vous plaît." · ES "Con tarjeta, por favor." · (HE gloss "בכרטיס, בבקשה.") — `phrase.coffee.card` — ❌ wrong
+  3. EN "Medium, please." · FR "Moyen, s’il vous plaît." · ES "Mediano, por favor." · (HE gloss "בינוני, בבקשה.") — `phrase.coffee.medium` — ❌ wrong
+- Tests: phrase.coffee.croissant
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M03-Q49 — quick-reply (step 20, round 5 of 7 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "Great choice. Would you like anything else?" · FR "Excellent choix. Vous désirez autre chose ?" · ES "Buena elección. ¿Algo más?"
+- Meaning of the audio (HE): "בחירה מצוינת. עוד משהו?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "That's all, thanks." · FR "C’est tout, merci." · ES "Eso es todo, gracias." · (HE gloss "זה הכל, תודה.") — `phrase.coffee.thats-all` — ✅ accepted
+  2. EN "Milk, no sugar." · FR "Avec du lait, sans sucre." · ES "Con leche, sin azúcar." · (HE gloss "עם חלב, בלי סוכר.") — `phrase.coffee.no-sugar` — ❌ wrong
+  3. EN "Card, please." · FR "Par carte, s’il vous plaît." · ES "Con tarjeta, por favor." · (HE gloss "בכרטיס, בבקשה.") — `phrase.coffee.card` — ❌ wrong
+- Tests: phrase.coffee.thats-all
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M03-Q50 — quick-reply (step 20, round 6 of 7 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "That'll be six fifty. Cash or card?" · FR "Ça fait six euros cinquante. Espèces ou carte ?" · ES "Son seis con cincuenta. ¿Efectivo o tarjeta?"
+- Meaning of the audio (HE): "זה שש יורו וחמישים. מזומן או כרטיס?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Card, please." · FR "Par carte, s’il vous plaît." · ES "Con tarjeta, por favor." · (HE gloss "בכרטיס, בבקשה.") — `phrase.coffee.card` — ✅ accepted
+  2. EN "That's all, thanks." · FR "C’est tout, merci." · ES "Eso es todo, gracias." · (HE gloss "זה הכל, תודה.") — `phrase.coffee.thats-all` — ❌ wrong
+  3. EN "A croissant, please." · FR "Un croissant, s’il vous plaît." · ES "Un cruasán, por favor." · (HE gloss "קרואסון, בבקשה.") — `phrase.coffee.croissant` — ❌ wrong
+- Tests: phrase.coffee.card
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M03-Q51 — quick-reply (step 20, round 7 of 7 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "Would you like the receipt?" · FR "Vous voulez le ticket ?" · ES "¿Quiere el recibo?"
+- Meaning of the audio (HE): "רוצה את הקבלה?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Yes, please." · FR "Oui, s’il vous plaît." · ES "Sí, por favor." · (HE gloss "כן, בבקשה.") — `phrase.coffee.yes-please` — ✅ accepted
+  2. EN "Card, please." · FR "Par carte, s’il vous plaît." · ES "Con tarjeta, por favor." · (HE gloss "בכרטיס, בבקשה.") — `phrase.coffee.card` — ❌ wrong
+  3. EN "Medium, please." · FR "Moyen, s’il vous plaît." · ES "Mediano, por favor." · (HE gloss "בינוני, בבקשה.") — `phrase.coffee.medium` — ❌ wrong
+- Tests: phrase.coffee.yes-please
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M03-Q52 — visual-match (step 23, round 1 of 5)
+
+- Prompt displayed: "What did you order? Tap what you hear" / "מה הזמנת? הקש על מה ששמעת"
+- Audio played: EN "I'd like an iced coffee, please." · FR "Je voudrais un café glacé, s’il vous plaît." · ES "Quiero un café con hielo, por favor."
+- Meaning of the audio (HE): "אני רוצה קפה קר, בבקשה."
+- Buttons show: a 3×3 board of 9 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "☕🧊" — `phrase.coffee.iced-coffee` — ✅ accepted
+  2. "☕🔥" — no sentence id — ❌ wrong
+  3. "🥤M" — no sentence id — ❌ wrong
+  4. "🥤L" — no sentence id — ❌ wrong
+  5. "☕🥛✓ 🍬✕" — no sentence id — ❌ wrong
+  6. "☕🥛✓ 🍬✓" — no sentence id — ❌ wrong
+  7. "🥐" — no sentence id — ❌ wrong
+  8. "🧁" — no sentence id — ❌ wrong
+  9. "✋" — no sentence id — ❌ wrong
+- Tests: phrase.coffee.iced-coffee
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M03-Q53 — visual-match (step 23, round 2 of 5)
+
+- Prompt displayed: "What did you order? Tap what you hear" / "מה הזמנת? הקש על מה ששמעת"
+- Audio played: EN "Medium, please." · FR "Moyen, s’il vous plaît." · ES "Mediano, por favor."
+- Meaning of the audio (HE): "בינוני, בבקשה."
+- Buttons show: a 3×3 board of 9 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "☕🧊" — no sentence id — ❌ wrong
+  2. "☕🔥" — no sentence id — ❌ wrong
+  3. "🥤M" — `phrase.coffee.medium` — ✅ accepted
+  4. "🥤L" — no sentence id — ❌ wrong
+  5. "☕🥛✓ 🍬✕" — no sentence id — ❌ wrong
+  6. "☕🥛✓ 🍬✓" — no sentence id — ❌ wrong
+  7. "🥐" — no sentence id — ❌ wrong
+  8. "🧁" — no sentence id — ❌ wrong
+  9. "✋" — no sentence id — ❌ wrong
+- Tests: phrase.coffee.medium
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M03-Q54 — visual-match (step 23, round 3 of 5)
+
+- Prompt displayed: "What did you order? Tap what you hear" / "מה הזמנת? הקש על מה ששמעת"
+- Audio played: EN "Milk, no sugar." · FR "Avec du lait, sans sucre." · ES "Con leche, sin azúcar."
+- Meaning of the audio (HE): "עם חלב, בלי סוכר."
+- Buttons show: a 3×3 board of 9 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "☕🧊" — no sentence id — ❌ wrong
+  2. "☕🔥" — no sentence id — ❌ wrong
+  3. "🥤M" — no sentence id — ❌ wrong
+  4. "🥤L" — no sentence id — ❌ wrong
+  5. "☕🥛✓ 🍬✕" — `phrase.coffee.no-sugar` — ✅ accepted
+  6. "☕🥛✓ 🍬✓" — no sentence id — ❌ wrong
+  7. "🥐" — no sentence id — ❌ wrong
+  8. "🧁" — no sentence id — ❌ wrong
+  9. "✋" — no sentence id — ❌ wrong
+- Tests: phrase.coffee.no-sugar
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M03-Q55 — visual-match (step 23, round 4 of 5)
+
+- Prompt displayed: "What did you order? Tap what you hear" / "מה הזמנת? הקש על מה ששמעת"
+- Audio played: EN "A croissant, please." · FR "Un croissant, s’il vous plaît." · ES "Un cruasán, por favor."
+- Meaning of the audio (HE): "קרואסון, בבקשה."
+- Buttons show: a 3×3 board of 9 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "☕🧊" — no sentence id — ❌ wrong
+  2. "☕🔥" — no sentence id — ❌ wrong
+  3. "🥤M" — no sentence id — ❌ wrong
+  4. "🥤L" — no sentence id — ❌ wrong
+  5. "☕🥛✓ 🍬✕" — no sentence id — ❌ wrong
+  6. "☕🥛✓ 🍬✓" — no sentence id — ❌ wrong
+  7. "🥐" — `phrase.coffee.croissant` — ✅ accepted
+  8. "🧁" — no sentence id — ❌ wrong
+  9. "✋" — no sentence id — ❌ wrong
+- Tests: phrase.coffee.croissant
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M03-Q56 — visual-match (step 23, round 5 of 5)
+
+- Prompt displayed: "What did you order? Tap what you hear" / "מה הזמנת? הקש על מה ששמעת"
+- Audio played: EN "That's all, thanks." · FR "C’est tout, merci." · ES "Eso es todo, gracias."
+- Meaning of the audio (HE): "זה הכל, תודה."
+- Buttons show: a 3×3 board of 9 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "☕🧊" — no sentence id — ❌ wrong
+  2. "☕🔥" — no sentence id — ❌ wrong
+  3. "🥤M" — no sentence id — ❌ wrong
+  4. "🥤L" — no sentence id — ❌ wrong
+  5. "☕🥛✓ 🍬✕" — no sentence id — ❌ wrong
+  6. "☕🥛✓ 🍬✓" — no sentence id — ❌ wrong
+  7. "🥐" — no sentence id — ❌ wrong
+  8. "🧁" — no sentence id — ❌ wrong
+  9. "✋" — `phrase.coffee.thats-all` — ✅ accepted
+- Tests: phrase.coffee.thats-all
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M03-Q57 — visual-match (step 24, round 1 of 4)
+
+- Prompt displayed: "And how did you pay? Tap what you hear" / "ואיך שילמת? הקש על מה ששמעת"
+- Audio played: EN "That'll be six fifty." · FR "Ça fait six euros cinquante." · ES "Son seis con cincuenta."
+- Meaning of the audio (HE): "זה שש יורו וחמישים."
+- Buttons show: a 3×3 board of 6 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "€6.50" — no sentence id — ✅ accepted
+  2. "€16.50" — no sentence id — ❌ wrong
+  3. "💶" — no sentence id — ❌ wrong
+  4. "💳" — no sentence id — ❌ wrong
+  5. "🧾" — no sentence id — ❌ wrong
+  6. "👋☀️" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M03-Q58 — visual-match (step 24, round 2 of 4)
+
+- Prompt displayed: "And how did you pay? Tap what you hear" / "ואיך שילמת? הקש על מה ששמעת"
+- Audio played: EN "Card, please." · FR "Par carte, s’il vous plaît." · ES "Con tarjeta, por favor."
+- Meaning of the audio (HE): "בכרטיס, בבקשה."
+- Buttons show: a 3×3 board of 6 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "€6.50" — no sentence id — ❌ wrong
+  2. "€16.50" — no sentence id — ❌ wrong
+  3. "💶" — no sentence id — ❌ wrong
+  4. "💳" — `phrase.coffee.card` — ✅ accepted
+  5. "🧾" — no sentence id — ❌ wrong
+  6. "👋☀️" — no sentence id — ❌ wrong
+- Tests: phrase.coffee.card
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M03-Q59 — visual-match (step 24, round 3 of 4)
+
+- Prompt displayed: "And how did you pay? Tap what you hear" / "ואיך שילמת? הקש על מה ששמעת"
+- Audio played: EN "Would you like the receipt?" · FR "Vous voulez le ticket ?" · ES "¿Quiere el recibo?"
+- Meaning of the audio (HE): "רוצה את הקבלה?"
+- Buttons show: a 3×3 board of 6 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "€6.50" — no sentence id — ❌ wrong
+  2. "€16.50" — no sentence id — ❌ wrong
+  3. "💶" — no sentence id — ❌ wrong
+  4. "💳" — no sentence id — ❌ wrong
+  5. "🧾" — `reply.coffee.receipt` — ✅ accepted
+  6. "👋☀️" — no sentence id — ❌ wrong
+- Tests: reply.coffee.receipt
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M03-Q60 — visual-match (step 24, round 4 of 4)
+
+- Prompt displayed: "And how did you pay? Tap what you hear" / "ואיך שילמת? הקש על מה ששמעת"
+- Audio played: EN "Here you go — enjoy your day!" · FR "Voilà — bonne journée !" · ES "Aquí tiene — ¡que tenga un buen día!"
+- Meaning of the audio (HE): "בבקשה — שיהיה לך יום מעולה!"
+- Buttons show: a 3×3 board of 6 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "€6.50" — no sentence id — ❌ wrong
+  2. "€16.50" — no sentence id — ❌ wrong
+  3. "💶" — no sentence id — ❌ wrong
+  4. "💳" — no sentence id — ❌ wrong
+  5. "🧾" — no sentence id — ❌ wrong
+  6. "👋☀️" — `reply.coffee.enjoy` — ✅ accepted
+- Tests: reply.coffee.enjoy
+- Explanation shown after answering: after the tap: the spoken line and its translation
 
 ## Dialogue — full tree
 
@@ -2861,7 +3488,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 
 ## Learner choice screens
 
-### M03-Q13 — dialogue-choice (step 11, scene "breakfast-order" · node c1)
+### M03-Q34 — dialogue-choice (step 17, scene "breakfast-order" · node c1)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Good morning! What can I get you?" · FR "Bonjour ! Qu’est-ce que je vous sers ?" · ES "¡Buenos días! ¿Qué le sirvo?"
@@ -2873,7 +3500,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.coffee.iced-coffee, phrase.recovery.one-moment
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M03-Q14 — dialogue-choice (step 11, scene "breakfast-order" · node c1b)
+### M03-Q35 — dialogue-choice (step 17, scene "breakfast-order" · node c1b)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Of course — take your time!" · FR "Bien sûr — prenez votre temps !" · ES "Claro — ¡tómese su tiempo!"
@@ -2884,7 +3511,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.coffee.iced-coffee
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M03-Q15 — dialogue-choice (step 11, scene "breakfast-order" · node c2)
+### M03-Q36 — dialogue-choice (step 17, scene "breakfast-order" · node c2)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Sure! Medium or large?" · FR "Parfait ! Moyen ou grand ?" · ES "¡Perfecto! ¿Mediano o grande?"
@@ -2896,7 +3523,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.coffee.medium, phrase.recovery.repeat
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M03-Q16 — dialogue-choice (step 11, scene "breakfast-order" · node c2b)
+### M03-Q37 — dialogue-choice (step 17, scene "breakfast-order" · node c2b)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "MEDIUM — or LARGE?" · FR "MOYEN — ou GRAND ?" · ES "¿MEDIANO — o GRANDE?"
@@ -2907,7 +3534,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.coffee.medium
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M03-Q17 — dialogue-choice (step 11, scene "breakfast-order" · node c3)
+### M03-Q38 — dialogue-choice (step 17, scene "breakfast-order" · node c3)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Milk and sugar?" · FR "Lait et sucre ?" · ES "¿Leche y azúcar?"
@@ -2919,7 +3546,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.coffee.no-sugar
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M03-Q18 — dialogue-choice (step 11, scene "breakfast-order" · node c3b)
+### M03-Q39 — dialogue-choice (step 17, scene "breakfast-order" · node c3b)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "You're welcome! But — milk? sugar?" · FR "De rien ! Mais — du lait ? du sucre ?" · ES "¡De nada! Pero — ¿leche? ¿azúcar?"
@@ -2930,7 +3557,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.coffee.no-sugar
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M03-Q19 — dialogue-choice (step 11, scene "breakfast-order" · node c4)
+### M03-Q40 — dialogue-choice (step 17, scene "breakfast-order" · node c4)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Anything to eat?" · FR "Quelque chose à manger ?" · ES "¿Algo de comer?"
@@ -2942,7 +3569,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.coffee.croissant, phrase.coffee.thats-all
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M03-Q20 — dialogue-choice (step 11, scene "breakfast-order" · node c5)
+### M03-Q41 — dialogue-choice (step 17, scene "breakfast-order" · node c5)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Great choice. Would you like anything else?" · FR "Excellent choix. Vous désirez autre chose ?" · ES "Buena elección. ¿Algo más?"
@@ -2953,7 +3580,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.coffee.thats-all
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M03-Q21 — dialogue-choice (step 11, scene "breakfast-order" · node c6)
+### M03-Q42 — dialogue-choice (step 17, scene "breakfast-order" · node c6)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "That'll be six fifty. Cash or card?" · FR "Ça fait six euros cinquante. Espèces ou carte ?" · ES "Son seis con cincuenta. ¿Efectivo o tarjeta?"
@@ -2965,7 +3592,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.coffee.card, phrase.recovery.slowly
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M03-Q22 — dialogue-choice (step 11, scene "breakfast-order" · node c6b)
+### M03-Q43 — dialogue-choice (step 17, scene "breakfast-order" · node c6b)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Six — fifty. Cash, or card?" · FR "Six — cinquante. Espèces, ou carte ?" · ES "Seis — cincuenta. ¿Efectivo, o tarjeta?"
@@ -2976,7 +3603,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.coffee.card
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M03-Q23 — dialogue-choice (step 11, scene "breakfast-order" · node c7)
+### M03-Q44 — dialogue-choice (step 17, scene "breakfast-order" · node c7)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Would you like the receipt?" · FR "Vous voulez le ticket ?" · ES "¿Quiere el recibo?"
@@ -3010,42 +3637,25 @@ Where a conversation-help tool can be selected, and what happens:
 
 ## Sentence review
 
-Step 13. 14 sentences, in this fixed order. Each is played automatically (TTS), shown with its translation and tip; buttons: 🔊 "Hear again" / "לשמוע שוב" and Next. No speaking prompt, no grading, no scoring; nothing is recorded.
+Step 19. 13 sentences, in this fixed order. Each is played automatically (TTS), shown with its translation and tip; buttons: 🔊 "Hear again" / "לשמוע שוב" and Next. No speaking prompt, no grading, no scoring; nothing is recorded.
 
-1. `phrase.coffee.iced-coffee` — I'd like an iced coffee, please. — אני רוצה קפה קר, בבקשה.
-2. `phrase.coffee.to-go` — To go, please. — לקחת, בבקשה.
+1. `reply.coffee.what-can-i-get` — Good morning! What can I get you? — בוקר טוב! מה להביא לך?
+2. `reply.coffee.medium-or-large` — Sure! Medium or large? — סגור! בינוני או גדול?
 3. `phrase.coffee.medium` — Medium, please. — בינוני, בבקשה.
-4. `phrase.coffee.no-sugar` — Milk, no sugar. — עם חלב, בלי סוכר.
-5. `phrase.coffee.croissant` — A croissant, please. — קרואסון, בבקשה.
-6. `phrase.coffee.thats-all` — That's all, thanks. — זה הכל, תודה.
-7. `phrase.coffee.card` — Card, please. — בכרטיס, בבקשה.
-8. `phrase.coffee.yes-please` — Yes, please. — כן, בבקשה.
-9. `reply.coffee.here-or-to-go` — For here or to go? — לשבת כאן או לקחת?
-10. `reply.coffee.medium-or-large` — Medium or large? — בינוני או גדול?
-11. `reply.coffee.milk-sugar` — Milk and sugar? — חלב וסוכר?
-12. `reply.coffee.anything-to-eat` — Anything to eat? — משהו לאכול?
-13. `reply.coffee.cash-or-card` — Cash or card? — מזומן או כרטיס?
-14. `phrase.recovery.repeat` — Can you repeat that? — אפשר לחזור על זה?
+4. `reply.coffee.milk-sugar` — Milk and sugar? — חלב וסוכר?
+5. `reply.coffee.anything-to-eat` — Anything to eat? — משהו לאכול?
+6. `phrase.coffee.croissant` — A croissant, please. — קרואסון, בבקשה.
+7. `reply.coffee.anything-else` — Great choice. Would you like anything else? — בחירה מצוינת. עוד משהו?
+8. `reply.coffee.cash-or-card` — That'll be six fifty. Cash or card? — זה שש יורו וחמישים (‎€6.50). מזומן או כרטיס?
+9. `phrase.coffee.card` — Card, please. — בכרטיס, בבקשה.
+10. `reply.coffee.receipt` — Would you like the receipt? — רוצה את הקבלה?
+11. `phrase.coffee.yes-please` — Yes, please. — כן, בבקשה.
+12. `phrase.recovery.repeat` — Can you repeat that? — אפשר לחזור על זה?
+13. `phrase.coffee.to-go` — To go, please. — לקחת, בבקשה.
 
 ## Cold open / ambush
 
-### M03-Q24 — cold-open (step 14, single prompt · mode: recovery)
-
-- Prompt displayed: "Heads up: a fast one is coming. Use a tool." / "שים לב: מגיע משפט מהיר. השתמש בכלי."
-- Audio played: EN "Sorry, we are out of croissants — would a muffin be okay instead?" · FR "Désolé, on n’a plus de croissants — un muffin à la place, ça vous va ?" · ES "Lo siento, se nos acabaron los cruasanes — ¿le va bien un muffin en su lugar?"
-- Meaning of the audio (HE): "סליחה, נגמרו הקרואסונים — מאפין במקום זה בסדר?"
-- Buttons show: TARGET-LANGUAGE text of the two sentences; only the conversation-help tool carries 🛟; order shuffled
-- Choices:
-  1. EN "Can you repeat that?" · FR "Vous pouvez répéter ?" · ES "¿Puede repetir, por favor?" · (HE gloss "אפשר לחזור על זה?") — `phrase.recovery.repeat` — ✅ accepted
-  2. EN "Card, please." · FR "Par carte, s’il vous plaît." · ES "Con tarjeta, por favor." · (HE gloss "בכרטיס, בבקשה.") — `phrase.coffee.card` — ❌ wrong
-- Tests: phrase.recovery.repeat
-- Explanation shown after answering: generic: “Can you repeat that?” means “אפשר לחזור על זה?”.
-
-- Flow: screen shows ⚡ and "Heads up: a fast one is coming. Use a tool." / "שים לב: מגיע משפט מהיר. השתמש בכלי." with one button 👂 "I'm ready" / "אני מוכן"; on tap the line is spoken at TTS rate 1.12 and printed small; two shuffled buttons appear; 🔊 "Hear again" / "לשמוע שוב" replays at 0.85.
-- Success criterion: picking the accepted sentence. A wrong pick shows the feedback card (what you heard + translation, your answer, the sentence that fit) with Try again / Continue; Continue proceeds either way. Response time is recorded.
-- Recovery options offered: yes (see choices)
-- Receipt shown next: "An off-script surprise — and you answered with a tool. Exactly how real life works." / "הפתעה מחוץ לתסריט — והגבת עם כלי. זה בדיוק מה שקורה בעולם האמיתי."
-- Potential new-language exposure: YES — English words not met in any sentence or dialogue line of Missions 01–03: we, out, croissants, muffin, okay, instead
+No cold open in this mission.
 
 ## Swap-in / variable content
 
@@ -3061,39 +3671,52 @@ Learner sentences taught beside the dialogue (not a line in any scene):
 
 ## Receipts (proof cards)
 
-- Step 8: "You now recognize the four follow-ups of every barista on earth." / "אתה כבר מזהה את ארבע שאלות ההמשך של כל בריסטה בעולם."
-- Step 12: "You ordered a full breakfast: drink, size, milk, pastry, payment. All of it." / "הזמנת ארוחת בוקר שלמה: שתייה, גודל, חלב, מאפה, תשלום. הכל."
-- Step 15: "An off-script surprise — and you answered with a tool. Exactly how real life works." / "הפתעה מחוץ לתסריט — והגבת עם כלי. זה בדיוק מה שקורה בעולם האמיתי."
+- Step 7: "You now recognize everything the barista says after you order — size, milk, food, anything else, payment and goodbye." / "אתה כבר מזהה את כל מה שהבריסטה אומר אחרי שהזמנת — גודל, חלב, אוכל, עוד משהו, תשלום ופרידה."
+- Step 18: "You ordered a full breakfast: drink, size, milk, pastry, payment and receipt. All of it." / "הזמנת ארוחת בוקר שלמה: שתייה, גודל, חלב, מאפה, תשלום וקבלה. הכל."
+- Step 21: "Seven barista questions, at real speed and with no translation — and you got through all of them." / "שבע שאלות של בריסטה, בקצב אמיתי ובלי תרגום — ושרדת את כולן."
+- Step 25: "You understood the whole café conversation — what you ordered, the size, with and without, what you ate, the price and how you paid." / "הבנת את כל השיחה בבית הקפה — מה הזמנת, איזה גודל, עם מה ובלי מה, מה אכלת, כמה שילמת ואיך."
 
 ## Audit Metadata — DO NOT FIX YET
 
 - Learner-production sentences: 8
-- Receptive (expected-reply) sentences: 10
+- Receptive (expected-reply) sentences: 13
 - Toolkit phrases bundled: 4
-- Key-sentence steps: 4
-- Expected-reply/listening items: 4
+- Key-sentence steps: 3
+- Expected-reply/listening items: 6
 - Questions/quizzes (meaning quiz): 0
-- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 8
-- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 14
+- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 43
+- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 30
 - One-button dialogue screens: 5
-- Learner sentences never actively retrieved: 0
+- Learner sentences never actively retrieved: 1
 - Dialogue learner choices (screens): 11
 - Wrong-answer branches: 1
-- Cold-open prompts: 1
+- Cold-open prompts: 0
 - Recovery opportunities: 3
-- Vocabulary pre-items: 6
+- Vocabulary pre-items: 8
 - Swap variants (extra accepted lines): 1
-- Sentences in review: 14
-- Total interactive questions: 24 (answer choices: 51)
-- Approximate total learner interactions: 43 (questions + key sentences + review cards + word-intro screen)
+- Sentences in review: 13
+- Total interactive questions: 60 (answer choices: 250)
+- Approximate total learner interactions: 77 (questions + key sentences + review cards + word-intro screen)
 
-### AUTO-FLAG — requires human review (5)
+### AUTO-FLAG — requires human review (17)
 
 - AUTO-FLAG — Practice item wording not in this mission's dialogue: `reply.coffee.hot-or-iced` “Hot or iced?” (drilled as an expected reply / distractor, but no NPC line here says it).
 - AUTO-FLAG — Practice item wording not in this mission's dialogue: `reply.coffee.here-or-to-go` “For here or to go?” (drilled as an expected reply / distractor, but no NPC line here says it).
+- AUTO-FLAG — Learner sentence never actively retrieved in this mission (0 choice screens, 0 quick-reply / swap / match / builder rounds, 0 cold-open options): `phrase.coffee.to-go` “To go, please.” — appears in sentence review only (orphan in this mission).
 - AUTO-FLAG — Choice with no sentence id (not recorded, not scored): scene "breakfast-order" c3 — “Thank you!”
 - AUTO-FLAG — 10 of 11 choice screens have NO wrong option (every button is accepted): breakfast-order/c1, breakfast-order/c1b, breakfast-order/c2, breakfast-order/c2b, breakfast-order/c3b, breakfast-order/c4, breakfast-order/c5, breakfast-order/c6, breakfast-order/c6b, breakfast-order/c7.
 - AUTO-FLAG — 5 choice screens offer exactly ONE button (no decision): breakfast-order/c1b, breakfast-order/c2b, breakfast-order/c3b, breakfast-order/c5, breakfast-order/c6b.
+- AUTO-FLAG — English gloss differs from the English sentence: `reply.coffee.cash-or-card` text “That'll be six fifty. Cash or card?” vs gloss “That'll be six fifty (€6.50). Cash or card?”.
+- AUTO-FLAG — FR Hebrew gloss differs from the English mission's Hebrew gloss: `reply.coffee.medium-or-large` “מצוין! בינוני או גדול?” vs “סגור! בינוני או גדול?”.
+- AUTO-FLAG — FR English gloss differs from the English mission's sentence: `reply.coffee.cash-or-card` gloss “That'll be six fifty (€6.50). Cash or card?” vs English “That'll be six fifty. Cash or card?”.
+- AUTO-FLAG — FR English gloss differs from the English mission's sentence: `reply.coffee.good-morning` gloss “Good morning! / Hello!” vs English “Good morning!”.
+- AUTO-FLAG — FR Hebrew gloss differs from the English mission's Hebrew gloss: `reply.coffee.good-morning` “בוקר טוב! / שלום!” vs “בוקר טוב!”.
+- AUTO-FLAG — FR English gloss differs from the English mission's sentence: `reply.coffee.sure` gloss “Perfect! / Sure!” vs English “Sure!”.
+- AUTO-FLAG — FR Hebrew gloss differs from the English mission's Hebrew gloss: `reply.coffee.sure` “מצוין! / סגור!” vs “בטח! / סגור!”.
+- AUTO-FLAG — ES Hebrew gloss differs from the English mission's Hebrew gloss: `reply.coffee.medium-or-large` “מצוין! בינוני או גדול?” vs “סגור! בינוני או גדול?”.
+- AUTO-FLAG — ES English gloss differs from the English mission's sentence: `reply.coffee.cash-or-card` gloss “That'll be six fifty (€6.50). Cash or card?” vs English “That'll be six fifty. Cash or card?”.
+- AUTO-FLAG — ES English gloss differs from the English mission's sentence: `reply.coffee.sure` gloss “Perfect! / Sure!” vs English “Sure!”.
+- AUTO-FLAG — ES Hebrew gloss differs from the English mission's Hebrew gloss: `reply.coffee.sure` “מצוין! / סגור!” vs “בטח! / סגור!”.
 
 ---
 
@@ -26917,7 +27540,7 @@ Every learner sentence of this mission is a line in a scene.
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 01 Introduce Myself | 14 (4 / 8 / 2) | 9 | 13 | 4 | 16 | 6 | 3 | 2 | 1 | 7 words | 0 | 36 | 8 |
 | 02 Numbers & Money | 19 (5 / 12 / 2) | 5 | 5 | 0 | 36 | 4 | 1 | 2 | 0 | 8 words | 1 | 45 | 10 |
-| 03 Coffee Shop | 22 (8 / 10 / 4) | 4 | 4 | 0 | 8 | 11 | 5 | 3 | 1 | 6 words | 1 | 24 | 5 |
+| 03 Coffee Shop | 25 (8 / 13 / 4) | 6 | 6 | 0 | 43 | 11 | 5 | 3 | 0 | 8 words | 1 | 60 | 17 |
 | 04 Everyday Core: Want / Need / Have / Can | 18 (10 / 6 / 2) | 4 | 4 | 0 | 12 | 10 | 9 | 2 | 1 | 5 words | 0 | 27 | 4 |
 | 05 Directions | 14 (5 / 7 / 2) | 4 | 5 | 1 | 9 | 3 | 1 | 1 | 0 | 6 words | 0 | 17 | 5 |
 | 06 Airport & Border | 15 (5 / 6 / 4) | 4 | 4 | 0 | 11 | 10 | 5 | 3 | 0 | no | 0 | 25 | 4 |
@@ -26963,14 +27586,14 @@ Every learner-production sentence id of the Core, in order of first appearance. 
 | `phrase.money.in-cash` | In cash. | 02 | 28 | 0 | 1 / 1 | 3 | 0 | 1 | no | no |  |
 | `phrase.money.one-box` | One box, please. | 02 | — | 1 | 2 / 0 | 7 | 0 | 1 | no | no |  |
 | `phrase.money.too-expensive` | That's too expensive. | 02 | — | 1 | 0 / 0 | 2 | 0 | 1 | no | no |  |
-| `phrase.coffee.iced-coffee` | I'd like an iced coffee, please. | 03 | 18 | 1 | 3 / 0 | 2 | 0 | 1 | yes | no |  |
-| `phrase.coffee.to-go` | To go, please. | 03 | 18 | 0 | 0 / 1 | 3 | 0 | 1 | yes | no |  |
-| `phrase.coffee.no-sugar` | Milk, no sugar. | 03 | — | 1 | 2 / 0 | 3 | 0 | 1 | no | no |  |
-| `phrase.coffee.croissant` | A croissant, please. | 03 | — | 0 | 1 / 0 | 2 | 0 | 1 | no | no |  |
-| `phrase.coffee.thats-all` | That's all, thanks. | 03 | 29 | 1 | 3 / 0 | 2 | 0 | 1 | no | no |  |
-| `phrase.coffee.card` | Card, please. | 03 | — | 1 | 2 / 0 | 4 | 1 | 1 | no | no |  |
-| `phrase.coffee.medium` | Medium, please. | 03 | — | 0 | 2 / 0 | 3 | 0 | 1 | no | no |  |
-| `phrase.coffee.yes-please` | Yes, please. | 03 | 29 | 0 | 2 / 0 | 1 | 0 | 1 | no | no |  |
+| `phrase.coffee.iced-coffee` | I'd like an iced coffee, please. | 03 | 18 | 1 | 3 / 0 | 4 | 0 | 0 | yes | no |  |
+| `phrase.coffee.to-go` | To go, please. | 03 | 18 | 0 | 0 / 1 | 0 | 0 | 1 | yes | no |  |
+| `phrase.coffee.no-sugar` | Milk, no sugar. | 03 | — | 1 | 2 / 0 | 6 | 0 | 0 | no | no |  |
+| `phrase.coffee.croissant` | A croissant, please. | 03 | — | 0 | 1 / 0 | 6 | 0 | 1 | no | no |  |
+| `phrase.coffee.thats-all` | That's all, thanks. | 03 | 29 | 1 | 3 / 0 | 4 | 0 | 0 | no | no |  |
+| `phrase.coffee.card` | Card, please. | 03 | — | 0 | 2 / 0 | 9 | 0 | 1 | no | no |  |
+| `phrase.coffee.medium` | Medium, please. | 03 | — | 0 | 2 / 0 | 9 | 0 | 1 | no | no |  |
+| `phrase.coffee.yes-please` | Yes, please. | 03 | 29 | 0 | 2 / 0 | 4 | 0 | 1 | no | no |  |
 | `phrase.core.i-need` | I need a towel. | 04 | — | 1 | 1 / 0 | 4 | 0 | 1 | no | no |  |
 | `phrase.core.i-have` | Yes, I have my key. | 04 | 30 | 0 | 2 / 0 | 4 | 0 | 1 | yes | no |  |
 | `phrase.core.i-dont-have` | I don't have it. | 04 | — | 1 | 1 / 0 | 1 | 0 | 1 | no | no |  |
@@ -27147,16 +27770,19 @@ Every expected-reply sentence id. "Quick response" does not exist as an exercise
 | `reply.money.offer` | Five euros a box, or two for eight! | 02 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
 | `reply.money.perfect` | Perfect. | 02 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
 | `reply.money.enjoy-strawberries` | Thank you! Enjoy the strawberries! | 02 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
-| `reply.coffee.what-can-i-get` | What can I get you? | 03 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.coffee.what-can-i-get` | Good morning! What can I get you? | 03 | — | no | 0 / 0 | 0 / 0 | no | yes |
 | `reply.coffee.hot-or-iced` | Hot or iced? | 03 | — | no | 0 / 0 | 0 / 0 | no | **no** |
-| `reply.coffee.here-or-to-go` | For here or to go? | 03 | — | yes (1) | 0 / 0 | 0 / 0 | no | **no** |
-| `reply.coffee.medium-or-large` | Medium or large? | 03 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
+| `reply.coffee.here-or-to-go` | For here or to go? | 03 | — | no | 0 / 0 | 0 / 0 | no | **no** |
+| `reply.coffee.medium-or-large` | Sure! Medium or large? | 03 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
 | `reply.coffee.milk-sugar` | Milk and sugar? | 03 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
-| `reply.coffee.anything-to-eat` | Anything to eat? | 03 | — | no | 0 / 0 | 0 / 0 | no | yes |
-| `reply.coffee.anything-else` | Would you like anything else? | 03 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
-| `reply.coffee.cash-or-card` | Cash or card? | 03 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.coffee.anything-to-eat` | Anything to eat? | 03 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
+| `reply.coffee.anything-else` | Great choice. Would you like anything else? | 03 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
+| `reply.coffee.cash-or-card` | That'll be six fifty. Cash or card? | 03 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
 | `reply.coffee.receipt` | Would you like the receipt? | 03 | — | no | 0 / 0 | 0 / 0 | no | yes |
-| `reply.coffee.enjoy` | Enjoy your day! | 03 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.coffee.enjoy` | Here you go — enjoy your day! | 03 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
+| `reply.coffee.good-morning` | Good morning! | 03 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.coffee.sure` | Sure! | 03 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.coffee.great-choice` | Great choice. | 03 | — | no | 0 / 0 | 0 / 0 | no | yes |
 | `reply.core.do-you-want` | Do you want a coffee? | 04 | — | no | 0 / 0 | 0 / 0 | no | yes |
 | `reply.core.need-anything` | Do you need anything? | 04 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
 | `reply.core.have-your-key` | Do you have your key? | 04 | — | yes (1) | 0 / 0 | 1 / 0 | no | yes |
@@ -28224,60 +28850,320 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 ## Mission 03 — Coffee Shop
 
 **M03-Q01** — expected-reply
-- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (1/4)
-- Audio: For here or to go? — (לשבת כאן או לקחת?)
-- A: לשבת כאן או לקחת? / For here or to go? ✅
-- B: בינוני או גדול? / Medium or large?
-- C: חלב וסוכר? / Milk and sugar?
-- Correct: For here or to go?
-- Tests: reply.coffee.here-or-to-go
-
-**M03-Q02** — expected-reply
-- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (2/4)
-- Audio: Medium or large? — (בינוני או גדול?)
-- A: בינוני או גדול? / Medium or large? ✅
-- B: לשבת כאן או לקחת? / For here or to go?
-- C: חלב וסוכר? / Milk and sugar?
-- Correct: Medium or large?
+- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (1/6)
+- Audio: Sure! Medium or large? — (סגור! בינוני או גדול?)
+- A: סגור! בינוני או גדול? / Sure! Medium or large? ✅
+- B: חלב וסוכר? / Milk and sugar?
+- C: משהו לאכול? / Anything to eat?
+- Correct: Sure! Medium or large?
 - Tests: reply.coffee.medium-or-large
 
-**M03-Q03** — expected-reply
-- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (3/4)
+**M03-Q02** — expected-reply
+- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (2/6)
 - Audio: Milk and sugar? — (חלב וסוכר?)
 - A: חלב וסוכר? / Milk and sugar? ✅
-- B: לשבת כאן או לקחת? / For here or to go?
-- C: בינוני או גדול? / Medium or large?
+- B: סגור! בינוני או גדול? / Sure! Medium or large?
+- C: משהו לאכול? / Anything to eat?
 - Correct: Milk and sugar?
 - Tests: reply.coffee.milk-sugar
 
+**M03-Q03** — expected-reply
+- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (3/6)
+- Audio: Anything to eat? — (משהו לאכול?)
+- A: משהו לאכול? / Anything to eat? ✅
+- B: סגור! בינוני או גדול? / Sure! Medium or large?
+- C: חלב וסוכר? / Milk and sugar?
+- Correct: Anything to eat?
+- Tests: reply.coffee.anything-to-eat
+
 **M03-Q04** — expected-reply
-- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (4/4)
-- Audio: Would you like anything else? — (עוד משהו?)
-- A: עוד משהו? / Would you like anything else? ✅
-- B: לשבת כאן או לקחת? / For here or to go?
-- C: בינוני או גדול? / Medium or large?
-- Correct: Would you like anything else?
+- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (4/6)
+- Audio: Great choice. Would you like anything else? — (בחירה מצוינת. עוד משהו?)
+- A: בחירה מצוינת. עוד משהו? / Great choice. Would you like anything else? ✅
+- B: סגור! בינוני או גדול? / Sure! Medium or large?
+- C: חלב וסוכר? / Milk and sugar?
+- Correct: Great choice. Would you like anything else?
 - Tests: reply.coffee.anything-else
 
-**M03-Q05** — quick-reply
-- Prompt: "The barista asks — what do you say?" / "הבריסטה שואל — מה עונים?"
-- Audio: For here or to go? — (לשבת כאן או לקחת?)
-- A: To go, please. ✅
-- B: That's all, thanks.
-- C: Card, please.
-- Correct: To go, please.
-- Tests: phrase.coffee.to-go
+**M03-Q05** — expected-reply
+- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (5/6)
+- Audio: That'll be six fifty. Cash or card? — (זה שש יורו וחמישים (‎€6.50). מזומן או כרטיס?)
+- A: זה שש יורו וחמישים (‎€6.50). מזומן או כרטיס? / That'll be six fifty. Cash or card? ✅
+- B: סגור! בינוני או גדול? / Sure! Medium or large?
+- C: חלב וסוכר? / Milk and sugar?
+- Correct: That'll be six fifty. Cash or card?
+- Tests: reply.coffee.cash-or-card
 
-**M03-Q06** — quick-reply
-- Prompt: "The barista asks — what do you say?" / "הבריסטה שואל — מה עונים?"
-- Audio: Medium or large? — (בינוני או גדול?)
-- A: Medium, please. ✅
-- B: Milk, no sugar.
-- C: A croissant, please.
+**M03-Q06** — expected-reply
+- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (6/6)
+- Audio: Here you go — enjoy your day! — (בבקשה (הנה) — שיהיה לך יום מעולה!)
+- A: בבקשה (הנה) — שיהיה לך יום מעולה! / Here you go — enjoy your day! ✅
+- B: סגור! בינוני או גדול? / Sure! Medium or large?
+- C: חלב וסוכר? / Milk and sugar?
+- Correct: Here you go — enjoy your day!
+- Tests: reply.coffee.enjoy
+
+**M03-Q07** — visual-match
+- Prompt: "The order — tap what you hear" / "ההזמנה — הקש על מה ששמעת"
+- Audio: I'd like an iced coffee, please. — (אני רוצה קפה קר, בבקשה.)
+- A: ☕🧊 ✅
+- B: ☕🔥
+- C: 🥤M
+- D: 🥤L
+- E: 🥐
+- F: 🧁
+- G: ➕❓
+- H: ✋
+- I: 🧾
+- Correct: ☕🧊
+- Tests: phrase.coffee.iced-coffee
+
+**M03-Q08** — visual-match
+- Prompt: "The order — tap what you hear" / "ההזמנה — הקש על מה ששמעת"
+- Audio: Medium, please. — (בינוני, בבקשה.)
+- A: ☕🧊
+- B: ☕🔥
+- C: 🥤M ✅
+- D: 🥤L
+- E: 🥐
+- F: 🧁
+- G: ➕❓
+- H: ✋
+- I: 🧾
+- Correct: 🥤M
+- Tests: phrase.coffee.medium
+
+**M03-Q09** — visual-match
+- Prompt: "The order — tap what you hear" / "ההזמנה — הקש על מה ששמעת"
+- Audio: A croissant, please. — (קרואסון, בבקשה.)
+- A: ☕🧊
+- B: ☕🔥
+- C: 🥤M
+- D: 🥤L
+- E: 🥐 ✅
+- F: 🧁
+- G: ➕❓
+- H: ✋
+- I: 🧾
+- Correct: 🥐
+- Tests: phrase.coffee.croissant
+
+**M03-Q10** — visual-match
+- Prompt: "The order — tap what you hear" / "ההזמנה — הקש על מה ששמעת"
+- Audio: Great choice. Would you like anything else? — (בחירה מצוינת. עוד משהו?)
+- A: ☕🧊
+- B: ☕🔥
+- C: 🥤M
+- D: 🥤L
+- E: 🥐
+- F: 🧁
+- G: ➕❓ ✅
+- H: ✋
+- I: 🧾
+- Correct: ➕❓
+- Tests: reply.coffee.anything-else
+
+**M03-Q11** — visual-match
+- Prompt: "The order — tap what you hear" / "ההזמנה — הקש על מה ששמעת"
+- Audio: That's all, thanks. — (זה הכל, תודה.)
+- A: ☕🧊
+- B: ☕🔥
+- C: 🥤M
+- D: 🥤L
+- E: 🥐
+- F: 🧁
+- G: ➕❓
+- H: ✋ ✅
+- I: 🧾
+- Correct: ✋
+- Tests: phrase.coffee.thats-all
+
+**M03-Q12** — visual-match
+- Prompt: "The order — tap what you hear" / "ההזמנה — הקש על מה ששמעת"
+- Audio: Would you like the receipt? — (רוצה את הקבלה?)
+- A: ☕🧊
+- B: ☕🔥
+- C: 🥤M
+- D: 🥤L
+- E: 🥐
+- F: 🧁
+- G: ➕❓
+- H: ✋
+- I: 🧾 ✅
+- Correct: 🧾
+- Tests: reply.coffee.receipt
+
+**M03-Q13** — customize
+- Prompt: "Milk and sugar? — make the coffee exactly as you heard it" / "חלב וסוכר? — הכן את הקפה בדיוק כמו ששמעת"
+- Audio: Milk, no sugar. — (עם חלב, בלי סוכר.)
+- A: 🥛 Milk ✓ ✅
+- B: 🍬 Sugar ✕ ✅
+- Correct: 🥛 Milk ✓ | 🍬 Sugar ✕
+- Tests: phrase.coffee.no-sugar
+
+**M03-Q14** — customize
+- Prompt: "Milk and sugar? — make the coffee exactly as you heard it" / "חלב וסוכר? — הכן את הקפה בדיוק כמו ששמעת"
+- Audio: Sugar, no milk. — (עם סוכר, בלי חלב.)
+- A: 🥛 Milk ✕ ✅
+- B: 🍬 Sugar ✓ ✅
+- Correct: 🥛 Milk ✕ | 🍬 Sugar ✓
+- Tests: (no sentence id — not recorded)
+
+**M03-Q15** — match-pairs
+- Prompt: "What does the barista say? Match each line to its meaning" / "מה הבריסטה אומר? התאם כל משפט למשמעות שלו" — tile to match (target language, no translation): EN "Good morning!" · FR "Bonjour !" · ES "¡Buenos días!"
+- Audio: Good morning! — (בוקר טוב!)
+- A: 🌅 Good morning / בוקר טוב ✅
+- B: 👍 Sure / perfect / בטח / מצוין
+- C: 👌 Great choice / בחירה מצוינת
+- D: 👋☀️ Here you go — enjoy your day / בבקשה — שיהיה לך יום מעולה
+- Correct: 🌅 Good morning / בוקר טוב
+- Tests: reply.coffee.good-morning
+
+**M03-Q16** — match-pairs
+- Prompt: "What does the barista say? Match each line to its meaning" / "מה הבריסטה אומר? התאם כל משפט למשמעות שלו" — tile to match (target language, no translation): EN "Sure!" · FR "Parfait !" · ES "¡Perfecto!"
+- Audio: Sure! — (בטח! / סגור!)
+- A: 🌅 Good morning / בוקר טוב
+- B: 👍 Sure / perfect / בטח / מצוין ✅
+- C: 👌 Great choice / בחירה מצוינת
+- D: 👋☀️ Here you go — enjoy your day / בבקשה — שיהיה לך יום מעולה
+- Correct: 👍 Sure / perfect / בטח / מצוין
+- Tests: reply.coffee.sure
+
+**M03-Q17** — match-pairs
+- Prompt: "What does the barista say? Match each line to its meaning" / "מה הבריסטה אומר? התאם כל משפט למשמעות שלו" — tile to match (target language, no translation): EN "Great choice." · FR "Excellent choix." · ES "Buena elección."
+- Audio: Great choice. — (בחירה מצוינת.)
+- A: 🌅 Good morning / בוקר טוב
+- B: 👍 Sure / perfect / בטח / מצוין
+- C: 👌 Great choice / בחירה מצוינת ✅
+- D: 👋☀️ Here you go — enjoy your day / בבקשה — שיהיה לך יום מעולה
+- Correct: 👌 Great choice / בחירה מצוינת
+- Tests: reply.coffee.great-choice
+
+**M03-Q18** — match-pairs
+- Prompt: "What does the barista say? Match each line to its meaning" / "מה הבריסטה אומר? התאם כל משפט למשמעות שלו" — tile to match (target language, no translation): EN "Here you go — enjoy your day!" · FR "Voilà — bonne journée !" · ES "Aquí tiene — ¡que tenga un buen día!"
+- Audio: Here you go — enjoy your day! — (בבקשה (הנה) — שיהיה לך יום מעולה!)
+- A: 🌅 Good morning / בוקר טוב
+- B: 👍 Sure / perfect / בטח / מצוין
+- C: 👌 Great choice / בחירה מצוינת
+- D: 👋☀️ Here you go — enjoy your day / בבקשה — שיהיה לך יום מעולה ✅
+- Correct: 👋☀️ Here you go — enjoy your day / בבקשה — שיהיה לך יום מעולה
+- Tests: reply.coffee.enjoy
+
+**M03-Q19** — match-pairs
+- Prompt: "What do you answer the barista? Connect each question to its answer" / "מה עונים לבריסטה? חבר כל שאלה לתשובה שלה" — tile to match (target language, no translation): EN "Good morning! What can I get you?" · FR "Bonjour ! Qu’est-ce que je vous sers ?" · ES "¡Buenos días! ¿Qué le sirvo?"
+- Audio: Good morning! What can I get you? — (בוקר טוב! מה להביא לך?)
+- A: I'd like an iced coffee, please. ✅
+- B: Medium, please.
+- C: Milk, no sugar.
+- D: A croissant, please.
+- Correct: I'd like an iced coffee, please.
+- Tests: phrase.coffee.iced-coffee
+
+**M03-Q20** — match-pairs
+- Prompt: "What do you answer the barista? Connect each question to its answer" / "מה עונים לבריסטה? חבר כל שאלה לתשובה שלה" — tile to match (target language, no translation): EN "Sure! Medium or large?" · FR "Parfait ! Moyen ou grand ?" · ES "¡Perfecto! ¿Mediano o grande?"
+- Audio: Sure! Medium or large? — (סגור! בינוני או גדול?)
+- A: I'd like an iced coffee, please.
+- B: Medium, please. ✅
+- C: Milk, no sugar.
+- D: A croissant, please.
 - Correct: Medium, please.
 - Tests: phrase.coffee.medium
 
-**M03-Q07** — quick-reply
+**M03-Q21** — match-pairs
+- Prompt: "What do you answer the barista? Connect each question to its answer" / "מה עונים לבריסטה? חבר כל שאלה לתשובה שלה" — tile to match (target language, no translation): EN "Milk and sugar?" · FR "Lait et sucre ?" · ES "¿Leche y azúcar?"
+- Audio: Milk and sugar? — (חלב וסוכר?)
+- A: I'd like an iced coffee, please.
+- B: Medium, please.
+- C: Milk, no sugar. ✅
+- D: A croissant, please.
+- Correct: Milk, no sugar.
+- Tests: phrase.coffee.no-sugar
+
+**M03-Q22** — match-pairs
+- Prompt: "What do you answer the barista? Connect each question to its answer" / "מה עונים לבריסטה? חבר כל שאלה לתשובה שלה" — tile to match (target language, no translation): EN "Anything to eat?" · FR "Quelque chose à manger ?" · ES "¿Algo de comer?"
+- Audio: Anything to eat? — (משהו לאכול?)
+- A: I'd like an iced coffee, please.
+- B: Medium, please.
+- C: Milk, no sugar.
+- D: A croissant, please. ✅
+- Correct: A croissant, please.
+- Tests: phrase.coffee.croissant
+
+**M03-Q23** — sentence-builder
+- Prompt: "Build the sentence" / "בנה את המשפט" — cue shown: the sentence's MEANING in the app language ("אני רוצה קפה קר, בבקשה.")
+- Audio: (nothing before Check; the built sentence is spoken once it is right) — ()
+- A: I'd like  |  an iced  |  coffee,  |  please. ✅
+- Correct: I'd like  |  an iced  |  coffee,  |  please.
+- Tests: phrase.coffee.iced-coffee
+
+**M03-Q24** — sentence-builder
+- Prompt: "Build the sentence" / "בנה את המשפט" — cue shown: the sentence's MEANING in the app language ("עם חלב, בלי סוכר.")
+- Audio: (nothing before Check; the built sentence is spoken once it is right) — ()
+- A: Milk,  |  no  |  sugar. ✅
+- Correct: Milk,  |  no  |  sugar.
+- Tests: phrase.coffee.no-sugar
+
+**M03-Q25** — visual-match
+- Prompt: "How much? Tap the price you hear" / "כמה זה? הקש על המחיר ששמעת"
+- Audio: That'll be six fifty. — (זה שש יורו וחמישים.)
+- A: €6.50 ✅
+- B: €6.05
+- C: €16.50
+- D: €60.50
+- E: €5.60
+- F: €6
+- Correct: €6.50
+- Tests: (no sentence id — not recorded)
+
+**M03-Q26** — visual-match
+- Prompt: "How much? Tap the price you hear" / "כמה זה? הקש על המחיר ששמעת"
+- Audio: Sixteen fifty. — (שש עשרה וחמישים.)
+- A: €6.50
+- B: €6.05
+- C: €16.50 ✅
+- D: €60.50
+- E: €5.60
+- F: €6
+- Correct: €16.50
+- Tests: (no sentence id — not recorded)
+
+**M03-Q27** — match-pairs
+- Prompt: "Finishing and paying — connect each question to its answer" / "מסיימים ומשלמים — חבר כל שאלה לתשובה שלה" — tile to match (target language, no translation): EN "Great choice. Would you like anything else?" · FR "Excellent choix. Vous désirez autre chose ?" · ES "Buena elección. ¿Algo más?"
+- Audio: Great choice. Would you like anything else? — (בחירה מצוינת. עוד משהו?)
+- A: That's all, thanks. ✅
+- B: Card, please.
+- C: Yes, please.
+- Correct: That's all, thanks.
+- Tests: phrase.coffee.thats-all
+
+**M03-Q28** — match-pairs
+- Prompt: "Finishing and paying — connect each question to its answer" / "מסיימים ומשלמים — חבר כל שאלה לתשובה שלה" — tile to match (target language, no translation): EN "That'll be six fifty. Cash or card?" · FR "Ça fait six euros cinquante. Espèces ou carte ?" · ES "Son seis con cincuenta. ¿Efectivo o tarjeta?"
+- Audio: That'll be six fifty. Cash or card? — (זה שש יורו וחמישים (‎€6.50). מזומן או כרטיס?)
+- A: That's all, thanks.
+- B: Card, please. ✅
+- C: Yes, please.
+- Correct: Card, please.
+- Tests: phrase.coffee.card
+
+**M03-Q29** — match-pairs
+- Prompt: "Finishing and paying — connect each question to its answer" / "מסיימים ומשלמים — חבר כל שאלה לתשובה שלה" — tile to match (target language, no translation): EN "Would you like the receipt?" · FR "Vous voulez le ticket ?" · ES "¿Quiere el recibo?"
+- Audio: Would you like the receipt? — (רוצה את הקבלה?)
+- A: That's all, thanks.
+- B: Card, please.
+- C: Yes, please. ✅
+- Correct: Yes, please.
+- Tests: phrase.coffee.yes-please
+
+**M03-Q30** — quick-reply
+- Prompt: "The barista asks — what do you say?" / "הבריסטה שואל — מה עונים?"
+- Audio: Good morning! What can I get you? — (בוקר טוב! מה להביא לך?)
+- A: I'd like an iced coffee, please. ✅
+- B: Medium, please.
+- C: Card, please.
+- Correct: I'd like an iced coffee, please.
+- Tests: phrase.coffee.iced-coffee
+
+**M03-Q31** — quick-reply
 - Prompt: "The barista asks — what do you say?" / "הבריסטה שואל — מה עונים?"
 - Audio: Milk and sugar? — (חלב וסוכר?)
 - A: Milk, no sugar. ✅
@@ -28286,7 +29172,7 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Correct: Milk, no sugar.
 - Tests: phrase.coffee.no-sugar
 
-**M03-Q08** — quick-reply
+**M03-Q32** — quick-reply
 - Prompt: "The barista asks — what do you say?" / "הבריסטה שואל — מה עונים?"
 - Audio: Anything to eat? — (משהו לאכול?)
 - A: A croissant, please. ✅
@@ -28295,39 +29181,16 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Correct: A croissant, please. | That's all, thanks.
 - Tests: phrase.coffee.croissant, phrase.coffee.thats-all
 
-**M03-Q09** — quick-reply
-- Prompt: "The barista asks — what do you say?" / "הבריסטה שואל — מה עונים?"
-- Audio: Cash or card? — (מזומן או כרטיס?)
-- A: Card, please. ✅
-- B: Medium, please.
-- C: To go, please.
-- Correct: Card, please.
-- Tests: phrase.coffee.card
-
-**M03-Q10** — quick-reply
+**M03-Q33** — quick-reply
 - Prompt: "The barista asks — what do you say?" / "הבריסטה שואל — מה עונים?"
 - Audio: Would you like the receipt? — (רוצה את הקבלה?)
 - A: Yes, please. ✅
-- B: To go, please.
-- C: I'd like an iced coffee, please.
+- B: Medium, please.
+- C: A croissant, please.
 - Correct: Yes, please.
 - Tests: phrase.coffee.yes-please
 
-**M03-Q11** — sentence-builder
-- Prompt: "Build the sentence" / "בנה את המשפט" — cue shown: the sentence's MEANING in the app language ("אני רוצה קפה קר, בבקשה.")
-- Audio: (nothing before Check; the built sentence is spoken once it is right) — ()
-- A: I'd like  |  an iced  |  coffee,  |  please. ✅
-- Correct: I'd like  |  an iced  |  coffee,  |  please.
-- Tests: phrase.coffee.iced-coffee
-
-**M03-Q12** — sentence-builder
-- Prompt: "Build the sentence" / "בנה את המשפט" — cue shown: the sentence's MEANING in the app language ("עם חלב, בלי סוכר.")
-- Audio: (nothing before Check; the built sentence is spoken once it is right) — ()
-- A: Milk,  |  no  |  sugar. ✅
-- Correct: Milk,  |  no  |  sugar.
-- Tests: phrase.coffee.no-sugar
-
-**M03-Q13** — dialogue-choice
+**M03-Q34** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Good morning! What can I get you? — (בוקר טוב! מה להביא לך?)
 - A: I'd like an iced coffee, please. ✅
@@ -28335,14 +29198,14 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Correct: I'd like an iced coffee, please. | One moment, please.
 - Tests: phrase.coffee.iced-coffee, phrase.recovery.one-moment
 
-**M03-Q14** — dialogue-choice
+**M03-Q35** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Of course — take your time! — (ברור — קח את הזמן!)
 - A: I'd like an iced coffee, please. ✅
 - Correct: I'd like an iced coffee, please.
 - Tests: phrase.coffee.iced-coffee
 
-**M03-Q15** — dialogue-choice
+**M03-Q36** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Sure! Medium or large? — (סגור! בינוני או גדול?)
 - A: Medium, please. ✅
@@ -28350,14 +29213,14 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Correct: Medium, please. | Can you repeat that?
 - Tests: phrase.coffee.medium, phrase.recovery.repeat
 
-**M03-Q16** — dialogue-choice
+**M03-Q37** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: MEDIUM — or LARGE? — (בינוני — או גדול?)
 - A: Medium, please. ✅
 - Correct: Medium, please.
 - Tests: phrase.coffee.medium
 
-**M03-Q17** — dialogue-choice
+**M03-Q38** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Milk and sugar? — (חלב וסוכר?)
 - A: Milk, no sugar. ✅
@@ -28365,14 +29228,14 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Correct: Milk, no sugar.
 - Tests: phrase.coffee.no-sugar
 
-**M03-Q18** — dialogue-choice
+**M03-Q39** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: You're welcome! But — milk? sugar? — (בבקשה! אבל — חלב? סוכר?)
 - A: Milk, no sugar. ✅
 - Correct: Milk, no sugar.
 - Tests: phrase.coffee.no-sugar
 
-**M03-Q19** — dialogue-choice
+**M03-Q40** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Anything to eat? — (משהו לאכול?)
 - A: A croissant, please. ✅
@@ -28380,14 +29243,14 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Correct: A croissant, please. | That's all, thanks.
 - Tests: phrase.coffee.croissant, phrase.coffee.thats-all
 
-**M03-Q20** — dialogue-choice
+**M03-Q41** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Great choice. Would you like anything else? — (בחירה מצוינת. עוד משהו?)
 - A: That's all, thanks. ✅
 - Correct: That's all, thanks.
 - Tests: phrase.coffee.thats-all
 
-**M03-Q21** — dialogue-choice
+**M03-Q42** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: That'll be six fifty. Cash or card? — (שש חמישים בבקשה. מזומן או כרטיס?)
 - A: Card, please. ✅
@@ -28395,14 +29258,14 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Correct: Card, please. | Please speak slowly.
 - Tests: phrase.coffee.card, phrase.recovery.slowly
 
-**M03-Q22** — dialogue-choice
+**M03-Q43** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Six — fifty. Cash, or card? — (שש — חמישים. מזומן או כרטיס?)
 - A: Card, please. ✅
 - Correct: Card, please.
 - Tests: phrase.coffee.card
 
-**M03-Q23** — dialogue-choice
+**M03-Q44** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Would you like the receipt? — (רוצה את הקבלה?)
 - A: No, thank you! ✅
@@ -28410,13 +29273,191 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Correct: No, thank you! | Yes, please.
 - Tests: phrase.recovery.thank-you, phrase.coffee.yes-please
 
-**M03-Q24** — cold-open
-- Prompt: "Heads up: a fast one is coming. Use a tool." / "שים לב: מגיע משפט מהיר. השתמש בכלי."
-- Audio: Sorry, we are out of croissants — would a muffin be okay instead? — (סליחה, נגמרו הקרואסונים — מאפין במקום זה בסדר?)
-- A: Can you repeat that? ✅
+**M03-Q45** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Good morning! What can I get you? — (בוקר טוב! מה להביא לך?)
+- A: I'd like an iced coffee, please. ✅
+- B: Medium, please.
+- C: Card, please.
+- Correct: I'd like an iced coffee, please.
+- Tests: phrase.coffee.iced-coffee
+
+**M03-Q46** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Sure! Medium or large? — (סגור! בינוני או גדול?)
+- A: Medium, please. ✅
+- B: Milk, no sugar.
+- C: Yes, please.
+- Correct: Medium, please.
+- Tests: phrase.coffee.medium
+
+**M03-Q47** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Milk and sugar? — (חלב וסוכר?)
+- A: Milk, no sugar. ✅
+- B: Medium, please.
+- C: A croissant, please.
+- Correct: Milk, no sugar.
+- Tests: phrase.coffee.no-sugar
+
+**M03-Q48** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Anything to eat? — (משהו לאכול?)
+- A: A croissant, please. ✅
 - B: Card, please.
-- Correct: Can you repeat that?
-- Tests: phrase.recovery.repeat
+- C: Medium, please.
+- Correct: A croissant, please.
+- Tests: phrase.coffee.croissant
+
+**M03-Q49** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Great choice. Would you like anything else? — (בחירה מצוינת. עוד משהו?)
+- A: That's all, thanks. ✅
+- B: Milk, no sugar.
+- C: Card, please.
+- Correct: That's all, thanks.
+- Tests: phrase.coffee.thats-all
+
+**M03-Q50** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: That'll be six fifty. Cash or card? — (זה שש יורו וחמישים. מזומן או כרטיס?)
+- A: Card, please. ✅
+- B: That's all, thanks.
+- C: A croissant, please.
+- Correct: Card, please.
+- Tests: phrase.coffee.card
+
+**M03-Q51** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Would you like the receipt? — (רוצה את הקבלה?)
+- A: Yes, please. ✅
+- B: Card, please.
+- C: Medium, please.
+- Correct: Yes, please.
+- Tests: phrase.coffee.yes-please
+
+**M03-Q52** — visual-match
+- Prompt: "What did you order? Tap what you hear" / "מה הזמנת? הקש על מה ששמעת"
+- Audio: I'd like an iced coffee, please. — (אני רוצה קפה קר, בבקשה.)
+- A: ☕🧊 ✅
+- B: ☕🔥
+- C: 🥤M
+- D: 🥤L
+- E: ☕🥛✓ 🍬✕
+- F: ☕🥛✓ 🍬✓
+- G: 🥐
+- H: 🧁
+- I: ✋
+- Correct: ☕🧊
+- Tests: phrase.coffee.iced-coffee
+
+**M03-Q53** — visual-match
+- Prompt: "What did you order? Tap what you hear" / "מה הזמנת? הקש על מה ששמעת"
+- Audio: Medium, please. — (בינוני, בבקשה.)
+- A: ☕🧊
+- B: ☕🔥
+- C: 🥤M ✅
+- D: 🥤L
+- E: ☕🥛✓ 🍬✕
+- F: ☕🥛✓ 🍬✓
+- G: 🥐
+- H: 🧁
+- I: ✋
+- Correct: 🥤M
+- Tests: phrase.coffee.medium
+
+**M03-Q54** — visual-match
+- Prompt: "What did you order? Tap what you hear" / "מה הזמנת? הקש על מה ששמעת"
+- Audio: Milk, no sugar. — (עם חלב, בלי סוכר.)
+- A: ☕🧊
+- B: ☕🔥
+- C: 🥤M
+- D: 🥤L
+- E: ☕🥛✓ 🍬✕ ✅
+- F: ☕🥛✓ 🍬✓
+- G: 🥐
+- H: 🧁
+- I: ✋
+- Correct: ☕🥛✓ 🍬✕
+- Tests: phrase.coffee.no-sugar
+
+**M03-Q55** — visual-match
+- Prompt: "What did you order? Tap what you hear" / "מה הזמנת? הקש על מה ששמעת"
+- Audio: A croissant, please. — (קרואסון, בבקשה.)
+- A: ☕🧊
+- B: ☕🔥
+- C: 🥤M
+- D: 🥤L
+- E: ☕🥛✓ 🍬✕
+- F: ☕🥛✓ 🍬✓
+- G: 🥐 ✅
+- H: 🧁
+- I: ✋
+- Correct: 🥐
+- Tests: phrase.coffee.croissant
+
+**M03-Q56** — visual-match
+- Prompt: "What did you order? Tap what you hear" / "מה הזמנת? הקש על מה ששמעת"
+- Audio: That's all, thanks. — (זה הכל, תודה.)
+- A: ☕🧊
+- B: ☕🔥
+- C: 🥤M
+- D: 🥤L
+- E: ☕🥛✓ 🍬✕
+- F: ☕🥛✓ 🍬✓
+- G: 🥐
+- H: 🧁
+- I: ✋ ✅
+- Correct: ✋
+- Tests: phrase.coffee.thats-all
+
+**M03-Q57** — visual-match
+- Prompt: "And how did you pay? Tap what you hear" / "ואיך שילמת? הקש על מה ששמעת"
+- Audio: That'll be six fifty. — (זה שש יורו וחמישים.)
+- A: €6.50 ✅
+- B: €16.50
+- C: 💶
+- D: 💳
+- E: 🧾
+- F: 👋☀️
+- Correct: €6.50
+- Tests: (no sentence id — not recorded)
+
+**M03-Q58** — visual-match
+- Prompt: "And how did you pay? Tap what you hear" / "ואיך שילמת? הקש על מה ששמעת"
+- Audio: Card, please. — (בכרטיס, בבקשה.)
+- A: €6.50
+- B: €16.50
+- C: 💶
+- D: 💳 ✅
+- E: 🧾
+- F: 👋☀️
+- Correct: 💳
+- Tests: phrase.coffee.card
+
+**M03-Q59** — visual-match
+- Prompt: "And how did you pay? Tap what you hear" / "ואיך שילמת? הקש על מה ששמעת"
+- Audio: Would you like the receipt? — (רוצה את הקבלה?)
+- A: €6.50
+- B: €16.50
+- C: 💶
+- D: 💳
+- E: 🧾 ✅
+- F: 👋☀️
+- Correct: 🧾
+- Tests: reply.coffee.receipt
+
+**M03-Q60** — visual-match
+- Prompt: "And how did you pay? Tap what you hear" / "ואיך שילמת? הקש על מה ששמעת"
+- Audio: Here you go — enjoy your day! — (בבקשה — שיהיה לך יום מעולה!)
+- A: €6.50
+- B: €16.50
+- C: 💶
+- D: 💳
+- E: 🧾
+- F: 👋☀️ ✅
+- Correct: 👋☀️
+- Tests: reply.coffee.enjoy
 
 ## Mission 04 — Everyday Core: Want / Need / Have / Can
 
@@ -33930,16 +34971,16 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 
 - Missions exported: 30
 - Learner-production sentence ids: 162
-- Expected-reply (receptive) sentence ids: 155
-- Sentence listings across missions (with reuse): 525
-- Expected-reply questions: 103
+- Expected-reply (receptive) sentence ids: 158
+- Sentence listings across missions (with reuse): 528
+- Expected-reply questions: 105
 - Meaning quizzes: 7
-- Active-practice questions: 353
+- Active-practice questions: 388
 - Dialogue choice screens: 271
-- Cold opens: 13
-- Total interactive questions: 747
-- Total answer choices: 1999
+- Cold opens: 12
+- Total interactive questions: 783
+- Total answer choices: 2198
 - Wrong-answer branches: 94
 - Recovery opportunities: 56
 - Learner sentences with 0 active retrieval opportunities: 1
-- Auto-flags: 204
+- Auto-flags: 216

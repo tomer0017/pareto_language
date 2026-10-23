@@ -122,9 +122,13 @@ stable across re-renders. **Narrative dialogue order is never shuffled** — onl
   Practice V1.1 added `matchPairs` and `sentenceBuilder` the same way (pure rules `matchTap`,
   `matchRecord`, `builderPool`, `builderSolved`, `builderHint`); builder chunks are authored per
   language and validated to spell the taught sentence exactly.
+  The Mission 03 pass added `customize` (hear an order → set each add-in ✓ / ✕ → check; nothing is
+  pre-set, so "no sugar" is a choice of its own; pure rule `customizeResult`; counted as listening by
+  the coverage audit). Board tiles may carry `scale` (emoji size), so a large cup reads larger.
 - **Companion inside a mission** — `companionCoach.ts` (`coachFor(steps, index, missionId)`) decides,
   purely, whether a step gets one app-language line (the mission goal on its intro card; how to play
-  the first game of each kind). `Bootcamp.tsx` renders it with `CompanionCoach`; answer cards take a
+  the first game of each kind; `MISSION_GAME_INTRO` overrides that line where a mission's first game of
+  a kind is something else — the coffee shop's first board is the order, not a price). `Bootcamp.tsx` renders it with `CompanionCoach`; answer cards take a
   reaction through `AnswerFeedback`'s `aside` slot. None of it writes to any store.
 - **Shared practice flows** — `practiceV1.ts` (Missions 01, 02, 03, 05) and `practiceArrival.ts`
   (Missions 06–09) define the step lists of hand-written missions once for all languages. Checkpoint

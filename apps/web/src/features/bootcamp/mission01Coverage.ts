@@ -85,6 +85,7 @@ export function encounters(day: BootcampDayContent, chunk: string): Encounter[] 
       }
     } else if (s.kind === 'sentenceBuilder') { for (const r of s.rounds) if (hit(r.chunks.join(' '))) add('retrieval', 'sentence builder'); }
     else if (s.kind === 'visualMatch' || s.kind === 'miniMap') { for (const r of s.rounds) if (hit(r.audio.en)) add('listening', s.challenge ? 'speed board (heard → tapped)' : 'visual board (heard → tapped)'); }
+    else if (s.kind === 'customize') { for (const r of s.rounds) if (hit(r.audio.en)) add('listening', 'customize (heard → set ✓ / ✕)'); }
     else if (s.kind === 'swap') { for (const r of s.rounds) if (r.options.some((o) => o.correct && hit(fillFrame(r.frame, o.slot)))) add('retrieval', 'swap'); }
     else if (s.kind === 'quickReply') {
       for (const r of s.rounds) {

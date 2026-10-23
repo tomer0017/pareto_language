@@ -105,10 +105,11 @@ describe('recovery ambush vs speed challenge', () => {
   it('every mission of 01–05 ends on an honest final challenge', () => {
     const final = (n: number): string => {
       const day = mission(n);
-      const s = [...day.steps].reverse().find((x) => x.kind === 'ambush' || ((x.kind === 'visualMatch' || x.kind === 'miniMap') && x.challenge))!;
+      const s = [...day.steps].reverse().find((x) => x.kind === 'ambush' || ((x.kind === 'visualMatch' || x.kind === 'miniMap' || x.kind === 'quickReply') && x.challenge))!;
       return s.kind === 'ambush' ? `ambush:${s.mode}` : `${s.kind}:speed`;
     };
-    expect([1, 2, 3, 4, 5].map(final)).toEqual(['ambush:recovery', 'visualMatch:speed', 'ambush:recovery', 'ambush:speed', 'miniMap:speed']);
+    // Mission 03: the barista speed run (its seven real questions), then the video and the picture gate.
+    expect([1, 2, 3, 4, 5].map(final)).toEqual(['ambush:recovery', 'visualMatch:speed', 'quickReply:speed', 'ambush:speed', 'miniMap:speed']);
   });
 });
 
@@ -170,13 +171,14 @@ describe('Mission 02 — Numbers & Money', () => {
 
 describe('Mission 03 — Coffee Shop', () => {
   const day = mission(3);
-  it('"To go, please." is actively retrieved', () => {
-    expect(retrievable(day).has('phrase.coffee.to-go')).toBe(true);
+  it('"To go, please." is not in this conversation: met once as a review card, never asked for (the Mission 03 pass)', () => {
+    expect(retrievable(day).has('phrase.coffee.to-go')).toBe(false);
+    expect(stepsOf(day, 'swipe').flatMap((s) => s.itemIds.map(strip))).toContain('phrase.coffee.to-go');
   });
-  it('Coffee Rush uses only sentences the mission already taught', () => {
+  it('the Quick Reply uses only sentences the mission already taught', () => {
     const rush = stepsOf(day, 'quickReply')[0]!;
     const ids = new Set(day.items.map((i) => i.id));
-    expect(rush.rounds.length).toBeGreaterThanOrEqual(5);
+    expect(rush.rounds.length).toBeGreaterThanOrEqual(3);
     for (const r of rush.rounds) {
       expect(ids.has(r.promptItemId!)).toBe(true);
       for (const o of r.options) expect(ids.has(o.itemId)).toBe(true);
@@ -280,7 +282,9 @@ describe('selective review (01–05)', () => {
       const can = retrievable(day);
       const never = day.items.map((x) => strip(x.id)).filter((id) => id.startsWith('phrase.') && !id.startsWith('phrase.recovery.') && !can.has(id));
       // "Excuse me!" is retrieved inside the wrapped line "Excuse me! Where is the station?".
-      expect(never.filter((id) => id !== 'phrase.dir.excuse-me'), `Mission ${i + 1}`).toEqual([]);
+      // "To go, please." left Mission 03's practice with the Mission 03 pass (it is not in the
+      // conversation); it stays a review card because a later checkpoint offers it as a wrong option.
+      expect(never.filter((id) => id !== 'phrase.dir.excuse-me' && id !== 'phrase.coffee.to-go'), `Mission ${i + 1}`).toEqual([]);
     }
   });
 });

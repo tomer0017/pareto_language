@@ -392,6 +392,72 @@ export function m02Steps(lang: MissionLang): BootcampStep[] {
 
 /* ── Mission 03 — Coffee Shop ────────────────────────────────────────────────────────────────── */
 
+/** The café counter, in pictures: what you order, which size, what to eat, finishing, the receipt.
+ *  Emoji are drawn 1.5× (the board's tiles are big); the large cup is drawn bigger still than the medium. */
+const BIG = 1.5;
+const ICED = { id: 'iced', emoji: '☕🧊', scale: BIG };
+const HOT = { id: 'hot', emoji: '☕🔥', scale: BIG };
+const SIZE_M = { id: 'medium', emoji: '🥤', label: 'M', scale: BIG };
+const SIZE_L = { id: 'large', emoji: '🥤', label: 'L', scale: 2.1 };
+const CROISSANT = { id: 'croissant', emoji: '🥐', scale: BIG };
+const MUFFIN = { id: 'muffin', emoji: '🧁', scale: BIG };
+const MORE = { id: 'more', emoji: '➕❓', scale: BIG };
+const DONE = { id: 'done', emoji: '✋', scale: BIG };
+const RECEIPT = { id: 'receipt', emoji: '🧾', scale: BIG };
+const ORDER_TILES = [ICED, HOT, SIZE_M, SIZE_L, CROISSANT, MUFFIN, MORE, DONE, RECEIPT];
+/** Six fifty among the prices it is misheard as. */
+const CAFE_PRICES = [
+  { id: 'e6_50', label: '€6.50' }, { id: 'e6_05', label: '€6.05' }, { id: 'e16_50', label: '€16.50' },
+  { id: 'e60_50', label: '€60.50' }, { id: 'e5_60', label: '€5.60' }, { id: 'e6', label: '€6' },
+];
+/** After the video — your order, then paying. The milk/sugar tiles speak the configurator's ✓ / ✕. */
+const GATE_ORDER_TILES = [
+  ICED, HOT, SIZE_M, SIZE_L,
+  { id: 'milk-no-sugar', emoji: '☕', label: '🥛✓ 🍬✕', scale: 1.3 }, { id: 'milk-and-sugar', emoji: '☕', label: '🥛✓ 🍬✓', scale: 1.3 },
+  CROISSANT, MUFFIN, DONE,
+];
+const GATE_PAY_TILES = [
+  { id: 'e6_50', label: '€6.50' }, { id: 'e16_50', label: '€16.50' },
+  { id: 'cash', emoji: '💶', scale: BIG }, { id: 'card', emoji: '💳', scale: BIG }, RECEIPT, { id: 'bye', emoji: '👋☀️', scale: BIG },
+];
+
+/* The locked conversation, line by line (EN · FR · ES · HE). The barista's lines are the mission's
+   `reply.coffee.*` sentences word for word; the learner's are its `phrase.coffee.*` sentences. */
+const B_OPENS: L4 = ['Good morning! What can I get you?', 'Bonjour ! Qu’est-ce que je vous sers ?', '¡Buenos días! ¿Qué le sirvo?', 'בוקר טוב! מה להביא לך?'];
+const B_SIZE: L4 = ['Sure! Medium or large?', 'Parfait ! Moyen ou grand ?', '¡Perfecto! ¿Mediano o grande?', 'סגור! בינוני או גדול?'];
+const B_MILK: L4 = ['Milk and sugar?', 'Lait et sucre ?', '¿Leche y azúcar?', 'חלב וסוכר?'];
+const B_EAT: L4 = ['Anything to eat?', 'Quelque chose à manger ?', '¿Algo de comer?', 'משהו לאכול?'];
+const B_ELSE: L4 = ['Great choice. Would you like anything else?', 'Excellent choix. Vous désirez autre chose ?', 'Buena elección. ¿Algo más?', 'בחירה מצוינת. עוד משהו?'];
+const B_PAY: L4 = ["That'll be six fifty. Cash or card?", 'Ça fait six euros cinquante. Espèces ou carte ?', 'Son seis con cincuenta. ¿Efectivo o tarjeta?', 'זה שש יורו וחמישים. מזומן או כרטיס?'];
+/** The first sentence of the payment line, alone — the price, where cash and card are also on the board. */
+const B_PRICE: L4 = ["That'll be six fifty.", 'Ça fait six euros cinquante.', 'Son seis con cincuenta.', 'זה שש יורו וחמישים.'];
+const B_RECEIPT: L4 = ['Would you like the receipt?', 'Vous voulez le ticket ?', '¿Quiere el recibo?', 'רוצה את הקבלה?'];
+const B_BYE: L4 = ['Here you go — enjoy your day!', 'Voilà — bonne journée !', 'Aquí tiene — ¡que tenga un buen día!', 'בבקשה — שיהיה לך יום מעולה!'];
+const Y_ICED: L4 = ["I'd like an iced coffee, please.", 'Je voudrais un café glacé, s’il vous plaît.', 'Quiero un café con hielo, por favor.', 'אני רוצה קפה קר, בבקשה.'];
+const Y_MEDIUM: L4 = ['Medium, please.', 'Moyen, s’il vous plaît.', 'Mediano, por favor.', 'בינוני, בבקשה.'];
+const Y_MILK: L4 = ['Milk, no sugar.', 'Avec du lait, sans sucre.', 'Con leche, sin azúcar.', 'עם חלב, בלי סוכר.'];
+const Y_CROISSANT: L4 = ['A croissant, please.', 'Un croissant, s’il vous plaît.', 'Un cruasán, por favor.', 'קרואסון, בבקשה.'];
+const Y_ALL: L4 = ["That's all, thanks.", 'C’est tout, merci.', 'Eso es todo, gracias.', 'זה הכל, תודה.'];
+const Y_CARD: L4 = ['Card, please.', 'Par carte, s’il vous plaît.', 'Con tarjeta, por favor.', 'בכרטיס, בבקשה.'];
+
+/**
+ * Mission 03 — Coffee Shop, on the Mission 01/02 standard: finishing it must mean "I understand the
+ * whole café conversation" — fifteen lines, the longest yet. The conversation is LOCKED; everything
+ * here is the journey around it, and it is built like the order itself:
+ *
+ *   Step 0 (optional: iced coffee, medium / large, milk, sugar, with / without, receipt) → your
+ *   three key sentences → the barista's follow-up questions, as heard → THE ORDER BOARD (hear it →
+ *   tap it: drink · size · food · anything else? · that's all · receipt) → THE MILK & SUGAR
+ *   CONFIGURATOR (✓ / ✕, "no" is a choice of its own) → the barista's friendly words → question ↔
+ *   answer (ordering) → build your order → six fifty by ear → question ↔ answer (finishing and
+ *   paying) → answer on your own → your order at a glance → the conversation → review → the barista
+ *   speed run (all seven questions, in order) → the video → what did you order? how did you pay?
+ *
+ * Mission 02's money (cash / card, prices by ear) is reactivated quickly, not retaught. Every Quick
+ * Reply prompt is a real line of the conversation; recovery stays where it has a reason — inside the
+ * conversation, on the fast lines, with the reason shown. The coverage promise is written down in
+ * `mission03Coverage.ts` and enforced by `mission03.test.ts`.
+ */
 export function m03Steps(lang: MissionLang): BootcampStep[] {
   const k = kit(lang);
   return [
@@ -399,15 +465,19 @@ export function m03Steps(lang: MissionLang): BootcampStep[] {
       ['היום לא לומדים "מילים על קפה". היום לומדים לצאת מבית קפה עם ארוחת בוקר ביד.', 'Today we don’t learn “coffee words”. Today you walk out of a café holding breakfast.'],
       ['הסוד: אחרי שאתה מזמין, הבריסטה שואל שאלות המשך. מי שמכיר אותן מראש — אף פעם לא קופא.', 'The secret: after you order, the barista fires follow-up questions. Know them in advance — never freeze.'],
     ], ['להיכנס', 'Walk in']),
+    // STEP 0 — optional, short: only what decodes THIS order (cash / card are Mission 02's).
     k.prime({
-      intro: ['שש מילים שולטות בכל הזמנה בבית קפה.', 'Six words control every café order.'],
+      gate: true,
+      intro: ['הדברים של ההזמנה. הקש על כל אחד כדי לשמוע.', 'The things of the order. Tap each one to hear it.'],
       words: [
-        { key: 'cafe.coffee', t: ['coffee', 'café', 'café'], meaning: ['קפה', 'coffee'], emoji: '☕' },
+        { key: 'cafe.iced-coffee', t: ['iced coffee', 'café glacé', 'café con hielo'], meaning: ['קפה קר (עם קרח)', 'iced coffee'], emoji: '🧊' },
+        { key: 'size.medium', t: ['medium', 'moyen', 'mediano'], meaning: ['בינוני (M)', 'medium (M)'], emoji: '🥤' },
+        { key: 'size.large', t: ['large', 'grand', 'grande'], meaning: ['גדול (L)', 'large (L)'] },
         { key: 'cafe.milk', t: ['milk', 'lait', 'leche'], meaning: ['חלב', 'milk'], emoji: '🥛' },
         { key: 'cafe.sugar', t: ['sugar', 'sucre', 'azúcar'], meaning: ['סוכר', 'sugar'], emoji: '🍬' },
-        { key: 'size.medium', t: ['medium', 'moyen', 'mediano'], meaning: ['בינוני', 'medium'] },
-        { key: 'core.with', t: ['with', 'avec', 'con'], meaning: ['עם', 'with'] },
-        { key: 'core.without', t: ['no / without', 'sans', 'sin'], meaning: ['בלי', 'no / without'] },
+        { key: 'core.with', t: ['with', 'avec', 'con'], meaning: ['עם', 'with'], emoji: '✓' },
+        { key: 'core.without', t: ['no', 'sans', 'sin'], meaning: ['בלי', 'no / without'], emoji: '✕' },
+        { key: 'cafe.receipt', t: ['receipt', 'ticket', 'recibo'], meaning: ['קבלה', 'receipt'], emoji: '🧾' },
       ],
       build: 'phrase.coffee.no-sugar',
     }),
@@ -415,24 +485,59 @@ export function m03Steps(lang: MissionLang): BootcampStep[] {
       ['phrase.coffee.iced-coffee', ['משפט הזהב', 'The golden template']],
       ['phrase.coffee.no-sugar', ['שליטה בהזמנה', 'Order control']],
       ['phrase.coffee.thats-all', ['הסוגר האוניברסלי', 'The universal closer']],
-      ['phrase.coffee.card', ['סוגרים חשבון', 'Settling up']],
     ]),
-    k.replies('phrase.coffee.iced-coffee', ['reply.coffee.here-or-to-go', 'reply.coffee.medium-or-large', 'reply.coffee.milk-sugar', 'reply.coffee.anything-else']),
-    k.receipt(['אתה כבר מזהה את ארבע שאלות ההמשך של כל בריסטה בעולם.', 'You now recognize the four follow-ups of every barista on earth.']),
-    // "Coffee Rush": the barista's questions, one after another — answer each with your own line.
+    // LISTENING — after you order, the barista's follow-ups (and the goodbye), exactly as the video says them.
+    k.replies('phrase.coffee.iced-coffee', ['reply.coffee.medium-or-large', 'reply.coffee.milk-sugar', 'reply.coffee.anything-to-eat', 'reply.coffee.anything-else', 'reply.coffee.cash-or-card', 'reply.coffee.enjoy']),
+    k.receipt(['אתה כבר מזהה את כל מה שהבריסטה אומר אחרי שהזמנת — גודל, חלב, אוכל, עוד משהו, תשלום ופרידה.', 'You now recognize everything the barista says after you order — size, milk, food, anything else, payment and goodbye.']),
+    // THE ORDER BOARD — the order in the sequence it happens: hear it, tap what it means.
     k.practice({
-      kind: 'quickReply',
-      label: ['הבריסטה שואל — מה עונים?', 'The barista asks — what do you say?'],
+      kind: 'visualMatch',
+      label: ['ההזמנה — הקש על מה ששמעת', 'The order — tap what you hear'],
+      tiles: ORDER_TILES,
       rounds: [
-        { prompt: 'reply.coffee.here-or-to-go', options: [['phrase.coffee.to-go', true], ['phrase.coffee.thats-all', false], ['phrase.coffee.card', false]] },
-        { prompt: 'reply.coffee.medium-or-large', options: [['phrase.coffee.medium', true], ['phrase.coffee.no-sugar', false], ['phrase.coffee.croissant', false]] },
-        { prompt: 'reply.coffee.milk-sugar', options: [['phrase.coffee.no-sugar', true], ['phrase.coffee.medium', false], ['phrase.coffee.card', false]] },
-        { prompt: 'reply.coffee.anything-to-eat', options: [['phrase.coffee.croissant', true], ['phrase.coffee.thats-all', true], ['phrase.coffee.card', false]] },
-        { prompt: 'reply.coffee.cash-or-card', options: [['phrase.coffee.card', true], ['phrase.coffee.medium', false], ['phrase.coffee.to-go', false]] },
-        { prompt: 'reply.coffee.receipt', options: [['phrase.coffee.yes-please', true], ['phrase.coffee.to-go', false], ['phrase.coffee.iced-coffee', false]] },
+        { audio: Y_ICED, correct: 'iced', itemId: 'phrase.coffee.iced-coffee' },
+        { audio: Y_MEDIUM, correct: 'medium', itemId: 'phrase.coffee.medium' },
+        { audio: Y_CROISSANT, correct: 'croissant', itemId: 'phrase.coffee.croissant' },
+        { audio: B_ELSE, correct: 'more', itemId: 'reply.coffee.anything-else' },
+        { audio: Y_ALL, correct: 'done', itemId: 'phrase.coffee.thats-all' },
+        { audio: B_RECEIPT, correct: 'receipt', itemId: 'reply.coffee.receipt' },
       ],
     }),
-    // Two orders rebuilt from their pieces. Each language has its own chunks and its own word order.
+    // THE MILK & SUGAR CONFIGURATOR — "with / without" by doing it; then the same two words, swapped.
+    k.practice({
+      kind: 'customize',
+      label: ['חלב וסוכר? — הכן את הקפה בדיוק כמו ששמעת', 'Milk and sugar? — make the coffee exactly as you heard it'],
+      base: '☕🧊',
+      options: [{ id: 'milk', emoji: '🥛', label: ['חלב', 'Milk'] }, { id: 'sugar', emoji: '🍬', label: ['סוכר', 'Sugar'] }],
+      rounds: [
+        { audio: Y_MILK, on: ['milk'], itemId: 'phrase.coffee.no-sugar' },
+        // one tiny transfer: the same two words, the other way round — the pattern, not the sentence
+        { audio: ['Sugar, no milk.', 'Avec du sucre, sans lait.', 'Con azúcar, sin leche.', 'עם סוכר, בלי חלב.'], on: ['sugar'] },
+      ],
+    }),
+    // THE BARISTA'S FRIENDLY WORDS — nobody asks you to say them; you only have to know them.
+    k.practice({
+      kind: 'matchPairs',
+      label: ['מה הבריסטה אומר? התאם כל משפט למשמעות שלו', 'What does the barista say? Match each line to its meaning'],
+      pairs: [
+        ['reply.coffee.good-morning', 'reply.coffee.good-morning', undefined, '🌅', ['בוקר טוב', 'Good morning']],
+        ['reply.coffee.sure', 'reply.coffee.sure', undefined, '👍', ['בטח / מצוין', 'Sure / perfect']],
+        ['reply.coffee.great-choice', 'reply.coffee.great-choice', undefined, '👌', ['בחירה מצוינת', 'Great choice']],
+        ['reply.coffee.enjoy', 'reply.coffee.enjoy', undefined, '👋☀️', ['בבקשה — שיהיה לך יום מעולה', 'Here you go — enjoy your day']],
+      ],
+    }),
+    // QUESTION ↔ ANSWER — ordering: each question and the line that answers it.
+    k.practice({
+      kind: 'matchPairs',
+      label: ['מה עונים לבריסטה? חבר כל שאלה לתשובה שלה', 'What do you answer the barista? Connect each question to its answer'],
+      pairs: [
+        ['reply.coffee.what-can-i-get', 'phrase.coffee.iced-coffee'],
+        ['reply.coffee.medium-or-large', 'phrase.coffee.medium'],
+        ['reply.coffee.milk-sugar', 'phrase.coffee.no-sugar'],
+        ['reply.coffee.anything-to-eat', 'phrase.coffee.croissant'],
+      ],
+    }),
+    // BUILD — your two longest lines, piece by piece (each language in its own order).
     k.practice({
       kind: 'sentenceBuilder',
       rounds: [
@@ -440,18 +545,96 @@ export function m03Steps(lang: MissionLang): BootcampStep[] {
         { itemId: 'phrase.coffee.no-sugar', chunks: [['Milk,', 'no', 'sugar.'], ['Avec', 'du lait,', 'sans', 'sucre.'], ['Con', 'leche,', 'sin', 'azúcar.']] },
       ],
     }),
+    // THE PRICE — Mission 02's skill, in the café: six fifty, against the price it is misheard as.
+    k.practice({
+      kind: 'visualMatch',
+      label: ['כמה זה? הקש על המחיר ששמעת', 'How much? Tap the price you hear'],
+      tiles: CAFE_PRICES,
+      rounds: [
+        { audio: B_PRICE, correct: 'e6_50' },
+        { audio: ['Sixteen fifty.', 'Seize euros cinquante.', 'Dieciséis con cincuenta.', 'שש עשרה וחמישים.'], correct: 'e16_50' },
+      ],
+    }),
+    // QUESTION ↔ ANSWER — finishing and paying: anything else → that's all · cash or card → card · receipt → yes.
+    k.practice({
+      kind: 'matchPairs',
+      label: ['מסיימים ומשלמים — חבר כל שאלה לתשובה שלה', 'Finishing and paying — connect each question to its answer'],
+      pairs: [
+        ['reply.coffee.anything-else', 'phrase.coffee.thats-all'],
+        ['reply.coffee.cash-or-card', 'phrase.coffee.card'],
+        ['reply.coffee.receipt', 'phrase.coffee.yes-please'],
+      ],
+    }),
+    // ANSWER — the barista's real questions, on your own.
+    k.practice({
+      kind: 'quickReply',
+      label: ['הבריסטה שואל — מה עונים?', 'The barista asks — what do you say?'],
+      rounds: [
+        { prompt: 'reply.coffee.what-can-i-get', options: [['phrase.coffee.iced-coffee', true], ['phrase.coffee.medium', false], ['phrase.coffee.card', false]] },
+        { prompt: 'reply.coffee.milk-sugar', options: [['phrase.coffee.no-sugar', true], ['phrase.coffee.medium', false], ['phrase.coffee.card', false]] },
+        { prompt: 'reply.coffee.anything-to-eat', options: [['phrase.coffee.croissant', true], ['phrase.coffee.thats-all', true], ['phrase.coffee.card', false]] },
+        { prompt: 'reply.coffee.receipt', options: [['phrase.coffee.yes-please', true], ['phrase.coffee.medium', false], ['phrase.coffee.croissant', false]] },
+      ],
+    }),
+    // YOUR ORDER, at a glance — the whole event before you live it.
+    k.talk('🧾', ['ההזמנה שלך', 'Your order'], [
+      ['☕🧊 קפה קר · 🥤 בינוני (M)', '☕🧊 Iced coffee · 🥤 medium (M)'],
+      ['🥛 חלב ✓ · 🍬 סוכר ✕', '🥛 Milk ✓ · 🍬 sugar ✕'],
+      ['🥐 קרואסון — ✋ וזה הכל', '🥐 A croissant — ✋ and that’s all'],
+      ['💶 ‎€6.50 · 💳 בכרטיס · 🧾 קבלה — כן', '💶 €6.50 · 💳 by card · 🧾 receipt — yes'],
+    ], ['להזמין', 'Order it']),
     k.dialogue('breakfast-order'),
-    k.receipt(['הזמנת ארוחת בוקר שלמה: שתייה, גודל, חלב, מאפה, תשלום. הכל.', 'You ordered a full breakfast: drink, size, milk, pastry, payment. All of it.']),
+    k.receipt(['הזמנת ארוחת בוקר שלמה: שתייה, גודל, חלב, מאפה, תשלום וקבלה. הכל.', 'You ordered a full breakfast: drink, size, milk, pastry, payment and receipt. All of it.']),
     k.review([
-      'phrase.coffee.iced-coffee', 'phrase.coffee.to-go', 'phrase.coffee.medium', 'phrase.coffee.no-sugar', 'phrase.coffee.croissant',
-      'phrase.coffee.thats-all', 'phrase.coffee.card', 'phrase.coffee.yes-please',
-      'reply.coffee.here-or-to-go', 'reply.coffee.medium-or-large', 'reply.coffee.milk-sugar', 'reply.coffee.anything-to-eat', 'reply.coffee.cash-or-card',
-      'phrase.recovery.repeat',
+      'reply.coffee.what-can-i-get', 'reply.coffee.medium-or-large', 'phrase.coffee.medium', 'reply.coffee.milk-sugar',
+      'reply.coffee.anything-to-eat', 'phrase.coffee.croissant', 'reply.coffee.anything-else', 'reply.coffee.cash-or-card',
+      'phrase.coffee.card', 'reply.coffee.receipt', 'phrase.coffee.yes-please', 'phrase.recovery.repeat',
+      // not in this conversation, never asked for here — met once, so that the Arrival Day checkpoint,
+      // which offers it as a WRONG option, uses only sentences the learner has seen
+      'phrase.coffee.to-go',
     ]),
-    k.ambush('recovery',
-      ['Sorry, we are out of croissants — would a muffin be okay instead?', 'Désolé, on n’a plus de croissants — un muffin à la place, ça vous va ?', 'Lo siento, se nos acabaron los cruasanes — ¿le va bien un muffin en su lugar?', 'סליחה, נגמרו הקרואסונים — מאפין במקום זה בסדר?'],
-      'phrase.recovery.repeat', 'phrase.coffee.card'),
-    k.receipt(['הפתעה מחוץ לתסריט — והגבת עם כלי. זה בדיוק מה שקורה בעולם האמיתי.', 'An off-script surprise — and you answered with a tool. Exactly how real life works.']),
+    // THE BARISTA SPEED RUN — all seven questions, in order, at natural speed and with no translation.
+    k.practice({
+      kind: 'quickReply',
+      challenge: true,
+      rounds: [
+        { npc: B_OPENS, options: [['phrase.coffee.iced-coffee', true], ['phrase.coffee.medium', false], ['phrase.coffee.card', false]] },
+        { npc: B_SIZE, options: [['phrase.coffee.medium', true], ['phrase.coffee.no-sugar', false], ['phrase.coffee.yes-please', false]] },
+        { npc: B_MILK, options: [['phrase.coffee.no-sugar', true], ['phrase.coffee.medium', false], ['phrase.coffee.croissant', false]] },
+        { npc: B_EAT, options: [['phrase.coffee.croissant', true], ['phrase.coffee.card', false], ['phrase.coffee.medium', false]] },
+        { npc: B_ELSE, options: [['phrase.coffee.thats-all', true], ['phrase.coffee.no-sugar', false], ['phrase.coffee.card', false]] },
+        { npc: B_PAY, options: [['phrase.coffee.card', true], ['phrase.coffee.thats-all', false], ['phrase.coffee.croissant', false]] },
+        { npc: B_RECEIPT, options: [['phrase.coffee.yes-please', true], ['phrase.coffee.card', false], ['phrase.coffee.medium', false]] },
+      ],
+    }),
+    k.receipt(['שבע שאלות של בריסטה, בקצב אמיתי ובלי תרגום — ושרדת את כולן.', 'Seven barista questions, at real speed and with no translation — and you got through all of them.']),
+    // THE GATE — the whole conversation again with no help (the video, where one exists)…
+    { kind: 'video', mode: 'again' },
+    // …then: what did you order? how did you pay? Answered by tapping, not by translating.
+    k.practice({
+      kind: 'visualMatch',
+      label: ['מה הזמנת? הקש על מה ששמעת', 'What did you order? Tap what you hear'],
+      tiles: GATE_ORDER_TILES,
+      rounds: [
+        { audio: Y_ICED, correct: 'iced', itemId: 'phrase.coffee.iced-coffee' },
+        { audio: Y_MEDIUM, correct: 'medium', itemId: 'phrase.coffee.medium' },
+        { audio: Y_MILK, correct: 'milk-no-sugar', itemId: 'phrase.coffee.no-sugar' },
+        { audio: Y_CROISSANT, correct: 'croissant', itemId: 'phrase.coffee.croissant' },
+        { audio: Y_ALL, correct: 'done', itemId: 'phrase.coffee.thats-all' },
+      ],
+    }),
+    k.practice({
+      kind: 'visualMatch',
+      label: ['ואיך שילמת? הקש על מה ששמעת', 'And how did you pay? Tap what you hear'],
+      tiles: GATE_PAY_TILES,
+      rounds: [
+        { audio: B_PRICE, correct: 'e6_50' },
+        { audio: Y_CARD, correct: 'card', itemId: 'phrase.coffee.card' },
+        { audio: B_RECEIPT, correct: 'receipt', itemId: 'reply.coffee.receipt' },
+        { audio: B_BYE, correct: 'bye', itemId: 'reply.coffee.enjoy' },
+      ],
+    }),
+    k.receipt(['הבנת את כל השיחה בבית הקפה — מה הזמנת, איזה גודל, עם מה ובלי מה, מה אכלת, כמה שילמת ואיך.', 'You understood the whole café conversation — what you ordered, the size, with and without, what you ate, the price and how you paid.']),
     { kind: 'summary' },
   ];
 }

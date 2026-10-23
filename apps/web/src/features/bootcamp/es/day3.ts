@@ -32,17 +32,24 @@ export const DAY3_ES_ITEMS: BootcampItem[] = [
     meaning: T('בכרטיס, בבקשה.', 'Card, please.') },
   { id: 'es.phrase.coffee.medium', text: 'Mediano, por favor.', meaning: T('בינוני, בבקשה.', 'Medium, please.') },
   { id: 'es.phrase.coffee.yes-please', text: 'Sí, por favor.', meaning: T('כן, בבקשה.', 'Yes, please.') },
-  // hear — the barista question-chain
-  { id: 'es.reply.coffee.what-can-i-get', text: '¿Qué le sirvo?', meaning: T('מה להביא לך?', 'What can I get you?') },
+  // hear — the barista's lines. Each is EXACTLY a line of the locked conversation (what the video says).
+  { id: 'es.reply.coffee.what-can-i-get', text: '¡Buenos días! ¿Qué le sirvo?', meaning: T('בוקר טוב! מה להביא לך?', 'Good morning! What can I get you?'),
+    tip: T('“¿Qué le sirvo?” = מה תרצה להזמין? (בנימוס). כך מתחילה כל הזמנה.', '“¿Qué le sirvo?” = what would you like to order? (polite). Every order starts here.') },
   { id: 'es.reply.coffee.hot-or-iced', text: '¿Caliente o con hielo?', meaning: T('חם או קר?', 'Hot or iced?') },
   { id: 'es.reply.coffee.here-or-to-go', text: '¿Para aquí o para llevar?', meaning: T('לשבת כאן או לקחת?', 'For here or to go?') },
-  { id: 'es.reply.coffee.medium-or-large', text: '¿Mediano o grande?', meaning: T('בינוני או גדול?', 'Medium or large?') },
+  { id: 'es.reply.coffee.medium-or-large', text: '¡Perfecto! ¿Mediano o grande?', meaning: T('מצוין! בינוני או גדול?', 'Sure! Medium or large?') },
   { id: 'es.reply.coffee.milk-sugar', text: '¿Leche y azúcar?', meaning: T('חלב וסוכר?', 'Milk and sugar?') },
   { id: 'es.reply.coffee.anything-to-eat', text: '¿Algo de comer?', meaning: T('משהו לאכול?', 'Anything to eat?') },
-  { id: 'es.reply.coffee.anything-else', text: '¿Algo más?', meaning: T('עוד משהו?', 'Would you like anything else?') },
-  { id: 'es.reply.coffee.cash-or-card', text: '¿Efectivo o tarjeta?', meaning: T('מזומן או כרטיס?', 'Cash or card?') },
+  { id: 'es.reply.coffee.anything-else', text: 'Buena elección. ¿Algo más?', meaning: T('בחירה מצוינת. עוד משהו?', 'Great choice. Would you like anything else?'),
+    tip: T('“¿Algo más?” — כשסיימת, התשובה הקבועה: Eso es todo, gracias.', '“¿Algo más?” — when you are done, the answer is always: Eso es todo, gracias.') },
+  { id: 'es.reply.coffee.cash-or-card', text: 'Son seis con cincuenta. ¿Efectivo o tarjeta?', meaning: T('זה שש יורו וחמישים (‎€6.50). מזומן או כרטיס?', "That'll be six fifty (€6.50). Cash or card?"),
+    tip: T('“seis con cincuenta” = 6.50 — “con” מחבר את היורו לסנטים.', '“seis con cincuenta” = 6.50 — “con” joins the euros to the cents.') },
   { id: 'es.reply.coffee.receipt', text: '¿Quiere el recibo?', meaning: T('רוצה את הקבלה?', 'Would you like the receipt?') },
-  { id: 'es.reply.coffee.enjoy', text: '¡Que tenga un buen día!', meaning: T('שיהיה לך יום מעולה!', 'Enjoy your day!') },
+  { id: 'es.reply.coffee.enjoy', text: 'Aquí tiene — ¡que tenga un buen día!', meaning: T('בבקשה (הנה) — שיהיה לך יום מעולה!', 'Here you go — enjoy your day!') },
+  // the barista's friendly words, on their own — you only have to know them
+  { id: 'es.reply.coffee.good-morning', text: '¡Buenos días!', meaning: T('בוקר טוב!', 'Good morning!') },
+  { id: 'es.reply.coffee.sure', text: '¡Perfecto!', meaning: T('מצוין! / סגור!', 'Perfect! / Sure!') },
+  { id: 'es.reply.coffee.great-choice', text: 'Buena elección.', meaning: T('בחירה מצוינת.', 'Great choice.') },
 ];
 
 const SCENE_BREAKFAST: BootcampDialogue = {

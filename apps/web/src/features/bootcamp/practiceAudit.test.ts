@@ -53,6 +53,7 @@ describe('practice audit export', () => {
         if (s.kind === 'ambush') { questions++; cold++; choices += 2; }
         if (s.kind === 'quickReply') for (const r of s.rounds) { questions++; choices += r.options.length; }
         if (s.kind === 'swap') for (const r of s.rounds) { questions++; choices += r.options.length; }
+        if (s.kind === 'customize') { questions += s.rounds.length; choices += s.rounds.length * s.options.length; }
         if (s.kind === 'visualMatch') { questions += s.rounds.length; choices += s.rounds.length * s.tiles.length; }
         if (s.kind === 'miniMap') for (const r of s.rounds) { questions++; choices += r.cells.filter((c) => c.tappable).length; }
         if (s.kind === 'matchPairs') { questions += s.pairs.length; choices += s.pairs.length * s.pairs.length; }

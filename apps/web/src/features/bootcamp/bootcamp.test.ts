@@ -404,11 +404,11 @@ describe('Mission 3 — Coffee Shop (Deep Moment exemplar)', () => {
     expect(replyIds.length).toBeGreaterThanOrEqual(8); // depth before breadth
   });
 
-  it('trains expected replies BEFORE the live dialogue, and includes an off-script cold open', () => {
+  it('trains expected replies BEFORE the live dialogue, and has no off-script cold open (the Mission 03 pass: no video-only surprise)', () => {
     const kinds = DAY3.steps.map((s) => s.kind);
     expect(kinds.indexOf('replies')).toBeGreaterThan(-1);
     expect(kinds.indexOf('replies')).toBeLessThan(kinds.indexOf('dialogue'));
-    expect(kinds).toContain('ambush');
+    expect(kinds).not.toContain('ambush');
     expect(kinds.at(-1)).toBe('summary');
   });
 
@@ -450,9 +450,9 @@ describe('video-first Bootcamp (intro/review video)', () => {
     expect(kinds.at(-1)).toBe('summary');
   });
 
-  it('only Missions 1 and 2 have video steps (skipped where no file exists); every mission can be read aloud whether or not it has a video', () => {
+  it('only Missions 1, 2 and 3 have video steps (skipped where no file exists); every mission can be read aloud whether or not it has a video', () => {
     for (const set of [DAYS, DAYS_FR, DAYS_ES]) for (const day of Object.values(set)) {
-      expect(day.steps.some((s) => s.kind === 'video'), `day ${day.day}`).toBe(day.day === 1 || day.day === 2);
+      expect(day.steps.some((s) => s.kind === 'video'), `day ${day.day}`).toBe(day.day >= 1 && day.day <= 3);
       expect(Object.keys(day.dialogues).length).toBeGreaterThan(0); // the transcript reader still works
     }
   });

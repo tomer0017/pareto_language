@@ -9,7 +9,7 @@ import { missionIcon, missionJourney, missionPhases, phaseOfIndex, primaryDialog
  * starts where the learner first responds, and missions without a video or without new content
  * still get a sound journey.
  */
-const RESPONDING = new Set(['quiz', 'dialogue', 'swipe', 'ambush', 'quickReply', 'visualMatch', 'swap', 'miniMap', 'matchPairs', 'sentenceBuilder']);
+const RESPONDING = new Set(['quiz', 'dialogue', 'swipe', 'ambush', 'quickReply', 'visualMatch', 'swap', 'customize', 'miniMap', 'matchPairs', 'sentenceBuilder']);
 const TEACHING = new Set(['prime', 'tool', 'replies']);
 
 describe('missionPhases — where learning ends and practice begins', () => {

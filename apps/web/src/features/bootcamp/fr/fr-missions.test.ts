@@ -55,10 +55,10 @@ describe('French missions — content integrity (no English leaks)', () => {
     expect(report.covered).toBe(builtDays.length);
   });
 
-  it('French missions name no video file (videos are found by convention); only Missions 1 and 2 have video steps', () => {
+  it('French missions name no video file (videos are found by convention); only Missions 1, 2 and 3 have video steps', () => {
     for (const d of builtDays) {
       expect(JSON.stringify(DAYS_FR[d]!)).not.toMatch(/\.mp4|introVideo/);
-      expect(DAYS_FR[d]!.steps.some((s) => s.kind === 'video')).toBe(d === 1 || d === 2);
+      expect(DAYS_FR[d]!.steps.some((s) => s.kind === 'video')).toBe(d >= 1 && d <= 3);
     }
   });
 });

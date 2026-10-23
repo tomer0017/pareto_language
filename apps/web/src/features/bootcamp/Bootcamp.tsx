@@ -15,7 +15,7 @@ import { GAME_MOOD, coachFor } from '../companion/companionCoach.js';
 import { completeChime } from '../../shared/audio/sfx.js';
 import { missionVideo } from '../videos/missionVideo.js';
 import { NpcLine, NpcSpeech, YouLine, useNpc } from './ConvoScene.js';
-import { MatchPairsStep, MiniMapStep, QuickReplyStep, SentenceBuilderStep, SwapStep, VisualMatchStep } from './PracticeSteps.js';
+import { CustomizeStep, MatchPairsStep, MiniMapStep, QuickReplyStep, SentenceBuilderStep, SwapStep, VisualMatchStep } from './PracticeSteps.js';
 import { isHelpToolId } from './practiceEngines.js';
 import { missionsFor, useBootcampStore } from './bootcampStore.js';
 import type { BootcampItem, BootcampStep, BootcampDialogue, BootcampVideo, DialogueChoice } from './types.js';
@@ -303,6 +303,7 @@ function MissionPlayer() {
         {step.kind === 'quickReply' && <QuickReplyStep step={step} itemsById={itemsById} onDone={() => { pop(); advance(); }} />}
         {step.kind === 'visualMatch' && <VisualMatchStep step={step} onDone={() => { pop(); advance(); }} />}
         {step.kind === 'swap' && <SwapStep step={step} onDone={() => { pop(); advance(); }} />}
+        {step.kind === 'customize' && <CustomizeStep step={step} onDone={() => { pop(); advance(); }} />}
         {step.kind === 'miniMap' && <MiniMapStep step={step} onDone={() => { pop(); advance(); }} />}
         {step.kind === 'matchPairs' && <MatchPairsStep step={step} itemsById={itemsById} onDone={() => { pop(); advance(); }} />}
         {step.kind === 'sentenceBuilder' && <SentenceBuilderStep step={step} itemsById={itemsById} onDone={() => { pop(); advance(); }} />}

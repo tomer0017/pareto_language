@@ -149,26 +149,24 @@ _Reply-training drill:_ “That's five euros.” · “Five euros a box, or two 
 - **Yes, please.** · כן, בבקשה.
 
 ### Expected replies (you hear)
-- **What can I get you?** · מה להביא לך?
+- **Good morning! What can I get you?** · בוקר טוב! מה להביא לך? — _“What can I get you?” = מה תרצה להזמין? כך מתחילה כל הזמנה._
 - **Hot or iced?** · חם או קר?
 - **For here or to go?** · לשבת כאן או לקחת?
-- **Medium or large?** · בינוני או גדול?
+- **Sure! Medium or large?** · סגור! בינוני או גדול?
 - **Milk and sugar?** · חלב וסוכר?
 - **Anything to eat?** · משהו לאכול?
-- **Would you like anything else?** · עוד משהו?
-- **Cash or card?** · מזומן או כרטיס?
+- **Great choice. Would you like anything else?** · בחירה מצוינת. עוד משהו? — _“Anything else?” — כשסיימת, התשובה הקבועה: That’s all, thanks._
+- **That'll be six fifty. Cash or card?** · זה שש יורו וחמישים (‎€6.50). מזומן או כרטיס? — _“six fifty” = 6.50 — אומרים את שני החלקים של המחיר, בלי המילה “יורו”._
 - **Would you like the receipt?** · רוצה את הקבלה?
-- **Enjoy your day!** · שיהיה לך יום מעולה!
+- **Here you go — enjoy your day!** · בבקשה (הנה) — שיהיה לך יום מעולה!
+- **Good morning!** · בוקר טוב!
+- **Sure!** · בטח! / סגור!
+- **Great choice.** · בחירה מצוינת.
 
-_Reply-training drill:_ “For here or to go?” · “Medium or large?” · “Milk and sugar?” · “Would you like anything else?”
+_Reply-training drill:_ “Sure! Medium or large?” · “Milk and sugar?” · “Anything to eat?” · “Great choice. Would you like anything else?” · “That'll be six fifty. Cash or card?” · “Here you go — enjoy your day!”
 
 ### Recovery tools reused
 `One moment, please.` · `Can you repeat that?` · `Please speak slowly.` · `Thank you!`
-
-### Cold open (ambush)
-- 🧑 (fast) “Sorry, we are out of croissants — would a muffin be okay instead?” · סליחה, נגמרו הקרואסונים — מאפין במקום זה בסדר?
-  - ✅ best move: **Can you repeat that?** · אפשר לחזור על זה?
-  - ✗ distractor: Card, please.
 
 ### Dialogue: `breakfast-order` — happy path
 - **🧑 Them:** “Good morning! What can I get you?” · בוקר טוב! מה להביא לך?

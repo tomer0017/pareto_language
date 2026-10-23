@@ -50,10 +50,17 @@ export const MISSION_INTRO_FALLBACK = T('בוא נתחיל.', 'Let’s begin.');
 export const GAME_INTRO: Record<string, LocalizedText> = {
   matchPairs: T('חבר בין השאלה לתשובה.', 'Match each question to its answer.'),
   visualMatch: T('שמע את המחיר ומצא אותו.', 'Hear the price and find it.'),
+  customize: T('שמע את ההזמנה — וסמן ✓ או ✕.', 'Hear the order — and set ✓ or ✕.'),
   miniMap: T('תקשיב לכיוון ובחר לאן הולכים.', 'Listen to the direction and choose the way.'),
   sentenceBuilder: T('בנה את המשפט.', 'Build the sentence.'),
   swap: T('משפט אחד, סיומות שונות. בחר את הנכונה.', 'One sentence, different endings. Pick the right one.'),
   quickReply: T('שומעים שאלה — ועונים מהר.', 'Hear the question — answer quickly.'),
+};
+
+/** Where a mission's first game of a kind is not what the generic line says (the coffee shop's
+ *  first picture board is the order, not a price). */
+export const MISSION_GAME_INTRO: Record<string, Record<string, LocalizedText>> = {
+  'coffee-shop': { visualMatch: T('שמע — והקש על מה שהזמינו.', 'Listen — and tap what was ordered.') },
 };
 
 export interface CoachLine {
@@ -73,13 +80,13 @@ export function coachFor(steps: readonly { kind: string }[], index: number, miss
   const firstOfKind = steps.findIndex((s) => s.kind === step.kind) === index;
   if (!firstOfKind) return null;
   if (step.kind === 'talk') return { line: (missionId && MISSION_INTRO[missionId]) || MISSION_INTRO_FALLBACK, role: 'intro' };
-  const game = GAME_INTRO[step.kind];
+  const game = (missionId && MISSION_GAME_INTRO[missionId]?.[step.kind]) || GAME_INTRO[step.kind];
   return game ? { line: game, role: 'game' } : null;
 }
 
 /** The mood the buddy brings to each game's instruction: explaining is always its studying pose. */
 export const GAME_MOOD: Record<string, CompanionMood> = {
-  matchPairs: 'teaching', visualMatch: 'teaching', miniMap: 'teaching', sentenceBuilder: 'teaching', swap: 'teaching', quickReply: 'teaching',
+  matchPairs: 'teaching', visualMatch: 'teaching', miniMap: 'teaching', sentenceBuilder: 'teaching', swap: 'teaching', customize: 'teaching', quickReply: 'teaching',
 };
 
 export interface Presence { line: LocalizedText; mood: CompanionMood }

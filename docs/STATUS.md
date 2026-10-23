@@ -22,6 +22,28 @@ loop (typecheck → lint → tests → build → smoke) green at every milestone
 
 ## What's done
 
+### Mission 03 — Coffee Shop, on the Mission 01/02 standard (2026-10-23)
+The dialogue is LOCKED (byte-identical, pinned: `mission03.test.ts`); Missions 01, 02 and 04–30 are
+byte-identical too (their fingerprints were narrowed to 04+ and re-derived from the previous build).
+- **Before:** 16 steps, no video and no final check; "Good morning", "What can I get you?", "Sure",
+  "Great choice", "That'll be six fifty" and "Here you go — enjoy your day" were met only in the
+  conversation; the Quick Reply opened on an off-script "For here or to go?" answered with an
+  untaught "To go, please."; the final challenge was an off-script ambush ("out of croissants — a
+  muffin?") whose answer was a recovery phrase.
+- **Now (26 steps, 49 quick questions):** intro → **Step 0** (optional: iced coffee, medium, large,
+  milk, sugar, with, without, receipt) → 3 key sentences → the barista's follow-ups as heard (the
+  real lines) → **the order board** (☕🧊 vs ☕🔥, M vs a larger L, 🥐 vs 🧁, ➕❓ vs ✋, 🧾) → **the milk &
+  sugar configurator** (new `customize` step: ✓ / ✕, then the pattern swapped) → the barista's words ↔
+  meaning → ordering pairs → builder (2) → **six fifty by ear** (€6.50 vs €6.05 / €16.50 / €60.50) →
+  finishing & paying pairs → Quick Reply ×4 (real lines only) → **your order at a glance** → the
+  conversation → review → **the barista speed run** (all 7 questions, in order) → **video again →
+  "what did you order?" + "how did you pay?"** (5 + 4 taps).
+- Every `reply.coffee.*` sentence is now exactly a barista line of the video; three short
+  comprehension-only sentences joined (`good-morning`, `sure`, `great-choice`). "To go, please."
+  is no longer asked for (a review card only — a later checkpoint offers it as a wrong option).
+- Coverage: `mission03Coverage.ts` (24 chunks) — all COVERED in EN/ES/FR; the in-order "nothing
+  unexplained" audit is clean. Checked in headless Chrome at 390/360 px. Not done: device QA.
+
 ### Mission 02 — Numbers & Money, on the Mission 01 standard (2026-10-12)
 The dialogue is LOCKED (byte-identical, pinned); Mission 01 is byte-identical too.
 - **Before:** the vendor's opening pitch, the whole offer line ("Five euros a box, or two for

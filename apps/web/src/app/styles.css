@@ -1489,6 +1489,26 @@ div.jstep { box-shadow: none; border-color: var(--line); }
   display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1rem; line-height: 1.25;
 }
 .pmatch-tile .pmatch-mark { flex: none; width: 26px; height: 26px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 800; background: var(--line); color: var(--ink-dim); }
+.pcup { display: flex; align-items: center; justify-content: center; gap: 6px; min-height: 76px; direction: ltr; }
+.pcup-base { font-size: 3.4rem; line-height: 1; }
+.pcup-add { font-size: 1.9rem; line-height: 1; animation: piece-in 0.28s cubic-bezier(.2,1.5,.4,1) 1; }
+.pcust { display: flex; flex-direction: column; gap: 10px; width: 100%; }
+.pcust-row {
+  display: grid; grid-template-columns: 1fr auto auto; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 16px;
+  background: var(--card); border: 1.5px solid var(--line); box-shadow: var(--shadow-card);
+}
+.pcust-row.is-ok { border-color: var(--good); box-shadow: 0 0 0 3px color-mix(in srgb, var(--good) 28%, transparent); }
+.pcust-row.is-bad { border-color: var(--danger); box-shadow: 0 0 0 3px color-mix(in srgb, var(--danger) 24%, transparent); }
+.pcust-name { display: flex; align-items: center; gap: 8px; font-weight: 800; font-size: 1.05rem; color: var(--ink); text-align: start; }
+.pcust-emoji { font-size: 1.9rem; line-height: 1; }
+.pcust-btn {
+  width: 58px; height: 50px; border-radius: 14px; border: 1.5px solid var(--line); background: transparent;
+  font-size: 1.35rem; font-weight: 900; color: var(--ink-dim); transition: background 0.12s ease, transform 0.12s ease;
+}
+.pcust-btn.is-yes.is-on { background: var(--good); border-color: var(--good); color: #fff; transform: scale(1.05); }
+.pcust-btn.is-no.is-on { background: var(--danger); border-color: var(--danger); color: #fff; transform: scale(1.05); }
+.pcust-btn:disabled { opacity: 1; }
+@media (prefers-reduced-motion: reduce) { .pcup-add { animation: none; } .pcust-btn.is-on { transform: none; } }
 .pmatch-tile .pmatch-img { display: inline-block; width: 48px; height: 48px; object-fit: contain; border-radius: 13%; vertical-align: middle; margin-inline-end: 10px; }
 .pmatch-tile.is-picked { border-color: var(--accent); border-width: 2.5px; }
 .pmatch-tile.is-picked .pmatch-mark { background: var(--accent); color: #fff; }
