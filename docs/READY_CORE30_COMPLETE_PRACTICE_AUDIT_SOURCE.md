@@ -3680,14 +3680,14 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `core.want` — EN "want" · FR "je veux" · ES "quiero" — meaning "רוצה (☕ רוצה קפה)" / "want (☕ I want a coffee)" — icon 🙋 — new
-2. `core.need` — EN "need" · FR "j’ai besoin de" · ES "necesito" — meaning "צריך (🛁 צריך מגבת)" / "need (🛁 I need a towel)" — icon ❗ — new
-3. `core.have` — EN "have" · FR "j’ai" · ES "tengo" — meaning "יש לי (🔑 יש לי מפתח)" / "have (🔑 I have my key)" — icon 🤲 — new
-4. `core.know` — EN "know" · FR "je sais" · ES "sé" — meaning "יודע" / "know" — icon 💡 — new
-5. `core.can` — EN "can" · FR "je peux" · ES "puedo" — meaning "יכול (🚶 יכול ללכת ברגל)" / "can (🚶 I can walk)" — icon 💪 — new
-6. `core.dont-have` — EN "don't have" · FR "je ne l’ai pas" · ES "no la tengo" — meaning "אין לי ✕ (ההפך של "יש לי")" / "don’t have ✕ (the flip of "have")" — icon ✕ — new
-7. `core.dont-know` — EN "don't know" · FR "je ne sais pas" · ES "no lo sé" — meaning "לא יודע ✕" / "don’t know ✕" — icon ✕ — new
-8. `core.cant` — EN "can't" · FR "je ne peux pas" · ES "no puedo" — meaning "לא יכול ✕" / "can’t ✕" — icon ✕ — new
+1. `core.want` — EN "want" · FR "je veux" · ES "quiero" — meaning "רוצה (☕ רוצה קפה)" / "want (☕ I want a coffee)" — icon none — new
+2. `core.need` — EN "need" · FR "j’ai besoin de" · ES "necesito" — meaning "צריך (🛁 צריך מגבת)" / "need (🛁 I need a towel)" — icon none — new
+3. `core.have` — EN "have" · FR "j’ai" · ES "tengo" — meaning "יש לי (🔑 יש לי מפתח)" / "have (🔑 I have my key)" — icon none — new
+4. `core.know` — EN "know" · FR "je sais" · ES "sé" — meaning "יודע" / "know" — icon none — new
+5. `core.can` — EN "can" · FR "je peux" · ES "puedo" — meaning "יכול (🚶 יכול ללכת ברגל)" / "can (🚶 I can walk)" — icon none — new
+6. `core.dont-have` — EN "don't have" · FR "je ne l’ai pas" · ES "no la tengo" — meaning "אין לי ✕ (ההפך של "יש לי")" / "don’t have ✕ (the flip of "have")" — icon none — new
+7. `core.dont-know` — EN "don't know" · FR "je ne sais pas" · ES "no lo sé" — meaning "לא יודע ✕" / "don’t know ✕" — icon none — new
+8. `core.cant` — EN "can't" · FR "je ne peux pas" · ES "no puedo" — meaning "לא יכול ✕" / "can’t ✕" — icon none — new
 
 "These build the sentence:" card: `phrase.core.i-need` — EN "I need a towel." · FR "J’ai besoin d’une serviette." · ES "Necesito una toalla." · HE "אני צריך מגבת." (with its own play button).
 
@@ -3709,9 +3709,9 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `core.line.i-need` — EN "I need a towel." · FR "J’ai besoin d’une serviette." · ES "Necesito una toalla." — meaning "אני צריך מגבת." / "I need a towel." — icon 🛁 — new
-2. `core.line.i-have` — EN "Yes, I have my key." · FR "Oui, j’ai ma clé." · ES "Sí, tengo mi llave." — meaning "כן, יש לי את המפתח. ✓" / "Yes, I have my key. ✓" — icon 🔑 — new
-3. `core.line.i-dont-have` — EN "I don't have it." · FR "Je ne l’ai pas." · ES "No la tengo." — meaning "אין לי אותה. ✕ (את הסיסמה)" / "I don’t have it. ✕ (the password)" — icon 🚫 — new
+1. `core.line.i-need` — EN "I need a towel." · FR "J’ai besoin d’une serviette." · ES "Necesito una toalla." — meaning "אני צריך מגבת." / "I need a towel." — icon none — new
+2. `core.line.i-have` — EN "Yes, I have my key." · FR "Oui, j’ai ma clé." · ES "Sí, tengo mi llave." — meaning "כן, יש לי את המפתח. ✓" / "Yes, I have my key. ✓" — icon none — new
+3. `core.line.i-dont-have` — EN "I don't have it." · FR "Je ne l’ai pas." · ES "No la tengo." — meaning "אין לי אותה. ✕ (את הסיסמה)" / "I don’t have it. ✕ (the password)" — icon none — new
 4. `core.line.do-you-have` — EN "Do you have a map?" · FR "Vous avez une carte ?" · ES "¿Tiene un mapa?" — meaning "יש לך מפה?" / "Do you have a map?" — icon 🗺️ — new
 5. `core.line.show-me` — EN "Can you show me?" · FR "Vous pouvez me montrer ?" · ES "¿Me lo puede mostrar?" — meaning "אתה יכול להראות לי?" / "Can you show me?" — icon 👀 — new
 6. `core.line.help-me` — EN "Can you help me?" · FR "Vous pouvez m’aider ?" · ES "¿Me puede ayudar?" — meaning "אתה יכול לעזור לי? (אותו "יכול", בקשה אחרת)" / "Can you help me? (the same "can", another request)" — icon 🤝 — new
@@ -3736,12 +3736,12 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `core.line.i-want` — EN "Yes, I want a coffee." · FR "Oui, je veux un café." · ES "Sí, quiero un café." — meaning "כן, אני רוצה קפה." / "Yes, I want a coffee." — icon ☕ — new
+1. `core.line.i-want` — EN "Yes, I want a coffee." · FR "Oui, je veux un café." · ES "Sí, quiero un café." — meaning "כן, אני רוצה קפה." / "Yes, I want a coffee." — icon none — new
 2. `core.line.want-water` — EN "I want water." · FR "Je veux de l’eau." · ES "Quiero agua." — meaning "אני רוצה מים. (אותו "רוצה", דבר אחר)" / "I want water. (the same "want", another thing)" — icon 💧 — new
-3. `core.line.i-know` — EN "Yes, I know." · FR "Oui, je sais." · ES "Sí, lo sé." — meaning "כן, אני יודע. ✓" / "Yes, I know. ✓" — icon 💡 — new
-4. `core.line.i-dont-know` — EN "I don't know." · FR "Je ne sais pas." · ES "No lo sé." — meaning "אני לא יודע. ✕" / "I don’t know. ✕" — icon 🤷 — new
-5. `core.line.i-can` — EN "I can walk." · FR "Je peux y aller à pied." · ES "Puedo ir a pie." — meaning "אני יכול ללכת ברגל. ✓" / "I can walk. ✓" — icon 🚶 — new
-6. `core.line.i-cant` — EN "Sorry, I can't." · FR "Désolé, je ne peux pas." · ES "Lo siento, no puedo." — meaning "סליחה, אני לא יכול. ✕" / "Sorry, I can’t. ✕" — icon 🙅 — new
+3. `core.line.i-know` — EN "Yes, I know." · FR "Oui, je sais." · ES "Sí, lo sé." — meaning "כן, אני יודע. ✓" / "Yes, I know. ✓" — icon none — new
+4. `core.line.i-dont-know` — EN "I don't know." · FR "Je ne sais pas." · ES "No lo sé." — meaning "אני לא יודע. ✕" / "I don’t know. ✕" — icon none — new
+5. `core.line.i-can` — EN "I can walk." · FR "Je peux y aller à pied." · ES "Puedo ir a pie." — meaning "אני יכול ללכת ברגל. ✓" / "I can walk. ✓" — icon none — new
+6. `core.line.i-cant` — EN "Sorry, I can't." · FR "Désolé, je ne peux pas." · ES "Lo siento, no puedo." — meaning "סליחה, אני לא יכול. ✕" / "Sorry, I can’t. ✕" — icon none — new
 
 No build-sentence card.
 
@@ -3973,11 +3973,10 @@ No meaning quiz in this mission.
 - Prompt displayed: "Your things at the desk — tap what you hear" / "הדברים שלך בדלפק — הקש על מה ששמעת"
 - Audio played: EN "Yes, I have my key." · FR "Oui, j’ai ma clé." · ES "Sí, tengo mi llave."
 - Meaning of the audio (HE): "כן, יש לי את המפתח."
-- Buttons show: a 3×3 board of 3 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Buttons show: only this round's 2 tiles (the meaning and its contrast), same in every language; the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. "🔑 “I have it ✓” / “יש לי ✓”" — `phrase.core.i-have` — ✅ accepted
-  2. "📶 “I don’t have it ✕” / “אין לי ✕”" — no sentence id — ❌ wrong
-  3. "🗺️ “do you have one? ❓” / “יש לך? ❓”" — no sentence id — ❌ wrong
+  1. "[picture have.jpg] “I have it ✓” / “יש לי ✓”" — `phrase.core.i-have` — ✅ accepted
+  2. "[picture dont-have.jpg] “I don’t have it ✕” / “אין לי ✕”" — no sentence id — ❌ wrong
 - Tests: phrase.core.i-have
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
@@ -3986,11 +3985,10 @@ No meaning quiz in this mission.
 - Prompt displayed: "Your things at the desk — tap what you hear" / "הדברים שלך בדלפק — הקש על מה ששמעת"
 - Audio played: EN "I don't have it." · FR "Je ne l’ai pas." · ES "No la tengo."
 - Meaning of the audio (HE): "אין לי אותה."
-- Buttons show: a 3×3 board of 3 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Buttons show: only this round's 2 tiles (the meaning and its contrast), same in every language; the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. "🔑 “I have it ✓” / “יש לי ✓”" — no sentence id — ❌ wrong
-  2. "📶 “I don’t have it ✕” / “אין לי ✕”" — `phrase.core.i-dont-have` — ✅ accepted
-  3. "🗺️ “do you have one? ❓” / “יש לך? ❓”" — no sentence id — ❌ wrong
+  1. "[picture have.jpg] “I have it ✓” / “יש לי ✓”" — no sentence id — ❌ wrong
+  2. "[picture dont-have.jpg] “I don’t have it ✕” / “אין לי ✕”" — `phrase.core.i-dont-have` — ✅ accepted
 - Tests: phrase.core.i-dont-have
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
@@ -3999,11 +3997,9 @@ No meaning quiz in this mission.
 - Prompt displayed: "Your things at the desk — tap what you hear" / "הדברים שלך בדלפק — הקש על מה ששמעת"
 - Audio played: EN "Do you have a map?" · FR "Vous avez une carte ?" · ES "¿Tiene un mapa?"
 - Meaning of the audio (HE): "יש לך מפה?"
-- Buttons show: a 3×3 board of 3 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Buttons show: ONE tile — a teaching round: hear it, see what it means, tap it (cannot be missed); then the line and its translation
 - Choices:
-  1. "🔑 “I have it ✓” / “יש לי ✓”" — no sentence id — ❌ wrong
-  2. "📶 “I don’t have it ✕” / “אין לי ✕”" — no sentence id — ❌ wrong
-  3. "🗺️ “do you have one? ❓” / “יש לך? ❓”" — `phrase.core.do-you-have` — ✅ accepted
+  1. "🗺️ “do you have one? ❓” / “יש לך? ❓”" — `phrase.core.do-you-have` — ✅ accepted
 - Tests: phrase.core.do-you-have
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
@@ -4079,10 +4075,10 @@ No meaning quiz in this mission.
 - Meaning of the audio (HE): "שלום! אתה צריך משהו?"
 - Buttons show: only this round's 4 tiles (the meaning and its contrast), same in every language; the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. "🙋 “want” / “רוצה”" — no sentence id — ❌ wrong
-  2. "❗ “need” / “צריך”" — `reply.core.need-anything` — ✅ accepted
-  3. "🤲 “have” / “יש לי”" — no sentence id — ❌ wrong
-  4. "💪 “can” / “יכול”" — no sentence id — ❌ wrong
+  1. "[picture want.jpg] “want” / “רוצה”" — no sentence id — ❌ wrong
+  2. "[picture need.jpg] “need” / “צריך”" — `reply.core.need-anything` — ✅ accepted
+  3. "[picture have.jpg] “have” / “יש לי”" — no sentence id — ❌ wrong
+  4. "[picture can.jpg] “can” / “יכול”" — no sentence id — ❌ wrong
 - Tests: reply.core.need-anything
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
@@ -4093,10 +4089,10 @@ No meaning quiz in this mission.
 - Meaning of the audio (HE): "רוצה קפה?"
 - Buttons show: only this round's 4 tiles (the meaning and its contrast), same in every language; the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. "🙋 “want” / “רוצה”" — `reply.core.do-you-want` — ✅ accepted
-  2. "❗ “need” / “צריך”" — no sentence id — ❌ wrong
-  3. "🤲 “have” / “יש לי”" — no sentence id — ❌ wrong
-  4. "💡 “know” / “יודע”" — no sentence id — ❌ wrong
+  1. "[picture want.jpg] “want” / “רוצה”" — `reply.core.do-you-want` — ✅ accepted
+  2. "[picture need.jpg] “need” / “צריך”" — no sentence id — ❌ wrong
+  3. "[picture have.jpg] “have” / “יש לי”" — no sentence id — ❌ wrong
+  4. "[picture know.jpg] “know” / “יודע”" — no sentence id — ❌ wrong
 - Tests: reply.core.do-you-want
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
@@ -4107,10 +4103,10 @@ No meaning quiz in this mission.
 - Meaning of the audio (HE): "בטח. יש לך את המפתח?"
 - Buttons show: only this round's 4 tiles (the meaning and its contrast), same in every language; the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. "🙋 “want” / “רוצה”" — no sentence id — ❌ wrong
-  2. "❗ “need” / “צריך”" — no sentence id — ❌ wrong
-  3. "🤲 “have” / “יש לי”" — `reply.core.have-your-key` — ✅ accepted
-  4. "💡 “know” / “יודע”" — no sentence id — ❌ wrong
+  1. "[picture want.jpg] “want” / “רוצה”" — no sentence id — ❌ wrong
+  2. "[picture need.jpg] “need” / “צריך”" — no sentence id — ❌ wrong
+  3. "[picture have.jpg] “have” / “יש לי”" — `reply.core.have-your-key` — ✅ accepted
+  4. "[picture know.jpg] “know” / “יודע”" — no sentence id — ❌ wrong
 - Tests: reply.core.have-your-key
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
@@ -4121,10 +4117,10 @@ No meaning quiz in this mission.
 - Meaning of the audio (HE): "אתה יודע איך להגיע למרכז?"
 - Buttons show: only this round's 4 tiles (the meaning and its contrast), same in every language; the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. "🙋 “want” / “רוצה”" — no sentence id — ❌ wrong
-  2. "🤲 “have” / “יש לי”" — no sentence id — ❌ wrong
-  3. "💡 “know” / “יודע”" — `reply.core.do-you-know` — ✅ accepted
-  4. "💪 “can” / “יכול”" — no sentence id — ❌ wrong
+  1. "[picture want.jpg] “want” / “רוצה”" — no sentence id — ❌ wrong
+  2. "[picture have.jpg] “have” / “יש לי”" — no sentence id — ❌ wrong
+  3. "[picture know.jpg] “know” / “יודע”" — `reply.core.do-you-know` — ✅ accepted
+  4. "[picture can.jpg] “can” / “יכול”" — no sentence id — ❌ wrong
 - Tests: reply.core.do-you-know
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
@@ -4135,10 +4131,10 @@ No meaning quiz in this mission.
 - Meaning of the audio (HE): "אתה יכול לבוא?"
 - Buttons show: only this round's 4 tiles (the meaning and its contrast), same in every language; the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. "🙋 “want” / “רוצה”" — no sentence id — ❌ wrong
-  2. "❗ “need” / “צריך”" — no sentence id — ❌ wrong
-  3. "💡 “know” / “יודע”" — no sentence id — ❌ wrong
-  4. "💪 “can” / “יכול”" — `reply.core.can-you-come` — ✅ accepted
+  1. "[picture want.jpg] “want” / “רוצה”" — no sentence id — ❌ wrong
+  2. "[picture need.jpg] “need” / “צריך”" — no sentence id — ❌ wrong
+  3. "[picture know.jpg] “know” / “יודע”" — no sentence id — ❌ wrong
+  4. "[picture can.jpg] “can” / “יכול”" — `reply.core.can-you-come` — ✅ accepted
 - Tests: reply.core.can-you-come
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
@@ -4205,8 +4201,8 @@ No meaning quiz in this mission.
 - Meaning of the audio (HE): "אני לא יודע."
 - Buttons show: only this round's 2 tiles (the meaning and its contrast), same in every language; the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. "💡 “I know ✓” / “יודע ✓”" — no sentence id — ❌ wrong
-  2. "💡 “I don’t know ✕” / “לא יודע ✕”" — `phrase.core.i-dont-know` — ✅ accepted
+  1. "[picture know.jpg] “I know ✓” / “יודע ✓”" — no sentence id — ❌ wrong
+  2. "[picture dont-know.jpg] “I don’t know ✕” / “לא יודע ✕”" — `phrase.core.i-dont-know` — ✅ accepted
 - Tests: phrase.core.i-dont-know
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
@@ -4217,8 +4213,8 @@ No meaning quiz in this mission.
 - Meaning of the audio (HE): "אני יכול ללכת ברגל."
 - Buttons show: only this round's 2 tiles (the meaning and its contrast), same in every language; the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. "💪 “I can ✓” / “יכול ✓”" — `phrase.core.i-can` — ✅ accepted
-  2. "💪 “I can’t ✕” / “לא יכול ✕”" — no sentence id — ❌ wrong
+  1. "[picture can.jpg] “I can ✓” / “יכול ✓”" — `phrase.core.i-can` — ✅ accepted
+  2. "[picture cant.jpg] “I can’t ✕” / “לא יכול ✕”" — no sentence id — ❌ wrong
 - Tests: phrase.core.i-can
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
@@ -4229,8 +4225,8 @@ No meaning quiz in this mission.
 - Meaning of the audio (HE): "סליחה, אני לא יכול."
 - Buttons show: only this round's 2 tiles (the meaning and its contrast), same in every language; the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. "💪 “I can ✓” / “יכול ✓”" — no sentence id — ❌ wrong
-  2. "💪 “I can’t ✕” / “לא יכול ✕”" — `phrase.core.i-cant` — ✅ accepted
+  1. "[picture can.jpg] “I can ✓” / “יכול ✓”" — no sentence id — ❌ wrong
+  2. "[picture cant.jpg] “I can’t ✕” / “לא יכול ✕”" — `phrase.core.i-cant` — ✅ accepted
 - Tests: phrase.core.i-cant
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
@@ -4427,8 +4423,8 @@ No meaning quiz in this mission.
 - Meaning of the audio (HE): "כן, יש לי את המפתח."
 - Buttons show: only this round's 2 tiles (the meaning and its contrast), same in every language; the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. "🔑 “I have it ✓” / “יש לי ✓”" — `phrase.core.i-have` — ✅ accepted
-  2. "📶 “I don’t have it ✕” / “אין לי ✕”" — no sentence id — ❌ wrong
+  1. "[picture have.jpg] “I have it ✓” / “יש לי ✓”" — `phrase.core.i-have` — ✅ accepted
+  2. "[picture dont-have.jpg] “I don’t have it ✕” / “אין לי ✕”" — no sentence id — ❌ wrong
 - Tests: phrase.core.i-have
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
@@ -4451,8 +4447,8 @@ No meaning quiz in this mission.
 - Meaning of the audio (HE): "אני לא יודע."
 - Buttons show: only this round's 2 tiles (the meaning and its contrast), same in every language; the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. "💡 “I know ✓” / “יודע ✓”" — no sentence id — ❌ wrong
-  2. "💡 “I don’t know ✕” / “לא יודע ✕”" — `phrase.core.i-dont-know` — ✅ accepted
+  1. "[picture know.jpg] “I know ✓” / “יודע ✓”" — no sentence id — ❌ wrong
+  2. "[picture dont-know.jpg] “I don’t know ✕” / “לא יודע ✕”" — `phrase.core.i-dont-know` — ✅ accepted
 - Tests: phrase.core.i-dont-know
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
@@ -4487,8 +4483,8 @@ No meaning quiz in this mission.
 - Meaning of the audio (HE): "סליחה, אני לא יכול."
 - Buttons show: only this round's 2 tiles (the meaning and its contrast), same in every language; the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. "💪 “I can ✓” / “יכול ✓”" — no sentence id — ❌ wrong
-  2. "💪 “I can’t ✕” / “לא יכול ✕”" — `phrase.core.i-cant` — ✅ accepted
+  1. "[picture can.jpg] “I can ✓” / “יכול ✓”" — no sentence id — ❌ wrong
+  2. "[picture cant.jpg] “I can’t ✕” / “לא יכול ✕”" — `phrase.core.i-cant` — ✅ accepted
 - Tests: phrase.core.i-cant
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
@@ -4847,7 +4843,7 @@ Learner sentences taught beside the dialogue (not a line in any scene):
 - Vocabulary pre-items: 30
 - Swap variants (extra accepted lines): 0
 - Sentences in review: 0
-- Total interactive questions: 51 (answer choices: 125)
+- Total interactive questions: 51 (answer choices: 121)
 - Approximate total learner interactions: 52 (questions + key sentences + review cards + word-intro screen)
 
 ### AUTO-FLAG — requires human review (2)
@@ -29603,27 +29599,23 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 **M04-Q01** — visual-match
 - Prompt: "Your things at the desk — tap what you hear" / "הדברים שלך בדלפק — הקש על מה ששמעת"
 - Audio: Yes, I have my key. — (כן, יש לי את המפתח.)
-- A: 🔑 “I have it ✓” / “יש לי ✓” ✅
-- B: 📶 “I don’t have it ✕” / “אין לי ✕”
-- C: 🗺️ “do you have one? ❓” / “יש לך? ❓”
-- Correct: 🔑 “I have it ✓” / “יש לי ✓”
+- A: [picture have.jpg] “I have it ✓” / “יש לי ✓” ✅
+- B: [picture dont-have.jpg] “I don’t have it ✕” / “אין לי ✕”
+- Correct: [picture have.jpg] “I have it ✓” / “יש לי ✓”
 - Tests: phrase.core.i-have
 
 **M04-Q02** — visual-match
 - Prompt: "Your things at the desk — tap what you hear" / "הדברים שלך בדלפק — הקש על מה ששמעת"
 - Audio: I don't have it. — (אין לי אותה.)
-- A: 🔑 “I have it ✓” / “יש לי ✓”
-- B: 📶 “I don’t have it ✕” / “אין לי ✕” ✅
-- C: 🗺️ “do you have one? ❓” / “יש לך? ❓”
-- Correct: 📶 “I don’t have it ✕” / “אין לי ✕”
+- A: [picture have.jpg] “I have it ✓” / “יש לי ✓”
+- B: [picture dont-have.jpg] “I don’t have it ✕” / “אין לי ✕” ✅
+- Correct: [picture dont-have.jpg] “I don’t have it ✕” / “אין לי ✕”
 - Tests: phrase.core.i-dont-have
 
 **M04-Q03** — visual-match
 - Prompt: "Your things at the desk — tap what you hear" / "הדברים שלך בדלפק — הקש על מה ששמעת"
 - Audio: Do you have a map? — (יש לך מפה?)
-- A: 🔑 “I have it ✓” / “יש לי ✓”
-- B: 📶 “I don’t have it ✕” / “אין לי ✕”
-- C: 🗺️ “do you have one? ❓” / “יש לך? ❓” ✅
+- A: 🗺️ “do you have one? ❓” / “יש לך? ❓” ✅
 - Correct: 🗺️ “do you have one? ❓” / “יש לך? ❓”
 - Tests: phrase.core.do-you-have
 
@@ -29675,51 +29667,51 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 **M04-Q09** — visual-match
 - Prompt: "Which engine did you hear?" / "איזה מנוע שמעת?"
 - Audio: Hi! Do you need anything? — (שלום! אתה צריך משהו?)
-- A: 🙋 “want” / “רוצה”
-- B: ❗ “need” / “צריך” ✅
-- C: 🤲 “have” / “יש לי”
-- D: 💪 “can” / “יכול”
-- Correct: ❗ “need” / “צריך”
+- A: [picture want.jpg] “want” / “רוצה”
+- B: [picture need.jpg] “need” / “צריך” ✅
+- C: [picture have.jpg] “have” / “יש לי”
+- D: [picture can.jpg] “can” / “יכול”
+- Correct: [picture need.jpg] “need” / “צריך”
 - Tests: reply.core.need-anything
 
 **M04-Q10** — visual-match
 - Prompt: "Which engine did you hear?" / "איזה מנוע שמעת?"
 - Audio: Do you want a coffee? — (רוצה קפה?)
-- A: 🙋 “want” / “רוצה” ✅
-- B: ❗ “need” / “צריך”
-- C: 🤲 “have” / “יש לי”
-- D: 💡 “know” / “יודע”
-- Correct: 🙋 “want” / “רוצה”
+- A: [picture want.jpg] “want” / “רוצה” ✅
+- B: [picture need.jpg] “need” / “צריך”
+- C: [picture have.jpg] “have” / “יש לי”
+- D: [picture know.jpg] “know” / “יודע”
+- Correct: [picture want.jpg] “want” / “רוצה”
 - Tests: reply.core.do-you-want
 
 **M04-Q11** — visual-match
 - Prompt: "Which engine did you hear?" / "איזה מנוע שמעת?"
 - Audio: Sure. Do you have your key? — (בטח. יש לך את המפתח?)
-- A: 🙋 “want” / “רוצה”
-- B: ❗ “need” / “צריך”
-- C: 🤲 “have” / “יש לי” ✅
-- D: 💡 “know” / “יודע”
-- Correct: 🤲 “have” / “יש לי”
+- A: [picture want.jpg] “want” / “רוצה”
+- B: [picture need.jpg] “need” / “צריך”
+- C: [picture have.jpg] “have” / “יש לי” ✅
+- D: [picture know.jpg] “know” / “יודע”
+- Correct: [picture have.jpg] “have” / “יש לי”
 - Tests: reply.core.have-your-key
 
 **M04-Q12** — visual-match
 - Prompt: "Which engine did you hear?" / "איזה מנוע שמעת?"
 - Audio: Do you know how to get to the centre? — (אתה יודע איך להגיע למרכז?)
-- A: 🙋 “want” / “רוצה”
-- B: 🤲 “have” / “יש לי”
-- C: 💡 “know” / “יודע” ✅
-- D: 💪 “can” / “יכול”
-- Correct: 💡 “know” / “יודע”
+- A: [picture want.jpg] “want” / “רוצה”
+- B: [picture have.jpg] “have” / “יש לי”
+- C: [picture know.jpg] “know” / “יודע” ✅
+- D: [picture can.jpg] “can” / “יכול”
+- Correct: [picture know.jpg] “know” / “יודע”
 - Tests: reply.core.do-you-know
 
 **M04-Q13** — visual-match
 - Prompt: "Which engine did you hear?" / "איזה מנוע שמעת?"
 - Audio: Can you come? — (אתה יכול לבוא?)
-- A: 🙋 “want” / “רוצה”
-- B: ❗ “need” / “צריך”
-- C: 💡 “know” / “יודע”
-- D: 💪 “can” / “יכול” ✅
-- Correct: 💪 “can” / “יכול”
+- A: [picture want.jpg] “want” / “רוצה”
+- B: [picture need.jpg] “need” / “צריך”
+- C: [picture know.jpg] “know” / “יודע”
+- D: [picture can.jpg] “can” / “יכול” ✅
+- Correct: [picture can.jpg] “can” / “יכול”
 - Tests: reply.core.can-you-come
 
 **M04-Q14** — match-pairs
@@ -29765,25 +29757,25 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 **M04-Q18** — visual-match
 - Prompt: "Flip it — ✓ or ✕?" / "הפוך את זה — ✓ או ✕?"
 - Audio: I don't know. — (אני לא יודע.)
-- A: 💡 “I know ✓” / “יודע ✓”
-- B: 💡 “I don’t know ✕” / “לא יודע ✕” ✅
-- Correct: 💡 “I don’t know ✕” / “לא יודע ✕”
+- A: [picture know.jpg] “I know ✓” / “יודע ✓”
+- B: [picture dont-know.jpg] “I don’t know ✕” / “לא יודע ✕” ✅
+- Correct: [picture dont-know.jpg] “I don’t know ✕” / “לא יודע ✕”
 - Tests: phrase.core.i-dont-know
 
 **M04-Q19** — visual-match
 - Prompt: "Flip it — ✓ or ✕?" / "הפוך את זה — ✓ או ✕?"
 - Audio: I can walk. — (אני יכול ללכת ברגל.)
-- A: 💪 “I can ✓” / “יכול ✓” ✅
-- B: 💪 “I can’t ✕” / “לא יכול ✕”
-- Correct: 💪 “I can ✓” / “יכול ✓”
+- A: [picture can.jpg] “I can ✓” / “יכול ✓” ✅
+- B: [picture cant.jpg] “I can’t ✕” / “לא יכול ✕”
+- Correct: [picture can.jpg] “I can ✓” / “יכול ✓”
 - Tests: phrase.core.i-can
 
 **M04-Q20** — visual-match
 - Prompt: "Flip it — ✓ or ✕?" / "הפוך את זה — ✓ או ✕?"
 - Audio: Sorry, I can't. — (סליחה, אני לא יכול.)
-- A: 💪 “I can ✓” / “יכול ✓”
-- B: 💪 “I can’t ✕” / “לא יכול ✕” ✅
-- Correct: 💪 “I can’t ✕” / “לא יכול ✕”
+- A: [picture can.jpg] “I can ✓” / “יכול ✓”
+- B: [picture cant.jpg] “I can’t ✕” / “לא יכול ✕” ✅
+- Correct: [picture cant.jpg] “I can’t ✕” / “לא יכול ✕”
 - Tests: phrase.core.i-cant
 
 **M04-Q21** — visual-match
@@ -29986,9 +29978,9 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 **M04-Q46** — visual-match
 - Prompt: "What happened? Tap what you hear" / "מה קרה? הקש על מה ששמעת"
 - Audio: Yes, I have my key. — (כן, יש לי את המפתח.)
-- A: 🔑 “I have it ✓” / “יש לי ✓” ✅
-- B: 📶 “I don’t have it ✕” / “אין לי ✕”
-- Correct: 🔑 “I have it ✓” / “יש לי ✓”
+- A: [picture have.jpg] “I have it ✓” / “יש לי ✓” ✅
+- B: [picture dont-have.jpg] “I don’t have it ✕” / “אין לי ✕”
+- Correct: [picture have.jpg] “I have it ✓” / “יש לי ✓”
 - Tests: phrase.core.i-have
 
 **M04-Q47** — visual-match
@@ -30002,9 +29994,9 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 **M04-Q48** — visual-match
 - Prompt: "What happened? Tap what you hear" / "מה קרה? הקש על מה ששמעת"
 - Audio: I don't know. — (אני לא יודע.)
-- A: 💡 “I know ✓” / “יודע ✓”
-- B: 💡 “I don’t know ✕” / “לא יודע ✕” ✅
-- Correct: 💡 “I don’t know ✕” / “לא יודע ✕”
+- A: [picture know.jpg] “I know ✓” / “יודע ✓”
+- B: [picture dont-know.jpg] “I don’t know ✕” / “לא יודע ✕” ✅
+- Correct: [picture dont-know.jpg] “I don’t know ✕” / “לא יודע ✕”
 - Tests: phrase.core.i-dont-know
 
 **M04-Q49** — visual-match
@@ -30026,9 +30018,9 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 **M04-Q51** — visual-match
 - Prompt: "What happened? Tap what you hear" / "מה קרה? הקש על מה ששמעת"
 - Audio: Sorry, I can't. — (סליחה, אני לא יכול.)
-- A: 💪 “I can ✓” / “יכול ✓”
-- B: 💪 “I can’t ✕” / “לא יכול ✕” ✅
-- Correct: 💪 “I can’t ✕” / “לא יכול ✕”
+- A: [picture can.jpg] “I can ✓” / “יכול ✓”
+- B: [picture cant.jpg] “I can’t ✕” / “לא יכול ✕” ✅
+- Correct: [picture cant.jpg] “I can’t ✕” / “לא יכול ✕”
 - Tests: phrase.core.i-cant
 
 ## Mission 05 — Directions
@@ -35326,7 +35318,7 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Dialogue choice screens: 271
 - Cold opens: 11
 - Total interactive questions: 807
-- Total answer choices: 2160
+- Total answer choices: 2156
 - Wrong-answer branches: 94
 - Recovery opportunities: 56
 - Learner sentences with 0 active retrieval opportunities: 1

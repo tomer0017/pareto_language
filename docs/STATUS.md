@@ -22,6 +22,16 @@ loop (typecheck → lint → tests → build → smoke) green at every milestone
 
 ## What's done
 
+### Mission 04 — Group 1 pictures: the five engines and the three flips (2026-10-25)
+Eight approved pictures in `apps/web/public/images/mission04/` (want, need, have, dont-have, know,
+dont-know, can, cant — JPEG q92, 314 px, 352 KB; one set for EN / ES / FR) replace the emoji wherever
+a tile or card MEANS that engine: Step 0 (all 8), the learner-line teaching cards that are the engine
+examples (8), "Which engine?" (5), Flip It (know ↔ don't know, can ↔ can't), the desk game and the
+final gate (have ↔ don't have). Not used on questions, objects (coffee, towel, map), walk / dinner or
+the reactions — those wait for Groups 2 / 3. The map round has no picture yet, so it is shown on its
+own (a teaching round) rather than as the emoji odd-one-out beside two pictures. Dialogue, pacing (41)
+and coverage unchanged.
+
 ### Mission 04 — Everyday Core: a pattern mission, taught before tested (2026-10-25)
 Both locked scenes are byte-identical (EN/ES/FR); Missions 01–03 and 05–30 are byte-identical (the
 older fingerprints were narrowed to 05+ and re-derived from the previous build).

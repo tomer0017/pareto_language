@@ -1,4 +1,6 @@
 import { describe, expect, it } from 'vitest';
+import { existsSync, readdirSync, statSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import { cinematicTranscript, missionDialogues } from './exportDialogue.js';
 import { coverageOf, encounters, hasChunk, plain, type CoverageLang } from './mission01Coverage.js';
 import { M04_CONCEPTS } from './mission04Coverage.js';
@@ -236,7 +238,8 @@ describe('TEACH before TEST — the strict in-order audit', () => {
     });
   }
   it('every learner line goes TEACH → (recognise) → RETRIEVE → the conversation', () => {
-    const PICTURED = new Set(['i-have-key', 'dont-have', 'do-you-have-map', 'dont-know', 'i-can-walk', 'cant']);
+    // ("Do you have a map?" has no approved picture yet: it is TAUGHT on its own one-tile round, then retrieved.)
+    const PICTURED = new Set(['i-have-key', 'dont-have', 'dont-know', 'i-can-walk', 'cant']);
     for (const lang of LANGS) {
       const d = day(lang);
       const { taught } = walk(d);
@@ -368,9 +371,83 @@ describe('the final gate: both scenes again, then what happened — answered by 
   it('the same meaning is the same tile wherever it appears (the desk game, the flips, the gate)', () => {
     const d = day('en');
     const seen = new Map<string, string>();
-    for (const b of boards(d)) for (const t of b.tiles) { const look = JSON.stringify([t.emoji, t.caption]); expect(seen.get(t.id) ?? look, t.id).toBe(look); seen.set(t.id, look); }
+    for (const b of boards(d)) for (const t of b.tiles) { const look = JSON.stringify([t.image, t.emoji, t.caption]); expect(seen.get(t.id) ?? look, t.id).toBe(look); seen.set(t.id, look); }
     const looks = [...seen.values()];
     expect(new Set(looks).size).toBe(looks.length);
+  });
+});
+
+describe('Group 1 pictures: the five engines and the three flips', () => {
+  const PUBLIC = fileURLToPath(new URL('../../../public/', import.meta.url));
+  const FILE = {
+    want: 'want.jpg', need: 'need.jpg', have: 'have.jpg', dontHave: 'dont-have.jpg', know: 'know.jpg', dontKnow: 'dont-know.jpg', can: 'can.jpg', cant: 'cant.jpg',
+  } as const;
+  const pic = (path: string | undefined): string => (path ?? '').replace('images/mission04/', '');
+  it('the eight files exist, are real pictures, and are eight DIFFERENT files — the only files in the Mission 04 folder', () => {
+    const files = Object.values(FILE);
+    expect(new Set(files).size).toBe(8);
+    for (const f of files) { expect(existsSync(`${PUBLIC}images/mission04/${f}`), f).toBe(true); expect(statSync(`${PUBLIC}images/mission04/${f}`).size, f).toBeGreaterThan(10_000); }
+    expect(readdirSync(`${PUBLIC}images/mission04`).sort()).toEqual([...files].sort()); // nothing of Group 2 / 3
+  });
+  it('every Mission 04 picture reference is one of the eight — no Group 2 / 3 picture is referenced', () => {
+    for (const lang of LANGS) {
+      const refs = [...JSON.stringify(day(lang)).matchAll(/images\/mission04\/([a-z-]+\.jpg)/g)].map((m) => m[1]!);
+      expect(refs.length, lang).toBeGreaterThan(0);
+      for (const r of refs) expect(Object.values(FILE) as string[], `${lang} ${r}`).toContain(r);
+    }
+  });
+  it('Step 0: each engine and each flip carries its own picture', () => {
+    for (const lang of LANGS) {
+      const p = stepsOf(day(lang), 'prime')[0]!;
+      expect(p.words.map((w) => [w.key, pic(w.image)])).toEqual([
+        ['core.want', FILE.want], ['core.need', FILE.need], ['core.have', FILE.have], ['core.know', FILE.know], ['core.can', FILE.can],
+        ['core.dont-have', FILE.dontHave], ['core.dont-know', FILE.dontKnow], ['core.cant', FILE.cant],
+      ]);
+    }
+  });
+  it('"Which engine did you hear?" uses the five positive engine pictures, each with its one-word caption, all treated alike', () => {
+    for (const lang of LANGS) {
+      const b = boardWith(day(lang), 'want');
+      expect(b.tiles.map((t) => [t.id, pic(t.image), t.caption!.en])).toEqual([['want', FILE.want, 'want'], ['need', FILE.need, 'need'], ['have', FILE.have, 'have'], ['know', FILE.know, 'know'], ['can', FILE.can, 'can']]);
+      for (const t of b.tiles) { expect(t.emoji).toBeUndefined(); expect(t.scale).toBeUndefined(); expect(t.alt).toBeTruthy(); }
+    }
+  });
+  it('Flip It uses the positive / negative pairs: know ↔ don\'t know, can ↔ can\'t; the desk game: have ↔ don\'t have', () => {
+    for (const lang of LANGS) {
+      const flip = boardWith(day(lang), 'can-no');
+      expect(flip.tiles.map((t) => [t.id, pic(t.image)])).toEqual([['know-yes', FILE.know], ['know-no', FILE.dontKnow], ['can-yes', FILE.can], ['can-no', FILE.cant]]);
+      const desk = boardWith(day(lang), 'ask-map');
+      expect(desk.tiles.filter((t) => t.image).map((t) => [t.id, pic(t.image)])).toEqual([['have-key', FILE.have], ['no-wifi', FILE.dontHave]]);
+    }
+  });
+  it('the learner lines that ARE the engine examples carry the same picture on their teaching card', () => {
+    for (const lang of LANGS) {
+      const byKey = Object.fromEntries(cards(day(lang)).flatMap((p) => p.words).map((w) => [w.key, pic(w.image)]));
+      expect([byKey['core.line.i-need'], byKey['core.line.i-want'], byKey['core.line.i-have'], byKey['core.line.i-dont-have'], byKey['core.line.i-know'], byKey['core.line.i-dont-know'], byKey['core.line.i-can'], byKey['core.line.i-cant']])
+        .toEqual([FILE.need, FILE.want, FILE.have, FILE.dontHave, FILE.know, FILE.dontKnow, FILE.can, FILE.cant]);
+      // the desk's and the friend's QUESTIONS are not statements of an engine: no engine picture on them
+      for (const w of cards(day(lang)).flatMap((p) => p.words)) if (/^core\.line\.(need-anything|have-key|wifi|want-coffee|know-way|walk|dinner)$/.test(w.key!)) expect(w.image, w.key).toBeUndefined();
+    }
+  });
+  it('one engine = one picture across the whole mission (Step 0, cards, every board), the same in EN / ES / FR', () => {
+    const map = (lang: CoverageLang): Record<string, string> => {
+      const out: Record<string, Set<string>> = {};
+      const note = (path: string | undefined, meaning: string): void => { if (path) (out[pic(path)] ??= new Set()).add(meaning); };
+      for (const w of stepsOf(day(lang), 'prime').flatMap((p) => p.words)) note(w.image, (w.key ?? '').replace(/^core\.(line\.)?/, '').replace(/^i-/, '').replace('want-water', 'water'));
+      for (const b of boards(day(lang))) for (const t of b.tiles) note(t.image, t.id);
+      return Object.fromEntries(Object.entries(out).map(([f, m]) => [f, [...m].sort().join(' | ')]));
+    };
+    const SAME: Record<string, string> = {
+      [FILE.want]: 'want', [FILE.need]: 'need', [FILE.have]: 'have | have-key', [FILE.dontHave]: 'dont-have | no-wifi',
+      [FILE.know]: 'know | know-yes', [FILE.dontKnow]: 'dont-know | know-no', [FILE.can]: 'can | can-yes', [FILE.cant]: 'can-no | cant',
+    };
+    for (const lang of LANGS) expect(map(lang), lang).toEqual(SAME);
+  });
+  it('no round mixes a picture and an emoji — the answer is never "the odd tile out"', () => {
+    for (const lang of LANGS) for (const b of boards(day(lang))) for (const r of b.rounds) {
+      const shown = r.show ? b.tiles.filter((t) => r.show!.includes(t.id)) : b.tiles;
+      expect(new Set(shown.map((t) => (t.image ? 'picture' : 'emoji'))).size, `${lang} ${r.audio.en}`).toBe(1);
+    }
   });
 });
 

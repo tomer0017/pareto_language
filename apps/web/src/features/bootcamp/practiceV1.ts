@@ -661,25 +661,32 @@ export function m03Steps(lang: MissionLang): BootcampStep[] {
 
 /** A tile's app-language words — what it MEANS, so the picture is never a guess. */
 const cap = (he: string, en: string): LocalizedText => ({ he, en });
+/** The eight engine pictures (public/images/mission04/, shared by EN / ES / FR): one picture per
+ *  engine or flip, used wherever a tile or card MEANS that engine — never as a stand-in for an object. */
+const M04_IMG = 'images/mission04/';
+const ENGINE_IMG = {
+  want: `${M04_IMG}want.jpg`, need: `${M04_IMG}need.jpg`, have: `${M04_IMG}have.jpg`, dontHave: `${M04_IMG}dont-have.jpg`,
+  know: `${M04_IMG}know.jpg`, dontKnow: `${M04_IMG}dont-know.jpg`, can: `${M04_IMG}can.jpg`, cant: `${M04_IMG}cant.jpg`,
+} as const;
 /* The engines, as one family of tiles: the same symbol always means the same engine. */
-const E_WANT = { id: 'want', emoji: '🙋', caption: cap('רוצה', 'want'), scale: 1.6 };
-const E_NEED = { id: 'need', emoji: '❗', caption: cap('צריך', 'need'), scale: 1.6 };
-const E_HAVE = { id: 'have', emoji: '🤲', caption: cap('יש לי', 'have'), scale: 1.6 };
-const E_KNOW = { id: 'know', emoji: '💡', caption: cap('יודע', 'know'), scale: 1.6 };
-const E_CAN = { id: 'can', emoji: '💪', caption: cap('יכול', 'can'), scale: 1.6 };
+const E_WANT = { id: 'want', image: ENGINE_IMG.want, alt: 'Reaching for a coffee that is offered', caption: cap('רוצה', 'want') };
+const E_NEED = { id: 'need', image: ENGINE_IMG.need, alt: 'Asking at the desk for a towel', caption: cap('צריך', 'need') };
+const E_HAVE = { id: 'have', image: ENGINE_IMG.have, alt: 'Holding up the room key, ticked', caption: cap('יש לי', 'have') };
+const E_KNOW = { id: 'know', image: ENGINE_IMG.know, alt: 'Tracing the route on a map, sure of the way', caption: cap('יודע', 'know') };
+const E_CAN = { id: 'can', image: ENGINE_IMG.can, alt: 'Walking happily through town, ticked', caption: cap('יכול', 'can') };
 /* My things at the desk: what I have, what I don't, what I ask for. */
-const T_KEY = { id: 'have-key', emoji: '🔑', caption: cap('יש לי ✓', 'I have it ✓'), scale: 1.6 };
-const T_WIFI = { id: 'no-wifi', emoji: '📶', caption: cap('אין לי ✕', 'I don’t have it ✕'), scale: 1.6 };
+const T_KEY = { id: 'have-key', image: ENGINE_IMG.have, alt: 'Holding up the room key, ticked', caption: cap('יש לי ✓', 'I have it ✓') };
+const T_WIFI = { id: 'no-wifi', image: ENGINE_IMG.dontHave, alt: 'Shrugging at the wifi password, crossed out', caption: cap('אין לי ✕', 'I don’t have it ✕') };
 const T_MAP = { id: 'ask-map', emoji: '🗺️', caption: cap('יש לך? ❓', 'do you have one? ❓'), scale: 1.6 };
 const T_HERE = { id: 'wifi-here', emoji: '👉📶', caption: cap('הנה הסיסמה', 'here’s the password'), scale: 1.6 };
 /* How the other person reacts. */
 const R_SURE = { id: 'sure', emoji: '👍', caption: cap('בטח / כמובן', 'sure / of course'), scale: 1.6 };
 const R_OK = { id: 'no-problem', emoji: '👌', caption: cap('אין בעיה', 'no problem'), scale: 1.6 };
 /* The flips: the same symbol, ✓ or ✕. */
-const F_KNOW = { id: 'know-yes', emoji: '💡', caption: cap('יודע ✓', 'I know ✓'), scale: 1.6 };
-const F_DONT_KNOW = { id: 'know-no', emoji: '💡', caption: cap('לא יודע ✕', 'I don’t know ✕'), scale: 1.6 };
-const F_CAN = { id: 'can-yes', emoji: '💪', caption: cap('יכול ✓', 'I can ✓'), scale: 1.6 };
-const F_CANT = { id: 'can-no', emoji: '💪', caption: cap('לא יכול ✕', 'I can’t ✕'), scale: 1.6 };
+const F_KNOW = { id: 'know-yes', image: ENGINE_IMG.know, alt: 'Tracing the route on a map, sure of the way', caption: cap('יודע ✓', 'I know ✓') };
+const F_DONT_KNOW = { id: 'know-no', image: ENGINE_IMG.dontKnow, alt: 'Puzzled over a map, a question mark', caption: cap('לא יודע ✕', 'I don’t know ✕') };
+const F_CAN = { id: 'can-yes', image: ENGINE_IMG.can, alt: 'Walking happily through town, ticked', caption: cap('יכול ✓', 'I can ✓') };
+const F_CANT = { id: 'can-no', image: ENGINE_IMG.cant, alt: 'Politely declining the dinner, crossed out', caption: cap('לא יכול ✕', 'I can’t ✕') };
 /* The friend's scene, in the symbols its picture cards use. */
 const S_COFFEE = { id: 'want-coffee', emoji: '☕', caption: cap('רוצה קפה', 'want a coffee'), scale: 1.6 };
 const S_TOWEL = { id: 'need-towel', emoji: '🛁', caption: cap('צריך מגבת', 'need a towel'), scale: 1.6 };
@@ -736,14 +743,14 @@ export function m04Steps(lang: MissionLang): BootcampStep[] {
       gate: true,
       intro: ['חמש תבניות קצרות שבונות המון משפטים — ושלושה "הפוכים". הקש כדי לשמוע.', 'Five short patterns that build lots of sentences — and three flips. Tap to hear.'],
       words: [
-        { key: 'core.want', t: ['want', 'je veux', 'quiero'], meaning: ['רוצה (☕ רוצה קפה)', 'want (☕ I want a coffee)'], emoji: '🙋' },
-        { key: 'core.need', t: ['need', 'j’ai besoin de', 'necesito'], meaning: ['צריך (🛁 צריך מגבת)', 'need (🛁 I need a towel)'], emoji: '❗' },
-        { key: 'core.have', t: ['have', 'j’ai', 'tengo'], meaning: ['יש לי (🔑 יש לי מפתח)', 'have (🔑 I have my key)'], emoji: '🤲' },
-        { key: 'core.know', t: ['know', 'je sais', 'sé'], meaning: ['יודע', 'know'], emoji: '💡' },
-        { key: 'core.can', t: ['can', 'je peux', 'puedo'], meaning: ['יכול (🚶 יכול ללכת ברגל)', 'can (🚶 I can walk)'], emoji: '💪' },
-        { key: 'core.dont-have', review: false, t: ["don't have", 'je ne l’ai pas', 'no la tengo'], meaning: ['אין לי ✕ (ההפך של "יש לי")', 'don’t have ✕ (the flip of "have")'], emoji: '✕' },
-        { key: 'core.dont-know', t: ["don't know", 'je ne sais pas', 'no lo sé'], meaning: ['לא יודע ✕', 'don’t know ✕'], emoji: '✕' },
-        { key: 'core.cant', t: ["can't", 'je ne peux pas', 'no puedo'], meaning: ['לא יכול ✕', 'can’t ✕'], emoji: '✕' },
+        { key: 'core.want', t: ['want', 'je veux', 'quiero'], meaning: ['רוצה (☕ רוצה קפה)', 'want (☕ I want a coffee)'], image: ENGINE_IMG.want },
+        { key: 'core.need', t: ['need', 'j’ai besoin de', 'necesito'], meaning: ['צריך (🛁 צריך מגבת)', 'need (🛁 I need a towel)'], image: ENGINE_IMG.need },
+        { key: 'core.have', t: ['have', 'j’ai', 'tengo'], meaning: ['יש לי (🔑 יש לי מפתח)', 'have (🔑 I have my key)'], image: ENGINE_IMG.have },
+        { key: 'core.know', t: ['know', 'je sais', 'sé'], meaning: ['יודע', 'know'], image: ENGINE_IMG.know },
+        { key: 'core.can', t: ['can', 'je peux', 'puedo'], meaning: ['יכול (🚶 יכול ללכת ברגל)', 'can (🚶 I can walk)'], image: ENGINE_IMG.can },
+        { key: 'core.dont-have', t: ["don't have", 'je ne l’ai pas', 'no la tengo'], meaning: ['אין לי ✕ (ההפך של "יש לי")', 'don’t have ✕ (the flip of "have")'], image: ENGINE_IMG.dontHave },
+        { key: 'core.dont-know', t: ["don't know", 'je ne sais pas', 'no lo sé'], meaning: ['לא יודע ✕', 'don’t know ✕'], image: ENGINE_IMG.dontKnow },
+        { key: 'core.cant', t: ["can't", 'je ne peux pas', 'no puedo'], meaning: ['לא יכול ✕', 'can’t ✕'], image: ENGINE_IMG.cant },
       ],
       build: 'phrase.core.i-need',
     }),
@@ -764,9 +771,9 @@ export function m04Steps(lang: MissionLang): BootcampStep[] {
       label: ['בדלפק — מה אתה אומר', 'At the desk — what you say'],
       intro: deskSayIntro,
       words: [
-        { line: true, key: 'core.line.i-need', t: l3(M_NEED), meaning: ['אני צריך מגבת.', 'I need a towel.'], emoji: '🛁' },
-        { line: true, key: 'core.line.i-have', t: l3(M_HAVE), meaning: ['כן, יש לי את המפתח. ✓', 'Yes, I have my key. ✓'], emoji: '🔑' },
-        { line: true, key: 'core.line.i-dont-have', t: l3(M_DONT_HAVE), meaning: ['אין לי אותה. ✕ (את הסיסמה)', 'I don’t have it. ✕ (the password)'], emoji: '🚫' },
+        { line: true, key: 'core.line.i-need', t: l3(M_NEED), meaning: ['אני צריך מגבת.', 'I need a towel.'], image: ENGINE_IMG.need },
+        { line: true, key: 'core.line.i-have', t: l3(M_HAVE), meaning: ['כן, יש לי את המפתח. ✓', 'Yes, I have my key. ✓'], image: ENGINE_IMG.have },
+        { line: true, key: 'core.line.i-dont-have', t: l3(M_DONT_HAVE), meaning: ['אין לי אותה. ✕ (את הסיסמה)', 'I don’t have it. ✕ (the password)'], image: ENGINE_IMG.dontHave },
         { line: true, key: 'core.line.do-you-have', t: l3(M_MAP), meaning: ['יש לך מפה?', 'Do you have a map?'], emoji: '🗺️' },
         { line: true, key: 'core.line.show-me', t: ['Can you show me?', 'Vous pouvez me montrer ?', '¿Me lo puede mostrar?'], meaning: ['אתה יכול להראות לי?', 'Can you show me?'], emoji: '👀' },
         { line: true, key: 'core.line.help-me', t: ['Can you help me?', 'Vous pouvez m’aider ?', '¿Me puede ayudar?'], meaning: ['אתה יכול לעזור לי? (אותו "יכול", בקשה אחרת)', 'Can you help me? (the same "can", another request)'], emoji: '🤝' },
@@ -778,9 +785,11 @@ export function m04Steps(lang: MissionLang): BootcampStep[] {
       label: ['הדברים שלך בדלפק — הקש על מה ששמעת', 'Your things at the desk — tap what you hear'],
       tiles: [T_KEY, T_WIFI, T_MAP],
       rounds: [
-        { audio: M_HAVE, correct: 'have-key', itemId: 'phrase.core.i-have' },
-        { audio: M_DONT_HAVE, correct: 'no-wifi', itemId: 'phrase.core.i-dont-have' },
-        { audio: M_MAP, correct: 'ask-map', itemId: 'phrase.core.do-you-have' },
+        { audio: M_HAVE, correct: 'have-key', itemId: 'phrase.core.i-have', show: ['have-key', 'no-wifi'] },
+        { audio: M_DONT_HAVE, correct: 'no-wifi', itemId: 'phrase.core.i-dont-have', show: ['no-wifi', 'have-key'] },
+        // the map has no approved picture yet: shown on its own (a teaching round), never beside the
+        // two pictures — so no round can be solved by "the odd tile out"
+        { audio: M_MAP, correct: 'ask-map', itemId: 'phrase.core.do-you-have', show: ['ask-map'] },
       ],
     }),
     // QUESTION ↔ ANSWER — the desk's real questions and your answers.
@@ -820,12 +829,12 @@ export function m04Steps(lang: MissionLang): BootcampStep[] {
       label: ['עם חבר — מה אתה אומר', 'With a friend — what you say'],
       intro: ['רוצה · יודע / לא יודע · יכול / לא יכול. הקש כדי לשמוע.', 'Want · know / don’t know · can / can’t. Tap to hear.'],
       words: [
-        { line: true, key: 'core.line.i-want', t: l3(M_WANT), meaning: ['כן, אני רוצה קפה.', 'Yes, I want a coffee.'], emoji: '☕' },
+        { line: true, key: 'core.line.i-want', t: l3(M_WANT), meaning: ['כן, אני רוצה קפה.', 'Yes, I want a coffee.'], image: ENGINE_IMG.want },
         { line: true, key: 'core.line.want-water', t: ['I want water.', 'Je veux de l’eau.', 'Quiero agua.'], meaning: ['אני רוצה מים. (אותו "רוצה", דבר אחר)', 'I want water. (the same "want", another thing)'], emoji: '💧' },
-        { line: true, key: 'core.line.i-know', t: l3(M_KNOW), meaning: ['כן, אני יודע. ✓', 'Yes, I know. ✓'], emoji: '💡' },
-        { line: true, key: 'core.line.i-dont-know', t: l3(M_DONT_KNOW), meaning: ['אני לא יודע. ✕', 'I don’t know. ✕'], emoji: '🤷' },
-        { line: true, key: 'core.line.i-can', t: l3(M_CAN), meaning: ['אני יכול ללכת ברגל. ✓', 'I can walk. ✓'], emoji: '🚶' },
-        { line: true, key: 'core.line.i-cant', t: l3(M_CANT), meaning: ['סליחה, אני לא יכול. ✕', 'Sorry, I can’t. ✕'], emoji: '🙅' },
+        { line: true, key: 'core.line.i-know', t: l3(M_KNOW), meaning: ['כן, אני יודע. ✓', 'Yes, I know. ✓'], image: ENGINE_IMG.know },
+        { line: true, key: 'core.line.i-dont-know', t: l3(M_DONT_KNOW), meaning: ['אני לא יודע. ✕', 'I don’t know. ✕'], image: ENGINE_IMG.dontKnow },
+        { line: true, key: 'core.line.i-can', t: l3(M_CAN), meaning: ['אני יכול ללכת ברגל. ✓', 'I can walk. ✓'], image: ENGINE_IMG.can },
+        { line: true, key: 'core.line.i-cant', t: l3(M_CANT), meaning: ['סליחה, אני לא יכול. ✕', 'Sorry, I can’t. ✕'], image: ENGINE_IMG.cant },
       ],
     }),
     // WHICH ENGINE? — the start of each real question, both scenes.
