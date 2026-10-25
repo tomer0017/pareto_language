@@ -668,6 +668,13 @@ const ENGINE_IMG = {
   want: `${M04_IMG}want.jpg`, need: `${M04_IMG}need.jpg`, have: `${M04_IMG}have.jpg`, dontHave: `${M04_IMG}dont-have.jpg`,
   know: `${M04_IMG}know.jpg`, dontKnow: `${M04_IMG}dont-know.jpg`, can: `${M04_IMG}can.jpg`, cant: `${M04_IMG}cant.jpg`,
 } as const;
+/** Group 3 — the friend's SCENES (one story: the coffee, the way, the walk, the dinner), never stand-ins
+ *  for the engines. Question and answer are always DIFFERENT pictures. */
+const FRIEND_IMG = {
+  offerCoffee: `${M04_IMG}friend-offer-coffee.jpg`, wantCoffee: `${M04_IMG}friend-want-coffee.jpg`, knowCentre: `${M04_IMG}friend-know-centre.jpg`,
+  walkTwenty: `${M04_IMG}friend-walk-twenty.jpg`, iCanWalk: `${M04_IMG}friend-i-can-walk.jpg`, dinnerSeven: `${M04_IMG}friend-dinner-seven.jpg`,
+  sorryCant: `${M04_IMG}friend-sorry-cant.jpg`, noProblem: `${M04_IMG}friend-no-problem.jpg`,
+} as const;
 /** Group 2 — the hotel-desk SCENES (what is asked / shown at the desk), never stand-ins for the engines. */
 const DESK_IMG = {
   needAnything: `${M04_IMG}desk-need-anything.jpg`, haveKey: `${M04_IMG}desk-have-key.jpg`, wifiPassword: `${M04_IMG}desk-wifi-password.jpg`,
@@ -687,17 +694,17 @@ const T_MAP = { id: 'ask-map', image: DESK_IMG.haveMap, alt: 'Asking the recepti
 const T_HERE = { id: 'wifi-here', image: DESK_IMG.wifiHere, alt: 'The receptionist pointing at the wifi password on the desk', caption: cap('הנה הסיסמה', 'here’s the password') };
 /* How the other person reacts. */
 const R_SURE = { id: 'sure', image: DESK_IMG.ofCourse, alt: 'The receptionist pointing out the route on the map', caption: cap('בטח / כמובן', 'sure / of course') };
-const R_OK = { id: 'no-problem', emoji: '👌', caption: cap('אין בעיה', 'no problem'), scale: 1.6 };
+const R_OK = { id: 'no-problem', image: FRIEND_IMG.noProblem, alt: 'The friend reassuring her with open hands', caption: cap('אין בעיה', 'no problem') };
 /* The flips: the same symbol, ✓ or ✕. */
 const F_KNOW = { id: 'know-yes', image: ENGINE_IMG.know, alt: 'Tracing the route on a map, sure of the way', caption: cap('יודע ✓', 'I know ✓') };
 const F_DONT_KNOW = { id: 'know-no', image: ENGINE_IMG.dontKnow, alt: 'Puzzled over a map, a question mark', caption: cap('לא יודע ✕', 'I don’t know ✕') };
 const F_CAN = { id: 'can-yes', image: ENGINE_IMG.can, alt: 'Walking happily through town, ticked', caption: cap('יכול ✓', 'I can ✓') };
 const F_CANT = { id: 'can-no', image: ENGINE_IMG.cant, alt: 'Politely declining the dinner, crossed out', caption: cap('לא יכול ✕', 'I can’t ✕') };
 /* The friend's scene, in the symbols its picture cards use. */
-const S_COFFEE = { id: 'want-coffee', emoji: '☕', caption: cap('רוצה קפה', 'want a coffee'), scale: 1.6 };
-const S_TOWEL = { id: 'need-towel', emoji: '🛁', caption: cap('צריך מגבת', 'need a towel'), scale: 1.6 };
-const S_WALK = { id: 'walk', emoji: '🚶', caption: cap('ברגל · ~20 דק׳', 'on foot · ~20 min'), scale: 1.6 };
-const S_DINNER = { id: 'dinner', emoji: '🍽️', caption: cap('ארוחת ערב ב-7', 'dinner at 7'), scale: 1.6 };
+const S_COFFEE = { id: 'want-coffee', image: FRIEND_IMG.wantCoffee, alt: 'She happily takes the coffee', caption: cap('רוצה קפה', 'want a coffee') };
+const S_SORRY = { id: 'sorry-cant', image: FRIEND_IMG.sorryCant, alt: 'She politely declines the dinner invitation', caption: cap('לא יכולה לבוא', 'can’t come') };
+const S_WALK = { id: 'walk', image: FRIEND_IMG.walkTwenty, alt: 'The friend pointing at a 20-minute walk to the centre', caption: cap('ברגל · ~20 דק׳', 'on foot · ~20 min') };
+const S_DINNER = { id: 'dinner', image: FRIEND_IMG.dinnerSeven, alt: 'The friend inviting her to dinner, the clock at seven', caption: cap('ארוחת ערב ב-7', 'dinner at 7') };
 
 /* The locked conversation (EN · FR · ES · HE). */
 const D_NEED: L4 = ['Hi! Do you need anything?', 'Bonjour ! Vous avez besoin de quelque chose ?', '¡Hola! ¿Necesita algo?', 'שלום! אתה צריך משהו?'];
@@ -826,11 +833,11 @@ export function m04Steps(lang: MissionLang): BootcampStep[] {
       bigPictures: true,
       intro: ['אותם מנועים — מצב אחר. עם חבר תשמע צורה יומיומית; בדלפק — מנומסת. פשוט תכיר את שתיהן.', 'The same engines — another situation. With a friend you hear the everyday form; at a desk, the polite one. Just know both.'],
       words: [
-        { line: true, key: 'core.line.want-coffee', t: l3(D_COFFEE), meaning: ['רוצה קפה?', 'Do you want a coffee?'], emoji: '☕' },
-        { line: true, key: 'core.line.know-way', t: l3(D_KNOW), meaning: ['אתה יודע איך להגיע למרכז?', 'Do you know how to get to the centre?'], emoji: '🧭' },
-        { line: true, key: 'core.line.walk', t: l3(D_WALK), meaning: ['אתה יכול ללכת ברגל. זה בערך עשרים דקות. (⏱️ ~20)', 'You can walk. It’s about twenty minutes. (⏱️ ~20)'], emoji: '🚶' },
-        { line: true, key: 'core.line.dinner', t: l3(D_DINNER), meaning: ['אנחנו אוכלים ארוחת ערב בשבע (🕖). אתה יכול לבוא?', 'We’re having dinner at seven (🕖). Can you come?'], emoji: '🍽️' },
-        { line: true, key: 'core.line.no-problem', t: ['No problem.', 'Pas de problème.', 'No pasa nada.'], meaning: ['אין בעיה.', 'No problem.'], emoji: '👌' },
+        { line: true, key: 'core.line.want-coffee', t: l3(D_COFFEE), meaning: ['רוצה קפה?', 'Do you want a coffee?'], image: FRIEND_IMG.offerCoffee },
+        { line: true, key: 'core.line.know-way', t: l3(D_KNOW), meaning: ['אתה יודע איך להגיע למרכז?', 'Do you know how to get to the centre?'], image: FRIEND_IMG.knowCentre },
+        { line: true, key: 'core.line.walk', t: l3(D_WALK), meaning: ['אתה יכול ללכת ברגל. זה בערך עשרים דקות. (⏱️ ~20)', 'You can walk. It’s about twenty minutes. (⏱️ ~20)'], image: FRIEND_IMG.walkTwenty },
+        { line: true, key: 'core.line.dinner', t: l3(D_DINNER), meaning: ['אנחנו אוכלים ארוחת ערב בשבע (🕖). אתה יכול לבוא?', 'We’re having dinner at seven (🕖). Can you come?'], image: FRIEND_IMG.dinnerSeven },
+        { line: true, key: 'core.line.no-problem', t: ['No problem.', 'Pas de problème.', 'No pasa nada.'], meaning: ['אין בעיה.', 'No problem.'], image: FRIEND_IMG.noProblem },
       ],
     }),
     k.prime({
@@ -838,12 +845,12 @@ export function m04Steps(lang: MissionLang): BootcampStep[] {
       bigPictures: true,
       intro: ['רוצה · יודע / לא יודע · יכול / לא יכול. הקש כדי לשמוע.', 'Want · know / don’t know · can / can’t. Tap to hear.'],
       words: [
-        { line: true, key: 'core.line.i-want', t: l3(M_WANT), meaning: ['כן, אני רוצה קפה.', 'Yes, I want a coffee.'], image: ENGINE_IMG.want },
+        { line: true, key: 'core.line.i-want', t: l3(M_WANT), meaning: ['כן, אני רוצה קפה.', 'Yes, I want a coffee.'], image: FRIEND_IMG.wantCoffee },
         { line: true, key: 'core.line.want-water', t: ['I want water.', 'Je veux de l’eau.', 'Quiero agua.'], meaning: ['אני רוצה מים. (אותו "רוצה", דבר אחר)', 'I want water. (the same "want", another thing)'], emoji: '💧' },
         { line: true, key: 'core.line.i-know', t: l3(M_KNOW), meaning: ['כן, אני יודע. ✓', 'Yes, I know. ✓'], image: ENGINE_IMG.know },
         { line: true, key: 'core.line.i-dont-know', t: l3(M_DONT_KNOW), meaning: ['אני לא יודע. ✕', 'I don’t know. ✕'], image: ENGINE_IMG.dontKnow },
-        { line: true, key: 'core.line.i-can', t: l3(M_CAN), meaning: ['אני יכול ללכת ברגל. ✓', 'I can walk. ✓'], image: ENGINE_IMG.can },
-        { line: true, key: 'core.line.i-cant', t: l3(M_CANT), meaning: ['סליחה, אני לא יכול. ✕', 'Sorry, I can’t. ✕'], image: ENGINE_IMG.cant },
+        { line: true, key: 'core.line.i-can', t: l3(M_CAN), meaning: ['אני יכול ללכת ברגל. ✓', 'I can walk. ✓'], image: FRIEND_IMG.iCanWalk },
+        { line: true, key: 'core.line.i-cant', t: l3(M_CANT), meaning: ['סליחה, אני לא יכול. ✕', 'Sorry, I can’t. ✕'], image: FRIEND_IMG.sorryCant },
       ],
     }),
     // WHICH ENGINE? — the start of each real question, both scenes.
@@ -887,11 +894,9 @@ export function m04Steps(lang: MissionLang): BootcampStep[] {
       label: ['איך מגיבים לך? הקש על מה ששמעת', 'How do they react? Tap what you hear'],
       tiles: [R_SURE, T_HERE, R_OK],
       rounds: [
-        { audio: ['Of course.', 'Bien sûr.', 'Claro.', 'בטח.'], correct: 'sure', show: ['sure', 'wifi-here'] },
-        { audio: ["It's here.", 'Il est ici.', 'Está aquí.', 'היא כאן.'], correct: 'wifi-here', show: ['wifi-here', 'sure'] },
-        // "No problem." has no picture until the friend's scene gets its own (next pass): on its own,
-        // never the emoji odd-one-out beside two pictures
-        { audio: ['No problem.', 'Pas de problème.', 'No pasa nada.', 'אין בעיה.'], correct: 'no-problem', show: ['no-problem'] },
+        { audio: ['Of course.', 'Bien sûr.', 'Claro.', 'בטח.'], correct: 'sure' },
+        { audio: ["It's here.", 'Il est ici.', 'Está aquí.', 'היא כאן.'], correct: 'wifi-here' },
+        { audio: ['No problem.', 'Pas de problème.', 'No pasa nada.', 'אין בעיה.'], correct: 'no-problem' },
       ],
     }),
     // BUILD — two frames: the engine + the object, and the flip.
@@ -945,10 +950,10 @@ export function m04Steps(lang: MissionLang): BootcampStep[] {
     k.practice({
       kind: 'visualMatch',
       label: ['מה קרה? הקש על מה ששמעת', 'What happened? Tap what you hear'],
-      tiles: [T_KEY, T_WIFI, S_COFFEE, S_TOWEL, F_KNOW, F_DONT_KNOW, S_WALK, S_DINNER, F_CAN, F_CANT],
+      tiles: [T_KEY, T_WIFI, S_COFFEE, S_SORRY, F_KNOW, F_DONT_KNOW, S_WALK, S_DINNER, F_CAN, F_CANT],
       rounds: [
         { audio: M_HAVE, correct: 'have-key', itemId: 'phrase.core.i-have', show: ['have-key', 'no-wifi'] },
-        { audio: M_WANT, correct: 'want-coffee', itemId: 'phrase.core.i-want', show: ['want-coffee', 'need-towel'] },
+        { audio: M_WANT, correct: 'want-coffee', itemId: 'phrase.core.i-want', show: ['want-coffee', 'sorry-cant'] },
         { audio: M_DONT_KNOW, correct: 'know-no', itemId: 'phrase.core.i-dont-know', show: ['know-no', 'know-yes'] },
         { audio: D_WALK, correct: 'walk', show: ['walk', 'dinner'] },
         { audio: D_DINNER, correct: 'dinner', show: ['dinner', 'walk'] },

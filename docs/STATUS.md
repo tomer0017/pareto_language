@@ -22,6 +22,15 @@ loop (typecheck → lint → tests → build → smoke) green at every milestone
 
 ## What's done
 
+### Mission 04 — Group 3 pictures: the friend's scene (2026-10-25)
+Eight approved friend scenes in `apps/web/public/images/mission04/friend-*.jpg` (offer-coffee,
+want-coffee, know-centre, walk-twenty, i-can-walk, dinner-seven, sorry-cant, no-problem; 556 KB; one
+set for EN / ES / FR) on the friend's picture cards (each line its own scene; "Yes, I want a coffee",
+"I can walk" and "Sorry, I can't" now show their scene instead of the engine picture), the reactions
+board (fully visual again — no one-tile round) and the final gate (coffee accepted vs the refusal; the
+walk vs the dinner). Question ≠ answer pictures are pinned by tests. No emoji tile is left on any
+Mission 04 board. Groups 1 / 2 files byte-identical; dialogue, 41 interactions, coverage unchanged.
+
 ### Mission 04 — Group 2 pictures: the hotel-desk scenes (2026-10-25)
 Eight approved desk scenes in `apps/web/public/images/mission04/desk-*.jpg` (need-anything, have-key,
 wifi-password, wifi-here, have-map, map-yes, show-me, of-course; 380 KB; one set for EN / ES / FR) on

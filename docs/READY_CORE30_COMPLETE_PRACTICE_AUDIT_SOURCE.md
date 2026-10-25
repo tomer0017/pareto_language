@@ -3724,11 +3724,11 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `core.line.want-coffee` — EN "Do you want a coffee?" · FR "Tu veux un café ?" · ES "¿Quieres un café?" — meaning "רוצה קפה?" / "Do you want a coffee?" — icon ☕ — new
-2. `core.line.know-way` — EN "Do you know how to get to the centre?" · FR "Tu sais comment aller au centre ?" · ES "¿Sabes cómo ir al centro?" — meaning "אתה יודע איך להגיע למרכז?" / "Do you know how to get to the centre?" — icon 🧭 — new
-3. `core.line.walk` — EN "You can walk. It's about twenty minutes." · FR "Tu peux y aller à pied. C’est à environ vingt minutes." · ES "Puedes ir a pie. Son unos veinte minutos." — meaning "אתה יכול ללכת ברגל. זה בערך עשרים דקות. (⏱️ ~20)" / "You can walk. It’s about twenty minutes. (⏱️ ~20)" — icon 🚶 — new
-4. `core.line.dinner` — EN "We're having dinner at seven. Can you come?" · FR "On dîne à sept heures. Tu peux venir ?" · ES "Cenamos a las siete. ¿Puedes venir?" — meaning "אנחנו אוכלים ארוחת ערב בשבע (🕖). אתה יכול לבוא?" / "We’re having dinner at seven (🕖). Can you come?" — icon 🍽️ — new
-5. `core.line.no-problem` — EN "No problem." · FR "Pas de problème." · ES "No pasa nada." — meaning "אין בעיה." / "No problem." — icon 👌 — new
+1. `core.line.want-coffee` — EN "Do you want a coffee?" · FR "Tu veux un café ?" · ES "¿Quieres un café?" — meaning "רוצה קפה?" / "Do you want a coffee?" — icon none — new
+2. `core.line.know-way` — EN "Do you know how to get to the centre?" · FR "Tu sais comment aller au centre ?" · ES "¿Sabes cómo ir al centro?" — meaning "אתה יודע איך להגיע למרכז?" / "Do you know how to get to the centre?" — icon none — new
+3. `core.line.walk` — EN "You can walk. It's about twenty minutes." · FR "Tu peux y aller à pied. C’est à environ vingt minutes." · ES "Puedes ir a pie. Son unos veinte minutos." — meaning "אתה יכול ללכת ברגל. זה בערך עשרים דקות. (⏱️ ~20)" / "You can walk. It’s about twenty minutes. (⏱️ ~20)" — icon none — new
+4. `core.line.dinner` — EN "We're having dinner at seven. Can you come?" · FR "On dîne à sept heures. Tu peux venir ?" · ES "Cenamos a las siete. ¿Puedes venir?" — meaning "אנחנו אוכלים ארוחת ערב בשבע (🕖). אתה יכול לבוא?" / "We’re having dinner at seven (🕖). Can you come?" — icon none — new
+5. `core.line.no-problem` — EN "No problem." · FR "Pas de problème." · ES "No pasa nada." — meaning "אין בעיה." / "No problem." — icon none — new
 
 No build-sentence card.
 
@@ -4240,10 +4240,11 @@ No meaning quiz in this mission.
 - Prompt displayed: "How do they react? Tap what you hear" / "איך מגיבים לך? הקש על מה ששמעת"
 - Audio played: EN "Of course." · FR "Bien sûr." · ES "Claro."
 - Meaning of the audio (HE): "בטח."
-- Buttons show: only this round's 2 tiles (the meaning and its contrast), same in every language; the sentence and its translation appear only AFTER the tap
+- Buttons show: a 3×3 board of 3 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
 - Choices:
   1. "[picture desk-of-course.jpg] “sure / of course” / “בטח / כמובן”" — no sentence id — ✅ accepted
   2. "[picture desk-wifi-here.jpg] “here’s the password” / “הנה הסיסמה”" — no sentence id — ❌ wrong
+  3. "[picture friend-no-problem.jpg] “no problem” / “אין בעיה”" — no sentence id — ❌ wrong
 - Tests: (no sentence id — not recorded)
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
@@ -4252,10 +4253,11 @@ No meaning quiz in this mission.
 - Prompt displayed: "How do they react? Tap what you hear" / "איך מגיבים לך? הקש על מה ששמעת"
 - Audio played: EN "It's here." · FR "Il est ici." · ES "Está aquí."
 - Meaning of the audio (HE): "היא כאן."
-- Buttons show: only this round's 2 tiles (the meaning and its contrast), same in every language; the sentence and its translation appear only AFTER the tap
+- Buttons show: a 3×3 board of 3 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
 - Choices:
   1. "[picture desk-of-course.jpg] “sure / of course” / “בטח / כמובן”" — no sentence id — ❌ wrong
   2. "[picture desk-wifi-here.jpg] “here’s the password” / “הנה הסיסמה”" — no sentence id — ✅ accepted
+  3. "[picture friend-no-problem.jpg] “no problem” / “אין בעיה”" — no sentence id — ❌ wrong
 - Tests: (no sentence id — not recorded)
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
@@ -4264,9 +4266,11 @@ No meaning quiz in this mission.
 - Prompt displayed: "How do they react? Tap what you hear" / "איך מגיבים לך? הקש על מה ששמעת"
 - Audio played: EN "No problem." · FR "Pas de problème." · ES "No pasa nada."
 - Meaning of the audio (HE): "אין בעיה."
-- Buttons show: ONE tile — a teaching round: hear it, see what it means, tap it (cannot be missed); then the line and its translation
+- Buttons show: a 3×3 board of 3 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. "👌 “no problem” / “אין בעיה”" — no sentence id — ✅ accepted
+  1. "[picture desk-of-course.jpg] “sure / of course” / “בטח / כמובן”" — no sentence id — ❌ wrong
+  2. "[picture desk-wifi-here.jpg] “here’s the password” / “הנה הסיסמה”" — no sentence id — ❌ wrong
+  3. "[picture friend-no-problem.jpg] “no problem” / “אין בעיה”" — no sentence id — ✅ accepted
 - Tests: (no sentence id — not recorded)
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
@@ -4436,8 +4440,8 @@ No meaning quiz in this mission.
 - Meaning of the audio (HE): "כן, אני רוצה קפה."
 - Buttons show: only this round's 2 tiles (the meaning and its contrast), same in every language; the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. "☕ “want a coffee” / “רוצה קפה”" — `phrase.core.i-want` — ✅ accepted
-  2. "🛁 “need a towel” / “צריך מגבת”" — no sentence id — ❌ wrong
+  1. "[picture friend-want-coffee.jpg] “want a coffee” / “רוצה קפה”" — `phrase.core.i-want` — ✅ accepted
+  2. "[picture friend-sorry-cant.jpg] “can’t come” / “לא יכולה לבוא”" — no sentence id — ❌ wrong
 - Tests: phrase.core.i-want
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
@@ -4460,8 +4464,8 @@ No meaning quiz in this mission.
 - Meaning of the audio (HE): "אתה יכול ללכת ברגל. זה בערך עשרים דקות."
 - Buttons show: only this round's 2 tiles (the meaning and its contrast), same in every language; the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. "🚶 “on foot · ~20 min” / “ברגל · ~20 דק׳”" — no sentence id — ✅ accepted
-  2. "🍽️ “dinner at 7” / “ארוחת ערב ב-7”" — no sentence id — ❌ wrong
+  1. "[picture friend-walk-twenty.jpg] “on foot · ~20 min” / “ברגל · ~20 דק׳”" — no sentence id — ✅ accepted
+  2. "[picture friend-dinner-seven.jpg] “dinner at 7” / “ארוחת ערב ב-7”" — no sentence id — ❌ wrong
 - Tests: (no sentence id — not recorded)
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
@@ -4472,8 +4476,8 @@ No meaning quiz in this mission.
 - Meaning of the audio (HE): "אנחנו אוכלים ארוחת ערב בשבע. אתה יכול לבוא?"
 - Buttons show: only this round's 2 tiles (the meaning and its contrast), same in every language; the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. "🚶 “on foot · ~20 min” / “ברגל · ~20 דק׳”" — no sentence id — ❌ wrong
-  2. "🍽️ “dinner at 7” / “ארוחת ערב ב-7”" — no sentence id — ✅ accepted
+  1. "[picture friend-walk-twenty.jpg] “on foot · ~20 min” / “ברגל · ~20 דק׳”" — no sentence id — ❌ wrong
+  2. "[picture friend-dinner-seven.jpg] “dinner at 7” / “ארוחת ערב ב-7”" — no sentence id — ✅ accepted
 - Tests: (no sentence id — not recorded)
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
@@ -4844,7 +4848,7 @@ Learner sentences taught beside the dialogue (not a line in any scene):
 - Vocabulary pre-items: 31
 - Swap variants (extra accepted lines): 0
 - Sentences in review: 0
-- Total interactive questions: 51 (answer choices: 121)
+- Total interactive questions: 51 (answer choices: 125)
 - Approximate total learner interactions: 52 (questions + key sentences + review cards + word-intro screen)
 
 ### AUTO-FLAG — requires human review (2)
@@ -29788,6 +29792,7 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Audio: Of course. — (בטח.)
 - A: [picture desk-of-course.jpg] “sure / of course” / “בטח / כמובן” ✅
 - B: [picture desk-wifi-here.jpg] “here’s the password” / “הנה הסיסמה”
+- C: [picture friend-no-problem.jpg] “no problem” / “אין בעיה”
 - Correct: [picture desk-of-course.jpg] “sure / of course” / “בטח / כמובן”
 - Tests: (no sentence id — not recorded)
 
@@ -29796,14 +29801,17 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Audio: It's here. — (היא כאן.)
 - A: [picture desk-of-course.jpg] “sure / of course” / “בטח / כמובן”
 - B: [picture desk-wifi-here.jpg] “here’s the password” / “הנה הסיסמה” ✅
+- C: [picture friend-no-problem.jpg] “no problem” / “אין בעיה”
 - Correct: [picture desk-wifi-here.jpg] “here’s the password” / “הנה הסיסמה”
 - Tests: (no sentence id — not recorded)
 
 **M04-Q23** — visual-match
 - Prompt: "How do they react? Tap what you hear" / "איך מגיבים לך? הקש על מה ששמעת"
 - Audio: No problem. — (אין בעיה.)
-- A: 👌 “no problem” / “אין בעיה” ✅
-- Correct: 👌 “no problem” / “אין בעיה”
+- A: [picture desk-of-course.jpg] “sure / of course” / “בטח / כמובן”
+- B: [picture desk-wifi-here.jpg] “here’s the password” / “הנה הסיסמה”
+- C: [picture friend-no-problem.jpg] “no problem” / “אין בעיה” ✅
+- Correct: [picture friend-no-problem.jpg] “no problem” / “אין בעיה”
 - Tests: (no sentence id — not recorded)
 
 **M04-Q24** — sentence-builder
@@ -29987,9 +29995,9 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 **M04-Q47** — visual-match
 - Prompt: "What happened? Tap what you hear" / "מה קרה? הקש על מה ששמעת"
 - Audio: Yes, I want a coffee. — (כן, אני רוצה קפה.)
-- A: ☕ “want a coffee” / “רוצה קפה” ✅
-- B: 🛁 “need a towel” / “צריך מגבת”
-- Correct: ☕ “want a coffee” / “רוצה קפה”
+- A: [picture friend-want-coffee.jpg] “want a coffee” / “רוצה קפה” ✅
+- B: [picture friend-sorry-cant.jpg] “can’t come” / “לא יכולה לבוא”
+- Correct: [picture friend-want-coffee.jpg] “want a coffee” / “רוצה קפה”
 - Tests: phrase.core.i-want
 
 **M04-Q48** — visual-match
@@ -30003,17 +30011,17 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 **M04-Q49** — visual-match
 - Prompt: "What happened? Tap what you hear" / "מה קרה? הקש על מה ששמעת"
 - Audio: You can walk. It's about twenty minutes. — (אתה יכול ללכת ברגל. זה בערך עשרים דקות.)
-- A: 🚶 “on foot · ~20 min” / “ברגל · ~20 דק׳” ✅
-- B: 🍽️ “dinner at 7” / “ארוחת ערב ב-7”
-- Correct: 🚶 “on foot · ~20 min” / “ברגל · ~20 דק׳”
+- A: [picture friend-walk-twenty.jpg] “on foot · ~20 min” / “ברגל · ~20 דק׳” ✅
+- B: [picture friend-dinner-seven.jpg] “dinner at 7” / “ארוחת ערב ב-7”
+- Correct: [picture friend-walk-twenty.jpg] “on foot · ~20 min” / “ברגל · ~20 דק׳”
 - Tests: (no sentence id — not recorded)
 
 **M04-Q50** — visual-match
 - Prompt: "What happened? Tap what you hear" / "מה קרה? הקש על מה ששמעת"
 - Audio: We're having dinner at seven. Can you come? — (אנחנו אוכלים ארוחת ערב בשבע. אתה יכול לבוא?)
-- A: 🚶 “on foot · ~20 min” / “ברגל · ~20 דק׳”
-- B: 🍽️ “dinner at 7” / “ארוחת ערב ב-7” ✅
-- Correct: 🍽️ “dinner at 7” / “ארוחת ערב ב-7”
+- A: [picture friend-walk-twenty.jpg] “on foot · ~20 min” / “ברגל · ~20 דק׳”
+- B: [picture friend-dinner-seven.jpg] “dinner at 7” / “ארוחת ערב ב-7” ✅
+- Correct: [picture friend-dinner-seven.jpg] “dinner at 7” / “ארוחת ערב ב-7”
 - Tests: (no sentence id — not recorded)
 
 **M04-Q51** — visual-match
@@ -35319,7 +35327,7 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Dialogue choice screens: 271
 - Cold opens: 11
 - Total interactive questions: 807
-- Total answer choices: 2156
+- Total answer choices: 2160
 - Wrong-answer branches: 94
 - Recovery opportunities: 56
 - Learner sentences with 0 active retrieval opportunities: 1
