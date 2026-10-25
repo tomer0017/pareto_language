@@ -130,6 +130,9 @@ export interface MatchTile {
   image?: string;       // public path under the deploy base, e.g. "images/mission02/one-box.jpg"
   alt?: string;         // what the picture shows — the tile's accessible name when it has no label
   scale?: number;       // emoji size multiplier — so a large cup is visibly larger than a medium one
+  /** A few app-language words under the picture ("I have it ✓") — what the tile MEANS, where the
+   *  picture alone would be a guess. Same tile in every learning language. */
+  caption?: LocalizedText;
 }
 
 /** Customize — hear an order, then set each add-in ✓ or ✕ ("Milk, no sugar." → milk ✓ · sugar ✕).

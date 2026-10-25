@@ -94,9 +94,9 @@ describe('scope: only Missions 25–30 changed', () => {
   const slice = (lang: Lang, a: number, b: number): BootcampDayContent[] => BOOTCAMP_PLAN.slice(a, b).map((m) => beforeCueFreeze(MISSIONS_BY_LANG[lang]![m.day]!, lang));
   const print = (f: (lang: Lang) => unknown): Record<Lang, string> => ({ en: fnv(JSON.stringify(f('en'))), fr: fnv(JSON.stringify(f('fr'))), es: fnv(JSON.stringify(f('es'))) });
 
-  it('Missions 04–24 are byte-for-byte unchanged, in every language (Missions 01, 02 and 03 have their own passes — mission01.test.ts, mission02.test.ts, mission03.test.ts)', () => {
-    expect(print((l) => slice(l, 3, 24))).toEqual({ en: 'e5ce8ed3', fr: 'fb02f2b9', es: 'e51b009c' });
-    expect(print((l) => slice(l, 3, 18))).toEqual({ en: '1e76ec30', fr: '8feaabe9', es: 'be1db6ca' });
+  it('Missions 05–24 are byte-for-byte unchanged, in every language (Missions 01–04 have their own passes — mission01.test.ts … mission04.test.ts)', () => {
+    expect(print((l) => slice(l, 4, 24))).toEqual({ en: 'e236ba40', fr: '74fbc8c0', es: 'c5e714b4' });
+    expect(print((l) => slice(l, 4, 18))).toEqual({ en: '482731b9', fr: 'ebf326ac', es: 'a081ba22' });
     expect(print((l) => slice(l, 18, 24))).toEqual({ en: 'b9c88064', fr: '74a92f15', es: 'cd856495' });
   });
   it('the conversations of Missions 25–27 are byte-for-byte unchanged', () => {

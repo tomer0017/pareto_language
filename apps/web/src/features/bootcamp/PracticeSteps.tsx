@@ -208,6 +208,7 @@ export function VisualMatchStep({ step, onDone }: { step: StepOf<'visualMatch'>;
               {tile.image && <img className="ptile-img" src={publicAsset(tile.image)} alt="" draggable={false} decoding="async" />}
               {tile.emoji && <span className="ptile-emoji" aria-hidden style={tile.scale ? { fontSize: `${1.7 * tile.scale}rem` } : undefined}>{tile.emoji}</span>}
               {tile.label && <span dir="ltr" className={tile.label.includes('\n') ? 'ptile-lines' : undefined}>{tile.label}</span>}
+              {tile.caption && <span className="ptile-cap">{L(tile.caption)}</span>}
             </button>
           ))}
         </div>

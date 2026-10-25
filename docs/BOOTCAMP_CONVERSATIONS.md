@@ -222,16 +222,10 @@ _Reply-training drill:_ “Sure! Medium or large?” · “Milk and sugar?” ·
 - **Do you know how to get to the centre?** · אתה יודע איך להגיע למרכז?
 - **Can you come?** · אתה יכול לבוא?
 - **You can walk.** · אתה יכול ללכת ברגל.
-
-_Reply-training drill:_ “Do you need anything?” · “Do you have your key?” · “Do you know how to get to the centre?” · “Can you come?”
+- **And the wifi password?** · והסיסמה של הוויי-פיי?
 
 ### Recovery tools reused
 `Can you show me?` · `Please speak slowly.`
-
-### Cold open (ambush)
-- 🧑 (fast) “Before you go out do you have your key with you or is it still in the room?” · לפני שאתה יוצא — המפתח עליך או שהוא עדיין בחדר?
-  - ✅ best move: **Do you have your key?** · יש לך את המפתח?
-  - ✗ distractor: Can you come?
 
 ### Dialogue: `hostel-desk` — happy path
 - **🧑 Them:** “Hi! Do you need anything?” · שלום! אתה צריך משהו?

@@ -1,4 +1,5 @@
 import { item, npc, tool, you, type MissionSpec } from '../author.js';
+import { m04Steps } from '../practiceV1.js';
 
 /**
  * Everyday Core — want / need / have / can / know. The sentence machinery of the whole course:
@@ -70,6 +71,9 @@ export const EVERYDAY_CORE: MissionSpec = {
     },
   ],
   extra: [KNOW, CAN_YOU_HELP],
+  // The Mission 04 pass: a hand-built journey (practiceV1.ts — m04Steps) — teach before test.
+  steps: m04Steps,
+  numbered: true,
   hear: [
     item('reply.core.do-you-want', 'Do you want a coffee?', 'Tu veux un café ?', '¿Quieres un café?', 'רוצה קפה?'),
     item('reply.core.need-anything', 'Do you need anything?', 'Vous avez besoin de quelque chose ?', '¿Necesita algo?', 'אתה צריך משהו?'),
@@ -77,76 +81,6 @@ export const EVERYDAY_CORE: MissionSpec = {
     item('reply.core.do-you-know', 'Do you know how to get to the centre?', 'Tu sais comment aller au centre ?', '¿Sabes cómo ir al centro?', 'אתה יודע איך להגיע למרכז?'),
     item('reply.core.can-you-come', 'Can you come?', 'Tu peux venir ?', '¿Puedes venir?', 'אתה יכול לבוא?'),
     item('reply.core.you-can-walk', 'You can walk.', 'Tu peux y aller à pied.', 'Puedes ir a pie.', 'אתה יכול ללכת ברגל.'),
+    item('reply.core.wifi', 'And the wifi password?', 'Et le mot de passe du wifi ?', '¿Y la contraseña del wifi?', 'והסיסמה של הוויי-פיי?'),
   ],
-  teach: {
-    prime: {
-      intro: ['חמשת הפעלים שמניעים כל שיחה. אחריהם בא רק מה שאתה רוצה לומר.', 'The five verbs that drive every conversation. After them comes only what you want to say.'],
-      words: [
-        { key: 'core.want', t: ['want', 'je veux', 'quiero'], meaning: ['רוצה', 'I want'], emoji: '🙋' },
-        { key: 'core.need', t: ['need', 'j’ai besoin de', 'necesito'], meaning: ['צריך', 'I need'], emoji: '❗' },
-        { key: 'core.have', t: ['have', 'j’ai', 'tengo'], meaning: ['יש לי', 'I have'], emoji: '🤲' },
-        { key: 'core.can', t: ['can', 'je peux', 'puedo'], meaning: ['יכול', 'I can'], emoji: '💪' },
-        { key: 'core.know', t: ['know', 'je sais', 'sé'], meaning: ['יודע', 'I know'], emoji: '💡' },
-      ],
-      build: 'phrase.core.i-need',
-    },
-    tools: [
-      { id: 'phrase.core.i-want', label: ['רוצה', 'Want'] },
-      { id: 'phrase.core.i-need', label: ['צריך', 'Need'] },
-      { id: 'phrase.core.i-dont-have', label: ['אין לי', "Don't have"] },
-      { id: 'phrase.core.i-cant', label: ['לא יכול', "Can't"] },
-      { id: 'phrase.core.do-you-have', label: ['לשאול אם יש', 'Ask if they have it'] },
-      { id: 'phrase.core.can-you-help', label: ['לבקש עזרה', 'Ask for help'] },
-    ],
-    said: 'phrase.core.i-need',
-    replies: ['reply.core.need-anything', 'reply.core.have-your-key', 'reply.core.do-you-know', 'reply.core.can-you-come'],
-    repliesReceipt: ['אתה מזהה את ארבע השאלות הכי נפוצות: רוצה? צריך? יש לך? יכול?', 'You recognize the four most common questions: want? need? have? can?'],
-    // Practice V1: the frames are drilled as ENGINES (Swap It), then as reactions (Quick Reply) —
-    // in place of a second hear-and-translate quiz.
-    practice: [
-      {
-        kind: 'swap',
-        rounds: [
-          { frame: ['I need ___.', 'J’ai besoin ___.', 'Necesito ___.'], itemId: 'phrase.core.i-need', cue: { emoji: '💧', text: ['אתה צמא — צריך מים', 'You are thirsty — you need water'] },
-            options: [[['water', 'd’eau', 'agua'], 'אני צריך מים.', true], [['a towel', 'd’une serviette', 'una toalla'], 'אני צריך מגבת.', false], [['my key', 'de ma clé', 'mi llave'], 'אני צריך את המפתח שלי.', false]] },
-          { frame: ['I need ___.', 'J’ai besoin ___.', 'Necesito ___.'], itemId: 'phrase.core.i-need', cue: { emoji: '🆘', text: ['אתה צריך עזרה', 'You need help'] },
-            options: [[['help', 'd’aide', 'ayuda'], 'אני צריך עזרה.', true], [['a coffee', 'd’un café', 'un café'], 'אני צריך קפה.', false], [['a map', 'd’une carte', 'un mapa'], 'אני צריך מפה.', false]] },
-          { frame: ['I have ___.', 'J’ai ___.', 'Tengo ___.'], itemId: 'phrase.core.i-have', cue: { emoji: '📱', text: ['הטלפון אצלך', 'Your phone is with you'] },
-            options: [[['my phone', 'mon téléphone', 'mi teléfono'], 'יש לי את הטלפון שלי.', true], [['a map', 'une carte', 'un mapa'], 'יש לי מפה.', false], [['my key', 'ma clé', 'mi llave'], 'יש לי את המפתח שלי.', false]] },
-          { frame: ["I don't have ___.", 'Je n’ai pas ___.', 'No tengo ___.'], itemId: 'phrase.core.i-dont-have', cue: { emoji: '🗺️', text: ['אין לך מפה', 'You have no map'] },
-            options: [[['a map', 'de carte', 'mapa'], 'אין לי מפה.', true], [['my key', 'ma clé', 'mi llave'], 'אין לי את המפתח שלי.', false], [['my phone', 'mon téléphone', 'mi teléfono'], 'אין לי את הטלפון שלי.', false]] },
-          { frame: ['I want ___.', 'Je veux ___.', 'Quiero ___.'], itemId: 'phrase.core.i-want', cue: { emoji: '☕', text: ['אתה רוצה קפה', 'You want a coffee'] },
-            options: [[['a coffee', 'un café', 'un café'], 'אני רוצה קפה.', true], [['water', 'de l’eau', 'agua'], 'אני רוצה מים.', false], [['a towel', 'une serviette', 'una toalla'], 'אני רוצה מגבת.', false]] },
-          { frame: ['I can ___.', 'Je peux ___.', 'Puedo ___.'], itemId: 'phrase.core.i-can', cue: { emoji: '🤝', text: ['אתה יכול לעזור', 'You can help'] },
-            options: [[['help', 'aider', 'ayudar'], 'אני יכול לעזור.', true], [['walk', 'y aller à pied', 'ir a pie'], 'אני יכול ללכת ברגל.', false], [['come', 'venir', 'venir'], 'אני יכול לבוא.', false]] },
-          { frame: ["I can't ___.", 'Je ne peux pas ___.', 'No puedo ___.'], itemId: 'phrase.core.i-cant', cue: { emoji: '🚫', text: ['אתה לא יכול לבוא', 'You cannot come'] },
-            options: [[['come', 'venir', 'venir'], 'אני לא יכול לבוא.', true], [['walk', 'y aller à pied', 'ir a pie'], 'אני לא יכול ללכת ברגל.', false], [['help', 'aider', 'ayudar'], 'אני לא יכול לעזור.', false]] },
-        ],
-      },
-      {
-        kind: 'quickReply',
-        rounds: [
-          { prompt: 'reply.core.need-anything', options: [['phrase.core.i-need', true], ['phrase.core.i-know', false], ['phrase.core.i-cant', false]] },
-          { prompt: 'reply.core.have-your-key', options: [['phrase.core.i-have', true], ['phrase.core.i-dont-know', false], ['phrase.core.i-want', false]] },
-          { prompt: 'reply.core.do-you-know', options: [['phrase.core.i-dont-know', true], ['phrase.core.i-know', true], ['phrase.core.i-have', false]] },
-          { prompt: 'reply.core.can-you-come', options: [['phrase.core.i-cant', true], ['phrase.core.i-need', false], ['phrase.core.i-have', false]] },
-          { situation: ['התיק כבד מדי ואתה צריך יד.', 'Your bag is too heavy and you need a hand.'],
-            options: [['phrase.core.can-you-help', true], ['phrase.core.i-can', false], ['phrase.core.i-know', false]] },
-        ],
-      },
-    ],
-    review: [
-      'phrase.core.i-want', 'phrase.core.i-need', 'phrase.core.i-have', 'phrase.core.i-dont-have', 'phrase.core.i-dont-know',
-      'phrase.core.i-can', 'phrase.core.i-cant', 'phrase.core.do-you-have', 'phrase.core.can-you-help',
-      'reply.core.need-anything', 'reply.core.have-your-key', 'reply.core.do-you-know', 'reply.core.can-you-come',
-      'phrase.recovery.show-me',
-    ],
-    ambush: {
-      mode: 'speed',
-      npc: ['Before you go out do you have your key with you or is it still in the room?', 'Avant de sortir, vous avez votre clé sur vous ou elle est encore dans la chambre ?', 'Antes de salir, ¿tiene su llave encima o sigue en la habitación?', 'לפני שאתה יוצא — המפתח עליך או שהוא עדיין בחדר?'],
-      correct: 'reply.core.have-your-key',
-      wrong: 'reply.core.can-you-come',
-      receipt: ['משפט ארוך ומהיר — ותפסת את השאלה שבפנים: יש לך את המפתח?', 'A long, fast sentence — and you caught the question inside it: do you have your key?'],
-    },
-  },
 };

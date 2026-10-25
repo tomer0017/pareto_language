@@ -3616,7 +3616,7 @@ Every learner sentence of this mission is a line in a scene.
 - Phase: 1 — Foundations / יסודות 🛟
 - Source runtime file(s): `apps/web/src/features/bootcamp/core/everydayCore.ts` — one multilingual spec, built per language by `apps/web/src/features/bootcamp/author.ts`
 - Video: found by convention, never written into mission content — EN `videos/en/en_4.mp4` · FR `videos/fr/fr_4.mp4` · ES `videos/es/es_4.mp4`. Played only where that file exists (inventory: `docs/CORE30_FINAL_VIDEO_ACTION_MAP.md`).
-- Video steps inside the Practice flow: no
+- Video steps inside the Practice flow: yes (see flow)
 
 ## Learning goal / intro screen
 
@@ -3645,42 +3645,105 @@ Intro screen (first Practice step; identical in the English, French and Spanish 
 ## Current Practice flow
 
 1. `talk` — intro screen — "Mission 4: Everyday Core: Want / Need / Have / Can"
-2. `prime` — before-we-speak (word intro) — 5 words → builds `phrase.core.i-need`
-3. `tool` — key sentence (listen → reveal → say aloud) — `phrase.core.i-want` “Yes, I want a coffee.” · label "Want" / "רוצה" (1/6)
-4. `tool` — key sentence (listen → reveal → say aloud) — `phrase.core.i-need` “I need a towel.” · label "Need" / "צריך" (2/6)
-5. `tool` — key sentence (listen → reveal → say aloud) — `phrase.core.i-dont-have` “I don't have it.” · label "Don't have" / "אין לי" (3/6)
-6. `tool` — key sentence (listen → reveal → say aloud) — `phrase.core.i-cant` “Sorry, I can't.” · label "Can't" / "לא יכול" (4/6)
-7. `tool` — key sentence (listen → reveal → say aloud) — `phrase.core.do-you-have` “Do you have a map?” · label "Ask if they have it" / "לשאול אם יש" (5/6)
-8. `tool` — key sentence (listen → reveal → say aloud) — `phrase.core.can-you-help` “Can you help me?” · label "Ask for help" / "לבקש עזרה" (6/6)
-9. `replies` — expected replies (listening drill) — after `phrase.core.i-need`: 4 replies
-10. `receipt` — receipt (proof card) — "You recognize the four most common questions: want? need? have? can?" / "אתה מזהה את ארבע השאלות הכי נפוצות: רוצה? צריך? יש לך? יכול?"
-11. `swap` — swap it (one frame, several endings) — 7 round(s)
-12. `quickReply` — quick reply (hear → pick your response) — 5 round(s)
-13. `dialogue` — dialogue (choose your line) — scene `hostel-desk`
-14. `receipt` — receipt (proof card) — "You said what you need, what you have and what you don’t — and asked for help." / "אמרת מה אתה צריך, מה יש לך ומה אין — וביקשת עזרה."
-15. `dialogue` — dialogue (choose your line) — scene `coffee-with-a-friend`
-16. `receipt` — receipt (proof card) — "You said what you want, what you know and what you can do — in a chat with a friend." / "אמרת מה אתה רוצה, מה אתה יודע ומה אתה יכול — בשיחה עם חבר."
-17. `swipe` — sentence review — 14 sentences
-18. `ambush` — cold open (fast line) — mode speed · correct `reply.core.have-your-key`, wrong `reply.core.can-you-come`
-19. `receipt` — receipt (proof card) — "A long, fast sentence — and you caught the question inside it: do you have your key?" / "משפט ארוך ומהיר — ותפסת את השאלה שבפנים: יש לך את המפתח?"
-20. `summary` — victory screen
+2. `prime` — before-we-speak (word intro) — 8 words → builds `phrase.core.i-need`
+3. `prime` — before-we-speak (word intro) — 5 words → builds ``
+4. `prime` — before-we-speak (word intro) — 6 words → builds ``
+5. `visualMatch` — visual match (hear → tap the tile) — 3 round(s)
+6. `matchPairs` — match pairs (connect each question to its answer) — 3 pairs on one screen
+7. `quickReply` — quick reply (hear → pick your response) — 2 round(s)
+8. `prime` — before-we-speak (word intro) — 5 words → builds ``
+9. `prime` — before-we-speak (word intro) — 6 words → builds ``
+10. `visualMatch` — visual match (hear → tap the tile) — 5 round(s)
+11. `matchPairs` — match pairs (connect each question to its answer) — 4 pairs on one screen
+12. `visualMatch` — visual match (hear → tap the tile) — 3 round(s)
+13. `visualMatch` — visual match (hear → tap the tile) — 3 round(s)
+14. `sentenceBuilder` — sentence builder (put the chunks in order) — 2 round(s)
+15. `swap` — swap it (one frame, several endings) — 5 round(s)
+16. `receipt` — receipt (proof card) — "Look what you can already say: change the ending — or the engine — and you have a new sentence." / "תראה מה אתה כבר יכול להגיד: מחליפים את הסוף — או את המנוע — ויש משפט חדש."
+17. `dialogue` — dialogue (choose your line) — scene `hostel-desk`
+18. `receipt` — receipt (proof card) — "You said what you need, what you have and what you don’t — and asked for help." / "אמרת מה אתה צריך, מה יש לך ומה אין — וביקשת עזרה."
+19. `dialogue` — dialogue (choose your line) — scene `coffee-with-a-friend`
+20. `receipt` — receipt (proof card) — "The same engines, with a friend: want, don’t know, can, can’t." / "אותם מנועים, עם חבר: רוצה, לא יודע, יכול, לא יכול."
+21. `quickReply` — quick reply (hear → pick your response) — 5 round(s) · speed challenge
+22. `receipt` — receipt (proof card) — "Five real questions, at real speed — and you caught the engine in every one." / "חמש שאלות אמיתיות, בקצב אמיתי — וזיהית בכל אחת את המנוע."
+23. `video` — video — mode again
+24. `visualMatch` — visual match (hear → tap the tile) — 6 round(s)
+25. `receipt` — receipt (proof card) — "You understood both conversations — and built your own sentences with five engines." / "הבנת את שתי השיחות — ובנית משפטים משלך עם חמישה מנועים."
+26. `summary` — victory screen
 
 Step sequence identical in EN / FR / ES: yes.
 
 ## Before we speak / word intro
 
-Step 2. Label: "Before we speak" / "לפני שנדבר". Intro: "The five verbs that drive every conversation. After them comes only what you want to say." / "חמשת הפעלים שמניעים כל שיחה. אחריהם בא רק מה שאתה רוצה לומר.".
+Step 2. Label: "Before we speak" / "לפני שנדבר". Intro: "Five short patterns that build lots of sentences — and three flips. Tap to hear." / "חמש תבניות קצרות שבונות המון משפטים — ושלושה "הפוכים". הקש כדי לשמוע.".
 The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `core.want` — EN "want" · FR "je veux" · ES "quiero" — meaning "רוצה" / "I want" — icon 🙋 — new
-2. `core.need` — EN "need" · FR "j’ai besoin de" · ES "necesito" — meaning "צריך" / "I need" — icon ❗ — new
-3. `core.have` — EN "have" · FR "j’ai" · ES "tengo" — meaning "יש לי" / "I have" — icon 🤲 — new
-4. `core.can` — EN "can" · FR "je peux" · ES "puedo" — meaning "יכול" / "I can" — icon 💪 — new
-5. `core.know` — EN "know" · FR "je sais" · ES "sé" — meaning "יודע" / "I know" — icon 💡 — new
+1. `core.want` — EN "want" · FR "je veux" · ES "quiero" — meaning "רוצה (☕ רוצה קפה)" / "want (☕ I want a coffee)" — icon 🙋 — new
+2. `core.need` — EN "need" · FR "j’ai besoin de" · ES "necesito" — meaning "צריך (🛁 צריך מגבת)" / "need (🛁 I need a towel)" — icon ❗ — new
+3. `core.have` — EN "have" · FR "j’ai" · ES "tengo" — meaning "יש לי (🔑 יש לי מפתח)" / "have (🔑 I have my key)" — icon 🤲 — new
+4. `core.know` — EN "know" · FR "je sais" · ES "sé" — meaning "יודע" / "know" — icon 💡 — new
+5. `core.can` — EN "can" · FR "je peux" · ES "puedo" — meaning "יכול (🚶 יכול ללכת ברגל)" / "can (🚶 I can walk)" — icon 💪 — new
+6. `core.dont-have` — EN "don't have" · FR "je ne l’ai pas" · ES "no la tengo" — meaning "אין לי ✕ (ההפך של "יש לי")" / "don’t have ✕ (the flip of "have")" — icon ✕ — new
+7. `core.dont-know` — EN "don't know" · FR "je ne sais pas" · ES "no lo sé" — meaning "לא יודע ✕" / "don’t know ✕" — icon ✕ — new
+8. `core.cant` — EN "can't" · FR "je ne peux pas" · ES "no puedo" — meaning "לא יכול ✕" / "can’t ✕" — icon ✕ — new
 
 "These build the sentence:" card: `phrase.core.i-need` — EN "I need a towel." · FR "J’ai besoin d’une serviette." · ES "Necesito una toalla." · HE "אני צריך מגבת." (with its own play button).
+
+Step 3. Label: "At the desk — what you hear" / "בדלפק — מה שומעים". Intro: "Each line — and what it says. At a desk people use the polite form. Tap to hear." / "כל משפט — ומה הוא אומר. בדלפק מדברים בצורה מנומסת. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `core.line.need-anything` — EN "Hi! Do you need anything?" · FR "Bonjour ! Vous avez besoin de quelque chose ?" · ES "¡Hola! ¿Necesita algo?" — meaning "שלום! אתה צריך משהו?" / "Hi! Do you need anything?" — icon 🛎️ — new
+2. `core.line.have-key` — EN "Sure. Do you have your key?" · FR "Bien sûr. Vous avez votre clé ?" · ES "Claro. ¿Tiene su llave?" — meaning "בטח. יש לך את המפתח?" / "Sure. Do you have your key?" — icon 🔑 — new
+3. `core.line.wifi` — EN "And the wifi password?" · FR "Et le mot de passe du wifi ?" · ES "¿Y la contraseña del wifi?" — meaning "והסיסמה של הוויי-פיי?" / "And the wifi password?" — icon 📶 — new
+4. `core.line.its-here` — EN "It's here." · FR "Il est ici." · ES "Está aquí." — meaning "היא כאן. (הנה הסיסמה)" / "It’s here. (here is the password)" — icon 👉 — new
+5. `core.line.of-course` — EN "Of course." · FR "Bien sûr." · ES "Claro." — meaning "כמובן. / בטח." / "Of course." — icon 👍 — new
+
+No build-sentence card.
+
+Step 4. Label: "At the desk — what you say" / "בדלפק — מה אתה אומר". Intro: "Three engines: need · have / don’t have · can. Tap to hear." / "שלושה מנועים: צריך · יש לי / אין לי · יכול. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `core.line.i-need` — EN "I need a towel." · FR "J’ai besoin d’une serviette." · ES "Necesito una toalla." — meaning "אני צריך מגבת." / "I need a towel." — icon 🛁 — new
+2. `core.line.i-have` — EN "Yes, I have my key." · FR "Oui, j’ai ma clé." · ES "Sí, tengo mi llave." — meaning "כן, יש לי את המפתח. ✓" / "Yes, I have my key. ✓" — icon 🔑 — new
+3. `core.line.i-dont-have` — EN "I don't have it." · FR "Je ne l’ai pas." · ES "No la tengo." — meaning "אין לי אותה. ✕ (את הסיסמה)" / "I don’t have it. ✕ (the password)" — icon 🚫 — new
+4. `core.line.do-you-have` — EN "Do you have a map?" · FR "Vous avez une carte ?" · ES "¿Tiene un mapa?" — meaning "יש לך מפה?" / "Do you have a map?" — icon 🗺️ — new
+5. `core.line.show-me` — EN "Can you show me?" · FR "Vous pouvez me montrer ?" · ES "¿Me lo puede mostrar?" — meaning "אתה יכול להראות לי?" / "Can you show me?" — icon 👀 — new
+6. `core.line.help-me` — EN "Can you help me?" · FR "Vous pouvez m’aider ?" · ES "¿Me puede ayudar?" — meaning "אתה יכול לעזור לי? (אותו "יכול", בקשה אחרת)" / "Can you help me? (the same "can", another request)" — icon 🤝 — new
+
+No build-sentence card.
+
+Step 8. Label: "With a friend — what you hear" / "עם חבר — מה שומעים". Intro: "The same engines — another situation. With a friend you hear the everyday form; at a desk, the polite one. Just know both." / "אותם מנועים — מצב אחר. עם חבר תשמע צורה יומיומית; בדלפק — מנומסת. פשוט תכיר את שתיהן.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `core.line.want-coffee` — EN "Do you want a coffee?" · FR "Tu veux un café ?" · ES "¿Quieres un café?" — meaning "רוצה קפה?" / "Do you want a coffee?" — icon ☕ — new
+2. `core.line.know-way` — EN "Do you know how to get to the centre?" · FR "Tu sais comment aller au centre ?" · ES "¿Sabes cómo ir al centro?" — meaning "אתה יודע איך להגיע למרכז?" / "Do you know how to get to the centre?" — icon 🧭 — new
+3. `core.line.walk` — EN "You can walk. It's about twenty minutes." · FR "Tu peux y aller à pied. C’est à environ vingt minutes." · ES "Puedes ir a pie. Son unos veinte minutos." — meaning "אתה יכול ללכת ברגל. זה בערך עשרים דקות. (⏱️ ~20)" / "You can walk. It’s about twenty minutes. (⏱️ ~20)" — icon 🚶 — new
+4. `core.line.dinner` — EN "We're having dinner at seven. Can you come?" · FR "On dîne à sept heures. Tu peux venir ?" · ES "Cenamos a las siete. ¿Puedes venir?" — meaning "אנחנו אוכלים ארוחת ערב בשבע (🕖). אתה יכול לבוא?" / "We’re having dinner at seven (🕖). Can you come?" — icon 🍽️ — new
+5. `core.line.no-problem` — EN "No problem." · FR "Pas de problème." · ES "No pasa nada." — meaning "אין בעיה." / "No problem." — icon 👌 — new
+
+No build-sentence card.
+
+Step 9. Label: "With a friend — what you say" / "עם חבר — מה אתה אומר". Intro: "Want · know / don’t know · can / can’t. Tap to hear." / "רוצה · יודע / לא יודע · יכול / לא יכול. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `core.line.i-want` — EN "Yes, I want a coffee." · FR "Oui, je veux un café." · ES "Sí, quiero un café." — meaning "כן, אני רוצה קפה." / "Yes, I want a coffee." — icon ☕ — new
+2. `core.line.want-water` — EN "I want water." · FR "Je veux de l’eau." · ES "Quiero agua." — meaning "אני רוצה מים. (אותו "רוצה", דבר אחר)" / "I want water. (the same "want", another thing)" — icon 💧 — new
+3. `core.line.i-know` — EN "Yes, I know." · FR "Oui, je sais." · ES "Sí, lo sé." — meaning "כן, אני יודע. ✓" / "Yes, I know. ✓" — icon 💡 — new
+4. `core.line.i-dont-know` — EN "I don't know." · FR "Je ne sais pas." · ES "No lo sé." — meaning "אני לא יודע. ✕" / "I don’t know. ✕" — icon 🤷 — new
+5. `core.line.i-can` — EN "I can walk." · FR "Je peux y aller à pied." · ES "Puedo ir a pie." — meaning "אני יכול ללכת ברגל. ✓" / "I can walk. ✓" — icon 🚶 — new
+6. `core.line.i-cant` — EN "Sorry, I can't." · FR "Désolé, je ne peux pas." · ES "Lo siento, no puedo." — meaning "סליחה, אני לא יכול. ✕" / "Sorry, I can’t. ✕" — icon 🙅 — new
+
+No build-sentence card.
 
 ## Every sentence in this mission
 
@@ -3695,7 +3758,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "I need ___ — for anything you are missing." / "I need ___ — לכל דבר שחסר לך."
 - Used in missions: 04
-- Exercised here as: built by the word intro (step 2); key sentence (step 4); "you said" lead-in of the expected-replies drill (step 9); swap-it frame (step 11, round 1); swap-it frame (step 11, round 2); quick-reply response (step 12, round 1, accepted); quick-reply response (step 12, round 4, wrong option); sentence review (step 17); dialogue choice hostel-desk/c2 (accepted)
+- Exercised here as: built by the word intro (step 2); match-pairs answer tile (step 6, pair 1); quick-reply response (step 7, round 1, wrong option); sentence-builder target (step 14, round 1); quick-reply response (step 21, round 1, accepted); quick-reply response (step 21, round 3, wrong option); quick-reply response (step 21, round 5, wrong option); dialogue choice hostel-desk/c2 (accepted)
 
 ### Sentence: `phrase.core.i-have`
 
@@ -3706,7 +3769,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 04, 30
-- Exercised here as: swap-it frame (step 11, round 3); quick-reply response (step 12, round 2, accepted); quick-reply response (step 12, round 3, wrong option); quick-reply response (step 12, round 4, wrong option); sentence review (step 17); dialogue choice hostel-desk/c4 (accepted)
+- Exercised here as: visual-match audio (step 5, round 1); match-pairs answer tile (step 6, pair 2); quick-reply response (step 7, round 2, wrong option); quick-reply response (step 21, round 2, accepted); quick-reply response (step 21, round 4, wrong option); quick-reply response (step 21, round 5, wrong option); visual-match audio (step 24, round 1); dialogue choice hostel-desk/c4 (accepted)
 
 ### Sentence: `phrase.core.i-dont-have`
 
@@ -3717,7 +3780,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "I don’t have ___ — the opposite of I have. One word changes everything." / "I don’t have ___ — ההפך מ-I have. מילה אחת משנה הכל."
 - Used in missions: 04
-- Exercised here as: key sentence (step 5); swap-it frame (step 11, round 4); sentence review (step 17); dialogue choice hostel-desk/c6 (accepted)
+- Exercised here as: visual-match audio (step 5, round 2); match-pairs answer tile (step 6, pair 3); quick-reply response (step 7, round 1, wrong option); sentence-builder target (step 14, round 2); quick-reply response (step 21, round 3, wrong option); dialogue choice hostel-desk/c6 (accepted)
 
 ### Sentence: `phrase.core.do-you-have`
 
@@ -3728,7 +3791,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "Do you have ___? — works in every shop, hotel and restaurant." / "Do you have ___? — עובד בכל חנות, מלון ומסעדה."
 - Used in missions: 04, 30
-- Exercised here as: key sentence (step 7); sentence review (step 17); dialogue choice hostel-desk/c8 (accepted)
+- Exercised here as: visual-match audio (step 5, round 3); quick-reply response (step 7, round 1, accepted); quick-reply response (step 7, round 2, wrong option); dialogue choice hostel-desk/c8 (accepted)
 
 ### Sentence: `phrase.core.i-want`
 
@@ -3739,7 +3802,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "The frame: I want ___. Only the last word changes." / "התבנית: I want ___. מחליפים רק את המילה האחרונה."
 - Used in missions: 04
-- Exercised here as: key sentence (step 3); swap-it frame (step 11, round 5); quick-reply response (step 12, round 2, wrong option); sentence review (step 17); dialogue choice coffee-with-a-friend/c2 (accepted)
+- Exercised here as: match-pairs answer tile (step 11, pair 1); swap-it frame (step 15, round 1); quick-reply response (step 21, round 1, wrong option); quick-reply response (step 21, round 2, wrong option); quick-reply response (step 21, round 3, accepted); visual-match audio (step 24, round 2); dialogue choice coffee-with-a-friend/c2 (accepted)
 
 ### Sentence: `phrase.core.i-dont-know`
 
@@ -3750,7 +3813,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "A perfectly good answer. If you don’t know, say so." / "תשובה לגיטימית לגמרי. לא יודע — אומרים."
 - Used in missions: 04
-- Exercised here as: quick-reply response (step 12, round 2, wrong option); quick-reply response (step 12, round 3, accepted); sentence review (step 17); dialogue choice coffee-with-a-friend/c4 (accepted); dialogue choice coffee-with-a-friend/c4b (accepted)
+- Exercised here as: match-pairs answer tile (step 11, pair 2); visual-match audio (step 12, round 1); quick-reply response (step 21, round 2, wrong option); quick-reply response (step 21, round 4, accepted); visual-match audio (step 24, round 3); dialogue choice coffee-with-a-friend/c4 (accepted); dialogue choice coffee-with-a-friend/c4b (accepted)
 
 ### Sentence: `phrase.core.i-can`
 
@@ -3761,7 +3824,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 04
-- Exercised here as: swap-it frame (step 11, round 6); quick-reply response (step 12, round 5, wrong option); sentence review (step 17); dialogue choice coffee-with-a-friend/c6 (accepted)
+- Exercised here as: match-pairs answer tile (step 11, pair 3); visual-match audio (step 12, round 2); dialogue choice coffee-with-a-friend/c6 (accepted)
 
 ### Sentence: `phrase.core.i-cant`
 
@@ -3772,7 +3835,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 04
-- Exercised here as: key sentence (step 6); swap-it frame (step 11, round 7); quick-reply response (step 12, round 1, wrong option); quick-reply response (step 12, round 4, accepted); sentence review (step 17); dialogue choice coffee-with-a-friend/c8 (accepted)
+- Exercised here as: match-pairs answer tile (step 11, pair 4); visual-match audio (step 12, round 3); quick-reply response (step 21, round 1, wrong option); quick-reply response (step 21, round 5, accepted); visual-match audio (step 24, round 6); dialogue choice coffee-with-a-friend/c8 (accepted)
 
 ### Sentence: `phrase.core.i-know`
 
@@ -3783,7 +3846,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 04, 30
-- Exercised here as: quick-reply response (step 12, round 1, wrong option); quick-reply response (step 12, round 3, accepted); quick-reply response (step 12, round 5, wrong option)
+- Exercised here as: quick-reply response (step 21, round 4, accepted)
 
 ### Sentence: `phrase.core.can-you-help`
 
@@ -3794,7 +3857,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "Can you ___? — the way to ask for anything." / "Can you ___? — הדרך לבקש כל דבר."
 - Used in missions: 04, 22
-- Exercised here as: key sentence (step 8); quick-reply response (step 12, round 5, accepted); sentence review (step 17)
+- Exercised here as: swap-it frame (step 15, round 5)
 
 ### Sentence: `reply.core.do-you-want`
 
@@ -3805,7 +3868,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 04
-- Exercised here as: nothing (listed only)
+- Exercised here as: visual-match audio (step 10, round 2); match-pairs question tile (step 11, pair 1)
 
 ### Sentence: `reply.core.need-anything`
 
@@ -3816,7 +3879,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 04
-- Exercised here as: expected-reply audio (step 9); quick-reply prompt (step 12, round 1); sentence review (step 17)
+- Exercised here as: match-pairs question tile (step 6, pair 1); visual-match audio (step 10, round 1)
 
 ### Sentence: `reply.core.have-your-key`
 
@@ -3827,7 +3890,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 04
-- Exercised here as: expected-reply audio (step 9); quick-reply prompt (step 12, round 2); sentence review (step 17); cold-open correct option (step 18)
+- Exercised here as: match-pairs question tile (step 6, pair 2); visual-match audio (step 10, round 3)
 
 ### Sentence: `reply.core.do-you-know`
 
@@ -3838,7 +3901,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 04
-- Exercised here as: expected-reply audio (step 9); quick-reply prompt (step 12, round 3); sentence review (step 17)
+- Exercised here as: visual-match audio (step 10, round 4); match-pairs question tile (step 11, pair 2)
 
 ### Sentence: `reply.core.can-you-come`
 
@@ -3849,7 +3912,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 04
-- Exercised here as: expected-reply audio (step 9); quick-reply prompt (step 12, round 4); sentence review (step 17); cold-open wrong option (step 18)
+- Exercised here as: visual-match audio (step 10, round 5); match-pairs question tile (step 11, pair 4)
 
 ### Sentence: `reply.core.you-can-walk`
 
@@ -3860,7 +3923,18 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 04
-- Exercised here as: nothing (listed only)
+- Exercised here as: match-pairs question tile (step 11, pair 3)
+
+### Sentence: `reply.core.wifi`
+
+- EN: And the wifi password?
+- HE: והסיסמה של הוויי-פיי?
+- FR: Et le mot de passe du wifi ?
+- ES: ¿Y la contraseña del wifi?
+- Role: receptive — an expected reply the learner hears
+- Tip / pattern note: none
+- Used in missions: 04
+- Exercised here as: match-pairs question tile (step 6, pair 3)
 
 ### Sentence: `phrase.recovery.show-me`
 
@@ -3871,7 +3945,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
 - Used in missions: 04, 07, 09, 17
-- Exercised here as: sentence review (step 17); dialogue choice hostel-desk/c10 (accepted)
+- Exercised here as: quick-reply response (step 7, round 2, accepted); swap-it frame (step 15, round 4); dialogue choice hostel-desk/c10 (accepted)
 
 ### Sentence: `phrase.recovery.slowly`
 
@@ -3886,60 +3960,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 
 ## Expected replies / listening items
 
-Lead-in screen: "You said:" / "אמרת:" — EN "I need a towel." · FR "J’ai besoin d’une serviette." · ES "Necesito una toalla." — then "What might they answer? Learn the replies before they surprise you." / "מה הם עלולים לענות? נלמד את התשובות לפני שהן מפתיעות אותך." — button 👂 "I'm ready" / "אני מוכן".
-Linked learner sentence: `phrase.core.i-need`. Each reply below is played once automatically; the learner picks its MEANING from three buttons. Distractors are always the first two OTHER replies of this same drill, in drill order (runtime rule), so the three choices are shuffled per session.
-
-### M04-Q01 — expected-reply (step 9, reply 1 of 4)
-
-- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (1/4)
-- Audio played: EN "Do you need anything?" · FR "Vous avez besoin de quelque chose ?" · ES "¿Necesita algo?"
-- Meaning of the audio (HE): "אתה צריך משהו?"
-- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
-- Choices:
-  1. HE "אתה צריך משהו?" / EN "Do you need anything?" — `reply.core.need-anything` — ✅ accepted
-  2. HE "יש לך את המפתח?" / EN "Do you have your key?" — `reply.core.have-your-key` — ❌ wrong
-  3. HE "אתה יודע איך להגיע למרכז?" / EN "Do you know how to get to the centre?" — `reply.core.do-you-know` — ❌ wrong
-- Tests: reply.core.need-anything
-- Explanation shown after answering: generic: “Do you need anything?” means “אתה צריך משהו?”.
-
-### M04-Q02 — expected-reply (step 9, reply 2 of 4)
-
-- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (2/4)
-- Audio played: EN "Do you have your key?" · FR "Vous avez votre clé ?" · ES "¿Tiene su llave?"
-- Meaning of the audio (HE): "יש לך את המפתח?"
-- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
-- Choices:
-  1. HE "יש לך את המפתח?" / EN "Do you have your key?" — `reply.core.have-your-key` — ✅ accepted
-  2. HE "אתה צריך משהו?" / EN "Do you need anything?" — `reply.core.need-anything` — ❌ wrong
-  3. HE "אתה יודע איך להגיע למרכז?" / EN "Do you know how to get to the centre?" — `reply.core.do-you-know` — ❌ wrong
-- Tests: reply.core.have-your-key
-- Explanation shown after answering: generic: “Do you have your key?” means “יש לך את המפתח?”.
-
-### M04-Q03 — expected-reply (step 9, reply 3 of 4)
-
-- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (3/4)
-- Audio played: EN "Do you know how to get to the centre?" · FR "Tu sais comment aller au centre ?" · ES "¿Sabes cómo ir al centro?"
-- Meaning of the audio (HE): "אתה יודע איך להגיע למרכז?"
-- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
-- Choices:
-  1. HE "אתה יודע איך להגיע למרכז?" / EN "Do you know how to get to the centre?" — `reply.core.do-you-know` — ✅ accepted
-  2. HE "אתה צריך משהו?" / EN "Do you need anything?" — `reply.core.need-anything` — ❌ wrong
-  3. HE "יש לך את המפתח?" / EN "Do you have your key?" — `reply.core.have-your-key` — ❌ wrong
-- Tests: reply.core.do-you-know
-- Explanation shown after answering: generic: “Do you know how to get to the centre?” means “אתה יודע איך להגיע למרכז?”.
-
-### M04-Q04 — expected-reply (step 9, reply 4 of 4)
-
-- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (4/4)
-- Audio played: EN "Can you come?" · FR "Tu peux venir ?" · ES "¿Puedes venir?"
-- Meaning of the audio (HE): "אתה יכול לבוא?"
-- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
-- Choices:
-  1. HE "אתה יכול לבוא?" / EN "Can you come?" — `reply.core.can-you-come` — ✅ accepted
-  2. HE "אתה צריך משהו?" / EN "Do you need anything?" — `reply.core.need-anything` — ❌ wrong
-  3. HE "יש לך את המפתח?" / EN "Do you have your key?" — `reply.core.have-your-key` — ❌ wrong
-- Tests: reply.core.can-you-come
-- Explanation shown after answering: generic: “Can you come?” means “אתה יכול לבוא?”.
+No expected-replies drill in this mission.
 
 ## Quizzes
 
@@ -3947,115 +3968,411 @@ No meaning quiz in this mission.
 
 ## Active practice — Quick Reply · Visual Match · Swap It · Mini Map
 
-### M04-Q05 — swap-it (step 11, round 1 of 7)
+### M04-Q01 — visual-match (step 5, round 1 of 3)
 
-- Prompt displayed: "Finish the sentence" / "השלם את המשפט" — cue 💧 "You are thirsty — you need water" / "אתה צמא — צריך מים" — frame EN "I need ___." · FR "J’ai besoin ___." · ES "Necesito ___."
-- Audio played: EN "(nothing before the tap; the completed sentence is spoken after it)" · FR "(same)" · ES "(same)"
-- Meaning of the audio (HE): —
-- Buttons show: the SLOT VALUES in the target language (shown here as "value → completed sentence"); order shuffled; a "wrong" value still produces and speaks a real sentence, with its translation
+- Prompt displayed: "Your things at the desk — tap what you hear" / "הדברים שלך בדלפק — הקש על מה ששמעת"
+- Audio played: EN "Yes, I have my key." · FR "Oui, j’ai ma clé." · ES "Sí, tengo mi llave."
+- Meaning of the audio (HE): "כן, יש לי את המפתח."
+- Buttons show: a 3×3 board of 3 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. EN "water → I need water." · FR "d’eau → J’ai besoin d’eau." · ES "agua → Necesito agua." · (HE gloss "אני צריך מים.") — `phrase.core.i-need` — ✅ accepted
-  2. EN "a towel → I need a towel." · FR "d’une serviette → J’ai besoin d’une serviette." · ES "una toalla → Necesito una toalla." · (HE gloss "אני צריך מגבת.") — no sentence id — ❌ wrong
-  3. EN "my key → I need my key." · FR "de ma clé → J’ai besoin de ma clé." · ES "mi llave → Necesito mi llave." · (HE gloss "אני צריך את המפתח שלי.") — no sentence id — ❌ wrong
-- Tests: phrase.core.i-need
-- Explanation shown after answering: after the tap: the completed sentence, spoken, with its translation
-
-### M04-Q06 — swap-it (step 11, round 2 of 7)
-
-- Prompt displayed: "Finish the sentence" / "השלם את המשפט" — cue 🆘 "You need help" / "אתה צריך עזרה" — frame EN "I need ___." · FR "J’ai besoin ___." · ES "Necesito ___."
-- Audio played: EN "(nothing before the tap; the completed sentence is spoken after it)" · FR "(same)" · ES "(same)"
-- Meaning of the audio (HE): —
-- Buttons show: the SLOT VALUES in the target language (shown here as "value → completed sentence"); order shuffled; a "wrong" value still produces and speaks a real sentence, with its translation
-- Choices:
-  1. EN "help → I need help." · FR "d’aide → J’ai besoin d’aide." · ES "ayuda → Necesito ayuda." · (HE gloss "אני צריך עזרה.") — `phrase.core.i-need` — ✅ accepted
-  2. EN "a coffee → I need a coffee." · FR "d’un café → J’ai besoin d’un café." · ES "un café → Necesito un café." · (HE gloss "אני צריך קפה.") — no sentence id — ❌ wrong
-  3. EN "a map → I need a map." · FR "d’une carte → J’ai besoin d’une carte." · ES "un mapa → Necesito un mapa." · (HE gloss "אני צריך מפה.") — no sentence id — ❌ wrong
-- Tests: phrase.core.i-need
-- Explanation shown after answering: after the tap: the completed sentence, spoken, with its translation
-
-### M04-Q07 — swap-it (step 11, round 3 of 7)
-
-- Prompt displayed: "Finish the sentence" / "השלם את המשפט" — cue 📱 "Your phone is with you" / "הטלפון אצלך" — frame EN "I have ___." · FR "J’ai ___." · ES "Tengo ___."
-- Audio played: EN "(nothing before the tap; the completed sentence is spoken after it)" · FR "(same)" · ES "(same)"
-- Meaning of the audio (HE): —
-- Buttons show: the SLOT VALUES in the target language (shown here as "value → completed sentence"); order shuffled; a "wrong" value still produces and speaks a real sentence, with its translation
-- Choices:
-  1. EN "my phone → I have my phone." · FR "mon téléphone → J’ai mon téléphone." · ES "mi teléfono → Tengo mi teléfono." · (HE gloss "יש לי את הטלפון שלי.") — `phrase.core.i-have` — ✅ accepted
-  2. EN "a map → I have a map." · FR "une carte → J’ai une carte." · ES "un mapa → Tengo un mapa." · (HE gloss "יש לי מפה.") — no sentence id — ❌ wrong
-  3. EN "my key → I have my key." · FR "ma clé → J’ai ma clé." · ES "mi llave → Tengo mi llave." · (HE gloss "יש לי את המפתח שלי.") — no sentence id — ❌ wrong
+  1. "🔑 “I have it ✓” / “יש לי ✓”" — `phrase.core.i-have` — ✅ accepted
+  2. "📶 “I don’t have it ✕” / “אין לי ✕”" — no sentence id — ❌ wrong
+  3. "🗺️ “do you have one? ❓” / “יש לך? ❓”" — no sentence id — ❌ wrong
 - Tests: phrase.core.i-have
-- Explanation shown after answering: after the tap: the completed sentence, spoken, with its translation
+- Explanation shown after answering: after the tap: the spoken line and its translation
 
-### M04-Q08 — swap-it (step 11, round 4 of 7)
+### M04-Q02 — visual-match (step 5, round 2 of 3)
 
-- Prompt displayed: "Finish the sentence" / "השלם את המשפט" — cue 🗺️ "You have no map" / "אין לך מפה" — frame EN "I don't have ___." · FR "Je n’ai pas ___." · ES "No tengo ___."
-- Audio played: EN "(nothing before the tap; the completed sentence is spoken after it)" · FR "(same)" · ES "(same)"
-- Meaning of the audio (HE): —
-- Buttons show: the SLOT VALUES in the target language (shown here as "value → completed sentence"); order shuffled; a "wrong" value still produces and speaks a real sentence, with its translation
+- Prompt displayed: "Your things at the desk — tap what you hear" / "הדברים שלך בדלפק — הקש על מה ששמעת"
+- Audio played: EN "I don't have it." · FR "Je ne l’ai pas." · ES "No la tengo."
+- Meaning of the audio (HE): "אין לי אותה."
+- Buttons show: a 3×3 board of 3 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. EN "a map → I don't have a map." · FR "de carte → Je n’ai pas de carte." · ES "mapa → No tengo mapa." · (HE gloss "אין לי מפה.") — `phrase.core.i-dont-have` — ✅ accepted
-  2. EN "my key → I don't have my key." · FR "ma clé → Je n’ai pas ma clé." · ES "mi llave → No tengo mi llave." · (HE gloss "אין לי את המפתח שלי.") — no sentence id — ❌ wrong
-  3. EN "my phone → I don't have my phone." · FR "mon téléphone → Je n’ai pas mon téléphone." · ES "mi teléfono → No tengo mi teléfono." · (HE gloss "אין לי את הטלפון שלי.") — no sentence id — ❌ wrong
+  1. "🔑 “I have it ✓” / “יש לי ✓”" — no sentence id — ❌ wrong
+  2. "📶 “I don’t have it ✕” / “אין לי ✕”" — `phrase.core.i-dont-have` — ✅ accepted
+  3. "🗺️ “do you have one? ❓” / “יש לך? ❓”" — no sentence id — ❌ wrong
 - Tests: phrase.core.i-dont-have
-- Explanation shown after answering: after the tap: the completed sentence, spoken, with its translation
+- Explanation shown after answering: after the tap: the spoken line and its translation
 
-### M04-Q09 — swap-it (step 11, round 5 of 7)
+### M04-Q03 — visual-match (step 5, round 3 of 3)
 
-- Prompt displayed: "Finish the sentence" / "השלם את המשפט" — cue ☕ "You want a coffee" / "אתה רוצה קפה" — frame EN "I want ___." · FR "Je veux ___." · ES "Quiero ___."
+- Prompt displayed: "Your things at the desk — tap what you hear" / "הדברים שלך בדלפק — הקש על מה ששמעת"
+- Audio played: EN "Do you have a map?" · FR "Vous avez une carte ?" · ES "¿Tiene un mapa?"
+- Meaning of the audio (HE): "יש לך מפה?"
+- Buttons show: a 3×3 board of 3 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "🔑 “I have it ✓” / “יש לי ✓”" — no sentence id — ❌ wrong
+  2. "📶 “I don’t have it ✕” / “אין לי ✕”" — no sentence id — ❌ wrong
+  3. "🗺️ “do you have one? ❓” / “יש לך? ❓”" — `phrase.core.do-you-have` — ✅ accepted
+- Tests: phrase.core.do-you-have
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M04-Q04 — match-pairs (step 6, pair 1 of 3 (all pairs are on one screen))
+
+- Prompt displayed: "What do you answer at the desk? Connect each question to its answer" / "מה עונים בדלפק? חבר כל שאלה לתשובה שלה" — tile to match (target language, no translation): EN "Do you need anything?" · FR "Vous avez besoin de quelque chose ?" · ES "¿Necesita algo?"
+- Audio played: EN "Do you need anything?" · FR "Vous avez besoin de quelque chose ?" · ES "¿Necesita algo?"
+- Meaning of the audio (HE): "אתה צריך משהו?"
+- Buttons show: the ANSWER tiles, target language only; their order is shuffled; a matched pair locks and leaves the board, so later pairs have fewer live tiles
+- Choices:
+  1. EN "I need a towel." · FR "J’ai besoin d’une serviette." · ES "Necesito una toalla." · (HE gloss "אני צריך מגבת.") — `phrase.core.i-need` — ✅ accepted
+  2. EN "Yes, I have my key." · FR "Oui, j’ai ma clé." · ES "Sí, tengo mi llave." · (HE gloss "כן, יש לי את המפתח.") — `phrase.core.i-have` — ❌ wrong
+  3. EN "I don't have it." · FR "Je ne l’ai pas." · ES "No la tengo." · (HE gloss "אין לי אותה.") — `phrase.core.i-dont-have` — ❌ wrong
+- Tests: phrase.core.i-need
+- Explanation shown after answering: none — a correct match locks both tiles under a shared number and speaks the answer; a miss shakes, shows ✕ and clears (no penalty)
+
+### M04-Q05 — match-pairs (step 6, pair 2 of 3 (all pairs are on one screen))
+
+- Prompt displayed: "What do you answer at the desk? Connect each question to its answer" / "מה עונים בדלפק? חבר כל שאלה לתשובה שלה" — tile to match (target language, no translation): EN "Do you have your key?" · FR "Vous avez votre clé ?" · ES "¿Tiene su llave?"
+- Audio played: EN "Do you have your key?" · FR "Vous avez votre clé ?" · ES "¿Tiene su llave?"
+- Meaning of the audio (HE): "יש לך את המפתח?"
+- Buttons show: the ANSWER tiles, target language only; their order is shuffled; a matched pair locks and leaves the board, so later pairs have fewer live tiles
+- Choices:
+  1. EN "I need a towel." · FR "J’ai besoin d’une serviette." · ES "Necesito una toalla." · (HE gloss "אני צריך מגבת.") — `phrase.core.i-need` — ❌ wrong
+  2. EN "Yes, I have my key." · FR "Oui, j’ai ma clé." · ES "Sí, tengo mi llave." · (HE gloss "כן, יש לי את המפתח.") — `phrase.core.i-have` — ✅ accepted
+  3. EN "I don't have it." · FR "Je ne l’ai pas." · ES "No la tengo." · (HE gloss "אין לי אותה.") — `phrase.core.i-dont-have` — ❌ wrong
+- Tests: phrase.core.i-have
+- Explanation shown after answering: none — a correct match locks both tiles under a shared number and speaks the answer; a miss shakes, shows ✕ and clears (no penalty)
+
+### M04-Q06 — match-pairs (step 6, pair 3 of 3 (all pairs are on one screen))
+
+- Prompt displayed: "What do you answer at the desk? Connect each question to its answer" / "מה עונים בדלפק? חבר כל שאלה לתשובה שלה" — tile to match (target language, no translation): EN "And the wifi password?" · FR "Et le mot de passe du wifi ?" · ES "¿Y la contraseña del wifi?"
+- Audio played: EN "And the wifi password?" · FR "Et le mot de passe du wifi ?" · ES "¿Y la contraseña del wifi?"
+- Meaning of the audio (HE): "והסיסמה של הוויי-פיי?"
+- Buttons show: the ANSWER tiles, target language only; their order is shuffled; a matched pair locks and leaves the board, so later pairs have fewer live tiles
+- Choices:
+  1. EN "I need a towel." · FR "J’ai besoin d’une serviette." · ES "Necesito una toalla." · (HE gloss "אני צריך מגבת.") — `phrase.core.i-need` — ❌ wrong
+  2. EN "Yes, I have my key." · FR "Oui, j’ai ma clé." · ES "Sí, tengo mi llave." · (HE gloss "כן, יש לי את המפתח.") — `phrase.core.i-have` — ❌ wrong
+  3. EN "I don't have it." · FR "Je ne l’ai pas." · ES "No la tengo." · (HE gloss "אין לי אותה.") — `phrase.core.i-dont-have` — ✅ accepted
+- Tests: phrase.core.i-dont-have
+- Explanation shown after answering: none — a correct match locks both tiles under a shared number and speaks the answer; a miss shakes, shows ✕ and clears (no penalty)
+
+### M04-Q07 — quick-reply (step 7, round 1 of 2)
+
+- Prompt displayed: "What do you say here?" / "מה אתה אומר כאן?" — situation shown: "You would like a map of the town. What do you ask at the desk?" / "אתה רוצה מפה של העיר. מה תשאל בדלפק?"
+- Audio played: EN "(nothing is played — a situation is shown)" · FR "(nothing is played — a situation is shown)" · ES "(nothing is played — a situation is shown)"
+- Meaning of the audio (HE): —
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Do you have a map?" · FR "Vous avez une carte ?" · ES "¿Tiene un mapa?" · (HE gloss "יש לך מפה?") — `phrase.core.do-you-have` — ✅ accepted
+  2. EN "I need a towel." · FR "J’ai besoin d’une serviette." · ES "Necesito una toalla." · (HE gloss "אני צריך מגבת.") — `phrase.core.i-need` — ❌ wrong
+  3. EN "I don't have it." · FR "Je ne l’ai pas." · ES "No la tengo." · (HE gloss "אין לי אותה.") — `phrase.core.i-dont-have` — ❌ wrong
+- Tests: phrase.core.do-you-have
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M04-Q08 — quick-reply (step 7, round 2 of 2)
+
+- Prompt displayed: "What do you say here?" / "מה אתה אומר כאן?" — situation shown: "They have a map — but you cannot see how to get there. What do you ask?" / "יש להם מפה — אבל אתה לא מבין איך להגיע. מה תבקש?"
+- Audio played: EN "(nothing is played — a situation is shown)" · FR "(nothing is played — a situation is shown)" · ES "(nothing is played — a situation is shown)"
+- Meaning of the audio (HE): —
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Can you show me?" · FR "Vous pouvez me montrer ?" · ES "¿Me lo puede mostrar?" · (HE gloss "אתה יכול להראות לי?") — `phrase.recovery.show-me` — ✅ accepted
+  2. EN "Do you have a map?" · FR "Vous avez une carte ?" · ES "¿Tiene un mapa?" · (HE gloss "יש לך מפה?") — `phrase.core.do-you-have` — ❌ wrong
+  3. EN "Yes, I have my key." · FR "Oui, j’ai ma clé." · ES "Sí, tengo mi llave." · (HE gloss "כן, יש לי את המפתח.") — `phrase.core.i-have` — ❌ wrong
+- Tests: phrase.recovery.show-me
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M04-Q09 — visual-match (step 10, round 1 of 5)
+
+- Prompt displayed: "Which engine did you hear?" / "איזה מנוע שמעת?"
+- Audio played: EN "Hi! Do you need anything?" · FR "Bonjour ! Vous avez besoin de quelque chose ?" · ES "¡Hola! ¿Necesita algo?"
+- Meaning of the audio (HE): "שלום! אתה צריך משהו?"
+- Buttons show: only this round's 4 tiles (the meaning and its contrast), same in every language; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "🙋 “want” / “רוצה”" — no sentence id — ❌ wrong
+  2. "❗ “need” / “צריך”" — `reply.core.need-anything` — ✅ accepted
+  3. "🤲 “have” / “יש לי”" — no sentence id — ❌ wrong
+  4. "💪 “can” / “יכול”" — no sentence id — ❌ wrong
+- Tests: reply.core.need-anything
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M04-Q10 — visual-match (step 10, round 2 of 5)
+
+- Prompt displayed: "Which engine did you hear?" / "איזה מנוע שמעת?"
+- Audio played: EN "Do you want a coffee?" · FR "Tu veux un café ?" · ES "¿Quieres un café?"
+- Meaning of the audio (HE): "רוצה קפה?"
+- Buttons show: only this round's 4 tiles (the meaning and its contrast), same in every language; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "🙋 “want” / “רוצה”" — `reply.core.do-you-want` — ✅ accepted
+  2. "❗ “need” / “צריך”" — no sentence id — ❌ wrong
+  3. "🤲 “have” / “יש לי”" — no sentence id — ❌ wrong
+  4. "💡 “know” / “יודע”" — no sentence id — ❌ wrong
+- Tests: reply.core.do-you-want
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M04-Q11 — visual-match (step 10, round 3 of 5)
+
+- Prompt displayed: "Which engine did you hear?" / "איזה מנוע שמעת?"
+- Audio played: EN "Sure. Do you have your key?" · FR "Bien sûr. Vous avez votre clé ?" · ES "Claro. ¿Tiene su llave?"
+- Meaning of the audio (HE): "בטח. יש לך את המפתח?"
+- Buttons show: only this round's 4 tiles (the meaning and its contrast), same in every language; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "🙋 “want” / “רוצה”" — no sentence id — ❌ wrong
+  2. "❗ “need” / “צריך”" — no sentence id — ❌ wrong
+  3. "🤲 “have” / “יש לי”" — `reply.core.have-your-key` — ✅ accepted
+  4. "💡 “know” / “יודע”" — no sentence id — ❌ wrong
+- Tests: reply.core.have-your-key
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M04-Q12 — visual-match (step 10, round 4 of 5)
+
+- Prompt displayed: "Which engine did you hear?" / "איזה מנוע שמעת?"
+- Audio played: EN "Do you know how to get to the centre?" · FR "Tu sais comment aller au centre ?" · ES "¿Sabes cómo ir al centro?"
+- Meaning of the audio (HE): "אתה יודע איך להגיע למרכז?"
+- Buttons show: only this round's 4 tiles (the meaning and its contrast), same in every language; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "🙋 “want” / “רוצה”" — no sentence id — ❌ wrong
+  2. "🤲 “have” / “יש לי”" — no sentence id — ❌ wrong
+  3. "💡 “know” / “יודע”" — `reply.core.do-you-know` — ✅ accepted
+  4. "💪 “can” / “יכול”" — no sentence id — ❌ wrong
+- Tests: reply.core.do-you-know
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M04-Q13 — visual-match (step 10, round 5 of 5)
+
+- Prompt displayed: "Which engine did you hear?" / "איזה מנוע שמעת?"
+- Audio played: EN "Can you come?" · FR "Tu peux venir ?" · ES "¿Puedes venir?"
+- Meaning of the audio (HE): "אתה יכול לבוא?"
+- Buttons show: only this round's 4 tiles (the meaning and its contrast), same in every language; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "🙋 “want” / “רוצה”" — no sentence id — ❌ wrong
+  2. "❗ “need” / “צריך”" — no sentence id — ❌ wrong
+  3. "💡 “know” / “יודע”" — no sentence id — ❌ wrong
+  4. "💪 “can” / “יכול”" — `reply.core.can-you-come` — ✅ accepted
+- Tests: reply.core.can-you-come
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M04-Q14 — match-pairs (step 11, pair 1 of 4 (all pairs are on one screen))
+
+- Prompt displayed: "What do you answer your friend? Connect each question to its answer" / "מה עונים לחבר? חבר כל שאלה לתשובה שלה" — tile to match (target language, no translation): EN "Do you want a coffee?" · FR "Tu veux un café ?" · ES "¿Quieres un café?"
+- Audio played: EN "Do you want a coffee?" · FR "Tu veux un café ?" · ES "¿Quieres un café?"
+- Meaning of the audio (HE): "רוצה קפה?"
+- Buttons show: the ANSWER tiles, target language only; their order is shuffled; a matched pair locks and leaves the board, so later pairs have fewer live tiles
+- Choices:
+  1. EN "Yes, I want a coffee." · FR "Oui, je veux un café." · ES "Sí, quiero un café." · (HE gloss "כן, אני רוצה קפה.") — `phrase.core.i-want` — ✅ accepted
+  2. EN "I don't know." · FR "Je ne sais pas." · ES "No lo sé." · (HE gloss "אני לא יודע.") — `phrase.core.i-dont-know` — ❌ wrong
+  3. EN "I can walk." · FR "Je peux y aller à pied." · ES "Puedo ir a pie." · (HE gloss "אני יכול ללכת ברגל.") — `phrase.core.i-can` — ❌ wrong
+  4. EN "Sorry, I can't." · FR "Désolé, je ne peux pas." · ES "Lo siento, no puedo." · (HE gloss "סליחה, אני לא יכול.") — `phrase.core.i-cant` — ❌ wrong
+- Tests: phrase.core.i-want
+- Explanation shown after answering: none — a correct match locks both tiles under a shared number and speaks the answer; a miss shakes, shows ✕ and clears (no penalty)
+
+### M04-Q15 — match-pairs (step 11, pair 2 of 4 (all pairs are on one screen))
+
+- Prompt displayed: "What do you answer your friend? Connect each question to its answer" / "מה עונים לחבר? חבר כל שאלה לתשובה שלה" — tile to match (target language, no translation): EN "Do you know how to get to the centre?" · FR "Tu sais comment aller au centre ?" · ES "¿Sabes cómo ir al centro?"
+- Audio played: EN "Do you know how to get to the centre?" · FR "Tu sais comment aller au centre ?" · ES "¿Sabes cómo ir al centro?"
+- Meaning of the audio (HE): "אתה יודע איך להגיע למרכז?"
+- Buttons show: the ANSWER tiles, target language only; their order is shuffled; a matched pair locks and leaves the board, so later pairs have fewer live tiles
+- Choices:
+  1. EN "Yes, I want a coffee." · FR "Oui, je veux un café." · ES "Sí, quiero un café." · (HE gloss "כן, אני רוצה קפה.") — `phrase.core.i-want` — ❌ wrong
+  2. EN "I don't know." · FR "Je ne sais pas." · ES "No lo sé." · (HE gloss "אני לא יודע.") — `phrase.core.i-dont-know` — ✅ accepted
+  3. EN "I can walk." · FR "Je peux y aller à pied." · ES "Puedo ir a pie." · (HE gloss "אני יכול ללכת ברגל.") — `phrase.core.i-can` — ❌ wrong
+  4. EN "Sorry, I can't." · FR "Désolé, je ne peux pas." · ES "Lo siento, no puedo." · (HE gloss "סליחה, אני לא יכול.") — `phrase.core.i-cant` — ❌ wrong
+- Tests: phrase.core.i-dont-know
+- Explanation shown after answering: none — a correct match locks both tiles under a shared number and speaks the answer; a miss shakes, shows ✕ and clears (no penalty)
+
+### M04-Q16 — match-pairs (step 11, pair 3 of 4 (all pairs are on one screen))
+
+- Prompt displayed: "What do you answer your friend? Connect each question to its answer" / "מה עונים לחבר? חבר כל שאלה לתשובה שלה" — tile to match (target language, no translation): EN "You can walk." · FR "Tu peux y aller à pied." · ES "Puedes ir a pie."
+- Audio played: EN "You can walk." · FR "Tu peux y aller à pied." · ES "Puedes ir a pie."
+- Meaning of the audio (HE): "אתה יכול ללכת ברגל."
+- Buttons show: the ANSWER tiles, target language only; their order is shuffled; a matched pair locks and leaves the board, so later pairs have fewer live tiles
+- Choices:
+  1. EN "Yes, I want a coffee." · FR "Oui, je veux un café." · ES "Sí, quiero un café." · (HE gloss "כן, אני רוצה קפה.") — `phrase.core.i-want` — ❌ wrong
+  2. EN "I don't know." · FR "Je ne sais pas." · ES "No lo sé." · (HE gloss "אני לא יודע.") — `phrase.core.i-dont-know` — ❌ wrong
+  3. EN "I can walk." · FR "Je peux y aller à pied." · ES "Puedo ir a pie." · (HE gloss "אני יכול ללכת ברגל.") — `phrase.core.i-can` — ✅ accepted
+  4. EN "Sorry, I can't." · FR "Désolé, je ne peux pas." · ES "Lo siento, no puedo." · (HE gloss "סליחה, אני לא יכול.") — `phrase.core.i-cant` — ❌ wrong
+- Tests: phrase.core.i-can
+- Explanation shown after answering: none — a correct match locks both tiles under a shared number and speaks the answer; a miss shakes, shows ✕ and clears (no penalty)
+
+### M04-Q17 — match-pairs (step 11, pair 4 of 4 (all pairs are on one screen))
+
+- Prompt displayed: "What do you answer your friend? Connect each question to its answer" / "מה עונים לחבר? חבר כל שאלה לתשובה שלה" — tile to match (target language, no translation): EN "Can you come?" · FR "Tu peux venir ?" · ES "¿Puedes venir?"
+- Audio played: EN "Can you come?" · FR "Tu peux venir ?" · ES "¿Puedes venir?"
+- Meaning of the audio (HE): "אתה יכול לבוא?"
+- Buttons show: the ANSWER tiles, target language only; their order is shuffled; a matched pair locks and leaves the board, so later pairs have fewer live tiles
+- Choices:
+  1. EN "Yes, I want a coffee." · FR "Oui, je veux un café." · ES "Sí, quiero un café." · (HE gloss "כן, אני רוצה קפה.") — `phrase.core.i-want` — ❌ wrong
+  2. EN "I don't know." · FR "Je ne sais pas." · ES "No lo sé." · (HE gloss "אני לא יודע.") — `phrase.core.i-dont-know` — ❌ wrong
+  3. EN "I can walk." · FR "Je peux y aller à pied." · ES "Puedo ir a pie." · (HE gloss "אני יכול ללכת ברגל.") — `phrase.core.i-can` — ❌ wrong
+  4. EN "Sorry, I can't." · FR "Désolé, je ne peux pas." · ES "Lo siento, no puedo." · (HE gloss "סליחה, אני לא יכול.") — `phrase.core.i-cant` — ✅ accepted
+- Tests: phrase.core.i-cant
+- Explanation shown after answering: none — a correct match locks both tiles under a shared number and speaks the answer; a miss shakes, shows ✕ and clears (no penalty)
+
+### M04-Q18 — visual-match (step 12, round 1 of 3)
+
+- Prompt displayed: "Flip it — ✓ or ✕?" / "הפוך את זה — ✓ או ✕?"
+- Audio played: EN "I don't know." · FR "Je ne sais pas." · ES "No lo sé."
+- Meaning of the audio (HE): "אני לא יודע."
+- Buttons show: only this round's 2 tiles (the meaning and its contrast), same in every language; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "💡 “I know ✓” / “יודע ✓”" — no sentence id — ❌ wrong
+  2. "💡 “I don’t know ✕” / “לא יודע ✕”" — `phrase.core.i-dont-know` — ✅ accepted
+- Tests: phrase.core.i-dont-know
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M04-Q19 — visual-match (step 12, round 2 of 3)
+
+- Prompt displayed: "Flip it — ✓ or ✕?" / "הפוך את זה — ✓ או ✕?"
+- Audio played: EN "I can walk." · FR "Je peux y aller à pied." · ES "Puedo ir a pie."
+- Meaning of the audio (HE): "אני יכול ללכת ברגל."
+- Buttons show: only this round's 2 tiles (the meaning and its contrast), same in every language; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "💪 “I can ✓” / “יכול ✓”" — `phrase.core.i-can` — ✅ accepted
+  2. "💪 “I can’t ✕” / “לא יכול ✕”" — no sentence id — ❌ wrong
+- Tests: phrase.core.i-can
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M04-Q20 — visual-match (step 12, round 3 of 3)
+
+- Prompt displayed: "Flip it — ✓ or ✕?" / "הפוך את זה — ✓ או ✕?"
+- Audio played: EN "Sorry, I can't." · FR "Désolé, je ne peux pas." · ES "Lo siento, no puedo."
+- Meaning of the audio (HE): "סליחה, אני לא יכול."
+- Buttons show: only this round's 2 tiles (the meaning and its contrast), same in every language; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "💪 “I can ✓” / “יכול ✓”" — no sentence id — ❌ wrong
+  2. "💪 “I can’t ✕” / “לא יכול ✕”" — `phrase.core.i-cant` — ✅ accepted
+- Tests: phrase.core.i-cant
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M04-Q21 — visual-match (step 13, round 1 of 3)
+
+- Prompt displayed: "How do they react? Tap what you hear" / "איך מגיבים לך? הקש על מה ששמעת"
+- Audio played: EN "Of course." · FR "Bien sûr." · ES "Claro."
+- Meaning of the audio (HE): "בטח."
+- Buttons show: a 3×3 board of 3 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "👍 “sure / of course” / “בטח / כמובן”" — no sentence id — ✅ accepted
+  2. "👉📶 “here’s the password” / “הנה הסיסמה”" — no sentence id — ❌ wrong
+  3. "👌 “no problem” / “אין בעיה”" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M04-Q22 — visual-match (step 13, round 2 of 3)
+
+- Prompt displayed: "How do they react? Tap what you hear" / "איך מגיבים לך? הקש על מה ששמעת"
+- Audio played: EN "It's here." · FR "Il est ici." · ES "Está aquí."
+- Meaning of the audio (HE): "היא כאן."
+- Buttons show: a 3×3 board of 3 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "👍 “sure / of course” / “בטח / כמובן”" — no sentence id — ❌ wrong
+  2. "👉📶 “here’s the password” / “הנה הסיסמה”" — no sentence id — ✅ accepted
+  3. "👌 “no problem” / “אין בעיה”" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M04-Q23 — visual-match (step 13, round 3 of 3)
+
+- Prompt displayed: "How do they react? Tap what you hear" / "איך מגיבים לך? הקש על מה ששמעת"
+- Audio played: EN "No problem." · FR "Pas de problème." · ES "No pasa nada."
+- Meaning of the audio (HE): "אין בעיה."
+- Buttons show: a 3×3 board of 3 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "👍 “sure / of course” / “בטח / כמובן”" — no sentence id — ❌ wrong
+  2. "👉📶 “here’s the password” / “הנה הסיסמה”" — no sentence id — ❌ wrong
+  3. "👌 “no problem” / “אין בעיה”" — no sentence id — ✅ accepted
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M04-Q24 — sentence-builder (step 14, round 1 of 2)
+
+- Prompt displayed: "Build the sentence" / "בנה את המשפט" — cue shown: the sentence's MEANING in the app language ("אני צריך מגבת.")
+- Audio played: EN "(nothing before Check; the built sentence is spoken once it is right)" · FR "(same)" · ES "(same)"
+- Meaning of the audio (HE): —
+- Buttons show: the authored CHUNKS of the sentence as tiles (listed here in the correct order, separated by "|"), shuffled; each language has its own chunks; Check unlocks when every tile is placed
+- Choices:
+  1. EN "I  |  need  |  a towel." · FR "J’ai besoin  |  d’une  |  serviette." · ES "Necesito  |  una  |  toalla." · (HE gloss "אני צריך מגבת.") — `phrase.core.i-need` — ✅ accepted
+- Tests: phrase.core.i-need
+- Explanation shown after answering: right: the sentence is spoken and its translation shown. Wrong: "not yet" — the tiles stay, the answer is NOT shown; after one miss a hint marks the start; after two misses the learner may reveal it
+
+### M04-Q25 — sentence-builder (step 14, round 2 of 2)
+
+- Prompt displayed: "Build the sentence" / "בנה את המשפט" — cue shown: the sentence's MEANING in the app language ("אין לי אותה.")
+- Audio played: EN "(nothing before Check; the built sentence is spoken once it is right)" · FR "(same)" · ES "(same)"
+- Meaning of the audio (HE): —
+- Buttons show: the authored CHUNKS of the sentence as tiles (listed here in the correct order, separated by "|"), shuffled; each language has its own chunks; Check unlocks when every tile is placed
+- Choices:
+  1. EN "I  |  don't have  |  it." · FR "Je  |  ne l’ai  |  pas." · ES "No  |  la  |  tengo." · (HE gloss "אין לי אותה.") — `phrase.core.i-dont-have` — ✅ accepted
+- Tests: phrase.core.i-dont-have
+- Explanation shown after answering: right: the sentence is spoken and its translation shown. Wrong: "not yet" — the tiles stay, the answer is NOT shown; after one miss a hint marks the start; after two misses the learner may reveal it
+
+### M04-Q26 — swap-it (step 15, round 1 of 5)
+
+- Prompt displayed: "The sentence machine — pick the ending that fits" / "מכונת המשפטים — בחר את הסוף שמתאים" — cue ☕ "You are offered a coffee — and you would like one" / "מציעים לך קפה — ובא לך" — frame EN "I ___ a coffee." · FR "___ un café." · ES "___ un café."
 - Audio played: EN "(nothing before the tap; the completed sentence is spoken after it)" · FR "(same)" · ES "(same)"
 - Meaning of the audio (HE): —
 - Buttons show: the SLOT VALUES in the target language (shown here as "value → completed sentence"); order shuffled; a "wrong" value still produces and speaks a real sentence, with its translation
 - Choices:
-  1. EN "a coffee → I want a coffee." · FR "un café → Je veux un café." · ES "un café → Quiero un café." · (HE gloss "אני רוצה קפה.") — `phrase.core.i-want` — ✅ accepted
-  2. EN "water → I want water." · FR "de l’eau → Je veux de l’eau." · ES "agua → Quiero agua." · (HE gloss "אני רוצה מים.") — no sentence id — ❌ wrong
-  3. EN "a towel → I want a towel." · FR "une serviette → Je veux une serviette." · ES "una toalla → Quiero una toalla." · (HE gloss "אני רוצה מגבת.") — no sentence id — ❌ wrong
+  1. EN "want → I want a coffee." · FR "Je veux → Je veux un café." · ES "Quiero → Quiero un café." · (HE gloss "אני רוצה קפה.") — `phrase.core.i-want` — ✅ accepted
+  2. EN "have → I have a coffee." · FR "J’ai → J’ai un café." · ES "Tengo → Tengo un café." · (HE gloss "יש לי קפה.") — no sentence id — ❌ wrong
 - Tests: phrase.core.i-want
 - Explanation shown after answering: after the tap: the completed sentence, spoken, with its translation
 
-### M04-Q10 — swap-it (step 11, round 6 of 7)
+### M04-Q27 — swap-it (step 15, round 2 of 5)
 
-- Prompt displayed: "Finish the sentence" / "השלם את המשפט" — cue 🤝 "You can help" / "אתה יכול לעזור" — frame EN "I can ___." · FR "Je peux ___." · ES "Puedo ___."
+- Prompt displayed: "The sentence machine — pick the ending that fits" / "מכונת המשפטים — בחר את הסוף שמתאים" — cue ☕ "The coffee is already in your hand" / "הקפה כבר ביד שלך" — frame EN "I ___ a coffee." · FR "___ un café." · ES "___ un café."
 - Audio played: EN "(nothing before the tap; the completed sentence is spoken after it)" · FR "(same)" · ES "(same)"
 - Meaning of the audio (HE): —
 - Buttons show: the SLOT VALUES in the target language (shown here as "value → completed sentence"); order shuffled; a "wrong" value still produces and speaks a real sentence, with its translation
 - Choices:
-  1. EN "help → I can help." · FR "aider → Je peux aider." · ES "ayudar → Puedo ayudar." · (HE gloss "אני יכול לעזור.") — `phrase.core.i-can` — ✅ accepted
-  2. EN "walk → I can walk." · FR "y aller à pied → Je peux y aller à pied." · ES "ir a pie → Puedo ir a pie." · (HE gloss "אני יכול ללכת ברגל.") — no sentence id — ❌ wrong
-  3. EN "come → I can come." · FR "venir → Je peux venir." · ES "venir → Puedo venir." · (HE gloss "אני יכול לבוא.") — no sentence id — ❌ wrong
-- Tests: phrase.core.i-can
+  1. EN "have → I have a coffee." · FR "J’ai → J’ai un café." · ES "Tengo → Tengo un café." · (HE gloss "יש לי קפה.") — no sentence id — ✅ accepted
+  2. EN "want → I want a coffee." · FR "Je veux → Je veux un café." · ES "Quiero → Quiero un café." · (HE gloss "אני רוצה קפה.") — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
 - Explanation shown after answering: after the tap: the completed sentence, spoken, with its translation
 
-### M04-Q11 — swap-it (step 11, round 7 of 7)
+### M04-Q28 — swap-it (step 15, round 3 of 5)
 
-- Prompt displayed: "Finish the sentence" / "השלם את המשפט" — cue 🚫 "You cannot come" / "אתה לא יכול לבוא" — frame EN "I can't ___." · FR "Je ne peux pas ___." · ES "No puedo ___."
+- Prompt displayed: "The sentence machine — pick the ending that fits" / "מכונת המשפטים — בחר את הסוף שמתאים" — cue 🥐 "You feel like a croissant (from Mission 3)" / "בא לך קרואסון (ממשימה 3)" — frame EN "I want ___." · FR "Je veux ___." · ES "Quiero ___."
 - Audio played: EN "(nothing before the tap; the completed sentence is spoken after it)" · FR "(same)" · ES "(same)"
 - Meaning of the audio (HE): —
 - Buttons show: the SLOT VALUES in the target language (shown here as "value → completed sentence"); order shuffled; a "wrong" value still produces and speaks a real sentence, with its translation
 - Choices:
-  1. EN "come → I can't come." · FR "venir → Je ne peux pas venir." · ES "venir → No puedo venir." · (HE gloss "אני לא יכול לבוא.") — `phrase.core.i-cant` — ✅ accepted
-  2. EN "walk → I can't walk." · FR "y aller à pied → Je ne peux pas y aller à pied." · ES "ir a pie → No puedo ir a pie." · (HE gloss "אני לא יכול ללכת ברגל.") — no sentence id — ❌ wrong
-  3. EN "help → I can't help." · FR "aider → Je ne peux pas aider." · ES "ayudar → No puedo ayudar." · (HE gloss "אני לא יכול לעזור.") — no sentence id — ❌ wrong
-- Tests: phrase.core.i-cant
+  1. EN "a croissant → I want a croissant." · FR "un croissant → Je veux un croissant." · ES "un cruasán → Quiero un cruasán." · (HE gloss "אני רוצה קרואסון.") — no sentence id — ✅ accepted
+  2. EN "water → I want water." · FR "de l’eau → Je veux de l’eau." · ES "agua → Quiero agua." · (HE gloss "אני רוצה מים.") — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
 - Explanation shown after answering: after the tap: the completed sentence, spoken, with its translation
 
-### M04-Q12 — quick-reply (step 12, round 1 of 5)
+### M04-Q29 — swap-it (step 15, round 4 of 5)
 
-- Prompt displayed: "What do you say?" / "מה עונים?"
-- Audio played: EN "Do you need anything?" · FR "Vous avez besoin de quelque chose ?" · ES "¿Necesita algo?"
-- Meaning of the audio (HE): "אתה צריך משהו?"
+- Prompt displayed: "The sentence machine — pick the ending that fits" / "מכונת המשפטים — בחר את הסוף שמתאים" — cue 🗺️ "There is a map — but you cannot find the way on it" / "יש מפה — אבל אתה לא מוצא את הדרך עליה" — frame EN "Can you ___ me?" · FR "Vous pouvez ___ ?" · ES "¿Me ___?"
+- Audio played: EN "(nothing before the tap; the completed sentence is spoken after it)" · FR "(same)" · ES "(same)"
+- Meaning of the audio (HE): —
+- Buttons show: the SLOT VALUES in the target language (shown here as "value → completed sentence"); order shuffled; a "wrong" value still produces and speaks a real sentence, with its translation
+- Choices:
+  1. EN "show → Can you show me?" · FR "me montrer → Vous pouvez me montrer ?" · ES "lo puede mostrar → ¿Me lo puede mostrar?" · (HE gloss "אתה יכול להראות לי?") — `phrase.recovery.show-me` — ✅ accepted
+  2. EN "help → Can you help me?" · FR "m’aider → Vous pouvez m’aider ?" · ES "puede ayudar → ¿Me puede ayudar?" · (HE gloss "אתה יכול לעזור לי?") — no sentence id — ❌ wrong
+- Tests: phrase.recovery.show-me
+- Explanation shown after answering: after the tap: the completed sentence, spoken, with its translation
+
+### M04-Q30 — swap-it (step 15, round 5 of 5)
+
+- Prompt displayed: "The sentence machine — pick the ending that fits" / "מכונת המשפטים — בחר את הסוף שמתאים" — cue 🎒 "Your bag is heavy — you need a hand" / "התיק כבד — אתה צריך עזרה" — frame EN "Can you ___ me?" · FR "Vous pouvez ___ ?" · ES "¿Me ___?"
+- Audio played: EN "(nothing before the tap; the completed sentence is spoken after it)" · FR "(same)" · ES "(same)"
+- Meaning of the audio (HE): —
+- Buttons show: the SLOT VALUES in the target language (shown here as "value → completed sentence"); order shuffled; a "wrong" value still produces and speaks a real sentence, with its translation
+- Choices:
+  1. EN "help → Can you help me?" · FR "m’aider → Vous pouvez m’aider ?" · ES "puede ayudar → ¿Me puede ayudar?" · (HE gloss "אתה יכול לעזור לי?") — `phrase.core.can-you-help` — ✅ accepted
+  2. EN "show → Can you show me?" · FR "me montrer → Vous pouvez me montrer ?" · ES "lo puede mostrar → ¿Me lo puede mostrar?" · (HE gloss "אתה יכול להראות לי?") — no sentence id — ❌ wrong
+- Tests: phrase.core.can-you-help
+- Explanation shown after answering: after the tap: the completed sentence, spoken, with its translation
+
+### M04-Q41 — quick-reply (step 21, round 1 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "Hi! Do you need anything?" · FR "Bonjour ! Vous avez besoin de quelque chose ?" · ES "¡Hola! ¿Necesita algo?"
+- Meaning of the audio (HE): "שלום! אתה צריך משהו?"
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
   1. EN "I need a towel." · FR "J’ai besoin d’une serviette." · ES "Necesito una toalla." · (HE gloss "אני צריך מגבת.") — `phrase.core.i-need` — ✅ accepted
-  2. EN "Yes, I know." · FR "Oui, je sais." · ES "Sí, lo sé." · (HE gloss "כן, אני יודע.") — `phrase.core.i-know` — ❌ wrong
+  2. EN "Yes, I want a coffee." · FR "Oui, je veux un café." · ES "Sí, quiero un café." · (HE gloss "כן, אני רוצה קפה.") — `phrase.core.i-want` — ❌ wrong
   3. EN "Sorry, I can't." · FR "Désolé, je ne peux pas." · ES "Lo siento, no puedo." · (HE gloss "סליחה, אני לא יכול.") — `phrase.core.i-cant` — ❌ wrong
 - Tests: phrase.core.i-need
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M04-Q13 — quick-reply (step 12, round 2 of 5)
+### M04-Q42 — quick-reply (step 21, round 2 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
 
-- Prompt displayed: "What do you say?" / "מה עונים?"
-- Audio played: EN "Do you have your key?" · FR "Vous avez votre clé ?" · ES "¿Tiene su llave?"
-- Meaning of the audio (HE): "יש לך את המפתח?"
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "Sure. Do you have your key?" · FR "Bien sûr. Vous avez votre clé ?" · ES "Claro. ¿Tiene su llave?"
+- Meaning of the audio (HE): "בטח. יש לך את המפתח?"
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
   1. EN "Yes, I have my key." · FR "Oui, j’ai ma clé." · ES "Sí, tengo mi llave." · (HE gloss "כן, יש לי את המפתח.") — `phrase.core.i-have` — ✅ accepted
@@ -4064,9 +4381,22 @@ No meaning quiz in this mission.
 - Tests: phrase.core.i-have
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M04-Q14 — quick-reply (step 12, round 3 of 5)
+### M04-Q43 — quick-reply (step 21, round 3 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
 
-- Prompt displayed: "What do you say?" / "מה עונים?"
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "Do you want a coffee?" · FR "Tu veux un café ?" · ES "¿Quieres un café?"
+- Meaning of the audio (HE): "רוצה קפה?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Yes, I want a coffee." · FR "Oui, je veux un café." · ES "Sí, quiero un café." · (HE gloss "כן, אני רוצה קפה.") — `phrase.core.i-want` — ✅ accepted
+  2. EN "I need a towel." · FR "J’ai besoin d’une serviette." · ES "Necesito una toalla." · (HE gloss "אני צריך מגבת.") — `phrase.core.i-need` — ❌ wrong
+  3. EN "I don't have it." · FR "Je ne l’ai pas." · ES "No la tengo." · (HE gloss "אין לי אותה.") — `phrase.core.i-dont-have` — ❌ wrong
+- Tests: phrase.core.i-want
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M04-Q44 — quick-reply (step 21, round 4 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio played: EN "Do you know how to get to the centre?" · FR "Tu sais comment aller au centre ?" · ES "¿Sabes cómo ir al centro?"
 - Meaning of the audio (HE): "אתה יודע איך להגיע למרכז?"
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
@@ -4077,31 +4407,90 @@ No meaning quiz in this mission.
 - Tests: phrase.core.i-dont-know, phrase.core.i-know
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M04-Q15 — quick-reply (step 12, round 4 of 5)
+### M04-Q45 — quick-reply (step 21, round 5 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
 
-- Prompt displayed: "What do you say?" / "מה עונים?"
-- Audio played: EN "Can you come?" · FR "Tu peux venir ?" · ES "¿Puedes venir?"
-- Meaning of the audio (HE): "אתה יכול לבוא?"
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "We're having dinner at seven. Can you come?" · FR "On dîne à sept heures. Tu peux venir ?" · ES "Cenamos a las siete. ¿Puedes venir?"
+- Meaning of the audio (HE): "אנחנו אוכלים ארוחת ערב בשבע. אתה יכול לבוא?"
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
   1. EN "Sorry, I can't." · FR "Désolé, je ne peux pas." · ES "Lo siento, no puedo." · (HE gloss "סליחה, אני לא יכול.") — `phrase.core.i-cant` — ✅ accepted
-  2. EN "I need a towel." · FR "J’ai besoin d’une serviette." · ES "Necesito una toalla." · (HE gloss "אני צריך מגבת.") — `phrase.core.i-need` — ❌ wrong
-  3. EN "Yes, I have my key." · FR "Oui, j’ai ma clé." · ES "Sí, tengo mi llave." · (HE gloss "כן, יש לי את המפתח.") — `phrase.core.i-have` — ❌ wrong
+  2. EN "Yes, I have my key." · FR "Oui, j’ai ma clé." · ES "Sí, tengo mi llave." · (HE gloss "כן, יש לי את המפתח.") — `phrase.core.i-have` — ❌ wrong
+  3. EN "I need a towel." · FR "J’ai besoin d’une serviette." · ES "Necesito una toalla." · (HE gloss "אני צריך מגבת.") — `phrase.core.i-need` — ❌ wrong
 - Tests: phrase.core.i-cant
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M04-Q16 — quick-reply (step 12, round 5 of 5)
+### M04-Q46 — visual-match (step 24, round 1 of 6)
 
-- Prompt displayed: "What do you say here?" / "מה אומרים כאן?" — situation shown: "Your bag is too heavy and you need a hand." / "התיק כבד מדי ואתה צריך יד."
-- Audio played: EN "(nothing is played — a situation is shown)" · FR "(nothing is played — a situation is shown)" · ES "(nothing is played — a situation is shown)"
-- Meaning of the audio (HE): —
-- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Prompt displayed: "What happened? Tap what you hear" / "מה קרה? הקש על מה ששמעת"
+- Audio played: EN "Yes, I have my key." · FR "Oui, j’ai ma clé." · ES "Sí, tengo mi llave."
+- Meaning of the audio (HE): "כן, יש לי את המפתח."
+- Buttons show: only this round's 2 tiles (the meaning and its contrast), same in every language; the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. EN "Can you help me?" · FR "Vous pouvez m’aider ?" · ES "¿Me puede ayudar?" · (HE gloss "אתה יכול לעזור לי?") — `phrase.core.can-you-help` — ✅ accepted
-  2. EN "I can walk." · FR "Je peux y aller à pied." · ES "Puedo ir a pie." · (HE gloss "אני יכול ללכת ברגל.") — `phrase.core.i-can` — ❌ wrong
-  3. EN "Yes, I know." · FR "Oui, je sais." · ES "Sí, lo sé." · (HE gloss "כן, אני יודע.") — `phrase.core.i-know` — ❌ wrong
-- Tests: phrase.core.can-you-help
-- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+  1. "🔑 “I have it ✓” / “יש לי ✓”" — `phrase.core.i-have` — ✅ accepted
+  2. "📶 “I don’t have it ✕” / “אין לי ✕”" — no sentence id — ❌ wrong
+- Tests: phrase.core.i-have
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M04-Q47 — visual-match (step 24, round 2 of 6)
+
+- Prompt displayed: "What happened? Tap what you hear" / "מה קרה? הקש על מה ששמעת"
+- Audio played: EN "Yes, I want a coffee." · FR "Oui, je veux un café." · ES "Sí, quiero un café."
+- Meaning of the audio (HE): "כן, אני רוצה קפה."
+- Buttons show: only this round's 2 tiles (the meaning and its contrast), same in every language; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "☕ “want a coffee” / “רוצה קפה”" — `phrase.core.i-want` — ✅ accepted
+  2. "🛁 “need a towel” / “צריך מגבת”" — no sentence id — ❌ wrong
+- Tests: phrase.core.i-want
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M04-Q48 — visual-match (step 24, round 3 of 6)
+
+- Prompt displayed: "What happened? Tap what you hear" / "מה קרה? הקש על מה ששמעת"
+- Audio played: EN "I don't know." · FR "Je ne sais pas." · ES "No lo sé."
+- Meaning of the audio (HE): "אני לא יודע."
+- Buttons show: only this round's 2 tiles (the meaning and its contrast), same in every language; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "💡 “I know ✓” / “יודע ✓”" — no sentence id — ❌ wrong
+  2. "💡 “I don’t know ✕” / “לא יודע ✕”" — `phrase.core.i-dont-know` — ✅ accepted
+- Tests: phrase.core.i-dont-know
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M04-Q49 — visual-match (step 24, round 4 of 6)
+
+- Prompt displayed: "What happened? Tap what you hear" / "מה קרה? הקש על מה ששמעת"
+- Audio played: EN "You can walk. It's about twenty minutes." · FR "Tu peux y aller à pied. C’est à environ vingt minutes." · ES "Puedes ir a pie. Son unos veinte minutos."
+- Meaning of the audio (HE): "אתה יכול ללכת ברגל. זה בערך עשרים דקות."
+- Buttons show: only this round's 2 tiles (the meaning and its contrast), same in every language; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "🚶 “on foot · ~20 min” / “ברגל · ~20 דק׳”" — no sentence id — ✅ accepted
+  2. "🍽️ “dinner at 7” / “ארוחת ערב ב-7”" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M04-Q50 — visual-match (step 24, round 5 of 6)
+
+- Prompt displayed: "What happened? Tap what you hear" / "מה קרה? הקש על מה ששמעת"
+- Audio played: EN "We're having dinner at seven. Can you come?" · FR "On dîne à sept heures. Tu peux venir ?" · ES "Cenamos a las siete. ¿Puedes venir?"
+- Meaning of the audio (HE): "אנחנו אוכלים ארוחת ערב בשבע. אתה יכול לבוא?"
+- Buttons show: only this round's 2 tiles (the meaning and its contrast), same in every language; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "🚶 “on foot · ~20 min” / “ברגל · ~20 דק׳”" — no sentence id — ❌ wrong
+  2. "🍽️ “dinner at 7” / “ארוחת ערב ב-7”" — no sentence id — ✅ accepted
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M04-Q51 — visual-match (step 24, round 6 of 6)
+
+- Prompt displayed: "What happened? Tap what you hear" / "מה קרה? הקש על מה ששמעת"
+- Audio played: EN "Sorry, I can't." · FR "Désolé, je ne peux pas." · ES "Lo siento, no puedo."
+- Meaning of the audio (HE): "סליחה, אני לא יכול."
+- Buttons show: only this round's 2 tiles (the meaning and its contrast), same in every language; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "💪 “I can ✓” / “יכול ✓”" — no sentence id — ❌ wrong
+  2. "💪 “I can’t ✕” / “לא יכול ✕”" — `phrase.core.i-cant` — ✅ accepted
+- Tests: phrase.core.i-cant
+- Explanation shown after answering: after the tap: the spoken line and its translation
 
 ## Dialogue — full tree
 
@@ -4286,7 +4675,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 
 ## Learner choice screens
 
-### M04-Q17 — dialogue-choice (step 13, scene "hostel-desk" · node c2)
+### M04-Q31 — dialogue-choice (step 17, scene "hostel-desk" · node c2)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Hi! Do you need anything?" · FR "Bonjour ! Vous avez besoin de quelque chose ?" · ES "¡Hola! ¿Necesita algo?"
@@ -4297,7 +4686,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.core.i-need
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M04-Q18 — dialogue-choice (step 13, scene "hostel-desk" · node c4)
+### M04-Q32 — dialogue-choice (step 17, scene "hostel-desk" · node c4)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Sure. Do you have your key?" · FR "Bien sûr. Vous avez votre clé ?" · ES "Claro. ¿Tiene su llave?"
@@ -4308,7 +4697,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.core.i-have
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M04-Q19 — dialogue-choice (step 13, scene "hostel-desk" · node c6)
+### M04-Q33 — dialogue-choice (step 17, scene "hostel-desk" · node c6)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "And the wifi password?" · FR "Et le mot de passe du wifi ?" · ES "¿Y la contraseña del wifi?"
@@ -4319,7 +4708,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.core.i-dont-have
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M04-Q20 — dialogue-choice (step 13, scene "hostel-desk" · node c8)
+### M04-Q34 — dialogue-choice (step 17, scene "hostel-desk" · node c8)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "It's here." · FR "Il est ici." · ES "Está aquí."
@@ -4330,7 +4719,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.core.do-you-have
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M04-Q21 — dialogue-choice (step 13, scene "hostel-desk" · node c10)
+### M04-Q35 — dialogue-choice (step 17, scene "hostel-desk" · node c10)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Yes." · FR "Oui." · ES "Sí."
@@ -4341,7 +4730,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.recovery.show-me
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M04-Q22 — dialogue-choice (step 15, scene "coffee-with-a-friend" · node c2)
+### M04-Q36 — dialogue-choice (step 19, scene "coffee-with-a-friend" · node c2)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Do you want a coffee?" · FR "Tu veux un café ?" · ES "¿Quieres un café?"
@@ -4352,7 +4741,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.core.i-want
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M04-Q23 — dialogue-choice (step 15, scene "coffee-with-a-friend" · node c4)
+### M04-Q37 — dialogue-choice (step 19, scene "coffee-with-a-friend" · node c4)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Do you know how to get to the centre?" · FR "Tu sais comment aller au centre ?" · ES "¿Sabes cómo ir al centro?"
@@ -4364,7 +4753,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.core.i-dont-know, phrase.recovery.slowly
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M04-Q24 — dialogue-choice (step 15, scene "coffee-with-a-friend" · node c4b)
+### M04-Q38 — dialogue-choice (step 19, scene "coffee-with-a-friend" · node c4b)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "The centre. Do you know — the way?" · FR "Le centre. Tu connais — le chemin ?" · ES "El centro. ¿Sabes — el camino?"
@@ -4375,7 +4764,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.core.i-dont-know
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M04-Q25 — dialogue-choice (step 15, scene "coffee-with-a-friend" · node c6)
+### M04-Q39 — dialogue-choice (step 19, scene "coffee-with-a-friend" · node c6)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "You can walk. It's about twenty minutes." · FR "Tu peux y aller à pied. C’est à environ vingt minutes." · ES "Puedes ir a pie. Son unos veinte minutos."
@@ -4386,7 +4775,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.core.i-can
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M04-Q26 — dialogue-choice (step 15, scene "coffee-with-a-friend" · node c8)
+### M04-Q40 — dialogue-choice (step 19, scene "coffee-with-a-friend" · node c8)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "We're having dinner at seven. Can you come?" · FR "On dîne à sept heures. Tu peux venir ?" · ES "Cenamos a las siete. ¿Puedes venir?"
@@ -4413,42 +4802,11 @@ None — no choice in this mission is marked wrong.
 
 ## Sentence review
 
-Step 17. 14 sentences, in this fixed order. Each is played automatically (TTS), shown with its translation and tip; buttons: 🔊 "Hear again" / "לשמוע שוב" and Next. No speaking prompt, no grading, no scoring; nothing is recorded.
-
-1. `phrase.core.i-want` — Yes, I want a coffee. — כן, אני רוצה קפה.
-2. `phrase.core.i-need` — I need a towel. — אני צריך מגבת.
-3. `phrase.core.i-have` — Yes, I have my key. — כן, יש לי את המפתח.
-4. `phrase.core.i-dont-have` — I don't have it. — אין לי אותה.
-5. `phrase.core.i-dont-know` — I don't know. — אני לא יודע.
-6. `phrase.core.i-can` — I can walk. — אני יכול ללכת ברגל.
-7. `phrase.core.i-cant` — Sorry, I can't. — סליחה, אני לא יכול.
-8. `phrase.core.do-you-have` — Do you have a map? — יש לך מפה?
-9. `phrase.core.can-you-help` — Can you help me? — אתה יכול לעזור לי?
-10. `reply.core.need-anything` — Do you need anything? — אתה צריך משהו?
-11. `reply.core.have-your-key` — Do you have your key? — יש לך את המפתח?
-12. `reply.core.do-you-know` — Do you know how to get to the centre? — אתה יודע איך להגיע למרכז?
-13. `reply.core.can-you-come` — Can you come? — אתה יכול לבוא?
-14. `phrase.recovery.show-me` — Can you show me? — אתה יכול להראות לי?
+No sentence-review step in this mission.
 
 ## Cold open / ambush
 
-### M04-Q27 — cold-open (step 18, single prompt · mode: speed)
-
-- Prompt displayed: "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
-- Audio played: EN "Before you go out do you have your key with you or is it still in the room?" · FR "Avant de sortir, vous avez votre clé sur vous ou elle est encore dans la chambre ?" · ES "Antes de salir, ¿tiene su llave encima o sigue en la habitación?"
-- Meaning of the audio (HE): "לפני שאתה יוצא — המפתח עליך או שהוא עדיין בחדר?"
-- Buttons show: TARGET-LANGUAGE text of the two sentences, no badge; order shuffled
-- Choices:
-  1. EN "Do you have your key?" · FR "Vous avez votre clé ?" · ES "¿Tiene su llave?" · (HE gloss "יש לך את המפתח?") — `reply.core.have-your-key` — ✅ accepted
-  2. EN "Can you come?" · FR "Tu peux venir ?" · ES "¿Puedes venir?" · (HE gloss "אתה יכול לבוא?") — `reply.core.can-you-come` — ❌ wrong
-- Tests: reply.core.have-your-key
-- Explanation shown after answering: generic: “Do you have your key?” means “יש לך את המפתח?”.
-
-- Flow: screen shows ⚡ and "Heads up: a fast one is coming. Use a tool." / "שים לב: מגיע משפט מהיר. השתמש בכלי." with one button 👂 "I'm ready" / "אני מוכן"; on tap the line is spoken at TTS rate 1.12 and printed small; two shuffled buttons appear; 🔊 "Hear again" / "לשמוע שוב" replays at 0.85.
-- Success criterion: picking the accepted sentence. A wrong pick shows the feedback card (what you heard + translation, your answer, the sentence that fit) with Try again / Continue; Continue proceeds either way. Response time is recorded.
-- Recovery options offered: none
-- Receipt shown next: "A long, fast sentence — and you caught the question inside it: do you have your key?" / "משפט ארוך ומהיר — ותפסת את השאלה שבפנים: יש לך את המפתח?"
-- Potential new-language exposure: YES — English words not met in any sentence or dialogue line of Missions 01–04: before, out, still, room
+No cold open in this mission.
 
 ## Swap-in / variable content
 
@@ -4464,39 +4822,38 @@ Learner sentences taught beside the dialogue (not a line in any scene):
 
 ## Receipts (proof cards)
 
-- Step 10: "You recognize the four most common questions: want? need? have? can?" / "אתה מזהה את ארבע השאלות הכי נפוצות: רוצה? צריך? יש לך? יכול?"
-- Step 14: "You said what you need, what you have and what you don’t — and asked for help." / "אמרת מה אתה צריך, מה יש לך ומה אין — וביקשת עזרה."
-- Step 16: "You said what you want, what you know and what you can do — in a chat with a friend." / "אמרת מה אתה רוצה, מה אתה יודע ומה אתה יכול — בשיחה עם חבר."
-- Step 19: "A long, fast sentence — and you caught the question inside it: do you have your key?" / "משפט ארוך ומהיר — ותפסת את השאלה שבפנים: יש לך את המפתח?"
+- Step 16: "Look what you can already say: change the ending — or the engine — and you have a new sentence." / "תראה מה אתה כבר יכול להגיד: מחליפים את הסוף — או את המנוע — ויש משפט חדש."
+- Step 18: "You said what you need, what you have and what you don’t — and asked for help." / "אמרת מה אתה צריך, מה יש לך ומה אין — וביקשת עזרה."
+- Step 20: "The same engines, with a friend: want, don’t know, can, can’t." / "אותם מנועים, עם חבר: רוצה, לא יודע, יכול, לא יכול."
+- Step 22: "Five real questions, at real speed — and you caught the engine in every one." / "חמש שאלות אמיתיות, בקצב אמיתי — וזיהית בכל אחת את המנוע."
+- Step 25: "You understood both conversations — and built your own sentences with five engines." / "הבנת את שתי השיחות — ובנית משפטים משלך עם חמישה מנועים."
 
 ## Audit Metadata — DO NOT FIX YET
 
 - Learner-production sentences: 10
-- Receptive (expected-reply) sentences: 6
+- Receptive (expected-reply) sentences: 7
 - Toolkit phrases bundled: 2
-- Key-sentence steps: 6
-- Expected-reply/listening items: 4
+- Key-sentence steps: 0
+- Expected-reply/listening items: 0
 - Questions/quizzes (meaning quiz): 0
-- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 12
-- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 13
+- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 41
+- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 22
 - One-button dialogue screens: 9
 - Learner sentences never actively retrieved: 0
 - Dialogue learner choices (screens): 10
 - Wrong-answer branches: 0
-- Cold-open prompts: 1
+- Cold-open prompts: 0
 - Recovery opportunities: 2
-- Vocabulary pre-items: 5
+- Vocabulary pre-items: 30
 - Swap variants (extra accepted lines): 0
-- Sentences in review: 14
-- Total interactive questions: 27 (answer choices: 61)
-- Approximate total learner interactions: 48 (questions + key sentences + review cards + word-intro screen)
+- Sentences in review: 0
+- Total interactive questions: 51 (answer choices: 125)
+- Approximate total learner interactions: 52 (questions + key sentences + review cards + word-intro screen)
 
-### AUTO-FLAG — requires human review (4)
+### AUTO-FLAG — requires human review (2)
 
-- AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "hostel-desk" n5 — “And the wifi password?”
 - AUTO-FLAG — 10 of 10 choice screens have NO wrong option (every button is accepted): hostel-desk/c2, hostel-desk/c4, hostel-desk/c6, hostel-desk/c8, hostel-desk/c10, coffee-with-a-friend/c2, coffee-with-a-friend/c4, coffee-with-a-friend/c4b, coffee-with-a-friend/c6, coffee-with-a-friend/c8.
 - AUTO-FLAG — 9 choice screens offer exactly ONE button (no decision): hostel-desk/c2, hostel-desk/c4, hostel-desk/c6, hostel-desk/c8, hostel-desk/c10, coffee-with-a-friend/c2, coffee-with-a-friend/c4b, coffee-with-a-friend/c6, coffee-with-a-friend/c8.
-- AUTO-FLAG — M04-Q27: cold-open line contains English words not met in any sentence or dialogue line up to this mission: before, out, still, room.
 
 ---
 
@@ -27428,7 +27785,7 @@ Every learner sentence of this mission is a line in a scene.
 | 01 Introduce Myself | 14 (4 / 8 / 2) | 9 | 13 | 4 | 16 | 6 | 3 | 2 | 1 | 7 words | 0 | 36 | 8 |
 | 02 Numbers & Money | 19 (5 / 12 / 2) | 5 | 5 | 0 | 36 | 4 | 1 | 2 | 0 | 8 words | 1 | 45 | 10 |
 | 03 Coffee Shop | 22 (7 / 11 / 4) | 5 | 5 | 0 | 44 | 11 | 5 | 3 | 0 | 18 words | 1 | 60 | 14 |
-| 04 Everyday Core: Want / Need / Have / Can | 18 (10 / 6 / 2) | 4 | 4 | 0 | 12 | 10 | 9 | 2 | 1 | 5 words | 0 | 27 | 4 |
+| 04 Everyday Core: Want / Need / Have / Can | 19 (10 / 7 / 2) | 0 | 0 | 0 | 41 | 10 | 9 | 2 | 0 | 30 words | 0 | 51 | 2 |
 | 05 Directions | 14 (5 / 7 / 2) | 4 | 5 | 1 | 9 | 3 | 1 | 1 | 0 | 6 words | 0 | 17 | 5 |
 | 06 Airport & Border | 15 (5 / 6 / 4) | 4 | 4 | 0 | 11 | 10 | 5 | 3 | 0 | no | 0 | 25 | 4 |
 | 07 Taxi / Uber | 13 (5 / 5 / 3) | 4 | 4 | 0 | 11 | 5 | 2 | 2 | 0 | 5 words | 1 | 20 | 3 |
@@ -27480,16 +27837,16 @@ Every learner-production sentence id of the Core, in order of first appearance. 
 | `phrase.coffee.card` | Card, please. | 03 | — | 0 | 2 / 0 | 9 | 0 | 1 | no | no |  |
 | `phrase.coffee.medium` | Medium, please. | 03 | — | 0 | 2 / 0 | 9 | 0 | 1 | no | no |  |
 | `phrase.coffee.yes-please` | Yes, please. | 03 | 29 | 0 | 2 / 0 | 4 | 0 | 1 | no | no |  |
-| `phrase.core.i-need` | I need a towel. | 04 | — | 1 | 1 / 0 | 4 | 0 | 1 | no | no |  |
-| `phrase.core.i-have` | Yes, I have my key. | 04 | 30 | 0 | 2 / 0 | 4 | 0 | 1 | yes | no |  |
-| `phrase.core.i-dont-have` | I don't have it. | 04 | — | 1 | 1 / 0 | 1 | 0 | 1 | no | no |  |
-| `phrase.core.do-you-have` | Do you have a map? | 04 | 30 | 1 | 2 / 0 | 0 | 0 | 1 | yes | no |  |
-| `phrase.core.i-want` | Yes, I want a coffee. | 04 | — | 1 | 1 / 0 | 2 | 0 | 1 | no | no |  |
-| `phrase.core.i-dont-know` | I don't know. | 04 | — | 0 | 2 / 0 | 2 | 0 | 1 | no | no |  |
-| `phrase.core.i-can` | I can walk. | 04 | — | 0 | 1 / 0 | 2 | 0 | 1 | no | no |  |
-| `phrase.core.i-cant` | Sorry, I can't. | 04 | — | 1 | 1 / 0 | 3 | 0 | 1 | no | no |  |
-| `phrase.core.i-know` | Yes, I know. | 04 | 30 | 0 | 0 / 1 | 3 | 0 | 0 | yes | no |  |
-| `phrase.core.can-you-help` | Can you help me? | 04 | 22 | 1 | 1 / 0 | 1 | 0 | 1 | no | no |  |
+| `phrase.core.i-need` | I need a towel. | 04 | — | 0 | 1 / 0 | 6 | 0 | 0 | no | no |  |
+| `phrase.core.i-have` | Yes, I have my key. | 04 | 30 | 0 | 2 / 0 | 5 | 0 | 0 | yes | no |  |
+| `phrase.core.i-dont-have` | I don't have it. | 04 | — | 0 | 1 / 0 | 4 | 0 | 0 | no | no |  |
+| `phrase.core.do-you-have` | Do you have a map? | 04 | 30 | 0 | 2 / 0 | 2 | 0 | 0 | yes | no |  |
+| `phrase.core.i-want` | Yes, I want a coffee. | 04 | — | 0 | 1 / 0 | 5 | 0 | 0 | no | no |  |
+| `phrase.core.i-dont-know` | I don't know. | 04 | — | 0 | 2 / 0 | 3 | 0 | 0 | no | no |  |
+| `phrase.core.i-can` | I can walk. | 04 | — | 0 | 1 / 0 | 1 | 0 | 0 | no | no |  |
+| `phrase.core.i-cant` | Sorry, I can't. | 04 | — | 0 | 1 / 0 | 3 | 0 | 0 | no | no |  |
+| `phrase.core.i-know` | Yes, I know. | 04 | 30 | 0 | 0 / 1 | 1 | 0 | 0 | yes | no |  |
+| `phrase.core.can-you-help` | Can you help me? | 04 | 22 | 0 | 1 / 0 | 1 | 0 | 0 | no | no |  |
 | `phrase.dir.excuse-me` | Excuse me! | 05 | — | 0 | 0 / 0 | 0 | 0 | 0 | no | no | **0 active retrieval opportunities** |
 | `phrase.dir.where-is` | Where is the station? | 05 | — | 1 | 0 / 0 | 2 | 0 | 1 | no | no |  |
 | `phrase.dir.how-do-i-get` | How do I get to the beach? | 05 | — | 0 | 0 / 0 | 2 | 0 | 1 | no | no |  |
@@ -27668,11 +28025,12 @@ Every expected-reply sentence id. "Quick response" does not exist as an exercise
 | `reply.coffee.sure` | Sure! | 03 | — | no | 0 / 0 | 0 / 0 | no | yes |
 | `reply.coffee.great-choice` | Great choice. | 03 | — | no | 0 / 0 | 0 / 0 | no | yes |
 | `reply.core.do-you-want` | Do you want a coffee? | 04 | — | no | 0 / 0 | 0 / 0 | no | yes |
-| `reply.core.need-anything` | Do you need anything? | 04 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
-| `reply.core.have-your-key` | Do you have your key? | 04 | — | yes (1) | 0 / 0 | 1 / 0 | no | yes |
-| `reply.core.do-you-know` | Do you know how to get to the centre? | 04 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
-| `reply.core.can-you-come` | Can you come? | 04 | — | yes (1) | 0 / 0 | 0 / 1 | no | yes |
+| `reply.core.need-anything` | Do you need anything? | 04 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.core.have-your-key` | Do you have your key? | 04 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.core.do-you-know` | Do you know how to get to the centre? | 04 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.core.can-you-come` | Can you come? | 04 | — | no | 0 / 0 | 0 / 0 | no | yes |
 | `reply.core.you-can-walk` | You can walk. | 04 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.core.wifi` | And the wifi password? | 04 | — | no | 0 / 0 | 0 / 0 | no | yes |
 | `reply.dir.left` | It's on the left. | 05 | — | yes (1) | 0 / 0 | 0 / 0 | no | **no** |
 | `reply.dir.right` | It's on the right. | 05 | — | yes (1) | 0 / 0 | 0 / 0 | no | **no** |
 | `reply.dir.straight` | Go straight ahead. | 05 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
@@ -27799,7 +28157,6 @@ Happy-path NPC lines containing a question, for which the mission has no expecte
 
 | Mission | Scene / node | NPC line |
 |---|---|---|
-| 04 | hostel-desk / n5 | And the wifi password? |
 | 06 | border-control / n1 | Next, please. Passport? |
 | 08 | hotel-checkin / n1 | Good evening! How can I help you? |
 | 10 | cold-border / n3 | What's the purpose of your visit? |
@@ -27889,7 +28246,7 @@ Happy-path NPC lines containing a question, for which the mission has no expecte
 | 30 | fin-evening / n1 | Good evening! Is everything okay with your room? And breakfast tomorrow — is seven okay for you? |
 | 30 | fin-evening / n3 | Perfect. And how was your day? |
 
-Total: 89.
+Total: 88.
 
 # Complete Existing Question Bank
 
@@ -29243,193 +29600,316 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 
 ## Mission 04 — Everyday Core: Want / Need / Have / Can
 
-**M04-Q01** — expected-reply
-- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (1/4)
-- Audio: Do you need anything? — (אתה צריך משהו?)
-- A: אתה צריך משהו? / Do you need anything? ✅
-- B: יש לך את המפתח? / Do you have your key?
-- C: אתה יודע איך להגיע למרכז? / Do you know how to get to the centre?
-- Correct: Do you need anything?
-- Tests: reply.core.need-anything
-
-**M04-Q02** — expected-reply
-- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (2/4)
-- Audio: Do you have your key? — (יש לך את המפתח?)
-- A: יש לך את המפתח? / Do you have your key? ✅
-- B: אתה צריך משהו? / Do you need anything?
-- C: אתה יודע איך להגיע למרכז? / Do you know how to get to the centre?
-- Correct: Do you have your key?
-- Tests: reply.core.have-your-key
-
-**M04-Q03** — expected-reply
-- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (3/4)
-- Audio: Do you know how to get to the centre? — (אתה יודע איך להגיע למרכז?)
-- A: אתה יודע איך להגיע למרכז? / Do you know how to get to the centre? ✅
-- B: אתה צריך משהו? / Do you need anything?
-- C: יש לך את המפתח? / Do you have your key?
-- Correct: Do you know how to get to the centre?
-- Tests: reply.core.do-you-know
-
-**M04-Q04** — expected-reply
-- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (4/4)
-- Audio: Can you come? — (אתה יכול לבוא?)
-- A: אתה יכול לבוא? / Can you come? ✅
-- B: אתה צריך משהו? / Do you need anything?
-- C: יש לך את המפתח? / Do you have your key?
-- Correct: Can you come?
-- Tests: reply.core.can-you-come
-
-**M04-Q05** — swap-it
-- Prompt: "Finish the sentence" / "השלם את המשפט" — cue 💧 "You are thirsty — you need water" / "אתה צמא — צריך מים" — frame EN "I need ___." · FR "J’ai besoin ___." · ES "Necesito ___."
-- Audio: (nothing before the tap; the completed sentence is spoken after it) — ()
-- A: water → I need water. ✅
-- B: a towel → I need a towel.
-- C: my key → I need my key.
-- Correct: water → I need water.
-- Tests: phrase.core.i-need
-
-**M04-Q06** — swap-it
-- Prompt: "Finish the sentence" / "השלם את המשפט" — cue 🆘 "You need help" / "אתה צריך עזרה" — frame EN "I need ___." · FR "J’ai besoin ___." · ES "Necesito ___."
-- Audio: (nothing before the tap; the completed sentence is spoken after it) — ()
-- A: help → I need help. ✅
-- B: a coffee → I need a coffee.
-- C: a map → I need a map.
-- Correct: help → I need help.
-- Tests: phrase.core.i-need
-
-**M04-Q07** — swap-it
-- Prompt: "Finish the sentence" / "השלם את המשפט" — cue 📱 "Your phone is with you" / "הטלפון אצלך" — frame EN "I have ___." · FR "J’ai ___." · ES "Tengo ___."
-- Audio: (nothing before the tap; the completed sentence is spoken after it) — ()
-- A: my phone → I have my phone. ✅
-- B: a map → I have a map.
-- C: my key → I have my key.
-- Correct: my phone → I have my phone.
+**M04-Q01** — visual-match
+- Prompt: "Your things at the desk — tap what you hear" / "הדברים שלך בדלפק — הקש על מה ששמעת"
+- Audio: Yes, I have my key. — (כן, יש לי את המפתח.)
+- A: 🔑 “I have it ✓” / “יש לי ✓” ✅
+- B: 📶 “I don’t have it ✕” / “אין לי ✕”
+- C: 🗺️ “do you have one? ❓” / “יש לך? ❓”
+- Correct: 🔑 “I have it ✓” / “יש לי ✓”
 - Tests: phrase.core.i-have
 
-**M04-Q08** — swap-it
-- Prompt: "Finish the sentence" / "השלם את המשפט" — cue 🗺️ "You have no map" / "אין לך מפה" — frame EN "I don't have ___." · FR "Je n’ai pas ___." · ES "No tengo ___."
-- Audio: (nothing before the tap; the completed sentence is spoken after it) — ()
-- A: a map → I don't have a map. ✅
-- B: my key → I don't have my key.
-- C: my phone → I don't have my phone.
-- Correct: a map → I don't have a map.
+**M04-Q02** — visual-match
+- Prompt: "Your things at the desk — tap what you hear" / "הדברים שלך בדלפק — הקש על מה ששמעת"
+- Audio: I don't have it. — (אין לי אותה.)
+- A: 🔑 “I have it ✓” / “יש לי ✓”
+- B: 📶 “I don’t have it ✕” / “אין לי ✕” ✅
+- C: 🗺️ “do you have one? ❓” / “יש לך? ❓”
+- Correct: 📶 “I don’t have it ✕” / “אין לי ✕”
 - Tests: phrase.core.i-dont-have
 
-**M04-Q09** — swap-it
-- Prompt: "Finish the sentence" / "השלם את המשפט" — cue ☕ "You want a coffee" / "אתה רוצה קפה" — frame EN "I want ___." · FR "Je veux ___." · ES "Quiero ___."
-- Audio: (nothing before the tap; the completed sentence is spoken after it) — ()
-- A: a coffee → I want a coffee. ✅
-- B: water → I want water.
-- C: a towel → I want a towel.
-- Correct: a coffee → I want a coffee.
-- Tests: phrase.core.i-want
+**M04-Q03** — visual-match
+- Prompt: "Your things at the desk — tap what you hear" / "הדברים שלך בדלפק — הקש על מה ששמעת"
+- Audio: Do you have a map? — (יש לך מפה?)
+- A: 🔑 “I have it ✓” / “יש לי ✓”
+- B: 📶 “I don’t have it ✕” / “אין לי ✕”
+- C: 🗺️ “do you have one? ❓” / “יש לך? ❓” ✅
+- Correct: 🗺️ “do you have one? ❓” / “יש לך? ❓”
+- Tests: phrase.core.do-you-have
 
-**M04-Q10** — swap-it
-- Prompt: "Finish the sentence" / "השלם את המשפט" — cue 🤝 "You can help" / "אתה יכול לעזור" — frame EN "I can ___." · FR "Je peux ___." · ES "Puedo ___."
-- Audio: (nothing before the tap; the completed sentence is spoken after it) — ()
-- A: help → I can help. ✅
-- B: walk → I can walk.
-- C: come → I can come.
-- Correct: help → I can help.
-- Tests: phrase.core.i-can
-
-**M04-Q11** — swap-it
-- Prompt: "Finish the sentence" / "השלם את המשפט" — cue 🚫 "You cannot come" / "אתה לא יכול לבוא" — frame EN "I can't ___." · FR "Je ne peux pas ___." · ES "No puedo ___."
-- Audio: (nothing before the tap; the completed sentence is spoken after it) — ()
-- A: come → I can't come. ✅
-- B: walk → I can't walk.
-- C: help → I can't help.
-- Correct: come → I can't come.
-- Tests: phrase.core.i-cant
-
-**M04-Q12** — quick-reply
-- Prompt: "What do you say?" / "מה עונים?"
+**M04-Q04** — match-pairs
+- Prompt: "What do you answer at the desk? Connect each question to its answer" / "מה עונים בדלפק? חבר כל שאלה לתשובה שלה" — tile to match (target language, no translation): EN "Do you need anything?" · FR "Vous avez besoin de quelque chose ?" · ES "¿Necesita algo?"
 - Audio: Do you need anything? — (אתה צריך משהו?)
 - A: I need a towel. ✅
-- B: Yes, I know.
-- C: Sorry, I can't.
+- B: Yes, I have my key.
+- C: I don't have it.
 - Correct: I need a towel.
 - Tests: phrase.core.i-need
 
-**M04-Q13** — quick-reply
-- Prompt: "What do you say?" / "מה עונים?"
+**M04-Q05** — match-pairs
+- Prompt: "What do you answer at the desk? Connect each question to its answer" / "מה עונים בדלפק? חבר כל שאלה לתשובה שלה" — tile to match (target language, no translation): EN "Do you have your key?" · FR "Vous avez votre clé ?" · ES "¿Tiene su llave?"
 - Audio: Do you have your key? — (יש לך את המפתח?)
-- A: Yes, I have my key. ✅
-- B: I don't know.
-- C: Yes, I want a coffee.
+- A: I need a towel.
+- B: Yes, I have my key. ✅
+- C: I don't have it.
 - Correct: Yes, I have my key.
 - Tests: phrase.core.i-have
 
-**M04-Q14** — quick-reply
-- Prompt: "What do you say?" / "מה עונים?"
-- Audio: Do you know how to get to the centre? — (אתה יודע איך להגיע למרכז?)
-- A: I don't know. ✅
-- B: Yes, I know. ✅
-- C: Yes, I have my key.
-- Correct: I don't know. | Yes, I know.
-- Tests: phrase.core.i-dont-know, phrase.core.i-know
+**M04-Q06** — match-pairs
+- Prompt: "What do you answer at the desk? Connect each question to its answer" / "מה עונים בדלפק? חבר כל שאלה לתשובה שלה" — tile to match (target language, no translation): EN "And the wifi password?" · FR "Et le mot de passe du wifi ?" · ES "¿Y la contraseña del wifi?"
+- Audio: And the wifi password? — (והסיסמה של הוויי-פיי?)
+- A: I need a towel.
+- B: Yes, I have my key.
+- C: I don't have it. ✅
+- Correct: I don't have it.
+- Tests: phrase.core.i-dont-have
 
-**M04-Q15** — quick-reply
-- Prompt: "What do you say?" / "מה עונים?"
-- Audio: Can you come? — (אתה יכול לבוא?)
-- A: Sorry, I can't. ✅
+**M04-Q07** — quick-reply
+- Prompt: "What do you say here?" / "מה אתה אומר כאן?" — situation shown: "You would like a map of the town. What do you ask at the desk?" / "אתה רוצה מפה של העיר. מה תשאל בדלפק?"
+- Audio: (nothing is played — a situation is shown) — ()
+- A: Do you have a map? ✅
 - B: I need a towel.
+- C: I don't have it.
+- Correct: Do you have a map?
+- Tests: phrase.core.do-you-have
+
+**M04-Q08** — quick-reply
+- Prompt: "What do you say here?" / "מה אתה אומר כאן?" — situation shown: "They have a map — but you cannot see how to get there. What do you ask?" / "יש להם מפה — אבל אתה לא מבין איך להגיע. מה תבקש?"
+- Audio: (nothing is played — a situation is shown) — ()
+- A: Can you show me? ✅
+- B: Do you have a map?
 - C: Yes, I have my key.
+- Correct: Can you show me?
+- Tests: phrase.recovery.show-me
+
+**M04-Q09** — visual-match
+- Prompt: "Which engine did you hear?" / "איזה מנוע שמעת?"
+- Audio: Hi! Do you need anything? — (שלום! אתה צריך משהו?)
+- A: 🙋 “want” / “רוצה”
+- B: ❗ “need” / “צריך” ✅
+- C: 🤲 “have” / “יש לי”
+- D: 💪 “can” / “יכול”
+- Correct: ❗ “need” / “צריך”
+- Tests: reply.core.need-anything
+
+**M04-Q10** — visual-match
+- Prompt: "Which engine did you hear?" / "איזה מנוע שמעת?"
+- Audio: Do you want a coffee? — (רוצה קפה?)
+- A: 🙋 “want” / “רוצה” ✅
+- B: ❗ “need” / “צריך”
+- C: 🤲 “have” / “יש לי”
+- D: 💡 “know” / “יודע”
+- Correct: 🙋 “want” / “רוצה”
+- Tests: reply.core.do-you-want
+
+**M04-Q11** — visual-match
+- Prompt: "Which engine did you hear?" / "איזה מנוע שמעת?"
+- Audio: Sure. Do you have your key? — (בטח. יש לך את המפתח?)
+- A: 🙋 “want” / “רוצה”
+- B: ❗ “need” / “צריך”
+- C: 🤲 “have” / “יש לי” ✅
+- D: 💡 “know” / “יודע”
+- Correct: 🤲 “have” / “יש לי”
+- Tests: reply.core.have-your-key
+
+**M04-Q12** — visual-match
+- Prompt: "Which engine did you hear?" / "איזה מנוע שמעת?"
+- Audio: Do you know how to get to the centre? — (אתה יודע איך להגיע למרכז?)
+- A: 🙋 “want” / “רוצה”
+- B: 🤲 “have” / “יש לי”
+- C: 💡 “know” / “יודע” ✅
+- D: 💪 “can” / “יכול”
+- Correct: 💡 “know” / “יודע”
+- Tests: reply.core.do-you-know
+
+**M04-Q13** — visual-match
+- Prompt: "Which engine did you hear?" / "איזה מנוע שמעת?"
+- Audio: Can you come? — (אתה יכול לבוא?)
+- A: 🙋 “want” / “רוצה”
+- B: ❗ “need” / “צריך”
+- C: 💡 “know” / “יודע”
+- D: 💪 “can” / “יכול” ✅
+- Correct: 💪 “can” / “יכול”
+- Tests: reply.core.can-you-come
+
+**M04-Q14** — match-pairs
+- Prompt: "What do you answer your friend? Connect each question to its answer" / "מה עונים לחבר? חבר כל שאלה לתשובה שלה" — tile to match (target language, no translation): EN "Do you want a coffee?" · FR "Tu veux un café ?" · ES "¿Quieres un café?"
+- Audio: Do you want a coffee? — (רוצה קפה?)
+- A: Yes, I want a coffee. ✅
+- B: I don't know.
+- C: I can walk.
+- D: Sorry, I can't.
+- Correct: Yes, I want a coffee.
+- Tests: phrase.core.i-want
+
+**M04-Q15** — match-pairs
+- Prompt: "What do you answer your friend? Connect each question to its answer" / "מה עונים לחבר? חבר כל שאלה לתשובה שלה" — tile to match (target language, no translation): EN "Do you know how to get to the centre?" · FR "Tu sais comment aller au centre ?" · ES "¿Sabes cómo ir al centro?"
+- Audio: Do you know how to get to the centre? — (אתה יודע איך להגיע למרכז?)
+- A: Yes, I want a coffee.
+- B: I don't know. ✅
+- C: I can walk.
+- D: Sorry, I can't.
+- Correct: I don't know.
+- Tests: phrase.core.i-dont-know
+
+**M04-Q16** — match-pairs
+- Prompt: "What do you answer your friend? Connect each question to its answer" / "מה עונים לחבר? חבר כל שאלה לתשובה שלה" — tile to match (target language, no translation): EN "You can walk." · FR "Tu peux y aller à pied." · ES "Puedes ir a pie."
+- Audio: You can walk. — (אתה יכול ללכת ברגל.)
+- A: Yes, I want a coffee.
+- B: I don't know.
+- C: I can walk. ✅
+- D: Sorry, I can't.
+- Correct: I can walk.
+- Tests: phrase.core.i-can
+
+**M04-Q17** — match-pairs
+- Prompt: "What do you answer your friend? Connect each question to its answer" / "מה עונים לחבר? חבר כל שאלה לתשובה שלה" — tile to match (target language, no translation): EN "Can you come?" · FR "Tu peux venir ?" · ES "¿Puedes venir?"
+- Audio: Can you come? — (אתה יכול לבוא?)
+- A: Yes, I want a coffee.
+- B: I don't know.
+- C: I can walk.
+- D: Sorry, I can't. ✅
 - Correct: Sorry, I can't.
 - Tests: phrase.core.i-cant
 
-**M04-Q16** — quick-reply
-- Prompt: "What do you say here?" / "מה אומרים כאן?" — situation shown: "Your bag is too heavy and you need a hand." / "התיק כבד מדי ואתה צריך יד."
-- Audio: (nothing is played — a situation is shown) — ()
-- A: Can you help me? ✅
-- B: I can walk.
-- C: Yes, I know.
-- Correct: Can you help me?
+**M04-Q18** — visual-match
+- Prompt: "Flip it — ✓ or ✕?" / "הפוך את זה — ✓ או ✕?"
+- Audio: I don't know. — (אני לא יודע.)
+- A: 💡 “I know ✓” / “יודע ✓”
+- B: 💡 “I don’t know ✕” / “לא יודע ✕” ✅
+- Correct: 💡 “I don’t know ✕” / “לא יודע ✕”
+- Tests: phrase.core.i-dont-know
+
+**M04-Q19** — visual-match
+- Prompt: "Flip it — ✓ or ✕?" / "הפוך את זה — ✓ או ✕?"
+- Audio: I can walk. — (אני יכול ללכת ברגל.)
+- A: 💪 “I can ✓” / “יכול ✓” ✅
+- B: 💪 “I can’t ✕” / “לא יכול ✕”
+- Correct: 💪 “I can ✓” / “יכול ✓”
+- Tests: phrase.core.i-can
+
+**M04-Q20** — visual-match
+- Prompt: "Flip it — ✓ or ✕?" / "הפוך את זה — ✓ או ✕?"
+- Audio: Sorry, I can't. — (סליחה, אני לא יכול.)
+- A: 💪 “I can ✓” / “יכול ✓”
+- B: 💪 “I can’t ✕” / “לא יכול ✕” ✅
+- Correct: 💪 “I can’t ✕” / “לא יכול ✕”
+- Tests: phrase.core.i-cant
+
+**M04-Q21** — visual-match
+- Prompt: "How do they react? Tap what you hear" / "איך מגיבים לך? הקש על מה ששמעת"
+- Audio: Of course. — (בטח.)
+- A: 👍 “sure / of course” / “בטח / כמובן” ✅
+- B: 👉📶 “here’s the password” / “הנה הסיסמה”
+- C: 👌 “no problem” / “אין בעיה”
+- Correct: 👍 “sure / of course” / “בטח / כמובן”
+- Tests: (no sentence id — not recorded)
+
+**M04-Q22** — visual-match
+- Prompt: "How do they react? Tap what you hear" / "איך מגיבים לך? הקש על מה ששמעת"
+- Audio: It's here. — (היא כאן.)
+- A: 👍 “sure / of course” / “בטח / כמובן”
+- B: 👉📶 “here’s the password” / “הנה הסיסמה” ✅
+- C: 👌 “no problem” / “אין בעיה”
+- Correct: 👉📶 “here’s the password” / “הנה הסיסמה”
+- Tests: (no sentence id — not recorded)
+
+**M04-Q23** — visual-match
+- Prompt: "How do they react? Tap what you hear" / "איך מגיבים לך? הקש על מה ששמעת"
+- Audio: No problem. — (אין בעיה.)
+- A: 👍 “sure / of course” / “בטח / כמובן”
+- B: 👉📶 “here’s the password” / “הנה הסיסמה”
+- C: 👌 “no problem” / “אין בעיה” ✅
+- Correct: 👌 “no problem” / “אין בעיה”
+- Tests: (no sentence id — not recorded)
+
+**M04-Q24** — sentence-builder
+- Prompt: "Build the sentence" / "בנה את המשפט" — cue shown: the sentence's MEANING in the app language ("אני צריך מגבת.")
+- Audio: (nothing before Check; the built sentence is spoken once it is right) — ()
+- A: I  |  need  |  a towel. ✅
+- Correct: I  |  need  |  a towel.
+- Tests: phrase.core.i-need
+
+**M04-Q25** — sentence-builder
+- Prompt: "Build the sentence" / "בנה את המשפט" — cue shown: the sentence's MEANING in the app language ("אין לי אותה.")
+- Audio: (nothing before Check; the built sentence is spoken once it is right) — ()
+- A: I  |  don't have  |  it. ✅
+- Correct: I  |  don't have  |  it.
+- Tests: phrase.core.i-dont-have
+
+**M04-Q26** — swap-it
+- Prompt: "The sentence machine — pick the ending that fits" / "מכונת המשפטים — בחר את הסוף שמתאים" — cue ☕ "You are offered a coffee — and you would like one" / "מציעים לך קפה — ובא לך" — frame EN "I ___ a coffee." · FR "___ un café." · ES "___ un café."
+- Audio: (nothing before the tap; the completed sentence is spoken after it) — ()
+- A: want → I want a coffee. ✅
+- B: have → I have a coffee.
+- Correct: want → I want a coffee.
+- Tests: phrase.core.i-want
+
+**M04-Q27** — swap-it
+- Prompt: "The sentence machine — pick the ending that fits" / "מכונת המשפטים — בחר את הסוף שמתאים" — cue ☕ "The coffee is already in your hand" / "הקפה כבר ביד שלך" — frame EN "I ___ a coffee." · FR "___ un café." · ES "___ un café."
+- Audio: (nothing before the tap; the completed sentence is spoken after it) — ()
+- A: have → I have a coffee. ✅
+- B: want → I want a coffee.
+- Correct: have → I have a coffee.
+- Tests: (no sentence id — not recorded)
+
+**M04-Q28** — swap-it
+- Prompt: "The sentence machine — pick the ending that fits" / "מכונת המשפטים — בחר את הסוף שמתאים" — cue 🥐 "You feel like a croissant (from Mission 3)" / "בא לך קרואסון (ממשימה 3)" — frame EN "I want ___." · FR "Je veux ___." · ES "Quiero ___."
+- Audio: (nothing before the tap; the completed sentence is spoken after it) — ()
+- A: a croissant → I want a croissant. ✅
+- B: water → I want water.
+- Correct: a croissant → I want a croissant.
+- Tests: (no sentence id — not recorded)
+
+**M04-Q29** — swap-it
+- Prompt: "The sentence machine — pick the ending that fits" / "מכונת המשפטים — בחר את הסוף שמתאים" — cue 🗺️ "There is a map — but you cannot find the way on it" / "יש מפה — אבל אתה לא מוצא את הדרך עליה" — frame EN "Can you ___ me?" · FR "Vous pouvez ___ ?" · ES "¿Me ___?"
+- Audio: (nothing before the tap; the completed sentence is spoken after it) — ()
+- A: show → Can you show me? ✅
+- B: help → Can you help me?
+- Correct: show → Can you show me?
+- Tests: phrase.recovery.show-me
+
+**M04-Q30** — swap-it
+- Prompt: "The sentence machine — pick the ending that fits" / "מכונת המשפטים — בחר את הסוף שמתאים" — cue 🎒 "Your bag is heavy — you need a hand" / "התיק כבד — אתה צריך עזרה" — frame EN "Can you ___ me?" · FR "Vous pouvez ___ ?" · ES "¿Me ___?"
+- Audio: (nothing before the tap; the completed sentence is spoken after it) — ()
+- A: help → Can you help me? ✅
+- B: show → Can you show me?
+- Correct: help → Can you help me?
 - Tests: phrase.core.can-you-help
 
-**M04-Q17** — dialogue-choice
+**M04-Q31** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Hi! Do you need anything? — (שלום! אתה צריך משהו?)
 - A: I need a towel. ✅
 - Correct: I need a towel.
 - Tests: phrase.core.i-need
 
-**M04-Q18** — dialogue-choice
+**M04-Q32** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Sure. Do you have your key? — (בטח. יש לך את המפתח?)
 - A: Yes, I have my key. ✅
 - Correct: Yes, I have my key.
 - Tests: phrase.core.i-have
 
-**M04-Q19** — dialogue-choice
+**M04-Q33** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: And the wifi password? — (והסיסמה של הוויי-פיי?)
 - A: I don't have it. ✅
 - Correct: I don't have it.
 - Tests: phrase.core.i-dont-have
 
-**M04-Q20** — dialogue-choice
+**M04-Q34** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: It's here. — (היא כאן.)
 - A: Do you have a map? ✅
 - Correct: Do you have a map?
 - Tests: phrase.core.do-you-have
 
-**M04-Q21** — dialogue-choice
+**M04-Q35** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Yes. — (כן.)
 - A: Can you show me? ✅
 - Correct: Can you show me?
 - Tests: phrase.recovery.show-me
 
-**M04-Q22** — dialogue-choice
+**M04-Q36** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Do you want a coffee? — (רוצה קפה?)
 - A: Yes, I want a coffee. ✅
 - Correct: Yes, I want a coffee.
 - Tests: phrase.core.i-want
 
-**M04-Q23** — dialogue-choice
+**M04-Q37** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Do you know how to get to the centre? — (אתה יודע איך להגיע למרכז?)
 - A: I don't know. ✅
@@ -29437,34 +29917,119 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Correct: I don't know. | Please speak slowly.
 - Tests: phrase.core.i-dont-know, phrase.recovery.slowly
 
-**M04-Q24** — dialogue-choice
+**M04-Q38** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: The centre. Do you know — the way? — (המרכז. אתה יודע — את הדרך?)
 - A: I don't know. ✅
 - Correct: I don't know.
 - Tests: phrase.core.i-dont-know
 
-**M04-Q25** — dialogue-choice
+**M04-Q39** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: You can walk. It's about twenty minutes. — (אתה יכול ללכת ברגל. זה בערך עשרים דקות.)
 - A: I can walk. ✅
 - Correct: I can walk.
 - Tests: phrase.core.i-can
 
-**M04-Q26** — dialogue-choice
+**M04-Q40** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: We're having dinner at seven. Can you come? — (אנחנו אוכלים ארוחת ערב בשבע. אתה יכול לבוא?)
 - A: Sorry, I can't. ✅
 - Correct: Sorry, I can't.
 - Tests: phrase.core.i-cant
 
-**M04-Q27** — cold-open
-- Prompt: "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
-- Audio: Before you go out do you have your key with you or is it still in the room? — (לפני שאתה יוצא — המפתח עליך או שהוא עדיין בחדר?)
-- A: Do you have your key? ✅
-- B: Can you come?
-- Correct: Do you have your key?
-- Tests: reply.core.have-your-key
+**M04-Q41** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Hi! Do you need anything? — (שלום! אתה צריך משהו?)
+- A: I need a towel. ✅
+- B: Yes, I want a coffee.
+- C: Sorry, I can't.
+- Correct: I need a towel.
+- Tests: phrase.core.i-need
+
+**M04-Q42** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Sure. Do you have your key? — (בטח. יש לך את המפתח?)
+- A: Yes, I have my key. ✅
+- B: I don't know.
+- C: Yes, I want a coffee.
+- Correct: Yes, I have my key.
+- Tests: phrase.core.i-have
+
+**M04-Q43** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Do you want a coffee? — (רוצה קפה?)
+- A: Yes, I want a coffee. ✅
+- B: I need a towel.
+- C: I don't have it.
+- Correct: Yes, I want a coffee.
+- Tests: phrase.core.i-want
+
+**M04-Q44** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Do you know how to get to the centre? — (אתה יודע איך להגיע למרכז?)
+- A: I don't know. ✅
+- B: Yes, I know. ✅
+- C: Yes, I have my key.
+- Correct: I don't know. | Yes, I know.
+- Tests: phrase.core.i-dont-know, phrase.core.i-know
+
+**M04-Q45** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: We're having dinner at seven. Can you come? — (אנחנו אוכלים ארוחת ערב בשבע. אתה יכול לבוא?)
+- A: Sorry, I can't. ✅
+- B: Yes, I have my key.
+- C: I need a towel.
+- Correct: Sorry, I can't.
+- Tests: phrase.core.i-cant
+
+**M04-Q46** — visual-match
+- Prompt: "What happened? Tap what you hear" / "מה קרה? הקש על מה ששמעת"
+- Audio: Yes, I have my key. — (כן, יש לי את המפתח.)
+- A: 🔑 “I have it ✓” / “יש לי ✓” ✅
+- B: 📶 “I don’t have it ✕” / “אין לי ✕”
+- Correct: 🔑 “I have it ✓” / “יש לי ✓”
+- Tests: phrase.core.i-have
+
+**M04-Q47** — visual-match
+- Prompt: "What happened? Tap what you hear" / "מה קרה? הקש על מה ששמעת"
+- Audio: Yes, I want a coffee. — (כן, אני רוצה קפה.)
+- A: ☕ “want a coffee” / “רוצה קפה” ✅
+- B: 🛁 “need a towel” / “צריך מגבת”
+- Correct: ☕ “want a coffee” / “רוצה קפה”
+- Tests: phrase.core.i-want
+
+**M04-Q48** — visual-match
+- Prompt: "What happened? Tap what you hear" / "מה קרה? הקש על מה ששמעת"
+- Audio: I don't know. — (אני לא יודע.)
+- A: 💡 “I know ✓” / “יודע ✓”
+- B: 💡 “I don’t know ✕” / “לא יודע ✕” ✅
+- Correct: 💡 “I don’t know ✕” / “לא יודע ✕”
+- Tests: phrase.core.i-dont-know
+
+**M04-Q49** — visual-match
+- Prompt: "What happened? Tap what you hear" / "מה קרה? הקש על מה ששמעת"
+- Audio: You can walk. It's about twenty minutes. — (אתה יכול ללכת ברגל. זה בערך עשרים דקות.)
+- A: 🚶 “on foot · ~20 min” / “ברגל · ~20 דק׳” ✅
+- B: 🍽️ “dinner at 7” / “ארוחת ערב ב-7”
+- Correct: 🚶 “on foot · ~20 min” / “ברגל · ~20 דק׳”
+- Tests: (no sentence id — not recorded)
+
+**M04-Q50** — visual-match
+- Prompt: "What happened? Tap what you hear" / "מה קרה? הקש על מה ששמעת"
+- Audio: We're having dinner at seven. Can you come? — (אנחנו אוכלים ארוחת ערב בשבע. אתה יכול לבוא?)
+- A: 🚶 “on foot · ~20 min” / “ברגל · ~20 דק׳”
+- B: 🍽️ “dinner at 7” / “ארוחת ערב ב-7” ✅
+- Correct: 🍽️ “dinner at 7” / “ארוחת ערב ב-7”
+- Tests: (no sentence id — not recorded)
+
+**M04-Q51** — visual-match
+- Prompt: "What happened? Tap what you hear" / "מה קרה? הקש על מה ששמעת"
+- Audio: Sorry, I can't. — (סליחה, אני לא יכול.)
+- A: 💪 “I can ✓” / “יכול ✓”
+- B: 💪 “I can’t ✕” / “לא יכול ✕” ✅
+- Correct: 💪 “I can’t ✕” / “לא יכול ✕”
+- Tests: phrase.core.i-cant
 
 ## Mission 05 — Directions
 
@@ -34753,16 +35318,16 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 
 - Missions exported: 30
 - Learner-production sentence ids: 161
-- Expected-reply (receptive) sentence ids: 156
-- Sentence listings across missions (with reuse): 525
-- Expected-reply questions: 104
+- Expected-reply (receptive) sentence ids: 157
+- Sentence listings across missions (with reuse): 526
+- Expected-reply questions: 100
 - Meaning quizzes: 7
-- Active-practice questions: 389
+- Active-practice questions: 418
 - Dialogue choice screens: 271
-- Cold opens: 12
-- Total interactive questions: 783
-- Total answer choices: 2096
+- Cold opens: 11
+- Total interactive questions: 807
+- Total answer choices: 2160
 - Wrong-answer branches: 94
 - Recovery opportunities: 56
 - Learner sentences with 0 active retrieval opportunities: 1
-- Auto-flags: 213
+- Auto-flags: 211

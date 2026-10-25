@@ -1466,6 +1466,7 @@ div.jstep { box-shadow: none; border-color: var(--line); }
 }
 .ptile .ptile-emoji { font-size: 1.7rem; line-height: 1; }
 .ptile .ptile-label { font-size: 0.72rem; font-weight: 700; color: var(--ink-dim); }
+.ptile .ptile-cap { font-size: 0.8rem; font-weight: 800; line-height: 1.2; color: var(--ink); padding: 0 2px; }
 /* Picture tiles: the art is a full-bleed rounded square; show all of it (contain, never cropped) and
    round the corners to match the art so its square edges never peek out inside the tile. */
 .ptile.has-image { padding: 3px; overflow: hidden; }

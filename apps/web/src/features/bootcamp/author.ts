@@ -200,6 +200,10 @@ export interface MissionSpec {
   teach?: TeachSpec;
   /** Checkpoints: the closing proof. */
   closing?: Copy;
+  /** A hand-built journey (everything after the opening card), per language — for a mission whose
+   *  pedagogical pass needs more than the standard teach → practice → scenes → review shape. The
+   *  sentences and the scenes still come from this spec. */
+  steps?: (lang: MissionLang) => BootcampStep[];
   /** Show "Mission N:" on the opening card. Default: only missions that teach (not checkpoints). */
   numbered?: boolean;
 }
@@ -430,7 +434,8 @@ export function buildMission(spec: MissionSpec, lang: MissionLang): BootcampDayC
 
   const steps: BootcampStep[] = [talk];
   const teach = spec.teach;
-  if (teach) {
+  if (spec.steps) steps.push(...spec.steps(lang));
+  else if (teach) {
     if (teach.prime) steps.push(buildPrime(teach.prime, lang));
     teach.tools.forEach((t, i) => steps.push({ kind: 'tool', itemId: id(t.id), index: i + 1, total: teach.tools.length, label: T(t.label) }));
     steps.push({ kind: 'replies', saidItemId: id(teach.said), replyIds: teach.replies.map(id) });
@@ -438,18 +443,18 @@ export function buildMission(spec: MissionSpec, lang: MissionLang): BootcampDayC
     if (teach.quiz) steps.push({ kind: 'quiz', itemId: id(teach.quiz[0]), wrongIds: [id(teach.quiz[1]), id(teach.quiz[2])] });
     for (const p of teach.practice ?? []) steps.push(buildPractice(p, lang));
   }
-  for (const scene of spec.scenes) {
+  if (!spec.steps) for (const scene of spec.scenes) {
     steps.push({ kind: 'dialogue', dialogueId: scene.id });
     steps.push({ kind: 'receipt', text: T(scene.receipt) });
     if (scene.ambush) steps.push(...ambushStep(scene.ambush, lang));
   }
-  if (teach) {
+  if (teach && !spec.steps) {
     steps.push({ kind: 'swipe', itemIds: teach.review ? teach.review.map(id) : items.map((i) => i.id) });
     for (const f of teach.finale ?? []) steps.push(buildPractice(f.practice, lang), { kind: 'receipt', text: T(f.receipt) });
     if (teach.ambush) steps.push(...ambushStep(teach.ambush, lang));
   }
-  if (spec.closing) steps.push({ kind: 'receipt', text: T(spec.closing) });
-  steps.push({ kind: 'summary' });
+  if (spec.closing && !spec.steps) steps.push({ kind: 'receipt', text: T(spec.closing) });
+  if (!spec.steps) steps.push({ kind: 'summary' });
 
   return {
     day: spec.day,

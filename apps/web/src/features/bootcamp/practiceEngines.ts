@@ -185,8 +185,9 @@ export function validatePracticeStep(step: BootcampStep, itemIds: ReadonlySet<st
     const most = step.rounds.every((r) => r.show && r.show.length <= 4) ? 16 : 9;
     if (step.tiles.length < 2 || step.tiles.length > most) issues.push(`visualMatch: needs 2–${most} tiles`);
     if (new Set(ids).size !== ids.length) issues.push('visualMatch: duplicate tile id');
-    if (new Set(step.tiles.map((x) => `${x.emoji ?? ''}${x.label ?? ''}${x.image ?? ''}`)).size !== ids.length) issues.push('visualMatch: two tiles look the same');
+    if (new Set(step.tiles.map((x) => `${x.emoji ?? ''}${x.label ?? ''}${x.image ?? ''}${x.caption?.en ?? ''}`)).size !== ids.length) issues.push('visualMatch: two tiles look the same');
     for (const x of step.tiles) if (!x.label && !x.emoji && !x.image) issues.push(`visualMatch: tile ${x.id} shows nothing`);
+    for (const x of step.tiles) if (x.caption && (!x.caption.he || !x.caption.en)) issues.push(`visualMatch: tile ${x.id} caption needs both app languages`);
     step.rounds.forEach((r, i) => {
       if (!ids.includes(r.correct)) issues.push(`visualMatch round ${i + 1}: correct tile → ${r.correct}`);
       if (r.show) {

@@ -259,7 +259,9 @@ describe('all built missions are structurally sound', () => {
     for (const [num, day] of built) {
       const n = Number(num);
       if (coldDays.has(n)) continue;
-      expect(day.steps.some((s) => s.kind === 'replies')).toBe(true);
+      // A listening-replies drill — or (the Mission 03 / 04 passes) picture cards that teach each
+      // line the learner will hear, with its meaning, before anything tests it.
+      expect(day.steps.some((s) => s.kind === 'replies' || (s.kind === 'prime' && s.words.some((w) => w.line))), `day ${n}`).toBe(true);
     }
   });
 });
@@ -451,9 +453,9 @@ describe('video-first Bootcamp (intro/review video)', () => {
     expect(kinds.at(-1)).toBe('summary');
   });
 
-  it('only Missions 1, 2 and 3 have video steps (skipped where no file exists); every mission can be read aloud whether or not it has a video', () => {
+  it('only Missions 1–4 have video steps (skipped where no file exists); every mission can be read aloud whether or not it has a video', () => {
     for (const set of [DAYS, DAYS_FR, DAYS_ES]) for (const day of Object.values(set)) {
-      expect(day.steps.some((s) => s.kind === 'video'), `day ${day.day}`).toBe(day.day >= 1 && day.day <= 3);
+      expect(day.steps.some((s) => s.kind === 'video'), `day ${day.day}`).toBe((day.day >= 1 && day.day <= 3) || day.day === 30); // Mission 04's registry key is 30
       expect(Object.keys(day.dialogues).length).toBeGreaterThan(0); // the transcript reader still works
     }
   });

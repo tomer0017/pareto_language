@@ -657,6 +657,289 @@ export function m03Steps(lang: MissionLang): BootcampStep[] {
   ];
 }
 
+/* ── Mission 04 — Everyday Core: want / need / have / know / can ───────────────────────────────── */
+
+/** A tile's app-language words — what it MEANS, so the picture is never a guess. */
+const cap = (he: string, en: string): LocalizedText => ({ he, en });
+/* The engines, as one family of tiles: the same symbol always means the same engine. */
+const E_WANT = { id: 'want', emoji: '🙋', caption: cap('רוצה', 'want'), scale: 1.6 };
+const E_NEED = { id: 'need', emoji: '❗', caption: cap('צריך', 'need'), scale: 1.6 };
+const E_HAVE = { id: 'have', emoji: '🤲', caption: cap('יש לי', 'have'), scale: 1.6 };
+const E_KNOW = { id: 'know', emoji: '💡', caption: cap('יודע', 'know'), scale: 1.6 };
+const E_CAN = { id: 'can', emoji: '💪', caption: cap('יכול', 'can'), scale: 1.6 };
+/* My things at the desk: what I have, what I don't, what I ask for. */
+const T_KEY = { id: 'have-key', emoji: '🔑', caption: cap('יש לי ✓', 'I have it ✓'), scale: 1.6 };
+const T_WIFI = { id: 'no-wifi', emoji: '📶', caption: cap('אין לי ✕', 'I don’t have it ✕'), scale: 1.6 };
+const T_MAP = { id: 'ask-map', emoji: '🗺️', caption: cap('יש לך? ❓', 'do you have one? ❓'), scale: 1.6 };
+const T_HERE = { id: 'wifi-here', emoji: '👉📶', caption: cap('הנה הסיסמה', 'here’s the password'), scale: 1.6 };
+/* How the other person reacts. */
+const R_SURE = { id: 'sure', emoji: '👍', caption: cap('בטח / כמובן', 'sure / of course'), scale: 1.6 };
+const R_OK = { id: 'no-problem', emoji: '👌', caption: cap('אין בעיה', 'no problem'), scale: 1.6 };
+/* The flips: the same symbol, ✓ or ✕. */
+const F_KNOW = { id: 'know-yes', emoji: '💡', caption: cap('יודע ✓', 'I know ✓'), scale: 1.6 };
+const F_DONT_KNOW = { id: 'know-no', emoji: '💡', caption: cap('לא יודע ✕', 'I don’t know ✕'), scale: 1.6 };
+const F_CAN = { id: 'can-yes', emoji: '💪', caption: cap('יכול ✓', 'I can ✓'), scale: 1.6 };
+const F_CANT = { id: 'can-no', emoji: '💪', caption: cap('לא יכול ✕', 'I can’t ✕'), scale: 1.6 };
+/* The friend's scene, in the symbols its picture cards use. */
+const S_COFFEE = { id: 'want-coffee', emoji: '☕', caption: cap('רוצה קפה', 'want a coffee'), scale: 1.6 };
+const S_TOWEL = { id: 'need-towel', emoji: '🛁', caption: cap('צריך מגבת', 'need a towel'), scale: 1.6 };
+const S_WALK = { id: 'walk', emoji: '🚶', caption: cap('ברגל · ~20 דק׳', 'on foot · ~20 min'), scale: 1.6 };
+const S_DINNER = { id: 'dinner', emoji: '🍽️', caption: cap('ארוחת ערב ב-7', 'dinner at 7'), scale: 1.6 };
+
+/* The locked conversation (EN · FR · ES · HE). */
+const D_NEED: L4 = ['Hi! Do you need anything?', 'Bonjour ! Vous avez besoin de quelque chose ?', '¡Hola! ¿Necesita algo?', 'שלום! אתה צריך משהו?'];
+const D_KEY: L4 = ['Sure. Do you have your key?', 'Bien sûr. Vous avez votre clé ?', 'Claro. ¿Tiene su llave?', 'בטח. יש לך את המפתח?'];
+const D_WIFI: L4 = ['And the wifi password?', 'Et le mot de passe du wifi ?', '¿Y la contraseña del wifi?', 'והסיסמה של הוויי-פיי?'];
+const D_COFFEE: L4 = ['Do you want a coffee?', 'Tu veux un café ?', '¿Quieres un café?', 'רוצה קפה?'];
+const D_KNOW: L4 = ['Do you know how to get to the centre?', 'Tu sais comment aller au centre ?', '¿Sabes cómo ir al centro?', 'אתה יודע איך להגיע למרכז?'];
+const D_WALK: L4 = ["You can walk. It's about twenty minutes.", 'Tu peux y aller à pied. C’est à environ vingt minutes.', 'Puedes ir a pie. Son unos veinte minutos.', 'אתה יכול ללכת ברגל. זה בערך עשרים דקות.'];
+const D_DINNER: L4 = ["We're having dinner at seven. Can you come?", 'On dîne à sept heures. Tu peux venir ?', 'Cenamos a las siete. ¿Puedes venir?', 'אנחנו אוכלים ארוחת ערב בשבע. אתה יכול לבוא?'];
+const D_COME: L4 = ['Can you come?', 'Tu peux venir ?', '¿Puedes venir?', 'אתה יכול לבוא?'];
+const M_NEED: L4 = ['I need a towel.', 'J’ai besoin d’une serviette.', 'Necesito una toalla.', 'אני צריך מגבת.'];
+const M_HAVE: L4 = ['Yes, I have my key.', 'Oui, j’ai ma clé.', 'Sí, tengo mi llave.', 'כן, יש לי את המפתח.'];
+const M_DONT_HAVE: L4 = ["I don't have it.", 'Je ne l’ai pas.', 'No la tengo.', 'אין לי אותה.'];
+const M_MAP: L4 = ['Do you have a map?', 'Vous avez une carte ?', '¿Tiene un mapa?', 'יש לך מפה?'];
+const M_WANT: L4 = ['Yes, I want a coffee.', 'Oui, je veux un café.', 'Sí, quiero un café.', 'כן, אני רוצה קפה.'];
+const M_KNOW: L4 = ['Yes, I know.', 'Oui, je sais.', 'Sí, lo sé.', 'כן, אני יודע.'];
+const M_DONT_KNOW: L4 = ["I don't know.", 'Je ne sais pas.', 'No lo sé.', 'אני לא יודע.'];
+const M_CAN: L4 = ['I can walk.', 'Je peux y aller à pied.', 'Puedo ir a pie.', 'אני יכול ללכת ברגל.'];
+const M_CANT: L4 = ["Sorry, I can't.", 'Désolé, je ne peux pas.', 'Lo siento, no puedo.', 'סליחה, אני לא יכול.'];
+
+/**
+ * Mission 04 — Everyday Core. Not a script: a small LANGUAGE ENGINE (want · need · have · know · can,
+ * and the flips don't have · don't know · can't) shown working in two places — the hostel desk
+ * (polite forms) and a friend (everyday forms). The conversations are LOCKED; this is the journey:
+ *
+ *   Step 0 (optional: the five engines + the three flips) → AT THE DESK: what you hear and what you
+ *   say, in picture cards → have / don't have / do you have? → question ↔ answer → what do you say
+ *   here? → WITH A FRIEND: the same engines, everyday forms, in picture cards → which engine did you
+ *   hear? → question ↔ answer → flip it → build two frames → the sentence machine (the object
+ *   changes · the engine changes · new words you already know) → both conversations → the speed run
+ *   → the video → what happened?
+ *
+ * TEACH before TEST: every line is first shown with its meaning (a building block or a picture card);
+ * only then recognised, flipped, matched, built and answered. No word appears that the learner has
+ * not met — the transfer uses the conversations' own nouns and Mission 03's croissant. Recovery
+ * stays inside the conversation (the fast "Do you know…?" line), where its reason is shown.
+ * Coverage: `mission04Coverage.ts`, enforced by `mission04.test.ts`.
+ */
+export function m04Steps(lang: MissionLang): BootcampStep[] {
+  const k = kit(lang);
+  const l3 = (x: L4): L3 => [x[0], x[1], x[2]];
+  // French "carte" was a CARD in Missions 02–03; here it is a MAP — said once, where it is met.
+  const deskSayIntro: Copy = lang === 'fr'
+    ? ['שלושה מנועים: צריך · יש לי / אין לי · יכול. שים לב: כאן carte = מפה (במשימות הקודמות — כרטיס). הקש כדי לשמוע.', 'Three engines: need · have / don’t have · can. Note: here carte = map (in earlier missions, a card). Tap to hear.']
+    : ['שלושה מנועים: צריך · יש לי / אין לי · יכול. הקש כדי לשמוע.', 'Three engines: need · have / don’t have · can. Tap to hear.'];
+  return [
+    // STEP 0 — optional: the five engines and the three flips. No grammar words — just the pieces.
+    k.prime({
+      gate: true,
+      intro: ['חמש תבניות קצרות שבונות המון משפטים — ושלושה "הפוכים". הקש כדי לשמוע.', 'Five short patterns that build lots of sentences — and three flips. Tap to hear.'],
+      words: [
+        { key: 'core.want', t: ['want', 'je veux', 'quiero'], meaning: ['רוצה (☕ רוצה קפה)', 'want (☕ I want a coffee)'], emoji: '🙋' },
+        { key: 'core.need', t: ['need', 'j’ai besoin de', 'necesito'], meaning: ['צריך (🛁 צריך מגבת)', 'need (🛁 I need a towel)'], emoji: '❗' },
+        { key: 'core.have', t: ['have', 'j’ai', 'tengo'], meaning: ['יש לי (🔑 יש לי מפתח)', 'have (🔑 I have my key)'], emoji: '🤲' },
+        { key: 'core.know', t: ['know', 'je sais', 'sé'], meaning: ['יודע', 'know'], emoji: '💡' },
+        { key: 'core.can', t: ['can', 'je peux', 'puedo'], meaning: ['יכול (🚶 יכול ללכת ברגל)', 'can (🚶 I can walk)'], emoji: '💪' },
+        { key: 'core.dont-have', review: false, t: ["don't have", 'je ne l’ai pas', 'no la tengo'], meaning: ['אין לי ✕ (ההפך של "יש לי")', 'don’t have ✕ (the flip of "have")'], emoji: '✕' },
+        { key: 'core.dont-know', t: ["don't know", 'je ne sais pas', 'no lo sé'], meaning: ['לא יודע ✕', 'don’t know ✕'], emoji: '✕' },
+        { key: 'core.cant', t: ["can't", 'je ne peux pas', 'no puedo'], meaning: ['לא יכול ✕', 'can’t ✕'], emoji: '✕' },
+      ],
+      build: 'phrase.core.i-need',
+    }),
+    // AT THE DESK — what you hear (the polite forms of a desk), each line with its meaning.
+    k.prime({
+      label: ['בדלפק — מה שומעים', 'At the desk — what you hear'],
+      intro: ['כל משפט — ומה הוא אומר. בדלפק מדברים בצורה מנומסת. הקש כדי לשמוע.', 'Each line — and what it says. At a desk people use the polite form. Tap to hear.'],
+      words: [
+        { line: true, key: 'core.line.need-anything', t: l3(D_NEED), meaning: ['שלום! אתה צריך משהו?', 'Hi! Do you need anything?'], emoji: '🛎️' },
+        { line: true, key: 'core.line.have-key', t: l3(D_KEY), meaning: ['בטח. יש לך את המפתח?', 'Sure. Do you have your key?'], emoji: '🔑' },
+        { line: true, key: 'core.line.wifi', t: l3(D_WIFI), meaning: ['והסיסמה של הוויי-פיי?', 'And the wifi password?'], emoji: '📶' },
+        { line: true, key: 'core.line.its-here', t: ['It\'s here.', 'Il est ici.', 'Está aquí.'], meaning: ['היא כאן. (הנה הסיסמה)', 'It’s here. (here is the password)'], emoji: '👉' },
+        { line: true, key: 'core.line.of-course', t: ['Of course.', 'Bien sûr.', 'Claro.'], meaning: ['כמובן. / בטח.', 'Of course.'], emoji: '👍' },
+      ],
+    }),
+    // AT THE DESK — what you say.
+    k.prime({
+      label: ['בדלפק — מה אתה אומר', 'At the desk — what you say'],
+      intro: deskSayIntro,
+      words: [
+        { line: true, key: 'core.line.i-need', t: l3(M_NEED), meaning: ['אני צריך מגבת.', 'I need a towel.'], emoji: '🛁' },
+        { line: true, key: 'core.line.i-have', t: l3(M_HAVE), meaning: ['כן, יש לי את המפתח. ✓', 'Yes, I have my key. ✓'], emoji: '🔑' },
+        { line: true, key: 'core.line.i-dont-have', t: l3(M_DONT_HAVE), meaning: ['אין לי אותה. ✕ (את הסיסמה)', 'I don’t have it. ✕ (the password)'], emoji: '🚫' },
+        { line: true, key: 'core.line.do-you-have', t: l3(M_MAP), meaning: ['יש לך מפה?', 'Do you have a map?'], emoji: '🗺️' },
+        { line: true, key: 'core.line.show-me', t: ['Can you show me?', 'Vous pouvez me montrer ?', '¿Me lo puede mostrar?'], meaning: ['אתה יכול להראות לי?', 'Can you show me?'], emoji: '👀' },
+        { line: true, key: 'core.line.help-me', t: ['Can you help me?', 'Vous pouvez m’aider ?', '¿Me puede ayudar?'], meaning: ['אתה יכול לעזור לי? (אותו "יכול", בקשה אחרת)', 'Can you help me? (the same "can", another request)'], emoji: '🤝' },
+      ],
+    }),
+    // HAVE / DON'T HAVE / DO YOU HAVE? — my things at the desk.
+    k.practice({
+      kind: 'visualMatch',
+      label: ['הדברים שלך בדלפק — הקש על מה ששמעת', 'Your things at the desk — tap what you hear'],
+      tiles: [T_KEY, T_WIFI, T_MAP],
+      rounds: [
+        { audio: M_HAVE, correct: 'have-key', itemId: 'phrase.core.i-have' },
+        { audio: M_DONT_HAVE, correct: 'no-wifi', itemId: 'phrase.core.i-dont-have' },
+        { audio: M_MAP, correct: 'ask-map', itemId: 'phrase.core.do-you-have' },
+      ],
+    }),
+    // QUESTION ↔ ANSWER — the desk's real questions and your answers.
+    k.practice({
+      kind: 'matchPairs',
+      label: ['מה עונים בדלפק? חבר כל שאלה לתשובה שלה', 'What do you answer at the desk? Connect each question to its answer'],
+      pairs: [
+        ['reply.core.need-anything', 'phrase.core.i-need'],
+        ['reply.core.have-your-key', 'phrase.core.i-have'],
+        ['reply.core.wifi', 'phrase.core.i-dont-have'],
+      ],
+    }),
+    // YOUR TURN — the two things YOU ask at the desk, from the situation (no invented barista line).
+    k.practice({
+      kind: 'quickReply',
+      label: ['מה אתה אומר כאן?', 'What do you say here?'],
+      rounds: [
+        { situation: ['אתה רוצה מפה של העיר. מה תשאל בדלפק?', 'You would like a map of the town. What do you ask at the desk?'],
+          options: [['phrase.core.do-you-have', true], ['phrase.core.i-need', false], ['phrase.core.i-dont-have', false]] },
+        { situation: ['יש להם מפה — אבל אתה לא מבין איך להגיע. מה תבקש?', 'They have a map — but you cannot see how to get there. What do you ask?'],
+          options: [['phrase.recovery.show-me', true], ['phrase.core.do-you-have', false], ['phrase.core.i-have', false]] },
+      ],
+    }),
+    // WITH A FRIEND — the SAME engines, another situation, the everyday form.
+    k.prime({
+      label: ['עם חבר — מה שומעים', 'With a friend — what you hear'],
+      intro: ['אותם מנועים — מצב אחר. עם חבר תשמע צורה יומיומית; בדלפק — מנומסת. פשוט תכיר את שתיהן.', 'The same engines — another situation. With a friend you hear the everyday form; at a desk, the polite one. Just know both.'],
+      words: [
+        { line: true, key: 'core.line.want-coffee', t: l3(D_COFFEE), meaning: ['רוצה קפה?', 'Do you want a coffee?'], emoji: '☕' },
+        { line: true, key: 'core.line.know-way', t: l3(D_KNOW), meaning: ['אתה יודע איך להגיע למרכז?', 'Do you know how to get to the centre?'], emoji: '🧭' },
+        { line: true, key: 'core.line.walk', t: l3(D_WALK), meaning: ['אתה יכול ללכת ברגל. זה בערך עשרים דקות. (⏱️ ~20)', 'You can walk. It’s about twenty minutes. (⏱️ ~20)'], emoji: '🚶' },
+        { line: true, key: 'core.line.dinner', t: l3(D_DINNER), meaning: ['אנחנו אוכלים ארוחת ערב בשבע (🕖). אתה יכול לבוא?', 'We’re having dinner at seven (🕖). Can you come?'], emoji: '🍽️' },
+        { line: true, key: 'core.line.no-problem', t: ['No problem.', 'Pas de problème.', 'No pasa nada.'], meaning: ['אין בעיה.', 'No problem.'], emoji: '👌' },
+      ],
+    }),
+    k.prime({
+      label: ['עם חבר — מה אתה אומר', 'With a friend — what you say'],
+      intro: ['רוצה · יודע / לא יודע · יכול / לא יכול. הקש כדי לשמוע.', 'Want · know / don’t know · can / can’t. Tap to hear.'],
+      words: [
+        { line: true, key: 'core.line.i-want', t: l3(M_WANT), meaning: ['כן, אני רוצה קפה.', 'Yes, I want a coffee.'], emoji: '☕' },
+        { line: true, key: 'core.line.want-water', t: ['I want water.', 'Je veux de l’eau.', 'Quiero agua.'], meaning: ['אני רוצה מים. (אותו "רוצה", דבר אחר)', 'I want water. (the same "want", another thing)'], emoji: '💧' },
+        { line: true, key: 'core.line.i-know', t: l3(M_KNOW), meaning: ['כן, אני יודע. ✓', 'Yes, I know. ✓'], emoji: '💡' },
+        { line: true, key: 'core.line.i-dont-know', t: l3(M_DONT_KNOW), meaning: ['אני לא יודע. ✕', 'I don’t know. ✕'], emoji: '🤷' },
+        { line: true, key: 'core.line.i-can', t: l3(M_CAN), meaning: ['אני יכול ללכת ברגל. ✓', 'I can walk. ✓'], emoji: '🚶' },
+        { line: true, key: 'core.line.i-cant', t: l3(M_CANT), meaning: ['סליחה, אני לא יכול. ✕', 'Sorry, I can’t. ✕'], emoji: '🙅' },
+      ],
+    }),
+    // WHICH ENGINE? — the start of each real question, both scenes.
+    k.practice({
+      kind: 'visualMatch',
+      label: ['איזה מנוע שמעת?', 'Which engine did you hear?'],
+      tiles: [E_WANT, E_NEED, E_HAVE, E_KNOW, E_CAN],
+      rounds: [
+        { audio: D_NEED, correct: 'need', itemId: 'reply.core.need-anything', show: ['need', 'want', 'have', 'can'] },
+        { audio: D_COFFEE, correct: 'want', itemId: 'reply.core.do-you-want', show: ['want', 'need', 'have', 'know'] },
+        { audio: D_KEY, correct: 'have', itemId: 'reply.core.have-your-key', show: ['have', 'need', 'know', 'want'] },
+        { audio: D_KNOW, correct: 'know', itemId: 'reply.core.do-you-know', show: ['know', 'can', 'have', 'want'] },
+        { audio: D_COME, correct: 'can', itemId: 'reply.core.can-you-come', show: ['can', 'know', 'want', 'need'] },
+      ],
+    }),
+    // QUESTION ↔ ANSWER — the friend's real questions and your answers.
+    k.practice({
+      kind: 'matchPairs',
+      label: ['מה עונים לחבר? חבר כל שאלה לתשובה שלה', 'What do you answer your friend? Connect each question to its answer'],
+      pairs: [
+        ['reply.core.do-you-want', 'phrase.core.i-want'],
+        ['reply.core.do-you-know', 'phrase.core.i-dont-know'],
+        ['reply.core.you-can-walk', 'phrase.core.i-can'],
+        ['reply.core.can-you-come', 'phrase.core.i-cant'],
+      ],
+    }),
+    // FLIP IT — ✓ or ✕, by ear.
+    k.practice({
+      kind: 'visualMatch',
+      label: ['הפוך את זה — ✓ או ✕?', 'Flip it — ✓ or ✕?'],
+      tiles: [F_KNOW, F_DONT_KNOW, F_CAN, F_CANT],
+      rounds: [
+        { audio: M_DONT_KNOW, correct: 'know-no', itemId: 'phrase.core.i-dont-know', show: ['know-yes', 'know-no'] },
+        { audio: M_CAN, correct: 'can-yes', itemId: 'phrase.core.i-can', show: ['can-yes', 'can-no'] },
+        { audio: M_CANT, correct: 'can-no', itemId: 'phrase.core.i-cant', show: ['can-yes', 'can-no'] },
+      ],
+    }),
+    // HOW DO THEY REACT? — the short answers you will hear back, by ear.
+    k.practice({
+      kind: 'visualMatch',
+      label: ['איך מגיבים לך? הקש על מה ששמעת', 'How do they react? Tap what you hear'],
+      tiles: [R_SURE, T_HERE, R_OK],
+      rounds: [
+        { audio: ['Of course.', 'Bien sûr.', 'Claro.', 'בטח.'], correct: 'sure' },
+        { audio: ["It's here.", 'Il est ici.', 'Está aquí.', 'היא כאן.'], correct: 'wifi-here' },
+        { audio: ['No problem.', 'Pas de problème.', 'No pasa nada.', 'אין בעיה.'], correct: 'no-problem' },
+      ],
+    }),
+    // BUILD — two frames: the engine + the object, and the flip.
+    k.practice({
+      kind: 'sentenceBuilder',
+      rounds: [
+        { itemId: 'phrase.core.i-need', chunks: [['I', 'need', 'a towel.'], ['J’ai besoin', 'd’une', 'serviette.'], ['Necesito', 'una', 'toalla.']] },
+        { itemId: 'phrase.core.i-dont-have', chunks: [['I', "don't have", 'it.'], ['Je', 'ne l’ai', 'pas.'], ['No', 'la', 'tengo.']] },
+      ],
+    }),
+    // THE SENTENCE MACHINE — the object changes · the engine changes · words you already know.
+    k.practice({
+      kind: 'swap',
+      label: ['מכונת המשפטים — בחר את הסוף שמתאים', 'The sentence machine — pick the ending that fits'],
+      rounds: [
+        { frame: ['I ___ a coffee.', '___ un café.', '___ un café.'], itemId: 'phrase.core.i-want', cue: { emoji: '☕', text: ['מציעים לך קפה — ובא לך', 'You are offered a coffee — and you would like one'] },
+          options: [[['want', 'Je veux', 'Quiero'], 'אני רוצה קפה.', true], [['have', 'J’ai', 'Tengo'], 'יש לי קפה.', false]] },
+        { frame: ['I ___ a coffee.', '___ un café.', '___ un café.'], cue: { emoji: '☕', text: ['הקפה כבר ביד שלך', 'The coffee is already in your hand'] },
+          options: [[['have', 'J’ai', 'Tengo'], 'יש לי קפה.', true], [['want', 'Je veux', 'Quiero'], 'אני רוצה קפה.', false]] },
+        // transfer: a word you already know from Mission 03, in a frame you know from today
+        { frame: ['I want ___.', 'Je veux ___.', 'Quiero ___.'], cue: { emoji: '🥐', text: ['בא לך קרואסון (ממשימה 3)', 'You feel like a croissant (from Mission 3)'] },
+          options: [[['a croissant', 'un croissant', 'un cruasán'], 'אני רוצה קרואסון.', true], [['water', 'de l’eau', 'agua'], 'אני רוצה מים.', false]] },
+        { frame: ['Can you ___ me?', 'Vous pouvez ___ ?', '¿Me ___?'], itemId: 'phrase.recovery.show-me', cue: { emoji: '🗺️', text: ['יש מפה — אבל אתה לא מוצא את הדרך עליה', 'There is a map — but you cannot find the way on it'] },
+          options: [[['show', 'me montrer', 'lo puede mostrar'], 'אתה יכול להראות לי?', true], [['help', 'm’aider', 'puede ayudar'], 'אתה יכול לעזור לי?', false]] },
+        { frame: ['Can you ___ me?', 'Vous pouvez ___ ?', '¿Me ___?'], itemId: 'phrase.core.can-you-help', cue: { emoji: '🎒', text: ['התיק כבד — אתה צריך עזרה', 'Your bag is heavy — you need a hand'] },
+          options: [[['help', 'm’aider', 'puede ayudar'], 'אתה יכול לעזור לי?', true], [['show', 'me montrer', 'lo puede mostrar'], 'אתה יכול להראות לי?', false]] },
+      ],
+    }),
+    k.receipt(['תראה מה אתה כבר יכול להגיד: מחליפים את הסוף — או את המנוע — ויש משפט חדש.', 'Look what you can already say: change the ending — or the engine — and you have a new sentence.']),
+    // THE TWO CONVERSATIONS — the same engines, two situations.
+    k.dialogue('hostel-desk'),
+    k.receipt(['אמרת מה אתה צריך, מה יש לך ומה אין — וביקשת עזרה.', 'You said what you need, what you have and what you don’t — and asked for help.']),
+    k.dialogue('coffee-with-a-friend'),
+    k.receipt(['אותם מנועים, עם חבר: רוצה, לא יודע, יכול, לא יכול.', 'The same engines, with a friend: want, don’t know, can, can’t.']),
+    // THE SPEED RUN — the real questions of both scenes, at natural speed, no translation.
+    k.practice({
+      kind: 'quickReply',
+      challenge: true,
+      rounds: [
+        { npc: D_NEED, options: [['phrase.core.i-need', true], ['phrase.core.i-want', false], ['phrase.core.i-cant', false]] },
+        { npc: D_KEY, options: [['phrase.core.i-have', true], ['phrase.core.i-dont-know', false], ['phrase.core.i-want', false]] },
+        { npc: D_COFFEE, options: [['phrase.core.i-want', true], ['phrase.core.i-need', false], ['phrase.core.i-dont-have', false]] },
+        { npc: D_KNOW, options: [['phrase.core.i-dont-know', true], ['phrase.core.i-know', true], ['phrase.core.i-have', false]] },
+        { npc: D_DINNER, options: [['phrase.core.i-cant', true], ['phrase.core.i-have', false], ['phrase.core.i-need', false]] },
+      ],
+    }),
+    k.receipt(['חמש שאלות אמיתיות, בקצב אמיתי — וזיהית בכל אחת את המנוע.', 'Five real questions, at real speed — and you caught the engine in every one.']),
+    // THE PAYOFF — both scenes again with no help (the video, where one exists)…
+    { kind: 'video', mode: 'again' },
+    // …then: what happened? Answered by tapping the meaning, in the symbols that taught it.
+    k.practice({
+      kind: 'visualMatch',
+      label: ['מה קרה? הקש על מה ששמעת', 'What happened? Tap what you hear'],
+      tiles: [T_KEY, T_WIFI, S_COFFEE, S_TOWEL, F_KNOW, F_DONT_KNOW, S_WALK, S_DINNER, F_CAN, F_CANT],
+      rounds: [
+        { audio: M_HAVE, correct: 'have-key', itemId: 'phrase.core.i-have', show: ['have-key', 'no-wifi'] },
+        { audio: M_WANT, correct: 'want-coffee', itemId: 'phrase.core.i-want', show: ['want-coffee', 'need-towel'] },
+        { audio: M_DONT_KNOW, correct: 'know-no', itemId: 'phrase.core.i-dont-know', show: ['know-no', 'know-yes'] },
+        { audio: D_WALK, correct: 'walk', show: ['walk', 'dinner'] },
+        { audio: D_DINNER, correct: 'dinner', show: ['dinner', 'walk'] },
+        { audio: M_CANT, correct: 'can-no', itemId: 'phrase.core.i-cant', show: ['can-no', 'can-yes'] },
+      ],
+    }),
+    k.receipt(['הבנת את שתי השיחות — ובנית משפטים משלך עם חמישה מנועים.', 'You understood both conversations — and built your own sentences with five engines.']),
+    { kind: 'summary' },
+  ];
+}
+
 /* ── Mission 05 — Directions ─────────────────────────────────────────────────────────────────── */
 
 type Cell = Omit<MapCell, 'label'> & { label?: L3 };

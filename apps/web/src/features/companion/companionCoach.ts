@@ -61,6 +61,7 @@ export const GAME_INTRO: Record<string, LocalizedText> = {
  *  first picture board is the order, not a price). */
 export const MISSION_GAME_INTRO: Record<string, Record<string, LocalizedText>> = {
   'coffee-shop': { visualMatch: T('שמע — והקש על מה שהזמינו.', 'Listen — and tap what was ordered.') },
+  'everyday-core': { visualMatch: T('שמע — והקש על מה שזה אומר.', 'Listen — and tap what it means.') },
 };
 
 export interface CoachLine {

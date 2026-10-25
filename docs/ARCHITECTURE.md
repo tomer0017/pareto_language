@@ -130,6 +130,9 @@ stable across re-renders. **Narrative dialogue order is never shuffled** — onl
   a 2-column board), `PrimeWord.image` (an approved picture on a building-block row) and
   `PrimeWord.line` (a whole conversation line taught with its picture — left out of the new-vs-review
   vocabulary tracking), and an image `base` for `customize`.
+  The Mission 04 pass added `MatchTile.caption` (a few app-language words under a tile — what it
+  means) and `MissionSpec.steps` (a spec mission may hand-build its journey per language; its
+  sentences and scenes still come from the spec — used by Everyday Core, `practiceV1.ts` `m04Steps`).
 - **Companion inside a mission** — `companionCoach.ts` (`coachFor(steps, index, missionId)`) decides,
   purely, whether a step gets one app-language line (the mission goal on its intro card; how to play
   the first game of each kind; `MISSION_GAME_INTRO` overrides that line where a mission's first game of

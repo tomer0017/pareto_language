@@ -108,8 +108,8 @@ describe('recovery ambush vs speed challenge', () => {
       const s = [...day.steps].reverse().find((x) => x.kind === 'ambush' || ((x.kind === 'visualMatch' || x.kind === 'miniMap' || x.kind === 'quickReply') && x.challenge))!;
       return s.kind === 'ambush' ? `ambush:${s.mode}` : `${s.kind}:speed`;
     };
-    // Mission 03: the barista speed run (its seven real questions), then the video and the picture gate.
-    expect([1, 2, 3, 4, 5].map(final)).toEqual(['ambush:recovery', 'visualMatch:speed', 'quickReply:speed', 'ambush:speed', 'miniMap:speed']);
+    // Missions 03 and 04: the speed run of the conversation's real questions, then the video and the picture gate.
+    expect([1, 2, 3, 4, 5].map(final)).toEqual(['ambush:recovery', 'visualMatch:speed', 'quickReply:speed', 'quickReply:speed', 'miniMap:speed']);
   });
 });
 
@@ -201,7 +201,7 @@ describe('Mission 04 — Everyday Core', () => {
   it('Swap It builds valid sentences from authored frames and values, in every language', () => {
     for (const lang of LANGS) {
       const swap = stepsOf(mission(4, lang), 'swap')[0]!;
-      expect(swap.rounds.length).toBeGreaterThanOrEqual(6);
+      expect(swap.rounds.length).toBeGreaterThanOrEqual(5); // the sentence machine (Mission 04 pass)
       for (const r of swap.rounds) for (const o of r.options) {
         const sentence = fillFrame(r.frame, o.slot);
         expect(sentence, lang).not.toContain('___');
@@ -210,8 +210,9 @@ describe('Mission 04 — Everyday Core', () => {
       }
     }
     const frames = stepsOf(day, 'swap')[0]!.rounds.map((r) => r.frame);
-    for (const f of ['I need ___.', 'I have ___.', "I don't have ___.", 'I want ___.', 'I can ___.', "I can't ___."]) expect(frames).toContain(f);
-    expect(fillFrame('I need ___.', 'water')).toBe('I need water.');
+    // the object changes (I need ___), the engine changes (I ___ a coffee), and a known word transfers (I want ___)
+    for (const f of ['I ___ a coffee.', 'I want ___.', 'Can you ___ me?']) expect(frames).toContain(f);
+    expect(fillFrame('I want ___.', 'a croissant')).toBe('I want a croissant.');
   });
   it('the "Do you know…" practice sentence is the dialogue\'s own wording', () => {
     for (const lang of LANGS) {

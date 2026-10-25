@@ -22,6 +22,26 @@ loop (typecheck → lint → tests → build → smoke) green at every milestone
 
 ## What's done
 
+### Mission 04 — Everyday Core: a pattern mission, taught before tested (2026-10-25)
+Both locked scenes are byte-identical (EN/ES/FR); Missions 01–03 and 05–30 are byte-identical (the
+older fingerprints were narrowed to 05+ and re-derived from the previous build).
+- **Before:** 6 key-sentence screens in a row, Swap It with untaught words (water, help, phone), an
+  invented speed line ("Before you go out… still in the room?"), no video; "Hi", "Sure", the wifi
+  line, "It's here", "Of course", "twenty minutes", "dinner at seven" and "No problem" only in the
+  conversation.
+- **Now (26 steps, 41 quick interactions):** Step 0 (optional: want · need · have · know · can + the
+  flips don't have · don't know · can't) → AT THE DESK: picture cards (what you hear / what you say)
+  → have / don't have / do you have? → question ↔ answer → "what do you say here?" (map · show me) →
+  WITH A FRIEND: picture cards ("the same engines — another situation"; the polite vs everyday form
+  in one line) → which engine? → question ↔ answer → flip it (✓ / ✕) → how do they react? → build two
+  frames → the sentence machine (same object, other engine; croissant from Mission 03; show / help)
+  → both scenes → speed run → video (ES / FR) → what happened?
+- "I want water." is now TAUGHT (Mission 17 counts on French "l’eau"); "Yes, I know." and "Can you
+  help me?" stay taught — later checkpoints use them.
+- `mission04Coverage.ts` (26 chunks) all COVERED; strict in-order audit (boards, matches, builders,
+  the machine and Quick Replies are tests) clean in EN/ES/FR; transfer uses only words from this
+  mission or Missions 01–03. Checked in headless Chrome at 390/360 px; not on a device.
+
 ### Mission 03 — real-device pass: teach before test, approved pictures (2026-10-23)
 iPhone QA showed "appeared before the test" was not enough: symbols (✋, ➕❓, 🧾, 👋☀️, emoji milk/sugar)
 did not teach their meanings, and €6.50 was guessed among six prices.
