@@ -30,7 +30,8 @@ teaching only), the desk game's map tile and the reactions board. Scene cards ar
 (`prime.bigPictures`, Mission 04 only). The map one-tile workaround is gone: "Do you have a map?" is a
 fair three-picture choice again. "No problem." (Group 3) has no picture yet, so its reaction round is
 a one-tile teaching round instead of the emoji odd-one-out. Group 1, dialogue, 41 interactions and
-coverage unchanged; no Group 3 picture. Note: the desk scenes show two different travellers.
+coverage unchanged; no Group 3 picture. Continuity patch (same day): have-key, wifi-password,
+have-map and map-yes were replaced in place so all eight desk scenes show the same traveller and receptionist.
 
 ### Mission 04 — Group 1 pictures: the five engines and the three flips (2026-10-25)
 Eight approved pictures in `apps/web/public/images/mission04/` (want, need, have, dont-have, know,

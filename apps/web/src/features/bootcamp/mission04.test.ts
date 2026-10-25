@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { existsSync, readdirSync, statSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { cinematicTranscript, missionDialogues } from './exportDialogue.js';
 import { coverageOf, encounters, hasChunk, plain, type CoverageLang } from './mission01Coverage.js';
@@ -458,6 +458,10 @@ describe('Group 2 pictures: the hotel-desk scenes', () => {
     expect(new Set(G2).size).toBe(8);
     for (const f of G2) { expect(existsSync(`${PUBLIC}images/mission04/${f}`), f).toBe(true); expect(statSync(`${PUBLIC}images/mission04/${f}`).size, f).toBeGreaterThan(10_000); }
     expect(readdirSync(`${PUBLIC}images/mission04`).sort()).toEqual([...G1, ...G2].sort());
+  });
+  it('all sixteen pictures are different images — e.g. the map request and the map "yes" are never the same picture', () => {
+    const bytes = [...G1, ...G2].map((f) => readFileSync(`${PUBLIC}images/mission04/${f}`).toString('base64'));
+    expect(new Set(bytes).size).toBe(16);
   });
   it('every Mission 04 picture reference is a Group 1 engine or a Group 2 desk scene — no Group 3 picture is referenced', () => {
     for (const lang of LANGS) {
