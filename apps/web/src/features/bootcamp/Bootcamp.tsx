@@ -394,7 +394,7 @@ function PrimeStep({ step, itemsById, onNext }: { step: Extract<BootcampStep, { 
               onClick={() => say(`w${i}`, w.text)}
             >
               {w.image
-                ? <img className="prime-img" src={resolveAsset(w.image)} alt="" draggable={false} decoding="async" />
+                ? <img className={step.bigPictures ? 'prime-img is-scene' : 'prime-img'} src={resolveAsset(w.image)} alt="" draggable={false} decoding="async" />
                 : w.emoji && <span style={{ fontSize: '1.6rem', width: 30, textAlign: 'center' }} aria-hidden>{w.emoji}</span>}
               <span style={{ minWidth: 0, flex: 1 }}>
                 <span style={{ display: "block", fontWeight: 700 }}><TargetText text={w.text} />{w.review && <span title={t('primeReview')} aria-label={t('primeReview')}> ♻️</span>}</span>

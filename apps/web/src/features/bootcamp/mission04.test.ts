@@ -127,7 +127,7 @@ describe('the coverage specification', () => {
         "towel": "6 = meaning 1 · listening 0 · retrieval 4 · context 1",
         "twenty-minutes": "3 = meaning 1 · listening 1 · retrieval 0 · context 1",
         "wifi": "3 = meaning 1 · listening 0 · retrieval 1 · context 1",
-        "yes": "14 = meaning 2 · listening 3 · retrieval 7 · context 2",
+        "yes": "15 = meaning 3 · listening 3 · retrieval 7 · context 2",
         "you-can-walk": "4 = meaning 1 · listening 1 · retrieval 1 · context 1",
       }
     `);
@@ -383,18 +383,10 @@ describe('Group 1 pictures: the five engines and the three flips', () => {
     want: 'want.jpg', need: 'need.jpg', have: 'have.jpg', dontHave: 'dont-have.jpg', know: 'know.jpg', dontKnow: 'dont-know.jpg', can: 'can.jpg', cant: 'cant.jpg',
   } as const;
   const pic = (path: string | undefined): string => (path ?? '').replace('images/mission04/', '');
-  it('the eight files exist, are real pictures, and are eight DIFFERENT files — the only files in the Mission 04 folder', () => {
+  it('the eight files exist, are real pictures, and are eight DIFFERENT files', () => {
     const files = Object.values(FILE);
     expect(new Set(files).size).toBe(8);
     for (const f of files) { expect(existsSync(`${PUBLIC}images/mission04/${f}`), f).toBe(true); expect(statSync(`${PUBLIC}images/mission04/${f}`).size, f).toBeGreaterThan(10_000); }
-    expect(readdirSync(`${PUBLIC}images/mission04`).sort()).toEqual([...files].sort()); // nothing of Group 2 / 3
-  });
-  it('every Mission 04 picture reference is one of the eight — no Group 2 / 3 picture is referenced', () => {
-    for (const lang of LANGS) {
-      const refs = [...JSON.stringify(day(lang)).matchAll(/images\/mission04\/([a-z-]+\.jpg)/g)].map((m) => m[1]!);
-      expect(refs.length, lang).toBeGreaterThan(0);
-      for (const r of refs) expect(Object.values(FILE) as string[], `${lang} ${r}`).toContain(r);
-    }
   });
   it('Step 0: each engine and each flip carries its own picture', () => {
     for (const lang of LANGS) {
@@ -417,7 +409,7 @@ describe('Group 1 pictures: the five engines and the three flips', () => {
       const flip = boardWith(day(lang), 'can-no');
       expect(flip.tiles.map((t) => [t.id, pic(t.image)])).toEqual([['know-yes', FILE.know], ['know-no', FILE.dontKnow], ['can-yes', FILE.can], ['can-no', FILE.cant]]);
       const desk = boardWith(day(lang), 'ask-map');
-      expect(desk.tiles.filter((t) => t.image).map((t) => [t.id, pic(t.image)])).toEqual([['have-key', FILE.have], ['no-wifi', FILE.dontHave]]);
+      expect(desk.tiles.filter((t) => !t.image?.includes('desk-')).map((t) => [t.id, pic(t.image)])).toEqual([['have-key', FILE.have], ['no-wifi', FILE.dontHave]]);
     }
   });
   it('the learner lines that ARE the engine examples carry the same picture on their teaching card', () => {
@@ -425,8 +417,8 @@ describe('Group 1 pictures: the five engines and the three flips', () => {
       const byKey = Object.fromEntries(cards(day(lang)).flatMap((p) => p.words).map((w) => [w.key, pic(w.image)]));
       expect([byKey['core.line.i-need'], byKey['core.line.i-want'], byKey['core.line.i-have'], byKey['core.line.i-dont-have'], byKey['core.line.i-know'], byKey['core.line.i-dont-know'], byKey['core.line.i-can'], byKey['core.line.i-cant']])
         .toEqual([FILE.need, FILE.want, FILE.have, FILE.dontHave, FILE.know, FILE.dontKnow, FILE.can, FILE.cant]);
-      // the desk's and the friend's QUESTIONS are not statements of an engine: no engine picture on them
-      for (const w of cards(day(lang)).flatMap((p) => p.words)) if (/^core\.line\.(need-anything|have-key|wifi|want-coffee|know-way|walk|dinner)$/.test(w.key!)) expect(w.image, w.key).toBeUndefined();
+      // the desk's and the friend's QUESTIONS are not statements of an engine: no ENGINE picture on them
+      for (const w of cards(day(lang)).flatMap((p) => p.words)) if (/^core\.line\.(need-anything|have-key|wifi|want-coffee|know-way|walk|dinner)$/.test(w.key!)) expect(Object.values(FILE) as string[], w.key).not.toContain(pic(w.image));
     }
   });
   it('one engine = one picture across the whole mission (Step 0, cards, every board), the same in EN / ES / FR', () => {
@@ -435,7 +427,8 @@ describe('Group 1 pictures: the five engines and the three flips', () => {
       const note = (path: string | undefined, meaning: string): void => { if (path) (out[pic(path)] ??= new Set()).add(meaning); };
       for (const w of stepsOf(day(lang), 'prime').flatMap((p) => p.words)) note(w.image, (w.key ?? '').replace(/^core\.(line\.)?/, '').replace(/^i-/, '').replace('want-water', 'water'));
       for (const b of boards(day(lang))) for (const t of b.tiles) note(t.image, t.id);
-      return Object.fromEntries(Object.entries(out).map(([f, m]) => [f, [...m].sort().join(' | ')]));
+      // (Group 1 only here — the desk scenes have their own test)
+      return Object.fromEntries(Object.entries(out).filter(([f]) => !f.startsWith('desk-')).map(([f, m]) => [f, [...m].sort().join(' | ')]));
     };
     const SAME: Record<string, string> = {
       [FILE.want]: 'want', [FILE.need]: 'need', [FILE.have]: 'have | have-key', [FILE.dontHave]: 'dont-have | no-wifi',
@@ -448,6 +441,80 @@ describe('Group 1 pictures: the five engines and the three flips', () => {
       const shown = r.show ? b.tiles.filter((t) => r.show!.includes(t.id)) : b.tiles;
       expect(new Set(shown.map((t) => (t.image ? 'picture' : 'emoji'))).size, `${lang} ${r.audio.en}`).toBe(1);
     }
+  });
+});
+
+describe('Group 2 pictures: the hotel-desk scenes', () => {
+  const PUBLIC = fileURLToPath(new URL('../../../public/', import.meta.url));
+  const G1 = ['want.jpg', 'need.jpg', 'have.jpg', 'dont-have.jpg', 'know.jpg', 'dont-know.jpg', 'can.jpg', 'cant.jpg'];
+  const DESK = {
+    needAnything: 'desk-need-anything.jpg', haveKey: 'desk-have-key.jpg', wifiPassword: 'desk-wifi-password.jpg', wifiHere: 'desk-wifi-here.jpg',
+    haveMap: 'desk-have-map.jpg', mapYes: 'desk-map-yes.jpg', showMe: 'desk-show-me.jpg', ofCourse: 'desk-of-course.jpg',
+  } as const;
+  const G2 = Object.values(DESK) as string[];
+  const pic = (path: string | undefined): string => (path ?? '').replace('images/mission04/', '');
+  const cardPic = (lang: CoverageLang, key: string): string => pic(cards(day(lang)).flatMap((p) => p.words).find((w) => w.key === key)!.image);
+  it('the eight desk scenes exist and are eight different files; the folder holds Groups 1 and 2 only — nothing of Group 3', () => {
+    expect(new Set(G2).size).toBe(8);
+    for (const f of G2) { expect(existsSync(`${PUBLIC}images/mission04/${f}`), f).toBe(true); expect(statSync(`${PUBLIC}images/mission04/${f}`).size, f).toBeGreaterThan(10_000); }
+    expect(readdirSync(`${PUBLIC}images/mission04`).sort()).toEqual([...G1, ...G2].sort());
+  });
+  it('every Mission 04 picture reference is a Group 1 engine or a Group 2 desk scene — no Group 3 picture is referenced', () => {
+    for (const lang of LANGS) {
+      const refs = [...JSON.stringify(day(lang)).matchAll(/images\/mission04\/([a-z-]+\.jpg)/g)].map((m) => m[1]!);
+      for (const r of refs) expect([...G1, ...G2], `${lang} ${r}`).toContain(r);
+    }
+  });
+  it('each desk line uses its own scene — the same in EN / ES / FR', () => {
+    for (const lang of LANGS) {
+      expect([
+        cardPic(lang, 'core.line.need-anything'), cardPic(lang, 'core.line.have-key'), cardPic(lang, 'core.line.wifi'), cardPic(lang, 'core.line.its-here'),
+        cardPic(lang, 'core.line.do-you-have'), cardPic(lang, 'core.line.map-yes'), cardPic(lang, 'core.line.show-me'), cardPic(lang, 'core.line.of-course'),
+      ], lang).toEqual([DESK.needAnything, DESK.haveKey, DESK.wifiPassword, DESK.wifiHere, DESK.haveMap, DESK.mapYes, DESK.showMe, DESK.ofCourse]);
+    }
+    // …and each card is the conversation's own line
+    const desk = cards(day('es')).flatMap((p) => p.words).filter((w) => w.image?.includes('desk-')).map((w) => w.text);
+    expect(desk).toEqual(['¡Hola! ¿Necesita algo?', 'Claro. ¿Tiene su llave?', '¿Y la contraseña del wifi?', 'Está aquí.', 'Sí.', 'Claro.', '¿Tiene un mapa?', '¿Me lo puede mostrar?']);
+  });
+  it('one scene = one meaning: no desk scene stands for two lines, and no line has two scenes', () => {
+    for (const lang of LANGS) {
+      const byPic = new Map<string, Set<string>>();
+      const note = (path: string | undefined, meaning: string): void => { if (path?.includes('desk-')) byPic.set(pic(path), (byPic.get(pic(path)) ?? new Set()).add(meaning)); };
+      for (const w of cards(day(lang)).flatMap((p) => p.words)) note(w.image, w.key!.replace('core.line.', ''));
+      for (const b of boards(day(lang))) for (const t of b.tiles) note(t.image, { 'ask-map': 'do-you-have', 'wifi-here': 'its-here', sure: 'of-course' }[t.id] ?? t.id);
+      expect(byPic.size, lang).toBe(8);
+      for (const [f, m] of byPic) expect([...m], `${lang} ${f}`).toHaveLength(1);
+    }
+  });
+  it('the engine game and the flips still use Group 1 only; Group 1 files never carry a desk line', () => {
+    for (const lang of LANGS) {
+      for (const id of ['want', 'can-no']) for (const t of boardWith(day(lang), id).tiles) expect(G1, `${lang} ${t.id}`).toContain(pic(t.image));
+      const g1Lines = cards(day(lang)).flatMap((p) => p.words).filter((w) => G1.includes(pic(w.image))).map((w) => w.key);
+      for (const k of g1Lines) expect(k, lang).not.toMatch(/need-anything|have-key|wifi|its-here|do-you-have|map-yes|show-me|of-course/);
+    }
+  });
+  it('the map workaround is gone: "Do you have a map?" is a fair three-picture choice again (have ✓ · don\'t have ✕ · do you have? ❓)', () => {
+    for (const lang of LANGS) {
+      const b = boardWith(day(lang), 'ask-map');
+      expect(b.rounds.map((r) => r.show)).toEqual([undefined, undefined, undefined]);
+      expect(b.tiles.map((t) => [t.id, pic(t.image)])).toEqual([['have-key', 'have.jpg'], ['no-wifi', 'dont-have.jpg'], ['ask-map', DESK.haveMap]]);
+    }
+  });
+  it('the reactions: "Of course" and "It\'s here" are a picture pair; "No problem" (no picture until Group 3) is taught on its own — never the emoji odd-one-out', () => {
+    for (const lang of LANGS) {
+      const b = boardWith(day(lang), 'no-problem');
+      expect(b.rounds.map((r) => [r.correct, r.show])).toEqual([['sure', ['sure', 'wifi-here']], ['wifi-here', ['wifi-here', 'sure']], ['no-problem', ['no-problem']]]);
+      expect([pic(b.tiles.find((t) => t.id === 'sure')!.image), pic(b.tiles.find((t) => t.id === 'wifi-here')!.image)]).toEqual([DESK.ofCourse, DESK.wifiHere]);
+    }
+  });
+  it('the scene cards are drawn large (whole scenes, not thumbnails)', () => {
+    for (const lang of LANGS) for (const p of cards(day(lang))) expect(p.bigPictures, lang).toBe(true);
+    expect(stepsOf(day('en', 3), 'prime').some((p) => p.bigPictures)).toBe(false); // Mission 03 untouched
+  });
+  it('the French "carte = map" note stays; the polite desk forms stay', () => {
+    const desk = cards(day('fr')).find((p) => p.words.some((w) => w.key === 'core.line.do-you-have'))!;
+    expect(desk.intro!.en).toMatch(/carte = map/);
+    expect(cards(day('fr')).flatMap((p) => p.words).find((w) => w.key === 'core.line.show-me')!.text).toBe('Vous pouvez me montrer ?');
   });
 });
 

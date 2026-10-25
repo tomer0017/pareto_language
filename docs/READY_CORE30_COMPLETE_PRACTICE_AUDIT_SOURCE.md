@@ -3646,7 +3646,7 @@ Intro screen (first Practice step; identical in the English, French and Spanish 
 
 1. `talk` — intro screen — "Mission 4: Everyday Core: Want / Need / Have / Can"
 2. `prime` — before-we-speak (word intro) — 8 words → builds `phrase.core.i-need`
-3. `prime` — before-we-speak (word intro) — 5 words → builds ``
+3. `prime` — before-we-speak (word intro) — 6 words → builds ``
 4. `prime` — before-we-speak (word intro) — 6 words → builds ``
 5. `visualMatch` — visual match (hear → tap the tile) — 3 round(s)
 6. `matchPairs` — match pairs (connect each question to its answer) — 3 pairs on one screen
@@ -3696,11 +3696,12 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `core.line.need-anything` — EN "Hi! Do you need anything?" · FR "Bonjour ! Vous avez besoin de quelque chose ?" · ES "¡Hola! ¿Necesita algo?" — meaning "שלום! אתה צריך משהו?" / "Hi! Do you need anything?" — icon 🛎️ — new
-2. `core.line.have-key` — EN "Sure. Do you have your key?" · FR "Bien sûr. Vous avez votre clé ?" · ES "Claro. ¿Tiene su llave?" — meaning "בטח. יש לך את המפתח?" / "Sure. Do you have your key?" — icon 🔑 — new
-3. `core.line.wifi` — EN "And the wifi password?" · FR "Et le mot de passe du wifi ?" · ES "¿Y la contraseña del wifi?" — meaning "והסיסמה של הוויי-פיי?" / "And the wifi password?" — icon 📶 — new
-4. `core.line.its-here` — EN "It's here." · FR "Il est ici." · ES "Está aquí." — meaning "היא כאן. (הנה הסיסמה)" / "It’s here. (here is the password)" — icon 👉 — new
-5. `core.line.of-course` — EN "Of course." · FR "Bien sûr." · ES "Claro." — meaning "כמובן. / בטח." / "Of course." — icon 👍 — new
+1. `core.line.need-anything` — EN "Hi! Do you need anything?" · FR "Bonjour ! Vous avez besoin de quelque chose ?" · ES "¡Hola! ¿Necesita algo?" — meaning "שלום! אתה צריך משהו?" / "Hi! Do you need anything?" — icon none — new
+2. `core.line.have-key` — EN "Sure. Do you have your key?" · FR "Bien sûr. Vous avez votre clé ?" · ES "Claro. ¿Tiene su llave?" — meaning "בטח. יש לך את המפתח?" / "Sure. Do you have your key?" — icon none — new
+3. `core.line.wifi` — EN "And the wifi password?" · FR "Et le mot de passe du wifi ?" · ES "¿Y la contraseña del wifi?" — meaning "והסיסמה של הוויי-פיי?" / "And the wifi password?" — icon none — new
+4. `core.line.its-here` — EN "It's here." · FR "Il est ici." · ES "Está aquí." — meaning "היא כאן. (הנה הסיסמה)" / "It’s here. (here is the password)" — icon none — new
+5. `core.line.map-yes` — EN "Yes." · FR "Oui." · ES "Sí." — meaning "כן. (יש מפה — הנה היא)" / "Yes. (there is a map — here it is)" — icon none — new
+6. `core.line.of-course` — EN "Of course." · FR "Bien sûr." · ES "Claro." — meaning "כמובן. / בטח." / "Of course." — icon none — new
 
 No build-sentence card.
 
@@ -3712,8 +3713,8 @@ Words are paired across languages by their concept KEY (not by position).
 1. `core.line.i-need` — EN "I need a towel." · FR "J’ai besoin d’une serviette." · ES "Necesito una toalla." — meaning "אני צריך מגבת." / "I need a towel." — icon none — new
 2. `core.line.i-have` — EN "Yes, I have my key." · FR "Oui, j’ai ma clé." · ES "Sí, tengo mi llave." — meaning "כן, יש לי את המפתח. ✓" / "Yes, I have my key. ✓" — icon none — new
 3. `core.line.i-dont-have` — EN "I don't have it." · FR "Je ne l’ai pas." · ES "No la tengo." — meaning "אין לי אותה. ✕ (את הסיסמה)" / "I don’t have it. ✕ (the password)" — icon none — new
-4. `core.line.do-you-have` — EN "Do you have a map?" · FR "Vous avez une carte ?" · ES "¿Tiene un mapa?" — meaning "יש לך מפה?" / "Do you have a map?" — icon 🗺️ — new
-5. `core.line.show-me` — EN "Can you show me?" · FR "Vous pouvez me montrer ?" · ES "¿Me lo puede mostrar?" — meaning "אתה יכול להראות לי?" / "Can you show me?" — icon 👀 — new
+4. `core.line.do-you-have` — EN "Do you have a map?" · FR "Vous avez une carte ?" · ES "¿Tiene un mapa?" — meaning "יש לך מפה?" / "Do you have a map?" — icon none — new
+5. `core.line.show-me` — EN "Can you show me?" · FR "Vous pouvez me montrer ?" · ES "¿Me lo puede mostrar?" — meaning "אתה יכול להראות לי?" / "Can you show me?" — icon none — new
 6. `core.line.help-me` — EN "Can you help me?" · FR "Vous pouvez m’aider ?" · ES "¿Me puede ayudar?" — meaning "אתה יכול לעזור לי? (אותו "יכול", בקשה אחרת)" / "Can you help me? (the same "can", another request)" — icon 🤝 — new
 
 No build-sentence card.
@@ -3973,10 +3974,11 @@ No meaning quiz in this mission.
 - Prompt displayed: "Your things at the desk — tap what you hear" / "הדברים שלך בדלפק — הקש על מה ששמעת"
 - Audio played: EN "Yes, I have my key." · FR "Oui, j’ai ma clé." · ES "Sí, tengo mi llave."
 - Meaning of the audio (HE): "כן, יש לי את המפתח."
-- Buttons show: only this round's 2 tiles (the meaning and its contrast), same in every language; the sentence and its translation appear only AFTER the tap
+- Buttons show: a 3×3 board of 3 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
 - Choices:
   1. "[picture have.jpg] “I have it ✓” / “יש לי ✓”" — `phrase.core.i-have` — ✅ accepted
   2. "[picture dont-have.jpg] “I don’t have it ✕” / “אין לי ✕”" — no sentence id — ❌ wrong
+  3. "[picture desk-have-map.jpg] “do you have one? ❓” / “יש לך? ❓”" — no sentence id — ❌ wrong
 - Tests: phrase.core.i-have
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
@@ -3985,10 +3987,11 @@ No meaning quiz in this mission.
 - Prompt displayed: "Your things at the desk — tap what you hear" / "הדברים שלך בדלפק — הקש על מה ששמעת"
 - Audio played: EN "I don't have it." · FR "Je ne l’ai pas." · ES "No la tengo."
 - Meaning of the audio (HE): "אין לי אותה."
-- Buttons show: only this round's 2 tiles (the meaning and its contrast), same in every language; the sentence and its translation appear only AFTER the tap
+- Buttons show: a 3×3 board of 3 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
 - Choices:
   1. "[picture have.jpg] “I have it ✓” / “יש לי ✓”" — no sentence id — ❌ wrong
   2. "[picture dont-have.jpg] “I don’t have it ✕” / “אין לי ✕”" — `phrase.core.i-dont-have` — ✅ accepted
+  3. "[picture desk-have-map.jpg] “do you have one? ❓” / “יש לך? ❓”" — no sentence id — ❌ wrong
 - Tests: phrase.core.i-dont-have
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
@@ -3997,9 +4000,11 @@ No meaning quiz in this mission.
 - Prompt displayed: "Your things at the desk — tap what you hear" / "הדברים שלך בדלפק — הקש על מה ששמעת"
 - Audio played: EN "Do you have a map?" · FR "Vous avez une carte ?" · ES "¿Tiene un mapa?"
 - Meaning of the audio (HE): "יש לך מפה?"
-- Buttons show: ONE tile — a teaching round: hear it, see what it means, tap it (cannot be missed); then the line and its translation
+- Buttons show: a 3×3 board of 3 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. "🗺️ “do you have one? ❓” / “יש לך? ❓”" — `phrase.core.do-you-have` — ✅ accepted
+  1. "[picture have.jpg] “I have it ✓” / “יש לי ✓”" — no sentence id — ❌ wrong
+  2. "[picture dont-have.jpg] “I don’t have it ✕” / “אין לי ✕”" — no sentence id — ❌ wrong
+  3. "[picture desk-have-map.jpg] “do you have one? ❓” / “יש לך? ❓”" — `phrase.core.do-you-have` — ✅ accepted
 - Tests: phrase.core.do-you-have
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
@@ -4235,11 +4240,10 @@ No meaning quiz in this mission.
 - Prompt displayed: "How do they react? Tap what you hear" / "איך מגיבים לך? הקש על מה ששמעת"
 - Audio played: EN "Of course." · FR "Bien sûr." · ES "Claro."
 - Meaning of the audio (HE): "בטח."
-- Buttons show: a 3×3 board of 3 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Buttons show: only this round's 2 tiles (the meaning and its contrast), same in every language; the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. "👍 “sure / of course” / “בטח / כמובן”" — no sentence id — ✅ accepted
-  2. "👉📶 “here’s the password” / “הנה הסיסמה”" — no sentence id — ❌ wrong
-  3. "👌 “no problem” / “אין בעיה”" — no sentence id — ❌ wrong
+  1. "[picture desk-of-course.jpg] “sure / of course” / “בטח / כמובן”" — no sentence id — ✅ accepted
+  2. "[picture desk-wifi-here.jpg] “here’s the password” / “הנה הסיסמה”" — no sentence id — ❌ wrong
 - Tests: (no sentence id — not recorded)
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
@@ -4248,11 +4252,10 @@ No meaning quiz in this mission.
 - Prompt displayed: "How do they react? Tap what you hear" / "איך מגיבים לך? הקש על מה ששמעת"
 - Audio played: EN "It's here." · FR "Il est ici." · ES "Está aquí."
 - Meaning of the audio (HE): "היא כאן."
-- Buttons show: a 3×3 board of 3 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Buttons show: only this round's 2 tiles (the meaning and its contrast), same in every language; the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. "👍 “sure / of course” / “בטח / כמובן”" — no sentence id — ❌ wrong
-  2. "👉📶 “here’s the password” / “הנה הסיסמה”" — no sentence id — ✅ accepted
-  3. "👌 “no problem” / “אין בעיה”" — no sentence id — ❌ wrong
+  1. "[picture desk-of-course.jpg] “sure / of course” / “בטח / כמובן”" — no sentence id — ❌ wrong
+  2. "[picture desk-wifi-here.jpg] “here’s the password” / “הנה הסיסמה”" — no sentence id — ✅ accepted
 - Tests: (no sentence id — not recorded)
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
@@ -4261,11 +4264,9 @@ No meaning quiz in this mission.
 - Prompt displayed: "How do they react? Tap what you hear" / "איך מגיבים לך? הקש על מה ששמעת"
 - Audio played: EN "No problem." · FR "Pas de problème." · ES "No pasa nada."
 - Meaning of the audio (HE): "אין בעיה."
-- Buttons show: a 3×3 board of 3 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Buttons show: ONE tile — a teaching round: hear it, see what it means, tap it (cannot be missed); then the line and its translation
 - Choices:
-  1. "👍 “sure / of course” / “בטח / כמובן”" — no sentence id — ❌ wrong
-  2. "👉📶 “here’s the password” / “הנה הסיסמה”" — no sentence id — ❌ wrong
-  3. "👌 “no problem” / “אין בעיה”" — no sentence id — ✅ accepted
+  1. "👌 “no problem” / “אין בעיה”" — no sentence id — ✅ accepted
 - Tests: (no sentence id — not recorded)
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
@@ -4840,7 +4841,7 @@ Learner sentences taught beside the dialogue (not a line in any scene):
 - Wrong-answer branches: 0
 - Cold-open prompts: 0
 - Recovery opportunities: 2
-- Vocabulary pre-items: 30
+- Vocabulary pre-items: 31
 - Swap variants (extra accepted lines): 0
 - Sentences in review: 0
 - Total interactive questions: 51 (answer choices: 121)
@@ -27781,7 +27782,7 @@ Every learner sentence of this mission is a line in a scene.
 | 01 Introduce Myself | 14 (4 / 8 / 2) | 9 | 13 | 4 | 16 | 6 | 3 | 2 | 1 | 7 words | 0 | 36 | 8 |
 | 02 Numbers & Money | 19 (5 / 12 / 2) | 5 | 5 | 0 | 36 | 4 | 1 | 2 | 0 | 8 words | 1 | 45 | 10 |
 | 03 Coffee Shop | 22 (7 / 11 / 4) | 5 | 5 | 0 | 44 | 11 | 5 | 3 | 0 | 18 words | 1 | 60 | 14 |
-| 04 Everyday Core: Want / Need / Have / Can | 19 (10 / 7 / 2) | 0 | 0 | 0 | 41 | 10 | 9 | 2 | 0 | 30 words | 0 | 51 | 2 |
+| 04 Everyday Core: Want / Need / Have / Can | 19 (10 / 7 / 2) | 0 | 0 | 0 | 41 | 10 | 9 | 2 | 0 | 31 words | 0 | 51 | 2 |
 | 05 Directions | 14 (5 / 7 / 2) | 4 | 5 | 1 | 9 | 3 | 1 | 1 | 0 | 6 words | 0 | 17 | 5 |
 | 06 Airport & Border | 15 (5 / 6 / 4) | 4 | 4 | 0 | 11 | 10 | 5 | 3 | 0 | no | 0 | 25 | 4 |
 | 07 Taxi / Uber | 13 (5 / 5 / 3) | 4 | 4 | 0 | 11 | 5 | 2 | 2 | 0 | 5 words | 1 | 20 | 3 |
@@ -29601,6 +29602,7 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Audio: Yes, I have my key. — (כן, יש לי את המפתח.)
 - A: [picture have.jpg] “I have it ✓” / “יש לי ✓” ✅
 - B: [picture dont-have.jpg] “I don’t have it ✕” / “אין לי ✕”
+- C: [picture desk-have-map.jpg] “do you have one? ❓” / “יש לך? ❓”
 - Correct: [picture have.jpg] “I have it ✓” / “יש לי ✓”
 - Tests: phrase.core.i-have
 
@@ -29609,14 +29611,17 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Audio: I don't have it. — (אין לי אותה.)
 - A: [picture have.jpg] “I have it ✓” / “יש לי ✓”
 - B: [picture dont-have.jpg] “I don’t have it ✕” / “אין לי ✕” ✅
+- C: [picture desk-have-map.jpg] “do you have one? ❓” / “יש לך? ❓”
 - Correct: [picture dont-have.jpg] “I don’t have it ✕” / “אין לי ✕”
 - Tests: phrase.core.i-dont-have
 
 **M04-Q03** — visual-match
 - Prompt: "Your things at the desk — tap what you hear" / "הדברים שלך בדלפק — הקש על מה ששמעת"
 - Audio: Do you have a map? — (יש לך מפה?)
-- A: 🗺️ “do you have one? ❓” / “יש לך? ❓” ✅
-- Correct: 🗺️ “do you have one? ❓” / “יש לך? ❓”
+- A: [picture have.jpg] “I have it ✓” / “יש לי ✓”
+- B: [picture dont-have.jpg] “I don’t have it ✕” / “אין לי ✕”
+- C: [picture desk-have-map.jpg] “do you have one? ❓” / “יש לך? ❓” ✅
+- Correct: [picture desk-have-map.jpg] “do you have one? ❓” / “יש לך? ❓”
 - Tests: phrase.core.do-you-have
 
 **M04-Q04** — match-pairs
@@ -29781,27 +29786,23 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 **M04-Q21** — visual-match
 - Prompt: "How do they react? Tap what you hear" / "איך מגיבים לך? הקש על מה ששמעת"
 - Audio: Of course. — (בטח.)
-- A: 👍 “sure / of course” / “בטח / כמובן” ✅
-- B: 👉📶 “here’s the password” / “הנה הסיסמה”
-- C: 👌 “no problem” / “אין בעיה”
-- Correct: 👍 “sure / of course” / “בטח / כמובן”
+- A: [picture desk-of-course.jpg] “sure / of course” / “בטח / כמובן” ✅
+- B: [picture desk-wifi-here.jpg] “here’s the password” / “הנה הסיסמה”
+- Correct: [picture desk-of-course.jpg] “sure / of course” / “בטח / כמובן”
 - Tests: (no sentence id — not recorded)
 
 **M04-Q22** — visual-match
 - Prompt: "How do they react? Tap what you hear" / "איך מגיבים לך? הקש על מה ששמעת"
 - Audio: It's here. — (היא כאן.)
-- A: 👍 “sure / of course” / “בטח / כמובן”
-- B: 👉📶 “here’s the password” / “הנה הסיסמה” ✅
-- C: 👌 “no problem” / “אין בעיה”
-- Correct: 👉📶 “here’s the password” / “הנה הסיסמה”
+- A: [picture desk-of-course.jpg] “sure / of course” / “בטח / כמובן”
+- B: [picture desk-wifi-here.jpg] “here’s the password” / “הנה הסיסמה” ✅
+- Correct: [picture desk-wifi-here.jpg] “here’s the password” / “הנה הסיסמה”
 - Tests: (no sentence id — not recorded)
 
 **M04-Q23** — visual-match
 - Prompt: "How do they react? Tap what you hear" / "איך מגיבים לך? הקש על מה ששמעת"
 - Audio: No problem. — (אין בעיה.)
-- A: 👍 “sure / of course” / “בטח / כמובן”
-- B: 👉📶 “here’s the password” / “הנה הסיסמה”
-- C: 👌 “no problem” / “אין בעיה” ✅
+- A: 👌 “no problem” / “אין בעיה” ✅
 - Correct: 👌 “no problem” / “אין בעיה”
 - Tests: (no sentence id — not recorded)
 

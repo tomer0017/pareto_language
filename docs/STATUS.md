@@ -22,6 +22,16 @@ loop (typecheck → lint → tests → build → smoke) green at every milestone
 
 ## What's done
 
+### Mission 04 — Group 2 pictures: the hotel-desk scenes (2026-10-25)
+Eight approved desk scenes in `apps/web/public/images/mission04/desk-*.jpg` (need-anything, have-key,
+wifi-password, wifi-here, have-map, map-yes, show-me, of-course; 380 KB; one set for EN / ES / FR) on
+the desk's picture cards (each the scene of its own line; a "Yes." card added for the map exchange —
+teaching only), the desk game's map tile and the reactions board. Scene cards are drawn at 100 px
+(`prime.bigPictures`, Mission 04 only). The map one-tile workaround is gone: "Do you have a map?" is a
+fair three-picture choice again. "No problem." (Group 3) has no picture yet, so its reaction round is
+a one-tile teaching round instead of the emoji odd-one-out. Group 1, dialogue, 41 interactions and
+coverage unchanged; no Group 3 picture. Note: the desk scenes show two different travellers.
+
 ### Mission 04 — Group 1 pictures: the five engines and the three flips (2026-10-25)
 Eight approved pictures in `apps/web/public/images/mission04/` (want, need, have, dont-have, know,
 dont-know, can, cant — JPEG q92, 314 px, 352 KB; one set for EN / ES / FR) replace the emoji wherever

@@ -95,6 +95,8 @@ export interface PrimeSpec {
   words: { key?: string; t: L3; meaning: Copy; emoji?: string; image?: string; line?: boolean; review?: boolean }[];
   /** The step's heading (default "Before we speak"). */
   label?: Copy;
+  /** The pictures are whole scenes: draw them larger. */
+  bigPictures?: boolean;
   /** The sentence the words assemble into — only when they genuinely build one. */
   build?: string;
   /** Step 0 of the mission: an optional preparation the learner may skip. */
@@ -409,6 +411,7 @@ export function buildPrime(prime: PrimeSpec, lang: MissionLang): BootcampStep {
     })),
     ...(prime.build ? { buildFromItemId: `${lang}.${prime.build}` } : {}),
     ...(prime.gate ? { gate: true } : {}),
+    ...(prime.bigPictures ? { bigPictures: true } : {}),
   };
 }
 

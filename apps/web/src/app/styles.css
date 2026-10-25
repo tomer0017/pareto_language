@@ -1458,6 +1458,7 @@ div.jstep { box-shadow: none; border-color: var(--line); }
 .pgrid.is-one { grid-template-columns: minmax(0, 200px); justify-content: center; }
 .pgrid.is-one .ptile { font-size: 2.2rem; }
 .prime-img { flex: none; width: 76px; height: 76px; object-fit: contain; border-radius: 14px; }
+.prime-img.is-scene { width: 100px; height: 100px; border-radius: 16px; }
 .ptile {
   aspect-ratio: 1 / 1; min-height: 0; padding: 4px; border-radius: var(--r-md, 16px);
   background: var(--card); border: 1.5px solid var(--line); box-shadow: var(--shadow-card);

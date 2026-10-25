@@ -668,6 +668,12 @@ const ENGINE_IMG = {
   want: `${M04_IMG}want.jpg`, need: `${M04_IMG}need.jpg`, have: `${M04_IMG}have.jpg`, dontHave: `${M04_IMG}dont-have.jpg`,
   know: `${M04_IMG}know.jpg`, dontKnow: `${M04_IMG}dont-know.jpg`, can: `${M04_IMG}can.jpg`, cant: `${M04_IMG}cant.jpg`,
 } as const;
+/** Group 2 — the hotel-desk SCENES (what is asked / shown at the desk), never stand-ins for the engines. */
+const DESK_IMG = {
+  needAnything: `${M04_IMG}desk-need-anything.jpg`, haveKey: `${M04_IMG}desk-have-key.jpg`, wifiPassword: `${M04_IMG}desk-wifi-password.jpg`,
+  wifiHere: `${M04_IMG}desk-wifi-here.jpg`, haveMap: `${M04_IMG}desk-have-map.jpg`, mapYes: `${M04_IMG}desk-map-yes.jpg`,
+  showMe: `${M04_IMG}desk-show-me.jpg`, ofCourse: `${M04_IMG}desk-of-course.jpg`,
+} as const;
 /* The engines, as one family of tiles: the same symbol always means the same engine. */
 const E_WANT = { id: 'want', image: ENGINE_IMG.want, alt: 'Reaching for a coffee that is offered', caption: cap('רוצה', 'want') };
 const E_NEED = { id: 'need', image: ENGINE_IMG.need, alt: 'Asking at the desk for a towel', caption: cap('צריך', 'need') };
@@ -677,10 +683,10 @@ const E_CAN = { id: 'can', image: ENGINE_IMG.can, alt: 'Walking happily through 
 /* My things at the desk: what I have, what I don't, what I ask for. */
 const T_KEY = { id: 'have-key', image: ENGINE_IMG.have, alt: 'Holding up the room key, ticked', caption: cap('יש לי ✓', 'I have it ✓') };
 const T_WIFI = { id: 'no-wifi', image: ENGINE_IMG.dontHave, alt: 'Shrugging at the wifi password, crossed out', caption: cap('אין לי ✕', 'I don’t have it ✕') };
-const T_MAP = { id: 'ask-map', emoji: '🗺️', caption: cap('יש לך? ❓', 'do you have one? ❓'), scale: 1.6 };
-const T_HERE = { id: 'wifi-here', emoji: '👉📶', caption: cap('הנה הסיסמה', 'here’s the password'), scale: 1.6 };
+const T_MAP = { id: 'ask-map', image: DESK_IMG.haveMap, alt: 'Asking the receptionist for a tourist map', caption: cap('יש לך? ❓', 'do you have one? ❓') };
+const T_HERE = { id: 'wifi-here', image: DESK_IMG.wifiHere, alt: 'The receptionist pointing at the wifi password on the desk', caption: cap('הנה הסיסמה', 'here’s the password') };
 /* How the other person reacts. */
-const R_SURE = { id: 'sure', emoji: '👍', caption: cap('בטח / כמובן', 'sure / of course'), scale: 1.6 };
+const R_SURE = { id: 'sure', image: DESK_IMG.ofCourse, alt: 'The receptionist pointing out the route on the map', caption: cap('בטח / כמובן', 'sure / of course') };
 const R_OK = { id: 'no-problem', emoji: '👌', caption: cap('אין בעיה', 'no problem'), scale: 1.6 };
 /* The flips: the same symbol, ✓ or ✕. */
 const F_KNOW = { id: 'know-yes', image: ENGINE_IMG.know, alt: 'Tracing the route on a map, sure of the way', caption: cap('יודע ✓', 'I know ✓') };
@@ -757,25 +763,28 @@ export function m04Steps(lang: MissionLang): BootcampStep[] {
     // AT THE DESK — what you hear (the polite forms of a desk), each line with its meaning.
     k.prime({
       label: ['בדלפק — מה שומעים', 'At the desk — what you hear'],
+      bigPictures: true,
       intro: ['כל משפט — ומה הוא אומר. בדלפק מדברים בצורה מנומסת. הקש כדי לשמוע.', 'Each line — and what it says. At a desk people use the polite form. Tap to hear.'],
       words: [
-        { line: true, key: 'core.line.need-anything', t: l3(D_NEED), meaning: ['שלום! אתה צריך משהו?', 'Hi! Do you need anything?'], emoji: '🛎️' },
-        { line: true, key: 'core.line.have-key', t: l3(D_KEY), meaning: ['בטח. יש לך את המפתח?', 'Sure. Do you have your key?'], emoji: '🔑' },
-        { line: true, key: 'core.line.wifi', t: l3(D_WIFI), meaning: ['והסיסמה של הוויי-פיי?', 'And the wifi password?'], emoji: '📶' },
-        { line: true, key: 'core.line.its-here', t: ['It\'s here.', 'Il est ici.', 'Está aquí.'], meaning: ['היא כאן. (הנה הסיסמה)', 'It’s here. (here is the password)'], emoji: '👉' },
-        { line: true, key: 'core.line.of-course', t: ['Of course.', 'Bien sûr.', 'Claro.'], meaning: ['כמובן. / בטח.', 'Of course.'], emoji: '👍' },
+        { line: true, key: 'core.line.need-anything', t: l3(D_NEED), meaning: ['שלום! אתה צריך משהו?', 'Hi! Do you need anything?'], image: DESK_IMG.needAnything },
+        { line: true, key: 'core.line.have-key', t: l3(D_KEY), meaning: ['בטח. יש לך את המפתח?', 'Sure. Do you have your key?'], image: DESK_IMG.haveKey },
+        { line: true, key: 'core.line.wifi', t: l3(D_WIFI), meaning: ['והסיסמה של הוויי-פיי?', 'And the wifi password?'], image: DESK_IMG.wifiPassword },
+        { line: true, key: 'core.line.its-here', t: ['It\'s here.', 'Il est ici.', 'Está aquí.'], meaning: ['היא כאן. (הנה הסיסמה)', 'It’s here. (here is the password)'], image: DESK_IMG.wifiHere },
+        { line: true, key: 'core.line.map-yes', t: ['Yes.', 'Oui.', 'Sí.'], meaning: ['כן. (יש מפה — הנה היא)', 'Yes. (there is a map — here it is)'], image: DESK_IMG.mapYes },
+        { line: true, key: 'core.line.of-course', t: ['Of course.', 'Bien sûr.', 'Claro.'], meaning: ['כמובן. / בטח.', 'Of course.'], image: DESK_IMG.ofCourse },
       ],
     }),
     // AT THE DESK — what you say.
     k.prime({
       label: ['בדלפק — מה אתה אומר', 'At the desk — what you say'],
+      bigPictures: true,
       intro: deskSayIntro,
       words: [
         { line: true, key: 'core.line.i-need', t: l3(M_NEED), meaning: ['אני צריך מגבת.', 'I need a towel.'], image: ENGINE_IMG.need },
         { line: true, key: 'core.line.i-have', t: l3(M_HAVE), meaning: ['כן, יש לי את המפתח. ✓', 'Yes, I have my key. ✓'], image: ENGINE_IMG.have },
         { line: true, key: 'core.line.i-dont-have', t: l3(M_DONT_HAVE), meaning: ['אין לי אותה. ✕ (את הסיסמה)', 'I don’t have it. ✕ (the password)'], image: ENGINE_IMG.dontHave },
-        { line: true, key: 'core.line.do-you-have', t: l3(M_MAP), meaning: ['יש לך מפה?', 'Do you have a map?'], emoji: '🗺️' },
-        { line: true, key: 'core.line.show-me', t: ['Can you show me?', 'Vous pouvez me montrer ?', '¿Me lo puede mostrar?'], meaning: ['אתה יכול להראות לי?', 'Can you show me?'], emoji: '👀' },
+        { line: true, key: 'core.line.do-you-have', t: l3(M_MAP), meaning: ['יש לך מפה?', 'Do you have a map?'], image: DESK_IMG.haveMap },
+        { line: true, key: 'core.line.show-me', t: ['Can you show me?', 'Vous pouvez me montrer ?', '¿Me lo puede mostrar?'], meaning: ['אתה יכול להראות לי?', 'Can you show me?'], image: DESK_IMG.showMe },
         { line: true, key: 'core.line.help-me', t: ['Can you help me?', 'Vous pouvez m’aider ?', '¿Me puede ayudar?'], meaning: ['אתה יכול לעזור לי? (אותו "יכול", בקשה אחרת)', 'Can you help me? (the same "can", another request)'], emoji: '🤝' },
       ],
     }),
@@ -785,11 +794,9 @@ export function m04Steps(lang: MissionLang): BootcampStep[] {
       label: ['הדברים שלך בדלפק — הקש על מה ששמעת', 'Your things at the desk — tap what you hear'],
       tiles: [T_KEY, T_WIFI, T_MAP],
       rounds: [
-        { audio: M_HAVE, correct: 'have-key', itemId: 'phrase.core.i-have', show: ['have-key', 'no-wifi'] },
-        { audio: M_DONT_HAVE, correct: 'no-wifi', itemId: 'phrase.core.i-dont-have', show: ['no-wifi', 'have-key'] },
-        // the map has no approved picture yet: shown on its own (a teaching round), never beside the
-        // two pictures — so no round can be solved by "the odd tile out"
-        { audio: M_MAP, correct: 'ask-map', itemId: 'phrase.core.do-you-have', show: ['ask-map'] },
+        { audio: M_HAVE, correct: 'have-key', itemId: 'phrase.core.i-have' },
+        { audio: M_DONT_HAVE, correct: 'no-wifi', itemId: 'phrase.core.i-dont-have' },
+        { audio: M_MAP, correct: 'ask-map', itemId: 'phrase.core.do-you-have' },
       ],
     }),
     // QUESTION ↔ ANSWER — the desk's real questions and your answers.
@@ -816,6 +823,7 @@ export function m04Steps(lang: MissionLang): BootcampStep[] {
     // WITH A FRIEND — the SAME engines, another situation, the everyday form.
     k.prime({
       label: ['עם חבר — מה שומעים', 'With a friend — what you hear'],
+      bigPictures: true,
       intro: ['אותם מנועים — מצב אחר. עם חבר תשמע צורה יומיומית; בדלפק — מנומסת. פשוט תכיר את שתיהן.', 'The same engines — another situation. With a friend you hear the everyday form; at a desk, the polite one. Just know both.'],
       words: [
         { line: true, key: 'core.line.want-coffee', t: l3(D_COFFEE), meaning: ['רוצה קפה?', 'Do you want a coffee?'], emoji: '☕' },
@@ -827,6 +835,7 @@ export function m04Steps(lang: MissionLang): BootcampStep[] {
     }),
     k.prime({
       label: ['עם חבר — מה אתה אומר', 'With a friend — what you say'],
+      bigPictures: true,
       intro: ['רוצה · יודע / לא יודע · יכול / לא יכול. הקש כדי לשמוע.', 'Want · know / don’t know · can / can’t. Tap to hear.'],
       words: [
         { line: true, key: 'core.line.i-want', t: l3(M_WANT), meaning: ['כן, אני רוצה קפה.', 'Yes, I want a coffee.'], image: ENGINE_IMG.want },
@@ -878,9 +887,11 @@ export function m04Steps(lang: MissionLang): BootcampStep[] {
       label: ['איך מגיבים לך? הקש על מה ששמעת', 'How do they react? Tap what you hear'],
       tiles: [R_SURE, T_HERE, R_OK],
       rounds: [
-        { audio: ['Of course.', 'Bien sûr.', 'Claro.', 'בטח.'], correct: 'sure' },
-        { audio: ["It's here.", 'Il est ici.', 'Está aquí.', 'היא כאן.'], correct: 'wifi-here' },
-        { audio: ['No problem.', 'Pas de problème.', 'No pasa nada.', 'אין בעיה.'], correct: 'no-problem' },
+        { audio: ['Of course.', 'Bien sûr.', 'Claro.', 'בטח.'], correct: 'sure', show: ['sure', 'wifi-here'] },
+        { audio: ["It's here.", 'Il est ici.', 'Está aquí.', 'היא כאן.'], correct: 'wifi-here', show: ['wifi-here', 'sure'] },
+        // "No problem." has no picture until the friend's scene gets its own (next pass): on its own,
+        // never the emoji odd-one-out beside two pictures
+        { audio: ['No problem.', 'Pas de problème.', 'No pasa nada.', 'אין בעיה.'], correct: 'no-problem', show: ['no-problem'] },
       ],
     }),
     // BUILD — two frames: the engine + the object, and the flip.

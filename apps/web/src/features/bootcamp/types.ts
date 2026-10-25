@@ -220,7 +220,9 @@ export type BootcampStep =
   // (`buildFromItemId`). Sentences stay the learning unit; words are preparation, not the destination.
   | { kind: 'prime'; label?: LocalizedText; intro?: LocalizedText; words: PrimeWord[]; buildFromItemId?: string;
       /** Step 0: open on a short invitation — start, or "I already know this — skip". */
-      gate?: boolean }
+      gate?: boolean;
+      /** Pictures of whole SCENES (a desk, a map): drawn larger, so who / what / where reads without zooming. */
+      bigPictures?: boolean }
   | { kind: 'quiz'; itemId: string; wrongIds: [string, string] }
   | { kind: 'replies'; saidItemId: string; replyIds: string[] }   // expected-reply training
   | { kind: 'swipe'; itemIds: string[] }
