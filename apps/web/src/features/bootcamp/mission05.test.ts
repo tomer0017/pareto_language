@@ -1,3 +1,4 @@
+import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { missionVideo } from '../videos/missionVideo.js';
@@ -312,21 +313,53 @@ describe('no untaught "right", no artificial recovery, real learner lines only',
   });
 });
 
-describe('image slots — Group 1 (the building blocks) is in; the scene cards are ready for theirs', () => {
+describe('image slots — Group 1 (the building blocks) and Group 2 (the first five scenes) are in; Group 3 is ready for theirs', () => {
   const SLOTS = ['station', 'straight', 'left', 'corner', 'far', 'five-minutes-on-foot', 'next-to', 'bank', 'map', 'ask-where-station', 'npc-gives-directions', 'is-it-far', 'five-minutes-walk', 'next-to-bank', 'show-me-map', 'we-are-here', 'station-right-there', 'cant-miss-it', 'good-day'];
   const GROUP1 = ['station', 'straight', 'left', 'corner', 'far', 'five-minutes-on-foot', 'next-to', 'bank', 'map'] as const;
+  const GROUP2 = ['ask-where-station', 'npc-gives-directions', 'is-it-far', 'five-minutes-walk', 'next-to-bank'] as const;
+  const GROUP3 = ['show-me-map', 'we-are-here', 'station-right-there', 'cant-miss-it', 'good-day'] as const;
   const PUBLIC = new URL('../../../public/', import.meta.url);
-  it('all nineteen slots exist, each with a placeholder; the nine building blocks have their approved picture, the scene cards not yet', () => {
+  const md5 = (id: string): string => createHash('md5').update(readFileSync(new URL(M05_SLOTS[id as keyof typeof M05_SLOTS].image!, PUBLIC))).digest('hex');
+  it('all nineteen slots exist, each with a placeholder; Groups 1 and 2 have their approved picture, Group 3 not yet', () => {
     expect(Object.keys(M05_SLOTS).sort()).toEqual([...SLOTS].sort());
+    expect([...GROUP1, ...GROUP2, ...GROUP3].sort()).toEqual([...SLOTS].sort());
     for (const s of Object.values(M05_SLOTS)) expect(s.emoji).toBeTruthy();
-    for (const id of SLOTS) expect(Boolean(M05_SLOTS[id as keyof typeof M05_SLOTS].image), id).toBe((GROUP1 as readonly string[]).includes(id));
+    for (const id of SLOTS) expect(Boolean(M05_SLOTS[id as keyof typeof M05_SLOTS].image), id).toBe(!(GROUP3 as readonly string[]).includes(id));
   });
-  it('each building block is mapped to its own file — the one named for its meaning — and the nine are distinct', () => {
-    for (const id of GROUP1) expect(M05_SLOTS[id].image, id).toBe(`images/mission05/${id}.jpg`);
-    expect(new Set(GROUP1.map((id) => M05_SLOTS[id].image)).size).toBe(9);
+  it('each slot is mapped to its own file — the one named for its meaning — and all fourteen are distinct files', () => {
+    for (const id of [...GROUP1, ...GROUP2]) expect(M05_SLOTS[id].image, id).toBe(`images/mission05/${id}.jpg`);
+    const all = [...GROUP1, ...GROUP2];
+    expect(new Set(all.map((id) => M05_SLOTS[id].image)).size).toBe(14);
+    expect(new Set(all.map(md5)).size).toBe(14); // not the same picture under two names
   });
-  it('all nine files exist, are real JPEGs, and are the wide panels as cut (never squared, never upscaled past the collage)', () => {
-    for (const id of GROUP1) {
+  it('Group 1 is frozen: the nine building-block files are byte-for-byte the approved ones', () => {
+    expect(Object.fromEntries(GROUP1.map((id) => [id, md5(id)]))).toEqual({
+      station: 'c8faede8100f3075f950f99f768f9501', straight: 'c9d4ba9bff75af082eb941e59979ac1a', left: '8476f52a2cf71e14195edbf6b3d2f148',
+      corner: '3ab8bc1979742b32df33dc2d90f7d370', far: 'aff41d34d33885f1b3dd5eb176181a04', 'five-minutes-on-foot': '6a9f0fc43786a9dde42dfe2b632ebcea',
+      'next-to': 'b40027d063e666635f3f48bdb5ba175f', bank: '99e2c4db8f6b43d9dc46006c4d80cfc7', map: '239d5d74d89fd0688cea20a40c7420cc',
+    });
+  });
+  it('a scene never stands in for its building block: the question "Is it far?", the five-minute answer and "next to the bank" each sit beside — not instead of — far, five minutes on foot, next to', () => {
+    for (const [scene, block] of [['is-it-far', 'far'], ['five-minutes-walk', 'five-minutes-on-foot'], ['next-to-bank', 'next-to']] as const) {
+      expect(M05_SLOTS[scene].image).not.toBe(M05_SLOTS[block].image);
+      expect(md5(scene)).not.toBe(md5(block));
+      for (const lang of LANGS) {
+        const words = stepsOf(day(lang), 'prime').flatMap((p) => p.words);
+        expect(words.some((w) => w.image === M05_SLOTS[block].image), `${lang} ${block} still shown`).toBe(true);
+        expect(words.some((w) => w.image === M05_SLOTS[scene].image), `${lang} ${scene} shown`).toBe(true);
+      }
+    }
+  });
+  it('each scene picture is on the card of its own line (the traveller asking ≠ the local answering)', () => {
+    const ON: Record<(typeof GROUP2)[number], string> = { 'ask-where-station': 'dir.line.ask', 'npc-gives-directions': 'dir.line.directions', 'is-it-far': 'dir.line.is-it-far', 'five-minutes-walk': 'dir.line.five-minutes', 'next-to-bank': 'dir.line.next-to-bank' };
+    for (const lang of LANGS) {
+      const words = stepsOf(day(lang), 'prime').flatMap((p) => p.words);
+      for (const id of GROUP2) expect(words.filter((w) => w.image === M05_SLOTS[id].image).map((w) => w.key), `${lang} ${id}`).toEqual([ON[id]]);
+    }
+  });
+  it('all fourteen files exist, are real JPEGs, and are wide as supplied (never squared, never upscaled)', () => {
+    for (const id of GROUP2) expect(jpegSize(readFileSync(new URL(M05_SLOTS[id].image!, PUBLIC))), id).toEqual({ w: 444, h: 222 }); // the supplied scenes, at their own size
+    for (const id of [...GROUP1, ...GROUP2]) {
       const bytes = readFileSync(new URL(M05_SLOTS[id].image!, PUBLIC));
       expect([bytes[0], bytes[1]], id).toEqual([0xff, 0xd8]);
       const { w, h } = jpegSize(bytes);
@@ -338,7 +371,7 @@ describe('image slots — Group 1 (the building blocks) is in; the scene cards a
     const pics = (lang: CoverageLang) => stepsOf(day(lang), 'prime').flatMap((p) => p.words.map((w) => [w.key, w.image ?? null]));
     expect(pics('es')).toEqual(pics('en'));
     expect(pics('fr')).toEqual(pics('en'));
-    expect(pics('en').filter(([, i]) => i).length).toBeGreaterThanOrEqual(9);
+    expect(pics('en').filter(([, i]) => i).length).toBeGreaterThanOrEqual(14);
   });
   it('every Mission 05 card picture comes from a slot — one meaning, one slot — and the map\'s station and bank still read from the same slots', () => {
     const pictures = new Set(Object.values(M05_SLOTS).flatMap((s) => [s.emoji, s.image]));

@@ -22,6 +22,15 @@ loop (typecheck → lint → tests → build → smoke) green at every milestone
 
 ## What's done
 
+### Mission 05 — Group 2 pictures: the first five scenes (2026-10-26)
+
+Five approved wide scenes of one continuous street scene (same traveller, same local) on the cards
+of their own lines: ask-where-station, npc-gives-directions, is-it-far, five-minutes-walk,
+next-to-bank (`public/images/mission05/`, 444×222 as supplied, JPEG at full quality — the encoder's
+lower settings subsample colour and lost visible detail at this size). Shown with the existing
+Mission 05 wide presentation. Group 1 is byte-identical (MD5-pinned in `mission05.test.ts`); the
+Group 3 slots (show-me-map, we-are-here, station-right-there, cant-miss-it, good-day) stay placeholders.
+
 ### Mission 05 — Group 1 pictures: the nine building blocks (2026-10-26)
 
 Nine approved panels (station, straight, left, corner, far, five minutes on foot, next to, bank, map)

@@ -987,9 +987,12 @@ export const M05_SLOTS: Record<M05Slot, { emoji: string; image?: string }> = {
   left: { emoji: '⬅️', image: `${M05_IMG}left.jpg` }, corner: { emoji: '↰', image: `${M05_IMG}corner.jpg` }, far: { emoji: '🔭', image: `${M05_IMG}far.jpg` },
   'five-minutes-on-foot': { emoji: '🚶', image: `${M05_IMG}five-minutes-on-foot.jpg` }, 'next-to': { emoji: '↔️', image: `${M05_IMG}next-to.jpg` },
   bank: { emoji: '🏦', image: `${M05_IMG}bank.jpg` }, map: { emoji: '🗺️', image: `${M05_IMG}map.jpg` },
-  // Group 2 — the scene cards: placeholders until their pictures arrive
-  'ask-where-station': { emoji: '🙋' }, 'npc-gives-directions': { emoji: '🧭' }, 'is-it-far': { emoji: '🤔' }, 'five-minutes-walk': { emoji: '🚶' },
-  'next-to-bank': { emoji: '🏦' }, 'show-me-map': { emoji: '🗺️' }, 'we-are-here': { emoji: '🧍' }, 'station-right-there': { emoji: '🚉' },
+  // Group 2 — the first five scene cards: one continuous street scene (the traveller and the local)
+  'ask-where-station': { emoji: '🙋', image: `${M05_IMG}ask-where-station.jpg` }, 'npc-gives-directions': { emoji: '🧭', image: `${M05_IMG}npc-gives-directions.jpg` },
+  'is-it-far': { emoji: '🤔', image: `${M05_IMG}is-it-far.jpg` }, 'five-minutes-walk': { emoji: '🚶', image: `${M05_IMG}five-minutes-walk.jpg` },
+  'next-to-bank': { emoji: '🏦', image: `${M05_IMG}next-to-bank.jpg` },
+  // Group 3 — placeholders until their pictures arrive
+  'show-me-map': { emoji: '🗺️' }, 'we-are-here': { emoji: '🧍' }, 'station-right-there': { emoji: '🚉' },
   'cant-miss-it': { emoji: '👀' }, 'good-day': { emoji: '👋' },
 };
 const slot = (s: M05Slot): { emoji: string } | { image: string } => (M05_SLOTS[s].image ? { image: M05_SLOTS[s].image! } : { emoji: M05_SLOTS[s].emoji });

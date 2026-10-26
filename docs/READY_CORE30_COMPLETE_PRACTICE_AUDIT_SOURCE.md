@@ -4949,7 +4949,7 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `dir.line.ask` — EN "Excuse me! Where is the station?" · FR "Excusez-moi ! Où est la gare ?" · ES "¡Perdone! ¿Dónde está la estación?" — meaning "סליחה! איפה התחנה?" / "Excuse me! Where is the station?" — icon 🙋 — new
+1. `dir.line.ask` — EN "Excuse me! Where is the station?" · FR "Excusez-moi ! Où est la gare ?" · ES "¡Perdone! ¿Dónde está la estación?" — meaning "סליחה! איפה התחנה?" / "Excuse me! Where is the station?" — icon none — new
 2. `dir.line.station` — EN "the station" · FR "la gare" · ES "la estación" — meaning "התחנה" / "the station" — icon none — new
 3. `dir.line.bank` — EN "the bank" · FR "la banque" · ES "el banco" — meaning "הבנק" / "the bank" — icon none — new
 
@@ -4960,7 +4960,7 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `dir.line.directions` — EN "The station? Go straight ahead, then turn left at the corner." · FR "La gare ? Allez tout droit, puis tournez à gauche au coin." · ES "¿La estación? Siga todo recto y luego gire a la izquierda en la esquina." — meaning "התחנה? לך ישר, ואז פנה שמאלה בפינה." / "The station? Go straight ahead, then turn left at the corner." — icon 🧭 — new
+1. `dir.line.directions` — EN "The station? Go straight ahead, then turn left at the corner." · FR "La gare ? Allez tout droit, puis tournez à gauche au coin." · ES "¿La estación? Siga todo recto y luego gire a la izquierda en la esquina." — meaning "התחנה? לך ישר, ואז פנה שמאלה בפינה." / "The station? Go straight ahead, then turn left at the corner." — icon none — new
 2. `dir.line.straight` — EN "Go straight ahead." · FR "Allez tout droit." · ES "Siga todo recto." — meaning "לך ישר." / "Go straight ahead." — icon none — new
 3. `dir.line.corner` — EN "at the corner" · FR "au coin" · ES "en la esquina" — meaning "בפינה" / "at the corner" — icon none — new
 4. `dir.line.turn-left` — EN "Turn left at the corner." · FR "Tournez à gauche au coin." · ES "Gire a la izquierda en la esquina." — meaning "פנה שמאלה בפינה." / "Turn left at the corner." — icon none — new
@@ -4972,9 +4972,9 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `dir.line.is-it-far` — EN "Is it far?" · FR "C’est loin ?" · ES "¿Está lejos?" — meaning "זה רחוק?" / "Is it far?" — icon 🤔 — new
-2. `dir.line.five-minutes` — EN "No, it's about five minutes on foot." · FR "Non, c’est à environ cinq minutes à pied." · ES "No, está a unos cinco minutos a pie." — meaning "לא, זה בערך חמש דקות ברגל." / "No, it’s about five minutes on foot." — icon 🚶 — new
-3. `dir.line.next-to-bank` — EN "It's next to the bank." · FR "C’est à côté de la banque." · ES "Está al lado del banco." — meaning "זה ליד הבנק." / "It’s next to the bank." — icon 🏦 — new
+1. `dir.line.is-it-far` — EN "Is it far?" · FR "C’est loin ?" · ES "¿Está lejos?" — meaning "זה רחוק?" / "Is it far?" — icon none — new
+2. `dir.line.five-minutes` — EN "No, it's about five minutes on foot." · FR "Non, c’est à environ cinq minutes à pied." · ES "No, está a unos cinco minutos a pie." — meaning "לא, זה בערך חמש דקות ברגל." / "No, it’s about five minutes on foot." — icon none — new
+3. `dir.line.next-to-bank` — EN "It's next to the bank." · FR "C’est à côté de la banque." · ES "Está al lado del banco." — meaning "זה ליד הבנק." / "It’s next to the bank." — icon none — new
 
 No build-sentence card.
 
