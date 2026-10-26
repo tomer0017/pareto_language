@@ -62,8 +62,8 @@ const unknownIn = (said: string[], known: Set<string>): string[] => [...new Set(
 
 /* ── what this pass was not allowed to touch ─────────────────────────────────────────────────── */
 
-/** Sentence lists of Missions 06, 07 and 09 (Mission 08's is pinned id by id below). */
-const ITEMS_06_07_09 = { en: '120e5651', fr: '8b5f5d9b', es: 'a561c5d4' };
+/** Sentence lists of Missions 07 and 09 (Mission 08's is pinned id by id below; Mission 06 has its own pass). */
+const ITEMS_07_09 = { en: 'f8406ed5', fr: '413151aa', es: '7220f0a4' };
 
 describe('scope: only the Practice of Missions 06–10 changed', () => {
   // Scene transitions became non-spoken cues after these fingerprints were taken; `beforeCueFreeze`
@@ -71,14 +71,14 @@ describe('scope: only the Practice of Missions 06–10 changed', () => {
   const slice = (lang: Lang, a: number, b: number): FrozenDay[] => BOOTCAMP_PLAN.slice(a, b).map((m) => beforeCueFreeze(MISSIONS_BY_LANG[lang]![m.day]!, lang));
   const print = (f: (lang: Lang) => unknown): Record<Lang, string> => ({ en: fnv(JSON.stringify(f('en'))), fr: fnv(JSON.stringify(f('fr'))), es: fnv(JSON.stringify(f('es'))) });
 
-  it('Missions 01–05 are pinned by their own passes (mission01.test.ts … mission05.test.ts)', async () => {
+  it('Missions 01–06 are pinned by their own passes (mission01.test.ts … mission06.test.ts)', async () => {
     const { existsSync } = await import('node:fs');
     const { fileURLToPath } = await import('node:url');
-    for (const n of [1, 2, 3, 4, 5]) expect(existsSync(fileURLToPath(new URL(`./mission0${n}.test.ts`, import.meta.url))), `mission0${n}.test.ts`).toBe(true);
+    for (const n of [1, 2, 3, 4, 5, 6]) expect(existsSync(fileURLToPath(new URL(`./mission0${n}.test.ts`, import.meta.url))), `mission0${n}.test.ts`).toBe(true);
   });
-  it('the locked dialogues of Missions 06, 07 and 09 are byte-for-byte unchanged', () => {
-    const three = (l: Lang): BootcampDayContent[] => [slice(l, 5, 6)[0]!, slice(l, 6, 7)[0]!, slice(l, 8, 9)[0]!];
-    expect(print((l) => three(l).map((d) => d.dialogues))).toEqual({ en: '2680b5d1', fr: '0d0e06f6', es: '4c53e21b' });
+  it('the locked dialogues of Missions 07 and 09 are byte-for-byte unchanged (Mission 06\'s: mission06.test.ts)', () => {
+    const two = (l: Lang): BootcampDayContent[] => [slice(l, 6, 7)[0]!, slice(l, 8, 9)[0]!];
+    expect(print((l) => two(l).map((d) => d.dialogues))).toEqual({ en: 'e8218215', fr: '91016d0e', es: '2771e1da' });
   });
   it('Mission 08\'s dialogue lost exactly one thing — the wifi option and its reply; every other line is as it was', () => {
     for (const lang of LANGS) {
@@ -93,20 +93,20 @@ describe('scope: only the Practice of Missions 06–10 changed', () => {
       "Thank you. You're in room two-oh-four, on the second floor. Here is your key.", 'Yes! Breakfast is from seven to ten. The elevator is on your right.', 'Enjoy your stay!',
     ]);
   });
-  it('the approved pass is otherwise exactly as approved: Missions 06, 07 and 10 whole, Mission 09 apart from the size wording', () => {
+  it('the approved pass is otherwise exactly as approved: Missions 07 and 10 whole, Mission 09 apart from the size wording', () => {
     const pick = (l: Lang, i: number): BootcampDayContent => MISSIONS_BY_LANG[l]![BOOTCAMP_PLAN[i]!.day]!;
-    expect(print((l) => [5, 6, 9].map((i) => pick(l, i).steps))).toEqual({ en: '68395559', fr: '6aeb68e7', es: '8543c7fe' });
+    expect(print((l) => [6, 9].map((i) => pick(l, i).steps))).toEqual({ en: '122abb8b', fr: '0740af8e', es: '05d8d29f' });
     expect(print((l) => pick(l, 9))).toEqual({ en: '60b489f1', fr: '5d4d6a20', es: 'a4ff1fc6' });
     expect(print((l) => pick(l, 8).steps.filter((s) => s.kind !== 'swap'))).toEqual({ en: '033e2741', fr: '1be8e9bb', es: '45d575fc' });
   });
-  it('Missions 06–18 are exactly as approved — the only difference is that two retired hotel sentences left Mission 08\'s list', () => {
+  it('Missions 07–18 are exactly as approved — the only difference is that two retired hotel sentences left Mission 08\'s list', () => {
     // These hashes were taken from the approved build with ONLY those two sentences filtered out of
     // Mission 08's sentence list. Matching them now proves nothing else in Missions 01–18 moved.
     // (Mission 08 is serialised as [everything but its sentence list, its sentence list] — the shape the
     // approved build was fingerprinted in, with the two sentences left out.)
-    // (Missions 01–05 are no longer part of this fingerprint: each has its own pass.)
-    const shaped = (l: Lang): unknown[] => slice(l, 5, 18).map((d, i) => { if (i !== 2) return d; const { items, ...rest } = d; return [rest, items]; });
-    expect(print(shaped)).toEqual({ en: 'b5571d20', fr: '6ec63891', es: '4ab508d1' });
+    // (Missions 01–06 are no longer part of this fingerprint: each has its own pass.)
+    const shaped = (l: Lang): unknown[] => slice(l, 6, 18).map((d, i) => { if (i !== 1) return d; const { items, ...rest } = d; return [rest, items]; });
+    expect(print(shaped)).toEqual({ en: 'eff616f3', fr: '31f84cc0', es: 'a75da135' });
   });
   it('"For two nights." and the wifi password are retired: archived with their ids and wording, and shown nowhere', () => {
     const gone = ['phrase.hotel.two-nights', 'phrase.hotel.wifi'];
@@ -133,11 +133,11 @@ describe('scope: only the Practice of Missions 06–10 changed', () => {
     expect(RETIRED_SENTENCES.fr.filter((r) => r.retiredFrom === 'hotel-check-in').map((r) => r.text)).toEqual(['Pour deux nuits.', 'C’est quoi le mot de passe du wifi ?']);
     expect(RETIRED_SENTENCES.es.filter((r) => r.retiredFrom === 'hotel-check-in').map((r) => r.text)).toEqual(['Para dos noches.', '¿Cuál es la contraseña del wifi?']);
   });
-  it('no other sentence of Missions 06–09 was deleted, renamed or reworded', () => {
-    expect(print((l) => [slice(l, 5, 6)[0]!, slice(l, 6, 7)[0]!, slice(l, 8, 9)[0]!].map((d) => d.items))).toEqual(ITEMS_06_07_09);
+  it('no other sentence of Missions 07–09 was deleted, renamed or reworded', () => {
+    expect(print((l) => [slice(l, 6, 7)[0]!, slice(l, 8, 9)[0]!].map((d) => d.items))).toEqual(ITEMS_07_09);
   });
-  it('their intro cards, titles and videos are unchanged', () => {
-    expect(print((l) => slice(l, 5, 9).map((d) => [d.day, d.title, d.introVideo, d.steps[0]]))).toEqual({ en: 'c25a2848', fr: 'e83a143f', es: 'f4c8b176' });
+  it('their intro cards, titles and videos are unchanged (Missions 07–09)', () => {
+    expect(print((l) => slice(l, 6, 9).map((d) => [d.day, d.title, d.introVideo, d.steps[0]]))).toEqual({ en: '42559645', fr: 'ef4138a6', es: '80bea7c2' });
   });
   it('mission order, ids and registry keys are unchanged', () => {
     expect(BOOTCAMP_PLAN.slice(5, 10).map((m) => `${m.id}:${m.day}`)).toEqual(['airport-border:10', 'taxi:6', 'hotel-check-in:7', 'shopping:8', 'arrival-day-checkpoint:9']);
@@ -145,7 +145,7 @@ describe('scope: only the Practice of Missions 06–10 changed', () => {
   });
   it('no new game: only the existing step kinds are used', () => {
     const allowed = ['video', 'talk', 'prime', 'tool', 'replies', 'quiz', 'dialogue', 'swipe', 'ambush', 'receipt', 'summary', 'quickReply', 'visualMatch', 'swap', 'miniMap', 'matchPairs', 'sentenceBuilder'];
-    for (const lang of LANGS) for (let n = 6; n <= 10; n++) for (const s of mission(n, lang).steps) expect(allowed, `${lang} M${n}`).toContain(s.kind);
+    for (const lang of LANGS) for (let n = 7; n <= 10; n++) for (const s of mission(n, lang).steps) expect(allowed, `${lang} M${n}`).toContain(s.kind);
   });
 });
 
@@ -204,72 +204,7 @@ describe('all three languages get the same practice, each in its own words', () 
   });
 });
 
-/* ── Mission 06 — Airport & Border ───────────────────────────────────────────────────────────── */
-
-describe('Mission 06 — Airport & Border', () => {
-  const day = mission(6);
-  it('flow: learn → recognize the questions → answer them → change the duration → conversation → Border Rush', () => {
-    expect(kinds(day)).toEqual(['talk', 'tool', 'tool', 'tool', 'tool', 'tool', 'replies', 'receipt', 'quickReply', 'swap', 'dialogue', 'receipt', 'swipe', 'quickReply:speed', 'receipt', 'summary']);
-  });
-  it('the redundant meaning quizzes are gone; the listening drill still covers the four questions', () => {
-    for (const lang of LANGS) expect(stepsOf(mission(6, lang), 'quiz'), lang).toHaveLength(0);
-    expect(stepsOf(day, 'replies')[0]!.replyIds.map(strip)).toEqual(['reply.border.purpose', 'reply.border.how-long', 'reply.border.where-staying', 'reply.border.anything-declare']);
-  });
-  it('all five learner lines are taught — "Nothing to declare." no longer lives only in the dialogue', () => {
-    expect(taught(day)).toEqual(['phrase.border.passport-here', 'phrase.border.on-holiday', 'phrase.border.two-weeks', 'phrase.border.staying-hotel', 'phrase.border.nothing-declare']);
-    expect(text(day, 'phrase.border.nothing-declare')).toBe('Nothing to declare.');
-    const retrieved = [...replyMap(day), ...replyMap(day, true)].filter(([, ok]) => ok.includes('phrase.border.nothing-declare'));
-    expect(retrieved.length).toBe(2); // actively retrieved twice, outside the dialogue
-  });
-  it('Border Quick Reply holds the four question → answer mappings', () => {
-    expect(replyMap(day)).toEqual([
-      ['reply.border.purpose', ['phrase.border.on-holiday']],
-      ['reply.border.how-long', ['phrase.border.two-weeks']],
-      ['reply.border.where-staying', ['phrase.border.staying-hotel']],
-      ['reply.border.anything-declare', ['phrase.border.nothing-declare']],
-    ]);
-    expect([text(day, 'reply.border.purpose'), text(day, 'phrase.border.on-holiday')]).toEqual(["What's the purpose of your visit?", "I'm here on holiday."]);
-    // The wrong options are real border answers to another question — never nonsense, never a tool.
-    for (const r of stepsOf(day, 'quickReply')[0]!.rounds) {
-      expect(r.options).toHaveLength(3);
-      for (const o of r.options) expect(strip(o.itemId)).toMatch(/^phrase\.border\./);
-    }
-  });
-  it('duration flexibility: "For ___" with three lengths of stay, authored per language', () => {
-    const sentences = (lang: Lang): string[] => stepsOf(mission(6, lang), 'swap')[0]!.rounds[0]!.options.map((o) => fillFrame(stepsOf(mission(6, lang), 'swap')[0]!.rounds[0]!.frame, o.slot));
-    expect(sentences('en')).toEqual(['For three days.', 'For a week.', 'For two weeks.']);
-    expect(sentences('fr')).toEqual(['Pour trois jours.', 'Pour une semaine.', 'Pour deux semaines.']);
-    expect(sentences('es')).toEqual(['Tres días.', 'Una semana.', 'Dos semanas.']); // Spanish answers with the bare duration
-    for (const lang of LANGS) {
-      const swap = stepsOf(mission(6, lang), 'swap')[0]!;
-      expect(swap.rounds, lang).toHaveLength(3);
-      expect(swap.rounds.map((r) => r.options.findIndex((o) => o.correct)), lang).toEqual([0, 1, 2]); // each length is the answer once
-      // the taught sentence is one of the frame's own outcomes — the frame is not an invention
-      expect(sentences(lang), lang).toContain(text(mission(6, lang), 'phrase.border.two-weeks'));
-    }
-  });
-  it('Border Rush is the officer\'s own chain at speed — not one word the learner has not met', () => {
-    for (const lang of LANGS) {
-      const d = mission(6, lang);
-      const rush = stepsOf(d, 'quickReply').find((s) => s.challenge)!;
-      expect(rush.rounds, lang).toHaveLength(4);
-      expect(rush.label, lang).toBeUndefined(); // no internal name on screen: it is announced as a speed moment
-      const spoken = rush.rounds.map((r) => r.npc!.en);
-      expect(unknownIn(spoken, vocabulary(lang, 6, true)), lang).toEqual([]);
-      const officer = Object.values(d.dialogues)[0]!.nodes.filter((n) => n.who === 'npc').map((n) => n.en);
-      for (const line of spoken) expect(officer, `${lang} “${line}”`).toContain(line); // verbatim from the conversation
-    }
-    expect(replyMap(day, true).map(([, ok]) => ok)).toEqual([['phrase.border.on-holiday'], ['phrase.border.two-weeks'], ['phrase.border.staying-hotel'], ['phrase.border.nothing-declare']]);
-  });
-  it('recovery stays where it helps (three offers in the conversation) and is never forced in the drills', () => {
-    const offered = Object.values(day.dialogues)[0]!.nodes.flatMap((n) => n.choices ?? []).filter((c) => isHelpToolId(c.itemId)).map((c) => strip(c.itemId));
-    expect(offered).toEqual(['phrase.recovery.one-moment', 'phrase.recovery.repeat', 'phrase.recovery.slowly']);
-    for (const s of stepsOf(day, 'quickReply')) for (const r of s.rounds) for (const o of r.options) expect(isHelpToolId(o.itemId)).toBe(false);
-    expect(stepsOf(day, 'ambush')).toHaveLength(0); // the old cold open (untaught "return ticket" line) is gone
-  });
-});
-
-/* ── Mission 07 — Taxi / Uber ────────────────────────────────────────────────────────────────── */
+/* Mission 06 — Airport & Border has its own pass: see mission06.test.ts. */
 
 describe('Mission 07 — Taxi / Uber', () => {
   const day = mission(7);

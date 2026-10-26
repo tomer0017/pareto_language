@@ -325,14 +325,13 @@ _Reply-training drill:_ “No, it's about five minutes on foot. It's next to the
 - **Nothing to declare.** · אין לי מה להצהיר. — _המשפט הקבוע במכס. אומרים אותו רגוע._
 
 ### Expected replies (you hear)
-- **Passport, please.** · דרכון, בבקשה.
 - **What's the purpose of your visit?** · מה מטרת הביקור?
 - **How long are you staying?** · לכמה זמן אתה נשאר?
 - **Where are you staying?** · איפה אתה מתאכסן?
 - **Anything to declare?** · יש לך מה להצהיר?
-- **Enjoy your stay!** · תיהנה מהשהות!
+- **Welcome, and enjoy your stay!** · ברוך הבא, ותיהנה מהשהות!
 
-_Reply-training drill:_ “What's the purpose of your visit?” · “How long are you staying?” · “Where are you staying?” · “Anything to declare?”
+_Reply-training drill:_ “What's the purpose of your visit?” · “How long are you staying?” · “Where are you staying?” · “Anything to declare?” · “Welcome, and enjoy your stay!”
 
 ### Recovery tools reused
 `Can you repeat that?` · `Please speak slowly.` · `One moment, please.` · `Thank you!`

@@ -74,8 +74,8 @@ describe('scope: only the Practice of Missions 19–24 changed', () => {
   const slice = (lang: Lang, a: number, b: number): BootcampDayContent[] => BOOTCAMP_PLAN.slice(a, b).map((m) => beforeCueFreeze(MISSIONS_BY_LANG[lang]![m.day]!, lang));
   const print = (f: (lang: Lang) => unknown): Record<Lang, string> => ({ en: fnv(JSON.stringify(f('en'))), fr: fnv(JSON.stringify(f('fr'))), es: fnv(JSON.stringify(f('es'))) });
 
-  it('Missions 06–18 are byte-for-byte unchanged (Missions 01–05 have their own passes — mission01.test.ts … mission05.test.ts)', () => {
-    expect(print((l) => slice(l, 5, 18))).toEqual({ en: '40aacf7e', fr: '3ebb2c8b', es: '634970b1' });
+  it('Missions 07–18 are byte-for-byte unchanged (Missions 01–06 have their own passes — mission01.test.ts … mission06.test.ts)', () => {
+    expect(print((l) => slice(l, 6, 18))).toEqual({ en: '507fecc9', fr: 'afe8ed92', es: '5be24845' });
   });
   it('the locked dialogues of Missions 19–23 are byte-for-byte unchanged', () => {
     expect(print((l) => slice(l, 18, 23).map((d) => d.dialogues))).toEqual({ en: '594ead2b', fr: '63803269', es: '55c7bd8f' });
@@ -110,8 +110,8 @@ describe('scope: only the Practice of Missions 19–24 changed', () => {
     }
     expect(text(mission(19), 'phrase.trans.single')).toBe('Single, please.');
   });
-  it('nothing was retired in this pass: the archive still holds the same seven sentences (plus those the later Mission 03 and 05 passes retired)', () => {
-    for (const lang of LANGS) expect(RETIRED_SENTENCES[lang].filter((r) => r.retiredFrom !== 'coffee-shop' && r.retiredFrom !== 'directions'), lang).toHaveLength(7);
+  it('nothing was retired in this pass: the archive still holds the same seven sentences (plus those the later Mission 03, 05 and 06 passes retired)', () => {
+    for (const lang of LANGS) expect(RETIRED_SENTENCES[lang].filter((r) => r.retiredFrom !== 'coffee-shop' && r.retiredFrom !== 'directions' && r.retiredFrom !== 'airport-border'), lang).toHaveLength(7);
     expect(RETIRED_SENTENCES.en.some((r) => /trans\.|past\.|future\.|fix\.|opin\./.test(r.id))).toBe(false);
   });
   it('mission order, ids and registry keys are unchanged', () => {
@@ -366,16 +366,18 @@ describe('Mission 21 — Future Travel & Plans', () => {
     for (const id of ['phrase.future.going-to-vietnam', 'phrase.future.ill-be-there', 'phrase.future.want-to-visit', 'phrase.future.after-that']) expect(r.get(id) ?? 0, id).toBeGreaterThanOrEqual(2);
     expect(r.get('phrase.future.where-next')).toBe(3); // alone, built, at speed
   });
-  it('duration is REUSED from Mission 06, not retaught: three days / a week / two weeks, in each language\'s own frame', () => {
+  it('duration: three days / a week / two weeks, in each language\'s own frame — "two weeks" is Mission 06\'s', () => {
     expect(swapAll(day)[0]).toEqual(["I'll be there for three days.", "I'll be there for a week.", "I'll be there for two weeks."]);
     expect(swapAll(mission(21, 'fr'))[0]).toEqual(['Je vais rester trois jours.', 'Je vais rester une semaine.', 'Je vais rester deux semaines.']);
     expect(swapAll(mission(21, 'es'))[0]).toEqual(['Voy a estar allí tres días.', 'Voy a estar allí una semana.', 'Voy a estar allí dos semanas.']);
     for (const lang of LANGS) {
       const d = mission(21, lang);
       expect(swapAll(d)[0]![2], lang).toBe(text(d, 'phrase.future.ill-be-there'));
-      // Exactly the three lengths of stay Mission 06 practised.
-      const m06 = stepsOf(mission(6, lang), 'swap')[0]!.rounds[0]!.options.map((o) => o.slot.toLowerCase());
-      expect(stepsOf(d, 'swap')[0]!.rounds[0]!.options.map((o) => o.slot.toLowerCase()), lang).toEqual(m06);
+      // Mission 06 now teaches one stay only — the traveller's two weeks (and the calendar's "week");
+      // its old three-length swap is gone, so "three days" is Mission 21's own (see docs/STATUS.md).
+      expect(stepsOf(d, 'swap')[0]!.rounds[0]!.options.map((o) => o.slot.toLowerCase()), lang).toEqual(
+        { en: ['three days', 'a week', 'two weeks'], fr: ['trois jours', 'une semaine', 'deux semaines'], es: ['tres días', 'una semana', 'dos semanas'] }[lang]);
+      expect(text(mission(6, lang), 'phrase.border.two-weeks').toLowerCase(), lang).toContain(swapAll(d)[0]![2]!.toLowerCase().match(/two weeks|deux semaines|dos semanas/)![0]);
     }
   });
   it('destinations stay the two the mission already has — no geography lesson', () => {

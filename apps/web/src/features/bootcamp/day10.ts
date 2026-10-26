@@ -1,6 +1,6 @@
 import { T, recovery } from './recovery.js';
 import type { BootcampDayContent, BootcampDialogue, BootcampItem } from './types.js';
-import { m06Flow } from './practiceArrival.js';
+import { m06Steps } from './practiceArrival.js';
 
 /**
  * Mission 6 — "Airport & Border" (Phase 2 · Arrival).
@@ -21,12 +21,11 @@ export const DAY10_ITEMS: BootcampItem[] = [
   { id: 'en.phrase.border.nothing-declare', text: 'Nothing to declare.', meaning: T('אין לי מה להצהיר.', 'Nothing to declare.'),
     tip: T('המשפט הקבוע במכס. אומרים אותו רגוע.', 'The fixed customs line. Say it calmly.') },
   // hear — the border question-chain
-  { id: 'en.reply.border.passport-please', text: 'Passport, please.', meaning: T('דרכון, בבקשה.', 'Passport, please.') },
   { id: 'en.reply.border.purpose', text: "What's the purpose of your visit?", meaning: T('מה מטרת הביקור?', "What's the purpose of your visit?") },
   { id: 'en.reply.border.how-long', text: 'How long are you staying?', meaning: T('לכמה זמן אתה נשאר?', 'How long are you staying?') },
   { id: 'en.reply.border.where-staying', text: 'Where are you staying?', meaning: T('איפה אתה מתאכסן?', 'Where are you staying?') },
   { id: 'en.reply.border.anything-declare', text: 'Anything to declare?', meaning: T('יש לך מה להצהיר?', 'Anything to declare?') },
-  { id: 'en.reply.border.enjoy', text: 'Enjoy your stay!', meaning: T('תיהנה מהשהות!', 'Enjoy your stay!') },
+  { id: 'en.reply.border.enjoy', text: 'Welcome, and enjoy your stay!', meaning: T('ברוך הבא, ותיהנה מהשהות!', 'Welcome, and enjoy your stay!') },
   ...recovery('en.phrase.recovery.repeat', 'en.phrase.recovery.slowly', 'en.phrase.recovery.one-moment', 'en.phrase.recovery.thank-you'),
 ];
 
@@ -88,13 +87,6 @@ export const DAY10: BootcampDayContent = {
   title: T('שדה תעופה וגבול', 'Airport & Border'),
   items: DAY10_ITEMS,
   dialogues: { 'border-control': SCENE_BORDER },
-  steps: [
-    { kind: 'talk', icon: '🛂', title: T('משימה 6: שדה תעופה וגבול', 'Mission 6: Airport & Border'),
-      body: [
-        T('הרגע הכי מפחיד בטיול הוא גם הצפוי ביותר. פקיד הגבול שואל תמיד את אותן שאלות.', 'The scariest moment of the trip is also the most predictable. The border officer always asks the same questions.'),
-        T('נכיר אותן מראש. אחר כך גבול זה בסך הכל תסריט שכבר קראת.', 'We’ll learn them in advance. After that, a border is just a script you’ve already read.'),
-      ], cta: T('להתקרב לדלפק', 'Approach the counter') },
-    // From the key sentences onward the flow is shared by all languages: see practiceArrival.ts.
-    ...m06Flow('en'),
-  ],
+  // The whole journey is shared by all languages: see practiceArrival.ts (`m06Steps`).
+  steps: m06Steps('en'),
 };

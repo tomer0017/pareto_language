@@ -369,9 +369,9 @@ describe('image slots — all nineteen have their final picture: Group 1 (buildi
     for (const lang of LANGS) for (const w of stepsOf(day(lang), 'prime').flatMap((p) => p.words)) expect(pictures, `${lang} ${w.key}`).toContain(w.image ?? w.emoji);
     expect([M05_TOWN.station.emoji, M05_TOWN.bank.emoji]).toEqual([M05_SLOTS.station.emoji, M05_SLOTS.bank.emoji]);
   });
-  it('the pictures are shown wide (their own shape) on Mission 05\'s cards only', () => {
+  it('the pictures are shown wide (their own shape) on Mission 05\'s cards — and on no mission before it (Mission 06\'s own pass uses it too)', () => {
     for (const lang of LANGS) for (const p of stepsOf(day(lang), 'prime')) expect(p.widePictures, lang).toBe(true);
-    for (const n of [1, 2, 3, 4, 6, 7, 8, 9, 10]) for (const lang of LANGS) expect(stepsOf(day(lang, n), 'prime').some((p) => p.widePictures), `M${n} ${lang}`).toBe(false);
+    for (const n of [1, 2, 3, 4, 7, 8, 9, 10]) for (const lang of LANGS) expect(stepsOf(day(lang, n), 'prime').some((p) => p.widePictures), `M${n} ${lang}`).toBe(false);
   });
   it('the pictures changed nothing else: the town, every map round, the sentences, the conversation, every step', () => {
     expect(fnv(JSON.stringify(M05_TOWN))).toBe('e126fc30');

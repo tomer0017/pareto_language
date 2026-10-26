@@ -94,9 +94,9 @@ describe('scope: only Missions 25–30 changed', () => {
   const slice = (lang: Lang, a: number, b: number): BootcampDayContent[] => BOOTCAMP_PLAN.slice(a, b).map((m) => beforeCueFreeze(MISSIONS_BY_LANG[lang]![m.day]!, lang));
   const print = (f: (lang: Lang) => unknown): Record<Lang, string> => ({ en: fnv(JSON.stringify(f('en'))), fr: fnv(JSON.stringify(f('fr'))), es: fnv(JSON.stringify(f('es'))) });
 
-  it('Missions 06–24 are byte-for-byte unchanged, in every language (Missions 01–05 have their own passes — mission01.test.ts … mission05.test.ts)', () => {
-    expect(print((l) => slice(l, 5, 24))).toEqual({ en: '9122c891', fr: '05369d27', es: '4af0e971' });
-    expect(print((l) => slice(l, 5, 18))).toEqual({ en: '40aacf7e', fr: '3ebb2c8b', es: '634970b1' });
+  it('Missions 07–24 are byte-for-byte unchanged, in every language (Missions 01–06 have their own passes — mission01.test.ts … mission06.test.ts)', () => {
+    expect(print((l) => slice(l, 6, 24))).toEqual({ en: 'f4c5d710', fr: 'f864ba1a', es: 'bdc5c73d' });
+    expect(print((l) => slice(l, 6, 18))).toEqual({ en: '507fecc9', fr: 'afe8ed92', es: '5be24845' });
     expect(print((l) => slice(l, 18, 24))).toEqual({ en: 'b9c88064', fr: '74a92f15', es: 'cd856495' });
   });
   it('the conversations of Missions 25–27 are byte-for-byte unchanged', () => {
@@ -121,7 +121,8 @@ describe('scope: only Missions 25–30 changed', () => {
   });
   it('archived sentences stay archived: the archive still holds the same seven (plus the Mission 03 pass\'s three), none of them back in a mission', () => {
     for (const lang of LANGS) {
-      expect(RETIRED_SENTENCES[lang].filter((r) => r.retiredFrom !== 'coffee-shop' && r.retiredFrom !== 'directions'), lang).toHaveLength(7);
+      expect(RETIRED_SENTENCES[lang].filter((r) => r.retiredFrom !== 'coffee-shop' && r.retiredFrom !== 'directions' && r.retiredFrom !== 'airport-border'), lang).toHaveLength(7);
+      expect(RETIRED_SENTENCES[lang].filter((r) => r.retiredFrom === 'airport-border').map((r) => r.id.slice(3)), lang).toEqual(['reply.border.passport-please']);
       expect(RETIRED_SENTENCES[lang].filter((r) => r.retiredFrom === 'directions').map((r) => r.id.slice(3)), lang).toEqual(['reply.dir.left', 'reply.dir.right', 'phrase.dir.how-do-i-get']);
       expect(RETIRED_SENTENCES[lang].filter((r) => r.retiredFrom === 'coffee-shop').map((r) => r.id.slice(3)), lang).toEqual(['phrase.coffee.to-go', 'reply.coffee.hot-or-iced', 'reply.coffee.here-or-to-go']);
       const live = new Set(BOOTCAMP_PLAN.flatMap((m) => MISSIONS_BY_LANG[lang]![m.day]!.items.map((i) => i.id)));

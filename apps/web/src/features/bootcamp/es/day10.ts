@@ -1,7 +1,7 @@
 import type { LocalizedText } from '@ready/content-schema';
 import type { BootcampDayContent, BootcampDialogue, BootcampItem } from '../types.js';
 import { recoveryEs } from './recovery.js';
-import { m06Flow } from '../practiceArrival.js';
+import { m06Steps } from '../practiceArrival.js';
 
 /**
  * Spanish Mission 6 — "Aeropuerto y frontera" (Airport & Border). Spanish parallel of English mission 10:
@@ -24,12 +24,11 @@ export const DAY10_ES_ITEMS: BootcampItem[] = [
   { id: 'es.phrase.border.nothing-declare', text: 'Nada que declarar.', meaning: T('אין לי מה להצהיר.', 'Nothing to declare.'),
     tip: T('המשפט הקבוע במכס. אומרים אותו רגוע.', 'The fixed customs line. Say it calmly.') },
   // hear — the border question-chain
-  { id: 'es.reply.border.passport-please', text: 'Pasaporte, por favor.', meaning: T('דרכון, בבקשה.', 'Passport, please.') },
   { id: 'es.reply.border.purpose', text: '¿Cuál es el motivo de su viaje?', meaning: T('מה מטרת הביקור?', "What's the purpose of your visit?") },
   { id: 'es.reply.border.how-long', text: '¿Cuánto tiempo se queda?', meaning: T('לכמה זמן אתה נשאר?', 'How long are you staying?') },
   { id: 'es.reply.border.where-staying', text: '¿Dónde se aloja?', meaning: T('איפה אתה מתאכסן?', 'Where are you staying?') },
   { id: 'es.reply.border.anything-declare', text: '¿Algo que declarar?', meaning: T('יש לך מה להצהיר?', 'Anything to declare?') },
-  { id: 'es.reply.border.enjoy', text: '¡Que disfrute su estancia!', meaning: T('תיהנה מהשהות!', 'Enjoy your stay!') },
+  { id: 'es.reply.border.enjoy', text: 'Bienvenido, ¡y que disfrute su estancia!', meaning: T('ברוך הבא, ותיהנה מהשהות!', 'Welcome, and enjoy your stay!') },
   ...recoveryEs('es.phrase.recovery.repeat', 'es.phrase.recovery.slowly', 'es.phrase.recovery.one-moment', 'es.phrase.recovery.thank-you'),
 ];
 
@@ -91,13 +90,6 @@ export const DAY10_ES: BootcampDayContent = {
   title: T('שדה תעופה וגבול', 'Airport & Border'),
   items: DAY10_ES_ITEMS,
   dialogues: { 'border-control': SCENE_BORDER },
-  steps: [
-    { kind: 'talk', icon: '🛂', title: T('משימה 6: שדה תעופה וגבול', 'Mission 6: Airport & Border'),
-      body: [
-        T('הרגע הכי מפחיד בטיול הוא גם הצפוי ביותר. פקיד הגבול שואל תמיד את אותן שאלות.', 'The scariest moment of the trip is also the most predictable. The border officer always asks the same questions.'),
-        T('נכיר אותן מראש. אחר כך גבול זה בסך הכל תסריט שכבר קראת.', 'We’ll learn them in advance. After that, a border is just a script you’ve already read.'),
-      ], cta: T('להתקרב לדלפק', 'Approach the counter') },
-    // From the key sentences onward the flow is shared by all languages: see practiceArrival.ts.
-    ...m06Flow('es'),
-  ],
+  // The whole journey is shared by all languages: see practiceArrival.ts (`m06Steps`).
+  steps: m06Steps('es'),
 };

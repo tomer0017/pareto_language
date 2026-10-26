@@ -22,6 +22,29 @@ loop (typecheck → lint → tests → build → smoke) green at every milestone
 
 ## What's done
 
+### Mission 06 — Airport & Border: the full learning flow, one traveller (2026-10-26)
+
+The conversation is LOCKED (the dialogue tree, side-branches included, is byte-identical — tested). The
+learner has ONE trip (`M06_PROFILE` in `practiceArrival.ts`: holiday · two weeks · a hotel in the city
+centre · nothing to declare); the officer does not know it, and every game answers from it. The check
+runs as a process: passport (hand it over) → purpose (holiday / work / study board) → duration (two
+weeks on a month calendar — `customize`) → stay (the hotel in the centre on a city map — `miniMap`) →
+declaration (the green channel), each cleared on the border checklist (`borderChecklist`); then each
+question to its trip detail, the officer by ear, the supported interview (trip on screen), the
+conversation, the interview with no help, the video, and the final check — five requirements from the
+officer's real lines — ending ENTRY APPROVED. 37 interactions; no recovery phrase, quiz, ambush or swap;
+wrong answers are the traveller's own lines or pictures never named. "Thank you", "welcome" and "enjoy
+your stay" are verified prior learning (Missions 01–02) and reactivated; the strict audit runs against
+`learnedBefore(lang, 6)`. Image slots: `M06_SLOTS` (15, placeholders) + `M06_PROPS` (desk props, which
+must get artwork together with the slots they share a game with — tested). "Passport, please." retired.
+Coverage: `mission06Coverage.ts`; tests: `mission06.test.ts`.
+
+Debt left for later passes (their content was not touched): Mission 08 primes "passport" as a new word
+(Mission 06 now teaches it first — it should become a review word); Mission 21's swap offers "three
+days / a week", which Mission 06 no longer practises ("week" is taught in Mission 06's Step 0, "three
+days" is Mission 21's own); Mission 10's cold border asks "One week? Two weeks?" — "week" comes from
+Mission 06's optional Step 0 only.
+
 ### Teach-before-test: SEEN BEFORE ≠ LEARNED BEFORE (2026-10-26)
 
 The strict audits no longer treat every word of an earlier mission's sentences and conversations as
