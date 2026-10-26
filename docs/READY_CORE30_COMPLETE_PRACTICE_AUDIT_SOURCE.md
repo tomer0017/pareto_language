@@ -4867,7 +4867,7 @@ Learner sentences taught beside the dialogue (not a line in any scene):
 - Phase: 1 — Foundations / יסודות 🛟
 - Source runtime file(s): `apps/web/src/features/bootcamp/day5.ts` · `apps/web/src/features/bootcamp/fr/day5.ts` · `apps/web/src/features/bootcamp/es/day5.ts`
 - Video: found by convention, never written into mission content — EN `videos/en/en_5.mp4` · FR `videos/fr/fr_5.mp4` · ES `videos/es/es_5.mp4`. Played only where that file exists (inventory: `docs/CORE30_FINAL_VIDEO_ACTION_MAP.md`).
-- Video steps inside the Practice flow: no
+- Video steps inside the Practice flow: yes (see flow)
 
 ## Learning goal / intro screen
 
@@ -4889,47 +4889,116 @@ Intro screen (first Practice step; identical in the English, French and Spanish 
 
 - Icon: 🧭
 - Title: "Mission 5: Directions" / "משימה 5: כיוונים"
-- Text 1: "Asking “where?” is easy. The real challenge: understanding the fast answer." / "לשאול "איפה?" זה קל. הקושי האמיתי: להבין את התשובה המהירה."
-- Text 2: "Today is mostly listening. Left, right, straight, next to — until it’s automatic." / "היום זו בעיקר האזנה. שמאל, ימין, ישר, ליד — עד שזה טבעי."
-- Button: "Start" / "מתחילים"
+- Text 1: "You are in a foreign town, looking for the station. Asking is the easy part — understanding the answer and getting there is the point." / "אתה בעיר זרה ומחפש את התחנה. לשאול זה הצעד הקל — להבין את התשובה ולהגיע, זה העיקר."
+- Text 2: "Today there is one map. Get to know it, walk it step by step — and in the end, reach the station on your own." / "היום יש מפה אחת. תכיר אותה, תלך בה צעד אחר צעד — ובסוף תגיע לתחנה לבד."
+- Button: "Let’s go" / "יוצאים לדרך"
 
 ## Current Practice flow
 
 1. `talk` — intro screen — "Mission 5: Directions"
-2. `prime` — before-we-speak (word intro) — 6 words → builds `reply.dir.turn-left`
-3. `tool` — key sentence (listen → reveal → say aloud) — `phrase.dir.where-is` “Where is the station?” · label "Ask where" / "לשאול איפה" (1/3)
-4. `tool` — key sentence (listen → reveal → say aloud) — `phrase.dir.is-it-far` “Is it far?” · label "Walk or taxi?" / "ללכת או מונית?" (2/3)
-5. `tool` — key sentence (listen → reveal → say aloud) — `phrase.dir.show-me-map` “Can you show me on the map?” · label "Switch to eyes" / "לעבור לעיניים" (3/3)
-6. `replies` — expected replies (listening drill) — after `phrase.dir.where-is`: 4 replies
-7. `receipt` — receipt (proof card) — "Left, right, straight, next to — you catch every direction in a sentence." / "שמאל, ימין, ישר, ליד — אתה מזהה כל כיוון במשפט."
-8. `miniMap` — mini map (hear → tap the direction / spot) — 4 round(s)
-9. `quiz` — meaning quiz (listening) — hears `reply.dir.five-minutes`
-10. `quickReply` — quick reply (hear → pick your response) — 2 round(s)
-11. `swap` — swap it (one frame, several endings) — 2 round(s)
-12. `dialogue` — dialogue (choose your line) — scene `lost-in-town`
-13. `receipt` — receipt (proof card) — "You asked for directions, understood fast instructions, and arrived. Being lost isn’t scary anymore." / "שאלת דרך, הבנת הוראות מהירות, והגעת. ללכת לאיבוד כבר לא מפחיד."
-14. `swipe` — sentence review — 11 sentences
-15. `miniMap` — mini map (hear → tap the direction / spot) — 1 round(s) · speed challenge
-16. `receipt` — receipt (proof card) — "A fast two-step instruction — and you found the right spot on the map." / "הוראה מהירה בשני שלבים — ומצאת את המקום הנכון על המפה."
-17. `summary` — victory screen
+2. `prime` — before-we-speak (word intro) — 8 words → builds `phrase.dir.where-is`
+3. `prime` — before-we-speak (word intro) — 3 words → builds ``
+4. `miniMap` — mini map (hear → tap the direction / spot) — 2 round(s)
+5. `prime` — before-we-speak (word intro) — 4 words → builds ``
+6. `miniMap` — mini map (hear → tap the direction / spot) — 3 round(s)
+7. `miniMap` — mini map (hear → tap the direction / spot) — 2 round(s)
+8. `prime` — before-we-speak (word intro) — 3 words → builds ``
+9. `visualMatch` — visual match (hear → tap the tile) — 1 round(s)
+10. `miniMap` — mini map (hear → tap the direction / spot) — 1 round(s)
+11. `prime` — before-we-speak (word intro) — 4 words → builds ``
+12. `miniMap` — mini map (hear → tap the direction / spot) — 2 round(s)
+13. `sentenceBuilder` — sentence builder (put the chunks in order) — 2 round(s)
+14. `prime` — before-we-speak (word intro) — 2 words → builds ``
+15. `replies` — expected replies (listening drill) — after `phrase.dir.is-it-far`: 3 replies
+16. `quickReply` — quick reply (hear → pick your response) — 5 round(s)
+17. `miniMap` — mini map (hear → tap the direction / spot) — 4 round(s) · speed challenge
+18. `miniMap` — mini map (hear → tap the direction / spot) — 3 round(s)
+19. `receipt` — receipt (proof card) — "You asked, you understood, and you walked the right way — all the way to the station." / "שאלת, הבנת, והלכת בדרך הנכונה — עד התחנה."
+20. `dialogue` — dialogue (choose your line) — scene `lost-in-town`
+21. `receipt` — receipt (proof card) — "The whole conversation — from the question to “have a good day”. Without getting lost." / "כל השיחה — מהשאלה ועד "שיהיה יום טוב". בלי ללכת לאיבוד."
+22. `miniMap` — mini map (hear → tap the direction / spot) — 3 round(s) · speed challenge
+23. `receipt` — receipt (proof card) — "🚉 You reached the station — on your own." / "🚉 הגעת לתחנה — לבד."
+24. `video` — video — mode again
+25. `miniMap` — mini map (hear → tap the direction / spot) — 5 round(s)
+26. `visualMatch` — visual match (hear → tap the tile) — 1 round(s)
+27. `receipt` — receipt (proof card) — "🚉 You found the station. You asked, understood, walked — and arrived." / "🚉 מצאת את התחנה. שאלת, הבנת, הלכת — והגעת."
+28. `summary` — victory screen
 
 Step sequence identical in EN / FR / ES: yes.
 
 ## Before we speak / word intro
 
-Step 2. Label: "Before we speak" / "לפני שנדבר". Intro: "Six direction words — so you understand the answer, not just ask." / "שש מילות כיוון — כדי שתבין את התשובה, לא רק תשאל.".
+Step 2. Label: "Before we speak" / "לפני שנדבר". Intro: "What you need to understand the directions. Tap to hear." / "מה שצריך כדי להבין את ההוראות. הקש כדי לשמוע.".
 The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `social.excuse-me` — EN "excuse me" · FR "excusez-moi" · ES "perdone" — meaning "סליחה (לפנות)" / "excuse me" — icon none — new
-2. `direction.left` — EN "left" · FR "gauche" · ES "izquierda" — meaning "שמאלה" / "left" — icon ⬅️ — new
-3. `direction.right` — EN "right" · FR "droite" · ES "derecha" — meaning "ימינה" / "right" — icon ➡️ — new
-4. `direction.straight` — EN "straight" · FR "tout droit" · ES "todo recto" — meaning "ישר" / "straight" — icon ⬆️ — new
-5. `distance.near` — EN "near" · FR "près" · ES "cerca" — meaning "קרוב" / "near" — icon none — new
-6. `distance.far` — EN "far" · FR "loin" · ES "lejos" — meaning "רחוק" / "far" — icon none — new
+1. `place.station` — EN "station" · FR "gare" · ES "estación" — meaning "תחנה (רכבת)" / "station" — icon 🚉 — new
+2. `direction.straight` — EN "straight ahead" · FR "tout droit" · ES "todo recto" — meaning "ישר" / "straight ahead" — icon ⬆️ — new
+3. `direction.left` — EN "left" · FR "gauche" · ES "izquierda" — meaning "שמאלה" / "left" — icon ⬅️ — new
+4. `place.corner` — EN "corner" · FR "coin" · ES "esquina" — meaning "פינה" / "corner" — icon ↰ — new
+5. `distance.far` — EN "far" · FR "loin" · ES "lejos" — meaning "רחוק" / "far" — icon 🔭 — new
+6. `distance.minutes-on-foot` — EN "five minutes on foot" · FR "cinq minutes à pied" · ES "cinco minutos a pie" — meaning "חמש דקות ברגל" / "five minutes on foot" — icon 🚶 — marked ♻️ review
+7. `position.next-to` — EN "next to" · FR "à côté de" · ES "al lado de" — meaning "ליד" / "next to" — icon ↔️ — new
+8. `place.bank` — EN "bank" · FR "banque" · ES "banco" — meaning "בנק" / "bank" — icon 🏦 — new
 
-"These build the sentence:" card: `reply.dir.turn-left` — EN "Turn left at the corner." · FR "Tournez à gauche au coin." · ES "Gire a la izquierda en la esquina." · HE "פנה שמאלה בפינה." (with its own play button).
+"These build the sentence:" card: `phrase.dir.where-is` — EN "Where is the station?" · FR "Où est la gare ?" · ES "¿Dónde está la estación?" · HE "איפה התחנה?" (with its own play button).
+
+Step 3. Label: "The town — what you ask, and what is in it" / "העיר — מה אתה שואל, ומה יש בה". Intro: "Your question, and the two places on the map. Tap to hear." / "השאלה שלך, ושני המקומות שבמפה. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `dir.line.ask` — EN "Excuse me! Where is the station?" · FR "Excusez-moi ! Où est la gare ?" · ES "¡Perdone! ¿Dónde está la estación?" — meaning "סליחה! איפה התחנה?" / "Excuse me! Where is the station?" — icon 🙋 — new
+2. `dir.line.station` — EN "the station" · FR "la gare" · ES "la estación" — meaning "התחנה" / "the station" — icon 🚉 — new
+3. `dir.line.bank` — EN "the bank" · FR "la banque" · ES "el banco" — meaning "הבנק" / "the bank" — icon 🏦 — new
+
+No build-sentence card.
+
+Step 5. Label: "The answer — which way" / "התשובה — לאן הולכים". Intro: "The whole directions, then each piece. Tap to hear." / "ההוראות כולן, ואחר כך כל חלק לבד. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `dir.line.directions` — EN "The station? Go straight ahead, then turn left at the corner." · FR "La gare ? Allez tout droit, puis tournez à gauche au coin." · ES "¿La estación? Siga todo recto y luego gire a la izquierda en la esquina." — meaning "התחנה? לך ישר, ואז פנה שמאלה בפינה." / "The station? Go straight ahead, then turn left at the corner." — icon 🧭 — new
+2. `dir.line.straight` — EN "Go straight ahead." · FR "Allez tout droit." · ES "Siga todo recto." — meaning "לך ישר." / "Go straight ahead." — icon ⬆️ — new
+3. `dir.line.corner` — EN "at the corner" · FR "au coin" · ES "en la esquina" — meaning "בפינה" / "at the corner" — icon ↰ — new
+4. `dir.line.turn-left` — EN "Turn left at the corner." · FR "Tournez à gauche au coin." · ES "Gire a la izquierda en la esquina." — meaning "פנה שמאלה בפינה." / "Turn left at the corner." — icon ⬅️ — new
+
+No build-sentence card.
+
+Step 8. Label: "Is it far?" / "זה רחוק?". Intro: "Your question — and the answer: how long, and where exactly. Tap to hear." / "השאלה שלך — והתשובה: כמה זמן, ואיפה בדיוק. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `dir.line.is-it-far` — EN "Is it far?" · FR "C’est loin ?" · ES "¿Está lejos?" — meaning "זה רחוק?" / "Is it far?" — icon 🤔 — new
+2. `dir.line.five-minutes` — EN "No, it's about five minutes on foot." · FR "Non, c’est à environ cinq minutes à pied." · ES "No, está a unos cinco minutos a pie." — meaning "לא, זה בערך חמש דקות ברגל." / "No, it’s about five minutes on foot." — icon 🚶 — new
+3. `dir.line.next-to-bank` — EN "It's next to the bank." · FR "C’est à côté de la banque." · ES "Está al lado del banco." — meaning "זה ליד הבנק." / "It’s next to the bank." — icon 🏦 — new
+
+No build-sentence card.
+
+Step 11. Label: "On the map" / "על המפה". Intro: "Your request — and the answer, with a finger on the map. Tap to hear." / "הבקשה שלך — והתשובה, עם האצבע על המפה. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `dir.line.show-me-map` — EN "Can you show me on the map?" · FR "Vous pouvez me montrer sur la carte ?" · ES "¿Me lo puede mostrar en el mapa?" — meaning "אתה יכול להראות לי על המפה? (כמו "Can you show me?" — ועוד "על המפה")" / "Can you show me on the map? (like "Can you show me?" — plus "on the map")" — icon 🗺️ — new
+2. `dir.line.on-map` — EN "Of course — here, we are here, and the station is right there." · FR "Bien sûr — tenez, nous sommes ici, et la gare est juste là." · ES "Claro — mire, estamos aquí, y la estación está justo ahí." — meaning "כמובן — הנה, אנחנו כאן, והתחנה בדיוק שם." / "Of course — here, we are here, and the station is right there." — icon 🗺️ — new
+3. `dir.line.we-are-here` — EN "we are here" · FR "nous sommes ici" · ES "estamos aquí" — meaning "אנחנו כאן" / "we are here" — icon 🧍 — new
+4. `dir.line.right-there` — EN "the station is right there" · FR "la gare est juste là" · ES "la estación está justo ahí" — meaning "התחנה בדיוק שם" / "the station is right there" — icon 🚉 — new
+
+No build-sentence card.
+
+Step 14. Label: "The goodbye" / "הפרידה". Intro: "Two things you will hear at the end. You do not need to say them — just understand. Tap to hear." / "שני דברים שתשמע בסוף. לא צריך להגיד אותם — רק להבין. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `dir.line.cant-miss` — EN "You can’t miss it." · FR "Vous ne pouvez pas la manquer." · ES "No tiene pérdida." — meaning "אי אפשר לפספס. (תמצא את זה בקלות)" / "You can’t miss it. (you will find it easily)" — icon 👀 — new
+2. `dir.line.good-day` — EN "Have a good day!" · FR "Bonne journée !" · ES "¡Que tenga buen día!" — meaning "שיהיה יום טוב!" / "Have a good day!" — icon 👋 — new
+
+No build-sentence card.
 
 ## Every sentence in this mission
 
@@ -4944,7 +5013,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "Opens any approach to a stranger on the street." / "פותח כל פנייה לזר ברחוב."
 - Used in missions: 05
-- Exercised here as: nothing (listed only)
+- Exercised here as: quick-reply response (step 16, round 1, accepted)
 
 ### Sentence: `phrase.dir.where-is`
 
@@ -4955,18 +5024,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "Template: Where is the ___? — the station, the bathroom, the hotel." / "תבנית: Where is the ___? — התחנה, השירותים, המלון."
 - Used in missions: 05
-- Exercised here as: key sentence (step 3); "you said" lead-in of the expected-replies drill (step 6); quick-reply response (step 10, round 1, accepted); quick-reply response (step 10, round 2, wrong option); sentence review (step 14)
-
-### Sentence: `phrase.dir.how-do-i-get`
-
-- EN: How do I get to the beach?
-- HE: איך מגיעים לחוף?
-- FR: Comment aller à la plage ?
-- ES: ¿Cómo se llega a la playa?
-- Role: learner production
-- Tip / pattern note: none
-- Used in missions: 05
-- Exercised here as: swap-it frame (step 11, round 1); swap-it frame (step 11, round 2); sentence review (step 14)
+- Exercised here as: built by the word intro (step 2); sentence-builder target (step 13, round 1); quick-reply response (step 16, round 2, accepted); quick-reply response (step 16, round 3, wrong option); quick-reply response (step 16, round 4, wrong option); quick-reply response (step 16, round 5, wrong option); mini-map audio (step 25, round 1)
 
 ### Sentence: `phrase.dir.is-it-far`
 
@@ -4977,7 +5035,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "Three words that decide: walk or take a taxi." / "שלוש מילים שמחליטות: ללכת ברגל או לקחת מונית."
 - Used in missions: 05
-- Exercised here as: key sentence (step 4); quick-reply response (step 10, round 1, wrong option); quick-reply response (step 10, round 2, accepted); sentence review (step 14); dialogue choice lost-in-town/c1 (accepted); dialogue choice lost-in-town/c1b (accepted)
+- Exercised here as: "you said" lead-in of the expected-replies drill (step 15); quick-reply response (step 16, round 1, wrong option); quick-reply response (step 16, round 2, wrong option); quick-reply response (step 16, round 3, accepted); quick-reply response (step 16, round 4, accepted); quick-reply response (step 16, round 5, wrong option); dialogue choice lost-in-town/c1 (accepted); dialogue choice lost-in-town/c1b (accepted)
 
 ### Sentence: `phrase.dir.show-me-map`
 
@@ -4988,29 +5046,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "When words aren’t enough — switch to eyes." / "כשמילים לא מספיקות — עוברים לעיניים."
 - Used in missions: 05
-- Exercised here as: key sentence (step 5); quick-reply response (step 10, round 1, wrong option); sentence review (step 14); dialogue choice lost-in-town/c2 (accepted)
-
-### Sentence: `reply.dir.left`
-
-- EN: It's on the left.
-- HE: זה בצד שמאל.
-- FR: C’est à gauche.
-- ES: Está a la izquierda.
-- Role: receptive — an expected reply the learner hears
-- Tip / pattern note: none
-- Used in missions: 05
-- Exercised here as: expected-reply audio (step 6); sentence review (step 14)
-
-### Sentence: `reply.dir.right`
-
-- EN: It's on the right.
-- HE: זה בצד ימין.
-- FR: C’est à droite.
-- ES: Está a la derecha.
-- Role: receptive — an expected reply the learner hears
-- Tip / pattern note: none
-- Used in missions: 05
-- Exercised here as: expected-reply audio (step 6); mini-map audio (step 8, round 3); sentence review (step 14)
+- Exercised here as: sentence-builder target (step 13, round 2); quick-reply response (step 16, round 1, wrong option); quick-reply response (step 16, round 2, wrong option); quick-reply response (step 16, round 3, wrong option); quick-reply response (step 16, round 4, wrong option); quick-reply response (step 16, round 5, accepted); dialogue choice lost-in-town/c2 (accepted)
 
 ### Sentence: `reply.dir.straight`
 
@@ -5021,7 +5057,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 05
-- Exercised here as: expected-reply audio (step 6); mini-map audio (step 8, round 1); sentence review (step 14)
+- Exercised here as: mini-map audio (step 6, round 1)
 
 ### Sentence: `reply.dir.turn-left`
 
@@ -5032,7 +5068,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 05
-- Exercised here as: built by the word intro (step 2); mini-map audio (step 8, round 2); sentence review (step 14)
+- Exercised here as: mini-map audio (step 6, round 3)
 
 ### Sentence: `reply.dir.next-to`
 
@@ -5043,29 +5079,40 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 05
-- Exercised here as: expected-reply audio (step 6); mini-map audio (step 8, round 4); meaning-quiz distractor (step 9); sentence review (step 14)
+- Exercised here as: mini-map audio (step 10, round 1); mini-map audio (step 25, round 4)
 
 ### Sentence: `reply.dir.five-minutes`
 
-- EN: It's about five minutes on foot.
-- HE: זה בערך חמש דקות ברגל.
-- FR: C’est à environ cinq minutes à pied.
-- ES: Está a unos cinco minutos a pie.
+- EN: No, it's about five minutes on foot. It's next to the bank.
+- HE: לא, זה בערך חמש דקות ברגל. זה ליד הבנק.
+- FR: Non, c’est à environ cinq minutes à pied. C’est à côté de la banque.
+- ES: No, está a unos cinco minutos a pie. Está al lado del banco.
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 05
-- Exercised here as: meaning-quiz audio (step 9); sentence review (step 14)
+- Exercised here as: visual-match audio (step 9, round 1); expected-reply audio (step 15); visual-match audio (step 26, round 1)
 
 ### Sentence: `reply.dir.cant-miss`
 
-- EN: You can't miss it.
-- HE: אי אפשר לפספס.
-- FR: Vous ne pouvez pas la manquer.
-- ES: No tiene pérdida.
+- EN: You can't miss it. Have a good day!
+- HE: אי אפשר לפספס. שיהיה יום טוב!
+- FR: Vous ne pouvez pas la manquer. Bonne journée !
+- ES: No tiene pérdida. ¡Que tenga buen día!
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 05
-- Exercised here as: meaning-quiz distractor (step 9)
+- Exercised here as: expected-reply audio (step 15)
+
+### Sentence: `reply.dir.on-map`
+
+- EN: Of course — here, we are here, and the station is right there.
+- HE: כמובן — הנה, אנחנו כאן, והתחנה בדיוק שם.
+- FR: Bien sûr — tenez, nous sommes ici, et la gare est juste là.
+- ES: Claro — mire, estamos aquí, y la estación está justo ahí.
+- Role: receptive — an expected reply the learner hears
+- Tip / pattern note: none
+- Used in missions: 05
+- Exercised here as: expected-reply audio (step 15)
 
 ### Sentence: `phrase.recovery.repeat`
 
@@ -5076,7 +5123,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
 - Used in missions: 01, 03, 05, 06, 08, 09, 10, 11, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
-- Exercised here as: quick-reply response (step 10, round 2, accepted); sentence review (step 14); dialogue choice lost-in-town/c1 (accepted)
+- Exercised here as: dialogue choice lost-in-town/c1 (accepted)
 
 ### Sentence: `phrase.recovery.thank-you`
 
@@ -5091,133 +5138,236 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 
 ## Expected replies / listening items
 
-Lead-in screen: "You said:" / "אמרת:" — EN "Where is the station?" · FR "Où est la gare ?" · ES "¿Dónde está la estación?" — then "What might they answer? Learn the replies before they surprise you." / "מה הם עלולים לענות? נלמד את התשובות לפני שהן מפתיעות אותך." — button 👂 "I'm ready" / "אני מוכן".
-Linked learner sentence: `phrase.dir.where-is`. Each reply below is played once automatically; the learner picks its MEANING from three buttons. Distractors are always the first two OTHER replies of this same drill, in drill order (runtime rule), so the three choices are shuffled per session.
+Lead-in screen: "You said:" / "אמרת:" — EN "Is it far?" · FR "C’est loin ?" · ES "¿Está lejos?" — then "What might they answer? Learn the replies before they surprise you." / "מה הם עלולים לענות? נלמד את התשובות לפני שהן מפתיעות אותך." — button 👂 "I'm ready" / "אני מוכן".
+Linked learner sentence: `phrase.dir.is-it-far`. Each reply below is played once automatically; the learner picks its MEANING from three buttons. Distractors are always the first two OTHER replies of this same drill, in drill order (runtime rule), so the three choices are shuffled per session.
 
-### M05-Q01 — expected-reply (step 6, reply 1 of 4)
+### M05-Q14 — expected-reply (step 15, reply 1 of 3)
 
-- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (1/4)
-- Audio played: EN "It's on the left." · FR "C’est à gauche." · ES "Está a la izquierda."
-- Meaning of the audio (HE): "זה בצד שמאל."
+- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (1/3)
+- Audio played: EN "No, it's about five minutes on foot. It's next to the bank." · FR "Non, c’est à environ cinq minutes à pied. C’est à côté de la banque." · ES "No, está a unos cinco minutos a pie. Está al lado del banco."
+- Meaning of the audio (HE): "לא, זה בערך חמש דקות ברגל. זה ליד הבנק."
 - Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
 - Choices:
-  1. HE "זה בצד שמאל." / EN "It's on the left." — `reply.dir.left` — ✅ accepted
-  2. HE "זה בצד ימין." / EN "It's on the right." — `reply.dir.right` — ❌ wrong
-  3. HE "לך ישר." / EN "Go straight ahead." — `reply.dir.straight` — ❌ wrong
-- Tests: reply.dir.left
-- Explanation shown after answering: generic: “It's on the left.” means “זה בצד שמאל.”.
+  1. HE "לא, זה בערך חמש דקות ברגל. זה ליד הבנק." / EN "No, it's about five minutes on foot. It's next to the bank." — `reply.dir.five-minutes` — ✅ accepted
+  2. HE "כמובן — הנה, אנחנו כאן, והתחנה בדיוק שם." / EN "Of course — here, we are here, and the station is right there." — `reply.dir.on-map` — ❌ wrong
+  3. HE "אי אפשר לפספס. שיהיה יום טוב!" / EN "You can't miss it. Have a good day!" — `reply.dir.cant-miss` — ❌ wrong
+- Tests: reply.dir.five-minutes
+- Explanation shown after answering: generic: “No, it's about five minutes on foot. It's next to the bank.” means “לא, זה בערך חמש דקות ברגל. זה ליד הבנק.”.
 
-### M05-Q02 — expected-reply (step 6, reply 2 of 4)
+### M05-Q15 — expected-reply (step 15, reply 2 of 3)
 
-- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (2/4)
-- Audio played: EN "It's on the right." · FR "C’est à droite." · ES "Está a la derecha."
-- Meaning of the audio (HE): "זה בצד ימין."
+- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (2/3)
+- Audio played: EN "Of course — here, we are here, and the station is right there." · FR "Bien sûr — tenez, nous sommes ici, et la gare est juste là." · ES "Claro — mire, estamos aquí, y la estación está justo ahí."
+- Meaning of the audio (HE): "כמובן — הנה, אנחנו כאן, והתחנה בדיוק שם."
 - Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
 - Choices:
-  1. HE "זה בצד ימין." / EN "It's on the right." — `reply.dir.right` — ✅ accepted
-  2. HE "זה בצד שמאל." / EN "It's on the left." — `reply.dir.left` — ❌ wrong
-  3. HE "לך ישר." / EN "Go straight ahead." — `reply.dir.straight` — ❌ wrong
-- Tests: reply.dir.right
-- Explanation shown after answering: generic: “It's on the right.” means “זה בצד ימין.”.
+  1. HE "כמובן — הנה, אנחנו כאן, והתחנה בדיוק שם." / EN "Of course — here, we are here, and the station is right there." — `reply.dir.on-map` — ✅ accepted
+  2. HE "לא, זה בערך חמש דקות ברגל. זה ליד הבנק." / EN "No, it's about five minutes on foot. It's next to the bank." — `reply.dir.five-minutes` — ❌ wrong
+  3. HE "אי אפשר לפספס. שיהיה יום טוב!" / EN "You can't miss it. Have a good day!" — `reply.dir.cant-miss` — ❌ wrong
+- Tests: reply.dir.on-map
+- Explanation shown after answering: generic: “Of course — here, we are here, and the station is right there.” means “כמובן — הנה, אנחנו כאן, והתחנה בדיוק שם.”.
 
-### M05-Q03 — expected-reply (step 6, reply 3 of 4)
+### M05-Q16 — expected-reply (step 15, reply 3 of 3)
 
-- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (3/4)
-- Audio played: EN "Go straight ahead." · FR "Allez tout droit." · ES "Siga todo recto."
-- Meaning of the audio (HE): "לך ישר."
+- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (3/3)
+- Audio played: EN "You can't miss it. Have a good day!" · FR "Vous ne pouvez pas la manquer. Bonne journée !" · ES "No tiene pérdida. ¡Que tenga buen día!"
+- Meaning of the audio (HE): "אי אפשר לפספס. שיהיה יום טוב!"
 - Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
 - Choices:
-  1. HE "לך ישר." / EN "Go straight ahead." — `reply.dir.straight` — ✅ accepted
-  2. HE "זה בצד שמאל." / EN "It's on the left." — `reply.dir.left` — ❌ wrong
-  3. HE "זה בצד ימין." / EN "It's on the right." — `reply.dir.right` — ❌ wrong
-- Tests: reply.dir.straight
-- Explanation shown after answering: generic: “Go straight ahead.” means “לך ישר.”.
-
-### M05-Q04 — expected-reply (step 6, reply 4 of 4)
-
-- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (4/4)
-- Audio played: EN "It's next to the bank." · FR "C’est à côté de la banque." · ES "Está al lado del banco."
-- Meaning of the audio (HE): "זה ליד הבנק."
-- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
-- Choices:
-  1. HE "זה ליד הבנק." / EN "It's next to the bank." — `reply.dir.next-to` — ✅ accepted
-  2. HE "זה בצד שמאל." / EN "It's on the left." — `reply.dir.left` — ❌ wrong
-  3. HE "זה בצד ימין." / EN "It's on the right." — `reply.dir.right` — ❌ wrong
-- Tests: reply.dir.next-to
-- Explanation shown after answering: generic: “It's next to the bank.” means “זה ליד הבנק.”.
+  1. HE "אי אפשר לפספס. שיהיה יום טוב!" / EN "You can't miss it. Have a good day!" — `reply.dir.cant-miss` — ✅ accepted
+  2. HE "לא, זה בערך חמש דקות ברגל. זה ליד הבנק." / EN "No, it's about five minutes on foot. It's next to the bank." — `reply.dir.five-minutes` — ❌ wrong
+  3. HE "כמובן — הנה, אנחנו כאן, והתחנה בדיוק שם." / EN "Of course — here, we are here, and the station is right there." — `reply.dir.on-map` — ❌ wrong
+- Tests: reply.dir.cant-miss
+- Explanation shown after answering: generic: “You can't miss it. Have a good day!” means “אי אפשר לפספס. שיהיה יום טוב!”.
 
 ## Quizzes
 
-### M05-Q09 — meaning-quiz (step 9, single question)
-
-- Prompt displayed: "What did it mean?" / "מה זה אומר?"
-- Audio played: EN "It's about five minutes on foot." · FR "C’est à environ cinq minutes à pied." · ES "Está a unos cinco minutos a pie."
-- Meaning of the audio (HE): "זה בערך חמש דקות ברגל."
-- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
-- Choices:
-  1. HE "זה בערך חמש דקות ברגל." / EN "It's about five minutes on foot." — `reply.dir.five-minutes` — ✅ accepted
-  2. HE "זה ליד הבנק." / EN "It's next to the bank." — `reply.dir.next-to` — ❌ wrong
-  3. HE "אי אפשר לפספס." / EN "You can't miss it." — `reply.dir.cant-miss` — ❌ wrong
-- Tests: reply.dir.five-minutes
-- Explanation shown after answering: generic: “It's about five minutes on foot.” means “זה בערך חמש דקות ברגל.”.
+No meaning quiz in this mission.
 
 ## Active practice — Quick Reply · Visual Match · Swap It · Mini Map
 
-### M05-Q05 — mini-map (step 8, round 1 of 4)
+### M05-Q01 — mini-map (step 4, round 1 of 2)
 
-- Prompt displayed: "Tap where to go" / "הקש לאן הולכים" — board, row by row: ☕ café | ⬆️ [tap:straight] | · // ⬅️ [tap:left] | · | ➡️ [tap:right] // 🏦 bank | 🧍 | 🏨 hotel
+- Prompt displayed: "The map — tap the place you hear" / "המפה — הקש על המקום ששמעת" — board, row by row: 🏦 [tap:bank] | · | ☕ [tap:cafe] // 🚉 [tap:station] | · | · // 🏠 | 🧍 | 🌳 [tap:park]
+- Audio played: EN "the station" · FR "la gare" · ES "la estación"
+- Meaning of the audio (HE): "התחנה"
+- Buttons show: the tappable cells of a 3×3 schematic map (fixed positions, not shuffled); the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "🏦 bank" — no sentence id — ❌ wrong
+  2. "☕ cafe" — no sentence id — ❌ wrong
+  3. "🚉 station" — no sentence id — ✅ accepted
+  4. "🌳 park" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M05-Q02 — mini-map (step 4, round 2 of 2)
+
+- Prompt displayed: "The map — tap the place you hear" / "המפה — הקש על המקום ששמעת" — board, row by row: 🏦 [tap:bank] | · | ☕ [tap:cafe] // 🚉 [tap:station] | · | · // 🏠 | 🧍 | 🌳 [tap:park]
+- Audio played: EN "the bank" · FR "la banque" · ES "el banco"
+- Meaning of the audio (HE): "הבנק"
+- Buttons show: the tappable cells of a 3×3 schematic map (fixed positions, not shuffled); the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "🏦 bank" — no sentence id — ✅ accepted
+  2. "☕ cafe" — no sentence id — ❌ wrong
+  3. "🚉 station" — no sentence id — ❌ wrong
+  4. "🌳 park" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M05-Q03 — mini-map (step 6, round 1 of 3)
+
+- Prompt displayed: "Which way? Tap the way you hear" / "לאן? הקש על הדרך ששמעת" — board, row by row: 🏦 bank | · | ☕ // 🚉 station | ⬆️ [tap:corner] | · // ⬅️ [tap:house] | 🧍 | ➡️ [tap:park]
 - Audio played: EN "Go straight ahead." · FR "Allez tout droit." · ES "Siga todo recto."
 - Meaning of the audio (HE): "לך ישר."
 - Buttons show: the tappable cells of a 3×3 schematic map (fixed positions, not shuffled); the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. "⬆️ straight" — `reply.dir.straight` — ✅ accepted
-  2. "⬅️ left" — no sentence id — ❌ wrong
-  3. "➡️ right" — no sentence id — ❌ wrong
+  1. "⬆️ corner" — `reply.dir.straight` — ✅ accepted
+  2. "⬅️ house" — no sentence id — ❌ wrong
+  3. "➡️ park" — no sentence id — ❌ wrong
 - Tests: reply.dir.straight
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
-### M05-Q06 — mini-map (step 8, round 2 of 4)
+### M05-Q04 — mini-map (step 6, round 2 of 3)
 
-- Prompt displayed: "Tap where to go" / "הקש לאן הולכים" — board, row by row: ☕ café | ⬆️ [tap:straight] | · // ⬅️ [tap:left] | · | ➡️ [tap:right] // 🏦 bank | 🧍 | 🏨 hotel
+- Prompt displayed: "Which way? Tap the way you hear" / "לאן? הקש על הדרך ששמעת" — board, row by row: 🏦 bank | 📍 [tap:ahead] | ☕ // 🚉 station | 📍 [tap:corner] | 📍 [tap:right-street] // 🏠 | 🧍 | 🌳
+- Audio played: EN "at the corner" · FR "au coin" · ES "en la esquina"
+- Meaning of the audio (HE): "בפינה"
+- Buttons show: the tappable cells of a 3×3 schematic map (fixed positions, not shuffled); the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "📍 ahead" — no sentence id — ❌ wrong
+  2. "📍 corner" — no sentence id — ✅ accepted
+  3. "📍 right-street" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M05-Q05 — mini-map (step 6, round 3 of 3)
+
+- Prompt displayed: "Which way? Tap the way you hear" / "לאן? הקש על הדרך ששמעת" — board, row by row: 🏦 bank | ⬆️ [tap:ahead] | ☕ // ⬅️ [tap:station] | 🧍 | ➡️ [tap:right-street] // 🏠 | · | 🌳
 - Audio played: EN "Turn left at the corner." · FR "Tournez à gauche au coin." · ES "Gire a la izquierda en la esquina."
 - Meaning of the audio (HE): "פנה שמאלה בפינה."
 - Buttons show: the tappable cells of a 3×3 schematic map (fixed positions, not shuffled); the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. "⬆️ straight" — no sentence id — ❌ wrong
-  2. "⬅️ left" — `reply.dir.turn-left` — ✅ accepted
-  3. "➡️ right" — no sentence id — ❌ wrong
+  1. "⬆️ ahead" — no sentence id — ❌ wrong
+  2. "⬅️ station" — `reply.dir.turn-left` — ✅ accepted
+  3. "➡️ right-street" — no sentence id — ❌ wrong
 - Tests: reply.dir.turn-left
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
-### M05-Q07 — mini-map (step 8, round 3 of 4)
+### M05-Q06 — mini-map (step 7, round 1 of 2)
 
-- Prompt displayed: "Tap where to go" / "הקש לאן הולכים" — board, row by row: ☕ café | ⬆️ [tap:straight] | · // ⬅️ [tap:left] | · | ➡️ [tap:right] // 🏦 bank | 🧍 | 🏨 hotel
-- Audio played: EN "It's on the right." · FR "C’est à droite." · ES "Está a la derecha."
-- Meaning of the audio (HE): "זה בצד ימין."
+- Prompt displayed: "Follow the directions — one step at a time" / "עקוב אחרי ההוראות — צעד אחר צעד" — board, row by row: 🏦 bank | · | ☕ // 🚉 station | ⬆️ [tap:corner] | · // ⬅️ [tap:house] | 🧍 | ➡️ [tap:park]
+- Audio played: EN "The station? Go straight ahead, then turn left at the corner." · FR "La gare ? Allez tout droit, puis tournez à gauche au coin." · ES "¿La estación? Siga todo recto y luego gire a la izquierda en la esquina."
+- Meaning of the audio (HE): "התחנה? לך ישר, ואז פנה שמאלה בפינה."
 - Buttons show: the tappable cells of a 3×3 schematic map (fixed positions, not shuffled); the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. "⬆️ straight" — no sentence id — ❌ wrong
-  2. "⬅️ left" — no sentence id — ❌ wrong
-  3. "➡️ right" — `reply.dir.right` — ✅ accepted
-- Tests: reply.dir.right
+  1. "⬆️ corner" — no sentence id — ✅ accepted
+  2. "⬅️ house" — no sentence id — ❌ wrong
+  3. "➡️ park" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
-### M05-Q08 — mini-map (step 8, round 4 of 4)
+### M05-Q07 — mini-map (step 7, round 2 of 2)
 
-- Prompt displayed: "Tap where to go" / "הקש לאן הולכים" — board, row by row: ☕ café | 📍 [tap:straight] | · // 📍 [tap:left] | · | 📍 [tap:right] // 🏦 bank | 🧍 | 🏨 hotel
+- Prompt displayed: "Follow the directions — one step at a time" / "עקוב אחרי ההוראות — צעד אחר צעד" — board, row by row: 🏦 bank | ⬆️ [tap:ahead] | ☕ // ⬅️ [tap:station] | 🧍 | ➡️ [tap:right-street] // 🏠 | · | 🌳
+- Audio played: EN "The station? Go straight ahead, then turn left at the corner." · FR "La gare ? Allez tout droit, puis tournez à gauche au coin." · ES "¿La estación? Siga todo recto y luego gire a la izquierda en la esquina."
+- Meaning of the audio (HE): "התחנה? לך ישר, ואז פנה שמאלה בפינה."
+- Buttons show: the tappable cells of a 3×3 schematic map (fixed positions, not shuffled); the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "⬆️ ahead" — no sentence id — ❌ wrong
+  2. "⬅️ station" — no sentence id — ✅ accepted
+  3. "➡️ right-street" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M05-Q08 — visual-match (step 9, round 1 of 1)
+
+- Prompt displayed: "How far? Tap what you hear" / "כמה רחוק? הקש על מה ששמעת"
+- Audio played: EN "No, it's about five minutes on foot." · FR "Non, c’est à environ cinq minutes à pied." · ES "No, está a unos cinco minutos a pie."
+- Meaning of the audio (HE): "לא, זה בערך חמש דקות ברגל."
+- Buttons show: a 3×3 board of 2 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "🚶 “~5 min on foot” / “~5 דק׳ ברגל”" — `reply.dir.five-minutes` — ✅ accepted
+  2. "🚶 “~20 min on foot” / “~20 דק׳ ברגל”" — no sentence id — ❌ wrong
+- Tests: reply.dir.five-minutes
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M05-Q09 — mini-map (step 10, round 1 of 1)
+
+- Prompt displayed: "Where is the station? Tap the spot" / "איפה התחנה? הקש על המקום" — board, row by row: 🏦 bank | · | 📍 [tap:cafe] // 📍 [tap:station] | · | · // 🏠 | 🧍 | 📍 [tap:park]
 - Audio played: EN "It's next to the bank." · FR "C’est à côté de la banque." · ES "Está al lado del banco."
 - Meaning of the audio (HE): "זה ליד הבנק."
 - Buttons show: the tappable cells of a 3×3 schematic map (fixed positions, not shuffled); the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. "📍 straight" — no sentence id — ❌ wrong
-  2. "📍 left" — `reply.dir.next-to` — ✅ accepted
-  3. "📍 right" — no sentence id — ❌ wrong
+  1. "📍 cafe" — no sentence id — ❌ wrong
+  2. "📍 station" — `reply.dir.next-to` — ✅ accepted
+  3. "📍 park" — no sentence id — ❌ wrong
 - Tests: reply.dir.next-to
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
-### M05-Q10 — quick-reply (step 10, round 1 of 2)
+### M05-Q10 — mini-map (step 12, round 1 of 2)
 
-- Prompt displayed: "What do you say here?" / "מה אומרים כאן?" — situation shown: "You are lost and looking for the station. You stop someone in the street." / "אתה אבוד ומחפש את התחנה. פונים למישהו ברחוב."
+- Prompt displayed: "Here or there? Tap the spot" / "כאן או שם? הקש על המקום" — board, row by row: 📍 [tap:bank] | · | ☕ // 📍 [tap:station] | · | · // 🏠 | 🧍 [tap:start] | 🌳
+- Audio played: EN "we are here" · FR "nous sommes ici" · ES "estamos aquí"
+- Meaning of the audio (HE): "אנחנו כאן"
+- Buttons show: the tappable cells of a 3×3 schematic map (fixed positions, not shuffled); the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "📍 bank" — no sentence id — ❌ wrong
+  2. "📍 station" — no sentence id — ❌ wrong
+  3. "🧍 start" — no sentence id — ✅ accepted
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M05-Q11 — mini-map (step 12, round 2 of 2)
+
+- Prompt displayed: "Here or there? Tap the spot" / "כאן או שם? הקש על המקום" — board, row by row: 📍 [tap:bank] | · | ☕ // 📍 [tap:station] | · | · // 🏠 | 🧍 [tap:start] | 🌳
+- Audio played: EN "the station is right there" · FR "la gare est juste là" · ES "la estación está justo ahí"
+- Meaning of the audio (HE): "התחנה בדיוק שם"
+- Buttons show: the tappable cells of a 3×3 schematic map (fixed positions, not shuffled); the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "📍 bank" — no sentence id — ❌ wrong
+  2. "📍 station" — no sentence id — ✅ accepted
+  3. "🧍 start" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M05-Q12 — sentence-builder (step 13, round 1 of 2)
+
+- Prompt displayed: "Build the sentence" / "בנה את המשפט" — cue shown: the sentence's MEANING in the app language ("איפה התחנה?")
+- Audio played: EN "(nothing before Check; the built sentence is spoken once it is right)" · FR "(same)" · ES "(same)"
+- Meaning of the audio (HE): —
+- Buttons show: the authored CHUNKS of the sentence as tiles (listed here in the correct order, separated by "|"), shuffled; each language has its own chunks; Check unlocks when every tile is placed
+- Choices:
+  1. EN "Where  |  is  |  the station?" · FR "Où  |  est  |  la gare ?" · ES "¿Dónde  |  está  |  la estación?" · (HE gloss "איפה התחנה?") — `phrase.dir.where-is` — ✅ accepted
+- Tests: phrase.dir.where-is
+- Explanation shown after answering: right: the sentence is spoken and its translation shown. Wrong: "not yet" — the tiles stay, the answer is NOT shown; after one miss a hint marks the start; after two misses the learner may reveal it
+
+### M05-Q13 — sentence-builder (step 13, round 2 of 2)
+
+- Prompt displayed: "Build the sentence" / "בנה את המשפט" — cue shown: the sentence's MEANING in the app language ("אתה יכול להראות לי על המפה?")
+- Audio played: EN "(nothing before Check; the built sentence is spoken once it is right)" · FR "(same)" · ES "(same)"
+- Meaning of the audio (HE): —
+- Buttons show: the authored CHUNKS of the sentence as tiles (listed here in the correct order, separated by "|"), shuffled; each language has its own chunks; Check unlocks when every tile is placed
+- Choices:
+  1. EN "Can you  |  show me  |  on the map?" · FR "Vous pouvez  |  me montrer  |  sur la carte ?" · ES "¿Me lo  |  puede mostrar  |  en el mapa?" · (HE gloss "אתה יכול להראות לי על המפה?") — `phrase.dir.show-me-map` — ✅ accepted
+- Tests: phrase.dir.show-me-map
+- Explanation shown after answering: right: the sentence is spoken and its translation shown. Wrong: "not yet" — the tiles stay, the answer is NOT shown; after one miss a hint marks the start; after two misses the learner may reveal it
+
+### M05-Q17 — quick-reply (step 16, round 1 of 5)
+
+- Prompt displayed: "What do you say?" / "מה אתה אומר?" — situation shown: "Someone is walking past. You want to stop them politely." / "מישהי עוברת ברחוב. אתה רוצה לעצור אותה בנימוס."
+- Audio played: EN "(nothing is played — a situation is shown)" · FR "(nothing is played — a situation is shown)" · ES "(nothing is played — a situation is shown)"
+- Meaning of the audio (HE): —
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Excuse me!" · FR "Excusez-moi !" · ES "¡Perdone!" · (HE gloss "סליחה!") — `phrase.dir.excuse-me` — ✅ accepted
+  2. EN "Is it far?" · FR "C’est loin ?" · ES "¿Está lejos?" · (HE gloss "זה רחוק?") — `phrase.dir.is-it-far` — ❌ wrong
+  3. EN "Can you show me on the map?" · FR "Vous pouvez me montrer sur la carte ?" · ES "¿Me lo puede mostrar en el mapa?" · (HE gloss "אתה יכול להראות לי על המפה?") — `phrase.dir.show-me-map` — ❌ wrong
+- Tests: phrase.dir.excuse-me
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M05-Q18 — quick-reply (step 16, round 2 of 5)
+
+- Prompt displayed: "What do you say?" / "מה אתה אומר?" — situation shown: "You need the station and do not know the way. You stop a woman in the street." / "אתה מחפש את התחנה ולא יודע איך להגיע. פונים לאישה ברחוב."
 - Audio played: EN "(nothing is played — a situation is shown)" · FR "(nothing is played — a situation is shown)" · ES "(nothing is played — a situation is shown)"
 - Meaning of the audio (HE): —
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
@@ -5228,56 +5378,250 @@ Linked learner sentence: `phrase.dir.where-is`. Each reply below is played once 
 - Tests: phrase.dir.where-is
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M05-Q11 — quick-reply (step 10, round 2 of 2)
+### M05-Q19 — quick-reply (step 16, round 3 of 5)
 
-- Prompt displayed: "What do you say?" / "מה עונים?"
-- Audio played: EN "Go straight ahead, then turn left at the corner." · FR "Allez tout droit, puis tournez à gauche au coin." · ES "Siga todo recto y luego gire a la izquierda en la esquina."
-- Meaning of the audio (HE): "לך ישר, ואז פנה שמאלה בפינה."
+- Prompt displayed: "What do you say?" / "מה אתה אומר?"
+- Audio played: EN "The station? Go straight ahead, then turn left at the corner." · FR "La gare ? Allez tout droit, puis tournez à gauche au coin." · ES "¿La estación? Siga todo recto y luego gire a la izquierda en la esquina."
+- Meaning of the audio (HE): "התחנה? לך ישר, ואז פנה שמאלה בפינה."
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
-  1. EN "Can you repeat that?" · FR "Vous pouvez répéter ?" · ES "¿Puede repetir, por favor?" · (HE gloss "אפשר לחזור על זה?") — `phrase.recovery.repeat` — ✅ accepted
-  2. EN "Is it far?" · FR "C’est loin ?" · ES "¿Está lejos?" · (HE gloss "זה רחוק?") — `phrase.dir.is-it-far` — ✅ accepted
-  3. EN "Where is the station?" · FR "Où est la gare ?" · ES "¿Dónde está la estación?" · (HE gloss "איפה התחנה?") — `phrase.dir.where-is` — ❌ wrong
-- Tests: phrase.recovery.repeat, phrase.dir.is-it-far
+  1. EN "Is it far?" · FR "C’est loin ?" · ES "¿Está lejos?" · (HE gloss "זה רחוק?") — `phrase.dir.is-it-far` — ✅ accepted
+  2. EN "Where is the station?" · FR "Où est la gare ?" · ES "¿Dónde está la estación?" · (HE gloss "איפה התחנה?") — `phrase.dir.where-is` — ❌ wrong
+  3. EN "Can you show me on the map?" · FR "Vous pouvez me montrer sur la carte ?" · ES "¿Me lo puede mostrar en el mapa?" · (HE gloss "אתה יכול להראות לי על המפה?") — `phrase.dir.show-me-map` — ❌ wrong
+- Tests: phrase.dir.is-it-far
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M05-Q12 — swap-it (step 11, round 1 of 2)
+### M05-Q20 — quick-reply (step 16, round 4 of 5)
 
-- Prompt displayed: "Finish the sentence" / "השלם את המשפט" — cue 🏖️ "You want to get to the beach" / "אתה רוצה להגיע לחוף" — frame EN "How do I get to ___?" · FR "Comment aller ___ ?" · ES "¿Cómo se llega ___?"
-- Audio played: EN "(nothing before the tap; the completed sentence is spoken after it)" · FR "(same)" · ES "(same)"
+- Prompt displayed: "What do you say?" / "מה אתה אומר?" — situation shown: "Your bag is heavy. Before you set off, you want to know if it is far." / "התיק שלך כבד. לפני שאתה יוצא לדרך — אתה רוצה לדעת אם זה רחוק."
+- Audio played: EN "(nothing is played — a situation is shown)" · FR "(nothing is played — a situation is shown)" · ES "(nothing is played — a situation is shown)"
 - Meaning of the audio (HE): —
-- Buttons show: the SLOT VALUES in the target language (shown here as "value → completed sentence"); order shuffled; a "wrong" value still produces and speaks a real sentence, with its translation
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
-  1. EN "the beach → How do I get to the beach?" · FR "à la plage → Comment aller à la plage ?" · ES "a la playa → ¿Cómo se llega a la playa?" · (HE gloss "איך מגיעים לחוף?") — `phrase.dir.how-do-i-get` — ✅ accepted
-  2. EN "the station → How do I get to the station?" · FR "à la gare → Comment aller à la gare ?" · ES "a la estación → ¿Cómo se llega a la estación?" · (HE gloss "איך מגיעים לתחנה?") — no sentence id — ❌ wrong
-  3. EN "the bank → How do I get to the bank?" · FR "à la banque → Comment aller à la banque ?" · ES "al banco → ¿Cómo se llega al banco?" · (HE gloss "איך מגיעים לבנק?") — no sentence id — ❌ wrong
-- Tests: phrase.dir.how-do-i-get
-- Explanation shown after answering: after the tap: the completed sentence, spoken, with its translation
+  1. EN "Is it far?" · FR "C’est loin ?" · ES "¿Está lejos?" · (HE gloss "זה רחוק?") — `phrase.dir.is-it-far` — ✅ accepted
+  2. EN "Where is the station?" · FR "Où est la gare ?" · ES "¿Dónde está la estación?" · (HE gloss "איפה התחנה?") — `phrase.dir.where-is` — ❌ wrong
+  3. EN "Can you show me on the map?" · FR "Vous pouvez me montrer sur la carte ?" · ES "¿Me lo puede mostrar en el mapa?" · (HE gloss "אתה יכול להראות לי על המפה?") — `phrase.dir.show-me-map` — ❌ wrong
+- Tests: phrase.dir.is-it-far
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M05-Q13 — swap-it (step 11, round 2 of 2)
+### M05-Q21 — quick-reply (step 16, round 5 of 5)
 
-- Prompt displayed: "Finish the sentence" / "השלם את המשפט" — cue 🏦 "You want to get to the bank" / "אתה רוצה להגיע לבנק" — frame EN "How do I get to ___?" · FR "Comment aller ___ ?" · ES "¿Cómo se llega ___?"
-- Audio played: EN "(nothing before the tap; the completed sentence is spoken after it)" · FR "(same)" · ES "(same)"
-- Meaning of the audio (HE): —
-- Buttons show: the SLOT VALUES in the target language (shown here as "value → completed sentence"); order shuffled; a "wrong" value still produces and speaks a real sentence, with its translation
+- Prompt displayed: "What do you say?" / "מה אתה אומר?"
+- Audio played: EN "No, it's about five minutes on foot. It's next to the bank." · FR "Non, c’est à environ cinq minutes à pied. C’est à côté de la banque." · ES "No, está a unos cinco minutos a pie. Está al lado del banco."
+- Meaning of the audio (HE): "לא, זה בערך חמש דקות ברגל. זה ליד הבנק."
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
-  1. EN "the bank → How do I get to the bank?" · FR "à la banque → Comment aller à la banque ?" · ES "al banco → ¿Cómo se llega al banco?" · (HE gloss "איך מגיעים לבנק?") — `phrase.dir.how-do-i-get` — ✅ accepted
-  2. EN "the beach → How do I get to the beach?" · FR "à la plage → Comment aller à la plage ?" · ES "a la playa → ¿Cómo se llega a la playa?" · (HE gloss "איך מגיעים לחוף?") — no sentence id — ❌ wrong
-  3. EN "the station → How do I get to the station?" · FR "à la gare → Comment aller à la gare ?" · ES "a la estación → ¿Cómo se llega a la estación?" · (HE gloss "איך מגיעים לתחנה?") — no sentence id — ❌ wrong
-- Tests: phrase.dir.how-do-i-get
-- Explanation shown after answering: after the tap: the completed sentence, spoken, with its translation
+  1. EN "Can you show me on the map?" · FR "Vous pouvez me montrer sur la carte ?" · ES "¿Me lo puede mostrar en el mapa?" · (HE gloss "אתה יכול להראות לי על המפה?") — `phrase.dir.show-me-map` — ✅ accepted
+  2. EN "Where is the station?" · FR "Où est la gare ?" · ES "¿Dónde está la estación?" · (HE gloss "איפה התחנה?") — `phrase.dir.where-is` — ❌ wrong
+  3. EN "Is it far?" · FR "C’est loin ?" · ES "¿Está lejos?" · (HE gloss "זה רחוק?") — `phrase.dir.is-it-far` — ❌ wrong
+- Tests: phrase.dir.show-me-map
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M05-Q17 — mini-map (step 15, round 1 of 1 · SPEED CHALLENGE (spoken at rate 1.12))
+### M05-Q22 — mini-map (step 17, round 1 of 4 · SPEED CHALLENGE (spoken at rate 1.12))
 
-- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה." — board, row by row: ☕ café | 📍 [tap:straight] | · // 📍 [tap:left] | · | 📍 [tap:right] // 🏨 hotel | 🧍 | 🏦 bank
-- Audio played: EN "Go straight, then turn right. It's next to the bank." · FR "Allez tout droit, puis tournez à droite. C’est à côté de la banque." · ES "Siga todo recto y luego gire a la derecha. Está al lado del banco."
-- Meaning of the audio (HE): "לך ישר, ואז פנה ימינה. זה ליד הבנק."
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה." — board, row by row: 🏦 bank | 📍 [tap:ahead] | ☕ // 🚉 station | 📍 [tap:corner] | 📍 [tap:right-street] // 🏠 | 🧍 | 🌳
+- Audio played: EN "at the corner" · FR "au coin" · ES "en la esquina"
+- Meaning of the audio (HE): "בפינה"
 - Buttons show: the tappable cells of a 3×3 schematic map (fixed positions, not shuffled); the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. "📍 straight" — no sentence id — ❌ wrong
-  2. "📍 left" — no sentence id — ❌ wrong
-  3. "📍 right" — no sentence id — ✅ accepted
+  1. "📍 ahead" — no sentence id — ❌ wrong
+  2. "📍 corner" — no sentence id — ✅ accepted
+  3. "📍 right-street" — no sentence id — ❌ wrong
 - Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M05-Q23 — mini-map (step 17, round 2 of 4 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה." — board, row by row: 🏦 bank | · | 📍 [tap:cafe] // 📍 [tap:station] | · | · // 🏠 | 🧍 | 📍 [tap:park]
+- Audio played: EN "It's next to the bank." · FR "C’est à côté de la banque." · ES "Está al lado del banco."
+- Meaning of the audio (HE): "זה ליד הבנק."
+- Buttons show: the tappable cells of a 3×3 schematic map (fixed positions, not shuffled); the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "📍 cafe" — no sentence id — ❌ wrong
+  2. "📍 station" — no sentence id — ✅ accepted
+  3. "📍 park" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M05-Q24 — mini-map (step 17, round 3 of 4 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה." — board, row by row: 📍 [tap:bank] | · | ☕ // 📍 [tap:station] | · | · // 🏠 | 🧍 [tap:start] | 🌳
+- Audio played: EN "we are here" · FR "nous sommes ici" · ES "estamos aquí"
+- Meaning of the audio (HE): "אנחנו כאן"
+- Buttons show: the tappable cells of a 3×3 schematic map (fixed positions, not shuffled); the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "📍 bank" — no sentence id — ❌ wrong
+  2. "📍 station" — no sentence id — ❌ wrong
+  3. "🧍 start" — no sentence id — ✅ accepted
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M05-Q25 — mini-map (step 17, round 4 of 4 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה." — board, row by row: 📍 [tap:bank] | · | ☕ // 📍 [tap:station] | · | · // 🏠 | 🧍 [tap:start] | 🌳
+- Audio played: EN "the station is right there" · FR "la gare est juste là" · ES "la estación está justo ahí"
+- Meaning of the audio (HE): "התחנה בדיוק שם"
+- Buttons show: the tappable cells of a 3×3 schematic map (fixed positions, not shuffled); the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "📍 bank" — no sentence id — ❌ wrong
+  2. "📍 station" — no sentence id — ✅ accepted
+  3. "🧍 start" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M05-Q26 — mini-map (step 18, round 1 of 3)
+
+- Prompt displayed: "The whole way — one instruction after another" / "כל הדרך — הוראה אחרי הוראה" — board, row by row: 🏦 bank | · | ☕ // 🚉 station | ⬆️ [tap:corner] | · // ⬅️ [tap:house] | 🧍 | ➡️ [tap:park]
+- Audio played: EN "Go straight ahead." · FR "Allez tout droit." · ES "Siga todo recto."
+- Meaning of the audio (HE): "לך ישר."
+- Buttons show: the tappable cells of a 3×3 schematic map (fixed positions, not shuffled); the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "⬆️ corner" — no sentence id — ✅ accepted
+  2. "⬅️ house" — no sentence id — ❌ wrong
+  3. "➡️ park" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M05-Q27 — mini-map (step 18, round 2 of 3)
+
+- Prompt displayed: "The whole way — one instruction after another" / "כל הדרך — הוראה אחרי הוראה" — board, row by row: 🏦 bank | ⬆️ [tap:ahead] | ☕ // ⬅️ [tap:station] | 🧍 | ➡️ [tap:right-street] // 🏠 | · | 🌳
+- Audio played: EN "Turn left at the corner." · FR "Tournez à gauche au coin." · ES "Gire a la izquierda en la esquina."
+- Meaning of the audio (HE): "פנה שמאלה בפינה."
+- Buttons show: the tappable cells of a 3×3 schematic map (fixed positions, not shuffled); the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "⬆️ ahead" — no sentence id — ❌ wrong
+  2. "⬅️ station" — no sentence id — ✅ accepted
+  3. "➡️ right-street" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M05-Q28 — mini-map (step 18, round 3 of 3)
+
+- Prompt displayed: "The whole way — one instruction after another" / "כל הדרך — הוראה אחרי הוראה" — board, row by row: 🏦 bank | · | 📍 [tap:cafe] // 📍 [tap:station] | 🧍 | · // 🏠 | · | 📍 [tap:park]
+- Audio played: EN "It's next to the bank." · FR "C’est à côté de la banque." · ES "Está al lado del banco."
+- Meaning of the audio (HE): "זה ליד הבנק."
+- Buttons show: the tappable cells of a 3×3 schematic map (fixed positions, not shuffled); the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "📍 cafe" — no sentence id — ❌ wrong
+  2. "📍 station" — no sentence id — ✅ accepted
+  3. "📍 park" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M05-Q32 — mini-map (step 22, round 1 of 3 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה." — board, row by row: 🏦 bank | · | ☕ // 🚉 station | ⬆️ [tap:corner] | · // ⬅️ [tap:house] | 🧍 | ➡️ [tap:park]
+- Audio played: EN "The station? Go straight ahead, then turn left at the corner." · FR "La gare ? Allez tout droit, puis tournez à gauche au coin." · ES "¿La estación? Siga todo recto y luego gire a la izquierda en la esquina."
+- Meaning of the audio (HE): "התחנה? לך ישר, ואז פנה שמאלה בפינה."
+- Buttons show: the tappable cells of a 3×3 schematic map (fixed positions, not shuffled); the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "⬆️ corner" — no sentence id — ✅ accepted
+  2. "⬅️ house" — no sentence id — ❌ wrong
+  3. "➡️ park" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M05-Q33 — mini-map (step 22, round 2 of 3 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה." — board, row by row: 🏦 bank | ⬆️ [tap:ahead] | ☕ // ⬅️ [tap:station] | 🧍 | ➡️ [tap:right-street] // 🏠 | · | 🌳
+- Audio played: EN "The station? Go straight ahead, then turn left at the corner." · FR "La gare ? Allez tout droit, puis tournez à gauche au coin." · ES "¿La estación? Siga todo recto y luego gire a la izquierda en la esquina."
+- Meaning of the audio (HE): "התחנה? לך ישר, ואז פנה שמאלה בפינה."
+- Buttons show: the tappable cells of a 3×3 schematic map (fixed positions, not shuffled); the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "⬆️ ahead" — no sentence id — ❌ wrong
+  2. "⬅️ station" — no sentence id — ✅ accepted
+  3. "➡️ right-street" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M05-Q34 — mini-map (step 22, round 3 of 3 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה." — board, row by row: 🏦 bank | · | 📍 [tap:cafe] // 📍 [tap:station] | 🧍 | · // 🏠 | · | 📍 [tap:park]
+- Audio played: EN "No, it's about five minutes on foot. It's next to the bank." · FR "Non, c’est à environ cinq minutes à pied. C’est à côté de la banque." · ES "No, está a unos cinco minutos a pie. Está al lado del banco."
+- Meaning of the audio (HE): "לא, זה בערך חמש דקות ברגל. זה ליד הבנק."
+- Buttons show: the tappable cells of a 3×3 schematic map (fixed positions, not shuffled); the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "📍 cafe" — no sentence id — ❌ wrong
+  2. "📍 station" — no sentence id — ✅ accepted
+  3. "📍 park" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M05-Q35 — mini-map (step 25, round 1 of 5)
+
+- Prompt displayed: "What happened? Tap the map" / "מה קרה? הקש על המפה" — board, row by row: 📍 [tap:bank] | · | 📍 [tap:cafe] // 📍 [tap:station] | · | · // 🏠 | 🧍 | 🌳
+- Audio played: EN "Excuse me! Where is the station?" · FR "Excusez-moi ! Où est la gare ?" · ES "¡Perdone! ¿Dónde está la estación?"
+- Meaning of the audio (HE): "סליחה! איפה התחנה?"
+- Buttons show: the tappable cells of a 3×3 schematic map (fixed positions, not shuffled); the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "📍 bank" — no sentence id — ❌ wrong
+  2. "📍 cafe" — no sentence id — ❌ wrong
+  3. "📍 station" — `phrase.dir.where-is` — ✅ accepted
+- Tests: phrase.dir.where-is
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M05-Q36 — mini-map (step 25, round 2 of 5)
+
+- Prompt displayed: "What happened? Tap the map" / "מה קרה? הקש על המפה" — board, row by row: 🏦 bank | · | ☕ // 🚉 station | ⬆️ [tap:corner] | · // ⬅️ [tap:house] | 🧍 | ➡️ [tap:park]
+- Audio played: EN "The station? Go straight ahead, then turn left at the corner." · FR "La gare ? Allez tout droit, puis tournez à gauche au coin." · ES "¿La estación? Siga todo recto y luego gire a la izquierda en la esquina."
+- Meaning of the audio (HE): "התחנה? לך ישר, ואז פנה שמאלה בפינה."
+- Buttons show: the tappable cells of a 3×3 schematic map (fixed positions, not shuffled); the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "⬆️ corner" — no sentence id — ✅ accepted
+  2. "⬅️ house" — no sentence id — ❌ wrong
+  3. "➡️ park" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M05-Q37 — mini-map (step 25, round 3 of 5)
+
+- Prompt displayed: "What happened? Tap the map" / "מה קרה? הקש על המפה" — board, row by row: 🏦 bank | ⬆️ [tap:ahead] | ☕ // ⬅️ [tap:station] | 🧍 | ➡️ [tap:right-street] // 🏠 | · | 🌳
+- Audio played: EN "The station? Go straight ahead, then turn left at the corner." · FR "La gare ? Allez tout droit, puis tournez à gauche au coin." · ES "¿La estación? Siga todo recto y luego gire a la izquierda en la esquina."
+- Meaning of the audio (HE): "התחנה? לך ישר, ואז פנה שמאלה בפינה."
+- Buttons show: the tappable cells of a 3×3 schematic map (fixed positions, not shuffled); the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "⬆️ ahead" — no sentence id — ❌ wrong
+  2. "⬅️ station" — no sentence id — ✅ accepted
+  3. "➡️ right-street" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M05-Q38 — mini-map (step 25, round 4 of 5)
+
+- Prompt displayed: "What happened? Tap the map" / "מה קרה? הקש על המפה" — board, row by row: 🏦 bank | · | 📍 [tap:cafe] // 📍 [tap:station] | · | · // 🏠 | 🧍 | 📍 [tap:park]
+- Audio played: EN "It's next to the bank." · FR "C’est à côté de la banque." · ES "Está al lado del banco."
+- Meaning of the audio (HE): "זה ליד הבנק."
+- Buttons show: the tappable cells of a 3×3 schematic map (fixed positions, not shuffled); the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "📍 cafe" — no sentence id — ❌ wrong
+  2. "📍 station" — `reply.dir.next-to` — ✅ accepted
+  3. "📍 park" — no sentence id — ❌ wrong
+- Tests: reply.dir.next-to
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M05-Q39 — mini-map (step 25, round 5 of 5)
+
+- Prompt displayed: "What happened? Tap the map" / "מה קרה? הקש על המפה" — board, row by row: 📍 [tap:bank] | · | ☕ // 📍 [tap:station] | · | · // 🏠 | 🧍 [tap:start] | 🌳
+- Audio played: EN "we are here" · FR "nous sommes ici" · ES "estamos aquí"
+- Meaning of the audio (HE): "אנחנו כאן"
+- Buttons show: the tappable cells of a 3×3 schematic map (fixed positions, not shuffled); the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "📍 bank" — no sentence id — ❌ wrong
+  2. "📍 station" — no sentence id — ❌ wrong
+  3. "🧍 start" — no sentence id — ✅ accepted
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M05-Q40 — visual-match (step 26, round 1 of 1)
+
+- Prompt displayed: "How far was it?" / "כמה רחוק זה היה?"
+- Audio played: EN "No, it's about five minutes on foot." · FR "Non, c’est à environ cinq minutes à pied." · ES "No, está a unos cinco minutos a pie."
+- Meaning of the audio (HE): "לא, זה בערך חמש דקות ברגל."
+- Buttons show: a 3×3 board of 2 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "🚶 “~5 min on foot” / “~5 דק׳ ברגל”" — `reply.dir.five-minutes` — ✅ accepted
+  2. "🚶 “~20 min on foot” / “~20 דק׳ ברגל”" — no sentence id — ❌ wrong
+- Tests: reply.dir.five-minutes
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
 ## Dialogue — full tree
@@ -5364,7 +5708,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 
 ## Learner choice screens
 
-### M05-Q14 — dialogue-choice (step 12, scene "lost-in-town" · node c1)
+### M05-Q29 — dialogue-choice (step 20, scene "lost-in-town" · node c1)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "The station? Go straight ahead, then turn left at the corner." · FR "La gare ? Allez tout droit, puis tournez à gauche au coin." · ES "¿La estación? Siga todo recto y luego gire a la izquierda en la esquina."
@@ -5376,7 +5720,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.recovery.repeat, phrase.dir.is-it-far
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M05-Q15 — dialogue-choice (step 12, scene "lost-in-town" · node c1b)
+### M05-Q30 — dialogue-choice (step 20, scene "lost-in-town" · node c1b)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Straight… then… left… at the corner." · FR "Tout droit… puis… à gauche… au coin." · ES "Todo recto… luego… a la izquierda… en la esquina."
@@ -5387,7 +5731,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.dir.is-it-far
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M05-Q16 — dialogue-choice (step 12, scene "lost-in-town" · node c2)
+### M05-Q31 — dialogue-choice (step 20, scene "lost-in-town" · node c2)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "No, it's about five minutes on foot. It's next to the bank." · FR "Non, c’est à environ cinq minutes à pied. C’est à côté de la banque." · ES "No, está a unos cinco minutos a pie. Está al lado del banco."
@@ -5414,19 +5758,7 @@ None — no choice in this mission is marked wrong.
 
 ## Sentence review
 
-Step 14. 11 sentences, in this fixed order. Each is played automatically (TTS), shown with its translation and tip; buttons: 🔊 "Hear again" / "לשמוע שוב" and Next. No speaking prompt, no grading, no scoring; nothing is recorded.
-
-1. `phrase.dir.where-is` — Where is the station? — איפה התחנה?
-2. `phrase.dir.how-do-i-get` — How do I get to the beach? — איך מגיעים לחוף?
-3. `phrase.dir.is-it-far` — Is it far? — זה רחוק?
-4. `phrase.dir.show-me-map` — Can you show me on the map? — אתה יכול להראות לי על המפה?
-5. `reply.dir.left` — It's on the left. — זה בצד שמאל.
-6. `reply.dir.right` — It's on the right. — זה בצד ימין.
-7. `reply.dir.straight` — Go straight ahead. — לך ישר.
-8. `reply.dir.turn-left` — Turn left at the corner. — פנה שמאלה בפינה.
-9. `reply.dir.next-to` — It's next to the bank. — זה ליד הבנק.
-10. `reply.dir.five-minutes` — It's about five minutes on foot. — זה בערך חמש דקות ברגל.
-11. `phrase.recovery.repeat` — Can you repeat that? — אפשר לחזור על זה?
+No sentence-review step in this mission.
 
 ## Cold open / ambush
 
@@ -5443,41 +5775,38 @@ Learner sentences taught beside the dialogue (not a line in any scene):
 
 - `phrase.dir.excuse-me` — Excuse me!
 - `phrase.dir.where-is` — Where is the station?
-- `phrase.dir.how-do-i-get` — How do I get to the beach?
 
 ## Receipts (proof cards)
 
-- Step 7: "Left, right, straight, next to — you catch every direction in a sentence." / "שמאל, ימין, ישר, ליד — אתה מזהה כל כיוון במשפט."
-- Step 13: "You asked for directions, understood fast instructions, and arrived. Being lost isn’t scary anymore." / "שאלת דרך, הבנת הוראות מהירות, והגעת. ללכת לאיבוד כבר לא מפחיד."
-- Step 16: "A fast two-step instruction — and you found the right spot on the map." / "הוראה מהירה בשני שלבים — ומצאת את המקום הנכון על המפה."
+- Step 19: "You asked, you understood, and you walked the right way — all the way to the station." / "שאלת, הבנת, והלכת בדרך הנכונה — עד התחנה."
+- Step 21: "The whole conversation — from the question to “have a good day”. Without getting lost." / "כל השיחה — מהשאלה ועד "שיהיה יום טוב". בלי ללכת לאיבוד."
+- Step 23: "🚉 You reached the station — on your own." / "🚉 הגעת לתחנה — לבד."
+- Step 27: "🚉 You found the station. You asked, understood, walked — and arrived." / "🚉 מצאת את התחנה. שאלת, הבנת, הלכת — והגעת."
 
 ## Audit Metadata — DO NOT FIX YET
 
-- Learner-production sentences: 5
-- Receptive (expected-reply) sentences: 7
+- Learner-production sentences: 4
+- Receptive (expected-reply) sentences: 6
 - Toolkit phrases bundled: 2
-- Key-sentence steps: 3
-- Expected-reply/listening items: 4
-- Questions/quizzes (meaning quiz): 1
-- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 9
-- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 6
+- Key-sentence steps: 0
+- Expected-reply/listening items: 3
+- Questions/quizzes (meaning quiz): 0
+- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 34
+- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 9
 - One-button dialogue screens: 1
-- Learner sentences never actively retrieved: 1
+- Learner sentences never actively retrieved: 0
 - Dialogue learner choices (screens): 3
 - Wrong-answer branches: 0
 - Cold-open prompts: 0
 - Recovery opportunities: 1
-- Vocabulary pre-items: 6
+- Vocabulary pre-items: 24
 - Swap variants (extra accepted lines): 0
-- Sentences in review: 11
-- Total interactive questions: 17 (answer choices: 47)
-- Approximate total learner interactions: 32 (questions + key sentences + review cards + word-intro screen)
+- Sentences in review: 0
+- Total interactive questions: 40 (answer choices: 112)
+- Approximate total learner interactions: 41 (questions + key sentences + review cards + word-intro screen)
 
-### AUTO-FLAG — requires human review (5)
+### AUTO-FLAG — requires human review (2)
 
-- AUTO-FLAG — Practice item wording not in this mission's dialogue: `reply.dir.left` “It's on the left.” (drilled as an expected reply / distractor, but no NPC line here says it).
-- AUTO-FLAG — Practice item wording not in this mission's dialogue: `reply.dir.right` “It's on the right.” (drilled as an expected reply / distractor, but no NPC line here says it).
-- AUTO-FLAG — Learner sentence never actively retrieved in this mission (0 choice screens, 0 quick-reply / swap / match / builder rounds, 0 cold-open options): `phrase.dir.excuse-me` “Excuse me!” — appears in sentence review only (orphan in this mission).
 - AUTO-FLAG — 3 of 3 choice screens have NO wrong option (every button is accepted): lost-in-town/c1, lost-in-town/c1b, lost-in-town/c2.
 - AUTO-FLAG — 1 choice screens offer exactly ONE button (no decision): lost-in-town/c1b.
 
@@ -27787,7 +28116,7 @@ Every learner sentence of this mission is a line in a scene.
 | 02 Numbers & Money | 19 (5 / 12 / 2) | 5 | 5 | 0 | 36 | 4 | 1 | 2 | 0 | 8 words | 1 | 45 | 10 |
 | 03 Coffee Shop | 22 (7 / 11 / 4) | 5 | 5 | 0 | 44 | 11 | 5 | 3 | 0 | 18 words | 1 | 60 | 14 |
 | 04 Everyday Core: Want / Need / Have / Can | 19 (10 / 7 / 2) | 0 | 0 | 0 | 41 | 10 | 9 | 2 | 0 | 31 words | 0 | 51 | 2 |
-| 05 Directions | 14 (5 / 7 / 2) | 4 | 5 | 1 | 9 | 3 | 1 | 1 | 0 | 6 words | 0 | 17 | 5 |
+| 05 Directions | 12 (4 / 6 / 2) | 3 | 3 | 0 | 34 | 3 | 1 | 1 | 0 | 24 words | 0 | 40 | 2 |
 | 06 Airport & Border | 15 (5 / 6 / 4) | 4 | 4 | 0 | 11 | 10 | 5 | 3 | 0 | no | 0 | 25 | 4 |
 | 07 Taxi / Uber | 13 (5 / 5 / 3) | 4 | 4 | 0 | 11 | 5 | 2 | 2 | 0 | 5 words | 1 | 20 | 3 |
 | 08 Hotel Check-in | 14 (4 / 6 / 4) | 4 | 4 | 0 | 10 | 4 | 2 | 2 | 1 | 4 words | 0 | 19 | 7 |
@@ -27848,11 +28177,10 @@ Every learner-production sentence id of the Core, in order of first appearance. 
 | `phrase.core.i-cant` | Sorry, I can't. | 04 | — | 0 | 1 / 0 | 3 | 0 | 0 | no | no |  |
 | `phrase.core.i-know` | Yes, I know. | 04 | 30 | 0 | 0 / 1 | 1 | 0 | 0 | yes | no |  |
 | `phrase.core.can-you-help` | Can you help me? | 04 | 22 | 0 | 1 / 0 | 1 | 0 | 0 | no | no |  |
-| `phrase.dir.excuse-me` | Excuse me! | 05 | — | 0 | 0 / 0 | 0 | 0 | 0 | no | no | **0 active retrieval opportunities** |
-| `phrase.dir.where-is` | Where is the station? | 05 | — | 1 | 0 / 0 | 2 | 0 | 1 | no | no |  |
-| `phrase.dir.how-do-i-get` | How do I get to the beach? | 05 | — | 0 | 0 / 0 | 2 | 0 | 1 | no | no |  |
-| `phrase.dir.is-it-far` | Is it far? | 05 | — | 1 | 2 / 0 | 2 | 0 | 1 | no | no |  |
-| `phrase.dir.show-me-map` | Can you show me on the map? | 05 | — | 1 | 1 / 0 | 1 | 0 | 1 | no | no |  |
+| `phrase.dir.excuse-me` | Excuse me! | 05 | — | 0 | 0 / 0 | 1 | 0 | 0 | no | no |  |
+| `phrase.dir.where-is` | Where is the station? | 05 | — | 0 | 0 / 0 | 5 | 0 | 0 | no | no |  |
+| `phrase.dir.is-it-far` | Is it far? | 05 | — | 0 | 2 / 0 | 5 | 0 | 0 | no | no |  |
+| `phrase.dir.show-me-map` | Can you show me on the map? | 05 | — | 0 | 1 / 0 | 6 | 0 | 0 | no | no |  |
 | `phrase.border.passport-here` | Here is my passport. | 06 | — | 1 | 2 / 1 | 4 | 0 | 1 | no | no |  |
 | `phrase.border.on-holiday` | I'm here on holiday. | 06 | 10 | 1 | 3 / 2 | 5 | 0 | 1 | yes | no |  |
 | `phrase.border.two-weeks` | For two weeks. | 06 | 10, 29, 30 | 1 | 4 / 2 | 8 | 0 | 1 | yes | no |  |
@@ -27984,7 +28312,7 @@ Every learner-production sentence id of the Core, in order of first appearance. 
 | `phrase.emerg.call-police` | Call the police! | 27 | — | 1 | 0 / 0 | 4 | 0 | 1 | no | no |  |
 | `phrase.emerg.where-hospital` | Where is the hospital? | 27 | — | 0 | 0 / 0 | 2 | 0 | 0 | no | no |  |
 
-Learner-production sentence ids: 161. With 0 active retrieval opportunities: 1.
+Learner-production sentence ids: 160. With 0 active retrieval opportunities: 0.
 
 # NPC Comprehension Coverage
 
@@ -28032,13 +28360,12 @@ Every expected-reply sentence id. "Quick response" does not exist as an exercise
 | `reply.core.can-you-come` | Can you come? | 04 | — | no | 0 / 0 | 0 / 0 | no | yes |
 | `reply.core.you-can-walk` | You can walk. | 04 | — | no | 0 / 0 | 0 / 0 | no | yes |
 | `reply.core.wifi` | And the wifi password? | 04 | — | no | 0 / 0 | 0 / 0 | no | yes |
-| `reply.dir.left` | It's on the left. | 05 | — | yes (1) | 0 / 0 | 0 / 0 | no | **no** |
-| `reply.dir.right` | It's on the right. | 05 | — | yes (1) | 0 / 0 | 0 / 0 | no | **no** |
-| `reply.dir.straight` | Go straight ahead. | 05 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
+| `reply.dir.straight` | Go straight ahead. | 05 | — | no | 0 / 0 | 0 / 0 | no | yes |
 | `reply.dir.turn-left` | Turn left at the corner. | 05 | — | no | 0 / 0 | 0 / 0 | no | yes |
-| `reply.dir.next-to` | It's next to the bank. | 05 | — | yes (1) | 0 / 1 | 0 / 0 | no | yes |
-| `reply.dir.five-minutes` | It's about five minutes on foot. | 05 | — | no | 1 / 0 | 0 / 0 | no | yes |
-| `reply.dir.cant-miss` | You can't miss it. | 05 | — | no | 0 / 1 | 0 / 0 | no | yes |
+| `reply.dir.next-to` | It's next to the bank. | 05 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.dir.five-minutes` | No, it's about five minutes on foot. It's next to the bank. | 05 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
+| `reply.dir.cant-miss` | You can't miss it. Have a good day! | 05 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
+| `reply.dir.on-map` | Of course — here, we are here, and the station is right there. | 05 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
 | `reply.border.passport-please` | Passport, please. | 06 | — | no | 0 / 0 | 0 / 0 | no | **no** |
 | `reply.border.purpose` | What's the purpose of your visit? | 06 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
 | `reply.border.how-long` | How long are you staying? | 06 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
@@ -30034,89 +30361,158 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 
 ## Mission 05 — Directions
 
-**M05-Q01** — expected-reply
-- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (1/4)
-- Audio: It's on the left. — (זה בצד שמאל.)
-- A: זה בצד שמאל. / It's on the left. ✅
-- B: זה בצד ימין. / It's on the right.
-- C: לך ישר. / Go straight ahead.
-- Correct: It's on the left.
-- Tests: reply.dir.left
+**M05-Q01** — mini-map
+- Prompt: "The map — tap the place you hear" / "המפה — הקש על המקום ששמעת" — board, row by row: 🏦 [tap:bank] | · | ☕ [tap:cafe] // 🚉 [tap:station] | · | · // 🏠 | 🧍 | 🌳 [tap:park]
+- Audio: the station — (התחנה)
+- A: 🏦 bank
+- B: ☕ cafe
+- C: 🚉 station ✅
+- D: 🌳 park
+- Correct: 🚉 station
+- Tests: (no sentence id — not recorded)
 
-**M05-Q02** — expected-reply
-- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (2/4)
-- Audio: It's on the right. — (זה בצד ימין.)
-- A: זה בצד ימין. / It's on the right. ✅
-- B: זה בצד שמאל. / It's on the left.
-- C: לך ישר. / Go straight ahead.
-- Correct: It's on the right.
-- Tests: reply.dir.right
+**M05-Q02** — mini-map
+- Prompt: "The map — tap the place you hear" / "המפה — הקש על המקום ששמעת" — board, row by row: 🏦 [tap:bank] | · | ☕ [tap:cafe] // 🚉 [tap:station] | · | · // 🏠 | 🧍 | 🌳 [tap:park]
+- Audio: the bank — (הבנק)
+- A: 🏦 bank ✅
+- B: ☕ cafe
+- C: 🚉 station
+- D: 🌳 park
+- Correct: 🏦 bank
+- Tests: (no sentence id — not recorded)
 
-**M05-Q03** — expected-reply
-- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (3/4)
+**M05-Q03** — mini-map
+- Prompt: "Which way? Tap the way you hear" / "לאן? הקש על הדרך ששמעת" — board, row by row: 🏦 bank | · | ☕ // 🚉 station | ⬆️ [tap:corner] | · // ⬅️ [tap:house] | 🧍 | ➡️ [tap:park]
 - Audio: Go straight ahead. — (לך ישר.)
-- A: לך ישר. / Go straight ahead. ✅
-- B: זה בצד שמאל. / It's on the left.
-- C: זה בצד ימין. / It's on the right.
-- Correct: Go straight ahead.
+- A: ⬆️ corner ✅
+- B: ⬅️ house
+- C: ➡️ park
+- Correct: ⬆️ corner
 - Tests: reply.dir.straight
 
-**M05-Q04** — expected-reply
-- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (4/4)
-- Audio: It's next to the bank. — (זה ליד הבנק.)
-- A: זה ליד הבנק. / It's next to the bank. ✅
-- B: זה בצד שמאל. / It's on the left.
-- C: זה בצד ימין. / It's on the right.
-- Correct: It's next to the bank.
-- Tests: reply.dir.next-to
+**M05-Q04** — mini-map
+- Prompt: "Which way? Tap the way you hear" / "לאן? הקש על הדרך ששמעת" — board, row by row: 🏦 bank | 📍 [tap:ahead] | ☕ // 🚉 station | 📍 [tap:corner] | 📍 [tap:right-street] // 🏠 | 🧍 | 🌳
+- Audio: at the corner — (בפינה)
+- A: 📍 ahead
+- B: 📍 corner ✅
+- C: 📍 right-street
+- Correct: 📍 corner
+- Tests: (no sentence id — not recorded)
 
 **M05-Q05** — mini-map
-- Prompt: "Tap where to go" / "הקש לאן הולכים" — board, row by row: ☕ café | ⬆️ [tap:straight] | · // ⬅️ [tap:left] | · | ➡️ [tap:right] // 🏦 bank | 🧍 | 🏨 hotel
-- Audio: Go straight ahead. — (לך ישר.)
-- A: ⬆️ straight ✅
-- B: ⬅️ left
-- C: ➡️ right
-- Correct: ⬆️ straight
-- Tests: reply.dir.straight
-
-**M05-Q06** — mini-map
-- Prompt: "Tap where to go" / "הקש לאן הולכים" — board, row by row: ☕ café | ⬆️ [tap:straight] | · // ⬅️ [tap:left] | · | ➡️ [tap:right] // 🏦 bank | 🧍 | 🏨 hotel
+- Prompt: "Which way? Tap the way you hear" / "לאן? הקש על הדרך ששמעת" — board, row by row: 🏦 bank | ⬆️ [tap:ahead] | ☕ // ⬅️ [tap:station] | 🧍 | ➡️ [tap:right-street] // 🏠 | · | 🌳
 - Audio: Turn left at the corner. — (פנה שמאלה בפינה.)
-- A: ⬆️ straight
-- B: ⬅️ left ✅
-- C: ➡️ right
-- Correct: ⬅️ left
+- A: ⬆️ ahead
+- B: ⬅️ station ✅
+- C: ➡️ right-street
+- Correct: ⬅️ station
 - Tests: reply.dir.turn-left
 
+**M05-Q06** — mini-map
+- Prompt: "Follow the directions — one step at a time" / "עקוב אחרי ההוראות — צעד אחר צעד" — board, row by row: 🏦 bank | · | ☕ // 🚉 station | ⬆️ [tap:corner] | · // ⬅️ [tap:house] | 🧍 | ➡️ [tap:park]
+- Audio: The station? Go straight ahead, then turn left at the corner. — (התחנה? לך ישר, ואז פנה שמאלה בפינה.)
+- A: ⬆️ corner ✅
+- B: ⬅️ house
+- C: ➡️ park
+- Correct: ⬆️ corner
+- Tests: (no sentence id — not recorded)
+
 **M05-Q07** — mini-map
-- Prompt: "Tap where to go" / "הקש לאן הולכים" — board, row by row: ☕ café | ⬆️ [tap:straight] | · // ⬅️ [tap:left] | · | ➡️ [tap:right] // 🏦 bank | 🧍 | 🏨 hotel
-- Audio: It's on the right. — (זה בצד ימין.)
-- A: ⬆️ straight
-- B: ⬅️ left
-- C: ➡️ right ✅
-- Correct: ➡️ right
-- Tests: reply.dir.right
+- Prompt: "Follow the directions — one step at a time" / "עקוב אחרי ההוראות — צעד אחר צעד" — board, row by row: 🏦 bank | ⬆️ [tap:ahead] | ☕ // ⬅️ [tap:station] | 🧍 | ➡️ [tap:right-street] // 🏠 | · | 🌳
+- Audio: The station? Go straight ahead, then turn left at the corner. — (התחנה? לך ישר, ואז פנה שמאלה בפינה.)
+- A: ⬆️ ahead
+- B: ⬅️ station ✅
+- C: ➡️ right-street
+- Correct: ⬅️ station
+- Tests: (no sentence id — not recorded)
 
-**M05-Q08** — mini-map
-- Prompt: "Tap where to go" / "הקש לאן הולכים" — board, row by row: ☕ café | 📍 [tap:straight] | · // 📍 [tap:left] | · | 📍 [tap:right] // 🏦 bank | 🧍 | 🏨 hotel
-- Audio: It's next to the bank. — (זה ליד הבנק.)
-- A: 📍 straight
-- B: 📍 left ✅
-- C: 📍 right
-- Correct: 📍 left
-- Tests: reply.dir.next-to
-
-**M05-Q09** — meaning-quiz
-- Prompt: "What did it mean?" / "מה זה אומר?"
-- Audio: It's about five minutes on foot. — (זה בערך חמש דקות ברגל.)
-- A: זה בערך חמש דקות ברגל. / It's about five minutes on foot. ✅
-- B: זה ליד הבנק. / It's next to the bank.
-- C: אי אפשר לפספס. / You can't miss it.
-- Correct: It's about five minutes on foot.
+**M05-Q08** — visual-match
+- Prompt: "How far? Tap what you hear" / "כמה רחוק? הקש על מה ששמעת"
+- Audio: No, it's about five minutes on foot. — (לא, זה בערך חמש דקות ברגל.)
+- A: 🚶 “~5 min on foot” / “~5 דק׳ ברגל” ✅
+- B: 🚶 “~20 min on foot” / “~20 דק׳ ברגל”
+- Correct: 🚶 “~5 min on foot” / “~5 דק׳ ברגל”
 - Tests: reply.dir.five-minutes
 
-**M05-Q10** — quick-reply
-- Prompt: "What do you say here?" / "מה אומרים כאן?" — situation shown: "You are lost and looking for the station. You stop someone in the street." / "אתה אבוד ומחפש את התחנה. פונים למישהו ברחוב."
+**M05-Q09** — mini-map
+- Prompt: "Where is the station? Tap the spot" / "איפה התחנה? הקש על המקום" — board, row by row: 🏦 bank | · | 📍 [tap:cafe] // 📍 [tap:station] | · | · // 🏠 | 🧍 | 📍 [tap:park]
+- Audio: It's next to the bank. — (זה ליד הבנק.)
+- A: 📍 cafe
+- B: 📍 station ✅
+- C: 📍 park
+- Correct: 📍 station
+- Tests: reply.dir.next-to
+
+**M05-Q10** — mini-map
+- Prompt: "Here or there? Tap the spot" / "כאן או שם? הקש על המקום" — board, row by row: 📍 [tap:bank] | · | ☕ // 📍 [tap:station] | · | · // 🏠 | 🧍 [tap:start] | 🌳
+- Audio: we are here — (אנחנו כאן)
+- A: 📍 bank
+- B: 📍 station
+- C: 🧍 start ✅
+- Correct: 🧍 start
+- Tests: (no sentence id — not recorded)
+
+**M05-Q11** — mini-map
+- Prompt: "Here or there? Tap the spot" / "כאן או שם? הקש על המקום" — board, row by row: 📍 [tap:bank] | · | ☕ // 📍 [tap:station] | · | · // 🏠 | 🧍 [tap:start] | 🌳
+- Audio: the station is right there — (התחנה בדיוק שם)
+- A: 📍 bank
+- B: 📍 station ✅
+- C: 🧍 start
+- Correct: 📍 station
+- Tests: (no sentence id — not recorded)
+
+**M05-Q12** — sentence-builder
+- Prompt: "Build the sentence" / "בנה את המשפט" — cue shown: the sentence's MEANING in the app language ("איפה התחנה?")
+- Audio: (nothing before Check; the built sentence is spoken once it is right) — ()
+- A: Where  |  is  |  the station? ✅
+- Correct: Where  |  is  |  the station?
+- Tests: phrase.dir.where-is
+
+**M05-Q13** — sentence-builder
+- Prompt: "Build the sentence" / "בנה את המשפט" — cue shown: the sentence's MEANING in the app language ("אתה יכול להראות לי על המפה?")
+- Audio: (nothing before Check; the built sentence is spoken once it is right) — ()
+- A: Can you  |  show me  |  on the map? ✅
+- Correct: Can you  |  show me  |  on the map?
+- Tests: phrase.dir.show-me-map
+
+**M05-Q14** — expected-reply
+- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (1/3)
+- Audio: No, it's about five minutes on foot. It's next to the bank. — (לא, זה בערך חמש דקות ברגל. זה ליד הבנק.)
+- A: לא, זה בערך חמש דקות ברגל. זה ליד הבנק. / No, it's about five minutes on foot. It's next to the bank. ✅
+- B: כמובן — הנה, אנחנו כאן, והתחנה בדיוק שם. / Of course — here, we are here, and the station is right there.
+- C: אי אפשר לפספס. שיהיה יום טוב! / You can't miss it. Have a good day!
+- Correct: No, it's about five minutes on foot. It's next to the bank.
+- Tests: reply.dir.five-minutes
+
+**M05-Q15** — expected-reply
+- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (2/3)
+- Audio: Of course — here, we are here, and the station is right there. — (כמובן — הנה, אנחנו כאן, והתחנה בדיוק שם.)
+- A: כמובן — הנה, אנחנו כאן, והתחנה בדיוק שם. / Of course — here, we are here, and the station is right there. ✅
+- B: לא, זה בערך חמש דקות ברגל. זה ליד הבנק. / No, it's about five minutes on foot. It's next to the bank.
+- C: אי אפשר לפספס. שיהיה יום טוב! / You can't miss it. Have a good day!
+- Correct: Of course — here, we are here, and the station is right there.
+- Tests: reply.dir.on-map
+
+**M05-Q16** — expected-reply
+- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (3/3)
+- Audio: You can't miss it. Have a good day! — (אי אפשר לפספס. שיהיה יום טוב!)
+- A: אי אפשר לפספס. שיהיה יום טוב! / You can't miss it. Have a good day! ✅
+- B: לא, זה בערך חמש דקות ברגל. זה ליד הבנק. / No, it's about five minutes on foot. It's next to the bank.
+- C: כמובן — הנה, אנחנו כאן, והתחנה בדיוק שם. / Of course — here, we are here, and the station is right there.
+- Correct: You can't miss it. Have a good day!
+- Tests: reply.dir.cant-miss
+
+**M05-Q17** — quick-reply
+- Prompt: "What do you say?" / "מה אתה אומר?" — situation shown: "Someone is walking past. You want to stop them politely." / "מישהי עוברת ברחוב. אתה רוצה לעצור אותה בנימוס."
+- Audio: (nothing is played — a situation is shown) — ()
+- A: Excuse me! ✅
+- B: Is it far?
+- C: Can you show me on the map?
+- Correct: Excuse me!
+- Tests: phrase.dir.excuse-me
+
+**M05-Q18** — quick-reply
+- Prompt: "What do you say?" / "מה אתה אומר?" — situation shown: "You need the station and do not know the way. You stop a woman in the street." / "אתה מחפש את התחנה ולא יודע איך להגיע. פונים לאישה ברחוב."
 - Audio: (nothing is played — a situation is shown) — ()
 - A: Excuse me! Where is the station? ✅
 - B: Is it far?
@@ -30124,34 +30520,97 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Correct: Excuse me! Where is the station?
 - Tests: phrase.dir.where-is
 
-**M05-Q11** — quick-reply
-- Prompt: "What do you say?" / "מה עונים?"
-- Audio: Go straight ahead, then turn left at the corner. — (לך ישר, ואז פנה שמאלה בפינה.)
-- A: Can you repeat that? ✅
-- B: Is it far? ✅
-- C: Where is the station?
-- Correct: Can you repeat that? | Is it far?
-- Tests: phrase.recovery.repeat, phrase.dir.is-it-far
+**M05-Q19** — quick-reply
+- Prompt: "What do you say?" / "מה אתה אומר?"
+- Audio: The station? Go straight ahead, then turn left at the corner. — (התחנה? לך ישר, ואז פנה שמאלה בפינה.)
+- A: Is it far? ✅
+- B: Where is the station?
+- C: Can you show me on the map?
+- Correct: Is it far?
+- Tests: phrase.dir.is-it-far
 
-**M05-Q12** — swap-it
-- Prompt: "Finish the sentence" / "השלם את המשפט" — cue 🏖️ "You want to get to the beach" / "אתה רוצה להגיע לחוף" — frame EN "How do I get to ___?" · FR "Comment aller ___ ?" · ES "¿Cómo se llega ___?"
-- Audio: (nothing before the tap; the completed sentence is spoken after it) — ()
-- A: the beach → How do I get to the beach? ✅
-- B: the station → How do I get to the station?
-- C: the bank → How do I get to the bank?
-- Correct: the beach → How do I get to the beach?
-- Tests: phrase.dir.how-do-i-get
+**M05-Q20** — quick-reply
+- Prompt: "What do you say?" / "מה אתה אומר?" — situation shown: "Your bag is heavy. Before you set off, you want to know if it is far." / "התיק שלך כבד. לפני שאתה יוצא לדרך — אתה רוצה לדעת אם זה רחוק."
+- Audio: (nothing is played — a situation is shown) — ()
+- A: Is it far? ✅
+- B: Where is the station?
+- C: Can you show me on the map?
+- Correct: Is it far?
+- Tests: phrase.dir.is-it-far
 
-**M05-Q13** — swap-it
-- Prompt: "Finish the sentence" / "השלם את המשפט" — cue 🏦 "You want to get to the bank" / "אתה רוצה להגיע לבנק" — frame EN "How do I get to ___?" · FR "Comment aller ___ ?" · ES "¿Cómo se llega ___?"
-- Audio: (nothing before the tap; the completed sentence is spoken after it) — ()
-- A: the bank → How do I get to the bank? ✅
-- B: the beach → How do I get to the beach?
-- C: the station → How do I get to the station?
-- Correct: the bank → How do I get to the bank?
-- Tests: phrase.dir.how-do-i-get
+**M05-Q21** — quick-reply
+- Prompt: "What do you say?" / "מה אתה אומר?"
+- Audio: No, it's about five minutes on foot. It's next to the bank. — (לא, זה בערך חמש דקות ברגל. זה ליד הבנק.)
+- A: Can you show me on the map? ✅
+- B: Where is the station?
+- C: Is it far?
+- Correct: Can you show me on the map?
+- Tests: phrase.dir.show-me-map
 
-**M05-Q14** — dialogue-choice
+**M05-Q22** — mini-map
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה." — board, row by row: 🏦 bank | 📍 [tap:ahead] | ☕ // 🚉 station | 📍 [tap:corner] | 📍 [tap:right-street] // 🏠 | 🧍 | 🌳
+- Audio: at the corner — (בפינה)
+- A: 📍 ahead
+- B: 📍 corner ✅
+- C: 📍 right-street
+- Correct: 📍 corner
+- Tests: (no sentence id — not recorded)
+
+**M05-Q23** — mini-map
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה." — board, row by row: 🏦 bank | · | 📍 [tap:cafe] // 📍 [tap:station] | · | · // 🏠 | 🧍 | 📍 [tap:park]
+- Audio: It's next to the bank. — (זה ליד הבנק.)
+- A: 📍 cafe
+- B: 📍 station ✅
+- C: 📍 park
+- Correct: 📍 station
+- Tests: (no sentence id — not recorded)
+
+**M05-Q24** — mini-map
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה." — board, row by row: 📍 [tap:bank] | · | ☕ // 📍 [tap:station] | · | · // 🏠 | 🧍 [tap:start] | 🌳
+- Audio: we are here — (אנחנו כאן)
+- A: 📍 bank
+- B: 📍 station
+- C: 🧍 start ✅
+- Correct: 🧍 start
+- Tests: (no sentence id — not recorded)
+
+**M05-Q25** — mini-map
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה." — board, row by row: 📍 [tap:bank] | · | ☕ // 📍 [tap:station] | · | · // 🏠 | 🧍 [tap:start] | 🌳
+- Audio: the station is right there — (התחנה בדיוק שם)
+- A: 📍 bank
+- B: 📍 station ✅
+- C: 🧍 start
+- Correct: 📍 station
+- Tests: (no sentence id — not recorded)
+
+**M05-Q26** — mini-map
+- Prompt: "The whole way — one instruction after another" / "כל הדרך — הוראה אחרי הוראה" — board, row by row: 🏦 bank | · | ☕ // 🚉 station | ⬆️ [tap:corner] | · // ⬅️ [tap:house] | 🧍 | ➡️ [tap:park]
+- Audio: Go straight ahead. — (לך ישר.)
+- A: ⬆️ corner ✅
+- B: ⬅️ house
+- C: ➡️ park
+- Correct: ⬆️ corner
+- Tests: (no sentence id — not recorded)
+
+**M05-Q27** — mini-map
+- Prompt: "The whole way — one instruction after another" / "כל הדרך — הוראה אחרי הוראה" — board, row by row: 🏦 bank | ⬆️ [tap:ahead] | ☕ // ⬅️ [tap:station] | 🧍 | ➡️ [tap:right-street] // 🏠 | · | 🌳
+- Audio: Turn left at the corner. — (פנה שמאלה בפינה.)
+- A: ⬆️ ahead
+- B: ⬅️ station ✅
+- C: ➡️ right-street
+- Correct: ⬅️ station
+- Tests: (no sentence id — not recorded)
+
+**M05-Q28** — mini-map
+- Prompt: "The whole way — one instruction after another" / "כל הדרך — הוראה אחרי הוראה" — board, row by row: 🏦 bank | · | 📍 [tap:cafe] // 📍 [tap:station] | 🧍 | · // 🏠 | · | 📍 [tap:park]
+- Audio: It's next to the bank. — (זה ליד הבנק.)
+- A: 📍 cafe
+- B: 📍 station ✅
+- C: 📍 park
+- Correct: 📍 station
+- Tests: (no sentence id — not recorded)
+
+**M05-Q29** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: The station? Go straight ahead, then turn left at the corner. — (התחנה? לך ישר, ואז פנה שמאלה בפינה.)
 - A: Can you repeat that? ✅
@@ -30159,14 +30618,14 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Correct: Can you repeat that? | Is it far?
 - Tests: phrase.recovery.repeat, phrase.dir.is-it-far
 
-**M05-Q15** — dialogue-choice
+**M05-Q30** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Straight… then… left… at the corner. — (ישר… ואז… שמאלה… בפינה.)
 - A: Is it far? ✅
 - Correct: Is it far?
 - Tests: phrase.dir.is-it-far
 
-**M05-Q16** — dialogue-choice
+**M05-Q31** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: No, it's about five minutes on foot. It's next to the bank. — (לא, זה בערך חמש דקות ברגל. זה ליד הבנק.)
 - A: Can you show me on the map? ✅
@@ -30174,14 +30633,85 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Correct: Can you show me on the map? | Thank you!
 - Tests: phrase.dir.show-me-map, phrase.recovery.thank-you
 
-**M05-Q17** — mini-map
-- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה." — board, row by row: ☕ café | 📍 [tap:straight] | · // 📍 [tap:left] | · | 📍 [tap:right] // 🏨 hotel | 🧍 | 🏦 bank
-- Audio: Go straight, then turn right. It's next to the bank. — (לך ישר, ואז פנה ימינה. זה ליד הבנק.)
-- A: 📍 straight
-- B: 📍 left
-- C: 📍 right ✅
-- Correct: 📍 right
+**M05-Q32** — mini-map
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה." — board, row by row: 🏦 bank | · | ☕ // 🚉 station | ⬆️ [tap:corner] | · // ⬅️ [tap:house] | 🧍 | ➡️ [tap:park]
+- Audio: The station? Go straight ahead, then turn left at the corner. — (התחנה? לך ישר, ואז פנה שמאלה בפינה.)
+- A: ⬆️ corner ✅
+- B: ⬅️ house
+- C: ➡️ park
+- Correct: ⬆️ corner
 - Tests: (no sentence id — not recorded)
+
+**M05-Q33** — mini-map
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה." — board, row by row: 🏦 bank | ⬆️ [tap:ahead] | ☕ // ⬅️ [tap:station] | 🧍 | ➡️ [tap:right-street] // 🏠 | · | 🌳
+- Audio: The station? Go straight ahead, then turn left at the corner. — (התחנה? לך ישר, ואז פנה שמאלה בפינה.)
+- A: ⬆️ ahead
+- B: ⬅️ station ✅
+- C: ➡️ right-street
+- Correct: ⬅️ station
+- Tests: (no sentence id — not recorded)
+
+**M05-Q34** — mini-map
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה." — board, row by row: 🏦 bank | · | 📍 [tap:cafe] // 📍 [tap:station] | 🧍 | · // 🏠 | · | 📍 [tap:park]
+- Audio: No, it's about five minutes on foot. It's next to the bank. — (לא, זה בערך חמש דקות ברגל. זה ליד הבנק.)
+- A: 📍 cafe
+- B: 📍 station ✅
+- C: 📍 park
+- Correct: 📍 station
+- Tests: (no sentence id — not recorded)
+
+**M05-Q35** — mini-map
+- Prompt: "What happened? Tap the map" / "מה קרה? הקש על המפה" — board, row by row: 📍 [tap:bank] | · | 📍 [tap:cafe] // 📍 [tap:station] | · | · // 🏠 | 🧍 | 🌳
+- Audio: Excuse me! Where is the station? — (סליחה! איפה התחנה?)
+- A: 📍 bank
+- B: 📍 cafe
+- C: 📍 station ✅
+- Correct: 📍 station
+- Tests: phrase.dir.where-is
+
+**M05-Q36** — mini-map
+- Prompt: "What happened? Tap the map" / "מה קרה? הקש על המפה" — board, row by row: 🏦 bank | · | ☕ // 🚉 station | ⬆️ [tap:corner] | · // ⬅️ [tap:house] | 🧍 | ➡️ [tap:park]
+- Audio: The station? Go straight ahead, then turn left at the corner. — (התחנה? לך ישר, ואז פנה שמאלה בפינה.)
+- A: ⬆️ corner ✅
+- B: ⬅️ house
+- C: ➡️ park
+- Correct: ⬆️ corner
+- Tests: (no sentence id — not recorded)
+
+**M05-Q37** — mini-map
+- Prompt: "What happened? Tap the map" / "מה קרה? הקש על המפה" — board, row by row: 🏦 bank | ⬆️ [tap:ahead] | ☕ // ⬅️ [tap:station] | 🧍 | ➡️ [tap:right-street] // 🏠 | · | 🌳
+- Audio: The station? Go straight ahead, then turn left at the corner. — (התחנה? לך ישר, ואז פנה שמאלה בפינה.)
+- A: ⬆️ ahead
+- B: ⬅️ station ✅
+- C: ➡️ right-street
+- Correct: ⬅️ station
+- Tests: (no sentence id — not recorded)
+
+**M05-Q38** — mini-map
+- Prompt: "What happened? Tap the map" / "מה קרה? הקש על המפה" — board, row by row: 🏦 bank | · | 📍 [tap:cafe] // 📍 [tap:station] | · | · // 🏠 | 🧍 | 📍 [tap:park]
+- Audio: It's next to the bank. — (זה ליד הבנק.)
+- A: 📍 cafe
+- B: 📍 station ✅
+- C: 📍 park
+- Correct: 📍 station
+- Tests: reply.dir.next-to
+
+**M05-Q39** — mini-map
+- Prompt: "What happened? Tap the map" / "מה קרה? הקש על המפה" — board, row by row: 📍 [tap:bank] | · | ☕ // 📍 [tap:station] | · | · // 🏠 | 🧍 [tap:start] | 🌳
+- Audio: we are here — (אנחנו כאן)
+- A: 📍 bank
+- B: 📍 station
+- C: 🧍 start ✅
+- Correct: 🧍 start
+- Tests: (no sentence id — not recorded)
+
+**M05-Q40** — visual-match
+- Prompt: "How far was it?" / "כמה רחוק זה היה?"
+- Audio: No, it's about five minutes on foot. — (לא, זה בערך חמש דקות ברגל.)
+- A: 🚶 “~5 min on foot” / “~5 דק׳ ברגל” ✅
+- B: 🚶 “~20 min on foot” / “~20 דק׳ ברגל”
+- Correct: 🚶 “~5 min on foot” / “~5 דק׳ ברגל”
+- Tests: reply.dir.five-minutes
 
 ## Mission 06 — Airport & Border
 
@@ -35318,17 +35848,17 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 # Totals
 
 - Missions exported: 30
-- Learner-production sentence ids: 161
-- Expected-reply (receptive) sentence ids: 157
-- Sentence listings across missions (with reuse): 526
-- Expected-reply questions: 100
-- Meaning quizzes: 7
-- Active-practice questions: 418
+- Learner-production sentence ids: 160
+- Expected-reply (receptive) sentence ids: 156
+- Sentence listings across missions (with reuse): 524
+- Expected-reply questions: 99
+- Meaning quizzes: 6
+- Active-practice questions: 443
 - Dialogue choice screens: 271
 - Cold opens: 11
-- Total interactive questions: 807
-- Total answer choices: 2160
+- Total interactive questions: 830
+- Total answer choices: 2225
 - Wrong-answer branches: 94
 - Recovery opportunities: 56
-- Learner sentences with 0 active retrieval opportunities: 1
-- Auto-flags: 211
+- Learner sentences with 0 active retrieval opportunities: 0
+- Auto-flags: 208

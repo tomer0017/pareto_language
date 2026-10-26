@@ -30,6 +30,9 @@ export const RETIRED_SENTENCES: Record<'en' | 'fr' | 'es', RetiredSentence[]> = 
     { id: 'en.phrase.coffee.to-go', text: 'To go, please.', meaning: T('לקחת, בבקשה.', 'To go, please.'), retiredFrom: 'coffee-shop', reason: 'Not in the coffee-shop conversation; the Mission 03 pass stopped teaching it, so nothing may use it as taught.' },
     { id: 'en.reply.coffee.hot-or-iced', text: 'Hot or iced?', meaning: T('חם או קר?', 'Hot or iced?'), retiredFrom: 'coffee-shop', reason: 'Not in the coffee-shop conversation; never practised.' },
     { id: 'en.reply.coffee.here-or-to-go', text: 'For here or to go?', meaning: T('לשבת כאן או לקחת?', 'For here or to go?'), retiredFrom: 'coffee-shop', reason: 'Not in the coffee-shop conversation; no longer practised after the Mission 03 pass.' },
+    { id: 'en.reply.dir.left', text: "It's on the left.", meaning: T('זה בצד שמאל.', "It's on the left."), retiredFrom: 'directions', reason: 'Not in the directions conversation (it says "turn left at the corner"); no longer practised.' },
+    { id: 'en.reply.dir.right', text: "It's on the right.", meaning: T('זה בצד ימין.', "It's on the right."), retiredFrom: 'directions', reason: '"Right" is not in the directions conversation; it is no longer taught as a word.' },
+    { id: 'en.phrase.dir.how-do-i-get', text: 'How do I get to the beach?', meaning: T('איך מגיעים לחוף?', 'How do I get to the beach?'), retiredFrom: 'directions', reason: 'Off the directions conversation (the beach); no longer practised.' },
   ],
   fr: [
     { id: 'fr.phrase.hotel.two-nights', text: 'Pour deux nuits.', meaning: T('לשני לילות.', 'For two nights.'), tip: T('תבנית: Pour ___ nuits — משך השהות.', 'Template: Pour ___ nuits — the length of your stay.'), retiredFrom: 'hotel-check-in', reason: "Not part of the check-in conversation; no longer taught or practised." },
@@ -42,6 +45,9 @@ export const RETIRED_SENTENCES: Record<'en' | 'fr' | 'es', RetiredSentence[]> = 
     { id: 'fr.phrase.coffee.to-go', text: 'À emporter, s’il vous plaît.', meaning: T('לקחת, בבקשה.', 'To go, please.'), retiredFrom: 'coffee-shop', reason: 'Not in the coffee-shop conversation; the Mission 03 pass stopped teaching it, so nothing may use it as taught.' },
     { id: 'fr.reply.coffee.hot-or-iced', text: 'Chaud ou glacé ?', meaning: T('חם או קר?', 'Hot or iced?'), retiredFrom: 'coffee-shop', reason: 'Not in the coffee-shop conversation; never practised.' },
     { id: 'fr.reply.coffee.here-or-to-go', text: 'Sur place ou à emporter ?', meaning: T('לשבת כאן או לקחת?', 'For here or to go?'), retiredFrom: 'coffee-shop', reason: 'Not in the coffee-shop conversation; no longer practised after the Mission 03 pass.' },
+    { id: 'fr.reply.dir.left', text: 'C’est à gauche.', meaning: T('זה בצד שמאל.', "It's on the left."), retiredFrom: 'directions', reason: 'Not in the directions conversation (it says "turn left at the corner"); no longer practised.' },
+    { id: 'fr.reply.dir.right', text: 'C’est à droite.', meaning: T('זה בצד ימין.', "It's on the right."), retiredFrom: 'directions', reason: '"Right" is not in the directions conversation; it is no longer taught as a word.' },
+    { id: 'fr.phrase.dir.how-do-i-get', text: 'Comment aller à la plage ?', meaning: T('איך מגיעים לחוף?', 'How do I get to the beach?'), retiredFrom: 'directions', reason: 'Off the directions conversation (the beach); no longer practised.' },
   ],
   es: [
     { id: 'es.phrase.hotel.two-nights', text: 'Para dos noches.', meaning: T('לשני לילות.', 'For two nights.'), tip: T('תבנית: Para ___ noches — משך השהות.', 'Template: Para ___ noches — the length of your stay.'), retiredFrom: 'hotel-check-in', reason: "Not part of the check-in conversation; no longer taught or practised." },
@@ -54,5 +60,8 @@ export const RETIRED_SENTENCES: Record<'en' | 'fr' | 'es', RetiredSentence[]> = 
     { id: 'es.phrase.coffee.to-go', text: 'Para llevar, por favor.', meaning: T('לקחת, בבקשה.', 'To go, please.'), retiredFrom: 'coffee-shop', reason: 'Not in the coffee-shop conversation; the Mission 03 pass stopped teaching it, so nothing may use it as taught.' },
     { id: 'es.reply.coffee.hot-or-iced', text: '¿Caliente o con hielo?', meaning: T('חם או קר?', 'Hot or iced?'), retiredFrom: 'coffee-shop', reason: 'Not in the coffee-shop conversation; never practised.' },
     { id: 'es.reply.coffee.here-or-to-go', text: '¿Para aquí o para llevar?', meaning: T('לשבת כאן או לקחת?', 'For here or to go?'), retiredFrom: 'coffee-shop', reason: 'Not in the coffee-shop conversation; no longer practised after the Mission 03 pass.' },
+    { id: 'es.reply.dir.left', text: 'Está a la izquierda.', meaning: T('זה בצד שמאל.', "It's on the left."), retiredFrom: 'directions', reason: 'Not in the directions conversation (it says "turn left at the corner"); no longer practised.' },
+    { id: 'es.reply.dir.right', text: 'Está a la derecha.', meaning: T('זה בצד ימין.', "It's on the right."), retiredFrom: 'directions', reason: '"Right" is not in the directions conversation; it is no longer taught as a word.' },
+    { id: 'es.phrase.dir.how-do-i-get', text: '¿Cómo se llega a la playa?', meaning: T('איך מגיעים לחוף?', 'How do I get to the beach?'), retiredFrom: 'directions', reason: 'Off the directions conversation (the beach); no longer practised.' },
   ],
 };

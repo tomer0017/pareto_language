@@ -22,6 +22,27 @@ loop (typecheck → lint → tests → build → smoke) green at every milestone
 
 ## What's done
 
+### Mission 05 — Directions: the full learning flow, one town (2026-10-26)
+
+The conversation is LOCKED (dialogue trees byte-identical, tested). The mission is rebuilt around ONE
+canonical town (`M05_TOWN` in `practiceV1.ts`, 3×3: bank · ahead · café / station · corner · street
+to the right / house · start · park) and ONE route (`M05_ROUTE`: straight to the corner, then left to
+the station, which is next to the bank). Every map round is drawn from it by `town(you, taps)`.
+Tappable places carry no word. "Right" is never taught: the street to the right is only an arrow.
+
+The flow: Step 0 building blocks (station, straight, left, corner, far, five minutes on foot, next to,
+bank; builds "Where is…?") → picture cards (the town / which way / is it far / on the map / the
+goodbye), each followed by its map game (find the places → each instruction → the route → 5 vs 20
+minutes on foot → next to the bank → here / there) → two builders (Where is the station? / Can you
+show me on the map?) → listening drill → Quick Reply with only the traveller's own lines (excuse me,
+where is, is it far, show me on the map; no recovery phrases) → listen & point → the whole way → the
+conversation → no help → video → final map gate ending "You found the station". 37 interactions.
+
+Image slots are ready (`M05_SLOTS`, 19 semantic slots, all placeholders for now: `image` unset). Items
+for left/right/"How do I get to…" are retired (`retired.ts`). Coverage: `mission05Coverage.ts`, all 16
+chunks COVERED in EN / ES / FR. Strict teach-before-test audit, the one-town / route / adjacency
+checks and the M01–M04 hashes live in `mission05.test.ts`.
+
 ### Replay the mission video at any time (2026-10-26)
 The overview's Watch step is tappable during a mission in progress (it was a shortcut only after
 completion), and "continue" under the video resumes the EXACT saved step mid-mission (it used to

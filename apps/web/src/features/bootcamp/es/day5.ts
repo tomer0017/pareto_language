@@ -16,19 +16,17 @@ export const DAY5_ES_ITEMS: BootcampItem[] = [
     tip: T('פותח כל פנייה לזר ברחוב.', 'Opens any approach to a stranger on the street.') },
   { id: 'es.phrase.dir.where-is', text: '¿Dónde está la estación?', meaning: T('איפה התחנה?', 'Where is the station?'),
     tip: T('תבנית: ¿Dónde está ___ ? — התחנה, השירותים, המלון.', 'Template: ¿Dónde está ___ ? — the station, the bathroom, the hotel.') },
-  { id: 'es.phrase.dir.how-do-i-get', text: '¿Cómo se llega a la playa?', meaning: T('איך מגיעים לחוף?', 'How do I get to the beach?') },
   { id: 'es.phrase.dir.is-it-far', text: '¿Está lejos?', meaning: T('זה רחוק?', 'Is it far?'),
     tip: T('שתי מילים שמחליטות: ללכת ברגל או לקחת מונית.', 'Two words that decide: walk or take a taxi.') },
   { id: 'es.phrase.dir.show-me-map', text: '¿Me lo puede mostrar en el mapa?', meaning: T('אתה יכול להראות לי על המפה?', 'Can you show me on the map?'),
     tip: T('כשמילים לא מספיקות — עוברים לעיניים.', 'When words aren’t enough — switch to eyes.') },
   // hear — the direction answers (this is the whole mission)
-  { id: 'es.reply.dir.left', text: 'Está a la izquierda.', meaning: T('זה בצד שמאל.', "It's on the left.") },
-  { id: 'es.reply.dir.right', text: 'Está a la derecha.', meaning: T('זה בצד ימין.', "It's on the right.") },
   { id: 'es.reply.dir.straight', text: 'Siga todo recto.', meaning: T('לך ישר.', 'Go straight ahead.') },
   { id: 'es.reply.dir.turn-left', text: 'Gire a la izquierda en la esquina.', meaning: T('פנה שמאלה בפינה.', 'Turn left at the corner.') },
   { id: 'es.reply.dir.next-to', text: 'Está al lado del banco.', meaning: T('זה ליד הבנק.', "It's next to the bank.") },
-  { id: 'es.reply.dir.five-minutes', text: 'Está a unos cinco minutos a pie.', meaning: T('זה בערך חמש דקות ברגל.', "It's about five minutes on foot.") },
-  { id: 'es.reply.dir.cant-miss', text: 'No tiene pérdida.', meaning: T('אי אפשר לפספס.', "You can't miss it.") },
+  { id: 'es.reply.dir.five-minutes', text: 'No, está a unos cinco minutos a pie. Está al lado del banco.', meaning: T('לא, זה בערך חמש דקות ברגל. זה ליד הבנק.', "No, it's about five minutes on foot. It's next to the bank.") },
+  { id: 'es.reply.dir.cant-miss', text: 'No tiene pérdida. ¡Que tenga buen día!', meaning: T('אי אפשר לפספס. שיהיה יום טוב!', "You can't miss it. Have a good day!") },
+  { id: 'es.reply.dir.on-map', text: 'Claro — mire, estamos aquí, y la estación está justo ahí.', meaning: T('כמובן — הנה, אנחנו כאן, והתחנה בדיוק שם.', 'Of course — here, we are here, and the station is right there.') },
   ...recoveryEs('es.phrase.recovery.repeat', 'es.phrase.recovery.thank-you'),
 ];
 

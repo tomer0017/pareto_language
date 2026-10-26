@@ -968,101 +968,322 @@ export function m04Steps(lang: MissionLang): BootcampStep[] {
 /* ── Mission 05 — Directions ─────────────────────────────────────────────────────────────────── */
 
 type Cell = Omit<MapCell, 'label'> & { label?: L3 };
-const CAFE: L3 = ['café', 'café', 'café'];
-const HOTEL: L3 = ['hotel', 'hôtel', 'hotel'];
-const BANK: L3 = ['bank', 'banque', 'banco'];
 
-/** A junction seen from above: you at the bottom, three ways to go. `mark` is what the three
- *  tappable cells show (arrows for "which way", pins for "which spot"); the bank sits bottom-left
- *  or bottom-right, so "next to the bank" has exactly one answer. */
-function junction(mark: 'arrows' | 'pins', bank: 'left' | 'right'): Cell[] {
-  const arrows = mark === 'arrows';
-  return [
-    { id: 'cafe', row: 0, col: 0, emoji: '☕', label: CAFE },
-    { id: 'straight', row: 0, col: 1, emoji: arrows ? '⬆️' : '📍', tappable: true },
-    { id: 'left', row: 1, col: 0, emoji: arrows ? '⬅️' : '📍', tappable: true },
-    { id: 'right', row: 1, col: 2, emoji: arrows ? '➡️' : '📍', tappable: true },
-    { id: 'bank', row: 2, col: bank === 'left' ? 0 : 2, emoji: '🏦', label: BANK },
-    { id: 'you', row: 2, col: 1, emoji: '🧍' },
-    { id: 'hotel', row: 2, col: bank === 'left' ? 2 : 0, emoji: '🏨', label: HOTEL },
-  ];
+/**
+ * Mission 05's image slots — one per meaning. Until the final artwork is approved a slot shows its
+ * placeholder emoji; giving a slot an `image` (public path) swaps it everywhere the meaning is used.
+ * (Building blocks, scene cards and the map's landmarks all read from here.)
+ */
+type M05Slot =
+  | 'station' | 'straight' | 'left' | 'corner' | 'far' | 'five-minutes-on-foot' | 'next-to' | 'bank' | 'map'
+  | 'ask-where-station' | 'npc-gives-directions' | 'is-it-far' | 'five-minutes-walk' | 'next-to-bank' | 'show-me-map'
+  | 'we-are-here' | 'station-right-there' | 'cant-miss-it' | 'good-day';
+export const M05_SLOTS: Record<M05Slot, { emoji: string; image?: string }> = {
+  station: { emoji: '🚉' }, straight: { emoji: '⬆️' }, left: { emoji: '⬅️' }, corner: { emoji: '↰' }, far: { emoji: '🔭' },
+  'five-minutes-on-foot': { emoji: '🚶' }, 'next-to': { emoji: '↔️' }, bank: { emoji: '🏦' }, map: { emoji: '🗺️' },
+  'ask-where-station': { emoji: '🙋' }, 'npc-gives-directions': { emoji: '🧭' }, 'is-it-far': { emoji: '🤔' }, 'five-minutes-walk': { emoji: '🚶' },
+  'next-to-bank': { emoji: '🏦' }, 'show-me-map': { emoji: '🗺️' }, 'we-are-here': { emoji: '🧍' }, 'station-right-there': { emoji: '🚉' },
+  'cant-miss-it': { emoji: '👀' }, 'good-day': { emoji: '👋' },
+};
+const slot = (s: M05Slot): { emoji: string } | { image: string } => (M05_SLOTS[s].image ? { image: M05_SLOTS[s].image! } : { emoji: M05_SLOTS[s].emoji });
+
+/**
+ * THE town of Mission 05 — one map, reused by every map round (places, each instruction, the route,
+ * next to the bank, here / there, the final walk). Seen from above, you at the bottom:
+ *
+ *      bank      ·      café            the route: start → straight → the corner → left → the station
+ *      STATION   corner  → (a street)    the station is next to the bank (the cell above it)
+ *      house     YOU     park
+ *
+ * The street to the right exists only as a picture (➡️) — a way you could go — never as a word.
+ */
+export type TownSpot = 'bank' | 'ahead' | 'cafe' | 'station' | 'corner' | 'right-street' | 'house' | 'start' | 'park';
+export const M05_TOWN: Record<TownSpot, { row: 0 | 1 | 2; col: 0 | 1 | 2; emoji?: string; label?: L3 }> = {
+  bank: { row: 0, col: 0, emoji: M05_SLOTS.bank.emoji, label: ['bank', 'banque', 'banco'] },
+  ahead: { row: 0, col: 1 },
+  cafe: { row: 0, col: 2, emoji: '☕' },
+  station: { row: 1, col: 0, emoji: M05_SLOTS.station.emoji, label: ['station', 'gare', 'estación'] },
+  corner: { row: 1, col: 1 },
+  'right-street': { row: 1, col: 2 },
+  house: { row: 2, col: 0, emoji: '🏠' },
+  start: { row: 2, col: 1 },
+  park: { row: 2, col: 2, emoji: '🌳' },
+};
+/** The way to the station, as the directions give it: straight to the corner, then left. */
+export const M05_ROUTE: readonly { from: TownSpot; move: 'straight' | 'left'; to: TownSpot }[] = [
+  { from: 'start', move: 'straight', to: 'corner' },
+  { from: 'corner', move: 'left', to: 'station' },
+];
+const YOU = '🧍';
+/**
+ * The town for one moment of the mission: where you stand, and what can be tapped (a spot keeps its
+ * own picture when its mark is '', or shows an arrow / a pin instead — a pin hides the landmark, so
+ * "next to the bank" is answered from the map). Only places you cannot tap show their name.
+ */
+function town(you: TownSpot, taps: Partial<Record<TownSpot, string>>): Cell[] {
+  return (Object.keys(M05_TOWN) as TownSpot[]).flatMap((id) => {
+    const spot = M05_TOWN[id];
+    const mark = taps[id];
+    const tappable = mark !== undefined;
+    const emoji = id === you ? YOU : mark ? mark : spot.emoji;
+    // A place you can TAP carries no word — you find it from what it is, never by reading its name.
+    const label = tappable || id === you ? undefined : spot.label;
+    if (!emoji && !tappable) return []; // an empty road
+    return [{ id, row: spot.row, col: spot.col, ...(emoji ? { emoji } : {}), ...(label ? { label } : {}), ...(tappable ? { tappable: true } : {}) }];
+  });
 }
+/** The three ways at a moment of the walk: the right one, and the two you could take instead. */
+const AT_START = { corner: '⬆️', house: '⬅️', park: '➡️' } as const;
+const AT_CORNER = { station: '⬅️', 'right-street': '➡️', ahead: '⬆️' } as const;
+const PINS_NEXT_TO_BANK = { station: '📍', cafe: '📍', park: '📍' } as const;
 
+/* The locked conversation (EN · FR · ES · HE). */
+const L_ASK: L4 = ['Excuse me! Where is the station?', 'Excusez-moi ! Où est la gare ?', '¡Perdone! ¿Dónde está la estación?', 'סליחה! איפה התחנה?'];
+const L_DIRECTIONS: L4 = ['The station? Go straight ahead, then turn left at the corner.', 'La gare ? Allez tout droit, puis tournez à gauche au coin.', '¿La estación? Siga todo recto y luego gire a la izquierda en la esquina.', 'התחנה? לך ישר, ואז פנה שמאלה בפינה.'];
+const L_FAR: L4 = ['Is it far?', 'C’est loin ?', '¿Está lejos?', 'זה רחוק?'];
+const L_DISTANCE: L4 = ["No, it's about five minutes on foot. It's next to the bank.", 'Non, c’est à environ cinq minutes à pied. C’est à côté de la banque.', 'No, está a unos cinco minutos a pie. Está al lado del banco.', 'לא, זה בערך חמש דקות ברגל. זה ליד הבנק.'];
+const L_SHOW: L4 = ['Can you show me on the map?', 'Vous pouvez me montrer sur la carte ?', '¿Me lo puede mostrar en el mapa?', 'אתה יכול להראות לי על המפה?'];
+const L_ON_MAP: L4 = ['Of course — here, we are here, and the station is right there.', 'Bien sûr — tenez, nous sommes ici, et la gare est juste là.', 'Claro — mire, estamos aquí, y la estación está justo ahí.', 'כמובן — הנה, אנחנו כאן, והתחנה בדיוק שם.'];
+/* …and its chunks, exactly as they are said in it. */
+const C_STATION: L4 = ['the station', 'la gare', 'la estación', 'התחנה'];
+const C_BANK: L4 = ['the bank', 'la banque', 'el banco', 'הבנק'];
+const C_STRAIGHT: L4 = ['Go straight ahead.', 'Allez tout droit.', 'Siga todo recto.', 'לך ישר.'];
+const C_CORNER: L4 = ['at the corner', 'au coin', 'en la esquina', 'בפינה'];
+const C_TURN: L4 = ['Turn left at the corner.', 'Tournez à gauche au coin.', 'Gire a la izquierda en la esquina.', 'פנה שמאלה בפינה.'];
+const C_FIVE: L4 = ["No, it's about five minutes on foot.", 'Non, c’est à environ cinq minutes à pied.', 'No, está a unos cinco minutos a pie.', 'לא, זה בערך חמש דקות ברגל.'];
+const C_NEXT_TO: L4 = ["It's next to the bank.", 'C’est à côté de la banque.', 'Está al lado del banco.', 'זה ליד הבנק.'];
+const C_HERE: L4 = ['we are here', 'nous sommes ici', 'estamos aquí', 'אנחנו כאן'];
+const C_THERE: L4 = ['the station is right there', 'la gare est juste là', 'la estación está justo ahí', 'התחנה בדיוק שם'];
+/** How far: the conversation's five minutes on foot, against Mission 04's twenty. */
+const WALK_5 = { id: 'five', emoji: M05_SLOTS['five-minutes-on-foot'].emoji, caption: { he: '~5 דק׳ ברגל', en: '~5 min on foot' }, scale: 1.6 };
+const WALK_20 = { id: 'twenty', emoji: '🚶', caption: { he: '~20 דק׳ ברגל', en: '~20 min on foot' }, scale: 1.6 };
+
+/**
+ * Mission 05 — Directions: "I am actually navigating through a foreign city." The conversation is
+ * LOCKED; the journey around it happens on ONE town map, which the learner first discovers, then
+ * walks one instruction at a time, then walks whole, then walks with no help:
+ *
+ *   Step 0 (optional) → the town: your question and its places → find the places → which way: the
+ *   directions, piece by piece → straight · at the corner · turn left → follow the route → how far?
+ *   → five minutes, not twenty → next to the bank → on the map: here / there → build your two
+ *   questions → the reactions (you can't miss it · have a good day) → what the other person says →
+ *   your three questions → listen and point → the whole way, one instruction after another → the
+ *   conversation → the walk with no help → the video → where are you going, and how do you get there?
+ *
+ * TEACH before TEST: every line is first shown with its meaning (a building block or a picture card).
+ * "Right" is never taught as a word: a street to the right exists only as a way you could go (➡️).
+ * Recovery stays inside the conversation (the fast directions), where its reason is shown.
+ * Coverage: `mission05Coverage.ts`, enforced by `mission05.test.ts`.
+ */
 export function m05Steps(lang: MissionLang): BootcampStep[] {
   const k = kit(lang);
   return [
     k.talk('🧭', ['משימה 5: כיוונים', 'Mission 5: Directions'], [
-      ['לשאול "איפה?" זה קל. הקושי האמיתי: להבין את התשובה המהירה.', 'Asking “where?” is easy. The real challenge: understanding the fast answer.'],
-      ['היום זו בעיקר האזנה. שמאל, ימין, ישר, ליד — עד שזה טבעי.', 'Today is mostly listening. Left, right, straight, next to — until it’s automatic.'],
-    ], ['מתחילים', 'Start']),
+      ['אתה בעיר זרה ומחפש את התחנה. לשאול זה הצעד הקל — להבין את התשובה ולהגיע, זה העיקר.', 'You are in a foreign town, looking for the station. Asking is the easy part — understanding the answer and getting there is the point.'],
+      ['היום יש מפה אחת. תכיר אותה, תלך בה צעד אחר צעד — ובסוף תגיע לתחנה לבד.', 'Today there is one map. Get to know it, walk it step by step — and in the end, reach the station on your own.'],
+    ], ['יוצאים לדרך', 'Let’s go']),
+    // STEP 0 — optional: the pieces of the directions.
     k.prime({
-      intro: ['שש מילות כיוון — כדי שתבין את התשובה, לא רק תשאל.', 'Six direction words — so you understand the answer, not just ask.'],
+      gate: true,
+      intro: ['מה שצריך כדי להבין את ההוראות. הקש כדי לשמוע.', 'What you need to understand the directions. Tap to hear.'],
       words: [
-        { key: 'social.excuse-me', t: ['excuse me', 'excusez-moi', 'perdone'], meaning: ['סליחה (לפנות)', 'excuse me'] },
-        { key: 'direction.left', t: ['left', 'gauche', 'izquierda'], meaning: ['שמאלה', 'left'], emoji: '⬅️' },
-        { key: 'direction.right', t: ['right', 'droite', 'derecha'], meaning: ['ימינה', 'right'], emoji: '➡️' },
-        { key: 'direction.straight', t: ['straight', 'tout droit', 'todo recto'], meaning: ['ישר', 'straight'], emoji: '⬆️' },
-        { key: 'distance.near', t: ['near', 'près', 'cerca'], meaning: ['קרוב', 'near'] },
-        { key: 'distance.far', t: ['far', 'loin', 'lejos'], meaning: ['רחוק', 'far'] },
+        { key: 'place.station', t: ['station', 'gare', 'estación'], meaning: ['תחנה (רכבת)', 'station'], ...slot('station') },
+        { key: 'direction.straight', t: ['straight ahead', 'tout droit', 'todo recto'], meaning: ['ישר', 'straight ahead'], ...slot('straight') },
+        { key: 'direction.left', t: ['left', 'gauche', 'izquierda'], meaning: ['שמאלה', 'left'], ...slot('left') },
+        { key: 'place.corner', t: ['corner', 'coin', 'esquina'], meaning: ['פינה', 'corner'], ...slot('corner') },
+        { key: 'distance.far', t: ['far', 'loin', 'lejos'], meaning: ['רחוק', 'far'], ...slot('far') },
+        { key: 'distance.minutes-on-foot', review: true, t: ['five minutes on foot', 'cinq minutes à pied', 'cinco minutos a pie'], meaning: ['חמש דקות ברגל', 'five minutes on foot'], ...slot('five-minutes-on-foot') },
+        { key: 'position.next-to', t: ['next to', 'à côté de', 'al lado de'], meaning: ['ליד', 'next to'], ...slot('next-to') },
+        { key: 'place.bank', t: ['bank', 'banque', 'banco'], meaning: ['בנק', 'bank'], ...slot('bank') },
       ],
-      build: 'reply.dir.turn-left',
+      build: 'phrase.dir.where-is',
     }),
-    ...k.tools([
-      ['phrase.dir.where-is', ['לשאול איפה', 'Ask where']],
-      ['phrase.dir.is-it-far', ['ללכת או מונית?', 'Walk or taxi?']],
-      ['phrase.dir.show-me-map', ['לעבור לעיניים', 'Switch to eyes']],
-    ]),
-    k.replies('phrase.dir.where-is', ['reply.dir.left', 'reply.dir.right', 'reply.dir.straight', 'reply.dir.next-to']),
-    k.receipt(['שמאל, ימין, ישר, ליד — אתה מזהה כל כיוון במשפט.', 'Left, right, straight, next to — you catch every direction in a sentence.']),
-    // Hear the direction → act on it. No translation is shown until the learner has tapped.
+    // THE TOWN — your question, and the two places of the map.
+    k.prime({
+      label: ['העיר — מה אתה שואל, ומה יש בה', 'The town — what you ask, and what is in it'],
+      intro: ['השאלה שלך, ושני המקומות שבמפה. הקש כדי לשמוע.', 'Your question, and the two places on the map. Tap to hear.'],
+      bigPictures: true,
+      words: [
+        { line: true, key: 'dir.line.ask', t: l3(L_ASK), meaning: ['סליחה! איפה התחנה?', 'Excuse me! Where is the station?'], ...slot('ask-where-station') },
+        { line: true, key: 'dir.line.station', t: l3(C_STATION), meaning: ['התחנה', 'the station'], ...slot('station') },
+        { line: true, key: 'dir.line.bank', t: l3(C_BANK), meaning: ['הבנק', 'the bank'], ...slot('bank') },
+      ],
+    }),
+    // FIND THE PLACES — the map itself.
     k.practice({
       kind: 'miniMap',
+      label: ['המפה — הקש על המקום ששמעת', 'The map — tap the place you hear'],
       rounds: [
-        { audio: ['Go straight ahead.', 'Allez tout droit.', 'Siga todo recto.', 'לך ישר.'], cells: junction('arrows', 'left'), correct: 'straight', itemId: 'reply.dir.straight' },
-        { audio: ['Turn left at the corner.', 'Tournez à gauche au coin.', 'Gire a la izquierda en la esquina.', 'פנה שמאלה בפינה.'], cells: junction('arrows', 'left'), correct: 'left', itemId: 'reply.dir.turn-left' },
-        { audio: ["It's on the right.", 'C’est à droite.', 'Está a la derecha.', 'זה בצד ימין.'], cells: junction('arrows', 'left'), correct: 'right', itemId: 'reply.dir.right' },
-        { audio: ["It's next to the bank.", 'C’est à côté de la banque.', 'Está al lado del banco.', 'זה ליד הבנק.'], cells: junction('pins', 'left'), correct: 'left', itemId: 'reply.dir.next-to' },
+        { audio: C_STATION, cells: town('start', { station: '', bank: '', cafe: '', park: '' }), correct: 'station' },
+        { audio: C_BANK, cells: town('start', { station: '', bank: '', cafe: '', park: '' }), correct: 'bank' },
       ],
     }),
-    k.quiz('reply.dir.five-minutes', 'reply.dir.next-to', 'reply.dir.cant-miss'),
+    // WHICH WAY — the directions, whole and piece by piece.
+    k.prime({
+      label: ['התשובה — לאן הולכים', 'The answer — which way'],
+      intro: ['ההוראות כולן, ואחר כך כל חלק לבד. הקש כדי לשמוע.', 'The whole directions, then each piece. Tap to hear.'],
+      bigPictures: true,
+      words: [
+        { line: true, key: 'dir.line.directions', t: l3(L_DIRECTIONS), meaning: ['התחנה? לך ישר, ואז פנה שמאלה בפינה.', 'The station? Go straight ahead, then turn left at the corner.'], ...slot('npc-gives-directions') },
+        { line: true, key: 'dir.line.straight', t: l3(C_STRAIGHT), meaning: ['לך ישר.', 'Go straight ahead.'], ...slot('straight') },
+        { line: true, key: 'dir.line.corner', t: l3(C_CORNER), meaning: ['בפינה', 'at the corner'], ...slot('corner') },
+        { line: true, key: 'dir.line.turn-left', t: l3(C_TURN), meaning: ['פנה שמאלה בפינה.', 'Turn left at the corner.'], ...slot('left') },
+      ],
+    }),
+    // EACH INSTRUCTION, on the map: straight · find the corner · turn left there.
+    k.practice({
+      kind: 'miniMap',
+      label: ['לאן? הקש על הדרך ששמעת', 'Which way? Tap the way you hear'],
+      rounds: [
+        { audio: C_STRAIGHT, cells: town('start', AT_START), correct: 'corner', itemId: 'reply.dir.straight' },
+        { audio: C_CORNER, cells: town('start', { corner: '📍', ahead: '📍', 'right-street': '📍' }), correct: 'corner' },
+        { audio: C_TURN, cells: town('corner', AT_CORNER), correct: 'station', itemId: 'reply.dir.turn-left' },
+      ],
+    }),
+    // FOLLOW THE ROUTE — the whole line, walked: first straight, then (you are at the corner) left.
+    k.practice({
+      kind: 'miniMap',
+      label: ['עקוב אחרי ההוראות — צעד אחר צעד', 'Follow the directions — one step at a time'],
+      rounds: M05_ROUTE.map((leg) => ({ audio: L_DIRECTIONS, cells: town(leg.from, leg.from === 'start' ? AT_START : AT_CORNER), correct: leg.to })),
+    }),
+    // HOW FAR? — your question, and the answer.
+    k.prime({
+      label: ['זה רחוק?', 'Is it far?'],
+      intro: ['השאלה שלך — והתשובה: כמה זמן, ואיפה בדיוק. הקש כדי לשמוע.', 'Your question — and the answer: how long, and where exactly. Tap to hear.'],
+      bigPictures: true,
+      words: [
+        { line: true, key: 'dir.line.is-it-far', t: l3(L_FAR), meaning: ['זה רחוק?', 'Is it far?'], ...slot('is-it-far') },
+        { line: true, key: 'dir.line.five-minutes', t: l3(C_FIVE), meaning: ['לא, זה בערך חמש דקות ברגל.', 'No, it’s about five minutes on foot.'], ...slot('five-minutes-walk') },
+        { line: true, key: 'dir.line.next-to-bank', t: l3(C_NEXT_TO), meaning: ['זה ליד הבנק.', 'It’s next to the bank.'], ...slot('next-to-bank') },
+      ],
+    }),
+    // FIVE MINUTES, not twenty (Mission 04's walk) — not a numbers drill: just how far.
+    k.practice({
+      kind: 'visualMatch',
+      label: ['כמה רחוק? הקש על מה ששמעת', 'How far? Tap what you hear'],
+      tiles: [WALK_5, WALK_20],
+      rounds: [{ audio: C_FIVE, correct: 'five', itemId: 'reply.dir.five-minutes' }],
+    }),
+    // NEXT TO THE BANK — the pin goes where the map says (a pin hides the station's own label).
+    k.practice({
+      kind: 'miniMap',
+      label: ['איפה התחנה? הקש על המקום', 'Where is the station? Tap the spot'],
+      rounds: [{ audio: C_NEXT_TO, cells: town('start', PINS_NEXT_TO_BANK), correct: 'station', itemId: 'reply.dir.next-to' }],
+    }),
+    // ON THE MAP — your request, and the answer: here / there.
+    k.prime({
+      label: ['על המפה', 'On the map'],
+      intro: ['הבקשה שלך — והתשובה, עם האצבע על המפה. הקש כדי לשמוע.', 'Your request — and the answer, with a finger on the map. Tap to hear.'],
+      bigPictures: true,
+      words: [
+        { line: true, key: 'dir.line.show-me-map', t: l3(L_SHOW), meaning: ['אתה יכול להראות לי על המפה? (כמו "Can you show me?" — ועוד "על המפה")', 'Can you show me on the map? (like "Can you show me?" — plus "on the map")'], ...slot('show-me-map') },
+        { line: true, key: 'dir.line.on-map', t: l3(L_ON_MAP), meaning: ['כמובן — הנה, אנחנו כאן, והתחנה בדיוק שם.', 'Of course — here, we are here, and the station is right there.'], ...slot('map') },
+        { line: true, key: 'dir.line.we-are-here', t: l3(C_HERE), meaning: ['אנחנו כאן', 'we are here'], ...slot('we-are-here') },
+        { line: true, key: 'dir.line.right-there', t: l3(C_THERE), meaning: ['התחנה בדיוק שם', 'the station is right there'], ...slot('station-right-there') },
+      ],
+    }),
+    // HERE / THERE — point at it.
+    k.practice({
+      kind: 'miniMap',
+      label: ['כאן או שם? הקש על המקום', 'Here or there? Tap the spot'],
+      rounds: [
+        { audio: C_HERE, cells: town('start', { start: '', station: '📍', bank: '📍' }), correct: 'start' },
+        { audio: C_THERE, cells: town('start', { start: '', station: '📍', bank: '📍' }), correct: 'station' },
+      ],
+    }),
+    // BUILD — your two questions.
+    k.practice({
+      kind: 'sentenceBuilder',
+      rounds: [
+        { itemId: 'phrase.dir.where-is', chunks: [['Where', 'is', 'the station?'], ['Où', 'est', 'la gare ?'], ['¿Dónde', 'está', 'la estación?']] },
+        { itemId: 'phrase.dir.show-me-map', chunks: [['Can you', 'show me', 'on the map?'], ['Vous pouvez', 'me montrer', 'sur la carte ?'], ['¿Me lo', 'puede mostrar', 'en el mapa?']] },
+      ],
+    }),
+    // THE GOODBYE — comprehension only.
+    k.prime({
+      label: ['הפרידה', 'The goodbye'],
+      intro: ['שני דברים שתשמע בסוף. לא צריך להגיד אותם — רק להבין. הקש כדי לשמוע.', 'Two things you will hear at the end. You do not need to say them — just understand. Tap to hear.'],
+      bigPictures: true,
+      words: [
+        { line: true, key: 'dir.line.cant-miss', t: ['You can’t miss it.', 'Vous ne pouvez pas la manquer.', 'No tiene pérdida.'], meaning: ['אי אפשר לפספס. (תמצא את זה בקלות)', 'You can’t miss it. (you will find it easily)'], ...slot('cant-miss-it') },
+        { line: true, key: 'dir.line.good-day', t: ['Have a good day!', 'Bonne journée !', '¡Que tenga buen día!'], meaning: ['שיהיה יום טוב!', 'Have a good day!'], ...slot('good-day') },
+      ],
+    }),
+    // WHAT THE OTHER PERSON SAYS — the three answers you will hear, by ear (the answer reveals the meaning).
+    k.replies('phrase.dir.is-it-far', ['reply.dir.five-minutes', 'reply.dir.on-map', 'reply.dir.cant-miss']),
+    // WHAT YOU SAY — stopping someone, your three questions: from the situation, or answering the real lines.
     k.practice({
       kind: 'quickReply',
+      label: ['מה אתה אומר?', 'What do you say?'],
       rounds: [
-        { situation: ['אתה אבוד ומחפש את התחנה. פונים למישהו ברחוב.', 'You are lost and looking for the station. You stop someone in the street.'],
-          options: [
-            ['phrase.dir.where-is', true, ['Excuse me! Where is the station?', 'Excusez-moi ! Où est la gare ?', '¡Perdone! ¿Dónde está la estación?']],
-            ['phrase.dir.is-it-far', false], ['phrase.dir.show-me-map', false],
-          ] },
-        { npc: ['Go straight ahead, then turn left at the corner.', 'Allez tout droit, puis tournez à gauche au coin.', 'Siga todo recto y luego gire a la izquierda en la esquina.', 'לך ישר, ואז פנה שמאלה בפינה.'],
-          options: [['phrase.recovery.repeat', true], ['phrase.dir.is-it-far', true], ['phrase.dir.where-is', false]] },
+        { situation: ['מישהי עוברת ברחוב. אתה רוצה לעצור אותה בנימוס.', 'Someone is walking past. You want to stop them politely.'],
+          options: [['phrase.dir.excuse-me', true], ['phrase.dir.is-it-far', false], ['phrase.dir.show-me-map', false]] },
+        { situation: ['אתה מחפש את התחנה ולא יודע איך להגיע. פונים לאישה ברחוב.', 'You need the station and do not know the way. You stop a woman in the street.'],
+          options: [['phrase.dir.where-is', true, [L_ASK[0], L_ASK[1], L_ASK[2]]], ['phrase.dir.is-it-far', false], ['phrase.dir.show-me-map', false]] },
+        { npc: L_DIRECTIONS, options: [['phrase.dir.is-it-far', true], ['phrase.dir.where-is', false], ['phrase.dir.show-me-map', false]] },
+        { situation: ['התיק שלך כבד. לפני שאתה יוצא לדרך — אתה רוצה לדעת אם זה רחוק.', 'Your bag is heavy. Before you set off, you want to know if it is far.'],
+          options: [['phrase.dir.is-it-far', true], ['phrase.dir.where-is', false], ['phrase.dir.show-me-map', false]] },
+        { npc: L_DISTANCE, options: [['phrase.dir.show-me-map', true], ['phrase.dir.where-is', false], ['phrase.dir.is-it-far', false]] },
       ],
     }),
-    // One frame, any destination: "How do I get to ___?"
-    k.practice({
-      kind: 'swap',
-      rounds: [
-        { frame: ['How do I get to ___?', 'Comment aller ___ ?', '¿Cómo se llega ___?'], itemId: 'phrase.dir.how-do-i-get', cue: { emoji: '🏖️', text: ['אתה רוצה להגיע לחוף', 'You want to get to the beach'] },
-          options: [[['the beach', 'à la plage', 'a la playa'], 'איך מגיעים לחוף?', true], [['the station', 'à la gare', 'a la estación'], 'איך מגיעים לתחנה?', false], [['the bank', 'à la banque', 'al banco'], 'איך מגיעים לבנק?', false]] },
-        { frame: ['How do I get to ___?', 'Comment aller ___ ?', '¿Cómo se llega ___?'], itemId: 'phrase.dir.how-do-i-get', cue: { emoji: '🏦', text: ['אתה רוצה להגיע לבנק', 'You want to get to the bank'] },
-          options: [[['the bank', 'à la banque', 'al banco'], 'איך מגיעים לבנק?', true], [['the beach', 'à la plage', 'a la playa'], 'איך מגיעים לחוף?', false], [['the station', 'à la gare', 'a la estación'], 'איך מגיעים לתחנה?', false]] },
-      ],
-    }),
-    k.dialogue('lost-in-town'),
-    k.receipt(['שאלת דרך, הבנת הוראות מהירות, והגעת. ללכת לאיבוד כבר לא מפחיד.', 'You asked for directions, understood fast instructions, and arrived. Being lost isn’t scary anymore.']),
-    k.review([
-      'phrase.dir.where-is', 'phrase.dir.how-do-i-get', 'phrase.dir.is-it-far', 'phrase.dir.show-me-map',
-      'reply.dir.left', 'reply.dir.right', 'reply.dir.straight', 'reply.dir.turn-left', 'reply.dir.next-to', 'reply.dir.five-minutes',
-      'phrase.recovery.repeat',
-    ]),
+    // LISTEN AND POINT — the map, fast.
     k.practice({
       kind: 'miniMap',
       challenge: true,
-      rounds: [{
-        audio: ["Go straight, then turn right. It's next to the bank.", 'Allez tout droit, puis tournez à droite. C’est à côté de la banque.', 'Siga todo recto y luego gire a la derecha. Está al lado del banco.', 'לך ישר, ואז פנה ימינה. זה ליד הבנק.'],
-        cells: junction('pins', 'right'), correct: 'right',
-      }],
+      label: ['שמע — והצבע', 'Listen — and point'],
+      rounds: [
+        { audio: C_CORNER, cells: town('start', { corner: '📍', ahead: '📍', 'right-street': '📍' }), correct: 'corner' },
+        { audio: C_NEXT_TO, cells: town('start', PINS_NEXT_TO_BANK), correct: 'station' },
+        { audio: C_HERE, cells: town('start', { start: '', station: '📍', bank: '📍' }), correct: 'start' },
+        { audio: C_THERE, cells: town('start', { start: '', station: '📍', bank: '📍' }), correct: 'station' },
+      ],
     }),
-    k.receipt(['הוראה מהירה בשני שלבים — ומצאת את המקום הנכון על המפה.', 'A fast two-step instruction — and you found the right spot on the map.']),
+    // THE WHOLE WAY — one instruction after another, on the same map.
+    k.practice({
+      kind: 'miniMap',
+      label: ['כל הדרך — הוראה אחרי הוראה', 'The whole way — one instruction after another'],
+      rounds: [
+        { audio: C_STRAIGHT, cells: town('start', AT_START), correct: 'corner' },
+        { audio: C_TURN, cells: town('corner', AT_CORNER), correct: 'station' },
+        { audio: C_NEXT_TO, cells: town('corner', PINS_NEXT_TO_BANK), correct: 'station' },
+      ],
+    }),
+    k.receipt(['שאלת, הבנת, והלכת בדרך הנכונה — עד התחנה.', 'You asked, you understood, and you walked the right way — all the way to the station.']),
+    k.dialogue('lost-in-town'),
+    k.receipt(['כל השיחה — מהשאלה ועד "שיהיה יום טוב". בלי ללכת לאיבוד.', 'The whole conversation — from the question to “have a good day”. Without getting lost.']),
+    // NO HELP — the real directions, at speed, no translation: walk them.
+    k.practice({
+      kind: 'miniMap',
+      challenge: true,
+      label: ['בלי עזרה — לך לתחנה', 'No help — walk to the station'],
+      rounds: [
+        { audio: L_DIRECTIONS, cells: town('start', AT_START), correct: 'corner' },
+        { audio: L_DIRECTIONS, cells: town('corner', AT_CORNER), correct: 'station' },
+        { audio: L_DISTANCE, cells: town('corner', PINS_NEXT_TO_BANK), correct: 'station' },
+      ],
+    }),
+    k.receipt(['🚉 הגעת לתחנה — לבד.', '🚉 You reached the station — on your own.']),
+    // THE PAYOFF — the whole scene again (the video, where one exists)…
+    { kind: 'video', mode: 'again' },
+    // …then: where are you going, which way, how far, where exactly, where are you — on the map.
+    k.practice({
+      kind: 'miniMap',
+      label: ['מה קרה? הקש על המפה', 'What happened? Tap the map'],
+      rounds: [
+        { audio: L_ASK, cells: town('start', { station: '📍', bank: '📍', cafe: '📍' }), correct: 'station', itemId: 'phrase.dir.where-is' },
+        { audio: L_DIRECTIONS, cells: town('start', AT_START), correct: 'corner' },
+        { audio: L_DIRECTIONS, cells: town('corner', AT_CORNER), correct: 'station' },
+        { audio: C_NEXT_TO, cells: town('start', PINS_NEXT_TO_BANK), correct: 'station', itemId: 'reply.dir.next-to' },
+        { audio: C_HERE, cells: town('start', { start: '', station: '📍', bank: '📍' }), correct: 'start' },
+      ],
+    }),
+    k.practice({
+      kind: 'visualMatch',
+      label: ['כמה רחוק זה היה?', 'How far was it?'],
+      tiles: [WALK_5, WALK_20],
+      rounds: [{ audio: C_FIVE, correct: 'five', itemId: 'reply.dir.five-minutes' }],
+    }),
+    k.receipt(['🚉 מצאת את התחנה. שאלת, הבנת, הלכת — והגעת.', '🚉 You found the station. You asked, understood, walked — and arrived.']),
     { kind: 'summary' },
   ];
 }

@@ -16,19 +16,17 @@ export const DAY5_FR_ITEMS: BootcampItem[] = [
     tip: T('פותח כל פנייה לזר ברחוב.', 'Opens any approach to a stranger on the street.') },
   { id: 'fr.phrase.dir.where-is', text: 'Où est la gare ?', meaning: T('איפה התחנה?', 'Where is the station?'),
     tip: T('תבנית: Où est le/la ___ ? — התחנה, השירותים, המלון.', 'Template: Où est le/la ___ ? — the station, the bathroom, the hotel.') },
-  { id: 'fr.phrase.dir.how-do-i-get', text: 'Comment aller à la plage ?', meaning: T('איך מגיעים לחוף?', 'How do I get to the beach?') },
   { id: 'fr.phrase.dir.is-it-far', text: 'C’est loin ?', meaning: T('זה רחוק?', 'Is it far?'),
     tip: T('שתי מילים שמחליטות: ללכת ברגל או לקחת מונית.', 'Two words that decide: walk or take a taxi.') },
   { id: 'fr.phrase.dir.show-me-map', text: 'Vous pouvez me montrer sur la carte ?', meaning: T('אתה יכול להראות לי על המפה?', 'Can you show me on the map?'),
     tip: T('כשמילים לא מספיקות — עוברים לעיניים.', 'When words aren’t enough — switch to eyes.') },
   // hear — the direction answers (this is the whole mission)
-  { id: 'fr.reply.dir.left', text: 'C’est à gauche.', meaning: T('זה בצד שמאל.', "It's on the left.") },
-  { id: 'fr.reply.dir.right', text: 'C’est à droite.', meaning: T('זה בצד ימין.', "It's on the right.") },
   { id: 'fr.reply.dir.straight', text: 'Allez tout droit.', meaning: T('לך ישר.', 'Go straight ahead.') },
   { id: 'fr.reply.dir.turn-left', text: 'Tournez à gauche au coin.', meaning: T('פנה שמאלה בפינה.', 'Turn left at the corner.') },
   { id: 'fr.reply.dir.next-to', text: 'C’est à côté de la banque.', meaning: T('זה ליד הבנק.', "It's next to the bank.") },
-  { id: 'fr.reply.dir.five-minutes', text: 'C’est à environ cinq minutes à pied.', meaning: T('זה בערך חמש דקות ברגל.', "It's about five minutes on foot.") },
-  { id: 'fr.reply.dir.cant-miss', text: 'Vous ne pouvez pas la manquer.', meaning: T('אי אפשר לפספס.', "You can't miss it.") },
+  { id: 'fr.reply.dir.five-minutes', text: 'Non, c’est à environ cinq minutes à pied. C’est à côté de la banque.', meaning: T('לא, זה בערך חמש דקות ברגל. זה ליד הבנק.', "No, it's about five minutes on foot. It's next to the bank.") },
+  { id: 'fr.reply.dir.cant-miss', text: 'Vous ne pouvez pas la manquer. Bonne journée !', meaning: T('אי אפשר לפספס. שיהיה יום טוב!', "You can't miss it. Have a good day!") },
+  { id: 'fr.reply.dir.on-map', text: 'Bien sûr — tenez, nous sommes ici, et la gare est juste là.', meaning: T('כמובן — הנה, אנחנו כאן, והתחנה בדיוק שם.', 'Of course — here, we are here, and the station is right there.') },
   ...recoveryFr('fr.phrase.recovery.repeat', 'fr.phrase.recovery.thank-you'),
 ];
 

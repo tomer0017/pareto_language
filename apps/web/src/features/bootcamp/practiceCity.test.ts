@@ -74,8 +74,8 @@ describe('scope: only the Practice of Missions 19–24 changed', () => {
   const slice = (lang: Lang, a: number, b: number): BootcampDayContent[] => BOOTCAMP_PLAN.slice(a, b).map((m) => beforeCueFreeze(MISSIONS_BY_LANG[lang]![m.day]!, lang));
   const print = (f: (lang: Lang) => unknown): Record<Lang, string> => ({ en: fnv(JSON.stringify(f('en'))), fr: fnv(JSON.stringify(f('fr'))), es: fnv(JSON.stringify(f('es'))) });
 
-  it('Missions 05–18 are byte-for-byte unchanged (Missions 01–04 have their own passes — mission01.test.ts … mission04.test.ts)', () => {
-    expect(print((l) => slice(l, 4, 18))).toEqual({ en: '482731b9', fr: 'ebf326ac', es: 'a081ba22' });
+  it('Missions 06–18 are byte-for-byte unchanged (Missions 01–05 have their own passes — mission01.test.ts … mission05.test.ts)', () => {
+    expect(print((l) => slice(l, 5, 18))).toEqual({ en: '40aacf7e', fr: '3ebb2c8b', es: '634970b1' });
   });
   it('the locked dialogues of Missions 19–23 are byte-for-byte unchanged', () => {
     expect(print((l) => slice(l, 18, 23).map((d) => d.dialogues))).toEqual({ en: '594ead2b', fr: '63803269', es: '55c7bd8f' });
@@ -110,8 +110,8 @@ describe('scope: only the Practice of Missions 19–24 changed', () => {
     }
     expect(text(mission(19), 'phrase.trans.single')).toBe('Single, please.');
   });
-  it('nothing was retired in this pass: the archive still holds the same seven sentences (plus the three the later Mission 03 pass retired)', () => {
-    for (const lang of LANGS) expect(RETIRED_SENTENCES[lang].filter((r) => r.retiredFrom !== 'coffee-shop'), lang).toHaveLength(7);
+  it('nothing was retired in this pass: the archive still holds the same seven sentences (plus those the later Mission 03 and 05 passes retired)', () => {
+    for (const lang of LANGS) expect(RETIRED_SENTENCES[lang].filter((r) => r.retiredFrom !== 'coffee-shop' && r.retiredFrom !== 'directions'), lang).toHaveLength(7);
     expect(RETIRED_SENTENCES.en.some((r) => /trans\.|past\.|future\.|fix\.|opin\./.test(r.id))).toBe(false);
   });
   it('mission order, ids and registry keys are unchanged', () => {

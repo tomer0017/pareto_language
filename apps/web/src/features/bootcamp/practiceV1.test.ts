@@ -232,19 +232,20 @@ describe('Mission 04 — Everyday Core', () => {
 describe('Mission 05 — Directions', () => {
   const day = mission(5);
   it('"Where is the station?" is actively retrieved before the dialogue', () => {
-    const round = stepsOf(day, 'quickReply')[0]!.rounds[0]!;
+    const round = stepsOf(day, 'quickReply')[0]!.rounds.find((r) => r.options.some((o) => o.correct && strip(o.itemId) === 'phrase.dir.where-is'))!;
     expect(round.situation).toBeDefined();
     const accepted = round.options.find((o) => o.correct)!;
-    expect(strip(accepted.itemId)).toBe('phrase.dir.where-is');
     expect(accepted.text).toBe('Excuse me! Where is the station?');
     expect(day.steps.findIndex((s) => s.kind === 'quickReply')).toBeLessThan(day.steps.findIndex((s) => s.kind === 'dialogue'));
-    expect(retrievable(day).has('phrase.dir.how-do-i-get')).toBe(true);
+    expect(retrievable(day).has('phrase.dir.where-is')).toBe(true);
+    expect(retrievable(day).has('phrase.dir.show-me-map')).toBe(true);
   });
   it('Mini Map tests direction meaning by acting on it — no translation is on the board', () => {
-    const [map, finale] = stepsOf(day, 'miniMap');
-    expect(map!.rounds.map((r) => [r.audio.en, r.correct])).toEqual([
-      ['Go straight ahead.', 'straight'], ['Turn left at the corner.', 'left'], ["It's on the right.", 'right'], ["It's next to the bank.", 'left'],
-    ]);
+    const maps = stepsOf(day, 'miniMap');
+    const finale = [...maps].reverse().find((s) => s.challenge)!;
+    // The Mission 05 pass: one town, walked — straight to the corner, then left to the station.
+    const ways = maps.find((s) => s.rounds.some((r) => r.audio.en === 'Turn left at the corner.'))!;
+    expect(ways.rounds.map((r) => [r.audio.en, r.correct])).toEqual([['Go straight ahead.', 'corner'], ['at the corner', 'corner'], ['Turn left at the corner.', 'station']]);
     for (const lang of LANGS) for (const s of stepsOf(mission(5, lang), 'miniMap')) for (const r of s.rounds) {
       // Tappable cells carry no words at all, and nothing on the board is Hebrew.
       for (const c of r.cells) {
@@ -254,12 +255,12 @@ describe('Mission 05 — Directions', () => {
       expect(r.audio.he).toBeTruthy(); // the gloss exists — it is shown only after the tap
     }
     // "Next to the bank" has exactly one answer: only the accepted cell touches the bank.
-    const bankRound = map!.rounds[3]!;
+    const bankRound = maps.flatMap((s) => s.rounds).find((r) => r.audio.en === "It's next to the bank.")!;
     const bank = bankRound.cells.find((c) => c.id === 'bank')!;
     const touching = bankRound.cells.filter((c) => c.tappable && Math.abs(c.row - bank.row) + Math.abs(c.col - bank.col) === 1).map((c) => c.id);
     expect(touching).toEqual([bankRound.correct]);
-    expect(finale!.challenge).toBe(true);
-    expect(finale!.rounds[0]!.audio.en).not.toMatch(/church|second|opposite|pharmacy/i);
+    expect(finale.challenge).toBe(true);
+    expect(finale.rounds[0]!.audio.en).not.toMatch(/church|second|opposite|pharmacy|right\b(?! there)/i);
   });
 });
 

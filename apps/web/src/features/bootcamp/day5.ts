@@ -8,19 +8,17 @@ export const DAY5_ITEMS: BootcampItem[] = [
     tip: T('פותח כל פנייה לזר ברחוב.', 'Opens any approach to a stranger on the street.') },
   { id: 'en.phrase.dir.where-is', text: 'Where is the station?', meaning: T('איפה התחנה?', 'Where is the station?'),
     tip: T('תבנית: Where is the ___? — התחנה, השירותים, המלון.', 'Template: Where is the ___? — the station, the bathroom, the hotel.') },
-  { id: 'en.phrase.dir.how-do-i-get', text: 'How do I get to the beach?', meaning: T('איך מגיעים לחוף?', 'How do I get to the beach?') },
   { id: 'en.phrase.dir.is-it-far', text: 'Is it far?', meaning: T('זה רחוק?', 'Is it far?'),
     tip: T('שלוש מילים שמחליטות: ללכת ברגל או לקחת מונית.', 'Three words that decide: walk or take a taxi.') },
   { id: 'en.phrase.dir.show-me-map', text: 'Can you show me on the map?', meaning: T('אתה יכול להראות לי על המפה?', 'Can you show me on the map?'),
     tip: T('כשמילים לא מספיקות — עוברים לעיניים.', 'When words aren’t enough — switch to eyes.') },
   // hear — the direction answers (this is the whole mission)
-  { id: 'en.reply.dir.left', text: "It's on the left.", meaning: T('זה בצד שמאל.', "It's on the left.") },
-  { id: 'en.reply.dir.right', text: "It's on the right.", meaning: T('זה בצד ימין.', "It's on the right.") },
   { id: 'en.reply.dir.straight', text: 'Go straight ahead.', meaning: T('לך ישר.', 'Go straight ahead.') },
   { id: 'en.reply.dir.turn-left', text: 'Turn left at the corner.', meaning: T('פנה שמאלה בפינה.', 'Turn left at the corner.') },
   { id: 'en.reply.dir.next-to', text: "It's next to the bank.", meaning: T('זה ליד הבנק.', "It's next to the bank.") },
-  { id: 'en.reply.dir.five-minutes', text: "It's about five minutes on foot.", meaning: T('זה בערך חמש דקות ברגל.', "It's about five minutes on foot.") },
-  { id: 'en.reply.dir.cant-miss', text: "You can't miss it.", meaning: T('אי אפשר לפספס.', "You can't miss it.") },
+  { id: 'en.reply.dir.five-minutes', text: "No, it's about five minutes on foot. It's next to the bank.", meaning: T('לא, זה בערך חמש דקות ברגל. זה ליד הבנק.', "No, it's about five minutes on foot. It's next to the bank.") },
+  { id: 'en.reply.dir.cant-miss', text: "You can't miss it. Have a good day!", meaning: T('אי אפשר לפספס. שיהיה יום טוב!', "You can't miss it. Have a good day!") },
+  { id: 'en.reply.dir.on-map', text: 'Of course — here, we are here, and the station is right there.', meaning: T('כמובן — הנה, אנחנו כאן, והתחנה בדיוק שם.', 'Of course — here, we are here, and the station is right there.') },
   ...recovery('en.phrase.recovery.repeat', 'en.phrase.recovery.thank-you'),
 ];
 

@@ -272,20 +272,18 @@ _Reply-training drill:_ “Sure! Medium or large?” · “Milk and sugar?” ·
 ### Core phrases (you say)
 - **Excuse me!** · סליחה! — _פותח כל פנייה לזר ברחוב._
 - **Where is the station?** · איפה התחנה? — _תבנית: Where is the ___? — התחנה, השירותים, המלון._
-- **How do I get to the beach?** · איך מגיעים לחוף?
 - **Is it far?** · זה רחוק? — _שלוש מילים שמחליטות: ללכת ברגל או לקחת מונית._
 - **Can you show me on the map?** · אתה יכול להראות לי על המפה? — _כשמילים לא מספיקות — עוברים לעיניים._
 
 ### Expected replies (you hear)
-- **It's on the left.** · זה בצד שמאל.
-- **It's on the right.** · זה בצד ימין.
 - **Go straight ahead.** · לך ישר.
 - **Turn left at the corner.** · פנה שמאלה בפינה.
 - **It's next to the bank.** · זה ליד הבנק.
-- **It's about five minutes on foot.** · זה בערך חמש דקות ברגל.
-- **You can't miss it.** · אי אפשר לפספס.
+- **No, it's about five minutes on foot. It's next to the bank.** · לא, זה בערך חמש דקות ברגל. זה ליד הבנק.
+- **You can't miss it. Have a good day!** · אי אפשר לפספס. שיהיה יום טוב!
+- **Of course — here, we are here, and the station is right there.** · כמובן — הנה, אנחנו כאן, והתחנה בדיוק שם.
 
-_Reply-training drill:_ “It's on the left.” · “It's on the right.” · “Go straight ahead.” · “It's next to the bank.”
+_Reply-training drill:_ “No, it's about five minutes on foot. It's next to the bank.” · “Of course — here, we are here, and the station is right there.” · “You can't miss it. Have a good day!”
 
 ### Recovery tools reused
 `Can you repeat that?` · `Thank you!`
