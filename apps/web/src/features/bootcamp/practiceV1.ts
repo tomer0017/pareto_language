@@ -991,9 +991,10 @@ export const M05_SLOTS: Record<M05Slot, { emoji: string; image?: string }> = {
   'ask-where-station': { emoji: '🙋', image: `${M05_IMG}ask-where-station.jpg` }, 'npc-gives-directions': { emoji: '🧭', image: `${M05_IMG}npc-gives-directions.jpg` },
   'is-it-far': { emoji: '🤔', image: `${M05_IMG}is-it-far.jpg` }, 'five-minutes-walk': { emoji: '🚶', image: `${M05_IMG}five-minutes-walk.jpg` },
   'next-to-bank': { emoji: '🏦', image: `${M05_IMG}next-to-bank.jpg` },
-  // Group 3 — placeholders until their pictures arrive
-  'show-me-map': { emoji: '🗺️' }, 'we-are-here': { emoji: '🧍' }, 'station-right-there': { emoji: '🚉' },
-  'cant-miss-it': { emoji: '👀' }, 'good-day': { emoji: '👋' },
+  // Group 3 — the map and the goodbye: the same scene, to its end
+  'show-me-map': { emoji: '🗺️', image: `${M05_IMG}show-me-map.jpg` }, 'we-are-here': { emoji: '🧍', image: `${M05_IMG}we-are-here.jpg` },
+  'station-right-there': { emoji: '🚉', image: `${M05_IMG}station-right-there.jpg` },
+  'cant-miss-it': { emoji: '👀', image: `${M05_IMG}cant-miss-it.jpg` }, 'good-day': { emoji: '👋', image: `${M05_IMG}good-day.jpg` },
 };
 const slot = (s: M05Slot): { emoji: string } | { image: string } => (M05_SLOTS[s].image ? { image: M05_SLOTS[s].image! } : { emoji: M05_SLOTS[s].emoji });
 

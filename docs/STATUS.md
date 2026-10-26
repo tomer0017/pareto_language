@@ -22,6 +22,17 @@ loop (typecheck → lint → tests → build → smoke) green at every milestone
 
 ## What's done
 
+### Mission 05 — Group 3 pictures: the map and the goodbye — 19 / 19 (2026-10-26)
+
+Five approved wide scenes on the cards of their own lines: show-me-map (the traveller's request),
+we-are-here (the "You are here" pin), station-right-there (the local points at the station),
+cant-miss-it (the station presented, thumbs up), good-day (both wave) — 444×222 as supplied, JPEG
+at full quality. Every Mission 05 slot now has its final picture and no card is emoji-only; the
+nineteen files are distinct, Groups 1 and 2 are MD5-pinned, and request ≠ here ≠ there is a
+regression test. Also shipped (owner's files, no code change): `videos/en/en_4.mp4`,
+`videos/fr/fr_7.mp4`. The replay test's "mission with no English video" example moved from Mission 04
+(which now has one) to Mission 05.
+
 ### Mission 05 — Group 2 pictures: the first five scenes (2026-10-26)
 
 Five approved wide scenes of one continuous street scene (same traveller, same local) on the cards

@@ -4983,10 +4983,10 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `dir.line.show-me-map` — EN "Can you show me on the map?" · FR "Vous pouvez me montrer sur la carte ?" · ES "¿Me lo puede mostrar en el mapa?" — meaning "אתה יכול להראות לי על המפה? (כמו "Can you show me?" — ועוד "על המפה")" / "Can you show me on the map? (like "Can you show me?" — plus "on the map")" — icon 🗺️ — new
+1. `dir.line.show-me-map` — EN "Can you show me on the map?" · FR "Vous pouvez me montrer sur la carte ?" · ES "¿Me lo puede mostrar en el mapa?" — meaning "אתה יכול להראות לי על המפה? (כמו "Can you show me?" — ועוד "על המפה")" / "Can you show me on the map? (like "Can you show me?" — plus "on the map")" — icon none — new
 2. `dir.line.on-map` — EN "Of course — here, we are here, and the station is right there." · FR "Bien sûr — tenez, nous sommes ici, et la gare est juste là." · ES "Claro — mire, estamos aquí, y la estación está justo ahí." — meaning "כמובן — הנה, אנחנו כאן, והתחנה בדיוק שם." / "Of course — here, we are here, and the station is right there." — icon none — new
-3. `dir.line.we-are-here` — EN "we are here" · FR "nous sommes ici" · ES "estamos aquí" — meaning "אנחנו כאן" / "we are here" — icon 🧍 — new
-4. `dir.line.right-there` — EN "the station is right there" · FR "la gare est juste là" · ES "la estación está justo ahí" — meaning "התחנה בדיוק שם" / "the station is right there" — icon 🚉 — new
+3. `dir.line.we-are-here` — EN "we are here" · FR "nous sommes ici" · ES "estamos aquí" — meaning "אנחנו כאן" / "we are here" — icon none — new
+4. `dir.line.right-there` — EN "the station is right there" · FR "la gare est juste là" · ES "la estación está justo ahí" — meaning "התחנה בדיוק שם" / "the station is right there" — icon none — new
 
 No build-sentence card.
 
@@ -4995,8 +4995,8 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `dir.line.cant-miss` — EN "You can’t miss it." · FR "Vous ne pouvez pas la manquer." · ES "No tiene pérdida." — meaning "אי אפשר לפספס. (תמצא את זה בקלות)" / "You can’t miss it. (you will find it easily)" — icon 👀 — new
-2. `dir.line.good-day` — EN "Have a good day!" · FR "Bonne journée !" · ES "¡Que tenga buen día!" — meaning "שיהיה יום טוב!" / "Have a good day!" — icon 👋 — new
+1. `dir.line.cant-miss` — EN "You can’t miss it." · FR "Vous ne pouvez pas la manquer." · ES "No tiene pérdida." — meaning "אי אפשר לפספס. (תמצא את זה בקלות)" / "You can’t miss it. (you will find it easily)" — icon none — new
+2. `dir.line.good-day` — EN "Have a good day!" · FR "Bonne journée !" · ES "¡Que tenga buen día!" — meaning "שיהיה יום טוב!" / "Have a good day!" — icon none — new
 
 No build-sentence card.
 
