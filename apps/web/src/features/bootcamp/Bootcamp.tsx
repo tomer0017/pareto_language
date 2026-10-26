@@ -8,7 +8,7 @@ import { buildComprehensionContext, buildRespondContext } from '../../shared/ui/
 import { feedbackWrong } from '../../shared/ui/feedbackCue.js';
 import { success, tap } from '../../shared/ui/haptics.js';
 import { BOOTCAMP_PLAN, missionNumber, nextMission } from './plan.js';
-import { missionIcon, missionJourney, missionPhases, phaseOfIndex, primaryDialogue, type JourneyStepId, type JourneyStepState } from './missionFlow.js';
+import { afterWatching, missionIcon, practiceReplay, missionJourney, missionPhases, phaseOfIndex, primaryDialogue, type JourneyStepId, type JourneyStepState } from './missionFlow.js';
 import { Learn } from './Learn.js';
 import { CompanionCoach, CompanionIntro, CompanionReaction } from '../companion/Companion.js';
 import { GAME_MOOD, coachFor } from '../companion/companionCoach.js';
@@ -92,6 +92,7 @@ function MissionHub() {
   const { primary } = journey;
   // Where the guided path goes after watching/listening.
   const afterWatch = phases.hasLearn ? phases.learnStart : phases.practiceStart;
+  const next = afterWatching(journey, done, afterWatch);
 
   // Watch = the video when the mission has one; otherwise the conversation itself, read aloud.
   const watch = (): void => {
@@ -112,10 +113,10 @@ function MissionHub() {
       <VideoOverlay
         video={video}
         onClose={() => setShowVideo(false)}
-        // First pass through the mission: one obvious way forward. After completion the video is the
-        // reward — there is nothing to continue to.
-        onContinue={done ? undefined : () => { setShowVideo(false); bc.enterPractice(afterWatch); }}
-        continueLabel={phases.hasLearn ? t('continueLearning') : t('journeyToPractice')}
+        // First pass: one obvious way forward. Mid-mission: back to EXACTLY the saved step (watching
+        // never moves progress). After completion the video is the reward — nothing to continue to.
+        onContinue={next.kind === 'none' ? undefined : () => { setShowVideo(false); if (next.kind === 'resume') bc.enterPractice(); else bc.enterPractice(next.at); }}
+        continueLabel={(next.kind === 'resume' ? primary.step === 'learn' : phases.hasLearn) ? t('continueLearning') : t('journeyToPractice')}
       />
     );
   }
@@ -156,8 +157,9 @@ function MissionHub() {
               title={label[step.id].title}
               sub={label[step.id].sub}
               icon={<Icon name={label[step.id].icon} />}
-              // Shortcuts only when revisiting a completed mission.
-              onClick={journey.shortcuts ? () => run(step.id) : undefined}
+              // Watching is open at any time (it never moves progress); Learn / Practice become
+              // shortcuts only when revisiting a completed mission.
+              onClick={step.open ? () => run(step.id) : undefined}
             />
           ))}
         </ol>
@@ -247,6 +249,7 @@ function MissionPlayer() {
   if (showVideo && video) return <VideoOverlay video={video} onClose={() => setShowVideo(false)} />;
   if (!step || step.kind === 'summary') return <VictoryScreen />;
   const progress = Math.round((bc.index / day.steps.length) * 100);
+  const replay = practiceReplay({ hasVideo: Boolean(video), hasConversation: Boolean(convo), stepKind: step.kind, index: bc.index });
   const phases = missionPhases(day);
   const phase = phaseOfIndex(phases, bc.index);
   // The companion's one line for this step, if it has one: the mission's goal on the intro card, or
@@ -275,14 +278,15 @@ function MissionPlayer() {
       {/* Smart Foundation Detection: a tiny, non-blocking nudge for the first building-block word in
           this mission the learner has never viewed. Learn now / Dismiss — never gates the lesson. */}
       <FoundationHint targets={day.items.map((i) => i.text)} />
-      {/* Video-first missions: the full conversation is one tap away at any moment. */}
-      {video && step.kind !== 'video' && (
+      {/* Video-first missions: the full conversation is one tap away at any moment — opening it is
+          UI state only (the step and the progress stay exactly as they are). */}
+      {replay === 'watch' && (
         <button className="btn-ghost" style={{ alignSelf: 'center', marginBottom: 4 }} onClick={() => { cancelSpeech(); setShowVideo(true); }}>
           {t('watchFullConvo')}
         </button>
       )}
       {/* Listen → Understand → Learn: missions without a video can still hear the scene up front. */}
-      {!video && bc.index === 0 && convo && (
+      {replay === 'listen' && (
         <button className="btn-ghost" style={{ alignSelf: 'center', marginBottom: 4 }} onClick={() => setShowReader(true)}>
           {t('listenFullConvo')}
         </button>

@@ -22,6 +22,13 @@ loop (typecheck → lint → tests → build → smoke) green at every milestone
 
 ## What's done
 
+### Replay the mission video at any time (2026-10-26)
+The overview's Watch step is tappable during a mission in progress (it was a shortcut only after
+completion), and "continue" under the video resumes the EXACT saved step mid-mission (it used to
+restart at the start of Learn). Watching is UI state only — it never completes, skips or resets a
+step. Pure rules in `missionFlow.ts` (`missionJourney` step `open`, `afterWatching`,
+`practiceReplay`), tested in `missionReplay.test.ts`; missions without a video show no video control.
+
 ### Mission 04 — Group 3 pictures: the friend's scene (2026-10-25)
 Eight approved friend scenes in `apps/web/public/images/mission04/friend-*.jpg` (offer-coffee,
 want-coffee, know-centre, walk-twenty, i-can-walk, dinner-seven, sorry-cant, no-problem; 556 KB; one

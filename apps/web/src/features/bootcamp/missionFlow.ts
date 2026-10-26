@@ -60,8 +60,11 @@ export type JourneyStepId = 'watch' | 'learn' | 'practice' | 'again';
 export type JourneyStepState = 'done' | 'current' | 'upcoming';
 
 export interface MissionJourney {
-  /** The journey, in order. `again` (the reward) exists only once the mission is completed. */
-  steps: { id: JourneyStepId; state: JourneyStepState }[];
+  /** The journey, in order. `again` (the reward) exists only once the mission is completed.
+   *  `open` = the step can be tapped right now. Watching (the video, or the conversation read aloud)
+   *  is ALWAYS open — before, during and after the mission: it never moves progress. Learn and
+   *  Practice open as shortcuts only once the mission is completed. */
+  steps: { id: JourneyStepId; state: JourneyStepState; open: boolean }[];
   /** THE primary action — exactly one. `resume` = it continues a section the learner is mid-way
    *  through (so it enters at the saved step, not the section's start). */
   primary: { step: JourneyStepId; resume: boolean };
@@ -103,7 +106,35 @@ export function missionJourney({ phases, canWatch, done, saved, watched }: Journ
     // Learn / Practice are "done" from STORED progress. Watching is not stored, so the Watch step is
     // only ever ticked for a viewing in this visit — never inferred from being further along.
     const reached = id === 'watch' ? watched : done || i < at;
-    return { id, state: (id === current ? 'current' : reached ? 'done' : 'upcoming') as JourneyStepState };
+    const open = id === 'watch' || id === 'again' || done;
+    return { id, state: (id === current ? 'current' : reached ? 'done' : 'upcoming') as JourneyStepState, open };
   });
   return { steps, primary: { step: current, resume: inLearn || inPractice }, shortcuts: done };
+}
+
+/**
+ * What the "continue" button under the conversation video does — PURE, so where progress lives (this
+ * device today, an account later) does not matter: it only names a destination.
+ *   - a completed mission: nothing to continue to (the video is the reward) → `none`;
+ *   - a mission in progress: back to EXACTLY the saved step → `resume` (never a restart);
+ *   - a first pass: the start of the guided path after watching → `start` at `at`.
+ * Watching itself never writes progress: no step is completed, skipped or reset by opening it.
+ */
+export type AfterWatching = { kind: 'none' } | { kind: 'resume' } | { kind: 'start'; at: number };
+export function afterWatching(journey: MissionJourney, done: boolean, startAt: number): AfterWatching {
+  if (done) return { kind: 'none' };
+  if (journey.primary.resume) return { kind: 'resume' };
+  return { kind: 'start', at: startAt };
+}
+
+/**
+ * The replay control on the practice screen. With a video, the full conversation is one tap away at
+ * EVERY step (except a step that IS the video) — enabled, unlimited, and UI-only: it never changes the
+ * step or the progress. Without a video there is no video control (never a broken player); the scene
+ * can still be heard read aloud before the first step.
+ */
+export type PracticeReplay = 'watch' | 'listen' | null;
+export function practiceReplay({ hasVideo, hasConversation, stepKind, index }: { hasVideo: boolean; hasConversation: boolean; stepKind: string; index: number }): PracticeReplay {
+  if (hasVideo) return stepKind === 'video' ? null : 'watch';
+  return index === 0 && hasConversation ? 'listen' : null;
 }

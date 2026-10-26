@@ -218,8 +218,10 @@ describe('a mission without a video shows no video UI', () => {
     // Hub: the Watch step plays the video only if there is one, else reads the conversation aloud.
     expect(player).toContain('if (video) setShowVideo(true);');
     expect(player).toContain('if (showVideo && video) {');
-    // In a lesson: the "watch the full conversation" button exists only with a video.
-    expect(player).toContain("{video && step.kind !== 'video' && (");
+    // In a lesson: the "watch the full conversation" button exists only with a video (practiceReplay
+    // answers 'watch' only when hasVideo — see missionReplay.test.ts).
+    expect(player).toContain("const replay = practiceReplay({ hasVideo: Boolean(video), hasConversation: Boolean(convo), stepKind: step.kind, index: bc.index });");
+    expect(player).toContain("{replay === 'watch' && (");
     // Overlays (lesson and victory screen) open only with a video.
     expect(player.match(/if \(showVideo && video\) return <VideoOverlay video=\{video\}/g)).toHaveLength(2);
     // A video step with no video is passed over, never rendered as an empty player.
