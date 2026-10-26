@@ -22,6 +22,16 @@ loop (typecheck → lint → tests → build → smoke) green at every milestone
 
 ## What's done
 
+### Teach-before-test: SEEN BEFORE ≠ LEARNED BEFORE (2026-10-26)
+
+The strict audits no longer treat every word of an earlier mission's sentences and conversations as
+known. `priorLearning.ts` builds VERIFIED prior learning: the covered concepts of earlier missions plus
+the words of their teaching encounters (meaning shown — never the conversation alone, a distractor or a
+test). Missions 04 and 05 audit against it and pass unchanged; ~9–16 words per language that were only
+ever seen (e.g. "likewise", "friend", Mission 02's tested-only "ten" / "fifteen") no longer count. The
+in-order audit itself moved there too (`missionWalk`, `unpreparedWords`, `unpreparedChunks`) for
+Mission 06+. No mission content changed (fingerprints pinned in `priorLearning.test.ts`).
+
 ### Mission 05 — Group 3 pictures: the map and the goodbye — 19 / 19 (2026-10-26)
 
 Five approved wide scenes on the cards of their own lines: show-me-map (the traveller's request),

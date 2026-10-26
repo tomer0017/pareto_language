@@ -133,6 +133,14 @@ stable across re-renders. **Narrative dialogue order is never shuffled** — onl
   The Mission 04 pass added `MatchTile.caption` (a few app-language words under a tile — what it
   means) and `MissionSpec.steps` (a spec mission may hand-build its journey per language; its
   sentences and scenes still come from the spec — used by Everyday Core, `practiceV1.ts` `m04Steps`).
+  Mission audits: each mission's conversation chunks live in `missionNNCoverage.ts` (`coverageOf` in
+  `mission01Coverage.ts` is the rule). `priorLearning.ts` is the shared teach-before-test kit:
+  `teachingEncounters(day)` (lines shown WITH their meaning — cards, key sentences, review cards,
+  listening drills, meaning matches, one-tile rounds; never the conversation, a distractor or a test),
+  `learnedBefore(lang, n)` (VERIFIED prior learning for mission n: covered concepts + taught words of
+  Missions 1…n-1 — seen ≠ learned), and `missionWalk` / `unpreparedWords` / `unpreparedChunks` (the
+  strict in-order audit). A new mission's test calls these instead of rebuilding prior knowledge; a
+  new mission's coverage file is registered in `MISSION_CONCEPTS`.
 - **Companion inside a mission** — `companionCoach.ts` (`coachFor(steps, index, missionId)`) decides,
   purely, whether a step gets one app-language line (the mission goal on its intro card; how to play
   the first game of each kind; `MISSION_GAME_INTRO` overrides that line where a mission's first game of

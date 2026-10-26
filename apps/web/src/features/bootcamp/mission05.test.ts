@@ -5,6 +5,7 @@ import { missionVideo } from '../videos/missionVideo.js';
 import { cinematicTranscript, missionDialogues } from './exportDialogue.js';
 import { coverageOf, encounters, hasChunk, plain, type CoverageLang } from './mission01Coverage.js';
 import { M05_CONCEPTS } from './mission05Coverage.js';
+import { learnedBefore, missionWalk, unpreparedChunks as auditUnpreparedChunks, unpreparedWords as auditUnpreparedWords } from './priorLearning.js';
 import { missionPhases, practiceReplay } from './missionFlow.js';
 import { BOOTCAMP_PLAN, missionNumber } from './plan.js';
 import { M05_ROUTE, M05_SLOTS, M05_TOWN, type TownSpot } from './practiceV1.js';
@@ -138,51 +139,12 @@ describe('coverage: every meaningful chunk, no orphan', () => {
 });
 
 describe('TEACH before TEST — the strict in-order audit', () => {
-  const words = (s: string): string[] => plain(s).trim().split(' ').filter(Boolean);
-  /** What the learner already has from Missions 01–04 (their sentences and conversations). */
-  const prior = (lang: CoverageLang): Set<string> => {
-    const out = new Set<string>();
-    for (const n of [1, 2, 3, 4]) {
-      const d = day(lang, n);
-      for (const i of d.items) for (const w of words(i.text)) out.add(w);
-      for (const dl of Object.values(d.dialogues)) for (const node of dl.nodes) { for (const w of words(node.en)) out.add(w); for (const c of node.choices ?? []) for (const w of words(c.en)) out.add(w); }
-    }
-    return out;
-  };
-  type Event = { at: number; text: string; where: string };
-  /** Prepared = met WITH ITS MEANING (a building block or picture card, a listening drill whose answer
-   *  shows the meaning, the conversation with its translation). Every map round, board, builder and
-   *  Quick Reply is a TEST: it prepares nothing. Map labels are tested too. */
-  const walk = (d: BootcampDayContent): { taught: Event[]; tested: Event[] } => {
-    const taught: Event[] = [];
-    const tested: Event[] = [];
-    d.steps.forEach((s, at) => {
-      const where = `step ${at + 1} ${s.kind}`;
-      const teach = (t: string): void => { if (t) taught.push({ at, text: t, where }); };
-      const test = (t: string): void => { if (t) tested.push({ at, text: t, where }); };
-      if (s.kind === 'prime') { s.words.forEach((w) => teach(w.text)); if (s.buildFromItemId) teach(text(d, s.buildFromItemId)); }
-      else if (s.kind === 'tool') teach(text(d, s.itemId));
-      else if (s.kind === 'replies') s.replyIds.forEach((id) => teach(text(d, id)));
-      else if (s.kind === 'swipe') s.itemIds.forEach((id) => teach(text(d, id)));
-      else if (s.kind === 'dialogue') d.dialogues[s.dialogueId]!.nodes.forEach((n) => { teach(n.en); n.choices?.forEach((c) => teach(c.en)); });
-      else if (s.kind === 'miniMap') s.rounds.forEach((r) => { test(r.audio.en); r.cells.forEach((c) => test(c.label ?? '')); });
-      else if (s.kind === 'visualMatch') s.rounds.forEach((r) => (r.show?.length === 1 ? teach(r.audio.en) : test(r.audio.en)));
-      else if (s.kind === 'sentenceBuilder') s.rounds.forEach((r) => test(r.chunks.join(' ')));
-      else if (s.kind === 'quickReply') s.rounds.forEach((r) => { test(r.npc?.en ?? text(d, r.promptItemId)); r.options.forEach((o) => test(o.text ?? text(d, o.itemId))); });
-      else if (s.kind === 'matchPairs') s.pairs.forEach((p) => { test(text(d, p.promptItemId)); test(text(d, p.answerItemId)); });
-      else if (s.kind === 'quiz' || s.kind === 'ambush' || s.kind === 'swap') test('∅ a translation quiz / ambush / swap — none expected here');
-    });
-    return { taught, tested };
-  };
-  const unpreparedWords = (d: BootcampDayContent, lang: CoverageLang): string[] => {
-    const { taught, tested } = walk(d);
-    const already = prior(lang);
-    return tested.flatMap((t) => words(t.text).filter((w) => !already.has(w) && !taught.some((e) => e.at < t.at && words(e.text).includes(w))).map((w) => `${t.where}: “${w}” in “${t.text}”`));
-  };
-  const unpreparedChunks = (d: BootcampDayContent, lang: CoverageLang): string[] => {
-    const { taught, tested } = walk(d);
-    return tested.flatMap((t) => M05_CONCEPTS.filter((c) => hasChunk(t.text, c.chunk[lang]) && !taught.some((e) => e.at < t.at && hasChunk(e.text, c.chunk[lang]))).map((c) => `${t.where}: ${c.id} in “${t.text}”`));
-  };
+  /** What the learner VERIFIABLY learned in Missions 01–04 — taught with its meaning, never merely seen (`priorLearning.ts`). */
+  const prior = (lang: CoverageLang): ReadonlySet<string> => learnedBefore(lang, 5).words;
+  /** The shared in-order walk (`priorLearning.ts`): taught = met with its meaning; every map round, board, builder and Quick Reply is a TEST. */
+  const walk = missionWalk;
+  const unpreparedWords = (d: BootcampDayContent, lang: CoverageLang): string[] => auditUnpreparedWords(d, prior(lang));
+  const unpreparedChunks = (d: BootcampDayContent, lang: CoverageLang): string[] => auditUnpreparedChunks(d, lang, M05_CONCEPTS);
   for (const lang of LANGS) {
     it(`${lang}: no tested line or map label has a word not met with its meaning first (here, or in Missions 01–04)`, () => { expect(unpreparedWords(day(lang), lang)).toEqual([]); });
     it(`${lang}: no tested line has a chunk of the conversation this mission had not taught first`, () => { expect(unpreparedChunks(day(lang), lang)).toEqual([]); });
