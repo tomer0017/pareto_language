@@ -1459,6 +1459,8 @@ div.jstep { box-shadow: none; border-color: var(--line); }
 .pgrid.is-one .ptile { font-size: 2.2rem; }
 .prime-img { flex: none; width: 76px; height: 76px; object-fit: contain; border-radius: 14px; }
 .prime-img.is-scene { width: 100px; height: 100px; border-radius: 16px; }
+/* Wide panels (Mission 05): a full row of their own, at their own shape — never cropped, never stretched. */
+.prime-img.is-wide { flex-basis: 100%; width: 100%; height: auto; max-width: 600px; border-radius: 12px; }
 .ptile {
   aspect-ratio: 1 / 1; min-height: 0; padding: 4px; border-radius: var(--r-md, 16px);
   background: var(--card); border: 1.5px solid var(--line); box-shadow: var(--shadow-card);

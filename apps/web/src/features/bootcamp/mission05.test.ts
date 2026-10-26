@@ -1,3 +1,4 @@
+import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { missionVideo } from '../videos/missionVideo.js';
 import { cinematicTranscript, missionDialogues } from './exportDialogue.js';
@@ -16,6 +17,15 @@ import type { BootcampDayContent, BootcampStep, MapCell } from './types.js';
  * help — and nothing is tested before it was taught with its meaning.
  */
 const LANGS = ['en', 'es', 'fr'] as const;
+/** Width × height from a JPEG's start-of-frame marker. */
+const jpegSize = (b: Buffer): { w: number; h: number } => {
+  for (let i = 2; i < b.length;) {
+    const marker = b[i + 1]!; const len = b.readUInt16BE(i + 2);
+    if (marker >= 0xc0 && marker <= 0xc3) return { h: b.readUInt16BE(i + 5), w: b.readUInt16BE(i + 7) };
+    i += 2 + len;
+  }
+  throw new Error('no SOF');
+};
 const day = (lang: CoverageLang, n = 5): BootcampDayContent => MISSIONS_BY_LANG[lang]![BOOTCAMP_PLAN[n - 1]!.day]!;
 const strip = (id: string | undefined): string => (id ?? '').replace(/^[a-z]{2}\./, '');
 const fnv = (s: string): string => { let h = 0x811c9dc5; for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 0x01000193) >>> 0; } return h.toString(16).padStart(8, '0'); };
@@ -302,16 +312,55 @@ describe('no untaught "right", no artificial recovery, real learner lines only',
   });
 });
 
-describe('image slots — ready for the final artwork', () => {
+describe('image slots — Group 1 (the building blocks) is in; the scene cards are ready for theirs', () => {
   const SLOTS = ['station', 'straight', 'left', 'corner', 'far', 'five-minutes-on-foot', 'next-to', 'bank', 'map', 'ask-where-station', 'npc-gives-directions', 'is-it-far', 'five-minutes-walk', 'next-to-bank', 'show-me-map', 'we-are-here', 'station-right-there', 'cant-miss-it', 'good-day'];
-  it('all nineteen slots exist, each with a placeholder; none yet points at a file that does not exist', () => {
+  const GROUP1 = ['station', 'straight', 'left', 'corner', 'far', 'five-minutes-on-foot', 'next-to', 'bank', 'map'] as const;
+  const PUBLIC = new URL('../../../public/', import.meta.url);
+  it('all nineteen slots exist, each with a placeholder; the nine building blocks have their approved picture, the scene cards not yet', () => {
     expect(Object.keys(M05_SLOTS).sort()).toEqual([...SLOTS].sort());
-    for (const s of Object.values(M05_SLOTS)) { expect(s.emoji).toBeTruthy(); expect(s.image).toBeUndefined(); }
+    for (const s of Object.values(M05_SLOTS)) expect(s.emoji).toBeTruthy();
+    for (const id of SLOTS) expect(Boolean(M05_SLOTS[id as keyof typeof M05_SLOTS].image), id).toBe((GROUP1 as readonly string[]).includes(id));
   });
-  it('every Mission 05 card picture comes from a slot — one meaning, one slot — and the map\'s station and bank are the same pictures', () => {
-    const emojis = new Set(Object.values(M05_SLOTS).map((s) => s.emoji));
-    for (const lang of LANGS) for (const w of stepsOf(day(lang), 'prime').flatMap((p) => p.words)) expect(emojis, `${lang} ${w.key}`).toContain(w.emoji);
+  it('each building block is mapped to its own file — the one named for its meaning — and the nine are distinct', () => {
+    for (const id of GROUP1) expect(M05_SLOTS[id].image, id).toBe(`images/mission05/${id}.jpg`);
+    expect(new Set(GROUP1.map((id) => M05_SLOTS[id].image)).size).toBe(9);
+  });
+  it('all nine files exist, are real JPEGs, and are the wide panels as cut (never squared, never upscaled past the collage)', () => {
+    for (const id of GROUP1) {
+      const bytes = readFileSync(new URL(M05_SLOTS[id].image!, PUBLIC));
+      expect([bytes[0], bytes[1]], id).toEqual([0xff, 0xd8]);
+      const { w, h } = jpegSize(bytes);
+      expect(w / h, `${id} ${w}×${h}`).toBeGreaterThan(1.8); // the approved panels are ~2:1
+      expect(w, id).toBeLessThanOrEqual(600); // a third of the 1808-px collage: no upscaling
+    }
+  });
+  it('English, Spanish and French show the same picture for the same meaning', () => {
+    const pics = (lang: CoverageLang) => stepsOf(day(lang), 'prime').flatMap((p) => p.words.map((w) => [w.key, w.image ?? null]));
+    expect(pics('es')).toEqual(pics('en'));
+    expect(pics('fr')).toEqual(pics('en'));
+    expect(pics('en').filter(([, i]) => i).length).toBeGreaterThanOrEqual(9);
+  });
+  it('every Mission 05 card picture comes from a slot — one meaning, one slot — and the map\'s station and bank still read from the same slots', () => {
+    const pictures = new Set(Object.values(M05_SLOTS).flatMap((s) => [s.emoji, s.image]));
+    for (const lang of LANGS) for (const w of stepsOf(day(lang), 'prime').flatMap((p) => p.words)) expect(pictures, `${lang} ${w.key}`).toContain(w.image ?? w.emoji);
     expect([M05_TOWN.station.emoji, M05_TOWN.bank.emoji]).toEqual([M05_SLOTS.station.emoji, M05_SLOTS.bank.emoji]);
+  });
+  it('the pictures are shown wide (their own shape) on Mission 05\'s cards only', () => {
+    for (const lang of LANGS) for (const p of stepsOf(day(lang), 'prime')) expect(p.widePictures, lang).toBe(true);
+    for (const n of [1, 2, 3, 4, 6, 7, 8, 9, 10]) for (const lang of LANGS) expect(stepsOf(day(lang, n), 'prime').some((p) => p.widePictures), `M${n} ${lang}`).toBe(false);
+  });
+  it('the pictures changed nothing else: the town, every map round, the sentences, the conversation, every step', () => {
+    expect(fnv(JSON.stringify(M05_TOWN))).toBe('e126fc30');
+    const prints = Object.fromEntries(LANGS.flatMap((lang) => {
+      const d = day(lang);
+      const bare = d.steps.map((s) => (s.kind === 'prime' ? { ...s, widePictures: undefined, words: s.words.map((w) => ({ ...w, image: undefined, emoji: undefined })) } : s));
+      return [[`${lang}.maps`, fnv(JSON.stringify(maps(d)))], [`${lang}.steps`, fnv(JSON.stringify(bare))], [`${lang}.items+dialogues`, fnv(JSON.stringify([d.items, d.dialogues]))]];
+    }));
+    expect(prints).toEqual({
+      'en.maps': 'a3a2c006', 'en.steps': '9424439b', 'en.items+dialogues': '77df8f94',
+      'es.maps': 'de7bca9f', 'es.steps': 'd24be53f', 'es.items+dialogues': '2360b09e',
+      'fr.maps': '3bb93845', 'fr.steps': '1585b4fb', 'fr.items+dialogues': '7c439c11',
+    });
   });
 });
 
@@ -347,7 +396,7 @@ describe('video, progress, parity and pacing', () => {
       if (s.kind === 'visualMatch') return [s.kind, s.tiles, s.rounds.map((r) => [r.correct, strip(r.itemId)])];
       if (s.kind === 'sentenceBuilder') return [s.kind, s.rounds.map((r) => strip(r.itemId))];
       if (s.kind === 'replies') return [s.kind, strip(s.saidItemId), s.replyIds.map(strip)];
-      if (s.kind === 'prime') return [s.kind, s.gate, s.words.map((w) => [w.key, w.emoji, w.line, w.meaning])];
+      if (s.kind === 'prime') return [s.kind, s.gate, s.widePictures, s.words.map((w) => [w.key, w.emoji, w.image, w.line, w.meaning])];
       return s.kind;
     });
     for (const lang of LANGS) {

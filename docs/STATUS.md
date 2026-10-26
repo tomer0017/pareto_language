@@ -22,6 +22,16 @@ loop (typecheck → lint → tests → build → smoke) green at every milestone
 
 ## What's done
 
+### Mission 05 — Group 1 pictures: the nine building blocks (2026-10-26)
+
+Nine approved panels (station, straight, left, corner, far, five minutes on foot, next to, bank, map)
+cut from the original collage at native resolution (~597×251–307, no resampling, 1-px blended seam
+trimmed on each gutter side) into `public/images/mission05/`, wired into `M05_SLOTS`, shared by EN /
+ES / FR. The art is WIDE (~2:1), so Mission 05's card steps set `widePictures`: the picture takes its
+own full-width row at its own shape, above the words (`.prime-img.is-wide`). No other mission sets it.
+The map stays drawn (its station / bank keep the slots' emoji). Town, map rounds, sentences,
+conversation and every step other than the pictures are hash-identical (`mission05.test.ts`).
+
 ### Mission 05 — Directions: the full learning flow, one town (2026-10-26)
 
 The conversation is LOCKED (dialogue trees byte-identical, tested). The mission is rebuilt around ONE

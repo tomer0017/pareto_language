@@ -970,17 +970,24 @@ export function m04Steps(lang: MissionLang): BootcampStep[] {
 type Cell = Omit<MapCell, 'label'> & { label?: L3 };
 
 /**
- * Mission 05's image slots — one per meaning. Until the final artwork is approved a slot shows its
+ * Mission 05's image slots — one per meaning. Until its final artwork is approved a slot shows its
  * placeholder emoji; giving a slot an `image` (public path) swaps it everywhere the meaning is used.
- * (Building blocks, scene cards and the map's landmarks all read from here.)
+ * (Building blocks, scene cards and the map's landmarks all read from here; the map itself stays
+ * drawn, so its station and bank keep the slots' emoji.) The approved panels are WIDE (~2:1), so
+ * every Mission 05 card step sets `widePictures`.
  */
 type M05Slot =
   | 'station' | 'straight' | 'left' | 'corner' | 'far' | 'five-minutes-on-foot' | 'next-to' | 'bank' | 'map'
   | 'ask-where-station' | 'npc-gives-directions' | 'is-it-far' | 'five-minutes-walk' | 'next-to-bank' | 'show-me-map'
   | 'we-are-here' | 'station-right-there' | 'cant-miss-it' | 'good-day';
+const M05_IMG = 'images/mission05/';
 export const M05_SLOTS: Record<M05Slot, { emoji: string; image?: string }> = {
-  station: { emoji: '🚉' }, straight: { emoji: '⬆️' }, left: { emoji: '⬅️' }, corner: { emoji: '↰' }, far: { emoji: '🔭' },
-  'five-minutes-on-foot': { emoji: '🚶' }, 'next-to': { emoji: '↔️' }, bank: { emoji: '🏦' }, map: { emoji: '🗺️' },
+  // Group 1 — the building blocks: approved wide panels (public/images/mission05/, shared by EN / ES / FR)
+  station: { emoji: '🚉', image: `${M05_IMG}station.jpg` }, straight: { emoji: '⬆️', image: `${M05_IMG}straight.jpg` },
+  left: { emoji: '⬅️', image: `${M05_IMG}left.jpg` }, corner: { emoji: '↰', image: `${M05_IMG}corner.jpg` }, far: { emoji: '🔭', image: `${M05_IMG}far.jpg` },
+  'five-minutes-on-foot': { emoji: '🚶', image: `${M05_IMG}five-minutes-on-foot.jpg` }, 'next-to': { emoji: '↔️', image: `${M05_IMG}next-to.jpg` },
+  bank: { emoji: '🏦', image: `${M05_IMG}bank.jpg` }, map: { emoji: '🗺️', image: `${M05_IMG}map.jpg` },
+  // Group 2 — the scene cards: placeholders until their pictures arrive
   'ask-where-station': { emoji: '🙋' }, 'npc-gives-directions': { emoji: '🧭' }, 'is-it-far': { emoji: '🤔' }, 'five-minutes-walk': { emoji: '🚶' },
   'next-to-bank': { emoji: '🏦' }, 'show-me-map': { emoji: '🗺️' }, 'we-are-here': { emoji: '🧍' }, 'station-right-there': { emoji: '🚉' },
   'cant-miss-it': { emoji: '👀' }, 'good-day': { emoji: '👋' },
@@ -1085,6 +1092,7 @@ export function m05Steps(lang: MissionLang): BootcampStep[] {
     // STEP 0 — optional: the pieces of the directions.
     k.prime({
       gate: true,
+      widePictures: true,
       intro: ['מה שצריך כדי להבין את ההוראות. הקש כדי לשמוע.', 'What you need to understand the directions. Tap to hear.'],
       words: [
         { key: 'place.station', t: ['station', 'gare', 'estación'], meaning: ['תחנה (רכבת)', 'station'], ...slot('station') },
@@ -1103,6 +1111,7 @@ export function m05Steps(lang: MissionLang): BootcampStep[] {
       label: ['העיר — מה אתה שואל, ומה יש בה', 'The town — what you ask, and what is in it'],
       intro: ['השאלה שלך, ושני המקומות שבמפה. הקש כדי לשמוע.', 'Your question, and the two places on the map. Tap to hear.'],
       bigPictures: true,
+      widePictures: true,
       words: [
         { line: true, key: 'dir.line.ask', t: l3(L_ASK), meaning: ['סליחה! איפה התחנה?', 'Excuse me! Where is the station?'], ...slot('ask-where-station') },
         { line: true, key: 'dir.line.station', t: l3(C_STATION), meaning: ['התחנה', 'the station'], ...slot('station') },
@@ -1123,6 +1132,7 @@ export function m05Steps(lang: MissionLang): BootcampStep[] {
       label: ['התשובה — לאן הולכים', 'The answer — which way'],
       intro: ['ההוראות כולן, ואחר כך כל חלק לבד. הקש כדי לשמוע.', 'The whole directions, then each piece. Tap to hear.'],
       bigPictures: true,
+      widePictures: true,
       words: [
         { line: true, key: 'dir.line.directions', t: l3(L_DIRECTIONS), meaning: ['התחנה? לך ישר, ואז פנה שמאלה בפינה.', 'The station? Go straight ahead, then turn left at the corner.'], ...slot('npc-gives-directions') },
         { line: true, key: 'dir.line.straight', t: l3(C_STRAIGHT), meaning: ['לך ישר.', 'Go straight ahead.'], ...slot('straight') },
@@ -1151,6 +1161,7 @@ export function m05Steps(lang: MissionLang): BootcampStep[] {
       label: ['זה רחוק?', 'Is it far?'],
       intro: ['השאלה שלך — והתשובה: כמה זמן, ואיפה בדיוק. הקש כדי לשמוע.', 'Your question — and the answer: how long, and where exactly. Tap to hear.'],
       bigPictures: true,
+      widePictures: true,
       words: [
         { line: true, key: 'dir.line.is-it-far', t: l3(L_FAR), meaning: ['זה רחוק?', 'Is it far?'], ...slot('is-it-far') },
         { line: true, key: 'dir.line.five-minutes', t: l3(C_FIVE), meaning: ['לא, זה בערך חמש דקות ברגל.', 'No, it’s about five minutes on foot.'], ...slot('five-minutes-walk') },
@@ -1175,6 +1186,7 @@ export function m05Steps(lang: MissionLang): BootcampStep[] {
       label: ['על המפה', 'On the map'],
       intro: ['הבקשה שלך — והתשובה, עם האצבע על המפה. הקש כדי לשמוע.', 'Your request — and the answer, with a finger on the map. Tap to hear.'],
       bigPictures: true,
+      widePictures: true,
       words: [
         { line: true, key: 'dir.line.show-me-map', t: l3(L_SHOW), meaning: ['אתה יכול להראות לי על המפה? (כמו "Can you show me?" — ועוד "על המפה")', 'Can you show me on the map? (like "Can you show me?" — plus "on the map")'], ...slot('show-me-map') },
         { line: true, key: 'dir.line.on-map', t: l3(L_ON_MAP), meaning: ['כמובן — הנה, אנחנו כאן, והתחנה בדיוק שם.', 'Of course — here, we are here, and the station is right there.'], ...slot('map') },
@@ -1204,6 +1216,7 @@ export function m05Steps(lang: MissionLang): BootcampStep[] {
       label: ['הפרידה', 'The goodbye'],
       intro: ['שני דברים שתשמע בסוף. לא צריך להגיד אותם — רק להבין. הקש כדי לשמוע.', 'Two things you will hear at the end. You do not need to say them — just understand. Tap to hear.'],
       bigPictures: true,
+      widePictures: true,
       words: [
         { line: true, key: 'dir.line.cant-miss', t: ['You can’t miss it.', 'Vous ne pouvez pas la manquer.', 'No tiene pérdida.'], meaning: ['אי אפשר לפספס. (תמצא את זה בקלות)', 'You can’t miss it. (you will find it easily)'], ...slot('cant-miss-it') },
         { line: true, key: 'dir.line.good-day', t: ['Have a good day!', 'Bonne journée !', '¡Que tenga buen día!'], meaning: ['שיהיה יום טוב!', 'Have a good day!'], ...slot('good-day') },

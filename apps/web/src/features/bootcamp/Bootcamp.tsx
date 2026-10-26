@@ -394,11 +394,11 @@ function PrimeStep({ step, itemsById, onNext }: { step: Extract<BootcampStep, { 
             <button
               key={`${w.text}-${i}`}
               className={`list-row card-press ${playing === `w${i}` ? 'core-playing' : ''}`}
-              style={{ width: '100%', textAlign: 'start', background: 'var(--card)', borderRadius: 'var(--r-md)', border: 'none', padding: '10px 14px', boxShadow: 'var(--shadow-card)', display: 'flex', alignItems: 'center', gap: 12 }}
+              style={{ width: '100%', textAlign: 'start', background: 'var(--card)', borderRadius: 'var(--r-md)', border: 'none', padding: '10px 14px', boxShadow: 'var(--shadow-card)', display: 'flex', alignItems: 'center', gap: 12, ...(step.widePictures && w.image ? { flexWrap: 'wrap' as const } : {}) }}
               onClick={() => say(`w${i}`, w.text)}
             >
               {w.image
-                ? <img className={step.bigPictures ? 'prime-img is-scene' : 'prime-img'} src={resolveAsset(w.image)} alt="" draggable={false} decoding="async" />
+                ? <img className={step.widePictures ? 'prime-img is-wide' : step.bigPictures ? 'prime-img is-scene' : 'prime-img'} src={resolveAsset(w.image)} alt="" draggable={false} decoding="async" />
                 : w.emoji && <span style={{ fontSize: '1.6rem', width: 30, textAlign: 'center' }} aria-hidden>{w.emoji}</span>}
               <span style={{ minWidth: 0, flex: 1 }}>
                 <span style={{ display: "block", fontWeight: 700 }}><TargetText text={w.text} />{w.review && <span title={t('primeReview')} aria-label={t('primeReview')}> ♻️</span>}</span>

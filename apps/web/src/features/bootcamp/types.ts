@@ -222,7 +222,9 @@ export type BootcampStep =
       /** Step 0: open on a short invitation — start, or "I already know this — skip". */
       gate?: boolean;
       /** Pictures of whole SCENES (a desk, a map): drawn larger, so who / what / where reads without zooming. */
-      bigPictures?: boolean }
+      bigPictures?: boolean;
+      /** The pictures are WIDE panels (Mission 05): drawn full width, at their own shape, above the words. */
+      widePictures?: boolean }
   | { kind: 'quiz'; itemId: string; wrongIds: [string, string] }
   | { kind: 'replies'; saidItemId: string; replyIds: string[] }   // expected-reply training
   | { kind: 'swipe'; itemIds: string[] }

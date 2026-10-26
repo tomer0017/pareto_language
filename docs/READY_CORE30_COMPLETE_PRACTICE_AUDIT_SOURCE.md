@@ -4933,14 +4933,14 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `place.station` — EN "station" · FR "gare" · ES "estación" — meaning "תחנה (רכבת)" / "station" — icon 🚉 — new
-2. `direction.straight` — EN "straight ahead" · FR "tout droit" · ES "todo recto" — meaning "ישר" / "straight ahead" — icon ⬆️ — new
-3. `direction.left` — EN "left" · FR "gauche" · ES "izquierda" — meaning "שמאלה" / "left" — icon ⬅️ — new
-4. `place.corner` — EN "corner" · FR "coin" · ES "esquina" — meaning "פינה" / "corner" — icon ↰ — new
-5. `distance.far` — EN "far" · FR "loin" · ES "lejos" — meaning "רחוק" / "far" — icon 🔭 — new
-6. `distance.minutes-on-foot` — EN "five minutes on foot" · FR "cinq minutes à pied" · ES "cinco minutos a pie" — meaning "חמש דקות ברגל" / "five minutes on foot" — icon 🚶 — marked ♻️ review
-7. `position.next-to` — EN "next to" · FR "à côté de" · ES "al lado de" — meaning "ליד" / "next to" — icon ↔️ — new
-8. `place.bank` — EN "bank" · FR "banque" · ES "banco" — meaning "בנק" / "bank" — icon 🏦 — new
+1. `place.station` — EN "station" · FR "gare" · ES "estación" — meaning "תחנה (רכבת)" / "station" — icon none — new
+2. `direction.straight` — EN "straight ahead" · FR "tout droit" · ES "todo recto" — meaning "ישר" / "straight ahead" — icon none — new
+3. `direction.left` — EN "left" · FR "gauche" · ES "izquierda" — meaning "שמאלה" / "left" — icon none — new
+4. `place.corner` — EN "corner" · FR "coin" · ES "esquina" — meaning "פינה" / "corner" — icon none — new
+5. `distance.far` — EN "far" · FR "loin" · ES "lejos" — meaning "רחוק" / "far" — icon none — new
+6. `distance.minutes-on-foot` — EN "five minutes on foot" · FR "cinq minutes à pied" · ES "cinco minutos a pie" — meaning "חמש דקות ברגל" / "five minutes on foot" — icon none — marked ♻️ review
+7. `position.next-to` — EN "next to" · FR "à côté de" · ES "al lado de" — meaning "ליד" / "next to" — icon none — new
+8. `place.bank` — EN "bank" · FR "banque" · ES "banco" — meaning "בנק" / "bank" — icon none — new
 
 "These build the sentence:" card: `phrase.dir.where-is` — EN "Where is the station?" · FR "Où est la gare ?" · ES "¿Dónde está la estación?" · HE "איפה התחנה?" (with its own play button).
 
@@ -4950,8 +4950,8 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 Words are paired across languages by their concept KEY (not by position).
 
 1. `dir.line.ask` — EN "Excuse me! Where is the station?" · FR "Excusez-moi ! Où est la gare ?" · ES "¡Perdone! ¿Dónde está la estación?" — meaning "סליחה! איפה התחנה?" / "Excuse me! Where is the station?" — icon 🙋 — new
-2. `dir.line.station` — EN "the station" · FR "la gare" · ES "la estación" — meaning "התחנה" / "the station" — icon 🚉 — new
-3. `dir.line.bank` — EN "the bank" · FR "la banque" · ES "el banco" — meaning "הבנק" / "the bank" — icon 🏦 — new
+2. `dir.line.station` — EN "the station" · FR "la gare" · ES "la estación" — meaning "התחנה" / "the station" — icon none — new
+3. `dir.line.bank` — EN "the bank" · FR "la banque" · ES "el banco" — meaning "הבנק" / "the bank" — icon none — new
 
 No build-sentence card.
 
@@ -4961,9 +4961,9 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 Words are paired across languages by their concept KEY (not by position).
 
 1. `dir.line.directions` — EN "The station? Go straight ahead, then turn left at the corner." · FR "La gare ? Allez tout droit, puis tournez à gauche au coin." · ES "¿La estación? Siga todo recto y luego gire a la izquierda en la esquina." — meaning "התחנה? לך ישר, ואז פנה שמאלה בפינה." / "The station? Go straight ahead, then turn left at the corner." — icon 🧭 — new
-2. `dir.line.straight` — EN "Go straight ahead." · FR "Allez tout droit." · ES "Siga todo recto." — meaning "לך ישר." / "Go straight ahead." — icon ⬆️ — new
-3. `dir.line.corner` — EN "at the corner" · FR "au coin" · ES "en la esquina" — meaning "בפינה" / "at the corner" — icon ↰ — new
-4. `dir.line.turn-left` — EN "Turn left at the corner." · FR "Tournez à gauche au coin." · ES "Gire a la izquierda en la esquina." — meaning "פנה שמאלה בפינה." / "Turn left at the corner." — icon ⬅️ — new
+2. `dir.line.straight` — EN "Go straight ahead." · FR "Allez tout droit." · ES "Siga todo recto." — meaning "לך ישר." / "Go straight ahead." — icon none — new
+3. `dir.line.corner` — EN "at the corner" · FR "au coin" · ES "en la esquina" — meaning "בפינה" / "at the corner" — icon none — new
+4. `dir.line.turn-left` — EN "Turn left at the corner." · FR "Tournez à gauche au coin." · ES "Gire a la izquierda en la esquina." — meaning "פנה שמאלה בפינה." / "Turn left at the corner." — icon none — new
 
 No build-sentence card.
 
@@ -4984,7 +4984,7 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 Words are paired across languages by their concept KEY (not by position).
 
 1. `dir.line.show-me-map` — EN "Can you show me on the map?" · FR "Vous pouvez me montrer sur la carte ?" · ES "¿Me lo puede mostrar en el mapa?" — meaning "אתה יכול להראות לי על המפה? (כמו "Can you show me?" — ועוד "על המפה")" / "Can you show me on the map? (like "Can you show me?" — plus "on the map")" — icon 🗺️ — new
-2. `dir.line.on-map` — EN "Of course — here, we are here, and the station is right there." · FR "Bien sûr — tenez, nous sommes ici, et la gare est juste là." · ES "Claro — mire, estamos aquí, y la estación está justo ahí." — meaning "כמובן — הנה, אנחנו כאן, והתחנה בדיוק שם." / "Of course — here, we are here, and the station is right there." — icon 🗺️ — new
+2. `dir.line.on-map` — EN "Of course — here, we are here, and the station is right there." · FR "Bien sûr — tenez, nous sommes ici, et la gare est juste là." · ES "Claro — mire, estamos aquí, y la estación está justo ahí." — meaning "כמובן — הנה, אנחנו כאן, והתחנה בדיוק שם." / "Of course — here, we are here, and the station is right there." — icon none — new
 3. `dir.line.we-are-here` — EN "we are here" · FR "nous sommes ici" · ES "estamos aquí" — meaning "אנחנו כאן" / "we are here" — icon 🧍 — new
 4. `dir.line.right-there` — EN "the station is right there" · FR "la gare est juste là" · ES "la estación está justo ahí" — meaning "התחנה בדיוק שם" / "the station is right there" — icon 🚉 — new
 
