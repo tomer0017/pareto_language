@@ -389,17 +389,18 @@ describe('image slots — all nineteen have their final picture: Group 1 (buildi
 });
 
 describe('video, progress, parity and pacing', () => {
-  it('the video: plays where it exists (Spanish / French), replayable at every practice step; English has none — no broken player', () => {
-    expect(missionVideo('es', 5)).toBeTruthy();
-    expect(missionVideo('fr', 5)).toBeTruthy();
-    expect(missionVideo('en', 5)).toBeUndefined();
+  it('the video: English, Spanish and French each have it, by the usual file convention, and it is replayable at every practice step', () => {
     for (const lang of LANGS) {
+      const video = missionVideo(lang, BOOTCAMP_PLAN[4]!.day);
+      expect(video?.src, lang).toMatch(new RegExp(`videos/${lang}/${lang}_5\\.mp4$`));
       const d = day(lang);
       expect(d.steps.filter((s) => s.kind === 'video').map((s) => (s as { mode: string }).mode)).toEqual(['again']);
       const phases = missionPhases(d);
       for (let i = phases.practiceStart; i < d.steps.length; i++) {
         const kind = d.steps[i]!.kind;
-        expect(practiceReplay({ hasVideo: true, hasConversation: true, stepKind: kind, index: i })).toBe(kind === 'video' ? null : 'watch');
+        // what the player is given: the resolver's answer, not a Mission 05 special case
+        expect(practiceReplay({ hasVideo: Boolean(video), hasConversation: true, stepKind: kind, index: i }), `${lang} step ${i}`).toBe(kind === 'video' ? null : 'watch');
+        // and were a video ever missing, no broken player (the rule itself; see missionReplay.test.ts for a mission without one)
         expect(practiceReplay({ hasVideo: false, hasConversation: true, stepKind: kind, index: i })).toBe(i === 0 ? 'listen' : null);
       }
     }

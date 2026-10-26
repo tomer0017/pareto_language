@@ -17,7 +17,7 @@ import type * as StoreModule from './bootcampStore.js';
 const disk = new Map<string, string>();
 const dayOf = (id: string): number => BOOTCAMP_PLAN.find((m) => m.id === id)!.day;
 const WITH_VIDEO = dayOf('introduce-myself'); // en_1.mp4 exists
-const NO_VIDEO = dayOf('directions'); // Mission 05: no English video (Spanish / French only)
+const NO_VIDEO = dayOf('small-talk'); // Mission 11: no video in any language
 const SRC = readFileSync(fileURLToPath(new URL('./Bootcamp.tsx', import.meta.url)), 'utf8');
 const between = (from: string, to: string): string => SRC.slice(SRC.indexOf(from), SRC.indexOf(to, SRC.indexOf(from)));
 
