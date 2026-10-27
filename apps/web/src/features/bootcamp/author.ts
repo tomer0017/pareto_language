@@ -141,7 +141,7 @@ export interface CustomizeSpec {
   label?: Copy;
   /** What is being made (☕). */
   base: string;
-  options: { id: string; emoji: string; label: Copy }[];
+  options: { id: string; emoji: string; image?: string; label: Copy }[];
   rounds: { audio: L4; on: string[]; itemId?: string }[];
 }
 export interface MiniMapSpec {
@@ -373,7 +373,7 @@ export function buildPractice(p: PracticeSpec, lang: MissionLang): BootcampStep 
   }
   if (p.kind === 'customize') {
     return {
-      kind: 'customize', ...label, base: p.base, options: p.options.map((o) => ({ id: o.id, emoji: o.emoji, label: T(o.label) })),
+      kind: 'customize', ...label, base: p.base, options: p.options.map((o) => ({ id: o.id, emoji: o.emoji, ...(o.image ? { image: o.image } : {}), label: T(o.label) })),
       rounds: p.rounds.map((r) => ({ audio: spoken(r.audio, lang), on: [...r.on], ...(r.itemId ? { itemId: id(r.itemId) } : {}) })),
     };
   }

@@ -22,6 +22,14 @@ loop (typecheck → lint → tests → build → smoke) green at every milestone
 
 ## What's done
 
+### Mission 06 artwork integration — owner performs manual mobile QA (2026-10-27)
+
+23 individually generated high-resolution images are integrated across cards, choice games, the
+accommodation map, calendar and matching board. All 2,124 tests pass, including 58 Mission 06 tests;
+typecheck, lint, build, smoke, parity and content validation pass. No learning content changed.
+The owner waived agent mobile QA on 2026-10-27 and will perform it manually; production release is authorized.
+See [production and validation report](./MISSION06_VISUAL_REPORT.md) and [asset provenance](./mission06-artwork.json).
+
 ### Mission 06 — Airport & Border: the full learning flow, one traveller (2026-10-26)
 
 The conversation is LOCKED (the dialogue tree, side-branches included, is byte-identical — tested). The
@@ -35,8 +43,8 @@ conversation, the interview with no help, the video, and the final check — fiv
 officer's real lines — ending ENTRY APPROVED. 37 interactions; no recovery phrase, quiz, ambush or swap;
 wrong answers are the traveller's own lines or pictures never named. "Thank you", "welcome" and "enjoy
 your stay" are verified prior learning (Missions 01–02) and reactivated; the strict audit runs against
-`learnedBefore(lang, 6)`. Image slots: `M06_SLOTS` (15, placeholders) + `M06_PROPS` (desk props, which
-must get artwork together with the slots they share a game with — tested). "Passport, please." retired.
+`learnedBefore(lang, 6)`. Image slots: `M06_SLOTS` (15 final images) + `M06_PROPS` (eight final images, with equal-quality
+artwork across each choice group — tested). "Passport, please." retired.
 Coverage: `mission06Coverage.ts`; tests: `mission06.test.ts`.
 
 Debt left for later passes (their content was not touched): Mission 08 primes "passport" as a new word

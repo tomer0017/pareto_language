@@ -140,6 +140,7 @@ export interface MatchTile {
 export interface CustomizeOption {
   id: string;
   emoji: string;
+  image?: string;
   /** The add-in's name in the app language (the target word is what is heard, not shown). */
   label: LocalizedText;
 }
@@ -172,6 +173,8 @@ export interface SwapRound {
 /** Mini Map — hear a direction, act on it: tap the direction / spot on a 3×3 schematic. */
 export interface MapCell {
   id: string;
+  /** Optional canonical artwork, rendered without cropping. */
+  image?: string;
   row: 0 | 1 | 2;
   col: 0 | 1 | 2;
   emoji?: string;

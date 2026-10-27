@@ -257,7 +257,7 @@ export function CustomizeStep({ step, onDone }: { step: StepOf<'customize'>; onD
           {step.base.startsWith('images/')
             ? <img className="pcup-img" src={publicAsset(step.base)} alt="" draggable={false} decoding="async" />
             : <span className="pcup-base">{step.base}</span>}
-          {step.options.filter((o) => picks[o.id]).map((o) => <span key={o.id} className="pcup-add">+{o.emoji}</span>)}
+          {step.options.filter((o) => picks[o.id]).map((o) => <span key={o.id} className="pcup-add">+{o.image ? <img src={publicAsset(o.image)} alt="" style={{ width: 48, height: 27, objectFit: 'contain' }} /> : o.emoji}</span>)}
         </div>
         <div className="pcust">
           {step.options.map((o) => {
@@ -265,7 +265,7 @@ export function CustomizeStep({ step, onDone }: { step: StepOf<'customize'>; onD
             const mark = checked ? (picks[o.id] === want ? 'is-ok' : 'is-bad') : '';
             return (
               <div key={o.id} className={`pcust-row ${mark}`}>
-                <span className="pcust-name"><span className="pcust-emoji" aria-hidden>{o.emoji}</span>{L(o.label)}</span>
+                <span className="pcust-name"><span className="pcust-emoji" aria-hidden>{o.image ? <img src={publicAsset(o.image)} alt="" style={{ width: 64, height: 36, objectFit: 'contain' }} /> : o.emoji}</span>{L(o.label)}</span>
                 <button className={`pcust-btn is-yes ${picks[o.id] === true ? 'is-on' : ''}`} aria-pressed={picks[o.id] === true} disabled={checked} aria-label={`${L(o.label)} ✓`} onClick={() => set(o.id, true)}>✓</button>
                 <button className={`pcust-btn is-no ${picks[o.id] === false ? 'is-on' : ''}`} aria-pressed={picks[o.id] === false} disabled={checked} aria-label={`${L(o.label)} ✕`} onClick={() => set(o.id, false)}>✕</button>
               </div>
@@ -387,7 +387,7 @@ export function MiniMapStep({ step, onDone }: { step: StepOf<'miniMap'>; onDone:
             const cell = at(row, col);
             const inner = cell && (
               <>
-                {cell.emoji && <span className="ptile-emoji" aria-hidden>{cell.emoji}</span>}
+                {cell.image ? <img className="ptile-img" src={publicAsset(cell.image)} alt="" draggable={false} decoding="async" /> : cell.emoji && <span className="ptile-emoji" aria-hidden>{cell.emoji}</span>}
                 {cell.label && <span className="ptile-label">{cell.label}</span>}
               </>
             );
@@ -396,7 +396,7 @@ export function MiniMapStep({ step, onDone }: { step: StepOf<'miniMap'>; onDone:
             return (
               <button
                 key={cell.id}
-                className={`ptile ${picked !== null && cell.id === round.correct ? 'is-ok' : ''} ${picked === cell.id && !ok ? 'is-bad' : ''}`}
+                className={`ptile ${cell.image ? 'has-image' : ''} ${picked !== null && cell.id === round.correct ? 'is-ok' : ''} ${picked === cell.id && !ok ? 'is-bad' : ''}`}
                 disabled={picked !== null}
                 aria-label={cell.id}
                 onClick={() => {

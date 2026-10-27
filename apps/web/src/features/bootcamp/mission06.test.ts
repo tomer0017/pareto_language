@@ -1,3 +1,5 @@
+import { readFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import { describe, expect, it } from 'vitest';
 import { missionVideo } from '../videos/missionVideo.js';
 import { cinematicTranscript, missionDialogues } from './exportDialogue.js';
@@ -316,19 +318,39 @@ describe('the border check, as a process', () => {
   });
 });
 
-describe('image slots — ready for the final artwork, one continuous world', () => {
+describe('final artwork — one meaning, one image, one continuous world', () => {
   const SLOTS = ['passport', 'holiday', 'week', 'two-weeks', 'hotel', 'city-centre', 'hotel-city-centre', 'nothing-to-declare', 'passport-question', 'purpose-question', 'duration-question', 'where-staying-question', 'anything-to-declare', 'almost-done', 'welcome-enjoy-stay'];
-  it('the slots exist, each with a placeholder and no artwork yet', () => {
+  it('all 15 slots have their exact canonical final artwork', () => {
     expect(Object.keys(M06_SLOTS).sort()).toEqual([...SLOTS].sort());
-    for (const s of Object.values(M06_SLOTS)) { expect(s.emoji).toBeTruthy(); expect((s as { image?: string }).image).toBeUndefined(); }
+    for (const [id, slot] of Object.entries(M06_SLOTS)) expect(slot.image).toBe(`images/mission06/${id}.jpg`);
   });
-  it('one meaning, one picture: no two slots share one, and no desk prop looks like a slot (the two hotels differ by place on the map, not by picture)', () => {
-    const looks = Object.values(M06_SLOTS).map((s) => s.emoji);
-    expect(new Set(looks).size).toBe(looks.length);
-    for (const [id, p] of Object.entries(M06_PROPS)) if (id !== 'hotel-outskirts') expect(looks, id).not.toContain(p.emoji);
+  it('all eight distractors have exact canonical artwork, including a distinct outskirts hotel', () => {
+    expect(Object.keys(M06_PROPS).sort()).toEqual(['phone', 'suitcase', 'work', 'study', 'red-channel', 'house', 'airport', 'hotel-outskirts'].sort());
+    for (const [id, prop] of Object.entries(M06_PROPS)) expect(prop.image).toBe(`images/mission06/${id === 'red-channel' ? 'declare' : id}.jpg`);
+  });
+  it('all 23 files physically exist as distinct JPEGs with high-resolution wide sources', () => {
+    const assets = [...Object.values(M06_SLOTS), ...Object.values(M06_PROPS)].map((a) => a.image);
+    expect(new Set(assets).size).toBe(23);
+    const hashes = assets.map((asset) => {
+      const bytes = readFileSync(new URL(`../../../public/${asset}`, import.meta.url));
+      expect(bytes.subarray(0, 2).toString('hex'), asset).toBe('ffd8');
+      // Read the JPEG frame: verify real file dimensions, not a claimed manifest size.
+      let width = 0; let height = 0;
+      for (let i = 2; i < bytes.length - 9;) {
+        if (bytes[i] !== 0xff) break;
+        const marker = bytes[i + 1]!;
+        if ([0xc0, 0xc1, 0xc2].includes(marker)) { height = bytes.readUInt16BE(i + 5); width = bytes.readUInt16BE(i + 7); break; }
+        i += 2 + bytes.readUInt16BE(i + 2);
+      }
+      expect(width, asset).toBeGreaterThanOrEqual(1536);
+      expect(width / height, asset).toBeGreaterThan(1.7);
+      expect(width / height, asset).toBeLessThan(1.9);
+      return createHash('sha256').update(bytes).digest('hex');
+    });
+    expect(new Set(hashes).size).toBe(23);
   });
   it('every card picture comes from a slot, the same in every language', () => {
-    const pictures = new Set(Object.values(M06_SLOTS).map((s) => s.emoji));
+    const pictures = new Set(Object.values(M06_SLOTS).map((s) => s.image));
     const pics = (lang: CoverageLang) => stepsOf(day(lang), 'prime').flatMap((p) => p.words.map((w) => [w.key, w.image ?? w.emoji]));
     for (const lang of LANGS) for (const [key, pic] of pics(lang)) expect(pictures, `${lang} ${key}`).toContain(pic);
     expect(pics('es')).toEqual(pics('en'));
@@ -337,7 +359,39 @@ describe('image slots — ready for the final artwork, one continuous world', ()
   it('no game mixes artwork with emoji — the right answer must never show by its picture quality alone', () => {
     for (const lang of LANGS) for (const s of stepsOf(day(lang), 'visualMatch')) {
       const withImage = s.tiles.filter((t) => t.image).length;
-      expect(withImage === 0 || withImage === s.tiles.length, `${lang} ${s.tiles.map((t) => t.id).join(',')}`).toBe(true);
+      expect(withImage === s.tiles.length, `${lang} ${s.tiles.map((t) => t.id).join(',')}`).toBe(true);
+    }
+  });
+  it('every semantic card has its exact image and never an emoji-only fallback', () => {
+    const mapping: Record<string, keyof typeof M06_SLOTS> = {
+      'border.holiday': 'holiday', 'border.week': 'week', 'border.two-weeks': 'two-weeks', 'border.hotel': 'hotel', 'border.city-centre': 'city-centre',
+      'border.line.next': 'passport-question', 'border.line.passport': 'passport', 'border.line.purpose': 'purpose-question', 'border.line.holiday': 'holiday',
+      'border.line.how-long': 'duration-question', 'border.line.two-weeks': 'two-weeks', 'border.line.where': 'where-staying-question',
+      'border.line.hotel': 'hotel-city-centre', 'border.line.declare': 'anything-to-declare', 'border.line.almost': 'almost-done',
+      'border.line.nothing': 'nothing-to-declare', 'border.line.welcome': 'welcome-enjoy-stay',
+    };
+    for (const lang of LANGS) for (const p of stepsOf(day(lang), 'prime')) for (const w of p.words) {
+      expect(mapping[w.key!], w.key).toBeTruthy();
+      expect(w.image, w.key).toBe(M06_SLOTS[mapping[w.key!]!].image);
+      expect(w.emoji).toBeUndefined();
+    }
+  });
+  it('all visual game choices and accommodation cells use the exact canonical art in every language', () => {
+    const mapping: Record<string, string> = {
+      passport: M06_SLOTS.passport.image, phone: M06_PROPS.phone.image, suitcase: M06_PROPS.suitcase.image,
+      holiday: M06_SLOTS.holiday.image, work: M06_PROPS.work.image, study: M06_PROPS.study.image,
+      nothing: M06_SLOTS['nothing-to-declare'].image, declare: M06_PROPS['red-channel'].image, entry: M06_SLOTS['welcome-enjoy-stay'].image,
+      'hotel-centre': M06_SLOTS['hotel-city-centre'].image, 'hotel-outskirts': M06_PROPS['hotel-outskirts'].image,
+      house: M06_PROPS.house.image, airport: M06_PROPS.airport.image,
+    };
+    for (const lang of LANGS) {
+      for (const step of stepsOf(day(lang), 'visualMatch')) for (const tile of step.tiles) expect(tile.image, tile.id).toBe(mapping[tile.id]);
+      for (const step of stepsOf(day(lang), 'miniMap')) for (const round of step.rounds) {
+        expect(round.cells.filter((c) => c.tappable).map((c) => c.id)).toEqual(['hotel-centre', 'hotel-outskirts', 'house', 'airport']);
+        for (const cell of round.cells.filter((c) => c.tappable)) expect(cell.image, cell.id).toBe(mapping[cell.id]);
+      }
+      for (const step of stepsOf(day(lang), 'customize')) for (const option of step.options) expect(option.image).toBe(M06_SLOTS.week.image);
+      expect(stepsOf(day(lang), 'matchPairs')[0]!.pairs.map((p) => p.answerImage)).toEqual(['holiday', 'two-weeks', 'hotel-city-centre', 'nothing-to-declare'].map((id) => M06_SLOTS[id as keyof typeof M06_SLOTS].image));
     }
   });
   it('the cards draw wide pictures (the Mission 05 presentation)', () => {

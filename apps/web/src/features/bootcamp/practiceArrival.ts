@@ -30,8 +30,7 @@ const OKAY_THANKS: L3 = ['Okay, thank you.', 'D’accord, merci.', 'De acuerdo, 
 
 /**
  * Mission 06's image slots — one per meaning (the same meaning is the same picture everywhere it is
- * used). Until the final artwork is approved a slot shows its placeholder emoji; giving a slot an
- * `image` (public path) swaps it in. One continuous world: the same traveller, the same officer, the
+ * used). Final artwork is shared across all languages; emoji remain metadata fallbacks. One continuous world: the same traveller, the same officer, the
  * same passport booth.
  *   Group 1 — the trip and its concepts · Group 2 — the officer's questions · Group 3 — the end of the check.
  *   (Beyond the brief's list: `week`, the calendar's unit — the calendar game is made of weeks, and the
@@ -42,11 +41,11 @@ type M06Slot =
   | 'passport' | 'holiday' | 'week' | 'two-weeks' | 'hotel' | 'city-centre' | 'hotel-city-centre' | 'nothing-to-declare'
   | 'passport-question' | 'purpose-question' | 'duration-question' | 'where-staying-question'
   | 'anything-to-declare' | 'almost-done' | 'welcome-enjoy-stay';
-export const M06_SLOTS: Record<M06Slot, { emoji: string; image?: string }> = {
-  passport: { emoji: '🛂' }, holiday: { emoji: '🏖️' }, week: { emoji: '🗓️' }, 'two-weeks': { emoji: '📅' },
-  hotel: { emoji: '🛏️' }, 'city-centre': { emoji: '🏙️' }, 'hotel-city-centre': { emoji: '🏨' }, 'nothing-to-declare': { emoji: '🟢' },
-  'passport-question': { emoji: '👮' }, 'purpose-question': { emoji: '❓' }, 'duration-question': { emoji: '⏳' }, 'where-staying-question': { emoji: '🗺️' },
-  'anything-to-declare': { emoji: '🛃' }, 'almost-done': { emoji: '☑️' }, 'welcome-enjoy-stay': { emoji: '🎉' },
+export const M06_SLOTS: Record<M06Slot, { emoji: string; image: string }> = {
+  passport: { emoji: '🛂', image: 'images/mission06/passport.jpg' }, holiday: { emoji: '🏖️', image: 'images/mission06/holiday.jpg' }, week: { emoji: '🗓️', image: 'images/mission06/week.jpg' }, 'two-weeks': { emoji: '📅', image: 'images/mission06/two-weeks.jpg' },
+  hotel: { emoji: '🛏️', image: 'images/mission06/hotel.jpg' }, 'city-centre': { emoji: '🏙️', image: 'images/mission06/city-centre.jpg' }, 'hotel-city-centre': { emoji: '🏨', image: 'images/mission06/hotel-city-centre.jpg' }, 'nothing-to-declare': { emoji: '🟢', image: 'images/mission06/nothing-to-declare.jpg' },
+  'passport-question': { emoji: '👮', image: 'images/mission06/passport-question.jpg' }, 'purpose-question': { emoji: '❓', image: 'images/mission06/purpose-question.jpg' }, 'duration-question': { emoji: '⏳', image: 'images/mission06/duration-question.jpg' }, 'where-staying-question': { emoji: '🗺️', image: 'images/mission06/where-staying-question.jpg' },
+  'anything-to-declare': { emoji: '🛃', image: 'images/mission06/anything-to-declare.jpg' }, 'almost-done': { emoji: '☑️', image: 'images/mission06/almost-done.jpg' }, 'welcome-enjoy-stay': { emoji: '🎉', image: 'images/mission06/welcome-enjoy-stay.jpg' },
 };
 /**
  * The other things on the desk — what the learner could pick instead. Picture-only: they are never
@@ -55,9 +54,9 @@ export const M06_SLOTS: Record<M06Slot, { emoji: string; image?: string }> = {
  * answer would show by its quality alone).
  */
 export const M06_PROPS = {
-  phone: { emoji: '📱' }, suitcase: { emoji: '🧳' }, work: { emoji: '💼' }, study: { emoji: '🎓' },
-  'red-channel': { emoji: '🔴' }, house: { emoji: '🏠' }, airport: { emoji: '✈️' }, 'hotel-outskirts': { emoji: '🏨' },
-} as const satisfies Record<string, { emoji: string; image?: string }>;
+  phone: { emoji: '📱', image: 'images/mission06/phone.jpg' }, suitcase: { emoji: '🧳', image: 'images/mission06/suitcase.jpg' }, work: { emoji: '💼', image: 'images/mission06/work.jpg' }, study: { emoji: '🎓', image: 'images/mission06/study.jpg' },
+  'red-channel': { emoji: '🔴', image: 'images/mission06/declare.jpg' }, house: { emoji: '🏠', image: 'images/mission06/house.jpg' }, airport: { emoji: '✈️', image: 'images/mission06/airport.jpg' }, 'hotel-outskirts': { emoji: '🏨', image: 'images/mission06/hotel-outskirts.jpg' },
+} as const satisfies Record<string, { emoji: string; image: string }>;
 const slot6 = (s: M06Slot): { emoji: string } | { image: string } => (M06_SLOTS[s].image ? { image: M06_SLOTS[s].image! } : { emoji: M06_SLOTS[s].emoji });
 const tile6 = (id: string, look: { emoji: string; image?: string }, caption?: Copy) => ({
   id, ...(look.image ? { image: look.image } : { emoji: look.emoji }), ...(caption ? { caption: { he: caption[0], en: caption[1] } } : {}), scale: 1.4,
@@ -104,16 +103,16 @@ const CHANNELS = [
 ];
 /** A month on the calendar: the stay is the first two weeks of it. */
 const CALENDAR = {
-  base: '📅',
-  options: [1, 2, 3, 4].map((n) => ({ id: `week-${n}`, emoji: M06_SLOTS.week.emoji, label: [`שבוע ${n}`, `Week ${n}`] as Copy })),
+  base: M06_SLOTS['duration-question'].image,
+  options: [1, 2, 3, 4].map((n) => ({ id: `week-${n}`, emoji: M06_SLOTS.week.emoji, image: M06_SLOTS.week.image, label: [`שבוע ${n}`, `Week ${n}`] as Copy })),
 };
 const TWO_WEEKS_ON = ['week-1', 'week-2'];
 /** The city: your hotel is the one in the centre; another hotel out of town, a house, the airport. */
-const CITY = (): { id: string; row: 0 | 1 | 2; col: 0 | 1 | 2; emoji: string; tappable?: boolean }[] => [
-  { id: 'hotel-centre', row: 1, col: 1, emoji: M06_SLOTS['hotel-city-centre'].emoji, tappable: true },
-  { id: 'hotel-outskirts', row: 0, col: 2, emoji: M06_PROPS['hotel-outskirts'].emoji, tappable: true },
-  { id: 'house', row: 2, col: 0, emoji: M06_PROPS.house.emoji, tappable: true },
-  { id: 'airport', row: 2, col: 2, emoji: M06_PROPS.airport.emoji, tappable: true },
+const CITY = (): { id: string; row: 0 | 1 | 2; col: 0 | 1 | 2; emoji?: string; image?: string; tappable?: boolean }[] => [
+  { id: 'hotel-centre', row: 1, col: 1, image: M06_SLOTS['hotel-city-centre'].image, tappable: true },
+  { id: 'hotel-outskirts', row: 0, col: 2, image: M06_PROPS['hotel-outskirts'].image, tappable: true },
+  { id: 'house', row: 2, col: 0, image: M06_PROPS.house.image, tappable: true },
+  { id: 'airport', row: 2, col: 2, image: M06_PROPS.airport.image, tappable: true },
   // the centre itself: buildings around the square (not tappable, never named)
   { id: 'centre-west', row: 1, col: 0, emoji: '🏛️' }, { id: 'centre-north', row: 0, col: 1, emoji: '🏬' }, { id: 'centre-east', row: 1, col: 2, emoji: '🏢' },
   { id: 'outskirts', row: 0, col: 0, emoji: '🌳' },
@@ -256,10 +255,10 @@ export function m06Steps(lang: MissionLang): BootcampStep[] {
       kind: 'matchPairs',
       label: ['כל שאלה — ומה היא שואלת', 'Each question — and what it asks for'],
       pairs: [
-        ['reply.border.purpose', 'phrase.border.on-holiday', undefined, '🏖️'],
-        ['reply.border.how-long', 'phrase.border.two-weeks', undefined, '📅 2'],
-        ['reply.border.where-staying', 'phrase.border.staying-hotel', undefined, '🏨 📍'],
-        ['reply.border.anything-declare', 'phrase.border.nothing-declare', undefined, '🟢'],
+        ['reply.border.purpose', 'phrase.border.on-holiday', undefined, '🏖️', undefined, M06_SLOTS['holiday'].image],
+        ['reply.border.how-long', 'phrase.border.two-weeks', undefined, '📅 2', undefined, M06_SLOTS['two-weeks'].image],
+        ['reply.border.where-staying', 'phrase.border.staying-hotel', undefined, '🏨 📍', undefined, M06_SLOTS['hotel-city-centre'].image],
+        ['reply.border.anything-declare', 'phrase.border.nothing-declare', undefined, '🟢', undefined, M06_SLOTS['nothing-to-declare'].image],
       ],
     }),
     // THE OFFICER, BY EAR — his questions and his last line (the answer reveals the meaning).

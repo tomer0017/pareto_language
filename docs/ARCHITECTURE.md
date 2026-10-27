@@ -298,3 +298,11 @@ The **learning language** (not the UI/OS language) selects the voice. `SpeakResu
 (`ended|interrupted|error|unavailable`) lets chained actions (dialogue advance, Play-All) proceed only
 on a natural finish. Full research, resolver rules, fallback ladder and honest limits:
 **[TTS_RESEARCH.md](./TTS_RESEARCH.md)**.
+
+### Mission 06 image support (2026-10-27)
+
+`M06_SLOTS` and `M06_PROPS` own the 23 canonical public image paths, shared by EN/ES/FR.
+`MapCell.image` and `CustomizeOption.image` are optional additions to existing engines; only
+Mission 06 opts into them. Map artwork uses contain sizing; calendar rows retain their existing
+labels and controls. The existing `MatchPair.answerImage` and wide prime cards are reused.
+See `MISSION06_VISUAL_REPORT.md` for validation and owner-assigned manual mobile QA.
