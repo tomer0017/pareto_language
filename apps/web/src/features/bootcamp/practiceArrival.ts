@@ -573,10 +573,8 @@ export function m07Steps(lang: MissionLang): BootcampStep[] {
         ['reply.taxi.here-good', 'phrase.taxi.stop-here', undefined, '🏁'],
       ],
     }),
-    // THE DRIVER, BY EAR — the lines with no drill of their own (the answer reveals the meaning), and
-    // his small talk "First time in the city?": not in this conversation, but the final checkpoint
-    // (Mission 29) asks it — and Spanish meets "ciudad" nowhere else.
-    k.replies('phrase.taxi.to-address', ['reply.taxi.off-we-go', 'reply.taxi.first-visit', 'reply.taxi.goodbye']),
+    // THE DRIVER, BY EAR — the lines with no drill of their own (the answer reveals the meaning).
+    k.replies('phrase.taxi.to-address', ['reply.taxi.off-we-go', 'reply.taxi.goodbye']),
     // THE SUPPORTED RIDE — the whole ride, in order, the dashboard on screen.
     k.practice({
       kind: 'quickReply',

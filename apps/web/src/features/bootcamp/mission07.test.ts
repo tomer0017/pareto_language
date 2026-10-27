@@ -11,6 +11,7 @@ import { M07_ANSWER, M07_PROPS, M07_RIDE, M07_SLOTS, M07_STAGES, rideDashboard }
 import { spokenRate, validatePracticeStep } from './practiceEngines.js';
 import { learnedBefore, missionContent, missionWalk, unpreparedChunks, unpreparedWords } from './priorLearning.js';
 import { MISSIONS_BY_LANG } from './registry.js';
+import { RETIRED_SENTENCES } from './retired.js';
 import type { BootcampDayContent, BootcampStep, MatchTile } from './types.js';
 
 /**
@@ -265,6 +266,30 @@ describe('THE RECOVERY — fast, then "please speak slowly", then slowly', () =>
   });
 });
 
+describe('mission-local: only this ride\'s language', () => {
+  /** Everything the conversation says, on any branch (the locked tree, side-branches included). */
+  const said = (d: BootcampDayContent): string[] => Object.values(d.dialogues).flatMap((dl) => dl.nodes.flatMap((n) => [n.en, ...(n.choices ?? []).map((c) => c.en)])).filter(Boolean);
+  const justified = (d: BootcampDayContent, lang: CoverageLang, t: string): boolean => said(d).some((l) => hasChunk(l, t)) || learnedBefore(lang, 7).knowsChunk(t);
+  it('every sentence of the mission is a line (or a piece of a line) of its own conversation', () => {
+    for (const lang of LANGS) { const d = day(lang); for (const i of d.items) expect(said(d).some((l) => hasChunk(l, i.text)), `${lang} ${i.id} “${i.text}”`).toBe(true); }
+  });
+  it('everything taught, played or asked for comes from this conversation — or is verified prior learning being reactivated', () => {
+    for (const lang of LANGS) {
+      const d = day(lang);
+      const shown = [
+        ...stepsOf(d, 'prime').flatMap((p) => p.words.map((w) => w.text)),
+        ...stepsOf(d, 'replies').flatMap((s) => s.replyIds.map((id) => text(d, id))),
+        ...stepsOf(d, 'visualMatch').flatMap((s) => s.rounds.map((r) => r.audio.en)),
+        ...stepsOf(d, 'miniMap').flatMap((s) => s.rounds.map((r) => r.audio.en)),
+        ...stepsOf(d, 'quickReply').flatMap((s) => s.rounds.flatMap((r) => [r.npc?.en ?? text(d, r.promptItemId), ...r.options.map((o) => o.text ?? text(d, o.itemId))])),
+        ...stepsOf(d, 'sentenceBuilder').flatMap((s) => s.rounds.map((r) => r.chunks.join(' '))),
+        ...stepsOf(d, 'matchPairs').flatMap((s) => s.pairs.flatMap((p) => [text(d, p.promptItemId), text(d, p.answerItemId)])),
+      ].filter(Boolean);
+      for (const t of shown) expect(justified(d, lang, t), `${lang} “${t}”`).toBe(true);
+    }
+  });
+});
+
 describe('who says what', () => {
   const produced = (d: BootcampDayContent): string[] => [
     ...stepsOf(d, 'quickReply').flatMap((s) => s.rounds.map(accepted)),
@@ -453,7 +478,7 @@ describe('video, progress, parity and pacing', () => {
       expect(p.practiceStart).toBeLessThan(d.steps.length);
     }
   });
-  it('same journey in EN / ES / FR; every step valid; 38 meaningful interactions (inside 34–38)', () => {
+  it('same journey in EN / ES / FR; every step valid; 37 meaningful interactions (inside 34–38)', () => {
     const shape = (d: BootcampDayContent): unknown => d.steps.map((s) => {
       if (s.kind === 'quickReply') return [s.kind, s.challenge ?? false, s.label, s.rounds.map((r) => [Boolean(r.npc), r.npc?.pace, r.situation, r.options.map((o) => [strip(o.itemId), o.correct, Boolean(o.text)])])];
       if (s.kind === 'miniMap') return [s.kind, s.challenge ?? false, s.label, s.rounds.map((r) => [r.correct, strip(r.itemId), r.audio.pace, r.cells])];
@@ -472,14 +497,17 @@ describe('video, progress, parity and pacing', () => {
       for (const s of d.steps) expect(validatePracticeStep(s, ids, (id) => d.items.find((i) => i.id === id)?.text), `${lang} ${s.kind}`).toEqual([]);
       const n = d.steps.reduce((k, s) => k + (s.kind === 'quickReply' || s.kind === 'miniMap' || s.kind === 'visualMatch' || s.kind === 'sentenceBuilder' || s.kind === 'customize' ? s.rounds.length
         : s.kind === 'replies' ? s.replyIds.length : s.kind === 'matchPairs' ? s.pairs.length : 0), 0);
-      expect(n, lang).toBe(38);
+      expect(n, lang).toBe(37);
     }
   });
-  it('the sentences: later missions\' taxi lines are kept; "First time in the city?" stays taught (the final checkpoint asks it)', () => {
+  it('the sentences: later missions\' taxi lines are kept; "First time in the city?" is gone — archived, not taught, not heard', () => {
     for (const lang of LANGS) {
       const ids = day(lang).items.map((i) => strip(i.id));
-      for (const id of [...LEARNER, 'phrase.taxi.to-airport', 'reply.taxi.where-to', 'reply.taxi.about-fifteen', 'reply.taxi.traffic', 'reply.taxi.here-good', 'reply.taxi.off-we-go', 'reply.taxi.goodbye', 'reply.taxi.first-visit']) expect(ids, lang).toContain(id);
-      expect(stepsOf(day(lang), 'replies')[0]!.replyIds.map(strip)).toContain('reply.taxi.first-visit');
+      for (const id of [...LEARNER, 'phrase.taxi.to-airport', 'reply.taxi.where-to', 'reply.taxi.about-fifteen', 'reply.taxi.traffic', 'reply.taxi.here-good', 'reply.taxi.off-we-go', 'reply.taxi.goodbye']) expect(ids, lang).toContain(id);
+      expect(ids, lang).not.toContain('reply.taxi.first-visit');
+      expect(RETIRED_SENTENCES[lang].filter((r) => r.retiredFrom === 'taxi').map((r) => strip(r.id)), lang).toEqual(['reply.taxi.first-visit']);
+      expect(JSON.stringify(day(lang)), lang).not.toMatch(/first-visit|First time in the city|première fois dans la ville|primera vez en la ciudad/);
+      expect(stepsOf(day(lang), 'replies')[0]!.replyIds.map(strip)).toEqual(['reply.taxi.off-we-go', 'reply.taxi.goodbye']);
       expect(JSON.stringify(day(lang).steps), lang).not.toMatch(/About twenty|vingt euros|veinte euros|dix euros|diez euros|ten euros/); // the old fare drill is gone
     }
   });

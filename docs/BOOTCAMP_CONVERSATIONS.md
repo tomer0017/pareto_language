@@ -387,9 +387,8 @@ _Reply-training drill:_ “What's the purpose of your visit?” · “How long a
 - **Is here okay?** · כאן זה בסדר?
 - **Got it. No problem — off we go!** · הבנתי. אין בעיה — יוצאים!
 - **Thank you very much! Enjoy your trip!** · תודה רבה! תיהנה מהטיול!
-- **First time in the city?** · פעם ראשונה בעיר?
 
-_Reply-training drill:_ “Got it. No problem — off we go!” · “First time in the city?” · “Thank you very much! Enjoy your trip!”
+_Reply-training drill:_ “Got it. No problem — off we go!” · “Thank you very much! Enjoy your trip!”
 
 ### Recovery tools reused
 `Please speak slowly.` · `Can you show me?` · `Thank you!`

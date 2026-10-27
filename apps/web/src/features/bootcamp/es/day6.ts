@@ -30,8 +30,6 @@ export const DAY6_ES_ITEMS: BootcampItem[] = [
   { id: 'es.reply.taxi.here-good', text: '¿Aquí está bien?', meaning: T('כאן זה בסדר?', 'Is here okay?') },
   { id: 'es.reply.taxi.off-we-go', text: 'De acuerdo. Sin problema — ¡vamos!', meaning: T('הבנתי. אין בעיה — יוצאים!', 'Got it. No problem — off we go!') },
   { id: 'es.reply.taxi.goodbye', text: '¡Muchas gracias! ¡Buen viaje!', meaning: T('תודה רבה! תיהנה מהטיול!', 'Thank you very much! Enjoy your trip!') },
-  // Not in this conversation: the driver's small talk, kept because the final checkpoint (Mission 29) asks it.
-  { id: 'es.reply.taxi.first-visit', text: '¿Es su primera vez en la ciudad?', meaning: T('פעם ראשונה בעיר?', 'First time in the city?') },
   ...recoveryEs('es.phrase.recovery.slowly', 'es.phrase.recovery.show-me', 'es.phrase.recovery.thank-you'),
 ];
 

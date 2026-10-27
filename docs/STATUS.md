@@ -40,7 +40,7 @@ jammed road) → the driver's answer FAST → "Sorry, please speak slowly." (car
 moment) → the same answer SLOWLY, understood (✓ €15 · ✓ traffic — "it worked") → arrival (stop at
 your address on the street map) → payment (keep the change) → each driver line to its moment → the
 driver by ear → the supported ride → the conversation → the ride with no help (fast → recovery →
-slow kept) → the video → the final ride → RIDE COMPLETE. 38 interactions.
+slow kept) → the video → the final ride → RIDE COMPLETE. 37 interactions.
 
 New data field: `SpokenLine.pace` ('fast' | 'slow') — how a line is said where that is the point.
 `spokenRate()` turns it into the conversation's own rates (1.08 / 0.75) in Quick Reply, the boards and
@@ -48,8 +48,11 @@ the map; a recorded-audio resolver can use it to pick the normal or the slow tak
 behave as before (Missions 01–06 and 08–30 byte-identical — tested).
 
 Mission 07's own learner sentences "Sorry, please speak slowly." / "Okay, thank you." were added (the
-conversation's choices keep their shared recovery ids). "First time in the city?" stays taught (listening
-drill) because the final checkpoint (Mission 29) asks it and Spanish meets "ciudad" nowhere else.
+conversation's choices keep their shared recovery ids). Mission 07 teaches only its own ride: "First time
+in the city?" (not in this conversation) is retired. Debt for Mission 29's own pass: its cold taxi scene
+asks "¿Es su primera vez en la ciudad?", and Spanish "ciudad" is learned nowhere before it — tracked as
+a named gap (`NOT_YET_TAUGHT` in `practiceMastery.test.ts`), to be taught or reviewed there before it is
+tested. (English "city" and French "ville" are genuinely taught by Mission 06.)
 Artwork: 20 slots + 8 props, all placeholders — **visual production required**: see
 `docs/MISSION07_ASSET_MANIFEST.md`. Coverage: `mission07Coverage.ts`; tests: `mission07.test.ts`.
 

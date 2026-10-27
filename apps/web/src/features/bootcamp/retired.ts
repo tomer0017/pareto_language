@@ -34,6 +34,7 @@ export const RETIRED_SENTENCES: Record<'en' | 'fr' | 'es', RetiredSentence[]> = 
     { id: 'en.reply.dir.right', text: "It's on the right.", meaning: T('זה בצד ימין.', "It's on the right."), retiredFrom: 'directions', reason: '"Right" is not in the directions conversation; it is no longer taught as a word.' },
     { id: 'en.phrase.dir.how-do-i-get', text: 'How do I get to the beach?', meaning: T('איך מגיעים לחוף?', 'How do I get to the beach?'), retiredFrom: 'directions', reason: 'Off the directions conversation (the beach); no longer practised.' },
     { id: 'en.reply.border.passport-please', text: 'Passport, please.', meaning: T('דרכון, בבקשה.', 'Passport, please.'), retiredFrom: 'airport-border', reason: 'Not in the border conversation (the officer says “Next, please. Passport?”); no longer practised.' },
+    { id: 'en.reply.taxi.first-visit', text: 'First time in the city?', meaning: T('פעם ראשונה בעיר?', 'First time in the city?'), retiredFrom: 'taxi', reason: 'Not in the taxi conversation (small talk the driver never says); Mission 07 teaches only its own ride.' },
   ],
   fr: [
     { id: 'fr.phrase.hotel.two-nights', text: 'Pour deux nuits.', meaning: T('לשני לילות.', 'For two nights.'), tip: T('תבנית: Pour ___ nuits — משך השהות.', 'Template: Pour ___ nuits — the length of your stay.'), retiredFrom: 'hotel-check-in', reason: "Not part of the check-in conversation; no longer taught or practised." },
@@ -50,6 +51,7 @@ export const RETIRED_SENTENCES: Record<'en' | 'fr' | 'es', RetiredSentence[]> = 
     { id: 'fr.reply.dir.right', text: 'C’est à droite.', meaning: T('זה בצד ימין.', "It's on the right."), retiredFrom: 'directions', reason: '"Right" is not in the directions conversation; it is no longer taught as a word.' },
     { id: 'fr.phrase.dir.how-do-i-get', text: 'Comment aller à la plage ?', meaning: T('איך מגיעים לחוף?', 'How do I get to the beach?'), retiredFrom: 'directions', reason: 'Off the directions conversation (the beach); no longer practised.' },
     { id: 'fr.reply.border.passport-please', text: 'Passeport, s’il vous plaît.', meaning: T('דרכון, בבקשה.', 'Passport, please.'), retiredFrom: 'airport-border', reason: 'Not in the border conversation (the officer says “Next, please. Passport?”); no longer practised.' },
+    { id: 'fr.reply.taxi.first-visit', text: 'C’est votre première fois dans la ville ?', meaning: T('פעם ראשונה בעיר?', 'First time in the city?'), retiredFrom: 'taxi', reason: 'Not in the taxi conversation (small talk the driver never says); Mission 07 teaches only its own ride.' },
   ],
   es: [
     { id: 'es.phrase.hotel.two-nights', text: 'Para dos noches.', meaning: T('לשני לילות.', 'For two nights.'), tip: T('תבנית: Para ___ noches — משך השהות.', 'Template: Para ___ noches — the length of your stay.'), retiredFrom: 'hotel-check-in', reason: "Not part of the check-in conversation; no longer taught or practised." },
@@ -66,5 +68,6 @@ export const RETIRED_SENTENCES: Record<'en' | 'fr' | 'es', RetiredSentence[]> = 
     { id: 'es.reply.dir.right', text: 'Está a la derecha.', meaning: T('זה בצד ימין.', "It's on the right."), retiredFrom: 'directions', reason: '"Right" is not in the directions conversation; it is no longer taught as a word.' },
     { id: 'es.phrase.dir.how-do-i-get', text: '¿Cómo se llega a la playa?', meaning: T('איך מגיעים לחוף?', 'How do I get to the beach?'), retiredFrom: 'directions', reason: 'Off the directions conversation (the beach); no longer practised.' },
     { id: 'es.reply.border.passport-please', text: 'Pasaporte, por favor.', meaning: T('דרכון, בבקשה.', 'Passport, please.'), retiredFrom: 'airport-border', reason: 'Not in the border conversation (the officer says “Next, please. Passport?”); no longer practised.' },
+    { id: 'es.reply.taxi.first-visit', text: '¿Es su primera vez en la ciudad?', meaning: T('פעם ראשונה בעיר?', 'First time in the city?'), retiredFrom: 'taxi', reason: 'Not in the taxi conversation (small talk the driver never says); Mission 07 teaches only its own ride.' },
   ],
 };

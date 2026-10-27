@@ -113,10 +113,10 @@ describe('scope: only the Practice of Missions 11–18 changed', () => {
       const used = JSON.stringify(BOOTCAMP_PLAN.map((m) => [MISSIONS_BY_LANG[lang]![m.day]!.steps, MISSIONS_BY_LANG[lang]![m.day]!.dialogues]));
       for (const id of gone) expect(used.includes(`${lang}.${id}"`), `${lang} ${id}`).toBe(false);
       // …and they are kept, id and wording, in the archive.
-      expect(RETIRED_SENTENCES[lang].filter((r) => r.retiredFrom !== 'hotel-check-in' && r.retiredFrom !== 'coffee-shop' && r.retiredFrom !== 'directions' && r.retiredFrom !== 'airport-border').map((r) => strip(r.id)), lang).toEqual(gone);
+      expect(RETIRED_SENTENCES[lang].filter((r) => r.retiredFrom !== 'hotel-check-in' && r.retiredFrom !== 'coffee-shop' && r.retiredFrom !== 'directions' && r.retiredFrom !== 'airport-border' && r.retiredFrom !== 'taxi').map((r) => strip(r.id)), lang).toEqual(gone);
       for (const r of RETIRED_SENTENCES[lang]) { expect(r.text.length, r.id).toBeGreaterThan(3); expect(r.meaning.he, r.id).toBeTruthy(); expect(BOOTCAMP_PLAN.some((m) => m.id === r.retiredFrom), r.id).toBe(true); }
     }
-    expect(RETIRED_SENTENCES.en.filter((r) => r.retiredFrom !== 'hotel-check-in' && r.retiredFrom !== 'coffee-shop' && r.retiredFrom !== 'directions' && r.retiredFrom !== 'airport-border').map((r) => r.text)).toEqual(['The menu, please.', 'How was everything?', 'Would you like dessert?', 'This one is a good option for you.', 'You need to weigh it first.']);
+    expect(RETIRED_SENTENCES.en.filter((r) => r.retiredFrom !== 'hotel-check-in' && r.retiredFrom !== 'coffee-shop' && r.retiredFrom !== 'directions' && r.retiredFrom !== 'airport-border' && r.retiredFrom !== 'taxi').map((r) => r.text)).toEqual(['The menu, please.', 'How was everything?', 'Would you like dessert?', 'This one is a good option for you.', 'You need to weigh it first.']);
   });
   it('mission order, ids and registry keys are unchanged', () => {
     expect(BOOTCAMP_PLAN.slice(10, 18).map((m) => `${m.id}:${m.day}`)).toEqual([

@@ -83,6 +83,13 @@ const vocabulary = (lang: Lang, upTo: number, skipFinalsOfLast = false): Set<str
     const beyond = i + 1 <= 24 ? new Set(stepsOf(day, 'ambush').filter((s) => s.mode !== 'speed').map((s) => s.npc.en)) : new Set<string>();
     return all.filter((l) => !beyond.has(l));
   }).flat().flatMap(words));
+/**
+ * Words a checkpoint asks before any earlier mission taught them — tracked, never faked: each is a
+ * job for that mission's own pass (teach or review it before testing it). Mission 29's taxi asks
+ * "¿Es su primera vez en la ciudad?"; "ciudad" used to come only from Mission 07's off-conversation
+ * small talk, which Mission 07 no longer teaches.
+ */
+const NOT_YET_TAUGHT: Record<Lang, Partial<Record<number, string[]>>> = { en: {}, fr: {}, es: { 29: ['ciudad'] } };
 const unknownIn = (said: string[], known: Set<string>): string[] => [...new Set(said.flatMap(words).filter((w) => !known.has(w)))];
 const allCopy = (day: BootcampDayContent): string => JSON.stringify(day);
 
@@ -121,8 +128,9 @@ describe('scope: only Missions 25–30 changed', () => {
   });
   it('archived sentences stay archived: the archive still holds the same seven (plus the Mission 03 pass\'s three), none of them back in a mission', () => {
     for (const lang of LANGS) {
-      expect(RETIRED_SENTENCES[lang].filter((r) => r.retiredFrom !== 'coffee-shop' && r.retiredFrom !== 'directions' && r.retiredFrom !== 'airport-border'), lang).toHaveLength(7);
+      expect(RETIRED_SENTENCES[lang].filter((r) => r.retiredFrom !== 'coffee-shop' && r.retiredFrom !== 'directions' && r.retiredFrom !== 'airport-border' && r.retiredFrom !== 'taxi'), lang).toHaveLength(7);
       expect(RETIRED_SENTENCES[lang].filter((r) => r.retiredFrom === 'airport-border').map((r) => r.id.slice(3)), lang).toEqual(['reply.border.passport-please']);
+      expect(RETIRED_SENTENCES[lang].filter((r) => r.retiredFrom === 'taxi').map((r) => r.id.slice(3)), lang).toEqual(['reply.taxi.first-visit']);
       expect(RETIRED_SENTENCES[lang].filter((r) => r.retiredFrom === 'directions').map((r) => r.id.slice(3)), lang).toEqual(['reply.dir.left', 'reply.dir.right', 'phrase.dir.how-do-i-get']);
       expect(RETIRED_SENTENCES[lang].filter((r) => r.retiredFrom === 'coffee-shop').map((r) => r.id.slice(3)), lang).toEqual(['phrase.coffee.to-go', 'reply.coffee.hot-or-iced', 'reply.coffee.here-or-to-go']);
       const live = new Set(BOOTCAMP_PLAN.flatMap((m) => MISSIONS_BY_LANG[lang]![m.day]!.items.map((i) => i.id)));
@@ -343,9 +351,25 @@ describe('scaffolding decreases across the phase', () => {
         const finals = [...(rush(day)?.rounds ?? []).flatMap((r) => [r.npc?.en ?? '', ...r.options.map((o) => o.text ?? '')]), ...stepsOf(day, 'ambush').map((s) => s.npc.en)];
         expect(unknownIn(finals, vocabulary(lang, n, true)), `${lang} M${n}`).toEqual([]);
       }
-      // 28–30: zero new language capability. Everything was met BEFORE the mission.
-      for (const n of [28, 29, 30]) expect(unknownIn(lines(mission(n, lang)), vocabulary(lang, n - 1)), `${lang} M${n}`).toEqual([]);
+      // 28–30: zero new language capability. Everything was met BEFORE the mission — except the one
+      // known gap below, which Mission 29's own pass must teach or review before it tests it.
+      for (const n of [28, 29, 30]) expect(unknownIn(lines(mission(n, lang)), vocabulary(lang, n - 1)), `${lang} M${n}`).toEqual(NOT_YET_TAUGHT[lang][n] ?? []);
     }
+  });
+  it('the known gap is real and owned by Mission 29: "¿Es su primera vez en la ciudad?" — "ciudad" is learned nowhere before it (Mission 07 no longer pretends to teach it)', async () => {
+    const { learnedBefore } = await import('./priorLearning.js');
+    const asked = { en: 'First time in the city?', fr: 'C’est votre première fois dans la ville ?', es: '¿Es su primera vez en la ciudad?' };
+    for (const lang of LANGS) {
+      // Mission 29's cold taxi scene asks it (its locked dialogue is untouched)…
+      expect(JSON.stringify(mission(29, lang).dialogues), lang).toContain(asked[lang]);
+      // …and Mission 07 (the taxi) never says it any more: it teaches only its own ride.
+      expect(JSON.stringify(mission(7, lang)), lang).not.toMatch(/First time in the city|première fois dans la ville|primera vez en la ciudad|ciudad/);
+    }
+    // Under the STRICT rule: English "city" and French "ville" were genuinely taught (Mission 06's
+    // "city centre" / "centre-ville"); Spanish "ciudad" never was — hence the gap, exactly.
+    expect(learnedBefore('en', 29).words.has('city')).toBe(true);
+    expect(learnedBefore('fr', 29).words.has('ville')).toBe(true);
+    expect(learnedBefore('es', 29).words.has('ciudad')).toBe(false);
   });
   it('28–30 use only sentences an earlier mission taught, under the same id and wording', () => {
     for (const lang of LANGS) for (const n of [28, 29, 30]) {
