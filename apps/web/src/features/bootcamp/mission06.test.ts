@@ -1,4 +1,5 @@
 import { readFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import { createHash } from 'node:crypto';
 import { describe, expect, it } from 'vitest';
 import { missionVideo } from '../videos/missionVideo.js';
@@ -7,7 +8,7 @@ import { coverageOf, encounters, hasChunk, plain, type CoverageLang } from './mi
 import { M06_CONCEPTS } from './mission06Coverage.js';
 import { missionPhases, practiceReplay } from './missionFlow.js';
 import { BOOTCAMP_PLAN, missionNumber } from './plan.js';
-import { borderChecklist, M06_ANSWER, M06_CHECKS, M06_PROFILE, M06_PROPS, M06_SLOTS } from './practiceArrival.js';
+import { borderChecklist, M06_ANSWER, M06_CHECKS, M06_PLACES, M06_PROFILE, M06_PROPS, M06_SLOTS } from './practiceArrival.js';
 import { validatePracticeStep } from './practiceEngines.js';
 import { auditWords, learnedBefore, missionContent, missionWalk, unpreparedChunks, unpreparedWords } from './priorLearning.js';
 import { MISSIONS_BY_LANG } from './registry.js';
@@ -214,26 +215,35 @@ describe('who says what', () => {
 });
 
 describe('ONE traveller: the trip never changes', () => {
-  it('the profile: holiday · two weeks · a hotel in the city centre · nothing to declare — and the profile card says so', () => {
+  it('the BRIEFING opens the mission: your role (a tourist entering the country), and the four facts you will give the officer — as label → value', () => {
     expect(M06_PROFILE).toEqual({ purpose: 'holiday', duration: 'two-weeks', stay: 'hotel-city-centre', declaration: 'nothing' });
     for (const lang of LANGS) {
-      const card = day(lang).steps[1]!;
+      const card = day(lang).steps[0] as Extract<BootcampStep, { kind: 'talk' }>;
       expect(card.kind).toBe('talk');
-      const body = (card as Extract<BootcampStep, { kind: 'talk' }>).body.map((b) => b.en).join(' ');
-      expect(body).toMatch(/Holiday.*Two weeks.*Hotel.*city centre.*Nothing to declare/);
+      expect(card.body.map((b) => b.he).join(' ')).toBe('במשימה הזו אתה נכנס למדינה כתייר. אלה הפרטים שתצטרך למסור לפקיד הגבולות:');
+      expect(card.body.map((b) => b.en).join(' ')).toMatch(/entering a country as a tourist.*details you will give the border officer/);
+      expect(card.facts!.map((f) => [f.label.he, f.value.he])).toEqual([['מטרת הביקור', 'חופשה'], ['משך השהייה', 'שבועיים'], ['מקום לינה', 'מלון במרכז העיר'], ['מכס', 'אין מה להצהיר']]);
+      expect(card.facts!.map((f) => f.value.en)).toEqual(['Holiday', 'Two weeks', 'A hotel in the city centre', 'Nothing to declare']);
+      // the old "this is my trip" (as if the learner had chosen it) is gone
+      expect(card.cta).toEqual({ he: 'התחל ביקורת גבולות', en: 'Start border control' });
+      expect(JSON.stringify(day(lang).steps)).not.toMatch(/זה הטיול שלי|That’s my trip|This is my trip/);
+      // one briefing — not a separate summary screen competing with it
+      expect(day(lang).steps.filter((x) => x.kind === 'talk')).toHaveLength(1);
     }
+    // nothing else on its screen: the player leaves the Foundation hint off a briefing card
+    const player = readFileSync(fileURLToPath(new URL('./Bootcamp.tsx', import.meta.url)), 'utf8');
+    expect(player).toMatch(/!\(step\.kind === 'talk' && step\.facts\) && <FoundationHint/);
   });
-  it('every game answers from the same trip: passport handed over, holiday, the first two weeks of the month, the hotel in the centre, the green channel', () => {
+  it('every game answers from the same trip: passport handed over, holiday, two weeks, the hotel in the city centre, the green channel', () => {
     for (const lang of LANGS) {
       const d = day(lang);
       for (const s of stepsOf(d, 'visualMatch')) for (const r of s.rounds) {
         const tiles = s.tiles.map((t) => t.id);
-        const expected = tiles.includes('entry') ? 'entry' : tiles.includes('phone') ? 'passport' : tiles.includes('work') ? 'holiday' : 'nothing';
+        const expected = tiles.includes('entry') ? 'entry' : tiles.includes('phone') ? 'passport' : tiles.includes('work') ? 'holiday' : tiles.includes('four-weeks') ? 'two-weeks' : 'nothing';
         expect(r.correct, `${lang} ${r.audio.en}`).toBe(expected);
       }
-      for (const s of stepsOf(d, 'customize')) for (const r of s.rounds) expect(r.on, lang).toEqual(['week-1', 'week-2']);
-      for (const s of stepsOf(d, 'miniMap')) for (const r of s.rounds) { expect(r.correct, lang).toBe('hotel-centre'); expect(r.cells.find((c) => c.id === 'hotel-centre')).toMatchObject({ row: 1, col: 1 }); }
-      expect(M06_ANSWER).toEqual({ desk: 'passport', purpose: 'holiday', stay: 'hotel-centre', declaration: 'nothing', calendar: ['week-1', 'week-2'] });
+      for (const s of stepsOf(d, 'miniMap')) for (const r of s.rounds) expect(r.correct, lang).toBe('hotel-centre');
+      expect(M06_ANSWER).toEqual({ desk: 'passport', purpose: 'holiday', duration: 'two-weeks', stay: 'hotel-centre', declaration: 'nothing' });
     }
   });
   it('every interview answer is the same trip: holiday, two weeks, the hotel in the city centre, nothing to declare', () => {
@@ -242,13 +252,135 @@ describe('ONE traveller: the trip never changes', () => {
       for (const r of s.rounds) expect(r.options.filter((o) => o.correct), lang).toHaveLength(1);
     }
   });
-  it('the questions match the trip: each officer question to what it asks for — not a translation', () => {
+  it('question → the traveller\'s ACTUAL answer: purpose → holiday, how long → two weeks, where → the hotel in the centre, declare → nothing', () => {
     for (const lang of LANGS) {
-      const m = stepsOf(day(lang), 'matchPairs')[0]!;
-      for (const p of m.pairs) expect(p.answerGloss, lang).toBeUndefined(); // no app-language words: the icon is the trip detail
-      expect(m.pairs.map((p) => [strip(p.promptItemId), p.answerLabel])).toEqual([
-        ['reply.border.purpose', '🏖️'], ['reply.border.how-long', '📅 2'], ['reply.border.where-staying', '🏨 📍'], ['reply.border.anything-declare', '🟢'],
+      const d = day(lang);
+      const m = stepsOf(d, 'matchPairs')[0]!;
+      expect(m.pairs.map((p) => [strip(p.promptItemId), strip(p.answerItemId)])).toEqual([
+        ['reply.border.purpose', 'phrase.border.on-holiday'], ['reply.border.how-long', 'phrase.border.two-weeks'],
+        ['reply.border.where-staying', 'phrase.border.staying-hotel'], ['reply.border.anything-declare', 'phrase.border.nothing-declare'],
       ]);
+      // the answer IS the sentence (the learning language, exactly as the conversation says it) — never an icon,
+      // never a gloss; the picture sits beside it as support
+      for (const p of m.pairs) {
+        expect([p.answerLabel, p.answerGloss, p.answerText], lang).toEqual([undefined, undefined, undefined]);
+        expect(p.answerImage, lang).toBeTruthy();
+      }
+      expect(m.pairs.map((p) => text(d, p.answerItemId))).toEqual([3, 5, 7, 9].map((i) => line(lang, i)));
+      expect(m.pairs.map((p) => p.answerImage)).toEqual([M06_SLOTS.holiday.image, M06_SLOTS['two-weeks'].image, M06_SLOTS['hotel-city-centre'].image, M06_SLOTS['nothing-to-declare'].image]);
+    }
+    // the player shows the picture BESIDE the sentence, at a size you can read on a phone (not a 48 px thumbnail as the whole answer)
+    const ui = readFileSync(fileURLToPath(new URL('./PracticeSteps.tsx', import.meta.url)), 'utf8');
+    expect(ui).toMatch(/pmatch-supported"><img className="pmatch-img is-support"[^>]*\/><span><TargetText text=\{answerText\(i\)\} \/>/);
+    const css = readFileSync(fileURLToPath(new URL('../../app/styles.css', import.meta.url)), 'utf8');
+    expect(css).toMatch(/\.pmatch-img\.is-support \{ width: 104px; height: 59px;/);
+  });
+});
+
+describe('DURATION — a choice of meaning, not a checkbox puzzle', () => {
+  const durations = (d: BootcampDayContent) => stepsOf(d, 'visualMatch').filter((s) => s.tiles.some((t) => t.id === 'four-weeks'));
+  it('the officer\'s real question, then three stays on the same calendar — one week, two weeks, four weeks — and the answer is two weeks', () => {
+    for (const lang of LANGS) {
+      const d = day(lang);
+      const [teach, gate] = durations(d);
+      expect(teach!.tiles.map((t) => [t.id, t.image, t.caption!.he])).toEqual([
+        ['one-week', M06_SLOTS.week.image, 'שבוע אחד'], ['two-weeks', M06_SLOTS['two-weeks'].image, 'שבועיים'], ['four-weeks', M06_PROPS['four-weeks'].image, 'ארבעה שבועות'],
+      ]);
+      expect(teach!.rounds.map((r) => [r.audio.en, r.correct])).toEqual([[line(lang, 4), 'two-weeks'], [line(lang, 5), 'two-weeks']]);
+      expect(gate!.rounds.map((r) => [r.audio.en, r.correct])).toEqual([[line(lang, 4), 'two-weeks']]);
+      // "For two weeks." is said back, with its meaning, the moment the stay is picked
+      for (const s of [teach!, gate!]) expect(s.rounds[0]!.reinforce, lang).toMatchObject({ en: line(lang, 5), he: 'לשבועיים.' });
+      // only "two weeks" is ever said in the learning language — one week / four weeks are pictures with app-language names
+      for (const t of teach!.tiles) expect(t.label, lang).toBeUndefined();
+    }
+  });
+  it('no four-switch calendar, no officer + calendar + calendar rebus: the customize game is gone from Mission 06', () => {
+    for (const lang of LANGS) {
+      expect(stepsOf(day(lang), 'customize'), lang).toHaveLength(0);
+      expect(JSON.stringify(day(lang).steps), lang).not.toMatch(/week-1|week-2|week-3|week-4|Mark your stay on the calendar/);
+    }
+  });
+});
+
+describe('STAY — the city centre is an area on the map, not the middle square', () => {
+  it('the map carries its meaning in its data: a city-centre zone, a residential street, the outskirts', () => {
+    expect(M06_PLACES).toEqual({
+      'hotel-centre': { kind: 'hotel', zone: 'city-centre' }, 'hotel-outskirts': { kind: 'hotel', zone: 'outskirts' },
+      house: { kind: 'house', zone: 'residential' }, airport: { kind: 'airport', zone: 'outskirts' },
+    });
+    for (const lang of LANGS) for (const s of stepsOf(day(lang), 'miniMap')) for (const r of s.rounds) {
+      const zone = (id: string) => r.cells.find((c) => c.id === id)!.zone;
+      // every place on the map knows its zone, and the cells say the same as M06_PLACES
+      for (const [id, place] of Object.entries(M06_PLACES)) expect(zone(id), `${lang} ${id}`).toBe(place.zone);
+      // the centre is an AREA: its square and its streets, drawn as one shaded zone
+      expect(r.cells.filter((c) => c.zone === 'city-centre').map((c) => c.id).sort()).toEqual(['centre-square', 'centre-street-1', 'centre-street-2', 'hotel-centre']);
+      expect(r.cells.find((c) => c.id === 'centre-square')!.image).toBe(M06_SLOTS['city-centre'].image);
+    }
+  });
+  it('the answer is "a hotel" AND "in the city centre" — never "the cell at row 1, col 1"', () => {
+    for (const lang of LANGS) for (const s of stepsOf(day(lang), 'miniMap')) for (const r of s.rounds) {
+      const right = r.cells.find((c) => c.id === r.correct)!;
+      expect(M06_PLACES[r.correct as keyof typeof M06_PLACES]).toEqual({ kind: 'hotel', zone: 'city-centre' });
+      expect([right.row, right.col], lang).not.toEqual([1, 1]); // not the middle square
+      // exactly one tappable place is a hotel in the centre: the other hotel is out of town, the house is not a hotel, the airport is not the centre
+      const tappable = r.cells.filter((c) => c.tappable).map((c) => c.id) as (keyof typeof M06_PLACES)[];
+      expect(tappable.filter((id) => M06_PLACES[id].kind === 'hotel' && M06_PLACES[id].zone === 'city-centre')).toEqual(['hotel-centre']);
+      expect(M06_PLACES['hotel-outskirts'].zone).not.toBe('city-centre');
+      expect(M06_PLACES.house.kind).not.toBe('hotel');
+      expect([M06_PLACES.airport.kind, M06_PLACES.airport.zone]).toEqual(['airport', 'outskirts']);
+      // the out-of-town places sit at the map's edges (the bottom row / far column), away from the centre area
+      for (const id of ['hotel-outskirts', 'airport'] as const) { const c = r.cells.find((x) => x.id === id)!; expect(c.row, `${lang} ${id}`).toBe(2); }
+    }
+  });
+  it('a wrong pick is explained: the centre area is drawn out, and "At a hotel in the city centre." is said with its meaning', () => {
+    for (const lang of LANGS) for (const s of stepsOf(day(lang), 'miniMap')) {
+      if (!s.challenge) expect(s.label!.en, lang).toMatch(/city centre is the shaded area/); // the teaching map says it; the final check (a speed step) shows only its heading
+      for (const r of s.rounds) {
+        const said = r.reinforce ?? r.audio;
+        expect([said.en, said.he], `${lang} ${r.audio.en}`).toEqual([line(lang, 7), 'במלון במרכז העיר.']);
+      }
+    }
+    const ui = readFileSync(fileURLToPath(new URL('./PracticeSteps.tsx', import.meta.url)), 'utf8');
+    expect(ui).toMatch(/is-explain/);
+    expect(ui).toMatch(/data-zone=\{cell\.zone\}/);
+    const css = readFileSync(fileURLToPath(new URL('../../app/styles.css', import.meta.url)), 'utf8');
+    expect(css).toMatch(/\.pmap\.is-explain\[data-answer-zone='city-centre'\] \.ptile\[data-zone='city-centre'\]/);
+  });
+});
+
+describe('feedback — the line is the focus', () => {
+  it('every Mission 06 board and map gives QUIET feedback: ✓ / ✕, the line and its meaning, one action', () => {
+    for (const lang of LANGS) for (const s of [...stepsOf(day(lang), 'visualMatch'), ...stepsOf(day(lang), 'miniMap')]) expect(s.quiet, lang).toBe(true);
+    const ui = readFileSync(fileURLToPath(new URL('./PracticeSteps.tsx', import.meta.url)), 'utf8');
+    // quiet: no mascot in the result, and one button — Continue when right, Retry when wrong
+    expect(ui).toMatch(/quiet\s*\n\s*\/\/ Quiet: the line is the point/);
+    expect(ui).toMatch(/if \(quiet\) return <div className="action-zone">\{ok \? <button className="btn-primary" onClick=\{onNext\}>\{t\('continue'\)\}<\/button> : <button className="btn-primary" onClick=\{onRetry\}>\{t\('tryAgain'\)\}<\/button>\}<\/div>/);
+  });
+  it('after the officer\'s question, the result shows the traveller\'s ANSWER (the line to learn), not the question again', () => {
+    const answerTo: Record<number, number> = { 0: 1, 2: 3, 4: 5, 6: 7, 8: 9 };
+    for (const lang of LANGS) for (const s of [...stepsOf(day(lang), 'visualMatch'), ...stepsOf(day(lang), 'miniMap')]) for (const r of s.rounds) {
+      const q = [0, 2, 4, 6, 8].find((i) => line(lang, i) === r.audio.en);
+      if (q !== undefined) expect(r.reinforce?.en, `${lang} ${r.audio.en}`).toBe(line(lang, answerTo[q]!));
+      else expect(r.reinforce, `${lang} ${r.audio.en}`).toBeUndefined(); // the line heard IS the answer
+    }
+  });
+});
+
+describe('visual fairness — every choice set, every engine', () => {
+  const kindOf = (x: { image?: string; emoji?: string; label?: string }): string => (x.image ? 'image' : x.emoji ? 'emoji' : 'label');
+  it('within one choice set, every choice has the same kind of picture — boards, the map, the matching answers', () => {
+    for (const lang of LANGS) {
+      const d = day(lang);
+      for (const s of stepsOf(d, 'visualMatch')) for (const r of s.rounds) {
+        const shown = s.tiles.filter((t) => (r.show ?? s.tiles.map((x) => x.id)).includes(t.id));
+        expect(new Set(shown.map(kindOf)), `${lang} ${shown.map((t) => t.id)}`).toEqual(new Set(['image']));
+      }
+      for (const s of stepsOf(d, 'miniMap')) for (const r of s.rounds) {
+        expect(new Set(r.cells.filter((c) => c.tappable).map(kindOf)), lang).toEqual(new Set(['image']));
+        // and no emoji anywhere on the map: drawn places are artwork, the rest is the map itself
+        for (const c of r.cells) expect(c.emoji, `${lang} ${c.id}`).toBeUndefined();
+      }
+      for (const s of stepsOf(d, 'matchPairs')) expect(new Set(s.pairs.map((p) => Boolean(p.answerImage))), lang).toEqual(new Set([true]));
     }
   });
 });
@@ -263,12 +395,12 @@ describe('the border check, as a process', () => {
       expect(before.filter((s): s is Extract<BootcampStep, { kind: 'receipt' }> => s.kind === 'receipt').map((s) => s.text.en), lang).toEqual([1, 2, 3, 4, 5].map((n) => borderChecklist(n)[1]));
     }
   });
-  it('each requirement is practised its own way: an object handed over, a situation, a calendar, a map, a channel', () => {
+  it('each requirement is practised its own way: an object handed over, a situation, a length of stay, a map, a channel', () => {
     const d = day('en');
-    const firstGames = [5, 9, 13, 16, 20].map((i) => d.steps[i - 1]!.kind);
-    expect(firstGames).toEqual(['visualMatch', 'visualMatch', 'customize', 'miniMap', 'visualMatch']);
-    const tileSets = stepsOf(d, 'visualMatch').slice(0, 3).map((s) => s.tiles.map((t) => t.id));
-    expect(tileSets).toEqual([['passport', 'phone', 'suitcase'], ['holiday', 'work', 'study'], ['nothing', 'declare']]);
+    const firstGames = [4, 8, 12, 15, 19].map((i) => d.steps[i - 1]!.kind);
+    expect(firstGames).toEqual(['visualMatch', 'visualMatch', 'visualMatch', 'miniMap', 'visualMatch']);
+    const tileSets = stepsOf(d, 'visualMatch').slice(0, 4).map((s) => s.tiles.map((t) => t.id));
+    expect(tileSets).toEqual([['passport', 'phone', 'suitcase'], ['holiday', 'work', 'study'], ['one-week', 'two-weeks', 'four-weeks'], ['nothing', 'declare']]);
   });
   it('the supported interview asks everything, in order, with the trip on screen', () => {
     for (const lang of LANGS) {
@@ -292,8 +424,8 @@ describe('the border check, as a process', () => {
     for (const lang of LANGS) {
       const d = day(lang);
       const gate = d.steps.slice(videoAt(d) + 1);
-      const five = gate.slice(0, 5) as Extract<BootcampStep, { kind: 'visualMatch' | 'customize' | 'miniMap' }>[];
-      expect(five.map((s) => s.kind)).toEqual(['visualMatch', 'visualMatch', 'customize', 'miniMap', 'visualMatch']);
+      const five = gate.slice(0, 5) as Extract<BootcampStep, { kind: 'visualMatch' | 'miniMap' }>[];
+      expect(five.map((s) => s.kind)).toEqual(['visualMatch', 'visualMatch', 'visualMatch', 'miniMap', 'visualMatch']);
       expect(five.map((s) => s.label!.en)).toEqual(['Passport', 'Purpose', 'Duration', 'Stay', 'Declaration'].map((n, i) => `Border check ${i + 1}/5 — ${n}`));
       expect(five.map((s) => s.rounds[0]!.audio.en)).toEqual([0, 2, 4, 6, 8].map((i) => line(lang, i)));
       const [stamp, receipt, summary] = gate.slice(5);
@@ -303,17 +435,17 @@ describe('the border check, as a process', () => {
       expect(summary!.kind).toBe('summary');
     }
   });
-  it('the arc: profile → Step 0 → passport → purpose → duration → stay → declaration → welcome → match → by ear → interview → conversation → no help → video → final check → entry approved', () => {
+  it('the arc: briefing → Step 0 → passport → purpose → duration → stay → declaration → welcome → match → by ear → interview → conversation → no help → video → final check → entry approved', () => {
     const kinds = day('en').steps.map((s) => (s.kind === 'prime' ? (s.gate ? 'prime:step0' : 'prime:cards') : s.kind === 'video' ? `video:${s.mode}` : (s.kind === 'visualMatch' || s.kind === 'miniMap' || s.kind === 'quickReply') && s.challenge ? `${s.kind}:speed` : s.kind));
     expect(kinds).toEqual([
-      'talk', 'talk', 'prime:step0',
+      'talk', 'prime:step0',
       'prime:cards', 'visualMatch', 'sentenceBuilder', 'receipt',
       'prime:cards', 'visualMatch', 'sentenceBuilder', 'receipt',
-      'prime:cards', 'customize', 'receipt',
+      'prime:cards', 'visualMatch', 'receipt',
       'prime:cards', 'miniMap', 'sentenceBuilder', 'receipt',
       'prime:cards', 'visualMatch', 'receipt',
       'prime:cards', 'matchPairs', 'replies', 'quickReply', 'receipt', 'dialogue', 'receipt', 'quickReply:speed', 'receipt',
-      'video:again', 'visualMatch:speed', 'visualMatch:speed', 'customize', 'miniMap:speed', 'visualMatch:speed', 'visualMatch', 'receipt', 'summary',
+      'video:again', 'visualMatch:speed', 'visualMatch:speed', 'visualMatch:speed', 'miniMap:speed', 'visualMatch:speed', 'visualMatch', 'receipt', 'summary',
     ]);
   });
 });
@@ -324,13 +456,13 @@ describe('final artwork — one meaning, one image, one continuous world', () =>
     expect(Object.keys(M06_SLOTS).sort()).toEqual([...SLOTS].sort());
     for (const [id, slot] of Object.entries(M06_SLOTS)) expect(slot.image).toBe(`images/mission06/${id}.jpg`);
   });
-  it('all eight distractors have exact canonical artwork, including a distinct outskirts hotel', () => {
-    expect(Object.keys(M06_PROPS).sort()).toEqual(['phone', 'suitcase', 'work', 'study', 'red-channel', 'house', 'airport', 'hotel-outskirts'].sort());
+  it('all nine distractors have exact canonical artwork, including a distinct outskirts hotel and the four-weeks calendar', () => {
+    expect(Object.keys(M06_PROPS).sort()).toEqual(['phone', 'suitcase', 'work', 'study', 'red-channel', 'house', 'airport', 'hotel-outskirts', 'four-weeks'].sort());
     for (const [id, prop] of Object.entries(M06_PROPS)) expect(prop.image).toBe(`images/mission06/${id === 'red-channel' ? 'declare' : id}.jpg`);
   });
-  it('all 23 files physically exist as distinct JPEGs with high-resolution wide sources', () => {
+  it('all 24 files physically exist as distinct JPEGs with high-resolution wide sources', () => {
     const assets = [...Object.values(M06_SLOTS), ...Object.values(M06_PROPS)].map((a) => a.image);
-    expect(new Set(assets).size).toBe(23);
+    expect(new Set(assets).size).toBe(24);
     const hashes = assets.map((asset) => {
       const bytes = readFileSync(new URL(`../../../public/${asset}`, import.meta.url));
       expect(bytes.subarray(0, 2).toString('hex'), asset).toBe('ffd8');
@@ -347,7 +479,7 @@ describe('final artwork — one meaning, one image, one continuous world', () =>
       expect(width / height, asset).toBeLessThan(1.9);
       return createHash('sha256').update(bytes).digest('hex');
     });
-    expect(new Set(hashes).size).toBe(23);
+    expect(new Set(hashes).size).toBe(24);
   });
   it('every card picture comes from a slot, the same in every language', () => {
     const pictures = new Set(Object.values(M06_SLOTS).map((s) => s.image));
@@ -381,16 +513,16 @@ describe('final artwork — one meaning, one image, one continuous world', () =>
       passport: M06_SLOTS.passport.image, phone: M06_PROPS.phone.image, suitcase: M06_PROPS.suitcase.image,
       holiday: M06_SLOTS.holiday.image, work: M06_PROPS.work.image, study: M06_PROPS.study.image,
       nothing: M06_SLOTS['nothing-to-declare'].image, declare: M06_PROPS['red-channel'].image, entry: M06_SLOTS['welcome-enjoy-stay'].image,
+      'one-week': M06_SLOTS.week.image, 'two-weeks': M06_SLOTS['two-weeks'].image, 'four-weeks': M06_PROPS['four-weeks'].image,
       'hotel-centre': M06_SLOTS['hotel-city-centre'].image, 'hotel-outskirts': M06_PROPS['hotel-outskirts'].image,
       house: M06_PROPS.house.image, airport: M06_PROPS.airport.image,
     };
     for (const lang of LANGS) {
       for (const step of stepsOf(day(lang), 'visualMatch')) for (const tile of step.tiles) expect(tile.image, tile.id).toBe(mapping[tile.id]);
       for (const step of stepsOf(day(lang), 'miniMap')) for (const round of step.rounds) {
-        expect(round.cells.filter((c) => c.tappable).map((c) => c.id)).toEqual(['hotel-centre', 'hotel-outskirts', 'house', 'airport']);
+        expect(round.cells.filter((c) => c.tappable).map((c) => c.id)).toEqual(['hotel-centre', 'house', 'airport', 'hotel-outskirts']);
         for (const cell of round.cells.filter((c) => c.tappable)) expect(cell.image, cell.id).toBe(mapping[cell.id]);
       }
-      for (const step of stepsOf(day(lang), 'customize')) for (const option of step.options) expect(option.image).toBe(M06_SLOTS.week.image);
       expect(stepsOf(day(lang), 'matchPairs')[0]!.pairs.map((p) => p.answerImage)).toEqual(['holiday', 'two-weeks', 'hotel-city-centre', 'nothing-to-declare'].map((id) => M06_SLOTS[id as keyof typeof M06_SLOTS].image));
     }
   });

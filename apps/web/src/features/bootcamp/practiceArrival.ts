@@ -32,9 +32,9 @@ import type { BootcampStep } from './types.js';
  * used). Final artwork is shared across all languages; emoji remain metadata fallbacks. One continuous world: the same traveller, the same officer, the
  * same passport booth.
  *   Group 1 — the trip and its concepts · Group 2 — the officer's questions · Group 3 — the end of the check.
- *   (Beyond the brief's list: `week`, the calendar's unit — the calendar game is made of weeks, and the
- *   Arrival checkpoint later asks "One week? Two weeks?" — and `hotel` / `city-centre`, the two
- *   building blocks of "a hotel in the city centre".)
+ *   (Beyond the brief's list: `week`, the calendar's unit — one week is also the duration game's first
+ *   choice, and the Arrival checkpoint later asks "One week? Two weeks?" — and `hotel` / `city-centre`,
+ *   the two building blocks of "a hotel in the city centre".)
  */
 type M06Slot =
   | 'passport' | 'holiday' | 'week' | 'two-weeks' | 'hotel' | 'city-centre' | 'hotel-city-centre' | 'nothing-to-declare'
@@ -55,6 +55,8 @@ export const M06_SLOTS: Record<M06Slot, { emoji: string; image: string }> = {
 export const M06_PROPS = {
   phone: { emoji: '📱', image: 'images/mission06/phone.jpg' }, suitcase: { emoji: '🧳', image: 'images/mission06/suitcase.jpg' }, work: { emoji: '💼', image: 'images/mission06/work.jpg' }, study: { emoji: '🎓', image: 'images/mission06/study.jpg' },
   'red-channel': { emoji: '🔴', image: 'images/mission06/declare.jpg' }, house: { emoji: '🏠', image: 'images/mission06/house.jpg' }, airport: { emoji: '✈️', image: 'images/mission06/airport.jpg' }, 'hotel-outskirts': { emoji: '🏨', image: 'images/mission06/hotel-outskirts.jpg' },
+  // four weeks — the same calendar as `week` / `two-weeks`, every week marked (derived from two-weeks.jpg: its two blank rows recoloured)
+  'four-weeks': { emoji: '📆', image: 'images/mission06/four-weeks.jpg' },
 } as const satisfies Record<string, { emoji: string; image: string }>;
 const slot6 = (s: M06Slot): { emoji: string } | { image: string } => (M06_SLOTS[s].image ? { image: M06_SLOTS[s].image! } : { emoji: M06_SLOTS[s].emoji });
 const tile6 = (id: string, look: { emoji: string; image?: string }, caption?: Copy) => ({
@@ -100,32 +102,41 @@ const PURPOSES = [
 const CHANNELS = [
   tile6('nothing', M06_SLOTS['nothing-to-declare'], ['אין מה להצהיר', 'Nothing to declare']), tile6('declare', M06_PROPS['red-channel'], ['יש מה להצהיר', 'Goods to declare']),
 ];
-/** A month on the calendar: the stay is the first two weeks of it. */
-const CALENDAR = {
-  base: M06_SLOTS['duration-question'].image,
-  options: [1, 2, 3, 4].map((n) => ({ id: `week-${n}`, emoji: M06_SLOTS.week.emoji, image: M06_SLOTS.week.image, label: [`שבוע ${n}`, `Week ${n}`] as Copy })),
-};
-const TWO_WEEKS_ON = ['week-1', 'week-2'];
-/** The city: your hotel is the one in the centre; another hotel out of town, a house, the airport. */
-const CITY = (): { id: string; row: 0 | 1 | 2; col: 0 | 1 | 2; emoji?: string; image?: string; tappable?: boolean }[] => [
-  { id: 'hotel-centre', row: 1, col: 1, image: M06_SLOTS['hotel-city-centre'].image, tappable: true },
-  { id: 'hotel-outskirts', row: 0, col: 2, image: M06_PROPS['hotel-outskirts'].image, tappable: true },
-  { id: 'house', row: 2, col: 0, image: M06_PROPS.house.image, tappable: true },
-  { id: 'airport', row: 2, col: 2, image: M06_PROPS.airport.image, tappable: true },
-  // the centre itself: buildings around the square (not tappable, never named)
-  { id: 'centre-west', row: 1, col: 0, emoji: '🏛️' }, { id: 'centre-north', row: 0, col: 1, emoji: '🏬' }, { id: 'centre-east', row: 1, col: 2, emoji: '🏢' },
-  { id: 'outskirts', row: 0, col: 0, emoji: '🌳' },
+/** How long: three stays on the same calendar — one week, two weeks, four weeks. The meaning is the
+ *  picture (with its name in the app language); only "two weeks" is ever said in the learning one. */
+const DURATIONS = [
+  tile6('one-week', M06_SLOTS.week, ['שבוע אחד', 'One week']), tile6('two-weeks', M06_SLOTS['two-weeks'], ['שבועיים', 'Two weeks']), tile6('four-weeks', M06_PROPS['four-weeks'], ['ארבעה שבועות', 'Four weeks']),
 ];
+/** Where on the map a place is. The city centre is an AREA on the map (shaded), not "the middle square". */
+export type M06Zone = 'city-centre' | 'residential' | 'outskirts';
+/**
+ * The city, seen from above. The CITY CENTRE is the shaded area top-left: its square, and your hotel on
+ * it. Out of the centre: a house in a residential street, and — at the edges of the map — the airport
+ * and another hotel out of town. Your hotel is the one IN the centre (it is not the middle cell).
+ */
+const CITY = (): { id: string; row: 0 | 1 | 2; col: 0 | 1 | 2; image?: string; tappable?: boolean; zone?: M06Zone }[] => [
+  { id: 'centre-square', row: 0, col: 0, image: M06_SLOTS['city-centre'].image, zone: 'city-centre' },
+  { id: 'hotel-centre', row: 0, col: 1, image: M06_SLOTS['hotel-city-centre'].image, tappable: true, zone: 'city-centre' },
+  { id: 'centre-street-1', row: 1, col: 0, zone: 'city-centre' }, { id: 'centre-street-2', row: 1, col: 1, zone: 'city-centre' },
+  { id: 'house', row: 1, col: 2, image: M06_PROPS.house.image, tappable: true, zone: 'residential' },
+  { id: 'airport', row: 2, col: 0, image: M06_PROPS.airport.image, tappable: true, zone: 'outskirts' },
+  { id: 'hotel-outskirts', row: 2, col: 2, image: M06_PROPS['hotel-outskirts'].image, tappable: true, zone: 'outskirts' },
+];
+/** What each place on the map IS — the answer is "a hotel" AND "in the city centre", from the data. */
+export const M06_PLACES: Record<'hotel-centre' | 'hotel-outskirts' | 'house' | 'airport', { kind: 'hotel' | 'house' | 'airport'; zone: M06Zone }> = {
+  'hotel-centre': { kind: 'hotel', zone: 'city-centre' }, 'hotel-outskirts': { kind: 'hotel', zone: 'outskirts' }, house: { kind: 'house', zone: 'residential' }, airport: { kind: 'airport', zone: 'outskirts' },
+};
 /** Which tile / cell is the traveller's own answer, from the profile (never chosen per exercise). */
-export const M06_ANSWER = { desk: 'passport', purpose: M06_PROFILE.purpose, stay: 'hotel-centre', declaration: M06_PROFILE.declaration, calendar: TWO_WEEKS_ON } as const;
+export const M06_ANSWER = { desk: 'passport', purpose: M06_PROFILE.purpose, duration: M06_PROFILE.duration, stay: 'hotel-centre', declaration: M06_PROFILE.declaration } as const;
 
 /**
  * Mission 06 — Airport & Border: "I am actually going through border control." The conversation is
  * LOCKED (with its side-branches); the journey around it is the check itself, one requirement at a
  * time, each cleared on the border checklist:
  *
- *   your trip (the profile) → Step 0 (optional) → PASSPORT: hand it over, say it → PURPOSE: the
- *   question, your answer → DURATION: two weeks on the calendar → STAY: your hotel in the centre →
+ *   the briefing (your role, the four facts you will give) → Step 0 (optional) → PASSPORT: hand it
+ *   over, say it → PURPOSE: the question, your answer → DURATION: pick two weeks (of one / two / four)
+ *   → STAY: your hotel, in the city centre's area on the map →
  *   DECLARATION: the green channel → "welcome" (known from Mission 01) → each question to its answer
  *   → the officer's questions by ear → the supported interview → the conversation → the interview
  *   with no help → the video → the final check, one requirement after another → ENTRY APPROVED.
@@ -141,17 +152,15 @@ export function m06Steps(lang: MissionLang): BootcampStep[] {
   const cards = (label: Copy, intro: Copy, words: ReturnType<typeof card>[]): BootcampStep => k.prime({ label, intro, bigPictures: true, widePictures: true, words });
   const step = (n: number, name: Copy): Copy => [`ביקורת גבולות ${n}/5 — ${name[0]}`, `Border check ${n}/5 — ${name[1]}`];
   return [
+    // THE BRIEFING — your role, and the four facts you will give the officer (the same to the end).
     k.talk('🛂', ['משימה 6: שדה תעופה וגבול', 'Mission 6: Airport & Border'], [
-      ['נחתת. לפניך ביקורת הגבולות, והפקיד ישאל אותך כמה שאלות.', 'You have landed. Border control is ahead, and the officer will ask you a few questions.'],
-      ['הוא לא יודע עליך כלום. אתה יודע — ותענה לו. בסוף: כניסה מאושרת.', 'He knows nothing about you. You do — and you will answer him. At the end: entry approved.'],
-    ], ['לגשת לדלפק', 'Approach the desk']),
-    // STEP 0 — THE TRAVELLER: the facts of the trip, the same from here to the end.
-    k.talk('🧳', ['הטיול שלך', 'Your trip'], [
-      ['🏖️ חופשה', '🏖️ Holiday'],
-      ['📅 שבועיים', '📅 Two weeks'],
-      ['🏨 מלון · 📍 במרכז העיר', '🏨 Hotel · 📍 In the city centre'],
-      ['🟢 אין מה להצהיר', '🟢 Nothing to declare'],
-    ], ['זה הטיול שלי', 'That’s my trip']),
+      ['במשימה הזו אתה נכנס למדינה כתייר. אלה הפרטים שתצטרך למסור לפקיד הגבולות:', 'In this mission you are entering a country as a tourist. These are the details you will give the border officer:'],
+    ], ['התחל ביקורת גבולות', 'Start border control'], [
+      { icon: '🏖️', label: ['מטרת הביקור', 'Purpose of visit'], value: ['חופשה', 'Holiday'] },
+      { icon: '📅', label: ['משך השהייה', 'Length of stay'], value: ['שבועיים', 'Two weeks'] },
+      { icon: '🏨', label: ['מקום לינה', 'Where you stay'], value: ['מלון במרכז העיר', 'A hotel in the city centre'] },
+      { icon: '🧳', label: ['מכס', 'Customs'], value: ['אין מה להצהיר', 'Nothing to declare'] },
+    ]),
     // The pieces (optional).
     k.prime({
       gate: true,
@@ -174,9 +183,10 @@ export function m06Steps(lang: MissionLang): BootcampStep[] {
     ]),
     k.practice({
       kind: 'visualMatch',
+      quiet: true,
       label: ['מה הוא מבקש? הגש לו', 'What is he asking for? Hand it over'],
       tiles: DESK,
-      rounds: [{ audio: L_NEXT, correct: M06_ANSWER.desk }],
+      rounds: [{ audio: L_NEXT, correct: M06_ANSWER.desk, reinforce: L_PASSPORT }],
     }),
     k.practice({
       kind: 'sentenceBuilder',
@@ -191,9 +201,10 @@ export function m06Steps(lang: MissionLang): BootcampStep[] {
     ]),
     k.practice({
       kind: 'visualMatch',
+      quiet: true,
       label: ['למה באת? הקש על הטיול שלך', 'Why are you here? Tap your trip'],
       tiles: PURPOSES,
-      rounds: [{ audio: L_PURPOSE, correct: M06_ANSWER.purpose }, { audio: L_HOLIDAY, correct: M06_ANSWER.purpose, itemId: 'phrase.border.on-holiday' }],
+      rounds: [{ audio: L_PURPOSE, correct: M06_ANSWER.purpose, reinforce: L_HOLIDAY }, { audio: L_HOLIDAY, correct: M06_ANSWER.purpose, itemId: 'phrase.border.on-holiday' }],
     }),
     k.practice({
       kind: 'sentenceBuilder',
@@ -201,29 +212,34 @@ export function m06Steps(lang: MissionLang): BootcampStep[] {
       rounds: [{ itemId: 'phrase.border.on-holiday', chunks: [["I'm", 'here', 'on holiday.'], ['Je suis', 'en', 'vacances.'], ['Estoy', 'de', 'vacaciones.']] }],
     }),
     k.receipt(borderChecklist(2)),
-    // 3/5 DURATION — two weeks, on the calendar.
+    // 3/5 DURATION — how long? One week, two weeks or four: pick yours.
     cards(step(3, CHECK_NAME.duration), ['כמה זמן אתה נשאר — והתשובה שלך. הקש כדי לשמוע.', 'How long you are staying — and your answer. Tap to hear.'], [
       card('border.line.how-long', L_HOW_LONG, ['בסדר. לכמה זמן אתה נשאר?', 'All right. How long are you staying?'], 'duration-question'),
       card('border.line.two-weeks', L_TWO_WEEKS, ['לשבועיים.', 'For two weeks.'], 'two-weeks'),
     ]),
     k.practice({
-      kind: 'customize',
-      label: ['סמן בלוח השנה את השהות שלך', 'Mark your stay on the calendar'],
-      ...CALENDAR,
-      rounds: [{ audio: L_TWO_WEEKS, on: M06_ANSWER.calendar, itemId: 'phrase.border.two-weeks' }, { audio: L_HOW_LONG, on: M06_ANSWER.calendar }],
+      kind: 'visualMatch',
+      quiet: true,
+      label: ['כמה זמן אתה נשאר? בחר את השהות שלך', 'How long are you staying? Pick your stay'],
+      tiles: DURATIONS,
+      rounds: [
+        { audio: L_HOW_LONG, correct: M06_ANSWER.duration, reinforce: L_TWO_WEEKS },
+        { audio: L_TWO_WEEKS, correct: M06_ANSWER.duration, itemId: 'phrase.border.two-weeks' },
+      ],
     }),
     k.receipt(borderChecklist(3)),
-    // 4/5 STAY — your hotel, in the centre.
+    // 4/5 STAY — your hotel, in the city centre (the shaded area of the map).
     cards(step(4, CHECK_NAME.stay), ['איפה אתה מתאכסן — והתשובה שלך. הקש כדי לשמוע.', 'Where you are staying — and your answer. Tap to hear.'], [
       card('border.line.where', L_WHERE, ['ואיפה אתה מתאכסן?', 'And where are you staying?'], 'where-staying-question'),
       card('border.line.hotel', L_HOTEL, ['במלון במרכז העיר.', 'At a hotel in the city centre.'], 'hotel-city-centre'),
     ]),
     k.practice({
       kind: 'miniMap',
-      label: ['איפה אתה ישן? הקש על המקום', 'Where are you sleeping? Tap the place'],
+      quiet: true,
+      label: ['איפה אתה ישן? מרכז העיר הוא האזור הצבוע במפה', 'Where are you sleeping? The city centre is the shaded area of the map'],
       rounds: [
         { audio: L_HOTEL, cells: CITY(), correct: M06_ANSWER.stay, itemId: 'phrase.border.staying-hotel' },
-        { audio: L_WHERE, cells: CITY(), correct: M06_ANSWER.stay },
+        { audio: L_WHERE, cells: CITY(), correct: M06_ANSWER.stay, reinforce: L_HOTEL },
       ],
     }),
     k.practice({
@@ -240,24 +256,26 @@ export function m06Steps(lang: MissionLang): BootcampStep[] {
     ]),
     k.practice({
       kind: 'visualMatch',
+      quiet: true,
       label: ['המזוודה שלך — לאיזה מסלול?', 'Your suitcase — which way through?'],
       tiles: CHANNELS,
-      rounds: [{ audio: L_DECLARE, correct: M06_ANSWER.declaration }, { audio: L_NOTHING, correct: M06_ANSWER.declaration, itemId: 'phrase.border.nothing-declare' }],
+      rounds: [{ audio: L_DECLARE, correct: M06_ANSWER.declaration, reinforce: L_NOTHING }, { audio: L_NOTHING, correct: M06_ANSWER.declaration, itemId: 'phrase.border.nothing-declare' }],
     }),
     k.receipt(borderChecklist(5)),
     // WELCOME — known from Mission 01; here it is the end of the check.
     cards(['ובסוף', 'And at the end'], ['את זה אתה כבר מכיר ממשימה 1. כאן זה אומר: עברת. הקש כדי לשמוע.', 'You already know this from Mission 1. Here it means: you are through. Tap to hear.'], [
       card('border.line.welcome', L_WELCOME, ['ברוך הבא, ותיהנה מהשהות!', 'Welcome, and enjoy your stay!'], 'welcome-enjoy-stay'),
     ]),
-    // EACH QUESTION, TO YOUR TRIP — what does he want to know? (icons only: the trip detail, not a translation)
+    // EACH QUESTION, TO YOUR ANSWER — the officer's question → the traveller's own reply (its picture beside
+    // it: the sentence is the answer, the picture supports it). Conversation, not translation.
     k.practice({
       kind: 'matchPairs',
-      label: ['כל שאלה — ומה היא שואלת', 'Each question — and what it asks for'],
+      label: ['כל שאלה — והתשובה שלך', 'Each question — and your answer'],
       pairs: [
-        ['reply.border.purpose', 'phrase.border.on-holiday', undefined, '🏖️', undefined, M06_SLOTS['holiday'].image],
-        ['reply.border.how-long', 'phrase.border.two-weeks', undefined, '📅 2', undefined, M06_SLOTS['two-weeks'].image],
-        ['reply.border.where-staying', 'phrase.border.staying-hotel', undefined, '🏨 📍', undefined, M06_SLOTS['hotel-city-centre'].image],
-        ['reply.border.anything-declare', 'phrase.border.nothing-declare', undefined, '🟢', undefined, M06_SLOTS['nothing-to-declare'].image],
+        ['reply.border.purpose', 'phrase.border.on-holiday', undefined, undefined, undefined, M06_SLOTS['holiday'].image],
+        ['reply.border.how-long', 'phrase.border.two-weeks', undefined, undefined, undefined, M06_SLOTS['two-weeks'].image],
+        ['reply.border.where-staying', 'phrase.border.staying-hotel', undefined, undefined, undefined, M06_SLOTS['hotel-city-centre'].image],
+        ['reply.border.anything-declare', 'phrase.border.nothing-declare', undefined, undefined, undefined, M06_SLOTS['nothing-to-declare'].image],
       ],
     }),
     // THE OFFICER, BY EAR — his questions and his last line (the answer reveals the meaning).
@@ -293,14 +311,15 @@ export function m06Steps(lang: MissionLang): BootcampStep[] {
     // THE PAYOFF — the whole scene again (the video, where one exists)…
     { kind: 'video', mode: 'again' },
     // …then THE FINAL CHECK: the officer's real lines, one requirement after another.
-    k.practice({ kind: 'visualMatch', challenge: true, label: step(1, CHECK_NAME.passport), tiles: DESK, rounds: [{ audio: L_NEXT, correct: M06_ANSWER.desk }] }),
-    k.practice({ kind: 'visualMatch', challenge: true, label: step(2, CHECK_NAME.purpose), tiles: PURPOSES, rounds: [{ audio: L_PURPOSE, correct: M06_ANSWER.purpose }] }),
-    k.practice({ kind: 'customize', label: step(3, CHECK_NAME.duration), ...CALENDAR, rounds: [{ audio: L_HOW_LONG, on: M06_ANSWER.calendar }] }),
-    k.practice({ kind: 'miniMap', challenge: true, label: step(4, CHECK_NAME.stay), rounds: [{ audio: L_WHERE, cells: CITY(), correct: M06_ANSWER.stay }] }),
-    k.practice({ kind: 'visualMatch', challenge: true, label: step(5, CHECK_NAME.declaration), tiles: CHANNELS, rounds: [{ audio: L_DECLARE, correct: M06_ANSWER.declaration }] }),
+    k.practice({ kind: 'visualMatch', challenge: true, quiet: true, label: step(1, CHECK_NAME.passport), tiles: DESK, rounds: [{ audio: L_NEXT, correct: M06_ANSWER.desk, reinforce: L_PASSPORT }] }),
+    k.practice({ kind: 'visualMatch', challenge: true, quiet: true, label: step(2, CHECK_NAME.purpose), tiles: PURPOSES, rounds: [{ audio: L_PURPOSE, correct: M06_ANSWER.purpose, reinforce: L_HOLIDAY }] }),
+    k.practice({ kind: 'visualMatch', challenge: true, quiet: true, label: step(3, CHECK_NAME.duration), tiles: DURATIONS, rounds: [{ audio: L_HOW_LONG, correct: M06_ANSWER.duration, reinforce: L_TWO_WEEKS }] }),
+    k.practice({ kind: 'miniMap', challenge: true, quiet: true, label: step(4, CHECK_NAME.stay), rounds: [{ audio: L_WHERE, cells: CITY(), correct: M06_ANSWER.stay, reinforce: L_HOTEL }] }),
+    k.practice({ kind: 'visualMatch', challenge: true, quiet: true, label: step(5, CHECK_NAME.declaration), tiles: CHANNELS, rounds: [{ audio: L_DECLARE, correct: M06_ANSWER.declaration, reinforce: L_NOTHING }] }),
     // ENTRY APPROVED — the stamp, and his last line.
     k.practice({
       kind: 'visualMatch',
+      quiet: true,
       label: ['🛂 כניסה מאושרת', '🛂 Entry approved'],
       // one tile shown: nothing to choose — the stamp, and his line (the passport is the step's other tile)
       tiles: [tile6('entry', M06_SLOTS['welcome-enjoy-stay'], ['כניסה מאושרת', 'Entry approved']), tile6('passport', M06_SLOTS.passport)],

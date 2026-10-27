@@ -140,10 +140,13 @@ export function QuickReplyStep({ step, itemsById, onDone }: { step: StepOf<'quic
 
 /* ── shared result strip for the board engines ───────────────────────────────────────────────── */
 
-function Heard({ ok, text, gloss, onReplay }: { ok: boolean; text: string; gloss: string; onReplay: () => void }) {
+function Heard({ ok, text, gloss, onReplay, quiet }: { ok: boolean; text: string; gloss: string; onReplay: () => void; quiet?: boolean }) {
   return (
-    <div className="fade-in" style={{ display: 'flex', flexDirection: 'column', gap: 4, alignItems: 'center' }}>
-      <div className="feedback-top"><CompanionReaction kind={ok ? 'correct' : 'encouraging'} text={ok ? false : undefined} size={76} /><span className={`feedback-head ${ok ? 'ok' : 'bad'}`}>{ok ? `✓ ${t('correctHeader')}` : t('wrongHeader')}</span></div>
+    <div className={`fade-in${quiet ? ' heard-quiet' : ''}`} style={{ display: 'flex', flexDirection: 'column', gap: 4, alignItems: 'center' }}>
+      {quiet
+        // Quiet: the line is the point — a small ✓ / ✕ above it, nothing else competing.
+        ? <span className={`feedback-head ${ok ? 'ok' : 'bad'}`}>{ok ? '✓' : `✕ ${t('wrongHeader')}`}</span>
+        : <div className="feedback-top"><CompanionReaction kind={ok ? 'correct' : 'encouraging'} text={ok ? false : undefined} size={76} /><span className={`feedback-head ${ok ? 'ok' : 'bad'}`}>{ok ? `✓ ${t('correctHeader')}` : t('wrongHeader')}</span></div>}
       <p className="drill-phrase" style={{ fontSize: '1.15rem' }}><TargetText text={text} /></p>
       <p className="drill-meaning" style={{ fontSize: '0.95rem' }}>{gloss}</p>
       <button className="btn-ghost" style={{ minHeight: 36, padding: '4px 10px' }} onClick={onReplay} aria-label={t('replayAudio')}>🔊</button>
@@ -151,7 +154,9 @@ function Heard({ ok, text, gloss, onReplay }: { ok: boolean; text: string; gloss
   );
 }
 
-function ResultActions({ ok, last, onRetry, onNext }: { ok: boolean; last: boolean; onRetry: () => void; onNext: () => void }) {
+function ResultActions({ ok, last, onRetry, onNext, quiet }: { ok: boolean; last: boolean; onRetry: () => void; onNext: () => void; quiet?: boolean }) {
+  // Quiet: one action — Continue when right, Retry when wrong.
+  if (quiet) return <div className="action-zone">{ok ? <button className="btn-primary" onClick={onNext}>{t('continue')}</button> : <button className="btn-primary" onClick={onRetry}>{t('tryAgain')}</button>}</div>;
   return (
     <div className="action-zone">
       {!ok && <button className="btn-secondary" onClick={onRetry}>{t('tryAgain')}</button>}
@@ -174,6 +179,8 @@ export function VisualMatchStep({ step, onDone }: { step: StepOf<'visualMatch'>;
   const shown = round.show ? tiles.filter((x) => round.show!.includes(x.id)) : tiles;
   const grid = shown.length === 1 ? 'is-one' : shown.length === 2 || shown.length === 4 ? 'is-two' : '';
   const rate = spokenRate(round.audio, step.challenge);
+  // After a pick: the answer's own line when the round gives one (the question was asked; this is the reply).
+  const said = round.reinforce ?? round.audio;
   const play = (): void => void speakL(round.audio.en, rate);
 
   useEffect(() => {
@@ -191,7 +198,7 @@ export function VisualMatchStep({ step, onDone }: { step: StepOf<'visualMatch'>;
         <GameHead label={step.challenge ? `⚡ ${t('speedHeadsUp')}` : step.label ? L(step.label) : t('visualMatchTitle')} i={i} n={step.rounds.length}>
           <AudioBubble onPlay={() => void speakL(round.audio.en, step.challenge ? 0.85 : undefined)} />
         </GameHead>
-        <div className={grid ? `pgrid ${grid}` : 'pgrid'}>
+        <div className={`pgrid${grid ? ` ${grid}` : ''}${step.quiet ? ' is-quiet' : ''}`}>
           {shown.map((tile) => (
             <button
               key={tile.id}
@@ -204,6 +211,7 @@ export function VisualMatchStep({ step, onDone }: { step: StepOf<'visualMatch'>;
                 if (right) good(); else feedbackWrong();
                 if (round.itemId) bc.recordDrill(round.itemId, 'numberSprint', right ? 'pass' : 'fail', Date.now() - shownAt.current);
                 setPicked(tile.id);
+                if (round.reinforce) void speakL(round.reinforce.en, 0.92);
               }}
             >
               {tile.image && <img className="ptile-img" src={publicAsset(tile.image)} alt="" draggable={false} decoding="async" />}
@@ -213,10 +221,10 @@ export function VisualMatchStep({ step, onDone }: { step: StepOf<'visualMatch'>;
             </button>
           ))}
         </div>
-        {picked !== null && <Heard ok={ok} text={round.audio.en} gloss={dialogueTr(round.audio)} onReplay={() => void speakL(round.audio.en)} />}
+        {picked !== null && <Heard ok={ok} quiet={step.quiet} text={said.en} gloss={dialogueTr(said)} onReplay={() => void speakL(said.en)} />}
       </div>
       {picked === null ? null : (
-        <ResultActions ok={ok} last={last} onRetry={() => { setPicked(null); play(); }} onNext={() => { setPicked(null); if (last) onDone(); else setI(i + 1); }} />
+        <ResultActions ok={ok} last={last} quiet={step.quiet} onRetry={() => { setPicked(null); play(); }} onNext={() => { setPicked(null); if (last) onDone(); else setI(i + 1); }} />
       )}
     </>
   );
@@ -364,6 +372,7 @@ export function MiniMapStep({ step, onDone }: { step: StepOf<'miniMap'>; onDone:
   const round = step.rounds[i]!;
   const rate = spokenRate(round.audio, step.challenge);
   const play = (): void => void speakL(round.audio.en, rate);
+  const said = round.reinforce ?? round.audio;
   const at = (row: number, col: number): MapCell | undefined => round.cells.find((c) => c.row === row && c.col === col);
 
   useEffect(() => {
@@ -383,7 +392,8 @@ export function MiniMapStep({ step, onDone }: { step: StepOf<'miniMap'>; onDone:
           <CompanionWatch mood="listening" size={48} />
         </GameHead>
         {/* The map is a picture, not text: it keeps one orientation in Hebrew and English alike. */}
-        <div className="pgrid pmap" dir="ltr">
+        {/* After a pick, the answer's area (its zone) is drawn out: WHY it is the answer, not just which. */}
+        <div className={`pgrid pmap${step.quiet ? ' is-quiet' : ''}${picked !== null ? ' is-explain' : ''}`} dir="ltr" data-answer-zone={round.cells.find((c) => c.id === round.correct)?.zone}>
           {GRID.map(([row, col]) => {
             const cell = at(row, col);
             const inner = cell && (
@@ -393,11 +403,12 @@ export function MiniMapStep({ step, onDone }: { step: StepOf<'miniMap'>; onDone:
               </>
             );
             if (!cell) return <span key={`${row}${col}`} className="ptile is-road" aria-hidden />;
-            if (!cell.tappable) return <span key={cell.id} className="ptile is-static">{inner}</span>;
+            if (!cell.tappable) return <span key={cell.id} className={`ptile is-static${cell.image || cell.emoji ? '' : ' is-road'}`} data-zone={cell.zone}>{inner}</span>;
             return (
               <button
                 key={cell.id}
                 className={`ptile ${cell.image ? 'has-image' : ''} ${picked !== null && cell.id === round.correct ? 'is-ok' : ''} ${picked === cell.id && !ok ? 'is-bad' : ''}`}
+                data-zone={cell.zone}
                 disabled={picked !== null}
                 aria-label={cell.id}
                 onClick={() => {
@@ -406,6 +417,7 @@ export function MiniMapStep({ step, onDone }: { step: StepOf<'miniMap'>; onDone:
                   if (right) good(); else feedbackWrong();
                   if (round.itemId) bc.recordDrill(round.itemId, 'listen', right ? 'pass' : 'fail', Date.now() - shownAt.current);
                   setPicked(cell.id);
+                  if (round.reinforce) void speakL(round.reinforce.en, 0.92);
                 }}
               >
                 {inner}
@@ -413,10 +425,10 @@ export function MiniMapStep({ step, onDone }: { step: StepOf<'miniMap'>; onDone:
             );
           })}
         </div>
-        {picked !== null && <Heard ok={ok} text={round.audio.en} gloss={dialogueTr(round.audio)} onReplay={() => void speakL(round.audio.en)} />}
+        {picked !== null && <Heard ok={ok} quiet={step.quiet} text={said.en} gloss={dialogueTr(said)} onReplay={() => void speakL(said.en)} />}
       </div>
       {picked === null ? null : (
-        <ResultActions ok={ok} last={last} onRetry={() => { setPicked(null); play(); }} onNext={() => { setPicked(null); if (last) onDone(); else setI(i + 1); }} />
+        <ResultActions ok={ok} last={last} quiet={step.quiet} onRetry={() => { setPicked(null); play(); }} onNext={() => { setPicked(null); if (last) onDone(); else setI(i + 1); }} />
       )}
     </>
   );
@@ -440,7 +452,7 @@ export function MatchPairsStep({ step, itemsById, onDone }: { step: StepOf<'matc
   const answerText = (i: number): string => step.pairs[i]!.answerText ?? itemsById.get(step.pairs[i]!.answerItemId)?.text ?? '';
   const answerShown = (i: number): React.ReactNode => {
     const p = step.pairs[i]!;
-    if (!p.answerLabel) return answerText(i);
+    if (!p.answerLabel) return p.answerImage ? <span className="pmatch-supported"><img className="pmatch-img is-support" src={publicAsset(p.answerImage)} alt="" draggable={false} decoding="async" /><span><TargetText text={answerText(i)} /></span></span> : answerText(i);
     const gloss = p.answerGloss ? L(p.answerGloss) : '';
     return p.answerImage
       ? <><img className="pmatch-img" src={publicAsset(p.answerImage)} alt="" draggable={false} decoding="async" />{gloss}</>
@@ -474,7 +486,7 @@ export function MatchPairsStep({ step, itemsById, onDone }: { step: StepOf<'matc
         onClick={() => onTap(side, pair)}
       >
         <span className="pmatch-mark" aria-hidden>{matched ? order + 1 : missed ? '✕' : picked ? '●' : side === 'prompt' ? '👂' : '🗣️'}</span>
-        <span dir={side === 'answer' && step.pairs[pair]!.answerGloss ? 'auto' : 'ltr'}>{side === 'answer' && step.pairs[pair]!.answerLabel ? answerShown(pair) : <TargetText text={side === 'prompt' ? promptText(pair) : answerText(pair)} />}</span>
+        <span dir={side === 'answer' && step.pairs[pair]!.answerGloss ? 'auto' : 'ltr'}>{side === 'answer' && (step.pairs[pair]!.answerLabel || step.pairs[pair]!.answerImage) ? answerShown(pair) : <TargetText text={side === 'prompt' ? promptText(pair) : answerText(pair)} />}</span>
       </button>
     );
   };

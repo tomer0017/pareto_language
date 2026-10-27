@@ -277,7 +277,8 @@ function MissionPlayer() {
       )}
       {/* Smart Foundation Detection: a tiny, non-blocking nudge for the first building-block word in
           this mission the learner has never viewed. Learn now / Dismiss — never gates the lesson. */}
-      <FoundationHint targets={day.items.map((i) => i.text)} />
+      {/* …except on a scenario briefing: that card is the one thing to read on its screen. */}
+      {!(step.kind === 'talk' && step.facts) && <FoundationHint targets={day.items.map((i) => i.text)} />}
       {/* Video-first missions: the full conversation is one tap away at any moment — opening it is
           UI state only (the step and the progress stay exactly as they are). */}
       {replay === 'watch' && (
@@ -319,6 +320,20 @@ function MissionPlayer() {
 
 /* ── Steps ──────────────────────────────────────────────────────────────── */
 
+/** A briefing's facts: label → the learner's own value ("Purpose of visit → holiday"). */
+function BriefingFacts({ facts }: { facts: NonNullable<Extract<BootcampStep, { kind: 'talk' }>['facts']> }) {
+  return (
+    <dl className="briefing-facts">
+      {facts.map((f, i) => (
+        <div key={i} className="briefing-fact">
+          <dt><span aria-hidden>{f.icon}</span> {L(f.label)}</dt>
+          <dd>{L(f.value)}</dd>
+        </div>
+      ))}
+    </dl>
+  );
+}
+
 /** An intro card. The mission's FIRST one is introduced by the buddy: it says the goal, looking at
  *  the thing the mission is about. Later intro cards stay plain. */
 function TalkStep({ step, intro, onNext }: { step: Extract<BootcampStep, { kind: 'talk' }>; intro?: string; onNext: () => void }) {
@@ -329,6 +344,7 @@ function TalkStep({ step, intro, onNext }: { step: Extract<BootcampStep, { kind:
           <CompanionIntro line={intro} />
           <h1 className="mission-intro-title">{L(step.title)}</h1>
           {step.body.map((b, i) => <p key={i} className="mission-intro-body">{L(b)}</p>)}
+          {step.facts && <BriefingFacts facts={step.facts} />}
         </div>
         <div className="action-zone">
           <button className="btn-primary" onClick={onNext}>{step.cta ? L(step.cta) : t('continue')}</button>
@@ -344,6 +360,7 @@ function TalkStep({ step, intro, onNext }: { step: Extract<BootcampStep, { kind:
         {step.body.map((b, i) => (
           <p key={i} className="drill-meaning" style={{ fontSize: '1rem' }}>{L(b)}</p>
         ))}
+        {step.facts && <BriefingFacts facts={step.facts} />}
       </div>
       <div className="action-zone">
         <button className="btn-primary" onClick={onNext}>{step.cta ? L(step.cta) : t('continue')}</button>

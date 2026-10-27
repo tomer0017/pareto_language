@@ -126,8 +126,11 @@ export interface QuickReplySpec {
 export interface VisualMatchSpec {
   label?: Copy;
   challenge?: boolean;
+  /** Quiet feedback: ✓ / ✕, the line and its meaning, one action — no mascot, no double buttons. */
+  quiet?: boolean;
   tiles: MatchTile[];
-  rounds: { audio: L4; correct: string; itemId?: string; show?: string[]; pace?: 'fast' | 'slow' }[];
+  /** `reinforce`: the answer's own line, shown with its meaning after a pick (when `audio` is the question). */
+  rounds: { audio: L4; correct: string; itemId?: string; show?: string[]; pace?: 'fast' | 'slow'; reinforce?: L4 }[];
 }
 export interface SwapSpec {
   label?: Copy;
@@ -149,7 +152,8 @@ export interface CustomizeSpec {
 export interface MiniMapSpec {
   label?: Copy;
   challenge?: boolean;
-  rounds: { audio: L4; itemId?: string; correct: string; pace?: 'fast' | 'slow'; cells: (Omit<MapCell, 'label'> & { label?: L3 })[] }[];
+  quiet?: boolean;
+  rounds: { audio: L4; itemId?: string; correct: string; pace?: 'fast' | 'slow'; reinforce?: L4; cells: (Omit<MapCell, 'label'> & { label?: L3 })[] }[];
 }
 export interface MatchPairsSpec {
   label?: Copy;
@@ -371,8 +375,11 @@ export function buildPractice(p: PracticeSpec, lang: MissionLang): BootcampStep 
   }
   if (p.kind === 'visualMatch') {
     return {
-      kind: 'visualMatch', ...label, ...(p.challenge ? { challenge: true } : {}), tiles: p.tiles,
-      rounds: p.rounds.map((r) => ({ audio: paced(spoken(r.audio, lang), r.pace), correct: r.correct, ...(r.itemId ? { itemId: id(r.itemId) } : {}), ...(r.show ? { show: [...r.show] } : {}) })),
+      kind: 'visualMatch', ...label, ...(p.challenge ? { challenge: true } : {}), ...(p.quiet ? { quiet: true } : {}), tiles: p.tiles,
+      rounds: p.rounds.map((r) => ({
+        audio: paced(spoken(r.audio, lang), r.pace), correct: r.correct, ...(r.itemId ? { itemId: id(r.itemId) } : {}), ...(r.show ? { show: [...r.show] } : {}),
+        ...(r.reinforce ? { reinforce: spoken(r.reinforce, lang) } : {}),
+      })),
     };
   }
   if (p.kind === 'customize') {
@@ -392,9 +399,10 @@ export function buildPractice(p: PracticeSpec, lang: MissionLang): BootcampStep 
     };
   }
   return {
-    kind: 'miniMap', ...label, ...(p.challenge ? { challenge: true } : {}),
+    kind: 'miniMap', ...label, ...(p.challenge ? { challenge: true } : {}), ...(p.quiet ? { quiet: true } : {}),
     rounds: p.rounds.map((r) => ({
       audio: paced(spoken(r.audio, lang), r.pace), correct: r.correct, ...(r.itemId ? { itemId: id(r.itemId) } : {}),
+      ...(r.reinforce ? { reinforce: spoken(r.reinforce, lang) } : {}),
       cells: r.cells.map(({ label: l, ...cell }) => ({ ...cell, ...(l ? { label: l[ix] } : {}) })),
     })),
   };

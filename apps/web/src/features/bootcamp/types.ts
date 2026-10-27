@@ -164,6 +164,8 @@ export interface VisualMatchRound {
   correct: string;
   itemId?: string;
   show?: string[];
+  /** The line the answer IS (when `audio` is the question): shown with its meaning, and said, after a pick. */
+  reinforce?: SpokenLine;
 }
 
 /** Swap It — one sentence frame, several slot values: the sentence is an engine, not a fixed line. */
@@ -180,6 +182,9 @@ export interface MapCell {
   id: string;
   /** Optional canonical artwork, rendered without cropping. */
   image?: string;
+  /** What part of the place this cell belongs to ('city-centre', 'outskirts', …): drawn as a shaded
+   *  area, so a meaning like "in the city centre" is on the map, not inferred from a grid position. */
+  zone?: string;
   row: 0 | 1 | 2;
   col: 0 | 1 | 2;
   emoji?: string;
@@ -191,7 +196,12 @@ export interface MiniMapRound {
   itemId?: string;
   cells: MapCell[];
   correct: string;      // id of the tappable cell
+  /** The line the answer IS (when `audio` is the question): shown with its meaning, and said, after a pick. */
+  reinforce?: SpokenLine;
 }
+
+/** One fact of a briefing card: what it is (label) and the learner's own value — "Purpose of visit → holiday". */
+export interface BriefingFact { icon: string; label: LocalizedText; value: LocalizedText }
 
 /** Match Pairs — connect each heard line to the learner's own answer. Both sides are existing
  *  sentences of the mission; the engine shuffles one side. */
@@ -221,7 +231,10 @@ export interface BuilderRound {
 }
 
 export type BootcampStep =
-  | { kind: 'talk'; icon: string; title: LocalizedText; body: LocalizedText[]; cta?: LocalizedText }
+  | { kind: 'talk'; icon: string; title: LocalizedText; body: LocalizedText[]; cta?: LocalizedText;
+      /** A scenario BRIEFING: the facts the learner will give, as label → value pairs (app language).
+       *  A briefing card stands alone — nothing else competes with it on screen. */
+      facts?: BriefingFact[] }
   | { kind: 'tool'; itemId: string; index: number; total: number; label?: LocalizedText }
   // Vocabulary priming (Part 5): 3–6 essential building-block words shown BEFORE a longer sentence,
   // to cut cognitive overload. Optionally reveals how they combine into a canonical mission sentence
@@ -243,11 +256,11 @@ export type BootcampStep =
   | { kind: 'ambush'; mode?: 'recovery' | 'speed'; npc: SpokenLine; correctItemId: string; wrongItemId: string }
   //  `challenge`: a final speed challenge — the same rounds, spoken fast (like the board and the map).
   | { kind: 'quickReply'; label?: LocalizedText; rounds: QuickReplyRound[]; challenge?: boolean }
-  | { kind: 'visualMatch'; label?: LocalizedText; tiles: MatchTile[]; rounds: VisualMatchRound[]; challenge?: boolean }
+  | { kind: 'visualMatch'; label?: LocalizedText; tiles: MatchTile[]; rounds: VisualMatchRound[]; challenge?: boolean; quiet?: boolean }
   | { kind: 'swap'; label?: LocalizedText; rounds: SwapRound[] }
   /** `base`: what is being made — an emoji, or an approved picture's public path ("images/…"). */
   | { kind: 'customize'; label?: LocalizedText; base: string; options: CustomizeOption[]; rounds: CustomizeRound[] }
-  | { kind: 'miniMap'; label?: LocalizedText; rounds: MiniMapRound[]; challenge?: boolean }
+  | { kind: 'miniMap'; label?: LocalizedText; rounds: MiniMapRound[]; challenge?: boolean; quiet?: boolean }
   | { kind: 'matchPairs'; label?: LocalizedText; pairs: MatchPair[] }
   | { kind: 'sentenceBuilder'; label?: LocalizedText; rounds: BuilderRound[] }
   | { kind: 'receipt'; text: LocalizedText }

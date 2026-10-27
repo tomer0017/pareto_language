@@ -154,7 +154,7 @@ export function validatePracticeStep(step: BootcampStep, itemIds: ReadonlySet<st
     });
     step.pairs.forEach((p, i) => {
       if (p.answerLabel !== undefined && !p.answerLabel.trim()) issues.push(`matchPairs pair ${i + 1}: empty answer label`);
-      if (p.answerImage && !p.answerLabel) issues.push(`matchPairs pair ${i + 1}: a picture needs a label`);
+      // A picture is never the whole answer: it sits beside a label, or beside the answer's own sentence (no label).
       if (p.answerGloss && (!p.answerLabel || !p.answerGloss.he || !p.answerGloss.en)) issues.push(`matchPairs pair ${i + 1}: a gloss needs a label and both app languages`);
       // The same sentence on both sides only makes sense when the answer tile is a number / icon.
       if (p.promptItemId === p.answerItemId && !p.answerLabel) issues.push(`matchPairs pair ${i + 1}: a sentence is paired with itself`);

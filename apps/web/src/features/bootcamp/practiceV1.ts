@@ -24,7 +24,8 @@ export function kit(lang: MissionLang) {
   const id = (suffix: string): string => `${lang}.${suffix}`;
   return {
     id,
-    talk: (icon: string, title: Copy, body: Copy[], cta: Copy): BootcampStep => ({ kind: 'talk', icon, title: T(title), body: body.map(T), cta: T(cta) }),
+    talk: (icon: string, title: Copy, body: Copy[], cta: Copy, facts?: { icon: string; label: Copy; value: Copy }[]): BootcampStep =>
+      ({ kind: 'talk', icon, title: T(title), body: body.map(T), cta: T(cta), ...(facts ? { facts: facts.map((f) => ({ icon: f.icon, label: T(f.label), value: T(f.value) })) } : {}) }),
     prime: (p: PrimeSpec): BootcampStep => buildPrime(p, lang),
     tools: (list: (readonly [suffix: string, label: Copy])[]): BootcampStep[] =>
       list.map(([suffix, label], i) => ({ kind: 'tool', itemId: id(suffix), index: i + 1, total: list.length, label: T(label) })),

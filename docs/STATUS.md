@@ -30,6 +30,20 @@ typecheck, lint, build, smoke, parity and content validation pass. No learning c
 The owner waived agent mobile QA on 2026-10-27 and will perform it manually; production release is authorized.
 See [production and validation report](./MISSION06_VISUAL_REPORT.md) and [asset provenance](./mission06-artwork.json).
 
+### Mission 06 — real-phone UX patch: language, not puzzles (2026-10-28)
+
+From physical iPhone QA. Dialogue, sentences, traveller facts, interviews, video and the ENTRY APPROVED
+ending unchanged (dialogue + sentences hash-identical). Fixed: (1) the opening card is now a mission
+BRIEFING — your role, then label → value facts (talk `facts`), CTA "Start border control"; the
+Foundation hint stays off that card; (2) duration is a choice of three stays on one calendar (one /
+two / four weeks; `four-weeks.jpg` derived from the approved `two-weeks.jpg` by recolouring its two
+blank rows) instead of four ✓ / ✕ week switches; (3) the city map has a real city-centre AREA
+(`MapCell.zone`, `M06_PLACES`), the hotel in it is no longer the middle cell, and a wrong pick draws
+the area out and says "At a hotel in the city centre."; (4) question matching pairs each officer
+question with the traveller's ACTUAL answer sentence, its picture beside it (no icon-only answers);
+(5) quiet feedback on every board and map (`quiet`: ✓ / ✕, the line and its meaning, one action) and
+the answer's own line after each officer question (`reinforce`). 37 interactions.
+
 ### Mission 07 — Taxi / Uber: one ride, and a real recovery (2026-10-27)
 
 The conversation is LOCKED (dialogue tree byte-identical, its `fast` / `slow` beats included — tested).

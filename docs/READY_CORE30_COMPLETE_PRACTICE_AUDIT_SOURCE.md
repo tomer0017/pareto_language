@@ -5839,71 +5839,59 @@ Mission card (plan metadata, shown on Home / Path / mission overview):
 - Why (internal note): Scariest moment, most predictable script — best fear-per-minute ROI.
 - Prepares next (internal note): Calm-under-authority for emergencies later.
 
-Intro screen 1 (first Practice step; identical in the English, French and Spanish missions unless flagged):
+Intro screen (first Practice step; identical in the English, French and Spanish missions unless flagged):
 
 - Icon: 🛂
 - Title: "Mission 6: Airport & Border" / "משימה 6: שדה תעופה וגבול"
-- Text 1: "You have landed. Border control is ahead, and the officer will ask you a few questions." / "נחתת. לפניך ביקורת הגבולות, והפקיד ישאל אותך כמה שאלות."
-- Text 2: "He knows nothing about you. You do — and you will answer him. At the end: entry approved." / "הוא לא יודע עליך כלום. אתה יודע — ותענה לו. בסוף: כניסה מאושרת."
-- Button: "Approach the desk" / "לגשת לדלפק"
-
-Intro screen 2 (first Practice step; identical in the English, French and Spanish missions unless flagged):
-
-- Icon: 🧳
-- Title: "Your trip" / "הטיול שלך"
-- Text 1: "🏖️ Holiday" / "🏖️ חופשה"
-- Text 2: "📅 Two weeks" / "📅 שבועיים"
-- Text 3: "🏨 Hotel · 📍 In the city centre" / "🏨 מלון · 📍 במרכז העיר"
-- Text 4: "🟢 Nothing to declare" / "🟢 אין מה להצהיר"
-- Button: "That’s my trip" / "זה הטיול שלי"
+- Text 1: "In this mission you are entering a country as a tourist. These are the details you will give the border officer:" / "במשימה הזו אתה נכנס למדינה כתייר. אלה הפרטים שתצטרך למסור לפקיד הגבולות:"
+- Button: "Start border control" / "התחל ביקורת גבולות"
 
 ## Current Practice flow
 
 1. `talk` — intro screen — "Mission 6: Airport & Border"
-2. `talk` — intro screen — "Your trip"
-3. `prime` — before-we-speak (word intro) — 5 words → builds `phrase.border.staying-hotel`
-4. `prime` — before-we-speak (word intro) — 2 words → builds ``
-5. `visualMatch` — visual match (hear → tap the tile) — 1 round(s)
-6. `sentenceBuilder` — sentence builder (put the chunks in order) — 1 round(s)
-7. `receipt` — receipt (proof card) — "✅ Passport · ⬜ Purpose · ⬜ Duration · ⬜ Stay · ⬜ Declaration" / "✅ דרכון · ⬜ מטרה · ⬜ משך · ⬜ מקום לינה · ⬜ מכס"
-8. `prime` — before-we-speak (word intro) — 2 words → builds ``
-9. `visualMatch` — visual match (hear → tap the tile) — 2 round(s)
-10. `sentenceBuilder` — sentence builder (put the chunks in order) — 1 round(s)
-11. `receipt` — receipt (proof card) — "✅ Passport · ✅ Purpose · ⬜ Duration · ⬜ Stay · ⬜ Declaration" / "✅ דרכון · ✅ מטרה · ⬜ משך · ⬜ מקום לינה · ⬜ מכס"
-12. `prime` — before-we-speak (word intro) — 2 words → builds ``
-13. `customize` — customize (hear the order → set ✓ / ✕) — 2 round(s)
-14. `receipt` — receipt (proof card) — "✅ Passport · ✅ Purpose · ✅ Duration · ⬜ Stay · ⬜ Declaration" / "✅ דרכון · ✅ מטרה · ✅ משך · ⬜ מקום לינה · ⬜ מכס"
-15. `prime` — before-we-speak (word intro) — 2 words → builds ``
-16. `miniMap` — mini map (hear → tap the direction / spot) — 2 round(s)
-17. `sentenceBuilder` — sentence builder (put the chunks in order) — 1 round(s)
-18. `receipt` — receipt (proof card) — "✅ Passport · ✅ Purpose · ✅ Duration · ✅ Stay · ⬜ Declaration" / "✅ דרכון · ✅ מטרה · ✅ משך · ✅ מקום לינה · ⬜ מכס"
-19. `prime` — before-we-speak (word intro) — 3 words → builds ``
-20. `visualMatch` — visual match (hear → tap the tile) — 2 round(s)
-21. `receipt` — receipt (proof card) — "✅ Passport · ✅ Purpose · ✅ Duration · ✅ Stay · ✅ Declaration" / "✅ דרכון · ✅ מטרה · ✅ משך · ✅ מקום לינה · ✅ מכס"
-22. `prime` — before-we-speak (word intro) — 1 words → builds ``
-23. `matchPairs` — match pairs (connect each question to its answer) — 4 pairs on one screen
-24. `replies` — expected replies (listening drill) — after `phrase.border.passport-here`: 5 replies
-25. `quickReply` — quick reply (hear → pick your response) — 5 round(s)
-26. `receipt` — receipt (proof card) — "✅ Passport · ✅ Purpose · ✅ Duration · ✅ Stay · ✅ Declaration — you answered every question." / "✅ דרכון · ✅ מטרה · ✅ משך · ✅ מקום לינה · ✅ מכס — ענית על כל השאלות."
-27. `dialogue` — dialogue (choose your line) — scene `border-control`
-28. `receipt` — receipt (proof card) — "The whole conversation — from “next, please” to “welcome”." / "כל השיחה — מ"הבא בתור" ועד "ברוך הבא"."
-29. `quickReply` — quick reply (hear → pick your response) — 5 round(s) · speed challenge
-30. `receipt` — receipt (proof card) — "No help — every question at his pace, and you answered them all." / "בלי עזרה — כל שאלה בקצב שלו, וענית על כולן."
-31. `video` — video — mode again
+2. `prime` — before-we-speak (word intro) — 5 words → builds `phrase.border.staying-hotel`
+3. `prime` — before-we-speak (word intro) — 2 words → builds ``
+4. `visualMatch` — visual match (hear → tap the tile) — 1 round(s)
+5. `sentenceBuilder` — sentence builder (put the chunks in order) — 1 round(s)
+6. `receipt` — receipt (proof card) — "✅ Passport · ⬜ Purpose · ⬜ Duration · ⬜ Stay · ⬜ Declaration" / "✅ דרכון · ⬜ מטרה · ⬜ משך · ⬜ מקום לינה · ⬜ מכס"
+7. `prime` — before-we-speak (word intro) — 2 words → builds ``
+8. `visualMatch` — visual match (hear → tap the tile) — 2 round(s)
+9. `sentenceBuilder` — sentence builder (put the chunks in order) — 1 round(s)
+10. `receipt` — receipt (proof card) — "✅ Passport · ✅ Purpose · ⬜ Duration · ⬜ Stay · ⬜ Declaration" / "✅ דרכון · ✅ מטרה · ⬜ משך · ⬜ מקום לינה · ⬜ מכס"
+11. `prime` — before-we-speak (word intro) — 2 words → builds ``
+12. `visualMatch` — visual match (hear → tap the tile) — 2 round(s)
+13. `receipt` — receipt (proof card) — "✅ Passport · ✅ Purpose · ✅ Duration · ⬜ Stay · ⬜ Declaration" / "✅ דרכון · ✅ מטרה · ✅ משך · ⬜ מקום לינה · ⬜ מכס"
+14. `prime` — before-we-speak (word intro) — 2 words → builds ``
+15. `miniMap` — mini map (hear → tap the direction / spot) — 2 round(s)
+16. `sentenceBuilder` — sentence builder (put the chunks in order) — 1 round(s)
+17. `receipt` — receipt (proof card) — "✅ Passport · ✅ Purpose · ✅ Duration · ✅ Stay · ⬜ Declaration" / "✅ דרכון · ✅ מטרה · ✅ משך · ✅ מקום לינה · ⬜ מכס"
+18. `prime` — before-we-speak (word intro) — 3 words → builds ``
+19. `visualMatch` — visual match (hear → tap the tile) — 2 round(s)
+20. `receipt` — receipt (proof card) — "✅ Passport · ✅ Purpose · ✅ Duration · ✅ Stay · ✅ Declaration" / "✅ דרכון · ✅ מטרה · ✅ משך · ✅ מקום לינה · ✅ מכס"
+21. `prime` — before-we-speak (word intro) — 1 words → builds ``
+22. `matchPairs` — match pairs (connect each question to its answer) — 4 pairs on one screen
+23. `replies` — expected replies (listening drill) — after `phrase.border.passport-here`: 5 replies
+24. `quickReply` — quick reply (hear → pick your response) — 5 round(s)
+25. `receipt` — receipt (proof card) — "✅ Passport · ✅ Purpose · ✅ Duration · ✅ Stay · ✅ Declaration — you answered every question." / "✅ דרכון · ✅ מטרה · ✅ משך · ✅ מקום לינה · ✅ מכס — ענית על כל השאלות."
+26. `dialogue` — dialogue (choose your line) — scene `border-control`
+27. `receipt` — receipt (proof card) — "The whole conversation — from “next, please” to “welcome”." / "כל השיחה — מ"הבא בתור" ועד "ברוך הבא"."
+28. `quickReply` — quick reply (hear → pick your response) — 5 round(s) · speed challenge
+29. `receipt` — receipt (proof card) — "No help — every question at his pace, and you answered them all." / "בלי עזרה — כל שאלה בקצב שלו, וענית על כולן."
+30. `video` — video — mode again
+31. `visualMatch` — visual match (hear → tap the tile) — 1 round(s) · speed challenge
 32. `visualMatch` — visual match (hear → tap the tile) — 1 round(s) · speed challenge
 33. `visualMatch` — visual match (hear → tap the tile) — 1 round(s) · speed challenge
-34. `customize` — customize (hear the order → set ✓ / ✕) — 1 round(s)
-35. `miniMap` — mini map (hear → tap the direction / spot) — 1 round(s) · speed challenge
-36. `visualMatch` — visual match (hear → tap the tile) — 1 round(s) · speed challenge
-37. `visualMatch` — visual match (hear → tap the tile) — 1 round(s)
-38. `receipt` — receipt (proof card) — "🛂 ENTRY APPROVED · ✅ Passport · ✅ Purpose · ✅ Duration · ✅ Stay · ✅ Declaration · Welcome!" / "🛂 כניסה מאושרת · ✅ דרכון · ✅ מטרה · ✅ משך · ✅ מקום לינה · ✅ מכס · ברוך הבא!"
-39. `summary` — victory screen
+34. `miniMap` — mini map (hear → tap the direction / spot) — 1 round(s) · speed challenge
+35. `visualMatch` — visual match (hear → tap the tile) — 1 round(s) · speed challenge
+36. `visualMatch` — visual match (hear → tap the tile) — 1 round(s)
+37. `receipt` — receipt (proof card) — "🛂 ENTRY APPROVED · ✅ Passport · ✅ Purpose · ✅ Duration · ✅ Stay · ✅ Declaration · Welcome!" / "🛂 כניסה מאושרת · ✅ דרכון · ✅ מטרה · ✅ משך · ✅ מקום לינה · ✅ מכס · ברוך הבא!"
+38. `summary` — victory screen
 
 Step sequence identical in EN / FR / ES: yes.
 
 ## Before we speak / word intro
 
-Step 3. Label: "Before we speak" / "לפני שנדבר". Intro: "The words of your trip. Tap to hear." / "המילים של הטיול שלך. הקש כדי לשמוע.".
+Step 2. Label: "Before we speak" / "לפני שנדבר". Intro: "The words of your trip. Tap to hear." / "המילים של הטיול שלך. הקש כדי לשמוע.".
 The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
 
 Words are paired across languages by their concept KEY (not by position).
@@ -5916,7 +5904,7 @@ Words are paired across languages by their concept KEY (not by position).
 
 "These build the sentence:" card: `phrase.border.staying-hotel` — EN "At a hotel in the city centre." · FR "Dans un hôtel dans le centre-ville." · ES "En un hotel en el centro." · HE "במלון במרכז העיר." (with its own play button).
 
-Step 4. Label: "Border check 1/5 — Passport" / "ביקורת גבולות 1/5 — דרכון". Intro: "The officer calls you — and what you say as you hand it over. Tap to hear." / "הפקיד קורא לך — ומה אתה אומר כשאתה מגיש. הקש כדי לשמוע.".
+Step 3. Label: "Border check 1/5 — Passport" / "ביקורת גבולות 1/5 — דרכון". Intro: "The officer calls you — and what you say as you hand it over. Tap to hear." / "הפקיד קורא לך — ומה אתה אומר כשאתה מגיש. הקש כדי לשמוע.".
 The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
 
 Words are paired across languages by their concept KEY (not by position).
@@ -5926,7 +5914,7 @@ Words are paired across languages by their concept KEY (not by position).
 
 No build-sentence card.
 
-Step 8. Label: "Border check 2/5 — Purpose" / "ביקורת גבולות 2/5 — מטרה". Intro: "The question — why you came — and your answer. Tap to hear." / "השאלה — למה באת — והתשובה שלך. הקש כדי לשמוע.".
+Step 7. Label: "Border check 2/5 — Purpose" / "ביקורת גבולות 2/5 — מטרה". Intro: "The question — why you came — and your answer. Tap to hear." / "השאלה — למה באת — והתשובה שלך. הקש כדי לשמוע.".
 The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
 
 Words are paired across languages by their concept KEY (not by position).
@@ -5936,7 +5924,7 @@ Words are paired across languages by their concept KEY (not by position).
 
 No build-sentence card.
 
-Step 12. Label: "Border check 3/5 — Duration" / "ביקורת גבולות 3/5 — משך". Intro: "How long you are staying — and your answer. Tap to hear." / "כמה זמן אתה נשאר — והתשובה שלך. הקש כדי לשמוע.".
+Step 11. Label: "Border check 3/5 — Duration" / "ביקורת גבולות 3/5 — משך". Intro: "How long you are staying — and your answer. Tap to hear." / "כמה זמן אתה נשאר — והתשובה שלך. הקש כדי לשמוע.".
 The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
 
 Words are paired across languages by their concept KEY (not by position).
@@ -5946,7 +5934,7 @@ Words are paired across languages by their concept KEY (not by position).
 
 No build-sentence card.
 
-Step 15. Label: "Border check 4/5 — Stay" / "ביקורת גבולות 4/5 — מקום לינה". Intro: "Where you are staying — and your answer. Tap to hear." / "איפה אתה מתאכסן — והתשובה שלך. הקש כדי לשמוע.".
+Step 14. Label: "Border check 4/5 — Stay" / "ביקורת גבולות 4/5 — מקום לינה". Intro: "Where you are staying — and your answer. Tap to hear." / "איפה אתה מתאכסן — והתשובה שלך. הקש כדי לשמוע.".
 The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
 
 Words are paired across languages by their concept KEY (not by position).
@@ -5956,7 +5944,7 @@ Words are paired across languages by their concept KEY (not by position).
 
 No build-sentence card.
 
-Step 19. Label: "Border check 5/5 — Declaration" / "ביקורת גבולות 5/5 — מכס". Intro: "Almost done — the last question, and your answer. Tap to hear." / "כמעט סיימנו — השאלה האחרונה, והתשובה שלך. הקש כדי לשמוע.".
+Step 18. Label: "Border check 5/5 — Declaration" / "ביקורת גבולות 5/5 — מכס". Intro: "Almost done — the last question, and your answer. Tap to hear." / "כמעט סיימנו — השאלה האחרונה, והתשובה שלך. הקש כדי לשמוע.".
 The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
 
 Words are paired across languages by their concept KEY (not by position).
@@ -5967,7 +5955,7 @@ Words are paired across languages by their concept KEY (not by position).
 
 No build-sentence card.
 
-Step 22. Label: "And at the end" / "ובסוף". Intro: "You already know this from Mission 1. Here it means: you are through. Tap to hear." / "את זה אתה כבר מכיר ממשימה 1. כאן זה אומר: עברת. הקש כדי לשמוע.".
+Step 21. Label: "And at the end" / "ובסוף". Intro: "You already know this from Mission 1. Here it means: you are through. Tap to hear." / "את זה אתה כבר מכיר ממשימה 1. כאן זה אומר: עברת. הקש כדי לשמוע.".
 The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
 
 Words are paired across languages by their concept KEY (not by position).
@@ -5989,7 +5977,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "Hand it over and say it. Three words that open any border." / "מגישים ואומרים. שלוש מילים שפותחות כל גבול."
 - Used in missions: 06
-- Exercised here as: sentence-builder target (step 6, round 1); "you said" lead-in of the expected-replies drill (step 24); quick-reply response (step 25, round 1, accepted); quick-reply response (step 25, round 4, wrong option); quick-reply response (step 29, round 1, accepted); quick-reply response (step 29, round 2, wrong option); quick-reply response (step 29, round 5, wrong option); dialogue choice border-control/c1 (accepted); dialogue choice border-control/c1b (accepted); dialogue choice border-control/c3 (WRONG option)
+- Exercised here as: sentence-builder target (step 5, round 1); "you said" lead-in of the expected-replies drill (step 23); quick-reply response (step 24, round 1, accepted); quick-reply response (step 24, round 4, wrong option); quick-reply response (step 28, round 1, accepted); quick-reply response (step 28, round 2, wrong option); quick-reply response (step 28, round 5, wrong option); dialogue choice border-control/c1 (accepted); dialogue choice border-control/c1b (accepted); dialogue choice border-control/c3 (WRONG option)
 
 ### Sentence: `phrase.border.on-holiday`
 
@@ -6000,7 +5988,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "The answer to “purpose of your visit?” — friendly and safe." / "התשובה ל-"מטרת הביקור?". ידידותית ובטוחה."
 - Used in missions: 06, 10
-- Exercised here as: visual-match audio (step 9, round 2); sentence-builder target (step 10, round 1); match-pairs answer tile (step 23, pair 1); quick-reply response (step 25, round 2, accepted); quick-reply response (step 25, round 3, wrong option); quick-reply response (step 25, round 5, wrong option); quick-reply response (step 29, round 1, wrong option); quick-reply response (step 29, round 2, accepted); quick-reply response (step 29, round 3, wrong option); dialogue choice border-control/c2 (accepted); dialogue choice border-control/c2b (accepted)
+- Exercised here as: visual-match audio (step 8, round 2); sentence-builder target (step 9, round 1); match-pairs answer tile (step 22, pair 1); quick-reply response (step 24, round 2, accepted); quick-reply response (step 24, round 3, wrong option); quick-reply response (step 24, round 5, wrong option); quick-reply response (step 28, round 1, wrong option); quick-reply response (step 28, round 2, accepted); quick-reply response (step 28, round 3, wrong option); dialogue choice border-control/c2 (accepted); dialogue choice border-control/c2b (accepted)
 
 ### Sentence: `phrase.border.two-weeks`
 
@@ -6011,7 +5999,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "Template: For + duration. For three days / For a week." / "התבנית: For + משך זמן. For three days / For a week."
 - Used in missions: 06, 10, 29, 30
-- Exercised here as: customize audio (step 13, round 1); match-pairs answer tile (step 23, pair 2); quick-reply response (step 25, round 1, wrong option); quick-reply response (step 25, round 2, wrong option); quick-reply response (step 25, round 3, accepted); quick-reply response (step 25, round 4, wrong option); quick-reply response (step 29, round 3, accepted); quick-reply response (step 29, round 4, wrong option); quick-reply response (step 29, round 5, wrong option); dialogue choice border-control/c3 (accepted); dialogue choice border-control/c3b (accepted)
+- Exercised here as: visual-match audio (step 12, round 2); match-pairs answer tile (step 22, pair 2); quick-reply response (step 24, round 1, wrong option); quick-reply response (step 24, round 2, wrong option); quick-reply response (step 24, round 3, accepted); quick-reply response (step 24, round 4, wrong option); quick-reply response (step 28, round 3, accepted); quick-reply response (step 28, round 4, wrong option); quick-reply response (step 28, round 5, wrong option); dialogue choice border-control/c3 (accepted); dialogue choice border-control/c3b (accepted)
 
 ### Sentence: `phrase.border.staying-hotel`
 
@@ -6022,7 +6010,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "Answers “where are you staying?”. The hotel name is better, but this is enough." / "התשובה ל-"איפה אתה מתאכסן?". שם המלון עדיף, אבל זה מספיק."
 - Used in missions: 06, 10, 30
-- Exercised here as: built by the word intro (step 3); mini-map audio (step 16, round 1); sentence-builder target (step 17, round 1); match-pairs answer tile (step 23, pair 3); quick-reply response (step 25, round 2, wrong option); quick-reply response (step 25, round 4, accepted); quick-reply response (step 25, round 5, wrong option); quick-reply response (step 29, round 1, wrong option); quick-reply response (step 29, round 3, wrong option); quick-reply response (step 29, round 4, accepted); dialogue choice border-control/c4 (accepted); dialogue choice border-control/c4b (accepted)
+- Exercised here as: built by the word intro (step 2); mini-map audio (step 15, round 1); sentence-builder target (step 16, round 1); match-pairs answer tile (step 22, pair 3); quick-reply response (step 24, round 2, wrong option); quick-reply response (step 24, round 4, accepted); quick-reply response (step 24, round 5, wrong option); quick-reply response (step 28, round 1, wrong option); quick-reply response (step 28, round 3, wrong option); quick-reply response (step 28, round 4, accepted); dialogue choice border-control/c4 (accepted); dialogue choice border-control/c4b (accepted)
 
 ### Sentence: `phrase.border.nothing-declare`
 
@@ -6033,7 +6021,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "The fixed customs line. Say it calmly." / "המשפט הקבוע במכס. אומרים אותו רגוע."
 - Used in missions: 06, 10
-- Exercised here as: visual-match audio (step 20, round 2); match-pairs answer tile (step 23, pair 4); quick-reply response (step 25, round 1, wrong option); quick-reply response (step 25, round 3, wrong option); quick-reply response (step 25, round 5, accepted); quick-reply response (step 29, round 2, wrong option); quick-reply response (step 29, round 4, wrong option); quick-reply response (step 29, round 5, accepted); dialogue choice border-control/c5 (accepted); dialogue choice border-control/c5b (accepted)
+- Exercised here as: visual-match audio (step 19, round 2); match-pairs answer tile (step 22, pair 4); quick-reply response (step 24, round 1, wrong option); quick-reply response (step 24, round 3, wrong option); quick-reply response (step 24, round 5, accepted); quick-reply response (step 28, round 2, wrong option); quick-reply response (step 28, round 4, wrong option); quick-reply response (step 28, round 5, accepted); dialogue choice border-control/c5 (accepted); dialogue choice border-control/c5b (accepted)
 
 ### Sentence: `reply.border.purpose`
 
@@ -6044,7 +6032,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 06
-- Exercised here as: match-pairs question tile (step 23, pair 1); expected-reply audio (step 24); quick-reply prompt (step 25, round 2)
+- Exercised here as: match-pairs question tile (step 22, pair 1); expected-reply audio (step 23); quick-reply prompt (step 24, round 2)
 
 ### Sentence: `reply.border.how-long`
 
@@ -6055,7 +6043,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 06
-- Exercised here as: match-pairs question tile (step 23, pair 2); expected-reply audio (step 24); quick-reply prompt (step 25, round 3)
+- Exercised here as: match-pairs question tile (step 22, pair 2); expected-reply audio (step 23); quick-reply prompt (step 24, round 3)
 
 ### Sentence: `reply.border.where-staying`
 
@@ -6066,7 +6054,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 06
-- Exercised here as: match-pairs question tile (step 23, pair 3); expected-reply audio (step 24); quick-reply prompt (step 25, round 4)
+- Exercised here as: match-pairs question tile (step 22, pair 3); expected-reply audio (step 23); quick-reply prompt (step 24, round 4)
 
 ### Sentence: `reply.border.anything-declare`
 
@@ -6077,7 +6065,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 06
-- Exercised here as: match-pairs question tile (step 23, pair 4); expected-reply audio (step 24); quick-reply prompt (step 25, round 5)
+- Exercised here as: match-pairs question tile (step 22, pair 4); expected-reply audio (step 23); quick-reply prompt (step 24, round 5)
 
 ### Sentence: `reply.border.enjoy`
 
@@ -6088,7 +6076,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 06
-- Exercised here as: expected-reply audio (step 24); visual-match audio (step 37, round 1)
+- Exercised here as: expected-reply audio (step 23); visual-match audio (step 36, round 1)
 
 ### Sentence: `phrase.recovery.repeat`
 
@@ -6139,7 +6127,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 Lead-in screen: "You said:" / "אמרת:" — EN "Here is my passport." · FR "Voici mon passeport." · ES "Aquí tiene mi pasaporte." — then "What might they answer? Learn the replies before they surprise you." / "מה הם עלולים לענות? נלמד את התשובות לפני שהן מפתיעות אותך." — button 👂 "I'm ready" / "אני מוכן".
 Linked learner sentence: `phrase.border.passport-here`. Each reply below is played once automatically; the learner picks its MEANING from three buttons. Distractors are always the first two OTHER replies of this same drill, in drill order (runtime rule), so the three choices are shuffled per session.
 
-### M06-Q17 — expected-reply (step 24, reply 1 of 5)
+### M06-Q17 — expected-reply (step 23, reply 1 of 5)
 
 - Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (1/5)
 - Audio played: EN "What's the purpose of your visit?" · FR "Quel est le motif de votre visite ?" · ES "¿Cuál es el motivo de su viaje?"
@@ -6152,7 +6140,7 @@ Linked learner sentence: `phrase.border.passport-here`. Each reply below is play
 - Tests: reply.border.purpose
 - Explanation shown after answering: generic: “What's the purpose of your visit?” means “מה מטרת הביקור?”.
 
-### M06-Q18 — expected-reply (step 24, reply 2 of 5)
+### M06-Q18 — expected-reply (step 23, reply 2 of 5)
 
 - Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (2/5)
 - Audio played: EN "How long are you staying?" · FR "Vous restez combien de temps ?" · ES "¿Cuánto tiempo se queda?"
@@ -6165,7 +6153,7 @@ Linked learner sentence: `phrase.border.passport-here`. Each reply below is play
 - Tests: reply.border.how-long
 - Explanation shown after answering: generic: “How long are you staying?” means “לכמה זמן אתה נשאר?”.
 
-### M06-Q19 — expected-reply (step 24, reply 3 of 5)
+### M06-Q19 — expected-reply (step 23, reply 3 of 5)
 
 - Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (3/5)
 - Audio played: EN "Where are you staying?" · FR "Où logez-vous ?" · ES "¿Dónde se aloja?"
@@ -6178,7 +6166,7 @@ Linked learner sentence: `phrase.border.passport-here`. Each reply below is play
 - Tests: reply.border.where-staying
 - Explanation shown after answering: generic: “Where are you staying?” means “איפה אתה מתאכסן?”.
 
-### M06-Q20 — expected-reply (step 24, reply 4 of 5)
+### M06-Q20 — expected-reply (step 23, reply 4 of 5)
 
 - Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (4/5)
 - Audio played: EN "Anything to declare?" · FR "Quelque chose à déclarer ?" · ES "¿Algo que declarar?"
@@ -6191,7 +6179,7 @@ Linked learner sentence: `phrase.border.passport-here`. Each reply below is play
 - Tests: reply.border.anything-declare
 - Explanation shown after answering: generic: “Anything to declare?” means “יש לך מה להצהיר?”.
 
-### M06-Q21 — expected-reply (step 24, reply 5 of 5)
+### M06-Q21 — expected-reply (step 23, reply 5 of 5)
 
 - Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (5/5)
 - Audio played: EN "Welcome, and enjoy your stay!" · FR "Bienvenue, et bon séjour !" · ES "Bienvenido, ¡y que disfrute su estancia!"
@@ -6210,7 +6198,7 @@ No meaning quiz in this mission.
 
 ## Active practice — Quick Reply · Visual Match · Swap It · Mini Map
 
-### M06-Q01 — visual-match (step 5, round 1 of 1)
+### M06-Q01 — visual-match (step 4, round 1 of 1)
 
 - Prompt displayed: "What is he asking for? Hand it over" / "מה הוא מבקש? הגש לו"
 - Audio played: EN "Next, please. Passport?" · FR "Au suivant, s’il vous plaît. Passeport ?" · ES "El siguiente, por favor. ¿Pasaporte?"
@@ -6223,7 +6211,7 @@ No meaning quiz in this mission.
 - Tests: (no sentence id — not recorded)
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
-### M06-Q02 — sentence-builder (step 6, round 1 of 1)
+### M06-Q02 — sentence-builder (step 5, round 1 of 1)
 
 - Prompt displayed: "Hand it over — and say it" / "מגישים — ואומרים" — cue shown: the sentence's MEANING in the app language ("הנה הדרכון שלי.")
 - Audio played: EN "(nothing before Check; the built sentence is spoken once it is right)" · FR "(same)" · ES "(same)"
@@ -6234,7 +6222,7 @@ No meaning quiz in this mission.
 - Tests: phrase.border.passport-here
 - Explanation shown after answering: right: the sentence is spoken and its translation shown. Wrong: "not yet" — the tiles stay, the answer is NOT shown; after one miss a hint marks the start; after two misses the learner may reveal it
 
-### M06-Q03 — visual-match (step 9, round 1 of 2)
+### M06-Q03 — visual-match (step 8, round 1 of 2)
 
 - Prompt displayed: "Why are you here? Tap your trip" / "למה באת? הקש על הטיול שלך"
 - Audio played: EN "Thank you. What's the purpose of your visit?" · FR "Merci. Quel est le motif de votre visite ?" · ES "Gracias. ¿Cuál es el motivo de su viaje?"
@@ -6247,7 +6235,7 @@ No meaning quiz in this mission.
 - Tests: (no sentence id — not recorded)
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
-### M06-Q04 — visual-match (step 9, round 2 of 2)
+### M06-Q04 — visual-match (step 8, round 2 of 2)
 
 - Prompt displayed: "Why are you here? Tap your trip" / "למה באת? הקש על הטיול שלך"
 - Audio played: EN "I'm here on holiday." · FR "Je suis en vacances." · ES "Estoy de vacaciones."
@@ -6260,7 +6248,7 @@ No meaning quiz in this mission.
 - Tests: phrase.border.on-holiday
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
-### M06-Q05 — sentence-builder (step 10, round 1 of 1)
+### M06-Q05 — sentence-builder (step 9, round 1 of 1)
 
 - Prompt displayed: "Your answer" / "התשובה שלך" — cue shown: the sentence's MEANING in the app language ("אני כאן בחופשה.")
 - Audio played: EN "(nothing before Check; the built sentence is spoken once it is right)" · FR "(same)" · ES "(same)"
@@ -6271,63 +6259,61 @@ No meaning quiz in this mission.
 - Tests: phrase.border.on-holiday
 - Explanation shown after answering: right: the sentence is spoken and its translation shown. Wrong: "not yet" — the tiles stay, the answer is NOT shown; after one miss a hint marks the start; after two misses the learner may reveal it
 
-### M06-Q06 — customize (step 13, round 1 of 2)
+### M06-Q06 — visual-match (step 12, round 1 of 2)
 
-- Prompt displayed: "Mark your stay on the calendar" / "סמן בלוח השנה את השהות שלך"
-- Audio played: EN "For two weeks." · FR "Pour deux semaines." · ES "Dos semanas."
-- Meaning of the audio (HE): "לשבועיים."
-- Buttons show: images/mission06/duration-question.jpg + one row per add-in, each with a ✓ and a ✕ button (nothing pre-set); "Check my order" / "בדוק את ההזמנה" unlocks when every row is set — the ORDER that is right is listed below
-- Choices:
-  1. "🗓️ Week 1 ✓" / "שבוע 1 ✓" — no sentence id — ✅ accepted
-  2. "🗓️ Week 2 ✓" / "שבוע 2 ✓" — no sentence id — ✅ accepted
-  3. "🗓️ Week 3 ✕" / "שבוע 3 ✕" — no sentence id — ✅ accepted
-  4. "🗓️ Week 4 ✕" / "שבוע 4 ✕" — no sentence id — ✅ accepted
-- Tests: phrase.border.two-weeks
-- Explanation shown after answering: after the check: each row turns green or red, then the spoken order and its translation
-
-### M06-Q07 — customize (step 13, round 2 of 2)
-
-- Prompt displayed: "Mark your stay on the calendar" / "סמן בלוח השנה את השהות שלך"
+- Prompt displayed: "How long are you staying? Pick your stay" / "כמה זמן אתה נשאר? בחר את השהות שלך"
 - Audio played: EN "All right. How long are you staying?" · FR "Très bien. Vous restez combien de temps ?" · ES "Muy bien. ¿Cuánto tiempo se queda?"
 - Meaning of the audio (HE): "בסדר. לכמה זמן אתה נשאר?"
-- Buttons show: images/mission06/duration-question.jpg + one row per add-in, each with a ✓ and a ✕ button (nothing pre-set); "Check my order" / "בדוק את ההזמנה" unlocks when every row is set — the ORDER that is right is listed below
+- Buttons show: a 3×3 board of 3 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. "🗓️ Week 1 ✓" / "שבוע 1 ✓" — no sentence id — ✅ accepted
-  2. "🗓️ Week 2 ✓" / "שבוע 2 ✓" — no sentence id — ✅ accepted
-  3. "🗓️ Week 3 ✕" / "שבוע 3 ✕" — no sentence id — ✅ accepted
-  4. "🗓️ Week 4 ✕" / "שבוע 4 ✕" — no sentence id — ✅ accepted
+  1. "[picture week.jpg] “One week” / “שבוע אחד”" — no sentence id — ❌ wrong
+  2. "[picture two-weeks.jpg] “Two weeks” / “שבועיים”" — no sentence id — ✅ accepted
+  3. "[picture four-weeks.jpg] “Four weeks” / “ארבעה שבועות”" — no sentence id — ❌ wrong
 - Tests: (no sentence id — not recorded)
-- Explanation shown after answering: after the check: each row turns green or red, then the spoken order and its translation
+- Explanation shown after answering: after the tap: the spoken line and its translation
 
-### M06-Q08 — mini-map (step 16, round 1 of 2)
+### M06-Q07 — visual-match (step 12, round 2 of 2)
 
-- Prompt displayed: "Where are you sleeping? Tap the place" / "איפה אתה ישן? הקש על המקום" — board, row by row: 🌳 | 🏬 |  [tap:hotel-outskirts] // 🏛️ |  [tap:hotel-centre] | 🏢 //  [tap:house] | · |  [tap:airport]
+- Prompt displayed: "How long are you staying? Pick your stay" / "כמה זמן אתה נשאר? בחר את השהות שלך"
+- Audio played: EN "For two weeks." · FR "Pour deux semaines." · ES "Dos semanas."
+- Meaning of the audio (HE): "לשבועיים."
+- Buttons show: a 3×3 board of 3 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "[picture week.jpg] “One week” / “שבוע אחד”" — no sentence id — ❌ wrong
+  2. "[picture two-weeks.jpg] “Two weeks” / “שבועיים”" — `phrase.border.two-weeks` — ✅ accepted
+  3. "[picture four-weeks.jpg] “Four weeks” / “ארבעה שבועות”" — no sentence id — ❌ wrong
+- Tests: phrase.border.two-weeks
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M06-Q08 — mini-map (step 15, round 1 of 2)
+
+- Prompt displayed: "Where are you sleeping? The city centre is the shaded area of the map" / "איפה אתה ישן? מרכז העיר הוא האזור הצבוע במפה" — board, row by row:  |  [tap:hotel-centre] | · //  |  |  [tap:house] //  [tap:airport] | · |  [tap:hotel-outskirts]
 - Audio played: EN "At a hotel in the city centre." · FR "Dans un hôtel dans le centre-ville." · ES "En un hotel en el centro."
 - Meaning of the audio (HE): "במלון במרכז העיר."
 - Buttons show: the tappable cells of a 3×3 schematic map (fixed positions, not shuffled); the sentence and its translation appear only AFTER the tap
 - Choices:
   1. " hotel-centre" — `phrase.border.staying-hotel` — ✅ accepted
-  2. " hotel-outskirts" — no sentence id — ❌ wrong
-  3. " house" — no sentence id — ❌ wrong
-  4. " airport" — no sentence id — ❌ wrong
+  2. " house" — no sentence id — ❌ wrong
+  3. " airport" — no sentence id — ❌ wrong
+  4. " hotel-outskirts" — no sentence id — ❌ wrong
 - Tests: phrase.border.staying-hotel
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
-### M06-Q09 — mini-map (step 16, round 2 of 2)
+### M06-Q09 — mini-map (step 15, round 2 of 2)
 
-- Prompt displayed: "Where are you sleeping? Tap the place" / "איפה אתה ישן? הקש על המקום" — board, row by row: 🌳 | 🏬 |  [tap:hotel-outskirts] // 🏛️ |  [tap:hotel-centre] | 🏢 //  [tap:house] | · |  [tap:airport]
+- Prompt displayed: "Where are you sleeping? The city centre is the shaded area of the map" / "איפה אתה ישן? מרכז העיר הוא האזור הצבוע במפה" — board, row by row:  |  [tap:hotel-centre] | · //  |  |  [tap:house] //  [tap:airport] | · |  [tap:hotel-outskirts]
 - Audio played: EN "And where are you staying?" · FR "Et où logez-vous ?" · ES "¿Y dónde se aloja?"
 - Meaning of the audio (HE): "ואיפה אתה מתאכסן?"
 - Buttons show: the tappable cells of a 3×3 schematic map (fixed positions, not shuffled); the sentence and its translation appear only AFTER the tap
 - Choices:
   1. " hotel-centre" — no sentence id — ✅ accepted
-  2. " hotel-outskirts" — no sentence id — ❌ wrong
-  3. " house" — no sentence id — ❌ wrong
-  4. " airport" — no sentence id — ❌ wrong
+  2. " house" — no sentence id — ❌ wrong
+  3. " airport" — no sentence id — ❌ wrong
+  4. " hotel-outskirts" — no sentence id — ❌ wrong
 - Tests: (no sentence id — not recorded)
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
-### M06-Q10 — sentence-builder (step 17, round 1 of 1)
+### M06-Q10 — sentence-builder (step 16, round 1 of 1)
 
 - Prompt displayed: "Your answer" / "התשובה שלך" — cue shown: the sentence's MEANING in the app language ("במלון במרכז העיר.")
 - Audio played: EN "(nothing before Check; the built sentence is spoken once it is right)" · FR "(same)" · ES "(same)"
@@ -6338,7 +6324,7 @@ No meaning quiz in this mission.
 - Tests: phrase.border.staying-hotel
 - Explanation shown after answering: right: the sentence is spoken and its translation shown. Wrong: "not yet" — the tiles stay, the answer is NOT shown; after one miss a hint marks the start; after two misses the learner may reveal it
 
-### M06-Q11 — visual-match (step 20, round 1 of 2)
+### M06-Q11 — visual-match (step 19, round 1 of 2)
 
 - Prompt displayed: "Your suitcase — which way through?" / "המזוודה שלך — לאיזה מסלול?"
 - Audio played: EN "Almost done. Anything to declare?" · FR "C’est presque fini. Quelque chose à déclarer ?" · ES "Ya casi está. ¿Algo que declarar?"
@@ -6350,7 +6336,7 @@ No meaning quiz in this mission.
 - Tests: (no sentence id — not recorded)
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
-### M06-Q12 — visual-match (step 20, round 2 of 2)
+### M06-Q12 — visual-match (step 19, round 2 of 2)
 
 - Prompt displayed: "Your suitcase — which way through?" / "המזוודה שלך — לאיזה מסלול?"
 - Audio played: EN "Nothing to declare." · FR "Rien à déclarer." · ES "Nada que declarar."
@@ -6362,63 +6348,63 @@ No meaning quiz in this mission.
 - Tests: phrase.border.nothing-declare
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
-### M06-Q13 — match-pairs (step 23, pair 1 of 4 (all pairs are on one screen))
+### M06-Q13 — match-pairs (step 22, pair 1 of 4 (all pairs are on one screen))
 
-- Prompt displayed: "Each question — and what it asks for" / "כל שאלה — ומה היא שואלת" — tile to match (target language, no translation): EN "What's the purpose of your visit?" · FR "Quel est le motif de votre visite ?" · ES "¿Cuál es el motivo de su viaje?"
+- Prompt displayed: "Each question — and your answer" / "כל שאלה — והתשובה שלך" — tile to match (target language, no translation): EN "What's the purpose of your visit?" · FR "Quel est le motif de votre visite ?" · ES "¿Cuál es el motivo de su viaje?"
 - Audio played: EN "What's the purpose of your visit?" · FR "Quel est le motif de votre visite ?" · ES "¿Cuál es el motivo de su viaje?"
 - Meaning of the audio (HE): "מה מטרת הביקור?"
 - Buttons show: the ANSWER tiles, target language only; their order is shuffled; a matched pair locks and leaves the board, so later pairs have fewer live tiles
 - Choices:
-  1. EN "[picture holiday.jpg] 🏖️" · FR "[picture holiday.jpg] 🏖️" · ES "[picture holiday.jpg] 🏖️" · (HE gloss "אני כאן בחופשה.") — `phrase.border.on-holiday` — ✅ accepted
-  2. EN "[picture two-weeks.jpg] 📅 2" · FR "[picture two-weeks.jpg] 📅 2" · ES "[picture two-weeks.jpg] 📅 2" · (HE gloss "לשבועיים.") — `phrase.border.two-weeks` — ❌ wrong
-  3. EN "[picture hotel-city-centre.jpg] 🏨 📍" · FR "[picture hotel-city-centre.jpg] 🏨 📍" · ES "[picture hotel-city-centre.jpg] 🏨 📍" · (HE gloss "במלון במרכז העיר.") — `phrase.border.staying-hotel` — ❌ wrong
-  4. EN "[picture nothing-to-declare.jpg] 🟢" · FR "[picture nothing-to-declare.jpg] 🟢" · ES "[picture nothing-to-declare.jpg] 🟢" · (HE gloss "אין לי מה להצהיר.") — `phrase.border.nothing-declare` — ❌ wrong
+  1. EN "I'm here on holiday." · FR "Je suis en vacances." · ES "Estoy de vacaciones." · (HE gloss "אני כאן בחופשה.") — `phrase.border.on-holiday` — ✅ accepted
+  2. EN "For two weeks." · FR "Pour deux semaines." · ES "Dos semanas." · (HE gloss "לשבועיים.") — `phrase.border.two-weeks` — ❌ wrong
+  3. EN "At a hotel in the city centre." · FR "Dans un hôtel dans le centre-ville." · ES "En un hotel en el centro." · (HE gloss "במלון במרכז העיר.") — `phrase.border.staying-hotel` — ❌ wrong
+  4. EN "Nothing to declare." · FR "Rien à déclarer." · ES "Nada que declarar." · (HE gloss "אין לי מה להצהיר.") — `phrase.border.nothing-declare` — ❌ wrong
 - Tests: phrase.border.on-holiday
 - Explanation shown after answering: none — a correct match locks both tiles under a shared number and speaks the answer; a miss shakes, shows ✕ and clears (no penalty)
 
-### M06-Q14 — match-pairs (step 23, pair 2 of 4 (all pairs are on one screen))
+### M06-Q14 — match-pairs (step 22, pair 2 of 4 (all pairs are on one screen))
 
-- Prompt displayed: "Each question — and what it asks for" / "כל שאלה — ומה היא שואלת" — tile to match (target language, no translation): EN "How long are you staying?" · FR "Vous restez combien de temps ?" · ES "¿Cuánto tiempo se queda?"
+- Prompt displayed: "Each question — and your answer" / "כל שאלה — והתשובה שלך" — tile to match (target language, no translation): EN "How long are you staying?" · FR "Vous restez combien de temps ?" · ES "¿Cuánto tiempo se queda?"
 - Audio played: EN "How long are you staying?" · FR "Vous restez combien de temps ?" · ES "¿Cuánto tiempo se queda?"
 - Meaning of the audio (HE): "לכמה זמן אתה נשאר?"
 - Buttons show: the ANSWER tiles, target language only; their order is shuffled; a matched pair locks and leaves the board, so later pairs have fewer live tiles
 - Choices:
-  1. EN "[picture holiday.jpg] 🏖️" · FR "[picture holiday.jpg] 🏖️" · ES "[picture holiday.jpg] 🏖️" · (HE gloss "אני כאן בחופשה.") — `phrase.border.on-holiday` — ❌ wrong
-  2. EN "[picture two-weeks.jpg] 📅 2" · FR "[picture two-weeks.jpg] 📅 2" · ES "[picture two-weeks.jpg] 📅 2" · (HE gloss "לשבועיים.") — `phrase.border.two-weeks` — ✅ accepted
-  3. EN "[picture hotel-city-centre.jpg] 🏨 📍" · FR "[picture hotel-city-centre.jpg] 🏨 📍" · ES "[picture hotel-city-centre.jpg] 🏨 📍" · (HE gloss "במלון במרכז העיר.") — `phrase.border.staying-hotel` — ❌ wrong
-  4. EN "[picture nothing-to-declare.jpg] 🟢" · FR "[picture nothing-to-declare.jpg] 🟢" · ES "[picture nothing-to-declare.jpg] 🟢" · (HE gloss "אין לי מה להצהיר.") — `phrase.border.nothing-declare` — ❌ wrong
+  1. EN "I'm here on holiday." · FR "Je suis en vacances." · ES "Estoy de vacaciones." · (HE gloss "אני כאן בחופשה.") — `phrase.border.on-holiday` — ❌ wrong
+  2. EN "For two weeks." · FR "Pour deux semaines." · ES "Dos semanas." · (HE gloss "לשבועיים.") — `phrase.border.two-weeks` — ✅ accepted
+  3. EN "At a hotel in the city centre." · FR "Dans un hôtel dans le centre-ville." · ES "En un hotel en el centro." · (HE gloss "במלון במרכז העיר.") — `phrase.border.staying-hotel` — ❌ wrong
+  4. EN "Nothing to declare." · FR "Rien à déclarer." · ES "Nada que declarar." · (HE gloss "אין לי מה להצהיר.") — `phrase.border.nothing-declare` — ❌ wrong
 - Tests: phrase.border.two-weeks
 - Explanation shown after answering: none — a correct match locks both tiles under a shared number and speaks the answer; a miss shakes, shows ✕ and clears (no penalty)
 
-### M06-Q15 — match-pairs (step 23, pair 3 of 4 (all pairs are on one screen))
+### M06-Q15 — match-pairs (step 22, pair 3 of 4 (all pairs are on one screen))
 
-- Prompt displayed: "Each question — and what it asks for" / "כל שאלה — ומה היא שואלת" — tile to match (target language, no translation): EN "Where are you staying?" · FR "Où logez-vous ?" · ES "¿Dónde se aloja?"
+- Prompt displayed: "Each question — and your answer" / "כל שאלה — והתשובה שלך" — tile to match (target language, no translation): EN "Where are you staying?" · FR "Où logez-vous ?" · ES "¿Dónde se aloja?"
 - Audio played: EN "Where are you staying?" · FR "Où logez-vous ?" · ES "¿Dónde se aloja?"
 - Meaning of the audio (HE): "איפה אתה מתאכסן?"
 - Buttons show: the ANSWER tiles, target language only; their order is shuffled; a matched pair locks and leaves the board, so later pairs have fewer live tiles
 - Choices:
-  1. EN "[picture holiday.jpg] 🏖️" · FR "[picture holiday.jpg] 🏖️" · ES "[picture holiday.jpg] 🏖️" · (HE gloss "אני כאן בחופשה.") — `phrase.border.on-holiday` — ❌ wrong
-  2. EN "[picture two-weeks.jpg] 📅 2" · FR "[picture two-weeks.jpg] 📅 2" · ES "[picture two-weeks.jpg] 📅 2" · (HE gloss "לשבועיים.") — `phrase.border.two-weeks` — ❌ wrong
-  3. EN "[picture hotel-city-centre.jpg] 🏨 📍" · FR "[picture hotel-city-centre.jpg] 🏨 📍" · ES "[picture hotel-city-centre.jpg] 🏨 📍" · (HE gloss "במלון במרכז העיר.") — `phrase.border.staying-hotel` — ✅ accepted
-  4. EN "[picture nothing-to-declare.jpg] 🟢" · FR "[picture nothing-to-declare.jpg] 🟢" · ES "[picture nothing-to-declare.jpg] 🟢" · (HE gloss "אין לי מה להצהיר.") — `phrase.border.nothing-declare` — ❌ wrong
+  1. EN "I'm here on holiday." · FR "Je suis en vacances." · ES "Estoy de vacaciones." · (HE gloss "אני כאן בחופשה.") — `phrase.border.on-holiday` — ❌ wrong
+  2. EN "For two weeks." · FR "Pour deux semaines." · ES "Dos semanas." · (HE gloss "לשבועיים.") — `phrase.border.two-weeks` — ❌ wrong
+  3. EN "At a hotel in the city centre." · FR "Dans un hôtel dans le centre-ville." · ES "En un hotel en el centro." · (HE gloss "במלון במרכז העיר.") — `phrase.border.staying-hotel` — ✅ accepted
+  4. EN "Nothing to declare." · FR "Rien à déclarer." · ES "Nada que declarar." · (HE gloss "אין לי מה להצהיר.") — `phrase.border.nothing-declare` — ❌ wrong
 - Tests: phrase.border.staying-hotel
 - Explanation shown after answering: none — a correct match locks both tiles under a shared number and speaks the answer; a miss shakes, shows ✕ and clears (no penalty)
 
-### M06-Q16 — match-pairs (step 23, pair 4 of 4 (all pairs are on one screen))
+### M06-Q16 — match-pairs (step 22, pair 4 of 4 (all pairs are on one screen))
 
-- Prompt displayed: "Each question — and what it asks for" / "כל שאלה — ומה היא שואלת" — tile to match (target language, no translation): EN "Anything to declare?" · FR "Quelque chose à déclarer ?" · ES "¿Algo que declarar?"
+- Prompt displayed: "Each question — and your answer" / "כל שאלה — והתשובה שלך" — tile to match (target language, no translation): EN "Anything to declare?" · FR "Quelque chose à déclarer ?" · ES "¿Algo que declarar?"
 - Audio played: EN "Anything to declare?" · FR "Quelque chose à déclarer ?" · ES "¿Algo que declarar?"
 - Meaning of the audio (HE): "יש לך מה להצהיר?"
 - Buttons show: the ANSWER tiles, target language only; their order is shuffled; a matched pair locks and leaves the board, so later pairs have fewer live tiles
 - Choices:
-  1. EN "[picture holiday.jpg] 🏖️" · FR "[picture holiday.jpg] 🏖️" · ES "[picture holiday.jpg] 🏖️" · (HE gloss "אני כאן בחופשה.") — `phrase.border.on-holiday` — ❌ wrong
-  2. EN "[picture two-weeks.jpg] 📅 2" · FR "[picture two-weeks.jpg] 📅 2" · ES "[picture two-weeks.jpg] 📅 2" · (HE gloss "לשבועיים.") — `phrase.border.two-weeks` — ❌ wrong
-  3. EN "[picture hotel-city-centre.jpg] 🏨 📍" · FR "[picture hotel-city-centre.jpg] 🏨 📍" · ES "[picture hotel-city-centre.jpg] 🏨 📍" · (HE gloss "במלון במרכז העיר.") — `phrase.border.staying-hotel` — ❌ wrong
-  4. EN "[picture nothing-to-declare.jpg] 🟢" · FR "[picture nothing-to-declare.jpg] 🟢" · ES "[picture nothing-to-declare.jpg] 🟢" · (HE gloss "אין לי מה להצהיר.") — `phrase.border.nothing-declare` — ✅ accepted
+  1. EN "I'm here on holiday." · FR "Je suis en vacances." · ES "Estoy de vacaciones." · (HE gloss "אני כאן בחופשה.") — `phrase.border.on-holiday` — ❌ wrong
+  2. EN "For two weeks." · FR "Pour deux semaines." · ES "Dos semanas." · (HE gloss "לשבועיים.") — `phrase.border.two-weeks` — ❌ wrong
+  3. EN "At a hotel in the city centre." · FR "Dans un hôtel dans le centre-ville." · ES "En un hotel en el centro." · (HE gloss "במלון במרכז העיר.") — `phrase.border.staying-hotel` — ❌ wrong
+  4. EN "Nothing to declare." · FR "Rien à déclarer." · ES "Nada que declarar." · (HE gloss "אין לי מה להצהיר.") — `phrase.border.nothing-declare` — ✅ accepted
 - Tests: phrase.border.nothing-declare
 - Explanation shown after answering: none — a correct match locks both tiles under a shared number and speaks the answer; a miss shakes, shows ✕ and clears (no penalty)
 
-### M06-Q22 — quick-reply (step 25, round 1 of 5)
+### M06-Q22 — quick-reply (step 24, round 1 of 5)
 
 - Prompt displayed: "The border interview — 🏖️ holiday · 📅 two weeks · 🏨 city centre · 🟢 nothing" / "הראיון בגבול — 🏖️ חופשה · 📅 שבועיים · 🏨 מרכז העיר · 🟢 כלום"
 - Audio played: EN "Next, please. Passport?" · FR "Au suivant, s’il vous plaît. Passeport ?" · ES "El siguiente, por favor. ¿Pasaporte?"
@@ -6431,7 +6417,7 @@ No meaning quiz in this mission.
 - Tests: phrase.border.passport-here
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M06-Q23 — quick-reply (step 25, round 2 of 5)
+### M06-Q23 — quick-reply (step 24, round 2 of 5)
 
 - Prompt displayed: "The border interview — 🏖️ holiday · 📅 two weeks · 🏨 city centre · 🟢 nothing" / "הראיון בגבול — 🏖️ חופשה · 📅 שבועיים · 🏨 מרכז העיר · 🟢 כלום"
 - Audio played: EN "What's the purpose of your visit?" · FR "Quel est le motif de votre visite ?" · ES "¿Cuál es el motivo de su viaje?"
@@ -6444,7 +6430,7 @@ No meaning quiz in this mission.
 - Tests: phrase.border.on-holiday
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M06-Q24 — quick-reply (step 25, round 3 of 5)
+### M06-Q24 — quick-reply (step 24, round 3 of 5)
 
 - Prompt displayed: "The border interview — 🏖️ holiday · 📅 two weeks · 🏨 city centre · 🟢 nothing" / "הראיון בגבול — 🏖️ חופשה · 📅 שבועיים · 🏨 מרכז העיר · 🟢 כלום"
 - Audio played: EN "How long are you staying?" · FR "Vous restez combien de temps ?" · ES "¿Cuánto tiempo se queda?"
@@ -6457,7 +6443,7 @@ No meaning quiz in this mission.
 - Tests: phrase.border.two-weeks
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M06-Q25 — quick-reply (step 25, round 4 of 5)
+### M06-Q25 — quick-reply (step 24, round 4 of 5)
 
 - Prompt displayed: "The border interview — 🏖️ holiday · 📅 two weeks · 🏨 city centre · 🟢 nothing" / "הראיון בגבול — 🏖️ חופשה · 📅 שבועיים · 🏨 מרכז העיר · 🟢 כלום"
 - Audio played: EN "Where are you staying?" · FR "Où logez-vous ?" · ES "¿Dónde se aloja?"
@@ -6470,7 +6456,7 @@ No meaning quiz in this mission.
 - Tests: phrase.border.staying-hotel
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M06-Q26 — quick-reply (step 25, round 5 of 5)
+### M06-Q26 — quick-reply (step 24, round 5 of 5)
 
 - Prompt displayed: "The border interview — 🏖️ holiday · 📅 two weeks · 🏨 city centre · 🟢 nothing" / "הראיון בגבול — 🏖️ חופשה · 📅 שבועיים · 🏨 מרכז העיר · 🟢 כלום"
 - Audio played: EN "Anything to declare?" · FR "Quelque chose à déclarer ?" · ES "¿Algo que declarar?"
@@ -6483,7 +6469,7 @@ No meaning quiz in this mission.
 - Tests: phrase.border.nothing-declare
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M06-Q37 — quick-reply (step 29, round 1 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
+### M06-Q37 — quick-reply (step 28, round 1 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
 
 - Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio played: EN "Next, please. Passport?" · FR "Au suivant, s’il vous plaît. Passeport ?" · ES "El siguiente, por favor. ¿Pasaporte?"
@@ -6496,7 +6482,7 @@ No meaning quiz in this mission.
 - Tests: phrase.border.passport-here
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M06-Q38 — quick-reply (step 29, round 2 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
+### M06-Q38 — quick-reply (step 28, round 2 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
 
 - Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio played: EN "Thank you. What's the purpose of your visit?" · FR "Merci. Quel est le motif de votre visite ?" · ES "Gracias. ¿Cuál es el motivo de su viaje?"
@@ -6509,7 +6495,7 @@ No meaning quiz in this mission.
 - Tests: phrase.border.on-holiday
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M06-Q39 — quick-reply (step 29, round 3 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
+### M06-Q39 — quick-reply (step 28, round 3 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
 
 - Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio played: EN "All right. How long are you staying?" · FR "Très bien. Vous restez combien de temps ?" · ES "Muy bien. ¿Cuánto tiempo se queda?"
@@ -6522,7 +6508,7 @@ No meaning quiz in this mission.
 - Tests: phrase.border.two-weeks
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M06-Q40 — quick-reply (step 29, round 4 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
+### M06-Q40 — quick-reply (step 28, round 4 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
 
 - Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio played: EN "And where are you staying?" · FR "Et où logez-vous ?" · ES "¿Y dónde se aloja?"
@@ -6535,7 +6521,7 @@ No meaning quiz in this mission.
 - Tests: phrase.border.staying-hotel
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M06-Q41 — quick-reply (step 29, round 5 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
+### M06-Q41 — quick-reply (step 28, round 5 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
 
 - Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio played: EN "Almost done. Anything to declare?" · FR "C’est presque fini. Quelque chose à déclarer ?" · ES "Ya casi está. ¿Algo que declarar?"
@@ -6548,7 +6534,7 @@ No meaning quiz in this mission.
 - Tests: phrase.border.nothing-declare
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M06-Q42 — visual-match (step 32, round 1 of 1 · SPEED CHALLENGE (spoken at rate 1.12))
+### M06-Q42 — visual-match (step 31, round 1 of 1 · SPEED CHALLENGE (spoken at rate 1.12))
 
 - Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio played: EN "Next, please. Passport?" · FR "Au suivant, s’il vous plaît. Passeport ?" · ES "El siguiente, por favor. ¿Pasaporte?"
@@ -6561,7 +6547,7 @@ No meaning quiz in this mission.
 - Tests: (no sentence id — not recorded)
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
-### M06-Q43 — visual-match (step 33, round 1 of 1 · SPEED CHALLENGE (spoken at rate 1.12))
+### M06-Q43 — visual-match (step 32, round 1 of 1 · SPEED CHALLENGE (spoken at rate 1.12))
 
 - Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio played: EN "Thank you. What's the purpose of your visit?" · FR "Merci. Quel est le motif de votre visite ?" · ES "Gracias. ¿Cuál es el motivo de su viaje?"
@@ -6574,35 +6560,34 @@ No meaning quiz in this mission.
 - Tests: (no sentence id — not recorded)
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
-### M06-Q44 — customize (step 34, round 1 of 1)
+### M06-Q44 — visual-match (step 33, round 1 of 1 · SPEED CHALLENGE (spoken at rate 1.12))
 
-- Prompt displayed: "Border check 3/5 — Duration" / "ביקורת גבולות 3/5 — משך"
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio played: EN "All right. How long are you staying?" · FR "Très bien. Vous restez combien de temps ?" · ES "Muy bien. ¿Cuánto tiempo se queda?"
 - Meaning of the audio (HE): "בסדר. לכמה זמן אתה נשאר?"
-- Buttons show: images/mission06/duration-question.jpg + one row per add-in, each with a ✓ and a ✕ button (nothing pre-set); "Check my order" / "בדוק את ההזמנה" unlocks when every row is set — the ORDER that is right is listed below
+- Buttons show: a 3×3 board of 3 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. "🗓️ Week 1 ✓" / "שבוע 1 ✓" — no sentence id — ✅ accepted
-  2. "🗓️ Week 2 ✓" / "שבוע 2 ✓" — no sentence id — ✅ accepted
-  3. "🗓️ Week 3 ✕" / "שבוע 3 ✕" — no sentence id — ✅ accepted
-  4. "🗓️ Week 4 ✕" / "שבוע 4 ✕" — no sentence id — ✅ accepted
+  1. "[picture week.jpg] “One week” / “שבוע אחד”" — no sentence id — ❌ wrong
+  2. "[picture two-weeks.jpg] “Two weeks” / “שבועיים”" — no sentence id — ✅ accepted
+  3. "[picture four-weeks.jpg] “Four weeks” / “ארבעה שבועות”" — no sentence id — ❌ wrong
 - Tests: (no sentence id — not recorded)
-- Explanation shown after answering: after the check: each row turns green or red, then the spoken order and its translation
+- Explanation shown after answering: after the tap: the spoken line and its translation
 
-### M06-Q45 — mini-map (step 35, round 1 of 1 · SPEED CHALLENGE (spoken at rate 1.12))
+### M06-Q45 — mini-map (step 34, round 1 of 1 · SPEED CHALLENGE (spoken at rate 1.12))
 
-- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה." — board, row by row: 🌳 | 🏬 |  [tap:hotel-outskirts] // 🏛️ |  [tap:hotel-centre] | 🏢 //  [tap:house] | · |  [tap:airport]
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה." — board, row by row:  |  [tap:hotel-centre] | · //  |  |  [tap:house] //  [tap:airport] | · |  [tap:hotel-outskirts]
 - Audio played: EN "And where are you staying?" · FR "Et où logez-vous ?" · ES "¿Y dónde se aloja?"
 - Meaning of the audio (HE): "ואיפה אתה מתאכסן?"
 - Buttons show: the tappable cells of a 3×3 schematic map (fixed positions, not shuffled); the sentence and its translation appear only AFTER the tap
 - Choices:
   1. " hotel-centre" — no sentence id — ✅ accepted
-  2. " hotel-outskirts" — no sentence id — ❌ wrong
-  3. " house" — no sentence id — ❌ wrong
-  4. " airport" — no sentence id — ❌ wrong
+  2. " house" — no sentence id — ❌ wrong
+  3. " airport" — no sentence id — ❌ wrong
+  4. " hotel-outskirts" — no sentence id — ❌ wrong
 - Tests: (no sentence id — not recorded)
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
-### M06-Q46 — visual-match (step 36, round 1 of 1 · SPEED CHALLENGE (spoken at rate 1.12))
+### M06-Q46 — visual-match (step 35, round 1 of 1 · SPEED CHALLENGE (spoken at rate 1.12))
 
 - Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio played: EN "Almost done. Anything to declare?" · FR "C’est presque fini. Quelque chose à déclarer ?" · ES "Ya casi está. ¿Algo que declarar?"
@@ -6614,7 +6599,7 @@ No meaning quiz in this mission.
 - Tests: (no sentence id — not recorded)
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
-### M06-Q47 — visual-match (step 37, round 1 of 1)
+### M06-Q47 — visual-match (step 36, round 1 of 1)
 
 - Prompt displayed: "🛂 Entry approved" / "🛂 כניסה מאושרת"
 - Audio played: EN "Welcome, and enjoy your stay!" · FR "Bienvenue, et bon séjour !" · ES "Bienvenido, ¡y que disfrute su estancia!"
@@ -6799,7 +6784,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 
 ## Learner choice screens
 
-### M06-Q27 — dialogue-choice (step 27, scene "border-control" · node c1)
+### M06-Q27 — dialogue-choice (step 26, scene "border-control" · node c1)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Next, please. Passport?" · FR "Au suivant, s’il vous plaît. Passeport ?" · ES "El siguiente, por favor. ¿Pasaporte?"
@@ -6811,7 +6796,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.border.passport-here, phrase.recovery.one-moment
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M06-Q28 — dialogue-choice (step 27, scene "border-control" · node c1b)
+### M06-Q28 — dialogue-choice (step 26, scene "border-control" · node c1b)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "No rush. Whenever you’re ready." · FR "Pas de souci. Quand vous êtes prêt." · ES "Sin prisa. Cuando esté listo."
@@ -6822,7 +6807,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.border.passport-here
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M06-Q29 — dialogue-choice (step 27, scene "border-control" · node c2)
+### M06-Q29 — dialogue-choice (step 26, scene "border-control" · node c2)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Thank you. What's the purpose of your visit?" · FR "Merci. Quel est le motif de votre visite ?" · ES "Gracias. ¿Cuál es el motivo de su viaje?"
@@ -6834,7 +6819,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.border.on-holiday, phrase.recovery.repeat
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M06-Q30 — dialogue-choice (step 27, scene "border-control" · node c2b)
+### M06-Q30 — dialogue-choice (step 26, scene "border-control" · node c2b)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "The — purpose — of your visit?" · FR "Le — motif — de votre visite ?" · ES "El — motivo — de su viaje?"
@@ -6845,7 +6830,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.border.on-holiday
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M06-Q31 — dialogue-choice (step 27, scene "border-control" · node c3)
+### M06-Q31 — dialogue-choice (step 26, scene "border-control" · node c3)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "All right. How long are you staying?" · FR "Très bien. Vous restez combien de temps ?" · ES "Muy bien. ¿Cuánto tiempo se queda?"
@@ -6857,7 +6842,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.border.two-weeks, phrase.border.passport-here
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M06-Q32 — dialogue-choice (step 27, scene "border-control" · node c3b)
+### M06-Q32 — dialogue-choice (step 26, scene "border-control" · node c3b)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "I have your passport — I asked how long you’re staying." · FR "J’ai votre passeport — je vous demande combien de temps vous restez." · ES "Ya tengo su pasaporte — le pregunto cuánto tiempo se queda."
@@ -6868,7 +6853,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.border.two-weeks
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M06-Q33 — dialogue-choice (step 27, scene "border-control" · node c4)
+### M06-Q33 — dialogue-choice (step 26, scene "border-control" · node c4)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "And where are you staying?" · FR "Et où logez-vous ?" · ES "¿Y dónde se aloja?"
@@ -6880,7 +6865,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.border.staying-hotel, phrase.recovery.slowly
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M06-Q34 — dialogue-choice (step 27, scene "border-control" · node c4b)
+### M06-Q34 — dialogue-choice (step 26, scene "border-control" · node c4b)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Where — are you — staying?" · FR "Où — logez — vous ?" · ES "¿Dónde — se — aloja?"
@@ -6891,7 +6876,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.border.staying-hotel
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M06-Q35 — dialogue-choice (step 27, scene "border-control" · node c5)
+### M06-Q35 — dialogue-choice (step 26, scene "border-control" · node c5)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Almost done. Anything to declare?" · FR "C’est presque fini. Quelque chose à déclarer ?" · ES "Ya casi está. ¿Algo que declarar?"
@@ -6903,7 +6888,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.border.nothing-declare, phrase.recovery.thank-you
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M06-Q36 — dialogue-choice (step 27, scene "border-control" · node c5b)
+### M06-Q36 — dialogue-choice (step 26, scene "border-control" · node c5b)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Ha — so, anything to declare? Any goods?" · FR "Ah — alors, quelque chose à déclarer ? Des marchandises ?" · ES "Ah — entonces, ¿algo que declarar? ¿Alguna mercancía?"
@@ -6959,15 +6944,15 @@ Every learner sentence of this mission is a line in a scene.
 
 ## Receipts (proof cards)
 
-- Step 7: "✅ Passport · ⬜ Purpose · ⬜ Duration · ⬜ Stay · ⬜ Declaration" / "✅ דרכון · ⬜ מטרה · ⬜ משך · ⬜ מקום לינה · ⬜ מכס"
-- Step 11: "✅ Passport · ✅ Purpose · ⬜ Duration · ⬜ Stay · ⬜ Declaration" / "✅ דרכון · ✅ מטרה · ⬜ משך · ⬜ מקום לינה · ⬜ מכס"
-- Step 14: "✅ Passport · ✅ Purpose · ✅ Duration · ⬜ Stay · ⬜ Declaration" / "✅ דרכון · ✅ מטרה · ✅ משך · ⬜ מקום לינה · ⬜ מכס"
-- Step 18: "✅ Passport · ✅ Purpose · ✅ Duration · ✅ Stay · ⬜ Declaration" / "✅ דרכון · ✅ מטרה · ✅ משך · ✅ מקום לינה · ⬜ מכס"
-- Step 21: "✅ Passport · ✅ Purpose · ✅ Duration · ✅ Stay · ✅ Declaration" / "✅ דרכון · ✅ מטרה · ✅ משך · ✅ מקום לינה · ✅ מכס"
-- Step 26: "✅ Passport · ✅ Purpose · ✅ Duration · ✅ Stay · ✅ Declaration — you answered every question." / "✅ דרכון · ✅ מטרה · ✅ משך · ✅ מקום לינה · ✅ מכס — ענית על כל השאלות."
-- Step 28: "The whole conversation — from “next, please” to “welcome”." / "כל השיחה — מ"הבא בתור" ועד "ברוך הבא"."
-- Step 30: "No help — every question at his pace, and you answered them all." / "בלי עזרה — כל שאלה בקצב שלו, וענית על כולן."
-- Step 38: "🛂 ENTRY APPROVED · ✅ Passport · ✅ Purpose · ✅ Duration · ✅ Stay · ✅ Declaration · Welcome!" / "🛂 כניסה מאושרת · ✅ דרכון · ✅ מטרה · ✅ משך · ✅ מקום לינה · ✅ מכס · ברוך הבא!"
+- Step 6: "✅ Passport · ⬜ Purpose · ⬜ Duration · ⬜ Stay · ⬜ Declaration" / "✅ דרכון · ⬜ מטרה · ⬜ משך · ⬜ מקום לינה · ⬜ מכס"
+- Step 10: "✅ Passport · ✅ Purpose · ⬜ Duration · ⬜ Stay · ⬜ Declaration" / "✅ דרכון · ✅ מטרה · ⬜ משך · ⬜ מקום לינה · ⬜ מכס"
+- Step 13: "✅ Passport · ✅ Purpose · ✅ Duration · ⬜ Stay · ⬜ Declaration" / "✅ דרכון · ✅ מטרה · ✅ משך · ⬜ מקום לינה · ⬜ מכס"
+- Step 17: "✅ Passport · ✅ Purpose · ✅ Duration · ✅ Stay · ⬜ Declaration" / "✅ דרכון · ✅ מטרה · ✅ משך · ✅ מקום לינה · ⬜ מכס"
+- Step 20: "✅ Passport · ✅ Purpose · ✅ Duration · ✅ Stay · ✅ Declaration" / "✅ דרכון · ✅ מטרה · ✅ משך · ✅ מקום לינה · ✅ מכס"
+- Step 25: "✅ Passport · ✅ Purpose · ✅ Duration · ✅ Stay · ✅ Declaration — you answered every question." / "✅ דרכון · ✅ מטרה · ✅ משך · ✅ מקום לינה · ✅ מכס — ענית על כל השאלות."
+- Step 27: "The whole conversation — from “next, please” to “welcome”." / "כל השיחה — מ"הבא בתור" ועד "ברוך הבא"."
+- Step 29: "No help — every question at his pace, and you answered them all." / "בלי עזרה — כל שאלה בקצב שלו, וענית על כולן."
+- Step 37: "🛂 ENTRY APPROVED · ✅ Passport · ✅ Purpose · ✅ Duration · ✅ Stay · ✅ Declaration · Welcome!" / "🛂 כניסה מאושרת · ✅ דרכון · ✅ מטרה · ✅ משך · ✅ מקום לינה · ✅ מכס · ברוך הבא!"
 
 ## Audit Metadata — DO NOT FIX YET
 
@@ -6988,7 +6973,7 @@ Every learner sentence of this mission is a line in a scene.
 - Vocabulary pre-items: 17
 - Swap variants (extra accepted lines): 0
 - Sentences in review: 0
-- Total interactive questions: 47 (answer choices: 125)
+- Total interactive questions: 47 (answer choices: 122)
 - Approximate total learner interactions: 48 (questions + key sentences + review cards + word-intro screen)
 
 ### AUTO-FLAG — requires human review (3)
@@ -31519,43 +31504,41 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Correct: I'm  |  here  |  on holiday.
 - Tests: phrase.border.on-holiday
 
-**M06-Q06** — customize
-- Prompt: "Mark your stay on the calendar" / "סמן בלוח השנה את השהות שלך"
-- Audio: For two weeks. — (לשבועיים.)
-- A: 🗓️ Week 1 ✓ ✅
-- B: 🗓️ Week 2 ✓ ✅
-- C: 🗓️ Week 3 ✕ ✅
-- D: 🗓️ Week 4 ✕ ✅
-- Correct: 🗓️ Week 1 ✓ | 🗓️ Week 2 ✓ | 🗓️ Week 3 ✕ | 🗓️ Week 4 ✕
-- Tests: phrase.border.two-weeks
-
-**M06-Q07** — customize
-- Prompt: "Mark your stay on the calendar" / "סמן בלוח השנה את השהות שלך"
+**M06-Q06** — visual-match
+- Prompt: "How long are you staying? Pick your stay" / "כמה זמן אתה נשאר? בחר את השהות שלך"
 - Audio: All right. How long are you staying? — (בסדר. לכמה זמן אתה נשאר?)
-- A: 🗓️ Week 1 ✓ ✅
-- B: 🗓️ Week 2 ✓ ✅
-- C: 🗓️ Week 3 ✕ ✅
-- D: 🗓️ Week 4 ✕ ✅
-- Correct: 🗓️ Week 1 ✓ | 🗓️ Week 2 ✓ | 🗓️ Week 3 ✕ | 🗓️ Week 4 ✕
+- A: [picture week.jpg] “One week” / “שבוע אחד”
+- B: [picture two-weeks.jpg] “Two weeks” / “שבועיים” ✅
+- C: [picture four-weeks.jpg] “Four weeks” / “ארבעה שבועות”
+- Correct: [picture two-weeks.jpg] “Two weeks” / “שבועיים”
 - Tests: (no sentence id — not recorded)
 
+**M06-Q07** — visual-match
+- Prompt: "How long are you staying? Pick your stay" / "כמה זמן אתה נשאר? בחר את השהות שלך"
+- Audio: For two weeks. — (לשבועיים.)
+- A: [picture week.jpg] “One week” / “שבוע אחד”
+- B: [picture two-weeks.jpg] “Two weeks” / “שבועיים” ✅
+- C: [picture four-weeks.jpg] “Four weeks” / “ארבעה שבועות”
+- Correct: [picture two-weeks.jpg] “Two weeks” / “שבועיים”
+- Tests: phrase.border.two-weeks
+
 **M06-Q08** — mini-map
-- Prompt: "Where are you sleeping? Tap the place" / "איפה אתה ישן? הקש על המקום" — board, row by row: 🌳 | 🏬 |  [tap:hotel-outskirts] // 🏛️ |  [tap:hotel-centre] | 🏢 //  [tap:house] | · |  [tap:airport]
+- Prompt: "Where are you sleeping? The city centre is the shaded area of the map" / "איפה אתה ישן? מרכז העיר הוא האזור הצבוע במפה" — board, row by row:  |  [tap:hotel-centre] | · //  |  |  [tap:house] //  [tap:airport] | · |  [tap:hotel-outskirts]
 - Audio: At a hotel in the city centre. — (במלון במרכז העיר.)
 - A:  hotel-centre ✅
-- B:  hotel-outskirts
-- C:  house
-- D:  airport
+- B:  house
+- C:  airport
+- D:  hotel-outskirts
 - Correct:  hotel-centre
 - Tests: phrase.border.staying-hotel
 
 **M06-Q09** — mini-map
-- Prompt: "Where are you sleeping? Tap the place" / "איפה אתה ישן? הקש על המקום" — board, row by row: 🌳 | 🏬 |  [tap:hotel-outskirts] // 🏛️ |  [tap:hotel-centre] | 🏢 //  [tap:house] | · |  [tap:airport]
+- Prompt: "Where are you sleeping? The city centre is the shaded area of the map" / "איפה אתה ישן? מרכז העיר הוא האזור הצבוע במפה" — board, row by row:  |  [tap:hotel-centre] | · //  |  |  [tap:house] //  [tap:airport] | · |  [tap:hotel-outskirts]
 - Audio: And where are you staying? — (ואיפה אתה מתאכסן?)
 - A:  hotel-centre ✅
-- B:  hotel-outskirts
-- C:  house
-- D:  airport
+- B:  house
+- C:  airport
+- D:  hotel-outskirts
 - Correct:  hotel-centre
 - Tests: (no sentence id — not recorded)
 
@@ -31583,43 +31566,43 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Tests: phrase.border.nothing-declare
 
 **M06-Q13** — match-pairs
-- Prompt: "Each question — and what it asks for" / "כל שאלה — ומה היא שואלת" — tile to match (target language, no translation): EN "What's the purpose of your visit?" · FR "Quel est le motif de votre visite ?" · ES "¿Cuál es el motivo de su viaje?"
+- Prompt: "Each question — and your answer" / "כל שאלה — והתשובה שלך" — tile to match (target language, no translation): EN "What's the purpose of your visit?" · FR "Quel est le motif de votre visite ?" · ES "¿Cuál es el motivo de su viaje?"
 - Audio: What's the purpose of your visit? — (מה מטרת הביקור?)
-- A: [picture holiday.jpg] 🏖️ ✅
-- B: [picture two-weeks.jpg] 📅 2
-- C: [picture hotel-city-centre.jpg] 🏨 📍
-- D: [picture nothing-to-declare.jpg] 🟢
-- Correct: [picture holiday.jpg] 🏖️
+- A: I'm here on holiday. ✅
+- B: For two weeks.
+- C: At a hotel in the city centre.
+- D: Nothing to declare.
+- Correct: I'm here on holiday.
 - Tests: phrase.border.on-holiday
 
 **M06-Q14** — match-pairs
-- Prompt: "Each question — and what it asks for" / "כל שאלה — ומה היא שואלת" — tile to match (target language, no translation): EN "How long are you staying?" · FR "Vous restez combien de temps ?" · ES "¿Cuánto tiempo se queda?"
+- Prompt: "Each question — and your answer" / "כל שאלה — והתשובה שלך" — tile to match (target language, no translation): EN "How long are you staying?" · FR "Vous restez combien de temps ?" · ES "¿Cuánto tiempo se queda?"
 - Audio: How long are you staying? — (לכמה זמן אתה נשאר?)
-- A: [picture holiday.jpg] 🏖️
-- B: [picture two-weeks.jpg] 📅 2 ✅
-- C: [picture hotel-city-centre.jpg] 🏨 📍
-- D: [picture nothing-to-declare.jpg] 🟢
-- Correct: [picture two-weeks.jpg] 📅 2
+- A: I'm here on holiday.
+- B: For two weeks. ✅
+- C: At a hotel in the city centre.
+- D: Nothing to declare.
+- Correct: For two weeks.
 - Tests: phrase.border.two-weeks
 
 **M06-Q15** — match-pairs
-- Prompt: "Each question — and what it asks for" / "כל שאלה — ומה היא שואלת" — tile to match (target language, no translation): EN "Where are you staying?" · FR "Où logez-vous ?" · ES "¿Dónde se aloja?"
+- Prompt: "Each question — and your answer" / "כל שאלה — והתשובה שלך" — tile to match (target language, no translation): EN "Where are you staying?" · FR "Où logez-vous ?" · ES "¿Dónde se aloja?"
 - Audio: Where are you staying? — (איפה אתה מתאכסן?)
-- A: [picture holiday.jpg] 🏖️
-- B: [picture two-weeks.jpg] 📅 2
-- C: [picture hotel-city-centre.jpg] 🏨 📍 ✅
-- D: [picture nothing-to-declare.jpg] 🟢
-- Correct: [picture hotel-city-centre.jpg] 🏨 📍
+- A: I'm here on holiday.
+- B: For two weeks.
+- C: At a hotel in the city centre. ✅
+- D: Nothing to declare.
+- Correct: At a hotel in the city centre.
 - Tests: phrase.border.staying-hotel
 
 **M06-Q16** — match-pairs
-- Prompt: "Each question — and what it asks for" / "כל שאלה — ומה היא שואלת" — tile to match (target language, no translation): EN "Anything to declare?" · FR "Quelque chose à déclarer ?" · ES "¿Algo que declarar?"
+- Prompt: "Each question — and your answer" / "כל שאלה — והתשובה שלך" — tile to match (target language, no translation): EN "Anything to declare?" · FR "Quelque chose à déclarer ?" · ES "¿Algo que declarar?"
 - Audio: Anything to declare? — (יש לך מה להצהיר?)
-- A: [picture holiday.jpg] 🏖️
-- B: [picture two-weeks.jpg] 📅 2
-- C: [picture hotel-city-centre.jpg] 🏨 📍
-- D: [picture nothing-to-declare.jpg] 🟢 ✅
-- Correct: [picture nothing-to-declare.jpg] 🟢
+- A: I'm here on holiday.
+- B: For two weeks.
+- C: At a hotel in the city centre.
+- D: Nothing to declare. ✅
+- Correct: Nothing to declare.
 - Tests: phrase.border.nothing-declare
 
 **M06-Q17** — expected-reply
@@ -31850,23 +31833,22 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Correct: [picture holiday.jpg] “Holiday” / “חופשה”
 - Tests: (no sentence id — not recorded)
 
-**M06-Q44** — customize
-- Prompt: "Border check 3/5 — Duration" / "ביקורת גבולות 3/5 — משך"
+**M06-Q44** — visual-match
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio: All right. How long are you staying? — (בסדר. לכמה זמן אתה נשאר?)
-- A: 🗓️ Week 1 ✓ ✅
-- B: 🗓️ Week 2 ✓ ✅
-- C: 🗓️ Week 3 ✕ ✅
-- D: 🗓️ Week 4 ✕ ✅
-- Correct: 🗓️ Week 1 ✓ | 🗓️ Week 2 ✓ | 🗓️ Week 3 ✕ | 🗓️ Week 4 ✕
+- A: [picture week.jpg] “One week” / “שבוע אחד”
+- B: [picture two-weeks.jpg] “Two weeks” / “שבועיים” ✅
+- C: [picture four-weeks.jpg] “Four weeks” / “ארבעה שבועות”
+- Correct: [picture two-weeks.jpg] “Two weeks” / “שבועיים”
 - Tests: (no sentence id — not recorded)
 
 **M06-Q45** — mini-map
-- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה." — board, row by row: 🌳 | 🏬 |  [tap:hotel-outskirts] // 🏛️ |  [tap:hotel-centre] | 🏢 //  [tap:house] | · |  [tap:airport]
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה." — board, row by row:  |  [tap:hotel-centre] | · //  |  |  [tap:house] //  [tap:airport] | · |  [tap:hotel-outskirts]
 - Audio: And where are you staying? — (ואיפה אתה מתאכסן?)
 - A:  hotel-centre ✅
-- B:  hotel-outskirts
-- C:  house
-- D:  airport
+- B:  house
+- C:  airport
+- D:  hotel-outskirts
 - Correct:  hotel-centre
 - Tests: (no sentence id — not recorded)
 
@@ -36998,7 +36980,7 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Dialogue choice screens: 271
 - Cold opens: 11
 - Total interactive questions: 874
-- Total answer choices: 2339
+- Total answer choices: 2336
 - Wrong-answer branches: 94
 - Recovery opportunities: 56
 - Learner sentences with 0 active retrieval opportunities: 0
