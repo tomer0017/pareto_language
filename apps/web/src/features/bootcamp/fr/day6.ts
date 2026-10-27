@@ -1,7 +1,7 @@
 import type { LocalizedText } from '@ready/content-schema';
 import type { BootcampDayContent, BootcampDialogue, BootcampItem } from '../types.js';
 import { recoveryFr } from './recovery.js';
-import { m07Flow } from '../practiceArrival.js';
+import { m07Steps } from '../practiceArrival.js';
 
 /**
  * French Mission 7 — "Taxi / VTC". French parallel of English mission 6: same objective (destination →
@@ -20,11 +20,17 @@ export const DAY6_FR_ITEMS: BootcampItem[] = [
   { id: 'fr.phrase.taxi.stop-here', text: 'Arrêtez-vous ici, s’il vous plaît.', meaning: T('עצור כאן, בבקשה.', 'Stop here, please.'),
     tip: T('העיתוי חשוב — תגיד את זה קצת לפני היעד.', 'Timing matters — say it just before the destination.') },
   { id: 'fr.phrase.taxi.keep-change', text: 'Gardez la monnaie.', meaning: T('תשאיר את העודף.', 'Keep the change.') },
+  { id: 'fr.phrase.taxi.speak-slowly', text: 'Pardon, parlez lentement, s’il vous plaît.', meaning: T('סליחה, דבר לאט, בבקשה.', 'Sorry, please speak slowly.'),
+    tip: T('כשהנהג מדבר מהר מדי — תגיד את זה. הוא יחזור, לאט.', 'When the driver speaks too fast — say it. He will say it again, slowly.') },
+  { id: 'fr.phrase.taxi.okay-thanks', text: 'D’accord, merci.', meaning: T('בסדר, תודה.', 'Okay, thank you.') },
   // hear
   { id: 'fr.reply.taxi.where-to', text: 'Où allez-vous ?', meaning: T('לאן?', 'Where to?') },
   { id: 'fr.reply.taxi.about-fifteen', text: 'C’est environ quinze euros.', meaning: T('זה בערך חמישה עשר יורו.', "It's about fifteen euros.") },
   { id: 'fr.reply.taxi.traffic', text: 'Il y a beaucoup de circulation en ce moment.', meaning: T('יש הרבה פקקים עכשיו.', "There's a lot of traffic right now.") },
   { id: 'fr.reply.taxi.here-good', text: 'Ici, ça va ?', meaning: T('כאן זה בסדר?', 'Is here okay?') },
+  { id: 'fr.reply.taxi.off-we-go', text: 'D’accord. Pas de problème — on y va !', meaning: T('הבנתי. אין בעיה — יוצאים!', 'Got it. No problem — off we go!') },
+  { id: 'fr.reply.taxi.goodbye', text: 'Merci beaucoup ! Bon voyage !', meaning: T('תודה רבה! תיהנה מהטיול!', 'Thank you very much! Enjoy your trip!') },
+  // Not in this conversation: the driver's small talk, kept because the final checkpoint (Mission 29) asks it.
   { id: 'fr.reply.taxi.first-visit', text: 'C’est votre première fois dans la ville ?', meaning: T('פעם ראשונה בעיר?', 'First time in the city?') },
   ...recoveryFr('fr.phrase.recovery.slowly', 'fr.phrase.recovery.show-me', 'fr.phrase.recovery.thank-you'),
 ];
@@ -65,22 +71,6 @@ export const DAY6_FR: BootcampDayContent = {
   title: T('מונית', 'Taxi / Uber'),
   items: DAY6_FR_ITEMS,
   dialogues: { 'taxi-ride': SCENE },
-  steps: [
-    { kind: 'talk', icon: '🚕', title: T('משימה 7: מונית', 'Mission 7: Taxi / Uber'),
-      body: [
-        T('שיחה של 60 שניות עם נהג — יעד, מחיר, עצירה. לחץ גבוה, זמן קצר.', 'A 60-second conversation with a driver — destination, price, stop. High pressure, short window.'),
-        T('הסוד: תגיד את היעד ותראה את הכתובת בטלפון. גם אם קפאת — יש לך את הכלים.', 'The trick: say the destination and show the address on your phone. Even if you freeze — you have the tools.'),
-      ], cta: T('להיכנס למונית', 'Get in') },
-    { kind: 'prime', label: T('לפני שנדבר', 'Before we speak'),
-      intro: T('המילים שמכניסות אותך למונית ומוציאות אותך במקום הנכון.', 'The words that get you into the taxi and out at the right spot.'),
-      words: [
-        { text: 'adresse', meaning: T('כתובת', 'address'), emoji: '🏠' },
-        { text: 'aéroport', meaning: T('שדה תעופה', 'airport'), emoji: '✈️' },
-        { text: 'arrêter', meaning: T('לעצור', 'stop'), emoji: '✋' },
-        { text: 'ici', meaning: T('כאן', 'here'), emoji: '📍' },
-        { text: 'combien', meaning: T('כמה (עולה)', 'how much') },
-      ], buildFromItemId: 'fr.phrase.taxi.to-address' },
-    // From the key sentences onward the flow is shared by all languages: see practiceArrival.ts.
-    ...m07Flow('fr'),
-  ],
+  // The whole journey is shared by all languages: see practiceArrival.ts (`m07Steps`).
+  steps: m07Steps('fr'),
 };

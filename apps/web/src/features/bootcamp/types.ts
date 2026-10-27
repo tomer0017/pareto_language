@@ -108,6 +108,11 @@ export interface SpokenLine {
   en: string;           // the spoken line in the LEARNING language
   he: string;
   tr?: LocalizedText;
+  /** How it is SAID, where that is the point (the conversation's own `fast` / `slow` beats, in
+   *  practice): 'fast' = natural speed, 'slow' = deliberately slowed after the learner asked. Absent =
+   *  the game's usual speed. Pure data: today it sets the speech rate (`spokenRate`); a recorded-audio
+   *  resolver can use it to pick the 'normal' or 'slow' take of the same line. */
+  pace?: 'fast' | 'slow';
 }
 
 /** Quick Reply — hear a question (or read a situation), tap the right RESPONSE. The buttons are

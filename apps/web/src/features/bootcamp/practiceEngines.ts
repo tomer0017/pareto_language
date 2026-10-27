@@ -35,6 +35,14 @@ export function quickReplyPrompt(round: QuickReplyRound, itemsById: Map<string, 
   return round.npc ? { spoken: round.npc } : {};
 }
 
+/**
+ * The speech rate for a line a game plays: its own pace when it has one — the SAME rates the
+ * conversation uses for its `fast` / `slow` lines (1.08 / 0.75) — else the game's (a speed challenge
+ * 1.12, otherwise the default).
+ */
+export const spokenRate = (line: SpokenLine | undefined, challenge?: boolean): number | undefined =>
+  line?.pace === 'fast' ? 1.08 : line?.pace === 'slow' ? 0.75 : challenge ? 1.12 : undefined;
+
 /** What a Quick Reply button says: the sentence itself, unless the round wraps it. */
 export const quickReplyLabel = (option: QuickReplyRound['options'][number], itemsById: Map<string, BootcampItem>): string =>
   option.text ?? itemsById.get(option.itemId)?.text ?? '';

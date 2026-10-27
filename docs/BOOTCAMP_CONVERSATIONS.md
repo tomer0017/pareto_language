@@ -377,15 +377,19 @@ _Reply-training drill:_ “What's the purpose of your visit?” · “How long a
 - **How much to the centre?** · כמה עד המרכז? — _לשאול מחיר לפני שנוסעים — חוסך הפתעות._
 - **Stop here, please.** · עצור כאן, בבקשה. — _העיתוי חשוב — תגיד את זה קצת לפני היעד._
 - **Keep the change.** · תשאיר את העודף.
+- **Sorry, please speak slowly.** · סליחה, דבר לאט, בבקשה. — _כשהנהג מדבר מהר מדי — תגיד את זה. הוא יחזור, לאט._
+- **Okay, thank you.** · בסדר, תודה.
 
 ### Expected replies (you hear)
 - **Where to?** · לאן?
 - **It's about fifteen euros.** · זה בערך חמישה עשר יורו.
 - **There's a lot of traffic right now.** · יש הרבה פקקים עכשיו.
 - **Is here okay?** · כאן זה בסדר?
+- **Got it. No problem — off we go!** · הבנתי. אין בעיה — יוצאים!
+- **Thank you very much! Enjoy your trip!** · תודה רבה! תיהנה מהטיול!
 - **First time in the city?** · פעם ראשונה בעיר?
 
-_Reply-training drill:_ “Where to?” · “It's about fifteen euros.” · “Is here okay?” · “First time in the city?”
+_Reply-training drill:_ “Got it. No problem — off we go!” · “First time in the city?” · “Thank you very much! Enjoy your trip!”
 
 ### Recovery tools reused
 `Please speak slowly.` · `Can you show me?` · `Thank you!`

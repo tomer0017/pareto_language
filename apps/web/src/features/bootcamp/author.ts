@@ -117,6 +117,8 @@ export interface QuickReplySpec {
     npc?: L4;
     /** …a situation described in the app language (nothing is played). */
     situation?: Copy;
+    /** How the `npc` line is said: at natural speed, or slowed down (`SpokenLine.pace`). */
+    pace?: 'fast' | 'slow';
     /** [sentence id, accepted?, what the button says when it wraps the sentence] */
     options: readonly (readonly [id: string, correct: boolean, text?: L3])[];
   }[];
@@ -125,7 +127,7 @@ export interface VisualMatchSpec {
   label?: Copy;
   challenge?: boolean;
   tiles: MatchTile[];
-  rounds: { audio: L4; correct: string; itemId?: string; show?: string[] }[];
+  rounds: { audio: L4; correct: string; itemId?: string; show?: string[]; pace?: 'fast' | 'slow' }[];
 }
 export interface SwapSpec {
   label?: Copy;
@@ -147,7 +149,7 @@ export interface CustomizeSpec {
 export interface MiniMapSpec {
   label?: Copy;
   challenge?: boolean;
-  rounds: { audio: L4; itemId?: string; correct: string; cells: (Omit<MapCell, 'label'> & { label?: L3 })[] }[];
+  rounds: { audio: L4; itemId?: string; correct: string; pace?: 'fast' | 'slow'; cells: (Omit<MapCell, 'label'> & { label?: L3 })[] }[];
 }
 export interface MatchPairsSpec {
   label?: Copy;
@@ -342,6 +344,8 @@ function buildDialogue(scene: SceneSpec, lang: MissionLang): BootcampDialogue {
 
 /** A line the app speaks, with its glosses. */
 export const spokenLine = (t: L4, lang: MissionLang): SpokenLine => spoken(t, lang);
+/** A spoken line with its pace, when the round gives one (absent = the game's usual speed). */
+const paced = (line: SpokenLine, pace: 'fast' | 'slow' | undefined): SpokenLine => (pace ? { ...line, pace } : line);
 
 /** One active-practice step in one language. */
 export function buildPractice(p: PracticeSpec, lang: MissionLang): BootcampStep {
@@ -359,7 +363,7 @@ export function buildPractice(p: PracticeSpec, lang: MissionLang): BootcampStep 
       kind: 'quickReply', ...label, ...(p.challenge ? { challenge: true } : {}),
       rounds: p.rounds.map((r) => ({
         ...(r.prompt ? { promptItemId: id(r.prompt) } : {}),
-        ...(r.npc ? { npc: spoken(r.npc, lang) } : {}),
+        ...(r.npc ? { npc: paced(spoken(r.npc, lang), r.pace) } : {}),
         ...(r.situation ? { situation: T(r.situation) } : {}),
         options: r.options.map(([itemId, correct, text]) => ({ itemId: id(itemId), correct, ...(text ? { text: text[ix] } : {}) })),
       })),
@@ -368,7 +372,7 @@ export function buildPractice(p: PracticeSpec, lang: MissionLang): BootcampStep 
   if (p.kind === 'visualMatch') {
     return {
       kind: 'visualMatch', ...label, ...(p.challenge ? { challenge: true } : {}), tiles: p.tiles,
-      rounds: p.rounds.map((r) => ({ audio: spoken(r.audio, lang), correct: r.correct, ...(r.itemId ? { itemId: id(r.itemId) } : {}), ...(r.show ? { show: [...r.show] } : {}) })),
+      rounds: p.rounds.map((r) => ({ audio: paced(spoken(r.audio, lang), r.pace), correct: r.correct, ...(r.itemId ? { itemId: id(r.itemId) } : {}), ...(r.show ? { show: [...r.show] } : {}) })),
     };
   }
   if (p.kind === 'customize') {
@@ -390,7 +394,7 @@ export function buildPractice(p: PracticeSpec, lang: MissionLang): BootcampStep 
   return {
     kind: 'miniMap', ...label, ...(p.challenge ? { challenge: true } : {}),
     rounds: p.rounds.map((r) => ({
-      audio: spoken(r.audio, lang), correct: r.correct, ...(r.itemId ? { itemId: id(r.itemId) } : {}),
+      audio: paced(spoken(r.audio, lang), r.pace), correct: r.correct, ...(r.itemId ? { itemId: id(r.itemId) } : {}),
       cells: r.cells.map(({ label: l, ...cell }) => ({ ...cell, ...(l ? { label: l[ix] } : {}) })),
     })),
   };

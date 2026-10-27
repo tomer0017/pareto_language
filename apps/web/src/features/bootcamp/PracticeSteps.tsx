@@ -15,7 +15,7 @@ import { completeChime, matchChime, placeTick, softChime } from '../../shared/au
 import { AudioBubble, NpcFigure, useNpc } from './ConvoScene.js';
 import {
   builderHint, builderPool, builderSentence, builderSolved, customizeResult, fillFrame, frameParts, isHelpToolId, matchAnswerOrder, matchRecord, matchSpeaks, matchTap, newMatch,
-  quickReplyLabel, quickReplyPrompt, type MatchSide, type StepOf,
+  quickReplyLabel, quickReplyPrompt, spokenRate, type MatchSide, type StepOf,
 } from './practiceEngines.js';
 import type { BootcampItem, MapCell } from './types.js';
 
@@ -69,7 +69,8 @@ export function QuickReplyStep({ step, itemsById, onDone }: { step: StepOf<'quic
   const npc = useNpc();
 
   // A speed challenge is the same game at natural pace; the replay is slower, as on the board and map.
-  const rate = step.challenge ? 1.12 : undefined;
+  // A line with its own pace (the fast first answer, the slowed repeat) is said at that pace.
+  const rate = spokenRate(prompt.spoken, step.challenge);
   useEffect(() => {
     shownAt.current = Date.now();
     if (prompt.spoken) void speakL(prompt.spoken.en, rate);
@@ -172,7 +173,7 @@ export function VisualMatchStep({ step, onDone }: { step: StepOf<'visualMatch'>;
   // A round may show only some tiles: the meaning and its own contrast. One tile = a teaching round.
   const shown = round.show ? tiles.filter((x) => round.show!.includes(x.id)) : tiles;
   const grid = shown.length === 1 ? 'is-one' : shown.length === 2 || shown.length === 4 ? 'is-two' : '';
-  const rate = step.challenge ? 1.12 : undefined;
+  const rate = spokenRate(round.audio, step.challenge);
   const play = (): void => void speakL(round.audio.en, rate);
 
   useEffect(() => {
@@ -361,7 +362,7 @@ export function MiniMapStep({ step, onDone }: { step: StepOf<'miniMap'>; onDone:
   const [picked, setPicked] = useState<string | null>(null);
   const shownAt = useRef(0);
   const round = step.rounds[i]!;
-  const rate = step.challenge ? 1.12 : undefined;
+  const rate = spokenRate(round.audio, step.challenge);
   const play = (): void => void speakL(round.audio.en, rate);
   const at = (row: number, col: number): MapCell | undefined => round.cells.find((c) => c.row === row && c.col === col);
 

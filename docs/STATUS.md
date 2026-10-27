@@ -30,6 +30,29 @@ typecheck, lint, build, smoke, parity and content validation pass. No learning c
 The owner waived agent mobile QA on 2026-10-27 and will perform it manually; production release is authorized.
 See [production and validation report](./MISSION06_VISUAL_REPORT.md) and [asset provenance](./mission06-artwork.json).
 
+### Mission 07 — Taxi / Uber: one ride, and a real recovery (2026-10-27)
+
+The conversation is LOCKED (dialogue tree byte-identical, its `fast` / `slow` beats included — tested).
+ONE ride (`M07_RIDE` in `practiceArrival.ts`: this address in the centre · about €15 · a lot of traffic ·
+stop at the address · €20 paid, the €5 change kept), staged on a ride dashboard (`rideDashboard`):
+destination (hand over the address, build it) → fare (build the question, the meter) → traffic (the
+jammed road) → the driver's answer FAST → "Sorry, please speak slowly." (card, builder, the recovery
+moment) → the same answer SLOWLY, understood (✓ €15 · ✓ traffic — "it worked") → arrival (stop at
+your address on the street map) → payment (keep the change) → each driver line to its moment → the
+driver by ear → the supported ride → the conversation → the ride with no help (fast → recovery →
+slow kept) → the video → the final ride → RIDE COMPLETE. 38 interactions.
+
+New data field: `SpokenLine.pace` ('fast' | 'slow') — how a line is said where that is the point.
+`spokenRate()` turns it into the conversation's own rates (1.08 / 0.75) in Quick Reply, the boards and
+the map; a recorded-audio resolver can use it to pick the normal or the slow take. Lines without it
+behave as before (Missions 01–06 and 08–30 byte-identical — tested).
+
+Mission 07's own learner sentences "Sorry, please speak slowly." / "Okay, thank you." were added (the
+conversation's choices keep their shared recovery ids). "First time in the city?" stays taught (listening
+drill) because the final checkpoint (Mission 29) asks it and Spanish meets "ciudad" nowhere else.
+Artwork: 20 slots + 8 props, all placeholders — **visual production required**: see
+`docs/MISSION07_ASSET_MANIFEST.md`. Coverage: `mission07Coverage.ts`; tests: `mission07.test.ts`.
+
 ### Mission 06 — Airport & Border: the full learning flow, one traveller (2026-10-26)
 
 The conversation is LOCKED (the dialogue tree, side-branches included, is byte-identical — tested). The
