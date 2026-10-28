@@ -7,7 +7,7 @@ import { coverageOf, encounters, hasChunk, plain, type CoverageLang } from './mi
 import { M07_CONCEPTS } from './mission07Coverage.js';
 import { missionPhases, practiceReplay } from './missionFlow.js';
 import { BOOTCAMP_PLAN, missionNumber } from './plan.js';
-import { M07_ANSWER, M07_PROPS, M07_RIDE, M07_SLOTS, M07_STAGES, rideDashboard } from './practiceArrival.js';
+import { M07_ANSWER, M07_KNOWN_AT_START, M07_PROPS, M07_RIDE, M07_SLOTS, M07_STAGES, rideDashboard } from './practiceArrival.js';
 import { spokenRate, validatePracticeStep } from './practiceEngines.js';
 import { learnedBefore, missionContent, missionWalk, unpreparedChunks, unpreparedWords } from './priorLearning.js';
 import { MISSIONS_BY_LANG } from './registry.js';
@@ -56,6 +56,8 @@ const SLOW = (lang: CoverageLang): string => line(lang, 6);
 const LEARNER = ['phrase.taxi.to-address', 'phrase.taxi.how-much', 'phrase.taxi.speak-slowly', 'phrase.taxi.okay-thanks', 'phrase.taxi.stop-here', 'phrase.taxi.keep-change'];
 type QR = Extract<BootcampStep, { kind: 'quickReply' }>;
 const accepted = (r: QR['rounds'][number]): string => strip(r.options.find((o) => o.correct)!.itemId);
+/** The supported ride: the Quick Replies between the listening drill and the conversation (one ride, three steps). */
+const supportedRide = (d: BootcampDayContent): QR[] => d.steps.slice(d.steps.findIndex((s) => s.kind === 'replies'), d.steps.findIndex((s) => s.kind === 'dialogue')).filter((s): s is QR => s.kind === 'quickReply');
 
 describe('the conversation is locked, and Mission 07 is in its place', () => {
   for (const lang of LANGS) it(`${lang}: word for word the frozen one`, () => { expect(script(lang)).toEqual(LOCKED[lang]); });
@@ -228,10 +230,10 @@ describe('THE RECOVERY — fast, then "please speak slowly", then slowly', () =>
       const recovery = d.steps.findIndex((s) => s.kind === 'quickReply' && s.rounds.some((r) => r.npc?.en === FAST(lang)));
       const slowListen = d.steps.findIndex((s) => s.kind === 'visualMatch' && s.rounds.some((r) => r.audio.pace === 'slow'));
       expect([fastListen < recovery, recovery < slowListen], lang).toEqual([true, true]);
-      // the supported ride and the ride with no help: …fast → speak slowly → slow → okay, thank you…
-      for (const s of stepsOf(d, 'quickReply').filter((x) => x.rounds.length >= 5)) {
-        const i = s.rounds.findIndex((r) => r.npc?.en === FAST(lang));
-        expect([s.rounds[i]!.npc!.pace, accepted(s.rounds[i]!), s.rounds[i + 1]!.npc?.en, s.rounds[i + 1]!.npc?.pace, accepted(s.rounds[i + 1]!)], lang)
+      // the supported ride (three steps, one ride) and the ride with no help: …fast → speak slowly → slow → okay, thank you…
+      for (const rounds of [supportedRide(d).flatMap((x) => x.rounds), stepsOf(d, 'quickReply').find((x) => x.challenge)!.rounds]) {
+        const i = rounds.findIndex((r) => r.npc?.en === FAST(lang));
+        expect([rounds[i]!.npc!.pace, accepted(rounds[i]!), rounds[i + 1]!.npc?.en, rounds[i + 1]!.npc?.pace, accepted(rounds[i + 1]!)], lang)
           .toEqual(['fast', 'phrase.taxi.speak-slowly', SLOW(lang), 'slow', 'phrase.taxi.okay-thanks']);
       }
       // the final ride: the fast line answered, then the slow repeat listened for
@@ -324,13 +326,9 @@ describe('who says what', () => {
 });
 
 describe('ONE ride: the facts never change', () => {
-  it('the ride: this address in the centre · about €15 · a lot of traffic · stop at the address · €20 paid, €5 kept — and the ride card says so', () => {
+  it('the SIMULATION keeps one fixed ride — this address · about €15 · heavy traffic · stop at the address · €20 paid, €5 kept — but the LEARNER starts knowing only the destination', () => {
     expect(M07_RIDE).toEqual({ destination: 'this-address', fare: 15, traffic: 'heavy', stop: 'at-the-address', paid: 20, change: 5 });
-    for (const lang of LANGS) {
-      const card = day(lang).steps[1]!;
-      expect(card.kind).toBe('talk');
-      expect((card as Extract<BootcampStep, { kind: 'talk' }>).body.map((b) => b.en).join(' ')).toMatch(/address.*centre.*€15.*traffic.*Stop at the address.*€20.*keeps the change/);
-    }
+    expect(M07_KNOWN_AT_START).toEqual(['destination']);
   });
   it('every game answers from the same ride: the address, €15, the jammed road, your stop, the change kept', () => {
     for (const lang of LANGS) {
@@ -345,25 +343,105 @@ describe('ONE ride: the facts never change', () => {
       expect(M07_ANSWER).toEqual({ handoff: 'address', fare: 'e15', road: 'jam', stop: 'here', payment: 'keep' });
     }
   });
-  it('each line of the driver to its moment of the ride — icons, not a translation', () => {
+});
+
+describe('THE BRIEFING — only what the traveller really knows', () => {
+  const briefing = (lang: CoverageLang) => day(lang).steps[0] as Extract<BootcampStep, { kind: 'talk' }>;
+  it('you are in a taxi, and your goal is this address in the city centre — shown as the destination', () => {
     for (const lang of LANGS) {
-      const m = stepsOf(day(lang), 'matchPairs')[0]!;
-      expect(m.pairs.map((p) => [strip(p.promptItemId), p.answerLabel, p.answerGloss])).toEqual([
-        ['reply.taxi.where-to', '📍', undefined], ['reply.taxi.about-fifteen', '💶 €15', undefined], ['reply.taxi.traffic', '🚗🚗🚗', undefined], ['reply.taxi.here-good', '🏁', undefined],
-      ]);
+      const b = briefing(lang);
+      expect(b.kind).toBe('talk');
+      expect(b.body[0]!.he).toBe('נכנסת למונית. המטרה שלך: להגיע לכתובת הזאת במרכז העיר.');
+      expect(b.body[0]!.en).toMatch(/got into a taxi.*this address in the city centre/);
+      expect(b.facts!.map((f) => [f.icon, f.label.en, f.value.en])).toEqual([['📱', 'Destination', 'The address on your phone — in the city centre']]);
+      expect(b.cta).toEqual({ he: 'התחל נסיעה', en: 'Start the ride' });
+      expect(day(lang).steps.filter((x) => x.kind === 'talk')).toHaveLength(1); // one briefing; no "your ride" summary card
+    }
+  });
+  it('it does NOT give the ride away: no €15, no heavy traffic, no €20, no €5, no "keep the change" — before the driver says them', () => {
+    for (const lang of LANGS) {
+      const all = JSON.stringify(briefing(lang));
+      expect(all, lang).not.toMatch(/€15|~€15|fifteen|€20|€5\b|keep the change|keeps the change|a lot of traffic|heavy traffic|פקקים|העודף|עשר/i);
+    }
+  });
+  it('the dashboard starts with only the destination: the fare and the traffic are unknown ("?"), arrival and payment not yet', () => {
+    expect(rideDashboard(1)[1]).toBe('🚕 📍 Destination ✅ · 💶 Fare ? · 🚦 Traffic ? · 🏁 Arrival ⬜ · 🤝 Payment ⬜');
+    expect(rideDashboard(1)[0]).toBe('🚕 📍 יעד ✅ · 💶 מחיר ? · 🚦 תנועה ? · 🏁 הגעה ⬜ · 🤝 תשלום ⬜');
+    for (const lang of LANGS) expect(briefing(lang).body.map((x) => x.en)).toContain(rideDashboard(1)[1]);
+  });
+  it('the fare and the traffic are met FIRST in the driver\'s own words — no screen before the fare card mentions €15, none before the traffic card mentions the traffic', () => {
+    for (const lang of LANGS) {
+      const d = day(lang);
+      const firstWith = (re: RegExp) => d.steps.findIndex((x) => re.test(JSON.stringify(x)));
+      const fareCard = d.steps.findIndex((x) => x.kind === 'prime' && x.words.some((w) => w.key === 'taxi.line.fifteen'));
+      const trafficCard = d.steps.findIndex((x) => x.kind === 'prime' && x.words.some((w) => w.key === 'taxi.line.traffic'));
+      expect(firstWith(/€15|fifteen|quince|quinze/), lang).toBe(fareCard);
+      expect(firstWith(/a lot of traffic|mucho tráfico|beaucoup de circulation|פקקים/), lang).toBe(trafficCard);
+      // and the optional Step 0 no longer pre-teaches them
+      const step0 = stepsOf(d, 'prime').find((p) => p.gate)!;
+      expect(step0.words.map((w) => w.key)).toEqual(['taxi.address', 'taxi.stop', 'taxi.change']);
     }
   });
 });
 
-describe('the ride, as a journey', () => {
-  it('the dashboard fills stage by stage — destination, fare, traffic, arrival, payment', () => {
-    expect(M07_STAGES).toEqual(['destination', 'fare', 'traffic', 'arrival', 'payment']);
-    expect(rideDashboard(2)[1]).toBe('🚕 📍 Destination ✅ · 💶 ~€15 ✅ · 🚦 Traffic ⬜ · 🏁 Arrival ⬜ · 🤝 Payment ⬜');
+describe('THE DRIVER SAYS THIS → YOU SAY THIS — conversation, not icons', () => {
+  const pairs = (lang: CoverageLang) => stepsOf(day(lang), 'matchPairs')[0]!.pairs;
+  it('each driver line that wants an answer, to the traveller\'s real reply — in each language\'s exact words', () => {
     for (const lang of LANGS) {
       const d = day(lang);
-      const before = d.steps.slice(0, d.steps.findIndex((s) => s.kind === 'matchPairs'));
-      const dash = before.filter((s): s is Extract<BootcampStep, { kind: 'receipt' }> => s.kind === 'receipt').map((s) => s.text.en ?? '');
-      expect(dash.map((t) => t.slice(t.indexOf('🚕'))), lang).toEqual([1, 2, 3, 4, 5].map((n) => rideDashboard(n)[1]));
+      expect(pairs(lang).map((p) => [strip(p.promptItemId), strip(p.answerItemId)])).toEqual([
+        ['reply.taxi.where-to', 'phrase.taxi.to-address'], ['reply.taxi.fast-answer', 'phrase.taxi.speak-slowly'],
+        ['reply.taxi.slow-repeat', 'phrase.taxi.okay-thanks'], ['reply.taxi.almost-there', 'phrase.taxi.stop-here'],
+      ]);
+      // the driver's lines as the conversation says them (Where to? is the question inside "Hello! Where to?")…
+      expect(pairs(lang).map((p) => text(d, p.promptItemId))).toEqual([chunk('where-to', lang), FAST(lang), SLOW(lang), line(lang, 8)]);
+      // …and the traveller's replies as the conversation says them — the stop is the whole locked answer
+      expect(pairs(lang).map((p) => p.answerText ?? text(d, p.answerItemId))).toEqual([line(lang, 1), line(lang, 5), line(lang, 7), line(lang, 9)]);
+    }
+  });
+  it('the recovery pair is there: the FAST line → "please speak slowly", the SLOW repeat → "okay, thank you"', () => {
+    for (const lang of LANGS) {
+      const d = day(lang);
+      const byPrompt = Object.fromEntries(pairs(lang).map((p) => [text(d, p.promptItemId), strip(p.answerItemId)]));
+      expect(byPrompt[FAST(lang)]).toBe('phrase.taxi.speak-slowly');
+      expect(byPrompt[SLOW(lang)]).toBe('phrase.taxi.okay-thanks');
+    }
+  });
+  it('the answer is a SENTENCE — no icon, no Hebrew translation; a picture, once there is artwork, is support only', () => {
+    for (const lang of LANGS) for (const p of pairs(lang)) {
+      expect([p.answerLabel, p.answerGloss], lang).toEqual([undefined, undefined]);
+      expect(p.answerText ?? text(day(lang), p.answerItemId), lang).not.toMatch(/[֐-׿]/);
+      // the picture slot is the reply's own (address · recovery request · okay · stop) — all placeholders today, so none shown
+      expect(p.answerImage, lang).toBeUndefined();
+    }
+    expect([M07_SLOTS['give-address'], M07_SLOTS['recovery-request'], M07_SLOTS['okay-thanks'], M07_SLOTS['stop-scene']].every((x) => !x.image)).toBe(true);
+  });
+  it('no forced pair: "Got it… off we go!" and the goodbye want no answer, so they are not matched', () => {
+    for (const lang of LANGS) expect(pairs(lang).map((p) => strip(p.promptItemId))).not.toContain('reply.taxi.off-we-go');
+    for (const lang of LANGS) expect(pairs(lang).map((p) => strip(p.promptItemId))).not.toContain('reply.taxi.goodbye');
+  });
+});
+
+describe('the ride, as a journey', () => {
+  it('the dashboard REVEALS the ride as it happens: the fare once understood, then the traffic, then arrival, then payment', () => {
+    expect(M07_STAGES).toEqual(['destination', 'fare', 'traffic', 'arrival', 'payment']);
+    expect([2, 3, 4, 5].map((n) => rideDashboard(n)[1])).toEqual([
+      '🚕 📍 Destination ✅ · 💶 ~€15 ✅ · 🚦 Traffic ? · 🏁 Arrival ⬜ · 🤝 Payment ⬜',
+      '🚕 📍 Destination ✅ · 💶 ~€15 ✅ · 🚦 Traffic ✅ · 🏁 Arrival ⬜ · 🤝 Payment ⬜',
+      '🚕 📍 Destination ✅ · 💶 ~€15 ✅ · 🚦 Traffic ✅ · 🏁 Arrival ✅ · 🤝 Payment ⬜',
+      '🚕 📍 Destination ✅ · 💶 ~€15 ✅ · 🚦 Traffic ✅ · 🏁 Arrival ✅ · 🤝 Payment ✅',
+    ]);
+    for (const lang of LANGS) {
+      const d = day(lang);
+      const at = (n: number) => d.steps.findIndex((s) => s.kind === 'receipt' && (s.text.en ?? '').endsWith(rideDashboard(n)[1]));
+      // each state appears only AFTER its stage was played: the meter, the slow repeat understood, the stop, the payment
+      const meter = d.steps.findIndex((s) => s.kind === 'visualMatch' && s.tiles.some((t) => t.id === 'e50'));
+      const slow = d.steps.findIndex((s) => s.kind === 'visualMatch' && s.rounds.some((r) => r.audio.pace === 'slow'));
+      const stop = d.steps.findIndex((s) => s.kind === 'miniMap' && s.rounds.some((r) => r.correct === 'here'));
+      const pay = d.steps.findIndex((s) => s.kind === 'visualMatch' && s.tiles.some((t) => t.id === 'keep'));
+      expect([at(1) < meter, meter < at(2), slow < at(3), stop < at(4), pay < at(5)], lang).toEqual([true, true, true, true, true]);
+      // nothing before the fare stage says "~€15" on any dashboard
+      expect(d.steps.slice(0, meter).some((s) => JSON.stringify(s).includes('~€15')), lang).toBe(false);
     }
   });
   it('each stage is practised its own way: an address handed over, a meter, a road, a fast line and a slow one, a street, a payment', () => {
@@ -372,12 +450,15 @@ describe('the ride, as a journey', () => {
     expect(games.map((s) => s.kind)).toEqual(['visualMatch', 'visualMatch', 'miniMap', 'visualMatch', 'quickReply', 'visualMatch', 'miniMap', 'visualMatch']);
     expect(stepsOf(d, 'visualMatch').slice(0, 2).map((s) => s.tiles.map((t) => t.id))).toEqual([['address', 'suitcase', 'map'], ['e5', 'e15', 'e50']]);
   });
-  it('the supported ride: every moment in order, the dashboard on screen', () => {
+  it('the supported ride: every moment in order — and its dashboard reveals the ride as it goes (the fare and traffic only after the driver has said them)', () => {
     for (const lang of LANGS) {
-      const s = stepsOf(day(lang), 'quickReply').find((x) => !x.challenge && x.rounds.length === 6)!;
-      expect(s.label!.en).toMatch(/address.*€15.*traffic.*stop.*keep the change/);
-      expect(s.rounds.map((r) => r.npc?.en ?? 'payment')).toEqual([line(lang, 0), line(lang, 2), FAST(lang), SLOW(lang), line(lang, 8), 'payment']);
-      expect(s.rounds.map(accepted)).toEqual(LEARNER);
+      const ride = supportedRide(day(lang));
+      expect(ride.map((s) => s.label!.en)).toEqual([rideDashboard(1)[1], rideDashboard(1)[1], rideDashboard(3)[1]]);
+      const rounds = ride.flatMap((s) => s.rounds);
+      expect(rounds.map((r) => r.npc?.en ?? 'payment')).toEqual([line(lang, 0), line(lang, 2), FAST(lang), SLOW(lang), line(lang, 8), 'payment']);
+      expect(rounds.map(accepted)).toEqual(LEARNER);
+      // the step that plays the driver's fare does not show it in its heading
+      expect(ride[1]!.label!.en).not.toMatch(/€15/);
     }
   });
   it('the ride with no help: the driver\'s real lines in order, after the conversation, no dashboard — ending as the conversation ends', () => {
@@ -397,7 +478,9 @@ describe('the ride, as a journey', () => {
       const gate = d.steps.slice(videoAt(d) + 1);
       const five = gate.slice(0, 5) as Extract<BootcampStep, { kind: 'visualMatch' | 'quickReply' | 'miniMap' }>[];
       expect(five.map((s) => s.kind)).toEqual(['visualMatch', 'quickReply', 'visualMatch', 'miniMap', 'quickReply']);
-      expect(five.map((s) => s.label!.en)).toEqual(['📍 Destination', '💶 ~€15', '🚦 Traffic', '🏁 Arrival', '🤝 Payment'].map((n, i) => `The ride ${i + 1}/5 — ${n}`));
+      // neutral stage names: no heading gives the answer (the fare is "Fare", never "~€15", until it is understood)
+      expect(five.map((s) => s.label!.en)).toEqual(['📍 Destination', '💶 Fare', '🚦 Traffic', '🏁 Arrival', '🤝 Payment'].map((n, i) => `The ride ${i + 1}/5 — ${n}`));
+      for (const s of five) expect(JSON.stringify(s.label), lang).not.toMatch(/€15|פקקים/);
       const fare = five[1] as QR;
       expect(fare.rounds.map(accepted)).toEqual(['phrase.taxi.how-much', 'phrase.taxi.speak-slowly']);
       expect((five[4] as QR).rounds.map(accepted)).toEqual(['phrase.taxi.keep-change']);
@@ -406,16 +489,16 @@ describe('the ride, as a journey', () => {
       expect(summary!.kind).toBe('summary');
     }
   });
-  it('the arc: the ride → Step 0 → destination → fare → traffic → fast / recovery / slow → arrival → payment → match → by ear → supported ride → conversation → no help → video → final ride', () => {
+  it('the arc: the briefing → Step 0 → destination → fare → traffic → fast / recovery / slow → arrival → payment → match → by ear → supported ride → conversation → no help → video → final ride', () => {
     const kinds = day('en').steps.map((s) => (s.kind === 'prime' ? (s.gate ? 'prime:step0' : 'prime:cards') : s.kind === 'video' ? `video:${s.mode}` : (s.kind === 'visualMatch' || s.kind === 'miniMap' || s.kind === 'quickReply') && s.challenge ? `${s.kind}:speed` : s.kind));
     expect(kinds).toEqual([
-      'talk', 'talk', 'prime:step0',
+      'talk', 'prime:step0',
       'prime:cards', 'visualMatch', 'sentenceBuilder', 'prime:cards', 'receipt',
       'prime:cards', 'sentenceBuilder', 'visualMatch', 'receipt',
       'prime:cards', 'miniMap', 'visualMatch', 'prime:cards', 'sentenceBuilder', 'quickReply', 'visualMatch', 'receipt',
       'prime:cards', 'miniMap', 'receipt',
       'prime:cards', 'visualMatch', 'receipt',
-      'matchPairs', 'replies', 'quickReply', 'receipt', 'dialogue', 'receipt', 'quickReply:speed', 'receipt',
+      'matchPairs', 'replies', 'quickReply', 'quickReply', 'quickReply', 'receipt', 'dialogue', 'receipt', 'quickReply:speed', 'receipt',
       'video:again', 'visualMatch:speed', 'quickReply', 'visualMatch', 'miniMap:speed', 'quickReply', 'receipt', 'summary',
     ]);
   });

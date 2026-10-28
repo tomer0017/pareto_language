@@ -30,6 +30,10 @@ export const DAY6_FR_ITEMS: BootcampItem[] = [
   { id: 'fr.reply.taxi.here-good', text: 'Ici, ça va ?', meaning: T('כאן זה בסדר?', 'Is here okay?') },
   { id: 'fr.reply.taxi.off-we-go', text: 'D’accord. Pas de problème — on y va !', meaning: T('הבנתי. אין בעיה — יוצאים!', 'Got it. No problem — off we go!') },
   { id: 'fr.reply.taxi.goodbye', text: 'Merci beaucoup ! Bon voyage !', meaning: T('תודה רבה! תיהנה מהטיול!', 'Thank you very much! Enjoy your trip!') },
+  // the driver's lines that want an answer, whole (as the conversation says them)
+  { id: 'fr.reply.taxi.fast-answer', text: 'C’est environ quinze euros. Il y a beaucoup de circulation en ce moment.', meaning: T('זה בערך חמישה עשר יורו. יש הרבה פקקים עכשיו.', "It's about fifteen euros. There's a lot of traffic right now.") },
+  { id: 'fr.reply.taxi.slow-repeat', text: 'Bien sûr. Environ quinze euros. Il y a beaucoup de circulation.', meaning: T('בטח. בערך חמישה עשר יורו. יש הרבה פקקים.', "Sure. About fifteen euros. There's a lot of traffic.") },
+  { id: 'fr.reply.taxi.almost-there', text: '…On est presque arrivés. Ici, ça va ?', meaning: T('…כמעט הגענו. כאן זה בסדר?', '…We are almost there. Is here okay?') },
   ...recoveryFr('fr.phrase.recovery.slowly', 'fr.phrase.recovery.show-me', 'fr.phrase.recovery.thank-you'),
 ];
 

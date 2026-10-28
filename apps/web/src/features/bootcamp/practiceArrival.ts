@@ -365,18 +365,29 @@ const slot7 = (s: M07Slot): { emoji: string } | { image: string } => look7(M07_S
 const tile7 = (id: string, x: { emoji: string; image?: string }, caption?: Copy) => ({ id, ...look7(x), ...(caption ? { caption: { he: caption[0], en: caption[1] } } : {}), scale: 1.4 });
 
 /**
- * THE ride. One trip, the same in every exercise: this address, in the centre · about €15 · a lot of
- * traffic · stop at the address · a €20 note for a €15 fare — keep the €5 change.
+ * THE ride — the SIMULATION'S truth, the same in every exercise: this address, in the centre · about
+ * €15 · a lot of traffic · stop at the address · a €20 note for a €15 fare — keep the €5 change.
+ * The LEARNER knows only the destination at the start; the fare and the traffic come from the driver
+ * (`M07_KNOWN_AT_START`, `rideDashboard`).
  */
 export const M07_RIDE = { destination: 'this-address', fare: 15, traffic: 'heavy', stop: 'at-the-address', paid: 20, change: 5 } as const;
 /** The ride, stage by stage — the dashboard the learner sees fill. */
 export const M07_STAGES = ['destination', 'fare', 'traffic', 'arrival', 'payment'] as const;
+/** What the learner knows before the driver says a word: where they are going. Nothing else. */
+export const M07_KNOWN_AT_START = ['destination'] as const;
+/** The stages' NAMES — neutral: a heading never gives the answer away ("Fare", not "~€15"). */
 const STAGE_NAME: Record<(typeof M07_STAGES)[number], Copy> = {
-  destination: ['📍 יעד', '📍 Destination'], fare: ['💶 ~€15', '💶 ~€15'], traffic: ['🚦 פקקים', '🚦 Traffic'], arrival: ['🏁 הגעה', '🏁 Arrival'], payment: ['🤝 תשלום', '🤝 Payment'],
+  destination: ['📍 יעד', '📍 Destination'], fare: ['💶 מחיר', '💶 Fare'], traffic: ['🚦 תנועה', '🚦 Traffic'], arrival: ['🏁 הגעה', '🏁 Arrival'], payment: ['🤝 תשלום', '🤝 Payment'],
 };
-/** The ride dashboard after `done` of the five stages. */
+/** The facts only the DRIVER knows: "?" on the dashboard until the learner has understood him. */
+const FROM_THE_DRIVER: readonly (typeof M07_STAGES)[number][] = ['fare', 'traffic'];
+/** …and what the fare reads once it is understood. */
+const FARE_KNOWN: Copy = ['💶 ~€15', '💶 ~€15'];
+/** The ride dashboard once `done` of the five stages are behind the learner (1 = only the destination, the start). */
 export const rideDashboard = (done: number): Copy => {
-  const row = (i: 0 | 1): string => `🚕 ${M07_STAGES.map((s, k) => `${STAGE_NAME[s][i]} ${k < done ? '✅' : '⬜'}`).join(' · ')}`;
+  const cell = (s: (typeof M07_STAGES)[number], k: number, i: 0 | 1): string =>
+    k < done ? `${(s === 'fare' ? FARE_KNOWN : STAGE_NAME[s])[i]} ✅` : FROM_THE_DRIVER.includes(s) ? `${STAGE_NAME[s][i]} ?` : `${STAGE_NAME[s][i]} ⬜`;
+  const row = (i: 0 | 1): string => `🚕 ${M07_STAGES.map((s, k) => cell(s, k, i)).join(' · ')}`;
   return [row(0), row(1)];
 };
 
@@ -436,7 +447,8 @@ export const M07_ANSWER = { handoff: 'address', fare: 'e15', road: 'jam', stop: 
  * LOCKED (with its side-branches); the journey around it is ONE ride, stage by stage, on a dashboard
  * that fills:
  *
- *   the ride (the facts) → Step 0 (optional) → DESTINATION: hand him the address, say it; off we go →
+ *   the briefing (you are in a taxi; where you are going — nothing else) → Step 0 (optional) →
+ *   DESTINATION: hand him the address, say it; off we go →
  *   FARE: ask, read the meter → TRAFFIC: the jammed road → the fast answer (fare + road, at natural
  *   speed) → RECOVERY: "Sorry, please speak slowly." → the SLOW repeat (fare + road again — and this
  *   time it is easy) → ARRIVAL: almost there, stop at your address → PAYMENT: keep the change →
@@ -455,16 +467,14 @@ export function m07Steps(lang: MissionLang): BootcampStep[] {
   const cards = (label: Copy, intro: Copy, words: ReturnType<typeof card>[]): BootcampStep => k.prime({ label, intro, bigPictures: true, widePictures: true, words });
   const stage = (n: number, name: Copy): Copy => [`הנסיעה ${n}/5 — ${name[0]}`, `The ride ${n}/5 — ${name[1]}`];
   return [
+    // THE BRIEFING — only what the traveller really knows: you are in a taxi, and where you are going.
+    // The fare, the traffic and the arrival come from the driver, as the ride happens.
     k.talk('🚕', ['משימה 7: מונית', 'Mission 7: Taxi / Uber'], [
-      ['אתה נכנס למונית. נסיעה אחת, מתחילתה ועד סופה: לאן, כמה, פקקים — ולעצור במקום הנכון.', 'You get into a taxi. One ride, start to finish: where to, how much, traffic — and stopping in the right place.'],
-      ['ואם הנהג מדבר מהר מדי? תבקש ממנו להאט. זה עובד.', 'And if the driver speaks too fast? Ask him to slow down. It works.'],
-    ], ['להיכנס למונית', 'Get in']),
-    // THE RIDE — the facts, the same from here to the end.
-    k.talk('📱', ['הנסיעה שלך', 'Your ride'], [
-      ['📍 לכתובת שבטלפון — במרכז העיר', '📍 To the address on your phone — in the city centre'],
-      ['💶 בערך €15 · 🚦 הרבה פקקים', '💶 About €15 · 🚦 A lot of traffic'],
-      ['🏁 עוצרים בכתובת · 🤝 משלמים €20 — והעודף נשאר לנהג', '🏁 Stop at the address · 🤝 Pay €20 — the driver keeps the change'],
-    ], ['יוצאים', 'Let’s go']),
+      ['נכנסת למונית. המטרה שלך: להגיע לכתובת הזאת במרכז העיר.', 'You just got into a taxi. Your goal: get to this address in the city centre.'],
+      rideDashboard(1),
+    ], ['התחל נסיעה', 'Start the ride'], [
+      { icon: '📱', label: ['היעד', 'Destination'], value: ['הכתובת בטלפון שלך — במרכז העיר', 'The address on your phone — in the city centre'] },
+    ]),
     // The pieces (optional).
     k.prime({
       gate: true,
@@ -472,8 +482,7 @@ export function m07Steps(lang: MissionLang): BootcampStep[] {
       intro: ['המילים של הנסיעה. הקש כדי לשמוע.', 'The words of the ride. Tap to hear.'],
       words: [
         { key: 'taxi.address', t: ['address', 'adresse', 'dirección'], meaning: ['כתובת', 'address'], ...slot7('address') },
-        { key: 'taxi.fifteen-euros', t: ['fifteen euros', 'quinze euros', 'quince euros'], meaning: ['חמישה עשר יורו', 'fifteen euros'], ...slot7('fifteen-euros') },
-        { key: 'taxi.traffic', t: ['traffic', 'circulation', 'tráfico'], meaning: ['תנועה / פקקים', 'traffic'], ...slot7('traffic') },
+        // (the fare and the traffic are not here: the learner meets them in the driver's own lines)
         { key: 'taxi.stop', t: ['stop', 'arrêtez', 'pare'], meaning: ['עצור', 'stop'], ...slot7('stop-here') },
         { key: 'taxi.change', t: ['change', 'monnaie', 'cambio'], meaning: ['עודף', 'change (money back)'], ...slot7('change') },
       ],
@@ -581,28 +590,43 @@ export function m07Steps(lang: MissionLang): BootcampStep[] {
       rounds: [{ audio: L_KEEP, correct: M07_ANSWER.payment, itemId: 'phrase.taxi.keep-change' }],
     }),
     k.receipt(rideDashboard(5)),
-    // EACH LINE, TO ITS MOMENT OF THE RIDE (icons only: the moment, not a translation).
+    // THE DRIVER SAYS THIS → YOU SAY THIS: each driver line that wants an answer, to the traveller's own
+    // reply (its picture beside it, once the artwork exists — support, never the answer). "Off we go"
+    // and the goodbye want no answer, so they are not here.
     k.practice({
       kind: 'matchPairs',
-      label: ['מה הנהג אומר — ובאיזה רגע של הנסיעה', 'What the driver says — and which moment of the ride'],
+      label: ['הנהג אומר — מה אתה עונה?', 'The driver says — what do you answer?'],
       pairs: [
-        ['reply.taxi.where-to', 'phrase.taxi.to-address', undefined, '📍'],
-        ['reply.taxi.about-fifteen', 'phrase.taxi.how-much', undefined, '💶 €15'],
-        ['reply.taxi.traffic', 'phrase.taxi.speak-slowly', undefined, '🚗🚗🚗'],
-        ['reply.taxi.here-good', 'phrase.taxi.stop-here', undefined, '🏁'],
+        ['reply.taxi.where-to', 'phrase.taxi.to-address', undefined, undefined, undefined, M07_SLOTS['give-address'].image],
+        ['reply.taxi.fast-answer', 'phrase.taxi.speak-slowly', undefined, undefined, undefined, M07_SLOTS['recovery-request'].image],
+        ['reply.taxi.slow-repeat', 'phrase.taxi.okay-thanks', undefined, undefined, undefined, M07_SLOTS['okay-thanks'].image],
+        ['reply.taxi.almost-there', 'phrase.taxi.stop-here', L_STOP_KEEP, undefined, undefined, M07_SLOTS['stop-scene'].image],
       ],
     }),
     // THE DRIVER, BY EAR — the lines with no drill of their own (the answer reveals the meaning).
     k.replies('phrase.taxi.to-address', ['reply.taxi.off-we-go', 'reply.taxi.goodbye']),
-    // THE SUPPORTED RIDE — the whole ride, in order, the dashboard on screen.
+    // THE SUPPORTED RIDE — the whole ride, in order, the dashboard on screen and filling as it goes:
+    // only the destination at first; the fare and the traffic once the driver has said them.
     k.practice({
       kind: 'quickReply',
-      label: ['הנסיעה — 📍 הכתובת · 💶 ~€15 · 🚦 פקקים · 🏁 לעצור · 🤝 העודף לנהג', 'The ride — 📍 the address · 💶 ~€15 · 🚦 traffic · 🏁 stop · 🤝 keep the change'],
+      label: rideDashboard(1),
       rounds: [
         { npc: L_HELLO, options: [['phrase.taxi.to-address', true], ['phrase.taxi.how-much', false], ['phrase.taxi.keep-change', false]] },
         { npc: L_OFF, options: [['phrase.taxi.how-much', true], ['phrase.taxi.to-address', false], ['phrase.taxi.stop-here', false]] },
+      ],
+    }),
+    k.practice({
+      kind: 'quickReply',
+      label: rideDashboard(1),
+      rounds: [
         { npc: L_FAST, pace: 'fast', options: [['phrase.taxi.speak-slowly', true], ['phrase.taxi.keep-change', false], ['phrase.taxi.to-address', false]] },
         { npc: L_SLOW, pace: 'slow', options: [['phrase.taxi.okay-thanks', true], ['phrase.taxi.stop-here', false], ['phrase.taxi.how-much', false]] },
+      ],
+    }),
+    k.practice({
+      kind: 'quickReply',
+      label: rideDashboard(3),
+      rounds: [
         { npc: L_ALMOST, options: [['phrase.taxi.stop-here', true], ['phrase.taxi.okay-thanks', false], ['phrase.taxi.how-much', false]] },
         { situation: PAY_SITUATION, options: [['phrase.taxi.keep-change', true], ['phrase.taxi.stop-here', false], ['phrase.taxi.to-address', false]] },
       ],

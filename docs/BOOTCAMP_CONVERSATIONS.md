@@ -387,6 +387,9 @@ _Reply-training drill:_ “What's the purpose of your visit?” · “How long a
 - **Is here okay?** · כאן זה בסדר?
 - **Got it. No problem — off we go!** · הבנתי. אין בעיה — יוצאים!
 - **Thank you very much! Enjoy your trip!** · תודה רבה! תיהנה מהטיול!
+- **It's about fifteen euros. There's a lot of traffic right now.** · זה בערך חמישה עשר יורו. יש הרבה פקקים עכשיו.
+- **Sure. About fifteen euros. There's a lot of traffic.** · בטח. בערך חמישה עשר יורו. יש הרבה פקקים.
+- **…We are almost there. Is here okay?** · …כמעט הגענו. כאן זה בסדר?
 
 _Reply-training drill:_ “Got it. No problem — off we go!” · “Thank you very much! Enjoy your trip!”
 

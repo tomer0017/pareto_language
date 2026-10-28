@@ -30,6 +30,17 @@ typecheck, lint, build, smoke, parity and content validation pass. No learning c
 The owner waived agent mobile QA on 2026-10-27 and will perform it manually; production release is authorized.
 See [production and validation report](./MISSION06_VISUAL_REPORT.md) and [asset provenance](./mission06-artwork.json).
 
+### Mission 07 — the ride is revealed, not given away (2026-10-28)
+
+The opening is a short briefing — you just got into a taxi; your goal is this address in the city
+centre — and the dashboard starts with only the destination: the fare and the traffic are "?" until the
+driver has said them (`rideDashboard`, `M07_KNOWN_AT_START`; `M07_RIDE` stays the simulation's truth).
+Stage names are neutral ("Fare", not "~€15") in every heading; Step 0 no longer pre-teaches the fare
+or the traffic. The supported ride is three steps whose headings reveal the ride as it happens. The
+integration match is now DRIVER LINE → TRAVELLER'S REPLY (Where to? → To this address · the fast line →
+Sorry, please speak slowly · the slow repeat → Okay, thank you · Is here okay? → Stop here, please. Keep
+the change.), no icons. Recovery, pace, dialogue, rides and video unchanged. 37 interactions.
+
 ### Mission 06 — real-phone UX patch: language, not puzzles (2026-10-28)
 
 From physical iPhone QA. Dialogue, sentences, traveller facts, interviews, video and the ENTRY APPROVED

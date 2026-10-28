@@ -7011,86 +7011,76 @@ Mission card (plan metadata, shown on Home / Path / mission overview):
 - Why (internal note): The highest-stakes 60-second conversation of day one abroad.
 - Prepares next (internal note): Arrival confidence for hotel check-in.
 
-Intro screen 1 (first Practice step; identical in the English, French and Spanish missions unless flagged):
+Intro screen (first Practice step; identical in the English, French and Spanish missions unless flagged):
 
 - Icon: 🚕
 - Title: "Mission 7: Taxi / Uber" / "משימה 7: מונית"
-- Text 1: "You get into a taxi. One ride, start to finish: where to, how much, traffic — and stopping in the right place." / "אתה נכנס למונית. נסיעה אחת, מתחילתה ועד סופה: לאן, כמה, פקקים — ולעצור במקום הנכון."
-- Text 2: "And if the driver speaks too fast? Ask him to slow down. It works." / "ואם הנהג מדבר מהר מדי? תבקש ממנו להאט. זה עובד."
-- Button: "Get in" / "להיכנס למונית"
-
-Intro screen 2 (first Practice step; identical in the English, French and Spanish missions unless flagged):
-
-- Icon: 📱
-- Title: "Your ride" / "הנסיעה שלך"
-- Text 1: "📍 To the address on your phone — in the city centre" / "📍 לכתובת שבטלפון — במרכז העיר"
-- Text 2: "💶 About €15 · 🚦 A lot of traffic" / "💶 בערך €15 · 🚦 הרבה פקקים"
-- Text 3: "🏁 Stop at the address · 🤝 Pay €20 — the driver keeps the change" / "🏁 עוצרים בכתובת · 🤝 משלמים €20 — והעודף נשאר לנהג"
-- Button: "Let’s go" / "יוצאים"
+- Text 1: "You just got into a taxi. Your goal: get to this address in the city centre." / "נכנסת למונית. המטרה שלך: להגיע לכתובת הזאת במרכז העיר."
+- Text 2: "🚕 📍 Destination ✅ · 💶 Fare ? · 🚦 Traffic ? · 🏁 Arrival ⬜ · 🤝 Payment ⬜" / "🚕 📍 יעד ✅ · 💶 מחיר ? · 🚦 תנועה ? · 🏁 הגעה ⬜ · 🤝 תשלום ⬜"
+- Button: "Start the ride" / "התחל נסיעה"
 
 ## Current Practice flow
 
 1. `talk` — intro screen — "Mission 7: Taxi / Uber"
-2. `talk` — intro screen — "Your ride"
-3. `prime` — before-we-speak (word intro) — 5 words → builds `phrase.taxi.to-address`
-4. `prime` — before-we-speak (word intro) — 2 words → builds ``
-5. `visualMatch` — visual match (hear → tap the tile) — 1 round(s)
-6. `sentenceBuilder` — sentence builder (put the chunks in order) — 1 round(s)
-7. `prime` — before-we-speak (word intro) — 1 words → builds ``
-8. `receipt` — receipt (proof card) — "🚕 📍 Destination ✅ · 💶 ~€15 ⬜ · 🚦 Traffic ⬜ · 🏁 Arrival ⬜ · 🤝 Payment ⬜" / "🚕 📍 יעד ✅ · 💶 ~€15 ⬜ · 🚦 פקקים ⬜ · 🏁 הגעה ⬜ · 🤝 תשלום ⬜"
-9. `prime` — before-we-speak (word intro) — 2 words → builds ``
-10. `sentenceBuilder` — sentence builder (put the chunks in order) — 1 round(s)
-11. `visualMatch` — visual match (hear → tap the tile) — 1 round(s)
-12. `receipt` — receipt (proof card) — "🚕 📍 Destination ✅ · 💶 ~€15 ✅ · 🚦 Traffic ⬜ · 🏁 Arrival ⬜ · 🤝 Payment ⬜" / "🚕 📍 יעד ✅ · 💶 ~€15 ✅ · 🚦 פקקים ⬜ · 🏁 הגעה ⬜ · 🤝 תשלום ⬜"
-13. `prime` — before-we-speak (word intro) — 1 words → builds ``
-14. `miniMap` — mini map (hear → tap the direction / spot) — 1 round(s)
-15. `visualMatch` — visual match (hear → tap the tile) — 2 round(s)
-16. `prime` — before-we-speak (word intro) — 4 words → builds ``
-17. `sentenceBuilder` — sentence builder (put the chunks in order) — 1 round(s)
-18. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
-19. `visualMatch` — visual match (hear → tap the tile) — 2 round(s)
-20. `receipt` — receipt (proof card) — "✓ €15 understood · ✓ traffic understood — you asked him to slow down, and it worked. 🚕 📍 Destination ✅ · 💶 ~€15 ✅ · 🚦 Traffic ✅ · 🏁 Arrival ⬜ · 🤝 Payment ⬜" / "✓ הבנת €15 · ✓ הבנת שיש פקקים — ביקשת שידבר לאט, וזה עבד. 🚕 📍 יעד ✅ · 💶 ~€15 ✅ · 🚦 פקקים ✅ · 🏁 הגעה ⬜ · 🤝 תשלום ⬜"
-21. `prime` — before-we-speak (word intro) — 3 words → builds ``
-22. `miniMap` — mini map (hear → tap the direction / spot) — 1 round(s)
-23. `receipt` — receipt (proof card) — "🚕 📍 Destination ✅ · 💶 ~€15 ✅ · 🚦 Traffic ✅ · 🏁 Arrival ✅ · 🤝 Payment ⬜" / "🚕 📍 יעד ✅ · 💶 ~€15 ✅ · 🚦 פקקים ✅ · 🏁 הגעה ✅ · 🤝 תשלום ⬜"
-24. `prime` — before-we-speak (word intro) — 2 words → builds ``
-25. `visualMatch` — visual match (hear → tap the tile) — 1 round(s)
-26. `receipt` — receipt (proof card) — "🚕 📍 Destination ✅ · 💶 ~€15 ✅ · 🚦 Traffic ✅ · 🏁 Arrival ✅ · 🤝 Payment ✅" / "🚕 📍 יעד ✅ · 💶 ~€15 ✅ · 🚦 פקקים ✅ · 🏁 הגעה ✅ · 🤝 תשלום ✅"
-27. `matchPairs` — match pairs (connect each question to its answer) — 4 pairs on one screen
-28. `replies` — expected replies (listening drill) — after `phrase.taxi.to-address`: 2 replies
-29. `quickReply` — quick reply (hear → pick your response) — 6 round(s)
-30. `receipt` — receipt (proof card) — "🚕 📍 Destination ✅ · 💶 ~€15 ✅ · 🚦 Traffic ✅ · 🏁 Arrival ✅ · 🤝 Payment ✅ — you did the whole ride." / "🚕 📍 יעד ✅ · 💶 ~€15 ✅ · 🚦 פקקים ✅ · 🏁 הגעה ✅ · 🤝 תשלום ✅ — נסעת את כל הנסיעה."
-31. `dialogue` — dialogue (choose your line) — scene `taxi-ride`
-32. `receipt` — receipt (proof card) — "The whole conversation — from “where to?” to “enjoy your trip”." / "כל השיחה — מ"לאן?" ועד "תיהנה מהטיול"."
-33. `quickReply` — quick reply (hear → pick your response) — 5 round(s) · speed challenge
-34. `receipt` — receipt (proof card) — "No help — he spoke fast, you asked him to slow down, and you understood." / "בלי עזרה — והוא דיבר מהר, ביקשת שיאט, והבנת."
-35. `video` — video — mode again
-36. `visualMatch` — visual match (hear → tap the tile) — 1 round(s) · speed challenge
-37. `quickReply` — quick reply (hear → pick your response) — 2 round(s)
-38. `visualMatch` — visual match (hear → tap the tile) — 2 round(s)
-39. `miniMap` — mini map (hear → tap the direction / spot) — 1 round(s) · speed challenge
-40. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
-41. `receipt` — receipt (proof card) — "🚕 RIDE COMPLETE · 🚕 📍 Destination ✅ · 💶 ~€15 ✅ · 🚦 Traffic ✅ · 🏁 Arrival ✅ · 🤝 Payment ✅ · “Thank you very much! Enjoy your trip!”" / "🚕 הנסיעה הושלמה · 🚕 📍 יעד ✅ · 💶 ~€15 ✅ · 🚦 פקקים ✅ · 🏁 הגעה ✅ · 🤝 תשלום ✅ · "תודה רבה! תיהנה מהטיול!""
-42. `summary` — victory screen
+2. `prime` — before-we-speak (word intro) — 3 words → builds `phrase.taxi.to-address`
+3. `prime` — before-we-speak (word intro) — 2 words → builds ``
+4. `visualMatch` — visual match (hear → tap the tile) — 1 round(s)
+5. `sentenceBuilder` — sentence builder (put the chunks in order) — 1 round(s)
+6. `prime` — before-we-speak (word intro) — 1 words → builds ``
+7. `receipt` — receipt (proof card) — "🚕 📍 Destination ✅ · 💶 Fare ? · 🚦 Traffic ? · 🏁 Arrival ⬜ · 🤝 Payment ⬜" / "🚕 📍 יעד ✅ · 💶 מחיר ? · 🚦 תנועה ? · 🏁 הגעה ⬜ · 🤝 תשלום ⬜"
+8. `prime` — before-we-speak (word intro) — 2 words → builds ``
+9. `sentenceBuilder` — sentence builder (put the chunks in order) — 1 round(s)
+10. `visualMatch` — visual match (hear → tap the tile) — 1 round(s)
+11. `receipt` — receipt (proof card) — "🚕 📍 Destination ✅ · 💶 ~€15 ✅ · 🚦 Traffic ? · 🏁 Arrival ⬜ · 🤝 Payment ⬜" / "🚕 📍 יעד ✅ · 💶 ~€15 ✅ · 🚦 תנועה ? · 🏁 הגעה ⬜ · 🤝 תשלום ⬜"
+12. `prime` — before-we-speak (word intro) — 1 words → builds ``
+13. `miniMap` — mini map (hear → tap the direction / spot) — 1 round(s)
+14. `visualMatch` — visual match (hear → tap the tile) — 2 round(s)
+15. `prime` — before-we-speak (word intro) — 4 words → builds ``
+16. `sentenceBuilder` — sentence builder (put the chunks in order) — 1 round(s)
+17. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+18. `visualMatch` — visual match (hear → tap the tile) — 2 round(s)
+19. `receipt` — receipt (proof card) — "✓ €15 understood · ✓ traffic understood — you asked him to slow down, and it worked. 🚕 📍 Destination ✅ · 💶 ~€15 ✅ · 🚦 Traffic ✅ · 🏁 Arrival ⬜ · 🤝 Payment ⬜" / "✓ הבנת €15 · ✓ הבנת שיש פקקים — ביקשת שידבר לאט, וזה עבד. 🚕 📍 יעד ✅ · 💶 ~€15 ✅ · 🚦 תנועה ✅ · 🏁 הגעה ⬜ · 🤝 תשלום ⬜"
+20. `prime` — before-we-speak (word intro) — 3 words → builds ``
+21. `miniMap` — mini map (hear → tap the direction / spot) — 1 round(s)
+22. `receipt` — receipt (proof card) — "🚕 📍 Destination ✅ · 💶 ~€15 ✅ · 🚦 Traffic ✅ · 🏁 Arrival ✅ · 🤝 Payment ⬜" / "🚕 📍 יעד ✅ · 💶 ~€15 ✅ · 🚦 תנועה ✅ · 🏁 הגעה ✅ · 🤝 תשלום ⬜"
+23. `prime` — before-we-speak (word intro) — 2 words → builds ``
+24. `visualMatch` — visual match (hear → tap the tile) — 1 round(s)
+25. `receipt` — receipt (proof card) — "🚕 📍 Destination ✅ · 💶 ~€15 ✅ · 🚦 Traffic ✅ · 🏁 Arrival ✅ · 🤝 Payment ✅" / "🚕 📍 יעד ✅ · 💶 ~€15 ✅ · 🚦 תנועה ✅ · 🏁 הגעה ✅ · 🤝 תשלום ✅"
+26. `matchPairs` — match pairs (connect each question to its answer) — 4 pairs on one screen
+27. `replies` — expected replies (listening drill) — after `phrase.taxi.to-address`: 2 replies
+28. `quickReply` — quick reply (hear → pick your response) — 2 round(s)
+29. `quickReply` — quick reply (hear → pick your response) — 2 round(s)
+30. `quickReply` — quick reply (hear → pick your response) — 2 round(s)
+31. `receipt` — receipt (proof card) — "🚕 📍 Destination ✅ · 💶 ~€15 ✅ · 🚦 Traffic ✅ · 🏁 Arrival ✅ · 🤝 Payment ✅ — you did the whole ride." / "🚕 📍 יעד ✅ · 💶 ~€15 ✅ · 🚦 תנועה ✅ · 🏁 הגעה ✅ · 🤝 תשלום ✅ — נסעת את כל הנסיעה."
+32. `dialogue` — dialogue (choose your line) — scene `taxi-ride`
+33. `receipt` — receipt (proof card) — "The whole conversation — from “where to?” to “enjoy your trip”." / "כל השיחה — מ"לאן?" ועד "תיהנה מהטיול"."
+34. `quickReply` — quick reply (hear → pick your response) — 5 round(s) · speed challenge
+35. `receipt` — receipt (proof card) — "No help — he spoke fast, you asked him to slow down, and you understood." / "בלי עזרה — והוא דיבר מהר, ביקשת שיאט, והבנת."
+36. `video` — video — mode again
+37. `visualMatch` — visual match (hear → tap the tile) — 1 round(s) · speed challenge
+38. `quickReply` — quick reply (hear → pick your response) — 2 round(s)
+39. `visualMatch` — visual match (hear → tap the tile) — 2 round(s)
+40. `miniMap` — mini map (hear → tap the direction / spot) — 1 round(s) · speed challenge
+41. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+42. `receipt` — receipt (proof card) — "🚕 RIDE COMPLETE · 🚕 📍 Destination ✅ · 💶 ~€15 ✅ · 🚦 Traffic ✅ · 🏁 Arrival ✅ · 🤝 Payment ✅ · “Thank you very much! Enjoy your trip!”" / "🚕 הנסיעה הושלמה · 🚕 📍 יעד ✅ · 💶 ~€15 ✅ · 🚦 תנועה ✅ · 🏁 הגעה ✅ · 🤝 תשלום ✅ · "תודה רבה! תיהנה מהטיול!""
+43. `summary` — victory screen
 
 Step sequence identical in EN / FR / ES: yes.
 
 ## Before we speak / word intro
 
-Step 3. Label: "Before we speak" / "לפני שנדבר". Intro: "The words of the ride. Tap to hear." / "המילים של הנסיעה. הקש כדי לשמוע.".
+Step 2. Label: "Before we speak" / "לפני שנדבר". Intro: "The words of the ride. Tap to hear." / "המילים של הנסיעה. הקש כדי לשמוע.".
 The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
 
 Words are paired across languages by their concept KEY (not by position).
 
 1. `taxi.address` — EN "address" · FR "adresse" · ES "dirección" — meaning "כתובת" / "address" — icon 📱 — new
-2. `taxi.fifteen-euros` — EN "fifteen euros" · FR "quinze euros" · ES "quince euros" — meaning "חמישה עשר יורו" / "fifteen euros" — icon 💶 — new
-3. `taxi.traffic` — EN "traffic" · FR "circulation" · ES "tráfico" — meaning "תנועה / פקקים" / "traffic" — icon 🚗🚗🚗 — new
-4. `taxi.stop` — EN "stop" · FR "arrêtez" · ES "pare" — meaning "עצור" / "stop" — icon 🏁 — new
-5. `taxi.change` — EN "change" · FR "monnaie" · ES "cambio" — meaning "עודף" / "change (money back)" — icon 🪙 — new
+2. `taxi.stop` — EN "stop" · FR "arrêtez" · ES "pare" — meaning "עצור" / "stop" — icon 🏁 — new
+3. `taxi.change` — EN "change" · FR "monnaie" · ES "cambio" — meaning "עודף" / "change (money back)" — icon 🪙 — new
 
 "These build the sentence:" card: `phrase.taxi.to-address` — EN "To this address, please." · FR "À cette adresse, s’il vous plaît." · ES "A esta dirección, por favor." · HE "לכתובת הזאת, בבקשה." (with its own play button).
 
-Step 4. Label: "The ride 1/5 — 📍 Destination" / "הנסיעה 1/5 — 📍 יעד". Intro: "The driver asks where to — and what you say as you show him the address. Tap to hear." / "הנהג שואל לאן — ומה אתה אומר כשאתה מראה את הכתובת. הקש כדי לשמוע.".
+Step 3. Label: "The ride 1/5 — 📍 Destination" / "הנסיעה 1/5 — 📍 יעד". Intro: "The driver asks where to — and what you say as you show him the address. Tap to hear." / "הנהג שואל לאן — ומה אתה אומר כשאתה מראה את הכתובת. הקש כדי לשמוע.".
 The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
 
 Words are paired across languages by their concept KEY (not by position).
@@ -7100,7 +7090,7 @@ Words are paired across languages by their concept KEY (not by position).
 
 No build-sentence card.
 
-Step 7. Label: "And off you go" / "ויוצאים לדרך". Intro: "He understood. Tap to hear." / "הוא הבין. הקש כדי לשמוע.".
+Step 6. Label: "And off you go" / "ויוצאים לדרך". Intro: "He understood. Tap to hear." / "הוא הבין. הקש כדי לשמוע.".
 The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
 
 Words are paired across languages by their concept KEY (not by position).
@@ -7109,7 +7099,7 @@ Words are paired across languages by their concept KEY (not by position).
 
 No build-sentence card.
 
-Step 9. Label: "The ride 2/5 — 💶 ~€15" / "הנסיעה 2/5 — 💶 ~€15". Intro: "Your question — and the answer, on the meter. Tap to hear." / "השאלה שלך — והתשובה, על המונה. הקש כדי לשמוע.".
+Step 8. Label: "The ride 2/5 — 💶 Fare" / "הנסיעה 2/5 — 💶 מחיר". Intro: "Your question — and the answer, on the meter. Tap to hear." / "השאלה שלך — והתשובה, על המונה. הקש כדי לשמוע.".
 The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
 
 Words are paired across languages by their concept KEY (not by position).
@@ -7119,7 +7109,7 @@ Words are paired across languages by their concept KEY (not by position).
 
 No build-sentence card.
 
-Step 13. Label: "The ride 3/5 — 🚦 Traffic" / "הנסיעה 3/5 — 🚦 פקקים". Intro: "What is happening on the road. Tap to hear." / "מה קורה בכביש. הקש כדי לשמוע.".
+Step 12. Label: "The ride 3/5 — 🚦 Traffic" / "הנסיעה 3/5 — 🚦 תנועה". Intro: "What is happening on the road. Tap to hear." / "מה קורה בכביש. הקש כדי לשמוע.".
 The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
 
 Words are paired across languages by their concept KEY (not by position).
@@ -7128,7 +7118,7 @@ Words are paired across languages by their concept KEY (not by position).
 
 No build-sentence card.
 
-Step 16. Label: "Too fast? Tell him" / "מהר מדי? תגיד לו". Intro: "What he said, what you say — and what he answers, slowly. Tap to hear." / "מה הוא אמר, מה אתה אומר — ומה הוא עונה, לאט. הקש כדי לשמוע.".
+Step 15. Label: "Too fast? Tell him" / "מהר מדי? תגיד לו". Intro: "What he said, what you say — and what he answers, slowly. Tap to hear." / "מה הוא אמר, מה אתה אומר — ומה הוא עונה, לאט. הקש כדי לשמוע.".
 The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
 
 Words are paired across languages by their concept KEY (not by position).
@@ -7140,7 +7130,7 @@ Words are paired across languages by their concept KEY (not by position).
 
 No build-sentence card.
 
-Step 21. Label: "The ride 4/5 — 🏁 Arrival" / "הנסיעה 4/5 — 🏁 הגעה". Intro: "Almost there — and your answer. Tap to hear." / "כמעט הגענו — והתשובה שלך. הקש כדי לשמוע.".
+Step 20. Label: "The ride 4/5 — 🏁 Arrival" / "הנסיעה 4/5 — 🏁 הגעה". Intro: "Almost there — and your answer. Tap to hear." / "כמעט הגענו — והתשובה שלך. הקש כדי לשמוע.".
 The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
 
 Words are paired across languages by their concept KEY (not by position).
@@ -7151,7 +7141,7 @@ Words are paired across languages by their concept KEY (not by position).
 
 No build-sentence card.
 
-Step 24. Label: "The ride 5/5 — 🤝 Payment" / "הנסיעה 5/5 — 🤝 תשלום". Intro: "Paying — and the goodbye. Tap to hear." / "משלמים — והפרידה. הקש כדי לשמוע.".
+Step 23. Label: "The ride 5/5 — 🤝 Payment" / "הנסיעה 5/5 — 🤝 תשלום". Intro: "Paying — and the goodbye. Tap to hear." / "משלמים — והפרידה. הקש כדי לשמוע.".
 The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
 
 Words are paired across languages by their concept KEY (not by position).
@@ -7174,7 +7164,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "The taxi opener — say it and show the address on your phone." / "הפתיח למונית — תגיד את זה ותראה את הכתובת בטלפון."
 - Used in missions: 07, 10, 28, 29, 30
-- Exercised here as: built by the word intro (step 3); sentence-builder target (step 6, round 1); quick-reply response (step 18, round 1, wrong option); match-pairs answer tile (step 27, pair 1); "you said" lead-in of the expected-replies drill (step 28); quick-reply response (step 29, round 1, accepted); quick-reply response (step 29, round 2, wrong option); quick-reply response (step 29, round 3, wrong option); quick-reply response (step 29, round 6, wrong option); quick-reply response (step 33, round 1, accepted); quick-reply response (step 33, round 3, wrong option); quick-reply response (step 33, round 5, wrong option); quick-reply response (step 37, round 1, wrong option); dialogue choice taxi-ride/c1 (accepted)
+- Exercised here as: built by the word intro (step 2); sentence-builder target (step 5, round 1); quick-reply response (step 17, round 1, wrong option); match-pairs answer tile (step 26, pair 1); "you said" lead-in of the expected-replies drill (step 27); quick-reply response (step 28, round 1, accepted); quick-reply response (step 28, round 2, wrong option); quick-reply response (step 29, round 1, wrong option); quick-reply response (step 30, round 2, wrong option); quick-reply response (step 34, round 1, accepted); quick-reply response (step 34, round 3, wrong option); quick-reply response (step 34, round 5, wrong option); quick-reply response (step 38, round 1, wrong option); dialogue choice taxi-ride/c1 (accepted)
 
 ### Sentence: `phrase.taxi.to-airport`
 
@@ -7196,7 +7186,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "Ask the price before you ride — no surprises." / "לשאול מחיר לפני שנוסעים — חוסך הפתעות."
 - Used in missions: 07, 10, 30
-- Exercised here as: sentence-builder target (step 10, round 1); quick-reply response (step 18, round 1, wrong option); match-pairs answer tile (step 27, pair 2); quick-reply response (step 29, round 1, wrong option); quick-reply response (step 29, round 2, accepted); quick-reply response (step 29, round 4, wrong option); quick-reply response (step 29, round 5, wrong option); quick-reply response (step 33, round 2, accepted); quick-reply response (step 33, round 4, wrong option); quick-reply response (step 33, round 5, wrong option); quick-reply response (step 37, round 1, accepted); quick-reply response (step 37, round 2, wrong option); dialogue choice taxi-ride/c2 (accepted)
+- Exercised here as: sentence-builder target (step 9, round 1); quick-reply response (step 17, round 1, wrong option); quick-reply response (step 28, round 1, wrong option); quick-reply response (step 28, round 2, accepted); quick-reply response (step 29, round 2, wrong option); quick-reply response (step 30, round 1, wrong option); quick-reply response (step 34, round 2, accepted); quick-reply response (step 34, round 4, wrong option); quick-reply response (step 34, round 5, wrong option); quick-reply response (step 38, round 1, accepted); quick-reply response (step 38, round 2, wrong option); dialogue choice taxi-ride/c2 (accepted)
 
 ### Sentence: `phrase.taxi.stop-here`
 
@@ -7207,7 +7197,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "Timing matters — say it just before the destination." / "העיתוי חשוב — תגיד את זה קצת לפני היעד."
 - Used in missions: 07, 10, 29, 30
-- Exercised here as: match-pairs answer tile (step 27, pair 4); quick-reply response (step 29, round 2, wrong option); quick-reply response (step 29, round 4, wrong option); quick-reply response (step 29, round 5, accepted); quick-reply response (step 29, round 6, wrong option); quick-reply response (step 33, round 2, wrong option); quick-reply response (step 33, round 4, wrong option); quick-reply response (step 33, round 5, accepted); quick-reply response (step 37, round 2, wrong option); dialogue choice taxi-ride/c4 (accepted)
+- Exercised here as: match-pairs answer tile (step 26, pair 4); quick-reply response (step 28, round 2, wrong option); quick-reply response (step 29, round 2, wrong option); quick-reply response (step 30, round 1, accepted); quick-reply response (step 30, round 2, wrong option); quick-reply response (step 34, round 2, wrong option); quick-reply response (step 34, round 4, wrong option); quick-reply response (step 34, round 5, accepted); quick-reply response (step 38, round 2, wrong option); dialogue choice taxi-ride/c4 (accepted)
 
 ### Sentence: `phrase.taxi.keep-change`
 
@@ -7218,7 +7208,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 07, 29
-- Exercised here as: visual-match audio (step 25, round 1); quick-reply response (step 29, round 1, wrong option); quick-reply response (step 29, round 3, wrong option); quick-reply response (step 29, round 6, accepted); quick-reply response (step 33, round 1, wrong option); quick-reply response (step 33, round 3, wrong option); quick-reply response (step 37, round 1, wrong option); quick-reply response (step 40, round 1, accepted)
+- Exercised here as: visual-match audio (step 24, round 1); quick-reply response (step 28, round 1, wrong option); quick-reply response (step 29, round 1, wrong option); quick-reply response (step 30, round 2, accepted); quick-reply response (step 34, round 1, wrong option); quick-reply response (step 34, round 3, wrong option); quick-reply response (step 38, round 1, wrong option); quick-reply response (step 41, round 1, accepted)
 
 ### Sentence: `phrase.taxi.speak-slowly`
 
@@ -7229,7 +7219,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "When the driver speaks too fast — say it. He will say it again, slowly." / "כשהנהג מדבר מהר מדי — תגיד את זה. הוא יחזור, לאט."
 - Used in missions: 07
-- Exercised here as: sentence-builder target (step 17, round 1); quick-reply response (step 18, round 1, accepted); match-pairs answer tile (step 27, pair 3); quick-reply response (step 29, round 3, accepted); quick-reply response (step 33, round 1, wrong option); quick-reply response (step 33, round 3, accepted); quick-reply response (step 37, round 2, accepted); quick-reply response (step 40, round 1, wrong option)
+- Exercised here as: sentence-builder target (step 16, round 1); quick-reply response (step 17, round 1, accepted); match-pairs answer tile (step 26, pair 2); quick-reply response (step 29, round 1, accepted); quick-reply response (step 34, round 1, wrong option); quick-reply response (step 34, round 3, accepted); quick-reply response (step 38, round 2, accepted); quick-reply response (step 41, round 1, wrong option)
 
 ### Sentence: `phrase.taxi.okay-thanks`
 
@@ -7240,7 +7230,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 07
-- Exercised here as: quick-reply response (step 29, round 4, accepted); quick-reply response (step 29, round 5, wrong option); quick-reply response (step 33, round 2, wrong option); quick-reply response (step 33, round 4, accepted); quick-reply response (step 40, round 1, wrong option)
+- Exercised here as: match-pairs answer tile (step 26, pair 3); quick-reply response (step 29, round 2, accepted); quick-reply response (step 30, round 1, wrong option); quick-reply response (step 34, round 2, wrong option); quick-reply response (step 34, round 4, accepted); quick-reply response (step 41, round 1, wrong option)
 
 ### Sentence: `reply.taxi.where-to`
 
@@ -7251,7 +7241,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 07
-- Exercised here as: match-pairs question tile (step 27, pair 1)
+- Exercised here as: match-pairs question tile (step 26, pair 1)
 
 ### Sentence: `reply.taxi.about-fifteen`
 
@@ -7262,7 +7252,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 07
-- Exercised here as: visual-match audio (step 11, round 1); match-pairs question tile (step 27, pair 2)
+- Exercised here as: visual-match audio (step 10, round 1)
 
 ### Sentence: `reply.taxi.traffic`
 
@@ -7273,7 +7263,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 07
-- Exercised here as: mini-map audio (step 14, round 1); match-pairs question tile (step 27, pair 3)
+- Exercised here as: mini-map audio (step 13, round 1)
 
 ### Sentence: `reply.taxi.here-good`
 
@@ -7284,7 +7274,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 07
-- Exercised here as: match-pairs question tile (step 27, pair 4)
+- Exercised here as: nothing (listed only)
 
 ### Sentence: `reply.taxi.off-we-go`
 
@@ -7295,7 +7285,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 07
-- Exercised here as: expected-reply audio (step 28)
+- Exercised here as: expected-reply audio (step 27)
 
 ### Sentence: `reply.taxi.goodbye`
 
@@ -7306,7 +7296,40 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 07
-- Exercised here as: expected-reply audio (step 28)
+- Exercised here as: expected-reply audio (step 27)
+
+### Sentence: `reply.taxi.fast-answer`
+
+- EN: It's about fifteen euros. There's a lot of traffic right now.
+- HE: זה בערך חמישה עשר יורו. יש הרבה פקקים עכשיו.
+- FR: C’est environ quinze euros. Il y a beaucoup de circulation en ce moment.
+- ES: Son unos quince euros. Hay mucho tráfico ahora mismo.
+- Role: receptive — an expected reply the learner hears
+- Tip / pattern note: none
+- Used in missions: 07
+- Exercised here as: match-pairs question tile (step 26, pair 2)
+
+### Sentence: `reply.taxi.slow-repeat`
+
+- EN: Sure. About fifteen euros. There's a lot of traffic.
+- HE: בטח. בערך חמישה עשר יורו. יש הרבה פקקים.
+- FR: Bien sûr. Environ quinze euros. Il y a beaucoup de circulation.
+- ES: Claro. Unos quince euros. Hay mucho tráfico.
+- Role: receptive — an expected reply the learner hears
+- Tip / pattern note: none
+- Used in missions: 07
+- Exercised here as: match-pairs question tile (step 26, pair 3)
+
+### Sentence: `reply.taxi.almost-there`
+
+- EN: …We are almost there. Is here okay?
+- HE: …כמעט הגענו. כאן זה בסדר?
+- FR: …On est presque arrivés. Ici, ça va ?
+- ES: …Ya casi llegamos. ¿Aquí está bien?
+- Role: receptive — an expected reply the learner hears
+- Tip / pattern note: none
+- Used in missions: 07
+- Exercised here as: match-pairs question tile (step 26, pair 4)
 
 ### Sentence: `phrase.recovery.slowly`
 
@@ -7346,7 +7369,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 Lead-in screen: "You said:" / "אמרת:" — EN "To this address, please." · FR "À cette adresse, s’il vous plaît." · ES "A esta dirección, por favor." — then "What might they answer? Learn the replies before they surprise you." / "מה הם עלולים לענות? נלמד את התשובות לפני שהן מפתיעות אותך." — button 👂 "I'm ready" / "אני מוכן".
 Linked learner sentence: `phrase.taxi.to-address`. Each reply below is played once automatically; the learner picks its MEANING from three buttons. Distractors are always the first two OTHER replies of this same drill, in drill order (runtime rule), so the three choices are shuffled per session.
 
-### M07-Q18 — expected-reply (step 28, reply 1 of 2)
+### M07-Q18 — expected-reply (step 27, reply 1 of 2)
 
 - Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (1/2)
 - Audio played: EN "Got it. No problem — off we go!" · FR "D’accord. Pas de problème — on y va !" · ES "De acuerdo. Sin problema — ¡vamos!"
@@ -7358,7 +7381,7 @@ Linked learner sentence: `phrase.taxi.to-address`. Each reply below is played on
 - Tests: reply.taxi.off-we-go
 - Explanation shown after answering: generic: “Got it. No problem — off we go!” means “הבנתי. אין בעיה — יוצאים!”.
 
-### M07-Q19 — expected-reply (step 28, reply 2 of 2)
+### M07-Q19 — expected-reply (step 27, reply 2 of 2)
 
 - Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (2/2)
 - Audio played: EN "Thank you very much! Enjoy your trip!" · FR "Merci beaucoup ! Bon voyage !" · ES "¡Muchas gracias! ¡Buen viaje!"
@@ -7376,7 +7399,7 @@ No meaning quiz in this mission.
 
 ## Active practice — Quick Reply · Visual Match · Swap It · Mini Map
 
-### M07-Q01 — visual-match (step 5, round 1 of 1)
+### M07-Q01 — visual-match (step 4, round 1 of 1)
 
 - Prompt displayed: "Where to? Show him" / "לאן? הראה לו"
 - Audio played: EN "Hello! Where to?" · FR "Bonjour ! Où allez-vous ?" · ES "¡Hola! ¿A dónde va?"
@@ -7389,7 +7412,7 @@ No meaning quiz in this mission.
 - Tests: (no sentence id — not recorded)
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
-### M07-Q02 — sentence-builder (step 6, round 1 of 1)
+### M07-Q02 — sentence-builder (step 5, round 1 of 1)
 
 - Prompt displayed: "Show it — and say it" / "מראים — ואומרים" — cue shown: the sentence's MEANING in the app language ("לכתובת הזאת, בבקשה.")
 - Audio played: EN "(nothing before Check; the built sentence is spoken once it is right)" · FR "(same)" · ES "(same)"
@@ -7400,7 +7423,7 @@ No meaning quiz in this mission.
 - Tests: phrase.taxi.to-address
 - Explanation shown after answering: right: the sentence is spoken and its translation shown. Wrong: "not yet" — the tiles stay, the answer is NOT shown; after one miss a hint marks the start; after two misses the learner may reveal it
 
-### M07-Q03 — sentence-builder (step 10, round 1 of 1)
+### M07-Q03 — sentence-builder (step 9, round 1 of 1)
 
 - Prompt displayed: "Your question" / "השאלה שלך" — cue shown: the sentence's MEANING in the app language ("כמה עד המרכז?")
 - Audio played: EN "(nothing before Check; the built sentence is spoken once it is right)" · FR "(same)" · ES "(same)"
@@ -7411,7 +7434,7 @@ No meaning quiz in this mission.
 - Tests: phrase.taxi.how-much
 - Explanation shown after answering: right: the sentence is spoken and its translation shown. Wrong: "not yet" — the tiles stay, the answer is NOT shown; after one miss a hint marks the start; after two misses the learner may reveal it
 
-### M07-Q04 — visual-match (step 11, round 1 of 1)
+### M07-Q04 — visual-match (step 10, round 1 of 1)
 
 - Prompt displayed: "What will the meter say? Tap the fare you hear" / "מה המונה יראה? הקש על המחיר ששמעת"
 - Audio played: EN "It's about fifteen euros." · FR "C’est environ quinze euros." · ES "Son unos quince euros."
@@ -7424,7 +7447,7 @@ No meaning quiz in this mission.
 - Tests: reply.taxi.about-fifteen
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
-### M07-Q05 — mini-map (step 14, round 1 of 1)
+### M07-Q05 — mini-map (step 13, round 1 of 1)
 
 - Prompt displayed: "Where is the traffic? Tap the road" / "איפה הפקק? הקש על הכביש" — board, row by row: · | 🏙️ | · // 🌳 [tap:clear] | 🚗🚗🚗 [tap:jam] | 🏘️ [tap:side] // · | 🚕 | ·
 - Audio played: EN "There's a lot of traffic right now." · FR "Il y a beaucoup de circulation en ce moment." · ES "Hay mucho tráfico ahora mismo."
@@ -7437,7 +7460,7 @@ No meaning quiz in this mission.
 - Tests: reply.taxi.traffic
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
-### M07-Q06 — visual-match (step 15, round 1 of 2)
+### M07-Q06 — visual-match (step 14, round 1 of 2)
 
 - Prompt displayed: "The driver answers — fast. What did you catch?" / "הנהג עונה — מהר. מה תפסת?"
 - Audio played: EN "It's about fifteen euros. There's a lot of traffic right now." · FR "C’est environ quinze euros. Il y a beaucoup de circulation en ce moment." · ES "Son unos quince euros. Hay mucho tráfico ahora mismo."
@@ -7450,7 +7473,7 @@ No meaning quiz in this mission.
 - Tests: (no sentence id — not recorded)
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
-### M07-Q07 — visual-match (step 15, round 2 of 2)
+### M07-Q07 — visual-match (step 14, round 2 of 2)
 
 - Prompt displayed: "The driver answers — fast. What did you catch?" / "הנהג עונה — מהר. מה תפסת?"
 - Audio played: EN "It's about fifteen euros. There's a lot of traffic right now." · FR "C’est environ quinze euros. Il y a beaucoup de circulation en ce moment." · ES "Son unos quince euros. Hay mucho tráfico ahora mismo."
@@ -7462,7 +7485,7 @@ No meaning quiz in this mission.
 - Tests: (no sentence id — not recorded)
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
-### M07-Q08 — sentence-builder (step 17, round 1 of 1)
+### M07-Q08 — sentence-builder (step 16, round 1 of 1)
 
 - Prompt displayed: "When he speaks too fast" / "כשהוא מדבר מהר מדי" — cue shown: the sentence's MEANING in the app language ("סליחה, דבר לאט, בבקשה.")
 - Audio played: EN "(nothing before Check; the built sentence is spoken once it is right)" · FR "(same)" · ES "(same)"
@@ -7473,7 +7496,7 @@ No meaning quiz in this mission.
 - Tests: phrase.taxi.speak-slowly
 - Explanation shown after answering: right: the sentence is spoken and its translation shown. Wrong: "not yet" — the tiles stay, the answer is NOT shown; after one miss a hint marks the start; after two misses the learner may reveal it
 
-### M07-Q09 — quick-reply (step 18, round 1 of 1)
+### M07-Q09 — quick-reply (step 17, round 1 of 1)
 
 - Prompt displayed: "He speaks too fast — what do you say?" / "הוא מדבר מהר מדי — מה אתה אומר?"
 - Audio played: EN "It's about fifteen euros. There's a lot of traffic right now." · FR "C’est environ quinze euros. Il y a beaucoup de circulation en ce moment." · ES "Son unos quince euros. Hay mucho tráfico ahora mismo."
@@ -7486,7 +7509,7 @@ No meaning quiz in this mission.
 - Tests: phrase.taxi.speak-slowly
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M07-Q10 — visual-match (step 19, round 1 of 2)
+### M07-Q10 — visual-match (step 18, round 1 of 2)
 
 - Prompt displayed: "Now slowly — what did he say?" / "עכשיו לאט — מה הוא אמר?"
 - Audio played: EN "Sure. About fifteen euros. There's a lot of traffic." · FR "Bien sûr. Environ quinze euros. Il y a beaucoup de circulation." · ES "Claro. Unos quince euros. Hay mucho tráfico."
@@ -7499,7 +7522,7 @@ No meaning quiz in this mission.
 - Tests: (no sentence id — not recorded)
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
-### M07-Q11 — visual-match (step 19, round 2 of 2)
+### M07-Q11 — visual-match (step 18, round 2 of 2)
 
 - Prompt displayed: "Now slowly — what did he say?" / "עכשיו לאט — מה הוא אמר?"
 - Audio played: EN "Sure. About fifteen euros. There's a lot of traffic." · FR "Bien sûr. Environ quinze euros. Il y a beaucoup de circulation." · ES "Claro. Unos quince euros. Hay mucho tráfico."
@@ -7511,7 +7534,7 @@ No meaning quiz in this mission.
 - Tests: (no sentence id — not recorded)
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
-### M07-Q12 — mini-map (step 22, round 1 of 1)
+### M07-Q12 — mini-map (step 21, round 1 of 1)
 
 - Prompt displayed: "Where do you stop? Tap your address" / "איפה עוצרים? הקש על הכתובת שלך" — board, row by row: · | 🏢 [tap:too-late] | · // · | 🏁 [tap:here] | · // 🏪 [tap:too-early] | 🚕 | ·
 - Audio played: EN "…We are almost there. Is here okay?" · FR "…On est presque arrivés. Ici, ça va ?" · ES "…Ya casi llegamos. ¿Aquí está bien?"
@@ -7524,7 +7547,7 @@ No meaning quiz in this mission.
 - Tests: (no sentence id — not recorded)
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
-### M07-Q13 — visual-match (step 25, round 1 of 1)
+### M07-Q13 — visual-match (step 24, round 1 of 1)
 
 - Prompt displayed: "€20 for €15 — what happens to the €5?" / "€20 על €15 — מה קורה ל־€5?"
 - Audio played: EN "Keep the change." · FR "Gardez la monnaie." · ES "Quédese con el cambio."
@@ -7536,65 +7559,65 @@ No meaning quiz in this mission.
 - Tests: phrase.taxi.keep-change
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
-### M07-Q14 — match-pairs (step 27, pair 1 of 4 (all pairs are on one screen))
+### M07-Q14 — match-pairs (step 26, pair 1 of 4 (all pairs are on one screen))
 
-- Prompt displayed: "What the driver says — and which moment of the ride" / "מה הנהג אומר — ובאיזה רגע של הנסיעה" — tile to match (target language, no translation): EN "Where to?" · FR "Où allez-vous ?" · ES "¿A dónde va?"
+- Prompt displayed: "The driver says — what do you answer?" / "הנהג אומר — מה אתה עונה?" — tile to match (target language, no translation): EN "Where to?" · FR "Où allez-vous ?" · ES "¿A dónde va?"
 - Audio played: EN "Where to?" · FR "Où allez-vous ?" · ES "¿A dónde va?"
 - Meaning of the audio (HE): "לאן?"
 - Buttons show: the ANSWER tiles, target language only; their order is shuffled; a matched pair locks and leaves the board, so later pairs have fewer live tiles
 - Choices:
-  1. EN "📍" · FR "📍" · ES "📍" · (HE gloss "לכתובת הזאת, בבקשה.") — `phrase.taxi.to-address` — ✅ accepted
-  2. EN "💶 €15" · FR "💶 €15" · ES "💶 €15" · (HE gloss "כמה עד המרכז?") — `phrase.taxi.how-much` — ❌ wrong
-  3. EN "🚗🚗🚗" · FR "🚗🚗🚗" · ES "🚗🚗🚗" · (HE gloss "סליחה, דבר לאט, בבקשה.") — `phrase.taxi.speak-slowly` — ❌ wrong
-  4. EN "🏁" · FR "🏁" · ES "🏁" · (HE gloss "עצור כאן, בבקשה.") — `phrase.taxi.stop-here` — ❌ wrong
+  1. EN "To this address, please." · FR "À cette adresse, s’il vous plaît." · ES "A esta dirección, por favor." · (HE gloss "לכתובת הזאת, בבקשה.") — `phrase.taxi.to-address` — ✅ accepted
+  2. EN "Sorry, please speak slowly." · FR "Pardon, parlez lentement, s’il vous plaît." · ES "Perdone, más despacio, por favor." · (HE gloss "סליחה, דבר לאט, בבקשה.") — `phrase.taxi.speak-slowly` — ❌ wrong
+  3. EN "Okay, thank you." · FR "D’accord, merci." · ES "De acuerdo, gracias." · (HE gloss "בסדר, תודה.") — `phrase.taxi.okay-thanks` — ❌ wrong
+  4. EN "Stop here, please. Keep the change." · FR "Arrêtez-vous ici, s’il vous plaît. Gardez la monnaie." · ES "Pare aquí, por favor. Quédese con el cambio." · (HE gloss "עצור כאן, בבקשה.") — `phrase.taxi.stop-here` — ❌ wrong
 - Tests: phrase.taxi.to-address
 - Explanation shown after answering: none — a correct match locks both tiles under a shared number and speaks the answer; a miss shakes, shows ✕ and clears (no penalty)
 
-### M07-Q15 — match-pairs (step 27, pair 2 of 4 (all pairs are on one screen))
+### M07-Q15 — match-pairs (step 26, pair 2 of 4 (all pairs are on one screen))
 
-- Prompt displayed: "What the driver says — and which moment of the ride" / "מה הנהג אומר — ובאיזה רגע של הנסיעה" — tile to match (target language, no translation): EN "It's about fifteen euros." · FR "C’est environ quinze euros." · ES "Son unos quince euros."
-- Audio played: EN "It's about fifteen euros." · FR "C’est environ quinze euros." · ES "Son unos quince euros."
-- Meaning of the audio (HE): "זה בערך חמישה עשר יורו."
+- Prompt displayed: "The driver says — what do you answer?" / "הנהג אומר — מה אתה עונה?" — tile to match (target language, no translation): EN "It's about fifteen euros. There's a lot of traffic right now." · FR "C’est environ quinze euros. Il y a beaucoup de circulation en ce moment." · ES "Son unos quince euros. Hay mucho tráfico ahora mismo."
+- Audio played: EN "It's about fifteen euros. There's a lot of traffic right now." · FR "C’est environ quinze euros. Il y a beaucoup de circulation en ce moment." · ES "Son unos quince euros. Hay mucho tráfico ahora mismo."
+- Meaning of the audio (HE): "זה בערך חמישה עשר יורו. יש הרבה פקקים עכשיו."
 - Buttons show: the ANSWER tiles, target language only; their order is shuffled; a matched pair locks and leaves the board, so later pairs have fewer live tiles
 - Choices:
-  1. EN "📍" · FR "📍" · ES "📍" · (HE gloss "לכתובת הזאת, בבקשה.") — `phrase.taxi.to-address` — ❌ wrong
-  2. EN "💶 €15" · FR "💶 €15" · ES "💶 €15" · (HE gloss "כמה עד המרכז?") — `phrase.taxi.how-much` — ✅ accepted
-  3. EN "🚗🚗🚗" · FR "🚗🚗🚗" · ES "🚗🚗🚗" · (HE gloss "סליחה, דבר לאט, בבקשה.") — `phrase.taxi.speak-slowly` — ❌ wrong
-  4. EN "🏁" · FR "🏁" · ES "🏁" · (HE gloss "עצור כאן, בבקשה.") — `phrase.taxi.stop-here` — ❌ wrong
-- Tests: phrase.taxi.how-much
-- Explanation shown after answering: none — a correct match locks both tiles under a shared number and speaks the answer; a miss shakes, shows ✕ and clears (no penalty)
-
-### M07-Q16 — match-pairs (step 27, pair 3 of 4 (all pairs are on one screen))
-
-- Prompt displayed: "What the driver says — and which moment of the ride" / "מה הנהג אומר — ובאיזה רגע של הנסיעה" — tile to match (target language, no translation): EN "There's a lot of traffic right now." · FR "Il y a beaucoup de circulation en ce moment." · ES "Hay mucho tráfico ahora mismo."
-- Audio played: EN "There's a lot of traffic right now." · FR "Il y a beaucoup de circulation en ce moment." · ES "Hay mucho tráfico ahora mismo."
-- Meaning of the audio (HE): "יש הרבה פקקים עכשיו."
-- Buttons show: the ANSWER tiles, target language only; their order is shuffled; a matched pair locks and leaves the board, so later pairs have fewer live tiles
-- Choices:
-  1. EN "📍" · FR "📍" · ES "📍" · (HE gloss "לכתובת הזאת, בבקשה.") — `phrase.taxi.to-address` — ❌ wrong
-  2. EN "💶 €15" · FR "💶 €15" · ES "💶 €15" · (HE gloss "כמה עד המרכז?") — `phrase.taxi.how-much` — ❌ wrong
-  3. EN "🚗🚗🚗" · FR "🚗🚗🚗" · ES "🚗🚗🚗" · (HE gloss "סליחה, דבר לאט, בבקשה.") — `phrase.taxi.speak-slowly` — ✅ accepted
-  4. EN "🏁" · FR "🏁" · ES "🏁" · (HE gloss "עצור כאן, בבקשה.") — `phrase.taxi.stop-here` — ❌ wrong
+  1. EN "To this address, please." · FR "À cette adresse, s’il vous plaît." · ES "A esta dirección, por favor." · (HE gloss "לכתובת הזאת, בבקשה.") — `phrase.taxi.to-address` — ❌ wrong
+  2. EN "Sorry, please speak slowly." · FR "Pardon, parlez lentement, s’il vous plaît." · ES "Perdone, más despacio, por favor." · (HE gloss "סליחה, דבר לאט, בבקשה.") — `phrase.taxi.speak-slowly` — ✅ accepted
+  3. EN "Okay, thank you." · FR "D’accord, merci." · ES "De acuerdo, gracias." · (HE gloss "בסדר, תודה.") — `phrase.taxi.okay-thanks` — ❌ wrong
+  4. EN "Stop here, please. Keep the change." · FR "Arrêtez-vous ici, s’il vous plaît. Gardez la monnaie." · ES "Pare aquí, por favor. Quédese con el cambio." · (HE gloss "עצור כאן, בבקשה.") — `phrase.taxi.stop-here` — ❌ wrong
 - Tests: phrase.taxi.speak-slowly
 - Explanation shown after answering: none — a correct match locks both tiles under a shared number and speaks the answer; a miss shakes, shows ✕ and clears (no penalty)
 
-### M07-Q17 — match-pairs (step 27, pair 4 of 4 (all pairs are on one screen))
+### M07-Q16 — match-pairs (step 26, pair 3 of 4 (all pairs are on one screen))
 
-- Prompt displayed: "What the driver says — and which moment of the ride" / "מה הנהג אומר — ובאיזה רגע של הנסיעה" — tile to match (target language, no translation): EN "Is here okay?" · FR "Ici, ça va ?" · ES "¿Aquí está bien?"
-- Audio played: EN "Is here okay?" · FR "Ici, ça va ?" · ES "¿Aquí está bien?"
-- Meaning of the audio (HE): "כאן זה בסדר?"
+- Prompt displayed: "The driver says — what do you answer?" / "הנהג אומר — מה אתה עונה?" — tile to match (target language, no translation): EN "Sure. About fifteen euros. There's a lot of traffic." · FR "Bien sûr. Environ quinze euros. Il y a beaucoup de circulation." · ES "Claro. Unos quince euros. Hay mucho tráfico."
+- Audio played: EN "Sure. About fifteen euros. There's a lot of traffic." · FR "Bien sûr. Environ quinze euros. Il y a beaucoup de circulation." · ES "Claro. Unos quince euros. Hay mucho tráfico."
+- Meaning of the audio (HE): "בטח. בערך חמישה עשר יורו. יש הרבה פקקים."
 - Buttons show: the ANSWER tiles, target language only; their order is shuffled; a matched pair locks and leaves the board, so later pairs have fewer live tiles
 - Choices:
-  1. EN "📍" · FR "📍" · ES "📍" · (HE gloss "לכתובת הזאת, בבקשה.") — `phrase.taxi.to-address` — ❌ wrong
-  2. EN "💶 €15" · FR "💶 €15" · ES "💶 €15" · (HE gloss "כמה עד המרכז?") — `phrase.taxi.how-much` — ❌ wrong
-  3. EN "🚗🚗🚗" · FR "🚗🚗🚗" · ES "🚗🚗🚗" · (HE gloss "סליחה, דבר לאט, בבקשה.") — `phrase.taxi.speak-slowly` — ❌ wrong
-  4. EN "🏁" · FR "🏁" · ES "🏁" · (HE gloss "עצור כאן, בבקשה.") — `phrase.taxi.stop-here` — ✅ accepted
+  1. EN "To this address, please." · FR "À cette adresse, s’il vous plaît." · ES "A esta dirección, por favor." · (HE gloss "לכתובת הזאת, בבקשה.") — `phrase.taxi.to-address` — ❌ wrong
+  2. EN "Sorry, please speak slowly." · FR "Pardon, parlez lentement, s’il vous plaît." · ES "Perdone, más despacio, por favor." · (HE gloss "סליחה, דבר לאט, בבקשה.") — `phrase.taxi.speak-slowly` — ❌ wrong
+  3. EN "Okay, thank you." · FR "D’accord, merci." · ES "De acuerdo, gracias." · (HE gloss "בסדר, תודה.") — `phrase.taxi.okay-thanks` — ✅ accepted
+  4. EN "Stop here, please. Keep the change." · FR "Arrêtez-vous ici, s’il vous plaît. Gardez la monnaie." · ES "Pare aquí, por favor. Quédese con el cambio." · (HE gloss "עצור כאן, בבקשה.") — `phrase.taxi.stop-here` — ❌ wrong
+- Tests: phrase.taxi.okay-thanks
+- Explanation shown after answering: none — a correct match locks both tiles under a shared number and speaks the answer; a miss shakes, shows ✕ and clears (no penalty)
+
+### M07-Q17 — match-pairs (step 26, pair 4 of 4 (all pairs are on one screen))
+
+- Prompt displayed: "The driver says — what do you answer?" / "הנהג אומר — מה אתה עונה?" — tile to match (target language, no translation): EN "…We are almost there. Is here okay?" · FR "…On est presque arrivés. Ici, ça va ?" · ES "…Ya casi llegamos. ¿Aquí está bien?"
+- Audio played: EN "…We are almost there. Is here okay?" · FR "…On est presque arrivés. Ici, ça va ?" · ES "…Ya casi llegamos. ¿Aquí está bien?"
+- Meaning of the audio (HE): "…כמעט הגענו. כאן זה בסדר?"
+- Buttons show: the ANSWER tiles, target language only; their order is shuffled; a matched pair locks and leaves the board, so later pairs have fewer live tiles
+- Choices:
+  1. EN "To this address, please." · FR "À cette adresse, s’il vous plaît." · ES "A esta dirección, por favor." · (HE gloss "לכתובת הזאת, בבקשה.") — `phrase.taxi.to-address` — ❌ wrong
+  2. EN "Sorry, please speak slowly." · FR "Pardon, parlez lentement, s’il vous plaît." · ES "Perdone, más despacio, por favor." · (HE gloss "סליחה, דבר לאט, בבקשה.") — `phrase.taxi.speak-slowly` — ❌ wrong
+  3. EN "Okay, thank you." · FR "D’accord, merci." · ES "De acuerdo, gracias." · (HE gloss "בסדר, תודה.") — `phrase.taxi.okay-thanks` — ❌ wrong
+  4. EN "Stop here, please. Keep the change." · FR "Arrêtez-vous ici, s’il vous plaît. Gardez la monnaie." · ES "Pare aquí, por favor. Quédese con el cambio." · (HE gloss "עצור כאן, בבקשה.") — `phrase.taxi.stop-here` — ✅ accepted
 - Tests: phrase.taxi.stop-here
 - Explanation shown after answering: none — a correct match locks both tiles under a shared number and speaks the answer; a miss shakes, shows ✕ and clears (no penalty)
 
-### M07-Q20 — quick-reply (step 29, round 1 of 6)
+### M07-Q20 — quick-reply (step 28, round 1 of 2)
 
-- Prompt displayed: "The ride — 📍 the address · 💶 ~€15 · 🚦 traffic · 🏁 stop · 🤝 keep the change" / "הנסיעה — 📍 הכתובת · 💶 ~€15 · 🚦 פקקים · 🏁 לעצור · 🤝 העודף לנהג"
+- Prompt displayed: "🚕 📍 Destination ✅ · 💶 Fare ? · 🚦 Traffic ? · 🏁 Arrival ⬜ · 🤝 Payment ⬜" / "🚕 📍 יעד ✅ · 💶 מחיר ? · 🚦 תנועה ? · 🏁 הגעה ⬜ · 🤝 תשלום ⬜"
 - Audio played: EN "Hello! Where to?" · FR "Bonjour ! Où allez-vous ?" · ES "¡Hola! ¿A dónde va?"
 - Meaning of the audio (HE): "שלום! לאן?"
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
@@ -7605,9 +7628,9 @@ No meaning quiz in this mission.
 - Tests: phrase.taxi.to-address
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M07-Q21 — quick-reply (step 29, round 2 of 6)
+### M07-Q21 — quick-reply (step 28, round 2 of 2)
 
-- Prompt displayed: "The ride — 📍 the address · 💶 ~€15 · 🚦 traffic · 🏁 stop · 🤝 keep the change" / "הנסיעה — 📍 הכתובת · 💶 ~€15 · 🚦 פקקים · 🏁 לעצור · 🤝 העודף לנהג"
+- Prompt displayed: "🚕 📍 Destination ✅ · 💶 Fare ? · 🚦 Traffic ? · 🏁 Arrival ⬜ · 🤝 Payment ⬜" / "🚕 📍 יעד ✅ · 💶 מחיר ? · 🚦 תנועה ? · 🏁 הגעה ⬜ · 🤝 תשלום ⬜"
 - Audio played: EN "Got it. No problem — off we go!" · FR "D’accord. Pas de problème — on y va !" · ES "De acuerdo. Sin problema — ¡vamos!"
 - Meaning of the audio (HE): "הבנתי. אין בעיה — יוצאים!"
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
@@ -7618,9 +7641,9 @@ No meaning quiz in this mission.
 - Tests: phrase.taxi.how-much
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M07-Q22 — quick-reply (step 29, round 3 of 6)
+### M07-Q22 — quick-reply (step 29, round 1 of 2)
 
-- Prompt displayed: "The ride — 📍 the address · 💶 ~€15 · 🚦 traffic · 🏁 stop · 🤝 keep the change" / "הנסיעה — 📍 הכתובת · 💶 ~€15 · 🚦 פקקים · 🏁 לעצור · 🤝 העודף לנהג"
+- Prompt displayed: "🚕 📍 Destination ✅ · 💶 Fare ? · 🚦 Traffic ? · 🏁 Arrival ⬜ · 🤝 Payment ⬜" / "🚕 📍 יעד ✅ · 💶 מחיר ? · 🚦 תנועה ? · 🏁 הגעה ⬜ · 🤝 תשלום ⬜"
 - Audio played: EN "It's about fifteen euros. There's a lot of traffic right now." · FR "C’est environ quinze euros. Il y a beaucoup de circulation en ce moment." · ES "Son unos quince euros. Hay mucho tráfico ahora mismo."
 - Meaning of the audio (HE): "זה בערך חמישה עשר יורו. יש הרבה פקקים עכשיו."
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
@@ -7631,9 +7654,9 @@ No meaning quiz in this mission.
 - Tests: phrase.taxi.speak-slowly
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M07-Q23 — quick-reply (step 29, round 4 of 6)
+### M07-Q23 — quick-reply (step 29, round 2 of 2)
 
-- Prompt displayed: "The ride — 📍 the address · 💶 ~€15 · 🚦 traffic · 🏁 stop · 🤝 keep the change" / "הנסיעה — 📍 הכתובת · 💶 ~€15 · 🚦 פקקים · 🏁 לעצור · 🤝 העודף לנהג"
+- Prompt displayed: "🚕 📍 Destination ✅ · 💶 Fare ? · 🚦 Traffic ? · 🏁 Arrival ⬜ · 🤝 Payment ⬜" / "🚕 📍 יעד ✅ · 💶 מחיר ? · 🚦 תנועה ? · 🏁 הגעה ⬜ · 🤝 תשלום ⬜"
 - Audio played: EN "Sure. About fifteen euros. There's a lot of traffic." · FR "Bien sûr. Environ quinze euros. Il y a beaucoup de circulation." · ES "Claro. Unos quince euros. Hay mucho tráfico."
 - Meaning of the audio (HE): "בטח. בערך חמישה עשר יורו. יש הרבה פקקים."
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
@@ -7644,9 +7667,9 @@ No meaning quiz in this mission.
 - Tests: phrase.taxi.okay-thanks
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M07-Q24 — quick-reply (step 29, round 5 of 6)
+### M07-Q24 — quick-reply (step 30, round 1 of 2)
 
-- Prompt displayed: "The ride — 📍 the address · 💶 ~€15 · 🚦 traffic · 🏁 stop · 🤝 keep the change" / "הנסיעה — 📍 הכתובת · 💶 ~€15 · 🚦 פקקים · 🏁 לעצור · 🤝 העודף לנהג"
+- Prompt displayed: "🚕 📍 Destination ✅ · 💶 ~€15 ✅ · 🚦 Traffic ✅ · 🏁 Arrival ⬜ · 🤝 Payment ⬜" / "🚕 📍 יעד ✅ · 💶 ~€15 ✅ · 🚦 תנועה ✅ · 🏁 הגעה ⬜ · 🤝 תשלום ⬜"
 - Audio played: EN "…We are almost there. Is here okay?" · FR "…On est presque arrivés. Ici, ça va ?" · ES "…Ya casi llegamos. ¿Aquí está bien?"
 - Meaning of the audio (HE): "…כמעט הגענו. כאן זה בסדר?"
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
@@ -7657,9 +7680,9 @@ No meaning quiz in this mission.
 - Tests: phrase.taxi.stop-here
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M07-Q25 — quick-reply (step 29, round 6 of 6)
+### M07-Q25 — quick-reply (step 30, round 2 of 2)
 
-- Prompt displayed: "The ride — 📍 the address · 💶 ~€15 · 🚦 traffic · 🏁 stop · 🤝 keep the change" / "הנסיעה — 📍 הכתובת · 💶 ~€15 · 🚦 פקקים · 🏁 לעצור · 🤝 העודף לנהג" — situation shown: "The meter says €15. You gave the driver a €20 note, and he starts counting out €5 change." / "המונה מראה €15. נתת לנהג שטר של €20, והוא מתחיל לספור לך €5 עודף."
+- Prompt displayed: "🚕 📍 Destination ✅ · 💶 ~€15 ✅ · 🚦 Traffic ✅ · 🏁 Arrival ⬜ · 🤝 Payment ⬜" / "🚕 📍 יעד ✅ · 💶 ~€15 ✅ · 🚦 תנועה ✅ · 🏁 הגעה ⬜ · 🤝 תשלום ⬜" — situation shown: "The meter says €15. You gave the driver a €20 note, and he starts counting out €5 change." / "המונה מראה €15. נתת לנהג שטר של €20, והוא מתחיל לספור לך €5 עודף."
 - Audio played: EN "(nothing is played — a situation is shown)" · FR "(nothing is played — a situation is shown)" · ES "(nothing is played — a situation is shown)"
 - Meaning of the audio (HE): —
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
@@ -7670,7 +7693,7 @@ No meaning quiz in this mission.
 - Tests: phrase.taxi.keep-change
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M07-Q31 — quick-reply (step 33, round 1 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
+### M07-Q31 — quick-reply (step 34, round 1 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
 
 - Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio played: EN "Hello! Where to?" · FR "Bonjour ! Où allez-vous ?" · ES "¡Hola! ¿A dónde va?"
@@ -7683,7 +7706,7 @@ No meaning quiz in this mission.
 - Tests: phrase.taxi.to-address
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M07-Q32 — quick-reply (step 33, round 2 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
+### M07-Q32 — quick-reply (step 34, round 2 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
 
 - Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio played: EN "Got it. No problem — off we go!" · FR "D’accord. Pas de problème — on y va !" · ES "De acuerdo. Sin problema — ¡vamos!"
@@ -7696,7 +7719,7 @@ No meaning quiz in this mission.
 - Tests: phrase.taxi.how-much
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M07-Q33 — quick-reply (step 33, round 3 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
+### M07-Q33 — quick-reply (step 34, round 3 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
 
 - Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio played: EN "It's about fifteen euros. There's a lot of traffic right now." · FR "C’est environ quinze euros. Il y a beaucoup de circulation en ce moment." · ES "Son unos quince euros. Hay mucho tráfico ahora mismo."
@@ -7709,7 +7732,7 @@ No meaning quiz in this mission.
 - Tests: phrase.taxi.speak-slowly
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M07-Q34 — quick-reply (step 33, round 4 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
+### M07-Q34 — quick-reply (step 34, round 4 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
 
 - Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio played: EN "Sure. About fifteen euros. There's a lot of traffic." · FR "Bien sûr. Environ quinze euros. Il y a beaucoup de circulation." · ES "Claro. Unos quince euros. Hay mucho tráfico."
@@ -7722,7 +7745,7 @@ No meaning quiz in this mission.
 - Tests: phrase.taxi.okay-thanks
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M07-Q35 — quick-reply (step 33, round 5 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
+### M07-Q35 — quick-reply (step 34, round 5 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
 
 - Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio played: EN "…We are almost there. Is here okay?" · FR "…On est presque arrivés. Ici, ça va ?" · ES "…Ya casi llegamos. ¿Aquí está bien?"
@@ -7735,7 +7758,7 @@ No meaning quiz in this mission.
 - Tests: phrase.taxi.stop-here
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M07-Q36 — visual-match (step 36, round 1 of 1 · SPEED CHALLENGE (spoken at rate 1.12))
+### M07-Q36 — visual-match (step 37, round 1 of 1 · SPEED CHALLENGE (spoken at rate 1.12))
 
 - Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio played: EN "Hello! Where to?" · FR "Bonjour ! Où allez-vous ?" · ES "¡Hola! ¿A dónde va?"
@@ -7748,9 +7771,9 @@ No meaning quiz in this mission.
 - Tests: (no sentence id — not recorded)
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
-### M07-Q37 — quick-reply (step 37, round 1 of 2)
+### M07-Q37 — quick-reply (step 38, round 1 of 2)
 
-- Prompt displayed: "The ride 2/5 — 💶 ~€15" / "הנסיעה 2/5 — 💶 ~€15"
+- Prompt displayed: "The ride 2/5 — 💶 Fare" / "הנסיעה 2/5 — 💶 מחיר"
 - Audio played: EN "Got it. No problem — off we go!" · FR "D’accord. Pas de problème — on y va !" · ES "De acuerdo. Sin problema — ¡vamos!"
 - Meaning of the audio (HE): "הבנתי. אין בעיה — יוצאים!"
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
@@ -7761,9 +7784,9 @@ No meaning quiz in this mission.
 - Tests: phrase.taxi.how-much
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M07-Q38 — quick-reply (step 37, round 2 of 2)
+### M07-Q38 — quick-reply (step 38, round 2 of 2)
 
-- Prompt displayed: "The ride 2/5 — 💶 ~€15" / "הנסיעה 2/5 — 💶 ~€15"
+- Prompt displayed: "The ride 2/5 — 💶 Fare" / "הנסיעה 2/5 — 💶 מחיר"
 - Audio played: EN "It's about fifteen euros. There's a lot of traffic right now." · FR "C’est environ quinze euros. Il y a beaucoup de circulation en ce moment." · ES "Son unos quince euros. Hay mucho tráfico ahora mismo."
 - Meaning of the audio (HE): "זה בערך חמישה עשר יורו. יש הרבה פקקים עכשיו."
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
@@ -7774,9 +7797,9 @@ No meaning quiz in this mission.
 - Tests: phrase.taxi.speak-slowly
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M07-Q39 — visual-match (step 38, round 1 of 2)
+### M07-Q39 — visual-match (step 39, round 1 of 2)
 
-- Prompt displayed: "The ride 3/5 — 🚦 Traffic" / "הנסיעה 3/5 — 🚦 פקקים"
+- Prompt displayed: "The ride 3/5 — 🚦 Traffic" / "הנסיעה 3/5 — 🚦 תנועה"
 - Audio played: EN "Sure. About fifteen euros. There's a lot of traffic." · FR "Bien sûr. Environ quinze euros. Il y a beaucoup de circulation." · ES "Claro. Unos quince euros. Hay mucho tráfico."
 - Meaning of the audio (HE): "בטח. בערך חמישה עשר יורו. יש הרבה פקקים."
 - Buttons show: only this round's 3 tiles (the meaning and its contrast), same in every language; the sentence and its translation appear only AFTER the tap
@@ -7787,9 +7810,9 @@ No meaning quiz in this mission.
 - Tests: (no sentence id — not recorded)
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
-### M07-Q40 — visual-match (step 38, round 2 of 2)
+### M07-Q40 — visual-match (step 39, round 2 of 2)
 
-- Prompt displayed: "The ride 3/5 — 🚦 Traffic" / "הנסיעה 3/5 — 🚦 פקקים"
+- Prompt displayed: "The ride 3/5 — 🚦 Traffic" / "הנסיעה 3/5 — 🚦 תנועה"
 - Audio played: EN "Sure. About fifteen euros. There's a lot of traffic." · FR "Bien sûr. Environ quinze euros. Il y a beaucoup de circulation." · ES "Claro. Unos quince euros. Hay mucho tráfico."
 - Meaning of the audio (HE): "בטח. בערך חמישה עשר יורו. יש הרבה פקקים."
 - Buttons show: only this round's 2 tiles (the meaning and its contrast), same in every language; the sentence and its translation appear only AFTER the tap
@@ -7799,7 +7822,7 @@ No meaning quiz in this mission.
 - Tests: (no sentence id — not recorded)
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
-### M07-Q41 — mini-map (step 39, round 1 of 1 · SPEED CHALLENGE (spoken at rate 1.12))
+### M07-Q41 — mini-map (step 40, round 1 of 1 · SPEED CHALLENGE (spoken at rate 1.12))
 
 - Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה." — board, row by row: · | 🏢 [tap:too-late] | · // · | 🏁 [tap:here] | · // 🏪 [tap:too-early] | 🚕 | ·
 - Audio played: EN "…We are almost there. Is here okay?" · FR "…On est presque arrivés. Ici, ça va ?" · ES "…Ya casi llegamos. ¿Aquí está bien?"
@@ -7812,7 +7835,7 @@ No meaning quiz in this mission.
 - Tests: (no sentence id — not recorded)
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
-### M07-Q42 — quick-reply (step 40, round 1 of 1)
+### M07-Q42 — quick-reply (step 41, round 1 of 1)
 
 - Prompt displayed: "The ride 5/5 — 🤝 Payment" / "הנסיעה 5/5 — 🤝 תשלום" — situation shown: "The meter says €15. You gave the driver a €20 note, and he starts counting out €5 change." / "המונה מראה €15. נתת לנהג שטר של €20, והוא מתחיל לספור לך €5 עודף."
 - Audio played: EN "(nothing is played — a situation is shown)" · FR "(nothing is played — a situation is shown)" · ES "(nothing is played — a situation is shown)"
@@ -7934,7 +7957,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 
 ## Learner choice screens
 
-### M07-Q26 — dialogue-choice (step 31, scene "taxi-ride" · node c1)
+### M07-Q26 — dialogue-choice (step 32, scene "taxi-ride" · node c1)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Hello! Where to?" · FR "Bonjour ! Où allez-vous ?" · ES "¡Hola! ¿A dónde va?"
@@ -7946,7 +7969,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.taxi.to-address, phrase.taxi.to-airport
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M07-Q27 — dialogue-choice (step 31, scene "taxi-ride" · node c2)
+### M07-Q27 — dialogue-choice (step 32, scene "taxi-ride" · node c2)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Got it. No problem — off we go!" · FR "D’accord. Pas de problème — on y va !" · ES "De acuerdo. Sin problema — ¡vamos!"
@@ -7958,7 +7981,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.taxi.how-much, phrase.recovery.show-me
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M07-Q28 — dialogue-choice (step 31, scene "taxi-ride" · node c3)
+### M07-Q28 — dialogue-choice (step 32, scene "taxi-ride" · node c3)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "It's about fifteen euros. There's a lot of traffic right now." · FR "C’est environ quinze euros. Il y a beaucoup de circulation en ce moment." · ES "Son unos quince euros. Hay mucho tráfico ahora mismo."
@@ -7970,7 +7993,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.recovery.slowly, phrase.recovery.thank-you
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M07-Q29 — dialogue-choice (step 31, scene "taxi-ride" · node c3b)
+### M07-Q29 — dialogue-choice (step 32, scene "taxi-ride" · node c3b)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Sure. About fifteen euros. There's a lot of traffic." · FR "Bien sûr. Environ quinze euros. Il y a beaucoup de circulation." · ES "Claro. Unos quince euros. Hay mucho tráfico."
@@ -7981,7 +8004,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.recovery.thank-you
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M07-Q30 — dialogue-choice (step 31, scene "taxi-ride" · node c4)
+### M07-Q30 — dialogue-choice (step 32, scene "taxi-ride" · node c4)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "…We are almost there. Is here okay?" · FR "…On est presque arrivés. Ici, ça va ?" · ES "…Ya casi llegamos. ¿Aquí está bien?"
@@ -8030,20 +8053,20 @@ Learner sentences taught beside the dialogue (not a line in any scene):
 
 ## Receipts (proof cards)
 
-- Step 8: "🚕 📍 Destination ✅ · 💶 ~€15 ⬜ · 🚦 Traffic ⬜ · 🏁 Arrival ⬜ · 🤝 Payment ⬜" / "🚕 📍 יעד ✅ · 💶 ~€15 ⬜ · 🚦 פקקים ⬜ · 🏁 הגעה ⬜ · 🤝 תשלום ⬜"
-- Step 12: "🚕 📍 Destination ✅ · 💶 ~€15 ✅ · 🚦 Traffic ⬜ · 🏁 Arrival ⬜ · 🤝 Payment ⬜" / "🚕 📍 יעד ✅ · 💶 ~€15 ✅ · 🚦 פקקים ⬜ · 🏁 הגעה ⬜ · 🤝 תשלום ⬜"
-- Step 20: "✓ €15 understood · ✓ traffic understood — you asked him to slow down, and it worked. 🚕 📍 Destination ✅ · 💶 ~€15 ✅ · 🚦 Traffic ✅ · 🏁 Arrival ⬜ · 🤝 Payment ⬜" / "✓ הבנת €15 · ✓ הבנת שיש פקקים — ביקשת שידבר לאט, וזה עבד. 🚕 📍 יעד ✅ · 💶 ~€15 ✅ · 🚦 פקקים ✅ · 🏁 הגעה ⬜ · 🤝 תשלום ⬜"
-- Step 23: "🚕 📍 Destination ✅ · 💶 ~€15 ✅ · 🚦 Traffic ✅ · 🏁 Arrival ✅ · 🤝 Payment ⬜" / "🚕 📍 יעד ✅ · 💶 ~€15 ✅ · 🚦 פקקים ✅ · 🏁 הגעה ✅ · 🤝 תשלום ⬜"
-- Step 26: "🚕 📍 Destination ✅ · 💶 ~€15 ✅ · 🚦 Traffic ✅ · 🏁 Arrival ✅ · 🤝 Payment ✅" / "🚕 📍 יעד ✅ · 💶 ~€15 ✅ · 🚦 פקקים ✅ · 🏁 הגעה ✅ · 🤝 תשלום ✅"
-- Step 30: "🚕 📍 Destination ✅ · 💶 ~€15 ✅ · 🚦 Traffic ✅ · 🏁 Arrival ✅ · 🤝 Payment ✅ — you did the whole ride." / "🚕 📍 יעד ✅ · 💶 ~€15 ✅ · 🚦 פקקים ✅ · 🏁 הגעה ✅ · 🤝 תשלום ✅ — נסעת את כל הנסיעה."
-- Step 32: "The whole conversation — from “where to?” to “enjoy your trip”." / "כל השיחה — מ"לאן?" ועד "תיהנה מהטיול"."
-- Step 34: "No help — he spoke fast, you asked him to slow down, and you understood." / "בלי עזרה — והוא דיבר מהר, ביקשת שיאט, והבנת."
-- Step 41: "🚕 RIDE COMPLETE · 🚕 📍 Destination ✅ · 💶 ~€15 ✅ · 🚦 Traffic ✅ · 🏁 Arrival ✅ · 🤝 Payment ✅ · “Thank you very much! Enjoy your trip!”" / "🚕 הנסיעה הושלמה · 🚕 📍 יעד ✅ · 💶 ~€15 ✅ · 🚦 פקקים ✅ · 🏁 הגעה ✅ · 🤝 תשלום ✅ · "תודה רבה! תיהנה מהטיול!""
+- Step 7: "🚕 📍 Destination ✅ · 💶 Fare ? · 🚦 Traffic ? · 🏁 Arrival ⬜ · 🤝 Payment ⬜" / "🚕 📍 יעד ✅ · 💶 מחיר ? · 🚦 תנועה ? · 🏁 הגעה ⬜ · 🤝 תשלום ⬜"
+- Step 11: "🚕 📍 Destination ✅ · 💶 ~€15 ✅ · 🚦 Traffic ? · 🏁 Arrival ⬜ · 🤝 Payment ⬜" / "🚕 📍 יעד ✅ · 💶 ~€15 ✅ · 🚦 תנועה ? · 🏁 הגעה ⬜ · 🤝 תשלום ⬜"
+- Step 19: "✓ €15 understood · ✓ traffic understood — you asked him to slow down, and it worked. 🚕 📍 Destination ✅ · 💶 ~€15 ✅ · 🚦 Traffic ✅ · 🏁 Arrival ⬜ · 🤝 Payment ⬜" / "✓ הבנת €15 · ✓ הבנת שיש פקקים — ביקשת שידבר לאט, וזה עבד. 🚕 📍 יעד ✅ · 💶 ~€15 ✅ · 🚦 תנועה ✅ · 🏁 הגעה ⬜ · 🤝 תשלום ⬜"
+- Step 22: "🚕 📍 Destination ✅ · 💶 ~€15 ✅ · 🚦 Traffic ✅ · 🏁 Arrival ✅ · 🤝 Payment ⬜" / "🚕 📍 יעד ✅ · 💶 ~€15 ✅ · 🚦 תנועה ✅ · 🏁 הגעה ✅ · 🤝 תשלום ⬜"
+- Step 25: "🚕 📍 Destination ✅ · 💶 ~€15 ✅ · 🚦 Traffic ✅ · 🏁 Arrival ✅ · 🤝 Payment ✅" / "🚕 📍 יעד ✅ · 💶 ~€15 ✅ · 🚦 תנועה ✅ · 🏁 הגעה ✅ · 🤝 תשלום ✅"
+- Step 31: "🚕 📍 Destination ✅ · 💶 ~€15 ✅ · 🚦 Traffic ✅ · 🏁 Arrival ✅ · 🤝 Payment ✅ — you did the whole ride." / "🚕 📍 יעד ✅ · 💶 ~€15 ✅ · 🚦 תנועה ✅ · 🏁 הגעה ✅ · 🤝 תשלום ✅ — נסעת את כל הנסיעה."
+- Step 33: "The whole conversation — from “where to?” to “enjoy your trip”." / "כל השיחה — מ"לאן?" ועד "תיהנה מהטיול"."
+- Step 35: "No help — he spoke fast, you asked him to slow down, and you understood." / "בלי עזרה — והוא דיבר מהר, ביקשת שיאט, והבנת."
+- Step 42: "🚕 RIDE COMPLETE · 🚕 📍 Destination ✅ · 💶 ~€15 ✅ · 🚦 Traffic ✅ · 🏁 Arrival ✅ · 🤝 Payment ✅ · “Thank you very much! Enjoy your trip!”" / "🚕 הנסיעה הושלמה · 🚕 📍 יעד ✅ · 💶 ~€15 ✅ · 🚦 תנועה ✅ · 🏁 הגעה ✅ · 🤝 תשלום ✅ · "תודה רבה! תיהנה מהטיול!""
 
 ## Audit Metadata — DO NOT FIX YET
 
 - Learner-production sentences: 7
-- Receptive (expected-reply) sentences: 6
+- Receptive (expected-reply) sentences: 9
 - Toolkit phrases bundled: 3
 - Key-sentence steps: 0
 - Expected-reply/listening items: 2
@@ -8056,7 +8079,7 @@ Learner sentences taught beside the dialogue (not a line in any scene):
 - Wrong-answer branches: 0
 - Cold-open prompts: 0
 - Recovery opportunities: 2
-- Vocabulary pre-items: 20
+- Vocabulary pre-items: 18
 - Swap variants (extra accepted lines): 1
 - Sentences in review: 0
 - Total interactive questions: 42 (answer choices: 111)
@@ -28864,7 +28887,7 @@ Every learner sentence of this mission is a line in a scene.
 | 04 Everyday Core: Want / Need / Have / Can | 19 (10 / 7 / 2) | 0 | 0 | 0 | 41 | 10 | 9 | 2 | 0 | 31 words | 0 | 51 | 2 |
 | 05 Directions | 12 (4 / 6 / 2) | 3 | 3 | 0 | 34 | 3 | 1 | 1 | 0 | 24 words | 0 | 40 | 2 |
 | 06 Airport & Border | 14 (5 / 5 / 4) | 5 | 5 | 0 | 32 | 10 | 5 | 3 | 0 | 17 words | 0 | 47 | 3 |
-| 07 Taxi / Uber | 16 (7 / 6 / 3) | 2 | 2 | 0 | 35 | 5 | 2 | 2 | 0 | 20 words | 1 | 42 | 2 |
+| 07 Taxi / Uber | 19 (7 / 9 / 3) | 2 | 2 | 0 | 35 | 5 | 2 | 2 | 0 | 18 words | 1 | 42 | 2 |
 | 08 Hotel Check-in | 14 (4 / 6 / 4) | 4 | 4 | 0 | 10 | 4 | 2 | 2 | 1 | 4 words | 0 | 19 | 7 |
 | 09 Shopping | 15 (5 / 6 / 4) | 4 | 5 | 1 | 6 | 6 | 3 | 1 | 1 | no | 2 | 18 | 7 |
 | 10 CHECKPOINT: Arrival Day | 15 (10 / 2 / 3) | 0 | 0 | 0 | 0 | 11 | 0 | 3 | 1 | no | 0 | 12 | 8 |
@@ -28934,11 +28957,11 @@ Every learner-production sentence id of the Core, in order of first appearance. 
 | `phrase.border.nothing-declare` | Nothing to declare. | 06 | 10 | 0 | 3 / 2 | 7 | 0 | 0 | yes | no |  |
 | `phrase.taxi.to-address` | To this address, please. | 07 | 10, 28, 29, 30 | 0 | 4 / 4 | 11 | 0 | 0 | yes | no |  |
 | `phrase.taxi.to-airport` | To the airport, please. | 07 | — | 0 | 1 / 0 | 0 | 0 | 0 | no | no |  |
-| `phrase.taxi.how-much` | How much to the centre? | 07 | 10, 30 | 0 | 1 / 2 | 12 | 0 | 0 | yes | no |  |
+| `phrase.taxi.how-much` | How much to the centre? | 07 | 10, 30 | 0 | 1 / 2 | 11 | 0 | 0 | yes | no |  |
 | `phrase.taxi.stop-here` | Stop here, please. | 07 | 10, 29, 30 | 0 | 4 / 1 | 9 | 0 | 0 | yes | no |  |
 | `phrase.taxi.keep-change` | Keep the change. | 07 | 29 | 0 | 0 / 2 | 7 | 0 | 0 | no | no |  |
 | `phrase.taxi.speak-slowly` | Sorry, please speak slowly. | 07 | — | 0 | 0 / 0 | 8 | 0 | 0 | no | no |  |
-| `phrase.taxi.okay-thanks` | Okay, thank you. | 07 | — | 0 | 0 / 0 | 5 | 0 | 0 | no | no |  |
+| `phrase.taxi.okay-thanks` | Okay, thank you. | 07 | — | 0 | 0 / 0 | 6 | 0 | 0 | no | no |  |
 | `phrase.hotel.reservation` | I have a reservation. | 08 | 10, 30 | 1 | 3 / 2 | 3 | 0 | 1 | yes | no |  |
 | `phrase.hotel.under-name` | Under the name Cohen. | 08 | — | 1 | 0 / 0 | 1 | 0 | 1 | no | no |  |
 | `phrase.hotel.breakfast` | Is breakfast included? | 08 | 10, 30 | 1 | 2 / 2 | 4 | 0 | 1 | yes | no |  |
@@ -29125,6 +29148,9 @@ Every expected-reply sentence id. "Quick response" does not exist as an exercise
 | `reply.taxi.here-good` | Is here okay? | 07 | — | no | 0 / 0 | 0 / 0 | no | yes |
 | `reply.taxi.off-we-go` | Got it. No problem — off we go! | 07 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
 | `reply.taxi.goodbye` | Thank you very much! Enjoy your trip! | 07 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
+| `reply.taxi.fast-answer` | It's about fifteen euros. There's a lot of traffic right now. | 07 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.taxi.slow-repeat` | Sure. About fifteen euros. There's a lot of traffic. | 07 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.taxi.almost-there` | …We are almost there. Is here okay? | 07 | — | no | 0 / 0 | 0 / 0 | no | yes |
 | `reply.hotel.passport` | Your passport, please. | 08 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
 | `reply.hotel.sign-here` | Sign here, please. | 08 | — | no | 0 / 0 | 0 / 0 | no | **no** |
 | `reply.hotel.room-number` | You're in room two-oh-four. | 08 | 10 | yes (1) | 0 / 0 | 0 / 1 | yes | yes |
@@ -31978,43 +32004,43 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Tests: phrase.taxi.keep-change
 
 **M07-Q14** — match-pairs
-- Prompt: "What the driver says — and which moment of the ride" / "מה הנהג אומר — ובאיזה רגע של הנסיעה" — tile to match (target language, no translation): EN "Where to?" · FR "Où allez-vous ?" · ES "¿A dónde va?"
+- Prompt: "The driver says — what do you answer?" / "הנהג אומר — מה אתה עונה?" — tile to match (target language, no translation): EN "Where to?" · FR "Où allez-vous ?" · ES "¿A dónde va?"
 - Audio: Where to? — (לאן?)
-- A: 📍 ✅
-- B: 💶 €15
-- C: 🚗🚗🚗
-- D: 🏁
-- Correct: 📍
+- A: To this address, please. ✅
+- B: Sorry, please speak slowly.
+- C: Okay, thank you.
+- D: Stop here, please. Keep the change.
+- Correct: To this address, please.
 - Tests: phrase.taxi.to-address
 
 **M07-Q15** — match-pairs
-- Prompt: "What the driver says — and which moment of the ride" / "מה הנהג אומר — ובאיזה רגע של הנסיעה" — tile to match (target language, no translation): EN "It's about fifteen euros." · FR "C’est environ quinze euros." · ES "Son unos quince euros."
-- Audio: It's about fifteen euros. — (זה בערך חמישה עשר יורו.)
-- A: 📍
-- B: 💶 €15 ✅
-- C: 🚗🚗🚗
-- D: 🏁
-- Correct: 💶 €15
-- Tests: phrase.taxi.how-much
-
-**M07-Q16** — match-pairs
-- Prompt: "What the driver says — and which moment of the ride" / "מה הנהג אומר — ובאיזה רגע של הנסיעה" — tile to match (target language, no translation): EN "There's a lot of traffic right now." · FR "Il y a beaucoup de circulation en ce moment." · ES "Hay mucho tráfico ahora mismo."
-- Audio: There's a lot of traffic right now. — (יש הרבה פקקים עכשיו.)
-- A: 📍
-- B: 💶 €15
-- C: 🚗🚗🚗 ✅
-- D: 🏁
-- Correct: 🚗🚗🚗
+- Prompt: "The driver says — what do you answer?" / "הנהג אומר — מה אתה עונה?" — tile to match (target language, no translation): EN "It's about fifteen euros. There's a lot of traffic right now." · FR "C’est environ quinze euros. Il y a beaucoup de circulation en ce moment." · ES "Son unos quince euros. Hay mucho tráfico ahora mismo."
+- Audio: It's about fifteen euros. There's a lot of traffic right now. — (זה בערך חמישה עשר יורו. יש הרבה פקקים עכשיו.)
+- A: To this address, please.
+- B: Sorry, please speak slowly. ✅
+- C: Okay, thank you.
+- D: Stop here, please. Keep the change.
+- Correct: Sorry, please speak slowly.
 - Tests: phrase.taxi.speak-slowly
 
+**M07-Q16** — match-pairs
+- Prompt: "The driver says — what do you answer?" / "הנהג אומר — מה אתה עונה?" — tile to match (target language, no translation): EN "Sure. About fifteen euros. There's a lot of traffic." · FR "Bien sûr. Environ quinze euros. Il y a beaucoup de circulation." · ES "Claro. Unos quince euros. Hay mucho tráfico."
+- Audio: Sure. About fifteen euros. There's a lot of traffic. — (בטח. בערך חמישה עשר יורו. יש הרבה פקקים.)
+- A: To this address, please.
+- B: Sorry, please speak slowly.
+- C: Okay, thank you. ✅
+- D: Stop here, please. Keep the change.
+- Correct: Okay, thank you.
+- Tests: phrase.taxi.okay-thanks
+
 **M07-Q17** — match-pairs
-- Prompt: "What the driver says — and which moment of the ride" / "מה הנהג אומר — ובאיזה רגע של הנסיעה" — tile to match (target language, no translation): EN "Is here okay?" · FR "Ici, ça va ?" · ES "¿Aquí está bien?"
-- Audio: Is here okay? — (כאן זה בסדר?)
-- A: 📍
-- B: 💶 €15
-- C: 🚗🚗🚗
-- D: 🏁 ✅
-- Correct: 🏁
+- Prompt: "The driver says — what do you answer?" / "הנהג אומר — מה אתה עונה?" — tile to match (target language, no translation): EN "…We are almost there. Is here okay?" · FR "…On est presque arrivés. Ici, ça va ?" · ES "…Ya casi llegamos. ¿Aquí está bien?"
+- Audio: …We are almost there. Is here okay? — (…כמעט הגענו. כאן זה בסדר?)
+- A: To this address, please.
+- B: Sorry, please speak slowly.
+- C: Okay, thank you.
+- D: Stop here, please. Keep the change. ✅
+- Correct: Stop here, please. Keep the change.
 - Tests: phrase.taxi.stop-here
 
 **M07-Q18** — expected-reply
@@ -32034,7 +32060,7 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Tests: reply.taxi.goodbye
 
 **M07-Q20** — quick-reply
-- Prompt: "The ride — 📍 the address · 💶 ~€15 · 🚦 traffic · 🏁 stop · 🤝 keep the change" / "הנסיעה — 📍 הכתובת · 💶 ~€15 · 🚦 פקקים · 🏁 לעצור · 🤝 העודף לנהג"
+- Prompt: "🚕 📍 Destination ✅ · 💶 Fare ? · 🚦 Traffic ? · 🏁 Arrival ⬜ · 🤝 Payment ⬜" / "🚕 📍 יעד ✅ · 💶 מחיר ? · 🚦 תנועה ? · 🏁 הגעה ⬜ · 🤝 תשלום ⬜"
 - Audio: Hello! Where to? — (שלום! לאן?)
 - A: To this address, please. ✅
 - B: How much to the centre?
@@ -32043,7 +32069,7 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Tests: phrase.taxi.to-address
 
 **M07-Q21** — quick-reply
-- Prompt: "The ride — 📍 the address · 💶 ~€15 · 🚦 traffic · 🏁 stop · 🤝 keep the change" / "הנסיעה — 📍 הכתובת · 💶 ~€15 · 🚦 פקקים · 🏁 לעצור · 🤝 העודף לנהג"
+- Prompt: "🚕 📍 Destination ✅ · 💶 Fare ? · 🚦 Traffic ? · 🏁 Arrival ⬜ · 🤝 Payment ⬜" / "🚕 📍 יעד ✅ · 💶 מחיר ? · 🚦 תנועה ? · 🏁 הגעה ⬜ · 🤝 תשלום ⬜"
 - Audio: Got it. No problem — off we go! — (הבנתי. אין בעיה — יוצאים!)
 - A: How much to the centre? ✅
 - B: To this address, please.
@@ -32052,7 +32078,7 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Tests: phrase.taxi.how-much
 
 **M07-Q22** — quick-reply
-- Prompt: "The ride — 📍 the address · 💶 ~€15 · 🚦 traffic · 🏁 stop · 🤝 keep the change" / "הנסיעה — 📍 הכתובת · 💶 ~€15 · 🚦 פקקים · 🏁 לעצור · 🤝 העודף לנהג"
+- Prompt: "🚕 📍 Destination ✅ · 💶 Fare ? · 🚦 Traffic ? · 🏁 Arrival ⬜ · 🤝 Payment ⬜" / "🚕 📍 יעד ✅ · 💶 מחיר ? · 🚦 תנועה ? · 🏁 הגעה ⬜ · 🤝 תשלום ⬜"
 - Audio: It's about fifteen euros. There's a lot of traffic right now. — (זה בערך חמישה עשר יורו. יש הרבה פקקים עכשיו.)
 - A: Sorry, please speak slowly. ✅
 - B: Keep the change.
@@ -32061,7 +32087,7 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Tests: phrase.taxi.speak-slowly
 
 **M07-Q23** — quick-reply
-- Prompt: "The ride — 📍 the address · 💶 ~€15 · 🚦 traffic · 🏁 stop · 🤝 keep the change" / "הנסיעה — 📍 הכתובת · 💶 ~€15 · 🚦 פקקים · 🏁 לעצור · 🤝 העודף לנהג"
+- Prompt: "🚕 📍 Destination ✅ · 💶 Fare ? · 🚦 Traffic ? · 🏁 Arrival ⬜ · 🤝 Payment ⬜" / "🚕 📍 יעד ✅ · 💶 מחיר ? · 🚦 תנועה ? · 🏁 הגעה ⬜ · 🤝 תשלום ⬜"
 - Audio: Sure. About fifteen euros. There's a lot of traffic. — (בטח. בערך חמישה עשר יורו. יש הרבה פקקים.)
 - A: Okay, thank you. ✅
 - B: Stop here, please.
@@ -32070,7 +32096,7 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Tests: phrase.taxi.okay-thanks
 
 **M07-Q24** — quick-reply
-- Prompt: "The ride — 📍 the address · 💶 ~€15 · 🚦 traffic · 🏁 stop · 🤝 keep the change" / "הנסיעה — 📍 הכתובת · 💶 ~€15 · 🚦 פקקים · 🏁 לעצור · 🤝 העודף לנהג"
+- Prompt: "🚕 📍 Destination ✅ · 💶 ~€15 ✅ · 🚦 Traffic ✅ · 🏁 Arrival ⬜ · 🤝 Payment ⬜" / "🚕 📍 יעד ✅ · 💶 ~€15 ✅ · 🚦 תנועה ✅ · 🏁 הגעה ⬜ · 🤝 תשלום ⬜"
 - Audio: …We are almost there. Is here okay? — (…כמעט הגענו. כאן זה בסדר?)
 - A: Stop here, please. ✅
 - B: Okay, thank you.
@@ -32079,7 +32105,7 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Tests: phrase.taxi.stop-here
 
 **M07-Q25** — quick-reply
-- Prompt: "The ride — 📍 the address · 💶 ~€15 · 🚦 traffic · 🏁 stop · 🤝 keep the change" / "הנסיעה — 📍 הכתובת · 💶 ~€15 · 🚦 פקקים · 🏁 לעצור · 🤝 העודף לנהג" — situation shown: "The meter says €15. You gave the driver a €20 note, and he starts counting out €5 change." / "המונה מראה €15. נתת לנהג שטר של €20, והוא מתחיל לספור לך €5 עודף."
+- Prompt: "🚕 📍 Destination ✅ · 💶 ~€15 ✅ · 🚦 Traffic ✅ · 🏁 Arrival ⬜ · 🤝 Payment ⬜" / "🚕 📍 יעד ✅ · 💶 ~€15 ✅ · 🚦 תנועה ✅ · 🏁 הגעה ⬜ · 🤝 תשלום ⬜" — situation shown: "The meter says €15. You gave the driver a €20 note, and he starts counting out €5 change." / "המונה מראה €15. נתת לנהג שטר של €20, והוא מתחיל לספור לך €5 עודף."
 - Audio: (nothing is played — a situation is shown) — ()
 - A: Keep the change. ✅
 - B: Stop here, please.
@@ -32180,7 +32206,7 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Tests: (no sentence id — not recorded)
 
 **M07-Q37** — quick-reply
-- Prompt: "The ride 2/5 — 💶 ~€15" / "הנסיעה 2/5 — 💶 ~€15"
+- Prompt: "The ride 2/5 — 💶 Fare" / "הנסיעה 2/5 — 💶 מחיר"
 - Audio: Got it. No problem — off we go! — (הבנתי. אין בעיה — יוצאים!)
 - A: How much to the centre? ✅
 - B: Keep the change.
@@ -32189,7 +32215,7 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Tests: phrase.taxi.how-much
 
 **M07-Q38** — quick-reply
-- Prompt: "The ride 2/5 — 💶 ~€15" / "הנסיעה 2/5 — 💶 ~€15"
+- Prompt: "The ride 2/5 — 💶 Fare" / "הנסיעה 2/5 — 💶 מחיר"
 - Audio: It's about fifteen euros. There's a lot of traffic right now. — (זה בערך חמישה עשר יורו. יש הרבה פקקים עכשיו.)
 - A: Sorry, please speak slowly. ✅
 - B: Stop here, please.
@@ -32198,7 +32224,7 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Tests: phrase.taxi.speak-slowly
 
 **M07-Q39** — visual-match
-- Prompt: "The ride 3/5 — 🚦 Traffic" / "הנסיעה 3/5 — 🚦 פקקים"
+- Prompt: "The ride 3/5 — 🚦 Traffic" / "הנסיעה 3/5 — 🚦 תנועה"
 - Audio: Sure. About fifteen euros. There's a lot of traffic. — (בטח. בערך חמישה עשר יורו. יש הרבה פקקים.)
 - A: €5
 - B: €15 ✅
@@ -32207,7 +32233,7 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Tests: (no sentence id — not recorded)
 
 **M07-Q40** — visual-match
-- Prompt: "The ride 3/5 — 🚦 Traffic" / "הנסיעה 3/5 — 🚦 פקקים"
+- Prompt: "The ride 3/5 — 🚦 Traffic" / "הנסיעה 3/5 — 🚦 תנועה"
 - Audio: Sure. About fifteen euros. There's a lot of traffic. — (בטח. בערך חמישה עשר יורו. יש הרבה פקקים.)
 - A: 🚗🚗🚗 ✅
 - B: 🌳
@@ -36972,8 +36998,8 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 
 - Missions exported: 30
 - Learner-production sentence ids: 162
-- Expected-reply (receptive) sentence ids: 156
-- Sentence listings across missions (with reuse): 526
+- Expected-reply (receptive) sentence ids: 159
+- Sentence listings across missions (with reuse): 529
 - Expected-reply questions: 98
 - Meaning quizzes: 6
 - Active-practice questions: 488
