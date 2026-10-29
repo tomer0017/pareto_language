@@ -306,3 +306,13 @@ on a natural finish. Full research, resolver rules, fallback ladder and honest l
 Mission 06 opts into them. Map artwork uses contain sizing; calendar rows retain their existing
 labels and controls. The existing `MatchPair.answerImage` and wide prime cards are reused.
 See `MISSION06_VISUAL_REPORT.md` for validation and owner-assigned manual mobile QA.
+
+
+### Mission 08 hotel presentation (2026-10-29)
+
+`M08_SLOTS` owns 15 semantic paths; `M08_PROPS` owns 10 image/UI props. `MiniMapSpec.presentation`
+opts into hotel-floor or hotel-lobby rendering only for M08. Optional `scene`/`revealImage` select
+neutral versus correctly answered lobby art. `MapCell.symbol` is restricted to numeric figures and
+arrows, distinct from target-language `label`; prior-learning auditing is unchanged.
+`HotelStaySummary` displays the existing four stay facts in a 2×2 grid and passes other text through.
+No facts or reveal states are inferred. See `MISSION08_VISUAL_REPORT.md` for QA and release status.

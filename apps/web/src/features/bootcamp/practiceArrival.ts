@@ -674,8 +674,7 @@ export function m07Steps(lang: MissionLang): BootcampStep[] {
 /* ── Mission 08 — Hotel Check-in ─────────────────────────────────────────────────────────────── */
 
 /**
- * Mission 08's image slots — one per meaning. PLACEHOLDERS: no slot has its artwork yet (`image`
- * unset — the emoji stands in). One continuous hotel world for the final art: the same guest, the
+ * Mission 08's canonical visuals — scenes use final art; room/floor data use authored SVG UI. One continuous hotel world for the final art: the same guest, the
  * same receptionist, the same desk, the same key card, the same lobby and elevator.
  *   Group 1 — what the guest knows · Group 2 — the reception scenes · Group 3 — the information objects.
  */
@@ -684,24 +683,36 @@ type M08Slot =
   | 'how-can-help' | 'reservation-response' | 'passport-request' | 'passport-handoff' | 'room-floor-key'
   | 'breakfast-question' | 'breakfast-hours' | 'elevator-right' | 'enjoy-stay'
   | 'room-204' | 'second-floor' | 'key';
-export const M08_SLOTS: Record<M08Slot, { emoji: string; image?: string }> = {
-  reservation: { emoji: '📄' }, passport: { emoji: '🛂' }, breakfast: { emoji: '🍳' },
-  'how-can-help': { emoji: '🛎️' }, 'reservation-response': { emoji: '🗣️' }, 'passport-request': { emoji: '🙋' }, 'passport-handoff': { emoji: '🤲' },
-  'room-floor-key': { emoji: '🏨' }, 'breakfast-question': { emoji: '❓' }, 'breakfast-hours': { emoji: '🕖' }, 'elevator-right': { emoji: '🛗' }, 'enjoy-stay': { emoji: '😊' },
-  'room-204': { emoji: '🚪' }, 'second-floor': { emoji: '🏢' }, key: { emoji: '🔑' },
+export const M08_SLOTS: Record<M08Slot, { image: string }> = {
+  'reservation': { image: 'images/mission08/reservation.jpg' },
+  'passport': { image: 'images/mission06/passport.jpg' },
+  'breakfast': { image: 'images/mission08/breakfast.jpg' },
+  'how-can-help': { image: 'images/mission08/how-can-help.jpg' },
+  'reservation-response': { image: 'images/mission08/reservation-response.jpg' },
+  'passport-request': { image: 'images/mission08/passport-request.jpg' },
+  'passport-handoff': { image: 'images/mission08/passport-handoff.jpg' },
+  'room-floor-key': { image: 'images/mission08/room-floor-key.jpg' },
+  'breakfast-question': { image: 'images/mission08/breakfast-question.jpg' },
+  'breakfast-hours': { image: 'images/mission08/breakfast-hours.jpg' },
+  'elevator-right': { image: 'images/mission08/elevator-right.jpg' },
+  'enjoy-stay': { image: 'images/mission08/enjoy-stay.jpg' },
+  'room-204': { image: 'images/mission08/room-204.svg' },
+  'second-floor': { image: 'images/mission08/second-floor.svg' },
+  'key': { image: 'images/mission08/key.jpg' },
 };
-/**
- * The choices beside them — picture-only, never named in the learning language. They share games with
- * the slots, so they get their artwork TOGETHER with them (a test refuses a round that mixes kinds).
- */
+/** Image props reuse canonical art; numeric and directional controls are deterministic UI. */
 export const M08_PROPS = {
-  phone: { emoji: '📱' },
-  'floor-1': { emoji: '1️⃣' }, 'floor-2': { emoji: '2️⃣' }, 'floor-3': { emoji: '3️⃣' }, 'elevator-panel': { emoji: '🛗' },
-  'corridor-left': { emoji: '🚪' }, 'corridor-right': { emoji: '🚪' }, 'corridor-ahead': { emoji: '🚪' }, guest: { emoji: '🧍' }, desk: { emoji: '🛎️' },
-} as const satisfies Record<string, { emoji: string; image?: string }>;
-const look8 = (x: { emoji: string; image?: string }): { emoji: string } | { image: string } => (x.image ? { image: x.image } : { emoji: x.emoji });
-const slot8 = (s: M08Slot): { emoji: string } | { image: string } => look8(M08_SLOTS[s]);
-const tile8 = (id: string, x: { emoji: string; image?: string }) => ({ id, ...look8(x), scale: 1.4 });
+  phone: { image: M06_PROPS.phone.image },
+  'floor-1': { symbol: '1' }, 'floor-2': { symbol: '2' }, 'floor-3': { symbol: '3' },
+  'elevator-panel': { symbol: '↕' },
+  'corridor-left': { image: 'images/mission08/lobby.jpg' },
+  'corridor-right': { image: 'images/mission08/lobby.jpg' },
+  'corridor-ahead': { image: 'images/mission08/lobby.jpg' },
+  guest: { symbol: '↑' }, desk: { image: 'images/mission08/lobby.jpg' },
+} as const;
+type M08Look = { image: string } | { symbol: '1' | '2' | '3' | '↕' | '↑' };
+const slot8 = (s: M08Slot): { image: string } => M08_SLOTS[s];
+const tile8 = (id: string, x: { image: string }) => ({ id, image: x.image });
 
 /** What the guest KNOWS walking in. Everything else the receptionist knows — and says. */
 export const M08_KNOWN_AT_START = { reservation: true, name: 'Cohen', passport: true } as const;
@@ -742,8 +753,8 @@ const H_HANDOFF = [tile8('passport', M08_SLOTS.passport), tile8('phone', M08_PRO
 const ROOMS = [{ id: 'r204', label: '204' }, { id: 'r214', label: '214' }, { id: 'r240', label: '240' }];
 /** Breakfast hours — figures: the range heard among two close ones. */
 const HOURS = [{ id: 'h7-10', label: '7–10' }, { id: 'h7-9', label: '7–9' }, { id: 'h8-10', label: '8–10' }];
-type Cell8 = { id: string; row: 0 | 1 | 2; col: 0 | 1 | 2; emoji?: string; image?: string; tappable?: boolean; zone?: string };
-const cell8 = (id: string, row: 0 | 1 | 2, col: 0 | 1 | 2, x: { emoji: string; image?: string }, extra: Partial<Cell8> = {}): Cell8 => ({ id, row, col, ...look8(x), ...extra });
+type Cell8 = { symbol?: '1' | '2' | '3' | '↕' | '↑'; id: string; row: 0 | 1 | 2; col: 0 | 1 | 2; emoji?: string; image?: string; tappable?: boolean; zone?: string };
+const cell8 = (id: string, row: 0 | 1 | 2, col: 0 | 1 | 2, x: M08Look, extra: Partial<Cell8> = {}): Cell8 => ({ id, row, col, ...x, ...extra });
 /** The ELEVATOR PANEL: floors stacked as they are in the building (3 on top), the lift beside them. */
 const PANEL = (): Cell8[] => [
   cell8('floor-3', 0, 1, M08_PROPS['floor-3'], { tappable: true, zone: 'floor-3' }),
@@ -783,9 +794,9 @@ export function m08Steps(lang: MissionLang): BootcampStep[] {
   const card = (key: string, line: L4, meaning: Copy, s: M08Slot) => ({ line: true, key, t: [line[0], line[1], line[2]] as L3, meaning, ...slot8(s) });
   const cards = (label: Copy, intro: Copy, words: ReturnType<typeof card>[]): BootcampStep => k.prime({ label, intro, bigPictures: true, widePictures: true, words });
   const room = (challenge = false): BootcampStep => k.practice({ kind: 'visualMatch', quiet: true, ...(challenge ? { challenge: true } : {}), label: ['באיזה חדר אתה?', 'Which room are you in?'], tiles: ROOMS, rounds: [{ audio: L_ROOM, correct: M08_ANSWER.room, reinforce: C_ROOM }] });
-  const floor = (challenge = false): BootcampStep => k.practice({ kind: 'miniMap', quiet: true, ...(challenge ? { challenge: true } : {}), label: ['במעלית: לאיזו קומה?', 'In the elevator: which floor?'], rounds: [{ audio: L_ROOM, cells: PANEL(), correct: M08_ANSWER.floor, reinforce: C_FLOOR }] });
+  const floor = (challenge = false): BootcampStep => k.practice({ kind: 'miniMap', presentation: 'hotel-floor', quiet: true, ...(challenge ? { challenge: true } : {}), label: ['במעלית: לאיזו קומה?', 'In the elevator: which floor?'], rounds: [{ audio: L_ROOM, cells: PANEL(), correct: M08_ANSWER.floor, reinforce: C_FLOOR }] });
   const hours = (challenge = false): BootcampStep => k.practice({ kind: 'visualMatch', quiet: true, ...(challenge ? { challenge: true } : {}), label: ['מתי ארוחת הבוקר?', 'When is breakfast?'], tiles: HOURS, rounds: [{ audio: L_HOURS, correct: M08_ANSWER.hours, reinforce: C_HOURS }] });
-  const direction = (challenge = false): BootcampStep => k.practice({ kind: 'miniMap', quiet: true, ...(challenge ? { challenge: true } : {}), label: ['אתה מול הדלפק. לאן הולכים למעלית?', 'You face the desk. Which way to the elevator?'], rounds: [{ audio: L_HOURS, cells: LOBBY(), correct: M08_ANSWER.direction, reinforce: C_ELEVATOR }] });
+  const direction = (challenge = false): BootcampStep => k.practice({ kind: 'miniMap', presentation: 'hotel-lobby', scene: M08_PROPS.desk.image, revealImage: M08_SLOTS['elevator-right'].image, quiet: true, ...(challenge ? { challenge: true } : {}), label: ['אתה מול הדלפק. לאן הולכים למעלית?', 'You face the desk. Which way to the elevator?'], rounds: [{ audio: L_HOURS, cells: LOBBY(), correct: M08_ANSWER.direction, reinforce: C_ELEVATOR }] });
   return [
     // THE BRIEFING — only what the guest knows: a reservation under Cohen, a passport. The stay is "?".
     k.talk('🏨', ['משימה 8: צ׳ק־אין במלון', 'Mission 8: Hotel Check-in'], [

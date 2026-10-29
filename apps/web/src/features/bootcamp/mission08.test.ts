@@ -1,4 +1,9 @@
-import { describe, expect, it } from 'vitest';
+import { readFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+import { createElement } from 'react';
+import { renderToStaticMarkup } from 'react-dom/server';
+import { HotelStaySummary, splitHotelStay } from './HotelStaySummary.js';
+import { beforeAll, afterAll, describe, expect, it, vi } from 'vitest';
 import { missionVideo } from '../videos/missionVideo.js';
 import { cinematicTranscript, missionDialogues } from './exportDialogue.js';
 import { coverageOf, encounters, hasChunk, plain, type CoverageLang } from './mission01Coverage.js';
@@ -207,7 +212,9 @@ describe('SEMANTIC choices — no hidden rules', () => {
       const btn = (n: number) => r.cells.find((c) => c.zone === `floor-${n}`)!;
       expect([btn(3).row, btn(2).row, btn(1).row]).toEqual([0, 1, 2]); // 3 on top, 1 at the bottom — the building's order
       expect(r.cells.find((c) => c.id === r.correct)!.zone).toBe(`floor-${M08_STAY.floor}`);
-      expect(btn(2).emoji).toBe(M08_PROPS['floor-2'].emoji);
+      expect(btn(2).symbol).toBe(M08_PROPS['floor-2'].symbol);
+      expect(s.presentation).toBe('hotel-floor');
+      for (const n of [1, 2, 3]) { expect(btn(n).symbol).toBe(String(n)); expect(btn(n).image).toBeUndefined(); expect(btn(n).emoji).toBeUndefined(); }
       expect(r.cells.some((c) => c.id === 'lift' && !c.tappable)).toBe(true); // the lift itself, beside the panel
     }
   });
@@ -225,7 +232,11 @@ describe('SEMANTIC choices — no hidden rules', () => {
       const right = r.cells.find((c) => c.id === r.correct)!;
       expect([right.zone, right.col > guest.col, right.row]).toEqual(['right', true, desk.row]); // on your right, level with the desk
       const corridors = r.cells.filter((c) => c.tappable);
-      expect(new Set(corridors.map((c) => c.emoji)).size, lang).toBe(1); // identical corridors: no picture gives the answer
+      expect(new Set(corridors.map((c) => c.image)).size, lang).toBe(1);
+      expect(corridors.every((c) => c.image === M08_PROPS['corridor-left'].image)).toBe(true);
+      expect(s.presentation).toBe('hotel-lobby');
+      expect(s.scene).toBe(M08_PROPS.desk.image);
+      expect(s.revealImage).toBe(M08_SLOTS['elevator-right'].image); // identical corridors: no picture gives the answer
       expect(corridors.map((c) => c.zone).sort()).toEqual(['ahead', 'left', 'right']);
     }
   });
@@ -335,16 +346,72 @@ describe('the check-in, as it happens', () => {
   });
 });
 
-describe('image slots — ready for the final artwork (VISUAL PRODUCTION REQUIRED)', () => {
-  it('the slots and props exist — placeholders, clearly marked: no artwork yet', () => {
-    expect(Object.keys(M08_SLOTS)).toHaveLength(15);
-    for (const s of Object.values(M08_SLOTS)) { expect(s.emoji).toBeTruthy(); expect(s.image).toBeUndefined(); }
-    for (const p of Object.values(M08_PROPS)) expect((p as { image?: string }).image).toBeUndefined();
+describe('final hotel visuals — scenes explain actions, UI explains data', () => {
+  it('15 canonical slots without emoji fallbacks; 10 props deliberately split between art and UI', () => {
+    const slots = ['reservation', 'passport', 'breakfast', 'how-can-help', 'reservation-response', 'passport-request', 'passport-handoff', 'room-floor-key', 'breakfast-question', 'breakfast-hours', 'elevator-right', 'enjoy-stay', 'room-204', 'second-floor', 'key'];
+    expect(Object.keys(M08_SLOTS).sort()).toEqual(slots.sort());
+    for (const [key, slot] of Object.entries(M08_SLOTS)) {
+      const path = key === 'passport' ? 'images/mission06/passport.jpg' : `images/mission08/${key}.${['room-204', 'second-floor'].includes(key) ? 'svg' : 'jpg'}`;
+      expect(slot).toEqual({ image: path });
+    }
+    expect(Object.keys(M08_PROPS)).toHaveLength(10);
+    expect(M08_PROPS.phone).toEqual({ image: 'images/mission06/phone.jpg' });
+    for (const n of [1, 2, 3] as const) expect(M08_PROPS[`floor-${n}`]).toEqual({ symbol: String(n) });
+    for (const id of ['corridor-left', 'corridor-right', 'corridor-ahead', 'desk'] as const) expect(M08_PROPS[id]).toEqual({ image: 'images/mission08/lobby.jpg' });
+  });
+  it('every canonical file exists, scenes are high-resolution wide JPEGs and distinct meanings have distinct files', () => {
+    const paths = [...Object.values(M08_SLOTS).map((s) => s.image), M08_PROPS.phone.image, M08_PROPS.desk.image];
+    expect(new Set(paths).size).toBe(17);
+    const hashes = paths.map((path) => {
+      const data = readFileSync(new URL(`../../../public/${path}`, import.meta.url));
+      if (path.endsWith('.svg')) {
+        expect(data.toString()).toContain('viewBox="0 0 1600 900"');
+      } else {
+        expect(data.subarray(0, 2).toString('hex')).toBe('ffd8');
+        let width = 0; let height = 0;
+        for (let i = 2; i < data.length - 9;) {
+          if ([0xc0, 0xc1, 0xc2].includes(data[i + 1]!)) { height = data.readUInt16BE(i + 5); width = data.readUInt16BE(i + 7); break; }
+          i += 2 + data.readUInt16BE(i + 2);
+        }
+        expect(width, path).toBeGreaterThanOrEqual(1536);
+        expect(width / height).toBeGreaterThan(1.7);
+        expect(width / height).toBeLessThan(1.9);
+      }
+      return createHash('sha256').update(data).digest('hex');
+    });
+    expect(new Set(hashes).size).toBe(17);
+  });
+  it('room and breakfast choices stay plain figures, never AI-image puzzles', () => {
+    for (const lang of LANGS) for (const step of [...roomGames(day(lang)), ...hourGames(day(lang))]) for (const tile of step.tiles) {
+      expect(tile.image).toBeUndefined(); expect(tile.emoji).toBeUndefined(); expect(tile.label).toBeTruthy();
+    }
+  });
+  it('stay summary presentation preserves all four values and every reveal state without supplying new facts', () => {
+    for (const known of [[], ['room', 'floor'], M08_STAY_FACTS] as const) for (const str of stayCard(known)) {
+      const parsed = splitHotelStay(str)!;
+      expect(parsed.facts).toHaveLength(4);
+      expect(parsed.facts.join(' · ')).toBe(str);
+      expect(parsed.facts.filter((f) => f.endsWith('✅'))).toHaveLength(known.length);
+    }
+    expect(splitHotelStay('A different mission')).toBeNull();
+  });
+  it('opening and breakfast-question cards use only their non-spoiler canonical scenes', () => {
+    for (const lang of LANGS) {
+      const d = day(lang);
+      const beforeRoom = d.steps.slice(0, d.steps.findIndex((s) => s.kind === 'prime' && s.words.some((w) => w.key === 'hotel.line.room-floor-key')));
+      const allowed = ['reservation', 'reservation-response', 'passport', 'breakfast', 'how-can-help', 'passport-request', 'passport-handoff'].map((k) => M08_SLOTS[k as keyof typeof M08_SLOTS].image);
+      for (const step of beforeRoom) if (step.kind === 'prime') for (const w of step.words) expect(allowed).toContain(w.image);
+      const q = stepsOf(d, 'prime').flatMap((s) => s.words).find((w) => w.key === 'hotel.line.breakfast')!;
+      expect(q.image).toBe(M08_SLOTS['breakfast-question'].image);
+    }
   });
   it('every card picture comes from a slot, the same in every language — wide pictures', () => {
-    const pictures = new Set(Object.values(M08_SLOTS).map((s) => s.emoji));
+    const pictures = new Set(Object.values(M08_SLOTS).map((s) => s.image));
     const pics = (lang: CoverageLang) => stepsOf(day(lang), 'prime').flatMap((p) => p.words.map((w) => [w.key, w.image ?? w.emoji]));
-    for (const lang of LANGS) for (const [key, pic] of pics(lang)) expect(pictures, `${lang} ${key}`).toContain(pic);
+    for (const lang of LANGS) {
+      for (const [key, pic] of pics(lang)) expect(pictures, `${lang} ${key}`).toContain(pic);
+      for (const w of stepsOf(day(lang), 'prime').flatMap((p) => p.words)) { expect(w.image).toBeTruthy(); expect(w.emoji).toBeUndefined(); }
+    }
     expect(pics('es')).toEqual(pics('en'));
     expect(pics('fr')).toEqual(pics('en'));
     for (const lang of LANGS) for (const p of stepsOf(day(lang), 'prime')) expect(p.widePictures).toBe(true);
@@ -406,6 +473,50 @@ describe('video, progress, parity and pacing', () => {
       const d = day(lang);
       const said = Object.values(d.dialogues).flatMap((dl) => dl.nodes.flatMap((n) => [n.en, ...(n.choices ?? []).map((c) => c.en)])).filter(Boolean);
       for (const i of d.items) expect(said.some((l) => hasChunk(l, i.text)), `${lang} ${i.id} “${i.text}”`).toBe(true);
+    }
+  });
+});
+
+
+describe('hotel presentation renders the preserved data', () => {
+  let ui: typeof import('./PracticeSteps.js');
+  let app: typeof import('../../shared/stores/appStore.js');
+  beforeAll(async () => {
+    vi.stubGlobal('localStorage', { getItem: () => null, setItem: () => undefined, removeItem: () => undefined });
+    app = await import('../../shared/stores/appStore.js');
+    ui = await import('./PracticeSteps.js');
+  });
+  afterAll(() => vi.unstubAllGlobals());
+  it('renders exactly four stay cells at every reveal stage and retains surrounding copy', () => {
+    for (const known of [[], ['room', 'floor'], M08_STAY_FACTS] as const) for (const text of stayCard(known)) {
+      const html = renderToStaticMarkup(createElement(HotelStaySummary, { text: `Before ${text} After` }));
+      expect(html.match(/class="hotel-stay-fact"/g)).toHaveLength(4);
+      expect(html.match(/data-known="true"/g) ?? []).toHaveLength(known.length);
+      expect(html).toContain('Before ');
+      expect(html).toContain(' After');
+    }
+  });
+  it('renders one neutral lobby with three equivalent direction controls, never the answer image before selection', () => {
+    for (const lang of LANGS) {
+      app.useAppStore.setState({ learningLang: lang });
+      const html = renderToStaticMarkup(createElement(ui.MiniMapStep, { step: directionGames(day(lang))[0]!, onDone: () => undefined }));
+      expect(html.match(/class="hotel-lobby-scene"/g)).toHaveLength(1);
+      expect(html).toContain(M08_PROPS.desk.image);
+      expect(html).not.toContain(M08_SLOTS['elevator-right'].image);
+      expect(html.match(/class="hotel-direction-arrow"/g)).toHaveLength(3);
+      expect(html).not.toContain('ptile-emoji');
+      for (const zone of ['left', 'right', 'ahead']) expect(html).toContain(`aria-label="${zone}"`);
+    }
+  });
+  it('renders numeric floors in building order without language text, emoji or image buttons', () => {
+    for (const lang of LANGS) {
+      app.useAppStore.setState({ learningLang: lang });
+      const html = renderToStaticMarkup(createElement(ui.MiniMapStep, { step: floorGames(day(lang))[0]!, onDone: () => undefined }));
+      const digits = [...html.matchAll(/class="ptile-label">([123])</g)].map((m) => m[1]);
+      expect(digits).toEqual(['3', '2', '1']);
+      expect(html).not.toContain('ptile-img');
+      expect(html).not.toContain('ptile-emoji');
+      expect(html).toContain('data-role="lift"');
     }
   });
 });

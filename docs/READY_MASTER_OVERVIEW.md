@@ -456,3 +456,10 @@ in the same sprint.** When Bootcamp content changes, also regenerate the convers
 npm run gen:conversations
 npm run gen:dialogues-doc
 ```
+
+
+### Mission 08 visual integration update (2026-10-29)
+
+Hotel Check-in now has a shared EN/ES/FR hotel artwork system, deterministic floor/room/hour
+controls and a 2×2 progressive stay summary. Dialogue, learning order and 34 interactions are
+unchanged. Mobile verification and release status: [Mission 08 visual report](./MISSION08_VISUAL_REPORT.md).

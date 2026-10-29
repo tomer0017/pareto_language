@@ -8183,10 +8183,10 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `hotel.reservation` — EN "reservation" · FR "réservation" · ES "reserva" — meaning "הזמנה" / "reservation" — icon 📄 — new
-2. `hotel.name` — EN "name" · FR "nom" · ES "nombre" — meaning "שם" / "name" — icon 🗣️ — marked ♻️ review
-3. `hotel.passport` — EN "passport" · FR "passeport" · ES "pasaporte" — meaning "דרכון (ממשימה 6)" / "passport (from Mission 6)" — icon 🛂 — marked ♻️ review
-4. `hotel.breakfast` — EN "breakfast" · FR "petit-déjeuner" · ES "desayuno" — meaning "ארוחת בוקר" / "breakfast" — icon 🍳 — new
+1. `hotel.reservation` — EN "reservation" · FR "réservation" · ES "reserva" — meaning "הזמנה" / "reservation" — icon none — new
+2. `hotel.name` — EN "name" · FR "nom" · ES "nombre" — meaning "שם" / "name" — icon none — marked ♻️ review
+3. `hotel.passport` — EN "passport" · FR "passeport" · ES "pasaporte" — meaning "דרכון (ממשימה 6)" / "passport (from Mission 6)" — icon none — marked ♻️ review
+4. `hotel.breakfast` — EN "breakfast" · FR "petit-déjeuner" · ES "desayuno" — meaning "ארוחת בוקר" / "breakfast" — icon none — new
 
 "These build the sentence:" card: `phrase.hotel.reservation-name` — EN "I have a reservation, under the name Cohen." · FR "J’ai une réservation, au nom de Cohen." · ES "Tengo una reserva, a nombre de Cohen." · HE "יש לי הזמנה, על השם כהן." (with its own play button).
 
@@ -8195,8 +8195,8 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `hotel.line.greet` — EN "Good evening! How can I help you?" · FR "Bonsoir ! Comment puis-je vous aider ?" · ES "¡Buenas noches! ¿En qué puedo ayudarle?" — meaning "ערב טוב! איך אפשר לעזור?" / "Good evening! How can I help you?" — icon 🛎️ — new
-2. `hotel.line.reserve` — EN "I have a reservation, under the name Cohen." · FR "J’ai une réservation, au nom de Cohen." · ES "Tengo una reserva, a nombre de Cohen." — meaning "יש לי הזמנה, על השם כהן." / "I have a reservation, under the name Cohen." — icon 🗣️ — new
+1. `hotel.line.greet` — EN "Good evening! How can I help you?" · FR "Bonsoir ! Comment puis-je vous aider ?" · ES "¡Buenas noches! ¿En qué puedo ayudarle?" — meaning "ערב טוב! איך אפשר לעזור?" / "Good evening! How can I help you?" — icon none — new
+2. `hotel.line.reserve` — EN "I have a reservation, under the name Cohen." · FR "J’ai une réservation, au nom de Cohen." · ES "Tengo una reserva, a nombre de Cohen." — meaning "יש לי הזמנה, על השם כהן." / "I have a reservation, under the name Cohen." — icon none — new
 
 No build-sentence card.
 
@@ -8205,8 +8205,8 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `hotel.line.welcome` — EN "Welcome, Mr. Cohen. Your passport, please." · FR "Bienvenue, monsieur Cohen. Votre passeport, s’il vous plaît." · ES "Bienvenido, señor Cohen. Su pasaporte, por favor." — meaning "ברוך הבא, מר כהן. הדרכון שלך, בבקשה." / "Welcome, Mr. Cohen. Your passport, please." — icon 🙋 — new
-2. `hotel.line.here` — EN "Here you go." · FR "Voilà, tenez." · ES "Aquí tiene." — meaning "בבקשה, הנה. (כשמגישים משהו)" / "Here you go. (as you hand something over)" — icon 🤲 — new
+1. `hotel.line.welcome` — EN "Welcome, Mr. Cohen. Your passport, please." · FR "Bienvenue, monsieur Cohen. Votre passeport, s’il vous plaît." · ES "Bienvenido, señor Cohen. Su pasaporte, por favor." — meaning "ברוך הבא, מר כהן. הדרכון שלך, בבקשה." / "Welcome, Mr. Cohen. Your passport, please." — icon none — new
+2. `hotel.line.here` — EN "Here you go." · FR "Voilà, tenez." · ES "Aquí tiene." — meaning "בבקשה, הנה. (כשמגישים משהו)" / "Here you go. (as you hand something over)" — icon none — new
 
 No build-sentence card.
 
@@ -8215,10 +8215,10 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `hotel.line.room-floor-key` — EN "Thank you. You're in room two-oh-four, on the second floor. Here is your key." · FR "Merci. Vous êtes dans la chambre deux cent quatre, au deuxième étage. Voici votre clé." · ES "Gracias. Está en la habitación doscientos cuatro, en el segundo piso. Aquí tiene su llave." — meaning "תודה. אתה בחדר 204, בקומה השנייה. הנה המפתח שלך." / "Thank you. You’re in room 204, on the second floor. Here is your key." — icon 🏨 — new
-2. `hotel.line.room` — EN "You're in room two-oh-four." · FR "Vous êtes dans la chambre deux cent quatre." · ES "Está en la habitación doscientos cuatro." — meaning "אתה בחדר 204." / "You’re in room 204." — icon 🚪 — new
-3. `hotel.line.floor` — EN "on the second floor" · FR "au deuxième étage" · ES "en el segundo piso" — meaning "בקומה השנייה" / "on the second floor" — icon 🏢 — new
-4. `hotel.line.key` — EN "Here is your key." · FR "Voici votre clé." · ES "Aquí tiene su llave." — meaning "הנה המפתח שלך." / "Here is your key." — icon 🔑 — new
+1. `hotel.line.room-floor-key` — EN "Thank you. You're in room two-oh-four, on the second floor. Here is your key." · FR "Merci. Vous êtes dans la chambre deux cent quatre, au deuxième étage. Voici votre clé." · ES "Gracias. Está en la habitación doscientos cuatro, en el segundo piso. Aquí tiene su llave." — meaning "תודה. אתה בחדר 204, בקומה השנייה. הנה המפתח שלך." / "Thank you. You’re in room 204, on the second floor. Here is your key." — icon none — new
+2. `hotel.line.room` — EN "You're in room two-oh-four." · FR "Vous êtes dans la chambre deux cent quatre." · ES "Está en la habitación doscientos cuatro." — meaning "אתה בחדר 204." / "You’re in room 204." — icon none — new
+3. `hotel.line.floor` — EN "on the second floor" · FR "au deuxième étage" · ES "en el segundo piso" — meaning "בקומה השנייה" / "on the second floor" — icon none — new
+4. `hotel.line.key` — EN "Here is your key." · FR "Voici votre clé." · ES "Aquí tiene su llave." — meaning "הנה המפתח שלך." / "Here is your key." — icon none — new
 
 No build-sentence card.
 
@@ -8227,7 +8227,7 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `hotel.line.breakfast` — EN "Is breakfast included?" · FR "Le petit-déjeuner est compris ?" · ES "¿El desayuno está incluido?" — meaning "ארוחת הבוקר כלולה? (במחיר החדר)" / "Is breakfast included? (in the room price)" — icon ❓ — new
+1. `hotel.line.breakfast` — EN "Is breakfast included?" · FR "Le petit-déjeuner est compris ?" · ES "¿El desayuno está incluido?" — meaning "ארוחת הבוקר כלולה? (במחיר החדר)" / "Is breakfast included? (in the room price)" — icon none — new
 
 No build-sentence card.
 
@@ -8236,9 +8236,9 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `hotel.line.hours-elevator` — EN "Yes! Breakfast is from seven to ten. The elevator is on your right." · FR "Oui ! Le petit-déjeuner est de sept heures à dix heures. L’ascenseur est sur votre droite." · ES "¡Sí! El desayuno es de siete a diez. El ascensor está a su derecha." — meaning "כן! ארוחת בוקר משבע עד עשר. המעלית מימינך." / "Yes! Breakfast is from seven to ten. The elevator is on your right." — icon 🕖 — new
-2. `hotel.line.hours` — EN "Breakfast is from seven to ten." · FR "Le petit-déjeuner est de sept heures à dix heures." · ES "El desayuno es de siete a diez." — meaning "ארוחת בוקר משבע עד עשר." / "Breakfast is from seven to ten." — icon 🕖 — new
-3. `hotel.line.elevator` — EN "The elevator is on your right." · FR "L’ascenseur est sur votre droite." · ES "El ascensor está a su derecha." — meaning "המעלית מימינך. (כשאתה מול הדלפק — מצד ימין)" / "The elevator is on your right. (facing the desk — to your right)" — icon 🛗 — new
+1. `hotel.line.hours-elevator` — EN "Yes! Breakfast is from seven to ten. The elevator is on your right." · FR "Oui ! Le petit-déjeuner est de sept heures à dix heures. L’ascenseur est sur votre droite." · ES "¡Sí! El desayuno es de siete a diez. El ascensor está a su derecha." — meaning "כן! ארוחת בוקר משבע עד עשר. המעלית מימינך." / "Yes! Breakfast is from seven to ten. The elevator is on your right." — icon none — new
+2. `hotel.line.hours` — EN "Breakfast is from seven to ten." · FR "Le petit-déjeuner est de sept heures à dix heures." · ES "El desayuno es de siete a diez." — meaning "ארוחת בוקר משבע עד עשר." / "Breakfast is from seven to ten." — icon none — new
+3. `hotel.line.elevator` — EN "The elevator is on your right." · FR "L’ascenseur est sur votre droite." · ES "El ascensor está a su derecha." — meaning "המעלית מימינך. (כשאתה מול הדלפק — מצד ימין)" / "The elevator is on your right. (facing the desk — to your right)" — icon none — new
 
 No build-sentence card.
 
@@ -8247,7 +8247,7 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `hotel.line.enjoy` — EN "Enjoy your stay!" · FR "Bon séjour !" · ES "¡Que disfrute su estancia!" — meaning "תיהנה מהשהות!" / "Enjoy your stay!" — icon 😊 — new
+1. `hotel.line.enjoy` — EN "Enjoy your stay!" · FR "Bon séjour !" · ES "¡Que disfrute su estancia!" — meaning "תיהנה מהשהות!" / "Enjoy your stay!" — icon none — new
 
 No build-sentence card.
 
@@ -8499,9 +8499,9 @@ No meaning quiz in this mission.
 - Meaning of the audio (HE): "ברוך הבא, מר כהן. הדרכון שלך, בבקשה."
 - Buttons show: a 3×3 board of 3 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. "🛂" — no sentence id — ✅ accepted
-  2. "📱" — no sentence id — ❌ wrong
-  3. "📄" — no sentence id — ❌ wrong
+  1. "[picture passport.jpg]" — no sentence id — ✅ accepted
+  2. "[picture phone.jpg]" — no sentence id — ❌ wrong
+  3. "[picture reservation.jpg]" — no sentence id — ❌ wrong
 - Tests: (no sentence id — not recorded)
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
@@ -8532,14 +8532,14 @@ No meaning quiz in this mission.
 
 ### M08-Q05 — mini-map (step 10, round 1 of 1)
 
-- Prompt displayed: "In the elevator: which floor?" / "במעלית: לאיזו קומה?" — board, row by row: · | 3️⃣ [tap:floor-3] | · // 🛗 | 2️⃣ [tap:floor-2] | · // · | 1️⃣ [tap:floor-1] | ·
+- Prompt displayed: "In the elevator: which floor?" / "במעלית: לאיזו קומה?" — board, row by row: · |  [tap:floor-3] | · //  |  [tap:floor-2] | · // · |  [tap:floor-1] | ·
 - Audio played: EN "Thank you. You're in room two-oh-four, on the second floor. Here is your key." · FR "Merci. Vous êtes dans la chambre deux cent quatre, au deuxième étage. Voici votre clé." · ES "Gracias. Está en la habitación doscientos cuatro, en el segundo piso. Aquí tiene su llave."
 - Meaning of the audio (HE): "תודה. אתה בחדר 204, בקומה השנייה. הנה המפתח שלך."
 - Buttons show: the tappable cells of a 3×3 schematic map (fixed positions, not shuffled); the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. "3️⃣ floor-3" — no sentence id — ❌ wrong
-  2. "2️⃣ floor-2" — no sentence id — ✅ accepted
-  3. "1️⃣ floor-1" — no sentence id — ❌ wrong
+  1. " floor-3" — no sentence id — ❌ wrong
+  2. " floor-2" — no sentence id — ✅ accepted
+  3. " floor-1" — no sentence id — ❌ wrong
 - Tests: (no sentence id — not recorded)
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
@@ -8550,7 +8550,7 @@ No meaning quiz in this mission.
 - Meaning of the audio (HE): "הנה המפתח שלך."
 - Buttons show: ONE tile — a teaching round: hear it, see what it means, tap it (cannot be missed); then the line and its translation
 - Choices:
-  1. "🔑" — no sentence id — ✅ accepted
+  1. "[picture key.jpg]" — no sentence id — ✅ accepted
 - Tests: (no sentence id — not recorded)
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
@@ -8593,14 +8593,14 @@ No meaning quiz in this mission.
 
 ### M08-Q10 — mini-map (step 18, round 1 of 1)
 
-- Prompt displayed: "You face the desk. Which way to the elevator?" / "אתה מול הדלפק. לאן הולכים למעלית?" — board, row by row: · | 🚪 [tap:ahead] | · // 🚪 [tap:left] | 🛎️ | 🚪 [tap:right] // · | 🧍 | ·
+- Prompt displayed: "You face the desk. Which way to the elevator?" / "אתה מול הדלפק. לאן הולכים למעלית?" — board, row by row: · |  [tap:ahead] | · //  [tap:left] |  |  [tap:right] // · |  | ·
 - Audio played: EN "Yes! Breakfast is from seven to ten. The elevator is on your right." · FR "Oui ! Le petit-déjeuner est de sept heures à dix heures. L’ascenseur est sur votre droite." · ES "¡Sí! El desayuno es de siete a diez. El ascensor está a su derecha."
 - Meaning of the audio (HE): "כן! ארוחת בוקר משבע עד עשר. המעלית מימינך."
 - Buttons show: the tappable cells of a 3×3 schematic map (fixed positions, not shuffled); the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. "🚪 left" — no sentence id — ❌ wrong
-  2. "🚪 right" — no sentence id — ✅ accepted
-  3. "🚪 ahead" — no sentence id — ❌ wrong
+  1. " left" — no sentence id — ❌ wrong
+  2. " right" — no sentence id — ✅ accepted
+  3. " ahead" — no sentence id — ❌ wrong
 - Tests: (no sentence id — not recorded)
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
@@ -8669,14 +8669,14 @@ No meaning quiz in this mission.
 
 ### M08-Q19 — mini-map (step 25, round 1 of 1)
 
-- Prompt displayed: "In the elevator: which floor?" / "במעלית: לאיזו קומה?" — board, row by row: · | 3️⃣ [tap:floor-3] | · // 🛗 | 2️⃣ [tap:floor-2] | · // · | 1️⃣ [tap:floor-1] | ·
+- Prompt displayed: "In the elevator: which floor?" / "במעלית: לאיזו קומה?" — board, row by row: · |  [tap:floor-3] | · //  |  [tap:floor-2] | · // · |  [tap:floor-1] | ·
 - Audio played: EN "Thank you. You're in room two-oh-four, on the second floor. Here is your key." · FR "Merci. Vous êtes dans la chambre deux cent quatre, au deuxième étage. Voici votre clé." · ES "Gracias. Está en la habitación doscientos cuatro, en el segundo piso. Aquí tiene su llave."
 - Meaning of the audio (HE): "תודה. אתה בחדר 204, בקומה השנייה. הנה המפתח שלך."
 - Buttons show: the tappable cells of a 3×3 schematic map (fixed positions, not shuffled); the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. "3️⃣ floor-3" — no sentence id — ❌ wrong
-  2. "2️⃣ floor-2" — no sentence id — ✅ accepted
-  3. "1️⃣ floor-1" — no sentence id — ❌ wrong
+  1. " floor-3" — no sentence id — ❌ wrong
+  2. " floor-2" — no sentence id — ✅ accepted
+  3. " floor-1" — no sentence id — ❌ wrong
 - Tests: (no sentence id — not recorded)
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
@@ -8708,14 +8708,14 @@ No meaning quiz in this mission.
 
 ### M08-Q22 — mini-map (step 28, round 1 of 1)
 
-- Prompt displayed: "You face the desk. Which way to the elevator?" / "אתה מול הדלפק. לאן הולכים למעלית?" — board, row by row: · | 🚪 [tap:ahead] | · // 🚪 [tap:left] | 🛎️ | 🚪 [tap:right] // · | 🧍 | ·
+- Prompt displayed: "You face the desk. Which way to the elevator?" / "אתה מול הדלפק. לאן הולכים למעלית?" — board, row by row: · |  [tap:ahead] | · //  [tap:left] |  |  [tap:right] // · |  | ·
 - Audio played: EN "Yes! Breakfast is from seven to ten. The elevator is on your right." · FR "Oui ! Le petit-déjeuner est de sept heures à dix heures. L’ascenseur est sur votre droite." · ES "¡Sí! El desayuno es de siete a diez. El ascensor está a su derecha."
 - Meaning of the audio (HE): "כן! ארוחת בוקר משבע עד עשר. המעלית מימינך."
 - Buttons show: the tappable cells of a 3×3 schematic map (fixed positions, not shuffled); the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. "🚪 left" — no sentence id — ❌ wrong
-  2. "🚪 right" — no sentence id — ✅ accepted
-  3. "🚪 ahead" — no sentence id — ❌ wrong
+  1. " left" — no sentence id — ❌ wrong
+  2. " right" — no sentence id — ✅ accepted
+  3. " ahead" — no sentence id — ❌ wrong
 - Tests: (no sentence id — not recorded)
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
@@ -8773,14 +8773,14 @@ No meaning quiz in this mission.
 
 ### M08-Q31 — mini-map (step 34, round 1 of 1 · SPEED CHALLENGE (spoken at rate 1.12))
 
-- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה." — board, row by row: · | 🚪 [tap:ahead] | · // 🚪 [tap:left] | 🛎️ | 🚪 [tap:right] // · | 🧍 | ·
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה." — board, row by row: · |  [tap:ahead] | · //  [tap:left] |  |  [tap:right] // · |  | ·
 - Audio played: EN "Yes! Breakfast is from seven to ten. The elevator is on your right." · FR "Oui ! Le petit-déjeuner est de sept heures à dix heures. L’ascenseur est sur votre droite." · ES "¡Sí! El desayuno es de siete a diez. El ascensor está a su derecha."
 - Meaning of the audio (HE): "כן! ארוחת בוקר משבע עד עשר. המעלית מימינך."
 - Buttons show: the tappable cells of a 3×3 schematic map (fixed positions, not shuffled); the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. "🚪 left" — no sentence id — ❌ wrong
-  2. "🚪 right" — no sentence id — ✅ accepted
-  3. "🚪 ahead" — no sentence id — ❌ wrong
+  1. " left" — no sentence id — ❌ wrong
+  2. " right" — no sentence id — ✅ accepted
+  3. " ahead" — no sentence id — ❌ wrong
 - Tests: (no sentence id — not recorded)
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
@@ -8825,14 +8825,14 @@ No meaning quiz in this mission.
 
 ### M08-Q35 — mini-map (step 39, round 1 of 1 · SPEED CHALLENGE (spoken at rate 1.12))
 
-- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה." — board, row by row: · | 3️⃣ [tap:floor-3] | · // 🛗 | 2️⃣ [tap:floor-2] | · // · | 1️⃣ [tap:floor-1] | ·
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה." — board, row by row: · |  [tap:floor-3] | · //  |  [tap:floor-2] | · // · |  [tap:floor-1] | ·
 - Audio played: EN "Thank you. You're in room two-oh-four, on the second floor. Here is your key." · FR "Merci. Vous êtes dans la chambre deux cent quatre, au deuxième étage. Voici votre clé." · ES "Gracias. Está en la habitación doscientos cuatro, en el segundo piso. Aquí tiene su llave."
 - Meaning of the audio (HE): "תודה. אתה בחדר 204, בקומה השנייה. הנה המפתח שלך."
 - Buttons show: the tappable cells of a 3×3 schematic map (fixed positions, not shuffled); the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. "3️⃣ floor-3" — no sentence id — ❌ wrong
-  2. "2️⃣ floor-2" — no sentence id — ✅ accepted
-  3. "1️⃣ floor-1" — no sentence id — ❌ wrong
+  1. " floor-3" — no sentence id — ❌ wrong
+  2. " floor-2" — no sentence id — ✅ accepted
+  3. " floor-1" — no sentence id — ❌ wrong
 - Tests: (no sentence id — not recorded)
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
@@ -8864,14 +8864,14 @@ No meaning quiz in this mission.
 
 ### M08-Q38 — mini-map (step 42, round 1 of 1 · SPEED CHALLENGE (spoken at rate 1.12))
 
-- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה." — board, row by row: · | 🚪 [tap:ahead] | · // 🚪 [tap:left] | 🛎️ | 🚪 [tap:right] // · | 🧍 | ·
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה." — board, row by row: · |  [tap:ahead] | · //  [tap:left] |  |  [tap:right] // · |  | ·
 - Audio played: EN "Yes! Breakfast is from seven to ten. The elevator is on your right." · FR "Oui ! Le petit-déjeuner est de sept heures à dix heures. L’ascenseur est sur votre droite." · ES "¡Sí! El desayuno es de siete a diez. El ascensor está a su derecha."
 - Meaning of the audio (HE): "כן! ארוחת בוקר משבע עד עשר. המעלית מימינך."
 - Buttons show: the tappable cells of a 3×3 schematic map (fixed positions, not shuffled); the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. "🚪 left" — no sentence id — ❌ wrong
-  2. "🚪 right" — no sentence id — ✅ accepted
-  3. "🚪 ahead" — no sentence id — ❌ wrong
+  1. " left" — no sentence id — ❌ wrong
+  2. " right" — no sentence id — ✅ accepted
+  3. " ahead" — no sentence id — ❌ wrong
 - Tests: (no sentence id — not recorded)
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
@@ -32588,10 +32588,10 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 **M08-Q02** — visual-match
 - Prompt: "What is she asking for? Hand it over" / "מה היא מבקשת? הגש לה"
 - Audio: Welcome, Mr. Cohen. Your passport, please. — (ברוך הבא, מר כהן. הדרכון שלך, בבקשה.)
-- A: 🛂 ✅
-- B: 📱
-- C: 📄
-- Correct: 🛂
+- A: [picture passport.jpg] ✅
+- B: [picture phone.jpg]
+- C: [picture reservation.jpg]
+- Correct: [picture passport.jpg]
 - Tests: (no sentence id — not recorded)
 
 **M08-Q03** — quick-reply
@@ -32612,19 +32612,19 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Tests: (no sentence id — not recorded)
 
 **M08-Q05** — mini-map
-- Prompt: "In the elevator: which floor?" / "במעלית: לאיזו קומה?" — board, row by row: · | 3️⃣ [tap:floor-3] | · // 🛗 | 2️⃣ [tap:floor-2] | · // · | 1️⃣ [tap:floor-1] | ·
+- Prompt: "In the elevator: which floor?" / "במעלית: לאיזו קומה?" — board, row by row: · |  [tap:floor-3] | · //  |  [tap:floor-2] | · // · |  [tap:floor-1] | ·
 - Audio: Thank you. You're in room two-oh-four, on the second floor. Here is your key. — (תודה. אתה בחדר 204, בקומה השנייה. הנה המפתח שלך.)
-- A: 3️⃣ floor-3
-- B: 2️⃣ floor-2 ✅
-- C: 1️⃣ floor-1
-- Correct: 2️⃣ floor-2
+- A:  floor-3
+- B:  floor-2 ✅
+- C:  floor-1
+- Correct:  floor-2
 - Tests: (no sentence id — not recorded)
 
 **M08-Q06** — visual-match
 - Prompt: "She hands you the key — take it" / "היא מגישה לך את המפתח — קח אותו"
 - Audio: Here is your key. — (הנה המפתח שלך.)
-- A: 🔑 ✅
-- Correct: 🔑
+- A: [picture key.jpg] ✅
+- Correct: [picture key.jpg]
 - Tests: (no sentence id — not recorded)
 
 **M08-Q07** — sentence-builder
@@ -32653,12 +32653,12 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Tests: (no sentence id — not recorded)
 
 **M08-Q10** — mini-map
-- Prompt: "You face the desk. Which way to the elevator?" / "אתה מול הדלפק. לאן הולכים למעלית?" — board, row by row: · | 🚪 [tap:ahead] | · // 🚪 [tap:left] | 🛎️ | 🚪 [tap:right] // · | 🧍 | ·
+- Prompt: "You face the desk. Which way to the elevator?" / "אתה מול הדלפק. לאן הולכים למעלית?" — board, row by row: · |  [tap:ahead] | · //  [tap:left] |  |  [tap:right] // · |  | ·
 - Audio: Yes! Breakfast is from seven to ten. The elevator is on your right. — (כן! ארוחת בוקר משבע עד עשר. המעלית מימינך.)
-- A: 🚪 left
-- B: 🚪 right ✅
-- C: 🚪 ahead
-- Correct: 🚪 right
+- A:  left
+- B:  right ✅
+- C:  ahead
+- Correct:  right
 - Tests: (no sentence id — not recorded)
 
 **M08-Q11** — match-pairs
@@ -32732,12 +32732,12 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Tests: (no sentence id — not recorded)
 
 **M08-Q19** — mini-map
-- Prompt: "In the elevator: which floor?" / "במעלית: לאיזו קומה?" — board, row by row: · | 3️⃣ [tap:floor-3] | · // 🛗 | 2️⃣ [tap:floor-2] | · // · | 1️⃣ [tap:floor-1] | ·
+- Prompt: "In the elevator: which floor?" / "במעלית: לאיזו קומה?" — board, row by row: · |  [tap:floor-3] | · //  |  [tap:floor-2] | · // · |  [tap:floor-1] | ·
 - Audio: Thank you. You're in room two-oh-four, on the second floor. Here is your key. — (תודה. אתה בחדר 204, בקומה השנייה. הנה המפתח שלך.)
-- A: 3️⃣ floor-3
-- B: 2️⃣ floor-2 ✅
-- C: 1️⃣ floor-1
-- Correct: 2️⃣ floor-2
+- A:  floor-3
+- B:  floor-2 ✅
+- C:  floor-1
+- Correct:  floor-2
 - Tests: (no sentence id — not recorded)
 
 **M08-Q20** — quick-reply
@@ -32759,12 +32759,12 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Tests: (no sentence id — not recorded)
 
 **M08-Q22** — mini-map
-- Prompt: "You face the desk. Which way to the elevator?" / "אתה מול הדלפק. לאן הולכים למעלית?" — board, row by row: · | 🚪 [tap:ahead] | · // 🚪 [tap:left] | 🛎️ | 🚪 [tap:right] // · | 🧍 | ·
+- Prompt: "You face the desk. Which way to the elevator?" / "אתה מול הדלפק. לאן הולכים למעלית?" — board, row by row: · |  [tap:ahead] | · //  [tap:left] |  |  [tap:right] // · |  | ·
 - Audio: Yes! Breakfast is from seven to ten. The elevator is on your right. — (כן! ארוחת בוקר משבע עד עשר. המעלית מימינך.)
-- A: 🚪 left
-- B: 🚪 right ✅
-- C: 🚪 ahead
-- Correct: 🚪 right
+- A:  left
+- B:  right ✅
+- C:  ahead
+- Correct:  right
 - Tests: (no sentence id — not recorded)
 
 **M08-Q23** — dialogue-choice
@@ -32834,12 +32834,12 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Tests: (no sentence id — not recorded)
 
 **M08-Q31** — mini-map
-- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה." — board, row by row: · | 🚪 [tap:ahead] | · // 🚪 [tap:left] | 🛎️ | 🚪 [tap:right] // · | 🧍 | ·
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה." — board, row by row: · |  [tap:ahead] | · //  [tap:left] |  |  [tap:right] // · |  | ·
 - Audio: Yes! Breakfast is from seven to ten. The elevator is on your right. — (כן! ארוחת בוקר משבע עד עשר. המעלית מימינך.)
-- A: 🚪 left
-- B: 🚪 right ✅
-- C: 🚪 ahead
-- Correct: 🚪 right
+- A:  left
+- B:  right ✅
+- C:  ahead
+- Correct:  right
 - Tests: (no sentence id — not recorded)
 
 **M08-Q32** — quick-reply
@@ -32870,12 +32870,12 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Tests: (no sentence id — not recorded)
 
 **M08-Q35** — mini-map
-- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה." — board, row by row: · | 3️⃣ [tap:floor-3] | · // 🛗 | 2️⃣ [tap:floor-2] | · // · | 1️⃣ [tap:floor-1] | ·
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה." — board, row by row: · |  [tap:floor-3] | · //  |  [tap:floor-2] | · // · |  [tap:floor-1] | ·
 - Audio: Thank you. You're in room two-oh-four, on the second floor. Here is your key. — (תודה. אתה בחדר 204, בקומה השנייה. הנה המפתח שלך.)
-- A: 3️⃣ floor-3
-- B: 2️⃣ floor-2 ✅
-- C: 1️⃣ floor-1
-- Correct: 2️⃣ floor-2
+- A:  floor-3
+- B:  floor-2 ✅
+- C:  floor-1
+- Correct:  floor-2
 - Tests: (no sentence id — not recorded)
 
 **M08-Q36** — quick-reply
@@ -32897,12 +32897,12 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Tests: (no sentence id — not recorded)
 
 **M08-Q38** — mini-map
-- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה." — board, row by row: · | 🚪 [tap:ahead] | · // 🚪 [tap:left] | 🛎️ | 🚪 [tap:right] // · | 🧍 | ·
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה." — board, row by row: · |  [tap:ahead] | · //  [tap:left] |  |  [tap:right] // · |  | ·
 - Audio: Yes! Breakfast is from seven to ten. The elevator is on your right. — (כן! ארוחת בוקר משבע עד עשר. המעלית מימינך.)
-- A: 🚪 left
-- B: 🚪 right ✅
-- C: 🚪 ahead
-- Correct: 🚪 right
+- A:  left
+- B:  right ✅
+- C:  ahead
+- Correct:  right
 - Tests: (no sentence id — not recorded)
 
 ## Mission 09 — Shopping

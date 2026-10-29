@@ -1,3 +1,4 @@
+import { HotelStaySummary } from './HotelStaySummary.js';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { L, t } from '../../shared/i18n/strings.js';
 import { speak } from '../../shared/audio/tts.js';
@@ -39,7 +40,7 @@ function GameHead({ label, i, n, children }: { label: string; i: number; n: numb
   return (
     <div className="pc-head">
       <span className="pc-head-text">
-        <p className="drill-label">{label}</p>
+        <p className="drill-label"><HotelStaySummary text={label} /></p>
         <Progress i={i} n={n} />
       </span>
       {children}
@@ -393,17 +394,18 @@ export function MiniMapStep({ step, onDone }: { step: StepOf<'miniMap'>; onDone:
         </GameHead>
         {/* The map is a picture, not text: it keeps one orientation in Hebrew and English alike. */}
         {/* After a pick, the answer's area (its zone) is drawn out: WHY it is the answer, not just which. */}
-        <div className={`pgrid pmap${step.quiet ? ' is-quiet' : ''}${picked !== null ? ' is-explain' : ''}`} dir="ltr" data-answer-zone={round.cells.find((c) => c.id === round.correct)?.zone}>
+        <div className={`pgrid pmap${step.presentation ? ` ${step.presentation}` : ''}${step.quiet ? ' is-quiet' : ''}${picked !== null ? ' is-explain' : ''}`} dir="ltr" data-answer-zone={round.cells.find((c) => c.id === round.correct)?.zone}>
+          {step.presentation === 'hotel-lobby' && step.scene && <img className="hotel-lobby-scene" src={publicAsset(ok && step.revealImage ? step.revealImage : step.scene)} alt="" draggable={false} />}
           {GRID.map(([row, col]) => {
             const cell = at(row, col);
             const inner = cell && (
               <>
-                {cell.image ? <img className="ptile-img" src={publicAsset(cell.image)} alt="" draggable={false} decoding="async" /> : cell.emoji && <span className="ptile-emoji" aria-hidden>{cell.emoji}</span>}
-                {cell.label && <span className="ptile-label">{cell.label}</span>}
+                {step.presentation === 'hotel-lobby' ? (cell.tappable && <span className="hotel-direction-arrow" aria-hidden>{cell.zone === 'left' ? '←' : cell.zone === 'right' ? '→' : '↑'}</span>) : cell.image ? <img className="ptile-img" src={publicAsset(cell.image)} alt="" draggable={false} decoding="async" /> : cell.emoji && <span className="ptile-emoji" aria-hidden>{cell.emoji}</span>}
+                {(cell.label || cell.symbol) && <span className="ptile-label">{cell.label ?? cell.symbol}</span>}
               </>
             );
             if (!cell) return <span key={`${row}${col}`} className="ptile is-road" aria-hidden />;
-            if (!cell.tappable) return <span key={cell.id} className={`ptile is-static${cell.image || cell.emoji ? '' : ' is-road'}`} data-zone={cell.zone}>{inner}</span>;
+            if (!cell.tappable) return <span key={cell.id} className={`ptile is-static${cell.image || cell.emoji || cell.symbol ? '' : ' is-road'}`} data-zone={cell.zone} data-role={cell.id}>{inner}</span>;
             return (
               <button
                 key={cell.id}

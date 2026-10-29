@@ -1,58 +1,55 @@
-# Mission 08 — Hotel Check-in: artwork manifest
+# Mission 08 — Hotel Check-in: integrated visual manifest
 
-**Status: VISUAL PRODUCTION REQUIRED (Astra pass).** Every slot is an emoji placeholder (`M08_SLOTS` /
-`M08_PROPS` in `apps/web/src/features/bootcamp/practiceArrival.ts`, `image` unset). To integrate: put
-the file at `apps/web/public/images/mission08/<filename>` and set the slot's `image`. One file per asset
-— never a collage cut up later.
+15 semantic slots and 10 props. Shared unchanged across EN / ES / FR. Learning flow,
+34 interactions, dialogue, answers and reveal timing are frozen. Owner performs manual mobile QA;
+see [validation report](./MISSION08_VISUAL_REPORT.md).
 
-## One continuous world
+## Canonical semantic slots
 
-The same **guest** (the traveller of Missions 05–07), the same **receptionist**, the same **front desk**,
-the same **key card**, the same **lobby** and **elevator**. Premium polished 3D animated illustration,
-warm evening light. **No text in the picture** — no room numbers, no signs (figures are shown by the app).
-Wide, ~16:9, ≥ 1200 px, JPEG. Shared by EN / ES / FR.
+Paths are relative to `apps/web/public/`.
 
-**Fairness (tested):** a round never mixes artwork with emoji — assets marked **[game: …]** ship together.
+| Slot | Canonical path | Meaning |
+|---|---|---|
+| reservation | images/mission08/reservation.jpg | Booking confirmation object, bed/calendar/check pictograms, no stay data |
+| passport | images/mission06/passport.jpg | Existing passport, reviewed from Mission 06 |
+| breakfast | images/mission08/breakfast.jpg | Guest at hotel breakfast |
+| how-can-help | images/mission08/how-can-help.jpg | Receptionist greeting guest |
+| reservation-response | images/mission08/reservation-response.jpg | Guest presents booking |
+| passport-request | images/mission08/passport-request.jpg | Empty requesting hand; passport still held by guest |
+| passport-handoff | images/mission08/passport-handoff.jpg | Passport physically transferred across desk |
+| room-floor-key | images/mission08/room-floor-key.jpg | Receptionist gives sage key; figures supplied separately |
+| breakfast-question | images/mission08/breakfast-question.jpg | Guest asks, breakfast room cue, no hours |
+| breakfast-hours | images/mission08/breakfast-hours.jpg | Receptionist answers with breakfast context; no numbers |
+| elevator-right | images/mission08/elevator-right.jpg | Elevator on guest/screen right |
+| enjoy-stay | images/mission08/enjoy-stay.jpg | Guest leaves with key, receptionist waves |
+| room-204 | images/mission08/room-204.svg | Authored deterministic teaching illustration of 204 |
+| second-floor | images/mission08/second-floor.svg | Authored deterministic teaching panel, 2 highlighted |
+| key | images/mission08/key.jpg | Same sage key with brass emblem |
 
-## Group 1 — what the guest knows
+## Props
 
-| File | Slot | Meaning | Composition | Used in |
-|---|---|---|---|---|
-| `reservation.jpg` | `reservation` | the booking | the guest's booking confirmation (printout or phone screen, no readable text) | Step 0 "reservation"; **[game: hand-off]** |
-| `passport.jpg` | `passport` | passport (review) | the guest's passport in hand — may reuse Mission 06's `passport.jpg` | Step 0; **[game: hand-off]**; the key round's second tile |
-| `breakfast.jpg` | `breakfast` | breakfast | a hotel breakfast buffet | Step 0 "breakfast" |
+| Prop | Representation |
+|---|---|
+| phone | images/mission06/phone.jpg, reused |
+| floor-1 / floor-2 / floor-3 | Typed numeric UI symbols 1 / 2 / 3, three props |
+| elevator-panel | Deterministic CSS lift doors and ↕ symbol |
+| corridor-left / corridor-right / corridor-ahead | images/mission08/lobby.jpg, one neutral scene with equal direction controls |
+| guest | ↑ UI direction symbol; suppressed in immersive lobby rendering |
+| desk | images/mission08/lobby.jpg, shared scene |
 
-## Group 2 — the reception scenes
+## Production rules and UI
 
-| File | Slot | Meaning | Composition |
-|---|---|---|---|
-| `how-can-help.jpg` | `how-can-help` | "Good evening! How can I help you?" | receptionist smiling at the guest arriving with a suitcase |
-| `reservation-response.jpg` | `reservation-response` | "I have a reservation, under the name Cohen." | the guest speaking, booking in hand (also Step 0 "name") |
-| `passport-request.jpg` | `passport-request` | "Welcome, Mr. Cohen. Your passport, please." | receptionist holding out a hand |
-| `passport-handoff.jpg` | `passport-handoff` | "Here you go." | the guest handing the passport across the desk |
-| `room-floor-key.jpg` | `room-floor-key` | the room line (room · floor · key) | receptionist talking while sliding a key card across |
-| `breakfast-question.jpg` | `breakfast-question` | "Is breakfast included?" | the guest asking, a breakfast-room doorway visible |
-| `breakfast-hours.jpg` | `breakfast-hours` | "Yes! Breakfast is from seven to ten…" | receptionist answering, pointing at a (text-free) clock |
-| `elevator-right.jpg` | `elevator-right` | "The elevator is on your right." | the guest's view facing the desk; the elevator clearly to the guest's RIGHT |
-| `enjoy-stay.jpg` | `enjoy-stay` | "Enjoy your stay!" | the guest walking off, key in hand, receptionist waving |
+13 separately generated JPEGs; no collage, contact sheet, or crops used to derive assets.
+Every JPEG retains its 1672×941 source dimensions (quality 90 compression, no resizing).
+Source paths and prompts: [provenance](./mission08-artwork.json). The two SVGs are authored
+1600×900 product UI, not AI art. There are 17 distinct referenced files including two M06 reuses.
 
-## Group 3 — information objects
+Room choices 204 / 214 / 240 and hours 7–10 / 7–9 / 8–10 remain text buttons of identical style.
+The floor game uses equal circular controls vertically ordered 3 / 2 / 1, with lift doors beside them.
+The direction game retains the original LEFT / RIGHT / AHEAD choices. One neutral lobby replaces
+three repeated tiles; 52px arrows have equal treatment. Correct selection reveals the elevator-right
+scene; no elevator is shown before selection. Wrong selection retains existing feedback/retry behavior.
 
-| File | Slot | Meaning | Composition |
-|---|---|---|---|
-| `room-204.jpg` | `room-204` | your room | a hotel room door (no number painted — the app shows 204) |
-| `second-floor.jpg` | `second-floor` | the second floor | the elevator arriving at a floor; floor indicator without digits |
-| `key.jpg` | `key` | your key | the same key card, close up — **[game: key]** with `passport` |
-
-## Props — picture-only (ship with their games)
-
-| File | Prop | Composition | Ships with |
-|---|---|---|---|
-| `phone.jpg` | `phone` | the guest's phone (may reuse Mission 06 `phone.jpg`) | **[game: hand-off]** |
-| `floor-1.jpg` / `floor-2.jpg` / `floor-3.jpg` | `floor-1…3` | three identical elevator buttons — the app overlays nothing, so each button shows its own digit (1 / 2 / 3) | **[game: floor panel]** |
-| `elevator-panel.jpg` | `elevator-panel` | the lift doors beside the panel (not tappable) | **[game: floor panel]** |
-| `corridor.jpg` | `corridor-left` / `-right` / `-ahead` | ONE corridor picture used three times — the corridors must look identical, only their side differs | **[game: lobby]** |
-| `guest-top.jpg` | `guest` | the guest seen from behind/above, facing the desk | **[game: lobby]** |
-| `desk-top.jpg` | `desk` | the reception desk from the guest's side | **[game: lobby]** |
-
-Room numbers (204 · 214 · 240) and breakfast hours (7–10 · 7–9 · 8–10) stay as figures — no artwork.
+Stay data is rendered as a two-column, four-cell grid using exactly the existing progressively
+revealed string. Unknown facts remain ?. No semantic slot or game falls back to emoji.
+Existing UI icons in the stay card remain intentional UI. No separate language artwork.

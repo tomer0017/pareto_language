@@ -188,6 +188,8 @@ export interface MapCell {
   row: 0 | 1 | 2;
   col: 0 | 1 | 2;
   emoji?: string;
+  /** Non-linguistic floor/direction UI; never a target-language landmark label. */
+  symbol?: `${number}` | '↕' | '↑';
   label?: string;       // a landmark name in the learning language
   tappable?: boolean;
 }
@@ -260,7 +262,7 @@ export type BootcampStep =
   | { kind: 'swap'; label?: LocalizedText; rounds: SwapRound[] }
   /** `base`: what is being made — an emoji, or an approved picture's public path ("images/…"). */
   | { kind: 'customize'; label?: LocalizedText; base: string; options: CustomizeOption[]; rounds: CustomizeRound[] }
-  | { kind: 'miniMap'; label?: LocalizedText; rounds: MiniMapRound[]; challenge?: boolean; quiet?: boolean }
+  | { kind: 'miniMap'; presentation?: 'hotel-floor' | 'hotel-lobby'; scene?: string; revealImage?: string; label?: LocalizedText; rounds: MiniMapRound[]; challenge?: boolean; quiet?: boolean }
   | { kind: 'matchPairs'; label?: LocalizedText; pairs: MatchPair[] }
   | { kind: 'sentenceBuilder'; label?: LocalizedText; rounds: BuilderRound[] }
   | { kind: 'receipt'; text: LocalizedText }

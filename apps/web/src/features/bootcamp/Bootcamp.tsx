@@ -1,3 +1,4 @@
+import { HotelStaySummary } from './HotelStaySummary.js';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { L, t } from '../../shared/i18n/strings.js';
 import { speak, cancelSpeech } from '../../shared/audio/tts.js';
@@ -343,7 +344,7 @@ function TalkStep({ step, intro, onNext }: { step: Extract<BootcampStep, { kind:
         <div className="mission-intro">
           <CompanionIntro line={intro} />
           <h1 className="mission-intro-title">{L(step.title)}</h1>
-          {step.body.map((b, i) => <p key={i} className="mission-intro-body">{L(b)}</p>)}
+          {step.body.map((b, i) => <p key={i} className="mission-intro-body"><HotelStaySummary text={L(b)} /></p>)}
           {step.facts && <BriefingFacts facts={step.facts} />}
         </div>
         <div className="action-zone">
@@ -358,7 +359,7 @@ function TalkStep({ step, intro, onNext }: { step: Extract<BootcampStep, { kind:
         <p style={{ fontSize: '2.4rem', textAlign: 'center' }}>{step.icon}</p>
         <p className="drill-phrase" style={{ fontSize: '1.4rem', textAlign: 'center' }}>{L(step.title)}</p>
         {step.body.map((b, i) => (
-          <p key={i} className="drill-meaning" style={{ fontSize: '1rem' }}>{L(b)}</p>
+          <p key={i} className="drill-meaning" style={{ fontSize: '1rem' }}><HotelStaySummary text={L(b)} /></p>
         ))}
         {step.facts && <BriefingFacts facts={step.facts} />}
       </div>
@@ -950,7 +951,7 @@ function ReceiptStep({ text, onNext }: { text: Record<string, string>; onNext: (
       {/* Something earned: the buddy brings the crown, and the proof is what you did. */}
       <div className="proud-step pop-in">
         <CompanionReaction kind="proud" text={false} size={148} />
-        <p className="drill-phrase" style={{ fontSize: '1.25rem' }}>{L(text)}</p>
+        <p className="drill-phrase" style={{ fontSize: '1.25rem' }}><HotelStaySummary text={L(text)} /></p>
       </div>
       <div className="action-zone">
         <button className="btn-primary" onClick={onNext}>{t('continue')}</button>

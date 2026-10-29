@@ -1708,3 +1708,29 @@ div.jstep { box-shadow: none; border-color: var(--line); }
 .pmatch-tile .pmatch-img.is-support { width: 104px; height: 59px; object-fit: contain; border-radius: 10px; margin-inline-end: 10px; flex: none; }
 .pmatch-supported { display: flex; align-items: center; gap: 10px; text-align: start; }
 .pmatch-supported .pmatch-img.is-support { margin-inline-end: 0; }
+
+/* Mission 08 opts into these hotel presentations; the learning data stays unchanged. */
+.hotel-stay-summary { display: block; width: 100%; text-transform: none; letter-spacing: normal; }
+.hotel-stay-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 12px 0; }
+.hotel-stay-fact { display: flex; align-items: center; min-height: 64px; padding: 12px; border-radius: 14px; background: #f4eee4; color: #354c44; font-size: 1rem; font-weight: 650; line-height: 1.5; text-align: start; overflow-wrap: anywhere; }
+.hotel-stay-fact[data-known="true"] { background: #e7eee5; }
+.hotel-stay-note { display: block; line-height: 1.5; }
+.pc-head-text:has(.hotel-stay-summary) { flex: 1; min-width: 0; }
+.pmap.hotel-floor { background: linear-gradient(110deg, #dddcd4, #f4f1e9, #b9bcb6); max-width: 340px; margin-inline: auto; border: 1px solid #a4aaa2; }
+.pmap.hotel-floor button.ptile { border-radius: 50%; background: #f7f5ef; border: 3px solid #929b90; box-shadow: inset 0 0 0 3px #fff; }
+.pmap.hotel-floor .ptile-label { font-size: 2rem; font-weight: 650; color: #263d35; }
+.pmap.hotel-floor [data-role="lift"] { background: linear-gradient(90deg, #b6b7ad 49%, #676b63 49%, #676b63 51%, #b6b7ad 51%); border: 3px solid #777e73; border-radius: 3px; }
+.pmap.hotel-floor .ptile.is-road { background: transparent; border: none; }
+.pmap.hotel-lobby { position: relative; display: block; width: 100%; padding: 0; overflow: hidden; border-radius: 18px; background: #e9ddc7; }
+.hotel-lobby-scene { display: block; width: 100%; height: auto; }
+.pmap.hotel-lobby .ptile.is-static, .pmap.hotel-lobby .ptile.is-road { display: none; }
+.pmap.hotel-lobby button.ptile { position: absolute; width: 52px; height: 52px; min-height: 52px; aspect-ratio: 1; padding: 0; border: 2px solid #fff; border-radius: 50%; background: #fffdf3ed; color: #263d35; box-shadow: 0 3px 12px #0003; transform: translate(-50%, -50%); }
+.pmap.hotel-lobby button[data-zone="left"] { left: 17%; top: 51%; }
+.pmap.hotel-lobby button[data-zone="right"] { left: 83%; top: 51%; }
+.pmap.hotel-lobby button[data-zone="ahead"] { left: 50%; top: 31%; }
+.hotel-direction-arrow { font: 700 32px/1 system-ui, sans-serif; }
+.pmap.hotel-lobby button.is-ok { background: #d9ead4; border-color: #416c43; }
+.pmap.hotel-lobby button.is-bad { background: #f5e5df; border-color: #995d4d; }
+
+.pmap.hotel-floor button.ptile.is-ok { border-color: var(--good); }
+.pmap.hotel-floor button.ptile.is-bad { border-color: var(--danger); }

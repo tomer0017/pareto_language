@@ -150,6 +150,9 @@ export interface CustomizeSpec {
   rounds: { audio: L4; on: string[]; itemId?: string }[];
 }
 export interface MiniMapSpec {
+  presentation?: 'hotel-floor' | 'hotel-lobby';
+  scene?: string;
+  revealImage?: string;
   label?: Copy;
   challenge?: boolean;
   quiet?: boolean;
@@ -399,7 +402,7 @@ export function buildPractice(p: PracticeSpec, lang: MissionLang): BootcampStep 
     };
   }
   return {
-    kind: 'miniMap', ...label, ...(p.challenge ? { challenge: true } : {}), ...(p.quiet ? { quiet: true } : {}),
+    kind: 'miniMap', ...label, ...(p.presentation ? { presentation: p.presentation } : {}), ...(p.scene ? { scene: p.scene } : {}), ...(p.revealImage ? { revealImage: p.revealImage } : {}), ...(p.challenge ? { challenge: true } : {}), ...(p.quiet ? { quiet: true } : {}),
     rounds: p.rounds.map((r) => ({
       audio: paced(spoken(r.audio, lang), r.pace), correct: r.correct, ...(r.itemId ? { itemId: id(r.itemId) } : {}),
       ...(r.reinforce ? { reinforce: spoken(r.reinforce, lang) } : {}),

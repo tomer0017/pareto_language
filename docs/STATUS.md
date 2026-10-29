@@ -22,6 +22,14 @@ loop (typecheck → lint → tests → build → smoke) green at every milestone
 
 ## What's done
 
+### Mission 08 visual integration — validated; owner performs manual mobile QA (2026-10-29)
+
+13 individual high-resolution JPEGs, two authored SVG teaching visuals and two M06 reuses fill
+15 slots / 10 props. Numeric room/hour choices remain UI; floors use a vertical elevator panel,
+directions use one neutral lobby with equal controls, and the progressive stay card uses a 2×2 grid.
+61 dedicated M08 tests include render checks. All 2,318 tests and required verification checks pass; details are recorded in [the report](./MISSION08_VISUAL_REPORT.md).
+Owner explicitly waived agent mobile QA and will inspect 360/390/430 EN/ES/FR manually.
+
 ### Mission 06 artwork integration — owner performs manual mobile QA (2026-10-27)
 
 23 individually generated high-resolution images are integrated across cards, choice games, the
@@ -45,7 +53,7 @@ conversation → no help → video (EN only today; ES / FR safely skipped) → f
 COMPLETE. 34 interactions. Retired: "Sign here, please." and "It's on the second floor." (not the
 conversation's wording); the unused help sentences left the list. prime.test: a review word may be
 justified by VERIFIED prior learning (`learnedBefore`) as well as by an earlier building block. Artwork:
-placeholders — see `docs/MISSION08_ASSET_MANIFEST.md`. Tests: `mission08.test.ts`.
+integrated — see `docs/MISSION08_ASSET_MANIFEST.md` (owner performs manual mobile QA). Tests: `mission08.test.ts`.
 
 ### Mission 07 — the ride is revealed, not given away (2026-10-28)
 
