@@ -75,7 +75,7 @@ describe('scope: only the Practice of Missions 19–24 changed', () => {
   const print = (f: (lang: Lang) => unknown): Record<Lang, string> => ({ en: fnv(JSON.stringify(f('en'))), fr: fnv(JSON.stringify(f('fr'))), es: fnv(JSON.stringify(f('es'))) });
 
   it('Missions 08–18 are byte-for-byte unchanged (Missions 01–07 have their own passes — mission01.test.ts … mission07.test.ts)', () => {
-    expect(print((l) => slice(l, 7, 18))).toEqual({ en: 'ca7bb09a', fr: '443d3b37', es: '5d0c1839' });
+    expect(print((l) => slice(l, 8, 18))).toEqual({ en: '844c2294', fr: '818e8b10', es: '27fffd97' }); // since the Mission 08 pass: Missions 09–18
   });
   it('the locked dialogues of Missions 19–23 are byte-for-byte unchanged', () => {
     expect(print((l) => slice(l, 18, 23).map((d) => d.dialogues))).toEqual({ en: '594ead2b', fr: '63803269', es: '55c7bd8f' });
@@ -111,7 +111,7 @@ describe('scope: only the Practice of Missions 19–24 changed', () => {
     expect(text(mission(19), 'phrase.trans.single')).toBe('Single, please.');
   });
   it('nothing was retired in this pass: the archive still holds the same seven sentences (plus those the later Mission 03, 05 and 06 passes retired)', () => {
-    for (const lang of LANGS) expect(RETIRED_SENTENCES[lang].filter((r) => r.retiredFrom !== 'coffee-shop' && r.retiredFrom !== 'directions' && r.retiredFrom !== 'airport-border' && r.retiredFrom !== 'taxi'), lang).toHaveLength(7);
+    for (const lang of LANGS) expect(RETIRED_SENTENCES[lang].filter((r) => r.retiredFrom !== 'coffee-shop' && r.retiredFrom !== 'directions' && r.retiredFrom !== 'airport-border' && r.retiredFrom !== 'taxi' && !['reply.hotel.sign-here', 'reply.hotel.second-floor'].includes(r.id.slice(3))), lang).toHaveLength(7);
     expect(RETIRED_SENTENCES.en.some((r) => /trans\.|past\.|future\.|fix\.|opin\./.test(r.id))).toBe(false);
   });
   it('mission order, ids and registry keys are unchanged', () => {

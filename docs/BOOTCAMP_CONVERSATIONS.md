@@ -432,24 +432,23 @@ _Reply-training drill:_ “Got it. No problem — off we go!” · “Thank you 
 - **Under the name Cohen.** · על השם כהן.
 - **Is breakfast included?** · ארוחת הבוקר כלולה?
 - **Here you go.** · בבקשה, הנה.
+- **I have a reservation, under the name Cohen.** · יש לי הזמנה, על השם כהן.
 
 ### Expected replies (you hear)
 - **Your passport, please.** · הדרכון שלך, בבקשה.
-- **Sign here, please.** · תחתום כאן, בבקשה.
 - **You're in room two-oh-four.** · אתה בחדר 204.
-- **It's on the second floor.** · זה בקומה השנייה.
 - **Breakfast is from seven to ten.** · ארוחת בוקר משבע עד עשר.
 - **The elevator is on your right.** · המעלית מימינך.
+- **Good evening! How can I help you?** · ערב טוב! איך אפשר לעזור?
+- **Welcome, Mr. Cohen. Your passport, please.** · ברוך הבא, מר כהן. הדרכון שלך, בבקשה.
+- **Thank you. You're in room two-oh-four, on the second floor. Here is your key.** · תודה. אתה בחדר 204, בקומה השנייה. הנה המפתח שלך.
+- **Yes! Breakfast is from seven to ten. The elevator is on your right.** · כן! ארוחת בוקר משבע עד עשר. המעלית מימינך.
+- **Enjoy your stay!** · תיהנה מהשהות!
 
-_Reply-training drill:_ “Your passport, please.” · “You're in room two-oh-four.” · “It's on the second floor.” · “Breakfast is from seven to ten.”
+_Reply-training drill:_ “Good evening! How can I help you?” · “Yes! Breakfast is from seven to ten. The elevator is on your right.” · “Enjoy your stay!”
 
 ### Recovery tools reused
-`Can you repeat that?` · `Please speak slowly.` · `Thank you!` · `One moment, please.`
-
-### Cold open (ambush)
-- 🧑 (fast) “Just so you know breakfast is served in the room on the lower level next to the pool.” · רק שתדע, ארוחת הבוקר מוגשת בחדר בקומה התחתונה ליד הבריכה.
-  - ✅ best move: **Can you repeat that?** · אפשר לחזור על זה?
-  - ✗ distractor: Here you go.
+`Can you repeat that?` · `One moment, please.`
 
 ### Dialogue: `hotel-checkin` — happy path
 - **🧑 Them:** “Good evening! How can I help you?” · ערב טוב! איך אפשר לעזור?

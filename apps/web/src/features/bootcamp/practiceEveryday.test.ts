@@ -67,7 +67,7 @@ const unknownIn = (said: string[], known: Set<string>): string[] => [...new Set(
 /* ── scope ───────────────────────────────────────────────────────────────────────────────────── */
 
 // Missions 06–10. (Missions 01–05 got their own pedagogical passes — pinned in mission01…05.test.ts.)
-const M08_10 = { en: '56939a41', fr: '57dcc32f', es: '5ec812d1' };
+const M09_10 = { en: '64f61023', fr: '473e54dc', es: 'd1828373' };
 /** French Mission 14's steps without its first Quick Reply and its word intro (whose menu word was corrected). */
 const FR_M14_WITHOUT_PRIME = 'be5602cb';
 
@@ -78,7 +78,7 @@ describe('scope: only the Practice of Missions 11–18 changed', () => {
   const print = (f: (lang: Lang) => unknown): Record<Lang, string> => ({ en: fnv(JSON.stringify(f('en'))), fr: fnv(JSON.stringify(f('fr'))), es: fnv(JSON.stringify(f('es'))) });
 
   it('Missions 08–10 are unchanged by this pass (their own fingerprint, incl. the later retirement of two hotel sentences, lives in practiceArrival.test.ts; Missions 06 and 07 have their own passes)', () => {
-    expect(print((l) => slice(l, 7, 10))).toEqual(M08_10);
+    expect(print((l) => slice(l, 8, 10))).toEqual(M09_10); // since the Mission 08 pass: Missions 09–10
   });
   it('the locked dialogues of Missions 11–17 are byte-for-byte unchanged', () => {
     expect(print((l) => slice(l, 10, 17).map((d) => d.dialogues))).toEqual({ en: '66104490', fr: 'c4e783b1', es: 'fccb4e58' });

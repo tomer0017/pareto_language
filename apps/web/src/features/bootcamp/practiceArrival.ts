@@ -673,71 +673,273 @@ export function m07Steps(lang: MissionLang): BootcampStep[] {
 
 /* ── Mission 08 — Hotel Check-in ─────────────────────────────────────────────────────────────── */
 
-const ROOM_TILES = [
-  { id: 'r104', label: '104' }, { id: 'r204', label: '204' }, { id: 'r214', label: '214' },
-  { id: 'r240', label: '240' }, { id: 'r402', label: '402' }, { id: 'r420', label: '420' },
-];
+/**
+ * Mission 08's image slots — one per meaning. PLACEHOLDERS: no slot has its artwork yet (`image`
+ * unset — the emoji stands in). One continuous hotel world for the final art: the same guest, the
+ * same receptionist, the same desk, the same key card, the same lobby and elevator.
+ *   Group 1 — what the guest knows · Group 2 — the reception scenes · Group 3 — the information objects.
+ */
+type M08Slot =
+  | 'reservation' | 'passport' | 'breakfast'
+  | 'how-can-help' | 'reservation-response' | 'passport-request' | 'passport-handoff' | 'room-floor-key'
+  | 'breakfast-question' | 'breakfast-hours' | 'elevator-right' | 'enjoy-stay'
+  | 'room-204' | 'second-floor' | 'key';
+export const M08_SLOTS: Record<M08Slot, { emoji: string; image?: string }> = {
+  reservation: { emoji: '📄' }, passport: { emoji: '🛂' }, breakfast: { emoji: '🍳' },
+  'how-can-help': { emoji: '🛎️' }, 'reservation-response': { emoji: '🗣️' }, 'passport-request': { emoji: '🙋' }, 'passport-handoff': { emoji: '🤲' },
+  'room-floor-key': { emoji: '🏨' }, 'breakfast-question': { emoji: '❓' }, 'breakfast-hours': { emoji: '🕖' }, 'elevator-right': { emoji: '🛗' }, 'enjoy-stay': { emoji: '😊' },
+  'room-204': { emoji: '🚪' }, 'second-floor': { emoji: '🏢' }, key: { emoji: '🔑' },
+};
+/**
+ * The choices beside them — picture-only, never named in the learning language. They share games with
+ * the slots, so they get their artwork TOGETHER with them (a test refuses a round that mixes kinds).
+ */
+export const M08_PROPS = {
+  phone: { emoji: '📱' },
+  'floor-1': { emoji: '1️⃣' }, 'floor-2': { emoji: '2️⃣' }, 'floor-3': { emoji: '3️⃣' }, 'elevator-panel': { emoji: '🛗' },
+  'corridor-left': { emoji: '🚪' }, 'corridor-right': { emoji: '🚪' }, 'corridor-ahead': { emoji: '🚪' }, guest: { emoji: '🧍' }, desk: { emoji: '🛎️' },
+} as const satisfies Record<string, { emoji: string; image?: string }>;
+const look8 = (x: { emoji: string; image?: string }): { emoji: string } | { image: string } => (x.image ? { image: x.image } : { emoji: x.emoji });
+const slot8 = (s: M08Slot): { emoji: string } | { image: string } => look8(M08_SLOTS[s]);
+const tile8 = (id: string, x: { emoji: string; image?: string }) => ({ id, ...look8(x), scale: 1.4 });
 
-export function m08Flow(lang: MissionLang): BootcampStep[] {
+/** What the guest KNOWS walking in. Everything else the receptionist knows — and says. */
+export const M08_KNOWN_AT_START = { reservation: true, name: 'Cohen', passport: true } as const;
+/** The stay — the SIMULATION'S truth. The learner sees it only as the receptionist reveals it. */
+export const M08_STAY = { room: 204, floor: 2, breakfast: '7–10', elevator: 'right' } as const;
+export const M08_STAY_FACTS = ['room', 'floor', 'breakfast', 'elevator'] as const;
+type StayFact = (typeof M08_STAY_FACTS)[number];
+const FACT_NAME: Record<StayFact, Copy> = { room: ['🚪 חדר', '🚪 Room'], floor: ['🏢 קומה', '🏢 Floor'], breakfast: ['🍳 ארוחת בוקר', '🍳 Breakfast'], elevator: ['🛗 מעלית', '🛗 Elevator'] };
+const FACT_VALUE: Record<StayFact, string> = { room: '204', floor: '2', breakfast: '7–10', elevator: '→' };
+/** The stay card once `known` facts have been heard from the receptionist: "?" until then. */
+export const stayCard = (known: readonly StayFact[]): Copy => {
+  const row = (i: 0 | 1): string => M08_STAY_FACTS.map((f) => (known.includes(f) ? `${FACT_NAME[f][i]} ${FACT_VALUE[f]} ✅` : `${FACT_NAME[f][i]} ?`)).join(' · ');
+  return [row(0), row(1)];
+};
+const NONE: readonly StayFact[] = [];
+const ROOM_KNOWN: readonly StayFact[] = ['room', 'floor'];
+const ALL_KNOWN: readonly StayFact[] = M08_STAY_FACTS;
+
+/* The locked conversation (EN · FR · ES · HE), line by line. */
+const L_GREET: L4 = ['Good evening! How can I help you?', 'Bonsoir ! Comment puis-je vous aider ?', '¡Buenas noches! ¿En qué puedo ayudarle?', 'ערב טוב! איך אפשר לעזור?'];
+const L_RESERVE: L4 = ['I have a reservation, under the name Cohen.', 'J’ai une réservation, au nom de Cohen.', 'Tengo una reserva, a nombre de Cohen.', 'יש לי הזמנה, על השם כהן.'];
+const H_WELCOME: L4 = ['Welcome, Mr. Cohen. Your passport, please.', 'Bienvenue, monsieur Cohen. Votre passeport, s’il vous plaît.', 'Bienvenido, señor Cohen. Su pasaporte, por favor.', 'ברוך הבא, מר כהן. הדרכון שלך, בבקשה.'];
+const L_HERE: L4 = ['Here you go.', 'Voilà, tenez.', 'Aquí tiene.', 'בבקשה, הנה.'];
+const L_ROOM: L4 = ["Thank you. You're in room two-oh-four, on the second floor. Here is your key.", 'Merci. Vous êtes dans la chambre deux cent quatre, au deuxième étage. Voici votre clé.', 'Gracias. Está en la habitación doscientos cuatro, en el segundo piso. Aquí tiene su llave.', 'תודה. אתה בחדר 204, בקומה השנייה. הנה המפתח שלך.'];
+const L_BREAKFAST: L4 = ['Is breakfast included?', 'Le petit-déjeuner est compris ?', '¿El desayuno está incluido?', 'ארוחת הבוקר כלולה?'];
+const L_HOURS: L4 = ['Yes! Breakfast is from seven to ten. The elevator is on your right.', 'Oui ! Le petit-déjeuner est de sept heures à dix heures. L’ascenseur est sur votre droite.', '¡Sí! El desayuno es de siete a diez. El ascensor está a su derecha.', 'כן! ארוחת בוקר משבע עד עשר. המעלית מימינך.'];
+const L_ENJOY: L4 = ['Enjoy your stay!', 'Bon séjour !', '¡Que disfrute su estancia!', 'תיהנה מהשהות!'];
+/* …and the pieces of the two information lines, each worth a card of its own. */
+const C_ROOM: L4 = ["You're in room two-oh-four.", 'Vous êtes dans la chambre deux cent quatre.', 'Está en la habitación doscientos cuatro.', 'אתה בחדר 204.'];
+const C_FLOOR: L4 = ['on the second floor', 'au deuxième étage', 'en el segundo piso', 'בקומה השנייה'];
+const C_KEY: L4 = ['Here is your key.', 'Voici votre clé.', 'Aquí tiene su llave.', 'הנה המפתח שלך.'];
+const C_HOURS: L4 = ['Breakfast is from seven to ten.', 'Le petit-déjeuner est de sept heures à dix heures.', 'El desayuno es de siete a diez.', 'ארוחת בוקר משבע עד עשר.'];
+const C_ELEVATOR: L4 = ['The elevator is on your right.', 'L’ascenseur est sur votre droite.', 'El ascensor está a su derecha.', 'המעלית מימינך.'];
+
+/* The desk's games. */
+const H_HANDOFF = [tile8('passport', M08_SLOTS.passport), tile8('phone', M08_PROPS.phone), tile8('booking', M08_SLOTS.reservation)];
+/** Room numbers — figures, not words: 204 among numbers that sound and look close. */
+const ROOMS = [{ id: 'r204', label: '204' }, { id: 'r214', label: '214' }, { id: 'r240', label: '240' }];
+/** Breakfast hours — figures: the range heard among two close ones. */
+const HOURS = [{ id: 'h7-10', label: '7–10' }, { id: 'h7-9', label: '7–9' }, { id: 'h8-10', label: '8–10' }];
+type Cell8 = { id: string; row: 0 | 1 | 2; col: 0 | 1 | 2; emoji?: string; image?: string; tappable?: boolean; zone?: string };
+const cell8 = (id: string, row: 0 | 1 | 2, col: 0 | 1 | 2, x: { emoji: string; image?: string }, extra: Partial<Cell8> = {}): Cell8 => ({ id, row, col, ...look8(x), ...extra });
+/** The ELEVATOR PANEL: floors stacked as they are in the building (3 on top), the lift beside them. */
+const PANEL = (): Cell8[] => [
+  cell8('floor-3', 0, 1, M08_PROPS['floor-3'], { tappable: true, zone: 'floor-3' }),
+  cell8('floor-2', 1, 1, M08_PROPS['floor-2'], { tappable: true, zone: 'floor-2' }),
+  cell8('floor-1', 2, 1, M08_PROPS['floor-1'], { tappable: true, zone: 'floor-1' }),
+  cell8('lift', 1, 0, M08_PROPS['elevator-panel']),
+];
+/** The LOBBY, from the guest's point of view: you face the desk; a corridor on your left, one on your
+ *  right, one straight ahead past the desk. The three corridors look alike — only the SIDE differs. */
+const LOBBY = (): Cell8[] => [
+  cell8('guest', 2, 1, M08_PROPS.guest), cell8('desk', 1, 1, M08_PROPS.desk),
+  cell8('left', 1, 0, M08_PROPS['corridor-left'], { tappable: true, zone: 'left' }),
+  cell8('right', 1, 2, M08_PROPS['corridor-right'], { tappable: true, zone: 'right' }),
+  cell8('ahead', 0, 1, M08_PROPS['corridor-ahead'], { tappable: true, zone: 'ahead' }),
+];
+/** Which choice is the guest's own, from the stay (never chosen per exercise). */
+export const M08_ANSWER = { handoff: 'passport', room: 'r204', floor: 'floor-2', hours: 'h7-10', direction: 'right' } as const;
+
+/**
+ * Mission 08 — Hotel Check-in: "I actually checked into a hotel and now I know where to go." The
+ * conversation is LOCKED (with its side-branches). The guest walks in knowing only the reservation
+ * (under Cohen) and the passport; the receptionist knows the room, the floor, the breakfast hours and
+ * where the elevator is — and the STAY CARD fills only as each is understood:
+ *
+ *   the briefing → Step 0 (optional) → THE DESK: "How can I help you?" — your reservation (card,
+ *   builder) → THE PASSPORT: hand it over, "Here you go." → THE ROOM: the receptionist's line → the
+ *   room number · the floor on the elevator panel · the key → BREAKFAST: you ask (card, builder,
+ *   your initiative) → the hours · the elevator, on your right in the lobby → "Enjoy your stay" →
+ *   question → your answer → the receptionist by ear → the supported check-in → the conversation →
+ *   no help → the video → the final check-in → CHECK-IN COMPLETE.
+ *
+ * TEACH before TEST: every line is first shown with its meaning on a card. The guest says only the
+ * guest's lines. Coverage: `mission08Coverage.ts`, enforced by `mission08.test.ts`.
+ */
+export function m08Steps(lang: MissionLang): BootcampStep[] {
   const k = kit(lang);
+  const card = (key: string, line: L4, meaning: Copy, s: M08Slot) => ({ line: true, key, t: [line[0], line[1], line[2]] as L3, meaning, ...slot8(s) });
+  const cards = (label: Copy, intro: Copy, words: ReturnType<typeof card>[]): BootcampStep => k.prime({ label, intro, bigPictures: true, widePictures: true, words });
+  const room = (challenge = false): BootcampStep => k.practice({ kind: 'visualMatch', quiet: true, ...(challenge ? { challenge: true } : {}), label: ['באיזה חדר אתה?', 'Which room are you in?'], tiles: ROOMS, rounds: [{ audio: L_ROOM, correct: M08_ANSWER.room, reinforce: C_ROOM }] });
+  const floor = (challenge = false): BootcampStep => k.practice({ kind: 'miniMap', quiet: true, ...(challenge ? { challenge: true } : {}), label: ['במעלית: לאיזו קומה?', 'In the elevator: which floor?'], rounds: [{ audio: L_ROOM, cells: PANEL(), correct: M08_ANSWER.floor, reinforce: C_FLOOR }] });
+  const hours = (challenge = false): BootcampStep => k.practice({ kind: 'visualMatch', quiet: true, ...(challenge ? { challenge: true } : {}), label: ['מתי ארוחת הבוקר?', 'When is breakfast?'], tiles: HOURS, rounds: [{ audio: L_HOURS, correct: M08_ANSWER.hours, reinforce: C_HOURS }] });
+  const direction = (challenge = false): BootcampStep => k.practice({ kind: 'miniMap', quiet: true, ...(challenge ? { challenge: true } : {}), label: ['אתה מול הדלפק. לאן הולכים למעלית?', 'You face the desk. Which way to the elevator?'], rounds: [{ audio: L_HOURS, cells: LOBBY(), correct: M08_ANSWER.direction, reinforce: C_ELEVATOR }] });
   return [
-    // "For two nights." and the wifi password are not part of this mission any more — not taught,
-    // not reviewed, not offered in the conversation (wifi / SIM belongs to the Extended material).
-    // The check-in is reservation → name → passport → breakfast.
-    ...k.tools([
-      ['phrase.hotel.reservation', ['הפתיח', 'The opener']],
-      ['phrase.hotel.under-name', ['על איזה שם', 'The name on the booking']],
-      ['phrase.hotel.here-you-go', ['להגיש את הדרכון', 'Handing it over']],
-      ['phrase.hotel.breakfast', ['ארוחת בוקר', 'Breakfast']],
+    // THE BRIEFING — only what the guest knows: a reservation under Cohen, a passport. The stay is "?".
+    k.talk('🏨', ['משימה 8: צ׳ק־אין במלון', 'Mission 8: Hotel Check-in'], [
+      ['הגעת למלון. יש לך הזמנה על שם Cohen ויש לך דרכון. המטרה: לבצע צ׳ק־אין ולהגיע לחדר.', 'You have arrived at the hotel. You have a reservation under the name Cohen, and your passport. Your goal: check in and get to your room.'],
+      stayCard(NONE),
+    ], ['התחל צ׳ק־אין', 'Start check-in'], [
+      { icon: '📄', label: ['הזמנה', 'Reservation'], value: ['על שם Cohen', 'Under the name Cohen'] },
+      { icon: '🛂', label: ['דרכון', 'Passport'], value: ['איתך', 'With you'] },
     ]),
-    k.replies('phrase.hotel.reservation', ['reply.hotel.passport', 'reply.hotel.room-number', 'reply.hotel.second-floor', 'reply.hotel.breakfast-time']),
-    k.receipt(['אתה מזהה כל מה שפקיד הקבלה אומר — דרכון, חדר, קומה, שעות.', 'You recognize everything the receptionist says — passport, room, floor, hours.']),
-    // Hotel Match: what the receptionist says ↔ what it means, as numbers and icons — no translation.
-    k.practice({
-      kind: 'matchPairs',
-      label: ['מה אמרו לך? חבר כל משפט למה שהוא אומר', 'What were you told? Match each line to what it means'],
-      pairs: [
-        ['reply.hotel.room-number', 'reply.hotel.room-number', undefined, '🚪 204'],
-        ['reply.hotel.second-floor', 'reply.hotel.second-floor', undefined, '🏢 2'],
-        ['reply.hotel.breakfast-time', 'reply.hotel.breakfast-time', undefined, '🍳 7–10'],
-        ['reply.hotel.elevator', 'reply.hotel.elevator', undefined, '🛗 ➡️'],
+    // The pieces (optional). The passport is a REVIEW word: Mission 06 taught it.
+    k.prime({
+      gate: true,
+      widePictures: true,
+      intro: ['המילים של הצ׳ק־אין. הקש כדי לשמוע.', 'The words of the check-in. Tap to hear.'],
+      words: [
+        { key: 'hotel.reservation', t: ['reservation', 'réservation', 'reserva'], meaning: ['הזמנה', 'reservation'], ...slot8('reservation') },
+        { key: 'hotel.name', review: true, t: ['name', 'nom', 'nombre'], meaning: ['שם', 'name'], ...slot8('reservation-response') },
+        { key: 'hotel.passport', review: true, t: ['passport', 'passeport', 'pasaporte'], meaning: ['דרכון (ממשימה 6)', 'passport (from Mission 6)'], ...slot8('passport') },
+        { key: 'hotel.breakfast', t: ['breakfast', 'petit-déjeuner', 'desayuno'], meaning: ['ארוחת בוקר', 'breakfast'], ...slot8('breakfast') },
       ],
+      build: 'phrase.hotel.reservation-name',
     }),
-    // The room number, by ear — the one number you must not get wrong.
+    // THE DESK — the receptionist asks; you have a reservation.
+    cards(['בדלפק', 'At the desk'], ['הפקידה שואלת — ומה אתה עונה. הקש כדי לשמוע.', 'The receptionist asks — and what you answer. Tap to hear.'], [
+      card('hotel.line.greet', L_GREET, ['ערב טוב! איך אפשר לעזור?', 'Good evening! How can I help you?'], 'how-can-help'),
+      card('hotel.line.reserve', L_RESERVE, ['יש לי הזמנה, על השם כהן.', 'I have a reservation, under the name Cohen.'], 'reservation-response'),
+    ]),
+    k.practice({
+      kind: 'sentenceBuilder',
+      label: ['התשובה שלך', 'Your answer'],
+      rounds: [{ itemId: 'phrase.hotel.reservation-name', chunks: [['I have a reservation,', 'under the name', 'Cohen.'], ['J’ai une réservation,', 'au nom de', 'Cohen.'], ['Tengo una reserva,', 'a nombre de', 'Cohen.']] }],
+    }),
+    // THE PASSPORT — she asks for it; you hand it over.
+    cards(['הדרכון', 'The passport'], ['היא מבקשת את הדרכון — ומה אומרים כשמגישים. הקש כדי לשמוע.', 'She asks for your passport — and what you say as you hand it over. Tap to hear.'], [
+      card('hotel.line.welcome', H_WELCOME, ['ברוך הבא, מר כהן. הדרכון שלך, בבקשה.', 'Welcome, Mr. Cohen. Your passport, please.'], 'passport-request'),
+      card('hotel.line.here', L_HERE, ['בבקשה, הנה. (כשמגישים משהו)', 'Here you go. (as you hand something over)'], 'passport-handoff'),
+    ]),
+    k.practice({ kind: 'visualMatch', quiet: true, label: ['מה היא מבקשת? הגש לה', 'What is she asking for? Hand it over'], tiles: H_HANDOFF, rounds: [{ audio: H_WELCOME, correct: M08_ANSWER.handoff, reinforce: L_HERE }] }),
+    k.practice({
+      kind: 'quickReply',
+      label: ['מגישים — ואומרים', 'Hand it over — and say it'],
+      rounds: [{ npc: H_WELCOME, options: [['phrase.hotel.here-you-go', true], ['phrase.hotel.reservation-name', false]] }],
+    }),
+    // THE ROOM — her line holds three things: your room, your floor, your key.
+    cards(['החדר', 'Your room'], ['מה שהיא אומרת עכשיו — חדר, קומה, מפתח. הקש כדי לשמוע.', 'What she tells you now — room, floor, key. Tap to hear.'], [
+      card('hotel.line.room-floor-key', L_ROOM, ['תודה. אתה בחדר 204, בקומה השנייה. הנה המפתח שלך.', 'Thank you. You’re in room 204, on the second floor. Here is your key.'], 'room-floor-key'),
+      card('hotel.line.room', C_ROOM, ['אתה בחדר 204.', 'You’re in room 204.'], 'room-204'),
+      card('hotel.line.floor', C_FLOOR, ['בקומה השנייה', 'on the second floor'], 'second-floor'),
+      card('hotel.line.key', C_KEY, ['הנה המפתח שלך.', 'Here is your key.'], 'key'),
+    ]),
+    room(),
+    floor(),
+    // The key: nothing to choose — she hands it to you; you take it.
     k.practice({
       kind: 'visualMatch',
-      label: ['באיזה חדר אתה? הקש על המספר', 'Which room is yours? Tap the number'],
-      tiles: ROOM_TILES,
-      rounds: [
-        { audio: ["You're in room two-oh-four.", 'Vous êtes dans la chambre deux cent quatre.', 'Está en la habitación doscientos cuatro.', 'אתה בחדר 204.'], correct: 'r204', itemId: 'reply.hotel.room-number' },
-        { audio: ["You're in room four-oh-two.", 'Vous êtes dans la chambre quatre cent deux.', 'Está en la habitación cuatrocientos dos.', 'אתה בחדר 402.'], correct: 'r402' },
-      ],
+      quiet: true,
+      label: ['היא מגישה לך את המפתח — קח אותו', 'She hands you the key — take it'],
+      tiles: [tile8('key', M08_SLOTS.key), tile8('passport', M08_SLOTS.passport)],
+      rounds: [{ audio: C_KEY, correct: 'key', show: ['key'] }],
+    }),
+    k.receipt(stayCard(ROOM_KNOWN)),
+    // BREAKFAST — your own question (nobody asked you).
+    cards(['ארוחת בוקר', 'Breakfast'], ['השאלה שלך — אתה רוצה לדעת. הקש כדי לשמוע.', 'Your question — you want to know. Tap to hear.'], [
+      card('hotel.line.breakfast', L_BREAKFAST, ['ארוחת הבוקר כלולה? (במחיר החדר)', 'Is breakfast included? (in the room price)'], 'breakfast-question'),
+    ]),
+    k.practice({
+      kind: 'sentenceBuilder',
+      label: ['השאלה שלך', 'Your question'],
+      rounds: [{ itemId: 'phrase.hotel.breakfast', chunks: [['Is', 'breakfast', 'included?'], ['Le petit-déjeuner', 'est', 'compris ?'], ['¿El desayuno', 'está', 'incluido?']] }],
     }),
     k.practice({
       kind: 'quickReply',
-      label: ['בדלפק הקבלה — מה אומרים?', 'At the front desk — what do you say?'],
-      rounds: [
-        { npc: ['Good evening. Do you have a reservation?', 'Bonsoir. Vous avez une réservation ?', 'Buenas noches. ¿Tiene una reserva?', 'ערב טוב. יש לך הזמנה?'],
-          options: [['phrase.hotel.reservation', true], ['phrase.hotel.breakfast', false], ['phrase.hotel.here-you-go', false]] },
-        { situation: ['הפקיד מחפש את ההזמנה. על איזה שם היא?', 'The receptionist is looking for the booking. Whose name is it under?'],
-          options: [['phrase.hotel.under-name', true], ['phrase.hotel.reservation', false], ['phrase.hotel.breakfast', false]] },
-        { prompt: 'reply.hotel.passport', options: [['phrase.hotel.here-you-go', true], ['phrase.recovery.one-moment', true], ['phrase.hotel.breakfast', false]] },
-        { situation: ['קיבלת מפתח. אתה רוצה לדעת אם ארוחת הבוקר בפנים.', 'You have your key. You want to know whether breakfast comes with the room.'],
-          options: [['phrase.hotel.breakfast', true], ['phrase.hotel.reservation', false], ['phrase.hotel.here-you-go', false]] },
+      label: ['מה אתה שואל?', 'What do you ask?'],
+      rounds: [{ situation: ['יש לך מפתח. אתה רוצה לדעת אם ארוחת הבוקר כלולה במחיר.', 'You have your key. You want to know whether breakfast comes with the room.'],
+        options: [['phrase.hotel.breakfast', true], ['phrase.hotel.here-you-go', false], ['phrase.hotel.reservation-name', false]] }],
+    }),
+    // HER ANSWER — two things again: the hours, and which way the elevator is.
+    cards(['התשובה שלה', 'Her answer'], ['כן — ועוד שני דברים: מתי, ולאן. הקש כדי לשמוע.', 'Yes — and two more things: when, and which way. Tap to hear.'], [
+      card('hotel.line.hours-elevator', L_HOURS, ['כן! ארוחת בוקר משבע עד עשר. המעלית מימינך.', 'Yes! Breakfast is from seven to ten. The elevator is on your right.'], 'breakfast-hours'),
+      card('hotel.line.hours', C_HOURS, ['ארוחת בוקר משבע עד עשר.', 'Breakfast is from seven to ten.'], 'breakfast-hours'),
+      card('hotel.line.elevator', C_ELEVATOR, ['המעלית מימינך. (כשאתה מול הדלפק — מצד ימין)', 'The elevator is on your right. (facing the desk — to your right)'], 'elevator-right'),
+    ]),
+    hours(),
+    direction(),
+    k.receipt(stayCard(ALL_KNOWN)),
+    cards(['ובסוף', 'And at the end'], ['את זה אתה כבר מכיר. הקש כדי לשמוע.', 'You already know this one. Tap to hear.'], [
+      card('hotel.line.enjoy', L_ENJOY, ['תיהנה מהשהות!', 'Enjoy your stay!'], 'enjoy-stay'),
+    ]),
+    // SHE SAYS THIS → YOU SAY THIS — the two lines that want an answer (the information lines want none).
+    k.practice({
+      kind: 'matchPairs',
+      label: ['הפקידה אומרת — מה אתה עונה?', 'The receptionist says — what do you answer?'],
+      pairs: [
+        ['reply.hotel.how-help', 'phrase.hotel.reservation-name', undefined, undefined, undefined, M08_SLOTS['reservation-response'].image],
+        ['reply.hotel.welcome-passport', 'phrase.hotel.here-you-go', undefined, undefined, undefined, M08_SLOTS['passport-handoff'].image],
       ],
     }),
+    // THE RECEPTIONIST, BY EAR — her greeting, her two information lines, her goodbye.
+    k.replies('phrase.hotel.reservation-name', ['reply.hotel.how-help', 'reply.hotel.breakfast-elevator', 'reply.hotel.enjoy']),
+    // THE SUPPORTED CHECK-IN — you know your booking and your passport; the stay card fills as she speaks.
+    k.practice({
+      kind: 'quickReply',
+      label: stayCard(NONE),
+      rounds: [
+        { npc: L_GREET, options: [['phrase.hotel.reservation-name', true], ['phrase.hotel.here-you-go', false], ['phrase.hotel.breakfast', false]] },
+        { npc: H_WELCOME, options: [['phrase.hotel.here-you-go', true], ['phrase.hotel.breakfast', false], ['phrase.hotel.reservation-name', false]] },
+      ],
+    }),
+    room(),
+    floor(),
+    k.practice({
+      kind: 'quickReply',
+      label: stayCard(ROOM_KNOWN),
+      rounds: [{ npc: L_ROOM, options: [['phrase.hotel.breakfast', true], ['phrase.hotel.reservation-name', false], ['phrase.hotel.here-you-go', false]] }],
+    }),
+    hours(),
+    direction(),
+    k.receipt([`${stayCard(ALL_KNOWN)[0]} — יודע בדיוק לאן ללכת.`, `${stayCard(ALL_KNOWN)[1]} — you know exactly where to go.`]),
     k.dialogue('hotel-checkin'),
-    k.receipt(["צ'ק-אין שלם: הזמנה, דרכון, חדר, מידע — ואתה בפנים.", 'A full check-in: reservation, passport, room, info — and you’re in.']),
-    k.review([
-      'phrase.hotel.reservation', 'phrase.hotel.under-name', 'phrase.hotel.here-you-go', 'phrase.hotel.breakfast',
-      'reply.hotel.passport', 'reply.hotel.room-number', 'reply.hotel.second-floor', 'reply.hotel.breakfast-time', 'reply.hotel.elevator',
-      'phrase.recovery.repeat', 'phrase.recovery.one-moment',
-    ]),
-    // Fast information that is meant to be too much: asking to hear it again IS the right answer.
-    k.ambush('recovery',
-      ['Just so you know breakfast is served in the room on the lower level next to the pool.', 'Juste pour info, le petit-déjeuner est servi dans la salle au niveau inférieur, à côté de la piscine.', 'Solo para que lo sepa, el desayuno se sirve en la sala de la planta baja, junto a la piscina.', 'רק שתדע, ארוחת הבוקר מוגשת בחדר בקומה התחתונה ליד הבריכה.'],
-      'phrase.recovery.repeat', 'phrase.hotel.here-you-go'),
-    k.receipt(['מידע ארוך ומהיר — ובמקום לקפוא, ביקשת לחזור עליו. זה כלי.', 'Long, fast info — and instead of freezing, you asked them to repeat. That’s a tool.']),
+    k.receipt(['כל השיחה — מ"ערב טוב" ועד "תיהנה מהשהות".', 'The whole conversation — from “good evening” to “enjoy your stay”.']),
+    // NO HELP — her real lines, no card, no translation; you say your three lines and catch what she tells you.
+    k.practice({
+      kind: 'quickReply',
+      challenge: true,
+      rounds: [
+        { npc: L_GREET, options: [['phrase.hotel.reservation-name', true], ['phrase.hotel.breakfast', false], ['phrase.hotel.here-you-go', false]] },
+        { npc: H_WELCOME, options: [['phrase.hotel.here-you-go', true], ['phrase.hotel.reservation-name', false], ['phrase.hotel.breakfast', false]] },
+        { npc: L_ROOM, options: [['phrase.hotel.breakfast', true], ['phrase.hotel.here-you-go', false], ['phrase.hotel.reservation-name', false]] },
+      ],
+    }),
+    room(true),
+    direction(true),
+    k.receipt(['בלי עזרה — ענית, שאלת, והבנת.', 'No help — you answered, you asked, and you understood.']),
+    // THE PAYOFF — the whole scene again (the video, where one exists)…
+    { kind: 'video', mode: 'again' },
+    // …then THE FINAL CHECK-IN: start knowing only your booking; leave knowing all four.
+    k.practice({
+      kind: 'quickReply',
+      label: stayCard(NONE),
+      rounds: [
+        { npc: L_GREET, options: [['phrase.hotel.reservation-name', true], ['phrase.hotel.here-you-go', false], ['phrase.hotel.breakfast', false]] },
+        { npc: H_WELCOME, options: [['phrase.hotel.here-you-go', true], ['phrase.hotel.breakfast', false], ['phrase.hotel.reservation-name', false]] },
+      ],
+    }),
+    room(true),
+    floor(true),
+    k.practice({
+      kind: 'quickReply',
+      label: stayCard(ROOM_KNOWN),
+      rounds: [{ npc: L_ROOM, options: [['phrase.hotel.breakfast', true], ['phrase.hotel.here-you-go', false], ['phrase.hotel.reservation-name', false]] }],
+    }),
+    hours(true),
+    direction(true),
+    k.receipt([`🏨 הצ׳ק־אין הושלם · ${stayCard(ALL_KNOWN)[0]}`, `🏨 CHECK-IN COMPLETE · ${stayCard(ALL_KNOWN)[1]}`]),
     { kind: 'summary' },
   ];
 }

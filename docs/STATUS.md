@@ -30,6 +30,23 @@ typecheck, lint, build, smoke, parity and content validation pass. No learning c
 The owner waived agent mobile QA on 2026-10-27 and will perform it manually; production release is authorized.
 See [production and validation report](./MISSION06_VISUAL_REPORT.md) and [asset provenance](./mission06-artwork.json).
 
+### Mission 08 — Hotel Check-in: the full learning flow, the stay revealed (2026-10-29)
+
+The conversation is LOCKED (dialogue tree byte-identical). The guest knows only the reservation
+(under Cohen) and the passport (`M08_KNOWN_AT_START`); the STAY CARD (`stayCard`, `M08_STAY`) shows
+Room ? · Floor ? · Breakfast ? · Elevator ? and fills only after the receptionist's lines are understood.
+Flow: briefing → Step 0 (passport a REVIEW word — verified Mission 06 learning) → the desk (reservation
+card, builder) → the passport (hand-off, "Here you go.") → her room line → 204 among 214 / 240 · floor 2
+on an elevator panel (floors stacked as in the building) · take the key → card: Room 204 ✅ Floor 2 ✅ →
+your own question (breakfast card, builder, initiative) → her answer → 7–10 among 7–9 / 8–10 · the
+elevator on your RIGHT in the lobby from the guest's point of view (identical corridors) → card complete
+→ "Enjoy your stay" → her line → your reply (2 genuine pairs) → by ear → supported check-in → the
+conversation → no help → video (EN only today; ES / FR safely skipped) → final check-in → CHECK-IN
+COMPLETE. 34 interactions. Retired: "Sign here, please." and "It's on the second floor." (not the
+conversation's wording); the unused help sentences left the list. prime.test: a review word may be
+justified by VERIFIED prior learning (`learnedBefore`) as well as by an earlier building block. Artwork:
+placeholders — see `docs/MISSION08_ASSET_MANIFEST.md`. Tests: `mission08.test.ts`.
+
 ### Mission 07 — the ride is revealed, not given away (2026-10-28)
 
 The opening is a short briefing — you just got into a taxi; your goal is this address in the city

@@ -71,10 +71,10 @@ describe('scope: only the Practice of Missions 06–10 changed', () => {
   const slice = (lang: Lang, a: number, b: number): FrozenDay[] => BOOTCAMP_PLAN.slice(a, b).map((m) => beforeCueFreeze(MISSIONS_BY_LANG[lang]![m.day]!, lang));
   const print = (f: (lang: Lang) => unknown): Record<Lang, string> => ({ en: fnv(JSON.stringify(f('en'))), fr: fnv(JSON.stringify(f('fr'))), es: fnv(JSON.stringify(f('es'))) });
 
-  it('Missions 01–07 are pinned by their own passes (mission01.test.ts … mission07.test.ts)', async () => {
+  it('Missions 01–08 are pinned by their own passes (mission01.test.ts … mission08.test.ts)', async () => {
     const { existsSync } = await import('node:fs');
     const { fileURLToPath } = await import('node:url');
-    for (const n of [1, 2, 3, 4, 5, 6, 7]) expect(existsSync(fileURLToPath(new URL(`./mission0${n}.test.ts`, import.meta.url))), `mission0${n}.test.ts`).toBe(true);
+    for (const n of [1, 2, 3, 4, 5, 6, 7, 8]) expect(existsSync(fileURLToPath(new URL(`./mission0${n}.test.ts`, import.meta.url))), `mission0${n}.test.ts`).toBe(true);
   });
   it('the locked dialogue of Mission 09 is byte-for-byte unchanged (Missions 06 and 07: their own tests)', () => {
     const one = (l: Lang): BootcampDayContent[] => [slice(l, 8, 9)[0]!];
@@ -99,23 +99,14 @@ describe('scope: only the Practice of Missions 06–10 changed', () => {
     expect(print((l) => pick(l, 9))).toEqual({ en: '60b489f1', fr: '5d4d6a20', es: 'a4ff1fc6' });
     expect(print((l) => pick(l, 8).steps.filter((s) => s.kind !== 'swap'))).toEqual({ en: '033e2741', fr: '1be8e9bb', es: '45d575fc' });
   });
-  it('Missions 08–18 are exactly as approved — the only difference is that two retired hotel sentences left Mission 08\'s list', () => {
-    // These hashes were taken from the approved build with ONLY those two sentences filtered out of
-    // Mission 08's sentence list. Matching them now proves nothing else in Missions 01–18 moved.
-    // (Mission 08 is serialised as [everything but its sentence list, its sentence list] — the shape the
-    // approved build was fingerprinted in, with the two sentences left out.)
-    // (Missions 01–07 are no longer part of this fingerprint: each has its own pass.)
-    const shaped = (l: Lang): unknown[] => slice(l, 7, 18).map((d, i) => { if (i !== 0) return d; const { items, ...rest } = d; return [rest, items]; });
-    expect(print(shaped)).toEqual({ en: 'c75e68ac', fr: '83ce72dd', es: '6273b189' });
+  it('Missions 09–18 are exactly as approved (Missions 01–08 have their own passes)', () => {
+    expect(print((l) => slice(l, 8, 18))).toEqual({ en: '844c2294', fr: '818e8b10', es: '27fffd97' });
   });
-  it('"For two nights." and the wifi password are retired: archived with their ids and wording, and shown nowhere', () => {
-    const gone = ['phrase.hotel.two-nights', 'phrase.hotel.wifi'];
+  it('"For two nights." and the wifi password are retired (and, since the Mission 08 pass, "Sign here" and "It\'s on the second floor"): archived with their ids and wording, and shown nowhere', () => {
+    const gone = ['phrase.hotel.two-nights', 'phrase.hotel.wifi', 'reply.hotel.sign-here', 'reply.hotel.second-floor'];
     for (const lang of LANGS) {
-      expect(mission(8, lang).items.map((i) => strip(i.id)), lang).toEqual([
-        'phrase.hotel.reservation', 'phrase.hotel.under-name', 'phrase.hotel.breakfast', 'phrase.hotel.here-you-go',
-        'reply.hotel.passport', 'reply.hotel.sign-here', 'reply.hotel.room-number', 'reply.hotel.second-floor', 'reply.hotel.breakfast-time', 'reply.hotel.elevator',
-        'phrase.recovery.repeat', 'phrase.recovery.slowly', 'phrase.recovery.thank-you', 'phrase.recovery.one-moment',
-      ]);
+      // the sentences the Arrival checkpoint (Mission 10) reuses are still Mission 08's, same id and wording
+      for (const id of ['phrase.hotel.reservation', 'phrase.hotel.breakfast', 'phrase.hotel.here-you-go', 'reply.hotel.room-number', 'reply.hotel.breakfast-time']) expect(mission(8, lang).items.map((i) => strip(i.id)), lang).toContain(id);
       const archived = RETIRED_SENTENCES[lang].filter((r) => r.retiredFrom === 'hotel-check-in');
       expect(archived.map((r) => strip(r.id)), lang).toEqual(gone);
       // In no Core mission at all — sentence list, step or dialogue line…
@@ -129,15 +120,15 @@ describe('scope: only the Practice of Missions 06–10 changed', () => {
       const companion = learnedMaterial(lang, allDays);
       for (const r of archived) expect(companion.sentences, `${lang} companion ${r.id}`).not.toContain(r.text);
     }
-    expect(RETIRED_SENTENCES.en.filter((r) => r.retiredFrom === 'hotel-check-in').map((r) => r.text)).toEqual(['For two nights.', "What's the wifi password?"]);
-    expect(RETIRED_SENTENCES.fr.filter((r) => r.retiredFrom === 'hotel-check-in').map((r) => r.text)).toEqual(['Pour deux nuits.', 'C’est quoi le mot de passe du wifi ?']);
-    expect(RETIRED_SENTENCES.es.filter((r) => r.retiredFrom === 'hotel-check-in').map((r) => r.text)).toEqual(['Para dos noches.', '¿Cuál es la contraseña del wifi?']);
+    expect(RETIRED_SENTENCES.en.filter((r) => r.retiredFrom === 'hotel-check-in').map((r) => r.text)).toEqual(['For two nights.', "What's the wifi password?", 'Sign here, please.', "It's on the second floor."]);
+    expect(RETIRED_SENTENCES.fr.filter((r) => r.retiredFrom === 'hotel-check-in').map((r) => r.text)).toEqual(['Pour deux nuits.', 'C’est quoi le mot de passe du wifi ?', 'Signez ici, s’il vous plaît.', 'C’est au deuxième étage.']);
+    expect(RETIRED_SENTENCES.es.filter((r) => r.retiredFrom === 'hotel-check-in').map((r) => r.text)).toEqual(['Para dos noches.', '¿Cuál es la contraseña del wifi?', 'Firme aquí, por favor.', 'Está en el segundo piso.']);
   });
   it('no other sentence of Mission 09 was deleted, renamed or reworded', () => {
     expect(print((l) => [slice(l, 8, 9)[0]!].map((d) => d.items))).toEqual(ITEMS_09);
   });
-  it('their intro cards, titles and videos are unchanged (Missions 08–09)', () => {
-    expect(print((l) => slice(l, 7, 9).map((d) => [d.day, d.title, d.introVideo, d.steps[0]]))).toEqual({ en: 'f41257ef', fr: '4faebed8', es: 'bf4f0308' });
+  it('their intro cards, titles and videos are unchanged (Mission 09)', () => {
+    expect(print((l) => slice(l, 8, 9).map((d) => [d.day, d.title, d.introVideo, d.steps[0]]))).toEqual({ en: '6a9b281d', fr: 'd9cb5c43', es: '7f5bb487' });
   });
   it('mission order, ids and registry keys are unchanged', () => {
     expect(BOOTCAMP_PLAN.slice(5, 10).map((m) => `${m.id}:${m.day}`)).toEqual(['airport-border:10', 'taxi:6', 'hotel-check-in:7', 'shopping:8', 'arrival-day-checkpoint:9']);
@@ -145,7 +136,7 @@ describe('scope: only the Practice of Missions 06–10 changed', () => {
   });
   it('no new game: only the existing step kinds are used', () => {
     const allowed = ['video', 'talk', 'prime', 'tool', 'replies', 'quiz', 'dialogue', 'swipe', 'ambush', 'receipt', 'summary', 'quickReply', 'visualMatch', 'swap', 'miniMap', 'matchPairs', 'sentenceBuilder'];
-    for (const lang of LANGS) for (let n = 8; n <= 10; n++) for (const s of mission(n, lang).steps) expect(allowed, `${lang} M${n}`).toContain(s.kind);
+    for (const lang of LANGS) for (let n = 9; n <= 10; n++) for (const s of mission(n, lang).steps) expect(allowed, `${lang} M${n}`).toContain(s.kind);
   });
 });
 
@@ -208,68 +199,7 @@ describe('all three languages get the same practice, each in its own words', () 
 
 /* Mission 07 — Taxi / Uber has its own pass: see mission07.test.ts. */
 
-describe('Mission 08 — Hotel Check-in', () => {
-  const day = mission(8);
-  it('flow: learn → recognize → Hotel Match → room number by ear → front desk → conversation → fast info', () => {
-    expect(kinds(day)).toEqual(['talk', 'prime', 'tool', 'tool', 'tool', 'tool', 'replies', 'receipt', 'matchPairs', 'visualMatch', 'quickReply', 'dialogue', 'receipt', 'swipe', 'ambush:recovery', 'receipt', 'summary']);
-  });
-  it('"For two nights." and the wifi password are not taught, drilled, reviewed or offered anywhere in the mission', () => {
-    for (const lang of LANGS) {
-      const d = mission(8, lang);
-      const active = JSON.stringify([d.steps, d.dialogues]);
-      expect(active, lang).not.toMatch(/hotel\.two-nights|hotel\.wifi/);
-      expect(active.toLowerCase(), lang).not.toMatch(/wifi|wi-fi/);
-      for (const r of RETIRED_SENTENCES[lang].filter((x) => x.retiredFrom === 'hotel-check-in')) expect(JSON.stringify([d.steps, d.dialogues, d.items]), `${lang} ${r.id}`).not.toContain(r.text);
-    }
-  });
-  it('the word intro holds only words the mission still uses — "night" is gone', () => {
-    for (const lang of LANGS) {
-      const d = mission(8, lang);
-      const prime = stepsOf(d, 'prime')[0]!;
-      expect(prime.words, lang).toHaveLength(4);
-      expect(prime.words.map((w) => w.meaning.en), lang).toEqual(['reservation', 'name', 'breakfast', 'passport']);
-      // Every word appears in a sentence that is still taught as a key sentence or drilled as a reply.
-      const live = [...taught(d), ...stepsOf(d, 'replies')[0]!.replyIds.map(strip)].map((id) => text(d, id).toLowerCase()).join(' ');
-      for (const w of prime.words) expect(live.includes(w.text.toLowerCase()), `${lang} “${w.text}”`).toBe(true);
-    }
-  });
-  it('the check-in core is taught: reservation, the name, handing over the passport, breakfast', () => {
-    expect(taught(day)).toEqual(['phrase.hotel.reservation', 'phrase.hotel.under-name', 'phrase.hotel.here-you-go', 'phrase.hotel.breakfast']);
-    expect(replyMap(day)).toEqual([
-      ['Good evening. Do you have a reservation?', ['phrase.hotel.reservation']],
-      ['situation', ['phrase.hotel.under-name']],
-      ['reply.hotel.passport', ['phrase.hotel.here-you-go', 'phrase.recovery.one-moment']],
-      ['situation', ['phrase.hotel.breakfast']],
-    ]);
-  });
-  it('Hotel Match connects what the receptionist says to what it means — numbers and icons, no translation', () => {
-    for (const lang of LANGS) {
-      const d = mission(8, lang);
-      const match = stepsOf(d, 'matchPairs')[0]!;
-      expect(match.pairs.map((p) => [strip(p.promptItemId), p.answerLabel]), lang).toEqual([
-        ['reply.hotel.room-number', '🚪 204'], ['reply.hotel.second-floor', '🏢 2'], ['reply.hotel.breakfast-time', '🍳 7–10'], ['reply.hotel.elevator', '🛗 ➡️'],
-      ]);
-      for (const p of match.pairs) { expect(p.answerLabel, lang).not.toMatch(/[֐-׿]/); expect(p.answerLabel, lang).not.toMatch(/[A-Za-z]/); }
-    }
-  });
-  it('the room number is caught by ear — two rounds, not a numbers lesson', () => {
-    const board = stepsOf(day, 'visualMatch')[0]!;
-    expect(board.rounds.map((r) => r.correct)).toEqual(['r204', 'r402']);
-    expect(board.tiles.map((t) => t.label)).toEqual(['104', '204', '214', '240', '402', '420']);
-    // French re-uses exactly the number words of the taught sentence, in another order.
-    expect(stepsOf(mission(8, 'fr'), 'visualMatch')[0]!.rounds.map((r) => r.audio.en)).toEqual(['Vous êtes dans la chambre deux cent quatre.', 'Vous êtes dans la chambre quatre cent deux.']);
-  });
-  it('one fast-information moment where "Can you repeat that?" is the smart answer — and only the tool is marked as one', () => {
-    const [ambush] = stepsOf(day, 'ambush');
-    expect(ambush!.mode).toBe('recovery');
-    expect(strip(ambush!.correctItemId)).toBe('phrase.recovery.repeat');
-    expect(isHelpToolId(ambush!.wrongItemId)).toBe(false);
-    const offered = Object.values(day.dialogues)[0]!.nodes.flatMap((n) => n.choices ?? []).filter((c) => isHelpToolId(c.itemId)).map((c) => strip(c.itemId));
-    expect(offered).toEqual(['phrase.recovery.repeat', 'phrase.recovery.one-moment']);
-  });
-});
-
-/* ── Mission 09 — Shopping ───────────────────────────────────────────────────────────────────── */
+/* Mission 08 — Hotel Check-in has its own pass: see mission08.test.ts. */
 
 describe('Mission 09 — Shopping', () => {
   const day = mission(9);
@@ -444,13 +374,6 @@ describe('what the screens show', () => {
     const html = render(6, stepsOf(mission(6), 'quickReply')[1]!, ui.QuickReplyStep);
     expect(html).toContain('⚡');
     expect(html.replace(/<[^>]+>/g, ' ')).not.toMatch(/Border Rush|Quick Reply|quickReply|challenge/i);
-  });
-  it('Hotel Match shows numbers and icons as answers; the board holds no Hebrew', () => {
-    const html = render(8, stepsOf(mission(8), 'matchPairs')[0]!, ui.MatchPairsStep);
-    const board = html.slice(html.indexOf('class="pmatch"'));
-    for (const label of ['🚪 204', '🏢 2', '🍳 7–10', '🛗 ➡️']) expect(board).toContain(`<span dir="ltr">${label}</span>`);
-    expect(board.slice(0, board.indexOf('</div>'))).not.toMatch(/[֐-׿]/);
-    expect(board.match(/<button/g)).toHaveLength(8);
   });
   it('a cold scene gives no translation before the answer; an ordinary scene still does', () => {
     const player = readFileSync(fileURLToPath(new URL('./Bootcamp.tsx', import.meta.url)), 'utf8');

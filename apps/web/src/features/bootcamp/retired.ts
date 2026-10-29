@@ -35,6 +35,8 @@ export const RETIRED_SENTENCES: Record<'en' | 'fr' | 'es', RetiredSentence[]> = 
     { id: 'en.phrase.dir.how-do-i-get', text: 'How do I get to the beach?', meaning: T('איך מגיעים לחוף?', 'How do I get to the beach?'), retiredFrom: 'directions', reason: 'Off the directions conversation (the beach); no longer practised.' },
     { id: 'en.reply.border.passport-please', text: 'Passport, please.', meaning: T('דרכון, בבקשה.', 'Passport, please.'), retiredFrom: 'airport-border', reason: 'Not in the border conversation (the officer says “Next, please. Passport?”); no longer practised.' },
     { id: 'en.reply.taxi.first-visit', text: 'First time in the city?', meaning: T('פעם ראשונה בעיר?', 'First time in the city?'), retiredFrom: 'taxi', reason: 'Not in the taxi conversation (small talk the driver never says); Mission 07 teaches only its own ride.' },
+    { id: 'en.reply.hotel.sign-here', text: 'Sign here, please.', meaning: T('תחתום כאן, בבקשה.', 'Sign here, please.'), retiredFrom: 'hotel-check-in', reason: 'Not in the check-in conversation (nobody asks the guest to sign); no longer practised.' },
+    { id: 'en.reply.hotel.second-floor', text: "It's on the second floor.", meaning: T('זה בקומה השנייה.', "It's on the second floor."), retiredFrom: 'hotel-check-in', reason: 'Not the conversation’s wording (it says “on the second floor” inside the room line); Mission 08 teaches the line itself.' },
   ],
   fr: [
     { id: 'fr.phrase.hotel.two-nights', text: 'Pour deux nuits.', meaning: T('לשני לילות.', 'For two nights.'), tip: T('תבנית: Pour ___ nuits — משך השהות.', 'Template: Pour ___ nuits — the length of your stay.'), retiredFrom: 'hotel-check-in', reason: "Not part of the check-in conversation; no longer taught or practised." },
@@ -52,6 +54,8 @@ export const RETIRED_SENTENCES: Record<'en' | 'fr' | 'es', RetiredSentence[]> = 
     { id: 'fr.phrase.dir.how-do-i-get', text: 'Comment aller à la plage ?', meaning: T('איך מגיעים לחוף?', 'How do I get to the beach?'), retiredFrom: 'directions', reason: 'Off the directions conversation (the beach); no longer practised.' },
     { id: 'fr.reply.border.passport-please', text: 'Passeport, s’il vous plaît.', meaning: T('דרכון, בבקשה.', 'Passport, please.'), retiredFrom: 'airport-border', reason: 'Not in the border conversation (the officer says “Next, please. Passport?”); no longer practised.' },
     { id: 'fr.reply.taxi.first-visit', text: 'C’est votre première fois dans la ville ?', meaning: T('פעם ראשונה בעיר?', 'First time in the city?'), retiredFrom: 'taxi', reason: 'Not in the taxi conversation (small talk the driver never says); Mission 07 teaches only its own ride.' },
+    { id: 'fr.reply.hotel.sign-here', text: 'Signez ici, s’il vous plaît.', meaning: T('תחתום כאן, בבקשה.', 'Sign here, please.'), retiredFrom: 'hotel-check-in', reason: 'Not in the check-in conversation (nobody asks the guest to sign); no longer practised.' },
+    { id: 'fr.reply.hotel.second-floor', text: 'C’est au deuxième étage.', meaning: T('זה בקומה השנייה.', "It's on the second floor."), retiredFrom: 'hotel-check-in', reason: 'Not the conversation’s wording (it says “on the second floor” inside the room line); Mission 08 teaches the line itself.' },
   ],
   es: [
     { id: 'es.phrase.hotel.two-nights', text: 'Para dos noches.', meaning: T('לשני לילות.', 'For two nights.'), tip: T('תבנית: Para ___ noches — משך השהות.', 'Template: Para ___ noches — the length of your stay.'), retiredFrom: 'hotel-check-in', reason: "Not part of the check-in conversation; no longer taught or practised." },
@@ -69,5 +73,7 @@ export const RETIRED_SENTENCES: Record<'en' | 'fr' | 'es', RetiredSentence[]> = 
     { id: 'es.phrase.dir.how-do-i-get', text: '¿Cómo se llega a la playa?', meaning: T('איך מגיעים לחוף?', 'How do I get to the beach?'), retiredFrom: 'directions', reason: 'Off the directions conversation (the beach); no longer practised.' },
     { id: 'es.reply.border.passport-please', text: 'Pasaporte, por favor.', meaning: T('דרכון, בבקשה.', 'Passport, please.'), retiredFrom: 'airport-border', reason: 'Not in the border conversation (the officer says “Next, please. Passport?”); no longer practised.' },
     { id: 'es.reply.taxi.first-visit', text: '¿Es su primera vez en la ciudad?', meaning: T('פעם ראשונה בעיר?', 'First time in the city?'), retiredFrom: 'taxi', reason: 'Not in the taxi conversation (small talk the driver never says); Mission 07 teaches only its own ride.' },
+    { id: 'es.reply.hotel.sign-here', text: 'Firme aquí, por favor.', meaning: T('תחתום כאן, בבקשה.', 'Sign here, please.'), retiredFrom: 'hotel-check-in', reason: 'Not in the check-in conversation (nobody asks the guest to sign); no longer practised.' },
+    { id: 'es.reply.hotel.second-floor', text: 'Está en el segundo piso.', meaning: T('זה בקומה השנייה.', "It's on the second floor."), retiredFrom: 'hotel-check-in', reason: 'Not the conversation’s wording (it says “on the second floor” inside the room line); Mission 08 teaches the line itself.' },
   ],
 };

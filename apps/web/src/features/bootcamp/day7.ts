@@ -1,6 +1,6 @@
 import { RECOVERY_ITEMS, T, recovery } from './recovery.js';
 import type { BootcampDayContent, BootcampDialogue, BootcampItem } from './types.js';
-import { m08Flow } from './practiceArrival.js';
+import { m08Steps } from './practiceArrival.js';
 
 /** Mission 8 — "Hotel Check-in" (real objective: reservation → key → floor → breakfast). */
 export const DAY7_ITEMS: BootcampItem[] = [
@@ -9,14 +9,20 @@ export const DAY7_ITEMS: BootcampItem[] = [
   { id: 'en.phrase.hotel.under-name', text: 'Under the name Cohen.', meaning: T('על השם כהן.', 'Under the name Cohen.') },
   { id: 'en.phrase.hotel.breakfast', text: 'Is breakfast included?', meaning: T('ארוחת הבוקר כלולה?', 'Is breakfast included?') },
   { id: 'en.phrase.hotel.here-you-go', text: 'Here you go.', meaning: T('בבקשה, הנה.', 'Here you go.') },
+  { id: 'en.phrase.hotel.reservation-name', text: 'I have a reservation, under the name Cohen.', meaning: T('יש לי הזמנה, על השם כהן.', 'I have a reservation, under the name Cohen.') },
   // hear
   { id: 'en.reply.hotel.passport', text: 'Your passport, please.', meaning: T('הדרכון שלך, בבקשה.', 'Your passport, please.') },
-  { id: 'en.reply.hotel.sign-here', text: 'Sign here, please.', meaning: T('תחתום כאן, בבקשה.', 'Sign here, please.') },
   { id: 'en.reply.hotel.room-number', text: "You're in room two-oh-four.", meaning: T('אתה בחדר 204.', "You're in room two-oh-four.") },
-  { id: 'en.reply.hotel.second-floor', text: "It's on the second floor.", meaning: T('זה בקומה השנייה.', "It's on the second floor.") },
   { id: 'en.reply.hotel.breakfast-time', text: 'Breakfast is from seven to ten.', meaning: T('ארוחת בוקר משבע עד עשר.', 'Breakfast is from seven to ten.') },
   { id: 'en.reply.hotel.elevator', text: 'The elevator is on your right.', meaning: T('המעלית מימינך.', 'The elevator is on your right.') },
-  ...recovery('en.phrase.recovery.repeat', 'en.phrase.recovery.slowly', 'en.phrase.recovery.thank-you', 'en.phrase.recovery.one-moment'),
+  // the receptionist's lines, whole (as the conversation says them)
+  { id: 'en.reply.hotel.how-help', text: 'Good evening! How can I help you?', meaning: T('ערב טוב! איך אפשר לעזור?', 'Good evening! How can I help you?') },
+  { id: 'en.reply.hotel.welcome-passport', text: 'Welcome, Mr. Cohen. Your passport, please.', meaning: T('ברוך הבא, מר כהן. הדרכון שלך, בבקשה.', 'Welcome, Mr. Cohen. Your passport, please.') },
+  { id: 'en.reply.hotel.room-key', text: "Thank you. You're in room two-oh-four, on the second floor. Here is your key.", meaning: T('תודה. אתה בחדר 204, בקומה השנייה. הנה המפתח שלך.', "Thank you. You're in room 204, on the second floor. Here is your key.") },
+  { id: 'en.reply.hotel.breakfast-elevator', text: 'Yes! Breakfast is from seven to ten. The elevator is on your right.', meaning: T('כן! ארוחת בוקר משבע עד עשר. המעלית מימינך.', 'Yes! Breakfast is from seven to ten. The elevator is on your right.') },
+  { id: 'en.reply.hotel.enjoy', text: 'Enjoy your stay!', meaning: T('תיהנה מהשהות!', 'Enjoy your stay!') },
+  // the help sentences this conversation offers (its side-branches)
+  ...recovery('en.phrase.recovery.repeat', 'en.phrase.recovery.one-moment'),
 ];
 
 const SCENE: BootcampDialogue = {
@@ -51,22 +57,7 @@ export const DAY7: BootcampDayContent = {
   title: T("צ'ק-אין במלון", 'Hotel Check-in'),
   items: DAY7_ITEMS,
   dialogues: { 'hotel-checkin': SCENE },
-  steps: [
-    { kind: 'talk', icon: '🏨', title: T('משימה 8: צ\'ק-אין במלון', 'Mission 8: Hotel Check-in'),
-      body: [
-        T('בסיס הבית שלך בטיול. הזמנה, דרכון, מפתח, קומה, ארוחת בוקר.', 'Your home base for the trip. Reservation, passport, key, floor, breakfast.'),
-        T('הפעם אחת — ותהיה רגוע כל השבוע.', 'Nail it once — and relax all week.'),
-      ], cta: T('להגיע לדלפק', 'Approach the desk') },
-    { kind: 'prime', label: T('לפני שנדבר', 'Before we speak'),
-      intro: T('המילים של הצ׳ק-אין — אחת מהן כבר מוכרת לך.', 'The check-in words — one of them you already know.'),
-      words: [
-        { text: 'reservation', meaning: T('הזמנה', 'reservation'), emoji: '📅' },
-        { text: 'name', meaning: T('שם', 'name'), emoji: '📛', review: true },
-        { text: 'breakfast', meaning: T('ארוחת בוקר', 'breakfast'), emoji: '🍳' },
-        { text: 'passport', meaning: T('דרכון', 'passport'), emoji: '🛂' },
-      ], buildFromItemId: 'en.phrase.hotel.reservation' },
-    // From the key sentences onward the flow is shared by all languages: see practiceArrival.ts.
-    ...m08Flow('en'),
-  ],
+  // The whole journey is shared by all languages: see practiceArrival.ts (`m08Steps`).
+  steps: m08Steps('en'),
 };
 void RECOVERY_ITEMS;

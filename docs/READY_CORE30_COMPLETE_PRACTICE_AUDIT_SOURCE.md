@@ -60,11 +60,11 @@ Not a mission. Eight phrases shared by all missions; a mission bundles the ones 
 
 - `phrase.recovery.dont-understand` — EN "Sorry, I don't understand." · FR "Désolé, je ne comprends pas." · ES "Perdón, no entiendo." · HE "סליחה, אני לא מבין." — help tool — bundled in missions: 13, 14
 - `phrase.recovery.repeat` — EN "Can you repeat that?" · FR "Vous pouvez répéter ?" · ES "¿Puede repetir, por favor?" · HE "אפשר לחזור על זה?" — help tool — bundled in missions: 01, 03, 05, 06, 08, 09, 10, 11, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
-- `phrase.recovery.slowly` — EN "Please speak slowly." · FR "Parlez lentement, s’il vous plaît." · ES "Más despacio, por favor." · HE "דבר לאט, בבקשה." — help tool — bundled in missions: 01, 02, 03, 04, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- `phrase.recovery.slowly` — EN "Please speak slowly." · FR "Parlez lentement, s’il vous plaît." · ES "Más despacio, por favor." · HE "דבר לאט, בבקשה." — help tool — bundled in missions: 01, 02, 03, 04, 06, 07, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - `phrase.recovery.show-me` — EN "Can you show me?" · FR "Vous pouvez me montrer ?" · ES "¿Me lo puede mostrar?" · HE "אתה יכול להראות לי?" — help tool — bundled in missions: 04, 07, 09, 17
 - `phrase.recovery.one-moment` — EN "One moment, please." · FR "Un instant, s’il vous plaît." · ES "Un momento, por favor." · HE "רגע אחד, בבקשה." — help tool — bundled in missions: 02, 03, 06, 08, 14
 - `phrase.recovery.what-mean` — EN "What does that mean?" · FR "Qu’est-ce que ça veut dire ?" · ES "¿Qué significa eso?" · HE "מה זה אומר?" — help tool — bundled in missions: 16, 25
-- `phrase.recovery.thank-you` — EN "Thank you!" · FR "Merci !" · ES "¡Gracias!" · HE "תודה!" — courtesy — bundled in missions: 03, 05, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 25, 26, 30
+- `phrase.recovery.thank-you` — EN "Thank you!" · FR "Merci !" · ES "¡Gracias!" · HE "תודה!" — courtesy — bundled in missions: 03, 05, 06, 07, 09, 10, 14, 15, 17, 18, 19, 25, 26, 30
 - `phrase.recovery.sorry` — EN "Sorry!" · FR "(not used by any Core mission)" · ES "(not used by any Core mission)" · HE "סליחה!" — courtesy — bundled in missions: none
 
 Trigger: none. A tool is available only where a mission's author placed it as a button on a choice screen. Typical behaviour: the NPC repeats more slowly or more simply, then the same question is asked again without the tool button.
@@ -311,7 +311,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: dialogue choice meeting-host/c3 (accepted)
 
 ## Expected replies / listening items
@@ -1271,7 +1271,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: sentence review (step 17); dialogue choice market-stall/c2 (accepted)
 
 ### Sentence: `phrase.recovery.one-moment`
@@ -2536,7 +2536,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: dialogue choice breakfast-order/c6 (accepted)
 
 ### Sentence: `phrase.recovery.thank-you`
@@ -2547,7 +2547,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¡Gracias!
 - Role: courtesy from the Recovery Toolkit
 - Tip / pattern note: none
-- Used in missions: 03, 05, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 25, 26, 30
+- Used in missions: 03, 05, 06, 07, 09, 10, 14, 15, 17, 18, 19, 25, 26, 30
 - Exercised here as: dialogue choice breakfast-order/c7 (accepted)
 
 ## Expected replies / listening items
@@ -3956,7 +3956,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: dialogue choice coffee-with-a-friend/c4 (accepted)
 
 ## Expected replies / listening items
@@ -5133,7 +5133,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¡Gracias!
 - Role: courtesy from the Recovery Toolkit
 - Tip / pattern note: none
-- Used in missions: 03, 05, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 25, 26, 30
+- Used in missions: 03, 05, 06, 07, 09, 10, 14, 15, 17, 18, 19, 25, 26, 30
 - Exercised here as: dialogue choice lost-in-town/c2 (accepted)
 
 ## Expected replies / listening items
@@ -6097,7 +6097,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: dialogue choice border-control/c4 (accepted)
 
 ### Sentence: `phrase.recovery.one-moment`
@@ -6119,7 +6119,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¡Gracias!
 - Role: courtesy from the Recovery Toolkit
 - Tip / pattern note: none
-- Used in missions: 03, 05, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 25, 26, 30
+- Used in missions: 03, 05, 06, 07, 09, 10, 14, 15, 17, 18, 19, 25, 26, 30
 - Exercised here as: dialogue choice border-control/c5 (WRONG option)
 
 ## Expected replies / listening items
@@ -7339,7 +7339,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: dialogue choice taxi-ride/c3 (accepted)
 
 ### Sentence: `phrase.recovery.show-me`
@@ -7361,7 +7361,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¡Gracias!
 - Role: courtesy from the Recovery Toolkit
 - Tip / pattern note: none
-- Used in missions: 03, 05, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 25, 26, 30
+- Used in missions: 03, 05, 06, 07, 09, 10, 14, 15, 17, 18, 19, 25, 26, 30
 - Exercised here as: dialogue choice taxi-ride/c3 (accepted); dialogue choice taxi-ride/c3b (accepted)
 
 ## Expected replies / listening items
@@ -8101,7 +8101,7 @@ Learner sentences taught beside the dialogue (not a line in any scene):
 - Phase: 2 — Arrival / הגעה 🛬
 - Source runtime file(s): `apps/web/src/features/bootcamp/day7.ts` · `apps/web/src/features/bootcamp/fr/day7.ts` · `apps/web/src/features/bootcamp/es/day7.ts`
 - Video: found by convention, never written into mission content — EN `videos/en/en_8.mp4` · FR `videos/fr/fr_8.mp4` · ES `videos/es/es_8.mp4`. Played only where that file exists (inventory: `docs/CORE30_FINAL_VIDEO_ACTION_MAP.md`).
-- Video steps inside the Practice flow: no
+- Video steps inside the Practice flow: yes (see flow)
 
 ## Learning goal / intro screen
 
@@ -8122,57 +8122,134 @@ Mission card (plan metadata, shown on Home / Path / mission overview):
 Intro screen (first Practice step; identical in the English, French and Spanish missions unless flagged):
 
 - Icon: 🏨
-- Title: "Mission 8: Hotel Check-in" / "משימה 8: צ'ק-אין במלון"
-- Text 1: "Your home base for the trip. Reservation, passport, key, floor, breakfast." / "בסיס הבית שלך בטיול. הזמנה, דרכון, מפתח, קומה, ארוחת בוקר."
-- Text 2: "Nail it once — and relax all week." / "הפעם אחת — ותהיה רגוע כל השבוע."
-- Button: "Approach the desk" / "להגיע לדלפק"
+- Title: "Mission 8: Hotel Check-in" / "משימה 8: צ׳ק־אין במלון"
+- Text 1: "You have arrived at the hotel. You have a reservation under the name Cohen, and your passport. Your goal: check in and get to your room." / "הגעת למלון. יש לך הזמנה על שם Cohen ויש לך דרכון. המטרה: לבצע צ׳ק־אין ולהגיע לחדר."
+- Text 2: "🚪 Room ? · 🏢 Floor ? · 🍳 Breakfast ? · 🛗 Elevator ?" / "🚪 חדר ? · 🏢 קומה ? · 🍳 ארוחת בוקר ? · 🛗 מעלית ?"
+- Button: "Start check-in" / "התחל צ׳ק־אין"
 
 ## Current Practice flow
 
 1. `talk` — intro screen — "Mission 8: Hotel Check-in"
-2. `prime` — before-we-speak (word intro) — 4 words → builds `phrase.hotel.reservation`
-3. `tool` — key sentence (listen → reveal → say aloud) — `phrase.hotel.reservation` “I have a reservation.” · label "The opener" / "הפתיח" (1/4)
-4. `tool` — key sentence (listen → reveal → say aloud) — `phrase.hotel.under-name` “Under the name Cohen.” · label "The name on the booking" / "על איזה שם" (2/4)
-5. `tool` — key sentence (listen → reveal → say aloud) — `phrase.hotel.here-you-go` “Here you go.” · label "Handing it over" / "להגיש את הדרכון" (3/4)
-6. `tool` — key sentence (listen → reveal → say aloud) — `phrase.hotel.breakfast` “Is breakfast included?” · label "Breakfast" / "ארוחת בוקר" (4/4)
-7. `replies` — expected replies (listening drill) — after `phrase.hotel.reservation`: 4 replies
-8. `receipt` — receipt (proof card) — "You recognize everything the receptionist says — passport, room, floor, hours." / "אתה מזהה כל מה שפקיד הקבלה אומר — דרכון, חדר, קומה, שעות."
-9. `matchPairs` — match pairs (connect each question to its answer) — 4 pairs on one screen
-10. `visualMatch` — visual match (hear → tap the tile) — 2 round(s)
-11. `quickReply` — quick reply (hear → pick your response) — 4 round(s)
-12. `dialogue` — dialogue (choose your line) — scene `hotel-checkin`
-13. `receipt` — receipt (proof card) — "A full check-in: reservation, passport, room, info — and you’re in." / "צ'ק-אין שלם: הזמנה, דרכון, חדר, מידע — ואתה בפנים."
-14. `swipe` — sentence review — 11 sentences
-15. `ambush` — cold open (fast line) — mode recovery · correct `phrase.recovery.repeat`, wrong `phrase.hotel.here-you-go`
-16. `receipt` — receipt (proof card) — "Long, fast info — and instead of freezing, you asked them to repeat. That’s a tool." / "מידע ארוך ומהיר — ובמקום לקפוא, ביקשת לחזור עליו. זה כלי."
-17. `summary` — victory screen
+2. `prime` — before-we-speak (word intro) — 4 words → builds `phrase.hotel.reservation-name`
+3. `prime` — before-we-speak (word intro) — 2 words → builds ``
+4. `sentenceBuilder` — sentence builder (put the chunks in order) — 1 round(s)
+5. `prime` — before-we-speak (word intro) — 2 words → builds ``
+6. `visualMatch` — visual match (hear → tap the tile) — 1 round(s)
+7. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+8. `prime` — before-we-speak (word intro) — 4 words → builds ``
+9. `visualMatch` — visual match (hear → tap the tile) — 1 round(s)
+10. `miniMap` — mini map (hear → tap the direction / spot) — 1 round(s)
+11. `visualMatch` — visual match (hear → tap the tile) — 1 round(s)
+12. `receipt` — receipt (proof card) — "🚪 Room 204 ✅ · 🏢 Floor 2 ✅ · 🍳 Breakfast ? · 🛗 Elevator ?" / "🚪 חדר 204 ✅ · 🏢 קומה 2 ✅ · 🍳 ארוחת בוקר ? · 🛗 מעלית ?"
+13. `prime` — before-we-speak (word intro) — 1 words → builds ``
+14. `sentenceBuilder` — sentence builder (put the chunks in order) — 1 round(s)
+15. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+16. `prime` — before-we-speak (word intro) — 3 words → builds ``
+17. `visualMatch` — visual match (hear → tap the tile) — 1 round(s)
+18. `miniMap` — mini map (hear → tap the direction / spot) — 1 round(s)
+19. `receipt` — receipt (proof card) — "🚪 Room 204 ✅ · 🏢 Floor 2 ✅ · 🍳 Breakfast 7–10 ✅ · 🛗 Elevator → ✅" / "🚪 חדר 204 ✅ · 🏢 קומה 2 ✅ · 🍳 ארוחת בוקר 7–10 ✅ · 🛗 מעלית → ✅"
+20. `prime` — before-we-speak (word intro) — 1 words → builds ``
+21. `matchPairs` — match pairs (connect each question to its answer) — 2 pairs on one screen
+22. `replies` — expected replies (listening drill) — after `phrase.hotel.reservation-name`: 3 replies
+23. `quickReply` — quick reply (hear → pick your response) — 2 round(s)
+24. `visualMatch` — visual match (hear → tap the tile) — 1 round(s)
+25. `miniMap` — mini map (hear → tap the direction / spot) — 1 round(s)
+26. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+27. `visualMatch` — visual match (hear → tap the tile) — 1 round(s)
+28. `miniMap` — mini map (hear → tap the direction / spot) — 1 round(s)
+29. `receipt` — receipt (proof card) — "🚪 Room 204 ✅ · 🏢 Floor 2 ✅ · 🍳 Breakfast 7–10 ✅ · 🛗 Elevator → ✅ — you know exactly where to go." / "🚪 חדר 204 ✅ · 🏢 קומה 2 ✅ · 🍳 ארוחת בוקר 7–10 ✅ · 🛗 מעלית → ✅ — יודע בדיוק לאן ללכת."
+30. `dialogue` — dialogue (choose your line) — scene `hotel-checkin`
+31. `receipt` — receipt (proof card) — "The whole conversation — from “good evening” to “enjoy your stay”." / "כל השיחה — מ"ערב טוב" ועד "תיהנה מהשהות"."
+32. `quickReply` — quick reply (hear → pick your response) — 3 round(s) · speed challenge
+33. `visualMatch` — visual match (hear → tap the tile) — 1 round(s) · speed challenge
+34. `miniMap` — mini map (hear → tap the direction / spot) — 1 round(s) · speed challenge
+35. `receipt` — receipt (proof card) — "No help — you answered, you asked, and you understood." / "בלי עזרה — ענית, שאלת, והבנת."
+36. `video` — video — mode again
+37. `quickReply` — quick reply (hear → pick your response) — 2 round(s)
+38. `visualMatch` — visual match (hear → tap the tile) — 1 round(s) · speed challenge
+39. `miniMap` — mini map (hear → tap the direction / spot) — 1 round(s) · speed challenge
+40. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+41. `visualMatch` — visual match (hear → tap the tile) — 1 round(s) · speed challenge
+42. `miniMap` — mini map (hear → tap the direction / spot) — 1 round(s) · speed challenge
+43. `receipt` — receipt (proof card) — "🏨 CHECK-IN COMPLETE · 🚪 Room 204 ✅ · 🏢 Floor 2 ✅ · 🍳 Breakfast 7–10 ✅ · 🛗 Elevator → ✅" / "🏨 הצ׳ק־אין הושלם · 🚪 חדר 204 ✅ · 🏢 קומה 2 ✅ · 🍳 ארוחת בוקר 7–10 ✅ · 🛗 מעלית → ✅"
+44. `summary` — victory screen
 
 Step sequence identical in EN / FR / ES: yes.
 
 ## Before we speak / word intro
 
-Step 2. Label: "Before we speak" / "לפני שנדבר". Intro: "The check-in words — one of them you already know." / "המילים של הצ׳ק-אין — אחת מהן כבר מוכרת לך.".
+Step 2. Label: "Before we speak" / "לפני שנדבר". Intro: "The words of the check-in. Tap to hear." / "המילים של הצ׳ק־אין. הקש כדי לשמוע.".
 The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
 
-These words carry NO concept key, so the three languages are listed separately — do not read them as position-aligned translations of each other.
+Words are paired across languages by their concept KEY (not by position).
 
-EN:
-  1. "reservation" — meaning "הזמנה" / "reservation" — icon 📅 — new
-  2. "name" — meaning "שם" / "name" — icon 📛 — marked ♻️ review
-  3. "breakfast" — meaning "ארוחת בוקר" / "breakfast" — icon 🍳 — new
-  4. "passport" — meaning "דרכון" / "passport" — icon 🛂 — new
-FR:
-  1. "réservation" — meaning "הזמנה" / "reservation" — icon 📅 — new
-  2. "nom" — meaning "שם" / "name" — icon 📛 — marked ♻️ review
-  3. "petit-déjeuner" — meaning "ארוחת בוקר" / "breakfast" — icon 🍳 — new
-  4. "passeport" — meaning "דרכון" / "passport" — icon 🛂 — new
-ES:
-  1. "reserva" — meaning "הזמנה" / "reservation" — icon 📅 — new
-  2. "nombre" — meaning "שם" / "name" — icon 📛 — marked ♻️ review
-  3. "desayuno" — meaning "ארוחת בוקר" / "breakfast" — icon 🍳 — new
-  4. "pasaporte" — meaning "דרכון" / "passport" — icon 🛂 — new
+1. `hotel.reservation` — EN "reservation" · FR "réservation" · ES "reserva" — meaning "הזמנה" / "reservation" — icon 📄 — new
+2. `hotel.name` — EN "name" · FR "nom" · ES "nombre" — meaning "שם" / "name" — icon 🗣️ — marked ♻️ review
+3. `hotel.passport` — EN "passport" · FR "passeport" · ES "pasaporte" — meaning "דרכון (ממשימה 6)" / "passport (from Mission 6)" — icon 🛂 — marked ♻️ review
+4. `hotel.breakfast` — EN "breakfast" · FR "petit-déjeuner" · ES "desayuno" — meaning "ארוחת בוקר" / "breakfast" — icon 🍳 — new
 
-"These build the sentence:" card: `phrase.hotel.reservation` — EN "I have a reservation." · FR "J’ai une réservation." · ES "Tengo una reserva." · HE "יש לי הזמנה." (with its own play button).
+"These build the sentence:" card: `phrase.hotel.reservation-name` — EN "I have a reservation, under the name Cohen." · FR "J’ai une réservation, au nom de Cohen." · ES "Tengo una reserva, a nombre de Cohen." · HE "יש לי הזמנה, על השם כהן." (with its own play button).
+
+Step 3. Label: "At the desk" / "בדלפק". Intro: "The receptionist asks — and what you answer. Tap to hear." / "הפקידה שואלת — ומה אתה עונה. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `hotel.line.greet` — EN "Good evening! How can I help you?" · FR "Bonsoir ! Comment puis-je vous aider ?" · ES "¡Buenas noches! ¿En qué puedo ayudarle?" — meaning "ערב טוב! איך אפשר לעזור?" / "Good evening! How can I help you?" — icon 🛎️ — new
+2. `hotel.line.reserve` — EN "I have a reservation, under the name Cohen." · FR "J’ai une réservation, au nom de Cohen." · ES "Tengo una reserva, a nombre de Cohen." — meaning "יש לי הזמנה, על השם כהן." / "I have a reservation, under the name Cohen." — icon 🗣️ — new
+
+No build-sentence card.
+
+Step 5. Label: "The passport" / "הדרכון". Intro: "She asks for your passport — and what you say as you hand it over. Tap to hear." / "היא מבקשת את הדרכון — ומה אומרים כשמגישים. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `hotel.line.welcome` — EN "Welcome, Mr. Cohen. Your passport, please." · FR "Bienvenue, monsieur Cohen. Votre passeport, s’il vous plaît." · ES "Bienvenido, señor Cohen. Su pasaporte, por favor." — meaning "ברוך הבא, מר כהן. הדרכון שלך, בבקשה." / "Welcome, Mr. Cohen. Your passport, please." — icon 🙋 — new
+2. `hotel.line.here` — EN "Here you go." · FR "Voilà, tenez." · ES "Aquí tiene." — meaning "בבקשה, הנה. (כשמגישים משהו)" / "Here you go. (as you hand something over)" — icon 🤲 — new
+
+No build-sentence card.
+
+Step 8. Label: "Your room" / "החדר". Intro: "What she tells you now — room, floor, key. Tap to hear." / "מה שהיא אומרת עכשיו — חדר, קומה, מפתח. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `hotel.line.room-floor-key` — EN "Thank you. You're in room two-oh-four, on the second floor. Here is your key." · FR "Merci. Vous êtes dans la chambre deux cent quatre, au deuxième étage. Voici votre clé." · ES "Gracias. Está en la habitación doscientos cuatro, en el segundo piso. Aquí tiene su llave." — meaning "תודה. אתה בחדר 204, בקומה השנייה. הנה המפתח שלך." / "Thank you. You’re in room 204, on the second floor. Here is your key." — icon 🏨 — new
+2. `hotel.line.room` — EN "You're in room two-oh-four." · FR "Vous êtes dans la chambre deux cent quatre." · ES "Está en la habitación doscientos cuatro." — meaning "אתה בחדר 204." / "You’re in room 204." — icon 🚪 — new
+3. `hotel.line.floor` — EN "on the second floor" · FR "au deuxième étage" · ES "en el segundo piso" — meaning "בקומה השנייה" / "on the second floor" — icon 🏢 — new
+4. `hotel.line.key` — EN "Here is your key." · FR "Voici votre clé." · ES "Aquí tiene su llave." — meaning "הנה המפתח שלך." / "Here is your key." — icon 🔑 — new
+
+No build-sentence card.
+
+Step 13. Label: "Breakfast" / "ארוחת בוקר". Intro: "Your question — you want to know. Tap to hear." / "השאלה שלך — אתה רוצה לדעת. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `hotel.line.breakfast` — EN "Is breakfast included?" · FR "Le petit-déjeuner est compris ?" · ES "¿El desayuno está incluido?" — meaning "ארוחת הבוקר כלולה? (במחיר החדר)" / "Is breakfast included? (in the room price)" — icon ❓ — new
+
+No build-sentence card.
+
+Step 16. Label: "Her answer" / "התשובה שלה". Intro: "Yes — and two more things: when, and which way. Tap to hear." / "כן — ועוד שני דברים: מתי, ולאן. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `hotel.line.hours-elevator` — EN "Yes! Breakfast is from seven to ten. The elevator is on your right." · FR "Oui ! Le petit-déjeuner est de sept heures à dix heures. L’ascenseur est sur votre droite." · ES "¡Sí! El desayuno es de siete a diez. El ascensor está a su derecha." — meaning "כן! ארוחת בוקר משבע עד עשר. המעלית מימינך." / "Yes! Breakfast is from seven to ten. The elevator is on your right." — icon 🕖 — new
+2. `hotel.line.hours` — EN "Breakfast is from seven to ten." · FR "Le petit-déjeuner est de sept heures à dix heures." · ES "El desayuno es de siete a diez." — meaning "ארוחת בוקר משבע עד עשר." / "Breakfast is from seven to ten." — icon 🕖 — new
+3. `hotel.line.elevator` — EN "The elevator is on your right." · FR "L’ascenseur est sur votre droite." · ES "El ascensor está a su derecha." — meaning "המעלית מימינך. (כשאתה מול הדלפק — מצד ימין)" / "The elevator is on your right. (facing the desk — to your right)" — icon 🛗 — new
+
+No build-sentence card.
+
+Step 20. Label: "And at the end" / "ובסוף". Intro: "You already know this one. Tap to hear." / "את זה אתה כבר מכיר. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `hotel.line.enjoy` — EN "Enjoy your stay!" · FR "Bon séjour !" · ES "¡Que disfrute su estancia!" — meaning "תיהנה מהשהות!" / "Enjoy your stay!" — icon 😊 — new
+
+No build-sentence card.
 
 ## Every sentence in this mission
 
@@ -8187,7 +8264,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "The front-desk opener. Template: I have a ___." / "הפתיח לדלפק המלון. תבנית: I have a ___."
 - Used in missions: 08, 10, 30
-- Exercised here as: built by the word intro (step 2); key sentence (step 3); "you said" lead-in of the expected-replies drill (step 7); quick-reply response (step 11, round 1, accepted); quick-reply response (step 11, round 2, wrong option); quick-reply response (step 11, round 4, wrong option); sentence review (step 14); dialogue choice hotel-checkin/c1 (accepted); dialogue choice hotel-checkin/c1b (accepted)
+- Exercised here as: dialogue choice hotel-checkin/c1 (accepted); dialogue choice hotel-checkin/c1b (accepted)
 
 ### Sentence: `phrase.hotel.under-name`
 
@@ -8198,7 +8275,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 08
-- Exercised here as: key sentence (step 4); quick-reply response (step 11, round 2, accepted); sentence review (step 14)
+- Exercised here as: nothing (listed only)
 
 ### Sentence: `phrase.hotel.breakfast`
 
@@ -8209,7 +8286,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 08, 10, 30
-- Exercised here as: key sentence (step 6); quick-reply response (step 11, round 1, wrong option); quick-reply response (step 11, round 2, wrong option); quick-reply response (step 11, round 3, wrong option); quick-reply response (step 11, round 4, accepted); sentence review (step 14); dialogue choice hotel-checkin/c3 (accepted)
+- Exercised here as: sentence-builder target (step 14, round 1); quick-reply response (step 15, round 1, accepted); quick-reply response (step 23, round 1, wrong option); quick-reply response (step 23, round 2, wrong option); quick-reply response (step 26, round 1, accepted); quick-reply response (step 32, round 1, wrong option); quick-reply response (step 32, round 2, wrong option); quick-reply response (step 32, round 3, accepted); quick-reply response (step 37, round 1, wrong option); quick-reply response (step 37, round 2, wrong option); quick-reply response (step 40, round 1, accepted); dialogue choice hotel-checkin/c3 (accepted)
 
 ### Sentence: `phrase.hotel.here-you-go`
 
@@ -8220,7 +8297,18 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 08, 10
-- Exercised here as: key sentence (step 5); quick-reply response (step 11, round 1, wrong option); quick-reply response (step 11, round 3, accepted); quick-reply response (step 11, round 4, wrong option); sentence review (step 14); cold-open wrong option (step 15); dialogue choice hotel-checkin/c2 (accepted)
+- Exercised here as: quick-reply response (step 7, round 1, accepted); quick-reply response (step 15, round 1, wrong option); match-pairs answer tile (step 21, pair 2); quick-reply response (step 23, round 1, wrong option); quick-reply response (step 23, round 2, accepted); quick-reply response (step 26, round 1, wrong option); quick-reply response (step 32, round 1, wrong option); quick-reply response (step 32, round 2, accepted); quick-reply response (step 32, round 3, wrong option); quick-reply response (step 37, round 1, wrong option); quick-reply response (step 37, round 2, accepted); quick-reply response (step 40, round 1, wrong option); dialogue choice hotel-checkin/c2 (accepted)
+
+### Sentence: `phrase.hotel.reservation-name`
+
+- EN: I have a reservation, under the name Cohen.
+- HE: יש לי הזמנה, על השם כהן.
+- FR: J’ai une réservation, au nom de Cohen.
+- ES: Tengo una reserva, a nombre de Cohen.
+- Role: learner production
+- Tip / pattern note: none
+- Used in missions: 08
+- Exercised here as: built by the word intro (step 2); sentence-builder target (step 4, round 1); quick-reply response (step 7, round 1, wrong option); quick-reply response (step 15, round 1, wrong option); match-pairs answer tile (step 21, pair 1); "you said" lead-in of the expected-replies drill (step 22); quick-reply response (step 23, round 1, accepted); quick-reply response (step 23, round 2, wrong option); quick-reply response (step 26, round 1, wrong option); quick-reply response (step 32, round 1, accepted); quick-reply response (step 32, round 2, wrong option); quick-reply response (step 32, round 3, wrong option); quick-reply response (step 37, round 1, accepted); quick-reply response (step 37, round 2, wrong option); quick-reply response (step 40, round 1, wrong option)
 
 ### Sentence: `reply.hotel.passport`
 
@@ -8228,17 +8316,6 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - HE: הדרכון שלך, בבקשה.
 - FR: Votre passeport, s’il vous plaît.
 - ES: Su pasaporte, por favor.
-- Role: receptive — an expected reply the learner hears
-- Tip / pattern note: none
-- Used in missions: 08
-- Exercised here as: expected-reply audio (step 7); quick-reply prompt (step 11, round 3); sentence review (step 14)
-
-### Sentence: `reply.hotel.sign-here`
-
-- EN: Sign here, please.
-- HE: תחתום כאן, בבקשה.
-- FR: Signez ici, s’il vous plaît.
-- ES: Firme aquí, por favor.
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 08
@@ -8253,18 +8330,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 08, 10
-- Exercised here as: expected-reply audio (step 7); match-pairs question tile (step 9, pair 1); match-pairs answer tile (step 9, pair 1); visual-match audio (step 10, round 1); sentence review (step 14)
-
-### Sentence: `reply.hotel.second-floor`
-
-- EN: It's on the second floor.
-- HE: זה בקומה השנייה.
-- FR: C’est au deuxième étage.
-- ES: Está en el segundo piso.
-- Role: receptive — an expected reply the learner hears
-- Tip / pattern note: none
-- Used in missions: 08
-- Exercised here as: expected-reply audio (step 7); match-pairs question tile (step 9, pair 2); match-pairs answer tile (step 9, pair 2); sentence review (step 14)
+- Exercised here as: nothing (listed only)
 
 ### Sentence: `reply.hotel.breakfast-time`
 
@@ -8275,7 +8341,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 08, 10
-- Exercised here as: expected-reply audio (step 7); match-pairs question tile (step 9, pair 3); match-pairs answer tile (step 9, pair 3); sentence review (step 14)
+- Exercised here as: nothing (listed only)
 
 ### Sentence: `reply.hotel.elevator`
 
@@ -8286,7 +8352,62 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 08
-- Exercised here as: match-pairs question tile (step 9, pair 4); match-pairs answer tile (step 9, pair 4); sentence review (step 14)
+- Exercised here as: nothing (listed only)
+
+### Sentence: `reply.hotel.how-help`
+
+- EN: Good evening! How can I help you?
+- HE: ערב טוב! איך אפשר לעזור?
+- FR: Bonsoir ! Comment puis-je vous aider ?
+- ES: ¡Buenas noches! ¿En qué puedo ayudarle?
+- Role: receptive — an expected reply the learner hears
+- Tip / pattern note: none
+- Used in missions: 08
+- Exercised here as: match-pairs question tile (step 21, pair 1); expected-reply audio (step 22)
+
+### Sentence: `reply.hotel.welcome-passport`
+
+- EN: Welcome, Mr. Cohen. Your passport, please.
+- HE: ברוך הבא, מר כהן. הדרכון שלך, בבקשה.
+- FR: Bienvenue, monsieur Cohen. Votre passeport, s’il vous plaît.
+- ES: Bienvenido, señor Cohen. Su pasaporte, por favor.
+- Role: receptive — an expected reply the learner hears
+- Tip / pattern note: none
+- Used in missions: 08
+- Exercised here as: match-pairs question tile (step 21, pair 2)
+
+### Sentence: `reply.hotel.room-key`
+
+- EN: Thank you. You're in room two-oh-four, on the second floor. Here is your key.
+- HE: תודה. אתה בחדר 204, בקומה השנייה. הנה המפתח שלך.
+- FR: Merci. Vous êtes dans la chambre deux cent quatre, au deuxième étage. Voici votre clé.
+- ES: Gracias. Está en la habitación doscientos cuatro, en el segundo piso. Aquí tiene su llave.
+- Role: receptive — an expected reply the learner hears
+- Tip / pattern note: none
+- Used in missions: 08
+- Exercised here as: nothing (listed only)
+
+### Sentence: `reply.hotel.breakfast-elevator`
+
+- EN: Yes! Breakfast is from seven to ten. The elevator is on your right.
+- HE: כן! ארוחת בוקר משבע עד עשר. המעלית מימינך.
+- FR: Oui ! Le petit-déjeuner est de sept heures à dix heures. L’ascenseur est sur votre droite.
+- ES: ¡Sí! El desayuno es de siete a diez. El ascensor está a su derecha.
+- Role: receptive — an expected reply the learner hears
+- Tip / pattern note: none
+- Used in missions: 08
+- Exercised here as: expected-reply audio (step 22)
+
+### Sentence: `reply.hotel.enjoy`
+
+- EN: Enjoy your stay!
+- HE: תיהנה מהשהות!
+- FR: Bon séjour !
+- ES: ¡Que disfrute su estancia!
+- Role: receptive — an expected reply the learner hears
+- Tip / pattern note: none
+- Used in missions: 08
+- Exercised here as: expected-reply audio (step 22)
 
 ### Sentence: `phrase.recovery.repeat`
 
@@ -8297,29 +8418,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
 - Used in missions: 01, 03, 05, 06, 08, 09, 10, 11, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
-- Exercised here as: sentence review (step 14); cold-open correct option (step 15); dialogue choice hotel-checkin/c1 (accepted)
-
-### Sentence: `phrase.recovery.slowly`
-
-- EN: Please speak slowly.
-- HE: דבר לאט, בבקשה.
-- FR: Parlez lentement, s’il vous plaît.
-- ES: Más despacio, por favor.
-- Role: conversation-help tool (global Recovery Toolkit)
-- Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
-- Exercised here as: nothing (listed only)
-
-### Sentence: `phrase.recovery.thank-you`
-
-- EN: Thank you!
-- HE: תודה!
-- FR: Merci !
-- ES: ¡Gracias!
-- Role: courtesy from the Recovery Toolkit
-- Tip / pattern note: none
-- Used in missions: 03, 05, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 25, 26, 30
-- Exercised here as: nothing (listed only)
+- Exercised here as: dialogue choice hotel-checkin/c1 (accepted)
 
 ### Sentence: `phrase.recovery.one-moment`
 
@@ -8330,64 +8429,51 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
 - Used in missions: 02, 03, 06, 08, 14
-- Exercised here as: quick-reply response (step 11, round 3, accepted); sentence review (step 14); dialogue choice hotel-checkin/c2 (accepted)
+- Exercised here as: dialogue choice hotel-checkin/c2 (accepted)
 
 ## Expected replies / listening items
 
-Lead-in screen: "You said:" / "אמרת:" — EN "I have a reservation." · FR "J’ai une réservation." · ES "Tengo una reserva." — then "What might they answer? Learn the replies before they surprise you." / "מה הם עלולים לענות? נלמד את התשובות לפני שהן מפתיעות אותך." — button 👂 "I'm ready" / "אני מוכן".
-Linked learner sentence: `phrase.hotel.reservation`. Each reply below is played once automatically; the learner picks its MEANING from three buttons. Distractors are always the first two OTHER replies of this same drill, in drill order (runtime rule), so the three choices are shuffled per session.
+Lead-in screen: "You said:" / "אמרת:" — EN "I have a reservation, under the name Cohen." · FR "J’ai une réservation, au nom de Cohen." · ES "Tengo una reserva, a nombre de Cohen." — then "What might they answer? Learn the replies before they surprise you." / "מה הם עלולים לענות? נלמד את התשובות לפני שהן מפתיעות אותך." — button 👂 "I'm ready" / "אני מוכן".
+Linked learner sentence: `phrase.hotel.reservation-name`. Each reply below is played once automatically; the learner picks its MEANING from three buttons. Distractors are always the first two OTHER replies of this same drill, in drill order (runtime rule), so the three choices are shuffled per session.
 
-### M08-Q01 — expected-reply (step 7, reply 1 of 4)
+### M08-Q13 — expected-reply (step 22, reply 1 of 3)
 
-- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (1/4)
-- Audio played: EN "Your passport, please." · FR "Votre passeport, s’il vous plaît." · ES "Su pasaporte, por favor."
-- Meaning of the audio (HE): "הדרכון שלך, בבקשה."
+- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (1/3)
+- Audio played: EN "Good evening! How can I help you?" · FR "Bonsoir ! Comment puis-je vous aider ?" · ES "¡Buenas noches! ¿En qué puedo ayudarle?"
+- Meaning of the audio (HE): "ערב טוב! איך אפשר לעזור?"
 - Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
 - Choices:
-  1. HE "הדרכון שלך, בבקשה." / EN "Your passport, please." — `reply.hotel.passport` — ✅ accepted
-  2. HE "אתה בחדר 204." / EN "You're in room two-oh-four." — `reply.hotel.room-number` — ❌ wrong
-  3. HE "זה בקומה השנייה." / EN "It's on the second floor." — `reply.hotel.second-floor` — ❌ wrong
-- Tests: reply.hotel.passport
-- Explanation shown after answering: generic: “Your passport, please.” means “הדרכון שלך, בבקשה.”.
+  1. HE "ערב טוב! איך אפשר לעזור?" / EN "Good evening! How can I help you?" — `reply.hotel.how-help` — ✅ accepted
+  2. HE "כן! ארוחת בוקר משבע עד עשר. המעלית מימינך." / EN "Yes! Breakfast is from seven to ten. The elevator is on your right." — `reply.hotel.breakfast-elevator` — ❌ wrong
+  3. HE "תיהנה מהשהות!" / EN "Enjoy your stay!" — `reply.hotel.enjoy` — ❌ wrong
+- Tests: reply.hotel.how-help
+- Explanation shown after answering: generic: “Good evening! How can I help you?” means “ערב טוב! איך אפשר לעזור?”.
 
-### M08-Q02 — expected-reply (step 7, reply 2 of 4)
+### M08-Q14 — expected-reply (step 22, reply 2 of 3)
 
-- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (2/4)
-- Audio played: EN "You're in room two-oh-four." · FR "Vous êtes dans la chambre deux cent quatre." · ES "Está en la habitación doscientos cuatro."
-- Meaning of the audio (HE): "אתה בחדר 204."
+- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (2/3)
+- Audio played: EN "Yes! Breakfast is from seven to ten. The elevator is on your right." · FR "Oui ! Le petit-déjeuner est de sept heures à dix heures. L’ascenseur est sur votre droite." · ES "¡Sí! El desayuno es de siete a diez. El ascensor está a su derecha."
+- Meaning of the audio (HE): "כן! ארוחת בוקר משבע עד עשר. המעלית מימינך."
 - Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
 - Choices:
-  1. HE "אתה בחדר 204." / EN "You're in room two-oh-four." — `reply.hotel.room-number` — ✅ accepted
-  2. HE "הדרכון שלך, בבקשה." / EN "Your passport, please." — `reply.hotel.passport` — ❌ wrong
-  3. HE "זה בקומה השנייה." / EN "It's on the second floor." — `reply.hotel.second-floor` — ❌ wrong
-- Tests: reply.hotel.room-number
-- Explanation shown after answering: generic: “You're in room two-oh-four.” means “אתה בחדר 204.”.
+  1. HE "כן! ארוחת בוקר משבע עד עשר. המעלית מימינך." / EN "Yes! Breakfast is from seven to ten. The elevator is on your right." — `reply.hotel.breakfast-elevator` — ✅ accepted
+  2. HE "ערב טוב! איך אפשר לעזור?" / EN "Good evening! How can I help you?" — `reply.hotel.how-help` — ❌ wrong
+  3. HE "תיהנה מהשהות!" / EN "Enjoy your stay!" — `reply.hotel.enjoy` — ❌ wrong
+- Tests: reply.hotel.breakfast-elevator
+- Explanation shown after answering: generic: “Yes! Breakfast is from seven to ten. The elevator is on your right.” means “כן! ארוחת בוקר משבע עד עשר. המעלית מימינך.”.
 
-### M08-Q03 — expected-reply (step 7, reply 3 of 4)
+### M08-Q15 — expected-reply (step 22, reply 3 of 3)
 
-- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (3/4)
-- Audio played: EN "It's on the second floor." · FR "C’est au deuxième étage." · ES "Está en el segundo piso."
-- Meaning of the audio (HE): "זה בקומה השנייה."
+- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (3/3)
+- Audio played: EN "Enjoy your stay!" · FR "Bon séjour !" · ES "¡Que disfrute su estancia!"
+- Meaning of the audio (HE): "תיהנה מהשהות!"
 - Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
 - Choices:
-  1. HE "זה בקומה השנייה." / EN "It's on the second floor." — `reply.hotel.second-floor` — ✅ accepted
-  2. HE "הדרכון שלך, בבקשה." / EN "Your passport, please." — `reply.hotel.passport` — ❌ wrong
-  3. HE "אתה בחדר 204." / EN "You're in room two-oh-four." — `reply.hotel.room-number` — ❌ wrong
-- Tests: reply.hotel.second-floor
-- Explanation shown after answering: generic: “It's on the second floor.” means “זה בקומה השנייה.”.
-
-### M08-Q04 — expected-reply (step 7, reply 4 of 4)
-
-- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (4/4)
-- Audio played: EN "Breakfast is from seven to ten." · FR "Le petit-déjeuner est de sept heures à dix heures." · ES "El desayuno es de siete a diez."
-- Meaning of the audio (HE): "ארוחת בוקר משבע עד עשר."
-- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
-- Choices:
-  1. HE "ארוחת בוקר משבע עד עשר." / EN "Breakfast is from seven to ten." — `reply.hotel.breakfast-time` — ✅ accepted
-  2. HE "הדרכון שלך, בבקשה." / EN "Your passport, please." — `reply.hotel.passport` — ❌ wrong
-  3. HE "אתה בחדר 204." / EN "You're in room two-oh-four." — `reply.hotel.room-number` — ❌ wrong
-- Tests: reply.hotel.breakfast-time
-- Explanation shown after answering: generic: “Breakfast is from seven to ten.” means “ארוחת בוקר משבע עד עשר.”.
+  1. HE "תיהנה מהשהות!" / EN "Enjoy your stay!" — `reply.hotel.enjoy` — ✅ accepted
+  2. HE "ערב טוב! איך אפשר לעזור?" / EN "Good evening! How can I help you?" — `reply.hotel.how-help` — ❌ wrong
+  3. HE "כן! ארוחת בוקר משבע עד עשר. המעלית מימינך." / EN "Yes! Breakfast is from seven to ten. The elevator is on your right." — `reply.hotel.breakfast-elevator` — ❌ wrong
+- Tests: reply.hotel.enjoy
+- Explanation shown after answering: generic: “Enjoy your stay!” means “תיהנה מהשהות!”.
 
 ## Quizzes
 
@@ -8395,145 +8481,399 @@ No meaning quiz in this mission.
 
 ## Active practice — Quick Reply · Visual Match · Swap It · Mini Map
 
-### M08-Q05 — match-pairs (step 9, pair 1 of 4 (all pairs are on one screen))
+### M08-Q01 — sentence-builder (step 4, round 1 of 1)
 
-- Prompt displayed: "What were you told? Match each line to what it means" / "מה אמרו לך? חבר כל משפט למה שהוא אומר" — tile to match (target language, no translation): EN "You're in room two-oh-four." · FR "Vous êtes dans la chambre deux cent quatre." · ES "Está en la habitación doscientos cuatro."
-- Audio played: EN "You're in room two-oh-four." · FR "Vous êtes dans la chambre deux cent quatre." · ES "Está en la habitación doscientos cuatro."
-- Meaning of the audio (HE): "אתה בחדר 204."
-- Buttons show: the ANSWER tiles, target language only; their order is shuffled; a matched pair locks and leaves the board, so later pairs have fewer live tiles
+- Prompt displayed: "Your answer" / "התשובה שלך" — cue shown: the sentence's MEANING in the app language ("יש לי הזמנה, על השם כהן.")
+- Audio played: EN "(nothing before Check; the built sentence is spoken once it is right)" · FR "(same)" · ES "(same)"
+- Meaning of the audio (HE): —
+- Buttons show: the authored CHUNKS of the sentence as tiles (listed here in the correct order, separated by "|"), shuffled; each language has its own chunks; Check unlocks when every tile is placed
 - Choices:
-  1. EN "🚪 204" · FR "🚪 204" · ES "🚪 204" · (HE gloss "אתה בחדר 204.") — `reply.hotel.room-number` — ✅ accepted
-  2. EN "🏢 2" · FR "🏢 2" · ES "🏢 2" · (HE gloss "זה בקומה השנייה.") — `reply.hotel.second-floor` — ❌ wrong
-  3. EN "🍳 7–10" · FR "🍳 7–10" · ES "🍳 7–10" · (HE gloss "ארוחת בוקר משבע עד עשר.") — `reply.hotel.breakfast-time` — ❌ wrong
-  4. EN "🛗 ➡️" · FR "🛗 ➡️" · ES "🛗 ➡️" · (HE gloss "המעלית מימינך.") — `reply.hotel.elevator` — ❌ wrong
-- Tests: reply.hotel.room-number
-- Explanation shown after answering: none — a correct match locks both tiles under a shared number and speaks the answer; a miss shakes, shows ✕ and clears (no penalty)
+  1. EN "I have a reservation,  |  under the name  |  Cohen." · FR "J’ai une réservation,  |  au nom de  |  Cohen." · ES "Tengo una reserva,  |  a nombre de  |  Cohen." · (HE gloss "יש לי הזמנה, על השם כהן.") — `phrase.hotel.reservation-name` — ✅ accepted
+- Tests: phrase.hotel.reservation-name
+- Explanation shown after answering: right: the sentence is spoken and its translation shown. Wrong: "not yet" — the tiles stay, the answer is NOT shown; after one miss a hint marks the start; after two misses the learner may reveal it
 
-### M08-Q06 — match-pairs (step 9, pair 2 of 4 (all pairs are on one screen))
+### M08-Q02 — visual-match (step 6, round 1 of 1)
 
-- Prompt displayed: "What were you told? Match each line to what it means" / "מה אמרו לך? חבר כל משפט למה שהוא אומר" — tile to match (target language, no translation): EN "It's on the second floor." · FR "C’est au deuxième étage." · ES "Está en el segundo piso."
-- Audio played: EN "It's on the second floor." · FR "C’est au deuxième étage." · ES "Está en el segundo piso."
-- Meaning of the audio (HE): "זה בקומה השנייה."
-- Buttons show: the ANSWER tiles, target language only; their order is shuffled; a matched pair locks and leaves the board, so later pairs have fewer live tiles
+- Prompt displayed: "What is she asking for? Hand it over" / "מה היא מבקשת? הגש לה"
+- Audio played: EN "Welcome, Mr. Cohen. Your passport, please." · FR "Bienvenue, monsieur Cohen. Votre passeport, s’il vous plaît." · ES "Bienvenido, señor Cohen. Su pasaporte, por favor."
+- Meaning of the audio (HE): "ברוך הבא, מר כהן. הדרכון שלך, בבקשה."
+- Buttons show: a 3×3 board of 3 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. EN "🚪 204" · FR "🚪 204" · ES "🚪 204" · (HE gloss "אתה בחדר 204.") — `reply.hotel.room-number` — ❌ wrong
-  2. EN "🏢 2" · FR "🏢 2" · ES "🏢 2" · (HE gloss "זה בקומה השנייה.") — `reply.hotel.second-floor` — ✅ accepted
-  3. EN "🍳 7–10" · FR "🍳 7–10" · ES "🍳 7–10" · (HE gloss "ארוחת בוקר משבע עד עשר.") — `reply.hotel.breakfast-time` — ❌ wrong
-  4. EN "🛗 ➡️" · FR "🛗 ➡️" · ES "🛗 ➡️" · (HE gloss "המעלית מימינך.") — `reply.hotel.elevator` — ❌ wrong
-- Tests: reply.hotel.second-floor
-- Explanation shown after answering: none — a correct match locks both tiles under a shared number and speaks the answer; a miss shakes, shows ✕ and clears (no penalty)
-
-### M08-Q07 — match-pairs (step 9, pair 3 of 4 (all pairs are on one screen))
-
-- Prompt displayed: "What were you told? Match each line to what it means" / "מה אמרו לך? חבר כל משפט למה שהוא אומר" — tile to match (target language, no translation): EN "Breakfast is from seven to ten." · FR "Le petit-déjeuner est de sept heures à dix heures." · ES "El desayuno es de siete a diez."
-- Audio played: EN "Breakfast is from seven to ten." · FR "Le petit-déjeuner est de sept heures à dix heures." · ES "El desayuno es de siete a diez."
-- Meaning of the audio (HE): "ארוחת בוקר משבע עד עשר."
-- Buttons show: the ANSWER tiles, target language only; their order is shuffled; a matched pair locks and leaves the board, so later pairs have fewer live tiles
-- Choices:
-  1. EN "🚪 204" · FR "🚪 204" · ES "🚪 204" · (HE gloss "אתה בחדר 204.") — `reply.hotel.room-number` — ❌ wrong
-  2. EN "🏢 2" · FR "🏢 2" · ES "🏢 2" · (HE gloss "זה בקומה השנייה.") — `reply.hotel.second-floor` — ❌ wrong
-  3. EN "🍳 7–10" · FR "🍳 7–10" · ES "🍳 7–10" · (HE gloss "ארוחת בוקר משבע עד עשר.") — `reply.hotel.breakfast-time` — ✅ accepted
-  4. EN "🛗 ➡️" · FR "🛗 ➡️" · ES "🛗 ➡️" · (HE gloss "המעלית מימינך.") — `reply.hotel.elevator` — ❌ wrong
-- Tests: reply.hotel.breakfast-time
-- Explanation shown after answering: none — a correct match locks both tiles under a shared number and speaks the answer; a miss shakes, shows ✕ and clears (no penalty)
-
-### M08-Q08 — match-pairs (step 9, pair 4 of 4 (all pairs are on one screen))
-
-- Prompt displayed: "What were you told? Match each line to what it means" / "מה אמרו לך? חבר כל משפט למה שהוא אומר" — tile to match (target language, no translation): EN "The elevator is on your right." · FR "L’ascenseur est sur votre droite." · ES "El ascensor está a su derecha."
-- Audio played: EN "The elevator is on your right." · FR "L’ascenseur est sur votre droite." · ES "El ascensor está a su derecha."
-- Meaning of the audio (HE): "המעלית מימינך."
-- Buttons show: the ANSWER tiles, target language only; their order is shuffled; a matched pair locks and leaves the board, so later pairs have fewer live tiles
-- Choices:
-  1. EN "🚪 204" · FR "🚪 204" · ES "🚪 204" · (HE gloss "אתה בחדר 204.") — `reply.hotel.room-number` — ❌ wrong
-  2. EN "🏢 2" · FR "🏢 2" · ES "🏢 2" · (HE gloss "זה בקומה השנייה.") — `reply.hotel.second-floor` — ❌ wrong
-  3. EN "🍳 7–10" · FR "🍳 7–10" · ES "🍳 7–10" · (HE gloss "ארוחת בוקר משבע עד עשר.") — `reply.hotel.breakfast-time` — ❌ wrong
-  4. EN "🛗 ➡️" · FR "🛗 ➡️" · ES "🛗 ➡️" · (HE gloss "המעלית מימינך.") — `reply.hotel.elevator` — ✅ accepted
-- Tests: reply.hotel.elevator
-- Explanation shown after answering: none — a correct match locks both tiles under a shared number and speaks the answer; a miss shakes, shows ✕ and clears (no penalty)
-
-### M08-Q09 — visual-match (step 10, round 1 of 2)
-
-- Prompt displayed: "Which room is yours? Tap the number" / "באיזה חדר אתה? הקש על המספר"
-- Audio played: EN "You're in room two-oh-four." · FR "Vous êtes dans la chambre deux cent quatre." · ES "Está en la habitación doscientos cuatro."
-- Meaning of the audio (HE): "אתה בחדר 204."
-- Buttons show: a 3×3 board of 6 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
-- Choices:
-  1. "104" — no sentence id — ❌ wrong
-  2. "204" — `reply.hotel.room-number` — ✅ accepted
-  3. "214" — no sentence id — ❌ wrong
-  4. "240" — no sentence id — ❌ wrong
-  5. "402" — no sentence id — ❌ wrong
-  6. "420" — no sentence id — ❌ wrong
-- Tests: reply.hotel.room-number
-- Explanation shown after answering: after the tap: the spoken line and its translation
-
-### M08-Q10 — visual-match (step 10, round 2 of 2)
-
-- Prompt displayed: "Which room is yours? Tap the number" / "באיזה חדר אתה? הקש על המספר"
-- Audio played: EN "You're in room four-oh-two." · FR "Vous êtes dans la chambre quatre cent deux." · ES "Está en la habitación cuatrocientos dos."
-- Meaning of the audio (HE): "אתה בחדר 402."
-- Buttons show: a 3×3 board of 6 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
-- Choices:
-  1. "104" — no sentence id — ❌ wrong
-  2. "204" — no sentence id — ❌ wrong
-  3. "214" — no sentence id — ❌ wrong
-  4. "240" — no sentence id — ❌ wrong
-  5. "402" — no sentence id — ✅ accepted
-  6. "420" — no sentence id — ❌ wrong
+  1. "🛂" — no sentence id — ✅ accepted
+  2. "📱" — no sentence id — ❌ wrong
+  3. "📄" — no sentence id — ❌ wrong
 - Tests: (no sentence id — not recorded)
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
-### M08-Q11 — quick-reply (step 11, round 1 of 4)
+### M08-Q03 — quick-reply (step 7, round 1 of 1)
 
-- Prompt displayed: "At the front desk — what do you say?" / "בדלפק הקבלה — מה אומרים?"
-- Audio played: EN "Good evening. Do you have a reservation?" · FR "Bonsoir. Vous avez une réservation ?" · ES "Buenas noches. ¿Tiene una reserva?"
-- Meaning of the audio (HE): "ערב טוב. יש לך הזמנה?"
-- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
-- Choices:
-  1. EN "I have a reservation." · FR "J’ai une réservation." · ES "Tengo una reserva." · (HE gloss "יש לי הזמנה.") — `phrase.hotel.reservation` — ✅ accepted
-  2. EN "Is breakfast included?" · FR "Le petit-déjeuner est compris ?" · ES "¿El desayuno está incluido?" · (HE gloss "ארוחת הבוקר כלולה?") — `phrase.hotel.breakfast` — ❌ wrong
-  3. EN "Here you go." · FR "Voilà, tenez." · ES "Aquí tiene." · (HE gloss "בבקשה, הנה.") — `phrase.hotel.here-you-go` — ❌ wrong
-- Tests: phrase.hotel.reservation
-- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
-
-### M08-Q12 — quick-reply (step 11, round 2 of 4)
-
-- Prompt displayed: "At the front desk — what do you say?" / "בדלפק הקבלה — מה אומרים?" — situation shown: "The receptionist is looking for the booking. Whose name is it under?" / "הפקיד מחפש את ההזמנה. על איזה שם היא?"
-- Audio played: EN "(nothing is played — a situation is shown)" · FR "(nothing is played — a situation is shown)" · ES "(nothing is played — a situation is shown)"
-- Meaning of the audio (HE): —
-- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
-- Choices:
-  1. EN "Under the name Cohen." · FR "Au nom de Cohen." · ES "A nombre de Cohen." · (HE gloss "על השם כהן.") — `phrase.hotel.under-name` — ✅ accepted
-  2. EN "I have a reservation." · FR "J’ai une réservation." · ES "Tengo una reserva." · (HE gloss "יש לי הזמנה.") — `phrase.hotel.reservation` — ❌ wrong
-  3. EN "Is breakfast included?" · FR "Le petit-déjeuner est compris ?" · ES "¿El desayuno está incluido?" · (HE gloss "ארוחת הבוקר כלולה?") — `phrase.hotel.breakfast` — ❌ wrong
-- Tests: phrase.hotel.under-name
-- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
-
-### M08-Q13 — quick-reply (step 11, round 3 of 4)
-
-- Prompt displayed: "At the front desk — what do you say?" / "בדלפק הקבלה — מה אומרים?"
-- Audio played: EN "Your passport, please." · FR "Votre passeport, s’il vous plaît." · ES "Su pasaporte, por favor."
-- Meaning of the audio (HE): "הדרכון שלך, בבקשה."
+- Prompt displayed: "Hand it over — and say it" / "מגישים — ואומרים"
+- Audio played: EN "Welcome, Mr. Cohen. Your passport, please." · FR "Bienvenue, monsieur Cohen. Votre passeport, s’il vous plaît." · ES "Bienvenido, señor Cohen. Su pasaporte, por favor."
+- Meaning of the audio (HE): "ברוך הבא, מר כהן. הדרכון שלך, בבקשה."
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
   1. EN "Here you go." · FR "Voilà, tenez." · ES "Aquí tiene." · (HE gloss "בבקשה, הנה.") — `phrase.hotel.here-you-go` — ✅ accepted
-  2. EN "One moment, please." · FR "Un instant, s’il vous plaît." · ES "Un momento, por favor." · (HE gloss "רגע אחד, בבקשה.") — `phrase.recovery.one-moment` — ✅ accepted
-  3. EN "Is breakfast included?" · FR "Le petit-déjeuner est compris ?" · ES "¿El desayuno está incluido?" · (HE gloss "ארוחת הבוקר כלולה?") — `phrase.hotel.breakfast` — ❌ wrong
-- Tests: phrase.hotel.here-you-go, phrase.recovery.one-moment
+  2. EN "I have a reservation, under the name Cohen." · FR "J’ai une réservation, au nom de Cohen." · ES "Tengo una reserva, a nombre de Cohen." · (HE gloss "יש לי הזמנה, על השם כהן.") — `phrase.hotel.reservation-name` — ❌ wrong
+- Tests: phrase.hotel.here-you-go
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M08-Q14 — quick-reply (step 11, round 4 of 4)
+### M08-Q04 — visual-match (step 9, round 1 of 1)
 
-- Prompt displayed: "At the front desk — what do you say?" / "בדלפק הקבלה — מה אומרים?" — situation shown: "You have your key. You want to know whether breakfast comes with the room." / "קיבלת מפתח. אתה רוצה לדעת אם ארוחת הבוקר בפנים."
+- Prompt displayed: "Which room are you in?" / "באיזה חדר אתה?"
+- Audio played: EN "Thank you. You're in room two-oh-four, on the second floor. Here is your key." · FR "Merci. Vous êtes dans la chambre deux cent quatre, au deuxième étage. Voici votre clé." · ES "Gracias. Está en la habitación doscientos cuatro, en el segundo piso. Aquí tiene su llave."
+- Meaning of the audio (HE): "תודה. אתה בחדר 204, בקומה השנייה. הנה המפתח שלך."
+- Buttons show: a 3×3 board of 3 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "204" — no sentence id — ✅ accepted
+  2. "214" — no sentence id — ❌ wrong
+  3. "240" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M08-Q05 — mini-map (step 10, round 1 of 1)
+
+- Prompt displayed: "In the elevator: which floor?" / "במעלית: לאיזו קומה?" — board, row by row: · | 3️⃣ [tap:floor-3] | · // 🛗 | 2️⃣ [tap:floor-2] | · // · | 1️⃣ [tap:floor-1] | ·
+- Audio played: EN "Thank you. You're in room two-oh-four, on the second floor. Here is your key." · FR "Merci. Vous êtes dans la chambre deux cent quatre, au deuxième étage. Voici votre clé." · ES "Gracias. Está en la habitación doscientos cuatro, en el segundo piso. Aquí tiene su llave."
+- Meaning of the audio (HE): "תודה. אתה בחדר 204, בקומה השנייה. הנה המפתח שלך."
+- Buttons show: the tappable cells of a 3×3 schematic map (fixed positions, not shuffled); the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "3️⃣ floor-3" — no sentence id — ❌ wrong
+  2. "2️⃣ floor-2" — no sentence id — ✅ accepted
+  3. "1️⃣ floor-1" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M08-Q06 — visual-match (step 11, round 1 of 1)
+
+- Prompt displayed: "She hands you the key — take it" / "היא מגישה לך את המפתח — קח אותו"
+- Audio played: EN "Here is your key." · FR "Voici votre clé." · ES "Aquí tiene su llave."
+- Meaning of the audio (HE): "הנה המפתח שלך."
+- Buttons show: ONE tile — a teaching round: hear it, see what it means, tap it (cannot be missed); then the line and its translation
+- Choices:
+  1. "🔑" — no sentence id — ✅ accepted
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M08-Q07 — sentence-builder (step 14, round 1 of 1)
+
+- Prompt displayed: "Your question" / "השאלה שלך" — cue shown: the sentence's MEANING in the app language ("ארוחת הבוקר כלולה?")
+- Audio played: EN "(nothing before Check; the built sentence is spoken once it is right)" · FR "(same)" · ES "(same)"
+- Meaning of the audio (HE): —
+- Buttons show: the authored CHUNKS of the sentence as tiles (listed here in the correct order, separated by "|"), shuffled; each language has its own chunks; Check unlocks when every tile is placed
+- Choices:
+  1. EN "Is  |  breakfast  |  included?" · FR "Le petit-déjeuner  |  est  |  compris ?" · ES "¿El desayuno  |  está  |  incluido?" · (HE gloss "ארוחת הבוקר כלולה?") — `phrase.hotel.breakfast` — ✅ accepted
+- Tests: phrase.hotel.breakfast
+- Explanation shown after answering: right: the sentence is spoken and its translation shown. Wrong: "not yet" — the tiles stay, the answer is NOT shown; after one miss a hint marks the start; after two misses the learner may reveal it
+
+### M08-Q08 — quick-reply (step 15, round 1 of 1)
+
+- Prompt displayed: "What do you ask?" / "מה אתה שואל?" — situation shown: "You have your key. You want to know whether breakfast comes with the room." / "יש לך מפתח. אתה רוצה לדעת אם ארוחת הבוקר כלולה במחיר."
 - Audio played: EN "(nothing is played — a situation is shown)" · FR "(nothing is played — a situation is shown)" · ES "(nothing is played — a situation is shown)"
 - Meaning of the audio (HE): —
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
   1. EN "Is breakfast included?" · FR "Le petit-déjeuner est compris ?" · ES "¿El desayuno está incluido?" · (HE gloss "ארוחת הבוקר כלולה?") — `phrase.hotel.breakfast` — ✅ accepted
-  2. EN "I have a reservation." · FR "J’ai une réservation." · ES "Tengo una reserva." · (HE gloss "יש לי הזמנה.") — `phrase.hotel.reservation` — ❌ wrong
+  2. EN "Here you go." · FR "Voilà, tenez." · ES "Aquí tiene." · (HE gloss "בבקשה, הנה.") — `phrase.hotel.here-you-go` — ❌ wrong
+  3. EN "I have a reservation, under the name Cohen." · FR "J’ai une réservation, au nom de Cohen." · ES "Tengo una reserva, a nombre de Cohen." · (HE gloss "יש לי הזמנה, על השם כהן.") — `phrase.hotel.reservation-name` — ❌ wrong
+- Tests: phrase.hotel.breakfast
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M08-Q09 — visual-match (step 17, round 1 of 1)
+
+- Prompt displayed: "When is breakfast?" / "מתי ארוחת הבוקר?"
+- Audio played: EN "Yes! Breakfast is from seven to ten. The elevator is on your right." · FR "Oui ! Le petit-déjeuner est de sept heures à dix heures. L’ascenseur est sur votre droite." · ES "¡Sí! El desayuno es de siete a diez. El ascensor está a su derecha."
+- Meaning of the audio (HE): "כן! ארוחת בוקר משבע עד עשר. המעלית מימינך."
+- Buttons show: a 3×3 board of 3 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "7–10" — no sentence id — ✅ accepted
+  2. "7–9" — no sentence id — ❌ wrong
+  3. "8–10" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M08-Q10 — mini-map (step 18, round 1 of 1)
+
+- Prompt displayed: "You face the desk. Which way to the elevator?" / "אתה מול הדלפק. לאן הולכים למעלית?" — board, row by row: · | 🚪 [tap:ahead] | · // 🚪 [tap:left] | 🛎️ | 🚪 [tap:right] // · | 🧍 | ·
+- Audio played: EN "Yes! Breakfast is from seven to ten. The elevator is on your right." · FR "Oui ! Le petit-déjeuner est de sept heures à dix heures. L’ascenseur est sur votre droite." · ES "¡Sí! El desayuno es de siete a diez. El ascensor está a su derecha."
+- Meaning of the audio (HE): "כן! ארוחת בוקר משבע עד עשר. המעלית מימינך."
+- Buttons show: the tappable cells of a 3×3 schematic map (fixed positions, not shuffled); the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "🚪 left" — no sentence id — ❌ wrong
+  2. "🚪 right" — no sentence id — ✅ accepted
+  3. "🚪 ahead" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M08-Q11 — match-pairs (step 21, pair 1 of 2 (all pairs are on one screen))
+
+- Prompt displayed: "The receptionist says — what do you answer?" / "הפקידה אומרת — מה אתה עונה?" — tile to match (target language, no translation): EN "Good evening! How can I help you?" · FR "Bonsoir ! Comment puis-je vous aider ?" · ES "¡Buenas noches! ¿En qué puedo ayudarle?"
+- Audio played: EN "Good evening! How can I help you?" · FR "Bonsoir ! Comment puis-je vous aider ?" · ES "¡Buenas noches! ¿En qué puedo ayudarle?"
+- Meaning of the audio (HE): "ערב טוב! איך אפשר לעזור?"
+- Buttons show: the ANSWER tiles, target language only; their order is shuffled; a matched pair locks and leaves the board, so later pairs have fewer live tiles
+- Choices:
+  1. EN "I have a reservation, under the name Cohen." · FR "J’ai une réservation, au nom de Cohen." · ES "Tengo una reserva, a nombre de Cohen." · (HE gloss "יש לי הזמנה, על השם כהן.") — `phrase.hotel.reservation-name` — ✅ accepted
+  2. EN "Here you go." · FR "Voilà, tenez." · ES "Aquí tiene." · (HE gloss "בבקשה, הנה.") — `phrase.hotel.here-you-go` — ❌ wrong
+- Tests: phrase.hotel.reservation-name
+- Explanation shown after answering: none — a correct match locks both tiles under a shared number and speaks the answer; a miss shakes, shows ✕ and clears (no penalty)
+
+### M08-Q12 — match-pairs (step 21, pair 2 of 2 (all pairs are on one screen))
+
+- Prompt displayed: "The receptionist says — what do you answer?" / "הפקידה אומרת — מה אתה עונה?" — tile to match (target language, no translation): EN "Welcome, Mr. Cohen. Your passport, please." · FR "Bienvenue, monsieur Cohen. Votre passeport, s’il vous plaît." · ES "Bienvenido, señor Cohen. Su pasaporte, por favor."
+- Audio played: EN "Welcome, Mr. Cohen. Your passport, please." · FR "Bienvenue, monsieur Cohen. Votre passeport, s’il vous plaît." · ES "Bienvenido, señor Cohen. Su pasaporte, por favor."
+- Meaning of the audio (HE): "ברוך הבא, מר כהן. הדרכון שלך, בבקשה."
+- Buttons show: the ANSWER tiles, target language only; their order is shuffled; a matched pair locks and leaves the board, so later pairs have fewer live tiles
+- Choices:
+  1. EN "I have a reservation, under the name Cohen." · FR "J’ai une réservation, au nom de Cohen." · ES "Tengo una reserva, a nombre de Cohen." · (HE gloss "יש לי הזמנה, על השם כהן.") — `phrase.hotel.reservation-name` — ❌ wrong
+  2. EN "Here you go." · FR "Voilà, tenez." · ES "Aquí tiene." · (HE gloss "בבקשה, הנה.") — `phrase.hotel.here-you-go` — ✅ accepted
+- Tests: phrase.hotel.here-you-go
+- Explanation shown after answering: none — a correct match locks both tiles under a shared number and speaks the answer; a miss shakes, shows ✕ and clears (no penalty)
+
+### M08-Q16 — quick-reply (step 23, round 1 of 2)
+
+- Prompt displayed: "🚪 Room ? · 🏢 Floor ? · 🍳 Breakfast ? · 🛗 Elevator ?" / "🚪 חדר ? · 🏢 קומה ? · 🍳 ארוחת בוקר ? · 🛗 מעלית ?"
+- Audio played: EN "Good evening! How can I help you?" · FR "Bonsoir ! Comment puis-je vous aider ?" · ES "¡Buenas noches! ¿En qué puedo ayudarle?"
+- Meaning of the audio (HE): "ערב טוב! איך אפשר לעזור?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "I have a reservation, under the name Cohen." · FR "J’ai une réservation, au nom de Cohen." · ES "Tengo una reserva, a nombre de Cohen." · (HE gloss "יש לי הזמנה, על השם כהן.") — `phrase.hotel.reservation-name` — ✅ accepted
+  2. EN "Here you go." · FR "Voilà, tenez." · ES "Aquí tiene." · (HE gloss "בבקשה, הנה.") — `phrase.hotel.here-you-go` — ❌ wrong
+  3. EN "Is breakfast included?" · FR "Le petit-déjeuner est compris ?" · ES "¿El desayuno está incluido?" · (HE gloss "ארוחת הבוקר כלולה?") — `phrase.hotel.breakfast` — ❌ wrong
+- Tests: phrase.hotel.reservation-name
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M08-Q17 — quick-reply (step 23, round 2 of 2)
+
+- Prompt displayed: "🚪 Room ? · 🏢 Floor ? · 🍳 Breakfast ? · 🛗 Elevator ?" / "🚪 חדר ? · 🏢 קומה ? · 🍳 ארוחת בוקר ? · 🛗 מעלית ?"
+- Audio played: EN "Welcome, Mr. Cohen. Your passport, please." · FR "Bienvenue, monsieur Cohen. Votre passeport, s’il vous plaît." · ES "Bienvenido, señor Cohen. Su pasaporte, por favor."
+- Meaning of the audio (HE): "ברוך הבא, מר כהן. הדרכון שלך, בבקשה."
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Here you go." · FR "Voilà, tenez." · ES "Aquí tiene." · (HE gloss "בבקשה, הנה.") — `phrase.hotel.here-you-go` — ✅ accepted
+  2. EN "Is breakfast included?" · FR "Le petit-déjeuner est compris ?" · ES "¿El desayuno está incluido?" · (HE gloss "ארוחת הבוקר כלולה?") — `phrase.hotel.breakfast` — ❌ wrong
+  3. EN "I have a reservation, under the name Cohen." · FR "J’ai une réservation, au nom de Cohen." · ES "Tengo una reserva, a nombre de Cohen." · (HE gloss "יש לי הזמנה, על השם כהן.") — `phrase.hotel.reservation-name` — ❌ wrong
+- Tests: phrase.hotel.here-you-go
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M08-Q18 — visual-match (step 24, round 1 of 1)
+
+- Prompt displayed: "Which room are you in?" / "באיזה חדר אתה?"
+- Audio played: EN "Thank you. You're in room two-oh-four, on the second floor. Here is your key." · FR "Merci. Vous êtes dans la chambre deux cent quatre, au deuxième étage. Voici votre clé." · ES "Gracias. Está en la habitación doscientos cuatro, en el segundo piso. Aquí tiene su llave."
+- Meaning of the audio (HE): "תודה. אתה בחדר 204, בקומה השנייה. הנה המפתח שלך."
+- Buttons show: a 3×3 board of 3 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "204" — no sentence id — ✅ accepted
+  2. "214" — no sentence id — ❌ wrong
+  3. "240" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M08-Q19 — mini-map (step 25, round 1 of 1)
+
+- Prompt displayed: "In the elevator: which floor?" / "במעלית: לאיזו קומה?" — board, row by row: · | 3️⃣ [tap:floor-3] | · // 🛗 | 2️⃣ [tap:floor-2] | · // · | 1️⃣ [tap:floor-1] | ·
+- Audio played: EN "Thank you. You're in room two-oh-four, on the second floor. Here is your key." · FR "Merci. Vous êtes dans la chambre deux cent quatre, au deuxième étage. Voici votre clé." · ES "Gracias. Está en la habitación doscientos cuatro, en el segundo piso. Aquí tiene su llave."
+- Meaning of the audio (HE): "תודה. אתה בחדר 204, בקומה השנייה. הנה המפתח שלך."
+- Buttons show: the tappable cells of a 3×3 schematic map (fixed positions, not shuffled); the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "3️⃣ floor-3" — no sentence id — ❌ wrong
+  2. "2️⃣ floor-2" — no sentence id — ✅ accepted
+  3. "1️⃣ floor-1" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M08-Q20 — quick-reply (step 26, round 1 of 1)
+
+- Prompt displayed: "🚪 Room 204 ✅ · 🏢 Floor 2 ✅ · 🍳 Breakfast ? · 🛗 Elevator ?" / "🚪 חדר 204 ✅ · 🏢 קומה 2 ✅ · 🍳 ארוחת בוקר ? · 🛗 מעלית ?"
+- Audio played: EN "Thank you. You're in room two-oh-four, on the second floor. Here is your key." · FR "Merci. Vous êtes dans la chambre deux cent quatre, au deuxième étage. Voici votre clé." · ES "Gracias. Está en la habitación doscientos cuatro, en el segundo piso. Aquí tiene su llave."
+- Meaning of the audio (HE): "תודה. אתה בחדר 204, בקומה השנייה. הנה המפתח שלך."
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Is breakfast included?" · FR "Le petit-déjeuner est compris ?" · ES "¿El desayuno está incluido?" · (HE gloss "ארוחת הבוקר כלולה?") — `phrase.hotel.breakfast` — ✅ accepted
+  2. EN "I have a reservation, under the name Cohen." · FR "J’ai une réservation, au nom de Cohen." · ES "Tengo una reserva, a nombre de Cohen." · (HE gloss "יש לי הזמנה, על השם כהן.") — `phrase.hotel.reservation-name` — ❌ wrong
   3. EN "Here you go." · FR "Voilà, tenez." · ES "Aquí tiene." · (HE gloss "בבקשה, הנה.") — `phrase.hotel.here-you-go` — ❌ wrong
 - Tests: phrase.hotel.breakfast
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M08-Q21 — visual-match (step 27, round 1 of 1)
+
+- Prompt displayed: "When is breakfast?" / "מתי ארוחת הבוקר?"
+- Audio played: EN "Yes! Breakfast is from seven to ten. The elevator is on your right." · FR "Oui ! Le petit-déjeuner est de sept heures à dix heures. L’ascenseur est sur votre droite." · ES "¡Sí! El desayuno es de siete a diez. El ascensor está a su derecha."
+- Meaning of the audio (HE): "כן! ארוחת בוקר משבע עד עשר. המעלית מימינך."
+- Buttons show: a 3×3 board of 3 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "7–10" — no sentence id — ✅ accepted
+  2. "7–9" — no sentence id — ❌ wrong
+  3. "8–10" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M08-Q22 — mini-map (step 28, round 1 of 1)
+
+- Prompt displayed: "You face the desk. Which way to the elevator?" / "אתה מול הדלפק. לאן הולכים למעלית?" — board, row by row: · | 🚪 [tap:ahead] | · // 🚪 [tap:left] | 🛎️ | 🚪 [tap:right] // · | 🧍 | ·
+- Audio played: EN "Yes! Breakfast is from seven to ten. The elevator is on your right." · FR "Oui ! Le petit-déjeuner est de sept heures à dix heures. L’ascenseur est sur votre droite." · ES "¡Sí! El desayuno es de siete a diez. El ascensor está a su derecha."
+- Meaning of the audio (HE): "כן! ארוחת בוקר משבע עד עשר. המעלית מימינך."
+- Buttons show: the tappable cells of a 3×3 schematic map (fixed positions, not shuffled); the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "🚪 left" — no sentence id — ❌ wrong
+  2. "🚪 right" — no sentence id — ✅ accepted
+  3. "🚪 ahead" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M08-Q27 — quick-reply (step 32, round 1 of 3 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "Good evening! How can I help you?" · FR "Bonsoir ! Comment puis-je vous aider ?" · ES "¡Buenas noches! ¿En qué puedo ayudarle?"
+- Meaning of the audio (HE): "ערב טוב! איך אפשר לעזור?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "I have a reservation, under the name Cohen." · FR "J’ai une réservation, au nom de Cohen." · ES "Tengo una reserva, a nombre de Cohen." · (HE gloss "יש לי הזמנה, על השם כהן.") — `phrase.hotel.reservation-name` — ✅ accepted
+  2. EN "Is breakfast included?" · FR "Le petit-déjeuner est compris ?" · ES "¿El desayuno está incluido?" · (HE gloss "ארוחת הבוקר כלולה?") — `phrase.hotel.breakfast` — ❌ wrong
+  3. EN "Here you go." · FR "Voilà, tenez." · ES "Aquí tiene." · (HE gloss "בבקשה, הנה.") — `phrase.hotel.here-you-go` — ❌ wrong
+- Tests: phrase.hotel.reservation-name
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M08-Q28 — quick-reply (step 32, round 2 of 3 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "Welcome, Mr. Cohen. Your passport, please." · FR "Bienvenue, monsieur Cohen. Votre passeport, s’il vous plaît." · ES "Bienvenido, señor Cohen. Su pasaporte, por favor."
+- Meaning of the audio (HE): "ברוך הבא, מר כהן. הדרכון שלך, בבקשה."
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Here you go." · FR "Voilà, tenez." · ES "Aquí tiene." · (HE gloss "בבקשה, הנה.") — `phrase.hotel.here-you-go` — ✅ accepted
+  2. EN "I have a reservation, under the name Cohen." · FR "J’ai une réservation, au nom de Cohen." · ES "Tengo una reserva, a nombre de Cohen." · (HE gloss "יש לי הזמנה, על השם כהן.") — `phrase.hotel.reservation-name` — ❌ wrong
+  3. EN "Is breakfast included?" · FR "Le petit-déjeuner est compris ?" · ES "¿El desayuno está incluido?" · (HE gloss "ארוחת הבוקר כלולה?") — `phrase.hotel.breakfast` — ❌ wrong
+- Tests: phrase.hotel.here-you-go
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M08-Q29 — quick-reply (step 32, round 3 of 3 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "Thank you. You're in room two-oh-four, on the second floor. Here is your key." · FR "Merci. Vous êtes dans la chambre deux cent quatre, au deuxième étage. Voici votre clé." · ES "Gracias. Está en la habitación doscientos cuatro, en el segundo piso. Aquí tiene su llave."
+- Meaning of the audio (HE): "תודה. אתה בחדר 204, בקומה השנייה. הנה המפתח שלך."
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Is breakfast included?" · FR "Le petit-déjeuner est compris ?" · ES "¿El desayuno está incluido?" · (HE gloss "ארוחת הבוקר כלולה?") — `phrase.hotel.breakfast` — ✅ accepted
+  2. EN "Here you go." · FR "Voilà, tenez." · ES "Aquí tiene." · (HE gloss "בבקשה, הנה.") — `phrase.hotel.here-you-go` — ❌ wrong
+  3. EN "I have a reservation, under the name Cohen." · FR "J’ai une réservation, au nom de Cohen." · ES "Tengo una reserva, a nombre de Cohen." · (HE gloss "יש לי הזמנה, על השם כהן.") — `phrase.hotel.reservation-name` — ❌ wrong
+- Tests: phrase.hotel.breakfast
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M08-Q30 — visual-match (step 33, round 1 of 1 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "Thank you. You're in room two-oh-four, on the second floor. Here is your key." · FR "Merci. Vous êtes dans la chambre deux cent quatre, au deuxième étage. Voici votre clé." · ES "Gracias. Está en la habitación doscientos cuatro, en el segundo piso. Aquí tiene su llave."
+- Meaning of the audio (HE): "תודה. אתה בחדר 204, בקומה השנייה. הנה המפתח שלך."
+- Buttons show: a 3×3 board of 3 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "204" — no sentence id — ✅ accepted
+  2. "214" — no sentence id — ❌ wrong
+  3. "240" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M08-Q31 — mini-map (step 34, round 1 of 1 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה." — board, row by row: · | 🚪 [tap:ahead] | · // 🚪 [tap:left] | 🛎️ | 🚪 [tap:right] // · | 🧍 | ·
+- Audio played: EN "Yes! Breakfast is from seven to ten. The elevator is on your right." · FR "Oui ! Le petit-déjeuner est de sept heures à dix heures. L’ascenseur est sur votre droite." · ES "¡Sí! El desayuno es de siete a diez. El ascensor está a su derecha."
+- Meaning of the audio (HE): "כן! ארוחת בוקר משבע עד עשר. המעלית מימינך."
+- Buttons show: the tappable cells of a 3×3 schematic map (fixed positions, not shuffled); the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "🚪 left" — no sentence id — ❌ wrong
+  2. "🚪 right" — no sentence id — ✅ accepted
+  3. "🚪 ahead" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M08-Q32 — quick-reply (step 37, round 1 of 2)
+
+- Prompt displayed: "🚪 Room ? · 🏢 Floor ? · 🍳 Breakfast ? · 🛗 Elevator ?" / "🚪 חדר ? · 🏢 קומה ? · 🍳 ארוחת בוקר ? · 🛗 מעלית ?"
+- Audio played: EN "Good evening! How can I help you?" · FR "Bonsoir ! Comment puis-je vous aider ?" · ES "¡Buenas noches! ¿En qué puedo ayudarle?"
+- Meaning of the audio (HE): "ערב טוב! איך אפשר לעזור?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "I have a reservation, under the name Cohen." · FR "J’ai une réservation, au nom de Cohen." · ES "Tengo una reserva, a nombre de Cohen." · (HE gloss "יש לי הזמנה, על השם כהן.") — `phrase.hotel.reservation-name` — ✅ accepted
+  2. EN "Here you go." · FR "Voilà, tenez." · ES "Aquí tiene." · (HE gloss "בבקשה, הנה.") — `phrase.hotel.here-you-go` — ❌ wrong
+  3. EN "Is breakfast included?" · FR "Le petit-déjeuner est compris ?" · ES "¿El desayuno está incluido?" · (HE gloss "ארוחת הבוקר כלולה?") — `phrase.hotel.breakfast` — ❌ wrong
+- Tests: phrase.hotel.reservation-name
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M08-Q33 — quick-reply (step 37, round 2 of 2)
+
+- Prompt displayed: "🚪 Room ? · 🏢 Floor ? · 🍳 Breakfast ? · 🛗 Elevator ?" / "🚪 חדר ? · 🏢 קומה ? · 🍳 ארוחת בוקר ? · 🛗 מעלית ?"
+- Audio played: EN "Welcome, Mr. Cohen. Your passport, please." · FR "Bienvenue, monsieur Cohen. Votre passeport, s’il vous plaît." · ES "Bienvenido, señor Cohen. Su pasaporte, por favor."
+- Meaning of the audio (HE): "ברוך הבא, מר כהן. הדרכון שלך, בבקשה."
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Here you go." · FR "Voilà, tenez." · ES "Aquí tiene." · (HE gloss "בבקשה, הנה.") — `phrase.hotel.here-you-go` — ✅ accepted
+  2. EN "Is breakfast included?" · FR "Le petit-déjeuner est compris ?" · ES "¿El desayuno está incluido?" · (HE gloss "ארוחת הבוקר כלולה?") — `phrase.hotel.breakfast` — ❌ wrong
+  3. EN "I have a reservation, under the name Cohen." · FR "J’ai une réservation, au nom de Cohen." · ES "Tengo una reserva, a nombre de Cohen." · (HE gloss "יש לי הזמנה, על השם כהן.") — `phrase.hotel.reservation-name` — ❌ wrong
+- Tests: phrase.hotel.here-you-go
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M08-Q34 — visual-match (step 38, round 1 of 1 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "Thank you. You're in room two-oh-four, on the second floor. Here is your key." · FR "Merci. Vous êtes dans la chambre deux cent quatre, au deuxième étage. Voici votre clé." · ES "Gracias. Está en la habitación doscientos cuatro, en el segundo piso. Aquí tiene su llave."
+- Meaning of the audio (HE): "תודה. אתה בחדר 204, בקומה השנייה. הנה המפתח שלך."
+- Buttons show: a 3×3 board of 3 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "204" — no sentence id — ✅ accepted
+  2. "214" — no sentence id — ❌ wrong
+  3. "240" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M08-Q35 — mini-map (step 39, round 1 of 1 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה." — board, row by row: · | 3️⃣ [tap:floor-3] | · // 🛗 | 2️⃣ [tap:floor-2] | · // · | 1️⃣ [tap:floor-1] | ·
+- Audio played: EN "Thank you. You're in room two-oh-four, on the second floor. Here is your key." · FR "Merci. Vous êtes dans la chambre deux cent quatre, au deuxième étage. Voici votre clé." · ES "Gracias. Está en la habitación doscientos cuatro, en el segundo piso. Aquí tiene su llave."
+- Meaning of the audio (HE): "תודה. אתה בחדר 204, בקומה השנייה. הנה המפתח שלך."
+- Buttons show: the tappable cells of a 3×3 schematic map (fixed positions, not shuffled); the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "3️⃣ floor-3" — no sentence id — ❌ wrong
+  2. "2️⃣ floor-2" — no sentence id — ✅ accepted
+  3. "1️⃣ floor-1" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M08-Q36 — quick-reply (step 40, round 1 of 1)
+
+- Prompt displayed: "🚪 Room 204 ✅ · 🏢 Floor 2 ✅ · 🍳 Breakfast ? · 🛗 Elevator ?" / "🚪 חדר 204 ✅ · 🏢 קומה 2 ✅ · 🍳 ארוחת בוקר ? · 🛗 מעלית ?"
+- Audio played: EN "Thank you. You're in room two-oh-four, on the second floor. Here is your key." · FR "Merci. Vous êtes dans la chambre deux cent quatre, au deuxième étage. Voici votre clé." · ES "Gracias. Está en la habitación doscientos cuatro, en el segundo piso. Aquí tiene su llave."
+- Meaning of the audio (HE): "תודה. אתה בחדר 204, בקומה השנייה. הנה המפתח שלך."
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Is breakfast included?" · FR "Le petit-déjeuner est compris ?" · ES "¿El desayuno está incluido?" · (HE gloss "ארוחת הבוקר כלולה?") — `phrase.hotel.breakfast` — ✅ accepted
+  2. EN "Here you go." · FR "Voilà, tenez." · ES "Aquí tiene." · (HE gloss "בבקשה, הנה.") — `phrase.hotel.here-you-go` — ❌ wrong
+  3. EN "I have a reservation, under the name Cohen." · FR "J’ai une réservation, au nom de Cohen." · ES "Tengo una reserva, a nombre de Cohen." · (HE gloss "יש לי הזמנה, על השם כהן.") — `phrase.hotel.reservation-name` — ❌ wrong
+- Tests: phrase.hotel.breakfast
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M08-Q37 — visual-match (step 41, round 1 of 1 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "Yes! Breakfast is from seven to ten. The elevator is on your right." · FR "Oui ! Le petit-déjeuner est de sept heures à dix heures. L’ascenseur est sur votre droite." · ES "¡Sí! El desayuno es de siete a diez. El ascensor está a su derecha."
+- Meaning of the audio (HE): "כן! ארוחת בוקר משבע עד עשר. המעלית מימינך."
+- Buttons show: a 3×3 board of 3 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "7–10" — no sentence id — ✅ accepted
+  2. "7–9" — no sentence id — ❌ wrong
+  3. "8–10" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M08-Q38 — mini-map (step 42, round 1 of 1 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה." — board, row by row: · | 🚪 [tap:ahead] | · // 🚪 [tap:left] | 🛎️ | 🚪 [tap:right] // · | 🧍 | ·
+- Audio played: EN "Yes! Breakfast is from seven to ten. The elevator is on your right." · FR "Oui ! Le petit-déjeuner est de sept heures à dix heures. L’ascenseur est sur votre droite." · ES "¡Sí! El desayuno es de siete a diez. El ascensor está a su derecha."
+- Meaning of the audio (HE): "כן! ארוחת בוקר משבע עד עשר. המעלית מימינך."
+- Buttons show: the tappable cells of a 3×3 schematic map (fixed positions, not shuffled); the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "🚪 left" — no sentence id — ❌ wrong
+  2. "🚪 right" — no sentence id — ✅ accepted
+  3. "🚪 ahead" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
 
 ## Dialogue — full tree
 
@@ -8627,7 +8967,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 
 ## Learner choice screens
 
-### M08-Q15 — dialogue-choice (step 12, scene "hotel-checkin" · node c1)
+### M08-Q23 — dialogue-choice (step 30, scene "hotel-checkin" · node c1)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Good evening! How can I help you?" · FR "Bonsoir ! Comment puis-je vous aider ?" · ES "¡Buenas noches! ¿En qué puedo ayudarle?"
@@ -8639,7 +8979,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.hotel.reservation, phrase.recovery.repeat
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M08-Q16 — dialogue-choice (step 12, scene "hotel-checkin" · node c1b)
+### M08-Q24 — dialogue-choice (step 30, scene "hotel-checkin" · node c1b)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "How — can — I — help you?" · FR "Comment — puis-je — vous — aider ?" · ES "¿En — qué — puedo — ayudarle?"
@@ -8650,7 +8990,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.hotel.reservation
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M08-Q17 — dialogue-choice (step 12, scene "hotel-checkin" · node c2)
+### M08-Q25 — dialogue-choice (step 30, scene "hotel-checkin" · node c2)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Welcome, Mr. Cohen. Your passport, please." · FR "Bienvenue, monsieur Cohen. Votre passeport, s’il vous plaît." · ES "Bienvenido, señor Cohen. Su pasaporte, por favor."
@@ -8662,7 +9002,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.hotel.here-you-go, phrase.recovery.one-moment
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M08-Q18 — dialogue-choice (step 12, scene "hotel-checkin" · node c3)
+### M08-Q26 — dialogue-choice (step 30, scene "hotel-checkin" · node c3)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Thank you. You're in room two-oh-four, on the second floor. Here is your key." · FR "Merci. Vous êtes dans la chambre deux cent quatre, au deuxième étage. Voici votre clé." · ES "Gracias. Está en la habitación doscientos cuatro, en el segundo piso. Aquí tiene su llave."
@@ -8675,7 +9015,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 
 ## Recovery tools in this mission
 
-Toolkit phrases bundled into this mission's sentence list: `phrase.recovery.repeat` "Can you repeat that?" · `phrase.recovery.slowly` "Please speak slowly." · `phrase.recovery.thank-you` "Thank you!" · `phrase.recovery.one-moment` "One moment, please.".
+Toolkit phrases bundled into this mission's sentence list: `phrase.recovery.repeat` "Can you repeat that?" · `phrase.recovery.one-moment` "One moment, please.".
 
 Where a conversation-help tool can be selected, and what happens:
 
@@ -8689,39 +9029,11 @@ None — no choice in this mission is marked wrong.
 
 ## Sentence review
 
-Step 14. 11 sentences, in this fixed order. Each is played automatically (TTS), shown with its translation and tip; buttons: 🔊 "Hear again" / "לשמוע שוב" and Next. No speaking prompt, no grading, no scoring; nothing is recorded.
-
-1. `phrase.hotel.reservation` — I have a reservation. — יש לי הזמנה.
-2. `phrase.hotel.under-name` — Under the name Cohen. — על השם כהן.
-3. `phrase.hotel.here-you-go` — Here you go. — בבקשה, הנה.
-4. `phrase.hotel.breakfast` — Is breakfast included? — ארוחת הבוקר כלולה?
-5. `reply.hotel.passport` — Your passport, please. — הדרכון שלך, בבקשה.
-6. `reply.hotel.room-number` — You're in room two-oh-four. — אתה בחדר 204.
-7. `reply.hotel.second-floor` — It's on the second floor. — זה בקומה השנייה.
-8. `reply.hotel.breakfast-time` — Breakfast is from seven to ten. — ארוחת בוקר משבע עד עשר.
-9. `reply.hotel.elevator` — The elevator is on your right. — המעלית מימינך.
-10. `phrase.recovery.repeat` — Can you repeat that? — אפשר לחזור על זה?
-11. `phrase.recovery.one-moment` — One moment, please. — רגע אחד, בבקשה.
+No sentence-review step in this mission.
 
 ## Cold open / ambush
 
-### M08-Q19 — cold-open (step 15, single prompt · mode: recovery)
-
-- Prompt displayed: "Heads up: a fast one is coming. Use a tool." / "שים לב: מגיע משפט מהיר. השתמש בכלי."
-- Audio played: EN "Just so you know breakfast is served in the room on the lower level next to the pool." · FR "Juste pour info, le petit-déjeuner est servi dans la salle au niveau inférieur, à côté de la piscine." · ES "Solo para que lo sepa, el desayuno se sirve en la sala de la planta baja, junto a la piscina."
-- Meaning of the audio (HE): "רק שתדע, ארוחת הבוקר מוגשת בחדר בקומה התחתונה ליד הבריכה."
-- Buttons show: TARGET-LANGUAGE text of the two sentences; only the conversation-help tool carries 🛟; order shuffled
-- Choices:
-  1. EN "Can you repeat that?" · FR "Vous pouvez répéter ?" · ES "¿Puede repetir, por favor?" · (HE gloss "אפשר לחזור על זה?") — `phrase.recovery.repeat` — ✅ accepted
-  2. EN "Here you go." · FR "Voilà, tenez." · ES "Aquí tiene." · (HE gloss "בבקשה, הנה.") — `phrase.hotel.here-you-go` — ❌ wrong
-- Tests: phrase.recovery.repeat
-- Explanation shown after answering: generic: “Can you repeat that?” means “אפשר לחזור על זה?”.
-
-- Flow: screen shows ⚡ and "Heads up: a fast one is coming. Use a tool." / "שים לב: מגיע משפט מהיר. השתמש בכלי." with one button 👂 "I'm ready" / "אני מוכן"; on tap the line is spoken at TTS rate 1.12 and printed small; two shuffled buttons appear; 🔊 "Hear again" / "לשמוע שוב" replays at 0.85.
-- Success criterion: picking the accepted sentence. A wrong pick shows the feedback card (what you heard + translation, your answer, the sentence that fit) with Try again / Continue; Continue proceeds either way. Response time is recorded.
-- Recovery options offered: yes (see choices)
-- Receipt shown next: "Long, fast info — and instead of freezing, you asked them to repeat. That’s a tool." / "מידע ארוך ומהיר — ובמקום לקפוא, ביקשת לחזור עליו. זה כלי."
-- Potential new-language exposure: YES — English words not met in any sentence or dialogue line of Missions 01–08: just, served, lower, level, pool
+No cold open in this mission.
 
 ## Swap-in / variable content
 
@@ -8733,44 +9045,47 @@ No choice screen offers two accepted non-toolkit lines.
 Learner sentences taught beside the dialogue (not a line in any scene):
 
 - `phrase.hotel.under-name` — Under the name Cohen.
+- `phrase.hotel.reservation-name` — I have a reservation, under the name Cohen.
 
 ## Receipts (proof cards)
 
-- Step 8: "You recognize everything the receptionist says — passport, room, floor, hours." / "אתה מזהה כל מה שפקיד הקבלה אומר — דרכון, חדר, קומה, שעות."
-- Step 13: "A full check-in: reservation, passport, room, info — and you’re in." / "צ'ק-אין שלם: הזמנה, דרכון, חדר, מידע — ואתה בפנים."
-- Step 16: "Long, fast info — and instead of freezing, you asked them to repeat. That’s a tool." / "מידע ארוך ומהיר — ובמקום לקפוא, ביקשת לחזור עליו. זה כלי."
+- Step 12: "🚪 Room 204 ✅ · 🏢 Floor 2 ✅ · 🍳 Breakfast ? · 🛗 Elevator ?" / "🚪 חדר 204 ✅ · 🏢 קומה 2 ✅ · 🍳 ארוחת בוקר ? · 🛗 מעלית ?"
+- Step 19: "🚪 Room 204 ✅ · 🏢 Floor 2 ✅ · 🍳 Breakfast 7–10 ✅ · 🛗 Elevator → ✅" / "🚪 חדר 204 ✅ · 🏢 קומה 2 ✅ · 🍳 ארוחת בוקר 7–10 ✅ · 🛗 מעלית → ✅"
+- Step 29: "🚪 Room 204 ✅ · 🏢 Floor 2 ✅ · 🍳 Breakfast 7–10 ✅ · 🛗 Elevator → ✅ — you know exactly where to go." / "🚪 חדר 204 ✅ · 🏢 קומה 2 ✅ · 🍳 ארוחת בוקר 7–10 ✅ · 🛗 מעלית → ✅ — יודע בדיוק לאן ללכת."
+- Step 31: "The whole conversation — from “good evening” to “enjoy your stay”." / "כל השיחה — מ"ערב טוב" ועד "תיהנה מהשהות"."
+- Step 35: "No help — you answered, you asked, and you understood." / "בלי עזרה — ענית, שאלת, והבנת."
+- Step 43: "🏨 CHECK-IN COMPLETE · 🚪 Room 204 ✅ · 🏢 Floor 2 ✅ · 🍳 Breakfast 7–10 ✅ · 🛗 Elevator → ✅" / "🏨 הצ׳ק־אין הושלם · 🚪 חדר 204 ✅ · 🏢 קומה 2 ✅ · 🍳 ארוחת בוקר 7–10 ✅ · 🛗 מעלית → ✅"
 
 ## Audit Metadata — DO NOT FIX YET
 
-- Learner-production sentences: 4
-- Receptive (expected-reply) sentences: 6
-- Toolkit phrases bundled: 4
-- Key-sentence steps: 4
-- Expected-reply/listening items: 4
+- Learner-production sentences: 5
+- Receptive (expected-reply) sentences: 9
+- Toolkit phrases bundled: 2
+- Key-sentence steps: 0
+- Expected-reply/listening items: 3
 - Questions/quizzes (meaning quiz): 0
-- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 10
-- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 10
+- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 31
+- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 17
 - One-button dialogue screens: 2
-- Learner sentences never actively retrieved: 0
+- Learner sentences never actively retrieved: 1
 - Dialogue learner choices (screens): 4
 - Wrong-answer branches: 0
-- Cold-open prompts: 1
+- Cold-open prompts: 0
 - Recovery opportunities: 2
-- Vocabulary pre-items: 4
+- Vocabulary pre-items: 17
 - Swap variants (extra accepted lines): 0
-- Sentences in review: 11
-- Total interactive questions: 19 (answer choices: 60)
-- Approximate total learner interactions: 35 (questions + key sentences + review cards + word-intro screen)
+- Sentences in review: 0
+- Total interactive questions: 38 (answer choices: 99)
+- Approximate total learner interactions: 39 (questions + key sentences + review cards + word-intro screen)
 
-### AUTO-FLAG — requires human review (7)
+### AUTO-FLAG — requires human review (6)
 
-- AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "hotel-checkin" n1 — “Good evening! How can I help you?”
-- AUTO-FLAG — Practice item wording not in this mission's dialogue: `reply.hotel.sign-here` “Sign here, please.” (drilled as an expected reply / distractor, but no NPC line here says it).
-- AUTO-FLAG — Practice item wording not in this mission's dialogue: `reply.hotel.second-floor` “It's on the second floor.” (drilled as an expected reply / distractor, but no NPC line here says it).
-- AUTO-FLAG — Toolkit phrase listed in the mission but never offered in it: `phrase.recovery.slowly` “Please speak slowly.” (sentence review only).
-- AUTO-FLAG — Toolkit phrase listed in the mission but never offered in it: `phrase.recovery.thank-you` “Thank you!” (sentence review only).
+- AUTO-FLAG — Learner sentence never actively retrieved in this mission (0 choice screens, 0 quick-reply / swap / match / builder rounds, 0 cold-open options): `phrase.hotel.under-name` “Under the name Cohen.” — appears in sentence review only (orphan in this mission).
 - AUTO-FLAG — 4 of 4 choice screens have NO wrong option (every button is accepted): hotel-checkin/c1, hotel-checkin/c1b, hotel-checkin/c2, hotel-checkin/c3.
 - AUTO-FLAG — 2 choice screens offer exactly ONE button (no decision): hotel-checkin/c1b, hotel-checkin/c3.
+- AUTO-FLAG — English gloss differs from the English sentence: `reply.hotel.room-key` text “Thank you. You're in room two-oh-four, on the second floor. Here is your key.” vs gloss “Thank you. You're in room 204, on the second floor. Here is your key.”.
+- AUTO-FLAG — FR English gloss differs from the English mission's sentence: `reply.hotel.room-key` gloss “Thank you. You're in room 204, on the second floor. Here is your key.” vs English “Thank you. You're in room two-oh-four, on the second floor. Here is your key.”.
+- AUTO-FLAG — ES English gloss differs from the English mission's sentence: `reply.hotel.room-key` gloss “Thank you. You're in room 204, on the second floor. Here is your key.” vs English “Thank you. You're in room two-oh-four, on the second floor. Here is your key.”.
 
 ---
 
@@ -8967,7 +9282,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: sentence review (step 13); dialogue choice clothing-shop/c2 (accepted)
 
 ### Sentence: `phrase.recovery.repeat`
@@ -8989,7 +9304,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¡Gracias!
 - Role: courtesy from the Recovery Toolkit
 - Tip / pattern note: none
-- Used in missions: 03, 05, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 25, 26, 30
+- Used in missions: 03, 05, 06, 07, 09, 10, 14, 15, 17, 18, 19, 25, 26, 30
 - Exercised here as: nothing (listed only)
 
 ### Sentence: `phrase.recovery.show-me`
@@ -9640,7 +9955,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¡Gracias!
 - Role: courtesy from the Recovery Toolkit
 - Tip / pattern note: none
-- Used in missions: 03, 05, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 25, 26, 30
+- Used in missions: 03, 05, 06, 07, 09, 10, 14, 15, 17, 18, 19, 25, 26, 30
 - Exercised here as: dialogue choice cold-taxi/c4 (accepted)
 
 ### Sentence: `phrase.recovery.repeat`
@@ -9662,7 +9977,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: dialogue choice cold-taxi/c4 (accepted)
 
 ## Expected replies / listening items
@@ -13021,7 +13336,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: nothing (listed only)
 
 ### Sentence: `phrase.recovery.thank-you`
@@ -13032,7 +13347,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¡Gracias!
 - Role: courtesy from the Recovery Toolkit
 - Tip / pattern note: none
-- Used in missions: 03, 05, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 25, 26, 30
+- Used in missions: 03, 05, 06, 07, 09, 10, 14, 15, 17, 18, 19, 25, 26, 30
 - Exercised here as: quick-reply response (step 9, round 4, accepted); quick-reply response (step 14, round 4, accepted); dialogue choice sit-down-meal/c4 (accepted)
 
 ### Sentence: `phrase.recovery.one-moment`
@@ -13790,7 +14105,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: sentence review (step 12); dialogue choice allergy-order/c1 (accepted); dialogue choice allergy-order/c5 (accepted)
 
 ### Sentence: `phrase.recovery.thank-you`
@@ -13801,7 +14116,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¡Gracias!
 - Role: courtesy from the Recovery Toolkit
 - Tip / pattern note: none
-- Used in missions: 03, 05, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 25, 26, 30
+- Used in missions: 03, 05, 06, 07, 09, 10, 14, 15, 17, 18, 19, 25, 26, 30
 - Exercised here as: dialogue choice allergy-order/c2 (WRONG option); dialogue choice allergy-order/c5 (accepted); dialogue choice allergy-order/c5b (accepted)
 
 ## Expected replies / listening items
@@ -15427,7 +15742,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: nothing (listed only)
 
 ### Sentence: `phrase.recovery.show-me`
@@ -15449,7 +15764,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¡Gracias!
 - Role: courtesy from the Recovery Toolkit
 - Tip / pattern note: none
-- Used in missions: 03, 05, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 25, 26, 30
+- Used in missions: 03, 05, 06, 07, 09, 10, 14, 15, 17, 18, 19, 25, 26, 30
 - Exercised here as: quick-reply response (step 10, round 3, accepted); quick-reply response (step 14, round 2, accepted); dialogue choice supermarket/c2 (accepted); dialogue choice supermarket/c2b (accepted); dialogue choice supermarket/c4 (accepted)
 
 ## Expected replies / listening items
@@ -16347,7 +16662,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¡Gracias!
 - Role: courtesy from the Recovery Toolkit
 - Tip / pattern note: none
-- Used in missions: 03, 05, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 25, 26, 30
+- Used in missions: 03, 05, 06, 07, 09, 10, 14, 15, 17, 18, 19, 25, 26, 30
 - Exercised here as: dialogue choice cold-shop/c4 (accepted)
 
 ### Sentence: `phrase.recovery.slowly`
@@ -16358,7 +16673,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: dialogue choice cold-morning/c6 (accepted)
 
 ### Sentence: `phrase.recovery.repeat`
@@ -17407,7 +17722,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: dialogue choice transport/c2 (accepted)
 
 ### Sentence: `phrase.recovery.thank-you`
@@ -17418,7 +17733,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¡Gracias!
 - Role: courtesy from the Recovery Toolkit
 - Tip / pattern note: none
-- Used in missions: 03, 05, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 25, 26, 30
+- Used in missions: 03, 05, 06, 07, 09, 10, 14, 15, 17, 18, 19, 25, 26, 30
 - Exercised here as: quick-reply response (step 9, round 3, accepted); dialogue choice transport/c3 (accepted); dialogue choice transport/c3b (accepted); dialogue choice transport/c5 (accepted); dialogue choice transport/c5b (accepted)
 
 ## Expected replies / listening items
@@ -19179,7 +19494,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: sentence review (step 14); dialogue choice where-next/c4 (accepted)
 
 ## Expected replies / listening items
@@ -20072,7 +20387,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: quick-reply response (step 12, round 4, accepted); sentence review (step 18); dialogue choice room-problem/c8 (accepted)
 
 ## Expected replies / listening items
@@ -22059,7 +22374,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: dialogue choice cold-transport/c4 (accepted); dialogue choice cold-hostel/c2 (accepted)
 
 ### Sentence: `phrase.recovery.repeat`
@@ -23175,7 +23490,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¡Gracias!
 - Role: courtesy from the Recovery Toolkit
 - Tip / pattern note: none
-- Used in missions: 03, 05, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 25, 26, 30
+- Used in missions: 03, 05, 06, 07, 09, 10, 14, 15, 17, 18, 19, 25, 26, 30
 - Exercised here as: dialogue choice asking-for-help/c8 (accepted)
 
 ### Sentence: `phrase.recovery.what-mean`
@@ -23197,7 +23512,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: cold-open correct option (step 19)
 
 ## Expected replies / listening items
@@ -24040,7 +24355,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: cold-open correct option (step 16); dialogue choice pharmacy/c1 (accepted)
 
 ### Sentence: `phrase.recovery.thank-you`
@@ -24051,7 +24366,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¡Gracias!
 - Role: courtesy from the Recovery Toolkit
 - Tip / pattern note: none
-- Used in missions: 03, 05, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 25, 26, 30
+- Used in missions: 03, 05, 06, 07, 09, 10, 14, 15, 17, 18, 19, 25, 26, 30
 - Exercised here as: cold-open wrong option (step 16); dialogue choice pharmacy/c3b (accepted); dialogue choice pharmacy/c4 (accepted)
 
 ## Expected replies / listening items
@@ -24863,7 +25178,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: dialogue choice emergency/c8 (accepted)
 
 ## Expected replies / listening items
@@ -25628,7 +25943,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: dialogue choice ns-diner/c4 (accepted)
 
 ## Expected replies / listening items
@@ -26565,7 +26880,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: dialogue choice dr-pay/c4 (accepted)
 
 ## Expected replies / listening items
@@ -27739,7 +28054,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¡Gracias!
 - Role: courtesy from the Recovery Toolkit
 - Tip / pattern note: none
-- Used in missions: 03, 05, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 25, 26, 30
+- Used in missions: 03, 05, 06, 07, 09, 10, 14, 15, 17, 18, 19, 25, 26, 30
 - Exercised here as: dialogue choice fin-taxi/c6 (accepted); dialogue choice fin-evening/c2 (accepted); dialogue choice fin-evening/c6 (accepted)
 
 ### Sentence: `phrase.recovery.slowly`
@@ -27750,7 +28065,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 08, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: dialogue choice fin-taxi/c6 (accepted); dialogue choice fin-evening/c2 (accepted)
 
 ### Sentence: `phrase.recovery.repeat`
@@ -28888,7 +29203,7 @@ Every learner sentence of this mission is a line in a scene.
 | 05 Directions | 12 (4 / 6 / 2) | 3 | 3 | 0 | 34 | 3 | 1 | 1 | 0 | 24 words | 0 | 40 | 2 |
 | 06 Airport & Border | 14 (5 / 5 / 4) | 5 | 5 | 0 | 32 | 10 | 5 | 3 | 0 | 17 words | 0 | 47 | 3 |
 | 07 Taxi / Uber | 19 (7 / 9 / 3) | 2 | 2 | 0 | 35 | 5 | 2 | 2 | 0 | 18 words | 1 | 42 | 2 |
-| 08 Hotel Check-in | 14 (4 / 6 / 4) | 4 | 4 | 0 | 10 | 4 | 2 | 2 | 1 | 4 words | 0 | 19 | 7 |
+| 08 Hotel Check-in | 16 (5 / 9 / 2) | 3 | 3 | 0 | 31 | 4 | 2 | 2 | 0 | 17 words | 0 | 38 | 6 |
 | 09 Shopping | 15 (5 / 6 / 4) | 4 | 5 | 1 | 6 | 6 | 3 | 1 | 1 | no | 2 | 18 | 7 |
 | 10 CHECKPOINT: Arrival Day | 15 (10 / 2 / 3) | 0 | 0 | 0 | 0 | 11 | 0 | 3 | 1 | no | 0 | 12 | 8 |
 | 11 Small Talk & Recommendations | 17 (9 / 7 / 1) | 4 | 5 | 1 | 13 | 7 | 4 | 1 | 0 | no | 2 | 25 | 13 |
@@ -28962,10 +29277,11 @@ Every learner-production sentence id of the Core, in order of first appearance. 
 | `phrase.taxi.keep-change` | Keep the change. | 07 | 29 | 0 | 0 / 2 | 7 | 0 | 0 | no | no |  |
 | `phrase.taxi.speak-slowly` | Sorry, please speak slowly. | 07 | — | 0 | 0 / 0 | 8 | 0 | 0 | no | no |  |
 | `phrase.taxi.okay-thanks` | Okay, thank you. | 07 | — | 0 | 0 / 0 | 6 | 0 | 0 | no | no |  |
-| `phrase.hotel.reservation` | I have a reservation. | 08 | 10, 30 | 1 | 3 / 2 | 3 | 0 | 1 | yes | no |  |
-| `phrase.hotel.under-name` | Under the name Cohen. | 08 | — | 1 | 0 / 0 | 1 | 0 | 1 | no | no |  |
-| `phrase.hotel.breakfast` | Is breakfast included? | 08 | 10, 30 | 1 | 2 / 2 | 4 | 0 | 1 | yes | no |  |
-| `phrase.hotel.here-you-go` | Here you go. | 08 | 10 | 1 | 3 / 0 | 3 | 1 | 1 | yes | no |  |
+| `phrase.hotel.reservation` | I have a reservation. | 08 | 10, 30 | 0 | 3 / 2 | 0 | 0 | 0 | yes | no |  |
+| `phrase.hotel.under-name` | Under the name Cohen. | 08 | — | 0 | 0 / 0 | 0 | 0 | 0 | no | no | **0 active retrieval opportunities** |
+| `phrase.hotel.breakfast` | Is breakfast included? | 08 | 10, 30 | 0 | 2 / 2 | 11 | 0 | 0 | yes | no |  |
+| `phrase.hotel.here-you-go` | Here you go. | 08 | 10 | 0 | 3 / 0 | 12 | 0 | 0 | yes | no |  |
+| `phrase.hotel.reservation-name` | I have a reservation, under the name Cohen. | 08 | — | 0 | 0 / 0 | 13 | 0 | 0 | no | no |  |
 | `phrase.shop.just-looking` | I'm just looking, thanks. | 09 | — | 1 | 1 / 0 | 4 | 0 | 1 | no | no |  |
 | `phrase.shop.try-on` | Can I try this on? | 09 | — | 1 | 2 / 0 | 2 | 0 | 1 | no | no |  |
 | `phrase.shop.bigger` | Do you have a bigger size? | 09 | — | 1 | 2 / 0 | 3 | 0 | 1 | no | no |  |
@@ -29083,7 +29399,7 @@ Every learner-production sentence id of the Core, in order of first appearance. 
 | `phrase.emerg.call-police` | Call the police! | 27 | — | 1 | 0 / 0 | 4 | 0 | 1 | no | no |  |
 | `phrase.emerg.where-hospital` | Where is the hospital? | 27 | — | 0 | 0 / 0 | 2 | 0 | 0 | no | no |  |
 
-Learner-production sentence ids: 162. With 0 active retrieval opportunities: 0.
+Learner-production sentence ids: 163. With 0 active retrieval opportunities: 1.
 
 # NPC Comprehension Coverage
 
@@ -29151,12 +29467,15 @@ Every expected-reply sentence id. "Quick response" does not exist as an exercise
 | `reply.taxi.fast-answer` | It's about fifteen euros. There's a lot of traffic right now. | 07 | — | no | 0 / 0 | 0 / 0 | no | yes |
 | `reply.taxi.slow-repeat` | Sure. About fifteen euros. There's a lot of traffic. | 07 | — | no | 0 / 0 | 0 / 0 | no | yes |
 | `reply.taxi.almost-there` | …We are almost there. Is here okay? | 07 | — | no | 0 / 0 | 0 / 0 | no | yes |
-| `reply.hotel.passport` | Your passport, please. | 08 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
-| `reply.hotel.sign-here` | Sign here, please. | 08 | — | no | 0 / 0 | 0 / 0 | no | **no** |
-| `reply.hotel.room-number` | You're in room two-oh-four. | 08 | 10 | yes (1) | 0 / 0 | 0 / 1 | yes | yes |
-| `reply.hotel.second-floor` | It's on the second floor. | 08 | — | yes (1) | 0 / 0 | 0 / 0 | no | **no** |
-| `reply.hotel.breakfast-time` | Breakfast is from seven to ten. | 08 | 10 | yes (1) | 0 / 0 | 1 / 0 | yes | yes |
+| `reply.hotel.passport` | Your passport, please. | 08 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.hotel.room-number` | You're in room two-oh-four. | 08 | 10 | no | 0 / 0 | 0 / 1 | yes | yes |
+| `reply.hotel.breakfast-time` | Breakfast is from seven to ten. | 08 | 10 | no | 0 / 0 | 1 / 0 | yes | yes |
 | `reply.hotel.elevator` | The elevator is on your right. | 08 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.hotel.how-help` | Good evening! How can I help you? | 08 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
+| `reply.hotel.welcome-passport` | Welcome, Mr. Cohen. Your passport, please. | 08 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.hotel.room-key` | Thank you. You're in room two-oh-four, on the second floor. Here is your key. | 08 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.hotel.breakfast-elevator` | Yes! Breakfast is from seven to ten. The elevator is on your right. | 08 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
+| `reply.hotel.enjoy` | Enjoy your stay! | 08 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
 | `reply.shop.can-i-help` | Can I help you find anything? | 09 | — | no | 0 / 0 | 0 / 0 | no | yes |
 | `reply.shop.what-size` | What size are you? | 09 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
 | `reply.shop.fitting-room` | The fitting room is over there. | 09 | — | yes (1) | 0 / 1 | 0 / 0 | no | yes |
@@ -29260,7 +29579,6 @@ Happy-path NPC lines containing a question, for which the mission has no expecte
 | Mission | Scene / node | NPC line |
 |---|---|---|
 | 06 | border-control / n1 | Next, please. Passport? |
-| 08 | hotel-checkin / n1 | Good evening! How can I help you? |
 | 10 | cold-border / n3 | What's the purpose of your visit? |
 | 10 | cold-border / n5 | How long are you staying? |
 | 10 | cold-border / n7 | Where are you staying? |
@@ -29348,7 +29666,7 @@ Happy-path NPC lines containing a question, for which the mission has no expecte
 | 30 | fin-evening / n1 | Good evening! Is everything okay with your room? And breakfast tomorrow — is seven okay for you? |
 | 30 | fin-evening / n3 | Perfect. And how was your day? |
 
-Total: 88.
+Total: 87.
 
 # Complete Existing Question Bank
 
@@ -32260,143 +32578,196 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 
 ## Mission 08 — Hotel Check-in
 
-**M08-Q01** — expected-reply
-- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (1/4)
-- Audio: Your passport, please. — (הדרכון שלך, בבקשה.)
-- A: הדרכון שלך, בבקשה. / Your passport, please. ✅
-- B: אתה בחדר 204. / You're in room two-oh-four.
-- C: זה בקומה השנייה. / It's on the second floor.
-- Correct: Your passport, please.
-- Tests: reply.hotel.passport
+**M08-Q01** — sentence-builder
+- Prompt: "Your answer" / "התשובה שלך" — cue shown: the sentence's MEANING in the app language ("יש לי הזמנה, על השם כהן.")
+- Audio: (nothing before Check; the built sentence is spoken once it is right) — ()
+- A: I have a reservation,  |  under the name  |  Cohen. ✅
+- Correct: I have a reservation,  |  under the name  |  Cohen.
+- Tests: phrase.hotel.reservation-name
 
-**M08-Q02** — expected-reply
-- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (2/4)
-- Audio: You're in room two-oh-four. — (אתה בחדר 204.)
-- A: אתה בחדר 204. / You're in room two-oh-four. ✅
-- B: הדרכון שלך, בבקשה. / Your passport, please.
-- C: זה בקומה השנייה. / It's on the second floor.
-- Correct: You're in room two-oh-four.
-- Tests: reply.hotel.room-number
-
-**M08-Q03** — expected-reply
-- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (3/4)
-- Audio: It's on the second floor. — (זה בקומה השנייה.)
-- A: זה בקומה השנייה. / It's on the second floor. ✅
-- B: הדרכון שלך, בבקשה. / Your passport, please.
-- C: אתה בחדר 204. / You're in room two-oh-four.
-- Correct: It's on the second floor.
-- Tests: reply.hotel.second-floor
-
-**M08-Q04** — expected-reply
-- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (4/4)
-- Audio: Breakfast is from seven to ten. — (ארוחת בוקר משבע עד עשר.)
-- A: ארוחת בוקר משבע עד עשר. / Breakfast is from seven to ten. ✅
-- B: הדרכון שלך, בבקשה. / Your passport, please.
-- C: אתה בחדר 204. / You're in room two-oh-four.
-- Correct: Breakfast is from seven to ten.
-- Tests: reply.hotel.breakfast-time
-
-**M08-Q05** — match-pairs
-- Prompt: "What were you told? Match each line to what it means" / "מה אמרו לך? חבר כל משפט למה שהוא אומר" — tile to match (target language, no translation): EN "You're in room two-oh-four." · FR "Vous êtes dans la chambre deux cent quatre." · ES "Está en la habitación doscientos cuatro."
-- Audio: You're in room two-oh-four. — (אתה בחדר 204.)
-- A: 🚪 204 ✅
-- B: 🏢 2
-- C: 🍳 7–10
-- D: 🛗 ➡️
-- Correct: 🚪 204
-- Tests: reply.hotel.room-number
-
-**M08-Q06** — match-pairs
-- Prompt: "What were you told? Match each line to what it means" / "מה אמרו לך? חבר כל משפט למה שהוא אומר" — tile to match (target language, no translation): EN "It's on the second floor." · FR "C’est au deuxième étage." · ES "Está en el segundo piso."
-- Audio: It's on the second floor. — (זה בקומה השנייה.)
-- A: 🚪 204
-- B: 🏢 2 ✅
-- C: 🍳 7–10
-- D: 🛗 ➡️
-- Correct: 🏢 2
-- Tests: reply.hotel.second-floor
-
-**M08-Q07** — match-pairs
-- Prompt: "What were you told? Match each line to what it means" / "מה אמרו לך? חבר כל משפט למה שהוא אומר" — tile to match (target language, no translation): EN "Breakfast is from seven to ten." · FR "Le petit-déjeuner est de sept heures à dix heures." · ES "El desayuno es de siete a diez."
-- Audio: Breakfast is from seven to ten. — (ארוחת בוקר משבע עד עשר.)
-- A: 🚪 204
-- B: 🏢 2
-- C: 🍳 7–10 ✅
-- D: 🛗 ➡️
-- Correct: 🍳 7–10
-- Tests: reply.hotel.breakfast-time
-
-**M08-Q08** — match-pairs
-- Prompt: "What were you told? Match each line to what it means" / "מה אמרו לך? חבר כל משפט למה שהוא אומר" — tile to match (target language, no translation): EN "The elevator is on your right." · FR "L’ascenseur est sur votre droite." · ES "El ascensor está a su derecha."
-- Audio: The elevator is on your right. — (המעלית מימינך.)
-- A: 🚪 204
-- B: 🏢 2
-- C: 🍳 7–10
-- D: 🛗 ➡️ ✅
-- Correct: 🛗 ➡️
-- Tests: reply.hotel.elevator
-
-**M08-Q09** — visual-match
-- Prompt: "Which room is yours? Tap the number" / "באיזה חדר אתה? הקש על המספר"
-- Audio: You're in room two-oh-four. — (אתה בחדר 204.)
-- A: 104
-- B: 204 ✅
-- C: 214
-- D: 240
-- E: 402
-- F: 420
-- Correct: 204
-- Tests: reply.hotel.room-number
-
-**M08-Q10** — visual-match
-- Prompt: "Which room is yours? Tap the number" / "באיזה חדר אתה? הקש על המספר"
-- Audio: You're in room four-oh-two. — (אתה בחדר 402.)
-- A: 104
-- B: 204
-- C: 214
-- D: 240
-- E: 402 ✅
-- F: 420
-- Correct: 402
+**M08-Q02** — visual-match
+- Prompt: "What is she asking for? Hand it over" / "מה היא מבקשת? הגש לה"
+- Audio: Welcome, Mr. Cohen. Your passport, please. — (ברוך הבא, מר כהן. הדרכון שלך, בבקשה.)
+- A: 🛂 ✅
+- B: 📱
+- C: 📄
+- Correct: 🛂
 - Tests: (no sentence id — not recorded)
 
-**M08-Q11** — quick-reply
-- Prompt: "At the front desk — what do you say?" / "בדלפק הקבלה — מה אומרים?"
-- Audio: Good evening. Do you have a reservation? — (ערב טוב. יש לך הזמנה?)
-- A: I have a reservation. ✅
-- B: Is breakfast included?
-- C: Here you go.
-- Correct: I have a reservation.
-- Tests: phrase.hotel.reservation
-
-**M08-Q12** — quick-reply
-- Prompt: "At the front desk — what do you say?" / "בדלפק הקבלה — מה אומרים?" — situation shown: "The receptionist is looking for the booking. Whose name is it under?" / "הפקיד מחפש את ההזמנה. על איזה שם היא?"
-- Audio: (nothing is played — a situation is shown) — ()
-- A: Under the name Cohen. ✅
-- B: I have a reservation.
-- C: Is breakfast included?
-- Correct: Under the name Cohen.
-- Tests: phrase.hotel.under-name
-
-**M08-Q13** — quick-reply
-- Prompt: "At the front desk — what do you say?" / "בדלפק הקבלה — מה אומרים?"
-- Audio: Your passport, please. — (הדרכון שלך, בבקשה.)
+**M08-Q03** — quick-reply
+- Prompt: "Hand it over — and say it" / "מגישים — ואומרים"
+- Audio: Welcome, Mr. Cohen. Your passport, please. — (ברוך הבא, מר כהן. הדרכון שלך, בבקשה.)
 - A: Here you go. ✅
-- B: One moment, please. ✅
-- C: Is breakfast included?
-- Correct: Here you go. | One moment, please.
-- Tests: phrase.hotel.here-you-go, phrase.recovery.one-moment
+- B: I have a reservation, under the name Cohen.
+- Correct: Here you go.
+- Tests: phrase.hotel.here-you-go
 
-**M08-Q14** — quick-reply
-- Prompt: "At the front desk — what do you say?" / "בדלפק הקבלה — מה אומרים?" — situation shown: "You have your key. You want to know whether breakfast comes with the room." / "קיבלת מפתח. אתה רוצה לדעת אם ארוחת הבוקר בפנים."
+**M08-Q04** — visual-match
+- Prompt: "Which room are you in?" / "באיזה חדר אתה?"
+- Audio: Thank you. You're in room two-oh-four, on the second floor. Here is your key. — (תודה. אתה בחדר 204, בקומה השנייה. הנה המפתח שלך.)
+- A: 204 ✅
+- B: 214
+- C: 240
+- Correct: 204
+- Tests: (no sentence id — not recorded)
+
+**M08-Q05** — mini-map
+- Prompt: "In the elevator: which floor?" / "במעלית: לאיזו קומה?" — board, row by row: · | 3️⃣ [tap:floor-3] | · // 🛗 | 2️⃣ [tap:floor-2] | · // · | 1️⃣ [tap:floor-1] | ·
+- Audio: Thank you. You're in room two-oh-four, on the second floor. Here is your key. — (תודה. אתה בחדר 204, בקומה השנייה. הנה המפתח שלך.)
+- A: 3️⃣ floor-3
+- B: 2️⃣ floor-2 ✅
+- C: 1️⃣ floor-1
+- Correct: 2️⃣ floor-2
+- Tests: (no sentence id — not recorded)
+
+**M08-Q06** — visual-match
+- Prompt: "She hands you the key — take it" / "היא מגישה לך את המפתח — קח אותו"
+- Audio: Here is your key. — (הנה המפתח שלך.)
+- A: 🔑 ✅
+- Correct: 🔑
+- Tests: (no sentence id — not recorded)
+
+**M08-Q07** — sentence-builder
+- Prompt: "Your question" / "השאלה שלך" — cue shown: the sentence's MEANING in the app language ("ארוחת הבוקר כלולה?")
+- Audio: (nothing before Check; the built sentence is spoken once it is right) — ()
+- A: Is  |  breakfast  |  included? ✅
+- Correct: Is  |  breakfast  |  included?
+- Tests: phrase.hotel.breakfast
+
+**M08-Q08** — quick-reply
+- Prompt: "What do you ask?" / "מה אתה שואל?" — situation shown: "You have your key. You want to know whether breakfast comes with the room." / "יש לך מפתח. אתה רוצה לדעת אם ארוחת הבוקר כלולה במחיר."
 - Audio: (nothing is played — a situation is shown) — ()
 - A: Is breakfast included? ✅
-- B: I have a reservation.
+- B: Here you go.
+- C: I have a reservation, under the name Cohen.
+- Correct: Is breakfast included?
+- Tests: phrase.hotel.breakfast
+
+**M08-Q09** — visual-match
+- Prompt: "When is breakfast?" / "מתי ארוחת הבוקר?"
+- Audio: Yes! Breakfast is from seven to ten. The elevator is on your right. — (כן! ארוחת בוקר משבע עד עשר. המעלית מימינך.)
+- A: 7–10 ✅
+- B: 7–9
+- C: 8–10
+- Correct: 7–10
+- Tests: (no sentence id — not recorded)
+
+**M08-Q10** — mini-map
+- Prompt: "You face the desk. Which way to the elevator?" / "אתה מול הדלפק. לאן הולכים למעלית?" — board, row by row: · | 🚪 [tap:ahead] | · // 🚪 [tap:left] | 🛎️ | 🚪 [tap:right] // · | 🧍 | ·
+- Audio: Yes! Breakfast is from seven to ten. The elevator is on your right. — (כן! ארוחת בוקר משבע עד עשר. המעלית מימינך.)
+- A: 🚪 left
+- B: 🚪 right ✅
+- C: 🚪 ahead
+- Correct: 🚪 right
+- Tests: (no sentence id — not recorded)
+
+**M08-Q11** — match-pairs
+- Prompt: "The receptionist says — what do you answer?" / "הפקידה אומרת — מה אתה עונה?" — tile to match (target language, no translation): EN "Good evening! How can I help you?" · FR "Bonsoir ! Comment puis-je vous aider ?" · ES "¡Buenas noches! ¿En qué puedo ayudarle?"
+- Audio: Good evening! How can I help you? — (ערב טוב! איך אפשר לעזור?)
+- A: I have a reservation, under the name Cohen. ✅
+- B: Here you go.
+- Correct: I have a reservation, under the name Cohen.
+- Tests: phrase.hotel.reservation-name
+
+**M08-Q12** — match-pairs
+- Prompt: "The receptionist says — what do you answer?" / "הפקידה אומרת — מה אתה עונה?" — tile to match (target language, no translation): EN "Welcome, Mr. Cohen. Your passport, please." · FR "Bienvenue, monsieur Cohen. Votre passeport, s’il vous plaît." · ES "Bienvenido, señor Cohen. Su pasaporte, por favor."
+- Audio: Welcome, Mr. Cohen. Your passport, please. — (ברוך הבא, מר כהן. הדרכון שלך, בבקשה.)
+- A: I have a reservation, under the name Cohen.
+- B: Here you go. ✅
+- Correct: Here you go.
+- Tests: phrase.hotel.here-you-go
+
+**M08-Q13** — expected-reply
+- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (1/3)
+- Audio: Good evening! How can I help you? — (ערב טוב! איך אפשר לעזור?)
+- A: ערב טוב! איך אפשר לעזור? / Good evening! How can I help you? ✅
+- B: כן! ארוחת בוקר משבע עד עשר. המעלית מימינך. / Yes! Breakfast is from seven to ten. The elevator is on your right.
+- C: תיהנה מהשהות! / Enjoy your stay!
+- Correct: Good evening! How can I help you?
+- Tests: reply.hotel.how-help
+
+**M08-Q14** — expected-reply
+- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (2/3)
+- Audio: Yes! Breakfast is from seven to ten. The elevator is on your right. — (כן! ארוחת בוקר משבע עד עשר. המעלית מימינך.)
+- A: כן! ארוחת בוקר משבע עד עשר. המעלית מימינך. / Yes! Breakfast is from seven to ten. The elevator is on your right. ✅
+- B: ערב טוב! איך אפשר לעזור? / Good evening! How can I help you?
+- C: תיהנה מהשהות! / Enjoy your stay!
+- Correct: Yes! Breakfast is from seven to ten. The elevator is on your right.
+- Tests: reply.hotel.breakfast-elevator
+
+**M08-Q15** — expected-reply
+- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (3/3)
+- Audio: Enjoy your stay! — (תיהנה מהשהות!)
+- A: תיהנה מהשהות! / Enjoy your stay! ✅
+- B: ערב טוב! איך אפשר לעזור? / Good evening! How can I help you?
+- C: כן! ארוחת בוקר משבע עד עשר. המעלית מימינך. / Yes! Breakfast is from seven to ten. The elevator is on your right.
+- Correct: Enjoy your stay!
+- Tests: reply.hotel.enjoy
+
+**M08-Q16** — quick-reply
+- Prompt: "🚪 Room ? · 🏢 Floor ? · 🍳 Breakfast ? · 🛗 Elevator ?" / "🚪 חדר ? · 🏢 קומה ? · 🍳 ארוחת בוקר ? · 🛗 מעלית ?"
+- Audio: Good evening! How can I help you? — (ערב טוב! איך אפשר לעזור?)
+- A: I have a reservation, under the name Cohen. ✅
+- B: Here you go.
+- C: Is breakfast included?
+- Correct: I have a reservation, under the name Cohen.
+- Tests: phrase.hotel.reservation-name
+
+**M08-Q17** — quick-reply
+- Prompt: "🚪 Room ? · 🏢 Floor ? · 🍳 Breakfast ? · 🛗 Elevator ?" / "🚪 חדר ? · 🏢 קומה ? · 🍳 ארוחת בוקר ? · 🛗 מעלית ?"
+- Audio: Welcome, Mr. Cohen. Your passport, please. — (ברוך הבא, מר כהן. הדרכון שלך, בבקשה.)
+- A: Here you go. ✅
+- B: Is breakfast included?
+- C: I have a reservation, under the name Cohen.
+- Correct: Here you go.
+- Tests: phrase.hotel.here-you-go
+
+**M08-Q18** — visual-match
+- Prompt: "Which room are you in?" / "באיזה חדר אתה?"
+- Audio: Thank you. You're in room two-oh-four, on the second floor. Here is your key. — (תודה. אתה בחדר 204, בקומה השנייה. הנה המפתח שלך.)
+- A: 204 ✅
+- B: 214
+- C: 240
+- Correct: 204
+- Tests: (no sentence id — not recorded)
+
+**M08-Q19** — mini-map
+- Prompt: "In the elevator: which floor?" / "במעלית: לאיזו קומה?" — board, row by row: · | 3️⃣ [tap:floor-3] | · // 🛗 | 2️⃣ [tap:floor-2] | · // · | 1️⃣ [tap:floor-1] | ·
+- Audio: Thank you. You're in room two-oh-four, on the second floor. Here is your key. — (תודה. אתה בחדר 204, בקומה השנייה. הנה המפתח שלך.)
+- A: 3️⃣ floor-3
+- B: 2️⃣ floor-2 ✅
+- C: 1️⃣ floor-1
+- Correct: 2️⃣ floor-2
+- Tests: (no sentence id — not recorded)
+
+**M08-Q20** — quick-reply
+- Prompt: "🚪 Room 204 ✅ · 🏢 Floor 2 ✅ · 🍳 Breakfast ? · 🛗 Elevator ?" / "🚪 חדר 204 ✅ · 🏢 קומה 2 ✅ · 🍳 ארוחת בוקר ? · 🛗 מעלית ?"
+- Audio: Thank you. You're in room two-oh-four, on the second floor. Here is your key. — (תודה. אתה בחדר 204, בקומה השנייה. הנה המפתח שלך.)
+- A: Is breakfast included? ✅
+- B: I have a reservation, under the name Cohen.
 - C: Here you go.
 - Correct: Is breakfast included?
 - Tests: phrase.hotel.breakfast
 
-**M08-Q15** — dialogue-choice
+**M08-Q21** — visual-match
+- Prompt: "When is breakfast?" / "מתי ארוחת הבוקר?"
+- Audio: Yes! Breakfast is from seven to ten. The elevator is on your right. — (כן! ארוחת בוקר משבע עד עשר. המעלית מימינך.)
+- A: 7–10 ✅
+- B: 7–9
+- C: 8–10
+- Correct: 7–10
+- Tests: (no sentence id — not recorded)
+
+**M08-Q22** — mini-map
+- Prompt: "You face the desk. Which way to the elevator?" / "אתה מול הדלפק. לאן הולכים למעלית?" — board, row by row: · | 🚪 [tap:ahead] | · // 🚪 [tap:left] | 🛎️ | 🚪 [tap:right] // · | 🧍 | ·
+- Audio: Yes! Breakfast is from seven to ten. The elevator is on your right. — (כן! ארוחת בוקר משבע עד עשר. המעלית מימינך.)
+- A: 🚪 left
+- B: 🚪 right ✅
+- C: 🚪 ahead
+- Correct: 🚪 right
+- Tests: (no sentence id — not recorded)
+
+**M08-Q23** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Good evening! How can I help you? — (ערב טוב! איך אפשר לעזור?)
 - A: I have a reservation, under the name Cohen. ✅
@@ -32404,14 +32775,14 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Correct: I have a reservation, under the name Cohen. | Can you repeat that?
 - Tests: phrase.hotel.reservation, phrase.recovery.repeat
 
-**M08-Q16** — dialogue-choice
+**M08-Q24** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: How — can — I — help you? — (איך — אפשר — לעזור — לך?)
 - A: I have a reservation, under the name Cohen. ✅
 - Correct: I have a reservation, under the name Cohen.
 - Tests: phrase.hotel.reservation
 
-**M08-Q17** — dialogue-choice
+**M08-Q25** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Welcome, Mr. Cohen. Your passport, please. — (ברוך הבא, מר כהן. הדרכון שלך, בבקשה.)
 - A: Here you go. ✅
@@ -32419,20 +32790,120 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Correct: Here you go. | One moment, please.
 - Tests: phrase.hotel.here-you-go, phrase.recovery.one-moment
 
-**M08-Q18** — dialogue-choice
+**M08-Q26** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Thank you. You're in room two-oh-four, on the second floor. Here is your key. — (תודה. אתה בחדר 204, בקומה השנייה. הנה המפתח שלך.)
 - A: Is breakfast included? ✅
 - Correct: Is breakfast included?
 - Tests: phrase.hotel.breakfast
 
-**M08-Q19** — cold-open
-- Prompt: "Heads up: a fast one is coming. Use a tool." / "שים לב: מגיע משפט מהיר. השתמש בכלי."
-- Audio: Just so you know breakfast is served in the room on the lower level next to the pool. — (רק שתדע, ארוחת הבוקר מוגשת בחדר בקומה התחתונה ליד הבריכה.)
-- A: Can you repeat that? ✅
+**M08-Q27** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Good evening! How can I help you? — (ערב טוב! איך אפשר לעזור?)
+- A: I have a reservation, under the name Cohen. ✅
+- B: Is breakfast included?
+- C: Here you go.
+- Correct: I have a reservation, under the name Cohen.
+- Tests: phrase.hotel.reservation-name
+
+**M08-Q28** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Welcome, Mr. Cohen. Your passport, please. — (ברוך הבא, מר כהן. הדרכון שלך, בבקשה.)
+- A: Here you go. ✅
+- B: I have a reservation, under the name Cohen.
+- C: Is breakfast included?
+- Correct: Here you go.
+- Tests: phrase.hotel.here-you-go
+
+**M08-Q29** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Thank you. You're in room two-oh-four, on the second floor. Here is your key. — (תודה. אתה בחדר 204, בקומה השנייה. הנה המפתח שלך.)
+- A: Is breakfast included? ✅
 - B: Here you go.
-- Correct: Can you repeat that?
-- Tests: phrase.recovery.repeat
+- C: I have a reservation, under the name Cohen.
+- Correct: Is breakfast included?
+- Tests: phrase.hotel.breakfast
+
+**M08-Q30** — visual-match
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Thank you. You're in room two-oh-four, on the second floor. Here is your key. — (תודה. אתה בחדר 204, בקומה השנייה. הנה המפתח שלך.)
+- A: 204 ✅
+- B: 214
+- C: 240
+- Correct: 204
+- Tests: (no sentence id — not recorded)
+
+**M08-Q31** — mini-map
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה." — board, row by row: · | 🚪 [tap:ahead] | · // 🚪 [tap:left] | 🛎️ | 🚪 [tap:right] // · | 🧍 | ·
+- Audio: Yes! Breakfast is from seven to ten. The elevator is on your right. — (כן! ארוחת בוקר משבע עד עשר. המעלית מימינך.)
+- A: 🚪 left
+- B: 🚪 right ✅
+- C: 🚪 ahead
+- Correct: 🚪 right
+- Tests: (no sentence id — not recorded)
+
+**M08-Q32** — quick-reply
+- Prompt: "🚪 Room ? · 🏢 Floor ? · 🍳 Breakfast ? · 🛗 Elevator ?" / "🚪 חדר ? · 🏢 קומה ? · 🍳 ארוחת בוקר ? · 🛗 מעלית ?"
+- Audio: Good evening! How can I help you? — (ערב טוב! איך אפשר לעזור?)
+- A: I have a reservation, under the name Cohen. ✅
+- B: Here you go.
+- C: Is breakfast included?
+- Correct: I have a reservation, under the name Cohen.
+- Tests: phrase.hotel.reservation-name
+
+**M08-Q33** — quick-reply
+- Prompt: "🚪 Room ? · 🏢 Floor ? · 🍳 Breakfast ? · 🛗 Elevator ?" / "🚪 חדר ? · 🏢 קומה ? · 🍳 ארוחת בוקר ? · 🛗 מעלית ?"
+- Audio: Welcome, Mr. Cohen. Your passport, please. — (ברוך הבא, מר כהן. הדרכון שלך, בבקשה.)
+- A: Here you go. ✅
+- B: Is breakfast included?
+- C: I have a reservation, under the name Cohen.
+- Correct: Here you go.
+- Tests: phrase.hotel.here-you-go
+
+**M08-Q34** — visual-match
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Thank you. You're in room two-oh-four, on the second floor. Here is your key. — (תודה. אתה בחדר 204, בקומה השנייה. הנה המפתח שלך.)
+- A: 204 ✅
+- B: 214
+- C: 240
+- Correct: 204
+- Tests: (no sentence id — not recorded)
+
+**M08-Q35** — mini-map
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה." — board, row by row: · | 3️⃣ [tap:floor-3] | · // 🛗 | 2️⃣ [tap:floor-2] | · // · | 1️⃣ [tap:floor-1] | ·
+- Audio: Thank you. You're in room two-oh-four, on the second floor. Here is your key. — (תודה. אתה בחדר 204, בקומה השנייה. הנה המפתח שלך.)
+- A: 3️⃣ floor-3
+- B: 2️⃣ floor-2 ✅
+- C: 1️⃣ floor-1
+- Correct: 2️⃣ floor-2
+- Tests: (no sentence id — not recorded)
+
+**M08-Q36** — quick-reply
+- Prompt: "🚪 Room 204 ✅ · 🏢 Floor 2 ✅ · 🍳 Breakfast ? · 🛗 Elevator ?" / "🚪 חדר 204 ✅ · 🏢 קומה 2 ✅ · 🍳 ארוחת בוקר ? · 🛗 מעלית ?"
+- Audio: Thank you. You're in room two-oh-four, on the second floor. Here is your key. — (תודה. אתה בחדר 204, בקומה השנייה. הנה המפתח שלך.)
+- A: Is breakfast included? ✅
+- B: Here you go.
+- C: I have a reservation, under the name Cohen.
+- Correct: Is breakfast included?
+- Tests: phrase.hotel.breakfast
+
+**M08-Q37** — visual-match
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Yes! Breakfast is from seven to ten. The elevator is on your right. — (כן! ארוחת בוקר משבע עד עשר. המעלית מימינך.)
+- A: 7–10 ✅
+- B: 7–9
+- C: 8–10
+- Correct: 7–10
+- Tests: (no sentence id — not recorded)
+
+**M08-Q38** — mini-map
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה." — board, row by row: · | 🚪 [tap:ahead] | · // 🚪 [tap:left] | 🛎️ | 🚪 [tap:right] // · | 🧍 | ·
+- Audio: Yes! Breakfast is from seven to ten. The elevator is on your right. — (כן! ארוחת בוקר משבע עד עשר. המעלית מימינך.)
+- A: 🚪 left
+- B: 🚪 right ✅
+- C: 🚪 ahead
+- Correct: 🚪 right
+- Tests: (no sentence id — not recorded)
 
 ## Mission 09 — Shopping
 
@@ -36997,17 +37468,17 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 # Totals
 
 - Missions exported: 30
-- Learner-production sentence ids: 162
-- Expected-reply (receptive) sentence ids: 159
-- Sentence listings across missions (with reuse): 529
-- Expected-reply questions: 98
+- Learner-production sentence ids: 163
+- Expected-reply (receptive) sentence ids: 162
+- Sentence listings across missions (with reuse): 531
+- Expected-reply questions: 97
 - Meaning quizzes: 6
-- Active-practice questions: 488
+- Active-practice questions: 509
 - Dialogue choice screens: 271
-- Cold opens: 11
-- Total interactive questions: 874
-- Total answer choices: 2336
+- Cold opens: 10
+- Total interactive questions: 893
+- Total answer choices: 2375
 - Wrong-answer branches: 94
 - Recovery opportunities: 56
-- Learner sentences with 0 active retrieval opportunities: 0
-- Auto-flags: 206
+- Learner sentences with 0 active retrieval opportunities: 1
+- Auto-flags: 205

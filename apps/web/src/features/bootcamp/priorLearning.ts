@@ -6,6 +6,7 @@ import { M04_CONCEPTS } from './mission04Coverage.js';
 import { M05_CONCEPTS } from './mission05Coverage.js';
 import { M06_CONCEPTS } from './mission06Coverage.js';
 import { M07_CONCEPTS } from './mission07Coverage.js';
+import { M08_CONCEPTS } from './mission08Coverage.js';
 import { BOOTCAMP_PLAN } from './plan.js';
 import { fillFrame } from './practiceEngines.js';
 import { MISSIONS_BY_LANG } from './registry.js';
@@ -55,7 +56,7 @@ export function teachingEncounters(day: BootcampDayContent): TeachingEncounter[]
 }
 
 /** The coverage concepts of each mission that has its own coverage specification (by mission number). */
-export const MISSION_CONCEPTS: Readonly<Record<number, readonly CoverageConcept[]>> = { 1: M01_CONCEPTS, 2: M02_CONCEPTS, 3: M03_CONCEPTS, 4: M04_CONCEPTS, 5: M05_CONCEPTS, 6: M06_CONCEPTS, 7: M07_CONCEPTS };
+export const MISSION_CONCEPTS: Readonly<Record<number, readonly CoverageConcept[]>> = { 1: M01_CONCEPTS, 2: M02_CONCEPTS, 3: M03_CONCEPTS, 4: M04_CONCEPTS, 5: M05_CONCEPTS, 6: M06_CONCEPTS, 7: M07_CONCEPTS, 8: M08_CONCEPTS };
 
 /** A mission's runtime content, by its number on the journey (1-based). */
 export const missionContent = (lang: CoverageLang, n: number): BootcampDayContent => MISSIONS_BY_LANG[lang]![BOOTCAMP_PLAN[n - 1]!.day]!;

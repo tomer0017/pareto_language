@@ -1,6 +1,9 @@
 import { describe, expect, it } from 'vitest';
 import { MISSIONS_BY_LANG } from './registry.js';
 import { priorPrimeVocabulary, primeKey } from './primeVocab.js';
+import { missionNumber } from './plan.js';
+import { learnedBefore } from './priorLearning.js';
+import type { CoverageLang } from './mission01Coverage.js';
 import type { BootcampDayContent, BootcampStep } from './types.js';
 
 /**
@@ -68,8 +71,12 @@ describe('prior-knowledge tracking — new vs review words are honest', () => {
         for (const w of p.words) {
           if (w.line) continue; // a whole line taught with its picture — not a vocabulary word
           if (w.review) {
+            // Earlier as a building block — or VERIFIED prior learning (taught with its meaning in an
+            // earlier mission, e.g. Mission 06's passport cards): either makes it honestly a review.
             it(`${lang} mission ${num}: review word "${w.text}" was introduced earlier`, () => {
-              expect(prior.has(primeKey(w))).toBe(true);
+              const n = missionNumber(Number(num));
+              const verified = n !== null && learnedBefore(lang as CoverageLang, n).knowsChunk(w.text);
+              expect(prior.has(primeKey(w)) || verified).toBe(true);
             });
           } else {
             it(`${lang} mission ${num}: new word "${w.text}" is genuinely new (else mark it review)`, () => {
