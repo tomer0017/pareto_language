@@ -26,14 +26,9 @@ const mission = (n: number, lang: Lang = 'en'): BootcampDayContent => MISSIONS_B
 const stepsOf = <K extends BootcampStep['kind']>(day: BootcampDayContent, kind: K): Extract<BootcampStep, { kind: K }>[] =>
   day.steps.filter((s): s is Extract<BootcampStep, { kind: K }> => s.kind === kind);
 const kinds = (day: BootcampDayContent): string[] => day.steps.map((s) => (s.kind === 'ambush' ? `ambush:${s.mode}` : (s.kind === 'quickReply' || s.kind === 'visualMatch') && s.challenge ? `${s.kind}:speed` : s.kind));
-const text = (day: BootcampDayContent, id: string): string => day.items.find((i) => strip(i.id) === id)!.text;
 const fnv = (s: string): string => { let h = 0x811c9dc5; for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 0x01000193) >>> 0; } return h.toString(16).padStart(8, '0'); };
 const taught = (day: BootcampDayContent): string[] => stepsOf(day, 'tool').map((s) => strip(s.itemId));
 const reviewed = (day: BootcampDayContent): string[] => stepsOf(day, 'swipe').flatMap((s) => s.itemIds.map(strip));
-/** [what is heard, the accepted answers] of every Quick Reply round of a mission (not the speed challenge). */
-const replyMap = (day: BootcampDayContent, challenge = false): [string, string[]][] =>
-  stepsOf(day, 'quickReply').filter((s) => Boolean(s.challenge) === challenge).flatMap((s) => s.rounds.map((r): [string, string[]] =>
-    [r.promptItemId ? strip(r.promptItemId) : r.npc ? r.npc.en : 'situation', r.options.filter((o) => o.correct).map((o) => strip(o.itemId))]));
 
 /* ── vocabulary: what a learner has met ──────────────────────────────────────────────────────── */
 
@@ -62,23 +57,16 @@ const unknownIn = (said: string[], known: Set<string>): string[] => [...new Set(
 
 /* ── what this pass was not allowed to touch ─────────────────────────────────────────────────── */
 
-/** Sentence list of Mission 09 (Mission 08's is pinned id by id below; Missions 06 and 07 have their own passes). */
-const ITEMS_09 = { en: 'fd369a59', fr: '0e91151b', es: 'bcd7147c' };
-
 describe('scope: only the Practice of Missions 06–10 changed', () => {
   // Scene transitions became non-spoken cues after these fingerprints were taken; `beforeCueFreeze`
   // puts the labels back, so the fingerprints still prove nothing else moved (see cueFreeze.ts).
   const slice = (lang: Lang, a: number, b: number): FrozenDay[] => BOOTCAMP_PLAN.slice(a, b).map((m) => beforeCueFreeze(MISSIONS_BY_LANG[lang]![m.day]!, lang));
   const print = (f: (lang: Lang) => unknown): Record<Lang, string> => ({ en: fnv(JSON.stringify(f('en'))), fr: fnv(JSON.stringify(f('fr'))), es: fnv(JSON.stringify(f('es'))) });
 
-  it('Missions 01–08 are pinned by their own passes (mission01.test.ts … mission08.test.ts)', async () => {
+  it('Missions 01–09 are pinned by their own passes (mission01.test.ts … mission09.test.ts)', async () => {
     const { existsSync } = await import('node:fs');
     const { fileURLToPath } = await import('node:url');
-    for (const n of [1, 2, 3, 4, 5, 6, 7, 8]) expect(existsSync(fileURLToPath(new URL(`./mission0${n}.test.ts`, import.meta.url))), `mission0${n}.test.ts`).toBe(true);
-  });
-  it('the locked dialogue of Mission 09 is byte-for-byte unchanged (Missions 06 and 07: their own tests)', () => {
-    const one = (l: Lang): BootcampDayContent[] => [slice(l, 8, 9)[0]!];
-    expect(print((l) => one(l).map((d) => d.dialogues))).toEqual({ en: 'd465f995', fr: '652f21b9', es: 'a509ca20' });
+    for (const n of [1, 2, 3, 4, 5, 6, 7, 8, 9]) expect(existsSync(fileURLToPath(new URL(`./mission0${n}.test.ts`, import.meta.url))), `mission0${n}.test.ts`).toBe(true);
   });
   it('Mission 08\'s dialogue lost exactly one thing — the wifi option and its reply; every other line is as it was', () => {
     for (const lang of LANGS) {
@@ -93,14 +81,13 @@ describe('scope: only the Practice of Missions 06–10 changed', () => {
       "Thank you. You're in room two-oh-four, on the second floor. Here is your key.", 'Yes! Breakfast is from seven to ten. The elevator is on your right.', 'Enjoy your stay!',
     ]);
   });
-  it('the approved pass is otherwise exactly as approved: Mission 10 whole, Mission 09 apart from the size wording', () => {
+  it('the approved pass is otherwise exactly as approved: Mission 10 whole (Mission 09 has its own pass since: mission09.test.ts)', () => {
     const pick = (l: Lang, i: number): BootcampDayContent => MISSIONS_BY_LANG[l]![BOOTCAMP_PLAN[i]!.day]!;
     expect(print((l) => [9].map((i) => pick(l, i).steps))).toEqual({ en: '0a890235', fr: '67adb51c', es: '36c79f0a' });
     expect(print((l) => pick(l, 9))).toEqual({ en: '60b489f1', fr: '5d4d6a20', es: 'a4ff1fc6' });
-    expect(print((l) => pick(l, 8).steps.filter((s) => s.kind !== 'swap'))).toEqual({ en: '033e2741', fr: '1be8e9bb', es: '45d575fc' });
   });
-  it('Missions 09–18 are exactly as approved (Missions 01–08 have their own passes)', () => {
-    expect(print((l) => slice(l, 8, 18))).toEqual({ en: '844c2294', fr: '818e8b10', es: '27fffd97' });
+  it('Missions 10–18 are exactly as approved (Missions 01–09 have their own passes)', () => {
+    expect(print((l) => slice(l, 9, 18))).toEqual({ en: '6d0b582c', fr: '2491a320', es: '5316bf50' });
   });
   it('"For two nights." and the wifi password are retired (and, since the Mission 08 pass, "Sign here" and "It\'s on the second floor"): archived with their ids and wording, and shown nowhere', () => {
     const gone = ['phrase.hotel.two-nights', 'phrase.hotel.wifi', 'reply.hotel.sign-here', 'reply.hotel.second-floor'];
@@ -123,12 +110,6 @@ describe('scope: only the Practice of Missions 06–10 changed', () => {
     expect(RETIRED_SENTENCES.en.filter((r) => r.retiredFrom === 'hotel-check-in').map((r) => r.text)).toEqual(['For two nights.', "What's the wifi password?", 'Sign here, please.', "It's on the second floor."]);
     expect(RETIRED_SENTENCES.fr.filter((r) => r.retiredFrom === 'hotel-check-in').map((r) => r.text)).toEqual(['Pour deux nuits.', 'C’est quoi le mot de passe du wifi ?', 'Signez ici, s’il vous plaît.', 'C’est au deuxième étage.']);
     expect(RETIRED_SENTENCES.es.filter((r) => r.retiredFrom === 'hotel-check-in').map((r) => r.text)).toEqual(['Para dos noches.', '¿Cuál es la contraseña del wifi?', 'Firme aquí, por favor.', 'Está en el segundo piso.']);
-  });
-  it('no other sentence of Mission 09 was deleted, renamed or reworded', () => {
-    expect(print((l) => [slice(l, 8, 9)[0]!].map((d) => d.items))).toEqual(ITEMS_09);
-  });
-  it('their intro cards, titles and videos are unchanged (Mission 09)', () => {
-    expect(print((l) => slice(l, 8, 9).map((d) => [d.day, d.title, d.introVideo, d.steps[0]]))).toEqual({ en: '6a9b281d', fr: 'd9cb5c43', es: '7f5bb487' });
   });
   it('mission order, ids and registry keys are unchanged', () => {
     expect(BOOTCAMP_PLAN.slice(5, 10).map((m) => `${m.id}:${m.day}`)).toEqual(['airport-border:10', 'taxi:6', 'hotel-check-in:7', 'shopping:8', 'arrival-day-checkpoint:9']);
@@ -201,46 +182,7 @@ describe('all three languages get the same practice, each in its own words', () 
 
 /* Mission 08 — Hotel Check-in has its own pass: see mission08.test.ts. */
 
-describe('Mission 09 — Shopping', () => {
-  const day = mission(9);
-  it('flow: learn → recognize → out-of-stock by ear → Shop Rush → size → conversation → fast seller', () => {
-    expect(kinds(day)).toEqual(['talk', 'tool', 'tool', 'tool', 'tool', 'replies', 'receipt', 'quiz', 'quickReply', 'swap', 'dialogue', 'receipt', 'swipe', 'ambush:recovery', 'receipt', 'summary']);
-  });
-  it('Shop Rush: four moments with a seller, each answered with a taught line', () => {
-    expect(replyMap(day)).toEqual([
-      ['reply.shop.can-i-help', ['phrase.shop.just-looking']],
-      ['situation', ['phrase.shop.try-on']],
-      ['reply.shop.on-sale', ['phrase.shop.take-it']],
-      ['situation', ['phrase.shop.too-expensive']],
-    ]);
-  });
-  it('size flexibility is said the way each language says it', () => {
-    const sizes = (lang: Lang): string[] => { const r = stepsOf(mission(9, lang), 'swap')[0]!.rounds[0]!; return r.options.map((o) => fillFrame(r.frame, o.slot)); };
-    expect(sizes('en')).toEqual(['Do you have a bigger size?', 'Do you have a smaller size?']);
-    expect(sizes('fr')).toEqual(['Vous avez une taille plus grande ?', 'Vous avez une taille plus petite ?']);
-    expect(sizes('es')).toEqual(['¿Tiene una talla más grande?', '¿Tiene una talla más pequeña?']);
-    for (const lang of LANGS) {
-      const swap = stepsOf(mission(9, lang), 'swap')[0]!;
-      expect(swap.rounds, lang).toHaveLength(2);
-      // The adjective agrees with "size" (taille / talla — feminine), not with the garment: one wording fits any item.
-      if (lang !== 'en') expect(sizes(lang).join(' '), lang).toMatch(/(taille|talla) (plus grande|más grande).*(taille|talla) (plus petite|más pequeña)/);
-      // English and Spanish: the taught sentence IS the frame's first outcome. French teaches the shop
-      // idiom "une taille au-dessus" as its key sentence and practises the plain "plus grande / plus petite".
-      if (lang !== 'fr') expect(sizes(lang)[0], lang).toBe(text(mission(9, lang), 'phrase.shop.bigger'));
-    }
-  });
-  it('"out of stock" stays something to UNDERSTAND: heard and tested by ear, never a learner answer', () => {
-    expect(strip(stepsOf(day, 'quiz')[0]!.itemId)).toBe('reply.shop.out-of-stock');
-    expect(reviewed(day)).toContain('reply.shop.out-of-stock');
-    for (const s of stepsOf(day, 'quickReply')) for (const r of s.rounds) for (const o of r.options) expect(strip(o.itemId)).not.toBe('reply.shop.out-of-stock');
-  });
-  it('it was not bloated: no new sentences, one quiz, at most four rounds per game', () => {
-    expect(day.items).toHaveLength(15);
-    expect(stepsOf(day, 'quiz')).toHaveLength(1);
-    for (const s of [...stepsOf(day, 'quickReply'), ...stepsOf(day, 'swap')]) expect(s.rounds.length).toBeLessThanOrEqual(4);
-    expect(stepsOf(day, 'ambush')[0]!.mode).toBe('recovery');
-  });
-});
+/* Mission 09 — Shopping has its own pass: see mission09.test.ts. */
 
 /* ── Mission 10 — the checkpoint ─────────────────────────────────────────────────────────────── */
 

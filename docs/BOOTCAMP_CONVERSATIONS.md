@@ -484,24 +484,20 @@ _Reply-training drill:_ “Good evening! How can I help you?” · “Yes! Break
 - **Do you have a bigger size?** · יש מידה גדולה יותר? — _תבנית: Do you have a ___ size? (bigger/smaller)._
 - **I'll take it.** · אני אקח את זה. — _החלטת? שתי מילים סוגרות עסקה._
 - **It's a bit expensive.** · זה קצת יקר. — _פתח מנומס להנחה או לחלופה זולה יותר._
+- **Great, I'll take it.** · מעולה, אני אקח את זה.
 
 ### Expected replies (you hear)
 - **Can I help you find anything?** · אפשר לעזור לך למצוא משהו?
 - **What size are you?** · איזו מידה אתה?
 - **The fitting room is over there.** · חדר ההלבשה שם.
-- **Sorry, that's out of stock.** · סליחה, זה אזל מהמלאי.
-- **It's on sale — twenty percent off.** · זה במבצע — עשרים אחוז הנחה.
-- **Anything else for you today?** · עוד משהו היום?
+- **Hi there! Can I help you find anything?** · היי! אפשר לעזור לך למצוא משהו?
+- **Of course, take your time. Let me know if you need a hand.** · כמובן, קח את הזמן. תגיד אם אתה צריך עזרה.
+- **Wonderful — I’ll ring you up at the till. Thank you!** · נהדר — אחייב אותך בקופה. תודה!
 
-_Reply-training drill:_ “What size are you?” · “The fitting room is over there.” · “It's on sale — twenty percent off.” · “Anything else for you today?”
+_Reply-training drill:_ “Hi there! Can I help you find anything?” · “Of course, take your time. Let me know if you need a hand.” · “Wonderful — I’ll ring you up at the till. Thank you!”
 
 ### Recovery tools reused
-`Please speak slowly.` · `Can you repeat that?` · `Thank you!` · `Can you show me?`
-
-### Cold open (ambush)
-- 🧑 (fast) “That one is actually the last piece we have in that colour would you like me to hold it?” · זה בעצם הפריט האחרון שיש לנו בצבע הזה — שאשמור לך אותו?
-  - ✅ best move: **Can you repeat that?** · אפשר לחזור על זה?
-  - ✗ distractor: I'll take it.
+`Please speak slowly.`
 
 ### Dialogue: `clothing-shop` — happy path
 - **🧑 Them:** “Hi there! Can I help you find anything?” · היי! אפשר לעזור לך למצוא משהו?

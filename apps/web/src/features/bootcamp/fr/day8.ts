@@ -1,7 +1,7 @@
 import type { LocalizedText } from '@ready/content-schema';
 import type { BootcampDayContent, BootcampDialogue, BootcampItem } from '../types.js';
 import { recoveryFr } from './recovery.js';
-import { m09Flow } from '../practiceArrival.js';
+import { m09Steps } from '../practiceArrival.js';
 
 /**
  * French Mission 9 — "Shopping" (achats). French parallel of English mission 8: same objective (browse,
@@ -21,14 +21,15 @@ export const DAY8_FR_ITEMS: BootcampItem[] = [
     tip: T('החלטת? שתי מילים סוגרות עסקה.', 'Decided? Two words close the deal.') },
   { id: 'fr.phrase.shop.too-expensive', text: 'C’est un peu cher.', meaning: T('זה קצת יקר.', "It's a bit expensive."),
     tip: T('פתח מנומס להנחה או לחלופה זולה יותר.', 'A polite opening for a discount or a cheaper option.') },
+  { id: 'fr.phrase.shop.great-take-it', text: 'Super, je le prends.', meaning: T('מעולה, אני אקח את זה.', "Great, I'll take it.") },
   // hear
   { id: 'fr.reply.shop.can-i-help', text: 'Je peux vous aider à trouver quelque chose ?', meaning: T('אפשר לעזור לך למצוא משהו?', 'Can I help you find anything?') },
   { id: 'fr.reply.shop.what-size', text: 'Vous faites quelle taille ?', meaning: T('איזו מידה אתה?', 'What size are you?') },
   { id: 'fr.reply.shop.fitting-room', text: 'La cabine d’essayage est là-bas.', meaning: T('חדר ההלבשה שם.', 'The fitting room is over there.') },
-  { id: 'fr.reply.shop.out-of-stock', text: 'Désolé, c’est en rupture de stock.', meaning: T('סליחה, זה אזל מהמלאי.', "Sorry, that's out of stock.") },
-  { id: 'fr.reply.shop.on-sale', text: 'C’est en solde — vingt pour cent de réduction.', meaning: T('זה במבצע — עשרים אחוז הנחה.', "It's on sale — twenty percent off.") },
-  { id: 'fr.reply.shop.anything-else', text: 'Ce sera tout pour vous aujourd’hui ?', meaning: T('עוד משהו היום?', 'Anything else for you today?') },
-  ...recoveryFr('fr.phrase.recovery.slowly', 'fr.phrase.recovery.repeat', 'fr.phrase.recovery.thank-you', 'fr.phrase.recovery.show-me'),
+  { id: 'fr.reply.shop.help-find', text: 'Bonjour ! Je peux vous aider à trouver quelque chose ?', meaning: T('היי! אפשר לעזור לך למצוא משהו?', 'Hi there! Can I help you find anything?') },
+  { id: 'fr.reply.shop.take-your-time', text: 'Bien sûr, prenez votre temps. Dites-moi si vous avez besoin d’aide.', meaning: T('כמובן, קח את הזמן. תגיד אם אתה צריך עזרה.', 'Of course, take your time. Let me know if you need a hand.') },
+  { id: 'fr.reply.shop.till-line', text: 'Parfait — je vous encaisse à la caisse. Merci !', meaning: T('נהדר — אחייב אותך בקופה. תודה!', 'Wonderful — I’ll ring you up at the till. Thank you!') },
+  ...recoveryFr('fr.phrase.recovery.slowly'),
 ];
 
 const SCENE: BootcampDialogue = {
@@ -55,7 +56,7 @@ const SCENE: BootcampDialogue = {
     ] },
     { id: 'n4', who: 'npc', next: 'c3', en: 'Voilà, une taille au-dessus. Et bonne nouvelle — c’est en solde, vingt pour cent de réduction !', tr: TR("Here you go, one size up. And good news — it's on sale, twenty percent off!", 'הנה, מידה אחת גדולה יותר. ובשורה טובה — זה במבצע, עשרים אחוז הנחה!'), he: 'הנה, מידה אחת גדולה יותר. ובשורה טובה — זה במבצע, עשרים אחוז הנחה!' },
     { id: 'c3', who: 'you', en: '', he: '', choices: [
-      { en: 'Super, je le prends.', tr: TR("Great, I'll take it.", 'מעולה, אני אקח את זה.'), he: 'מעולה, אני אקח את זה.', itemId: 'fr.phrase.shop.take-it', correct: true, next: 'n5' },
+      { en: 'Super, je le prends.', tr: TR("Great, I'll take it.", 'מעולה, אני אקח את זה.'), he: 'מעולה, אני אקח את זה.', itemId: 'fr.phrase.shop.great-take-it', correct: true, next: 'n5' },
       { en: 'C’est un peu cher.', tr: TR("It's a bit expensive.", 'זה קצת יקר.'), he: 'זה קצת יקר.', itemId: 'fr.phrase.shop.too-expensive', correct: true, next: 'n4b' },
     ] },
     { id: 'n4b', who: 'npc', next: 'c3b', en: 'Je comprends — mais c’est déjà vingt pour cent de réduction. C’est le meilleur prix que je peux faire.', tr: TR("I understand — but it's already twenty percent off. That's the best price I can do.", 'אני מבין — אבל זה כבר בעשרים אחוז הנחה. זה המחיר הכי טוב שאני יכול לתת.'), he: 'אני מבין — אבל זה כבר בעשרים אחוז הנחה. זה המחיר הכי טוב שאני יכול לתת.' },
@@ -71,13 +72,6 @@ export const DAY8_FR: BootcampDayContent = {
   title: T('קניות', 'Shopping'),
   items: DAY8_FR_ITEMS,
   dialogues: { 'clothing-shop': SCENE },
-  steps: [
-    { kind: 'talk', icon: '🛍️', title: T('משימה 9: קניות', 'Mission 9: Shopping'),
-      body: [
-        T('חנות בגדים: להסתכל בשקט, למדוד, לבקש מידה, להחליט.', 'A clothing shop: browse in peace, try on, ask for a size, decide.'),
-        T('לא צריך לקנות. צריך להרגיש בשליטה מול המוכר.', 'You don’t have to buy. You do have to feel in control with the seller.'),
-      ], cta: T('להיכנס לחנות', 'Walk in') },
-    // From the key sentences onward the flow is shared by all languages: see practiceArrival.ts.
-    ...m09Flow('fr'),
-  ],
+  // The whole journey is shared by all languages: see practiceArrival.ts (`m09Steps`).
+  steps: m09Steps('fr'),
 };

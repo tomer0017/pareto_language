@@ -22,6 +22,31 @@ loop (typecheck → lint → tests → build → smoke) green at every milestone
 
 ## What's done
 
+### Mission 09 — Shopping: the full learning flow, one shopping trip (2026-10-30)
+
+The conversation is LOCKED (every line byte-identical in EN / ES / FR; the one tree change is that
+"Great, I'll take it." now points at its own sentence `phrase.shop.great-take-it` — a test proves that
+undoing it restores the pre-pass tree). ONE trip (`M09_SHOP`): a jacket, you took M, M is too small, she
+brings L (one size up), it is 20% off, you buy it. The briefing says only that you walked into a clothes
+shop and found something you like (CTA "התחל קניות"); no bigger size, sale, 20% or purchase. The
+SHOPPING JOURNEY (`shoppingJourney`, `shoppingState`) shows STAGES, never answers — Browse · Try on ·
+Size fixed · Sale understood · Buy — and first appears once trying on is done (its stage names would
+otherwise spoil the briefing). Flow: briefing → Step 0 (size, fitting room) → browsing cards → "Can I try
+this on?" (card, builder, initiative from the situation) → her answer → the fitting room on the STORE MAP
+(zones: fitting room · till · racks · entrance) → "size M is too small" (app-language state) → "Do you have
+a bigger size?" (card, builder, initiative) → her answer → L on the S · M · L · XL ladder · −20% among
+−10% / −20% / −50% (no arithmetic) → "Great, I'll take it." (a decision) → the till on the map → by ear →
+supported trip → conversation → no help → video (EN + FR; ES safely skipped) → final trip → 🛍️ PURCHASE
+COMPLETE. The shopper produces only their four lines. 33 interactions. Retired: "Sorry, that's out of
+stock.", the sale as its own sentence, "Anything else for you today?". Coverage: `mission09Coverage.ts`
+(23 chunks), strict `learnedBefore(lang, 9)`. Note: "receipt" was verifiably taught in Mission 03, so the
+audit's planted-word test uses an unknown word ("scarf"). Tests: `mission09.test.ts`. Visuals: emoji
+placeholders — VISUAL PRODUCTION REQUIRED IN ASTRA PASS (`docs/MISSION09_ASSET_MANIFEST.md`).
+Engine/UI (opt-in, nothing else affected): a board may be `ordered` (a scale — kept in its own order,
+left to right, never shuffled; used only by the size ladder), and the journey string renders as a compact
+grid of five stage cells (`splitJourney` beside `splitHotelStay`). Mobile QA (rendered screens, 360 / 390 /
+430, EN / ES / FR): no overflow; the ladder reads S · M / L · XL; the journey fits in a 2-column grid.
+
 ### Mission 08 visual integration — validated; owner performs manual mobile QA (2026-10-29)
 
 13 individual high-resolution JPEGs, two authored SVG teaching visuals and two M06 reuses fill

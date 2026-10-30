@@ -61,10 +61,10 @@ describe('the conversation is locked, and Mission 08 is in its place', () => {
     expect(missionNumber(BOOTCAMP_PLAN[7]!.day)).toBe(8);
     for (const lang of LANGS) expect(day(lang).title.en).toBe('Hotel Check-in');
   });
-  it('Missions 01–07 and 09–30 are byte-for-byte unchanged by this pass', () => {
+  it('Missions 01–07 and 10–30 are byte-for-byte unchanged by this pass (Mission 09 has its own pass since: mission09.test.ts)', () => {
     const raw = (a: number, b?: number) => Object.fromEntries(LANGS.map((l) => [l, fnv(JSON.stringify(BOOTCAMP_PLAN.slice(a, b).map((m) => MISSIONS_BY_LANG[l]![m.day]!)))]));
     expect(raw(0, 7)).toEqual({ en: '17db9d4a', es: '4a1f6209', fr: 'e936fa44' });
-    expect(raw(8)).toEqual({ en: '4e06a0e6', es: 'f4d9682d', fr: 'e59888bd' });
+    expect(raw(9)).toEqual({ en: '0a05d32a', es: '344c16b8', fr: 'b2f019ab' }); // Missions 10–30
   });
 });
 

@@ -1,6 +1,6 @@
 import { RECOVERY_ITEMS, T, recovery } from './recovery.js';
 import type { BootcampDayContent, BootcampDialogue, BootcampItem } from './types.js';
-import { m09Flow } from './practiceArrival.js';
+import { m09Steps } from './practiceArrival.js';
 
 /** Mission 9 — "Shopping" (real objective: browse, try, decide, pay — in control). */
 export const DAY8_ITEMS: BootcampItem[] = [
@@ -13,14 +13,15 @@ export const DAY8_ITEMS: BootcampItem[] = [
     tip: T('החלטת? שתי מילים סוגרות עסקה.', 'Decided? Two words close the deal.') },
   { id: 'en.phrase.shop.too-expensive', text: "It's a bit expensive.", meaning: T('זה קצת יקר.', "It's a bit expensive."),
     tip: T('פתח מנומס להנחה או לחלופה זולה יותר.', 'A polite opening for a discount or a cheaper option.') },
+  { id: 'en.phrase.shop.great-take-it', text: "Great, I'll take it.", meaning: T('מעולה, אני אקח את זה.', "Great, I'll take it.") },
   // hear
   { id: 'en.reply.shop.can-i-help', text: 'Can I help you find anything?', meaning: T('אפשר לעזור לך למצוא משהו?', 'Can I help you find anything?') },
   { id: 'en.reply.shop.what-size', text: 'What size are you?', meaning: T('איזו מידה אתה?', 'What size are you?') },
   { id: 'en.reply.shop.fitting-room', text: 'The fitting room is over there.', meaning: T('חדר ההלבשה שם.', 'The fitting room is over there.') },
-  { id: 'en.reply.shop.out-of-stock', text: "Sorry, that's out of stock.", meaning: T('סליחה, זה אזל מהמלאי.', "Sorry, that's out of stock.") },
-  { id: 'en.reply.shop.on-sale', text: "It's on sale — twenty percent off.", meaning: T('זה במבצע — עשרים אחוז הנחה.', "It's on sale — twenty percent off.") },
-  { id: 'en.reply.shop.anything-else', text: 'Anything else for you today?', meaning: T('עוד משהו היום?', 'Anything else for you today?') },
-  ...recovery('en.phrase.recovery.slowly', 'en.phrase.recovery.repeat', 'en.phrase.recovery.thank-you', 'en.phrase.recovery.show-me'),
+  { id: 'en.reply.shop.help-find', text: 'Hi there! Can I help you find anything?', meaning: T('היי! אפשר לעזור לך למצוא משהו?', 'Hi there! Can I help you find anything?') },
+  { id: 'en.reply.shop.take-your-time', text: 'Of course, take your time. Let me know if you need a hand.', meaning: T('כמובן, קח את הזמן. תגיד אם אתה צריך עזרה.', 'Of course, take your time. Let me know if you need a hand.') },
+  { id: 'en.reply.shop.till-line', text: 'Wonderful — I’ll ring you up at the till. Thank you!', meaning: T('נהדר — אחייב אותך בקופה. תודה!', 'Wonderful — I’ll ring you up at the till. Thank you!') },
+  ...recovery('en.phrase.recovery.slowly'),
 ];
 
 const SCENE: BootcampDialogue = {
@@ -47,7 +48,7 @@ const SCENE: BootcampDialogue = {
     ] },
     { id: 'n4', who: 'npc', next: 'c3', en: 'Here you go, one size up. And good news — it’s on sale, twenty percent off!', he: 'הנה, מידה אחת גדולה יותר. ובשורה טובה — זה במבצע, עשרים אחוז הנחה!' },
     { id: 'c3', who: 'you', en: '', he: '', choices: [
-      { en: "Great, I'll take it.", he: 'מעולה, אני אקח את זה.', itemId: 'en.phrase.shop.take-it', correct: true, next: 'n5' },
+      { en: "Great, I'll take it.", he: 'מעולה, אני אקח את זה.', itemId: 'en.phrase.shop.great-take-it', correct: true, next: 'n5' },
       // An objection gets ANSWERED, not ignored — the price comment actually changes what they say.
       { en: "It's a bit expensive.", he: 'זה קצת יקר.', itemId: 'en.phrase.shop.too-expensive', correct: true, next: 'n4b' },
     ] },
@@ -64,14 +65,7 @@ export const DAY8: BootcampDayContent = {
   title: T('קניות', 'Shopping'),
   items: DAY8_ITEMS,
   dialogues: { 'clothing-shop': SCENE },
-  steps: [
-    { kind: 'talk', icon: '🛍️', title: T('משימה 9: קניות', 'Mission 9: Shopping'),
-      body: [
-        T('חנות בגדים: להסתכל בשקט, למדוד, לבקש מידה, להחליט.', 'A clothing shop: browse in peace, try on, ask for a size, decide.'),
-        T('לא צריך לקנות. צריך להרגיש בשליטה מול המוכר.', 'You don’t have to buy. You do have to feel in control with the seller.'),
-      ], cta: T('להיכנס לחנות', 'Walk in') },
-    // From the key sentences onward the flow is shared by all languages: see practiceArrival.ts.
-    ...m09Flow('en'),
-  ],
+  // The whole journey is shared by all languages: see practiceArrival.ts (`m09Steps`).
+  steps: m09Steps('en'),
 };
 void RECOVERY_ITEMS;

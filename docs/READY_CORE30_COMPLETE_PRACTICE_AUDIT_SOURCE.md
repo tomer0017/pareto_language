@@ -59,12 +59,12 @@ Not present in the runtime (so not exported): free sentence construction, typing
 Not a mission. Eight phrases shared by all missions; a mission bundles the ones it uses. Selecting one in a dialogue is always accepted.
 
 - `phrase.recovery.dont-understand` — EN "Sorry, I don't understand." · FR "Désolé, je ne comprends pas." · ES "Perdón, no entiendo." · HE "סליחה, אני לא מבין." — help tool — bundled in missions: 13, 14
-- `phrase.recovery.repeat` — EN "Can you repeat that?" · FR "Vous pouvez répéter ?" · ES "¿Puede repetir, por favor?" · HE "אפשר לחזור על זה?" — help tool — bundled in missions: 01, 03, 05, 06, 08, 09, 10, 11, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- `phrase.recovery.repeat` — EN "Can you repeat that?" · FR "Vous pouvez répéter ?" · ES "¿Puede repetir, por favor?" · HE "אפשר לחזור על זה?" — help tool — bundled in missions: 01, 03, 05, 06, 08, 10, 11, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - `phrase.recovery.slowly` — EN "Please speak slowly." · FR "Parlez lentement, s’il vous plaît." · ES "Más despacio, por favor." · HE "דבר לאט, בבקשה." — help tool — bundled in missions: 01, 02, 03, 04, 06, 07, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
-- `phrase.recovery.show-me` — EN "Can you show me?" · FR "Vous pouvez me montrer ?" · ES "¿Me lo puede mostrar?" · HE "אתה יכול להראות לי?" — help tool — bundled in missions: 04, 07, 09, 17
+- `phrase.recovery.show-me` — EN "Can you show me?" · FR "Vous pouvez me montrer ?" · ES "¿Me lo puede mostrar?" · HE "אתה יכול להראות לי?" — help tool — bundled in missions: 04, 07, 17
 - `phrase.recovery.one-moment` — EN "One moment, please." · FR "Un instant, s’il vous plaît." · ES "Un momento, por favor." · HE "רגע אחד, בבקשה." — help tool — bundled in missions: 02, 03, 06, 08, 14
 - `phrase.recovery.what-mean` — EN "What does that mean?" · FR "Qu’est-ce que ça veut dire ?" · ES "¿Qué significa eso?" · HE "מה זה אומר?" — help tool — bundled in missions: 16, 25
-- `phrase.recovery.thank-you` — EN "Thank you!" · FR "Merci !" · ES "¡Gracias!" · HE "תודה!" — courtesy — bundled in missions: 03, 05, 06, 07, 09, 10, 14, 15, 17, 18, 19, 25, 26, 30
+- `phrase.recovery.thank-you` — EN "Thank you!" · FR "Merci !" · ES "¡Gracias!" · HE "תודה!" — courtesy — bundled in missions: 03, 05, 06, 07, 10, 14, 15, 17, 18, 19, 25, 26, 30
 - `phrase.recovery.sorry` — EN "Sorry!" · FR "(not used by any Core mission)" · ES "(not used by any Core mission)" · HE "סליחה!" — courtesy — bundled in missions: none
 
 Trigger: none. A tool is available only where a mission's author placed it as a button on a choice screen. Typical behaviour: the NPC repeats more slowly or more simply, then the same question is asked again without the tool button.
@@ -300,7 +300,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 09, 10, 11, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 10, 11, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: sentence review (step 17); cold-open correct option (step 20); dialogue choice meeting-host/c1 (accepted)
 
 ### Sentence: `phrase.recovery.slowly`
@@ -2525,7 +2525,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 09, 10, 11, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 10, 11, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: sentence review (step 20); dialogue choice breakfast-order/c2 (accepted)
 
 ### Sentence: `phrase.recovery.slowly`
@@ -2547,7 +2547,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¡Gracias!
 - Role: courtesy from the Recovery Toolkit
 - Tip / pattern note: none
-- Used in missions: 03, 05, 06, 07, 09, 10, 14, 15, 17, 18, 19, 25, 26, 30
+- Used in missions: 03, 05, 06, 07, 10, 14, 15, 17, 18, 19, 25, 26, 30
 - Exercised here as: dialogue choice breakfast-order/c7 (accepted)
 
 ## Expected replies / listening items
@@ -3945,7 +3945,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Me lo puede mostrar?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 04, 07, 09, 17
+- Used in missions: 04, 07, 17
 - Exercised here as: quick-reply response (step 7, round 2, accepted); swap-it frame (step 15, round 4); dialogue choice hostel-desk/c10 (accepted)
 
 ### Sentence: `phrase.recovery.slowly`
@@ -5122,7 +5122,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 09, 10, 11, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 10, 11, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: dialogue choice lost-in-town/c1 (accepted)
 
 ### Sentence: `phrase.recovery.thank-you`
@@ -5133,7 +5133,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¡Gracias!
 - Role: courtesy from the Recovery Toolkit
 - Tip / pattern note: none
-- Used in missions: 03, 05, 06, 07, 09, 10, 14, 15, 17, 18, 19, 25, 26, 30
+- Used in missions: 03, 05, 06, 07, 10, 14, 15, 17, 18, 19, 25, 26, 30
 - Exercised here as: dialogue choice lost-in-town/c2 (accepted)
 
 ## Expected replies / listening items
@@ -6086,7 +6086,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 09, 10, 11, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 10, 11, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: dialogue choice border-control/c2 (accepted)
 
 ### Sentence: `phrase.recovery.slowly`
@@ -6119,7 +6119,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¡Gracias!
 - Role: courtesy from the Recovery Toolkit
 - Tip / pattern note: none
-- Used in missions: 03, 05, 06, 07, 09, 10, 14, 15, 17, 18, 19, 25, 26, 30
+- Used in missions: 03, 05, 06, 07, 10, 14, 15, 17, 18, 19, 25, 26, 30
 - Exercised here as: dialogue choice border-control/c5 (WRONG option)
 
 ## Expected replies / listening items
@@ -7350,7 +7350,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Me lo puede mostrar?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 04, 07, 09, 17
+- Used in missions: 04, 07, 17
 - Exercised here as: dialogue choice taxi-ride/c2 (accepted)
 
 ### Sentence: `phrase.recovery.thank-you`
@@ -7361,7 +7361,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¡Gracias!
 - Role: courtesy from the Recovery Toolkit
 - Tip / pattern note: none
-- Used in missions: 03, 05, 06, 07, 09, 10, 14, 15, 17, 18, 19, 25, 26, 30
+- Used in missions: 03, 05, 06, 07, 10, 14, 15, 17, 18, 19, 25, 26, 30
 - Exercised here as: dialogue choice taxi-ride/c3 (accepted); dialogue choice taxi-ride/c3b (accepted)
 
 ## Expected replies / listening items
@@ -8417,7 +8417,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 09, 10, 11, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 10, 11, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: dialogue choice hotel-checkin/c1 (accepted)
 
 ### Sentence: `phrase.recovery.one-moment`
@@ -9098,7 +9098,7 @@ Learner sentences taught beside the dialogue (not a line in any scene):
 - Phase: 2 — Arrival / הגעה 🛬
 - Source runtime file(s): `apps/web/src/features/bootcamp/day8.ts` · `apps/web/src/features/bootcamp/fr/day8.ts` · `apps/web/src/features/bootcamp/es/day8.ts`
 - Video: found by convention, never written into mission content — EN `videos/en/en_9.mp4` · FR `videos/fr/fr_9.mp4` · ES `videos/es/es_9.mp4`. Played only where that file exists (inventory: `docs/CORE30_FINAL_VIDEO_ACTION_MAP.md`).
-- Video steps inside the Practice flow: no
+- Video steps inside the Practice flow: yes (see flow)
 
 ## Learning goal / intro screen
 
@@ -9120,34 +9120,128 @@ Intro screen (first Practice step; identical in the English, French and Spanish 
 
 - Icon: 🛍️
 - Title: "Mission 9: Shopping" / "משימה 9: קניות"
-- Text 1: "A clothing shop: browse in peace, try on, ask for a size, decide." / "חנות בגדים: להסתכל בשקט, למדוד, לבקש מידה, להחליט."
-- Text 2: "You don’t have to buy. You do have to feel in control with the seller." / "לא צריך לקנות. צריך להרגיש בשליטה מול המוכר."
-- Button: "Walk in" / "להיכנס לחנות"
+- Text 1: "You walked into a clothes shop and found something you like. Try it on and see whether you want to buy it." / "נכנסת לחנות בגדים ומצאת פריט שמוצא חן בעיניך. תמדוד אותו ותראה אם תרצה לקנות."
+- Button: "Start shopping" / "התחל קניות"
 
 ## Current Practice flow
 
 1. `talk` — intro screen — "Mission 9: Shopping"
-2. `tool` — key sentence (listen → reveal → say aloud) — `phrase.shop.just-looking` “I'm just looking, thanks.” · label "Personal space" / "מרחב אישי" (1/4)
-3. `tool` — key sentence (listen → reveal → say aloud) — `phrase.shop.try-on` “Can I try this on?” · label "Try it on" / "למדוד" (2/4)
-4. `tool` — key sentence (listen → reveal → say aloud) — `phrase.shop.bigger` “Do you have a bigger size?” · label "Sizes" / "מידה" (3/4)
-5. `tool` — key sentence (listen → reveal → say aloud) — `phrase.shop.take-it` “I'll take it.” · label "Decide" / "להחליט" (4/4)
-6. `replies` — expected replies (listening drill) — after `phrase.shop.try-on`: 4 replies
-7. `receipt` — receipt (proof card) — "You recognize what a seller asks — size, fitting room, sale." / "אתה מזהה מה מוכר שואל — מידה, חדר הלבשה, מבצע."
-8. `quiz` — meaning quiz (listening) — hears `reply.shop.out-of-stock`
-9. `quickReply` — quick reply (hear → pick your response) — 4 round(s)
-10. `swap` — swap it (one frame, several endings) — 2 round(s)
-11. `dialogue` — dialogue (choose your line) — scene `clothing-shop`
-12. `receipt` — receipt (proof card) — "A full shop: browsed, tried on, asked for a size, decided. Fully in control." / "קניה שלמה: הסתכלת, מדדת, ביקשת מידה, החלטת. בשליטה מלאה."
-13. `swipe` — sentence review — 12 sentences
-14. `ambush` — cold open (fast line) — mode recovery · correct `phrase.recovery.repeat`, wrong `phrase.shop.take-it`
-15. `receipt` — receipt (proof card) — "A long, fast sentence — and instead of freezing, you asked for clarity. Exactly the reflex." / "משפט ארוך ומהיר — ובמקום לקפוא, ביקשת הבהרה. זה בדיוק הרפלקס."
-16. `summary` — victory screen
+2. `prime` — before-we-speak (word intro) — 2 words → builds `reply.shop.fitting-room`
+3. `prime` — before-we-speak (word intro) — 3 words → builds ``
+4. `prime` — before-we-speak (word intro) — 1 words → builds ``
+5. `sentenceBuilder` — sentence builder (put the chunks in order) — 1 round(s)
+6. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+7. `prime` — before-we-speak (word intro) — 2 words → builds ``
+8. `miniMap` — mini map (hear → tap the direction / spot) — 1 round(s)
+9. `receipt` — receipt (proof card) — "👕 In the fitting room: size M is too small for you. 👀 Browse ✅ · 🪞 Try on ✅ · 📏 Size fixed ⬜ · 🏷️ Sale understood ⬜ · 🛍️ Buy ⬜" / "👕 בתא המדידה: מידה M קטנה עליך. 👀 מסתכלים ✅ · 🪞 מודדים ✅ · 📏 מידה מסודרת ⬜ · 🏷️ מבצע הובן ⬜ · 🛍️ קונים ⬜"
+10. `prime` — before-we-speak (word intro) — 1 words → builds ``
+11. `sentenceBuilder` — sentence builder (put the chunks in order) — 1 round(s)
+12. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+13. `prime` — before-we-speak (word intro) — 3 words → builds ``
+14. `visualMatch` — visual match (hear → tap the tile) — 1 round(s)
+15. `visualMatch` — visual match (hear → tap the tile) — 1 round(s)
+16. `receipt` — receipt (proof card) — "👀 Browse ✅ · 🪞 Try on ✅ · 📏 Size fixed ✅ · 🏷️ Sale understood ✅ · 🛍️ Buy ⬜" / "👀 מסתכלים ✅ · 🪞 מודדים ✅ · 📏 מידה מסודרת ✅ · 🏷️ מבצע הובן ✅ · 🛍️ קונים ⬜"
+17. `prime` — before-we-speak (word intro) — 2 words → builds ``
+18. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+19. `miniMap` — mini map (hear → tap the direction / spot) — 1 round(s)
+20. `replies` — expected replies (listening drill) — after `phrase.shop.just-looking`: 3 replies
+21. `quickReply` — quick reply (hear → pick your response) — 2 round(s)
+22. `miniMap` — mini map (hear → tap the direction / spot) — 1 round(s)
+23. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+24. `visualMatch` — visual match (hear → tap the tile) — 1 round(s)
+25. `visualMatch` — visual match (hear → tap the tile) — 1 round(s)
+26. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+27. `miniMap` — mini map (hear → tap the direction / spot) — 1 round(s)
+28. `receipt` — receipt (proof card) — "👀 Browse ✅ · 🪞 Try on ✅ · 📏 Size fixed ✅ · 🏷️ Sale understood ✅ · 🛍️ Buy ✅ — you bought it!" / "👀 מסתכלים ✅ · 🪞 מודדים ✅ · 📏 מידה מסודרת ✅ · 🏷️ מבצע הובן ✅ · 🛍️ קונים ✅ — קנית!"
+29. `dialogue` — dialogue (choose your line) — scene `clothing-shop`
+30. `receipt` — receipt (proof card) — "The whole conversation — from “can I help you?” to the till." / "כל השיחה — מ"אפשר לעזור?" ועד הקופה."
+31. `quickReply` — quick reply (hear → pick your response) — 4 round(s) · speed challenge
+32. `visualMatch` — visual match (hear → tap the tile) — 1 round(s) · speed challenge
+33. `receipt` — receipt (proof card) — "No help — the whole purchase, at her pace." / "בלי עזרה — כל הקנייה, בקצב שלה."
+34. `video` — video — mode again
+35. `quickReply` — quick reply (hear → pick your response) — 2 round(s)
+36. `miniMap` — mini map (hear → tap the direction / spot) — 1 round(s) · speed challenge
+37. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+38. `visualMatch` — visual match (hear → tap the tile) — 1 round(s) · speed challenge
+39. `visualMatch` — visual match (hear → tap the tile) — 1 round(s) · speed challenge
+40. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+41. `miniMap` — mini map (hear → tap the direction / spot) — 1 round(s) · speed challenge
+42. `receipt` — receipt (proof card) — "🛍️ PURCHASE COMPLETE · 👀 Browse ✅ · 🪞 Try on ✅ · 📏 Size fixed ✅ · 🏷️ Sale understood ✅ · 🛍️ Buy ✅" / "🛍️ הקנייה הושלמה · 👀 מסתכלים ✅ · 🪞 מודדים ✅ · 📏 מידה מסודרת ✅ · 🏷️ מבצע הובן ✅ · 🛍️ קונים ✅"
+43. `summary` — victory screen
 
 Step sequence identical in EN / FR / ES: yes.
 
 ## Before we speak / word intro
 
-No vocabulary pre-step.
+Step 2. Label: "Before we speak" / "לפני שנדבר". Intro: "The trying-on words. Tap to hear." / "המילים של המדידה. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `shop.size` — EN "size" · FR "taille" · ES "talla" — meaning "מידה" / "size" — icon 🧥 — new
+2. `shop.fitting-room` — EN "fitting room" · FR "cabine d’essayage" · ES "probador" — meaning "תא מדידה" / "fitting room" — icon 🪞 — new
+
+"These build the sentence:" card: `reply.shop.fitting-room` — EN "The fitting room is over there." · FR "La cabine d’essayage est là-bas." · ES "El probador está allí." · HE "חדר ההלבשה שם." (with its own play button).
+
+Step 3. Label: "Browsing" / "מסתכלים". Intro: "The salesperson comes over — and what you answer. Tap to hear." / "המוכרת ניגשת — ומה אתה עונה. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `shop.line.help` — EN "Hi there! Can I help you find anything?" · FR "Bonjour ! Je peux vous aider à trouver quelque chose ?" · ES "¡Hola! ¿Le ayudo a encontrar algo?" — meaning "היי! אפשר לעזור לך למצוא משהו?" / "Hi there! Can I help you find anything?" — icon 🙋 — new
+2. `shop.line.looking` — EN "I'm just looking, thanks." · FR "Je regarde seulement, merci." · ES "Solo estoy mirando, gracias." — meaning "אני רק מסתכל, תודה." / "I’m just looking, thanks." — icon 👀 — new
+3. `shop.line.time` — EN "Of course, take your time. Let me know if you need a hand." · FR "Bien sûr, prenez votre temps. Dites-moi si vous avez besoin d’aide." · ES "Claro, tómese su tiempo. Avíseme si necesita ayuda." — meaning "כמובן, קח את הזמן. תגיד אם אתה צריך עזרה." / "Of course, take your time. Let me know if you need a hand." — icon ⏳ — new
+
+No build-sentence card.
+
+Step 4. Label: "You found something" / "מצאת משהו". Intro: "Your question — when you find something you want to try. Tap to hear." / "השאלה שלך — כשמצאת משהו שאתה רוצה למדוד. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `shop.line.try` — EN "Can I try this on?" · FR "Je peux essayer ça ?" · ES "¿Puedo probarme esto?" — meaning "אפשר למדוד את זה?" / "Can I try this on?" — icon 🙂 — new
+
+No build-sentence card.
+
+Step 7. Label: "The fitting room" / "תא המדידה". Intro: "What she answers — and where to go. Tap to hear." / "מה שהיא עונה — ולאן ללכת. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `shop.line.size-fitting` — EN "Sure! What size are you? The fitting room is over there." · FR "Bien sûr ! Vous faites quelle taille ? La cabine d’essayage est là-bas." · ES "¡Claro! ¿Qué talla usa? El probador está allí." — meaning "בטח! איזו מידה אתה? חדר ההלבשה שם." / "Sure! What size are you? The fitting room is over there." — icon 🪞 — new
+2. `shop.line.fitting` — EN "The fitting room is over there." · FR "La cabine d’essayage est là-bas." · ES "El probador está allí." — meaning "חדר ההלבשה שם." / "The fitting room is over there." — icon 🪞 — new
+
+No build-sentence card.
+
+Step 10. Label: "Too small" / "קטן מדי". Intro: "Your question — when the size is too small. Tap to hear." / "השאלה שלך — כשהמידה קטנה עליך. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `shop.line.bigger` — EN "Do you have a bigger size?" · FR "Vous avez une taille au-dessus ?" · ES "¿Tiene una talla más grande?" — meaning "יש מידה גדולה יותר?" / "Do you have a bigger size?" — icon ❓ — new
+
+No build-sentence card.
+
+Step 13. Label: "Her answer" / "התשובה שלה". Intro: "What she brings — and what she tells you. Tap to hear." / "מה שהיא מביאה — ומה שהיא מספרת. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `shop.line.size-up-sale` — EN "Here you go, one size up. And good news — it’s on sale, twenty percent off!" · FR "Voilà, une taille au-dessus. Et bonne nouvelle — c’est en solde, vingt pour cent de réduction !" · ES "Aquí tiene, una talla más. Y buena noticia — ¡está rebajado, un veinte por ciento de descuento!" — meaning "הנה, מידה אחת גדולה יותר. ובשורה טובה — זה במבצע, עשרים אחוז הנחה!" / "Here you go, one size up. And good news — it’s on sale, twenty percent off!" — icon 🏷️ — new
+2. `shop.line.size-up` — EN "Here you go, one size up." · FR "Voilà, une taille au-dessus." · ES "Aquí tiene, una talla más." — meaning "הנה, מידה אחת גדולה יותר. (מ־M ל־L)" / "Here you go, one size up. (from M to L)" — icon ⬆️ — new
+3. `shop.line.sale` — EN "it’s on sale, twenty percent off" · FR "c’est en solde, vingt pour cent de réduction" · ES "está rebajado, un veinte por ciento de descuento" — meaning "זה במבצע, עשרים אחוז הנחה" / "it’s on sale, twenty percent off" — icon 🏷️ — new
+
+No build-sentence card.
+
+Step 17. Label: "The decision" / "ההחלטה". Intro: "Your decision — and what she answers. Tap to hear." / "ההחלטה שלך — ומה היא עונה. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `shop.line.take` — EN "Great, I'll take it." · FR "Super, je le prends." · ES "Genial, me lo llevo." — meaning "מעולה, אני אקח את זה." / "Great, I’ll take it." — icon 🤝 — new
+2. `shop.line.till` — EN "Wonderful — I’ll ring you up at the till. Thank you!" · FR "Parfait — je vous encaisse à la caisse. Merci !" · ES "Perfecto — le cobro en la caja. ¡Gracias!" — meaning "נהדר — אחייב אותך בקופה. תודה!" / "Wonderful — I’ll ring you up at the till. Thank you!" — icon 💳 — new
+
+No build-sentence card.
 
 ## Every sentence in this mission
 
@@ -9162,7 +9256,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "A phrase that buys you space from a pushy seller." / "משפט שקונה לך מרחב בלי לחץ מוכר."
 - Used in missions: 09
-- Exercised here as: key sentence (step 2); quick-reply response (step 9, round 1, accepted); quick-reply response (step 9, round 2, wrong option); quick-reply response (step 9, round 3, wrong option); quick-reply response (step 9, round 4, wrong option); sentence review (step 13); dialogue choice clothing-shop/c1 (accepted)
+- Exercised here as: quick-reply response (step 6, round 1, wrong option); quick-reply response (step 12, round 1, wrong option); quick-reply response (step 18, round 1, wrong option); "you said" lead-in of the expected-replies drill (step 20); quick-reply response (step 21, round 1, accepted); quick-reply response (step 21, round 2, wrong option); quick-reply response (step 31, round 1, accepted); quick-reply response (step 31, round 3, wrong option); quick-reply response (step 35, round 1, accepted); quick-reply response (step 35, round 2, wrong option); quick-reply response (step 37, round 1, wrong option); dialogue choice clothing-shop/c1 (accepted)
 
 ### Sentence: `phrase.shop.try-on`
 
@@ -9173,7 +9267,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 09
-- Exercised here as: key sentence (step 3); "you said" lead-in of the expected-replies drill (step 6); quick-reply response (step 9, round 2, accepted); quick-reply response (step 9, round 3, wrong option); sentence review (step 13); dialogue choice clothing-shop/c1 (accepted); dialogue choice clothing-shop/c1b (accepted)
+- Exercised here as: sentence-builder target (step 5, round 1); quick-reply response (step 6, round 1, accepted); quick-reply response (step 12, round 1, wrong option); quick-reply response (step 21, round 2, accepted); quick-reply response (step 23, round 1, wrong option); quick-reply response (step 26, round 1, wrong option); quick-reply response (step 31, round 2, accepted); quick-reply response (step 31, round 4, wrong option); quick-reply response (step 35, round 1, wrong option); quick-reply response (step 35, round 2, accepted); quick-reply response (step 40, round 1, wrong option); dialogue choice clothing-shop/c1 (accepted); dialogue choice clothing-shop/c1b (accepted)
 
 ### Sentence: `phrase.shop.bigger`
 
@@ -9184,7 +9278,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "Template: Do you have a ___ size? (bigger/smaller)." / "תבנית: Do you have a ___ size? (bigger/smaller)."
 - Used in missions: 09
-- Exercised here as: key sentence (step 4); quick-reply response (step 9, round 1, wrong option); swap-it frame (step 10, round 1); swap-it frame (step 10, round 2); sentence review (step 13); dialogue choice clothing-shop/c2 (accepted); dialogue choice clothing-shop/c2b (accepted)
+- Exercised here as: sentence-builder target (step 11, round 1); quick-reply response (step 12, round 1, accepted); quick-reply response (step 18, round 1, wrong option); quick-reply response (step 21, round 1, wrong option); quick-reply response (step 23, round 1, accepted); quick-reply response (step 26, round 1, wrong option); quick-reply response (step 31, round 1, wrong option); quick-reply response (step 31, round 2, wrong option); quick-reply response (step 31, round 3, accepted); quick-reply response (step 31, round 4, wrong option); quick-reply response (step 35, round 2, wrong option); quick-reply response (step 37, round 1, accepted); quick-reply response (step 40, round 1, wrong option); dialogue choice clothing-shop/c2 (accepted); dialogue choice clothing-shop/c2b (accepted)
 
 ### Sentence: `phrase.shop.take-it`
 
@@ -9195,7 +9289,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "Decided? Two words close the deal." / "החלטת? שתי מילים סוגרות עסקה."
 - Used in missions: 09
-- Exercised here as: key sentence (step 5); quick-reply response (step 9, round 1, wrong option); quick-reply response (step 9, round 2, wrong option); quick-reply response (step 9, round 3, accepted); quick-reply response (step 9, round 4, wrong option); sentence review (step 13); cold-open wrong option (step 14); dialogue choice clothing-shop/c3 (accepted); dialogue choice clothing-shop/c3b (accepted)
+- Exercised here as: dialogue choice clothing-shop/c3b (accepted)
 
 ### Sentence: `phrase.shop.too-expensive`
 
@@ -9206,7 +9300,18 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "A polite opening for a discount or a cheaper option." / "פתח מנומס להנחה או לחלופה זולה יותר."
 - Used in missions: 09
-- Exercised here as: quick-reply response (step 9, round 4, accepted); sentence review (step 13); dialogue choice clothing-shop/c3 (accepted)
+- Exercised here as: dialogue choice clothing-shop/c3 (accepted)
+
+### Sentence: `phrase.shop.great-take-it`
+
+- EN: Great, I'll take it.
+- HE: מעולה, אני אקח את זה.
+- FR: Super, je le prends.
+- ES: Genial, me lo llevo.
+- Role: learner production
+- Tip / pattern note: none
+- Used in missions: 09
+- Exercised here as: quick-reply response (step 18, round 1, accepted); quick-reply response (step 21, round 1, wrong option); quick-reply response (step 21, round 2, wrong option); quick-reply response (step 23, round 1, wrong option); quick-reply response (step 26, round 1, accepted); quick-reply response (step 31, round 1, wrong option); quick-reply response (step 31, round 2, wrong option); quick-reply response (step 31, round 3, wrong option); quick-reply response (step 31, round 4, accepted); quick-reply response (step 35, round 1, wrong option); quick-reply response (step 37, round 1, wrong option); quick-reply response (step 40, round 1, accepted); dialogue choice clothing-shop/c3 (accepted)
 
 ### Sentence: `reply.shop.can-i-help`
 
@@ -9217,7 +9322,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 09
-- Exercised here as: quick-reply prompt (step 9, round 1); sentence review (step 13)
+- Exercised here as: nothing (listed only)
 
 ### Sentence: `reply.shop.what-size`
 
@@ -9228,7 +9333,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 09
-- Exercised here as: expected-reply audio (step 6); sentence review (step 13)
+- Exercised here as: nothing (listed only)
 
 ### Sentence: `reply.shop.fitting-room`
 
@@ -9239,40 +9344,40 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 09
-- Exercised here as: expected-reply audio (step 6); meaning-quiz distractor (step 8); sentence review (step 13)
+- Exercised here as: built by the word intro (step 2)
 
-### Sentence: `reply.shop.out-of-stock`
+### Sentence: `reply.shop.help-find`
 
-- EN: Sorry, that's out of stock.
-- HE: סליחה, זה אזל מהמלאי.
-- FR: Désolé, c’est en rupture de stock.
-- ES: Lo siento, está agotado.
+- EN: Hi there! Can I help you find anything?
+- HE: היי! אפשר לעזור לך למצוא משהו?
+- FR: Bonjour ! Je peux vous aider à trouver quelque chose ?
+- ES: ¡Hola! ¿Le ayudo a encontrar algo?
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 09
-- Exercised here as: meaning-quiz audio (step 8); sentence review (step 13)
+- Exercised here as: expected-reply audio (step 20)
 
-### Sentence: `reply.shop.on-sale`
+### Sentence: `reply.shop.take-your-time`
 
-- EN: It's on sale — twenty percent off.
-- HE: זה במבצע — עשרים אחוז הנחה.
-- FR: C’est en solde — vingt pour cent de réduction.
-- ES: Está rebajado — un veinte por ciento de descuento.
+- EN: Of course, take your time. Let me know if you need a hand.
+- HE: כמובן, קח את הזמן. תגיד אם אתה צריך עזרה.
+- FR: Bien sûr, prenez votre temps. Dites-moi si vous avez besoin d’aide.
+- ES: Claro, tómese su tiempo. Avíseme si necesita ayuda.
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 09
-- Exercised here as: expected-reply audio (step 6); meaning-quiz distractor (step 8); quick-reply prompt (step 9, round 3); sentence review (step 13)
+- Exercised here as: expected-reply audio (step 20)
 
-### Sentence: `reply.shop.anything-else`
+### Sentence: `reply.shop.till-line`
 
-- EN: Anything else for you today?
-- HE: עוד משהו היום?
-- FR: Ce sera tout pour vous aujourd’hui ?
-- ES: ¿Algo más para hoy?
+- EN: Wonderful — I’ll ring you up at the till. Thank you!
+- HE: נהדר — אחייב אותך בקופה. תודה!
+- FR: Parfait — je vous encaisse à la caisse. Merci !
+- ES: Perfecto — le cobro en la caja. ¡Gracias!
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 09
-- Exercised here as: expected-reply audio (step 6)
+- Exercised here as: expected-reply audio (step 20)
 
 ### Sentence: `phrase.recovery.slowly`
 
@@ -9283,190 +9388,451 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
 - Used in missions: 01, 02, 03, 04, 06, 07, 09, 10, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
-- Exercised here as: sentence review (step 13); dialogue choice clothing-shop/c2 (accepted)
-
-### Sentence: `phrase.recovery.repeat`
-
-- EN: Can you repeat that?
-- HE: אפשר לחזור על זה?
-- FR: Vous pouvez répéter ?
-- ES: ¿Puede repetir, por favor?
-- Role: conversation-help tool (global Recovery Toolkit)
-- Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 09, 10, 11, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
-- Exercised here as: sentence review (step 13); cold-open correct option (step 14)
-
-### Sentence: `phrase.recovery.thank-you`
-
-- EN: Thank you!
-- HE: תודה!
-- FR: Merci !
-- ES: ¡Gracias!
-- Role: courtesy from the Recovery Toolkit
-- Tip / pattern note: none
-- Used in missions: 03, 05, 06, 07, 09, 10, 14, 15, 17, 18, 19, 25, 26, 30
-- Exercised here as: nothing (listed only)
-
-### Sentence: `phrase.recovery.show-me`
-
-- EN: Can you show me?
-- HE: אתה יכול להראות לי?
-- FR: Vous pouvez me montrer ?
-- ES: ¿Me lo puede mostrar?
-- Role: conversation-help tool (global Recovery Toolkit)
-- Tip / pattern note: none
-- Used in missions: 04, 07, 09, 17
-- Exercised here as: nothing (listed only)
+- Exercised here as: dialogue choice clothing-shop/c2 (accepted)
 
 ## Expected replies / listening items
 
-Lead-in screen: "You said:" / "אמרת:" — EN "Can I try this on?" · FR "Je peux essayer ça ?" · ES "¿Puedo probarme esto?" — then "What might they answer? Learn the replies before they surprise you." / "מה הם עלולים לענות? נלמד את התשובות לפני שהן מפתיעות אותך." — button 👂 "I'm ready" / "אני מוכן".
-Linked learner sentence: `phrase.shop.try-on`. Each reply below is played once automatically; the learner picks its MEANING from three buttons. Distractors are always the first two OTHER replies of this same drill, in drill order (runtime rule), so the three choices are shuffled per session.
+Lead-in screen: "You said:" / "אמרת:" — EN "I'm just looking, thanks." · FR "Je regarde seulement, merci." · ES "Solo estoy mirando, gracias." — then "What might they answer? Learn the replies before they surprise you." / "מה הם עלולים לענות? נלמד את התשובות לפני שהן מפתיעות אותך." — button 👂 "I'm ready" / "אני מוכן".
+Linked learner sentence: `phrase.shop.just-looking`. Each reply below is played once automatically; the learner picks its MEANING from three buttons. Distractors are always the first two OTHER replies of this same drill, in drill order (runtime rule), so the three choices are shuffled per session.
 
-### M09-Q01 — expected-reply (step 6, reply 1 of 4)
+### M09-Q10 — expected-reply (step 20, reply 1 of 3)
 
-- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (1/4)
-- Audio played: EN "What size are you?" · FR "Vous faites quelle taille ?" · ES "¿Qué talla usa?"
-- Meaning of the audio (HE): "איזו מידה אתה?"
+- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (1/3)
+- Audio played: EN "Hi there! Can I help you find anything?" · FR "Bonjour ! Je peux vous aider à trouver quelque chose ?" · ES "¡Hola! ¿Le ayudo a encontrar algo?"
+- Meaning of the audio (HE): "היי! אפשר לעזור לך למצוא משהו?"
 - Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
 - Choices:
-  1. HE "איזו מידה אתה?" / EN "What size are you?" — `reply.shop.what-size` — ✅ accepted
-  2. HE "חדר ההלבשה שם." / EN "The fitting room is over there." — `reply.shop.fitting-room` — ❌ wrong
-  3. HE "זה במבצע — עשרים אחוז הנחה." / EN "It's on sale — twenty percent off." — `reply.shop.on-sale` — ❌ wrong
-- Tests: reply.shop.what-size
-- Explanation shown after answering: generic: “What size are you?” means “איזו מידה אתה?”.
+  1. HE "היי! אפשר לעזור לך למצוא משהו?" / EN "Hi there! Can I help you find anything?" — `reply.shop.help-find` — ✅ accepted
+  2. HE "כמובן, קח את הזמן. תגיד אם אתה צריך עזרה." / EN "Of course, take your time. Let me know if you need a hand." — `reply.shop.take-your-time` — ❌ wrong
+  3. HE "נהדר — אחייב אותך בקופה. תודה!" / EN "Wonderful — I’ll ring you up at the till. Thank you!" — `reply.shop.till-line` — ❌ wrong
+- Tests: reply.shop.help-find
+- Explanation shown after answering: generic: “Hi there! Can I help you find anything?” means “היי! אפשר לעזור לך למצוא משהו?”.
 
-### M09-Q02 — expected-reply (step 6, reply 2 of 4)
+### M09-Q11 — expected-reply (step 20, reply 2 of 3)
 
-- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (2/4)
-- Audio played: EN "The fitting room is over there." · FR "La cabine d’essayage est là-bas." · ES "El probador está allí."
-- Meaning of the audio (HE): "חדר ההלבשה שם."
+- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (2/3)
+- Audio played: EN "Of course, take your time. Let me know if you need a hand." · FR "Bien sûr, prenez votre temps. Dites-moi si vous avez besoin d’aide." · ES "Claro, tómese su tiempo. Avíseme si necesita ayuda."
+- Meaning of the audio (HE): "כמובן, קח את הזמן. תגיד אם אתה צריך עזרה."
 - Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
 - Choices:
-  1. HE "חדר ההלבשה שם." / EN "The fitting room is over there." — `reply.shop.fitting-room` — ✅ accepted
-  2. HE "איזו מידה אתה?" / EN "What size are you?" — `reply.shop.what-size` — ❌ wrong
-  3. HE "זה במבצע — עשרים אחוז הנחה." / EN "It's on sale — twenty percent off." — `reply.shop.on-sale` — ❌ wrong
-- Tests: reply.shop.fitting-room
-- Explanation shown after answering: generic: “The fitting room is over there.” means “חדר ההלבשה שם.”.
+  1. HE "כמובן, קח את הזמן. תגיד אם אתה צריך עזרה." / EN "Of course, take your time. Let me know if you need a hand." — `reply.shop.take-your-time` — ✅ accepted
+  2. HE "היי! אפשר לעזור לך למצוא משהו?" / EN "Hi there! Can I help you find anything?" — `reply.shop.help-find` — ❌ wrong
+  3. HE "נהדר — אחייב אותך בקופה. תודה!" / EN "Wonderful — I’ll ring you up at the till. Thank you!" — `reply.shop.till-line` — ❌ wrong
+- Tests: reply.shop.take-your-time
+- Explanation shown after answering: generic: “Of course, take your time. Let me know if you need a hand.” means “כמובן, קח את הזמן. תגיד אם אתה צריך עזרה.”.
 
-### M09-Q03 — expected-reply (step 6, reply 3 of 4)
+### M09-Q12 — expected-reply (step 20, reply 3 of 3)
 
-- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (3/4)
-- Audio played: EN "It's on sale — twenty percent off." · FR "C’est en solde — vingt pour cent de réduction." · ES "Está rebajado — un veinte por ciento de descuento."
-- Meaning of the audio (HE): "זה במבצע — עשרים אחוז הנחה."
+- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (3/3)
+- Audio played: EN "Wonderful — I’ll ring you up at the till. Thank you!" · FR "Parfait — je vous encaisse à la caisse. Merci !" · ES "Perfecto — le cobro en la caja. ¡Gracias!"
+- Meaning of the audio (HE): "נהדר — אחייב אותך בקופה. תודה!"
 - Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
 - Choices:
-  1. HE "זה במבצע — עשרים אחוז הנחה." / EN "It's on sale — twenty percent off." — `reply.shop.on-sale` — ✅ accepted
-  2. HE "איזו מידה אתה?" / EN "What size are you?" — `reply.shop.what-size` — ❌ wrong
-  3. HE "חדר ההלבשה שם." / EN "The fitting room is over there." — `reply.shop.fitting-room` — ❌ wrong
-- Tests: reply.shop.on-sale
-- Explanation shown after answering: generic: “It's on sale — twenty percent off.” means “זה במבצע — עשרים אחוז הנחה.”.
-
-### M09-Q04 — expected-reply (step 6, reply 4 of 4)
-
-- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (4/4)
-- Audio played: EN "Anything else for you today?" · FR "Ce sera tout pour vous aujourd’hui ?" · ES "¿Algo más para hoy?"
-- Meaning of the audio (HE): "עוד משהו היום?"
-- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
-- Choices:
-  1. HE "עוד משהו היום?" / EN "Anything else for you today?" — `reply.shop.anything-else` — ✅ accepted
-  2. HE "איזו מידה אתה?" / EN "What size are you?" — `reply.shop.what-size` — ❌ wrong
-  3. HE "חדר ההלבשה שם." / EN "The fitting room is over there." — `reply.shop.fitting-room` — ❌ wrong
-- Tests: reply.shop.anything-else
-- Explanation shown after answering: generic: “Anything else for you today?” means “עוד משהו היום?”.
+  1. HE "נהדר — אחייב אותך בקופה. תודה!" / EN "Wonderful — I’ll ring you up at the till. Thank you!" — `reply.shop.till-line` — ✅ accepted
+  2. HE "היי! אפשר לעזור לך למצוא משהו?" / EN "Hi there! Can I help you find anything?" — `reply.shop.help-find` — ❌ wrong
+  3. HE "כמובן, קח את הזמן. תגיד אם אתה צריך עזרה." / EN "Of course, take your time. Let me know if you need a hand." — `reply.shop.take-your-time` — ❌ wrong
+- Tests: reply.shop.till-line
+- Explanation shown after answering: generic: “Wonderful — I’ll ring you up at the till. Thank you!” means “נהדר — אחייב אותך בקופה. תודה!”.
 
 ## Quizzes
 
-### M09-Q05 — meaning-quiz (step 8, single question)
-
-- Prompt displayed: "What did it mean?" / "מה זה אומר?"
-- Audio played: EN "Sorry, that's out of stock." · FR "Désolé, c’est en rupture de stock." · ES "Lo siento, está agotado."
-- Meaning of the audio (HE): "סליחה, זה אזל מהמלאי."
-- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
-- Choices:
-  1. HE "סליחה, זה אזל מהמלאי." / EN "Sorry, that's out of stock." — `reply.shop.out-of-stock` — ✅ accepted
-  2. HE "זה במבצע — עשרים אחוז הנחה." / EN "It's on sale — twenty percent off." — `reply.shop.on-sale` — ❌ wrong
-  3. HE "חדר ההלבשה שם." / EN "The fitting room is over there." — `reply.shop.fitting-room` — ❌ wrong
-- Tests: reply.shop.out-of-stock
-- Explanation shown after answering: generic: “Sorry, that's out of stock.” means “סליחה, זה אזל מהמלאי.”.
+No meaning quiz in this mission.
 
 ## Active practice — Quick Reply · Visual Match · Swap It · Mini Map
 
-### M09-Q06 — quick-reply (step 9, round 1 of 4)
+### M09-Q01 — sentence-builder (step 5, round 1 of 1)
 
-- Prompt displayed: "In the shop — what do you say?" / "בחנות — מה אומרים?"
-- Audio played: EN "Can I help you find anything?" · FR "Je peux vous aider à trouver quelque chose ?" · ES "¿Le ayudo a encontrar algo?"
-- Meaning of the audio (HE): "אפשר לעזור לך למצוא משהו?"
-- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Prompt displayed: "Your question" / "השאלה שלך" — cue shown: the sentence's MEANING in the app language ("אפשר למדוד את זה?")
+- Audio played: EN "(nothing before Check; the built sentence is spoken once it is right)" · FR "(same)" · ES "(same)"
+- Meaning of the audio (HE): —
+- Buttons show: the authored CHUNKS of the sentence as tiles (listed here in the correct order, separated by "|"), shuffled; each language has its own chunks; Check unlocks when every tile is placed
 - Choices:
-  1. EN "I'm just looking, thanks." · FR "Je regarde seulement, merci." · ES "Solo estoy mirando, gracias." · (HE gloss "אני רק מסתכל, תודה.") — `phrase.shop.just-looking` — ✅ accepted
-  2. EN "I'll take it." · FR "Je le prends." · ES "Me lo llevo." · (HE gloss "אני אקח את זה.") — `phrase.shop.take-it` — ❌ wrong
-  3. EN "Do you have a bigger size?" · FR "Vous avez une taille au-dessus ?" · ES "¿Tiene una talla más grande?" · (HE gloss "יש מידה גדולה יותר?") — `phrase.shop.bigger` — ❌ wrong
-- Tests: phrase.shop.just-looking
-- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+  1. EN "Can I  |  try this  |  on?" · FR "Je peux  |  essayer  |  ça ?" · ES "¿Puedo  |  probarme  |  esto?" · (HE gloss "אפשר למדוד את זה?") — `phrase.shop.try-on` — ✅ accepted
+- Tests: phrase.shop.try-on
+- Explanation shown after answering: right: the sentence is spoken and its translation shown. Wrong: "not yet" — the tiles stay, the answer is NOT shown; after one miss a hint marks the start; after two misses the learner may reveal it
 
-### M09-Q07 — quick-reply (step 9, round 2 of 4)
+### M09-Q02 — quick-reply (step 6, round 1 of 1)
 
-- Prompt displayed: "In the shop — what do you say?" / "בחנות — מה אומרים?" — situation shown: "You found something you like. You want to try it on." / "מצאת משהו שמוצא חן בעיניך. אתה רוצה למדוד אותו."
+- Prompt displayed: "What do you say?" / "מה אתה אומר?" — situation shown: "You found a jacket you like. You want to try it on." / "מצאת ז׳קט שמוצא חן בעיניך. אתה רוצה למדוד אותו."
 - Audio played: EN "(nothing is played — a situation is shown)" · FR "(nothing is played — a situation is shown)" · ES "(nothing is played — a situation is shown)"
 - Meaning of the audio (HE): —
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
   1. EN "Can I try this on?" · FR "Je peux essayer ça ?" · ES "¿Puedo probarme esto?" · (HE gloss "אפשר למדוד את זה?") — `phrase.shop.try-on` — ✅ accepted
   2. EN "I'm just looking, thanks." · FR "Je regarde seulement, merci." · ES "Solo estoy mirando, gracias." · (HE gloss "אני רק מסתכל, תודה.") — `phrase.shop.just-looking` — ❌ wrong
-  3. EN "I'll take it." · FR "Je le prends." · ES "Me lo llevo." · (HE gloss "אני אקח את זה.") — `phrase.shop.take-it` — ❌ wrong
 - Tests: phrase.shop.try-on
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M09-Q08 — quick-reply (step 9, round 3 of 4)
+### M09-Q03 — mini-map (step 8, round 1 of 1)
 
-- Prompt displayed: "In the shop — what do you say?" / "בחנות — מה אומרים?"
-- Audio played: EN "It's on sale — twenty percent off." · FR "C’est en solde — vingt pour cent de réduction." · ES "Está rebajado — un veinte por ciento de descuento."
-- Meaning of the audio (HE): "זה במבצע — עשרים אחוז הנחה."
-- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Prompt displayed: "Where is she sending you? Tap the place in the shop" / "לאן היא שולחת אותך? הקש על המקום בחנות" — board, row by row: 🪞 [tap:fitting-room] | · | 💳 [tap:till] // · | 👗 [tap:racks] | · // · | 🚶 [tap:entrance] | ·
+- Audio played: EN "Sure! What size are you? The fitting room is over there." · FR "Bien sûr ! Vous faites quelle taille ? La cabine d’essayage est là-bas." · ES "¡Claro! ¿Qué talla usa? El probador está allí."
+- Meaning of the audio (HE): "בטח! איזו מידה אתה? חדר ההלבשה שם."
+- Buttons show: the tappable cells of a 3×3 schematic map (fixed positions, not shuffled); the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. EN "I'll take it." · FR "Je le prends." · ES "Me lo llevo." · (HE gloss "אני אקח את זה.") — `phrase.shop.take-it` — ✅ accepted
-  2. EN "I'm just looking, thanks." · FR "Je regarde seulement, merci." · ES "Solo estoy mirando, gracias." · (HE gloss "אני רק מסתכל, תודה.") — `phrase.shop.just-looking` — ❌ wrong
-  3. EN "Can I try this on?" · FR "Je peux essayer ça ?" · ES "¿Puedo probarme esto?" · (HE gloss "אפשר למדוד את זה?") — `phrase.shop.try-on` — ❌ wrong
-- Tests: phrase.shop.take-it
-- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+  1. "🪞 fitting-room" — no sentence id — ✅ accepted
+  2. "💳 till" — no sentence id — ❌ wrong
+  3. "👗 racks" — no sentence id — ❌ wrong
+  4. "🚶 entrance" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
 
-### M09-Q09 — quick-reply (step 9, round 4 of 4)
+### M09-Q04 — sentence-builder (step 11, round 1 of 1)
 
-- Prompt displayed: "In the shop — what do you say?" / "בחנות — מה אומרים?" — situation shown: "The price is higher than you expected. Say so politely." / "המחיר גבוה ממה שחשבת. אומרים את זה בנימוס."
+- Prompt displayed: "Your question" / "השאלה שלך" — cue shown: the sentence's MEANING in the app language ("יש מידה גדולה יותר?")
+- Audio played: EN "(nothing before Check; the built sentence is spoken once it is right)" · FR "(same)" · ES "(same)"
+- Meaning of the audio (HE): —
+- Buttons show: the authored CHUNKS of the sentence as tiles (listed here in the correct order, separated by "|"), shuffled; each language has its own chunks; Check unlocks when every tile is placed
+- Choices:
+  1. EN "Do you have  |  a bigger  |  size?" · FR "Vous avez  |  une taille  |  au-dessus ?" · ES "¿Tiene  |  una talla  |  más grande?" · (HE gloss "יש מידה גדולה יותר?") — `phrase.shop.bigger` — ✅ accepted
+- Tests: phrase.shop.bigger
+- Explanation shown after answering: right: the sentence is spoken and its translation shown. Wrong: "not yet" — the tiles stay, the answer is NOT shown; after one miss a hint marks the start; after two misses the learner may reveal it
+
+### M09-Q05 — quick-reply (step 12, round 1 of 1)
+
+- Prompt displayed: "What do you say?" / "מה אתה אומר?" — situation shown: "👕 In the fitting room: size M is too small for you." / "👕 בתא המדידה: מידה M קטנה עליך."
 - Audio played: EN "(nothing is played — a situation is shown)" · FR "(nothing is played — a situation is shown)" · ES "(nothing is played — a situation is shown)"
 - Meaning of the audio (HE): —
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
-  1. EN "It's a bit expensive." · FR "C’est un peu cher." · ES "Es un poco caro." · (HE gloss "זה קצת יקר.") — `phrase.shop.too-expensive` — ✅ accepted
-  2. EN "I'll take it." · FR "Je le prends." · ES "Me lo llevo." · (HE gloss "אני אקח את זה.") — `phrase.shop.take-it` — ❌ wrong
+  1. EN "Do you have a bigger size?" · FR "Vous avez une taille au-dessus ?" · ES "¿Tiene una talla más grande?" · (HE gloss "יש מידה גדולה יותר?") — `phrase.shop.bigger` — ✅ accepted
+  2. EN "Can I try this on?" · FR "Je peux essayer ça ?" · ES "¿Puedo probarme esto?" · (HE gloss "אפשר למדוד את זה?") — `phrase.shop.try-on` — ❌ wrong
   3. EN "I'm just looking, thanks." · FR "Je regarde seulement, merci." · ES "Solo estoy mirando, gracias." · (HE gloss "אני רק מסתכל, תודה.") — `phrase.shop.just-looking` — ❌ wrong
-- Tests: phrase.shop.too-expensive
+- Tests: phrase.shop.bigger
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M09-Q10 — swap-it (step 10, round 1 of 2)
+### M09-Q06 — visual-match (step 14, round 1 of 1)
 
-- Prompt displayed: "Which size do you ask for?" / "איזו מידה לבקש?" — cue 👕 "It is too small on you" / "זה קטן עליך" — frame EN "Do you have a ___ size?" · FR "Vous avez une taille ___ ?" · ES "¿Tiene una talla ___?"
-- Audio played: EN "(nothing before the tap; the completed sentence is spoken after it)" · FR "(same)" · ES "(same)"
-- Meaning of the audio (HE): —
-- Buttons show: the SLOT VALUES in the target language (shown here as "value → completed sentence"); order shuffled; a "wrong" value still produces and speaks a real sentence, with its translation
+- Prompt displayed: "You had M. Which size did she bring?" / "היה לך M. איזו מידה היא הביאה?"
+- Audio played: EN "Here you go, one size up. And good news — it’s on sale, twenty percent off!" · FR "Voilà, une taille au-dessus. Et bonne nouvelle — c’est en solde, vingt pour cent de réduction !" · ES "Aquí tiene, una talla más. Y buena noticia — ¡está rebajado, un veinte por ciento de descuento!"
+- Meaning of the audio (HE): "הנה, מידה אחת גדולה יותר. ובשורה טובה — זה במבצע, עשרים אחוז הנחה!"
+- Buttons show: a 3×3 board of 4 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. EN "bigger → Do you have a bigger size?" · FR "plus grande → Vous avez une taille plus grande ?" · ES "más grande → ¿Tiene una talla más grande?" · (HE gloss "יש מידה גדולה יותר?") — `phrase.shop.bigger` — ✅ accepted
-  2. EN "smaller → Do you have a smaller size?" · FR "plus petite → Vous avez une taille plus petite ?" · ES "más pequeña → ¿Tiene una talla más pequeña?" · (HE gloss "יש מידה קטנה יותר?") — no sentence id — ❌ wrong
-- Tests: phrase.shop.bigger
-- Explanation shown after answering: after the tap: the completed sentence, spoken, with its translation
+  1. "S" — no sentence id — ❌ wrong
+  2. "M" — no sentence id — ❌ wrong
+  3. "L" — no sentence id — ✅ accepted
+  4. "XL" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
 
-### M09-Q11 — swap-it (step 10, round 2 of 2)
+### M09-Q07 — visual-match (step 15, round 1 of 1)
 
-- Prompt displayed: "Which size do you ask for?" / "איזו מידה לבקש?" — cue 🧥 "It is too big on you" / "זה גדול עליך" — frame EN "Do you have a ___ size?" · FR "Vous avez une taille ___ ?" · ES "¿Tiene una talla ___?"
-- Audio played: EN "(nothing before the tap; the completed sentence is spoken after it)" · FR "(same)" · ES "(same)"
-- Meaning of the audio (HE): —
-- Buttons show: the SLOT VALUES in the target language (shown here as "value → completed sentence"); order shuffled; a "wrong" value still produces and speaks a real sentence, with its translation
+- Prompt displayed: "What discount did she say?" / "כמה הנחה היא אמרה?"
+- Audio played: EN "Here you go, one size up. And good news — it’s on sale, twenty percent off!" · FR "Voilà, une taille au-dessus. Et bonne nouvelle — c’est en solde, vingt pour cent de réduction !" · ES "Aquí tiene, una talla más. Y buena noticia — ¡está rebajado, un veinte por ciento de descuento!"
+- Meaning of the audio (HE): "הנה, מידה אחת גדולה יותר. ובשורה טובה — זה במבצע, עשרים אחוז הנחה!"
+- Buttons show: a 3×3 board of 3 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. EN "bigger → Do you have a bigger size?" · FR "plus grande → Vous avez une taille plus grande ?" · ES "más grande → ¿Tiene una talla más grande?" · (HE gloss "יש מידה גדולה יותר?") — no sentence id — ❌ wrong
-  2. EN "smaller → Do you have a smaller size?" · FR "plus petite → Vous avez une taille plus petite ?" · ES "más pequeña → ¿Tiene una talla más pequeña?" · (HE gloss "יש מידה קטנה יותר?") — `phrase.shop.bigger` — ✅ accepted
+  1. "−10%" — no sentence id — ❌ wrong
+  2. "−20%" — no sentence id — ✅ accepted
+  3. "−50%" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M09-Q08 — quick-reply (step 18, round 1 of 1)
+
+- Prompt displayed: "What do you say?" / "מה אתה אומר?" — situation shown: "Size L fits you, and it is on sale. You decide to buy it." / "מידה L מתאימה לך, והיא במבצע. אתה מחליט לקנות."
+- Audio played: EN "(nothing is played — a situation is shown)" · FR "(nothing is played — a situation is shown)" · ES "(nothing is played — a situation is shown)"
+- Meaning of the audio (HE): —
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Great, I'll take it." · FR "Super, je le prends." · ES "Genial, me lo llevo." · (HE gloss "מעולה, אני אקח את זה.") — `phrase.shop.great-take-it` — ✅ accepted
+  2. EN "Do you have a bigger size?" · FR "Vous avez une taille au-dessus ?" · ES "¿Tiene una talla más grande?" · (HE gloss "יש מידה גדולה יותר?") — `phrase.shop.bigger` — ❌ wrong
+  3. EN "I'm just looking, thanks." · FR "Je regarde seulement, merci." · ES "Solo estoy mirando, gracias." · (HE gloss "אני רק מסתכל, תודה.") — `phrase.shop.just-looking` — ❌ wrong
+- Tests: phrase.shop.great-take-it
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M09-Q09 — mini-map (step 19, round 1 of 1)
+
+- Prompt displayed: "Where to now? Tap the place in the shop" / "לאן עכשיו? הקש על המקום בחנות" — board, row by row: 🪞 [tap:fitting-room] | · | 💳 [tap:till] // · | 👗 [tap:racks] | · // · | 🚶 [tap:entrance] | ·
+- Audio played: EN "Wonderful — I’ll ring you up at the till. Thank you!" · FR "Parfait — je vous encaisse à la caisse. Merci !" · ES "Perfecto — le cobro en la caja. ¡Gracias!"
+- Meaning of the audio (HE): "נהדר — אחייב אותך בקופה. תודה!"
+- Buttons show: the tappable cells of a 3×3 schematic map (fixed positions, not shuffled); the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "🪞 fitting-room" — no sentence id — ❌ wrong
+  2. "💳 till" — no sentence id — ✅ accepted
+  3. "👗 racks" — no sentence id — ❌ wrong
+  4. "🚶 entrance" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M09-Q13 — quick-reply (step 21, round 1 of 2)
+
+- Prompt displayed: "👀 Browse ✅ · 🪞 Try on ⬜ · 📏 Size fixed ⬜ · 🏷️ Sale understood ⬜ · 🛍️ Buy ⬜" / "👀 מסתכלים ✅ · 🪞 מודדים ⬜ · 📏 מידה מסודרת ⬜ · 🏷️ מבצע הובן ⬜ · 🛍️ קונים ⬜"
+- Audio played: EN "Hi there! Can I help you find anything?" · FR "Bonjour ! Je peux vous aider à trouver quelque chose ?" · ES "¡Hola! ¿Le ayudo a encontrar algo?"
+- Meaning of the audio (HE): "היי! אפשר לעזור לך למצוא משהו?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "I'm just looking, thanks." · FR "Je regarde seulement, merci." · ES "Solo estoy mirando, gracias." · (HE gloss "אני רק מסתכל, תודה.") — `phrase.shop.just-looking` — ✅ accepted
+  2. EN "Great, I'll take it." · FR "Super, je le prends." · ES "Genial, me lo llevo." · (HE gloss "מעולה, אני אקח את זה.") — `phrase.shop.great-take-it` — ❌ wrong
+  3. EN "Do you have a bigger size?" · FR "Vous avez une taille au-dessus ?" · ES "¿Tiene una talla más grande?" · (HE gloss "יש מידה גדולה יותר?") — `phrase.shop.bigger` — ❌ wrong
+- Tests: phrase.shop.just-looking
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M09-Q14 — quick-reply (step 21, round 2 of 2)
+
+- Prompt displayed: "👀 Browse ✅ · 🪞 Try on ⬜ · 📏 Size fixed ⬜ · 🏷️ Sale understood ⬜ · 🛍️ Buy ⬜" / "👀 מסתכלים ✅ · 🪞 מודדים ⬜ · 📏 מידה מסודרת ⬜ · 🏷️ מבצע הובן ⬜ · 🛍️ קונים ⬜" — situation shown: "You found a jacket you like. You want to try it on." / "מצאת ז׳קט שמוצא חן בעיניך. אתה רוצה למדוד אותו."
+- Audio played: EN "(nothing is played — a situation is shown)" · FR "(nothing is played — a situation is shown)" · ES "(nothing is played — a situation is shown)"
+- Meaning of the audio (HE): —
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Can I try this on?" · FR "Je peux essayer ça ?" · ES "¿Puedo probarme esto?" · (HE gloss "אפשר למדוד את זה?") — `phrase.shop.try-on` — ✅ accepted
+  2. EN "I'm just looking, thanks." · FR "Je regarde seulement, merci." · ES "Solo estoy mirando, gracias." · (HE gloss "אני רק מסתכל, תודה.") — `phrase.shop.just-looking` — ❌ wrong
+  3. EN "Great, I'll take it." · FR "Super, je le prends." · ES "Genial, me lo llevo." · (HE gloss "מעולה, אני אקח את זה.") — `phrase.shop.great-take-it` — ❌ wrong
+- Tests: phrase.shop.try-on
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M09-Q15 — mini-map (step 22, round 1 of 1)
+
+- Prompt displayed: "Where is she sending you? Tap the place in the shop" / "לאן היא שולחת אותך? הקש על המקום בחנות" — board, row by row: 🪞 [tap:fitting-room] | · | 💳 [tap:till] // · | 👗 [tap:racks] | · // · | 🚶 [tap:entrance] | ·
+- Audio played: EN "Sure! What size are you? The fitting room is over there." · FR "Bien sûr ! Vous faites quelle taille ? La cabine d’essayage est là-bas." · ES "¡Claro! ¿Qué talla usa? El probador está allí."
+- Meaning of the audio (HE): "בטח! איזו מידה אתה? חדר ההלבשה שם."
+- Buttons show: the tappable cells of a 3×3 schematic map (fixed positions, not shuffled); the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "🪞 fitting-room" — no sentence id — ✅ accepted
+  2. "💳 till" — no sentence id — ❌ wrong
+  3. "👗 racks" — no sentence id — ❌ wrong
+  4. "🚶 entrance" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M09-Q16 — quick-reply (step 23, round 1 of 1)
+
+- Prompt displayed: "👀 Browse ✅ · 🪞 Try on ✅ · 📏 Size fixed ⬜ · 🏷️ Sale understood ⬜ · 🛍️ Buy ⬜" / "👀 מסתכלים ✅ · 🪞 מודדים ✅ · 📏 מידה מסודרת ⬜ · 🏷️ מבצע הובן ⬜ · 🛍️ קונים ⬜" — situation shown: "👕 In the fitting room: size M is too small for you." / "👕 בתא המדידה: מידה M קטנה עליך."
+- Audio played: EN "(nothing is played — a situation is shown)" · FR "(nothing is played — a situation is shown)" · ES "(nothing is played — a situation is shown)"
+- Meaning of the audio (HE): —
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Do you have a bigger size?" · FR "Vous avez une taille au-dessus ?" · ES "¿Tiene una talla más grande?" · (HE gloss "יש מידה גדולה יותר?") — `phrase.shop.bigger` — ✅ accepted
+  2. EN "Great, I'll take it." · FR "Super, je le prends." · ES "Genial, me lo llevo." · (HE gloss "מעולה, אני אקח את זה.") — `phrase.shop.great-take-it` — ❌ wrong
+  3. EN "Can I try this on?" · FR "Je peux essayer ça ?" · ES "¿Puedo probarme esto?" · (HE gloss "אפשר למדוד את זה?") — `phrase.shop.try-on` — ❌ wrong
 - Tests: phrase.shop.bigger
-- Explanation shown after answering: after the tap: the completed sentence, spoken, with its translation
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M09-Q17 — visual-match (step 24, round 1 of 1)
+
+- Prompt displayed: "You had M. Which size did she bring?" / "היה לך M. איזו מידה היא הביאה?"
+- Audio played: EN "Here you go, one size up. And good news — it’s on sale, twenty percent off!" · FR "Voilà, une taille au-dessus. Et bonne nouvelle — c’est en solde, vingt pour cent de réduction !" · ES "Aquí tiene, una talla más. Y buena noticia — ¡está rebajado, un veinte por ciento de descuento!"
+- Meaning of the audio (HE): "הנה, מידה אחת גדולה יותר. ובשורה טובה — זה במבצע, עשרים אחוז הנחה!"
+- Buttons show: a 3×3 board of 4 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "S" — no sentence id — ❌ wrong
+  2. "M" — no sentence id — ❌ wrong
+  3. "L" — no sentence id — ✅ accepted
+  4. "XL" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M09-Q18 — visual-match (step 25, round 1 of 1)
+
+- Prompt displayed: "What discount did she say?" / "כמה הנחה היא אמרה?"
+- Audio played: EN "Here you go, one size up. And good news — it’s on sale, twenty percent off!" · FR "Voilà, une taille au-dessus. Et bonne nouvelle — c’est en solde, vingt pour cent de réduction !" · ES "Aquí tiene, una talla más. Y buena noticia — ¡está rebajado, un veinte por ciento de descuento!"
+- Meaning of the audio (HE): "הנה, מידה אחת גדולה יותר. ובשורה טובה — זה במבצע, עשרים אחוז הנחה!"
+- Buttons show: a 3×3 board of 3 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "−10%" — no sentence id — ❌ wrong
+  2. "−20%" — no sentence id — ✅ accepted
+  3. "−50%" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M09-Q19 — quick-reply (step 26, round 1 of 1)
+
+- Prompt displayed: "👀 Browse ✅ · 🪞 Try on ✅ · 📏 Size fixed ✅ · 🏷️ Sale understood ✅ · 🛍️ Buy ⬜" / "👀 מסתכלים ✅ · 🪞 מודדים ✅ · 📏 מידה מסודרת ✅ · 🏷️ מבצע הובן ✅ · 🛍️ קונים ⬜" — situation shown: "Size L fits you, and it is on sale. You decide to buy it." / "מידה L מתאימה לך, והיא במבצע. אתה מחליט לקנות."
+- Audio played: EN "(nothing is played — a situation is shown)" · FR "(nothing is played — a situation is shown)" · ES "(nothing is played — a situation is shown)"
+- Meaning of the audio (HE): —
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Great, I'll take it." · FR "Super, je le prends." · ES "Genial, me lo llevo." · (HE gloss "מעולה, אני אקח את זה.") — `phrase.shop.great-take-it` — ✅ accepted
+  2. EN "Do you have a bigger size?" · FR "Vous avez une taille au-dessus ?" · ES "¿Tiene una talla más grande?" · (HE gloss "יש מידה גדולה יותר?") — `phrase.shop.bigger` — ❌ wrong
+  3. EN "Can I try this on?" · FR "Je peux essayer ça ?" · ES "¿Puedo probarme esto?" · (HE gloss "אפשר למדוד את זה?") — `phrase.shop.try-on` — ❌ wrong
+- Tests: phrase.shop.great-take-it
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M09-Q20 — mini-map (step 27, round 1 of 1)
+
+- Prompt displayed: "Where to now? Tap the place in the shop" / "לאן עכשיו? הקש על המקום בחנות" — board, row by row: 🪞 [tap:fitting-room] | · | 💳 [tap:till] // · | 👗 [tap:racks] | · // · | 🚶 [tap:entrance] | ·
+- Audio played: EN "Wonderful — I’ll ring you up at the till. Thank you!" · FR "Parfait — je vous encaisse à la caisse. Merci !" · ES "Perfecto — le cobro en la caja. ¡Gracias!"
+- Meaning of the audio (HE): "נהדר — אחייב אותך בקופה. תודה!"
+- Buttons show: the tappable cells of a 3×3 schematic map (fixed positions, not shuffled); the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "🪞 fitting-room" — no sentence id — ❌ wrong
+  2. "💳 till" — no sentence id — ✅ accepted
+  3. "👗 racks" — no sentence id — ❌ wrong
+  4. "🚶 entrance" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M09-Q27 — quick-reply (step 31, round 1 of 4 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "Hi there! Can I help you find anything?" · FR "Bonjour ! Je peux vous aider à trouver quelque chose ?" · ES "¡Hola! ¿Le ayudo a encontrar algo?"
+- Meaning of the audio (HE): "היי! אפשר לעזור לך למצוא משהו?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "I'm just looking, thanks." · FR "Je regarde seulement, merci." · ES "Solo estoy mirando, gracias." · (HE gloss "אני רק מסתכל, תודה.") — `phrase.shop.just-looking` — ✅ accepted
+  2. EN "Do you have a bigger size?" · FR "Vous avez une taille au-dessus ?" · ES "¿Tiene una talla más grande?" · (HE gloss "יש מידה גדולה יותר?") — `phrase.shop.bigger` — ❌ wrong
+  3. EN "Great, I'll take it." · FR "Super, je le prends." · ES "Genial, me lo llevo." · (HE gloss "מעולה, אני אקח את זה.") — `phrase.shop.great-take-it` — ❌ wrong
+- Tests: phrase.shop.just-looking
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M09-Q28 — quick-reply (step 31, round 2 of 4 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "Of course, take your time. Let me know if you need a hand." · FR "Bien sûr, prenez votre temps. Dites-moi si vous avez besoin d’aide." · ES "Claro, tómese su tiempo. Avíseme si necesita ayuda."
+- Meaning of the audio (HE): "כמובן, קח את הזמן. תגיד אם אתה צריך עזרה."
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Can I try this on?" · FR "Je peux essayer ça ?" · ES "¿Puedo probarme esto?" · (HE gloss "אפשר למדוד את זה?") — `phrase.shop.try-on` — ✅ accepted
+  2. EN "Great, I'll take it." · FR "Super, je le prends." · ES "Genial, me lo llevo." · (HE gloss "מעולה, אני אקח את זה.") — `phrase.shop.great-take-it` — ❌ wrong
+  3. EN "Do you have a bigger size?" · FR "Vous avez une taille au-dessus ?" · ES "¿Tiene una talla más grande?" · (HE gloss "יש מידה גדולה יותר?") — `phrase.shop.bigger` — ❌ wrong
+- Tests: phrase.shop.try-on
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M09-Q29 — quick-reply (step 31, round 3 of 4 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "Sure! What size are you? The fitting room is over there." · FR "Bien sûr ! Vous faites quelle taille ? La cabine d’essayage est là-bas." · ES "¡Claro! ¿Qué talla usa? El probador está allí."
+- Meaning of the audio (HE): "בטח! איזו מידה אתה? חדר ההלבשה שם."
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Do you have a bigger size?" · FR "Vous avez une taille au-dessus ?" · ES "¿Tiene una talla más grande?" · (HE gloss "יש מידה גדולה יותר?") — `phrase.shop.bigger` — ✅ accepted
+  2. EN "I'm just looking, thanks." · FR "Je regarde seulement, merci." · ES "Solo estoy mirando, gracias." · (HE gloss "אני רק מסתכל, תודה.") — `phrase.shop.just-looking` — ❌ wrong
+  3. EN "Great, I'll take it." · FR "Super, je le prends." · ES "Genial, me lo llevo." · (HE gloss "מעולה, אני אקח את זה.") — `phrase.shop.great-take-it` — ❌ wrong
+- Tests: phrase.shop.bigger
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M09-Q30 — quick-reply (step 31, round 4 of 4 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "Here you go, one size up. And good news — it’s on sale, twenty percent off!" · FR "Voilà, une taille au-dessus. Et bonne nouvelle — c’est en solde, vingt pour cent de réduction !" · ES "Aquí tiene, una talla más. Y buena noticia — ¡está rebajado, un veinte por ciento de descuento!"
+- Meaning of the audio (HE): "הנה, מידה אחת גדולה יותר. ובשורה טובה — זה במבצע, עשרים אחוז הנחה!"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Great, I'll take it." · FR "Super, je le prends." · ES "Genial, me lo llevo." · (HE gloss "מעולה, אני אקח את זה.") — `phrase.shop.great-take-it` — ✅ accepted
+  2. EN "Can I try this on?" · FR "Je peux essayer ça ?" · ES "¿Puedo probarme esto?" · (HE gloss "אפשר למדוד את זה?") — `phrase.shop.try-on` — ❌ wrong
+  3. EN "Do you have a bigger size?" · FR "Vous avez une taille au-dessus ?" · ES "¿Tiene una talla más grande?" · (HE gloss "יש מידה גדולה יותר?") — `phrase.shop.bigger` — ❌ wrong
+- Tests: phrase.shop.great-take-it
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M09-Q31 — visual-match (step 32, round 1 of 1 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "Here you go, one size up. And good news — it’s on sale, twenty percent off!" · FR "Voilà, une taille au-dessus. Et bonne nouvelle — c’est en solde, vingt pour cent de réduction !" · ES "Aquí tiene, una talla más. Y buena noticia — ¡está rebajado, un veinte por ciento de descuento!"
+- Meaning of the audio (HE): "הנה, מידה אחת גדולה יותר. ובשורה טובה — זה במבצע, עשרים אחוז הנחה!"
+- Buttons show: a 3×3 board of 3 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "−10%" — no sentence id — ❌ wrong
+  2. "−20%" — no sentence id — ✅ accepted
+  3. "−50%" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M09-Q32 — quick-reply (step 35, round 1 of 2)
+
+- Prompt displayed: "👀 Browse ✅ · 🪞 Try on ⬜ · 📏 Size fixed ⬜ · 🏷️ Sale understood ⬜ · 🛍️ Buy ⬜" / "👀 מסתכלים ✅ · 🪞 מודדים ⬜ · 📏 מידה מסודרת ⬜ · 🏷️ מבצע הובן ⬜ · 🛍️ קונים ⬜"
+- Audio played: EN "Hi there! Can I help you find anything?" · FR "Bonjour ! Je peux vous aider à trouver quelque chose ?" · ES "¡Hola! ¿Le ayudo a encontrar algo?"
+- Meaning of the audio (HE): "היי! אפשר לעזור לך למצוא משהו?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "I'm just looking, thanks." · FR "Je regarde seulement, merci." · ES "Solo estoy mirando, gracias." · (HE gloss "אני רק מסתכל, תודה.") — `phrase.shop.just-looking` — ✅ accepted
+  2. EN "Can I try this on?" · FR "Je peux essayer ça ?" · ES "¿Puedo probarme esto?" · (HE gloss "אפשר למדוד את זה?") — `phrase.shop.try-on` — ❌ wrong
+  3. EN "Great, I'll take it." · FR "Super, je le prends." · ES "Genial, me lo llevo." · (HE gloss "מעולה, אני אקח את זה.") — `phrase.shop.great-take-it` — ❌ wrong
+- Tests: phrase.shop.just-looking
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M09-Q33 — quick-reply (step 35, round 2 of 2)
+
+- Prompt displayed: "👀 Browse ✅ · 🪞 Try on ⬜ · 📏 Size fixed ⬜ · 🏷️ Sale understood ⬜ · 🛍️ Buy ⬜" / "👀 מסתכלים ✅ · 🪞 מודדים ⬜ · 📏 מידה מסודרת ⬜ · 🏷️ מבצע הובן ⬜ · 🛍️ קונים ⬜" — situation shown: "You found a jacket you like. You want to try it on." / "מצאת ז׳קט שמוצא חן בעיניך. אתה רוצה למדוד אותו."
+- Audio played: EN "(nothing is played — a situation is shown)" · FR "(nothing is played — a situation is shown)" · ES "(nothing is played — a situation is shown)"
+- Meaning of the audio (HE): —
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Can I try this on?" · FR "Je peux essayer ça ?" · ES "¿Puedo probarme esto?" · (HE gloss "אפשר למדוד את זה?") — `phrase.shop.try-on` — ✅ accepted
+  2. EN "Do you have a bigger size?" · FR "Vous avez une taille au-dessus ?" · ES "¿Tiene una talla más grande?" · (HE gloss "יש מידה גדולה יותר?") — `phrase.shop.bigger` — ❌ wrong
+  3. EN "I'm just looking, thanks." · FR "Je regarde seulement, merci." · ES "Solo estoy mirando, gracias." · (HE gloss "אני רק מסתכל, תודה.") — `phrase.shop.just-looking` — ❌ wrong
+- Tests: phrase.shop.try-on
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M09-Q34 — mini-map (step 36, round 1 of 1 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה." — board, row by row: 🪞 [tap:fitting-room] | · | 💳 [tap:till] // · | 👗 [tap:racks] | · // · | 🚶 [tap:entrance] | ·
+- Audio played: EN "Sure! What size are you? The fitting room is over there." · FR "Bien sûr ! Vous faites quelle taille ? La cabine d’essayage est là-bas." · ES "¡Claro! ¿Qué talla usa? El probador está allí."
+- Meaning of the audio (HE): "בטח! איזו מידה אתה? חדר ההלבשה שם."
+- Buttons show: the tappable cells of a 3×3 schematic map (fixed positions, not shuffled); the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "🪞 fitting-room" — no sentence id — ✅ accepted
+  2. "💳 till" — no sentence id — ❌ wrong
+  3. "👗 racks" — no sentence id — ❌ wrong
+  4. "🚶 entrance" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M09-Q35 — quick-reply (step 37, round 1 of 1)
+
+- Prompt displayed: "👀 Browse ✅ · 🪞 Try on ✅ · 📏 Size fixed ⬜ · 🏷️ Sale understood ⬜ · 🛍️ Buy ⬜" / "👀 מסתכלים ✅ · 🪞 מודדים ✅ · 📏 מידה מסודרת ⬜ · 🏷️ מבצע הובן ⬜ · 🛍️ קונים ⬜" — situation shown: "👕 In the fitting room: size M is too small for you." / "👕 בתא המדידה: מידה M קטנה עליך."
+- Audio played: EN "(nothing is played — a situation is shown)" · FR "(nothing is played — a situation is shown)" · ES "(nothing is played — a situation is shown)"
+- Meaning of the audio (HE): —
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Do you have a bigger size?" · FR "Vous avez une taille au-dessus ?" · ES "¿Tiene una talla más grande?" · (HE gloss "יש מידה גדולה יותר?") — `phrase.shop.bigger` — ✅ accepted
+  2. EN "I'm just looking, thanks." · FR "Je regarde seulement, merci." · ES "Solo estoy mirando, gracias." · (HE gloss "אני רק מסתכל, תודה.") — `phrase.shop.just-looking` — ❌ wrong
+  3. EN "Great, I'll take it." · FR "Super, je le prends." · ES "Genial, me lo llevo." · (HE gloss "מעולה, אני אקח את זה.") — `phrase.shop.great-take-it` — ❌ wrong
+- Tests: phrase.shop.bigger
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M09-Q36 — visual-match (step 38, round 1 of 1 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "Here you go, one size up. And good news — it’s on sale, twenty percent off!" · FR "Voilà, une taille au-dessus. Et bonne nouvelle — c’est en solde, vingt pour cent de réduction !" · ES "Aquí tiene, una talla más. Y buena noticia — ¡está rebajado, un veinte por ciento de descuento!"
+- Meaning of the audio (HE): "הנה, מידה אחת גדולה יותר. ובשורה טובה — זה במבצע, עשרים אחוז הנחה!"
+- Buttons show: a 3×3 board of 4 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "S" — no sentence id — ❌ wrong
+  2. "M" — no sentence id — ❌ wrong
+  3. "L" — no sentence id — ✅ accepted
+  4. "XL" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M09-Q37 — visual-match (step 39, round 1 of 1 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "Here you go, one size up. And good news — it’s on sale, twenty percent off!" · FR "Voilà, une taille au-dessus. Et bonne nouvelle — c’est en solde, vingt pour cent de réduction !" · ES "Aquí tiene, una talla más. Y buena noticia — ¡está rebajado, un veinte por ciento de descuento!"
+- Meaning of the audio (HE): "הנה, מידה אחת גדולה יותר. ובשורה טובה — זה במבצע, עשרים אחוז הנחה!"
+- Buttons show: a 3×3 board of 3 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "−10%" — no sentence id — ❌ wrong
+  2. "−20%" — no sentence id — ✅ accepted
+  3. "−50%" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M09-Q38 — quick-reply (step 40, round 1 of 1)
+
+- Prompt displayed: "👀 Browse ✅ · 🪞 Try on ✅ · 📏 Size fixed ✅ · 🏷️ Sale understood ✅ · 🛍️ Buy ⬜" / "👀 מסתכלים ✅ · 🪞 מודדים ✅ · 📏 מידה מסודרת ✅ · 🏷️ מבצע הובן ✅ · 🛍️ קונים ⬜" — situation shown: "Size L fits you, and it is on sale. You decide to buy it." / "מידה L מתאימה לך, והיא במבצע. אתה מחליט לקנות."
+- Audio played: EN "(nothing is played — a situation is shown)" · FR "(nothing is played — a situation is shown)" · ES "(nothing is played — a situation is shown)"
+- Meaning of the audio (HE): —
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Great, I'll take it." · FR "Super, je le prends." · ES "Genial, me lo llevo." · (HE gloss "מעולה, אני אקח את זה.") — `phrase.shop.great-take-it` — ✅ accepted
+  2. EN "Can I try this on?" · FR "Je peux essayer ça ?" · ES "¿Puedo probarme esto?" · (HE gloss "אפשר למדוד את זה?") — `phrase.shop.try-on` — ❌ wrong
+  3. EN "Do you have a bigger size?" · FR "Vous avez une taille au-dessus ?" · ES "¿Tiene una talla más grande?" · (HE gloss "יש מידה גדולה יותר?") — `phrase.shop.bigger` — ❌ wrong
+- Tests: phrase.shop.great-take-it
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M09-Q39 — mini-map (step 41, round 1 of 1 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה." — board, row by row: 🪞 [tap:fitting-room] | · | 💳 [tap:till] // · | 👗 [tap:racks] | · // · | 🚶 [tap:entrance] | ·
+- Audio played: EN "Wonderful — I’ll ring you up at the till. Thank you!" · FR "Parfait — je vous encaisse à la caisse. Merci !" · ES "Perfecto — le cobro en la caja. ¡Gracias!"
+- Meaning of the audio (HE): "נהדר — אחייב אותך בקופה. תודה!"
+- Buttons show: the tappable cells of a 3×3 schematic map (fixed positions, not shuffled); the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "🪞 fitting-room" — no sentence id — ❌ wrong
+  2. "💳 till" — no sentence id — ✅ accepted
+  3. "👗 racks" — no sentence id — ❌ wrong
+  4. "🚶 entrance" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
 
 ## Dialogue — full tree
 
@@ -9532,7 +9898,7 @@ Linked learner sentence: `phrase.shop.try-on`. Each reply below is played once a
   - ES: Aquí tiene, una talla más. Y buena noticia — ¡está rebajado, un veinte por ciento de descuento!
   - HE: הנה, מידה אחת גדולה יותר. ובשורה טובה — זה במבצע, עשרים אחוז הנחה!
 - **c3** · LEARNER choice screen
-  - choice 1 — ✅ accepted → n5 — `phrase.shop.take-it`
+  - choice 1 — ✅ accepted → n5 — `phrase.shop.great-take-it`
     - EN: Great, I'll take it.
     - FR: Super, je le prends.
     - ES: Genial, me lo llevo.
@@ -9584,7 +9950,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 
 ## Learner choice screens
 
-### M09-Q12 — dialogue-choice (step 11, scene "clothing-shop" · node c1)
+### M09-Q21 — dialogue-choice (step 29, scene "clothing-shop" · node c1)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Hi there! Can I help you find anything?" · FR "Bonjour ! Je peux vous aider à trouver quelque chose ?" · ES "¡Hola! ¿Le ayudo a encontrar algo?"
@@ -9596,7 +9962,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.shop.just-looking, phrase.shop.try-on
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M09-Q13 — dialogue-choice (step 11, scene "clothing-shop" · node c1b)
+### M09-Q22 — dialogue-choice (step 29, scene "clothing-shop" · node c1b)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Of course, take your time. Let me know if you need a hand." · FR "Bien sûr, prenez votre temps. Dites-moi si vous avez besoin d’aide." · ES "Claro, tómese su tiempo. Avíseme si necesita ayuda."
@@ -9607,7 +9973,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.shop.try-on
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M09-Q14 — dialogue-choice (step 11, scene "clothing-shop" · node c2)
+### M09-Q23 — dialogue-choice (step 29, scene "clothing-shop" · node c2)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Sure! What size are you? The fitting room is over there." · FR "Bien sûr ! Vous faites quelle taille ? La cabine d’essayage est là-bas." · ES "¡Claro! ¿Qué talla usa? El probador está allí."
@@ -9619,7 +9985,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.shop.bigger, phrase.recovery.slowly
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M09-Q15 — dialogue-choice (step 11, scene "clothing-shop" · node c2b)
+### M09-Q24 — dialogue-choice (step 29, scene "clothing-shop" · node c2b)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "What — size? Fitting room — there." · FR "Quelle — taille ? La cabine — là-bas." · ES "¿Qué — talla? El probador — allí."
@@ -9630,19 +9996,19 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.shop.bigger
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M09-Q16 — dialogue-choice (step 11, scene "clothing-shop" · node c3)
+### M09-Q25 — dialogue-choice (step 29, scene "clothing-shop" · node c3)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Here you go, one size up. And good news — it’s on sale, twenty percent off!" · FR "Voilà, une taille au-dessus. Et bonne nouvelle — c’est en solde, vingt pour cent de réduction !" · ES "Aquí tiene, una talla más. Y buena noticia — ¡está rebajado, un veinte por ciento de descuento!"
 - Meaning of the audio (HE): "הנה, מידה אחת גדולה יותר. ובשורה טובה — זה במבצע, עשרים אחוז הנחה!"
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
-  1. EN "Great, I'll take it." · FR "Super, je le prends." · ES "Genial, me lo llevo." · (HE gloss "מעולה, אני אקח את זה.") — `phrase.shop.take-it` — ✅ accepted → n5
+  1. EN "Great, I'll take it." · FR "Super, je le prends." · ES "Genial, me lo llevo." · (HE gloss "מעולה, אני אקח את זה.") — `phrase.shop.great-take-it` — ✅ accepted → n5
   2. EN "It's a bit expensive." · FR "C’est un peu cher." · ES "Es un poco caro." · (HE gloss "זה קצת יקר.") — `phrase.shop.too-expensive` — ✅ accepted → n4b
-- Tests: phrase.shop.take-it, phrase.shop.too-expensive
+- Tests: phrase.shop.great-take-it, phrase.shop.too-expensive
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M09-Q17 — dialogue-choice (step 11, scene "clothing-shop" · node c3b)
+### M09-Q26 — dialogue-choice (step 29, scene "clothing-shop" · node c3b)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "I understand — but it's already twenty percent off. That's the best price I can do." · FR "Je comprends — mais c’est déjà vingt pour cent de réduction. C’est le meilleur prix que je peux faire." · ES "Lo entiendo — pero ya tiene un veinte por ciento de descuento. Es el mejor precio que le puedo hacer."
@@ -9655,7 +10021,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 
 ## Recovery tools in this mission
 
-Toolkit phrases bundled into this mission's sentence list: `phrase.recovery.slowly` "Please speak slowly." · `phrase.recovery.repeat` "Can you repeat that?" · `phrase.recovery.thank-you` "Thank you!" · `phrase.recovery.show-me` "Can you show me?".
+Toolkit phrases bundled into this mission's sentence list: `phrase.recovery.slowly` "Please speak slowly.".
 
 Where a conversation-help tool can be selected, and what happens:
 
@@ -9668,40 +10034,11 @@ None — no choice in this mission is marked wrong.
 
 ## Sentence review
 
-Step 13. 12 sentences, in this fixed order. Each is played automatically (TTS), shown with its translation and tip; buttons: 🔊 "Hear again" / "לשמוע שוב" and Next. No speaking prompt, no grading, no scoring; nothing is recorded.
-
-1. `phrase.shop.just-looking` — I'm just looking, thanks. — אני רק מסתכל, תודה.
-2. `phrase.shop.try-on` — Can I try this on? — אפשר למדוד את זה?
-3. `phrase.shop.bigger` — Do you have a bigger size? — יש מידה גדולה יותר?
-4. `phrase.shop.take-it` — I'll take it. — אני אקח את זה.
-5. `phrase.shop.too-expensive` — It's a bit expensive. — זה קצת יקר.
-6. `reply.shop.can-i-help` — Can I help you find anything? — אפשר לעזור לך למצוא משהו?
-7. `reply.shop.what-size` — What size are you? — איזו מידה אתה?
-8. `reply.shop.fitting-room` — The fitting room is over there. — חדר ההלבשה שם.
-9. `reply.shop.on-sale` — It's on sale — twenty percent off. — זה במבצע — עשרים אחוז הנחה.
-10. `reply.shop.out-of-stock` — Sorry, that's out of stock. — סליחה, זה אזל מהמלאי.
-11. `phrase.recovery.slowly` — Please speak slowly. — דבר לאט, בבקשה.
-12. `phrase.recovery.repeat` — Can you repeat that? — אפשר לחזור על זה?
+No sentence-review step in this mission.
 
 ## Cold open / ambush
 
-### M09-Q18 — cold-open (step 14, single prompt · mode: recovery)
-
-- Prompt displayed: "Heads up: a fast one is coming. Use a tool." / "שים לב: מגיע משפט מהיר. השתמש בכלי."
-- Audio played: EN "That one is actually the last piece we have in that colour would you like me to hold it?" · FR "Celui-ci, c’est en fait le dernier qu’il nous reste dans cette couleur — vous voulez que je vous le garde ?" · ES "Este es en realidad el último que nos queda en ese color — ¿quiere que se lo guarde?"
-- Meaning of the audio (HE): "זה בעצם הפריט האחרון שיש לנו בצבע הזה — שאשמור לך אותו?"
-- Buttons show: TARGET-LANGUAGE text of the two sentences; only the conversation-help tool carries 🛟; order shuffled
-- Choices:
-  1. EN "Can you repeat that?" · FR "Vous pouvez répéter ?" · ES "¿Puede repetir, por favor?" · (HE gloss "אפשר לחזור על זה?") — `phrase.recovery.repeat` — ✅ accepted
-  2. EN "I'll take it." · FR "Je le prends." · ES "Me lo llevo." · (HE gloss "אני אקח את זה.") — `phrase.shop.take-it` — ❌ wrong
-- Tests: phrase.recovery.repeat
-- Explanation shown after answering: generic: “Can you repeat that?” means “אפשר לחזור על זה?”.
-
-- Flow: screen shows ⚡ and "Heads up: a fast one is coming. Use a tool." / "שים לב: מגיע משפט מהיר. השתמש בכלי." with one button 👂 "I'm ready" / "אני מוכן"; on tap the line is spoken at TTS rate 1.12 and printed small; two shuffled buttons appear; 🔊 "Hear again" / "לשמוע שוב" replays at 0.85.
-- Success criterion: picking the accepted sentence. A wrong pick shows the feedback card (what you heard + translation, your answer, the sentence that fit) with Try again / Continue; Continue proceeds either way. Response time is recorded.
-- Recovery options offered: yes (see choices)
-- Receipt shown next: "A long, fast sentence — and instead of freezing, you asked for clarity. Exactly the reflex." / "משפט ארוך ומהיר — ובמקום לקפוא, ביקשת הבהרה. זה בדיוק הרפלקס."
-- Potential new-language exposure: YES — English words not met in any sentence or dialogue line of Missions 01–09: actually, last, piece, colour, hold
+No cold open in this mission.
 
 ## Swap-in / variable content
 
@@ -9717,39 +10054,37 @@ Every learner sentence of this mission is a line in a scene.
 
 ## Receipts (proof cards)
 
-- Step 7: "You recognize what a seller asks — size, fitting room, sale." / "אתה מזהה מה מוכר שואל — מידה, חדר הלבשה, מבצע."
-- Step 12: "A full shop: browsed, tried on, asked for a size, decided. Fully in control." / "קניה שלמה: הסתכלת, מדדת, ביקשת מידה, החלטת. בשליטה מלאה."
-- Step 15: "A long, fast sentence — and instead of freezing, you asked for clarity. Exactly the reflex." / "משפט ארוך ומהיר — ובמקום לקפוא, ביקשת הבהרה. זה בדיוק הרפלקס."
+- Step 9: "👕 In the fitting room: size M is too small for you. 👀 Browse ✅ · 🪞 Try on ✅ · 📏 Size fixed ⬜ · 🏷️ Sale understood ⬜ · 🛍️ Buy ⬜" / "👕 בתא המדידה: מידה M קטנה עליך. 👀 מסתכלים ✅ · 🪞 מודדים ✅ · 📏 מידה מסודרת ⬜ · 🏷️ מבצע הובן ⬜ · 🛍️ קונים ⬜"
+- Step 16: "👀 Browse ✅ · 🪞 Try on ✅ · 📏 Size fixed ✅ · 🏷️ Sale understood ✅ · 🛍️ Buy ⬜" / "👀 מסתכלים ✅ · 🪞 מודדים ✅ · 📏 מידה מסודרת ✅ · 🏷️ מבצע הובן ✅ · 🛍️ קונים ⬜"
+- Step 28: "👀 Browse ✅ · 🪞 Try on ✅ · 📏 Size fixed ✅ · 🏷️ Sale understood ✅ · 🛍️ Buy ✅ — you bought it!" / "👀 מסתכלים ✅ · 🪞 מודדים ✅ · 📏 מידה מסודרת ✅ · 🏷️ מבצע הובן ✅ · 🛍️ קונים ✅ — קנית!"
+- Step 30: "The whole conversation — from “can I help you?” to the till." / "כל השיחה — מ"אפשר לעזור?" ועד הקופה."
+- Step 33: "No help — the whole purchase, at her pace." / "בלי עזרה — כל הקנייה, בקצב שלה."
+- Step 42: "🛍️ PURCHASE COMPLETE · 👀 Browse ✅ · 🪞 Try on ✅ · 📏 Size fixed ✅ · 🏷️ Sale understood ✅ · 🛍️ Buy ✅" / "🛍️ הקנייה הושלמה · 👀 מסתכלים ✅ · 🪞 מודדים ✅ · 📏 מידה מסודרת ✅ · 🏷️ מבצע הובן ✅ · 🛍️ קונים ✅"
 
 ## Audit Metadata — DO NOT FIX YET
 
-- Learner-production sentences: 5
+- Learner-production sentences: 6
 - Receptive (expected-reply) sentences: 6
-- Toolkit phrases bundled: 4
-- Key-sentence steps: 4
-- Expected-reply/listening items: 4
-- Questions/quizzes (meaning quiz): 1
-- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 6
-- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 9
+- Toolkit phrases bundled: 1
+- Key-sentence steps: 0
+- Expected-reply/listening items: 3
+- Questions/quizzes (meaning quiz): 0
+- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 30
+- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 20
 - One-button dialogue screens: 3
 - Learner sentences never actively retrieved: 0
 - Dialogue learner choices (screens): 6
 - Wrong-answer branches: 0
-- Cold-open prompts: 1
+- Cold-open prompts: 0
 - Recovery opportunities: 1
-- Vocabulary pre-items: 0
+- Vocabulary pre-items: 14
 - Swap variants (extra accepted lines): 2
-- Sentences in review: 12
-- Total interactive questions: 18 (answer choices: 42)
-- Approximate total learner interactions: 34 (questions + key sentences + review cards + word-intro screen)
+- Sentences in review: 0
+- Total interactive questions: 39 (answer choices: 112)
+- Approximate total learner interactions: 40 (questions + key sentences + review cards + word-intro screen)
 
-### AUTO-FLAG — requires human review (7)
+### AUTO-FLAG — requires human review (2)
 
-- AUTO-FLAG — Practice item wording not in this mission's dialogue: `reply.shop.out-of-stock` “Sorry, that's out of stock.” (drilled as an expected reply / distractor, but no NPC line here says it).
-- AUTO-FLAG — Practice item wording not in this mission's dialogue: `reply.shop.on-sale` “It's on sale — twenty percent off.” (drilled as an expected reply / distractor, but no NPC line here says it).
-- AUTO-FLAG — Practice item wording not in this mission's dialogue: `reply.shop.anything-else` “Anything else for you today?” (drilled as an expected reply / distractor, but no NPC line here says it).
-- AUTO-FLAG — Toolkit phrase listed in the mission but never offered in it: `phrase.recovery.thank-you` “Thank you!” (sentence review only).
-- AUTO-FLAG — Toolkit phrase listed in the mission but never offered in it: `phrase.recovery.show-me` “Can you show me?” (sentence review only).
 - AUTO-FLAG — 6 of 6 choice screens have NO wrong option (every button is accepted): clothing-shop/c1, clothing-shop/c1b, clothing-shop/c2, clothing-shop/c2b, clothing-shop/c3, clothing-shop/c3b.
 - AUTO-FLAG — 3 choice screens offer exactly ONE button (no decision): clothing-shop/c1b, clothing-shop/c2b, clothing-shop/c3b.
 
@@ -9955,7 +10290,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¡Gracias!
 - Role: courtesy from the Recovery Toolkit
 - Tip / pattern note: none
-- Used in missions: 03, 05, 06, 07, 09, 10, 14, 15, 17, 18, 19, 25, 26, 30
+- Used in missions: 03, 05, 06, 07, 10, 14, 15, 17, 18, 19, 25, 26, 30
 - Exercised here as: dialogue choice cold-taxi/c4 (accepted)
 
 ### Sentence: `phrase.recovery.repeat`
@@ -9966,7 +10301,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 09, 10, 11, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 10, 11, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: dialogue choice cold-border/c6 (accepted); dialogue choice cold-hotel/c6 (accepted)
 
 ### Sentence: `phrase.recovery.slowly`
@@ -10873,7 +11208,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 09, 10, 11, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 10, 11, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: sentence review (step 14); dialogue choice small-talk/c6 (accepted)
 
 ## Expected replies / listening items
@@ -11663,7 +11998,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 09, 10, 11, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 10, 11, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: sentence review (step 15); dialogue choice making-plans/c8 (accepted)
 
 ## Expected replies / listening items
@@ -13325,7 +13660,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 09, 10, 11, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 10, 11, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: nothing (listed only)
 
 ### Sentence: `phrase.recovery.slowly`
@@ -13347,7 +13682,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¡Gracias!
 - Role: courtesy from the Recovery Toolkit
 - Tip / pattern note: none
-- Used in missions: 03, 05, 06, 07, 09, 10, 14, 15, 17, 18, 19, 25, 26, 30
+- Used in missions: 03, 05, 06, 07, 10, 14, 15, 17, 18, 19, 25, 26, 30
 - Exercised here as: quick-reply response (step 9, round 4, accepted); quick-reply response (step 14, round 4, accepted); dialogue choice sit-down-meal/c4 (accepted)
 
 ### Sentence: `phrase.recovery.one-moment`
@@ -14094,7 +14429,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 09, 10, 11, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 10, 11, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: quick-reply response (step 9, round 5, accepted); sentence review (step 12); quick-reply response (step 13, round 3, accepted); cold-open correct option (step 15); dialogue choice allergy-order/c3 (accepted)
 
 ### Sentence: `phrase.recovery.slowly`
@@ -14116,7 +14451,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¡Gracias!
 - Role: courtesy from the Recovery Toolkit
 - Tip / pattern note: none
-- Used in missions: 03, 05, 06, 07, 09, 10, 14, 15, 17, 18, 19, 25, 26, 30
+- Used in missions: 03, 05, 06, 07, 10, 14, 15, 17, 18, 19, 25, 26, 30
 - Exercised here as: dialogue choice allergy-order/c2 (WRONG option); dialogue choice allergy-order/c5 (accepted); dialogue choice allergy-order/c5b (accepted)
 
 ## Expected replies / listening items
@@ -15731,7 +16066,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 09, 10, 11, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 10, 11, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: quick-reply response (step 10, round 3, accepted); sentence review (step 13); dialogue choice supermarket/c2 (accepted)
 
 ### Sentence: `phrase.recovery.slowly`
@@ -15753,7 +16088,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Me lo puede mostrar?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 04, 07, 09, 17
+- Used in missions: 04, 07, 17
 - Exercised here as: sentence review (step 13); cold-open correct option (step 16); dialogue choice supermarket/c3 (accepted)
 
 ### Sentence: `phrase.recovery.thank-you`
@@ -15764,7 +16099,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¡Gracias!
 - Role: courtesy from the Recovery Toolkit
 - Tip / pattern note: none
-- Used in missions: 03, 05, 06, 07, 09, 10, 14, 15, 17, 18, 19, 25, 26, 30
+- Used in missions: 03, 05, 06, 07, 10, 14, 15, 17, 18, 19, 25, 26, 30
 - Exercised here as: quick-reply response (step 10, round 3, accepted); quick-reply response (step 14, round 2, accepted); dialogue choice supermarket/c2 (accepted); dialogue choice supermarket/c2b (accepted); dialogue choice supermarket/c4 (accepted)
 
 ## Expected replies / listening items
@@ -16662,7 +16997,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¡Gracias!
 - Role: courtesy from the Recovery Toolkit
 - Tip / pattern note: none
-- Used in missions: 03, 05, 06, 07, 09, 10, 14, 15, 17, 18, 19, 25, 26, 30
+- Used in missions: 03, 05, 06, 07, 10, 14, 15, 17, 18, 19, 25, 26, 30
 - Exercised here as: dialogue choice cold-shop/c4 (accepted)
 
 ### Sentence: `phrase.recovery.slowly`
@@ -16684,7 +17019,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 09, 10, 11, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 10, 11, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: dialogue choice cold-plans/c2 (accepted); dialogue choice cold-shop/c4 (accepted)
 
 ## Expected replies / listening items
@@ -17711,7 +18046,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 09, 10, 11, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 10, 11, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: quick-reply response (step 9, round 6, accepted); sentence review (step 13); cold-open correct option (step 16); dialogue choice transport/c1 (accepted); dialogue choice transport/c5 (accepted)
 
 ### Sentence: `phrase.recovery.slowly`
@@ -17733,7 +18068,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¡Gracias!
 - Role: courtesy from the Recovery Toolkit
 - Tip / pattern note: none
-- Used in missions: 03, 05, 06, 07, 09, 10, 14, 15, 17, 18, 19, 25, 26, 30
+- Used in missions: 03, 05, 06, 07, 10, 14, 15, 17, 18, 19, 25, 26, 30
 - Exercised here as: quick-reply response (step 9, round 3, accepted); dialogue choice transport/c3 (accepted); dialogue choice transport/c3b (accepted); dialogue choice transport/c5 (accepted); dialogue choice transport/c5b (accepted)
 
 ## Expected replies / listening items
@@ -18657,7 +18992,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 09, 10, 11, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 10, 11, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: sentence review (step 15); dialogue choice what-did-you-do/c10 (accepted)
 
 ## Expected replies / listening items
@@ -21387,7 +21722,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 09, 10, 11, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 10, 11, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: sentence review (step 16); dialogue choice choosing-a-tour/c10 (accepted)
 
 ## Expected replies / listening items
@@ -22385,7 +22720,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 09, 10, 11, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 10, 11, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: dialogue choice cold-problem/c2 (accepted)
 
 ## Expected replies / listening items
@@ -23490,7 +23825,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¡Gracias!
 - Role: courtesy from the Recovery Toolkit
 - Tip / pattern note: none
-- Used in missions: 03, 05, 06, 07, 09, 10, 14, 15, 17, 18, 19, 25, 26, 30
+- Used in missions: 03, 05, 06, 07, 10, 14, 15, 17, 18, 19, 25, 26, 30
 - Exercised here as: dialogue choice asking-for-help/c8 (accepted)
 
 ### Sentence: `phrase.recovery.what-mean`
@@ -24344,7 +24679,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 09, 10, 11, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 10, 11, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: dialogue choice pharmacy/c3 (accepted)
 
 ### Sentence: `phrase.recovery.slowly`
@@ -24366,7 +24701,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¡Gracias!
 - Role: courtesy from the Recovery Toolkit
 - Tip / pattern note: none
-- Used in missions: 03, 05, 06, 07, 09, 10, 14, 15, 17, 18, 19, 25, 26, 30
+- Used in missions: 03, 05, 06, 07, 10, 14, 15, 17, 18, 19, 25, 26, 30
 - Exercised here as: cold-open wrong option (step 16); dialogue choice pharmacy/c3b (accepted); dialogue choice pharmacy/c4 (accepted)
 
 ## Expected replies / listening items
@@ -25932,7 +26267,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 09, 10, 11, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 10, 11, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: dialogue choice ns-transit/c8 (accepted)
 
 ### Sentence: `phrase.recovery.slowly`
@@ -26869,7 +27204,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 09, 10, 11, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 10, 11, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: dialogue choice dr-problem/c2 (accepted)
 
 ### Sentence: `phrase.recovery.slowly`
@@ -28054,7 +28389,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¡Gracias!
 - Role: courtesy from the Recovery Toolkit
 - Tip / pattern note: none
-- Used in missions: 03, 05, 06, 07, 09, 10, 14, 15, 17, 18, 19, 25, 26, 30
+- Used in missions: 03, 05, 06, 07, 10, 14, 15, 17, 18, 19, 25, 26, 30
 - Exercised here as: dialogue choice fin-taxi/c6 (accepted); dialogue choice fin-evening/c2 (accepted); dialogue choice fin-evening/c6 (accepted)
 
 ### Sentence: `phrase.recovery.slowly`
@@ -28076,7 +28411,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 09, 10, 11, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 10, 11, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: dialogue choice fin-lunch/c6 (accepted)
 
 ## Expected replies / listening items
@@ -29204,7 +29539,7 @@ Every learner sentence of this mission is a line in a scene.
 | 06 Airport & Border | 14 (5 / 5 / 4) | 5 | 5 | 0 | 32 | 10 | 5 | 3 | 0 | 17 words | 0 | 47 | 3 |
 | 07 Taxi / Uber | 19 (7 / 9 / 3) | 2 | 2 | 0 | 35 | 5 | 2 | 2 | 0 | 18 words | 1 | 42 | 2 |
 | 08 Hotel Check-in | 16 (5 / 9 / 2) | 3 | 3 | 0 | 31 | 4 | 2 | 2 | 0 | 17 words | 0 | 38 | 6 |
-| 09 Shopping | 15 (5 / 6 / 4) | 4 | 5 | 1 | 6 | 6 | 3 | 1 | 1 | no | 2 | 18 | 7 |
+| 09 Shopping | 13 (6 / 6 / 1) | 3 | 3 | 0 | 30 | 6 | 3 | 1 | 0 | 14 words | 2 | 39 | 2 |
 | 10 CHECKPOINT: Arrival Day | 15 (10 / 2 / 3) | 0 | 0 | 0 | 0 | 11 | 0 | 3 | 1 | no | 0 | 12 | 8 |
 | 11 Small Talk & Recommendations | 17 (9 / 7 / 1) | 4 | 5 | 1 | 13 | 7 | 4 | 1 | 0 | no | 2 | 25 | 13 |
 | 12 Time & Plans | 16 (8 / 7 / 1) | 4 | 4 | 0 | 17 | 8 | 6 | 1 | 0 | no | 1 | 29 | 2 |
@@ -29282,11 +29617,12 @@ Every learner-production sentence id of the Core, in order of first appearance. 
 | `phrase.hotel.breakfast` | Is breakfast included? | 08 | 10, 30 | 0 | 2 / 2 | 11 | 0 | 0 | yes | no |  |
 | `phrase.hotel.here-you-go` | Here you go. | 08 | 10 | 0 | 3 / 0 | 12 | 0 | 0 | yes | no |  |
 | `phrase.hotel.reservation-name` | I have a reservation, under the name Cohen. | 08 | — | 0 | 0 / 0 | 13 | 0 | 0 | no | no |  |
-| `phrase.shop.just-looking` | I'm just looking, thanks. | 09 | — | 1 | 1 / 0 | 4 | 0 | 1 | no | no |  |
-| `phrase.shop.try-on` | Can I try this on? | 09 | — | 1 | 2 / 0 | 2 | 0 | 1 | no | no |  |
-| `phrase.shop.bigger` | Do you have a bigger size? | 09 | — | 1 | 2 / 0 | 3 | 0 | 1 | no | no |  |
-| `phrase.shop.take-it` | I'll take it. | 09 | — | 1 | 2 / 0 | 4 | 1 | 1 | no | no |  |
-| `phrase.shop.too-expensive` | It's a bit expensive. | 09 | — | 0 | 1 / 0 | 1 | 0 | 1 | no | no |  |
+| `phrase.shop.just-looking` | I'm just looking, thanks. | 09 | — | 0 | 1 / 0 | 10 | 0 | 0 | no | no |  |
+| `phrase.shop.try-on` | Can I try this on? | 09 | — | 0 | 2 / 0 | 11 | 0 | 0 | no | no |  |
+| `phrase.shop.bigger` | Do you have a bigger size? | 09 | — | 0 | 2 / 0 | 13 | 0 | 0 | no | no |  |
+| `phrase.shop.take-it` | I'll take it. | 09 | — | 0 | 1 / 0 | 0 | 0 | 0 | no | no |  |
+| `phrase.shop.too-expensive` | It's a bit expensive. | 09 | — | 0 | 1 / 0 | 0 | 0 | 0 | no | no |  |
+| `phrase.shop.great-take-it` | Great, I'll take it. | 09 | — | 0 | 1 / 0 | 12 | 0 | 0 | no | no |  |
 | `phrase.talk.beautiful-place` | This place is beautiful. | 11 | 28 | 1 | 2 / 0 | 5 | 0 | 1 | no | no |  |
 | `phrase.talk.how-about-you` | How about you? | 11 | 28 | 1 | 1 / 1 | 4 | 0 | 1 | no | no |  |
 | `phrase.talk.i-like-it` | I like it a lot. | 11 | 24, 28 | 1 | 2 / 1 | 5 | 0 | 1 | yes | no |  |
@@ -29399,7 +29735,7 @@ Every learner-production sentence id of the Core, in order of first appearance. 
 | `phrase.emerg.call-police` | Call the police! | 27 | — | 1 | 0 / 0 | 4 | 0 | 1 | no | no |  |
 | `phrase.emerg.where-hospital` | Where is the hospital? | 27 | — | 0 | 0 / 0 | 2 | 0 | 0 | no | no |  |
 
-Learner-production sentence ids: 163. With 0 active retrieval opportunities: 1.
+Learner-production sentence ids: 164. With 0 active retrieval opportunities: 1.
 
 # NPC Comprehension Coverage
 
@@ -29477,11 +29813,11 @@ Every expected-reply sentence id. "Quick response" does not exist as an exercise
 | `reply.hotel.breakfast-elevator` | Yes! Breakfast is from seven to ten. The elevator is on your right. | 08 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
 | `reply.hotel.enjoy` | Enjoy your stay! | 08 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
 | `reply.shop.can-i-help` | Can I help you find anything? | 09 | — | no | 0 / 0 | 0 / 0 | no | yes |
-| `reply.shop.what-size` | What size are you? | 09 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
-| `reply.shop.fitting-room` | The fitting room is over there. | 09 | — | yes (1) | 0 / 1 | 0 / 0 | no | yes |
-| `reply.shop.out-of-stock` | Sorry, that's out of stock. | 09 | — | no | 1 / 0 | 0 / 0 | no | **no** |
-| `reply.shop.on-sale` | It's on sale — twenty percent off. | 09 | — | yes (1) | 0 / 1 | 0 / 0 | no | **no** |
-| `reply.shop.anything-else` | Anything else for you today? | 09 | — | yes (1) | 0 / 0 | 0 / 0 | no | **no** |
+| `reply.shop.what-size` | What size are you? | 09 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.shop.fitting-room` | The fitting room is over there. | 09 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.shop.help-find` | Hi there! Can I help you find anything? | 09 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
+| `reply.shop.take-your-time` | Of course, take your time. Let me know if you need a hand. | 09 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
+| `reply.shop.till-line` | Wonderful — I’ll ring you up at the till. Thank you! | 09 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
 | `reply.talk.first-time-q` | Is this your first time here? | 11 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
 | `reply.talk.where-from` | Where are you from? | 11 | — | yes (1) | 0 / 1 | 0 / 0 | no | yes |
 | `reply.talk.do-you-like-it` | Do you like it here? | 11 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
@@ -32907,104 +33243,188 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 
 ## Mission 09 — Shopping
 
-**M09-Q01** — expected-reply
-- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (1/4)
-- Audio: What size are you? — (איזו מידה אתה?)
-- A: איזו מידה אתה? / What size are you? ✅
-- B: חדר ההלבשה שם. / The fitting room is over there.
-- C: זה במבצע — עשרים אחוז הנחה. / It's on sale — twenty percent off.
-- Correct: What size are you?
-- Tests: reply.shop.what-size
+**M09-Q01** — sentence-builder
+- Prompt: "Your question" / "השאלה שלך" — cue shown: the sentence's MEANING in the app language ("אפשר למדוד את זה?")
+- Audio: (nothing before Check; the built sentence is spoken once it is right) — ()
+- A: Can I  |  try this  |  on? ✅
+- Correct: Can I  |  try this  |  on?
+- Tests: phrase.shop.try-on
 
-**M09-Q02** — expected-reply
-- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (2/4)
-- Audio: The fitting room is over there. — (חדר ההלבשה שם.)
-- A: חדר ההלבשה שם. / The fitting room is over there. ✅
-- B: איזו מידה אתה? / What size are you?
-- C: זה במבצע — עשרים אחוז הנחה. / It's on sale — twenty percent off.
-- Correct: The fitting room is over there.
-- Tests: reply.shop.fitting-room
+**M09-Q02** — quick-reply
+- Prompt: "What do you say?" / "מה אתה אומר?" — situation shown: "You found a jacket you like. You want to try it on." / "מצאת ז׳קט שמוצא חן בעיניך. אתה רוצה למדוד אותו."
+- Audio: (nothing is played — a situation is shown) — ()
+- A: Can I try this on? ✅
+- B: I'm just looking, thanks.
+- Correct: Can I try this on?
+- Tests: phrase.shop.try-on
 
-**M09-Q03** — expected-reply
-- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (3/4)
-- Audio: It's on sale — twenty percent off. — (זה במבצע — עשרים אחוז הנחה.)
-- A: זה במבצע — עשרים אחוז הנחה. / It's on sale — twenty percent off. ✅
-- B: איזו מידה אתה? / What size are you?
-- C: חדר ההלבשה שם. / The fitting room is over there.
-- Correct: It's on sale — twenty percent off.
-- Tests: reply.shop.on-sale
+**M09-Q03** — mini-map
+- Prompt: "Where is she sending you? Tap the place in the shop" / "לאן היא שולחת אותך? הקש על המקום בחנות" — board, row by row: 🪞 [tap:fitting-room] | · | 💳 [tap:till] // · | 👗 [tap:racks] | · // · | 🚶 [tap:entrance] | ·
+- Audio: Sure! What size are you? The fitting room is over there. — (בטח! איזו מידה אתה? חדר ההלבשה שם.)
+- A: 🪞 fitting-room ✅
+- B: 💳 till
+- C: 👗 racks
+- D: 🚶 entrance
+- Correct: 🪞 fitting-room
+- Tests: (no sentence id — not recorded)
 
-**M09-Q04** — expected-reply
-- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (4/4)
-- Audio: Anything else for you today? — (עוד משהו היום?)
-- A: עוד משהו היום? / Anything else for you today? ✅
-- B: איזו מידה אתה? / What size are you?
-- C: חדר ההלבשה שם. / The fitting room is over there.
-- Correct: Anything else for you today?
-- Tests: reply.shop.anything-else
+**M09-Q04** — sentence-builder
+- Prompt: "Your question" / "השאלה שלך" — cue shown: the sentence's MEANING in the app language ("יש מידה גדולה יותר?")
+- Audio: (nothing before Check; the built sentence is spoken once it is right) — ()
+- A: Do you have  |  a bigger  |  size? ✅
+- Correct: Do you have  |  a bigger  |  size?
+- Tests: phrase.shop.bigger
 
-**M09-Q05** — meaning-quiz
-- Prompt: "What did it mean?" / "מה זה אומר?"
-- Audio: Sorry, that's out of stock. — (סליחה, זה אזל מהמלאי.)
-- A: סליחה, זה אזל מהמלאי. / Sorry, that's out of stock. ✅
-- B: זה במבצע — עשרים אחוז הנחה. / It's on sale — twenty percent off.
-- C: חדר ההלבשה שם. / The fitting room is over there.
-- Correct: Sorry, that's out of stock.
-- Tests: reply.shop.out-of-stock
+**M09-Q05** — quick-reply
+- Prompt: "What do you say?" / "מה אתה אומר?" — situation shown: "👕 In the fitting room: size M is too small for you." / "👕 בתא המדידה: מידה M קטנה עליך."
+- Audio: (nothing is played — a situation is shown) — ()
+- A: Do you have a bigger size? ✅
+- B: Can I try this on?
+- C: I'm just looking, thanks.
+- Correct: Do you have a bigger size?
+- Tests: phrase.shop.bigger
 
-**M09-Q06** — quick-reply
-- Prompt: "In the shop — what do you say?" / "בחנות — מה אומרים?"
-- Audio: Can I help you find anything? — (אפשר לעזור לך למצוא משהו?)
+**M09-Q06** — visual-match
+- Prompt: "You had M. Which size did she bring?" / "היה לך M. איזו מידה היא הביאה?"
+- Audio: Here you go, one size up. And good news — it’s on sale, twenty percent off! — (הנה, מידה אחת גדולה יותר. ובשורה טובה — זה במבצע, עשרים אחוז הנחה!)
+- A: S
+- B: M
+- C: L ✅
+- D: XL
+- Correct: L
+- Tests: (no sentence id — not recorded)
+
+**M09-Q07** — visual-match
+- Prompt: "What discount did she say?" / "כמה הנחה היא אמרה?"
+- Audio: Here you go, one size up. And good news — it’s on sale, twenty percent off! — (הנה, מידה אחת גדולה יותר. ובשורה טובה — זה במבצע, עשרים אחוז הנחה!)
+- A: −10%
+- B: −20% ✅
+- C: −50%
+- Correct: −20%
+- Tests: (no sentence id — not recorded)
+
+**M09-Q08** — quick-reply
+- Prompt: "What do you say?" / "מה אתה אומר?" — situation shown: "Size L fits you, and it is on sale. You decide to buy it." / "מידה L מתאימה לך, והיא במבצע. אתה מחליט לקנות."
+- Audio: (nothing is played — a situation is shown) — ()
+- A: Great, I'll take it. ✅
+- B: Do you have a bigger size?
+- C: I'm just looking, thanks.
+- Correct: Great, I'll take it.
+- Tests: phrase.shop.great-take-it
+
+**M09-Q09** — mini-map
+- Prompt: "Where to now? Tap the place in the shop" / "לאן עכשיו? הקש על המקום בחנות" — board, row by row: 🪞 [tap:fitting-room] | · | 💳 [tap:till] // · | 👗 [tap:racks] | · // · | 🚶 [tap:entrance] | ·
+- Audio: Wonderful — I’ll ring you up at the till. Thank you! — (נהדר — אחייב אותך בקופה. תודה!)
+- A: 🪞 fitting-room
+- B: 💳 till ✅
+- C: 👗 racks
+- D: 🚶 entrance
+- Correct: 💳 till
+- Tests: (no sentence id — not recorded)
+
+**M09-Q10** — expected-reply
+- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (1/3)
+- Audio: Hi there! Can I help you find anything? — (היי! אפשר לעזור לך למצוא משהו?)
+- A: היי! אפשר לעזור לך למצוא משהו? / Hi there! Can I help you find anything? ✅
+- B: כמובן, קח את הזמן. תגיד אם אתה צריך עזרה. / Of course, take your time. Let me know if you need a hand.
+- C: נהדר — אחייב אותך בקופה. תודה! / Wonderful — I’ll ring you up at the till. Thank you!
+- Correct: Hi there! Can I help you find anything?
+- Tests: reply.shop.help-find
+
+**M09-Q11** — expected-reply
+- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (2/3)
+- Audio: Of course, take your time. Let me know if you need a hand. — (כמובן, קח את הזמן. תגיד אם אתה צריך עזרה.)
+- A: כמובן, קח את הזמן. תגיד אם אתה צריך עזרה. / Of course, take your time. Let me know if you need a hand. ✅
+- B: היי! אפשר לעזור לך למצוא משהו? / Hi there! Can I help you find anything?
+- C: נהדר — אחייב אותך בקופה. תודה! / Wonderful — I’ll ring you up at the till. Thank you!
+- Correct: Of course, take your time. Let me know if you need a hand.
+- Tests: reply.shop.take-your-time
+
+**M09-Q12** — expected-reply
+- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (3/3)
+- Audio: Wonderful — I’ll ring you up at the till. Thank you! — (נהדר — אחייב אותך בקופה. תודה!)
+- A: נהדר — אחייב אותך בקופה. תודה! / Wonderful — I’ll ring you up at the till. Thank you! ✅
+- B: היי! אפשר לעזור לך למצוא משהו? / Hi there! Can I help you find anything?
+- C: כמובן, קח את הזמן. תגיד אם אתה צריך עזרה. / Of course, take your time. Let me know if you need a hand.
+- Correct: Wonderful — I’ll ring you up at the till. Thank you!
+- Tests: reply.shop.till-line
+
+**M09-Q13** — quick-reply
+- Prompt: "👀 Browse ✅ · 🪞 Try on ⬜ · 📏 Size fixed ⬜ · 🏷️ Sale understood ⬜ · 🛍️ Buy ⬜" / "👀 מסתכלים ✅ · 🪞 מודדים ⬜ · 📏 מידה מסודרת ⬜ · 🏷️ מבצע הובן ⬜ · 🛍️ קונים ⬜"
+- Audio: Hi there! Can I help you find anything? — (היי! אפשר לעזור לך למצוא משהו?)
 - A: I'm just looking, thanks. ✅
-- B: I'll take it.
+- B: Great, I'll take it.
 - C: Do you have a bigger size?
 - Correct: I'm just looking, thanks.
 - Tests: phrase.shop.just-looking
 
-**M09-Q07** — quick-reply
-- Prompt: "In the shop — what do you say?" / "בחנות — מה אומרים?" — situation shown: "You found something you like. You want to try it on." / "מצאת משהו שמוצא חן בעיניך. אתה רוצה למדוד אותו."
+**M09-Q14** — quick-reply
+- Prompt: "👀 Browse ✅ · 🪞 Try on ⬜ · 📏 Size fixed ⬜ · 🏷️ Sale understood ⬜ · 🛍️ Buy ⬜" / "👀 מסתכלים ✅ · 🪞 מודדים ⬜ · 📏 מידה מסודרת ⬜ · 🏷️ מבצע הובן ⬜ · 🛍️ קונים ⬜" — situation shown: "You found a jacket you like. You want to try it on." / "מצאת ז׳קט שמוצא חן בעיניך. אתה רוצה למדוד אותו."
 - Audio: (nothing is played — a situation is shown) — ()
 - A: Can I try this on? ✅
 - B: I'm just looking, thanks.
-- C: I'll take it.
+- C: Great, I'll take it.
 - Correct: Can I try this on?
 - Tests: phrase.shop.try-on
 
-**M09-Q08** — quick-reply
-- Prompt: "In the shop — what do you say?" / "בחנות — מה אומרים?"
-- Audio: It's on sale — twenty percent off. — (זה במבצע — עשרים אחוז הנחה.)
-- A: I'll take it. ✅
-- B: I'm just looking, thanks.
-- C: Can I try this on?
-- Correct: I'll take it.
-- Tests: phrase.shop.take-it
+**M09-Q15** — mini-map
+- Prompt: "Where is she sending you? Tap the place in the shop" / "לאן היא שולחת אותך? הקש על המקום בחנות" — board, row by row: 🪞 [tap:fitting-room] | · | 💳 [tap:till] // · | 👗 [tap:racks] | · // · | 🚶 [tap:entrance] | ·
+- Audio: Sure! What size are you? The fitting room is over there. — (בטח! איזו מידה אתה? חדר ההלבשה שם.)
+- A: 🪞 fitting-room ✅
+- B: 💳 till
+- C: 👗 racks
+- D: 🚶 entrance
+- Correct: 🪞 fitting-room
+- Tests: (no sentence id — not recorded)
 
-**M09-Q09** — quick-reply
-- Prompt: "In the shop — what do you say?" / "בחנות — מה אומרים?" — situation shown: "The price is higher than you expected. Say so politely." / "המחיר גבוה ממה שחשבת. אומרים את זה בנימוס."
+**M09-Q16** — quick-reply
+- Prompt: "👀 Browse ✅ · 🪞 Try on ✅ · 📏 Size fixed ⬜ · 🏷️ Sale understood ⬜ · 🛍️ Buy ⬜" / "👀 מסתכלים ✅ · 🪞 מודדים ✅ · 📏 מידה מסודרת ⬜ · 🏷️ מבצע הובן ⬜ · 🛍️ קונים ⬜" — situation shown: "👕 In the fitting room: size M is too small for you." / "👕 בתא המדידה: מידה M קטנה עליך."
 - Audio: (nothing is played — a situation is shown) — ()
-- A: It's a bit expensive. ✅
-- B: I'll take it.
-- C: I'm just looking, thanks.
-- Correct: It's a bit expensive.
-- Tests: phrase.shop.too-expensive
-
-**M09-Q10** — swap-it
-- Prompt: "Which size do you ask for?" / "איזו מידה לבקש?" — cue 👕 "It is too small on you" / "זה קטן עליך" — frame EN "Do you have a ___ size?" · FR "Vous avez une taille ___ ?" · ES "¿Tiene una talla ___?"
-- Audio: (nothing before the tap; the completed sentence is spoken after it) — ()
-- A: bigger → Do you have a bigger size? ✅
-- B: smaller → Do you have a smaller size?
-- Correct: bigger → Do you have a bigger size?
+- A: Do you have a bigger size? ✅
+- B: Great, I'll take it.
+- C: Can I try this on?
+- Correct: Do you have a bigger size?
 - Tests: phrase.shop.bigger
 
-**M09-Q11** — swap-it
-- Prompt: "Which size do you ask for?" / "איזו מידה לבקש?" — cue 🧥 "It is too big on you" / "זה גדול עליך" — frame EN "Do you have a ___ size?" · FR "Vous avez une taille ___ ?" · ES "¿Tiene una talla ___?"
-- Audio: (nothing before the tap; the completed sentence is spoken after it) — ()
-- A: bigger → Do you have a bigger size?
-- B: smaller → Do you have a smaller size? ✅
-- Correct: smaller → Do you have a smaller size?
-- Tests: phrase.shop.bigger
+**M09-Q17** — visual-match
+- Prompt: "You had M. Which size did she bring?" / "היה לך M. איזו מידה היא הביאה?"
+- Audio: Here you go, one size up. And good news — it’s on sale, twenty percent off! — (הנה, מידה אחת גדולה יותר. ובשורה טובה — זה במבצע, עשרים אחוז הנחה!)
+- A: S
+- B: M
+- C: L ✅
+- D: XL
+- Correct: L
+- Tests: (no sentence id — not recorded)
 
-**M09-Q12** — dialogue-choice
+**M09-Q18** — visual-match
+- Prompt: "What discount did she say?" / "כמה הנחה היא אמרה?"
+- Audio: Here you go, one size up. And good news — it’s on sale, twenty percent off! — (הנה, מידה אחת גדולה יותר. ובשורה טובה — זה במבצע, עשרים אחוז הנחה!)
+- A: −10%
+- B: −20% ✅
+- C: −50%
+- Correct: −20%
+- Tests: (no sentence id — not recorded)
+
+**M09-Q19** — quick-reply
+- Prompt: "👀 Browse ✅ · 🪞 Try on ✅ · 📏 Size fixed ✅ · 🏷️ Sale understood ✅ · 🛍️ Buy ⬜" / "👀 מסתכלים ✅ · 🪞 מודדים ✅ · 📏 מידה מסודרת ✅ · 🏷️ מבצע הובן ✅ · 🛍️ קונים ⬜" — situation shown: "Size L fits you, and it is on sale. You decide to buy it." / "מידה L מתאימה לך, והיא במבצע. אתה מחליט לקנות."
+- Audio: (nothing is played — a situation is shown) — ()
+- A: Great, I'll take it. ✅
+- B: Do you have a bigger size?
+- C: Can I try this on?
+- Correct: Great, I'll take it.
+- Tests: phrase.shop.great-take-it
+
+**M09-Q20** — mini-map
+- Prompt: "Where to now? Tap the place in the shop" / "לאן עכשיו? הקש על המקום בחנות" — board, row by row: 🪞 [tap:fitting-room] | · | 💳 [tap:till] // · | 👗 [tap:racks] | · // · | 🚶 [tap:entrance] | ·
+- Audio: Wonderful — I’ll ring you up at the till. Thank you! — (נהדר — אחייב אותך בקופה. תודה!)
+- A: 🪞 fitting-room
+- B: 💳 till ✅
+- C: 👗 racks
+- D: 🚶 entrance
+- Correct: 💳 till
+- Tests: (no sentence id — not recorded)
+
+**M09-Q21** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Hi there! Can I help you find anything? — (היי! אפשר לעזור לך למצוא משהו?)
 - A: I'm just looking, thanks. ✅
@@ -33012,14 +33432,14 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Correct: I'm just looking, thanks. | Can I try this on?
 - Tests: phrase.shop.just-looking, phrase.shop.try-on
 
-**M09-Q13** — dialogue-choice
+**M09-Q22** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Of course, take your time. Let me know if you need a hand. — (כמובן, קח את הזמן. תגיד אם אתה צריך עזרה.)
 - A: Can I try this on? ✅
 - Correct: Can I try this on?
 - Tests: phrase.shop.try-on
 
-**M09-Q14** — dialogue-choice
+**M09-Q23** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Sure! What size are you? The fitting room is over there. — (בטח! איזו מידה אתה? חדר ההלבשה שם.)
 - A: Do you have a bigger size? ✅
@@ -33027,35 +33447,147 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Correct: Do you have a bigger size? | Please speak slowly.
 - Tests: phrase.shop.bigger, phrase.recovery.slowly
 
-**M09-Q15** — dialogue-choice
+**M09-Q24** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: What — size? Fitting room — there. — (איזו — מידה? חדר הלבשה — שם.)
 - A: Do you have a bigger size? ✅
 - Correct: Do you have a bigger size?
 - Tests: phrase.shop.bigger
 
-**M09-Q16** — dialogue-choice
+**M09-Q25** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Here you go, one size up. And good news — it’s on sale, twenty percent off! — (הנה, מידה אחת גדולה יותר. ובשורה טובה — זה במבצע, עשרים אחוז הנחה!)
 - A: Great, I'll take it. ✅
 - B: It's a bit expensive. ✅
 - Correct: Great, I'll take it. | It's a bit expensive.
-- Tests: phrase.shop.take-it, phrase.shop.too-expensive
+- Tests: phrase.shop.great-take-it, phrase.shop.too-expensive
 
-**M09-Q17** — dialogue-choice
+**M09-Q26** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: I understand — but it's already twenty percent off. That's the best price I can do. — (אני מבין — אבל זה כבר בעשרים אחוז הנחה. זה המחיר הכי טוב שאני יכול לתת.)
 - A: Okay, I'll take it. ✅
 - Correct: Okay, I'll take it.
 - Tests: phrase.shop.take-it
 
-**M09-Q18** — cold-open
-- Prompt: "Heads up: a fast one is coming. Use a tool." / "שים לב: מגיע משפט מהיר. השתמש בכלי."
-- Audio: That one is actually the last piece we have in that colour would you like me to hold it? — (זה בעצם הפריט האחרון שיש לנו בצבע הזה — שאשמור לך אותו?)
-- A: Can you repeat that? ✅
-- B: I'll take it.
-- Correct: Can you repeat that?
-- Tests: phrase.recovery.repeat
+**M09-Q27** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Hi there! Can I help you find anything? — (היי! אפשר לעזור לך למצוא משהו?)
+- A: I'm just looking, thanks. ✅
+- B: Do you have a bigger size?
+- C: Great, I'll take it.
+- Correct: I'm just looking, thanks.
+- Tests: phrase.shop.just-looking
+
+**M09-Q28** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Of course, take your time. Let me know if you need a hand. — (כמובן, קח את הזמן. תגיד אם אתה צריך עזרה.)
+- A: Can I try this on? ✅
+- B: Great, I'll take it.
+- C: Do you have a bigger size?
+- Correct: Can I try this on?
+- Tests: phrase.shop.try-on
+
+**M09-Q29** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Sure! What size are you? The fitting room is over there. — (בטח! איזו מידה אתה? חדר ההלבשה שם.)
+- A: Do you have a bigger size? ✅
+- B: I'm just looking, thanks.
+- C: Great, I'll take it.
+- Correct: Do you have a bigger size?
+- Tests: phrase.shop.bigger
+
+**M09-Q30** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Here you go, one size up. And good news — it’s on sale, twenty percent off! — (הנה, מידה אחת גדולה יותר. ובשורה טובה — זה במבצע, עשרים אחוז הנחה!)
+- A: Great, I'll take it. ✅
+- B: Can I try this on?
+- C: Do you have a bigger size?
+- Correct: Great, I'll take it.
+- Tests: phrase.shop.great-take-it
+
+**M09-Q31** — visual-match
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Here you go, one size up. And good news — it’s on sale, twenty percent off! — (הנה, מידה אחת גדולה יותר. ובשורה טובה — זה במבצע, עשרים אחוז הנחה!)
+- A: −10%
+- B: −20% ✅
+- C: −50%
+- Correct: −20%
+- Tests: (no sentence id — not recorded)
+
+**M09-Q32** — quick-reply
+- Prompt: "👀 Browse ✅ · 🪞 Try on ⬜ · 📏 Size fixed ⬜ · 🏷️ Sale understood ⬜ · 🛍️ Buy ⬜" / "👀 מסתכלים ✅ · 🪞 מודדים ⬜ · 📏 מידה מסודרת ⬜ · 🏷️ מבצע הובן ⬜ · 🛍️ קונים ⬜"
+- Audio: Hi there! Can I help you find anything? — (היי! אפשר לעזור לך למצוא משהו?)
+- A: I'm just looking, thanks. ✅
+- B: Can I try this on?
+- C: Great, I'll take it.
+- Correct: I'm just looking, thanks.
+- Tests: phrase.shop.just-looking
+
+**M09-Q33** — quick-reply
+- Prompt: "👀 Browse ✅ · 🪞 Try on ⬜ · 📏 Size fixed ⬜ · 🏷️ Sale understood ⬜ · 🛍️ Buy ⬜" / "👀 מסתכלים ✅ · 🪞 מודדים ⬜ · 📏 מידה מסודרת ⬜ · 🏷️ מבצע הובן ⬜ · 🛍️ קונים ⬜" — situation shown: "You found a jacket you like. You want to try it on." / "מצאת ז׳קט שמוצא חן בעיניך. אתה רוצה למדוד אותו."
+- Audio: (nothing is played — a situation is shown) — ()
+- A: Can I try this on? ✅
+- B: Do you have a bigger size?
+- C: I'm just looking, thanks.
+- Correct: Can I try this on?
+- Tests: phrase.shop.try-on
+
+**M09-Q34** — mini-map
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה." — board, row by row: 🪞 [tap:fitting-room] | · | 💳 [tap:till] // · | 👗 [tap:racks] | · // · | 🚶 [tap:entrance] | ·
+- Audio: Sure! What size are you? The fitting room is over there. — (בטח! איזו מידה אתה? חדר ההלבשה שם.)
+- A: 🪞 fitting-room ✅
+- B: 💳 till
+- C: 👗 racks
+- D: 🚶 entrance
+- Correct: 🪞 fitting-room
+- Tests: (no sentence id — not recorded)
+
+**M09-Q35** — quick-reply
+- Prompt: "👀 Browse ✅ · 🪞 Try on ✅ · 📏 Size fixed ⬜ · 🏷️ Sale understood ⬜ · 🛍️ Buy ⬜" / "👀 מסתכלים ✅ · 🪞 מודדים ✅ · 📏 מידה מסודרת ⬜ · 🏷️ מבצע הובן ⬜ · 🛍️ קונים ⬜" — situation shown: "👕 In the fitting room: size M is too small for you." / "👕 בתא המדידה: מידה M קטנה עליך."
+- Audio: (nothing is played — a situation is shown) — ()
+- A: Do you have a bigger size? ✅
+- B: I'm just looking, thanks.
+- C: Great, I'll take it.
+- Correct: Do you have a bigger size?
+- Tests: phrase.shop.bigger
+
+**M09-Q36** — visual-match
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Here you go, one size up. And good news — it’s on sale, twenty percent off! — (הנה, מידה אחת גדולה יותר. ובשורה טובה — זה במבצע, עשרים אחוז הנחה!)
+- A: S
+- B: M
+- C: L ✅
+- D: XL
+- Correct: L
+- Tests: (no sentence id — not recorded)
+
+**M09-Q37** — visual-match
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Here you go, one size up. And good news — it’s on sale, twenty percent off! — (הנה, מידה אחת גדולה יותר. ובשורה טובה — זה במבצע, עשרים אחוז הנחה!)
+- A: −10%
+- B: −20% ✅
+- C: −50%
+- Correct: −20%
+- Tests: (no sentence id — not recorded)
+
+**M09-Q38** — quick-reply
+- Prompt: "👀 Browse ✅ · 🪞 Try on ✅ · 📏 Size fixed ✅ · 🏷️ Sale understood ✅ · 🛍️ Buy ⬜" / "👀 מסתכלים ✅ · 🪞 מודדים ✅ · 📏 מידה מסודרת ✅ · 🏷️ מבצע הובן ✅ · 🛍️ קונים ⬜" — situation shown: "Size L fits you, and it is on sale. You decide to buy it." / "מידה L מתאימה לך, והיא במבצע. אתה מחליט לקנות."
+- Audio: (nothing is played — a situation is shown) — ()
+- A: Great, I'll take it. ✅
+- B: Can I try this on?
+- C: Do you have a bigger size?
+- Correct: Great, I'll take it.
+- Tests: phrase.shop.great-take-it
+
+**M09-Q39** — mini-map
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה." — board, row by row: 🪞 [tap:fitting-room] | · | 💳 [tap:till] // · | 👗 [tap:racks] | · // · | 🚶 [tap:entrance] | ·
+- Audio: Wonderful — I’ll ring you up at the till. Thank you! — (נהדר — אחייב אותך בקופה. תודה!)
+- A: 🪞 fitting-room
+- B: 💳 till ✅
+- C: 👗 racks
+- D: 🚶 entrance
+- Correct: 💳 till
+- Tests: (no sentence id — not recorded)
 
 ## Mission 10 — CHECKPOINT: Arrival Day
 
@@ -37468,17 +38000,17 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 # Totals
 
 - Missions exported: 30
-- Learner-production sentence ids: 163
+- Learner-production sentence ids: 164
 - Expected-reply (receptive) sentence ids: 162
-- Sentence listings across missions (with reuse): 531
-- Expected-reply questions: 97
-- Meaning quizzes: 6
-- Active-practice questions: 509
+- Sentence listings across missions (with reuse): 529
+- Expected-reply questions: 96
+- Meaning quizzes: 5
+- Active-practice questions: 533
 - Dialogue choice screens: 271
-- Cold opens: 10
-- Total interactive questions: 893
-- Total answer choices: 2375
+- Cold opens: 9
+- Total interactive questions: 914
+- Total answer choices: 2445
 - Wrong-answer branches: 94
 - Recovery opportunities: 56
 - Learner sentences with 0 active retrieval opportunities: 1
-- Auto-flags: 205
+- Auto-flags: 200

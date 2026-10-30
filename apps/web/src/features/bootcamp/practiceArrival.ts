@@ -957,67 +957,232 @@ export function m08Steps(lang: MissionLang): BootcampStep[] {
 
 /* ── Mission 09 — Shopping ───────────────────────────────────────────────────────────────────── */
 
-/** A larger or a smaller size, the way each language asks for it in a clothes shop. The adjective
- *  agrees with "size" (la taille / la talla), never with the garment, so one wording fits any item. */
-const SIZE_FRAME: L3 = ['Do you have a ___ size?', 'Vous avez une taille ___ ?', '¿Tiene una talla ___?'];
-const SIZES: Record<'bigger' | 'smaller', readonly [L3, string]> = {
-  bigger: [['bigger', 'plus grande', 'más grande'], 'יש מידה גדולה יותר?'],
-  smaller: [['smaller', 'plus petite', 'más pequeña'], 'יש מידה קטנה יותר?'],
+/**
+ * Mission 09's image slots — one per meaning. PLACEHOLDERS: no slot has its artwork yet (`image`
+ * unset — the emoji stands in). ONE store for the final art: the same shopper, the same salesperson,
+ * the same jacket, the same racks, fitting room and till.
+ *   Group A — the store · Group B — trying on · Group C — the size · Group D — the sale and the till.
+ */
+type M09Slot =
+  | 'store-browse' | 'salesperson-offers-help' | 'just-looking' | 'take-your-time'
+  | 'selected-item' | 'try-this-on' | 'fitting-room' | 'too-small'
+  | 'ask-bigger-size' | 'one-size-up'
+  | 'sale-reveal' | 'take-it' | 'till';
+export const M09_SLOTS: Record<M09Slot, { emoji: string; image?: string }> = {
+  'store-browse': { emoji: '🏬' }, 'salesperson-offers-help': { emoji: '🙋' }, 'just-looking': { emoji: '👀' }, 'take-your-time': { emoji: '⏳' },
+  'selected-item': { emoji: '🧥' }, 'try-this-on': { emoji: '🙂' }, 'fitting-room': { emoji: '🪞' }, 'too-small': { emoji: '😬' },
+  'ask-bigger-size': { emoji: '❓' }, 'one-size-up': { emoji: '⬆️' },
+  'sale-reveal': { emoji: '🏷️' }, 'take-it': { emoji: '🤝' }, till: { emoji: '💳' },
 };
-const sizeRound = (right: keyof typeof SIZES, emoji: string, cue: Copy) => ({
-  frame: SIZE_FRAME,
-  itemId: 'phrase.shop.bigger',
-  cue: { emoji, text: cue },
-  options: (['bigger', 'smaller'] as const).map((s) => [SIZES[s][0], SIZES[s][1], s === right] as const),
-});
+/** The store's other places on the map — picture-only, never named in the learning language. */
+export const M09_PROPS = { racks: { emoji: '👗' }, entrance: { emoji: '🚶' } } as const satisfies Record<string, { emoji: string; image?: string }>;
+const look9 = (x: { emoji: string; image?: string }): { emoji: string } | { image: string } => (x.image ? { image: x.image } : { emoji: x.emoji });
+const slot9 = (s: M09Slot): { emoji: string } | { image: string } => look9(M09_SLOTS[s]);
 
-export function m09Flow(lang: MissionLang): BootcampStep[] {
+/**
+ * THE shopping trip — the SIMULATION'S truth, the same in every exercise: one jacket; you took size M;
+ * M is too small; she brings L (one size up); it is 20% off; you buy it. The learner knows only the
+ * shop and the item at the start — the rest happens to them, in order.
+ */
+export const M09_SIZES = ['S', 'M', 'L', 'XL'] as const;
+export const M09_SHOP = { item: 'jacket', size: 'M', replacement: 'L', discount: 20, outcome: 'buy' } as const;
+/** The stages of the trip — the journey shows STAGES, never their answers. */
+export const M09_STAGES = ['browse', 'try-on', 'size-fixed', 'sale-understood', 'buy'] as const;
+const STAGE9: Record<(typeof M09_STAGES)[number], Copy> = {
+  browse: ['👀 מסתכלים', '👀 Browse'], 'try-on': ['🪞 מודדים', '🪞 Try on'], 'size-fixed': ['📏 מידה מסודרת', '📏 Size fixed'], 'sale-understood': ['🏷️ מבצע הובן', '🏷️ Sale understood'], buy: ['🛍️ קונים', '🛍️ Buy'],
+};
+/** The shopping journey once `done` of its five stages are behind the learner (1 = browsing, the start). */
+export const shoppingJourney = (done: number): Copy => {
+  const row = (i: 0 | 1): string => M09_STAGES.map((s, k) => `${STAGE9[s][i]} ${k < done ? '✅' : '⬜'}`).join(' · ');
+  return [row(0), row(1)];
+};
+/** Where the shopper is once `done` stages are behind them — plain serialisable data, nothing known early. */
+export const shoppingState = (done: number) => ({
+  stage: M09_STAGES[Math.max(1, Math.min(done, M09_STAGES.length)) - 1]!,
+  item: M09_SHOP.item,
+  currentSize: done >= 3 ? M09_SHOP.replacement : M09_SHOP.size,
+  replacementSize: done >= 3 ? M09_SHOP.replacement : null,
+  discountKnown: done >= 4,
+  purchaseDecision: done >= 5 ? M09_SHOP.outcome : null,
+});
+/** The size problem, as it happens in the fitting room — app language: it is not in the conversation. */
+const TOO_SMALL: Copy = ['👕 בתא המדידה: מידה M קטנה עליך.', '👕 In the fitting room: size M is too small for you.'];
+
+/* The locked conversation (EN · FR · ES · HE), line by line. */
+const S_HELP: L4 = ['Hi there! Can I help you find anything?', 'Bonjour ! Je peux vous aider à trouver quelque chose ?', '¡Hola! ¿Le ayudo a encontrar algo?', 'היי! אפשר לעזור לך למצוא משהו?'];
+const S_LOOKING: L4 = ["I'm just looking, thanks.", 'Je regarde seulement, merci.', 'Solo estoy mirando, gracias.', 'אני רק מסתכל, תודה.'];
+const S_TIME: L4 = ['Of course, take your time. Let me know if you need a hand.', 'Bien sûr, prenez votre temps. Dites-moi si vous avez besoin d’aide.', 'Claro, tómese su tiempo. Avíseme si necesita ayuda.', 'כמובן, קח את הזמן. תגיד אם אתה צריך עזרה.'];
+const S_TRY: L4 = ['Can I try this on?', 'Je peux essayer ça ?', '¿Puedo probarme esto?', 'אפשר למדוד את זה?'];
+const S_SIZE: L4 = ['Sure! What size are you? The fitting room is over there.', 'Bien sûr ! Vous faites quelle taille ? La cabine d’essayage est là-bas.', '¡Claro! ¿Qué talla usa? El probador está allí.', 'בטח! איזו מידה אתה? חדר ההלבשה שם.'];
+const S_BIGGER: L4 = ['Do you have a bigger size?', 'Vous avez une taille au-dessus ?', '¿Tiene una talla más grande?', 'יש מידה גדולה יותר?'];
+const S_SALE: L4 = ['Here you go, one size up. And good news — it’s on sale, twenty percent off!', 'Voilà, une taille au-dessus. Et bonne nouvelle — c’est en solde, vingt pour cent de réduction !', 'Aquí tiene, una talla más. Y buena noticia — ¡está rebajado, un veinte por ciento de descuento!', 'הנה, מידה אחת גדולה יותר. ובשורה טובה — זה במבצע, עשרים אחוז הנחה!'];
+const S_TAKE: L4 = ["Great, I'll take it.", 'Super, je le prends.', 'Genial, me lo llevo.', 'מעולה, אני אקח את זה.'];
+const S_TILL: L4 = ['Wonderful — I’ll ring you up at the till. Thank you!', 'Parfait — je vous encaisse à la caisse. Merci !', 'Perfecto — le cobro en la caja. ¡Gracias!', 'נהדר — אחייב אותך בקופה. תודה!'];
+/* …and the pieces worth a card of their own. */
+const C_FITTING: L4 = ['The fitting room is over there.', 'La cabine d’essayage est là-bas.', 'El probador está allí.', 'חדר ההלבשה שם.'];
+const C_SIZE_UP: L4 = ['Here you go, one size up.', 'Voilà, une taille au-dessus.', 'Aquí tiene, una talla más.', 'הנה, מידה אחת גדולה יותר.'];
+const C_SALE: L4 = ['it’s on sale, twenty percent off', 'c’est en solde, vingt pour cent de réduction', 'está rebajado, un veinte por ciento de descuento', 'זה במבצע, עשרים אחוז הנחה'];
+
+/* Clean app UI for the data — sizes and discounts are figures, not pictures. */
+const SIZE_TILES = M09_SIZES.map((s) => ({ id: `size-${s}`, label: s }));
+const DISCOUNTS = [10, 20, 50].map((n) => ({ id: `off-${n}`, label: `−${n}%` }));
+type Cell9 = { id: string; row: 0 | 1 | 2; col: 0 | 1 | 2; emoji?: string; image?: string; tappable?: boolean; zone?: string };
+/** THE store, seen from above: the fitting rooms and the till along the back wall, the racks in the
+ *  middle, the entrance at the front. Each place is a ZONE — the answer is the place, not the cell. */
+const STORE = (): Cell9[] => [
+  { id: 'fitting-room', row: 0, col: 0, ...look9(M09_SLOTS['fitting-room']), tappable: true, zone: 'fitting-room' },
+  { id: 'till', row: 0, col: 2, ...look9(M09_SLOTS.till), tappable: true, zone: 'till' },
+  { id: 'racks', row: 1, col: 1, ...look9(M09_PROPS.racks), tappable: true, zone: 'racks' },
+  { id: 'entrance', row: 2, col: 1, ...look9(M09_PROPS.entrance), tappable: true, zone: 'entrance' },
+];
+/** Which choice is the shopper's own, from the trip (never chosen per exercise). */
+export const M09_ANSWER = { fittingRoom: 'fitting-room', size: `size-${M09_SHOP.replacement}`, discount: `off-${M09_SHOP.discount}`, till: 'till' } as const;
+
+/**
+ * Mission 09 — Shopping: "I actually bought something in a foreign-language store." The conversation
+ * is LOCKED (with its side-branches). ONE trip: browse → try on → the size problem → a bigger size →
+ * the sale → buy → the till, on a journey that shows its STAGES, never their answers:
+ *
+ *   the briefing → Step 0 (optional) → she offers help · "I'm just looking, thanks." · take your time →
+ *   you find the jacket: "Can I try this on?" (card, builder, your initiative) → size? the fitting room
+ *   over there (go there on the store map) → M is too small → "Do you have a bigger size?" (card,
+ *   builder, initiative) → her answer: one size up (M → L) and the sale (−20%) → "Great, I'll take it."
+ *   (your decision) → the till (go there) → by ear → the supported trip → the conversation → no help →
+ *   the video → the final trip → PURCHASE COMPLETE.
+ *
+ * TEACH before TEST: every line is first shown with its meaning on a card. The shopper says only the
+ * shopper's four lines. Coverage: `mission09Coverage.ts`, enforced by `mission09.test.ts`.
+ */
+export function m09Steps(lang: MissionLang): BootcampStep[] {
   const k = kit(lang);
+  const card = (key: string, line: L4, meaning: Copy, s: M09Slot) => ({ line: true, key, t: [line[0], line[1], line[2]] as L3, meaning, ...slot9(s) });
+  const cards = (label: Copy, intro: Copy, words: ReturnType<typeof card>[]): BootcampStep => k.prime({ label, intro, bigPictures: true, widePictures: true, words });
+  const toFitting = (challenge = false): BootcampStep => k.practice({ kind: 'miniMap', quiet: true, ...(challenge ? { challenge: true } : {}), label: ['לאן היא שולחת אותך? הקש על המקום בחנות', 'Where is she sending you? Tap the place in the shop'], rounds: [{ audio: S_SIZE, cells: STORE(), correct: M09_ANSWER.fittingRoom, reinforce: C_FITTING }] });
+  const sizeUp = (challenge = false): BootcampStep => k.practice({ kind: 'visualMatch', quiet: true, ordered: true, ...(challenge ? { challenge: true } : {}), label: ['היה לך M. איזו מידה היא הביאה?', 'You had M. Which size did she bring?'], tiles: SIZE_TILES, rounds: [{ audio: S_SALE, correct: M09_ANSWER.size, reinforce: C_SIZE_UP }] });
+  const discount = (challenge = false): BootcampStep => k.practice({ kind: 'visualMatch', quiet: true, ...(challenge ? { challenge: true } : {}), label: ['כמה הנחה היא אמרה?', 'What discount did she say?'], tiles: DISCOUNTS, rounds: [{ audio: S_SALE, correct: M09_ANSWER.discount, reinforce: C_SALE }] });
+  const toTill = (challenge = false): BootcampStep => k.practice({ kind: 'miniMap', quiet: true, ...(challenge ? { challenge: true } : {}), label: ['לאן עכשיו? הקש על המקום בחנות', 'Where to now? Tap the place in the shop'], rounds: [{ audio: S_TILL, cells: STORE(), correct: M09_ANSWER.till }] });
+  const decide: Copy = ['מידה L מתאימה לך, והיא במבצע. אתה מחליט לקנות.', 'Size L fits you, and it is on sale. You decide to buy it.'];
+  const found: Copy = ['מצאת ז׳קט שמוצא חן בעיניך. אתה רוצה למדוד אותו.', 'You found a jacket you like. You want to try it on.'];
   return [
-    ...k.tools([
-      ['phrase.shop.just-looking', ['מרחב אישי', 'Personal space']],
-      ['phrase.shop.try-on', ['למדוד', 'Try it on']],
-      ['phrase.shop.bigger', ['מידה', 'Sizes']],
-      ['phrase.shop.take-it', ['להחליט', 'Decide']],
+    // THE BRIEFING — only what the shopper knows: the shop, and an item they like (no journey yet: its
+    // stages would name what is still to happen).
+    k.talk('🛍️', ['משימה 9: קניות', 'Mission 9: Shopping'], [
+      ['נכנסת לחנות בגדים ומצאת פריט שמוצא חן בעיניך. תמדוד אותו ותראה אם תרצה לקנות.', 'You walked into a clothes shop and found something you like. Try it on and see whether you want to buy it.'],
+    ], ['התחל קניות', 'Start shopping'], [
+      { icon: '🏬', label: ['איפה', 'Where'], value: ['חנות בגדים', 'A clothes shop'] },
+      { icon: '🧥', label: ['מה', 'What'], value: ['ז׳קט שמוצא חן בעיניך', 'A jacket you like'] },
     ]),
-    k.replies('phrase.shop.try-on', ['reply.shop.what-size', 'reply.shop.fitting-room', 'reply.shop.on-sale', 'reply.shop.anything-else']),
-    k.receipt(['אתה מזהה מה מוכר שואל — מידה, חדר הלבשה, מבצע.', 'You recognize what a seller asks — size, fitting room, sale.']),
-    // "Out of stock" is something you must UNDERSTAND, not say — so it is tested by ear, once.
-    k.quiz('reply.shop.out-of-stock', 'reply.shop.on-sale', 'reply.shop.fitting-room'),
-    // Shop Rush: four moments with a seller.
+    // The pieces (optional) — the trying-on words; nothing about the size problem, the sale or the end.
+    k.prime({
+      gate: true,
+      widePictures: true,
+      intro: ['המילים של המדידה. הקש כדי לשמוע.', 'The trying-on words. Tap to hear.'],
+      words: [
+        { key: 'shop.size', t: ['size', 'taille', 'talla'], meaning: ['מידה', 'size'], ...slot9('selected-item') },
+        { key: 'shop.fitting-room', t: ['fitting room', 'cabine d’essayage', 'probador'], meaning: ['תא מדידה', 'fitting room'], ...slot9('fitting-room') },
+      ],
+      build: 'reply.shop.fitting-room',
+    }),
+    // BROWSING — she offers help; you are just looking; she gives you space.
+    cards(['מסתכלים', 'Browsing'], ['המוכרת ניגשת — ומה אתה עונה. הקש כדי לשמוע.', 'The salesperson comes over — and what you answer. Tap to hear.'], [
+      card('shop.line.help', S_HELP, ['היי! אפשר לעזור לך למצוא משהו?', 'Hi there! Can I help you find anything?'], 'salesperson-offers-help'),
+      card('shop.line.looking', S_LOOKING, ['אני רק מסתכל, תודה.', 'I’m just looking, thanks.'], 'just-looking'),
+      card('shop.line.time', S_TIME, ['כמובן, קח את הזמן. תגיד אם אתה צריך עזרה.', 'Of course, take your time. Let me know if you need a hand.'], 'take-your-time'),
+    ]),
+    // TRYING ON — your own idea: you found the jacket.
+    cards(['מצאת משהו', 'You found something'], ['השאלה שלך — כשמצאת משהו שאתה רוצה למדוד. הקש כדי לשמוע.', 'Your question — when you find something you want to try. Tap to hear.'], [
+      card('shop.line.try', S_TRY, ['אפשר למדוד את זה?', 'Can I try this on?'], 'try-this-on'),
+    ]),
+    k.practice({
+      kind: 'sentenceBuilder',
+      label: ['השאלה שלך', 'Your question'],
+      rounds: [{ itemId: 'phrase.shop.try-on', chunks: [['Can I', 'try this', 'on?'], ['Je peux', 'essayer', 'ça ?'], ['¿Puedo', 'probarme', 'esto?']] }],
+    }),
+    k.practice({ kind: 'quickReply', label: ['מה אתה אומר?', 'What do you say?'], rounds: [{ situation: found, options: [['phrase.shop.try-on', true], ['phrase.shop.just-looking', false]] }] }),
+    // THE FITTING ROOM — her answer: your size? the fitting room is over there.
+    cards(['תא המדידה', 'The fitting room'], ['מה שהיא עונה — ולאן ללכת. הקש כדי לשמוע.', 'What she answers — and where to go. Tap to hear.'], [
+      card('shop.line.size-fitting', S_SIZE, ['בטח! איזו מידה אתה? חדר ההלבשה שם.', 'Sure! What size are you? The fitting room is over there.'], 'fitting-room'),
+      card('shop.line.fitting', C_FITTING, ['חדר ההלבשה שם.', 'The fitting room is over there.'], 'fitting-room'),
+    ]),
+    toFitting(),
+    k.receipt([`${TOO_SMALL[0]} ${shoppingJourney(2)[0]}`, `${TOO_SMALL[1]} ${shoppingJourney(2)[1]}`]),
+    // THE SIZE PROBLEM — you solve it: a bigger size.
+    cards(['קטן מדי', 'Too small'], ['השאלה שלך — כשהמידה קטנה עליך. הקש כדי לשמוע.', 'Your question — when the size is too small. Tap to hear.'], [
+      card('shop.line.bigger', S_BIGGER, ['יש מידה גדולה יותר?', 'Do you have a bigger size?'], 'ask-bigger-size'),
+    ]),
+    k.practice({
+      kind: 'sentenceBuilder',
+      label: ['השאלה שלך', 'Your question'],
+      rounds: [{ itemId: 'phrase.shop.bigger', chunks: [['Do you have', 'a bigger', 'size?'], ['Vous avez', 'une taille', 'au-dessus ?'], ['¿Tiene', 'una talla', 'más grande?']] }],
+    }),
+    k.practice({ kind: 'quickReply', label: ['מה אתה אומר?', 'What do you say?'], rounds: [{ situation: TOO_SMALL, options: [['phrase.shop.bigger', true], ['phrase.shop.try-on', false], ['phrase.shop.just-looking', false]] }] }),
+    // HER ANSWER — one size up, and (news!) the sale.
+    cards(['התשובה שלה', 'Her answer'], ['מה שהיא מביאה — ומה שהיא מספרת. הקש כדי לשמוע.', 'What she brings — and what she tells you. Tap to hear.'], [
+      card('shop.line.size-up-sale', S_SALE, ['הנה, מידה אחת גדולה יותר. ובשורה טובה — זה במבצע, עשרים אחוז הנחה!', 'Here you go, one size up. And good news — it’s on sale, twenty percent off!'], 'sale-reveal'),
+      card('shop.line.size-up', C_SIZE_UP, ['הנה, מידה אחת גדולה יותר. (מ־M ל־L)', 'Here you go, one size up. (from M to L)'], 'one-size-up'),
+      card('shop.line.sale', C_SALE, ['זה במבצע, עשרים אחוז הנחה', 'it’s on sale, twenty percent off'], 'sale-reveal'),
+    ]),
+    sizeUp(),
+    discount(),
+    k.receipt(shoppingJourney(4)),
+    // THE DECISION — it fits, it's on sale: you take it; she sends you to the till.
+    cards(['ההחלטה', 'The decision'], ['ההחלטה שלך — ומה היא עונה. הקש כדי לשמוע.', 'Your decision — and what she answers. Tap to hear.'], [
+      card('shop.line.take', S_TAKE, ['מעולה, אני אקח את זה.', 'Great, I’ll take it.'], 'take-it'),
+      card('shop.line.till', S_TILL, ['נהדר — אחייב אותך בקופה. תודה!', 'Wonderful — I’ll ring you up at the till. Thank you!'], 'till'),
+    ]),
+    k.practice({ kind: 'quickReply', label: ['מה אתה אומר?', 'What do you say?'], rounds: [{ situation: decide, options: [['phrase.shop.great-take-it', true], ['phrase.shop.bigger', false], ['phrase.shop.just-looking', false]] }] }),
+    toTill(),
+    // THE SALESPERSON, BY EAR — her lines with no game of their own.
+    k.replies('phrase.shop.just-looking', ['reply.shop.help-find', 'reply.shop.take-your-time', 'reply.shop.till-line']),
+    // THE SUPPORTED TRIP — the whole trip, the journey on screen (stages only).
     k.practice({
       kind: 'quickReply',
-      label: ['בחנות — מה אומרים?', 'In the shop — what do you say?'],
+      label: shoppingJourney(1),
       rounds: [
-        { prompt: 'reply.shop.can-i-help', options: [['phrase.shop.just-looking', true], ['phrase.shop.take-it', false], ['phrase.shop.bigger', false]] },
-        { situation: ['מצאת משהו שמוצא חן בעיניך. אתה רוצה למדוד אותו.', 'You found something you like. You want to try it on.'],
-          options: [['phrase.shop.try-on', true], ['phrase.shop.just-looking', false], ['phrase.shop.take-it', false]] },
-        { prompt: 'reply.shop.on-sale', options: [['phrase.shop.take-it', true], ['phrase.shop.just-looking', false], ['phrase.shop.try-on', false]] },
-        { situation: ['המחיר גבוה ממה שחשבת. אומרים את זה בנימוס.', 'The price is higher than you expected. Say so politely.'],
-          options: [['phrase.shop.too-expensive', true], ['phrase.shop.take-it', false], ['phrase.shop.just-looking', false]] },
+        { npc: S_HELP, options: [['phrase.shop.just-looking', true], ['phrase.shop.great-take-it', false], ['phrase.shop.bigger', false]] },
+        { situation: found, options: [['phrase.shop.try-on', true], ['phrase.shop.just-looking', false], ['phrase.shop.great-take-it', false]] },
       ],
     }),
-    // One size up, one size down.
-    k.practice({
-      kind: 'swap',
-      label: ['איזו מידה לבקש?', 'Which size do you ask for?'],
-      rounds: [
-        sizeRound('bigger', '👕', ['זה קטן עליך', 'It is too small on you']),
-        sizeRound('smaller', '🧥', ['זה גדול עליך', 'It is too big on you']),
-      ],
-    }),
+    toFitting(),
+    k.practice({ kind: 'quickReply', label: shoppingJourney(2), rounds: [{ situation: TOO_SMALL, options: [['phrase.shop.bigger', true], ['phrase.shop.great-take-it', false], ['phrase.shop.try-on', false]] }] }),
+    sizeUp(),
+    discount(),
+    k.practice({ kind: 'quickReply', label: shoppingJourney(4), rounds: [{ situation: decide, options: [['phrase.shop.great-take-it', true], ['phrase.shop.bigger', false], ['phrase.shop.try-on', false]] }] }),
+    toTill(),
+    k.receipt([`${shoppingJourney(5)[0]} — קנית!`, `${shoppingJourney(5)[1]} — you bought it!`]),
     k.dialogue('clothing-shop'),
-    k.receipt(['קניה שלמה: הסתכלת, מדדת, ביקשת מידה, החלטת. בשליטה מלאה.', 'A full shop: browsed, tried on, asked for a size, decided. Fully in control.']),
-    k.review([
-      'phrase.shop.just-looking', 'phrase.shop.try-on', 'phrase.shop.bigger', 'phrase.shop.take-it', 'phrase.shop.too-expensive',
-      'reply.shop.can-i-help', 'reply.shop.what-size', 'reply.shop.fitting-room', 'reply.shop.on-sale', 'reply.shop.out-of-stock',
-      'phrase.recovery.slowly', 'phrase.recovery.repeat',
-    ]),
-    // A long, fast seller sentence that is meant to be too much: asking for it again is the win.
-    k.ambush('recovery',
-      ['That one is actually the last piece we have in that colour would you like me to hold it?', 'Celui-ci, c’est en fait le dernier qu’il nous reste dans cette couleur — vous voulez que je vous le garde ?', 'Este es en realidad el último que nos queda en ese color — ¿quiere que se lo guarde?', 'זה בעצם הפריט האחרון שיש לנו בצבע הזה — שאשמור לך אותו?'],
-      'phrase.recovery.repeat', 'phrase.shop.take-it'),
-    k.receipt(['משפט ארוך ומהיר — ובמקום לקפוא, ביקשת הבהרה. זה בדיוק הרפלקס.', 'A long, fast sentence — and instead of freezing, you asked for clarity. Exactly the reflex.']),
+    k.receipt(['כל השיחה — מ"אפשר לעזור?" ועד הקופה.', 'The whole conversation — from “can I help you?” to the till.']),
+    // NO HELP — her real lines, in the conversation's order; no journey, no translation.
+    k.practice({
+      kind: 'quickReply',
+      challenge: true,
+      rounds: [
+        { npc: S_HELP, options: [['phrase.shop.just-looking', true], ['phrase.shop.bigger', false], ['phrase.shop.great-take-it', false]] },
+        { npc: S_TIME, options: [['phrase.shop.try-on', true], ['phrase.shop.great-take-it', false], ['phrase.shop.bigger', false]] },
+        { npc: S_SIZE, options: [['phrase.shop.bigger', true], ['phrase.shop.just-looking', false], ['phrase.shop.great-take-it', false]] },
+        { npc: S_SALE, options: [['phrase.shop.great-take-it', true], ['phrase.shop.try-on', false], ['phrase.shop.bigger', false]] },
+      ],
+    }),
+    discount(true),
+    k.receipt(['בלי עזרה — כל הקנייה, בקצב שלה.', 'No help — the whole purchase, at her pace.']),
+    // THE PAYOFF — the whole scene again (the video, where one exists)…
+    { kind: 'video', mode: 'again' },
+    // …then THE FINAL TRIP: compact — each ability once.
+    k.practice({
+      kind: 'quickReply',
+      label: shoppingJourney(1),
+      rounds: [
+        { npc: S_HELP, options: [['phrase.shop.just-looking', true], ['phrase.shop.try-on', false], ['phrase.shop.great-take-it', false]] },
+        { situation: found, options: [['phrase.shop.try-on', true], ['phrase.shop.bigger', false], ['phrase.shop.just-looking', false]] },
+      ],
+    }),
+    toFitting(true),
+    k.practice({ kind: 'quickReply', label: shoppingJourney(2), rounds: [{ situation: TOO_SMALL, options: [['phrase.shop.bigger', true], ['phrase.shop.just-looking', false], ['phrase.shop.great-take-it', false]] }] }),
+    sizeUp(true),
+    discount(true),
+    k.practice({ kind: 'quickReply', label: shoppingJourney(4), rounds: [{ situation: decide, options: [['phrase.shop.great-take-it', true], ['phrase.shop.try-on', false], ['phrase.shop.bigger', false]] }] }),
+    toTill(true),
+    k.receipt([`🛍️ הקנייה הושלמה · ${shoppingJourney(5)[0]}`, `🛍️ PURCHASE COMPLETE · ${shoppingJourney(5)[1]}`]),
     { kind: 'summary' },
   ];
 }

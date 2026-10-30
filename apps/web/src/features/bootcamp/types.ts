@@ -258,7 +258,8 @@ export type BootcampStep =
   | { kind: 'ambush'; mode?: 'recovery' | 'speed'; npc: SpokenLine; correctItemId: string; wrongItemId: string }
   //  `challenge`: a final speed challenge — the same rounds, spoken fast (like the board and the map).
   | { kind: 'quickReply'; label?: LocalizedText; rounds: QuickReplyRound[]; challenge?: boolean }
-  | { kind: 'visualMatch'; label?: LocalizedText; tiles: MatchTile[]; rounds: VisualMatchRound[]; challenge?: boolean; quiet?: boolean }
+  /** `ordered`: the tiles are a scale (a size ladder) — shown in their own order, left to right, never shuffled. */
+  | { kind: 'visualMatch'; label?: LocalizedText; tiles: MatchTile[]; rounds: VisualMatchRound[]; challenge?: boolean; quiet?: boolean; ordered?: boolean }
   | { kind: 'swap'; label?: LocalizedText; rounds: SwapRound[] }
   /** `base`: what is being made — an emoji, or an approved picture's public path ("images/…"). */
   | { kind: 'customize'; label?: LocalizedText; base: string; options: CustomizeOption[]; rounds: CustomizeRound[] }

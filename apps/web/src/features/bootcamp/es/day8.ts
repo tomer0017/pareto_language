@@ -1,7 +1,7 @@
 import type { LocalizedText } from '@ready/content-schema';
 import type { BootcampDayContent, BootcampDialogue, BootcampItem } from '../types.js';
 import { recoveryEs } from './recovery.js';
-import { m09Flow } from '../practiceArrival.js';
+import { m09Steps } from '../practiceArrival.js';
 
 /**
  * Spanish Mission 9 — "Compras" (Shopping). Spanish parallel of English mission 8: same objective (browse,
@@ -21,14 +21,15 @@ export const DAY8_ES_ITEMS: BootcampItem[] = [
     tip: T('החלטת? שתי מילים סוגרות עסקה.', 'Decided? Two words close the deal.') },
   { id: 'es.phrase.shop.too-expensive', text: 'Es un poco caro.', meaning: T('זה קצת יקר.', "It's a bit expensive."),
     tip: T('פתח מנומס להנחה או לחלופה זולה יותר.', 'A polite opening for a discount or a cheaper option.') },
+  { id: 'es.phrase.shop.great-take-it', text: 'Genial, me lo llevo.', meaning: T('מעולה, אני אקח את זה.', "Great, I'll take it.") },
   // hear
   { id: 'es.reply.shop.can-i-help', text: '¿Le ayudo a encontrar algo?', meaning: T('אפשר לעזור לך למצוא משהו?', 'Can I help you find anything?') },
   { id: 'es.reply.shop.what-size', text: '¿Qué talla usa?', meaning: T('איזו מידה אתה?', 'What size are you?') },
   { id: 'es.reply.shop.fitting-room', text: 'El probador está allí.', meaning: T('חדר ההלבשה שם.', 'The fitting room is over there.') },
-  { id: 'es.reply.shop.out-of-stock', text: 'Lo siento, está agotado.', meaning: T('סליחה, זה אזל מהמלאי.', "Sorry, that's out of stock.") },
-  { id: 'es.reply.shop.on-sale', text: 'Está rebajado — un veinte por ciento de descuento.', meaning: T('זה במבצע — עשרים אחוז הנחה.', "It's on sale — twenty percent off.") },
-  { id: 'es.reply.shop.anything-else', text: '¿Algo más para hoy?', meaning: T('עוד משהו היום?', 'Anything else for you today?') },
-  ...recoveryEs('es.phrase.recovery.slowly', 'es.phrase.recovery.repeat', 'es.phrase.recovery.thank-you', 'es.phrase.recovery.show-me'),
+  { id: 'es.reply.shop.help-find', text: '¡Hola! ¿Le ayudo a encontrar algo?', meaning: T('היי! אפשר לעזור לך למצוא משהו?', 'Hi there! Can I help you find anything?') },
+  { id: 'es.reply.shop.take-your-time', text: 'Claro, tómese su tiempo. Avíseme si necesita ayuda.', meaning: T('כמובן, קח את הזמן. תגיד אם אתה צריך עזרה.', 'Of course, take your time. Let me know if you need a hand.') },
+  { id: 'es.reply.shop.till-line', text: 'Perfecto — le cobro en la caja. ¡Gracias!', meaning: T('נהדר — אחייב אותך בקופה. תודה!', 'Wonderful — I’ll ring you up at the till. Thank you!') },
+  ...recoveryEs('es.phrase.recovery.slowly'),
 ];
 
 const SCENE: BootcampDialogue = {
@@ -55,7 +56,7 @@ const SCENE: BootcampDialogue = {
     ] },
     { id: 'n4', who: 'npc', next: 'c3', en: 'Aquí tiene, una talla más. Y buena noticia — ¡está rebajado, un veinte por ciento de descuento!', tr: TR("Here you go, one size up. And good news — it's on sale, twenty percent off!", 'הנה, מידה אחת גדולה יותר. ובשורה טובה — זה במבצע, עשרים אחוז הנחה!'), he: 'הנה, מידה אחת גדולה יותר. ובשורה טובה — זה במבצע, עשרים אחוז הנחה!' },
     { id: 'c3', who: 'you', en: '', he: '', choices: [
-      { en: 'Genial, me lo llevo.', tr: TR("Great, I'll take it.", 'מעולה, אני אקח את זה.'), he: 'מעולה, אני אקח את זה.', itemId: 'es.phrase.shop.take-it', correct: true, next: 'n5' },
+      { en: 'Genial, me lo llevo.', tr: TR("Great, I'll take it.", 'מעולה, אני אקח את זה.'), he: 'מעולה, אני אקח את זה.', itemId: 'es.phrase.shop.great-take-it', correct: true, next: 'n5' },
       { en: 'Es un poco caro.', tr: TR("It's a bit expensive.", 'זה קצת יקר.'), he: 'זה קצת יקר.', itemId: 'es.phrase.shop.too-expensive', correct: true, next: 'n4b' },
     ] },
     { id: 'n4b', who: 'npc', next: 'c3b', en: 'Lo entiendo — pero ya tiene un veinte por ciento de descuento. Es el mejor precio que le puedo hacer.', tr: TR("I understand — but it's already twenty percent off. That's the best price I can do.", 'אני מבין — אבל זה כבר בעשרים אחוז הנחה. זה המחיר הכי טוב שאני יכול לתת.'), he: 'אני מבין — אבל זה כבר בעשרים אחוז הנחה. זה המחיר הכי טוב שאני יכול לתת.' },
@@ -71,13 +72,6 @@ export const DAY8_ES: BootcampDayContent = {
   title: T('קניות', 'Shopping'),
   items: DAY8_ES_ITEMS,
   dialogues: { 'clothing-shop': SCENE },
-  steps: [
-    { kind: 'talk', icon: '🛍️', title: T('משימה 9: קניות', 'Mission 9: Shopping'),
-      body: [
-        T('חנות בגדים: להסתכל בשקט, למדוד, לבקש מידה, להחליט.', 'A clothing shop: browse in peace, try on, ask for a size, decide.'),
-        T('לא צריך לקנות. צריך להרגיש בשליטה מול המוכר.', 'You don’t have to buy. You do have to feel in control with the seller.'),
-      ], cta: T('להיכנס לחנות', 'Walk in') },
-    // From the key sentences onward the flow is shared by all languages: see practiceArrival.ts.
-    ...m09Flow('es'),
-  ],
+  // The whole journey is shared by all languages: see practiceArrival.ts (`m09Steps`).
+  steps: m09Steps('es'),
 };

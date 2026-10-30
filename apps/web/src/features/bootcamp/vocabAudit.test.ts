@@ -42,8 +42,8 @@ describe('mission vocabulary audit — complete and consistent (Part 9)', () => 
     for (const cp of [9, 17, 23, 27, 28, 29]) expect(MISSION_VOCAB_AUDIT[cp]!.decision).toBe('no-priming-needed');
   });
 
-  it('reports the exact primed set (the 7 original foundation missions + Everyday Core + Airport & Border)', () => {
+  it('reports the exact primed set (the 7 original foundation missions + Everyday Core + Airport & Border + Shopping)', () => {
     const primed = Object.values(MISSION_VOCAB_AUDIT).filter((a) => a.decision === 'primed').map((a) => a.day);
-    expect(primed).toEqual([1, 2, 3, 4, 5, 6, 7, 10, 30]); // registry keys; 30 = Everyday Core (Mission 4), 10 = Airport & Border (Mission 6)
+    expect(primed).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 10, 30]); // registry keys; 30 = Everyday Core (Mission 4), 10 = Airport & Border (Mission 6), 8 = Shopping (Mission 9)
   });
 });

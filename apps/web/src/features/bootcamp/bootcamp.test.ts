@@ -453,9 +453,9 @@ describe('video-first Bootcamp (intro/review video)', () => {
     expect(kinds.at(-1)).toBe('summary');
   });
 
-  it('only Missions 1–8 have video steps (skipped where no file exists); every mission can be read aloud whether or not it has a video', () => {
+  it('only Missions 1–9 have video steps (skipped where no file exists); every mission can be read aloud whether or not it has a video', () => {
     for (const set of [DAYS, DAYS_FR, DAYS_ES]) for (const day of Object.values(set)) {
-      expect(day.steps.some((s) => s.kind === 'video'), `day ${day.day}`).toBe((day.day >= 1 && day.day <= 3) || day.day === 5 || day.day === 6 || day.day === 7 || day.day === 10 || day.day === 30); // Mission 04's key is 30, Mission 05's is 5, Mission 06's is 10, Mission 07's is 6, Mission 08's is 7
+      expect(day.steps.some((s) => s.kind === 'video'), `day ${day.day}`).toBe((day.day >= 1 && day.day <= 3) || day.day === 5 || day.day === 6 || day.day === 7 || day.day === 8 || day.day === 10 || day.day === 30); // Mission 04's key is 30, Mission 05's is 5, Mission 06's is 10, Mission 07's is 6, Mission 08's is 7, Mission 09's is 8
       expect(Object.keys(day.dialogues).length).toBeGreaterThan(0); // the transcript reader still works
     }
   });

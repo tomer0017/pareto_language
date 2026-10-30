@@ -128,6 +128,8 @@ export interface VisualMatchSpec {
   challenge?: boolean;
   /** Quiet feedback: ✓ / ✕, the line and its meaning, one action — no mascot, no double buttons. */
   quiet?: boolean;
+  /** The tiles are a scale (a size ladder): kept in their own order, left to right, never shuffled. */
+  ordered?: boolean;
   tiles: MatchTile[];
   /** `reinforce`: the answer's own line, shown with its meaning after a pick (when `audio` is the question). */
   rounds: { audio: L4; correct: string; itemId?: string; show?: string[]; pace?: 'fast' | 'slow'; reinforce?: L4 }[];
@@ -378,7 +380,7 @@ export function buildPractice(p: PracticeSpec, lang: MissionLang): BootcampStep 
   }
   if (p.kind === 'visualMatch') {
     return {
-      kind: 'visualMatch', ...label, ...(p.challenge ? { challenge: true } : {}), ...(p.quiet ? { quiet: true } : {}), tiles: p.tiles,
+      kind: 'visualMatch', ...label, ...(p.challenge ? { challenge: true } : {}), ...(p.quiet ? { quiet: true } : {}), ...(p.ordered ? { ordered: true } : {}), tiles: p.tiles,
       rounds: p.rounds.map((r) => ({
         audio: paced(spoken(r.audio, lang), r.pace), correct: r.correct, ...(r.itemId ? { itemId: id(r.itemId) } : {}), ...(r.show ? { show: [...r.show] } : {}),
         ...(r.reinforce ? { reinforce: spoken(r.reinforce, lang) } : {}),

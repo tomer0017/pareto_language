@@ -173,7 +173,7 @@ export function VisualMatchStep({ step, onDone }: { step: StepOf<'visualMatch'>;
   const bc = useBootcampStore();
   const [i, setI] = useState(0);
   const [picked, setPicked] = useState<string | null>(null);
-  const [tiles] = useState(() => shuffle(step.tiles, mulberry32(sessionSeed())));
+  const [tiles] = useState(() => (step.ordered ? step.tiles : shuffle(step.tiles, mulberry32(sessionSeed()))));
   const shownAt = useRef(0);
   const round = step.rounds[i]!;
   // A round may show only some tiles: the meaning and its own contrast. One tile = a teaching round.
@@ -199,7 +199,7 @@ export function VisualMatchStep({ step, onDone }: { step: StepOf<'visualMatch'>;
         <GameHead label={step.challenge ? `⚡ ${t('speedHeadsUp')}` : step.label ? L(step.label) : t('visualMatchTitle')} i={i} n={step.rounds.length}>
           <AudioBubble onPlay={() => void speakL(round.audio.en, step.challenge ? 0.85 : undefined)} />
         </GameHead>
-        <div className={`pgrid${grid ? ` ${grid}` : ''}${step.quiet ? ' is-quiet' : ''}`}>
+        <div className={`pgrid${grid ? ` ${grid}` : ''}${step.quiet ? ' is-quiet' : ''}`} dir={step.ordered ? 'ltr' : undefined}>
           {shown.map((tile) => (
             <button
               key={tile.id}

@@ -67,7 +67,7 @@ const unknownIn = (said: string[], known: Set<string>): string[] => [...new Set(
 /* ── scope ───────────────────────────────────────────────────────────────────────────────────── */
 
 // Missions 06–10. (Missions 01–05 got their own pedagogical passes — pinned in mission01…05.test.ts.)
-const M09_10 = { en: '64f61023', fr: '473e54dc', es: 'd1828373' };
+const M10 = { en: 'db9be00b', fr: 'a984556c', es: '476e0670' };
 /** French Mission 14's steps without its first Quick Reply and its word intro (whose menu word was corrected). */
 const FR_M14_WITHOUT_PRIME = 'be5602cb';
 
@@ -77,8 +77,8 @@ describe('scope: only the Practice of Missions 11–18 changed', () => {
   const slice = (lang: Lang, a: number, b: number): BootcampDayContent[] => BOOTCAMP_PLAN.slice(a, b).map((m) => beforeCueFreeze(MISSIONS_BY_LANG[lang]![m.day]!, lang));
   const print = (f: (lang: Lang) => unknown): Record<Lang, string> => ({ en: fnv(JSON.stringify(f('en'))), fr: fnv(JSON.stringify(f('fr'))), es: fnv(JSON.stringify(f('es'))) });
 
-  it('Missions 08–10 are unchanged by this pass (their own fingerprint, incl. the later retirement of two hotel sentences, lives in practiceArrival.test.ts; Missions 06 and 07 have their own passes)', () => {
-    expect(print((l) => slice(l, 8, 10))).toEqual(M09_10); // since the Mission 08 pass: Missions 09–10
+  it('Missions 08–10 are unchanged by this pass (their own fingerprint, incl. the later retirement of two hotel sentences, lives in practiceArrival.test.ts; Missions 06–09 have their own passes)', () => {
+    expect(print((l) => slice(l, 9, 10))).toEqual(M10); // since the Mission 09 pass: Mission 10 only
   });
   it('the locked dialogues of Missions 11–17 are byte-for-byte unchanged', () => {
     expect(print((l) => slice(l, 10, 17).map((d) => d.dialogues))).toEqual({ en: '66104490', fr: 'c4e783b1', es: 'fccb4e58' });
@@ -113,10 +113,10 @@ describe('scope: only the Practice of Missions 11–18 changed', () => {
       const used = JSON.stringify(BOOTCAMP_PLAN.map((m) => [MISSIONS_BY_LANG[lang]![m.day]!.steps, MISSIONS_BY_LANG[lang]![m.day]!.dialogues]));
       for (const id of gone) expect(used.includes(`${lang}.${id}"`), `${lang} ${id}`).toBe(false);
       // …and they are kept, id and wording, in the archive.
-      expect(RETIRED_SENTENCES[lang].filter((r) => r.retiredFrom !== 'hotel-check-in' && r.retiredFrom !== 'coffee-shop' && r.retiredFrom !== 'directions' && r.retiredFrom !== 'airport-border' && r.retiredFrom !== 'taxi').map((r) => strip(r.id)), lang).toEqual(gone);
+      expect(RETIRED_SENTENCES[lang].filter((r) => r.retiredFrom !== 'hotel-check-in' && r.retiredFrom !== 'coffee-shop' && r.retiredFrom !== 'directions' && r.retiredFrom !== 'airport-border' && r.retiredFrom !== 'taxi' && r.retiredFrom !== 'shopping').map((r) => strip(r.id)), lang).toEqual(gone);
       for (const r of RETIRED_SENTENCES[lang]) { expect(r.text.length, r.id).toBeGreaterThan(3); expect(r.meaning.he, r.id).toBeTruthy(); expect(BOOTCAMP_PLAN.some((m) => m.id === r.retiredFrom), r.id).toBe(true); }
     }
-    expect(RETIRED_SENTENCES.en.filter((r) => r.retiredFrom !== 'hotel-check-in' && r.retiredFrom !== 'coffee-shop' && r.retiredFrom !== 'directions' && r.retiredFrom !== 'airport-border' && r.retiredFrom !== 'taxi').map((r) => r.text)).toEqual(['The menu, please.', 'How was everything?', 'Would you like dessert?', 'This one is a good option for you.', 'You need to weigh it first.']);
+    expect(RETIRED_SENTENCES.en.filter((r) => r.retiredFrom !== 'hotel-check-in' && r.retiredFrom !== 'coffee-shop' && r.retiredFrom !== 'directions' && r.retiredFrom !== 'airport-border' && r.retiredFrom !== 'taxi' && r.retiredFrom !== 'shopping').map((r) => r.text)).toEqual(['The menu, please.', 'How was everything?', 'Would you like dessert?', 'This one is a good option for you.', 'You need to weigh it first.']);
   });
   it('mission order, ids and registry keys are unchanged', () => {
     expect(BOOTCAMP_PLAN.slice(10, 18).map((m) => `${m.id}:${m.day}`)).toEqual([
