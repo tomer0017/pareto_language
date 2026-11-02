@@ -313,7 +313,7 @@ function MissionPlayer() {
         {step.kind === 'miniMap' && <MiniMapStep step={step} onDone={() => { pop(); advance(); }} />}
         {step.kind === 'matchPairs' && <MatchPairsStep step={step} itemsById={itemsById} onDone={() => { pop(); advance(); }} />}
         {step.kind === 'sentenceBuilder' && <SentenceBuilderStep step={step} itemsById={itemsById} onDone={() => { pop(); advance(); }} />}
-        {step.kind === 'receipt' && <ReceiptStep text={step.text} onNext={advance} />}
+        {step.kind === 'receipt' && <ReceiptStep text={step.text} image={step.image} onNext={advance} />}
       </div>
     </div>
   );
@@ -337,12 +337,14 @@ function BriefingFacts({ facts }: { facts: NonNullable<Extract<BootcampStep, { k
 
 /** An intro card. The mission's FIRST one is introduced by the buddy: it says the goal, looking at
  *  the thing the mission is about. Later intro cards stay plain. */
+
 function TalkStep({ step, intro, onNext }: { step: Extract<BootcampStep, { kind: 'talk' }>; intro?: string; onNext: () => void }) {
   if (intro) {
     return (
       <>
         <div className="mission-intro">
           <CompanionIntro line={intro} />
+          {step.image && <img className="shopping-scene" src={resolveAsset(step.image)} alt="" />}
           <h1 className="mission-intro-title">{L(step.title)}</h1>
           {step.body.map((b, i) => <p key={i} className="mission-intro-body"><HotelStaySummary text={L(b)} /></p>)}
           {step.facts && <BriefingFacts facts={step.facts} />}
@@ -356,7 +358,7 @@ function TalkStep({ step, intro, onNext }: { step: Extract<BootcampStep, { kind:
   return (
     <>
       <div className="drill-card" style={{ textAlign: 'start', gap: 16 }}>
-        <p style={{ fontSize: '2.4rem', textAlign: 'center' }}>{step.icon}</p>
+        {step.image ? <img className="shopping-scene" src={resolveAsset(step.image)} alt="" /> : <p style={{ fontSize: '2.4rem', textAlign: 'center' }}>{step.icon}</p>}
         <p className="drill-phrase" style={{ fontSize: '1.4rem', textAlign: 'center' }}>{L(step.title)}</p>
         {step.body.map((b, i) => (
           <p key={i} className="drill-meaning" style={{ fontSize: '1rem' }}><HotelStaySummary text={L(b)} /></p>
@@ -940,7 +942,7 @@ function AmbushStep({ step, itemsById, onDone }: { step: Extract<BootcampStep, {
   );
 }
 
-function ReceiptStep({ text, onNext }: { text: Record<string, string>; onNext: () => void }) {
+function ReceiptStep({ text, image, onNext }: { text: Record<string, string>; image?: string; onNext: () => void }) {
   const bc = useBootcampStore();
   useEffect(() => {
     bc.addReceipt(L(text));
@@ -950,7 +952,7 @@ function ReceiptStep({ text, onNext }: { text: Record<string, string>; onNext: (
     <>
       {/* Something earned: the buddy brings the crown, and the proof is what you did. */}
       <div className="proud-step pop-in">
-        <CompanionReaction kind="proud" text={false} size={148} />
+        {image ? <img className="shopping-scene" src={resolveAsset(image)} alt="" /> : <CompanionReaction kind="proud" text={false} size={148} />}
         <p className="drill-phrase" style={{ fontSize: '1.25rem' }}><HotelStaySummary text={L(text)} /></p>
       </div>
       <div className="action-zone">

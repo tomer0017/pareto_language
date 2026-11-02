@@ -1854,3 +1854,7 @@ Verification: typecheck 0 · lint clean · **347 tests** (21 files; 13 new corpu
 sample tests updated) · pipeline + seed green (Mongo idempotent upsert of all 500) · production
 build (15 precache, en pack ~205 KB) · SMOKE PASS. Honest status: Hebrew glosses + realizations
 ship `ai_reviewed` pending native review; scores are expert estimates pending the telemetry flywheel.
+
+## Mission 09 final visual integration — 2026-11-02
+
+Mission 09 now uses 13 canonical semantic images, 2 prop images and 2 supplemental scenes, shared across EN/ES/FR. One continuous store environment replaces the cell-map presentation; four equivalent hit areas retain semantic answer IDs. The ordered S/M/L/XL ladder marks M as current, discounts remain equal text tiles, and Shopping Journey retains its compact grid and reveal timing. Approved dialogue and all 33 interactions are unchanged. Optional talk/receipt images and the opt-in `shopping-store` presentation leave other missions unchanged. See [the visual report](MISSION09_VISUAL_REPORT.md) for validation and asset inventory.

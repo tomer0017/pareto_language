@@ -152,7 +152,7 @@ export interface CustomizeSpec {
   rounds: { audio: L4; on: string[]; itemId?: string }[];
 }
 export interface MiniMapSpec {
-  presentation?: 'hotel-floor' | 'hotel-lobby';
+  presentation?: 'hotel-floor' | 'hotel-lobby' | 'shopping-store';
   scene?: string;
   revealImage?: string;
   label?: Copy;

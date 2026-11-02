@@ -316,3 +316,7 @@ neutral versus correctly answered lobby art. `MapCell.symbol` is restricted to n
 arrows, distinct from target-language `label`; prior-learning auditing is unchanged.
 `HotelStaySummary` displays the existing four stay facts in a 2×2 grid and passes other text through.
 No facts or reveal states are inferred. See `MISSION08_VISUAL_REPORT.md` for QA and release status.
+
+## Mission 09 final visual integration — 2026-11-02
+
+Mission 09 now uses 13 canonical semantic images, 2 prop images and 2 supplemental scenes, shared across EN/ES/FR. One continuous store environment replaces the cell-map presentation; four equivalent hit areas retain semantic answer IDs. The ordered S/M/L/XL ladder marks M as current, discounts remain equal text tiles, and Shopping Journey retains its compact grid and reveal timing. Approved dialogue and all 33 interactions are unchanged. Optional talk/receipt images and the opt-in `shopping-store` presentation leave other missions unchanged. See [the visual report](MISSION09_VISUAL_REPORT.md) for validation and asset inventory.

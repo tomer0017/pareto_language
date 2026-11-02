@@ -199,13 +199,14 @@ export function VisualMatchStep({ step, onDone }: { step: StepOf<'visualMatch'>;
         <GameHead label={step.challenge ? `⚡ ${t('speedHeadsUp')}` : step.label ? L(step.label) : t('visualMatchTitle')} i={i} n={step.rounds.length}>
           <AudioBubble onPlay={() => void speakL(round.audio.en, step.challenge ? 0.85 : undefined)} />
         </GameHead>
-        <div className={`pgrid${grid ? ` ${grid}` : ''}${step.quiet ? ' is-quiet' : ''}`} dir={step.ordered ? 'ltr' : undefined}>
+        <div className={`pgrid${grid ? ` ${grid}` : ''}${step.ordered ? ' is-ordered' : ''}${step.quiet ? ' is-quiet' : ''}`} dir={step.ordered ? 'ltr' : undefined}>
           {shown.map((tile) => (
             <button
               key={tile.id}
               className={`ptile ${tile.image ? 'has-image' : ''} ${picked !== null && tile.id === round.correct ? 'is-ok' : ''} ${picked === tile.id && !ok ? 'is-bad' : ''}`}
               disabled={picked !== null}
               aria-label={tile.label ? undefined : tile.alt}
+              aria-current={tile.current ? 'step' : undefined}
               onClick={() => {
                 tap();
                 const right = tile.id === round.correct;
@@ -395,12 +396,12 @@ export function MiniMapStep({ step, onDone }: { step: StepOf<'miniMap'>; onDone:
         {/* The map is a picture, not text: it keeps one orientation in Hebrew and English alike. */}
         {/* After a pick, the answer's area (its zone) is drawn out: WHY it is the answer, not just which. */}
         <div className={`pgrid pmap${step.presentation ? ` ${step.presentation}` : ''}${step.quiet ? ' is-quiet' : ''}${picked !== null ? ' is-explain' : ''}`} dir="ltr" data-answer-zone={round.cells.find((c) => c.id === round.correct)?.zone}>
-          {step.presentation === 'hotel-lobby' && step.scene && <img className="hotel-lobby-scene" src={publicAsset(ok && step.revealImage ? step.revealImage : step.scene)} alt="" draggable={false} />}
+          {(step.presentation === 'hotel-lobby' || step.presentation === 'shopping-store') && step.scene && <img className={step.presentation === 'shopping-store' ? 'shopping-store-scene' : 'hotel-lobby-scene'} src={publicAsset(ok && step.revealImage ? step.revealImage : step.scene)} alt="" draggable={false} />}
           {GRID.map(([row, col]) => {
             const cell = at(row, col);
             const inner = cell && (
               <>
-                {step.presentation === 'hotel-lobby' ? (cell.tappable && <span className="hotel-direction-arrow" aria-hidden>{cell.zone === 'left' ? '←' : cell.zone === 'right' ? '→' : '↑'}</span>) : cell.image ? <img className="ptile-img" src={publicAsset(cell.image)} alt="" draggable={false} decoding="async" /> : cell.emoji && <span className="ptile-emoji" aria-hidden>{cell.emoji}</span>}
+                {step.presentation === 'shopping-store' ? null : step.presentation === 'hotel-lobby' ? (cell.tappable && <span className="hotel-direction-arrow" aria-hidden>{cell.zone === 'left' ? '←' : cell.zone === 'right' ? '→' : '↑'}</span>) : cell.image ? <img className="ptile-img" src={publicAsset(cell.image)} alt="" draggable={false} decoding="async" /> : cell.emoji && <span className="ptile-emoji" aria-hidden>{cell.emoji}</span>}
                 {(cell.label || cell.symbol) && <span className="ptile-label">{cell.label ?? cell.symbol}</span>}
               </>
             );

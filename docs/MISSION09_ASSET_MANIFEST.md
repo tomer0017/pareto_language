@@ -1,9 +1,8 @@
 # Mission 09 — Shopping: visual manifest
 
-**Status: VISUAL PRODUCTION REQUIRED IN ASTRA PASS.** Every slot below currently renders its emoji
-stand-in (`image` unset in `M09_SLOTS` / `M09_PROPS`, `apps/web/src/features/bootcamp/practiceArrival.ts`).
-The learning flow, the 33 interactions, the dialogue, the answers and the reveal timing are final; the
-art pass only fills `image` paths. Shared unchanged across EN / ES / FR (no language-specific art).
+**Status: FINAL ART INTEGRATED (2026-11-02).** 13 semantic slots and 2 props use canonical JPEG paths, with no semantic emoji fallback. Two supplemental scenes provide the continuous store map and purchase completion. All 17 assets are separately generated 1672 × 941 images, shared by EN / ES / FR. Approved dialogue, 33 interactions, answers and reveal timing are preserved.
+
+See [visual integration report](MISSION09_VISUAL_REPORT.md) and [asset provenance/checksums](mission09-artwork.json).
 
 ## Continuity
 
@@ -37,8 +36,7 @@ Canonical path to use: `images/mission09/<slot>.jpg` (wide, ≈16:9, ≥1536 px 
 | racks | Clothes racks seen from above (same style as the map's other cells) |
 | entrance | The shop entrance / door seen from above |
 
-On the store map the fitting room and the till cells reuse their slots. **Fairness:** all four
-tappable map cells must be of ONE kind (all artwork, or all emoji as today) — never artwork beside emoji.
+The live map uses one continuous `store-layout.jpg`, with four equal semantic hit areas for fitting room, till, racks and entrance. Canonical prop/slot references remain in the map data; separate cell images are not rendered. Correctness uses semantic IDs, independently of array order or grid coordinates. `purchase-complete.jpg` decorates only the final receipt.
 
 ## Data stays UI — never artwork
 

@@ -957,27 +957,26 @@ export function m08Steps(lang: MissionLang): BootcampStep[] {
 
 /* ── Mission 09 — Shopping ───────────────────────────────────────────────────────────────────── */
 
-/**
- * Mission 09's image slots — one per meaning. PLACEHOLDERS: no slot has its artwork yet (`image`
- * unset — the emoji stands in). ONE store for the final art: the same shopper, the same salesperson,
- * the same jacket, the same racks, fitting room and till.
- *   Group A — the store · Group B — trying on · Group C — the size · Group D — the sale and the till.
- */
+/** Mission 09: one canonical image per meaning, shared across EN / ES / FR. */
 type M09Slot =
   | 'store-browse' | 'salesperson-offers-help' | 'just-looking' | 'take-your-time'
   | 'selected-item' | 'try-this-on' | 'fitting-room' | 'too-small'
   | 'ask-bigger-size' | 'one-size-up'
   | 'sale-reveal' | 'take-it' | 'till';
-export const M09_SLOTS: Record<M09Slot, { emoji: string; image?: string }> = {
-  'store-browse': { emoji: '🏬' }, 'salesperson-offers-help': { emoji: '🙋' }, 'just-looking': { emoji: '👀' }, 'take-your-time': { emoji: '⏳' },
-  'selected-item': { emoji: '🧥' }, 'try-this-on': { emoji: '🙂' }, 'fitting-room': { emoji: '🪞' }, 'too-small': { emoji: '😬' },
-  'ask-bigger-size': { emoji: '❓' }, 'one-size-up': { emoji: '⬆️' },
-  'sale-reveal': { emoji: '🏷️' }, 'take-it': { emoji: '🤝' }, till: { emoji: '💳' },
+const image9 = (name: string): { image: string } => ({ image: `images/mission09/${name}.jpg` });
+export const M09_SLOTS: Record<M09Slot, { image: string }> = {
+  'store-browse': image9('store-browse'), 'salesperson-offers-help': image9('salesperson-offers-help'),
+  'just-looking': image9('just-looking'), 'take-your-time': image9('take-your-time'),
+  'selected-item': image9('selected-item'), 'try-this-on': image9('try-this-on'),
+  'fitting-room': image9('fitting-room'), 'too-small': image9('too-small'),
+  'ask-bigger-size': image9('ask-bigger-size'), 'one-size-up': image9('one-size-up'),
+  'sale-reveal': image9('sale-reveal'), 'take-it': image9('take-it'), till: image9('till'),
 };
-/** The store's other places on the map — picture-only, never named in the learning language. */
-export const M09_PROPS = { racks: { emoji: '👗' }, entrance: { emoji: '🚶' } } as const satisfies Record<string, { emoji: string; image?: string }>;
-const look9 = (x: { emoji: string; image?: string }): { emoji: string } | { image: string } => (x.image ? { image: x.image } : { emoji: x.emoji });
-const slot9 = (s: M09Slot): { emoji: string } | { image: string } => look9(M09_SLOTS[s]);
+export const M09_PROPS = { racks: image9('racks'), entrance: image9('entrance') };
+/** One continuous store, plus completion context: neither adds a learning target. */
+export const M09_SCENES = { store: image9('store-layout'), complete: image9('purchase-complete') };
+const look9 = (x: { image: string }): { image: string } => ({ image: x.image });
+const slot9 = (s: M09Slot): { image: string } => look9(M09_SLOTS[s]);
 
 /**
  * THE shopping trip — the SIMULATION'S truth, the same in every exercise: one jacket; you took size M;
@@ -1024,7 +1023,7 @@ const C_SIZE_UP: L4 = ['Here you go, one size up.', 'Voilà, une taille au-dessu
 const C_SALE: L4 = ['it’s on sale, twenty percent off', 'c’est en solde, vingt pour cent de réduction', 'está rebajado, un veinte por ciento de descuento', 'זה במבצע, עשרים אחוז הנחה'];
 
 /* Clean app UI for the data — sizes and discounts are figures, not pictures. */
-const SIZE_TILES = M09_SIZES.map((s) => ({ id: `size-${s}`, label: s }));
+const SIZE_TILES = M09_SIZES.map((s) => ({ id: `size-${s}`, label: s, ...(s === M09_SHOP.size ? { current: true } : {}) }));
 const DISCOUNTS = [10, 20, 50].map((n) => ({ id: `off-${n}`, label: `−${n}%` }));
 type Cell9 = { id: string; row: 0 | 1 | 2; col: 0 | 1 | 2; emoji?: string; image?: string; tappable?: boolean; zone?: string };
 /** THE store, seen from above: the fitting rooms and the till along the back wall, the racks in the
@@ -1057,13 +1056,13 @@ export function m09Steps(lang: MissionLang): BootcampStep[] {
   const k = kit(lang);
   const card = (key: string, line: L4, meaning: Copy, s: M09Slot) => ({ line: true, key, t: [line[0], line[1], line[2]] as L3, meaning, ...slot9(s) });
   const cards = (label: Copy, intro: Copy, words: ReturnType<typeof card>[]): BootcampStep => k.prime({ label, intro, bigPictures: true, widePictures: true, words });
-  const toFitting = (challenge = false): BootcampStep => k.practice({ kind: 'miniMap', quiet: true, ...(challenge ? { challenge: true } : {}), label: ['לאן היא שולחת אותך? הקש על המקום בחנות', 'Where is she sending you? Tap the place in the shop'], rounds: [{ audio: S_SIZE, cells: STORE(), correct: M09_ANSWER.fittingRoom, reinforce: C_FITTING }] });
+  const toFitting = (challenge = false): BootcampStep => k.practice({ kind: 'miniMap', presentation: 'shopping-store', scene: M09_SCENES.store.image, quiet: true, ...(challenge ? { challenge: true } : {}), label: ['לאן היא שולחת אותך? הקש על המקום בחנות', 'Where is she sending you? Tap the place in the shop'], rounds: [{ audio: S_SIZE, cells: STORE(), correct: M09_ANSWER.fittingRoom, reinforce: C_FITTING }] });
   const sizeUp = (challenge = false): BootcampStep => k.practice({ kind: 'visualMatch', quiet: true, ordered: true, ...(challenge ? { challenge: true } : {}), label: ['היה לך M. איזו מידה היא הביאה?', 'You had M. Which size did she bring?'], tiles: SIZE_TILES, rounds: [{ audio: S_SALE, correct: M09_ANSWER.size, reinforce: C_SIZE_UP }] });
   const discount = (challenge = false): BootcampStep => k.practice({ kind: 'visualMatch', quiet: true, ...(challenge ? { challenge: true } : {}), label: ['כמה הנחה היא אמרה?', 'What discount did she say?'], tiles: DISCOUNTS, rounds: [{ audio: S_SALE, correct: M09_ANSWER.discount, reinforce: C_SALE }] });
-  const toTill = (challenge = false): BootcampStep => k.practice({ kind: 'miniMap', quiet: true, ...(challenge ? { challenge: true } : {}), label: ['לאן עכשיו? הקש על המקום בחנות', 'Where to now? Tap the place in the shop'], rounds: [{ audio: S_TILL, cells: STORE(), correct: M09_ANSWER.till }] });
+  const toTill = (challenge = false): BootcampStep => k.practice({ kind: 'miniMap', presentation: 'shopping-store', scene: M09_SCENES.store.image, quiet: true, ...(challenge ? { challenge: true } : {}), label: ['לאן עכשיו? הקש על המקום בחנות', 'Where to now? Tap the place in the shop'], rounds: [{ audio: S_TILL, cells: STORE(), correct: M09_ANSWER.till }] });
   const decide: Copy = ['מידה L מתאימה לך, והיא במבצע. אתה מחליט לקנות.', 'Size L fits you, and it is on sale. You decide to buy it.'];
   const found: Copy = ['מצאת ז׳קט שמוצא חן בעיניך. אתה רוצה למדוד אותו.', 'You found a jacket you like. You want to try it on.'];
-  return [
+  const steps: BootcampStep[] = [
     // THE BRIEFING — only what the shopper knows: the shop, and an item they like (no journey yet: its
     // stages would name what is still to happen).
     k.talk('🛍️', ['משימה 9: קניות', 'Mission 9: Shopping'], [
@@ -1185,4 +1184,10 @@ export function m09Steps(lang: MissionLang): BootcampStep[] {
     k.receipt([`🛍️ הקנייה הושלמה · ${shoppingJourney(5)[0]}`, `🛍️ PURCHASE COMPLETE · ${shoppingJourney(5)[1]}`]),
     { kind: 'summary' },
   ];
+  return steps.map((step) => {
+    if (step.kind === 'talk') return { ...step, image: M09_SLOTS['store-browse'].image };
+    if (step.kind === 'receipt' && step.text.en?.includes('too small')) return { ...step, image: M09_SLOTS['too-small'].image };
+    if (step.kind === 'receipt' && step.text.en?.includes('PURCHASE COMPLETE')) return { ...step, image: M09_SCENES.complete.image };
+    return step;
+  });
 }

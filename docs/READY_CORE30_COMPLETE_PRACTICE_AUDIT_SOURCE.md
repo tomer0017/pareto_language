@@ -9178,8 +9178,8 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `shop.size` — EN "size" · FR "taille" · ES "talla" — meaning "מידה" / "size" — icon 🧥 — new
-2. `shop.fitting-room` — EN "fitting room" · FR "cabine d’essayage" · ES "probador" — meaning "תא מדידה" / "fitting room" — icon 🪞 — new
+1. `shop.size` — EN "size" · FR "taille" · ES "talla" — meaning "מידה" / "size" — icon none — new
+2. `shop.fitting-room` — EN "fitting room" · FR "cabine d’essayage" · ES "probador" — meaning "תא מדידה" / "fitting room" — icon none — new
 
 "These build the sentence:" card: `reply.shop.fitting-room` — EN "The fitting room is over there." · FR "La cabine d’essayage est là-bas." · ES "El probador está allí." · HE "חדר ההלבשה שם." (with its own play button).
 
@@ -9188,9 +9188,9 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `shop.line.help` — EN "Hi there! Can I help you find anything?" · FR "Bonjour ! Je peux vous aider à trouver quelque chose ?" · ES "¡Hola! ¿Le ayudo a encontrar algo?" — meaning "היי! אפשר לעזור לך למצוא משהו?" / "Hi there! Can I help you find anything?" — icon 🙋 — new
-2. `shop.line.looking` — EN "I'm just looking, thanks." · FR "Je regarde seulement, merci." · ES "Solo estoy mirando, gracias." — meaning "אני רק מסתכל, תודה." / "I’m just looking, thanks." — icon 👀 — new
-3. `shop.line.time` — EN "Of course, take your time. Let me know if you need a hand." · FR "Bien sûr, prenez votre temps. Dites-moi si vous avez besoin d’aide." · ES "Claro, tómese su tiempo. Avíseme si necesita ayuda." — meaning "כמובן, קח את הזמן. תגיד אם אתה צריך עזרה." / "Of course, take your time. Let me know if you need a hand." — icon ⏳ — new
+1. `shop.line.help` — EN "Hi there! Can I help you find anything?" · FR "Bonjour ! Je peux vous aider à trouver quelque chose ?" · ES "¡Hola! ¿Le ayudo a encontrar algo?" — meaning "היי! אפשר לעזור לך למצוא משהו?" / "Hi there! Can I help you find anything?" — icon none — new
+2. `shop.line.looking` — EN "I'm just looking, thanks." · FR "Je regarde seulement, merci." · ES "Solo estoy mirando, gracias." — meaning "אני רק מסתכל, תודה." / "I’m just looking, thanks." — icon none — new
+3. `shop.line.time` — EN "Of course, take your time. Let me know if you need a hand." · FR "Bien sûr, prenez votre temps. Dites-moi si vous avez besoin d’aide." · ES "Claro, tómese su tiempo. Avíseme si necesita ayuda." — meaning "כמובן, קח את הזמן. תגיד אם אתה צריך עזרה." / "Of course, take your time. Let me know if you need a hand." — icon none — new
 
 No build-sentence card.
 
@@ -9199,7 +9199,7 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `shop.line.try` — EN "Can I try this on?" · FR "Je peux essayer ça ?" · ES "¿Puedo probarme esto?" — meaning "אפשר למדוד את זה?" / "Can I try this on?" — icon 🙂 — new
+1. `shop.line.try` — EN "Can I try this on?" · FR "Je peux essayer ça ?" · ES "¿Puedo probarme esto?" — meaning "אפשר למדוד את זה?" / "Can I try this on?" — icon none — new
 
 No build-sentence card.
 
@@ -9208,8 +9208,8 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `shop.line.size-fitting` — EN "Sure! What size are you? The fitting room is over there." · FR "Bien sûr ! Vous faites quelle taille ? La cabine d’essayage est là-bas." · ES "¡Claro! ¿Qué talla usa? El probador está allí." — meaning "בטח! איזו מידה אתה? חדר ההלבשה שם." / "Sure! What size are you? The fitting room is over there." — icon 🪞 — new
-2. `shop.line.fitting` — EN "The fitting room is over there." · FR "La cabine d’essayage est là-bas." · ES "El probador está allí." — meaning "חדר ההלבשה שם." / "The fitting room is over there." — icon 🪞 — new
+1. `shop.line.size-fitting` — EN "Sure! What size are you? The fitting room is over there." · FR "Bien sûr ! Vous faites quelle taille ? La cabine d’essayage est là-bas." · ES "¡Claro! ¿Qué talla usa? El probador está allí." — meaning "בטח! איזו מידה אתה? חדר ההלבשה שם." / "Sure! What size are you? The fitting room is over there." — icon none — new
+2. `shop.line.fitting` — EN "The fitting room is over there." · FR "La cabine d’essayage est là-bas." · ES "El probador está allí." — meaning "חדר ההלבשה שם." / "The fitting room is over there." — icon none — new
 
 No build-sentence card.
 
@@ -9218,7 +9218,7 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `shop.line.bigger` — EN "Do you have a bigger size?" · FR "Vous avez une taille au-dessus ?" · ES "¿Tiene una talla más grande?" — meaning "יש מידה גדולה יותר?" / "Do you have a bigger size?" — icon ❓ — new
+1. `shop.line.bigger` — EN "Do you have a bigger size?" · FR "Vous avez une taille au-dessus ?" · ES "¿Tiene una talla más grande?" — meaning "יש מידה גדולה יותר?" / "Do you have a bigger size?" — icon none — new
 
 No build-sentence card.
 
@@ -9227,9 +9227,9 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `shop.line.size-up-sale` — EN "Here you go, one size up. And good news — it’s on sale, twenty percent off!" · FR "Voilà, une taille au-dessus. Et bonne nouvelle — c’est en solde, vingt pour cent de réduction !" · ES "Aquí tiene, una talla más. Y buena noticia — ¡está rebajado, un veinte por ciento de descuento!" — meaning "הנה, מידה אחת גדולה יותר. ובשורה טובה — זה במבצע, עשרים אחוז הנחה!" / "Here you go, one size up. And good news — it’s on sale, twenty percent off!" — icon 🏷️ — new
-2. `shop.line.size-up` — EN "Here you go, one size up." · FR "Voilà, une taille au-dessus." · ES "Aquí tiene, una talla más." — meaning "הנה, מידה אחת גדולה יותר. (מ־M ל־L)" / "Here you go, one size up. (from M to L)" — icon ⬆️ — new
-3. `shop.line.sale` — EN "it’s on sale, twenty percent off" · FR "c’est en solde, vingt pour cent de réduction" · ES "está rebajado, un veinte por ciento de descuento" — meaning "זה במבצע, עשרים אחוז הנחה" / "it’s on sale, twenty percent off" — icon 🏷️ — new
+1. `shop.line.size-up-sale` — EN "Here you go, one size up. And good news — it’s on sale, twenty percent off!" · FR "Voilà, une taille au-dessus. Et bonne nouvelle — c’est en solde, vingt pour cent de réduction !" · ES "Aquí tiene, una talla más. Y buena noticia — ¡está rebajado, un veinte por ciento de descuento!" — meaning "הנה, מידה אחת גדולה יותר. ובשורה טובה — זה במבצע, עשרים אחוז הנחה!" / "Here you go, one size up. And good news — it’s on sale, twenty percent off!" — icon none — new
+2. `shop.line.size-up` — EN "Here you go, one size up." · FR "Voilà, une taille au-dessus." · ES "Aquí tiene, una talla más." — meaning "הנה, מידה אחת גדולה יותר. (מ־M ל־L)" / "Here you go, one size up. (from M to L)" — icon none — new
+3. `shop.line.sale` — EN "it’s on sale, twenty percent off" · FR "c’est en solde, vingt pour cent de réduction" · ES "está rebajado, un veinte por ciento de descuento" — meaning "זה במבצע, עשרים אחוז הנחה" / "it’s on sale, twenty percent off" — icon none — new
 
 No build-sentence card.
 
@@ -9238,8 +9238,8 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `shop.line.take` — EN "Great, I'll take it." · FR "Super, je le prends." · ES "Genial, me lo llevo." — meaning "מעולה, אני אקח את זה." / "Great, I’ll take it." — icon 🤝 — new
-2. `shop.line.till` — EN "Wonderful — I’ll ring you up at the till. Thank you!" · FR "Parfait — je vous encaisse à la caisse. Merci !" · ES "Perfecto — le cobro en la caja. ¡Gracias!" — meaning "נהדר — אחייב אותך בקופה. תודה!" / "Wonderful — I’ll ring you up at the till. Thank you!" — icon 💳 — new
+1. `shop.line.take` — EN "Great, I'll take it." · FR "Super, je le prends." · ES "Genial, me lo llevo." — meaning "מעולה, אני אקח את זה." / "Great, I’ll take it." — icon none — new
+2. `shop.line.till` — EN "Wonderful — I’ll ring you up at the till. Thank you!" · FR "Parfait — je vous encaisse à la caisse. Merci !" · ES "Perfecto — le cobro en la caja. ¡Gracias!" — meaning "נהדר — אחייב אותך בקופה. תודה!" / "Wonderful — I’ll ring you up at the till. Thank you!" — icon none — new
 
 No build-sentence card.
 
@@ -9465,15 +9465,15 @@ No meaning quiz in this mission.
 
 ### M09-Q03 — mini-map (step 8, round 1 of 1)
 
-- Prompt displayed: "Where is she sending you? Tap the place in the shop" / "לאן היא שולחת אותך? הקש על המקום בחנות" — board, row by row: 🪞 [tap:fitting-room] | · | 💳 [tap:till] // · | 👗 [tap:racks] | · // · | 🚶 [tap:entrance] | ·
+- Prompt displayed: "Where is she sending you? Tap the place in the shop" / "לאן היא שולחת אותך? הקש על המקום בחנות" — board, row by row:  [tap:fitting-room] | · |  [tap:till] // · |  [tap:racks] | · // · |  [tap:entrance] | ·
 - Audio played: EN "Sure! What size are you? The fitting room is over there." · FR "Bien sûr ! Vous faites quelle taille ? La cabine d’essayage est là-bas." · ES "¡Claro! ¿Qué talla usa? El probador está allí."
 - Meaning of the audio (HE): "בטח! איזו מידה אתה? חדר ההלבשה שם."
 - Buttons show: the tappable cells of a 3×3 schematic map (fixed positions, not shuffled); the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. "🪞 fitting-room" — no sentence id — ✅ accepted
-  2. "💳 till" — no sentence id — ❌ wrong
-  3. "👗 racks" — no sentence id — ❌ wrong
-  4. "🚶 entrance" — no sentence id — ❌ wrong
+  1. " fitting-room" — no sentence id — ✅ accepted
+  2. " till" — no sentence id — ❌ wrong
+  3. " racks" — no sentence id — ❌ wrong
+  4. " entrance" — no sentence id — ❌ wrong
 - Tests: (no sentence id — not recorded)
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
@@ -9543,15 +9543,15 @@ No meaning quiz in this mission.
 
 ### M09-Q09 — mini-map (step 19, round 1 of 1)
 
-- Prompt displayed: "Where to now? Tap the place in the shop" / "לאן עכשיו? הקש על המקום בחנות" — board, row by row: 🪞 [tap:fitting-room] | · | 💳 [tap:till] // · | 👗 [tap:racks] | · // · | 🚶 [tap:entrance] | ·
+- Prompt displayed: "Where to now? Tap the place in the shop" / "לאן עכשיו? הקש על המקום בחנות" — board, row by row:  [tap:fitting-room] | · |  [tap:till] // · |  [tap:racks] | · // · |  [tap:entrance] | ·
 - Audio played: EN "Wonderful — I’ll ring you up at the till. Thank you!" · FR "Parfait — je vous encaisse à la caisse. Merci !" · ES "Perfecto — le cobro en la caja. ¡Gracias!"
 - Meaning of the audio (HE): "נהדר — אחייב אותך בקופה. תודה!"
 - Buttons show: the tappable cells of a 3×3 schematic map (fixed positions, not shuffled); the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. "🪞 fitting-room" — no sentence id — ❌ wrong
-  2. "💳 till" — no sentence id — ✅ accepted
-  3. "👗 racks" — no sentence id — ❌ wrong
-  4. "🚶 entrance" — no sentence id — ❌ wrong
+  1. " fitting-room" — no sentence id — ❌ wrong
+  2. " till" — no sentence id — ✅ accepted
+  3. " racks" — no sentence id — ❌ wrong
+  4. " entrance" — no sentence id — ❌ wrong
 - Tests: (no sentence id — not recorded)
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
@@ -9583,15 +9583,15 @@ No meaning quiz in this mission.
 
 ### M09-Q15 — mini-map (step 22, round 1 of 1)
 
-- Prompt displayed: "Where is she sending you? Tap the place in the shop" / "לאן היא שולחת אותך? הקש על המקום בחנות" — board, row by row: 🪞 [tap:fitting-room] | · | 💳 [tap:till] // · | 👗 [tap:racks] | · // · | 🚶 [tap:entrance] | ·
+- Prompt displayed: "Where is she sending you? Tap the place in the shop" / "לאן היא שולחת אותך? הקש על המקום בחנות" — board, row by row:  [tap:fitting-room] | · |  [tap:till] // · |  [tap:racks] | · // · |  [tap:entrance] | ·
 - Audio played: EN "Sure! What size are you? The fitting room is over there." · FR "Bien sûr ! Vous faites quelle taille ? La cabine d’essayage est là-bas." · ES "¡Claro! ¿Qué talla usa? El probador está allí."
 - Meaning of the audio (HE): "בטח! איזו מידה אתה? חדר ההלבשה שם."
 - Buttons show: the tappable cells of a 3×3 schematic map (fixed positions, not shuffled); the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. "🪞 fitting-room" — no sentence id — ✅ accepted
-  2. "💳 till" — no sentence id — ❌ wrong
-  3. "👗 racks" — no sentence id — ❌ wrong
-  4. "🚶 entrance" — no sentence id — ❌ wrong
+  1. " fitting-room" — no sentence id — ✅ accepted
+  2. " till" — no sentence id — ❌ wrong
+  3. " racks" — no sentence id — ❌ wrong
+  4. " entrance" — no sentence id — ❌ wrong
 - Tests: (no sentence id — not recorded)
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
@@ -9650,15 +9650,15 @@ No meaning quiz in this mission.
 
 ### M09-Q20 — mini-map (step 27, round 1 of 1)
 
-- Prompt displayed: "Where to now? Tap the place in the shop" / "לאן עכשיו? הקש על המקום בחנות" — board, row by row: 🪞 [tap:fitting-room] | · | 💳 [tap:till] // · | 👗 [tap:racks] | · // · | 🚶 [tap:entrance] | ·
+- Prompt displayed: "Where to now? Tap the place in the shop" / "לאן עכשיו? הקש על המקום בחנות" — board, row by row:  [tap:fitting-room] | · |  [tap:till] // · |  [tap:racks] | · // · |  [tap:entrance] | ·
 - Audio played: EN "Wonderful — I’ll ring you up at the till. Thank you!" · FR "Parfait — je vous encaisse à la caisse. Merci !" · ES "Perfecto — le cobro en la caja. ¡Gracias!"
 - Meaning of the audio (HE): "נהדר — אחייב אותך בקופה. תודה!"
 - Buttons show: the tappable cells of a 3×3 schematic map (fixed positions, not shuffled); the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. "🪞 fitting-room" — no sentence id — ❌ wrong
-  2. "💳 till" — no sentence id — ✅ accepted
-  3. "👗 racks" — no sentence id — ❌ wrong
-  4. "🚶 entrance" — no sentence id — ❌ wrong
+  1. " fitting-room" — no sentence id — ❌ wrong
+  2. " till" — no sentence id — ✅ accepted
+  3. " racks" — no sentence id — ❌ wrong
+  4. " entrance" — no sentence id — ❌ wrong
 - Tests: (no sentence id — not recorded)
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
@@ -9755,15 +9755,15 @@ No meaning quiz in this mission.
 
 ### M09-Q34 — mini-map (step 36, round 1 of 1 · SPEED CHALLENGE (spoken at rate 1.12))
 
-- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה." — board, row by row: 🪞 [tap:fitting-room] | · | 💳 [tap:till] // · | 👗 [tap:racks] | · // · | 🚶 [tap:entrance] | ·
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה." — board, row by row:  [tap:fitting-room] | · |  [tap:till] // · |  [tap:racks] | · // · |  [tap:entrance] | ·
 - Audio played: EN "Sure! What size are you? The fitting room is over there." · FR "Bien sûr ! Vous faites quelle taille ? La cabine d’essayage est là-bas." · ES "¡Claro! ¿Qué talla usa? El probador está allí."
 - Meaning of the audio (HE): "בטח! איזו מידה אתה? חדר ההלבשה שם."
 - Buttons show: the tappable cells of a 3×3 schematic map (fixed positions, not shuffled); the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. "🪞 fitting-room" — no sentence id — ✅ accepted
-  2. "💳 till" — no sentence id — ❌ wrong
-  3. "👗 racks" — no sentence id — ❌ wrong
-  4. "🚶 entrance" — no sentence id — ❌ wrong
+  1. " fitting-room" — no sentence id — ✅ accepted
+  2. " till" — no sentence id — ❌ wrong
+  3. " racks" — no sentence id — ❌ wrong
+  4. " entrance" — no sentence id — ❌ wrong
 - Tests: (no sentence id — not recorded)
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
@@ -9822,15 +9822,15 @@ No meaning quiz in this mission.
 
 ### M09-Q39 — mini-map (step 41, round 1 of 1 · SPEED CHALLENGE (spoken at rate 1.12))
 
-- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה." — board, row by row: 🪞 [tap:fitting-room] | · | 💳 [tap:till] // · | 👗 [tap:racks] | · // · | 🚶 [tap:entrance] | ·
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה." — board, row by row:  [tap:fitting-room] | · |  [tap:till] // · |  [tap:racks] | · // · |  [tap:entrance] | ·
 - Audio played: EN "Wonderful — I’ll ring you up at the till. Thank you!" · FR "Parfait — je vous encaisse à la caisse. Merci !" · ES "Perfecto — le cobro en la caja. ¡Gracias!"
 - Meaning of the audio (HE): "נהדר — אחייב אותך בקופה. תודה!"
 - Buttons show: the tappable cells of a 3×3 schematic map (fixed positions, not shuffled); the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. "🪞 fitting-room" — no sentence id — ❌ wrong
-  2. "💳 till" — no sentence id — ✅ accepted
-  3. "👗 racks" — no sentence id — ❌ wrong
-  4. "🚶 entrance" — no sentence id — ❌ wrong
+  1. " fitting-room" — no sentence id — ❌ wrong
+  2. " till" — no sentence id — ✅ accepted
+  3. " racks" — no sentence id — ❌ wrong
+  4. " entrance" — no sentence id — ❌ wrong
 - Tests: (no sentence id — not recorded)
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
@@ -33259,13 +33259,13 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Tests: phrase.shop.try-on
 
 **M09-Q03** — mini-map
-- Prompt: "Where is she sending you? Tap the place in the shop" / "לאן היא שולחת אותך? הקש על המקום בחנות" — board, row by row: 🪞 [tap:fitting-room] | · | 💳 [tap:till] // · | 👗 [tap:racks] | · // · | 🚶 [tap:entrance] | ·
+- Prompt: "Where is she sending you? Tap the place in the shop" / "לאן היא שולחת אותך? הקש על המקום בחנות" — board, row by row:  [tap:fitting-room] | · |  [tap:till] // · |  [tap:racks] | · // · |  [tap:entrance] | ·
 - Audio: Sure! What size are you? The fitting room is over there. — (בטח! איזו מידה אתה? חדר ההלבשה שם.)
-- A: 🪞 fitting-room ✅
-- B: 💳 till
-- C: 👗 racks
-- D: 🚶 entrance
-- Correct: 🪞 fitting-room
+- A:  fitting-room ✅
+- B:  till
+- C:  racks
+- D:  entrance
+- Correct:  fitting-room
 - Tests: (no sentence id — not recorded)
 
 **M09-Q04** — sentence-builder
@@ -33313,13 +33313,13 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Tests: phrase.shop.great-take-it
 
 **M09-Q09** — mini-map
-- Prompt: "Where to now? Tap the place in the shop" / "לאן עכשיו? הקש על המקום בחנות" — board, row by row: 🪞 [tap:fitting-room] | · | 💳 [tap:till] // · | 👗 [tap:racks] | · // · | 🚶 [tap:entrance] | ·
+- Prompt: "Where to now? Tap the place in the shop" / "לאן עכשיו? הקש על המקום בחנות" — board, row by row:  [tap:fitting-room] | · |  [tap:till] // · |  [tap:racks] | · // · |  [tap:entrance] | ·
 - Audio: Wonderful — I’ll ring you up at the till. Thank you! — (נהדר — אחייב אותך בקופה. תודה!)
-- A: 🪞 fitting-room
-- B: 💳 till ✅
-- C: 👗 racks
-- D: 🚶 entrance
-- Correct: 💳 till
+- A:  fitting-room
+- B:  till ✅
+- C:  racks
+- D:  entrance
+- Correct:  till
 - Tests: (no sentence id — not recorded)
 
 **M09-Q10** — expected-reply
@@ -33368,13 +33368,13 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Tests: phrase.shop.try-on
 
 **M09-Q15** — mini-map
-- Prompt: "Where is she sending you? Tap the place in the shop" / "לאן היא שולחת אותך? הקש על המקום בחנות" — board, row by row: 🪞 [tap:fitting-room] | · | 💳 [tap:till] // · | 👗 [tap:racks] | · // · | 🚶 [tap:entrance] | ·
+- Prompt: "Where is she sending you? Tap the place in the shop" / "לאן היא שולחת אותך? הקש על המקום בחנות" — board, row by row:  [tap:fitting-room] | · |  [tap:till] // · |  [tap:racks] | · // · |  [tap:entrance] | ·
 - Audio: Sure! What size are you? The fitting room is over there. — (בטח! איזו מידה אתה? חדר ההלבשה שם.)
-- A: 🪞 fitting-room ✅
-- B: 💳 till
-- C: 👗 racks
-- D: 🚶 entrance
-- Correct: 🪞 fitting-room
+- A:  fitting-room ✅
+- B:  till
+- C:  racks
+- D:  entrance
+- Correct:  fitting-room
 - Tests: (no sentence id — not recorded)
 
 **M09-Q16** — quick-reply
@@ -33415,13 +33415,13 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Tests: phrase.shop.great-take-it
 
 **M09-Q20** — mini-map
-- Prompt: "Where to now? Tap the place in the shop" / "לאן עכשיו? הקש על המקום בחנות" — board, row by row: 🪞 [tap:fitting-room] | · | 💳 [tap:till] // · | 👗 [tap:racks] | · // · | 🚶 [tap:entrance] | ·
+- Prompt: "Where to now? Tap the place in the shop" / "לאן עכשיו? הקש על המקום בחנות" — board, row by row:  [tap:fitting-room] | · |  [tap:till] // · |  [tap:racks] | · // · |  [tap:entrance] | ·
 - Audio: Wonderful — I’ll ring you up at the till. Thank you! — (נהדר — אחייב אותך בקופה. תודה!)
-- A: 🪞 fitting-room
-- B: 💳 till ✅
-- C: 👗 racks
-- D: 🚶 entrance
-- Correct: 💳 till
+- A:  fitting-room
+- B:  till ✅
+- C:  racks
+- D:  entrance
+- Correct:  till
 - Tests: (no sentence id — not recorded)
 
 **M09-Q21** — dialogue-choice
@@ -33533,13 +33533,13 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Tests: phrase.shop.try-on
 
 **M09-Q34** — mini-map
-- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה." — board, row by row: 🪞 [tap:fitting-room] | · | 💳 [tap:till] // · | 👗 [tap:racks] | · // · | 🚶 [tap:entrance] | ·
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה." — board, row by row:  [tap:fitting-room] | · |  [tap:till] // · |  [tap:racks] | · // · |  [tap:entrance] | ·
 - Audio: Sure! What size are you? The fitting room is over there. — (בטח! איזו מידה אתה? חדר ההלבשה שם.)
-- A: 🪞 fitting-room ✅
-- B: 💳 till
-- C: 👗 racks
-- D: 🚶 entrance
-- Correct: 🪞 fitting-room
+- A:  fitting-room ✅
+- B:  till
+- C:  racks
+- D:  entrance
+- Correct:  fitting-room
 - Tests: (no sentence id — not recorded)
 
 **M09-Q35** — quick-reply
@@ -33580,13 +33580,13 @@ Every encoded question, compact. Listening questions (expected-reply, meaning-qu
 - Tests: phrase.shop.great-take-it
 
 **M09-Q39** — mini-map
-- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה." — board, row by row: 🪞 [tap:fitting-room] | · | 💳 [tap:till] // · | 👗 [tap:racks] | · // · | 🚶 [tap:entrance] | ·
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה." — board, row by row:  [tap:fitting-room] | · |  [tap:till] // · |  [tap:racks] | · // · |  [tap:entrance] | ·
 - Audio: Wonderful — I’ll ring you up at the till. Thank you! — (נהדר — אחייב אותך בקופה. תודה!)
-- A: 🪞 fitting-room
-- B: 💳 till ✅
-- C: 👗 racks
-- D: 🚶 entrance
-- Correct: 💳 till
+- A:  fitting-room
+- B:  till ✅
+- C:  racks
+- D:  entrance
+- Correct:  till
 - Tests: (no sentence id — not recorded)
 
 ## Mission 10 — CHECKPOINT: Arrival Day

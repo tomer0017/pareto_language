@@ -1,0 +1,172 @@
+[
+  {
+    "name": "store-browse",
+    "prompt": "Edit this store-browse image. Preserve the entire composition, shopper woman dark bob cream knit charcoal trousers white shoes, rust-orange jacket exact design, racks, oak counter, sage fitting curtains, lighting and 1672x941 dimensions. Change ONLY the salesperson on the LEFT from a man into an adult woman about 35 with medium brown skin, short dark curly pixie hairstyle, expressive mature feminine face, no facial hair, same navy polo tucked into beige trousers, brown belt, white sneakers, same height/body scale and friendly relaxed pose. This salesperson must unmistakably be a woman. No added text, labels, numbers, signs, sale cues, bags, or objects. Premium polished modern 3D animated adult style unchanged.",
+    "source": "/Users/tomercohen/.codex/generated_images/01a192ae-9c48-7631-a809-e1bbe94ad5b3/exec-70f35487-797c-4a01-b370-e5828e57e2e2.png",
+    "originalWidth": 1672,
+    "originalHeight": 941,
+    "bytes": 459773,
+    "compression": "JPEG quality 90; no resize or crop",
+    "sha256": "bf3669691d29df6915b5c1013b681c2bd1c4c05ff44d0a7c83fb22496231dec5"
+  },
+  {
+    "name": "salesperson-offers-help",
+    "prompt": "Identity-preserving edit of Image 1 ONLY. Image 2 is identity reference for the FEMALE SALESPERSON in navy polo, beige trousers, short curly dark pixie hair, medium brown skin, mature woman face. In Image 1 replace ONLY the male salesperson with this exact woman from Image 2, matching her face, hair, feminine body proportions and outfit exactly; retain salesperson position, pose and communicative gesture from Image 1. Preserve Image 1 shopper EXACTLY, garment EXACTLY (rust-orange stand collar zip jacket diagonal welt pockets), entire store composition, lighting, all objects. No new objects, no text, letters, numbers, labels or signs. Output ONE standalone 1672x941 image of Image 1's original scene, no collage. Scene name for metadata only: salesperson-offers-help",
+    "source": "/Users/tomercohen/.codex/generated_images/01a192ae-9c48-7631-a809-e1bbe94ad5b3/exec-aed50212-80bf-4495-a539-9b9f4f562961.png",
+    "originalWidth": 1672,
+    "originalHeight": 941,
+    "bytes": 460347,
+    "compression": "JPEG quality 90; no resize or crop",
+    "sha256": "44726636675149c8865877ee22f8cd36671b4f14b6f31410272e9615893da8af"
+  },
+  {
+    "name": "just-looking",
+    "prompt": "Identity-preserving edit of Image 1 ONLY. Image 2 is identity reference for the FEMALE SALESPERSON in navy polo, beige trousers, short curly dark pixie hair, medium brown skin, mature woman face. In Image 1 replace ONLY the male salesperson with this exact woman from Image 2, matching her face, hair, feminine body proportions and outfit exactly; retain salesperson position, pose and communicative gesture from Image 1. Preserve Image 1 shopper EXACTLY, garment EXACTLY (rust-orange stand collar zip jacket diagonal welt pockets), entire store composition, lighting, all objects. No new objects, no text, letters, numbers, labels or signs. Output ONE standalone 1672x941 image of Image 1's original scene, no collage. Scene name for metadata only: just-looking",
+    "source": "/Users/tomercohen/.codex/generated_images/01a192ae-9c48-7631-a809-e1bbe94ad5b3/exec-60767ead-4b5a-4519-b400-e3c9331df581.png",
+    "originalWidth": 1672,
+    "originalHeight": 941,
+    "bytes": 452847,
+    "compression": "JPEG quality 90; no resize or crop",
+    "sha256": "b1a61465d69d4e9fc22793e0829f1e49dac4c7737a01144b3908295c56a354a7"
+  },
+  {
+    "name": "take-your-time",
+    "prompt": "Identity-preserving edit of Image 1 ONLY. Image 2 is identity reference for the FEMALE SALESPERSON in navy polo, beige trousers, short curly dark pixie hair, medium brown skin, mature woman face. In Image 1 replace ONLY the male salesperson with this exact woman from Image 2, matching her face, hair, feminine body proportions and outfit exactly; retain salesperson position, pose and communicative gesture from Image 1. Preserve Image 1 shopper EXACTLY, garment EXACTLY (rust-orange stand collar zip jacket diagonal welt pockets), entire store composition, lighting, all objects. No new objects, no text, letters, numbers, labels or signs. Output ONE standalone 1672x941 image of Image 1's original scene, no collage. Scene name for metadata only: take-your-time",
+    "source": "/Users/tomercohen/.codex/generated_images/01a192ae-9c48-7631-a809-e1bbe94ad5b3/exec-1331b818-dea4-4e41-ac77-c88c6e03d2bc.png",
+    "originalWidth": 1672,
+    "originalHeight": 941,
+    "bytes": 446834,
+    "compression": "JPEG quality 90; no resize or crop",
+    "sha256": "90c1332c9b48a3592794bf6a4f717928c379d1d428def168ede9df4234e33dbb"
+  },
+  {
+    "name": "selected-item",
+    "prompt": "Identity-preserving edit of Image 1 ONLY. Image 2 is identity reference for the FEMALE SALESPERSON in navy polo, beige trousers, short curly dark pixie hair, medium brown skin, mature woman face. In Image 1 replace ONLY the male salesperson with this exact woman from Image 2, matching her face, hair, feminine body proportions and outfit exactly; retain salesperson position, pose and communicative gesture from Image 1. Preserve Image 1 shopper EXACTLY, garment EXACTLY (rust-orange stand collar zip jacket diagonal welt pockets), entire store composition, lighting, all objects. No new objects, no text, letters, numbers, labels or signs. Output ONE standalone 1672x941 image of Image 1's original scene, no collage. Scene name for metadata only: selected-item",
+    "source": "/Users/tomercohen/.codex/generated_images/01a192ae-9c48-7631-a809-e1bbe94ad5b3/exec-db2b3ade-3e9b-4210-ba16-5a39c6ccb13e.png",
+    "originalWidth": 1672,
+    "originalHeight": 941,
+    "bytes": 478313,
+    "compression": "JPEG quality 90; no resize or crop",
+    "sha256": "c3b78236c3152687ae4f137a060ea5459a743e1c41dbff45ee7725adae25f843"
+  },
+  {
+    "name": "try-this-on",
+    "prompt": "Identity-preserving edit of Image 1 ONLY. Image 2 is identity reference for the FEMALE SALESPERSON in navy polo, beige trousers, short curly dark pixie hair, medium brown skin, mature woman face. In Image 1 replace ONLY the male salesperson with this exact woman from Image 2, matching her face, hair, feminine body proportions and outfit exactly; retain salesperson position, pose and communicative gesture from Image 1. Preserve Image 1 shopper EXACTLY, garment EXACTLY (rust-orange stand collar zip jacket diagonal welt pockets), entire store composition, lighting, all objects. No new objects, no text, letters, numbers, labels, sale cues or signs. Output ONE standalone 1672x941 image of Image 1's original scene, no collage.  Scene name for metadata only: try-this-on",
+    "source": "/Users/tomercohen/.codex/generated_images/01a192ae-9c48-7631-a809-e1bbe94ad5b3/exec-41d0e88f-3ba1-4b9d-8f2e-f8836d6ab60b.png",
+    "originalWidth": 1672,
+    "originalHeight": 941,
+    "bytes": 444329,
+    "compression": "JPEG quality 90; no resize or crop",
+    "sha256": "2205e84c01b23461b4e228d1565edbfc76433b2d434aedca1becbcce5af8609b"
+  },
+  {
+    "name": "fitting-room",
+    "prompt": "Identity-preserving edit of Image 1 ONLY. Image 2 is identity reference for the FEMALE SALESPERSON in navy polo, beige trousers, short curly dark pixie hair, medium brown skin, mature woman face. In Image 1 replace ONLY the male salesperson with this exact woman from Image 2, matching her face, hair, feminine body proportions and outfit exactly; retain salesperson position, pose and communicative gesture from Image 1. Preserve Image 1 shopper EXACTLY, garment EXACTLY (rust-orange stand collar zip jacket diagonal welt pockets), entire store composition, lighting, all objects. No new objects, no text, letters, numbers, labels, sale cues or signs. Output ONE standalone 1672x941 image of Image 1's original scene, no collage.  Scene name for metadata only: fitting-room",
+    "source": "/Users/tomercohen/.codex/generated_images/01a192ae-9c48-7631-a809-e1bbe94ad5b3/exec-d3aa0759-3df8-48ef-84c2-75366bcff3ee.png",
+    "originalWidth": 1672,
+    "originalHeight": 941,
+    "bytes": 476832,
+    "compression": "JPEG quality 90; no resize or crop",
+    "sha256": "56d39149de40e1863da22945c9ca33987a1507e57266e1f74b4e2d9adfdb9aa5"
+  },
+  {
+    "name": "too-small",
+    "prompt": "ONE standalone wide 16:9 image 1672x941 or larger. Premium polished modern 3D adult animated realism. Reference locks EXACT SAME shopper woman dark bob cream knit top charcoal trousers white sneakers; SAME salesperson man dark curls beard navy polo beige trousers; SAME rust-orange stand-collar silver-zip jacket with two diagonal welt pockets; same cream walls warm oak black metal retail fixtures and arched sage curtain booths. No text, symbols, letters, figures, prices, size labels, sale signs, bags, collage or panels. Mobile-safe central action. Scene: Shopper INSIDE same fitting booth, now trying on exact same rust jacket OVER cream top. Clearly too tight: zip only partly done, fabric pulls in horizontal tension wrinkles across shoulders and torso, cuffs slightly short; she tugs front hem with mild disappointed discomfort. Mirror, bench, sage curtain visible, no salesperson, no replacement jacket. Tasteful fully clothed, unmistakable fit problem.",
+    "source": "/Users/tomercohen/.codex/generated_images/01a192ae-9c48-7631-a809-e1bbe94ad5b3/exec-6122327b-c268-4b1e-9860-3f5cd0d0a013.png",
+    "originalWidth": 1672,
+    "originalHeight": 941,
+    "bytes": 379139,
+    "compression": "JPEG quality 90; no resize or crop",
+    "sha256": "2d0680173a983f3501b404289af3cb16afb0af482c91a78b2843302b0e500fe5"
+  },
+  {
+    "name": "ask-bigger-size",
+    "prompt": "Identity-preserving edit of Image 1 ONLY. Image 2 is identity reference for the FEMALE SALESPERSON in navy polo, beige trousers, short curly dark pixie hair, medium brown skin, mature woman face. In Image 1 replace ONLY the male salesperson with this exact woman from Image 2, matching her face, hair, feminine body proportions and outfit exactly; retain salesperson position, pose and communicative gesture from Image 1. Preserve Image 1 shopper EXACTLY, garment EXACTLY (rust-orange stand collar zip jacket diagonal welt pockets), entire store composition, lighting, all objects. No new objects, no text, letters, numbers, labels, sale cues or signs. Output ONE standalone 1672x941 image of Image 1's original scene, no collage. Also make existing jacket visibly too tight across shopper shoulders and waist, shopper gently pulls side hem outward to communicate needing more room; no replacement jacket. Scene name for metadata only: ask-bigger-size",
+    "source": "/Users/tomercohen/.codex/generated_images/01a192ae-9c48-7631-a809-e1bbe94ad5b3/exec-41b3d95d-b765-49fd-aee3-0d664e29942e.png",
+    "originalWidth": 1672,
+    "originalHeight": 941,
+    "bytes": 471059,
+    "compression": "JPEG quality 90; no resize or crop",
+    "sha256": "93f8ae7d1d7201470018f510fc96a2d390bc2b0bf1f9785955d1c9e331fd1a3c"
+  },
+  {
+    "name": "one-size-up",
+    "prompt": "Identity-preserving edit of Image 1 ONLY. Image 2 is identity reference for the FEMALE SALESPERSON in navy polo, beige trousers, short curly dark pixie hair, medium brown skin, mature woman face. In Image 1 replace ONLY the male salesperson with this exact woman from Image 2, matching her face, hair, feminine body proportions and outfit exactly; retain salesperson position, pose and communicative gesture from Image 1. Preserve Image 1 shopper EXACTLY, garment EXACTLY (rust-orange stand collar zip jacket diagonal welt pockets), entire store composition, lighting, all objects. No new objects, no text, letters, numbers, labels, sale cues or signs. Output ONE standalone 1672x941 image of Image 1's original scene, no collage.  Scene name for metadata only: one-size-up",
+    "source": "/Users/tomercohen/.codex/generated_images/01a192ae-9c48-7631-a809-e1bbe94ad5b3/exec-729a8927-2596-4f22-a36a-0cc2e9bac784.png",
+    "originalWidth": 1672,
+    "originalHeight": 941,
+    "bytes": 421416,
+    "compression": "JPEG quality 90; no resize or crop",
+    "sha256": "2fe3c85bb1b070a36d3355ed361dfcea521a1fea2a2211ab813140d2b5bbfe49"
+  },
+  {
+    "name": "sale-reveal",
+    "prompt": "Identity-preserving edit of Image 1 ONLY. Image 2 is identity reference for the FEMALE SALESPERSON in navy polo, beige trousers, short curly dark pixie hair, medium brown skin, mature woman face. In Image 1 replace ONLY the male salesperson with this exact woman from Image 2, matching her face, hair, feminine body proportions and outfit exactly; retain salesperson position, pose and communicative gesture from Image 1. Preserve Image 1 shopper EXACTLY, garment EXACTLY (rust-orange stand collar zip jacket diagonal welt pockets), entire store composition, lighting, all objects. No text, letters, numbers, prices or signs. Output ONE standalone 1672x941 image of Image 1's original scene, no collage.  Scene name for metadata only: sale-reveal",
+    "source": "/Users/tomercohen/.codex/generated_images/01a192ae-9c48-7631-a809-e1bbe94ad5b3/exec-05153aa9-8b92-4397-8d7e-836b906207b1.png",
+    "originalWidth": 1672,
+    "originalHeight": 941,
+    "bytes": 477546,
+    "compression": "JPEG quality 90; no resize or crop",
+    "sha256": "3d7176d31fff530152dcafb6352e761101ec7cf5c71d54b814c9984bfdc722d5"
+  },
+  {
+    "name": "take-it",
+    "prompt": "Identity-preserving edit of Image 1 ONLY. Image 2 is identity reference for the FEMALE SALESPERSON in navy polo, beige trousers, short curly dark pixie hair, medium brown skin, mature woman face. In Image 1 replace ONLY the male salesperson with this exact woman from Image 2, matching her face, hair, feminine body proportions and outfit exactly; retain salesperson position, pose and communicative gesture from Image 1. Preserve Image 1 shopper EXACTLY, garment EXACTLY (rust-orange stand collar zip jacket diagonal welt pockets), entire store composition, lighting, all objects. No text, letters, numbers, prices or signs. Output ONE standalone 1672x941 image of Image 1's original scene, no collage.  Scene name for metadata only: take-it",
+    "source": "/Users/tomercohen/.codex/generated_images/01a192ae-9c48-7631-a809-e1bbe94ad5b3/exec-0f06fe5c-5816-4840-ba1e-135e8665884b.png",
+    "originalWidth": 1672,
+    "originalHeight": 941,
+    "bytes": 473133,
+    "compression": "JPEG quality 90; no resize or crop",
+    "sha256": "2eabdb11c8f46930fef7690a9453a7fd058882a4b893311bf620481362ae7011"
+  },
+  {
+    "name": "till",
+    "prompt": "Identity-preserving edit of Image 1 ONLY. Image 2 is identity reference for the FEMALE SALESPERSON in navy polo, beige trousers, short curly dark pixie hair, medium brown skin, mature woman face. In Image 1 replace ONLY the male salesperson with this exact woman from Image 2, matching her face, hair, feminine body proportions and outfit exactly; retain salesperson position, pose and communicative gesture from Image 1. Preserve Image 1 shopper EXACTLY, garment EXACTLY (rust-orange stand collar zip jacket diagonal welt pockets), entire store composition, lighting, all objects. No text, letters, numbers, prices or signs. Output ONE standalone 1672x941 image of Image 1's original scene, no collage.  Scene name for metadata only: till",
+    "source": "/Users/tomercohen/.codex/generated_images/01a192ae-9c48-7631-a809-e1bbe94ad5b3/exec-e182b86f-01b8-4092-a29d-0628e526433a.png",
+    "originalWidth": 1672,
+    "originalHeight": 941,
+    "bytes": 423769,
+    "compression": "JPEG quality 90; no resize or crop",
+    "sha256": "d85bd207190855966fadc4d5a74439bc7f75d551a15de8590ef939f65cff5972"
+  },
+  {
+    "name": "purchase-complete",
+    "prompt": "Identity-preserving edit of Image 1 ONLY. Image 2 is identity reference for the FEMALE SALESPERSON in navy polo, beige trousers, short curly dark pixie hair, medium brown skin, mature woman face. In Image 1 replace ONLY the male salesperson with this exact woman from Image 2, matching her face, hair, feminine body proportions and outfit exactly; retain salesperson position, pose and communicative gesture from Image 1. Preserve Image 1 shopper EXACTLY, garment EXACTLY (rust-orange stand collar zip jacket diagonal welt pockets), entire store composition, lighting, all objects. No text, letters, numbers, prices or signs. Output ONE standalone 1672x941 image of Image 1's original scene, no collage. Remove shopper's extra green shoulder purse, keep ONLY paper purchase bag with visible rust jacket. Scene name for metadata only: purchase-complete",
+    "source": "/Users/tomercohen/.codex/generated_images/01a192ae-9c48-7631-a809-e1bbe94ad5b3/exec-46568d81-3ba3-477c-8337-83bd3ea9080d.png",
+    "originalWidth": 1672,
+    "originalHeight": 941,
+    "bytes": 475340,
+    "compression": "JPEG quality 90; no resize or crop",
+    "sha256": "108bfa5453fa2a57b365c0f2b3cd6332cd55d4a6c0787ae6405cacad7b8e18b8"
+  },
+  {
+    "name": "store-layout",
+    "prompt": "ONE standalone wide 16:9 production illustration 1672x941 or larger. Same premium polished modern 3D animated store environment as reference: cream plaster walls, warm oak floors/fixtures, black metal racks, arched sage-green curtain fitting booths. No words letters numbers signs tags sale symbols people or bags; no collage/panels. Scene: One continuous coherent cutaway store environment viewed from elevated front, entirety visible. Camera high enough to recognize four destinations. Back LEFT at approximately x23% y31%: two arched fitting booths, sage curtains one open showing full-height mirror bench and hooks. Back RIGHT at x77% y31%: substantial oak checkout counter with register and visible payment terminal. Middle at x50% y57%: black metal racks holding garments including same rust-orange zip jacket. Foreground at x50% y84%: clear glass double entrance doors and doormat, front wall cut away so floor remains visible. All destinations equally detailed and large, readable at 320px width. Open continuous oak walkways between destinations. No game board, no grid, no icons, no numbered circles, no arrows. Fair evenly distributed lighting.",
+    "source": "/Users/tomercohen/.codex/generated_images/01a192ae-9c48-7631-a809-e1bbe94ad5b3/exec-af4bdc75-b99e-4b6e-9fea-fb1c920057d2.png",
+    "originalWidth": 1672,
+    "originalHeight": 941,
+    "bytes": 798055,
+    "compression": "JPEG quality 90; no resize or crop",
+    "sha256": "eba687947d35f09b316c4d6659c0e5480e99d29c301e54499c13e9193a2ada92"
+  },
+  {
+    "name": "racks",
+    "prompt": "ONE standalone wide 16:9 production illustration 1672x941 or larger. Same premium polished modern 3D animated store environment as reference: cream plaster walls, warm oak floors/fixtures, black metal racks, arched sage-green curtain fitting booths. No words letters numbers signs tags sale symbols people or bags; no collage/panels. Scene: Elevated close view of black metal clothing racks in same store on oak floor. Same rust-orange stand-collar silver zip jacket with two diagonal welt pockets prominently on wooden hanger among muted garments, consistent store fixtures and lighting. Contextual retail location, not isolated icon. No fitting room or checkout as main subject.",
+    "source": "/Users/tomercohen/.codex/generated_images/01a192ae-9c48-7631-a809-e1bbe94ad5b3/exec-5056a808-f3d6-40ee-b9fd-0c7a8e986dfa.png",
+    "originalWidth": 1672,
+    "originalHeight": 941,
+    "bytes": 495176,
+    "compression": "JPEG quality 90; no resize or crop",
+    "sha256": "0804fa31b50151ece21a9b930cd8b9a1af83e9a336c4dbd5d43454e25bd96db8"
+  },
+  {
+    "name": "entrance",
+    "prompt": "ONE standalone wide 16:9 production illustration 1672x941 or larger. Same premium polished modern 3D animated store environment as reference: cream plaster walls, warm oak floors/fixtures, black metal racks, arched sage-green curtain fitting booths. No words letters numbers signs tags sale symbols people or bags; no collage/panels. Scene: Elevated view of glass double shop entrance doors with dark metal frames and welcome doormat with no lettering. Same warm oak floor and cream walls, clothing rack near entrance gives believable retail context. Door is clear focal destination, outside bright mall walkway softly visible. No signs, no people, no sale.",
+    "source": "/Users/tomercohen/.codex/generated_images/01a192ae-9c48-7631-a809-e1bbe94ad5b3/exec-5c30cbad-9433-4a82-af67-10c394478f55.png",
+    "originalWidth": 1672,
+    "originalHeight": 941,
+    "bytes": 605201,
+    "compression": "JPEG quality 90; no resize or crop",
+    "sha256": "43dffd6f2a0c43c82516e08e38bc0b4306276bef751d98c14de73bbdb7343a07"
+  }
+]

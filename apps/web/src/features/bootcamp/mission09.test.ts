@@ -389,14 +389,14 @@ describe('the shopping trip, as it happens', () => {
   });
 });
 
-describe('visual slots — placeholders until the ASTRA pass', () => {
-  it('13 semantic slots and 2 props; none has artwork yet (VISUAL PRODUCTION REQUIRED), every one has its stand-in', () => {
+describe('final visual slots', () => {
+  it('13 semantic slots and 2 props; every one has canonical artwork without a stand-in', () => {
     expect(Object.keys(M09_SLOTS).sort()).toEqual(['ask-bigger-size', 'fitting-room', 'just-looking', 'one-size-up', 'sale-reveal', 'salesperson-offers-help', 'selected-item', 'store-browse', 'take-it', 'take-your-time', 'till', 'too-small', 'try-this-on']);
     expect(Object.keys(M09_PROPS).sort()).toEqual(['entrance', 'racks']);
-    for (const s of [...Object.values(M09_SLOTS), ...Object.values(M09_PROPS)]) { expect((s as { image?: string }).image).toBeUndefined(); expect(s.emoji).toBeTruthy(); }
+    for (const [key, s] of Object.entries({ ...M09_SLOTS, ...M09_PROPS })) expect(s).toEqual({ image: `images/mission09/${key}.jpg` });
   });
   it('every card picture comes from a slot, the same in every language — wide pictures', () => {
-    const pictures = new Set(Object.values(M09_SLOTS).map((s) => s.emoji));
+    const pictures = new Set(Object.values(M09_SLOTS).map((s) => s.image));
     const pics = (lang: CoverageLang) => stepsOf(day(lang), 'prime').flatMap((p) => p.words.map((w) => [w.key, w.image ?? w.emoji]));
     for (const lang of LANGS) {
       for (const [key, pic] of pics(lang)) expect(pictures, `${lang} ${key}`).toContain(pic);

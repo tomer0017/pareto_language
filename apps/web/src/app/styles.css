@@ -1737,3 +1737,21 @@ div.jstep { box-shadow: none; border-color: var(--line); }
 
 .pmap.hotel-floor button.ptile.is-ok { border-color: var(--good); }
 .pmap.hotel-floor button.ptile.is-bad { border-color: var(--danger); }
+
+/* Mission 09 opts in: one retail environment, four equal semantic hit areas. */
+.shopping-scene { display: block; width: 100%; height: auto; aspect-ratio: 1672 / 941; object-fit: contain; border-radius: 18px; }
+.pmap.shopping-store { position: relative; display: block; width: 100%; padding: 0; overflow: hidden; border-radius: 18px; background: #e7d7bc; }
+.shopping-store-scene { display: block; width: 100%; height: auto; }
+.pmap.shopping-store .ptile.is-road, .pmap.shopping-store .ptile.is-static { display: none; }
+.pmap.shopping-store button.ptile { position: absolute; width: 25%; height: 27%; min-height: 44px; padding: 0; aspect-ratio: auto; border: 2px solid #ffffffb3; border-radius: 12px; background: transparent; box-shadow: 0 0 0 1px #493b2930; transform: translate(-50%, -50%); }
+.pmap.shopping-store button[data-zone="fitting-room"] { left: 21%; top: 17%; }
+.pmap.shopping-store button[data-zone="till"] { left: 78%; top: 24%; }
+.pmap.shopping-store button[data-zone="racks"] { left: 48%; top: 43%; }
+.pmap.shopping-store button[data-zone="entrance"] { left: 50%; top: 84%; }
+.pmap.shopping-store button.ptile:hover, .pmap.shopping-store button.ptile:focus-visible { border-color: #fff; outline: 3px solid #68553d; outline-offset: 2px; background: #ffffff18; }
+.pmap.shopping-store button.ptile.is-ok { border-color: var(--good); box-shadow: 0 0 0 3px var(--good); background: #47986928; }
+.pmap.shopping-store button.ptile.is-bad { border-color: var(--danger); box-shadow: 0 0 0 3px var(--danger); background: #bd534528; }
+
+.pgrid.is-ordered { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.pgrid.is-ordered .ptile { min-height: 72px; font-size: 1.5rem; }
+.pgrid.is-ordered .ptile[aria-current="step"] { outline: 2px solid var(--ink); outline-offset: -6px; }

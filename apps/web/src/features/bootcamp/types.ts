@@ -130,6 +130,8 @@ export interface QuickReplyRound {
 /** Visual Match — hear something, tap the tile that shows it. Up to 9 tiles (3×3). */
 export interface MatchTile {
   id: string;
+  /** Previously established value, never inferred from the correct answer. */
+  current?: boolean;
   label?: string;       // "€15.50", a word, a number
   emoji?: string;
   image?: string;       // public path under the deploy base, e.g. "images/mission02/one-box.jpg"
@@ -233,7 +235,7 @@ export interface BuilderRound {
 }
 
 export type BootcampStep =
-  | { kind: 'talk'; icon: string; title: LocalizedText; body: LocalizedText[]; cta?: LocalizedText;
+  | { kind: 'talk'; icon: string; image?: string; title: LocalizedText; body: LocalizedText[]; cta?: LocalizedText;
       /** A scenario BRIEFING: the facts the learner will give, as label → value pairs (app language).
        *  A briefing card stands alone — nothing else competes with it on screen. */
       facts?: BriefingFact[] }
@@ -263,10 +265,10 @@ export type BootcampStep =
   | { kind: 'swap'; label?: LocalizedText; rounds: SwapRound[] }
   /** `base`: what is being made — an emoji, or an approved picture's public path ("images/…"). */
   | { kind: 'customize'; label?: LocalizedText; base: string; options: CustomizeOption[]; rounds: CustomizeRound[] }
-  | { kind: 'miniMap'; presentation?: 'hotel-floor' | 'hotel-lobby'; scene?: string; revealImage?: string; label?: LocalizedText; rounds: MiniMapRound[]; challenge?: boolean; quiet?: boolean }
+  | { kind: 'miniMap'; presentation?: 'hotel-floor' | 'hotel-lobby' | 'shopping-store'; scene?: string; revealImage?: string; label?: LocalizedText; rounds: MiniMapRound[]; challenge?: boolean; quiet?: boolean }
   | { kind: 'matchPairs'; label?: LocalizedText; pairs: MatchPair[] }
   | { kind: 'sentenceBuilder'; label?: LocalizedText; rounds: BuilderRound[] }
-  | { kind: 'receipt'; text: LocalizedText }
+  | { kind: 'receipt'; text: LocalizedText; image?: string }
   | { kind: 'video'; mode: 'intro' | 'again' }   // plays the mission's video if one exists, else is skipped (intro = before, again = after)
   | { kind: 'summary' };
 
