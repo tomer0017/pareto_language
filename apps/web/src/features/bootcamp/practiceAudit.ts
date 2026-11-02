@@ -24,7 +24,7 @@ const LANG_NAME: Record<Lang, string> = { en: 'EN', fr: 'FR', es: 'ES' };
 
 /** Where each mission's runtime content is written. Spec missions are authored once for all languages. */
 export const SPEC_SOURCE: Record<number, string> = {
-  9: 'core/checkpoints.ts (ARRIVAL_DAY)', 17: 'core/checkpoints.ts (EVERYDAY_DAY)', 23: 'core/checkpoints.ts (CITY_CONVERSATION)',
+  9: 'core/arrivalDay.ts (ARRIVAL_DAY)', 17: 'core/checkpoints.ts (EVERYDAY_DAY)', 23: 'core/checkpoints.ts (CITY_CONVERSATION)',
   27: 'core/checkpoints.ts (NO_SUBTITLES)', 28: 'core/checkpoints.ts (DRESS_REHEARSAL)', 29: 'core/checkpoints.ts (COMPLETE_DAY)',
   22: 'core/smallTalk.ts', 24: 'core/fixingProblems.ts', 26: 'core/emergency.ts',
   30: 'core/everydayCore.ts', 31: 'core/timePlans.ts', 32: 'core/homeFamily.ts', 33: 'core/hobbies.ts',
@@ -465,6 +465,7 @@ const STEP_NAME: Record<BootcampStep['kind'], string> = {
   quickReply: 'quick reply (hear → pick your response)', visualMatch: 'visual match (hear → tap the tile)', customize: 'customize (hear the order → set ✓ / ✕)', swap: 'swap it (one frame, several endings)', miniMap: 'mini map (hear → tap the direction / spot)',
   matchPairs: 'match pairs (connect each question to its answer)', sentenceBuilder: 'sentence builder (put the chunks in order)',
   swipe: 'sentence review', ambush: 'cold open (fast line)', receipt: 'receipt (proof card)', summary: 'victory screen',
+  checkpoint: 'adaptive checkpoint (diagnostic → quick fix of only the misses → one-take → final repair)',
 };
 
 interface MissionCounts {
@@ -525,6 +526,7 @@ function renderMission(plan: MissionPlan, index: number, use: Map<string, number
     if (s.kind === 'ambush') detail = ` — mode ${s.mode ?? 'not set'} · correct \`${strip(s.correctItemId)}\`, wrong \`${strip(s.wrongItemId)}\``;
     if (s.kind === 'receipt') detail = ` — ${q(s.text.en)} / ${q(s.text.he)}`;
     if (s.kind === 'video') detail = ` — mode ${s.mode}`;
+    if (s.kind === 'checkpoint') detail = ` — ${s.plan.turns.length} turns · ${s.plan.turns.flatMap((x) => (x.kind === 'say' ? [x.conceptId] : x.groups.map((g) => g.conceptId))).length} concepts · scenes ${s.plan.scenes.map((x) => x.id).join(' → ')}`;
     if (s.kind === 'talk') detail = ` — ${q(s.title.en)}`;
     o.push(`${i + 1}. \`${s.kind}\` — ${STEP_NAME[s.kind]}${detail}`);
   });

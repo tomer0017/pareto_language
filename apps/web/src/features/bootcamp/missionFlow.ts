@@ -12,7 +12,7 @@ export type MissionPhase = 'learn' | 'practice';
 /** Steps that TEACH (the essentials + the replies the learner will hear). */
 const TEACHING: ReadonlySet<BootcampStep['kind']> = new Set(['prime', 'tool', 'replies']);
 /** Steps where the learner RESPONDS. The first one marks the start of practice. */
-const RESPONDING: ReadonlySet<BootcampStep['kind']> = new Set(['quiz', 'dialogue', 'swipe', 'ambush', 'quickReply', 'visualMatch', 'swap', 'customize', 'miniMap', 'matchPairs', 'sentenceBuilder']);
+const RESPONDING: ReadonlySet<BootcampStep['kind']> = new Set(['quiz', 'dialogue', 'swipe', 'ambush', 'quickReply', 'visualMatch', 'swap', 'customize', 'miniMap', 'matchPairs', 'sentenceBuilder', 'checkpoint']);
 
 export interface MissionPhases {
   /** First step of the learning flow (skips a leading in-flow video step — the overview's own
@@ -46,6 +46,10 @@ export function primaryDialogue(day: Pick<BootcampDayContent, 'steps' | 'dialogu
   const byStep = step ? day.dialogues[step.dialogueId] : undefined;
   return byStep ?? Object.values(day.dialogues)[0] ?? null;
 }
+
+/** A mission run as an ADAPTIVE checkpoint (`checkpoint.ts`): its conversation is the answer sheet,
+ *  so it is not offered to read or listen to before the checkpoint is passed. */
+export const isAdaptiveCheckpoint = (day: Pick<BootcampDayContent, 'steps'>): boolean => day.steps.some((s) => s.kind === 'checkpoint');
 
 /** The mission's own icon — the one its opening card already shows. Read from content, so a card
  *  never invents an image; missions without one get a neutral fallback. */

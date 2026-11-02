@@ -320,3 +320,22 @@ No facts or reveal states are inferred. See `MISSION08_VISUAL_REPORT.md` for QA 
 ## Mission 09 final visual integration — 2026-11-02
 
 Mission 09 now uses 13 canonical semantic images, 2 prop images and 2 supplemental scenes, shared across EN/ES/FR. One continuous store environment replaces the cell-map presentation; four equivalent hit areas retain semantic answer IDs. The ordered S/M/L/XL ladder marks M as current, discounts remain equal text tiles, and Shopping Journey retains its compact grid and reveal timing. Approved dialogue and all 33 interactions are unchanged. Optional talk/receipt images and the opt-in `shopping-store` presentation leave other missions unchanged. See [the visual report](MISSION09_VISUAL_REPORT.md) for validation and asset inventory.
+
+## Mission 10 — Arrival Day, adaptive checkpoint — 2026-11-02
+
+Mission 10 (CHECKPOINT: Arrival Day) is now an ADAPTIVE checkpoint: retrieve first → repair only what
+fails → retrieve again in context. One new step kind, `checkpoint`, runs a pure, data-driven state
+machine (`features/bootcamp/checkpoint.ts`): DIAGNOSTIC (the whole day: 🛂 border → 🚕 taxi → 🏨 hotel,
+14 interactions, nothing taught first; a miss gets one quiet beat — line, meaning, audio — and is
+recorded by CONCEPT) → QUICK FIX (only the missed concepts; one supported retry; skipped entirely on
+zero misses) → ONE-TAKE (the whole day, no help) → FINAL REPAIR (a card + one retrieval per one-take
+miss, until the queue is empty) → 🌍 ARRIVAL DAY COMPLETE. 16 concepts (11 production, 5 comprehension
+captures: fare €15 + traffic, room 204 + floor 2, breakfast 7–10, never on screen before their line).
+Mastery = every concept answered right at least once with its answer not on screen — no score.
+State is plain JSON, saved per mission by the store (`ready.bootcamp.checkpoint.v1.<lang>`), so the
+video overlay, leaving and reloading resume exactly; restart / a fresh entry / completion clear it.
+Content: `core/arrivalDay.ts` (locked EN/ES/FR dialogue; learner lines are Missions 06–08's sentences,
+same id and wording; recovery beats and the elevator ambush removed). Checkpoint-only transparent
+recombination: `checkpointAudit.ts` (`learnedBefore` / `unprepared*` unchanged). No new artwork:
+M07's road pictures, M08's elevator panel, figures as UI. Strong learner: 28 interactions; gaps add
+only their repairs. Tests: `mission10.test.ts` (71); Missions 01–09 and 11–30 byte-for-byte unchanged.

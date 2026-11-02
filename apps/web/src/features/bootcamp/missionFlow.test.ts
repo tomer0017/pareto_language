@@ -31,8 +31,8 @@ describe('missionPhases — where learning ends and practice begins', () => {
         } else {
           expect(p.practiceStart, at).toBe(p.learnStart); // no separate Learn entry
         }
-        // Every mission still reaches a dialogue during practice.
-        expect(day.steps.slice(p.practiceStart).some((s) => s.kind === 'dialogue'), at).toBe(true);
+        // Every mission still reaches a dialogue during practice (an adaptive checkpoint runs its scenes inside its own step).
+        expect(day.steps.slice(p.practiceStart).some((s) => s.kind === 'dialogue' || s.kind === 'checkpoint'), at).toBe(true);
       }
     });
   }

@@ -4,7 +4,7 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { BOOTCAMP_PLAN } from './plan.js';
-import { fillFrame, isHelpToolId, validatePracticeStep } from './practiceEngines.js';
+import { fillFrame, validatePracticeStep } from './practiceEngines.js';
 import { beforeCueFreeze, type FrozenDay } from './cueFreeze.js';
 import { MISSIONS_BY_LANG } from './registry.js';
 import { RETIRED_SENTENCES } from './retired.js';
@@ -25,7 +25,6 @@ const strip = (id: string | undefined): string => (id ?? '').replace(/^[a-z]{2}\
 const mission = (n: number, lang: Lang = 'en'): BootcampDayContent => MISSIONS_BY_LANG[lang]![BOOTCAMP_PLAN[n - 1]!.day]!;
 const stepsOf = <K extends BootcampStep['kind']>(day: BootcampDayContent, kind: K): Extract<BootcampStep, { kind: K }>[] =>
   day.steps.filter((s): s is Extract<BootcampStep, { kind: K }> => s.kind === kind);
-const kinds = (day: BootcampDayContent): string[] => day.steps.map((s) => (s.kind === 'ambush' ? `ambush:${s.mode}` : (s.kind === 'quickReply' || s.kind === 'visualMatch') && s.challenge ? `${s.kind}:speed` : s.kind));
 const fnv = (s: string): string => { let h = 0x811c9dc5; for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 0x01000193) >>> 0; } return h.toString(16).padStart(8, '0'); };
 const taught = (day: BootcampDayContent): string[] => stepsOf(day, 'tool').map((s) => strip(s.itemId));
 const reviewed = (day: BootcampDayContent): string[] => stepsOf(day, 'swipe').flatMap((s) => s.itemIds.map(strip));
@@ -51,9 +50,6 @@ function lines(day: BootcampDayContent, skipChallenge = false): string[] {
   }
   return out;
 }
-const vocabulary = (lang: Lang, upTo: number, skipChallengeOfLast = false): Set<string> =>
-  new Set(Array.from({ length: upTo }, (_, i) => lines(mission(i + 1, lang), skipChallengeOfLast && i + 1 === upTo)).flat().flatMap(words));
-const unknownIn = (said: string[], known: Set<string>): string[] => [...new Set(said.flatMap(words).filter((w) => !known.has(w)))];
 
 /* ── what this pass was not allowed to touch ─────────────────────────────────────────────────── */
 
@@ -81,13 +77,12 @@ describe('scope: only the Practice of Missions 06–10 changed', () => {
       "Thank you. You're in room two-oh-four, on the second floor. Here is your key.", 'Yes! Breakfast is from seven to ten. The elevator is on your right.', 'Enjoy your stay!',
     ]);
   });
-  it('the approved pass is otherwise exactly as approved: Mission 10 whole (Mission 09 has its own pass since: mission09.test.ts)', () => {
-    const pick = (l: Lang, i: number): BootcampDayContent => MISSIONS_BY_LANG[l]![BOOTCAMP_PLAN[i]!.day]!;
-    expect(print((l) => [9].map((i) => pick(l, i).steps))).toEqual({ en: '0a890235', fr: '67adb51c', es: '36c79f0a' });
-    expect(print((l) => pick(l, 9))).toEqual({ en: '60b489f1', fr: '5d4d6a20', es: 'a4ff1fc6' });
+  it('Mission 10 has its own pass since: mission10.test.ts (the adaptive checkpoint)', async () => {
+    const { existsSync } = await import('node:fs');
+    expect(existsSync(fileURLToPath(new URL('./mission10.test.ts', import.meta.url)))).toBe(true);
   });
-  it('Missions 10–18 are exactly as approved (Missions 01–09 have their own passes)', () => {
-    expect(print((l) => slice(l, 9, 18))).toEqual({ en: '6d0b582c', fr: '2491a320', es: '5316bf50' });
+  it('Missions 11–18 are exactly as approved (Missions 01–10 have their own passes)', () => {
+    expect(print((l) => slice(l, 10, 18))).toEqual({ en: '34c7fd66', fr: '4de7e041', es: 'd2eec35d' }); // since the Mission 10 pass: Missions 11–18
   });
   it('"For two nights." and the wifi password are retired (and, since the Mission 08 pass, "Sign here" and "It\'s on the second floor"): archived with their ids and wording, and shown nowhere', () => {
     const gone = ['phrase.hotel.two-nights', 'phrase.hotel.wifi', 'reply.hotel.sign-here', 'reply.hotel.second-floor'];
@@ -117,7 +112,9 @@ describe('scope: only the Practice of Missions 06–10 changed', () => {
   });
   it('no new game: only the existing step kinds are used', () => {
     const allowed = ['video', 'talk', 'prime', 'tool', 'replies', 'quiz', 'dialogue', 'swipe', 'ambush', 'receipt', 'summary', 'quickReply', 'visualMatch', 'swap', 'miniMap', 'matchPairs', 'sentenceBuilder'];
-    for (const lang of LANGS) for (let n = 9; n <= 10; n++) for (const s of mission(n, lang).steps) expect(allowed, `${lang} M${n}`).toContain(s.kind);
+    for (const lang of LANGS) for (const s of mission(9, lang).steps) expect(allowed, `${lang} M9`).toContain(s.kind);
+    // Mission 10's one new kind is its adaptive checkpoint (its own pass: mission10.test.ts).
+    for (const lang of LANGS) expect(mission(10, lang).steps.map((s) => s.kind), lang).toEqual(['talk', 'checkpoint', 'summary']);
   });
 });
 
@@ -184,109 +181,7 @@ describe('all three languages get the same practice, each in its own words', () 
 
 /* Mission 09 — Shopping has its own pass: see mission09.test.ts. */
 
-/* ── Mission 10 — the checkpoint ─────────────────────────────────────────────────────────────── */
-
-describe('Mission 10 — CHECKPOINT: Arrival Day', () => {
-  const day = mission(10);
-  const screens = (d: BootcampDayContent) => Object.values(d.dialogues).flatMap((dl) => dl.nodes.filter((n) => n.choices?.length).map((n) => ({ scene: dl.id, node: n })));
-
-  it('it proves, it does not teach: no key sentence, no word intro, no listening drill, no quiz, no review', () => {
-    expect(kinds(day)).toEqual(['talk', 'dialogue', 'receipt', 'dialogue', 'receipt', 'dialogue', 'receipt', 'ambush:speed', 'receipt', 'receipt', 'summary']);
-    for (const lang of LANGS) for (const s of mission(10, lang).steps) expect(['tool', 'prime', 'replies', 'quiz', 'swipe'], lang).not.toContain(s.kind);
-  });
-  it('three cold scenes — border, taxi, hotel — with no translation before the learner answers', () => {
-    for (const lang of LANGS) {
-      const d = mission(10, lang);
-      expect(Object.keys(d.dialogues), lang).toEqual(['cold-border', 'cold-taxi', 'cold-hotel']);
-      for (const dl of Object.values(d.dialogues)) { expect(dl.cold, `${lang} ${dl.id}`).toBe(true); expect(dl.nodes[0]!.who, `${lang} ${dl.id}`).toBe('npc'); }
-    }
-    // Only the missions that prove instead of teach are cold: no teaching mission hides the translation.
-    for (const m of BOOTCAMP_PLAN) if (!['arrival-day-checkpoint', 'food-day-checkpoint', 'city-day-checkpoint', 'no-subtitles', 'dress-rehearsal', 'complete-day-abroad'].includes(m.id)) for (const dl of Object.values(MISSIONS_BY_LANG.en![m.day]!.dialogues)) expect(dl.cold, m.id).toBeUndefined();
-  });
-  it('real decisions: eleven screens offer the line that fits AND a line from another moment', () => {
-    for (const lang of LANGS) {
-      const all = screens(mission(10, lang));
-      const real = all.filter(({ node }) => node.choices!.some((c) => c.correct) && node.choices!.some((c) => !c.correct));
-      expect(real.length, lang).toBe(11);
-      expect(all.filter(({ node }) => node.choices!.length === 1), lang).toHaveLength(0); // not one one-button screen
-      for (const { node } of real) {
-        expect(node.choices!.length, lang).toBeGreaterThanOrEqual(2);
-        expect(node.choices!.length, lang).toBeLessThanOrEqual(3);
-      }
-    }
-    // The wrong options are real sentences of Missions 06–08 that fit somewhere else — never nonsense.
-    const earlier = new Set([6, 7, 8, 9].flatMap((n) => mission(n).items.map((i) => i.text)));
-    for (const { node } of screens(day)) for (const c of node.choices!.filter((x) => !x.correct)) expect(earlier.has(c.en), c.en).toBe(true);
-  });
-  it('a miss is never passed over: the question is asked again, slowly, and the same decision comes back', () => {
-    for (const lang of LANGS) for (const dl of Object.values(mission(10, lang).dialogues)) {
-      const byId = new Map(dl.nodes.map((n) => [n.id, n]));
-      for (const n of dl.nodes) for (const c of n.choices ?? []) {
-        if (c.correct) continue;
-        const beat = byId.get(c.next)!;
-        expect(beat.who, `${lang} ${dl.id}/${n.id}`).toBe('npc');
-        expect(beat.slow, `${lang} ${dl.id}/${n.id}`).toBe(true);
-        expect(beat.next, `${lang} ${dl.id}/${n.id}`).toBe(n.id); // …back to the same choice, not to a single button
-        const asked = dl.nodes.find((x) => x.next === n.id && x.id !== beat.id && !x.slow)!;
-        expect(beat.en, `${lang} ${dl.id}/${n.id}`).toBe(asked.en); // the same question — no new language in a correction
-      }
-    }
-  });
-  it('recovery is success: three moments accept a conversation-help tool, and the speaker then says it again in known words', () => {
-    for (const lang of LANGS) {
-      const d = mission(10, lang);
-      const tools = screens(d).flatMap(({ scene, node }) => node.choices!.filter((c) => isHelpToolId(c.itemId)).map((c) => ({ scene, node, c })));
-      expect(tools.map((x) => `${x.scene}:${strip(x.c.itemId)}`), lang).toEqual(['cold-border:phrase.recovery.repeat', 'cold-taxi:phrase.recovery.slowly', 'cold-hotel:phrase.recovery.repeat']);
-      for (const { scene, node, c } of tools) {
-        expect(c.correct, lang).toBe(true);
-        const dl = d.dialogues[scene]!;
-        const again = dl.nodes.find((n) => n.id === c.next)!;
-        expect([again.who, again.slow, again.next], `${lang} ${scene}`).toEqual(['npc', true, node.id]);
-      }
-      // The fast lines are where a tool is offered.
-      for (const scene of ['cold-taxi', 'cold-hotel']) {
-        const dl = d.dialogues[scene]!;
-        const withTool = dl.nodes.find((n) => n.choices?.some((c) => isHelpToolId(c.itemId)))!;
-        expect(dl.nodes.find((n) => n.next === withTool.id && !n.slow)!.fast, `${lang} ${scene}`).toBe(true);
-      }
-    }
-  });
-  it('STRICT — zero new target-language vocabulary: every word of the checkpoint was met in Missions 01–09', () => {
-    for (const lang of LANGS) {
-      const known = vocabulary(lang, 9);
-      expect(unknownIn(lines(mission(10, lang)), known), lang).toEqual([]);
-    }
-    // The words the old cold opens smuggled in are gone.
-    expect(lines(day).join(' ')).not.toMatch(/prefer|main entrance|downstairs|key card|wifi/i);
-  });
-  it('every learner line is a sentence an earlier mission taught, with the same id and the same wording', () => {
-    for (const lang of LANGS) {
-      const d = mission(10, lang);
-      const before = new Map([1, 2, 3, 4, 5, 6, 7, 8, 9].flatMap((n) => mission(n, lang).items.map((i): [string, string] => [i.id, i.text])));
-      for (const i of d.items) expect(before.get(i.id), `${lang} ${i.id}`).toBe(i.text);
-    }
-  });
-  it('one speed-listening moment, honestly labelled: known language, no "use a tool" badge anywhere', () => {
-    for (const lang of LANGS) {
-      const ambushes = stepsOf(mission(10, lang), 'ambush');
-      expect(ambushes, lang).toHaveLength(1);
-      expect(ambushes[0]!.mode, lang).toBe('speed');
-      expect(isHelpToolId(ambushes[0]!.correctItemId) || isHelpToolId(ambushes[0]!.wrongItemId), lang).toBe(false);
-    }
-    expect(strip(stepsOf(day, 'ambush')[0]!.correctItemId)).toBe('reply.hotel.breakfast-time');
-    const player = readFileSync(fileURLToPath(new URL('./Bootcamp.tsx', import.meta.url)), 'utf8');
-    expect(player).toMatch(/step\.mode === 'speed' \? '' :/); // a speed challenge puts 🛟 on nothing
-  });
-  it('the three languages are the same checkpoint: same scenes, same turns, same decisions', () => {
-    const shape = (d: BootcampDayContent) => Object.values(d.dialogues).map((dl) => [dl.id, dl.nodes.map((n) => [n.id, n.who, n.next ?? null, n.fast ?? false, n.slow ?? false, (n.choices ?? []).map((c) => [strip(c.itemId), c.correct, c.next])])]);
-    for (const lang of ['fr', 'es'] as const) expect(shape(mission(10, lang)), lang).toEqual(shape(day));
-  });
-  it('the closing proof says what was done — and teaches nothing after it', () => {
-    const last = day.steps.slice(-2);
-    expect(last.map((s) => s.kind)).toEqual(['receipt', 'summary']);
-    expect(last[0]!.kind === 'receipt' && last[0]!.text.en).toMatch(/cleared the border.*taxi.*fare.*checked in.*did not freeze/);
-  });
-});
+/* Mission 10 — CHECKPOINT: Arrival Day has its own pass: see mission10.test.ts. */
 
 /* ── the screens ─────────────────────────────────────────────────────────────────────────────── */
 

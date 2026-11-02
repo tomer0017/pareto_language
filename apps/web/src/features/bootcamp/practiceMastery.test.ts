@@ -40,7 +40,8 @@ const reviewed = (day: BootcampDayContent): string[] => stepsOf(day, 'swipe').fl
 
 /* ── conversations: decisions, recovery, pace ────────────────────────────────────────────────── */
 
-const scenes = (day: BootcampDayContent): BootcampDialogue[] => stepsOf(day, 'dialogue').map((s) => day.dialogues[s.dialogueId]!);
+/** The scenes a mission plays: its dialogue steps — or, for an adaptive checkpoint (Mission 10), the scenes its one step runs. */
+const scenes = (day: BootcampDayContent): BootcampDialogue[] => (day.steps.some((s) => s.kind === 'checkpoint') ? Object.values(day.dialogues) : stepsOf(day, 'dialogue').map((s) => day.dialogues[s.dialogueId]!));
 const screens = (d: BootcampDialogue): DialogueNodeB[] => d.nodes.filter((n) => n.who === 'you' && (n.choices?.length ?? 0) > 0);
 const isTool = (id: string | undefined): boolean => isHelpToolId(id);
 /** A real decision: at least one option on the screen is wrong. */
@@ -102,8 +103,8 @@ describe('scope: only Missions 25–30 changed', () => {
   const print = (f: (lang: Lang) => unknown): Record<Lang, string> => ({ en: fnv(JSON.stringify(f('en'))), fr: fnv(JSON.stringify(f('fr'))), es: fnv(JSON.stringify(f('es'))) });
 
   it('Missions 08–24 are byte-for-byte unchanged, in every language (Missions 01–07 have their own passes — mission01.test.ts … mission07.test.ts)', () => {
-    expect(print((l) => slice(l, 9, 24))).toEqual({ en: 'd3ccbb9f', fr: 'dbb1216c', es: 'de0b227e' }); // since the Mission 09 pass: Missions 10–24
-    expect(print((l) => slice(l, 9, 18))).toEqual({ en: '6d0b582c', fr: '2491a320', es: '5316bf50' });
+    expect(print((l) => slice(l, 10, 24))).toEqual({ en: '03affae9', fr: '5bf625d1', es: '212c19f5' }); // since the Mission 10 pass: Missions 11–24 (Mission 10: mission10.test.ts)
+    expect(print((l) => slice(l, 10, 18))).toEqual({ en: '34c7fd66', fr: '4de7e041', es: 'd2eec35d' });
     expect(print((l) => slice(l, 18, 24))).toEqual({ en: 'b9c88064', fr: '74a92f15', es: 'cd856495' });
   });
   it('the conversations of Missions 25–27 are byte-for-byte unchanged', () => {

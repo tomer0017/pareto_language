@@ -32,6 +32,10 @@ const V1_PREFIX = 'ready.bootcamp.v1';
 const keyFor = (lang: string): string => `${STORAGE_PREFIX}.${lang}`;
 const currentLang = (): string => useAppStore.getState().learningLang;
 const EMPTY: BootcampProgress = { completedDays: [], receipts: [], stepIndex: {} };
+// An adaptive checkpoint's state in progress (`checkpoint.ts`), per mission — plain JSON, saved
+// beside the progress so leaving, watching the video or reloading never loses a result or a repair.
+const CHECKPOINT_PREFIX = 'ready.bootcamp.checkpoint.v1';
+type SavedCheckpoints = Record<string, unknown>;
 
 function readKey<T>(key: string): T | null {
   try {
@@ -41,6 +45,26 @@ function readKey<T>(key: string): T | null {
     console.warn('[bootcamp] progress unreadable — starting fresh', err);
     return null;
   }
+}
+
+function loadCheckpoints(lang: string): SavedCheckpoints {
+  return readKey<SavedCheckpoints>(`${CHECKPOINT_PREFIX}.${lang}`) ?? {};
+}
+
+function persistCheckpoints(lang: string, saved: SavedCheckpoints): void {
+  try {
+    localStorage.setItem(`${CHECKPOINT_PREFIX}.${lang}`, JSON.stringify(saved));
+  } catch (err) {
+    console.warn('[bootcamp] checkpoint persist failed', err);
+  }
+}
+
+/** Saved checkpoints without the active mission's (it starts over). */
+function withoutCheckpoint(day: number): SavedCheckpoints {
+  const rest = { ...useBootcampStore.getState().checkpoints };
+  delete rest[String(day)];
+  persistCheckpoints(currentLang(), rest);
+  return rest;
 }
 
 function loadProgress(lang: string): BootcampProgress {
@@ -61,6 +85,8 @@ interface BootcampState extends BootcampProgress {
   index: number;
   /** Within an active mission: the hub (three learning modes) or the practice step-flow. */
   stage: 'hub' | 'play';
+  /** Adaptive checkpoints in progress, by mission (`day`): their saved state, as stored. */
+  checkpoints: SavedCheckpoints;
 
   startDay(day: number): void;
   /** Enter the step-flow: at the saved resume point, or at an explicit step (the mission
@@ -70,6 +96,8 @@ interface BootcampState extends BootcampProgress {
   toHub(): void;
   next(): void;
   addReceipt(text: string): void;
+  /** Save the active mission's checkpoint state (plain JSON). */
+  saveCheckpoint(state: unknown): void;
   recordDrill(itemId: string, mode: PracticeMode, outcome: Outcome, latencyMs?: number): void;
   completeDay(): void;
   exit(): void;
@@ -89,6 +117,7 @@ export const useBootcampStore = create<BootcampState>((set, get) => ({
   activeDay: null,
   index: 0,
   stage: 'hub',
+  checkpoints: loadCheckpoints(currentLang()),
 
   // Selecting a mission opens its hub (the three learning modes), not the step-flow directly.
   startDay(day) {
@@ -105,7 +134,8 @@ export const useBootcampStore = create<BootcampState>((set, get) => ({
     if (at !== undefined && activeDay !== null) {
       const si = { ...stepIndex, [String(activeDay)]: at };
       persist(currentLang(), { completedDays, receipts, stepIndex: si });
-      set({ stage: 'play', index: at, stepIndex: si });
+      // Entering at an explicit step is a fresh run: a checkpoint in progress starts over with it.
+      set({ stage: 'play', index: at, stepIndex: si, checkpoints: withoutCheckpoint(activeDay) });
       return;
     }
     const resume = activeDay === null ? 0 : (stepIndex[String(activeDay)] ?? 0);
@@ -120,7 +150,7 @@ export const useBootcampStore = create<BootcampState>((set, get) => ({
     if (activeDay === null) return;
     const si = { ...stepIndex, [String(activeDay)]: 0 };
     persist(currentLang(), { completedDays, receipts, stepIndex: si });
-    set({ stepIndex: si, stage: 'play', index: 0 });
+    set({ stepIndex: si, stage: 'play', index: 0, checkpoints: withoutCheckpoint(activeDay) });
   },
 
   toHub() {
@@ -143,6 +173,14 @@ export const useBootcampStore = create<BootcampState>((set, get) => ({
     const next = [...receipts, { day: activeDay, text, at: new Date().toISOString() }];
     persist(currentLang(), { completedDays, receipts: next, stepIndex });
     set({ receipts: next });
+  },
+
+  saveCheckpoint(state) {
+    const { activeDay, checkpoints } = get();
+    if (activeDay === null) return;
+    const next = { ...checkpoints, [String(activeDay)]: state };
+    persistCheckpoints(currentLang(), next);
+    set({ checkpoints: next });
   },
 
   /** Real evidence into the append-only log; failures never block bootcamp flow. */
@@ -169,7 +207,7 @@ export const useBootcampStore = create<BootcampState>((set, get) => ({
     persist(currentLang(), { completedDays: done, receipts, stepIndex: si });
     // Persisted resume resets to 0 (replayable from the top); the live index is left where it is
     // so the Victory screen stays on-screen. enterPractice() re-reads stepIndex when replaying.
-    set({ completedDays: done, stepIndex: si });
+    set({ completedDays: done, stepIndex: si, checkpoints: withoutCheckpoint(activeDay) });
   },
 
   exit() {
@@ -188,5 +226,5 @@ let lastLang = currentLang();
 useAppStore.subscribe((s) => {
   if (s.learningLang === lastLang) return;
   lastLang = s.learningLang;
-  useBootcampStore.setState({ ...loadProgress(lastLang), activeDay: null, index: 0, stage: 'hub' });
+  useBootcampStore.setState({ ...loadProgress(lastLang), checkpoints: loadCheckpoints(lastLang), activeDay: null, index: 0, stage: 'hub' });
 });

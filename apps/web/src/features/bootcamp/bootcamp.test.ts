@@ -241,8 +241,13 @@ describe('all built missions are structurally sound', () => {
     });
     it(`mission ${num} is dialogue-deep and ends with evidence + summary`, () => {
       const kinds = day.steps.map((s) => s.kind);
-      expect(kinds).toContain('dialogue');
-      expect(kinds.filter((k) => k === 'receipt').length).toBeGreaterThanOrEqual(2);
+      // An adaptive checkpoint (Mission 10) runs its scenes inside one step and proves by concept
+      // (mission10.test.ts); its scenes are still the mission's dialogues.
+      if (kinds.includes('checkpoint')) expect(Object.keys(day.dialogues).length).toBeGreaterThan(0);
+      else {
+        expect(kinds).toContain('dialogue');
+        expect(kinds.filter((k) => k === 'receipt').length).toBeGreaterThanOrEqual(2);
+      }
       expect(kinds.at(-1)).toBe('summary');
       // Every 'you' choice node offers at least one recovery-tool escape hatch OR a valid line.
       for (const d of Object.values(day.dialogues)) {

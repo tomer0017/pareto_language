@@ -536,21 +536,11 @@ _Reply-training drill:_ “Hi there! Can I help you find anything?” · “Of c
 - **Nothing to declare.** · אין לי מה להצהיר. — _המשפט הקבוע במכס. אומרים אותו רגוע._
 - **To this address, please.** · לכתובת הזאת, בבקשה. — _הפתיח למונית — תגיד את זה ותראה את הכתובת בטלפון._
 - **Stop here, please.** · עצור כאן, בבקשה. — _העיתוי חשוב — תגיד את זה קצת לפני היעד._
-- **How much to the centre?** · כמה עד המרכז? — _לשאול מחיר לפני שנוסעים — חוסך הפתעות._
 - **I have a reservation.** · יש לי הזמנה. — _הפתיח לדלפק המלון. תבנית: I have a ___._
 - **Is breakfast included?** · ארוחת הבוקר כלולה?
 
-### Expected replies (you hear)
-- **Breakfast is from seven to ten.** · ארוחת בוקר משבע עד עשר.
-- **You're in room two-oh-four.** · אתה בחדר 204.
-
 ### Recovery tools reused
-`Thank you!` · `Can you repeat that?` · `Please speak slowly.`
-
-### Cold open (ambush)
-- 🧑 (fast) “The elevator is on your right. Breakfast is from seven to ten. Enjoy your stay!” · המעלית מימינך. ארוחת בוקר משבע עד עשר. תיהנה מהשהות!
-  - ✅ best move: **Breakfast is from seven to ten.** · ארוחת בוקר משבע עד עשר.
-  - ✗ distractor: You're in room two-oh-four.
+`Thank you!`
 
 ### Dialogue: `cold-border` — happy path
 - **🧑 Them:** “Passport, please.” · דרכון, בבקשה.
@@ -565,13 +555,6 @@ _Reply-training drill:_ “Hi there! Can I help you find anything?” · “Of c
 - **🫵 You:** “Nothing to declare.” · אין לי מה להצהיר.
 - **🧑 Them:** “Welcome, and enjoy your stay!” · ברוך הבא, ותיהנה מהשהות!
 
-#### Wrong / recovery branches
-- ⚠︎ less useful: 🫵 “I'm here on holiday.” → 🧑 “Passport, please.” · דרכון, בבקשה.
-- ⚠︎ less useful: 🫵 “For two weeks.” → 🧑 “What's the purpose of your visit?” · מה מטרת הביקור?
-- ⚠︎ less useful: 🫵 “At a hotel in the city centre.” → 🧑 “How long are you staying?” · לכמה זמן אתה נשאר?
-- ⚠︎ less useful: 🫵 “Nothing to declare.” → 🧑 “Where are you staying?” · איפה אתה מתאכסן?
-- ⚠︎ less useful: 🫵 “I'm here on holiday.” → 🧑 “Anything to declare?” · יש לך מה להצהיר?
-
 ### Dialogue: `cold-taxi` — happy path
 - **🧑 Them:** “Hello! Where to?” · שלום! לאן?
 - **🫵 You:** “To this address, please.” · לכתובת הזאת, בבקשה.
@@ -581,11 +564,6 @@ _Reply-training drill:_ “Hi there! Can I help you find anything?” · “Of c
 - **🫵 You:** “Stop here, please. Keep the change.” · עצור כאן, בבקשה. תשאיר את העודף.
 - **🧑 Them:** “Thank you very much! Enjoy your trip!” · תודה רבה! תיהנה מהטיול!
 
-#### Wrong / recovery branches
-- ⚠︎ less useful: 🫵 “Stop here, please.” → 🧑 “Hello! Where to?” · שלום! לאן?
-- ⚠︎ less useful: 🫵 “How much to the centre?” → 🧑 “It's about fifteen euros. There's a lot of traffic right now.” · זה בערך חמישה עשר יורו. יש הרבה פקקים עכשיו.
-- ⚠︎ less useful: 🫵 “To this address, please.” → 🧑 “…We are almost there. Is here okay?” · …כמעט הגענו. כאן זה בסדר?
-
 ### Dialogue: `cold-hotel` — happy path
 - **🧑 Them:** “Good evening! How can I help you?” · ערב טוב! איך אפשר לעזור?
 - **🫵 You:** “I have a reservation, under the name Cohen.” · יש לי הזמנה, על השם כהן.
@@ -594,11 +572,6 @@ _Reply-training drill:_ “Hi there! Can I help you find anything?” · “Of c
 - **🧑 Them:** “Thank you. You're in room two-oh-four, on the second floor. Here is your key.” · תודה. אתה בחדר 204, בקומה השנייה. הנה המפתח שלך.
 - **🫵 You:** “Is breakfast included?” · ארוחת הבוקר כלולה?
 - **🧑 Them:** “Yes, from seven to ten. Enjoy your stay.” · כן, משבע עד עשר. תיהנה מהשהות.
-
-#### Wrong / recovery branches
-- ⚠︎ less useful: 🫵 “Is breakfast included?” → 🧑 “Good evening! How can I help you?” · ערב טוב! איך אפשר לעזור?
-- ⚠︎ less useful: 🫵 “Nothing to declare.” → 🧑 “Welcome, Mr. Cohen. Your passport, please.” · ברוך הבא, מר כהן. הדרכון שלך, בבקשה.
-- ⚠︎ less useful: 🫵 “I have a reservation.” → 🧑 “Thank you. You're in room two-oh-four, on the second floor. Here is your key.” · תודה. אתה בחדר 204, בקומה השנייה. הנה המפתח שלך.
 
 ### Review status
 - 🤖 AI-drafted (English + Hebrew) — **pending human / native-Hebrew review**

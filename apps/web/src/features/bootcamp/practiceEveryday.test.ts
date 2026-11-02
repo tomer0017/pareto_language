@@ -66,8 +66,7 @@ const unknownIn = (said: string[], known: Set<string>): string[] => [...new Set(
 
 /* ── scope ───────────────────────────────────────────────────────────────────────────────────── */
 
-// Missions 06–10. (Missions 01–05 got their own pedagogical passes — pinned in mission01…05.test.ts.)
-const M10 = { en: 'db9be00b', fr: 'a984556c', es: '476e0670' };
+// Missions 06–10 got their own pedagogical passes — pinned in mission06…10.test.ts.
 /** French Mission 14's steps without its first Quick Reply and its word intro (whose menu word was corrected). */
 const FR_M14_WITHOUT_PRIME = 'be5602cb';
 
@@ -77,8 +76,8 @@ describe('scope: only the Practice of Missions 11–18 changed', () => {
   const slice = (lang: Lang, a: number, b: number): BootcampDayContent[] => BOOTCAMP_PLAN.slice(a, b).map((m) => beforeCueFreeze(MISSIONS_BY_LANG[lang]![m.day]!, lang));
   const print = (f: (lang: Lang) => unknown): Record<Lang, string> => ({ en: fnv(JSON.stringify(f('en'))), fr: fnv(JSON.stringify(f('fr'))), es: fnv(JSON.stringify(f('es'))) });
 
-  it('Missions 08–10 are unchanged by this pass (their own fingerprint, incl. the later retirement of two hotel sentences, lives in practiceArrival.test.ts; Missions 06–09 have their own passes)', () => {
-    expect(print((l) => slice(l, 9, 10))).toEqual(M10); // since the Mission 09 pass: Mission 10 only
+  it('Missions 08–10 are not this pass\'s: each has its own (mission08.test.ts, mission09.test.ts, mission10.test.ts)', () => {
+    for (const lang of LANGS) expect(slice(lang, 9, 10)[0]!.steps.some((s) => s.kind === 'checkpoint'), lang).toBe(true);
   });
   it('the locked dialogues of Missions 11–17 are byte-for-byte unchanged', () => {
     expect(print((l) => slice(l, 10, 17).map((d) => d.dialogues))).toEqual({ en: '66104490', fr: 'c4e783b1', es: 'fccb4e58' });

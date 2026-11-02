@@ -75,7 +75,7 @@ describe('scope: only the Practice of Missions 19–24 changed', () => {
   const print = (f: (lang: Lang) => unknown): Record<Lang, string> => ({ en: fnv(JSON.stringify(f('en'))), fr: fnv(JSON.stringify(f('fr'))), es: fnv(JSON.stringify(f('es'))) });
 
   it('Missions 08–18 are byte-for-byte unchanged (Missions 01–07 have their own passes — mission01.test.ts … mission07.test.ts)', () => {
-    expect(print((l) => slice(l, 9, 18))).toEqual({ en: '6d0b582c', fr: '2491a320', es: '5316bf50' }); // since the Mission 09 pass: Missions 10–18
+    expect(print((l) => slice(l, 10, 18))).toEqual({ en: '34c7fd66', fr: '4de7e041', es: 'd2eec35d' }); // since the Mission 10 pass: Missions 11–18 (Mission 10: mission10.test.ts)
   });
   it('the locked dialogues of Missions 19–23 are byte-for-byte unchanged', () => {
     expect(print((l) => slice(l, 18, 23).map((d) => d.dialogues))).toEqual({ en: '594ead2b', fr: '63803269', es: '55c7bd8f' });

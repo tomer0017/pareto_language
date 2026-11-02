@@ -1,4 +1,5 @@
 import type { LocalizedText } from '@ready/content-schema';
+import type { CheckpointPlan } from './checkpoint.js';
 
 /**
  * Mission content model (Sprint 7 — Deep Moment System).
@@ -269,6 +270,9 @@ export type BootcampStep =
   | { kind: 'matchPairs'; label?: LocalizedText; pairs: MatchPair[] }
   | { kind: 'sentenceBuilder'; label?: LocalizedText; rounds: BuilderRound[] }
   | { kind: 'receipt'; text: LocalizedText; image?: string }
+  /** An ADAPTIVE checkpoint (`checkpoint.ts`): diagnostic → quick fix of only what was missed →
+   *  one-take → final repair, as one step. Its state is saved by concept, outside the step. */
+  | { kind: 'checkpoint'; plan: CheckpointPlan }
   | { kind: 'video'; mode: 'intro' | 'again' }   // plays the mission's video if one exists, else is skipped (intro = before, again = after)
   | { kind: 'summary' };
 

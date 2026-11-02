@@ -9,13 +9,14 @@ import { buildComprehensionContext, buildRespondContext } from '../../shared/ui/
 import { feedbackWrong } from '../../shared/ui/feedbackCue.js';
 import { success, tap } from '../../shared/ui/haptics.js';
 import { BOOTCAMP_PLAN, missionNumber, nextMission } from './plan.js';
-import { afterWatching, missionIcon, practiceReplay, missionJourney, missionPhases, phaseOfIndex, primaryDialogue, type JourneyStepId, type JourneyStepState } from './missionFlow.js';
+import { afterWatching, isAdaptiveCheckpoint, missionIcon, practiceReplay, missionJourney, missionPhases, phaseOfIndex, primaryDialogue, type JourneyStepId, type JourneyStepState } from './missionFlow.js';
 import { Learn } from './Learn.js';
 import { CompanionCoach, CompanionIntro, CompanionReaction } from '../companion/Companion.js';
 import { GAME_MOOD, coachFor } from '../companion/companionCoach.js';
 import { completeChime } from '../../shared/audio/sfx.js';
 import { missionVideo } from '../videos/missionVideo.js';
 import { NpcLine, NpcSpeech, YouLine, useNpc } from './ConvoScene.js';
+import { CheckpointStep } from './CheckpointStep.js';
 import { CustomizeStep, MatchPairsStep, MiniMapStep, QuickReplyStep, SentenceBuilderStep, SwapStep, VisualMatchStep } from './PracticeSteps.js';
 import { isHelpToolId } from './practiceEngines.js';
 import { missionsFor, useBootcampStore } from './bootcampStore.js';
@@ -84,10 +85,10 @@ function MissionHub() {
   useEffect(() => () => cancelSpeech(), []);
   const day = bc.currentDay();
   if (!day) return null;
-  const convo = primaryDialogue(day);
+  const done = bc.completedDays.includes(day.day);
+  const convo = isAdaptiveCheckpoint(day) && !done ? null : primaryDialogue(day);
   const video = missionVideo(useAppStore.getState().learningLang, day.day);
   const phases = missionPhases(day);
-  const done = bc.completedDays.includes(day.day);
   const saved = done ? 0 : (bc.stepIndex[String(day.day)] ?? 0);
   const journey = missionJourney({ phases, canWatch: Boolean(video) || Boolean(convo), done, saved, watched });
   const { primary } = journey;
@@ -228,7 +229,7 @@ function MissionPlayer() {
   if (!day) return null;
   const step = day.steps[bc.index];
   const itemsById = new Map(day.items.map((i) => [i.id, i]));
-  const convo = primaryDialogue(day);
+  const convo = isAdaptiveCheckpoint(day) ? null : primaryDialogue(day);
   const video = missionVideo(useAppStore.getState().learningLang, day.day);
 
   const pop = (): void => {
@@ -313,6 +314,7 @@ function MissionPlayer() {
         {step.kind === 'miniMap' && <MiniMapStep step={step} onDone={() => { pop(); advance(); }} />}
         {step.kind === 'matchPairs' && <MatchPairsStep step={step} itemsById={itemsById} onDone={() => { pop(); advance(); }} />}
         {step.kind === 'sentenceBuilder' && <SentenceBuilderStep step={step} itemsById={itemsById} onDone={() => { pop(); advance(); }} />}
+        {step.kind === 'checkpoint' && <CheckpointStep step={step} onDone={() => { pop(); advance(); }} />}
         {step.kind === 'receipt' && <ReceiptStep text={step.text} image={step.image} onNext={advance} />}
       </div>
     </div>

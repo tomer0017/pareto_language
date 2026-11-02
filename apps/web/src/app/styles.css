@@ -1755,3 +1755,41 @@ div.jstep { box-shadow: none; border-color: var(--line); }
 .pgrid.is-ordered { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
 .pgrid.is-ordered .ptile { min-height: 72px; font-size: 1.5rem; }
 .pgrid.is-ordered .ptile[aria-current="step"] { outline: 2px solid var(--ink); outline-offset: -6px; }
+
+/* ── Mission 10 opts in: the ADAPTIVE CHECKPOINT (CheckpointStep) — one continuous day, compact on a phone. */
+.pcanvas.checkpoint { gap: 14px; }
+.checkpoint-progress { display: flex; justify-content: center; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; font-size: 0.88rem; font-weight: 700; }
+.checkpoint-progress li { padding: 4px 10px; border-radius: 999px; background: var(--card-sunken); color: var(--ink-faint); white-space: nowrap; }
+.checkpoint-progress li.is-current { background: var(--brand-soft); color: var(--brand-ink); }
+.checkpoint-progress li.is-done { background: var(--good-soft); color: var(--good); }
+.checkpoint-progress.is-repair { padding: 4px 12px; border-radius: 999px; background: var(--warn-soft); color: var(--ink); font-size: 0.88rem; font-weight: 700; }
+.checkpoint-replay { min-height: 32px; padding: 2px 8px; margin-top: 4px; }
+.checkpoint-say { width: 100%; }
+.checkpoint-capture { display: grid; gap: 10px; width: 100%; }
+.capture-group { display: flex; align-items: center; gap: 10px; min-width: 0; margin: 0; padding: 10px 12px; border: 1px solid var(--line); border-radius: var(--r-md); background: var(--card); }
+.capture-group legend { float: left; width: 100%; margin-bottom: 8px; padding: 0; font-size: 0.92rem; font-weight: 800; color: var(--ink-dim); text-align: start; }
+.capture-group legend + * { clear: both; }
+.capture-group { flex-wrap: wrap; }
+.capture-choices { display: grid; grid-template-columns: repeat(auto-fit, minmax(0, 1fr)); gap: 8px; flex: 1; min-width: 0; }
+.capture-choice { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; min-height: 52px; padding: 8px 4px; border: 2px solid var(--line); border-radius: var(--r-sm); background: var(--card-sunken); color: var(--ink); font: inherit; }
+.capture-choice.is-picked { border-color: var(--brand); background: var(--brand-soft); color: var(--brand-ink); }
+.capture-figure { font-size: 1.35rem; font-weight: 800; font-variant-numeric: tabular-nums; }
+.capture-emoji { font-size: 1.6rem; line-height: 1; }
+.capture-caption { font-size: 0.85rem; font-weight: 700; }
+/* The elevator panel (as in Mission 08): round floor buttons stacked 3 / 2 / 1, the lift doors beside them. */
+.capture-group.is-floor .capture-choices { grid-template-columns: 1fr; flex: 0 0 64px; justify-items: center; gap: 6px; }
+.capture-group.is-floor .capture-choice { width: 48px; height: 48px; min-height: 48px; border-radius: 50%; border-color: #929b90; background: #f7f5ef; color: #263d35; }
+.capture-group.is-floor .capture-choice.is-picked { border-color: var(--brand); background: var(--brand-soft); }
+.capture-lift { flex: 1; align-self: stretch; min-height: 0; max-width: 96px; margin-inline: auto; border: 3px solid #777e73; border-radius: 3px; background: linear-gradient(90deg, #b6b7ad 49%, #676b63 49%, #676b63 51%, #b6b7ad 51%); }
+.checkpoint-shown { display: flex; flex-direction: column; align-items: center; gap: 6px; width: 100%; }
+.checkpoint-shown .drill-phrase { font-size: 1.25rem; }
+.checkpoint-values { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 8px; width: 100%; margin: 6px 0 0; }
+.checkpoint-values div { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 8px; border-radius: var(--r-sm); background: var(--good-soft); }
+.checkpoint-values dt { font-size: 0.85rem; color: var(--ink-dim); }
+.checkpoint-values dd { display: flex; flex-direction: column; align-items: center; margin: 0; font-weight: 800; }
+.checkpoint-stamp { margin: 6px 0 0; padding: 8px 16px; border: 2px solid var(--good); border-radius: var(--r-md); color: var(--good); font-weight: 900; letter-spacing: 0.04em; }
+.checkpoint-intro { margin: 24px 0 0; font-size: 1.3rem; font-weight: 800; line-height: 1.4; }
+.checkpoint-complete { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.checkpoint-complete h2 { margin: 12px 0 0; font-size: 1.5rem; }
+.checkpoint-complete p { margin: 0; font-size: 1.1rem; }
+.checkpoint-complete ul { display: flex; flex-direction: column; gap: 6px; margin: 8px 0 0; padding: 0; list-style: none; font-weight: 800; }
