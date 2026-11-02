@@ -1877,3 +1877,11 @@ same id and wording; recovery beats and the elevator ambush removed). Checkpoint
 recombination: `checkpointAudit.ts` (`learnedBefore` / `unprepared*` unchanged). No new artwork:
 M07's road pictures, M08's elevator panel, figures as UI. Strong learner: 28 interactions; gaps add
 only their repairs. Tests: `mission10.test.ts` (71); Missions 01–09 and 11–30 byte-for-byte unchanged.
+
+### Mission 10 refinement — concealed one-take, interleaved repairs — 2026-11-02
+
+One-take learner lines are concealed: cue + audio + "מה היית אומר?" → "הצג אפשרויות" reveals the same
+three options (revealing grades and records nothing; persisted as `optionsShown`). Captures and the
+diagnostic are unchanged. A quick fix or final repair of 2+ concepts shows every answer first, then
+retrieves each in day order; a single concept keeps the compact flow. Queues, mastery and counts
+unchanged. `mission10.test.ts`: 83 tests.

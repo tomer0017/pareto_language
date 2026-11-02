@@ -8,7 +8,7 @@ import { MISSIONS_BY_LANG } from './registry.js';
 import { learnedBefore, auditWords } from './priorLearning.js';
 import { auditCheckpoint, checkpointTransfer } from './checkpointAudit.js';
 import {
-  checkpointScreen, currentTurn, interactionCount, isMastered, isRestorable, planConcepts, proceed, respond, sceneProgress, startCheckpoint, turnConcepts,
+  checkpointScreen, currentTurn, interactionCount, isConcealed, isMastered, isRestorable, planConcepts, proceed, respond, revealOptions, sceneProgress, startCheckpoint, turnConcepts,
   type CheckpointPlan, type CheckpointScreen, type CheckpointState,
 } from './checkpoint.js';
 import { ARRIVAL_ANSWER, ARRIVAL_FACTS } from './core/arrivalDay.js';
@@ -77,7 +77,8 @@ function drive(plan: CheckpointPlan, policy: Policy, from: CheckpointState = sta
     trace.push({ phase: state.phase, screen, json: JSON.stringify(screen) });
     if (screen.kind === 'complete') return { state, trace };
     const attempt = (c: string): number => state.attempts.filter((a) => a.conceptId === c && a.phase === state.phase).length + 1;
-    if (screen.kind === 'say') {
+    if (screen.kind === 'say' && screen.concealed) state = revealOptions(plan, state); // one-take: "show the options"
+    else if (screen.kind === 'say') {
       const ok = policy(state.phase, screen.turn.conceptId, attempt(screen.turn.conceptId));
       state = respond(plan, state, { kind: 'say', conceptId: ok ? screen.turn.conceptId : screen.turn.wrong[0]!.conceptId });
     } else if (screen.kind === 'capture') {
@@ -87,7 +88,7 @@ function drive(plan: CheckpointPlan, policy: Policy, from: CheckpointState = sta
   }
   throw new Error('the checkpoint never finished');
 }
-const asks = (t: Trace[]): Trace[] => t.filter((x) => x.screen.kind === 'say' || x.screen.kind === 'capture');
+const asks = (t: Trace[]): Trace[] => t.filter((x) => (x.screen.kind === 'say' && !x.screen.concealed) || x.screen.kind === 'capture');
 const phasesSeen = (t: Trace[]): string[] => [...new Set(t.map((x) => x.phase))];
 /** The state right after the diagnostic (the first screen of whatever comes next). */
 function afterDiagnostic(plan: CheckpointPlan, policy: Policy): CheckpointState {
@@ -241,7 +242,7 @@ describe('adaptivity — repair only what failed', () => {
   });
   it('27. a repair that succeeds removes its concept', () => {
     let s = afterDiagnostic(plan, missing('diagnostic', ['border.duration', 'hotel.room']));
-    s = proceed(plan, s); // the quick-fix intro
+    s = proceed(plan, proceed(plan, proceed(plan, s))); // the quick-fix intro, then both answers shown (two concepts: exposures first)
     const screen = checkpointScreen(plan, s);
     expect(screen.kind === 'say' && screen.turn.conceptId).toBe('border.duration');
     s = respond(plan, s, { kind: 'say', conceptId: 'border.duration' });
@@ -441,8 +442,9 @@ describe('mastery is demonstration, not a score', () => {
     for (let i = 0; i < until; i++) {
       const sc = checkpointScreen(plan, state);
       const n = (c: string): number => state.attempts.filter((a) => a.conceptId === c && a.phase === state.phase).length + 1;
-      state = sc.kind === 'say' ? respond(plan, state, { kind: 'say', conceptId: sc.turn.conceptId })
-        : sc.kind === 'capture' ? respond(plan, state, { kind: 'capture', picks: Object.fromEntries(sc.groups.map((g) => [g.conceptId, policy(state.phase, g.conceptId, n(g.conceptId)) ? g.correct : 'r214'])) })
+      state = sc.kind === 'say' && sc.concealed ? revealOptions(plan, state)
+        : sc.kind === 'say' ? respond(plan, state, { kind: 'say', conceptId: sc.turn.conceptId })
+          : sc.kind === 'capture' ? respond(plan, state, { kind: 'capture', picks: Object.fromEntries(sc.groups.map((g) => [g.conceptId, policy(state.phase, g.conceptId, n(g.conceptId)) ? g.correct : 'r214'])) })
           : proceed(plan, state);
     }
     const oneTake = state.attempts.filter((a) => a.phase === 'one-take');
@@ -484,7 +486,7 @@ describe('state — serializable, restorable, no leak', () => {
   const plan = planOf('en');
   const midway = (): CheckpointState => {
     let s = afterDiagnostic(plan, missing('diagnostic', ['taxi.fare', 'hotel.floor']));
-    s = proceed(plan, s);
+    s = proceed(plan, proceed(plan, proceed(plan, s))); // the intro, then both answers shown
     return respond(plan, s, { kind: 'capture', picks: { 'taxi.fare': 'e15' } });
   };
   it('51. the state serializes to plain JSON and back, unchanged', () => {
@@ -619,7 +621,7 @@ describe('the screens', () => {
   it('a quick fix shows how many fixes are left — and a miss shows the line, its meaning and its sound', () => {
     const s = proceed(plan, afterDiagnostic(plan, missing('diagnostic', ['border.declaration', 'hotel.floor'])));
     expect(text(render(s))).toContain('נשארו 2');
-    const missed = respond(plan, s, { kind: 'say', conceptId: 'border.holiday' });
+    const missed = respond(plan, proceed(plan, proceed(plan, s)), { kind: 'say', conceptId: 'border.holiday' }); // past the two exposures
     const html = render(missed);
     expect(html).toContain('Nothing to declare.');
     expect(html).toContain('אין לי מה להצהיר.');
@@ -641,5 +643,141 @@ describe('the screens', () => {
     expect(JSON.parse(localStorage.getItem('ready.bootcamp.checkpoint.v1.en')!)['9']).toEqual(s);
     bc.getState().restartDay();
     expect(bc.getState().checkpoints['9']).toBeUndefined();
+  });
+});
+
+/* ── refinement: concealed one-take retrieval · interleaved repairs ──────────────────────────── */
+
+describe('refinement — recall before recognition, space between seeing and retrieving', () => {
+  const plan = planOf('en');
+  /** The first one-take screen (after its intro). */
+  const oneTakeStart = (): CheckpointState => {
+    let s = startCheckpoint(plan);
+    while (s.phase !== 'one-take') {
+      const sc = checkpointScreen(plan, s);
+      s = sc.kind === 'say' ? respond(plan, s, { kind: 'say', conceptId: sc.turn.conceptId })
+        : sc.kind === 'capture' ? respond(plan, s, { kind: 'capture', picks: Object.fromEntries(sc.groups.map((g) => [g.conceptId, g.correct])) })
+          : proceed(plan, s);
+    }
+    return proceed(plan, s); // past "now from the plane to your room"
+  };
+  const render = async (state: CheckpointState): Promise<string> => {
+    const disk = new Map<string, string>();
+    vi.stubGlobal('localStorage', { getItem: (k: string) => disk.get(k) ?? null, setItem: (k: string, v: string) => void disk.set(k, v), removeItem: (k: string) => void disk.delete(k) });
+    const ui = await import('./CheckpointStep.js');
+    (await import('../../shared/i18n/strings.js')).setUiLangDict('he');
+    return renderToStaticMarkup(createElement(ui.CheckpointView, { plan, state, onChange: () => undefined, onDone: () => undefined }));
+  };
+
+  it('R1. one-take: a line of the learner\'s starts concealed — the cue only, no options', async () => {
+    for (const lang of LANGS) {
+      const p = planOf(lang);
+      const { trace } = drive(p, perfect);
+      const says = trace.filter((x) => x.phase === 'one-take' && x.screen.kind === 'say');
+      // Each of the 11 lines: first concealed (cue only), then — once asked for — its options.
+      expect(says.map((x) => (x.screen.kind === 'say' ? `${x.screen.concealed ?? false}:${x.screen.options.length}` : '')), lang).toEqual(Array.from({ length: 11 }, () => ['true:0', 'false:3']).flat());
+    }
+    const html = await render(oneTakeStart());
+    expect(html).toContain('Passport, please.');
+    expect(html).toContain('מה היית אומר?');
+    expect(html).toContain('הצג אפשרויות');
+    expect(html).not.toMatch(/btn-reply|Here you go\.|For two weeks\./);
+  });
+  it('R2. the learner must reveal the options: an answer while concealed is ignored', () => {
+    const s = oneTakeStart();
+    expect(isConcealed(plan, s)).toBe(true);
+    expect(respond(plan, s, { kind: 'say', conceptId: 'border.passport-response' })).toBe(s);
+    const shown = revealOptions(plan, s);
+    const screen = checkpointScreen(plan, shown);
+    expect(screen.kind === 'say' && [screen.concealed ?? false, screen.options.map((o) => o.conceptId).sort()]).toEqual([false, ['border.duration', 'border.passport-response', 'taxi.destination']]);
+  });
+  it('R3. revealing the options marks nothing — no attempt, no result, no queue', () => {
+    const s = oneTakeStart();
+    const shown = revealOptions(plan, s);
+    expect({ ...shown, optionsShown: undefined }).toEqual({ ...s, optionsShown: undefined });
+    expect([shown.attempts, shown.results, shown.repairQueue, shown.finalRepairQueue]).toEqual([s.attempts, s.results, s.repairQueue, s.finalRepairQueue]);
+    // …and the options are the very same lines, in the same order, as before concealment existed.
+    const screen = checkpointScreen(plan, shown);
+    expect(screen.kind === 'say' && screen.options).toEqual(screen.kind === 'say' && [screen.turn.answer, ...screen.turn.wrong].sort((a, b) => screen.options.indexOf(a) - screen.options.indexOf(b)));
+  });
+  it('R4. the diagnostic (and the repairs) show their options at once, as before', () => {
+    const { trace } = drive(plan, both(missing('diagnostic', ['border.stay', 'hotel.reservation']), missing('one-take', ['taxi.destination', 'hotel.passport-response'])));
+    for (const x of trace.filter((t) => t.phase !== 'one-take' && t.screen.kind === 'say')) expect(x.screen.kind === 'say' && [x.screen.concealed ?? false, x.screen.options.length], x.phase).toEqual([false, 3]);
+    expect(isConcealed(plan, startCheckpoint(plan))).toBe(false);
+  });
+  it('R5. comprehension captures are unchanged in the one-take: shown at once, never concealed', () => {
+    const { trace } = drive(plan, perfect);
+    const caps = trace.filter((x) => x.phase === 'one-take' && x.screen.kind === 'capture');
+    expect(caps.map((x) => (x.screen.kind === 'capture' ? x.screen.groups.map((g) => g.conceptId) : []))).toEqual([['taxi.fare', 'taxi.traffic'], ['hotel.room', 'hotel.floor'], ['hotel.breakfast-hours']]);
+    expect(JSON.stringify(caps)).not.toMatch(/concealed/);
+  });
+  it('R6. ONE missed concept keeps the compact fix: its cue straight away, no exposure card', () => {
+    for (const c of ['border.duration', 'taxi.traffic', 'hotel.breakfast-hours']) {
+      const { trace } = drive(plan, missing('diagnostic', [c]));
+      expect(trace.filter((x) => x.phase === 'repair').map((x) => x.screen.kind), c).toEqual(['intro', c.startsWith('border') ? 'say' : 'capture']);
+    }
+  });
+  it('R7. several missed concepts: every answer is shown first, then each is retrieved — in day order', () => {
+    const { trace } = drive(plan, missing('diagnostic', ['hotel.floor', 'border.declaration', 'taxi.acknowledge']));
+    const repair = trace.filter((x) => x.phase === 'repair').map((x) => `${x.screen.kind}:${'turn' in x.screen ? x.screen.turn.id : ''}`);
+    expect(repair).toEqual([
+      'intro:', 'card:border.declare', 'card:taxi.okay', 'card:hotel.room-floor',
+      'say:border.declare', 'say:taxi.okay', 'capture:hotel.room-floor',
+    ]);
+    // A capture's exposure shows only its missed value; its retrieval asks only that.
+    const floor = trace.find((x) => x.phase === 'repair' && x.screen.kind === 'capture')!;
+    expect(floor.screen.kind === 'capture' && floor.screen.groups.map((g) => g.conceptId)).toEqual(['hotel.floor']);
+  });
+  it('R8. several final-repair concepts: the same rule — all cards, then all retrievals; one concept stays compact', () => {
+    const many = drive(plan, missing('one-take', ['hotel.reservation', 'border.holiday', 'taxi.fare'])).trace.filter((x) => x.phase === 'final-repair');
+    expect(many.map((x) => `${x.screen.kind}:${'turn' in x.screen ? x.screen.turn.id : ''}`)).toEqual([
+      'intro:', 'card:border.purpose', 'card:taxi.fare-road', 'card:hotel.desk', 'say:border.purpose', 'capture:taxi.fare-road', 'say:hotel.desk',
+    ]);
+    const one = drive(plan, missing('one-take', ['hotel.reservation'])).trace.filter((x) => x.phase === 'final-repair');
+    expect(one.map((x) => x.screen.kind)).toEqual(['intro', 'card', 'say']);
+  });
+  it('R9. queues and mastery are unchanged: same queues, same results, same interaction counts', () => {
+    const policy = both(missing('diagnostic', ['border.stay', 'taxi.fare', 'hotel.floor']), missing('one-take', ['taxi.stop-change', 'hotel.room']));
+    const { state } = drive(plan, policy);
+    expect(state.results.every((r) => r.correct)).toBe(true);
+    expect([state.repairQueue, state.finalRepairQueue, state.phase]).toEqual([[], [], 'complete']);
+    expect(interactionCount(state)).toEqual({ diagnostic: 14, repair: 3, 'one-take': 14, 'final-repair': 2 });
+    // Exposure cards record nothing; every retrieval after them is a real (unsupported) attempt.
+    expect(state.attempts.filter((a) => a.phase === 'repair').map((a) => [a.conceptId, a.correct, a.supported])).toEqual([['border.stay', true, false], ['taxi.fare', true, false], ['hotel.floor', true, false]]);
+    // A correct retry right after being shown the answer still does not count.
+    const twice: Policy = (p, c, n) => !(c === 'border.stay' && (p === 'diagnostic' || (p === 'repair' && n === 1)));
+    const after = drive(plan, twice).state.attempts.filter((a) => a.conceptId === 'border.stay').map((a) => [a.phase, a.correct, a.supported]);
+    expect(after).toEqual([['diagnostic', false, false], ['repair', false, false], ['repair', true, true], ['one-take', true, false]]);
+  });
+  it('R10. a concealed one-take turn is saved and restored concealed; a revealed one, revealed', () => {
+    const s = oneTakeStart();
+    const back = JSON.parse(JSON.stringify(s)) as CheckpointState;
+    expect(isRestorable(plan, back)).toBe(true);
+    expect(checkpointScreen(plan, back)).toEqual(checkpointScreen(plan, s));
+    const shown = JSON.parse(JSON.stringify(revealOptions(plan, s))) as CheckpointState;
+    expect(isRestorable(plan, shown)).toBe(true);
+    const screen = checkpointScreen(plan, shown);
+    expect(screen.kind === 'say' && screen.options.length).toBe(3);
+  });
+  it('R11. reload mid-one-take resumes exactly there: same phase, same turn, earlier answers kept, next line concealed again', async () => {
+    let s = revealOptions(plan, oneTakeStart());
+    s = respond(plan, s, { kind: 'say', conceptId: 'border.passport-response' });
+    const store = await import('./bootcampStore.js');
+    store.useBootcampStore.setState({ activeDay: 9, checkpoints: {} });
+    store.useBootcampStore.getState().saveCheckpoint(s);
+    const saved = JSON.parse(localStorage.getItem('ready.bootcamp.checkpoint.v1.en')!)['9'] as CheckpointState;
+    expect(isRestorable(plan, saved)).toBe(true);
+    expect([saved.phase, currentTurn(plan, saved)!.id, saved.attempts.filter((a) => a.phase === 'one-take').length, isConcealed(plan, saved)]).toEqual(['one-take', 'border.purpose', 1, true]);
+    // A state saved before this refinement (no `optionsShown`) restores as concealed — never as revealed.
+    const { optionsShown: _gone, ...old } = s;
+    expect(isRestorable(plan, old)).toBe(true);
+    expect(isConcealed(plan, old as CheckpointState)).toBe(true);
+  });
+  it('R12. EN / ES / FR: the same concealment and the same interleaving, turn for turn', () => {
+    const shape = (lang: Lang) => {
+      const policy = both(missing('diagnostic', ['border.duration', 'hotel.room']), missing('one-take', ['taxi.destination', 'hotel.breakfast-hours']));
+      return drive(planOf(lang), policy).trace.map((x) => [x.phase, x.screen.kind, 'turn' in x.screen ? x.screen.turn.id : '', x.screen.kind === 'say' ? (x.screen.concealed ?? false) : null]);
+    };
+    for (const lang of ['fr', 'es'] as const) expect(shape(lang), lang).toEqual(shape('en'));
   });
 });

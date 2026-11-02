@@ -8,8 +8,12 @@ import type { SpokenLine } from './types.js';
  *   DIAGNOSTIC   the whole day, once, with nothing taught first. A miss is corrected in one quiet
  *                beat (the line, its meaning, its sound) and the day goes on; the CONCEPT is noted.
  *   QUICK FIX    only the concepts missed — its own cue, retrieved again (one supported retry after
- *                a second miss). Skipped entirely when nothing was missed.
- *   ONE-TAKE     the whole day again, in one go, no help. A miss goes to the final repair queue.
+ *                a second miss). Skipped entirely when nothing was missed. With more than one
+ *                concept missed, every answer is shown first and only then retrieved, in day order —
+ *                so no retrieval comes straight after its own answer.
+ *   ONE-TAKE     the whole day again, in one go, no help. The learner's lines are concealed until
+ *                asked for ("What would you say?" → show the options), so the line is recalled
+ *                before it can be recognised. A miss goes to the final repair queue.
  *   FINAL REPAIR only those concepts: a short repair card each, then ONE retrieval each, until the
  *                queue is empty. Never the whole day again.
  *
@@ -158,6 +162,8 @@ export interface CheckpointState {
   lastPick: CheckpointPick | null;
   /** Concepts of the last answered entry that were missed (what a reveal shows). */
   missed: string[];
+  /** One-take: the learner asked to see the options of the current line (absent = not yet). */
+  optionsShown?: boolean;
 }
 
 export type CheckpointResponse = CheckpointPick;
@@ -182,8 +188,8 @@ const inDayOrder = (plan: CheckpointPlan, ids: readonly string[]): string[] => p
 const agendaFor = (plan: CheckpointPlan, ids: readonly string[]): AgendaEntry[] =>
   plan.turns.filter((t) => turnConcepts(t).some((c) => ids.includes(c))).map((t) => ({ turn: t.id, concepts: turnConcepts(t).filter((c) => ids.includes(c)) }));
 const wholeDay = (plan: CheckpointPlan): AgendaEntry[] => plan.turns.map((t) => ({ turn: t.id, concepts: turnConcepts(t) }));
-/** Final repair: a card for each concept first, then one retrieval each. */
-const finalAgenda = (plan: CheckpointPlan, ids: readonly string[]): AgendaEntry[] => [
+/** Expose, then retrieve: a card for each concept first, then one retrieval each (day order). */
+const exposeThenRetrieve = (plan: CheckpointPlan, ids: readonly string[]): AgendaEntry[] => [
   ...agendaFor(plan, ids).map((e) => ({ ...e, card: true })),
   ...agendaFor(plan, ids),
 ];
@@ -226,10 +232,21 @@ function recorded(state: CheckpointState, conceptId: string, correct: boolean, s
   };
 }
 
+/** One-take, a line of the learner's: its options stay hidden until the learner asks for them. */
+export const isConcealed = (plan: CheckpointPlan, state: CheckpointState): boolean => {
+  const entry = currentEntry(state);
+  return state.phase === 'one-take' && state.beat === 'ask' && !!entry && !entry.card && turnOf(plan, entry.turn).kind === 'say' && !state.optionsShown;
+};
+
+/** "Show the options" — reveals the current line's choices. Grades nothing, records nothing. */
+export function revealOptions(plan: CheckpointPlan, state: CheckpointState): CheckpointState {
+  return isConcealed(plan, state) ? { ...state, optionsShown: true } : state;
+}
+
 /** The learner answers the current entry (beat `ask`). */
 export function respond(plan: CheckpointPlan, state: CheckpointState, response: CheckpointResponse): CheckpointState {
   const entry = currentEntry(state);
-  if (state.beat !== 'ask' || !entry || entry.card) return state;
+  if (state.beat !== 'ask' || !entry || entry.card || isConcealed(plan, state)) return state;
   const turn = turnOf(plan, entry.turn);
   const marks = grade(turn, entry.concepts, response);
   const supported = state.phase === 'repair' && state.retry;
@@ -279,7 +296,7 @@ function afterEntry(plan: CheckpointPlan, state: CheckpointState): CheckpointSta
 
 function advance(plan: CheckpointPlan, state: CheckpointState): CheckpointState {
   const cursor = state.cursor + 1;
-  const base = { ...state, lastPick: null, missed: [], retry: false };
+  const base = { ...state, lastPick: null, missed: [], retry: false, optionsShown: false };
   if (cursor < state.agenda.length) return { ...base, cursor, beat: 'ask', scene: turnOf(plan, state.agenda[cursor]!.turn).scene };
   return endOfPhase(plan, base);
 }
@@ -292,14 +309,15 @@ function endOfPhase(plan: CheckpointPlan, state: CheckpointState): CheckpointSta
   if (state.phase === 'diagnostic') {
     // Nothing missed: no quick fix at all — straight to the one-take.
     if (state.repairQueue.length === 0) return enter(plan, state, 'one-take', wholeDay(plan));
-    return enter(plan, state, 'repair', agendaFor(plan, state.repairQueue));
+    // One concept: the compact fix (its cue, straight away). Several: all answers shown, then all retrieved.
+    return enter(plan, state, 'repair', state.repairQueue.length > 1 ? exposeThenRetrieve(plan, state.repairQueue) : agendaFor(plan, state.repairQueue));
   }
   if (state.phase === 'repair') return enter(plan, { ...state, repairQueue: [] }, 'one-take', wholeDay(plan)); // the one-take retests everything
   // One-take or final repair over: whatever is missed — or still not demonstrated — is repaired.
   const pending = inDayOrder(plan, [...state.finalRepairQueue, ...state.results.filter((r) => !r.correct).map((r) => r.conceptId)]);
   if (pending.length === 0) return { ...state, phase: 'complete', beat: 'ask', agenda: [], cursor: 0, finalRepairQueue: [] };
   const fresh = state.phase === 'one-take';
-  const next = enter(plan, { ...state, finalRepairQueue: pending }, 'final-repair', finalAgenda(plan, pending));
+  const next = enter(plan, { ...state, finalRepairQueue: pending }, 'final-repair', exposeThenRetrieve(plan, pending));
   return fresh ? next : { ...next, beat: 'ask' }; // a second round of final repair needs no second introduction
 }
 
@@ -354,7 +372,8 @@ export interface ShownLine { text: string; meaning: LocalizedText; spoken?: Spok
 
 export type CheckpointScreen =
   | { kind: 'intro'; phase: CheckpointPhase; text: LocalizedText }
-  | { kind: 'say'; turn: SayTurn; options: CheckpointLine[]; situation?: LocalizedText }
+  /** `concealed`: one-take — the cue only, and "show the options" (`options` is then empty). */
+  | { kind: 'say'; turn: SayTurn; options: CheckpointLine[]; situation?: LocalizedText; concealed?: boolean }
   | { kind: 'capture'; turn: CaptureTurn; groups: CaptureGroup[] }
   /** After a miss (or on a final-repair card): the line that fits / the line that was said, with its
    *  meaning — and, for a capture, the values it gave. */
@@ -384,6 +403,7 @@ export function checkpointScreen(plan: CheckpointPlan, state: CheckpointState): 
   }
   if (turn.kind === 'say') {
     const helped = state.phase !== 'one-take' && turn.situation;
+    if (isConcealed(plan, state)) return { kind: 'say', turn, options: [], concealed: true };
     return { kind: 'say', turn, options: sayOptions(turn, state), ...(helped ? { situation: turn.situation } : {}) };
   }
   return { kind: 'capture', turn, groups: turn.groups.filter((g) => entry.concepts.includes(g.conceptId)) };

@@ -10,7 +10,7 @@ import { useBootcampStore } from './bootcampStore.js';
 import { NpcFigure, YouLine } from './ConvoScene.js';
 import { npcFor } from './npcCast.js';
 import {
-  checkpointScreen, isRestorable, proceed, respond, sceneProgress, startCheckpoint, turnForConcept,
+  checkpointScreen, isRestorable, proceed, respond, revealOptions, sceneProgress, startCheckpoint, turnForConcept,
   type CaptureChoice, type CaptureGroup, type CheckpointPlan, type CheckpointState,
 } from './checkpoint.js';
 import type { SpokenLine } from './types.js';
@@ -69,6 +69,7 @@ export function CheckpointView({ plan, state, onChange, onAnswer, onDone }: {
           key={`${state.phase}.${state.cursor}.${state.attempts.length}`}
           cast={scene.cast} cue={screen.turn.cue} heard={(screen.turn.heard ?? false) && (state.phase === 'diagnostic' || state.phase === 'one-take')} situation={screen.situation ? L(screen.situation) : undefined}
           options={screen.options.map((o) => ({ id: o.conceptId, text: o.text }))}
+          onReveal={screen.concealed ? () => { tap(); go(revealOptions(plan, state)); } : undefined}
           onPick={(id) => {
             const right = id === screen.turn.conceptId;
             tap();
@@ -146,18 +147,29 @@ function Speaker({ cast, line, play }: { cast: string; line: SpokenLine; play: b
   );
 }
 
-function SayBeat({ cast, cue, heard, situation, options, onPick }: {
+function SayBeat({ cast, cue, heard, situation, options, onPick, onReveal }: {
   cast: string; cue: SpokenLine; heard: boolean; situation?: string; options: { id: string; text: string }[]; onPick: (id: string) => void;
+  /** One-take: the options are hidden — recall the line first, then ask to see them. */
+  onReveal?: () => void;
 }) {
   return (
     <>
       <Speaker cast={cast} line={cue} play={!heard} />
       {situation && <p className="scene-note">{situation}</p>}
+      {onReveal ? (
+        <>
+          <p className="checkpoint-recall">{t('checkpointWhatWouldYouSay')}</p>
+          <div className="action-zone">
+            <button className="btn-secondary" onClick={onReveal}>{t('checkpointShowOptions')}</button>
+          </div>
+        </>
+      ) : (
       <div className="action-zone checkpoint-say">
         {options.map((o) => (
           <button key={o.id} className="btn-secondary btn-reply" onClick={() => onPick(o.id)}><TargetText text={o.text} /></button>
         ))}
       </div>
+      )}
     </>
   );
 }
