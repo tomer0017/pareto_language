@@ -59,7 +59,7 @@ Not present in the runtime (so not exported): free sentence construction, typing
 Not a mission. Eight phrases shared by all missions; a mission bundles the ones it uses. Selecting one in a dialogue is always accepted.
 
 - `phrase.recovery.dont-understand` — EN "Sorry, I don't understand." · FR "Désolé, je ne comprends pas." · ES "Perdón, no entiendo." · HE "סליחה, אני לא מבין." — help tool — bundled in missions: 13, 14
-- `phrase.recovery.repeat` — EN "Can you repeat that?" · FR "Vous pouvez répéter ?" · ES "¿Puede repetir, por favor?" · HE "אפשר לחזור על זה?" — help tool — bundled in missions: 01, 03, 05, 06, 08, 11, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- `phrase.recovery.repeat` — EN "Can you repeat that?" · FR "Vous pouvez répéter ?" · ES "¿Puede repetir, por favor?" · HE "אפשר לחזור על זה?" — help tool — bundled in missions: 01, 03, 05, 06, 08, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - `phrase.recovery.slowly` — EN "Please speak slowly." · FR "Parlez lentement, s’il vous plaît." · ES "Más despacio, por favor." · HE "דבר לאט, בבקשה." — help tool — bundled in missions: 01, 02, 03, 04, 06, 07, 09, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - `phrase.recovery.show-me` — EN "Can you show me?" · FR "Vous pouvez me montrer ?" · ES "¿Me lo puede mostrar?" · HE "אתה יכול להראות לי?" — help tool — bundled in missions: 04, 07, 17
 - `phrase.recovery.one-moment` — EN "One moment, please." · FR "Un instant, s’il vous plaît." · ES "Un momento, por favor." · HE "רגע אחד, בבקשה." — help tool — bundled in missions: 02, 03, 06, 08, 14
@@ -300,7 +300,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 11, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: sentence review (step 17); cold-open correct option (step 20); dialogue choice meeting-host/c1 (accepted)
 
 ### Sentence: `phrase.recovery.slowly`
@@ -2525,7 +2525,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 11, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: sentence review (step 20); dialogue choice breakfast-order/c2 (accepted)
 
 ### Sentence: `phrase.recovery.slowly`
@@ -5122,7 +5122,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 11, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: dialogue choice lost-in-town/c1 (accepted)
 
 ### Sentence: `phrase.recovery.thank-you`
@@ -6086,7 +6086,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 11, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: dialogue choice border-control/c2 (accepted)
 
 ### Sentence: `phrase.recovery.slowly`
@@ -8417,7 +8417,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 11, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: dialogue choice hotel-checkin/c1 (accepted)
 
 ### Sentence: `phrase.recovery.one-moment`
@@ -10554,7 +10554,7 @@ Every learner sentence of this mission is a line in a scene.
 - Phase: 3 — Everyday Life / חיי יום-יום 🏡
 - Source runtime file(s): `apps/web/src/features/bootcamp/core/smallTalk.ts` — one multilingual spec, built per language by `apps/web/src/features/bootcamp/author.ts`
 - Video: found by convention, never written into mission content — EN `videos/en/en_11.mp4` · FR `videos/fr/fr_11.mp4` · ES `videos/es/es_11.mp4`. Played only where that file exists (inventory: `docs/CORE30_FINAL_VIDEO_ACTION_MAP.md`).
-- Video steps inside the Practice flow: no
+- Video steps inside the Practice flow: yes (see flow)
 
 ## Learning goal / intro screen
 
@@ -10576,35 +10576,124 @@ Intro screen (first Practice step; identical in the English, French and Spanish 
 
 - Icon: 💬
 - Title: "Mission 11: Small Talk & Recommendations" / "משימה 11: שיחת חולין והמלצות"
-- Text 1: "Three minutes with a local at a viewpoint. Not a transaction — a conversation." / "שלוש דקות עם מקומי בנקודת תצפית. לא עסקה — שיחה."
-- Text 2: "Where you are from, first time here, what to try. And always return the question." / "מאיפה אתה, פעם ראשונה כאן, מה מומלץ. ותמיד מחזירים שאלה."
+- Text 1: "You are sightseeing somewhere beautiful, and a conversation starts with someone next to you. Try to keep it going — and get a local recommendation." / "אתה מטייל במקום יפה ומתחילה שיחה עם מישהו לידך. נסה להחזיק את השיחה ולקבל ממנו המלצה מקומית."
 - Button: "Start a chat" / "לפתוח שיחה"
 
 ## Current Practice flow
 
 1. `talk` — intro screen — "Mission 11: Small Talk & Recommendations"
-2. `tool` — key sentence (listen → reveal → say aloud) — `phrase.talk.beautiful-place` “This place is beautiful.” · label "Open" / "לפתוח" (1/5)
-3. `tool` — key sentence (listen → reveal → say aloud) — `phrase.talk.how-about-you` “How about you?” · label "Return the question" / "להחזיר שאלה" (2/5)
-4. `tool` — key sentence (listen → reveal → say aloud) — `phrase.talk.i-like-it` “I like it a lot.” · label "I like" / "אני אוהב" (3/5)
-5. `tool` — key sentence (listen → reveal → say aloud) — `phrase.talk.recommend-place` “Can you recommend a place?” · label "Ask for a tip" / "לבקש המלצה" (4/5)
-6. `tool` — key sentence (listen → reveal → say aloud) — `phrase.talk.nice-talking` “It was nice talking to you.” · label "Close warmly" / "להיפרד יפה" (5/5)
-7. `replies` — expected replies (listening drill) — after `phrase.talk.beautiful-place`: 4 replies
-8. `receipt` — receipt (proof card) — "You recognize what strangers ask — where from, first time, do you like it?" / "אתה מזהה את השאלות שזרים שואלים — מאיפה, פעם ראשונה, אוהב?"
-9. `quiz` — meaning quiz (listening) — hears `reply.talk.how-long-here`
-10. `quickReply` — quick reply (hear → pick your response) — 6 round(s)
-11. `sentenceBuilder` — sentence builder (put the chunks in order) — 1 round(s)
-12. `dialogue` — dialogue (choose your line) — scene `small-talk`
-13. `receipt` — receipt (proof card) — "A whole chat with a stranger: where from, first time, what you like, a recommendation and a goodbye." / "שיחה שלמה עם זר: מאיפה, פעם ראשונה, מה אהבת, המלצה ופרידה."
-14. `swipe` — sentence review — 11 sentences
-15. `quickReply` — quick reply (hear → pick your response) — 6 round(s) · speed challenge
-16. `receipt` — receipt (proof card) — "A whole chat at the pace of a real one — you opened, answered, asked back, got a tip and said goodbye." / "שיחה שלמה, בקצב של שיחה אמיתית — פתחת, ענית, שאלת בחזרה, ביקשת המלצה ונפרדת."
-17. `summary` — victory screen
+2. `prime` — before-we-speak (word intro) — 2 words → builds ``
+3. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+4. `prime` — before-we-speak (word intro) — 3 words → builds ``
+5. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+6. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+7. `prime` — before-we-speak (word intro) — 2 words → builds ``
+8. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+9. `prime` — before-we-speak (word intro) — 2 words → builds ``
+10. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+11. `prime` — before-we-speak (word intro) — 2 words → builds ``
+12. `sentenceBuilder` — sentence builder (put the chunks in order) — 1 round(s)
+13. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+14. `prime` — before-we-speak (word intro) — 1 words → builds ``
+15. `visualMatch` — visual match (hear → tap the tile) — 2 round(s)
+16. `receipt` — receipt (proof card) — "📍 LOCAL TIP FOUND · Mama Rosa · Old Town" / "📍 נמצא טיפ מקומי · Mama Rosa · העיר העתיקה"
+17. `prime` — before-we-speak (word intro) — 2 words → builds ``
+18. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+19. `replies` — expected replies (listening drill) — after `phrase.talk.nice-talking`: 2 replies
+20. `quickReply` — quick reply (hear → pick your response) — 2 round(s)
+21. `quickReply` — quick reply (hear → pick your response) — 2 round(s)
+22. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+23. `visualMatch` — visual match (hear → tap the tile) — 1 round(s)
+24. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+25. `receipt` — receipt (proof card) — "💬 Connect ✅ · 🗣️ Share ✅ · 🙋 Ask ✅ · 👋 Close ✅ · 📍 Mama Rosa · Old Town" / "💬 חיבור ✅ · 🗣️ שיתוף ✅ · 🙋 בקשה ✅ · 👋 פרידה ✅ · 📍 Mama Rosa · העיר העתיקה"
+26. `dialogue` — dialogue (choose your line) — scene `small-talk`
+27. `receipt` — receipt (proof card) — "The whole conversation — from the view to the goodbye." / "כל השיחה — מהנוף ועד הפרידה."
+28. `quickReply` — quick reply (hear → pick your response) — 5 round(s) · speed challenge
+29. `visualMatch` — visual match (hear → tap the tile) — 1 round(s) · speed challenge
+30. `quickReply` — quick reply (hear → pick your response) — 1 round(s) · speed challenge
+31. `receipt` — receipt (proof card) — "No help — the whole conversation, at a local’s pace." / "בלי עזרה — כל השיחה, בקצב של מקומי."
+32. `video` — video — mode again
+33. `quickReply` — quick reply (hear → pick your response) — 2 round(s)
+34. `quickReply` — quick reply (hear → pick your response) — 2 round(s)
+35. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+36. `visualMatch` — visual match (hear → tap the tile) — 1 round(s) · speed challenge
+37. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+38. `receipt` — receipt (proof card) — "💬 SMALL TALK COMPLETE · 📍 LOCAL TIP FOUND: Mama Rosa · Old Town — You talked to a local and got a recommendation." / "💬 שיחת החולין הושלמה · 📍 נמצא טיפ מקומי: Mama Rosa · העיר העתיקה — דיברת עם מקומי וקיבלת המלצה."
+39. `summary` — victory screen
 
 Step sequence identical in EN / FR / ES: yes.
 
 ## Before we speak / word intro
 
-No vocabulary pre-step.
+Step 2. Label: "Connect" / "פותחים שיחה". Intro: "Someone next to you comments on the place — and what you answer. Tap to hear." / "מישהו לידך מעיר על המקום — ומה אתה עונה. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `talk.line.opening` — EN "Hi! Beautiful view, isn't it?" · FR "Bonjour ! Belle vue, n’est-ce pas ?" · ES "¡Hola! Bonita vista, ¿verdad?" — meaning "היי! נוף יפה, נכון? (כלומר: הנוף יפה, נכון?)" / "Hi! The view is beautiful, right?" — icon 👋 — new
+2. `talk.line.beautiful` — EN "This place is beautiful." · FR "Cet endroit est magnifique." · ES "Este lugar es precioso." — meaning "המקום הזה יפהפה." / "This place is beautiful." — icon 😍 — new
+
+No build-sentence card.
+
+Step 4. Label: "Where you’re from" / "מאיפה אתה". Intro: "Answer — and return the question. Tap to hear." / "ענה — והחזר את השאלה. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `talk.line.where` — EN "It really is. Where are you from?" · FR "C’est vrai. Vous venez d’où ?" · ES "Es verdad. ¿De dónde es?" — meaning "באמת. מאיפה אתה?" / "It really is. Where are you from?" — icon 🌍 — new
+2. `talk.line.from-israel` — EN "I'm from Israel." · FR "Je viens d’Israël." · ES "Soy de Israel." — meaning "אני מישראל. (את זה כבר אמרת במשימה 1)" / "I’m from Israel. (you said this in Mission 1)" — icon 🌍 — marked ♻️ review
+3. `talk.line.how-about-you` — EN "How about you?" · FR "Et vous ?" · ES "¿Y usted?" — meaning "ואתה? — מחזירים את השאלה, והשיחה ממשיכה." / "And you? — return the question, and the conversation goes on." — icon 🔄 — new
+
+No build-sentence card.
+
+Step 7. Label: "First time here" / "פעם ראשונה". Intro: "Now you find something out — and what you answer. Tap to hear." / "עכשיו אתה מגלה משהו עליו — ומה אתה עונה. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `talk.line.from-here` — EN "I'm from here! Is this your first time here?" · FR "Je suis d’ici ! C’est votre première fois ici ?" · ES "¡Soy de aquí! ¿Es su primera vez aquí?" — meaning "אני מכאן! זו הפעם הראשונה שלך כאן? (הוא מקומי)" / "I’m from here! Is this your first time here? (a local)" — icon 🧳 — new
+2. `talk.line.first-time` — EN "Yes, it's my first time here." · FR "Oui, c’est ma première fois ici." · ES "Sí, es mi primera vez aquí." — meaning "כן, זו הפעם הראשונה שלי כאן." / "Yes, it’s my first time here." — icon 🧳 — marked ♻️ review
+
+No build-sentence card.
+
+Step 9. Label: "Do you like it?" / "אוהב את המקום?". Intro: "A question about your opinion — and a simple, positive answer. Tap to hear." / "שאלה על הדעה שלך — ותשובה פשוטה וחיובית. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `talk.line.like-q` — EN "Welcome! Do you like it here?" · FR "Bienvenue ! Ça vous plaît ici ?" · ES "¡Bienvenido! ¿Le gusta este lugar?" — meaning "ברוך הבא! אתה אוהב את המקום?" / "Welcome! Do you like it here?" — icon 😊 — new
+2. `talk.line.like` — EN "Yes, I like it a lot." · FR "Oui, j’aime beaucoup." · ES "Sí, me gusta mucho." — meaning "כן, אני מאוד אוהב." / "Yes, I like it a lot." — icon 😊 — new
+
+No build-sentence card.
+
+Step 11. Label: "A local tip" / "טיפ מקומי". Intro: "The local says the food here is wonderful. This is your moment to ask for a tip. Tap to hear." / "המקומי מספר שהאוכל כאן נהדר. זה הרגע שלך לבקש המלצה. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `talk.line.food` — EN "Me too. And the food here is wonderful." · FR "Moi aussi. Et la cuisine ici est excellente." · ES "Yo también. Y la comida de aquí es estupenda." — meaning "גם אני. והאוכל כאן נהדר." / "Me too. And the food here is wonderful." — icon 🍝 — new
+2. `talk.line.recommend` — EN "Can you recommend a place?" · FR "Vous pouvez recommander un endroit ?" · ES "¿Me puede recomendar un sitio?" — meaning "אתה יכול להמליץ על מקום? (היוזמה שלך)" / "Can you recommend a place? (your initiative)" — icon 🙋 — new
+
+No build-sentence card.
+
+Step 14. Label: "The recommendation" / "ההמלצה". Intro: "What the local recommends — and where. Tap to hear." / "מה הוא ממליץ — ואיפה. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `talk.line.tip` — EN "Of course — try 'Mama Rosa', in the old town. It's very good." · FR "Bien sûr — essayez « Mama Rosa », dans la vieille ville. C’est très bon." · ES "Claro — pruebe «Mama Rosa», en el casco antiguo. Es muy bueno." — meaning "בטח — תנסה את Mama Rosa, בעיר העתיקה. מאוד טוב שם." / "Of course — try Mama Rosa, in the old town. It’s very good." — icon 🗺️ — new
+
+No build-sentence card.
+
+Step 17. Label: "Closing" / "פרידה". Intro: "This is how you end it warmly — and what you hear back. Tap to hear." / "ככה נפרדים יפה — ומה עונים לך. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `talk.line.close` — EN "Thank you! It was nice talking to you." · FR "Merci ! C’était sympa de discuter avec vous." · ES "¡Gracias! Ha sido un placer hablar con usted." — meaning "תודה! היה נעים לדבר איתך." / "Thank you! It was nice talking to you." — icon 🤝 — new
+2. `talk.line.goodbye` — EN "You too! Enjoy the rest of your trip!" · FR "Vous aussi ! Profitez bien du reste de votre voyage !" · ES "¡Igualmente! ¡Que disfrute del resto del viaje!" — meaning "גם לי! תיהנה משאר הטיול!" / "You too! Enjoy the rest of your trip!" — icon 🤝 — new
+
+No build-sentence card.
 
 ## Every sentence in this mission
 
@@ -10619,84 +10708,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "A compliment about the place opens any conversation." / "מחמאה למקום פותחת כל שיחה."
 - Used in missions: 11, 28
-- Exercised here as: key sentence (step 2); "you said" lead-in of the expected-replies drill (step 7); quick-reply response (step 10, round 4, wrong option); quick-reply response (step 10, round 6, wrong option); sentence review (step 14); quick-reply response (step 15, round 1, accepted); quick-reply response (step 15, round 3, wrong option); quick-reply response (step 15, round 5, wrong option); dialogue choice small-talk/c2 (accepted)
-
-### Sentence: `phrase.talk.how-about-you`
-
-- EN: How about you?
-- HE: ואתה?
-- FR: Et vous ?
-- ES: ¿Y usted?
-- Role: learner production
-- Tip / pattern note: "Return the question — and you have a conversation." / "להחזיר את השאלה — וכבר יש שיחה."
-- Used in missions: 11, 28
-- Exercised here as: key sentence (step 3); quick-reply response (step 10, round 1, accepted); quick-reply response (step 10, round 4, accepted); sentence review (step 14); quick-reply response (step 15, round 2, accepted); quick-reply response (step 15, round 6, wrong option); dialogue choice small-talk/c4 (accepted)
-
-### Sentence: `phrase.social.first-time`
-
-- EN: It's my first time here.
-- HE: זו הפעם הראשונה שלי כאן.
-- FR: C’est ma première fois ici.
-- ES: Es mi primera vez aquí.
-- Role: learner production
-- Tip / pattern note: "Opens conversation and invites recommendations." / "פותח שיחה ומזמין המלצות."
-- Used in missions: 01, 11, 28, 29, 30
-- Exercised here as: quick-reply response (step 10, round 1, wrong option); quick-reply response (step 10, round 2, accepted); quick-reply response (step 10, round 6, wrong option); quick-reply response (step 15, round 3, accepted); quick-reply response (step 15, round 5, wrong option); dialogue choice small-talk/c6 (accepted); dialogue choice small-talk/c6b (accepted)
-
-### Sentence: `phrase.talk.i-like-it`
-
-- EN: I like it a lot.
-- HE: אני מאוד אוהב.
-- FR: J’aime beaucoup.
-- ES: Me gusta mucho.
-- Role: learner production
-- Tip / pattern note: none
-- Used in missions: 11, 24, 28
-- Exercised here as: key sentence (step 4); quick-reply response (step 10, round 1, wrong option); quick-reply response (step 10, round 3, accepted); sentence review (step 14); quick-reply response (step 15, round 2, wrong option); quick-reply response (step 15, round 4, accepted); quick-reply response (step 15, round 6, wrong option); dialogue choice small-talk/c8 (accepted)
-
-### Sentence: `phrase.talk.love-food`
-
-- EN: I love the food here.
-- HE: אני אוהב את האוכל כאן.
-- FR: J’adore la nourriture ici.
-- ES: Me encanta la comida de aquí.
-- Role: learner production
-- Tip / pattern note: none
-- Used in missions: 11
-- Exercised here as: quick-reply response (step 10, round 3, accepted); sentence review (step 14); dialogue choice small-talk/c8 (accepted)
-
-### Sentence: `phrase.talk.recommend-place`
-
-- EN: Can you recommend a place?
-- HE: אתה יכול להמליץ על מקום?
-- FR: Vous pouvez recommander un endroit ?
-- ES: ¿Me puede recomendar un sitio?
-- Role: learner production
-- Tip / pattern note: "Locals know best. Ask." / "מקומיים יודעים הכי טוב. תשאל."
-- Used in missions: 11, 24, 28
-- Exercised here as: key sentence (step 5); quick-reply response (step 10, round 3, wrong option); quick-reply response (step 10, round 5, accepted); sentence-builder target (step 11, round 1); sentence review (step 14); quick-reply response (step 15, round 2, wrong option); quick-reply response (step 15, round 5, accepted); dialogue choice small-talk/c10 (accepted)
-
-### Sentence: `phrase.rest.recommend`
-
-- EN: What do you recommend?
-- HE: מה אתה ממליץ?
-- FR: Qu’est-ce que vous recommandez ?
-- ES: ¿Qué me recomienda?
-- Role: learner production
-- Tip / pattern note: "If the menu confuses you — let the waiter decide. Always works." / "אם התפריט מבלבל — תן למלצר להחליט. תמיד עובד."
-- Used in missions: 11
-- Exercised here as: quick-reply response (step 10, round 5, accepted); dialogue choice small-talk/c10 (accepted)
-
-### Sentence: `phrase.talk.nice-talking`
-
-- EN: It was nice talking to you.
-- HE: היה נעים לדבר איתך.
-- FR: C’était sympa de discuter avec vous.
-- ES: Ha sido un placer hablar con usted.
-- Role: learner production
-- Tip / pattern note: none
-- Used in missions: 11, 24, 28
-- Exercised here as: key sentence (step 6); quick-reply response (step 10, round 2, wrong option); quick-reply response (step 10, round 4, wrong option); quick-reply response (step 10, round 5, wrong option); quick-reply response (step 10, round 6, accepted); sentence review (step 14); quick-reply response (step 15, round 1, wrong option); quick-reply response (step 15, round 3, wrong option); quick-reply response (step 15, round 4, wrong option); quick-reply response (step 15, round 6, accepted); dialogue choice small-talk/c12 (accepted)
+- Exercised here as: quick-reply response (step 3, round 1, accepted); quick-reply response (step 5, round 1, wrong option); quick-reply response (step 6, round 1, wrong option); quick-reply response (step 8, round 1, wrong option); quick-reply response (step 20, round 1, accepted); quick-reply response (step 21, round 2, wrong option); quick-reply response (step 28, round 1, accepted); quick-reply response (step 28, round 3, wrong option); quick-reply response (step 28, round 5, wrong option); quick-reply response (step 33, round 1, accepted); quick-reply response (step 34, round 2, wrong option); dialogue choice small-talk/c2 (accepted)
 
 ### Sentence: `phrase.social.from-israel`
 
@@ -10707,40 +10719,139 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "Template: I’m from ___ — the answer to “Where are you from”." / "התבנית: I’m from ___ — התשובה ל-Where are you from."
 - Used in missions: 01, 11, 28, 30
-- Exercised here as: quick-reply response (step 10, round 2, wrong option); quick-reply response (step 15, round 1, wrong option); quick-reply response (step 15, round 4, wrong option)
+- Exercised here as: quick-reply response (step 3, round 1, wrong option); quick-reply response (step 5, round 1, wrong option); quick-reply response (step 28, round 1, wrong option); quick-reply response (step 28, round 4, wrong option); quick-reply response (step 33, round 1, wrong option); dialogue choice small-talk/c2 (WRONG option)
 
-### Sentence: `reply.talk.first-time-q`
+### Sentence: `phrase.talk.how-about-you`
 
-- EN: Is this your first time here?
-- HE: זו הפעם הראשונה שלך כאן?
-- FR: C’est votre première fois ici ?
-- ES: ¿Es su primera vez aquí?
+- EN: How about you?
+- HE: ואתה?
+- FR: Et vous ?
+- ES: ¿Y usted?
+- Role: learner production
+- Tip / pattern note: "Return the question — and you have a conversation." / "להחזיר את השאלה — וכבר יש שיחה."
+- Used in missions: 11, 28
+- Exercised here as: quick-reply response (step 5, round 1, accepted); quick-reply response (step 6, round 1, accepted); quick-reply response (step 8, round 1, wrong option); quick-reply response (step 10, round 1, wrong option); quick-reply response (step 13, round 1, wrong option); quick-reply response (step 18, round 1, wrong option); quick-reply response (step 20, round 2, accepted); quick-reply response (step 21, round 2, wrong option); quick-reply response (step 24, round 1, wrong option); quick-reply response (step 28, round 2, accepted); quick-reply response (step 30, round 1, wrong option); quick-reply response (step 33, round 2, accepted); quick-reply response (step 34, round 1, wrong option); quick-reply response (step 35, round 1, wrong option); dialogue choice small-talk/c4 (accepted); dialogue choice small-talk/c12 (WRONG option)
+
+### Sentence: `phrase.social.first-time`
+
+- EN: It's my first time here.
+- HE: זו הפעם הראשונה שלי כאן.
+- FR: C’est ma première fois ici.
+- ES: Es mi primera vez aquí.
+- Role: learner production
+- Tip / pattern note: "Opens conversation and invites recommendations." / "פותח שיחה ומזמין המלצות."
+- Used in missions: 01, 11, 28, 29, 30
+- Exercised here as: quick-reply response (step 3, round 1, wrong option); quick-reply response (step 6, round 1, wrong option); quick-reply response (step 8, round 1, accepted); quick-reply response (step 10, round 1, wrong option); quick-reply response (step 20, round 2, wrong option); quick-reply response (step 21, round 1, accepted); quick-reply response (step 28, round 3, accepted); quick-reply response (step 28, round 5, wrong option); quick-reply response (step 33, round 2, wrong option); quick-reply response (step 34, round 1, accepted); dialogue choice small-talk/c4 (WRONG option); dialogue choice small-talk/c6 (accepted)
+
+### Sentence: `phrase.talk.i-like-it`
+
+- EN: I like it a lot.
+- HE: אני מאוד אוהב.
+- FR: J’aime beaucoup.
+- ES: Me gusta mucho.
+- Role: learner production
+- Tip / pattern note: none
+- Used in missions: 11, 24, 28
+- Exercised here as: quick-reply response (step 10, round 1, accepted); quick-reply response (step 13, round 1, wrong option); quick-reply response (step 20, round 2, wrong option); quick-reply response (step 21, round 2, accepted); quick-reply response (step 22, round 1, wrong option); quick-reply response (step 28, round 2, wrong option); quick-reply response (step 28, round 4, accepted); quick-reply response (step 30, round 1, wrong option); quick-reply response (step 34, round 1, wrong option); quick-reply response (step 34, round 2, accepted); quick-reply response (step 37, round 1, wrong option); dialogue choice small-talk/c6 (WRONG option); dialogue choice small-talk/c8 (accepted)
+
+### Sentence: `phrase.talk.recommend-place`
+
+- EN: Can you recommend a place?
+- HE: אתה יכול להמליץ על מקום?
+- FR: Vous pouvez recommander un endroit ?
+- ES: ¿Me puede recomendar un sitio?
+- Role: learner production
+- Tip / pattern note: "Locals know best. Ask." / "מקומיים יודעים הכי טוב. תשאל."
+- Used in missions: 11, 24, 28
+- Exercised here as: sentence-builder target (step 12, round 1); quick-reply response (step 13, round 1, accepted); quick-reply response (step 18, round 1, wrong option); quick-reply response (step 20, round 1, wrong option); quick-reply response (step 21, round 1, wrong option); quick-reply response (step 22, round 1, accepted); quick-reply response (step 24, round 1, wrong option); quick-reply response (step 28, round 2, wrong option); quick-reply response (step 28, round 4, wrong option); quick-reply response (step 28, round 5, accepted); quick-reply response (step 33, round 1, wrong option); quick-reply response (step 35, round 1, accepted); quick-reply response (step 37, round 1, wrong option); dialogue choice small-talk/c8 (WRONG option); dialogue choice small-talk/c10 (accepted)
+
+### Sentence: `phrase.talk.nice-talking`
+
+- EN: It was nice talking to you.
+- HE: היה נעים לדבר איתך.
+- FR: C’était sympa de discuter avec vous.
+- ES: Ha sido un placer hablar con usted.
+- Role: learner production
+- Tip / pattern note: none
+- Used in missions: 11, 24, 28
+- Exercised here as: quick-reply response (step 18, round 1, accepted); "you said" lead-in of the expected-replies drill (step 19); quick-reply response (step 20, round 1, wrong option); quick-reply response (step 21, round 1, wrong option); quick-reply response (step 22, round 1, wrong option); quick-reply response (step 24, round 1, accepted); quick-reply response (step 28, round 1, wrong option); quick-reply response (step 28, round 3, wrong option); quick-reply response (step 30, round 1, accepted); quick-reply response (step 33, round 2, wrong option); quick-reply response (step 34, round 2, wrong option); quick-reply response (step 35, round 1, wrong option); quick-reply response (step 37, round 1, accepted); dialogue choice small-talk/c10 (WRONG option); dialogue choice small-talk/c12 (accepted)
+
+### Sentence: `reply.talk.opening`
+
+- EN: Hi! Beautiful view, isn't it?
+- HE: היי! נוף יפה, נכון?
+- FR: Bonjour ! Belle vue, n’est-ce pas ?
+- ES: ¡Hola! Bonita vista, ¿verdad?
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 11
-- Exercised here as: expected-reply audio (step 7); quick-reply prompt (step 10, round 2); sentence review (step 14)
+- Exercised here as: quick-reply prompt (step 3, round 1); quick-reply prompt (step 20, round 1)
 
-### Sentence: `reply.talk.where-from`
+### Sentence: `reply.talk.really-where`
 
-- EN: Where are you from?
-- HE: מאיפה אתה?
-- FR: Vous venez d’où ?
-- ES: ¿De dónde es?
+- EN: It really is. Where are you from?
+- HE: באמת. מאיפה אתה?
+- FR: C’est vrai. Vous venez d’où ?
+- ES: Es verdad. ¿De dónde es?
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 11
-- Exercised here as: expected-reply audio (step 7); meaning-quiz distractor (step 9); quick-reply prompt (step 10, round 1); sentence review (step 14)
+- Exercised here as: quick-reply prompt (step 5, round 1); quick-reply prompt (step 20, round 2)
 
-### Sentence: `reply.talk.do-you-like-it`
+### Sentence: `reply.talk.from-here`
 
-- EN: Do you like it here?
-- HE: אתה אוהב את המקום?
-- FR: Ça vous plaît ici ?
-- ES: ¿Le gusta este lugar?
+- EN: I'm from here! Is this your first time here?
+- HE: אני מכאן! זו הפעם הראשונה שלך כאן?
+- FR: Je suis d’ici ! C’est votre première fois ici ?
+- ES: ¡Soy de aquí! ¿Es su primera vez aquí?
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 11
-- Exercised here as: expected-reply audio (step 7); quick-reply prompt (step 10, round 3); sentence review (step 14)
+- Exercised here as: quick-reply prompt (step 8, round 1); quick-reply prompt (step 21, round 1)
+
+### Sentence: `reply.talk.welcome-like`
+
+- EN: Welcome! Do you like it here?
+- HE: ברוך הבא! אתה אוהב את המקום?
+- FR: Bienvenue ! Ça vous plaît ici ?
+- ES: ¡Bienvenido! ¿Le gusta este lugar?
+- Role: receptive — an expected reply the learner hears
+- Tip / pattern note: none
+- Used in missions: 11
+- Exercised here as: quick-reply prompt (step 10, round 1); quick-reply prompt (step 21, round 2)
+
+### Sentence: `reply.talk.food`
+
+- EN: Me too. And the food here is wonderful.
+- HE: גם אני. והאוכל כאן נהדר.
+- FR: Moi aussi. Et la cuisine ici est excellente.
+- ES: Yo también. Y la comida de aquí es estupenda.
+- Role: receptive — an expected reply the learner hears
+- Tip / pattern note: none
+- Used in missions: 11
+- Exercised here as: quick-reply prompt (step 22, round 1)
+
+### Sentence: `reply.talk.tip`
+
+- EN: Of course — try 'Mama Rosa', in the old town. It's very good.
+- HE: בטח — תנסה את 'מאמא רוזה', בעיר העתיקה. מאוד טוב שם.
+- FR: Bien sûr — essayez « Mama Rosa », dans la vieille ville. C’est très bon.
+- ES: Claro — pruebe «Mama Rosa», en el casco antiguo. Es muy bueno.
+- Role: receptive — an expected reply the learner hears
+- Tip / pattern note: none
+- Used in missions: 11
+- Exercised here as: quick-reply prompt (step 24, round 1)
+
+### Sentence: `reply.talk.goodbye`
+
+- EN: You too! Enjoy the rest of your trip!
+- HE: גם לי! תיהנה משאר הטיול!
+- FR: Vous aussi ! Profitez bien du reste de votre voyage !
+- ES: ¡Igualmente! ¡Que disfrute del resto del viaje!
+- Role: receptive — an expected reply the learner hears
+- Tip / pattern note: none
+- Used in missions: 11
+- Exercised here as: expected-reply audio (step 19)
 
 ### Sentence: `reply.talk.you-should-try`
 
@@ -10751,207 +10862,111 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 11
-- Exercised here as: expected-reply audio (step 7); quick-reply prompt (step 10, round 6); sentence review (step 14)
-
-### Sentence: `reply.talk.how-long-here`
-
-- EN: How long are you here for?
-- HE: לכמה זמן אתה כאן?
-- FR: Vous êtes ici pour combien de temps ?
-- ES: ¿Cuánto tiempo está aquí?
-- Role: receptive — an expected reply the learner hears
-- Tip / pattern note: none
-- Used in missions: 11
-- Exercised here as: meaning-quiz audio (step 9)
-
-### Sentence: `reply.talk.enjoy-rest`
-
-- EN: Enjoy the rest of your trip!
-- HE: תיהנה משאר הטיול!
-- FR: Profitez bien du reste de votre voyage !
-- ES: ¡Que disfrute del resto del viaje!
-- Role: receptive — an expected reply the learner hears
-- Tip / pattern note: none
-- Used in missions: 11
-- Exercised here as: meaning-quiz distractor (step 9)
-
-### Sentence: `reply.talk.me-too`
-
-- EN: Me too!
-- HE: גם אני!
-- FR: Moi aussi !
-- ES: ¡Yo también!
-- Role: receptive — an expected reply the learner hears
-- Tip / pattern note: none
-- Used in missions: 11
-- Exercised here as: nothing (listed only)
-
-### Sentence: `phrase.recovery.repeat`
-
-- EN: Can you repeat that?
-- HE: אפשר לחזור על זה?
-- FR: Vous pouvez répéter ?
-- ES: ¿Puede repetir, por favor?
-- Role: conversation-help tool (global Recovery Toolkit)
-- Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 11, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
-- Exercised here as: sentence review (step 14); dialogue choice small-talk/c6 (accepted)
+- Exercised here as: expected-reply audio (step 19)
 
 ## Expected replies / listening items
 
-Lead-in screen: "You said:" / "אמרת:" — EN "This place is beautiful." · FR "Cet endroit est magnifique." · ES "Este lugar es precioso." — then "What might they answer? Learn the replies before they surprise you." / "מה הם עלולים לענות? נלמד את התשובות לפני שהן מפתיעות אותך." — button 👂 "I'm ready" / "אני מוכן".
-Linked learner sentence: `phrase.talk.beautiful-place`. Each reply below is played once automatically; the learner picks its MEANING from three buttons. Distractors are always the first two OTHER replies of this same drill, in drill order (runtime rule), so the three choices are shuffled per session.
+Lead-in screen: "You said:" / "אמרת:" — EN "It was nice talking to you." · FR "C’était sympa de discuter avec vous." · ES "Ha sido un placer hablar con usted." — then "What might they answer? Learn the replies before they surprise you." / "מה הם עלולים לענות? נלמד את התשובות לפני שהן מפתיעות אותך." — button 👂 "I'm ready" / "אני מוכן".
+Linked learner sentence: `phrase.talk.nice-talking`. Each reply below is played once automatically; the learner picks its MEANING from three buttons. Distractors are always the first two OTHER replies of this same drill, in drill order (runtime rule), so the three choices are shuffled per session.
 
-### M11-Q01 — expected-reply (step 7, reply 1 of 4)
+### M11-Q11 — expected-reply (step 19, reply 1 of 2)
 
-- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (1/4)
-- Audio played: EN "Where are you from?" · FR "Vous venez d’où ?" · ES "¿De dónde es?"
-- Meaning of the audio (HE): "מאיפה אתה?"
+- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (1/2)
+- Audio played: EN "You too! Enjoy the rest of your trip!" · FR "Vous aussi ! Profitez bien du reste de votre voyage !" · ES "¡Igualmente! ¡Que disfrute del resto del viaje!"
+- Meaning of the audio (HE): "גם לי! תיהנה משאר הטיול!"
 - Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
 - Choices:
-  1. HE "מאיפה אתה?" / EN "Where are you from?" — `reply.talk.where-from` — ✅ accepted
-  2. HE "זו הפעם הראשונה שלך כאן?" / EN "Is this your first time here?" — `reply.talk.first-time-q` — ❌ wrong
-  3. HE "אתה אוהב את המקום?" / EN "Do you like it here?" — `reply.talk.do-you-like-it` — ❌ wrong
-- Tests: reply.talk.where-from
-- Explanation shown after answering: generic: “Where are you from?” means “מאיפה אתה?”.
+  1. HE "גם לי! תיהנה משאר הטיול!" / EN "You too! Enjoy the rest of your trip!" — `reply.talk.goodbye` — ✅ accepted
+  2. HE "כדאי לך לנסות את העיר העתיקה." / EN "You should try the old town." — `reply.talk.you-should-try` — ❌ wrong
+- Tests: reply.talk.goodbye
+- Explanation shown after answering: generic: “You too! Enjoy the rest of your trip!” means “גם לי! תיהנה משאר הטיול!”.
 
-### M11-Q02 — expected-reply (step 7, reply 2 of 4)
+### M11-Q12 — expected-reply (step 19, reply 2 of 2)
 
-- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (2/4)
-- Audio played: EN "Is this your first time here?" · FR "C’est votre première fois ici ?" · ES "¿Es su primera vez aquí?"
-- Meaning of the audio (HE): "זו הפעם הראשונה שלך כאן?"
-- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
-- Choices:
-  1. HE "זו הפעם הראשונה שלך כאן?" / EN "Is this your first time here?" — `reply.talk.first-time-q` — ✅ accepted
-  2. HE "מאיפה אתה?" / EN "Where are you from?" — `reply.talk.where-from` — ❌ wrong
-  3. HE "אתה אוהב את המקום?" / EN "Do you like it here?" — `reply.talk.do-you-like-it` — ❌ wrong
-- Tests: reply.talk.first-time-q
-- Explanation shown after answering: generic: “Is this your first time here?” means “זו הפעם הראשונה שלך כאן?”.
-
-### M11-Q03 — expected-reply (step 7, reply 3 of 4)
-
-- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (3/4)
-- Audio played: EN "Do you like it here?" · FR "Ça vous plaît ici ?" · ES "¿Le gusta este lugar?"
-- Meaning of the audio (HE): "אתה אוהב את המקום?"
-- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
-- Choices:
-  1. HE "אתה אוהב את המקום?" / EN "Do you like it here?" — `reply.talk.do-you-like-it` — ✅ accepted
-  2. HE "מאיפה אתה?" / EN "Where are you from?" — `reply.talk.where-from` — ❌ wrong
-  3. HE "זו הפעם הראשונה שלך כאן?" / EN "Is this your first time here?" — `reply.talk.first-time-q` — ❌ wrong
-- Tests: reply.talk.do-you-like-it
-- Explanation shown after answering: generic: “Do you like it here?” means “אתה אוהב את המקום?”.
-
-### M11-Q04 — expected-reply (step 7, reply 4 of 4)
-
-- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (4/4)
+- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (2/2)
 - Audio played: EN "You should try the old town." · FR "Vous devriez essayer la vieille ville." · ES "Debería visitar el casco antiguo."
 - Meaning of the audio (HE): "כדאי לך לנסות את העיר העתיקה."
 - Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
 - Choices:
   1. HE "כדאי לך לנסות את העיר העתיקה." / EN "You should try the old town." — `reply.talk.you-should-try` — ✅ accepted
-  2. HE "מאיפה אתה?" / EN "Where are you from?" — `reply.talk.where-from` — ❌ wrong
-  3. HE "זו הפעם הראשונה שלך כאן?" / EN "Is this your first time here?" — `reply.talk.first-time-q` — ❌ wrong
+  2. HE "גם לי! תיהנה משאר הטיול!" / EN "You too! Enjoy the rest of your trip!" — `reply.talk.goodbye` — ❌ wrong
 - Tests: reply.talk.you-should-try
 - Explanation shown after answering: generic: “You should try the old town.” means “כדאי לך לנסות את העיר העתיקה.”.
 
 ## Quizzes
 
-### M11-Q05 — meaning-quiz (step 9, single question)
-
-- Prompt displayed: "What did it mean?" / "מה זה אומר?"
-- Audio played: EN "How long are you here for?" · FR "Vous êtes ici pour combien de temps ?" · ES "¿Cuánto tiempo está aquí?"
-- Meaning of the audio (HE): "לכמה זמן אתה כאן?"
-- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
-- Choices:
-  1. HE "לכמה זמן אתה כאן?" / EN "How long are you here for?" — `reply.talk.how-long-here` — ✅ accepted
-  2. HE "מאיפה אתה?" / EN "Where are you from?" — `reply.talk.where-from` — ❌ wrong
-  3. HE "תיהנה משאר הטיול!" / EN "Enjoy the rest of your trip!" — `reply.talk.enjoy-rest` — ❌ wrong
-- Tests: reply.talk.how-long-here
-- Explanation shown after answering: generic: “How long are you here for?” means “לכמה זמן אתה כאן?”.
+No meaning quiz in this mission.
 
 ## Active practice — Quick Reply · Visual Match · Swap It · Mini Map
 
-### M11-Q06 — quick-reply (step 10, round 1 of 6)
+### M11-Q01 — quick-reply (step 3, round 1 of 1)
 
-- Prompt displayed: "A chat with a local — what do you say?" / "שיחה עם מקומי — מה אומרים?"
-- Audio played: EN "Where are you from?" · FR "Vous venez d’où ?" · ES "¿De dónde es?"
-- Meaning of the audio (HE): "מאיפה אתה?"
+- Prompt displayed: "What do you answer?" / "מה אתה עונה?"
+- Audio played: EN "Hi! Beautiful view, isn't it?" · FR "Bonjour ! Belle vue, n’est-ce pas ?" · ES "¡Hola! Bonita vista, ¿verdad?"
+- Meaning of the audio (HE): "היי! נוף יפה, נכון?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "This place is beautiful." · FR "Cet endroit est magnifique." · ES "Este lugar es precioso." · (HE gloss "המקום הזה יפהפה.") — `phrase.talk.beautiful-place` — ✅ accepted
+  2. EN "I'm from Israel." · FR "Je viens d’Israël." · ES "Soy de Israel." · (HE gloss "אני מישראל.") — `phrase.social.from-israel` — ❌ wrong
+  3. EN "It's my first time here." · FR "C’est ma première fois ici." · ES "Es mi primera vez aquí." · (HE gloss "זו הפעם הראשונה שלי כאן.") — `phrase.social.first-time` — ❌ wrong
+- Tests: phrase.talk.beautiful-place
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M11-Q02 — quick-reply (step 5, round 1 of 1)
+
+- Prompt displayed: "Answer → return the question" / "ענה ← החזר את השאלה"
+- Audio played: EN "It really is. Where are you from?" · FR "C’est vrai. Vous venez d’où ?" · ES "Es verdad. ¿De dónde es?"
+- Meaning of the audio (HE): "באמת. מאיפה אתה?"
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
   1. EN "I'm from Israel. How about you?" · FR "Je viens d’Israël. Et vous ?" · ES "Soy de Israel. ¿Y usted?" · (HE gloss "ואתה?") — `phrase.talk.how-about-you` — ✅ accepted
-  2. EN "It's my first time here." · FR "C’est ma première fois ici." · ES "Es mi primera vez aquí." · (HE gloss "זו הפעם הראשונה שלי כאן.") — `phrase.social.first-time` — ❌ wrong
-  3. EN "I like it a lot." · FR "J’aime beaucoup." · ES "Me gusta mucho." · (HE gloss "אני מאוד אוהב.") — `phrase.talk.i-like-it` — ❌ wrong
+  2. EN "I'm from Israel." · FR "Je viens d’Israël." · ES "Soy de Israel." · (HE gloss "אני מישראל.") — `phrase.social.from-israel` — ❌ wrong
+  3. EN "This place is beautiful." · FR "Cet endroit est magnifique." · ES "Este lugar es precioso." · (HE gloss "המקום הזה יפהפה.") — `phrase.talk.beautiful-place` — ❌ wrong
 - Tests: phrase.talk.how-about-you
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M11-Q07 — quick-reply (step 10, round 2 of 6)
+### M11-Q03 — quick-reply (step 6, round 1 of 1)
 
-- Prompt displayed: "A chat with a local — what do you say?" / "שיחה עם מקומי — מה אומרים?"
-- Audio played: EN "Is this your first time here?" · FR "C’est votre première fois ici ?" · ES "¿Es su primera vez aquí?"
-- Meaning of the audio (HE): "זו הפעם הראשונה שלך כאן?"
-- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
-- Choices:
-  1. EN "Yes, it's my first time here." · FR "Oui, c’est ma première fois ici." · ES "Sí, es mi primera vez aquí." · (HE gloss "זו הפעם הראשונה שלי כאן.") — `phrase.social.first-time` — ✅ accepted
-  2. EN "I'm from Israel." · FR "Je viens d’Israël." · ES "Soy de Israel." · (HE gloss "אני מישראל.") — `phrase.social.from-israel` — ❌ wrong
-  3. EN "It was nice talking to you." · FR "C’était sympa de discuter avec vous." · ES "Ha sido un placer hablar con usted." · (HE gloss "היה נעים לדבר איתך.") — `phrase.talk.nice-talking` — ❌ wrong
-- Tests: phrase.social.first-time
-- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
-
-### M11-Q08 — quick-reply (step 10, round 3 of 6)
-
-- Prompt displayed: "A chat with a local — what do you say?" / "שיחה עם מקומי — מה אומרים?"
-- Audio played: EN "Do you like it here?" · FR "Ça vous plaît ici ?" · ES "¿Le gusta este lugar?"
-- Meaning of the audio (HE): "אתה אוהב את המקום?"
-- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
-- Choices:
-  1. EN "Yes, I like it a lot." · FR "Oui, j’aime beaucoup." · ES "Sí, me gusta mucho." · (HE gloss "אני מאוד אוהב.") — `phrase.talk.i-like-it` — ✅ accepted
-  2. EN "I love the food here." · FR "J’adore la nourriture ici." · ES "Me encanta la comida de aquí." · (HE gloss "אני אוהב את האוכל כאן.") — `phrase.talk.love-food` — ✅ accepted
-  3. EN "Can you recommend a place?" · FR "Vous pouvez recommander un endroit ?" · ES "¿Me puede recomendar un sitio?" · (HE gloss "אתה יכול להמליץ על מקום?") — `phrase.talk.recommend-place` — ❌ wrong
-- Tests: phrase.talk.i-like-it, phrase.talk.love-food
-- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
-
-### M11-Q09 — quick-reply (step 10, round 4 of 6)
-
-- Prompt displayed: "A chat with a local — what do you say?" / "שיחה עם מקומי — מה אומרים?" — situation shown: "You said you like it here. Now it is your turn to ask back." / "אמרת שאתה אוהב את המקום. עכשיו תורך לשאול בחזרה."
+- Prompt displayed: "What do you say?" / "מה אתה אומר?" — situation shown: "You said where you are from. Now return the question — keep the conversation going." / "ענית מאיפה אתה. עכשיו תחזיר את השאלה — כדי שהשיחה תמשיך."
 - Audio played: EN "(nothing is played — a situation is shown)" · FR "(nothing is played — a situation is shown)" · ES "(nothing is played — a situation is shown)"
 - Meaning of the audio (HE): —
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
   1. EN "How about you?" · FR "Et vous ?" · ES "¿Y usted?" · (HE gloss "ואתה?") — `phrase.talk.how-about-you` — ✅ accepted
-  2. EN "It was nice talking to you." · FR "C’était sympa de discuter avec vous." · ES "Ha sido un placer hablar con usted." · (HE gloss "היה נעים לדבר איתך.") — `phrase.talk.nice-talking` — ❌ wrong
-  3. EN "This place is beautiful." · FR "Cet endroit est magnifique." · ES "Este lugar es precioso." · (HE gloss "המקום הזה יפהפה.") — `phrase.talk.beautiful-place` — ❌ wrong
+  2. EN "This place is beautiful." · FR "Cet endroit est magnifique." · ES "Este lugar es precioso." · (HE gloss "המקום הזה יפהפה.") — `phrase.talk.beautiful-place` — ❌ wrong
+  3. EN "It's my first time here." · FR "C’est ma première fois ici." · ES "Es mi primera vez aquí." · (HE gloss "זו הפעם הראשונה שלי כאן.") — `phrase.social.first-time` — ❌ wrong
 - Tests: phrase.talk.how-about-you
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M11-Q10 — quick-reply (step 10, round 5 of 6)
+### M11-Q04 — quick-reply (step 8, round 1 of 1)
 
-- Prompt displayed: "A chat with a local — what do you say?" / "שיחה עם מקומי — מה אומרים?"
-- Audio played: EN "Me too. And the food here is wonderful." · FR "Moi aussi. Et la cuisine ici est excellente." · ES "Yo también. Y la comida de aquí es estupenda."
-- Meaning of the audio (HE): "גם אני. והאוכל כאן נהדר."
+- Prompt displayed: "What do you answer?" / "מה אתה עונה?"
+- Audio played: EN "I'm from here! Is this your first time here?" · FR "Je suis d’ici ! C’est votre première fois ici ?" · ES "¡Soy de aquí! ¿Es su primera vez aquí?"
+- Meaning of the audio (HE): "אני מכאן! זו הפעם הראשונה שלך כאן?"
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
-  1. EN "Can you recommend a place?" · FR "Vous pouvez recommander un endroit ?" · ES "¿Me puede recomendar un sitio?" · (HE gloss "אתה יכול להמליץ על מקום?") — `phrase.talk.recommend-place` — ✅ accepted
-  2. EN "What do you recommend?" · FR "Qu’est-ce que vous recommandez ?" · ES "¿Qué me recomienda?" · (HE gloss "מה אתה ממליץ?") — `phrase.rest.recommend` — ✅ accepted
-  3. EN "It was nice talking to you." · FR "C’était sympa de discuter avec vous." · ES "Ha sido un placer hablar con usted." · (HE gloss "היה נעים לדבר איתך.") — `phrase.talk.nice-talking` — ❌ wrong
-- Tests: phrase.talk.recommend-place, phrase.rest.recommend
+  1. EN "Yes, it's my first time here." · FR "Oui, c’est ma première fois ici." · ES "Sí, es mi primera vez aquí." · (HE gloss "זו הפעם הראשונה שלי כאן.") — `phrase.social.first-time` — ✅ accepted
+  2. EN "How about you?" · FR "Et vous ?" · ES "¿Y usted?" · (HE gloss "ואתה?") — `phrase.talk.how-about-you` — ❌ wrong
+  3. EN "This place is beautiful." · FR "Cet endroit est magnifique." · ES "Este lugar es precioso." · (HE gloss "המקום הזה יפהפה.") — `phrase.talk.beautiful-place` — ❌ wrong
+- Tests: phrase.social.first-time
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M11-Q11 — quick-reply (step 10, round 6 of 6)
+### M11-Q05 — quick-reply (step 10, round 1 of 1)
 
-- Prompt displayed: "A chat with a local — what do you say?" / "שיחה עם מקומי — מה אומרים?"
-- Audio played: EN "You should try the old town." · FR "Vous devriez essayer la vieille ville." · ES "Debería visitar el casco antiguo."
-- Meaning of the audio (HE): "כדאי לך לנסות את העיר העתיקה."
+- Prompt displayed: "What do you answer?" / "מה אתה עונה?"
+- Audio played: EN "Welcome! Do you like it here?" · FR "Bienvenue ! Ça vous plaît ici ?" · ES "¡Bienvenido! ¿Le gusta este lugar?"
+- Meaning of the audio (HE): "ברוך הבא! אתה אוהב את המקום?"
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
-  1. EN "Thank you! It was nice talking to you." · FR "Merci ! C’était sympa de discuter avec vous." · ES "¡Gracias! Ha sido un placer hablar con usted." · (HE gloss "היה נעים לדבר איתך.") — `phrase.talk.nice-talking` — ✅ accepted
-  2. EN "This place is beautiful." · FR "Cet endroit est magnifique." · ES "Este lugar es precioso." · (HE gloss "המקום הזה יפהפה.") — `phrase.talk.beautiful-place` — ❌ wrong
-  3. EN "It's my first time here." · FR "C’est ma première fois ici." · ES "Es mi primera vez aquí." · (HE gloss "זו הפעם הראשונה שלי כאן.") — `phrase.social.first-time` — ❌ wrong
-- Tests: phrase.talk.nice-talking
+  1. EN "Yes, I like it a lot." · FR "Oui, j’aime beaucoup." · ES "Sí, me gusta mucho." · (HE gloss "אני מאוד אוהב.") — `phrase.talk.i-like-it` — ✅ accepted
+  2. EN "It's my first time here." · FR "C’est ma première fois ici." · ES "Es mi primera vez aquí." · (HE gloss "זו הפעם הראשונה שלי כאן.") — `phrase.social.first-time` — ❌ wrong
+  3. EN "How about you?" · FR "Et vous ?" · ES "¿Y usted?" · (HE gloss "ואתה?") — `phrase.talk.how-about-you` — ❌ wrong
+- Tests: phrase.talk.i-like-it
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M11-Q12 — sentence-builder (step 11, round 1 of 1)
+### M11-Q06 — sentence-builder (step 12, round 1 of 1)
 
-- Prompt displayed: "Build the sentence" / "בנה את המשפט" — cue shown: the sentence's MEANING in the app language ("אתה יכול להמליץ על מקום?")
+- Prompt displayed: "Your request" / "הבקשה שלך" — cue shown: the sentence's MEANING in the app language ("אתה יכול להמליץ על מקום?")
 - Audio played: EN "(nothing before Check; the built sentence is spoken once it is right)" · FR "(same)" · ES "(same)"
 - Meaning of the audio (HE): —
 - Buttons show: the authored CHUNKS of the sentence as tiles (listed here in the correct order, separated by "|"), shuffled; each language has its own chunks; Check unlocks when every tile is placed
@@ -10960,7 +10975,150 @@ Linked learner sentence: `phrase.talk.beautiful-place`. Each reply below is play
 - Tests: phrase.talk.recommend-place
 - Explanation shown after answering: right: the sentence is spoken and its translation shown. Wrong: "not yet" — the tiles stay, the answer is NOT shown; after one miss a hint marks the start; after two misses the learner may reveal it
 
-### M11-Q20 — quick-reply (step 15, round 1 of 6 · SPEED CHALLENGE (spoken at rate 1.12))
+### M11-Q07 — quick-reply (step 13, round 1 of 1)
+
+- Prompt displayed: "What do you say?" / "מה אתה אומר?" — situation shown: "The local says the food here is wonderful. You want a local recommendation." / "המקומי אומר שהאוכל כאן נהדר. אתה רוצה המלצה מקומית."
+- Audio played: EN "(nothing is played — a situation is shown)" · FR "(nothing is played — a situation is shown)" · ES "(nothing is played — a situation is shown)"
+- Meaning of the audio (HE): —
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Can you recommend a place?" · FR "Vous pouvez recommander un endroit ?" · ES "¿Me puede recomendar un sitio?" · (HE gloss "אתה יכול להמליץ על מקום?") — `phrase.talk.recommend-place` — ✅ accepted
+  2. EN "I like it a lot." · FR "J’aime beaucoup." · ES "Me gusta mucho." · (HE gloss "אני מאוד אוהב.") — `phrase.talk.i-like-it` — ❌ wrong
+  3. EN "How about you?" · FR "Et vous ?" · ES "¿Y usted?" · (HE gloss "ואתה?") — `phrase.talk.how-about-you` — ❌ wrong
+- Tests: phrase.talk.recommend-place
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M11-Q08 — visual-match (step 15, round 1 of 2)
+
+- Prompt displayed: "📍 Local tip: ? — what did the local recommend, and where?" / "📍 טיפ מקומי: ? — מה הוא המליץ, ואיפה?"
+- Audio played: EN "Of course — try 'Mama Rosa', in the old town. It's very good." · FR "Bien sûr — essayez « Mama Rosa », dans la vieille ville. C’est très bon." · ES "Claro — pruebe «Mama Rosa», en el casco antiguo. Es muy bueno."
+- Meaning of the audio (HE): "בטח — תנסה את 'מאמא רוזה', בעיר העתיקה. מאוד טוב שם."
+- Buttons show: only this round's 3 tiles (the meaning and its contrast), same in every language; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "Mama Rosa" — no sentence id — ✅ accepted
+  2. "Luna Café" — no sentence id — ❌ wrong
+  3. "Casa Verde" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M11-Q09 — visual-match (step 15, round 2 of 2)
+
+- Prompt displayed: "📍 Local tip: ? — what did the local recommend, and where?" / "📍 טיפ מקומי: ? — מה הוא המליץ, ואיפה?"
+- Audio played: EN "Of course — try 'Mama Rosa', in the old town. It's very good." · FR "Bien sûr — essayez « Mama Rosa », dans la vieille ville. C’est très bon." · ES "Claro — pruebe «Mama Rosa», en el casco antiguo. Es muy bueno."
+- Meaning of the audio (HE): "בטח — תנסה את 'מאמא רוזה', בעיר העתיקה. מאוד טוב שם."
+- Buttons show: only this round's 3 tiles (the meaning and its contrast), same in every language; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "Old Town" — no sentence id — ✅ accepted
+  2. "City Centre" — no sentence id — ❌ wrong
+  3. "Beach" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M11-Q10 — quick-reply (step 18, round 1 of 1)
+
+- Prompt displayed: "What do you say?" / "מה אתה אומר?" — situation shown: "You got your recommendation, and it is time to move on. End the conversation naturally." / "קיבלת המלצה, והגיע הזמן להמשיך. סיים את השיחה יפה."
+- Audio played: EN "(nothing is played — a situation is shown)" · FR "(nothing is played — a situation is shown)" · ES "(nothing is played — a situation is shown)"
+- Meaning of the audio (HE): —
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Thank you! It was nice talking to you." · FR "Merci ! C’était sympa de discuter avec vous." · ES "¡Gracias! Ha sido un placer hablar con usted." · (HE gloss "היה נעים לדבר איתך.") — `phrase.talk.nice-talking` — ✅ accepted
+  2. EN "Can you recommend a place?" · FR "Vous pouvez recommander un endroit ?" · ES "¿Me puede recomendar un sitio?" · (HE gloss "אתה יכול להמליץ על מקום?") — `phrase.talk.recommend-place` — ❌ wrong
+  3. EN "How about you?" · FR "Et vous ?" · ES "¿Y usted?" · (HE gloss "ואתה?") — `phrase.talk.how-about-you` — ❌ wrong
+- Tests: phrase.talk.nice-talking
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M11-Q13 — quick-reply (step 20, round 1 of 2)
+
+- Prompt displayed: "💬 Connect ⬜ · 🗣️ Share ⬜ · 🙋 Ask ⬜ · 👋 Close ⬜ · 📍 Local tip: ?" / "💬 חיבור ⬜ · 🗣️ שיתוף ⬜ · 🙋 בקשה ⬜ · 👋 פרידה ⬜ · 📍 טיפ מקומי: ?"
+- Audio played: EN "Hi! Beautiful view, isn't it?" · FR "Bonjour ! Belle vue, n’est-ce pas ?" · ES "¡Hola! Bonita vista, ¿verdad?"
+- Meaning of the audio (HE): "היי! נוף יפה, נכון?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "This place is beautiful." · FR "Cet endroit est magnifique." · ES "Este lugar es precioso." · (HE gloss "המקום הזה יפהפה.") — `phrase.talk.beautiful-place` — ✅ accepted
+  2. EN "It was nice talking to you." · FR "C’était sympa de discuter avec vous." · ES "Ha sido un placer hablar con usted." · (HE gloss "היה נעים לדבר איתך.") — `phrase.talk.nice-talking` — ❌ wrong
+  3. EN "Can you recommend a place?" · FR "Vous pouvez recommander un endroit ?" · ES "¿Me puede recomendar un sitio?" · (HE gloss "אתה יכול להמליץ על מקום?") — `phrase.talk.recommend-place` — ❌ wrong
+- Tests: phrase.talk.beautiful-place
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M11-Q14 — quick-reply (step 20, round 2 of 2)
+
+- Prompt displayed: "💬 Connect ⬜ · 🗣️ Share ⬜ · 🙋 Ask ⬜ · 👋 Close ⬜ · 📍 Local tip: ?" / "💬 חיבור ⬜ · 🗣️ שיתוף ⬜ · 🙋 בקשה ⬜ · 👋 פרידה ⬜ · 📍 טיפ מקומי: ?"
+- Audio played: EN "It really is. Where are you from?" · FR "C’est vrai. Vous venez d’où ?" · ES "Es verdad. ¿De dónde es?"
+- Meaning of the audio (HE): "באמת. מאיפה אתה?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "I'm from Israel. How about you?" · FR "Je viens d’Israël. Et vous ?" · ES "Soy de Israel. ¿Y usted?" · (HE gloss "ואתה?") — `phrase.talk.how-about-you` — ✅ accepted
+  2. EN "It's my first time here." · FR "C’est ma première fois ici." · ES "Es mi primera vez aquí." · (HE gloss "זו הפעם הראשונה שלי כאן.") — `phrase.social.first-time` — ❌ wrong
+  3. EN "I like it a lot." · FR "J’aime beaucoup." · ES "Me gusta mucho." · (HE gloss "אני מאוד אוהב.") — `phrase.talk.i-like-it` — ❌ wrong
+- Tests: phrase.talk.how-about-you
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M11-Q15 — quick-reply (step 21, round 1 of 2)
+
+- Prompt displayed: "💬 Connect ✅ · 🗣️ Share ⬜ · 🙋 Ask ⬜ · 👋 Close ⬜ · 📍 Local tip: ?" / "💬 חיבור ✅ · 🗣️ שיתוף ⬜ · 🙋 בקשה ⬜ · 👋 פרידה ⬜ · 📍 טיפ מקומי: ?"
+- Audio played: EN "I'm from here! Is this your first time here?" · FR "Je suis d’ici ! C’est votre première fois ici ?" · ES "¡Soy de aquí! ¿Es su primera vez aquí?"
+- Meaning of the audio (HE): "אני מכאן! זו הפעם הראשונה שלך כאן?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Yes, it's my first time here." · FR "Oui, c’est ma première fois ici." · ES "Sí, es mi primera vez aquí." · (HE gloss "זו הפעם הראשונה שלי כאן.") — `phrase.social.first-time` — ✅ accepted
+  2. EN "Can you recommend a place?" · FR "Vous pouvez recommander un endroit ?" · ES "¿Me puede recomendar un sitio?" · (HE gloss "אתה יכול להמליץ על מקום?") — `phrase.talk.recommend-place` — ❌ wrong
+  3. EN "It was nice talking to you." · FR "C’était sympa de discuter avec vous." · ES "Ha sido un placer hablar con usted." · (HE gloss "היה נעים לדבר איתך.") — `phrase.talk.nice-talking` — ❌ wrong
+- Tests: phrase.social.first-time
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M11-Q16 — quick-reply (step 21, round 2 of 2)
+
+- Prompt displayed: "💬 Connect ✅ · 🗣️ Share ⬜ · 🙋 Ask ⬜ · 👋 Close ⬜ · 📍 Local tip: ?" / "💬 חיבור ✅ · 🗣️ שיתוף ⬜ · 🙋 בקשה ⬜ · 👋 פרידה ⬜ · 📍 טיפ מקומי: ?"
+- Audio played: EN "Welcome! Do you like it here?" · FR "Bienvenue ! Ça vous plaît ici ?" · ES "¡Bienvenido! ¿Le gusta este lugar?"
+- Meaning of the audio (HE): "ברוך הבא! אתה אוהב את המקום?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Yes, I like it a lot." · FR "Oui, j’aime beaucoup." · ES "Sí, me gusta mucho." · (HE gloss "אני מאוד אוהב.") — `phrase.talk.i-like-it` — ✅ accepted
+  2. EN "How about you?" · FR "Et vous ?" · ES "¿Y usted?" · (HE gloss "ואתה?") — `phrase.talk.how-about-you` — ❌ wrong
+  3. EN "This place is beautiful." · FR "Cet endroit est magnifique." · ES "Este lugar es precioso." · (HE gloss "המקום הזה יפהפה.") — `phrase.talk.beautiful-place` — ❌ wrong
+- Tests: phrase.talk.i-like-it
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M11-Q17 — quick-reply (step 22, round 1 of 1)
+
+- Prompt displayed: "💬 Connect ✅ · 🗣️ Share ✅ · 🙋 Ask ⬜ · 👋 Close ⬜ · 📍 Local tip: ?" / "💬 חיבור ✅ · 🗣️ שיתוף ✅ · 🙋 בקשה ⬜ · 👋 פרידה ⬜ · 📍 טיפ מקומי: ?"
+- Audio played: EN "Me too. And the food here is wonderful." · FR "Moi aussi. Et la cuisine ici est excellente." · ES "Yo también. Y la comida de aquí es estupenda."
+- Meaning of the audio (HE): "גם אני. והאוכל כאן נהדר."
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Can you recommend a place?" · FR "Vous pouvez recommander un endroit ?" · ES "¿Me puede recomendar un sitio?" · (HE gloss "אתה יכול להמליץ על מקום?") — `phrase.talk.recommend-place` — ✅ accepted
+  2. EN "It was nice talking to you." · FR "C’était sympa de discuter avec vous." · ES "Ha sido un placer hablar con usted." · (HE gloss "היה נעים לדבר איתך.") — `phrase.talk.nice-talking` — ❌ wrong
+  3. EN "I like it a lot." · FR "J’aime beaucoup." · ES "Me gusta mucho." · (HE gloss "אני מאוד אוהב.") — `phrase.talk.i-like-it` — ❌ wrong
+- Tests: phrase.talk.recommend-place
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M11-Q18 — visual-match (step 23, round 1 of 1)
+
+- Prompt displayed: "📍 Local tip: ? — what is the tip?" / "📍 טיפ מקומי: ? — מה ההמלצה?"
+- Audio played: EN "Of course — try 'Mama Rosa', in the old town. It's very good." · FR "Bien sûr — essayez « Mama Rosa », dans la vieille ville. C’est très bon." · ES "Claro — pruebe «Mama Rosa», en el casco antiguo. Es muy bueno."
+- Meaning of the audio (HE): "בטח — תנסה את 'מאמא רוזה', בעיר העתיקה. מאוד טוב שם."
+- Buttons show: a 3×3 board of 3 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "Mama Rosa · Old Town" — no sentence id — ✅ accepted
+  2. "Mama Rosa · City Centre" — no sentence id — ❌ wrong
+  3. "Luna Café · Old Town" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M11-Q19 — quick-reply (step 24, round 1 of 1)
+
+- Prompt displayed: "💬 Connect ✅ · 🗣️ Share ✅ · 🙋 Ask ✅ · 👋 Close ⬜ · 📍 Mama Rosa · Old Town" / "💬 חיבור ✅ · 🗣️ שיתוף ✅ · 🙋 בקשה ✅ · 👋 פרידה ⬜ · 📍 Mama Rosa · העיר העתיקה"
+- Audio played: EN "Of course — try 'Mama Rosa', in the old town. It's very good." · FR "Bien sûr — essayez « Mama Rosa », dans la vieille ville. C’est très bon." · ES "Claro — pruebe «Mama Rosa», en el casco antiguo. Es muy bueno."
+- Meaning of the audio (HE): "בטח — תנסה את 'מאמא רוזה', בעיר העתיקה. מאוד טוב שם."
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Thank you! It was nice talking to you." · FR "Merci ! C’était sympa de discuter avec vous." · ES "¡Gracias! Ha sido un placer hablar con usted." · (HE gloss "היה נעים לדבר איתך.") — `phrase.talk.nice-talking` — ✅ accepted
+  2. EN "Can you recommend a place?" · FR "Vous pouvez recommander un endroit ?" · ES "¿Me puede recomendar un sitio?" · (HE gloss "אתה יכול להמליץ על מקום?") — `phrase.talk.recommend-place` — ❌ wrong
+  3. EN "How about you?" · FR "Et vous ?" · ES "¿Y usted?" · (HE gloss "ואתה?") — `phrase.talk.how-about-you` — ❌ wrong
+- Tests: phrase.talk.nice-talking
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M11-Q26 — quick-reply (step 28, round 1 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
 
 - Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio played: EN "Hi! Beautiful view, isn't it?" · FR "Bonjour ! Belle vue, n’est-ce pas ?" · ES "¡Hola! Bonita vista, ¿verdad?"
@@ -10968,12 +11126,12 @@ Linked learner sentence: `phrase.talk.beautiful-place`. Each reply below is play
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
   1. EN "This place is beautiful." · FR "Cet endroit est magnifique." · ES "Este lugar es precioso." · (HE gloss "המקום הזה יפהפה.") — `phrase.talk.beautiful-place` — ✅ accepted
-  2. EN "It was nice talking to you." · FR "C’était sympa de discuter avec vous." · ES "Ha sido un placer hablar con usted." · (HE gloss "היה נעים לדבר איתך.") — `phrase.talk.nice-talking` — ❌ wrong
-  3. EN "I'm from Israel." · FR "Je viens d’Israël." · ES "Soy de Israel." · (HE gloss "אני מישראל.") — `phrase.social.from-israel` — ❌ wrong
+  2. EN "I'm from Israel." · FR "Je viens d’Israël." · ES "Soy de Israel." · (HE gloss "אני מישראל.") — `phrase.social.from-israel` — ❌ wrong
+  3. EN "It was nice talking to you." · FR "C’était sympa de discuter avec vous." · ES "Ha sido un placer hablar con usted." · (HE gloss "היה נעים לדבר איתך.") — `phrase.talk.nice-talking` — ❌ wrong
 - Tests: phrase.talk.beautiful-place
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M11-Q21 — quick-reply (step 15, round 2 of 6 · SPEED CHALLENGE (spoken at rate 1.12))
+### M11-Q27 — quick-reply (step 28, round 2 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
 
 - Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio played: EN "It really is. Where are you from?" · FR "C’est vrai. Vous venez d’où ?" · ES "Es verdad. ¿De dónde es?"
@@ -10986,7 +11144,7 @@ Linked learner sentence: `phrase.talk.beautiful-place`. Each reply below is play
 - Tests: phrase.talk.how-about-you
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M11-Q22 — quick-reply (step 15, round 3 of 6 · SPEED CHALLENGE (spoken at rate 1.12))
+### M11-Q28 — quick-reply (step 28, round 3 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
 
 - Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio played: EN "I'm from here! Is this your first time here?" · FR "Je suis d’ici ! C’est votre première fois ici ?" · ES "¡Soy de aquí! ¿Es su primera vez aquí?"
@@ -10999,7 +11157,7 @@ Linked learner sentence: `phrase.talk.beautiful-place`. Each reply below is play
 - Tests: phrase.social.first-time
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M11-Q23 — quick-reply (step 15, round 4 of 6 · SPEED CHALLENGE (spoken at rate 1.12))
+### M11-Q29 — quick-reply (step 28, round 4 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
 
 - Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio played: EN "Welcome! Do you like it here?" · FR "Bienvenue ! Ça vous plaît ici ?" · ES "¡Bienvenido! ¿Le gusta este lugar?"
@@ -11008,11 +11166,11 @@ Linked learner sentence: `phrase.talk.beautiful-place`. Each reply below is play
 - Choices:
   1. EN "Yes, I like it a lot." · FR "Oui, j’aime beaucoup." · ES "Sí, me gusta mucho." · (HE gloss "אני מאוד אוהב.") — `phrase.talk.i-like-it` — ✅ accepted
   2. EN "I'm from Israel." · FR "Je viens d’Israël." · ES "Soy de Israel." · (HE gloss "אני מישראל.") — `phrase.social.from-israel` — ❌ wrong
-  3. EN "It was nice talking to you." · FR "C’était sympa de discuter avec vous." · ES "Ha sido un placer hablar con usted." · (HE gloss "היה נעים לדבר איתך.") — `phrase.talk.nice-talking` — ❌ wrong
+  3. EN "Can you recommend a place?" · FR "Vous pouvez recommander un endroit ?" · ES "¿Me puede recomendar un sitio?" · (HE gloss "אתה יכול להמליץ על מקום?") — `phrase.talk.recommend-place` — ❌ wrong
 - Tests: phrase.talk.i-like-it
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M11-Q24 — quick-reply (step 15, round 5 of 6 · SPEED CHALLENGE (spoken at rate 1.12))
+### M11-Q30 — quick-reply (step 28, round 5 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
 
 - Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio played: EN "Me too. And the food here is wonderful." · FR "Moi aussi. Et la cuisine ici est excellente." · ES "Yo también. Y la comida de aquí es estupenda."
@@ -11025,7 +11183,20 @@ Linked learner sentence: `phrase.talk.beautiful-place`. Each reply below is play
 - Tests: phrase.talk.recommend-place
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M11-Q25 — quick-reply (step 15, round 6 of 6 · SPEED CHALLENGE (spoken at rate 1.12))
+### M11-Q31 — visual-match (step 29, round 1 of 1 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "Of course — try 'Mama Rosa', in the old town. It's very good." · FR "Bien sûr — essayez « Mama Rosa », dans la vieille ville. C’est très bon." · ES "Claro — pruebe «Mama Rosa», en el casco antiguo. Es muy bueno."
+- Meaning of the audio (HE): "בטח — תנסה את 'מאמא רוזה', בעיר העתיקה. מאוד טוב שם."
+- Buttons show: a 3×3 board of 3 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "Mama Rosa · Old Town" — no sentence id — ✅ accepted
+  2. "Mama Rosa · City Centre" — no sentence id — ❌ wrong
+  3. "Luna Café · Old Town" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M11-Q32 — quick-reply (step 30, round 1 of 1 · SPEED CHALLENGE (spoken at rate 1.12))
 
 - Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio played: EN "Of course — try 'Mama Rosa', in the old town. It's very good." · FR "Bien sûr — essayez « Mama Rosa », dans la vieille ville. C’est très bon." · ES "Claro — pruebe «Mama Rosa», en el casco antiguo. Es muy bueno."
@@ -11035,6 +11206,97 @@ Linked learner sentence: `phrase.talk.beautiful-place`. Each reply below is play
   1. EN "Thank you! It was nice talking to you." · FR "Merci ! C’était sympa de discuter avec vous." · ES "¡Gracias! Ha sido un placer hablar con usted." · (HE gloss "היה נעים לדבר איתך.") — `phrase.talk.nice-talking` — ✅ accepted
   2. EN "How about you?" · FR "Et vous ?" · ES "¿Y usted?" · (HE gloss "ואתה?") — `phrase.talk.how-about-you` — ❌ wrong
   3. EN "I like it a lot." · FR "J’aime beaucoup." · ES "Me gusta mucho." · (HE gloss "אני מאוד אוהב.") — `phrase.talk.i-like-it` — ❌ wrong
+- Tests: phrase.talk.nice-talking
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M11-Q33 — quick-reply (step 33, round 1 of 2)
+
+- Prompt displayed: "💬 Connect ⬜ · 🗣️ Share ⬜ · 🙋 Ask ⬜ · 👋 Close ⬜ · 📍 Local tip: ?" / "💬 חיבור ⬜ · 🗣️ שיתוף ⬜ · 🙋 בקשה ⬜ · 👋 פרידה ⬜ · 📍 טיפ מקומי: ?"
+- Audio played: EN "Hi! Beautiful view, isn't it?" · FR "Bonjour ! Belle vue, n’est-ce pas ?" · ES "¡Hola! Bonita vista, ¿verdad?"
+- Meaning of the audio (HE): "היי! נוף יפה, נכון?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "This place is beautiful." · FR "Cet endroit est magnifique." · ES "Este lugar es precioso." · (HE gloss "המקום הזה יפהפה.") — `phrase.talk.beautiful-place` — ✅ accepted
+  2. EN "Can you recommend a place?" · FR "Vous pouvez recommander un endroit ?" · ES "¿Me puede recomendar un sitio?" · (HE gloss "אתה יכול להמליץ על מקום?") — `phrase.talk.recommend-place` — ❌ wrong
+  3. EN "I'm from Israel." · FR "Je viens d’Israël." · ES "Soy de Israel." · (HE gloss "אני מישראל.") — `phrase.social.from-israel` — ❌ wrong
+- Tests: phrase.talk.beautiful-place
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M11-Q34 — quick-reply (step 33, round 2 of 2)
+
+- Prompt displayed: "💬 Connect ⬜ · 🗣️ Share ⬜ · 🙋 Ask ⬜ · 👋 Close ⬜ · 📍 Local tip: ?" / "💬 חיבור ⬜ · 🗣️ שיתוף ⬜ · 🙋 בקשה ⬜ · 👋 פרידה ⬜ · 📍 טיפ מקומי: ?"
+- Audio played: EN "It really is. Where are you from?" · FR "C’est vrai. Vous venez d’où ?" · ES "Es verdad. ¿De dónde es?"
+- Meaning of the audio (HE): "באמת. מאיפה אתה?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "I'm from Israel. How about you?" · FR "Je viens d’Israël. Et vous ?" · ES "Soy de Israel. ¿Y usted?" · (HE gloss "ואתה?") — `phrase.talk.how-about-you` — ✅ accepted
+  2. EN "It was nice talking to you." · FR "C’était sympa de discuter avec vous." · ES "Ha sido un placer hablar con usted." · (HE gloss "היה נעים לדבר איתך.") — `phrase.talk.nice-talking` — ❌ wrong
+  3. EN "It's my first time here." · FR "C’est ma première fois ici." · ES "Es mi primera vez aquí." · (HE gloss "זו הפעם הראשונה שלי כאן.") — `phrase.social.first-time` — ❌ wrong
+- Tests: phrase.talk.how-about-you
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M11-Q35 — quick-reply (step 34, round 1 of 2)
+
+- Prompt displayed: "💬 Connect ✅ · 🗣️ Share ⬜ · 🙋 Ask ⬜ · 👋 Close ⬜ · 📍 Local tip: ?" / "💬 חיבור ✅ · 🗣️ שיתוף ⬜ · 🙋 בקשה ⬜ · 👋 פרידה ⬜ · 📍 טיפ מקומי: ?"
+- Audio played: EN "I'm from here! Is this your first time here?" · FR "Je suis d’ici ! C’est votre première fois ici ?" · ES "¡Soy de aquí! ¿Es su primera vez aquí?"
+- Meaning of the audio (HE): "אני מכאן! זו הפעם הראשונה שלך כאן?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Yes, it's my first time here." · FR "Oui, c’est ma première fois ici." · ES "Sí, es mi primera vez aquí." · (HE gloss "זו הפעם הראשונה שלי כאן.") — `phrase.social.first-time` — ✅ accepted
+  2. EN "I like it a lot." · FR "J’aime beaucoup." · ES "Me gusta mucho." · (HE gloss "אני מאוד אוהב.") — `phrase.talk.i-like-it` — ❌ wrong
+  3. EN "How about you?" · FR "Et vous ?" · ES "¿Y usted?" · (HE gloss "ואתה?") — `phrase.talk.how-about-you` — ❌ wrong
+- Tests: phrase.social.first-time
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M11-Q36 — quick-reply (step 34, round 2 of 2)
+
+- Prompt displayed: "💬 Connect ✅ · 🗣️ Share ⬜ · 🙋 Ask ⬜ · 👋 Close ⬜ · 📍 Local tip: ?" / "💬 חיבור ✅ · 🗣️ שיתוף ⬜ · 🙋 בקשה ⬜ · 👋 פרידה ⬜ · 📍 טיפ מקומי: ?"
+- Audio played: EN "Welcome! Do you like it here?" · FR "Bienvenue ! Ça vous plaît ici ?" · ES "¡Bienvenido! ¿Le gusta este lugar?"
+- Meaning of the audio (HE): "ברוך הבא! אתה אוהב את המקום?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Yes, I like it a lot." · FR "Oui, j’aime beaucoup." · ES "Sí, me gusta mucho." · (HE gloss "אני מאוד אוהב.") — `phrase.talk.i-like-it` — ✅ accepted
+  2. EN "It was nice talking to you." · FR "C’était sympa de discuter avec vous." · ES "Ha sido un placer hablar con usted." · (HE gloss "היה נעים לדבר איתך.") — `phrase.talk.nice-talking` — ❌ wrong
+  3. EN "This place is beautiful." · FR "Cet endroit est magnifique." · ES "Este lugar es precioso." · (HE gloss "המקום הזה יפהפה.") — `phrase.talk.beautiful-place` — ❌ wrong
+- Tests: phrase.talk.i-like-it
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M11-Q37 — quick-reply (step 35, round 1 of 1)
+
+- Prompt displayed: "💬 Connect ✅ · 🗣️ Share ✅ · 🙋 Ask ⬜ · 👋 Close ⬜ · 📍 Local tip: ?" / "💬 חיבור ✅ · 🗣️ שיתוף ✅ · 🙋 בקשה ⬜ · 👋 פרידה ⬜ · 📍 טיפ מקומי: ?"
+- Audio played: EN "Me too. And the food here is wonderful." · FR "Moi aussi. Et la cuisine ici est excellente." · ES "Yo también. Y la comida de aquí es estupenda."
+- Meaning of the audio (HE): "גם אני. והאוכל כאן נהדר."
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Can you recommend a place?" · FR "Vous pouvez recommander un endroit ?" · ES "¿Me puede recomendar un sitio?" · (HE gloss "אתה יכול להמליץ על מקום?") — `phrase.talk.recommend-place` — ✅ accepted
+  2. EN "How about you?" · FR "Et vous ?" · ES "¿Y usted?" · (HE gloss "ואתה?") — `phrase.talk.how-about-you` — ❌ wrong
+  3. EN "It was nice talking to you." · FR "C’était sympa de discuter avec vous." · ES "Ha sido un placer hablar con usted." · (HE gloss "היה נעים לדבר איתך.") — `phrase.talk.nice-talking` — ❌ wrong
+- Tests: phrase.talk.recommend-place
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M11-Q38 — visual-match (step 36, round 1 of 1 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "Of course — try 'Mama Rosa', in the old town. It's very good." · FR "Bien sûr — essayez « Mama Rosa », dans la vieille ville. C’est très bon." · ES "Claro — pruebe «Mama Rosa», en el casco antiguo. Es muy bueno."
+- Meaning of the audio (HE): "בטח — תנסה את 'מאמא רוזה', בעיר העתיקה. מאוד טוב שם."
+- Buttons show: a 3×3 board of 3 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "Mama Rosa · Old Town" — no sentence id — ✅ accepted
+  2. "Mama Rosa · City Centre" — no sentence id — ❌ wrong
+  3. "Luna Café · Old Town" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M11-Q39 — quick-reply (step 37, round 1 of 1)
+
+- Prompt displayed: "💬 Connect ✅ · 🗣️ Share ✅ · 🙋 Ask ✅ · 👋 Close ⬜ · 📍 Mama Rosa · Old Town" / "💬 חיבור ✅ · 🗣️ שיתוף ✅ · 🙋 בקשה ✅ · 👋 פרידה ⬜ · 📍 Mama Rosa · העיר העתיקה"
+- Audio played: EN "Of course — try 'Mama Rosa', in the old town. It's very good." · FR "Bien sûr — essayez « Mama Rosa », dans la vieille ville. C’est très bon." · ES "Claro — pruebe «Mama Rosa», en el casco antiguo. Es muy bueno."
+- Meaning of the audio (HE): "בטח — תנסה את 'מאמא רוזה', בעיר העתיקה. מאוד טוב שם."
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Thank you! It was nice talking to you." · FR "Merci ! C’était sympa de discuter avec vous." · ES "¡Gracias! Ha sido un placer hablar con usted." · (HE gloss "היה נעים לדבר איתך.") — `phrase.talk.nice-talking` — ✅ accepted
+  2. EN "I like it a lot." · FR "J’aime beaucoup." · ES "Me gusta mucho." · (HE gloss "אני מאוד אוהב.") — `phrase.talk.i-like-it` — ❌ wrong
+  3. EN "Can you recommend a place?" · FR "Vous pouvez recommander un endroit ?" · ES "¿Me puede recomendar un sitio?" · (HE gloss "אתה יכול להמליץ על מקום?") — `phrase.talk.recommend-place` — ❌ wrong
 - Tests: phrase.talk.nice-talking
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
@@ -11053,6 +11315,16 @@ Linked learner sentence: `phrase.talk.beautiful-place`. Each reply below is play
     - FR: Cet endroit est magnifique.
     - ES: Este lugar es precioso.
     - HE: המקום הזה יפהפה.
+  - choice 2 — ❌ WRONG → m2 — `phrase.social.from-israel`
+    - EN: I'm from Israel.
+    - FR: Je viens d’Israël.
+    - ES: Soy de Israel.
+    - HE: אני מישראל.
+- **m2** · NPC · slow (TTS rate 0.75) · off the happy path → c2
+  - EN: Hi! Beautiful view, isn't it?
+  - FR: Bonjour ! Belle vue, n’est-ce pas ?
+  - ES: ¡Hola! Bonita vista, ¿verdad?
+  - HE: היי! נוף יפה, נכון?
 - **n3** · NPC · normal (TTS rate 0.95) → c4
   - EN: It really is. Where are you from?
   - FR: C’est vrai. Vous venez d’où ?
@@ -11064,7 +11336,17 @@ Linked learner sentence: `phrase.talk.beautiful-place`. Each reply below is play
     - FR: Je viens d’Israël. Et vous ?
     - ES: Soy de Israel. ¿Y usted?
     - HE: אני מישראל. ואתה?
-- **n5** · NPC · fast (TTS rate 1.08) → c6
+  - choice 2 — ❌ WRONG → m4 — `phrase.social.first-time`
+    - EN: It's my first time here.
+    - FR: C’est ma première fois ici.
+    - ES: Es mi primera vez aquí.
+    - HE: זו הפעם הראשונה שלי כאן.
+- **m4** · NPC · slow (TTS rate 0.75) · off the happy path → c4
+  - EN: It really is. Where are you from?
+  - FR: C’est vrai. Vous venez d’où ?
+  - ES: Es verdad. ¿De dónde es?
+  - HE: באמת. מאיפה אתה?
+- **n5** · NPC · normal (TTS rate 0.95) → c6
   - EN: I'm from here! Is this your first time here?
   - FR: Je suis d’ici ! C’est votre première fois ici ?
   - ES: ¡Soy de aquí! ¿Es su primera vez aquí?
@@ -11075,22 +11357,16 @@ Linked learner sentence: `phrase.talk.beautiful-place`. Each reply below is play
     - FR: Oui, c’est ma première fois ici.
     - ES: Sí, es mi primera vez aquí.
     - HE: כן, זו הפעם הראשונה שלי כאן.
-  - choice 2 — 🛟 accepted — conversation-help tool → r6 — `phrase.recovery.repeat`
-    - EN: Can you repeat that?
-    - FR: Vous pouvez répéter ?
-    - ES: ¿Puede repetir, por favor?
-    - HE: אפשר לחזור על זה?
-- **r6** · NPC · slow (TTS rate 0.75) · off the happy path → c6b
-  - EN: Your first time — here?
-  - FR: Votre première fois — ici ?
-  - ES: ¿Su primera vez — aquí?
-  - HE: הפעם הראשונה שלך — כאן?
-- **c6b** · LEARNER choice screen · off the happy path
-  - choice 1 — ✅ accepted → n7 — `phrase.social.first-time`
-    - EN: Yes, it's my first time here.
-    - FR: Oui, c’est ma première fois ici.
-    - ES: Sí, es mi primera vez aquí.
-    - HE: כן, זו הפעם הראשונה שלי כאן.
+  - choice 2 — ❌ WRONG → m6 — `phrase.talk.i-like-it`
+    - EN: I like it a lot.
+    - FR: J’aime beaucoup.
+    - ES: Me gusta mucho.
+    - HE: אני מאוד אוהב.
+- **m6** · NPC · slow (TTS rate 0.75) · off the happy path → c6
+  - EN: I'm from here! Is this your first time here?
+  - FR: Je suis d’ici ! C’est votre première fois ici ?
+  - ES: ¡Soy de aquí! ¿Es su primera vez aquí?
+  - HE: אני מכאן! זו הפעם הראשונה שלך כאן?
 - **n7** · NPC · normal (TTS rate 0.95) → c8
   - EN: Welcome! Do you like it here?
   - FR: Bienvenue ! Ça vous plaît ici ?
@@ -11102,11 +11378,16 @@ Linked learner sentence: `phrase.talk.beautiful-place`. Each reply below is play
     - FR: Oui, j’aime beaucoup.
     - ES: Sí, me gusta mucho.
     - HE: כן, אני מאוד אוהב.
-  - choice 2 — ✅ accepted → n9 — `phrase.talk.love-food`
-    - EN: I love the food here.
-    - FR: J’adore la nourriture ici.
-    - ES: Me encanta la comida de aquí.
-    - HE: אני אוהב את האוכל כאן.
+  - choice 2 — ❌ WRONG → m8 — `phrase.talk.recommend-place`
+    - EN: Can you recommend a place?
+    - FR: Vous pouvez recommander un endroit ?
+    - ES: ¿Me puede recomendar un sitio?
+    - HE: אתה יכול להמליץ על מקום?
+- **m8** · NPC · slow (TTS rate 0.75) · off the happy path → c8
+  - EN: Welcome! Do you like it here?
+  - FR: Bienvenue ! Ça vous plaît ici ?
+  - ES: ¡Bienvenido! ¿Le gusta este lugar?
+  - HE: ברוך הבא! אתה אוהב את המקום?
 - **n9** · NPC · normal (TTS rate 0.95) → c10
   - EN: Me too. And the food here is wonderful.
   - FR: Moi aussi. Et la cuisine ici est excellente.
@@ -11118,11 +11399,16 @@ Linked learner sentence: `phrase.talk.beautiful-place`. Each reply below is play
     - FR: Vous pouvez recommander un endroit ?
     - ES: ¿Me puede recomendar un sitio?
     - HE: אתה יכול להמליץ על מקום?
-  - choice 2 — ✅ accepted → n11 — `phrase.rest.recommend`
-    - EN: What do you recommend?
-    - FR: Qu’est-ce que vous recommandez ?
-    - ES: ¿Qué me recomienda?
-    - HE: מה אתה ממליץ?
+  - choice 2 — ❌ WRONG → m10 — `phrase.talk.nice-talking`
+    - EN: It was nice talking to you.
+    - FR: C’était sympa de discuter avec vous.
+    - ES: Ha sido un placer hablar con usted.
+    - HE: היה נעים לדבר איתך.
+- **m10** · NPC · slow (TTS rate 0.75) · off the happy path → c10
+  - EN: Me too. And the food here is wonderful.
+  - FR: Moi aussi. Et la cuisine ici est excellente.
+  - ES: Yo también. Y la comida de aquí es estupenda.
+  - HE: גם אני. והאוכל כאן נהדר.
 - **n11** · NPC · normal (TTS rate 0.95) → c12
   - EN: Of course — try 'Mama Rosa', in the old town. It's very good.
   - FR: Bien sûr — essayez « Mama Rosa », dans la vieille ville. C’est très bon.
@@ -11134,6 +11420,16 @@ Linked learner sentence: `phrase.talk.beautiful-place`. Each reply below is play
     - FR: Merci ! C’était sympa de discuter avec vous.
     - ES: ¡Gracias! Ha sido un placer hablar con usted.
     - HE: תודה! היה נעים לדבר איתך.
+  - choice 2 — ❌ WRONG → m12 — `phrase.talk.how-about-you`
+    - EN: How about you?
+    - FR: Et vous ?
+    - ES: ¿Y usted?
+    - HE: ואתה?
+- **m12** · NPC · slow (TTS rate 0.75) · off the happy path → c12
+  - EN: Of course — try 'Mama Rosa', in the old town. It's very good.
+  - FR: Bien sûr — essayez « Mama Rosa », dans la vieille ville. C’est très bon.
+  - ES: Claro — pruebe «Mama Rosa», en el casco antiguo. Es muy bueno.
+  - HE: בטח — תנסה את 'מאמא רוזה', בעיר העתיקה. מאוד טוב שם.
 - **n13** · NPC · normal (TTS rate 0.95) · END of scene
   - EN: You too! Enjoy the rest of your trip!
   - FR: Vous aussi ! Profitez bien du reste de votre voyage !
@@ -11173,7 +11469,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 
 ## Learner choice screens
 
-### M11-Q13 — dialogue-choice (step 12, scene "small-talk" · node c2)
+### M11-Q20 — dialogue-choice (step 26, scene "small-talk" · node c2)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Hi! Beautiful view, isn't it?" · FR "Bonjour ! Belle vue, n’est-ce pas ?" · ES "¡Hola! Bonita vista, ¿verdad?"
@@ -11181,10 +11477,11 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
   1. EN "This place is beautiful." · FR "Cet endroit est magnifique." · ES "Este lugar es precioso." · (HE gloss "המקום הזה יפהפה.") — `phrase.talk.beautiful-place` — ✅ accepted → n3
-- Tests: phrase.talk.beautiful-place
+  2. EN "I'm from Israel." · FR "Je viens d’Israël." · ES "Soy de Israel." · (HE gloss "אני מישראל.") — `phrase.social.from-israel` — ❌ wrong → m2
+- Tests: phrase.talk.beautiful-place, phrase.social.from-israel
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M11-Q14 — dialogue-choice (step 12, scene "small-talk" · node c4)
+### M11-Q21 — dialogue-choice (step 26, scene "small-talk" · node c4)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "It really is. Where are you from?" · FR "C’est vrai. Vous venez d’où ?" · ES "Es verdad. ¿De dónde es?"
@@ -11192,10 +11489,11 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
   1. EN "I'm from Israel. How about you?" · FR "Je viens d’Israël. Et vous ?" · ES "Soy de Israel. ¿Y usted?" · (HE gloss "אני מישראל. ואתה?") — `phrase.talk.how-about-you` — ✅ accepted → n5
-- Tests: phrase.talk.how-about-you
+  2. EN "It's my first time here." · FR "C’est ma première fois ici." · ES "Es mi primera vez aquí." · (HE gloss "זו הפעם הראשונה שלי כאן.") — `phrase.social.first-time` — ❌ wrong → m4
+- Tests: phrase.talk.how-about-you, phrase.social.first-time
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M11-Q15 — dialogue-choice (step 12, scene "small-talk" · node c6)
+### M11-Q22 — dialogue-choice (step 26, scene "small-talk" · node c6)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "I'm from here! Is this your first time here?" · FR "Je suis d’ici ! C’est votre première fois ici ?" · ES "¡Soy de aquí! ¿Es su primera vez aquí?"
@@ -11203,22 +11501,11 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
   1. EN "Yes, it's my first time here." · FR "Oui, c’est ma première fois ici." · ES "Sí, es mi primera vez aquí." · (HE gloss "כן, זו הפעם הראשונה שלי כאן.") — `phrase.social.first-time` — ✅ accepted → n7
-  2. EN "Can you repeat that?" · FR "Vous pouvez répéter ?" · ES "¿Puede repetir, por favor?" · (HE gloss "אפשר לחזור על זה?") — `phrase.recovery.repeat` — ✅ accepted → r6
-- Tests: phrase.social.first-time, phrase.recovery.repeat
+  2. EN "I like it a lot." · FR "J’aime beaucoup." · ES "Me gusta mucho." · (HE gloss "אני מאוד אוהב.") — `phrase.talk.i-like-it` — ❌ wrong → m6
+- Tests: phrase.social.first-time, phrase.talk.i-like-it
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M11-Q16 — dialogue-choice (step 12, scene "small-talk" · node c6b)
-
-- Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio played: EN "Your first time — here?" · FR "Votre première fois — ici ?" · ES "¿Su primera vez — aquí?"
-- Meaning of the audio (HE): "הפעם הראשונה שלך — כאן?"
-- Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
-- Choices:
-  1. EN "Yes, it's my first time here." · FR "Oui, c’est ma première fois ici." · ES "Sí, es mi primera vez aquí." · (HE gloss "כן, זו הפעם הראשונה שלי כאן.") — `phrase.social.first-time` — ✅ accepted → n7
-- Tests: phrase.social.first-time
-- Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
-
-### M11-Q17 — dialogue-choice (step 12, scene "small-talk" · node c8)
+### M11-Q23 — dialogue-choice (step 26, scene "small-talk" · node c8)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Welcome! Do you like it here?" · FR "Bienvenue ! Ça vous plaît ici ?" · ES "¡Bienvenido! ¿Le gusta este lugar?"
@@ -11226,11 +11513,11 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
   1. EN "Yes, I like it a lot." · FR "Oui, j’aime beaucoup." · ES "Sí, me gusta mucho." · (HE gloss "כן, אני מאוד אוהב.") — `phrase.talk.i-like-it` — ✅ accepted → n9
-  2. EN "I love the food here." · FR "J’adore la nourriture ici." · ES "Me encanta la comida de aquí." · (HE gloss "אני אוהב את האוכל כאן.") — `phrase.talk.love-food` — ✅ accepted → n9
-- Tests: phrase.talk.i-like-it, phrase.talk.love-food
+  2. EN "Can you recommend a place?" · FR "Vous pouvez recommander un endroit ?" · ES "¿Me puede recomendar un sitio?" · (HE gloss "אתה יכול להמליץ על מקום?") — `phrase.talk.recommend-place` — ❌ wrong → m8
+- Tests: phrase.talk.i-like-it, phrase.talk.recommend-place
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M11-Q18 — dialogue-choice (step 12, scene "small-talk" · node c10)
+### M11-Q24 — dialogue-choice (step 26, scene "small-talk" · node c10)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Me too. And the food here is wonderful." · FR "Moi aussi. Et la cuisine ici est excellente." · ES "Yo también. Y la comida de aquí es estupenda."
@@ -11238,11 +11525,11 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
   1. EN "Can you recommend a place?" · FR "Vous pouvez recommander un endroit ?" · ES "¿Me puede recomendar un sitio?" · (HE gloss "אתה יכול להמליץ על מקום?") — `phrase.talk.recommend-place` — ✅ accepted → n11
-  2. EN "What do you recommend?" · FR "Qu’est-ce que vous recommandez ?" · ES "¿Qué me recomienda?" · (HE gloss "מה אתה ממליץ?") — `phrase.rest.recommend` — ✅ accepted → n11
-- Tests: phrase.talk.recommend-place, phrase.rest.recommend
+  2. EN "It was nice talking to you." · FR "C’était sympa de discuter avec vous." · ES "Ha sido un placer hablar con usted." · (HE gloss "היה נעים לדבר איתך.") — `phrase.talk.nice-talking` — ❌ wrong → m10
+- Tests: phrase.talk.recommend-place, phrase.talk.nice-talking
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M11-Q19 — dialogue-choice (step 12, scene "small-talk" · node c12)
+### M11-Q25 — dialogue-choice (step 26, scene "small-talk" · node c12)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Of course — try 'Mama Rosa', in the old town. It's very good." · FR "Bien sûr — essayez « Mama Rosa », dans la vieille ville. C’est très bon." · ES "Claro — pruebe «Mama Rosa», en el casco antiguo. Es muy bueno."
@@ -11250,37 +11537,55 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
   1. EN "Thank you! It was nice talking to you." · FR "Merci ! C’était sympa de discuter avec vous." · ES "¡Gracias! Ha sido un placer hablar con usted." · (HE gloss "תודה! היה נעים לדבר איתך.") — `phrase.talk.nice-talking` — ✅ accepted → n13
-- Tests: phrase.talk.nice-talking
+  2. EN "How about you?" · FR "Et vous ?" · ES "¿Y usted?" · (HE gloss "ואתה?") — `phrase.talk.how-about-you` — ❌ wrong → m12
+- Tests: phrase.talk.nice-talking, phrase.talk.how-about-you
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
 ## Recovery tools in this mission
 
-Toolkit phrases bundled into this mission's sentence list: `phrase.recovery.repeat` "Can you repeat that?".
+No toolkit phrase is bundled into this mission.
 
-Where a conversation-help tool can be selected, and what happens:
+No conversation-help tool is selectable in this mission's dialogues.
 
-- Scene `small-talk`, c6 — `phrase.recovery.repeat` "Can you repeat that?" ("אפשר לחזור על זה?") — after NPC "I'm from here! Is this your first time here?" → r6: NPC "Your first time — here?" (slow) → r6 → c6b → rejoins the happy path at n7. Counts as success (recorded as "pass"); no feedback card — the dialogue simply continues.
 
 ## Wrong answer branches
 
-None — no choice in this mission is marked wrong.
+6 reachable wrong-answer branch(es):
 
+- Scene `small-talk`, c2 — after NPC "Hi! Beautiful view, isn't it?"
+  - Wrong choice: "I'm from Israel." ("אני מישראל.") — `phrase.social.from-israel`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("This place is beautiful."), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m2): "Hi! Beautiful view, isn't it?" — HE "היי! נוף יפה, נכון?"
+  - Then: m2 → rejoins the happy path at c2. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
+- Scene `small-talk`, c4 — after NPC "It really is. Where are you from?"
+  - Wrong choice: "It's my first time here." ("זו הפעם הראשונה שלי כאן.") — `phrase.social.first-time`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("I'm from Israel. How about you?"), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m4): "It really is. Where are you from?" — HE "באמת. מאיפה אתה?"
+  - Then: m4 → rejoins the happy path at c4. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
+- Scene `small-talk`, c6 — after NPC "I'm from here! Is this your first time here?"
+  - Wrong choice: "I like it a lot." ("אני מאוד אוהב.") — `phrase.talk.i-like-it`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("Yes, it's my first time here."), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m6): "I'm from here! Is this your first time here?" — HE "אני מכאן! זו הפעם הראשונה שלך כאן?"
+  - Then: m6 → rejoins the happy path at c6. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
+- Scene `small-talk`, c8 — after NPC "Welcome! Do you like it here?"
+  - Wrong choice: "Can you recommend a place?" ("אתה יכול להמליץ על מקום?") — `phrase.talk.recommend-place`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("Yes, I like it a lot."), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m8): "Welcome! Do you like it here?" — HE "ברוך הבא! אתה אוהב את המקום?"
+  - Then: m8 → rejoins the happy path at c8. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
+- Scene `small-talk`, c10 — after NPC "Me too. And the food here is wonderful."
+  - Wrong choice: "It was nice talking to you." ("היה נעים לדבר איתך.") — `phrase.talk.nice-talking`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("Can you recommend a place?"), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m10): "Me too. And the food here is wonderful." — HE "גם אני. והאוכל כאן נהדר."
+  - Then: m10 → rejoins the happy path at c10. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
+- Scene `small-talk`, c12 — after NPC "Of course — try 'Mama Rosa', in the old town. It's very good."
+  - Wrong choice: "How about you?" ("ואתה?") — `phrase.talk.how-about-you`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("Thank you! It was nice talking to you."), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m12): "Of course — try 'Mama Rosa', in the old town. It's very good." — HE "בטח — תנסה את 'מאמא רוזה', בעיר העתיקה. מאוד טוב שם."
+  - Then: m12 → rejoins the happy path at c12. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
 
 ## Sentence review
 
-Step 14. 11 sentences, in this fixed order. Each is played automatically (TTS), shown with its translation and tip; buttons: 🔊 "Hear again" / "לשמוע שוב" and Next. No speaking prompt, no grading, no scoring; nothing is recorded.
-
-1. `phrase.talk.beautiful-place` — This place is beautiful. — המקום הזה יפהפה.
-2. `phrase.talk.how-about-you` — How about you? — ואתה?
-3. `phrase.talk.i-like-it` — I like it a lot. — אני מאוד אוהב.
-4. `phrase.talk.love-food` — I love the food here. — אני אוהב את האוכל כאן.
-5. `phrase.talk.recommend-place` — Can you recommend a place? — אתה יכול להמליץ על מקום?
-6. `phrase.talk.nice-talking` — It was nice talking to you. — היה נעים לדבר איתך.
-7. `reply.talk.where-from` — Where are you from? — מאיפה אתה?
-8. `reply.talk.first-time-q` — Is this your first time here? — זו הפעם הראשונה שלך כאן?
-9. `reply.talk.do-you-like-it` — Do you like it here? — אתה אוהב את המקום?
-10. `reply.talk.you-should-try` — You should try the old town. — כדאי לך לנסות את העיר העתיקה.
-11. `phrase.recovery.repeat` — Can you repeat that? — אפשר לחזור על זה?
+No sentence-review step in this mission.
 
 ## Cold open / ambush
 
@@ -11290,58 +11595,60 @@ No cold open in this mission.
 
 The runtime has NO slot-substitution mechanism: no sentence is generated with a different word. "Variants" exist only as (a) alternative accepted lines on one choice screen and (b) extra sentences taught beside the dialogue. Templates are mentioned only in tips.
 
-Alternative accepted lines:
+No choice screen offers two accepted non-toolkit lines.
 
-- Scene `small-talk`, c8: "Yes, I like it a lot." OR "I love the food here." — all accepted, same continuation unless the routes above differ.
-- Scene `small-talk`, c10: "Can you recommend a place?" OR "What do you recommend?" — all accepted, same continuation unless the routes above differ.
 
-Learner sentences taught beside the dialogue (not a line in any scene):
+Every learner sentence of this mission is a line in a scene.
 
-- `phrase.social.from-israel` — I'm from Israel.
 
 ## Receipts (proof cards)
 
-- Step 8: "You recognize what strangers ask — where from, first time, do you like it?" / "אתה מזהה את השאלות שזרים שואלים — מאיפה, פעם ראשונה, אוהב?"
-- Step 13: "A whole chat with a stranger: where from, first time, what you like, a recommendation and a goodbye." / "שיחה שלמה עם זר: מאיפה, פעם ראשונה, מה אהבת, המלצה ופרידה."
-- Step 16: "A whole chat at the pace of a real one — you opened, answered, asked back, got a tip and said goodbye." / "שיחה שלמה, בקצב של שיחה אמיתית — פתחת, ענית, שאלת בחזרה, ביקשת המלצה ונפרדת."
+- Step 16: "📍 LOCAL TIP FOUND · Mama Rosa · Old Town" / "📍 נמצא טיפ מקומי · Mama Rosa · העיר העתיקה"
+- Step 25: "💬 Connect ✅ · 🗣️ Share ✅ · 🙋 Ask ✅ · 👋 Close ✅ · 📍 Mama Rosa · Old Town" / "💬 חיבור ✅ · 🗣️ שיתוף ✅ · 🙋 בקשה ✅ · 👋 פרידה ✅ · 📍 Mama Rosa · העיר העתיקה"
+- Step 27: "The whole conversation — from the view to the goodbye." / "כל השיחה — מהנוף ועד הפרידה."
+- Step 31: "No help — the whole conversation, at a local’s pace." / "בלי עזרה — כל השיחה, בקצב של מקומי."
+- Step 38: "💬 SMALL TALK COMPLETE · 📍 LOCAL TIP FOUND: Mama Rosa · Old Town — You talked to a local and got a recommendation." / "💬 שיחת החולין הושלמה · 📍 נמצא טיפ מקומי: Mama Rosa · העיר העתיקה — דיברת עם מקומי וקיבלת המלצה."
 
 ## Audit Metadata — DO NOT FIX YET
 
-- Learner-production sentences: 9
-- Receptive (expected-reply) sentences: 7
-- Toolkit phrases bundled: 1
-- Key-sentence steps: 5
-- Expected-reply/listening items: 4
-- Questions/quizzes (meaning quiz): 1
-- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 13
-- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 16
-- One-button dialogue screens: 4
+- Learner-production sentences: 7
+- Receptive (expected-reply) sentences: 8
+- Toolkit phrases bundled: 0
+- Key-sentence steps: 0
+- Expected-reply/listening items: 2
+- Questions/quizzes (meaning quiz): 0
+- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 31
+- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 32
+- One-button dialogue screens: 0
 - Learner sentences never actively retrieved: 0
-- Dialogue learner choices (screens): 7
-- Wrong-answer branches: 0
+- Dialogue learner choices (screens): 6
+- Wrong-answer branches: 6
 - Cold-open prompts: 0
-- Recovery opportunities: 1
-- Vocabulary pre-items: 0
-- Swap variants (extra accepted lines): 2
-- Sentences in review: 11
-- Total interactive questions: 25 (answer choices: 62)
-- Approximate total learner interactions: 41 (questions + key sentences + review cards + word-intro screen)
+- Recovery opportunities: 0
+- Vocabulary pre-items: 14
+- Swap variants (extra accepted lines): 0
+- Sentences in review: 0
+- Total interactive questions: 39 (answer choices: 107)
+- Approximate total learner interactions: 40 (questions + key sentences + review cards + word-intro screen)
 
-### AUTO-FLAG — requires human review (13)
+### AUTO-FLAG — requires human review (16)
 
-- AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "small-talk" n1 — “Hi! Beautiful view, isn't it?”
 - AUTO-FLAG — Practice item wording not in this mission's dialogue: `reply.talk.you-should-try` “You should try the old town.” (drilled as an expected reply / distractor, but no NPC line here says it).
-- AUTO-FLAG — Practice item wording not in this mission's dialogue: `reply.talk.how-long-here` “How long are you here for?” (drilled as an expected reply / distractor, but no NPC line here says it).
-- AUTO-FLAG — 7 of 7 choice screens have NO wrong option (every button is accepted): small-talk/c2, small-talk/c4, small-talk/c6, small-talk/c6b, small-talk/c8, small-talk/c10, small-talk/c12.
-- AUTO-FLAG — 4 choice screens offer exactly ONE button (no decision): small-talk/c2, small-talk/c4, small-talk/c6b, small-talk/c12.
-- AUTO-FLAG — M11-Q06: answer choice “It's my first time here.” (`phrase.social.first-time`) was first taught in Mission 01, not here.
-- AUTO-FLAG — M11-Q07: answer choice “Yes, it's my first time here.” (`phrase.social.first-time`) was first taught in Mission 01, not here.
-- AUTO-FLAG — M11-Q07: answer choice “I'm from Israel.” (`phrase.social.from-israel`) was first taught in Mission 01, not here.
-- AUTO-FLAG — M11-Q11: answer choice “It's my first time here.” (`phrase.social.first-time`) was first taught in Mission 01, not here.
-- AUTO-FLAG — M11-Q20: answer choice “I'm from Israel.” (`phrase.social.from-israel`) was first taught in Mission 01, not here.
-- AUTO-FLAG — M11-Q22: answer choice “Yes, it's my first time here.” (`phrase.social.first-time`) was first taught in Mission 01, not here.
-- AUTO-FLAG — M11-Q23: answer choice “I'm from Israel.” (`phrase.social.from-israel`) was first taught in Mission 01, not here.
-- AUTO-FLAG — M11-Q24: answer choice “It's my first time here.” (`phrase.social.first-time`) was first taught in Mission 01, not here.
+- AUTO-FLAG — M11-Q01: answer choice “I'm from Israel.” (`phrase.social.from-israel`) was first taught in Mission 01, not here.
+- AUTO-FLAG — M11-Q01: answer choice “It's my first time here.” (`phrase.social.first-time`) was first taught in Mission 01, not here.
+- AUTO-FLAG — M11-Q02: answer choice “I'm from Israel.” (`phrase.social.from-israel`) was first taught in Mission 01, not here.
+- AUTO-FLAG — M11-Q03: answer choice “It's my first time here.” (`phrase.social.first-time`) was first taught in Mission 01, not here.
+- AUTO-FLAG — M11-Q04: answer choice “Yes, it's my first time here.” (`phrase.social.first-time`) was first taught in Mission 01, not here.
+- AUTO-FLAG — M11-Q05: answer choice “It's my first time here.” (`phrase.social.first-time`) was first taught in Mission 01, not here.
+- AUTO-FLAG — M11-Q14: answer choice “It's my first time here.” (`phrase.social.first-time`) was first taught in Mission 01, not here.
+- AUTO-FLAG — M11-Q15: answer choice “Yes, it's my first time here.” (`phrase.social.first-time`) was first taught in Mission 01, not here.
+- AUTO-FLAG — M11-Q26: answer choice “I'm from Israel.” (`phrase.social.from-israel`) was first taught in Mission 01, not here.
+- AUTO-FLAG — M11-Q28: answer choice “Yes, it's my first time here.” (`phrase.social.first-time`) was first taught in Mission 01, not here.
+- AUTO-FLAG — M11-Q29: answer choice “I'm from Israel.” (`phrase.social.from-israel`) was first taught in Mission 01, not here.
+- AUTO-FLAG — M11-Q30: answer choice “It's my first time here.” (`phrase.social.first-time`) was first taught in Mission 01, not here.
+- AUTO-FLAG — M11-Q33: answer choice “I'm from Israel.” (`phrase.social.from-israel`) was first taught in Mission 01, not here.
+- AUTO-FLAG — M11-Q34: answer choice “It's my first time here.” (`phrase.social.first-time`) was first taught in Mission 01, not here.
+- AUTO-FLAG — M11-Q35: answer choice “Yes, it's my first time here.” (`phrase.social.first-time`) was first taught in Mission 01, not here.
 
 ---
 
@@ -11584,7 +11891,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 11, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: sentence review (step 15); dialogue choice making-plans/c8 (accepted)
 
 ## Expected replies / listening items
@@ -13246,7 +13553,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 11, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: nothing (listed only)
 
 ### Sentence: `phrase.recovery.slowly`
@@ -14015,7 +14322,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 11, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: quick-reply response (step 9, round 5, accepted); sentence review (step 12); quick-reply response (step 13, round 3, accepted); cold-open correct option (step 15); dialogue choice allergy-order/c3 (accepted)
 
 ### Sentence: `phrase.recovery.slowly`
@@ -15652,7 +15959,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 11, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: quick-reply response (step 10, round 3, accepted); sentence review (step 13); dialogue choice supermarket/c2 (accepted)
 
 ### Sentence: `phrase.recovery.slowly`
@@ -16605,7 +16912,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 11, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: dialogue choice cold-plans/c2 (accepted); dialogue choice cold-shop/c4 (accepted)
 
 ## Expected replies / listening items
@@ -17632,7 +17939,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 11, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: quick-reply response (step 9, round 6, accepted); sentence review (step 13); cold-open correct option (step 16); dialogue choice transport/c1 (accepted); dialogue choice transport/c5 (accepted)
 
 ### Sentence: `phrase.recovery.slowly`
@@ -18578,7 +18885,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 11, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: sentence review (step 15); dialogue choice what-did-you-do/c10 (accepted)
 
 ## Expected replies / listening items
@@ -21308,7 +21615,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 11, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: sentence review (step 16); dialogue choice choosing-a-tour/c10 (accepted)
 
 ## Expected replies / listening items
@@ -22306,7 +22613,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 11, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: dialogue choice cold-problem/c2 (accepted)
 
 ## Expected replies / listening items
@@ -24265,7 +24572,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 11, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: dialogue choice pharmacy/c3 (accepted)
 
 ### Sentence: `phrase.recovery.slowly`
@@ -25853,7 +26160,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 11, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: dialogue choice ns-transit/c8 (accepted)
 
 ### Sentence: `phrase.recovery.slowly`
@@ -26790,7 +27097,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 11, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: dialogue choice dr-problem/c2 (accepted)
 
 ### Sentence: `phrase.recovery.slowly`
@@ -27997,7 +28304,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 11, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: dialogue choice fin-lunch/c6 (accepted)
 
 ## Expected replies / listening items
@@ -29127,7 +29434,7 @@ Every learner sentence of this mission is a line in a scene.
 | 08 Hotel Check-in | 16 (5 / 9 / 2) | 3 | 3 | 0 | 31 | 4 | 2 | 2 | 0 | 17 words | 0 | 38 | 6 |
 | 09 Shopping | 13 (6 / 6 / 1) | 3 | 3 | 0 | 30 | 6 | 3 | 1 | 0 | 14 words | 2 | 39 | 2 |
 | 10 CHECKPOINT: Arrival Day | 10 (9 / 0 / 1) | 0 | 0 | 0 | 0 | 0 | 11 | 0 | 0 | no | 0 | 0 | 9 |
-| 11 Small Talk & Recommendations | 17 (9 / 7 / 1) | 4 | 5 | 1 | 13 | 7 | 4 | 1 | 0 | no | 2 | 25 | 13 |
+| 11 Small Talk & Recommendations | 15 (7 / 8 / 0) | 2 | 2 | 0 | 31 | 6 | 0 | 0 | 0 | 14 words | 0 | 39 | 16 |
 | 12 Time & Plans | 16 (8 / 7 / 1) | 4 | 4 | 0 | 17 | 8 | 6 | 1 | 0 | no | 1 | 29 | 2 |
 | 13 Home, Family & Daily Routine | 14 (8 / 5 / 1) | 4 | 4 | 0 | 15 | 9 | 8 | 1 | 0 | no | 0 | 28 | 5 |
 | 14 Restaurant Meal | 18 (7 / 6 / 5) | 5 | 5 | 0 | 13 | 6 | 4 | 2 | 0 | 5 words | 1 | 24 | 7 |
@@ -29158,8 +29465,8 @@ Every learner-production sentence id of the Core, in order of first appearance. 
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | `phrase.social.my-name` | My name is Dan. | 01 | — | 1 | 2 / 0 | 7 | 0 | 1 | no | no |  |
 | `phrase.social.nice-to-meet` | Nice to meet you! | 01 | — | 1 | 0 / 1 | 3 | 1 | 1 | no | no |  |
-| `phrase.social.from-israel` | I'm from Israel. | 01 | 11, 28, 30 | 1 | 3 / 1 | 11 | 0 | 1 | yes | no |  |
-| `phrase.social.first-time` | It's my first time here. | 01 | 11, 28, 29, 30 | 1 | 6 / 1 | 11 | 0 | 1 | yes | no |  |
+| `phrase.social.from-israel` | I'm from Israel. | 01 | 11, 28, 30 | 1 | 3 / 2 | 13 | 0 | 1 | yes | no |  |
+| `phrase.social.first-time` | It's my first time here. | 01 | 11, 28, 29, 30 | 1 | 5 / 2 | 16 | 0 | 1 | yes | no |  |
 | `phrase.money.how-much` | How much is it? | 02 | 29 | 1 | 1 / 1 | 6 | 0 | 1 | no | no |  |
 | `phrase.money.by-card` | By card, please. | 02 | 18, 28, 29 | 1 | 4 / 1 | 7 | 0 | 1 | yes | no |  |
 | `phrase.money.in-cash` | In cash. | 02 | 28 | 0 | 1 / 1 | 3 | 0 | 1 | no | no |  |
@@ -29209,13 +29516,11 @@ Every learner-production sentence id of the Core, in order of first appearance. 
 | `phrase.shop.take-it` | I'll take it. | 09 | — | 0 | 1 / 0 | 0 | 0 | 0 | no | no |  |
 | `phrase.shop.too-expensive` | It's a bit expensive. | 09 | — | 0 | 1 / 0 | 0 | 0 | 0 | no | no |  |
 | `phrase.shop.great-take-it` | Great, I'll take it. | 09 | — | 0 | 1 / 0 | 12 | 0 | 0 | no | no |  |
-| `phrase.talk.beautiful-place` | This place is beautiful. | 11 | 28 | 1 | 2 / 0 | 5 | 0 | 1 | no | no |  |
-| `phrase.talk.how-about-you` | How about you? | 11 | 28 | 1 | 1 / 1 | 4 | 0 | 1 | no | no |  |
-| `phrase.talk.i-like-it` | I like it a lot. | 11 | 24, 28 | 1 | 2 / 1 | 5 | 0 | 1 | yes | no |  |
-| `phrase.talk.love-food` | I love the food here. | 11 | — | 0 | 1 / 0 | 1 | 0 | 1 | no | no |  |
-| `phrase.talk.recommend-place` | Can you recommend a place? | 11 | 24, 28 | 1 | 3 / 0 | 5 | 0 | 1 | yes | no |  |
-| `phrase.rest.recommend` | What do you recommend? | 11 | — | 0 | 1 / 0 | 1 | 0 | 0 | no | no |  |
-| `phrase.talk.nice-talking` | It was nice talking to you. | 11 | 24, 28 | 1 | 2 / 2 | 8 | 0 | 1 | yes | no |  |
+| `phrase.talk.beautiful-place` | This place is beautiful. | 11 | 28 | 0 | 2 / 0 | 11 | 0 | 0 | no | no |  |
+| `phrase.talk.how-about-you` | How about you? | 11 | 28 | 0 | 1 / 2 | 14 | 0 | 0 | no | no |  |
+| `phrase.talk.i-like-it` | I like it a lot. | 11 | 24, 28 | 0 | 2 / 2 | 11 | 0 | 0 | yes | no |  |
+| `phrase.talk.recommend-place` | Can you recommend a place? | 11 | 24, 28 | 0 | 3 / 1 | 13 | 0 | 0 | yes | no |  |
+| `phrase.talk.nice-talking` | It was nice talking to you. | 11 | 24, 28 | 0 | 2 / 3 | 12 | 0 | 0 | yes | no |  |
 | `phrase.time.maybe-later` | Maybe later. | 12 | 18 | 1 | 2 / 0 | 3 | 0 | 1 | yes | no |  |
 | `phrase.time.free-tonight` | I'm free tonight. | 12 | 18 | 1 | 1 / 1 | 5 | 0 | 1 | yes | no |  |
 | `phrase.time.what-time` | What time? | 12 | — | 1 | 1 / 0 | 4 | 0 | 1 | no | no |  |
@@ -29321,7 +29626,7 @@ Every learner-production sentence id of the Core, in order of first appearance. 
 | `phrase.emerg.call-police` | Call the police! | 27 | — | 1 | 0 / 0 | 4 | 0 | 1 | no | no |  |
 | `phrase.emerg.where-hospital` | Where is the hospital? | 27 | — | 0 | 0 / 0 | 2 | 0 | 0 | no | no |  |
 
-Learner-production sentence ids: 164. With 0 active retrieval opportunities: 1.
+Learner-production sentence ids: 162. With 0 active retrieval opportunities: 1.
 
 # NPC Comprehension Coverage
 
@@ -29404,13 +29709,14 @@ Every expected-reply sentence id. "Quick response" does not exist as an exercise
 | `reply.shop.help-find` | Hi there! Can I help you find anything? | 09 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
 | `reply.shop.take-your-time` | Of course, take your time. Let me know if you need a hand. | 09 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
 | `reply.shop.till-line` | Wonderful — I’ll ring you up at the till. Thank you! | 09 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
-| `reply.talk.first-time-q` | Is this your first time here? | 11 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
-| `reply.talk.where-from` | Where are you from? | 11 | — | yes (1) | 0 / 1 | 0 / 0 | no | yes |
-| `reply.talk.do-you-like-it` | Do you like it here? | 11 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
+| `reply.talk.opening` | Hi! Beautiful view, isn't it? | 11 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.talk.really-where` | It really is. Where are you from? | 11 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.talk.from-here` | I'm from here! Is this your first time here? | 11 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.talk.welcome-like` | Welcome! Do you like it here? | 11 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.talk.food` | Me too. And the food here is wonderful. | 11 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.talk.tip` | Of course — try 'Mama Rosa', in the old town. It's very good. | 11 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.talk.goodbye` | You too! Enjoy the rest of your trip! | 11 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
 | `reply.talk.you-should-try` | You should try the old town. | 11 | — | yes (1) | 0 / 0 | 0 / 0 | no | **no** |
-| `reply.talk.how-long-here` | How long are you here for? | 11 | — | no | 1 / 0 | 0 / 0 | no | **no** |
-| `reply.talk.enjoy-rest` | Enjoy the rest of your trip! | 11 | — | no | 0 / 1 | 0 / 0 | no | yes |
-| `reply.talk.me-too` | Me too! | 11 | — | no | 0 / 0 | 0 / 0 | no | yes |
 | `reply.time.what-doing-today` | What are you doing today? | 12 | — | no | 0 / 0 | 0 / 0 | no | yes |
 | `reply.time.what-doing-tonight` | What are you doing tonight? | 12 | — | no | 0 / 0 | 0 / 0 | no | yes |
 | `reply.time.want-to-come` | Do you want to come? | 12 | — | no | 0 / 0 | 0 / 0 | no | yes |
@@ -29508,7 +29814,6 @@ Happy-path NPC lines containing a question, for which the mission has no expecte
 | 10 | cold-taxi / n1 | Hello! Where to? |
 | 10 | cold-taxi / n5 | …We are almost there. Is here okay? |
 | 10 | cold-hotel / n1 | Good evening! How can I help you? |
-| 11 | small-talk / n1 | Hi! Beautiful view, isn't it? |
 | 13 | at-a-friends-home / n11 | Lovely! You look tired. Are you okay? |
 | 13 | at-a-friends-home / n15 | And after dinner at your grandmother's? |
 | 15 | allergy-order / n1 | Hi there! Are you ready to order? |
@@ -29588,7 +29893,7 @@ Happy-path NPC lines containing a question, for which the mission has no expecte
 | 30 | fin-evening / n1 | Good evening! Is everything okay with your room? And breakfast tomorrow — is seven okay for you? |
 | 30 | fin-evening / n3 | Perfect. And how was your day? |
 
-Total: 87.
+Total: 86.
 
 # Complete Existing Question Bank
 
@@ -33181,174 +33486,231 @@ No questions.
 
 ## Mission 11 — Small Talk & Recommendations
 
-**M11-Q01** — expected-reply
-- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (1/4)
-- Audio: Where are you from? — (מאיפה אתה?)
-- A: מאיפה אתה? / Where are you from? ✅
-- B: זו הפעם הראשונה שלך כאן? / Is this your first time here?
-- C: אתה אוהב את המקום? / Do you like it here?
-- Correct: Where are you from?
-- Tests: reply.talk.where-from
+**M11-Q01** — quick-reply
+- Prompt: "What do you answer?" / "מה אתה עונה?"
+- Audio: Hi! Beautiful view, isn't it? — (היי! נוף יפה, נכון?)
+- A: This place is beautiful. ✅
+- B: I'm from Israel.
+- C: It's my first time here.
+- Correct: This place is beautiful.
+- Tests: phrase.talk.beautiful-place
 
-**M11-Q02** — expected-reply
-- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (2/4)
-- Audio: Is this your first time here? — (זו הפעם הראשונה שלך כאן?)
-- A: זו הפעם הראשונה שלך כאן? / Is this your first time here? ✅
-- B: מאיפה אתה? / Where are you from?
-- C: אתה אוהב את המקום? / Do you like it here?
-- Correct: Is this your first time here?
-- Tests: reply.talk.first-time-q
+**M11-Q02** — quick-reply
+- Prompt: "Answer → return the question" / "ענה ← החזר את השאלה"
+- Audio: It really is. Where are you from? — (באמת. מאיפה אתה?)
+- A: I'm from Israel. How about you? ✅
+- B: I'm from Israel.
+- C: This place is beautiful.
+- Correct: I'm from Israel. How about you?
+- Tests: phrase.talk.how-about-you
 
-**M11-Q03** — expected-reply
-- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (3/4)
-- Audio: Do you like it here? — (אתה אוהב את המקום?)
-- A: אתה אוהב את המקום? / Do you like it here? ✅
-- B: מאיפה אתה? / Where are you from?
-- C: זו הפעם הראשונה שלך כאן? / Is this your first time here?
-- Correct: Do you like it here?
-- Tests: reply.talk.do-you-like-it
+**M11-Q03** — quick-reply
+- Prompt: "What do you say?" / "מה אתה אומר?" — situation shown: "You said where you are from. Now return the question — keep the conversation going." / "ענית מאיפה אתה. עכשיו תחזיר את השאלה — כדי שהשיחה תמשיך."
+- Audio: (nothing is played — a situation is shown) — ()
+- A: How about you? ✅
+- B: This place is beautiful.
+- C: It's my first time here.
+- Correct: How about you?
+- Tests: phrase.talk.how-about-you
 
-**M11-Q04** — expected-reply
-- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (4/4)
+**M11-Q04** — quick-reply
+- Prompt: "What do you answer?" / "מה אתה עונה?"
+- Audio: I'm from here! Is this your first time here? — (אני מכאן! זו הפעם הראשונה שלך כאן?)
+- A: Yes, it's my first time here. ✅
+- B: How about you?
+- C: This place is beautiful.
+- Correct: Yes, it's my first time here.
+- Tests: phrase.social.first-time
+
+**M11-Q05** — quick-reply
+- Prompt: "What do you answer?" / "מה אתה עונה?"
+- Audio: Welcome! Do you like it here? — (ברוך הבא! אתה אוהב את המקום?)
+- A: Yes, I like it a lot. ✅
+- B: It's my first time here.
+- C: How about you?
+- Correct: Yes, I like it a lot.
+- Tests: phrase.talk.i-like-it
+
+**M11-Q06** — sentence-builder
+- Prompt: "Your request" / "הבקשה שלך" — cue shown: the sentence's MEANING in the app language ("אתה יכול להמליץ על מקום?")
+- Audio: (nothing before Check; the built sentence is spoken once it is right) — ()
+- A: Can you  |  recommend  |  a place? ✅
+- Correct: Can you  |  recommend  |  a place?
+- Tests: phrase.talk.recommend-place
+
+**M11-Q07** — quick-reply
+- Prompt: "What do you say?" / "מה אתה אומר?" — situation shown: "The local says the food here is wonderful. You want a local recommendation." / "המקומי אומר שהאוכל כאן נהדר. אתה רוצה המלצה מקומית."
+- Audio: (nothing is played — a situation is shown) — ()
+- A: Can you recommend a place? ✅
+- B: I like it a lot.
+- C: How about you?
+- Correct: Can you recommend a place?
+- Tests: phrase.talk.recommend-place
+
+**M11-Q08** — visual-match
+- Prompt: "📍 Local tip: ? — what did the local recommend, and where?" / "📍 טיפ מקומי: ? — מה הוא המליץ, ואיפה?"
+- Audio: Of course — try 'Mama Rosa', in the old town. It's very good. — (בטח — תנסה את 'מאמא רוזה', בעיר העתיקה. מאוד טוב שם.)
+- A: Mama Rosa ✅
+- B: Luna Café
+- C: Casa Verde
+- Correct: Mama Rosa
+- Tests: (no sentence id — not recorded)
+
+**M11-Q09** — visual-match
+- Prompt: "📍 Local tip: ? — what did the local recommend, and where?" / "📍 טיפ מקומי: ? — מה הוא המליץ, ואיפה?"
+- Audio: Of course — try 'Mama Rosa', in the old town. It's very good. — (בטח — תנסה את 'מאמא רוזה', בעיר העתיקה. מאוד טוב שם.)
+- A: Old Town ✅
+- B: City Centre
+- C: Beach
+- Correct: Old Town
+- Tests: (no sentence id — not recorded)
+
+**M11-Q10** — quick-reply
+- Prompt: "What do you say?" / "מה אתה אומר?" — situation shown: "You got your recommendation, and it is time to move on. End the conversation naturally." / "קיבלת המלצה, והגיע הזמן להמשיך. סיים את השיחה יפה."
+- Audio: (nothing is played — a situation is shown) — ()
+- A: Thank you! It was nice talking to you. ✅
+- B: Can you recommend a place?
+- C: How about you?
+- Correct: Thank you! It was nice talking to you.
+- Tests: phrase.talk.nice-talking
+
+**M11-Q11** — expected-reply
+- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (1/2)
+- Audio: You too! Enjoy the rest of your trip! — (גם לי! תיהנה משאר הטיול!)
+- A: גם לי! תיהנה משאר הטיול! / You too! Enjoy the rest of your trip! ✅
+- B: כדאי לך לנסות את העיר העתיקה. / You should try the old town.
+- Correct: You too! Enjoy the rest of your trip!
+- Tests: reply.talk.goodbye
+
+**M11-Q12** — expected-reply
+- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (2/2)
 - Audio: You should try the old town. — (כדאי לך לנסות את העיר העתיקה.)
 - A: כדאי לך לנסות את העיר העתיקה. / You should try the old town. ✅
-- B: מאיפה אתה? / Where are you from?
-- C: זו הפעם הראשונה שלך כאן? / Is this your first time here?
+- B: גם לי! תיהנה משאר הטיול! / You too! Enjoy the rest of your trip!
 - Correct: You should try the old town.
 - Tests: reply.talk.you-should-try
 
-**M11-Q05** — meaning-quiz
-- Prompt: "What did it mean?" / "מה זה אומר?"
-- Audio: How long are you here for? — (לכמה זמן אתה כאן?)
-- A: לכמה זמן אתה כאן? / How long are you here for? ✅
-- B: מאיפה אתה? / Where are you from?
-- C: תיהנה משאר הטיול! / Enjoy the rest of your trip!
-- Correct: How long are you here for?
-- Tests: reply.talk.how-long-here
+**M11-Q13** — quick-reply
+- Prompt: "💬 Connect ⬜ · 🗣️ Share ⬜ · 🙋 Ask ⬜ · 👋 Close ⬜ · 📍 Local tip: ?" / "💬 חיבור ⬜ · 🗣️ שיתוף ⬜ · 🙋 בקשה ⬜ · 👋 פרידה ⬜ · 📍 טיפ מקומי: ?"
+- Audio: Hi! Beautiful view, isn't it? — (היי! נוף יפה, נכון?)
+- A: This place is beautiful. ✅
+- B: It was nice talking to you.
+- C: Can you recommend a place?
+- Correct: This place is beautiful.
+- Tests: phrase.talk.beautiful-place
 
-**M11-Q06** — quick-reply
-- Prompt: "A chat with a local — what do you say?" / "שיחה עם מקומי — מה אומרים?"
-- Audio: Where are you from? — (מאיפה אתה?)
+**M11-Q14** — quick-reply
+- Prompt: "💬 Connect ⬜ · 🗣️ Share ⬜ · 🙋 Ask ⬜ · 👋 Close ⬜ · 📍 Local tip: ?" / "💬 חיבור ⬜ · 🗣️ שיתוף ⬜ · 🙋 בקשה ⬜ · 👋 פרידה ⬜ · 📍 טיפ מקומי: ?"
+- Audio: It really is. Where are you from? — (באמת. מאיפה אתה?)
 - A: I'm from Israel. How about you? ✅
 - B: It's my first time here.
 - C: I like it a lot.
 - Correct: I'm from Israel. How about you?
 - Tests: phrase.talk.how-about-you
 
-**M11-Q07** — quick-reply
-- Prompt: "A chat with a local — what do you say?" / "שיחה עם מקומי — מה אומרים?"
-- Audio: Is this your first time here? — (זו הפעם הראשונה שלך כאן?)
+**M11-Q15** — quick-reply
+- Prompt: "💬 Connect ✅ · 🗣️ Share ⬜ · 🙋 Ask ⬜ · 👋 Close ⬜ · 📍 Local tip: ?" / "💬 חיבור ✅ · 🗣️ שיתוף ⬜ · 🙋 בקשה ⬜ · 👋 פרידה ⬜ · 📍 טיפ מקומי: ?"
+- Audio: I'm from here! Is this your first time here? — (אני מכאן! זו הפעם הראשונה שלך כאן?)
 - A: Yes, it's my first time here. ✅
-- B: I'm from Israel.
+- B: Can you recommend a place?
 - C: It was nice talking to you.
 - Correct: Yes, it's my first time here.
 - Tests: phrase.social.first-time
 
-**M11-Q08** — quick-reply
-- Prompt: "A chat with a local — what do you say?" / "שיחה עם מקומי — מה אומרים?"
-- Audio: Do you like it here? — (אתה אוהב את המקום?)
+**M11-Q16** — quick-reply
+- Prompt: "💬 Connect ✅ · 🗣️ Share ⬜ · 🙋 Ask ⬜ · 👋 Close ⬜ · 📍 Local tip: ?" / "💬 חיבור ✅ · 🗣️ שיתוף ⬜ · 🙋 בקשה ⬜ · 👋 פרידה ⬜ · 📍 טיפ מקומי: ?"
+- Audio: Welcome! Do you like it here? — (ברוך הבא! אתה אוהב את המקום?)
 - A: Yes, I like it a lot. ✅
-- B: I love the food here. ✅
-- C: Can you recommend a place?
-- Correct: Yes, I like it a lot. | I love the food here.
-- Tests: phrase.talk.i-like-it, phrase.talk.love-food
-
-**M11-Q09** — quick-reply
-- Prompt: "A chat with a local — what do you say?" / "שיחה עם מקומי — מה אומרים?" — situation shown: "You said you like it here. Now it is your turn to ask back." / "אמרת שאתה אוהב את המקום. עכשיו תורך לשאול בחזרה."
-- Audio: (nothing is played — a situation is shown) — ()
-- A: How about you? ✅
-- B: It was nice talking to you.
+- B: How about you?
 - C: This place is beautiful.
-- Correct: How about you?
-- Tests: phrase.talk.how-about-you
+- Correct: Yes, I like it a lot.
+- Tests: phrase.talk.i-like-it
 
-**M11-Q10** — quick-reply
-- Prompt: "A chat with a local — what do you say?" / "שיחה עם מקומי — מה אומרים?"
+**M11-Q17** — quick-reply
+- Prompt: "💬 Connect ✅ · 🗣️ Share ✅ · 🙋 Ask ⬜ · 👋 Close ⬜ · 📍 Local tip: ?" / "💬 חיבור ✅ · 🗣️ שיתוף ✅ · 🙋 בקשה ⬜ · 👋 פרידה ⬜ · 📍 טיפ מקומי: ?"
 - Audio: Me too. And the food here is wonderful. — (גם אני. והאוכל כאן נהדר.)
 - A: Can you recommend a place? ✅
-- B: What do you recommend? ✅
-- C: It was nice talking to you.
-- Correct: Can you recommend a place? | What do you recommend?
-- Tests: phrase.talk.recommend-place, phrase.rest.recommend
+- B: It was nice talking to you.
+- C: I like it a lot.
+- Correct: Can you recommend a place?
+- Tests: phrase.talk.recommend-place
 
-**M11-Q11** — quick-reply
-- Prompt: "A chat with a local — what do you say?" / "שיחה עם מקומי — מה אומרים?"
-- Audio: You should try the old town. — (כדאי לך לנסות את העיר העתיקה.)
+**M11-Q18** — visual-match
+- Prompt: "📍 Local tip: ? — what is the tip?" / "📍 טיפ מקומי: ? — מה ההמלצה?"
+- Audio: Of course — try 'Mama Rosa', in the old town. It's very good. — (בטח — תנסה את 'מאמא רוזה', בעיר העתיקה. מאוד טוב שם.)
+- A: Mama Rosa · Old Town ✅
+- B: Mama Rosa · City Centre
+- C: Luna Café · Old Town
+- Correct: Mama Rosa · Old Town
+- Tests: (no sentence id — not recorded)
+
+**M11-Q19** — quick-reply
+- Prompt: "💬 Connect ✅ · 🗣️ Share ✅ · 🙋 Ask ✅ · 👋 Close ⬜ · 📍 Mama Rosa · Old Town" / "💬 חיבור ✅ · 🗣️ שיתוף ✅ · 🙋 בקשה ✅ · 👋 פרידה ⬜ · 📍 Mama Rosa · העיר העתיקה"
+- Audio: Of course — try 'Mama Rosa', in the old town. It's very good. — (בטח — תנסה את 'מאמא רוזה', בעיר העתיקה. מאוד טוב שם.)
 - A: Thank you! It was nice talking to you. ✅
-- B: This place is beautiful.
-- C: It's my first time here.
+- B: Can you recommend a place?
+- C: How about you?
 - Correct: Thank you! It was nice talking to you.
 - Tests: phrase.talk.nice-talking
 
-**M11-Q12** — sentence-builder
-- Prompt: "Build the sentence" / "בנה את המשפט" — cue shown: the sentence's MEANING in the app language ("אתה יכול להמליץ על מקום?")
-- Audio: (nothing before Check; the built sentence is spoken once it is right) — ()
-- A: Can you  |  recommend  |  a place? ✅
-- Correct: Can you  |  recommend  |  a place?
-- Tests: phrase.talk.recommend-place
-
-**M11-Q13** — dialogue-choice
+**M11-Q20** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Hi! Beautiful view, isn't it? — (היי! נוף יפה, נכון?)
 - A: This place is beautiful. ✅
+- B: I'm from Israel.
 - Correct: This place is beautiful.
-- Tests: phrase.talk.beautiful-place
+- Tests: phrase.talk.beautiful-place, phrase.social.from-israel
 
-**M11-Q14** — dialogue-choice
+**M11-Q21** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: It really is. Where are you from? — (באמת. מאיפה אתה?)
 - A: I'm from Israel. How about you? ✅
+- B: It's my first time here.
 - Correct: I'm from Israel. How about you?
-- Tests: phrase.talk.how-about-you
+- Tests: phrase.talk.how-about-you, phrase.social.first-time
 
-**M11-Q15** — dialogue-choice
+**M11-Q22** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: I'm from here! Is this your first time here? — (אני מכאן! זו הפעם הראשונה שלך כאן?)
 - A: Yes, it's my first time here. ✅
-- B: Can you repeat that? ✅
-- Correct: Yes, it's my first time here. | Can you repeat that?
-- Tests: phrase.social.first-time, phrase.recovery.repeat
-
-**M11-Q16** — dialogue-choice
-- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio: Your first time — here? — (הפעם הראשונה שלך — כאן?)
-- A: Yes, it's my first time here. ✅
+- B: I like it a lot.
 - Correct: Yes, it's my first time here.
-- Tests: phrase.social.first-time
+- Tests: phrase.social.first-time, phrase.talk.i-like-it
 
-**M11-Q17** — dialogue-choice
+**M11-Q23** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Welcome! Do you like it here? — (ברוך הבא! אתה אוהב את המקום?)
 - A: Yes, I like it a lot. ✅
-- B: I love the food here. ✅
-- Correct: Yes, I like it a lot. | I love the food here.
-- Tests: phrase.talk.i-like-it, phrase.talk.love-food
+- B: Can you recommend a place?
+- Correct: Yes, I like it a lot.
+- Tests: phrase.talk.i-like-it, phrase.talk.recommend-place
 
-**M11-Q18** — dialogue-choice
+**M11-Q24** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Me too. And the food here is wonderful. — (גם אני. והאוכל כאן נהדר.)
 - A: Can you recommend a place? ✅
-- B: What do you recommend? ✅
-- Correct: Can you recommend a place? | What do you recommend?
-- Tests: phrase.talk.recommend-place, phrase.rest.recommend
+- B: It was nice talking to you.
+- Correct: Can you recommend a place?
+- Tests: phrase.talk.recommend-place, phrase.talk.nice-talking
 
-**M11-Q19** — dialogue-choice
+**M11-Q25** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Of course — try 'Mama Rosa', in the old town. It's very good. — (בטח — תנסה את 'מאמא רוזה', בעיר העתיקה. מאוד טוב שם.)
 - A: Thank you! It was nice talking to you. ✅
+- B: How about you?
 - Correct: Thank you! It was nice talking to you.
-- Tests: phrase.talk.nice-talking
+- Tests: phrase.talk.nice-talking, phrase.talk.how-about-you
 
-**M11-Q20** — quick-reply
+**M11-Q26** — quick-reply
 - Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio: Hi! Beautiful view, isn't it? — (היי! נוף יפה, נכון?)
 - A: This place is beautiful. ✅
-- B: It was nice talking to you.
-- C: I'm from Israel.
+- B: I'm from Israel.
+- C: It was nice talking to you.
 - Correct: This place is beautiful.
 - Tests: phrase.talk.beautiful-place
 
-**M11-Q21** — quick-reply
+**M11-Q27** — quick-reply
 - Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio: It really is. Where are you from? — (באמת. מאיפה אתה?)
 - A: I'm from Israel. How about you? ✅
@@ -33357,7 +33719,7 @@ No questions.
 - Correct: I'm from Israel. How about you?
 - Tests: phrase.talk.how-about-you
 
-**M11-Q22** — quick-reply
+**M11-Q28** — quick-reply
 - Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio: I'm from here! Is this your first time here? — (אני מכאן! זו הפעם הראשונה שלך כאן?)
 - A: Yes, it's my first time here. ✅
@@ -33366,16 +33728,16 @@ No questions.
 - Correct: Yes, it's my first time here.
 - Tests: phrase.social.first-time
 
-**M11-Q23** — quick-reply
+**M11-Q29** — quick-reply
 - Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio: Welcome! Do you like it here? — (ברוך הבא! אתה אוהב את המקום?)
 - A: Yes, I like it a lot. ✅
 - B: I'm from Israel.
-- C: It was nice talking to you.
+- C: Can you recommend a place?
 - Correct: Yes, I like it a lot.
 - Tests: phrase.talk.i-like-it
 
-**M11-Q24** — quick-reply
+**M11-Q30** — quick-reply
 - Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio: Me too. And the food here is wonderful. — (גם אני. והאוכל כאן נהדר.)
 - A: Can you recommend a place? ✅
@@ -33384,12 +33746,84 @@ No questions.
 - Correct: Can you recommend a place?
 - Tests: phrase.talk.recommend-place
 
-**M11-Q25** — quick-reply
+**M11-Q31** — visual-match
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Of course — try 'Mama Rosa', in the old town. It's very good. — (בטח — תנסה את 'מאמא רוזה', בעיר העתיקה. מאוד טוב שם.)
+- A: Mama Rosa · Old Town ✅
+- B: Mama Rosa · City Centre
+- C: Luna Café · Old Town
+- Correct: Mama Rosa · Old Town
+- Tests: (no sentence id — not recorded)
+
+**M11-Q32** — quick-reply
 - Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio: Of course — try 'Mama Rosa', in the old town. It's very good. — (בטח — תנסה את 'מאמא רוזה', בעיר העתיקה. מאוד טוב שם.)
 - A: Thank you! It was nice talking to you. ✅
 - B: How about you?
 - C: I like it a lot.
+- Correct: Thank you! It was nice talking to you.
+- Tests: phrase.talk.nice-talking
+
+**M11-Q33** — quick-reply
+- Prompt: "💬 Connect ⬜ · 🗣️ Share ⬜ · 🙋 Ask ⬜ · 👋 Close ⬜ · 📍 Local tip: ?" / "💬 חיבור ⬜ · 🗣️ שיתוף ⬜ · 🙋 בקשה ⬜ · 👋 פרידה ⬜ · 📍 טיפ מקומי: ?"
+- Audio: Hi! Beautiful view, isn't it? — (היי! נוף יפה, נכון?)
+- A: This place is beautiful. ✅
+- B: Can you recommend a place?
+- C: I'm from Israel.
+- Correct: This place is beautiful.
+- Tests: phrase.talk.beautiful-place
+
+**M11-Q34** — quick-reply
+- Prompt: "💬 Connect ⬜ · 🗣️ Share ⬜ · 🙋 Ask ⬜ · 👋 Close ⬜ · 📍 Local tip: ?" / "💬 חיבור ⬜ · 🗣️ שיתוף ⬜ · 🙋 בקשה ⬜ · 👋 פרידה ⬜ · 📍 טיפ מקומי: ?"
+- Audio: It really is. Where are you from? — (באמת. מאיפה אתה?)
+- A: I'm from Israel. How about you? ✅
+- B: It was nice talking to you.
+- C: It's my first time here.
+- Correct: I'm from Israel. How about you?
+- Tests: phrase.talk.how-about-you
+
+**M11-Q35** — quick-reply
+- Prompt: "💬 Connect ✅ · 🗣️ Share ⬜ · 🙋 Ask ⬜ · 👋 Close ⬜ · 📍 Local tip: ?" / "💬 חיבור ✅ · 🗣️ שיתוף ⬜ · 🙋 בקשה ⬜ · 👋 פרידה ⬜ · 📍 טיפ מקומי: ?"
+- Audio: I'm from here! Is this your first time here? — (אני מכאן! זו הפעם הראשונה שלך כאן?)
+- A: Yes, it's my first time here. ✅
+- B: I like it a lot.
+- C: How about you?
+- Correct: Yes, it's my first time here.
+- Tests: phrase.social.first-time
+
+**M11-Q36** — quick-reply
+- Prompt: "💬 Connect ✅ · 🗣️ Share ⬜ · 🙋 Ask ⬜ · 👋 Close ⬜ · 📍 Local tip: ?" / "💬 חיבור ✅ · 🗣️ שיתוף ⬜ · 🙋 בקשה ⬜ · 👋 פרידה ⬜ · 📍 טיפ מקומי: ?"
+- Audio: Welcome! Do you like it here? — (ברוך הבא! אתה אוהב את המקום?)
+- A: Yes, I like it a lot. ✅
+- B: It was nice talking to you.
+- C: This place is beautiful.
+- Correct: Yes, I like it a lot.
+- Tests: phrase.talk.i-like-it
+
+**M11-Q37** — quick-reply
+- Prompt: "💬 Connect ✅ · 🗣️ Share ✅ · 🙋 Ask ⬜ · 👋 Close ⬜ · 📍 Local tip: ?" / "💬 חיבור ✅ · 🗣️ שיתוף ✅ · 🙋 בקשה ⬜ · 👋 פרידה ⬜ · 📍 טיפ מקומי: ?"
+- Audio: Me too. And the food here is wonderful. — (גם אני. והאוכל כאן נהדר.)
+- A: Can you recommend a place? ✅
+- B: How about you?
+- C: It was nice talking to you.
+- Correct: Can you recommend a place?
+- Tests: phrase.talk.recommend-place
+
+**M11-Q38** — visual-match
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Of course — try 'Mama Rosa', in the old town. It's very good. — (בטח — תנסה את 'מאמא רוזה', בעיר העתיקה. מאוד טוב שם.)
+- A: Mama Rosa · Old Town ✅
+- B: Mama Rosa · City Centre
+- C: Luna Café · Old Town
+- Correct: Mama Rosa · Old Town
+- Tests: (no sentence id — not recorded)
+
+**M11-Q39** — quick-reply
+- Prompt: "💬 Connect ✅ · 🗣️ Share ✅ · 🙋 Ask ✅ · 👋 Close ⬜ · 📍 Mama Rosa · Old Town" / "💬 חיבור ✅ · 🗣️ שיתוף ✅ · 🙋 בקשה ✅ · 👋 פרידה ⬜ · 📍 Mama Rosa · העיר העתיקה"
+- Audio: Of course — try 'Mama Rosa', in the old town. It's very good. — (בטח — תנסה את 'מאמא רוזה', בעיר העתיקה. מאוד טוב שם.)
+- A: Thank you! It was nice talking to you. ✅
+- B: I like it a lot.
+- C: Can you recommend a place?
 - Correct: Thank you! It was nice talking to you.
 - Tests: phrase.talk.nice-talking
 
@@ -37489,17 +37923,17 @@ No questions.
 # Totals
 
 - Missions exported: 30
-- Learner-production sentence ids: 164
-- Expected-reply (receptive) sentence ids: 162
-- Sentence listings across missions (with reuse): 524
-- Expected-reply questions: 96
-- Meaning quizzes: 5
-- Active-practice questions: 533
-- Dialogue choice screens: 260
+- Learner-production sentence ids: 162
+- Expected-reply (receptive) sentence ids: 163
+- Sentence listings across missions (with reuse): 522
+- Expected-reply questions: 94
+- Meaning quizzes: 4
+- Active-practice questions: 551
+- Dialogue choice screens: 259
 - Cold opens: 8
-- Total interactive questions: 902
-- Total answer choices: 2418
-- Wrong-answer branches: 83
-- Recovery opportunities: 53
+- Total interactive questions: 916
+- Total answer choices: 2463
+- Wrong-answer branches: 89
+- Recovery opportunities: 52
 - Learner sentences with 0 active retrieval opportunities: 1
-- Auto-flags: 201
+- Auto-flags: 204

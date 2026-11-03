@@ -79,13 +79,13 @@ describe('scope: only the Practice of Missions 11–18 changed', () => {
   it('Missions 08–10 are not this pass\'s: each has its own (mission08.test.ts, mission09.test.ts, mission10.test.ts)', () => {
     for (const lang of LANGS) expect(slice(lang, 9, 10)[0]!.steps.some((s) => s.kind === 'checkpoint'), lang).toBe(true);
   });
-  it('the locked dialogues of Missions 11–17 are byte-for-byte unchanged', () => {
-    expect(print((l) => slice(l, 10, 17).map((d) => d.dialogues))).toEqual({ en: '66104490', fr: 'c4e783b1', es: 'fccb4e58' });
+  it('the locked dialogues of Missions 12–17 are byte-for-byte unchanged (Mission 11 has its own pass since: mission11.test.ts)', () => {
+    expect(print((l) => slice(l, 11, 17).map((d) => d.dialogues))).toEqual({ en: '8a574fb3', fr: 'fed9804b', es: '12b488e9' });
   });
   it('the approved practice is otherwise exactly as approved (after the final cleanup)', () => {
     const d = (l: Lang, n: number): BootcampDayContent => beforeCueFreeze(MISSIONS_BY_LANG[l]![BOOTCAMP_PLAN[n - 1]!.day]!, l);
-    // Missions 11, 12, 13, 16 and 18, whole — sentences, dialogues and steps.
-    expect(print((l) => [11, 12, 13, 16, 18].map((n) => d(l, n)))).toEqual({ en: 'fefb99b2', fr: 'efbedefa', es: '14e713f6' });
+    // Missions 12, 13, 16 and 18, whole — sentences, dialogues and steps (Mission 11: mission11.test.ts).
+    expect(print((l) => [12, 13, 16, 18].map((n) => d(l, n)))).toEqual({ en: 'dcb36da0', fr: 'b450192e', es: '55487961' });
     // Mission 14 apart from one distractor in Restaurant Rush, 15 apart from the match tiles, 17 apart from its intro card.
     expect(print((l) => d(l, 14).steps.filter((s, i, a) => !(s.kind === 'quickReply' && a.findIndex((x) => x.kind === 'quickReply') === i)).filter((s) => l !== 'fr' || s.kind !== 'prime'))).toEqual({ en: 'ac1eb75a', fr: FR_M14_WITHOUT_PRIME, es: '27d1f46c' });
     expect(print((l) => d(l, 15).steps.filter((s) => s.kind !== 'matchPairs'))).toEqual({ en: '091834c0', fr: 'e115664e', es: '29f26c1d' });
@@ -152,7 +152,8 @@ describe('all three languages get the same practice, each in its own words', () 
       if (s.kind === 'receipt') return [s.kind, s.text];
       return s.kind;
     };
-    for (let n = 11; n <= 18; n++) for (const lang of ['fr', 'es'] as const) expect(mission(n, lang).steps.map(shape), `${lang} M${n}`).toEqual(mission(n).steps.map(shape));
+    // (Mission 11 has its own pass since — its parity, tile ids included, is proved in mission11.test.ts.)
+    for (let n = 12; n <= 18; n++) for (const lang of ['fr', 'es'] as const) expect(mission(n, lang).steps.map(shape), `${lang} M${n}`).toEqual(mission(n).steps.map(shape));
   });
   it('sentence-builder chunks are each language\'s own and spell the taught sentence exactly', () => {
     for (let n = 11; n <= 17; n++) for (const lang of LANGS) {
@@ -214,7 +215,8 @@ describe('all three languages get the same practice, each in its own words', () 
     }
   });
   it('active retrieval outside the dialogue: 8–16 moments per teaching mission', () => {
-    for (let n = 11; n <= 17; n++) {
+    // (Mission 11 has its own pass since — its 33 interactions are counted in mission11.test.ts.)
+    for (let n = 12; n <= 17; n++) {
       const day = mission(n);
       const moments = day.steps.reduce((k, s) => k + (s.kind === 'quickReply' || s.kind === 'swap' || s.kind === 'sentenceBuilder' ? s.rounds.length : 0), 0);
       expect(moments, `M${n}`).toBeGreaterThanOrEqual(8);
@@ -229,44 +231,7 @@ describe('all three languages get the same practice, each in its own words', () 
   });
 });
 
-/* ── Mission 11 — Small Talk & Recommendations ───────────────────────────────────────────────── */
-
-describe('Mission 11 — Small Talk & Recommendations', () => {
-  const day = mission(11);
-  it('flow: learn → recognize → one listening check → the chat → build the request → conversation → the chat at speed', () => {
-    expect(kinds(day)).toEqual(['talk', 'tool', 'tool', 'tool', 'tool', 'tool', 'replies', 'receipt', 'quiz', 'quickReply', 'sentenceBuilder', 'dialogue', 'receipt', 'swipe', 'quickReply:speed', 'receipt', 'summary']);
-  });
-  it('the Quick Reply is a conversation: where from → first time → do you like it → ask back → recommendation → goodbye', () => {
-    expect(mapOf(chat(day))).toEqual([
-      ['reply.talk.where-from', ['phrase.talk.how-about-you']],
-      ['reply.talk.first-time-q', ['phrase.social.first-time']],
-      ['reply.talk.do-you-like-it', ['phrase.talk.i-like-it', 'phrase.talk.love-food']],
-      ['situation', ['phrase.talk.how-about-you']],
-      ['Me too. And the food here is wonderful.', ['phrase.talk.recommend-place', 'phrase.rest.recommend']],
-      ['reply.talk.you-should-try', ['phrase.talk.nice-talking']],
-    ]);
-  });
-  it('"How about you?" is really retrieved — wrapped in an answer, on its own, and at speed', () => {
-    expect(retrieved(day).get('phrase.talk.how-about-you')).toBe(3);
-    const wrapped = chat(day).rounds[0]!.options.find((o) => o.correct)!;
-    expect(wrapped.text).toBe("I'm from Israel. How about you?");
-    expect(chat(day).rounds[3]!.options.find((o) => o.correct)!.text).toBeUndefined(); // alone
-    // …but not forced after every answer.
-    expect(retrieved(day).get('phrase.talk.how-about-you')).toBeLessThan(chat(day).rounds.length);
-  });
-  it('asking for a recommendation is retrieved three ways — chosen, built from pieces, and at speed — and the answer is understood', () => {
-    expect(retrieved(day).get('phrase.talk.recommend-place')).toBe(3);
-    expect(strip(stepsOf(day, 'sentenceBuilder')[0]!.rounds[0]!.itemId)).toBe('phrase.talk.recommend-place');
-    expect(stepsOf(day, 'replies')[0]!.replyIds.map(strip)).toContain('reply.talk.you-should-try');
-    expect(day.items).toHaveLength(17); // no tourism vocabulary was added
-  });
-  it('the old cold open (untaught "a few days or longer") is gone', () => {
-    expect(stepsOf(day, 'ambush')).toHaveLength(0);
-    expect(JSON.stringify(day.steps)).not.toMatch(/few days or longer/);
-  });
-});
-
-/* ── Mission 12 — Time & Plans ───────────────────────────────────────────────────────────────── */
+/* ── Mission 11 — Small Talk & Recommendations: its own pass since — mission11.test.ts ──────────── */
 
 describe('Mission 12 — Time & Plans', () => {
   const day = mission(12);

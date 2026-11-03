@@ -7,14 +7,22 @@ export function splitHotelStay(text: string): { before: string; facts: string[];
   return { before: text.slice(0, match.index), facts, after: text.slice(match.index + match[0].length) };
 }
 
-/** Mission 09's shopping journey — five stages, each ✅ or ⬜ — split the same way; never a new fact. */
+/** The staged journeys — each stage ✅ or ⬜ — split the same way; never a new fact. Mission 09's
+ *  shopping journey (five stages) and Mission 11's conversation flow (four). */
+const JOURNEYS: readonly { re: RegExp; stages: number }[] = [
+  { re: /👀 (?:Browse|מסתכלים) [\s\S]+?🛍️ (?:Buy|קונים) (?:✅|⬜)/u, stages: 5 },
+  { re: /💬 (?:Connect|חיבור) [\s\S]+?👋 (?:Close|פרידה) (?:✅|⬜)/u, stages: 4 },
+];
 export function splitJourney(text: string): { before: string; facts: string[]; after: string } | null {
-  const match = /👀 (?:Browse|מסתכלים) [\s\S]+?🛍️ (?:Buy|קונים) (?:✅|⬜)/u.exec(text);
-  if (!match) return null;
-  const facts = match[0].split(' · ');
-  if (facts.length !== 5) return null;
-  // The separator before the grid is the grid's own edge on screen: not shown as a stray "·".
-  return { before: text.slice(0, match.index).replace(/\s*·\s*$/u, ''), facts, after: text.slice(match.index + match[0].length) };
+  for (const { re, stages } of JOURNEYS) {
+    const match = re.exec(text);
+    if (!match) continue;
+    const facts = match[0].split(' · ');
+    if (facts.length !== stages) return null;
+    // The separators around the grid are the grid's own edges on screen: not shown as a stray "·".
+    return { before: text.slice(0, match.index).replace(/\s*·\s*$/u, ''), facts, after: text.slice(match.index + match[0].length).replace(/^\s*·\s*/u, '') };
+  }
+  return null;
 }
 
 export function HotelStaySummary({ text }: { text: string }) {

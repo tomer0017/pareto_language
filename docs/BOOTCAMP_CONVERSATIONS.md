@@ -593,28 +593,24 @@ _Reply-training drill:_ “Hi there! Can I help you find anything?” · “Of c
 
 ### Core phrases (you say)
 - **This place is beautiful.** · המקום הזה יפהפה. — _מחמאה למקום פותחת כל שיחה._
+- **I'm from Israel.** · אני מישראל. — _התבנית: I’m from ___ — התשובה ל-Where are you from._
 - **How about you?** · ואתה? — _להחזיר את השאלה — וכבר יש שיחה._
 - **It's my first time here.** · זו הפעם הראשונה שלי כאן. — _פותח שיחה ומזמין המלצות._
 - **I like it a lot.** · אני מאוד אוהב.
-- **I love the food here.** · אני אוהב את האוכל כאן.
 - **Can you recommend a place?** · אתה יכול להמליץ על מקום? — _מקומיים יודעים הכי טוב. תשאל._
-- **What do you recommend?** · מה אתה ממליץ? — _אם התפריט מבלבל — תן למלצר להחליט. תמיד עובד._
 - **It was nice talking to you.** · היה נעים לדבר איתך.
-- **I'm from Israel.** · אני מישראל. — _התבנית: I’m from ___ — התשובה ל-Where are you from._
 
 ### Expected replies (you hear)
-- **Is this your first time here?** · זו הפעם הראשונה שלך כאן?
-- **Where are you from?** · מאיפה אתה?
-- **Do you like it here?** · אתה אוהב את המקום?
+- **Hi! Beautiful view, isn't it?** · היי! נוף יפה, נכון?
+- **It really is. Where are you from?** · באמת. מאיפה אתה?
+- **I'm from here! Is this your first time here?** · אני מכאן! זו הפעם הראשונה שלך כאן?
+- **Welcome! Do you like it here?** · ברוך הבא! אתה אוהב את המקום?
+- **Me too. And the food here is wonderful.** · גם אני. והאוכל כאן נהדר.
+- **Of course — try 'Mama Rosa', in the old town. It's very good.** · בטח — תנסה את 'מאמא רוזה', בעיר העתיקה. מאוד טוב שם.
+- **You too! Enjoy the rest of your trip!** · גם לי! תיהנה משאר הטיול!
 - **You should try the old town.** · כדאי לך לנסות את העיר העתיקה.
-- **How long are you here for?** · לכמה זמן אתה כאן?
-- **Enjoy the rest of your trip!** · תיהנה משאר הטיול!
-- **Me too!** · גם אני!
 
-_Reply-training drill:_ “Where are you from?” · “Is this your first time here?” · “Do you like it here?” · “You should try the old town.”
-
-### Recovery tools reused
-`Can you repeat that?`
+_Reply-training drill:_ “You too! Enjoy the rest of your trip!” · “You should try the old town.”
 
 ### Dialogue: `small-talk` — happy path
 - **🧑 Them:** “Hi! Beautiful view, isn't it?” · היי! נוף יפה, נכון?
@@ -630,6 +626,14 @@ _Reply-training drill:_ “Where are you from?” · “Is this your first time 
 - **🧑 Them:** “Of course — try 'Mama Rosa', in the old town. It's very good.” · בטח — תנסה את 'מאמא רוזה', בעיר העתיקה. מאוד טוב שם.
 - **🫵 You:** “Thank you! It was nice talking to you.” · תודה! היה נעים לדבר איתך.
 - **🧑 Them:** “You too! Enjoy the rest of your trip!” · גם לי! תיהנה משאר הטיול!
+
+#### Wrong / recovery branches
+- ⚠︎ less useful: 🫵 “I'm from Israel.” → 🧑 “Hi! Beautiful view, isn't it?” · היי! נוף יפה, נכון?
+- ⚠︎ less useful: 🫵 “It's my first time here.” → 🧑 “It really is. Where are you from?” · באמת. מאיפה אתה?
+- ⚠︎ less useful: 🫵 “I like it a lot.” → 🧑 “I'm from here! Is this your first time here?” · אני מכאן! זו הפעם הראשונה שלך כאן?
+- ⚠︎ less useful: 🫵 “Can you recommend a place?” → 🧑 “Welcome! Do you like it here?” · ברוך הבא! אתה אוהב את המקום?
+- ⚠︎ less useful: 🫵 “It was nice talking to you.” → 🧑 “Me too. And the food here is wonderful.” · גם אני. והאוכל כאן נהדר.
+- ⚠︎ less useful: 🫵 “How about you?” → 🧑 “Of course — try 'Mama Rosa', in the old town. It's very good.” · בטח — תנסה את 'מאמא רוזה', בעיר העתיקה. מאוד טוב שם.
 
 ### Review status
 - 🤖 AI-drafted (English + Hebrew) — **pending human / native-Hebrew review**

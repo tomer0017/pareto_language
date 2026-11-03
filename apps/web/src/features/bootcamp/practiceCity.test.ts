@@ -75,7 +75,7 @@ describe('scope: only the Practice of Missions 19–24 changed', () => {
   const print = (f: (lang: Lang) => unknown): Record<Lang, string> => ({ en: fnv(JSON.stringify(f('en'))), fr: fnv(JSON.stringify(f('fr'))), es: fnv(JSON.stringify(f('es'))) });
 
   it('Missions 08–18 are byte-for-byte unchanged (Missions 01–07 have their own passes — mission01.test.ts … mission07.test.ts)', () => {
-    expect(print((l) => slice(l, 10, 18))).toEqual({ en: '34c7fd66', fr: '4de7e041', es: 'd2eec35d' }); // since the Mission 10 pass: Missions 11–18 (Mission 10: mission10.test.ts)
+    expect(print((l) => slice(l, 11, 18))).toEqual({ en: '301aa66c', fr: '4bdcfbed', es: 'c5e79d58' }); // since the Mission 11 pass: Missions 12–18 (Missions 10 and 11: mission10.test.ts, mission11.test.ts)
   });
   it('the locked dialogues of Missions 19–23 are byte-for-byte unchanged', () => {
     expect(print((l) => slice(l, 18, 23).map((d) => d.dialogues))).toEqual({ en: '594ead2b', fr: '63803269', es: '55c7bd8f' });
@@ -578,7 +578,7 @@ describe('Mission 24 — CHECKPOINT: City & Conversation', () => {
     expect(pick(2)).toEqual(['✓ phrase.future.going-to-vietnam', '✗ phrase.past.i-went']);
   });
   it('"You should take the boat tour." recombines a structure Mission 11 already taught — it is not new language', () => {
-    // Mission 11 drills "You should try the old town." by ear and answers it in its chat. The
+    // Mission 11 drills "You should try the old town." by ear, with its meaning, as you part. The
     // checkpoint keeps the same opening — You should / Vous devriez / Debería + a verb the learner
     // already has — with a different, known ending. Composing known pieces is the point of a checkpoint.
     const opening: Record<Lang, RegExp> = { en: /^You should \w+/, fr: /^Vous devriez \w+/, es: /^Debería \w+/ };
@@ -586,7 +586,7 @@ describe('Mission 24 — CHECKPOINT: City & Conversation', () => {
       const taughtLine = text(mission(11, lang), 'reply.talk.you-should-try');
       expect(taughtLine, lang).toMatch(opening[lang]);
       expect(stepsOf(mission(11, lang), 'replies')[0]!.replyIds.map(strip), lang).toContain('reply.talk.you-should-try'); // drilled
-      expect(stepsOf(mission(11, lang), 'quickReply').some((s) => s.rounds.some((r) => strip(r.promptItemId) === 'reply.talk.you-should-try')), lang).toBe(true); // and answered
+      expect(mission(11, lang).items.find((i) => strip(i.id) === 'reply.talk.you-should-try')!.meaning.he, lang).toBeTruthy(); // with its meaning
       const local = mission(24, lang).dialogues['cold-chat']!.nodes.filter((n) => n.who === 'npc' && !n.slow).map((n) => n.en);
       const line = local.find((l) => opening[lang].test(l))!;
       expect(line, lang).toBeDefined();

@@ -221,6 +221,10 @@ export interface MissionSpec {
   steps?: (lang: MissionLang) => BootcampStep[];
   /** Show "Mission N:" on the opening card. Default: only missions that teach (not checkpoints). */
   numbered?: boolean;
+  /** A scenario briefing on the opening card: what the learner already knows, label → value. */
+  facts?: { icon: string; label: Copy; value: Copy }[];
+  /** The opening card's picture (a public path), once its artwork exists. */
+  image?: string;
 }
 
 /* ── spec helpers ──────────────────────────────────────────────────────────────────────────────── */
@@ -453,6 +457,8 @@ export function buildMission(spec: MissionSpec, lang: MissionLang): BootcampDayC
     title: numbered ? { he: `משימה ${number}: ${spec.title[0]}`, en: `Mission ${number}: ${spec.title[1]}` } : T(spec.title),
     body: spec.intro.map(T),
     cta: T(spec.cta),
+    ...(spec.image ? { image: spec.image } : {}),
+    ...(spec.facts ? { facts: spec.facts.map((f) => ({ icon: f.icon, label: T(f.label), value: T(f.value) })) } : {}),
   };
 
   const steps: BootcampStep[] = [talk];

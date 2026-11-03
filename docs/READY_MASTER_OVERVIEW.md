@@ -486,3 +486,26 @@ same id and wording; recovery beats and the elevator ambush removed). Checkpoint
 recombination: `checkpointAudit.ts` (`learnedBefore` / `unprepared*` unchanged). No new artwork:
 M07's road pictures, M08's elevator panel, figures as UI. Strong learner: 28 interactions; gaps add
 only their repairs. Tests: `mission10.test.ts` (71); Missions 01–09 and 11–30 byte-for-byte unchanged.
+
+## Mission 11 — Small Talk & Recommendations, full learning flow — 2026-11-03
+
+Mission 11 is rebuilt around its LOCKED EN/ES/FR conversation (unchanged wording) as conversational
+RHYTHM: Connect → Share (answer + bounce the question back) → Ask (the learner's own initiative after
+"the food here is wonderful") → Close. Journey: `practiceSmallTalk.ts` (`m11Steps`), wired through the
+spec (`core/smallTalk.ts`, new optional `facts` / `image` on `MissionSpec`). Briefing = the brief's
+Hebrew line + traveller card (🇮🇱 Israel · 🧳 First visit) — nothing about the local, the food or the tip.
+Each beat: whole-line cards with their meaning → answered. Partial prior learning: "I'm from Israel." and
+"Yes, it's my first time here." (Mission 01, verified by `learnedBefore(lang, 11)`) are ♻️ review cards;
+"How about you?" gets its own card; the request builder keeps the prior "Can you" apart from the new
+"recommend a place". Mama Rosa / the Old Town first appear on the recommendation card; the Local Tip
+("📍 Local tip: ?") fills only after the capture (place, then area; later one combined tap). Then the
+local's goodbye by ear (+ "You should try the old town.", which Mission 24 builds on) → supported
+conversation (flow stages + tip card on screen) → the conversation (each turn a real decision; a miss is
+re-asked slowly) → no help (natural speed) → video (none recorded yet: safely skipped) → final →
+💬 SMALL TALK COMPLETE · 📍 LOCAL TIP FOUND: Mama Rosa · Old Town. 33 interactions. Removed: the
+"repeat" recovery tool, the alternative answers, the quiz/tools/review/speed-chain shape and the
+unrelated "How long are you here for?". Coverage: `mission11Coverage.ts` (24 chunks, all covered), now
+also feeding `learnedBefore` for later missions. Artwork: 11 slots + 2 result props, emoji
+PLACEHOLDERS — VISUAL PRODUCTION REQUIRED (Astra pass): `MISSION11_ASSET_MANIFEST.md`. Tests:
+`mission11.test.ts` (61); Missions 01–10 and 12–30 byte-for-byte unchanged (the old "11–30" pins now
+pin 12–30).
