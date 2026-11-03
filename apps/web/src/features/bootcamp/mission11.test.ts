@@ -71,9 +71,18 @@ const ORDER = [...LEARNER];
 const SPOILERS = /Mama Rosa|old town|vieille ville|casco antiguo|Old Town|העיר העתיקה|מאמא רוזה|I'm from here|Je suis d’ici|Soy de aquí|מכאן|food|cuisine|comida|אוכל/i;
 const TIP = /Mama Rosa|old town|vieille ville|casco antiguo|העיר העתיקה|מאמא רוזה/i;
 const DIALOGUE_PRINT = { en: 'a78df554', es: 'cca14957', fr: '2cffe72c' };
+/** The canonical transcript ([who, text] of each line, exact) — the same value before this rebuild (342e6c2) and after. */
+const TRANSCRIPT_PRINT = { en: '5dcb41ea', es: 'ba8a3f6e', fr: 'e7bad3c8' };
 
 describe('the conversation is locked, and Mission 11 is in its place', () => {
-  for (const lang of LANGS) it(`${lang}: word for word the frozen one (tests 1–3)`, () => { expect(script(lang).map(quotes)).toEqual(LOCKED[lang].map(quotes)); });
+  // Two DIFFERENT claims, kept apart:
+  //   (a) the repo's canonical dialogue is BYTE-IDENTICAL to what it was before this rebuild (exact, no normalisation);
+  //   (b) it matches the brief's pasted text once typographic apostrophes are ignored (’ ‘ vs ') — a normalised comparison.
+  it('5. the canonical repo dialogue is BYTE-IDENTICAL to the pre-rebuild one (342e6c2) — exact transcript, no normalisation', () => {
+    expect(Object.fromEntries(LANGS.map((l) => [l, fnv(JSON.stringify(missionDialogues(day(l)).flatMap((x) => cinematicTranscript(x)).map((x) => [x.who, x.en])))]))).toEqual(TRANSCRIPT_PRINT);
+    expect(line('en', 0)).toBe("Hi! Beautiful view, isn't it?"); // the repo's own straight apostrophe, kept as it was
+  });
+  for (const lang of LANGS) it(`${lang}: the brief's text, word for word — PUNCTUATION-NORMALISED comparison (apostrophe typography ignored) (tests 1–3)`, () => { expect(script(lang).map(quotes)).toEqual(LOCKED[lang].map(quotes)); });
   it('the dialogue tree is pinned: every turn a real decision, a miss is asked again slowly', () => {
     for (const lang of LANGS) {
       const nodes = day(lang).dialogues['small-talk']!.nodes;
@@ -325,7 +334,7 @@ describe('the local tip — an information gap', () => {
   it('23–24b. in every run of the conversation (supported, no help, final) the tip appears only from its line on', () => {
     for (const lang of LANGS) {
       const d = day(lang);
-      const runs = [[stepsOf(d, 'replies').map((s) => d.steps.indexOf(s))[0]! + 1, dialogueAt(d)], [dialogueAt(d) + 2, videoAt(d)], [videoAt(d) + 1, d.steps.length]] as const;
+      const runs = [[stepsOf(d, 'quiz').map((s) => d.steps.indexOf(s))[0]! + 1, dialogueAt(d)], [dialogueAt(d) + 2, videoAt(d)], [videoAt(d) + 1, d.steps.length]] as const;
       for (const [from, to] of runs) {
         const run = d.steps.slice(from, to);
         const tipLine = run.findIndex((s) => JSON.stringify(s).includes(JSON.stringify(L_TIP[IX[lang]]).slice(1, -1)));
@@ -386,7 +395,8 @@ describe('closing the conversation', () => {
   it('31. the local\'s goodbye stays comprehension: a card, heard by ear — never an answer', () => {
     for (const lang of LANGS) {
       const d = day(lang);
-      expect(stepsOf(d, 'replies').map((s) => [strip(s.saidItemId), s.replyIds.map(strip)])).toEqual([['phrase.talk.nice-talking', ['reply.talk.goodbye', 'reply.talk.you-should-try']]]);
+      expect(stepsOf(d, 'replies'), lang).toHaveLength(0);
+      expect(stepsOf(d, 'quiz').map((s) => [strip(s.itemId), s.wrongIds.map(strip)])).toEqual([['reply.talk.goodbye', ['reply.talk.food', 'reply.talk.welcome-like']]]); // the other meanings: the local's own lines
       expect(text(d, `${lang}.reply.talk.goodbye`)).toBe(L_BYE[IX[lang]]);
       expect(encounters(d, chunk('enjoy-trip', lang)).some((e) => e.kind === 'listening')).toBe(true);
     }
@@ -427,7 +437,7 @@ describe('no bad pedagogy', () => {
     for (const lang of LANGS) {
       const d = day(lang);
       expect(JSON.stringify(d), lang).not.toMatch(/recovery\./);
-      expect(stepsOf(d, 'ambush').length + stepsOf(d, 'quiz').length + stepsOf(d, 'swipe').length + stepsOf(d, 'tool').length, lang).toBe(0);
+      expect(stepsOf(d, 'ambush').length + stepsOf(d, 'swipe').length + stepsOf(d, 'tool').length, lang).toBe(0);
     }
   });
 });
@@ -444,14 +454,14 @@ describe('the conversation flow — Connect → Share → Ask → Close', () => 
       const d = day(lang);
       const at = ['opening', 'where', 'from-here', 'like-q', 'food', 'tip', 'close'].map((k) => primeAt(d, `talk.line.${k}`));
       expect([...at].sort((a, b) => a - b), lang).toEqual(at);
-      const teach = runAnswers(d, 0, stepsOf(d, 'replies').map((s) => d.steps.indexOf(s))[0]!);
+      const teach = runAnswers(d, 0, stepsOf(d, 'quiz').map((s) => d.steps.indexOf(s))[0]!);
       expect(teach.filter((x, i) => teach.indexOf(x) === i), lang).toEqual(WHOLE);
     }
   });
   it('40. the supported conversation keeps the whole order — with the flow on screen', () => {
     for (const lang of LANGS) {
       const d = day(lang);
-      const from = d.steps.findIndex((s) => s.kind === 'replies') + 1;
+      const from = d.steps.findIndex((s) => s.kind === 'quiz') + 1;
       expect(runAnswers(d, from, dialogueAt(d)), lang).toEqual(WHOLE);
       const labels = d.steps.slice(from, dialogueAt(d)).filter((s): s is QR => s.kind === 'quickReply').map((s) => s.label!.en);
       expect(labels).toEqual([0, 1, 2, 3].map((n) => `${conversationFlow(n)[1]} · ${localTip(n === 3)[1]}`));
@@ -573,12 +583,12 @@ describe('coverage: every meaningful chunk, no orphan', () => {
       expect(n('recommend')).toBeGreaterThan(n('place-beautiful'));
     }
   });
-  it('33 meaningful interactions — inside 30–33, no filler', () => {
+  it('32 meaningful interactions — the 33 approved, less the removed invented line', () => {
     for (const lang of LANGS) {
       const d = day(lang);
       const n = d.steps.reduce((k, s) => k + (s.kind === 'quickReply' || s.kind === 'miniMap' || s.kind === 'visualMatch' || s.kind === 'sentenceBuilder' ? s.rounds.length
-        : s.kind === 'replies' ? s.replyIds.length : s.kind === 'matchPairs' ? s.pairs.length : 0), 0);
-      expect(n, lang).toBe(33);
+        : s.kind === 'replies' ? s.replyIds.length : s.kind === 'matchPairs' ? s.pairs.length : s.kind === 'quiz' ? 1 : 0), 0);
+      expect(n, lang).toBe(32);
     }
   });
 });
@@ -594,7 +604,7 @@ describe('the arc, state, visuals and video', () => {
       'prime', 'quickReply',
       'prime', 'sentenceBuilder', 'quickReply',
       'prime', 'visualMatch', 'receipt',
-      'prime', 'quickReply', 'replies',
+      'prime', 'quickReply', 'quiz',
       'quickReply', 'quickReply', 'quickReply', 'visualMatch', 'quickReply', 'receipt',
       'dialogue', 'receipt',
       'quickReply:speed', 'visualMatch:speed', 'quickReply:speed', 'receipt',
@@ -649,5 +659,41 @@ describe('the arc, state, visuals and video', () => {
         expect(practiceReplay({ hasVideo: Boolean(video), hasConversation: true, stepKind: kind, index: i })).toBe(video ? (kind === 'video' ? null : 'watch') : (i === 0 ? 'listen' : null));
       }
     }
+  });
+});
+
+describe('no invented language — Mission 11 teaches only its own conversation', () => {
+  const SHOULD: Record<CoverageLang, string> = { en: 'should', fr: 'devriez', es: 'debería' };
+  /** Every target-language text Mission 11 puts in front of the learner (tile names of the capture aside). */
+  const targetTexts = (d: BootcampDayContent): string[] => [
+    ...d.items.map((i) => i.text),
+    ...cardsOf(d).map((w) => w.text),
+    ...stepsOf(d, 'quickReply').flatMap((s) => s.rounds.flatMap((r) => [heardIn(d, r), ...r.options.map((o) => o.text ?? text(d, o.itemId))])),
+    ...stepsOf(d, 'visualMatch').flatMap((s) => s.rounds.flatMap((r) => [r.audio.en, r.reinforce?.en ?? ''])),
+    ...stepsOf(d, 'sentenceBuilder').flatMap((s) => s.rounds.map((r) => r.chunks.join(' '))),
+    ...stepsOf(d, 'quiz').flatMap((s) => [s.itemId, ...s.wrongIds].map((id) => text(d, id))),
+    ...Object.values(d.dialogues).flatMap((dl) => dl.nodes.flatMap((n) => [n.en, ...(n.choices ?? []).map((c) => c.en)])),
+  ].filter(Boolean);
+  it('1. "You should try the old town." is nowhere in Mission 11 — not an item, a step, a drill or a dialogue line', () => {
+    for (const lang of LANGS) {
+      expect(JSON.stringify(day(lang)), lang).not.toMatch(/you-should-try|You should try|Vous devriez|Debería|כדאי לך לנסות/);
+      expect(day(lang).items.map((i) => strip(i.id))).not.toContain('reply.talk.you-should-try');
+    }
+  });
+  it('2. every target-language sentence is a locked line, a piece of one, or verified prior learning — nothing unrelated', () => {
+    for (const lang of LANGS) {
+      const locked = script(lang).map((l) => l.slice(5));
+      const prior = learnedBefore(lang, 11);
+      for (const t of targetTexts(day(lang))) expect(locked.some((l) => hasChunk(l, t)) || prior.knowsChunk(t), `${lang} “${t}”`).toBe(true);
+    }
+  });
+  it('3. "should" is not learned before Mission 12 — in no language does Mission 11 teach it', () => {
+    for (const lang of LANGS) {
+      expect(learnedBefore(lang, 12).words.has(SHOULD[lang]), lang).toBe(false);
+      for (const t of targetTexts(day(lang))) expect(plain(t), lang).not.toContain(` ${SHOULD[lang]} `);
+    }
+  });
+  it('4. Mission 24 cannot claim Mission 11 taught "should": it is not verified prior learning before Mission 24', () => {
+    for (const lang of LANGS) expect(learnedBefore(lang, 24).words.has(SHOULD[lang]), lang).toBe(false);
   });
 });

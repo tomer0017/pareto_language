@@ -352,13 +352,25 @@ Each beat: whole-line cards with their meaning → answered. Partial prior learn
 "How about you?" gets its own card; the request builder keeps the prior "Can you" apart from the new
 "recommend a place". Mama Rosa / the Old Town first appear on the recommendation card; the Local Tip
 ("📍 Local tip: ?") fills only after the capture (place, then area; later one combined tap). Then the
-local's goodbye by ear (+ "You should try the old town.", which Mission 24 builds on) → supported
+local's goodbye by ear → supported
 conversation (flow stages + tip card on screen) → the conversation (each turn a real decision; a miss is
 re-asked slowly) → no help (natural speed) → video (none recorded yet: safely skipped) → final →
-💬 SMALL TALK COMPLETE · 📍 LOCAL TIP FOUND: Mama Rosa · Old Town. 33 interactions. Removed: the
+💬 SMALL TALK COMPLETE · 📍 LOCAL TIP FOUND: Mama Rosa · Old Town. 32 interactions. Removed: the
 "repeat" recovery tool, the alternative answers, the quiz/tools/review/speed-chain shape and the
 unrelated "How long are you here for?". Coverage: `mission11Coverage.ts` (24 chunks, all covered), now
 also feeding `learnedBefore` for later missions. Artwork: 11 slots + 2 result props, emoji
 PLACEHOLDERS — VISUAL PRODUCTION REQUIRED (Astra pass): `MISSION11_ASSET_MANIFEST.md`. Tests:
 `mission11.test.ts` (61); Missions 01–10 and 12–30 byte-for-byte unchanged (the old "11–30" pins now
 pin 12–30).
+
+### Mission 11 cleanup — invented line removed — 2026-11-03
+
+"You should try the old town." (`reply.talk.you-should-try`) was not part of the locked conversation; it
+had been kept only so that Mission 24's "You should take the boat tour." would count as recombination.
+Removed from Mission 11 entirely (items, the by-ear drill, generated docs). The by-ear drill is now one
+listening check on the local's goodbye (its other meanings are the local's own lines): 32 interactions.
+Rule: a later mission's need never justifies inserting language into an earlier one. Mission 24 is
+unchanged; "should" (devriez / debería) is not verified prior learning before it in any language, and its
+strict vocabulary test now records that gap explicitly (FR devriez, ES debería; EN "should" is met only
+in Mission 15's dialogue, which does not count as teaching) until Mission 24's design pass teaches it.
+`mission11.test.ts`: 66 tests (incl. the canonical transcript, byte-identical to before the rebuild).

@@ -72,8 +72,6 @@ export const SMALL_TALK: MissionSpec = {
     heard('reply.talk.food', L_FOOD),
     heard('reply.talk.tip', L_TIP),
     heard('reply.talk.goodbye', L_BYE),
-    // One more way a local gives a tip, heard as you part (Mission 24's "You should take the boat tour." builds on it).
-    item('reply.talk.you-should-try', 'You should try the old town.', 'Vous devriez essayer la vieille ville.', 'Debería visitar el casco antiguo.', 'כדאי לך לנסות את העיר העתיקה.'),
   ],
   steps: m11Steps,
 };

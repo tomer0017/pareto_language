@@ -12,7 +12,7 @@ import type { BootcampStep, MatchTile } from './types.js';
  *   Town) → CLOSE (thank you, it was nice talking to you).
  *
  *   the briefing (only what the traveller knows: Israel, first visit) → each beat as cards, then
- *   answered → the local tip captured (place, area) → the local's parting lines by ear → the supported
+ *   answered → the local tip captured (place, area) → the local's goodbye by ear → the supported
  *   conversation (flow on screen: stages only) → the conversation → no help → the video → the final
  *   conversation → 💬 SMALL TALK COMPLETE · 📍 LOCAL TIP FOUND.
  *
@@ -202,8 +202,8 @@ export function m11Steps(lang: MissionLang): BootcampStep[] {
     k.practice({ kind: 'quickReply', label: ['מה אתה אומר?', 'What do you say?'], rounds: [
       { situation: LEAVE, options: [['phrase.talk.nice-talking', true, l3(Y_CLOSE)], ['phrase.talk.recommend-place', false], ['phrase.talk.how-about-you', false]] },
     ] }),
-    // BY EAR — what a local may say as you part: the goodbye, or one more tip.
-    k.replies('phrase.talk.nice-talking', ['reply.talk.goodbye', 'reply.talk.you-should-try']),
+    // BY EAR — the local's goodbye: heard, its meaning picked (the other meanings are the local's own lines).
+    k.quiz('reply.talk.goodbye', 'reply.talk.food', 'reply.talk.welcome-like'),
     // THE SUPPORTED CONVERSATION — the whole chat, in order; the flow shows stages, the tip is "?".
     k.practice({ kind: 'quickReply', label: flowAndTip(0, false), rounds: [
       { prompt: 'reply.talk.opening', options: [['phrase.talk.beautiful-place', true], ['phrase.talk.nice-talking', false], ['phrase.talk.recommend-place', false]] },

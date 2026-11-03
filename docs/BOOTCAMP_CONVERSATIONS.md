@@ -608,9 +608,6 @@ _Reply-training drill:_ “Hi there! Can I help you find anything?” · “Of c
 - **Me too. And the food here is wonderful.** · גם אני. והאוכל כאן נהדר.
 - **Of course — try 'Mama Rosa', in the old town. It's very good.** · בטח — תנסה את 'מאמא רוזה', בעיר העתיקה. מאוד טוב שם.
 - **You too! Enjoy the rest of your trip!** · גם לי! תיהנה משאר הטיול!
-- **You should try the old town.** · כדאי לך לנסות את העיר העתיקה.
-
-_Reply-training drill:_ “You too! Enjoy the rest of your trip!” · “You should try the old town.”
 
 ### Dialogue: `small-talk` — happy path
 - **🧑 Them:** “Hi! Beautiful view, isn't it?” · היי! נוף יפה, נכון?

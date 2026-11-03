@@ -3,6 +3,7 @@ import { BOOTCAMP_PLAN } from './plan.js';
 import { fillFrame, isHelpToolId, validatePracticeStep } from './practiceEngines.js';
 import { beforeCueFreeze } from './cueFreeze.js';
 import { MISSIONS_BY_LANG } from './registry.js';
+import { learnedBefore } from './priorLearning.js';
 import { RETIRED_SENTENCES } from './retired.js';
 import type { BootcampDayContent, BootcampStep } from './types.js';
 
@@ -577,21 +578,18 @@ describe('Mission 24 — CHECKPOINT: City & Conversation', () => {
     expect(pick(0).slice(0, 2)).toEqual(['✓ phrase.past.i-went', '✗ phrase.future.going-to-vietnam']); // "where were you?" ≠ "where are you going?"
     expect(pick(2)).toEqual(['✓ phrase.future.going-to-vietnam', '✗ phrase.past.i-went']);
   });
-  it('"You should take the boat tour." recombines a structure Mission 11 already taught — it is not new language', () => {
-    // Mission 11 drills "You should try the old town." by ear, with its meaning, as you part. The
-    // checkpoint keeps the same opening — You should / Vous devriez / Debería + a verb the learner
-    // already has — with a different, known ending. Composing known pieces is the point of a checkpoint.
+  it('"You should take the boat tour." — NO earlier mission teaches "should": a recorded gap for Mission 24\'s design pass', () => {
+    // Mission 11 once carried an invented extra line ("You should try the old town.") so that this line
+    // would count as recombination. That was manufactured prior learning and is gone: a later mission's
+    // need never justifies inserting language into an earlier one. Mission 24 is unchanged; the word stays
+    // flagged until Mission 24 teaches it itself.
+    const should: Record<Lang, string> = { en: 'should', fr: 'devriez', es: 'debería' };
     const opening: Record<Lang, RegExp> = { en: /^You should \w+/, fr: /^Vous devriez \w+/, es: /^Debería \w+/ };
     for (const lang of LANGS) {
-      const taughtLine = text(mission(11, lang), 'reply.talk.you-should-try');
-      expect(taughtLine, lang).toMatch(opening[lang]);
-      expect(stepsOf(mission(11, lang), 'replies')[0]!.replyIds.map(strip), lang).toContain('reply.talk.you-should-try'); // drilled
-      expect(mission(11, lang).items.find((i) => strip(i.id) === 'reply.talk.you-should-try')!.meaning.he, lang).toBeTruthy(); // with its meaning
+      expect(JSON.stringify(mission(11, lang)), lang).not.toMatch(/you-should-try|You should try|Vous devriez|Debería/);
+      expect(learnedBefore(lang, 24).words.has(should[lang]), `${lang} “${should[lang]}” is not verified prior learning`).toBe(false);
       const local = mission(24, lang).dialogues['cold-chat']!.nodes.filter((n) => n.who === 'npc' && !n.slow).map((n) => n.en);
-      const line = local.find((l) => opening[lang].test(l))!;
-      expect(line, lang).toBeDefined();
-      // Every word of it was met before Mission 24 — including the verb after "should".
-      expect(unknownIn([line], vocabulary(lang, 23)), `${lang} “${line}”`).toEqual([]);
+      expect(local.some((l) => opening[lang].test(l)), lang).toBe(true);
     }
     expect(mission(24).dialogues['cold-chat']!.nodes.find((n) => /^You should take/.test(n.en))!.en).toBe("You should take the boat tour. It's fifty euros.");
   });
@@ -621,8 +619,11 @@ describe('Mission 24 — CHECKPOINT: City & Conversation', () => {
       }
     }
   });
-  it('STRICT — zero new target-language vocabulary: every word of the checkpoint was met in Missions 01–23', () => {
-    for (const lang of LANGS) expect(unknownIn(lines(mission(24, lang)), vocabulary(lang, 23)), lang).toEqual([]);
+  it('STRICT — zero new target-language vocabulary: every word of the checkpoint was met in Missions 01–23 — except the recorded "should" gap', () => {
+    // KNOWN GAP (flagged, not hidden): "You should take the boat tour." — no earlier mission teaches the
+    // "should" word; Mission 24 must teach it itself in its design pass (see the boat-tour test above).
+    const GAP: Record<Lang, string[]> = { en: [], fr: ['devriez'], es: ['debería'] };
+    for (const lang of LANGS) expect(unknownIn(lines(mission(24, lang)), vocabulary(lang, 23)), lang).toEqual(GAP[lang]);
   });
   it('every learner line is a sentence an earlier mission taught, with the same id and the same wording', () => {
     for (const lang of LANGS) {
