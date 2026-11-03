@@ -1,5 +1,14 @@
 # STATUS — READY build report
 
+## Mission 11 final artwork (2026-11-03)
+
+The 11 shared semantic slots and 2 result props now use individual final JPEGs.
+Approved EN/ES/FR content and all 32 interactions remain unchanged. Exact tip data
+and choices remain application UI. See [visual production report](./MISSION11_VISUAL_REPORT.md)
+and [asset manifest](./MISSION11_ASSET_MANIFEST.md) for provenance, QA and limitations.
+No shared renderer or architecture change was required.
+
+
 ## 📚 Start here — required reading for every sprint
 
 Before touching this codebase, read the living docs **in this order**:

@@ -1,5 +1,14 @@
 # READY — Master Overview
 
+## Mission 11 final artwork (2026-11-03)
+
+The 11 shared semantic slots and 2 result props now use individual final JPEGs.
+Approved EN/ES/FR content and all 32 interactions remain unchanged. Exact tip data
+and choices remain application UI. See [visual production report](./MISSION11_VISUAL_REPORT.md)
+and [asset manifest](./MISSION11_ASSET_MANIFEST.md) for provenance, QA and limitations.
+No shared renderer or architecture change was required.
+
+
 > **This is the most important document in the repository.** Every new developer, AI agent, or
 > contributor must read it before making any change. It explains what READY is, why it exists,
 > how it is built, what principles cannot be broken, and where the project stands today. Someone

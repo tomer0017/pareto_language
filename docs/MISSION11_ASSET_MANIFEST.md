@@ -1,20 +1,14 @@
 # Mission 11 — Small Talk & Recommendations: artwork manifest
 
-**Status: VISUAL PRODUCTION REQUIRED (Astra pass).** Mission 11 ships with emoji placeholders in every
-slot (`M11_SLOTS` / `M11_PROPS` in `apps/web/src/features/bootcamp/practiceSmallTalk.ts`, `image` unset).
-No image generation was available in the build session; no stock images were used. To integrate an
-asset, put the file at `apps/web/public/images/mission11/<slot>.jpg` and set that slot's
-`image: 'images/mission11/<slot>.jpg'`. One file per asset: never a collage, contact sheet, storyboard or
-sprite sheet that gets cropped later. Then update the "PLACEHOLDERS" test in `mission11.test.ts`
-(it pins that no slot has artwork yet) to pin the real files instead, as `mission09.test.ts` does.
+**Status: FINAL ART INTEGRATED.** 11 semantic slots and 2 result props resolve to 13 separately generated canonical JPEGs in `apps/web/public/images/mission11/`. Each is 1672 × 941, shared by EN/ES/FR, with no semantic emoji fallback. The approved 32-interaction pedagogy and every nonvisual mission field are unchanged. See `mission11-artwork.json` for exact prompts, source paths and reviewed pixel checksums.
 
 ## One continuous world
 
 This is a PEOPLE / CONVERSATION mission: facial expression, body language and social context matter
 more than objects. Every image belongs to ONE conversation. Keep these identical across all assets:
 
-- **the traveller**: the same adult tourist as in earlier missions (straw hat, backpack, friendly);
-- **the local**: one adult resident, with the same face, hair and clothes in every scene. The Hebrew copy
+- **the traveller**: fictional adult male in his early 30s, dark wavy hair, teal overshirt, cream T-shirt, charcoal trousers, mustard daypack (the retry brief supersedes the earlier hat requirement);
+- **the local**: fictional man in his early 30s, short auburn hair and beard, rust polo, beige trousers and brown belt. The Hebrew copy
   addresses the local in the masculine ("ממנו"), so draw a man;
 - **the place**: one scenic viewpoint/terrace above one European-style city, with the same railing,
   bench and view;
@@ -25,7 +19,7 @@ photorealistic, not emoji art. **No text in any picture**: no signs, menus, shop
 renders "Mama Rosa" and "Old Town" itself, deterministically, in each language. The same art serves
 EN / ES / FR.
 
-Format: wide, about 2:1 (or 16:9), at least 1200 px wide, JPEG at full quality. The cards draw them full
+Format: wide, about 2:1 (or 16:9), at least 1536 px wide, JPEG at full quality. The cards draw them full
 width at their own shape (`widePictures`), so nothing is cropped.
 
 ## Spoilers to avoid (tested)

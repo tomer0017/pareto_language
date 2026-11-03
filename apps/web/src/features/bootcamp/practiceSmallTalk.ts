@@ -27,26 +27,27 @@ import type { BootcampStep, MatchTile } from './types.js';
  * All French and Spanish wording: AI linguistic review completed; native review still recommended.
  */
 
-/**
- * Mission 11's image slots — one per meaning, shared across EN / ES / FR. PLACEHOLDERS: no slot has its
- * artwork yet (`image` unset — the emoji stands in); giving a slot an `image` swaps it in. One
- * continuous world for the final art: the same traveller, the same local, the same viewpoint over the
- * same city, the same late-afternoon light (`docs/MISSION11_ASSET_MANIFEST.md`).
- */
-type M11Slot =
-  | 'scenic-viewpoint' | 'local-opens' | 'traveler-reacts' | 'origin' | 'bounce-back' | 'first-time'
-  | 'like-it' | 'food-comment' | 'ask-recommendation' | 'local-recommends' | 'friendly-closing';
-export const M11_SLOTS: Record<M11Slot, { emoji: string; image?: string }> = {
-  'scenic-viewpoint': { emoji: '🌄' }, 'local-opens': { emoji: '👋' }, 'traveler-reacts': { emoji: '😍' },
-  origin: { emoji: '🌍' }, 'bounce-back': { emoji: '🔄' }, 'first-time': { emoji: '🧳' }, 'like-it': { emoji: '😊' },
-  'food-comment': { emoji: '🍝' }, 'ask-recommendation': { emoji: '🙋' }, 'local-recommends': { emoji: '🗺️' },
-  'friendly-closing': { emoji: '🤝' },
+/** Canonical shared artwork: one continuous conversation; exact facts remain application UI. */
+type M11Slot = 'scenic-viewpoint' | 'local-opens' | 'traveler-reacts' | 'origin' | 'bounce-back' | 'first-time' | 'like-it' | 'food-comment' | 'ask-recommendation' | 'local-recommends' | 'friendly-closing';
+const image11 = (name: string): { image: string } => ({ image: `images/mission11/${name}.jpg` });
+export const M11_SLOTS: Record<M11Slot, { image: string }> = {
+  'scenic-viewpoint': image11('scenic-viewpoint'),
+  'local-opens': image11('local-opens'),
+  'traveler-reacts': image11('traveler-reacts'),
+  'origin': image11('origin'),
+  'bounce-back': image11('bounce-back'),
+  'first-time': image11('first-time'),
+  'like-it': image11('like-it'),
+  'food-comment': image11('food-comment'),
+  'ask-recommendation': image11('ask-recommendation'),
+  'local-recommends': image11('local-recommends'),
+  'friendly-closing': image11('friendly-closing'),
 };
-/** Result pictures only — never a choice, never a card: the tip once found, and the walk away. */
+/** Result pictures only — never a choice, never a card. */
 export const M11_PROPS = {
-  'mama-rosa': { emoji: '🍽️' }, 'small-talk-complete': { emoji: '💬' },
-} as const satisfies Record<string, { emoji: string; image?: string }>;
-const look11 = (x: { emoji: string; image?: string }): { emoji: string } | { image: string } => (x.image ? { image: x.image } : { emoji: x.emoji });
+  'mama-rosa': image11('mama-rosa'),
+  'small-talk-complete': image11('small-talk-complete'),
+} as const;
 
 /* The locked conversation (EN · FR · ES · HE), line by line — the local's lines… */
 export const L_OPEN: L4 = ["Hi! Beautiful view, isn't it?", 'Bonjour ! Belle vue, n’est-ce pas ?', '¡Hola! Bonita vista, ¿verdad?', 'היי! נוף יפה, נכון?'];
@@ -118,7 +119,7 @@ const LEAVE: Copy = ['קיבלת המלצה, והגיע הזמן להמשיך. �
 export function m11Steps(lang: MissionLang): BootcampStep[] {
   const k = kit(lang);
   const ix = { en: 0, fr: 1, es: 2 }[lang];
-  const card = (key: string, line: L4, meaning: Copy, s: M11Slot, review = false) => ({ line: true, key, t: l3(line), meaning, ...look11(M11_SLOTS[s]), ...(review ? { review: true } : {}) });
+  const card = (key: string, line: L4, meaning: Copy, s: M11Slot, review = false) => ({ line: true, key, t: l3(line), meaning, ...M11_SLOTS[s], ...(review ? { review: true } : {}) });
   const cards = (label: Copy, intro: Copy, words: ReturnType<typeof card>[]): BootcampStep => k.prime({ label, intro, bigPictures: true, widePictures: true, words });
   /* The tip, captured: the place and the area — names, as the local says them (no pictures, no map). */
   const placeTiles: MatchTile[] = Object.entries(PLACES).map(([id, label]) => ({ id, label }));
@@ -261,14 +262,13 @@ export function m11Steps(lang: MissionLang): BootcampStep[] {
     k.receipt(SMALL_TALK_COMPLETE),
     { kind: 'summary' },
   ];
-  // Result pictures, once their artwork exists (placeholders draw nothing on a receipt).
-  const pic = (x: { emoji: string; image?: string }): { image?: string } => (x.image ? { image: x.image } : {});
+  // Results appear only at their existing earned receipts.
   return steps.map((step) => {
-    if (step.kind === 'receipt' && step.text.en === TIP_FOUND[1]) return { ...step, ...pic(M11_PROPS['mama-rosa']) };
-    if (step.kind === 'receipt' && step.text.en === SMALL_TALK_COMPLETE[1]) return { ...step, ...pic(M11_PROPS['small-talk-complete']) };
+    if (step.kind === 'receipt' && step.text.en === TIP_FOUND[1]) return { ...step, ...M11_PROPS['mama-rosa'] };
+    if (step.kind === 'receipt' && step.text.en === SMALL_TALK_COMPLETE[1]) return { ...step, ...M11_PROPS['small-talk-complete'] };
     return step;
   });
 }
 
-/** The briefing picture, once its artwork exists. */
-export const M11_BRIEFING_IMAGE: string | undefined = (M11_SLOTS['scenic-viewpoint'] as { image?: string }).image;
+/** The briefing reveals only the scenic encounter. */
+export const M11_BRIEFING_IMAGE = M11_SLOTS['scenic-viewpoint'].image;

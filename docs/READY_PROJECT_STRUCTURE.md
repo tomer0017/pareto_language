@@ -1,5 +1,14 @@
 # READY — Project Structure & Product Rules
 
+## Mission 11 final artwork (2026-11-03)
+
+The 11 shared semantic slots and 2 result props now use individual final JPEGs.
+Approved EN/ES/FR content and all 32 interactions remain unchanged. Exact tip data
+and choices remain application UI. See [visual production report](./MISSION11_VISUAL_REPORT.md)
+and [asset manifest](./MISSION11_ASSET_MANIFEST.md) for provenance, QA and limitations.
+No shared renderer or architecture change was required.
+
+
 > **Read this file before starting any development on READY.** It is the permanent source of
 > truth for *how the app is built and why*. If a change would improve engineering but hurt
 > learner confidence, confidence wins. After a sprint, update this file (see §10).

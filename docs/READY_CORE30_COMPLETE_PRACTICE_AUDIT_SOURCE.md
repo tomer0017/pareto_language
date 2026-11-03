@@ -10630,8 +10630,8 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `talk.line.opening` — EN "Hi! Beautiful view, isn't it?" · FR "Bonjour ! Belle vue, n’est-ce pas ?" · ES "¡Hola! Bonita vista, ¿verdad?" — meaning "היי! נוף יפה, נכון? (כלומר: הנוף יפה, נכון?)" / "Hi! The view is beautiful, right?" — icon 👋 — new
-2. `talk.line.beautiful` — EN "This place is beautiful." · FR "Cet endroit est magnifique." · ES "Este lugar es precioso." — meaning "המקום הזה יפהפה." / "This place is beautiful." — icon 😍 — new
+1. `talk.line.opening` — EN "Hi! Beautiful view, isn't it?" · FR "Bonjour ! Belle vue, n’est-ce pas ?" · ES "¡Hola! Bonita vista, ¿verdad?" — meaning "היי! נוף יפה, נכון? (כלומר: הנוף יפה, נכון?)" / "Hi! The view is beautiful, right?" — icon none — new
+2. `talk.line.beautiful` — EN "This place is beautiful." · FR "Cet endroit est magnifique." · ES "Este lugar es precioso." — meaning "המקום הזה יפהפה." / "This place is beautiful." — icon none — new
 
 No build-sentence card.
 
@@ -10640,9 +10640,9 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `talk.line.where` — EN "It really is. Where are you from?" · FR "C’est vrai. Vous venez d’où ?" · ES "Es verdad. ¿De dónde es?" — meaning "באמת. מאיפה אתה?" / "It really is. Where are you from?" — icon 🌍 — new
-2. `talk.line.from-israel` — EN "I'm from Israel." · FR "Je viens d’Israël." · ES "Soy de Israel." — meaning "אני מישראל. (את זה כבר אמרת במשימה 1)" / "I’m from Israel. (you said this in Mission 1)" — icon 🌍 — marked ♻️ review
-3. `talk.line.how-about-you` — EN "How about you?" · FR "Et vous ?" · ES "¿Y usted?" — meaning "ואתה? — מחזירים את השאלה, והשיחה ממשיכה." / "And you? — return the question, and the conversation goes on." — icon 🔄 — new
+1. `talk.line.where` — EN "It really is. Where are you from?" · FR "C’est vrai. Vous venez d’où ?" · ES "Es verdad. ¿De dónde es?" — meaning "באמת. מאיפה אתה?" / "It really is. Where are you from?" — icon none — new
+2. `talk.line.from-israel` — EN "I'm from Israel." · FR "Je viens d’Israël." · ES "Soy de Israel." — meaning "אני מישראל. (את זה כבר אמרת במשימה 1)" / "I’m from Israel. (you said this in Mission 1)" — icon none — marked ♻️ review
+3. `talk.line.how-about-you` — EN "How about you?" · FR "Et vous ?" · ES "¿Y usted?" — meaning "ואתה? — מחזירים את השאלה, והשיחה ממשיכה." / "And you? — return the question, and the conversation goes on." — icon none — new
 
 No build-sentence card.
 
@@ -10651,8 +10651,8 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `talk.line.from-here` — EN "I'm from here! Is this your first time here?" · FR "Je suis d’ici ! C’est votre première fois ici ?" · ES "¡Soy de aquí! ¿Es su primera vez aquí?" — meaning "אני מכאן! זו הפעם הראשונה שלך כאן? (הוא מקומי)" / "I’m from here! Is this your first time here? (a local)" — icon 🧳 — new
-2. `talk.line.first-time` — EN "Yes, it's my first time here." · FR "Oui, c’est ma première fois ici." · ES "Sí, es mi primera vez aquí." — meaning "כן, זו הפעם הראשונה שלי כאן." / "Yes, it’s my first time here." — icon 🧳 — marked ♻️ review
+1. `talk.line.from-here` — EN "I'm from here! Is this your first time here?" · FR "Je suis d’ici ! C’est votre première fois ici ?" · ES "¡Soy de aquí! ¿Es su primera vez aquí?" — meaning "אני מכאן! זו הפעם הראשונה שלך כאן? (הוא מקומי)" / "I’m from here! Is this your first time here? (a local)" — icon none — new
+2. `talk.line.first-time` — EN "Yes, it's my first time here." · FR "Oui, c’est ma première fois ici." · ES "Sí, es mi primera vez aquí." — meaning "כן, זו הפעם הראשונה שלי כאן." / "Yes, it’s my first time here." — icon none — marked ♻️ review
 
 No build-sentence card.
 
@@ -10661,8 +10661,8 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `talk.line.like-q` — EN "Welcome! Do you like it here?" · FR "Bienvenue ! Ça vous plaît ici ?" · ES "¡Bienvenido! ¿Le gusta este lugar?" — meaning "ברוך הבא! אתה אוהב את המקום?" / "Welcome! Do you like it here?" — icon 😊 — new
-2. `talk.line.like` — EN "Yes, I like it a lot." · FR "Oui, j’aime beaucoup." · ES "Sí, me gusta mucho." — meaning "כן, אני מאוד אוהב." / "Yes, I like it a lot." — icon 😊 — new
+1. `talk.line.like-q` — EN "Welcome! Do you like it here?" · FR "Bienvenue ! Ça vous plaît ici ?" · ES "¡Bienvenido! ¿Le gusta este lugar?" — meaning "ברוך הבא! אתה אוהב את המקום?" / "Welcome! Do you like it here?" — icon none — new
+2. `talk.line.like` — EN "Yes, I like it a lot." · FR "Oui, j’aime beaucoup." · ES "Sí, me gusta mucho." — meaning "כן, אני מאוד אוהב." / "Yes, I like it a lot." — icon none — new
 
 No build-sentence card.
 
@@ -10671,8 +10671,8 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `talk.line.food` — EN "Me too. And the food here is wonderful." · FR "Moi aussi. Et la cuisine ici est excellente." · ES "Yo también. Y la comida de aquí es estupenda." — meaning "גם אני. והאוכל כאן נהדר." / "Me too. And the food here is wonderful." — icon 🍝 — new
-2. `talk.line.recommend` — EN "Can you recommend a place?" · FR "Vous pouvez recommander un endroit ?" · ES "¿Me puede recomendar un sitio?" — meaning "אתה יכול להמליץ על מקום? (היוזמה שלך)" / "Can you recommend a place? (your initiative)" — icon 🙋 — new
+1. `talk.line.food` — EN "Me too. And the food here is wonderful." · FR "Moi aussi. Et la cuisine ici est excellente." · ES "Yo también. Y la comida de aquí es estupenda." — meaning "גם אני. והאוכל כאן נהדר." / "Me too. And the food here is wonderful." — icon none — new
+2. `talk.line.recommend` — EN "Can you recommend a place?" · FR "Vous pouvez recommander un endroit ?" · ES "¿Me puede recomendar un sitio?" — meaning "אתה יכול להמליץ על מקום? (היוזמה שלך)" / "Can you recommend a place? (your initiative)" — icon none — new
 
 No build-sentence card.
 
@@ -10681,7 +10681,7 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `talk.line.tip` — EN "Of course — try 'Mama Rosa', in the old town. It's very good." · FR "Bien sûr — essayez « Mama Rosa », dans la vieille ville. C’est très bon." · ES "Claro — pruebe «Mama Rosa», en el casco antiguo. Es muy bueno." — meaning "בטח — תנסה את Mama Rosa, בעיר העתיקה. מאוד טוב שם." / "Of course — try Mama Rosa, in the old town. It’s very good." — icon 🗺️ — new
+1. `talk.line.tip` — EN "Of course — try 'Mama Rosa', in the old town. It's very good." · FR "Bien sûr — essayez « Mama Rosa », dans la vieille ville. C’est très bon." · ES "Claro — pruebe «Mama Rosa», en el casco antiguo. Es muy bueno." — meaning "בטח — תנסה את Mama Rosa, בעיר העתיקה. מאוד טוב שם." / "Of course — try Mama Rosa, in the old town. It’s very good." — icon none — new
 
 No build-sentence card.
 
@@ -10690,8 +10690,8 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `talk.line.close` — EN "Thank you! It was nice talking to you." · FR "Merci ! C’était sympa de discuter avec vous." · ES "¡Gracias! Ha sido un placer hablar con usted." — meaning "תודה! היה נעים לדבר איתך." / "Thank you! It was nice talking to you." — icon 🤝 — new
-2. `talk.line.goodbye` — EN "You too! Enjoy the rest of your trip!" · FR "Vous aussi ! Profitez bien du reste de votre voyage !" · ES "¡Igualmente! ¡Que disfrute del resto del viaje!" — meaning "גם לי! תיהנה משאר הטיול!" / "You too! Enjoy the rest of your trip!" — icon 🤝 — new
+1. `talk.line.close` — EN "Thank you! It was nice talking to you." · FR "Merci ! C’était sympa de discuter avec vous." · ES "¡Gracias! Ha sido un placer hablar con usted." — meaning "תודה! היה נעים לדבר איתך." / "Thank you! It was nice talking to you." — icon none — new
+2. `talk.line.goodbye` — EN "You too! Enjoy the rest of your trip!" · FR "Vous aussi ! Profitez bien du reste de votre voyage !" · ES "¡Igualmente! ¡Que disfrute del resto del viaje!" — meaning "גם לי! תיהנה משאר הטיול!" / "You too! Enjoy the rest of your trip!" — icon none — new
 
 No build-sentence card.
 

@@ -328,7 +328,7 @@ describe('the local tip — an information gap', () => {
       const d = day(lang);
       expect(d.steps.findIndex((s) => TIP.test(JSON.stringify(s))), lang).toBe(primeAt(d, 'talk.line.tip'));
       // …and nothing tells the learner the person is local before that person says so.
-      expect(d.steps.findIndex((s) => /local|מקומי/i.test(JSON.stringify(s).replace(/local recommendation|המלצה מקומית/g, ''))), lang).toBeGreaterThan(primeAt(d, 'talk.line.from-here') - 1);
+      expect(d.steps.findIndex((s) => /local|מקומי/i.test(JSON.stringify(s, (key, value) => key === 'image' ? undefined : value).replace(/local recommendation|המלצה מקומית/g, ''))), lang).toBeGreaterThan(primeAt(d, 'talk.line.from-here') - 1);
     }
   });
   it('23–24b. in every run of the conversation (supported, no help, final) the tip appears only from its line on', () => {
@@ -629,23 +629,23 @@ describe('the arc, state, visuals and video', () => {
       expect(html.match(/class="hotel-stay-fact"/g)).toHaveLength(4);
     }
   });
-  it('visual slots: 11 semantic slots and 2 result props — PLACEHOLDERS (emoji), no stand-in artwork, no text baked in', () => {
+  it('visual slots: 11 semantic slots and 2 result props — canonical artwork, no semantic emoji', () => {
     expect(Object.keys(M11_SLOTS).sort()).toEqual(['ask-recommendation', 'bounce-back', 'first-time', 'food-comment', 'friendly-closing', 'like-it', 'local-opens', 'local-recommends', 'origin', 'scenic-viewpoint', 'traveler-reacts']);
     expect(Object.keys(M11_PROPS).sort()).toEqual(['mama-rosa', 'small-talk-complete']);
-    for (const s of [...Object.values(M11_SLOTS), ...Object.values(M11_PROPS)]) expect((s as { image?: string }).image).toBeUndefined();
+    for (const s of [...Object.values(M11_SLOTS), ...Object.values(M11_PROPS)]) { expect(s.image).toMatch(/^images\/mission11\/[a-z-]+\.jpg$/); expect(s).not.toHaveProperty('emoji'); };
     const manifest = readFileSync(fileURLToPath(new URL('../../../../../docs/MISSION11_ASSET_MANIFEST.md', import.meta.url)), 'utf8');
-    expect(manifest).toMatch(/VISUAL PRODUCTION REQUIRED/);
+    expect(manifest).toMatch(/FINAL ART INTEGRATED/);
     for (const key of [...Object.keys(M11_SLOTS), ...Object.keys(M11_PROPS)]) expect(manifest, key).toContain(`\`${key}\``);
   });
   it('every card picture comes from a slot, the same in every language; no picture before its line names the tip', () => {
-    const emoji = new Set(Object.values(M11_SLOTS).map((s) => s.emoji));
+    const images = new Set(Object.values(M11_SLOTS).map((s) => s.image));
     const pics = (lang: CoverageLang) => stepsOf(day(lang), 'prime').flatMap((p) => p.words.map((w) => [w.key, w.image ?? w.emoji]));
-    for (const lang of LANGS) for (const [key, pic] of pics(lang)) expect(emoji, `${lang} ${key}`).toContain(pic);
+    for (const lang of LANGS) for (const [key, pic] of pics(lang)) expect(images, `${lang} ${key}`).toContain(pic);
     expect(pics('es')).toEqual(pics('en'));
     expect(pics('fr')).toEqual(pics('en'));
-    const before = stepsOf(day('en'), 'prime').slice(0, 5).flatMap((p) => p.words.map((w) => w.emoji));
-    expect(before).not.toContain(M11_SLOTS['local-recommends'].emoji);
-    expect(before).not.toContain(M11_PROPS['mama-rosa'].emoji);
+    const before = stepsOf(day('en'), 'prime').slice(0, 5).flatMap((p) => p.words.map((w) => w.image));
+    expect(before).not.toContain(M11_SLOTS['local-recommends'].image);
+    expect(before).not.toContain(M11_PROPS['mama-rosa'].image);
   });
   it('video: none recorded yet in any language — the standard step is there and safely skipped; replay keeps the mission\'s progress', () => {
     for (const lang of LANGS) {
