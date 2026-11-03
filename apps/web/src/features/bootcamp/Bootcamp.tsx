@@ -23,6 +23,7 @@ import { missionsFor, useBootcampStore } from './bootcampStore.js';
 import type { BootcampItem, BootcampStep, BootcampDialogue, BootcampVideo, DialogueChoice } from './types.js';
 import { dialogueTranscript } from './transcript.js';
 import { dialogueTr } from './i18n.js';
+import { runNpcBeat } from './dialogueBeat.js';
 import { shuffle, mulberry32, sessionSeed } from '../../shared/util/shuffle.js';
 import { FoundationHint } from '../foundation/FoundationHint.js';
 import { TappableText, TargetText } from '../foundation/TappableText.js';
@@ -707,6 +708,8 @@ function DialogueStep({ dialogue, onDone }: { dialogue: BootcampDialogue; onDone
   const [recovered, setRecovered] = useState(false);
   const [picked, setPicked] = useState<DialogueChoice | null>(null); // coaching feedback pause
   const [usedTool, setUsedTool] = useState(false); // a conversation-help tool was just used — cheer it
+  // The other person's line that is on screen above the learner's choices (it is still being heard).
+  const [heardId, setHeardId] = useState<string | null>(null);
   const npc = useNpc();
   const node = nodesById.get(nodeId);
 
@@ -714,13 +717,13 @@ function DialogueStep({ dialogue, onDone }: { dialogue: BootcampDialogue; onDone
     if (!node) return;
     let cancelled = false;
     if (node.who === 'npc') {
-      void speakL(node.en, node.fast ? 1.08 : node.slow ? 0.75 : 0.95).then((r) => {
-        if (cancelled || r !== 'ended') return; // interrupted audio never advances the dialogue
-        if (node.end) {
-          setTimeout(() => !cancelled && onDone(), 800);
-        } else if (node.next) {
-          setTimeout(() => !cancelled && setNodeId(node.next!), 700);
-        }
+      // The choices never wait for the audio (dialogueBeat.ts): they appear with the line.
+      runNpcBeat(dialogue, node, {
+        speak: () => speakL(node.en, node.fast ? 1.08 : node.slow ? 0.75 : 0.95),
+        go: (next, heard) => { setHeardId(heard); setNodeId(next); },
+        end: onDone,
+        later: (fn, ms) => void setTimeout(fn, ms),
+        cancelled: () => cancelled,
       });
     } else if (node.who === 'you' && node.next && !node.choices) {
       // scripted you-line: the app voices it for you, then moves on
@@ -736,7 +739,8 @@ function DialogueStep({ dialogue, onDone }: { dialogue: BootcampDialogue; onDone
   }, [nodeId]);
 
   if (!node) return null;
-  const npcNode = node.who === 'npc' ? node : [...nodesById.values()].find((n) => n.next === node.id || n.choices?.some((c) => c.next === node.id));
+  const heard = heardId ? nodesById.get(heardId) : undefined;
+  const npcNode = node.who === 'npc' ? node : heard?.next === node.id ? heard : [...nodesById.values()].find((n) => n.next === node.id || n.choices?.some((c) => c.next === node.id));
   const displayNpc = node.who === 'npc' ? node : npcNode;
 
   // Coaching pause: reframe the pick as more/less useful (never wrong), then continue on tap.

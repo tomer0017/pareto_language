@@ -1885,3 +1885,13 @@ three options (revealing grades and records nothing; persisted as `optionsShown`
 diagnostic are unchanged. A quick fix or final repair of 2+ concepts shows every answer first, then
 retrieves each in day order; a single concept keeps the compact flow. Queues, mastery and counts
 unchanged. `mission10.test.ts`: 83 tests.
+
+### Conversations: answer choices no longer wait for the audio — 2026-11-03
+
+Root cause: `DialogueStep` moved from the other person's line to the learner's choices only after
+`speak()` resolved `'ended'` (+700 ms); on engines that never fire `onend` (desktop Chrome) that was
+the 4 s+ length-based safety timer — an empty, frozen-looking screen. Now (`dialogueBeat.ts`) when the
+learner answers next, the choices appear with the line and the audio plays alongside; answering
+mid-line supersedes it (`speak()` cancels the current utterance), so nothing overlaps. Lines with
+nothing to answer after them still wait. Every mission's conversations, EN/ES/FR. Intentional reveals
+(Mission 10 one-take "show options", information gaps, the key-sentence listen card) unchanged.
