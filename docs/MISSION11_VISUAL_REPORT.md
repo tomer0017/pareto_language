@@ -53,3 +53,7 @@ Pedagogical limitations: approved baseline remains frozen; native-speaker review
 ## Safety retry
 
 Original failure: prerequisite BASE image, output-safety validation, request b618c3e0-a8a7-4896-97e7-08259e3c9387. The service did not identify a specific unsafe element. The simplified modular retry succeeded for all 13 assets; no slot remains blocked. No new slot was blocked, so independent continuation was not needed during this retry; generation was not gated on a master image. Release is permitted only for this complete, reviewed and fair set, never a partial emoji/art mix.
+
+## Production follow-up (2026-11-04)
+
+Initial release `9a55d98`, Pages `f7e6e52830adfdd708e86f4b853956f99dc2373e`, completed successfully. All 13 live JPEGs returned 200 with identical SHA256; six protected videos matched committed copies. EN/ES/FR Mission 11 video URLs returned 404 as expected. Browser initially retained an older bundle until hard reload. Production desktop QA then exposed a wide-card layout issue: the 600px image cap left room for text beside the image. The cap now follows the container width so image and text occupy separate rows at desktop widths as they already did on mobile. No mission content changed. A seventh unrelated video edit, fr_5.mp4, appeared during final verification and is also left untouched and excluded from deployment.
