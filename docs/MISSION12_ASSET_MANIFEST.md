@@ -1,12 +1,13 @@
 # Mission 12 — Time & Plans: artwork manifest
 
-**Status: VISUAL PRODUCTION REQUIRED (Astra pass).** Mission 12 ships with emoji placeholders in every
-slot (`M12_SLOTS` / `M12_PROPS` in `apps/web/src/features/bootcamp/practiceTimePlans.ts`, `image` unset).
-No image generation was available in the build session; no stock images were used. To integrate an
-asset, put the file at `apps/web/public/images/mission12/<slot>.jpg` and set that slot's
-`image: 'images/mission12/<slot>.jpg'`. One file per asset: never a collage, contact sheet, storyboard or
-sprite sheet that gets cropped later. Then update the "PLACEHOLDERS" test in `mission12.test.ts`
-(it pins that no slot has artwork yet) to pin the real files instead, as `mission11Artwork.test.ts` does.
+**Status: VISUAL PRODUCTION COMPLETE.** 14 semantic slots and 1 result prop resolve to 10 separately
+produced full-frame JPEGs in `apps/web/public/images/mission12/`. No semantic emoji fallback remains.
+Generation prompts, dimensions, checksums and visual-review observations: `mission12-artwork.json`.
+
+Whole-asset reuse (no crops): `morning-meeting` serves `morning-meeting`, `morning-question`,
+`tonight-question`; `availability` serves `open-morning`, `free-tonight`; `ask-time` serves `ask-time`,
+`ask-tomorrow`; `dinner-invitation` serves `dinner-invitation`, `very-good-there`. Other slots and the
+result prop use their namesake files. Free-tomorrow keeps its approved transfer UI without a new card.
 
 ## One continuous world
 

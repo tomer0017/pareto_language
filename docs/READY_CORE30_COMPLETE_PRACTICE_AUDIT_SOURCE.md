@@ -11712,9 +11712,9 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `time.line.today` — EN "Good morning! What are you doing today?" · FR "Bonjour ! Tu fais quoi aujourd’hui ?" · ES "¡Buenos días! ¿Qué haces hoy?" — meaning "בוקר טוב! מה אתה עושה היום?" / "Good morning! What are you doing today?" — icon 👋 — new
-2. `time.line.nothing` — EN "Nothing this morning." · FR "Rien ce matin." · ES "Nada esta mañana." — meaning "כלום הבוקר. (הבוקר פנוי)" / "Nothing this morning. (your morning is open)" — icon 🤷 — new
-3. `time.line.later` — EN "Maybe later." · FR "Peut-être plus tard." · ES "Quizás más tarde." — meaning "אולי אחר כך. (עוד לא החלטת)" / "Maybe later. (you have not decided yet)" — icon 🤷 — new
+1. `time.line.today` — EN "Good morning! What are you doing today?" · FR "Bonjour ! Tu fais quoi aujourd’hui ?" · ES "¡Buenos días! ¿Qué haces hoy?" — meaning "בוקר טוב! מה אתה עושה היום?" / "Good morning! What are you doing today?" — icon none — new
+2. `time.line.nothing` — EN "Nothing this morning." · FR "Rien ce matin." · ES "Nada esta mañana." — meaning "כלום הבוקר. (הבוקר פנוי)" / "Nothing this morning. (your morning is open)" — icon none — new
+3. `time.line.later` — EN "Maybe later." · FR "Peut-être plus tard." · ES "Quizás más tarde." — meaning "אולי אחר כך. (עוד לא החלטת)" / "Maybe later. (you have not decided yet)" — icon none — new
 
 No build-sentence card.
 
@@ -11723,8 +11723,8 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `time.line.tonight` — EN "And what are you doing tonight?" · FR "Et tu fais quoi ce soir ?" · ES "¿Y qué haces esta noche?" — meaning "ומה אתה עושה הערב?" / "And what are you doing tonight?" — icon 🌙 — new
-2. `time.line.free-tonight` — EN "I'm free tonight." · FR "Je suis libre ce soir." · ES "Estoy libre esta noche." — meaning "אני פנוי הערב. (אני פנוי + מתי)" / "I’m free tonight. (I’m free + when)" — icon 🙌 — new
+1. `time.line.tonight` — EN "And what are you doing tonight?" · FR "Et tu fais quoi ce soir ?" · ES "¿Y qué haces esta noche?" — meaning "ומה אתה עושה הערב?" / "And what are you doing tonight?" — icon none — new
+2. `time.line.free-tonight` — EN "I'm free tonight." · FR "Je suis libre ce soir." · ES "Estoy libre esta noche." — meaning "אני פנוי הערב. (אני פנוי + מתי)" / "I’m free tonight. (I’m free + when)" — icon none — new
 
 No build-sentence card.
 
@@ -11733,8 +11733,8 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `time.line.invite` — EN "We're going to eat in the centre. Do you want to come?" · FR "On va manger dans le centre. Tu veux venir ?" · ES "Vamos a comer en el centro. ¿Quieres venir?" — meaning "אנחנו הולכים לאכול במרכז. רוצה לבוא?" / "We’re going to eat in the centre. Do you want to come?" — icon 🍽️ — new
-2. `time.line.what-time` — EN "Yes! What time?" · FR "Oui ! À quelle heure ?" · ES "¡Sí! ¿A qué hora?" — meaning "כן! באיזו שעה? (מתאים לי — רק תגיד מתי)" / "Yes! What time? (you’re in — you just need the time)" — icon 🙋 — new
+1. `time.line.invite` — EN "We're going to eat in the centre. Do you want to come?" · FR "On va manger dans le centre. Tu veux venir ?" · ES "Vamos a comer en el centro. ¿Quieres venir?" — meaning "אנחנו הולכים לאכול במרכז. רוצה לבוא?" / "We’re going to eat in the centre. Do you want to come?" — icon none — new
+2. `time.line.what-time` — EN "Yes! What time?" · FR "Oui ! À quelle heure ?" · ES "¡Sí! ¿A qué hora?" — meaning "כן! באיזו שעה? (מתאים לי — רק תגיד מתי)" / "Yes! What time? (you’re in — you just need the time)" — icon none — new
 
 No build-sentence card.
 
@@ -11743,8 +11743,8 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `time.line.eight` — EN "At eight. Is that too late for you?" · FR "À huit heures. C’est trop tard pour toi ?" · ES "A las ocho. ¿Es muy tarde para ti?" — meaning "בשמונה. זה מאוחר מדי בשבילך?" / "At eight. Is that too late for you?" — icon 🍽️ — new
-2. `time.line.not-too-late` — EN "No, that's not too late." · FR "Non, ce n’est pas trop tard." · ES "No, no es muy tarde." — meaning "לא, זה לא מאוחר מדי. (השעה מתאימה לי)" / "No, that’s not too late. (the time works for me)" — icon 👍 — new
+1. `time.line.eight` — EN "At eight. Is that too late for you?" · FR "À huit heures. C’est trop tard pour toi ?" · ES "A las ocho. ¿Es muy tarde para ti?" — meaning "בשמונה. זה מאוחר מדי בשבילך?" / "At eight. Is that too late for you?" — icon none — new
+2. `time.line.not-too-late` — EN "No, that's not too late." · FR "Non, ce n’est pas trop tard." · ES "No, no es muy tarde." — meaning "לא, זה לא מאוחר מדי. (השעה מתאימה לי)" / "No, that’s not too late. (the time works for me)" — icon none — new
 
 No build-sentence card.
 
@@ -11753,10 +11753,10 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `time.line.good` — EN "Great. It's very good there." · FR "Super. C’est très bon là-bas." · ES "Genial. Allí se come muy bien." — meaning "מעולה. מאוד טוב שם." / "Great. It’s very good there." — icon 😋 — new
-2. `time.pattern.today` — EN "What are you doing today?" · FR "Tu fais quoi aujourd’hui ?" · ES "¿Qué haces hoy?" — meaning "מה אתה עושה היום? (שמעת בבוקר)" / "What are you doing today? (you heard it this morning)" — icon 👋 — new
-3. `time.pattern.tonight` — EN "What are you doing tonight?" · FR "Tu fais quoi ce soir ?" · ES "¿Qué haces esta noche?" — meaning "מה אתה עושה הערב? (שמעת עכשיו)" / "What are you doing tonight? (you just heard it)" — icon 🌙 — new
-4. `time.line.tomorrow` — EN "What are you doing tomorrow?" · FR "Tu fais quoi demain ?" · ES "¿Qué haces mañana?" — meaning "מה אתה עושה מחר? (אותה שאלה — זמן חדש)" / "What are you doing tomorrow? (the same question — a new time)" — icon 💬 — new
+1. `time.line.good` — EN "Great. It's very good there." · FR "Super. C’est très bon là-bas." · ES "Genial. Allí se come muy bien." — meaning "מעולה. מאוד טוב שם." / "Great. It’s very good there." — icon none — new
+2. `time.pattern.today` — EN "What are you doing today?" · FR "Tu fais quoi aujourd’hui ?" · ES "¿Qué haces hoy?" — meaning "מה אתה עושה היום? (שמעת בבוקר)" / "What are you doing today? (you heard it this morning)" — icon none — new
+3. `time.pattern.tonight` — EN "What are you doing tonight?" · FR "Tu fais quoi ce soir ?" · ES "¿Qué haces esta noche?" — meaning "מה אתה עושה הערב? (שמעת עכשיו)" / "What are you doing tonight? (you just heard it)" — icon none — new
+4. `time.line.tomorrow` — EN "What are you doing tomorrow?" · FR "Tu fais quoi demain ?" · ES "¿Qué haces mañana?" — meaning "מה אתה עושה מחר? (אותה שאלה — זמן חדש)" / "What are you doing tomorrow? (the same question — a new time)" — icon none — new
 
 No build-sentence card.
 
@@ -11765,7 +11765,7 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `time.line.beach` — EN "Tomorrow morning I'm going to the beach. Are you free tomorrow?" · FR "Demain matin, je vais à la plage. Tu es libre demain ?" · ES "Mañana por la mañana voy a la playa. ¿Estás libre mañana?" — meaning "מחר בבוקר אני הולך לים. אתה פנוי מחר?" / "Tomorrow morning I’m going to the beach. Are you free tomorrow?" — icon 🏖️ — new
+1. `time.line.beach` — EN "Tomorrow morning I'm going to the beach. Are you free tomorrow?" · FR "Demain matin, je vais à la plage. Tu es libre demain ?" · ES "Mañana por la mañana voy a la playa. ¿Estás libre mañana?" — meaning "מחר בבוקר אני הולך לים. אתה פנוי מחר?" / "Tomorrow morning I’m going to the beach. Are you free tomorrow?" — icon none — new
 
 No build-sentence card.
 
@@ -11774,8 +11774,8 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `time.line.early` — EN "Then come with us! But we leave early." · FR "Alors viens avec nous ! Mais on part tôt." · ES "¡Entonces ven con nosotros! Pero salimos temprano." — meaning "אז בוא איתנו! אבל אנחנו יוצאים מוקדם. (עוד אין שעה)" / "Then come with us! But we leave early. (no time yet)" — icon 🌄 — new
-2. `time.line.meet` — EN "No problem. Let's meet here at seven." · FR "Pas de problème. On se retrouve ici à sept heures." · ES "No hay problema. Quedamos aquí a las siete." — meaning "אין בעיה. ניפגש כאן בשבע. (איפה: כאן · מתי: שבע)" / "No problem. Let’s meet here at seven. (where: here · when: seven)" — icon 📍 — new
+1. `time.line.early` — EN "Then come with us! But we leave early." · FR "Alors viens avec nous ! Mais on part tôt." · ES "¡Entonces ven con nosotros! Pero salimos temprano." — meaning "אז בוא איתנו! אבל אנחנו יוצאים מוקדם. (עוד אין שעה)" / "Then come with us! But we leave early. (no time yet)" — icon none — new
+2. `time.line.meet` — EN "No problem. Let's meet here at seven." · FR "Pas de problème. On se retrouve ici à sept heures." · ES "No hay problema. Quedamos aquí a las siete." — meaning "אין בעיה. ניפגש כאן בשבע. (איפה: כאן · מתי: שבע)" / "No problem. Let’s meet here at seven. (where: here · when: seven)" — icon none — new
 
 No build-sentence card.
 
@@ -11784,7 +11784,7 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `time.line.bye` — EN "Perfect. I have to go now — see you tonight!" · FR "Parfait. Je dois y aller maintenant — à ce soir !" · ES "Perfecto. Me tengo que ir ahora — ¡nos vemos esta noche!" — meaning "מושלם. אני חייב ללכת עכשיו — נתראה הערב!" / "Perfect. I have to go now — see you tonight!" — icon 👋 — new
+1. `time.line.bye` — EN "Perfect. I have to go now — see you tonight!" · FR "Parfait. Je dois y aller maintenant — à ce soir !" · ES "Perfecto. Me tengo que ir ahora — ¡nos vemos esta noche!" — meaning "מושלם. אני חייב ללכת עכשיו — נתראה הערב!" / "Perfect. I have to go now — see you tonight!" — icon none — new
 
 No build-sentence card.
 

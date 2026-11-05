@@ -565,7 +565,7 @@ describe('no bad pedagogy', () => {
   });
   it('45. no AI clock puzzle: no picture is ever a tile; no slot or prop is a clock', () => {
     for (const lang of LANGS) for (const s of stepsOf(day(lang), 'visualMatch')) for (const t of s.tiles) expect(t.image, lang).toBeUndefined();
-    for (const x of [...Object.values(M12_SLOTS), ...Object.values(M12_PROPS)]) expect(x.emoji).not.toMatch(/[⏰⏱⏲🕐-🕧]/u);
+    for (const x of [...Object.values(M12_SLOTS), ...Object.values(M12_PROPS)]) expect(x.image).not.toMatch(/[⏰⏱⏲🕐-🕧]/u);
     expect(Object.keys(M12_SLOTS).join(' ') + Object.keys(M12_PROPS).join(' ')).not.toMatch(/clock|hour|20-00|07-00/);
   });
   it('46. no unrelated plans: the only plans on screen are the conversation\'s own (dinner in the centre, the beach)', () => {
@@ -776,25 +776,25 @@ describe('the arc, state, visuals and video', () => {
     }
     expect(splitTimeBoard('Just a sentence.')).toBeNull();
   });
-  it('visual slots: 14 semantic slots and 1 result prop — PLACEHOLDERS (emoji, no image yet), listed in the Astra manifest', () => {
+  it('visual slots: 14 semantic slots and 1 result prop — final artwork, listed in the asset manifest', () => {
     expect(Object.keys(M12_SLOTS).sort()).toEqual(['ask-time', 'ask-tomorrow', 'beach-plan', 'dinner-invitation', 'free-tonight', 'leave-early', 'meeting-plan', 'morning-meeting', 'morning-question', 'not-too-late', 'open-morning', 'see-you-tonight', 'tonight-question', 'very-good-there']);
     expect(Object.keys(M12_PROPS)).toEqual(['plans-made']);
-    for (const s of [...Object.values(M12_SLOTS), ...Object.values(M12_PROPS)]) { expect(s.emoji).toBeTruthy(); expect(s).not.toHaveProperty('image'); }
+    for (const s of [...Object.values(M12_SLOTS), ...Object.values(M12_PROPS)]) { expect(s.image).toMatch(/^images\/mission12\/[a-z-]+\.jpg$/); expect(s).not.toHaveProperty('emoji'); }
     const manifest = readFileSync(fileURLToPath(new URL('../../../../../docs/MISSION12_ASSET_MANIFEST.md', import.meta.url)), 'utf8');
-    expect(manifest).toMatch(/VISUAL PRODUCTION REQUIRED/);
+    expect(manifest).toMatch(/VISUAL PRODUCTION COMPLETE/);
     for (const key of [...Object.keys(M12_SLOTS), ...Object.keys(M12_PROPS)]) expect(manifest, key).toContain(`\`${key}\``);
   });
   it('every card picture comes from a slot, the same in every language; no plan picture before its line', () => {
-    const looks = new Set(Object.values(M12_SLOTS).map((s) => s.emoji));
+    const looks = new Set(Object.values(M12_SLOTS).map((s) => s.image));
     const pics = (lang: CoverageLang) => stepsOf(day(lang), 'prime').flatMap((p) => p.words.map((w) => [w.key, w.image ?? w.emoji]));
     for (const lang of LANGS) for (const [key, pic] of pics(lang)) expect(looks, `${lang} ${key}`).toContain(pic);
     expect(pics('es')).toEqual(pics('en'));
     expect(pics('fr')).toEqual(pics('en'));
     const d = day('en');
-    const before = (key: string) => d.steps.slice(0, primeAt(d, key)).filter((s) => s.kind === 'prime').flatMap((p) => (p as Extract<BootcampStep, { kind: 'prime' }>).words.map((w) => w.emoji));
-    expect(before('time.line.invite')).not.toContain(M12_SLOTS['dinner-invitation'].emoji);
-    expect(before('time.line.beach')).not.toContain(M12_SLOTS['beach-plan'].emoji);
-    expect(before('time.line.early')).not.toContain(M12_SLOTS['leave-early'].emoji);
+    const before = (key: string) => d.steps.slice(0, primeAt(d, key)).filter((s) => s.kind === 'prime').flatMap((p) => (p as Extract<BootcampStep, { kind: 'prime' }>).words.map((w) => w.image));
+    expect(before('time.line.invite')).not.toContain(M12_SLOTS['dinner-invitation'].image);
+    expect(before('time.line.beach')).not.toContain(M12_SLOTS['beach-plan'].image);
+    expect(before('time.line.early')).not.toContain(M12_SLOTS['leave-early'].image);
   });
   it('video: none recorded yet in any language — the standard step is there and safely skipped; replay keeps the mission\'s progress', () => {
     for (const lang of LANGS) {

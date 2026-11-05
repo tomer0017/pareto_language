@@ -30,28 +30,31 @@ import type { BootcampStep, MatchTile } from './types.js';
  * All French and Spanish wording: AI linguistic review completed; native review still recommended.
  */
 
-/**
- * Mission 12's image slots — one per meaning, shared across EN / ES / FR. PLACEHOLDERS: no slot has its
- * artwork yet (`image` unset — the emoji stands in); giving a slot an `image` swaps it in. One continuous
- * world for the final art: the same traveller, the same friend, the same morning meeting spot
- * (`docs/MISSION12_ASSET_MANIFEST.md`). Never a clock: exact times are always application UI.
- */
+/** Final semantic artwork shared by EN / ES / FR. Related gestures reuse a whole asset;
+ * exact times and planner facts remain UI. See docs/MISSION12_ASSET_MANIFEST.md. */
 type M12Slot =
-  | 'morning-meeting' | 'morning-question' | 'open-morning' | 'tonight-question' | 'free-tonight'
-  | 'dinner-invitation' | 'ask-time' | 'not-too-late' | 'very-good-there' | 'ask-tomorrow'
-  | 'beach-plan' | 'leave-early' | 'meeting-plan' | 'see-you-tonight';
-export const M12_SLOTS: Record<M12Slot, { emoji: string; image?: string }> = {
-  'morning-meeting': { emoji: '☀️' }, 'morning-question': { emoji: '👋' }, 'open-morning': { emoji: '🤷' },
-  'tonight-question': { emoji: '🌙' }, 'free-tonight': { emoji: '🙌' }, 'dinner-invitation': { emoji: '🍽️' },
-  'ask-time': { emoji: '🙋' }, 'not-too-late': { emoji: '👍' }, 'very-good-there': { emoji: '😋' },
-  'ask-tomorrow': { emoji: '💬' }, 'beach-plan': { emoji: '🏖️' }, 'leave-early': { emoji: '🌄' },
-  'meeting-plan': { emoji: '📍' }, 'see-you-tonight': { emoji: '👋' },
+  | 'morning-meeting' | 'morning-question' | 'open-morning' | 'tonight-question' | 'free-tonight' | 'dinner-invitation' | 'ask-time' | 'not-too-late' | 'very-good-there' | 'ask-tomorrow' | 'beach-plan' | 'leave-early' | 'meeting-plan' | 'see-you-tonight';
+export const M12_SLOTS: Record<M12Slot, { image: string }> = {
+  'morning-meeting': { image: 'images/mission12/morning-meeting.jpg' },
+  'morning-question': { image: 'images/mission12/morning-meeting.jpg' },
+  'open-morning': { image: 'images/mission12/availability.jpg' },
+  'tonight-question': { image: 'images/mission12/morning-meeting.jpg' },
+  'free-tonight': { image: 'images/mission12/availability.jpg' },
+  'dinner-invitation': { image: 'images/mission12/dinner-invitation.jpg' },
+  'ask-time': { image: 'images/mission12/ask-time.jpg' },
+  'not-too-late': { image: 'images/mission12/not-too-late.jpg' },
+  'very-good-there': { image: 'images/mission12/dinner-invitation.jpg' },
+  'ask-tomorrow': { image: 'images/mission12/ask-time.jpg' },
+  'beach-plan': { image: 'images/mission12/beach-plan.jpg' },
+  'leave-early': { image: 'images/mission12/leave-early.jpg' },
+  'meeting-plan': { image: 'images/mission12/meeting-plan.jpg' },
+  'see-you-tonight': { image: 'images/mission12/see-you-tonight.jpg' },
 };
 /** Result pictures only — never a choice, never a card. */
 export const M12_PROPS = {
-  'plans-made': { emoji: '📅' },
-} as const satisfies Record<string, { emoji: string; image?: string }>;
-const look12 = (x: { emoji: string; image?: string }): { emoji: string } | { image: string } => (x.image ? { image: x.image } : { emoji: x.emoji });
+  'plans-made': { image: 'images/mission12/plans-made.jpg' },
+} as const;
+const look12 = (x: { image: string }): { image: string } => ({ image: x.image });
 
 /* The locked conversation (EN · FR · ES · HE), line by line — the friend's lines… */
 export const L_TODAY: L4 = ['Good morning! What are you doing today?', 'Bonjour ! Tu fais quoi aujourd’hui ?', '¡Buenos días! ¿Qué haces hoy?', 'בוקר טוב! מה אתה עושה היום?'];
@@ -315,10 +318,10 @@ export function m12Steps(lang: MissionLang): BootcampStep[] {
     k.receipt(PLANS_MADE),
     { kind: 'summary' },
   ];
-  // The result picture appears only at its earned receipt — once it has its artwork (a receipt shows no emoji).
-  const result: { emoji: string; image?: string } = M12_PROPS['plans-made'];
+  // The result picture appears only at its earned receipt.
+  const result = M12_PROPS['plans-made'];
   return steps.map((step) => (step.kind === 'receipt' && step.text.en === PLANS_MADE[1] && result.image ? { ...step, image: result.image } : step));
 }
 
-/** The briefing reveals only the morning meeting — once it has its artwork. */
+/** The briefing reveals only the morning meeting. */
 export const M12_BRIEFING_IMAGE = M12_SLOTS['morning-meeting'].image;
