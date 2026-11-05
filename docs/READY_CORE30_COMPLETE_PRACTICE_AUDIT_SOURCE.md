@@ -59,7 +59,7 @@ Not present in the runtime (so not exported): free sentence construction, typing
 Not a mission. Eight phrases shared by all missions; a mission bundles the ones it uses. Selecting one in a dialogue is always accepted.
 
 - `phrase.recovery.dont-understand` — EN "Sorry, I don't understand." · FR "Désolé, je ne comprends pas." · ES "Perdón, no entiendo." · HE "סליחה, אני לא מבין." — help tool — bundled in missions: 13, 14
-- `phrase.recovery.repeat` — EN "Can you repeat that?" · FR "Vous pouvez répéter ?" · ES "¿Puede repetir, por favor?" · HE "אפשר לחזור על זה?" — help tool — bundled in missions: 01, 03, 05, 06, 08, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- `phrase.recovery.repeat` — EN "Can you repeat that?" · FR "Vous pouvez répéter ?" · ES "¿Puede repetir, por favor?" · HE "אפשר לחזור על זה?" — help tool — bundled in missions: 01, 03, 05, 06, 08, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - `phrase.recovery.slowly` — EN "Please speak slowly." · FR "Parlez lentement, s’il vous plaît." · ES "Más despacio, por favor." · HE "דבר לאט, בבקשה." — help tool — bundled in missions: 01, 02, 03, 04, 06, 07, 09, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - `phrase.recovery.show-me` — EN "Can you show me?" · FR "Vous pouvez me montrer ?" · ES "¿Me lo puede mostrar?" · HE "אתה יכול להראות לי?" — help tool — bundled in missions: 04, 07, 17
 - `phrase.recovery.one-moment` — EN "One moment, please." · FR "Un instant, s’il vous plaît." · ES "Un momento, por favor." · HE "רגע אחד, בבקשה." — help tool — bundled in missions: 02, 03, 06, 08, 14
@@ -300,7 +300,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: sentence review (step 17); cold-open correct option (step 20); dialogue choice meeting-host/c1 (accepted)
 
 ### Sentence: `phrase.recovery.slowly`
@@ -2525,7 +2525,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: sentence review (step 20); dialogue choice breakfast-order/c2 (accepted)
 
 ### Sentence: `phrase.recovery.slowly`
@@ -5122,7 +5122,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: dialogue choice lost-in-town/c1 (accepted)
 
 ### Sentence: `phrase.recovery.thank-you`
@@ -6086,7 +6086,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: dialogue choice border-control/c2 (accepted)
 
 ### Sentence: `phrase.recovery.slowly`
@@ -8417,7 +8417,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: dialogue choice hotel-checkin/c1 (accepted)
 
 ### Sentence: `phrase.recovery.one-moment`
@@ -11635,7 +11635,7 @@ Every learner sentence of this mission is a line in a scene.
 - Phase: 3 — Everyday Life / חיי יום-יום 🏡
 - Source runtime file(s): `apps/web/src/features/bootcamp/core/timePlans.ts` — one multilingual spec, built per language by `apps/web/src/features/bootcamp/author.ts`
 - Video: found by convention, never written into mission content — EN `videos/en/en_12.mp4` · FR `videos/fr/fr_12.mp4` · ES `videos/es/es_12.mp4`. Played only where that file exists (inventory: `docs/CORE30_FINAL_VIDEO_ACTION_MAP.md`).
-- Video steps inside the Practice flow: no
+- Video steps inside the Practice flow: yes (see flow)
 
 ## Learning goal / intro screen
 
@@ -11657,36 +11657,136 @@ Intro screen (first Practice step; identical in the English, French and Spanish 
 
 - Icon: 🗓️
 - Title: "Mission 12: Time & Plans" / "משימה 12: זמן ותוכניות"
-- Text 1: "Today, tonight, tomorrow, later — the words that make plans." / "היום, הערב, מחר, אחר כך — המילים שקובעות תוכניות."
-- Text 2: "Not a lesson about clocks. Two travelers deciding what to do, and when." / "לא שיעור על שעון. שני מטיילים שקובעים מה לעשות ומתי."
+- Text 1: "Morning. You have no fixed plans yet. Talk with a friend and see what’s happening today and tomorrow." / "בוקר. עדיין אין לך תוכניות קבועות. דבר עם חבר ותראה מה עושים היום ומחר."
 - Button: "Make plans" / "לקבוע תוכניות"
 
 ## Current Practice flow
 
 1. `talk` — intro screen — "Mission 12: Time & Plans"
-2. `tool` — key sentence (listen → reveal → say aloud) — `phrase.time.what-doing-tomorrow` “What are you doing tomorrow?” · label "Ask about plans" / "לשאול על תוכניות" (1/5)
-3. `tool` — key sentence (listen → reveal → say aloud) — `phrase.time.free-tonight` “I'm free tonight.” · label "I'm free" / "אני פנוי" (2/5)
-4. `tool` — key sentence (listen → reveal → say aloud) — `phrase.time.what-time` “What time?” · label "What time" / "באיזו שעה" (3/5)
-5. `tool` — key sentence (listen → reveal → say aloud) — `phrase.time.lets-meet` “Let's meet here at seven.” · label "Set it" / "לקבוע" (4/5)
-6. `tool` — key sentence (listen → reveal → say aloud) — `phrase.time.maybe-later` “Maybe later.” · label "Maybe later" / "אולי אחר כך" (5/5)
-7. `replies` — expected replies (listening drill) — after `phrase.time.what-time`: 4 replies
-8. `receipt` — receipt (proof card) — "You recognize a time, "early" and "late" — even when it is said fast." / "אתה מזהה שעה, "מוקדם" ו"מאוחר" — גם כשזה נאמר מהר."
-9. `visualMatch` — visual match (hear → tap the tile) — 4 round(s)
-10. `quickReply` — quick reply (hear → pick your response) — 5 round(s)
-11. `swap` — swap it (one frame, several endings) — 3 round(s)
-12. `sentenceBuilder` — sentence builder (put the chunks in order) — 1 round(s)
-13. `dialogue` — dialogue (choose your line) — scene `making-plans`
-14. `receipt` — receipt (proof card) — "You planned an evening and a morning: when, what time, and where to meet." / "קבעת ערב ובוקר: מתי, באיזו שעה, ואיפה נפגשים."
-15. `swipe` — sentence review — 12 sentences
-16. `quickReply` — quick reply (hear → pick your response) — 4 round(s) · speed challenge
-17. `receipt` — receipt (proof card) — "Tonight, tomorrow, what time and where — you settled it all at the pace of a real chat." / "הערב, מחר, באיזו שעה ואיפה — קבעת הכל בקצב של שיחה אמיתית."
-18. `summary` — victory screen
+2. `prime` — before-we-speak (word intro) — 3 words → builds ``
+3. `prime` — before-we-speak (word intro) — 2 words → builds ``
+4. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+5. `prime` — before-we-speak (word intro) — 2 words → builds ``
+6. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+7. `prime` — before-we-speak (word intro) — 2 words → builds ``
+8. `visualMatch` — visual match (hear → tap the tile) — 1 round(s)
+9. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+10. `prime` — before-we-speak (word intro) — 4 words → builds ``
+11. `swap` — swap it (one frame, several endings) — 1 round(s)
+12. `prime` — before-we-speak (word intro) — 1 words → builds ``
+13. `visualMatch` — visual match (hear → tap the tile) — 1 round(s)
+14. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+15. `prime` — before-we-speak (word intro) — 2 words → builds ``
+16. `quiz` — meaning quiz (listening) — hears `reply.time.early`
+17. `sentenceBuilder` — sentence builder (put the chunks in order) — 1 round(s)
+18. `prime` — before-we-speak (word intro) — 1 words → builds ``
+19. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+20. `quickReply` — quick reply (hear → pick your response) — 2 round(s)
+21. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+22. `quickReply` — quick reply (hear → pick your response) — 2 round(s)
+23. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+24. `receipt` — receipt (proof card) — "☀️ Now · This morning ● → ⏳ Later → 🌙 Tonight ● → 🌅 Tomorrow morning ¦ 🌙 Tonight: Dinner · Centre / 20:00 ‖ 🌅 Tomorrow: Beach / Meet here · 07:00 ¦ Tonight and tomorrow — two plans, from the conversation itself." / "☀️ עכשיו · הבוקר ● → ⏳ אחר כך → 🌙 הערב ● → 🌅 מחר בבוקר ¦ 🌙 הערב: ארוחת ערב · מרכז / 20:00 ‖ 🌅 מחר: חוף הים / נפגשים כאן · 07:00 ¦ הערב ומחר — שתי תוכניות, מהשיחה עצמה."
+25. `dialogue` — dialogue (choose your line) — scene `making-plans`
+26. `receipt` — receipt (proof card) — "The whole conversation — from an open morning to two plans." / "כל השיחה — מהבוקר הפתוח ועד שתי תוכניות."
+27. `quickReply` — quick reply (hear → pick your response) — 4 round(s) · speed challenge
+28. `quickReply` — quick reply (hear → pick your response) — 2 round(s) · speed challenge
+29. `quickReply` — quick reply (hear → pick your response) — 1 round(s) · speed challenge
+30. `receipt` — receipt (proof card) — "No help — the whole conversation, at a friend’s pace." / "בלי עזרה — כל השיחה, בקצב של חבר."
+31. `video` — video — mode again
+32. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+33. `quickReply` — quick reply (hear → pick your response) — 2 round(s)
+34. `visualMatch` — visual match (hear → tap the tile) — 1 round(s) · speed challenge
+35. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+36. `quickReply` — quick reply (hear → pick your response) — 2 round(s)
+37. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+38. `visualMatch` — visual match (hear → tap the tile) — 1 round(s) · speed challenge
+39. `receipt` — receipt (proof card) — "📅 PLANS MADE ¦ 🌙 Tonight: Dinner · Centre / 20:00 ✅ ‖ 🌅 Tomorrow: Beach / Meet here · 07:00 ✅" / "📅 התוכניות נקבעו ¦ 🌙 הערב: ארוחת ערב · מרכז / 20:00 ✅ ‖ 🌅 מחר: חוף הים / נפגשים כאן · 07:00 ✅"
+40. `summary` — victory screen
 
 Step sequence identical in EN / FR / ES: yes.
 
 ## Before we speak / word intro
 
-No vocabulary pre-step.
+Step 2. Label: "This morning" / "הבוקר". Intro: "☀️ Now · This morning ● → ⏳ Later → 🌙 Tonight → 🌅 Tomorrow morning ¦ 🌙 Tonight: Plan ? / Time ? ‖ 🌅 Tomorrow: Plan ? / Meet ? ¦ Your friend asks what you are doing today. Tap to hear." / "☀️ עכשיו · הבוקר ● → ⏳ אחר כך → 🌙 הערב → 🌅 מחר בבוקר ¦ 🌙 הערב: תוכנית ? / שעה ? ‖ 🌅 מחר: תוכנית ? / מפגש ? ¦ החבר שואל מה אתה עושה היום. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `time.line.today` — EN "Good morning! What are you doing today?" · FR "Bonjour ! Tu fais quoi aujourd’hui ?" · ES "¡Buenos días! ¿Qué haces hoy?" — meaning "בוקר טוב! מה אתה עושה היום?" / "Good morning! What are you doing today?" — icon 👋 — new
+2. `time.line.nothing` — EN "Nothing this morning." · FR "Rien ce matin." · ES "Nada esta mañana." — meaning "כלום הבוקר. (הבוקר פנוי)" / "Nothing this morning. (your morning is open)" — icon 🤷 — new
+3. `time.line.later` — EN "Maybe later." · FR "Peut-être plus tard." · ES "Quizás más tarde." — meaning "אולי אחר כך. (עוד לא החלטת)" / "Maybe later. (you have not decided yet)" — icon 🤷 — new
+
+No build-sentence card.
+
+Step 3. Label: "Tonight" / "הערב". Intro: "☀️ Now · This morning → ⏳ Later → 🌙 Tonight ● → 🌅 Tomorrow morning ¦ 🌙 Tonight: Plan ? / Time ? ‖ 🌅 Tomorrow: Plan ? / Meet ? ¦ Now — tonight. Tap to hear." / "☀️ עכשיו · הבוקר → ⏳ אחר כך → 🌙 הערב ● → 🌅 מחר בבוקר ¦ 🌙 הערב: תוכנית ? / שעה ? ‖ 🌅 מחר: תוכנית ? / מפגש ? ¦ ועכשיו — הערב. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `time.line.tonight` — EN "And what are you doing tonight?" · FR "Et tu fais quoi ce soir ?" · ES "¿Y qué haces esta noche?" — meaning "ומה אתה עושה הערב?" / "And what are you doing tonight?" — icon 🌙 — new
+2. `time.line.free-tonight` — EN "I'm free tonight." · FR "Je suis libre ce soir." · ES "Estoy libre esta noche." — meaning "אני פנוי הערב. (אני פנוי + מתי)" / "I’m free tonight. (I’m free + when)" — icon 🙌 — new
+
+No build-sentence card.
+
+Step 5. Label: "An invitation" / "הזמנה". Intro: "☀️ Now · This morning → ⏳ Later → 🌙 Tonight ● → 🌅 Tomorrow morning ¦ 🌙 Tonight: Plan ? / Time ? ‖ 🌅 Tomorrow: Plan ? / Meet ? ¦ Your friend invites you — and you want to know when. Tap to hear." / "☀️ עכשיו · הבוקר → ⏳ אחר כך → 🌙 הערב ● → 🌅 מחר בבוקר ¦ 🌙 הערב: תוכנית ? / שעה ? ‖ 🌅 מחר: תוכנית ? / מפגש ? ¦ החבר מזמין אותך — ואתה רוצה לדעת מתי. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `time.line.invite` — EN "We're going to eat in the centre. Do you want to come?" · FR "On va manger dans le centre. Tu veux venir ?" · ES "Vamos a comer en el centro. ¿Quieres venir?" — meaning "אנחנו הולכים לאכול במרכז. רוצה לבוא?" / "We’re going to eat in the centre. Do you want to come?" — icon 🍽️ — new
+2. `time.line.what-time` — EN "Yes! What time?" · FR "Oui ! À quelle heure ?" · ES "¡Sí! ¿A qué hora?" — meaning "כן! באיזו שעה? (מתאים לי — רק תגיד מתי)" / "Yes! What time? (you’re in — you just need the time)" — icon 🙋 — new
+
+No build-sentence card.
+
+Step 7. Label: "The time" / "השעה". Intro: "☀️ Now · This morning → ⏳ Later → 🌙 Tonight ● → 🌅 Tomorrow morning ¦ 🌙 Tonight: Dinner · Centre / Time ? ‖ 🌅 Tomorrow: Plan ? / Meet ? ¦ Your friend names a time — and asks if it works for you. Tap to hear." / "☀️ עכשיו · הבוקר → ⏳ אחר כך → 🌙 הערב ● → 🌅 מחר בבוקר ¦ 🌙 הערב: ארוחת ערב · מרכז / שעה ? ‖ 🌅 מחר: תוכנית ? / מפגש ? ¦ החבר אומר שעה — ושואל אם זה מתאים לך. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `time.line.eight` — EN "At eight. Is that too late for you?" · FR "À huit heures. C’est trop tard pour toi ?" · ES "A las ocho. ¿Es muy tarde para ti?" — meaning "בשמונה. זה מאוחר מדי בשבילך?" / "At eight. Is that too late for you?" — icon 🍽️ — new
+2. `time.line.not-too-late` — EN "No, that's not too late." · FR "Non, ce n’est pas trop tard." · ES "No, no es muy tarde." — meaning "לא, זה לא מאוחר מדי. (השעה מתאימה לי)" / "No, that’s not too late. (the time works for me)" — icon 👍 — new
+
+No build-sentence card.
+
+Step 10. Label: "Tomorrow" / "מחר". Intro: "☀️ Now · This morning → ⏳ Later → 🌙 Tonight → 🌅 Tomorrow morning ● ¦ 🌙 Tonight: Dinner · Centre / 20:00 ‖ 🌅 Tomorrow: Plan ? / Meet ? ¦ Your friend asked you about today and tonight. Now it’s your turn to ask — about tomorrow. Tap to hear." / "☀️ עכשיו · הבוקר → ⏳ אחר כך → 🌙 הערב → 🌅 מחר בבוקר ● ¦ 🌙 הערב: ארוחת ערב · מרכז / 20:00 ‖ 🌅 מחר: תוכנית ? / מפגש ? ¦ החבר שאל אותך על היום ועל הערב. עכשיו תורך לשאול — על מחר. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `time.line.good` — EN "Great. It's very good there." · FR "Super. C’est très bon là-bas." · ES "Genial. Allí se come muy bien." — meaning "מעולה. מאוד טוב שם." / "Great. It’s very good there." — icon 😋 — new
+2. `time.pattern.today` — EN "What are you doing today?" · FR "Tu fais quoi aujourd’hui ?" · ES "¿Qué haces hoy?" — meaning "מה אתה עושה היום? (שמעת בבוקר)" / "What are you doing today? (you heard it this morning)" — icon 👋 — new
+3. `time.pattern.tonight` — EN "What are you doing tonight?" · FR "Tu fais quoi ce soir ?" · ES "¿Qué haces esta noche?" — meaning "מה אתה עושה הערב? (שמעת עכשיו)" / "What are you doing tonight? (you just heard it)" — icon 🌙 — new
+4. `time.line.tomorrow` — EN "What are you doing tomorrow?" · FR "Tu fais quoi demain ?" · ES "¿Qué haces mañana?" — meaning "מה אתה עושה מחר? (אותה שאלה — זמן חדש)" / "What are you doing tomorrow? (the same question — a new time)" — icon 💬 — new
+
+No build-sentence card.
+
+Step 12. Label: "Tomorrow morning" / "מחר בבוקר". Intro: "☀️ Now · This morning → ⏳ Later → 🌙 Tonight → 🌅 Tomorrow morning ● ¦ 🌙 Tonight: Dinner · Centre / 20:00 ‖ 🌅 Tomorrow: Plan ? / Meet ? ¦ What is your friend doing tomorrow morning? Tap to hear." / "☀️ עכשיו · הבוקר → ⏳ אחר כך → 🌙 הערב → 🌅 מחר בבוקר ● ¦ 🌙 הערב: ארוחת ערב · מרכז / 20:00 ‖ 🌅 מחר: תוכנית ? / מפגש ? ¦ מה החבר עושה מחר בבוקר? הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `time.line.beach` — EN "Tomorrow morning I'm going to the beach. Are you free tomorrow?" · FR "Demain matin, je vais à la plage. Tu es libre demain ?" · ES "Mañana por la mañana voy a la playa. ¿Estás libre mañana?" — meaning "מחר בבוקר אני הולך לים. אתה פנוי מחר?" / "Tomorrow morning I’m going to the beach. Are you free tomorrow?" — icon 🏖️ — new
+
+No build-sentence card.
+
+Step 15. Label: "The arrangement" / "הסידור". Intro: "☀️ Now · This morning → ⏳ Later → 🌙 Tonight → 🌅 Tomorrow morning ● ¦ 🌙 Tonight: Dinner · Centre / 20:00 ‖ 🌅 Tomorrow: Beach / Meet ? ¦ They leave early — and you decide where and when to meet. Tap to hear." / "☀️ עכשיו · הבוקר → ⏳ אחר כך → 🌙 הערב → 🌅 מחר בבוקר ● ¦ 🌙 הערב: ארוחת ערב · מרכז / 20:00 ‖ 🌅 מחר: חוף הים / מפגש ? ¦ הם יוצאים מוקדם — ואתה קובע איפה ומתי נפגשים. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `time.line.early` — EN "Then come with us! But we leave early." · FR "Alors viens avec nous ! Mais on part tôt." · ES "¡Entonces ven con nosotros! Pero salimos temprano." — meaning "אז בוא איתנו! אבל אנחנו יוצאים מוקדם. (עוד אין שעה)" / "Then come with us! But we leave early. (no time yet)" — icon 🌄 — new
+2. `time.line.meet` — EN "No problem. Let's meet here at seven." · FR "Pas de problème. On se retrouve ici à sept heures." · ES "No hay problema. Quedamos aquí a las siete." — meaning "אין בעיה. ניפגש כאן בשבע. (איפה: כאן · מתי: שבע)" / "No problem. Let’s meet here at seven. (where: here · when: seven)" — icon 📍 — new
+
+No build-sentence card.
+
+Step 18. Label: "See you" / "להתראות". Intro: "☀️ Now · This morning ● → ⏳ Later → 🌙 Tonight ● → 🌅 Tomorrow morning ¦ 🌙 Tonight: Dinner · Centre / 20:00 ‖ 🌅 Tomorrow: Beach / Meet here · 07:00 ¦ Your friend has to go — and when will you see each other? Tap to hear." / "☀️ עכשיו · הבוקר ● → ⏳ אחר כך → 🌙 הערב ● → 🌅 מחר בבוקר ¦ 🌙 הערב: ארוחת ערב · מרכז / 20:00 ‖ 🌅 מחר: חוף הים / נפגשים כאן · 07:00 ¦ החבר צריך ללכת — ומתי תתראו? הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `time.line.bye` — EN "Perfect. I have to go now — see you tonight!" · FR "Parfait. Je dois y aller maintenant — à ce soir !" · ES "Perfecto. Me tengo que ir ahora — ¡nos vemos esta noche!" — meaning "מושלם. אני חייב ללכת עכשיו — נתראה הערב!" / "Perfect. I have to go now — see you tonight!" — icon 👋 — new
+
+No build-sentence card.
 
 ## Every sentence in this mission
 
@@ -11701,40 +11801,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "The most useful answer when you have not decided." / "התשובה הכי שימושית כשלא החלטת."
 - Used in missions: 12, 18
-- Exercised here as: key sentence (step 6); quick-reply response (step 10, round 1, accepted); sentence review (step 15); quick-reply response (step 16, round 2, wrong option); quick-reply response (step 16, round 4, wrong option); dialogue choice making-plans/c2 (accepted)
-
-### Sentence: `phrase.time.free-tonight`
-
-- EN: I'm free tonight.
-- HE: אני פנוי הערב.
-- FR: Je suis libre ce soir.
-- ES: Estoy libre esta noche.
-- Role: learner production
-- Tip / pattern note: none
-- Used in missions: 12, 18
-- Exercised here as: key sentence (step 3); quick-reply response (step 10, round 2, accepted); quick-reply response (step 10, round 5, wrong option); sentence review (step 15); quick-reply response (step 16, round 1, accepted); quick-reply response (step 16, round 3, wrong option); quick-reply response (step 16, round 4, wrong option); dialogue choice making-plans/c4 (accepted)
-
-### Sentence: `phrase.time.what-time`
-
-- EN: What time?
-- HE: באיזו שעה?
-- FR: À quelle heure ?
-- ES: ¿A qué hora?
-- Role: learner production
-- Tip / pattern note: none
-- Used in missions: 12
-- Exercised here as: key sentence (step 4); "you said" lead-in of the expected-replies drill (step 7); quick-reply response (step 10, round 2, wrong option); quick-reply response (step 10, round 3, accepted); quick-reply response (step 10, round 5, wrong option); sentence review (step 15); quick-reply response (step 16, round 3, wrong option); dialogue choice making-plans/c6 (accepted)
-
-### Sentence: `phrase.time.when`
-
-- EN: When?
-- HE: מתי?
-- FR: Quand ?
-- ES: ¿Cuándo?
-- Role: learner production
-- Tip / pattern note: none
-- Used in missions: 12
-- Exercised here as: dialogue choice making-plans/c6 (accepted)
+- Exercised here as: quick-reply response (step 4, round 1, wrong option); quick-reply response (step 6, round 1, wrong option); quick-reply response (step 19, round 1, accepted); quick-reply response (step 20, round 1, wrong option); quick-reply response (step 21, round 1, wrong option); quick-reply response (step 27, round 1, accepted); quick-reply response (step 27, round 4, wrong option); quick-reply response (step 32, round 1, accepted); quick-reply response (step 35, round 1, wrong option); dialogue choice making-plans/c2 (accepted)
 
 ### Sentence: `phrase.time.not-too-late`
 
@@ -11745,18 +11812,29 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 12, 18
-- Exercised here as: quick-reply response (step 10, round 1, wrong option); quick-reply response (step 10, round 3, wrong option); quick-reply response (step 10, round 4, accepted); sentence review (step 15); quick-reply response (step 16, round 1, wrong option); quick-reply response (step 16, round 2, accepted); dialogue choice making-plans/c8 (accepted); dialogue choice making-plans/c8b (accepted)
+- Exercised here as: quick-reply response (step 9, round 1, accepted); quick-reply response (step 19, round 1, wrong option); quick-reply response (step 20, round 2, wrong option); quick-reply response (step 21, round 1, accepted); quick-reply response (step 22, round 2, wrong option); quick-reply response (step 23, round 1, wrong option); quick-reply response (step 27, round 3, wrong option); quick-reply response (step 27, round 4, accepted); quick-reply response (step 28, round 1, wrong option); quick-reply response (step 29, round 1, wrong option); quick-reply response (step 32, round 1, wrong option); quick-reply response (step 33, round 2, wrong option); quick-reply response (step 35, round 1, accepted); dialogue choice making-plans/c2 (WRONG option); dialogue choice making-plans/c8 (accepted); dialogue choice making-plans/c14 (WRONG option)
 
-### Sentence: `phrase.time.what-doing-tomorrow`
+### Sentence: `phrase.time.free-tonight`
 
-- EN: What are you doing tomorrow?
-- HE: מה אתה עושה מחר?
-- FR: Tu fais quoi demain ?
-- ES: ¿Qué haces mañana?
+- EN: I'm free tonight.
+- HE: אני פנוי הערב.
+- FR: Je suis libre ce soir.
+- ES: Estoy libre esta noche.
 - Role: learner production
-- Tip / pattern note: "Swap tomorrow for today / tonight and you have three questions." / "מחליפים tomorrow ב-today / tonight ויש לך שלוש שאלות."
+- Tip / pattern note: none
+- Used in missions: 12, 18
+- Exercised here as: quick-reply response (step 4, round 1, accepted); quick-reply response (step 6, round 1, wrong option); quick-reply response (step 9, round 1, wrong option); quick-reply response (step 14, round 1, wrong option); quick-reply response (step 19, round 1, wrong option); quick-reply response (step 20, round 1, accepted); quick-reply response (step 22, round 1, wrong option); quick-reply response (step 22, round 2, wrong option); quick-reply response (step 27, round 2, accepted); quick-reply response (step 28, round 1, wrong option); quick-reply response (step 28, round 2, wrong option); quick-reply response (step 29, round 1, wrong option); quick-reply response (step 33, round 1, accepted); quick-reply response (step 35, round 1, wrong option); quick-reply response (step 36, round 2, wrong option); quick-reply response (step 37, round 1, wrong option); dialogue choice making-plans/c4 (accepted); dialogue choice making-plans/c12 (WRONG option)
+
+### Sentence: `phrase.time.what-time`
+
+- EN: What time?
+- HE: באיזו שעה?
+- FR: À quelle heure ?
+- ES: ¿A qué hora?
+- Role: learner production
+- Tip / pattern note: none
 - Used in missions: 12
-- Exercised here as: key sentence (step 2); quick-reply response (step 10, round 4, wrong option); swap-it frame (step 11, round 1); swap-it frame (step 11, round 2); swap-it frame (step 11, round 3); sentence review (step 15); quick-reply response (step 16, round 2, wrong option); dialogue choice making-plans/c10 (accepted)
+- Exercised here as: quick-reply response (step 6, round 1, accepted); quick-reply response (step 9, round 1, wrong option); quick-reply response (step 20, round 1, wrong option); quick-reply response (step 20, round 2, accepted); quick-reply response (step 22, round 1, wrong option); quick-reply response (step 23, round 1, wrong option); quick-reply response (step 27, round 1, wrong option); quick-reply response (step 27, round 3, accepted); quick-reply response (step 28, round 2, wrong option); quick-reply response (step 33, round 1, wrong option); quick-reply response (step 33, round 2, accepted); quick-reply response (step 36, round 1, wrong option); quick-reply response (step 37, round 1, wrong option); dialogue choice making-plans/c4 (WRONG option); dialogue choice making-plans/c6 (accepted); dialogue choice making-plans/c10 (WRONG option)
 
 ### Sentence: `phrase.time.free-tomorrow`
 
@@ -11767,7 +11845,18 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 12, 18
-- Exercised here as: quick-reply response (step 10, round 2, wrong option); quick-reply response (step 10, round 3, wrong option); quick-reply response (step 10, round 5, accepted); sentence review (step 15); quick-reply response (step 16, round 3, accepted); dialogue choice making-plans/c12 (accepted)
+- Exercised here as: quick-reply response (step 14, round 1, accepted); quick-reply response (step 20, round 2, wrong option); quick-reply response (step 22, round 2, accepted); quick-reply response (step 27, round 1, wrong option); quick-reply response (step 27, round 2, wrong option); quick-reply response (step 27, round 4, wrong option); quick-reply response (step 28, round 2, accepted); quick-reply response (step 33, round 1, wrong option); quick-reply response (step 36, round 1, wrong option); quick-reply response (step 36, round 2, accepted); dialogue choice making-plans/c6 (WRONG option); dialogue choice making-plans/c12 (accepted)
+
+### Sentence: `phrase.time.what-doing-tomorrow`
+
+- EN: What are you doing tomorrow?
+- HE: מה אתה עושה מחר?
+- FR: Tu fais quoi demain ?
+- ES: ¿Qué haces mañana?
+- Role: learner production
+- Tip / pattern note: "Swap tomorrow for today / tonight and you have three questions." / "מחליפים tomorrow ב-today / tonight ויש לך שלוש שאלות."
+- Used in missions: 12
+- Exercised here as: swap-it frame (step 11, round 1); quick-reply response (step 14, round 1, wrong option); quick-reply response (step 21, round 1, wrong option); quick-reply response (step 22, round 1, accepted); quick-reply response (step 27, round 3, wrong option); quick-reply response (step 28, round 1, accepted); quick-reply response (step 32, round 1, wrong option); quick-reply response (step 36, round 1, accepted); dialogue choice making-plans/c8 (WRONG option); dialogue choice making-plans/c10 (accepted)
 
 ### Sentence: `phrase.time.lets-meet`
 
@@ -11778,317 +11867,182 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "Let’s meet ___ at ___ — a place and a time, and you are done." / "Let’s meet ___ at ___ — מקום ושעה, וזהו."
 - Used in missions: 12, 18
-- Exercised here as: key sentence (step 5); quick-reply response (step 10, round 1, wrong option); quick-reply response (step 10, round 4, wrong option); sentence-builder target (step 12, round 1); sentence review (step 15); quick-reply response (step 16, round 1, wrong option); quick-reply response (step 16, round 4, accepted); dialogue choice making-plans/c14 (accepted)
+- Exercised here as: quick-reply response (step 23, round 1, accepted); quick-reply response (step 27, round 2, wrong option); quick-reply response (step 29, round 1, accepted); quick-reply response (step 33, round 2, wrong option); quick-reply response (step 36, round 2, wrong option); quick-reply response (step 37, round 1, accepted); dialogue choice making-plans/c14 (accepted)
 
-### Sentence: `reply.time.what-doing-today`
+### Sentence: `phrase.time.no-problem-meet`
 
-- EN: What are you doing today?
-- HE: מה אתה עושה היום?
-- FR: Tu fais quoi aujourd’hui ?
-- ES: ¿Qué haces hoy?
+- EN: No problem. Let's meet here at seven.
+- HE: אין בעיה. ניפגש כאן בשבע.
+- FR: Pas de problème. On se retrouve ici à sept heures.
+- ES: No hay problema. Quedamos aquí a las siete.
+- Role: learner production
+- Tip / pattern note: none
+- Used in missions: 12
+- Exercised here as: sentence-builder target (step 17, round 1)
+
+### Sentence: `reply.time.today`
+
+- EN: Good morning! What are you doing today?
+- HE: בוקר טוב! מה אתה עושה היום?
+- FR: Bonjour ! Tu fais quoi aujourd’hui ?
+- ES: ¡Buenos días! ¿Qué haces hoy?
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 12
-- Exercised here as: quick-reply prompt (step 10, round 1)
+- Exercised here as: quick-reply prompt (step 19, round 1)
 
-### Sentence: `reply.time.what-doing-tonight`
+### Sentence: `reply.time.tonight-q`
 
-- EN: What are you doing tonight?
-- HE: מה אתה עושה הערב?
-- FR: Tu fais quoi ce soir ?
-- ES: ¿Qué haces esta noche?
+- EN: And what are you doing tonight?
+- HE: ומה אתה עושה הערב?
+- FR: Et tu fais quoi ce soir ?
+- ES: ¿Y qué haces esta noche?
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 12
-- Exercised here as: quick-reply prompt (step 10, round 2)
+- Exercised here as: quick-reply prompt (step 4, round 1); meaning-quiz distractor (step 16); quick-reply prompt (step 20, round 1)
 
-### Sentence: `reply.time.want-to-come`
+### Sentence: `reply.time.invite`
 
-- EN: Do you want to come?
-- HE: רוצה לבוא?
-- FR: Tu veux venir ?
-- ES: ¿Quieres venir?
+- EN: We're going to eat in the centre. Do you want to come?
+- HE: אנחנו הולכים לאכול במרכז. רוצה לבוא?
+- FR: On va manger dans le centre. Tu veux venir ?
+- ES: Vamos a comer en el centro. ¿Quieres venir?
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 12
-- Exercised here as: quick-reply prompt (step 10, round 3); sentence review (step 15)
+- Exercised here as: quick-reply prompt (step 20, round 2)
 
-### Sentence: `reply.time.at-eight`
+### Sentence: `reply.time.eight`
 
-- EN: At eight.
-- HE: בשמונה.
-- FR: À huit heures.
-- ES: A las ocho.
+- EN: At eight. Is that too late for you?
+- HE: בשמונה. זה מאוחר מדי בשבילך?
+- FR: À huit heures. C’est trop tard pour toi ?
+- ES: A las ocho. ¿Es muy tarde para ti?
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 12
-- Exercised here as: expected-reply audio (step 7); visual-match audio (step 9, round 1); sentence review (step 15)
+- Exercised here as: quick-reply prompt (step 9, round 1); meaning-quiz distractor (step 16); quick-reply prompt (step 21, round 1)
 
-### Sentence: `reply.time.too-late`
+### Sentence: `reply.time.good`
 
-- EN: Is that too late for you?
-- HE: זה מאוחר מדי בשבילך?
-- FR: C’est trop tard pour toi ?
-- ES: ¿Es muy tarde para ti?
+- EN: Great. It's very good there.
+- HE: מעולה. מאוד טוב שם.
+- FR: Super. C’est très bon là-bas.
+- ES: Genial. Allí se come muy bien.
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 12
-- Exercised here as: expected-reply audio (step 7); quick-reply prompt (step 10, round 4); sentence review (step 15)
+- Exercised here as: quick-reply prompt (step 22, round 1)
 
-### Sentence: `reply.time.free-tomorrow-q`
+### Sentence: `reply.time.beach`
 
-- EN: Are you free tomorrow?
-- HE: אתה פנוי מחר?
-- FR: Tu es libre demain ?
-- ES: ¿Estás libre mañana?
+- EN: Tomorrow morning I'm going to the beach. Are you free tomorrow?
+- HE: מחר בבוקר אני הולך לים. אתה פנוי מחר?
+- FR: Demain matin, je vais à la plage. Tu es libre demain ?
+- ES: Mañana por la mañana voy a la playa. ¿Estás libre mañana?
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 12
-- Exercised here as: expected-reply audio (step 7); quick-reply prompt (step 10, round 5); sentence review (step 15)
+- Exercised here as: quick-reply prompt (step 14, round 1); quick-reply prompt (step 22, round 2)
 
-### Sentence: `reply.time.leave-early`
+### Sentence: `reply.time.early`
 
-- EN: We leave early.
-- HE: אנחנו יוצאים מוקדם.
-- FR: On part tôt.
-- ES: Salimos temprano.
+- EN: Then come with us! But we leave early.
+- HE: אז בוא איתנו! אבל אנחנו יוצאים מוקדם.
+- FR: Alors viens avec nous ! Mais on part tôt.
+- ES: ¡Entonces ven con nosotros! Pero salimos temprano.
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 12
-- Exercised here as: expected-reply audio (step 7)
+- Exercised here as: meaning-quiz audio (step 16); quick-reply prompt (step 23, round 1)
 
-### Sentence: `phrase.recovery.repeat`
+### Sentence: `reply.time.goodbye`
 
-- EN: Can you repeat that?
-- HE: אפשר לחזור על זה?
-- FR: Vous pouvez répéter ?
-- ES: ¿Puede repetir, por favor?
-- Role: conversation-help tool (global Recovery Toolkit)
+- EN: Perfect. I have to go now — see you tonight!
+- HE: מושלם. אני חייב ללכת עכשיו — נתראה הערב!
+- FR: Parfait. Je dois y aller maintenant — à ce soir !
+- ES: Perfecto. Me tengo que ir ahora — ¡nos vemos esta noche!
+- Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
-- Exercised here as: sentence review (step 15); dialogue choice making-plans/c8 (accepted)
+- Used in missions: 12
+- Exercised here as: nothing (listed only)
 
 ## Expected replies / listening items
 
-Lead-in screen: "You said:" / "אמרת:" — EN "What time?" · FR "À quelle heure ?" · ES "¿A qué hora?" — then "What might they answer? Learn the replies before they surprise you." / "מה הם עלולים לענות? נלמד את התשובות לפני שהן מפתיעות אותך." — button 👂 "I'm ready" / "אני מוכן".
-Linked learner sentence: `phrase.time.what-time`. Each reply below is played once automatically; the learner picks its MEANING from three buttons. Distractors are always the first two OTHER replies of this same drill, in drill order (runtime rule), so the three choices are shuffled per session.
-
-### M12-Q01 — expected-reply (step 7, reply 1 of 4)
-
-- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (1/4)
-- Audio played: EN "At eight." · FR "À huit heures." · ES "A las ocho."
-- Meaning of the audio (HE): "בשמונה."
-- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
-- Choices:
-  1. HE "בשמונה." / EN "At eight." — `reply.time.at-eight` — ✅ accepted
-  2. HE "זה מאוחר מדי בשבילך?" / EN "Is that too late for you?" — `reply.time.too-late` — ❌ wrong
-  3. HE "אנחנו יוצאים מוקדם." / EN "We leave early." — `reply.time.leave-early` — ❌ wrong
-- Tests: reply.time.at-eight
-- Explanation shown after answering: generic: “At eight.” means “בשמונה.”.
-
-### M12-Q02 — expected-reply (step 7, reply 2 of 4)
-
-- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (2/4)
-- Audio played: EN "Is that too late for you?" · FR "C’est trop tard pour toi ?" · ES "¿Es muy tarde para ti?"
-- Meaning of the audio (HE): "זה מאוחר מדי בשבילך?"
-- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
-- Choices:
-  1. HE "זה מאוחר מדי בשבילך?" / EN "Is that too late for you?" — `reply.time.too-late` — ✅ accepted
-  2. HE "בשמונה." / EN "At eight." — `reply.time.at-eight` — ❌ wrong
-  3. HE "אנחנו יוצאים מוקדם." / EN "We leave early." — `reply.time.leave-early` — ❌ wrong
-- Tests: reply.time.too-late
-- Explanation shown after answering: generic: “Is that too late for you?” means “זה מאוחר מדי בשבילך?”.
-
-### M12-Q03 — expected-reply (step 7, reply 3 of 4)
-
-- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (3/4)
-- Audio played: EN "We leave early." · FR "On part tôt." · ES "Salimos temprano."
-- Meaning of the audio (HE): "אנחנו יוצאים מוקדם."
-- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
-- Choices:
-  1. HE "אנחנו יוצאים מוקדם." / EN "We leave early." — `reply.time.leave-early` — ✅ accepted
-  2. HE "בשמונה." / EN "At eight." — `reply.time.at-eight` — ❌ wrong
-  3. HE "זה מאוחר מדי בשבילך?" / EN "Is that too late for you?" — `reply.time.too-late` — ❌ wrong
-- Tests: reply.time.leave-early
-- Explanation shown after answering: generic: “We leave early.” means “אנחנו יוצאים מוקדם.”.
-
-### M12-Q04 — expected-reply (step 7, reply 4 of 4)
-
-- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (4/4)
-- Audio played: EN "Are you free tomorrow?" · FR "Tu es libre demain ?" · ES "¿Estás libre mañana?"
-- Meaning of the audio (HE): "אתה פנוי מחר?"
-- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
-- Choices:
-  1. HE "אתה פנוי מחר?" / EN "Are you free tomorrow?" — `reply.time.free-tomorrow-q` — ✅ accepted
-  2. HE "בשמונה." / EN "At eight." — `reply.time.at-eight` — ❌ wrong
-  3. HE "זה מאוחר מדי בשבילך?" / EN "Is that too late for you?" — `reply.time.too-late` — ❌ wrong
-- Tests: reply.time.free-tomorrow-q
-- Explanation shown after answering: generic: “Are you free tomorrow?” means “אתה פנוי מחר?”.
+No expected-replies drill in this mission.
 
 ## Quizzes
 
-No meaning quiz in this mission.
+### M12-Q08 — meaning-quiz (step 16, single question)
+
+- Prompt displayed: "What did it mean?" / "מה זה אומר?"
+- Audio played: EN "Then come with us! But we leave early." · FR "Alors viens avec nous ! Mais on part tôt." · ES "¡Entonces ven con nosotros! Pero salimos temprano."
+- Meaning of the audio (HE): "אז בוא איתנו! אבל אנחנו יוצאים מוקדם."
+- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
+- Choices:
+  1. HE "אז בוא איתנו! אבל אנחנו יוצאים מוקדם." / EN "Then come with us! But we leave early." — `reply.time.early` — ✅ accepted
+  2. HE "בשמונה. זה מאוחר מדי בשבילך?" / EN "At eight. Is that too late for you?" — `reply.time.eight` — ❌ wrong
+  3. HE "ומה אתה עושה הערב?" / EN "And what are you doing tonight?" — `reply.time.tonight-q` — ❌ wrong
+- Tests: reply.time.early
+- Explanation shown after answering: generic: “Then come with us! But we leave early.” means “אז בוא איתנו! אבל אנחנו יוצאים מוקדם.”.
 
 ## Active practice — Quick Reply · Visual Match · Swap It · Mini Map
 
-### M12-Q05 — visual-match (step 9, round 1 of 4)
+### M12-Q01 — quick-reply (step 4, round 1 of 1)
 
-- Prompt displayed: "What time? Tap the time you hear" / "באיזו שעה? הקש על השעה ששמעת"
-- Audio played: EN "At eight." · FR "À huit heures." · ES "A las ocho."
-- Meaning of the audio (HE): "בשמונה."
-- Buttons show: a 3×3 board of 6 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
-- Choices:
-  1. "2:00" — no sentence id — ❌ wrong
-  2. "5:00" — no sentence id — ❌ wrong
-  3. "7:00" — no sentence id — ❌ wrong
-  4. "8:00" — `reply.time.at-eight` — ✅ accepted
-  5. "10:00" — no sentence id — ❌ wrong
-  6. "3:00" — no sentence id — ❌ wrong
-- Tests: reply.time.at-eight
-- Explanation shown after answering: after the tap: the spoken line and its translation
-
-### M12-Q06 — visual-match (step 9, round 2 of 4)
-
-- Prompt displayed: "What time? Tap the time you hear" / "באיזו שעה? הקש על השעה ששמעת"
-- Audio played: EN "Let's meet here at seven." · FR "On se retrouve ici à sept heures." · ES "Quedamos aquí a las siete."
-- Meaning of the audio (HE): "ניפגש כאן בשבע."
-- Buttons show: a 3×3 board of 6 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
-- Choices:
-  1. "2:00" — no sentence id — ❌ wrong
-  2. "5:00" — no sentence id — ❌ wrong
-  3. "7:00" — no sentence id — ✅ accepted
-  4. "8:00" — no sentence id — ❌ wrong
-  5. "10:00" — no sentence id — ❌ wrong
-  6. "3:00" — no sentence id — ❌ wrong
-- Tests: (no sentence id — not recorded)
-- Explanation shown after answering: after the tap: the spoken line and its translation
-
-### M12-Q07 — visual-match (step 9, round 3 of 4)
-
-- Prompt displayed: "What time? Tap the time you hear" / "באיזו שעה? הקש על השעה ששמעת"
-- Audio played: EN "At ten." · FR "À dix heures." · ES "A las diez."
-- Meaning of the audio (HE): "בעשר."
-- Buttons show: a 3×3 board of 6 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
-- Choices:
-  1. "2:00" — no sentence id — ❌ wrong
-  2. "5:00" — no sentence id — ❌ wrong
-  3. "7:00" — no sentence id — ❌ wrong
-  4. "8:00" — no sentence id — ❌ wrong
-  5. "10:00" — no sentence id — ✅ accepted
-  6. "3:00" — no sentence id — ❌ wrong
-- Tests: (no sentence id — not recorded)
-- Explanation shown after answering: after the tap: the spoken line and its translation
-
-### M12-Q08 — visual-match (step 9, round 4 of 4)
-
-- Prompt displayed: "What time? Tap the time you hear" / "באיזו שעה? הקש על השעה ששמעת"
-- Audio played: EN "At five." · FR "À cinq heures." · ES "A las cinco."
-- Meaning of the audio (HE): "בחמש."
-- Buttons show: a 3×3 board of 6 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
-- Choices:
-  1. "2:00" — no sentence id — ❌ wrong
-  2. "5:00" — no sentence id — ✅ accepted
-  3. "7:00" — no sentence id — ❌ wrong
-  4. "8:00" — no sentence id — ❌ wrong
-  5. "10:00" — no sentence id — ❌ wrong
-  6. "3:00" — no sentence id — ❌ wrong
-- Tests: (no sentence id — not recorded)
-- Explanation shown after answering: after the tap: the spoken line and its translation
-
-### M12-Q09 — quick-reply (step 10, round 1 of 5)
-
-- Prompt displayed: "A friend is making plans — what do you say?" / "חבר קובע איתך — מה עונים?"
-- Audio played: EN "What are you doing today?" · FR "Tu fais quoi aujourd’hui ?" · ES "¿Qué haces hoy?"
-- Meaning of the audio (HE): "מה אתה עושה היום?"
-- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
-- Choices:
-  1. EN "Nothing this morning. Maybe later." · FR "Rien ce matin. Peut-être plus tard." · ES "Nada esta mañana. Quizás más tarde." · (HE gloss "אולי אחר כך.") — `phrase.time.maybe-later` — ✅ accepted
-  2. EN "No, that's not too late." · FR "Non, ce n’est pas trop tard." · ES "No, no es muy tarde." · (HE gloss "לא, זה לא מאוחר מדי.") — `phrase.time.not-too-late` — ❌ wrong
-  3. EN "Let's meet here at seven." · FR "On se retrouve ici à sept heures." · ES "Quedamos aquí a las siete." · (HE gloss "ניפגש כאן בשבע.") — `phrase.time.lets-meet` — ❌ wrong
-- Tests: phrase.time.maybe-later
-- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
-
-### M12-Q10 — quick-reply (step 10, round 2 of 5)
-
-- Prompt displayed: "A friend is making plans — what do you say?" / "חבר קובע איתך — מה עונים?"
-- Audio played: EN "What are you doing tonight?" · FR "Tu fais quoi ce soir ?" · ES "¿Qué haces esta noche?"
-- Meaning of the audio (HE): "מה אתה עושה הערב?"
+- Prompt displayed: "☀️ Now · This morning → ⏳ Later → 🌙 Tonight ● → 🌅 Tomorrow morning ¦ 🌙 Tonight: Plan ? / Time ? ‖ 🌅 Tomorrow: Plan ? / Meet ? ¦ What do you answer?" / "☀️ עכשיו · הבוקר → ⏳ אחר כך → 🌙 הערב ● → 🌅 מחר בבוקר ¦ 🌙 הערב: תוכנית ? / שעה ? ‖ 🌅 מחר: תוכנית ? / מפגש ? ¦ מה אתה עונה?"
+- Audio played: EN "And what are you doing tonight?" · FR "Et tu fais quoi ce soir ?" · ES "¿Y qué haces esta noche?"
+- Meaning of the audio (HE): "ומה אתה עושה הערב?"
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
   1. EN "I'm free tonight." · FR "Je suis libre ce soir." · ES "Estoy libre esta noche." · (HE gloss "אני פנוי הערב.") — `phrase.time.free-tonight` — ✅ accepted
-  2. EN "Yes, I'm free tomorrow." · FR "Oui, je suis libre demain." · ES "Sí, estoy libre mañana." · (HE gloss "כן, אני פנוי מחר.") — `phrase.time.free-tomorrow` — ❌ wrong
-  3. EN "What time?" · FR "À quelle heure ?" · ES "¿A qué hora?" · (HE gloss "באיזו שעה?") — `phrase.time.what-time` — ❌ wrong
+  2. EN "Nothing this morning. Maybe later." · FR "Rien ce matin. Peut-être plus tard." · ES "Nada esta mañana. Quizás más tarde." · (HE gloss "אולי אחר כך.") — `phrase.time.maybe-later` — ❌ wrong
 - Tests: phrase.time.free-tonight
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M12-Q11 — quick-reply (step 10, round 3 of 5)
+### M12-Q02 — quick-reply (step 6, round 1 of 1)
 
-- Prompt displayed: "A friend is making plans — what do you say?" / "חבר קובע איתך — מה עונים?"
-- Audio played: EN "Do you want to come?" · FR "Tu veux venir ?" · ES "¿Quieres venir?"
-- Meaning of the audio (HE): "רוצה לבוא?"
+- Prompt displayed: "☀️ Now · This morning → ⏳ Later → 🌙 Tonight ● → 🌅 Tomorrow morning ¦ 🌙 Tonight: Dinner · Centre / Time ? ‖ 🌅 Tomorrow: Plan ? / Meet ? ¦ What do you answer?" / "☀️ עכשיו · הבוקר → ⏳ אחר כך → 🌙 הערב ● → 🌅 מחר בבוקר ¦ 🌙 הערב: ארוחת ערב · מרכז / שעה ? ‖ 🌅 מחר: תוכנית ? / מפגש ? ¦ מה אתה עונה?" — situation shown: "Someone invites you — but you don’t know when." / "מזמינים אותך — אבל אתה לא יודע מתי."
+- Audio played: EN "(nothing is played — a situation is shown)" · FR "(nothing is played — a situation is shown)" · ES "(nothing is played — a situation is shown)"
+- Meaning of the audio (HE): —
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
   1. EN "Yes! What time?" · FR "Oui ! À quelle heure ?" · ES "¡Sí! ¿A qué hora?" · (HE gloss "באיזו שעה?") — `phrase.time.what-time` — ✅ accepted
-  2. EN "No, that's not too late." · FR "Non, ce n’est pas trop tard." · ES "No, no es muy tarde." · (HE gloss "לא, זה לא מאוחר מדי.") — `phrase.time.not-too-late` — ❌ wrong
-  3. EN "Yes, I'm free tomorrow." · FR "Oui, je suis libre demain." · ES "Sí, estoy libre mañana." · (HE gloss "כן, אני פנוי מחר.") — `phrase.time.free-tomorrow` — ❌ wrong
+  2. EN "I'm free tonight." · FR "Je suis libre ce soir." · ES "Estoy libre esta noche." · (HE gloss "אני פנוי הערב.") — `phrase.time.free-tonight` — ❌ wrong
+  3. EN "Nothing this morning. Maybe later." · FR "Rien ce matin. Peut-être plus tard." · ES "Nada esta mañana. Quizás más tarde." · (HE gloss "אולי אחר כך.") — `phrase.time.maybe-later` — ❌ wrong
 - Tests: phrase.time.what-time
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M12-Q12 — quick-reply (step 10, round 4 of 5)
+### M12-Q03 — visual-match (step 8, round 1 of 1)
 
-- Prompt displayed: "A friend is making plans — what do you say?" / "חבר קובע איתך — מה עונים?"
-- Audio played: EN "Is that too late for you?" · FR "C’est trop tard pour toi ?" · ES "¿Es muy tarde para ti?"
-- Meaning of the audio (HE): "זה מאוחר מדי בשבילך?"
+- Prompt displayed: "☀️ Now · This morning → ⏳ Later → 🌙 Tonight ● → 🌅 Tomorrow morning ¦ 🌙 Tonight: Dinner · Centre / Time ? ‖ 🌅 Tomorrow: Plan ? / Meet ? ¦ What time is dinner?" / "☀️ עכשיו · הבוקר → ⏳ אחר כך → 🌙 הערב ● → 🌅 מחר בבוקר ¦ 🌙 הערב: ארוחת ערב · מרכז / שעה ? ‖ 🌅 מחר: תוכנית ? / מפגש ? ¦ באיזו שעה ארוחת הערב?"
+- Audio played: EN "At eight. Is that too late for you?" · FR "À huit heures. C’est trop tard pour toi ?" · ES "A las ocho. ¿Es muy tarde para ti?"
+- Meaning of the audio (HE): "בשמונה. זה מאוחר מדי בשבילך?"
+- Buttons show: a 3×3 board of 3 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "18:00" — no sentence id — ❌ wrong
+  2. "20:00" — no sentence id — ✅ accepted
+  3. "22:00" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M12-Q04 — quick-reply (step 9, round 1 of 1)
+
+- Prompt displayed: "☀️ Now · This morning → ⏳ Later → 🌙 Tonight ● → 🌅 Tomorrow morning ¦ 🌙 Tonight: Dinner · Centre / 20:00 ‖ 🌅 Tomorrow: Plan ? / Meet ? ¦ What do you answer?" / "☀️ עכשיו · הבוקר → ⏳ אחר כך → 🌙 הערב ● → 🌅 מחר בבוקר ¦ 🌙 הערב: ארוחת ערב · מרכז / 20:00 ‖ 🌅 מחר: תוכנית ? / מפגש ? ¦ מה אתה עונה?"
+- Audio played: EN "At eight. Is that too late for you?" · FR "À huit heures. C’est trop tard pour toi ?" · ES "A las ocho. ¿Es muy tarde para ti?"
+- Meaning of the audio (HE): "בשמונה. זה מאוחר מדי בשבילך?"
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
   1. EN "No, that's not too late." · FR "Non, ce n’est pas trop tard." · ES "No, no es muy tarde." · (HE gloss "לא, זה לא מאוחר מדי.") — `phrase.time.not-too-late` — ✅ accepted
-  2. EN "Let's meet here at seven." · FR "On se retrouve ici à sept heures." · ES "Quedamos aquí a las siete." · (HE gloss "ניפגש כאן בשבע.") — `phrase.time.lets-meet` — ❌ wrong
-  3. EN "What are you doing tomorrow?" · FR "Tu fais quoi demain ?" · ES "¿Qué haces mañana?" · (HE gloss "מה אתה עושה מחר?") — `phrase.time.what-doing-tomorrow` — ❌ wrong
+  2. EN "Yes! What time?" · FR "Oui ! À quelle heure ?" · ES "¡Sí! ¿A qué hora?" · (HE gloss "באיזו שעה?") — `phrase.time.what-time` — ❌ wrong
+  3. EN "I'm free tonight." · FR "Je suis libre ce soir." · ES "Estoy libre esta noche." · (HE gloss "אני פנוי הערב.") — `phrase.time.free-tonight` — ❌ wrong
 - Tests: phrase.time.not-too-late
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M12-Q13 — quick-reply (step 10, round 5 of 5)
+### M12-Q05 — swap-it (step 11, round 1 of 1)
 
-- Prompt displayed: "A friend is making plans — what do you say?" / "חבר קובע איתך — מה עונים?"
-- Audio played: EN "Are you free tomorrow?" · FR "Tu es libre demain ?" · ES "¿Estás libre mañana?"
-- Meaning of the audio (HE): "אתה פנוי מחר?"
-- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
-- Choices:
-  1. EN "Yes, I'm free tomorrow." · FR "Oui, je suis libre demain." · ES "Sí, estoy libre mañana." · (HE gloss "כן, אני פנוי מחר.") — `phrase.time.free-tomorrow` — ✅ accepted
-  2. EN "I'm free tonight." · FR "Je suis libre ce soir." · ES "Estoy libre esta noche." · (HE gloss "אני פנוי הערב.") — `phrase.time.free-tonight` — ❌ wrong
-  3. EN "What time?" · FR "À quelle heure ?" · ES "¿A qué hora?" · (HE gloss "באיזו שעה?") — `phrase.time.what-time` — ❌ wrong
-- Tests: phrase.time.free-tomorrow
-- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
-
-### M12-Q14 — swap-it (step 11, round 1 of 3)
-
-- Prompt displayed: "Which day are you asking about?" / "על מתי שואלים?" — cue 🗓️ "You want to know their plans for today" / "אתה רוצה לדעת מה הוא עושה היום" — frame EN "What are you doing ___?" · FR "Tu fais quoi ___ ?" · ES "¿Qué haces ___?"
-- Audio played: EN "(nothing before the tap; the completed sentence is spoken after it)" · FR "(same)" · ES "(same)"
-- Meaning of the audio (HE): —
-- Buttons show: the SLOT VALUES in the target language (shown here as "value → completed sentence"); order shuffled; a "wrong" value still produces and speaks a real sentence, with its translation
-- Choices:
-  1. EN "today → What are you doing today?" · FR "aujourd’hui → Tu fais quoi aujourd’hui ?" · ES "hoy → ¿Qué haces hoy?" · (HE gloss "מה אתה עושה היום?") — `phrase.time.what-doing-tomorrow` — ✅ accepted
-  2. EN "tonight → What are you doing tonight?" · FR "ce soir → Tu fais quoi ce soir ?" · ES "esta noche → ¿Qué haces esta noche?" · (HE gloss "מה אתה עושה הערב?") — no sentence id — ❌ wrong
-  3. EN "tomorrow → What are you doing tomorrow?" · FR "demain → Tu fais quoi demain ?" · ES "mañana → ¿Qué haces mañana?" · (HE gloss "מה אתה עושה מחר?") — no sentence id — ❌ wrong
-- Tests: phrase.time.what-doing-tomorrow
-- Explanation shown after answering: after the tap: the completed sentence, spoken, with its translation
-
-### M12-Q15 — swap-it (step 11, round 2 of 3)
-
-- Prompt displayed: "Which day are you asking about?" / "על מתי שואלים?" — cue 🗓️ "You want to know their plans for tonight" / "אתה רוצה לדעת מה הוא עושה הערב" — frame EN "What are you doing ___?" · FR "Tu fais quoi ___ ?" · ES "¿Qué haces ___?"
-- Audio played: EN "(nothing before the tap; the completed sentence is spoken after it)" · FR "(same)" · ES "(same)"
-- Meaning of the audio (HE): —
-- Buttons show: the SLOT VALUES in the target language (shown here as "value → completed sentence"); order shuffled; a "wrong" value still produces and speaks a real sentence, with its translation
-- Choices:
-  1. EN "today → What are you doing today?" · FR "aujourd’hui → Tu fais quoi aujourd’hui ?" · ES "hoy → ¿Qué haces hoy?" · (HE gloss "מה אתה עושה היום?") — no sentence id — ❌ wrong
-  2. EN "tonight → What are you doing tonight?" · FR "ce soir → Tu fais quoi ce soir ?" · ES "esta noche → ¿Qué haces esta noche?" · (HE gloss "מה אתה עושה הערב?") — `phrase.time.what-doing-tomorrow` — ✅ accepted
-  3. EN "tomorrow → What are you doing tomorrow?" · FR "demain → Tu fais quoi demain ?" · ES "mañana → ¿Qué haces mañana?" · (HE gloss "מה אתה עושה מחר?") — no sentence id — ❌ wrong
-- Tests: phrase.time.what-doing-tomorrow
-- Explanation shown after answering: after the tap: the completed sentence, spoken, with its translation
-
-### M12-Q16 — swap-it (step 11, round 3 of 3)
-
-- Prompt displayed: "Which day are you asking about?" / "על מתי שואלים?" — cue 🗓️ "You want to know their plans for tomorrow" / "אתה רוצה לדעת מה הוא עושה מחר" — frame EN "What are you doing ___?" · FR "Tu fais quoi ___ ?" · ES "¿Qué haces ___?"
+- Prompt displayed: "☀️ Now · This morning → ⏳ Later → 🌙 Tonight → 🌅 Tomorrow morning ● ¦ 🌙 Tonight: Dinner · Centre / 20:00 ‖ 🌅 Tomorrow: Plan ? / Meet ? ¦ Which time are you asking about?" / "☀️ עכשיו · הבוקר → ⏳ אחר כך → 🌙 הערב → 🌅 מחר בבוקר ● ¦ 🌙 הערב: ארוחת ערב · מרכז / 20:00 ‖ 🌅 מחר: תוכנית ? / מפגש ? ¦ על מתי אתה שואל?" — cue 🌅 "You want to know your friend’s plans for tomorrow" / "אתה רוצה לדעת מה החבר עושה מחר" — frame EN "What are you doing ___?" · FR "Tu fais quoi ___ ?" · ES "¿Qué haces ___?"
 - Audio played: EN "(nothing before the tap; the completed sentence is spoken after it)" · FR "(same)" · ES "(same)"
 - Meaning of the audio (HE): —
 - Buttons show: the SLOT VALUES in the target language (shown here as "value → completed sentence"); order shuffled; a "wrong" value still produces and speaks a real sentence, with its translation
@@ -12099,18 +12053,147 @@ No meaning quiz in this mission.
 - Tests: phrase.time.what-doing-tomorrow
 - Explanation shown after answering: after the tap: the completed sentence, spoken, with its translation
 
-### M12-Q17 — sentence-builder (step 12, round 1 of 1)
+### M12-Q06 — visual-match (step 13, round 1 of 1)
 
-- Prompt displayed: "Build the sentence" / "בנה את המשפט" — cue shown: the sentence's MEANING in the app language ("ניפגש כאן בשבע.")
+- Prompt displayed: "☀️ Now · This morning → ⏳ Later → 🌙 Tonight → 🌅 Tomorrow morning ● ¦ 🌙 Tonight: Dinner · Centre / 20:00 ‖ 🌅 Tomorrow: Plan ? / Meet ? ¦ Tomorrow morning — where is your friend going?" / "☀️ עכשיו · הבוקר → ⏳ אחר כך → 🌙 הערב → 🌅 מחר בבוקר ● ¦ 🌙 הערב: ארוחת ערב · מרכז / 20:00 ‖ 🌅 מחר: תוכנית ? / מפגש ? ¦ מחר בבוקר — לאן החבר הולך?"
+- Audio played: EN "Tomorrow morning I'm going to the beach. Are you free tomorrow?" · FR "Demain matin, je vais à la plage. Tu es libre demain ?" · ES "Mañana por la mañana voy a la playa. ¿Estás libre mañana?"
+- Meaning of the audio (HE): "מחר בבוקר אני הולך לים. אתה פנוי מחר?"
+- Buttons show: a 3×3 board of 2 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "🏖️ “Beach” / “חוף הים”" — no sentence id — ✅ accepted
+  2. "🍽️ “Dinner · Centre” / “ארוחת ערב · מרכז”" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M12-Q07 — quick-reply (step 14, round 1 of 1)
+
+- Prompt displayed: "☀️ Now · This morning → ⏳ Later → 🌙 Tonight → 🌅 Tomorrow morning ● ¦ 🌙 Tonight: Dinner · Centre / 20:00 ‖ 🌅 Tomorrow: Beach / Meet ? ¦ You’re free tomorrow. What do you answer?" / "☀️ עכשיו · הבוקר → ⏳ אחר כך → 🌙 הערב → 🌅 מחר בבוקר ● ¦ 🌙 הערב: ארוחת ערב · מרכז / 20:00 ‖ 🌅 מחר: חוף הים / מפגש ? ¦ אתה פנוי מחר. מה אתה עונה?"
+- Audio played: EN "Tomorrow morning I'm going to the beach. Are you free tomorrow?" · FR "Demain matin, je vais à la plage. Tu es libre demain ?" · ES "Mañana por la mañana voy a la playa. ¿Estás libre mañana?"
+- Meaning of the audio (HE): "מחר בבוקר אני הולך לים. אתה פנוי מחר?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Yes, I'm free tomorrow." · FR "Oui, je suis libre demain." · ES "Sí, estoy libre mañana." · (HE gloss "כן, אני פנוי מחר.") — `phrase.time.free-tomorrow` — ✅ accepted
+  2. EN "I'm free tonight." · FR "Je suis libre ce soir." · ES "Estoy libre esta noche." · (HE gloss "אני פנוי הערב.") — `phrase.time.free-tonight` — ❌ wrong
+  3. EN "What are you doing tomorrow?" · FR "Tu fais quoi demain ?" · ES "¿Qué haces mañana?" · (HE gloss "מה אתה עושה מחר?") — `phrase.time.what-doing-tomorrow` — ❌ wrong
+- Tests: phrase.time.free-tomorrow
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M12-Q09 — sentence-builder (step 17, round 1 of 1)
+
+- Prompt displayed: "☀️ Now · This morning → ⏳ Later → 🌙 Tonight → 🌅 Tomorrow morning ● ¦ 🌙 Tonight: Dinner · Centre / 20:00 ‖ 🌅 Tomorrow: Beach / Meet ? · leaving early ¦ Set the meeting: where and when" / "☀️ עכשיו · הבוקר → ⏳ אחר כך → 🌙 הערב → 🌅 מחר בבוקר ● ¦ 🌙 הערב: ארוחת ערב · מרכז / 20:00 ‖ 🌅 מחר: חוף הים / מפגש ? · יוצאים מוקדם ¦ קבע את המפגש: איפה ומתי" — cue shown: the sentence's MEANING in the app language ("אין בעיה. ניפגש כאן בשבע.")
 - Audio played: EN "(nothing before Check; the built sentence is spoken once it is right)" · FR "(same)" · ES "(same)"
 - Meaning of the audio (HE): —
 - Buttons show: the authored CHUNKS of the sentence as tiles (listed here in the correct order, separated by "|"), shuffled; each language has its own chunks; Check unlocks when every tile is placed
 - Choices:
-  1. EN "Let's meet  |  here  |  at seven." · FR "On se retrouve  |  ici  |  à sept heures." · ES "Quedamos  |  aquí  |  a las siete." · (HE gloss "ניפגש כאן בשבע.") — `phrase.time.lets-meet` — ✅ accepted
-- Tests: phrase.time.lets-meet
+  1. EN "No problem.  |  Let's meet  |  here  |  at seven." · FR "Pas de problème.  |  On se retrouve  |  ici  |  à sept heures." · ES "No hay problema.  |  Quedamos  |  aquí  |  a las siete." · (HE gloss "אין בעיה. ניפגש כאן בשבע.") — `phrase.time.no-problem-meet` — ✅ accepted
+- Tests: phrase.time.no-problem-meet
 - Explanation shown after answering: right: the sentence is spoken and its translation shown. Wrong: "not yet" — the tiles stay, the answer is NOT shown; after one miss a hint marks the start; after two misses the learner may reveal it
 
-### M12-Q26 — quick-reply (step 16, round 1 of 4 · SPEED CHALLENGE (spoken at rate 1.12))
+### M12-Q10 — quick-reply (step 19, round 1 of 1)
+
+- Prompt displayed: "☀️ Now · This morning ● → ⏳ Later → 🌙 Tonight → 🌅 Tomorrow morning ¦ 🌙 Tonight: Plan ? / Time ? ‖ 🌅 Tomorrow: Plan ? / Meet ?" / "☀️ עכשיו · הבוקר ● → ⏳ אחר כך → 🌙 הערב → 🌅 מחר בבוקר ¦ 🌙 הערב: תוכנית ? / שעה ? ‖ 🌅 מחר: תוכנית ? / מפגש ?"
+- Audio played: EN "Good morning! What are you doing today?" · FR "Bonjour ! Tu fais quoi aujourd’hui ?" · ES "¡Buenos días! ¿Qué haces hoy?"
+- Meaning of the audio (HE): "בוקר טוב! מה אתה עושה היום?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Nothing this morning. Maybe later." · FR "Rien ce matin. Peut-être plus tard." · ES "Nada esta mañana. Quizás más tarde." · (HE gloss "אולי אחר כך.") — `phrase.time.maybe-later` — ✅ accepted
+  2. EN "I'm free tonight." · FR "Je suis libre ce soir." · ES "Estoy libre esta noche." · (HE gloss "אני פנוי הערב.") — `phrase.time.free-tonight` — ❌ wrong
+  3. EN "No, that's not too late." · FR "Non, ce n’est pas trop tard." · ES "No, no es muy tarde." · (HE gloss "לא, זה לא מאוחר מדי.") — `phrase.time.not-too-late` — ❌ wrong
+- Tests: phrase.time.maybe-later
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M12-Q11 — quick-reply (step 20, round 1 of 2)
+
+- Prompt displayed: "☀️ Now · This morning → ⏳ Later → 🌙 Tonight ● → 🌅 Tomorrow morning ¦ 🌙 Tonight: Plan ? / Time ? ‖ 🌅 Tomorrow: Plan ? / Meet ?" / "☀️ עכשיו · הבוקר → ⏳ אחר כך → 🌙 הערב ● → 🌅 מחר בבוקר ¦ 🌙 הערב: תוכנית ? / שעה ? ‖ 🌅 מחר: תוכנית ? / מפגש ?"
+- Audio played: EN "And what are you doing tonight?" · FR "Et tu fais quoi ce soir ?" · ES "¿Y qué haces esta noche?"
+- Meaning of the audio (HE): "ומה אתה עושה הערב?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "I'm free tonight." · FR "Je suis libre ce soir." · ES "Estoy libre esta noche." · (HE gloss "אני פנוי הערב.") — `phrase.time.free-tonight` — ✅ accepted
+  2. EN "What time?" · FR "À quelle heure ?" · ES "¿A qué hora?" · (HE gloss "באיזו שעה?") — `phrase.time.what-time` — ❌ wrong
+  3. EN "Nothing this morning. Maybe later." · FR "Rien ce matin. Peut-être plus tard." · ES "Nada esta mañana. Quizás más tarde." · (HE gloss "אולי אחר כך.") — `phrase.time.maybe-later` — ❌ wrong
+- Tests: phrase.time.free-tonight
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M12-Q12 — quick-reply (step 20, round 2 of 2)
+
+- Prompt displayed: "☀️ Now · This morning → ⏳ Later → 🌙 Tonight ● → 🌅 Tomorrow morning ¦ 🌙 Tonight: Plan ? / Time ? ‖ 🌅 Tomorrow: Plan ? / Meet ?" / "☀️ עכשיו · הבוקר → ⏳ אחר כך → 🌙 הערב ● → 🌅 מחר בבוקר ¦ 🌙 הערב: תוכנית ? / שעה ? ‖ 🌅 מחר: תוכנית ? / מפגש ?"
+- Audio played: EN "We're going to eat in the centre. Do you want to come?" · FR "On va manger dans le centre. Tu veux venir ?" · ES "Vamos a comer en el centro. ¿Quieres venir?"
+- Meaning of the audio (HE): "אנחנו הולכים לאכול במרכז. רוצה לבוא?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Yes! What time?" · FR "Oui ! À quelle heure ?" · ES "¡Sí! ¿A qué hora?" · (HE gloss "באיזו שעה?") — `phrase.time.what-time` — ✅ accepted
+  2. EN "Yes, I'm free tomorrow." · FR "Oui, je suis libre demain." · ES "Sí, estoy libre mañana." · (HE gloss "כן, אני פנוי מחר.") — `phrase.time.free-tomorrow` — ❌ wrong
+  3. EN "No, that's not too late." · FR "Non, ce n’est pas trop tard." · ES "No, no es muy tarde." · (HE gloss "לא, זה לא מאוחר מדי.") — `phrase.time.not-too-late` — ❌ wrong
+- Tests: phrase.time.what-time
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M12-Q13 — quick-reply (step 21, round 1 of 1)
+
+- Prompt displayed: "☀️ Now · This morning → ⏳ Later → 🌙 Tonight ● → 🌅 Tomorrow morning ¦ 🌙 Tonight: Dinner · Centre / Time ? ‖ 🌅 Tomorrow: Plan ? / Meet ?" / "☀️ עכשיו · הבוקר → ⏳ אחר כך → 🌙 הערב ● → 🌅 מחר בבוקר ¦ 🌙 הערב: ארוחת ערב · מרכז / שעה ? ‖ 🌅 מחר: תוכנית ? / מפגש ?"
+- Audio played: EN "At eight. Is that too late for you?" · FR "À huit heures. C’est trop tard pour toi ?" · ES "A las ocho. ¿Es muy tarde para ti?"
+- Meaning of the audio (HE): "בשמונה. זה מאוחר מדי בשבילך?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "No, that's not too late." · FR "Non, ce n’est pas trop tard." · ES "No, no es muy tarde." · (HE gloss "לא, זה לא מאוחר מדי.") — `phrase.time.not-too-late` — ✅ accepted
+  2. EN "What are you doing tomorrow?" · FR "Tu fais quoi demain ?" · ES "¿Qué haces mañana?" · (HE gloss "מה אתה עושה מחר?") — `phrase.time.what-doing-tomorrow` — ❌ wrong
+  3. EN "Nothing this morning. Maybe later." · FR "Rien ce matin. Peut-être plus tard." · ES "Nada esta mañana. Quizás más tarde." · (HE gloss "אולי אחר כך.") — `phrase.time.maybe-later` — ❌ wrong
+- Tests: phrase.time.not-too-late
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M12-Q14 — quick-reply (step 22, round 1 of 2)
+
+- Prompt displayed: "☀️ Now · This morning → ⏳ Later → 🌙 Tonight → 🌅 Tomorrow morning ● ¦ 🌙 Tonight: Dinner · Centre / 20:00 ‖ 🌅 Tomorrow: Plan ? / Meet ?" / "☀️ עכשיו · הבוקר → ⏳ אחר כך → 🌙 הערב → 🌅 מחר בבוקר ● ¦ 🌙 הערב: ארוחת ערב · מרכז / 20:00 ‖ 🌅 מחר: תוכנית ? / מפגש ?"
+- Audio played: EN "Great. It's very good there." · FR "Super. C’est très bon là-bas." · ES "Genial. Allí se come muy bien."
+- Meaning of the audio (HE): "מעולה. מאוד טוב שם."
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "What are you doing tomorrow?" · FR "Tu fais quoi demain ?" · ES "¿Qué haces mañana?" · (HE gloss "מה אתה עושה מחר?") — `phrase.time.what-doing-tomorrow` — ✅ accepted
+  2. EN "Yes! What time?" · FR "Oui ! À quelle heure ?" · ES "¡Sí! ¿A qué hora?" · (HE gloss "באיזו שעה?") — `phrase.time.what-time` — ❌ wrong
+  3. EN "I'm free tonight." · FR "Je suis libre ce soir." · ES "Estoy libre esta noche." · (HE gloss "אני פנוי הערב.") — `phrase.time.free-tonight` — ❌ wrong
+- Tests: phrase.time.what-doing-tomorrow
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M12-Q15 — quick-reply (step 22, round 2 of 2)
+
+- Prompt displayed: "☀️ Now · This morning → ⏳ Later → 🌙 Tonight → 🌅 Tomorrow morning ● ¦ 🌙 Tonight: Dinner · Centre / 20:00 ‖ 🌅 Tomorrow: Plan ? / Meet ?" / "☀️ עכשיו · הבוקר → ⏳ אחר כך → 🌙 הערב → 🌅 מחר בבוקר ● ¦ 🌙 הערב: ארוחת ערב · מרכז / 20:00 ‖ 🌅 מחר: תוכנית ? / מפגש ?"
+- Audio played: EN "Tomorrow morning I'm going to the beach. Are you free tomorrow?" · FR "Demain matin, je vais à la plage. Tu es libre demain ?" · ES "Mañana por la mañana voy a la playa. ¿Estás libre mañana?"
+- Meaning of the audio (HE): "מחר בבוקר אני הולך לים. אתה פנוי מחר?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Yes, I'm free tomorrow." · FR "Oui, je suis libre demain." · ES "Sí, estoy libre mañana." · (HE gloss "כן, אני פנוי מחר.") — `phrase.time.free-tomorrow` — ✅ accepted
+  2. EN "I'm free tonight." · FR "Je suis libre ce soir." · ES "Estoy libre esta noche." · (HE gloss "אני פנוי הערב.") — `phrase.time.free-tonight` — ❌ wrong
+  3. EN "No, that's not too late." · FR "Non, ce n’est pas trop tard." · ES "No, no es muy tarde." · (HE gloss "לא, זה לא מאוחר מדי.") — `phrase.time.not-too-late` — ❌ wrong
+- Tests: phrase.time.free-tomorrow
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M12-Q16 — quick-reply (step 23, round 1 of 1)
+
+- Prompt displayed: "☀️ Now · This morning → ⏳ Later → 🌙 Tonight → 🌅 Tomorrow morning ● ¦ 🌙 Tonight: Dinner · Centre / 20:00 ‖ 🌅 Tomorrow: Beach / Meet ?" / "☀️ עכשיו · הבוקר → ⏳ אחר כך → 🌙 הערב → 🌅 מחר בבוקר ● ¦ 🌙 הערב: ארוחת ערב · מרכז / 20:00 ‖ 🌅 מחר: חוף הים / מפגש ?"
+- Audio played: EN "Then come with us! But we leave early." · FR "Alors viens avec nous ! Mais on part tôt." · ES "¡Entonces ven con nosotros! Pero salimos temprano."
+- Meaning of the audio (HE): "אז בוא איתנו! אבל אנחנו יוצאים מוקדם."
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "No problem. Let's meet here at seven." · FR "Pas de problème. On se retrouve ici à sept heures." · ES "No hay problema. Quedamos aquí a las siete." · (HE gloss "ניפגש כאן בשבע.") — `phrase.time.lets-meet` — ✅ accepted
+  2. EN "No, that's not too late." · FR "Non, ce n’est pas trop tard." · ES "No, no es muy tarde." · (HE gloss "לא, זה לא מאוחר מדי.") — `phrase.time.not-too-late` — ❌ wrong
+  3. EN "Yes! What time?" · FR "Oui ! À quelle heure ?" · ES "¡Sí! ¿A qué hora?" · (HE gloss "באיזו שעה?") — `phrase.time.what-time` — ❌ wrong
+- Tests: phrase.time.lets-meet
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M12-Q24 — quick-reply (step 27, round 1 of 4 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "Good morning! What are you doing today?" · FR "Bonjour ! Tu fais quoi aujourd’hui ?" · ES "¡Buenos días! ¿Qué haces hoy?"
+- Meaning of the audio (HE): "בוקר טוב! מה אתה עושה היום?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Nothing this morning. Maybe later." · FR "Rien ce matin. Peut-être plus tard." · ES "Nada esta mañana. Quizás más tarde." · (HE gloss "אולי אחר כך.") — `phrase.time.maybe-later` — ✅ accepted
+  2. EN "Yes, I'm free tomorrow." · FR "Oui, je suis libre demain." · ES "Sí, estoy libre mañana." · (HE gloss "כן, אני פנוי מחר.") — `phrase.time.free-tomorrow` — ❌ wrong
+  3. EN "What time?" · FR "À quelle heure ?" · ES "¿A qué hora?" · (HE gloss "באיזו שעה?") — `phrase.time.what-time` — ❌ wrong
+- Tests: phrase.time.maybe-later
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M12-Q25 — quick-reply (step 27, round 2 of 4 · SPEED CHALLENGE (spoken at rate 1.12))
 
 - Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio played: EN "And what are you doing tonight?" · FR "Et tu fais quoi ce soir ?" · ES "¿Y qué haces esta noche?"
@@ -12118,12 +12201,25 @@ No meaning quiz in this mission.
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
   1. EN "I'm free tonight." · FR "Je suis libre ce soir." · ES "Estoy libre esta noche." · (HE gloss "אני פנוי הערב.") — `phrase.time.free-tonight` — ✅ accepted
-  2. EN "No, that's not too late." · FR "Non, ce n’est pas trop tard." · ES "No, no es muy tarde." · (HE gloss "לא, זה לא מאוחר מדי.") — `phrase.time.not-too-late` — ❌ wrong
-  3. EN "Let's meet here at seven." · FR "On se retrouve ici à sept heures." · ES "Quedamos aquí a las siete." · (HE gloss "ניפגש כאן בשבע.") — `phrase.time.lets-meet` — ❌ wrong
+  2. EN "Yes, I'm free tomorrow." · FR "Oui, je suis libre demain." · ES "Sí, estoy libre mañana." · (HE gloss "כן, אני פנוי מחר.") — `phrase.time.free-tomorrow` — ❌ wrong
+  3. EN "No problem. Let's meet here at seven." · FR "Pas de problème. On se retrouve ici à sept heures." · ES "No hay problema. Quedamos aquí a las siete." · (HE gloss "ניפגש כאן בשבע.") — `phrase.time.lets-meet` — ❌ wrong
 - Tests: phrase.time.free-tonight
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M12-Q27 — quick-reply (step 16, round 2 of 4 · SPEED CHALLENGE (spoken at rate 1.12))
+### M12-Q26 — quick-reply (step 27, round 3 of 4 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "We're going to eat in the centre. Do you want to come?" · FR "On va manger dans le centre. Tu veux venir ?" · ES "Vamos a comer en el centro. ¿Quieres venir?"
+- Meaning of the audio (HE): "אנחנו הולכים לאכול במרכז. רוצה לבוא?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Yes! What time?" · FR "Oui ! À quelle heure ?" · ES "¡Sí! ¿A qué hora?" · (HE gloss "באיזו שעה?") — `phrase.time.what-time` — ✅ accepted
+  2. EN "No, that's not too late." · FR "Non, ce n’est pas trop tard." · ES "No, no es muy tarde." · (HE gloss "לא, זה לא מאוחר מדי.") — `phrase.time.not-too-late` — ❌ wrong
+  3. EN "What are you doing tomorrow?" · FR "Tu fais quoi demain ?" · ES "¿Qué haces mañana?" · (HE gloss "מה אתה עושה מחר?") — `phrase.time.what-doing-tomorrow` — ❌ wrong
+- Tests: phrase.time.what-time
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M12-Q27 — quick-reply (step 27, round 4 of 4 · SPEED CHALLENGE (spoken at rate 1.12))
 
 - Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio played: EN "At eight. Is that too late for you?" · FR "À huit heures. C’est trop tard pour toi ?" · ES "A las ocho. ¿Es muy tarde para ti?"
@@ -12131,12 +12227,25 @@ No meaning quiz in this mission.
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
   1. EN "No, that's not too late." · FR "Non, ce n’est pas trop tard." · ES "No, no es muy tarde." · (HE gloss "לא, זה לא מאוחר מדי.") — `phrase.time.not-too-late` — ✅ accepted
-  2. EN "Maybe later." · FR "Peut-être plus tard." · ES "Quizás más tarde." · (HE gloss "אולי אחר כך.") — `phrase.time.maybe-later` — ❌ wrong
-  3. EN "What are you doing tomorrow?" · FR "Tu fais quoi demain ?" · ES "¿Qué haces mañana?" · (HE gloss "מה אתה עושה מחר?") — `phrase.time.what-doing-tomorrow` — ❌ wrong
+  2. EN "Nothing this morning. Maybe later." · FR "Rien ce matin. Peut-être plus tard." · ES "Nada esta mañana. Quizás más tarde." · (HE gloss "אולי אחר כך.") — `phrase.time.maybe-later` — ❌ wrong
+  3. EN "Yes, I'm free tomorrow." · FR "Oui, je suis libre demain." · ES "Sí, estoy libre mañana." · (HE gloss "כן, אני פנוי מחר.") — `phrase.time.free-tomorrow` — ❌ wrong
 - Tests: phrase.time.not-too-late
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M12-Q28 — quick-reply (step 16, round 3 of 4 · SPEED CHALLENGE (spoken at rate 1.12))
+### M12-Q28 — quick-reply (step 28, round 1 of 2 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "Great. It's very good there." · FR "Super. C’est très bon là-bas." · ES "Genial. Allí se come muy bien."
+- Meaning of the audio (HE): "מעולה. מאוד טוב שם."
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "What are you doing tomorrow?" · FR "Tu fais quoi demain ?" · ES "¿Qué haces mañana?" · (HE gloss "מה אתה עושה מחר?") — `phrase.time.what-doing-tomorrow` — ✅ accepted
+  2. EN "No, that's not too late." · FR "Non, ce n’est pas trop tard." · ES "No, no es muy tarde." · (HE gloss "לא, זה לא מאוחר מדי.") — `phrase.time.not-too-late` — ❌ wrong
+  3. EN "I'm free tonight." · FR "Je suis libre ce soir." · ES "Estoy libre esta noche." · (HE gloss "אני פנוי הערב.") — `phrase.time.free-tonight` — ❌ wrong
+- Tests: phrase.time.what-doing-tomorrow
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M12-Q29 — quick-reply (step 28, round 2 of 2 · SPEED CHALLENGE (spoken at rate 1.12))
 
 - Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio played: EN "Tomorrow morning I'm going to the beach. Are you free tomorrow?" · FR "Demain matin, je vais à la plage. Tu es libre demain ?" · ES "Mañana por la mañana voy a la playa. ¿Estás libre mañana?"
@@ -12145,11 +12254,11 @@ No meaning quiz in this mission.
 - Choices:
   1. EN "Yes, I'm free tomorrow." · FR "Oui, je suis libre demain." · ES "Sí, estoy libre mañana." · (HE gloss "כן, אני פנוי מחר.") — `phrase.time.free-tomorrow` — ✅ accepted
   2. EN "I'm free tonight." · FR "Je suis libre ce soir." · ES "Estoy libre esta noche." · (HE gloss "אני פנוי הערב.") — `phrase.time.free-tonight` — ❌ wrong
-  3. EN "What time?" · FR "À quelle heure ?" · ES "¿A qué hora?" · (HE gloss "באיזו שעה?") — `phrase.time.what-time` — ❌ wrong
+  3. EN "Yes! What time?" · FR "Oui ! À quelle heure ?" · ES "¡Sí! ¿A qué hora?" · (HE gloss "באיזו שעה?") — `phrase.time.what-time` — ❌ wrong
 - Tests: phrase.time.free-tomorrow
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M12-Q29 — quick-reply (step 16, round 4 of 4 · SPEED CHALLENGE (spoken at rate 1.12))
+### M12-Q30 — quick-reply (step 29, round 1 of 1 · SPEED CHALLENGE (spoken at rate 1.12))
 
 - Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio played: EN "Then come with us! But we leave early." · FR "Alors viens avec nous ! Mais on part tôt." · ES "¡Entonces ven con nosotros! Pero salimos temprano."
@@ -12157,10 +12266,126 @@ No meaning quiz in this mission.
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
   1. EN "No problem. Let's meet here at seven." · FR "Pas de problème. On se retrouve ici à sept heures." · ES "No hay problema. Quedamos aquí a las siete." · (HE gloss "ניפגש כאן בשבע.") — `phrase.time.lets-meet` — ✅ accepted
-  2. EN "I'm free tonight." · FR "Je suis libre ce soir." · ES "Estoy libre esta noche." · (HE gloss "אני פנוי הערב.") — `phrase.time.free-tonight` — ❌ wrong
-  3. EN "Maybe later." · FR "Peut-être plus tard." · ES "Quizás más tarde." · (HE gloss "אולי אחר כך.") — `phrase.time.maybe-later` — ❌ wrong
+  2. EN "No, that's not too late." · FR "Non, ce n’est pas trop tard." · ES "No, no es muy tarde." · (HE gloss "לא, זה לא מאוחר מדי.") — `phrase.time.not-too-late` — ❌ wrong
+  3. EN "I'm free tonight." · FR "Je suis libre ce soir." · ES "Estoy libre esta noche." · (HE gloss "אני פנוי הערב.") — `phrase.time.free-tonight` — ❌ wrong
 - Tests: phrase.time.lets-meet
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M12-Q31 — quick-reply (step 32, round 1 of 1)
+
+- Prompt displayed: "☀️ Now · This morning ● → ⏳ Later → 🌙 Tonight → 🌅 Tomorrow morning ¦ 🌙 Tonight: Plan ? / Time ? ‖ 🌅 Tomorrow: Plan ? / Meet ? ¦ Close your plans for tonight and tomorrow." / "☀️ עכשיו · הבוקר ● → ⏳ אחר כך → 🌙 הערב → 🌅 מחר בבוקר ¦ 🌙 הערב: תוכנית ? / שעה ? ‖ 🌅 מחר: תוכנית ? / מפגש ? ¦ סגור את התוכניות שלך להערב ולמחר."
+- Audio played: EN "Good morning! What are you doing today?" · FR "Bonjour ! Tu fais quoi aujourd’hui ?" · ES "¡Buenos días! ¿Qué haces hoy?"
+- Meaning of the audio (HE): "בוקר טוב! מה אתה עושה היום?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Nothing this morning. Maybe later." · FR "Rien ce matin. Peut-être plus tard." · ES "Nada esta mañana. Quizás más tarde." · (HE gloss "אולי אחר כך.") — `phrase.time.maybe-later` — ✅ accepted
+  2. EN "No, that's not too late." · FR "Non, ce n’est pas trop tard." · ES "No, no es muy tarde." · (HE gloss "לא, זה לא מאוחר מדי.") — `phrase.time.not-too-late` — ❌ wrong
+  3. EN "What are you doing tomorrow?" · FR "Tu fais quoi demain ?" · ES "¿Qué haces mañana?" · (HE gloss "מה אתה עושה מחר?") — `phrase.time.what-doing-tomorrow` — ❌ wrong
+- Tests: phrase.time.maybe-later
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M12-Q32 — quick-reply (step 33, round 1 of 2)
+
+- Prompt displayed: "☀️ Now · This morning → ⏳ Later → 🌙 Tonight ● → 🌅 Tomorrow morning ¦ 🌙 Tonight: Plan ? / Time ? ‖ 🌅 Tomorrow: Plan ? / Meet ?" / "☀️ עכשיו · הבוקר → ⏳ אחר כך → 🌙 הערב ● → 🌅 מחר בבוקר ¦ 🌙 הערב: תוכנית ? / שעה ? ‖ 🌅 מחר: תוכנית ? / מפגש ?" — situation shown: "Your evening is free. Tell your friend." / "הערב שלך פנוי. תגיד לחבר."
+- Audio played: EN "(nothing is played — a situation is shown)" · FR "(nothing is played — a situation is shown)" · ES "(nothing is played — a situation is shown)"
+- Meaning of the audio (HE): —
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "I'm free tonight." · FR "Je suis libre ce soir." · ES "Estoy libre esta noche." · (HE gloss "אני פנוי הערב.") — `phrase.time.free-tonight` — ✅ accepted
+  2. EN "Yes, I'm free tomorrow." · FR "Oui, je suis libre demain." · ES "Sí, estoy libre mañana." · (HE gloss "כן, אני פנוי מחר.") — `phrase.time.free-tomorrow` — ❌ wrong
+  3. EN "What time?" · FR "À quelle heure ?" · ES "¿A qué hora?" · (HE gloss "באיזו שעה?") — `phrase.time.what-time` — ❌ wrong
+- Tests: phrase.time.free-tonight
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M12-Q33 — quick-reply (step 33, round 2 of 2)
+
+- Prompt displayed: "☀️ Now · This morning → ⏳ Later → 🌙 Tonight ● → 🌅 Tomorrow morning ¦ 🌙 Tonight: Plan ? / Time ? ‖ 🌅 Tomorrow: Plan ? / Meet ?" / "☀️ עכשיו · הבוקר → ⏳ אחר כך → 🌙 הערב ● → 🌅 מחר בבוקר ¦ 🌙 הערב: תוכנית ? / שעה ? ‖ 🌅 מחר: תוכנית ? / מפגש ?"
+- Audio played: EN "We're going to eat in the centre. Do you want to come?" · FR "On va manger dans le centre. Tu veux venir ?" · ES "Vamos a comer en el centro. ¿Quieres venir?"
+- Meaning of the audio (HE): "אנחנו הולכים לאכול במרכז. רוצה לבוא?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Yes! What time?" · FR "Oui ! À quelle heure ?" · ES "¡Sí! ¿A qué hora?" · (HE gloss "באיזו שעה?") — `phrase.time.what-time` — ✅ accepted
+  2. EN "No, that's not too late." · FR "Non, ce n’est pas trop tard." · ES "No, no es muy tarde." · (HE gloss "לא, זה לא מאוחר מדי.") — `phrase.time.not-too-late` — ❌ wrong
+  3. EN "No problem. Let's meet here at seven." · FR "Pas de problème. On se retrouve ici à sept heures." · ES "No hay problema. Quedamos aquí a las siete." · (HE gloss "ניפגש כאן בשבע.") — `phrase.time.lets-meet` — ❌ wrong
+- Tests: phrase.time.what-time
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M12-Q34 — visual-match (step 34, round 1 of 1 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "At eight. Is that too late for you?" · FR "À huit heures. C’est trop tard pour toi ?" · ES "A las ocho. ¿Es muy tarde para ti?"
+- Meaning of the audio (HE): "בשמונה. זה מאוחר מדי בשבילך?"
+- Buttons show: a 3×3 board of 3 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "18:00" — no sentence id — ❌ wrong
+  2. "20:00" — no sentence id — ✅ accepted
+  3. "22:00" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M12-Q35 — quick-reply (step 35, round 1 of 1)
+
+- Prompt displayed: "☀️ Now · This morning → ⏳ Later → 🌙 Tonight ● → 🌅 Tomorrow morning ¦ 🌙 Tonight: Dinner · Centre / 20:00 ‖ 🌅 Tomorrow: Plan ? / Meet ?" / "☀️ עכשיו · הבוקר → ⏳ אחר כך → 🌙 הערב ● → 🌅 מחר בבוקר ¦ 🌙 הערב: ארוחת ערב · מרכז / 20:00 ‖ 🌅 מחר: תוכנית ? / מפגש ?"
+- Audio played: EN "At eight. Is that too late for you?" · FR "À huit heures. C’est trop tard pour toi ?" · ES "A las ocho. ¿Es muy tarde para ti?"
+- Meaning of the audio (HE): "בשמונה. זה מאוחר מדי בשבילך?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "No, that's not too late." · FR "Non, ce n’est pas trop tard." · ES "No, no es muy tarde." · (HE gloss "לא, זה לא מאוחר מדי.") — `phrase.time.not-too-late` — ✅ accepted
+  2. EN "I'm free tonight." · FR "Je suis libre ce soir." · ES "Estoy libre esta noche." · (HE gloss "אני פנוי הערב.") — `phrase.time.free-tonight` — ❌ wrong
+  3. EN "Nothing this morning. Maybe later." · FR "Rien ce matin. Peut-être plus tard." · ES "Nada esta mañana. Quizás más tarde." · (HE gloss "אולי אחר כך.") — `phrase.time.maybe-later` — ❌ wrong
+- Tests: phrase.time.not-too-late
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M12-Q36 — quick-reply (step 36, round 1 of 2)
+
+- Prompt displayed: "☀️ Now · This morning → ⏳ Later → 🌙 Tonight → 🌅 Tomorrow morning ● ¦ 🌙 Tonight: Dinner · Centre / 20:00 ‖ 🌅 Tomorrow: Plan ? / Meet ?" / "☀️ עכשיו · הבוקר → ⏳ אחר כך → 🌙 הערב → 🌅 מחר בבוקר ● ¦ 🌙 הערב: ארוחת ערב · מרכז / 20:00 ‖ 🌅 מחר: תוכנית ? / מפגש ?"
+- Audio played: EN "Great. It's very good there." · FR "Super. C’est très bon là-bas." · ES "Genial. Allí se come muy bien."
+- Meaning of the audio (HE): "מעולה. מאוד טוב שם."
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "What are you doing tomorrow?" · FR "Tu fais quoi demain ?" · ES "¿Qué haces mañana?" · (HE gloss "מה אתה עושה מחר?") — `phrase.time.what-doing-tomorrow` — ✅ accepted
+  2. EN "Yes, I'm free tomorrow." · FR "Oui, je suis libre demain." · ES "Sí, estoy libre mañana." · (HE gloss "כן, אני פנוי מחר.") — `phrase.time.free-tomorrow` — ❌ wrong
+  3. EN "Yes! What time?" · FR "Oui ! À quelle heure ?" · ES "¡Sí! ¿A qué hora?" · (HE gloss "באיזו שעה?") — `phrase.time.what-time` — ❌ wrong
+- Tests: phrase.time.what-doing-tomorrow
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M12-Q37 — quick-reply (step 36, round 2 of 2)
+
+- Prompt displayed: "☀️ Now · This morning → ⏳ Later → 🌙 Tonight → 🌅 Tomorrow morning ● ¦ 🌙 Tonight: Dinner · Centre / 20:00 ‖ 🌅 Tomorrow: Plan ? / Meet ?" / "☀️ עכשיו · הבוקר → ⏳ אחר כך → 🌙 הערב → 🌅 מחר בבוקר ● ¦ 🌙 הערב: ארוחת ערב · מרכז / 20:00 ‖ 🌅 מחר: תוכנית ? / מפגש ?"
+- Audio played: EN "Tomorrow morning I'm going to the beach. Are you free tomorrow?" · FR "Demain matin, je vais à la plage. Tu es libre demain ?" · ES "Mañana por la mañana voy a la playa. ¿Estás libre mañana?"
+- Meaning of the audio (HE): "מחר בבוקר אני הולך לים. אתה פנוי מחר?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Yes, I'm free tomorrow." · FR "Oui, je suis libre demain." · ES "Sí, estoy libre mañana." · (HE gloss "כן, אני פנוי מחר.") — `phrase.time.free-tomorrow` — ✅ accepted
+  2. EN "I'm free tonight." · FR "Je suis libre ce soir." · ES "Estoy libre esta noche." · (HE gloss "אני פנוי הערב.") — `phrase.time.free-tonight` — ❌ wrong
+  3. EN "No problem. Let's meet here at seven." · FR "Pas de problème. On se retrouve ici à sept heures." · ES "No hay problema. Quedamos aquí a las siete." · (HE gloss "ניפגש כאן בשבע.") — `phrase.time.lets-meet` — ❌ wrong
+- Tests: phrase.time.free-tomorrow
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M12-Q38 — quick-reply (step 37, round 1 of 1)
+
+- Prompt displayed: "☀️ Now · This morning → ⏳ Later → 🌙 Tonight → 🌅 Tomorrow morning ● ¦ 🌙 Tonight: Dinner · Centre / 20:00 ‖ 🌅 Tomorrow: Beach / Meet ?" / "☀️ עכשיו · הבוקר → ⏳ אחר כך → 🌙 הערב → 🌅 מחר בבוקר ● ¦ 🌙 הערב: ארוחת ערב · מרכז / 20:00 ‖ 🌅 מחר: חוף הים / מפגש ?"
+- Audio played: EN "Then come with us! But we leave early." · FR "Alors viens avec nous ! Mais on part tôt." · ES "¡Entonces ven con nosotros! Pero salimos temprano."
+- Meaning of the audio (HE): "אז בוא איתנו! אבל אנחנו יוצאים מוקדם."
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "No problem. Let's meet here at seven." · FR "Pas de problème. On se retrouve ici à sept heures." · ES "No hay problema. Quedamos aquí a las siete." · (HE gloss "ניפגש כאן בשבע.") — `phrase.time.lets-meet` — ✅ accepted
+  2. EN "Yes! What time?" · FR "Oui ! À quelle heure ?" · ES "¡Sí! ¿A qué hora?" · (HE gloss "באיזו שעה?") — `phrase.time.what-time` — ❌ wrong
+  3. EN "I'm free tonight." · FR "Je suis libre ce soir." · ES "Estoy libre esta noche." · (HE gloss "אני פנוי הערב.") — `phrase.time.free-tonight` — ❌ wrong
+- Tests: phrase.time.lets-meet
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M12-Q39 — visual-match (step 38, round 1 of 1 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "Perfect. I have to go now — see you tonight!" · FR "Parfait. Je dois y aller maintenant — à ce soir !" · ES "Perfecto. Me tengo que ir ahora — ¡nos vemos esta noche!"
+- Meaning of the audio (HE): "מושלם. אני חייב ללכת עכשיו — נתראה הערב!"
+- Buttons show: a 3×3 board of 2 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "🌙 “Tonight” / “הערב”" — no sentence id — ✅ accepted
+  2. "🌅 “Tomorrow morning” / “מחר בבוקר”" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
 
 ## Dialogue — full tree
 
@@ -12177,6 +12402,16 @@ No meaning quiz in this mission.
     - FR: Rien ce matin. Peut-être plus tard.
     - ES: Nada esta mañana. Quizás más tarde.
     - HE: כלום הבוקר. אולי אחר כך.
+  - choice 2 — ❌ WRONG → m2 — `phrase.time.not-too-late`
+    - EN: No, that's not too late.
+    - FR: Non, ce n’est pas trop tard.
+    - ES: No, no es muy tarde.
+    - HE: לא, זה לא מאוחר מדי.
+- **m2** · NPC · slow (TTS rate 0.75) · off the happy path → c2
+  - EN: Good morning! What are you doing today?
+  - FR: Bonjour ! Tu fais quoi aujourd’hui ?
+  - ES: ¡Buenos días! ¿Qué haces hoy?
+  - HE: בוקר טוב! מה אתה עושה היום?
 - **n3** · NPC · normal (TTS rate 0.95) → c4
   - EN: And what are you doing tonight?
   - FR: Et tu fais quoi ce soir ?
@@ -12188,6 +12423,16 @@ No meaning quiz in this mission.
     - FR: Je suis libre ce soir.
     - ES: Estoy libre esta noche.
     - HE: אני פנוי הערב.
+  - choice 2 — ❌ WRONG → m4 — `phrase.time.what-time`
+    - EN: What time?
+    - FR: À quelle heure ?
+    - ES: ¿A qué hora?
+    - HE: באיזו שעה?
+- **m4** · NPC · slow (TTS rate 0.75) · off the happy path → c4
+  - EN: And what are you doing tonight?
+  - FR: Et tu fais quoi ce soir ?
+  - ES: ¿Y qué haces esta noche?
+  - HE: ומה אתה עושה הערב?
 - **n5** · NPC · normal (TTS rate 0.95) → c6
   - EN: We're going to eat in the centre. Do you want to come?
   - FR: On va manger dans le centre. Tu veux venir ?
@@ -12199,11 +12444,16 @@ No meaning quiz in this mission.
     - FR: Oui ! À quelle heure ?
     - ES: ¡Sí! ¿A qué hora?
     - HE: כן! באיזו שעה?
-  - choice 2 — ✅ accepted → n7 — `phrase.time.when`
-    - EN: When?
-    - FR: Quand ?
-    - ES: ¿Cuándo?
-    - HE: מתי?
+  - choice 2 — ❌ WRONG → m6 — `phrase.time.free-tomorrow`
+    - EN: Yes, I'm free tomorrow.
+    - FR: Oui, je suis libre demain.
+    - ES: Sí, estoy libre mañana.
+    - HE: כן, אני פנוי מחר.
+- **m6** · NPC · slow (TTS rate 0.75) · off the happy path → c6
+  - EN: We're going to eat in the centre. Do you want to come?
+  - FR: On va manger dans le centre. Tu veux venir ?
+  - ES: Vamos a comer en el centro. ¿Quieres venir?
+  - HE: אנחנו הולכים לאכול במרכז. רוצה לבוא?
 - **n7** · NPC · fast (TTS rate 1.08) → c8
   - EN: At eight. Is that too late for you?
   - FR: À huit heures. C’est trop tard pour toi ?
@@ -12215,22 +12465,16 @@ No meaning quiz in this mission.
     - FR: Non, ce n’est pas trop tard.
     - ES: No, no es muy tarde.
     - HE: לא, זה לא מאוחר מדי.
-  - choice 2 — 🛟 accepted — conversation-help tool → r8 — `phrase.recovery.repeat`
-    - EN: Can you repeat that?
-    - FR: Vous pouvez répéter ?
-    - ES: ¿Puede repetir, por favor?
-    - HE: אפשר לחזור על זה?
-- **r8** · NPC · slow (TTS rate 0.75) · off the happy path → c8b
-  - EN: At eight. Too late?
-  - FR: À huit heures. Trop tard ?
-  - ES: A las ocho. ¿Muy tarde?
-  - HE: בשמונה. מאוחר מדי?
-- **c8b** · LEARNER choice screen · off the happy path
-  - choice 1 — ✅ accepted → n9 — `phrase.time.not-too-late`
-    - EN: No, that's not too late.
-    - FR: Non, ce n’est pas trop tard.
-    - ES: No, no es muy tarde.
-    - HE: לא, זה לא מאוחר מדי.
+  - choice 2 — ❌ WRONG → m8 — `phrase.time.what-doing-tomorrow`
+    - EN: What are you doing tomorrow?
+    - FR: Tu fais quoi demain ?
+    - ES: ¿Qué haces mañana?
+    - HE: מה אתה עושה מחר?
+- **m8** · NPC · slow (TTS rate 0.75) · off the happy path → c8
+  - EN: At eight. Is that too late for you?
+  - FR: À huit heures. C’est trop tard pour toi ?
+  - ES: A las ocho. ¿Es muy tarde para ti?
+  - HE: בשמונה. זה מאוחר מדי בשבילך?
 - **n9** · NPC · normal (TTS rate 0.95) → c10
   - EN: Great. It's very good there.
   - FR: Super. C’est très bon là-bas.
@@ -12242,6 +12486,16 @@ No meaning quiz in this mission.
     - FR: Tu fais quoi demain ?
     - ES: ¿Qué haces mañana?
     - HE: מה אתה עושה מחר?
+  - choice 2 — ❌ WRONG → m10 — `phrase.time.what-time`
+    - EN: What time?
+    - FR: À quelle heure ?
+    - ES: ¿A qué hora?
+    - HE: באיזו שעה?
+- **m10** · NPC · slow (TTS rate 0.75) · off the happy path → c10
+  - EN: Great. It's very good there.
+  - FR: Super. C’est très bon là-bas.
+  - ES: Genial. Allí se come muy bien.
+  - HE: מעולה. מאוד טוב שם.
 - **n11** · NPC · normal (TTS rate 0.95) → c12
   - EN: Tomorrow morning I'm going to the beach. Are you free tomorrow?
   - FR: Demain matin, je vais à la plage. Tu es libre demain ?
@@ -12253,6 +12507,16 @@ No meaning quiz in this mission.
     - FR: Oui, je suis libre demain.
     - ES: Sí, estoy libre mañana.
     - HE: כן, אני פנוי מחר.
+  - choice 2 — ❌ WRONG → m12 — `phrase.time.free-tonight`
+    - EN: I'm free tonight.
+    - FR: Je suis libre ce soir.
+    - ES: Estoy libre esta noche.
+    - HE: אני פנוי הערב.
+- **m12** · NPC · slow (TTS rate 0.75) · off the happy path → c12
+  - EN: Tomorrow morning I'm going to the beach. Are you free tomorrow?
+  - FR: Demain matin, je vais à la plage. Tu es libre demain ?
+  - ES: Mañana por la mañana voy a la playa. ¿Estás libre mañana?
+  - HE: מחר בבוקר אני הולך לים. אתה פנוי מחר?
 - **n13** · NPC · normal (TTS rate 0.95) → c14
   - EN: Then come with us! But we leave early.
   - FR: Alors viens avec nous ! Mais on part tôt.
@@ -12264,6 +12528,16 @@ No meaning quiz in this mission.
     - FR: Pas de problème. On se retrouve ici à sept heures.
     - ES: No hay problema. Quedamos aquí a las siete.
     - HE: אין בעיה. ניפגש כאן בשבע.
+  - choice 2 — ❌ WRONG → m14 — `phrase.time.not-too-late`
+    - EN: No, that's not too late.
+    - FR: Non, ce n’est pas trop tard.
+    - ES: No, no es muy tarde.
+    - HE: לא, זה לא מאוחר מדי.
+- **m14** · NPC · slow (TTS rate 0.75) · off the happy path → c14
+  - EN: Then come with us! But we leave early.
+  - FR: Alors viens avec nous ! Mais on part tôt.
+  - ES: ¡Entonces ven con nosotros! Pero salimos temprano.
+  - HE: אז בוא איתנו! אבל אנחנו יוצאים מוקדם.
 - **n15** · NPC · normal (TTS rate 0.95) · END of scene
   - EN: Perfect. I have to go now — see you tonight!
   - FR: Parfait. Je dois y aller maintenant — à ce soir !
@@ -12307,7 +12581,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 
 ## Learner choice screens
 
-### M12-Q18 — dialogue-choice (step 13, scene "making-plans" · node c2)
+### M12-Q17 — dialogue-choice (step 25, scene "making-plans" · node c2)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Good morning! What are you doing today?" · FR "Bonjour ! Tu fais quoi aujourd’hui ?" · ES "¡Buenos días! ¿Qué haces hoy?"
@@ -12315,10 +12589,11 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
   1. EN "Nothing this morning. Maybe later." · FR "Rien ce matin. Peut-être plus tard." · ES "Nada esta mañana. Quizás más tarde." · (HE gloss "כלום הבוקר. אולי אחר כך.") — `phrase.time.maybe-later` — ✅ accepted → n3
-- Tests: phrase.time.maybe-later
+  2. EN "No, that's not too late." · FR "Non, ce n’est pas trop tard." · ES "No, no es muy tarde." · (HE gloss "לא, זה לא מאוחר מדי.") — `phrase.time.not-too-late` — ❌ wrong → m2
+- Tests: phrase.time.maybe-later, phrase.time.not-too-late
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M12-Q19 — dialogue-choice (step 13, scene "making-plans" · node c4)
+### M12-Q18 — dialogue-choice (step 25, scene "making-plans" · node c4)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "And what are you doing tonight?" · FR "Et tu fais quoi ce soir ?" · ES "¿Y qué haces esta noche?"
@@ -12326,10 +12601,11 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
   1. EN "I'm free tonight." · FR "Je suis libre ce soir." · ES "Estoy libre esta noche." · (HE gloss "אני פנוי הערב.") — `phrase.time.free-tonight` — ✅ accepted → n5
-- Tests: phrase.time.free-tonight
+  2. EN "What time?" · FR "À quelle heure ?" · ES "¿A qué hora?" · (HE gloss "באיזו שעה?") — `phrase.time.what-time` — ❌ wrong → m4
+- Tests: phrase.time.free-tonight, phrase.time.what-time
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M12-Q20 — dialogue-choice (step 13, scene "making-plans" · node c6)
+### M12-Q19 — dialogue-choice (step 25, scene "making-plans" · node c6)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "We're going to eat in the centre. Do you want to come?" · FR "On va manger dans le centre. Tu veux venir ?" · ES "Vamos a comer en el centro. ¿Quieres venir?"
@@ -12337,11 +12613,11 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
   1. EN "Yes! What time?" · FR "Oui ! À quelle heure ?" · ES "¡Sí! ¿A qué hora?" · (HE gloss "כן! באיזו שעה?") — `phrase.time.what-time` — ✅ accepted → n7
-  2. EN "When?" · FR "Quand ?" · ES "¿Cuándo?" · (HE gloss "מתי?") — `phrase.time.when` — ✅ accepted → n7
-- Tests: phrase.time.what-time, phrase.time.when
+  2. EN "Yes, I'm free tomorrow." · FR "Oui, je suis libre demain." · ES "Sí, estoy libre mañana." · (HE gloss "כן, אני פנוי מחר.") — `phrase.time.free-tomorrow` — ❌ wrong → m6
+- Tests: phrase.time.what-time, phrase.time.free-tomorrow
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M12-Q21 — dialogue-choice (step 13, scene "making-plans" · node c8)
+### M12-Q20 — dialogue-choice (step 25, scene "making-plans" · node c8)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "At eight. Is that too late for you?" · FR "À huit heures. C’est trop tard pour toi ?" · ES "A las ocho. ¿Es muy tarde para ti?"
@@ -12349,22 +12625,11 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
   1. EN "No, that's not too late." · FR "Non, ce n’est pas trop tard." · ES "No, no es muy tarde." · (HE gloss "לא, זה לא מאוחר מדי.") — `phrase.time.not-too-late` — ✅ accepted → n9
-  2. EN "Can you repeat that?" · FR "Vous pouvez répéter ?" · ES "¿Puede repetir, por favor?" · (HE gloss "אפשר לחזור על זה?") — `phrase.recovery.repeat` — ✅ accepted → r8
-- Tests: phrase.time.not-too-late, phrase.recovery.repeat
+  2. EN "What are you doing tomorrow?" · FR "Tu fais quoi demain ?" · ES "¿Qué haces mañana?" · (HE gloss "מה אתה עושה מחר?") — `phrase.time.what-doing-tomorrow` — ❌ wrong → m8
+- Tests: phrase.time.not-too-late, phrase.time.what-doing-tomorrow
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M12-Q22 — dialogue-choice (step 13, scene "making-plans" · node c8b)
-
-- Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio played: EN "At eight. Too late?" · FR "À huit heures. Trop tard ?" · ES "A las ocho. ¿Muy tarde?"
-- Meaning of the audio (HE): "בשמונה. מאוחר מדי?"
-- Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
-- Choices:
-  1. EN "No, that's not too late." · FR "Non, ce n’est pas trop tard." · ES "No, no es muy tarde." · (HE gloss "לא, זה לא מאוחר מדי.") — `phrase.time.not-too-late` — ✅ accepted → n9
-- Tests: phrase.time.not-too-late
-- Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
-
-### M12-Q23 — dialogue-choice (step 13, scene "making-plans" · node c10)
+### M12-Q21 — dialogue-choice (step 25, scene "making-plans" · node c10)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Great. It's very good there." · FR "Super. C’est très bon là-bas." · ES "Genial. Allí se come muy bien."
@@ -12372,10 +12637,11 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
   1. EN "What are you doing tomorrow?" · FR "Tu fais quoi demain ?" · ES "¿Qué haces mañana?" · (HE gloss "מה אתה עושה מחר?") — `phrase.time.what-doing-tomorrow` — ✅ accepted → n11
-- Tests: phrase.time.what-doing-tomorrow
+  2. EN "What time?" · FR "À quelle heure ?" · ES "¿A qué hora?" · (HE gloss "באיזו שעה?") — `phrase.time.what-time` — ❌ wrong → m10
+- Tests: phrase.time.what-doing-tomorrow, phrase.time.what-time
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M12-Q24 — dialogue-choice (step 13, scene "making-plans" · node c12)
+### M12-Q22 — dialogue-choice (step 25, scene "making-plans" · node c12)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Tomorrow morning I'm going to the beach. Are you free tomorrow?" · FR "Demain matin, je vais à la plage. Tu es libre demain ?" · ES "Mañana por la mañana voy a la playa. ¿Estás libre mañana?"
@@ -12383,10 +12649,11 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
   1. EN "Yes, I'm free tomorrow." · FR "Oui, je suis libre demain." · ES "Sí, estoy libre mañana." · (HE gloss "כן, אני פנוי מחר.") — `phrase.time.free-tomorrow` — ✅ accepted → n13
-- Tests: phrase.time.free-tomorrow
+  2. EN "I'm free tonight." · FR "Je suis libre ce soir." · ES "Estoy libre esta noche." · (HE gloss "אני פנוי הערב.") — `phrase.time.free-tonight` — ❌ wrong → m12
+- Tests: phrase.time.free-tomorrow, phrase.time.free-tonight
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M12-Q25 — dialogue-choice (step 13, scene "making-plans" · node c14)
+### M12-Q23 — dialogue-choice (step 25, scene "making-plans" · node c14)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Then come with us! But we leave early." · FR "Alors viens avec nous ! Mais on part tôt." · ES "¡Entonces ven con nosotros! Pero salimos temprano."
@@ -12394,38 +12661,60 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
   1. EN "No problem. Let's meet here at seven." · FR "Pas de problème. On se retrouve ici à sept heures." · ES "No hay problema. Quedamos aquí a las siete." · (HE gloss "אין בעיה. ניפגש כאן בשבע.") — `phrase.time.lets-meet` — ✅ accepted → n15
-- Tests: phrase.time.lets-meet
+  2. EN "No, that's not too late." · FR "Non, ce n’est pas trop tard." · ES "No, no es muy tarde." · (HE gloss "לא, זה לא מאוחר מדי.") — `phrase.time.not-too-late` — ❌ wrong → m14
+- Tests: phrase.time.lets-meet, phrase.time.not-too-late
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
 ## Recovery tools in this mission
 
-Toolkit phrases bundled into this mission's sentence list: `phrase.recovery.repeat` "Can you repeat that?".
+No toolkit phrase is bundled into this mission.
 
-Where a conversation-help tool can be selected, and what happens:
+No conversation-help tool is selectable in this mission's dialogues.
 
-- Scene `making-plans`, c8 — `phrase.recovery.repeat` "Can you repeat that?" ("אפשר לחזור על זה?") — after NPC "At eight. Is that too late for you?" → r8: NPC "At eight. Too late?" (slow) → r8 → c8b → rejoins the happy path at n9. Counts as success (recorded as "pass"); no feedback card — the dialogue simply continues.
 
 ## Wrong answer branches
 
-None — no choice in this mission is marked wrong.
+7 reachable wrong-answer branch(es):
 
+- Scene `making-plans`, c2 — after NPC "Good morning! What are you doing today?"
+  - Wrong choice: "No, that's not too late." ("לא, זה לא מאוחר מדי.") — `phrase.time.not-too-late`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("Nothing this morning. Maybe later."), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m2): "Good morning! What are you doing today?" — HE "בוקר טוב! מה אתה עושה היום?"
+  - Then: m2 → rejoins the happy path at c2. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
+- Scene `making-plans`, c4 — after NPC "And what are you doing tonight?"
+  - Wrong choice: "What time?" ("באיזו שעה?") — `phrase.time.what-time`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("I'm free tonight."), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m4): "And what are you doing tonight?" — HE "ומה אתה עושה הערב?"
+  - Then: m4 → rejoins the happy path at c4. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
+- Scene `making-plans`, c6 — after NPC "We're going to eat in the centre. Do you want to come?"
+  - Wrong choice: "Yes, I'm free tomorrow." ("כן, אני פנוי מחר.") — `phrase.time.free-tomorrow`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("Yes! What time?"), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m6): "We're going to eat in the centre. Do you want to come?" — HE "אנחנו הולכים לאכול במרכז. רוצה לבוא?"
+  - Then: m6 → rejoins the happy path at c6. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
+- Scene `making-plans`, c8 — after NPC "At eight. Is that too late for you?"
+  - Wrong choice: "What are you doing tomorrow?" ("מה אתה עושה מחר?") — `phrase.time.what-doing-tomorrow`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("No, that's not too late."), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m8): "At eight. Is that too late for you?" — HE "בשמונה. זה מאוחר מדי בשבילך?"
+  - Then: m8 → rejoins the happy path at c8. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
+- Scene `making-plans`, c10 — after NPC "Great. It's very good there."
+  - Wrong choice: "What time?" ("באיזו שעה?") — `phrase.time.what-time`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("What are you doing tomorrow?"), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m10): "Great. It's very good there." — HE "מעולה. מאוד טוב שם."
+  - Then: m10 → rejoins the happy path at c10. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
+- Scene `making-plans`, c12 — after NPC "Tomorrow morning I'm going to the beach. Are you free tomorrow?"
+  - Wrong choice: "I'm free tonight." ("אני פנוי הערב.") — `phrase.time.free-tonight`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("Yes, I'm free tomorrow."), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m12): "Tomorrow morning I'm going to the beach. Are you free tomorrow?" — HE "מחר בבוקר אני הולך לים. אתה פנוי מחר?"
+  - Then: m12 → rejoins the happy path at c12. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
+- Scene `making-plans`, c14 — after NPC "Then come with us! But we leave early."
+  - Wrong choice: "No, that's not too late." ("לא, זה לא מאוחר מדי.") — `phrase.time.not-too-late`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("No problem. Let's meet here at seven."), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m14): "Then come with us! But we leave early." — HE "אז בוא איתנו! אבל אנחנו יוצאים מוקדם."
+  - Then: m14 → rejoins the happy path at c14. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
 
 ## Sentence review
 
-Step 15. 12 sentences, in this fixed order. Each is played automatically (TTS), shown with its translation and tip; buttons: 🔊 "Hear again" / "לשמוע שוב" and Next. No speaking prompt, no grading, no scoring; nothing is recorded.
-
-1. `phrase.time.what-doing-tomorrow` — What are you doing tomorrow? — מה אתה עושה מחר?
-2. `phrase.time.free-tonight` — I'm free tonight. — אני פנוי הערב.
-3. `phrase.time.free-tomorrow` — Yes, I'm free tomorrow. — כן, אני פנוי מחר.
-4. `phrase.time.what-time` — What time? — באיזו שעה?
-5. `phrase.time.not-too-late` — No, that's not too late. — לא, זה לא מאוחר מדי.
-6. `phrase.time.lets-meet` — Let's meet here at seven. — ניפגש כאן בשבע.
-7. `phrase.time.maybe-later` — Maybe later. — אולי אחר כך.
-8. `reply.time.at-eight` — At eight. — בשמונה.
-9. `reply.time.too-late` — Is that too late for you? — זה מאוחר מדי בשבילך?
-10. `reply.time.free-tomorrow-q` — Are you free tomorrow? — אתה פנוי מחר?
-11. `reply.time.want-to-come` — Do you want to come? — רוצה לבוא?
-12. `phrase.recovery.repeat` — Can you repeat that? — אפשר לחזור על זה?
+No sentence-review step in this mission.
 
 ## Cold open / ambush
 
@@ -12435,45 +12724,45 @@ No cold open in this mission.
 
 The runtime has NO slot-substitution mechanism: no sentence is generated with a different word. "Variants" exist only as (a) alternative accepted lines on one choice screen and (b) extra sentences taught beside the dialogue. Templates are mentioned only in tips.
 
-Alternative accepted lines:
+No choice screen offers two accepted non-toolkit lines.
 
-- Scene `making-plans`, c6: "Yes! What time?" OR "When?" — all accepted, same continuation unless the routes above differ.
 
-Every learner sentence of this mission is a line in a scene.
+Learner sentences taught beside the dialogue (not a line in any scene):
 
+- `phrase.time.no-problem-meet` — No problem. Let's meet here at seven.
 
 ## Receipts (proof cards)
 
-- Step 8: "You recognize a time, "early" and "late" — even when it is said fast." / "אתה מזהה שעה, "מוקדם" ו"מאוחר" — גם כשזה נאמר מהר."
-- Step 14: "You planned an evening and a morning: when, what time, and where to meet." / "קבעת ערב ובוקר: מתי, באיזו שעה, ואיפה נפגשים."
-- Step 17: "Tonight, tomorrow, what time and where — you settled it all at the pace of a real chat." / "הערב, מחר, באיזו שעה ואיפה — קבעת הכל בקצב של שיחה אמיתית."
+- Step 24: "☀️ Now · This morning ● → ⏳ Later → 🌙 Tonight ● → 🌅 Tomorrow morning ¦ 🌙 Tonight: Dinner · Centre / 20:00 ‖ 🌅 Tomorrow: Beach / Meet here · 07:00 ¦ Tonight and tomorrow — two plans, from the conversation itself." / "☀️ עכשיו · הבוקר ● → ⏳ אחר כך → 🌙 הערב ● → 🌅 מחר בבוקר ¦ 🌙 הערב: ארוחת ערב · מרכז / 20:00 ‖ 🌅 מחר: חוף הים / נפגשים כאן · 07:00 ¦ הערב ומחר — שתי תוכניות, מהשיחה עצמה."
+- Step 26: "The whole conversation — from an open morning to two plans." / "כל השיחה — מהבוקר הפתוח ועד שתי תוכניות."
+- Step 30: "No help — the whole conversation, at a friend’s pace." / "בלי עזרה — כל השיחה, בקצב של חבר."
+- Step 39: "📅 PLANS MADE ¦ 🌙 Tonight: Dinner · Centre / 20:00 ✅ ‖ 🌅 Tomorrow: Beach / Meet here · 07:00 ✅" / "📅 התוכניות נקבעו ¦ 🌙 הערב: ארוחת ערב · מרכז / 20:00 ✅ ‖ 🌅 מחר: חוף הים / נפגשים כאן · 07:00 ✅"
 
 ## Audit Metadata — DO NOT FIX YET
 
 - Learner-production sentences: 8
-- Receptive (expected-reply) sentences: 7
-- Toolkit phrases bundled: 1
-- Key-sentence steps: 5
-- Expected-reply/listening items: 4
-- Questions/quizzes (meaning quiz): 0
-- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 17
-- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 15
-- One-button dialogue screens: 6
+- Receptive (expected-reply) sentences: 8
+- Toolkit phrases bundled: 0
+- Key-sentence steps: 0
+- Expected-reply/listening items: 0
+- Questions/quizzes (meaning quiz): 1
+- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 31
+- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 34
+- One-button dialogue screens: 0
 - Learner sentences never actively retrieved: 0
-- Dialogue learner choices (screens): 8
-- Wrong-answer branches: 0
+- Dialogue learner choices (screens): 7
+- Wrong-answer branches: 7
 - Cold-open prompts: 0
-- Recovery opportunities: 1
-- Vocabulary pre-items: 0
-- Swap variants (extra accepted lines): 1
-- Sentences in review: 12
-- Total interactive questions: 29 (answer choices: 83)
-- Approximate total learner interactions: 46 (questions + key sentences + review cards + word-intro screen)
+- Recovery opportunities: 0
+- Vocabulary pre-items: 17
+- Swap variants (extra accepted lines): 0
+- Sentences in review: 0
+- Total interactive questions: 39 (answer choices: 105)
+- Approximate total learner interactions: 40 (questions + key sentences + review cards + word-intro screen)
 
-### AUTO-FLAG — requires human review (2)
+### AUTO-FLAG — requires human review (0)
 
-- AUTO-FLAG — 8 of 8 choice screens have NO wrong option (every button is accepted): making-plans/c2, making-plans/c4, making-plans/c6, making-plans/c8, making-plans/c8b, making-plans/c10, making-plans/c12, making-plans/c14.
-- AUTO-FLAG — 6 choice screens offer exactly ONE button (no decision): making-plans/c2, making-plans/c4, making-plans/c8b, making-plans/c10, making-plans/c12, making-plans/c14.
+None raised by the mechanical checks.
 
 ---
 
@@ -13527,7 +13816,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: nothing (listed only)
 
 ### Sentence: `phrase.recovery.slowly`
@@ -14296,7 +14585,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: quick-reply response (step 9, round 5, accepted); sentence review (step 12); quick-reply response (step 13, round 3, accepted); cold-open correct option (step 15); dialogue choice allergy-order/c3 (accepted)
 
 ### Sentence: `phrase.recovery.slowly`
@@ -15933,7 +16222,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: quick-reply response (step 10, round 3, accepted); sentence review (step 13); dialogue choice supermarket/c2 (accepted)
 
 ### Sentence: `phrase.recovery.slowly`
@@ -16886,7 +17175,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: dialogue choice cold-plans/c2 (accepted); dialogue choice cold-shop/c4 (accepted)
 
 ## Expected replies / listening items
@@ -17913,7 +18202,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: quick-reply response (step 9, round 6, accepted); sentence review (step 13); cold-open correct option (step 16); dialogue choice transport/c1 (accepted); dialogue choice transport/c5 (accepted)
 
 ### Sentence: `phrase.recovery.slowly`
@@ -18859,7 +19148,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: sentence review (step 15); dialogue choice what-did-you-do/c10 (accepted)
 
 ## Expected replies / listening items
@@ -21589,7 +21878,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: sentence review (step 16); dialogue choice choosing-a-tour/c10 (accepted)
 
 ## Expected replies / listening items
@@ -22587,7 +22876,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: dialogue choice cold-problem/c2 (accepted)
 
 ## Expected replies / listening items
@@ -24546,7 +24835,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: dialogue choice pharmacy/c3 (accepted)
 
 ### Sentence: `phrase.recovery.slowly`
@@ -26134,7 +26423,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: dialogue choice ns-transit/c8 (accepted)
 
 ### Sentence: `phrase.recovery.slowly`
@@ -27071,7 +27360,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: dialogue choice dr-problem/c2 (accepted)
 
 ### Sentence: `phrase.recovery.slowly`
@@ -28278,7 +28567,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 12, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: dialogue choice fin-lunch/c6 (accepted)
 
 ## Expected replies / listening items
@@ -29409,7 +29698,7 @@ Every learner sentence of this mission is a line in a scene.
 | 09 Shopping | 13 (6 / 6 / 1) | 3 | 3 | 0 | 30 | 6 | 3 | 1 | 0 | 14 words | 2 | 39 | 2 |
 | 10 CHECKPOINT: Arrival Day | 10 (9 / 0 / 1) | 0 | 0 | 0 | 0 | 0 | 11 | 0 | 0 | no | 0 | 0 | 9 |
 | 11 Small Talk & Recommendations | 14 (7 / 7 / 0) | 0 | 1 | 1 | 31 | 6 | 0 | 0 | 0 | 14 words | 0 | 38 | 15 |
-| 12 Time & Plans | 16 (8 / 7 / 1) | 4 | 4 | 0 | 17 | 8 | 6 | 1 | 0 | no | 1 | 29 | 2 |
+| 12 Time & Plans | 16 (8 / 8 / 0) | 0 | 1 | 1 | 31 | 7 | 0 | 0 | 0 | 17 words | 0 | 39 | 0 |
 | 13 Home, Family & Daily Routine | 14 (8 / 5 / 1) | 4 | 4 | 0 | 15 | 9 | 8 | 1 | 0 | no | 0 | 28 | 5 |
 | 14 Restaurant Meal | 18 (7 / 6 / 5) | 5 | 5 | 0 | 13 | 6 | 4 | 2 | 0 | 5 words | 1 | 24 | 7 |
 | 15 Food Preferences & Allergies | 13 (5 / 5 / 3) | 4 | 4 | 0 | 12 | 10 | 5 | 3 | 1 | no | 1 | 27 | 6 |
@@ -29495,14 +29784,14 @@ Every learner-production sentence id of the Core, in order of first appearance. 
 | `phrase.talk.i-like-it` | I like it a lot. | 11 | 24, 28 | 0 | 2 / 2 | 11 | 0 | 0 | yes | no |  |
 | `phrase.talk.recommend-place` | Can you recommend a place? | 11 | 24, 28 | 0 | 3 / 1 | 13 | 0 | 0 | yes | no |  |
 | `phrase.talk.nice-talking` | It was nice talking to you. | 11 | 24, 28 | 0 | 2 / 3 | 12 | 0 | 0 | yes | no |  |
-| `phrase.time.maybe-later` | Maybe later. | 12 | 18 | 1 | 2 / 0 | 3 | 0 | 1 | yes | no |  |
-| `phrase.time.free-tonight` | I'm free tonight. | 12 | 18 | 1 | 1 / 1 | 5 | 0 | 1 | yes | no |  |
-| `phrase.time.what-time` | What time? | 12 | — | 1 | 1 / 0 | 4 | 0 | 1 | no | no |  |
-| `phrase.time.when` | When? | 12 | — | 0 | 1 / 0 | 0 | 0 | 0 | no | no |  |
-| `phrase.time.not-too-late` | No, that's not too late. | 12 | 18 | 0 | 2 / 1 | 5 | 0 | 1 | yes | no |  |
-| `phrase.time.what-doing-tomorrow` | What are you doing tomorrow? | 12 | — | 1 | 1 / 0 | 5 | 0 | 1 | no | no |  |
-| `phrase.time.free-tomorrow` | Yes, I'm free tomorrow. | 12 | 18 | 0 | 2 / 0 | 4 | 0 | 1 | yes | no |  |
-| `phrase.time.lets-meet` | Let's meet here at seven. | 12 | 18 | 1 | 2 / 0 | 5 | 0 | 1 | yes | no |  |
+| `phrase.time.maybe-later` | Maybe later. | 12 | 18 | 0 | 2 / 0 | 9 | 0 | 0 | yes | no |  |
+| `phrase.time.not-too-late` | No, that's not too late. | 12 | 18 | 0 | 1 / 3 | 13 | 0 | 0 | yes | no |  |
+| `phrase.time.free-tonight` | I'm free tonight. | 12 | 18 | 0 | 1 / 2 | 16 | 0 | 0 | yes | no |  |
+| `phrase.time.what-time` | What time? | 12 | — | 0 | 1 / 2 | 13 | 0 | 0 | no | no |  |
+| `phrase.time.free-tomorrow` | Yes, I'm free tomorrow. | 12 | 18 | 0 | 2 / 1 | 10 | 0 | 0 | yes | no |  |
+| `phrase.time.what-doing-tomorrow` | What are you doing tomorrow? | 12 | — | 0 | 1 / 1 | 8 | 0 | 0 | no | no |  |
+| `phrase.time.lets-meet` | Let's meet here at seven. | 12 | 18 | 0 | 2 / 0 | 6 | 0 | 0 | yes | no |  |
+| `phrase.time.no-problem-meet` | No problem. Let's meet here at seven. | 12 | — | 0 | 0 / 0 | 1 | 0 | 0 | no | no |  |
 | `phrase.home.beautiful-home` | Your home is beautiful. | 13 | — | 1 | 1 / 0 | 5 | 0 | 1 | no | no |  |
 | `phrase.home.is-this-new` | Is this sofa new? | 13 | — | 0 | 1 / 0 | 4 | 0 | 0 | no | no |  |
 | `phrase.home.where-family` | Where is your family? | 13 | 18 | 1 | 1 / 1 | 5 | 0 | 1 | yes | no |  |
@@ -29690,13 +29979,14 @@ Every expected-reply sentence id. "Quick response" does not exist as an exercise
 | `reply.talk.food` | Me too. And the food here is wonderful. | 11 | — | no | 0 / 1 | 0 / 0 | no | yes |
 | `reply.talk.tip` | Of course — try 'Mama Rosa', in the old town. It's very good. | 11 | — | no | 0 / 0 | 0 / 0 | no | yes |
 | `reply.talk.goodbye` | You too! Enjoy the rest of your trip! | 11 | — | no | 1 / 0 | 0 / 0 | no | yes |
-| `reply.time.what-doing-today` | What are you doing today? | 12 | — | no | 0 / 0 | 0 / 0 | no | yes |
-| `reply.time.what-doing-tonight` | What are you doing tonight? | 12 | — | no | 0 / 0 | 0 / 0 | no | yes |
-| `reply.time.want-to-come` | Do you want to come? | 12 | — | no | 0 / 0 | 0 / 0 | no | yes |
-| `reply.time.at-eight` | At eight. | 12 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
-| `reply.time.too-late` | Is that too late for you? | 12 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
-| `reply.time.free-tomorrow-q` | Are you free tomorrow? | 12 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
-| `reply.time.leave-early` | We leave early. | 12 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
+| `reply.time.today` | Good morning! What are you doing today? | 12 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.time.tonight-q` | And what are you doing tonight? | 12 | — | no | 0 / 1 | 0 / 0 | no | yes |
+| `reply.time.invite` | We're going to eat in the centre. Do you want to come? | 12 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.time.eight` | At eight. Is that too late for you? | 12 | — | no | 0 / 1 | 0 / 0 | no | yes |
+| `reply.time.good` | Great. It's very good there. | 12 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.time.beach` | Tomorrow morning I'm going to the beach. Are you free tomorrow? | 12 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.time.early` | Then come with us! But we leave early. | 12 | — | no | 1 / 0 | 0 / 0 | no | yes |
+| `reply.time.goodbye` | Perfect. I have to go now — see you tonight! | 12 | — | no | 0 / 0 | 0 / 0 | no | yes |
 | `reply.home.come-in` | Come in. | 13 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
 | `reply.home.sit-living-room` | Let's sit in the living room. | 13 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
 | `reply.home.live-with-family-q` | Do you live with your family? | 13 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
@@ -33795,155 +34085,43 @@ No questions.
 
 ## Mission 12 — Time & Plans
 
-**M12-Q01** — expected-reply
-- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (1/4)
-- Audio: At eight. — (בשמונה.)
-- A: בשמונה. / At eight. ✅
-- B: זה מאוחר מדי בשבילך? / Is that too late for you?
-- C: אנחנו יוצאים מוקדם. / We leave early.
-- Correct: At eight.
-- Tests: reply.time.at-eight
-
-**M12-Q02** — expected-reply
-- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (2/4)
-- Audio: Is that too late for you? — (זה מאוחר מדי בשבילך?)
-- A: זה מאוחר מדי בשבילך? / Is that too late for you? ✅
-- B: בשמונה. / At eight.
-- C: אנחנו יוצאים מוקדם. / We leave early.
-- Correct: Is that too late for you?
-- Tests: reply.time.too-late
-
-**M12-Q03** — expected-reply
-- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (3/4)
-- Audio: We leave early. — (אנחנו יוצאים מוקדם.)
-- A: אנחנו יוצאים מוקדם. / We leave early. ✅
-- B: בשמונה. / At eight.
-- C: זה מאוחר מדי בשבילך? / Is that too late for you?
-- Correct: We leave early.
-- Tests: reply.time.leave-early
-
-**M12-Q04** — expected-reply
-- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (4/4)
-- Audio: Are you free tomorrow? — (אתה פנוי מחר?)
-- A: אתה פנוי מחר? / Are you free tomorrow? ✅
-- B: בשמונה. / At eight.
-- C: זה מאוחר מדי בשבילך? / Is that too late for you?
-- Correct: Are you free tomorrow?
-- Tests: reply.time.free-tomorrow-q
-
-**M12-Q05** — visual-match
-- Prompt: "What time? Tap the time you hear" / "באיזו שעה? הקש על השעה ששמעת"
-- Audio: At eight. — (בשמונה.)
-- A: 2:00
-- B: 5:00
-- C: 7:00
-- D: 8:00 ✅
-- E: 10:00
-- F: 3:00
-- Correct: 8:00
-- Tests: reply.time.at-eight
-
-**M12-Q06** — visual-match
-- Prompt: "What time? Tap the time you hear" / "באיזו שעה? הקש על השעה ששמעת"
-- Audio: Let's meet here at seven. — (ניפגש כאן בשבע.)
-- A: 2:00
-- B: 5:00
-- C: 7:00 ✅
-- D: 8:00
-- E: 10:00
-- F: 3:00
-- Correct: 7:00
-- Tests: (no sentence id — not recorded)
-
-**M12-Q07** — visual-match
-- Prompt: "What time? Tap the time you hear" / "באיזו שעה? הקש על השעה ששמעת"
-- Audio: At ten. — (בעשר.)
-- A: 2:00
-- B: 5:00
-- C: 7:00
-- D: 8:00
-- E: 10:00 ✅
-- F: 3:00
-- Correct: 10:00
-- Tests: (no sentence id — not recorded)
-
-**M12-Q08** — visual-match
-- Prompt: "What time? Tap the time you hear" / "באיזו שעה? הקש על השעה ששמעת"
-- Audio: At five. — (בחמש.)
-- A: 2:00
-- B: 5:00 ✅
-- C: 7:00
-- D: 8:00
-- E: 10:00
-- F: 3:00
-- Correct: 5:00
-- Tests: (no sentence id — not recorded)
-
-**M12-Q09** — quick-reply
-- Prompt: "A friend is making plans — what do you say?" / "חבר קובע איתך — מה עונים?"
-- Audio: What are you doing today? — (מה אתה עושה היום?)
-- A: Nothing this morning. Maybe later. ✅
-- B: No, that's not too late.
-- C: Let's meet here at seven.
-- Correct: Nothing this morning. Maybe later.
-- Tests: phrase.time.maybe-later
-
-**M12-Q10** — quick-reply
-- Prompt: "A friend is making plans — what do you say?" / "חבר קובע איתך — מה עונים?"
-- Audio: What are you doing tonight? — (מה אתה עושה הערב?)
+**M12-Q01** — quick-reply
+- Prompt: "☀️ Now · This morning → ⏳ Later → 🌙 Tonight ● → 🌅 Tomorrow morning ¦ 🌙 Tonight: Plan ? / Time ? ‖ 🌅 Tomorrow: Plan ? / Meet ? ¦ What do you answer?" / "☀️ עכשיו · הבוקר → ⏳ אחר כך → 🌙 הערב ● → 🌅 מחר בבוקר ¦ 🌙 הערב: תוכנית ? / שעה ? ‖ 🌅 מחר: תוכנית ? / מפגש ? ¦ מה אתה עונה?"
+- Audio: And what are you doing tonight? — (ומה אתה עושה הערב?)
 - A: I'm free tonight. ✅
-- B: Yes, I'm free tomorrow.
-- C: What time?
+- B: Nothing this morning. Maybe later.
 - Correct: I'm free tonight.
 - Tests: phrase.time.free-tonight
 
-**M12-Q11** — quick-reply
-- Prompt: "A friend is making plans — what do you say?" / "חבר קובע איתך — מה עונים?"
-- Audio: Do you want to come? — (רוצה לבוא?)
+**M12-Q02** — quick-reply
+- Prompt: "☀️ Now · This morning → ⏳ Later → 🌙 Tonight ● → 🌅 Tomorrow morning ¦ 🌙 Tonight: Dinner · Centre / Time ? ‖ 🌅 Tomorrow: Plan ? / Meet ? ¦ What do you answer?" / "☀️ עכשיו · הבוקר → ⏳ אחר כך → 🌙 הערב ● → 🌅 מחר בבוקר ¦ 🌙 הערב: ארוחת ערב · מרכז / שעה ? ‖ 🌅 מחר: תוכנית ? / מפגש ? ¦ מה אתה עונה?" — situation shown: "Someone invites you — but you don’t know when." / "מזמינים אותך — אבל אתה לא יודע מתי."
+- Audio: (nothing is played — a situation is shown) — ()
 - A: Yes! What time? ✅
-- B: No, that's not too late.
-- C: Yes, I'm free tomorrow.
+- B: I'm free tonight.
+- C: Nothing this morning. Maybe later.
 - Correct: Yes! What time?
 - Tests: phrase.time.what-time
 
-**M12-Q12** — quick-reply
-- Prompt: "A friend is making plans — what do you say?" / "חבר קובע איתך — מה עונים?"
-- Audio: Is that too late for you? — (זה מאוחר מדי בשבילך?)
+**M12-Q03** — visual-match
+- Prompt: "☀️ Now · This morning → ⏳ Later → 🌙 Tonight ● → 🌅 Tomorrow morning ¦ 🌙 Tonight: Dinner · Centre / Time ? ‖ 🌅 Tomorrow: Plan ? / Meet ? ¦ What time is dinner?" / "☀️ עכשיו · הבוקר → ⏳ אחר כך → 🌙 הערב ● → 🌅 מחר בבוקר ¦ 🌙 הערב: ארוחת ערב · מרכז / שעה ? ‖ 🌅 מחר: תוכנית ? / מפגש ? ¦ באיזו שעה ארוחת הערב?"
+- Audio: At eight. Is that too late for you? — (בשמונה. זה מאוחר מדי בשבילך?)
+- A: 18:00
+- B: 20:00 ✅
+- C: 22:00
+- Correct: 20:00
+- Tests: (no sentence id — not recorded)
+
+**M12-Q04** — quick-reply
+- Prompt: "☀️ Now · This morning → ⏳ Later → 🌙 Tonight ● → 🌅 Tomorrow morning ¦ 🌙 Tonight: Dinner · Centre / 20:00 ‖ 🌅 Tomorrow: Plan ? / Meet ? ¦ What do you answer?" / "☀️ עכשיו · הבוקר → ⏳ אחר כך → 🌙 הערב ● → 🌅 מחר בבוקר ¦ 🌙 הערב: ארוחת ערב · מרכז / 20:00 ‖ 🌅 מחר: תוכנית ? / מפגש ? ¦ מה אתה עונה?"
+- Audio: At eight. Is that too late for you? — (בשמונה. זה מאוחר מדי בשבילך?)
 - A: No, that's not too late. ✅
-- B: Let's meet here at seven.
-- C: What are you doing tomorrow?
+- B: Yes! What time?
+- C: I'm free tonight.
 - Correct: No, that's not too late.
 - Tests: phrase.time.not-too-late
 
-**M12-Q13** — quick-reply
-- Prompt: "A friend is making plans — what do you say?" / "חבר קובע איתך — מה עונים?"
-- Audio: Are you free tomorrow? — (אתה פנוי מחר?)
-- A: Yes, I'm free tomorrow. ✅
-- B: I'm free tonight.
-- C: What time?
-- Correct: Yes, I'm free tomorrow.
-- Tests: phrase.time.free-tomorrow
-
-**M12-Q14** — swap-it
-- Prompt: "Which day are you asking about?" / "על מתי שואלים?" — cue 🗓️ "You want to know their plans for today" / "אתה רוצה לדעת מה הוא עושה היום" — frame EN "What are you doing ___?" · FR "Tu fais quoi ___ ?" · ES "¿Qué haces ___?"
-- Audio: (nothing before the tap; the completed sentence is spoken after it) — ()
-- A: today → What are you doing today? ✅
-- B: tonight → What are you doing tonight?
-- C: tomorrow → What are you doing tomorrow?
-- Correct: today → What are you doing today?
-- Tests: phrase.time.what-doing-tomorrow
-
-**M12-Q15** — swap-it
-- Prompt: "Which day are you asking about?" / "על מתי שואלים?" — cue 🗓️ "You want to know their plans for tonight" / "אתה רוצה לדעת מה הוא עושה הערב" — frame EN "What are you doing ___?" · FR "Tu fais quoi ___ ?" · ES "¿Qué haces ___?"
-- Audio: (nothing before the tap; the completed sentence is spoken after it) — ()
-- A: today → What are you doing today?
-- B: tonight → What are you doing tonight? ✅
-- C: tomorrow → What are you doing tomorrow?
-- Correct: tonight → What are you doing tonight?
-- Tests: phrase.time.what-doing-tomorrow
-
-**M12-Q16** — swap-it
-- Prompt: "Which day are you asking about?" / "על מתי שואלים?" — cue 🗓️ "You want to know their plans for tomorrow" / "אתה רוצה לדעת מה הוא עושה מחר" — frame EN "What are you doing ___?" · FR "Tu fais quoi ___ ?" · ES "¿Qué haces ___?"
+**M12-Q05** — swap-it
+- Prompt: "☀️ Now · This morning → ⏳ Later → 🌙 Tonight → 🌅 Tomorrow morning ● ¦ 🌙 Tonight: Dinner · Centre / 20:00 ‖ 🌅 Tomorrow: Plan ? / Meet ? ¦ Which time are you asking about?" / "☀️ עכשיו · הבוקר → ⏳ אחר כך → 🌙 הערב → 🌅 מחר בבוקר ● ¦ 🌙 הערב: ארוחת ערב · מרכז / 20:00 ‖ 🌅 מחר: תוכנית ? / מפגש ? ¦ על מתי אתה שואל?" — cue 🌅 "You want to know your friend’s plans for tomorrow" / "אתה רוצה לדעת מה החבר עושה מחר" — frame EN "What are you doing ___?" · FR "Tu fais quoi ___ ?" · ES "¿Qué haces ___?"
 - Audio: (nothing before the tap; the completed sentence is spoken after it) — ()
 - A: today → What are you doing today?
 - B: tonight → What are you doing tonight?
@@ -33951,106 +34129,300 @@ No questions.
 - Correct: tomorrow → What are you doing tomorrow?
 - Tests: phrase.time.what-doing-tomorrow
 
-**M12-Q17** — sentence-builder
-- Prompt: "Build the sentence" / "בנה את המשפט" — cue shown: the sentence's MEANING in the app language ("ניפגש כאן בשבע.")
-- Audio: (nothing before Check; the built sentence is spoken once it is right) — ()
-- A: Let's meet  |  here  |  at seven. ✅
-- Correct: Let's meet  |  here  |  at seven.
-- Tests: phrase.time.lets-meet
+**M12-Q06** — visual-match
+- Prompt: "☀️ Now · This morning → ⏳ Later → 🌙 Tonight → 🌅 Tomorrow morning ● ¦ 🌙 Tonight: Dinner · Centre / 20:00 ‖ 🌅 Tomorrow: Plan ? / Meet ? ¦ Tomorrow morning — where is your friend going?" / "☀️ עכשיו · הבוקר → ⏳ אחר כך → 🌙 הערב → 🌅 מחר בבוקר ● ¦ 🌙 הערב: ארוחת ערב · מרכז / 20:00 ‖ 🌅 מחר: תוכנית ? / מפגש ? ¦ מחר בבוקר — לאן החבר הולך?"
+- Audio: Tomorrow morning I'm going to the beach. Are you free tomorrow? — (מחר בבוקר אני הולך לים. אתה פנוי מחר?)
+- A: 🏖️ “Beach” / “חוף הים” ✅
+- B: 🍽️ “Dinner · Centre” / “ארוחת ערב · מרכז”
+- Correct: 🏖️ “Beach” / “חוף הים”
+- Tests: (no sentence id — not recorded)
 
-**M12-Q18** — dialogue-choice
-- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio: Good morning! What are you doing today? — (בוקר טוב! מה אתה עושה היום?)
-- A: Nothing this morning. Maybe later. ✅
-- Correct: Nothing this morning. Maybe later.
-- Tests: phrase.time.maybe-later
-
-**M12-Q19** — dialogue-choice
-- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio: And what are you doing tonight? — (ומה אתה עושה הערב?)
-- A: I'm free tonight. ✅
-- Correct: I'm free tonight.
-- Tests: phrase.time.free-tonight
-
-**M12-Q20** — dialogue-choice
-- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio: We're going to eat in the centre. Do you want to come? — (אנחנו הולכים לאכול במרכז. רוצה לבוא?)
-- A: Yes! What time? ✅
-- B: When? ✅
-- Correct: Yes! What time? | When?
-- Tests: phrase.time.what-time, phrase.time.when
-
-**M12-Q21** — dialogue-choice
-- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio: At eight. Is that too late for you? — (בשמונה. זה מאוחר מדי בשבילך?)
-- A: No, that's not too late. ✅
-- B: Can you repeat that? ✅
-- Correct: No, that's not too late. | Can you repeat that?
-- Tests: phrase.time.not-too-late, phrase.recovery.repeat
-
-**M12-Q22** — dialogue-choice
-- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio: At eight. Too late? — (בשמונה. מאוחר מדי?)
-- A: No, that's not too late. ✅
-- Correct: No, that's not too late.
-- Tests: phrase.time.not-too-late
-
-**M12-Q23** — dialogue-choice
-- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio: Great. It's very good there. — (מעולה. מאוד טוב שם.)
-- A: What are you doing tomorrow? ✅
-- Correct: What are you doing tomorrow?
-- Tests: phrase.time.what-doing-tomorrow
-
-**M12-Q24** — dialogue-choice
-- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
+**M12-Q07** — quick-reply
+- Prompt: "☀️ Now · This morning → ⏳ Later → 🌙 Tonight → 🌅 Tomorrow morning ● ¦ 🌙 Tonight: Dinner · Centre / 20:00 ‖ 🌅 Tomorrow: Beach / Meet ? ¦ You’re free tomorrow. What do you answer?" / "☀️ עכשיו · הבוקר → ⏳ אחר כך → 🌙 הערב → 🌅 מחר בבוקר ● ¦ 🌙 הערב: ארוחת ערב · מרכז / 20:00 ‖ 🌅 מחר: חוף הים / מפגש ? ¦ אתה פנוי מחר. מה אתה עונה?"
 - Audio: Tomorrow morning I'm going to the beach. Are you free tomorrow? — (מחר בבוקר אני הולך לים. אתה פנוי מחר?)
 - A: Yes, I'm free tomorrow. ✅
+- B: I'm free tonight.
+- C: What are you doing tomorrow?
 - Correct: Yes, I'm free tomorrow.
 - Tests: phrase.time.free-tomorrow
 
-**M12-Q25** — dialogue-choice
-- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
+**M12-Q08** — meaning-quiz
+- Prompt: "What did it mean?" / "מה זה אומר?"
+- Audio: Then come with us! But we leave early. — (אז בוא איתנו! אבל אנחנו יוצאים מוקדם.)
+- A: אז בוא איתנו! אבל אנחנו יוצאים מוקדם. / Then come with us! But we leave early. ✅
+- B: בשמונה. זה מאוחר מדי בשבילך? / At eight. Is that too late for you?
+- C: ומה אתה עושה הערב? / And what are you doing tonight?
+- Correct: Then come with us! But we leave early.
+- Tests: reply.time.early
+
+**M12-Q09** — sentence-builder
+- Prompt: "☀️ Now · This morning → ⏳ Later → 🌙 Tonight → 🌅 Tomorrow morning ● ¦ 🌙 Tonight: Dinner · Centre / 20:00 ‖ 🌅 Tomorrow: Beach / Meet ? · leaving early ¦ Set the meeting: where and when" / "☀️ עכשיו · הבוקר → ⏳ אחר כך → 🌙 הערב → 🌅 מחר בבוקר ● ¦ 🌙 הערב: ארוחת ערב · מרכז / 20:00 ‖ 🌅 מחר: חוף הים / מפגש ? · יוצאים מוקדם ¦ קבע את המפגש: איפה ומתי" — cue shown: the sentence's MEANING in the app language ("אין בעיה. ניפגש כאן בשבע.")
+- Audio: (nothing before Check; the built sentence is spoken once it is right) — ()
+- A: No problem.  |  Let's meet  |  here  |  at seven. ✅
+- Correct: No problem.  |  Let's meet  |  here  |  at seven.
+- Tests: phrase.time.no-problem-meet
+
+**M12-Q10** — quick-reply
+- Prompt: "☀️ Now · This morning ● → ⏳ Later → 🌙 Tonight → 🌅 Tomorrow morning ¦ 🌙 Tonight: Plan ? / Time ? ‖ 🌅 Tomorrow: Plan ? / Meet ?" / "☀️ עכשיו · הבוקר ● → ⏳ אחר כך → 🌙 הערב → 🌅 מחר בבוקר ¦ 🌙 הערב: תוכנית ? / שעה ? ‖ 🌅 מחר: תוכנית ? / מפגש ?"
+- Audio: Good morning! What are you doing today? — (בוקר טוב! מה אתה עושה היום?)
+- A: Nothing this morning. Maybe later. ✅
+- B: I'm free tonight.
+- C: No, that's not too late.
+- Correct: Nothing this morning. Maybe later.
+- Tests: phrase.time.maybe-later
+
+**M12-Q11** — quick-reply
+- Prompt: "☀️ Now · This morning → ⏳ Later → 🌙 Tonight ● → 🌅 Tomorrow morning ¦ 🌙 Tonight: Plan ? / Time ? ‖ 🌅 Tomorrow: Plan ? / Meet ?" / "☀️ עכשיו · הבוקר → ⏳ אחר כך → 🌙 הערב ● → 🌅 מחר בבוקר ¦ 🌙 הערב: תוכנית ? / שעה ? ‖ 🌅 מחר: תוכנית ? / מפגש ?"
+- Audio: And what are you doing tonight? — (ומה אתה עושה הערב?)
+- A: I'm free tonight. ✅
+- B: What time?
+- C: Nothing this morning. Maybe later.
+- Correct: I'm free tonight.
+- Tests: phrase.time.free-tonight
+
+**M12-Q12** — quick-reply
+- Prompt: "☀️ Now · This morning → ⏳ Later → 🌙 Tonight ● → 🌅 Tomorrow morning ¦ 🌙 Tonight: Plan ? / Time ? ‖ 🌅 Tomorrow: Plan ? / Meet ?" / "☀️ עכשיו · הבוקר → ⏳ אחר כך → 🌙 הערב ● → 🌅 מחר בבוקר ¦ 🌙 הערב: תוכנית ? / שעה ? ‖ 🌅 מחר: תוכנית ? / מפגש ?"
+- Audio: We're going to eat in the centre. Do you want to come? — (אנחנו הולכים לאכול במרכז. רוצה לבוא?)
+- A: Yes! What time? ✅
+- B: Yes, I'm free tomorrow.
+- C: No, that's not too late.
+- Correct: Yes! What time?
+- Tests: phrase.time.what-time
+
+**M12-Q13** — quick-reply
+- Prompt: "☀️ Now · This morning → ⏳ Later → 🌙 Tonight ● → 🌅 Tomorrow morning ¦ 🌙 Tonight: Dinner · Centre / Time ? ‖ 🌅 Tomorrow: Plan ? / Meet ?" / "☀️ עכשיו · הבוקר → ⏳ אחר כך → 🌙 הערב ● → 🌅 מחר בבוקר ¦ 🌙 הערב: ארוחת ערב · מרכז / שעה ? ‖ 🌅 מחר: תוכנית ? / מפגש ?"
+- Audio: At eight. Is that too late for you? — (בשמונה. זה מאוחר מדי בשבילך?)
+- A: No, that's not too late. ✅
+- B: What are you doing tomorrow?
+- C: Nothing this morning. Maybe later.
+- Correct: No, that's not too late.
+- Tests: phrase.time.not-too-late
+
+**M12-Q14** — quick-reply
+- Prompt: "☀️ Now · This morning → ⏳ Later → 🌙 Tonight → 🌅 Tomorrow morning ● ¦ 🌙 Tonight: Dinner · Centre / 20:00 ‖ 🌅 Tomorrow: Plan ? / Meet ?" / "☀️ עכשיו · הבוקר → ⏳ אחר כך → 🌙 הערב → 🌅 מחר בבוקר ● ¦ 🌙 הערב: ארוחת ערב · מרכז / 20:00 ‖ 🌅 מחר: תוכנית ? / מפגש ?"
+- Audio: Great. It's very good there. — (מעולה. מאוד טוב שם.)
+- A: What are you doing tomorrow? ✅
+- B: Yes! What time?
+- C: I'm free tonight.
+- Correct: What are you doing tomorrow?
+- Tests: phrase.time.what-doing-tomorrow
+
+**M12-Q15** — quick-reply
+- Prompt: "☀️ Now · This morning → ⏳ Later → 🌙 Tonight → 🌅 Tomorrow morning ● ¦ 🌙 Tonight: Dinner · Centre / 20:00 ‖ 🌅 Tomorrow: Plan ? / Meet ?" / "☀️ עכשיו · הבוקר → ⏳ אחר כך → 🌙 הערב → 🌅 מחר בבוקר ● ¦ 🌙 הערב: ארוחת ערב · מרכז / 20:00 ‖ 🌅 מחר: תוכנית ? / מפגש ?"
+- Audio: Tomorrow morning I'm going to the beach. Are you free tomorrow? — (מחר בבוקר אני הולך לים. אתה פנוי מחר?)
+- A: Yes, I'm free tomorrow. ✅
+- B: I'm free tonight.
+- C: No, that's not too late.
+- Correct: Yes, I'm free tomorrow.
+- Tests: phrase.time.free-tomorrow
+
+**M12-Q16** — quick-reply
+- Prompt: "☀️ Now · This morning → ⏳ Later → 🌙 Tonight → 🌅 Tomorrow morning ● ¦ 🌙 Tonight: Dinner · Centre / 20:00 ‖ 🌅 Tomorrow: Beach / Meet ?" / "☀️ עכשיו · הבוקר → ⏳ אחר כך → 🌙 הערב → 🌅 מחר בבוקר ● ¦ 🌙 הערב: ארוחת ערב · מרכז / 20:00 ‖ 🌅 מחר: חוף הים / מפגש ?"
 - Audio: Then come with us! But we leave early. — (אז בוא איתנו! אבל אנחנו יוצאים מוקדם.)
 - A: No problem. Let's meet here at seven. ✅
+- B: No, that's not too late.
+- C: Yes! What time?
 - Correct: No problem. Let's meet here at seven.
 - Tests: phrase.time.lets-meet
 
-**M12-Q26** — quick-reply
+**M12-Q17** — dialogue-choice
+- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
+- Audio: Good morning! What are you doing today? — (בוקר טוב! מה אתה עושה היום?)
+- A: Nothing this morning. Maybe later. ✅
+- B: No, that's not too late.
+- Correct: Nothing this morning. Maybe later.
+- Tests: phrase.time.maybe-later, phrase.time.not-too-late
+
+**M12-Q18** — dialogue-choice
+- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
+- Audio: And what are you doing tonight? — (ומה אתה עושה הערב?)
+- A: I'm free tonight. ✅
+- B: What time?
+- Correct: I'm free tonight.
+- Tests: phrase.time.free-tonight, phrase.time.what-time
+
+**M12-Q19** — dialogue-choice
+- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
+- Audio: We're going to eat in the centre. Do you want to come? — (אנחנו הולכים לאכול במרכז. רוצה לבוא?)
+- A: Yes! What time? ✅
+- B: Yes, I'm free tomorrow.
+- Correct: Yes! What time?
+- Tests: phrase.time.what-time, phrase.time.free-tomorrow
+
+**M12-Q20** — dialogue-choice
+- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
+- Audio: At eight. Is that too late for you? — (בשמונה. זה מאוחר מדי בשבילך?)
+- A: No, that's not too late. ✅
+- B: What are you doing tomorrow?
+- Correct: No, that's not too late.
+- Tests: phrase.time.not-too-late, phrase.time.what-doing-tomorrow
+
+**M12-Q21** — dialogue-choice
+- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
+- Audio: Great. It's very good there. — (מעולה. מאוד טוב שם.)
+- A: What are you doing tomorrow? ✅
+- B: What time?
+- Correct: What are you doing tomorrow?
+- Tests: phrase.time.what-doing-tomorrow, phrase.time.what-time
+
+**M12-Q22** — dialogue-choice
+- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
+- Audio: Tomorrow morning I'm going to the beach. Are you free tomorrow? — (מחר בבוקר אני הולך לים. אתה פנוי מחר?)
+- A: Yes, I'm free tomorrow. ✅
+- B: I'm free tonight.
+- Correct: Yes, I'm free tomorrow.
+- Tests: phrase.time.free-tomorrow, phrase.time.free-tonight
+
+**M12-Q23** — dialogue-choice
+- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
+- Audio: Then come with us! But we leave early. — (אז בוא איתנו! אבל אנחנו יוצאים מוקדם.)
+- A: No problem. Let's meet here at seven. ✅
+- B: No, that's not too late.
+- Correct: No problem. Let's meet here at seven.
+- Tests: phrase.time.lets-meet, phrase.time.not-too-late
+
+**M12-Q24** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Good morning! What are you doing today? — (בוקר טוב! מה אתה עושה היום?)
+- A: Nothing this morning. Maybe later. ✅
+- B: Yes, I'm free tomorrow.
+- C: What time?
+- Correct: Nothing this morning. Maybe later.
+- Tests: phrase.time.maybe-later
+
+**M12-Q25** — quick-reply
 - Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio: And what are you doing tonight? — (ומה אתה עושה הערב?)
 - A: I'm free tonight. ✅
-- B: No, that's not too late.
-- C: Let's meet here at seven.
+- B: Yes, I'm free tomorrow.
+- C: No problem. Let's meet here at seven.
 - Correct: I'm free tonight.
 - Tests: phrase.time.free-tonight
+
+**M12-Q26** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: We're going to eat in the centre. Do you want to come? — (אנחנו הולכים לאכול במרכז. רוצה לבוא?)
+- A: Yes! What time? ✅
+- B: No, that's not too late.
+- C: What are you doing tomorrow?
+- Correct: Yes! What time?
+- Tests: phrase.time.what-time
 
 **M12-Q27** — quick-reply
 - Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio: At eight. Is that too late for you? — (בשמונה. זה מאוחר מדי בשבילך?)
 - A: No, that's not too late. ✅
-- B: Maybe later.
-- C: What are you doing tomorrow?
+- B: Nothing this morning. Maybe later.
+- C: Yes, I'm free tomorrow.
 - Correct: No, that's not too late.
 - Tests: phrase.time.not-too-late
 
 **M12-Q28** — quick-reply
 - Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
-- Audio: Tomorrow morning I'm going to the beach. Are you free tomorrow? — (מחר בבוקר אני הולך לים. אתה פנוי מחר?)
-- A: Yes, I'm free tomorrow. ✅
-- B: I'm free tonight.
-- C: What time?
-- Correct: Yes, I'm free tomorrow.
-- Tests: phrase.time.free-tomorrow
+- Audio: Great. It's very good there. — (מעולה. מאוד טוב שם.)
+- A: What are you doing tomorrow? ✅
+- B: No, that's not too late.
+- C: I'm free tonight.
+- Correct: What are you doing tomorrow?
+- Tests: phrase.time.what-doing-tomorrow
 
 **M12-Q29** — quick-reply
 - Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Tomorrow morning I'm going to the beach. Are you free tomorrow? — (מחר בבוקר אני הולך לים. אתה פנוי מחר?)
+- A: Yes, I'm free tomorrow. ✅
+- B: I'm free tonight.
+- C: Yes! What time?
+- Correct: Yes, I'm free tomorrow.
+- Tests: phrase.time.free-tomorrow
+
+**M12-Q30** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio: Then come with us! But we leave early. — (אז בוא איתנו! אבל אנחנו יוצאים מוקדם.)
 - A: No problem. Let's meet here at seven. ✅
-- B: I'm free tonight.
-- C: Maybe later.
+- B: No, that's not too late.
+- C: I'm free tonight.
 - Correct: No problem. Let's meet here at seven.
 - Tests: phrase.time.lets-meet
+
+**M12-Q31** — quick-reply
+- Prompt: "☀️ Now · This morning ● → ⏳ Later → 🌙 Tonight → 🌅 Tomorrow morning ¦ 🌙 Tonight: Plan ? / Time ? ‖ 🌅 Tomorrow: Plan ? / Meet ? ¦ Close your plans for tonight and tomorrow." / "☀️ עכשיו · הבוקר ● → ⏳ אחר כך → 🌙 הערב → 🌅 מחר בבוקר ¦ 🌙 הערב: תוכנית ? / שעה ? ‖ 🌅 מחר: תוכנית ? / מפגש ? ¦ סגור את התוכניות שלך להערב ולמחר."
+- Audio: Good morning! What are you doing today? — (בוקר טוב! מה אתה עושה היום?)
+- A: Nothing this morning. Maybe later. ✅
+- B: No, that's not too late.
+- C: What are you doing tomorrow?
+- Correct: Nothing this morning. Maybe later.
+- Tests: phrase.time.maybe-later
+
+**M12-Q32** — quick-reply
+- Prompt: "☀️ Now · This morning → ⏳ Later → 🌙 Tonight ● → 🌅 Tomorrow morning ¦ 🌙 Tonight: Plan ? / Time ? ‖ 🌅 Tomorrow: Plan ? / Meet ?" / "☀️ עכשיו · הבוקר → ⏳ אחר כך → 🌙 הערב ● → 🌅 מחר בבוקר ¦ 🌙 הערב: תוכנית ? / שעה ? ‖ 🌅 מחר: תוכנית ? / מפגש ?" — situation shown: "Your evening is free. Tell your friend." / "הערב שלך פנוי. תגיד לחבר."
+- Audio: (nothing is played — a situation is shown) — ()
+- A: I'm free tonight. ✅
+- B: Yes, I'm free tomorrow.
+- C: What time?
+- Correct: I'm free tonight.
+- Tests: phrase.time.free-tonight
+
+**M12-Q33** — quick-reply
+- Prompt: "☀️ Now · This morning → ⏳ Later → 🌙 Tonight ● → 🌅 Tomorrow morning ¦ 🌙 Tonight: Plan ? / Time ? ‖ 🌅 Tomorrow: Plan ? / Meet ?" / "☀️ עכשיו · הבוקר → ⏳ אחר כך → 🌙 הערב ● → 🌅 מחר בבוקר ¦ 🌙 הערב: תוכנית ? / שעה ? ‖ 🌅 מחר: תוכנית ? / מפגש ?"
+- Audio: We're going to eat in the centre. Do you want to come? — (אנחנו הולכים לאכול במרכז. רוצה לבוא?)
+- A: Yes! What time? ✅
+- B: No, that's not too late.
+- C: No problem. Let's meet here at seven.
+- Correct: Yes! What time?
+- Tests: phrase.time.what-time
+
+**M12-Q34** — visual-match
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: At eight. Is that too late for you? — (בשמונה. זה מאוחר מדי בשבילך?)
+- A: 18:00
+- B: 20:00 ✅
+- C: 22:00
+- Correct: 20:00
+- Tests: (no sentence id — not recorded)
+
+**M12-Q35** — quick-reply
+- Prompt: "☀️ Now · This morning → ⏳ Later → 🌙 Tonight ● → 🌅 Tomorrow morning ¦ 🌙 Tonight: Dinner · Centre / 20:00 ‖ 🌅 Tomorrow: Plan ? / Meet ?" / "☀️ עכשיו · הבוקר → ⏳ אחר כך → 🌙 הערב ● → 🌅 מחר בבוקר ¦ 🌙 הערב: ארוחת ערב · מרכז / 20:00 ‖ 🌅 מחר: תוכנית ? / מפגש ?"
+- Audio: At eight. Is that too late for you? — (בשמונה. זה מאוחר מדי בשבילך?)
+- A: No, that's not too late. ✅
+- B: I'm free tonight.
+- C: Nothing this morning. Maybe later.
+- Correct: No, that's not too late.
+- Tests: phrase.time.not-too-late
+
+**M12-Q36** — quick-reply
+- Prompt: "☀️ Now · This morning → ⏳ Later → 🌙 Tonight → 🌅 Tomorrow morning ● ¦ 🌙 Tonight: Dinner · Centre / 20:00 ‖ 🌅 Tomorrow: Plan ? / Meet ?" / "☀️ עכשיו · הבוקר → ⏳ אחר כך → 🌙 הערב → 🌅 מחר בבוקר ● ¦ 🌙 הערב: ארוחת ערב · מרכז / 20:00 ‖ 🌅 מחר: תוכנית ? / מפגש ?"
+- Audio: Great. It's very good there. — (מעולה. מאוד טוב שם.)
+- A: What are you doing tomorrow? ✅
+- B: Yes, I'm free tomorrow.
+- C: Yes! What time?
+- Correct: What are you doing tomorrow?
+- Tests: phrase.time.what-doing-tomorrow
+
+**M12-Q37** — quick-reply
+- Prompt: "☀️ Now · This morning → ⏳ Later → 🌙 Tonight → 🌅 Tomorrow morning ● ¦ 🌙 Tonight: Dinner · Centre / 20:00 ‖ 🌅 Tomorrow: Plan ? / Meet ?" / "☀️ עכשיו · הבוקר → ⏳ אחר כך → 🌙 הערב → 🌅 מחר בבוקר ● ¦ 🌙 הערב: ארוחת ערב · מרכז / 20:00 ‖ 🌅 מחר: תוכנית ? / מפגש ?"
+- Audio: Tomorrow morning I'm going to the beach. Are you free tomorrow? — (מחר בבוקר אני הולך לים. אתה פנוי מחר?)
+- A: Yes, I'm free tomorrow. ✅
+- B: I'm free tonight.
+- C: No problem. Let's meet here at seven.
+- Correct: Yes, I'm free tomorrow.
+- Tests: phrase.time.free-tomorrow
+
+**M12-Q38** — quick-reply
+- Prompt: "☀️ Now · This morning → ⏳ Later → 🌙 Tonight → 🌅 Tomorrow morning ● ¦ 🌙 Tonight: Dinner · Centre / 20:00 ‖ 🌅 Tomorrow: Beach / Meet ?" / "☀️ עכשיו · הבוקר → ⏳ אחר כך → 🌙 הערב → 🌅 מחר בבוקר ● ¦ 🌙 הערב: ארוחת ערב · מרכז / 20:00 ‖ 🌅 מחר: חוף הים / מפגש ?"
+- Audio: Then come with us! But we leave early. — (אז בוא איתנו! אבל אנחנו יוצאים מוקדם.)
+- A: No problem. Let's meet here at seven. ✅
+- B: Yes! What time?
+- C: I'm free tonight.
+- Correct: No problem. Let's meet here at seven.
+- Tests: phrase.time.lets-meet
+
+**M12-Q39** — visual-match
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Perfect. I have to go now — see you tonight! — (מושלם. אני חייב ללכת עכשיו — נתראה הערב!)
+- A: 🌙 “Tonight” / “הערב” ✅
+- B: 🌅 “Tomorrow morning” / “מחר בבוקר”
+- Correct: 🌙 “Tonight” / “הערב”
+- Tests: (no sentence id — not recorded)
 
 ## Mission 13 — Home, Family & Daily Routine
 
@@ -37890,16 +38262,16 @@ No questions.
 
 - Missions exported: 30
 - Learner-production sentence ids: 162
-- Expected-reply (receptive) sentence ids: 162
+- Expected-reply (receptive) sentence ids: 163
 - Sentence listings across missions (with reuse): 521
-- Expected-reply questions: 92
-- Meaning quizzes: 5
-- Active-practice questions: 551
-- Dialogue choice screens: 259
+- Expected-reply questions: 88
+- Meaning quizzes: 6
+- Active-practice questions: 565
+- Dialogue choice screens: 258
 - Cold opens: 8
-- Total interactive questions: 915
-- Total answer choices: 2462
-- Wrong-answer branches: 89
-- Recovery opportunities: 52
+- Total interactive questions: 925
+- Total answer choices: 2484
+- Wrong-answer branches: 96
+- Recovery opportunities: 51
 - Learner sentences with 0 active retrieval opportunities: 1
-- Auto-flags: 203
+- Auto-flags: 201

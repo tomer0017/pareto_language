@@ -384,3 +384,32 @@ unchanged; "should" (devriez / debería) is not verified prior learning before i
 strict vocabulary test now records that gap explicitly (FR devriez, ES debería; EN "should" is met only
 in Mission 15's dialogue, which does not count as teaching) until Mission 24's design pass teaches it.
 `mission11.test.ts`: 66 tests (incl. the canonical transcript, byte-identical to before the rebuild).
+
+## Mission 12 — Time & Plans, full learning flow — 2026-11-05
+
+Mission 12 is rebuilt around its LOCKED EN/ES/FR conversation (transcript byte-identical to before) as
+MAKING PLANS, not clock vocabulary: "We made plans for tonight and tomorrow." Journey:
+`practiceTimePlans.ts` (`m12Steps`), wired through the spec (`core/timePlans.ts`). Briefing = the brief's
+Hebrew line + the traveller's own availability (☀️ this morning open · 🌙 tonight free · 🌅 tomorrow free)
+— nothing the friend will propose. New deterministic UI, rendered by `HotelStaySummary.tsx`
+(`splitTimeBoard`): the **Time Strip** (Now · this morning → later → tonight → tomorrow morning; the
+current period highlighted; never a fact) and the **live planner** (Tonight: Plan ? / Time ? ‖ Tomorrow:
+Plan ? / Meet ?), filled only after the line that reveals each fact: dinner · centre after the
+invitation, 20:00 after "At eight" (captured as plain 18:00 / 20:00 / 22:00, no clock), the beach after
+the tomorrow-morning line, "leaving early" (no hour) after "we leave early", and "Meet here · 07:00" only
+after the LEARNER says "Let's meet here at seven" (their plan, not news). Prime intros now go through
+`HotelStaySummary` too (plain text renders exactly as before). Teach once, then transfer: "I'm free
+tonight." has a card; "Yes, I'm free tomorrow." has none — it is retrieved against "I'm free tonight";
+"What are you doing tomorrow?" is shown beside the friend's own today / tonight questions, then one
+swap. One builder: "No problem. / Let's meet / here / at seven." in each language's own chunks (new item
+`phrase.time.no-problem-meet` = the locked line). Then the supported conversation (strip + planner) →
+the conversation (each turn a real decision; a miss is re-asked slowly) → no help → video (none
+recorded: safely skipped) → final ("close your plans") → 📅 PLANS MADE. 32 interactions. Removed: the
+"repeat" recovery tool, the alternative "When?", the old review/speed shape and the invented "At ten" /
+"At five" times. Prior learning (`learnedBefore(lang, 12)`): numbers, here, centre, eat, come, do you
+want, great, perfect; "No problem" (EN/FR only) and "It's very good" (EN/FR) are partial prior. Sentence
+ids reused by the Everyday checkpoint are unchanged. Coverage: `mission12Coverage.ts` (26 chunks, all
+covered), feeding `learnedBefore` for later missions. Artwork: 14 slots + 1 result prop, emoji
+PLACEHOLDERS — VISUAL PRODUCTION REQUIRED (Astra pass): `MISSION12_ASSET_MANIFEST.md`. Tests:
+`mission12.test.ts` (72); Missions 01–11 and 13–30 byte-for-byte unchanged (the old "12–30" pins now pin
+13–30).

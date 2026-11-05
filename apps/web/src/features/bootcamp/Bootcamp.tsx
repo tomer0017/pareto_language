@@ -411,7 +411,7 @@ function PrimeStep({ step, itemsById, onNext }: { step: Extract<BootcampStep, { 
     <>
       <div className="drill-card" style={{ textAlign: 'start', gap: 12 }}>
         <p className="drill-label" style={{ textAlign: 'center' }}>🗝️ {step.label ? L(step.label) : t('primeTitle')}</p>
-        {step.intro && <p className="drill-meaning" style={{ textAlign: 'center' }}>{L(step.intro)}</p>}
+        {step.intro && <p className="drill-meaning" style={{ textAlign: 'center' }}><HotelStaySummary text={L(step.intro)} /></p>}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
           {step.words.map((w, i) => (
             <button

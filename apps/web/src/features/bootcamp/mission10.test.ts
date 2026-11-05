@@ -132,8 +132,8 @@ describe('structure', () => {
   it('5. Missions 01–09 are byte-for-byte unchanged', () => {
     expect(raw(0, 9)).toEqual({ en: 'cdce44aa', fr: '280ec919', es: '535188cc' });
   });
-  it('6. Missions 12–30 are byte-for-byte unchanged (Mission 11 has its own pass since)', () => {
-    expect(raw(11)).toEqual({ en: '1b79e2ea', fr: '256a223c', es: '84144870' }); // Missions 12–30 (Mission 11 has its own pass since: mission11.test.ts)
+  it('6. Missions 13–30 are byte-for-byte unchanged (Missions 11 and 12 have their own passes since)', () => {
+    expect(raw(12)).toEqual({ en: '374354a9', fr: '036c589c', es: 'e62daaff' }); // Missions 13–30 (Missions 11 and 12 have their own passes since: mission11.test.ts, mission12.test.ts)
   });
   it('7. no Step 0 — and no vocabulary block of any kind', () => {
     for (const lang of LANGS) {

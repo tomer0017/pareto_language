@@ -652,27 +652,23 @@ _Reply-training drill:_ “Hi there! Can I help you find anything?” · “Of c
 
 ### Core phrases (you say)
 - **Maybe later.** · אולי אחר כך. — _התשובה הכי שימושית כשלא החלטת._
+- **No, that's not too late.** · לא, זה לא מאוחר מדי.
 - **I'm free tonight.** · אני פנוי הערב.
 - **What time?** · באיזו שעה?
-- **When?** · מתי?
-- **No, that's not too late.** · לא, זה לא מאוחר מדי.
-- **What are you doing tomorrow?** · מה אתה עושה מחר? — _מחליפים tomorrow ב-today / tonight ויש לך שלוש שאלות._
 - **Yes, I'm free tomorrow.** · כן, אני פנוי מחר.
+- **What are you doing tomorrow?** · מה אתה עושה מחר? — _מחליפים tomorrow ב-today / tonight ויש לך שלוש שאלות._
 - **Let's meet here at seven.** · ניפגש כאן בשבע. — _Let’s meet ___ at ___ — מקום ושעה, וזהו._
+- **No problem. Let's meet here at seven.** · אין בעיה. ניפגש כאן בשבע.
 
 ### Expected replies (you hear)
-- **What are you doing today?** · מה אתה עושה היום?
-- **What are you doing tonight?** · מה אתה עושה הערב?
-- **Do you want to come?** · רוצה לבוא?
-- **At eight.** · בשמונה.
-- **Is that too late for you?** · זה מאוחר מדי בשבילך?
-- **Are you free tomorrow?** · אתה פנוי מחר?
-- **We leave early.** · אנחנו יוצאים מוקדם.
-
-_Reply-training drill:_ “At eight.” · “Is that too late for you?” · “We leave early.” · “Are you free tomorrow?”
-
-### Recovery tools reused
-`Can you repeat that?`
+- **Good morning! What are you doing today?** · בוקר טוב! מה אתה עושה היום?
+- **And what are you doing tonight?** · ומה אתה עושה הערב?
+- **We're going to eat in the centre. Do you want to come?** · אנחנו הולכים לאכול במרכז. רוצה לבוא?
+- **At eight. Is that too late for you?** · בשמונה. זה מאוחר מדי בשבילך?
+- **Great. It's very good there.** · מעולה. מאוד טוב שם.
+- **Tomorrow morning I'm going to the beach. Are you free tomorrow?** · מחר בבוקר אני הולך לים. אתה פנוי מחר?
+- **Then come with us! But we leave early.** · אז בוא איתנו! אבל אנחנו יוצאים מוקדם.
+- **Perfect. I have to go now — see you tonight!** · מושלם. אני חייב ללכת עכשיו — נתראה הערב!
 
 ### Dialogue: `making-plans` — happy path
 - **🧑 Them:** “Good morning! What are you doing today?” · בוקר טוב! מה אתה עושה היום?
@@ -690,6 +686,15 @@ _Reply-training drill:_ “At eight.” · “Is that too late for you?” · �
 - **🧑 Them:** “Then come with us! But we leave early.” · אז בוא איתנו! אבל אנחנו יוצאים מוקדם.
 - **🫵 You:** “No problem. Let's meet here at seven.” · אין בעיה. ניפגש כאן בשבע.
 - **🧑 Them:** “Perfect. I have to go now — see you tonight!” · מושלם. אני חייב ללכת עכשיו — נתראה הערב!
+
+#### Wrong / recovery branches
+- ⚠︎ less useful: 🫵 “No, that's not too late.” → 🧑 “Good morning! What are you doing today?” · בוקר טוב! מה אתה עושה היום?
+- ⚠︎ less useful: 🫵 “What time?” → 🧑 “And what are you doing tonight?” · ומה אתה עושה הערב?
+- ⚠︎ less useful: 🫵 “Yes, I'm free tomorrow.” → 🧑 “We're going to eat in the centre. Do you want to come?” · אנחנו הולכים לאכול במרכז. רוצה לבוא?
+- ⚠︎ less useful: 🫵 “What are you doing tomorrow?” → 🧑 “At eight. Is that too late for you?” · בשמונה. זה מאוחר מדי בשבילך?
+- ⚠︎ less useful: 🫵 “What time?” → 🧑 “Great. It's very good there.” · מעולה. מאוד טוב שם.
+- ⚠︎ less useful: 🫵 “I'm free tonight.” → 🧑 “Tomorrow morning I'm going to the beach. Are you free tomorrow?” · מחר בבוקר אני הולך לים. אתה פנוי מחר?
+- ⚠︎ less useful: 🫵 “No, that's not too late.” → 🧑 “Then come with us! But we leave early.” · אז בוא איתנו! אבל אנחנו יוצאים מוקדם.
 
 ### Review status
 - 🤖 AI-drafted (English + Hebrew) — **pending human / native-Hebrew review**

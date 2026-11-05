@@ -25,7 +25,44 @@ export function splitJourney(text: string): { before: string; facts: string[]; a
   return null;
 }
 
+/**
+ * Mission 12's board — the Time Strip (four time periods, the current one marked " ●") and the live
+ * planner (tonight / tomorrow, "?" until the conversation says it), joined with " ¦ " to the label's
+ * own text. Only presentation: every value is already in the text; nothing is inferred or added.
+ */
+const STRIP = /^☀️ (?:Now|עכשיו) · .+ → .+ → .+ → 🌅 (?:Tomorrow morning|מחר בבוקר)(?: ●)?$/u;
+const PLAN = /^(🌙 [^:]+): (.+) \/ (.+) ‖ (🌅 [^:]+): (.+) \/ (.+)$/u;
+export interface TimeBoard {
+  strip: { text: string; now: boolean }[] | null;
+  plan: { day: string; rows: { text: string; known: boolean }[] }[] | null;
+  /** The label's own text: what comes before the board, and after it. */
+  before: string[];
+  after: string[];
+}
+export function splitTimeBoard(text: string): TimeBoard | null {
+  const parts = text.split(' ¦ ');
+  const strip = parts.find((p) => STRIP.test(p));
+  const plan = parts.map((p) => PLAN.exec(p)).find((m) => m !== null);
+  if (!strip && !plan) return null;
+  const row = (t: string) => ({ text: t, known: !t.includes('?') });
+  const isBoard = (p: string): boolean => STRIP.test(p) || PLAN.test(p);
+  const first = parts.findIndex(isBoard);
+  return {
+    strip: strip ? strip.split(' → ').map((c) => ({ text: c.replace(/ ●$/u, ''), now: c.endsWith(' ●') })) : null,
+    plan: plan ? [{ day: plan[1]!, rows: [row(plan[2]!), row(plan[3]!)] }, { day: plan[4]!, rows: [row(plan[5]!), row(plan[6]!)] }] : null,
+    before: parts.slice(0, first),
+    after: parts.slice(first).filter((p) => !isBoard(p)),
+  };
+}
+
 export function HotelStaySummary({ text }: { text: string }) {
+  const board = splitTimeBoard(text);
+  if (board) return <span className="hotel-stay-summary time-board">
+    {board.before.map((n, i) => <span key={`b${i}`} className="hotel-stay-note">{n}</span>)}
+    {board.strip && <span className="time-strip" role="list">{board.strip.map((c, i) => <span key={i} role="listitem" className="time-strip-cell" data-now={c.now} aria-current={c.now ? 'time' : undefined}>{c.text}</span>)}</span>}
+    {board.plan && <span className="plan-card">{board.plan.map((d) => <span key={d.day} className="plan-day"><span className="plan-day-head">{d.day}</span>{d.rows.map((r, i) => <span key={i} className="plan-day-row" data-known={r.known}>{r.text}</span>)}</span>)}</span>}
+    {board.after.map((n, i) => <span key={`a${i}`} className="hotel-stay-note">{n}</span>)}
+  </span>;
   const journey = splitJourney(text);
   if (journey) return <span className="hotel-stay-summary">
     {journey.before && <span className="hotel-stay-note">{journey.before}</span>}

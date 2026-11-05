@@ -75,6 +75,10 @@ The machine-checkable version is `apps/web/src/features/bootcamp/vocabAudit.ts`
 must match whether the mission actually has a `prime` step, and every listed priming word must be a
 real prime word in that mission. **Counts: 29 audited · 7 primed · 22 explicitly no-priming-needed.**
 
+> **2026-11-05 — Mission 12 (Time & Plans, registry key 31) is now primed** with whole-line cards, never word
+> lists: *I'm free tonight.*, *Yes! What time?*, *No, that's not too late.*, *What are you doing tomorrow?*,
+> *No problem. Let's meet here at seven.* — "Yes, I'm free tomorrow." is a transfer, never a card.
+
 > **2026-11-03 — Mission 11 (Small Talk, registry key 22) is now primed** with whole-line cards, never word
 > lists: new — *How about you?*, *Can you recommend a place?*, *Thank you! It was nice talking to you.*;
 > ♻️ review — *I'm from Israel.*, *Yes, it's my first time here.* (Mission 01, verified). `vocabAudit.ts` is the

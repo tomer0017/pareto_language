@@ -79,13 +79,13 @@ describe('scope: only the Practice of Missions 11–18 changed', () => {
   it('Missions 08–10 are not this pass\'s: each has its own (mission08.test.ts, mission09.test.ts, mission10.test.ts)', () => {
     for (const lang of LANGS) expect(slice(lang, 9, 10)[0]!.steps.some((s) => s.kind === 'checkpoint'), lang).toBe(true);
   });
-  it('the locked dialogues of Missions 12–17 are byte-for-byte unchanged (Mission 11 has its own pass since: mission11.test.ts)', () => {
-    expect(print((l) => slice(l, 11, 17).map((d) => d.dialogues))).toEqual({ en: '8a574fb3', fr: 'fed9804b', es: '12b488e9' });
+  it('the locked dialogues of Missions 13–17 are byte-for-byte unchanged (Missions 11 and 12 have their own passes since: mission11.test.ts, mission12.test.ts)', () => {
+    expect(print((l) => slice(l, 12, 17).map((d) => d.dialogues))).toEqual({ en: 'f64306cc', fr: 'ba26f0da', es: 'af1a975b' });
   });
   it('the approved practice is otherwise exactly as approved (after the final cleanup)', () => {
     const d = (l: Lang, n: number): BootcampDayContent => beforeCueFreeze(MISSIONS_BY_LANG[l]![BOOTCAMP_PLAN[n - 1]!.day]!, l);
-    // Missions 12, 13, 16 and 18, whole — sentences, dialogues and steps (Mission 11: mission11.test.ts).
-    expect(print((l) => [12, 13, 16, 18].map((n) => d(l, n)))).toEqual({ en: 'dcb36da0', fr: 'b450192e', es: '55487961' });
+    // Missions 13, 16 and 18, whole — sentences, dialogues and steps (Missions 11 and 12: mission11.test.ts, mission12.test.ts).
+    expect(print((l) => [13, 16, 18].map((n) => d(l, n)))).toEqual({ en: 'eca1faf7', fr: '2658914e', es: '4b8e4952' });
     // Mission 14 apart from one distractor in Restaurant Rush, 15 apart from the match tiles, 17 apart from its intro card.
     expect(print((l) => d(l, 14).steps.filter((s, i, a) => !(s.kind === 'quickReply' && a.findIndex((x) => x.kind === 'quickReply') === i)).filter((s) => l !== 'fr' || s.kind !== 'prime'))).toEqual({ en: 'ac1eb75a', fr: FR_M14_WITHOUT_PRIME, es: '27d1f46c' });
     expect(print((l) => d(l, 15).steps.filter((s) => s.kind !== 'matchPairs'))).toEqual({ en: '091834c0', fr: 'e115664e', es: '29f26c1d' });
@@ -152,8 +152,8 @@ describe('all three languages get the same practice, each in its own words', () 
       if (s.kind === 'receipt') return [s.kind, s.text];
       return s.kind;
     };
-    // (Mission 11 has its own pass since — its parity, tile ids included, is proved in mission11.test.ts.)
-    for (let n = 12; n <= 18; n++) for (const lang of ['fr', 'es'] as const) expect(mission(n, lang).steps.map(shape), `${lang} M${n}`).toEqual(mission(n).steps.map(shape));
+    // (Missions 11 and 12 have their own passes since — their parity, tile ids included, is proved in mission11/12.test.ts.)
+    for (let n = 13; n <= 18; n++) for (const lang of ['fr', 'es'] as const) expect(mission(n, lang).steps.map(shape), `${lang} M${n}`).toEqual(mission(n).steps.map(shape));
   });
   it('sentence-builder chunks are each language\'s own and spell the taught sentence exactly', () => {
     for (let n = 11; n <= 17; n++) for (const lang of LANGS) {
@@ -215,8 +215,8 @@ describe('all three languages get the same practice, each in its own words', () 
     }
   });
   it('active retrieval outside the dialogue: 8–16 moments per teaching mission', () => {
-    // (Mission 11 has its own pass since — its 33 interactions are counted in mission11.test.ts.)
-    for (let n = 12; n <= 17; n++) {
+    // (Missions 11 and 12 have their own passes since — their interactions are counted in mission11/12.test.ts.)
+    for (let n = 13; n <= 17; n++) {
       const day = mission(n);
       const moments = day.steps.reduce((k, s) => k + (s.kind === 'quickReply' || s.kind === 'swap' || s.kind === 'sentenceBuilder' ? s.rounds.length : 0), 0);
       expect(moments, `M${n}`).toBeGreaterThanOrEqual(8);
@@ -233,59 +233,7 @@ describe('all three languages get the same practice, each in its own words', () 
 
 /* ── Mission 11 — Small Talk & Recommendations: its own pass since — mission11.test.ts ──────────── */
 
-describe('Mission 12 — Time & Plans', () => {
-  const day = mission(12);
-  it('flow: learn → recognize → time by ear → plans → today/tonight/tomorrow → build the plan → conversation → the plan at speed', () => {
-    expect(kinds(day)).toEqual(['talk', 'tool', 'tool', 'tool', 'tool', 'tool', 'replies', 'receipt', 'visualMatch', 'quickReply', 'swap', 'sentenceBuilder', 'dialogue', 'receipt', 'swipe', 'quickReply:speed', 'receipt', 'summary']);
-  });
-  it('time listening: four meeting times by ear, with numbers the learner already has', () => {
-    const board = stepsOf(day, 'visualMatch')[0]!;
-    expect(board.rounds.map((r) => [r.audio.en, r.correct])).toEqual([['At eight.', 't8'], ["Let's meet here at seven.", 't7'], ['At ten.', 't10'], ['At five.', 't5']]);
-    expect(board.tiles.map((t) => t.label).sort()).toEqual(['10:00', '2:00', '3:00', '5:00', '7:00', '8:00']);
-    for (const lang of LANGS) {
-      const b = stepsOf(mission(12, lang), 'visualMatch')[0]!;
-      const before = new Set([...vocabulary(lang, 11), ...mission(12, lang).items.flatMap((i) => words(i.text))]);
-      expect(unknownIn(b.rounds.map((r) => r.audio.en), before), lang).toEqual([]);
-    }
-  });
-  it('"Are you free tomorrow?" is no longer tested three times as a meaning question', () => {
-    for (const lang of LANGS) {
-      expect(stepsOf(mission(12, lang), 'quiz'), lang).toHaveLength(0);
-      expect(stepsOf(mission(12, lang), 'ambush'), lang).toHaveLength(0);
-    }
-    // It is drilled once by ear, answered once in the plan chat and once at speed — three different skills.
-    expect(stepsOf(day, 'replies')[0]!.replyIds.map(strip).filter((x) => x === 'reply.time.free-tomorrow-q')).toHaveLength(1);
-  });
-  it('plan Quick Reply keeps the conversation: today → tonight → want to come → too late → tomorrow', () => {
-    expect(mapOf(chat(day))).toEqual([
-      ['reply.time.what-doing-today', ['phrase.time.maybe-later']],
-      ['reply.time.what-doing-tonight', ['phrase.time.free-tonight']],
-      ['reply.time.want-to-come', ['phrase.time.what-time']],
-      ['reply.time.too-late', ['phrase.time.not-too-late']],
-      ['reply.time.free-tomorrow-q', ['phrase.time.free-tomorrow']],
-    ]);
-  });
-  it('today / tonight / tomorrow are authored per language, and the taught question is one of them', () => {
-    expect(swapSentences(day)).toEqual(['What are you doing today?', 'What are you doing tonight?', 'What are you doing tomorrow?']);
-    expect(swapSentences(mission(12, 'fr'))).toEqual(['Tu fais quoi aujourd’hui ?', 'Tu fais quoi ce soir ?', 'Tu fais quoi demain ?']);
-    expect(swapSentences(mission(12, 'es'))).toEqual(['¿Qué haces hoy?', '¿Qué haces esta noche?', '¿Qué haces mañana?']);
-    for (const lang of LANGS) {
-      const d = mission(12, lang);
-      expect(swapSentences(d), lang).toContain(text(d, 'phrase.time.what-doing-tomorrow'));
-      // …and the other two are exactly what the friend asks in the conversation.
-      expect(swapSentences(d).slice(0, 2), lang).toEqual([text(d, 'reply.time.what-doing-today'), text(d, 'reply.time.what-doing-tonight')]);
-      expect(stepsOf(d, 'swap')[0]!.rounds.map((r) => r.options.findIndex((o) => o.correct)), lang).toEqual([0, 1, 2]);
-    }
-  });
-  it('"Let\'s meet here at seven." is built from pieces, each language in its own order', () => {
-    expect(stepsOf(day, 'sentenceBuilder')[0]!.rounds[0]!.chunks).toEqual(["Let's meet", 'here', 'at seven.']);
-    expect(stepsOf(mission(12, 'fr'), 'sentenceBuilder')[0]!.rounds[0]!.chunks).toEqual(['On se retrouve', 'ici', 'à sept heures.']);
-    expect(stepsOf(mission(12, 'es'), 'sentenceBuilder')[0]!.rounds[0]!.chunks).toEqual(['Quedamos', 'aquí', 'a las siete.']);
-  });
-  it('final challenge: tonight → the time → tomorrow → settling where and when', () => {
-    expect(mapOf(rush(day)).map(([, ok]) => ok)).toEqual([['phrase.time.free-tonight'], ['phrase.time.not-too-late'], ['phrase.time.free-tomorrow'], ['phrase.time.lets-meet']]);
-  });
-});
+/* ── Mission 12 — Time & Plans: its own pass since — mission12.test.ts ─────────────────────────── */
 
 /* ── Mission 13 — Home, Family & Daily Routine ───────────────────────────────────────────────── */
 
