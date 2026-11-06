@@ -70,14 +70,57 @@ export const missionContent = (lang: CoverageLang, n: number): BootcampDayConten
 /** The words of a text, as the audits compare them (case, punctuation and apostrophe style ignored). */
 export const auditWords = (s: string): string[] => plain(s).trim().split(' ').filter(Boolean);
 
+/* ── Word senses: SAME FORM ≠ SAME MEANING ───────────────────────────────────────────────────────── */
+
+/**
+ * A surface form that means different things in different lines. Each sense is recognised by the
+ * context it appears in (a cue chunk of the same line), the way the learner tells them apart. A line
+ * that matches no cue — or the cues of two senses — leaves the form UNRESOLVED (`#?`): it then never
+ * counts as prior learning and is never satisfied by it.
+ */
+export interface WordSense { sense: string; cues: readonly string[] }
+export type SenseRegistry = Readonly<Partial<Record<CoverageLang, Readonly<Record<string, readonly WordSense[]>>>>>;
+
+/** The polysemous forms the curriculum actually uses, per language (checked against every mission's text by test). */
+export const WORD_SENSES: SenseRegistry = {
+  fr: {
+    // Mission 11 "la cuisine ici est excellente" (food) ≠ Mission 13 "dans la cuisine" (the room).
+    cuisine: [
+      { sense: 'food', cues: ['la cuisine ici', 'essayer la cuisine'] },
+      { sense: 'kitchen', cues: ['dans la cuisine', 'avec la cuisine', 'préviens la cuisine'] },
+    ],
+  },
+};
+
+/** The sense `word` has in `text` (a registered form only): its sense id, or `?` when the line does not decide it. */
+export function senseOf(text: string, word: string, lang: CoverageLang, senses: SenseRegistry = WORD_SENSES): string | undefined {
+  const known = senses[lang]?.[word];
+  if (!known) return undefined;
+  const hits = known.filter((k) => k.cues.some((c) => hasChunk(text, c)));
+  return hits.length === 1 ? hits[0]!.sense : '?';
+}
+
+/**
+ * The words of a text with their meaning: `auditWords`, except that a registered polysemous form
+ * becomes `form#sense` (`cuisine#food`, `cuisine#kitchen`, `cuisine#?`). Without a language, forms stay
+ * bare — and a bare form never matches the tagged prior words, so the audit stays strict.
+ */
+export function senseWords(text: string, lang?: CoverageLang, senses: SenseRegistry = WORD_SENSES): string[] {
+  return auditWords(text).map((w) => { const s = lang ? senseOf(text, w, lang, senses) : undefined; return s ? `${w}#${s}` : w; });
+}
+
+/** Whether every registered form in `chunk` has, in `line`, the same RESOLVED sense. */
+const sameSenses = (line: string, chunk: string, lang: CoverageLang, senses: SenseRegistry): boolean =>
+  auditWords(chunk).every((w) => { const s = senseOf(chunk, w, lang, senses); return s === undefined || (s !== '?' && senseOf(line, w, lang, senses) === s); });
+
 export interface PriorLearning {
   /** The missions this was built from (1 … n-1). */
   missions: number[];
   /** Covered concepts of earlier missions: `m01:hello`, … — with the chunk as worded in this language. */
   concepts: { id: string; mission: number; chunk: string }[];
-  /** Every word met with its meaning in an earlier mission. */
+  /** Every word met with its meaning in an earlier mission (polysemous forms as `form#sense`, see `senseWords`). */
   words: ReadonlySet<string>;
-  /** Whether a chunk was taught (or is a covered concept) in an earlier mission. */
+  /** Whether a chunk was taught (or is a covered concept) in an earlier mission — with the same meaning. */
   knowsChunk: (chunk: string) => boolean;
 }
 
@@ -85,7 +128,7 @@ export interface PriorLearning {
  * What the learner verifiably learned BEFORE mission `n` (Missions 1 … n-1), in `lang`. A mission
  * without a coverage specification still contributes its teaching encounters (never its conversation).
  */
-export function learnedBefore(lang: CoverageLang, n: number, content: (lang: CoverageLang, n: number) => BootcampDayContent = missionContent): PriorLearning {
+export function learnedBefore(lang: CoverageLang, n: number, content: (lang: CoverageLang, n: number) => BootcampDayContent = missionContent, senses: SenseRegistry = WORD_SENSES): PriorLearning {
   const missions = Array.from({ length: Math.max(0, n - 1) }, (_, i) => i + 1);
   const concepts: PriorLearning['concepts'] = [];
   const taughtLines: string[] = [];
@@ -95,12 +138,14 @@ export function learnedBefore(lang: CoverageLang, n: number, content: (lang: Cov
     const spec = MISSION_CONCEPTS[m];
     if (spec) for (const row of coverageOf(day, lang, spec)) if (row.covered) concepts.push({ id: `m${String(m).padStart(2, '0')}:${row.id}`, mission: m, chunk: spec.find((c) => c.id === row.id)!.chunk[lang] });
   }
-  const words = new Set<string>([...taughtLines, ...concepts.map((c) => c.chunk)].flatMap(auditWords));
+  // An unresolved sense (`#?`) is never learned: the learner was not shown WHICH meaning it had.
+  const words = new Set<string>([...taughtLines, ...concepts.map((c) => c.chunk)].flatMap((t) => senseWords(t, lang, senses)).filter((w) => !w.endsWith('#?')));
+  const knows = (line: string, chunk: string): boolean => hasChunk(line, chunk) && sameSenses(line, chunk, lang, senses);
   return {
     missions,
     concepts,
     words,
-    knowsChunk: (chunk) => concepts.some((c) => hasChunk(c.chunk, chunk)) || taughtLines.some((t) => hasChunk(t, chunk)),
+    knowsChunk: (chunk) => concepts.some((c) => knows(c.chunk, chunk)) || taughtLines.some((t) => knows(t, chunk)),
   };
 }
 
@@ -138,10 +183,15 @@ export function missionWalk(day: BootcampDayContent): { taught: AuditEvent[]; te
   return { taught, tested };
 }
 
-/** Tested words that were neither taught earlier in this mission nor verifiably learned before it. */
-export function unpreparedWords(day: BootcampDayContent, prior: ReadonlySet<string>): string[] {
+/**
+ * Tested words that were neither taught earlier in this mission nor verifiably learned before it. With
+ * `lang`, a polysemous form must also MEAN the same: "cuisine" (kitchen) is not prepared by "cuisine"
+ * (food). Reported as “form” or, for a polysemous form, “form (sense)”.
+ */
+export function unpreparedWords(day: BootcampDayContent, prior: ReadonlySet<string>, lang?: CoverageLang, senses: SenseRegistry = WORD_SENSES): string[] {
   const { taught, tested } = missionWalk(day);
-  return tested.flatMap((t) => auditWords(t.text).filter((w) => !prior.has(w) && !taught.some((e) => e.at < t.at && auditWords(e.text).includes(w))).map((w) => `${t.where}: “${w}” in “${t.text}”`));
+  const show = (w: string): string => (w.includes('#') ? `“${w.split('#')[0]!}” (${w.split('#')[1] === '?' ? 'unresolved sense' : w.split('#')[1]!})` : `“${w}”`);
+  return tested.flatMap((t) => senseWords(t.text, lang, senses).filter((w) => !w.endsWith('#?') ? !prior.has(w) && !taught.some((e) => e.at < t.at && senseWords(e.text, lang, senses).includes(w)) : true).map((w) => `${t.where}: ${show(w)} in “${t.text}”`));
 }
 
 /** Tested lines carrying a chunk of THIS mission's conversation that the mission had not taught first. */

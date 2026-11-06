@@ -585,3 +585,12 @@ Sentence ids reused by the Everyday checkpoint are unchanged. Coverage: `mission
 covered, identical with or without the Flex Round). Artwork: 12 slots + 1 result prop, emoji PLACEHOLDERS —
 VISUAL PRODUCTION REQUIRED (Astra pass): `MISSION13_ASSET_MANIFEST.md`. Tests: `mission13.test.ts` (68);
 Missions 01–12 and 14–30 byte-for-byte unchanged (the old "13–30" pins now pin 14–30).
+
+**Word senses (2026-11-06 fix): same form ≠ same meaning.** Prior learning used to compare bare surface forms,
+so French "cuisine" (food, Mission 11: "la cuisine ici est excellente") counted as prior for Mission 13's
+"dans la cuisine" (the kitchen). `priorLearning.ts` now has a small sense registry (`WORD_SENSES`: form →
+senses, each recognised by cue chunks of its line). A registered form is tracked as `form#sense`
+(`cuisine#food`, `cuisine#kitchen`) by `senseWords`, `learnedBefore` (words and `knowsChunk`) and
+`unpreparedWords(day, prior, lang)`; a line that decides no sense (`#?`) never counts as learned and is always
+flagged. Same form + same meaning is still prior; same form + another meaning is NEW. French kitchen "cuisine"
+is now taught by Mission 13's own mother → kitchen card; it is prior from Mission 14 on. Tests: Mission 13 76.

@@ -16,7 +16,7 @@ import {
   Y_DECLINE, Y_GO_HOME, Y_SLEEP, eveningRoute, homeBoard, homeVisitState,
 } from './practiceHomeFamily.js';
 import { validatePracticeStep } from './practiceEngines.js';
-import { auditWords, learnedBefore, missionContent, missionWalk, teachingEncounters, unpreparedChunks, unpreparedWords } from './priorLearning.js';
+import { WORD_SENSES, auditWords, learnedBefore, missionContent, missionWalk, senseOf, senseWords, teachingEncounters, unpreparedChunks, unpreparedWords, type SenseRegistry } from './priorLearning.js';
 import { MISSIONS_BY_LANG } from './registry.js';
 import type { L4 } from './author.js';
 import type { SpeakResult } from '../../shared/audio/tts.js';
@@ -769,3 +769,86 @@ function appCopy(d: BootcampDayContent): string {
   }
   return out.join(' | ');
 }
+
+describe('WORD SENSES — same form + same meaning is prior; same form + another meaning is NEW (French "cuisine")', () => {
+  const FOOD = 'Et la cuisine ici est excellente.';
+  const tagged = (lang: CoverageLang, n: number): string[] => teachingEncounters(day(lang, n)).flatMap((e) => senseWords(e.text, lang)).filter((w) => w.startsWith('cuisine'));
+  it('1. Mission 11 French "cuisine" is the FOOD meaning — in its line and in what it teaches', () => {
+    expect(senseOf(FOOD, 'cuisine', 'fr')).toBe('food');
+    expect(new Set(tagged('fr', 11))).toEqual(new Set(['cuisine#food']));
+    const after11 = learnedBefore('fr', 12);
+    expect(after11.words.has('cuisine#food')).toBe(true);
+    expect(after11.knowsChunk('la cuisine ici')).toBe(true);
+  });
+  it('2. it does NOT make the Mission 13 kitchen meaning prior', () => {
+    const p = learnedBefore('fr', 13);
+    expect(p.words.has('cuisine#food')).toBe(true); // Mission 11's food meaning stays intact
+    expect(p.words.has('cuisine#kitchen')).toBe(false);
+    expect(p.words.has('cuisine')).toBe(false); // the bare form is never "learned"
+    expect(senseOf(at(L_MOTHER, 'fr'), 'cuisine', 'fr')).toBe('kitchen');
+    expect(p.knowsChunk('dans la cuisine')).toBe(false);
+    expect(p.knowsChunk(chunk('mother-kitchen', 'fr'))).toBe(false);
+    expect(p.knowsChunk('cuisine')).toBe(false); // a form alone names no meaning
+  });
+  it('3. Mission 13 teaches the kitchen meaning (the mother card) before any retrieval tests it', () => {
+    const { taught, tested } = missionWalk(day('fr'));
+    const has = (t: string): boolean => senseWords(t, 'fr').includes('cuisine#kitchen');
+    const firstTaught = taught.find((e) => has(e.text))!;
+    const firstTested = tested.find((e) => has(e.text))!;
+    expect(firstTaught.at).toBeLessThan(firstTested.at);
+    expect(day('fr').steps[firstTaught.at]!.kind).toBe('prime');
+    expect(unpreparedWords(day('fr'), learnedBefore('fr', 13).words, 'fr')).toEqual([]);
+    for (const lang of LANGS) expect(unpreparedWords(day(lang), learnedBefore(lang, 13).words, lang), lang).toEqual([]);
+  });
+  it('4. after Mission 13, the kitchen meaning counts as learned for later missions (both meanings now known)', () => {
+    const p = learnedBefore('fr', 14);
+    expect(p.words.has('cuisine#kitchen')).toBe(true);
+    expect(p.words.has('cuisine#food')).toBe(true);
+    expect(p.knowsChunk('dans la cuisine')).toBe(true);
+  });
+  it('5. same form + same meaning still reuses prior learning normally', () => {
+    const d = day('fr');
+    const i = flexAt(d)[0]!;
+    const vm = d.steps[i] as VM;
+    const planted: BootcampDayContent = { ...d, steps: d.steps.map((s, k) => (k === i ? { ...vm, rounds: [{ ...vm.rounds[0]!, audio: { en: 'La cuisine ici est excellente.', he: 'x' } }] } : s)) };
+    expect(unpreparedWords(planted, learnedBefore('fr', 13).words, 'fr')).toEqual([]); // food = food: prepared by Mission 11
+  });
+  it('6. same form + different meaning is a collision the audit catches (the bare-form model would have missed it)', () => {
+    const d = day('fr');
+    const noCard: BootcampDayContent = { ...d, steps: d.steps.map((s) => (s.kind === 'prime' ? { ...s, words: s.words.filter((w) => w.key !== 'home.line.mother') } : s)) };
+    const prior = learnedBefore('fr', 13);
+    expect(unpreparedWords(noCard, prior.words, 'fr').join(' ')).toMatch(/“cuisine” \(kitchen\)/);
+    const bare = learnedBefore('fr', 13, missionContent, {}); // no sense model: Mission 11's food "cuisine" looks like the kitchen
+    expect(bare.words.has('cuisine')).toBe(true);
+    expect(unpreparedWords(noCard, bare.words, 'fr', {}).join(' ')).not.toMatch(/“cuisine”/);
+  });
+  it('every registered polysemous form resolves to ONE sense wherever the curriculum uses it (no silent #?)', () => {
+    for (const lang of LANGS) {
+      const forms = Object.keys(WORD_SENSES[lang] ?? {});
+      for (let n = 1; n <= BOOTCAMP_PLAN.length; n++) {
+        const d = day(lang, n);
+        const { taught, tested } = missionWalk(d);
+        for (const t of [...taught, ...tested, ...d.items]) for (const w of senseWords(t.text, lang)) if (forms.includes(w.split('#')[0]!)) expect(w, `${lang} M${n}: “${t.text}”`).not.toMatch(/#\?$/);
+      }
+    }
+  });
+  it('synthetic mutation — another polysemous form (EN "light": lamp ≠ not heavy) follows the same rule', () => {
+    const LIGHT: SenseRegistry = { en: { light: [{ sense: 'lamp', cues: ['the light'] }, { sense: 'not-heavy', cues: ['is light'] }] } };
+    const seen = (lang: CoverageLang, n: number): BootcampDayContent => {
+      const m = missionContent(lang, n);
+      if (n !== 12) return m;
+      const [p] = stepsOf(m, 'prime');
+      return { ...m, steps: m.steps.map((s) => (s === p ? { ...p, words: [...p.words, { ...p.words[0]!, key: 'synthetic.lamp', text: 'The light is on.' }] } : s)) };
+    };
+    const prior = learnedBefore('en', 13, seen, LIGHT);
+    expect(prior.words.has('light#lamp')).toBe(true);
+    expect(prior.words.has('light#not-heavy')).toBe(false);
+    const d = day('en');
+    const i = flexAt(d)[0]!;
+    const vm = d.steps[i] as VM;
+    const plant = (line: string): BootcampDayContent => ({ ...d, steps: d.steps.map((s, k) => (k === i ? { ...vm, rounds: [{ ...vm.rounds[0]!, audio: { en: line, he: 'x' } }] } : s)) });
+    expect(unpreparedWords(plant('My bag is light.'), prior.words, 'en', LIGHT).join(' ')).toMatch(/“light” \(not-heavy\)/);
+    expect(unpreparedWords(plant('The light is on.'), prior.words, 'en', LIGHT)).toEqual([]);
+    expect(unpreparedWords(plant('A light.'), prior.words, 'en', LIGHT).join(' ')).toMatch(/“light” \(unresolved sense\)/);
+  });
+});
