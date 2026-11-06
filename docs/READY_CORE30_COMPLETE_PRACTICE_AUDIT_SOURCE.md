@@ -12853,8 +12853,8 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `home.line.come-in` — EN "Hi! Come in." · FR "Salut ! Entre." · ES "¡Hola! Pasa." — meaning "היי! תיכנס." / "Hi! Come in." — icon 🚪 — new
-2. `home.line.beautiful` — EN "Thanks. Your home is beautiful." · FR "Merci. Ta maison est très belle." · ES "Gracias. Tu casa es preciosa." — meaning "תודה. הבית שלך יפהפה. (נכנסים — ומחמיאים לבית)" / "Thanks. Your home is beautiful. (you come in — and compliment the home)" — icon 🏡 — new
+1. `home.line.come-in` — EN "Hi! Come in." · FR "Salut ! Entre." · ES "¡Hola! Pasa." — meaning "היי! תיכנס." / "Hi! Come in." — icon none — new
+2. `home.line.beautiful` — EN "Thanks. Your home is beautiful." · FR "Merci. Ta maison est très belle." · ES "Gracias. Tu casa es preciosa." — meaning "תודה. הבית שלך יפהפה. (נכנסים — ומחמיאים לבית)" / "Thanks. Your home is beautiful. (you come in — and compliment the home)" — icon none — new
 
 No build-sentence card.
 
@@ -12863,9 +12863,9 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `home.line.sit` — EN "Thank you. Let's sit in the living room." · FR "Merci. On s’assoit dans le salon." · ES "Gracias. Vamos a sentarnos en el salón." — meaning "תודה. בוא נשב בסלון." / "Thank you. Let’s sit in the living room." — icon 🛋️ — new
-2. `home.line.sofa` — EN "Is this sofa new?" · FR "Ce canapé est nouveau ?" · ES "¿Este sofá es nuevo?" — meaning "הספה הזאת חדשה? (היוזמה שלך — שמת לב לספה)" / "Is this sofa new? (your initiative — you noticed the sofa)" — icon 🛋️ — new
-3. `home.line.new` — EN "Yes, it's new." · FR "Oui, il est nouveau." · ES "Sí, es nuevo." — meaning "כן, היא חדשה." / "Yes, it’s new." — icon 🛋️ — new
+1. `home.line.sit` — EN "Thank you. Let's sit in the living room." · FR "Merci. On s’assoit dans le salon." · ES "Gracias. Vamos a sentarnos en el salón." — meaning "תודה. בוא נשב בסלון." / "Thank you. Let’s sit in the living room." — icon none — new
+2. `home.line.sofa` — EN "Is this sofa new?" · FR "Ce canapé est nouveau ?" · ES "¿Este sofá es nuevo?" — meaning "הספה הזאת חדשה? (היוזמה שלך — שמת לב לספה)" / "Is this sofa new? (your initiative — you noticed the sofa)" — icon none — new
+3. `home.line.new` — EN "Yes, it's new." · FR "Oui, il est nouveau." · ES "Sí, es nuevo." — meaning "כן, היא חדשה." / "Yes, it’s new." — icon none — new
 
 No build-sentence card.
 
@@ -12874,7 +12874,7 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `home.line.where-family` — EN "Where is your family?" · FR "Où est ta famille ?" · ES "¿Dónde está tu familia?" — meaning "איפה המשפחה שלך? (היוזמה שלך)" / "Where is your family? (your initiative)" — icon 🙋 — new
+1. `home.line.where-family` — EN "Where is your family?" · FR "Où est ta famille ?" · ES "¿Dónde está tu familia?" — meaning "איפה המשפחה שלך? (היוזמה שלך)" / "Where is your family? (your initiative)" — icon none — new
 
 No build-sentence card.
 
@@ -12883,8 +12883,8 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `home.line.mother` — EN "My mother is in the kitchen. Do you live with your family?" · FR "Ma mère est dans la cuisine. Tu habites avec ta famille ?" · ES "Mi madre está en la cocina. ¿Vives con tu familia?" — meaning "אמא שלי במטבח. אתה גר עם המשפחה שלך?" / "My mother is in the kitchen. Do you live with your family?" — icon 🍳 — new
-2. `home.line.live-with` — EN "Yes, I live with my family." · FR "Oui, j’habite avec ma famille." · ES "Sí, vivo con mi familia." — meaning "כן, אני גר עם המשפחה שלי." / "Yes, I live with my family." — icon 🏠 — new
+1. `home.line.mother` — EN "My mother is in the kitchen. Do you live with your family?" · FR "Ma mère est dans la cuisine. Tu habites avec ta famille ?" · ES "Mi madre está en la cocina. ¿Vives con tu familia?" — meaning "אמא שלי במטבח. אתה גר עם המשפחה שלך?" / "My mother is in the kitchen. Do you live with your family?" — icon none — new
+2. `home.line.live-with` — EN "Yes, I live with my family." · FR "Oui, j’habite avec ma famille." · ES "Sí, vivo con mi familia." — meaning "כן, אני גר עם המשפחה שלי." / "Yes, I live with my family." — icon none — new
 
 No build-sentence card.
 
@@ -12893,8 +12893,8 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `home.line.hungry` — EN "Nice. Are you hungry? Do you want to eat with us?" · FR "Super. Tu as faim ? Tu veux manger avec nous ?" · ES "Qué bien. ¿Tienes hambre? ¿Quieres comer con nosotros?" — meaning "יפה. אתה רעב? רוצה לאכול איתנו?" / "Nice. Are you hungry? Want to eat with us?" — icon 🍲 — new
-2. `home.line.decline` — EN "Thanks, but I'm going to eat at my grandmother's." · FR "Merci, mais je vais manger chez ma grand-mère." · ES "Gracias, pero voy a comer en casa de mi abuela." — meaning "תודה, אבל אני הולך לאכול אצל סבתא שלי. (תודה ← אבל ← התוכנית שלך)" / "Thanks, but I’m going to eat at my grandmother’s. (thank → but → your plan)" — icon 🙏 — new
+1. `home.line.hungry` — EN "Nice. Are you hungry? Do you want to eat with us?" · FR "Super. Tu as faim ? Tu veux manger avec nous ?" · ES "Qué bien. ¿Tienes hambre? ¿Quieres comer con nosotros?" — meaning "יפה. אתה רעב? רוצה לאכול איתנו?" / "Nice. Are you hungry? Want to eat with us?" — icon none — new
+2. `home.line.decline` — EN "Thanks, but I'm going to eat at my grandmother's." · FR "Merci, mais je vais manger chez ma grand-mère." · ES "Gracias, pero voy a comer en casa de mi abuela." — meaning "תודה, אבל אני הולך לאכול אצל סבתא שלי. (תודה ← אבל ← התוכנית שלך)" / "Thanks, but I’m going to eat at my grandmother’s. (thank → but → your plan)" — icon none — new
 
 No build-sentence card.
 
@@ -12903,8 +12903,8 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `home.line.tired-q` — EN "Lovely! You look tired. Are you okay?" · FR "C’est bien ! Tu as l’air fatigué. Ça va ?" · ES "¡Qué bien! Pareces cansado. ¿Estás bien?" — meaning "איזה יופי! אתה נראה עייף. הכל בסדר?" / "Lovely! You look tired. Are you okay?" — icon 🥱 — new
-2. `home.line.just-tired` — EN "Yes, I'm just tired." · FR "Oui, je suis juste fatigué." · ES "Sí, solo estoy cansado." — meaning "כן, אני רק עייף. (הכל בסדר — רק עייף)" / "Yes, I’m just tired. (I’m fine — only tired)" — icon 🥱 — new
+1. `home.line.tired-q` — EN "Lovely! You look tired. Are you okay?" · FR "C’est bien ! Tu as l’air fatigué. Ça va ?" · ES "¡Qué bien! Pareces cansado. ¿Estás bien?" — meaning "איזה יופי! אתה נראה עייף. הכל בסדר?" / "Lovely! You look tired. Are you okay?" — icon none — new
+2. `home.line.just-tired` — EN "Yes, I'm just tired." · FR "Oui, je suis juste fatigué." · ES "Sí, solo estoy cansado." — meaning "כן, אני רק עייף. (הכל בסדר — רק עייף)" / "Yes, I’m just tired. (I’m fine — only tired)" — icon none — new
 
 No build-sentence card.
 
@@ -12913,8 +12913,8 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `home.line.rest` — EN "Then go home and rest!" · FR "Alors rentre chez toi et repose-toi !" · ES "¡Entonces vete a casa y descansa!" — meaning "אז לך הביתה ותנוח!" / "Then go home and rest!" — icon 🚶 — new
-2. `home.line.going-home` — EN "Yes, I'm going home." · FR "Oui, je rentre chez moi." · ES "Sí, me voy a casa." — meaning "כן, אני הולך הביתה. (לאן עכשיו: הביתה)" / "Yes, I’m going home. (where now: home)" — icon 🚶 — new
+1. `home.line.rest` — EN "Then go home and rest!" · FR "Alors rentre chez toi et repose-toi !" · ES "¡Entonces vete a casa y descansa!" — meaning "אז לך הביתה ותנוח!" / "Then go home and rest!" — icon none — new
+2. `home.line.going-home` — EN "Yes, I'm going home." · FR "Oui, je rentre chez moi." · ES "Sí, me voy a casa." — meaning "כן, אני הולך הביתה. (לאן עכשיו: הביתה)" / "Yes, I’m going home. (where now: home)" — icon none — new
 
 No build-sentence card.
 
@@ -12923,9 +12923,9 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `home.line.after` — EN "And after dinner at your grandmother's?" · FR "Et après le dîner chez ta grand-mère ?" · ES "¿Y después de la cena en casa de tu abuela?" — meaning "ואחרי הארוחה אצל סבתא?" / "And after dinner at your grandmother’s?" — icon 🌙 — new
-2. `home.line.sleep` — EN "I'm going to sleep." · FR "Je vais dormir." · ES "Me voy a dormir." — meaning "אני הולך לישון. (מה הלאה: לישון)" / "I’m going to sleep. (what’s next: sleep)" — icon 🌙 — new
-3. `home.line.bye` — EN "Ha! Good night. Say hi to your family!" · FR "Ha ! Bonne nuit. Dis bonjour à ta famille !" · ES "¡Ja! Buenas noches. ¡Saluda a tu familia!" — meaning "חה! לילה טוב. תמסור ד״ש למשפחה!" / "Ha! Good night. Say hi to your family!" — icon 👋 — new
+1. `home.line.after` — EN "And after dinner at your grandmother's?" · FR "Et après le dîner chez ta grand-mère ?" · ES "¿Y después de la cena en casa de tu abuela?" — meaning "ואחרי הארוחה אצל סבתא?" / "And after dinner at your grandmother’s?" — icon none — new
+2. `home.line.sleep` — EN "I'm going to sleep." · FR "Je vais dormir." · ES "Me voy a dormir." — meaning "אני הולך לישון. (מה הלאה: לישון)" / "I’m going to sleep. (what’s next: sleep)" — icon none — new
+3. `home.line.bye` — EN "Ha! Good night. Say hi to your family!" · FR "Ha ! Bonne nuit. Dis bonjour à ta famille !" · ES "¡Ja! Buenas noches. ¡Saluda a tu familia!" — meaning "חה! לילה טוב. תמסור ד״ש למשפחה!" / "Ha! Good night. Say hi to your family!" — icon none — new
 
 No build-sentence card.
 

@@ -1,0 +1,236 @@
+[
+  {
+    "name": "at-the-door",
+    "source": "/Users/tomercohen/.codex/generated_images/01a1ac51-37ca-7171-9a97-e7d8f460f082/exec-a0ebde6f-e7aa-47a1-b66e-8287d3ec9cd7.png",
+    "prompt": "Use case: stylized-concept. One standalone landscape 16:9 scene at least 1536px wide for a premium polished 3D animated adult travel app. Reference image is ONLY for exact fictional traveler and male friend identities: dark wavy-haired clean-shaven traveler teal overshirt cream tee charcoal trousers mustard backpack; auburn short swept hair bearded host rust polo beige trousers brown belt. Keep faces ages proportions outfits. New coherent home for entire evening visit: ordinary tasteful apartment, cream walls, honey oak flooring, sage-green three-seat sofa with square arms and two ivory cushions, round oak coffee table, warm shaded floor lamp. Front entrance is a simple walnut wooden door. Entry camera: traveler at threshold left, host inside right holding door open and welcoming with an open palm. Both waist-up or knee-up in center safe area, natural friendly adult hospitality. Only a partial sofa glimpse behind host; kitchen entirely out of view. Soft early evening amber interior lighting. Absolutely no text, symbols, numbers, clocks, collage, panels, family photographs, third people, kitchen, food, grandmother, sleep or tiredness. One continuous scene.",
+    "width": 1672,
+    "height": 941,
+    "bytes": 531186,
+    "sha256": "b899d1927792784e8112b75061a5c2f958e298378a69dd4e3b829090b4ac4b45",
+    "encoding": "JPEG quality 95; no resize or crop",
+    "review": {
+      "traveler": "Mission 11–12 dark-haired traveler, teal overshirt, cream tee, mustard backpack",
+      "host": "Auburn-haired bearded man, rust polo, beige trousers, brown belt",
+      "home": "Cream walls, honey oak floor, walnut entry door, warm shaded lamp and early evening light",
+      "sofa": "Same sage/olive square-arm sofa, two ivory cushions, round oak table and beige rug",
+      "kitchen": "Same white cabinetry and oak worktop through doorway right of sofa; out of view at entry/exit",
+      "text": false
+    }
+  },
+  {
+    "name": "home-compliment",
+    "source": "/Users/tomercohen/.codex/generated_images/01a1ac51-37ca-7171-9a97-e7d8f460f082/exec-3e8fc5ac-123f-4a9b-ba4d-2f3f32107f11.png",
+    "prompt": "Use case: stylized-concept. ONE standalone landscape 16:9 premium polished 3D animated travel-app image, at least 1536 pixels wide. Preserve exact reference fictional adult men's faces hair age proportions and outfits: dark wavy-haired clean-shaven traveler teal overshirt cream tee charcoal trousers mustard backpack; auburn bearded male host rust polo beige trousers brown belt. Preserve this SAME apartment, cream walls, honey oak flooring, sage/olive green square-arm three-seat sofa with two ivory cushions, round oak coffee table, beige woven rug, warm shaded floor lamp and early-evening lighting. Natural adult gestures, both faces and hands in safe central area. No text, signs, numbers, clocks, icons, panels, collage, family photos, grandmother, bedroom or sleep. Both standing just inside the front walnut door. Traveler looks around with appreciative smile and a modest open palm toward the room, host pleased listening. Sofa partly visible, NO kitchen or third person. Traveler alert, no tiredness.",
+    "width": 1672,
+    "height": 941,
+    "bytes": 509893,
+    "sha256": "6673e1f5c64622bd88adad40e85a829bd313c8d3a7c3c6d5d37e1b6fad268fc0",
+    "encoding": "JPEG quality 95; no resize or crop",
+    "review": {
+      "traveler": "Mission 11–12 dark-haired traveler, teal overshirt, cream tee, mustard backpack",
+      "host": "Auburn-haired bearded man, rust polo, beige trousers, brown belt",
+      "home": "Cream walls, honey oak floor, walnut entry door, warm shaded lamp and early evening light",
+      "sofa": "Same sage/olive square-arm sofa, two ivory cushions, round oak table and beige rug",
+      "kitchen": "Same white cabinetry and oak worktop through doorway right of sofa; out of view at entry/exit",
+      "text": false
+    }
+  },
+  {
+    "name": "living-room-sofa",
+    "source": "/Users/tomercohen/.codex/generated_images/01a1ac51-37ca-7171-9a97-e7d8f460f082/exec-b8cdeecc-79c0-4c82-b965-aaf726339f2a.png",
+    "prompt": "Use case: stylized-concept. ONE standalone landscape 16:9 premium polished 3D animated travel-app image, at least 1536 pixels wide. Preserve exact reference fictional adult men's faces hair age proportions and outfits: dark wavy-haired clean-shaven traveler teal overshirt cream tee charcoal trousers mustard backpack; auburn bearded male host rust polo beige trousers brown belt. Preserve this SAME apartment, cream walls, honey oak flooring, sage/olive green square-arm three-seat sofa with two ivory cushions, round oak coffee table, beige woven rug, warm shaded floor lamp and early-evening lighting. Natural adult gestures, both faces and hands in safe central area. No text, signs, numbers, clocks, icons, panels, collage, family photos, grandmother, bedroom or sleep. Camera inside living room showing the SAME green sofa fully enough to recognize, both men beside it: traveler curious with hand gently indicating sofa upholstery, host inviting him to sit. Establish kitchen doorway behind and to right of sofa with white cabinets and pale oak worktop, EMPTY and no people or food inside. Traveler alert, no tiredness. Do not make furniture a product render.",
+    "width": 1672,
+    "height": 941,
+    "bytes": 555406,
+    "sha256": "54944371f9c92af4cf2cbf883220cad97b2b0da838a13f2b839912c11f204fd9",
+    "encoding": "JPEG quality 95; no resize or crop",
+    "review": {
+      "traveler": "Mission 11–12 dark-haired traveler, teal overshirt, cream tee, mustard backpack",
+      "host": "Auburn-haired bearded man, rust polo, beige trousers, brown belt",
+      "home": "Cream walls, honey oak floor, walnut entry door, warm shaded lamp and early evening light",
+      "sofa": "Same sage/olive square-arm sofa, two ivory cushions, round oak table and beige rug",
+      "kitchen": "Same white cabinetry and oak worktop through doorway right of sofa; out of view at entry/exit",
+      "text": false
+    }
+  },
+  {
+    "name": "ask-family",
+    "source": "/Users/tomercohen/.codex/generated_images/01a1ac51-37ca-7171-9a97-e7d8f460f082/exec-8c1746c3-22e1-4de0-a583-cb80d8d90a88.png",
+    "prompt": "Use case: stylized-concept. ONE standalone landscape 16:9 premium polished 3D animated travel-app image, at least 1536 pixels wide. Preserve exact reference fictional adult men's faces hair age proportions and outfits: dark wavy-haired clean-shaven traveler teal overshirt cream tee charcoal trousers mustard backpack; auburn bearded male host rust polo beige trousers brown belt. Preserve this SAME apartment, cream walls, honey oak flooring, sage/olive green square-arm three-seat sofa with two ivory cushions, round oak coffee table, beige woven rug, warm shaded floor lamp and early-evening lighting. Natural adult gestures, both faces and hands in safe central area. No text, signs, numbers, clocks, icons, panels, collage, family photos, grandmother, bedroom or sleep. Both men now seated on the SAME green sofa, traveler on left with a curious open palm asking host about family, host attentive. Same kitchen doorway to right of sofa is EMPTY. No third person, food, family clue or tiredness.",
+    "width": 1672,
+    "height": 941,
+    "bytes": 545019,
+    "sha256": "0ca736ef33b30bc5f4aa9245484db3bee246192bc30d9791aa75fea6bf1a0a45",
+    "encoding": "JPEG quality 95; no resize or crop",
+    "review": {
+      "traveler": "Mission 11–12 dark-haired traveler, teal overshirt, cream tee, mustard backpack",
+      "host": "Auburn-haired bearded man, rust polo, beige trousers, brown belt",
+      "home": "Cream walls, honey oak floor, walnut entry door, warm shaded lamp and early evening light",
+      "sofa": "Same sage/olive square-arm sofa, two ivory cushions, round oak table and beige rug",
+      "kitchen": "Same white cabinetry and oak worktop through doorway right of sofa; out of view at entry/exit",
+      "text": false
+    }
+  },
+  {
+    "name": "mother-kitchen",
+    "source": "/Users/tomercohen/.codex/generated_images/01a1ac51-37ca-7171-9a97-e7d8f460f082/exec-017c670d-ba70-4574-bc20-5ee05169daaf.png",
+    "prompt": "Use case: stylized-concept. ONE standalone landscape 16:9 premium polished 3D animated travel-app image, at least 1536 pixels wide. Preserve exact reference fictional adult men's faces hair age proportions and outfits: dark wavy-haired clean-shaven traveler teal overshirt cream tee charcoal trousers mustard backpack; auburn bearded male host rust polo beige trousers brown belt. Preserve this SAME apartment, cream walls, honey oak flooring, sage/olive green square-arm three-seat sofa with two ivory cushions, round oak coffee table, beige woven rug, warm shaded floor lamp and early-evening lighting. Natural adult gestures, both faces and hands in safe central area. No text, signs, numbers, clocks, icons, panels, collage, family photos, grandmother, bedroom or sleep. Both men near SAME sofa, host gestures toward SAME kitchen doorway to right. In that kitchen stands his fictional adult mother: woman about 55, chestnut bob with grey streaks, muted blue blouse beige trousers, warm expression. She is clearly INSIDE kitchen next to white cabinets and oak counter, visible centrally enough to read on mobile. Medium-wide framing of both men and woman, ordinary home context. No grandmother, family photos, dinner-plan clue or tiredness.",
+    "width": 1672,
+    "height": 941,
+    "bytes": 563599,
+    "sha256": "f44cff021f3f8f69958ea188dfff60332ff937f403b364067dbe236dfc96de58",
+    "encoding": "JPEG quality 95; no resize or crop",
+    "review": {
+      "traveler": "Mission 11–12 dark-haired traveler, teal overshirt, cream tee, mustard backpack",
+      "host": "Auburn-haired bearded man, rust polo, beige trousers, brown belt",
+      "home": "Cream walls, honey oak floor, walnut entry door, warm shaded lamp and early evening light",
+      "sofa": "Same sage/olive square-arm sofa, two ivory cushions, round oak table and beige rug",
+      "kitchen": "Same white cabinetry and oak worktop through doorway right of sofa; out of view at entry/exit",
+      "text": false
+    }
+  },
+  {
+    "name": "live-with-family",
+    "source": "/Users/tomercohen/.codex/generated_images/01a1ac51-37ca-7171-9a97-e7d8f460f082/exec-9d85238c-31b7-4d1b-a743-c9c003364676.png",
+    "prompt": "Use case: stylized-concept. ONE standalone landscape 16:9 premium polished 3D animated travel-app image, at least 1536 pixels wide. Preserve exact reference fictional adult men's faces hair age proportions and outfits: dark wavy-haired clean-shaven traveler teal overshirt cream tee charcoal trousers mustard backpack; auburn bearded male host rust polo beige trousers brown belt. Preserve this SAME apartment, cream walls, honey oak flooring, sage/olive green square-arm three-seat sofa with two ivory cushions, round oak coffee table, beige woven rug, warm shaded floor lamp and early-evening lighting. Natural adult gestures, both faces and hands in safe central area. No text, signs, numbers, clocks, icons, panels, collage, family photos, grandmother, bedroom or sleep. Both men seated on SAME green sofa, traveler on left answers warmly with one hand on his own chest. Host listens with friendly expression. Same kitchen doorway empty, no family portrait, no third person or tiredness.",
+    "width": 1672,
+    "height": 941,
+    "bytes": 573768,
+    "sha256": "c5995cfc768dbd1e26072d80e6a5f2e1b5b1f3a3f4f024f0773f07495e8ad65d",
+    "encoding": "JPEG quality 95; no resize or crop",
+    "review": {
+      "traveler": "Mission 11–12 dark-haired traveler, teal overshirt, cream tee, mustard backpack",
+      "host": "Auburn-haired bearded man, rust polo, beige trousers, brown belt",
+      "home": "Cream walls, honey oak floor, walnut entry door, warm shaded lamp and early evening light",
+      "sofa": "Same sage/olive square-arm sofa, two ivory cushions, round oak table and beige rug",
+      "kitchen": "Same white cabinetry and oak worktop through doorway right of sofa; out of view at entry/exit",
+      "text": false
+    }
+  },
+  {
+    "name": "food-invitation",
+    "source": "/Users/tomercohen/.codex/generated_images/01a1ac51-37ca-7171-9a97-e7d8f460f082/exec-d0a35be7-73c5-4f24-88a2-26eaa5dbc6a7.png",
+    "prompt": "Use case: stylized-concept. ONE standalone landscape 16:9 premium polished 3D animated travel-app image, at least 1536 pixels wide. Preserve exact reference fictional adult men's faces hair age proportions and outfits: dark wavy-haired clean-shaven traveler teal overshirt cream tee charcoal trousers mustard backpack; auburn bearded male host rust polo beige trousers brown belt. Preserve this SAME apartment, cream walls, honey oak flooring, sage/olive green square-arm three-seat sofa with two ivory cushions, round oak coffee table, beige woven rug, warm shaded floor lamp and early-evening lighting. Natural adult gestures, both faces and hands in safe central area. No text, signs, numbers, clocks, icons, panels, collage, family photos, grandmother, bedroom or sleep. Both men seated or standing beside SAME green sofa. Host offers hospitality with open inviting hand toward SAME nearby kitchen with white cabinets and oak worktop; a simple bowl and two plates on counter suggest home food. Traveler listens alert. No third person, no grandmother, no tiredness, no leaving or sleep.",
+    "width": 1672,
+    "height": 941,
+    "bytes": 577006,
+    "sha256": "70b7ecfc9e869d81df9ef2fb4fea5d23681e673c126ab46c14cb3c00b49abd29",
+    "encoding": "JPEG quality 95; no resize or crop",
+    "review": {
+      "traveler": "Mission 11–12 dark-haired traveler, teal overshirt, cream tee, mustard backpack",
+      "host": "Auburn-haired bearded man, rust polo, beige trousers, brown belt",
+      "home": "Cream walls, honey oak floor, walnut entry door, warm shaded lamp and early evening light",
+      "sofa": "Same sage/olive square-arm sofa, two ivory cushions, round oak table and beige rug",
+      "kitchen": "Same white cabinetry and oak worktop through doorway right of sofa; out of view at entry/exit",
+      "text": false
+    }
+  },
+  {
+    "name": "polite-decline",
+    "source": "/Users/tomercohen/.codex/generated_images/01a1ac51-37ca-7171-9a97-e7d8f460f082/exec-b3cc14ac-7ebd-4107-9a64-9b0405974627.png",
+    "prompt": "Use case: stylized-concept. ONE standalone landscape 16:9 premium polished 3D animated travel-app image, at least 1536 pixels wide. Preserve exact reference fictional adult men's faces hair age proportions and outfits: dark wavy-haired clean-shaven traveler teal overshirt cream tee charcoal trousers mustard backpack; auburn bearded male host rust polo beige trousers brown belt. Preserve this SAME apartment, cream walls, honey oak flooring, sage/olive green square-arm three-seat sofa with two ivory cushions, round oak coffee table, beige woven rug, warm shaded floor lamp and early-evening lighting. Natural adult gestures, both faces and hands in safe central area. No text, signs, numbers, clocks, icons, panels, collage, family photos, grandmother, bedroom or sleep. Both men sitting on SAME green sofa. Traveler smiles appreciatively, one palm gently raised in a polite no-thank-you gesture, the other on his chest while explaining an existing plan. Host understanding, relaxed. Keep kitchen doorway empty. NO phone screen, grandmother, other house, thought bubble, tiredness or departure.",
+    "width": 1672,
+    "height": 941,
+    "bytes": 586507,
+    "sha256": "6fbf62754403af7078c11abd2e55e5cba6db4f8a851d3bfb467f0676cc17b0e5",
+    "encoding": "JPEG quality 95; no resize or crop",
+    "review": {
+      "traveler": "Mission 11–12 dark-haired traveler, teal overshirt, cream tee, mustard backpack",
+      "host": "Auburn-haired bearded man, rust polo, beige trousers, brown belt",
+      "home": "Cream walls, honey oak floor, walnut entry door, warm shaded lamp and early evening light",
+      "sofa": "Same sage/olive square-arm sofa, two ivory cushions, round oak table and beige rug",
+      "kitchen": "Same white cabinetry and oak worktop through doorway right of sofa; out of view at entry/exit",
+      "text": false
+    }
+  },
+  {
+    "name": "tired",
+    "source": "/Users/tomercohen/.codex/generated_images/01a1ac51-37ca-7171-9a97-e7d8f460f082/exec-f33a7d72-8ee0-42db-b52f-a83c0acc1ffa.png",
+    "prompt": "Use case: stylized-concept. ONE standalone landscape 16:9 premium polished 3D animated travel-app image, at least 1536 pixels wide. Preserve exact reference fictional adult men's faces hair age proportions and outfits: dark wavy-haired clean-shaven traveler teal overshirt cream tee charcoal trousers mustard backpack; auburn bearded male host rust polo beige trousers brown belt. Preserve this SAME apartment, cream walls, honey oak flooring, sage/olive green square-arm three-seat sofa with two ivory cushions, round oak coffee table, beige woven rug, warm shaded floor lamp and early-evening lighting. Natural adult gestures, both faces and hands in safe central area. No text, signs, numbers, clocks, icons, panels, collage, family photos, grandmother, bedroom or sleep. Both men sitting on SAME green sofa, traveler gently relaxed shoulders, mildly lowered eyelids with a small reassuring smile, one hand on knee. Host leaning slightly with friendly concern. Traveler is okay, only mildly tired; not sick, slumped, distressed, yawning, asleep or collapsing. Same empty kitchen doorway. No sleep gesture or leaving.",
+    "width": 1672,
+    "height": 941,
+    "bytes": 563617,
+    "sha256": "af926a618c50d25874e7c2078ad7c6893ff6842fb06f48d8689414be2765c923",
+    "encoding": "JPEG quality 95; no resize or crop",
+    "review": {
+      "traveler": "Mission 11–12 dark-haired traveler, teal overshirt, cream tee, mustard backpack",
+      "host": "Auburn-haired bearded man, rust polo, beige trousers, brown belt",
+      "home": "Cream walls, honey oak floor, walnut entry door, warm shaded lamp and early evening light",
+      "sofa": "Same sage/olive square-arm sofa, two ivory cushions, round oak table and beige rug",
+      "kitchen": "Same white cabinetry and oak worktop through doorway right of sofa; out of view at entry/exit",
+      "text": false
+    }
+  },
+  {
+    "name": "going-home",
+    "source": "/Users/tomercohen/.codex/generated_images/01a1ac51-37ca-7171-9a97-e7d8f460f082/exec-9a9e3210-2a66-4953-a5b2-61d5f80c8697.png",
+    "prompt": "Use case: stylized-concept. ONE standalone landscape 16:9 premium polished 3D animated travel-app image, at least 1536 pixels wide. Preserve exact reference fictional adult men's faces hair age proportions and outfits: dark wavy-haired clean-shaven traveler teal overshirt cream tee charcoal trousers mustard backpack; auburn bearded male host rust polo beige trousers brown belt. Preserve this SAME apartment, cream walls, honey oak flooring, sage/olive green square-arm three-seat sofa with two ivory cushions, round oak coffee table, beige woven rug, warm shaded floor lamp and early-evening lighting. Natural adult gestures, both faces and hands in safe central area. No text, signs, numbers, clocks, icons, panels, collage, family photos, grandmother, bedroom or sleep. Traveler has just risen from SAME green sofa and holds ONE strap of his mustard backpack, ready to leave, turning slightly toward front walnut door at left. Host beside sofa encourages with a friendly open hand. Gentle tired but okay expression. Same home and empty kitchen doorway. Not already outside, no sleep gesture, bedroom, grandmother or jacket added.",
+    "width": 1672,
+    "height": 941,
+    "bytes": 507137,
+    "sha256": "6876115b515d029e5d7709a1b4401e91382e4fe4c623b2fc1519f266cb97f0c0",
+    "encoding": "JPEG quality 95; no resize or crop",
+    "review": {
+      "traveler": "Mission 11–12 dark-haired traveler, teal overshirt, cream tee, mustard backpack",
+      "host": "Auburn-haired bearded man, rust polo, beige trousers, brown belt",
+      "home": "Cream walls, honey oak floor, walnut entry door, warm shaded lamp and early evening light",
+      "sofa": "Same sage/olive square-arm sofa, two ivory cushions, round oak table and beige rug",
+      "kitchen": "Same white cabinetry and oak worktop through doorway right of sofa; out of view at entry/exit",
+      "text": false
+    }
+  },
+  {
+    "name": "after-dinner",
+    "source": "/Users/tomercohen/.codex/generated_images/01a1ac51-37ca-7171-9a97-e7d8f460f082/exec-1da4b8fd-eafd-4978-9713-462dd746c72a.png",
+    "prompt": "Use case: stylized-concept. ONE standalone landscape 16:9 premium polished 3D animated travel-app image, at least 1536 pixels wide. Preserve exact reference fictional adult men's faces hair age proportions and outfits: dark wavy-haired clean-shaven traveler teal overshirt cream tee charcoal trousers mustard backpack; auburn bearded male host rust polo beige trousers brown belt. Preserve this SAME apartment, cream walls, honey oak flooring, sage/olive green square-arm three-seat sofa with two ivory cushions, round oak coffee table, beige woven rug, warm shaded floor lamp and early-evening lighting. Natural adult gestures, both faces and hands in safe central area. No text, signs, numbers, clocks, icons, panels, collage, family photos, grandmother, bedroom or sleep. Both standing just inside SAME walnut front door, same partial sofa visible. Traveler remains physically at host home, gently mimes his future sleep plan with palms together beside cheek and head tilted, eyes softly open, small amused smile. Host smiles. No actual sleeping, bed, new environment, grandmother, thought bubbles or night sky. This is a spoken later plan.",
+    "width": 1672,
+    "height": 941,
+    "bytes": 493307,
+    "sha256": "cf249259d33d11a72f6b96e8959cf00dd24a9e6de2e9a354539ce36d0f4b0a0b",
+    "encoding": "JPEG quality 95; no resize or crop",
+    "review": {
+      "traveler": "Mission 11–12 dark-haired traveler, teal overshirt, cream tee, mustard backpack",
+      "host": "Auburn-haired bearded man, rust polo, beige trousers, brown belt",
+      "home": "Cream walls, honey oak floor, walnut entry door, warm shaded lamp and early evening light",
+      "sofa": "Same sage/olive square-arm sofa, two ivory cushions, round oak table and beige rug",
+      "kitchen": "Same white cabinetry and oak worktop through doorway right of sofa; out of view at entry/exit",
+      "text": false
+    }
+  },
+  {
+    "name": "goodbye",
+    "source": "/Users/tomercohen/.codex/generated_images/01a1ac51-37ca-7171-9a97-e7d8f460f082/exec-99215ce5-2591-4baa-90c8-cb932016920e.png",
+    "prompt": "Use case: stylized-concept. ONE standalone landscape 16:9 premium polished 3D animated travel-app image, at least 1536 pixels wide. Preserve exact reference fictional adult men's faces hair age proportions and outfits: dark wavy-haired clean-shaven traveler teal overshirt cream tee charcoal trousers mustard backpack; auburn bearded male host rust polo beige trousers brown belt. Preserve this SAME apartment, cream walls, honey oak flooring, sage/olive green square-arm three-seat sofa with two ivory cushions, round oak coffee table, beige woven rug, warm shaded floor lamp and early-evening lighting. Natural adult gestures, both faces and hands in safe central area. No text, signs, numbers, clocks, icons, panels, collage, family photos, grandmother, bedroom or sleep. Both at SAME walnut front doorway, traveler about to step out, turns back to host with modest friendly wave. Host returns small wave from inside. Same partial green sofa and shaded lamp visible. Warm ordinary goodbye, no hug, no romance, no sleep gesture, no grandmother, no new destination.",
+    "width": 1672,
+    "height": 941,
+    "bytes": 537880,
+    "sha256": "676c0a183a66f808e247474b0fa9b5d453bc4d01113a737cf1549c69c3b7ff81",
+    "encoding": "JPEG quality 95; no resize or crop",
+    "review": {
+      "traveler": "Mission 11–12 dark-haired traveler, teal overshirt, cream tee, mustard backpack",
+      "host": "Auburn-haired bearded man, rust polo, beige trousers, brown belt",
+      "home": "Cream walls, honey oak floor, walnut entry door, warm shaded lamp and early evening light",
+      "sofa": "Same sage/olive square-arm sofa, two ivory cushions, round oak table and beige rug",
+      "kitchen": "Same white cabinetry and oak worktop through doorway right of sofa; out of view at entry/exit",
+      "text": false
+    }
+  },
+  {
+    "name": "home-visit-complete",
+    "source": "/Users/tomercohen/.codex/generated_images/01a1ac51-37ca-7171-9a97-e7d8f460f082/exec-f31a1163-b19d-4dcc-9ad2-44ade950691e.png",
+    "prompt": "Use case: stylized-concept. ONE standalone landscape 16:9 premium polished 3D animated travel-app image, at least 1536 pixels wide. Preserve exact reference fictional adult men's faces hair age proportions and outfits: dark wavy-haired clean-shaven traveler teal overshirt cream tee charcoal trousers mustard backpack; auburn bearded male host rust polo beige trousers brown belt. Preserve this SAME apartment, cream walls, honey oak flooring, sage/olive green square-arm three-seat sofa with two ivory cushions, round oak coffee table, beige woven rug, warm shaded floor lamp and early-evening lighting. Natural adult gestures, both faces and hands in safe central area. No text, signs, numbers, clocks, icons, panels, collage, family photos, grandmother, bedroom or sleep. View from just outside SAME walnut front doorway: traveler with mustard backpack taking one step away, looks back with satisfied friendly smile, host waving from warm doorway. SAME cream walls green sofa and shaded lamp glimpsed inside. Both visible at mobile size central safe area. Early evening exterior warm neutral light, no night sky, no new destination, no text, badge, house icon or trophies.",
+    "width": 1672,
+    "height": 941,
+    "bytes": 610844,
+    "sha256": "f40acbbc3f3c2e5c30d326bf0f8a75e975a4b5f9b7762dd32e308cdf5b875081",
+    "encoding": "JPEG quality 95; no resize or crop",
+    "review": {
+      "traveler": "Mission 11–12 dark-haired traveler, teal overshirt, cream tee, mustard backpack",
+      "host": "Auburn-haired bearded man, rust polo, beige trousers, brown belt",
+      "home": "Cream walls, honey oak floor, walnut entry door, warm shaded lamp and early evening light",
+      "sofa": "Same sage/olive square-arm sofa, two ivory cushions, round oak table and beige rug",
+      "kitchen": "Same white cabinetry and oak worktop through doorway right of sofa; out of view at entry/exit",
+      "text": false
+    }
+  }
+]

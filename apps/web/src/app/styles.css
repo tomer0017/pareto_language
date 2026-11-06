@@ -1732,6 +1732,9 @@ div.jstep { box-shadow: none; border-color: var(--line); }
 /* Mission 12 art stays full-frame: both speakers and plan context must survive phone sizing. */
 .list-row:has(> .prime-img[src*="/images/mission12/"]) { flex-wrap: wrap; }
 .prime-img.is-scene[src*="/images/mission12/"] { flex-basis: 100%; width: 100%; height: auto; }
+/* Mission 13 keeps the entire home scene visible, including people, sofa and kitchen context. */
+.list-row:has(> .prime-img[src*="/images/mission13/"]) { flex-wrap: wrap; }
+.prime-img.is-scene[src*="/images/mission13/"] { flex-basis: 100%; width: 100%; height: auto; }
 /* Give the board its own row instead of squeezing it beside the audio button/companion. */
 .pc-head:has(.time-board) { flex-wrap: wrap; }
 .pc-head-text:has(.time-board) { flex: 1 0 100%; }

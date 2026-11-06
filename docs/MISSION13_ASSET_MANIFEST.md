@@ -1,12 +1,10 @@
 # Mission 13 — Home, Family & Daily Routine: artwork manifest
 
-**Status: VISUAL PRODUCTION REQUIRED (Astra pass).** Mission 13 ships with emoji placeholders in every
-slot (`M13_SLOTS` / `M13_PROPS` in `apps/web/src/features/bootcamp/practiceHomeFamily.ts`, `image` unset).
-No image generation was available in the build session; no stock images were used. Emojis are NOT final.
-To integrate an asset, put the file at `apps/web/public/images/mission13/<slot>.jpg` and set that slot's
-`image: 'images/mission13/<slot>.jpg'`. One file per asset: never a collage, contact sheet, storyboard or
-sprite sheet that gets cropped later. Reuse one whole asset for two slots where the meaning is the same.
-Then update the "PLACEHOLDERS" test in `mission13.test.ts` to pin the real files, as Missions 11–12 do.
+**Status: VISUAL PRODUCTION COMPLETE.** Twelve semantic slots and one result prop use canonical
+JPEGs under `apps/web/public/images/mission13/`. Each asset was generated separately. Scene cards reuse
+whole files where specified below; no collage crops. EN / ES / FR share all artwork. Finalized semantic
+slots have no emoji fallback. Room answer tiles, Home Visit Board and Evening Route remain deterministic UI.
+Generation prompts, pixel hashes and visual review: `docs/mission13-artwork.json`.
 
 ## One continuous world
 
@@ -51,7 +49,7 @@ If a picture's meaning is ambiguous at phone size (360 px wide), it still never 
 | `polite-decline` | "Thanks, but I'm going to eat at my grandmother's." | the traveller smiles, a polite "thank you, but…" hand; a small thought-bubble-free hint of another plan (e.g. glancing at a phone) — no grandmother shown | Invitation card |
 | `tired` | "You look tired. Are you okay?" / "Yes, I'm just tired." | the traveller visibly tired but smiling; the host concerned | How-you-feel cards |
 | `going-home` | "Then go home and rest!" / "Yes, I'm going home." | the traveller standing up to leave, jacket in hand; the host encouraging | Home cards |
-| `after-dinner` | "And after dinner at your grandmother's?" / "I'm going to sleep." | the traveller at the door, miming "sleep" (hands by the cheek), both laughing | After cards |
+| `after-dinner` | "I'm going to sleep." only; the preceding NPC question reuses `going-home` to avoid a sleep preview | the traveller at the door, miming "sleep" (hands by the cheek), both laughing | After cards |
 | `goodbye` | "Ha! Good night. Say hi to your family!" | a warm goodbye at the door, a wave | After card |
 
 ## Props: result pictures (never a card, never a choice)

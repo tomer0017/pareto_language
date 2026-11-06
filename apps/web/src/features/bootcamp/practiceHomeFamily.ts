@@ -28,26 +28,32 @@ import type { BootcampStep, MatchTile } from './types.js';
  * All French and Spanish wording: AI linguistic review completed; native review still recommended.
  */
 
-/**
- * Mission 13's image slots — one per meaning, shared across EN / ES / FR. PLACEHOLDERS: no slot has its
- * artwork yet (`image` unset — the emoji stands in); giving a slot an `image` swaps it in. One continuous
- * world for the final art: the same traveller, the same friend, the same home, living room, sofa and
- * kitchen (`docs/MISSION13_ASSET_MANIFEST.md`). Rooms in a capture are always app-UI captions.
+/** Final semantic artwork: one continuous home visit, shared by EN / ES / FR.
+ * Room captures and Flex remain deterministic semantic UI, never picture choices.
+ * Reviewed generation records: docs/mission13-artwork.json.
  */
 type M13Slot =
   | 'at-the-door' | 'home-compliment' | 'living-room-sofa' | 'ask-family' | 'mother-kitchen' | 'live-with-family'
   | 'food-invitation' | 'polite-decline' | 'tired' | 'going-home' | 'after-dinner' | 'goodbye';
-export const M13_SLOTS: Record<M13Slot, { emoji: string; image?: string }> = {
-  'at-the-door': { emoji: '🚪' }, 'home-compliment': { emoji: '🏡' }, 'living-room-sofa': { emoji: '🛋️' },
-  'ask-family': { emoji: '🙋' }, 'mother-kitchen': { emoji: '🍳' }, 'live-with-family': { emoji: '🏠' },
-  'food-invitation': { emoji: '🍲' }, 'polite-decline': { emoji: '🙏' }, tired: { emoji: '🥱' },
-  'going-home': { emoji: '🚶' }, 'after-dinner': { emoji: '🌙' }, goodbye: { emoji: '👋' },
+export const M13_SLOTS: Record<M13Slot, { image: string }> = {
+  'at-the-door': { image: 'images/mission13/at-the-door.jpg' },
+  'home-compliment': { image: 'images/mission13/home-compliment.jpg' },
+  'living-room-sofa': { image: 'images/mission13/living-room-sofa.jpg' },
+  'ask-family': { image: 'images/mission13/ask-family.jpg' },
+  'mother-kitchen': { image: 'images/mission13/mother-kitchen.jpg' },
+  'live-with-family': { image: 'images/mission13/live-with-family.jpg' },
+  'food-invitation': { image: 'images/mission13/food-invitation.jpg' },
+  'polite-decline': { image: 'images/mission13/polite-decline.jpg' },
+  'tired': { image: 'images/mission13/tired.jpg' },
+  'going-home': { image: 'images/mission13/going-home.jpg' },
+  'after-dinner': { image: 'images/mission13/after-dinner.jpg' },
+  'goodbye': { image: 'images/mission13/goodbye.jpg' },
 };
-/** Result pictures only — never a choice, never a card. */
+/** Result picture only — never a choice, never a card. */
 export const M13_PROPS = {
-  'home-visit-complete': { emoji: '🏠' },
-} as const satisfies Record<string, { emoji: string; image?: string }>;
-const look13 = (x: { emoji: string; image?: string }): { emoji: string } | { image: string } => (x.image ? { image: x.image } : { emoji: x.emoji });
+  'home-visit-complete': { image: 'images/mission13/home-visit-complete.jpg' },
+} as const;
+const look13 = (x: { image: string }): { image: string } => ({ image: x.image });
 
 /* The locked conversation (EN · FR · ES · HE), line by line — the friend's lines… */
 export const L_COME: L4 = ['Hi! Come in.', 'Salut ! Entre.', '¡Hola! Pasa.', 'היי! תיכנס.'];
@@ -221,7 +227,7 @@ export function m13Steps(lang: MissionLang): BootcampStep[] {
     ] }),
     // AFTER DINNER — the next step, and the goodbye.
     cards(['ואחר כך', 'And after'], board(5, ['ומה אחרי הארוחה? הקש כדי לשמוע.', 'And after dinner? Tap to hear.']), [
-      card('home.line.after', L_AFTER, ['ואחרי הארוחה אצל סבתא?', 'And after dinner at your grandmother’s?'], 'after-dinner'),
+      card('home.line.after', L_AFTER, ['ואחרי הארוחה אצל סבתא?', 'And after dinner at your grandmother’s?'], 'going-home'),
       card('home.line.sleep', Y_SLEEP, ['אני הולך לישון. (מה הלאה: לישון)', 'I’m going to sleep. (what’s next: sleep)'], 'after-dinner'),
       card('home.line.bye', L_BYE, ['חה! לילה טוב. תמסור ד״ש למשפחה!', 'Ha! Good night. Say hi to your family!'], 'goodbye'),
     ]),
@@ -305,10 +311,10 @@ export function m13Steps(lang: MissionLang): BootcampStep[] {
     k.receipt(HOME_VISIT_COMPLETE),
     { kind: 'summary' },
   ];
-  // The result picture appears only at its earned receipt — once it has its artwork (a receipt shows no emoji).
-  const result: { emoji: string; image?: string } = M13_PROPS['home-visit-complete'];
+  // The result picture appears only at its earned receipt — with no semantic emoji fallback.
+  const result: { image: string } = M13_PROPS['home-visit-complete'];
   return steps.map((step) => (step.kind === 'receipt' && step.text.en === HOME_VISIT_COMPLETE[1] && result.image ? { ...step, image: result.image } : step));
 }
 
-/** The briefing reveals only the arrival at the door — once it has its artwork. */
+/** The briefing reveals only the arrival at the door — no later visit facts. */
 export const M13_BRIEFING_IMAGE = M13_SLOTS['at-the-door'].image;

@@ -722,26 +722,26 @@ describe('the arc, visuals and video', () => {
     expect(html.match(/class="time-strip-cell"/g)).toHaveLength(4);
     expect(renderToStaticMarkup(createElement(HotelStaySummary, { text: homeBoard(0)[1] })).match(/data-known="false"/g)).toHaveLength(5);
   });
-  it('visual slots: 12 semantic slots and 1 result prop — PLACEHOLDERS (emoji, no image yet), listed in the Astra manifest', () => {
+  it('visual slots: 12 final semantic slots and 1 result prop, listed in the artwork manifest', () => {
     expect(Object.keys(M13_SLOTS).sort()).toEqual(['after-dinner', 'ask-family', 'at-the-door', 'food-invitation', 'going-home', 'goodbye', 'home-compliment', 'live-with-family', 'living-room-sofa', 'mother-kitchen', 'polite-decline', 'tired']);
     expect(Object.keys(M13_PROPS)).toEqual(['home-visit-complete']);
-    for (const s of [...Object.values(M13_SLOTS), ...Object.values(M13_PROPS)]) { expect(s.emoji).toBeTruthy(); expect(s).not.toHaveProperty('image'); }
+    for (const s of [...Object.values(M13_SLOTS), ...Object.values(M13_PROPS)]) { expect(s.image).toMatch(/^images\/mission13\/[a-z-]+\.jpg$/); expect(s).not.toHaveProperty('emoji'); }
     const manifest = readFileSync(fileURLToPath(new URL('../../../../../docs/MISSION13_ASSET_MANIFEST.md', import.meta.url)), 'utf8');
-    expect(manifest).toMatch(/VISUAL PRODUCTION REQUIRED/);
+    expect(manifest).toMatch(/VISUAL PRODUCTION COMPLETE/);
     for (const key of [...Object.keys(M13_SLOTS), ...Object.keys(M13_PROPS)]) expect(manifest, key).toContain(`\`${key}\``);
   });
   it('every card picture comes from a slot, the same in every language; no picture before its line spoils it', () => {
-    const looks = new Set(Object.values(M13_SLOTS).map((s) => s.emoji));
+    const looks = new Set(Object.values(M13_SLOTS).map((s) => s.image));
     const pics = (lang: CoverageLang) => stepsOf(day(lang), 'prime').flatMap((p) => p.words.map((w) => [w.key, w.image ?? w.emoji]));
     for (const lang of LANGS) for (const [key, pic] of pics(lang)) expect(looks, `${lang} ${key}`).toContain(pic);
     expect(pics('es')).toEqual(pics('en'));
     expect(pics('fr')).toEqual(pics('en'));
     const d = day('en');
-    const before = (key: string) => d.steps.slice(0, primeAt(d, key)).filter((s) => s.kind === 'prime').flatMap((p) => (p as Extract<BootcampStep, { kind: 'prime' }>).words.map((w) => w.emoji));
-    expect(before('home.line.mother')).not.toContain(M13_SLOTS['mother-kitchen'].emoji);
-    expect(before('home.line.decline')).not.toContain(M13_SLOTS['polite-decline'].emoji);
-    expect(before('home.line.tired-q')).not.toContain(M13_SLOTS.tired.emoji);
-    expect(before('home.line.sleep')).not.toContain(M13_SLOTS['after-dinner'].emoji);
+    const before = (key: string) => d.steps.slice(0, primeAt(d, key)).filter((s) => s.kind === 'prime').flatMap((p) => (p as Extract<BootcampStep, { kind: 'prime' }>).words.map((w) => w.image));
+    expect(before('home.line.mother')).not.toContain(M13_SLOTS['mother-kitchen'].image);
+    expect(before('home.line.decline')).not.toContain(M13_SLOTS['polite-decline'].image);
+    expect(before('home.line.tired-q')).not.toContain(M13_SLOTS.tired.image);
+    expect(before('home.line.sleep')).not.toContain(M13_SLOTS['after-dinner'].image);
   });
   it('video: none recorded yet in any language — the standard step is there and safely skipped; replay keeps the mission\'s progress', () => {
     for (const lang of LANGS) {
