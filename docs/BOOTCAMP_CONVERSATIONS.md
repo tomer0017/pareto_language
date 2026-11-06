@@ -717,24 +717,24 @@ _Reply-training drill:_ “Hi there! Can I help you find anything?” · “Of c
 ### Core phrases (you say)
 - **Your home is beautiful.** · הבית שלך יפהפה.
 - **Is this sofa new?** · הספה הזאת חדשה? — _Is this ___ new? — מחליפים את החפץ._
+- **I'm going to sleep.** · אני הולך לישון.
 - **Where is your family?** · איפה המשפחה שלך? — _Where is ___? — אותה שאלה מהכיוונים, עכשיו על אנשים._
 - **Yes, I live with my family.** · כן, אני גר עם המשפחה שלי.
 - **I'm going to eat at my grandmother's.** · אני הולך לאכול אצל סבתא שלי. — _I’m going to ___ — התבנית לכל מה שאתה עומד לעשות._
 - **I'm tired.** · אני עייף.
 - **I'm going home.** · אני הולך הביתה.
-- **I'm going to sleep.** · אני הולך לישון.
+- **Thanks, but I'm going to eat at my grandmother's.** · תודה, אבל אני הולך לאכול אצל סבתא שלי.
 
 ### Expected replies (you hear)
-- **Come in.** · תיכנס.
-- **Let's sit in the living room.** · בוא נשב בסלון.
-- **Do you live with your family?** · אתה גר עם המשפחה שלך?
-- **Are you hungry?** · אתה רעב?
-- **Do you want to eat with us?** · רוצה לאכול איתנו?
-
-_Reply-training drill:_ “Come in.” · “Let's sit in the living room.” · “Are you hungry?” · “Do you live with your family?”
-
-### Recovery tools reused
-`Sorry, I don't understand.`
+- **Hi! Come in.** · היי! תיכנס.
+- **Thank you. Let's sit in the living room.** · תודה. בוא נשב בסלון.
+- **Yes, it's new.** · כן, היא חדשה.
+- **My mother is in the kitchen. Do you live with your family?** · אמא שלי במטבח. אתה גר עם המשפחה שלך?
+- **Nice. Are you hungry? Do you want to eat with us?** · יפה. אתה רעב? רוצה לאכול איתנו?
+- **Lovely! You look tired. Are you okay?** · איזה יופי! אתה נראה עייף. הכל בסדר?
+- **Then go home and rest!** · אז לך הביתה ותנוח!
+- **And after dinner at your grandmother's?** · ואחרי הארוחה אצל סבתא?
+- **Ha! Good night. Say hi to your family!** · חה! לילה טוב. תמסור ד״ש למשפחה!
 
 ### Dialogue: `at-a-friends-home` — happy path
 - **🧑 Them:** “Hi! Come in.” · היי! תיכנס.
@@ -754,6 +754,16 @@ _Reply-training drill:_ “Come in.” · “Let's sit in the living room.” ·
 - **🧑 Them:** “And after dinner at your grandmother's?” · ואחרי הארוחה אצל סבתא?
 - **🫵 You:** “I'm going to sleep.” · אני הולך לישון.
 - **🧑 Them:** “Ha! Good night. Say hi to your family!” · חה! לילה טוב. תמסור ד״ש למשפחה!
+
+#### Wrong / recovery branches
+- ⚠︎ less useful: 🫵 “Is this sofa new?” → 🧑 “Hi! Come in.” · היי! תיכנס.
+- ⚠︎ less useful: 🫵 “I'm going to sleep.” → 🧑 “Thank you. Let's sit in the living room.” · תודה. בוא נשב בסלון.
+- ⚠︎ less useful: 🫵 “Yes, I live with my family.” → 🧑 “Yes, it's new.” · כן, היא חדשה.
+- ⚠︎ less useful: 🫵 “Where is your family?” → 🧑 “My mother is in the kitchen. Do you live with your family?” · אמא שלי במטבח. אתה גר עם המשפחה שלך?
+- ⚠︎ less useful: 🫵 “Is this sofa new?” → 🧑 “Nice. Are you hungry? Do you want to eat with us?” · יפה. אתה רעב? רוצה לאכול איתנו?
+- ⚠︎ less useful: 🫵 “Where is your family?” → 🧑 “Lovely! You look tired. Are you okay?” · איזה יופי! אתה נראה עייף. הכל בסדר?
+- ⚠︎ less useful: 🫵 “Yes, I live with my family.” → 🧑 “Then go home and rest!” · אז לך הביתה ותנוח!
+- ⚠︎ less useful: 🫵 “Your home is beautiful.” → 🧑 “And after dinner at your grandmother's?” · ואחרי הארוחה אצל סבתא?
 
 ### Review status
 - 🤖 AI-drafted (English + Hebrew) — **pending human / native-Hebrew review**

@@ -260,9 +260,10 @@ export type BootcampStep =
   //  - 'speed':    the language is known; the challenge is catching it at speed. Never "use a tool".
   | { kind: 'ambush'; mode?: 'recovery' | 'speed'; npc: SpokenLine; correctItemId: string; wrongItemId: string }
   //  `challenge`: a final speed challenge — the same rounds, spoken fast (like the board and the map).
-  | { kind: 'quickReply'; label?: LocalizedText; rounds: QuickReplyRound[]; challenge?: boolean }
+  // `transferOnly`: a transfer check (a Flex Round) — tested, never teaching, never a sentence of the course.
+  | { kind: 'quickReply'; label?: LocalizedText; rounds: QuickReplyRound[]; challenge?: boolean; transferOnly?: boolean }
   /** `ordered`: the tiles are a scale (a size ladder) — shown in their own order, left to right, never shuffled. */
-  | { kind: 'visualMatch'; label?: LocalizedText; tiles: MatchTile[]; rounds: VisualMatchRound[]; challenge?: boolean; quiet?: boolean; ordered?: boolean }
+  | { kind: 'visualMatch'; label?: LocalizedText; tiles: MatchTile[]; rounds: VisualMatchRound[]; challenge?: boolean; quiet?: boolean; ordered?: boolean; transferOnly?: boolean }
   | { kind: 'swap'; label?: LocalizedText; rounds: SwapRound[] }
   /** `base`: what is being made — an emoji, or an approved picture's public path ("images/…"). */
   | { kind: 'customize'; label?: LocalizedText; base: string; options: CustomizeOption[]; rounds: CustomizeRound[] }

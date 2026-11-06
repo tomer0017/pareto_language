@@ -103,8 +103,8 @@ describe('scope: only Missions 25–30 changed', () => {
   const print = (f: (lang: Lang) => unknown): Record<Lang, string> => ({ en: fnv(JSON.stringify(f('en'))), fr: fnv(JSON.stringify(f('fr'))), es: fnv(JSON.stringify(f('es'))) });
 
   it('Missions 08–24 are byte-for-byte unchanged, in every language (Missions 01–07 have their own passes — mission01.test.ts … mission07.test.ts)', () => {
-    expect(print((l) => slice(l, 12, 24))).toEqual({ en: '9d59abae', fr: '50a52e05', es: 'dbc4d5f1' }); // since the Mission 12 pass: Missions 13–24 (Missions 10, 11 and 12: mission10.test.ts, mission11.test.ts, mission12.test.ts)
-    expect(print((l) => slice(l, 12, 18))).toEqual({ en: '184756af', fr: '6f000f0d', es: '49f35431' });
+    expect(print((l) => slice(l, 13, 24))).toEqual({ en: '53a01aad', fr: '13ae48bb', es: '3d04c1df' }); // since the Mission 13 pass: Missions 14–24 (Missions 10–13: mission10.test.ts … mission13.test.ts)
+    expect(print((l) => slice(l, 13, 18))).toEqual({ en: '20f1b6ba', fr: 'd4bdbcf7', es: 'f81bef7b' });
     expect(print((l) => slice(l, 18, 24))).toEqual({ en: 'b9c88064', fr: '74a92f15', es: 'cd856495' });
   });
   it('the conversations of Missions 25–27 are byte-for-byte unchanged', () => {

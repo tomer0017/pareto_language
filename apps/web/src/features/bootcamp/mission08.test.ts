@@ -64,7 +64,7 @@ describe('the conversation is locked, and Mission 08 is in its place', () => {
   it('Missions 01–07 and 10–30 are byte-for-byte unchanged by this pass (Mission 09 has its own pass since: mission09.test.ts)', () => {
     const raw = (a: number, b?: number) => Object.fromEntries(LANGS.map((l) => [l, fnv(JSON.stringify(BOOTCAMP_PLAN.slice(a, b).map((m) => MISSIONS_BY_LANG[l]![m.day]!)))]));
     expect(raw(0, 7)).toEqual({ en: '17db9d4a', es: '4a1f6209', fr: 'e936fa44' });
-    expect(raw(12)).toEqual({ en: '374354a9', es: 'e62daaff', fr: '036c589c' }); // Missions 13–30 (Missions 10, 11 and 12 have their own passes since: mission10.test.ts, mission11.test.ts, mission12.test.ts)
+    expect(raw(13)).toEqual({ en: 'ebeaceec', es: '0558e5b9', fr: '1b27a452' }); // Missions 14–30 (Missions 10–13 have their own passes since: mission10.test.ts … mission13.test.ts)
   });
 });
 

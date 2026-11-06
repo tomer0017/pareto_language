@@ -73,6 +73,8 @@ export function encounters(day: BootcampDayContent, chunk: string): Encounter[] 
   const hit = (s: string | undefined): boolean => !!s && hasChunk(s, chunk);
   day.steps.forEach((s, at) => {
     const add = (kind: EncounterKind, how: string): void => { out.push({ kind, step: at + 1, how }); };
+    // A transfer check (Flex Round) proves transfer; it is not coverage of the conversation.
+    if ('transferOnly' in s && s.transferOnly) return;
     if (s.kind === 'prime') { if (s.words.some((w) => hit(w.text))) add('meaning', 'building block'); }
     else if (s.kind === 'tool') { if (hit(text(s.itemId))) add('meaning', 'key sentence'); }
     else if (s.kind === 'swipe') { if (s.itemIds.some((id) => hit(text(id)))) add('meaning', 'review card'); }

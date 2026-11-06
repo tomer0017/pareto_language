@@ -26,14 +26,19 @@ export function splitJourney(text: string): { before: string; facts: string[]; a
 }
 
 /**
- * Mission 12's board — the Time Strip (four time periods, the current one marked " ●") and the live
- * planner (tonight / tomorrow, "?" until the conversation says it), joined with " ¦ " to the label's
- * own text. Only presentation: every value is already in the text; nothing is inferred or added.
+ * The information boards (Missions 12–13), joined with " ¦ " to the label's own text:
+ *   - the Time Strip — four time periods, the current one marked " ●" (Mission 12);
+ *   - a route — "🧭 a → b → …", the current step marked " ●" (Mission 13's evening);
+ *   - a two-column board — "<head>: row / row ‖ <head>: row / row / …", a row is "?" until the
+ *     conversation says it (Mission 12's planner, Mission 13's Home Visit board).
+ * Only presentation: every value is already in the text; nothing is inferred or added.
  */
 const STRIP = /^☀️ (?:Now|עכשיו) · .+ → .+ → .+ → 🌅 (?:Tomorrow morning|מחר בבוקר)(?: ●)?$/u;
-const PLAN = /^(🌙 [^:]+): (.+) \/ (.+) ‖ (🌅 [^:]+): (.+) \/ (.+)$/u;
+const ROUTE = /^🧭 .+$/u;
+const PLAN = /^(\S+ [^:‖]+): (.+?) ‖ (\S+ [^:‖]+): (.+)$/u;
 export interface TimeBoard {
   strip: { text: string; now: boolean }[] | null;
+  route: { text: string; now: boolean }[] | null;
   plan: { day: string; rows: { text: string; known: boolean }[] }[] | null;
   /** The label's own text: what comes before the board, and after it. */
   before: string[];
@@ -42,14 +47,17 @@ export interface TimeBoard {
 export function splitTimeBoard(text: string): TimeBoard | null {
   const parts = text.split(' ¦ ');
   const strip = parts.find((p) => STRIP.test(p));
+  const route = parts.find((p) => ROUTE.test(p));
   const plan = parts.map((p) => PLAN.exec(p)).find((m) => m !== null);
-  if (!strip && !plan) return null;
+  if (!strip && !route && !plan) return null;
   const row = (t: string) => ({ text: t, known: !t.includes('?') });
-  const isBoard = (p: string): boolean => STRIP.test(p) || PLAN.test(p);
+  const cells = (p: string) => p.split(' → ').map((c) => ({ text: c.replace(/ ●$/u, ''), now: c.endsWith(' ●') }));
+  const isBoard = (p: string): boolean => STRIP.test(p) || ROUTE.test(p) || PLAN.test(p);
   const first = parts.findIndex(isBoard);
   return {
-    strip: strip ? strip.split(' → ').map((c) => ({ text: c.replace(/ ●$/u, ''), now: c.endsWith(' ●') })) : null,
-    plan: plan ? [{ day: plan[1]!, rows: [row(plan[2]!), row(plan[3]!)] }, { day: plan[4]!, rows: [row(plan[5]!), row(plan[6]!)] }] : null,
+    strip: strip ? cells(strip) : null,
+    route: route ? cells(route.slice('🧭 '.length)) : null,
+    plan: plan ? [{ day: plan[1]!, rows: plan[2]!.split(' / ').map(row) }, { day: plan[3]!, rows: plan[4]!.split(' / ').map(row) }] : null,
     before: parts.slice(0, first),
     after: parts.slice(first).filter((p) => !isBoard(p)),
   };
@@ -60,6 +68,7 @@ export function HotelStaySummary({ text }: { text: string }) {
   if (board) return <span className="hotel-stay-summary time-board">
     {board.before.map((n, i) => <span key={`b${i}`} className="hotel-stay-note">{n}</span>)}
     {board.strip && <span className="time-strip" role="list">{board.strip.map((c, i) => <span key={i} role="listitem" className="time-strip-cell" data-now={c.now} aria-current={c.now ? 'time' : undefined}>{c.text}</span>)}</span>}
+    {board.route && <span className="time-strip is-route" role="list" aria-label="🧭">{board.route.map((c, i) => <span key={i} role="listitem" className="time-strip-cell" data-now={c.now} aria-current={c.now ? 'step' : undefined}>{c.text}</span>)}</span>}
     {board.plan && <span className="plan-card">{board.plan.map((d) => <span key={d.day} className="plan-day"><span className="plan-day-head">{d.day}</span>{d.rows.map((r, i) => <span key={i} className="plan-day-row" data-known={r.known}>{r.text}</span>)}</span>)}</span>}
     {board.after.map((n, i) => <span key={`a${i}`} className="hotel-stay-note">{n}</span>)}
   </span>;

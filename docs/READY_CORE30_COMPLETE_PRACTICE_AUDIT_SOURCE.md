@@ -58,7 +58,7 @@ Not present in the runtime (so not exported): free sentence construction, typing
 
 Not a mission. Eight phrases shared by all missions; a mission bundles the ones it uses. Selecting one in a dialogue is always accepted.
 
-- `phrase.recovery.dont-understand` — EN "Sorry, I don't understand." · FR "Désolé, je ne comprends pas." · ES "Perdón, no entiendo." · HE "סליחה, אני לא מבין." — help tool — bundled in missions: 13, 14
+- `phrase.recovery.dont-understand` — EN "Sorry, I don't understand." · FR "Désolé, je ne comprends pas." · ES "Perdón, no entiendo." · HE "סליחה, אני לא מבין." — help tool — bundled in missions: 14
 - `phrase.recovery.repeat` — EN "Can you repeat that?" · FR "Vous pouvez répéter ?" · ES "¿Puede repetir, por favor?" · HE "אפשר לחזור על זה?" — help tool — bundled in missions: 01, 03, 05, 06, 08, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - `phrase.recovery.slowly` — EN "Please speak slowly." · FR "Parlez lentement, s’il vous plaît." · ES "Más despacio, por favor." · HE "דבר לאט, בבקשה." — help tool — bundled in missions: 01, 02, 03, 04, 06, 07, 09, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - `phrase.recovery.show-me` — EN "Can you show me?" · FR "Vous pouvez me montrer ?" · ES "¿Me lo puede mostrar?" · HE "אתה יכול להראות לי?" — help tool — bundled in missions: 04, 07, 17
@@ -12775,7 +12775,7 @@ None raised by the mechanical checks.
 - Phase: 3 — Everyday Life / חיי יום-יום 🏡
 - Source runtime file(s): `apps/web/src/features/bootcamp/core/homeFamily.ts` — one multilingual spec, built per language by `apps/web/src/features/bootcamp/author.ts`
 - Video: found by convention, never written into mission content — EN `videos/en/en_13.mp4` · FR `videos/fr/fr_13.mp4` · ES `videos/es/es_13.mp4`. Played only where that file exists (inventory: `docs/CORE30_FINAL_VIDEO_ACTION_MAP.md`).
-- Video steps inside the Practice flow: no
+- Video steps inside the Practice flow: yes (see flow)
 
 ## Learning goal / intro screen
 
@@ -12797,36 +12797,137 @@ Intro screen (first Practice step; identical in the English, French and Spanish 
 
 - Icon: 🏠
 - Title: "Mission 13: Home, Family & Daily Routine" / "משימה 13: בית, משפחה ושגרה"
-- Text 1: "A friend invites you to their home. Not a hotel, not a restaurant — ordinary life." / "חבר מזמין אותך אליו הביתה. לא מלון, לא מסעדה — חיים רגילים."
-- Text 2: "One frame does most of the work here: I’m going to… — home, to eat, to sleep." / "משפט אחד עושה כאן את רוב העבודה: I’m going to… — הביתה, לאכול, לישון."
+- Text 1: "A friend has invited you to their home. You’ll talk a little about the home, the family and what you’re doing later this evening." / "חבר הזמין אותך אליו הביתה. תדברו קצת על הבית, המשפחה ומה שאתה עושה בהמשך הערב."
 - Button: "Come in" / "להיכנס"
 
 ## Current Practice flow
 
 1. `talk` — intro screen — "Mission 13: Home, Family & Daily Routine"
-2. `tool` — key sentence (listen → reveal → say aloud) — `phrase.home.eat-at-grandmothers` “I'm going to eat at my grandmother's.” · label "I'm going to…" / "אני הולך ל…" (1/6)
-3. `tool` — key sentence (listen → reveal → say aloud) — `phrase.home.going-home` “I'm going home.” · label "Home" / "הביתה" (2/6)
-4. `tool` — key sentence (listen → reveal → say aloud) — `phrase.home.im-tired` “I'm tired.” · label "How I feel" / "איך אני מרגיש" (3/6)
-5. `tool` — key sentence (listen → reveal → say aloud) — `phrase.home.going-to-sleep` “I'm going to sleep.” · label "To sleep" / "לישון" (4/6)
-6. `tool` — key sentence (listen → reveal → say aloud) — `phrase.home.where-family` “Where is your family?” · label "Where is…?" / "איפה…?" (5/6)
-7. `tool` — key sentence (listen → reveal → say aloud) — `phrase.home.beautiful-home` “Your home is beautiful.” · label "A compliment" / "מחמאה" (6/6)
-8. `replies` — expected replies (listening drill) — after `phrase.home.beautiful-home`: 4 replies
-9. `receipt` — receipt (proof card) — "You understand when someone invites you in, to sit, and to eat." / "אתה מבין כשמזמינים אותך להיכנס, לשבת ולאכול."
-10. `swap` — swap it (one frame, several endings) — 3 round(s)
-11. `sentenceBuilder` — sentence builder (put the chunks in order) — 2 round(s)
-12. `quickReply` — quick reply (hear → pick your response) — 5 round(s)
-13. `dialogue` — dialogue (choose your line) — scene `at-a-friends-home`
-14. `receipt` — receipt (proof card) — "You talked about home, family and what you are about to do — without a single tourist word." / "דיברת על בית, משפחה ועל מה שאתה עומד לעשות — בלי מילה אחת על תיירות."
-15. `swipe` — sentence review — 12 sentences
-16. `quickReply` — quick reply (hear → pick your response) — 5 round(s) · speed challenge
-17. `receipt` — receipt (proof card) — "A whole visit to a friend's home, at normal pace: you came in, talked about family, said what you are doing and how you feel." / "ביקור שלם אצל חבר, בקצב רגיל: נכנסת, דיברת על המשפחה, אמרת מה אתה עושה ואיך אתה מרגיש."
-18. `summary` — victory screen
+2. `prime` — before-we-speak (word intro) — 2 words → builds ``
+3. `prime` — before-we-speak (word intro) — 3 words → builds ``
+4. `prime` — before-we-speak (word intro) — 1 words → builds ``
+5. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+6. `prime` — before-we-speak (word intro) — 2 words → builds ``
+7. `visualMatch` — visual match (hear → tap the tile) — 1 round(s)
+8. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+9. `prime` — before-we-speak (word intro) — 2 words → builds ``
+10. `sentenceBuilder` — sentence builder (put the chunks in order) — 1 round(s)
+11. `prime` — before-we-speak (word intro) — 2 words → builds ``
+12. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+13. `prime` — before-we-speak (word intro) — 2 words → builds ``
+14. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+15. `prime` — before-we-speak (word intro) — 3 words → builds ``
+16. `quiz` — meaning quiz (listening) — hears `reply.home.goodbye`
+17. `visualMatch` — visual match (hear → tap the tile) — 1 round(s)
+18. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+19. `receipt` — receipt (proof card) — "🧭 Now: Friend’s home ● → Home · rest → Dinner at grandmother’s → Sleep ¦ 🏠 Home: Room: Living room / Mother: Kitchen ‖ 🌙 My evening: Dinner: Grandmother’s / Feeling: Tired / Next: Home → Sleep ¦ Your evening: home, dinner at your grandmother’s, then sleep." / "🧭 עכשיו: אצל החבר ● → הביתה · מנוחה → ארוחת ערב אצל סבתא → לישון ¦ 🏠 הבית: חדר: סלון / אמא: מטבח ‖ 🌙 הערב שלי: ארוחת ערב: אצל סבתא / הרגשה: עייף / הלאה: הביתה → לישון ¦ הערב שלך: הביתה, ארוחת ערב אצל סבתא, ואז לישון."
+20. `quickReply` — quick reply (hear → pick your response) — 2 round(s)
+21. `quickReply` — quick reply (hear → pick your response) — 2 round(s)
+22. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+23. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+24. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+25. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+26. `receipt` — receipt (proof card) — "🧭 Now: Friend’s home ● → Home · rest → Dinner at grandmother’s → Sleep ¦ 🏠 Home: Room: Living room / Mother: Kitchen ‖ 🌙 My evening: Dinner: Grandmother’s / Feeling: Tired / Next: Home → Sleep ¦ The whole visit — from the door to your evening." / "🧭 עכשיו: אצל החבר ● → הביתה · מנוחה → ארוחת ערב אצל סבתא → לישון ¦ 🏠 הבית: חדר: סלון / אמא: מטבח ‖ 🌙 הערב שלי: ארוחת ערב: אצל סבתא / הרגשה: עייף / הלאה: הביתה → לישון ¦ כל הביקור — מהדלת ועד הערב שלך."
+27. `dialogue` — dialogue (choose your line) — scene `at-a-friends-home`
+28. `receipt` — receipt (proof card) — "The whole conversation — you came in, asked, declined politely and said what’s next." / "כל השיחה — נכנסת, שאלת, סירבת יפה וסיפרת מה הלאה."
+29. `quickReply` — quick reply (hear → pick your response) — 4 round(s) · speed challenge
+30. `quickReply` — quick reply (hear → pick your response) — 2 round(s) · speed challenge
+31. `quickReply` — quick reply (hear → pick your response) — 2 round(s) · speed challenge
+32. `receipt` — receipt (proof card) — "No help — the whole visit, at a friend’s pace." / "בלי עזרה — כל הביקור, בקצב של חבר."
+33. `video` — video — mode again
+34. `quickReply` — quick reply (hear → pick your response) — 3 round(s)
+35. `visualMatch` — visual match (hear → tap the tile) — 1 round(s) · speed challenge
+36. `quickReply` — quick reply (hear → pick your response) — 2 round(s)
+37. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+38. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+39. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+40. `receipt` — receipt (proof card) — "🏠 HOME VISIT COMPLETE ¦ 🧭 Now: Friend’s home ● → Home · rest → Dinner at grandmother’s → Sleep ¦ 🏠 Home: Room: Living room / Mother: Kitchen ‖ 🌙 My evening: Dinner: Grandmother’s / Feeling: Tired / Next: Home → Sleep" / "🏠 הביקור הושלם ¦ 🧭 עכשיו: אצל החבר ● → הביתה · מנוחה → ארוחת ערב אצל סבתא → לישון ¦ 🏠 הבית: חדר: סלון / אמא: מטבח ‖ 🌙 הערב שלי: ארוחת ערב: אצל סבתא / הרגשה: עייף / הלאה: הביתה → לישון"
+41. `summary` — victory screen
 
 Step sequence identical in EN / FR / ES: yes.
 
 ## Before we speak / word intro
 
-No vocabulary pre-step.
+Step 2. Label: "Coming in" / "נכנסים". Intro: "🏠 Home: Room ? / Family ? ‖ 🌙 My evening: Dinner ? / Feeling ? / Next ? ¦ Your friend opens the door — and what you say. Tap to hear." / "🏠 הבית: חדר ? / משפחה ? ‖ 🌙 הערב שלי: ארוחת ערב ? / הרגשה ? / הלאה ? ¦ החבר פותח את הדלת — ומה אתה אומר. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `home.line.come-in` — EN "Hi! Come in." · FR "Salut ! Entre." · ES "¡Hola! Pasa." — meaning "היי! תיכנס." / "Hi! Come in." — icon 🚪 — new
+2. `home.line.beautiful` — EN "Thanks. Your home is beautiful." · FR "Merci. Ta maison est très belle." · ES "Gracias. Tu casa es preciosa." — meaning "תודה. הבית שלך יפהפה. (נכנסים — ומחמיאים לבית)" / "Thanks. Your home is beautiful. (you come in — and compliment the home)" — icon 🏡 — new
+
+No build-sentence card.
+
+Step 3. Label: "In the living room" / "בסלון". Intro: "🏠 Home: Room ? / Family ? ‖ 🌙 My evening: Dinner ? / Feeling ? / Next ? ¦ Where you sit — and your question about something you see. Tap to hear." / "🏠 הבית: חדר ? / משפחה ? ‖ 🌙 הערב שלי: ארוחת ערב ? / הרגשה ? / הלאה ? ¦ איפה יושבים — והשאלה שלך על משהו שאתה רואה. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `home.line.sit` — EN "Thank you. Let's sit in the living room." · FR "Merci. On s’assoit dans le salon." · ES "Gracias. Vamos a sentarnos en el salón." — meaning "תודה. בוא נשב בסלון." / "Thank you. Let’s sit in the living room." — icon 🛋️ — new
+2. `home.line.sofa` — EN "Is this sofa new?" · FR "Ce canapé est nouveau ?" · ES "¿Este sofá es nuevo?" — meaning "הספה הזאת חדשה? (היוזמה שלך — שמת לב לספה)" / "Is this sofa new? (your initiative — you noticed the sofa)" — icon 🛋️ — new
+3. `home.line.new` — EN "Yes, it's new." · FR "Oui, il est nouveau." · ES "Sí, es nuevo." — meaning "כן, היא חדשה." / "Yes, it’s new." — icon 🛋️ — new
+
+No build-sentence card.
+
+Step 4. Label: "The family" / "המשפחה". Intro: "🏠 Home: Room: Living room / Family ? ‖ 🌙 My evening: Dinner ? / Feeling ? / Next ? ¦ Now you ask — about the family. Tap to hear." / "🏠 הבית: חדר: סלון / משפחה ? ‖ 🌙 הערב שלי: ארוחת ערב ? / הרגשה ? / הלאה ? ¦ עכשיו אתה שואל — על המשפחה. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `home.line.where-family` — EN "Where is your family?" · FR "Où est ta famille ?" · ES "¿Dónde está tu familia?" — meaning "איפה המשפחה שלך? (היוזמה שלך)" / "Where is your family? (your initiative)" — icon 🙋 — new
+
+No build-sentence card.
+
+Step 6. Label: "An answer — and a question" / "תשובה ושאלה". Intro: "🏠 Home: Room: Living room / Family ? ‖ 🌙 My evening: Dinner ? / Feeling ? / Next ? ¦ Your friend answers — and asks you. Tap to hear." / "🏠 הבית: חדר: סלון / משפחה ? ‖ 🌙 הערב שלי: ארוחת ערב ? / הרגשה ? / הלאה ? ¦ החבר עונה — ושואל אותך. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `home.line.mother` — EN "My mother is in the kitchen. Do you live with your family?" · FR "Ma mère est dans la cuisine. Tu habites avec ta famille ?" · ES "Mi madre está en la cocina. ¿Vives con tu familia?" — meaning "אמא שלי במטבח. אתה גר עם המשפחה שלך?" / "My mother is in the kitchen. Do you live with your family?" — icon 🍳 — new
+2. `home.line.live-with` — EN "Yes, I live with my family." · FR "Oui, j’habite avec ma famille." · ES "Sí, vivo con mi familia." — meaning "כן, אני גר עם המשפחה שלי." / "Yes, I live with my family." — icon 🏠 — new
+
+No build-sentence card.
+
+Step 9. Label: "An invitation to eat" / "הזמנה לאכול". Intro: "🏠 Home: Room: Living room / Mother: Kitchen ‖ 🌙 My evening: Dinner ? / Feeling ? / Next ? ¦ You’re invited to eat — but you already have dinner plans. Tap to hear." / "🏠 הבית: חדר: סלון / אמא: מטבח ‖ 🌙 הערב שלי: ארוחת ערב ? / הרגשה ? / הלאה ? ¦ מזמינים אותך לאכול — אבל כבר יש לך תוכנית לארוחת ערב. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `home.line.hungry` — EN "Nice. Are you hungry? Do you want to eat with us?" · FR "Super. Tu as faim ? Tu veux manger avec nous ?" · ES "Qué bien. ¿Tienes hambre? ¿Quieres comer con nosotros?" — meaning "יפה. אתה רעב? רוצה לאכול איתנו?" / "Nice. Are you hungry? Want to eat with us?" — icon 🍲 — new
+2. `home.line.decline` — EN "Thanks, but I'm going to eat at my grandmother's." · FR "Merci, mais je vais manger chez ma grand-mère." · ES "Gracias, pero voy a comer en casa de mi abuela." — meaning "תודה, אבל אני הולך לאכול אצל סבתא שלי. (תודה ← אבל ← התוכנית שלך)" / "Thanks, but I’m going to eat at my grandmother’s. (thank → but → your plan)" — icon 🙏 — new
+
+No build-sentence card.
+
+Step 11. Label: "How you feel" / "איך אתה מרגיש". Intro: "🏠 Home: Room: Living room / Mother: Kitchen ‖ 🌙 My evening: Dinner: Grandmother’s / Feeling ? / Next ? ¦ Your friend notices something. Tap to hear." / "🏠 הבית: חדר: סלון / אמא: מטבח ‖ 🌙 הערב שלי: ארוחת ערב: אצל סבתא / הרגשה ? / הלאה ? ¦ החבר שם לב למשהו. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `home.line.tired-q` — EN "Lovely! You look tired. Are you okay?" · FR "C’est bien ! Tu as l’air fatigué. Ça va ?" · ES "¡Qué bien! Pareces cansado. ¿Estás bien?" — meaning "איזה יופי! אתה נראה עייף. הכל בסדר?" / "Lovely! You look tired. Are you okay?" — icon 🥱 — new
+2. `home.line.just-tired` — EN "Yes, I'm just tired." · FR "Oui, je suis juste fatigué." · ES "Sí, solo estoy cansado." — meaning "כן, אני רק עייף. (הכל בסדר — רק עייף)" / "Yes, I’m just tired. (I’m fine — only tired)" — icon 🥱 — new
+
+No build-sentence card.
+
+Step 13. Label: "Home" / "הביתה". Intro: "🏠 Home: Room: Living room / Mother: Kitchen ‖ 🌙 My evening: Dinner: Grandmother’s / Feeling: Tired / Next ? ¦ Where are you going now? Tap to hear." / "🏠 הבית: חדר: סלון / אמא: מטבח ‖ 🌙 הערב שלי: ארוחת ערב: אצל סבתא / הרגשה: עייף / הלאה ? ¦ לאן אתה הולך עכשיו? הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `home.line.rest` — EN "Then go home and rest!" · FR "Alors rentre chez toi et repose-toi !" · ES "¡Entonces vete a casa y descansa!" — meaning "אז לך הביתה ותנוח!" / "Then go home and rest!" — icon 🚶 — new
+2. `home.line.going-home` — EN "Yes, I'm going home." · FR "Oui, je rentre chez moi." · ES "Sí, me voy a casa." — meaning "כן, אני הולך הביתה. (לאן עכשיו: הביתה)" / "Yes, I’m going home. (where now: home)" — icon 🚶 — new
+
+No build-sentence card.
+
+Step 15. Label: "And after" / "ואחר כך". Intro: "🧭 Now: Friend’s home ● → Next: Home ¦ 🏠 Home: Room: Living room / Mother: Kitchen ‖ 🌙 My evening: Dinner: Grandmother’s / Feeling: Tired / Next: Home ¦ And after dinner? Tap to hear." / "🧭 עכשיו: אצל החבר ● → הבא: הביתה ¦ 🏠 הבית: חדר: סלון / אמא: מטבח ‖ 🌙 הערב שלי: ארוחת ערב: אצל סבתא / הרגשה: עייף / הלאה: הביתה ¦ ומה אחרי הארוחה? הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `home.line.after` — EN "And after dinner at your grandmother's?" · FR "Et après le dîner chez ta grand-mère ?" · ES "¿Y después de la cena en casa de tu abuela?" — meaning "ואחרי הארוחה אצל סבתא?" / "And after dinner at your grandmother’s?" — icon 🌙 — new
+2. `home.line.sleep` — EN "I'm going to sleep." · FR "Je vais dormir." · ES "Me voy a dormir." — meaning "אני הולך לישון. (מה הלאה: לישון)" / "I’m going to sleep. (what’s next: sleep)" — icon 🌙 — new
+3. `home.line.bye` — EN "Ha! Good night. Say hi to your family!" · FR "Ha ! Bonne nuit. Dis bonjour à ta famille !" · ES "¡Ja! Buenas noches. ¡Saluda a tu familia!" — meaning "חה! לילה טוב. תמסור ד״ש למשפחה!" / "Ha! Good night. Say hi to your family!" — icon 👋 — new
+
+No build-sentence card.
 
 ## Every sentence in this mission
 
@@ -12841,7 +12942,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 13
-- Exercised here as: key sentence (step 7); "you said" lead-in of the expected-replies drill (step 8); quick-reply response (step 12, round 1, accepted); quick-reply response (step 12, round 4, wrong option); sentence review (step 15); quick-reply response (step 16, round 1, accepted); quick-reply response (step 16, round 3, wrong option); quick-reply response (step 16, round 5, wrong option); dialogue choice at-a-friends-home/c2 (accepted)
+- Exercised here as: quick-reply response (step 5, round 1, wrong option); quick-reply response (step 20, round 1, accepted); quick-reply response (step 21, round 1, wrong option); quick-reply response (step 23, round 1, wrong option); quick-reply response (step 25, round 1, wrong option); quick-reply response (step 29, round 1, accepted); quick-reply response (step 29, round 3, wrong option); quick-reply response (step 31, round 1, wrong option); quick-reply response (step 34, round 1, accepted); quick-reply response (step 36, round 2, wrong option); dialogue choice at-a-friends-home/c2 (accepted); dialogue choice at-a-friends-home/c16 (WRONG option)
 
 ### Sentence: `phrase.home.is-this-new`
 
@@ -12852,62 +12953,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "Is this ___ new? — swap the object." / "Is this ___ new? — מחליפים את החפץ."
 - Used in missions: 13
-- Exercised here as: quick-reply response (step 12, round 2, wrong option); quick-reply response (step 12, round 4, wrong option); quick-reply response (step 12, round 5, wrong option); quick-reply response (step 16, round 4, wrong option); dialogue choice at-a-friends-home/c4 (accepted)
-
-### Sentence: `phrase.home.where-family`
-
-- EN: Where is your family?
-- HE: איפה המשפחה שלך?
-- FR: Où est ta famille ?
-- ES: ¿Dónde está tu familia?
-- Role: learner production
-- Tip / pattern note: "Where is ___? — the same question from Directions, now about people." / "Where is ___? — אותה שאלה מהכיוונים, עכשיו על אנשים."
-- Used in missions: 13, 18
-- Exercised here as: key sentence (step 6); quick-reply response (step 12, round 2, accepted); quick-reply response (step 12, round 3, wrong option); sentence review (step 15); quick-reply response (step 16, round 2, wrong option); quick-reply response (step 16, round 4, wrong option); quick-reply response (step 16, round 5, wrong option); dialogue choice at-a-friends-home/c6 (accepted)
-
-### Sentence: `phrase.home.live-with-family`
-
-- EN: Yes, I live with my family.
-- HE: כן, אני גר עם המשפחה שלי.
-- FR: Oui, j’habite avec ma famille.
-- ES: Sí, vivo con mi familia.
-- Role: learner production
-- Tip / pattern note: none
-- Used in missions: 13
-- Exercised here as: sentence-builder target (step 11, round 2); quick-reply response (step 12, round 2, wrong option); quick-reply response (step 12, round 3, accepted); quick-reply response (step 12, round 5, wrong option); sentence review (step 15); quick-reply response (step 16, round 2, accepted); quick-reply response (step 16, round 3, wrong option); dialogue choice at-a-friends-home/c8 (accepted); dialogue choice at-a-friends-home/c8b (accepted)
-
-### Sentence: `phrase.home.eat-at-grandmothers`
-
-- EN: I'm going to eat at my grandmother's.
-- HE: אני הולך לאכול אצל סבתא שלי.
-- FR: Je vais manger chez ma grand-mère.
-- ES: Voy a comer en casa de mi abuela.
-- Role: learner production
-- Tip / pattern note: "I’m going to ___ — the frame for anything you are about to do." / "I’m going to ___ — התבנית לכל מה שאתה עומד לעשות."
-- Used in missions: 13
-- Exercised here as: key sentence (step 2); swap-it frame (step 10, round 3); sentence-builder target (step 11, round 1); quick-reply response (step 12, round 4, accepted); sentence review (step 15); quick-reply response (step 16, round 3, accepted); dialogue choice at-a-friends-home/c10 (accepted)
-
-### Sentence: `phrase.home.im-tired`
-
-- EN: I'm tired.
-- HE: אני עייף.
-- FR: Je suis fatigué.
-- ES: Estoy cansado.
-- Role: learner production
-- Tip / pattern note: none
-- Used in missions: 13
-- Exercised here as: key sentence (step 4); quick-reply response (step 12, round 1, wrong option); quick-reply response (step 12, round 5, accepted); sentence review (step 15); quick-reply response (step 16, round 1, wrong option); quick-reply response (step 16, round 4, accepted); dialogue choice at-a-friends-home/c12 (accepted)
-
-### Sentence: `phrase.home.going-home`
-
-- EN: I'm going home.
-- HE: אני הולך הביתה.
-- FR: Je rentre chez moi.
-- ES: Me voy a casa.
-- Role: learner production
-- Tip / pattern note: none
-- Used in missions: 13, 18
-- Exercised here as: key sentence (step 3); swap-it frame (step 10, round 1); quick-reply response (step 12, round 1, wrong option); sentence review (step 15); quick-reply response (step 16, round 1, wrong option); quick-reply response (step 16, round 5, accepted); dialogue choice at-a-friends-home/c14 (accepted)
+- Exercised here as: quick-reply response (step 5, round 1, wrong option); quick-reply response (step 8, round 1, wrong option); quick-reply response (step 20, round 1, wrong option); quick-reply response (step 20, round 2, accepted); quick-reply response (step 22, round 1, wrong option); quick-reply response (step 24, round 1, wrong option); quick-reply response (step 29, round 2, accepted); quick-reply response (step 29, round 4, wrong option); quick-reply response (step 30, round 2, wrong option); quick-reply response (step 31, round 2, wrong option); quick-reply response (step 34, round 2, accepted); quick-reply response (step 34, round 3, wrong option); quick-reply response (step 37, round 1, wrong option); quick-reply response (step 39, round 1, wrong option); dialogue choice at-a-friends-home/c2 (WRONG option); dialogue choice at-a-friends-home/c4 (accepted); dialogue choice at-a-friends-home/c10 (WRONG option)
 
 ### Sentence: `phrase.home.going-to-sleep`
 
@@ -12918,264 +12964,399 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 13
-- Exercised here as: key sentence (step 5); swap-it frame (step 10, round 2); quick-reply response (step 12, round 3, wrong option); sentence review (step 15); quick-reply response (step 16, round 2, wrong option); dialogue choice at-a-friends-home/c16 (accepted)
+- Exercised here as: quick-reply response (step 18, round 1, accepted); quick-reply response (step 20, round 2, wrong option); quick-reply response (step 22, round 1, wrong option); quick-reply response (step 25, round 1, accepted); quick-reply response (step 29, round 1, wrong option); quick-reply response (step 29, round 4, wrong option); quick-reply response (step 31, round 2, accepted); quick-reply response (step 34, round 2, wrong option); quick-reply response (step 37, round 1, wrong option); quick-reply response (step 39, round 1, accepted); dialogue choice at-a-friends-home/c4 (WRONG option); dialogue choice at-a-friends-home/c16 (accepted)
+
+### Sentence: `phrase.home.where-family`
+
+- EN: Where is your family?
+- HE: איפה המשפחה שלך?
+- FR: Où est ta famille ?
+- ES: ¿Dónde está tu familia?
+- Role: learner production
+- Tip / pattern note: "Where is ___? — the same question from Directions, now about people." / "Where is ___? — אותה שאלה מהכיוונים, עכשיו על אנשים."
+- Used in missions: 13, 18
+- Exercised here as: quick-reply response (step 5, round 1, accepted); quick-reply response (step 8, round 1, wrong option); quick-reply response (step 14, round 1, wrong option); quick-reply response (step 18, round 1, wrong option); quick-reply response (step 21, round 1, accepted); quick-reply response (step 21, round 2, wrong option); quick-reply response (step 23, round 1, wrong option); quick-reply response (step 25, round 1, wrong option); quick-reply response (step 29, round 1, wrong option); quick-reply response (step 29, round 3, accepted); quick-reply response (step 30, round 1, wrong option); quick-reply response (step 31, round 1, wrong option); quick-reply response (step 34, round 1, wrong option); quick-reply response (step 34, round 3, accepted); quick-reply response (step 36, round 1, wrong option); quick-reply response (step 38, round 1, wrong option); dialogue choice at-a-friends-home/c6 (accepted); dialogue choice at-a-friends-home/c8 (WRONG option); dialogue choice at-a-friends-home/c12 (WRONG option)
+
+### Sentence: `phrase.home.live-with-family`
+
+- EN: Yes, I live with my family.
+- HE: כן, אני גר עם המשפחה שלי.
+- FR: Oui, j’habite avec ma famille.
+- ES: Sí, vivo con mi familia.
+- Role: learner production
+- Tip / pattern note: none
+- Used in missions: 13
+- Exercised here as: quick-reply response (step 8, round 1, accepted); quick-reply response (step 12, round 1, wrong option); quick-reply response (step 18, round 1, wrong option); quick-reply response (step 20, round 2, wrong option); quick-reply response (step 21, round 1, wrong option); quick-reply response (step 21, round 2, accepted); quick-reply response (step 24, round 1, wrong option); quick-reply response (step 29, round 2, wrong option); quick-reply response (step 29, round 4, accepted); quick-reply response (step 30, round 2, wrong option); quick-reply response (step 31, round 2, wrong option); quick-reply response (step 34, round 2, wrong option); quick-reply response (step 36, round 1, accepted); quick-reply response (step 36, round 2, wrong option); quick-reply response (step 39, round 1, wrong option); dialogue choice at-a-friends-home/c6 (WRONG option); dialogue choice at-a-friends-home/c8 (accepted); dialogue choice at-a-friends-home/c14 (WRONG option)
+
+### Sentence: `phrase.home.eat-at-grandmothers`
+
+- EN: I'm going to eat at my grandmother's.
+- HE: אני הולך לאכול אצל סבתא שלי.
+- FR: Je vais manger chez ma grand-mère.
+- ES: Voy a comer en casa de mi abuela.
+- Role: learner production
+- Tip / pattern note: "I’m going to ___ — the frame for anything you are about to do." / "I’m going to ___ — התבנית לכל מה שאתה עומד לעשות."
+- Used in missions: 13
+- Exercised here as: quick-reply response (step 12, round 1, wrong option); quick-reply response (step 22, round 1, accepted); quick-reply response (step 30, round 1, accepted); quick-reply response (step 36, round 2, accepted); quick-reply response (step 38, round 1, wrong option); dialogue choice at-a-friends-home/c10 (accepted)
+
+### Sentence: `phrase.home.im-tired`
+
+- EN: I'm tired.
+- HE: אני עייף.
+- FR: Je suis fatigué.
+- ES: Estoy cansado.
+- Role: learner production
+- Tip / pattern note: none
+- Used in missions: 13
+- Exercised here as: quick-reply response (step 12, round 1, accepted); quick-reply response (step 14, round 1, wrong option); quick-reply response (step 21, round 2, wrong option); quick-reply response (step 23, round 1, accepted); quick-reply response (step 29, round 3, wrong option); quick-reply response (step 30, round 1, wrong option); quick-reply response (step 30, round 2, accepted); quick-reply response (step 34, round 3, wrong option); quick-reply response (step 37, round 1, accepted); dialogue choice at-a-friends-home/c12 (accepted)
+
+### Sentence: `phrase.home.going-home`
+
+- EN: I'm going home.
+- HE: אני הולך הביתה.
+- FR: Je rentre chez moi.
+- ES: Me voy a casa.
+- Role: learner production
+- Tip / pattern note: none
+- Used in missions: 13, 18
+- Exercised here as: quick-reply response (step 14, round 1, accepted); quick-reply response (step 20, round 1, wrong option); quick-reply response (step 24, round 1, accepted); quick-reply response (step 29, round 2, wrong option); quick-reply response (step 31, round 1, accepted); quick-reply response (step 34, round 1, wrong option); quick-reply response (step 36, round 1, wrong option); quick-reply response (step 38, round 1, accepted); dialogue choice at-a-friends-home/c14 (accepted)
+
+### Sentence: `phrase.home.thanks-but-grandmothers`
+
+- EN: Thanks, but I'm going to eat at my grandmother's.
+- HE: תודה, אבל אני הולך לאכול אצל סבתא שלי.
+- FR: Merci, mais je vais manger chez ma grand-mère.
+- ES: Gracias, pero voy a comer en casa de mi abuela.
+- Role: learner production
+- Tip / pattern note: none
+- Used in missions: 13
+- Exercised here as: sentence-builder target (step 10, round 1)
 
 ### Sentence: `reply.home.come-in`
 
-- EN: Come in.
-- HE: תיכנס.
-- FR: Entre.
-- ES: Pasa.
+- EN: Hi! Come in.
+- HE: היי! תיכנס.
+- FR: Salut ! Entre.
+- ES: ¡Hola! Pasa.
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 13
-- Exercised here as: expected-reply audio (step 8); quick-reply prompt (step 12, round 1); sentence review (step 15)
+- Exercised here as: meaning-quiz distractor (step 16); quick-reply prompt (step 20, round 1)
 
-### Sentence: `reply.home.sit-living-room`
+### Sentence: `reply.home.sit`
 
-- EN: Let's sit in the living room.
-- HE: בוא נשב בסלון.
-- FR: On s’assoit dans le salon.
-- ES: Vamos a sentarnos en el salón.
+- EN: Thank you. Let's sit in the living room.
+- HE: תודה. בוא נשב בסלון.
+- FR: Merci. On s’assoit dans le salon.
+- ES: Gracias. Vamos a sentarnos en el salón.
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 13
-- Exercised here as: expected-reply audio (step 8)
+- Exercised here as: quick-reply prompt (step 20, round 2)
 
-### Sentence: `reply.home.live-with-family-q`
+### Sentence: `reply.home.new`
 
-- EN: Do you live with your family?
-- HE: אתה גר עם המשפחה שלך?
-- FR: Tu habites avec ta famille ?
-- ES: ¿Vives con tu familia?
+- EN: Yes, it's new.
+- HE: כן, היא חדשה.
+- FR: Oui, il est nouveau.
+- ES: Sí, es nuevo.
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 13
-- Exercised here as: expected-reply audio (step 8); quick-reply prompt (step 12, round 3); sentence review (step 15)
+- Exercised here as: quick-reply prompt (step 21, round 1)
 
-### Sentence: `reply.home.are-you-hungry`
+### Sentence: `reply.home.mother`
 
-- EN: Are you hungry?
-- HE: אתה רעב?
-- FR: Tu as faim ?
-- ES: ¿Tienes hambre?
+- EN: My mother is in the kitchen. Do you live with your family?
+- HE: אמא שלי במטבח. אתה גר עם המשפחה שלך?
+- FR: Ma mère est dans la cuisine. Tu habites avec ta famille ?
+- ES: Mi madre está en la cocina. ¿Vives con tu familia?
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 13
-- Exercised here as: expected-reply audio (step 8); sentence review (step 15)
+- Exercised here as: quick-reply prompt (step 8, round 1); quick-reply prompt (step 21, round 2)
 
-### Sentence: `reply.home.eat-with-us`
+### Sentence: `reply.home.hungry`
 
-- EN: Do you want to eat with us?
-- HE: רוצה לאכול איתנו?
-- FR: Tu veux manger avec nous ?
-- ES: ¿Quieres comer con nosotros?
+- EN: Nice. Are you hungry? Do you want to eat with us?
+- HE: יפה. אתה רעב? רוצה לאכול איתנו?
+- FR: Super. Tu as faim ? Tu veux manger avec nous ?
+- ES: Qué bien. ¿Tienes hambre? ¿Quieres comer con nosotros?
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 13
-- Exercised here as: quick-reply prompt (step 12, round 4); sentence review (step 15)
+- Exercised here as: quick-reply prompt (step 22, round 1)
 
-### Sentence: `phrase.recovery.dont-understand`
+### Sentence: `reply.home.tired`
 
-- EN: Sorry, I don't understand.
-- HE: סליחה, אני לא מבין.
-- FR: Désolé, je ne comprends pas.
-- ES: Perdón, no entiendo.
-- Role: conversation-help tool (global Recovery Toolkit)
+- EN: Lovely! You look tired. Are you okay?
+- HE: איזה יופי! אתה נראה עייף. הכל בסדר?
+- FR: C’est bien ! Tu as l’air fatigué. Ça va ?
+- ES: ¡Qué bien! Pareces cansado. ¿Estás bien?
+- Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
-- Used in missions: 13, 14
-- Exercised here as: sentence review (step 15); dialogue choice at-a-friends-home/c8 (accepted)
+- Used in missions: 13
+- Exercised here as: quick-reply prompt (step 12, round 1); quick-reply prompt (step 23, round 1)
+
+### Sentence: `reply.home.rest`
+
+- EN: Then go home and rest!
+- HE: אז לך הביתה ותנוח!
+- FR: Alors rentre chez toi et repose-toi !
+- ES: ¡Entonces vete a casa y descansa!
+- Role: receptive — an expected reply the learner hears
+- Tip / pattern note: none
+- Used in missions: 13
+- Exercised here as: quick-reply prompt (step 14, round 1); meaning-quiz distractor (step 16); quick-reply prompt (step 24, round 1)
+
+### Sentence: `reply.home.after`
+
+- EN: And after dinner at your grandmother's?
+- HE: ואחרי הארוחה אצל סבתא?
+- FR: Et après le dîner chez ta grand-mère ?
+- ES: ¿Y después de la cena en casa de tu abuela?
+- Role: receptive — an expected reply the learner hears
+- Tip / pattern note: none
+- Used in missions: 13
+- Exercised here as: quick-reply prompt (step 25, round 1)
+
+### Sentence: `reply.home.goodbye`
+
+- EN: Ha! Good night. Say hi to your family!
+- HE: חה! לילה טוב. תמסור ד״ש למשפחה!
+- FR: Ha ! Bonne nuit. Dis bonjour à ta famille !
+- ES: ¡Ja! Buenas noches. ¡Saluda a tu familia!
+- Role: receptive — an expected reply the learner hears
+- Tip / pattern note: none
+- Used in missions: 13
+- Exercised here as: meaning-quiz audio (step 16)
 
 ## Expected replies / listening items
 
-Lead-in screen: "You said:" / "אמרת:" — EN "Your home is beautiful." · FR "Ta maison est très belle." · ES "Tu casa es preciosa." — then "What might they answer? Learn the replies before they surprise you." / "מה הם עלולים לענות? נלמד את התשובות לפני שהן מפתיעות אותך." — button 👂 "I'm ready" / "אני מוכן".
-Linked learner sentence: `phrase.home.beautiful-home`. Each reply below is played once automatically; the learner picks its MEANING from three buttons. Distractors are always the first two OTHER replies of this same drill, in drill order (runtime rule), so the three choices are shuffled per session.
-
-### M13-Q01 — expected-reply (step 8, reply 1 of 4)
-
-- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (1/4)
-- Audio played: EN "Come in." · FR "Entre." · ES "Pasa."
-- Meaning of the audio (HE): "תיכנס."
-- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
-- Choices:
-  1. HE "תיכנס." / EN "Come in." — `reply.home.come-in` — ✅ accepted
-  2. HE "בוא נשב בסלון." / EN "Let's sit in the living room." — `reply.home.sit-living-room` — ❌ wrong
-  3. HE "אתה רעב?" / EN "Are you hungry?" — `reply.home.are-you-hungry` — ❌ wrong
-- Tests: reply.home.come-in
-- Explanation shown after answering: generic: “Come in.” means “תיכנס.”.
-
-### M13-Q02 — expected-reply (step 8, reply 2 of 4)
-
-- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (2/4)
-- Audio played: EN "Let's sit in the living room." · FR "On s’assoit dans le salon." · ES "Vamos a sentarnos en el salón."
-- Meaning of the audio (HE): "בוא נשב בסלון."
-- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
-- Choices:
-  1. HE "בוא נשב בסלון." / EN "Let's sit in the living room." — `reply.home.sit-living-room` — ✅ accepted
-  2. HE "תיכנס." / EN "Come in." — `reply.home.come-in` — ❌ wrong
-  3. HE "אתה רעב?" / EN "Are you hungry?" — `reply.home.are-you-hungry` — ❌ wrong
-- Tests: reply.home.sit-living-room
-- Explanation shown after answering: generic: “Let's sit in the living room.” means “בוא נשב בסלון.”.
-
-### M13-Q03 — expected-reply (step 8, reply 3 of 4)
-
-- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (3/4)
-- Audio played: EN "Are you hungry?" · FR "Tu as faim ?" · ES "¿Tienes hambre?"
-- Meaning of the audio (HE): "אתה רעב?"
-- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
-- Choices:
-  1. HE "אתה רעב?" / EN "Are you hungry?" — `reply.home.are-you-hungry` — ✅ accepted
-  2. HE "תיכנס." / EN "Come in." — `reply.home.come-in` — ❌ wrong
-  3. HE "בוא נשב בסלון." / EN "Let's sit in the living room." — `reply.home.sit-living-room` — ❌ wrong
-- Tests: reply.home.are-you-hungry
-- Explanation shown after answering: generic: “Are you hungry?” means “אתה רעב?”.
-
-### M13-Q04 — expected-reply (step 8, reply 4 of 4)
-
-- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (4/4)
-- Audio played: EN "Do you live with your family?" · FR "Tu habites avec ta famille ?" · ES "¿Vives con tu familia?"
-- Meaning of the audio (HE): "אתה גר עם המשפחה שלך?"
-- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
-- Choices:
-  1. HE "אתה גר עם המשפחה שלך?" / EN "Do you live with your family?" — `reply.home.live-with-family-q` — ✅ accepted
-  2. HE "תיכנס." / EN "Come in." — `reply.home.come-in` — ❌ wrong
-  3. HE "בוא נשב בסלון." / EN "Let's sit in the living room." — `reply.home.sit-living-room` — ❌ wrong
-- Tests: reply.home.live-with-family-q
-- Explanation shown after answering: generic: “Do you live with your family?” means “אתה גר עם המשפחה שלך?”.
+No expected-replies drill in this mission.
 
 ## Quizzes
 
-No meaning quiz in this mission.
+### M13-Q07 — meaning-quiz (step 16, single question)
+
+- Prompt displayed: "What did it mean?" / "מה זה אומר?"
+- Audio played: EN "Ha! Good night. Say hi to your family!" · FR "Ha ! Bonne nuit. Dis bonjour à ta famille !" · ES "¡Ja! Buenas noches. ¡Saluda a tu familia!"
+- Meaning of the audio (HE): "חה! לילה טוב. תמסור ד״ש למשפחה!"
+- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
+- Choices:
+  1. HE "חה! לילה טוב. תמסור ד״ש למשפחה!" / EN "Ha! Good night. Say hi to your family!" — `reply.home.goodbye` — ✅ accepted
+  2. HE "אז לך הביתה ותנוח!" / EN "Then go home and rest!" — `reply.home.rest` — ❌ wrong
+  3. HE "היי! תיכנס." / EN "Hi! Come in." — `reply.home.come-in` — ❌ wrong
+- Tests: reply.home.goodbye
+- Explanation shown after answering: generic: “Ha! Good night. Say hi to your family!” means “חה! לילה טוב. תמסור ד״ש למשפחה!”.
 
 ## Active practice — Quick Reply · Visual Match · Swap It · Mini Map
 
-### M13-Q05 — swap-it (step 10, round 1 of 3)
+### M13-Q01 — quick-reply (step 5, round 1 of 1)
 
-- Prompt displayed: "Where are you off to?" / "לאן אתה הולך?" — cue 🏠 "You are heading home" / "אתה הולך הביתה" — frame EN "I'm going ___." · FR "Je ___." · ES "___."
-- Audio played: EN "(nothing before the tap; the completed sentence is spoken after it)" · FR "(same)" · ES "(same)"
-- Meaning of the audio (HE): —
-- Buttons show: the SLOT VALUES in the target language (shown here as "value → completed sentence"); order shuffled; a "wrong" value still produces and speaks a real sentence, with its translation
-- Choices:
-  1. EN "home → I'm going home." · FR "rentre chez moi → Je rentre chez moi." · ES "Me voy a casa → Me voy a casa." · (HE gloss "אני הולך הביתה.") — `phrase.home.going-home` — ✅ accepted
-  2. EN "to sleep → I'm going to sleep." · FR "vais dormir → Je vais dormir." · ES "Me voy a dormir → Me voy a dormir." · (HE gloss "אני הולך לישון.") — no sentence id — ❌ wrong
-  3. EN "to eat at my grandmother's → I'm going to eat at my grandmother's." · FR "vais manger chez ma grand-mère → Je vais manger chez ma grand-mère." · ES "Voy a comer en casa de mi abuela → Voy a comer en casa de mi abuela." · (HE gloss "אני הולך לאכול אצל סבתא שלי.") — no sentence id — ❌ wrong
-- Tests: phrase.home.going-home
-- Explanation shown after answering: after the tap: the completed sentence, spoken, with its translation
-
-### M13-Q06 — swap-it (step 10, round 2 of 3)
-
-- Prompt displayed: "Where are you off to?" / "לאן אתה הולך?" — cue 😴 "You are off to bed" / "אתה הולך לישון" — frame EN "I'm going ___." · FR "Je ___." · ES "___."
-- Audio played: EN "(nothing before the tap; the completed sentence is spoken after it)" · FR "(same)" · ES "(same)"
-- Meaning of the audio (HE): —
-- Buttons show: the SLOT VALUES in the target language (shown here as "value → completed sentence"); order shuffled; a "wrong" value still produces and speaks a real sentence, with its translation
-- Choices:
-  1. EN "home → I'm going home." · FR "rentre chez moi → Je rentre chez moi." · ES "Me voy a casa → Me voy a casa." · (HE gloss "אני הולך הביתה.") — no sentence id — ❌ wrong
-  2. EN "to sleep → I'm going to sleep." · FR "vais dormir → Je vais dormir." · ES "Me voy a dormir → Me voy a dormir." · (HE gloss "אני הולך לישון.") — `phrase.home.going-to-sleep` — ✅ accepted
-  3. EN "to eat at my grandmother's → I'm going to eat at my grandmother's." · FR "vais manger chez ma grand-mère → Je vais manger chez ma grand-mère." · ES "Voy a comer en casa de mi abuela → Voy a comer en casa de mi abuela." · (HE gloss "אני הולך לאכול אצל סבתא שלי.") — no sentence id — ❌ wrong
-- Tests: phrase.home.going-to-sleep
-- Explanation shown after answering: after the tap: the completed sentence, spoken, with its translation
-
-### M13-Q07 — swap-it (step 10, round 3 of 3)
-
-- Prompt displayed: "Where are you off to?" / "לאן אתה הולך?" — cue 🍽️ "You are going to eat at your grandmother's" / "אתה הולך לאכול אצל סבתא" — frame EN "I'm going ___." · FR "Je ___." · ES "___."
-- Audio played: EN "(nothing before the tap; the completed sentence is spoken after it)" · FR "(same)" · ES "(same)"
-- Meaning of the audio (HE): —
-- Buttons show: the SLOT VALUES in the target language (shown here as "value → completed sentence"); order shuffled; a "wrong" value still produces and speaks a real sentence, with its translation
-- Choices:
-  1. EN "home → I'm going home." · FR "rentre chez moi → Je rentre chez moi." · ES "Me voy a casa → Me voy a casa." · (HE gloss "אני הולך הביתה.") — no sentence id — ❌ wrong
-  2. EN "to sleep → I'm going to sleep." · FR "vais dormir → Je vais dormir." · ES "Me voy a dormir → Me voy a dormir." · (HE gloss "אני הולך לישון.") — no sentence id — ❌ wrong
-  3. EN "to eat at my grandmother's → I'm going to eat at my grandmother's." · FR "vais manger chez ma grand-mère → Je vais manger chez ma grand-mère." · ES "Voy a comer en casa de mi abuela → Voy a comer en casa de mi abuela." · (HE gloss "אני הולך לאכול אצל סבתא שלי.") — `phrase.home.eat-at-grandmothers` — ✅ accepted
-- Tests: phrase.home.eat-at-grandmothers
-- Explanation shown after answering: after the tap: the completed sentence, spoken, with its translation
-
-### M13-Q08 — sentence-builder (step 11, round 1 of 2)
-
-- Prompt displayed: "Build the sentence" / "בנה את המשפט" — cue shown: the sentence's MEANING in the app language ("אני הולך לאכול אצל סבתא שלי.")
-- Audio played: EN "(nothing before Check; the built sentence is spoken once it is right)" · FR "(same)" · ES "(same)"
-- Meaning of the audio (HE): —
-- Buttons show: the authored CHUNKS of the sentence as tiles (listed here in the correct order, separated by "|"), shuffled; each language has its own chunks; Check unlocks when every tile is placed
-- Choices:
-  1. EN "I'm going  |  to eat  |  at my  |  grandmother's." · FR "Je vais  |  manger  |  chez  |  ma grand-mère." · ES "Voy a  |  comer  |  en casa de  |  mi abuela." · (HE gloss "אני הולך לאכול אצל סבתא שלי.") — `phrase.home.eat-at-grandmothers` — ✅ accepted
-- Tests: phrase.home.eat-at-grandmothers
-- Explanation shown after answering: right: the sentence is spoken and its translation shown. Wrong: "not yet" — the tiles stay, the answer is NOT shown; after one miss a hint marks the start; after two misses the learner may reveal it
-
-### M13-Q09 — sentence-builder (step 11, round 2 of 2)
-
-- Prompt displayed: "Build the sentence" / "בנה את המשפט" — cue shown: the sentence's MEANING in the app language ("כן, אני גר עם המשפחה שלי.")
-- Audio played: EN "(nothing before Check; the built sentence is spoken once it is right)" · FR "(same)" · ES "(same)"
-- Meaning of the audio (HE): —
-- Buttons show: the authored CHUNKS of the sentence as tiles (listed here in the correct order, separated by "|"), shuffled; each language has its own chunks; Check unlocks when every tile is placed
-- Choices:
-  1. EN "Yes,  |  I live  |  with  |  my family." · FR "Oui,  |  j’habite  |  avec  |  ma famille." · ES "Sí,  |  vivo  |  con  |  mi familia." · (HE gloss "כן, אני גר עם המשפחה שלי.") — `phrase.home.live-with-family` — ✅ accepted
-- Tests: phrase.home.live-with-family
-- Explanation shown after answering: right: the sentence is spoken and its translation shown. Wrong: "not yet" — the tiles stay, the answer is NOT shown; after one miss a hint marks the start; after two misses the learner may reveal it
-
-### M13-Q10 — quick-reply (step 12, round 1 of 5)
-
-- Prompt displayed: "At a friend's home — what do you say?" / "אצל חבר בבית — מה אומרים?"
-- Audio played: EN "Come in." · FR "Entre." · ES "Pasa."
-- Meaning of the audio (HE): "תיכנס."
-- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
-- Choices:
-  1. EN "Thanks. Your home is beautiful." · FR "Merci. Ta maison est très belle." · ES "Gracias. Tu casa es preciosa." · (HE gloss "הבית שלך יפהפה.") — `phrase.home.beautiful-home` — ✅ accepted
-  2. EN "I'm going home." · FR "Je rentre chez moi." · ES "Me voy a casa." · (HE gloss "אני הולך הביתה.") — `phrase.home.going-home` — ❌ wrong
-  3. EN "I'm tired." · FR "Je suis fatigué." · ES "Estoy cansado." · (HE gloss "אני עייף.") — `phrase.home.im-tired` — ❌ wrong
-- Tests: phrase.home.beautiful-home
-- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
-
-### M13-Q11 — quick-reply (step 12, round 2 of 5)
-
-- Prompt displayed: "At a friend's home — what do you say?" / "אצל חבר בבית — מה אומרים?" — situation shown: "You want to know where your friend's family is." / "אתה רוצה לדעת איפה המשפחה של החבר."
+- Prompt displayed: "🏠 Home: Room: Living room / Family ? ‖ 🌙 My evening: Dinner ? / Feeling ? / Next ? ¦ What do you ask?" / "🏠 הבית: חדר: סלון / משפחה ? ‖ 🌙 הערב שלי: ארוחת ערב ? / הרגשה ? / הלאה ? ¦ מה אתה שואל?" — situation shown: "You want to know where your friend’s family is." / "אתה רוצה לדעת איפה המשפחה של החבר."
 - Audio played: EN "(nothing is played — a situation is shown)" · FR "(nothing is played — a situation is shown)" · ES "(nothing is played — a situation is shown)"
 - Meaning of the audio (HE): —
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
   1. EN "Where is your family?" · FR "Où est ta famille ?" · ES "¿Dónde está tu familia?" · (HE gloss "איפה המשפחה שלך?") — `phrase.home.where-family` — ✅ accepted
   2. EN "Is this sofa new?" · FR "Ce canapé est nouveau ?" · ES "¿Este sofá es nuevo?" · (HE gloss "הספה הזאת חדשה?") — `phrase.home.is-this-new` — ❌ wrong
-  3. EN "Yes, I live with my family." · FR "Oui, j’habite avec ma famille." · ES "Sí, vivo con mi familia." · (HE gloss "כן, אני גר עם המשפחה שלי.") — `phrase.home.live-with-family` — ❌ wrong
+  3. EN "Thanks. Your home is beautiful." · FR "Merci. Ta maison est très belle." · ES "Gracias. Tu casa es preciosa." · (HE gloss "הבית שלך יפהפה.") — `phrase.home.beautiful-home` — ❌ wrong
 - Tests: phrase.home.where-family
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M13-Q12 — quick-reply (step 12, round 3 of 5)
+### M13-Q02 — visual-match (step 7, round 1 of 1)
 
-- Prompt displayed: "At a friend's home — what do you say?" / "אצל חבר בבית — מה אומרים?"
-- Audio played: EN "Do you live with your family?" · FR "Tu habites avec ta famille ?" · ES "¿Vives con tu familia?"
-- Meaning of the audio (HE): "אתה גר עם המשפחה שלך?"
+- Prompt displayed: "🏠 Home: Room: Living room / Family ? ‖ 🌙 My evening: Dinner ? / Feeling ? / Next ? ¦ Where is your friend’s mother?" / "🏠 הבית: חדר: סלון / משפחה ? ‖ 🌙 הערב שלי: ארוחת ערב ? / הרגשה ? / הלאה ? ¦ איפה האמא של החבר?"
+- Audio played: EN "My mother is in the kitchen. Do you live with your family?" · FR "Ma mère est dans la cuisine. Tu habites avec ta famille ?" · ES "Mi madre está en la cocina. ¿Vives con tu familia?"
+- Meaning of the audio (HE): "אמא שלי במטבח. אתה גר עם המשפחה שלך?"
+- Buttons show: a 3×3 board of 2 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "🛋️ “Living room” / “סלון”" — no sentence id — ❌ wrong
+  2. "🍳 “Kitchen” / “מטבח”" — no sentence id — ✅ accepted
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M13-Q03 — quick-reply (step 8, round 1 of 1)
+
+- Prompt displayed: "🏠 Home: Room: Living room / Mother: Kitchen ‖ 🌙 My evening: Dinner ? / Feeling ? / Next ? ¦ What do you answer?" / "🏠 הבית: חדר: סלון / אמא: מטבח ‖ 🌙 הערב שלי: ארוחת ערב ? / הרגשה ? / הלאה ? ¦ מה אתה עונה?"
+- Audio played: EN "My mother is in the kitchen. Do you live with your family?" · FR "Ma mère est dans la cuisine. Tu habites avec ta famille ?" · ES "Mi madre está en la cocina. ¿Vives con tu familia?"
+- Meaning of the audio (HE): "אמא שלי במטבח. אתה גר עם המשפחה שלך?"
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
   1. EN "Yes, I live with my family." · FR "Oui, j’habite avec ma famille." · ES "Sí, vivo con mi familia." · (HE gloss "כן, אני גר עם המשפחה שלי.") — `phrase.home.live-with-family` — ✅ accepted
   2. EN "Where is your family?" · FR "Où est ta famille ?" · ES "¿Dónde está tu familia?" · (HE gloss "איפה המשפחה שלך?") — `phrase.home.where-family` — ❌ wrong
-  3. EN "I'm going to sleep." · FR "Je vais dormir." · ES "Me voy a dormir." · (HE gloss "אני הולך לישון.") — `phrase.home.going-to-sleep` — ❌ wrong
+  3. EN "Is this sofa new?" · FR "Ce canapé est nouveau ?" · ES "¿Este sofá es nuevo?" · (HE gloss "הספה הזאת חדשה?") — `phrase.home.is-this-new` — ❌ wrong
 - Tests: phrase.home.live-with-family
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M13-Q13 — quick-reply (step 12, round 4 of 5)
+### M13-Q04 — sentence-builder (step 10, round 1 of 1)
 
-- Prompt displayed: "At a friend's home — what do you say?" / "אצל חבר בבית — מה אומרים?"
-- Audio played: EN "Do you want to eat with us?" · FR "Tu veux manger avec nous ?" · ES "¿Quieres comer con nosotros?"
-- Meaning of the audio (HE): "רוצה לאכול איתנו?"
-- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Prompt displayed: "🏠 Home: Room: Living room / Mother: Kitchen ‖ 🌙 My evening: Dinner ? / Feeling ? / Next ? ¦ Decline politely: thank → but → your plan" / "🏠 הבית: חדר: סלון / אמא: מטבח ‖ 🌙 הערב שלי: ארוחת ערב ? / הרגשה ? / הלאה ? ¦ סרב יפה: תודה ← אבל ← התוכנית שלך" — cue shown: the sentence's MEANING in the app language ("תודה, אבל אני הולך לאכול אצל סבתא שלי.")
+- Audio played: EN "(nothing before Check; the built sentence is spoken once it is right)" · FR "(same)" · ES "(same)"
+- Meaning of the audio (HE): —
+- Buttons show: the authored CHUNKS of the sentence as tiles (listed here in the correct order, separated by "|"), shuffled; each language has its own chunks; Check unlocks when every tile is placed
 - Choices:
-  1. EN "Thanks, but I'm going to eat at my grandmother's." · FR "Merci, mais je vais manger chez ma grand-mère." · ES "Gracias, pero voy a comer en casa de mi abuela." · (HE gloss "אני הולך לאכול אצל סבתא שלי.") — `phrase.home.eat-at-grandmothers` — ✅ accepted
-  2. EN "Is this sofa new?" · FR "Ce canapé est nouveau ?" · ES "¿Este sofá es nuevo?" · (HE gloss "הספה הזאת חדשה?") — `phrase.home.is-this-new` — ❌ wrong
-  3. EN "Your home is beautiful." · FR "Ta maison est très belle." · ES "Tu casa es preciosa." · (HE gloss "הבית שלך יפהפה.") — `phrase.home.beautiful-home` — ❌ wrong
-- Tests: phrase.home.eat-at-grandmothers
-- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+  1. EN "Thanks, but  |  I'm going to eat  |  at my grandmother's." · FR "Merci, mais  |  je vais manger  |  chez ma grand-mère." · ES "Gracias, pero  |  voy a comer  |  en casa de mi abuela." · (HE gloss "תודה, אבל אני הולך לאכול אצל סבתא שלי.") — `phrase.home.thanks-but-grandmothers` — ✅ accepted
+- Tests: phrase.home.thanks-but-grandmothers
+- Explanation shown after answering: right: the sentence is spoken and its translation shown. Wrong: "not yet" — the tiles stay, the answer is NOT shown; after one miss a hint marks the start; after two misses the learner may reveal it
 
-### M13-Q14 — quick-reply (step 12, round 5 of 5)
+### M13-Q05 — quick-reply (step 12, round 1 of 1)
 
-- Prompt displayed: "At a friend's home — what do you say?" / "אצל חבר בבית — מה אומרים?"
+- Prompt displayed: "🏠 Home: Room: Living room / Mother: Kitchen ‖ 🌙 My evening: Dinner: Grandmother’s / Feeling ? / Next ? ¦ What do you answer?" / "🏠 הבית: חדר: סלון / אמא: מטבח ‖ 🌙 הערב שלי: ארוחת ערב: אצל סבתא / הרגשה ? / הלאה ? ¦ מה אתה עונה?"
 - Audio played: EN "Lovely! You look tired. Are you okay?" · FR "C’est bien ! Tu as l’air fatigué. Ça va ?" · ES "¡Qué bien! Pareces cansado. ¿Estás bien?"
 - Meaning of the audio (HE): "איזה יופי! אתה נראה עייף. הכל בסדר?"
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
   1. EN "Yes, I'm just tired." · FR "Oui, je suis juste fatigué." · ES "Sí, solo estoy cansado." · (HE gloss "אני עייף.") — `phrase.home.im-tired` — ✅ accepted
   2. EN "Yes, I live with my family." · FR "Oui, j’habite avec ma famille." · ES "Sí, vivo con mi familia." · (HE gloss "כן, אני גר עם המשפחה שלי.") — `phrase.home.live-with-family` — ❌ wrong
-  3. EN "Is this sofa new?" · FR "Ce canapé est nouveau ?" · ES "¿Este sofá es nuevo?" · (HE gloss "הספה הזאת חדשה?") — `phrase.home.is-this-new` — ❌ wrong
+  3. EN "Thanks, but I'm going to eat at my grandmother's." · FR "Merci, mais je vais manger chez ma grand-mère." · ES "Gracias, pero voy a comer en casa de mi abuela." · (HE gloss "אני הולך לאכול אצל סבתא שלי.") — `phrase.home.eat-at-grandmothers` — ❌ wrong
 - Tests: phrase.home.im-tired
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M13-Q24 — quick-reply (step 16, round 1 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
+### M13-Q06 — quick-reply (step 14, round 1 of 1)
+
+- Prompt displayed: "🏠 Home: Room: Living room / Mother: Kitchen ‖ 🌙 My evening: Dinner: Grandmother’s / Feeling: Tired / Next ? ¦ What do you answer?" / "🏠 הבית: חדר: סלון / אמא: מטבח ‖ 🌙 הערב שלי: ארוחת ערב: אצל סבתא / הרגשה: עייף / הלאה ? ¦ מה אתה עונה?"
+- Audio played: EN "Then go home and rest!" · FR "Alors rentre chez toi et repose-toi !" · ES "¡Entonces vete a casa y descansa!"
+- Meaning of the audio (HE): "אז לך הביתה ותנוח!"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Yes, I'm going home." · FR "Oui, je rentre chez moi." · ES "Sí, me voy a casa." · (HE gloss "אני הולך הביתה.") — `phrase.home.going-home` — ✅ accepted
+  2. EN "Yes, I'm just tired." · FR "Oui, je suis juste fatigué." · ES "Sí, solo estoy cansado." · (HE gloss "אני עייף.") — `phrase.home.im-tired` — ❌ wrong
+  3. EN "Where is your family?" · FR "Où est ta famille ?" · ES "¿Dónde está tu familia?" · (HE gloss "איפה המשפחה שלך?") — `phrase.home.where-family` — ❌ wrong
+- Tests: phrase.home.going-home
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M13-Q08 — visual-match (step 17, round 1 of 1)
+
+- Prompt displayed: "🔁 Flex round — another visit, the same words. Where is the mother now?" / "🔁 סבב גמיש — ביקור אחר, אותן מילים. איפה האמא עכשיו?"
+- Audio played: EN "My mother is in the living room." · FR "Ma mère est dans le salon." · ES "Mi madre está en el salón."
+- Meaning of the audio (HE): "אמא שלי בסלון."
+- Buttons show: a 3×3 board of 2 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "🛋️ “Living room” / “סלון”" — no sentence id — ✅ accepted
+  2. "🍳 “Kitchen” / “מטבח”" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M13-Q09 — quick-reply (step 18, round 1 of 1)
+
+- Prompt displayed: "🔁 Flex round — what do you say?" / "🔁 סבב גמיש — מה אתה אומר?" — situation shown: "After dinner at your grandmother’s — what’s next?" / "אחרי הארוחה אצל סבתא — מה הלאה?"
+- Audio played: EN "(nothing is played — a situation is shown)" · FR "(nothing is played — a situation is shown)" · ES "(nothing is played — a situation is shown)"
+- Meaning of the audio (HE): —
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "I'm going to sleep." · FR "Je vais dormir." · ES "Me voy a dormir." · (HE gloss "אני הולך לישון.") — `phrase.home.going-to-sleep` — ✅ accepted
+  2. EN "Where is your family?" · FR "Où est ta famille ?" · ES "¿Dónde está tu familia?" · (HE gloss "איפה המשפחה שלך?") — `phrase.home.where-family` — ❌ wrong
+  3. EN "Yes, I live with my family." · FR "Oui, j’habite avec ma famille." · ES "Sí, vivo con mi familia." · (HE gloss "כן, אני גר עם המשפחה שלי.") — `phrase.home.live-with-family` — ❌ wrong
+- Tests: phrase.home.going-to-sleep
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M13-Q10 — quick-reply (step 20, round 1 of 2)
+
+- Prompt displayed: "🏠 Home: Room ? / Family ? ‖ 🌙 My evening: Dinner ? / Feeling ? / Next ?" / "🏠 הבית: חדר ? / משפחה ? ‖ 🌙 הערב שלי: ארוחת ערב ? / הרגשה ? / הלאה ?"
+- Audio played: EN "Hi! Come in." · FR "Salut ! Entre." · ES "¡Hola! Pasa."
+- Meaning of the audio (HE): "היי! תיכנס."
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Thanks. Your home is beautiful." · FR "Merci. Ta maison est très belle." · ES "Gracias. Tu casa es preciosa." · (HE gloss "הבית שלך יפהפה.") — `phrase.home.beautiful-home` — ✅ accepted
+  2. EN "Is this sofa new?" · FR "Ce canapé est nouveau ?" · ES "¿Este sofá es nuevo?" · (HE gloss "הספה הזאת חדשה?") — `phrase.home.is-this-new` — ❌ wrong
+  3. EN "Yes, I'm going home." · FR "Oui, je rentre chez moi." · ES "Sí, me voy a casa." · (HE gloss "אני הולך הביתה.") — `phrase.home.going-home` — ❌ wrong
+- Tests: phrase.home.beautiful-home
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M13-Q11 — quick-reply (step 20, round 2 of 2)
+
+- Prompt displayed: "🏠 Home: Room ? / Family ? ‖ 🌙 My evening: Dinner ? / Feeling ? / Next ?" / "🏠 הבית: חדר ? / משפחה ? ‖ 🌙 הערב שלי: ארוחת ערב ? / הרגשה ? / הלאה ?"
+- Audio played: EN "Thank you. Let's sit in the living room." · FR "Merci. On s’assoit dans le salon." · ES "Gracias. Vamos a sentarnos en el salón."
+- Meaning of the audio (HE): "תודה. בוא נשב בסלון."
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Is this sofa new?" · FR "Ce canapé est nouveau ?" · ES "¿Este sofá es nuevo?" · (HE gloss "הספה הזאת חדשה?") — `phrase.home.is-this-new` — ✅ accepted
+  2. EN "I'm going to sleep." · FR "Je vais dormir." · ES "Me voy a dormir." · (HE gloss "אני הולך לישון.") — `phrase.home.going-to-sleep` — ❌ wrong
+  3. EN "Yes, I live with my family." · FR "Oui, j’habite avec ma famille." · ES "Sí, vivo con mi familia." · (HE gloss "כן, אני גר עם המשפחה שלי.") — `phrase.home.live-with-family` — ❌ wrong
+- Tests: phrase.home.is-this-new
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M13-Q12 — quick-reply (step 21, round 1 of 2)
+
+- Prompt displayed: "🏠 Home: Room: Living room / Family ? ‖ 🌙 My evening: Dinner ? / Feeling ? / Next ?" / "🏠 הבית: חדר: סלון / משפחה ? ‖ 🌙 הערב שלי: ארוחת ערב ? / הרגשה ? / הלאה ?"
+- Audio played: EN "Yes, it's new." · FR "Oui, il est nouveau." · ES "Sí, es nuevo."
+- Meaning of the audio (HE): "כן, היא חדשה."
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Where is your family?" · FR "Où est ta famille ?" · ES "¿Dónde está tu familia?" · (HE gloss "איפה המשפחה שלך?") — `phrase.home.where-family` — ✅ accepted
+  2. EN "Yes, I live with my family." · FR "Oui, j’habite avec ma famille." · ES "Sí, vivo con mi familia." · (HE gloss "כן, אני גר עם המשפחה שלי.") — `phrase.home.live-with-family` — ❌ wrong
+  3. EN "Thanks. Your home is beautiful." · FR "Merci. Ta maison est très belle." · ES "Gracias. Tu casa es preciosa." · (HE gloss "הבית שלך יפהפה.") — `phrase.home.beautiful-home` — ❌ wrong
+- Tests: phrase.home.where-family
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M13-Q13 — quick-reply (step 21, round 2 of 2)
+
+- Prompt displayed: "🏠 Home: Room: Living room / Family ? ‖ 🌙 My evening: Dinner ? / Feeling ? / Next ?" / "🏠 הבית: חדר: סלון / משפחה ? ‖ 🌙 הערב שלי: ארוחת ערב ? / הרגשה ? / הלאה ?"
+- Audio played: EN "My mother is in the kitchen. Do you live with your family?" · FR "Ma mère est dans la cuisine. Tu habites avec ta famille ?" · ES "Mi madre está en la cocina. ¿Vives con tu familia?"
+- Meaning of the audio (HE): "אמא שלי במטבח. אתה גר עם המשפחה שלך?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Yes, I live with my family." · FR "Oui, j’habite avec ma famille." · ES "Sí, vivo con mi familia." · (HE gloss "כן, אני גר עם המשפחה שלי.") — `phrase.home.live-with-family` — ✅ accepted
+  2. EN "Where is your family?" · FR "Où est ta famille ?" · ES "¿Dónde está tu familia?" · (HE gloss "איפה המשפחה שלך?") — `phrase.home.where-family` — ❌ wrong
+  3. EN "Yes, I'm just tired." · FR "Oui, je suis juste fatigué." · ES "Sí, solo estoy cansado." · (HE gloss "אני עייף.") — `phrase.home.im-tired` — ❌ wrong
+- Tests: phrase.home.live-with-family
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M13-Q14 — quick-reply (step 22, round 1 of 1)
+
+- Prompt displayed: "🏠 Home: Room: Living room / Mother: Kitchen ‖ 🌙 My evening: Dinner ? / Feeling ? / Next ?" / "🏠 הבית: חדר: סלון / אמא: מטבח ‖ 🌙 הערב שלי: ארוחת ערב ? / הרגשה ? / הלאה ?"
+- Audio played: EN "Nice. Are you hungry? Do you want to eat with us?" · FR "Super. Tu as faim ? Tu veux manger avec nous ?" · ES "Qué bien. ¿Tienes hambre? ¿Quieres comer con nosotros?"
+- Meaning of the audio (HE): "יפה. אתה רעב? רוצה לאכול איתנו?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Thanks, but I'm going to eat at my grandmother's." · FR "Merci, mais je vais manger chez ma grand-mère." · ES "Gracias, pero voy a comer en casa de mi abuela." · (HE gloss "אני הולך לאכול אצל סבתא שלי.") — `phrase.home.eat-at-grandmothers` — ✅ accepted
+  2. EN "Is this sofa new?" · FR "Ce canapé est nouveau ?" · ES "¿Este sofá es nuevo?" · (HE gloss "הספה הזאת חדשה?") — `phrase.home.is-this-new` — ❌ wrong
+  3. EN "I'm going to sleep." · FR "Je vais dormir." · ES "Me voy a dormir." · (HE gloss "אני הולך לישון.") — `phrase.home.going-to-sleep` — ❌ wrong
+- Tests: phrase.home.eat-at-grandmothers
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M13-Q15 — quick-reply (step 23, round 1 of 1)
+
+- Prompt displayed: "🏠 Home: Room: Living room / Mother: Kitchen ‖ 🌙 My evening: Dinner: Grandmother’s / Feeling ? / Next ?" / "🏠 הבית: חדר: סלון / אמא: מטבח ‖ 🌙 הערב שלי: ארוחת ערב: אצל סבתא / הרגשה ? / הלאה ?"
+- Audio played: EN "Lovely! You look tired. Are you okay?" · FR "C’est bien ! Tu as l’air fatigué. Ça va ?" · ES "¡Qué bien! Pareces cansado. ¿Estás bien?"
+- Meaning of the audio (HE): "איזה יופי! אתה נראה עייף. הכל בסדר?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Yes, I'm just tired." · FR "Oui, je suis juste fatigué." · ES "Sí, solo estoy cansado." · (HE gloss "אני עייף.") — `phrase.home.im-tired` — ✅ accepted
+  2. EN "Where is your family?" · FR "Où est ta famille ?" · ES "¿Dónde está tu familia?" · (HE gloss "איפה המשפחה שלך?") — `phrase.home.where-family` — ❌ wrong
+  3. EN "Thanks. Your home is beautiful." · FR "Merci. Ta maison est très belle." · ES "Gracias. Tu casa es preciosa." · (HE gloss "הבית שלך יפהפה.") — `phrase.home.beautiful-home` — ❌ wrong
+- Tests: phrase.home.im-tired
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M13-Q16 — quick-reply (step 24, round 1 of 1)
+
+- Prompt displayed: "🏠 Home: Room: Living room / Mother: Kitchen ‖ 🌙 My evening: Dinner: Grandmother’s / Feeling: Tired / Next ?" / "🏠 הבית: חדר: סלון / אמא: מטבח ‖ 🌙 הערב שלי: ארוחת ערב: אצל סבתא / הרגשה: עייף / הלאה ?"
+- Audio played: EN "Then go home and rest!" · FR "Alors rentre chez toi et repose-toi !" · ES "¡Entonces vete a casa y descansa!"
+- Meaning of the audio (HE): "אז לך הביתה ותנוח!"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Yes, I'm going home." · FR "Oui, je rentre chez moi." · ES "Sí, me voy a casa." · (HE gloss "אני הולך הביתה.") — `phrase.home.going-home` — ✅ accepted
+  2. EN "Yes, I live with my family." · FR "Oui, j’habite avec ma famille." · ES "Sí, vivo con mi familia." · (HE gloss "כן, אני גר עם המשפחה שלי.") — `phrase.home.live-with-family` — ❌ wrong
+  3. EN "Is this sofa new?" · FR "Ce canapé est nouveau ?" · ES "¿Este sofá es nuevo?" · (HE gloss "הספה הזאת חדשה?") — `phrase.home.is-this-new` — ❌ wrong
+- Tests: phrase.home.going-home
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M13-Q17 — quick-reply (step 25, round 1 of 1)
+
+- Prompt displayed: "🧭 Now: Friend’s home ● → Next: Home ¦ 🏠 Home: Room: Living room / Mother: Kitchen ‖ 🌙 My evening: Dinner: Grandmother’s / Feeling: Tired / Next: Home" / "🧭 עכשיו: אצל החבר ● → הבא: הביתה ¦ 🏠 הבית: חדר: סלון / אמא: מטבח ‖ 🌙 הערב שלי: ארוחת ערב: אצל סבתא / הרגשה: עייף / הלאה: הביתה"
+- Audio played: EN "And after dinner at your grandmother's?" · FR "Et après le dîner chez ta grand-mère ?" · ES "¿Y después de la cena en casa de tu abuela?"
+- Meaning of the audio (HE): "ואחרי הארוחה אצל סבתא?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "I'm going to sleep." · FR "Je vais dormir." · ES "Me voy a dormir." · (HE gloss "אני הולך לישון.") — `phrase.home.going-to-sleep` — ✅ accepted
+  2. EN "Thanks. Your home is beautiful." · FR "Merci. Ta maison est très belle." · ES "Gracias. Tu casa es preciosa." · (HE gloss "הבית שלך יפהפה.") — `phrase.home.beautiful-home` — ❌ wrong
+  3. EN "Where is your family?" · FR "Où est ta famille ?" · ES "¿Dónde está tu familia?" · (HE gloss "איפה המשפחה שלך?") — `phrase.home.where-family` — ❌ wrong
+- Tests: phrase.home.going-to-sleep
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M13-Q26 — quick-reply (step 29, round 1 of 4 · SPEED CHALLENGE (spoken at rate 1.12))
 
 - Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio played: EN "Hi! Come in." · FR "Salut ! Entre." · ES "¡Hola! Pasa."
@@ -13183,12 +13364,38 @@ No meaning quiz in this mission.
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
   1. EN "Thanks. Your home is beautiful." · FR "Merci. Ta maison est très belle." · ES "Gracias. Tu casa es preciosa." · (HE gloss "הבית שלך יפהפה.") — `phrase.home.beautiful-home` — ✅ accepted
-  2. EN "I'm tired." · FR "Je suis fatigué." · ES "Estoy cansado." · (HE gloss "אני עייף.") — `phrase.home.im-tired` — ❌ wrong
-  3. EN "I'm going home." · FR "Je rentre chez moi." · ES "Me voy a casa." · (HE gloss "אני הולך הביתה.") — `phrase.home.going-home` — ❌ wrong
+  2. EN "I'm going to sleep." · FR "Je vais dormir." · ES "Me voy a dormir." · (HE gloss "אני הולך לישון.") — `phrase.home.going-to-sleep` — ❌ wrong
+  3. EN "Where is your family?" · FR "Où est ta famille ?" · ES "¿Dónde está tu familia?" · (HE gloss "איפה המשפחה שלך?") — `phrase.home.where-family` — ❌ wrong
 - Tests: phrase.home.beautiful-home
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M13-Q25 — quick-reply (step 16, round 2 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
+### M13-Q27 — quick-reply (step 29, round 2 of 4 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "Thank you. Let's sit in the living room." · FR "Merci. On s’assoit dans le salon." · ES "Gracias. Vamos a sentarnos en el salón."
+- Meaning of the audio (HE): "תודה. בוא נשב בסלון."
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Is this sofa new?" · FR "Ce canapé est nouveau ?" · ES "¿Este sofá es nuevo?" · (HE gloss "הספה הזאת חדשה?") — `phrase.home.is-this-new` — ✅ accepted
+  2. EN "Yes, I'm going home." · FR "Oui, je rentre chez moi." · ES "Sí, me voy a casa." · (HE gloss "אני הולך הביתה.") — `phrase.home.going-home` — ❌ wrong
+  3. EN "Yes, I live with my family." · FR "Oui, j’habite avec ma famille." · ES "Sí, vivo con mi familia." · (HE gloss "כן, אני גר עם המשפחה שלי.") — `phrase.home.live-with-family` — ❌ wrong
+- Tests: phrase.home.is-this-new
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M13-Q28 — quick-reply (step 29, round 3 of 4 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "Yes, it's new." · FR "Oui, il est nouveau." · ES "Sí, es nuevo."
+- Meaning of the audio (HE): "כן, היא חדשה."
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Where is your family?" · FR "Où est ta famille ?" · ES "¿Dónde está tu familia?" · (HE gloss "איפה המשפחה שלך?") — `phrase.home.where-family` — ✅ accepted
+  2. EN "Yes, I'm just tired." · FR "Oui, je suis juste fatigué." · ES "Sí, solo estoy cansado." · (HE gloss "אני עייף.") — `phrase.home.im-tired` — ❌ wrong
+  3. EN "Thanks. Your home is beautiful." · FR "Merci. Ta maison est très belle." · ES "Gracias. Tu casa es preciosa." · (HE gloss "הבית שלך יפהפה.") — `phrase.home.beautiful-home` — ❌ wrong
+- Tests: phrase.home.where-family
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M13-Q29 — quick-reply (step 29, round 4 of 4 · SPEED CHALLENGE (spoken at rate 1.12))
 
 - Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio played: EN "My mother is in the kitchen. Do you live with your family?" · FR "Ma mère est dans la cuisine. Tu habites avec ta famille ?" · ES "Mi madre está en la cocina. ¿Vives con tu familia?"
@@ -13196,12 +13403,12 @@ No meaning quiz in this mission.
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
   1. EN "Yes, I live with my family." · FR "Oui, j’habite avec ma famille." · ES "Sí, vivo con mi familia." · (HE gloss "כן, אני גר עם המשפחה שלי.") — `phrase.home.live-with-family` — ✅ accepted
-  2. EN "Where is your family?" · FR "Où est ta famille ?" · ES "¿Dónde está tu familia?" · (HE gloss "איפה המשפחה שלך?") — `phrase.home.where-family` — ❌ wrong
+  2. EN "Is this sofa new?" · FR "Ce canapé est nouveau ?" · ES "¿Este sofá es nuevo?" · (HE gloss "הספה הזאת חדשה?") — `phrase.home.is-this-new` — ❌ wrong
   3. EN "I'm going to sleep." · FR "Je vais dormir." · ES "Me voy a dormir." · (HE gloss "אני הולך לישון.") — `phrase.home.going-to-sleep` — ❌ wrong
 - Tests: phrase.home.live-with-family
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M13-Q26 — quick-reply (step 16, round 3 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
+### M13-Q30 — quick-reply (step 30, round 1 of 2 · SPEED CHALLENGE (spoken at rate 1.12))
 
 - Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio played: EN "Nice. Are you hungry? Do you want to eat with us?" · FR "Super. Tu as faim ? Tu veux manger avec nous ?" · ES "Qué bien. ¿Tienes hambre? ¿Quieres comer con nosotros?"
@@ -13209,12 +13416,12 @@ No meaning quiz in this mission.
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
   1. EN "Thanks, but I'm going to eat at my grandmother's." · FR "Merci, mais je vais manger chez ma grand-mère." · ES "Gracias, pero voy a comer en casa de mi abuela." · (HE gloss "אני הולך לאכול אצל סבתא שלי.") — `phrase.home.eat-at-grandmothers` — ✅ accepted
-  2. EN "Your home is beautiful." · FR "Ta maison est très belle." · ES "Tu casa es preciosa." · (HE gloss "הבית שלך יפהפה.") — `phrase.home.beautiful-home` — ❌ wrong
-  3. EN "Yes, I live with my family." · FR "Oui, j’habite avec ma famille." · ES "Sí, vivo con mi familia." · (HE gloss "כן, אני גר עם המשפחה שלי.") — `phrase.home.live-with-family` — ❌ wrong
+  2. EN "Where is your family?" · FR "Où est ta famille ?" · ES "¿Dónde está tu familia?" · (HE gloss "איפה המשפחה שלך?") — `phrase.home.where-family` — ❌ wrong
+  3. EN "Yes, I'm just tired." · FR "Oui, je suis juste fatigué." · ES "Sí, solo estoy cansado." · (HE gloss "אני עייף.") — `phrase.home.im-tired` — ❌ wrong
 - Tests: phrase.home.eat-at-grandmothers
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M13-Q27 — quick-reply (step 16, round 4 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
+### M13-Q31 — quick-reply (step 30, round 2 of 2 · SPEED CHALLENGE (spoken at rate 1.12))
 
 - Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio played: EN "Lovely! You look tired. Are you okay?" · FR "C’est bien ! Tu as l’air fatigué. Ça va ?" · ES "¡Qué bien! Pareces cansado. ¿Estás bien?"
@@ -13223,11 +13430,11 @@ No meaning quiz in this mission.
 - Choices:
   1. EN "Yes, I'm just tired." · FR "Oui, je suis juste fatigué." · ES "Sí, solo estoy cansado." · (HE gloss "אני עייף.") — `phrase.home.im-tired` — ✅ accepted
   2. EN "Is this sofa new?" · FR "Ce canapé est nouveau ?" · ES "¿Este sofá es nuevo?" · (HE gloss "הספה הזאת חדשה?") — `phrase.home.is-this-new` — ❌ wrong
-  3. EN "Where is your family?" · FR "Où est ta famille ?" · ES "¿Dónde está tu familia?" · (HE gloss "איפה המשפחה שלך?") — `phrase.home.where-family` — ❌ wrong
+  3. EN "Yes, I live with my family." · FR "Oui, j’habite avec ma famille." · ES "Sí, vivo con mi familia." · (HE gloss "כן, אני גר עם המשפחה שלי.") — `phrase.home.live-with-family` — ❌ wrong
 - Tests: phrase.home.im-tired
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M13-Q28 — quick-reply (step 16, round 5 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
+### M13-Q32 — quick-reply (step 31, round 1 of 2 · SPEED CHALLENGE (spoken at rate 1.12))
 
 - Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio played: EN "Then go home and rest!" · FR "Alors rentre chez toi et repose-toi !" · ES "¡Entonces vete a casa y descansa!"
@@ -13235,9 +13442,138 @@ No meaning quiz in this mission.
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
   1. EN "Yes, I'm going home." · FR "Oui, je rentre chez moi." · ES "Sí, me voy a casa." · (HE gloss "אני הולך הביתה.") — `phrase.home.going-home` — ✅ accepted
-  2. EN "Where is your family?" · FR "Où est ta famille ?" · ES "¿Dónde está tu familia?" · (HE gloss "איפה המשפחה שלך?") — `phrase.home.where-family` — ❌ wrong
-  3. EN "Your home is beautiful." · FR "Ta maison est très belle." · ES "Tu casa es preciosa." · (HE gloss "הבית שלך יפהפה.") — `phrase.home.beautiful-home` — ❌ wrong
+  2. EN "Thanks. Your home is beautiful." · FR "Merci. Ta maison est très belle." · ES "Gracias. Tu casa es preciosa." · (HE gloss "הבית שלך יפהפה.") — `phrase.home.beautiful-home` — ❌ wrong
+  3. EN "Where is your family?" · FR "Où est ta famille ?" · ES "¿Dónde está tu familia?" · (HE gloss "איפה המשפחה שלך?") — `phrase.home.where-family` — ❌ wrong
 - Tests: phrase.home.going-home
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M13-Q33 — quick-reply (step 31, round 2 of 2 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "And after dinner at your grandmother's?" · FR "Et après le dîner chez ta grand-mère ?" · ES "¿Y después de la cena en casa de tu abuela?"
+- Meaning of the audio (HE): "ואחרי הארוחה אצל סבתא?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "I'm going to sleep." · FR "Je vais dormir." · ES "Me voy a dormir." · (HE gloss "אני הולך לישון.") — `phrase.home.going-to-sleep` — ✅ accepted
+  2. EN "Is this sofa new?" · FR "Ce canapé est nouveau ?" · ES "¿Este sofá es nuevo?" · (HE gloss "הספה הזאת חדשה?") — `phrase.home.is-this-new` — ❌ wrong
+  3. EN "Yes, I live with my family." · FR "Oui, j’habite avec ma famille." · ES "Sí, vivo con mi familia." · (HE gloss "כן, אני גר עם המשפחה שלי.") — `phrase.home.live-with-family` — ❌ wrong
+- Tests: phrase.home.going-to-sleep
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M13-Q34 — quick-reply (step 34, round 1 of 3)
+
+- Prompt displayed: "🏠 Home: Room ? / Family ? ‖ 🌙 My evening: Dinner ? / Feeling ? / Next ? ¦ A visit to a friend. Run the conversation and settle your evening." / "🏠 הבית: חדר ? / משפחה ? ‖ 🌙 הערב שלי: ארוחת ערב ? / הרגשה ? / הלאה ? ¦ ביקור אצל חבר. תנהל את השיחה ותסגור את הערב שלך." — situation shown: "You enter a friend’s home." / "נכנסת לבית של חבר."
+- Audio played: EN "(nothing is played — a situation is shown)" · FR "(nothing is played — a situation is shown)" · ES "(nothing is played — a situation is shown)"
+- Meaning of the audio (HE): —
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Thanks. Your home is beautiful." · FR "Merci. Ta maison est très belle." · ES "Gracias. Tu casa es preciosa." · (HE gloss "הבית שלך יפהפה.") — `phrase.home.beautiful-home` — ✅ accepted
+  2. EN "Yes, I'm going home." · FR "Oui, je rentre chez moi." · ES "Sí, me voy a casa." · (HE gloss "אני הולך הביתה.") — `phrase.home.going-home` — ❌ wrong
+  3. EN "Where is your family?" · FR "Où est ta famille ?" · ES "¿Dónde está tu familia?" · (HE gloss "איפה המשפחה שלך?") — `phrase.home.where-family` — ❌ wrong
+- Tests: phrase.home.beautiful-home
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M13-Q35 — quick-reply (step 34, round 2 of 3)
+
+- Prompt displayed: "🏠 Home: Room ? / Family ? ‖ 🌙 My evening: Dinner ? / Feeling ? / Next ? ¦ A visit to a friend. Run the conversation and settle your evening." / "🏠 הבית: חדר ? / משפחה ? ‖ 🌙 הערב שלי: ארוחת ערב ? / הרגשה ? / הלאה ? ¦ ביקור אצל חבר. תנהל את השיחה ותסגור את הערב שלך."
+- Audio played: EN "Thank you. Let's sit in the living room." · FR "Merci. On s’assoit dans le salon." · ES "Gracias. Vamos a sentarnos en el salón."
+- Meaning of the audio (HE): "תודה. בוא נשב בסלון."
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Is this sofa new?" · FR "Ce canapé est nouveau ?" · ES "¿Este sofá es nuevo?" · (HE gloss "הספה הזאת חדשה?") — `phrase.home.is-this-new` — ✅ accepted
+  2. EN "Yes, I live with my family." · FR "Oui, j’habite avec ma famille." · ES "Sí, vivo con mi familia." · (HE gloss "כן, אני גר עם המשפחה שלי.") — `phrase.home.live-with-family` — ❌ wrong
+  3. EN "I'm going to sleep." · FR "Je vais dormir." · ES "Me voy a dormir." · (HE gloss "אני הולך לישון.") — `phrase.home.going-to-sleep` — ❌ wrong
+- Tests: phrase.home.is-this-new
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M13-Q36 — quick-reply (step 34, round 3 of 3)
+
+- Prompt displayed: "🏠 Home: Room ? / Family ? ‖ 🌙 My evening: Dinner ? / Feeling ? / Next ? ¦ A visit to a friend. Run the conversation and settle your evening." / "🏠 הבית: חדר ? / משפחה ? ‖ 🌙 הערב שלי: ארוחת ערב ? / הרגשה ? / הלאה ? ¦ ביקור אצל חבר. תנהל את השיחה ותסגור את הערב שלך."
+- Audio played: EN "Yes, it's new." · FR "Oui, il est nouveau." · ES "Sí, es nuevo."
+- Meaning of the audio (HE): "כן, היא חדשה."
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Where is your family?" · FR "Où est ta famille ?" · ES "¿Dónde está tu familia?" · (HE gloss "איפה המשפחה שלך?") — `phrase.home.where-family` — ✅ accepted
+  2. EN "Is this sofa new?" · FR "Ce canapé est nouveau ?" · ES "¿Este sofá es nuevo?" · (HE gloss "הספה הזאת חדשה?") — `phrase.home.is-this-new` — ❌ wrong
+  3. EN "Yes, I'm just tired." · FR "Oui, je suis juste fatigué." · ES "Sí, solo estoy cansado." · (HE gloss "אני עייף.") — `phrase.home.im-tired` — ❌ wrong
+- Tests: phrase.home.where-family
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M13-Q37 — visual-match (step 35, round 1 of 1 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "My mother is in the kitchen. Do you live with your family?" · FR "Ma mère est dans la cuisine. Tu habites avec ta famille ?" · ES "Mi madre está en la cocina. ¿Vives con tu familia?"
+- Meaning of the audio (HE): "אמא שלי במטבח. אתה גר עם המשפחה שלך?"
+- Buttons show: a 3×3 board of 2 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "🛋️ “Living room” / “סלון”" — no sentence id — ❌ wrong
+  2. "🍳 “Kitchen” / “מטבח”" — no sentence id — ✅ accepted
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M13-Q38 — quick-reply (step 36, round 1 of 2)
+
+- Prompt displayed: "🏠 Home: Room: Living room / Mother: Kitchen ‖ 🌙 My evening: Dinner ? / Feeling ? / Next ?" / "🏠 הבית: חדר: סלון / אמא: מטבח ‖ 🌙 הערב שלי: ארוחת ערב ? / הרגשה ? / הלאה ?"
+- Audio played: EN "My mother is in the kitchen. Do you live with your family?" · FR "Ma mère est dans la cuisine. Tu habites avec ta famille ?" · ES "Mi madre está en la cocina. ¿Vives con tu familia?"
+- Meaning of the audio (HE): "אמא שלי במטבח. אתה גר עם המשפחה שלך?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Yes, I live with my family." · FR "Oui, j’habite avec ma famille." · ES "Sí, vivo con mi familia." · (HE gloss "כן, אני גר עם המשפחה שלי.") — `phrase.home.live-with-family` — ✅ accepted
+  2. EN "Where is your family?" · FR "Où est ta famille ?" · ES "¿Dónde está tu familia?" · (HE gloss "איפה המשפחה שלך?") — `phrase.home.where-family` — ❌ wrong
+  3. EN "Yes, I'm going home." · FR "Oui, je rentre chez moi." · ES "Sí, me voy a casa." · (HE gloss "אני הולך הביתה.") — `phrase.home.going-home` — ❌ wrong
+- Tests: phrase.home.live-with-family
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M13-Q39 — quick-reply (step 36, round 2 of 2)
+
+- Prompt displayed: "🏠 Home: Room: Living room / Mother: Kitchen ‖ 🌙 My evening: Dinner ? / Feeling ? / Next ?" / "🏠 הבית: חדר: סלון / אמא: מטבח ‖ 🌙 הערב שלי: ארוחת ערב ? / הרגשה ? / הלאה ?"
+- Audio played: EN "Nice. Are you hungry? Do you want to eat with us?" · FR "Super. Tu as faim ? Tu veux manger avec nous ?" · ES "Qué bien. ¿Tienes hambre? ¿Quieres comer con nosotros?"
+- Meaning of the audio (HE): "יפה. אתה רעב? רוצה לאכול איתנו?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Thanks, but I'm going to eat at my grandmother's." · FR "Merci, mais je vais manger chez ma grand-mère." · ES "Gracias, pero voy a comer en casa de mi abuela." · (HE gloss "אני הולך לאכול אצל סבתא שלי.") — `phrase.home.eat-at-grandmothers` — ✅ accepted
+  2. EN "Yes, I live with my family." · FR "Oui, j’habite avec ma famille." · ES "Sí, vivo con mi familia." · (HE gloss "כן, אני גר עם המשפחה שלי.") — `phrase.home.live-with-family` — ❌ wrong
+  3. EN "Thanks. Your home is beautiful." · FR "Merci. Ta maison est très belle." · ES "Gracias. Tu casa es preciosa." · (HE gloss "הבית שלך יפהפה.") — `phrase.home.beautiful-home` — ❌ wrong
+- Tests: phrase.home.eat-at-grandmothers
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M13-Q40 — quick-reply (step 37, round 1 of 1)
+
+- Prompt displayed: "🏠 Home: Room: Living room / Mother: Kitchen ‖ 🌙 My evening: Dinner: Grandmother’s / Feeling ? / Next ?" / "🏠 הבית: חדר: סלון / אמא: מטבח ‖ 🌙 הערב שלי: ארוחת ערב: אצל סבתא / הרגשה ? / הלאה ?"
+- Audio played: EN "Lovely! You look tired. Are you okay?" · FR "C’est bien ! Tu as l’air fatigué. Ça va ?" · ES "¡Qué bien! Pareces cansado. ¿Estás bien?"
+- Meaning of the audio (HE): "איזה יופי! אתה נראה עייף. הכל בסדר?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Yes, I'm just tired." · FR "Oui, je suis juste fatigué." · ES "Sí, solo estoy cansado." · (HE gloss "אני עייף.") — `phrase.home.im-tired` — ✅ accepted
+  2. EN "I'm going to sleep." · FR "Je vais dormir." · ES "Me voy a dormir." · (HE gloss "אני הולך לישון.") — `phrase.home.going-to-sleep` — ❌ wrong
+  3. EN "Is this sofa new?" · FR "Ce canapé est nouveau ?" · ES "¿Este sofá es nuevo?" · (HE gloss "הספה הזאת חדשה?") — `phrase.home.is-this-new` — ❌ wrong
+- Tests: phrase.home.im-tired
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M13-Q41 — quick-reply (step 38, round 1 of 1)
+
+- Prompt displayed: "🏠 Home: Room: Living room / Mother: Kitchen ‖ 🌙 My evening: Dinner: Grandmother’s / Feeling: Tired / Next ?" / "🏠 הבית: חדר: סלון / אמא: מטבח ‖ 🌙 הערב שלי: ארוחת ערב: אצל סבתא / הרגשה: עייף / הלאה ?"
+- Audio played: EN "Then go home and rest!" · FR "Alors rentre chez toi et repose-toi !" · ES "¡Entonces vete a casa y descansa!"
+- Meaning of the audio (HE): "אז לך הביתה ותנוח!"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Yes, I'm going home." · FR "Oui, je rentre chez moi." · ES "Sí, me voy a casa." · (HE gloss "אני הולך הביתה.") — `phrase.home.going-home` — ✅ accepted
+  2. EN "Thanks, but I'm going to eat at my grandmother's." · FR "Merci, mais je vais manger chez ma grand-mère." · ES "Gracias, pero voy a comer en casa de mi abuela." · (HE gloss "אני הולך לאכול אצל סבתא שלי.") — `phrase.home.eat-at-grandmothers` — ❌ wrong
+  3. EN "Where is your family?" · FR "Où est ta famille ?" · ES "¿Dónde está tu familia?" · (HE gloss "איפה המשפחה שלך?") — `phrase.home.where-family` — ❌ wrong
+- Tests: phrase.home.going-home
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M13-Q42 — quick-reply (step 39, round 1 of 1)
+
+- Prompt displayed: "🧭 Now: Friend’s home ● → Next: Home ¦ 🏠 Home: Room: Living room / Mother: Kitchen ‖ 🌙 My evening: Dinner: Grandmother’s / Feeling: Tired / Next: Home" / "🧭 עכשיו: אצל החבר ● → הבא: הביתה ¦ 🏠 הבית: חדר: סלון / אמא: מטבח ‖ 🌙 הערב שלי: ארוחת ערב: אצל סבתא / הרגשה: עייף / הלאה: הביתה"
+- Audio played: EN "And after dinner at your grandmother's?" · FR "Et après le dîner chez ta grand-mère ?" · ES "¿Y después de la cena en casa de tu abuela?"
+- Meaning of the audio (HE): "ואחרי הארוחה אצל סבתא?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "I'm going to sleep." · FR "Je vais dormir." · ES "Me voy a dormir." · (HE gloss "אני הולך לישון.") — `phrase.home.going-to-sleep` — ✅ accepted
+  2. EN "Is this sofa new?" · FR "Ce canapé est nouveau ?" · ES "¿Este sofá es nuevo?" · (HE gloss "הספה הזאת חדשה?") — `phrase.home.is-this-new` — ❌ wrong
+  3. EN "Yes, I live with my family." · FR "Oui, j’habite avec ma famille." · ES "Sí, vivo con mi familia." · (HE gloss "כן, אני גר עם המשפחה שלי.") — `phrase.home.live-with-family` — ❌ wrong
+- Tests: phrase.home.going-to-sleep
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
 ## Dialogue — full tree
@@ -13255,6 +13591,16 @@ No meaning quiz in this mission.
     - FR: Merci. Ta maison est très belle.
     - ES: Gracias. Tu casa es preciosa.
     - HE: תודה. הבית שלך יפהפה.
+  - choice 2 — ❌ WRONG → m2 — `phrase.home.is-this-new`
+    - EN: Is this sofa new?
+    - FR: Ce canapé est nouveau ?
+    - ES: ¿Este sofá es nuevo?
+    - HE: הספה הזאת חדשה?
+- **m2** · NPC · slow (TTS rate 0.75) · off the happy path → c2
+  - EN: Hi! Come in.
+  - FR: Salut ! Entre.
+  - ES: ¡Hola! Pasa.
+  - HE: היי! תיכנס.
 - **n3** · NPC · normal (TTS rate 0.95) → c4
   - EN: Thank you. Let's sit in the living room.
   - FR: Merci. On s’assoit dans le salon.
@@ -13266,6 +13612,16 @@ No meaning quiz in this mission.
     - FR: Ce canapé est nouveau ?
     - ES: ¿Este sofá es nuevo?
     - HE: הספה הזאת חדשה?
+  - choice 2 — ❌ WRONG → m4 — `phrase.home.going-to-sleep`
+    - EN: I'm going to sleep.
+    - FR: Je vais dormir.
+    - ES: Me voy a dormir.
+    - HE: אני הולך לישון.
+- **m4** · NPC · slow (TTS rate 0.75) · off the happy path → c4
+  - EN: Thank you. Let's sit in the living room.
+  - FR: Merci. On s’assoit dans le salon.
+  - ES: Gracias. Vamos a sentarnos en el salón.
+  - HE: תודה. בוא נשב בסלון.
 - **n5** · NPC · normal (TTS rate 0.95) → c6
   - EN: Yes, it's new.
   - FR: Oui, il est nouveau.
@@ -13277,6 +13633,16 @@ No meaning quiz in this mission.
     - FR: Où est ta famille ?
     - ES: ¿Dónde está tu familia?
     - HE: איפה המשפחה שלך?
+  - choice 2 — ❌ WRONG → m6 — `phrase.home.live-with-family`
+    - EN: Yes, I live with my family.
+    - FR: Oui, j’habite avec ma famille.
+    - ES: Sí, vivo con mi familia.
+    - HE: כן, אני גר עם המשפחה שלי.
+- **m6** · NPC · slow (TTS rate 0.75) · off the happy path → c6
+  - EN: Yes, it's new.
+  - FR: Oui, il est nouveau.
+  - ES: Sí, es nuevo.
+  - HE: כן, היא חדשה.
 - **n7** · NPC · fast (TTS rate 1.08) → c8
   - EN: My mother is in the kitchen. Do you live with your family?
   - FR: Ma mère est dans la cuisine. Tu habites avec ta famille ?
@@ -13288,22 +13654,16 @@ No meaning quiz in this mission.
     - FR: Oui, j’habite avec ma famille.
     - ES: Sí, vivo con mi familia.
     - HE: כן, אני גר עם המשפחה שלי.
-  - choice 2 — 🛟 accepted — conversation-help tool → r8 — `phrase.recovery.dont-understand`
-    - EN: Sorry, I don't understand.
-    - FR: Désolé, je ne comprends pas.
-    - ES: Perdón, no entiendo.
-    - HE: סליחה, אני לא מבין.
-- **r8** · NPC · slow (TTS rate 0.75) · off the happy path → c8b
-  - EN: You — and your family. One home?
-  - FR: Toi — et ta famille. La même maison ?
-  - ES: Tú — y tu familia. ¿La misma casa?
-  - HE: אתה — והמשפחה שלך. אותו בית?
-- **c8b** · LEARNER choice screen · off the happy path
-  - choice 1 — ✅ accepted → n9 — `phrase.home.live-with-family`
-    - EN: Yes, I live with my family.
-    - FR: Oui, j’habite avec ma famille.
-    - ES: Sí, vivo con mi familia.
-    - HE: כן, אני גר עם המשפחה שלי.
+  - choice 2 — ❌ WRONG → m8 — `phrase.home.where-family`
+    - EN: Where is your family?
+    - FR: Où est ta famille ?
+    - ES: ¿Dónde está tu familia?
+    - HE: איפה המשפחה שלך?
+- **m8** · NPC · slow (TTS rate 0.75) · off the happy path → c8
+  - EN: My mother is in the kitchen. Do you live with your family?
+  - FR: Ma mère est dans la cuisine. Tu habites avec ta famille ?
+  - ES: Mi madre está en la cocina. ¿Vives con tu familia?
+  - HE: אמא שלי במטבח. אתה גר עם המשפחה שלך?
 - **n9** · NPC · normal (TTS rate 0.95) → c10
   - EN: Nice. Are you hungry? Do you want to eat with us?
   - FR: Super. Tu as faim ? Tu veux manger avec nous ?
@@ -13315,6 +13675,16 @@ No meaning quiz in this mission.
     - FR: Merci, mais je vais manger chez ma grand-mère.
     - ES: Gracias, pero voy a comer en casa de mi abuela.
     - HE: תודה, אבל אני הולך לאכול אצל סבתא שלי.
+  - choice 2 — ❌ WRONG → m10 — `phrase.home.is-this-new`
+    - EN: Is this sofa new?
+    - FR: Ce canapé est nouveau ?
+    - ES: ¿Este sofá es nuevo?
+    - HE: הספה הזאת חדשה?
+- **m10** · NPC · slow (TTS rate 0.75) · off the happy path → c10
+  - EN: Nice. Are you hungry? Do you want to eat with us?
+  - FR: Super. Tu as faim ? Tu veux manger avec nous ?
+  - ES: Qué bien. ¿Tienes hambre? ¿Quieres comer con nosotros?
+  - HE: יפה. אתה רעב? רוצה לאכול איתנו?
 - **n11** · NPC · normal (TTS rate 0.95) → c12
   - EN: Lovely! You look tired. Are you okay?
   - FR: C’est bien ! Tu as l’air fatigué. Ça va ?
@@ -13326,6 +13696,16 @@ No meaning quiz in this mission.
     - FR: Oui, je suis juste fatigué.
     - ES: Sí, solo estoy cansado.
     - HE: כן, אני רק עייף.
+  - choice 2 — ❌ WRONG → m12 — `phrase.home.where-family`
+    - EN: Where is your family?
+    - FR: Où est ta famille ?
+    - ES: ¿Dónde está tu familia?
+    - HE: איפה המשפחה שלך?
+- **m12** · NPC · slow (TTS rate 0.75) · off the happy path → c12
+  - EN: Lovely! You look tired. Are you okay?
+  - FR: C’est bien ! Tu as l’air fatigué. Ça va ?
+  - ES: ¡Qué bien! Pareces cansado. ¿Estás bien?
+  - HE: איזה יופי! אתה נראה עייף. הכל בסדר?
 - **n13** · NPC · normal (TTS rate 0.95) → c14
   - EN: Then go home and rest!
   - FR: Alors rentre chez toi et repose-toi !
@@ -13337,6 +13717,16 @@ No meaning quiz in this mission.
     - FR: Oui, je rentre chez moi.
     - ES: Sí, me voy a casa.
     - HE: כן, אני הולך הביתה.
+  - choice 2 — ❌ WRONG → m14 — `phrase.home.live-with-family`
+    - EN: Yes, I live with my family.
+    - FR: Oui, j’habite avec ma famille.
+    - ES: Sí, vivo con mi familia.
+    - HE: כן, אני גר עם המשפחה שלי.
+- **m14** · NPC · slow (TTS rate 0.75) · off the happy path → c14
+  - EN: Then go home and rest!
+  - FR: Alors rentre chez toi et repose-toi !
+  - ES: ¡Entonces vete a casa y descansa!
+  - HE: אז לך הביתה ותנוח!
 - **n15** · NPC · normal (TTS rate 0.95) → c16
   - EN: And after dinner at your grandmother's?
   - FR: Et après le dîner chez ta grand-mère ?
@@ -13348,6 +13738,16 @@ No meaning quiz in this mission.
     - FR: Je vais dormir.
     - ES: Me voy a dormir.
     - HE: אני הולך לישון.
+  - choice 2 — ❌ WRONG → m16 — `phrase.home.beautiful-home`
+    - EN: Your home is beautiful.
+    - FR: Ta maison est très belle.
+    - ES: Tu casa es preciosa.
+    - HE: הבית שלך יפהפה.
+- **m16** · NPC · slow (TTS rate 0.75) · off the happy path → c16
+  - EN: And after dinner at your grandmother's?
+  - FR: Et après le dîner chez ta grand-mère ?
+  - ES: ¿Y después de la cena en casa de tu abuela?
+  - HE: ואחרי הארוחה אצל סבתא?
 - **n17** · NPC · normal (TTS rate 0.95) · END of scene
   - EN: Ha! Good night. Say hi to your family!
   - FR: Ha ! Bonne nuit. Dis bonjour à ta famille !
@@ -13395,7 +13795,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 
 ## Learner choice screens
 
-### M13-Q15 — dialogue-choice (step 13, scene "at-a-friends-home" · node c2)
+### M13-Q18 — dialogue-choice (step 27, scene "at-a-friends-home" · node c2)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Hi! Come in." · FR "Salut ! Entre." · ES "¡Hola! Pasa."
@@ -13403,10 +13803,11 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
   1. EN "Thanks. Your home is beautiful." · FR "Merci. Ta maison est très belle." · ES "Gracias. Tu casa es preciosa." · (HE gloss "תודה. הבית שלך יפהפה.") — `phrase.home.beautiful-home` — ✅ accepted → n3
-- Tests: phrase.home.beautiful-home
+  2. EN "Is this sofa new?" · FR "Ce canapé est nouveau ?" · ES "¿Este sofá es nuevo?" · (HE gloss "הספה הזאת חדשה?") — `phrase.home.is-this-new` — ❌ wrong → m2
+- Tests: phrase.home.beautiful-home, phrase.home.is-this-new
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M13-Q16 — dialogue-choice (step 13, scene "at-a-friends-home" · node c4)
+### M13-Q19 — dialogue-choice (step 27, scene "at-a-friends-home" · node c4)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Thank you. Let's sit in the living room." · FR "Merci. On s’assoit dans le salon." · ES "Gracias. Vamos a sentarnos en el salón."
@@ -13414,10 +13815,11 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
   1. EN "Is this sofa new?" · FR "Ce canapé est nouveau ?" · ES "¿Este sofá es nuevo?" · (HE gloss "הספה הזאת חדשה?") — `phrase.home.is-this-new` — ✅ accepted → n5
-- Tests: phrase.home.is-this-new
+  2. EN "I'm going to sleep." · FR "Je vais dormir." · ES "Me voy a dormir." · (HE gloss "אני הולך לישון.") — `phrase.home.going-to-sleep` — ❌ wrong → m4
+- Tests: phrase.home.is-this-new, phrase.home.going-to-sleep
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M13-Q17 — dialogue-choice (step 13, scene "at-a-friends-home" · node c6)
+### M13-Q20 — dialogue-choice (step 27, scene "at-a-friends-home" · node c6)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Yes, it's new." · FR "Oui, il est nouveau." · ES "Sí, es nuevo."
@@ -13425,10 +13827,11 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
   1. EN "Where is your family?" · FR "Où est ta famille ?" · ES "¿Dónde está tu familia?" · (HE gloss "איפה המשפחה שלך?") — `phrase.home.where-family` — ✅ accepted → n7
-- Tests: phrase.home.where-family
+  2. EN "Yes, I live with my family." · FR "Oui, j’habite avec ma famille." · ES "Sí, vivo con mi familia." · (HE gloss "כן, אני גר עם המשפחה שלי.") — `phrase.home.live-with-family` — ❌ wrong → m6
+- Tests: phrase.home.where-family, phrase.home.live-with-family
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M13-Q18 — dialogue-choice (step 13, scene "at-a-friends-home" · node c8)
+### M13-Q21 — dialogue-choice (step 27, scene "at-a-friends-home" · node c8)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "My mother is in the kitchen. Do you live with your family?" · FR "Ma mère est dans la cuisine. Tu habites avec ta famille ?" · ES "Mi madre está en la cocina. ¿Vives con tu familia?"
@@ -13436,22 +13839,11 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
   1. EN "Yes, I live with my family." · FR "Oui, j’habite avec ma famille." · ES "Sí, vivo con mi familia." · (HE gloss "כן, אני גר עם המשפחה שלי.") — `phrase.home.live-with-family` — ✅ accepted → n9
-  2. EN "Sorry, I don't understand." · FR "Désolé, je ne comprends pas." · ES "Perdón, no entiendo." · (HE gloss "סליחה, אני לא מבין.") — `phrase.recovery.dont-understand` — ✅ accepted → r8
-- Tests: phrase.home.live-with-family, phrase.recovery.dont-understand
+  2. EN "Where is your family?" · FR "Où est ta famille ?" · ES "¿Dónde está tu familia?" · (HE gloss "איפה המשפחה שלך?") — `phrase.home.where-family` — ❌ wrong → m8
+- Tests: phrase.home.live-with-family, phrase.home.where-family
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M13-Q19 — dialogue-choice (step 13, scene "at-a-friends-home" · node c8b)
-
-- Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio played: EN "You — and your family. One home?" · FR "Toi — et ta famille. La même maison ?" · ES "Tú — y tu familia. ¿La misma casa?"
-- Meaning of the audio (HE): "אתה — והמשפחה שלך. אותו בית?"
-- Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
-- Choices:
-  1. EN "Yes, I live with my family." · FR "Oui, j’habite avec ma famille." · ES "Sí, vivo con mi familia." · (HE gloss "כן, אני גר עם המשפחה שלי.") — `phrase.home.live-with-family` — ✅ accepted → n9
-- Tests: phrase.home.live-with-family
-- Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
-
-### M13-Q20 — dialogue-choice (step 13, scene "at-a-friends-home" · node c10)
+### M13-Q22 — dialogue-choice (step 27, scene "at-a-friends-home" · node c10)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Nice. Are you hungry? Do you want to eat with us?" · FR "Super. Tu as faim ? Tu veux manger avec nous ?" · ES "Qué bien. ¿Tienes hambre? ¿Quieres comer con nosotros?"
@@ -13459,10 +13851,11 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
   1. EN "Thanks, but I'm going to eat at my grandmother's." · FR "Merci, mais je vais manger chez ma grand-mère." · ES "Gracias, pero voy a comer en casa de mi abuela." · (HE gloss "תודה, אבל אני הולך לאכול אצל סבתא שלי.") — `phrase.home.eat-at-grandmothers` — ✅ accepted → n11
-- Tests: phrase.home.eat-at-grandmothers
+  2. EN "Is this sofa new?" · FR "Ce canapé est nouveau ?" · ES "¿Este sofá es nuevo?" · (HE gloss "הספה הזאת חדשה?") — `phrase.home.is-this-new` — ❌ wrong → m10
+- Tests: phrase.home.eat-at-grandmothers, phrase.home.is-this-new
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M13-Q21 — dialogue-choice (step 13, scene "at-a-friends-home" · node c12)
+### M13-Q23 — dialogue-choice (step 27, scene "at-a-friends-home" · node c12)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Lovely! You look tired. Are you okay?" · FR "C’est bien ! Tu as l’air fatigué. Ça va ?" · ES "¡Qué bien! Pareces cansado. ¿Estás bien?"
@@ -13470,10 +13863,11 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
   1. EN "Yes, I'm just tired." · FR "Oui, je suis juste fatigué." · ES "Sí, solo estoy cansado." · (HE gloss "כן, אני רק עייף.") — `phrase.home.im-tired` — ✅ accepted → n13
-- Tests: phrase.home.im-tired
+  2. EN "Where is your family?" · FR "Où est ta famille ?" · ES "¿Dónde está tu familia?" · (HE gloss "איפה המשפחה שלך?") — `phrase.home.where-family` — ❌ wrong → m12
+- Tests: phrase.home.im-tired, phrase.home.where-family
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M13-Q22 — dialogue-choice (step 13, scene "at-a-friends-home" · node c14)
+### M13-Q24 — dialogue-choice (step 27, scene "at-a-friends-home" · node c14)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Then go home and rest!" · FR "Alors rentre chez toi et repose-toi !" · ES "¡Entonces vete a casa y descansa!"
@@ -13481,10 +13875,11 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
   1. EN "Yes, I'm going home." · FR "Oui, je rentre chez moi." · ES "Sí, me voy a casa." · (HE gloss "כן, אני הולך הביתה.") — `phrase.home.going-home` — ✅ accepted → n15
-- Tests: phrase.home.going-home
+  2. EN "Yes, I live with my family." · FR "Oui, j’habite avec ma famille." · ES "Sí, vivo con mi familia." · (HE gloss "כן, אני גר עם המשפחה שלי.") — `phrase.home.live-with-family` — ❌ wrong → m14
+- Tests: phrase.home.going-home, phrase.home.live-with-family
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M13-Q23 — dialogue-choice (step 13, scene "at-a-friends-home" · node c16)
+### M13-Q25 — dialogue-choice (step 27, scene "at-a-friends-home" · node c16)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "And after dinner at your grandmother's?" · FR "Et après le dîner chez ta grand-mère ?" · ES "¿Y después de la cena en casa de tu abuela?"
@@ -13492,38 +13887,65 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
   1. EN "I'm going to sleep." · FR "Je vais dormir." · ES "Me voy a dormir." · (HE gloss "אני הולך לישון.") — `phrase.home.going-to-sleep` — ✅ accepted → n17
-- Tests: phrase.home.going-to-sleep
+  2. EN "Your home is beautiful." · FR "Ta maison est très belle." · ES "Tu casa es preciosa." · (HE gloss "הבית שלך יפהפה.") — `phrase.home.beautiful-home` — ❌ wrong → m16
+- Tests: phrase.home.going-to-sleep, phrase.home.beautiful-home
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
 ## Recovery tools in this mission
 
-Toolkit phrases bundled into this mission's sentence list: `phrase.recovery.dont-understand` "Sorry, I don't understand.".
+No toolkit phrase is bundled into this mission.
 
-Where a conversation-help tool can be selected, and what happens:
+No conversation-help tool is selectable in this mission's dialogues.
 
-- Scene `at-a-friends-home`, c8 — `phrase.recovery.dont-understand` "Sorry, I don't understand." ("סליחה, אני לא מבין.") — after NPC "My mother is in the kitchen. Do you live with your family?" → r8: NPC "You — and your family. One home?" (slow) → r8 → c8b → rejoins the happy path at n9. Counts as success (recorded as "pass"); no feedback card — the dialogue simply continues.
 
 ## Wrong answer branches
 
-None — no choice in this mission is marked wrong.
+8 reachable wrong-answer branch(es):
 
+- Scene `at-a-friends-home`, c2 — after NPC "Hi! Come in."
+  - Wrong choice: "Is this sofa new?" ("הספה הזאת חדשה?") — `phrase.home.is-this-new`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("Thanks. Your home is beautiful."), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m2): "Hi! Come in." — HE "היי! תיכנס."
+  - Then: m2 → rejoins the happy path at c2. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
+- Scene `at-a-friends-home`, c4 — after NPC "Thank you. Let's sit in the living room."
+  - Wrong choice: "I'm going to sleep." ("אני הולך לישון.") — `phrase.home.going-to-sleep`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("Is this sofa new?"), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m4): "Thank you. Let's sit in the living room." — HE "תודה. בוא נשב בסלון."
+  - Then: m4 → rejoins the happy path at c4. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
+- Scene `at-a-friends-home`, c6 — after NPC "Yes, it's new."
+  - Wrong choice: "Yes, I live with my family." ("כן, אני גר עם המשפחה שלי.") — `phrase.home.live-with-family`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("Where is your family?"), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m6): "Yes, it's new." — HE "כן, היא חדשה."
+  - Then: m6 → rejoins the happy path at c6. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
+- Scene `at-a-friends-home`, c8 — after NPC "My mother is in the kitchen. Do you live with your family?"
+  - Wrong choice: "Where is your family?" ("איפה המשפחה שלך?") — `phrase.home.where-family`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("Yes, I live with my family."), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m8): "My mother is in the kitchen. Do you live with your family?" — HE "אמא שלי במטבח. אתה גר עם המשפחה שלך?"
+  - Then: m8 → rejoins the happy path at c8. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
+- Scene `at-a-friends-home`, c10 — after NPC "Nice. Are you hungry? Do you want to eat with us?"
+  - Wrong choice: "Is this sofa new?" ("הספה הזאת חדשה?") — `phrase.home.is-this-new`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("Thanks, but I'm going to eat at my grandmother's."), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m10): "Nice. Are you hungry? Do you want to eat with us?" — HE "יפה. אתה רעב? רוצה לאכול איתנו?"
+  - Then: m10 → rejoins the happy path at c10. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
+- Scene `at-a-friends-home`, c12 — after NPC "Lovely! You look tired. Are you okay?"
+  - Wrong choice: "Where is your family?" ("איפה המשפחה שלך?") — `phrase.home.where-family`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("Yes, I'm just tired."), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m12): "Lovely! You look tired. Are you okay?" — HE "איזה יופי! אתה נראה עייף. הכל בסדר?"
+  - Then: m12 → rejoins the happy path at c12. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
+- Scene `at-a-friends-home`, c14 — after NPC "Then go home and rest!"
+  - Wrong choice: "Yes, I live with my family." ("כן, אני גר עם המשפחה שלי.") — `phrase.home.live-with-family`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("Yes, I'm going home."), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m14): "Then go home and rest!" — HE "אז לך הביתה ותנוח!"
+  - Then: m14 → rejoins the happy path at c14. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
+- Scene `at-a-friends-home`, c16 — after NPC "And after dinner at your grandmother's?"
+  - Wrong choice: "Your home is beautiful." ("הבית שלך יפהפה.") — `phrase.home.beautiful-home`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("I'm going to sleep."), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m16): "And after dinner at your grandmother's?" — HE "ואחרי הארוחה אצל סבתא?"
+  - Then: m16 → rejoins the happy path at c16. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
 
 ## Sentence review
 
-Step 15. 12 sentences, in this fixed order. Each is played automatically (TTS), shown with its translation and tip; buttons: 🔊 "Hear again" / "לשמוע שוב" and Next. No speaking prompt, no grading, no scoring; nothing is recorded.
-
-1. `phrase.home.eat-at-grandmothers` — I'm going to eat at my grandmother's. — אני הולך לאכול אצל סבתא שלי.
-2. `phrase.home.going-home` — I'm going home. — אני הולך הביתה.
-3. `phrase.home.going-to-sleep` — I'm going to sleep. — אני הולך לישון.
-4. `phrase.home.im-tired` — I'm tired. — אני עייף.
-5. `phrase.home.where-family` — Where is your family? — איפה המשפחה שלך?
-6. `phrase.home.live-with-family` — Yes, I live with my family. — כן, אני גר עם המשפחה שלי.
-7. `phrase.home.beautiful-home` — Your home is beautiful. — הבית שלך יפהפה.
-8. `reply.home.come-in` — Come in. — תיכנס.
-9. `reply.home.live-with-family-q` — Do you live with your family? — אתה גר עם המשפחה שלך?
-10. `reply.home.are-you-hungry` — Are you hungry? — אתה רעב?
-11. `reply.home.eat-with-us` — Do you want to eat with us? — רוצה לאכול איתנו?
-12. `phrase.recovery.dont-understand` — Sorry, I don't understand. — סליחה, אני לא מבין.
+No sentence-review step in this mission.
 
 ## Cold open / ambush
 
@@ -13536,44 +13958,43 @@ The runtime has NO slot-substitution mechanism: no sentence is generated with a 
 No choice screen offers two accepted non-toolkit lines.
 
 
-Every learner sentence of this mission is a line in a scene.
+Learner sentences taught beside the dialogue (not a line in any scene):
 
+- `phrase.home.thanks-but-grandmothers` — Thanks, but I'm going to eat at my grandmother's.
 
 ## Receipts (proof cards)
 
-- Step 9: "You understand when someone invites you in, to sit, and to eat." / "אתה מבין כשמזמינים אותך להיכנס, לשבת ולאכול."
-- Step 14: "You talked about home, family and what you are about to do — without a single tourist word." / "דיברת על בית, משפחה ועל מה שאתה עומד לעשות — בלי מילה אחת על תיירות."
-- Step 17: "A whole visit to a friend's home, at normal pace: you came in, talked about family, said what you are doing and how you feel." / "ביקור שלם אצל חבר, בקצב רגיל: נכנסת, דיברת על המשפחה, אמרת מה אתה עושה ואיך אתה מרגיש."
+- Step 19: "🧭 Now: Friend’s home ● → Home · rest → Dinner at grandmother’s → Sleep ¦ 🏠 Home: Room: Living room / Mother: Kitchen ‖ 🌙 My evening: Dinner: Grandmother’s / Feeling: Tired / Next: Home → Sleep ¦ Your evening: home, dinner at your grandmother’s, then sleep." / "🧭 עכשיו: אצל החבר ● → הביתה · מנוחה → ארוחת ערב אצל סבתא → לישון ¦ 🏠 הבית: חדר: סלון / אמא: מטבח ‖ 🌙 הערב שלי: ארוחת ערב: אצל סבתא / הרגשה: עייף / הלאה: הביתה → לישון ¦ הערב שלך: הביתה, ארוחת ערב אצל סבתא, ואז לישון."
+- Step 26: "🧭 Now: Friend’s home ● → Home · rest → Dinner at grandmother’s → Sleep ¦ 🏠 Home: Room: Living room / Mother: Kitchen ‖ 🌙 My evening: Dinner: Grandmother’s / Feeling: Tired / Next: Home → Sleep ¦ The whole visit — from the door to your evening." / "🧭 עכשיו: אצל החבר ● → הביתה · מנוחה → ארוחת ערב אצל סבתא → לישון ¦ 🏠 הבית: חדר: סלון / אמא: מטבח ‖ 🌙 הערב שלי: ארוחת ערב: אצל סבתא / הרגשה: עייף / הלאה: הביתה → לישון ¦ כל הביקור — מהדלת ועד הערב שלך."
+- Step 28: "The whole conversation — you came in, asked, declined politely and said what’s next." / "כל השיחה — נכנסת, שאלת, סירבת יפה וסיפרת מה הלאה."
+- Step 32: "No help — the whole visit, at a friend’s pace." / "בלי עזרה — כל הביקור, בקצב של חבר."
+- Step 40: "🏠 HOME VISIT COMPLETE ¦ 🧭 Now: Friend’s home ● → Home · rest → Dinner at grandmother’s → Sleep ¦ 🏠 Home: Room: Living room / Mother: Kitchen ‖ 🌙 My evening: Dinner: Grandmother’s / Feeling: Tired / Next: Home → Sleep" / "🏠 הביקור הושלם ¦ 🧭 עכשיו: אצל החבר ● → הביתה · מנוחה → ארוחת ערב אצל סבתא → לישון ¦ 🏠 הבית: חדר: סלון / אמא: מטבח ‖ 🌙 הערב שלי: ארוחת ערב: אצל סבתא / הרגשה: עייף / הלאה: הביתה → לישון"
 
 ## Audit Metadata — DO NOT FIX YET
 
-- Learner-production sentences: 8
-- Receptive (expected-reply) sentences: 5
-- Toolkit phrases bundled: 1
-- Key-sentence steps: 6
-- Expected-reply/listening items: 4
-- Questions/quizzes (meaning quiz): 0
-- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 15
-- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 16
-- One-button dialogue screens: 8
+- Learner-production sentences: 9
+- Receptive (expected-reply) sentences: 9
+- Toolkit phrases bundled: 0
+- Key-sentence steps: 0
+- Expected-reply/listening items: 0
+- Questions/quizzes (meaning quiz): 1
+- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 33
+- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 38
+- One-button dialogue screens: 0
 - Learner sentences never actively retrieved: 0
-- Dialogue learner choices (screens): 9
-- Wrong-answer branches: 0
+- Dialogue learner choices (screens): 8
+- Wrong-answer branches: 8
 - Cold-open prompts: 0
-- Recovery opportunities: 1
-- Vocabulary pre-items: 0
+- Recovery opportunities: 0
+- Vocabulary pre-items: 17
 - Swap variants (extra accepted lines): 0
-- Sentences in review: 12
-- Total interactive questions: 28 (answer choices: 63)
-- Approximate total learner interactions: 46 (questions + key sentences + review cards + word-intro screen)
+- Sentences in review: 0
+- Total interactive questions: 42 (answer choices: 113)
+- Approximate total learner interactions: 43 (questions + key sentences + review cards + word-intro screen)
 
-### AUTO-FLAG — requires human review (5)
+### AUTO-FLAG — requires human review (1)
 
-- AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "at-a-friends-home" n11 — “Lovely! You look tired. Are you okay?”
-- AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "at-a-friends-home" n15 — “And after dinner at your grandmother's?”
 - AUTO-FLAG — Line shown differs from the sentence it is scored as: scene "at-a-friends-home" c12 — shown “Yes, I'm just tired.”, scored as `phrase.home.im-tired` “I'm tired.”.
-- AUTO-FLAG — 9 of 9 choice screens have NO wrong option (every button is accepted): at-a-friends-home/c2, at-a-friends-home/c4, at-a-friends-home/c6, at-a-friends-home/c8, at-a-friends-home/c8b, at-a-friends-home/c10, at-a-friends-home/c12, at-a-friends-home/c14, at-a-friends-home/c16.
-- AUTO-FLAG — 8 choice screens offer exactly ONE button (no decision): at-a-friends-home/c2, at-a-friends-home/c4, at-a-friends-home/c6, at-a-friends-home/c8b, at-a-friends-home/c10, at-a-friends-home/c12, at-a-friends-home/c14, at-a-friends-home/c16.
 
 ---
 
@@ -13860,7 +14281,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Perdón, no entiendo.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 13, 14
+- Used in missions: 14
 - Exercised here as: sentence review (step 13); dialogue choice sit-down-meal/c1 (accepted)
 
 ## Expected replies / listening items
@@ -29699,7 +30120,7 @@ Every learner sentence of this mission is a line in a scene.
 | 10 CHECKPOINT: Arrival Day | 10 (9 / 0 / 1) | 0 | 0 | 0 | 0 | 0 | 11 | 0 | 0 | no | 0 | 0 | 9 |
 | 11 Small Talk & Recommendations | 14 (7 / 7 / 0) | 0 | 1 | 1 | 31 | 6 | 0 | 0 | 0 | 14 words | 0 | 38 | 15 |
 | 12 Time & Plans | 16 (8 / 8 / 0) | 0 | 1 | 1 | 31 | 7 | 0 | 0 | 0 | 17 words | 0 | 39 | 0 |
-| 13 Home, Family & Daily Routine | 14 (8 / 5 / 1) | 4 | 4 | 0 | 15 | 9 | 8 | 1 | 0 | no | 0 | 28 | 5 |
+| 13 Home, Family & Daily Routine | 18 (9 / 9 / 0) | 0 | 1 | 1 | 33 | 8 | 0 | 0 | 0 | 17 words | 0 | 42 | 1 |
 | 14 Restaurant Meal | 18 (7 / 6 / 5) | 5 | 5 | 0 | 13 | 6 | 4 | 2 | 0 | 5 words | 1 | 24 | 7 |
 | 15 Food Preferences & Allergies | 13 (5 / 5 / 3) | 4 | 4 | 0 | 12 | 10 | 5 | 3 | 1 | no | 1 | 27 | 6 |
 | 16 Hobbies & Free Time | 15 (8 / 6 / 1) | 4 | 4 | 0 | 15 | 9 | 8 | 1 | 0 | no | 0 | 28 | 5 |
@@ -29792,14 +30213,15 @@ Every learner-production sentence id of the Core, in order of first appearance. 
 | `phrase.time.what-doing-tomorrow` | What are you doing tomorrow? | 12 | — | 0 | 1 / 1 | 8 | 0 | 0 | no | no |  |
 | `phrase.time.lets-meet` | Let's meet here at seven. | 12 | 18 | 0 | 2 / 0 | 6 | 0 | 0 | yes | no |  |
 | `phrase.time.no-problem-meet` | No problem. Let's meet here at seven. | 12 | — | 0 | 0 / 0 | 1 | 0 | 0 | no | no |  |
-| `phrase.home.beautiful-home` | Your home is beautiful. | 13 | — | 1 | 1 / 0 | 5 | 0 | 1 | no | no |  |
-| `phrase.home.is-this-new` | Is this sofa new? | 13 | — | 0 | 1 / 0 | 4 | 0 | 0 | no | no |  |
-| `phrase.home.where-family` | Where is your family? | 13 | 18 | 1 | 1 / 1 | 5 | 0 | 1 | yes | no |  |
-| `phrase.home.live-with-family` | Yes, I live with my family. | 13 | — | 0 | 2 / 0 | 6 | 0 | 1 | no | no |  |
-| `phrase.home.eat-at-grandmothers` | I'm going to eat at my grandmother's. | 13 | — | 1 | 1 / 0 | 4 | 0 | 1 | no | no |  |
-| `phrase.home.im-tired` | I'm tired. | 13 | — | 1 | 1 / 0 | 4 | 0 | 1 | no | no |  |
-| `phrase.home.going-home` | I'm going home. | 13 | 18 | 1 | 2 / 0 | 4 | 0 | 1 | yes | no |  |
-| `phrase.home.going-to-sleep` | I'm going to sleep. | 13 | — | 1 | 1 / 0 | 3 | 0 | 1 | no | no |  |
+| `phrase.home.beautiful-home` | Your home is beautiful. | 13 | — | 0 | 1 / 1 | 10 | 0 | 0 | no | no |  |
+| `phrase.home.is-this-new` | Is this sofa new? | 13 | — | 0 | 1 / 2 | 14 | 0 | 0 | no | no |  |
+| `phrase.home.going-to-sleep` | I'm going to sleep. | 13 | — | 0 | 1 / 1 | 10 | 0 | 0 | no | no |  |
+| `phrase.home.where-family` | Where is your family? | 13 | 18 | 0 | 1 / 3 | 16 | 0 | 0 | yes | no |  |
+| `phrase.home.live-with-family` | Yes, I live with my family. | 13 | — | 0 | 1 / 2 | 15 | 0 | 0 | no | no |  |
+| `phrase.home.eat-at-grandmothers` | I'm going to eat at my grandmother's. | 13 | — | 0 | 1 / 0 | 5 | 0 | 0 | no | no |  |
+| `phrase.home.im-tired` | I'm tired. | 13 | — | 0 | 1 / 0 | 9 | 0 | 0 | no | no |  |
+| `phrase.home.going-home` | I'm going home. | 13 | 18 | 0 | 2 / 0 | 8 | 0 | 0 | yes | no |  |
+| `phrase.home.thanks-but-grandmothers` | Thanks, but I'm going to eat at my grandmother's. | 13 | — | 0 | 0 / 0 | 1 | 0 | 0 | no | no |  |
 | `phrase.rest.table-two` | A table for two, please. | 14 | 18, 28, 29, 30 | 1 | 6 / 4 | 9 | 0 | 1 | yes | no |  |
 | `phrase.rest.ill-have-chicken` | I'll have the chicken. | 14 | 18, 30 | 1 | 3 / 1 | 4 | 0 | 1 | yes | no |  |
 | `phrase.rest.water` | A bottle of water, please. | 14 | 18, 28, 29, 30 | 0 | 4 / 3 | 5 | 0 | 1 | yes | no |  |
@@ -29889,7 +30311,7 @@ Every learner-production sentence id of the Core, in order of first appearance. 
 | `phrase.emerg.call-police` | Call the police! | 27 | — | 1 | 0 / 0 | 4 | 0 | 1 | no | no |  |
 | `phrase.emerg.where-hospital` | Where is the hospital? | 27 | — | 0 | 0 / 0 | 2 | 0 | 0 | no | no |  |
 
-Learner-production sentence ids: 162. With 0 active retrieval opportunities: 1.
+Learner-production sentence ids: 163. With 0 active retrieval opportunities: 1.
 
 # NPC Comprehension Coverage
 
@@ -29987,11 +30409,15 @@ Every expected-reply sentence id. "Quick response" does not exist as an exercise
 | `reply.time.beach` | Tomorrow morning I'm going to the beach. Are you free tomorrow? | 12 | — | no | 0 / 0 | 0 / 0 | no | yes |
 | `reply.time.early` | Then come with us! But we leave early. | 12 | — | no | 1 / 0 | 0 / 0 | no | yes |
 | `reply.time.goodbye` | Perfect. I have to go now — see you tonight! | 12 | — | no | 0 / 0 | 0 / 0 | no | yes |
-| `reply.home.come-in` | Come in. | 13 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
-| `reply.home.sit-living-room` | Let's sit in the living room. | 13 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
-| `reply.home.live-with-family-q` | Do you live with your family? | 13 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
-| `reply.home.are-you-hungry` | Are you hungry? | 13 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
-| `reply.home.eat-with-us` | Do you want to eat with us? | 13 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.home.come-in` | Hi! Come in. | 13 | — | no | 0 / 1 | 0 / 0 | no | yes |
+| `reply.home.sit` | Thank you. Let's sit in the living room. | 13 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.home.new` | Yes, it's new. | 13 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.home.mother` | My mother is in the kitchen. Do you live with your family? | 13 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.home.hungry` | Nice. Are you hungry? Do you want to eat with us? | 13 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.home.tired` | Lovely! You look tired. Are you okay? | 13 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.home.rest` | Then go home and rest! | 13 | — | no | 0 / 1 | 0 / 0 | no | yes |
+| `reply.home.after` | And after dinner at your grandmother's? | 13 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.home.goodbye` | Ha! Good night. Say hi to your family! | 13 | — | no | 1 / 0 | 0 / 0 | no | yes |
 | `reply.rest.reservation` | Do you have a reservation? | 14 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
 | `reply.rest.follow-me` | Follow me, please. | 14 | — | no | 0 / 0 | 0 / 0 | no | **no** |
 | `reply.rest.ready-to-order` | Are you ready to order? | 14 | 18 | yes (1) | 0 / 0 | 1 / 0 | yes | yes |
@@ -30077,8 +30503,6 @@ Happy-path NPC lines containing a question, for which the mission has no expecte
 | 10 | cold-taxi / n1 | Hello! Where to? |
 | 10 | cold-taxi / n5 | …We are almost there. Is here okay? |
 | 10 | cold-hotel / n1 | Good evening! How can I help you? |
-| 13 | at-a-friends-home / n11 | Lovely! You look tired. Are you okay? |
-| 13 | at-a-friends-home / n15 | And after dinner at your grandmother's? |
 | 15 | allergy-order / n1 | Hi there! Are you ready to order? |
 | 16 | free-time-chat / n1 | Hi! Are you free today? |
 | 16 | free-time-chat / n7 | Nice! When do you draw? |
@@ -30156,7 +30580,7 @@ Happy-path NPC lines containing a question, for which the mission has no expecte
 | 30 | fin-evening / n1 | Good evening! Is everything okay with your room? And breakfast tomorrow — is seven okay for you? |
 | 30 | fin-evening / n3 | Perfect. And how was your day? |
 
-Total: 86.
+Total: 84.
 
 # Complete Existing Question Bank
 
@@ -34426,236 +34850,370 @@ No questions.
 
 ## Mission 13 — Home, Family & Daily Routine
 
-**M13-Q01** — expected-reply
-- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (1/4)
-- Audio: Come in. — (תיכנס.)
-- A: תיכנס. / Come in. ✅
-- B: בוא נשב בסלון. / Let's sit in the living room.
-- C: אתה רעב? / Are you hungry?
-- Correct: Come in.
-- Tests: reply.home.come-in
+**M13-Q01** — quick-reply
+- Prompt: "🏠 Home: Room: Living room / Family ? ‖ 🌙 My evening: Dinner ? / Feeling ? / Next ? ¦ What do you ask?" / "🏠 הבית: חדר: סלון / משפחה ? ‖ 🌙 הערב שלי: ארוחת ערב ? / הרגשה ? / הלאה ? ¦ מה אתה שואל?" — situation shown: "You want to know where your friend’s family is." / "אתה רוצה לדעת איפה המשפחה של החבר."
+- Audio: (nothing is played — a situation is shown) — ()
+- A: Where is your family? ✅
+- B: Is this sofa new?
+- C: Thanks. Your home is beautiful.
+- Correct: Where is your family?
+- Tests: phrase.home.where-family
 
-**M13-Q02** — expected-reply
-- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (2/4)
-- Audio: Let's sit in the living room. — (בוא נשב בסלון.)
-- A: בוא נשב בסלון. / Let's sit in the living room. ✅
-- B: תיכנס. / Come in.
-- C: אתה רעב? / Are you hungry?
-- Correct: Let's sit in the living room.
-- Tests: reply.home.sit-living-room
+**M13-Q02** — visual-match
+- Prompt: "🏠 Home: Room: Living room / Family ? ‖ 🌙 My evening: Dinner ? / Feeling ? / Next ? ¦ Where is your friend’s mother?" / "🏠 הבית: חדר: סלון / משפחה ? ‖ 🌙 הערב שלי: ארוחת ערב ? / הרגשה ? / הלאה ? ¦ איפה האמא של החבר?"
+- Audio: My mother is in the kitchen. Do you live with your family? — (אמא שלי במטבח. אתה גר עם המשפחה שלך?)
+- A: 🛋️ “Living room” / “סלון”
+- B: 🍳 “Kitchen” / “מטבח” ✅
+- Correct: 🍳 “Kitchen” / “מטבח”
+- Tests: (no sentence id — not recorded)
 
-**M13-Q03** — expected-reply
-- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (3/4)
-- Audio: Are you hungry? — (אתה רעב?)
-- A: אתה רעב? / Are you hungry? ✅
-- B: תיכנס. / Come in.
-- C: בוא נשב בסלון. / Let's sit in the living room.
-- Correct: Are you hungry?
-- Tests: reply.home.are-you-hungry
-
-**M13-Q04** — expected-reply
-- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (4/4)
-- Audio: Do you live with your family? — (אתה גר עם המשפחה שלך?)
-- A: אתה גר עם המשפחה שלך? / Do you live with your family? ✅
-- B: תיכנס. / Come in.
-- C: בוא נשב בסלון. / Let's sit in the living room.
-- Correct: Do you live with your family?
-- Tests: reply.home.live-with-family-q
-
-**M13-Q05** — swap-it
-- Prompt: "Where are you off to?" / "לאן אתה הולך?" — cue 🏠 "You are heading home" / "אתה הולך הביתה" — frame EN "I'm going ___." · FR "Je ___." · ES "___."
-- Audio: (nothing before the tap; the completed sentence is spoken after it) — ()
-- A: home → I'm going home. ✅
-- B: to sleep → I'm going to sleep.
-- C: to eat at my grandmother's → I'm going to eat at my grandmother's.
-- Correct: home → I'm going home.
-- Tests: phrase.home.going-home
-
-**M13-Q06** — swap-it
-- Prompt: "Where are you off to?" / "לאן אתה הולך?" — cue 😴 "You are off to bed" / "אתה הולך לישון" — frame EN "I'm going ___." · FR "Je ___." · ES "___."
-- Audio: (nothing before the tap; the completed sentence is spoken after it) — ()
-- A: home → I'm going home.
-- B: to sleep → I'm going to sleep. ✅
-- C: to eat at my grandmother's → I'm going to eat at my grandmother's.
-- Correct: to sleep → I'm going to sleep.
-- Tests: phrase.home.going-to-sleep
-
-**M13-Q07** — swap-it
-- Prompt: "Where are you off to?" / "לאן אתה הולך?" — cue 🍽️ "You are going to eat at your grandmother's" / "אתה הולך לאכול אצל סבתא" — frame EN "I'm going ___." · FR "Je ___." · ES "___."
-- Audio: (nothing before the tap; the completed sentence is spoken after it) — ()
-- A: home → I'm going home.
-- B: to sleep → I'm going to sleep.
-- C: to eat at my grandmother's → I'm going to eat at my grandmother's. ✅
-- Correct: to eat at my grandmother's → I'm going to eat at my grandmother's.
-- Tests: phrase.home.eat-at-grandmothers
-
-**M13-Q08** — sentence-builder
-- Prompt: "Build the sentence" / "בנה את המשפט" — cue shown: the sentence's MEANING in the app language ("אני הולך לאכול אצל סבתא שלי.")
-- Audio: (nothing before Check; the built sentence is spoken once it is right) — ()
-- A: I'm going  |  to eat  |  at my  |  grandmother's. ✅
-- Correct: I'm going  |  to eat  |  at my  |  grandmother's.
-- Tests: phrase.home.eat-at-grandmothers
-
-**M13-Q09** — sentence-builder
-- Prompt: "Build the sentence" / "בנה את המשפט" — cue shown: the sentence's MEANING in the app language ("כן, אני גר עם המשפחה שלי.")
-- Audio: (nothing before Check; the built sentence is spoken once it is right) — ()
-- A: Yes,  |  I live  |  with  |  my family. ✅
-- Correct: Yes,  |  I live  |  with  |  my family.
+**M13-Q03** — quick-reply
+- Prompt: "🏠 Home: Room: Living room / Mother: Kitchen ‖ 🌙 My evening: Dinner ? / Feeling ? / Next ? ¦ What do you answer?" / "🏠 הבית: חדר: סלון / אמא: מטבח ‖ 🌙 הערב שלי: ארוחת ערב ? / הרגשה ? / הלאה ? ¦ מה אתה עונה?"
+- Audio: My mother is in the kitchen. Do you live with your family? — (אמא שלי במטבח. אתה גר עם המשפחה שלך?)
+- A: Yes, I live with my family. ✅
+- B: Where is your family?
+- C: Is this sofa new?
+- Correct: Yes, I live with my family.
 - Tests: phrase.home.live-with-family
 
+**M13-Q04** — sentence-builder
+- Prompt: "🏠 Home: Room: Living room / Mother: Kitchen ‖ 🌙 My evening: Dinner ? / Feeling ? / Next ? ¦ Decline politely: thank → but → your plan" / "🏠 הבית: חדר: סלון / אמא: מטבח ‖ 🌙 הערב שלי: ארוחת ערב ? / הרגשה ? / הלאה ? ¦ סרב יפה: תודה ← אבל ← התוכנית שלך" — cue shown: the sentence's MEANING in the app language ("תודה, אבל אני הולך לאכול אצל סבתא שלי.")
+- Audio: (nothing before Check; the built sentence is spoken once it is right) — ()
+- A: Thanks, but  |  I'm going to eat  |  at my grandmother's. ✅
+- Correct: Thanks, but  |  I'm going to eat  |  at my grandmother's.
+- Tests: phrase.home.thanks-but-grandmothers
+
+**M13-Q05** — quick-reply
+- Prompt: "🏠 Home: Room: Living room / Mother: Kitchen ‖ 🌙 My evening: Dinner: Grandmother’s / Feeling ? / Next ? ¦ What do you answer?" / "🏠 הבית: חדר: סלון / אמא: מטבח ‖ 🌙 הערב שלי: ארוחת ערב: אצל סבתא / הרגשה ? / הלאה ? ¦ מה אתה עונה?"
+- Audio: Lovely! You look tired. Are you okay? — (איזה יופי! אתה נראה עייף. הכל בסדר?)
+- A: Yes, I'm just tired. ✅
+- B: Yes, I live with my family.
+- C: Thanks, but I'm going to eat at my grandmother's.
+- Correct: Yes, I'm just tired.
+- Tests: phrase.home.im-tired
+
+**M13-Q06** — quick-reply
+- Prompt: "🏠 Home: Room: Living room / Mother: Kitchen ‖ 🌙 My evening: Dinner: Grandmother’s / Feeling: Tired / Next ? ¦ What do you answer?" / "🏠 הבית: חדר: סלון / אמא: מטבח ‖ 🌙 הערב שלי: ארוחת ערב: אצל סבתא / הרגשה: עייף / הלאה ? ¦ מה אתה עונה?"
+- Audio: Then go home and rest! — (אז לך הביתה ותנוח!)
+- A: Yes, I'm going home. ✅
+- B: Yes, I'm just tired.
+- C: Where is your family?
+- Correct: Yes, I'm going home.
+- Tests: phrase.home.going-home
+
+**M13-Q07** — meaning-quiz
+- Prompt: "What did it mean?" / "מה זה אומר?"
+- Audio: Ha! Good night. Say hi to your family! — (חה! לילה טוב. תמסור ד״ש למשפחה!)
+- A: חה! לילה טוב. תמסור ד״ש למשפחה! / Ha! Good night. Say hi to your family! ✅
+- B: אז לך הביתה ותנוח! / Then go home and rest!
+- C: היי! תיכנס. / Hi! Come in.
+- Correct: Ha! Good night. Say hi to your family!
+- Tests: reply.home.goodbye
+
+**M13-Q08** — visual-match
+- Prompt: "🔁 Flex round — another visit, the same words. Where is the mother now?" / "🔁 סבב גמיש — ביקור אחר, אותן מילים. איפה האמא עכשיו?"
+- Audio: My mother is in the living room. — (אמא שלי בסלון.)
+- A: 🛋️ “Living room” / “סלון” ✅
+- B: 🍳 “Kitchen” / “מטבח”
+- Correct: 🛋️ “Living room” / “סלון”
+- Tests: (no sentence id — not recorded)
+
+**M13-Q09** — quick-reply
+- Prompt: "🔁 Flex round — what do you say?" / "🔁 סבב גמיש — מה אתה אומר?" — situation shown: "After dinner at your grandmother’s — what’s next?" / "אחרי הארוחה אצל סבתא — מה הלאה?"
+- Audio: (nothing is played — a situation is shown) — ()
+- A: I'm going to sleep. ✅
+- B: Where is your family?
+- C: Yes, I live with my family.
+- Correct: I'm going to sleep.
+- Tests: phrase.home.going-to-sleep
+
 **M13-Q10** — quick-reply
-- Prompt: "At a friend's home — what do you say?" / "אצל חבר בבית — מה אומרים?"
-- Audio: Come in. — (תיכנס.)
+- Prompt: "🏠 Home: Room ? / Family ? ‖ 🌙 My evening: Dinner ? / Feeling ? / Next ?" / "🏠 הבית: חדר ? / משפחה ? ‖ 🌙 הערב שלי: ארוחת ערב ? / הרגשה ? / הלאה ?"
+- Audio: Hi! Come in. — (היי! תיכנס.)
 - A: Thanks. Your home is beautiful. ✅
-- B: I'm going home.
-- C: I'm tired.
+- B: Is this sofa new?
+- C: Yes, I'm going home.
 - Correct: Thanks. Your home is beautiful.
 - Tests: phrase.home.beautiful-home
 
 **M13-Q11** — quick-reply
-- Prompt: "At a friend's home — what do you say?" / "אצל חבר בבית — מה אומרים?" — situation shown: "You want to know where your friend's family is." / "אתה רוצה לדעת איפה המשפחה של החבר."
-- Audio: (nothing is played — a situation is shown) — ()
-- A: Where is your family? ✅
-- B: Is this sofa new?
+- Prompt: "🏠 Home: Room ? / Family ? ‖ 🌙 My evening: Dinner ? / Feeling ? / Next ?" / "🏠 הבית: חדר ? / משפחה ? ‖ 🌙 הערב שלי: ארוחת ערב ? / הרגשה ? / הלאה ?"
+- Audio: Thank you. Let's sit in the living room. — (תודה. בוא נשב בסלון.)
+- A: Is this sofa new? ✅
+- B: I'm going to sleep.
 - C: Yes, I live with my family.
+- Correct: Is this sofa new?
+- Tests: phrase.home.is-this-new
+
+**M13-Q12** — quick-reply
+- Prompt: "🏠 Home: Room: Living room / Family ? ‖ 🌙 My evening: Dinner ? / Feeling ? / Next ?" / "🏠 הבית: חדר: סלון / משפחה ? ‖ 🌙 הערב שלי: ארוחת ערב ? / הרגשה ? / הלאה ?"
+- Audio: Yes, it's new. — (כן, היא חדשה.)
+- A: Where is your family? ✅
+- B: Yes, I live with my family.
+- C: Thanks. Your home is beautiful.
 - Correct: Where is your family?
 - Tests: phrase.home.where-family
 
-**M13-Q12** — quick-reply
-- Prompt: "At a friend's home — what do you say?" / "אצל חבר בבית — מה אומרים?"
-- Audio: Do you live with your family? — (אתה גר עם המשפחה שלך?)
+**M13-Q13** — quick-reply
+- Prompt: "🏠 Home: Room: Living room / Family ? ‖ 🌙 My evening: Dinner ? / Feeling ? / Next ?" / "🏠 הבית: חדר: סלון / משפחה ? ‖ 🌙 הערב שלי: ארוחת ערב ? / הרגשה ? / הלאה ?"
+- Audio: My mother is in the kitchen. Do you live with your family? — (אמא שלי במטבח. אתה גר עם המשפחה שלך?)
 - A: Yes, I live with my family. ✅
 - B: Where is your family?
+- C: Yes, I'm just tired.
+- Correct: Yes, I live with my family.
+- Tests: phrase.home.live-with-family
+
+**M13-Q14** — quick-reply
+- Prompt: "🏠 Home: Room: Living room / Mother: Kitchen ‖ 🌙 My evening: Dinner ? / Feeling ? / Next ?" / "🏠 הבית: חדר: סלון / אמא: מטבח ‖ 🌙 הערב שלי: ארוחת ערב ? / הרגשה ? / הלאה ?"
+- Audio: Nice. Are you hungry? Do you want to eat with us? — (יפה. אתה רעב? רוצה לאכול איתנו?)
+- A: Thanks, but I'm going to eat at my grandmother's. ✅
+- B: Is this sofa new?
+- C: I'm going to sleep.
+- Correct: Thanks, but I'm going to eat at my grandmother's.
+- Tests: phrase.home.eat-at-grandmothers
+
+**M13-Q15** — quick-reply
+- Prompt: "🏠 Home: Room: Living room / Mother: Kitchen ‖ 🌙 My evening: Dinner: Grandmother’s / Feeling ? / Next ?" / "🏠 הבית: חדר: סלון / אמא: מטבח ‖ 🌙 הערב שלי: ארוחת ערב: אצל סבתא / הרגשה ? / הלאה ?"
+- Audio: Lovely! You look tired. Are you okay? — (איזה יופי! אתה נראה עייף. הכל בסדר?)
+- A: Yes, I'm just tired. ✅
+- B: Where is your family?
+- C: Thanks. Your home is beautiful.
+- Correct: Yes, I'm just tired.
+- Tests: phrase.home.im-tired
+
+**M13-Q16** — quick-reply
+- Prompt: "🏠 Home: Room: Living room / Mother: Kitchen ‖ 🌙 My evening: Dinner: Grandmother’s / Feeling: Tired / Next ?" / "🏠 הבית: חדר: סלון / אמא: מטבח ‖ 🌙 הערב שלי: ארוחת ערב: אצל סבתא / הרגשה: עייף / הלאה ?"
+- Audio: Then go home and rest! — (אז לך הביתה ותנוח!)
+- A: Yes, I'm going home. ✅
+- B: Yes, I live with my family.
+- C: Is this sofa new?
+- Correct: Yes, I'm going home.
+- Tests: phrase.home.going-home
+
+**M13-Q17** — quick-reply
+- Prompt: "🧭 Now: Friend’s home ● → Next: Home ¦ 🏠 Home: Room: Living room / Mother: Kitchen ‖ 🌙 My evening: Dinner: Grandmother’s / Feeling: Tired / Next: Home" / "🧭 עכשיו: אצל החבר ● → הבא: הביתה ¦ 🏠 הבית: חדר: סלון / אמא: מטבח ‖ 🌙 הערב שלי: ארוחת ערב: אצל סבתא / הרגשה: עייף / הלאה: הביתה"
+- Audio: And after dinner at your grandmother's? — (ואחרי הארוחה אצל סבתא?)
+- A: I'm going to sleep. ✅
+- B: Thanks. Your home is beautiful.
+- C: Where is your family?
+- Correct: I'm going to sleep.
+- Tests: phrase.home.going-to-sleep
+
+**M13-Q18** — dialogue-choice
+- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
+- Audio: Hi! Come in. — (היי! תיכנס.)
+- A: Thanks. Your home is beautiful. ✅
+- B: Is this sofa new?
+- Correct: Thanks. Your home is beautiful.
+- Tests: phrase.home.beautiful-home, phrase.home.is-this-new
+
+**M13-Q19** — dialogue-choice
+- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
+- Audio: Thank you. Let's sit in the living room. — (תודה. בוא נשב בסלון.)
+- A: Is this sofa new? ✅
+- B: I'm going to sleep.
+- Correct: Is this sofa new?
+- Tests: phrase.home.is-this-new, phrase.home.going-to-sleep
+
+**M13-Q20** — dialogue-choice
+- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
+- Audio: Yes, it's new. — (כן, היא חדשה.)
+- A: Where is your family? ✅
+- B: Yes, I live with my family.
+- Correct: Where is your family?
+- Tests: phrase.home.where-family, phrase.home.live-with-family
+
+**M13-Q21** — dialogue-choice
+- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
+- Audio: My mother is in the kitchen. Do you live with your family? — (אמא שלי במטבח. אתה גר עם המשפחה שלך?)
+- A: Yes, I live with my family. ✅
+- B: Where is your family?
+- Correct: Yes, I live with my family.
+- Tests: phrase.home.live-with-family, phrase.home.where-family
+
+**M13-Q22** — dialogue-choice
+- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
+- Audio: Nice. Are you hungry? Do you want to eat with us? — (יפה. אתה רעב? רוצה לאכול איתנו?)
+- A: Thanks, but I'm going to eat at my grandmother's. ✅
+- B: Is this sofa new?
+- Correct: Thanks, but I'm going to eat at my grandmother's.
+- Tests: phrase.home.eat-at-grandmothers, phrase.home.is-this-new
+
+**M13-Q23** — dialogue-choice
+- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
+- Audio: Lovely! You look tired. Are you okay? — (איזה יופי! אתה נראה עייף. הכל בסדר?)
+- A: Yes, I'm just tired. ✅
+- B: Where is your family?
+- Correct: Yes, I'm just tired.
+- Tests: phrase.home.im-tired, phrase.home.where-family
+
+**M13-Q24** — dialogue-choice
+- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
+- Audio: Then go home and rest! — (אז לך הביתה ותנוח!)
+- A: Yes, I'm going home. ✅
+- B: Yes, I live with my family.
+- Correct: Yes, I'm going home.
+- Tests: phrase.home.going-home, phrase.home.live-with-family
+
+**M13-Q25** — dialogue-choice
+- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
+- Audio: And after dinner at your grandmother's? — (ואחרי הארוחה אצל סבתא?)
+- A: I'm going to sleep. ✅
+- B: Your home is beautiful.
+- Correct: I'm going to sleep.
+- Tests: phrase.home.going-to-sleep, phrase.home.beautiful-home
+
+**M13-Q26** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Hi! Come in. — (היי! תיכנס.)
+- A: Thanks. Your home is beautiful. ✅
+- B: I'm going to sleep.
+- C: Where is your family?
+- Correct: Thanks. Your home is beautiful.
+- Tests: phrase.home.beautiful-home
+
+**M13-Q27** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Thank you. Let's sit in the living room. — (תודה. בוא נשב בסלון.)
+- A: Is this sofa new? ✅
+- B: Yes, I'm going home.
+- C: Yes, I live with my family.
+- Correct: Is this sofa new?
+- Tests: phrase.home.is-this-new
+
+**M13-Q28** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Yes, it's new. — (כן, היא חדשה.)
+- A: Where is your family? ✅
+- B: Yes, I'm just tired.
+- C: Thanks. Your home is beautiful.
+- Correct: Where is your family?
+- Tests: phrase.home.where-family
+
+**M13-Q29** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: My mother is in the kitchen. Do you live with your family? — (אמא שלי במטבח. אתה גר עם המשפחה שלך?)
+- A: Yes, I live with my family. ✅
+- B: Is this sofa new?
 - C: I'm going to sleep.
 - Correct: Yes, I live with my family.
 - Tests: phrase.home.live-with-family
 
-**M13-Q13** — quick-reply
-- Prompt: "At a friend's home — what do you say?" / "אצל חבר בבית — מה אומרים?"
-- Audio: Do you want to eat with us? — (רוצה לאכול איתנו?)
+**M13-Q30** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Nice. Are you hungry? Do you want to eat with us? — (יפה. אתה רעב? רוצה לאכול איתנו?)
 - A: Thanks, but I'm going to eat at my grandmother's. ✅
-- B: Is this sofa new?
-- C: Your home is beautiful.
+- B: Where is your family?
+- C: Yes, I'm just tired.
 - Correct: Thanks, but I'm going to eat at my grandmother's.
 - Tests: phrase.home.eat-at-grandmothers
 
-**M13-Q14** — quick-reply
-- Prompt: "At a friend's home — what do you say?" / "אצל חבר בבית — מה אומרים?"
+**M13-Q31** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio: Lovely! You look tired. Are you okay? — (איזה יופי! אתה נראה עייף. הכל בסדר?)
 - A: Yes, I'm just tired. ✅
+- B: Is this sofa new?
+- C: Yes, I live with my family.
+- Correct: Yes, I'm just tired.
+- Tests: phrase.home.im-tired
+
+**M13-Q32** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Then go home and rest! — (אז לך הביתה ותנוח!)
+- A: Yes, I'm going home. ✅
+- B: Thanks. Your home is beautiful.
+- C: Where is your family?
+- Correct: Yes, I'm going home.
+- Tests: phrase.home.going-home
+
+**M13-Q33** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: And after dinner at your grandmother's? — (ואחרי הארוחה אצל סבתא?)
+- A: I'm going to sleep. ✅
+- B: Is this sofa new?
+- C: Yes, I live with my family.
+- Correct: I'm going to sleep.
+- Tests: phrase.home.going-to-sleep
+
+**M13-Q34** — quick-reply
+- Prompt: "🏠 Home: Room ? / Family ? ‖ 🌙 My evening: Dinner ? / Feeling ? / Next ? ¦ A visit to a friend. Run the conversation and settle your evening." / "🏠 הבית: חדר ? / משפחה ? ‖ 🌙 הערב שלי: ארוחת ערב ? / הרגשה ? / הלאה ? ¦ ביקור אצל חבר. תנהל את השיחה ותסגור את הערב שלך." — situation shown: "You enter a friend’s home." / "נכנסת לבית של חבר."
+- Audio: (nothing is played — a situation is shown) — ()
+- A: Thanks. Your home is beautiful. ✅
+- B: Yes, I'm going home.
+- C: Where is your family?
+- Correct: Thanks. Your home is beautiful.
+- Tests: phrase.home.beautiful-home
+
+**M13-Q35** — quick-reply
+- Prompt: "🏠 Home: Room ? / Family ? ‖ 🌙 My evening: Dinner ? / Feeling ? / Next ? ¦ A visit to a friend. Run the conversation and settle your evening." / "🏠 הבית: חדר ? / משפחה ? ‖ 🌙 הערב שלי: ארוחת ערב ? / הרגשה ? / הלאה ? ¦ ביקור אצל חבר. תנהל את השיחה ותסגור את הערב שלך."
+- Audio: Thank you. Let's sit in the living room. — (תודה. בוא נשב בסלון.)
+- A: Is this sofa new? ✅
 - B: Yes, I live with my family.
+- C: I'm going to sleep.
+- Correct: Is this sofa new?
+- Tests: phrase.home.is-this-new
+
+**M13-Q36** — quick-reply
+- Prompt: "🏠 Home: Room ? / Family ? ‖ 🌙 My evening: Dinner ? / Feeling ? / Next ? ¦ A visit to a friend. Run the conversation and settle your evening." / "🏠 הבית: חדר ? / משפחה ? ‖ 🌙 הערב שלי: ארוחת ערב ? / הרגשה ? / הלאה ? ¦ ביקור אצל חבר. תנהל את השיחה ותסגור את הערב שלך."
+- Audio: Yes, it's new. — (כן, היא חדשה.)
+- A: Where is your family? ✅
+- B: Is this sofa new?
+- C: Yes, I'm just tired.
+- Correct: Where is your family?
+- Tests: phrase.home.where-family
+
+**M13-Q37** — visual-match
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: My mother is in the kitchen. Do you live with your family? — (אמא שלי במטבח. אתה גר עם המשפחה שלך?)
+- A: 🛋️ “Living room” / “סלון”
+- B: 🍳 “Kitchen” / “מטבח” ✅
+- Correct: 🍳 “Kitchen” / “מטבח”
+- Tests: (no sentence id — not recorded)
+
+**M13-Q38** — quick-reply
+- Prompt: "🏠 Home: Room: Living room / Mother: Kitchen ‖ 🌙 My evening: Dinner ? / Feeling ? / Next ?" / "🏠 הבית: חדר: סלון / אמא: מטבח ‖ 🌙 הערב שלי: ארוחת ערב ? / הרגשה ? / הלאה ?"
+- Audio: My mother is in the kitchen. Do you live with your family? — (אמא שלי במטבח. אתה גר עם המשפחה שלך?)
+- A: Yes, I live with my family. ✅
+- B: Where is your family?
+- C: Yes, I'm going home.
+- Correct: Yes, I live with my family.
+- Tests: phrase.home.live-with-family
+
+**M13-Q39** — quick-reply
+- Prompt: "🏠 Home: Room: Living room / Mother: Kitchen ‖ 🌙 My evening: Dinner ? / Feeling ? / Next ?" / "🏠 הבית: חדר: סלון / אמא: מטבח ‖ 🌙 הערב שלי: ארוחת ערב ? / הרגשה ? / הלאה ?"
+- Audio: Nice. Are you hungry? Do you want to eat with us? — (יפה. אתה רעב? רוצה לאכול איתנו?)
+- A: Thanks, but I'm going to eat at my grandmother's. ✅
+- B: Yes, I live with my family.
+- C: Thanks. Your home is beautiful.
+- Correct: Thanks, but I'm going to eat at my grandmother's.
+- Tests: phrase.home.eat-at-grandmothers
+
+**M13-Q40** — quick-reply
+- Prompt: "🏠 Home: Room: Living room / Mother: Kitchen ‖ 🌙 My evening: Dinner: Grandmother’s / Feeling ? / Next ?" / "🏠 הבית: חדר: סלון / אמא: מטבח ‖ 🌙 הערב שלי: ארוחת ערב: אצל סבתא / הרגשה ? / הלאה ?"
+- Audio: Lovely! You look tired. Are you okay? — (איזה יופי! אתה נראה עייף. הכל בסדר?)
+- A: Yes, I'm just tired. ✅
+- B: I'm going to sleep.
 - C: Is this sofa new?
 - Correct: Yes, I'm just tired.
 - Tests: phrase.home.im-tired
 
-**M13-Q15** — dialogue-choice
-- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio: Hi! Come in. — (היי! תיכנס.)
-- A: Thanks. Your home is beautiful. ✅
-- Correct: Thanks. Your home is beautiful.
-- Tests: phrase.home.beautiful-home
-
-**M13-Q16** — dialogue-choice
-- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio: Thank you. Let's sit in the living room. — (תודה. בוא נשב בסלון.)
-- A: Is this sofa new? ✅
-- Correct: Is this sofa new?
-- Tests: phrase.home.is-this-new
-
-**M13-Q17** — dialogue-choice
-- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio: Yes, it's new. — (כן, היא חדשה.)
-- A: Where is your family? ✅
-- Correct: Where is your family?
-- Tests: phrase.home.where-family
-
-**M13-Q18** — dialogue-choice
-- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio: My mother is in the kitchen. Do you live with your family? — (אמא שלי במטבח. אתה גר עם המשפחה שלך?)
-- A: Yes, I live with my family. ✅
-- B: Sorry, I don't understand. ✅
-- Correct: Yes, I live with my family. | Sorry, I don't understand.
-- Tests: phrase.home.live-with-family, phrase.recovery.dont-understand
-
-**M13-Q19** — dialogue-choice
-- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio: You — and your family. One home? — (אתה — והמשפחה שלך. אותו בית?)
-- A: Yes, I live with my family. ✅
-- Correct: Yes, I live with my family.
-- Tests: phrase.home.live-with-family
-
-**M13-Q20** — dialogue-choice
-- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio: Nice. Are you hungry? Do you want to eat with us? — (יפה. אתה רעב? רוצה לאכול איתנו?)
-- A: Thanks, but I'm going to eat at my grandmother's. ✅
-- Correct: Thanks, but I'm going to eat at my grandmother's.
-- Tests: phrase.home.eat-at-grandmothers
-
-**M13-Q21** — dialogue-choice
-- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio: Lovely! You look tired. Are you okay? — (איזה יופי! אתה נראה עייף. הכל בסדר?)
-- A: Yes, I'm just tired. ✅
-- Correct: Yes, I'm just tired.
-- Tests: phrase.home.im-tired
-
-**M13-Q22** — dialogue-choice
-- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
+**M13-Q41** — quick-reply
+- Prompt: "🏠 Home: Room: Living room / Mother: Kitchen ‖ 🌙 My evening: Dinner: Grandmother’s / Feeling: Tired / Next ?" / "🏠 הבית: חדר: סלון / אמא: מטבח ‖ 🌙 הערב שלי: ארוחת ערב: אצל סבתא / הרגשה: עייף / הלאה ?"
 - Audio: Then go home and rest! — (אז לך הביתה ותנוח!)
 - A: Yes, I'm going home. ✅
+- B: Thanks, but I'm going to eat at my grandmother's.
+- C: Where is your family?
 - Correct: Yes, I'm going home.
 - Tests: phrase.home.going-home
 
-**M13-Q23** — dialogue-choice
-- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
+**M13-Q42** — quick-reply
+- Prompt: "🧭 Now: Friend’s home ● → Next: Home ¦ 🏠 Home: Room: Living room / Mother: Kitchen ‖ 🌙 My evening: Dinner: Grandmother’s / Feeling: Tired / Next: Home" / "🧭 עכשיו: אצל החבר ● → הבא: הביתה ¦ 🏠 הבית: חדר: סלון / אמא: מטבח ‖ 🌙 הערב שלי: ארוחת ערב: אצל סבתא / הרגשה: עייף / הלאה: הביתה"
 - Audio: And after dinner at your grandmother's? — (ואחרי הארוחה אצל סבתא?)
 - A: I'm going to sleep. ✅
+- B: Is this sofa new?
+- C: Yes, I live with my family.
 - Correct: I'm going to sleep.
 - Tests: phrase.home.going-to-sleep
-
-**M13-Q24** — quick-reply
-- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
-- Audio: Hi! Come in. — (היי! תיכנס.)
-- A: Thanks. Your home is beautiful. ✅
-- B: I'm tired.
-- C: I'm going home.
-- Correct: Thanks. Your home is beautiful.
-- Tests: phrase.home.beautiful-home
-
-**M13-Q25** — quick-reply
-- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
-- Audio: My mother is in the kitchen. Do you live with your family? — (אמא שלי במטבח. אתה גר עם המשפחה שלך?)
-- A: Yes, I live with my family. ✅
-- B: Where is your family?
-- C: I'm going to sleep.
-- Correct: Yes, I live with my family.
-- Tests: phrase.home.live-with-family
-
-**M13-Q26** — quick-reply
-- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
-- Audio: Nice. Are you hungry? Do you want to eat with us? — (יפה. אתה רעב? רוצה לאכול איתנו?)
-- A: Thanks, but I'm going to eat at my grandmother's. ✅
-- B: Your home is beautiful.
-- C: Yes, I live with my family.
-- Correct: Thanks, but I'm going to eat at my grandmother's.
-- Tests: phrase.home.eat-at-grandmothers
-
-**M13-Q27** — quick-reply
-- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
-- Audio: Lovely! You look tired. Are you okay? — (איזה יופי! אתה נראה עייף. הכל בסדר?)
-- A: Yes, I'm just tired. ✅
-- B: Is this sofa new?
-- C: Where is your family?
-- Correct: Yes, I'm just tired.
-- Tests: phrase.home.im-tired
-
-**M13-Q28** — quick-reply
-- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
-- Audio: Then go home and rest! — (אז לך הביתה ותנוח!)
-- A: Yes, I'm going home. ✅
-- B: Where is your family?
-- C: Your home is beautiful.
-- Correct: Yes, I'm going home.
-- Tests: phrase.home.going-home
 
 ## Mission 14 — Restaurant Meal
 
@@ -38261,17 +38819,17 @@ No questions.
 # Totals
 
 - Missions exported: 30
-- Learner-production sentence ids: 162
-- Expected-reply (receptive) sentence ids: 163
-- Sentence listings across missions (with reuse): 521
-- Expected-reply questions: 88
-- Meaning quizzes: 6
-- Active-practice questions: 565
-- Dialogue choice screens: 258
+- Learner-production sentence ids: 163
+- Expected-reply (receptive) sentence ids: 167
+- Sentence listings across missions (with reuse): 525
+- Expected-reply questions: 84
+- Meaning quizzes: 7
+- Active-practice questions: 583
+- Dialogue choice screens: 257
 - Cold opens: 8
-- Total interactive questions: 925
-- Total answer choices: 2484
-- Wrong-answer branches: 96
-- Recovery opportunities: 51
+- Total interactive questions: 939
+- Total answer choices: 2534
+- Wrong-answer branches: 104
+- Recovery opportunities: 50
 - Learner sentences with 0 active retrieval opportunities: 1
-- Auto-flags: 201
+- Auto-flags: 197

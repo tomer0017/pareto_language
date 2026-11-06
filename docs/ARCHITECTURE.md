@@ -413,3 +413,28 @@ covered), feeding `learnedBefore` for later missions. Artwork: 14 slots + 1 resu
 PLACEHOLDERS — VISUAL PRODUCTION REQUIRED (Astra pass): `MISSION12_ASSET_MANIFEST.md`. Tests:
 `mission12.test.ts` (72); Missions 01–11 and 13–30 byte-for-byte unchanged (the old "12–30" pins now pin
 13–30).
+
+## Mission 13 — Home, Family & Daily Routine, full learning flow — 2026-11-06
+
+Mission 13 is rebuilt around its LOCKED EN/ES/FR conversation (transcript byte-identical to before) as ONE
+home visit — no rooms or family list, no "going to" grammar. Journey: `practiceHomeFamily.ts` (`m13Steps`),
+wired through the spec (`core/homeFamily.ts`). Briefing = the brief's Hebrew line only (no mother, kitchen,
+grandmother, tiredness or sleep). The **Home Visit board** (Home: Room ? / Family ? ‖ My evening: Dinner ? /
+Feeling ? / Next ?) fills only when the visit reveals it: the living room after the friend's line, mother →
+kitchen after the friend says it (captured on semantic room tiles — ids `living-room` / `kitchen`, app-language
+captions, shuffled), and dinner → grandmother's, tired, next → home → sleep only after the LEARNER says them.
+The **evening route** (🧭 Now: Friend's home → Home · rest → Dinner at grandmother's → Sleep) appears once the
+learner says they are going home. The board parser in `HotelStaySummary.tsx` now takes any number of rows per
+column and a 🧭 route (Mission 12's planner parses exactly as before). Learner initiative: the sofa and family
+questions follow statements, never questions. The one builder is the polite decline (Thanks, but / I'm going to
+eat / at my grandmother's — each language's own chunks; new item `phrase.home.thanks-but-grandmothers` = the
+locked line). A **Flex Round** (2 interactions: "My mother is in the living room." by ear; after dinner → "I'm
+going to sleep.") recombines only words Mission 13 taught and is marked `transferOnly` (new optional step field):
+`teachingEncounters` and coverage `encounters` skip it, so it never becomes prior learning, coverage or a course
+sentence. Then the supported visit → the conversation (real decisions; a miss is re-asked slowly; the recovery
+tool is gone) → no help → video (none recorded: safe skip) → final → 🏠 HOME VISIT COMPLETE. 34 interactions.
+Prior learning (`learnedBefore(lang, 13)`): Thanks, "Where is", "I'm going" (EN) / je vais / voy a, eat, with us.
+Sentence ids reused by the Everyday checkpoint are unchanged. Coverage: `mission13Coverage.ts` (27 chunks, all
+covered, identical with or without the Flex Round). Artwork: 12 slots + 1 result prop, emoji PLACEHOLDERS —
+VISUAL PRODUCTION REQUIRED (Astra pass): `MISSION13_ASSET_MANIFEST.md`. Tests: `mission13.test.ts` (68);
+Missions 01–12 and 14–30 byte-for-byte unchanged (the old "13–30" pins now pin 14–30).

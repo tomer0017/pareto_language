@@ -75,6 +75,10 @@ The machine-checkable version is `apps/web/src/features/bootcamp/vocabAudit.ts`
 must match whether the mission actually has a `prime` step, and every listed priming word must be a
 real prime word in that mission. **Counts: 29 audited · 7 primed · 22 explicitly no-priming-needed.**
 
+> **2026-11-06 — Mission 13 (Home & Family, registry key 32) is now primed** with whole-line cards, never word
+> lists: *Where is your family?*, *Yes, I live with my family.*, *Thanks, but I'm going to eat at my grandmother's.*,
+> *Yes, I'm just tired.*, *Yes, I'm going home.*, *I'm going to sleep.* — the Flex Round is transfer only, never teaching.
+
 > **2026-11-05 — Mission 12 (Time & Plans, registry key 31) is now primed** with whole-line cards, never word
 > lists: *I'm free tonight.*, *Yes! What time?*, *No, that's not too late.*, *What are you doing tomorrow?*,
 > *No problem. Let's meet here at seven.* — "Yes, I'm free tomorrow." is a transfer, never a card.

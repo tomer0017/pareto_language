@@ -81,8 +81,8 @@ describe('scope: only the Practice of Missions 06–10 changed', () => {
     const { existsSync } = await import('node:fs');
     expect(existsSync(fileURLToPath(new URL('./mission10.test.ts', import.meta.url)))).toBe(true);
   });
-  it('Missions 13–18 are exactly as approved (Missions 01–12 have their own passes)', () => {
-    expect(print((l) => slice(l, 12, 18))).toEqual({ en: '184756af', fr: '6f000f0d', es: '49f35431' }); // since the Mission 12 pass: Missions 13–18
+  it('Missions 14–18 are exactly as approved (Missions 01–13 have their own passes)', () => {
+    expect(print((l) => slice(l, 13, 18))).toEqual({ en: '20f1b6ba', fr: 'd4bdbcf7', es: 'f81bef7b' }); // since the Mission 13 pass: Missions 14–18
   });
   it('"For two nights." and the wifi password are retired (and, since the Mission 08 pass, "Sign here" and "It\'s on the second floor"): archived with their ids and wording, and shown nowhere', () => {
     const gone = ['phrase.hotel.two-nights', 'phrase.hotel.wifi', 'reply.hotel.sign-here', 'reply.hotel.second-floor'];

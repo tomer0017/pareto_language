@@ -79,13 +79,13 @@ describe('scope: only the Practice of Missions 11–18 changed', () => {
   it('Missions 08–10 are not this pass\'s: each has its own (mission08.test.ts, mission09.test.ts, mission10.test.ts)', () => {
     for (const lang of LANGS) expect(slice(lang, 9, 10)[0]!.steps.some((s) => s.kind === 'checkpoint'), lang).toBe(true);
   });
-  it('the locked dialogues of Missions 13–17 are byte-for-byte unchanged (Missions 11 and 12 have their own passes since: mission11.test.ts, mission12.test.ts)', () => {
-    expect(print((l) => slice(l, 12, 17).map((d) => d.dialogues))).toEqual({ en: 'f64306cc', fr: 'ba26f0da', es: 'af1a975b' });
+  it('the locked dialogues of Missions 14–17 are byte-for-byte unchanged (Missions 11–13 have their own passes since: mission11.test.ts … mission13.test.ts)', () => {
+    expect(print((l) => slice(l, 13, 17).map((d) => d.dialogues))).toEqual({ en: '33c09a9e', fr: '42c8cc0e', es: '5a59f280' });
   });
   it('the approved practice is otherwise exactly as approved (after the final cleanup)', () => {
     const d = (l: Lang, n: number): BootcampDayContent => beforeCueFreeze(MISSIONS_BY_LANG[l]![BOOTCAMP_PLAN[n - 1]!.day]!, l);
-    // Missions 13, 16 and 18, whole — sentences, dialogues and steps (Missions 11 and 12: mission11.test.ts, mission12.test.ts).
-    expect(print((l) => [13, 16, 18].map((n) => d(l, n)))).toEqual({ en: 'eca1faf7', fr: '2658914e', es: '4b8e4952' });
+    // Missions 16 and 18, whole — sentences, dialogues and steps (Missions 11–13: mission11.test.ts … mission13.test.ts).
+    expect(print((l) => [16, 18].map((n) => d(l, n)))).toEqual({ en: 'd06c6ed6', fr: 'c26572a4', es: 'fec2dd98' });
     // Mission 14 apart from one distractor in Restaurant Rush, 15 apart from the match tiles, 17 apart from its intro card.
     expect(print((l) => d(l, 14).steps.filter((s, i, a) => !(s.kind === 'quickReply' && a.findIndex((x) => x.kind === 'quickReply') === i)).filter((s) => l !== 'fr' || s.kind !== 'prime'))).toEqual({ en: 'ac1eb75a', fr: FR_M14_WITHOUT_PRIME, es: '27d1f46c' });
     expect(print((l) => d(l, 15).steps.filter((s) => s.kind !== 'matchPairs'))).toEqual({ en: '091834c0', fr: 'e115664e', es: '29f26c1d' });
@@ -152,8 +152,8 @@ describe('all three languages get the same practice, each in its own words', () 
       if (s.kind === 'receipt') return [s.kind, s.text];
       return s.kind;
     };
-    // (Missions 11 and 12 have their own passes since — their parity, tile ids included, is proved in mission11/12.test.ts.)
-    for (let n = 13; n <= 18; n++) for (const lang of ['fr', 'es'] as const) expect(mission(n, lang).steps.map(shape), `${lang} M${n}`).toEqual(mission(n).steps.map(shape));
+    // (Missions 11–13 have their own passes since — their parity, tile ids included, is proved in mission11/12/13.test.ts.)
+    for (let n = 14; n <= 18; n++) for (const lang of ['fr', 'es'] as const) expect(mission(n, lang).steps.map(shape), `${lang} M${n}`).toEqual(mission(n).steps.map(shape));
   });
   it('sentence-builder chunks are each language\'s own and spell the taught sentence exactly', () => {
     for (let n = 11; n <= 17; n++) for (const lang of LANGS) {
@@ -215,8 +215,8 @@ describe('all three languages get the same practice, each in its own words', () 
     }
   });
   it('active retrieval outside the dialogue: 8–16 moments per teaching mission', () => {
-    // (Missions 11 and 12 have their own passes since — their interactions are counted in mission11/12.test.ts.)
-    for (let n = 13; n <= 17; n++) {
+    // (Missions 11–13 have their own passes since — their interactions are counted in mission11/12/13.test.ts.)
+    for (let n = 14; n <= 17; n++) {
       const day = mission(n);
       const moments = day.steps.reduce((k, s) => k + (s.kind === 'quickReply' || s.kind === 'swap' || s.kind === 'sentenceBuilder' ? s.rounds.length : 0), 0);
       expect(moments, `M${n}`).toBeGreaterThanOrEqual(8);
@@ -235,44 +235,7 @@ describe('all three languages get the same practice, each in its own words', () 
 
 /* ── Mission 12 — Time & Plans: its own pass since — mission12.test.ts ─────────────────────────── */
 
-/* ── Mission 13 — Home, Family & Daily Routine ───────────────────────────────────────────────── */
-
-describe('Mission 13 — Home, Family & Daily Routine', () => {
-  const day = mission(13);
-  it('flow: learn → recognize → "I\'m going…" → build two statements → at a friend\'s home → conversation → the visit at speed', () => {
-    expect(kinds(day)).toEqual(['talk', 'tool', 'tool', 'tool', 'tool', 'tool', 'tool', 'replies', 'receipt', 'swap', 'sentenceBuilder', 'quickReply', 'dialogue', 'receipt', 'swipe', 'quickReply:speed', 'receipt', 'summary']);
-  });
-  it('"I\'m going…" flexibility: home, to sleep, to eat — said the way each language says it', () => {
-    expect(swapSentences(day)).toEqual(["I'm going home.", "I'm going to sleep.", "I'm going to eat at my grandmother's."]);
-    expect(swapSentences(mission(13, 'fr'))).toEqual(['Je rentre chez moi.', 'Je vais dormir.', 'Je vais manger chez ma grand-mère.']); // not "Je vais à la maison"
-    expect(swapSentences(mission(13, 'es'))).toEqual(['Me voy a casa.', 'Me voy a dormir.', 'Voy a comer en casa de mi abuela.']);
-    for (const lang of LANGS) {
-      const d = mission(13, lang);
-      // Every outcome is a sentence the mission already teaches — nothing is generated.
-      expect(swapSentences(d), lang).toEqual([text(d, 'phrase.home.going-home'), text(d, 'phrase.home.going-to-sleep'), text(d, 'phrase.home.eat-at-grandmothers')]);
-      expect(stepsOf(d, 'swap')[0]!.rounds.map((r) => strip(r.itemId)), lang).toEqual(['phrase.home.going-home', 'phrase.home.going-to-sleep', 'phrase.home.eat-at-grandmothers']);
-    }
-  });
-  it('"I\'m tired." is retrieved in context — asked if you are okay — twice, not just revealed', () => {
-    expect(retrieved(day).get('phrase.home.im-tired')).toBe(2);
-    const round = chat(day).rounds.find((r) => r.options.some((o) => o.correct && strip(o.itemId) === 'phrase.home.im-tired'))!;
-    expect(round.npc!.en).toBe('Lovely! You look tired. Are you okay?');
-  });
-  it('home Quick Reply answers the prompts that have a natural answer; "Are you hungry?" stays comprehension-only', () => {
-    expect(mapOf(chat(day))).toEqual([
-      ['reply.home.come-in', ['phrase.home.beautiful-home']],
-      ['situation', ['phrase.home.where-family']],
-      ['reply.home.live-with-family-q', ['phrase.home.live-with-family']],
-      ['reply.home.eat-with-us', ['phrase.home.eat-at-grandmothers']],
-      ['Lovely! You look tired. Are you okay?', ['phrase.home.im-tired']],
-    ]);
-    expect(stepsOf(day, 'replies')[0]!.replyIds.map(strip)).toContain('reply.home.are-you-hungry');
-    expect(stepsOf(day, 'quiz')).toHaveLength(0); // it was tested twice before
-  });
-  it('final challenge: a short visit — come in → family → eat with us → are you okay → go home', () => {
-    expect(mapOf(rush(day)).map(([, ok]) => ok)).toEqual([['phrase.home.beautiful-home'], ['phrase.home.live-with-family'], ['phrase.home.eat-at-grandmothers'], ['phrase.home.im-tired'], ['phrase.home.going-home']]);
-  });
-});
+/* ── Mission 13 — Home, Family & Daily Routine: its own pass since — mission13.test.ts ──────────── */
 
 /* ── Mission 14 — Restaurant Meal ────────────────────────────────────────────────────────────── */
 

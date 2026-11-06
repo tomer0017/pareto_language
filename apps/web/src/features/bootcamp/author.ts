@@ -110,6 +110,8 @@ export interface QuickReplySpec {
   label?: Copy;
   /** A final speed challenge: the lines are spoken fast. */
   challenge?: boolean;
+  /** A transfer check (Flex Round): tested, never counted as teaching or coverage, never a course sentence. */
+  transferOnly?: boolean;
   rounds: {
     /** id of a "you will hear" sentence of the mission, or… */
     prompt?: string;
@@ -130,6 +132,8 @@ export interface VisualMatchSpec {
   quiet?: boolean;
   /** The tiles are a scale (a size ladder): kept in their own order, left to right, never shuffled. */
   ordered?: boolean;
+  /** A transfer check (Flex Round): tested, never counted as teaching or coverage, never a course sentence. */
+  transferOnly?: boolean;
   tiles: MatchTile[];
   /** `reinforce`: the answer's own line, shown with its meaning after a pick (when `audio` is the question). */
   rounds: { audio: L4; correct: string; itemId?: string; show?: string[]; pace?: 'fast' | 'slow'; reinforce?: L4 }[];
@@ -373,7 +377,7 @@ export function buildPractice(p: PracticeSpec, lang: MissionLang): BootcampStep 
   }
   if (p.kind === 'quickReply') {
     return {
-      kind: 'quickReply', ...label, ...(p.challenge ? { challenge: true } : {}),
+      kind: 'quickReply', ...label, ...(p.challenge ? { challenge: true } : {}), ...(p.transferOnly ? { transferOnly: true } : {}),
       rounds: p.rounds.map((r) => ({
         ...(r.prompt ? { promptItemId: id(r.prompt) } : {}),
         ...(r.npc ? { npc: paced(spoken(r.npc, lang), r.pace) } : {}),
@@ -384,7 +388,7 @@ export function buildPractice(p: PracticeSpec, lang: MissionLang): BootcampStep 
   }
   if (p.kind === 'visualMatch') {
     return {
-      kind: 'visualMatch', ...label, ...(p.challenge ? { challenge: true } : {}), ...(p.quiet ? { quiet: true } : {}), ...(p.ordered ? { ordered: true } : {}), tiles: p.tiles,
+      kind: 'visualMatch', ...label, ...(p.challenge ? { challenge: true } : {}), ...(p.quiet ? { quiet: true } : {}), ...(p.ordered ? { ordered: true } : {}), ...(p.transferOnly ? { transferOnly: true } : {}), tiles: p.tiles,
       rounds: p.rounds.map((r) => ({
         audio: paced(spoken(r.audio, lang), r.pace), correct: r.correct, ...(r.itemId ? { itemId: id(r.itemId) } : {}), ...(r.show ? { show: [...r.show] } : {}),
         ...(r.reinforce ? { reinforce: spoken(r.reinforce, lang) } : {}),

@@ -103,7 +103,7 @@ describe('the conversation is locked, and Mission 11 is in its place', () => {
   });
   const raw = (a: number, b?: number) => Object.fromEntries(LANGS.map((l) => [l, fnv(JSON.stringify(BOOTCAMP_PLAN.slice(a, b).map((m) => MISSIONS_BY_LANG[l]![m.day]!)))]));
   it('5. Missions 01–10 are byte-for-byte unchanged by this pass', () => { expect(raw(0, 10)).toEqual({ en: 'ba829776', es: '20686b5a', fr: '9e5aa74a' }); });
-  it('6. Missions 13–30 are byte-for-byte unchanged by this pass (Mission 12 has its own pass since: mission12.test.ts)', () => { expect(raw(12)).toEqual({ en: '374354a9', es: 'e62daaff', fr: '036c589c' }); });
+  it('6. Missions 14–30 are byte-for-byte unchanged by this pass (Missions 12 and 13 have their own passes since: mission12.test.ts, mission13.test.ts)', () => { expect(raw(13)).toEqual({ en: 'ebeaceec', es: '0558e5b9', fr: '1b27a452' }); });
   it('7. EN / ES / FR parity: the same journey, step for step, each in its own words', () => {
     const shape = (d: BootcampDayContent): unknown => d.steps.map((s) => {
       if (s.kind === 'quickReply') return [s.kind, s.challenge ?? false, s.label, s.rounds.map((r) => [strip(r.promptItemId), Boolean(r.npc), r.situation, r.options.map((o) => [strip(o.itemId), o.correct, Boolean(o.text)])])];

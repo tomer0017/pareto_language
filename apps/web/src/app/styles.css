@@ -1723,6 +1723,7 @@ div.jstep { box-shadow: none; border-color: var(--line); }
 .time-strip { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4px; margin: 6px 0; }
 .time-strip-cell { padding: 5px 4px; border-radius: 10px; background: #f1ede6; color: #5d6862; border: 2px solid transparent; font-size: 0.74rem; font-weight: 600; line-height: 1.25; text-align: center; overflow-wrap: anywhere; }
 .time-strip-cell[data-now="true"] { background: #2f5d50; border-color: #1f4238; color: #fff; font-weight: 750; }
+.time-strip.is-route { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .plan-card { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; margin: 6px 0; }
 .plan-day { display: flex; flex-direction: column; gap: 2px; padding: 6px 10px; border-radius: 12px; background: #f4eee4; color: #354c44; font-size: 0.85rem; line-height: 1.35; text-align: start; overflow-wrap: anywhere; }
 .plan-day-head { font-weight: 750; }
