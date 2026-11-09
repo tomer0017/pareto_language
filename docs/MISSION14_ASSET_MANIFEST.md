@@ -1,12 +1,25 @@
 # Mission 14 — Restaurant Meal: artwork manifest
 
-**Status: VISUAL PRODUCTION REQUIRED (Astra pass).** Mission 14 ships with emoji placeholders in every
-slot (`M14_SLOTS` / `M14_PROPS` in `apps/web/src/features/bootcamp/practiceRestaurant.ts`, `image` unset).
-No image generation was available in the build session; no stock images were used. Emojis are NOT final.
-To integrate an asset, put the file at `apps/web/public/images/mission14/<slot>.jpg` and set that slot's
-`image: 'images/mission14/<slot>.jpg'`. One file per asset: never a collage, contact sheet, storyboard or
-sprite sheet that gets cropped later. Then update the "visual slots" test in `mission14.test.ts` to pin the
-real files, as Missions 11–13 do.
+**Status: FINAL ARTWORK INTEGRATED.** Ten semantic slots and one result prop use nine independently
+produced final JPEGs (1672 × 941), shared by EN / ES / FR. Generated with the built-in imagegen tool.
+No collage, cropping, upscaling, or language baked into artwork. Prompts and pixel-bound manual review
+are recorded in `mission14-artwork.json`.
+
+Canonical directory: `apps/web/public/images/mission14/`.
+
+- `restaurant-entrance.jpg`: entrance slot and briefing.
+- `table-for-two.jpg`: table request.
+- `follow-to-table.jpg`: menu handoff.
+- `ready-to-order.jpg`: ready-to-order AND order-chicken slots (one whole scene reused).
+- `drink-order.jpg`: waiter question and water response; no bottle is pictured before selection.
+- `coming-right-up.jpg`: waiter collects menus and leaves with order.
+- `meal-check.jpg`: meal-check AND delicious-bill slots (one whole scene reused).
+- `goodbye.jpg`: closed plain check presenter handed over after the bill-request teaching line.
+- `meal-complete.jpg`: earned ending, diners leaving the same restaurant.
+
+The composition descriptions below are semantic targets; the final choices deliberately omit the
+proposed water bottle on a tray, to prevent previewing the drink answer. The main-order and positive
+meal-check/request images provide service context; exact ingredients and bill request live in UI.
 
 ## One continuous world
 
@@ -49,7 +62,7 @@ If a picture is ambiguous at phone size (360 px wide), it still never becomes an
 | `follow-to-table` | "Perfect, follow me. Here are your menus." | the waiter leads them to the window table, handing over two closed menus | At-the-table card |
 | `ready-to-order` | "Are you ready to order?" | the waiter at the table, notepad ready; the two look up from the menus | At-the-table card |
 | `order-chicken` | "I'll have the chicken, without onions, please." | the traveller points at the menu, a small "no thanks" gesture for one ingredient (no onion drawn on a plate) | At-the-table card |
-| `drink-order` | "Of course. Anything to drink?" / "A bottle of water, please." | the waiter asks; the traveller answers — a water bottle hinted only on the waiter's tray, not yet served | Drink cards |
+| `drink-order` | "Of course. Anything to drink?" / "A bottle of water, please." | the waiter asks; the traveller answers — closed menus; no bottle or glass before the answer | Drink cards |
 | `coming-right-up` | "Coming right up!" | the waiter turning away briskly with the order, a friendly nod | Order-closed card |
 | `meal-check` | "Is everything okay?" | later: plates mostly finished, the waiter checking in with a smile | After-the-meal card |
 | `delicious-bill` | "Yes, that was delicious! The bill, please." | the traveller, a happy "delicious" gesture, then a small "the bill, please" sign in the air (no bill shown) | After-the-meal card |

@@ -30,30 +30,29 @@ import type { BootcampStep, MatchTile } from './types.js';
  */
 
 /**
- * PLACEHOLDERS — VISUAL PRODUCTION REQUIRED (Astra pass): one restaurant, one waiter, one table, one
- * evening. Each slot is an emoji until its artwork exists (`image` set): docs/MISSION14_ASSET_MANIFEST.md.
- * Pictures are on teaching cards only — never an answer.
+ * Final artwork: one restaurant, waiter, table and evening. Context only, never an answer tile.
+ * Exact order facts remain in the deterministic Restaurant Ticket.
  */
 type M14Slot =
   | 'restaurant-entrance' | 'table-for-two' | 'follow-to-table' | 'ready-to-order' | 'order-chicken'
   | 'drink-order' | 'coming-right-up' | 'meal-check' | 'delicious-bill' | 'goodbye';
-export const M14_SLOTS: Record<M14Slot, { emoji: string; image?: string }> = {
-  'restaurant-entrance': { emoji: '🚪' },
-  'table-for-two': { emoji: '👥' },
-  'follow-to-table': { emoji: '📋' },
-  'ready-to-order': { emoji: '📝' },
-  'order-chicken': { emoji: '🍗' },
-  'drink-order': { emoji: '💧' },
-  'coming-right-up': { emoji: '🛎️' },
-  'meal-check': { emoji: '👍' },
-  'delicious-bill': { emoji: '🧾' },
-  'goodbye': { emoji: '👋' },
+export const M14_SLOTS: Record<M14Slot, { image: string }> = {
+  'restaurant-entrance': { image: 'images/mission14/restaurant-entrance.jpg' },
+  'table-for-two': { image: 'images/mission14/table-for-two.jpg' },
+  'follow-to-table': { image: 'images/mission14/follow-to-table.jpg' },
+  'ready-to-order': { image: 'images/mission14/ready-to-order.jpg' },
+  'order-chicken': { image: 'images/mission14/ready-to-order.jpg' },
+  'drink-order': { image: 'images/mission14/drink-order.jpg' },
+  'coming-right-up': { image: 'images/mission14/coming-right-up.jpg' },
+  'meal-check': { image: 'images/mission14/meal-check.jpg' },
+  'delicious-bill': { image: 'images/mission14/meal-check.jpg' },
+  'goodbye': { image: 'images/mission14/goodbye.jpg' },
 };
 /** Result picture only — never a choice, never a card. */
-export const M14_PROPS: Record<'meal-complete', { emoji: string; image?: string }> = {
-  'meal-complete': { emoji: '🍽️' },
+export const M14_PROPS: Record<'meal-complete', { image: string }> = {
+  'meal-complete': { image: 'images/mission14/meal-complete.jpg' },
 };
-const look14 = (x: { emoji: string; image?: string }): { emoji: string } | { image: string } => (x.image ? { image: x.image } : { emoji: x.emoji });
+const look14 = (x: { image: string }): { image: string } => ({ image: x.image });
 
 /* The locked conversation (EN · FR · ES · HE), line by line — the waiter's lines… */
 export const W_RES: L4 = ['Good evening! Do you have a reservation?', 'Bonsoir ! Vous avez une réservation ?', '¡Buenas noches! ¿Tiene reserva?', 'ערב טוב! יש לכם הזמנה?'];
@@ -280,6 +279,6 @@ export function m14Steps(lang: MissionLang): BootcampStep[] {
   ];
   // The result picture appears only at its earned receipt, once its artwork exists.
   const result = M14_PROPS['meal-complete'];
-  return steps.map((step) => (step.kind === 'receipt' && step.text.en === MEAL_COMPLETE[1] && result.image ? { ...step, image: result.image } : step));
+  return steps.map((step, index) => index === 0 ? { ...step, image: M14_SLOTS['restaurant-entrance'].image } : (step.kind === 'receipt' && step.text.en === MEAL_COMPLETE[1] && result.image ? { ...step, image: result.image } : step));
 }
 

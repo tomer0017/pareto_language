@@ -1818,3 +1818,7 @@ div.jstep { box-shadow: none; border-color: var(--line); }
 .checkpoint-complete h2 { margin: 12px 0 0; font-size: 1.5rem; }
 .checkpoint-complete p { margin: 0; font-size: 1.1rem; }
 .checkpoint-complete ul { display: flex; flex-direction: column; gap: 6px; margin: 8px 0 0; padding: 0; list-style: none; font-weight: 800; }
+
+/* Mission 14 preserves people, menus and meal state in the complete scene frame. */
+.list-row:has(> .prime-img[src*="/images/mission14/"]) { flex-wrap: wrap; }
+.prime-img.is-scene[src*="/images/mission14/"] { flex-basis: 100%; width: 100%; height: auto; }

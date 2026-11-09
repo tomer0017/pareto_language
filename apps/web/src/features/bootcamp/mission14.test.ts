@@ -790,16 +790,16 @@ describe('the arc, visuals and video', () => {
       'quickReply', 'quickReply', 'quickReply', 'receipt', 'summary',
     ]);
   });
-  it('visual slots: 10 semantic slots and 1 result prop — PLACEHOLDERS, listed in the asset manifest (VISUAL PRODUCTION REQUIRED)', () => {
+  it('visual slots: 10 semantic slots and 1 result prop — final artwork, listed in the asset manifest', () => {
     expect(Object.keys(M14_SLOTS).sort()).toEqual(['coming-right-up', 'delicious-bill', 'drink-order', 'follow-to-table', 'goodbye', 'meal-check', 'order-chicken', 'ready-to-order', 'restaurant-entrance', 'table-for-two']);
     expect(Object.keys(M14_PROPS)).toEqual(['meal-complete']);
-    for (const s of [...Object.values(M14_SLOTS), ...Object.values(M14_PROPS)]) { expect(s.image).toBeUndefined(); expect(s.emoji).toBeTruthy(); }
+    for (const s of [...Object.values(M14_SLOTS), ...Object.values(M14_PROPS)]) { expect(s.image).toMatch(/^images\/mission14\/[a-z-]+\.jpg$/); expect('emoji' in s).toBe(false); expect(existsSync(new URL(`../../../public/${s.image}`, import.meta.url))).toBe(true); }
     const manifest = readFileSync(fileURLToPath(new URL('../../../../../docs/MISSION14_ASSET_MANIFEST.md', import.meta.url)), 'utf8');
-    expect(manifest).toMatch(/VISUAL PRODUCTION REQUIRED/);
+    expect(manifest).toMatch(/FINAL ARTWORK INTEGRATED/);
     for (const key of [...Object.keys(M14_SLOTS), ...Object.keys(M14_PROPS)]) expect(manifest, key).toContain(`\`${key}\``);
   });
   it('every card picture comes from a slot, the same in every language; no picture is ever an answer', () => {
-    const looks = new Set(Object.values(M14_SLOTS).map((s) => s.image ?? s.emoji));
+    const looks = new Set(Object.values(M14_SLOTS).map((s) => s.image));
     const pics = (lang: CoverageLang) => stepsOf(day(lang), 'prime').flatMap((p: Prime) => p.words.map((w) => [w.key, w.image ?? w.emoji]));
     for (const lang of LANGS) for (const [key, pic] of pics(lang)) expect(looks, `${lang} ${key}`).toContain(pic);
     expect(pics('es')).toEqual(pics('en'));

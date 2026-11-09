@@ -1,0 +1,182 @@
+[
+  {
+    "name": "coming-right-up",
+    "sha256": "959d681e0e52ef0f525c59ce53e3506c83cab5cc558db58e9134e2a9df1bf4ef",
+    "width": 1672,
+    "height": 941,
+    "prompt": "Use case stylized-concept. ONE final 16:9 >=1536px wide polished adult 3D travel illustration. Preserve exact reference three people, clothes, faces, restaurant, square oak window table green chairs mustard backpack. Scene coming-right-up: same waiter right turning slightly to leave toward dining aisle, holding two stacked CLOSED darkgreen gold-edged menus against torso and small notepad, glancing back with warm professional nod. Same teal traveler left seated with relaxed polite hand to indicate finished ordering; auburn bearded rustpolo companion center seated relaxed. Table: ivory napkins silver cutlery only, menus collected. NO food, plates, water, glasses, bill folder. Emphasize ordering finished, food still to come. Same cream walls walnut paneling amber globes blackframe blue evening window. Center-safe scene all faces and table visible. Absolutely no readable text, numbers, symbols, logos, speech bubbles, collage.",
+    "review": {
+      "waiter": "Same short black curls, clean shaven adult, white shirt charcoal waistcoat green apron",
+      "traveler": "Same dark wavy hair teal overshirt cream tee charcoal trousers mustard backpack",
+      "companion": "Same auburn hair and beard rust polo beige trousers",
+      "restaurant": "Same cream plaster walnut panels amber globes black framed evening window",
+      "table": "Same square oak tabletop and green upholstered chairs",
+      "menus": "Dark green covers with thin gold border; absent after collection",
+      "meal": "White round plates with chicken remnants only after Later, clear silver cap bottle two tumblers",
+      "text": false,
+      "food": false,
+      "water": false,
+      "bill": false
+    }
+  },
+  {
+    "name": "drink-order",
+    "sha256": "fbc52b14e03afc1a1fd5c75029fdf13503e4d3fa90bcf792c60f7d7d77af6f33",
+    "width": 1672,
+    "height": 941,
+    "prompt": "Use case: stylized-concept. ONE 16:9 >=1536px wide premium adult 3D animated travel app scene. Reference defines exact three people, same waiter/traveler/companion, clothing, restaurant, square oak window table green chairs amber globes. Scene drink-order: same teal traveler left, rust polo auburn bearded companion center seated; same waiter right asks a follow-up question, holding small blank order notepad in left hand, right hand relaxed open palm toward diner. Traveler answers with gentle open palm and friendly attentive expression. Both darkgreen thin gold border menus now CLOSED flat on table, one per diner. Folded ivory napkins silver cutlery. NO water bottle or glasses at all yet, no food or plates, no bill. Drink selection is carried by app text, picture supports service exchange, must not reveal choice before listening. Same center-safe medium wide table scene. No text, numbers, symbols, speech bubble, collage.",
+    "review": {
+      "waiter": "Same short black curls, clean shaven adult, white shirt charcoal waistcoat green apron",
+      "traveler": "Same dark wavy hair teal overshirt cream tee charcoal trousers mustard backpack",
+      "companion": "Same auburn hair and beard rust polo beige trousers",
+      "restaurant": "Same cream plaster walnut panels amber globes black framed evening window",
+      "table": "Same square oak tabletop and green upholstered chairs",
+      "menus": "Dark green covers with thin gold border; absent after collection",
+      "meal": "White round plates with chicken remnants only after Later, clear silver cap bottle two tumblers",
+      "text": false,
+      "food": false,
+      "water": false,
+      "bill": false
+    }
+  },
+  {
+    "name": "follow-to-table",
+    "sha256": "a6ea69feeb89c3466cb799d6a0a53ff06e417e10eeee40b3395b3690775e6060",
+    "width": 1672,
+    "height": 941,
+    "prompt": "Use case: stylized-concept. ONE final 16:9 landscape >=1536px wide premium polished adult 3D animated travel illustration. Reference supplies exact three character identities, wardrobe and restaurant. Same waiter medium brown skin short black curls clean-shaven white rolled-sleeve shirt charcoal waistcoat forestgreen waist apron. Same dark wavy-haired teal overshirt creamtee traveler, mustard backpack now on back of his chair, and auburn bearded rustpolo beige trousers companion. Scene follow-to-table: they have just sat at their square oak table by the large black-framed window, traveler LEFT foreground facing right, companion FAR side center, waiter standing RIGHT handing two closed plain dark green menus with thin gold edge. Green upholstered chairs. Cream plaster and walnut wainscoting, amber globes, blue evening outdoors, same warm illumination. Center table unobscured, neat ivory folded napkins and silver cutlery only, no glasses, food, bottles, bill folder or dishes. Medium-wide three-quarter view, faces and menus readable on mobile. No text, logos, numbers, watermark, collage.",
+    "review": {
+      "waiter": "Same short black curls, clean shaven adult, white shirt charcoal waistcoat green apron",
+      "traveler": "Same dark wavy hair teal overshirt cream tee charcoal trousers mustard backpack",
+      "companion": "Same auburn hair and beard rust polo beige trousers",
+      "restaurant": "Same cream plaster walnut panels amber globes black framed evening window",
+      "table": "Same square oak tabletop and green upholstered chairs",
+      "menus": "Dark green covers with thin gold border; absent after collection",
+      "meal": "White round plates with chicken remnants only after Later, clear silver cap bottle two tumblers",
+      "text": false,
+      "food": false,
+      "water": false,
+      "bill": false
+    }
+  },
+  {
+    "name": "goodbye",
+    "sha256": "d9ffcd337fb66d04a31df98225224e8d299a12c47f0fb3843f098f381cbfa145",
+    "width": 1672,
+    "height": 941,
+    "prompt": "Use case stylized-concept. ONE final 16:9 >=1536px wide premium adult 3D travel app illustration. Reference defines exact scene, people faces outfits restaurant table plates and bottle. New moment goodbye bill handoff: same waiter RIGHT leans very slightly forward placing a small CLOSED plain dark charcoal check-presenter folder on right center of oak table, smiling goodbye. Teal traveler LEFT warmly thanks him with relaxed open hand, rust companion center smiles. Preserve same two white finished plates with tiny chicken remnants and cutlery resting together, ivory napkins, same clear silver-cap water bottle and two short tumblers. Same restaurant window creamwalnut walls amberglobes greenchairs backpack. NO menus. Folder small distinct from previous big green menus, closed with no receipt visible. No currency, prices, payment card, terminal, cash, readable text, numbers, symbols, logos, collage. All semantic details centrally visible at phone size.",
+    "review": {
+      "waiter": "Same short black curls, clean shaven adult, white shirt charcoal waistcoat green apron",
+      "traveler": "Same dark wavy hair teal overshirt cream tee charcoal trousers mustard backpack",
+      "companion": "Same auburn hair and beard rust polo beige trousers",
+      "restaurant": "Same cream plaster walnut panels amber globes black framed evening window",
+      "table": "Same square oak tabletop and green upholstered chairs",
+      "menus": "Dark green covers with thin gold border; absent after collection",
+      "meal": "White round plates with chicken remnants only after Later, clear silver cap bottle two tumblers",
+      "text": false,
+      "food": true,
+      "water": true,
+      "bill": true
+    }
+  },
+  {
+    "name": "meal-check",
+    "sha256": "ae71b34e0dea94ca047b22bb2e0a0edca876a5f59e37ebe4ce337c6ffbb12bcb",
+    "width": 1672,
+    "height": 941,
+    "prompt": "Use case identity-preserve. Edit this ONE restaurant scene: change ONLY teal-shirt traveler's pose and expression. He sits upright comfortably, eyes OPEN looking at the waiter, warm satisfied modest smile. His left forearm rests on table edge, his right hand gestures small open palm politely toward waiter. No hands behind his head, no reclining or closed eyes. Preserve exact face identity, clothes, companion, waiter, restaurant, composition, table, two finished chicken-remnant white plates, cutlery, napkins, single silver-cap unlabeled water bottle and two tumblers, lighting and 16:9 >=1536px quality. This is satisfied meal check and polite request scene; no bill folder yet. No text, numbers, new items or collage.",
+    "review": {
+      "waiter": "Same short black curls, clean shaven adult, white shirt charcoal waistcoat green apron",
+      "traveler": "Same dark wavy hair teal overshirt cream tee charcoal trousers mustard backpack",
+      "companion": "Same auburn hair and beard rust polo beige trousers",
+      "restaurant": "Same cream plaster walnut panels amber globes black framed evening window",
+      "table": "Same square oak tabletop and green upholstered chairs",
+      "menus": "Dark green covers with thin gold border; absent after collection",
+      "meal": "White round plates with chicken remnants only after Later, clear silver cap bottle two tumblers",
+      "text": false,
+      "food": true,
+      "water": true,
+      "bill": false
+    }
+  },
+  {
+    "name": "meal-complete",
+    "sha256": "46b69172e4333d6ada7820be51d7d08e51a280a1606691f8d025508047e40120",
+    "width": 1672,
+    "height": 941,
+    "prompt": "Use case stylized-concept. ONE final 16:9 >=1536px wide polished premium adult 3D animated travel-app result picture meal-complete. Reference exact three fictional men, faces hair clothes and same warm mid-range restaurant. Teal overshirt creamtee darktrousers darkwavyhair traveler mustard backpack on shoulders and auburn-bearded rustpolo beige trousers companion are leaving through restaurant doorway into blue evening, both satisfied smiling, traveler glances back with small goodbye wave. Same white shirt charcoal waistcoat forestgreen apron waiter stands inside door warmly waving goodbye. Warm creamplaster walnut dining room with oak square tables greenchairs amber globes and blackframedwindow visible behind him. Intimate readable three-person compact composition, waist-up/threequarter, ample margins, conveys completed enjoyable dinner. No food props, no menus, no bill text, currency, payment method, storefront signage, labels, numbers, logos, watermark or collage. One continuous shot.",
+    "review": {
+      "waiter": "Same short black curls, clean shaven adult, white shirt charcoal waistcoat green apron",
+      "traveler": "Same dark wavy hair teal overshirt cream tee charcoal trousers mustard backpack",
+      "companion": "Same auburn hair and beard rust polo beige trousers",
+      "restaurant": "Same cream plaster walnut panels amber globes black framed evening window",
+      "table": "Same square oak tabletop and green upholstered chairs",
+      "menus": "Dark green covers with thin gold border; absent after collection",
+      "meal": "White round plates with chicken remnants only after Later, clear silver cap bottle two tumblers",
+      "text": false,
+      "food": false,
+      "water": false,
+      "bill": false
+    }
+  },
+  {
+    "name": "ready-to-order",
+    "sha256": "d1ff7c4ec20bfc05aa03b8b5b84cc0047e736206e0ee5449e86f6a81b499cdab",
+    "width": 1672,
+    "height": 941,
+    "prompt": "Use case: stylized-concept. ONE final 16:9 >=1536px wide premium 3D adult animated restaurant scene. Preserve exact reference people identities/outfits, seating positions, square oak table, green chairs, mustard backpack on traveler's chair, cream/walnut walls, black framed window and amber lights. Scene ready-to-order, also supports main-order: teal traveler LEFT has open dark green gold-edged menu on table with blank cream pages, one finger gently indicates menu while looking up attentively to waiter RIGHT; rust polo companion center looks at waiter over same styled menu. Waiter stands attentively with small blank cream notepad and pen poised, natural service posture ready to take order, warm slight smile. Clear order-taking interaction, no big gestures. Two ivory folded napkins and silver cutlery same settings. Table remains without food, plates, water bottle, glasses or bill folder. No readable or pseudo text, no drawings of food, no labels or symbols, no collage. Medium-wide mobile-safe central framing of faces, menu and table, same warm evening.",
+    "review": {
+      "waiter": "Same short black curls, clean shaven adult, white shirt charcoal waistcoat green apron",
+      "traveler": "Same dark wavy hair teal overshirt cream tee charcoal trousers mustard backpack",
+      "companion": "Same auburn hair and beard rust polo beige trousers",
+      "restaurant": "Same cream plaster walnut panels amber globes black framed evening window",
+      "table": "Same square oak tabletop and green upholstered chairs",
+      "menus": "Dark green covers with thin gold border; absent after collection",
+      "meal": "White round plates with chicken remnants only after Later, clear silver cap bottle two tumblers",
+      "text": false,
+      "food": false,
+      "water": false,
+      "bill": false
+    }
+  },
+  {
+    "name": "restaurant-entrance",
+    "sha256": "1a4a88b076c6a953b5cf29a52b426d38e0836cb7373d0cfabab4b0009b82ae6f",
+    "width": 1672,
+    "height": 941,
+    "prompt": "Use case: stylized-concept. Create ONE final 16:9 landscape scene, >=1536px wide, premium adult polished 3D animated travel app illustration. Reference image supplies ONLY character identity and rendering style: keep the dark wavy-haired clean-shaven adult traveler in teal overshirt, cream tee, charcoal trousers and mustard backpack; his companion is the auburn-haired bearded man in rust polo, beige trousers. New restaurant world: warm mid-range modern restaurant, cream plaster walls, walnut wainscoting, oak square tables, dark green upholstered chairs, large black-framed window showing evening blue, simple amber globe pendants. Same fictional male waiter for all future scenes: about 40, medium brown skin, short tidy black curls, clean-shaven, white long-sleeve shirt, charcoal waistcoat and charcoal trousers, forest green waist apron. Scene restaurant-entrance: waiter welcomes both standing diners beside a small walnut host lectern with an open blank reservation book. Restaurant tables visible behind him, no hotel reception or cafe counter. Natural welcoming open palm, attentive faces. All three centrally framed, waist-up or three-quarter bodies and dining room readable at phone size. NO food, plates of food, bottles, drinks, bill folder, text, letters, numbers, logos, watermark, speech bubbles, collage. One single continuous shot.",
+    "review": {
+      "waiter": "Same short black curls, clean shaven adult, white shirt charcoal waistcoat green apron",
+      "traveler": "Same dark wavy hair teal overshirt cream tee charcoal trousers mustard backpack",
+      "companion": "Same auburn hair and beard rust polo beige trousers",
+      "restaurant": "Same cream plaster walnut panels amber globes black framed evening window",
+      "table": "Same square oak tabletop and green upholstered chairs",
+      "menus": "Dark green covers with thin gold border; absent after collection",
+      "meal": "White round plates with chicken remnants only after Later, clear silver cap bottle two tumblers",
+      "text": false,
+      "food": false,
+      "water": false,
+      "bill": false
+    }
+  },
+  {
+    "name": "table-for-two",
+    "sha256": "5007a8159266346ec5203c66eef6f5804b93e9098d2c1d3514d26f678c495bbf",
+    "width": 1672,
+    "height": 941,
+    "prompt": "Use case: stylized-concept. One final 16:9 >=1536px wide premium 3D animated travel-app scene. Reference is identity/style/world reference. Same three men, faces, hair, clothing, warm cream/walnut restaurant with oak tables green chairs amber globe pendants black-framed evening window. Scene table-for-two: at host lectern, teal overshirt traveler politely requests seating, holding up TWO fingers naturally near chest, other hand open modestly; auburn bearded rust polo companion beside him, same waiter in white shirt charcoal waistcoat green waist apron attentively listening. No exaggerated gesture, friendly adult interaction. Blank reservation book. Center-safe waist-up framing all three, dining room behind. No text, numbers, symbols, food, drinks, water bottles, plates, bill folders, collage. Exact party number stays app UI; this is contextual request for seating.",
+    "review": {
+      "waiter": "Same short black curls, clean shaven adult, white shirt charcoal waistcoat green apron",
+      "traveler": "Same dark wavy hair teal overshirt cream tee charcoal trousers mustard backpack",
+      "companion": "Same auburn hair and beard rust polo beige trousers",
+      "restaurant": "Same cream plaster walnut panels amber globes black framed evening window",
+      "table": "Same square oak tabletop and green upholstered chairs",
+      "menus": "Dark green covers with thin gold border; absent after collection",
+      "meal": "White round plates with chicken remnants only after Later, clear silver cap bottle two tumblers",
+      "text": false,
+      "food": false,
+      "water": false,
+      "bill": false
+    }
+  }
+]

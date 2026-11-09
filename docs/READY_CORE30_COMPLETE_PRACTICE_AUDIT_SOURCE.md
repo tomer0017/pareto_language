@@ -14076,8 +14076,8 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `rest.line.reservation` — EN "Good evening! Do you have a reservation?" · FR "Bonsoir ! Vous avez une réservation ?" · ES "¡Buenas noches! ¿Tiene reserva?" — meaning "ערב טוב! יש לכם הזמנה? (המלצר בודק: הזמנתם שולחן מראש?)" / "Good evening! Do you have a reservation? (the waiter checks: did you book a table?)" — icon 🚪 — new
-2. `rest.line.table-two` — EN "No — a table for two, please." · FR "Non — une table pour deux, s’il vous plaît." · ES "No — una mesa para dos, por favor." — meaning "לא — שולחן לשניים, בבקשה. (אין הזמנה + כמה אתם)" / "No — a table for two, please. (no booking + how many of you)" — icon 👥 — new
+1. `rest.line.reservation` — EN "Good evening! Do you have a reservation?" · FR "Bonsoir ! Vous avez une réservation ?" · ES "¡Buenas noches! ¿Tiene reserva?" — meaning "ערב טוב! יש לכם הזמנה? (המלצר בודק: הזמנתם שולחן מראש?)" / "Good evening! Do you have a reservation? (the waiter checks: did you book a table?)" — icon none — new
+2. `rest.line.table-two` — EN "No — a table for two, please." · FR "Non — une table pour deux, s’il vous plaît." · ES "No — una mesa para dos, por favor." — meaning "לא — שולחן לשניים, בבקשה. (אין הזמנה + כמה אתם)" / "No — a table for two, please. (no booking + how many of you)" — icon none — new
 
 No build-sentence card.
 
@@ -14086,9 +14086,9 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `rest.line.follow` — EN "Perfect, follow me. Here are your menus." · FR "Parfait, suivez-moi. Voici vos menus." · ES "Perfecto, sígame. Aquí tienen las cartas." — meaning "מצוין, בואו אחריי. הנה התפריטים. (הוא מוביל אתכם לשולחן)" / "Perfect, follow me. Here are your menus. (he takes you to your table)" — icon 📋 — new
-2. `rest.line.ready` — EN "Are you ready to order?" · FR "Vous êtes prêts à commander ?" · ES "¿Están listos para pedir?" — meaning "מוכנים להזמין? (המלצר רוצה עכשיו את הזמנת האוכל)" / "Are you ready to order? (the waiter wants your food order now)" — icon 📝 — new
-3. `rest.line.order` — EN "I'll have the chicken, without onions, please." · FR "Je vais prendre le poulet, sans oignons, s’il vous plaît." · ES "Voy a tomar el pollo, sin cebolla, por favor." — meaning "אני אקח את העוף, בלי בצל, בבקשה. (מה אתה לוקח + בלי = להוריד מהמנה)" / "I'll have the chicken, without onions, please. (what you'll have + without = take it out of the dish)" — icon 🍗 — new
+1. `rest.line.follow` — EN "Perfect, follow me. Here are your menus." · FR "Parfait, suivez-moi. Voici vos menus." · ES "Perfecto, sígame. Aquí tienen las cartas." — meaning "מצוין, בואו אחריי. הנה התפריטים. (הוא מוביל אתכם לשולחן)" / "Perfect, follow me. Here are your menus. (he takes you to your table)" — icon none — new
+2. `rest.line.ready` — EN "Are you ready to order?" · FR "Vous êtes prêts à commander ?" · ES "¿Están listos para pedir?" — meaning "מוכנים להזמין? (המלצר רוצה עכשיו את הזמנת האוכל)" / "Are you ready to order? (the waiter wants your food order now)" — icon none — new
+3. `rest.line.order` — EN "I'll have the chicken, without onions, please." · FR "Je vais prendre le poulet, sans oignons, s’il vous plaît." · ES "Voy a tomar el pollo, sin cebolla, por favor." — meaning "אני אקח את העוף, בלי בצל, בבקשה. (מה אתה לוקח + בלי = להוריד מהמנה)" / "I'll have the chicken, without onions, please. (what you'll have + without = take it out of the dish)" — icon none — new
 
 No build-sentence card.
 
@@ -14097,8 +14097,8 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `rest.line.drink` — EN "Of course. Anything to drink?" · FR "Bien sûr. Quelque chose à boire ?" · ES "Claro. ¿Algo de beber?" — meaning "כמובן. משהו לשתות? (המלצר שואל מה תשתה)" / "Of course. Anything to drink? (the waiter asks for your drink)" — icon 💧 — new
-2. `rest.line.water` — EN "A bottle of water, please." · FR "Une bouteille d’eau, s’il vous plaît." · ES "Una botella de agua, por favor." — meaning "בקבוק מים, בבקשה." / "A bottle of water, please." — icon 💧 — new
+1. `rest.line.drink` — EN "Of course. Anything to drink?" · FR "Bien sûr. Quelque chose à boire ?" · ES "Claro. ¿Algo de beber?" — meaning "כמובן. משהו לשתות? (המלצר שואל מה תשתה)" / "Of course. Anything to drink? (the waiter asks for your drink)" — icon none — new
+2. `rest.line.water` — EN "A bottle of water, please." · FR "Une bouteille d’eau, s’il vous plaît." · ES "Una botella de agua, por favor." — meaning "בקבוק מים, בבקשה." / "A bottle of water, please." — icon none — new
 
 No build-sentence card.
 
@@ -14107,7 +14107,7 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `rest.line.coming` — EN "Coming right up!" · FR "Ça arrive tout de suite !" · ES "¡Enseguida se lo traigo!" — meaning "מגיע עוד רגע! (ההזמנה בדרך — אין מה לענות)" / "Coming right up! (your order is on its way — nothing to answer)" — icon 🛎️ — new
+1. `rest.line.coming` — EN "Coming right up!" · FR "Ça arrive tout de suite !" · ES "¡Enseguida se lo traigo!" — meaning "מגיע עוד רגע! (ההזמנה בדרך — אין מה לענות)" / "Coming right up! (your order is on its way — nothing to answer)" — icon none — new
 
 No build-sentence card.
 
@@ -14116,9 +14116,9 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `rest.line.okay` — EN "Is everything okay?" · FR "Tout va bien ?" · ES "¿Va todo bien?" — meaning "הכל בסדר? (המלצר בודק שהארוחה הייתה בסדר)" / "Is everything okay? (the waiter checks the meal was okay)" — icon 👍 — new
-2. `rest.line.bill` — EN "Yes, that was delicious! The bill, please." · FR "Oui, c’était délicieux ! L’addition, s’il vous plaît." · ES "¡Sí, estaba delicioso! La cuenta, por favor." — meaning "כן, היה טעים מאוד! החשבון, בבקשה. (מחמאה ← ואז מבקשים לשלם)" / "Yes, that was delicious! The bill, please. (a compliment → then ask to pay)" — icon 🧾 — new
-3. `rest.line.bye` — EN "So glad you enjoyed it. Here you are — have a lovely evening!" · FR "Ravi que ça vous ait plu. Voici — passez une bonne soirée !" · ES "Me alegro de que les gustara. Aquí tienen — ¡que pasen buena noche!" — meaning "שמח שנהניתם. בבקשה — ערב נעים! (הוא מגיש את החשבון ונפרד)" / "So glad you enjoyed it. Here you are — have a lovely evening! (he hands you the bill and says goodbye)" — icon 👋 — new
+1. `rest.line.okay` — EN "Is everything okay?" · FR "Tout va bien ?" · ES "¿Va todo bien?" — meaning "הכל בסדר? (המלצר בודק שהארוחה הייתה בסדר)" / "Is everything okay? (the waiter checks the meal was okay)" — icon none — new
+2. `rest.line.bill` — EN "Yes, that was delicious! The bill, please." · FR "Oui, c’était délicieux ! L’addition, s’il vous plaît." · ES "¡Sí, estaba delicioso! La cuenta, por favor." — meaning "כן, היה טעים מאוד! החשבון, בבקשה. (מחמאה ← ואז מבקשים לשלם)" / "Yes, that was delicious! The bill, please. (a compliment → then ask to pay)" — icon none — new
+3. `rest.line.bye` — EN "So glad you enjoyed it. Here you are — have a lovely evening!" · FR "Ravi que ça vous ait plu. Voici — passez une bonne soirée !" · ES "Me alegro de que les gustara. Aquí tienen — ¡que pasen buena noche!" — meaning "שמח שנהניתם. בבקשה — ערב נעים! (הוא מגיש את החשבון ונפרד)" / "So glad you enjoyed it. Here you are — have a lovely evening! (he hands you the bill and says goodbye)" — icon none — new
 
 No build-sentence card.
 
