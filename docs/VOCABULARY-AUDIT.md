@@ -78,6 +78,10 @@ real prime word in that mission. **Counts: 29 audited · 7 primed · 22 explicit
 > **2026-11-06 — Mission 13 (Home & Family, registry key 32) is now primed** with whole-line cards, never word
 > lists: *Where is your family?*, *Yes, I live with my family.*, *Thanks, but I'm going to eat at my grandmother's.*,
 > *Yes, I'm just tired.*, *Yes, I'm going home.*, *I'm going to sleep.* — the Flex Round is transfer only, never teaching.
+> **2026-11-09 — Mission 24 (City & Conversation, registry key 23) primes ONE line**: *You should take the boat tour.*
+> No earlier mission guarantees "should" — an optional branch never counts — so the checkpoint shows it once, on a
+> card, before the chat. Everything else in the checkpoint stays proof.
+
 > **2026-11-09 — Mission 15 (Food Preferences & Allergies, registry key 13) is now primed** with whole-line cards,
 > never an allergen list: *I'm allergic to nuts.*, *I'm vegetarian.*, *Does it have dairy?* and the waiter's answers.
 > "Without onions", "Great" and "Thank you!" are verified prior — retrieved, not re-taught. Nothing says "safe".

@@ -1,3 +1,4 @@
+import { cinematicTranscript } from './exportDialogue.js';
 import { describe, expect, it } from 'vitest';
 import { BOOTCAMP_PLAN } from './plan.js';
 import { fillFrame, isHelpToolId, validatePracticeStep } from './practiceEngines.js';
@@ -54,7 +55,9 @@ const words = (s: string): string[] => s.toLowerCase().replace(/[’`]/g, "'").s
  *  out the speed chain and the recovery challenge so they can be checked against the rest. */
 function lines(day: BootcampDayContent, opts: { skipFinals?: boolean } = {}): string[] {
   const out: string[] = day.items.map((i) => i.text);
-  for (const d of Object.values(day.dialogues)) for (const n of d.nodes) { if (n.en) out.push(n.en); for (const c of n.choices ?? []) out.push(c.en); }
+  // The conversation's guaranteed path only: a branch the learner can skip (a miss, a recovery move) is
+  // optional exposure — it never makes a word "met" for a later mission.
+  for (const d of Object.values(day.dialogues)) for (const l of cinematicTranscript(d)) out.push(l.en);
   for (const s of day.steps) {
     if (s.kind === 'prime') out.push(...s.words.map((w) => w.text));
     if (s.kind === 'ambush' && s.mode !== 'recovery') out.push(s.npc.en);
@@ -89,8 +92,8 @@ describe('scope: only the Practice of Missions 19–24 changed', () => {
   });
   it('after the final micro-pass the approved practice is otherwise exactly as approved', () => {
     const d = (l: Lang, n: number): BootcampDayContent => beforeCueFreeze(MISSIONS_BY_LANG[l]![BOOTCAMP_PLAN[n - 1]!.day]!, l);
-    // Missions 20, 21, 23 and 24, whole.
-    expect(print((l) => [20, 21, 23, 24].map((n) => d(l, n)))).toEqual({ en: '369ee46b', fr: 'd43599e4', es: '723bbe78' });
+    // Missions 20, 21 and 23, whole (Mission 24 since its "should" card: tested below).
+    expect(print((l) => [20, 21, 23].map((n) => d(l, n)))).toEqual({ en: '13fc5213', fr: 'f573dc14', es: '26e70bd0' });
     // Mission 19 apart from its intro card; Mission 22 apart from the removed builder and the shortened speed chain.
     expect(print((l) => [d(l, 19).items, d(l, 19).dialogues, d(l, 19).steps.filter((s) => s.kind !== 'talk')])).toEqual({ en: 'f31e051c', fr: '4daed3c6', es: 'b9009e74' });
     // Mission 22: with the proof card after the speed chain put back to its approved wording (it was
@@ -284,7 +287,10 @@ describe('Mission 19 — Public Transport', () => {
       const d = mission(19, lang);
       const [ambush] = stepsOf(d, 'ambush');
       expect([ambush!.mode, strip(ambush!.correctItemId)], lang).toEqual(['recovery', 'phrase.recovery.repeat']);
-      expect(unknownIn([ambush!.npc.en], vocabulary(lang, 19)), lang).toEqual([]); // difficulty = pace, not vocabulary
+      // difficulty = pace, not vocabulary. KNOWN GAP (flagged, not hidden): French "celui(-là)" is met only in
+      // this mission's own optional branch ("…mais celui-là est bien, montez."), which the learner can skip — so
+      // since the optional-exposure rule it is not guaranteed. The answer here is "Can you repeat?" anyway.
+      expect(unknownIn([ambush!.npc.en], vocabulary(lang, 19)), lang).toEqual({ en: [], es: [], fr: ['celui'] }[lang]);
       expect(words(ambush!.npc.en).length, lang).toBeGreaterThanOrEqual(18);
     }
     expect(JSON.stringify(day.steps)).not.toMatch(/delayed|replacement bus|stand C/); // the old untaught disruption is gone
@@ -550,9 +556,13 @@ describe('Mission 24 — CHECKPOINT: City & Conversation', () => {
   const day = mission(24);
   const screens = (d: BootcampDayContent) => Object.values(d.dialogues).flatMap((dl) => dl.nodes.filter((n) => n.choices?.length).map((n) => ({ scene: dl.id, node: n })));
 
-  it('it proves, it does not teach: no key sentence, no word intro, no listening drill, no quiz, no review', () => {
-    expect(kinds(day)).toEqual(['talk', 'dialogue', 'receipt', 'ambush:speed', 'receipt', 'dialogue', 'receipt', 'dialogue', 'receipt', 'dialogue', 'receipt', 'receipt', 'summary']);
-    for (const lang of LANGS) for (const s of mission(24, lang).steps) expect(['tool', 'prime', 'replies', 'quiz', 'swipe'], lang).not.toContain(s.kind);
+  it('it proves, it does not teach: no key sentence, no listening drill, no quiz, no review — ONE context card, for the one word no earlier mission guarantees', () => {
+    expect(kinds(day)).toEqual(['talk', 'dialogue', 'receipt', 'ambush:speed', 'receipt', 'prime', 'dialogue', 'receipt', 'dialogue', 'receipt', 'dialogue', 'receipt', 'receipt', 'summary']);
+    for (const lang of LANGS) {
+      for (const s of mission(24, lang).steps) expect(['tool', 'replies', 'quiz', 'swipe'], lang).not.toContain(s.kind);
+      const primes = stepsOf(mission(24, lang), 'prime');
+      expect(primes.flatMap((p) => p.words.map((w) => [w.key, w.text, w.line])), lang).toEqual([['opin.line.you-should', { en: 'You should take the boat tour.', fr: 'Vous devriez faire le tour en bateau.', es: 'Debería hacer el paseo en barco.' }[lang], true]]);
+    }
   });
   it('one day in a city, four cold scenes — station, a local, a meal that goes wrong, a traveler — with no translation before answering', () => {
     for (const lang of LANGS) {
@@ -581,16 +591,21 @@ describe('Mission 24 — CHECKPOINT: City & Conversation', () => {
     expect(pick(0).slice(0, 2)).toEqual(['✓ phrase.past.i-went', '✗ phrase.future.going-to-vietnam']); // "where were you?" ≠ "where are you going?"
     expect(pick(2)).toEqual(['✓ phrase.future.going-to-vietnam', '✗ phrase.past.i-went']);
   });
-  it('"You should take the boat tour." — NO earlier mission teaches "should": a recorded gap for Mission 24\'s design pass', () => {
+  it('"You should take the boat tour." — NO earlier mission guarantees "should": Mission 24 meets it itself, on a card, before the chat', () => {
     // Mission 11 once carried an invented extra line ("You should try the old town.") so that this line
     // would count as recombination. That was manufactured prior learning and is gone: a later mission's
-    // need never justifies inserting language into an earlier one. Mission 24 is unchanged; the word stays
-    // flagged until Mission 24 teaches it itself.
+    // need never justifies inserting language into an earlier one — nor does an optional branch the learner
+    // can skip (Mission 15's "…anything else I should know?" is optional exposure, never prior learning).
     const should: Record<Lang, string> = { en: 'should', fr: 'devriez', es: 'debería' };
     const opening: Record<Lang, RegExp> = { en: /^You should \w+/, fr: /^Vous devriez \w+/, es: /^Debería \w+/ };
     for (const lang of LANGS) {
       expect(JSON.stringify(mission(11, lang)), lang).not.toMatch(/you-should-try|You should try|Vous devriez|Debería/);
       expect(learnedBefore(lang, 24).words.has(should[lang]), `${lang} “${should[lang]}” is not verified prior learning`).toBe(false);
+      expect(learnedBefore(lang, 25).words.has(should[lang]), `${lang} “${should[lang]}” is learned once Mission 24 shows it`).toBe(true);
+      const d = mission(24, lang);
+      const card = d.steps.findIndex((x) => x.kind === 'prime');
+      expect(card, lang).toBe(d.steps.findIndex((x) => x.kind === 'dialogue' && x.dialogueId === 'cold-chat') - 1); // right before the chat
+      expect((d.steps[card] as Extract<BootcampStep, { kind: 'prime' }>).words[0]!.meaning.en).toBe('You should take the boat tour. (a recommendation: it’s a good idea for you)');
       const local = mission(24, lang).dialogues['cold-chat']!.nodes.filter((n) => n.who === 'npc' && !n.slow).map((n) => n.en);
       expect(local.some((l) => opening[lang].test(l)), lang).toBe(true);
     }
@@ -622,11 +637,17 @@ describe('Mission 24 — CHECKPOINT: City & Conversation', () => {
       }
     }
   });
-  it('STRICT — zero new target-language vocabulary: every word of the checkpoint was met in Missions 01–23 — except the recorded "should" gap', () => {
-    // KNOWN GAP (flagged, not hidden): "You should take the boat tour." — no earlier mission teaches the
-    // "should" word; Mission 24 must teach it itself in its design pass (see the boat-tour test above).
-    const GAP: Record<Lang, string[]> = { en: [], fr: ['devriez'], es: ['debería'] };
-    for (const lang of LANGS) expect(unknownIn(lines(mission(24, lang)), vocabulary(lang, 23)), lang).toEqual(GAP[lang]);
+  it('STRICT — zero new target-language vocabulary outside its one card: every other word was met on the guaranteed path of Missions 01–23', () => {
+    // "should" / "devriez" / "debería" is the ONLY word no earlier mission guarantees (an optional branch never
+    // counts) — and Mission 24's own card shows it before the chat that uses it.
+    const NEW: Record<Lang, string[]> = { en: ['should'], fr: ['devriez'], es: ['debería'] };
+    for (const lang of LANGS) {
+      const d = mission(24, lang);
+      const said = lines({ ...d, steps: d.steps.filter((x) => x.kind !== 'prime') });
+      expect(unknownIn(said, vocabulary(lang, 23)), lang).toEqual(NEW[lang]);
+      const card = stepsOf(d, 'prime').flatMap((p) => p.words.map((w) => w.text));
+      expect(unknownIn(said, new Set([...vocabulary(lang, 23), ...card.flatMap(words)])), lang).toEqual([]);
+    }
   });
   it('every learner line is a sentence an earlier mission taught, with the same id and the same wording', () => {
     for (const lang of LANGS) {

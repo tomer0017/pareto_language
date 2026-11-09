@@ -38,12 +38,13 @@ describe('mission vocabulary audit — complete and consistent (Part 9)', () => 
     });
   }
 
-  it('explicitly marks checkpoints/cold missions as no-priming-needed', () => {
-    for (const cp of [9, 17, 23, 27, 28, 29]) expect(MISSION_VOCAB_AUDIT[cp]!.decision).toBe('no-priming-needed');
+  it('explicitly marks checkpoints/cold missions as no-priming-needed — City & Conversation primes exactly one line ("should")', () => {
+    for (const cp of [9, 17, 27, 28, 29]) expect(MISSION_VOCAB_AUDIT[cp]!.decision).toBe('no-priming-needed');
+    expect([MISSION_VOCAB_AUDIT[23]!.decision, MISSION_VOCAB_AUDIT[23]!.primingWords]).toEqual(['primed', ['You should take the boat tour.']]);
   });
 
-  it('reports the exact primed set (the 7 original foundation missions + Everyday Core + Airport & Border + Shopping + Small Talk + Time & Plans + Home & Family + Restaurant Meal + Food Preferences & Allergies)', () => {
+  it('reports the exact primed set (the 7 original foundation missions + Everyday Core + Airport & Border + Shopping + Small Talk + Time & Plans + Home & Family + Restaurant Meal + Food Preferences & Allergies + City & Conversation\'s one card)', () => {
     const primed = Object.values(MISSION_VOCAB_AUDIT).filter((a) => a.decision === 'primed').map((a) => a.day);
-    expect(primed).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 10, 13, 22, 30, 31, 32]); // registry keys; 30 = Everyday Core (Mission 4), 10 = Airport & Border (Mission 6), 8 = Shopping (Mission 9), 22 = Small Talk (Mission 11), 31 = Time & Plans (Mission 12), 32 = Home & Family (Mission 13), 13 = Food Preferences & Allergies (Mission 15)
+    expect(primed).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 10, 13, 22, 23, 30, 31, 32]); // registry keys; 30 = Everyday Core (Mission 4), 10 = Airport & Border (Mission 6), 8 = Shopping (Mission 9), 22 = Small Talk (Mission 11), 31 = Time & Plans (Mission 12), 32 = Home & Family (Mission 13), 13 = Food Preferences & Allergies (Mission 15), 23 = City & Conversation (Mission 24: one "should" card)
   });
 });

@@ -2050,3 +2050,15 @@ archived in `retired.ts`; six whole waiter lines are new hear items. The compani
 VISUAL PRODUCTION REQUIRED (Astra pass): `MISSION15_ASSET_MANIFEST.md`. Tests: `mission15.test.ts` (61);
 Missions 01–14 and 16–30 byte-for-byte unchanged (the old "15–30" pins now pin 16–30). The same release commits
 the user's re-recorded videos en_1, en_2, en_3, en_6, en_7, fr_3, fr_5, fr_6 (verified H.264 / AAC, byte-exact).
+
+**Optional exposure ≠ guaranteed learning (2026-11-09 fix).** Mission 15 keeps its optional branch (a polite
+"Thank you!" → "…anything else I should know?"), but nothing the learner can skip counts any more: coverage
+(`encounters`) counts only a conversation's guaranteed path (`cinematicTranscript`) — and only lines the learner
+actually picks as retrieval — and the City-phase word audit (`practiceCity.test.ts`) counts only that path as
+"met". `learnedBefore` already ignored conversations entirely, so "should" was never verified prior learning —
+only that test-level "met" audit had leaned on the branch. "should" / "devriez" / "debería" is now NEW in Mission
+24 (City & Conversation): one context card (`SceneSpec.prime`, a generic checkpoint option) shows "You should
+take the boat tour." right before the chat that uses it — no grammar. Missions 01–23 and 25–30 byte-for-byte
+unchanged; both locked dialogues unchanged. The same rule surfaced one recorded gap: French "celui(-là)" in
+Mission 19's fast correction is met only in Mission 19's own optional branch (flagged in its test; the answer there
+is "Can you repeat?").

@@ -88,6 +88,8 @@ export interface SceneSpec {
   receipt: Copy;
   /** Checkpoints only: a cold ambush right after this scene. */
   ambush?: AmbushSpec;
+  /** Checkpoints only: a context card right BEFORE this scene — for a line no earlier mission guarantees. */
+  prime?: PrimeSpec;
 }
 
 export interface PrimeSpec {
@@ -477,6 +479,7 @@ export function buildMission(spec: MissionSpec, lang: MissionLang): BootcampDayC
     for (const p of teach.practice ?? []) steps.push(buildPractice(p, lang));
   }
   if (!spec.steps) for (const scene of spec.scenes) {
+    if (scene.prime) steps.push(buildPrime(scene.prime, lang));
     steps.push({ kind: 'dialogue', dialogueId: scene.id });
     steps.push({ kind: 'receipt', text: T(scene.receipt) });
     if (scene.ambush) steps.push(...ambushStep(scene.ambush, lang));

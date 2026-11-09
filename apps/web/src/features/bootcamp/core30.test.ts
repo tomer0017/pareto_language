@@ -162,7 +162,11 @@ describe('checkpoints test — they do not teach', () => {
         const earlier = new Map(BOOTCAMP_PLAN.slice(0, at).flatMap((m) => MISSIONS_BY_LANG[lang]![m.day]!.items).map((it) => [it.id, it.text]));
         const content = MISSIONS_BY_LANG[lang]![cp.day]!;
         for (const it of content.items) expect(earlier.get(it.id), `${lang} ${it.id}`).toBe(it.text);
-        expect(content.steps.some((s) => s.kind === 'tool' || s.kind === 'prime' || s.kind === 'replies'), lang).toBe(false);
+        expect(content.steps.some((s) => s.kind === 'tool' || s.kind === 'replies'), lang).toBe(false);
+        // The one exception: City & Conversation shows "You should…" on a context card — no earlier mission
+        // guarantees "should" (an optional branch never counts), and a checkpoint never tests unshown language.
+        const cards = content.steps.flatMap((s) => (s.kind === 'prime' ? s.words.map((w) => w.key) : []));
+        expect(cards, lang).toEqual(cp.id === 'city-day-checkpoint' ? ['opin.line.you-should'] : []);
       }
     });
   }

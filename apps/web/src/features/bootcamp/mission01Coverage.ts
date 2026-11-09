@@ -1,3 +1,4 @@
+import { cinematicTranscript } from './exportDialogue.js';
 import { fillFrame } from './practiceEngines.js';
 import type { BootcampDayContent } from './types.js';
 
@@ -65,7 +66,8 @@ export function hasChunk(text: string, chunk: string): boolean {
  *               that is played before the learner answers;
  *   retrieval — the learner produces or connects it: question ↔ answer match, sentence builder,
  *               picking it as the answer, choosing it in the conversation;
- *   context   — it is met inside the whole conversation (the dialogue, the speed round's full lines).
+ *   context   — it is met inside the whole conversation (the dialogue's guaranteed path, the speed
+ *               round's full lines). An optional branch the learner can skip never counts.
  */
 export function encounters(day: BootcampDayContent, chunk: string): Encounter[] {
   const out: Encounter[] = [];
@@ -96,9 +98,13 @@ export function encounters(day: BootcampDayContent, chunk: string): Encounter[] 
         if (r.options.some((o) => o.correct && hit(o.text ?? text(o.itemId)))) add('retrieval', s.challenge ? 'speed round (answered)' : 'quick reply (answered)');
       }
     } else if (s.kind === 'dialogue') {
+      // Only the conversation's guaranteed path counts: a branch the learner can skip entirely (a miss,
+      // a recovery move, an alternative) is optional exposure, never coverage.
       const d = day.dialogues[s.dialogueId];
-      if (d?.nodes.some((n) => hit(n.en) || n.choices?.some((c) => c.correct && hit(c.en)))) add('context', 'the conversation');
-      if (d?.nodes.some((n) => n.choices?.some((c) => c.correct && hit(c.en)))) add('retrieval', 'chosen in the conversation');
+      const path = d ? cinematicTranscript(d) : [];
+      if (path.some((l) => hit(l.en))) add('context', 'the conversation');
+      const chosen = (t: string): boolean => !!d?.nodes.some((n) => n.choices?.some((c) => c.correct && c.en === t)); // picked, not scripted
+      if (path.some((l) => l.who === 'you' && hit(l.en) && chosen(l.en))) add('retrieval', 'chosen in the conversation');
     }
   });
   return out;

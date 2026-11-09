@@ -106,9 +106,9 @@ describe('scope: only Missions 25–30 changed', () => {
   const print = (f: (lang: Lang) => unknown): Record<Lang, string> => ({ en: fnv(JSON.stringify(f('en'))), fr: fnv(JSON.stringify(f('fr'))), es: fnv(JSON.stringify(f('es'))) });
 
   it('Missions 08–24 are byte-for-byte unchanged, in every language (Missions 01–07 have their own passes — mission01.test.ts … mission07.test.ts)', () => {
-    expect(print((l) => slice(l, 15, 24))).toEqual({ en: '1e7a6416', fr: '8a94726b', es: 'cda587aa' }); // since the Mission 15 pass: Missions 16–24 (Missions 10–15: mission10.test.ts … mission15.test.ts)
+    expect(print((l) => slice(l, 15, 23))).toEqual({ en: '286c2074', fr: 'f7f6caf3', es: '1b2da436' }); // Missions 16–23 (Missions 10–15 have their own passes; Mission 24 its "should" card — practiceCity.test.ts)
     expect(print((l) => slice(l, 15, 18))).toEqual({ en: 'e98e0ca7', fr: '8d46f5c7', es: 'e8f478c4' });
-    expect(print((l) => slice(l, 18, 24))).toEqual({ en: 'b9c88064', fr: '74a92f15', es: 'cd856495' });
+    expect(print((l) => slice(l, 18, 23))).toEqual({ en: 'c041b1a2', fr: 'eac0ce45', es: 'c337ad61' });
   });
   it('the conversations of Missions 25–27 are byte-for-byte unchanged', () => {
     expect(print((l) => slice(l, 24, 27).map((d) => d.dialogues))).toEqual({ en: '11c6f921', fr: 'e9d141b0', es: '8531d080' });

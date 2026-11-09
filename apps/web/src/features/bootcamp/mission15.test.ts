@@ -162,7 +162,7 @@ describe('the conversation is locked, and Mission 15 is in its place', () => {
   });
   const raw = (a: number, b?: number) => Object.fromEntries(LANGS.map((l) => [l, fnv(JSON.stringify(BOOTCAMP_PLAN.slice(a, b).map((m) => MISSIONS_BY_LANG[l]![m.day]!)))]));
   it('Missions 01–14 are byte-for-byte unchanged by this pass', () => { expect(raw(0, 14)).toEqual({ en: 'ff40b97d', es: '81eb2485', fr: '18e0f495' }); });
-  it('Missions 16–30 are byte-for-byte unchanged by this pass', () => { expect(raw(15)).toEqual({ en: '094dc240', es: '2d1e3cdf', fr: '50c3cd63' }); });
+  it('Missions 16–30 are byte-for-byte unchanged by this pass', () => { expect(raw(15, 23)).toEqual({ en: 'b48e8049', es: 'a8f00fe3', fr: '2e70c18c' }); expect(raw(24)).toEqual({ en: 'aee7fe64', es: '4b9c9cd9', fr: '6af8deb0' }); }); // Mission 24 left out: its own correction since (the "should" card — practiceCity.test.ts)
   it('EN / ES / FR parity: the same journey, step for step, each in its own words', () => {
     const shape = (d: BootcampDayContent): unknown => d.steps.map((s) => {
       if (s.kind === 'quickReply') return [s.kind, s.challenge ?? false, s.transferOnly ?? false, s.label, s.rounds.map((r) => [strip(r.promptItemId), Boolean(r.npc), r.situation, r.options.map((o) => [strip(o.itemId), o.correct, Boolean(o.text)])])];
@@ -632,6 +632,65 @@ describe('visuals, the companion and video', () => {
         const kind = d.steps[i]!.kind;
         expect(practiceReplay({ hasVideo: Boolean(video), hasConversation: true, stepKind: kind, index: i })).toBe(video ? (kind === 'video' ? null : 'watch') : (i === 0 ? 'listen' : null));
       }
+    }
+  });
+});
+
+describe('OPTIONAL EXPOSURE ≠ GUARANTEED LEARNING — the skippable "Thank you!" branch teaches nothing', () => {
+  const SHOULD: Record<CoverageLang, string> = { en: 'should', fr: 'devriez', es: 'debería' };
+  /** Mission 15 with its optional branch (a polite "Thank you!" → the waiter asks again in other words) cut out. */
+  const noBranch = (d: BootcampDayContent): BootcampDayContent => ({ ...d, dialogues: { 'allergy-order': { ...scene(d), nodes: scene(d).nodes
+    .filter((n) => n.id !== 'r2' && n.id !== 'c2b').map((n) => (n.id === 'c2' ? { ...n, choices: n.choices!.filter((c) => c.correct) } : n)) } } });
+  const skipped = (l: CoverageLang, n: number) => (n === 15 ? noBranch(missionContent(l, n)) : missionContent(l, n));
+  it('1. the branch exists — off the guaranteed path — and is not part of the canonical conversation', () => {
+    for (const lang of LANGS) {
+      const nodes = scene(day(lang)).nodes;
+      expect(nodes.find((n) => n.id === 'r2')!.en, lang).toMatch({ en: /should know/, fr: /devrais savoir/, es: /deba saber/ }[lang]);
+      expect(script(lang).join(' '), lang).not.toMatch({ en: /should/, fr: /devrais/, es: /deba/ }[lang]);
+    }
+  });
+  it('2. "should" is NOT known before Mission 24 — with or without the branch', () => {
+    for (const lang of LANGS) {
+      expect(learnedBefore(lang, 24).words.has(SHOULD[lang]), lang).toBe(false);
+      expect(learnedBefore(lang, 24, skipped).words.has(SHOULD[lang]), lang).toBe(false);
+    }
+  });
+  it('3. Mission 24 meets "should" itself: one context card, right before the chat that uses it', () => {
+    for (const lang of LANGS) {
+      const d = missionContent(lang, 24);
+      const card = d.steps.findIndex((s) => s.kind === 'prime');
+      expect(d.steps[card + 1], lang).toEqual({ kind: 'dialogue', dialogueId: 'cold-chat' });
+      expect(hasChunk((d.steps[card] as Extract<BootcampStep, { kind: 'prime' }>).words[0]!.text, { en: 'You should', fr: 'Vous devriez', es: 'Debería' }[lang]), lang).toBe(true);
+      expect(learnedBefore(lang, 25).words.has(SHOULD[lang]), lang).toBe(true);
+    }
+  });
+  it('4. opening the branch changes nothing guaranteed: prior learning after Mission 15, and its coverage, are identical without it', () => {
+    for (const lang of LANGS) {
+      for (const n of [16, 24, 30]) {
+        const a = learnedBefore(lang, n);
+        const b = learnedBefore(lang, n, skipped);
+        expect([...a.words].sort(), `${lang} ${n}`).toEqual([...b.words].sort());
+        expect(a.concepts, `${lang} ${n}`).toEqual(b.concepts);
+      }
+      expect(coverageOf(noBranch(day(lang)), lang, M15_CONCEPTS), lang).toEqual(coverageOf(day(lang), lang, M15_CONCEPTS));
+    }
+  });
+  it('5. optional / dialogue-only exposure never counts: a new word planted in the branch is not learned, not covered', () => {
+    const planted = (l: CoverageLang, n: number): BootcampDayContent => {
+      const m = missionContent(l, n);
+      if (n !== 15) return m;
+      return { ...m, dialogues: { 'allergy-order': { ...scene(m), nodes: scene(m).nodes.map((x) => (x.id === 'r2' ? { ...x, en: `${x.en} Gluten?` } : x)) } } };
+    };
+    expect(learnedBefore('en', 16, planted).words.has('gluten')).toBe(false);
+    const d = planted('en', 15);
+    expect(coverageOf(d, 'en', [{ id: 'x', label: 'x', role: 'hear', chunk: { en: 'Gluten', es: 'x', fr: 'x' } }])[0]!.total).toBe(0);
+  });
+  it('10. the eight re-recorded videos are the committed ones, untouched', () => {
+    const SIZES: Record<string, number> = { 'en/en_1': 2480516, 'en/en_2': 7156513, 'en/en_3': 2457834, 'en/en_6': 2953702, 'en/en_7': 3794505, 'fr/fr_3': 3998347, 'fr/fr_5': 4477846, 'fr/fr_6': 3312182 };
+    for (const [p, size] of Object.entries(SIZES)) {
+      const file = fileURLToPath(new URL(`../../../public/videos/${p}.mp4`, import.meta.url));
+      expect(readFileSync(file).length, p).toBe(size);
+      expect(readFileSync(file).subarray(4, 12).toString('latin1'), p).toBe('ftypisom');
     }
   });
 });

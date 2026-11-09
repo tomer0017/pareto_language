@@ -23204,7 +23204,7 @@ Intro screen (first Practice step; identical in the English, French and Spanish 
 
 - Icon: 🏙️
 - Title: "CHECKPOINT: City & Conversation" / "נקודת ביקורת: עיר ושיחה"
-- Text 1: "No new material today. Just proof." / "אין חומר חדש היום. רק הוכחה."
+- Text 1: "No new material today — just one line we meet on the way. The rest: proof." / "אין חומר חדש היום — רק שורה אחת שנכיר בדרך. השאר: הוכחה."
 - Text 2: "One day in a city: the station, a chat with a local, a meal that goes wrong, and an evening talk with a traveler — unprepared and untranslated." / "יום אחד בעיר: תחנה, שיחה עם מקומי, ארוחה שמשתבשת, ושיחת ערב עם מטייל — בלי הכנה ובלי תרגום."
 - Button: "Head into the city" / "לצאת לעיר"
 
@@ -23215,20 +23215,28 @@ Intro screen (first Practice step; identical in the English, French and Spanish 
 3. `receipt` — receipt (proof card) — "Ticket, platform and stop — at the pace of a real station." / "כרטיס, רציף ותחנה — בקצב של תחנה אמיתית."
 4. `ambush` — cold open (fast line) — mode speed · correct `reply.trans.wrong-way`, wrong `reply.trans.three-stops`
 5. `receipt` — receipt (proof card) — "A quick correction on the platform, with not one new word — and you understood you were going the wrong way." / "תיקון מהיר על הרציף, בלי מילה חדשה — והבנת שאתה בכיוון הלא נכון."
-6. `dialogue` — dialogue (choose your line) — scene `cold-chat`
-7. `receipt` — receipt (proof card) — "A chat with a local: what you like, what you think, and what to try." / "שיחה עם מקומי: מה אתה אוהב, מה אתה חושב, ומה מומלץ."
-8. `dialogue` — dialogue (choose your line) — scene `cold-problem`
-9. `receipt` — receipt (proof card) — "The wrong dish arrived — and you said so, politely, until it was sorted." / "המנה הלא נכונה הגיעה — ואמרת את זה, בנימוס, עד שזה סודר."
-10. `dialogue` — dialogue (choose your line) — scene `cold-hostel`
-11. `receipt` — receipt (proof card) — "You said what you did, where you are going and for how long — and asked back. That is a real conversation." / "סיפרת מה עשית, לאן אתה נוסע ולכמה זמן — ושאלת בחזרה. זו כבר שיחה אמיתית."
-12. `receipt` — receipt (proof card) — "A whole day in a city, alone: the station, a chat with a local, a problem solved, and a talk about what you did and where you go next — and when it got fast, you did not freeze." / "יום שלם בעיר, בלי עזרה: תחנה, שיחה עם מקומי, בעיה שנפתרה, ושיחה על מה שעשית ולאן אתה ממשיך — וגם כשזה היה מהיר, לא קפאת."
-13. `summary` — victory screen
+6. `prime` — before-we-speak (word intro) — 1 words → builds ``
+7. `dialogue` — dialogue (choose your line) — scene `cold-chat`
+8. `receipt` — receipt (proof card) — "A chat with a local: what you like, what you think, and what to try." / "שיחה עם מקומי: מה אתה אוהב, מה אתה חושב, ומה מומלץ."
+9. `dialogue` — dialogue (choose your line) — scene `cold-problem`
+10. `receipt` — receipt (proof card) — "The wrong dish arrived — and you said so, politely, until it was sorted." / "המנה הלא נכונה הגיעה — ואמרת את זה, בנימוס, עד שזה סודר."
+11. `dialogue` — dialogue (choose your line) — scene `cold-hostel`
+12. `receipt` — receipt (proof card) — "You said what you did, where you are going and for how long — and asked back. That is a real conversation." / "סיפרת מה עשית, לאן אתה נוסע ולכמה זמן — ושאלת בחזרה. זו כבר שיחה אמיתית."
+13. `receipt` — receipt (proof card) — "A whole day in a city, alone: the station, a chat with a local, a problem solved, and a talk about what you did and where you go next — and when it got fast, you did not freeze." / "יום שלם בעיר, בלי עזרה: תחנה, שיחה עם מקומי, בעיה שנפתרה, ושיחה על מה שעשית ולאן אתה ממשיך — וגם כשזה היה מהיר, לא קפאת."
+14. `summary` — victory screen
 
 Step sequence identical in EN / FR / ES: yes.
 
 ## Before we speak / word intro
 
-No vocabulary pre-step.
+Step 6. Label: "Before the chat" / "לפני השיחה". Intro: "One line you have not heard yet: someone recommends something. Tap to hear." / "שורה אחת שעוד לא שמעת: מישהו ממליץ לך. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `opin.line.you-should` — EN "You should take the boat tour." · FR "Vous devriez faire le tour en bateau." · ES "Debería hacer el paseo en barco." — meaning "כדאי לך לעשות את הסיור בסירה. (המלצה: ככה כדאי לך)" / "You should take the boat tour. (a recommendation: it’s a good idea for you)" — icon 👉 — new
+
+No build-sentence card.
 
 ## Every sentence in this mission
 
@@ -24091,7 +24099,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.trans.does-stop, phrase.trans.single
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M24-Q06 — dialogue-choice (step 6, scene "cold-chat" · node c2)
+### M24-Q06 — dialogue-choice (step 7, scene "cold-chat" · node c2)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Welcome! Do you like it here?" · FR "Bienvenue ! Ça vous plaît ici ?" · ES "¡Bienvenido! ¿Le gusta este lugar?"
@@ -24103,7 +24111,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.talk.i-like-it, phrase.talk.nice-talking
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M24-Q07 — dialogue-choice (step 6, scene "cold-chat" · node c4)
+### M24-Q07 — dialogue-choice (step 7, scene "cold-chat" · node c4)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "You should take the boat tour. It's fifty euros." · FR "Vous devriez faire le tour en bateau. C’est cinquante euros." · ES "Debería hacer el paseo en barco. Son cincuenta euros."
@@ -24115,7 +24123,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.opin.i-think-expensive, phrase.opin.because
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M24-Q08 — dialogue-choice (step 6, scene "cold-chat" · node c6)
+### M24-Q08 — dialogue-choice (step 7, scene "cold-chat" · node c6)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Really? Then you should try the old town. It's free." · FR "Vraiment ? Alors vous devriez essayer la vieille ville. C’est gratuit." · ES "¿De verdad? Entonces debería visitar el casco antiguo. Es gratis."
@@ -24127,7 +24135,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.talk.recommend-place, phrase.opin.dont-think-so
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M24-Q09 — dialogue-choice (step 8, scene "cold-problem" · node c2)
+### M24-Q09 — dialogue-choice (step 9, scene "cold-problem" · node c2)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Here's your meal — one steak!" · FR "Voici votre plat — un steak !" · ES "Aquí tiene su plato — ¡un filete!"
@@ -24140,7 +24148,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.fix.not-ordered, phrase.fix.no-problem-thanks, phrase.recovery.repeat
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M24-Q10 — dialogue-choice (step 8, scene "cold-problem" · node c4)
+### M24-Q10 — dialogue-choice (step 9, scene "cold-problem" · node c4)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Oh no, I'm so sorry! What did you order?" · FR "Oh non, je suis vraiment désolé ! Qu’avez-vous commandé ?" · ES "¡Ay, lo siento muchísimo! ¿Qué pidió?"
@@ -24152,7 +24160,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.fix.i-ordered, phrase.fix.charged-twice
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M24-Q11 — dialogue-choice (step 8, scene "cold-problem" · node c6)
+### M24-Q11 — dialogue-choice (step 9, scene "cold-problem" · node c6)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Of course — I'll bring the right one right away." · FR "Bien sûr — je vous apporte le bon tout de suite." · ES "Claro — le traigo el correcto enseguida."
@@ -24164,7 +24172,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.fix.no-problem-thanks, phrase.fix.can-you-fix
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M24-Q12 — dialogue-choice (step 10, scene "cold-hostel" · node c2)
+### M24-Q12 — dialogue-choice (step 11, scene "cold-hostel" · node c2)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Hey! Where were you yesterday?" · FR "Salut ! Tu étais où hier ?" · ES "¡Hola! ¿Dónde estuviste ayer?"
@@ -24177,7 +24185,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.past.i-went, phrase.future.going-to-vietnam, phrase.recovery.slowly
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M24-Q13 — dialogue-choice (step 10, scene "cold-hostel" · node c4)
+### M24-Q13 — dialogue-choice (step 11, scene "cold-hostel" · node c4)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Did you like it?" · FR "Tu as aimé ?" · ES "¿Te gustó?"
@@ -24189,7 +24197,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.past.it-was-great, phrase.past.i-stayed
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M24-Q14 — dialogue-choice (step 10, scene "cold-hostel" · node c6)
+### M24-Q14 — dialogue-choice (step 11, scene "cold-hostel" · node c6)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "So, where are you going next?" · FR "Alors, tu vas où après ?" · ES "Bueno, ¿a dónde vas después?"
@@ -24201,7 +24209,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.future.going-to-vietnam, phrase.past.i-went
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M24-Q15 — dialogue-choice (step 10, scene "cold-hostel" · node c8)
+### M24-Q15 — dialogue-choice (step 11, scene "cold-hostel" · node c8)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Wow! How long will you be there?" · FR "Waouh ! Tu restes combien de temps ?" · ES "¡Guau! ¿Cuánto tiempo vas a estar allí?"
@@ -24213,7 +24221,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.future.ill-be-there, phrase.future.after-that
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M24-Q16 — dialogue-choice (step 10, scene "cold-hostel" · node c10)
+### M24-Q16 — dialogue-choice (step 11, scene "cold-hostel" · node c10)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Already! We'll miss you." · FR "Déjà ! Tu vas nous manquer." · ES "¡Ya! Te vamos a echar de menos."
@@ -24225,7 +24233,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.future.where-next, phrase.past.it-was-good
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M24-Q17 — dialogue-choice (step 10, scene "cold-hostel" · node c12)
+### M24-Q17 — dialogue-choice (step 11, scene "cold-hostel" · node c12)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Me? I'm going home. Are you coming?" · FR "Moi ? Je rentre chez moi. Tu viens ?" · ES "¿Yo? Me voy a casa. ¿Vienes?"
@@ -24370,10 +24378,10 @@ Every learner sentence of this mission is a line in a scene.
 
 - Step 3: "Ticket, platform and stop — at the pace of a real station." / "כרטיס, רציף ותחנה — בקצב של תחנה אמיתית."
 - Step 5: "A quick correction on the platform, with not one new word — and you understood you were going the wrong way." / "תיקון מהיר על הרציף, בלי מילה חדשה — והבנת שאתה בכיוון הלא נכון."
-- Step 7: "A chat with a local: what you like, what you think, and what to try." / "שיחה עם מקומי: מה אתה אוהב, מה אתה חושב, ומה מומלץ."
-- Step 9: "The wrong dish arrived — and you said so, politely, until it was sorted." / "המנה הלא נכונה הגיעה — ואמרת את זה, בנימוס, עד שזה סודר."
-- Step 11: "You said what you did, where you are going and for how long — and asked back. That is a real conversation." / "סיפרת מה עשית, לאן אתה נוסע ולכמה זמן — ושאלת בחזרה. זו כבר שיחה אמיתית."
-- Step 12: "A whole day in a city, alone: the station, a chat with a local, a problem solved, and a talk about what you did and where you go next — and when it got fast, you did not freeze." / "יום שלם בעיר, בלי עזרה: תחנה, שיחה עם מקומי, בעיה שנפתרה, ושיחה על מה שעשית ולאן אתה ממשיך — וגם כשזה היה מהיר, לא קפאת."
+- Step 8: "A chat with a local: what you like, what you think, and what to try." / "שיחה עם מקומי: מה אתה אוהב, מה אתה חושב, ומה מומלץ."
+- Step 10: "The wrong dish arrived — and you said so, politely, until it was sorted." / "המנה הלא נכונה הגיעה — ואמרת את זה, בנימוס, עד שזה סודר."
+- Step 12: "You said what you did, where you are going and for how long — and asked back. That is a real conversation." / "סיפרת מה עשית, לאן אתה נוסע ולכמה זמן — ושאלת בחזרה. זו כבר שיחה אמיתית."
+- Step 13: "A whole day in a city, alone: the station, a chat with a local, a problem solved, and a talk about what you did and where you go next — and when it got fast, you did not freeze." / "יום שלם בעיר, בלי עזרה: תחנה, שיחה עם מקומי, בעיה שנפתרה, ושיחה על מה שעשית ולאן אתה ממשיך — וגם כשזה היה מהיר, לא קפאת."
 
 ## Audit Metadata — DO NOT FIX YET
 
@@ -24391,11 +24399,11 @@ Every learner sentence of this mission is a line in a scene.
 - Wrong-answer branches: 16
 - Cold-open prompts: 1
 - Recovery opportunities: 3
-- Vocabulary pre-items: 0
+- Vocabulary pre-items: 1
 - Swap variants (extra accepted lines): 0
 - Sentences in review: 0
 - Total interactive questions: 17 (answer choices: 37)
-- Approximate total learner interactions: 17 (questions + key sentences + review cards + word-intro screen)
+- Approximate total learner interactions: 18 (questions + key sentences + review cards + word-intro screen)
 
 ### AUTO-FLAG — requires human review (11)
 
@@ -30373,7 +30381,7 @@ Every learner sentence of this mission is a line in a scene.
 | 21 Future Travel & Plans | 16 (9 / 6 / 1) | 4 | 4 | 0 | 18 | 8 | 5 | 1 | 0 | no | 2 | 30 | 4 |
 | 22 Fixing Problems | 19 (11 / 7 / 1) | 5 | 5 | 0 | 20 | 11 | 9 | 1 | 0 | no | 1 | 36 | 7 |
 | 23 Opinions, Feelings & Reactions | 16 (9 / 6 / 1) | 4 | 4 | 0 | 20 | 8 | 7 | 1 | 0 | no | 0 | 32 | 2 |
-| 24 CHECKPOINT: City & Conversation | 28 (24 / 2 / 2) | 0 | 0 | 0 | 0 | 16 | 0 | 3 | 1 | no | 0 | 17 | 11 |
+| 24 CHECKPOINT: City & Conversation | 28 (24 / 2 / 2) | 0 | 0 | 0 | 0 | 16 | 0 | 3 | 1 | 1 words | 0 | 17 | 11 |
 | 25 Lost / Stolen / Police | 17 (9 / 5 / 3) | 4 | 4 | 0 | 15 | 9 | 8 | 1 | 1 | no | 0 | 29 | 4 |
 | 26 Pharmacy & Health | 15 (6 / 6 / 3) | 3 | 3 | 0 | 14 | 8 | 4 | 2 | 1 | no | 1 | 26 | 5 |
 | 27 Emergency | 15 (8 / 6 / 1) | 4 | 4 | 0 | 11 | 6 | 4 | 1 | 0 | no | 1 | 21 | 4 |

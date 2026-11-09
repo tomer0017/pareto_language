@@ -188,7 +188,7 @@ export const CITY_CONVERSATION: MissionSpec = {
   title: ['נקודת ביקורת: עיר ושיחה', 'CHECKPOINT: City & Conversation'],
   icon: '🏙️',
   intro: [
-    ['אין חומר חדש היום. רק הוכחה.', 'No new material today. Just proof.'],
+    ['אין חומר חדש היום — רק שורה אחת שנכיר בדרך. השאר: הוכחה.', 'No new material today — just one line we meet on the way. The rest: proof.'],
     ['יום אחד בעיר: תחנה, שיחה עם מקומי, ארוחה שמשתבשת, ושיחת ערב עם מטייל — בלי הכנה ובלי תרגום.', 'One day in a city: the station, a chat with a local, a meal that goes wrong, and an evening talk with a traveler — unprepared and untranslated.'],
   ],
   cta: ['לצאת לעיר', 'Head into the city'],
@@ -223,6 +223,12 @@ export const CITY_CONVERSATION: MissionSpec = {
     {
       id: 'cold-chat',
       cold: true,
+      // "should" is the one word no earlier mission guarantees: met here, once, before the chat — no grammar.
+      prime: {
+        label: ['לפני השיחה', 'Before the chat'],
+        intro: ['שורה אחת שעוד לא שמעת: מישהו ממליץ לך. הקש כדי לשמוע.', 'One line you have not heard yet: someone recommends something. Tap to hear.'],
+        words: [{ key: 'opin.line.you-should', line: true, emoji: '👉', t: ['You should take the boat tour.', 'Vous devriez faire le tour en bateau.', 'Debería hacer el paseo en barco.'], meaning: ['כדאי לך לעשות את הסיור בסירה. (המלצה: ככה כדאי לך)', 'You should take the boat tour. (a recommendation: it’s a good idea for you)'] }],
+      },
       receipt: ['שיחה עם מקומי: מה אתה אוהב, מה אתה חושב, ומה מומלץ.', 'A chat with a local: what you like, what you think, and what to try.'],
       lines: [
         npc('Welcome! Do you like it here?', 'Bienvenue ! Ça vous plaît ici ?', '¡Bienvenido! ¿Le gusta este lugar?', 'ברוך הבא! אתה אוהב את המקום?'),
