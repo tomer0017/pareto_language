@@ -59,8 +59,8 @@ Not present in the runtime (so not exported): free sentence construction, typing
 Not a mission. Eight phrases shared by all missions; a mission bundles the ones it uses. Selecting one in a dialogue is always accepted.
 
 - `phrase.recovery.dont-understand` — EN "Sorry, I don't understand." · FR "Désolé, je ne comprends pas." · ES "Perdón, no entiendo." · HE "סליחה, אני לא מבין." — help tool — bundled in missions: 14
-- `phrase.recovery.repeat` — EN "Can you repeat that?" · FR "Vous pouvez répéter ?" · ES "¿Puede repetir, por favor?" · HE "אפשר לחזור על זה?" — help tool — bundled in missions: 01, 03, 05, 06, 08, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
-- `phrase.recovery.slowly` — EN "Please speak slowly." · FR "Parlez lentement, s’il vous plaît." · ES "Más despacio, por favor." · HE "דבר לאט, בבקשה." — help tool — bundled in missions: 01, 02, 03, 04, 06, 07, 09, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- `phrase.recovery.repeat` — EN "Can you repeat that?" · FR "Vous pouvez répéter ?" · ES "¿Puede repetir, por favor?" · HE "אפשר לחזור על זה?" — help tool — bundled in missions: 01, 03, 05, 06, 08, 14, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- `phrase.recovery.slowly` — EN "Please speak slowly." · FR "Parlez lentement, s’il vous plaît." · ES "Más despacio, por favor." · HE "דבר לאט, בבקשה." — help tool — bundled in missions: 01, 02, 03, 04, 06, 07, 09, 14, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - `phrase.recovery.show-me` — EN "Can you show me?" · FR "Vous pouvez me montrer ?" · ES "¿Me lo puede mostrar?" · HE "אתה יכול להראות לי?" — help tool — bundled in missions: 04, 07, 17
 - `phrase.recovery.one-moment` — EN "One moment, please." · FR "Un instant, s’il vous plaît." · ES "Un momento, por favor." · HE "רגע אחד, בבקשה." — help tool — bundled in missions: 02, 03, 06, 08, 14
 - `phrase.recovery.what-mean` — EN "What does that mean?" · FR "Qu’est-ce que ça veut dire ?" · ES "¿Qué significa eso?" · HE "מה זה אומר?" — help tool — bundled in missions: 16, 25
@@ -300,7 +300,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: sentence review (step 17); cold-open correct option (step 20); dialogue choice meeting-host/c1 (accepted)
 
 ### Sentence: `phrase.recovery.slowly`
@@ -311,7 +311,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: dialogue choice meeting-host/c3 (accepted)
 
 ## Expected replies / listening items
@@ -1271,7 +1271,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: sentence review (step 17); dialogue choice market-stall/c2 (accepted)
 
 ### Sentence: `phrase.recovery.one-moment`
@@ -2525,7 +2525,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: sentence review (step 20); dialogue choice breakfast-order/c2 (accepted)
 
 ### Sentence: `phrase.recovery.slowly`
@@ -2536,7 +2536,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: dialogue choice breakfast-order/c6 (accepted)
 
 ### Sentence: `phrase.recovery.thank-you`
@@ -3956,7 +3956,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: dialogue choice coffee-with-a-friend/c4 (accepted)
 
 ## Expected replies / listening items
@@ -5122,7 +5122,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: dialogue choice lost-in-town/c1 (accepted)
 
 ### Sentence: `phrase.recovery.thank-you`
@@ -6086,7 +6086,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: dialogue choice border-control/c2 (accepted)
 
 ### Sentence: `phrase.recovery.slowly`
@@ -6097,7 +6097,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: dialogue choice border-control/c4 (accepted)
 
 ### Sentence: `phrase.recovery.one-moment`
@@ -7339,7 +7339,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: dialogue choice taxi-ride/c3 (accepted)
 
 ### Sentence: `phrase.recovery.show-me`
@@ -8417,7 +8417,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: dialogue choice hotel-checkin/c1 (accepted)
 
 ### Sentence: `phrase.recovery.one-moment`
@@ -9387,7 +9387,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: dialogue choice clothing-shop/c2 (accepted)
 
 ## Expected replies / listening items
@@ -14288,7 +14288,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: nothing (listed only)
 
 ### Sentence: `phrase.recovery.slowly`
@@ -14299,7 +14299,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: nothing (listed only)
 
 ### Sentence: `phrase.recovery.thank-you`
@@ -15074,7 +15074,7 @@ Learner sentences taught beside the dialogue (not a line in any scene):
 - Phase: 3 — Everyday Life / חיי יום-יום 🏡
 - Source runtime file(s): `apps/web/src/features/bootcamp/day13.ts` · `apps/web/src/features/bootcamp/fr/day13.ts` · `apps/web/src/features/bootcamp/es/day13.ts`
 - Video: found by convention, never written into mission content — EN `videos/en/en_15.mp4` · FR `videos/fr/fr_15.mp4` · ES `videos/es/es_15.mp4`. Played only where that file exists (inventory: `docs/CORE30_FINAL_VIDEO_ACTION_MAP.md`).
-- Video steps inside the Practice flow: no
+- Video steps inside the Practice flow: yes (see flow)
 
 ## Learning goal / intro screen
 
@@ -15095,36 +15095,90 @@ Mission card (plan metadata, shown on Home / Path / mission overview):
 Intro screen (first Practice step; identical in the English, French and Spanish missions unless flagged):
 
 - Icon: 🥜
-- Title: "Mission 15: Special Requests & Allergies" / "משימה 15: בקשות מיוחדות ואלרגיות"
-- Text 1: "Some words you may need only once in your life — but then they’re critical." / "יש מילים שאתה אולי תצטרך רק פעם אחת בחיים — אבל אז הן קריטיות."
-- Text 2: "Today we learn to keep your body safe in any kitchen: allergy, “without”, vegetarian, and checking an ingredient." / "היום נלמד לשמור על הגוף שלך בכל מטבח: אלרגיה, "בלי", צמחוני, ובדיקת מרכיב."
-- Button: "Sit down and order safely" / "לשבת ולהזמין בבטחה"
+- Title: "Mission 15: Food Preferences & Allergies" / "משימה 15: העדפות אוכל ואלרגיות"
+- Text 1: "You’re allergic to nuts, vegetarian, want to check whether there’s dairy, and don’t want onions. Make sure the waiter passes it on to the kitchen." / "אתה אלרגי לאגוזים, צמחוני, רוצה לבדוק אם יש מוצרי חלב ולא רוצה בצל. תוודא שהמלצר מעביר את זה למטבח."
+- Button: "Order" / "להזמין"
 
 ## Current Practice flow
 
-1. `talk` — intro screen — "Mission 15: Special Requests & Allergies"
-2. `tool` — key sentence (listen → reveal → say aloud) — `phrase.diet.allergic-nuts` “I'm allergic to nuts.” · label "The line that protects" / "המשפט שמציל" (1/4)
-3. `tool` — key sentence (listen → reveal → say aloud) — `phrase.diet.without-onions` “Without onions, please.” · label "Remove an ingredient" / "להסיר מרכיב" (2/4)
-4. `tool` — key sentence (listen → reveal → say aloud) — `phrase.diet.vegetarian` “I'm vegetarian.” · label "Define yourself" / "להגדיר את עצמך" (3/4)
-5. `tool` — key sentence (listen → reveal → say aloud) — `phrase.diet.does-have-dairy` “Does it have dairy?” · label "Check an ingredient" / "לבדוק מרכיב" (4/4)
-6. `replies` — expected replies (listening drill) — after `phrase.diet.allergic-nuts`: 4 replies
-7. `receipt` — receipt (proof card) — "You recognize how a kitchen responds to an allergy — check, warning, and solution." / "אתה מזהה איך המטבח מגיב לאלרגיה — בדיקה, אזהרה, ופתרון."
-8. `matchPairs` — match pairs (connect each question to its answer) — 3 pairs on one screen
-9. `quickReply` — quick reply (hear → pick your response) — 5 round(s)
-10. `dialogue` — dialogue (choose your line) — scene `allergy-order`
-11. `receipt` — receipt (proof card) — "You ordered a meal that works for you — allergy, vegetarian, no onions, ingredients checked." / "הזמנת ארוחה שמתאימה לך — אלרגיה, צמחוני, בלי בצל, בדיקת מרכיבים."
-12. `swipe` — sentence review — 11 sentences
-13. `quickReply` — quick reply (hear → pick your response) — 4 round(s) · speed challenge
-14. `receipt` — receipt (proof card) — "The allergy, what you eat, what is in the dish and what to leave out — you said it all, clearly and in the right order." / "אלרגיה, מה אתה אוכל, מה יש במנה ומה להוריד — אמרת הכל, ברור ובסדר הנכון."
-15. `ambush` — cold open (fast line) — mode recovery · correct `phrase.recovery.repeat`, wrong `phrase.diet.vegetarian`
-16. `receipt` — receipt (proof card) — "A detailed, fast safety question — and you asked them to repeat instead of guessing. With an allergy, exactly the right move." / "שאלת בטיחות מפורטת ומהירה — וביקשת שיחזרו במקום לנחש. עם אלרגיה, זה בדיוק הצעד הנכון."
-17. `summary` — victory screen
+1. `talk` — intro screen — "Mission 15: Food Preferences & Allergies"
+2. `prime` — before-we-speak (word intro) — 2 words → builds ``
+3. `prime` — before-we-speak (word intro) — 2 words → builds ``
+4. `prime` — before-we-speak (word intro) — 1 words → builds ``
+5. `visualMatch` — visual match (hear → tap the tile) — 1 round(s)
+6. `prime` — before-we-speak (word intro) — 2 words → builds ``
+7. `prime` — before-we-speak (word intro) — 2 words → builds ``
+8. `receipt` — receipt (proof card) — "🙋 My needs: Allergy: Nuts / Diet: Vegetarian / Onions: Remove ‖ 👨‍🍳 What the waiter said: Dish: Vegetarian ✅ / Nuts: Kitchen checking… / Dairy: Cream — can remove / Kitchen: Allergy notified ✅ ¦ Your needs went to the kitchen. The nuts are still being checked." / "🙋 הצרכים שלי: אלרגיה: אגוזים / תזונה: צמחוני / בצל: להוריד ‖ 👨‍🍳 מה המלצר אמר: מנה: צמחונית ✅ / אגוזים: המטבח בודק… / חלב: יש שמנת — אפשר בלי / מטבח: האלרגיה נמסרה ✅ ¦ הצרכים שלך עברו למטבח. האגוזים עדיין בבדיקה."
+9. `quickReply` — quick reply (hear → pick your response) — 4 round(s)
+10. `quickReply` — quick reply (hear → pick your response) — 3 round(s)
+11. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+12. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+13. `receipt` — receipt (proof card) — "🙋 My needs: Allergy: Nuts / Diet: Vegetarian / Onions: Remove ‖ 👨‍🍳 What the waiter said: Dish: Vegetarian ✅ / Nuts: Kitchen checking… / Dairy: Cream — can remove / Kitchen: Allergy notified ✅ ¦ The whole conversation — and the nuts are still being checked." / "🙋 הצרכים שלי: אלרגיה: אגוזים / תזונה: צמחוני / בצל: להוריד ‖ 👨‍🍳 מה המלצר אמר: מנה: צמחונית ✅ / אגוזים: המטבח בודק… / חלב: יש שמנת — אפשר בלי / מטבח: האלרגיה נמסרה ✅ ¦ כל השיחה — והאגוזים עדיין בבדיקה."
+14. `dialogue` — dialogue (choose your line) — scene `allergy-order`
+15. `receipt` — receipt (proof card) — "You said what matters to you — and the kitchen knows. The answer about the nuts has not come yet." / "אמרת את מה שחשוב לך — והמטבח יודע. התשובה על האגוזים עוד לא הגיעה."
+16. `quickReply` — quick reply (hear → pick your response) — 3 round(s) · speed challenge
+17. `quickReply` — quick reply (hear → pick your response) — 1 round(s) · speed challenge
+18. `quickReply` — quick reply (hear → pick your response) — 1 round(s) · speed challenge
+19. `receipt` — receipt (proof card) — "No help — the whole conversation, at a real waiter’s pace." / "בלי עזרה — כל השיחה, בקצב של מלצר אמיתי."
+20. `video` — video — mode again
+21. `quickReply` — quick reply (hear → pick your response) — 3 round(s)
+22. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+23. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+24. `receipt` — receipt (proof card) — "👨‍🍳 KITCHEN CHECK SENT ¦ 🙋 My needs: Allergy: Nuts / Diet: Vegetarian / Onions: Remove ‖ 👨‍🍳 What the waiter said: Dish: Vegetarian ✅ / Nuts: Kitchen checking… / Dairy: Cream — can remove / Kitchen: Allergy notified ✅ ¦ The waiter went to check — wait for the answer about the nuts." / "👨‍🍳 הבדיקה נשלחה למטבח ¦ 🙋 הצרכים שלי: אלרגיה: אגוזים / תזונה: צמחוני / בצל: להוריד ‖ 👨‍🍳 מה המלצר אמר: מנה: צמחונית ✅ / אגוזים: המטבח בודק… / חלב: יש שמנת — אפשר בלי / מטבח: האלרגיה נמסרה ✅ ¦ המלצר הלך לבדוק — מחכים לתשובה לגבי האגוזים."
+25. `summary` — victory screen
 
 Step sequence identical in EN / FR / ES: yes.
 
 ## Before we speak / word intro
 
-No vocabulary pre-step.
+Step 2. Label: "Your allergy" / "אלרגיה". Intro: "🙋 My needs: Allergy: Nuts / Diet: Vegetarian / Onions: Remove ‖ 👨‍🍳 What the waiter said: Dish: ? / Nuts: ? / Dairy: ? / Kitchen: — ¦ The waiter is ready for your order — and you say your allergy first. Tap to hear." / "🙋 הצרכים שלי: אלרגיה: אגוזים / תזונה: צמחוני / בצל: להוריד ‖ 👨‍🍳 מה המלצר אמר: מנה: ? / אגוזים: ? / חלב: ? / מטבח: — ¦ המלצר מוכן להזמנה — ואתה אומר קודם כל את האלרגיה. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `diet.line.ready` — EN "Hi there! Are you ready to order?" · FR "Bonjour ! Vous êtes prêt à commander ?" · ES "¡Hola! ¿Está listo para pedir?" — meaning "היי! מוכן להזמין? (מוכר ממשימה 14: המלצר מוכן לשמוע מה אתה רוצה)" / "Hi there! Are you ready to order? (you know it from Mission 14: the waiter is ready for your order)" — icon 🧑‍🍳 — new
+2. `diet.line.allergic` — EN "I'm allergic to nuts." · FR "Je suis allergique aux noix." · ES "Soy alérgico a los frutos secos." — meaning "אני אלרגי לאגוזים. (יש לי אלרגיה למאכל הזה — אומרים קודם, ברור)" / "I'm allergic to nuts. (I have an allergy to this food — say it first, clearly)" — icon 🥜 — new
+
+No build-sentence card.
+
+Step 3. Label: "Anything else?" / "הגבלות נוספות". Intro: "🙋 My needs: Allergy: Nuts / Diet: Vegetarian / Onions: Remove ‖ 👨‍🍳 What the waiter said: Dish: ? / Nuts: ? / Dairy: ? / Kitchen: — ¦ The waiter asks if there is anything else. Tap to hear." / "🙋 הצרכים שלי: אלרגיה: אגוזים / תזונה: צמחוני / בצל: להוריד ‖ 👨‍🍳 מה המלצר אמר: מנה: ? / אגוזים: ? / חלב: ? / מטבח: — ¦ המלצר שואל אם יש עוד משהו. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `diet.line.other` — EN "Thank you for telling me. Any other allergies or dietary restrictions?" · FR "Merci de me le dire. D’autres allergies ou restrictions alimentaires ?" · ES "Gracias por avisarme. ¿Alguna otra alergia o restricción alimentaria?" — meaning "תודה שאמרת. יש עוד אלרגיות או הגבלות באוכל?" / "Thank you for telling me. Any other allergies or food restrictions?" — icon 🧑‍🍳 — new
+2. `diet.line.vegetarian` — EN "I'm vegetarian." · FR "Je suis végétarien." · ES "Soy vegetariano." — meaning "אני צמחוני." / "I'm vegetarian." — icon 🌱 — new
+
+No build-sentence card.
+
+Step 4. Label: "The kitchen check" / "בדיקה במטבח". Intro: "🙋 My needs: Allergy: Nuts / Diet: Vegetarian / Onions: Remove ‖ 👨‍🍳 What the waiter said: Dish: ? / Nuts: ? / Dairy: ? / Kitchen: — ¦ Two different things: the dish — and the nuts. Tap to hear." / "🙋 הצרכים שלי: אלרגיה: אגוזים / תזונה: צמחוני / בצל: להוריד ‖ 👨‍🍳 מה המלצר אמר: מנה: ? / אגוזים: ? / חלב: ? / מטבח: — ¦ שני דברים שונים: המנה — והאגוזים. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `diet.line.risotto` — EN "Got it. The mushroom risotto is vegetarian, but I'll check with the kitchen about the nuts." · FR "Compris. Le risotto aux champignons est végétarien, mais je vérifie avec la cuisine pour les noix." · ES "Entendido. El risotto de champiñones es vegetariano, pero lo compruebo con la cocina por los frutos secos." — meaning "הבנתי. ריזוטו הפטריות צמחוני, אבל אבדוק עם המטבח לגבי האגוזים. (צמחוני: כן ✅ · אגוזים: עוד לא ידוע — המטבח יבדוק)" / "Got it. The mushroom risotto is vegetarian, but I'll check with the kitchen about the nuts. (vegetarian: yes ✅ · nuts: not known yet — the kitchen will check)" — icon 👨‍🍳 — new
+
+No build-sentence card.
+
+Step 6. Label: "Dairy" / "מוצרי חלב". Intro: "🙋 My needs: Allergy: Nuts / Diet: Vegetarian / Onions: Remove ‖ 👨‍🍳 What the waiter said: Dish: Vegetarian ✅ / Nuts: Kitchen checking… / Dairy: ? / Kitchen: — ¦ You ask about an ingredient — and hear the answer. Tap to hear." / "🙋 הצרכים שלי: אלרגיה: אגוזים / תזונה: צמחוני / בצל: להוריד ‖ 👨‍🍳 מה המלצר אמר: מנה: צמחונית ✅ / אגוזים: המטבח בודק… / חלב: ? / מטבח: — ¦ אתה שואל על מרכיב — ושומע את התשובה. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `diet.line.dairy` — EN "Does it have dairy?" · FR "Est-ce qu’il y a des produits laitiers dedans ?" · ES "¿Esto lleva lácteos?" — meaning "יש בזה מוצרי חלב? (יש בזה ___? — שואלים על מרכיב)" / "Does it have dairy? (does it have ___? — ask about an ingredient)" — icon 🥛 — new
+2. `diet.line.cream` — EN "Yes, it has some cream, but we can make it without." · FR "Oui, il y a un peu de crème, mais on peut le faire sans." · ES "Sí, lleva un poco de nata, pero se lo podemos hacer sin ella." — meaning "כן, יש בו קצת שמנת, אבל אפשר להכין בלי. (חלב: יש — אבל אפשר להוריד)" / "Yes, it has some cream, but we can make it without. (dairy: yes — but it can be left out)" — icon 🥛 — new
+
+No build-sentence card.
+
+Step 7. Label: "The kitchen" / "המטבח". Intro: "🙋 My needs: Allergy: Nuts / Diet: Vegetarian / Onions: Remove ‖ 👨‍🍳 What the waiter said: Dish: Vegetarian ✅ / Nuts: Kitchen checking… / Dairy: Cream — can remove / Kitchen: — ¦ The waiter passes your allergy to the kitchen — and goes to check. Tap to hear." / "🙋 הצרכים שלי: אלרגיה: אגוזים / תזונה: צמחוני / בצל: להוריד ‖ 👨‍🍳 מה המלצר אמר: מנה: צמחונית ✅ / אגוזים: המטבח בודק… / חלב: יש שמנת — אפשר בלי / מטבח: — ¦ המלצר מעביר את האלרגיה למטבח — והולך לבדוק. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `diet.line.tell` — EN "Of course. I'll tell the kitchen about your allergy." · FR "Bien sûr. Je préviens la cuisine pour votre allergie." · ES "Claro. Aviso a la cocina de su alergia." — meaning "כמובן. אגיד למטבח על האלרגיה שלך. (האלרגיה נמסרת למטבח)" / "Of course. I'll tell the kitchen about your allergy. (your allergy is passed to the kitchen)" — icon 👨‍🍳 — new
+2. `diet.line.back` — EN "I'll check with them and come right back." · FR "Je vérifie avec eux et je reviens tout de suite." · ES "Lo compruebo con ellos y vuelvo enseguida." — meaning "אבדוק איתם ואחזור מיד. (עוד לא אושר — מחכים לתשובה)" / "I'll check with them and come right back. (not confirmed yet — wait for the answer)" — icon 👨‍🍳 — new
+
+No build-sentence card.
 
 ## Every sentence in this mission
 
@@ -15139,7 +15193,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "The life-saving template: I’m allergic to ___. Say it clearly, once, no hesitation." / "התבנית שמצילה: I’m allergic to ___. אומרים ברור, פעם אחת, בלי היסוס."
 - Used in missions: 15
-- Exercised here as: key sentence (step 2); "you said" lead-in of the expected-replies drill (step 6); quick-reply response (step 9, round 1, accepted); quick-reply response (step 9, round 4, wrong option); quick-reply response (step 9, round 5, accepted); sentence review (step 12); quick-reply response (step 13, round 1, accepted); quick-reply response (step 13, round 4, wrong option); dialogue choice allergy-order/c1 (accepted); dialogue choice allergy-order/c1b (accepted)
+- Exercised here as: quick-reply response (step 9, round 1, wrong option); quick-reply response (step 9, round 2, accepted); quick-reply response (step 9, round 3, wrong option); quick-reply response (step 9, round 4, wrong option); quick-reply response (step 10, round 1, accepted); quick-reply response (step 11, round 1, wrong option); quick-reply response (step 16, round 1, accepted); quick-reply response (step 16, round 2, wrong option); quick-reply response (step 18, round 1, wrong option); quick-reply response (step 21, round 1, accepted); quick-reply response (step 21, round 2, wrong option); dialogue choice allergy-order/c1 (accepted); dialogue choice allergy-order/c5 (WRONG option)
 
 ### Sentence: `phrase.diet.without-onions`
 
@@ -15150,7 +15204,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "Template: Without ___ — removes any ingredient you don’t want." / "התבנית: Without ___ — מסירה כל מרכיב שלא בא לך."
 - Used in missions: 15
-- Exercised here as: key sentence (step 3); quick-reply response (step 9, round 1, wrong option); quick-reply response (step 9, round 2, wrong option); quick-reply response (step 9, round 4, accepted); quick-reply response (step 9, round 5, wrong option); sentence review (step 12); quick-reply response (step 13, round 1, wrong option); quick-reply response (step 13, round 2, wrong option); quick-reply response (step 13, round 4, accepted); dialogue choice allergy-order/c4 (accepted); dialogue choice allergy-order/c4b (accepted)
+- Exercised here as: quick-reply response (step 9, round 3, accepted); quick-reply response (step 10, round 2, wrong option); quick-reply response (step 11, round 1, accepted); quick-reply response (step 16, round 3, wrong option); quick-reply response (step 17, round 1, accepted); quick-reply response (step 18, round 1, wrong option); quick-reply response (step 21, round 1, wrong option); quick-reply response (step 21, round 3, wrong option); quick-reply response (step 22, round 1, accepted); dialogue choice allergy-order/c4 (accepted)
 
 ### Sentence: `phrase.diet.vegetarian`
 
@@ -15161,7 +15215,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "Two words that save ten questions." / "שתי מילים שחוסכות עשר שאלות."
 - Used in missions: 15
-- Exercised here as: key sentence (step 4); quick-reply response (step 9, round 2, accepted); quick-reply response (step 9, round 3, wrong option); quick-reply response (step 9, round 4, wrong option); sentence review (step 12); quick-reply response (step 13, round 2, accepted); quick-reply response (step 13, round 3, wrong option); quick-reply response (step 13, round 4, wrong option); cold-open wrong option (step 15); dialogue choice allergy-order/c2 (accepted); dialogue choice allergy-order/c2b (accepted)
+- Exercised here as: quick-reply response (step 9, round 1, wrong option); quick-reply response (step 9, round 2, wrong option); quick-reply response (step 9, round 3, wrong option); quick-reply response (step 9, round 4, accepted); quick-reply response (step 10, round 2, accepted); quick-reply response (step 10, round 3, wrong option); quick-reply response (step 12, round 1, wrong option); quick-reply response (step 16, round 1, wrong option); quick-reply response (step 16, round 2, accepted); quick-reply response (step 17, round 1, wrong option); quick-reply response (step 21, round 2, accepted); quick-reply response (step 21, round 3, wrong option); quick-reply response (step 23, round 1, wrong option); dialogue choice allergy-order/c2 (accepted); dialogue choice allergy-order/c2b (accepted); dialogue choice allergy-order/c3 (WRONG option)
 
 ### Sentence: `phrase.diet.does-have-dairy`
 
@@ -15172,95 +15226,73 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "Template: Does this have ___? — checks any ingredient before it reaches you." / "התבנית: Does this have ___? — בודקת כל מרכיב לפני שהוא מגיע אליך."
 - Used in missions: 15
-- Exercised here as: key sentence (step 5); quick-reply response (step 9, round 3, accepted); sentence review (step 12); quick-reply response (step 13, round 3, accepted); dialogue choice allergy-order/c3 (accepted); dialogue choice allergy-order/c3b (accepted)
+- Exercised here as: quick-reply response (step 9, round 1, accepted); quick-reply response (step 9, round 2, wrong option); quick-reply response (step 9, round 4, wrong option); quick-reply response (step 10, round 1, wrong option); quick-reply response (step 10, round 3, accepted); quick-reply response (step 11, round 1, wrong option); quick-reply response (step 12, round 1, wrong option); quick-reply response (step 16, round 2, wrong option); quick-reply response (step 16, round 3, accepted); quick-reply response (step 21, round 1, wrong option); quick-reply response (step 21, round 3, accepted); quick-reply response (step 22, round 1, wrong option); quick-reply response (step 23, round 1, wrong option); dialogue choice allergy-order/c1 (WRONG option); dialogue choice allergy-order/c3 (accepted); dialogue choice allergy-order/c4 (WRONG option)
 
-### Sentence: `phrase.diet.is-spicy`
+### Sentence: `reply.diet.ready`
 
-- EN: Is this spicy?
-- HE: זה חריף?
-- FR: C’est épicé ?
-- ES: ¿Esto pica?
-- Role: learner production
-- Tip / pattern note: none
-- Used in missions: 15
-- Exercised here as: quick-reply response (step 9, round 1, wrong option); quick-reply response (step 9, round 2, wrong option); quick-reply response (step 9, round 3, wrong option); sentence review (step 12); quick-reply response (step 13, round 1, wrong option); quick-reply response (step 13, round 2, wrong option); dialogue choice allergy-order/c4 (accepted)
-
-### Sentence: `reply.diet.let-me-check`
-
-- EN: Let me check with the kitchen.
-- HE: אבדוק עם המטבח.
-- FR: Je vérifie avec la cuisine.
-- ES: Lo consulto con la cocina.
+- EN: Hi there! Are you ready to order?
+- HE: היי! מוכן להזמין?
+- FR: Bonjour ! Vous êtes prêt à commander ?
+- ES: ¡Hola! ¿Está listo para pedir?
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 15
-- Exercised here as: expected-reply audio (step 6); match-pairs question tile (step 8, pair 1); match-pairs answer tile (step 8, pair 1); sentence review (step 12)
+- Exercised here as: quick-reply prompt (step 10, round 1)
 
-### Sentence: `reply.diet.make-without`
+### Sentence: `reply.diet.other`
 
-- EN: We can make it without.
-- HE: אפשר להכין בלי.
-- FR: On peut le faire sans.
-- ES: Se lo podemos hacer sin eso.
+- EN: Thank you for telling me. Any other allergies or dietary restrictions?
+- HE: תודה שאמרת. יש עוד אלרגיות או הגבלות תזונה?
+- FR: Merci de me le dire. D’autres allergies ou restrictions alimentaires ?
+- ES: Gracias por avisarme. ¿Alguna otra alergia o restricción alimentaria?
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 15
-- Exercised here as: expected-reply audio (step 6); match-pairs question tile (step 8, pair 2); match-pairs answer tile (step 8, pair 2); quick-reply prompt (step 9, round 4); sentence review (step 12)
+- Exercised here as: quick-reply prompt (step 10, round 2)
 
-### Sentence: `reply.diet.contains-nuts`
+### Sentence: `reply.diet.risotto`
 
-- EN: That one contains nuts.
-- HE: זה מכיל אגוזים.
-- FR: Celui-là contient des noix.
-- ES: Ese lleva frutos secos.
+- EN: Got it. The mushroom risotto is vegetarian, but I'll check with the kitchen about the nuts.
+- HE: הבנתי. ריזוטו הפטריות צמחוני, אבל אבדוק עם המטבח לגבי האגוזים.
+- FR: Compris. Le risotto aux champignons est végétarien, mais je vérifie avec la cuisine pour les noix.
+- ES: Entendido. El risotto de champiñones es vegetariano, pero lo compruebo con la cocina por los frutos secos.
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 15
-- Exercised here as: expected-reply audio (step 6); match-pairs question tile (step 8, pair 3); match-pairs answer tile (step 8, pair 3); quick-reply prompt (step 9, round 5); sentence review (step 12)
+- Exercised here as: quick-reply prompt (step 10, round 3)
 
-### Sentence: `reply.diet.not-spicy`
+### Sentence: `reply.diet.cream`
 
-- EN: No, it's not spicy.
-- HE: לא, זה לא חריף.
-- FR: Non, ce n’est pas épicé.
-- ES: No, no pica.
+- EN: Yes, it has some cream, but we can make it without.
+- HE: כן, יש בו קצת שמנת, אבל אפשר להכין בלי.
+- FR: Oui, il y a un peu de crème, mais on peut le faire sans.
+- ES: Sí, lleva un poco de nata, pero se lo podemos hacer sin ella.
+- Role: receptive — an expected reply the learner hears
+- Tip / pattern note: none
+- Used in missions: 15
+- Exercised here as: quick-reply prompt (step 11, round 1)
+
+### Sentence: `reply.diet.tell`
+
+- EN: Of course. I'll tell the kitchen about your allergy.
+- HE: כמובן. אגיד למטבח על האלרגיה שלך.
+- FR: Bien sûr. Je préviens la cuisine pour votre allergie.
+- ES: Claro. Aviso a la cocina de su alergia.
+- Role: receptive — an expected reply the learner hears
+- Tip / pattern note: none
+- Used in missions: 15
+- Exercised here as: quick-reply prompt (step 12, round 1)
+
+### Sentence: `reply.diet.back`
+
+- EN: I'll check with them and come right back.
+- HE: אבדוק איתם ואחזור מיד.
+- FR: Je vérifie avec eux et je reviens tout de suite.
+- ES: Lo compruebo con ellos y vuelvo enseguida.
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 15
 - Exercised here as: nothing (listed only)
-
-### Sentence: `reply.diet.anything-else-allergic`
-
-- EN: Any other allergies?
-- HE: יש עוד אלרגיות?
-- FR: D’autres allergies ?
-- ES: ¿Alguna otra alergia?
-- Role: receptive — an expected reply the learner hears
-- Tip / pattern note: none
-- Used in missions: 15
-- Exercised here as: expected-reply audio (step 6); sentence review (step 12)
-
-### Sentence: `phrase.recovery.repeat`
-
-- EN: Can you repeat that?
-- HE: אפשר לחזור על זה?
-- FR: Vous pouvez répéter ?
-- ES: ¿Puede repetir, por favor?
-- Role: conversation-help tool (global Recovery Toolkit)
-- Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
-- Exercised here as: quick-reply response (step 9, round 5, accepted); sentence review (step 12); quick-reply response (step 13, round 3, accepted); cold-open correct option (step 15); dialogue choice allergy-order/c3 (accepted)
-
-### Sentence: `phrase.recovery.slowly`
-
-- EN: Please speak slowly.
-- HE: דבר לאט, בבקשה.
-- FR: Parlez lentement, s’il vous plaît.
-- ES: Más despacio, por favor.
-- Role: conversation-help tool (global Recovery Toolkit)
-- Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
-- Exercised here as: sentence review (step 12); dialogue choice allergy-order/c1 (accepted); dialogue choice allergy-order/c5 (accepted)
 
 ### Sentence: `phrase.recovery.thank-you`
 
@@ -15271,64 +15303,11 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: courtesy from the Recovery Toolkit
 - Tip / pattern note: none
 - Used in missions: 03, 05, 06, 07, 10, 14, 15, 17, 18, 19, 25, 26, 30
-- Exercised here as: dialogue choice allergy-order/c2 (WRONG option); dialogue choice allergy-order/c5 (accepted); dialogue choice allergy-order/c5b (accepted)
+- Exercised here as: quick-reply response (step 10, round 1, wrong option); quick-reply response (step 10, round 2, wrong option); quick-reply response (step 10, round 3, wrong option); quick-reply response (step 12, round 1, accepted); quick-reply response (step 16, round 1, wrong option); quick-reply response (step 16, round 3, wrong option); quick-reply response (step 17, round 1, wrong option); quick-reply response (step 18, round 1, accepted); quick-reply response (step 21, round 2, wrong option); quick-reply response (step 22, round 1, wrong option); quick-reply response (step 23, round 1, accepted); dialogue choice allergy-order/c2 (WRONG option); dialogue choice allergy-order/c5 (accepted)
 
 ## Expected replies / listening items
 
-Lead-in screen: "You said:" / "אמרת:" — EN "I'm allergic to nuts." · FR "Je suis allergique aux noix." · ES "Soy alérgico a los frutos secos." — then "What might they answer? Learn the replies before they surprise you." / "מה הם עלולים לענות? נלמד את התשובות לפני שהן מפתיעות אותך." — button 👂 "I'm ready" / "אני מוכן".
-Linked learner sentence: `phrase.diet.allergic-nuts`. Each reply below is played once automatically; the learner picks its MEANING from three buttons. Distractors are always the first two OTHER replies of this same drill, in drill order (runtime rule), so the three choices are shuffled per session.
-
-### M15-Q01 — expected-reply (step 6, reply 1 of 4)
-
-- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (1/4)
-- Audio played: EN "Let me check with the kitchen." · FR "Je vérifie avec la cuisine." · ES "Lo consulto con la cocina."
-- Meaning of the audio (HE): "אבדוק עם המטבח."
-- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
-- Choices:
-  1. HE "אבדוק עם המטבח." / EN "Let me check with the kitchen." — `reply.diet.let-me-check` — ✅ accepted
-  2. HE "אפשר להכין בלי." / EN "We can make it without." — `reply.diet.make-without` — ❌ wrong
-  3. HE "זה מכיל אגוזים." / EN "That one contains nuts." — `reply.diet.contains-nuts` — ❌ wrong
-- Tests: reply.diet.let-me-check
-- Explanation shown after answering: generic: “Let me check with the kitchen.” means “אבדוק עם המטבח.”.
-
-### M15-Q02 — expected-reply (step 6, reply 2 of 4)
-
-- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (2/4)
-- Audio played: EN "We can make it without." · FR "On peut le faire sans." · ES "Se lo podemos hacer sin eso."
-- Meaning of the audio (HE): "אפשר להכין בלי."
-- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
-- Choices:
-  1. HE "אפשר להכין בלי." / EN "We can make it without." — `reply.diet.make-without` — ✅ accepted
-  2. HE "אבדוק עם המטבח." / EN "Let me check with the kitchen." — `reply.diet.let-me-check` — ❌ wrong
-  3. HE "זה מכיל אגוזים." / EN "That one contains nuts." — `reply.diet.contains-nuts` — ❌ wrong
-- Tests: reply.diet.make-without
-- Explanation shown after answering: generic: “We can make it without.” means “אפשר להכין בלי.”.
-
-### M15-Q03 — expected-reply (step 6, reply 3 of 4)
-
-- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (3/4)
-- Audio played: EN "That one contains nuts." · FR "Celui-là contient des noix." · ES "Ese lleva frutos secos."
-- Meaning of the audio (HE): "זה מכיל אגוזים."
-- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
-- Choices:
-  1. HE "זה מכיל אגוזים." / EN "That one contains nuts." — `reply.diet.contains-nuts` — ✅ accepted
-  2. HE "אבדוק עם המטבח." / EN "Let me check with the kitchen." — `reply.diet.let-me-check` — ❌ wrong
-  3. HE "אפשר להכין בלי." / EN "We can make it without." — `reply.diet.make-without` — ❌ wrong
-- Tests: reply.diet.contains-nuts
-- Explanation shown after answering: generic: “That one contains nuts.” means “זה מכיל אגוזים.”.
-
-### M15-Q04 — expected-reply (step 6, reply 4 of 4)
-
-- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (4/4)
-- Audio played: EN "Any other allergies?" · FR "D’autres allergies ?" · ES "¿Alguna otra alergia?"
-- Meaning of the audio (HE): "יש עוד אלרגיות?"
-- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
-- Choices:
-  1. HE "יש עוד אלרגיות?" / EN "Any other allergies?" — `reply.diet.anything-else-allergic` — ✅ accepted
-  2. HE "אבדוק עם המטבח." / EN "Let me check with the kitchen." — `reply.diet.let-me-check` — ❌ wrong
-  3. HE "אפשר להכין בלי." / EN "We can make it without." — `reply.diet.make-without` — ❌ wrong
-- Tests: reply.diet.anything-else-allergic
-- Explanation shown after answering: generic: “Any other allergies?” means “יש עוד אלרגיות?”.
+No expected-replies drill in this mission.
 
 ## Quizzes
 
@@ -15336,111 +15315,137 @@ No meaning quiz in this mission.
 
 ## Active practice — Quick Reply · Visual Match · Swap It · Mini Map
 
-### M15-Q05 — match-pairs (step 8, pair 1 of 3 (all pairs are on one screen))
+### M15-Q01 — visual-match (step 5, round 1 of 1)
 
-- Prompt displayed: "What are you being told? Checking, changing it, or a warning?" / "מה אומרים לך? בודקים, משנים, או מזהירים?" — tile to match (target language, no translation): EN "Let me check with the kitchen." · FR "Je vérifie avec la cuisine." · ES "Lo consulto con la cocina."
-- Audio played: EN "Let me check with the kitchen." · FR "Je vérifie avec la cuisine." · ES "Lo consulto con la cocina."
-- Meaning of the audio (HE): "אבדוק עם המטבח."
-- Buttons show: the ANSWER tiles, target language only; their order is shuffled; a matched pair locks and leaves the board, so later pairs have fewer live tiles
+- Prompt displayed: "What did the waiter say about the nuts?" / "מה המלצר אמר על האגוזים?"
+- Audio played: EN "Got it. The mushroom risotto is vegetarian, but I'll check with the kitchen about the nuts." · FR "Compris. Le risotto aux champignons est végétarien, mais je vérifie avec la cuisine pour les noix." · ES "Entendido. El risotto de champiñones es vegetariano, pero lo compruebo con la cocina por los frutos secos."
+- Meaning of the audio (HE): "הבנתי. ריזוטו הפטריות צמחוני, אבל אבדוק עם המטבח לגבי האגוזים."
+- Buttons show: a 3×3 board of 3 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. EN "🔍 They will check / בודקים במטבח" · FR "🔍 They will check / בודקים במטבח" · ES "🔍 They will check / בודקים במטבח" · (HE gloss "אבדוק עם המטבח.") — `reply.diet.let-me-check` — ✅ accepted
-  2. EN "➖ They can make it without / אפשר להכין בלי" · FR "➖ They can make it without / אפשר להכין בלי" · ES "➖ They can make it without / אפשר להכין בלי" · (HE gloss "אפשר להכין בלי.") — `reply.diet.make-without` — ❌ wrong
-  3. EN "⚠️ 🥜 It contains nuts / יש בזה אגוזים" · FR "⚠️ 🥜 It contains nuts / יש בזה אגוזים" · ES "⚠️ 🥜 It contains nuts / יש בזה אגוזים" · (HE gloss "זה מכיל אגוזים.") — `reply.diet.contains-nuts` — ❌ wrong
-- Tests: reply.diet.let-me-check
-- Explanation shown after answering: none — a correct match locks both tiles under a shared number and speaks the answer; a miss shakes, shows ✕ and clears (no penalty)
+  1. "👨‍🍳 “Not known yet — the kitchen will check” / “עוד לא ידוע — המטבח יבדוק”" — no sentence id — ✅ accepted
+  2. "🥜 “He said: no nuts” / “הוא אמר: אין אגוזים”" — no sentence id — ❌ wrong
+  3. "⚠️ “He said: it has nuts” / “הוא אמר: יש אגוזים”" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
 
-### M15-Q06 — match-pairs (step 8, pair 2 of 3 (all pairs are on one screen))
+### M15-Q02 — quick-reply (step 9, round 1 of 4)
 
-- Prompt displayed: "What are you being told? Checking, changing it, or a warning?" / "מה אומרים לך? בודקים, משנים, או מזהירים?" — tile to match (target language, no translation): EN "We can make it without." · FR "On peut le faire sans." · ES "Se lo podemos hacer sin eso."
-- Audio played: EN "We can make it without." · FR "On peut le faire sans." · ES "Se lo podemos hacer sin eso."
-- Meaning of the audio (HE): "אפשר להכין בלי."
-- Buttons show: the ANSWER tiles, target language only; their order is shuffled; a matched pair locks and leaves the board, so later pairs have fewer live tiles
-- Choices:
-  1. EN "🔍 They will check / בודקים במטבח" · FR "🔍 They will check / בודקים במטבח" · ES "🔍 They will check / בודקים במטבח" · (HE gloss "אבדוק עם המטבח.") — `reply.diet.let-me-check` — ❌ wrong
-  2. EN "➖ They can make it without / אפשר להכין בלי" · FR "➖ They can make it without / אפשר להכין בלי" · ES "➖ They can make it without / אפשר להכין בלי" · (HE gloss "אפשר להכין בלי.") — `reply.diet.make-without` — ✅ accepted
-  3. EN "⚠️ 🥜 It contains nuts / יש בזה אגוזים" · FR "⚠️ 🥜 It contains nuts / יש בזה אגוזים" · ES "⚠️ 🥜 It contains nuts / יש בזה אגוזים" · (HE gloss "זה מכיל אגוזים.") — `reply.diet.contains-nuts` — ❌ wrong
-- Tests: reply.diet.make-without
-- Explanation shown after answering: none — a correct match locks both tiles under a shared number and speaks the answer; a miss shakes, shows ✕ and clears (no penalty)
-
-### M15-Q07 — match-pairs (step 8, pair 3 of 3 (all pairs are on one screen))
-
-- Prompt displayed: "What are you being told? Checking, changing it, or a warning?" / "מה אומרים לך? בודקים, משנים, או מזהירים?" — tile to match (target language, no translation): EN "That one contains nuts." · FR "Celui-là contient des noix." · ES "Ese lleva frutos secos."
-- Audio played: EN "That one contains nuts." · FR "Celui-là contient des noix." · ES "Ese lleva frutos secos."
-- Meaning of the audio (HE): "זה מכיל אגוזים."
-- Buttons show: the ANSWER tiles, target language only; their order is shuffled; a matched pair locks and leaves the board, so later pairs have fewer live tiles
-- Choices:
-  1. EN "🔍 They will check / בודקים במטבח" · FR "🔍 They will check / בודקים במטבח" · ES "🔍 They will check / בודקים במטבח" · (HE gloss "אבדוק עם המטבח.") — `reply.diet.let-me-check` — ❌ wrong
-  2. EN "➖ They can make it without / אפשר להכין בלי" · FR "➖ They can make it without / אפשר להכין בלי" · ES "➖ They can make it without / אפשר להכין בלי" · (HE gloss "אפשר להכין בלי.") — `reply.diet.make-without` — ❌ wrong
-  3. EN "⚠️ 🥜 It contains nuts / יש בזה אגוזים" · FR "⚠️ 🥜 It contains nuts / יש בזה אגוזים" · ES "⚠️ 🥜 It contains nuts / יש בזה אגוזים" · (HE gloss "זה מכיל אגוזים.") — `reply.diet.contains-nuts` — ✅ accepted
-- Tests: reply.diet.contains-nuts
-- Explanation shown after answering: none — a correct match locks both tiles under a shared number and speaks the answer; a miss shakes, shows ✕ and clears (no penalty)
-
-### M15-Q08 — quick-reply (step 9, round 1 of 5)
-
-- Prompt displayed: "Ordering safely — what do you say?" / "להזמין בבטחה — מה אומרים?"
-- Audio played: EN "Hi there! Are you ready to order?" · FR "Bonjour ! Vous êtes prêt à commander ?" · ES "¡Hola! ¿Está listo para pedir?"
-- Meaning of the audio (HE): "היי! מוכן להזמין?"
-- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
-- Choices:
-  1. EN "I'm allergic to nuts." · FR "Je suis allergique aux noix." · ES "Soy alérgico a los frutos secos." · (HE gloss "אני אלרגי לאגוזים.") — `phrase.diet.allergic-nuts` — ✅ accepted
-  2. EN "Is this spicy?" · FR "C’est épicé ?" · ES "¿Esto pica?" · (HE gloss "זה חריף?") — `phrase.diet.is-spicy` — ❌ wrong
-  3. EN "Without onions, please." · FR "Sans oignons, s’il vous plaît." · ES "Sin cebolla, por favor." · (HE gloss "בלי בצל, בבקשה.") — `phrase.diet.without-onions` — ❌ wrong
-- Tests: phrase.diet.allergic-nuts
-- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
-
-### M15-Q09 — quick-reply (step 9, round 2 of 5)
-
-- Prompt displayed: "Ordering safely — what do you say?" / "להזמין בבטחה — מה אומרים?"
-- Audio played: EN "Thank you for telling me. Any other allergies or dietary restrictions?" · FR "Merci de me le dire. D’autres allergies ou restrictions alimentaires ?" · ES "Gracias por avisarme. ¿Alguna otra alergia o restricción alimentaria?"
-- Meaning of the audio (HE): "תודה שאמרת. יש עוד אלרגיות או הגבלות תזונה?"
-- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
-- Choices:
-  1. EN "I'm vegetarian." · FR "Je suis végétarien." · ES "Soy vegetariano." · (HE gloss "אני צמחוני.") — `phrase.diet.vegetarian` — ✅ accepted
-  2. EN "Is this spicy?" · FR "C’est épicé ?" · ES "¿Esto pica?" · (HE gloss "זה חריף?") — `phrase.diet.is-spicy` — ❌ wrong
-  3. EN "Without onions, please." · FR "Sans oignons, s’il vous plaît." · ES "Sin cebolla, por favor." · (HE gloss "בלי בצל, בבקשה.") — `phrase.diet.without-onions` — ❌ wrong
-- Tests: phrase.diet.vegetarian
-- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
-
-### M15-Q10 — quick-reply (step 9, round 3 of 5)
-
-- Prompt displayed: "Ordering safely — what do you say?" / "להזמין בבטחה — מה אומרים?" — situation shown: "The waiter suggests a dish. You need to know whether there is dairy in it." / "המלצר מציע מנה. אתה צריך לדעת אם יש בה מוצרי חלב."
+- Prompt displayed: "🎯 What do you do? — the situation → what you say" / "🎯 מה עושים? — המצב ← מה אומרים" — situation shown: "🥛 You need to know whether the dish contains dairy." / "🥛 אתה צריך לדעת אם יש במנה מוצרי חלב."
 - Audio played: EN "(nothing is played — a situation is shown)" · FR "(nothing is played — a situation is shown)" · ES "(nothing is played — a situation is shown)"
 - Meaning of the audio (HE): —
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
   1. EN "Does it have dairy?" · FR "Est-ce qu’il y a des produits laitiers dedans ?" · ES "¿Esto lleva lácteos?" · (HE gloss "יש בזה מוצרי חלב?") — `phrase.diet.does-have-dairy` — ✅ accepted
-  2. EN "Is this spicy?" · FR "C’est épicé ?" · ES "¿Esto pica?" · (HE gloss "זה חריף?") — `phrase.diet.is-spicy` — ❌ wrong
+  2. EN "I'm allergic to nuts." · FR "Je suis allergique aux noix." · ES "Soy alérgico a los frutos secos." · (HE gloss "אני אלרגי לאגוזים.") — `phrase.diet.allergic-nuts` — ❌ wrong
   3. EN "I'm vegetarian." · FR "Je suis végétarien." · ES "Soy vegetariano." · (HE gloss "אני צמחוני.") — `phrase.diet.vegetarian` — ❌ wrong
 - Tests: phrase.diet.does-have-dairy
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M15-Q11 — quick-reply (step 9, round 4 of 5)
+### M15-Q03 — quick-reply (step 9, round 2 of 4)
 
-- Prompt displayed: "Ordering safely — what do you say?" / "להזמין בבטחה — מה אומרים?"
-- Audio played: EN "We can make it without." · FR "On peut le faire sans." · ES "Se lo podemos hacer sin eso."
-- Meaning of the audio (HE): "אפשר להכין בלי."
+- Prompt displayed: "🎯 What do you do? — the situation → what you say" / "🎯 מה עושים? — המצב ← מה אומרים" — situation shown: "🥜 Nuts are dangerous for you." / "🥜 אגוזים מסוכנים בשבילך."
+- Audio played: EN "(nothing is played — a situation is shown)" · FR "(nothing is played — a situation is shown)" · ES "(nothing is played — a situation is shown)"
+- Meaning of the audio (HE): —
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "I'm allergic to nuts." · FR "Je suis allergique aux noix." · ES "Soy alérgico a los frutos secos." · (HE gloss "אני אלרגי לאגוזים.") — `phrase.diet.allergic-nuts` — ✅ accepted
+  2. EN "I'm vegetarian." · FR "Je suis végétarien." · ES "Soy vegetariano." · (HE gloss "אני צמחוני.") — `phrase.diet.vegetarian` — ❌ wrong
+  3. EN "Does it have dairy?" · FR "Est-ce qu’il y a des produits laitiers dedans ?" · ES "¿Esto lleva lácteos?" · (HE gloss "יש בזה מוצרי חלב?") — `phrase.diet.does-have-dairy` — ❌ wrong
+- Tests: phrase.diet.allergic-nuts
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M15-Q04 — quick-reply (step 9, round 3 of 4)
+
+- Prompt displayed: "🎯 What do you do? — the situation → what you say" / "🎯 מה עושים? — המצב ← מה אומרים" — situation shown: "🧅 You don’t want onions." / "🧅 אתה לא רוצה בצל."
+- Audio played: EN "(nothing is played — a situation is shown)" · FR "(nothing is played — a situation is shown)" · ES "(nothing is played — a situation is shown)"
+- Meaning of the audio (HE): —
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
   1. EN "Great. Without onions, please." · FR "Parfait. Sans oignons, s’il vous plaît." · ES "Genial. Sin cebolla, por favor." · (HE gloss "בלי בצל, בבקשה.") — `phrase.diet.without-onions` — ✅ accepted
+  2. EN "I'm allergic to nuts." · FR "Je suis allergique aux noix." · ES "Soy alérgico a los frutos secos." · (HE gloss "אני אלרגי לאגוזים.") — `phrase.diet.allergic-nuts` — ❌ wrong
+  3. EN "I'm vegetarian." · FR "Je suis végétarien." · ES "Soy vegetariano." · (HE gloss "אני צמחוני.") — `phrase.diet.vegetarian` — ❌ wrong
+- Tests: phrase.diet.without-onions
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M15-Q05 — quick-reply (step 9, round 4 of 4)
+
+- Prompt displayed: "🎯 What do you do? — the situation → what you say" / "🎯 מה עושים? — המצב ← מה אומרים" — situation shown: "🌱 You don’t eat meat." / "🌱 אתה לא אוכל בשר."
+- Audio played: EN "(nothing is played — a situation is shown)" · FR "(nothing is played — a situation is shown)" · ES "(nothing is played — a situation is shown)"
+- Meaning of the audio (HE): —
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "I'm vegetarian." · FR "Je suis végétarien." · ES "Soy vegetariano." · (HE gloss "אני צמחוני.") — `phrase.diet.vegetarian` — ✅ accepted
+  2. EN "I'm allergic to nuts." · FR "Je suis allergique aux noix." · ES "Soy alérgico a los frutos secos." · (HE gloss "אני אלרגי לאגוזים.") — `phrase.diet.allergic-nuts` — ❌ wrong
+  3. EN "Does it have dairy?" · FR "Est-ce qu’il y a des produits laitiers dedans ?" · ES "¿Esto lleva lácteos?" · (HE gloss "יש בזה מוצרי חלב?") — `phrase.diet.does-have-dairy` — ❌ wrong
+- Tests: phrase.diet.vegetarian
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M15-Q06 — quick-reply (step 10, round 1 of 3)
+
+- Prompt displayed: "🙋 My needs: Allergy: Nuts / Diet: Vegetarian / Onions: Remove ‖ 👨‍🍳 What the waiter said: Dish: ? / Nuts: ? / Dairy: ? / Kitchen: — ¦ Now the whole conversation." / "🙋 הצרכים שלי: אלרגיה: אגוזים / תזונה: צמחוני / בצל: להוריד ‖ 👨‍🍳 מה המלצר אמר: מנה: ? / אגוזים: ? / חלב: ? / מטבח: — ¦ עכשיו כל השיחה."
+- Audio played: EN "Hi there! Are you ready to order?" · FR "Bonjour ! Vous êtes prêt à commander ?" · ES "¡Hola! ¿Está listo para pedir?"
+- Meaning of the audio (HE): "היי! מוכן להזמין?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "I'm allergic to nuts." · FR "Je suis allergique aux noix." · ES "Soy alérgico a los frutos secos." · (HE gloss "אני אלרגי לאגוזים.") — `phrase.diet.allergic-nuts` — ✅ accepted
+  2. EN "Does it have dairy?" · FR "Est-ce qu’il y a des produits laitiers dedans ?" · ES "¿Esto lleva lácteos?" · (HE gloss "יש בזה מוצרי חלב?") — `phrase.diet.does-have-dairy` — ❌ wrong
+  3. EN "Thank you!" · FR "Merci !" · ES "¡Gracias!" · (HE gloss "תודה!") — `phrase.recovery.thank-you` — ❌ wrong
+- Tests: phrase.diet.allergic-nuts
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M15-Q07 — quick-reply (step 10, round 2 of 3)
+
+- Prompt displayed: "🙋 My needs: Allergy: Nuts / Diet: Vegetarian / Onions: Remove ‖ 👨‍🍳 What the waiter said: Dish: ? / Nuts: ? / Dairy: ? / Kitchen: — ¦ Now the whole conversation." / "🙋 הצרכים שלי: אלרגיה: אגוזים / תזונה: צמחוני / בצל: להוריד ‖ 👨‍🍳 מה המלצר אמר: מנה: ? / אגוזים: ? / חלב: ? / מטבח: — ¦ עכשיו כל השיחה."
+- Audio played: EN "Thank you for telling me. Any other allergies or dietary restrictions?" · FR "Merci de me le dire. D’autres allergies ou restrictions alimentaires ?" · ES "Gracias por avisarme. ¿Alguna otra alergia o restricción alimentaria?"
+- Meaning of the audio (HE): "תודה שאמרת. יש עוד אלרגיות או הגבלות תזונה?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "I'm vegetarian." · FR "Je suis végétarien." · ES "Soy vegetariano." · (HE gloss "אני צמחוני.") — `phrase.diet.vegetarian` — ✅ accepted
+  2. EN "Thank you!" · FR "Merci !" · ES "¡Gracias!" · (HE gloss "תודה!") — `phrase.recovery.thank-you` — ❌ wrong
+  3. EN "Great. Without onions, please." · FR "Parfait. Sans oignons, s’il vous plaît." · ES "Genial. Sin cebolla, por favor." · (HE gloss "בלי בצל, בבקשה.") — `phrase.diet.without-onions` — ❌ wrong
+- Tests: phrase.diet.vegetarian
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M15-Q08 — quick-reply (step 10, round 3 of 3)
+
+- Prompt displayed: "🙋 My needs: Allergy: Nuts / Diet: Vegetarian / Onions: Remove ‖ 👨‍🍳 What the waiter said: Dish: ? / Nuts: ? / Dairy: ? / Kitchen: — ¦ Now the whole conversation." / "🙋 הצרכים שלי: אלרגיה: אגוזים / תזונה: צמחוני / בצל: להוריד ‖ 👨‍🍳 מה המלצר אמר: מנה: ? / אגוזים: ? / חלב: ? / מטבח: — ¦ עכשיו כל השיחה."
+- Audio played: EN "Got it. The mushroom risotto is vegetarian, but I'll check with the kitchen about the nuts." · FR "Compris. Le risotto aux champignons est végétarien, mais je vérifie avec la cuisine pour les noix." · ES "Entendido. El risotto de champiñones es vegetariano, pero lo compruebo con la cocina por los frutos secos."
+- Meaning of the audio (HE): "הבנתי. ריזוטו הפטריות צמחוני, אבל אבדוק עם המטבח לגבי האגוזים."
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Does it have dairy?" · FR "Est-ce qu’il y a des produits laitiers dedans ?" · ES "¿Esto lleva lácteos?" · (HE gloss "יש בזה מוצרי חלב?") — `phrase.diet.does-have-dairy` — ✅ accepted
   2. EN "I'm vegetarian." · FR "Je suis végétarien." · ES "Soy vegetariano." · (HE gloss "אני צמחוני.") — `phrase.diet.vegetarian` — ❌ wrong
+  3. EN "Thank you!" · FR "Merci !" · ES "¡Gracias!" · (HE gloss "תודה!") — `phrase.recovery.thank-you` — ❌ wrong
+- Tests: phrase.diet.does-have-dairy
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M15-Q09 — quick-reply (step 11, round 1 of 1)
+
+- Prompt displayed: "🙋 My needs: Allergy: Nuts / Diet: Vegetarian / Onions: Remove ‖ 👨‍🍳 What the waiter said: Dish: Vegetarian ✅ / Nuts: Kitchen checking… / Dairy: ? / Kitchen: —" / "🙋 הצרכים שלי: אלרגיה: אגוזים / תזונה: צמחוני / בצל: להוריד ‖ 👨‍🍳 מה המלצר אמר: מנה: צמחונית ✅ / אגוזים: המטבח בודק… / חלב: ? / מטבח: —"
+- Audio played: EN "Yes, it has some cream, but we can make it without." · FR "Oui, il y a un peu de crème, mais on peut le faire sans." · ES "Sí, lleva un poco de nata, pero se lo podemos hacer sin ella."
+- Meaning of the audio (HE): "כן, יש בו קצת שמנת, אבל אפשר להכין בלי."
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Great. Without onions, please." · FR "Parfait. Sans oignons, s’il vous plaît." · ES "Genial. Sin cebolla, por favor." · (HE gloss "בלי בצל, בבקשה.") — `phrase.diet.without-onions` — ✅ accepted
+  2. EN "Does it have dairy?" · FR "Est-ce qu’il y a des produits laitiers dedans ?" · ES "¿Esto lleva lácteos?" · (HE gloss "יש בזה מוצרי חלב?") — `phrase.diet.does-have-dairy` — ❌ wrong
   3. EN "I'm allergic to nuts." · FR "Je suis allergique aux noix." · ES "Soy alérgico a los frutos secos." · (HE gloss "אני אלרגי לאגוזים.") — `phrase.diet.allergic-nuts` — ❌ wrong
 - Tests: phrase.diet.without-onions
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M15-Q12 — quick-reply (step 9, round 5 of 5)
+### M15-Q10 — quick-reply (step 12, round 1 of 1)
 
-- Prompt displayed: "Ordering safely — what do you say?" / "להזמין בבטחה — מה אומרים?"
-- Audio played: EN "That one contains nuts." · FR "Celui-là contient des noix." · ES "Ese lleva frutos secos."
-- Meaning of the audio (HE): "זה מכיל אגוזים."
+- Prompt displayed: "🙋 My needs: Allergy: Nuts / Diet: Vegetarian / Onions: Remove ‖ 👨‍🍳 What the waiter said: Dish: Vegetarian ✅ / Nuts: Kitchen checking… / Dairy: Cream — can remove / Kitchen: —" / "🙋 הצרכים שלי: אלרגיה: אגוזים / תזונה: צמחוני / בצל: להוריד ‖ 👨‍🍳 מה המלצר אמר: מנה: צמחונית ✅ / אגוזים: המטבח בודק… / חלב: יש שמנת — אפשר בלי / מטבח: —"
+- Audio played: EN "Of course. I'll tell the kitchen about your allergy." · FR "Bien sûr. Je préviens la cuisine pour votre allergie." · ES "Claro. Aviso a la cocina de su alergia."
+- Meaning of the audio (HE): "כמובן. אגיד למטבח על האלרגיה שלך."
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
-  1. EN "I'm allergic to nuts." · FR "Je suis allergique aux noix." · ES "Soy alérgico a los frutos secos." · (HE gloss "אני אלרגי לאגוזים.") — `phrase.diet.allergic-nuts` — ✅ accepted
-  2. EN "Can you repeat that?" · FR "Vous pouvez répéter ?" · ES "¿Puede repetir, por favor?" · (HE gloss "אפשר לחזור על זה?") — `phrase.recovery.repeat` — ✅ accepted
-  3. EN "Without onions, please." · FR "Sans oignons, s’il vous plaît." · ES "Sin cebolla, por favor." · (HE gloss "בלי בצל, בבקשה.") — `phrase.diet.without-onions` — ❌ wrong
-- Tests: phrase.diet.allergic-nuts, phrase.recovery.repeat
+  1. EN "Thank you!" · FR "Merci !" · ES "¡Gracias!" · (HE gloss "תודה!") — `phrase.recovery.thank-you` — ✅ accepted
+  2. EN "I'm vegetarian." · FR "Je suis végétarien." · ES "Soy vegetariano." · (HE gloss "אני צמחוני.") — `phrase.diet.vegetarian` — ❌ wrong
+  3. EN "Does it have dairy?" · FR "Est-ce qu’il y a des produits laitiers dedans ?" · ES "¿Esto lleva lácteos?" · (HE gloss "יש בזה מוצרי חלב?") — `phrase.diet.does-have-dairy` — ❌ wrong
+- Tests: phrase.recovery.thank-you
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M15-Q23 — quick-reply (step 13, round 1 of 4 · SPEED CHALLENGE (spoken at rate 1.12))
+### M15-Q17 — quick-reply (step 16, round 1 of 3 · SPEED CHALLENGE (spoken at rate 1.12))
 
 - Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio played: EN "Hi there! Are you ready to order?" · FR "Bonjour ! Vous êtes prêt à commander ?" · ES "¡Hola! ¿Está listo para pedir?"
@@ -15448,12 +15453,12 @@ No meaning quiz in this mission.
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
   1. EN "I'm allergic to nuts." · FR "Je suis allergique aux noix." · ES "Soy alérgico a los frutos secos." · (HE gloss "אני אלרגי לאגוזים.") — `phrase.diet.allergic-nuts` — ✅ accepted
-  2. EN "Without onions, please." · FR "Sans oignons, s’il vous plaît." · ES "Sin cebolla, por favor." · (HE gloss "בלי בצל, בבקשה.") — `phrase.diet.without-onions` — ❌ wrong
-  3. EN "Is this spicy?" · FR "C’est épicé ?" · ES "¿Esto pica?" · (HE gloss "זה חריף?") — `phrase.diet.is-spicy` — ❌ wrong
+  2. EN "I'm vegetarian." · FR "Je suis végétarien." · ES "Soy vegetariano." · (HE gloss "אני צמחוני.") — `phrase.diet.vegetarian` — ❌ wrong
+  3. EN "Thank you!" · FR "Merci !" · ES "¡Gracias!" · (HE gloss "תודה!") — `phrase.recovery.thank-you` — ❌ wrong
 - Tests: phrase.diet.allergic-nuts
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M15-Q24 — quick-reply (step 13, round 2 of 4 · SPEED CHALLENGE (spoken at rate 1.12))
+### M15-Q18 — quick-reply (step 16, round 2 of 3 · SPEED CHALLENGE (spoken at rate 1.12))
 
 - Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio played: EN "Thank you for telling me. Any other allergies or dietary restrictions?" · FR "Merci de me le dire. D’autres allergies ou restrictions alimentaires ?" · ES "Gracias por avisarme. ¿Alguna otra alergia o restricción alimentaria?"
@@ -15461,12 +15466,12 @@ No meaning quiz in this mission.
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
   1. EN "I'm vegetarian." · FR "Je suis végétarien." · ES "Soy vegetariano." · (HE gloss "אני צמחוני.") — `phrase.diet.vegetarian` — ✅ accepted
-  2. EN "Without onions, please." · FR "Sans oignons, s’il vous plaît." · ES "Sin cebolla, por favor." · (HE gloss "בלי בצל, בבקשה.") — `phrase.diet.without-onions` — ❌ wrong
-  3. EN "Is this spicy?" · FR "C’est épicé ?" · ES "¿Esto pica?" · (HE gloss "זה חריף?") — `phrase.diet.is-spicy` — ❌ wrong
+  2. EN "Does it have dairy?" · FR "Est-ce qu’il y a des produits laitiers dedans ?" · ES "¿Esto lleva lácteos?" · (HE gloss "יש בזה מוצרי חלב?") — `phrase.diet.does-have-dairy` — ❌ wrong
+  3. EN "I'm allergic to nuts." · FR "Je suis allergique aux noix." · ES "Soy alérgico a los frutos secos." · (HE gloss "אני אלרגי לאגוזים.") — `phrase.diet.allergic-nuts` — ❌ wrong
 - Tests: phrase.diet.vegetarian
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M15-Q25 — quick-reply (step 13, round 3 of 4 · SPEED CHALLENGE (spoken at rate 1.12))
+### M15-Q19 — quick-reply (step 16, round 3 of 3 · SPEED CHALLENGE (spoken at rate 1.12))
 
 - Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio played: EN "Got it. The mushroom risotto is vegetarian, but I'll check with the kitchen about the nuts." · FR "Compris. Le risotto aux champignons est végétarien, mais je vérifie avec la cuisine pour les noix." · ES "Entendido. El risotto de champiñones es vegetariano, pero lo compruebo con la cocina por los frutos secos."
@@ -15474,12 +15479,12 @@ No meaning quiz in this mission.
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
   1. EN "Does it have dairy?" · FR "Est-ce qu’il y a des produits laitiers dedans ?" · ES "¿Esto lleva lácteos?" · (HE gloss "יש בזה מוצרי חלב?") — `phrase.diet.does-have-dairy` — ✅ accepted
-  2. EN "Can you repeat that?" · FR "Vous pouvez répéter ?" · ES "¿Puede repetir, por favor?" · (HE gloss "אפשר לחזור על זה?") — `phrase.recovery.repeat` — ✅ accepted
-  3. EN "I'm vegetarian." · FR "Je suis végétarien." · ES "Soy vegetariano." · (HE gloss "אני צמחוני.") — `phrase.diet.vegetarian` — ❌ wrong
-- Tests: phrase.diet.does-have-dairy, phrase.recovery.repeat
+  2. EN "Thank you!" · FR "Merci !" · ES "¡Gracias!" · (HE gloss "תודה!") — `phrase.recovery.thank-you` — ❌ wrong
+  3. EN "Great. Without onions, please." · FR "Parfait. Sans oignons, s’il vous plaît." · ES "Genial. Sin cebolla, por favor." · (HE gloss "בלי בצל, בבקשה.") — `phrase.diet.without-onions` — ❌ wrong
+- Tests: phrase.diet.does-have-dairy
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M15-Q26 — quick-reply (step 13, round 4 of 4 · SPEED CHALLENGE (spoken at rate 1.12))
+### M15-Q20 — quick-reply (step 17, round 1 of 1 · SPEED CHALLENGE (spoken at rate 1.12))
 
 - Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio played: EN "Yes, it has some cream, but we can make it without." · FR "Oui, il y a un peu de crème, mais on peut le faire sans." · ES "Sí, lleva un poco de nata, pero se lo podemos hacer sin ella."
@@ -15487,9 +15492,87 @@ No meaning quiz in this mission.
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
   1. EN "Great. Without onions, please." · FR "Parfait. Sans oignons, s’il vous plaît." · ES "Genial. Sin cebolla, por favor." · (HE gloss "בלי בצל, בבקשה.") — `phrase.diet.without-onions` — ✅ accepted
-  2. EN "I'm allergic to nuts." · FR "Je suis allergique aux noix." · ES "Soy alérgico a los frutos secos." · (HE gloss "אני אלרגי לאגוזים.") — `phrase.diet.allergic-nuts` — ❌ wrong
-  3. EN "I'm vegetarian." · FR "Je suis végétarien." · ES "Soy vegetariano." · (HE gloss "אני צמחוני.") — `phrase.diet.vegetarian` — ❌ wrong
+  2. EN "I'm vegetarian." · FR "Je suis végétarien." · ES "Soy vegetariano." · (HE gloss "אני צמחוני.") — `phrase.diet.vegetarian` — ❌ wrong
+  3. EN "Thank you!" · FR "Merci !" · ES "¡Gracias!" · (HE gloss "תודה!") — `phrase.recovery.thank-you` — ❌ wrong
 - Tests: phrase.diet.without-onions
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M15-Q21 — quick-reply (step 18, round 1 of 1 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "Of course. I'll tell the kitchen about your allergy." · FR "Bien sûr. Je préviens la cuisine pour votre allergie." · ES "Claro. Aviso a la cocina de su alergia."
+- Meaning of the audio (HE): "כמובן. אגיד למטבח על האלרגיה שלך."
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Thank you!" · FR "Merci !" · ES "¡Gracias!" · (HE gloss "תודה!") — `phrase.recovery.thank-you` — ✅ accepted
+  2. EN "I'm allergic to nuts." · FR "Je suis allergique aux noix." · ES "Soy alérgico a los frutos secos." · (HE gloss "אני אלרגי לאגוזים.") — `phrase.diet.allergic-nuts` — ❌ wrong
+  3. EN "Great. Without onions, please." · FR "Parfait. Sans oignons, s’il vous plaît." · ES "Genial. Sin cebolla, por favor." · (HE gloss "בלי בצל, בבקשה.") — `phrase.diet.without-onions` — ❌ wrong
+- Tests: phrase.recovery.thank-you
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M15-Q22 — quick-reply (step 21, round 1 of 3)
+
+- Prompt displayed: "🙋 My needs: Allergy: Nuts / Diet: Vegetarian / Onions: Remove ‖ 👨‍🍳 What the waiter said: Dish: ? / Nuts: ? / Dairy: ? / Kitchen: — ¦ Make sure the waiter understands what matters to you before he goes back to the kitchen." / "🙋 הצרכים שלי: אלרגיה: אגוזים / תזונה: צמחוני / בצל: להוריד ‖ 👨‍🍳 מה המלצר אמר: מנה: ? / אגוזים: ? / חלב: ? / מטבח: — ¦ תוודא שהמלצר מבין מה חשוב לך לפני שהוא חוזר למטבח."
+- Audio played: EN "Hi there! Are you ready to order?" · FR "Bonjour ! Vous êtes prêt à commander ?" · ES "¡Hola! ¿Está listo para pedir?"
+- Meaning of the audio (HE): "היי! מוכן להזמין?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "I'm allergic to nuts." · FR "Je suis allergique aux noix." · ES "Soy alérgico a los frutos secos." · (HE gloss "אני אלרגי לאגוזים.") — `phrase.diet.allergic-nuts` — ✅ accepted
+  2. EN "Great. Without onions, please." · FR "Parfait. Sans oignons, s’il vous plaît." · ES "Genial. Sin cebolla, por favor." · (HE gloss "בלי בצל, בבקשה.") — `phrase.diet.without-onions` — ❌ wrong
+  3. EN "Does it have dairy?" · FR "Est-ce qu’il y a des produits laitiers dedans ?" · ES "¿Esto lleva lácteos?" · (HE gloss "יש בזה מוצרי חלב?") — `phrase.diet.does-have-dairy` — ❌ wrong
+- Tests: phrase.diet.allergic-nuts
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M15-Q23 — quick-reply (step 21, round 2 of 3)
+
+- Prompt displayed: "🙋 My needs: Allergy: Nuts / Diet: Vegetarian / Onions: Remove ‖ 👨‍🍳 What the waiter said: Dish: ? / Nuts: ? / Dairy: ? / Kitchen: — ¦ Make sure the waiter understands what matters to you before he goes back to the kitchen." / "🙋 הצרכים שלי: אלרגיה: אגוזים / תזונה: צמחוני / בצל: להוריד ‖ 👨‍🍳 מה המלצר אמר: מנה: ? / אגוזים: ? / חלב: ? / מטבח: — ¦ תוודא שהמלצר מבין מה חשוב לך לפני שהוא חוזר למטבח."
+- Audio played: EN "Thank you for telling me. Any other allergies or dietary restrictions?" · FR "Merci de me le dire. D’autres allergies ou restrictions alimentaires ?" · ES "Gracias por avisarme. ¿Alguna otra alergia o restricción alimentaria?"
+- Meaning of the audio (HE): "תודה שאמרת. יש עוד אלרגיות או הגבלות תזונה?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "I'm vegetarian." · FR "Je suis végétarien." · ES "Soy vegetariano." · (HE gloss "אני צמחוני.") — `phrase.diet.vegetarian` — ✅ accepted
+  2. EN "I'm allergic to nuts." · FR "Je suis allergique aux noix." · ES "Soy alérgico a los frutos secos." · (HE gloss "אני אלרגי לאגוזים.") — `phrase.diet.allergic-nuts` — ❌ wrong
+  3. EN "Thank you!" · FR "Merci !" · ES "¡Gracias!" · (HE gloss "תודה!") — `phrase.recovery.thank-you` — ❌ wrong
+- Tests: phrase.diet.vegetarian
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M15-Q24 — quick-reply (step 21, round 3 of 3)
+
+- Prompt displayed: "🙋 My needs: Allergy: Nuts / Diet: Vegetarian / Onions: Remove ‖ 👨‍🍳 What the waiter said: Dish: ? / Nuts: ? / Dairy: ? / Kitchen: — ¦ Make sure the waiter understands what matters to you before he goes back to the kitchen." / "🙋 הצרכים שלי: אלרגיה: אגוזים / תזונה: צמחוני / בצל: להוריד ‖ 👨‍🍳 מה המלצר אמר: מנה: ? / אגוזים: ? / חלב: ? / מטבח: — ¦ תוודא שהמלצר מבין מה חשוב לך לפני שהוא חוזר למטבח."
+- Audio played: EN "Got it. The mushroom risotto is vegetarian, but I'll check with the kitchen about the nuts." · FR "Compris. Le risotto aux champignons est végétarien, mais je vérifie avec la cuisine pour les noix." · ES "Entendido. El risotto de champiñones es vegetariano, pero lo compruebo con la cocina por los frutos secos."
+- Meaning of the audio (HE): "הבנתי. ריזוטו הפטריות צמחוני, אבל אבדוק עם המטבח לגבי האגוזים."
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Does it have dairy?" · FR "Est-ce qu’il y a des produits laitiers dedans ?" · ES "¿Esto lleva lácteos?" · (HE gloss "יש בזה מוצרי חלב?") — `phrase.diet.does-have-dairy` — ✅ accepted
+  2. EN "I'm vegetarian." · FR "Je suis végétarien." · ES "Soy vegetariano." · (HE gloss "אני צמחוני.") — `phrase.diet.vegetarian` — ❌ wrong
+  3. EN "Great. Without onions, please." · FR "Parfait. Sans oignons, s’il vous plaît." · ES "Genial. Sin cebolla, por favor." · (HE gloss "בלי בצל, בבקשה.") — `phrase.diet.without-onions` — ❌ wrong
+- Tests: phrase.diet.does-have-dairy
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M15-Q25 — quick-reply (step 22, round 1 of 1)
+
+- Prompt displayed: "🙋 My needs: Allergy: Nuts / Diet: Vegetarian / Onions: Remove ‖ 👨‍🍳 What the waiter said: Dish: Vegetarian ✅ / Nuts: Kitchen checking… / Dairy: ? / Kitchen: —" / "🙋 הצרכים שלי: אלרגיה: אגוזים / תזונה: צמחוני / בצל: להוריד ‖ 👨‍🍳 מה המלצר אמר: מנה: צמחונית ✅ / אגוזים: המטבח בודק… / חלב: ? / מטבח: —"
+- Audio played: EN "Yes, it has some cream, but we can make it without." · FR "Oui, il y a un peu de crème, mais on peut le faire sans." · ES "Sí, lleva un poco de nata, pero se lo podemos hacer sin ella."
+- Meaning of the audio (HE): "כן, יש בו קצת שמנת, אבל אפשר להכין בלי."
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Great. Without onions, please." · FR "Parfait. Sans oignons, s’il vous plaît." · ES "Genial. Sin cebolla, por favor." · (HE gloss "בלי בצל, בבקשה.") — `phrase.diet.without-onions` — ✅ accepted
+  2. EN "Thank you!" · FR "Merci !" · ES "¡Gracias!" · (HE gloss "תודה!") — `phrase.recovery.thank-you` — ❌ wrong
+  3. EN "Does it have dairy?" · FR "Est-ce qu’il y a des produits laitiers dedans ?" · ES "¿Esto lleva lácteos?" · (HE gloss "יש בזה מוצרי חלב?") — `phrase.diet.does-have-dairy` — ❌ wrong
+- Tests: phrase.diet.without-onions
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M15-Q26 — quick-reply (step 23, round 1 of 1)
+
+- Prompt displayed: "🙋 My needs: Allergy: Nuts / Diet: Vegetarian / Onions: Remove ‖ 👨‍🍳 What the waiter said: Dish: Vegetarian ✅ / Nuts: Kitchen checking… / Dairy: Cream — can remove / Kitchen: —" / "🙋 הצרכים שלי: אלרגיה: אגוזים / תזונה: צמחוני / בצל: להוריד ‖ 👨‍🍳 מה המלצר אמר: מנה: צמחונית ✅ / אגוזים: המטבח בודק… / חלב: יש שמנת — אפשר בלי / מטבח: —"
+- Audio played: EN "Of course. I'll tell the kitchen about your allergy." · FR "Bien sûr. Je préviens la cuisine pour votre allergie." · ES "Claro. Aviso a la cocina de su alergia."
+- Meaning of the audio (HE): "כמובן. אגיד למטבח על האלרגיה שלך."
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Thank you!" · FR "Merci !" · ES "¡Gracias!" · (HE gloss "תודה!") — `phrase.recovery.thank-you` — ✅ accepted
+  2. EN "Does it have dairy?" · FR "Est-ce qu’il y a des produits laitiers dedans ?" · ES "¿Esto lleva lácteos?" · (HE gloss "יש בזה מוצרי חלב?") — `phrase.diet.does-have-dairy` — ❌ wrong
+  3. EN "I'm vegetarian." · FR "Je suis végétarien." · ES "Soy vegetariano." · (HE gloss "אני צמחוני.") — `phrase.diet.vegetarian` — ❌ wrong
+- Tests: phrase.recovery.thank-you
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
 ## Dialogue — full tree
@@ -15506,23 +15589,17 @@ No meaning quiz in this mission.
     - EN: I'm allergic to nuts.
     - FR: Je suis allergique aux noix.
     - ES: Soy alérgico a los frutos secos.
-    - HE: אני אלרגי לאגוזים. (אומרים קודם כל — לפני ההזמנה)
-  - choice 2 — 🛟 accepted — conversation-help tool → r1 — `phrase.recovery.slowly`
-    - EN: Please speak slowly.
-    - FR: Parlez lentement, s’il vous plaît.
-    - ES: Más despacio, por favor.
-    - HE: דבר לאט, בבקשה.
-- **r1** · NPC · slow (TTS rate 0.75) · off the happy path → c1b
-  - EN: Sure — are you ready to order?
-  - FR: Bien sûr — vous êtes prêt à commander ?
-  - ES: Claro — ¿está listo para pedir?
-  - HE: בטח — מוכן להזמין?
-- **c1b** · LEARNER choice screen · off the happy path
-  - choice 1 — ✅ accepted → n2 — `phrase.diet.allergic-nuts`
-    - EN: I'm allergic to nuts.
-    - FR: Je suis allergique aux noix.
-    - ES: Soy alérgico a los frutos secos.
     - HE: אני אלרגי לאגוזים.
+  - choice 2 — ❌ WRONG → m1 — `phrase.diet.does-have-dairy`
+    - EN: Does it have dairy?
+    - FR: Est-ce qu’il y a des produits laitiers dedans ?
+    - ES: ¿Esto lleva lácteos?
+    - HE: יש בזה מוצרי חלב?
+- **m1** · NPC · slow (TTS rate 0.75) · off the happy path → c1
+  - EN: Hi there! Are you ready to order?
+  - FR: Bonjour ! Vous êtes prêt à commander ?
+  - ES: ¡Hola! ¿Está listo para pedir?
+  - HE: היי! מוכן להזמין?
 - **n2** · NPC · normal (TTS rate 0.95) → c2
   - EN: Thank you for telling me. Any other allergies or dietary restrictions?
   - FR: Merci de me le dire. D’autres allergies ou restrictions alimentaires ?
@@ -15538,7 +15615,7 @@ No meaning quiz in this mission.
     - EN: Thank you!
     - FR: Merci !
     - ES: ¡Gracias!
-    - HE: תודה! (מנומס — אבל הוא שאל שאלה)
+    - HE: תודה!
 - **r2** · NPC · normal (TTS rate 0.95) · off the happy path → c2b
   - EN: Of course — but is there anything else I should know?
   - FR: Bien sûr — mais y a-t-il autre chose que je devrais savoir ?
@@ -15561,22 +15638,16 @@ No meaning quiz in this mission.
     - FR: Est-ce qu’il y a des produits laitiers dedans ?
     - ES: ¿Esto lleva lácteos?
     - HE: יש בזה מוצרי חלב?
-  - choice 2 — 🛟 accepted — conversation-help tool → r3 — `phrase.recovery.repeat`
-    - EN: Can you repeat that?
-    - FR: Vous pouvez répéter ?
-    - ES: ¿Puede repetir, por favor?
-    - HE: אפשר לחזור על זה?
-- **r3** · NPC · slow (TTS rate 0.75) · off the happy path → c3b
-  - EN: The mushroom risotto — is vegetarian.
-  - FR: Le risotto aux champignons — est végétarien.
-  - ES: El risotto de champiñones — es vegetariano.
-  - HE: ריזוטו הפטריות — צמחוני.
-- **c3b** · LEARNER choice screen · off the happy path
-  - choice 1 — ✅ accepted → n4 — `phrase.diet.does-have-dairy`
-    - EN: Does it have dairy?
-    - FR: Est-ce qu’il y a des produits laitiers dedans ?
-    - ES: ¿Esto lleva lácteos?
-    - HE: יש בזה מוצרי חלב?
+  - choice 2 — ❌ WRONG → m3 — `phrase.diet.vegetarian`
+    - EN: I'm vegetarian.
+    - FR: Je suis végétarien.
+    - ES: Soy vegetariano.
+    - HE: אני צמחוני.
+- **m3** · NPC · slow (TTS rate 0.75) · off the happy path → c3
+  - EN: Got it. The mushroom risotto is vegetarian, but I'll check with the kitchen about the nuts.
+  - FR: Compris. Le risotto aux champignons est végétarien, mais je vérifie avec la cuisine pour les noix.
+  - ES: Entendido. El risotto de champiñones es vegetariano, pero lo compruebo con la cocina por los frutos secos.
+  - HE: הבנתי. ריזוטו הפטריות צמחוני, אבל אבדוק עם המטבח לגבי האגוזים.
 - **n4** · NPC · normal (TTS rate 0.95) → c4
   - EN: Yes, it has some cream, but we can make it without.
   - FR: Oui, il y a un peu de crème, mais on peut le faire sans.
@@ -15588,22 +15659,16 @@ No meaning quiz in this mission.
     - FR: Parfait. Sans oignons, s’il vous plaît.
     - ES: Genial. Sin cebolla, por favor.
     - HE: מעולה. בלי בצל, בבקשה.
-  - choice 2 — ✅ accepted → n4b — `phrase.diet.is-spicy`
-    - EN: Is this spicy?
-    - FR: C’est épicé ?
-    - ES: ¿Esto pica?
-    - HE: זה חריף?
-- **n4b** · NPC · normal (TTS rate 0.95) · off the happy path → c4b
-  - EN: Not at all — it's very mild.
-  - FR: Pas du tout — c’est très doux.
-  - ES: Para nada — es muy suave.
-  - HE: ממש לא — הוא עדין מאוד.
-- **c4b** · LEARNER choice screen · off the happy path
-  - choice 1 — ✅ accepted → n5 — `phrase.diet.without-onions`
-    - EN: Without onions, please.
-    - FR: Sans oignons, s’il vous plaît.
-    - ES: Sin cebolla, por favor.
-    - HE: בלי בצל, בבקשה.
+  - choice 2 — ❌ WRONG → m4 — `phrase.diet.does-have-dairy`
+    - EN: Does it have dairy?
+    - FR: Est-ce qu’il y a des produits laitiers dedans ?
+    - ES: ¿Esto lleva lácteos?
+    - HE: יש בזה מוצרי חלב?
+- **m4** · NPC · slow (TTS rate 0.75) · off the happy path → c4
+  - EN: Yes, it has some cream, but we can make it without.
+  - FR: Oui, il y a un peu de crème, mais on peut le faire sans.
+  - ES: Sí, lleva un poco de nata, pero se lo podemos hacer sin ella.
+  - HE: כן, יש בו קצת שמנת, אבל אפשר להכין בלי.
 - **n5** · NPC · normal (TTS rate 0.95) → c5
   - EN: Of course. I'll tell the kitchen about your allergy.
   - FR: Bien sûr. Je préviens la cuisine pour votre allergie.
@@ -15615,22 +15680,16 @@ No meaning quiz in this mission.
     - FR: Merci !
     - ES: ¡Gracias!
     - HE: תודה!
-  - choice 2 — 🛟 accepted — conversation-help tool → r5 — `phrase.recovery.slowly`
-    - EN: Please speak slowly.
-    - FR: Parlez lentement, s’il vous plaît.
-    - ES: Más despacio, por favor.
-    - HE: דבר לאט, בבקשה.
-- **r5** · NPC · slow (TTS rate 0.75) · off the happy path → c5b
-  - EN: I'll tell — the kitchen — about your allergy.
-  - FR: Je préviens — la cuisine — pour votre allergie.
-  - ES: Aviso — a la cocina — de su alergia.
-  - HE: אני אגיד — למטבח — על האלרגיה.
-- **c5b** · LEARNER choice screen · off the happy path
-  - choice 1 — ✅ accepted → n6 — `phrase.recovery.thank-you`
-    - EN: Thank you!
-    - FR: Merci !
-    - ES: ¡Gracias!
-    - HE: תודה!
+  - choice 2 — ❌ WRONG → m5 — `phrase.diet.allergic-nuts`
+    - EN: I'm allergic to nuts.
+    - FR: Je suis allergique aux noix.
+    - ES: Soy alérgico a los frutos secos.
+    - HE: אני אלרגי לאגוזים.
+- **m5** · NPC · slow (TTS rate 0.75) · off the happy path → c5
+  - EN: Of course. I'll tell the kitchen about your allergy.
+  - FR: Bien sûr. Je préviens la cuisine pour votre allergie.
+  - ES: Claro. Aviso a la cocina de su alergia.
+  - HE: כמובן. אגיד למטבח על האלרגיה שלך.
 - **n6** · NPC · normal (TTS rate 0.95) · END of scene
   - EN: I'll check with them and come right back.
   - FR: Je vérifie avec eux et je reviens tout de suite.
@@ -15642,7 +15701,7 @@ No meaning quiz in this mission.
 - **NPC:** Hi there! Are you ready to order?
   - FR: Bonjour ! Vous êtes prêt à commander ? · ES: ¡Hola! ¿Está listo para pedir? · HE: היי! מוכן להזמין?
 - **You:** I'm allergic to nuts.
-  - FR: Je suis allergique aux noix. · ES: Soy alérgico a los frutos secos. · HE: אני אלרגי לאגוזים. (אומרים קודם כל — לפני ההזמנה)
+  - FR: Je suis allergique aux noix. · ES: Soy alérgico a los frutos secos. · HE: אני אלרגי לאגוזים.
 - **NPC:** Thank you for telling me. Any other allergies or dietary restrictions?
   - FR: Merci de me le dire. D’autres allergies ou restrictions alimentaires ? · ES: Gracias por avisarme. ¿Alguna otra alergia o restricción alimentaria? · HE: תודה שאמרת. יש עוד אלרגיות או הגבלות תזונה?
 - **You:** I'm vegetarian.
@@ -15666,30 +15725,19 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 
 ## Learner choice screens
 
-### M15-Q13 — dialogue-choice (step 10, scene "allergy-order" · node c1)
+### M15-Q11 — dialogue-choice (step 14, scene "allergy-order" · node c1)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Hi there! Are you ready to order?" · FR "Bonjour ! Vous êtes prêt à commander ?" · ES "¡Hola! ¿Está listo para pedir?"
 - Meaning of the audio (HE): "היי! מוכן להזמין?"
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
-  1. EN "I'm allergic to nuts." · FR "Je suis allergique aux noix." · ES "Soy alérgico a los frutos secos." · (HE gloss "אני אלרגי לאגוזים. (אומרים קודם כל — לפני ההזמנה)") — `phrase.diet.allergic-nuts` — ✅ accepted → n2
-  2. EN "Please speak slowly." · FR "Parlez lentement, s’il vous plaît." · ES "Más despacio, por favor." · (HE gloss "דבר לאט, בבקשה.") — `phrase.recovery.slowly` — ✅ accepted → r1
-- Tests: phrase.diet.allergic-nuts, phrase.recovery.slowly
-- Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
-
-### M15-Q14 — dialogue-choice (step 10, scene "allergy-order" · node c1b)
-
-- Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio played: EN "Sure — are you ready to order?" · FR "Bien sûr — vous êtes prêt à commander ?" · ES "Claro — ¿está listo para pedir?"
-- Meaning of the audio (HE): "בטח — מוכן להזמין?"
-- Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
-- Choices:
   1. EN "I'm allergic to nuts." · FR "Je suis allergique aux noix." · ES "Soy alérgico a los frutos secos." · (HE gloss "אני אלרגי לאגוזים.") — `phrase.diet.allergic-nuts` — ✅ accepted → n2
-- Tests: phrase.diet.allergic-nuts
+  2. EN "Does it have dairy?" · FR "Est-ce qu’il y a des produits laitiers dedans ?" · ES "¿Esto lleva lácteos?" · (HE gloss "יש בזה מוצרי חלב?") — `phrase.diet.does-have-dairy` — ❌ wrong → m1
+- Tests: phrase.diet.allergic-nuts, phrase.diet.does-have-dairy
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M15-Q15 — dialogue-choice (step 10, scene "allergy-order" · node c2)
+### M15-Q12 — dialogue-choice (step 14, scene "allergy-order" · node c2)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Thank you for telling me. Any other allergies or dietary restrictions?" · FR "Merci de me le dire. D’autres allergies ou restrictions alimentaires ?" · ES "Gracias por avisarme. ¿Alguna otra alergia o restricción alimentaria?"
@@ -15697,11 +15745,11 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
   1. EN "I'm vegetarian." · FR "Je suis végétarien." · ES "Soy vegetariano." · (HE gloss "אני צמחוני.") — `phrase.diet.vegetarian` — ✅ accepted → n3
-  2. EN "Thank you!" · FR "Merci !" · ES "¡Gracias!" · (HE gloss "תודה! (מנומס — אבל הוא שאל שאלה)") — `phrase.recovery.thank-you` — ❌ wrong → r2
+  2. EN "Thank you!" · FR "Merci !" · ES "¡Gracias!" · (HE gloss "תודה!") — `phrase.recovery.thank-you` — ❌ wrong → r2
 - Tests: phrase.diet.vegetarian, phrase.recovery.thank-you
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M15-Q16 — dialogue-choice (step 10, scene "allergy-order" · node c2b)
+### M15-Q13 — dialogue-choice (step 14, scene "allergy-order" · node c2b)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Of course — but is there anything else I should know?" · FR "Bien sûr — mais y a-t-il autre chose que je devrais savoir ?" · ES "Claro — pero, ¿hay algo más que deba saber?"
@@ -15712,7 +15760,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.diet.vegetarian
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M15-Q17 — dialogue-choice (step 10, scene "allergy-order" · node c3)
+### M15-Q14 — dialogue-choice (step 14, scene "allergy-order" · node c3)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Got it. The mushroom risotto is vegetarian, but I'll check with the kitchen about the nuts." · FR "Compris. Le risotto aux champignons est végétarien, mais je vérifie avec la cuisine pour les noix." · ES "Entendido. El risotto de champiñones es vegetariano, pero lo compruebo con la cocina por los frutos secos."
@@ -15720,22 +15768,11 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
   1. EN "Does it have dairy?" · FR "Est-ce qu’il y a des produits laitiers dedans ?" · ES "¿Esto lleva lácteos?" · (HE gloss "יש בזה מוצרי חלב?") — `phrase.diet.does-have-dairy` — ✅ accepted → n4
-  2. EN "Can you repeat that?" · FR "Vous pouvez répéter ?" · ES "¿Puede repetir, por favor?" · (HE gloss "אפשר לחזור על זה?") — `phrase.recovery.repeat` — ✅ accepted → r3
-- Tests: phrase.diet.does-have-dairy, phrase.recovery.repeat
+  2. EN "I'm vegetarian." · FR "Je suis végétarien." · ES "Soy vegetariano." · (HE gloss "אני צמחוני.") — `phrase.diet.vegetarian` — ❌ wrong → m3
+- Tests: phrase.diet.does-have-dairy, phrase.diet.vegetarian
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M15-Q18 — dialogue-choice (step 10, scene "allergy-order" · node c3b)
-
-- Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio played: EN "The mushroom risotto — is vegetarian." · FR "Le risotto aux champignons — est végétarien." · ES "El risotto de champiñones — es vegetariano."
-- Meaning of the audio (HE): "ריזוטו הפטריות — צמחוני."
-- Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
-- Choices:
-  1. EN "Does it have dairy?" · FR "Est-ce qu’il y a des produits laitiers dedans ?" · ES "¿Esto lleva lácteos?" · (HE gloss "יש בזה מוצרי חלב?") — `phrase.diet.does-have-dairy` — ✅ accepted → n4
-- Tests: phrase.diet.does-have-dairy
-- Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
-
-### M15-Q19 — dialogue-choice (step 10, scene "allergy-order" · node c4)
+### M15-Q15 — dialogue-choice (step 14, scene "allergy-order" · node c4)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Yes, it has some cream, but we can make it without." · FR "Oui, il y a un peu de crème, mais on peut le faire sans." · ES "Sí, lleva un poco de nata, pero se lo podemos hacer sin ella."
@@ -15743,22 +15780,11 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
   1. EN "Great. Without onions, please." · FR "Parfait. Sans oignons, s’il vous plaît." · ES "Genial. Sin cebolla, por favor." · (HE gloss "מעולה. בלי בצל, בבקשה.") — `phrase.diet.without-onions` — ✅ accepted → n5
-  2. EN "Is this spicy?" · FR "C’est épicé ?" · ES "¿Esto pica?" · (HE gloss "זה חריף?") — `phrase.diet.is-spicy` — ✅ accepted → n4b
-- Tests: phrase.diet.without-onions, phrase.diet.is-spicy
+  2. EN "Does it have dairy?" · FR "Est-ce qu’il y a des produits laitiers dedans ?" · ES "¿Esto lleva lácteos?" · (HE gloss "יש בזה מוצרי חלב?") — `phrase.diet.does-have-dairy` — ❌ wrong → m4
+- Tests: phrase.diet.without-onions, phrase.diet.does-have-dairy
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M15-Q20 — dialogue-choice (step 10, scene "allergy-order" · node c4b)
-
-- Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio played: EN "Not at all — it's very mild." · FR "Pas du tout — c’est très doux." · ES "Para nada — es muy suave."
-- Meaning of the audio (HE): "ממש לא — הוא עדין מאוד."
-- Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
-- Choices:
-  1. EN "Without onions, please." · FR "Sans oignons, s’il vous plaît." · ES "Sin cebolla, por favor." · (HE gloss "בלי בצל, בבקשה.") — `phrase.diet.without-onions` — ✅ accepted → n5
-- Tests: phrase.diet.without-onions
-- Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
-
-### M15-Q21 — dialogue-choice (step 10, scene "allergy-order" · node c5)
+### M15-Q16 — dialogue-choice (step 14, scene "allergy-order" · node c5)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Of course. I'll tell the kitchen about your allergy." · FR "Bien sûr. Je préviens la cuisine pour votre allergie." · ES "Claro. Aviso a la cocina de su alergia."
@@ -15766,125 +15792,99 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
   1. EN "Thank you!" · FR "Merci !" · ES "¡Gracias!" · (HE gloss "תודה!") — `phrase.recovery.thank-you` — ✅ accepted → n6
-  2. EN "Please speak slowly." · FR "Parlez lentement, s’il vous plaît." · ES "Más despacio, por favor." · (HE gloss "דבר לאט, בבקשה.") — `phrase.recovery.slowly` — ✅ accepted → r5
-- Tests: phrase.recovery.thank-you, phrase.recovery.slowly
-- Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
-
-### M15-Q22 — dialogue-choice (step 10, scene "allergy-order" · node c5b)
-
-- Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio played: EN "I'll tell — the kitchen — about your allergy." · FR "Je préviens — la cuisine — pour votre allergie." · ES "Aviso — a la cocina — de su alergia."
-- Meaning of the audio (HE): "אני אגיד — למטבח — על האלרגיה."
-- Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
-- Choices:
-  1. EN "Thank you!" · FR "Merci !" · ES "¡Gracias!" · (HE gloss "תודה!") — `phrase.recovery.thank-you` — ✅ accepted → n6
-- Tests: phrase.recovery.thank-you
+  2. EN "I'm allergic to nuts." · FR "Je suis allergique aux noix." · ES "Soy alérgico a los frutos secos." · (HE gloss "אני אלרגי לאגוזים.") — `phrase.diet.allergic-nuts` — ❌ wrong → m5
+- Tests: phrase.recovery.thank-you, phrase.diet.allergic-nuts
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
 ## Recovery tools in this mission
 
-Toolkit phrases bundled into this mission's sentence list: `phrase.recovery.repeat` "Can you repeat that?" · `phrase.recovery.slowly` "Please speak slowly." · `phrase.recovery.thank-you` "Thank you!".
+Toolkit phrases bundled into this mission's sentence list: `phrase.recovery.thank-you` "Thank you!".
 
-Where a conversation-help tool can be selected, and what happens:
+No conversation-help tool is selectable in this mission's dialogues.
 
-- Scene `allergy-order`, c1 — `phrase.recovery.slowly` "Please speak slowly." ("דבר לאט, בבקשה.") — after NPC "Hi there! Are you ready to order?" → r1: NPC "Sure — are you ready to order?" (slow) → r1 → c1b → rejoins the happy path at n2. Counts as success (recorded as "pass"); no feedback card — the dialogue simply continues.
-- Scene `allergy-order`, c3 — `phrase.recovery.repeat` "Can you repeat that?" ("אפשר לחזור על זה?") — after NPC "Got it. The mushroom risotto is vegetarian, but I'll check with the kitchen about the nuts." → r3: NPC "The mushroom risotto — is vegetarian." (slow) → r3 → c3b → rejoins the happy path at n4. Counts as success (recorded as "pass"); no feedback card — the dialogue simply continues.
-- Scene `allergy-order`, c5 — `phrase.recovery.slowly` "Please speak slowly." ("דבר לאט, בבקשה.") — after NPC "Of course. I'll tell the kitchen about your allergy." → r5: NPC "I'll tell — the kitchen — about your allergy." (slow) → r5 → c5b → rejoins the happy path at n6. Counts as success (recorded as "pass"); no feedback card — the dialogue simply continues.
 
 ## Wrong answer branches
 
-1 reachable wrong-answer branch(es):
+5 reachable wrong-answer branch(es):
 
+- Scene `allergy-order`, c1 — after NPC "Hi there! Are you ready to order?"
+  - Wrong choice: "Does it have dairy?" ("יש בזה מוצרי חלב?") — `phrase.diet.does-have-dairy`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("I'm allergic to nuts."), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m1): "Hi there! Are you ready to order?" — HE "היי! מוכן להזמין?"
+  - Then: m1 → rejoins the happy path at c1. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
 - Scene `allergy-order`, c2 — after NPC "Thank you for telling me. Any other allergies or dietary restrictions?"
-  - Wrong choice: "Thank you!" ("תודה! (מנומס — אבל הוא שאל שאלה)") — `phrase.recovery.thank-you`
+  - Wrong choice: "Thank you!" ("תודה!") — `phrase.recovery.thank-you`
   - Feedback card: ❌ header, what you heard, your answer, what you should answer ("I'm vegetarian."), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
   - NPC response (r2): "Of course — but is there anything else I should know?" — HE "כמובן — אבל יש עוד משהו שכדאי שאדע?"
   - Then: r2 → c2b → rejoins the happy path at n3. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
+- Scene `allergy-order`, c3 — after NPC "Got it. The mushroom risotto is vegetarian, but I'll check with the kitchen about the nuts."
+  - Wrong choice: "I'm vegetarian." ("אני צמחוני.") — `phrase.diet.vegetarian`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("Does it have dairy?"), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m3): "Got it. The mushroom risotto is vegetarian, but I'll check with the kitchen about the nuts." — HE "הבנתי. ריזוטו הפטריות צמחוני, אבל אבדוק עם המטבח לגבי האגוזים."
+  - Then: m3 → rejoins the happy path at c3. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
+- Scene `allergy-order`, c4 — after NPC "Yes, it has some cream, but we can make it without."
+  - Wrong choice: "Does it have dairy?" ("יש בזה מוצרי חלב?") — `phrase.diet.does-have-dairy`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("Great. Without onions, please."), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m4): "Yes, it has some cream, but we can make it without." — HE "כן, יש בו קצת שמנת, אבל אפשר להכין בלי."
+  - Then: m4 → rejoins the happy path at c4. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
+- Scene `allergy-order`, c5 — after NPC "Of course. I'll tell the kitchen about your allergy."
+  - Wrong choice: "I'm allergic to nuts." ("אני אלרגי לאגוזים.") — `phrase.diet.allergic-nuts`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("Thank you!"), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m5): "Of course. I'll tell the kitchen about your allergy." — HE "כמובן. אגיד למטבח על האלרגיה שלך."
+  - Then: m5 → rejoins the happy path at c5. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
 
 ## Sentence review
 
-Step 12. 11 sentences, in this fixed order. Each is played automatically (TTS), shown with its translation and tip; buttons: 🔊 "Hear again" / "לשמוע שוב" and Next. No speaking prompt, no grading, no scoring; nothing is recorded.
-
-1. `phrase.diet.allergic-nuts` — I'm allergic to nuts. — אני אלרגי לאגוזים.
-2. `phrase.diet.vegetarian` — I'm vegetarian. — אני צמחוני.
-3. `phrase.diet.does-have-dairy` — Does it have dairy? — יש בזה מוצרי חלב?
-4. `phrase.diet.without-onions` — Without onions, please. — בלי בצל, בבקשה.
-5. `phrase.diet.is-spicy` — Is this spicy? — זה חריף?
-6. `reply.diet.let-me-check` — Let me check with the kitchen. — אבדוק עם המטבח.
-7. `reply.diet.make-without` — We can make it without. — אפשר להכין בלי.
-8. `reply.diet.contains-nuts` — That one contains nuts. — זה מכיל אגוזים.
-9. `reply.diet.anything-else-allergic` — Any other allergies? — יש עוד אלרגיות?
-10. `phrase.recovery.repeat` — Can you repeat that? — אפשר לחזור על זה?
-11. `phrase.recovery.slowly` — Please speak slowly. — דבר לאט, בבקשה.
+No sentence-review step in this mission.
 
 ## Cold open / ambush
 
-### M15-Q27 — cold-open (step 15, single prompt · mode: recovery)
-
-- Prompt displayed: "Heads up: a fast one is coming. Use a tool." / "שים לב: מגיע משפט מהיר. השתמש בכלי."
-- Audio played: EN "Just to be safe does your nut allergy mean we should avoid the shared fryer too?" · FR "Juste pour être sûr, votre allergie aux noix veut dire qu’on doit aussi éviter la friteuse partagée ?" · ES "Solo para asegurarme, ¿su alergia a los frutos secos significa que también debemos evitar la freidora compartida?"
-- Meaning of the audio (HE): "רק ליתר ביטחון — האלרגיה לאגוזים אומרת שכדאי להימנע גם מהמטגן המשותף?"
-- Buttons show: TARGET-LANGUAGE text of the two sentences; only the conversation-help tool carries 🛟; order shuffled
-- Choices:
-  1. EN "Can you repeat that?" · FR "Vous pouvez répéter ?" · ES "¿Puede repetir, por favor?" · (HE gloss "אפשר לחזור על זה?") — `phrase.recovery.repeat` — ✅ accepted
-  2. EN "I'm vegetarian." · FR "Je suis végétarien." · ES "Soy vegetariano." · (HE gloss "אני צמחוני.") — `phrase.diet.vegetarian` — ❌ wrong
-- Tests: phrase.recovery.repeat
-- Explanation shown after answering: generic: “Can you repeat that?” means “אפשר לחזור על זה?”.
-
-- Flow: screen shows ⚡ and "Heads up: a fast one is coming. Use a tool." / "שים לב: מגיע משפט מהיר. השתמש בכלי." with one button 👂 "I'm ready" / "אני מוכן"; on tap the line is spoken at TTS rate 1.12 and printed small; two shuffled buttons appear; 🔊 "Hear again" / "לשמוע שוב" replays at 0.85.
-- Success criterion: picking the accepted sentence. A wrong pick shows the feedback card (what you heard + translation, your answer, the sentence that fit) with Try again / Continue; Continue proceeds either way. Response time is recorded.
-- Recovery options offered: yes (see choices)
-- Receipt shown next: "A detailed, fast safety question — and you asked them to repeat instead of guessing. With an allergy, exactly the right move." / "שאלת בטיחות מפורטת ומהירה — וביקשת שיחזרו במקום לנחש. עם אלרגיה, זה בדיוק הצעד הנכון."
-- Potential new-language exposure: YES — English words not met in any sentence or dialogue line of Missions 01–15: safe, nut, mean, avoid, shared, fryer
+No cold open in this mission.
 
 ## Swap-in / variable content
 
 The runtime has NO slot-substitution mechanism: no sentence is generated with a different word. "Variants" exist only as (a) alternative accepted lines on one choice screen and (b) extra sentences taught beside the dialogue. Templates are mentioned only in tips.
 
-Alternative accepted lines:
+No choice screen offers two accepted non-toolkit lines.
 
-- Scene `allergy-order`, c4: "Great. Without onions, please." OR "Is this spicy?" — all accepted, same continuation unless the routes above differ.
 
 Every learner sentence of this mission is a line in a scene.
 
 
 ## Receipts (proof cards)
 
-- Step 7: "You recognize how a kitchen responds to an allergy — check, warning, and solution." / "אתה מזהה איך המטבח מגיב לאלרגיה — בדיקה, אזהרה, ופתרון."
-- Step 11: "You ordered a meal that works for you — allergy, vegetarian, no onions, ingredients checked." / "הזמנת ארוחה שמתאימה לך — אלרגיה, צמחוני, בלי בצל, בדיקת מרכיבים."
-- Step 14: "The allergy, what you eat, what is in the dish and what to leave out — you said it all, clearly and in the right order." / "אלרגיה, מה אתה אוכל, מה יש במנה ומה להוריד — אמרת הכל, ברור ובסדר הנכון."
-- Step 16: "A detailed, fast safety question — and you asked them to repeat instead of guessing. With an allergy, exactly the right move." / "שאלת בטיחות מפורטת ומהירה — וביקשת שיחזרו במקום לנחש. עם אלרגיה, זה בדיוק הצעד הנכון."
+- Step 8: "🙋 My needs: Allergy: Nuts / Diet: Vegetarian / Onions: Remove ‖ 👨‍🍳 What the waiter said: Dish: Vegetarian ✅ / Nuts: Kitchen checking… / Dairy: Cream — can remove / Kitchen: Allergy notified ✅ ¦ Your needs went to the kitchen. The nuts are still being checked." / "🙋 הצרכים שלי: אלרגיה: אגוזים / תזונה: צמחוני / בצל: להוריד ‖ 👨‍🍳 מה המלצר אמר: מנה: צמחונית ✅ / אגוזים: המטבח בודק… / חלב: יש שמנת — אפשר בלי / מטבח: האלרגיה נמסרה ✅ ¦ הצרכים שלך עברו למטבח. האגוזים עדיין בבדיקה."
+- Step 13: "🙋 My needs: Allergy: Nuts / Diet: Vegetarian / Onions: Remove ‖ 👨‍🍳 What the waiter said: Dish: Vegetarian ✅ / Nuts: Kitchen checking… / Dairy: Cream — can remove / Kitchen: Allergy notified ✅ ¦ The whole conversation — and the nuts are still being checked." / "🙋 הצרכים שלי: אלרגיה: אגוזים / תזונה: צמחוני / בצל: להוריד ‖ 👨‍🍳 מה המלצר אמר: מנה: צמחונית ✅ / אגוזים: המטבח בודק… / חלב: יש שמנת — אפשר בלי / מטבח: האלרגיה נמסרה ✅ ¦ כל השיחה — והאגוזים עדיין בבדיקה."
+- Step 15: "You said what matters to you — and the kitchen knows. The answer about the nuts has not come yet." / "אמרת את מה שחשוב לך — והמטבח יודע. התשובה על האגוזים עוד לא הגיעה."
+- Step 19: "No help — the whole conversation, at a real waiter’s pace." / "בלי עזרה — כל השיחה, בקצב של מלצר אמיתי."
+- Step 24: "👨‍🍳 KITCHEN CHECK SENT ¦ 🙋 My needs: Allergy: Nuts / Diet: Vegetarian / Onions: Remove ‖ 👨‍🍳 What the waiter said: Dish: Vegetarian ✅ / Nuts: Kitchen checking… / Dairy: Cream — can remove / Kitchen: Allergy notified ✅ ¦ The waiter went to check — wait for the answer about the nuts." / "👨‍🍳 הבדיקה נשלחה למטבח ¦ 🙋 הצרכים שלי: אלרגיה: אגוזים / תזונה: צמחוני / בצל: להוריד ‖ 👨‍🍳 מה המלצר אמר: מנה: צמחונית ✅ / אגוזים: המטבח בודק… / חלב: יש שמנת — אפשר בלי / מטבח: האלרגיה נמסרה ✅ ¦ המלצר הלך לבדוק — מחכים לתשובה לגבי האגוזים."
 
 ## Audit Metadata — DO NOT FIX YET
 
-- Learner-production sentences: 5
-- Receptive (expected-reply) sentences: 5
-- Toolkit phrases bundled: 3
-- Key-sentence steps: 4
-- Expected-reply/listening items: 4
+- Learner-production sentences: 4
+- Receptive (expected-reply) sentences: 6
+- Toolkit phrases bundled: 1
+- Key-sentence steps: 0
+- Expected-reply/listening items: 0
 - Questions/quizzes (meaning quiz): 0
-- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 12
-- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 17
-- One-button dialogue screens: 5
+- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 20
+- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 24
+- One-button dialogue screens: 1
 - Learner sentences never actively retrieved: 0
-- Dialogue learner choices (screens): 10
-- Wrong-answer branches: 1
-- Cold-open prompts: 1
-- Recovery opportunities: 3
-- Vocabulary pre-items: 0
-- Swap variants (extra accepted lines): 1
-- Sentences in review: 11
-- Total interactive questions: 27 (answer choices: 65)
-- Approximate total learner interactions: 42 (questions + key sentences + review cards + word-intro screen)
+- Dialogue learner choices (screens): 6
+- Wrong-answer branches: 5
+- Cold-open prompts: 0
+- Recovery opportunities: 0
+- Vocabulary pre-items: 9
+- Swap variants (extra accepted lines): 0
+- Sentences in review: 0
+- Total interactive questions: 26 (answer choices: 71)
+- Approximate total learner interactions: 27 (questions + key sentences + review cards + word-intro screen)
 
-### AUTO-FLAG — requires human review (6)
+### AUTO-FLAG — requires human review (2)
 
-- AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "allergy-order" n1 — “Hi there! Are you ready to order?”
-- AUTO-FLAG — Practice item wording not in this mission's dialogue: `reply.diet.let-me-check` “Let me check with the kitchen.” (drilled as an expected reply / distractor, but no NPC line here says it).
-- AUTO-FLAG — Practice item wording not in this mission's dialogue: `reply.diet.contains-nuts` “That one contains nuts.” (drilled as an expected reply / distractor, but no NPC line here says it).
-- AUTO-FLAG — Practice item wording not in this mission's dialogue: `reply.diet.not-spicy` “No, it's not spicy.” (drilled as an expected reply / distractor, but no NPC line here says it).
-- AUTO-FLAG — 9 of 10 choice screens have NO wrong option (every button is accepted): allergy-order/c1, allergy-order/c1b, allergy-order/c2b, allergy-order/c3, allergy-order/c3b, allergy-order/c4, allergy-order/c4b, allergy-order/c5, allergy-order/c5b.
-- AUTO-FLAG — 5 choice screens offer exactly ONE button (no decision): allergy-order/c1b, allergy-order/c2b, allergy-order/c3b, allergy-order/c4b, allergy-order/c5b.
+- AUTO-FLAG — 1 of 6 choice screens have NO wrong option (every button is accepted): allergy-order/c2b.
+- AUTO-FLAG — 1 choice screens offer exactly ONE button (no decision): allergy-order/c2b.
 
 ---
 
@@ -16885,7 +16885,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: quick-reply response (step 10, round 3, accepted); sentence review (step 13); dialogue choice supermarket/c2 (accepted)
 
 ### Sentence: `phrase.recovery.slowly`
@@ -16896,7 +16896,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: nothing (listed only)
 
 ### Sentence: `phrase.recovery.show-me`
@@ -17827,7 +17827,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: dialogue choice cold-morning/c6 (accepted)
 
 ### Sentence: `phrase.recovery.repeat`
@@ -17838,7 +17838,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: dialogue choice cold-plans/c2 (accepted); dialogue choice cold-shop/c4 (accepted)
 
 ## Expected replies / listening items
@@ -18865,7 +18865,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: quick-reply response (step 9, round 6, accepted); sentence review (step 13); cold-open correct option (step 16); dialogue choice transport/c1 (accepted); dialogue choice transport/c5 (accepted)
 
 ### Sentence: `phrase.recovery.slowly`
@@ -18876,7 +18876,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: dialogue choice transport/c2 (accepted)
 
 ### Sentence: `phrase.recovery.thank-you`
@@ -19811,7 +19811,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: sentence review (step 15); dialogue choice what-did-you-do/c10 (accepted)
 
 ## Expected replies / listening items
@@ -20648,7 +20648,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: sentence review (step 14); dialogue choice where-next/c4 (accepted)
 
 ## Expected replies / listening items
@@ -21541,7 +21541,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: quick-reply response (step 12, round 4, accepted); sentence review (step 18); dialogue choice room-problem/c8 (accepted)
 
 ## Expected replies / listening items
@@ -22541,7 +22541,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: sentence review (step 16); dialogue choice choosing-a-tour/c10 (accepted)
 
 ## Expected replies / listening items
@@ -23528,7 +23528,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: dialogue choice cold-transport/c4 (accepted); dialogue choice cold-hostel/c2 (accepted)
 
 ### Sentence: `phrase.recovery.repeat`
@@ -23539,7 +23539,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: dialogue choice cold-problem/c2 (accepted)
 
 ## Expected replies / listening items
@@ -24666,7 +24666,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: cold-open correct option (step 19)
 
 ## Expected replies / listening items
@@ -25498,7 +25498,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: dialogue choice pharmacy/c3 (accepted)
 
 ### Sentence: `phrase.recovery.slowly`
@@ -25509,7 +25509,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: cold-open correct option (step 16); dialogue choice pharmacy/c1 (accepted)
 
 ### Sentence: `phrase.recovery.thank-you`
@@ -26332,7 +26332,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: dialogue choice emergency/c8 (accepted)
 
 ## Expected replies / listening items
@@ -27086,7 +27086,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: dialogue choice ns-transit/c8 (accepted)
 
 ### Sentence: `phrase.recovery.slowly`
@@ -27097,7 +27097,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: dialogue choice ns-diner/c4 (accepted)
 
 ## Expected replies / listening items
@@ -28023,7 +28023,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: dialogue choice dr-problem/c2 (accepted)
 
 ### Sentence: `phrase.recovery.slowly`
@@ -28034,7 +28034,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: dialogue choice dr-pay/c4 (accepted)
 
 ## Expected replies / listening items
@@ -29219,7 +29219,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 15, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: dialogue choice fin-taxi/c6 (accepted); dialogue choice fin-evening/c2 (accepted)
 
 ### Sentence: `phrase.recovery.repeat`
@@ -29230,7 +29230,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 14, 15, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: dialogue choice fin-lunch/c6 (accepted)
 
 ## Expected replies / listening items
@@ -30364,7 +30364,7 @@ Every learner sentence of this mission is a line in a scene.
 | 12 Time & Plans | 16 (8 / 8 / 0) | 0 | 1 | 1 | 31 | 7 | 0 | 0 | 0 | 17 words | 0 | 39 | 0 |
 | 13 Home, Family & Daily Routine | 18 (9 / 9 / 0) | 0 | 1 | 1 | 33 | 8 | 0 | 0 | 0 | 17 words | 0 | 42 | 1 |
 | 14 Restaurant Meal | 20 (9 / 6 / 5) | 0 | 0 | 0 | 26 | 6 | 1 | 1 | 0 | 11 words | 0 | 32 | 24 |
-| 15 Food Preferences & Allergies | 13 (5 / 5 / 3) | 4 | 4 | 0 | 12 | 10 | 5 | 3 | 1 | no | 1 | 27 | 6 |
+| 15 Food Preferences & Allergies | 11 (4 / 6 / 1) | 0 | 0 | 0 | 20 | 6 | 1 | 0 | 0 | 9 words | 0 | 26 | 2 |
 | 16 Hobbies & Free Time | 15 (8 / 6 / 1) | 4 | 4 | 0 | 15 | 9 | 8 | 1 | 0 | no | 0 | 28 | 5 |
 | 17 Supermarket & Everyday Shopping | 13 (4 / 5 / 4) | 4 | 4 | 0 | 15 | 7 | 3 | 2 | 1 | no | 1 | 27 | 8 |
 | 18 CHECKPOINT: Everyday Day | 25 (20 / 2 / 3) | 0 | 0 | 0 | 0 | 15 | 0 | 3 | 1 | no | 0 | 16 | 11 |
@@ -30472,11 +30472,10 @@ Every learner-production sentence id of the Core, in order of first appearance. 
 | `phrase.rest.delicious` | That was delicious! | 14 | 28, 29, 30 | 0 | 0 / 5 | 0 | 0 | 0 | yes | no |  |
 | `phrase.rest.ill-have` | I'll have the pasta, please. | 14 | 28, 29 | 0 | 2 / 2 | 0 | 0 | 0 | no | no |  |
 | `phrase.rest.chicken-no-onions` | I'll have the chicken, without onions, please. | 14 | — | 0 | 0 / 0 | 1 | 0 | 0 | no | no |  |
-| `phrase.diet.allergic-nuts` | I'm allergic to nuts. | 15 | — | 1 | 2 / 0 | 5 | 0 | 1 | no | no |  |
-| `phrase.diet.without-onions` | Without onions, please. | 15 | — | 1 | 2 / 0 | 7 | 0 | 1 | no | no |  |
-| `phrase.diet.vegetarian` | I'm vegetarian. | 15 | — | 1 | 2 / 0 | 6 | 1 | 1 | no | no |  |
-| `phrase.diet.does-have-dairy` | Does it have dairy? | 15 | — | 1 | 2 / 0 | 2 | 0 | 1 | no | no |  |
-| `phrase.diet.is-spicy` | Is this spicy? | 15 | — | 0 | 1 / 0 | 5 | 0 | 1 | no | no |  |
+| `phrase.diet.allergic-nuts` | I'm allergic to nuts. | 15 | — | 0 | 1 / 1 | 11 | 0 | 0 | no | no |  |
+| `phrase.diet.without-onions` | Without onions, please. | 15 | — | 0 | 1 / 0 | 9 | 0 | 0 | no | no |  |
+| `phrase.diet.vegetarian` | I'm vegetarian. | 15 | — | 0 | 2 / 1 | 13 | 0 | 0 | no | no |  |
+| `phrase.diet.does-have-dairy` | Does it have dairy? | 15 | — | 0 | 1 / 2 | 13 | 0 | 0 | no | no |  |
 | `phrase.hobby.what-for-fun` | What do you do for fun? | 16 | — | 1 | 1 / 0 | 4 | 0 | 1 | no | no |  |
 | `phrase.hobby.i-love-surfing` | I love surfing! | 16 | 18 | 1 | 2 / 0 | 4 | 0 | 1 | yes | no |  |
 | `phrase.hobby.i-like-drawing` | I like drawing. | 16 | — | 1 | 1 / 0 | 6 | 0 | 1 | no | no |  |
@@ -30554,7 +30553,7 @@ Every learner-production sentence id of the Core, in order of first appearance. 
 | `phrase.emerg.call-police` | Call the police! | 27 | — | 1 | 0 / 0 | 4 | 0 | 1 | no | no |  |
 | `phrase.emerg.where-hospital` | Where is the hospital? | 27 | — | 0 | 0 / 0 | 2 | 0 | 0 | no | no |  |
 
-Learner-production sentence ids: 164. With 0 active retrieval opportunities: 1.
+Learner-production sentence ids: 163. With 0 active retrieval opportunities: 1.
 
 # NPC Comprehension Coverage
 
@@ -30667,11 +30666,12 @@ Every expected-reply sentence id. "Quick response" does not exist as an exercise
 | `reply.rest.to-drink` | Anything to drink? | 14 | 18 | no | 0 / 0 | 0 / 1 | yes | yes |
 | `reply.rest.anything-else` | Anything else? | 14 | — | no | 0 / 0 | 0 / 0 | no | yes |
 | `reply.rest.everything-okay` | Is everything okay? | 14 | — | no | 0 / 0 | 0 / 0 | no | yes |
-| `reply.diet.let-me-check` | Let me check with the kitchen. | 15 | — | yes (1) | 0 / 0 | 0 / 0 | no | **no** |
-| `reply.diet.make-without` | We can make it without. | 15 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
-| `reply.diet.contains-nuts` | That one contains nuts. | 15 | — | yes (1) | 0 / 0 | 0 / 0 | no | **no** |
-| `reply.diet.not-spicy` | No, it's not spicy. | 15 | — | no | 0 / 0 | 0 / 0 | no | **no** |
-| `reply.diet.anything-else-allergic` | Any other allergies? | 15 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
+| `reply.diet.ready` | Hi there! Are you ready to order? | 15 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.diet.other` | Thank you for telling me. Any other allergies or dietary restrictions? | 15 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.diet.risotto` | Got it. The mushroom risotto is vegetarian, but I'll check with the kitchen about the nuts. | 15 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.diet.cream` | Yes, it has some cream, but we can make it without. | 15 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.diet.tell` | Of course. I'll tell the kitchen about your allergy. | 15 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.diet.back` | I'll check with them and come right back. | 15 | — | no | 0 / 0 | 0 / 0 | no | yes |
 | `reply.hobby.do-you-like-surfing` | Do you like surfing? | 16 | — | no | 0 / 0 | 0 / 0 | no | yes |
 | `reply.hobby.what-else` | What else do you like? | 16 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
 | `reply.hobby.do-you-like-music` | Do you like music? | 16 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
@@ -30746,7 +30746,6 @@ Happy-path NPC lines containing a question, for which the mission has no expecte
 | 10 | cold-taxi / n1 | Hello! Where to? |
 | 10 | cold-taxi / n5 | …We are almost there. Is here okay? |
 | 10 | cold-hotel / n1 | Good evening! How can I help you? |
-| 15 | allergy-order / n1 | Hi there! Are you ready to order? |
 | 16 | free-time-chat / n1 | Hi! Are you free today? |
 | 16 | free-time-chat / n7 | Nice! When do you draw? |
 | 16 | free-time-chat / n11 | And sport? Do you like running? |
@@ -30823,7 +30822,7 @@ Happy-path NPC lines containing a question, for which the mission has no expecte
 | 30 | fin-evening / n1 | Good evening! Is everything okay with your room? And breakfast tomorrow — is seven okay for you? |
 | 30 | fin-evening / n3 | Perfect. And how was your day? |
 
-Total: 84.
+Total: 83.
 
 # Complete Existing Question Bank
 
@@ -35750,130 +35749,105 @@ No questions.
 
 ## Mission 15 — Food Preferences & Allergies
 
-**M15-Q01** — expected-reply
-- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (1/4)
-- Audio: Let me check with the kitchen. — (אבדוק עם המטבח.)
-- A: אבדוק עם המטבח. / Let me check with the kitchen. ✅
-- B: אפשר להכין בלי. / We can make it without.
-- C: זה מכיל אגוזים. / That one contains nuts.
-- Correct: Let me check with the kitchen.
-- Tests: reply.diet.let-me-check
+**M15-Q01** — visual-match
+- Prompt: "What did the waiter say about the nuts?" / "מה המלצר אמר על האגוזים?"
+- Audio: Got it. The mushroom risotto is vegetarian, but I'll check with the kitchen about the nuts. — (הבנתי. ריזוטו הפטריות צמחוני, אבל אבדוק עם המטבח לגבי האגוזים.)
+- A: 👨‍🍳 “Not known yet — the kitchen will check” / “עוד לא ידוע — המטבח יבדוק” ✅
+- B: 🥜 “He said: no nuts” / “הוא אמר: אין אגוזים”
+- C: ⚠️ “He said: it has nuts” / “הוא אמר: יש אגוזים”
+- Correct: 👨‍🍳 “Not known yet — the kitchen will check” / “עוד לא ידוע — המטבח יבדוק”
+- Tests: (no sentence id — not recorded)
 
-**M15-Q02** — expected-reply
-- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (2/4)
-- Audio: We can make it without. — (אפשר להכין בלי.)
-- A: אפשר להכין בלי. / We can make it without. ✅
-- B: אבדוק עם המטבח. / Let me check with the kitchen.
-- C: זה מכיל אגוזים. / That one contains nuts.
-- Correct: We can make it without.
-- Tests: reply.diet.make-without
-
-**M15-Q03** — expected-reply
-- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (3/4)
-- Audio: That one contains nuts. — (זה מכיל אגוזים.)
-- A: זה מכיל אגוזים. / That one contains nuts. ✅
-- B: אבדוק עם המטבח. / Let me check with the kitchen.
-- C: אפשר להכין בלי. / We can make it without.
-- Correct: That one contains nuts.
-- Tests: reply.diet.contains-nuts
-
-**M15-Q04** — expected-reply
-- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (4/4)
-- Audio: Any other allergies? — (יש עוד אלרגיות?)
-- A: יש עוד אלרגיות? / Any other allergies? ✅
-- B: אבדוק עם המטבח. / Let me check with the kitchen.
-- C: אפשר להכין בלי. / We can make it without.
-- Correct: Any other allergies?
-- Tests: reply.diet.anything-else-allergic
-
-**M15-Q05** — match-pairs
-- Prompt: "What are you being told? Checking, changing it, or a warning?" / "מה אומרים לך? בודקים, משנים, או מזהירים?" — tile to match (target language, no translation): EN "Let me check with the kitchen." · FR "Je vérifie avec la cuisine." · ES "Lo consulto con la cocina."
-- Audio: Let me check with the kitchen. — (אבדוק עם המטבח.)
-- A: 🔍 They will check / בודקים במטבח ✅
-- B: ➖ They can make it without / אפשר להכין בלי
-- C: ⚠️ 🥜 It contains nuts / יש בזה אגוזים
-- Correct: 🔍 They will check / בודקים במטבח
-- Tests: reply.diet.let-me-check
-
-**M15-Q06** — match-pairs
-- Prompt: "What are you being told? Checking, changing it, or a warning?" / "מה אומרים לך? בודקים, משנים, או מזהירים?" — tile to match (target language, no translation): EN "We can make it without." · FR "On peut le faire sans." · ES "Se lo podemos hacer sin eso."
-- Audio: We can make it without. — (אפשר להכין בלי.)
-- A: 🔍 They will check / בודקים במטבח
-- B: ➖ They can make it without / אפשר להכין בלי ✅
-- C: ⚠️ 🥜 It contains nuts / יש בזה אגוזים
-- Correct: ➖ They can make it without / אפשר להכין בלי
-- Tests: reply.diet.make-without
-
-**M15-Q07** — match-pairs
-- Prompt: "What are you being told? Checking, changing it, or a warning?" / "מה אומרים לך? בודקים, משנים, או מזהירים?" — tile to match (target language, no translation): EN "That one contains nuts." · FR "Celui-là contient des noix." · ES "Ese lleva frutos secos."
-- Audio: That one contains nuts. — (זה מכיל אגוזים.)
-- A: 🔍 They will check / בודקים במטבח
-- B: ➖ They can make it without / אפשר להכין בלי
-- C: ⚠️ 🥜 It contains nuts / יש בזה אגוזים ✅
-- Correct: ⚠️ 🥜 It contains nuts / יש בזה אגוזים
-- Tests: reply.diet.contains-nuts
-
-**M15-Q08** — quick-reply
-- Prompt: "Ordering safely — what do you say?" / "להזמין בבטחה — מה אומרים?"
-- Audio: Hi there! Are you ready to order? — (היי! מוכן להזמין?)
-- A: I'm allergic to nuts. ✅
-- B: Is this spicy?
-- C: Without onions, please.
-- Correct: I'm allergic to nuts.
-- Tests: phrase.diet.allergic-nuts
-
-**M15-Q09** — quick-reply
-- Prompt: "Ordering safely — what do you say?" / "להזמין בבטחה — מה אומרים?"
-- Audio: Thank you for telling me. Any other allergies or dietary restrictions? — (תודה שאמרת. יש עוד אלרגיות או הגבלות תזונה?)
-- A: I'm vegetarian. ✅
-- B: Is this spicy?
-- C: Without onions, please.
-- Correct: I'm vegetarian.
-- Tests: phrase.diet.vegetarian
-
-**M15-Q10** — quick-reply
-- Prompt: "Ordering safely — what do you say?" / "להזמין בבטחה — מה אומרים?" — situation shown: "The waiter suggests a dish. You need to know whether there is dairy in it." / "המלצר מציע מנה. אתה צריך לדעת אם יש בה מוצרי חלב."
+**M15-Q02** — quick-reply
+- Prompt: "🎯 What do you do? — the situation → what you say" / "🎯 מה עושים? — המצב ← מה אומרים" — situation shown: "🥛 You need to know whether the dish contains dairy." / "🥛 אתה צריך לדעת אם יש במנה מוצרי חלב."
 - Audio: (nothing is played — a situation is shown) — ()
 - A: Does it have dairy? ✅
-- B: Is this spicy?
+- B: I'm allergic to nuts.
 - C: I'm vegetarian.
 - Correct: Does it have dairy?
 - Tests: phrase.diet.does-have-dairy
 
-**M15-Q11** — quick-reply
-- Prompt: "Ordering safely — what do you say?" / "להזמין בבטחה — מה אומרים?"
-- Audio: We can make it without. — (אפשר להכין בלי.)
-- A: Great. Without onions, please. ✅
+**M15-Q03** — quick-reply
+- Prompt: "🎯 What do you do? — the situation → what you say" / "🎯 מה עושים? — המצב ← מה אומרים" — situation shown: "🥜 Nuts are dangerous for you." / "🥜 אגוזים מסוכנים בשבילך."
+- Audio: (nothing is played — a situation is shown) — ()
+- A: I'm allergic to nuts. ✅
 - B: I'm vegetarian.
+- C: Does it have dairy?
+- Correct: I'm allergic to nuts.
+- Tests: phrase.diet.allergic-nuts
+
+**M15-Q04** — quick-reply
+- Prompt: "🎯 What do you do? — the situation → what you say" / "🎯 מה עושים? — המצב ← מה אומרים" — situation shown: "🧅 You don’t want onions." / "🧅 אתה לא רוצה בצל."
+- Audio: (nothing is played — a situation is shown) — ()
+- A: Great. Without onions, please. ✅
+- B: I'm allergic to nuts.
+- C: I'm vegetarian.
+- Correct: Great. Without onions, please.
+- Tests: phrase.diet.without-onions
+
+**M15-Q05** — quick-reply
+- Prompt: "🎯 What do you do? — the situation → what you say" / "🎯 מה עושים? — המצב ← מה אומרים" — situation shown: "🌱 You don’t eat meat." / "🌱 אתה לא אוכל בשר."
+- Audio: (nothing is played — a situation is shown) — ()
+- A: I'm vegetarian. ✅
+- B: I'm allergic to nuts.
+- C: Does it have dairy?
+- Correct: I'm vegetarian.
+- Tests: phrase.diet.vegetarian
+
+**M15-Q06** — quick-reply
+- Prompt: "🙋 My needs: Allergy: Nuts / Diet: Vegetarian / Onions: Remove ‖ 👨‍🍳 What the waiter said: Dish: ? / Nuts: ? / Dairy: ? / Kitchen: — ¦ Now the whole conversation." / "🙋 הצרכים שלי: אלרגיה: אגוזים / תזונה: צמחוני / בצל: להוריד ‖ 👨‍🍳 מה המלצר אמר: מנה: ? / אגוזים: ? / חלב: ? / מטבח: — ¦ עכשיו כל השיחה."
+- Audio: Hi there! Are you ready to order? — (היי! מוכן להזמין?)
+- A: I'm allergic to nuts. ✅
+- B: Does it have dairy?
+- C: Thank you!
+- Correct: I'm allergic to nuts.
+- Tests: phrase.diet.allergic-nuts
+
+**M15-Q07** — quick-reply
+- Prompt: "🙋 My needs: Allergy: Nuts / Diet: Vegetarian / Onions: Remove ‖ 👨‍🍳 What the waiter said: Dish: ? / Nuts: ? / Dairy: ? / Kitchen: — ¦ Now the whole conversation." / "🙋 הצרכים שלי: אלרגיה: אגוזים / תזונה: צמחוני / בצל: להוריד ‖ 👨‍🍳 מה המלצר אמר: מנה: ? / אגוזים: ? / חלב: ? / מטבח: — ¦ עכשיו כל השיחה."
+- Audio: Thank you for telling me. Any other allergies or dietary restrictions? — (תודה שאמרת. יש עוד אלרגיות או הגבלות תזונה?)
+- A: I'm vegetarian. ✅
+- B: Thank you!
+- C: Great. Without onions, please.
+- Correct: I'm vegetarian.
+- Tests: phrase.diet.vegetarian
+
+**M15-Q08** — quick-reply
+- Prompt: "🙋 My needs: Allergy: Nuts / Diet: Vegetarian / Onions: Remove ‖ 👨‍🍳 What the waiter said: Dish: ? / Nuts: ? / Dairy: ? / Kitchen: — ¦ Now the whole conversation." / "🙋 הצרכים שלי: אלרגיה: אגוזים / תזונה: צמחוני / בצל: להוריד ‖ 👨‍🍳 מה המלצר אמר: מנה: ? / אגוזים: ? / חלב: ? / מטבח: — ¦ עכשיו כל השיחה."
+- Audio: Got it. The mushroom risotto is vegetarian, but I'll check with the kitchen about the nuts. — (הבנתי. ריזוטו הפטריות צמחוני, אבל אבדוק עם המטבח לגבי האגוזים.)
+- A: Does it have dairy? ✅
+- B: I'm vegetarian.
+- C: Thank you!
+- Correct: Does it have dairy?
+- Tests: phrase.diet.does-have-dairy
+
+**M15-Q09** — quick-reply
+- Prompt: "🙋 My needs: Allergy: Nuts / Diet: Vegetarian / Onions: Remove ‖ 👨‍🍳 What the waiter said: Dish: Vegetarian ✅ / Nuts: Kitchen checking… / Dairy: ? / Kitchen: —" / "🙋 הצרכים שלי: אלרגיה: אגוזים / תזונה: צמחוני / בצל: להוריד ‖ 👨‍🍳 מה המלצר אמר: מנה: צמחונית ✅ / אגוזים: המטבח בודק… / חלב: ? / מטבח: —"
+- Audio: Yes, it has some cream, but we can make it without. — (כן, יש בו קצת שמנת, אבל אפשר להכין בלי.)
+- A: Great. Without onions, please. ✅
+- B: Does it have dairy?
 - C: I'm allergic to nuts.
 - Correct: Great. Without onions, please.
 - Tests: phrase.diet.without-onions
 
-**M15-Q12** — quick-reply
-- Prompt: "Ordering safely — what do you say?" / "להזמין בבטחה — מה אומרים?"
-- Audio: That one contains nuts. — (זה מכיל אגוזים.)
-- A: I'm allergic to nuts. ✅
-- B: Can you repeat that? ✅
-- C: Without onions, please.
-- Correct: I'm allergic to nuts. | Can you repeat that?
-- Tests: phrase.diet.allergic-nuts, phrase.recovery.repeat
+**M15-Q10** — quick-reply
+- Prompt: "🙋 My needs: Allergy: Nuts / Diet: Vegetarian / Onions: Remove ‖ 👨‍🍳 What the waiter said: Dish: Vegetarian ✅ / Nuts: Kitchen checking… / Dairy: Cream — can remove / Kitchen: —" / "🙋 הצרכים שלי: אלרגיה: אגוזים / תזונה: צמחוני / בצל: להוריד ‖ 👨‍🍳 מה המלצר אמר: מנה: צמחונית ✅ / אגוזים: המטבח בודק… / חלב: יש שמנת — אפשר בלי / מטבח: —"
+- Audio: Of course. I'll tell the kitchen about your allergy. — (כמובן. אגיד למטבח על האלרגיה שלך.)
+- A: Thank you! ✅
+- B: I'm vegetarian.
+- C: Does it have dairy?
+- Correct: Thank you!
+- Tests: phrase.recovery.thank-you
 
-**M15-Q13** — dialogue-choice
+**M15-Q11** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Hi there! Are you ready to order? — (היי! מוכן להזמין?)
 - A: I'm allergic to nuts. ✅
-- B: Please speak slowly. ✅
-- Correct: I'm allergic to nuts. | Please speak slowly.
-- Tests: phrase.diet.allergic-nuts, phrase.recovery.slowly
-
-**M15-Q14** — dialogue-choice
-- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio: Sure — are you ready to order? — (בטח — מוכן להזמין?)
-- A: I'm allergic to nuts. ✅
+- B: Does it have dairy?
 - Correct: I'm allergic to nuts.
-- Tests: phrase.diet.allergic-nuts
+- Tests: phrase.diet.allergic-nuts, phrase.diet.does-have-dairy
 
-**M15-Q15** — dialogue-choice
+**M15-Q12** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Thank you for telling me. Any other allergies or dietary restrictions? — (תודה שאמרת. יש עוד אלרגיות או הגבלות תזונה?)
 - A: I'm vegetarian. ✅
@@ -35881,101 +35855,126 @@ No questions.
 - Correct: I'm vegetarian.
 - Tests: phrase.diet.vegetarian, phrase.recovery.thank-you
 
-**M15-Q16** — dialogue-choice
+**M15-Q13** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Of course — but is there anything else I should know? — (כמובן — אבל יש עוד משהו שכדאי שאדע?)
 - A: I'm vegetarian. ✅
 - Correct: I'm vegetarian.
 - Tests: phrase.diet.vegetarian
 
-**M15-Q17** — dialogue-choice
+**M15-Q14** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Got it. The mushroom risotto is vegetarian, but I'll check with the kitchen about the nuts. — (הבנתי. ריזוטו הפטריות צמחוני, אבל אבדוק עם המטבח לגבי האגוזים.)
 - A: Does it have dairy? ✅
-- B: Can you repeat that? ✅
-- Correct: Does it have dairy? | Can you repeat that?
-- Tests: phrase.diet.does-have-dairy, phrase.recovery.repeat
-
-**M15-Q18** — dialogue-choice
-- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio: The mushroom risotto — is vegetarian. — (ריזוטו הפטריות — צמחוני.)
-- A: Does it have dairy? ✅
+- B: I'm vegetarian.
 - Correct: Does it have dairy?
-- Tests: phrase.diet.does-have-dairy
+- Tests: phrase.diet.does-have-dairy, phrase.diet.vegetarian
 
-**M15-Q19** — dialogue-choice
+**M15-Q15** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Yes, it has some cream, but we can make it without. — (כן, יש בו קצת שמנת, אבל אפשר להכין בלי.)
 - A: Great. Without onions, please. ✅
-- B: Is this spicy? ✅
-- Correct: Great. Without onions, please. | Is this spicy?
-- Tests: phrase.diet.without-onions, phrase.diet.is-spicy
+- B: Does it have dairy?
+- Correct: Great. Without onions, please.
+- Tests: phrase.diet.without-onions, phrase.diet.does-have-dairy
 
-**M15-Q20** — dialogue-choice
-- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio: Not at all — it's very mild. — (ממש לא — הוא עדין מאוד.)
-- A: Without onions, please. ✅
-- Correct: Without onions, please.
-- Tests: phrase.diet.without-onions
-
-**M15-Q21** — dialogue-choice
+**M15-Q16** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Of course. I'll tell the kitchen about your allergy. — (כמובן. אגיד למטבח על האלרגיה שלך.)
 - A: Thank you! ✅
-- B: Please speak slowly. ✅
-- Correct: Thank you! | Please speak slowly.
-- Tests: phrase.recovery.thank-you, phrase.recovery.slowly
-
-**M15-Q22** — dialogue-choice
-- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio: I'll tell — the kitchen — about your allergy. — (אני אגיד — למטבח — על האלרגיה.)
-- A: Thank you! ✅
+- B: I'm allergic to nuts.
 - Correct: Thank you!
-- Tests: phrase.recovery.thank-you
+- Tests: phrase.recovery.thank-you, phrase.diet.allergic-nuts
 
-**M15-Q23** — quick-reply
+**M15-Q17** — quick-reply
 - Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio: Hi there! Are you ready to order? — (היי! מוכן להזמין?)
 - A: I'm allergic to nuts. ✅
-- B: Without onions, please.
-- C: Is this spicy?
+- B: I'm vegetarian.
+- C: Thank you!
 - Correct: I'm allergic to nuts.
 - Tests: phrase.diet.allergic-nuts
 
-**M15-Q24** — quick-reply
+**M15-Q18** — quick-reply
 - Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio: Thank you for telling me. Any other allergies or dietary restrictions? — (תודה שאמרת. יש עוד אלרגיות או הגבלות תזונה?)
 - A: I'm vegetarian. ✅
-- B: Without onions, please.
-- C: Is this spicy?
+- B: Does it have dairy?
+- C: I'm allergic to nuts.
 - Correct: I'm vegetarian.
 - Tests: phrase.diet.vegetarian
 
-**M15-Q25** — quick-reply
+**M15-Q19** — quick-reply
 - Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio: Got it. The mushroom risotto is vegetarian, but I'll check with the kitchen about the nuts. — (הבנתי. ריזוטו הפטריות צמחוני, אבל אבדוק עם המטבח לגבי האגוזים.)
 - A: Does it have dairy? ✅
-- B: Can you repeat that? ✅
-- C: I'm vegetarian.
-- Correct: Does it have dairy? | Can you repeat that?
-- Tests: phrase.diet.does-have-dairy, phrase.recovery.repeat
+- B: Thank you!
+- C: Great. Without onions, please.
+- Correct: Does it have dairy?
+- Tests: phrase.diet.does-have-dairy
 
-**M15-Q26** — quick-reply
+**M15-Q20** — quick-reply
 - Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio: Yes, it has some cream, but we can make it without. — (כן, יש בו קצת שמנת, אבל אפשר להכין בלי.)
 - A: Great. Without onions, please. ✅
-- B: I'm allergic to nuts.
-- C: I'm vegetarian.
+- B: I'm vegetarian.
+- C: Thank you!
 - Correct: Great. Without onions, please.
 - Tests: phrase.diet.without-onions
 
-**M15-Q27** — cold-open
-- Prompt: "Heads up: a fast one is coming. Use a tool." / "שים לב: מגיע משפט מהיר. השתמש בכלי."
-- Audio: Just to be safe does your nut allergy mean we should avoid the shared fryer too? — (רק ליתר ביטחון — האלרגיה לאגוזים אומרת שכדאי להימנע גם מהמטגן המשותף?)
-- A: Can you repeat that? ✅
+**M15-Q21** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Of course. I'll tell the kitchen about your allergy. — (כמובן. אגיד למטבח על האלרגיה שלך.)
+- A: Thank you! ✅
+- B: I'm allergic to nuts.
+- C: Great. Without onions, please.
+- Correct: Thank you!
+- Tests: phrase.recovery.thank-you
+
+**M15-Q22** — quick-reply
+- Prompt: "🙋 My needs: Allergy: Nuts / Diet: Vegetarian / Onions: Remove ‖ 👨‍🍳 What the waiter said: Dish: ? / Nuts: ? / Dairy: ? / Kitchen: — ¦ Make sure the waiter understands what matters to you before he goes back to the kitchen." / "🙋 הצרכים שלי: אלרגיה: אגוזים / תזונה: צמחוני / בצל: להוריד ‖ 👨‍🍳 מה המלצר אמר: מנה: ? / אגוזים: ? / חלב: ? / מטבח: — ¦ תוודא שהמלצר מבין מה חשוב לך לפני שהוא חוזר למטבח."
+- Audio: Hi there! Are you ready to order? — (היי! מוכן להזמין?)
+- A: I'm allergic to nuts. ✅
+- B: Great. Without onions, please.
+- C: Does it have dairy?
+- Correct: I'm allergic to nuts.
+- Tests: phrase.diet.allergic-nuts
+
+**M15-Q23** — quick-reply
+- Prompt: "🙋 My needs: Allergy: Nuts / Diet: Vegetarian / Onions: Remove ‖ 👨‍🍳 What the waiter said: Dish: ? / Nuts: ? / Dairy: ? / Kitchen: — ¦ Make sure the waiter understands what matters to you before he goes back to the kitchen." / "🙋 הצרכים שלי: אלרגיה: אגוזים / תזונה: צמחוני / בצל: להוריד ‖ 👨‍🍳 מה המלצר אמר: מנה: ? / אגוזים: ? / חלב: ? / מטבח: — ¦ תוודא שהמלצר מבין מה חשוב לך לפני שהוא חוזר למטבח."
+- Audio: Thank you for telling me. Any other allergies or dietary restrictions? — (תודה שאמרת. יש עוד אלרגיות או הגבלות תזונה?)
+- A: I'm vegetarian. ✅
+- B: I'm allergic to nuts.
+- C: Thank you!
+- Correct: I'm vegetarian.
+- Tests: phrase.diet.vegetarian
+
+**M15-Q24** — quick-reply
+- Prompt: "🙋 My needs: Allergy: Nuts / Diet: Vegetarian / Onions: Remove ‖ 👨‍🍳 What the waiter said: Dish: ? / Nuts: ? / Dairy: ? / Kitchen: — ¦ Make sure the waiter understands what matters to you before he goes back to the kitchen." / "🙋 הצרכים שלי: אלרגיה: אגוזים / תזונה: צמחוני / בצל: להוריד ‖ 👨‍🍳 מה המלצר אמר: מנה: ? / אגוזים: ? / חלב: ? / מטבח: — ¦ תוודא שהמלצר מבין מה חשוב לך לפני שהוא חוזר למטבח."
+- Audio: Got it. The mushroom risotto is vegetarian, but I'll check with the kitchen about the nuts. — (הבנתי. ריזוטו הפטריות צמחוני, אבל אבדוק עם המטבח לגבי האגוזים.)
+- A: Does it have dairy? ✅
 - B: I'm vegetarian.
-- Correct: Can you repeat that?
-- Tests: phrase.recovery.repeat
+- C: Great. Without onions, please.
+- Correct: Does it have dairy?
+- Tests: phrase.diet.does-have-dairy
+
+**M15-Q25** — quick-reply
+- Prompt: "🙋 My needs: Allergy: Nuts / Diet: Vegetarian / Onions: Remove ‖ 👨‍🍳 What the waiter said: Dish: Vegetarian ✅ / Nuts: Kitchen checking… / Dairy: ? / Kitchen: —" / "🙋 הצרכים שלי: אלרגיה: אגוזים / תזונה: צמחוני / בצל: להוריד ‖ 👨‍🍳 מה המלצר אמר: מנה: צמחונית ✅ / אגוזים: המטבח בודק… / חלב: ? / מטבח: —"
+- Audio: Yes, it has some cream, but we can make it without. — (כן, יש בו קצת שמנת, אבל אפשר להכין בלי.)
+- A: Great. Without onions, please. ✅
+- B: Thank you!
+- C: Does it have dairy?
+- Correct: Great. Without onions, please.
+- Tests: phrase.diet.without-onions
+
+**M15-Q26** — quick-reply
+- Prompt: "🙋 My needs: Allergy: Nuts / Diet: Vegetarian / Onions: Remove ‖ 👨‍🍳 What the waiter said: Dish: Vegetarian ✅ / Nuts: Kitchen checking… / Dairy: Cream — can remove / Kitchen: —" / "🙋 הצרכים שלי: אלרגיה: אגוזים / תזונה: צמחוני / בצל: להוריד ‖ 👨‍🍳 מה המלצר אמר: מנה: צמחונית ✅ / אגוזים: המטבח בודק… / חלב: יש שמנת — אפשר בלי / מטבח: —"
+- Audio: Of course. I'll tell the kitchen about your allergy. — (כמובן. אגיד למטבח על האלרגיה שלך.)
+- A: Thank you! ✅
+- B: Does it have dairy?
+- C: I'm vegetarian.
+- Correct: Thank you!
+- Tests: phrase.recovery.thank-you
 
 ## Mission 16 — Hobbies & Free Time
 
@@ -39145,17 +39144,17 @@ No questions.
 # Totals
 
 - Missions exported: 30
-- Learner-production sentence ids: 164
-- Expected-reply (receptive) sentence ids: 167
-- Sentence listings across missions (with reuse): 527
-- Expected-reply questions: 79
+- Learner-production sentence ids: 163
+- Expected-reply (receptive) sentence ids: 168
+- Sentence listings across missions (with reuse): 525
+- Expected-reply questions: 75
 - Meaning quizzes: 7
-- Active-practice questions: 596
-- Dialogue choice screens: 257
-- Cold opens: 8
-- Total interactive questions: 947
-- Total answer choices: 2569
-- Wrong-answer branches: 109
-- Recovery opportunities: 49
+- Active-practice questions: 604
+- Dialogue choice screens: 253
+- Cold opens: 7
+- Total interactive questions: 946
+- Total answer choices: 2575
+- Wrong-answer branches: 113
+- Recovery opportunities: 46
 - Learner sentences with 0 active retrieval opportunities: 1
-- Auto-flags: 214
+- Auto-flags: 210

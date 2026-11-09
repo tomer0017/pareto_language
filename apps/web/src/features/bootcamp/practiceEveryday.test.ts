@@ -7,6 +7,9 @@ import { RETIRED_SENTENCES } from './retired.js';
 import { sentenceCatalog } from '../core/phraseGroups.js';
 import type { BootcampDayContent, BootcampStep } from './types.js';
 
+/** Sentences the Mission 15 pass archived (it has its own test: mission15.test.ts). */
+const M15_PASS_RETIRED = ['phrase.diet.is-spicy', 'reply.diet.let-me-check', 'reply.diet.make-without', 'reply.diet.contains-nuts', 'reply.diet.not-spicy', 'reply.diet.anything-else-allergic'];
+
 /**
  * Practice depth — Missions 11–18 (Everyday Life). What each mission must now train is pinned,
  * stale drills stay gone, the checkpoint proves instead of teaching, and everything this pass was
@@ -77,23 +80,22 @@ describe('scope: only the Practice of Missions 11–18 changed', () => {
   it('Missions 08–10 are not this pass\'s: each has its own (mission08.test.ts, mission09.test.ts, mission10.test.ts)', () => {
     for (const lang of LANGS) expect(slice(lang, 9, 10)[0]!.steps.some((s) => s.kind === 'checkpoint'), lang).toBe(true);
   });
-  it('the locked dialogues of Missions 15–17 are byte-for-byte unchanged (Missions 11–14 have their own passes since: mission11.test.ts … mission14.test.ts)', () => {
-    expect(print((l) => slice(l, 14, 17).map((d) => d.dialogues))).toEqual({ en: '6439efc5', fr: 'fd9d0a34', es: 'd3f8a215' });
+  it('the locked dialogues of Missions 16–17 are byte-for-byte unchanged (Missions 11–15 have their own passes since: mission11.test.ts … mission15.test.ts)', () => {
+    expect(print((l) => slice(l, 15, 17).map((d) => d.dialogues))).toEqual({ en: 'ec18c5a5', fr: '2cad505d', es: 'd4c5905a' });
   });
   it('the approved practice is otherwise exactly as approved (after the final cleanup)', () => {
     const d = (l: Lang, n: number): BootcampDayContent => beforeCueFreeze(MISSIONS_BY_LANG[l]![BOOTCAMP_PLAN[n - 1]!.day]!, l);
-    // Missions 16 and 18, whole — sentences, dialogues and steps (Missions 11–14: mission11.test.ts … mission14.test.ts).
+    // Missions 16 and 18, whole — sentences, dialogues and steps (Missions 11–15: mission11.test.ts … mission15.test.ts).
     expect(print((l) => [16, 18].map((n) => d(l, n)))).toEqual({ en: 'd06c6ed6', fr: 'c26572a4', es: 'fec2dd98' });
-    // Mission 15 apart from the match tiles, 17 apart from its intro card.
-    expect(print((l) => d(l, 15).steps.filter((s) => s.kind !== 'matchPairs'))).toEqual({ en: '091834c0', fr: 'e115664e', es: '29f26c1d' });
+    // Mission 17 apart from its intro card.
     expect(print((l) => d(l, 17).steps.filter((s) => s.kind !== 'talk'))).toEqual({ en: '990320d9', fr: 'de81d6af', es: '7607f353' });
-    expect(print((l) => [15, 17].map((n) => d(l, n).dialogues))).toEqual({ en: 'b725b0a7', fr: 'bc940ecf', es: '62ca69d3' });
+    expect(print((l) => [17].map((n) => d(l, n).dialogues))).toEqual({ en: 'c19faf47', fr: 'bb8d7976', es: '20b1c418' });
   });
   it('five retired sentences left their missions — and nothing else did', () => {
     const gone = ['phrase.rest.menu', 'reply.rest.how-was-it', 'reply.rest.dessert', 'reply.diet.good-option', 'reply.super.weigh-it'];
     for (const lang of LANGS) {
       // (Mission 14's sentences: its own pass since — mission14.test.ts.)
-      expect(mission(15, lang).items, lang).toHaveLength(13);
+      // (Mission 15's sentences: its own pass since — mission15.test.ts.)
       expect(mission(17, lang).items, lang).toHaveLength(13);
       // Not in ANY Core mission: so not in the sentence library, Listen, review, or "what did I learn".
       const everywhere = BOOTCAMP_PLAN.flatMap((m) => MISSIONS_BY_LANG[lang]![m.day]!.items.map((i) => strip(i.id)));
@@ -104,10 +106,10 @@ describe('scope: only the Practice of Missions 11–18 changed', () => {
       const used = JSON.stringify(BOOTCAMP_PLAN.map((m) => [MISSIONS_BY_LANG[lang]![m.day]!.steps, MISSIONS_BY_LANG[lang]![m.day]!.dialogues]));
       for (const id of gone) expect(used.includes(`${lang}.${id}"`), `${lang} ${id}`).toBe(false);
       // …and they are kept, id and wording, in the archive.
-      expect(RETIRED_SENTENCES[lang].filter((r) => r.retiredFrom !== 'hotel-check-in' && r.retiredFrom !== 'coffee-shop' && r.retiredFrom !== 'directions' && r.retiredFrom !== 'airport-border' && r.retiredFrom !== 'taxi' && r.retiredFrom !== 'shopping').map((r) => strip(r.id)), lang).toEqual(gone);
+      expect(RETIRED_SENTENCES[lang].filter((r) => !M15_PASS_RETIRED.includes(r.id.slice(3)) && r.retiredFrom !== 'hotel-check-in' && r.retiredFrom !== 'coffee-shop' && r.retiredFrom !== 'directions' && r.retiredFrom !== 'airport-border' && r.retiredFrom !== 'taxi' && r.retiredFrom !== 'shopping').map((r) => strip(r.id)), lang).toEqual(gone);
       for (const r of RETIRED_SENTENCES[lang]) { expect(r.text.length, r.id).toBeGreaterThan(3); expect(r.meaning.he, r.id).toBeTruthy(); expect(BOOTCAMP_PLAN.some((m) => m.id === r.retiredFrom), r.id).toBe(true); }
     }
-    expect(RETIRED_SENTENCES.en.filter((r) => r.retiredFrom !== 'hotel-check-in' && r.retiredFrom !== 'coffee-shop' && r.retiredFrom !== 'directions' && r.retiredFrom !== 'airport-border' && r.retiredFrom !== 'taxi' && r.retiredFrom !== 'shopping').map((r) => r.text)).toEqual(['The menu, please.', 'How was everything?', 'Would you like dessert?', 'This one is a good option for you.', 'You need to weigh it first.']);
+    expect(RETIRED_SENTENCES.en.filter((r) => !M15_PASS_RETIRED.includes(r.id.slice(3)) && r.retiredFrom !== 'hotel-check-in' && r.retiredFrom !== 'coffee-shop' && r.retiredFrom !== 'directions' && r.retiredFrom !== 'airport-border' && r.retiredFrom !== 'taxi' && r.retiredFrom !== 'shopping').map((r) => r.text)).toEqual(['The menu, please.', 'How was everything?', 'Would you like dessert?', 'This one is a good option for you.', 'You need to weigh it first.']);
   });
   it('mission order, ids and registry keys are unchanged', () => {
     expect(BOOTCAMP_PLAN.slice(10, 18).map((m) => `${m.id}:${m.day}`)).toEqual([
@@ -145,7 +147,7 @@ describe('all three languages get the same practice, each in its own words', () 
       return s.kind;
     };
     // (Missions 11–13 have their own passes since — their parity, tile ids included, is proved in mission11/12/13.test.ts.)
-    for (let n = 15; n <= 18; n++) for (const lang of ['fr', 'es'] as const) expect(mission(n, lang).steps.map(shape), `${lang} M${n}`).toEqual(mission(n).steps.map(shape));
+    for (let n = 16; n <= 18; n++) for (const lang of ['fr', 'es'] as const) expect(mission(n, lang).steps.map(shape), `${lang} M${n}`).toEqual(mission(n).steps.map(shape));
   });
   it('sentence-builder chunks are each language\'s own and spell the taught sentence exactly', () => {
     for (let n = 11; n <= 17; n++) for (const lang of LANGS) {
@@ -183,7 +185,7 @@ describe('all three languages get the same practice, each in its own words', () 
     }
   });
   it('the closing review is selective: at most 12 cards, everything taught is in it, nothing twice', () => {
-    for (const n of [11, 12, 13, 15, 16, 17]) { // Mission 14 has no closing review since its own pass (mission14.test.ts)
+    for (const n of [11, 12, 13, 16, 17]) { // Missions 14 and 15 have no closing review since their own passes (mission14/15.test.ts)
       const day = mission(n);
       const review = reviewed(day);
       expect(review.length, `M${n}`).toBeLessThanOrEqual(12);
@@ -193,7 +195,7 @@ describe('all three languages get the same practice, each in its own words', () 
     }
   });
   it('every teaching mission ends on a chain at natural speed made ONLY of its own conversation\'s lines', () => {
-    for (const n of [11, 12, 13, 15, 16, 17]) for (const lang of LANGS) { // Mission 14: its own no-help run (mission14.test.ts)
+    for (const n of [11, 12, 13, 16, 17]) for (const lang of LANGS) { // Missions 14 and 15: their own no-help runs (mission14/15.test.ts)
       const day = mission(n, lang);
       const speed = rush(day);
       expect(speed, `${lang} M${n}`).toBeDefined();
@@ -207,8 +209,8 @@ describe('all three languages get the same practice, each in its own words', () 
     }
   });
   it('active retrieval outside the dialogue: 8–16 moments per teaching mission', () => {
-    // (Missions 11–14 have their own passes since — their interactions are counted in mission11 … mission14.test.ts.)
-    for (let n = 15; n <= 17; n++) {
+    // (Missions 11–15 have their own passes since — their interactions are counted in mission11 … mission15.test.ts.)
+    for (let n = 16; n <= 17; n++) {
       const day = mission(n);
       const moments = day.steps.reduce((k, s) => k + (s.kind === 'quickReply' || s.kind === 'swap' || s.kind === 'sentenceBuilder' ? s.rounds.length : 0), 0);
       expect(moments, `M${n}`).toBeGreaterThanOrEqual(8);
@@ -231,71 +233,8 @@ describe('all three languages get the same practice, each in its own words', () 
 
 /* ── Mission 14 — Restaurant Meal: its own pass since — mission14.test.ts ──────────────────────── */
 
-describe('Mission 15 — Food Preferences & Allergies', () => {
-  const day = mission(15);
-  it('flow: learn → recognize → what is the kitchen telling you → saying it safely → conversation → the order at speed → the recovery moment', () => {
-    expect(kinds(day)).toEqual(['talk', 'tool', 'tool', 'tool', 'tool', 'replies', 'receipt', 'matchPairs', 'quickReply', 'dialogue', 'receipt', 'swipe', 'quickReply:speed', 'receipt', 'ambush:recovery', 'receipt', 'summary']);
-  });
-  it('no safety guarantee anywhere: nothing in the mission says a dish is safe, fine or guaranteed', () => {
-    for (const lang of LANGS) {
-      const all = JSON.stringify([mission(15, lang).steps, mission(15, lang).dialogues]);
-      expect(all, lang).not.toMatch(/\bsafe for you\b|completely safe|100%|guarantee|sans danger|sin peligro|totalmente seguro|בטוח לגמרי|בטוח בשבילך/i);
-    }
-    // "This one is a good option for you." is no longer drilled or reviewed.
-    expect(JSON.stringify(day.steps)).not.toMatch(/diet\.good-option/);
-    // The comprehension board uses icons for checking / changing / warning — never a "safe" label.
-    for (const p of stepsOf(day, 'matchPairs')[0]!.pairs) expect(`${p.answerLabel} ${p.answerGloss?.en} ${p.answerGloss?.he}`).not.toMatch(/✅|👌|safe|fine|בטוח/i);
-  });
-  it('comprehension of the kitchen: checking, can make it without, contains nuts', () => {
-    expect(stepsOf(day, 'matchPairs')[0]!.pairs.map((p) => [strip(p.promptItemId), p.answerLabel, p.answerGloss?.en, p.answerGloss?.he])).toEqual([
-      ['reply.diet.let-me-check', '🔍', 'They will check', 'בודקים במטבח'],
-      ['reply.diet.make-without', '➖', 'They can make it without', 'אפשר להכין בלי'],
-      ['reply.diet.contains-nuts', '⚠️ 🥜', 'It contains nuts', 'יש בזה אגוזים'],
-    ]);
-    // No safety-critical answer hangs on an emoji alone: every tile says it in words, in both app languages.
-    for (const lang of LANGS) for (const p of stepsOf(mission(15, lang), 'matchPairs')[0]!.pairs) {
-      expect((p.answerGloss?.en ?? '').split(' ').length, lang).toBeGreaterThanOrEqual(3);
-      expect(p.answerGloss?.he, lang).toMatch(/[\u0590-\u05FF]/);
-    }
-  });
-  it('the duplicate listening tests are gone: no meaning quiz repeats what the drill already covers', () => {
-    for (const lang of LANGS) expect(stepsOf(mission(15, lang), 'quiz'), lang).toHaveLength(0);
-    expect(stepsOf(day, 'replies')[0]!.replyIds.map(strip)).toEqual(['reply.diet.let-me-check', 'reply.diet.make-without', 'reply.diet.contains-nuts', 'reply.diet.anything-else-allergic']);
-  });
-  it('safety Quick Reply: allergy first → what you eat → the ingredient → the change → a warning', () => {
-    expect(mapOf(chat(day))).toEqual([
-      ['Hi there! Are you ready to order?', ['phrase.diet.allergic-nuts']],
-      ['Thank you for telling me. Any other allergies or dietary restrictions?', ['phrase.diet.vegetarian']],
-      ['situation', ['phrase.diet.does-have-dairy']],
-      ['reply.diet.make-without', ['phrase.diet.without-onions']],
-      ['reply.diet.contains-nuts', ['phrase.diet.allergic-nuts', 'phrase.recovery.repeat']],
-    ]);
-    // "I'm vegetarian." only ever answers a question that mentions dietary restrictions — never "allergies" alone.
-    for (const lang of LANGS) for (const s of stepsOf(mission(15, lang), 'quickReply')) for (const r of s.rounds) {
-      if (!r.options.some((o) => o.correct && strip(o.itemId) === 'phrase.diet.vegetarian')) continue;
-      expect(strip(r.promptItemId), lang).not.toBe('reply.diet.anything-else-allergic');
-      expect(r.npc!.en, lang).toMatch(/dietary restrictions|restrictions alimentaires|restricción alimentaria/);
-    }
-  });
-  it('recovery is treated as success: asking again is accepted on a warning, on unclear information, and is THE answer to the fast safety question', () => {
-    const warning = chat(day).rounds[4]!;
-    expect(warning.options.find((o) => isHelpToolId(o.itemId))!.correct).toBe(true);
-    expect(warning.options.filter((o) => !o.correct).map((o) => strip(o.itemId))).toEqual(['phrase.diet.without-onions']); // just ordering it is the miss
-    const unclear = rush(day).rounds[2]!;
-    expect(unclear.npc!.en).toMatch(/I'll check with the kitchen about the nuts/);
-    expect(unclear.options.find((o) => isHelpToolId(o.itemId))!.correct).toBe(true);
-    const [ambush] = stepsOf(day, 'ambush');
-    expect([ambush!.mode, strip(ambush!.correctItemId)]).toEqual(['recovery', 'phrase.recovery.repeat']);
-    const proof = day.steps[day.steps.indexOf(ambush!) + 1]!;
-    expect(proof.kind === 'receipt' && proof.text.en).toMatch(/asked them to repeat instead of guessing/);
-    // No round anywhere accepts a guess: a wrong option is never an order placed after a warning.
-    expect(JSON.stringify(day.steps)).not.toMatch(/guess is fine|just try it/i);
-  });
-  it('final challenge: allergy → dietary → ingredient / kitchen → modification — no new ingredient', () => {
-    expect(mapOf(rush(day)).map(([, ok]) => ok)).toEqual([['phrase.diet.allergic-nuts'], ['phrase.diet.vegetarian'], ['phrase.diet.does-have-dairy', 'phrase.recovery.repeat'], ['phrase.diet.without-onions']]);
-    expect(day.items).toHaveLength(13);
-  });
-});
+/* ── Mission 15 — Food Preferences & Allergies: its own pass since — mission15.test.ts ─────────── */
+
 
 /* ── Mission 16 — Hobbies & Free Time ────────────────────────────────────────────────────────── */
 

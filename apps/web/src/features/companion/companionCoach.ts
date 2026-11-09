@@ -64,6 +64,8 @@ export const MISSION_GAME_INTRO: Record<string, Record<string, LocalizedText>> =
   'everyday-core': { visualMatch: T('שמע — והקש על מה שזה אומר.', 'Listen — and tap what it means.') },
   // The restaurant's first picture board is the Waiter Signals: what the waiter wants, never a price.
   'restaurant-meal': { visualMatch: T('שמע את המלצר — והקש על מה שהוא רוצה.', 'Hear the waiter — and tap what he wants.') },
+  // The allergy mission's one board is what the waiter said about the nuts — never a price.
+  'special-requests-allergies': { visualMatch: T('שמע את המלצר — והקש על מה שהוא באמת אמר.', 'Hear the waiter — and tap what he really said.') },
 };
 
 export interface CoachLine {

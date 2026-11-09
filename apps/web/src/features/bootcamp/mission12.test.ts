@@ -156,8 +156,8 @@ describe('the conversation is locked, and Mission 12 is in its place', () => {
   });
   const raw = (a: number, b?: number) => Object.fromEntries(LANGS.map((l) => [l, fnv(JSON.stringify(BOOTCAMP_PLAN.slice(a, b).map((m) => MISSIONS_BY_LANG[l]![m.day]!)))]));
   it('5. Missions 01–11 are byte-for-byte unchanged by this pass', () => { expect(raw(0, 11)).toEqual({ en: '8eacaebe', es: '53d5c9bd', fr: 'c8f5becd' }); });
-  it('6. Missions 15–30 are byte-for-byte unchanged by this pass — Missions 13 and 14 have their own passes since (mission13.test.ts, mission14.test.ts); the Everyday checkpoint still reuses the same five sentences', () => {
-    expect(raw(14)).toEqual({ en: '92e620d4', es: '415c4eb3', fr: '48990a5a' });
+  it('6. Missions 16–30 are byte-for-byte unchanged by this pass — Missions 13–15 have their own passes since (mission13.test.ts … mission15.test.ts); the Everyday checkpoint still reuses the same five sentences', () => {
+    expect(raw(15)).toEqual({ en: '094dc240', es: '2d1e3cdf', fr: '50c3cd63' });
     for (const lang of LANGS) {
       const ids = new Set(day(lang).items.map((i) => i.id));
       for (const id of ['phrase.time.maybe-later', 'phrase.time.free-tonight', 'phrase.time.free-tomorrow', 'phrase.time.lets-meet', 'phrase.time.not-too-late']) expect(ids.has(`${lang}.${id}`), `${lang} ${id}`).toBe(true);

@@ -15,6 +15,9 @@ import { RETIRED_SENTENCES } from './retired.js';
 import type { BootcampDayContent, BootcampDialogue, BootcampStep, DialogueNodeB } from './types.js';
 import type * as ConvoModule from './ConvoScene.js';
 
+/** Sentences the Mission 15 pass archived (it has its own test: mission15.test.ts). */
+const M15_PASS_RETIRED = ['phrase.diet.is-spicy', 'reply.diet.let-me-check', 'reply.diet.make-without', 'reply.diet.contains-nuts', 'reply.diet.not-spicy', 'reply.diet.anything-else-allergic'];
+
 /**
  * Practice depth — Missions 25–30 (Mastery): prove the promise.
  *   25–27 still teach, with less scaffolding: one drill of each question, then answering in context.
@@ -103,8 +106,8 @@ describe('scope: only Missions 25–30 changed', () => {
   const print = (f: (lang: Lang) => unknown): Record<Lang, string> => ({ en: fnv(JSON.stringify(f('en'))), fr: fnv(JSON.stringify(f('fr'))), es: fnv(JSON.stringify(f('es'))) });
 
   it('Missions 08–24 are byte-for-byte unchanged, in every language (Missions 01–07 have their own passes — mission01.test.ts … mission07.test.ts)', () => {
-    expect(print((l) => slice(l, 14, 24))).toEqual({ en: 'f8157532', fr: '66d952f6', es: '639934fe' }); // since the Mission 14 pass: Missions 15–24 (Missions 10–14: mission10.test.ts … mission14.test.ts)
-    expect(print((l) => slice(l, 14, 18))).toEqual({ en: '2a24b7a3', fr: '22853956', es: '327166d0' });
+    expect(print((l) => slice(l, 15, 24))).toEqual({ en: '1e7a6416', fr: '8a94726b', es: 'cda587aa' }); // since the Mission 15 pass: Missions 16–24 (Missions 10–15: mission10.test.ts … mission15.test.ts)
+    expect(print((l) => slice(l, 15, 18))).toEqual({ en: 'e98e0ca7', fr: '8d46f5c7', es: 'e8f478c4' });
     expect(print((l) => slice(l, 18, 24))).toEqual({ en: 'b9c88064', fr: '74a92f15', es: 'cd856495' });
   });
   it('the conversations of Missions 25–27 are byte-for-byte unchanged', () => {
@@ -129,7 +132,7 @@ describe('scope: only Missions 25–30 changed', () => {
   });
   it('archived sentences stay archived: the archive still holds the same seven (plus the Mission 03 pass\'s three), none of them back in a mission', () => {
     for (const lang of LANGS) {
-      expect(RETIRED_SENTENCES[lang].filter((r) => r.retiredFrom !== 'coffee-shop' && r.retiredFrom !== 'directions' && r.retiredFrom !== 'airport-border' && r.retiredFrom !== 'taxi' && r.retiredFrom !== 'shopping' && !['reply.hotel.sign-here', 'reply.hotel.second-floor'].includes(r.id.slice(3))), lang).toHaveLength(7);
+      expect(RETIRED_SENTENCES[lang].filter((r) => !M15_PASS_RETIRED.includes(r.id.slice(3)) && r.retiredFrom !== 'coffee-shop' && r.retiredFrom !== 'directions' && r.retiredFrom !== 'airport-border' && r.retiredFrom !== 'taxi' && r.retiredFrom !== 'shopping' && !['reply.hotel.sign-here', 'reply.hotel.second-floor'].includes(r.id.slice(3))), lang).toHaveLength(7);
       expect(RETIRED_SENTENCES[lang].filter((r) => r.retiredFrom === 'airport-border').map((r) => r.id.slice(3)), lang).toEqual(['reply.border.passport-please']);
       expect(RETIRED_SENTENCES[lang].filter((r) => r.retiredFrom === 'taxi').map((r) => r.id.slice(3)), lang).toEqual(['reply.taxi.first-visit']);
       expect(RETIRED_SENTENCES[lang].filter((r) => r.retiredFrom === 'shopping').map((r) => r.id.slice(3)), lang).toEqual(['reply.shop.out-of-stock', 'reply.shop.on-sale', 'reply.shop.anything-else']);

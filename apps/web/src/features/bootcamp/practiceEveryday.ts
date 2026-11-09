@@ -1,11 +1,11 @@
-import type { Copy, L3, L4, MissionLang } from './author.js';
+import type { Copy, L4, MissionLang } from './author.js';
 import { kit } from './practiceV1.js';
 import type { BootcampStep } from './types.js';
 
 /**
- * Practice depth — the Everyday Life phase, hand-written missions: 15 (Food Preferences &
- * Allergies) and 17 (Supermarket). Defined ONCE for English, French and Spanish. (Mission 14, Restaurant
- * Meal, has its own pass: practiceRestaurant.ts.) (Missions 11, 12, 13 and 16 are multilingual specs — their practice lives in `core/`.)
+ * Practice depth — the Everyday Life phase, hand-written mission 17 (Supermarket). Defined ONCE for
+ * English, French and Spanish. (Missions 14 and 15 have their own passes: practiceRestaurant.ts,
+ * practiceAllergies.ts.) (Missions 11, 12, 13 and 16 are multilingual specs — their practice lives in `core/`.)
  *
  * Each mission file keeps its sentences, its locked dialogue, its intro card and its word intro, and
  * takes everything from the key sentences onward from here.
@@ -18,82 +18,6 @@ import type { BootcampStep } from './types.js';
  *
  * All French and Spanish wording: AI linguistic review completed; native review still recommended.
  */
-
-/* ── Mission 15 — Food Preferences & Allergies ───────────────────────────────────────────────── */
-
-const READY_TO_ORDER: L4 = ['Hi there! Are you ready to order?', 'Bonjour ! Vous êtes prêt à commander ?', '¡Hola! ¿Está listo para pedir?', 'היי! מוכן להזמין?'];
-/** The dialogue's own question. "I'm vegetarian." answers the "dietary restrictions" half of it —
- *  vegetarianism is never presented as an allergy. */
-const ANY_OTHER: L4 = ['Thank you for telling me. Any other allergies or dietary restrictions?', 'Merci de me le dire. D’autres allergies ou restrictions alimentaires ?', 'Gracias por avisarme. ¿Alguna otra alergia o restricción alimentaria?', 'תודה שאמרת. יש עוד אלרגיות או הגבלות תזונה?'];
-const GREAT_WITHOUT: L3 = ['Great. Without onions, please.', 'Parfait. Sans oignons, s’il vous plaît.', 'Genial. Sin cebolla, por favor.'];
-
-export function m15Flow(lang: MissionLang): BootcampStep[] {
-  const k = kit(lang);
-  return [
-    ...k.tools([
-      ['phrase.diet.allergic-nuts', ['המשפט שמציל', 'The line that protects']],
-      ['phrase.diet.without-onions', ['להסיר מרכיב', 'Remove an ingredient']],
-      ['phrase.diet.vegetarian', ['להגדיר את עצמך', 'Define yourself']],
-      ['phrase.diet.does-have-dairy', ['לבדוק מרכיב', 'Check an ingredient']],
-    ]),
-    k.replies('phrase.diet.allergic-nuts', ['reply.diet.let-me-check', 'reply.diet.make-without', 'reply.diet.contains-nuts', 'reply.diet.anything-else-allergic']),
-    k.receipt(['אתה מזהה איך המטבח מגיב לאלרגיה — בדיקה, אזהרה, ופתרון.', 'You recognize how a kitchen responds to an allergy — check, warning, and solution.']),
-    // What is the kitchen telling you — checking, changing the dish, or warning you? Each answer tile
-    // says it in words next to its icon: with an allergy, nothing may hang on reading an emoji right.
-    // Nothing here calls a dish "safe".
-    k.practice({
-      kind: 'matchPairs',
-      label: ['מה אומרים לך? בודקים, משנים, או מזהירים?', 'What are you being told? Checking, changing it, or a warning?'],
-      pairs: [
-        ['reply.diet.let-me-check', 'reply.diet.let-me-check', undefined, '🔍', ['בודקים במטבח', 'They will check']],
-        ['reply.diet.make-without', 'reply.diet.make-without', undefined, '➖', ['אפשר להכין בלי', 'They can make it without']],
-        ['reply.diet.contains-nuts', 'reply.diet.contains-nuts', undefined, '⚠️ 🥜', ['יש בזה אגוזים', 'It contains nuts']],
-      ],
-    }),
-    // Saying it clearly, in order: the allergy first, then what you eat, then the ingredient, then the change.
-    k.practice({
-      kind: 'quickReply',
-      label: ['להזמין בבטחה — מה אומרים?', 'Ordering safely — what do you say?'],
-      rounds: [
-        { npc: READY_TO_ORDER, options: [['phrase.diet.allergic-nuts', true], ['phrase.diet.is-spicy', false], ['phrase.diet.without-onions', false]] },
-        { npc: ANY_OTHER, options: [['phrase.diet.vegetarian', true], ['phrase.diet.is-spicy', false], ['phrase.diet.without-onions', false]] },
-        { situation: ['המלצר מציע מנה. אתה צריך לדעת אם יש בה מוצרי חלב.', 'The waiter suggests a dish. You need to know whether there is dairy in it.'],
-          options: [['phrase.diet.does-have-dairy', true], ['phrase.diet.is-spicy', false], ['phrase.diet.vegetarian', false]] },
-        { prompt: 'reply.diet.make-without', options: [['phrase.diet.without-onions', true, GREAT_WITHOUT], ['phrase.diet.vegetarian', false], ['phrase.diet.allergic-nuts', false]] },
-        // A warning. Saying the allergy again, or asking to hear it again, are both right. Ordering is not.
-        { prompt: 'reply.diet.contains-nuts', options: [['phrase.diet.allergic-nuts', true], ['phrase.recovery.repeat', true], ['phrase.diet.without-onions', false]] },
-      ],
-    }),
-    k.dialogue('allergy-order'),
-    k.receipt(['הזמנת ארוחה שמתאימה לך — אלרגיה, צמחוני, בלי בצל, בדיקת מרכיבים.', 'You ordered a meal that works for you — allergy, vegetarian, no onions, ingredients checked.']),
-    k.review([
-      'phrase.diet.allergic-nuts', 'phrase.diet.vegetarian', 'phrase.diet.does-have-dairy', 'phrase.diet.without-onions', 'phrase.diet.is-spicy',
-      'reply.diet.let-me-check', 'reply.diet.make-without', 'reply.diet.contains-nuts', 'reply.diet.anything-else-allergic',
-      'phrase.recovery.repeat', 'phrase.recovery.slowly',
-    ]),
-    // The order at natural pace — the waiter's own lines. When the kitchen still has to check, asking
-    // to hear it again is accepted: that is the right instinct with an allergy.
-    k.practice({
-      kind: 'quickReply',
-      challenge: true,
-      rounds: [
-        { npc: READY_TO_ORDER, options: [['phrase.diet.allergic-nuts', true], ['phrase.diet.without-onions', false], ['phrase.diet.is-spicy', false]] },
-        { npc: ANY_OTHER, options: [['phrase.diet.vegetarian', true], ['phrase.diet.without-onions', false], ['phrase.diet.is-spicy', false]] },
-        { npc: ["Got it. The mushroom risotto is vegetarian, but I'll check with the kitchen about the nuts.", 'Compris. Le risotto aux champignons est végétarien, mais je vérifie avec la cuisine pour les noix.', 'Entendido. El risotto de champiñones es vegetariano, pero lo compruebo con la cocina por los frutos secos.', 'הבנתי. ריזוטו הפטריות צמחוני, אבל אבדוק עם המטבח לגבי האגוזים.'],
-          options: [['phrase.diet.does-have-dairy', true], ['phrase.recovery.repeat', true], ['phrase.diet.vegetarian', false]] },
-        { npc: ['Yes, it has some cream, but we can make it without.', 'Oui, il y a un peu de crème, mais on peut le faire sans.', 'Sí, lleva un poco de nata, pero se lo podemos hacer sin ella.', 'כן, יש בו קצת שמנת, אבל אפשר להכין בלי.'],
-          options: [['phrase.diet.without-onions', true, GREAT_WITHOUT], ['phrase.diet.allergic-nuts', false], ['phrase.diet.vegetarian', false]] },
-      ],
-    }),
-    k.receipt(['אלרגיה, מה אתה אוכל, מה יש במנה ומה להוריד — אמרת הכל, ברור ובסדר הנכון.', 'The allergy, what you eat, what is in the dish and what to leave out — you said it all, clearly and in the right order.']),
-    // A fast, detailed safety question that is meant to be too much. Asking again beats guessing.
-    k.ambush('recovery',
-      ['Just to be safe does your nut allergy mean we should avoid the shared fryer too?', 'Juste pour être sûr, votre allergie aux noix veut dire qu’on doit aussi éviter la friteuse partagée ?', 'Solo para asegurarme, ¿su alergia a los frutos secos significa que también debemos evitar la freidora compartida?', 'רק ליתר ביטחון — האלרגיה לאגוזים אומרת שכדאי להימנע גם מהמטגן המשותף?'],
-      'phrase.recovery.repeat', 'phrase.diet.vegetarian'),
-    k.receipt(['שאלת בטיחות מפורטת ומהירה — וביקשת שיחזרו במקום לנחש. עם אלרגיה, זה בדיוק הצעד הנכון.', 'A detailed, fast safety question — and you asked them to repeat instead of guessing. With an allergy, exactly the right move.']),
-    { kind: 'summary' },
-  ];
-}
 
 /* ── Mission 17 — Supermarket ────────────────────────────────────────────────────────────────── */
 

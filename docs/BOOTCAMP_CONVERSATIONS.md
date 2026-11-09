@@ -850,28 +850,21 @@ _Reply-training drill:_ “Hi there! Can I help you find anything?” · “Of c
 - **Without onions, please.** · בלי בצל, בבקשה. — _התבנית: Without ___ — מסירה כל מרכיב שלא בא לך._
 - **I'm vegetarian.** · אני צמחוני. — _שתי מילים שחוסכות עשר שאלות._
 - **Does it have dairy?** · יש בזה מוצרי חלב? — _התבנית: Does this have ___? — בודקת כל מרכיב לפני שהוא מגיע אליך._
-- **Is this spicy?** · זה חריף?
 
 ### Expected replies (you hear)
-- **Let me check with the kitchen.** · אבדוק עם המטבח.
-- **We can make it without.** · אפשר להכין בלי.
-- **That one contains nuts.** · זה מכיל אגוזים.
-- **No, it's not spicy.** · לא, זה לא חריף.
-- **Any other allergies?** · יש עוד אלרגיות?
-
-_Reply-training drill:_ “Let me check with the kitchen.” · “We can make it without.” · “That one contains nuts.” · “Any other allergies?”
+- **Hi there! Are you ready to order?** · היי! מוכן להזמין?
+- **Thank you for telling me. Any other allergies or dietary restrictions?** · תודה שאמרת. יש עוד אלרגיות או הגבלות תזונה?
+- **Got it. The mushroom risotto is vegetarian, but I'll check with the kitchen about the nuts.** · הבנתי. ריזוטו הפטריות צמחוני, אבל אבדוק עם המטבח לגבי האגוזים.
+- **Yes, it has some cream, but we can make it without.** · כן, יש בו קצת שמנת, אבל אפשר להכין בלי.
+- **Of course. I'll tell the kitchen about your allergy.** · כמובן. אגיד למטבח על האלרגיה שלך.
+- **I'll check with them and come right back.** · אבדוק איתם ואחזור מיד.
 
 ### Recovery tools reused
-`Can you repeat that?` · `Please speak slowly.` · `Thank you!`
-
-### Cold open (ambush)
-- 🧑 (fast) “Just to be safe does your nut allergy mean we should avoid the shared fryer too?” · רק ליתר ביטחון — האלרגיה לאגוזים אומרת שכדאי להימנע גם מהמטגן המשותף?
-  - ✅ best move: **Can you repeat that?** · אפשר לחזור על זה?
-  - ✗ distractor: I'm vegetarian.
+`Thank you!`
 
 ### Dialogue: `allergy-order` — happy path
 - **🧑 Them:** “Hi there! Are you ready to order?” · היי! מוכן להזמין?
-- **🫵 You:** “I'm allergic to nuts.” · אני אלרגי לאגוזים. (אומרים קודם כל — לפני ההזמנה)
+- **🫵 You:** “I'm allergic to nuts.” · אני אלרגי לאגוזים.
 - **🧑 Them:** “Thank you for telling me. Any other allergies or dietary restrictions?” · תודה שאמרת. יש עוד אלרגיות או הגבלות תזונה?
 - **🫵 You:** “I'm vegetarian.” · אני צמחוני.
 - **🧑 Them:** “Got it. The mushroom risotto is vegetarian, but I'll check with the kitchen about the nuts.” · הבנתי. ריזוטו הפטריות צמחוני, אבל אבדוק עם המטבח לגבי האגוזים.
@@ -883,7 +876,11 @@ _Reply-training drill:_ “Let me check with the kitchen.” · “We can make i
 - **🧑 Them:** “I'll check with them and come right back.” · אבדוק איתם ואחזור מיד.
 
 #### Wrong / recovery branches
+- ⚠︎ less useful: 🫵 “Does it have dairy?” → 🧑 “Hi there! Are you ready to order?” · היי! מוכן להזמין?
 - ⚠︎ less useful: 🫵 “Thank you!” → 🧑 “Of course — but is there anything else I should know?” · כמובן — אבל יש עוד משהו שכדאי שאדע?
+- ⚠︎ less useful: 🫵 “I'm vegetarian.” → 🧑 “Got it. The mushroom risotto is vegetarian, but I'll check with the kitchen about the nuts.” · הבנתי. ריזוטו הפטריות צמחוני, אבל אבדוק עם המטבח לגבי האגוזים.
+- ⚠︎ less useful: 🫵 “Does it have dairy?” → 🧑 “Yes, it has some cream, but we can make it without.” · כן, יש בו קצת שמנת, אבל אפשר להכין בלי.
+- ⚠︎ less useful: 🫵 “I'm allergic to nuts.” → 🧑 “Of course. I'll tell the kitchen about your allergy.” · כמובן. אגיד למטבח על האלרגיה שלך.
 
 ### Review status
 - 🤖 AI-drafted (English + Hebrew) — **pending human / native-Hebrew review**

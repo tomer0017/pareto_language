@@ -617,3 +617,27 @@ ending " —" as not yet known. The companion's first visual-board hint for this
 (`MISSION_GAME_INTRO`), not "hear the price". Artwork: 10 slots + 1 prop, emoji PLACEHOLDERS — VISUAL
 PRODUCTION REQUIRED (Astra pass): `MISSION14_ASSET_MANIFEST.md`. Tests: `mission14.test.ts` (71); Missions 01–13
 and 15–30 byte-for-byte unchanged (the old "14–30" pins now pin 15–30).
+
+**Mission 15 — Food Preferences & Allergies (registry key 13), 2026-11-09.** A deliberately SMALL survival mission
+(20 interactions: 1 kitchen check · 4 "What do you do?" situations · 5 supported · 5 no help · 5 final; no Flex).
+The locked dialogue is unchanged word for word (transcript fingerprint identical); the tree changed on purpose:
+every turn is a real decision (a miss is re-asked slowly), the "Is this spicy?" branch and the repeat / slowly
+recovery branches are gone, and a polite "Thank you!" to "Any other allergies…?" keeps its own follow-up ("…is
+there anything else I should know?" — Mission 24's word audit relies on its "should"). Journey
+(`practiceAllergies.ts`, shared by EN / ES / FR): briefing (the learner's own needs) → cards: "Are you ready to
+order?" (Mission 14; in FR / ES the singular "prêt" / "listo" is new, so it is shown once as the allergy card's
+context) + "I'm allergic to nuts." → "Any other allergies…?" + "I'm vegetarian." → the kitchen-check line, then
+ONE comprehension board: what did the waiter say about the nuts? (not known yet — the kitchen will check) →
+"Does it have dairy?" + the cream answer → "I'll tell the kitchen" / "I'll check with them and come right back"
+→ WHAT DO YOU DO? (nuts → allergy, no meat → vegetarian, dairy → the question, onions → "Great. Without onions,
+please.") → supported → conversation → no help → video (none recorded: safe skip) → final → 👨‍🍳 KITCHEN CHECK
+SENT. "Without onions", "Great", please and "Thank you!" are verified prior: retrieved, never re-taught (no card,
+no builder). **Safety:** the **Food Check** (My needs ‖ What the waiter said) fills only from the waiter's lines;
+the nuts go from "?" to "Kitchen checking…" and STAY there — the state's nut status has no "safe" value, and no
+copy, tile, receipt or result says safe. The board parser treats a row ending "…" as still pending. Six
+off-scope sentences (is-spicy, not-spicy, contains-nuts, let-me-check, make-without, anything-else-allergic) are
+archived in `retired.ts`; six whole waiter lines are new hear items. The companion's board hint is "Hear the waiter
+— and tap what he really said." Coverage: `mission15Coverage.ts`. Artwork: 5 slots + 1 prop, emoji PLACEHOLDERS —
+VISUAL PRODUCTION REQUIRED (Astra pass): `MISSION15_ASSET_MANIFEST.md`. Tests: `mission15.test.ts` (61);
+Missions 01–14 and 16–30 byte-for-byte unchanged (the old "15–30" pins now pin 16–30). The same release commits
+the user's re-recorded videos en_1, en_2, en_3, en_6, en_7, fr_3, fr_5, fr_6 (verified H.264 / AAC, byte-exact).

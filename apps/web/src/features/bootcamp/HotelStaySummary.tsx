@@ -51,8 +51,9 @@ export function splitTimeBoard(text: string): TimeBoard | null {
   const route = parts.find((p) => ROUTE.test(p));
   const plan = parts.map((p) => PLAN.exec(p)).find((m) => m !== null);
   if (!strip && !route && !plan) return null;
-  // A row is unknown while it holds "?" — or "—" (nothing yet: Mission 14's bill).
-  const row = (t: string) => ({ text: t, known: !t.includes('?') && !t.endsWith(' —') });
+  // A row is unknown while it holds "?" — or "—" (nothing yet: Mission 14's bill) — or is still
+  // pending ("…": Mission 15's kitchen check, which the conversation never resolves).
+  const row = (t: string) => ({ text: t, known: !t.includes('?') && !t.endsWith(' —') && !t.endsWith('…') });
   const cells = (p: string) => p.split(' → ').map((c) => ({ text: c.replace(/ ●$/u, ''), now: c.endsWith(' ●') }));
   const isBoard = (p: string): boolean => STRIP.test(p) || ROUTE.test(p) || PLAN.test(p);
   const first = parts.findIndex(isBoard);

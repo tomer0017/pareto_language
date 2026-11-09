@@ -1,12 +1,12 @@
 import type { LocalizedText } from '@ready/content-schema';
 import type { BootcampDayContent, BootcampDialogue, BootcampItem } from '../types.js';
 import { recoveryFr } from './recovery.js';
-import { m15Flow } from '../practiceEveryday.js';
+import { m15Steps } from '../practiceAllergies.js';
 
 /**
- * French Mission 15 — "Demandes spéciales et allergies" (Special Requests & Allergies). French
- * parallel of English mission 13: keep your body safe in any kitchen (allergy, "sans ___", vegetarian,
- * check an ingredient). `tr:{en,he}` glosses; `fr.*` ids. AI-drafted, vous, pending review.
+ * French Mission 15 — Food Preferences & Allergies. The conversation is LOCKED (mission15.test.ts pins it
+ * word for word); the journey around it is `m15Steps` (practiceAllergies.ts). The four functions keep
+ * their sentence ids; off-scope sentences are archived in retired.ts. Service register (vous / usted).
  */
 const T = (he: string, en: string): LocalizedText => ({ he, en });
 const TR = (en: string, he: string): LocalizedText => ({ en, he });
@@ -21,33 +21,34 @@ export const DAY13_FR_ITEMS: BootcampItem[] = [
     tip: T('שתי מילים שחוסכות עשר שאלות.', 'Two words that save ten questions.') },
   { id: 'fr.phrase.diet.does-have-dairy', text: 'Est-ce qu’il y a des produits laitiers dedans ?', meaning: T('יש בזה מוצרי חלב?', 'Does it have dairy?'),
     tip: T('התבנית: Est-ce qu’il y a ___ dedans ? — בודקת כל מרכיב לפני שהוא מגיע אליך.', 'Template: Est-ce qu’il y a ___ dedans? — checks any ingredient before it reaches you.') },
-  { id: 'fr.phrase.diet.is-spicy', text: 'C’est épicé ?', meaning: T('זה חריף?', 'Is this spicy?') },
-  // hear — the kitchen's replies
-  { id: 'fr.reply.diet.let-me-check', text: 'Je vérifie avec la cuisine.', meaning: T('אבדוק עם המטבח.', 'Let me check with the kitchen.') },
-  { id: 'fr.reply.diet.make-without', text: 'On peut le faire sans.', meaning: T('אפשר להכין בלי.', 'We can make it without.') },
-  { id: 'fr.reply.diet.contains-nuts', text: 'Celui-là contient des noix.', meaning: T('זה מכיל אגוזים.', 'That one contains nuts.') },
-  { id: 'fr.reply.diet.not-spicy', text: 'Non, ce n’est pas épicé.', meaning: T('לא, זה לא חריף.', "No, it's not spicy.") },
-  { id: 'fr.reply.diet.anything-else-allergic', text: 'D’autres allergies ?', meaning: T('יש עוד אלרגיות?', "Any other allergies?") },
-  ...recoveryFr('fr.phrase.recovery.repeat', 'fr.phrase.recovery.slowly', 'fr.phrase.recovery.thank-you'),
+  // hear — the waiter's whole lines
+  { id: 'fr.reply.diet.ready', text: 'Bonjour ! Vous êtes prêt à commander ?', meaning: T('היי! מוכן להזמין?', 'Hi there! Are you ready to order?') },
+  { id: 'fr.reply.diet.other', text: 'Merci de me le dire. D’autres allergies ou restrictions alimentaires ?', meaning: T('תודה שאמרת. יש עוד אלרגיות או הגבלות תזונה?', 'Thank you for telling me. Any other allergies or dietary restrictions?') },
+  { id: 'fr.reply.diet.risotto', text: 'Compris. Le risotto aux champignons est végétarien, mais je vérifie avec la cuisine pour les noix.', meaning: T('הבנתי. ריזוטו הפטריות צמחוני, אבל אבדוק עם המטבח לגבי האגוזים.', "Got it. The mushroom risotto is vegetarian, but I'll check with the kitchen about the nuts.") },
+  { id: 'fr.reply.diet.cream', text: 'Oui, il y a un peu de crème, mais on peut le faire sans.', meaning: T('כן, יש בו קצת שמנת, אבל אפשר להכין בלי.', 'Yes, it has some cream, but we can make it without.') },
+  { id: 'fr.reply.diet.tell', text: 'Bien sûr. Je préviens la cuisine pour votre allergie.', meaning: T('כמובן. אגיד למטבח על האלרגיה שלך.', "Of course. I'll tell the kitchen about your allergy.") },
+  { id: 'fr.reply.diet.back', text: 'Je vérifie avec eux et je reviens tout de suite.', meaning: T('אבדוק איתם ואחזור מיד.', "I'll check with them and come right back.") },
+  // "Thank you!" — the toolkit's own sentence (prior learning: never taught here)
+  ...recoveryFr('fr.phrase.recovery.thank-you'),
 ];
 
 const SCENE_ALLERGY: BootcampDialogue = {
   id: 'allergy-order',
   start: 'n1',
+  // Every turn is a real decision: a line from another moment of the order does not fit — a miss is
+  // asked again, slowly, and the same choice comes back. A polite "Thank you!" to "Any other allergies…?"
+  // keeps its own answer: the waiter asks once more, in other words (Mission 24 relies on its "should").
   nodes: [
     { id: 'n1', who: 'npc', next: 'c1', en: 'Bonjour ! Vous êtes prêt à commander ?', tr: TR('Hi there! Are you ready to order?', 'היי! מוכן להזמין?'), he: 'היי! מוכן להזמין?' },
     { id: 'c1', who: 'you', en: '', he: '', choices: [
-      { en: 'Je suis allergique aux noix.', tr: TR("I'm allergic to nuts.", 'אני אלרגי לאגוזים. (אומרים קודם כל — לפני ההזמנה)'), he: 'אני אלרגי לאגוזים.', itemId: 'fr.phrase.diet.allergic-nuts', correct: true, next: 'n2' },
-      { en: 'Parlez lentement, s’il vous plaît.', tr: TR('Please speak slowly.', 'דבר לאט, בבקשה.'), he: 'דבר לאט, בבקשה.', itemId: 'fr.phrase.recovery.slowly', correct: true, next: 'r1' },
-    ] },
-    { id: 'r1', who: 'npc', slow: true, next: 'c1b', en: 'Bien sûr — vous êtes prêt à commander ?', tr: TR('Sure — are you ready to order?', 'בטח — מוכן להזמין?'), he: 'בטח — מוכן להזמין?' },
-    { id: 'c1b', who: 'you', en: '', he: '', choices: [
       { en: 'Je suis allergique aux noix.', tr: TR("I'm allergic to nuts.", 'אני אלרגי לאגוזים.'), he: 'אני אלרגי לאגוזים.', itemId: 'fr.phrase.diet.allergic-nuts', correct: true, next: 'n2' },
+      { en: 'Est-ce qu’il y a des produits laitiers dedans ?', tr: TR('Does it have dairy?', 'יש בזה מוצרי חלב?'), he: 'יש בזה מוצרי חלב?', itemId: 'fr.phrase.diet.does-have-dairy', correct: false, next: 'm1' },
     ] },
-    { id: 'n2', who: 'npc', next: 'c2', en: 'Merci de me le dire. D’autres allergies ou restrictions alimentaires ?', tr: TR("Thank you for telling me. Any other allergies or dietary restrictions?", 'תודה שאמרת. יש עוד אלרגיות או הגבלות תזונה?'), he: 'תודה שאמרת. יש עוד אלרגיות או הגבלות תזונה?' },
+    { id: 'm1', who: 'npc', slow: true, next: 'c1', en: 'Bonjour ! Vous êtes prêt à commander ?', tr: TR('Hi there! Are you ready to order?', 'היי! מוכן להזמין?'), he: 'היי! מוכן להזמין?' },
+    { id: 'n2', who: 'npc', next: 'c2', en: 'Merci de me le dire. D’autres allergies ou restrictions alimentaires ?', tr: TR('Thank you for telling me. Any other allergies or dietary restrictions?', 'תודה שאמרת. יש עוד אלרגיות או הגבלות תזונה?'), he: 'תודה שאמרת. יש עוד אלרגיות או הגבלות תזונה?' },
     { id: 'c2', who: 'you', en: '', he: '', choices: [
       { en: 'Je suis végétarien.', tr: TR("I'm vegetarian.", 'אני צמחוני.'), he: 'אני צמחוני.', itemId: 'fr.phrase.diet.vegetarian', correct: true, next: 'n3' },
-      { en: 'Merci !', tr: TR('Thank you!', 'תודה! (מנומס — אבל הוא שאל שאלה)'), he: 'תודה!', itemId: 'fr.phrase.recovery.thank-you', correct: false, next: 'r2' },
+      { en: 'Merci !', tr: TR('Thank you!', 'תודה!'), he: 'תודה!', itemId: 'fr.phrase.recovery.thank-you', correct: false, next: 'r2' },
     ] },
     { id: 'r2', who: 'npc', next: 'c2b', en: 'Bien sûr — mais y a-t-il autre chose que je devrais savoir ?', tr: TR('Of course — but is there anything else I should know?', 'כמובן — אבל יש עוד משהו שכדאי שאדע?'), he: 'כמובן — אבל יש עוד משהו שכדאי שאדע?' },
     { id: 'c2b', who: 'you', en: '', he: '', choices: [
@@ -56,30 +57,21 @@ const SCENE_ALLERGY: BootcampDialogue = {
     { id: 'n3', who: 'npc', next: 'c3', en: 'Compris. Le risotto aux champignons est végétarien, mais je vérifie avec la cuisine pour les noix.', tr: TR("Got it. The mushroom risotto is vegetarian, but I'll check with the kitchen about the nuts.", 'הבנתי. ריזוטו הפטריות צמחוני, אבל אבדוק עם המטבח לגבי האגוזים.'), he: 'הבנתי. ריזוטו הפטריות צמחוני, אבל אבדוק עם המטבח לגבי האגוזים.' },
     { id: 'c3', who: 'you', en: '', he: '', choices: [
       { en: 'Est-ce qu’il y a des produits laitiers dedans ?', tr: TR('Does it have dairy?', 'יש בזה מוצרי חלב?'), he: 'יש בזה מוצרי חלב?', itemId: 'fr.phrase.diet.does-have-dairy', correct: true, next: 'n4' },
-      { en: 'Vous pouvez répéter ?', tr: TR('Can you repeat that?', 'אפשר לחזור על זה?'), he: 'אפשר לחזור על זה?', itemId: 'fr.phrase.recovery.repeat', correct: true, next: 'r3' },
+      { en: 'Je suis végétarien.', tr: TR("I'm vegetarian.", 'אני צמחוני.'), he: 'אני צמחוני.', itemId: 'fr.phrase.diet.vegetarian', correct: false, next: 'm3' },
     ] },
-    { id: 'r3', who: 'npc', slow: true, next: 'c3b', en: 'Le risotto aux champignons — est végétarien.', tr: TR('The mushroom risotto — is vegetarian.', 'ריזוטו הפטריות — צמחוני.'), he: 'ריזוטו הפטריות — צמחוני.' },
-    { id: 'c3b', who: 'you', en: '', he: '', choices: [
-      { en: 'Est-ce qu’il y a des produits laitiers dedans ?', tr: TR('Does it have dairy?', 'יש בזה מוצרי חלב?'), he: 'יש בזה מוצרי חלב?', itemId: 'fr.phrase.diet.does-have-dairy', correct: true, next: 'n4' },
-    ] },
+    { id: 'm3', who: 'npc', slow: true, next: 'c3', en: 'Compris. Le risotto aux champignons est végétarien, mais je vérifie avec la cuisine pour les noix.', tr: TR("Got it. The mushroom risotto is vegetarian, but I'll check with the kitchen about the nuts.", 'הבנתי. ריזוטו הפטריות צמחוני, אבל אבדוק עם המטבח לגבי האגוזים.'), he: 'הבנתי. ריזוטו הפטריות צמחוני, אבל אבדוק עם המטבח לגבי האגוזים.' },
     { id: 'n4', who: 'npc', next: 'c4', en: 'Oui, il y a un peu de crème, mais on peut le faire sans.', tr: TR('Yes, it has some cream, but we can make it without.', 'כן, יש בו קצת שמנת, אבל אפשר להכין בלי.'), he: 'כן, יש בו קצת שמנת, אבל אפשר להכין בלי.' },
     { id: 'c4', who: 'you', en: '', he: '', choices: [
       { en: 'Parfait. Sans oignons, s’il vous plaît.', tr: TR('Great. Without onions, please.', 'מעולה. בלי בצל, בבקשה.'), he: 'מעולה. בלי בצל, בבקשה.', itemId: 'fr.phrase.diet.without-onions', correct: true, next: 'n5' },
-      { en: 'C’est épicé ?', tr: TR('Is this spicy?', 'זה חריף?'), he: 'זה חריף?', itemId: 'fr.phrase.diet.is-spicy', correct: true, next: 'n4b' },
+      { en: 'Est-ce qu’il y a des produits laitiers dedans ?', tr: TR('Does it have dairy?', 'יש בזה מוצרי חלב?'), he: 'יש בזה מוצרי חלב?', itemId: 'fr.phrase.diet.does-have-dairy', correct: false, next: 'm4' },
     ] },
-    { id: 'n4b', who: 'npc', next: 'c4b', en: 'Pas du tout — c’est très doux.', tr: TR("Not at all — it's very mild.", 'ממש לא — הוא עדין מאוד.'), he: 'ממש לא — הוא עדין מאוד.' },
-    { id: 'c4b', who: 'you', en: '', he: '', choices: [
-      { en: 'Sans oignons, s’il vous plaît.', tr: TR('Without onions, please.', 'בלי בצל, בבקשה.'), he: 'בלי בצל, בבקשה.', itemId: 'fr.phrase.diet.without-onions', correct: true, next: 'n5' },
-    ] },
+    { id: 'm4', who: 'npc', slow: true, next: 'c4', en: 'Oui, il y a un peu de crème, mais on peut le faire sans.', tr: TR('Yes, it has some cream, but we can make it without.', 'כן, יש בו קצת שמנת, אבל אפשר להכין בלי.'), he: 'כן, יש בו קצת שמנת, אבל אפשר להכין בלי.' },
     { id: 'n5', who: 'npc', next: 'c5', en: 'Bien sûr. Je préviens la cuisine pour votre allergie.', tr: TR("Of course. I'll tell the kitchen about your allergy.", 'כמובן. אגיד למטבח על האלרגיה שלך.'), he: 'כמובן. אגיד למטבח על האלרגיה שלך.' },
     { id: 'c5', who: 'you', en: '', he: '', choices: [
       { en: 'Merci !', tr: TR('Thank you!', 'תודה!'), he: 'תודה!', itemId: 'fr.phrase.recovery.thank-you', correct: true, next: 'n6' },
-      { en: 'Parlez lentement, s’il vous plaît.', tr: TR('Please speak slowly.', 'דבר לאט, בבקשה.'), he: 'דבר לאט, בבקשה.', itemId: 'fr.phrase.recovery.slowly', correct: true, next: 'r5' },
+      { en: 'Je suis allergique aux noix.', tr: TR("I'm allergic to nuts.", 'אני אלרגי לאגוזים.'), he: 'אני אלרגי לאגוזים.', itemId: 'fr.phrase.diet.allergic-nuts', correct: false, next: 'm5' },
     ] },
-    { id: 'r5', who: 'npc', slow: true, next: 'c5b', en: 'Je préviens — la cuisine — pour votre allergie.', tr: TR("I'll tell — the kitchen — about your allergy.", 'אני אגיד — למטבח — על האלרגיה.'), he: 'אני אגיד — למטבח — על האלרגיה.' },
-    { id: 'c5b', who: 'you', en: '', he: '', choices: [
-      { en: 'Merci !', tr: TR('Thank you!', 'תודה!'), he: 'תודה!', itemId: 'fr.phrase.recovery.thank-you', correct: true, next: 'n6' },
-    ] },
+    { id: 'm5', who: 'npc', slow: true, next: 'c5', en: 'Bien sûr. Je préviens la cuisine pour votre allergie.', tr: TR("Of course. I'll tell the kitchen about your allergy.", 'כמובן. אגיד למטבח על האלרגיה שלך.'), he: 'כמובן. אגיד למטבח על האלרגיה שלך.' },
     { id: 'n6', who: 'npc', end: true, en: 'Je vérifie avec eux et je reviens tout de suite.', tr: TR("I'll check with them and come right back.", 'אבדוק איתם ואחזור מיד.'), he: 'אבדוק איתם ואחזור מיד.' },
   ],
 };
@@ -89,13 +81,6 @@ export const DAY13_FR: BootcampDayContent = {
   title: T('העדפות אוכל ואלרגיות', 'Food Preferences & Allergies'),
   items: DAY13_FR_ITEMS,
   dialogues: { 'allergy-order': SCENE_ALLERGY },
-  steps: [
-    { kind: 'talk', icon: '🥜', title: T('משימה 15: בקשות מיוחדות ואלרגיות', 'Mission 15: Special Requests & Allergies'),
-      body: [
-        T('יש מילים שאתה אולי תצטרך רק פעם אחת בחיים — אבל אז הן קריטיות.', 'Some words you may need only once in your life — but then they’re critical.'),
-        T('היום נלמד לשמור על הגוף שלך בכל מטבח: אלרגיה, "בלי", צמחוני, ובדיקת מרכיב.', 'Today we learn to keep your body safe in any kitchen: allergy, “without”, vegetarian, and checking an ingredient.'),
-      ], cta: T('לשבת ולהזמין בבטחה', 'Sit down and order safely') },
-    // From the key sentences onward the flow is shared by all languages: see practiceEveryday.ts.
-    ...m15Flow('fr'),
-  ],
+  // The whole journey is shared by all languages: see practiceAllergies.ts (`m15Steps`).
+  steps: m15Steps('fr'),
 };
