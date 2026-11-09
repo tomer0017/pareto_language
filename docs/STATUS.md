@@ -2003,3 +2003,26 @@ senses, each recognised by cue chunks of its line). A registered form is tracked
 `unpreparedWords(day, prior, lang)`; a line that decides no sense (`#?`) never counts as learned and is always
 flagged. Same form + same meaning is still prior; same form + another meaning is NEW. French kitchen "cuisine"
 is now taught by Mission 13's own mother → kitchen card; it is prior from Mission 14 on. Tests: Mission 13 76.
+
+**Mission 14 — Restaurant Meal (registry key 4), 2026-11-09.** One ordinary sit-down meal, deliberately SHORT
+(26 interactions: 5 teaching · 5 Waiter Signals · 1 Flex · 5 supported · 5 no help · 5 final). The locked
+dialogue is unchanged word for word (transcript fingerprint identical); the tree changed on purpose: every turn
+is a real decision (a miss is re-asked slowly), the pasta and "one moment" branches are gone, and the door keeps
+its one recovery move ("I don't understand" → "A table? For how many people?" — the only Core turn where it is
+met; Mission 28's word audit relies on it). Journey (`practiceRestaurant.ts`, shared by EN / ES / FR): briefing
+(two of you, no reservation, chicken without onions, water) → door cards + "a table for two" → table cards ("Are
+you ready to order?" = the waiter wants your food order) + the ONE builder (I'll have → the chicken, → without
+onions, please.) → drink cards + water → "Anything else?" → "That's all, thanks." (Mission 03's own sentence
+`phrase.coffee.thats-all`: used, never re-taught) → "Coming right up!" → ⏳ Later… → "Is everything okay?" →
+"Yes, that was delicious! The bill, please." → WAITER SIGNALS (one fast board: what does the waiter want now?
+table / food / drink / more / meal check) → FLEX (transferOnly, one round: "a table for four" by ear — "four"
+is verified prior learning, "three" is not) → supported meal → conversation → no help → video (EN / FR exist, ES
+safe skip) → final → 🍽️ MEAL COMPLETE. The **Restaurant Ticket** (Table / Main / Change ‖ Drink / Order / Bill)
+fills only when the learner has said each fact; "Later…" is a scene cue only (app-language note + `mealPhase`
+eating → bill), never spoken, never a sentence, never prior learning or coverage. Coverage:
+`mission14Coverage.ts` (26 chunks: covered here, verified prior, or context-only waiter lines with nothing to
+answer). New sentence `phrase.rest.chicken-no-onions` (the builder's exact line). The board parser treats a row
+ending " —" as not yet known. The companion's first visual-board hint for this mission is the waiter's intent
+(`MISSION_GAME_INTRO`), not "hear the price". Artwork: 10 slots + 1 prop, emoji PLACEHOLDERS — VISUAL
+PRODUCTION REQUIRED (Astra pass): `MISSION14_ASSET_MANIFEST.md`. Tests: `mission14.test.ts` (71); Missions 01–13
+and 15–30 byte-for-byte unchanged (the old "14–30" pins now pin 15–30).

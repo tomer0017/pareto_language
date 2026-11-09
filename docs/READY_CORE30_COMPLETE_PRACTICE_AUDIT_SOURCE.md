@@ -2349,7 +2349,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Eso es todo, gracias.
 - Role: learner production
 - Tip / pattern note: "Closes any order politely. Works everywhere on earth." / "סוגר כל הזמנה בנימוס. עובד בכל מקום בעולם."
-- Used in missions: 03, 29
+- Used in missions: 03, 14, 29
 - Exercised here as: visual-match audio (step 9, round 5); match-pairs answer tile (step 15, pair 1); quick-reply response (step 16, round 3, accepted); quick-reply response (step 21, round 5, accepted); quick-reply response (step 21, round 6, wrong option); visual-match audio (step 24, round 5); dialogue choice breakfast-order/c4 (accepted); dialogue choice breakfast-order/c5 (accepted)
 
 ### Sentence: `phrase.coffee.card`
@@ -14007,7 +14007,7 @@ Learner sentences taught beside the dialogue (not a line in any scene):
 - Phase: 3 — Everyday Life / חיי יום-יום 🏡
 - Source runtime file(s): `apps/web/src/features/bootcamp/day4.ts` · `apps/web/src/features/bootcamp/fr/day4.ts` · `apps/web/src/features/bootcamp/es/day4.ts`
 - Video: found by convention, never written into mission content — EN `videos/en/en_14.mp4` · FR `videos/fr/fr_14.mp4` · ES `videos/es/es_14.mp4`. Played only where that file exists (inventory: `docs/CORE30_FINAL_VIDEO_ACTION_MAP.md`).
-- Video steps inside the Practice flow: no
+- Video steps inside the Practice flow: yes (see flow)
 
 ## Learning goal / intro screen
 
@@ -14028,59 +14028,99 @@ Mission card (plan metadata, shown on Home / Path / mission overview):
 Intro screen (first Practice step; identical in the English, French and Spanish missions unless flagged):
 
 - Icon: 🍽️
-- Title: "Restaurant Meal" / "ארוחה במסעדה"
-- Text 1: "A real dinner: table, menu, order, drink, bill." / "ארוחת ערב אמיתית: שולחן, תפריט, הזמנה, שתייה, חשבון."
-- Text 2: "The freeze starts the second the waiter arrives with a question. We meet them in advance." / "הבריח מתחיל ברגע שהמלצר מגיע ושואל שאלה. נכיר את השאלות מראש."
+- Title: "Mission 14: Restaurant Meal" / "משימה 14: ארוחה במסעדה"
+- Text 1: "There are two of you and no reservation. You want chicken without onions, and water. Get through the meal, all the way to the bill." / "אתם שניים ואין לכם הזמנה. אתה רוצה עוף בלי בצל ומים. תעברו את הארוחה עד החשבון."
 - Button: "Walk in" / "להיכנס למסעדה"
 
 ## Current Practice flow
 
-1. `talk` — intro screen — "Restaurant Meal"
-2. `prime` — before-we-speak (word intro) — 5 words → builds `phrase.rest.the-bill`
-3. `tool` — key sentence (listen → reveal → say aloud) — `phrase.rest.table-two` “A table for two, please.” · label "The opener" / "הפתיח" (1/4)
-4. `tool` — key sentence (listen → reveal → say aloud) — `phrase.rest.ill-have-chicken` “I'll have the chicken.” · label "Order it" / "להזמין" (2/4)
-5. `tool` — key sentence (listen → reveal → say aloud) — `phrase.rest.no-onions` “No onions, please.” · label "Special request" / "בקשה מיוחדת" (3/4)
-6. `tool` — key sentence (listen → reveal → say aloud) — `phrase.rest.the-bill` “The bill, please.” · label "Close it out" / "לסגור" (4/4)
-7. `replies` — expected replies (listening drill) — after `phrase.rest.ill-have-chicken`: 5 replies
-8. `receipt` — receipt (proof card) — "You recognize every waiter question — before it can surprise you." / "אתה מזהה את כל שאלות המלצר — לפני שהן מפתיעות אותך."
-9. `quickReply` — quick reply (hear → pick your response) — 6 round(s)
-10. `swap` — swap it (one frame, several endings) — 2 round(s)
-11. `dialogue` — dialogue (choose your line) — scene `sit-down-meal`
-12. `receipt` — receipt (proof card) — "A full dinner: from table to bill, special request included." / "ארוחת ערב שלמה: משולחן ועד חשבון, כולל בקשה מיוחדת."
-13. `swipe` — sentence review — 12 sentences
-14. `quickReply` — quick reply (hear → pick your response) — 5 round(s) · speed challenge
-15. `receipt` — receipt (proof card) — "A whole meal at a real waiter’s pace — from table to bill." / "ארוחה שלמה בקצב של מלצר אמיתי — משולחן ועד חשבון."
-16. `summary` — victory screen
+1. `talk` — intro screen — "Mission 14: Restaurant Meal"
+2. `prime` — before-we-speak (word intro) — 2 words → builds ``
+3. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+4. `prime` — before-we-speak (word intro) — 3 words → builds ``
+5. `sentenceBuilder` — sentence builder (put the chunks in order) — 1 round(s)
+6. `prime` — before-we-speak (word intro) — 2 words → builds ``
+7. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+8. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+9. `prime` — before-we-speak (word intro) — 1 words → builds ``
+10. `prime` — before-we-speak (word intro) — 3 words → builds ``
+11. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+12. `receipt` — receipt (proof card) — "🍽️ Table order: Table: 2 / Main: Chicken / Change: No onions ‖ 🥤 Drink & bill: Drink: Water / Order: Closed ✅ / Bill: Requested ✅ ¦ Your order — from the table to the bill." / "🍽️ הזמנה לשולחן: שולחן: 2 / מנה: עוף / שינוי: בלי בצל ‖ 🥤 שתייה וחשבון: שתייה: מים / הזמנה: נסגרה ✅ / חשבון: התבקש ✅ ¦ ההזמנה שלך — מהשולחן ועד החשבון."
+13. `visualMatch` — visual match (hear → tap the tile) — 5 round(s) · speed challenge
+14. `visualMatch` — visual match (hear → tap the tile) — 1 round(s)
+15. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+16. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+17. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+18. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+19. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+20. `receipt` — receipt (proof card) — "🍽️ Table order: Table: 2 / Main: Chicken / Change: No onions ‖ 🥤 Drink & bill: Drink: Water / Order: Closed ✅ / Bill: Requested ✅ ¦ The whole meal — from the door to the bill." / "🍽️ הזמנה לשולחן: שולחן: 2 / מנה: עוף / שינוי: בלי בצל ‖ 🥤 שתייה וחשבון: שתייה: מים / הזמנה: נסגרה ✅ / חשבון: התבקש ✅ ¦ כל הארוחה — מהכניסה ועד החשבון."
+21. `dialogue` — dialogue (choose your line) — scene `sit-down-meal`
+22. `receipt` — receipt (proof card) — "The whole conversation — table, order, drink, close and bill." / "כל השיחה — שולחן, הזמנה, שתייה, סגירה וחשבון."
+23. `quickReply` — quick reply (hear → pick your response) — 2 round(s) · speed challenge
+24. `quickReply` — quick reply (hear → pick your response) — 2 round(s) · speed challenge
+25. `quickReply` — quick reply (hear → pick your response) — 1 round(s) · speed challenge
+26. `receipt` — receipt (proof card) — "No help — the whole meal, at a real waiter’s pace." / "בלי עזרה — כל הארוחה, בקצב של מלצר אמיתי."
+27. `video` — video — mode again
+28. `quickReply` — quick reply (hear → pick your response) — 2 round(s)
+29. `quickReply` — quick reply (hear → pick your response) — 2 round(s)
+30. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+31. `receipt` — receipt (proof card) — "🍽️ MEAL COMPLETE ¦ 🍽️ Table order: Table: 2 / Main: Chicken / Change: No onions ‖ 🥤 Drink & bill: Drink: Water / Order: Complete ✅ / Bill: Requested ✅" / "🍽️ הארוחה הושלמה ¦ 🍽️ הזמנה לשולחן: שולחן: 2 / מנה: עוף / שינוי: בלי בצל ‖ 🥤 שתייה וחשבון: שתייה: מים / הזמנה: הושלמה ✅ / חשבון: התבקש ✅"
+32. `summary` — victory screen
 
 Step sequence identical in EN / FR / ES: yes.
 
 ## Before we speak / word intro
 
-Step 2. Label: "Before we speak" / "לפני שנדבר". Intro: "The meal’s key nouns — the rest of the sentence is already familiar." / "שמות המפתח של הארוחה — שאר המשפט כבר מוכר.".
+Step 2. Label: "At the door" / "בכניסה". Intro: "🍽️ Table order: Table: ? / Main: ? / Change: ? ‖ 🥤 Drink & bill: Drink: ? / Order: Open / Bill: — ¦ The waiter meets you at the door — and what you answer. Tap to hear." / "🍽️ הזמנה לשולחן: שולחן: ? / מנה: ? / שינוי: ? ‖ 🥤 שתייה וחשבון: שתייה: ? / הזמנה: פתוחה / חשבון: — ¦ המלצר פוגש אתכם בכניסה — ומה אתה עונה. הקש כדי לשמוע.".
 The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
 
-These words carry NO concept key, so the three languages are listed separately — do not read them as position-aligned translations of each other.
+Words are paired across languages by their concept KEY (not by position).
 
-EN:
-  1. "table" — meaning "שולחן" / "table" — icon 🍽️ — new
-  2. "menu" — meaning "תפריט" / "menu" — icon 📋 — new
-  3. "water" — meaning "מים" / "water" — icon 💧 — new
-  4. "bill" — meaning "חשבון" / "bill" — icon 🧾 — new
-  5. "please" — meaning "בבקשה" / "please" — icon none — new
-FR:
-  1. "table" — meaning "שולחן" / "table" — icon 🍽️ — new
-  2. "menu" — meaning "תפריט" / "menu" — icon 📋 — new
-  3. "eau" — meaning "מים" / "water" — icon 💧 — new
-  4. "addition" — meaning "חשבון" / "bill" — icon 🧾 — new
-  5. "s’il vous plaît" — meaning "בבקשה" / "please" — icon none — new
-ES:
-  1. "mesa" — meaning "שולחן" / "table" — icon 🍽️ — new
-  2. "carta" — meaning "תפריט" / "menu" — icon 📋 — new
-  3. "agua" — meaning "מים" / "water" — icon 💧 — new
-  4. "cuenta" — meaning "חשבון" / "bill" — icon 🧾 — new
-  5. "por favor" — meaning "בבקשה" / "please" — icon none — new
+1. `rest.line.reservation` — EN "Good evening! Do you have a reservation?" · FR "Bonsoir ! Vous avez une réservation ?" · ES "¡Buenas noches! ¿Tiene reserva?" — meaning "ערב טוב! יש לכם הזמנה? (המלצר בודק: הזמנתם שולחן מראש?)" / "Good evening! Do you have a reservation? (the waiter checks: did you book a table?)" — icon 🚪 — new
+2. `rest.line.table-two` — EN "No — a table for two, please." · FR "Non — une table pour deux, s’il vous plaît." · ES "No — una mesa para dos, por favor." — meaning "לא — שולחן לשניים, בבקשה. (אין הזמנה + כמה אתם)" / "No — a table for two, please. (no booking + how many of you)" — icon 👥 — new
 
-"These build the sentence:" card: `phrase.rest.the-bill` — EN "The bill, please." · FR "L’addition, s’il vous plaît." · ES "La cuenta, por favor." · HE "החשבון, בבקשה." (with its own play button).
+No build-sentence card.
+
+Step 4. Label: "At the table" / "בשולחן". Intro: "🍽️ Table order: Table: 2 / Main: ? / Change: ? ‖ 🥤 Drink & bill: Drink: ? / Order: Open / Bill: — ¦ The waiter seats you — then asks. Tap to hear." / "🍽️ הזמנה לשולחן: שולחן: 2 / מנה: ? / שינוי: ? ‖ 🥤 שתייה וחשבון: שתייה: ? / הזמנה: פתוחה / חשבון: — ¦ המלצר מושיב אתכם — ואז שואל. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `rest.line.follow` — EN "Perfect, follow me. Here are your menus." · FR "Parfait, suivez-moi. Voici vos menus." · ES "Perfecto, sígame. Aquí tienen las cartas." — meaning "מצוין, בואו אחריי. הנה התפריטים. (הוא מוביל אתכם לשולחן)" / "Perfect, follow me. Here are your menus. (he takes you to your table)" — icon 📋 — new
+2. `rest.line.ready` — EN "Are you ready to order?" · FR "Vous êtes prêts à commander ?" · ES "¿Están listos para pedir?" — meaning "מוכנים להזמין? (המלצר רוצה עכשיו את הזמנת האוכל)" / "Are you ready to order? (the waiter wants your food order now)" — icon 📝 — new
+3. `rest.line.order` — EN "I'll have the chicken, without onions, please." · FR "Je vais prendre le poulet, sans oignons, s’il vous plaît." · ES "Voy a tomar el pollo, sin cebolla, por favor." — meaning "אני אקח את העוף, בלי בצל, בבקשה. (מה אתה לוקח + בלי = להוריד מהמנה)" / "I'll have the chicken, without onions, please. (what you'll have + without = take it out of the dish)" — icon 🍗 — new
+
+No build-sentence card.
+
+Step 6. Label: "A drink" / "שתייה". Intro: "🍽️ Table order: Table: 2 / Main: Chicken / Change: No onions ‖ 🥤 Drink & bill: Drink: ? / Order: Open / Bill: — ¦ After the food — the drink. Tap to hear." / "🍽️ הזמנה לשולחן: שולחן: 2 / מנה: עוף / שינוי: בלי בצל ‖ 🥤 שתייה וחשבון: שתייה: ? / הזמנה: פתוחה / חשבון: — ¦ אחרי האוכל — השתייה. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `rest.line.drink` — EN "Of course. Anything to drink?" · FR "Bien sûr. Quelque chose à boire ?" · ES "Claro. ¿Algo de beber?" — meaning "כמובן. משהו לשתות? (המלצר שואל מה תשתה)" / "Of course. Anything to drink? (the waiter asks for your drink)" — icon 💧 — new
+2. `rest.line.water` — EN "A bottle of water, please." · FR "Une bouteille d’eau, s’il vous plaît." · ES "Una botella de agua, por favor." — meaning "בקבוק מים, בבקשה." / "A bottle of water, please." — icon 💧 — new
+
+No build-sentence card.
+
+Step 9. Label: "Order closed" / "ההזמנה נסגרה". Intro: "🍽️ Table order: Table: 2 / Main: Chicken / Change: No onions ‖ 🥤 Drink & bill: Drink: Water / Order: Closed ✅ / Bill: — ¦ Your order is complete — and the waiter says… Tap to hear." / "🍽️ הזמנה לשולחן: שולחן: 2 / מנה: עוף / שינוי: בלי בצל ‖ 🥤 שתייה וחשבון: שתייה: מים / הזמנה: נסגרה ✅ / חשבון: — ¦ ההזמנה גמורה — והמלצר אומר… הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `rest.line.coming` — EN "Coming right up!" · FR "Ça arrive tout de suite !" · ES "¡Enseguida se lo traigo!" — meaning "מגיע עוד רגע! (ההזמנה בדרך — אין מה לענות)" / "Coming right up! (your order is on its way — nothing to answer)" — icon 🛎️ — new
+
+No build-sentence card.
+
+Step 10. Label: "After the meal" / "אחרי הארוחה". Intro: "⏳ Later… the meal is over. ¦ 🍽️ Table order: Table: 2 / Main: Chicken / Change: No onions ‖ 🥤 Drink & bill: Drink: Water / Order: Closed ✅ / Bill: — ¦ The waiter comes back to your table. Tap to hear." / "⏳ מאוחר יותר… הארוחה נגמרה. ¦ 🍽️ הזמנה לשולחן: שולחן: 2 / מנה: עוף / שינוי: בלי בצל ‖ 🥤 שתייה וחשבון: שתייה: מים / הזמנה: נסגרה ✅ / חשבון: — ¦ המלצר חוזר לשולחן. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `rest.line.okay` — EN "Is everything okay?" · FR "Tout va bien ?" · ES "¿Va todo bien?" — meaning "הכל בסדר? (המלצר בודק שהארוחה הייתה בסדר)" / "Is everything okay? (the waiter checks the meal was okay)" — icon 👍 — new
+2. `rest.line.bill` — EN "Yes, that was delicious! The bill, please." · FR "Oui, c’était délicieux ! L’addition, s’il vous plaît." · ES "¡Sí, estaba delicioso! La cuenta, por favor." — meaning "כן, היה טעים מאוד! החשבון, בבקשה. (מחמאה ← ואז מבקשים לשלם)" / "Yes, that was delicious! The bill, please. (a compliment → then ask to pay)" — icon 🧾 — new
+3. `rest.line.bye` — EN "So glad you enjoyed it. Here you are — have a lovely evening!" · FR "Ravi que ça vous ait plu. Voici — passez une bonne soirée !" · ES "Me alegro de que les gustara. Aquí tienen — ¡que pasen buena noche!" — meaning "שמח שנהניתם. בבקשה — ערב נעים! (הוא מגיש את החשבון ונפרד)" / "So glad you enjoyed it. Here you are — have a lovely evening! (he hands you the bill and says goodbye)" — icon 👋 — new
+
+No build-sentence card.
 
 ## Every sentence in this mission
 
@@ -14095,7 +14135,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "The restaurant opener. Template: a table for ___." / "הפתיח למסעדה. תבנית: a table for ___."
 - Used in missions: 14, 18, 28, 29, 30
-- Exercised here as: key sentence (step 3); quick-reply response (step 9, round 1, accepted); quick-reply response (step 9, round 3, wrong option); quick-reply response (step 9, round 4, wrong option); quick-reply response (step 9, round 6, wrong option); sentence review (step 13); quick-reply response (step 14, round 1, accepted); quick-reply response (step 14, round 2, wrong option); quick-reply response (step 14, round 3, wrong option); quick-reply response (step 14, round 4, wrong option); quick-reply response (step 14, round 5, wrong option); dialogue choice sit-down-meal/c1 (accepted); dialogue choice sit-down-meal/c1b (accepted)
+- Exercised here as: quick-reply response (step 3, round 1, accepted); quick-reply response (step 7, round 1, wrong option); quick-reply response (step 11, round 1, wrong option); quick-reply response (step 15, round 1, accepted); quick-reply response (step 17, round 1, wrong option); quick-reply response (step 18, round 1, wrong option); quick-reply response (step 23, round 1, accepted); quick-reply response (step 23, round 2, wrong option); quick-reply response (step 24, round 2, wrong option); quick-reply response (step 28, round 1, accepted); quick-reply response (step 28, round 2, wrong option); quick-reply response (step 29, round 2, wrong option); quick-reply response (step 30, round 1, wrong option); dialogue choice sit-down-meal/c1 (accepted); dialogue choice sit-down-meal/c1b (accepted); dialogue choice sit-down-meal/c4 (WRONG option)
 
 ### Sentence: `phrase.rest.ill-have-chicken`
 
@@ -14106,7 +14146,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "The ordering template: I’ll have the ___." / "תבנית ההזמנה: I’ll have the ___."
 - Used in missions: 14, 18, 30
-- Exercised here as: key sentence (step 4); "you said" lead-in of the expected-replies drill (step 7); quick-reply response (step 9, round 2, accepted); swap-it frame (step 10, round 1); sentence review (step 13); quick-reply response (step 14, round 2, accepted); quick-reply response (step 14, round 5, wrong option); dialogue choice sit-down-meal/c2 (accepted)
+- Exercised here as: quick-reply response (step 8, round 1, wrong option); quick-reply response (step 11, round 1, wrong option); quick-reply response (step 16, round 1, accepted); quick-reply response (step 18, round 1, wrong option); quick-reply response (step 23, round 2, accepted); quick-reply response (step 25, round 1, wrong option); quick-reply response (step 28, round 2, accepted); quick-reply response (step 29, round 1, wrong option); dialogue choice sit-down-meal/c2 (accepted); dialogue choice sit-down-meal/c5 (WRONG option)
 
 ### Sentence: `phrase.rest.water`
 
@@ -14117,7 +14157,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 14, 18, 28, 29, 30
-- Exercised here as: quick-reply response (step 9, round 1, wrong option); quick-reply response (step 9, round 3, accepted); quick-reply response (step 9, round 5, wrong option); sentence review (step 13); quick-reply response (step 14, round 1, wrong option); quick-reply response (step 14, round 3, accepted); dialogue choice sit-down-meal/c3 (accepted)
+- Exercised here as: quick-reply response (step 7, round 1, accepted); quick-reply response (step 8, round 1, wrong option); quick-reply response (step 15, round 1, wrong option); quick-reply response (step 17, round 1, accepted); quick-reply response (step 19, round 1, wrong option); quick-reply response (step 23, round 2, wrong option); quick-reply response (step 24, round 1, accepted); quick-reply response (step 24, round 2, wrong option); quick-reply response (step 25, round 1, wrong option); quick-reply response (step 28, round 1, wrong option); quick-reply response (step 29, round 1, accepted); quick-reply response (step 30, round 1, wrong option); dialogue choice sit-down-meal/c3 (accepted)
 
 ### Sentence: `phrase.rest.no-onions`
 
@@ -14128,7 +14168,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "Template: No ___, please — for anything you don’t want on the plate." / "תבנית: No ___, please — לכל מה שאתה לא רוצה בצלחת."
 - Used in missions: 14, 28, 30
-- Exercised here as: key sentence (step 5); quick-reply response (step 9, round 3, wrong option); quick-reply response (step 9, round 5, accepted); sentence review (step 13); quick-reply response (step 14, round 3, wrong option)
+- Exercised here as: nothing (listed only)
 
 ### Sentence: `phrase.rest.the-bill`
 
@@ -14139,7 +14179,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 14, 18, 28, 29, 30
-- Exercised here as: built by the word intro (step 2); key sentence (step 6); quick-reply response (step 9, round 1, wrong option); quick-reply response (step 9, round 2, wrong option); quick-reply response (step 9, round 5, wrong option); quick-reply response (step 9, round 6, accepted); sentence review (step 13); quick-reply response (step 14, round 1, wrong option); quick-reply response (step 14, round 2, wrong option); quick-reply response (step 14, round 5, accepted); dialogue choice sit-down-meal/c5 (accepted)
+- Exercised here as: quick-reply response (step 11, round 1, accepted); quick-reply response (step 16, round 1, wrong option); quick-reply response (step 17, round 1, wrong option); quick-reply response (step 19, round 1, accepted); quick-reply response (step 23, round 1, wrong option); quick-reply response (step 24, round 1, wrong option); quick-reply response (step 25, round 1, accepted); quick-reply response (step 28, round 2, wrong option); quick-reply response (step 29, round 2, wrong option); quick-reply response (step 30, round 1, accepted); dialogue choice sit-down-meal/c1 (WRONG option); dialogue choice sit-down-meal/c3 (WRONG option); dialogue choice sit-down-meal/c5 (accepted)
 
 ### Sentence: `phrase.rest.delicious`
 
@@ -14150,7 +14190,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "A small compliment that buys a big smile." / "מחמאה קטנה שקונה חיוך גדול."
 - Used in missions: 14, 28, 29, 30
-- Exercised here as: quick-reply response (step 9, round 4, wrong option); quick-reply response (step 9, round 6, accepted); quick-reply response (step 14, round 4, wrong option)
+- Exercised here as: nothing (listed only)
 
 ### Sentence: `reply.rest.reservation`
 
@@ -14161,7 +14201,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 14
-- Exercised here as: expected-reply audio (step 7); quick-reply prompt (step 9, round 1); sentence review (step 13)
+- Exercised here as: quick-reply prompt (step 3, round 1); quick-reply prompt (step 15, round 1)
 
 ### Sentence: `reply.rest.follow-me`
 
@@ -14183,7 +14223,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 14, 18
-- Exercised here as: expected-reply audio (step 7); quick-reply prompt (step 9, round 2); sentence review (step 13)
+- Exercised here as: quick-reply prompt (step 16, round 1)
 
 ### Sentence: `reply.rest.to-drink`
 
@@ -14194,7 +14234,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 14, 18
-- Exercised here as: expected-reply audio (step 7); quick-reply prompt (step 9, round 3); sentence review (step 13)
+- Exercised here as: quick-reply prompt (step 7, round 1); quick-reply prompt (step 17, round 1)
 
 ### Sentence: `phrase.rest.ill-have`
 
@@ -14205,7 +14245,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "The restaurant’s big template: I’ll have the ___ — order anything on the menu." / "התבנית הגדולה של המסעדה: I’ll have the ___ — מזמינים כל דבר בתפריט."
 - Used in missions: 14, 28, 29
-- Exercised here as: quick-reply response (step 9, round 2, accepted); swap-it frame (step 10, round 2); sentence review (step 13); dialogue choice sit-down-meal/c2 (accepted)
+- Exercised here as: nothing (listed only)
 
 ### Sentence: `reply.rest.anything-else`
 
@@ -14216,7 +14256,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 14
-- Exercised here as: expected-reply audio (step 7); quick-reply prompt (step 9, round 4); sentence review (step 13)
+- Exercised here as: quick-reply prompt (step 8, round 1); quick-reply prompt (step 18, round 1)
 
 ### Sentence: `reply.rest.everything-okay`
 
@@ -14227,7 +14267,18 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 14
-- Exercised here as: expected-reply audio (step 7); quick-reply prompt (step 9, round 6); sentence review (step 13)
+- Exercised here as: quick-reply prompt (step 11, round 1); quick-reply prompt (step 19, round 1)
+
+### Sentence: `phrase.rest.chicken-no-onions`
+
+- EN: I'll have the chicken, without onions, please.
+- HE: אני אקח את העוף, בלי בצל, בבקשה.
+- FR: Je vais prendre le poulet, sans oignons, s’il vous plaît.
+- ES: Voy a tomar el pollo, sin cebolla, por favor.
+- Role: learner production
+- Tip / pattern note: none
+- Used in missions: 14
+- Exercised here as: sentence-builder target (step 5, round 1)
 
 ### Sentence: `phrase.recovery.repeat`
 
@@ -14260,7 +14311,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: courtesy from the Recovery Toolkit
 - Tip / pattern note: none
 - Used in missions: 03, 05, 06, 07, 10, 14, 15, 17, 18, 19, 25, 26, 30
-- Exercised here as: quick-reply response (step 9, round 4, accepted); quick-reply response (step 14, round 4, accepted); dialogue choice sit-down-meal/c4 (accepted)
+- Exercised here as: nothing (listed only)
 
 ### Sentence: `phrase.recovery.one-moment`
 
@@ -14271,7 +14322,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
 - Used in missions: 02, 03, 06, 08, 14
-- Exercised here as: dialogue choice sit-down-meal/c2 (accepted)
+- Exercised here as: nothing (listed only)
 
 ### Sentence: `phrase.recovery.dont-understand`
 
@@ -14282,77 +14333,22 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
 - Used in missions: 14
-- Exercised here as: sentence review (step 13); dialogue choice sit-down-meal/c1 (accepted)
+- Exercised here as: dialogue choice sit-down-meal/c1 (accepted)
+
+### Sentence: `phrase.coffee.thats-all`
+
+- EN: That's all, thanks.
+- HE: זה הכל, תודה.
+- FR: C’est tout, merci.
+- ES: Eso es todo, gracias.
+- Role: learner production
+- Tip / pattern note: "Closes any order politely. Works everywhere on earth." / "סוגר כל הזמנה בנימוס. עובד בכל מקום בעולם."
+- Used in missions: 03, 14, 29
+- Exercised here as: quick-reply response (step 3, round 1, wrong option); quick-reply response (step 7, round 1, wrong option); quick-reply response (step 8, round 1, accepted); quick-reply response (step 15, round 1, wrong option); quick-reply response (step 16, round 1, wrong option); quick-reply response (step 18, round 1, accepted); quick-reply response (step 19, round 1, wrong option); quick-reply response (step 23, round 1, wrong option); quick-reply response (step 24, round 1, wrong option); quick-reply response (step 24, round 2, accepted); quick-reply response (step 28, round 1, wrong option); quick-reply response (step 29, round 1, wrong option); quick-reply response (step 29, round 2, accepted); dialogue choice sit-down-meal/c2 (WRONG option); dialogue choice sit-down-meal/c4 (accepted)
 
 ## Expected replies / listening items
 
-Lead-in screen: "You said:" / "אמרת:" — EN "I'll have the chicken." · FR "Je vais prendre le poulet." · ES "Voy a tomar el pollo." — then "What might they answer? Learn the replies before they surprise you." / "מה הם עלולים לענות? נלמד את התשובות לפני שהן מפתיעות אותך." — button 👂 "I'm ready" / "אני מוכן".
-Linked learner sentence: `phrase.rest.ill-have-chicken`. Each reply below is played once automatically; the learner picks its MEANING from three buttons. Distractors are always the first two OTHER replies of this same drill, in drill order (runtime rule), so the three choices are shuffled per session.
-
-### M14-Q01 — expected-reply (step 7, reply 1 of 5)
-
-- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (1/5)
-- Audio played: EN "Do you have a reservation?" · FR "Vous avez une réservation ?" · ES "¿Tiene reserva?"
-- Meaning of the audio (HE): "יש לכם הזמנה?"
-- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
-- Choices:
-  1. HE "יש לכם הזמנה?" / EN "Do you have a reservation?" — `reply.rest.reservation` — ✅ accepted
-  2. HE "מוכנים להזמין?" / EN "Are you ready to order?" — `reply.rest.ready-to-order` — ❌ wrong
-  3. HE "משהו לשתות?" / EN "Anything to drink?" — `reply.rest.to-drink` — ❌ wrong
-- Tests: reply.rest.reservation
-- Explanation shown after answering: generic: “Do you have a reservation?” means “יש לכם הזמנה?”.
-
-### M14-Q02 — expected-reply (step 7, reply 2 of 5)
-
-- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (2/5)
-- Audio played: EN "Are you ready to order?" · FR "Vous êtes prêts à commander ?" · ES "¿Están listos para pedir?"
-- Meaning of the audio (HE): "מוכנים להזמין?"
-- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
-- Choices:
-  1. HE "מוכנים להזמין?" / EN "Are you ready to order?" — `reply.rest.ready-to-order` — ✅ accepted
-  2. HE "יש לכם הזמנה?" / EN "Do you have a reservation?" — `reply.rest.reservation` — ❌ wrong
-  3. HE "משהו לשתות?" / EN "Anything to drink?" — `reply.rest.to-drink` — ❌ wrong
-- Tests: reply.rest.ready-to-order
-- Explanation shown after answering: generic: “Are you ready to order?” means “מוכנים להזמין?”.
-
-### M14-Q03 — expected-reply (step 7, reply 3 of 5)
-
-- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (3/5)
-- Audio played: EN "Anything to drink?" · FR "Quelque chose à boire ?" · ES "¿Algo de beber?"
-- Meaning of the audio (HE): "משהו לשתות?"
-- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
-- Choices:
-  1. HE "משהו לשתות?" / EN "Anything to drink?" — `reply.rest.to-drink` — ✅ accepted
-  2. HE "יש לכם הזמנה?" / EN "Do you have a reservation?" — `reply.rest.reservation` — ❌ wrong
-  3. HE "מוכנים להזמין?" / EN "Are you ready to order?" — `reply.rest.ready-to-order` — ❌ wrong
-- Tests: reply.rest.to-drink
-- Explanation shown after answering: generic: “Anything to drink?” means “משהו לשתות?”.
-
-### M14-Q04 — expected-reply (step 7, reply 4 of 5)
-
-- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (4/5)
-- Audio played: EN "Anything else?" · FR "Autre chose ?" · ES "¿Algo más?"
-- Meaning of the audio (HE): "עוד משהו?"
-- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
-- Choices:
-  1. HE "עוד משהו?" / EN "Anything else?" — `reply.rest.anything-else` — ✅ accepted
-  2. HE "יש לכם הזמנה?" / EN "Do you have a reservation?" — `reply.rest.reservation` — ❌ wrong
-  3. HE "מוכנים להזמין?" / EN "Are you ready to order?" — `reply.rest.ready-to-order` — ❌ wrong
-- Tests: reply.rest.anything-else
-- Explanation shown after answering: generic: “Anything else?” means “עוד משהו?”.
-
-### M14-Q05 — expected-reply (step 7, reply 5 of 5)
-
-- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (5/5)
-- Audio played: EN "Is everything okay?" · FR "Tout va bien ?" · ES "¿Va todo bien?"
-- Meaning of the audio (HE): "הכל בסדר?"
-- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
-- Choices:
-  1. HE "הכל בסדר?" / EN "Is everything okay?" — `reply.rest.everything-okay` — ✅ accepted
-  2. HE "יש לכם הזמנה?" / EN "Do you have a reservation?" — `reply.rest.reservation` — ❌ wrong
-  3. HE "מוכנים להזמין?" / EN "Are you ready to order?" — `reply.rest.ready-to-order` — ❌ wrong
-- Tests: reply.rest.everything-okay
-- Explanation shown after answering: generic: “Is everything okay?” means “הכל בסדר?”.
+No expected-replies drill in this mission.
 
 ## Quizzes
 
@@ -14360,109 +14356,221 @@ No meaning quiz in this mission.
 
 ## Active practice — Quick Reply · Visual Match · Swap It · Mini Map
 
-### M14-Q06 — quick-reply (step 9, round 1 of 6)
+### M14-Q01 — quick-reply (step 3, round 1 of 1)
 
-- Prompt displayed: "The waiter asks — what do you say?" / "המלצר שואל — מה עונים?"
+- Prompt displayed: "🍽️ Table order: Table: ? / Main: ? / Change: ? ‖ 🥤 Drink & bill: Drink: ? / Order: Open / Bill: — ¦ What do you answer?" / "🍽️ הזמנה לשולחן: שולחן: ? / מנה: ? / שינוי: ? ‖ 🥤 שתייה וחשבון: שתייה: ? / הזמנה: פתוחה / חשבון: — ¦ מה אתה עונה?"
 - Audio played: EN "Do you have a reservation?" · FR "Vous avez une réservation ?" · ES "¿Tiene reserva?"
 - Meaning of the audio (HE): "יש לכם הזמנה?"
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
   1. EN "No — a table for two, please." · FR "Non — une table pour deux, s’il vous plaît." · ES "No — una mesa para dos, por favor." · (HE gloss "שולחן לשניים, בבקשה.") — `phrase.rest.table-two` — ✅ accepted
-  2. EN "The bill, please." · FR "L’addition, s’il vous plaît." · ES "La cuenta, por favor." · (HE gloss "החשבון, בבקשה.") — `phrase.rest.the-bill` — ❌ wrong
-  3. EN "A bottle of water, please." · FR "Une bouteille d’eau, s’il vous plaît." · ES "Una botella de agua, por favor." · (HE gloss "בקבוק מים, בבקשה.") — `phrase.rest.water` — ❌ wrong
+  2. EN "That's all, thanks." · FR "C’est tout, merci." · ES "Eso es todo, gracias." · (HE gloss "זה הכל, תודה.") — `phrase.coffee.thats-all` — ❌ wrong
 - Tests: phrase.rest.table-two
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M14-Q07 — quick-reply (step 9, round 2 of 6)
+### M14-Q02 — sentence-builder (step 5, round 1 of 1)
 
-- Prompt displayed: "The waiter asks — what do you say?" / "המלצר שואל — מה עונים?"
-- Audio played: EN "Are you ready to order?" · FR "Vous êtes prêts à commander ?" · ES "¿Están listos para pedir?"
-- Meaning of the audio (HE): "מוכנים להזמין?"
-- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Prompt displayed: "🍽️ Table order: Table: 2 / Main: ? / Change: ? ‖ 🥤 Drink & bill: Drink: ? / Order: Open / Bill: — ¦ Order: what you’ll have → the dish → what to take out" / "🍽️ הזמנה לשולחן: שולחן: 2 / מנה: ? / שינוי: ? ‖ 🥤 שתייה וחשבון: שתייה: ? / הזמנה: פתוחה / חשבון: — ¦ הזמן: מה אתה לוקח ← המנה ← מה להוריד ממנה" — cue shown: the sentence's MEANING in the app language ("אני אקח את העוף, בלי בצל, בבקשה.")
+- Audio played: EN "(nothing before Check; the built sentence is spoken once it is right)" · FR "(same)" · ES "(same)"
+- Meaning of the audio (HE): —
+- Buttons show: the authored CHUNKS of the sentence as tiles (listed here in the correct order, separated by "|"), shuffled; each language has its own chunks; Check unlocks when every tile is placed
 - Choices:
-  1. EN "I'll have the chicken, without onions, please." · FR "Je vais prendre le poulet, sans oignons, s’il vous plaît." · ES "Voy a tomar el pollo, sin cebolla, por favor." · (HE gloss "אני אקח את העוף.") — `phrase.rest.ill-have-chicken` — ✅ accepted
-  2. EN "I'll have the pasta, please." · FR "Je vais prendre les pâtes, s’il vous plaît." · ES "Voy a tomar la pasta, por favor." · (HE gloss "אני אקח את הפסטה, בבקשה.") — `phrase.rest.ill-have` — ✅ accepted
-  3. EN "The bill, please." · FR "L’addition, s’il vous plaît." · ES "La cuenta, por favor." · (HE gloss "החשבון, בבקשה.") — `phrase.rest.the-bill` — ❌ wrong
-- Tests: phrase.rest.ill-have-chicken, phrase.rest.ill-have
-- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+  1. EN "I'll have  |  the chicken,  |  without onions, please." · FR "Je vais prendre  |  le poulet,  |  sans oignons, s’il vous plaît." · ES "Voy a tomar  |  el pollo,  |  sin cebolla, por favor." · (HE gloss "אני אקח את העוף, בלי בצל, בבקשה.") — `phrase.rest.chicken-no-onions` — ✅ accepted
+- Tests: phrase.rest.chicken-no-onions
+- Explanation shown after answering: right: the sentence is spoken and its translation shown. Wrong: "not yet" — the tiles stay, the answer is NOT shown; after one miss a hint marks the start; after two misses the learner may reveal it
 
-### M14-Q08 — quick-reply (step 9, round 3 of 6)
+### M14-Q03 — quick-reply (step 7, round 1 of 1)
 
-- Prompt displayed: "The waiter asks — what do you say?" / "המלצר שואל — מה עונים?"
+- Prompt displayed: "🍽️ Table order: Table: 2 / Main: Chicken / Change: No onions ‖ 🥤 Drink & bill: Drink: ? / Order: Open / Bill: — ¦ What do you answer?" / "🍽️ הזמנה לשולחן: שולחן: 2 / מנה: עוף / שינוי: בלי בצל ‖ 🥤 שתייה וחשבון: שתייה: ? / הזמנה: פתוחה / חשבון: — ¦ מה אתה עונה?"
 - Audio played: EN "Anything to drink?" · FR "Quelque chose à boire ?" · ES "¿Algo de beber?"
 - Meaning of the audio (HE): "משהו לשתות?"
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
   1. EN "A bottle of water, please." · FR "Une bouteille d’eau, s’il vous plaît." · ES "Una botella de agua, por favor." · (HE gloss "בקבוק מים, בבקשה.") — `phrase.rest.water` — ✅ accepted
-  2. EN "No onions, please." · FR "Sans oignons, s’il vous plaît." · ES "Sin cebolla, por favor." · (HE gloss "בלי בצל, בבקשה.") — `phrase.rest.no-onions` — ❌ wrong
-  3. EN "A table for two, please." · FR "Une table pour deux, s’il vous plaît." · ES "Una mesa para dos, por favor." · (HE gloss "שולחן לשניים, בבקשה.") — `phrase.rest.table-two` — ❌ wrong
+  2. EN "That's all, thanks." · FR "C’est tout, merci." · ES "Eso es todo, gracias." · (HE gloss "זה הכל, תודה.") — `phrase.coffee.thats-all` — ❌ wrong
+  3. EN "No — a table for two, please." · FR "Non — une table pour deux, s’il vous plaît." · ES "No — una mesa para dos, por favor." · (HE gloss "שולחן לשניים, בבקשה.") — `phrase.rest.table-two` — ❌ wrong
 - Tests: phrase.rest.water
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M14-Q09 — quick-reply (step 9, round 4 of 6)
+### M14-Q04 — quick-reply (step 8, round 1 of 1)
 
-- Prompt displayed: "The waiter asks — what do you say?" / "המלצר שואל — מה עונים?"
+- Prompt displayed: "🍽️ Table order: Table: 2 / Main: Chicken / Change: No onions ‖ 🥤 Drink & bill: Drink: Water / Order: Open / Bill: — ¦ The waiter asks if you need anything more. You have finished ordering." / "🍽️ הזמנה לשולחן: שולחן: 2 / מנה: עוף / שינוי: בלי בצל ‖ 🥤 שתייה וחשבון: שתייה: מים / הזמנה: פתוחה / חשבון: — ¦ המלצר שואל אם צריך עוד משהו. אתה גמרת להזמין."
 - Audio played: EN "Anything else?" · FR "Autre chose ?" · ES "¿Algo más?"
 - Meaning of the audio (HE): "עוד משהו?"
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
-  1. EN "That's all, thanks." · FR "C’est tout, merci." · ES "Eso es todo, gracias." · (HE gloss "תודה!") — `phrase.recovery.thank-you` — ✅ accepted
-  2. EN "A table for two, please." · FR "Une table pour deux, s’il vous plaît." · ES "Una mesa para dos, por favor." · (HE gloss "שולחן לשניים, בבקשה.") — `phrase.rest.table-two` — ❌ wrong
-  3. EN "That was delicious!" · FR "C’était délicieux !" · ES "¡Estaba delicioso!" · (HE gloss "זה היה טעים מאוד!") — `phrase.rest.delicious` — ❌ wrong
-- Tests: phrase.recovery.thank-you
-- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
-
-### M14-Q10 — quick-reply (step 9, round 5 of 6)
-
-- Prompt displayed: "The waiter asks — what do you say?" / "המלצר שואל — מה עונים?" — situation shown: "You do not want onions in your dish." / "אתה לא רוצה בצל במנה."
-- Audio played: EN "(nothing is played — a situation is shown)" · FR "(nothing is played — a situation is shown)" · ES "(nothing is played — a situation is shown)"
-- Meaning of the audio (HE): —
-- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
-- Choices:
-  1. EN "No onions, please." · FR "Sans oignons, s’il vous plaît." · ES "Sin cebolla, por favor." · (HE gloss "בלי בצל, בבקשה.") — `phrase.rest.no-onions` — ✅ accepted
+  1. EN "That's all, thanks." · FR "C’est tout, merci." · ES "Eso es todo, gracias." · (HE gloss "זה הכל, תודה.") — `phrase.coffee.thats-all` — ✅ accepted
   2. EN "A bottle of water, please." · FR "Une bouteille d’eau, s’il vous plaît." · ES "Una botella de agua, por favor." · (HE gloss "בקבוק מים, בבקשה.") — `phrase.rest.water` — ❌ wrong
-  3. EN "The bill, please." · FR "L’addition, s’il vous plaît." · ES "La cuenta, por favor." · (HE gloss "החשבון, בבקשה.") — `phrase.rest.the-bill` — ❌ wrong
-- Tests: phrase.rest.no-onions
+  3. EN "I'll have the chicken, without onions, please." · FR "Je vais prendre le poulet, sans oignons, s’il vous plaît." · ES "Voy a tomar el pollo, sin cebolla, por favor." · (HE gloss "אני אקח את העוף.") — `phrase.rest.ill-have-chicken` — ❌ wrong
+- Tests: phrase.coffee.thats-all
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M14-Q11 — quick-reply (step 9, round 6 of 6)
+### M14-Q05 — quick-reply (step 11, round 1 of 1)
 
-- Prompt displayed: "The waiter asks — what do you say?" / "המלצר שואל — מה עונים?"
+- Prompt displayed: "⏳ Later… the meal is over. ¦ 🍽️ Table order: Table: 2 / Main: Chicken / Change: No onions ‖ 🥤 Drink & bill: Drink: Water / Order: Closed ✅ / Bill: — ¦ What do you answer?" / "⏳ מאוחר יותר… הארוחה נגמרה. ¦ 🍽️ הזמנה לשולחן: שולחן: 2 / מנה: עוף / שינוי: בלי בצל ‖ 🥤 שתייה וחשבון: שתייה: מים / הזמנה: נסגרה ✅ / חשבון: — ¦ מה אתה עונה?"
 - Audio played: EN "Is everything okay?" · FR "Tout va bien ?" · ES "¿Va todo bien?"
 - Meaning of the audio (HE): "הכל בסדר?"
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
   1. EN "Yes, that was delicious! The bill, please." · FR "Oui, c’était délicieux ! L’addition, s’il vous plaît." · ES "¡Sí, estaba delicioso! La cuenta, por favor." · (HE gloss "החשבון, בבקשה.") — `phrase.rest.the-bill` — ✅ accepted
-  2. EN "That was delicious!" · FR "C’était délicieux !" · ES "¡Estaba delicioso!" · (HE gloss "זה היה טעים מאוד!") — `phrase.rest.delicious` — ✅ accepted
-  3. EN "A table for two, please." · FR "Une table pour deux, s’il vous plaît." · ES "Una mesa para dos, por favor." · (HE gloss "שולחן לשניים, בבקשה.") — `phrase.rest.table-two` — ❌ wrong
-- Tests: phrase.rest.the-bill, phrase.rest.delicious
+  2. EN "I'll have the chicken, without onions, please." · FR "Je vais prendre le poulet, sans oignons, s’il vous plaît." · ES "Voy a tomar el pollo, sin cebolla, por favor." · (HE gloss "אני אקח את העוף.") — `phrase.rest.ill-have-chicken` — ❌ wrong
+  3. EN "No — a table for two, please." · FR "Non — une table pour deux, s’il vous plaît." · ES "No — una mesa para dos, por favor." · (HE gloss "שולחן לשניים, בבקשה.") — `phrase.rest.table-two` — ❌ wrong
+- Tests: phrase.rest.the-bill
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M14-Q12 — swap-it (step 10, round 1 of 2)
+### M14-Q06 — visual-match (step 13, round 1 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
 
-- Prompt displayed: "What are you having?" / "מה מזמינים?" — cue 🍗 "You want the chicken" / "אתה רוצה את העוף" — frame EN "I'll have the ___, please." · FR "Je vais prendre ___, s’il vous plaît." · ES "Voy a tomar ___, por favor."
-- Audio played: EN "(nothing before the tap; the completed sentence is spoken after it)" · FR "(same)" · ES "(same)"
-- Meaning of the audio (HE): —
-- Buttons show: the SLOT VALUES in the target language (shown here as "value → completed sentence"); order shuffled; a "wrong" value still produces and speaks a real sentence, with its translation
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "Of course. Anything to drink?" · FR "Bien sûr. Quelque chose à boire ?" · ES "Claro. ¿Algo de beber?"
+- Meaning of the audio (HE): "כמובן. משהו לשתות?"
+- Buttons show: a 3×3 board of 5 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. EN "chicken → I'll have the chicken, please." · FR "le poulet → Je vais prendre le poulet, s’il vous plaît." · ES "el pollo → Voy a tomar el pollo, por favor." · (HE gloss "אני אקח את העוף, בבקשה.") — `phrase.rest.ill-have-chicken` — ✅ accepted
-  2. EN "pasta → I'll have the pasta, please." · FR "les pâtes → Je vais prendre les pâtes, s’il vous plaît." · ES "la pasta → Voy a tomar la pasta, por favor." · (HE gloss "אני אקח את הפסטה, בבקשה.") — no sentence id — ❌ wrong
+  1. "🪑 “Table / booking” / “שולחן / הזמנה מראש”" — no sentence id — ❌ wrong
+  2. "🍽️ “Your food order” / “להזמין אוכל”" — no sentence id — ❌ wrong
+  3. "🥤 “Your drink” / “להזמין שתייה”" — no sentence id — ✅ accepted
+  4. "➕ “More? / finish” / “עוד משהו? / לסיים”" — no sentence id — ❌ wrong
+  5. "👍 “Meal check” / “בודק שהארוחה בסדר”" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M14-Q07 — visual-match (step 13, round 2 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "Good evening! Do you have a reservation?" · FR "Bonsoir ! Vous avez une réservation ?" · ES "¡Buenas noches! ¿Tiene reserva?"
+- Meaning of the audio (HE): "ערב טוב! יש לכם הזמנה?"
+- Buttons show: a 3×3 board of 5 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "🪑 “Table / booking” / “שולחן / הזמנה מראש”" — no sentence id — ✅ accepted
+  2. "🍽️ “Your food order” / “להזמין אוכל”" — no sentence id — ❌ wrong
+  3. "🥤 “Your drink” / “להזמין שתייה”" — no sentence id — ❌ wrong
+  4. "➕ “More? / finish” / “עוד משהו? / לסיים”" — no sentence id — ❌ wrong
+  5. "👍 “Meal check” / “בודק שהארוחה בסדר”" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M14-Q08 — visual-match (step 13, round 3 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "Is everything okay?" · FR "Tout va bien ?" · ES "¿Va todo bien?"
+- Meaning of the audio (HE): "הכל בסדר?"
+- Buttons show: a 3×3 board of 5 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "🪑 “Table / booking” / “שולחן / הזמנה מראש”" — no sentence id — ❌ wrong
+  2. "🍽️ “Your food order” / “להזמין אוכל”" — no sentence id — ❌ wrong
+  3. "🥤 “Your drink” / “להזמין שתייה”" — no sentence id — ❌ wrong
+  4. "➕ “More? / finish” / “עוד משהו? / לסיים”" — no sentence id — ❌ wrong
+  5. "👍 “Meal check” / “בודק שהארוחה בסדר”" — no sentence id — ✅ accepted
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M14-Q09 — visual-match (step 13, round 4 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "Are you ready to order?" · FR "Vous êtes prêts à commander ?" · ES "¿Están listos para pedir?"
+- Meaning of the audio (HE): "מוכנים להזמין?"
+- Buttons show: a 3×3 board of 5 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "🪑 “Table / booking” / “שולחן / הזמנה מראש”" — no sentence id — ❌ wrong
+  2. "🍽️ “Your food order” / “להזמין אוכל”" — no sentence id — ✅ accepted
+  3. "🥤 “Your drink” / “להזמין שתייה”" — no sentence id — ❌ wrong
+  4. "➕ “More? / finish” / “עוד משהו? / לסיים”" — no sentence id — ❌ wrong
+  5. "👍 “Meal check” / “בודק שהארוחה בסדר”" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M14-Q10 — visual-match (step 13, round 5 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "Anything else?" · FR "Autre chose ?" · ES "¿Algo más?"
+- Meaning of the audio (HE): "עוד משהו?"
+- Buttons show: a 3×3 board of 5 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "🪑 “Table / booking” / “שולחן / הזמנה מראש”" — no sentence id — ❌ wrong
+  2. "🍽️ “Your food order” / “להזמין אוכל”" — no sentence id — ❌ wrong
+  3. "🥤 “Your drink” / “להזמין שתייה”" — no sentence id — ❌ wrong
+  4. "➕ “More? / finish” / “עוד משהו? / לסיים”" — no sentence id — ✅ accepted
+  5. "👍 “Meal check” / “בודק שהארוחה בסדר”" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M14-Q11 — visual-match (step 14, round 1 of 1)
+
+- Prompt displayed: "🔁 Flex round — another group at the door. How many people is the table for?" / "🔁 סבב גמיש — קבוצה אחרת בכניסה. לכמה אנשים השולחן?"
+- Audio played: EN "No — a table for four, please." · FR "Non — une table pour quatre, s’il vous plaît." · ES "No — una mesa para cuatro, por favor."
+- Meaning of the audio (HE): "לא — שולחן לארבעה, בבקשה."
+- Buttons show: a 3×3 board of 2 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "👥 “2 people” / “2 אנשים”" — no sentence id — ❌ wrong
+  2. "👨‍👩‍👧‍👦 “4 people” / “4 אנשים”" — no sentence id — ✅ accepted
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M14-Q12 — quick-reply (step 15, round 1 of 1)
+
+- Prompt displayed: "🍽️ Table order: Table: ? / Main: ? / Change: ? ‖ 🥤 Drink & bill: Drink: ? / Order: Open / Bill: — ¦ Now the whole meal, from the door." / "🍽️ הזמנה לשולחן: שולחן: ? / מנה: ? / שינוי: ? ‖ 🥤 שתייה וחשבון: שתייה: ? / הזמנה: פתוחה / חשבון: — ¦ עכשיו כל הארוחה, מהכניסה."
+- Audio played: EN "Do you have a reservation?" · FR "Vous avez une réservation ?" · ES "¿Tiene reserva?"
+- Meaning of the audio (HE): "יש לכם הזמנה?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "No — a table for two, please." · FR "Non — une table pour deux, s’il vous plaît." · ES "No — una mesa para dos, por favor." · (HE gloss "שולחן לשניים, בבקשה.") — `phrase.rest.table-two` — ✅ accepted
+  2. EN "A bottle of water, please." · FR "Une bouteille d’eau, s’il vous plaît." · ES "Una botella de agua, por favor." · (HE gloss "בקבוק מים, בבקשה.") — `phrase.rest.water` — ❌ wrong
+  3. EN "That's all, thanks." · FR "C’est tout, merci." · ES "Eso es todo, gracias." · (HE gloss "זה הכל, תודה.") — `phrase.coffee.thats-all` — ❌ wrong
+- Tests: phrase.rest.table-two
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M14-Q13 — quick-reply (step 16, round 1 of 1)
+
+- Prompt displayed: "🍽️ Table order: Table: 2 / Main: ? / Change: ? ‖ 🥤 Drink & bill: Drink: ? / Order: Open / Bill: —" / "🍽️ הזמנה לשולחן: שולחן: 2 / מנה: ? / שינוי: ? ‖ 🥤 שתייה וחשבון: שתייה: ? / הזמנה: פתוחה / חשבון: —"
+- Audio played: EN "Are you ready to order?" · FR "Vous êtes prêts à commander ?" · ES "¿Están listos para pedir?"
+- Meaning of the audio (HE): "מוכנים להזמין?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "I'll have the chicken, without onions, please." · FR "Je vais prendre le poulet, sans oignons, s’il vous plaît." · ES "Voy a tomar el pollo, sin cebolla, por favor." · (HE gloss "אני אקח את העוף.") — `phrase.rest.ill-have-chicken` — ✅ accepted
+  2. EN "Yes, that was delicious! The bill, please." · FR "Oui, c’était délicieux ! L’addition, s’il vous plaît." · ES "¡Sí, estaba delicioso! La cuenta, por favor." · (HE gloss "החשבון, בבקשה.") — `phrase.rest.the-bill` — ❌ wrong
+  3. EN "That's all, thanks." · FR "C’est tout, merci." · ES "Eso es todo, gracias." · (HE gloss "זה הכל, תודה.") — `phrase.coffee.thats-all` — ❌ wrong
 - Tests: phrase.rest.ill-have-chicken
-- Explanation shown after answering: after the tap: the completed sentence, spoken, with its translation
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M14-Q13 — swap-it (step 10, round 2 of 2)
+### M14-Q14 — quick-reply (step 17, round 1 of 1)
 
-- Prompt displayed: "What are you having?" / "מה מזמינים?" — cue 🍝 "You want the pasta" / "אתה רוצה את הפסטה" — frame EN "I'll have the ___, please." · FR "Je vais prendre ___, s’il vous plaît." · ES "Voy a tomar ___, por favor."
-- Audio played: EN "(nothing before the tap; the completed sentence is spoken after it)" · FR "(same)" · ES "(same)"
-- Meaning of the audio (HE): —
-- Buttons show: the SLOT VALUES in the target language (shown here as "value → completed sentence"); order shuffled; a "wrong" value still produces and speaks a real sentence, with its translation
+- Prompt displayed: "🍽️ Table order: Table: 2 / Main: Chicken / Change: No onions ‖ 🥤 Drink & bill: Drink: ? / Order: Open / Bill: —" / "🍽️ הזמנה לשולחן: שולחן: 2 / מנה: עוף / שינוי: בלי בצל ‖ 🥤 שתייה וחשבון: שתייה: ? / הזמנה: פתוחה / חשבון: —"
+- Audio played: EN "Anything to drink?" · FR "Quelque chose à boire ?" · ES "¿Algo de beber?"
+- Meaning of the audio (HE): "משהו לשתות?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
-  1. EN "chicken → I'll have the chicken, please." · FR "le poulet → Je vais prendre le poulet, s’il vous plaît." · ES "el pollo → Voy a tomar el pollo, por favor." · (HE gloss "אני אקח את העוף, בבקשה.") — no sentence id — ❌ wrong
-  2. EN "pasta → I'll have the pasta, please." · FR "les pâtes → Je vais prendre les pâtes, s’il vous plaît." · ES "la pasta → Voy a tomar la pasta, por favor." · (HE gloss "אני אקח את הפסטה, בבקשה.") — `phrase.rest.ill-have` — ✅ accepted
-- Tests: phrase.rest.ill-have
-- Explanation shown after answering: after the tap: the completed sentence, spoken, with its translation
+  1. EN "A bottle of water, please." · FR "Une bouteille d’eau, s’il vous plaît." · ES "Una botella de agua, por favor." · (HE gloss "בקבוק מים, בבקשה.") — `phrase.rest.water` — ✅ accepted
+  2. EN "No — a table for two, please." · FR "Non — une table pour deux, s’il vous plaît." · ES "No — una mesa para dos, por favor." · (HE gloss "שולחן לשניים, בבקשה.") — `phrase.rest.table-two` — ❌ wrong
+  3. EN "Yes, that was delicious! The bill, please." · FR "Oui, c’était délicieux ! L’addition, s’il vous plaît." · ES "¡Sí, estaba delicioso! La cuenta, por favor." · (HE gloss "החשבון, בבקשה.") — `phrase.rest.the-bill` — ❌ wrong
+- Tests: phrase.rest.water
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M14-Q20 — quick-reply (step 14, round 1 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
+### M14-Q15 — quick-reply (step 18, round 1 of 1)
+
+- Prompt displayed: "🍽️ Table order: Table: 2 / Main: Chicken / Change: No onions ‖ 🥤 Drink & bill: Drink: Water / Order: Open / Bill: —" / "🍽️ הזמנה לשולחן: שולחן: 2 / מנה: עוף / שינוי: בלי בצל ‖ 🥤 שתייה וחשבון: שתייה: מים / הזמנה: פתוחה / חשבון: —"
+- Audio played: EN "Anything else?" · FR "Autre chose ?" · ES "¿Algo más?"
+- Meaning of the audio (HE): "עוד משהו?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "That's all, thanks." · FR "C’est tout, merci." · ES "Eso es todo, gracias." · (HE gloss "זה הכל, תודה.") — `phrase.coffee.thats-all` — ✅ accepted
+  2. EN "I'll have the chicken, without onions, please." · FR "Je vais prendre le poulet, sans oignons, s’il vous plaît." · ES "Voy a tomar el pollo, sin cebolla, por favor." · (HE gloss "אני אקח את העוף.") — `phrase.rest.ill-have-chicken` — ❌ wrong
+  3. EN "No — a table for two, please." · FR "Non — une table pour deux, s’il vous plaît." · ES "No — una mesa para dos, por favor." · (HE gloss "שולחן לשניים, בבקשה.") — `phrase.rest.table-two` — ❌ wrong
+- Tests: phrase.coffee.thats-all
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M14-Q16 — quick-reply (step 19, round 1 of 1)
+
+- Prompt displayed: "⏳ Later… the meal is over. ¦ 🍽️ Table order: Table: 2 / Main: Chicken / Change: No onions ‖ 🥤 Drink & bill: Drink: Water / Order: Closed ✅ / Bill: —" / "⏳ מאוחר יותר… הארוחה נגמרה. ¦ 🍽️ הזמנה לשולחן: שולחן: 2 / מנה: עוף / שינוי: בלי בצל ‖ 🥤 שתייה וחשבון: שתייה: מים / הזמנה: נסגרה ✅ / חשבון: —"
+- Audio played: EN "Is everything okay?" · FR "Tout va bien ?" · ES "¿Va todo bien?"
+- Meaning of the audio (HE): "הכל בסדר?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Yes, that was delicious! The bill, please." · FR "Oui, c’était délicieux ! L’addition, s’il vous plaît." · ES "¡Sí, estaba delicioso! La cuenta, por favor." · (HE gloss "החשבון, בבקשה.") — `phrase.rest.the-bill` — ✅ accepted
+  2. EN "A bottle of water, please." · FR "Une bouteille d’eau, s’il vous plaît." · ES "Una botella de agua, por favor." · (HE gloss "בקבוק מים, בבקשה.") — `phrase.rest.water` — ❌ wrong
+  3. EN "That's all, thanks." · FR "C’est tout, merci." · ES "Eso es todo, gracias." · (HE gloss "זה הכל, תודה.") — `phrase.coffee.thats-all` — ❌ wrong
+- Tests: phrase.rest.the-bill
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M14-Q23 — quick-reply (step 23, round 1 of 2 · SPEED CHALLENGE (spoken at rate 1.12))
 
 - Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio played: EN "Good evening! Do you have a reservation?" · FR "Bonsoir ! Vous avez une réservation ?" · ES "¡Buenas noches! ¿Tiene reserva?"
@@ -14470,12 +14578,12 @@ No meaning quiz in this mission.
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
   1. EN "No — a table for two, please." · FR "Non — une table pour deux, s’il vous plaît." · ES "No — una mesa para dos, por favor." · (HE gloss "שולחן לשניים, בבקשה.") — `phrase.rest.table-two` — ✅ accepted
-  2. EN "The bill, please." · FR "L’addition, s’il vous plaît." · ES "La cuenta, por favor." · (HE gloss "החשבון, בבקשה.") — `phrase.rest.the-bill` — ❌ wrong
-  3. EN "A bottle of water, please." · FR "Une bouteille d’eau, s’il vous plaît." · ES "Una botella de agua, por favor." · (HE gloss "בקבוק מים, בבקשה.") — `phrase.rest.water` — ❌ wrong
+  2. EN "Yes, that was delicious! The bill, please." · FR "Oui, c’était délicieux ! L’addition, s’il vous plaît." · ES "¡Sí, estaba delicioso! La cuenta, por favor." · (HE gloss "החשבון, בבקשה.") — `phrase.rest.the-bill` — ❌ wrong
+  3. EN "That's all, thanks." · FR "C’est tout, merci." · ES "Eso es todo, gracias." · (HE gloss "זה הכל, תודה.") — `phrase.coffee.thats-all` — ❌ wrong
 - Tests: phrase.rest.table-two
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M14-Q21 — quick-reply (step 14, round 2 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
+### M14-Q24 — quick-reply (step 23, round 2 of 2 · SPEED CHALLENGE (spoken at rate 1.12))
 
 - Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio played: EN "Are you ready to order?" · FR "Vous êtes prêts à commander ?" · ES "¿Están listos para pedir?"
@@ -14483,12 +14591,12 @@ No meaning quiz in this mission.
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
   1. EN "I'll have the chicken, without onions, please." · FR "Je vais prendre le poulet, sans oignons, s’il vous plaît." · ES "Voy a tomar el pollo, sin cebolla, por favor." · (HE gloss "אני אקח את העוף.") — `phrase.rest.ill-have-chicken` — ✅ accepted
-  2. EN "The bill, please." · FR "L’addition, s’il vous plaît." · ES "La cuenta, por favor." · (HE gloss "החשבון, בבקשה.") — `phrase.rest.the-bill` — ❌ wrong
-  3. EN "A table for two, please." · FR "Une table pour deux, s’il vous plaît." · ES "Una mesa para dos, por favor." · (HE gloss "שולחן לשניים, בבקשה.") — `phrase.rest.table-two` — ❌ wrong
+  2. EN "A bottle of water, please." · FR "Une bouteille d’eau, s’il vous plaît." · ES "Una botella de agua, por favor." · (HE gloss "בקבוק מים, בבקשה.") — `phrase.rest.water` — ❌ wrong
+  3. EN "No — a table for two, please." · FR "Non — une table pour deux, s’il vous plaît." · ES "No — una mesa para dos, por favor." · (HE gloss "שולחן לשניים, בבקשה.") — `phrase.rest.table-two` — ❌ wrong
 - Tests: phrase.rest.ill-have-chicken
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M14-Q22 — quick-reply (step 14, round 3 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
+### M14-Q25 — quick-reply (step 24, round 1 of 2 · SPEED CHALLENGE (spoken at rate 1.12))
 
 - Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio played: EN "Of course. Anything to drink?" · FR "Bien sûr. Quelque chose à boire ?" · ES "Claro. ¿Algo de beber?"
@@ -14496,25 +14604,25 @@ No meaning quiz in this mission.
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
   1. EN "A bottle of water, please." · FR "Une bouteille d’eau, s’il vous plaît." · ES "Una botella de agua, por favor." · (HE gloss "בקבוק מים, בבקשה.") — `phrase.rest.water` — ✅ accepted
-  2. EN "No onions, please." · FR "Sans oignons, s’il vous plaît." · ES "Sin cebolla, por favor." · (HE gloss "בלי בצל, בבקשה.") — `phrase.rest.no-onions` — ❌ wrong
-  3. EN "A table for two, please." · FR "Une table pour deux, s’il vous plaît." · ES "Una mesa para dos, por favor." · (HE gloss "שולחן לשניים, בבקשה.") — `phrase.rest.table-two` — ❌ wrong
+  2. EN "That's all, thanks." · FR "C’est tout, merci." · ES "Eso es todo, gracias." · (HE gloss "זה הכל, תודה.") — `phrase.coffee.thats-all` — ❌ wrong
+  3. EN "Yes, that was delicious! The bill, please." · FR "Oui, c’était délicieux ! L’addition, s’il vous plaît." · ES "¡Sí, estaba delicioso! La cuenta, por favor." · (HE gloss "החשבון, בבקשה.") — `phrase.rest.the-bill` — ❌ wrong
 - Tests: phrase.rest.water
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M14-Q23 — quick-reply (step 14, round 4 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
+### M14-Q26 — quick-reply (step 24, round 2 of 2 · SPEED CHALLENGE (spoken at rate 1.12))
 
 - Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio played: EN "Anything else?" · FR "Autre chose ?" · ES "¿Algo más?"
 - Meaning of the audio (HE): "עוד משהו?"
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
-  1. EN "That's all, thanks." · FR "C’est tout, merci." · ES "Eso es todo, gracias." · (HE gloss "תודה!") — `phrase.recovery.thank-you` — ✅ accepted
-  2. EN "A table for two, please." · FR "Une table pour deux, s’il vous plaît." · ES "Una mesa para dos, por favor." · (HE gloss "שולחן לשניים, בבקשה.") — `phrase.rest.table-two` — ❌ wrong
-  3. EN "That was delicious!" · FR "C’était délicieux !" · ES "¡Estaba delicioso!" · (HE gloss "זה היה טעים מאוד!") — `phrase.rest.delicious` — ❌ wrong
-- Tests: phrase.recovery.thank-you
+  1. EN "That's all, thanks." · FR "C’est tout, merci." · ES "Eso es todo, gracias." · (HE gloss "זה הכל, תודה.") — `phrase.coffee.thats-all` — ✅ accepted
+  2. EN "No — a table for two, please." · FR "Non — une table pour deux, s’il vous plaît." · ES "No — una mesa para dos, por favor." · (HE gloss "שולחן לשניים, בבקשה.") — `phrase.rest.table-two` — ❌ wrong
+  3. EN "A bottle of water, please." · FR "Une bouteille d’eau, s’il vous plaît." · ES "Una botella de agua, por favor." · (HE gloss "בקבוק מים, בבקשה.") — `phrase.rest.water` — ❌ wrong
+- Tests: phrase.coffee.thats-all
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M14-Q24 — quick-reply (step 14, round 5 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
+### M14-Q27 — quick-reply (step 25, round 1 of 1 · SPEED CHALLENGE (spoken at rate 1.12))
 
 - Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio played: EN "Is everything okay?" · FR "Tout va bien ?" · ES "¿Va todo bien?"
@@ -14522,8 +14630,73 @@ No meaning quiz in this mission.
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
   1. EN "Yes, that was delicious! The bill, please." · FR "Oui, c’était délicieux ! L’addition, s’il vous plaît." · ES "¡Sí, estaba delicioso! La cuenta, por favor." · (HE gloss "החשבון, בבקשה.") — `phrase.rest.the-bill` — ✅ accepted
-  2. EN "I'll have the chicken." · FR "Je vais prendre le poulet." · ES "Voy a tomar el pollo." · (HE gloss "אני אקח את העוף.") — `phrase.rest.ill-have-chicken` — ❌ wrong
-  3. EN "A table for two, please." · FR "Une table pour deux, s’il vous plaît." · ES "Una mesa para dos, por favor." · (HE gloss "שולחן לשניים, בבקשה.") — `phrase.rest.table-two` — ❌ wrong
+  2. EN "I'll have the chicken, without onions, please." · FR "Je vais prendre le poulet, sans oignons, s’il vous plaît." · ES "Voy a tomar el pollo, sin cebolla, por favor." · (HE gloss "אני אקח את העוף.") — `phrase.rest.ill-have-chicken` — ❌ wrong
+  3. EN "A bottle of water, please." · FR "Une bouteille d’eau, s’il vous plaît." · ES "Una botella de agua, por favor." · (HE gloss "בקבוק מים, בבקשה.") — `phrase.rest.water` — ❌ wrong
+- Tests: phrase.rest.the-bill
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M14-Q28 — quick-reply (step 28, round 1 of 2)
+
+- Prompt displayed: "🍽️ Table order: Table: ? / Main: ? / Change: ? ‖ 🥤 Drink & bill: Drink: ? / Order: Open / Bill: — ¦ Dinner at a restaurant. Get from the door to the bill." / "🍽️ הזמנה לשולחן: שולחן: ? / מנה: ? / שינוי: ? ‖ 🥤 שתייה וחשבון: שתייה: ? / הזמנה: פתוחה / חשבון: — ¦ ארוחת ערב במסעדה. תגיע מהכניסה עד החשבון."
+- Audio played: EN "Good evening! Do you have a reservation?" · FR "Bonsoir ! Vous avez une réservation ?" · ES "¡Buenas noches! ¿Tiene reserva?"
+- Meaning of the audio (HE): "ערב טוב! יש לכם הזמנה?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "No — a table for two, please." · FR "Non — une table pour deux, s’il vous plaît." · ES "No — una mesa para dos, por favor." · (HE gloss "שולחן לשניים, בבקשה.") — `phrase.rest.table-two` — ✅ accepted
+  2. EN "That's all, thanks." · FR "C’est tout, merci." · ES "Eso es todo, gracias." · (HE gloss "זה הכל, תודה.") — `phrase.coffee.thats-all` — ❌ wrong
+  3. EN "A bottle of water, please." · FR "Une bouteille d’eau, s’il vous plaît." · ES "Una botella de agua, por favor." · (HE gloss "בקבוק מים, בבקשה.") — `phrase.rest.water` — ❌ wrong
+- Tests: phrase.rest.table-two
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M14-Q29 — quick-reply (step 28, round 2 of 2)
+
+- Prompt displayed: "🍽️ Table order: Table: ? / Main: ? / Change: ? ‖ 🥤 Drink & bill: Drink: ? / Order: Open / Bill: — ¦ Dinner at a restaurant. Get from the door to the bill." / "🍽️ הזמנה לשולחן: שולחן: ? / מנה: ? / שינוי: ? ‖ 🥤 שתייה וחשבון: שתייה: ? / הזמנה: פתוחה / חשבון: — ¦ ארוחת ערב במסעדה. תגיע מהכניסה עד החשבון."
+- Audio played: EN "Are you ready to order?" · FR "Vous êtes prêts à commander ?" · ES "¿Están listos para pedir?"
+- Meaning of the audio (HE): "מוכנים להזמין?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "I'll have the chicken, without onions, please." · FR "Je vais prendre le poulet, sans oignons, s’il vous plaît." · ES "Voy a tomar el pollo, sin cebolla, por favor." · (HE gloss "אני אקח את העוף.") — `phrase.rest.ill-have-chicken` — ✅ accepted
+  2. EN "No — a table for two, please." · FR "Non — une table pour deux, s’il vous plaît." · ES "No — una mesa para dos, por favor." · (HE gloss "שולחן לשניים, בבקשה.") — `phrase.rest.table-two` — ❌ wrong
+  3. EN "Yes, that was delicious! The bill, please." · FR "Oui, c’était délicieux ! L’addition, s’il vous plaît." · ES "¡Sí, estaba delicioso! La cuenta, por favor." · (HE gloss "החשבון, בבקשה.") — `phrase.rest.the-bill` — ❌ wrong
+- Tests: phrase.rest.ill-have-chicken
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M14-Q30 — quick-reply (step 29, round 1 of 2)
+
+- Prompt displayed: "🍽️ Table order: Table: 2 / Main: Chicken / Change: No onions ‖ 🥤 Drink & bill: Drink: ? / Order: Open / Bill: —" / "🍽️ הזמנה לשולחן: שולחן: 2 / מנה: עוף / שינוי: בלי בצל ‖ 🥤 שתייה וחשבון: שתייה: ? / הזמנה: פתוחה / חשבון: —"
+- Audio played: EN "Of course. Anything to drink?" · FR "Bien sûr. Quelque chose à boire ?" · ES "Claro. ¿Algo de beber?"
+- Meaning of the audio (HE): "כמובן. משהו לשתות?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "A bottle of water, please." · FR "Une bouteille d’eau, s’il vous plaît." · ES "Una botella de agua, por favor." · (HE gloss "בקבוק מים, בבקשה.") — `phrase.rest.water` — ✅ accepted
+  2. EN "I'll have the chicken, without onions, please." · FR "Je vais prendre le poulet, sans oignons, s’il vous plaît." · ES "Voy a tomar el pollo, sin cebolla, por favor." · (HE gloss "אני אקח את העוף.") — `phrase.rest.ill-have-chicken` — ❌ wrong
+  3. EN "That's all, thanks." · FR "C’est tout, merci." · ES "Eso es todo, gracias." · (HE gloss "זה הכל, תודה.") — `phrase.coffee.thats-all` — ❌ wrong
+- Tests: phrase.rest.water
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M14-Q31 — quick-reply (step 29, round 2 of 2)
+
+- Prompt displayed: "🍽️ Table order: Table: 2 / Main: Chicken / Change: No onions ‖ 🥤 Drink & bill: Drink: ? / Order: Open / Bill: —" / "🍽️ הזמנה לשולחן: שולחן: 2 / מנה: עוף / שינוי: בלי בצל ‖ 🥤 שתייה וחשבון: שתייה: ? / הזמנה: פתוחה / חשבון: —"
+- Audio played: EN "Anything else?" · FR "Autre chose ?" · ES "¿Algo más?"
+- Meaning of the audio (HE): "עוד משהו?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "That's all, thanks." · FR "C’est tout, merci." · ES "Eso es todo, gracias." · (HE gloss "זה הכל, תודה.") — `phrase.coffee.thats-all` — ✅ accepted
+  2. EN "Yes, that was delicious! The bill, please." · FR "Oui, c’était délicieux ! L’addition, s’il vous plaît." · ES "¡Sí, estaba delicioso! La cuenta, por favor." · (HE gloss "החשבון, בבקשה.") — `phrase.rest.the-bill` — ❌ wrong
+  3. EN "No — a table for two, please." · FR "Non — une table pour deux, s’il vous plaît." · ES "No — una mesa para dos, por favor." · (HE gloss "שולחן לשניים, בבקשה.") — `phrase.rest.table-two` — ❌ wrong
+- Tests: phrase.coffee.thats-all
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M14-Q32 — quick-reply (step 30, round 1 of 1)
+
+- Prompt displayed: "⏳ Later… the meal is over. ¦ 🍽️ Table order: Table: 2 / Main: Chicken / Change: No onions ‖ 🥤 Drink & bill: Drink: Water / Order: Closed ✅ / Bill: —" / "⏳ מאוחר יותר… הארוחה נגמרה. ¦ 🍽️ הזמנה לשולחן: שולחן: 2 / מנה: עוף / שינוי: בלי בצל ‖ 🥤 שתייה וחשבון: שתייה: מים / הזמנה: נסגרה ✅ / חשבון: —"
+- Audio played: EN "Is everything okay?" · FR "Tout va bien ?" · ES "¿Va todo bien?"
+- Meaning of the audio (HE): "הכל בסדר?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Yes, that was delicious! The bill, please." · FR "Oui, c’était délicieux ! L’addition, s’il vous plaît." · ES "¡Sí, estaba delicioso! La cuenta, por favor." · (HE gloss "החשבון, בבקשה.") — `phrase.rest.the-bill` — ✅ accepted
+  2. EN "A bottle of water, please." · FR "Une bouteille d’eau, s’il vous plaît." · ES "Una botella de agua, por favor." · (HE gloss "בקבוק מים, בבקשה.") — `phrase.rest.water` — ❌ wrong
+  3. EN "No — a table for two, please." · FR "Non — une table pour deux, s’il vous plaît." · ES "No — una mesa para dos, por favor." · (HE gloss "שולחן לשניים, בבקשה.") — `phrase.rest.table-two` — ❌ wrong
 - Tests: phrase.rest.the-bill
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
@@ -14542,11 +14715,21 @@ No meaning quiz in this mission.
     - FR: Non — une table pour deux, s’il vous plaît.
     - ES: No — una mesa para dos, por favor.
     - HE: לא — שולחן לשניים, בבקשה.
-  - choice 2 — 🛟 accepted — conversation-help tool → r1 — `phrase.recovery.dont-understand`
+  - choice 2 — ❌ WRONG → m1 — `phrase.rest.the-bill`
+    - EN: Yes, that was delicious! The bill, please.
+    - FR: Oui, c’était délicieux ! L’addition, s’il vous plaît.
+    - ES: ¡Sí, estaba delicioso! La cuenta, por favor.
+    - HE: כן, היה טעים מאוד! החשבון, בבקשה.
+  - choice 3 — 🛟 accepted — conversation-help tool → r1 — `phrase.recovery.dont-understand`
     - EN: Sorry, I don’t understand.
     - FR: Désolé, je ne comprends pas.
     - ES: Perdón, no entiendo.
     - HE: סליחה, אני לא מבין.
+- **m1** · NPC · slow (TTS rate 0.75) · off the happy path → c1
+  - EN: Good evening! Do you have a reservation?
+  - FR: Bonsoir ! Vous avez une réservation ?
+  - ES: ¡Buenas noches! ¿Tiene reserva?
+  - HE: ערב טוב! יש לכם הזמנה?
 - **r1** · NPC · slow (TTS rate 0.75) · off the happy path → c1b
   - EN: A table? For how many people?
   - FR: Une table ? Pour combien de personnes ?
@@ -14574,21 +14757,16 @@ No meaning quiz in this mission.
     - FR: Je vais prendre le poulet, sans oignons, s’il vous plaît.
     - ES: Voy a tomar el pollo, sin cebolla, por favor.
     - HE: אני אקח את העוף, בלי בצל, בבקשה.
-  - choice 2 — ✅ accepted → n3 — `phrase.rest.ill-have`
-    - EN: I'll have the pasta, please.
-    - FR: Je vais prendre les pâtes, s’il vous plaît.
-    - ES: Voy a tomar la pasta, por favor.
-    - HE: אני אקח את הפסטה, בבקשה.
-  - choice 3 — 🛟 accepted — conversation-help tool → r2 — `phrase.recovery.one-moment`
-    - EN: One moment, please.
-    - FR: Un instant, s’il vous plaît.
-    - ES: Un momento, por favor.
-    - HE: רגע אחד, בבקשה. (צריך עוד רגע? לגיטימי)
-- **r2** · NPC · normal (TTS rate 0.95) · off the happy path → n2b
-  - EN: Sure, take your time.
-  - FR: Bien sûr, prenez votre temps.
-  - ES: Claro, tómense su tiempo.
-  - HE: בטח, קחו את הזמן.
+  - choice 2 — ❌ WRONG → m2 — `phrase.coffee.thats-all`
+    - EN: That's all, thanks.
+    - FR: C’est tout, merci.
+    - ES: Eso es todo, gracias.
+    - HE: זה הכל, תודה.
+- **m2** · NPC · slow (TTS rate 0.75) · off the happy path → c2
+  - EN: Are you ready to order?
+  - FR: Vous êtes prêts à commander ?
+  - ES: ¿Están listos para pedir?
+  - HE: מוכנים להזמין?
 - **n3** · NPC · normal (TTS rate 0.95) → c3
   - EN: Of course. Anything to drink?
   - FR: Bien sûr. Quelque chose à boire ?
@@ -14600,17 +14778,37 @@ No meaning quiz in this mission.
     - FR: Une bouteille d’eau, s’il vous plaît.
     - ES: Una botella de agua, por favor.
     - HE: בקבוק מים, בבקשה.
+  - choice 2 — ❌ WRONG → m3 — `phrase.rest.the-bill`
+    - EN: Yes, that was delicious! The bill, please.
+    - FR: Oui, c’était délicieux ! L’addition, s’il vous plaît.
+    - ES: ¡Sí, estaba delicioso! La cuenta, por favor.
+    - HE: כן, היה טעים מאוד! החשבון, בבקשה.
+- **m3** · NPC · slow (TTS rate 0.75) · off the happy path → c3
+  - EN: Of course. Anything to drink?
+  - FR: Bien sûr. Quelque chose à boire ?
+  - ES: Claro. ¿Algo de beber?
+  - HE: כמובן. משהו לשתות?
 - **n4** · NPC · fast (TTS rate 1.08) → c4
   - EN: Anything else?
   - FR: Autre chose ?
   - ES: ¿Algo más?
   - HE: עוד משהו?
 - **c4** · LEARNER choice screen
-  - choice 1 — ✅ accepted → n5 — `phrase.recovery.thank-you`
+  - choice 1 — ✅ accepted → n5 — `phrase.coffee.thats-all`
     - EN: That's all, thanks.
     - FR: C’est tout, merci.
     - ES: Eso es todo, gracias.
     - HE: זה הכל, תודה.
+  - choice 2 — ❌ WRONG → m4 — `phrase.rest.table-two`
+    - EN: No — a table for two, please.
+    - FR: Non — une table pour deux, s’il vous plaît.
+    - ES: No — una mesa para dos, por favor.
+    - HE: לא — שולחן לשניים, בבקשה.
+- **m4** · NPC · slow (TTS rate 0.75) · off the happy path → c4
+  - EN: Anything else?
+  - FR: Autre chose ?
+  - ES: ¿Algo más?
+  - HE: עוד משהו?
 - **n5** · NPC · normal (TTS rate 0.95) → n5b
   - EN: Coming right up!
   - FR: Ça arrive tout de suite !
@@ -14627,6 +14825,16 @@ No meaning quiz in this mission.
     - FR: Oui, c’était délicieux ! L’addition, s’il vous plaît.
     - ES: ¡Sí, estaba delicioso! La cuenta, por favor.
     - HE: כן, היה טעים מאוד! החשבון, בבקשה.
+  - choice 2 — ❌ WRONG → m5 — `phrase.rest.ill-have-chicken`
+    - EN: I'll have the chicken, without onions, please.
+    - FR: Je vais prendre le poulet, sans oignons, s’il vous plaît.
+    - ES: Voy a tomar el pollo, sin cebolla, por favor.
+    - HE: אני אקח את העוף, בלי בצל, בבקשה.
+- **m5** · NPC · slow (TTS rate 0.75) · off the happy path → c5
+  - EN: Is everything okay?
+  - FR: Tout va bien ?
+  - ES: ¿Va todo bien?
+  - HE: הכל בסדר?
 - **n6** · NPC · normal (TTS rate 0.95) · END of scene
   - EN: So glad you enjoyed it. Here you are — have a lovely evening!
   - FR: Ravi que ça vous ait plu. Voici — passez une bonne soirée !
@@ -14666,7 +14874,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 
 ## Learner choice screens
 
-### M14-Q14 — dialogue-choice (step 11, scene "sit-down-meal" · node c1)
+### M14-Q17 — dialogue-choice (step 21, scene "sit-down-meal" · node c1)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Good evening! Do you have a reservation?" · FR "Bonsoir ! Vous avez une réservation ?" · ES "¡Buenas noches! ¿Tiene reserva?"
@@ -14674,11 +14882,12 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
   1. EN "No — a table for two, please." · FR "Non — une table pour deux, s’il vous plaît." · ES "No — una mesa para dos, por favor." · (HE gloss "לא — שולחן לשניים, בבקשה.") — `phrase.rest.table-two` — ✅ accepted → n2
-  2. EN "Sorry, I don’t understand." · FR "Désolé, je ne comprends pas." · ES "Perdón, no entiendo." · (HE gloss "סליחה, אני לא מבין.") — `phrase.recovery.dont-understand` — ✅ accepted → r1
-- Tests: phrase.rest.table-two, phrase.recovery.dont-understand
+  2. EN "Yes, that was delicious! The bill, please." · FR "Oui, c’était délicieux ! L’addition, s’il vous plaît." · ES "¡Sí, estaba delicioso! La cuenta, por favor." · (HE gloss "כן, היה טעים מאוד! החשבון, בבקשה.") — `phrase.rest.the-bill` — ❌ wrong → m1
+  3. EN "Sorry, I don’t understand." · FR "Désolé, je ne comprends pas." · ES "Perdón, no entiendo." · (HE gloss "סליחה, אני לא מבין.") — `phrase.recovery.dont-understand` — ✅ accepted → r1
+- Tests: phrase.rest.table-two, phrase.rest.the-bill, phrase.recovery.dont-understand
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M14-Q15 — dialogue-choice (step 11, scene "sit-down-meal" · node c1b)
+### M14-Q18 — dialogue-choice (step 21, scene "sit-down-meal" · node c1b)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "A table? For how many people?" · FR "Une table ? Pour combien de personnes ?" · ES "¿Una mesa? ¿Para cuántas personas?"
@@ -14689,7 +14898,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.rest.table-two
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M14-Q16 — dialogue-choice (step 11, scene "sit-down-meal" · node c2)
+### M14-Q19 — dialogue-choice (step 21, scene "sit-down-meal" · node c2)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Are you ready to order?" · FR "Vous êtes prêts à commander ?" · ES "¿Están listos para pedir?"
@@ -14697,12 +14906,11 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
   1. EN "I'll have the chicken, without onions, please." · FR "Je vais prendre le poulet, sans oignons, s’il vous plaît." · ES "Voy a tomar el pollo, sin cebolla, por favor." · (HE gloss "אני אקח את העוף, בלי בצל, בבקשה.") — `phrase.rest.ill-have-chicken` — ✅ accepted → n3
-  2. EN "I'll have the pasta, please." · FR "Je vais prendre les pâtes, s’il vous plaît." · ES "Voy a tomar la pasta, por favor." · (HE gloss "אני אקח את הפסטה, בבקשה.") — `phrase.rest.ill-have` — ✅ accepted → n3
-  3. EN "One moment, please." · FR "Un instant, s’il vous plaît." · ES "Un momento, por favor." · (HE gloss "רגע אחד, בבקשה. (צריך עוד רגע? לגיטימי)") — `phrase.recovery.one-moment` — ✅ accepted → r2
-- Tests: phrase.rest.ill-have-chicken, phrase.rest.ill-have, phrase.recovery.one-moment
+  2. EN "That's all, thanks." · FR "C’est tout, merci." · ES "Eso es todo, gracias." · (HE gloss "זה הכל, תודה.") — `phrase.coffee.thats-all` — ❌ wrong → m2
+- Tests: phrase.rest.ill-have-chicken, phrase.coffee.thats-all
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M14-Q17 — dialogue-choice (step 11, scene "sit-down-meal" · node c3)
+### M14-Q20 — dialogue-choice (step 21, scene "sit-down-meal" · node c3)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Of course. Anything to drink?" · FR "Bien sûr. Quelque chose à boire ?" · ES "Claro. ¿Algo de beber?"
@@ -14710,21 +14918,23 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
   1. EN "A bottle of water, please." · FR "Une bouteille d’eau, s’il vous plaît." · ES "Una botella de agua, por favor." · (HE gloss "בקבוק מים, בבקשה.") — `phrase.rest.water` — ✅ accepted → n4
-- Tests: phrase.rest.water
+  2. EN "Yes, that was delicious! The bill, please." · FR "Oui, c’était délicieux ! L’addition, s’il vous plaît." · ES "¡Sí, estaba delicioso! La cuenta, por favor." · (HE gloss "כן, היה טעים מאוד! החשבון, בבקשה.") — `phrase.rest.the-bill` — ❌ wrong → m3
+- Tests: phrase.rest.water, phrase.rest.the-bill
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M14-Q18 — dialogue-choice (step 11, scene "sit-down-meal" · node c4)
+### M14-Q21 — dialogue-choice (step 21, scene "sit-down-meal" · node c4)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Anything else?" · FR "Autre chose ?" · ES "¿Algo más?"
 - Meaning of the audio (HE): "עוד משהו?"
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
-  1. EN "That's all, thanks." · FR "C’est tout, merci." · ES "Eso es todo, gracias." · (HE gloss "זה הכל, תודה.") — `phrase.recovery.thank-you` — ✅ accepted → n5
-- Tests: phrase.recovery.thank-you
+  1. EN "That's all, thanks." · FR "C’est tout, merci." · ES "Eso es todo, gracias." · (HE gloss "זה הכל, תודה.") — `phrase.coffee.thats-all` — ✅ accepted → n5
+  2. EN "No — a table for two, please." · FR "Non — une table pour deux, s’il vous plaît." · ES "No — una mesa para dos, por favor." · (HE gloss "לא — שולחן לשניים, בבקשה.") — `phrase.rest.table-two` — ❌ wrong → m4
+- Tests: phrase.coffee.thats-all, phrase.rest.table-two
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M14-Q19 — dialogue-choice (step 11, scene "sit-down-meal" · node c5)
+### M14-Q22 — dialogue-choice (step 21, scene "sit-down-meal" · node c5)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Is everything okay?" · FR "Tout va bien ?" · ES "¿Va todo bien?"
@@ -14732,7 +14942,8 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
   1. EN "Yes, that was delicious! The bill, please." · FR "Oui, c’était délicieux ! L’addition, s’il vous plaît." · ES "¡Sí, estaba delicioso! La cuenta, por favor." · (HE gloss "כן, היה טעים מאוד! החשבון, בבקשה.") — `phrase.rest.the-bill` — ✅ accepted → n6
-- Tests: phrase.rest.the-bill
+  2. EN "I'll have the chicken, without onions, please." · FR "Je vais prendre le poulet, sans oignons, s’il vous plaît." · ES "Voy a tomar el pollo, sin cebolla, por favor." · (HE gloss "אני אקח את העוף, בלי בצל, בבקשה.") — `phrase.rest.ill-have-chicken` — ❌ wrong → m5
+- Tests: phrase.rest.the-bill, phrase.rest.ill-have-chicken
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
 ## Recovery tools in this mission
@@ -14742,29 +14953,40 @@ Toolkit phrases bundled into this mission's sentence list: `phrase.recovery.repe
 Where a conversation-help tool can be selected, and what happens:
 
 - Scene `sit-down-meal`, c1 — `phrase.recovery.dont-understand` "Sorry, I don’t understand." ("סליחה, אני לא מבין.") — after NPC "Good evening! Do you have a reservation?" → r1: NPC "A table? For how many people?" (slow) → r1 → c1b → rejoins the happy path at n2. Counts as success (recorded as "pass"); no feedback card — the dialogue simply continues.
-- Scene `sit-down-meal`, c2 — `phrase.recovery.one-moment` "One moment, please." ("רגע אחד, בבקשה. (צריך עוד רגע? לגיטימי)") — after NPC "Are you ready to order?" → r2: NPC "Sure, take your time." → r2 → rejoins the happy path at n2b. Counts as success (recorded as "pass"); no feedback card — the dialogue simply continues.
 
 ## Wrong answer branches
 
-None — no choice in this mission is marked wrong.
+5 reachable wrong-answer branch(es):
 
+- Scene `sit-down-meal`, c1 — after NPC "Good evening! Do you have a reservation?"
+  - Wrong choice: "Yes, that was delicious! The bill, please." ("כן, היה טעים מאוד! החשבון, בבקשה.") — `phrase.rest.the-bill`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("No — a table for two, please."), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m1): "Good evening! Do you have a reservation?" — HE "ערב טוב! יש לכם הזמנה?"
+  - Then: m1 → rejoins the happy path at c1. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
+- Scene `sit-down-meal`, c2 — after NPC "Are you ready to order?"
+  - Wrong choice: "That's all, thanks." ("זה הכל, תודה.") — `phrase.coffee.thats-all`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("I'll have the chicken, without onions, please."), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m2): "Are you ready to order?" — HE "מוכנים להזמין?"
+  - Then: m2 → rejoins the happy path at c2. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
+- Scene `sit-down-meal`, c3 — after NPC "Of course. Anything to drink?"
+  - Wrong choice: "Yes, that was delicious! The bill, please." ("כן, היה טעים מאוד! החשבון, בבקשה.") — `phrase.rest.the-bill`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("A bottle of water, please."), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m3): "Of course. Anything to drink?" — HE "כמובן. משהו לשתות?"
+  - Then: m3 → rejoins the happy path at c3. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
+- Scene `sit-down-meal`, c4 — after NPC "Anything else?"
+  - Wrong choice: "No — a table for two, please." ("לא — שולחן לשניים, בבקשה.") — `phrase.rest.table-two`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("That's all, thanks."), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m4): "Anything else?" — HE "עוד משהו?"
+  - Then: m4 → rejoins the happy path at c4. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
+- Scene `sit-down-meal`, c5 — after NPC "Is everything okay?"
+  - Wrong choice: "I'll have the chicken, without onions, please." ("אני אקח את העוף, בלי בצל, בבקשה.") — `phrase.rest.ill-have-chicken`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("Yes, that was delicious! The bill, please."), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m5): "Is everything okay?" — HE "הכל בסדר?"
+  - Then: m5 → rejoins the happy path at c5. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
 
 ## Sentence review
 
-Step 13. 12 sentences, in this fixed order. Each is played automatically (TTS), shown with its translation and tip; buttons: 🔊 "Hear again" / "לשמוע שוב" and Next. No speaking prompt, no grading, no scoring; nothing is recorded.
-
-1. `phrase.rest.table-two` — A table for two, please. — שולחן לשניים, בבקשה.
-2. `phrase.rest.ill-have-chicken` — I'll have the chicken. — אני אקח את העוף.
-3. `phrase.rest.ill-have` — I'll have the pasta, please. — אני אקח את הפסטה, בבקשה.
-4. `phrase.rest.no-onions` — No onions, please. — בלי בצל, בבקשה.
-5. `phrase.rest.water` — A bottle of water, please. — בקבוק מים, בבקשה.
-6. `phrase.rest.the-bill` — The bill, please. — החשבון, בבקשה.
-7. `reply.rest.reservation` — Do you have a reservation? — יש לכם הזמנה?
-8. `reply.rest.ready-to-order` — Are you ready to order? — מוכנים להזמין?
-9. `reply.rest.to-drink` — Anything to drink? — משהו לשתות?
-10. `reply.rest.anything-else` — Anything else? — עוד משהו?
-11. `reply.rest.everything-okay` — Is everything okay? — הכל בסדר?
-12. `phrase.recovery.dont-understand` — Sorry, I don't understand. — סליחה, אני לא מבין.
+No sentence-review step in this mission.
 
 ## Cold open / ambush
 
@@ -14774,52 +14996,72 @@ No cold open in this mission.
 
 The runtime has NO slot-substitution mechanism: no sentence is generated with a different word. "Variants" exist only as (a) alternative accepted lines on one choice screen and (b) extra sentences taught beside the dialogue. Templates are mentioned only in tips.
 
-Alternative accepted lines:
+No choice screen offers two accepted non-toolkit lines.
 
-- Scene `sit-down-meal`, c2: "I'll have the chicken, without onions, please." OR "I'll have the pasta, please." — all accepted, same continuation unless the routes above differ.
 
 Learner sentences taught beside the dialogue (not a line in any scene):
 
 - `phrase.rest.no-onions` — No onions, please.
 - `phrase.rest.delicious` — That was delicious!
+- `phrase.rest.ill-have` — I'll have the pasta, please.
+- `phrase.rest.chicken-no-onions` — I'll have the chicken, without onions, please.
 
 ## Receipts (proof cards)
 
-- Step 8: "You recognize every waiter question — before it can surprise you." / "אתה מזהה את כל שאלות המלצר — לפני שהן מפתיעות אותך."
-- Step 12: "A full dinner: from table to bill, special request included." / "ארוחת ערב שלמה: משולחן ועד חשבון, כולל בקשה מיוחדת."
-- Step 15: "A whole meal at a real waiter’s pace — from table to bill." / "ארוחה שלמה בקצב של מלצר אמיתי — משולחן ועד חשבון."
+- Step 12: "🍽️ Table order: Table: 2 / Main: Chicken / Change: No onions ‖ 🥤 Drink & bill: Drink: Water / Order: Closed ✅ / Bill: Requested ✅ ¦ Your order — from the table to the bill." / "🍽️ הזמנה לשולחן: שולחן: 2 / מנה: עוף / שינוי: בלי בצל ‖ 🥤 שתייה וחשבון: שתייה: מים / הזמנה: נסגרה ✅ / חשבון: התבקש ✅ ¦ ההזמנה שלך — מהשולחן ועד החשבון."
+- Step 20: "🍽️ Table order: Table: 2 / Main: Chicken / Change: No onions ‖ 🥤 Drink & bill: Drink: Water / Order: Closed ✅ / Bill: Requested ✅ ¦ The whole meal — from the door to the bill." / "🍽️ הזמנה לשולחן: שולחן: 2 / מנה: עוף / שינוי: בלי בצל ‖ 🥤 שתייה וחשבון: שתייה: מים / הזמנה: נסגרה ✅ / חשבון: התבקש ✅ ¦ כל הארוחה — מהכניסה ועד החשבון."
+- Step 22: "The whole conversation — table, order, drink, close and bill." / "כל השיחה — שולחן, הזמנה, שתייה, סגירה וחשבון."
+- Step 26: "No help — the whole meal, at a real waiter’s pace." / "בלי עזרה — כל הארוחה, בקצב של מלצר אמיתי."
+- Step 31: "🍽️ MEAL COMPLETE ¦ 🍽️ Table order: Table: 2 / Main: Chicken / Change: No onions ‖ 🥤 Drink & bill: Drink: Water / Order: Complete ✅ / Bill: Requested ✅" / "🍽️ הארוחה הושלמה ¦ 🍽️ הזמנה לשולחן: שולחן: 2 / מנה: עוף / שינוי: בלי בצל ‖ 🥤 שתייה וחשבון: שתייה: מים / הזמנה: הושלמה ✅ / חשבון: התבקש ✅"
 
 ## Audit Metadata — DO NOT FIX YET
 
-- Learner-production sentences: 7
+- Learner-production sentences: 9
 - Receptive (expected-reply) sentences: 6
 - Toolkit phrases bundled: 5
-- Key-sentence steps: 4
-- Expected-reply/listening items: 5
+- Key-sentence steps: 0
+- Expected-reply/listening items: 0
 - Questions/quizzes (meaning quiz): 0
-- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 13
-- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 15
-- One-button dialogue screens: 4
-- Learner sentences never actively retrieved: 0
+- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 26
+- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 25
+- One-button dialogue screens: 1
+- Learner sentences never actively retrieved: 3
 - Dialogue learner choices (screens): 6
-- Wrong-answer branches: 0
+- Wrong-answer branches: 5
 - Cold-open prompts: 0
-- Recovery opportunities: 2
-- Vocabulary pre-items: 5
-- Swap variants (extra accepted lines): 1
-- Sentences in review: 12
-- Total interactive questions: 24 (answer choices: 61)
-- Approximate total learner interactions: 41 (questions + key sentences + review cards + word-intro screen)
+- Recovery opportunities: 1
+- Vocabulary pre-items: 11
+- Swap variants (extra accepted lines): 0
+- Sentences in review: 0
+- Total interactive questions: 32 (answer choices: 96)
+- Approximate total learner interactions: 33 (questions + key sentences + review cards + word-intro screen)
 
-### AUTO-FLAG — requires human review (7)
+### AUTO-FLAG — requires human review (24)
 
 - AUTO-FLAG — Practice item wording not in this mission's dialogue: `reply.rest.follow-me` “Follow me, please.” (drilled as an expected reply / distractor, but no NPC line here says it).
+- AUTO-FLAG — Learner sentence never actively retrieved in this mission (0 choice screens, 0 quick-reply / swap / match / builder rounds, 0 cold-open options): `phrase.rest.no-onions` “No onions, please.” — appears in sentence review only (orphan in this mission).
+- AUTO-FLAG — Learner sentence never actively retrieved in this mission (0 choice screens, 0 quick-reply / swap / match / builder rounds, 0 cold-open options): `phrase.rest.delicious` “That was delicious!” — appears in sentence review only (orphan in this mission).
+- AUTO-FLAG — Learner sentence never actively retrieved in this mission (0 choice screens, 0 quick-reply / swap / match / builder rounds, 0 cold-open options): `phrase.rest.ill-have` “I'll have the pasta, please.” — appears in sentence review only (orphan in this mission).
 - AUTO-FLAG — Toolkit phrase listed in the mission but never offered in it: `phrase.recovery.repeat` “Can you repeat that?” (sentence review only).
 - AUTO-FLAG — Toolkit phrase listed in the mission but never offered in it: `phrase.recovery.slowly` “Please speak slowly.” (sentence review only).
+- AUTO-FLAG — Toolkit phrase listed in the mission but never offered in it: `phrase.recovery.thank-you` “Thank you!” (sentence review only).
+- AUTO-FLAG — Toolkit phrase listed in the mission but never offered in it: `phrase.recovery.one-moment` “One moment, please.” (sentence review only).
 - AUTO-FLAG — Line shown differs from the sentence it is scored as: scene "sit-down-meal" c1 — shown “Sorry, I don’t understand.”, scored as `phrase.recovery.dont-understand` “Sorry, I don't understand.”.
-- AUTO-FLAG — Line shown differs from the sentence it is scored as: scene "sit-down-meal" c4 — shown “That's all, thanks.”, scored as `phrase.recovery.thank-you` “Thank you!”.
-- AUTO-FLAG — 6 of 6 choice screens have NO wrong option (every button is accepted): sit-down-meal/c1, sit-down-meal/c1b, sit-down-meal/c2, sit-down-meal/c3, sit-down-meal/c4, sit-down-meal/c5.
-- AUTO-FLAG — 4 choice screens offer exactly ONE button (no decision): sit-down-meal/c1b, sit-down-meal/c3, sit-down-meal/c4, sit-down-meal/c5.
+- AUTO-FLAG — 1 of 6 choice screens have NO wrong option (every button is accepted): sit-down-meal/c1b.
+- AUTO-FLAG — 1 choice screens offer exactly ONE button (no decision): sit-down-meal/c1b.
+- AUTO-FLAG — M14-Q01: answer choice “That's all, thanks.” (`phrase.coffee.thats-all`) was first taught in Mission 03, not here.
+- AUTO-FLAG — M14-Q03: answer choice “That's all, thanks.” (`phrase.coffee.thats-all`) was first taught in Mission 03, not here.
+- AUTO-FLAG — M14-Q04: answer choice “That's all, thanks.” (`phrase.coffee.thats-all`) was first taught in Mission 03, not here.
+- AUTO-FLAG — M14-Q12: answer choice “That's all, thanks.” (`phrase.coffee.thats-all`) was first taught in Mission 03, not here.
+- AUTO-FLAG — M14-Q13: answer choice “That's all, thanks.” (`phrase.coffee.thats-all`) was first taught in Mission 03, not here.
+- AUTO-FLAG — M14-Q15: answer choice “That's all, thanks.” (`phrase.coffee.thats-all`) was first taught in Mission 03, not here.
+- AUTO-FLAG — M14-Q16: answer choice “That's all, thanks.” (`phrase.coffee.thats-all`) was first taught in Mission 03, not here.
+- AUTO-FLAG — M14-Q23: answer choice “That's all, thanks.” (`phrase.coffee.thats-all`) was first taught in Mission 03, not here.
+- AUTO-FLAG — M14-Q25: answer choice “That's all, thanks.” (`phrase.coffee.thats-all`) was first taught in Mission 03, not here.
+- AUTO-FLAG — M14-Q26: answer choice “That's all, thanks.” (`phrase.coffee.thats-all`) was first taught in Mission 03, not here.
+- AUTO-FLAG — M14-Q28: answer choice “That's all, thanks.” (`phrase.coffee.thats-all`) was first taught in Mission 03, not here.
+- AUTO-FLAG — M14-Q30: answer choice “That's all, thanks.” (`phrase.coffee.thats-all`) was first taught in Mission 03, not here.
+- AUTO-FLAG — M14-Q31: answer choice “That's all, thanks.” (`phrase.coffee.thats-all`) was first taught in Mission 03, not here.
 
 ---
 
@@ -27693,7 +27935,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Eso es todo, gracias.
 - Role: learner production
 - Tip / pattern note: "Closes any order politely. Works everywhere on earth." / "סוגר כל הזמנה בנימוס. עובד בכל מקום בעולם."
-- Used in missions: 03, 29
+- Used in missions: 03, 14, 29
 - Exercised here as: dialogue choice dr-order/c8 (accepted)
 
 ### Sentence: `phrase.fix.not-ordered`
@@ -30121,7 +30363,7 @@ Every learner sentence of this mission is a line in a scene.
 | 11 Small Talk & Recommendations | 14 (7 / 7 / 0) | 0 | 1 | 1 | 31 | 6 | 0 | 0 | 0 | 14 words | 0 | 38 | 15 |
 | 12 Time & Plans | 16 (8 / 8 / 0) | 0 | 1 | 1 | 31 | 7 | 0 | 0 | 0 | 17 words | 0 | 39 | 0 |
 | 13 Home, Family & Daily Routine | 18 (9 / 9 / 0) | 0 | 1 | 1 | 33 | 8 | 0 | 0 | 0 | 17 words | 0 | 42 | 1 |
-| 14 Restaurant Meal | 18 (7 / 6 / 5) | 5 | 5 | 0 | 13 | 6 | 4 | 2 | 0 | 5 words | 1 | 24 | 7 |
+| 14 Restaurant Meal | 20 (9 / 6 / 5) | 0 | 0 | 0 | 26 | 6 | 1 | 1 | 0 | 11 words | 0 | 32 | 24 |
 | 15 Food Preferences & Allergies | 13 (5 / 5 / 3) | 4 | 4 | 0 | 12 | 10 | 5 | 3 | 1 | no | 1 | 27 | 6 |
 | 16 Hobbies & Free Time | 15 (8 / 6 / 1) | 4 | 4 | 0 | 15 | 9 | 8 | 1 | 0 | no | 0 | 28 | 5 |
 | 17 Supermarket & Everyday Shopping | 13 (4 / 5 / 4) | 4 | 4 | 0 | 15 | 7 | 3 | 2 | 1 | no | 1 | 27 | 8 |
@@ -30159,7 +30401,7 @@ Every learner-production sentence id of the Core, in order of first appearance. 
 | `phrase.coffee.iced-coffee` | I'd like an iced coffee, please. | 03 | 18 | 1 | 3 / 0 | 4 | 0 | 0 | yes | no |  |
 | `phrase.coffee.no-sugar` | Milk, no sugar. | 03 | — | 1 | 2 / 0 | 6 | 0 | 0 | no | no |  |
 | `phrase.coffee.croissant` | A croissant, please. | 03 | 18 | 0 | 1 / 1 | 6 | 0 | 1 | yes | no |  |
-| `phrase.coffee.thats-all` | That's all, thanks. | 03 | 29 | 0 | 3 / 0 | 4 | 0 | 0 | no | no |  |
+| `phrase.coffee.thats-all` | That's all, thanks. | 03 | 14, 29 | 0 | 4 / 1 | 17 | 0 | 0 | no | no |  |
 | `phrase.coffee.card` | Card, please. | 03 | — | 0 | 2 / 0 | 9 | 0 | 1 | no | no |  |
 | `phrase.coffee.medium` | Medium, please. | 03 | — | 0 | 2 / 0 | 9 | 0 | 1 | no | no |  |
 | `phrase.coffee.yes-please` | Yes, please. | 03 | 29 | 0 | 2 / 0 | 4 | 0 | 1 | no | no |  |
@@ -30222,13 +30464,14 @@ Every learner-production sentence id of the Core, in order of first appearance. 
 | `phrase.home.im-tired` | I'm tired. | 13 | — | 0 | 1 / 0 | 9 | 0 | 0 | no | no |  |
 | `phrase.home.going-home` | I'm going home. | 13 | 18 | 0 | 2 / 0 | 8 | 0 | 0 | yes | no |  |
 | `phrase.home.thanks-but-grandmothers` | Thanks, but I'm going to eat at my grandmother's. | 13 | — | 0 | 0 / 0 | 1 | 0 | 0 | no | no |  |
-| `phrase.rest.table-two` | A table for two, please. | 14 | 18, 28, 29, 30 | 1 | 6 / 4 | 9 | 0 | 1 | yes | no |  |
-| `phrase.rest.ill-have-chicken` | I'll have the chicken. | 14 | 18, 30 | 1 | 3 / 1 | 4 | 0 | 1 | yes | no |  |
-| `phrase.rest.water` | A bottle of water, please. | 14 | 18, 28, 29, 30 | 0 | 4 / 3 | 5 | 0 | 1 | yes | no |  |
-| `phrase.rest.no-onions` | No onions, please. | 14 | 28, 30 | 1 | 1 / 1 | 3 | 0 | 1 | yes | no |  |
-| `phrase.rest.the-bill` | The bill, please. | 14 | 18, 28, 29, 30 | 1 | 5 / 4 | 7 | 0 | 1 | yes | no |  |
-| `phrase.rest.delicious` | That was delicious! | 14 | 28, 29, 30 | 0 | 0 / 5 | 3 | 0 | 0 | yes | no |  |
-| `phrase.rest.ill-have` | I'll have the pasta, please. | 14 | 28, 29 | 0 | 3 / 2 | 2 | 0 | 1 | no | no |  |
+| `phrase.rest.table-two` | A table for two, please. | 14 | 18, 28, 29, 30 | 0 | 6 / 5 | 13 | 0 | 0 | yes | no |  |
+| `phrase.rest.ill-have-chicken` | I'll have the chicken. | 14 | 18, 30 | 0 | 3 / 2 | 8 | 0 | 0 | yes | no |  |
+| `phrase.rest.water` | A bottle of water, please. | 14 | 18, 28, 29, 30 | 0 | 4 / 3 | 12 | 0 | 0 | yes | no |  |
+| `phrase.rest.no-onions` | No onions, please. | 14 | 28, 30 | 0 | 1 / 1 | 0 | 0 | 0 | yes | no |  |
+| `phrase.rest.the-bill` | The bill, please. | 14 | 18, 28, 29, 30 | 0 | 5 / 6 | 10 | 0 | 0 | yes | no |  |
+| `phrase.rest.delicious` | That was delicious! | 14 | 28, 29, 30 | 0 | 0 / 5 | 0 | 0 | 0 | yes | no |  |
+| `phrase.rest.ill-have` | I'll have the pasta, please. | 14 | 28, 29 | 0 | 2 / 2 | 0 | 0 | 0 | no | no |  |
+| `phrase.rest.chicken-no-onions` | I'll have the chicken, without onions, please. | 14 | — | 0 | 0 / 0 | 1 | 0 | 0 | no | no |  |
 | `phrase.diet.allergic-nuts` | I'm allergic to nuts. | 15 | — | 1 | 2 / 0 | 5 | 0 | 1 | no | no |  |
 | `phrase.diet.without-onions` | Without onions, please. | 15 | — | 1 | 2 / 0 | 7 | 0 | 1 | no | no |  |
 | `phrase.diet.vegetarian` | I'm vegetarian. | 15 | — | 1 | 2 / 0 | 6 | 1 | 1 | no | no |  |
@@ -30311,7 +30554,7 @@ Every learner-production sentence id of the Core, in order of first appearance. 
 | `phrase.emerg.call-police` | Call the police! | 27 | — | 1 | 0 / 0 | 4 | 0 | 1 | no | no |  |
 | `phrase.emerg.where-hospital` | Where is the hospital? | 27 | — | 0 | 0 / 0 | 2 | 0 | 0 | no | no |  |
 
-Learner-production sentence ids: 163. With 0 active retrieval opportunities: 1.
+Learner-production sentence ids: 164. With 0 active retrieval opportunities: 1.
 
 # NPC Comprehension Coverage
 
@@ -30418,12 +30661,12 @@ Every expected-reply sentence id. "Quick response" does not exist as an exercise
 | `reply.home.rest` | Then go home and rest! | 13 | — | no | 0 / 1 | 0 / 0 | no | yes |
 | `reply.home.after` | And after dinner at your grandmother's? | 13 | — | no | 0 / 0 | 0 / 0 | no | yes |
 | `reply.home.goodbye` | Ha! Good night. Say hi to your family! | 13 | — | no | 1 / 0 | 0 / 0 | no | yes |
-| `reply.rest.reservation` | Do you have a reservation? | 14 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
+| `reply.rest.reservation` | Do you have a reservation? | 14 | — | no | 0 / 0 | 0 / 0 | no | yes |
 | `reply.rest.follow-me` | Follow me, please. | 14 | — | no | 0 / 0 | 0 / 0 | no | **no** |
-| `reply.rest.ready-to-order` | Are you ready to order? | 14 | 18 | yes (1) | 0 / 0 | 1 / 0 | yes | yes |
-| `reply.rest.to-drink` | Anything to drink? | 14 | 18 | yes (1) | 0 / 0 | 0 / 1 | yes | yes |
-| `reply.rest.anything-else` | Anything else? | 14 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
-| `reply.rest.everything-okay` | Is everything okay? | 14 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
+| `reply.rest.ready-to-order` | Are you ready to order? | 14 | 18 | no | 0 / 0 | 1 / 0 | yes | yes |
+| `reply.rest.to-drink` | Anything to drink? | 14 | 18 | no | 0 / 0 | 0 / 1 | yes | yes |
+| `reply.rest.anything-else` | Anything else? | 14 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.rest.everything-okay` | Is everything okay? | 14 | — | no | 0 / 0 | 0 / 0 | no | yes |
 | `reply.diet.let-me-check` | Let me check with the kitchen. | 15 | — | yes (1) | 0 / 0 | 0 / 0 | no | **no** |
 | `reply.diet.make-without` | We can make it without. | 15 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
 | `reply.diet.contains-nuts` | That one contains nuts. | 15 | — | yes (1) | 0 / 0 | 0 / 0 | no | **no** |
@@ -35217,208 +35460,291 @@ No questions.
 
 ## Mission 14 — Restaurant Meal
 
-**M14-Q01** — expected-reply
-- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (1/5)
-- Audio: Do you have a reservation? — (יש לכם הזמנה?)
-- A: יש לכם הזמנה? / Do you have a reservation? ✅
-- B: מוכנים להזמין? / Are you ready to order?
-- C: משהו לשתות? / Anything to drink?
-- Correct: Do you have a reservation?
-- Tests: reply.rest.reservation
-
-**M14-Q02** — expected-reply
-- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (2/5)
-- Audio: Are you ready to order? — (מוכנים להזמין?)
-- A: מוכנים להזמין? / Are you ready to order? ✅
-- B: יש לכם הזמנה? / Do you have a reservation?
-- C: משהו לשתות? / Anything to drink?
-- Correct: Are you ready to order?
-- Tests: reply.rest.ready-to-order
-
-**M14-Q03** — expected-reply
-- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (3/5)
-- Audio: Anything to drink? — (משהו לשתות?)
-- A: משהו לשתות? / Anything to drink? ✅
-- B: יש לכם הזמנה? / Do you have a reservation?
-- C: מוכנים להזמין? / Are you ready to order?
-- Correct: Anything to drink?
-- Tests: reply.rest.to-drink
-
-**M14-Q04** — expected-reply
-- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (4/5)
-- Audio: Anything else? — (עוד משהו?)
-- A: עוד משהו? / Anything else? ✅
-- B: יש לכם הזמנה? / Do you have a reservation?
-- C: מוכנים להזמין? / Are you ready to order?
-- Correct: Anything else?
-- Tests: reply.rest.anything-else
-
-**M14-Q05** — expected-reply
-- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (5/5)
-- Audio: Is everything okay? — (הכל בסדר?)
-- A: הכל בסדר? / Is everything okay? ✅
-- B: יש לכם הזמנה? / Do you have a reservation?
-- C: מוכנים להזמין? / Are you ready to order?
-- Correct: Is everything okay?
-- Tests: reply.rest.everything-okay
-
-**M14-Q06** — quick-reply
-- Prompt: "The waiter asks — what do you say?" / "המלצר שואל — מה עונים?"
+**M14-Q01** — quick-reply
+- Prompt: "🍽️ Table order: Table: ? / Main: ? / Change: ? ‖ 🥤 Drink & bill: Drink: ? / Order: Open / Bill: — ¦ What do you answer?" / "🍽️ הזמנה לשולחן: שולחן: ? / מנה: ? / שינוי: ? ‖ 🥤 שתייה וחשבון: שתייה: ? / הזמנה: פתוחה / חשבון: — ¦ מה אתה עונה?"
 - Audio: Do you have a reservation? — (יש לכם הזמנה?)
 - A: No — a table for two, please. ✅
-- B: The bill, please.
-- C: A bottle of water, please.
+- B: That's all, thanks.
 - Correct: No — a table for two, please.
 - Tests: phrase.rest.table-two
 
-**M14-Q07** — quick-reply
-- Prompt: "The waiter asks — what do you say?" / "המלצר שואל — מה עונים?"
-- Audio: Are you ready to order? — (מוכנים להזמין?)
-- A: I'll have the chicken, without onions, please. ✅
-- B: I'll have the pasta, please. ✅
-- C: The bill, please.
-- Correct: I'll have the chicken, without onions, please. | I'll have the pasta, please.
-- Tests: phrase.rest.ill-have-chicken, phrase.rest.ill-have
+**M14-Q02** — sentence-builder
+- Prompt: "🍽️ Table order: Table: 2 / Main: ? / Change: ? ‖ 🥤 Drink & bill: Drink: ? / Order: Open / Bill: — ¦ Order: what you’ll have → the dish → what to take out" / "🍽️ הזמנה לשולחן: שולחן: 2 / מנה: ? / שינוי: ? ‖ 🥤 שתייה וחשבון: שתייה: ? / הזמנה: פתוחה / חשבון: — ¦ הזמן: מה אתה לוקח ← המנה ← מה להוריד ממנה" — cue shown: the sentence's MEANING in the app language ("אני אקח את העוף, בלי בצל, בבקשה.")
+- Audio: (nothing before Check; the built sentence is spoken once it is right) — ()
+- A: I'll have  |  the chicken,  |  without onions, please. ✅
+- Correct: I'll have  |  the chicken,  |  without onions, please.
+- Tests: phrase.rest.chicken-no-onions
 
-**M14-Q08** — quick-reply
-- Prompt: "The waiter asks — what do you say?" / "המלצר שואל — מה עונים?"
+**M14-Q03** — quick-reply
+- Prompt: "🍽️ Table order: Table: 2 / Main: Chicken / Change: No onions ‖ 🥤 Drink & bill: Drink: ? / Order: Open / Bill: — ¦ What do you answer?" / "🍽️ הזמנה לשולחן: שולחן: 2 / מנה: עוף / שינוי: בלי בצל ‖ 🥤 שתייה וחשבון: שתייה: ? / הזמנה: פתוחה / חשבון: — ¦ מה אתה עונה?"
 - Audio: Anything to drink? — (משהו לשתות?)
 - A: A bottle of water, please. ✅
-- B: No onions, please.
-- C: A table for two, please.
+- B: That's all, thanks.
+- C: No — a table for two, please.
 - Correct: A bottle of water, please.
 - Tests: phrase.rest.water
 
-**M14-Q09** — quick-reply
-- Prompt: "The waiter asks — what do you say?" / "המלצר שואל — מה עונים?"
+**M14-Q04** — quick-reply
+- Prompt: "🍽️ Table order: Table: 2 / Main: Chicken / Change: No onions ‖ 🥤 Drink & bill: Drink: Water / Order: Open / Bill: — ¦ The waiter asks if you need anything more. You have finished ordering." / "🍽️ הזמנה לשולחן: שולחן: 2 / מנה: עוף / שינוי: בלי בצל ‖ 🥤 שתייה וחשבון: שתייה: מים / הזמנה: פתוחה / חשבון: — ¦ המלצר שואל אם צריך עוד משהו. אתה גמרת להזמין."
 - Audio: Anything else? — (עוד משהו?)
 - A: That's all, thanks. ✅
-- B: A table for two, please.
-- C: That was delicious!
-- Correct: That's all, thanks.
-- Tests: phrase.recovery.thank-you
-
-**M14-Q10** — quick-reply
-- Prompt: "The waiter asks — what do you say?" / "המלצר שואל — מה עונים?" — situation shown: "You do not want onions in your dish." / "אתה לא רוצה בצל במנה."
-- Audio: (nothing is played — a situation is shown) — ()
-- A: No onions, please. ✅
 - B: A bottle of water, please.
-- C: The bill, please.
-- Correct: No onions, please.
-- Tests: phrase.rest.no-onions
+- C: I'll have the chicken, without onions, please.
+- Correct: That's all, thanks.
+- Tests: phrase.coffee.thats-all
 
-**M14-Q11** — quick-reply
-- Prompt: "The waiter asks — what do you say?" / "המלצר שואל — מה עונים?"
+**M14-Q05** — quick-reply
+- Prompt: "⏳ Later… the meal is over. ¦ 🍽️ Table order: Table: 2 / Main: Chicken / Change: No onions ‖ 🥤 Drink & bill: Drink: Water / Order: Closed ✅ / Bill: — ¦ What do you answer?" / "⏳ מאוחר יותר… הארוחה נגמרה. ¦ 🍽️ הזמנה לשולחן: שולחן: 2 / מנה: עוף / שינוי: בלי בצל ‖ 🥤 שתייה וחשבון: שתייה: מים / הזמנה: נסגרה ✅ / חשבון: — ¦ מה אתה עונה?"
 - Audio: Is everything okay? — (הכל בסדר?)
 - A: Yes, that was delicious! The bill, please. ✅
-- B: That was delicious! ✅
-- C: A table for two, please.
-- Correct: Yes, that was delicious! The bill, please. | That was delicious!
-- Tests: phrase.rest.the-bill, phrase.rest.delicious
+- B: I'll have the chicken, without onions, please.
+- C: No — a table for two, please.
+- Correct: Yes, that was delicious! The bill, please.
+- Tests: phrase.rest.the-bill
 
-**M14-Q12** — swap-it
-- Prompt: "What are you having?" / "מה מזמינים?" — cue 🍗 "You want the chicken" / "אתה רוצה את העוף" — frame EN "I'll have the ___, please." · FR "Je vais prendre ___, s’il vous plaît." · ES "Voy a tomar ___, por favor."
-- Audio: (nothing before the tap; the completed sentence is spoken after it) — ()
-- A: chicken → I'll have the chicken, please. ✅
-- B: pasta → I'll have the pasta, please.
-- Correct: chicken → I'll have the chicken, please.
+**M14-Q06** — visual-match
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Of course. Anything to drink? — (כמובן. משהו לשתות?)
+- A: 🪑 “Table / booking” / “שולחן / הזמנה מראש”
+- B: 🍽️ “Your food order” / “להזמין אוכל”
+- C: 🥤 “Your drink” / “להזמין שתייה” ✅
+- D: ➕ “More? / finish” / “עוד משהו? / לסיים”
+- E: 👍 “Meal check” / “בודק שהארוחה בסדר”
+- Correct: 🥤 “Your drink” / “להזמין שתייה”
+- Tests: (no sentence id — not recorded)
+
+**M14-Q07** — visual-match
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Good evening! Do you have a reservation? — (ערב טוב! יש לכם הזמנה?)
+- A: 🪑 “Table / booking” / “שולחן / הזמנה מראש” ✅
+- B: 🍽️ “Your food order” / “להזמין אוכל”
+- C: 🥤 “Your drink” / “להזמין שתייה”
+- D: ➕ “More? / finish” / “עוד משהו? / לסיים”
+- E: 👍 “Meal check” / “בודק שהארוחה בסדר”
+- Correct: 🪑 “Table / booking” / “שולחן / הזמנה מראש”
+- Tests: (no sentence id — not recorded)
+
+**M14-Q08** — visual-match
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Is everything okay? — (הכל בסדר?)
+- A: 🪑 “Table / booking” / “שולחן / הזמנה מראש”
+- B: 🍽️ “Your food order” / “להזמין אוכל”
+- C: 🥤 “Your drink” / “להזמין שתייה”
+- D: ➕ “More? / finish” / “עוד משהו? / לסיים”
+- E: 👍 “Meal check” / “בודק שהארוחה בסדר” ✅
+- Correct: 👍 “Meal check” / “בודק שהארוחה בסדר”
+- Tests: (no sentence id — not recorded)
+
+**M14-Q09** — visual-match
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Are you ready to order? — (מוכנים להזמין?)
+- A: 🪑 “Table / booking” / “שולחן / הזמנה מראש”
+- B: 🍽️ “Your food order” / “להזמין אוכל” ✅
+- C: 🥤 “Your drink” / “להזמין שתייה”
+- D: ➕ “More? / finish” / “עוד משהו? / לסיים”
+- E: 👍 “Meal check” / “בודק שהארוחה בסדר”
+- Correct: 🍽️ “Your food order” / “להזמין אוכל”
+- Tests: (no sentence id — not recorded)
+
+**M14-Q10** — visual-match
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Anything else? — (עוד משהו?)
+- A: 🪑 “Table / booking” / “שולחן / הזמנה מראש”
+- B: 🍽️ “Your food order” / “להזמין אוכל”
+- C: 🥤 “Your drink” / “להזמין שתייה”
+- D: ➕ “More? / finish” / “עוד משהו? / לסיים” ✅
+- E: 👍 “Meal check” / “בודק שהארוחה בסדר”
+- Correct: ➕ “More? / finish” / “עוד משהו? / לסיים”
+- Tests: (no sentence id — not recorded)
+
+**M14-Q11** — visual-match
+- Prompt: "🔁 Flex round — another group at the door. How many people is the table for?" / "🔁 סבב גמיש — קבוצה אחרת בכניסה. לכמה אנשים השולחן?"
+- Audio: No — a table for four, please. — (לא — שולחן לארבעה, בבקשה.)
+- A: 👥 “2 people” / “2 אנשים”
+- B: 👨‍👩‍👧‍👦 “4 people” / “4 אנשים” ✅
+- Correct: 👨‍👩‍👧‍👦 “4 people” / “4 אנשים”
+- Tests: (no sentence id — not recorded)
+
+**M14-Q12** — quick-reply
+- Prompt: "🍽️ Table order: Table: ? / Main: ? / Change: ? ‖ 🥤 Drink & bill: Drink: ? / Order: Open / Bill: — ¦ Now the whole meal, from the door." / "🍽️ הזמנה לשולחן: שולחן: ? / מנה: ? / שינוי: ? ‖ 🥤 שתייה וחשבון: שתייה: ? / הזמנה: פתוחה / חשבון: — ¦ עכשיו כל הארוחה, מהכניסה."
+- Audio: Do you have a reservation? — (יש לכם הזמנה?)
+- A: No — a table for two, please. ✅
+- B: A bottle of water, please.
+- C: That's all, thanks.
+- Correct: No — a table for two, please.
+- Tests: phrase.rest.table-two
+
+**M14-Q13** — quick-reply
+- Prompt: "🍽️ Table order: Table: 2 / Main: ? / Change: ? ‖ 🥤 Drink & bill: Drink: ? / Order: Open / Bill: —" / "🍽️ הזמנה לשולחן: שולחן: 2 / מנה: ? / שינוי: ? ‖ 🥤 שתייה וחשבון: שתייה: ? / הזמנה: פתוחה / חשבון: —"
+- Audio: Are you ready to order? — (מוכנים להזמין?)
+- A: I'll have the chicken, without onions, please. ✅
+- B: Yes, that was delicious! The bill, please.
+- C: That's all, thanks.
+- Correct: I'll have the chicken, without onions, please.
 - Tests: phrase.rest.ill-have-chicken
 
-**M14-Q13** — swap-it
-- Prompt: "What are you having?" / "מה מזמינים?" — cue 🍝 "You want the pasta" / "אתה רוצה את הפסטה" — frame EN "I'll have the ___, please." · FR "Je vais prendre ___, s’il vous plaît." · ES "Voy a tomar ___, por favor."
-- Audio: (nothing before the tap; the completed sentence is spoken after it) — ()
-- A: chicken → I'll have the chicken, please.
-- B: pasta → I'll have the pasta, please. ✅
-- Correct: pasta → I'll have the pasta, please.
-- Tests: phrase.rest.ill-have
+**M14-Q14** — quick-reply
+- Prompt: "🍽️ Table order: Table: 2 / Main: Chicken / Change: No onions ‖ 🥤 Drink & bill: Drink: ? / Order: Open / Bill: —" / "🍽️ הזמנה לשולחן: שולחן: 2 / מנה: עוף / שינוי: בלי בצל ‖ 🥤 שתייה וחשבון: שתייה: ? / הזמנה: פתוחה / חשבון: —"
+- Audio: Anything to drink? — (משהו לשתות?)
+- A: A bottle of water, please. ✅
+- B: No — a table for two, please.
+- C: Yes, that was delicious! The bill, please.
+- Correct: A bottle of water, please.
+- Tests: phrase.rest.water
 
-**M14-Q14** — dialogue-choice
+**M14-Q15** — quick-reply
+- Prompt: "🍽️ Table order: Table: 2 / Main: Chicken / Change: No onions ‖ 🥤 Drink & bill: Drink: Water / Order: Open / Bill: —" / "🍽️ הזמנה לשולחן: שולחן: 2 / מנה: עוף / שינוי: בלי בצל ‖ 🥤 שתייה וחשבון: שתייה: מים / הזמנה: פתוחה / חשבון: —"
+- Audio: Anything else? — (עוד משהו?)
+- A: That's all, thanks. ✅
+- B: I'll have the chicken, without onions, please.
+- C: No — a table for two, please.
+- Correct: That's all, thanks.
+- Tests: phrase.coffee.thats-all
+
+**M14-Q16** — quick-reply
+- Prompt: "⏳ Later… the meal is over. ¦ 🍽️ Table order: Table: 2 / Main: Chicken / Change: No onions ‖ 🥤 Drink & bill: Drink: Water / Order: Closed ✅ / Bill: —" / "⏳ מאוחר יותר… הארוחה נגמרה. ¦ 🍽️ הזמנה לשולחן: שולחן: 2 / מנה: עוף / שינוי: בלי בצל ‖ 🥤 שתייה וחשבון: שתייה: מים / הזמנה: נסגרה ✅ / חשבון: —"
+- Audio: Is everything okay? — (הכל בסדר?)
+- A: Yes, that was delicious! The bill, please. ✅
+- B: A bottle of water, please.
+- C: That's all, thanks.
+- Correct: Yes, that was delicious! The bill, please.
+- Tests: phrase.rest.the-bill
+
+**M14-Q17** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Good evening! Do you have a reservation? — (ערב טוב! יש לכם הזמנה?)
 - A: No — a table for two, please. ✅
-- B: Sorry, I don’t understand. ✅
+- B: Yes, that was delicious! The bill, please.
+- C: Sorry, I don’t understand. ✅
 - Correct: No — a table for two, please. | Sorry, I don’t understand.
-- Tests: phrase.rest.table-two, phrase.recovery.dont-understand
+- Tests: phrase.rest.table-two, phrase.rest.the-bill, phrase.recovery.dont-understand
 
-**M14-Q15** — dialogue-choice
+**M14-Q18** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: A table? For how many people? — (שולחן? לכמה אנשים?)
 - A: A table for two, please. ✅
 - Correct: A table for two, please.
 - Tests: phrase.rest.table-two
 
-**M14-Q16** — dialogue-choice
+**M14-Q19** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Are you ready to order? — (מוכנים להזמין?)
 - A: I'll have the chicken, without onions, please. ✅
-- B: I'll have the pasta, please. ✅
-- C: One moment, please. ✅
-- Correct: I'll have the chicken, without onions, please. | I'll have the pasta, please. | One moment, please.
-- Tests: phrase.rest.ill-have-chicken, phrase.rest.ill-have, phrase.recovery.one-moment
+- B: That's all, thanks.
+- Correct: I'll have the chicken, without onions, please.
+- Tests: phrase.rest.ill-have-chicken, phrase.coffee.thats-all
 
-**M14-Q17** — dialogue-choice
+**M14-Q20** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Of course. Anything to drink? — (כמובן. משהו לשתות?)
 - A: A bottle of water, please. ✅
+- B: Yes, that was delicious! The bill, please.
 - Correct: A bottle of water, please.
-- Tests: phrase.rest.water
+- Tests: phrase.rest.water, phrase.rest.the-bill
 
-**M14-Q18** — dialogue-choice
+**M14-Q21** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Anything else? — (עוד משהו?)
 - A: That's all, thanks. ✅
+- B: No — a table for two, please.
 - Correct: That's all, thanks.
-- Tests: phrase.recovery.thank-you
+- Tests: phrase.coffee.thats-all, phrase.rest.table-two
 
-**M14-Q19** — dialogue-choice
+**M14-Q22** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Is everything okay? — (הכל בסדר?)
 - A: Yes, that was delicious! The bill, please. ✅
+- B: I'll have the chicken, without onions, please.
 - Correct: Yes, that was delicious! The bill, please.
-- Tests: phrase.rest.the-bill
+- Tests: phrase.rest.the-bill, phrase.rest.ill-have-chicken
 
-**M14-Q20** — quick-reply
+**M14-Q23** — quick-reply
 - Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio: Good evening! Do you have a reservation? — (ערב טוב! יש לכם הזמנה?)
 - A: No — a table for two, please. ✅
-- B: The bill, please.
+- B: Yes, that was delicious! The bill, please.
+- C: That's all, thanks.
+- Correct: No — a table for two, please.
+- Tests: phrase.rest.table-two
+
+**M14-Q24** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Are you ready to order? — (מוכנים להזמין?)
+- A: I'll have the chicken, without onions, please. ✅
+- B: A bottle of water, please.
+- C: No — a table for two, please.
+- Correct: I'll have the chicken, without onions, please.
+- Tests: phrase.rest.ill-have-chicken
+
+**M14-Q25** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Of course. Anything to drink? — (כמובן. משהו לשתות?)
+- A: A bottle of water, please. ✅
+- B: That's all, thanks.
+- C: Yes, that was delicious! The bill, please.
+- Correct: A bottle of water, please.
+- Tests: phrase.rest.water
+
+**M14-Q26** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Anything else? — (עוד משהו?)
+- A: That's all, thanks. ✅
+- B: No — a table for two, please.
+- C: A bottle of water, please.
+- Correct: That's all, thanks.
+- Tests: phrase.coffee.thats-all
+
+**M14-Q27** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Is everything okay? — (הכל בסדר?)
+- A: Yes, that was delicious! The bill, please. ✅
+- B: I'll have the chicken, without onions, please.
+- C: A bottle of water, please.
+- Correct: Yes, that was delicious! The bill, please.
+- Tests: phrase.rest.the-bill
+
+**M14-Q28** — quick-reply
+- Prompt: "🍽️ Table order: Table: ? / Main: ? / Change: ? ‖ 🥤 Drink & bill: Drink: ? / Order: Open / Bill: — ¦ Dinner at a restaurant. Get from the door to the bill." / "🍽️ הזמנה לשולחן: שולחן: ? / מנה: ? / שינוי: ? ‖ 🥤 שתייה וחשבון: שתייה: ? / הזמנה: פתוחה / חשבון: — ¦ ארוחת ערב במסעדה. תגיע מהכניסה עד החשבון."
+- Audio: Good evening! Do you have a reservation? — (ערב טוב! יש לכם הזמנה?)
+- A: No — a table for two, please. ✅
+- B: That's all, thanks.
 - C: A bottle of water, please.
 - Correct: No — a table for two, please.
 - Tests: phrase.rest.table-two
 
-**M14-Q21** — quick-reply
-- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+**M14-Q29** — quick-reply
+- Prompt: "🍽️ Table order: Table: ? / Main: ? / Change: ? ‖ 🥤 Drink & bill: Drink: ? / Order: Open / Bill: — ¦ Dinner at a restaurant. Get from the door to the bill." / "🍽️ הזמנה לשולחן: שולחן: ? / מנה: ? / שינוי: ? ‖ 🥤 שתייה וחשבון: שתייה: ? / הזמנה: פתוחה / חשבון: — ¦ ארוחת ערב במסעדה. תגיע מהכניסה עד החשבון."
 - Audio: Are you ready to order? — (מוכנים להזמין?)
 - A: I'll have the chicken, without onions, please. ✅
-- B: The bill, please.
-- C: A table for two, please.
+- B: No — a table for two, please.
+- C: Yes, that was delicious! The bill, please.
 - Correct: I'll have the chicken, without onions, please.
 - Tests: phrase.rest.ill-have-chicken
 
-**M14-Q22** — quick-reply
-- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+**M14-Q30** — quick-reply
+- Prompt: "🍽️ Table order: Table: 2 / Main: Chicken / Change: No onions ‖ 🥤 Drink & bill: Drink: ? / Order: Open / Bill: —" / "🍽️ הזמנה לשולחן: שולחן: 2 / מנה: עוף / שינוי: בלי בצל ‖ 🥤 שתייה וחשבון: שתייה: ? / הזמנה: פתוחה / חשבון: —"
 - Audio: Of course. Anything to drink? — (כמובן. משהו לשתות?)
 - A: A bottle of water, please. ✅
-- B: No onions, please.
-- C: A table for two, please.
+- B: I'll have the chicken, without onions, please.
+- C: That's all, thanks.
 - Correct: A bottle of water, please.
 - Tests: phrase.rest.water
 
-**M14-Q23** — quick-reply
-- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+**M14-Q31** — quick-reply
+- Prompt: "🍽️ Table order: Table: 2 / Main: Chicken / Change: No onions ‖ 🥤 Drink & bill: Drink: ? / Order: Open / Bill: —" / "🍽️ הזמנה לשולחן: שולחן: 2 / מנה: עוף / שינוי: בלי בצל ‖ 🥤 שתייה וחשבון: שתייה: ? / הזמנה: פתוחה / חשבון: —"
 - Audio: Anything else? — (עוד משהו?)
 - A: That's all, thanks. ✅
-- B: A table for two, please.
-- C: That was delicious!
+- B: Yes, that was delicious! The bill, please.
+- C: No — a table for two, please.
 - Correct: That's all, thanks.
-- Tests: phrase.recovery.thank-you
+- Tests: phrase.coffee.thats-all
 
-**M14-Q24** — quick-reply
-- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+**M14-Q32** — quick-reply
+- Prompt: "⏳ Later… the meal is over. ¦ 🍽️ Table order: Table: 2 / Main: Chicken / Change: No onions ‖ 🥤 Drink & bill: Drink: Water / Order: Closed ✅ / Bill: —" / "⏳ מאוחר יותר… הארוחה נגמרה. ¦ 🍽️ הזמנה לשולחן: שולחן: 2 / מנה: עוף / שינוי: בלי בצל ‖ 🥤 שתייה וחשבון: שתייה: מים / הזמנה: נסגרה ✅ / חשבון: —"
 - Audio: Is everything okay? — (הכל בסדר?)
 - A: Yes, that was delicious! The bill, please. ✅
-- B: I'll have the chicken.
-- C: A table for two, please.
+- B: A bottle of water, please.
+- C: No — a table for two, please.
 - Correct: Yes, that was delicious! The bill, please.
 - Tests: phrase.rest.the-bill
 
@@ -38819,17 +39145,17 @@ No questions.
 # Totals
 
 - Missions exported: 30
-- Learner-production sentence ids: 163
+- Learner-production sentence ids: 164
 - Expected-reply (receptive) sentence ids: 167
-- Sentence listings across missions (with reuse): 525
-- Expected-reply questions: 84
+- Sentence listings across missions (with reuse): 527
+- Expected-reply questions: 79
 - Meaning quizzes: 7
-- Active-practice questions: 583
+- Active-practice questions: 596
 - Dialogue choice screens: 257
 - Cold opens: 8
-- Total interactive questions: 939
-- Total answer choices: 2534
-- Wrong-answer branches: 104
-- Recovery opportunities: 50
+- Total interactive questions: 947
+- Total answer choices: 2569
+- Wrong-answer branches: 109
+- Recovery opportunities: 49
 - Learner sentences with 0 active retrieval opportunities: 1
-- Auto-flags: 197
+- Auto-flags: 214

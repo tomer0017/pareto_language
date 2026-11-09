@@ -58,10 +58,12 @@ export const GAME_INTRO: Record<string, LocalizedText> = {
 };
 
 /** Where a mission's first game of a kind is not what the generic line says (the coffee shop's
- *  first picture board is the order, not a price). */
+ *  first picture board is the order, not a price; the restaurant's is what the waiter wants). */
 export const MISSION_GAME_INTRO: Record<string, Record<string, LocalizedText>> = {
   'coffee-shop': { visualMatch: T('שמע — והקש על מה שהזמינו.', 'Listen — and tap what was ordered.') },
   'everyday-core': { visualMatch: T('שמע — והקש על מה שזה אומר.', 'Listen — and tap what it means.') },
+  // The restaurant's first picture board is the Waiter Signals: what the waiter wants, never a price.
+  'restaurant-meal': { visualMatch: T('שמע את המלצר — והקש על מה שהוא רוצה.', 'Hear the waiter — and tap what he wants.') },
 };
 
 export interface CoachLine {

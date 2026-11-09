@@ -29,8 +29,9 @@ export function splitJourney(text: string): { before: string; facts: string[]; a
  * The information boards (Missions 12–13), joined with " ¦ " to the label's own text:
  *   - the Time Strip — four time periods, the current one marked " ●" (Mission 12);
  *   - a route — "🧭 a → b → …", the current step marked " ●" (Mission 13's evening);
- *   - a two-column board — "<head>: row / row ‖ <head>: row / row / …", a row is "?" until the
- *     conversation says it (Mission 12's planner, Mission 13's Home Visit board).
+ *   - a two-column board — "<head>: row / row ‖ <head>: row / row / …", a row is "?" (or "—") until
+ *     the conversation says it (Mission 12's planner, Mission 13's Home Visit board, Mission 14's
+ *     Restaurant Ticket).
  * Only presentation: every value is already in the text; nothing is inferred or added.
  */
 const STRIP = /^☀️ (?:Now|עכשיו) · .+ → .+ → .+ → 🌅 (?:Tomorrow morning|מחר בבוקר)(?: ●)?$/u;
@@ -50,7 +51,8 @@ export function splitTimeBoard(text: string): TimeBoard | null {
   const route = parts.find((p) => ROUTE.test(p));
   const plan = parts.map((p) => PLAN.exec(p)).find((m) => m !== null);
   if (!strip && !route && !plan) return null;
-  const row = (t: string) => ({ text: t, known: !t.includes('?') });
+  // A row is unknown while it holds "?" — or "—" (nothing yet: Mission 14's bill).
+  const row = (t: string) => ({ text: t, known: !t.includes('?') && !t.endsWith(' —') });
   const cells = (p: string) => p.split(' → ').map((c) => ({ text: c.replace(/ ●$/u, ''), now: c.endsWith(' ●') }));
   const isBoard = (p: string): boolean => STRIP.test(p) || ROUTE.test(p) || PLAN.test(p);
   const first = parts.findIndex(isBoard);

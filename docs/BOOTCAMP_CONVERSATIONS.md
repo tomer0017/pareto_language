@@ -791,6 +791,8 @@ _Reply-training drill:_ “Hi there! Can I help you find anything?” · “Of c
 - **The bill, please.** · החשבון, בבקשה.
 - **That was delicious!** · זה היה טעים מאוד! — _מחמאה קטנה שקונה חיוך גדול._
 - **I'll have the pasta, please.** · אני אקח את הפסטה, בבקשה. — _התבנית הגדולה של המסעדה: I’ll have the ___ — מזמינים כל דבר בתפריט._
+- **I'll have the chicken, without onions, please.** · אני אקח את העוף, בלי בצל, בבקשה.
+- **That's all, thanks.** · זה הכל, תודה. — _סוגר כל הזמנה בנימוס. עובד בכל מקום בעולם._
 
 ### Expected replies (you hear)
 - **Do you have a reservation?** · יש לכם הזמנה?
@@ -799,8 +801,6 @@ _Reply-training drill:_ “Hi there! Can I help you find anything?” · “Of c
 - **Anything to drink?** · משהו לשתות?
 - **Anything else?** · עוד משהו?
 - **Is everything okay?** · הכל בסדר?
-
-_Reply-training drill:_ “Do you have a reservation?” · “Are you ready to order?” · “Anything to drink?” · “Anything else?” · “Is everything okay?”
 
 ### Recovery tools reused
 `Can you repeat that?` · `Please speak slowly.` · `Thank you!` · `One moment, please.` · `Sorry, I don't understand.`
@@ -819,6 +819,13 @@ _Reply-training drill:_ “Do you have a reservation?” · “Are you ready to 
 - **🧑 Them:** “Is everything okay?” · הכל בסדר?
 - **🫵 You:** “Yes, that was delicious! The bill, please.” · כן, היה טעים מאוד! החשבון, בבקשה.
 - **🧑 Them:** “So glad you enjoyed it. Here you are — have a lovely evening!” · שמח שנהניתם. בבקשה — ערב נעים!
+
+#### Wrong / recovery branches
+- ⚠︎ less useful: 🫵 “Yes, that was delicious! The bill, please.” → 🧑 “Good evening! Do you have a reservation?” · ערב טוב! יש לכם הזמנה?
+- ⚠︎ less useful: 🫵 “That's all, thanks.” → 🧑 “Are you ready to order?” · מוכנים להזמין?
+- ⚠︎ less useful: 🫵 “Yes, that was delicious! The bill, please.” → 🧑 “Of course. Anything to drink?” · כמובן. משהו לשתות?
+- ⚠︎ less useful: 🫵 “No — a table for two, please.” → 🧑 “Anything else?” · עוד משהו?
+- ⚠︎ less useful: 🫵 “I'll have the chicken, without onions, please.” → 🧑 “Is everything okay?” · הכל בסדר?
 
 ### Review status
 - 🤖 AI-drafted (English + Hebrew) — **pending human / native-Hebrew review**

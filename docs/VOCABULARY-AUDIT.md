@@ -78,6 +78,11 @@ real prime word in that mission. **Counts: 29 audited · 7 primed · 22 explicit
 > **2026-11-06 — Mission 13 (Home & Family, registry key 32) is now primed** with whole-line cards, never word
 > lists: *Where is your family?*, *Yes, I live with my family.*, *Thanks, but I'm going to eat at my grandmother's.*,
 > *Yes, I'm just tired.*, *Yes, I'm going home.*, *I'm going to sleep.* — the Flex Round is transfer only, never teaching.
+> **2026-11-09 — Mission 14 (Restaurant Meal, registry key 4) is now primed** with whole-line cards, never a
+> restaurant word list (the old table / menu / water / bill word cards are gone): the door, the order (one builder),
+> the drink, "Coming right up!", the meal check and the bill. *That's all, thanks.* is Mission 03's own sentence —
+> used, not re-taught. "Later…" is a scene cue, never a word. The Flex Round is transfer only.
+
 > Same form ≠ same meaning: French *cuisine* (food, Mission 11) does not prepare *dans la cuisine* (kitchen,
 > Mission 13) — the prior-learning audit tracks registered polysemous forms by sense (`WORD_SENSES`).
 

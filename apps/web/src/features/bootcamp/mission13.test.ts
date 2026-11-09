@@ -151,8 +151,8 @@ describe('the conversation is locked, and Mission 13 is in its place', () => {
   });
   const raw = (a: number, b?: number) => Object.fromEntries(LANGS.map((l) => [l, fnv(JSON.stringify(BOOTCAMP_PLAN.slice(a, b).map((m) => MISSIONS_BY_LANG[l]![m.day]!)))]));
   it('5. Missions 01–12 are byte-for-byte unchanged by this pass', () => { expect(raw(0, 12)).toEqual({ en: '3653c2a7', es: '1fb40bdf', fr: 'a82d32df' }); });
-  it('6. Missions 14–30 are byte-for-byte unchanged by this pass (the Everyday checkpoint still reuses the same sentences)', () => {
-    expect(raw(13)).toEqual({ en: 'ebeaceec', es: '0558e5b9', fr: '1b27a452' });
+  it('6. Missions 15–30 are byte-for-byte unchanged by this pass — Mission 14 has its own pass since (mission14.test.ts); the Everyday checkpoint still reuses the same sentences', () => {
+    expect(raw(14)).toEqual({ en: '92e620d4', es: '415c4eb3', fr: '48990a5a' });
     for (const lang of LANGS) for (const id of ['phrase.home.going-home', 'phrase.home.where-family']) expect(day(lang).items.map((i) => strip(i.id)), `${lang} ${id}`).toContain(id);
   });
   it('7. EN / ES / FR parity: the same journey, step for step, each in its own words', () => {
@@ -378,7 +378,7 @@ describe('the FLEX ROUND — transfer only, no new language, no contamination', 
       const d = day(lang);
       expect(flexAt(d).map((i) => d.steps[i]!.kind), lang).toEqual(['visualMatch', 'quickReply']);
       for (const i of flexAt(d)) expect((boardOf(d.steps[i]!)[1] ?? '').startsWith('🔁 Flex round'), lang).toBe(true);
-      for (const n of BOOTCAMP_PLAN.map((_, k) => k + 1).filter((k) => k !== 13)) expect(missionContent(lang, n).steps.some(isFlex), `${lang} M${n}`).toBe(false);
+      for (const n of BOOTCAMP_PLAN.map((_, k) => k + 1).filter((k) => k !== 13 && k !== 14)) expect(missionContent(lang, n).steps.some(isFlex), `${lang} M${n}`).toBe(false); // Mission 14 has its own (mission14.test.ts)
     }
   });
   it('34. transferOnly content is never canonical: not a dialogue line, not a sentence of the course', () => {
