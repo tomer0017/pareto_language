@@ -24,7 +24,7 @@ const LANG_NAME: Record<Lang, string> = { en: 'EN', fr: 'FR', es: 'ES' };
 
 /** Where each mission's runtime content is written. Spec missions are authored once for all languages. */
 export const SPEC_SOURCE: Record<number, string> = {
-  9: 'core/arrivalDay.ts (ARRIVAL_DAY)', 17: 'core/checkpoints.ts (EVERYDAY_DAY)', 23: 'core/checkpoints.ts (CITY_CONVERSATION)',
+  9: 'core/arrivalDay.ts (ARRIVAL_DAY)', 17: 'core/everydayDay.ts (EVERYDAY_DAY)', 23: 'core/checkpoints.ts (CITY_CONVERSATION)',
   27: 'core/checkpoints.ts (NO_SUBTITLES)', 28: 'core/checkpoints.ts (DRESS_REHEARSAL)', 29: 'core/checkpoints.ts (COMPLETE_DAY)',
   22: 'core/smallTalk.ts', 24: 'core/fixingProblems.ts', 26: 'core/emergency.ts',
   30: 'core/everydayCore.ts', 31: 'core/timePlans.ts', 32: 'core/homeFamily.ts', 33: 'core/hobbies.ts',

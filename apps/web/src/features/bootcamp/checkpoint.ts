@@ -24,6 +24,14 @@ import type { SpokenLine } from './types.js';
  * Mastery is not a score: a concept is mastered once it has been answered right in a retrieval
  * moment — its answer NOT on screen and not the retry right after being shown it. The checkpoint is
  * complete only when every concept is mastered and no repair is waiting.
+ *
+ * A plan with `adaptive` rules (Mission 18) is a SAMPLED checkpoint instead — the same machine, other
+ * limits: the diagnostic probes only a few core concepts, each answered "try first" (the options are
+ * hidden; "💡 Help" shows a hint and marks the answer ASSISTED); a miss is not shown there — the quick
+ * fix repairs it (one card, one retry: REPAIRED or UNRESOLVED, never a loop); in the one-take a first
+ * miss is re-asked slowly, a second shows the line and one supported retry follows; the final repair
+ * takes at most `finalRepairMax` concepts, by survival priority, once each — and the checkpoint ends
+ * with an honest readiness level (`checkpointReport`), not with mastery forced.
  */
 
 export type CheckpointPhase = 'diagnostic' | 'repair' | 'one-take' | 'final-repair' | 'complete';
@@ -66,6 +74,9 @@ interface TurnBase {
   cue: SpokenLine;
   /** The cue was already heard on the previous screen: it is shown again, not replayed on arrival. */
   heard?: boolean;
+  /** A scene transition before the cue ("At the checkout…", "Later…"): shown, never spoken; no
+   *  sentence, no concept, no interaction. */
+  sceneCue?: LocalizedText;
 }
 /** The learner says something: one of their own lines, among lines that belong to other moments. */
 export interface SayTurn extends TurnBase {
@@ -98,16 +109,37 @@ export interface CheckpointScenePlan {
   stamp: LocalizedText;
 }
 
+/** A core capability of a sampled checkpoint: the one concept that proves it. */
+export interface CoreCapability { id: string; concept: string }
+/** A row of the capability report: an app-language label over some concepts (worst one wins). */
+export interface ReportGroup { id: string; icon: string; label: LocalizedText; concepts: string[] }
+/** The rules of a SAMPLED checkpoint (see the module note). Absent = the whole-day checkpoint. */
+export interface AdaptiveRules {
+  /** The concepts the diagnostic probes (production turns), in day order. */
+  diagnostic: string[];
+  core: CoreCapability[];
+  report: ReportGroup[];
+  /** The final repair takes at most this many concepts… */
+  finalRepairMax: number;
+  /** …in this order: most survival-critical first. Every concept of the plan is listed. */
+  priority: string[];
+}
+
 export interface CheckpointPlan {
   id: string;
   scenes: CheckpointScenePlan[];
   turns: CheckpointTurn[];
+  adaptive?: AdaptiveRules;
   copy: {
     repairIntro: LocalizedText;
     oneTakeIntro: LocalizedText;
     finalRepairIntro: LocalizedText;
     completeTitle: LocalizedText;
     completeBody: LocalizedText;
+    /** Sampled checkpoints: the diagnostic's name ("Quick scan") and the readiness lines. */
+    scan?: LocalizedText;
+    readiness?: Record<ReadinessLevel, { title: LocalizedText; body: LocalizedText }>;
+    outcome?: Record<CapabilityOutcome, LocalizedText>;
   };
 }
 
@@ -131,6 +163,8 @@ export interface CheckpointAttempt {
   supported: boolean;
   /** Which answered screen this was (1, 2, …): concepts graded together share it. */
   screen: number;
+  /** Sampled checkpoints: answered after asking for a hint. */
+  assisted?: boolean;
 }
 
 /** One entry of the current phase's agenda: a turn, limited to some of its concepts. A `card` entry
@@ -164,6 +198,10 @@ export interface CheckpointState {
   missed: string[];
   /** One-take: the learner asked to see the options of the current line (absent = not yet). */
   optionsShown?: boolean;
+  /** Sampled checkpoints: the learner asked for a hint on the current line (absent = not yet). */
+  helped?: boolean;
+  /** Sampled one-take: the current line was missed once and is asked again, slowly. */
+  slow?: boolean;
 }
 
 export type CheckpointResponse = CheckpointPick;
@@ -203,7 +241,7 @@ export const currentTurn = (plan: CheckpointPlan, state: CheckpointState): Check
 /* ── transitions ───────────────────────────────────────────────────────────────────────────────── */
 
 export function startCheckpoint(plan: CheckpointPlan): CheckpointState {
-  const agenda = wholeDay(plan);
+  const agenda = plan.adaptive ? agendaFor(plan, plan.adaptive.diagnostic) : wholeDay(plan);
   return {
     version: 1, plan: plan.id, phase: 'diagnostic', beat: 'ask', scene: turnOf(plan, agenda[0]!.turn).scene, agenda, cursor: 0, retry: false,
     results: plan.turns.flatMap((t) => turnConcepts(t).map((conceptId) => ({ conceptId, scene: t.scene, skill: t.kind === 'say' ? 'production' as const : 'comprehension' as const, attempts: 0, correct: false, supportUsed: false }))),
@@ -221,11 +259,11 @@ function grade(turn: CheckpointTurn, concepts: readonly string[], response: Chec
   return Object.fromEntries(turn.groups.filter((g) => concepts.includes(g.conceptId)).map((g) => [g.conceptId, response.picks[g.conceptId] === g.correct]));
 }
 
-function recorded(state: CheckpointState, conceptId: string, correct: boolean, supported: boolean, screen: number): CheckpointState {
+function recorded(state: CheckpointState, conceptId: string, correct: boolean, supported: boolean, screen: number, assisted = false): CheckpointState {
   const phase = state.phase as CheckpointAttempt['phase'];
   return {
     ...state,
-    attempts: [...state.attempts, { conceptId, phase, correct, supported, screen }],
+    attempts: [...state.attempts, { conceptId, phase, correct, supported, screen, ...(assisted ? { assisted: true } : {}) }],
     results: state.results.map((r) => (r.conceptId !== conceptId ? r : {
       ...r, attempts: r.attempts + 1, correct: r.correct || (correct && !supported), supportUsed: r.supportUsed || supported,
     })),
@@ -235,8 +273,14 @@ function recorded(state: CheckpointState, conceptId: string, correct: boolean, s
 /** One-take, a line of the learner's: its options stay hidden until the learner asks for them. */
 export const isConcealed = (plan: CheckpointPlan, state: CheckpointState): boolean => {
   const entry = currentEntry(state);
-  return state.phase === 'one-take' && state.beat === 'ask' && !!entry && !entry.card && turnOf(plan, entry.turn).kind === 'say' && !state.optionsShown;
+  const hidden = state.phase === 'one-take' || (!!plan.adaptive && state.phase === 'diagnostic'); // sampled: try first
+  return hidden && state.beat === 'ask' && !!entry && !entry.card && turnOf(plan, entry.turn).kind === 'say' && !state.optionsShown;
 };
+
+/** Sampled diagnostic: "💡 Help" — shows the options AND the turn's hint; the answer counts as ASSISTED. */
+export function requestHelp(plan: CheckpointPlan, state: CheckpointState): CheckpointState {
+  return plan.adaptive && state.phase === 'diagnostic' && isConcealed(plan, state) ? { ...state, optionsShown: true, helped: true } : state;
+}
 
 /** "Show the options" — reveals the current line's choices. Grades nothing, records nothing. */
 export function revealOptions(plan: CheckpointPlan, state: CheckpointState): CheckpointState {
@@ -249,10 +293,10 @@ export function respond(plan: CheckpointPlan, state: CheckpointState, response: 
   if (state.beat !== 'ask' || !entry || entry.card || isConcealed(plan, state)) return state;
   const turn = turnOf(plan, entry.turn);
   const marks = grade(turn, entry.concepts, response);
-  const supported = state.phase === 'repair' && state.retry;
+  const supported = (state.phase === 'repair' || (!!plan.adaptive && state.phase !== 'diagnostic')) && state.retry;
   const screen = (state.attempts.at(-1)?.screen ?? 0) + 1;
   let next: CheckpointState = { ...state, lastPick: response };
-  for (const [c, ok] of Object.entries(marks)) next = recorded(next, c, ok, supported, screen);
+  for (const [c, ok] of Object.entries(marks)) next = recorded(next, c, ok, supported, screen, !!state.helped);
   const missed = Object.entries(marks).filter(([, ok]) => !ok).map(([c]) => c);
   const right = Object.entries(marks).filter(([, ok]) => ok).map(([c]) => c);
   next = { ...next, missed };
@@ -262,6 +306,12 @@ export function respond(plan: CheckpointPlan, state: CheckpointState, response: 
   if (state.phase === 'one-take') next = { ...next, finalRepairQueue: inDayOrder(plan, [...next.finalRepairQueue, ...missed]) };
   if (state.phase === 'final-repair') next = { ...next, finalRepairQueue: next.finalRepairQueue.filter((c) => !right.includes(c)) };
 
+  if (missed.length && plan.adaptive) {
+    // Sampled diagnostic: the miss is noted, never shown — the quick fix repairs it.
+    if (state.phase === 'diagnostic') return afterEntry(plan, { ...next, retry: false, missed: [] });
+    // Sampled one-take, a line's first miss: asked again, slowly — no lecture.
+    if (state.phase === 'one-take' && turn.kind === 'say' && !state.slow && !state.retry) return { ...next, beat: 'ask', slow: true, lastPick: null, missed: [] };
+  }
   if (missed.length) return { ...next, beat: 'reveal' };
   return afterEntry(plan, { ...next, retry: false });
 }
@@ -273,6 +323,10 @@ export function proceed(plan: CheckpointPlan, state: CheckpointState): Checkpoin
   if (state.beat === 'scene-end') return advance(plan, state);
   if (state.beat === 'reveal') {
     // Quick fix: after a miss, ONE supported retry of the same entry — limited to what was missed.
+    // Sampled: the quick fix and the final repair retry once and never loop; the one-take, after the
+    // slow re-ask, shows the line and gives one supported retry.
+    if (plan.adaptive && (state.phase === 'repair' || state.phase === 'final-repair' || state.retry)) return afterEntry(plan, { ...state, retry: false });
+    if (plan.adaptive && state.phase === 'one-take') return { ...state, beat: 'ask', retry: true, missed: [], lastPick: null };
     if (state.phase === 'repair' && !state.retry) {
       const entry = currentEntry(state)!;
       const agenda = state.agenda.map((e, i) => (i === state.cursor ? { ...entry, concepts: entry.concepts.filter((c) => state.missed.includes(c)) } : e));
@@ -286,7 +340,7 @@ export function proceed(plan: CheckpointPlan, state: CheckpointState): Checkpoin
 
 /** After an entry is done: close its scene (diagnostic / one-take), or move on. */
 function afterEntry(plan: CheckpointPlan, state: CheckpointState): CheckpointState {
-  const flowing = state.phase === 'diagnostic' || state.phase === 'one-take';
+  const flowing = (state.phase === 'diagnostic' && !plan.adaptive) || state.phase === 'one-take';
   const here = currentTurn(plan, state)!;
   const following = state.agenda[state.cursor + 1];
   const sceneEnds = !following || turnOf(plan, following.turn).scene !== here.scene;
@@ -296,7 +350,7 @@ function afterEntry(plan: CheckpointPlan, state: CheckpointState): CheckpointSta
 
 function advance(plan: CheckpointPlan, state: CheckpointState): CheckpointState {
   const cursor = state.cursor + 1;
-  const base = { ...state, lastPick: null, missed: [], retry: false, optionsShown: false };
+  const base = { ...state, lastPick: null, missed: [], retry: false, optionsShown: false, helped: false, slow: false };
   if (cursor < state.agenda.length) return { ...base, cursor, beat: 'ask', scene: turnOf(plan, state.agenda[cursor]!.turn).scene };
   return endOfPhase(plan, base);
 }
@@ -306,6 +360,7 @@ function enter(plan: CheckpointPlan, state: CheckpointState, phase: CheckpointPh
 }
 
 function endOfPhase(plan: CheckpointPlan, state: CheckpointState): CheckpointState {
+  if (plan.adaptive) return endOfSampledPhase(plan, plan.adaptive, state);
   if (state.phase === 'diagnostic') {
     // Nothing missed: no quick fix at all — straight to the one-take.
     if (state.repairQueue.length === 0) return enter(plan, state, 'one-take', wholeDay(plan));
@@ -319,6 +374,30 @@ function endOfPhase(plan: CheckpointPlan, state: CheckpointState): CheckpointSta
   const fresh = state.phase === 'one-take';
   const next = enter(plan, { ...state, finalRepairQueue: pending }, 'final-repair', exposeThenRetrieve(plan, pending));
   return fresh ? next : { ...next, beat: 'ask' }; // a second round of final repair needs no second introduction
+}
+
+/** A card then one retrieval, per concept, in day order — the sampled repair (never all cards first). */
+const cardThenRetrieve = (plan: CheckpointPlan, ids: readonly string[]): AgendaEntry[] => agendaFor(plan, ids).flatMap((e) => [{ ...e, card: true }, e]);
+
+/** The final repair's targets: what the one-take missed, the most survival-critical first, capped. */
+export const finalRepairTargets = (rules: AdaptiveRules, queue: readonly string[]): string[] =>
+  rules.priority.filter((c) => queue.includes(c)).slice(0, rules.finalRepairMax);
+
+function endOfSampledPhase(plan: CheckpointPlan, rules: AdaptiveRules, state: CheckpointState): CheckpointState {
+  const done: CheckpointState = { ...state, phase: 'complete', beat: 'ask', agenda: [], cursor: 0 };
+  if (state.phase === 'diagnostic') {
+    // Nothing missed: no quick fix at all — straight to the one-take.
+    if (state.repairQueue.length === 0) return enter(plan, state, 'one-take', wholeDay(plan));
+    return enter(plan, state, 'repair', cardThenRetrieve(plan, state.repairQueue));
+  }
+  // What the quick fix could not repair stays UNRESOLVED (`checkpointReport`) — the one-take retests it anyway.
+  if (state.phase === 'repair') return enter(plan, { ...state, repairQueue: [] }, 'one-take', wholeDay(plan));
+  if (state.phase === 'one-take') {
+    const targets = finalRepairTargets(rules, state.finalRepairQueue);
+    if (targets.length === 0) return { ...done, finalRepairQueue: [] };
+    return enter(plan, { ...state, finalRepairQueue: targets }, 'final-repair', cardThenRetrieve(plan, targets));
+  }
+  return { ...done, finalRepairQueue: [] }; // the final repair runs once: what it did not fix stays as it is
 }
 
 /* ── reading the state ─────────────────────────────────────────────────────────────────────────── */
@@ -379,14 +458,14 @@ export type CheckpointScreen =
    *  meaning — and, for a capture, the values it gave. */
   | { kind: 'reveal' | 'card'; turn: CheckpointTurn; line: ShownLine; values: { conceptId: string; label: LocalizedText; choice: CaptureChoice }[] }
   | { kind: 'scene-end'; scene: CheckpointScenePlan }
-  | { kind: 'complete' };
+  | { kind: 'complete'; report?: CheckpointReport };
 
 /**
  * The one screen the state stands for. PURE: everything the learner can see comes from here — so a
  * test can prove that nothing is on screen before its time (no €15 before the driver says it).
  */
 export function checkpointScreen(plan: CheckpointPlan, state: CheckpointState): CheckpointScreen {
-  if (state.phase === 'complete') return { kind: 'complete' };
+  if (state.phase === 'complete') { const report = checkpointReport(plan, state); return report ? { kind: 'complete', report } : { kind: 'complete' }; }
   const entry = currentEntry(state)!;
   const turn = turnOf(plan, entry.turn);
   if (state.beat === 'intro') {
@@ -402,9 +481,77 @@ export function checkpointScreen(plan: CheckpointPlan, state: CheckpointState): 
     return { kind: entry.card ? 'card' : 'reveal', turn, line, values };
   }
   if (turn.kind === 'say') {
-    const helped = state.phase !== 'one-take' && turn.situation;
+    // Sampled: the hint only after "💡 Help" in the diagnostic; the repairs show it; the one-take never.
+    const helped = turn.situation && (plan.adaptive ? (state.phase === 'diagnostic' ? !!state.helped : state.phase !== 'one-take') : state.phase !== 'one-take');
     if (isConcealed(plan, state)) return { kind: 'say', turn, options: [], concealed: true };
     return { kind: 'say', turn, options: sayOptions(turn, state), ...(helped ? { situation: turn.situation } : {}) };
   }
   return { kind: 'capture', turn, groups: turn.groups.filter((g) => entry.concepts.includes(g.conceptId)) };
+}
+
+/* ── the honest report (sampled checkpoints) ───────────────────────────────────────────────────── */
+
+export type ReadinessLevel = 'ready' | 'almost' | 'review';
+/** What the learner did with a concept, end to end — the four words the report uses. */
+export type CapabilityOutcome = 'independent' | 'needed-help' | 'recovered' | 'needs-review';
+export type DiagnosticResult = 'independent' | 'assisted' | 'missed' | 'not-probed';
+export type RepairResult = 'none' | 'repaired' | 'unresolved';
+export type OneTakeResult = 'clean' | 'slow' | 'helped' | 'not-reached';
+export type FinalRepairResult = 'none' | 'fixed' | 'failed';
+
+export interface ConceptTrack { conceptId: string; diagnostic: DiagnosticResult; repair: RepairResult; oneTake: OneTakeResult; finalRepair: FinalRepairResult; outcome: CapabilityOutcome }
+export interface CheckpointReport {
+  readinessLevel: ReadinessLevel;
+  concepts: ConceptTrack[];
+  /** Core capability id → its INDEPENDENT / ASSISTED / MISSED / REPAIRED / UNRESOLVED status (diagnostic + quick fix). */
+  capabilityStatus: Record<string, 'independent' | 'assisted' | 'missed' | 'repaired' | 'unresolved'>;
+  groups: { id: string; outcome: CapabilityOutcome }[];
+  /** The numbers the readiness rule used — shown nowhere, kept for transparency and tests. */
+  basis: { unresolvedCore: number; independentDiagnostic: number; coreHelpedInOneTake: number };
+}
+
+const SEVERITY: Record<CapabilityOutcome, number> = { independent: 0, 'needed-help': 1, recovered: 2, 'needs-review': 3 };
+
+/** One concept's path through the checkpoint, read from the attempt log alone (so a restore reads the same). */
+export function conceptTrack(state: CheckpointState, conceptId: string): ConceptTrack {
+  const of = (phase: CheckpointAttempt['phase']) => state.attempts.filter((a) => a.conceptId === conceptId && a.phase === phase);
+  const diag = of('diagnostic');
+  const diagnostic: DiagnosticResult = diag.length === 0 ? 'not-probed' : diag[0]!.correct ? (diag[0]!.assisted ? 'assisted' : 'independent') : 'missed';
+  const fix = of('repair');
+  const repair: RepairResult = diagnostic !== 'missed' ? 'none' : fix.some((a) => a.correct) ? 'repaired' : 'unresolved';
+  const take = of('one-take');
+  const oneTake: OneTakeResult = take.length === 0 ? 'not-reached' : take.some((a) => a.supported) ? 'helped' : take[0]!.correct ? 'clean' : take.some((a) => a.correct) ? 'slow' : 'helped';
+  const fin = of('final-repair');
+  const finalRepair: FinalRepairResult = fin.length === 0 ? 'none' : fin.at(-1)!.correct ? 'fixed' : 'failed';
+  const outcome: CapabilityOutcome =
+    finalRepair === 'fixed' ? 'recovered'
+      : finalRepair === 'failed' || oneTake === 'helped' || (oneTake === 'not-reached' && repair === 'unresolved') ? 'needs-review'
+        : diagnostic === 'missed' ? 'recovered'
+          : diagnostic === 'assisted' || oneTake === 'slow' ? 'needed-help'
+            : 'independent';
+  return { conceptId, diagnostic, repair, oneTake, finalRepair, outcome };
+}
+
+/**
+ * The readiness rule — deterministic, from the attempts alone:
+ *   🟢 READY          no core capability needs review · at least 4 core probes answered independently ·
+ *                     at most 1 core line needed the shown answer in the one-take;
+ *   🔴 REVIEW NEEDED  2 or more core capabilities still need review;
+ *   🟡 ALMOST READY   everything else (the day was completed; repairs carried the rest).
+ */
+export function checkpointReport(plan: CheckpointPlan, state: CheckpointState): CheckpointReport | null {
+  const rules = plan.adaptive;
+  if (!rules) return null;
+  const concepts = planConcepts(plan).map((c) => conceptTrack(state, c));
+  const track = (c: string): ConceptTrack => concepts.find((t) => t.conceptId === c)!;
+  const core = rules.core.map((k) => ({ id: k.id, t: track(k.concept) }));
+  const unresolvedCore = core.filter((k) => k.t.outcome === 'needs-review').length;
+  const independentDiagnostic = core.filter((k) => k.t.diagnostic === 'independent').length;
+  const coreHelpedInOneTake = core.filter((k) => k.t.oneTake === 'helped').length;
+  const readinessLevel: ReadinessLevel = unresolvedCore >= 2 ? 'review'
+    : unresolvedCore === 0 && independentDiagnostic >= 4 && coreHelpedInOneTake <= 1 ? 'ready' : 'almost';
+  const capabilityStatus = Object.fromEntries(core.map(({ id, t }) => [id,
+    t.diagnostic === 'missed' ? (t.repair === 'repaired' ? 'repaired' : 'unresolved') : t.diagnostic === 'assisted' ? 'assisted' : t.diagnostic === 'independent' ? 'independent' : 'missed'])) as CheckpointReport['capabilityStatus'];
+  const groups = rules.report.map((g) => ({ id: g.id, outcome: g.concepts.map((c) => track(c).outcome).reduce<CapabilityOutcome>((w, o) => (SEVERITY[o] > SEVERITY[w] ? o : w), 'independent') }));
+  return { readinessLevel, concepts, capabilityStatus, groups, basis: { unresolvedCore, independentDiagnostic, coreHelpedInOneTake } };
 }

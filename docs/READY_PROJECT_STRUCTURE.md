@@ -554,3 +554,27 @@ checkpoint reuses it as a wrong option. The old `practiceEveryday.ts` (Mission 1
 Coverage: `mission17Coverage.ts` (+ the six essentials as recognition concepts). Artwork: 9 slots + 1 prop, emoji
 PLACEHOLDERS — VISUAL PRODUCTION REQUIRED (Astra pass): `MISSION17_ASSET_MANIFEST.md`. Tests:
 `mission17.test.ts` (63); Missions 01–16 and 18–30 byte-for-byte unchanged (the old "17–30" pins now pin 18–30).
+
+**Mission 18 — CHECKPOINT: Everyday Day (registry key 17), 2026-11-10.** Rebuilt as a SAMPLED adaptive
+checkpoint — try first, teach only after failure — on the Mission 10 engine (`checkpoint.ts`) with opt-in
+`adaptive` rules, so Mission 10 behaves exactly as before. **Quick scan:** six core probes (coffee order,
+preference, plan & time, find an item, the bag, the restaurant order), nothing taught first; each line is
+recalled before its options are shown, and "💡 Help" shows a hint and marks the answer ASSISTED; a miss is
+noted, not shown. **Quick fix:** only the misses — one card, one retry each (REPAIRED or UNRESOLVED, never a
+loop); zero misses → zero quick fix. **One-take day:** ☕ Morning → 👋 Plans → 🛒 Supermarket → 🍽️ Dinner, the
+four locked scenes once (15 learner lines + 2 comprehension captures: aisle 3 / left, the card); a first miss
+is re-asked slowly, a second shows the line and gives one supported pick — the day goes on. "At the checkout…"
+and "Later…" are silent `sceneCue`s on their turns (text, never speech; no sentence, concept or interaction).
+**Final repair:** at most two of the one-take's misses, by survival priority (restaurant order → supermarket →
+paying → plans → preferences), once each. **Report:** a deterministic `checkpointReport` from the attempt log
+(so a restore reads the same): 🟢 READY (0 core needing review · ≥ 4 independent probes · ≤ 1 core line
+shown in the one-take) · 🔴 REVIEW NEEDED (2+ core needing review) · 🟡 ALMOST READY otherwise; five rows
+(Order & pay · Plans & time · Preferences · Shopping · Restaurant) say Independent / Needed help / Recovered /
+Needs review — never a score. **No video:** the plan entry carries `video: false`, and the resolver then never
+looks for a file. Prior-learning audit (`learnedBefore(lang, 18)`, per language): no unknown word anywhere;
+learner lines are taught chunks except named compositions of verified parts ("Yes, I'm free tomorrow." in all
+three; "I'm tired. I'm going home." in EN / FR). "three / trois / tres" is prior only through Mission 17's aisle
+card — Mission 02 (its market conversation: five, two, eight) never taught it; no infrastructure bug. "Do you
+have bread?" (never taught) left the checkpoint: "Where is the milk?" is the wrong option at the bag question;
+the sentence stays an untaught Mission 17 item. New spec file `core/everydayDay.ts`. Tests: `mission18.test.ts`
+(52); Missions 01–17 and 19–30 byte-for-byte unchanged (the old "18–30" pins now pin 19–30).

@@ -1789,7 +1789,7 @@ div.jstep { box-shadow: none; border-color: var(--line); }
 .checkpoint-progress li.is-current { background: var(--brand-soft); color: var(--brand-ink); }
 .checkpoint-progress li.is-done { background: var(--good-soft); color: var(--good); }
 .checkpoint-progress.is-repair { padding: 4px 12px; border-radius: 999px; background: var(--warn-soft); color: var(--ink); font-size: 0.88rem; font-weight: 700; }
-.checkpoint-replay { min-height: 32px; padding: 2px 8px; margin-top: 4px; }
+.checkpoint-replay { min-height: 44px; min-width: 44px; padding: 2px 8px; margin-top: 4px; }
 .checkpoint-say { width: 100%; }
 .checkpoint-recall { margin: 8px 0 0; font-size: 1.15rem; font-weight: 800; color: var(--ink-dim); }
 .checkpoint-capture { display: grid; gap: 10px; width: 100%; }
@@ -1820,6 +1820,17 @@ div.jstep { box-shadow: none; border-color: var(--line); }
 .checkpoint-complete h2 { margin: 12px 0 0; font-size: 1.5rem; }
 .checkpoint-complete p { margin: 0; font-size: 1.1rem; }
 .checkpoint-complete ul { display: flex; flex-direction: column; gap: 6px; margin: 8px 0 0; padding: 0; list-style: none; font-weight: 800; }
+.checkpoint-help { min-height: 44px; font-size: 0.95rem; }
+/* Mission 18's honest result: a level, then one compact row per part of the day — no score. */
+.checkpoint-readiness { width: 100%; max-width: 420px; margin: 6px 0 0; padding: 12px 14px; border-radius: var(--r-md); background: var(--card); box-shadow: var(--shadow-card); text-align: start; }
+.checkpoint-readiness-title { margin: 0; font-size: 1.2rem; font-weight: 900; text-align: center; }
+.checkpoint-readiness-body { margin: 4px 0 10px; font-size: 0.98rem; text-align: center; color: var(--ink-dim); }
+.checkpoint-report { display: grid; gap: 6px; margin: 0; }
+.checkpoint-report div { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 6px 10px; border-radius: var(--r-sm); background: var(--card-sunken); font-size: 0.95rem; }
+.checkpoint-report dt { font-weight: 800; }
+.checkpoint-report dd { margin: 0; font-weight: 700; color: var(--ink-dim); white-space: nowrap; }
+.checkpoint-report div[data-outcome="independent"] dd { color: var(--good); }
+.checkpoint-report div[data-outcome="needs-review"] dd { color: var(--ink); }
 
 /* Mission 14 preserves people, menus and meal state in the complete scene frame. */
 .list-row:has(> .prime-img[src*="/images/mission14/"]) { flex-wrap: wrap; }

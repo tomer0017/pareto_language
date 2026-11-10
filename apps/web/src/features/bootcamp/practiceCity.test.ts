@@ -1,3 +1,4 @@
+import { fileURLToPath } from 'node:url';
 import { cinematicTranscript } from './exportDialogue.js';
 import { describe, expect, it } from 'vitest';
 import { BOOTCAMP_PLAN } from './plan.js';
@@ -81,8 +82,9 @@ describe('scope: only the Practice of Missions 19–24 changed', () => {
   const slice = (lang: Lang, a: number, b: number): BootcampDayContent[] => BOOTCAMP_PLAN.slice(a, b).map((m) => beforeCueFreeze(MISSIONS_BY_LANG[lang]![m.day]!, lang));
   const print = (f: (lang: Lang) => unknown): Record<Lang, string> => ({ en: fnv(JSON.stringify(f('en'))), fr: fnv(JSON.stringify(f('fr'))), es: fnv(JSON.stringify(f('es'))) });
 
-  it('Missions 08–18 are byte-for-byte unchanged (Missions 01–07 have their own passes — mission01.test.ts … mission07.test.ts)', () => {
-    expect(print((l) => slice(l, 17, 18))).toEqual({ en: 'fdc71703', fr: '73f3d53a', es: 'a6837c30' }); // since the Mission 17 pass: Mission 18 (Missions 10–17: mission10.test.ts … mission17.test.ts)
+  it('Missions 01–18 have their own passes (mission01.test.ts … mission18.test.ts)', async () => {
+    const { existsSync } = await import('node:fs');
+    for (let n = 1; n <= 18; n++) expect(existsSync(fileURLToPath(new URL(`./mission${String(n).padStart(2, '0')}.test.ts`, import.meta.url))), `M${n}`).toBe(true);
   });
   it('the locked dialogues of Missions 19–23 are byte-for-byte unchanged', () => {
     expect(print((l) => slice(l, 18, 23).map((d) => d.dialogues))).toEqual({ en: '594ead2b', fr: '63803269', es: '55c7bd8f' });

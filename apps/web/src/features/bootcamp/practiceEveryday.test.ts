@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { BOOTCAMP_PLAN } from './plan.js';
-import { fillFrame, isHelpToolId, validatePracticeStep } from './practiceEngines.js';
+import { fillFrame, validatePracticeStep } from './practiceEngines.js';
 import { beforeCueFreeze } from './cueFreeze.js';
 import { MISSIONS_BY_LANG } from './registry.js';
 import { RETIRED_SENTENCES } from './retired.js';
@@ -22,9 +22,7 @@ const strip = (id: string | undefined): string => (id ?? '').replace(/^[a-z]{2}\
 const mission = (n: number, lang: Lang = 'en'): BootcampDayContent => MISSIONS_BY_LANG[lang]![BOOTCAMP_PLAN[n - 1]!.day]!;
 const stepsOf = <K extends BootcampStep['kind']>(day: BootcampDayContent, kind: K): Extract<BootcampStep, { kind: K }>[] =>
   day.steps.filter((s): s is Extract<BootcampStep, { kind: K }> => s.kind === kind);
-const kinds = (day: BootcampDayContent): string[] => day.steps.map((s) => (s.kind === 'ambush' ? `ambush:${s.mode}` : (s.kind === 'quickReply' || s.kind === 'visualMatch') && s.challenge ? `${s.kind}:speed` : s.kind));
 const text = (day: BootcampDayContent, id: string): string => day.items.find((i) => strip(i.id) === id)!.text;
-const fnv = (s: string): string => { let h = 0x811c9dc5; for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 0x01000193) >>> 0; } return h.toString(16).padStart(8, '0'); };
 const taught = (day: BootcampDayContent): string[] => stepsOf(day, 'tool').map((s) => strip(s.itemId));
 const reviewed = (day: BootcampDayContent): string[] => stepsOf(day, 'swipe').flatMap((s) => s.itemIds.map(strip));
 const rush = (day: BootcampDayContent) => stepsOf(day, 'quickReply').find((s) => s.challenge)!;
@@ -60,17 +58,11 @@ describe('scope: only the Practice of Missions 11–18 changed', () => {
   // Scene transitions became non-spoken cues after these fingerprints were taken; `beforeCueFreeze`
   // puts the labels back, so the fingerprints still prove nothing else moved (see cueFreeze.ts).
   const slice = (lang: Lang, a: number, b: number): BootcampDayContent[] => BOOTCAMP_PLAN.slice(a, b).map((m) => beforeCueFreeze(MISSIONS_BY_LANG[lang]![m.day]!, lang));
-  const print = (f: (lang: Lang) => unknown): Record<Lang, string> => ({ en: fnv(JSON.stringify(f('en'))), fr: fnv(JSON.stringify(f('fr'))), es: fnv(JSON.stringify(f('es'))) });
 
   it('Missions 08–10 are not this pass\'s: each has its own (mission08.test.ts, mission09.test.ts, mission10.test.ts)', () => {
     for (const lang of LANGS) expect(slice(lang, 9, 10)[0]!.steps.some((s) => s.kind === 'checkpoint'), lang).toBe(true);
   });
-  it('the approved practice is otherwise exactly as approved (after the final cleanup)', () => {
-    const d = (l: Lang, n: number): BootcampDayContent => beforeCueFreeze(MISSIONS_BY_LANG[l]![BOOTCAMP_PLAN[n - 1]!.day]!, l);
-    // Mission 18, whole — sentences, dialogues and steps (Missions 11–16: mission11.test.ts … mission16.test.ts).
-    expect(print((l) => [18].map((n) => d(l, n)))).toEqual({ en: 'fdc71703', fr: '73f3d53a', es: 'a6837c30' });
-    // (Mission 17: its own pass since — mission17.test.ts.)
-  });
+  // (Missions 11–18: each has its own pass since — mission11.test.ts … mission18.test.ts.)
   it('five retired sentences left their missions — and nothing else did', () => {
     const gone = ['phrase.rest.menu', 'reply.rest.how-was-it', 'reply.rest.dessert', 'reply.diet.good-option', 'reply.super.weigh-it'];
     for (const lang of LANGS) {
@@ -100,7 +92,7 @@ describe('scope: only the Practice of Missions 11–18 changed', () => {
   });
   it('no new game: only the existing step kinds are used', () => {
     const allowed = ['video', 'talk', 'prime', 'tool', 'replies', 'quiz', 'dialogue', 'swipe', 'ambush', 'receipt', 'summary', 'quickReply', 'visualMatch', 'swap', 'miniMap', 'matchPairs', 'sentenceBuilder'];
-    for (const lang of LANGS) for (let n = 11; n <= 18; n++) for (const s of mission(n, lang).steps) expect(allowed, `${lang} M${n}`).toContain(s.kind);
+    for (const lang of LANGS) for (let n = 11; n <= 17; n++) for (const s of mission(n, lang).steps) expect(allowed, `${lang} M${n}`).toContain(s.kind); // Mission 18: the adaptive checkpoint (mission18.test.ts)
   });
 });
 
@@ -212,90 +204,4 @@ describe('all three languages get the same practice, each in its own words', () 
 
 /* ── Mission 17 — Supermarket & Everyday Shopping: its own pass since — mission17.test.ts ────────── */
 
-/* ── Mission 18 — the checkpoint ─────────────────────────────────────────────────────────────── */
-
-describe('Mission 18 — CHECKPOINT: Everyday Day', () => {
-  const day = mission(18);
-  const screens = (d: BootcampDayContent) => Object.values(d.dialogues).flatMap((dl) => dl.nodes.filter((n) => n.choices?.length).map((n) => ({ scene: dl.id, node: n })));
-
-  it('it proves, it does not teach: no key sentence, no word intro, no listening drill, no quiz, no review', () => {
-    expect(kinds(day)).toEqual(['talk', 'dialogue', 'receipt', 'dialogue', 'receipt', 'dialogue', 'receipt', 'dialogue', 'receipt', 'ambush:speed', 'receipt', 'receipt', 'summary']);
-    for (const lang of LANGS) for (const s of mission(18, lang).steps) expect(['tool', 'prime', 'replies', 'quiz', 'swipe'], lang).not.toContain(s.kind);
-  });
-  it('one ordinary day in four cold scenes — morning, a friend, the supermarket, dinner — with no translation before answering', () => {
-    for (const lang of LANGS) {
-      const d = mission(18, lang);
-      expect(Object.keys(d.dialogues), lang).toEqual(['cold-morning', 'cold-plans', 'cold-shop', 'cold-dinner']);
-      for (const dl of Object.values(d.dialogues)) { expect(dl.cold, `${lang} ${dl.id}`).toBe(true); expect(dl.nodes[0]!.who, `${lang} ${dl.id}`).toBe('npc'); }
-    }
-  });
-  it('real decisions: fifteen screens, each with the line that fits and a real line from another moment — and no one-button screen', () => {
-    for (const lang of LANGS) {
-      const all = screens(mission(18, lang));
-      expect(all, lang).toHaveLength(15);
-      for (const { node } of all) {
-        expect(node.choices!.some((c) => c.correct) && node.choices!.some((c) => !c.correct), `${lang} ${node.id}`).toBe(true);
-        expect(node.choices!.length, lang).toBeGreaterThanOrEqual(2);
-        expect(node.choices!.length, lang).toBeLessThanOrEqual(3);
-      }
-    }
-    const earlier = new Set(Array.from({ length: 17 }, (_, i) => mission(i + 1).items.map((x) => x.text)).flat());
-    for (const { node } of screens(day)) for (const c of node.choices!.filter((x) => !x.correct)) expect(earlier.has(c.en), c.en).toBe(true); // never nonsense
-  });
-  it('a miss is never passed over: the question is asked again, slowly, and the same decision comes back', () => {
-    for (const lang of LANGS) for (const dl of Object.values(mission(18, lang).dialogues)) {
-      const byId = new Map(dl.nodes.map((n) => [n.id, n]));
-      for (const n of dl.nodes) for (const c of n.choices ?? []) {
-        if (c.correct) continue;
-        const beat = byId.get(c.next)!;
-        expect([beat.who, beat.slow, beat.next], `${lang} ${dl.id}/${n.id}`).toEqual(['npc', true, n.id]);
-      }
-    }
-  });
-  it('it draws on Missions 11–17, not only on old scripts: plans, a hobby, home, the supermarket, the restaurant', () => {
-    const said = new Set(screens(day).flatMap(({ node }) => node.choices!.filter((c) => c.correct).map((c) => strip(c.itemId))));
-    for (const id of ['phrase.time.free-tomorrow', 'phrase.time.lets-meet', 'phrase.time.maybe-later', 'phrase.hobby.i-love-surfing', 'phrase.home.going-home', 'phrase.super.where-is', 'phrase.super.just-this', 'phrase.super.need-bag', 'phrase.rest.table-two', 'phrase.rest.the-bill']) expect(said.has(id), id).toBe(true);
-  });
-  it('recovery is success — three offers, on the fast lines — but not every hard moment is a recovery moment', () => {
-    for (const lang of LANGS) {
-      const d = mission(18, lang);
-      const tools = screens(d).flatMap(({ scene, node }) => node.choices!.filter((c) => isHelpToolId(c.itemId)).map((c) => ({ scene, node, c })));
-      expect(tools.map((x) => `${x.scene}:${strip(x.c.itemId)}`), lang).toEqual(['cold-morning:phrase.recovery.slowly', 'cold-plans:phrase.recovery.repeat', 'cold-shop:phrase.recovery.repeat']);
-      for (const { scene, node, c } of tools) {
-        expect(c.correct, lang).toBe(true);
-        const again = d.dialogues[scene]!.nodes.find((n) => n.id === c.next)!;
-        expect([again.who, again.slow, again.next], `${lang} ${scene}`).toEqual(['npc', true, node.id]);
-        expect(d.dialogues[scene]!.nodes.find((n) => n.next === node.id && !n.slow)!.fast, `${lang} ${scene}`).toBe(true);
-      }
-      expect(tools.length, lang).toBeLessThan(screens(d).length / 3);
-    }
-  });
-  it('STRICT — zero new target-language vocabulary: every word of the checkpoint was met in Missions 01–17', () => {
-    for (const lang of LANGS) expect(unknownIn(lines(mission(18, lang)), vocabulary(lang, 17)), lang).toEqual([]);
-    expect(lines(day).join(' ')).not.toMatch(/dessert|great choice|right this way|how many people/i); // what the old version smuggled in
-  });
-  it('every learner line is a sentence an earlier mission taught, with the same id and the same wording', () => {
-    for (const lang of LANGS) {
-      const before = new Map(Array.from({ length: 17 }, (_, i) => mission(i + 1, lang).items.map((x): [string, string] => [x.id, x.text])).flat());
-      for (const i of mission(18, lang).items) expect(before.get(i.id), `${lang} ${i.id}`).toBe(i.text);
-    }
-  });
-  it('one speed-listening moment, honestly labelled — known language, no "use a tool" badge', () => {
-    for (const lang of LANGS) {
-      const ambushes = stepsOf(mission(18, lang), 'ambush');
-      expect(ambushes, lang).toHaveLength(1);
-      expect(ambushes[0]!.mode, lang).toBe('speed');
-      expect(isHelpToolId(ambushes[0]!.correctItemId) || isHelpToolId(ambushes[0]!.wrongItemId), lang).toBe(false);
-    }
-    expect(strip(stepsOf(day, 'ambush')[0]!.correctItemId)).toBe('reply.rest.ready-to-order');
-  });
-  it('the three languages are the same checkpoint: same scenes, same turns, same decisions', () => {
-    const shape = (d: BootcampDayContent) => Object.values(d.dialogues).map((dl) => [dl.id, dl.nodes.map((n) => [n.id, n.who, n.next ?? null, n.fast ?? false, n.slow ?? false, (n.choices ?? []).map((c) => [strip(c.itemId), c.correct, c.next])])]);
-    for (const lang of ['fr', 'es'] as const) expect(shape(mission(18, lang)), lang).toEqual(shape(day));
-  });
-  it('the closing proof says what was done — and teaches nothing after it', () => {
-    const last = day.steps.slice(-2);
-    expect(last.map((s) => s.kind)).toEqual(['receipt', 'summary']);
-    expect(last[0]!.kind === 'receipt' && last[0]!.text.en).toMatch(/coffee.*friend.*supermarket.*dinner.*did not freeze/);
-  });
-});
+/* ── Mission 18 — CHECKPOINT: Everyday Day: its own pass since — mission18.test.ts ─────────────── */

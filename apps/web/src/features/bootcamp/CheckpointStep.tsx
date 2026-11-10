@@ -10,8 +10,8 @@ import { useBootcampStore } from './bootcampStore.js';
 import { NpcFigure, YouLine } from './ConvoScene.js';
 import { npcFor } from './npcCast.js';
 import {
-  checkpointScreen, isRestorable, proceed, respond, revealOptions, sceneProgress, startCheckpoint, turnForConcept,
-  type CaptureChoice, type CaptureGroup, type CheckpointPlan, type CheckpointState,
+  checkpointScreen, isRestorable, proceed, requestHelp, respond, revealOptions, sceneProgress, startCheckpoint, turnForConcept,
+  type CaptureChoice, type CaptureGroup, type CheckpointPlan, type CheckpointReport, type CheckpointState,
 } from './checkpoint.js';
 import type { SpokenLine } from './types.js';
 import type { StepOf } from './practiceEngines.js';
@@ -67,9 +67,11 @@ export function CheckpointView({ plan, state, onChange, onAnswer, onDone }: {
       {screen.kind === 'say' && (
         <SayBeat
           key={`${state.phase}.${state.cursor}.${state.attempts.length}`}
-          cast={scene.cast} cue={screen.turn.cue} heard={(screen.turn.heard ?? false) && (state.phase === 'diagnostic' || state.phase === 'one-take')} situation={screen.situation ? L(screen.situation) : undefined}
+          cast={scene.cast} cue={screen.turn.cue} heard={(screen.turn.heard ?? false) && (state.phase === 'diagnostic' || state.phase === 'one-take') && !state.slow} situation={screen.situation ? L(screen.situation) : undefined}
+          sceneCue={screen.turn.sceneCue ? L(screen.turn.sceneCue) : undefined} slow={state.slow ?? false}
           options={screen.options.map((o) => ({ id: o.conceptId, text: o.text }))}
           onReveal={screen.concealed ? () => { tap(); go(revealOptions(plan, state)); } : undefined}
+          onHelp={screen.concealed && plan.adaptive && state.phase === 'diagnostic' ? () => { tap(); go(requestHelp(plan, state)); } : undefined}
           onPick={(id) => {
             const right = id === screen.turn.conceptId;
             tap();
@@ -83,7 +85,7 @@ export function CheckpointView({ plan, state, onChange, onAnswer, onDone }: {
       {screen.kind === 'capture' && (
         <CaptureBeat
           key={`${state.phase}.${state.cursor}.${state.attempts.length}`}
-          cast={scene.cast} cue={screen.turn.cue} groups={screen.groups}
+          cast={scene.cast} cue={screen.turn.cue} groups={screen.groups} sceneCue={screen.turn.sceneCue ? L(screen.turn.sceneCue) : undefined}
           onConfirm={(picks) => {
             const right = screen.groups.every((g) => picks[g.conceptId] === g.correct);
             tap();
@@ -104,7 +106,7 @@ export function CheckpointView({ plan, state, onChange, onAnswer, onDone }: {
         <SceneEndBeat key={`${state.phase}.${screen.scene.id}`} cast={screen.scene.cast} closing={screen.scene.closing} stamp={L(screen.scene.stamp)} onNext={() => go(proceed(plan, state))} />
       )}
       {screen.kind === 'complete' && (
-        <CompleteBeat plan={plan} onNext={onDone} />
+        <CompleteBeat plan={plan} report={screen.report} onNext={onDone} />
       )}
     </div>
   );
@@ -112,6 +114,10 @@ export function CheckpointView({ plan, state, onChange, onAnswer, onDone }: {
 
 /** 🛂 ✅ · 🚕 · 🏨 — where the day stands; in a repair, how many fixes are left instead. */
 function DayProgress({ plan, state }: { plan: CheckpointPlan; state: CheckpointState }) {
+  // A sampled diagnostic jumps across the day: it shows where the scan is, not a scene.
+  if (plan.adaptive && state.phase === 'diagnostic' && plan.copy.scan) {
+    return <p className="checkpoint-progress is-repair">🔍 {L(plan.copy.scan)} · {state.cursor + 1}/{state.agenda.length}</p>;
+  }
   if (state.phase === 'repair' || state.phase === 'final-repair') {
     const left = state.phase === 'repair' ? state.repairQueue.length : state.finalRepairQueue.length;
     return <p className="checkpoint-progress is-repair" data-left={left}>🔧 {t('checkpointFixesLeft', { n: left })}</p>;
@@ -122,7 +128,7 @@ function DayProgress({ plan, state }: { plan: CheckpointPlan; state: CheckpointS
         const s = plan.scenes.find((x) => x.id === p.id)!;
         return (
           <li key={p.id} className={`is-${p.state}`} aria-current={p.state === 'current' ? 'step' : undefined}>
-            <span aria-hidden>{s.icon}</span> {L(s.label)}{p.state === 'done' ? ' ✅' : ''}
+            <span aria-hidden>{s.icon}</span> {L(s.label)}{p.state === 'done' ? ' ✅' : plan.adaptive ? ' ⬜' : ''}
           </li>
         );
       })}
@@ -131,9 +137,9 @@ function DayProgress({ plan, state }: { plan: CheckpointPlan; state: CheckpointS
 }
 
 /** The other person's line: their figure, the words (never translated before the answer), its sound. */
-function Speaker({ cast, line, play }: { cast: string; line: SpokenLine; play: boolean }) {
+function Speaker({ cast, line, play, slow = false }: { cast: string; line: SpokenLine; play: boolean; slow?: boolean }) {
   useEffect(() => {
-    if (play) void speakL(line.en, rateOf(line));
+    if (play) void speakL(line.en, slow ? 0.75 : rateOf(line)); // a re-ask after a miss: slowly
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
@@ -147,20 +153,27 @@ function Speaker({ cast, line, play }: { cast: string; line: SpokenLine; play: b
   );
 }
 
-function SayBeat({ cast, cue, heard, situation, options, onPick, onReveal }: {
-  cast: string; cue: SpokenLine; heard: boolean; situation?: string; options: { id: string; text: string }[]; onPick: (id: string) => void;
+/** A scene transition ("At the checkout…", "Later…"): shown, never spoken. */
+const SceneCue = ({ text }: { text?: string }) => (text ? <p className="faint small convo-cue" dir="auto">{text}</p> : null);
+
+function SayBeat({ cast, cue, heard, situation, sceneCue, slow = false, options, onPick, onReveal, onHelp }: {
+  cast: string; cue: SpokenLine; heard: boolean; situation?: string; sceneCue?: string; slow?: boolean; options: { id: string; text: string }[]; onPick: (id: string) => void;
   /** One-take: the options are hidden — recall the line first, then ask to see them. */
   onReveal?: () => void;
+  /** Sampled diagnostic: a hint before the options — the answer then counts as assisted. */
+  onHelp?: () => void;
 }) {
   return (
     <>
-      <Speaker cast={cast} line={cue} play={!heard} />
+      <SceneCue text={sceneCue} />
+      <Speaker cast={cast} line={cue} play={!heard} slow={slow} />
       {situation && <p className="scene-note">{situation}</p>}
       {onReveal ? (
         <>
-          <p className="checkpoint-recall">{t('checkpointWhatWouldYouSay')}</p>
+          <p className="checkpoint-recall">{t(onHelp ? 'checkpointTryFirst' : 'checkpointWhatWouldYouSay')}</p>
           <div className="action-zone">
             <button className="btn-secondary" onClick={onReveal}>{t('checkpointShowOptions')}</button>
+            {onHelp && <button className="btn-ghost checkpoint-help" onClick={onHelp}>{t('checkpointHelp')}</button>}
           </div>
         </>
       ) : (
@@ -175,11 +188,12 @@ function SayBeat({ cast, cue, heard, situation, options, onPick, onReveal }: {
 }
 
 /** One compact screen: every value the line gave, each in its own row, then one confirm. */
-function CaptureBeat({ cast, cue, groups, onConfirm }: { cast: string; cue: SpokenLine; groups: CaptureGroup[]; onConfirm: (picks: Record<string, string>) => void }) {
+function CaptureBeat({ cast, cue, groups, sceneCue, onConfirm }: { cast: string; cue: SpokenLine; groups: CaptureGroup[]; sceneCue?: string; onConfirm: (picks: Record<string, string>) => void }) {
   const [picks, setPicks] = useState<Record<string, string>>({});
   const ready = groups.every((g) => picks[g.conceptId]);
   return (
     <>
+      <SceneCue text={sceneCue} />
       <Speaker cast={cast} line={cue} play />
       <div className="checkpoint-capture">
         {groups.map((g) => (
@@ -265,13 +279,27 @@ function IntroBeat({ text, onNext }: { text: string; onNext: () => void }) {
   );
 }
 
-function CompleteBeat({ plan, onNext }: { plan: CheckpointPlan; onNext: () => void }) {
+function CompleteBeat({ plan, report, onNext }: { plan: CheckpointPlan; report?: CheckpointReport; onNext: () => void }) {
+  const level = report && plan.copy.readiness?.[report.readinessLevel];
   return (
     <>
       <div className="checkpoint-complete pop-in">
         <h2>{L(plan.copy.completeTitle)}</h2>
         <p>{L(plan.copy.completeBody)}</p>
         <ul>{plan.scenes.map((s) => <li key={s.id}><span aria-hidden>{s.icon}</span> {L(s.label)} ✅</li>)}</ul>
+        {/* The honest part: a level and what each part of the day took — never a score. */}
+        {report && level && (
+          <div className="checkpoint-readiness" data-level={report.readinessLevel}>
+            <p className="checkpoint-readiness-title">{L(level.title)}</p>
+            <p className="checkpoint-readiness-body">{L(level.body)}</p>
+            <dl className="checkpoint-report">
+              {plan.adaptive!.report.map((g) => {
+                const outcome = report.groups.find((x) => x.id === g.id)!.outcome;
+                return <div key={g.id} data-outcome={outcome}><dt><span aria-hidden>{g.icon}</span> {L(g.label)}</dt><dd>{plan.copy.outcome ? L(plan.copy.outcome[outcome]) : outcome}</dd></div>;
+              })}
+            </dl>
+          </div>
+        )}
       </div>
       <div className="action-zone">
         <button className="btn-primary" onClick={onNext}>{t('continue')}</button>

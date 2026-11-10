@@ -5,7 +5,6 @@ import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { BOOTCAMP_PLAN } from './plan.js';
 import { fillFrame, validatePracticeStep } from './practiceEngines.js';
-import { beforeCueFreeze, type FrozenDay } from './cueFreeze.js';
 import { MISSIONS_BY_LANG } from './registry.js';
 import { RETIRED_SENTENCES } from './retired.js';
 import { sentenceCatalog } from '../core/phraseGroups.js';
@@ -25,7 +24,6 @@ const strip = (id: string | undefined): string => (id ?? '').replace(/^[a-z]{2}\
 const mission = (n: number, lang: Lang = 'en'): BootcampDayContent => MISSIONS_BY_LANG[lang]![BOOTCAMP_PLAN[n - 1]!.day]!;
 const stepsOf = <K extends BootcampStep['kind']>(day: BootcampDayContent, kind: K): Extract<BootcampStep, { kind: K }>[] =>
   day.steps.filter((s): s is Extract<BootcampStep, { kind: K }> => s.kind === kind);
-const fnv = (s: string): string => { let h = 0x811c9dc5; for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 0x01000193) >>> 0; } return h.toString(16).padStart(8, '0'); };
 const taught = (day: BootcampDayContent): string[] => stepsOf(day, 'tool').map((s) => strip(s.itemId));
 const reviewed = (day: BootcampDayContent): string[] => stepsOf(day, 'swipe').flatMap((s) => s.itemIds.map(strip));
 
@@ -54,10 +52,6 @@ function lines(day: BootcampDayContent, skipChallenge = false): string[] {
 /* ── what this pass was not allowed to touch ─────────────────────────────────────────────────── */
 
 describe('scope: only the Practice of Missions 06–10 changed', () => {
-  // Scene transitions became non-spoken cues after these fingerprints were taken; `beforeCueFreeze`
-  // puts the labels back, so the fingerprints still prove nothing else moved (see cueFreeze.ts).
-  const slice = (lang: Lang, a: number, b: number): FrozenDay[] => BOOTCAMP_PLAN.slice(a, b).map((m) => beforeCueFreeze(MISSIONS_BY_LANG[lang]![m.day]!, lang));
-  const print = (f: (lang: Lang) => unknown): Record<Lang, string> => ({ en: fnv(JSON.stringify(f('en'))), fr: fnv(JSON.stringify(f('fr'))), es: fnv(JSON.stringify(f('es'))) });
 
   it('Missions 01–09 are pinned by their own passes (mission01.test.ts … mission09.test.ts)', async () => {
     const { existsSync } = await import('node:fs');
@@ -81,8 +75,9 @@ describe('scope: only the Practice of Missions 06–10 changed', () => {
     const { existsSync } = await import('node:fs');
     expect(existsSync(fileURLToPath(new URL('./mission10.test.ts', import.meta.url)))).toBe(true);
   });
-  it('Mission 18 is exactly as approved (Missions 01–17 have their own passes)', () => {
-    expect(print((l) => slice(l, 17, 18))).toEqual({ en: 'fdc71703', fr: '73f3d53a', es: 'a6837c30' }); // since the Mission 17 pass: Mission 18
+  it('Missions 11–18 have their own passes since (mission11.test.ts … mission18.test.ts)', async () => {
+    const { existsSync } = await import('node:fs');
+    expect(existsSync(fileURLToPath(new URL('./mission18.test.ts', import.meta.url)))).toBe(true);
   });
   it('"For two nights." and the wifi password are retired (and, since the Mission 08 pass, "Sign here" and "It\'s on the second floor"): archived with their ids and wording, and shown nowhere', () => {
     const gone = ['phrase.hotel.two-nights', 'phrase.hotel.wifi', 'reply.hotel.sign-here', 'reply.hotel.second-floor'];

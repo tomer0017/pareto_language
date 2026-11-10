@@ -1021,37 +1021,22 @@ _Reply-training drill:_ “Hi there! Can I help you find anything?” · “Of c
 
 ### Core phrases (you say)
 - **I'd like an iced coffee, please.** · אני רוצה קפה קר, בבקשה. — _התבנית: I’d like ___, please — עובדת על הכל._
-- **A table for two, please.** · שולחן לשניים, בבקשה. — _הפתיח למסעדה. תבנית: a table for ___._
 - **Maybe later.** · אולי אחר כך. — _התשובה הכי שימושית כשלא החלטת._
 - **By card, please.** · בכרטיס, בבקשה.
-- **A croissant, please.** · קרואסון, בבקשה. — _“Croissant” — מאפה חמאה צרפתי. כך בדיוק זה כתוב בתפריט בחו״ל._
 - **Yes, I'm free tomorrow.** · כן, אני פנוי מחר.
-- **I'm free tonight.** · אני פנוי הערב.
 - **I love surfing!** · אני מאוד אוהב לגלוש!
-- **I usually draw in the evening.** · בדרך כלל אני מצייר בערב.
 - **Let's meet here at seven.** · ניפגש כאן בשבע. — _Let’s meet ___ at ___ — מקום ושעה, וזהו._
-- **No, that's not too late.** · לא, זה לא מאוחר מדי.
 - **I'm going home.** · אני הולך הביתה.
-- **Where is your family?** · איפה המשפחה שלך? — _Where is ___? — אותה שאלה מהכיוונים, עכשיו על אנשים._
 - **Where is the milk?** · איפה החלב? — _התבנית: Where is the ___? — מוצאת כל מוצר בכל חנות._
-- **Could I get a bag?** · אפשר שקית?
 - **Just this, thanks.** · רק את זה, תודה.
-- **Do you have bread?** · יש לכם לחם? — _התבנית: Do you have ___? — בודקת אם קיים במלאי._
-- **The bill, please.** · החשבון, בבקשה.
+- **Could I get a bag?** · אפשר שקית?
+- **A table for two, please.** · שולחן לשניים, בבקשה. — _הפתיח למסעדה. תבנית: a table for ___._
 - **I'll have the chicken.** · אני אקח את העוף. — _תבנית ההזמנה: I’ll have the ___._
 - **A bottle of water, please.** · בקבוק מים, בבקשה.
-
-### Expected replies (you hear)
-- **Are you ready to order?** · מוכנים להזמין?
-- **Anything to drink?** · משהו לשתות?
+- **The bill, please.** · החשבון, בבקשה.
 
 ### Recovery tools reused
-`Thank you!` · `Please speak slowly.` · `Can you repeat that?`
-
-### Cold open (ambush)
-- 🧑 (fast) “Perfect, follow me. Here are your menus. Are you ready to order?” · מצוין, בואו אחריי. הנה התפריטים. מוכנים להזמין?
-  - ✅ best move: **Are you ready to order?** · מוכנים להזמין?
-  - ✗ distractor: Anything to drink?
+`Thank you!`
 
 ### Dialogue: `cold-morning` — happy path
 - **🧑 Them:** “Good morning! What can I get you?” · בוקר טוב! מה להביא לך?
@@ -1061,11 +1046,6 @@ _Reply-training drill:_ “Hi there! Can I help you find anything?” · “Of c
 - **🧑 Them:** “No problem. Cash or card?” · אין בעיה. מזומן או כרטיס?
 - **🫵 You:** “By card, please.” · בכרטיס, בבקשה.
 - **🧑 Them:** “Thank you! Have a nice day!” · תודה! שיהיה יום נעים!
-
-#### Wrong / recovery branches
-- ⚠︎ less useful: 🫵 “A table for two, please.” → 🧑 “Good morning! What can I get you?” · בוקר טוב! מה להביא לך?
-- ⚠︎ less useful: 🫵 “By card, please.” → 🧑 “Sure. Anything to eat?” · בטח. משהו לאכול?
-- ⚠︎ less useful: 🫵 “A croissant, please.” → 🧑 “No problem. Cash or card?” · אין בעיה. מזומן או כרטיס?
 
 ### Dialogue: `cold-plans` — happy path
 - **🧑 Them:** “Hi! Are you free tomorrow?” · היי! אתה פנוי מחר?
@@ -1078,12 +1058,6 @@ _Reply-training drill:_ “Hi there! Can I help you find anything?” · “Of c
 - **🫵 You:** “I'm tired. I'm going home.” · אני עייף. אני הולך הביתה.
 - **🧑 Them:** “Good night. See you tomorrow!” · לילה טוב. נתראה מחר!
 
-#### Wrong / recovery branches
-- ⚠︎ less useful: 🫵 “I'm free tonight.” → 🧑 “Hi! Are you free tomorrow?” · היי! אתה פנוי מחר?
-- ⚠︎ less useful: 🫵 “I usually draw in the evening.” → 🧑 “I surf a lot. Do you like surfing?” · אני גולש הרבה. אתה אוהב לגלוש?
-- ⚠︎ less useful: 🫵 “No, that's not too late.” → 🧑 “Then come with us! But we leave early.” · אז בוא איתנו! אבל אנחנו יוצאים מוקדם.
-- ⚠︎ less useful: 🫵 “Where is your family?” → 🧑 “Perfect. And what are you doing tonight?” · מושלם. ומה אתה עושה הערב?
-
 ### Dialogue: `cold-shop` — happy path
 - **🧑 Them:** “Hi there! Can I help you find something?” · היי! לעזור לך למצוא משהו?
 - **🫵 You:** “Where is the milk?” · איפה החלב?
@@ -1095,12 +1069,6 @@ _Reply-training drill:_ “Hi there! Can I help you find anything?” · “Of c
 - **🫵 You:** “Could I get a bag?” · אפשר שקית?
 - **🧑 Them:** “Insert your card here… all done. Have a nice day!” · הכנס את הכרטיס כאן… הכל מוכן. שיהיה יום נעים!
 
-#### Wrong / recovery branches
-- ⚠︎ less useful: 🫵 “Could I get a bag?” → 🧑 “Hi there! Can I help you find something?” · היי! לעזור לך למצוא משהו?
-- ⚠︎ less useful: 🫵 “Just this, thanks.” → 🧑 “The milk is in aisle three, on the left.” · החלב במעבר שלוש, משמאל.
-- ⚠︎ less useful: 🫵 “Where is the milk?” → 🧑 “Hi! Is that everything?” · היי! זה הכל?
-- ⚠︎ less useful: 🫵 “Do you have bread?” → 🧑 “Do you need a bag?” · צריך שקית?
-
 ### Dialogue: `cold-dinner` — happy path
 - **🧑 Them:** “Good evening! Do you have a reservation?” · ערב טוב! יש לכם הזמנה?
 - **🫵 You:** “No — a table for two, please.” · לא — שולחן לשניים, בבקשה.
@@ -1111,12 +1079,6 @@ _Reply-training drill:_ “Hi there! Can I help you find anything?” · “Of c
 - **🧑 Them:** “Is everything okay?” · הכל בסדר?
 - **🫵 You:** “Yes, that was delicious! The bill, please.” · כן, היה טעים מאוד! החשבון, בבקשה.
 - **🧑 Them:** “So glad you enjoyed it. Here you are — have a lovely evening!” · שמח שנהניתם. בבקשה — ערב נעים!
-
-#### Wrong / recovery branches
-- ⚠︎ less useful: 🫵 “The bill, please.” → 🧑 “Good evening! Do you have a reservation?” · ערב טוב! יש לכם הזמנה?
-- ⚠︎ less useful: 🫵 “A bottle of water, please.” → 🧑 “Are you ready to order?” · מוכנים להזמין?
-- ⚠︎ less useful: 🫵 “A table for two, please.” → 🧑 “Of course. Anything to drink?” · כמובן. משהו לשתות?
-- ⚠︎ less useful: 🫵 “I'll have the chicken.” → 🧑 “Is everything okay?” · הכל בסדר?
 
 ### Review status
 - 🤖 AI-drafted (English + Hebrew) — **pending human / native-Hebrew review**

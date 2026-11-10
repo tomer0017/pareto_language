@@ -106,8 +106,7 @@ describe('scope: only Missions 25–30 changed', () => {
   const print = (f: (lang: Lang) => unknown): Record<Lang, string> => ({ en: fnv(JSON.stringify(f('en'))), fr: fnv(JSON.stringify(f('fr'))), es: fnv(JSON.stringify(f('es'))) });
 
   it('Missions 08–24 are byte-for-byte unchanged, in every language (Missions 01–07 have their own passes — mission01.test.ts … mission07.test.ts)', () => {
-    expect(print((l) => slice(l, 17, 23))).toEqual({ en: 'f443cb78', fr: 'a1fc242a', es: '768c6c8a' }); // Missions 18–23 (Missions 10–17 have their own passes; Mission 24 its "should" card — practiceCity.test.ts)
-    expect(print((l) => slice(l, 17, 18))).toEqual({ en: 'fdc71703', fr: '73f3d53a', es: 'a6837c30' });
+    // Missions 19–23 (Missions 10–18 have their own passes; Mission 24 its "should" card — practiceCity.test.ts)
     expect(print((l) => slice(l, 18, 23))).toEqual({ en: 'c041b1a2', fr: 'eac0ce45', es: 'c337ad61' });
   });
   it('the conversations of Missions 25–27 are byte-for-byte unchanged', () => {
@@ -164,19 +163,20 @@ describe('production freeze: a time or place jump is a cue — shown, never spok
     ...day.items.map((i) => i.text),
   ].filter(Boolean);
 
-  it('the eight cues of the Core, exactly where the conversation jumps', () => {
+  it('the eight cues of the Core, exactly where the conversation jumps (Mission 18\'s two on its checkpoint turns)', () => {
     const cues = (lang: Lang): string[] => BOOTCAMP_PLAN.flatMap((m, i) => stepsOf(MISSIONS_BY_LANG[lang]![m.day]!, 'dialogue').flatMap((s, k) =>
       MISSIONS_BY_LANG[lang]![m.day]!.dialogues[s.dialogueId]!.nodes.filter((n) => n.cue).map((n) => `M${i + 1} scene ${k + 1} ${n.id}: [${n.cue!.en}] ${n.en}`)));
     expect(cues('en')).toEqual([
       'M14 scene 1 n5b: [Later…] Is everything okay?',
       'M17 scene 1 n3: [At the checkout…] Hi! Is that everything?',
-      'M18 scene 3 n5: [At the checkout…] Hi! Is that everything?',
-      'M18 scene 4 n7: [Later…] Is everything okay?',
       "M22 scene 1 n5b: [Later…] Here's your bill.",
       'M28 scene 2 n7: [Later…] Is everything okay?',
       'M29 scene 4 n1: [Later…] Is everything okay?',
       'M30 scene 3 n11: [Later…] Is everything okay?',
     ]);
+    // Mission 18 is an adaptive checkpoint since its own pass (mission18.test.ts): its two cues are on its turns.
+    const m18 = stepsOf(MISSIONS_BY_LANG.en![BOOTCAMP_PLAN[17]!.day]!, 'checkpoint')[0]!.plan.turns.filter((t) => t.sceneCue).map((t) => `M18 ${t.id}: [${t.sceneCue!.en}] ${t.cue.en}`);
+    expect(m18).toEqual(['M18 shop.everything: [At the checkout…] Hi! Is that everything?', 'M18 dinner.okay: [Later…] Is everything okay?']);
     // Same places in French and Spanish, each with its own words; the cue itself is app-language copy.
     const where = (l: Lang): string[] => cues(l).map((c) => c.slice(0, c.indexOf(']') + 1));
     expect(where('fr')).toEqual(where('en'));

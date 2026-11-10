@@ -33,6 +33,8 @@ export function getMissionVideo(
 /** The video of a mission given by its registry key (`day`), as the player takes it — or undefined.
  *  The key is turned into the number the learner sees; the key itself never reaches a file name. */
 export function missionVideo(learningLanguage: string, day: number, from: VideoManifest = VIDEO_MANIFEST, base: string | undefined = import.meta.env.BASE_URL): BootcampVideo | undefined {
+  // A mission that never has a video (its live run is the event) is not looked up at all.
+  if (BOOTCAMP_PLAN.find((m) => m.day === day)?.video === false) return undefined;
   const n = missionNumber(day);
   const lang = normalizeVideoLang(learningLanguage);
   const src = n === null ? null : getMissionVideo({ learningLanguage, missionNumber: n }, from, base);

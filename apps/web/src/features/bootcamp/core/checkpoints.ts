@@ -36,12 +36,9 @@ import { DAY18_ES_ITEMS } from '../es/day18.js';
 import { EVERYDAY_CORE } from './everydayCore.js';
 import { FIXING_PROBLEMS } from './fixingProblems.js';
 import { FUTURE_PLANS } from './futurePlans.js';
-import { HOBBIES } from './hobbies.js';
-import { HOME_FAMILY } from './homeFamily.js';
 import { OPINIONS } from './opinions.js';
 import { PAST_EVENTS } from './pastEvents.js';
 import { SMALL_TALK } from './smallTalk.js';
-import { TIME_PLANS } from './timePlans.js';
 
 /**
  * The integration missions of the Core 30 — Arrival Day (10), Everyday Day (18), City &
@@ -60,119 +57,8 @@ const known = (id: string): SpecItem => fromItems(id, EN, FR, ES);
 /** Arrival Day (Mission 10) is an adaptive checkpoint of its own: see `arrivalDay.ts`. */
 export { ARRIVAL_DAY } from './arrivalDay.js';
 
-/**
- * Everyday Day — the checkpoint of Missions 11–17. One ordinary day, cold: a morning coffee, plans
- * with a friend, the supermarket, dinner. Same rules as Arrival Day: nothing is taught, quizzed or
- * reviewed; no translation before the learner answers; every word was met in Missions 01–17 (a test
- * enforces it); nearly every turn is a real decision between the line that fits and a real line
- * from another moment; a conversation-help tool counts as success; one moment is at natural speed.
- */
-export const EVERYDAY_DAY: MissionSpec = {
-  day: 17,
-  title: ['נקודת ביקורת: יום רגיל', 'CHECKPOINT: Everyday Day'],
-  icon: '☀️',
-  intro: [
-    ['אין חומר חדש היום. רק הוכחה.', 'No new material today. Just proof.'],
-    ['יום רגיל אחד: קפה בבוקר, תוכניות עם חבר, קנייה בסופר, וארוחת ערב.', 'One ordinary day: a morning coffee, plans with a friend, the supermarket, and dinner.'],
-    ['הכל משפטים שכבר למדת — בסדר חדש, בקצב רגיל, ובלי תרגום.', 'Every line is one you already know — in a new order, at normal speed, with no translation.'],
-  ],
-  cta: ['להתחיל את היום', 'Start the day'],
-  scenes: [
-    {
-      id: 'cold-morning',
-      cold: true,
-      receipt: ['בוקר: הזמנת, התלבטת ושילמת — בלי הכנה.', 'Morning: you ordered, hesitated and paid — with no preparation.'],
-      lines: [
-        npc('Good morning! What can I get you?', 'Bonjour ! Qu’est-ce que je vous sers ?', '¡Buenos días! ¿Qué le sirvo?', 'בוקר טוב! מה להביא לך?', 'fast'),
-        you(known('phrase.coffee.iced-coffee'), { wrong: [known('phrase.rest.table-two')] }),
-        npc('Sure. Anything to eat?', 'Très bien. Quelque chose à manger ?', 'Claro. ¿Algo de comer?', 'בטח. משהו לאכול?'),
-        you(itemOf(TIME_PLANS, 'phrase.time.maybe-later'), { wrong: [known('phrase.money.by-card')] }),
-        npc('No problem. Cash or card?', 'Pas de problème. Espèces ou carte ?', 'Sin problema. ¿Efectivo o tarjeta?', 'אין בעיה. מזומן או כרטיס?', 'fast'),
-        you(known('phrase.money.by-card'), {
-          wrong: [known('phrase.coffee.croissant')], // was "To go, please." — retired when Mission 03 stopped teaching it
-          rec: { tool: 'slowly', npc: ['Cash — or card?', 'Espèces — ou carte ?', '¿Efectivo — o tarjeta?', 'מזומן — או כרטיס?'] },
-        }),
-        npc('Thank you! Have a nice day!', 'Merci ! Bonne journée !', '¡Gracias! ¡Que tenga un buen día!', 'תודה! שיהיה יום נעים!'),
-      ],
-    },
-    {
-      id: 'cold-plans',
-      cold: true,
-      receipt: ['קבעת תוכניות למחר, אמרת מה אתה אוהב ומה אתה עושה עכשיו.', 'You made plans for tomorrow, said what you like and what you are doing now.'],
-      lines: [
-        npc('Hi! Are you free tomorrow?', 'Salut ! Tu es libre demain ?', '¡Hola! ¿Estás libre mañana?', 'היי! אתה פנוי מחר?', 'fast'),
-        you(itemOf(TIME_PLANS, 'phrase.time.free-tomorrow'), {
-          wrong: [itemOf(TIME_PLANS, 'phrase.time.free-tonight')],
-          rec: { tool: 'repeat', npc: ['Tomorrow. Are you — free?', 'Demain. Tu es — libre ?', 'Mañana. ¿Estás — libre?', 'מחר. אתה — פנוי?'] },
-        }),
-        npc('I surf a lot. Do you like surfing?', 'Je fais beaucoup de surf. Tu aimes le surf ?', 'Hago mucho surf. ¿Te gusta el surf?', 'אני גולש הרבה. אתה אוהב לגלוש?'),
-        you(itemOf(HOBBIES, 'phrase.hobby.i-love-surfing'), { wrong: [itemOf(HOBBIES, 'phrase.hobby.i-usually')] }),
-        npc('Then come with us! But we leave early.', 'Alors viens avec nous ! Mais on part tôt.', '¡Entonces ven con nosotros! Pero salimos temprano.', 'אז בוא איתנו! אבל אנחנו יוצאים מוקדם.'),
-        you(itemOf(TIME_PLANS, 'phrase.time.lets-meet'), { wrong: [itemOf(TIME_PLANS, 'phrase.time.not-too-late')] }),
-        npc('Perfect. And what are you doing tonight?', 'Parfait. Et tu fais quoi ce soir ?', 'Perfecto. ¿Y qué haces esta noche?', 'מושלם. ומה אתה עושה הערב?'),
-        you(itemOf(HOME_FAMILY, 'phrase.home.going-home'), {
-          say: ["I'm tired. I'm going home.", 'Je suis fatigué. Je rentre chez moi.', 'Estoy cansado. Me voy a casa.', 'אני עייף. אני הולך הביתה.'],
-          wrong: [itemOf(HOME_FAMILY, 'phrase.home.where-family')],
-        }),
-        npc('Good night. See you tomorrow!', 'Bonne nuit. À demain !', 'Buenas noches. ¡Nos vemos mañana!', 'לילה טוב. נתראה מחר!'),
-      ],
-    },
-    {
-      id: 'cold-shop',
-      cold: true,
-      receipt: ['סופר: מצאת מוצר, הבנת באיזה מעבר, ועברת קופה.', 'The supermarket: you found a product, understood which aisle, and got through the checkout.'],
-      lines: [
-        npc('Hi there! Can I help you find something?', 'Bonjour ! Je peux vous aider à trouver quelque chose ?', '¡Hola! ¿Le ayudo a encontrar algo?', 'היי! לעזור לך למצוא משהו?', 'fast'),
-        you(known('phrase.super.where-is'), { wrong: [known('phrase.super.need-bag')] }),
-        npc('The milk is in aisle three, on the left.', 'Le lait est dans l’allée trois, sur la gauche.', 'La leche está en el pasillo tres, a la izquierda.', 'החלב במעבר שלוש, משמאל.', 'fast'),
-        you(tool('thank-you'), {
-          wrong: [known('phrase.super.just-this')],
-          rec: { tool: 'repeat', npc: ['Aisle — three — on the left.', 'Allée — trois — sur la gauche.', 'Pasillo — tres — a la izquierda.', 'מעבר — שלוש — משמאל.'] },
-        }),
-        { ...npc('Hi! Is that everything?', 'Bonjour ! Ce sera tout ?', '¡Hola! ¿Eso es todo?', 'היי! זה הכל?'), cue: ['בקופה…', 'At the checkout…'] },
-        you(known('phrase.super.just-this'), { wrong: [known('phrase.super.where-is')] }),
-        npc('Do you need a bag?', 'Vous avez besoin d’un sac ?', '¿Necesita una bolsa?', 'צריך שקית?'),
-        you(known('phrase.super.need-bag'), { wrong: [known('phrase.super.do-you-have')] }),
-        npc('Insert your card here… all done. Have a nice day!', 'Insérez votre carte ici… c’est bon. Bonne journée !', 'Inserte su tarjeta aquí… listo. ¡Que tenga un buen día!', 'הכנס את הכרטיס כאן… הכל מוכן. שיהיה יום נעים!'),
-      ],
-    },
-    {
-      id: 'cold-dinner',
-      cold: true,
-      receipt: ['ארוחת ערב שלמה — שולחן, הזמנה, שתייה, חשבון — בקצב רגיל.', 'A whole dinner — table, order, drink, bill — at normal speed.'],
-      // One moment at natural speed, built only from what the waiter already said in Mission 14.
-      ambush: {
-        mode: 'speed',
-        npc: ['Perfect, follow me. Here are your menus. Are you ready to order?', 'Parfait, suivez-moi. Voici vos menus. Vous êtes prêts à commander ?', 'Perfecto, sígame. Aquí tienen las cartas. ¿Están listos para pedir?', 'מצוין, בואו אחריי. הנה התפריטים. מוכנים להזמין?'],
-        correct: 'reply.rest.ready-to-order',
-        wrong: 'reply.rest.to-drink',
-        receipt: ['שלושה משפטים ברצף, בקצב רגיל ובלי מילה חדשה — ותפסת ששואלים אם אתה מוכן להזמין.', 'Three sentences in a row, at normal speed, with not one new word — and you caught that you were being asked to order.'],
-      },
-      lines: [
-        npc('Good evening! Do you have a reservation?', 'Bonsoir ! Vous avez une réservation ?', '¡Buenas noches! ¿Tiene reserva?', 'ערב טוב! יש לכם הזמנה?', 'fast'),
-        you(known('phrase.rest.table-two'), {
-          say: ['No — a table for two, please.', 'Non — une table pour deux, s’il vous plaît.', 'No — una mesa para dos, por favor.', 'לא — שולחן לשניים, בבקשה.'],
-          wrong: [known('phrase.rest.the-bill')],
-        }),
-        npc('Are you ready to order?', 'Vous êtes prêts à commander ?', '¿Están listos para pedir?', 'מוכנים להזמין?'),
-        you(known('phrase.rest.ill-have-chicken'), {
-          say: ["I'll have the chicken, without onions, please.", 'Je vais prendre le poulet, sans oignons, s’il vous plaît.', 'Voy a tomar el pollo, sin cebolla, por favor.', 'אני אקח את העוף, בלי בצל, בבקשה.'],
-          wrong: [known('phrase.rest.water')],
-        }),
-        npc('Of course. Anything to drink?', 'Bien sûr. Quelque chose à boire ?', 'Claro. ¿Algo de beber?', 'כמובן. משהו לשתות?'),
-        you(known('phrase.rest.water'), { wrong: [known('phrase.rest.table-two')] }),
-        { ...npc('Is everything okay?', 'Tout va bien ?', '¿Va todo bien?', 'הכל בסדר?'), cue: ['מאוחר יותר…', 'Later…'] },
-        you(known('phrase.rest.the-bill'), {
-          say: ['Yes, that was delicious! The bill, please.', 'Oui, c’était délicieux ! L’addition, s’il vous plaît.', '¡Sí, estaba delicioso! La cuenta, por favor.', 'כן, היה טעים מאוד! החשבון, בבקשה.'],
-          wrong: [known('phrase.rest.ill-have-chicken')],
-        }),
-        npc('So glad you enjoyed it. Here you are — have a lovely evening!', 'Ravi que ça vous ait plu. Voici — passez une bonne soirée !', 'Me alegro de que les gustara. Aquí tienen — ¡que pasen buena noche!', 'שמח שנהניתם. בבקשה — ערב נעים!'),
-      ],
-    },
-  ],
-  hear: [known('reply.rest.ready-to-order'), known('reply.rest.to-drink')],
-  closing: ['יום רגיל שלם, בלי עזרה: קפה, תוכניות עם חבר, סופר וארוחת ערב — וגם כשזה היה מהיר, לא קפאת.', 'A whole ordinary day, alone: coffee, plans with a friend, the supermarket and dinner — and when it got fast, you did not freeze.'],
-};
+/** Everyday Day (Mission 18) is a sampled adaptive checkpoint of its own: see `everydayDay.ts`. */
+export { EVERYDAY_DAY } from './everydayDay.js';
 
 /**
  * City & Conversation — the checkpoint of Missions 19–23: one day in a city, cold. The station, a

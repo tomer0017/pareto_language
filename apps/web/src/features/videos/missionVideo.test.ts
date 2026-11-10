@@ -44,8 +44,11 @@ describe('the convention: language + displayed mission number', () => {
     expect(missionVideo('es', dayOf('complete-day-abroad'), ALL, BASE)!.src).toBe('/pareto_language/videos/es/es_30.mp4');
     // Every mission: the file number is its position in the journey, whatever its key.
     BOOTCAMP_PLAN.forEach((m, i) => {
+      // A mission that never has a video (Mission 18: the one-take day is the event) is never looked up.
+      if (m.video === false) { for (const lang of VIDEO_LANGS) expect(missionVideo(lang, m.day, ALL, BASE), `${lang} ${m.id}`).toBeUndefined(); return; }
       for (const lang of VIDEO_LANGS) expect(missionVideo(lang, m.day, ALL, BASE)!.src, `${lang} ${m.id}`).toBe(`/pareto_language/videos/${lang}/${lang}_${i + 1}.mp4`);
     });
+    expect(BOOTCAMP_PLAN.filter((m) => m.video === false).map((m) => m.id)).toEqual(['food-day-checkpoint']);
     // A key that is not in the journey has no video.
     expect(missionVideo('en', 999, ALL, BASE)).toBeUndefined();
   });

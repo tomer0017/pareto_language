@@ -31,6 +31,9 @@ export interface MissionPlan {
   why: string;
   preparesNext: string;
   checkpoint?: boolean;
+  /** `false`: this mission never has a video — its live run IS the event (Mission 18's one-take day).
+   *  The resolver then answers "none" without looking for a file. Absent = the standard convention. */
+  video?: false;
 }
 
 export const PHASES: { n: number; title: LocalizedText; icon: string }[] = [
@@ -183,7 +186,7 @@ export const BOOTCAMP_PLAN: MissionPlan[] = [
     minutes: 18, feeling: T('היום-יום פשוט זול ופשוט.', 'Daily life just got cheap and easy.'),
     why: 'Independence multiplier; heavy recognition (signs, labels) = cheap wins.',
     preparesNext: 'Everyday independence for the Everyday Day checkpoint.' },
-  { id: 'food-day-checkpoint', day: 17, phase: 3, checkpoint: true, title: T('נקודת ביקורת: יום רגיל', 'CHECKPOINT: Everyday Day'),
+  { id: 'food-day-checkpoint', day: 17, phase: 3, checkpoint: true, video: false, title: T('נקודת ביקורת: יום רגיל', 'CHECKPOINT: Everyday Day'),
     objective: T('קפה בבוקר, תוכניות עם חבר, קנייה קטנה, ארוחת ערב — קר.', 'Morning coffee, plans with a friend, a small purchase, dinner — cold.'),
     confidenceGain: T('יום רגיל שלם בלי רשת ביטחון.', 'A whole ordinary day without the net.'),
     situations: ['restaurant', 'paying', 'social'], targets: { concepts: 0, phrases: 0, dialogues: 4 },
