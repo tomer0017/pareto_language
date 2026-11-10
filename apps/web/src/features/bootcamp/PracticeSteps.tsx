@@ -203,6 +203,10 @@ export function VisualMatchStep({ step, onDone }: { step: StepOf<'visualMatch'>;
         <GameHead label={step.challenge ? `⚡ ${t('speedHeadsUp')}` : step.label ? L(step.label) : t('visualMatchTitle')} i={i} n={step.rounds.length}>
           <AudioBubble onPlay={() => void speakL(round.audio.en, step.challenge ? 0.85 : undefined)} />
         </GameHead>
+        {/* What the round is about (never an answer — the tiles are the answers). */}
+        {round.picture && <div className="pmatch-picture" aria-hidden>
+          {round.picture.image ? <img className="situation-image" src={publicAsset(round.picture.image)} alt="" draggable={false} decoding="async" /> : <span className="pmatch-picture-emoji">{round.picture.emoji}</span>}
+        </div>}
         <div className={`pgrid${grid ? ` ${grid}` : ''}${step.ordered ? ' is-ordered' : ''}${step.quiet ? ' is-quiet' : ''}`} dir={step.ordered ? 'ltr' : undefined}>
           {shown.map((tile) => (
             <button

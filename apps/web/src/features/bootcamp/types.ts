@@ -171,6 +171,9 @@ export interface VisualMatchRound {
   show?: string[];
   /** The line the answer IS (when `audio` is the question): shown with its meaning, and said, after a pick. */
   reinforce?: SpokenLine;
+  /** What the round is ABOUT (one hobby, one object), drawn above the tiles — never an answer: the
+   *  tiles are the answers. An approved picture, or its placeholder emoji until the artwork exists. */
+  picture?: { emoji?: string; image?: string };
 }
 
 /** Swap It — one sentence frame, several slot values: the sentence is an engine, not a fixed line. */

@@ -1827,5 +1827,8 @@ div.jstep { box-shadow: none; border-color: var(--line); }
 .list-row:has(> .prime-img[src*="/images/mission15/"]) { flex-wrap: wrap; }
 .prime-img.is-scene[src*="/images/mission15/"] { flex-basis: 100%; width: 100%; height: auto; }
 .situation-image { display: block; width: 100%; max-width: 480px; aspect-ratio: 16 / 9; object-fit: contain; border-radius: 16px; margin: 0 auto; }
+/* A Visual Match round's subject (one hobby): the same 16:9 frame for every round, picture or placeholder. */
+.pmatch-picture { width: 100%; max-width: 480px; margin: 0 auto; }
+.pmatch-picture-emoji { display: flex; align-items: center; justify-content: center; width: 100%; aspect-ratio: 16 / 9; max-height: 200px; border-radius: 16px; background: var(--card); box-shadow: var(--shadow-card); font-size: 4rem; line-height: 1; }
 /* Three translated answer buttons can be taller than the shared single-CTA clearance. */
 .mission-step-body:has(.situation-image[src*="/images/mission15/"]) { padding-bottom: calc(env(safe-area-inset-bottom) + 280px); }

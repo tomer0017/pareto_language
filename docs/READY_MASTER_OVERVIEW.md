@@ -653,3 +653,30 @@ take the boat tour." right before the chat that uses it — no grammar. Missions
 unchanged; both locked dialogues unchanged. The same rule surfaced one recorded gap: French "celui(-là)" in
 Mission 19's fast correction is met only in Mission 19's own optional branch (flagged in its test; the answer there
 is "Can you repeat?").
+
+**Mission 16 — Hobbies & Free Time (registry key 33), 2026-11-10.** SHORT, VISUAL, TRANSFER-DRIVEN: a reusable
+preference system (ask what someone does for fun → love / like / don't like → usually + when → want to try → ask
+back), not a hobby word list and no grammar (no like + -ing, want + infinitive or frequency adverbs). 22
+interactions (10 teaching · 5 no help · 7 final) + the conversation, run ONCE (supported, translations on); no
+Flex, no builder, no review deck. The locked dialogue is unchanged word for word (transcript fingerprint
+identical); the tree changed on purpose: the "what-mean" recovery branch is gone and every turn is a real decision
+(a miss is re-asked slowly). Journey (`practiceHobbies.ts`, shared by EN / ES / FR; the spec is still
+`core/hobbies.ts`): briefing (the learner's own preferences, the brief's Hebrew) → whole-line cards for each
+function → **SORT YOUR HOBBIES**, the one game: five moments, one per hobby, each identical (the hobby's picture
+above four category tiles LOVE / LIKE / DON'T LIKE / WANT TO TRY; the learner HEARS their own line and places the
+hobby) → a Morning / Afternoon / Evening time choice for "I usually draw in the evening" → one "too" reply → the
+diving school (comprehension card) → **"Do you like diving?" with NO card** — built from the friend's "Do you
+like ___?" (asked three times) and "diving" (coverage: `M16_TRANSFER`) → the plan (one check: tomorrow) → the
+conversation → no help (love · when · don't like · want to try · ask back) → video (none recorded: safe skip) →
+final (ask · love · like · when · don't like · want to try · ask back) → 🎯 FREE TIME MATCH. **My Free Time** (a
+two-column board: yours ‖ your friend's, plus the plan route) starts empty and fills only as the mission
+reveals it: your hobbies when YOU place them, Drawing → Evening after the time choice, the friend's facts when
+the friend says them; serialisable state `freeTimeState` (hobbyPreferences love / like / dislike / wantToTry,
+drawingTime, friend, divingSchoolKnown, tomorrowPlan). Verified prior (`learnedBefore(lang, 16)`): Hi, Yes, No,
+Great, Nice, "I like", and "Do you like" in English. One generic addition: `VisualMatchRound.picture` (what a round
+is about, drawn above the tiles, never an answer). Learner sentence ids unchanged (the Everyday checkpoint's two
+reuses intact); the friend's lines are whole-line hear items (four ids kept with their whole line, four new);
+"Me neither!" alone is archived in `retired.ts`. Coverage: `mission16Coverage.ts`. Artwork: 7 slots (friends,
+five hobbies with equal treatment, the diving school) + 1 prop, emoji PLACEHOLDERS — VISUAL PRODUCTION REQUIRED
+(Astra pass): `MISSION16_ASSET_MANIFEST.md`. Tests: `mission16.test.ts` (65); Missions 01–15 and 17–30
+byte-for-byte unchanged (the old "16–30" pins now pin 17–30).

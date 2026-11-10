@@ -903,25 +903,23 @@ _Reply-training drill:_ “Hi there! Can I help you find anything?” · “Of c
 ### Core phrases (you say)
 - **What do you do for fun?** · מה אתה אוהב לעשות בזמן הפנוי?
 - **I love surfing!** · אני מאוד אוהב לגלוש!
+- **I want to try diving.** · אני רוצה לנסות צלילה. — _I want to try ___ — לכל דבר חדש בטיול._
 - **I like drawing.** · אני אוהב לצייר. — _I like ___ — מחליפים את התחביב, המשפט נשאר._
+- **Do you like diving?** · אתה אוהב לצלול?
 - **I usually draw in the evening.** · בדרך כלל אני מצייר בערב.
 - **I like to listen to music.** · אני אוהב לשמוע מוזיקה.
 - **I don't like running.** · אני לא אוהב לרוץ.
-- **I want to try diving.** · אני רוצה לנסות צלילה. — _I want to try ___ — לכל דבר חדש בטיול._
-- **Do you like diving?** · אתה אוהב לצלול?
 
 ### Expected replies (you hear)
-- **Do you like surfing?** · אתה אוהב לגלוש?
-- **What else do you like?** · מה עוד אתה אוהב?
-- **Do you like music?** · אתה אוהב מוזיקה?
-- **Me neither!** · גם אני לא!
-- **Is there something you want to try?** · יש משהו שאתה רוצה לנסות?
-- **Let's go together.** · בוא נלך יחד.
-
-_Reply-training drill:_ “What else do you like?” · “Do you like music?” · “Me neither!” · “Let's go together.”
-
-### Recovery tools reused
-`What does that mean?`
+- **Hi! Are you free today?** · היי! אתה פנוי היום?
+- **I surf a lot. Do you like surfing?** · אני גולש הרבה. אתה אוהב לגלוש?
+- **Great! And what else do you like?** · מעולה! ומה עוד אתה אוהב?
+- **Nice! When do you draw?** · יפה! מתי אתה מצייר?
+- **In the evening I like to listen to music. Do you like music?** · בערב אני אוהב לשמוע מוזיקה. אתה אוהב מוזיקה?
+- **And sport? Do you like running?** · וספורט? אתה אוהב לרוץ?
+- **Me neither! Is there something you want to try here?** · גם אני לא! יש משהו שאתה רוצה לנסות כאן?
+- **Good idea! There's a diving school near the beach.** · רעיון טוב! יש בית ספר לצלילה ליד החוף.
+- **I love it! Let's go together tomorrow.** · מאוד! בוא נלך יחד מחר.
 
 ### Dialogue: `free-time-chat` — happy path
 - **🧑 Them:** “Hi! Are you free today?” · היי! אתה פנוי היום?
@@ -941,6 +939,16 @@ _Reply-training drill:_ “What else do you like?” · “Do you like music?”
 - **🧑 Them:** “Good idea! There's a diving school near the beach.” · רעיון טוב! יש בית ספר לצלילה ליד החוף.
 - **🫵 You:** “Do you like diving?” · אתה אוהב לצלול?
 - **🧑 Them:** “I love it! Let's go together tomorrow.” · מאוד! בוא נלך יחד מחר.
+
+#### Wrong / recovery branches
+- ⚠︎ less useful: 🫵 “I love surfing!” → 🧑 “Hi! Are you free today?” · היי! אתה פנוי היום?
+- ⚠︎ less useful: 🫵 “I want to try diving.” → 🧑 “I surf a lot. Do you like surfing?” · אני גולש הרבה. אתה אוהב לגלוש?
+- ⚠︎ less useful: 🫵 “Do you like diving?” → 🧑 “Great! And what else do you like?” · מעולה! ומה עוד אתה אוהב?
+- ⚠︎ less useful: 🫵 “I like drawing.” → 🧑 “Nice! When do you draw?” · יפה! מתי אתה מצייר?
+- ⚠︎ less useful: 🫵 “I don't like running.” → 🧑 “In the evening I like to listen to music. Do you like music?” · בערב אני אוהב לשמוע מוזיקה. אתה אוהב מוזיקה?
+- ⚠︎ less useful: 🫵 “I love surfing!” → 🧑 “And sport? Do you like running?” · וספורט? אתה אוהב לרוץ?
+- ⚠︎ less useful: 🫵 “I usually draw in the evening.” → 🧑 “Me neither! Is there something you want to try here?” · גם אני לא! יש משהו שאתה רוצה לנסות כאן?
+- ⚠︎ less useful: 🫵 “What do you do for fun?” → 🧑 “Good idea! There's a diving school near the beach.” · רעיון טוב! יש בית ספר לצלילה ליד החוף.
 
 ### Review status
 - 🤖 AI-drafted (English + Hebrew) — **pending human / native-Hebrew review**

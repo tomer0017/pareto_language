@@ -63,7 +63,7 @@ Not a mission. Eight phrases shared by all missions; a mission bundles the ones 
 - `phrase.recovery.slowly` — EN "Please speak slowly." · FR "Parlez lentement, s’il vous plaît." · ES "Más despacio, por favor." · HE "דבר לאט, בבקשה." — help tool — bundled in missions: 01, 02, 03, 04, 06, 07, 09, 14, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - `phrase.recovery.show-me` — EN "Can you show me?" · FR "Vous pouvez me montrer ?" · ES "¿Me lo puede mostrar?" · HE "אתה יכול להראות לי?" — help tool — bundled in missions: 04, 07, 17
 - `phrase.recovery.one-moment` — EN "One moment, please." · FR "Un instant, s’il vous plaît." · ES "Un momento, por favor." · HE "רגע אחד, בבקשה." — help tool — bundled in missions: 02, 03, 06, 08, 14
-- `phrase.recovery.what-mean` — EN "What does that mean?" · FR "Qu’est-ce que ça veut dire ?" · ES "¿Qué significa eso?" · HE "מה זה אומר?" — help tool — bundled in missions: 16, 25
+- `phrase.recovery.what-mean` — EN "What does that mean?" · FR "Qu’est-ce que ça veut dire ?" · ES "¿Qué significa eso?" · HE "מה זה אומר?" — help tool — bundled in missions: 25
 - `phrase.recovery.thank-you` — EN "Thank you!" · FR "Merci !" · ES "¡Gracias!" · HE "תודה!" — courtesy — bundled in missions: 03, 05, 06, 07, 10, 14, 15, 17, 18, 19, 25, 26, 30
 - `phrase.recovery.sorry` — EN "Sorry!" · FR "(not used by any Core mission)" · ES "(not used by any Core mission)" · HE "סליחה!" — courtesy — bundled in missions: none
 
@@ -15897,7 +15897,7 @@ Every learner sentence of this mission is a line in a scene.
 - Phase: 3 — Everyday Life / חיי יום-יום 🏡
 - Source runtime file(s): `apps/web/src/features/bootcamp/core/hobbies.ts` — one multilingual spec, built per language by `apps/web/src/features/bootcamp/author.ts`
 - Video: found by convention, never written into mission content — EN `videos/en/en_16.mp4` · FR `videos/fr/fr_16.mp4` · ES `videos/es/es_16.mp4`. Played only where that file exists (inventory: `docs/CORE30_FINAL_VIDEO_ACTION_MAP.md`).
-- Video steps inside the Practice flow: no
+- Video steps inside the Practice flow: yes (see flow)
 
 ## Learning goal / intro screen
 
@@ -15919,36 +15919,133 @@ Intro screen (first Practice step; identical in the English, French and Spanish 
 
 - Icon: 🏄
 - Title: "Mission 16: Hobbies & Free Time" / "משימה 16: תחביבים וזמן פנוי"
-- Text 1: "Like, don’t like, usually, want to try — four frames that carry a whole conversation." / "אוהב, לא אוהב, בדרך כלל, רוצה לנסות — ארבע תבניות שמחזיקות שיחה שלמה."
-- Text 2: "The hobbies here are only examples. Swap in your own." / "התחביבים כאן הם רק דוגמה. תחליף אותם בשלך."
+- Text 1: "You love surfing, like drawing and listening to music, don’t like running, and want to try diving." / "אתה אוהב מאוד לגלוש, אוהב לצייר ולשמוע מוזיקה, לא אוהב לרוץ ורוצה לנסות צלילה."
+- Text 2: "Have a short chat about free time." / "תנהל שיחה קצרה על זמן פנוי."
 - Button: "Talk about me" / "לדבר על עצמי"
 
 ## Current Practice flow
 
 1. `talk` — intro screen — "Mission 16: Hobbies & Free Time"
-2. `tool` — key sentence (listen → reveal → say aloud) — `phrase.hobby.i-like-drawing` “I like drawing.” · label "Like" / "אוהב" (1/6)
-3. `tool` — key sentence (listen → reveal → say aloud) — `phrase.hobby.i-love-surfing` “I love surfing!” · label "Love" / "מאוד אוהב" (2/6)
-4. `tool` — key sentence (listen → reveal → say aloud) — `phrase.hobby.dont-like-running` “I don't like running.” · label "Don't like" / "לא אוהב" (3/6)
-5. `tool` — key sentence (listen → reveal → say aloud) — `phrase.hobby.i-usually` “I usually draw in the evening.” · label "Usually" / "בדרך כלל" (4/6)
-6. `tool` — key sentence (listen → reveal → say aloud) — `phrase.hobby.want-to-try` “I want to try diving.” · label "Want to try" / "רוצה לנסות" (5/6)
-7. `tool` — key sentence (listen → reveal → say aloud) — `phrase.hobby.what-for-fun` “What do you do for fun?” · label "Ask back" / "לשאול בחזרה" (6/6)
-8. `replies` — expected replies (listening drill) — after `phrase.hobby.i-like-drawing`: 4 replies
-9. `receipt` — receipt (proof card) — "You recognize it when someone asks what you like — and what else." / "אתה מזהה כששואלים מה אתה אוהב — ומה עוד."
-10. `swap` — swap it (one frame, several endings) — 3 round(s)
-11. `sentenceBuilder` — sentence builder (put the chunks in order) — 1 round(s)
-12. `quickReply` — quick reply (hear → pick your response) — 6 round(s)
-13. `dialogue` — dialogue (choose your line) — scene `free-time-chat`
-14. `receipt` — receipt (proof card) — "You said what you like, what you don’t, and what you want to try — and asked back." / "סיפרת מה אתה אוהב, מה לא, ומה אתה רוצה לנסות — ושאלת בחזרה."
-15. `swipe` — sentence review — 12 sentences
-16. `quickReply` — quick reply (hear → pick your response) — 5 round(s) · speed challenge
-17. `receipt` — receipt (proof card) — "A whole chat about what you like, at normal pace — without hunting for words." / "שיחה שלמה על מה שאתה אוהב, בקצב רגיל — בלי לחפש מילים."
-18. `summary` — victory screen
+2. `prime` — before-we-speak (word intro) — 2 words → builds ``
+3. `prime` — before-we-speak (word intro) — 2 words → builds ``
+4. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+5. `visualMatch` — visual match (hear → tap the tile) — 1 round(s)
+6. `prime` — before-we-speak (word intro) — 2 words → builds ``
+7. `visualMatch` — visual match (hear → tap the tile) — 1 round(s)
+8. `prime` — before-we-speak (word intro) — 2 words → builds ``
+9. `visualMatch` — visual match (hear → tap the tile) — 1 round(s)
+10. `prime` — before-we-speak (word intro) — 2 words → builds ``
+11. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+12. `visualMatch` — visual match (hear → tap the tile) — 1 round(s)
+13. `prime` — before-we-speak (word intro) — 2 words → builds ``
+14. `visualMatch` — visual match (hear → tap the tile) — 1 round(s)
+15. `prime` — before-we-speak (word intro) — 2 words → builds ``
+16. `visualMatch` — visual match (hear → tap the tile) — 1 round(s)
+17. `prime` — before-we-speak (word intro) — 1 words → builds ``
+18. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+19. `prime` — before-we-speak (word intro) — 1 words → builds ``
+20. `visualMatch` — visual match (hear → tap the tile) — 1 round(s)
+21. `receipt` — receipt (proof card) — "🧭 Diving school · near the beach → Tomorrow · together ¦ 🎯 My free time: 😍 Love: Surfing / 🙂 Like: Drawing · Music / 🙅 Don’t like: Running / ✨ Want to try: Diving / 🕒 Drawing → Evening ‖ 👋 My friend: Surfing: a lot / Music: in the evening / Running: doesn’t like it either / Diving: loves it ¦ Your free time — and a plan for tomorrow." / "🧭 בית ספר לצלילה · ליד החוף → מחר · יחד ¦ 🎯 הזמן הפנוי שלי: 😍 אוהב מאוד: גלישה / 🙂 אוהב: ציור · מוזיקה / 🙅 לא אוהב: ריצה / ✨ רוצה לנסות: צלילה / 🕒 ציור → ערב ‖ 👋 החבר: גלישה: הרבה / מוזיקה: בערב / ריצה: גם הוא לא אוהב / צלילה: אוהב מאוד ¦ הזמן הפנוי שלך — ותוכנית למחר."
+22. `dialogue` — dialogue (choose your line) — scene `free-time-chat`
+23. `receipt` — receipt (proof card) — "The whole chat — what you love, like and don’t, when, what you want to try — and you asked back." / "כל השיחה — מה אתה אוהב, מה לא, מתי, מה אתה רוצה לנסות — ושאלת בחזרה."
+24. `quickReply` — quick reply (hear → pick your response) — 5 round(s) · speed challenge
+25. `receipt` — receipt (proof card) — "No help — love, when, don’t like, want to try, and you asked back." / "בלי עזרה — אוהב, מתי, לא אוהב, רוצה לנסות, ושאלת בחזרה."
+26. `video` — video — mode again
+27. `quickReply` — quick reply (hear → pick your response) — 7 round(s)
+28. `receipt` — receipt (proof card) — "🎯 FREE TIME MATCH ¦ 🧭 Diving school · near the beach → Tomorrow · together ¦ 🎯 My free time: 😍 Love: Surfing / 🙂 Like: Drawing · Music / 🙅 Don’t like: Running / ✨ Want to try: Diving / 🕒 Drawing → Evening ‖ 👋 My friend: Surfing: a lot / Music: in the evening / Running: doesn’t like it either / Diving: loves it" / "🎯 התאמת זמן פנוי ¦ 🧭 בית ספר לצלילה · ליד החוף → מחר · יחד ¦ 🎯 הזמן הפנוי שלי: 😍 אוהב מאוד: גלישה / 🙂 אוהב: ציור · מוזיקה / 🙅 לא אוהב: ריצה / ✨ רוצה לנסות: צלילה / 🕒 ציור → ערב ‖ 👋 החבר: גלישה: הרבה / מוזיקה: בערב / ריצה: גם הוא לא אוהב / צלילה: אוהב מאוד"
+29. `summary` — victory screen
 
 Step sequence identical in EN / FR / ES: yes.
 
 ## Before we speak / word intro
 
-No vocabulary pre-step.
+Step 2. Label: "Free time" / "זמן פנוי". Intro: "🎯 My free time: 😍 Love: ? / 🙂 Like: ? / 🙅 Don’t like: ? / ✨ Want to try: ? / 🕒 When: ? ‖ 👋 My friend: ? ¦ Your friend is free today — and you ask what they do for fun. Tap to hear." / "🎯 הזמן הפנוי שלי: 😍 אוהב מאוד: ? / 🙂 אוהב: ? / 🙅 לא אוהב: ? / ✨ רוצה לנסות: ? / 🕒 מתי: ? ‖ 👋 החבר: ? ¦ החבר פנוי היום — ואתה שואל מה הוא אוהב לעשות. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `hobby.line.free` — EN "Hi! Are you free today?" · FR "Salut ! Tu es libre aujourd’hui ?" · ES "¡Hola! ¿Estás libre hoy?" — meaning "היי! אתה פנוי היום?" / "Hi! Are you free today?" — icon 🙂 — new
+2. `hobby.line.for-fun` — EN "Yes! What do you do for fun?" · FR "Oui ! Qu’est-ce que tu aimes faire ?" · ES "¡Sí! ¿Qué te gusta hacer?" — meaning "כן! מה אתה אוהב לעשות בזמן הפנוי? (שואלים מה מישהו עושה בשביל הכיף)" / "Yes! What do you do for fun? (ask what someone likes doing in their free time)" — icon 🙂 — new
+
+No build-sentence card.
+
+Step 3. Label: "Love" / "אוהב מאוד". Intro: "🎯 My free time: 😍 Love: ? / 🙂 Like: ? / 🙅 Don’t like: ? / ✨ Want to try: ? / 🕒 When: ? ‖ 👋 My friend: ? ¦ Your friend surfs — and you love surfing. Tap to hear." / "🎯 הזמן הפנוי שלי: 😍 אוהב מאוד: ? / 🙂 אוהב: ? / 🙅 לא אוהב: ? / ✨ רוצה לנסות: ? / 🕒 מתי: ? ‖ 👋 החבר: ? ¦ החבר גולש — ואתה מת על גלישה. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `hobby.line.surf` — EN "I surf a lot. Do you like surfing?" · FR "Je fais beaucoup de surf. Tu aimes le surf ?" · ES "Hago mucho surf. ¿Te gusta el surf?" — meaning "אני גולש הרבה. אתה אוהב לגלוש?" / "I surf a lot. Do you like surfing?" — icon 🏄 — new
+2. `hobby.line.love` — EN "I love surfing!" · FR "J’adore le surf !" · ES "¡Me encanta el surf!" — meaning "אני מאוד אוהב לגלוש! (אוהב מאוד — ה"כן" הכי חזק)" / "I love surfing! (love — the strongest “yes”)" — icon 🏄 — new
+
+No build-sentence card.
+
+Step 6. Label: "Like" / "אוהב". Intro: "🎯 My free time: 😍 Love: Surfing / 🙂 Like: ? / 🙅 Don’t like: ? / ✨ Want to try: ? / 🕒 When: ? ‖ 👋 My friend: Surfing: a lot ¦ What else? The same system — a normal “yes”. Tap to hear." / "🎯 הזמן הפנוי שלי: 😍 אוהב מאוד: גלישה / 🙂 אוהב: ? / 🙅 לא אוהב: ? / ✨ רוצה לנסות: ? / 🕒 מתי: ? ‖ 👋 החבר: גלישה: הרבה ¦ מה עוד? אותה מערכת — "כן" רגיל. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `hobby.line.what-else` — EN "Great! And what else do you like?" · FR "Super ! Et tu aimes quoi d’autre ?" · ES "¡Genial! ¿Y qué más te gusta?" — meaning "מעולה! ומה עוד אתה אוהב?" / "Great! And what else do you like?" — icon 🙂 — new
+2. `hobby.line.like` — EN "I like drawing." · FR "J’aime dessiner." · ES "Me gusta dibujar." — meaning "אני אוהב לצייר. (אוהב — "כן" רגיל)" / "I like drawing. (like — a normal “yes”)" — icon 🎨 — new
+
+No build-sentence card.
+
+Step 8. Label: "When" / "מתי". Intro: "🎯 My free time: 😍 Love: Surfing / 🙂 Like: Drawing / 🙅 Don’t like: ? / ✨ Want to try: ? / 🕒 When: ? ‖ 👋 My friend: Surfing: a lot ¦ When do you draw? Tap to hear." / "🎯 הזמן הפנוי שלי: 😍 אוהב מאוד: גלישה / 🙂 אוהב: ציור / 🙅 לא אוהב: ? / ✨ רוצה לנסות: ? / 🕒 מתי: ? ‖ 👋 החבר: גלישה: הרבה ¦ מתי אתה מצייר? הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `hobby.line.when` — EN "Nice! When do you draw?" · FR "Sympa ! Tu dessines quand ?" · ES "¡Qué bien! ¿Cuándo dibujas?" — meaning "יפה! מתי אתה מצייר?" / "Nice! When do you draw?" — icon 🎨 — new
+2. `hobby.line.usually` — EN "I usually draw in the evening." · FR "D’habitude, je dessine le soir." · ES "Normalmente dibujo por la noche." — meaning "בדרך כלל אני מצייר בערב. (בדרך כלל = מה שאני עושה בדרך כלל · בערב)" / "I usually draw in the evening. (usually = what I normally do · in the evening)" — icon 🎨 — new
+
+No build-sentence card.
+
+Step 10. Label: "Me too" / "גם אני". Intro: "🎯 My free time: 😍 Love: Surfing / 🙂 Like: Drawing / 🙅 Don’t like: ? / ✨ Want to try: ? / 🕒 Drawing → Evening ‖ 👋 My friend: Surfing: a lot ¦ Your friend likes music — and so do you. Tap to hear." / "🎯 הזמן הפנוי שלי: 😍 אוהב מאוד: גלישה / 🙂 אוהב: ציור / 🙅 לא אוהב: ? / ✨ רוצה לנסות: ? / 🕒 ציור → ערב ‖ 👋 החבר: גלישה: הרבה ¦ החבר אוהב מוזיקה — וגם אתה. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `hobby.line.music` — EN "In the evening I like to listen to music. Do you like music?" · FR "Le soir, j’aime écouter de la musique. Tu aimes la musique ?" · ES "Por la noche me gusta escuchar música. ¿Te gusta la música?" — meaning "בערב אני אוהב לשמוע מוזיקה. אתה אוהב מוזיקה?" / "In the evening I like to listen to music. Do you like music?" — icon 🎵 — new
+2. `hobby.line.too` — EN "Yes, I like to listen to music too." · FR "Oui, moi aussi j’aime écouter de la musique." · ES "Sí, a mí también me gusta escuchar música." — meaning "כן, גם אני אוהב לשמוע מוזיקה. (גם אני — שנינו אוהבים)" / "Yes, I like to listen to music too. (too — we both like it)" — icon 🎵 — new
+
+No build-sentence card.
+
+Step 13. Label: "Don’t like" / "לא אוהב". Intro: "🎯 My free time: 😍 Love: Surfing / 🙂 Like: Drawing · Music / 🙅 Don’t like: ? / ✨ Want to try: ? / 🕒 Drawing → Evening ‖ 👋 My friend: Surfing: a lot / Music: in the evening ¦ Sport? Running — not for you. Tap to hear." / "🎯 הזמן הפנוי שלי: 😍 אוהב מאוד: גלישה / 🙂 אוהב: ציור · מוזיקה / 🙅 לא אוהב: ? / ✨ רוצה לנסות: ? / 🕒 ציור → ערב ‖ 👋 החבר: גלישה: הרבה / מוזיקה: בערב ¦ ספורט? ריצה — זה לא בשבילך. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `hobby.line.sport` — EN "And sport? Do you like running?" · FR "Et le sport ? Tu aimes courir ?" · ES "¿Y el deporte? ¿Te gusta correr?" — meaning "וספורט? אתה אוהב לרוץ?" / "And sport? Do you like running?" — icon 🏃 — new
+2. `hobby.line.dont-like` — EN "No, I don't like running." · FR "Non, je n’aime pas courir." · ES "No, no me gusta correr." — meaning "לא, אני לא אוהב לרוץ. (לא אוהב — זה לא בשבילי)" / "No, I don't like running. (don't like — not for me)" — icon 🏃 — new
+
+No build-sentence card.
+
+Step 15. Label: "Want to try" / "רוצה לנסות". Intro: "🎯 My free time: 😍 Love: Surfing / 🙂 Like: Drawing · Music / 🙅 Don’t like: Running / ✨ Want to try: ? / 🕒 Drawing → Evening ‖ 👋 My friend: Surfing: a lot / Music: in the evening ¦ Your friend doesn’t like running either — and asks what you want to try. Tap to hear." / "🎯 הזמן הפנוי שלי: 😍 אוהב מאוד: גלישה / 🙂 אוהב: ציור · מוזיקה / 🙅 לא אוהב: ריצה / ✨ רוצה לנסות: ? / 🕒 ציור → ערב ‖ 👋 החבר: גלישה: הרבה / מוזיקה: בערב ¦ גם החבר לא אוהב לרוץ — ושואל מה אתה רוצה לנסות. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `hobby.line.try-q` — EN "Me neither! Is there something you want to try here?" · FR "Moi non plus ! Il y a quelque chose que tu veux essayer ici ?" · ES "¡Yo tampoco! ¿Hay algo que quieras probar aquí?" — meaning "גם אני לא! יש משהו שאתה רוצה לנסות כאן? (גם אני לא = גם הוא לא אוהב לרוץ)" / "Me neither! Is there something you want to try here? (me neither = your friend doesn’t like it either)" — icon 🙂 — new
+2. `hobby.line.want-to-try` — EN "I want to try diving." · FR "Je veux essayer la plongée." · ES "Quiero probar el buceo." — meaning "אני רוצה לנסות צלילה. (רוצה לנסות = משהו חדש שבא לי לעשות)" / "I want to try diving. (want to try = something new I’d like to do)" — icon 🤿 — new
+
+No build-sentence card.
+
+Step 17. Label: "The diving school" / "בית ספר לצלילה". Intro: "🎯 My free time: 😍 Love: Surfing / 🙂 Like: Drawing · Music / 🙅 Don’t like: Running / ✨ Want to try: Diving / 🕒 Drawing → Evening ‖ 👋 My friend: Surfing: a lot / Music: in the evening / Running: doesn’t like it either ¦ Your friend knows where to dive. Tap to hear." / "🎯 הזמן הפנוי שלי: 😍 אוהב מאוד: גלישה / 🙂 אוהב: ציור · מוזיקה / 🙅 לא אוהב: ריצה / ✨ רוצה לנסות: צלילה / 🕒 ציור → ערב ‖ 👋 החבר: גלישה: הרבה / מוזיקה: בערב / ריצה: גם הוא לא אוהב ¦ החבר יודע איפה אפשר לצלול. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `hobby.line.school` — EN "Good idea! There's a diving school near the beach." · FR "Bonne idée ! Il y a une école de plongée près de la plage." · ES "¡Buena idea! Hay una escuela de buceo cerca de la playa." — meaning "רעיון טוב! יש בית ספר לצלילה ליד החוף. (בית ספר לצלילה ← ליד החוף)" / "Good idea! There’s a diving school near the beach. (diving school → near the beach)" — icon 🏖️ — new
+
+No build-sentence card.
+
+Step 19. Label: "The plan" / "התוכנית". Intro: "🧭 Diving school · near the beach ¦ 🎯 My free time: 😍 Love: Surfing / 🙂 Like: Drawing · Music / 🙅 Don’t like: Running / ✨ Want to try: Diving / 🕒 Drawing → Evening ‖ 👋 My friend: Surfing: a lot / Music: in the evening / Running: doesn’t like it either ¦ Your friend answers — and suggests a plan. Tap to hear." / "🧭 בית ספר לצלילה · ליד החוף ¦ 🎯 הזמן הפנוי שלי: 😍 אוהב מאוד: גלישה / 🙂 אוהב: ציור · מוזיקה / 🙅 לא אוהב: ריצה / ✨ רוצה לנסות: צלילה / 🕒 ציור → ערב ‖ 👋 החבר: גלישה: הרבה / מוזיקה: בערב / ריצה: גם הוא לא אוהב ¦ החבר עונה — ומציע תוכנית. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `hobby.line.tomorrow` — EN "I love it! Let's go together tomorrow." · FR "J’adore ! On y va ensemble demain." · ES "¡Me encanta! Vamos juntos mañana." — meaning "מאוד! בוא נלך יחד מחר. (גם הוא אוהב צלילה · התוכנית: מחר, יחד)" / "I love it! Let’s go together tomorrow. (your friend loves diving · the plan: tomorrow, together)" — icon 🙂 — new
+
+No build-sentence card.
 
 ## Every sentence in this mission
 
@@ -15963,7 +16060,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 16
-- Exercised here as: key sentence (step 7); quick-reply response (step 12, round 4, wrong option); quick-reply response (step 12, round 6, accepted); sentence review (step 15); quick-reply response (step 16, round 1, wrong option); quick-reply response (step 16, round 2, wrong option); dialogue choice free-time-chat/c2 (accepted)
+- Exercised here as: quick-reply response (step 4, round 1, accepted); quick-reply response (step 24, round 3, wrong option); quick-reply response (step 24, round 5, wrong option); quick-reply response (step 27, round 1, accepted); quick-reply response (step 27, round 3, wrong option); quick-reply response (step 27, round 7, wrong option); dialogue choice free-time-chat/c2 (accepted); dialogue choice free-time-chat/c16 (WRONG option)
 
 ### Sentence: `phrase.hobby.i-love-surfing`
 
@@ -15974,51 +16071,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 16, 18
-- Exercised here as: key sentence (step 3); swap-it frame (step 10, round 2); quick-reply response (step 12, round 1, accepted); sentence review (step 15); quick-reply response (step 16, round 1, accepted); quick-reply response (step 16, round 3, wrong option); dialogue choice free-time-chat/c4 (accepted)
-
-### Sentence: `phrase.hobby.i-like-drawing`
-
-- EN: I like drawing.
-- HE: אני אוהב לצייר.
-- FR: J’aime dessiner.
-- ES: Me gusta dibujar.
-- Role: learner production
-- Tip / pattern note: "I like ___ — swap the hobby, the sentence stays." / "I like ___ — מחליפים את התחביב, המשפט נשאר."
-- Used in missions: 16
-- Exercised here as: key sentence (step 2); "you said" lead-in of the expected-replies drill (step 8); swap-it frame (step 10, round 3); quick-reply response (step 12, round 2, accepted); quick-reply response (step 12, round 3, wrong option); quick-reply response (step 12, round 6, wrong option); sentence review (step 15); quick-reply response (step 16, round 2, accepted); quick-reply response (step 16, round 5, wrong option); dialogue choice free-time-chat/c6 (accepted)
-
-### Sentence: `phrase.hobby.i-usually`
-
-- EN: I usually draw in the evening.
-- HE: בדרך כלל אני מצייר בערב.
-- FR: D’habitude, je dessine le soir.
-- ES: Normalmente dibujo por la noche.
-- Role: learner production
-- Tip / pattern note: none
-- Used in missions: 16, 18
-- Exercised here as: key sentence (step 5); sentence-builder target (step 11, round 1); quick-reply response (step 12, round 1, wrong option); quick-reply response (step 12, round 3, accepted); quick-reply response (step 12, round 4, wrong option); quick-reply response (step 12, round 5, wrong option); sentence review (step 15); quick-reply response (step 16, round 1, wrong option); quick-reply response (step 16, round 3, accepted); quick-reply response (step 16, round 5, wrong option); dialogue choice free-time-chat/c8 (accepted)
-
-### Sentence: `phrase.hobby.like-to-listen`
-
-- EN: I like to listen to music.
-- HE: אני אוהב לשמוע מוזיקה.
-- FR: J’aime écouter de la musique.
-- ES: Me gusta escuchar música.
-- Role: learner production
-- Tip / pattern note: none
-- Used in missions: 16
-- Exercised here as: quick-reply response (step 12, round 2, accepted); quick-reply response (step 12, round 5, wrong option); sentence review (step 15); quick-reply response (step 16, round 4, accepted); dialogue choice free-time-chat/c10 (accepted)
-
-### Sentence: `phrase.hobby.dont-like-running`
-
-- EN: I don't like running.
-- HE: אני לא אוהב לרוץ.
-- FR: Je n’aime pas courir.
-- ES: No me gusta correr.
-- Role: learner production
-- Tip / pattern note: none
-- Used in missions: 16
-- Exercised here as: key sentence (step 4); swap-it frame (step 10, round 1); quick-reply response (step 12, round 4, accepted); sentence review (step 15); quick-reply response (step 16, round 4, wrong option); dialogue choice free-time-chat/c12 (accepted)
+- Exercised here as: quick-reply response (step 4, round 1, wrong option); quick-reply response (step 18, round 1, wrong option); quick-reply response (step 24, round 1, accepted); quick-reply response (step 24, round 3, wrong option); quick-reply response (step 27, round 2, accepted); quick-reply response (step 27, round 5, wrong option); quick-reply response (step 27, round 6, wrong option); dialogue choice free-time-chat/c2 (WRONG option); dialogue choice free-time-chat/c4 (accepted); dialogue choice free-time-chat/c12 (WRONG option)
 
 ### Sentence: `phrase.hobby.want-to-try`
 
@@ -16029,7 +16082,18 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "I want to try ___ — for anything new on a trip." / "I want to try ___ — לכל דבר חדש בטיול."
 - Used in missions: 16
-- Exercised here as: key sentence (step 6); quick-reply response (step 12, round 1, wrong option); quick-reply response (step 12, round 3, wrong option); quick-reply response (step 12, round 5, accepted); quick-reply response (step 12, round 6, wrong option); sentence review (step 15); quick-reply response (step 16, round 3, wrong option); quick-reply response (step 16, round 4, wrong option); quick-reply response (step 16, round 5, accepted); dialogue choice free-time-chat/c14 (accepted); dialogue choice free-time-chat/c14b (accepted)
+- Exercised here as: quick-reply response (step 18, round 1, wrong option); quick-reply response (step 24, round 1, wrong option); quick-reply response (step 24, round 4, accepted); quick-reply response (step 24, round 5, wrong option); quick-reply response (step 27, round 2, wrong option); quick-reply response (step 27, round 4, wrong option); quick-reply response (step 27, round 6, accepted); quick-reply response (step 27, round 7, wrong option); dialogue choice free-time-chat/c4 (WRONG option); dialogue choice free-time-chat/c14 (accepted)
+
+### Sentence: `phrase.hobby.i-like-drawing`
+
+- EN: I like drawing.
+- HE: אני אוהב לצייר.
+- FR: J’aime dessiner.
+- ES: Me gusta dibujar.
+- Role: learner production
+- Tip / pattern note: "I like ___ — swap the hobby, the sentence stays." / "I like ___ — מחליפים את התחביב, המשפט נשאר."
+- Used in missions: 16
+- Exercised here as: quick-reply response (step 11, round 1, wrong option); quick-reply response (step 24, round 2, wrong option); quick-reply response (step 27, round 2, wrong option); quick-reply response (step 27, round 3, accepted); quick-reply response (step 27, round 4, wrong option); dialogue choice free-time-chat/c6 (accepted); dialogue choice free-time-chat/c8 (WRONG option)
 
 ### Sentence: `phrase.hobby.do-you-like`
 
@@ -16040,141 +16104,143 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 16
-- Exercised here as: quick-reply response (step 12, round 2, wrong option); sentence review (step 15); quick-reply response (step 16, round 2, wrong option); dialogue choice free-time-chat/c16 (accepted)
+- Exercised here as: quick-reply response (step 18, round 1, accepted); quick-reply response (step 24, round 2, wrong option); quick-reply response (step 24, round 5, accepted); quick-reply response (step 27, round 1, wrong option); quick-reply response (step 27, round 6, wrong option); quick-reply response (step 27, round 7, accepted); dialogue choice free-time-chat/c6 (WRONG option); dialogue choice free-time-chat/c16 (accepted)
+
+### Sentence: `phrase.hobby.i-usually`
+
+- EN: I usually draw in the evening.
+- HE: בדרך כלל אני מצייר בערב.
+- FR: D’habitude, je dessine le soir.
+- ES: Normalmente dibujo por la noche.
+- Role: learner production
+- Tip / pattern note: none
+- Used in missions: 16, 18
+- Exercised here as: quick-reply response (step 11, round 1, wrong option); quick-reply response (step 24, round 1, wrong option); quick-reply response (step 24, round 2, accepted); quick-reply response (step 27, round 1, wrong option); quick-reply response (step 27, round 4, accepted); dialogue choice free-time-chat/c8 (accepted); dialogue choice free-time-chat/c14 (WRONG option)
+
+### Sentence: `phrase.hobby.like-to-listen`
+
+- EN: I like to listen to music.
+- HE: אני אוהב לשמוע מוזיקה.
+- FR: J’aime écouter de la musique.
+- ES: Me gusta escuchar música.
+- Role: learner production
+- Tip / pattern note: none
+- Used in missions: 16
+- Exercised here as: quick-reply response (step 11, round 1, accepted); quick-reply response (step 24, round 4, wrong option); quick-reply response (step 27, round 5, wrong option); dialogue choice free-time-chat/c10 (accepted)
+
+### Sentence: `phrase.hobby.dont-like-running`
+
+- EN: I don't like running.
+- HE: אני לא אוהב לרוץ.
+- FR: Je n’aime pas courir.
+- ES: No me gusta correr.
+- Role: learner production
+- Tip / pattern note: none
+- Used in missions: 16
+- Exercised here as: quick-reply response (step 24, round 3, accepted); quick-reply response (step 24, round 4, wrong option); quick-reply response (step 27, round 3, wrong option); quick-reply response (step 27, round 5, accepted); dialogue choice free-time-chat/c10 (WRONG option); dialogue choice free-time-chat/c12 (accepted)
+
+### Sentence: `reply.hobby.free-today`
+
+- EN: Hi! Are you free today?
+- HE: היי! אתה פנוי היום?
+- FR: Salut ! Tu es libre aujourd’hui ?
+- ES: ¡Hola! ¿Estás libre hoy?
+- Role: receptive — an expected reply the learner hears
+- Tip / pattern note: none
+- Used in missions: 16
+- Exercised here as: quick-reply prompt (step 4, round 1); quick-reply prompt (step 27, round 1)
 
 ### Sentence: `reply.hobby.do-you-like-surfing`
 
-- EN: Do you like surfing?
-- HE: אתה אוהב לגלוש?
-- FR: Tu aimes le surf ?
-- ES: ¿Te gusta el surf?
+- EN: I surf a lot. Do you like surfing?
+- HE: אני גולש הרבה. אתה אוהב לגלוש?
+- FR: Je fais beaucoup de surf. Tu aimes le surf ?
+- ES: Hago mucho surf. ¿Te gusta el surf?
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 16
-- Exercised here as: quick-reply prompt (step 12, round 1)
+- Exercised here as: quick-reply prompt (step 24, round 1)
 
 ### Sentence: `reply.hobby.what-else`
 
-- EN: What else do you like?
-- HE: מה עוד אתה אוהב?
-- FR: Tu aimes quoi d’autre ?
-- ES: ¿Qué más te gusta?
+- EN: Great! And what else do you like?
+- HE: מעולה! ומה עוד אתה אוהב?
+- FR: Super ! Et tu aimes quoi d’autre ?
+- ES: ¡Genial! ¿Y qué más te gusta?
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 16
-- Exercised here as: expected-reply audio (step 8); quick-reply prompt (step 12, round 2); sentence review (step 15)
+- Exercised here as: quick-reply prompt (step 27, round 3)
+
+### Sentence: `reply.hobby.when-draw`
+
+- EN: Nice! When do you draw?
+- HE: יפה! מתי אתה מצייר?
+- FR: Sympa ! Tu dessines quand ?
+- ES: ¡Qué bien! ¿Cuándo dibujas?
+- Role: receptive — an expected reply the learner hears
+- Tip / pattern note: none
+- Used in missions: 16
+- Exercised here as: quick-reply prompt (step 24, round 2); quick-reply prompt (step 27, round 4)
 
 ### Sentence: `reply.hobby.do-you-like-music`
 
-- EN: Do you like music?
-- HE: אתה אוהב מוזיקה?
-- FR: Tu aimes la musique ?
-- ES: ¿Te gusta la música?
+- EN: In the evening I like to listen to music. Do you like music?
+- HE: בערב אני אוהב לשמוע מוזיקה. אתה אוהב מוזיקה?
+- FR: Le soir, j’aime écouter de la musique. Tu aimes la musique ?
+- ES: Por la noche me gusta escuchar música. ¿Te gusta la música?
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 16
-- Exercised here as: expected-reply audio (step 8)
+- Exercised here as: quick-reply prompt (step 11, round 1)
 
-### Sentence: `reply.hobby.me-neither`
+### Sentence: `reply.hobby.sport`
 
-- EN: Me neither!
-- HE: גם אני לא!
-- FR: Moi non plus !
-- ES: ¡Yo tampoco!
+- EN: And sport? Do you like running?
+- HE: וספורט? אתה אוהב לרוץ?
+- FR: Et le sport ? Tu aimes courir ?
+- ES: ¿Y el deporte? ¿Te gusta correr?
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 16
-- Exercised here as: expected-reply audio (step 8); sentence review (step 15)
+- Exercised here as: quick-reply prompt (step 24, round 3)
 
 ### Sentence: `reply.hobby.want-to-try-q`
 
-- EN: Is there something you want to try?
-- HE: יש משהו שאתה רוצה לנסות?
-- FR: Il y a quelque chose que tu veux essayer ?
-- ES: ¿Hay algo que quieras probar?
+- EN: Me neither! Is there something you want to try here?
+- HE: גם אני לא! יש משהו שאתה רוצה לנסות כאן?
+- FR: Moi non plus ! Il y a quelque chose que tu veux essayer ici ?
+- ES: ¡Yo tampoco! ¿Hay algo que quieras probar aquí?
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 16
-- Exercised here as: quick-reply prompt (step 12, round 5); sentence review (step 15)
+- Exercised here as: quick-reply prompt (step 24, round 4)
+
+### Sentence: `reply.hobby.diving-school`
+
+- EN: Good idea! There's a diving school near the beach.
+- HE: רעיון טוב! יש בית ספר לצלילה ליד החוף.
+- FR: Bonne idée ! Il y a une école de plongée près de la plage.
+- ES: ¡Buena idea! Hay una escuela de buceo cerca de la playa.
+- Role: receptive — an expected reply the learner hears
+- Tip / pattern note: none
+- Used in missions: 16
+- Exercised here as: quick-reply prompt (step 18, round 1); quick-reply prompt (step 24, round 5); quick-reply prompt (step 27, round 7)
 
 ### Sentence: `reply.hobby.go-together`
 
-- EN: Let's go together.
-- HE: בוא נלך יחד.
-- FR: On y va ensemble.
-- ES: Vamos juntos.
+- EN: I love it! Let's go together tomorrow.
+- HE: מאוד! בוא נלך יחד מחר.
+- FR: J’adore ! On y va ensemble demain.
+- ES: ¡Me encanta! Vamos juntos mañana.
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 16
-- Exercised here as: expected-reply audio (step 8)
-
-### Sentence: `phrase.recovery.what-mean`
-
-- EN: What does that mean?
-- HE: מה זה אומר?
-- FR: Qu’est-ce que ça veut dire ?
-- ES: ¿Qué significa eso?
-- Role: conversation-help tool (global Recovery Toolkit)
-- Tip / pattern note: none
-- Used in missions: 16, 25
-- Exercised here as: sentence review (step 15); dialogue choice free-time-chat/c14 (accepted)
+- Exercised here as: nothing (listed only)
 
 ## Expected replies / listening items
 
-Lead-in screen: "You said:" / "אמרת:" — EN "I like drawing." · FR "J’aime dessiner." · ES "Me gusta dibujar." — then "What might they answer? Learn the replies before they surprise you." / "מה הם עלולים לענות? נלמד את התשובות לפני שהן מפתיעות אותך." — button 👂 "I'm ready" / "אני מוכן".
-Linked learner sentence: `phrase.hobby.i-like-drawing`. Each reply below is played once automatically; the learner picks its MEANING from three buttons. Distractors are always the first two OTHER replies of this same drill, in drill order (runtime rule), so the three choices are shuffled per session.
-
-### M16-Q01 — expected-reply (step 8, reply 1 of 4)
-
-- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (1/4)
-- Audio played: EN "What else do you like?" · FR "Tu aimes quoi d’autre ?" · ES "¿Qué más te gusta?"
-- Meaning of the audio (HE): "מה עוד אתה אוהב?"
-- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
-- Choices:
-  1. HE "מה עוד אתה אוהב?" / EN "What else do you like?" — `reply.hobby.what-else` — ✅ accepted
-  2. HE "אתה אוהב מוזיקה?" / EN "Do you like music?" — `reply.hobby.do-you-like-music` — ❌ wrong
-  3. HE "גם אני לא!" / EN "Me neither!" — `reply.hobby.me-neither` — ❌ wrong
-- Tests: reply.hobby.what-else
-- Explanation shown after answering: generic: “What else do you like?” means “מה עוד אתה אוהב?”.
-
-### M16-Q02 — expected-reply (step 8, reply 2 of 4)
-
-- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (2/4)
-- Audio played: EN "Do you like music?" · FR "Tu aimes la musique ?" · ES "¿Te gusta la música?"
-- Meaning of the audio (HE): "אתה אוהב מוזיקה?"
-- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
-- Choices:
-  1. HE "אתה אוהב מוזיקה?" / EN "Do you like music?" — `reply.hobby.do-you-like-music` — ✅ accepted
-  2. HE "מה עוד אתה אוהב?" / EN "What else do you like?" — `reply.hobby.what-else` — ❌ wrong
-  3. HE "גם אני לא!" / EN "Me neither!" — `reply.hobby.me-neither` — ❌ wrong
-- Tests: reply.hobby.do-you-like-music
-- Explanation shown after answering: generic: “Do you like music?” means “אתה אוהב מוזיקה?”.
-
-### M16-Q03 — expected-reply (step 8, reply 3 of 4)
-
-- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (3/4)
-- Audio played: EN "Me neither!" · FR "Moi non plus !" · ES "¡Yo tampoco!"
-- Meaning of the audio (HE): "גם אני לא!"
-- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
-- Choices:
-  1. HE "גם אני לא!" / EN "Me neither!" — `reply.hobby.me-neither` — ✅ accepted
-  2. HE "מה עוד אתה אוהב?" / EN "What else do you like?" — `reply.hobby.what-else` — ❌ wrong
-  3. HE "אתה אוהב מוזיקה?" / EN "Do you like music?" — `reply.hobby.do-you-like-music` — ❌ wrong
-- Tests: reply.hobby.me-neither
-- Explanation shown after answering: generic: “Me neither!” means “גם אני לא!”.
-
-### M16-Q04 — expected-reply (step 8, reply 4 of 4)
-
-- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (4/4)
-- Audio played: EN "Let's go together." · FR "On y va ensemble." · ES "Vamos juntos."
-- Meaning of the audio (HE): "בוא נלך יחד."
-- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
-- Choices:
-  1. HE "בוא נלך יחד." / EN "Let's go together." — `reply.hobby.go-together` — ✅ accepted
-  2. HE "מה עוד אתה אוהב?" / EN "What else do you like?" — `reply.hobby.what-else` — ❌ wrong
-  3. HE "אתה אוהב מוזיקה?" / EN "Do you like music?" — `reply.hobby.do-you-like-music` — ❌ wrong
-- Tests: reply.hobby.go-together
-- Explanation shown after answering: generic: “Let's go together.” means “בוא נלך יחד.”.
+No expected-replies drill in this mission.
 
 ## Quizzes
 
@@ -16182,61 +16248,144 @@ No meaning quiz in this mission.
 
 ## Active practice — Quick Reply · Visual Match · Swap It · Mini Map
 
-### M16-Q05 — swap-it (step 10, round 1 of 3)
+### M16-Q01 — quick-reply (step 4, round 1 of 1)
 
-- Prompt displayed: "Like it, love it, or not for you?" / "אוהב, מאוד אוהב, או לא אוהב?" — cue 🙅 "Running — not for you" / "ריצה — זה לא בשבילך" — frame EN "I ___ running." · FR "___ courir." · ES "___ correr."
-- Audio played: EN "(nothing before the tap; the completed sentence is spoken after it)" · FR "(same)" · ES "(same)"
-- Meaning of the audio (HE): —
-- Buttons show: the SLOT VALUES in the target language (shown here as "value → completed sentence"); order shuffled; a "wrong" value still produces and speaks a real sentence, with its translation
+- Prompt displayed: "🎯 My free time: 😍 Love: ? / 🙂 Like: ? / 🙅 Don’t like: ? / ✨ Want to try: ? / 🕒 When: ? ‖ 👋 My friend: ? ¦ Your friend says hi. What do you ask?" / "🎯 הזמן הפנוי שלי: 😍 אוהב מאוד: ? / 🙂 אוהב: ? / 🙅 לא אוהב: ? / ✨ רוצה לנסות: ? / 🕒 מתי: ? ‖ 👋 החבר: ? ¦ החבר אומר היי. מה אתה שואל?"
+- Audio played: EN "Hi! Are you free today?" · FR "Salut ! Tu es libre aujourd’hui ?" · ES "¡Hola! ¿Estás libre hoy?"
+- Meaning of the audio (HE): "היי! אתה פנוי היום?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
-  1. EN "like → I like running." · FR "J’aime → J’aime courir." · ES "Me gusta → Me gusta correr." · (HE gloss "אני אוהב לרוץ.") — no sentence id — ❌ wrong
-  2. EN "love → I love running." · FR "J’adore → J’adore courir." · ES "Me encanta → Me encanta correr." · (HE gloss "אני מאוד אוהב לרוץ.") — no sentence id — ❌ wrong
-  3. EN "don't like → I don't like running." · FR "Je n’aime pas → Je n’aime pas courir." · ES "No me gusta → No me gusta correr." · (HE gloss "אני לא אוהב לרוץ.") — `phrase.hobby.dont-like-running` — ✅ accepted
-- Tests: phrase.hobby.dont-like-running
-- Explanation shown after answering: after the tap: the completed sentence, spoken, with its translation
+  1. EN "Yes! What do you do for fun?" · FR "Oui ! Qu’est-ce que tu aimes faire ?" · ES "¡Sí! ¿Qué te gusta hacer?" · (HE gloss "מה אתה אוהב לעשות בזמן הפנוי?") — `phrase.hobby.what-for-fun` — ✅ accepted
+  2. EN "I love surfing!" · FR "J’adore le surf !" · ES "¡Me encanta el surf!" · (HE gloss "אני מאוד אוהב לגלוש!") — `phrase.hobby.i-love-surfing` — ❌ wrong
+- Tests: phrase.hobby.what-for-fun
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M16-Q06 — swap-it (step 10, round 2 of 3)
+### M16-Q02 — visual-match (step 5, round 1 of 1)
 
-- Prompt displayed: "Like it, love it, or not for you?" / "אוהב, מאוד אוהב, או לא אוהב?" — cue 😍 "Surfing — you love it" / "גלישה — אתה מת על זה" — frame EN "I ___ surfing!" · FR "___ le surf !" · ES "¡___ el surf!"
-- Audio played: EN "(nothing before the tap; the completed sentence is spoken after it)" · FR "(same)" · ES "(same)"
-- Meaning of the audio (HE): —
-- Buttons show: the SLOT VALUES in the target language (shown here as "value → completed sentence"); order shuffled; a "wrong" value still produces and speaks a real sentence, with its translation
+- Prompt displayed: "🎯 My free time: 😍 Love: ? / 🙂 Like: ? / 🙅 Don’t like: ? / ✨ Want to try: ? / 🕒 When: ? ‖ 👋 My friend: ? ¦ 🎯 Sort your hobbies — listen, and tap where it goes." / "🎯 הזמן הפנוי שלי: 😍 אוהב מאוד: ? / 🙂 אוהב: ? / 🙅 לא אוהב: ? / ✨ רוצה לנסות: ? / 🕒 מתי: ? ‖ 👋 החבר: ? ¦ 🎯 מיין את התחביבים — שמע, והקש לאן זה שייך."
+- Audio played: EN "I love surfing!" · FR "J’adore le surf !" · ES "¡Me encanta el surf!"
+- Meaning of the audio (HE): "אני מאוד אוהב לגלוש!"
+- Buttons show: a 3×3 board of 4 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. EN "like → I like surfing!" · FR "J’aime → J’aime le surf !" · ES "Me gusta → ¡Me gusta el surf!" · (HE gloss "אני אוהב לגלוש.") — no sentence id — ❌ wrong
-  2. EN "love → I love surfing!" · FR "J’adore → J’adore le surf !" · ES "Me encanta → ¡Me encanta el surf!" · (HE gloss "אני מאוד אוהב לגלוש.") — `phrase.hobby.i-love-surfing` — ✅ accepted
-  3. EN "don't like → I don't like surfing!" · FR "Je n’aime pas → Je n’aime pas le surf !" · ES "No me gusta → ¡No me gusta el surf!" · (HE gloss "אני לא אוהב לגלוש.") — no sentence id — ❌ wrong
-- Tests: phrase.hobby.i-love-surfing
-- Explanation shown after answering: after the tap: the completed sentence, spoken, with its translation
+  1. "😍 “Love” / “אוהב מאוד”" — no sentence id — ✅ accepted
+  2. "🙂 “Like” / “אוהב”" — no sentence id — ❌ wrong
+  3. "🙅 “Don’t like” / “לא אוהב”" — no sentence id — ❌ wrong
+  4. "✨ “Want to try” / “רוצה לנסות”" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
 
-### M16-Q07 — swap-it (step 10, round 3 of 3)
+### M16-Q03 — visual-match (step 7, round 1 of 1)
 
-- Prompt displayed: "Like it, love it, or not for you?" / "אוהב, מאוד אוהב, או לא אוהב?" — cue 🙂 "Drawing — you like it" / "ציור — אתה אוהב את זה" — frame EN "I ___ drawing." · FR "___ dessiner." · ES "___ dibujar."
-- Audio played: EN "(nothing before the tap; the completed sentence is spoken after it)" · FR "(same)" · ES "(same)"
-- Meaning of the audio (HE): —
-- Buttons show: the SLOT VALUES in the target language (shown here as "value → completed sentence"); order shuffled; a "wrong" value still produces and speaks a real sentence, with its translation
+- Prompt displayed: "🎯 My free time: 😍 Love: Surfing / 🙂 Like: ? / 🙅 Don’t like: ? / ✨ Want to try: ? / 🕒 When: ? ‖ 👋 My friend: Surfing: a lot ¦ 🎯 Sort your hobbies — listen, and tap where it goes." / "🎯 הזמן הפנוי שלי: 😍 אוהב מאוד: גלישה / 🙂 אוהב: ? / 🙅 לא אוהב: ? / ✨ רוצה לנסות: ? / 🕒 מתי: ? ‖ 👋 החבר: גלישה: הרבה ¦ 🎯 מיין את התחביבים — שמע, והקש לאן זה שייך."
+- Audio played: EN "I like drawing." · FR "J’aime dessiner." · ES "Me gusta dibujar."
+- Meaning of the audio (HE): "אני אוהב לצייר."
+- Buttons show: a 3×3 board of 4 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. EN "like → I like drawing." · FR "J’aime → J’aime dessiner." · ES "Me gusta → Me gusta dibujar." · (HE gloss "אני אוהב לצייר.") — `phrase.hobby.i-like-drawing` — ✅ accepted
-  2. EN "love → I love drawing." · FR "J’adore → J’adore dessiner." · ES "Me encanta → Me encanta dibujar." · (HE gloss "אני מאוד אוהב לצייר.") — no sentence id — ❌ wrong
-  3. EN "don't like → I don't like drawing." · FR "Je n’aime pas → Je n’aime pas dessiner." · ES "No me gusta → No me gusta dibujar." · (HE gloss "אני לא אוהב לצייר.") — no sentence id — ❌ wrong
-- Tests: phrase.hobby.i-like-drawing
-- Explanation shown after answering: after the tap: the completed sentence, spoken, with its translation
+  1. "😍 “Love” / “אוהב מאוד”" — no sentence id — ❌ wrong
+  2. "🙂 “Like” / “אוהב”" — no sentence id — ✅ accepted
+  3. "🙅 “Don’t like” / “לא אוהב”" — no sentence id — ❌ wrong
+  4. "✨ “Want to try” / “רוצה לנסות”" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
 
-### M16-Q08 — sentence-builder (step 11, round 1 of 1)
+### M16-Q04 — visual-match (step 9, round 1 of 1)
 
-- Prompt displayed: "Build the sentence" / "בנה את המשפט" — cue shown: the sentence's MEANING in the app language ("בדרך כלל אני מצייר בערב.")
-- Audio played: EN "(nothing before Check; the built sentence is spoken once it is right)" · FR "(same)" · ES "(same)"
-- Meaning of the audio (HE): —
-- Buttons show: the authored CHUNKS of the sentence as tiles (listed here in the correct order, separated by "|"), shuffled; each language has its own chunks; Check unlocks when every tile is placed
+- Prompt displayed: "🎯 My free time: 😍 Love: Surfing / 🙂 Like: Drawing / 🙅 Don’t like: ? / ✨ Want to try: ? / 🕒 When: ? ‖ 👋 My friend: Surfing: a lot ¦ When do you draw? Listen — and tap the time." / "🎯 הזמן הפנוי שלי: 😍 אוהב מאוד: גלישה / 🙂 אוהב: ציור / 🙅 לא אוהב: ? / ✨ רוצה לנסות: ? / 🕒 מתי: ? ‖ 👋 החבר: גלישה: הרבה ¦ מתי אתה מצייר? שמע — והקש על הזמן."
+- Audio played: EN "I usually draw in the evening." · FR "D’habitude, je dessine le soir." · ES "Normalmente dibujo por la noche."
+- Meaning of the audio (HE): "בדרך כלל אני מצייר בערב."
+- Buttons show: a 3×3 board of 3 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. EN "I usually  |  draw  |  in the evening." · FR "D’habitude,  |  je dessine  |  le soir." · ES "Normalmente  |  dibujo  |  por la noche." · (HE gloss "בדרך כלל אני מצייר בערב.") — `phrase.hobby.i-usually` — ✅ accepted
-- Tests: phrase.hobby.i-usually
-- Explanation shown after answering: right: the sentence is spoken and its translation shown. Wrong: "not yet" — the tiles stay, the answer is NOT shown; after one miss a hint marks the start; after two misses the learner may reveal it
+  1. "🌅 “Morning” / “בוקר”" — no sentence id — ❌ wrong
+  2. "☀️ “Afternoon” / “צהריים”" — no sentence id — ❌ wrong
+  3. "🌙 “Evening” / “ערב”" — no sentence id — ✅ accepted
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
 
-### M16-Q09 — quick-reply (step 12, round 1 of 6)
+### M16-Q05 — quick-reply (step 11, round 1 of 1)
 
-- Prompt displayed: "A chat about free time — what do you say?" / "שיחה על זמן פנוי — מה עונים?"
-- Audio played: EN "Do you like surfing?" · FR "Tu aimes le surf ?" · ES "¿Te gusta el surf?"
-- Meaning of the audio (HE): "אתה אוהב לגלוש?"
+- Prompt displayed: "🎯 My free time: 😍 Love: Surfing / 🙂 Like: Drawing / 🙅 Don’t like: ? / ✨ Want to try: ? / 🕒 Drawing → Evening ‖ 👋 My friend: Surfing: a lot ¦ Your friend likes music in the evening. What do you answer?" / "🎯 הזמן הפנוי שלי: 😍 אוהב מאוד: גלישה / 🙂 אוהב: ציור / 🙅 לא אוהב: ? / ✨ רוצה לנסות: ? / 🕒 ציור → ערב ‖ 👋 החבר: גלישה: הרבה ¦ החבר אוהב מוזיקה בערב. מה אתה עונה?"
+- Audio played: EN "In the evening I like to listen to music. Do you like music?" · FR "Le soir, j’aime écouter de la musique. Tu aimes la musique ?" · ES "Por la noche me gusta escuchar música. ¿Te gusta la música?"
+- Meaning of the audio (HE): "בערב אני אוהב לשמוע מוזיקה. אתה אוהב מוזיקה?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Yes, I like to listen to music too." · FR "Oui, moi aussi j’aime écouter de la musique." · ES "Sí, a mí también me gusta escuchar música." · (HE gloss "אני אוהב לשמוע מוזיקה.") — `phrase.hobby.like-to-listen` — ✅ accepted
+  2. EN "I like drawing." · FR "J’aime dessiner." · ES "Me gusta dibujar." · (HE gloss "אני אוהב לצייר.") — `phrase.hobby.i-like-drawing` — ❌ wrong
+  3. EN "I usually draw in the evening." · FR "D’habitude, je dessine le soir." · ES "Normalmente dibujo por la noche." · (HE gloss "בדרך כלל אני מצייר בערב.") — `phrase.hobby.i-usually` — ❌ wrong
+- Tests: phrase.hobby.like-to-listen
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M16-Q06 — visual-match (step 12, round 1 of 1)
+
+- Prompt displayed: "🎯 My free time: 😍 Love: Surfing / 🙂 Like: Drawing / 🙅 Don’t like: ? / ✨ Want to try: ? / 🕒 Drawing → Evening ‖ 👋 My friend: Surfing: a lot ¦ 🎯 Sort your hobbies — listen, and tap where it goes." / "🎯 הזמן הפנוי שלי: 😍 אוהב מאוד: גלישה / 🙂 אוהב: ציור / 🙅 לא אוהב: ? / ✨ רוצה לנסות: ? / 🕒 ציור → ערב ‖ 👋 החבר: גלישה: הרבה ¦ 🎯 מיין את התחביבים — שמע, והקש לאן זה שייך."
+- Audio played: EN "Yes, I like to listen to music too." · FR "Oui, moi aussi j’aime écouter de la musique." · ES "Sí, a mí también me gusta escuchar música."
+- Meaning of the audio (HE): "כן, גם אני אוהב לשמוע מוזיקה."
+- Buttons show: a 3×3 board of 4 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "😍 “Love” / “אוהב מאוד”" — no sentence id — ❌ wrong
+  2. "🙂 “Like” / “אוהב”" — no sentence id — ✅ accepted
+  3. "🙅 “Don’t like” / “לא אוהב”" — no sentence id — ❌ wrong
+  4. "✨ “Want to try” / “רוצה לנסות”" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M16-Q07 — visual-match (step 14, round 1 of 1)
+
+- Prompt displayed: "🎯 My free time: 😍 Love: Surfing / 🙂 Like: Drawing · Music / 🙅 Don’t like: ? / ✨ Want to try: ? / 🕒 Drawing → Evening ‖ 👋 My friend: Surfing: a lot / Music: in the evening ¦ 🎯 Sort your hobbies — listen, and tap where it goes." / "🎯 הזמן הפנוי שלי: 😍 אוהב מאוד: גלישה / 🙂 אוהב: ציור · מוזיקה / 🙅 לא אוהב: ? / ✨ רוצה לנסות: ? / 🕒 ציור → ערב ‖ 👋 החבר: גלישה: הרבה / מוזיקה: בערב ¦ 🎯 מיין את התחביבים — שמע, והקש לאן זה שייך."
+- Audio played: EN "No, I don't like running." · FR "Non, je n’aime pas courir." · ES "No, no me gusta correr."
+- Meaning of the audio (HE): "לא, אני לא אוהב לרוץ."
+- Buttons show: a 3×3 board of 4 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "😍 “Love” / “אוהב מאוד”" — no sentence id — ❌ wrong
+  2. "🙂 “Like” / “אוהב”" — no sentence id — ❌ wrong
+  3. "🙅 “Don’t like” / “לא אוהב”" — no sentence id — ✅ accepted
+  4. "✨ “Want to try” / “רוצה לנסות”" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M16-Q08 — visual-match (step 16, round 1 of 1)
+
+- Prompt displayed: "🎯 My free time: 😍 Love: Surfing / 🙂 Like: Drawing · Music / 🙅 Don’t like: Running / ✨ Want to try: ? / 🕒 Drawing → Evening ‖ 👋 My friend: Surfing: a lot / Music: in the evening ¦ 🎯 Sort your hobbies — listen, and tap where it goes." / "🎯 הזמן הפנוי שלי: 😍 אוהב מאוד: גלישה / 🙂 אוהב: ציור · מוזיקה / 🙅 לא אוהב: ריצה / ✨ רוצה לנסות: ? / 🕒 ציור → ערב ‖ 👋 החבר: גלישה: הרבה / מוזיקה: בערב ¦ 🎯 מיין את התחביבים — שמע, והקש לאן זה שייך."
+- Audio played: EN "I want to try diving." · FR "Je veux essayer la plongée." · ES "Quiero probar el buceo."
+- Meaning of the audio (HE): "אני רוצה לנסות צלילה."
+- Buttons show: a 3×3 board of 4 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "😍 “Love” / “אוהב מאוד”" — no sentence id — ❌ wrong
+  2. "🙂 “Like” / “אוהב”" — no sentence id — ❌ wrong
+  3. "🙅 “Don’t like” / “לא אוהב”" — no sentence id — ❌ wrong
+  4. "✨ “Want to try” / “רוצה לנסות”" — no sentence id — ✅ accepted
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M16-Q09 — quick-reply (step 18, round 1 of 1)
+
+- Prompt displayed: "🧭 Diving school · near the beach ¦ 🎯 My free time: 😍 Love: Surfing / 🙂 Like: Drawing · Music / 🙅 Don’t like: Running / ✨ Want to try: Diving / 🕒 Drawing → Evening ‖ 👋 My friend: Surfing: a lot / Music: in the evening / Running: doesn’t like it either ¦ Now you ask back — the same question your friend asked you." / "🧭 בית ספר לצלילה · ליד החוף ¦ 🎯 הזמן הפנוי שלי: 😍 אוהב מאוד: גלישה / 🙂 אוהב: ציור · מוזיקה / 🙅 לא אוהב: ריצה / ✨ רוצה לנסות: צלילה / 🕒 ציור → ערב ‖ 👋 החבר: גלישה: הרבה / מוזיקה: בערב / ריצה: גם הוא לא אוהב ¦ עכשיו תורך לשאול — אותה שאלה שהחבר שאל אותך."
+- Audio played: EN "Good idea! There's a diving school near the beach." · FR "Bonne idée ! Il y a une école de plongée près de la plage." · ES "¡Buena idea! Hay una escuela de buceo cerca de la playa."
+- Meaning of the audio (HE): "רעיון טוב! יש בית ספר לצלילה ליד החוף."
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Do you like diving?" · FR "Tu aimes la plongée ?" · ES "¿Te gusta el buceo?" · (HE gloss "אתה אוהב לצלול?") — `phrase.hobby.do-you-like` — ✅ accepted
+  2. EN "I want to try diving." · FR "Je veux essayer la plongée." · ES "Quiero probar el buceo." · (HE gloss "אני רוצה לנסות צלילה.") — `phrase.hobby.want-to-try` — ❌ wrong
+  3. EN "I love surfing!" · FR "J’adore le surf !" · ES "¡Me encanta el surf!" · (HE gloss "אני מאוד אוהב לגלוש!") — `phrase.hobby.i-love-surfing` — ❌ wrong
+- Tests: phrase.hobby.do-you-like
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M16-Q10 — visual-match (step 20, round 1 of 1)
+
+- Prompt displayed: "🧭 Diving school · near the beach ¦ 🎯 My free time: 😍 Love: Surfing / 🙂 Like: Drawing · Music / 🙅 Don’t like: Running / ✨ Want to try: Diving / 🕒 Drawing → Evening ‖ 👋 My friend: Surfing: a lot / Music: in the evening / Running: doesn’t like it either ¦ When do you go diving together?" / "🧭 בית ספר לצלילה · ליד החוף ¦ 🎯 הזמן הפנוי שלי: 😍 אוהב מאוד: גלישה / 🙂 אוהב: ציור · מוזיקה / 🙅 לא אוהב: ריצה / ✨ רוצה לנסות: צלילה / 🕒 ציור → ערב ‖ 👋 החבר: גלישה: הרבה / מוזיקה: בערב / ריצה: גם הוא לא אוהב ¦ מתי הולכים לצלול יחד?"
+- Audio played: EN "I love it! Let's go together tomorrow." · FR "J’adore ! On y va ensemble demain." · ES "¡Me encanta! Vamos juntos mañana."
+- Meaning of the audio (HE): "מאוד! בוא נלך יחד מחר."
+- Buttons show: a 3×3 board of 2 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "📅 “Today” / “היום”" — no sentence id — ❌ wrong
+  2. "🌄 “Tomorrow” / “מחר”" — no sentence id — ✅ accepted
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M16-Q19 — quick-reply (step 24, round 1 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "I surf a lot. Do you like surfing?" · FR "Je fais beaucoup de surf. Tu aimes le surf ?" · ES "Hago mucho surf. ¿Te gusta el surf?"
+- Meaning of the audio (HE): "אני גולש הרבה. אתה אוהב לגלוש?"
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
   1. EN "I love surfing!" · FR "J’adore le surf !" · ES "¡Me encanta el surf!" · (HE gloss "אני מאוד אוהב לגלוש!") — `phrase.hobby.i-love-surfing` — ✅ accepted
@@ -16245,124 +16394,33 @@ No meaning quiz in this mission.
 - Tests: phrase.hobby.i-love-surfing
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M16-Q10 — quick-reply (step 12, round 2 of 6)
+### M16-Q20 — quick-reply (step 24, round 2 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
 
-- Prompt displayed: "A chat about free time — what do you say?" / "שיחה על זמן פנוי — מה עונים?"
-- Audio played: EN "What else do you like?" · FR "Tu aimes quoi d’autre ?" · ES "¿Qué más te gusta?"
-- Meaning of the audio (HE): "מה עוד אתה אוהב?"
-- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
-- Choices:
-  1. EN "I like drawing." · FR "J’aime dessiner." · ES "Me gusta dibujar." · (HE gloss "אני אוהב לצייר.") — `phrase.hobby.i-like-drawing` — ✅ accepted
-  2. EN "I like to listen to music." · FR "J’aime écouter de la musique." · ES "Me gusta escuchar música." · (HE gloss "אני אוהב לשמוע מוזיקה.") — `phrase.hobby.like-to-listen` — ✅ accepted
-  3. EN "Do you like diving?" · FR "Tu aimes la plongée ?" · ES "¿Te gusta el buceo?" · (HE gloss "אתה אוהב לצלול?") — `phrase.hobby.do-you-like` — ❌ wrong
-- Tests: phrase.hobby.i-like-drawing, phrase.hobby.like-to-listen
-- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
-
-### M16-Q11 — quick-reply (step 12, round 3 of 6)
-
-- Prompt displayed: "A chat about free time — what do you say?" / "שיחה על זמן פנוי — מה עונים?"
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio played: EN "Nice! When do you draw?" · FR "Sympa ! Tu dessines quand ?" · ES "¡Qué bien! ¿Cuándo dibujas?"
 - Meaning of the audio (HE): "יפה! מתי אתה מצייר?"
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
   1. EN "I usually draw in the evening." · FR "D’habitude, je dessine le soir." · ES "Normalmente dibujo por la noche." · (HE gloss "בדרך כלל אני מצייר בערב.") — `phrase.hobby.i-usually` — ✅ accepted
   2. EN "I like drawing." · FR "J’aime dessiner." · ES "Me gusta dibujar." · (HE gloss "אני אוהב לצייר.") — `phrase.hobby.i-like-drawing` — ❌ wrong
-  3. EN "I want to try diving." · FR "Je veux essayer la plongée." · ES "Quiero probar el buceo." · (HE gloss "אני רוצה לנסות צלילה.") — `phrase.hobby.want-to-try` — ❌ wrong
+  3. EN "Do you like diving?" · FR "Tu aimes la plongée ?" · ES "¿Te gusta el buceo?" · (HE gloss "אתה אוהב לצלול?") — `phrase.hobby.do-you-like` — ❌ wrong
 - Tests: phrase.hobby.i-usually
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M16-Q12 — quick-reply (step 12, round 4 of 6)
+### M16-Q21 — quick-reply (step 24, round 3 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
 
-- Prompt displayed: "A chat about free time — what do you say?" / "שיחה על זמן פנוי — מה עונים?"
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio played: EN "And sport? Do you like running?" · FR "Et le sport ? Tu aimes courir ?" · ES "¿Y el deporte? ¿Te gusta correr?"
 - Meaning of the audio (HE): "וספורט? אתה אוהב לרוץ?"
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
   1. EN "No, I don't like running." · FR "Non, je n’aime pas courir." · ES "No, no me gusta correr." · (HE gloss "אני לא אוהב לרוץ.") — `phrase.hobby.dont-like-running` — ✅ accepted
-  2. EN "I usually draw in the evening." · FR "D’habitude, je dessine le soir." · ES "Normalmente dibujo por la noche." · (HE gloss "בדרך כלל אני מצייר בערב.") — `phrase.hobby.i-usually` — ❌ wrong
-  3. EN "What do you do for fun?" · FR "Qu’est-ce que tu aimes faire ?" · ES "¿Qué te gusta hacer?" · (HE gloss "מה אתה אוהב לעשות בזמן הפנוי?") — `phrase.hobby.what-for-fun` — ❌ wrong
+  2. EN "I love surfing!" · FR "J’adore le surf !" · ES "¡Me encanta el surf!" · (HE gloss "אני מאוד אוהב לגלוש!") — `phrase.hobby.i-love-surfing` — ❌ wrong
+  3. EN "Yes! What do you do for fun?" · FR "Oui ! Qu’est-ce que tu aimes faire ?" · ES "¡Sí! ¿Qué te gusta hacer?" · (HE gloss "מה אתה אוהב לעשות בזמן הפנוי?") — `phrase.hobby.what-for-fun` — ❌ wrong
 - Tests: phrase.hobby.dont-like-running
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M16-Q13 — quick-reply (step 12, round 5 of 6)
-
-- Prompt displayed: "A chat about free time — what do you say?" / "שיחה על זמן פנוי — מה עונים?"
-- Audio played: EN "Is there something you want to try?" · FR "Il y a quelque chose que tu veux essayer ?" · ES "¿Hay algo que quieras probar?"
-- Meaning of the audio (HE): "יש משהו שאתה רוצה לנסות?"
-- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
-- Choices:
-  1. EN "I want to try diving." · FR "Je veux essayer la plongée." · ES "Quiero probar el buceo." · (HE gloss "אני רוצה לנסות צלילה.") — `phrase.hobby.want-to-try` — ✅ accepted
-  2. EN "I usually draw in the evening." · FR "D’habitude, je dessine le soir." · ES "Normalmente dibujo por la noche." · (HE gloss "בדרך כלל אני מצייר בערב.") — `phrase.hobby.i-usually` — ❌ wrong
-  3. EN "I like to listen to music." · FR "J’aime écouter de la musique." · ES "Me gusta escuchar música." · (HE gloss "אני אוהב לשמוע מוזיקה.") — `phrase.hobby.like-to-listen` — ❌ wrong
-- Tests: phrase.hobby.want-to-try
-- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
-
-### M16-Q14 — quick-reply (step 12, round 6 of 6)
-
-- Prompt displayed: "A chat about free time — what do you say?" / "שיחה על זמן פנוי — מה עונים?" — situation shown: "You have talked about yourself. Now ask what they like doing." / "סיפרת על עצמך. עכשיו תשאל אותו מה הוא אוהב לעשות."
-- Audio played: EN "(nothing is played — a situation is shown)" · FR "(nothing is played — a situation is shown)" · ES "(nothing is played — a situation is shown)"
-- Meaning of the audio (HE): —
-- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
-- Choices:
-  1. EN "What do you do for fun?" · FR "Qu’est-ce que tu aimes faire ?" · ES "¿Qué te gusta hacer?" · (HE gloss "מה אתה אוהב לעשות בזמן הפנוי?") — `phrase.hobby.what-for-fun` — ✅ accepted
-  2. EN "I like drawing." · FR "J’aime dessiner." · ES "Me gusta dibujar." · (HE gloss "אני אוהב לצייר.") — `phrase.hobby.i-like-drawing` — ❌ wrong
-  3. EN "I want to try diving." · FR "Je veux essayer la plongée." · ES "Quiero probar el buceo." · (HE gloss "אני רוצה לנסות צלילה.") — `phrase.hobby.want-to-try` — ❌ wrong
-- Tests: phrase.hobby.what-for-fun
-- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
-
-### M16-Q24 — quick-reply (step 16, round 1 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
-
-- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
-- Audio played: EN "I surf a lot. Do you like surfing?" · FR "Je fais beaucoup de surf. Tu aimes le surf ?" · ES "Hago mucho surf. ¿Te gusta el surf?"
-- Meaning of the audio (HE): "אני גולש הרבה. אתה אוהב לגלוש?"
-- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
-- Choices:
-  1. EN "I love surfing!" · FR "J’adore le surf !" · ES "¡Me encanta el surf!" · (HE gloss "אני מאוד אוהב לגלוש!") — `phrase.hobby.i-love-surfing` — ✅ accepted
-  2. EN "I usually draw in the evening." · FR "D’habitude, je dessine le soir." · ES "Normalmente dibujo por la noche." · (HE gloss "בדרך כלל אני מצייר בערב.") — `phrase.hobby.i-usually` — ❌ wrong
-  3. EN "What do you do for fun?" · FR "Qu’est-ce que tu aimes faire ?" · ES "¿Qué te gusta hacer?" · (HE gloss "מה אתה אוהב לעשות בזמן הפנוי?") — `phrase.hobby.what-for-fun` — ❌ wrong
-- Tests: phrase.hobby.i-love-surfing
-- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
-
-### M16-Q25 — quick-reply (step 16, round 2 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
-
-- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
-- Audio played: EN "Great! And what else do you like?" · FR "Super ! Et tu aimes quoi d’autre ?" · ES "¡Genial! ¿Y qué más te gusta?"
-- Meaning of the audio (HE): "מעולה! ומה עוד אתה אוהב?"
-- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
-- Choices:
-  1. EN "I like drawing." · FR "J’aime dessiner." · ES "Me gusta dibujar." · (HE gloss "אני אוהב לצייר.") — `phrase.hobby.i-like-drawing` — ✅ accepted
-  2. EN "Do you like diving?" · FR "Tu aimes la plongée ?" · ES "¿Te gusta el buceo?" · (HE gloss "אתה אוהב לצלול?") — `phrase.hobby.do-you-like` — ❌ wrong
-  3. EN "What do you do for fun?" · FR "Qu’est-ce que tu aimes faire ?" · ES "¿Qué te gusta hacer?" · (HE gloss "מה אתה אוהב לעשות בזמן הפנוי?") — `phrase.hobby.what-for-fun` — ❌ wrong
-- Tests: phrase.hobby.i-like-drawing
-- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
-
-### M16-Q26 — quick-reply (step 16, round 3 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
-
-- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
-- Audio played: EN "Nice! When do you draw?" · FR "Sympa ! Tu dessines quand ?" · ES "¡Qué bien! ¿Cuándo dibujas?"
-- Meaning of the audio (HE): "יפה! מתי אתה מצייר?"
-- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
-- Choices:
-  1. EN "I usually draw in the evening." · FR "D’habitude, je dessine le soir." · ES "Normalmente dibujo por la noche." · (HE gloss "בדרך כלל אני מצייר בערב.") — `phrase.hobby.i-usually` — ✅ accepted
-  2. EN "I want to try diving." · FR "Je veux essayer la plongée." · ES "Quiero probar el buceo." · (HE gloss "אני רוצה לנסות צלילה.") — `phrase.hobby.want-to-try` — ❌ wrong
-  3. EN "I love surfing!" · FR "J’adore le surf !" · ES "¡Me encanta el surf!" · (HE gloss "אני מאוד אוהב לגלוש!") — `phrase.hobby.i-love-surfing` — ❌ wrong
-- Tests: phrase.hobby.i-usually
-- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
-
-### M16-Q27 — quick-reply (step 16, round 4 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
-
-- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
-- Audio played: EN "In the evening I like to listen to music. Do you like music?" · FR "Le soir, j’aime écouter de la musique. Tu aimes la musique ?" · ES "Por la noche me gusta escuchar música. ¿Te gusta la música?"
-- Meaning of the audio (HE): "בערב אני אוהב לשמוע מוזיקה. אתה אוהב מוזיקה?"
-- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
-- Choices:
-  1. EN "Yes, I like to listen to music too." · FR "Oui, moi aussi j’aime écouter de la musique." · ES "Sí, a mí también me gusta escuchar música." · (HE gloss "אני אוהב לשמוע מוזיקה.") — `phrase.hobby.like-to-listen` — ✅ accepted
-  2. EN "I don't like running." · FR "Je n’aime pas courir." · ES "No me gusta correr." · (HE gloss "אני לא אוהב לרוץ.") — `phrase.hobby.dont-like-running` — ❌ wrong
-  3. EN "I want to try diving." · FR "Je veux essayer la plongée." · ES "Quiero probar el buceo." · (HE gloss "אני רוצה לנסות צלילה.") — `phrase.hobby.want-to-try` — ❌ wrong
-- Tests: phrase.hobby.like-to-listen
-- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
-
-### M16-Q28 — quick-reply (step 16, round 5 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
+### M16-Q22 — quick-reply (step 24, round 4 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
 
 - Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio played: EN "Me neither! Is there something you want to try here?" · FR "Moi non plus ! Il y a quelque chose que tu veux essayer ici ?" · ES "¡Yo tampoco! ¿Hay algo que quieras probar aquí?"
@@ -16370,9 +16428,113 @@ No meaning quiz in this mission.
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
   1. EN "I want to try diving." · FR "Je veux essayer la plongée." · ES "Quiero probar el buceo." · (HE gloss "אני רוצה לנסות צלילה.") — `phrase.hobby.want-to-try` — ✅ accepted
-  2. EN "I usually draw in the evening." · FR "D’habitude, je dessine le soir." · ES "Normalmente dibujo por la noche." · (HE gloss "בדרך כלל אני מצייר בערב.") — `phrase.hobby.i-usually` — ❌ wrong
-  3. EN "I like drawing." · FR "J’aime dessiner." · ES "Me gusta dibujar." · (HE gloss "אני אוהב לצייר.") — `phrase.hobby.i-like-drawing` — ❌ wrong
+  2. EN "No, I don't like running." · FR "Non, je n’aime pas courir." · ES "No, no me gusta correr." · (HE gloss "אני לא אוהב לרוץ.") — `phrase.hobby.dont-like-running` — ❌ wrong
+  3. EN "Yes, I like to listen to music too." · FR "Oui, moi aussi j’aime écouter de la musique." · ES "Sí, a mí también me gusta escuchar música." · (HE gloss "אני אוהב לשמוע מוזיקה.") — `phrase.hobby.like-to-listen` — ❌ wrong
 - Tests: phrase.hobby.want-to-try
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M16-Q23 — quick-reply (step 24, round 5 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "Good idea! There's a diving school near the beach." · FR "Bonne idée ! Il y a une école de plongée près de la plage." · ES "¡Buena idea! Hay una escuela de buceo cerca de la playa."
+- Meaning of the audio (HE): "רעיון טוב! יש בית ספר לצלילה ליד החוף."
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Do you like diving?" · FR "Tu aimes la plongée ?" · ES "¿Te gusta el buceo?" · (HE gloss "אתה אוהב לצלול?") — `phrase.hobby.do-you-like` — ✅ accepted
+  2. EN "I want to try diving." · FR "Je veux essayer la plongée." · ES "Quiero probar el buceo." · (HE gloss "אני רוצה לנסות צלילה.") — `phrase.hobby.want-to-try` — ❌ wrong
+  3. EN "Yes! What do you do for fun?" · FR "Oui ! Qu’est-ce que tu aimes faire ?" · ES "¡Sí! ¿Qué te gusta hacer?" · (HE gloss "מה אתה אוהב לעשות בזמן הפנוי?") — `phrase.hobby.what-for-fun` — ❌ wrong
+- Tests: phrase.hobby.do-you-like
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M16-Q24 — quick-reply (step 27, round 1 of 7)
+
+- Prompt displayed: "🎯 On your own now: ask, say what you love and like, when, what not, what to try — and ask back." / "🎯 עכשיו לבד: לשאול, לספר מה אתה אוהב, מתי, מה לא, מה לנסות — ולשאול בחזרה."
+- Audio played: EN "Hi! Are you free today?" · FR "Salut ! Tu es libre aujourd’hui ?" · ES "¡Hola! ¿Estás libre hoy?"
+- Meaning of the audio (HE): "היי! אתה פנוי היום?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Yes! What do you do for fun?" · FR "Oui ! Qu’est-ce que tu aimes faire ?" · ES "¡Sí! ¿Qué te gusta hacer?" · (HE gloss "מה אתה אוהב לעשות בזמן הפנוי?") — `phrase.hobby.what-for-fun` — ✅ accepted
+  2. EN "Do you like diving?" · FR "Tu aimes la plongée ?" · ES "¿Te gusta el buceo?" · (HE gloss "אתה אוהב לצלול?") — `phrase.hobby.do-you-like` — ❌ wrong
+  3. EN "I usually draw in the evening." · FR "D’habitude, je dessine le soir." · ES "Normalmente dibujo por la noche." · (HE gloss "בדרך כלל אני מצייר בערב.") — `phrase.hobby.i-usually` — ❌ wrong
+- Tests: phrase.hobby.what-for-fun
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M16-Q25 — quick-reply (step 27, round 2 of 7)
+
+- Prompt displayed: "🎯 On your own now: ask, say what you love and like, when, what not, what to try — and ask back." / "🎯 עכשיו לבד: לשאול, לספר מה אתה אוהב, מתי, מה לא, מה לנסות — ולשאול בחזרה." — situation shown: "🏄 Surfing — you love it. Tell your friend." / "🏄 גלישה — אתה מת על זה. תגיד לו."
+- Audio played: EN "(nothing is played — a situation is shown)" · FR "(nothing is played — a situation is shown)" · ES "(nothing is played — a situation is shown)"
+- Meaning of the audio (HE): —
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "I love surfing!" · FR "J’adore le surf !" · ES "¡Me encanta el surf!" · (HE gloss "אני מאוד אוהב לגלוש!") — `phrase.hobby.i-love-surfing` — ✅ accepted
+  2. EN "I like drawing." · FR "J’aime dessiner." · ES "Me gusta dibujar." · (HE gloss "אני אוהב לצייר.") — `phrase.hobby.i-like-drawing` — ❌ wrong
+  3. EN "I want to try diving." · FR "Je veux essayer la plongée." · ES "Quiero probar el buceo." · (HE gloss "אני רוצה לנסות צלילה.") — `phrase.hobby.want-to-try` — ❌ wrong
+- Tests: phrase.hobby.i-love-surfing
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M16-Q26 — quick-reply (step 27, round 3 of 7)
+
+- Prompt displayed: "🎯 On your own now: ask, say what you love and like, when, what not, what to try — and ask back." / "🎯 עכשיו לבד: לשאול, לספר מה אתה אוהב, מתי, מה לא, מה לנסות — ולשאול בחזרה."
+- Audio played: EN "Great! And what else do you like?" · FR "Super ! Et tu aimes quoi d’autre ?" · ES "¡Genial! ¿Y qué más te gusta?"
+- Meaning of the audio (HE): "מעולה! ומה עוד אתה אוהב?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "I like drawing." · FR "J’aime dessiner." · ES "Me gusta dibujar." · (HE gloss "אני אוהב לצייר.") — `phrase.hobby.i-like-drawing` — ✅ accepted
+  2. EN "No, I don't like running." · FR "Non, je n’aime pas courir." · ES "No, no me gusta correr." · (HE gloss "אני לא אוהב לרוץ.") — `phrase.hobby.dont-like-running` — ❌ wrong
+  3. EN "Yes! What do you do for fun?" · FR "Oui ! Qu’est-ce que tu aimes faire ?" · ES "¡Sí! ¿Qué te gusta hacer?" · (HE gloss "מה אתה אוהב לעשות בזמן הפנוי?") — `phrase.hobby.what-for-fun` — ❌ wrong
+- Tests: phrase.hobby.i-like-drawing
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M16-Q27 — quick-reply (step 27, round 4 of 7)
+
+- Prompt displayed: "🎯 On your own now: ask, say what you love and like, when, what not, what to try — and ask back." / "🎯 עכשיו לבד: לשאול, לספר מה אתה אוהב, מתי, מה לא, מה לנסות — ולשאול בחזרה."
+- Audio played: EN "Nice! When do you draw?" · FR "Sympa ! Tu dessines quand ?" · ES "¡Qué bien! ¿Cuándo dibujas?"
+- Meaning of the audio (HE): "יפה! מתי אתה מצייר?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "I usually draw in the evening." · FR "D’habitude, je dessine le soir." · ES "Normalmente dibujo por la noche." · (HE gloss "בדרך כלל אני מצייר בערב.") — `phrase.hobby.i-usually` — ✅ accepted
+  2. EN "I like drawing." · FR "J’aime dessiner." · ES "Me gusta dibujar." · (HE gloss "אני אוהב לצייר.") — `phrase.hobby.i-like-drawing` — ❌ wrong
+  3. EN "I want to try diving." · FR "Je veux essayer la plongée." · ES "Quiero probar el buceo." · (HE gloss "אני רוצה לנסות צלילה.") — `phrase.hobby.want-to-try` — ❌ wrong
+- Tests: phrase.hobby.i-usually
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M16-Q28 — quick-reply (step 27, round 5 of 7)
+
+- Prompt displayed: "🎯 On your own now: ask, say what you love and like, when, what not, what to try — and ask back." / "🎯 עכשיו לבד: לשאול, לספר מה אתה אוהב, מתי, מה לא, מה לנסות — ולשאול בחזרה." — situation shown: "🏃 Running — not for you. Tell your friend." / "🏃 ריצה — זה לא בשבילך. תגיד לו."
+- Audio played: EN "(nothing is played — a situation is shown)" · FR "(nothing is played — a situation is shown)" · ES "(nothing is played — a situation is shown)"
+- Meaning of the audio (HE): —
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "No, I don't like running." · FR "Non, je n’aime pas courir." · ES "No, no me gusta correr." · (HE gloss "אני לא אוהב לרוץ.") — `phrase.hobby.dont-like-running` — ✅ accepted
+  2. EN "I love surfing!" · FR "J’adore le surf !" · ES "¡Me encanta el surf!" · (HE gloss "אני מאוד אוהב לגלוש!") — `phrase.hobby.i-love-surfing` — ❌ wrong
+  3. EN "Yes, I like to listen to music too." · FR "Oui, moi aussi j’aime écouter de la musique." · ES "Sí, a mí también me gusta escuchar música." · (HE gloss "אני אוהב לשמוע מוזיקה.") — `phrase.hobby.like-to-listen` — ❌ wrong
+- Tests: phrase.hobby.dont-like-running
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M16-Q29 — quick-reply (step 27, round 6 of 7)
+
+- Prompt displayed: "🎯 On your own now: ask, say what you love and like, when, what not, what to try — and ask back." / "🎯 עכשיו לבד: לשאול, לספר מה אתה אוהב, מתי, מה לא, מה לנסות — ולשאול בחזרה." — situation shown: "🤿 Diving — something new you’d like to do. Tell your friend." / "🤿 צלילה — משהו חדש שבא לך לנסות. תגיד לו."
+- Audio played: EN "(nothing is played — a situation is shown)" · FR "(nothing is played — a situation is shown)" · ES "(nothing is played — a situation is shown)"
+- Meaning of the audio (HE): —
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "I want to try diving." · FR "Je veux essayer la plongée." · ES "Quiero probar el buceo." · (HE gloss "אני רוצה לנסות צלילה.") — `phrase.hobby.want-to-try` — ✅ accepted
+  2. EN "Do you like diving?" · FR "Tu aimes la plongée ?" · ES "¿Te gusta el buceo?" · (HE gloss "אתה אוהב לצלול?") — `phrase.hobby.do-you-like` — ❌ wrong
+  3. EN "I love surfing!" · FR "J’adore le surf !" · ES "¡Me encanta el surf!" · (HE gloss "אני מאוד אוהב לגלוש!") — `phrase.hobby.i-love-surfing` — ❌ wrong
+- Tests: phrase.hobby.want-to-try
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M16-Q30 — quick-reply (step 27, round 7 of 7)
+
+- Prompt displayed: "🎯 On your own now: ask, say what you love and like, when, what not, what to try — and ask back." / "🎯 עכשיו לבד: לשאול, לספר מה אתה אוהב, מתי, מה לא, מה לנסות — ולשאול בחזרה."
+- Audio played: EN "Good idea! There's a diving school near the beach." · FR "Bonne idée ! Il y a une école de plongée près de la plage." · ES "¡Buena idea! Hay una escuela de buceo cerca de la playa."
+- Meaning of the audio (HE): "רעיון טוב! יש בית ספר לצלילה ליד החוף."
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Do you like diving?" · FR "Tu aimes la plongée ?" · ES "¿Te gusta el buceo?" · (HE gloss "אתה אוהב לצלול?") — `phrase.hobby.do-you-like` — ✅ accepted
+  2. EN "I want to try diving." · FR "Je veux essayer la plongée." · ES "Quiero probar el buceo." · (HE gloss "אני רוצה לנסות צלילה.") — `phrase.hobby.want-to-try` — ❌ wrong
+  3. EN "Yes! What do you do for fun?" · FR "Oui ! Qu’est-ce que tu aimes faire ?" · ES "¡Sí! ¿Qué te gusta hacer?" · (HE gloss "מה אתה אוהב לעשות בזמן הפנוי?") — `phrase.hobby.what-for-fun` — ❌ wrong
+- Tests: phrase.hobby.do-you-like
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
 ## Dialogue — full tree
@@ -16390,6 +16552,16 @@ No meaning quiz in this mission.
     - FR: Oui ! Qu’est-ce que tu aimes faire ?
     - ES: ¡Sí! ¿Qué te gusta hacer?
     - HE: כן! מה אתה אוהב לעשות בזמן הפנוי?
+  - choice 2 — ❌ WRONG → m2 — `phrase.hobby.i-love-surfing`
+    - EN: I love surfing!
+    - FR: J’adore le surf !
+    - ES: ¡Me encanta el surf!
+    - HE: אני מאוד אוהב לגלוש!
+- **m2** · NPC · slow (TTS rate 0.75) · off the happy path → c2
+  - EN: Hi! Are you free today?
+  - FR: Salut ! Tu es libre aujourd’hui ?
+  - ES: ¡Hola! ¿Estás libre hoy?
+  - HE: היי! אתה פנוי היום?
 - **n3** · NPC · normal (TTS rate 0.95) → c4
   - EN: I surf a lot. Do you like surfing?
   - FR: Je fais beaucoup de surf. Tu aimes le surf ?
@@ -16401,6 +16573,16 @@ No meaning quiz in this mission.
     - FR: J’adore le surf !
     - ES: ¡Me encanta el surf!
     - HE: אני מאוד אוהב לגלוש!
+  - choice 2 — ❌ WRONG → m4 — `phrase.hobby.want-to-try`
+    - EN: I want to try diving.
+    - FR: Je veux essayer la plongée.
+    - ES: Quiero probar el buceo.
+    - HE: אני רוצה לנסות צלילה.
+- **m4** · NPC · slow (TTS rate 0.75) · off the happy path → c4
+  - EN: I surf a lot. Do you like surfing?
+  - FR: Je fais beaucoup de surf. Tu aimes le surf ?
+  - ES: Hago mucho surf. ¿Te gusta el surf?
+  - HE: אני גולש הרבה. אתה אוהב לגלוש?
 - **n5** · NPC · normal (TTS rate 0.95) → c6
   - EN: Great! And what else do you like?
   - FR: Super ! Et tu aimes quoi d’autre ?
@@ -16412,6 +16594,16 @@ No meaning quiz in this mission.
     - FR: J’aime dessiner.
     - ES: Me gusta dibujar.
     - HE: אני אוהב לצייר.
+  - choice 2 — ❌ WRONG → m6 — `phrase.hobby.do-you-like`
+    - EN: Do you like diving?
+    - FR: Tu aimes la plongée ?
+    - ES: ¿Te gusta el buceo?
+    - HE: אתה אוהב לצלול?
+- **m6** · NPC · slow (TTS rate 0.75) · off the happy path → c6
+  - EN: Great! And what else do you like?
+  - FR: Super ! Et tu aimes quoi d’autre ?
+  - ES: ¡Genial! ¿Y qué más te gusta?
+  - HE: מעולה! ומה עוד אתה אוהב?
 - **n7** · NPC · normal (TTS rate 0.95) → c8
   - EN: Nice! When do you draw?
   - FR: Sympa ! Tu dessines quand ?
@@ -16423,6 +16615,16 @@ No meaning quiz in this mission.
     - FR: D’habitude, je dessine le soir.
     - ES: Normalmente dibujo por la noche.
     - HE: בדרך כלל אני מצייר בערב.
+  - choice 2 — ❌ WRONG → m8 — `phrase.hobby.i-like-drawing`
+    - EN: I like drawing.
+    - FR: J’aime dessiner.
+    - ES: Me gusta dibujar.
+    - HE: אני אוהב לצייר.
+- **m8** · NPC · slow (TTS rate 0.75) · off the happy path → c8
+  - EN: Nice! When do you draw?
+  - FR: Sympa ! Tu dessines quand ?
+  - ES: ¡Qué bien! ¿Cuándo dibujas?
+  - HE: יפה! מתי אתה מצייר?
 - **n9** · NPC · normal (TTS rate 0.95) → c10
   - EN: In the evening I like to listen to music. Do you like music?
   - FR: Le soir, j’aime écouter de la musique. Tu aimes la musique ?
@@ -16434,6 +16636,16 @@ No meaning quiz in this mission.
     - FR: Oui, moi aussi j’aime écouter de la musique.
     - ES: Sí, a mí también me gusta escuchar música.
     - HE: כן, גם אני אוהב לשמוע מוזיקה.
+  - choice 2 — ❌ WRONG → m10 — `phrase.hobby.dont-like-running`
+    - EN: I don't like running.
+    - FR: Je n’aime pas courir.
+    - ES: No me gusta correr.
+    - HE: אני לא אוהב לרוץ.
+- **m10** · NPC · slow (TTS rate 0.75) · off the happy path → c10
+  - EN: In the evening I like to listen to music. Do you like music?
+  - FR: Le soir, j’aime écouter de la musique. Tu aimes la musique ?
+  - ES: Por la noche me gusta escuchar música. ¿Te gusta la música?
+  - HE: בערב אני אוהב לשמוע מוזיקה. אתה אוהב מוזיקה?
 - **n11** · NPC · normal (TTS rate 0.95) → c12
   - EN: And sport? Do you like running?
   - FR: Et le sport ? Tu aimes courir ?
@@ -16445,6 +16657,16 @@ No meaning quiz in this mission.
     - FR: Non, je n’aime pas courir.
     - ES: No, no me gusta correr.
     - HE: לא, אני לא אוהב לרוץ.
+  - choice 2 — ❌ WRONG → m12 — `phrase.hobby.i-love-surfing`
+    - EN: I love surfing!
+    - FR: J’adore le surf !
+    - ES: ¡Me encanta el surf!
+    - HE: אני מאוד אוהב לגלוש!
+- **m12** · NPC · slow (TTS rate 0.75) · off the happy path → c12
+  - EN: And sport? Do you like running?
+  - FR: Et le sport ? Tu aimes courir ?
+  - ES: ¿Y el deporte? ¿Te gusta correr?
+  - HE: וספורט? אתה אוהב לרוץ?
 - **n13** · NPC · fast (TTS rate 1.08) → c14
   - EN: Me neither! Is there something you want to try here?
   - FR: Moi non plus ! Il y a quelque chose que tu veux essayer ici ?
@@ -16456,22 +16678,16 @@ No meaning quiz in this mission.
     - FR: Je veux essayer la plongée.
     - ES: Quiero probar el buceo.
     - HE: אני רוצה לנסות צלילה.
-  - choice 2 — 🛟 accepted — conversation-help tool → r14 — `phrase.recovery.what-mean`
-    - EN: What does that mean?
-    - FR: Qu’est-ce que ça veut dire ?
-    - ES: ¿Qué significa eso?
-    - HE: מה זה אומר?
-- **r14** · NPC · slow (TTS rate 0.75) · off the happy path → c14b
-  - EN: Something new. What do you want — to try?
-  - FR: Quelque chose de nouveau. Tu veux essayer — quoi ?
-  - ES: Algo nuevo. ¿Qué quieres — probar?
-  - HE: משהו חדש. מה אתה רוצה — לנסות?
-- **c14b** · LEARNER choice screen · off the happy path
-  - choice 1 — ✅ accepted → n15 — `phrase.hobby.want-to-try`
-    - EN: I want to try diving.
-    - FR: Je veux essayer la plongée.
-    - ES: Quiero probar el buceo.
-    - HE: אני רוצה לנסות צלילה.
+  - choice 2 — ❌ WRONG → m14 — `phrase.hobby.i-usually`
+    - EN: I usually draw in the evening.
+    - FR: D’habitude, je dessine le soir.
+    - ES: Normalmente dibujo por la noche.
+    - HE: בדרך כלל אני מצייר בערב.
+- **m14** · NPC · slow (TTS rate 0.75) · off the happy path → c14
+  - EN: Me neither! Is there something you want to try here?
+  - FR: Moi non plus ! Il y a quelque chose que tu veux essayer ici ?
+  - ES: ¡Yo tampoco! ¿Hay algo que quieras probar aquí?
+  - HE: גם אני לא! יש משהו שאתה רוצה לנסות כאן?
 - **n15** · NPC · normal (TTS rate 0.95) → c16
   - EN: Good idea! There's a diving school near the beach.
   - FR: Bonne idée ! Il y a une école de plongée près de la plage.
@@ -16483,6 +16699,16 @@ No meaning quiz in this mission.
     - FR: Tu aimes la plongée ?
     - ES: ¿Te gusta el buceo?
     - HE: אתה אוהב לצלול?
+  - choice 2 — ❌ WRONG → m16 — `phrase.hobby.what-for-fun`
+    - EN: What do you do for fun?
+    - FR: Qu’est-ce que tu aimes faire ?
+    - ES: ¿Qué te gusta hacer?
+    - HE: מה אתה אוהב לעשות בזמן הפנוי?
+- **m16** · NPC · slow (TTS rate 0.75) · off the happy path → c16
+  - EN: Good idea! There's a diving school near the beach.
+  - FR: Bonne idée ! Il y a une école de plongée près de la plage.
+  - ES: ¡Buena idea! Hay una escuela de buceo cerca de la playa.
+  - HE: רעיון טוב! יש בית ספר לצלילה ליד החוף.
 - **n17** · NPC · normal (TTS rate 0.95) · END of scene
   - EN: I love it! Let's go together tomorrow.
   - FR: J’adore ! On y va ensemble demain.
@@ -16530,7 +16756,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 
 ## Learner choice screens
 
-### M16-Q15 — dialogue-choice (step 13, scene "free-time-chat" · node c2)
+### M16-Q11 — dialogue-choice (step 22, scene "free-time-chat" · node c2)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Hi! Are you free today?" · FR "Salut ! Tu es libre aujourd’hui ?" · ES "¡Hola! ¿Estás libre hoy?"
@@ -16538,10 +16764,11 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
   1. EN "Yes! What do you do for fun?" · FR "Oui ! Qu’est-ce que tu aimes faire ?" · ES "¡Sí! ¿Qué te gusta hacer?" · (HE gloss "כן! מה אתה אוהב לעשות בזמן הפנוי?") — `phrase.hobby.what-for-fun` — ✅ accepted → n3
-- Tests: phrase.hobby.what-for-fun
+  2. EN "I love surfing!" · FR "J’adore le surf !" · ES "¡Me encanta el surf!" · (HE gloss "אני מאוד אוהב לגלוש!") — `phrase.hobby.i-love-surfing` — ❌ wrong → m2
+- Tests: phrase.hobby.what-for-fun, phrase.hobby.i-love-surfing
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M16-Q16 — dialogue-choice (step 13, scene "free-time-chat" · node c4)
+### M16-Q12 — dialogue-choice (step 22, scene "free-time-chat" · node c4)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "I surf a lot. Do you like surfing?" · FR "Je fais beaucoup de surf. Tu aimes le surf ?" · ES "Hago mucho surf. ¿Te gusta el surf?"
@@ -16549,10 +16776,11 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
   1. EN "I love surfing!" · FR "J’adore le surf !" · ES "¡Me encanta el surf!" · (HE gloss "אני מאוד אוהב לגלוש!") — `phrase.hobby.i-love-surfing` — ✅ accepted → n5
-- Tests: phrase.hobby.i-love-surfing
+  2. EN "I want to try diving." · FR "Je veux essayer la plongée." · ES "Quiero probar el buceo." · (HE gloss "אני רוצה לנסות צלילה.") — `phrase.hobby.want-to-try` — ❌ wrong → m4
+- Tests: phrase.hobby.i-love-surfing, phrase.hobby.want-to-try
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M16-Q17 — dialogue-choice (step 13, scene "free-time-chat" · node c6)
+### M16-Q13 — dialogue-choice (step 22, scene "free-time-chat" · node c6)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Great! And what else do you like?" · FR "Super ! Et tu aimes quoi d’autre ?" · ES "¡Genial! ¿Y qué más te gusta?"
@@ -16560,10 +16788,11 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
   1. EN "I like drawing." · FR "J’aime dessiner." · ES "Me gusta dibujar." · (HE gloss "אני אוהב לצייר.") — `phrase.hobby.i-like-drawing` — ✅ accepted → n7
-- Tests: phrase.hobby.i-like-drawing
+  2. EN "Do you like diving?" · FR "Tu aimes la plongée ?" · ES "¿Te gusta el buceo?" · (HE gloss "אתה אוהב לצלול?") — `phrase.hobby.do-you-like` — ❌ wrong → m6
+- Tests: phrase.hobby.i-like-drawing, phrase.hobby.do-you-like
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M16-Q18 — dialogue-choice (step 13, scene "free-time-chat" · node c8)
+### M16-Q14 — dialogue-choice (step 22, scene "free-time-chat" · node c8)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Nice! When do you draw?" · FR "Sympa ! Tu dessines quand ?" · ES "¡Qué bien! ¿Cuándo dibujas?"
@@ -16571,10 +16800,11 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
   1. EN "I usually draw in the evening." · FR "D’habitude, je dessine le soir." · ES "Normalmente dibujo por la noche." · (HE gloss "בדרך כלל אני מצייר בערב.") — `phrase.hobby.i-usually` — ✅ accepted → n9
-- Tests: phrase.hobby.i-usually
+  2. EN "I like drawing." · FR "J’aime dessiner." · ES "Me gusta dibujar." · (HE gloss "אני אוהב לצייר.") — `phrase.hobby.i-like-drawing` — ❌ wrong → m8
+- Tests: phrase.hobby.i-usually, phrase.hobby.i-like-drawing
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M16-Q19 — dialogue-choice (step 13, scene "free-time-chat" · node c10)
+### M16-Q15 — dialogue-choice (step 22, scene "free-time-chat" · node c10)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "In the evening I like to listen to music. Do you like music?" · FR "Le soir, j’aime écouter de la musique. Tu aimes la musique ?" · ES "Por la noche me gusta escuchar música. ¿Te gusta la música?"
@@ -16582,10 +16812,11 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
   1. EN "Yes, I like to listen to music too." · FR "Oui, moi aussi j’aime écouter de la musique." · ES "Sí, a mí también me gusta escuchar música." · (HE gloss "כן, גם אני אוהב לשמוע מוזיקה.") — `phrase.hobby.like-to-listen` — ✅ accepted → n11
-- Tests: phrase.hobby.like-to-listen
+  2. EN "I don't like running." · FR "Je n’aime pas courir." · ES "No me gusta correr." · (HE gloss "אני לא אוהב לרוץ.") — `phrase.hobby.dont-like-running` — ❌ wrong → m10
+- Tests: phrase.hobby.like-to-listen, phrase.hobby.dont-like-running
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M16-Q20 — dialogue-choice (step 13, scene "free-time-chat" · node c12)
+### M16-Q16 — dialogue-choice (step 22, scene "free-time-chat" · node c12)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "And sport? Do you like running?" · FR "Et le sport ? Tu aimes courir ?" · ES "¿Y el deporte? ¿Te gusta correr?"
@@ -16593,10 +16824,11 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
   1. EN "No, I don't like running." · FR "Non, je n’aime pas courir." · ES "No, no me gusta correr." · (HE gloss "לא, אני לא אוהב לרוץ.") — `phrase.hobby.dont-like-running` — ✅ accepted → n13
-- Tests: phrase.hobby.dont-like-running
+  2. EN "I love surfing!" · FR "J’adore le surf !" · ES "¡Me encanta el surf!" · (HE gloss "אני מאוד אוהב לגלוש!") — `phrase.hobby.i-love-surfing` — ❌ wrong → m12
+- Tests: phrase.hobby.dont-like-running, phrase.hobby.i-love-surfing
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M16-Q21 — dialogue-choice (step 13, scene "free-time-chat" · node c14)
+### M16-Q17 — dialogue-choice (step 22, scene "free-time-chat" · node c14)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Me neither! Is there something you want to try here?" · FR "Moi non plus ! Il y a quelque chose que tu veux essayer ici ?" · ES "¡Yo tampoco! ¿Hay algo que quieras probar aquí?"
@@ -16604,22 +16836,11 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
   1. EN "I want to try diving." · FR "Je veux essayer la plongée." · ES "Quiero probar el buceo." · (HE gloss "אני רוצה לנסות צלילה.") — `phrase.hobby.want-to-try` — ✅ accepted → n15
-  2. EN "What does that mean?" · FR "Qu’est-ce que ça veut dire ?" · ES "¿Qué significa eso?" · (HE gloss "מה זה אומר?") — `phrase.recovery.what-mean` — ✅ accepted → r14
-- Tests: phrase.hobby.want-to-try, phrase.recovery.what-mean
+  2. EN "I usually draw in the evening." · FR "D’habitude, je dessine le soir." · ES "Normalmente dibujo por la noche." · (HE gloss "בדרך כלל אני מצייר בערב.") — `phrase.hobby.i-usually` — ❌ wrong → m14
+- Tests: phrase.hobby.want-to-try, phrase.hobby.i-usually
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M16-Q22 — dialogue-choice (step 13, scene "free-time-chat" · node c14b)
-
-- Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio played: EN "Something new. What do you want — to try?" · FR "Quelque chose de nouveau. Tu veux essayer — quoi ?" · ES "Algo nuevo. ¿Qué quieres — probar?"
-- Meaning of the audio (HE): "משהו חדש. מה אתה רוצה — לנסות?"
-- Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
-- Choices:
-  1. EN "I want to try diving." · FR "Je veux essayer la plongée." · ES "Quiero probar el buceo." · (HE gloss "אני רוצה לנסות צלילה.") — `phrase.hobby.want-to-try` — ✅ accepted → n15
-- Tests: phrase.hobby.want-to-try
-- Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
-
-### M16-Q23 — dialogue-choice (step 13, scene "free-time-chat" · node c16)
+### M16-Q18 — dialogue-choice (step 22, scene "free-time-chat" · node c16)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Good idea! There's a diving school near the beach." · FR "Bonne idée ! Il y a une école de plongée près de la plage." · ES "¡Buena idea! Hay una escuela de buceo cerca de la playa."
@@ -16627,38 +16848,65 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
   1. EN "Do you like diving?" · FR "Tu aimes la plongée ?" · ES "¿Te gusta el buceo?" · (HE gloss "אתה אוהב לצלול?") — `phrase.hobby.do-you-like` — ✅ accepted → n17
-- Tests: phrase.hobby.do-you-like
+  2. EN "What do you do for fun?" · FR "Qu’est-ce que tu aimes faire ?" · ES "¿Qué te gusta hacer?" · (HE gloss "מה אתה אוהב לעשות בזמן הפנוי?") — `phrase.hobby.what-for-fun` — ❌ wrong → m16
+- Tests: phrase.hobby.do-you-like, phrase.hobby.what-for-fun
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
 ## Recovery tools in this mission
 
-Toolkit phrases bundled into this mission's sentence list: `phrase.recovery.what-mean` "What does that mean?".
+No toolkit phrase is bundled into this mission.
 
-Where a conversation-help tool can be selected, and what happens:
+No conversation-help tool is selectable in this mission's dialogues.
 
-- Scene `free-time-chat`, c14 — `phrase.recovery.what-mean` "What does that mean?" ("מה זה אומר?") — after NPC "Me neither! Is there something you want to try here?" → r14: NPC "Something new. What do you want — to try?" (slow) → r14 → c14b → rejoins the happy path at n15. Counts as success (recorded as "pass"); no feedback card — the dialogue simply continues.
 
 ## Wrong answer branches
 
-None — no choice in this mission is marked wrong.
+8 reachable wrong-answer branch(es):
 
+- Scene `free-time-chat`, c2 — after NPC "Hi! Are you free today?"
+  - Wrong choice: "I love surfing!" ("אני מאוד אוהב לגלוש!") — `phrase.hobby.i-love-surfing`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("Yes! What do you do for fun?"), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m2): "Hi! Are you free today?" — HE "היי! אתה פנוי היום?"
+  - Then: m2 → rejoins the happy path at c2. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
+- Scene `free-time-chat`, c4 — after NPC "I surf a lot. Do you like surfing?"
+  - Wrong choice: "I want to try diving." ("אני רוצה לנסות צלילה.") — `phrase.hobby.want-to-try`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("I love surfing!"), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m4): "I surf a lot. Do you like surfing?" — HE "אני גולש הרבה. אתה אוהב לגלוש?"
+  - Then: m4 → rejoins the happy path at c4. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
+- Scene `free-time-chat`, c6 — after NPC "Great! And what else do you like?"
+  - Wrong choice: "Do you like diving?" ("אתה אוהב לצלול?") — `phrase.hobby.do-you-like`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("I like drawing."), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m6): "Great! And what else do you like?" — HE "מעולה! ומה עוד אתה אוהב?"
+  - Then: m6 → rejoins the happy path at c6. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
+- Scene `free-time-chat`, c8 — after NPC "Nice! When do you draw?"
+  - Wrong choice: "I like drawing." ("אני אוהב לצייר.") — `phrase.hobby.i-like-drawing`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("I usually draw in the evening."), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m8): "Nice! When do you draw?" — HE "יפה! מתי אתה מצייר?"
+  - Then: m8 → rejoins the happy path at c8. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
+- Scene `free-time-chat`, c10 — after NPC "In the evening I like to listen to music. Do you like music?"
+  - Wrong choice: "I don't like running." ("אני לא אוהב לרוץ.") — `phrase.hobby.dont-like-running`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("Yes, I like to listen to music too."), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m10): "In the evening I like to listen to music. Do you like music?" — HE "בערב אני אוהב לשמוע מוזיקה. אתה אוהב מוזיקה?"
+  - Then: m10 → rejoins the happy path at c10. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
+- Scene `free-time-chat`, c12 — after NPC "And sport? Do you like running?"
+  - Wrong choice: "I love surfing!" ("אני מאוד אוהב לגלוש!") — `phrase.hobby.i-love-surfing`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("No, I don't like running."), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m12): "And sport? Do you like running?" — HE "וספורט? אתה אוהב לרוץ?"
+  - Then: m12 → rejoins the happy path at c12. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
+- Scene `free-time-chat`, c14 — after NPC "Me neither! Is there something you want to try here?"
+  - Wrong choice: "I usually draw in the evening." ("בדרך כלל אני מצייר בערב.") — `phrase.hobby.i-usually`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("I want to try diving."), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m14): "Me neither! Is there something you want to try here?" — HE "גם אני לא! יש משהו שאתה רוצה לנסות כאן?"
+  - Then: m14 → rejoins the happy path at c14. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
+- Scene `free-time-chat`, c16 — after NPC "Good idea! There's a diving school near the beach."
+  - Wrong choice: "What do you do for fun?" ("מה אתה אוהב לעשות בזמן הפנוי?") — `phrase.hobby.what-for-fun`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("Do you like diving?"), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m16): "Good idea! There's a diving school near the beach." — HE "רעיון טוב! יש בית ספר לצלילה ליד החוף."
+  - Then: m16 → rejoins the happy path at c16. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
 
 ## Sentence review
 
-Step 15. 12 sentences, in this fixed order. Each is played automatically (TTS), shown with its translation and tip; buttons: 🔊 "Hear again" / "לשמוע שוב" and Next. No speaking prompt, no grading, no scoring; nothing is recorded.
-
-1. `phrase.hobby.what-for-fun` — What do you do for fun? — מה אתה אוהב לעשות בזמן הפנוי?
-2. `phrase.hobby.i-like-drawing` — I like drawing. — אני אוהב לצייר.
-3. `phrase.hobby.i-love-surfing` — I love surfing! — אני מאוד אוהב לגלוש!
-4. `phrase.hobby.dont-like-running` — I don't like running. — אני לא אוהב לרוץ.
-5. `phrase.hobby.i-usually` — I usually draw in the evening. — בדרך כלל אני מצייר בערב.
-6. `phrase.hobby.like-to-listen` — I like to listen to music. — אני אוהב לשמוע מוזיקה.
-7. `phrase.hobby.want-to-try` — I want to try diving. — אני רוצה לנסות צלילה.
-8. `phrase.hobby.do-you-like` — Do you like diving? — אתה אוהב לצלול?
-9. `reply.hobby.what-else` — What else do you like? — מה עוד אתה אוהב?
-10. `reply.hobby.want-to-try-q` — Is there something you want to try? — יש משהו שאתה רוצה לנסות?
-11. `reply.hobby.me-neither` — Me neither! — גם אני לא!
-12. `phrase.recovery.what-mean` — What does that mean? — מה זה אומר?
+No sentence-review step in this mission.
 
 ## Cold open / ambush
 
@@ -16676,39 +16924,36 @@ Every learner sentence of this mission is a line in a scene.
 
 ## Receipts (proof cards)
 
-- Step 9: "You recognize it when someone asks what you like — and what else." / "אתה מזהה כששואלים מה אתה אוהב — ומה עוד."
-- Step 14: "You said what you like, what you don’t, and what you want to try — and asked back." / "סיפרת מה אתה אוהב, מה לא, ומה אתה רוצה לנסות — ושאלת בחזרה."
-- Step 17: "A whole chat about what you like, at normal pace — without hunting for words." / "שיחה שלמה על מה שאתה אוהב, בקצב רגיל — בלי לחפש מילים."
+- Step 21: "🧭 Diving school · near the beach → Tomorrow · together ¦ 🎯 My free time: 😍 Love: Surfing / 🙂 Like: Drawing · Music / 🙅 Don’t like: Running / ✨ Want to try: Diving / 🕒 Drawing → Evening ‖ 👋 My friend: Surfing: a lot / Music: in the evening / Running: doesn’t like it either / Diving: loves it ¦ Your free time — and a plan for tomorrow." / "🧭 בית ספר לצלילה · ליד החוף → מחר · יחד ¦ 🎯 הזמן הפנוי שלי: 😍 אוהב מאוד: גלישה / 🙂 אוהב: ציור · מוזיקה / 🙅 לא אוהב: ריצה / ✨ רוצה לנסות: צלילה / 🕒 ציור → ערב ‖ 👋 החבר: גלישה: הרבה / מוזיקה: בערב / ריצה: גם הוא לא אוהב / צלילה: אוהב מאוד ¦ הזמן הפנוי שלך — ותוכנית למחר."
+- Step 23: "The whole chat — what you love, like and don’t, when, what you want to try — and you asked back." / "כל השיחה — מה אתה אוהב, מה לא, מתי, מה אתה רוצה לנסות — ושאלת בחזרה."
+- Step 25: "No help — love, when, don’t like, want to try, and you asked back." / "בלי עזרה — אוהב, מתי, לא אוהב, רוצה לנסות, ושאלת בחזרה."
+- Step 28: "🎯 FREE TIME MATCH ¦ 🧭 Diving school · near the beach → Tomorrow · together ¦ 🎯 My free time: 😍 Love: Surfing / 🙂 Like: Drawing · Music / 🙅 Don’t like: Running / ✨ Want to try: Diving / 🕒 Drawing → Evening ‖ 👋 My friend: Surfing: a lot / Music: in the evening / Running: doesn’t like it either / Diving: loves it" / "🎯 התאמת זמן פנוי ¦ 🧭 בית ספר לצלילה · ליד החוף → מחר · יחד ¦ 🎯 הזמן הפנוי שלי: 😍 אוהב מאוד: גלישה / 🙂 אוהב: ציור · מוזיקה / 🙅 לא אוהב: ריצה / ✨ רוצה לנסות: צלילה / 🕒 ציור → ערב ‖ 👋 החבר: גלישה: הרבה / מוזיקה: בערב / ריצה: גם הוא לא אוהב / צלילה: אוהב מאוד"
 
 ## Audit Metadata — DO NOT FIX YET
 
 - Learner-production sentences: 8
-- Receptive (expected-reply) sentences: 6
-- Toolkit phrases bundled: 1
-- Key-sentence steps: 6
-- Expected-reply/listening items: 4
+- Receptive (expected-reply) sentences: 9
+- Toolkit phrases bundled: 0
+- Key-sentence steps: 0
+- Expected-reply/listening items: 0
 - Questions/quizzes (meaning quiz): 0
-- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 15
-- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 16
-- One-button dialogue screens: 8
+- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 22
+- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 23
+- One-button dialogue screens: 0
 - Learner sentences never actively retrieved: 0
-- Dialogue learner choices (screens): 9
-- Wrong-answer branches: 0
+- Dialogue learner choices (screens): 8
+- Wrong-answer branches: 8
 - Cold-open prompts: 0
-- Recovery opportunities: 1
-- Vocabulary pre-items: 0
+- Recovery opportunities: 0
+- Vocabulary pre-items: 16
 - Swap variants (extra accepted lines): 0
-- Sentences in review: 12
-- Total interactive questions: 28 (answer choices: 65)
-- Approximate total learner interactions: 46 (questions + key sentences + review cards + word-intro screen)
+- Sentences in review: 0
+- Total interactive questions: 30 (answer choices: 85)
+- Approximate total learner interactions: 31 (questions + key sentences + review cards + word-intro screen)
 
-### AUTO-FLAG — requires human review (5)
+### AUTO-FLAG — requires human review (0)
 
-- AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "free-time-chat" n1 — “Hi! Are you free today?”
-- AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "free-time-chat" n7 — “Nice! When do you draw?”
-- AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "free-time-chat" n11 — “And sport? Do you like running?”
-- AUTO-FLAG — 9 of 9 choice screens have NO wrong option (every button is accepted): free-time-chat/c2, free-time-chat/c4, free-time-chat/c6, free-time-chat/c8, free-time-chat/c10, free-time-chat/c12, free-time-chat/c14, free-time-chat/c14b, free-time-chat/c16.
-- AUTO-FLAG — 8 choice screens offer exactly ONE button (no decision): free-time-chat/c2, free-time-chat/c4, free-time-chat/c6, free-time-chat/c8, free-time-chat/c10, free-time-chat/c12, free-time-chat/c14b, free-time-chat/c16.
+None raised by the mechanical checks.
 
 ---
 
@@ -24663,7 +24908,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Qué significa eso?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 16, 25
+- Used in missions: 25
 - Exercised here as: dialogue choice police-station/c4 (accepted)
 
 ### Sentence: `phrase.recovery.slowly`
@@ -30373,7 +30618,7 @@ Every learner sentence of this mission is a line in a scene.
 | 13 Home, Family & Daily Routine | 18 (9 / 9 / 0) | 0 | 1 | 1 | 33 | 8 | 0 | 0 | 0 | 17 words | 0 | 42 | 1 |
 | 14 Restaurant Meal | 20 (9 / 6 / 5) | 0 | 0 | 0 | 26 | 6 | 1 | 1 | 0 | 11 words | 0 | 32 | 24 |
 | 15 Food Preferences & Allergies | 11 (4 / 6 / 1) | 0 | 0 | 0 | 20 | 6 | 1 | 0 | 0 | 9 words | 0 | 26 | 2 |
-| 16 Hobbies & Free Time | 15 (8 / 6 / 1) | 4 | 4 | 0 | 15 | 9 | 8 | 1 | 0 | no | 0 | 28 | 5 |
+| 16 Hobbies & Free Time | 17 (8 / 9 / 0) | 0 | 0 | 0 | 22 | 8 | 0 | 0 | 0 | 16 words | 0 | 30 | 0 |
 | 17 Supermarket & Everyday Shopping | 13 (4 / 5 / 4) | 4 | 4 | 0 | 15 | 7 | 3 | 2 | 1 | no | 1 | 27 | 8 |
 | 18 CHECKPOINT: Everyday Day | 25 (20 / 2 / 3) | 0 | 0 | 0 | 0 | 15 | 0 | 3 | 1 | no | 0 | 16 | 11 |
 | 19 Public Transport | 14 (5 / 6 / 3) | 4 | 4 | 0 | 17 | 10 | 5 | 3 | 1 | no | 1 | 32 | 6 |
@@ -30484,14 +30729,14 @@ Every learner-production sentence id of the Core, in order of first appearance. 
 | `phrase.diet.without-onions` | Without onions, please. | 15 | — | 0 | 1 / 0 | 9 | 0 | 0 | no | no |  |
 | `phrase.diet.vegetarian` | I'm vegetarian. | 15 | — | 0 | 2 / 1 | 13 | 0 | 0 | no | no |  |
 | `phrase.diet.does-have-dairy` | Does it have dairy? | 15 | — | 0 | 1 / 2 | 13 | 0 | 0 | no | no |  |
-| `phrase.hobby.what-for-fun` | What do you do for fun? | 16 | — | 1 | 1 / 0 | 4 | 0 | 1 | no | no |  |
-| `phrase.hobby.i-love-surfing` | I love surfing! | 16 | 18 | 1 | 2 / 0 | 4 | 0 | 1 | yes | no |  |
-| `phrase.hobby.i-like-drawing` | I like drawing. | 16 | — | 1 | 1 / 0 | 6 | 0 | 1 | no | no |  |
-| `phrase.hobby.i-usually` | I usually draw in the evening. | 16 | 18 | 1 | 1 / 1 | 8 | 0 | 1 | yes | no |  |
-| `phrase.hobby.like-to-listen` | I like to listen to music. | 16 | — | 0 | 1 / 0 | 3 | 0 | 1 | no | no |  |
-| `phrase.hobby.dont-like-running` | I don't like running. | 16 | — | 1 | 1 / 0 | 3 | 0 | 1 | no | no |  |
-| `phrase.hobby.want-to-try` | I want to try diving. | 16 | — | 1 | 2 / 0 | 7 | 0 | 1 | no | no |  |
-| `phrase.hobby.do-you-like` | Do you like diving? | 16 | — | 0 | 1 / 0 | 2 | 0 | 1 | no | no |  |
+| `phrase.hobby.what-for-fun` | What do you do for fun? | 16 | — | 0 | 1 / 1 | 6 | 0 | 0 | no | no |  |
+| `phrase.hobby.i-love-surfing` | I love surfing! | 16 | 18 | 0 | 2 / 2 | 7 | 0 | 0 | yes | no |  |
+| `phrase.hobby.want-to-try` | I want to try diving. | 16 | — | 0 | 1 / 1 | 8 | 0 | 0 | no | no |  |
+| `phrase.hobby.i-like-drawing` | I like drawing. | 16 | — | 0 | 1 / 1 | 5 | 0 | 0 | no | no |  |
+| `phrase.hobby.do-you-like` | Do you like diving? | 16 | — | 0 | 1 / 1 | 6 | 0 | 0 | no | no |  |
+| `phrase.hobby.i-usually` | I usually draw in the evening. | 16 | 18 | 0 | 1 / 2 | 5 | 0 | 0 | yes | no |  |
+| `phrase.hobby.like-to-listen` | I like to listen to music. | 16 | — | 0 | 1 / 0 | 3 | 0 | 0 | no | no |  |
+| `phrase.hobby.dont-like-running` | I don't like running. | 16 | — | 0 | 1 / 1 | 4 | 0 | 0 | no | no |  |
 | `phrase.super.where-is` | Where is the milk? | 17 | 18 | 1 | 3 / 1 | 9 | 0 | 1 | yes | no |  |
 | `phrase.super.do-you-have` | Do you have bread? | 17 | 18 | 1 | 1 / 1 | 6 | 0 | 1 | yes | no |  |
 | `phrase.super.just-this` | Just this, thanks. | 17 | 18 | 1 | 3 / 1 | 7 | 1 | 1 | yes | no |  |
@@ -30680,12 +30925,15 @@ Every expected-reply sentence id. "Quick response" does not exist as an exercise
 | `reply.diet.cream` | Yes, it has some cream, but we can make it without. | 15 | — | no | 0 / 0 | 0 / 0 | no | yes |
 | `reply.diet.tell` | Of course. I'll tell the kitchen about your allergy. | 15 | — | no | 0 / 0 | 0 / 0 | no | yes |
 | `reply.diet.back` | I'll check with them and come right back. | 15 | — | no | 0 / 0 | 0 / 0 | no | yes |
-| `reply.hobby.do-you-like-surfing` | Do you like surfing? | 16 | — | no | 0 / 0 | 0 / 0 | no | yes |
-| `reply.hobby.what-else` | What else do you like? | 16 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
-| `reply.hobby.do-you-like-music` | Do you like music? | 16 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
-| `reply.hobby.me-neither` | Me neither! | 16 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
-| `reply.hobby.want-to-try-q` | Is there something you want to try? | 16 | — | no | 0 / 0 | 0 / 0 | no | yes |
-| `reply.hobby.go-together` | Let's go together. | 16 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
+| `reply.hobby.free-today` | Hi! Are you free today? | 16 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.hobby.do-you-like-surfing` | I surf a lot. Do you like surfing? | 16 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.hobby.what-else` | Great! And what else do you like? | 16 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.hobby.when-draw` | Nice! When do you draw? | 16 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.hobby.do-you-like-music` | In the evening I like to listen to music. Do you like music? | 16 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.hobby.sport` | And sport? Do you like running? | 16 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.hobby.want-to-try-q` | Me neither! Is there something you want to try here? | 16 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.hobby.diving-school` | Good idea! There's a diving school near the beach. | 16 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.hobby.go-together` | I love it! Let's go together tomorrow. | 16 | — | no | 0 / 0 | 0 / 0 | no | yes |
 | `reply.super.aisle-three` | It's in aisle three. | 17 | — | yes (1) | 0 / 0 | 0 / 0 | no | **no** |
 | `reply.super.over-there` | Over there, on the left. | 17 | — | yes (1) | 0 / 0 | 0 / 0 | no | **no** |
 | `reply.super.bag-q` | Do you need a bag? | 17 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
@@ -30754,9 +31002,6 @@ Happy-path NPC lines containing a question, for which the mission has no expecte
 | 10 | cold-taxi / n1 | Hello! Where to? |
 | 10 | cold-taxi / n5 | …We are almost there. Is here okay? |
 | 10 | cold-hotel / n1 | Good evening! How can I help you? |
-| 16 | free-time-chat / n1 | Hi! Are you free today? |
-| 16 | free-time-chat / n7 | Nice! When do you draw? |
-| 16 | free-time-chat / n11 | And sport? Do you like running? |
 | 17 | supermarket / n1 | Hi there! Can I help you find something? |
 | 17 | supermarket / n3 | Hi! Is that everything? |
 | 18 | cold-morning / n1 | Good morning! What can I get you? |
@@ -30830,7 +31075,7 @@ Happy-path NPC lines containing a question, for which the mission has no expecte
 | 30 | fin-evening / n1 | Good evening! Is everything okay with your room? And breakfast tomorrow — is seven okay for you? |
 | 30 | fin-evening / n3 | Perfect. And how was your day? |
 
-Total: 83.
+Total: 80.
 
 # Complete Existing Question Bank
 
@@ -35986,238 +36231,270 @@ No questions.
 
 ## Mission 16 — Hobbies & Free Time
 
-**M16-Q01** — expected-reply
-- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (1/4)
-- Audio: What else do you like? — (מה עוד אתה אוהב?)
-- A: מה עוד אתה אוהב? / What else do you like? ✅
-- B: אתה אוהב מוזיקה? / Do you like music?
-- C: גם אני לא! / Me neither!
-- Correct: What else do you like?
-- Tests: reply.hobby.what-else
+**M16-Q01** — quick-reply
+- Prompt: "🎯 My free time: 😍 Love: ? / 🙂 Like: ? / 🙅 Don’t like: ? / ✨ Want to try: ? / 🕒 When: ? ‖ 👋 My friend: ? ¦ Your friend says hi. What do you ask?" / "🎯 הזמן הפנוי שלי: 😍 אוהב מאוד: ? / 🙂 אוהב: ? / 🙅 לא אוהב: ? / ✨ רוצה לנסות: ? / 🕒 מתי: ? ‖ 👋 החבר: ? ¦ החבר אומר היי. מה אתה שואל?"
+- Audio: Hi! Are you free today? — (היי! אתה פנוי היום?)
+- A: Yes! What do you do for fun? ✅
+- B: I love surfing!
+- Correct: Yes! What do you do for fun?
+- Tests: phrase.hobby.what-for-fun
 
-**M16-Q02** — expected-reply
-- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (2/4)
-- Audio: Do you like music? — (אתה אוהב מוזיקה?)
-- A: אתה אוהב מוזיקה? / Do you like music? ✅
-- B: מה עוד אתה אוהב? / What else do you like?
-- C: גם אני לא! / Me neither!
-- Correct: Do you like music?
-- Tests: reply.hobby.do-you-like-music
+**M16-Q02** — visual-match
+- Prompt: "🎯 My free time: 😍 Love: ? / 🙂 Like: ? / 🙅 Don’t like: ? / ✨ Want to try: ? / 🕒 When: ? ‖ 👋 My friend: ? ¦ 🎯 Sort your hobbies — listen, and tap where it goes." / "🎯 הזמן הפנוי שלי: 😍 אוהב מאוד: ? / 🙂 אוהב: ? / 🙅 לא אוהב: ? / ✨ רוצה לנסות: ? / 🕒 מתי: ? ‖ 👋 החבר: ? ¦ 🎯 מיין את התחביבים — שמע, והקש לאן זה שייך."
+- Audio: I love surfing! — (אני מאוד אוהב לגלוש!)
+- A: 😍 “Love” / “אוהב מאוד” ✅
+- B: 🙂 “Like” / “אוהב”
+- C: 🙅 “Don’t like” / “לא אוהב”
+- D: ✨ “Want to try” / “רוצה לנסות”
+- Correct: 😍 “Love” / “אוהב מאוד”
+- Tests: (no sentence id — not recorded)
 
-**M16-Q03** — expected-reply
-- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (3/4)
-- Audio: Me neither! — (גם אני לא!)
-- A: גם אני לא! / Me neither! ✅
-- B: מה עוד אתה אוהב? / What else do you like?
-- C: אתה אוהב מוזיקה? / Do you like music?
-- Correct: Me neither!
-- Tests: reply.hobby.me-neither
+**M16-Q03** — visual-match
+- Prompt: "🎯 My free time: 😍 Love: Surfing / 🙂 Like: ? / 🙅 Don’t like: ? / ✨ Want to try: ? / 🕒 When: ? ‖ 👋 My friend: Surfing: a lot ¦ 🎯 Sort your hobbies — listen, and tap where it goes." / "🎯 הזמן הפנוי שלי: 😍 אוהב מאוד: גלישה / 🙂 אוהב: ? / 🙅 לא אוהב: ? / ✨ רוצה לנסות: ? / 🕒 מתי: ? ‖ 👋 החבר: גלישה: הרבה ¦ 🎯 מיין את התחביבים — שמע, והקש לאן זה שייך."
+- Audio: I like drawing. — (אני אוהב לצייר.)
+- A: 😍 “Love” / “אוהב מאוד”
+- B: 🙂 “Like” / “אוהב” ✅
+- C: 🙅 “Don’t like” / “לא אוהב”
+- D: ✨ “Want to try” / “רוצה לנסות”
+- Correct: 🙂 “Like” / “אוהב”
+- Tests: (no sentence id — not recorded)
 
-**M16-Q04** — expected-reply
-- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (4/4)
-- Audio: Let's go together. — (בוא נלך יחד.)
-- A: בוא נלך יחד. / Let's go together. ✅
-- B: מה עוד אתה אוהב? / What else do you like?
-- C: אתה אוהב מוזיקה? / Do you like music?
-- Correct: Let's go together.
-- Tests: reply.hobby.go-together
+**M16-Q04** — visual-match
+- Prompt: "🎯 My free time: 😍 Love: Surfing / 🙂 Like: Drawing / 🙅 Don’t like: ? / ✨ Want to try: ? / 🕒 When: ? ‖ 👋 My friend: Surfing: a lot ¦ When do you draw? Listen — and tap the time." / "🎯 הזמן הפנוי שלי: 😍 אוהב מאוד: גלישה / 🙂 אוהב: ציור / 🙅 לא אוהב: ? / ✨ רוצה לנסות: ? / 🕒 מתי: ? ‖ 👋 החבר: גלישה: הרבה ¦ מתי אתה מצייר? שמע — והקש על הזמן."
+- Audio: I usually draw in the evening. — (בדרך כלל אני מצייר בערב.)
+- A: 🌅 “Morning” / “בוקר”
+- B: ☀️ “Afternoon” / “צהריים”
+- C: 🌙 “Evening” / “ערב” ✅
+- Correct: 🌙 “Evening” / “ערב”
+- Tests: (no sentence id — not recorded)
 
-**M16-Q05** — swap-it
-- Prompt: "Like it, love it, or not for you?" / "אוהב, מאוד אוהב, או לא אוהב?" — cue 🙅 "Running — not for you" / "ריצה — זה לא בשבילך" — frame EN "I ___ running." · FR "___ courir." · ES "___ correr."
-- Audio: (nothing before the tap; the completed sentence is spoken after it) — ()
-- A: like → I like running.
-- B: love → I love running.
-- C: don't like → I don't like running. ✅
-- Correct: don't like → I don't like running.
-- Tests: phrase.hobby.dont-like-running
+**M16-Q05** — quick-reply
+- Prompt: "🎯 My free time: 😍 Love: Surfing / 🙂 Like: Drawing / 🙅 Don’t like: ? / ✨ Want to try: ? / 🕒 Drawing → Evening ‖ 👋 My friend: Surfing: a lot ¦ Your friend likes music in the evening. What do you answer?" / "🎯 הזמן הפנוי שלי: 😍 אוהב מאוד: גלישה / 🙂 אוהב: ציור / 🙅 לא אוהב: ? / ✨ רוצה לנסות: ? / 🕒 ציור → ערב ‖ 👋 החבר: גלישה: הרבה ¦ החבר אוהב מוזיקה בערב. מה אתה עונה?"
+- Audio: In the evening I like to listen to music. Do you like music? — (בערב אני אוהב לשמוע מוזיקה. אתה אוהב מוזיקה?)
+- A: Yes, I like to listen to music too. ✅
+- B: I like drawing.
+- C: I usually draw in the evening.
+- Correct: Yes, I like to listen to music too.
+- Tests: phrase.hobby.like-to-listen
 
-**M16-Q06** — swap-it
-- Prompt: "Like it, love it, or not for you?" / "אוהב, מאוד אוהב, או לא אוהב?" — cue 😍 "Surfing — you love it" / "גלישה — אתה מת על זה" — frame EN "I ___ surfing!" · FR "___ le surf !" · ES "¡___ el surf!"
-- Audio: (nothing before the tap; the completed sentence is spoken after it) — ()
-- A: like → I like surfing!
-- B: love → I love surfing! ✅
-- C: don't like → I don't like surfing!
-- Correct: love → I love surfing!
-- Tests: phrase.hobby.i-love-surfing
+**M16-Q06** — visual-match
+- Prompt: "🎯 My free time: 😍 Love: Surfing / 🙂 Like: Drawing / 🙅 Don’t like: ? / ✨ Want to try: ? / 🕒 Drawing → Evening ‖ 👋 My friend: Surfing: a lot ¦ 🎯 Sort your hobbies — listen, and tap where it goes." / "🎯 הזמן הפנוי שלי: 😍 אוהב מאוד: גלישה / 🙂 אוהב: ציור / 🙅 לא אוהב: ? / ✨ רוצה לנסות: ? / 🕒 ציור → ערב ‖ 👋 החבר: גלישה: הרבה ¦ 🎯 מיין את התחביבים — שמע, והקש לאן זה שייך."
+- Audio: Yes, I like to listen to music too. — (כן, גם אני אוהב לשמוע מוזיקה.)
+- A: 😍 “Love” / “אוהב מאוד”
+- B: 🙂 “Like” / “אוהב” ✅
+- C: 🙅 “Don’t like” / “לא אוהב”
+- D: ✨ “Want to try” / “רוצה לנסות”
+- Correct: 🙂 “Like” / “אוהב”
+- Tests: (no sentence id — not recorded)
 
-**M16-Q07** — swap-it
-- Prompt: "Like it, love it, or not for you?" / "אוהב, מאוד אוהב, או לא אוהב?" — cue 🙂 "Drawing — you like it" / "ציור — אתה אוהב את זה" — frame EN "I ___ drawing." · FR "___ dessiner." · ES "___ dibujar."
-- Audio: (nothing before the tap; the completed sentence is spoken after it) — ()
-- A: like → I like drawing. ✅
-- B: love → I love drawing.
-- C: don't like → I don't like drawing.
-- Correct: like → I like drawing.
-- Tests: phrase.hobby.i-like-drawing
+**M16-Q07** — visual-match
+- Prompt: "🎯 My free time: 😍 Love: Surfing / 🙂 Like: Drawing · Music / 🙅 Don’t like: ? / ✨ Want to try: ? / 🕒 Drawing → Evening ‖ 👋 My friend: Surfing: a lot / Music: in the evening ¦ 🎯 Sort your hobbies — listen, and tap where it goes." / "🎯 הזמן הפנוי שלי: 😍 אוהב מאוד: גלישה / 🙂 אוהב: ציור · מוזיקה / 🙅 לא אוהב: ? / ✨ רוצה לנסות: ? / 🕒 ציור → ערב ‖ 👋 החבר: גלישה: הרבה / מוזיקה: בערב ¦ 🎯 מיין את התחביבים — שמע, והקש לאן זה שייך."
+- Audio: No, I don't like running. — (לא, אני לא אוהב לרוץ.)
+- A: 😍 “Love” / “אוהב מאוד”
+- B: 🙂 “Like” / “אוהב”
+- C: 🙅 “Don’t like” / “לא אוהב” ✅
+- D: ✨ “Want to try” / “רוצה לנסות”
+- Correct: 🙅 “Don’t like” / “לא אוהב”
+- Tests: (no sentence id — not recorded)
 
-**M16-Q08** — sentence-builder
-- Prompt: "Build the sentence" / "בנה את המשפט" — cue shown: the sentence's MEANING in the app language ("בדרך כלל אני מצייר בערב.")
-- Audio: (nothing before Check; the built sentence is spoken once it is right) — ()
-- A: I usually  |  draw  |  in the evening. ✅
-- Correct: I usually  |  draw  |  in the evening.
-- Tests: phrase.hobby.i-usually
+**M16-Q08** — visual-match
+- Prompt: "🎯 My free time: 😍 Love: Surfing / 🙂 Like: Drawing · Music / 🙅 Don’t like: Running / ✨ Want to try: ? / 🕒 Drawing → Evening ‖ 👋 My friend: Surfing: a lot / Music: in the evening ¦ 🎯 Sort your hobbies — listen, and tap where it goes." / "🎯 הזמן הפנוי שלי: 😍 אוהב מאוד: גלישה / 🙂 אוהב: ציור · מוזיקה / 🙅 לא אוהב: ריצה / ✨ רוצה לנסות: ? / 🕒 ציור → ערב ‖ 👋 החבר: גלישה: הרבה / מוזיקה: בערב ¦ 🎯 מיין את התחביבים — שמע, והקש לאן זה שייך."
+- Audio: I want to try diving. — (אני רוצה לנסות צלילה.)
+- A: 😍 “Love” / “אוהב מאוד”
+- B: 🙂 “Like” / “אוהב”
+- C: 🙅 “Don’t like” / “לא אוהב”
+- D: ✨ “Want to try” / “רוצה לנסות” ✅
+- Correct: ✨ “Want to try” / “רוצה לנסות”
+- Tests: (no sentence id — not recorded)
 
 **M16-Q09** — quick-reply
-- Prompt: "A chat about free time — what do you say?" / "שיחה על זמן פנוי — מה עונים?"
-- Audio: Do you like surfing? — (אתה אוהב לגלוש?)
+- Prompt: "🧭 Diving school · near the beach ¦ 🎯 My free time: 😍 Love: Surfing / 🙂 Like: Drawing · Music / 🙅 Don’t like: Running / ✨ Want to try: Diving / 🕒 Drawing → Evening ‖ 👋 My friend: Surfing: a lot / Music: in the evening / Running: doesn’t like it either ¦ Now you ask back — the same question your friend asked you." / "🧭 בית ספר לצלילה · ליד החוף ¦ 🎯 הזמן הפנוי שלי: 😍 אוהב מאוד: גלישה / 🙂 אוהב: ציור · מוזיקה / 🙅 לא אוהב: ריצה / ✨ רוצה לנסות: צלילה / 🕒 ציור → ערב ‖ 👋 החבר: גלישה: הרבה / מוזיקה: בערב / ריצה: גם הוא לא אוהב ¦ עכשיו תורך לשאול — אותה שאלה שהחבר שאל אותך."
+- Audio: Good idea! There's a diving school near the beach. — (רעיון טוב! יש בית ספר לצלילה ליד החוף.)
+- A: Do you like diving? ✅
+- B: I want to try diving.
+- C: I love surfing!
+- Correct: Do you like diving?
+- Tests: phrase.hobby.do-you-like
+
+**M16-Q10** — visual-match
+- Prompt: "🧭 Diving school · near the beach ¦ 🎯 My free time: 😍 Love: Surfing / 🙂 Like: Drawing · Music / 🙅 Don’t like: Running / ✨ Want to try: Diving / 🕒 Drawing → Evening ‖ 👋 My friend: Surfing: a lot / Music: in the evening / Running: doesn’t like it either ¦ When do you go diving together?" / "🧭 בית ספר לצלילה · ליד החוף ¦ 🎯 הזמן הפנוי שלי: 😍 אוהב מאוד: גלישה / 🙂 אוהב: ציור · מוזיקה / 🙅 לא אוהב: ריצה / ✨ רוצה לנסות: צלילה / 🕒 ציור → ערב ‖ 👋 החבר: גלישה: הרבה / מוזיקה: בערב / ריצה: גם הוא לא אוהב ¦ מתי הולכים לצלול יחד?"
+- Audio: I love it! Let's go together tomorrow. — (מאוד! בוא נלך יחד מחר.)
+- A: 📅 “Today” / “היום”
+- B: 🌄 “Tomorrow” / “מחר” ✅
+- Correct: 🌄 “Tomorrow” / “מחר”
+- Tests: (no sentence id — not recorded)
+
+**M16-Q11** — dialogue-choice
+- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
+- Audio: Hi! Are you free today? — (היי! אתה פנוי היום?)
+- A: Yes! What do you do for fun? ✅
+- B: I love surfing!
+- Correct: Yes! What do you do for fun?
+- Tests: phrase.hobby.what-for-fun, phrase.hobby.i-love-surfing
+
+**M16-Q12** — dialogue-choice
+- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
+- Audio: I surf a lot. Do you like surfing? — (אני גולש הרבה. אתה אוהב לגלוש?)
+- A: I love surfing! ✅
+- B: I want to try diving.
+- Correct: I love surfing!
+- Tests: phrase.hobby.i-love-surfing, phrase.hobby.want-to-try
+
+**M16-Q13** — dialogue-choice
+- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
+- Audio: Great! And what else do you like? — (מעולה! ומה עוד אתה אוהב?)
+- A: I like drawing. ✅
+- B: Do you like diving?
+- Correct: I like drawing.
+- Tests: phrase.hobby.i-like-drawing, phrase.hobby.do-you-like
+
+**M16-Q14** — dialogue-choice
+- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
+- Audio: Nice! When do you draw? — (יפה! מתי אתה מצייר?)
+- A: I usually draw in the evening. ✅
+- B: I like drawing.
+- Correct: I usually draw in the evening.
+- Tests: phrase.hobby.i-usually, phrase.hobby.i-like-drawing
+
+**M16-Q15** — dialogue-choice
+- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
+- Audio: In the evening I like to listen to music. Do you like music? — (בערב אני אוהב לשמוע מוזיקה. אתה אוהב מוזיקה?)
+- A: Yes, I like to listen to music too. ✅
+- B: I don't like running.
+- Correct: Yes, I like to listen to music too.
+- Tests: phrase.hobby.like-to-listen, phrase.hobby.dont-like-running
+
+**M16-Q16** — dialogue-choice
+- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
+- Audio: And sport? Do you like running? — (וספורט? אתה אוהב לרוץ?)
+- A: No, I don't like running. ✅
+- B: I love surfing!
+- Correct: No, I don't like running.
+- Tests: phrase.hobby.dont-like-running, phrase.hobby.i-love-surfing
+
+**M16-Q17** — dialogue-choice
+- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
+- Audio: Me neither! Is there something you want to try here? — (גם אני לא! יש משהו שאתה רוצה לנסות כאן?)
+- A: I want to try diving. ✅
+- B: I usually draw in the evening.
+- Correct: I want to try diving.
+- Tests: phrase.hobby.want-to-try, phrase.hobby.i-usually
+
+**M16-Q18** — dialogue-choice
+- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
+- Audio: Good idea! There's a diving school near the beach. — (רעיון טוב! יש בית ספר לצלילה ליד החוף.)
+- A: Do you like diving? ✅
+- B: What do you do for fun?
+- Correct: Do you like diving?
+- Tests: phrase.hobby.do-you-like, phrase.hobby.what-for-fun
+
+**M16-Q19** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: I surf a lot. Do you like surfing? — (אני גולש הרבה. אתה אוהב לגלוש?)
 - A: I love surfing! ✅
 - B: I want to try diving.
 - C: I usually draw in the evening.
 - Correct: I love surfing!
 - Tests: phrase.hobby.i-love-surfing
 
-**M16-Q10** — quick-reply
-- Prompt: "A chat about free time — what do you say?" / "שיחה על זמן פנוי — מה עונים?"
-- Audio: What else do you like? — (מה עוד אתה אוהב?)
-- A: I like drawing. ✅
-- B: I like to listen to music. ✅
+**M16-Q20** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Nice! When do you draw? — (יפה! מתי אתה מצייר?)
+- A: I usually draw in the evening. ✅
+- B: I like drawing.
 - C: Do you like diving?
-- Correct: I like drawing. | I like to listen to music.
-- Tests: phrase.hobby.i-like-drawing, phrase.hobby.like-to-listen
-
-**M16-Q11** — quick-reply
-- Prompt: "A chat about free time — what do you say?" / "שיחה על זמן פנוי — מה עונים?"
-- Audio: Nice! When do you draw? — (יפה! מתי אתה מצייר?)
-- A: I usually draw in the evening. ✅
-- B: I like drawing.
-- C: I want to try diving.
 - Correct: I usually draw in the evening.
 - Tests: phrase.hobby.i-usually
 
-**M16-Q12** — quick-reply
-- Prompt: "A chat about free time — what do you say?" / "שיחה על זמן פנוי — מה עונים?"
+**M16-Q21** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio: And sport? Do you like running? — (וספורט? אתה אוהב לרוץ?)
 - A: No, I don't like running. ✅
-- B: I usually draw in the evening.
-- C: What do you do for fun?
+- B: I love surfing!
+- C: Yes! What do you do for fun?
 - Correct: No, I don't like running.
 - Tests: phrase.hobby.dont-like-running
 
-**M16-Q13** — quick-reply
-- Prompt: "A chat about free time — what do you say?" / "שיחה על זמן פנוי — מה עונים?"
-- Audio: Is there something you want to try? — (יש משהו שאתה רוצה לנסות?)
-- A: I want to try diving. ✅
-- B: I usually draw in the evening.
-- C: I like to listen to music.
-- Correct: I want to try diving.
-- Tests: phrase.hobby.want-to-try
-
-**M16-Q14** — quick-reply
-- Prompt: "A chat about free time — what do you say?" / "שיחה על זמן פנוי — מה עונים?" — situation shown: "You have talked about yourself. Now ask what they like doing." / "סיפרת על עצמך. עכשיו תשאל אותו מה הוא אוהב לעשות."
-- Audio: (nothing is played — a situation is shown) — ()
-- A: What do you do for fun? ✅
-- B: I like drawing.
-- C: I want to try diving.
-- Correct: What do you do for fun?
-- Tests: phrase.hobby.what-for-fun
-
-**M16-Q15** — dialogue-choice
-- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio: Hi! Are you free today? — (היי! אתה פנוי היום?)
-- A: Yes! What do you do for fun? ✅
-- Correct: Yes! What do you do for fun?
-- Tests: phrase.hobby.what-for-fun
-
-**M16-Q16** — dialogue-choice
-- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio: I surf a lot. Do you like surfing? — (אני גולש הרבה. אתה אוהב לגלוש?)
-- A: I love surfing! ✅
-- Correct: I love surfing!
-- Tests: phrase.hobby.i-love-surfing
-
-**M16-Q17** — dialogue-choice
-- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio: Great! And what else do you like? — (מעולה! ומה עוד אתה אוהב?)
-- A: I like drawing. ✅
-- Correct: I like drawing.
-- Tests: phrase.hobby.i-like-drawing
-
-**M16-Q18** — dialogue-choice
-- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio: Nice! When do you draw? — (יפה! מתי אתה מצייר?)
-- A: I usually draw in the evening. ✅
-- Correct: I usually draw in the evening.
-- Tests: phrase.hobby.i-usually
-
-**M16-Q19** — dialogue-choice
-- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio: In the evening I like to listen to music. Do you like music? — (בערב אני אוהב לשמוע מוזיקה. אתה אוהב מוזיקה?)
-- A: Yes, I like to listen to music too. ✅
-- Correct: Yes, I like to listen to music too.
-- Tests: phrase.hobby.like-to-listen
-
-**M16-Q20** — dialogue-choice
-- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio: And sport? Do you like running? — (וספורט? אתה אוהב לרוץ?)
-- A: No, I don't like running. ✅
-- Correct: No, I don't like running.
-- Tests: phrase.hobby.dont-like-running
-
-**M16-Q21** — dialogue-choice
-- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
+**M16-Q22** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio: Me neither! Is there something you want to try here? — (גם אני לא! יש משהו שאתה רוצה לנסות כאן?)
 - A: I want to try diving. ✅
-- B: What does that mean? ✅
-- Correct: I want to try diving. | What does that mean?
-- Tests: phrase.hobby.want-to-try, phrase.recovery.what-mean
-
-**M16-Q22** — dialogue-choice
-- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio: Something new. What do you want — to try? — (משהו חדש. מה אתה רוצה — לנסות?)
-- A: I want to try diving. ✅
+- B: No, I don't like running.
+- C: Yes, I like to listen to music too.
 - Correct: I want to try diving.
 - Tests: phrase.hobby.want-to-try
 
-**M16-Q23** — dialogue-choice
-- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
+**M16-Q23** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio: Good idea! There's a diving school near the beach. — (רעיון טוב! יש בית ספר לצלילה ליד החוף.)
 - A: Do you like diving? ✅
+- B: I want to try diving.
+- C: Yes! What do you do for fun?
 - Correct: Do you like diving?
 - Tests: phrase.hobby.do-you-like
 
 **M16-Q24** — quick-reply
-- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
-- Audio: I surf a lot. Do you like surfing? — (אני גולש הרבה. אתה אוהב לגלוש?)
+- Prompt: "🎯 On your own now: ask, say what you love and like, when, what not, what to try — and ask back." / "🎯 עכשיו לבד: לשאול, לספר מה אתה אוהב, מתי, מה לא, מה לנסות — ולשאול בחזרה."
+- Audio: Hi! Are you free today? — (היי! אתה פנוי היום?)
+- A: Yes! What do you do for fun? ✅
+- B: Do you like diving?
+- C: I usually draw in the evening.
+- Correct: Yes! What do you do for fun?
+- Tests: phrase.hobby.what-for-fun
+
+**M16-Q25** — quick-reply
+- Prompt: "🎯 On your own now: ask, say what you love and like, when, what not, what to try — and ask back." / "🎯 עכשיו לבד: לשאול, לספר מה אתה אוהב, מתי, מה לא, מה לנסות — ולשאול בחזרה." — situation shown: "🏄 Surfing — you love it. Tell your friend." / "🏄 גלישה — אתה מת על זה. תגיד לו."
+- Audio: (nothing is played — a situation is shown) — ()
 - A: I love surfing! ✅
-- B: I usually draw in the evening.
-- C: What do you do for fun?
+- B: I like drawing.
+- C: I want to try diving.
 - Correct: I love surfing!
 - Tests: phrase.hobby.i-love-surfing
 
-**M16-Q25** — quick-reply
-- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+**M16-Q26** — quick-reply
+- Prompt: "🎯 On your own now: ask, say what you love and like, when, what not, what to try — and ask back." / "🎯 עכשיו לבד: לשאול, לספר מה אתה אוהב, מתי, מה לא, מה לנסות — ולשאול בחזרה."
 - Audio: Great! And what else do you like? — (מעולה! ומה עוד אתה אוהב?)
 - A: I like drawing. ✅
-- B: Do you like diving?
-- C: What do you do for fun?
+- B: No, I don't like running.
+- C: Yes! What do you do for fun?
 - Correct: I like drawing.
 - Tests: phrase.hobby.i-like-drawing
 
-**M16-Q26** — quick-reply
-- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+**M16-Q27** — quick-reply
+- Prompt: "🎯 On your own now: ask, say what you love and like, when, what not, what to try — and ask back." / "🎯 עכשיו לבד: לשאול, לספר מה אתה אוהב, מתי, מה לא, מה לנסות — ולשאול בחזרה."
 - Audio: Nice! When do you draw? — (יפה! מתי אתה מצייר?)
 - A: I usually draw in the evening. ✅
-- B: I want to try diving.
-- C: I love surfing!
+- B: I like drawing.
+- C: I want to try diving.
 - Correct: I usually draw in the evening.
 - Tests: phrase.hobby.i-usually
 
-**M16-Q27** — quick-reply
-- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
-- Audio: In the evening I like to listen to music. Do you like music? — (בערב אני אוהב לשמוע מוזיקה. אתה אוהב מוזיקה?)
-- A: Yes, I like to listen to music too. ✅
-- B: I don't like running.
-- C: I want to try diving.
-- Correct: Yes, I like to listen to music too.
-- Tests: phrase.hobby.like-to-listen
-
 **M16-Q28** — quick-reply
-- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
-- Audio: Me neither! Is there something you want to try here? — (גם אני לא! יש משהו שאתה רוצה לנסות כאן?)
+- Prompt: "🎯 On your own now: ask, say what you love and like, when, what not, what to try — and ask back." / "🎯 עכשיו לבד: לשאול, לספר מה אתה אוהב, מתי, מה לא, מה לנסות — ולשאול בחזרה." — situation shown: "🏃 Running — not for you. Tell your friend." / "🏃 ריצה — זה לא בשבילך. תגיד לו."
+- Audio: (nothing is played — a situation is shown) — ()
+- A: No, I don't like running. ✅
+- B: I love surfing!
+- C: Yes, I like to listen to music too.
+- Correct: No, I don't like running.
+- Tests: phrase.hobby.dont-like-running
+
+**M16-Q29** — quick-reply
+- Prompt: "🎯 On your own now: ask, say what you love and like, when, what not, what to try — and ask back." / "🎯 עכשיו לבד: לשאול, לספר מה אתה אוהב, מתי, מה לא, מה לנסות — ולשאול בחזרה." — situation shown: "🤿 Diving — something new you’d like to do. Tell your friend." / "🤿 צלילה — משהו חדש שבא לך לנסות. תגיד לו."
+- Audio: (nothing is played — a situation is shown) — ()
 - A: I want to try diving. ✅
-- B: I usually draw in the evening.
-- C: I like drawing.
+- B: Do you like diving?
+- C: I love surfing!
 - Correct: I want to try diving.
 - Tests: phrase.hobby.want-to-try
+
+**M16-Q30** — quick-reply
+- Prompt: "🎯 On your own now: ask, say what you love and like, when, what not, what to try — and ask back." / "🎯 עכשיו לבד: לשאול, לספר מה אתה אוהב, מתי, מה לא, מה לנסות — ולשאול בחזרה."
+- Audio: Good idea! There's a diving school near the beach. — (רעיון טוב! יש בית ספר לצלילה ליד החוף.)
+- A: Do you like diving? ✅
+- B: I want to try diving.
+- C: Yes! What do you do for fun?
+- Correct: Do you like diving?
+- Tests: phrase.hobby.do-you-like
 
 ## Mission 17 — Supermarket & Everyday Shopping
 
@@ -39153,16 +39430,16 @@ No questions.
 
 - Missions exported: 30
 - Learner-production sentence ids: 163
-- Expected-reply (receptive) sentence ids: 168
-- Sentence listings across missions (with reuse): 525
-- Expected-reply questions: 75
+- Expected-reply (receptive) sentence ids: 171
+- Sentence listings across missions (with reuse): 527
+- Expected-reply questions: 71
 - Meaning quizzes: 7
-- Active-practice questions: 604
-- Dialogue choice screens: 253
+- Active-practice questions: 611
+- Dialogue choice screens: 252
 - Cold opens: 7
-- Total interactive questions: 946
-- Total answer choices: 2575
-- Wrong-answer branches: 113
-- Recovery opportunities: 46
+- Total interactive questions: 948
+- Total answer choices: 2595
+- Wrong-answer branches: 121
+- Recovery opportunities: 45
 - Learner sentences with 0 active retrieval opportunities: 1
-- Auto-flags: 210
+- Auto-flags: 205

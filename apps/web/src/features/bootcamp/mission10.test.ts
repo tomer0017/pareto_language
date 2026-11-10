@@ -132,8 +132,8 @@ describe('structure', () => {
   it('5. Missions 01–09 are byte-for-byte unchanged', () => {
     expect(raw(0, 9)).toEqual({ en: 'cdce44aa', fr: '280ec919', es: '535188cc' });
   });
-  it('6. Missions 16–30 are byte-for-byte unchanged (Missions 11–15 have their own passes since)', () => {
-    expect(raw(15, 23)).toEqual({ en: 'b48e8049', es: 'a8f00fe3', fr: '2e70c18c' }); expect(raw(24)).toEqual({ en: 'aee7fe64', es: '4b9c9cd9', fr: '6af8deb0' }); // Mission 24 left out: its own correction since (the "should" card — practiceCity.test.ts) // Missions 16–30 (Missions 11–15 have their own passes since: mission11.test.ts … mission15.test.ts)
+  it('6. Missions 17–30 (Mission 16 has its own pass since: mission16.test.ts) are byte-for-byte unchanged (Missions 11–15 have their own passes since)', () => {
+    expect(raw(16, 23)).toEqual({ en: 'b2c546c2', es: '0b3d70ab', fr: '3638ab86' }); expect(raw(24)).toEqual({ en: 'aee7fe64', es: '4b9c9cd9', fr: '6af8deb0' }); // Mission 24 left out: its own correction since (the "should" card — practiceCity.test.ts) // Missions 17–30 (Missions 11–15 have their own passes since: mission11.test.ts … mission15.test.ts)
   });
   it('7. no Step 0 — and no vocabulary block of any kind', () => {
     for (const lang of LANGS) {

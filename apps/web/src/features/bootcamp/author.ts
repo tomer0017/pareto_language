@@ -139,7 +139,7 @@ export interface VisualMatchSpec {
   transferOnly?: boolean;
   tiles: MatchTile[];
   /** `reinforce`: the answer's own line, shown with its meaning after a pick (when `audio` is the question). */
-  rounds: { audio: L4; correct: string; itemId?: string; show?: string[]; pace?: 'fast' | 'slow'; reinforce?: L4 }[];
+  rounds: { audio: L4; correct: string; itemId?: string; show?: string[]; pace?: 'fast' | 'slow'; reinforce?: L4; picture?: { emoji?: string; image?: string } }[];
 }
 export interface SwapSpec {
   label?: Copy;
@@ -396,6 +396,7 @@ export function buildPractice(p: PracticeSpec, lang: MissionLang): BootcampStep 
       rounds: p.rounds.map((r) => ({
         audio: paced(spoken(r.audio, lang), r.pace), correct: r.correct, ...(r.itemId ? { itemId: id(r.itemId) } : {}), ...(r.show ? { show: [...r.show] } : {}),
         ...(r.reinforce ? { reinforce: spoken(r.reinforce, lang) } : {}),
+        ...(r.picture ? { picture: { ...r.picture } } : {}),
       })),
     };
   }

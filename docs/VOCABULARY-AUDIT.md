@@ -82,6 +82,11 @@ real prime word in that mission. **Counts: 29 audited · 7 primed · 22 explicit
 > No earlier mission guarantees "should" — an optional branch never counts — so the checkpoint shows it once, on a
 > card, before the chat. Everything else in the checkpoint stays proof.
 
+> **2026-11-10 — Mission 16 (Hobbies & Free Time, registry key 33) is now primed** with whole-line cards, never a
+> hobby word list: *Yes! What do you do for fun?*, *I love surfing!*, *I like drawing.*, *I usually draw in the
+> evening.*, *Yes, I like to listen to music too.*, *No, I don't like running.*, *I want to try diving.* and the
+> friend's lines. *Do you like diving?* has no card: it is transfer ("Do you like ___?" + "diving"). No extra hobby.
+
 > **2026-11-09 — Mission 15 (Food Preferences & Allergies, registry key 13) is now primed** with whole-line cards,
 > never an allergen list: *I'm allergic to nuts.*, *I'm vegetarian.*, *Does it have dairy?* and the waiter's answers.
 > "Without onions", "Great" and "Thank you!" are verified prior — retrieved, not re-taught. Nothing says "safe".

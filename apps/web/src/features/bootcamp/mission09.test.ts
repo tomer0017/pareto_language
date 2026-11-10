@@ -80,7 +80,7 @@ describe('the conversation is locked, and Mission 09 is in its place', () => {
   it('Missions 01–08 and 10–30 are byte-for-byte unchanged by this pass', () => {
     const raw = (a: number, b?: number) => Object.fromEntries(LANGS.map((l) => [l, fnv(JSON.stringify(BOOTCAMP_PLAN.slice(a, b).map((m) => MISSIONS_BY_LANG[l]![m.day]!)))]));
     expect(raw(0, 8)).toEqual({ en: 'e616596b', es: 'b87a5773', fr: '4a0094dd' });
-    expect(raw(15, 23)).toEqual({ en: 'b48e8049', es: 'a8f00fe3', fr: '2e70c18c' }); expect(raw(24)).toEqual({ en: 'aee7fe64', es: '4b9c9cd9', fr: '6af8deb0' }); // Mission 24 left out: its own correction since (the "should" card — practiceCity.test.ts) // Missions 16–30 (Missions 10–15 have their own passes since: mission10.test.ts … mission15.test.ts)
+    expect(raw(16, 23)).toEqual({ en: 'b2c546c2', es: '0b3d70ab', fr: '3638ab86' }); expect(raw(24)).toEqual({ en: 'aee7fe64', es: '4b9c9cd9', fr: '6af8deb0' }); // Mission 24 left out: its own correction since (the "should" card — practiceCity.test.ts) // Missions 17–30 (Missions 10–15 have their own passes since: mission10.test.ts … mission15.test.ts)
   });
 });
 describe('coverage: every meaningful chunk, no orphan', () => {

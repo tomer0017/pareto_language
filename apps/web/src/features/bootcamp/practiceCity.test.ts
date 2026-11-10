@@ -82,7 +82,7 @@ describe('scope: only the Practice of Missions 19–24 changed', () => {
   const print = (f: (lang: Lang) => unknown): Record<Lang, string> => ({ en: fnv(JSON.stringify(f('en'))), fr: fnv(JSON.stringify(f('fr'))), es: fnv(JSON.stringify(f('es'))) });
 
   it('Missions 08–18 are byte-for-byte unchanged (Missions 01–07 have their own passes — mission01.test.ts … mission07.test.ts)', () => {
-    expect(print((l) => slice(l, 15, 18))).toEqual({ en: 'e98e0ca7', fr: '8d46f5c7', es: 'e8f478c4' }); // since the Mission 15 pass: Missions 16–18 (Missions 10–15: mission10.test.ts … mission15.test.ts)
+    expect(print((l) => slice(l, 16, 18))).toEqual({ en: 'ff49d994', fr: 'ac86ea9d', es: '07d7e1bc' }); // since the Mission 16 pass: Missions 17–18 (Missions 10–16: mission10.test.ts … mission16.test.ts)
   });
   it('the locked dialogues of Missions 19–23 are byte-for-byte unchanged', () => {
     expect(print((l) => slice(l, 18, 23).map((d) => d.dialogues))).toEqual({ en: '594ead2b', fr: '63803269', es: '55c7bd8f' });
@@ -118,7 +118,7 @@ describe('scope: only the Practice of Missions 19–24 changed', () => {
     expect(text(mission(19), 'phrase.trans.single')).toBe('Single, please.');
   });
   it('nothing was retired in this pass: the archive still holds the same seven sentences (plus those the later Mission 03, 05 and 06 passes retired)', () => {
-    for (const lang of LANGS) expect(RETIRED_SENTENCES[lang].filter((r) => !M15_PASS_RETIRED.includes(r.id.slice(3)) && r.retiredFrom !== 'coffee-shop' && r.retiredFrom !== 'directions' && r.retiredFrom !== 'airport-border' && r.retiredFrom !== 'taxi' && r.retiredFrom !== 'shopping' && !['reply.hotel.sign-here', 'reply.hotel.second-floor'].includes(r.id.slice(3))), lang).toHaveLength(7);
+    for (const lang of LANGS) expect(RETIRED_SENTENCES[lang].filter((r) => !M15_PASS_RETIRED.includes(r.id.slice(3)) && r.retiredFrom !== 'coffee-shop' && r.retiredFrom !== 'directions' && r.retiredFrom !== 'airport-border' && r.retiredFrom !== 'taxi' && r.retiredFrom !== 'shopping' && r.retiredFrom !== 'hobbies-free-time' && !['reply.hotel.sign-here', 'reply.hotel.second-floor'].includes(r.id.slice(3))), lang).toHaveLength(7);
     expect(RETIRED_SENTENCES.en.some((r) => /trans\.|past\.|future\.|fix\.|opin\./.test(r.id))).toBe(false);
   });
   it('mission order, ids and registry keys are unchanged', () => {
