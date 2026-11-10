@@ -1,0 +1,30 @@
+[
+  {
+    "name": "waiter",
+    "prompt": "Use case stylized-concept. ONE final 16:9 landscape >=1536px wide premium adult polished 3D animated travel app scene. Reference supplies exact traveler and waiter identities and restaurant style, but REMOVE the auburn companion entirely: this visit has ONE diner only. Dark wavy-haired clean-shaven traveler teal overshirt creamtee charcoal trousers seated left, mustard backpack on green chair. Same clean-shaven short black-curly-haired medium-brown male waiter white rolled sleeves charcoal waistcoat forestgreen apron standing right, attentive neutral welcoming expression and blank notepad, no thumbs-up. Same square oak table cream plaster walnut paneling amberglobes black-framed eveningwindow. One closed darkgreen goldborder blank menu and ivory napkin, no food or drinks. No kitchen visible yet. Natural calm conversation before ordering. Center-safe mobile composition two people and table. NO text numbers logo symbols checkmarks approval badges collage."
+  },
+  {
+    "name": "nuts",
+    "prompt": "Use case stylized-concept. ONE final 16:9 landscape >=1536px wide premium polished 3D travel-app semantic concept illustration, NOT a served restaurant dish. Recognizable mixed tree nuts: large ridged walnut halves, one whole walnut in shell, several almonds with pointed brown skins and two hazelnuts, neatly grouped in a shallow plain ivory ceramic ingredient bowl with a few nuts beside it. Tight simple tabletop still life, main objects fill central 65%, abundant uncluttered margins for mobile. Warm oak surface and softly blurred cream/walnut restaurant background with amber lighting matching reference aesthetic. No people required, no meal or menu, no cream, no other food. This illustrates the ingredient someone is allergic to, not food contents or an assurance. NO text, labels, symbols, shields, checkmarks, crossed-out nuts, medical imagery, symptoms, logos, collage or panels. Same premium 3D style as reference, ingredient shapes instantly clear at phone size."
+  },
+  {
+    "name": "vegetarian",
+    "prompt": "Use case stylized-concept. ONE 16:9 >=1536px wide premium polished adult 3D travel-app semantic concept still life. Match reference lighting, warm oak table, blurred cream/walnut restaurant amber globes and green chairs, same clean ivory ceramic vessel visual style. Central plain ivory plate with simple vegetable-based meal: large clearly recognizable pieces of roasted colorful vegetables and a few fresh herbs, vegetables dominate. No meat or fish, no mushrooms, risotto, rice, nuts, cream, cheese or milk. A general vegetarian food idea, NOT the particular ordered meal or evidence of allergy safety. Tight clean composition filling middle 65% with margins, no people or cutlery, no eating. No text labels logos symbols checks approval badges or crossed-out food, no collage. Warm believable premium animated 3D, not photographic luxury advertising."
+  },
+  {
+    "name": "vegetarian-refinement",
+    "prompt": "Use case precise-object-edit. Keep this vegetarian concept illustration identical: same warm polished animated 3D restaurant, plate, framing, lighting and vegetables. Replace ONLY both purple onion wedges with roasted zucchini pieces. No onions anywhere, no added text or symbols. Maintain 16:9 high resolution. General vegetable-food concept only, not a served allergy-safe meal."
+  },
+  {
+    "name": "dairy",
+    "prompt": "Use case stylized-concept. ONE 16:9 landscape >=1536px wide polished adult premium animated 3D travel-app semantic ingredient illustration. Match reference warm oak tabletop, softly blurred cream/walnut restaurant, amber evening lighting. A plain clear glass of milk beside a small plain ivory ceramic jug of cream, uncluttered central still life filling middle 65 percent with safe margins, easily recognized at phone size. Only these two objects. No people, no meal, no mushrooms, no nuts, no other products. Image communicates dairy ingredient generally, never actual dish contents or safety. No writing, labels, logos, symbols, checkmarks, badges, packaging text, collage or panels."
+  },
+  {
+    "name": "onions",
+    "prompt": "Use case stylized-concept. ONE final 16:9 landscape >=1536px wide premium polished adult animated 3D travel-app semantic ingredient illustration. Same warm oak tabletop, softly blurred cream/walnut restaurant, amber lighting as reference. Central simple plain ivory plate holding one whole golden-brown onion with dry papery skin, one halved onion exposing clean concentric white rings, and two onion slices. Clearly recognizable ONION shapes at phone size, fill middle65percent with margins. No other ingredients, no served meal, no people, no knife. Meaning is ingredient identification, app carries request to remove it. NO text labels logos symbols crossed-out icons checkmarks badges panels or collage."
+  },
+  {
+    "name": "kitchen-check",
+    "prompt": "Use case identity-preserve stylized-concept. ONE final16:9 landscape >=1536px wide premium animated3D scene continuation of reference. EXACT same single dark curly-haired adult traveler teal overshirt creamtee charcoal trousers seated left with mustard backpack greenchair, same male waiter short blackcurlyhair mediumbrown white rolledsleeves charcoal waistcoat forestgreenapron. Same warm cream walls walnutpanel oak squaretable amberglobes eveningwindow. Traveler waits calmly at table with closed blank greenmenu ivorynapkin silverware NOfooddrink. Waiter is now walking AWAY from table toward clearly visible open kitchen service doorway at right, blanknotepad in hand, head turned toward kitchen, back/sideprofile, midstep. Kitchen interior stainless counter softly visible, no other people necessary. Clear unfinished process: going to ASK the kitchen, never returning with answer. No thumbs-up, chefapproval, celebratory expression, shields, checks, symbols, readabletext, logos, food, servedmeal, collage. Two people only. Keep identities and clothes invariant. Center-safe mobile framing, room both traveler and waiter; foreground table lower third."
+  }
+]

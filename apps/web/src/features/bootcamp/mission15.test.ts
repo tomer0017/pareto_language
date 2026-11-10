@@ -600,16 +600,16 @@ describe('visuals, the companion and video', () => {
       'quickReply', 'quickReply', 'quickReply', 'receipt', 'summary',
     ]);
   });
-  it('visual slots: 5 semantic slots and 1 result prop — PLACEHOLDERS, listed in the asset manifest (VISUAL PRODUCTION REQUIRED)', () => {
+  it('visual slots: 5 semantic slots and 1 result prop — final artwork listed in the asset manifest', () => {
     expect(Object.keys(M15_SLOTS).sort()).toEqual(['dairy', 'kitchen-check', 'nuts', 'vegetarian', 'waiter']);
     expect(Object.keys(M15_PROPS)).toEqual(['kitchen-check-sent']);
-    for (const s of [...Object.values(M15_SLOTS), ...Object.values(M15_PROPS)]) { expect(s.image).toBeUndefined(); expect(s.emoji).toBeTruthy(); }
+    for (const s of [...Object.values(M15_SLOTS), ...Object.values(M15_PROPS)]) { expect(s.image).toMatch(/^images\/mission15\/[a-z-]+\.jpg$/); expect(s).not.toHaveProperty('emoji'); }
     const manifest = readFileSync(fileURLToPath(new URL('../../../../../docs/MISSION15_ASSET_MANIFEST.md', import.meta.url)), 'utf8');
-    expect(manifest).toMatch(/VISUAL PRODUCTION REQUIRED/);
+    expect(manifest).toMatch(/FINAL ARTWORK/);
     for (const key of [...Object.keys(M15_SLOTS), ...Object.keys(M15_PROPS)]) expect(manifest, key).toContain(`\`${key}\``);
   });
   it('every card picture comes from a slot, the same in every language; tiles are captioned meanings, never pictures', () => {
-    const looks = new Set(Object.values(M15_SLOTS).map((s) => s.image ?? s.emoji));
+    const looks = new Set(Object.values(M15_SLOTS).map((s) => s.image));
     const pics = (lang: CoverageLang) => cardsOf(day(lang)).map((w) => [w.key, w.image ?? w.emoji]);
     for (const lang of LANGS) for (const [key, pic] of pics(lang)) expect(looks, `${lang} ${key}`).toContain(pic);
     expect(pics('es')).toEqual(pics('en'));

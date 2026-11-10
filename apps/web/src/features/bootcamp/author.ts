@@ -121,6 +121,7 @@ export interface QuickReplySpec {
     npc?: L4;
     /** …a situation described in the app language (nothing is played). */
     situation?: Copy;
+    situationImage?: string;
     /** How the `npc` line is said: at natural speed, or slowed down (`SpokenLine.pace`). */
     pace?: 'fast' | 'slow';
     /** [sentence id, accepted?, what the button says when it wraps the sentence] */
@@ -384,6 +385,7 @@ export function buildPractice(p: PracticeSpec, lang: MissionLang): BootcampStep 
         ...(r.prompt ? { promptItemId: id(r.prompt) } : {}),
         ...(r.npc ? { npc: paced(spoken(r.npc, lang), r.pace) } : {}),
         ...(r.situation ? { situation: T(r.situation) } : {}),
+        ...(r.situationImage ? { situationImage: r.situationImage } : {}),
         options: r.options.map(([itemId, correct, text]) => ({ itemId: id(itemId), correct, ...(text ? { text: text[ix] } : {}) })),
       })),
     };

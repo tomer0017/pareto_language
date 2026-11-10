@@ -1822,3 +1822,10 @@ div.jstep { box-shadow: none; border-color: var(--line); }
 /* Mission 14 preserves people, menus and meal state in the complete scene frame. */
 .list-row:has(> .prime-img[src*="/images/mission14/"]) { flex-wrap: wrap; }
 .prime-img.is-scene[src*="/images/mission14/"] { flex-basis: 100%; width: 100%; height: auto; }
+
+/* Mission 15: complete scene frames and equally sized situation illustrations. */
+.list-row:has(> .prime-img[src*="/images/mission15/"]) { flex-wrap: wrap; }
+.prime-img.is-scene[src*="/images/mission15/"] { flex-basis: 100%; width: 100%; height: auto; }
+.situation-image { display: block; width: 100%; max-width: 480px; aspect-ratio: 16 / 9; object-fit: contain; border-radius: 16px; margin: 0 auto; }
+/* Three translated answer buttons can be taller than the shared single-CTA clearance. */
+.mission-step-body:has(.situation-image[src*="/images/mission15/"]) { padding-bottom: calc(env(safe-area-inset-bottom) + 280px); }

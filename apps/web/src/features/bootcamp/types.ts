@@ -125,6 +125,8 @@ export interface QuickReplyRound {
   npc?: SpokenLine;
   /** …or no audio at all: a situation described in the app language ("You are lost…"). */
   situation?: LocalizedText;
+  /** Optional situation illustration, never an answer cue. */
+  situationImage?: string;
   options: { itemId: string; correct: boolean; /** what the button says, when it wraps the sentence */ text?: string }[];
 }
 

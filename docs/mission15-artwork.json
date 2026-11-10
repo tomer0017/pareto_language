@@ -1,0 +1,68 @@
+[
+  {
+    "name": "dairy",
+    "width": 1672,
+    "height": 941,
+    "sha256": "1d1086882a102910bab7010b4187b5420a295f82542846fdacf3efcf02097b2e",
+    "review": {
+      "meaning": "Milk glass and small cream jug; ingredient concept, no actual dish or status. Appears only with/after cream response.",
+      "text": false,
+      "safetyConfirmation": false
+    }
+  },
+  {
+    "name": "kitchen-check",
+    "width": 1672,
+    "height": 941,
+    "sha256": "60b6bc09d7337495992851cb1cb2d10f251fd89ce0a7416d88da1d0167208cff",
+    "review": {
+      "meaning": "Same traveler waits, same waiter walks away toward open kitchen with notepad; no food, no approval, answer pending.",
+      "text": false,
+      "safetyConfirmation": false
+    }
+  },
+  {
+    "name": "nuts",
+    "width": 1672,
+    "height": 941,
+    "sha256": "d15aa311838967cf9d5378da7f0e61a94108e4c9f1c35f99ba0af86df2ad9738",
+    "review": {
+      "meaning": "Prominent walnut halves, almonds and hazelnuts; ingredient concept only, no served dish or safety symbol.",
+      "text": false,
+      "safetyConfirmation": false
+    }
+  },
+  {
+    "name": "onions",
+    "width": 1672,
+    "height": 941,
+    "sha256": "a0659e5a5129374426ef553ced0e8d717ada0be656e38ec3429fcc4b5ef01945",
+    "review": {
+      "meaning": "Whole and halved onion with concentric rings and slices; UI carries removal.",
+      "text": false,
+      "safetyConfirmation": false
+    }
+  },
+  {
+    "name": "vegetarian",
+    "width": 1672,
+    "height": 941,
+    "sha256": "380527ab2ca92a10da2218fecf3a9c25d2be56d0e5b6de98d14ba37f84044ca7",
+    "review": {
+      "meaning": "Vegetables and herbs, no obvious meat or fish; generic food category, not the risotto. Onion wedges removed to avoid distracting from retrieval.",
+      "text": false,
+      "safetyConfirmation": false
+    }
+  },
+  {
+    "name": "waiter",
+    "width": 1672,
+    "height": 941,
+    "sha256": "958ca31afe8ece1151a32e805c51491bca387f8224c77af1a8166c1e4c70e570",
+    "review": {
+      "meaning": "One diner and attentive waiter; no kitchen, food or approval.",
+      "text": false,
+      "safetyConfirmation": false
+    }
+  }
+]

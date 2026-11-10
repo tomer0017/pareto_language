@@ -68,6 +68,7 @@ export function QuickReplyStep({ step, itemsById, onDone }: { step: StepOf<'quic
   const prompt = quickReplyPrompt(round, itemsById);
   const options = useMemo(() => shuffle(round.options, mulberry32(seed + i)), [round, seed, i]);
   const npc = useNpc();
+  const situationText = round.situation ? L(round.situation).replace(round.situationImage ? /^[🥛🥜🧅🌱]\s*/u : /$^/, '') : undefined;
 
   // A speed challenge is the same game at natural pace; the replay is slower, as on the board and map.
   // A line with its own pace (the fast first answer, the slowed repeat) is said at that pace.
@@ -90,7 +91,7 @@ export function QuickReplyStep({ step, itemsById, onDone }: { step: StepOf<'quic
     const fitItem = itemsById.get(fit.itemId)!;
     const fitText = quickReplyLabel(fit, itemsById);
     const ctx = buildRespondContext({
-      promptText: prompt.spoken?.en ?? (round.situation ? L(round.situation) : undefined),
+      promptText: prompt.spoken?.en ?? situationText,
       promptTranslation: prompt.spoken ? dialogueTr(prompt.spoken) : undefined,
       onReplayPrompt: prompt.spoken ? () => void speakL(prompt.spoken!.en) : undefined,
       chosen: chosen.correct ? undefined : quickReplyLabel(chosen, itemsById),
@@ -112,7 +113,10 @@ export function QuickReplyStep({ step, itemsById, onDone }: { step: StepOf<'quic
       <div className="pcanvas" data-engine="quickReply">
         <GameHead label={step.challenge ? `⚡ ${t('speedHeadsUp')}` : step.label ? L(step.label) : t(round.situation ? 'quickReplySituation' : 'quickReplyTitle')} i={i} n={step.rounds.length} />
         {round.situation ? (
-          <p className="scene-note">{L(round.situation)}</p>
+          <>
+            {round.situationImage && <img className="situation-image" src={publicAsset(round.situationImage)} alt="" />}
+            <p className="scene-note">{situationText}</p>
+          </>
         ) : (
           <div className="convo-row npc" dir="ltr" key={i}>
             <NpcFigure npc={npc} />

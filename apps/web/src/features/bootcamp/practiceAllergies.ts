@@ -27,24 +27,25 @@ import type { BootcampStep, MatchTile } from './types.js';
  * All French and Spanish wording: AI linguistic review completed; native review still recommended.
  */
 
-/**
- * PLACEHOLDERS — VISUAL PRODUCTION REQUIRED (Astra pass): one restaurant, one waiter, one diner.
- * Each slot is an emoji until its artwork exists (`image` set): docs/MISSION15_ASSET_MANIFEST.md.
- * Pictures are on teaching cards only — never an answer.
+/** Five teaching slots; six whole images including the onion retrieval cue.
+ * The pending kitchen scene is reused as the result, never an assurance of safety.
  */
 type M15Slot = 'waiter' | 'nuts' | 'vegetarian' | 'kitchen-check' | 'dairy';
-export const M15_SLOTS: Record<M15Slot, { emoji: string; image?: string }> = {
-  waiter: { emoji: '🧑‍🍳' },
-  nuts: { emoji: '🥜' },
-  vegetarian: { emoji: '🌱' },
-  'kitchen-check': { emoji: '👨‍🍳' },
-  dairy: { emoji: '🥛' },
+export const M15_SLOTS: Record<M15Slot, { image: string }> = {
+  waiter: { image: 'images/mission15/waiter.jpg' },
+  nuts: { image: 'images/mission15/nuts.jpg' },
+  vegetarian: { image: 'images/mission15/vegetarian.jpg' },
+  'kitchen-check': { image: 'images/mission15/kitchen-check.jpg' },
+  dairy: { image: 'images/mission15/dairy.jpg' },
 };
-/** Result picture only — never a choice, never a card. */
-export const M15_PROPS: Record<'kitchen-check-sent', { emoji: string; image?: string }> = {
-  'kitchen-check-sent': { emoji: '📨' },
+export const M15_PROPS = { 'kitchen-check-sent': M15_SLOTS['kitchen-check'] };
+export const M15_SITUATION_IMAGES: Record<string, string> = {
+  'phrase.diet.does-have-dairy': M15_SLOTS.dairy.image,
+  'phrase.diet.allergic-nuts': M15_SLOTS.nuts.image,
+  'phrase.diet.without-onions': 'images/mission15/onions.jpg',
+  'phrase.diet.vegetarian': M15_SLOTS.vegetarian.image,
 };
-const look15 = (x: { emoji: string; image?: string }): { emoji: string } | { image: string } => (x.image ? { image: x.image } : { emoji: x.emoji });
+const look15 = (x: { image: string }): { image: string } => ({ image: x.image });
 
 /* The locked conversation (EN · FR · ES · HE), line by line — the waiter's lines… */
 export const N_READY: L4 = ['Hi there! Are you ready to order?', 'Bonjour ! Vous êtes prêt à commander ?', '¡Hola! ¿Está listo para pedir?', 'היי! מוכן להזמין?'];
@@ -165,7 +166,7 @@ export function m15Steps(lang: MissionLang): BootcampStep[] {
     }),
     // DAIRY — you ask about an ingredient; the answer: yes, but it can be left out.
     cards(['מוצרי חלב', 'Dairy'], check(1, ['אתה שואל על מרכיב — ושומע את התשובה. הקש כדי לשמוע.', 'You ask about an ingredient — and hear the answer. Tap to hear.']), [
-      card('diet.line.dairy', Y_DAIRY, ['יש בזה מוצרי חלב? (יש בזה ___? — שואלים על מרכיב)', 'Does it have dairy? (does it have ___? — ask about an ingredient)'], 'dairy'),
+      card('diet.line.dairy', Y_DAIRY, ['יש בזה מוצרי חלב? (יש בזה ___? — שואלים על מרכיב)', 'Does it have dairy? (does it have ___? — ask about an ingredient)'], 'waiter'),
       card('diet.line.cream', N_CREAM, ['כן, יש בו קצת שמנת, אבל אפשר להכין בלי. (חלב: יש — אבל אפשר להוריד)', 'Yes, it has some cream, but we can make it without. (dairy: yes — but it can be left out)'], 'dairy'),
     ]),
     // THE KITCHEN — told, and going to check: told is not confirmed.
@@ -178,7 +179,7 @@ export function m15Steps(lang: MissionLang): BootcampStep[] {
     k.practice({
       kind: 'quickReply',
       label: ['🎯 מה עושים? — המצב ← מה אומרים', '🎯 What do you do? — the situation → what you say'],
-      rounds: SITUATIONS.map(([situation, id]) => ({ situation, options: [say(id, true), ...FUNCTIONS.filter((f) => f !== id).slice(0, 2).map((f) => say(f, false))] })),
+      rounds: SITUATIONS.map(([situation, id]) => ({ situation, situationImage: M15_SITUATION_IMAGES[id], options: [say(id, true), ...FUNCTIONS.filter((f) => f !== id).slice(0, 2).map((f) => say(f, false))] })),
     }),
     // THE SUPPORTED CONVERSATION — in order; the Food Check fills as the waiter answers.
     k.practice({ kind: 'quickReply', label: check(0, ['עכשיו כל השיחה.', 'Now the whole conversation.']), rounds: [
@@ -227,5 +228,5 @@ export function m15Steps(lang: MissionLang): BootcampStep[] {
   ];
   // The result picture appears only at its earned receipt, once its artwork exists.
   const result = M15_PROPS['kitchen-check-sent'];
-  return steps.map((step) => (step.kind === 'receipt' && step.text.en === KITCHEN_CHECK_SENT[1] && result.image ? { ...step, image: result.image } : step));
+  return steps.map((step, index) => (index === 0 ? { ...step, image: M15_SLOTS.waiter.image } : step.kind === 'receipt' && step.text.en === KITCHEN_CHECK_SENT[1] && result.image ? { ...step, image: result.image } : step));
 }

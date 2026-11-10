@@ -15136,8 +15136,8 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `diet.line.ready` — EN "Hi there! Are you ready to order?" · FR "Bonjour ! Vous êtes prêt à commander ?" · ES "¡Hola! ¿Está listo para pedir?" — meaning "היי! מוכן להזמין? (מוכר ממשימה 14: המלצר מוכן לשמוע מה אתה רוצה)" / "Hi there! Are you ready to order? (you know it from Mission 14: the waiter is ready for your order)" — icon 🧑‍🍳 — new
-2. `diet.line.allergic` — EN "I'm allergic to nuts." · FR "Je suis allergique aux noix." · ES "Soy alérgico a los frutos secos." — meaning "אני אלרגי לאגוזים. (יש לי אלרגיה למאכל הזה — אומרים קודם, ברור)" / "I'm allergic to nuts. (I have an allergy to this food — say it first, clearly)" — icon 🥜 — new
+1. `diet.line.ready` — EN "Hi there! Are you ready to order?" · FR "Bonjour ! Vous êtes prêt à commander ?" · ES "¡Hola! ¿Está listo para pedir?" — meaning "היי! מוכן להזמין? (מוכר ממשימה 14: המלצר מוכן לשמוע מה אתה רוצה)" / "Hi there! Are you ready to order? (you know it from Mission 14: the waiter is ready for your order)" — icon none — new
+2. `diet.line.allergic` — EN "I'm allergic to nuts." · FR "Je suis allergique aux noix." · ES "Soy alérgico a los frutos secos." — meaning "אני אלרגי לאגוזים. (יש לי אלרגיה למאכל הזה — אומרים קודם, ברור)" / "I'm allergic to nuts. (I have an allergy to this food — say it first, clearly)" — icon none — new
 
 No build-sentence card.
 
@@ -15146,8 +15146,8 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `diet.line.other` — EN "Thank you for telling me. Any other allergies or dietary restrictions?" · FR "Merci de me le dire. D’autres allergies ou restrictions alimentaires ?" · ES "Gracias por avisarme. ¿Alguna otra alergia o restricción alimentaria?" — meaning "תודה שאמרת. יש עוד אלרגיות או הגבלות באוכל?" / "Thank you for telling me. Any other allergies or food restrictions?" — icon 🧑‍🍳 — new
-2. `diet.line.vegetarian` — EN "I'm vegetarian." · FR "Je suis végétarien." · ES "Soy vegetariano." — meaning "אני צמחוני." / "I'm vegetarian." — icon 🌱 — new
+1. `diet.line.other` — EN "Thank you for telling me. Any other allergies or dietary restrictions?" · FR "Merci de me le dire. D’autres allergies ou restrictions alimentaires ?" · ES "Gracias por avisarme. ¿Alguna otra alergia o restricción alimentaria?" — meaning "תודה שאמרת. יש עוד אלרגיות או הגבלות באוכל?" / "Thank you for telling me. Any other allergies or food restrictions?" — icon none — new
+2. `diet.line.vegetarian` — EN "I'm vegetarian." · FR "Je suis végétarien." · ES "Soy vegetariano." — meaning "אני צמחוני." / "I'm vegetarian." — icon none — new
 
 No build-sentence card.
 
@@ -15156,7 +15156,7 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `diet.line.risotto` — EN "Got it. The mushroom risotto is vegetarian, but I'll check with the kitchen about the nuts." · FR "Compris. Le risotto aux champignons est végétarien, mais je vérifie avec la cuisine pour les noix." · ES "Entendido. El risotto de champiñones es vegetariano, pero lo compruebo con la cocina por los frutos secos." — meaning "הבנתי. ריזוטו הפטריות צמחוני, אבל אבדוק עם המטבח לגבי האגוזים. (צמחוני: כן ✅ · אגוזים: עוד לא ידוע — המטבח יבדוק)" / "Got it. The mushroom risotto is vegetarian, but I'll check with the kitchen about the nuts. (vegetarian: yes ✅ · nuts: not known yet — the kitchen will check)" — icon 👨‍🍳 — new
+1. `diet.line.risotto` — EN "Got it. The mushroom risotto is vegetarian, but I'll check with the kitchen about the nuts." · FR "Compris. Le risotto aux champignons est végétarien, mais je vérifie avec la cuisine pour les noix." · ES "Entendido. El risotto de champiñones es vegetariano, pero lo compruebo con la cocina por los frutos secos." — meaning "הבנתי. ריזוטו הפטריות צמחוני, אבל אבדוק עם המטבח לגבי האגוזים. (צמחוני: כן ✅ · אגוזים: עוד לא ידוע — המטבח יבדוק)" / "Got it. The mushroom risotto is vegetarian, but I'll check with the kitchen about the nuts. (vegetarian: yes ✅ · nuts: not known yet — the kitchen will check)" — icon none — new
 
 No build-sentence card.
 
@@ -15165,8 +15165,8 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `diet.line.dairy` — EN "Does it have dairy?" · FR "Est-ce qu’il y a des produits laitiers dedans ?" · ES "¿Esto lleva lácteos?" — meaning "יש בזה מוצרי חלב? (יש בזה ___? — שואלים על מרכיב)" / "Does it have dairy? (does it have ___? — ask about an ingredient)" — icon 🥛 — new
-2. `diet.line.cream` — EN "Yes, it has some cream, but we can make it without." · FR "Oui, il y a un peu de crème, mais on peut le faire sans." · ES "Sí, lleva un poco de nata, pero se lo podemos hacer sin ella." — meaning "כן, יש בו קצת שמנת, אבל אפשר להכין בלי. (חלב: יש — אבל אפשר להוריד)" / "Yes, it has some cream, but we can make it without. (dairy: yes — but it can be left out)" — icon 🥛 — new
+1. `diet.line.dairy` — EN "Does it have dairy?" · FR "Est-ce qu’il y a des produits laitiers dedans ?" · ES "¿Esto lleva lácteos?" — meaning "יש בזה מוצרי חלב? (יש בזה ___? — שואלים על מרכיב)" / "Does it have dairy? (does it have ___? — ask about an ingredient)" — icon none — new
+2. `diet.line.cream` — EN "Yes, it has some cream, but we can make it without." · FR "Oui, il y a un peu de crème, mais on peut le faire sans." · ES "Sí, lleva un poco de nata, pero se lo podemos hacer sin ella." — meaning "כן, יש בו קצת שמנת, אבל אפשר להכין בלי. (חלב: יש — אבל אפשר להוריד)" / "Yes, it has some cream, but we can make it without. (dairy: yes — but it can be left out)" — icon none — new
 
 No build-sentence card.
 
@@ -15175,8 +15175,8 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `diet.line.tell` — EN "Of course. I'll tell the kitchen about your allergy." · FR "Bien sûr. Je préviens la cuisine pour votre allergie." · ES "Claro. Aviso a la cocina de su alergia." — meaning "כמובן. אגיד למטבח על האלרגיה שלך. (האלרגיה נמסרת למטבח)" / "Of course. I'll tell the kitchen about your allergy. (your allergy is passed to the kitchen)" — icon 👨‍🍳 — new
-2. `diet.line.back` — EN "I'll check with them and come right back." · FR "Je vérifie avec eux et je reviens tout de suite." · ES "Lo compruebo con ellos y vuelvo enseguida." — meaning "אבדוק איתם ואחזור מיד. (עוד לא אושר — מחכים לתשובה)" / "I'll check with them and come right back. (not confirmed yet — wait for the answer)" — icon 👨‍🍳 — new
+1. `diet.line.tell` — EN "Of course. I'll tell the kitchen about your allergy." · FR "Bien sûr. Je préviens la cuisine pour votre allergie." · ES "Claro. Aviso a la cocina de su alergia." — meaning "כמובן. אגיד למטבח על האלרגיה שלך. (האלרגיה נמסרת למטבח)" / "Of course. I'll tell the kitchen about your allergy. (your allergy is passed to the kitchen)" — icon none — new
+2. `diet.line.back` — EN "I'll check with them and come right back." · FR "Je vérifie avec eux et je reviens tout de suite." · ES "Lo compruebo con ellos y vuelvo enseguida." — meaning "אבדוק איתם ואחזור מיד. (עוד לא אושר — מחכים לתשובה)" / "I'll check with them and come right back. (not confirmed yet — wait for the answer)" — icon none — new
 
 No build-sentence card.
 
