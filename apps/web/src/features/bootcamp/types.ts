@@ -269,7 +269,7 @@ export type BootcampStep =
   | { kind: 'quickReply'; label?: LocalizedText; rounds: QuickReplyRound[]; challenge?: boolean; transferOnly?: boolean }
   /** `ordered`: the tiles are a scale (a size ladder) — shown in their own order, left to right, never shuffled. */
   | { kind: 'visualMatch'; label?: LocalizedText; tiles: MatchTile[]; rounds: VisualMatchRound[]; challenge?: boolean; quiet?: boolean; ordered?: boolean; transferOnly?: boolean }
-  | { kind: 'swap'; label?: LocalizedText; rounds: SwapRound[] }
+  | { kind: 'swap'; label?: LocalizedText; rounds: SwapRound[]; transferOnly?: boolean }
   /** `base`: what is being made — an emoji, or an approved picture's public path ("images/…"). */
   | { kind: 'customize'; label?: LocalizedText; base: string; options: CustomizeOption[]; rounds: CustomizeRound[] }
   | { kind: 'miniMap'; presentation?: 'hotel-floor' | 'hotel-lobby' | 'shopping-store'; scene?: string; revealImage?: string; label?: LocalizedText; rounds: MiniMapRound[]; challenge?: boolean; quiet?: boolean }

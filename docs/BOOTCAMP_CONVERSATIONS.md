@@ -970,26 +970,19 @@ _Reply-training drill:_ “Hi there! Can I help you find anything?” · “Of c
 
 ### Core phrases (you say)
 - **Where is the milk?** · איפה החלב? — _התבנית: Where is the ___? — מוצאת כל מוצר בכל חנות._
-- **Do you have bread?** · יש לכם לחם? — _התבנית: Do you have ___? — בודקת אם קיים במלאי._
 - **Just this, thanks.** · רק את זה, תודה.
 - **Could I get a bag?** · אפשר שקית?
+- **Do you have bread?** · יש לכם לחם? — _התבנית: Do you have ___? — בודקת אם קיים במלאי._
 
 ### Expected replies (you hear)
-- **It's in aisle three.** · זה במעבר שלוש.
-- **Over there, on the left.** · שם, משמאל.
+- **Hi there! Can I help you find something?** · היי! לעזור לך למצוא משהו?
+- **The milk is in aisle three, on the left.** · החלב במעבר שלוש, משמאל.
+- **Hi! Is that everything?** · היי! זה הכל?
 - **Do you need a bag?** · צריך שקית?
-- **Insert your card here.** · הכנס את הכרטיס כאן.
-- **Sorry, we're sold out.** · סליחה, אזל המלאי.
-
-_Reply-training drill:_ “It's in aisle three.” · “Over there, on the left.” · “Do you need a bag?” · “Insert your card here.”
+- **Insert your card here… all done. Have a nice day!** · הכנס את הכרטיס כאן… הכל מוכן. שיהיה יום נעים!
 
 ### Recovery tools reused
-`Can you repeat that?` · `Please speak slowly.` · `Can you show me?` · `Thank you!`
-
-### Cold open (ambush)
-- 🧑 (fast) “Unexpected item in the bagging area — please wait for assistance.” · פריט לא צפוי באזור האריזה — אנא המתן לסיוע.
-  - ✅ best move: **Can you show me?** · אתה יכול להראות לי?
-  - ✗ distractor: Just this, thanks.
+`Thank you!`
 
 ### Dialogue: `supermarket` — happy path
 - **🧑 Them:** “Hi there! Can I help you find something?” · היי! לעזור לך למצוא משהו?
@@ -997,12 +990,16 @@ _Reply-training drill:_ “It's in aisle three.” · “Over there, on the left
 - **🧑 Them:** “The milk is in aisle three, on the left.” · החלב במעבר שלוש, משמאל.
 - **🫵 You:** “Thank you!” · תודה!
 - **🧑 Them:** “Hi! Is that everything?” · היי! זה הכל?
-- **🫵 You:** “Can you show me?” · אתה יכול להראות לי? (כלי — כשמילים לא מספיקות)
-- **🧑 Them:** “Of course — put it here, press the picture, done.” · בטח — שים כאן, לחץ על התמונה, גמרנו.
 - **🫵 You:** “Just this, thanks.” · רק את זה, תודה.
 - **🧑 Them:** “Do you need a bag?” · צריך שקית?
 - **🫵 You:** “Could I get a bag?” · אפשר שקית?
 - **🧑 Them:** “Insert your card here… all done. Have a nice day!” · הכנס את הכרטיס כאן… הכל מוכן. שיהיה יום נעים!
+
+#### Wrong / recovery branches
+- ⚠︎ less useful: 🫵 “Just this, thanks.” → 🧑 “Hi there! Can I help you find something?” · היי! לעזור לך למצוא משהו?
+- ⚠︎ less useful: 🫵 “Could I get a bag?” → 🧑 “The milk is in aisle three, on the left.” · החלב במעבר שלוש, משמאל.
+- ⚠︎ less useful: 🫵 “Where is the milk?” → 🧑 “Hi! Is that everything?” · היי! זה הכל?
+- ⚠︎ less useful: 🫵 “Just this, thanks.” → 🧑 “Do you need a bag?” · צריך שקית?
 
 ### Review status
 - 🤖 AI-drafted (English + Hebrew) — **pending human / native-Hebrew review**

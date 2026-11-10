@@ -28,11 +28,6 @@ const fnv = (s: string): string => { let h = 0x811c9dc5; for (let i = 0; i < s.l
 const taught = (day: BootcampDayContent): string[] => stepsOf(day, 'tool').map((s) => strip(s.itemId));
 const reviewed = (day: BootcampDayContent): string[] => stepsOf(day, 'swipe').flatMap((s) => s.itemIds.map(strip));
 const rush = (day: BootcampDayContent) => stepsOf(day, 'quickReply').find((s) => s.challenge)!;
-const chat = (day: BootcampDayContent) => stepsOf(day, 'quickReply').find((s) => !s.challenge)!;
-/** [what is heard, accepted answers] of a Quick Reply step. */
-const mapOf = (step: Extract<BootcampStep, { kind: 'quickReply' }>): [string, string[]][] =>
-  step.rounds.map((r): [string, string[]] => [r.promptItemId ? strip(r.promptItemId) : r.npc ? r.npc.en : 'situation', r.options.filter((o) => o.correct).map((o) => strip(o.itemId))]);
-const swapSentences = (day: BootcampDayContent, round = 0): string[] => { const r = stepsOf(day, 'swap')[0]!.rounds[round]!; return r.options.map((o) => fillFrame(r.frame, o.slot)); };
 
 /* ── vocabulary: what a learner has met ──────────────────────────────────────────────────────── */
 
@@ -52,8 +47,9 @@ function lines(day: BootcampDayContent, skipChallenge = false): string[] {
   }
   return out;
 }
+/** Every word met up to a mission — a French / Spanish elided form ("l’allée") also teaches the bare word ("allée"). */
 const vocabulary = (lang: Lang, upTo: number, skipChallengeOfLast = false): Set<string> =>
-  new Set(Array.from({ length: upTo }, (_, i) => lines(mission(i + 1, lang), skipChallengeOfLast && i + 1 === upTo)).flat().flatMap(words));
+  new Set(Array.from({ length: upTo }, (_, i) => lines(mission(i + 1, lang), skipChallengeOfLast && i + 1 === upTo)).flat().flatMap(words).flatMap((w) => [w, w.replace(/^(?:l|d|j|qu|n|s|c|m|t)'/u, '')]));
 const unknownIn = (said: string[], known: Set<string>): string[] => [...new Set(said.flatMap(words).filter((w) => !known.has(w)))];
 
 /* ── scope ───────────────────────────────────────────────────────────────────────────────────── */
@@ -69,16 +65,11 @@ describe('scope: only the Practice of Missions 11–18 changed', () => {
   it('Missions 08–10 are not this pass\'s: each has its own (mission08.test.ts, mission09.test.ts, mission10.test.ts)', () => {
     for (const lang of LANGS) expect(slice(lang, 9, 10)[0]!.steps.some((s) => s.kind === 'checkpoint'), lang).toBe(true);
   });
-  it('the locked dialogue of Mission 17 is byte-for-byte unchanged (Missions 11–16 have their own passes since: mission11.test.ts … mission16.test.ts)', () => {
-    expect(print((l) => slice(l, 16, 17).map((d) => d.dialogues))).toEqual({ en: 'c19faf47', fr: 'bb8d7976', es: '20b1c418' });
-  });
   it('the approved practice is otherwise exactly as approved (after the final cleanup)', () => {
     const d = (l: Lang, n: number): BootcampDayContent => beforeCueFreeze(MISSIONS_BY_LANG[l]![BOOTCAMP_PLAN[n - 1]!.day]!, l);
     // Mission 18, whole — sentences, dialogues and steps (Missions 11–16: mission11.test.ts … mission16.test.ts).
     expect(print((l) => [18].map((n) => d(l, n)))).toEqual({ en: 'fdc71703', fr: '73f3d53a', es: 'a6837c30' });
-    // Mission 17 apart from its intro card.
-    expect(print((l) => d(l, 17).steps.filter((s) => s.kind !== 'talk'))).toEqual({ en: '990320d9', fr: 'de81d6af', es: '7607f353' });
-    expect(print((l) => [17].map((n) => d(l, n).dialogues))).toEqual({ en: 'c19faf47', fr: 'bb8d7976', es: '20b1c418' });
+    // (Mission 17: its own pass since — mission17.test.ts.)
   });
   it('five retired sentences left their missions — and nothing else did', () => {
     const gone = ['phrase.rest.menu', 'reply.rest.how-was-it', 'reply.rest.dessert', 'reply.diet.good-option', 'reply.super.weigh-it'];
@@ -86,7 +77,7 @@ describe('scope: only the Practice of Missions 11–18 changed', () => {
       // (Mission 14's sentences: its own pass since — mission14.test.ts.)
       // (Mission 15's sentences: its own pass since — mission15.test.ts.)
       // (Mission 16's sentences: its own pass since — mission16.test.ts.)
-      expect(mission(17, lang).items, lang).toHaveLength(13);
+      // (Mission 17's sentences: its own pass since — mission17.test.ts.)
       // Not in ANY Core mission: so not in the sentence library, Listen, review, or "what did I learn".
       const everywhere = BOOTCAMP_PLAN.flatMap((m) => MISSIONS_BY_LANG[lang]![m.day]!.items.map((i) => strip(i.id)));
       for (const id of gone) expect(everywhere, `${lang} ${id}`).not.toContain(id);
@@ -96,10 +87,10 @@ describe('scope: only the Practice of Missions 11–18 changed', () => {
       const used = JSON.stringify(BOOTCAMP_PLAN.map((m) => [MISSIONS_BY_LANG[lang]![m.day]!.steps, MISSIONS_BY_LANG[lang]![m.day]!.dialogues]));
       for (const id of gone) expect(used.includes(`${lang}.${id}"`), `${lang} ${id}`).toBe(false);
       // …and they are kept, id and wording, in the archive.
-      expect(RETIRED_SENTENCES[lang].filter((r) => !M15_PASS_RETIRED.includes(r.id.slice(3)) && r.retiredFrom !== 'hotel-check-in' && r.retiredFrom !== 'coffee-shop' && r.retiredFrom !== 'directions' && r.retiredFrom !== 'airport-border' && r.retiredFrom !== 'taxi' && r.retiredFrom !== 'shopping' && r.retiredFrom !== 'hobbies-free-time').map((r) => strip(r.id)), lang).toEqual(gone);
+      expect(RETIRED_SENTENCES[lang].filter((r) => !M15_PASS_RETIRED.includes(r.id.slice(3)) && r.retiredFrom !== 'hotel-check-in' && r.retiredFrom !== 'coffee-shop' && r.retiredFrom !== 'directions' && r.retiredFrom !== 'airport-border' && r.retiredFrom !== 'taxi' && r.retiredFrom !== 'shopping' && r.retiredFrom !== 'hobbies-free-time' && !['reply.super.over-there', 'reply.super.sold-out'].includes(r.id.slice(3))).map((r) => strip(r.id)), lang).toEqual(gone);
       for (const r of RETIRED_SENTENCES[lang]) { expect(r.text.length, r.id).toBeGreaterThan(3); expect(r.meaning.he, r.id).toBeTruthy(); expect(BOOTCAMP_PLAN.some((m) => m.id === r.retiredFrom), r.id).toBe(true); }
     }
-    expect(RETIRED_SENTENCES.en.filter((r) => !M15_PASS_RETIRED.includes(r.id.slice(3)) && r.retiredFrom !== 'hotel-check-in' && r.retiredFrom !== 'coffee-shop' && r.retiredFrom !== 'directions' && r.retiredFrom !== 'airport-border' && r.retiredFrom !== 'taxi' && r.retiredFrom !== 'shopping' && r.retiredFrom !== 'hobbies-free-time').map((r) => r.text)).toEqual(['The menu, please.', 'How was everything?', 'Would you like dessert?', 'This one is a good option for you.', 'You need to weigh it first.']);
+    expect(RETIRED_SENTENCES.en.filter((r) => !M15_PASS_RETIRED.includes(r.id.slice(3)) && r.retiredFrom !== 'hotel-check-in' && r.retiredFrom !== 'coffee-shop' && r.retiredFrom !== 'directions' && r.retiredFrom !== 'airport-border' && r.retiredFrom !== 'taxi' && r.retiredFrom !== 'shopping' && r.retiredFrom !== 'hobbies-free-time' && !['reply.super.over-there', 'reply.super.sold-out'].includes(r.id.slice(3))).map((r) => r.text)).toEqual(['The menu, please.', 'How was everything?', 'Would you like dessert?', 'This one is a good option for you.', 'You need to weigh it first.']);
   });
   it('mission order, ids and registry keys are unchanged', () => {
     expect(BOOTCAMP_PLAN.slice(10, 18).map((m) => `${m.id}:${m.day}`)).toEqual([
@@ -175,7 +166,7 @@ describe('all three languages get the same practice, each in its own words', () 
     }
   });
   it('the closing review is selective: at most 12 cards, everything taught is in it, nothing twice', () => {
-    for (const n of [11, 12, 13, 17]) { // Missions 14, 15 and 16 have no closing review since their own passes (mission14/15/16.test.ts)
+    for (const n of [11, 12, 13]) { // Missions 14–17 have no closing review since their own passes (mission14 … mission17.test.ts)
       const day = mission(n);
       const review = reviewed(day);
       expect(review.length, `M${n}`).toBeLessThanOrEqual(12);
@@ -185,7 +176,7 @@ describe('all three languages get the same practice, each in its own words', () 
     }
   });
   it('every teaching mission ends on a chain at natural speed made ONLY of its own conversation\'s lines', () => {
-    for (const n of [11, 12, 13, 17]) for (const lang of LANGS) { // Missions 14, 15 and 16: their own no-help runs (mission14/15/16.test.ts)
+    for (const n of [11, 12, 13]) for (const lang of LANGS) { // Missions 14–17: their own no-help runs (mission14 … mission17.test.ts)
       const day = mission(n, lang);
       const speed = rush(day);
       expect(speed, `${lang} M${n}`).toBeDefined();
@@ -198,15 +189,7 @@ describe('all three languages get the same practice, each in its own words', () 
       for (const r of speed.rounds) expect(r.options.some((o) => o.correct) && r.options.some((o) => !o.correct), `${lang} M${n}`).toBe(true);
     }
   });
-  it('active retrieval outside the dialogue: 8–16 moments per teaching mission', () => {
-    // (Missions 11–16 have their own passes since — their interactions are counted in mission11 … mission16.test.ts.)
-    for (let n = 17; n <= 17; n++) {
-      const day = mission(n);
-      const moments = day.steps.reduce((k, s) => k + (s.kind === 'quickReply' || s.kind === 'swap' || s.kind === 'sentenceBuilder' ? s.rounds.length : 0), 0);
-      expect(moments, `M${n}`).toBeGreaterThanOrEqual(8);
-      expect(moments, `M${n}`).toBeLessThanOrEqual(20);
-    }
-  });
+  // (Active retrieval: Missions 11–17 count their interactions in their own tests — mission11 … mission17.test.ts.)
   it('no grammar lecture: no label, cue or proof card of the new steps uses grammar terms', () => {
     for (let n = 11; n <= 18; n++) {
       const copy = JSON.stringify(mission(n).steps.filter((s) => s.kind !== 'tool' && s.kind !== 'talk').map((s) => ('label' in s ? s.label : s.kind === 'receipt' ? s.text : s.kind === 'swap' ? s.rounds.map((r) => r.cue) : null)));
@@ -227,70 +210,7 @@ describe('all three languages get the same practice, each in its own words', () 
 
 /* ── Mission 16 — Hobbies & Free Time: its own pass since — mission16.test.ts ──────────────────── */
 
-/* ── Mission 17 — Supermarket ────────────────────────────────────────────────────────────────── */
-
-describe('Mission 17 — Supermarket & Everyday Shopping', () => {
-  const day = mission(17);
-  it('flow: learn → recognize → aisle by ear → any product → shelf to checkout → conversation → at speed → the recovery moment', () => {
-    expect(kinds(day)).toEqual(['talk', 'tool', 'tool', 'tool', 'tool', 'replies', 'receipt', 'visualMatch', 'swap', 'quickReply', 'dialogue', 'receipt', 'swipe', 'quickReply:speed', 'receipt', 'ambush:recovery', 'receipt', 'summary']);
-  });
-  it('"You need to weigh it first." is gone from teaching, quiz and review; nothing claims fruit was weighed', () => {
-    for (const lang of LANGS) {
-      const d = mission(17, lang);
-      expect(JSON.stringify(d.steps), lang).not.toMatch(/super\.weigh-it/);
-      expect(JSON.stringify([d.steps, d.items]), lang).not.toContain(RETIRED_SENTENCES[lang].find((r) => strip(r.id) === 'reply.super.weigh-it')!.text);
-      expect(JSON.stringify(d.steps), lang).not.toMatch(/weigh|שוקל|שקל|שקיל/i); // intro card, proof cards, labels
-      expect(stepsOf(d, 'quiz'), lang).toHaveLength(0);
-    }
-    // …and it was never in the conversation.
-    expect(JSON.stringify(day.dialogues)).not.toMatch(/weigh/i);
-  });
-  it('location: an aisle number AND a side, by ear', () => {
-    const board = stepsOf(day, 'visualMatch')[0]!;
-    expect(board.tiles.map((t) => t.label)).toEqual(['1 ⬅️', '1 ➡️', '2 ⬅️', '2 ➡️', '3 ⬅️', '3 ➡️']);
-    expect(board.rounds.map((r) => [r.audio.en, r.correct])).toEqual([
-      ['The milk is in aisle three, on the left.', 'a3l'], ["It's in aisle one, on the right.", 'a1r'], ["It's in aisle two, on the left.", 'a2l'],
-    ]);
-    for (const lang of LANGS) {
-      const b = stepsOf(mission(17, lang), 'visualMatch')[0]!;
-      const before = new Set([...vocabulary(lang, 16), ...lines(mission(17, lang), true).filter((l) => !b.rounds.some((r) => r.audio.en === l)).flatMap(words)]);
-      expect(unknownIn(b.rounds.map((r) => r.audio.en), before), lang).toEqual([]);
-    }
-  });
-  it('product flexibility: "Where is the ___?" with three products the learner already has words for', () => {
-    expect(swapSentences(day)).toEqual(['Where is the milk?', 'Where is the bread?', 'Where is the water?']);
-    expect(swapSentences(mission(17, 'fr'))).toEqual(['Où est le lait ?', 'Où est le pain ?', 'Où est l’eau ?']);
-    expect(swapSentences(mission(17, 'es'))).toEqual(['¿Dónde está la leche?', '¿Dónde está el pan?', '¿Dónde está el agua?']); // el agua
-    for (const lang of LANGS) {
-      expect(swapSentences(mission(17, lang))[0], lang).toBe(text(mission(17, lang), 'phrase.super.where-is'));
-      expect(unknownIn(swapSentences(mission(17, lang)), new Set([...vocabulary(lang, 16), ...mission(17, lang).items.flatMap((i) => words(i.text))])), lang).toEqual([]);
-    }
-  });
-  it('checkout retrieval: "Just this, thanks." and "Could I get a bag?" answer the cashier', () => {
-    expect(mapOf(chat(day))).toEqual([
-      ['Hi there! Can I help you find something?', ['phrase.super.where-is', 'phrase.super.do-you-have']],
-      ['situation', ['phrase.super.do-you-have']],
-      ['reply.super.aisle-three', ['phrase.recovery.thank-you', 'phrase.recovery.repeat']],
-      ['Hi! Is that everything?', ['phrase.super.just-this']],
-      ['reply.super.bag-q', ['phrase.super.need-bag']],
-    ]);
-  });
-  it('the intro promises what the mission does: find it → aisle and side → checkout → a bag', () => {
-    const intro = day.steps[0]!;
-    expect(intro.kind).toBe('talk');
-    const said = intro.kind === 'talk' ? intro.body.map((b) => b.en).join(' ') : '';
-    expect(said).toMatch(/find a product.*which aisle and which side.*checkout.*ask for a bag/);
-    expect(said).not.toMatch(/self-checkout|weigh|signs/i);
-    for (const lang of ['fr', 'es'] as const) expect(mission(17, lang).steps[0], lang).toEqual(intro); // the card is app-language copy
-  });
-  it('recovery stays where it fits: "Can you show me?" at the jammed self-checkout', () => {
-    const [ambush] = stepsOf(day, 'ambush');
-    expect([ambush!.mode, strip(ambush!.correctItemId)]).toEqual(['recovery', 'phrase.recovery.show-me']);
-  });
-  it('final challenge: find it → understand the aisle → checkout → bag', () => {
-    expect(mapOf(rush(day)).map(([, ok]) => ok)).toEqual([['phrase.super.where-is'], ['phrase.recovery.thank-you'], ['phrase.super.just-this'], ['phrase.super.need-bag']]);
-  });
-});
+/* ── Mission 17 — Supermarket & Everyday Shopping: its own pass since — mission17.test.ts ────────── */
 
 /* ── Mission 18 — the checkpoint ─────────────────────────────────────────────────────────────── */
 

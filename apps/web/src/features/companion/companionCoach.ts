@@ -68,6 +68,8 @@ export const MISSION_GAME_INTRO: Record<string, Record<string, LocalizedText>> =
   'special-requests-allergies': { visualMatch: T('שמע את המלצר — והקש על מה שהוא באמת אמר.', 'Hear the waiter — and tap what he really said.') },
   // The hobbies mission's first board is Sort Your Hobbies: your own line → where the hobby goes.
   'hobbies-free-time': { visualMatch: T('שמע — והקש לאן התחביב שייך.', 'Listen — and tap where the hobby goes.') },
+  // The supermarket's first board is the Shelf Scan: a product word → its picture, never a price.
+  'supermarket': { visualMatch: T('שמע — והקש על המוצר.', 'Listen — and tap the product.') },
 };
 
 export interface CoachLine {

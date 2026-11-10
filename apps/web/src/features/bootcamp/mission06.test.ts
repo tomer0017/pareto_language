@@ -71,7 +71,7 @@ describe('the conversation is locked, and Mission 06 is in its place', () => {
     expect(print(5)).toEqual({ en: '50fa4cd1', es: '8d7d290d', fr: 'e539a4f6' });
   });
   it('Missions 08–30 are byte-for-byte unchanged by this pass (Mission 07 has its own pass since: mission07.test.ts)', () => {
-    expect(Object.fromEntries(LANGS.map((l) => [l, fnv(JSON.stringify(BOOTCAMP_PLAN.slice(16, 23).map((m) => MISSIONS_BY_LANG[l]![m.day]!)))]))).toEqual({ en: 'b2c546c2', es: '0b3d70ab', fr: '3638ab86' });
+    expect(Object.fromEntries(LANGS.map((l) => [l, fnv(JSON.stringify(BOOTCAMP_PLAN.slice(17, 23).map((m) => MISSIONS_BY_LANG[l]![m.day]!)))]))).toEqual({ en: '3c691979', es: 'e2037f1d', fr: '44a927c5' });
     expect(Object.fromEntries(LANGS.map((l) => [l, fnv(JSON.stringify(BOOTCAMP_PLAN.slice(24).map((m) => MISSIONS_BY_LANG[l]![m.day]!)))]))).toEqual({ en: 'aee7fe64', es: '4b9c9cd9', fr: '6af8deb0' }); // Mission 24 left out: its own correction since (the "should" card — practiceCity.test.ts) // Missions 17–30 (Missions 14 and 15 have their own passes since: mission14.test.ts, mission15.test.ts) (Missions 08, 09, 10, 11, 12 and 13 have their own passes since)
   });
 });

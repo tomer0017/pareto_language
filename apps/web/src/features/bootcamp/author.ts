@@ -143,6 +143,8 @@ export interface VisualMatchSpec {
 }
 export interface SwapSpec {
   label?: Copy;
+  /** A transfer check: tested, never counted as teaching or coverage, never a course sentence. */
+  transferOnly?: boolean;
   rounds: {
     frame: L3;
     itemId?: string;
@@ -408,7 +410,7 @@ export function buildPractice(p: PracticeSpec, lang: MissionLang): BootcampStep 
   }
   if (p.kind === 'swap') {
     return {
-      kind: 'swap', ...label,
+      kind: 'swap', ...label, ...(p.transferOnly ? { transferOnly: true } : {}),
       rounds: p.rounds.map((r) => ({
         frame: r.frame[ix], ...(r.itemId ? { itemId: id(r.itemId) } : {}),
         cue: { ...(r.cue.emoji ? { emoji: r.cue.emoji } : {}), text: T(r.cue.text) },

@@ -533,3 +533,29 @@ reuses intact); the friend's lines are whole-line hear items (four ids kept with
 five hobbies with equal treatment, the diving school) + 1 prop, emoji PLACEHOLDERS — VISUAL PRODUCTION REQUIRED
 (Astra pass): `MISSION16_ASSET_MANIFEST.md`. Tests: `mission16.test.ts` (65); Missions 01–15 and 17–30
 byte-for-byte unchanged (the old "16–30" pins now pin 17–30).
+
+**Mission 17 — Supermarket & Everyday Shopping (registry key 16), 2026-11-10.** A MINIMAL, VISUAL, FAST
+supermarket sprint and the shortest teaching mission yet: 18 interactions (10 teaching · 3 no help · 5 final)
+plus the conversation, run ONCE (supported). The locked dialogue is unchanged word for word (transcript
+fingerprint identical); the tree changed on purpose: the "Do you have bread?" branch and the repeat / show-me
+recovery branches are gone, and every turn is a real decision (a miss is re-asked slowly). Journey
+(`practiceSupermarket.ts`, shared by EN / ES / FR; the day files keep the sentences and the dialogue): briefing
+("buy milk", nothing to discover given away) → **Shelf Scan**: EXACTLY six essentials (milk, water, bread,
+cheese, eggs, apples; bread is just "bread") on one word card, then three recognition rounds (hear the word, tap
+the picture, three tiles each, no product the answer twice) → "Can I help you find something?" + "Where is the
+milk?" → "Where is the bread / cheese?" (a `transferOnly` swap: never in the dialogue, never teaching or
+coverage) → the **Aisle Finder** (deterministic tiles 1–3 × ⬅️ / ➡️: aisle 3, on the left) → a SILENT checkout
+cue → "Is that everything?" + "Just this, thanks." → "Do you need a bag?" + "Could I get a bag?" → the card
+(one cashier-signal board) → the conversation → no help (where is · just this · a bag) → video (none recorded:
+safe skip) → final micro run (find → aisle → just this → bag → card) → 🛒 QUICK SHOP COMPLETE. The **🛒
+Supermarket sprint** (🔎 Find → 📍 Locate → 🧾 Checkout → 🛍️ Bag → 💳 Pay) is a staged journey on the board;
+"📍 Aisle 3 ⬅️" appears only after the assistant says it. Serialisable `sprintState` (productsSeen, milkFound,
+aisleKnown, checkoutReached, bagRequested, paymentDone, phase; no cart). "Thank you!" is the toolkit's: prior,
+no card, no drill. No prices, no payment methods, no receipt, no Flex, no builder, no grammar. Generic
+additions: `transferOnly` on swap steps (skipped by teaching and coverage like the other transfer checks) and
+the sprint as a third staged journey in the board renderer. "Over there, on the left." and "Sorry, we're sold
+out." are archived; "Do you have bread?" stays an (untaught) Mission 17 sentence only because the Everyday
+checkpoint reuses it as a wrong option. The old `practiceEveryday.ts` (Mission 17's previous flow) is removed.
+Coverage: `mission17Coverage.ts` (+ the six essentials as recognition concepts). Artwork: 9 slots + 1 prop, emoji
+PLACEHOLDERS — VISUAL PRODUCTION REQUIRED (Astra pass): `MISSION17_ASSET_MANIFEST.md`. Tests:
+`mission17.test.ts` (63); Missions 01–16 and 18–30 byte-for-byte unchanged (the old "17–30" pins now pin 18–30).

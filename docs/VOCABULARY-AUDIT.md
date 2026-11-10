@@ -82,6 +82,11 @@ real prime word in that mission. **Counts: 29 audited · 7 primed · 22 explicit
 > No earlier mission guarantees "should" — an optional branch never counts — so the checkpoint shows it once, on a
 > card, before the chat. Everything else in the checkpoint stays proof.
 
+> **2026-11-10 — Mission 17 (Supermarket, registry key 16) is now primed** with ONE shelf of exactly six
+> essentials (*milk, water, bread, cheese, eggs, apples* — recognition only; bread is just "bread") and whole-line
+> cards: *Where is the milk?*, *Just this, thanks.*, *Could I get a bag?* and the staff's lines. "Thank you!" is
+> prior; "Where is the bread / cheese?" are transfer checks, never taught. No prices, no seventh product.
+
 > **2026-11-10 — Mission 16 (Hobbies & Free Time, registry key 33) is now primed** with whole-line cards, never a
 > hobby word list: *Yes! What do you do for fun?*, *I love surfing!*, *I like drawing.*, *I usually draw in the
 > evening.*, *Yes, I like to listen to music too.*, *No, I don't like running.*, *I want to try diving.* and the

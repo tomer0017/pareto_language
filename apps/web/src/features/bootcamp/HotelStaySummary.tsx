@@ -8,10 +8,12 @@ export function splitHotelStay(text: string): { before: string; facts: string[];
 }
 
 /** The staged journeys — each stage ✅ or ⬜ — split the same way; never a new fact. Mission 09's
- *  shopping journey (five stages) and Mission 11's conversation flow (four). */
+ *  shopping journey (five stages), Mission 11's conversation flow (four) and Mission 17's supermarket
+ *  sprint (five). */
 const JOURNEYS: readonly { re: RegExp; stages: number }[] = [
   { re: /👀 (?:Browse|מסתכלים) [\s\S]+?🛍️ (?:Buy|קונים) (?:✅|⬜)/u, stages: 5 },
   { re: /💬 (?:Connect|חיבור) [\s\S]+?👋 (?:Close|פרידה) (?:✅|⬜)/u, stages: 4 },
+  { re: /🔎 (?:Find|למצוא) [\s\S]+?💳 (?:Pay|לשלם) (?:✅|⬜)/u, stages: 5 },
 ];
 export function splitJourney(text: string): { before: string; facts: string[]; after: string } | null {
   for (const { re, stages } of JOURNEYS) {

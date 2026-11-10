@@ -59,9 +59,9 @@ Not present in the runtime (so not exported): free sentence construction, typing
 Not a mission. Eight phrases shared by all missions; a mission bundles the ones it uses. Selecting one in a dialogue is always accepted.
 
 - `phrase.recovery.dont-understand` — EN "Sorry, I don't understand." · FR "Désolé, je ne comprends pas." · ES "Perdón, no entiendo." · HE "סליחה, אני לא מבין." — help tool — bundled in missions: 14
-- `phrase.recovery.repeat` — EN "Can you repeat that?" · FR "Vous pouvez répéter ?" · ES "¿Puede repetir, por favor?" · HE "אפשר לחזור על זה?" — help tool — bundled in missions: 01, 03, 05, 06, 08, 14, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
-- `phrase.recovery.slowly` — EN "Please speak slowly." · FR "Parlez lentement, s’il vous plaît." · ES "Más despacio, por favor." · HE "דבר לאט, בבקשה." — help tool — bundled in missions: 01, 02, 03, 04, 06, 07, 09, 14, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
-- `phrase.recovery.show-me` — EN "Can you show me?" · FR "Vous pouvez me montrer ?" · ES "¿Me lo puede mostrar?" · HE "אתה יכול להראות לי?" — help tool — bundled in missions: 04, 07, 17
+- `phrase.recovery.repeat` — EN "Can you repeat that?" · FR "Vous pouvez répéter ?" · ES "¿Puede repetir, por favor?" · HE "אפשר לחזור על זה?" — help tool — bundled in missions: 01, 03, 05, 06, 08, 14, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- `phrase.recovery.slowly` — EN "Please speak slowly." · FR "Parlez lentement, s’il vous plaît." · ES "Más despacio, por favor." · HE "דבר לאט, בבקשה." — help tool — bundled in missions: 01, 02, 03, 04, 06, 07, 09, 14, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- `phrase.recovery.show-me` — EN "Can you show me?" · FR "Vous pouvez me montrer ?" · ES "¿Me lo puede mostrar?" · HE "אתה יכול להראות לי?" — help tool — bundled in missions: 04, 07
 - `phrase.recovery.one-moment` — EN "One moment, please." · FR "Un instant, s’il vous plaît." · ES "Un momento, por favor." · HE "רגע אחד, בבקשה." — help tool — bundled in missions: 02, 03, 06, 08, 14
 - `phrase.recovery.what-mean` — EN "What does that mean?" · FR "Qu’est-ce que ça veut dire ?" · ES "¿Qué significa eso?" · HE "מה זה אומר?" — help tool — bundled in missions: 25
 - `phrase.recovery.thank-you` — EN "Thank you!" · FR "Merci !" · ES "¡Gracias!" · HE "תודה!" — courtesy — bundled in missions: 03, 05, 06, 07, 10, 14, 15, 17, 18, 19, 25, 26, 30
@@ -300,7 +300,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 14, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: sentence review (step 17); cold-open correct option (step 20); dialogue choice meeting-host/c1 (accepted)
 
 ### Sentence: `phrase.recovery.slowly`
@@ -311,7 +311,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: dialogue choice meeting-host/c3 (accepted)
 
 ## Expected replies / listening items
@@ -1271,7 +1271,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: sentence review (step 17); dialogue choice market-stall/c2 (accepted)
 
 ### Sentence: `phrase.recovery.one-moment`
@@ -2525,7 +2525,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 14, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: sentence review (step 20); dialogue choice breakfast-order/c2 (accepted)
 
 ### Sentence: `phrase.recovery.slowly`
@@ -2536,7 +2536,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: dialogue choice breakfast-order/c6 (accepted)
 
 ### Sentence: `phrase.recovery.thank-you`
@@ -3945,7 +3945,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Me lo puede mostrar?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 04, 07, 17
+- Used in missions: 04, 07
 - Exercised here as: quick-reply response (step 7, round 2, accepted); swap-it frame (step 15, round 4); dialogue choice hostel-desk/c10 (accepted)
 
 ### Sentence: `phrase.recovery.slowly`
@@ -3956,7 +3956,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: dialogue choice coffee-with-a-friend/c4 (accepted)
 
 ## Expected replies / listening items
@@ -5122,7 +5122,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 14, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: dialogue choice lost-in-town/c1 (accepted)
 
 ### Sentence: `phrase.recovery.thank-you`
@@ -6086,7 +6086,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 14, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: dialogue choice border-control/c2 (accepted)
 
 ### Sentence: `phrase.recovery.slowly`
@@ -6097,7 +6097,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: dialogue choice border-control/c4 (accepted)
 
 ### Sentence: `phrase.recovery.one-moment`
@@ -7339,7 +7339,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: dialogue choice taxi-ride/c3 (accepted)
 
 ### Sentence: `phrase.recovery.show-me`
@@ -7350,7 +7350,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Me lo puede mostrar?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 04, 07, 17
+- Used in missions: 04, 07
 - Exercised here as: dialogue choice taxi-ride/c2 (accepted)
 
 ### Sentence: `phrase.recovery.thank-you`
@@ -8417,7 +8417,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 14, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: dialogue choice hotel-checkin/c1 (accepted)
 
 ### Sentence: `phrase.recovery.one-moment`
@@ -9387,7 +9387,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: dialogue choice clothing-shop/c2 (accepted)
 
 ## Expected replies / listening items
@@ -14288,7 +14288,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 14, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: nothing (listed only)
 
 ### Sentence: `phrase.recovery.slowly`
@@ -14299,7 +14299,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: nothing (listed only)
 
 ### Sentence: `phrase.recovery.thank-you`
@@ -16966,7 +16966,7 @@ None raised by the mechanical checks.
 - Phase: 3 — Everyday Life / חיי יום-יום 🏡
 - Source runtime file(s): `apps/web/src/features/bootcamp/day16.ts` · `apps/web/src/features/bootcamp/fr/day16.ts` · `apps/web/src/features/bootcamp/es/day16.ts`
 - Video: found by convention, never written into mission content — EN `videos/en/en_17.mp4` · FR `videos/fr/fr_17.mp4` · ES `videos/es/es_17.mp4`. Played only where that file exists (inventory: `docs/CORE30_FINAL_VIDEO_ACTION_MAP.md`).
-- Video steps inside the Practice flow: no
+- Video steps inside the Practice flow: yes (see flow)
 
 ## Learning goal / intro screen
 
@@ -16988,36 +16988,105 @@ Intro screen (first Practice step; identical in the English, French and Spanish 
 
 - Icon: 🛒
 - Title: "Mission 17: Supermarket" / "משימה 17: סופרמרקט"
-- Text 1: "The supermarket, on your own: find a product, understand which aisle and which side it is on, get through the checkout and ask for a bag." / "סופר, לבד: למצוא מוצר, להבין באיזה מעבר ובאיזה צד הוא, לעבור קופה ולבקש שקית."
-- Text 2: "A few short questions — and a few answers worth recognizing when they are said fast." / "כמה שאלות קצרות — וכמה תשובות שכדאי לזהות כשאומרים אותן מהר."
+- Text 1: "You walk into a supermarket to buy milk." / "נכנסת לסופר לקנות חלב."
+- Text 2: "Find it, go through the checkout and ask for a bag." / "מצא אותו, עבור בקופה ובקש שקית."
 - Button: "Walk into the shop" / "להיכנס לסופר"
 
 ## Current Practice flow
 
 1. `talk` — intro screen — "Mission 17: Supermarket"
-2. `tool` — key sentence (listen → reveal → say aloud) — `phrase.super.where-is` “Where is the milk?” · label "Find a product" / "למצוא מוצר" (1/4)
-3. `tool` — key sentence (listen → reveal → say aloud) — `phrase.super.do-you-have` “Do you have bread?” · label "Check stock" / "לבדוק מלאי" (2/4)
-4. `tool` — key sentence (listen → reveal → say aloud) — `phrase.super.just-this` “Just this, thanks.” · label "At the checkout" / "בקופה" (3/4)
-5. `tool` — key sentence (listen → reveal → say aloud) — `phrase.super.need-bag` “Could I get a bag?” · label "Ask for a bag" / "לבקש שקית" (4/4)
-6. `replies` — expected replies (listening drill) — after `phrase.super.where-is`: 4 replies
-7. `receipt` — receipt (proof card) — "You recognize what an assistant and a checkout say — aisle, direction, bag, card." / "אתה מזהה תשובות של עובד וקופה — מעבר, כיוון, שקית, כרטיס."
-8. `visualMatch` — visual match (hear → tap the tile) — 3 round(s)
-9. `swap` — swap it (one frame, several endings) — 3 round(s)
-10. `quickReply` — quick reply (hear → pick your response) — 5 round(s)
-11. `dialogue` — dialogue (choose your line) — scene `supermarket`
-12. `receipt` — receipt (proof card) — "You found a product, understood which aisle it is in, and got through the checkout — on your own." / "מצאת מוצר, הבנת באיזה מעבר הוא, ועברת קופה — לבד."
-13. `swipe` — sentence review — 11 sentences
-14. `quickReply` — quick reply (hear → pick your response) — 4 round(s) · speed challenge
-15. `receipt` — receipt (proof card) — "From shelf to checkout at normal pace — you found it, understood where, and paid." / "מהמדף ועד הקופה, בקצב רגיל — מצאת, הבנת איפה, ושילמת."
-16. `ambush` — cold open (fast line) — mode recovery · correct `phrase.recovery.show-me`, wrong `phrase.super.just-this`
-17. `receipt` — receipt (proof card) — "The self-checkout jammed — and you knew to ask someone to show you, instead of panicking." / "הקופה האוטומטית נתקעה — וידעת לבקש שיראו לך במקום להיכנס ללחץ."
-18. `summary` — victory screen
+2. `prime` — before-we-speak (word intro) — 6 words → builds ``
+3. `visualMatch` — visual match (hear → tap the tile) — 3 round(s)
+4. `prime` — before-we-speak (word intro) — 2 words → builds ``
+5. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+6. `swap` — swap it (one frame, several endings) — 2 round(s)
+7. `prime` — before-we-speak (word intro) — 1 words → builds ``
+8. `visualMatch` — visual match (hear → tap the tile) — 1 round(s)
+9. `prime` — before-we-speak (word intro) — 2 words → builds ``
+10. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+11. `prime` — before-we-speak (word intro) — 2 words → builds ``
+12. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+13. `prime` — before-we-speak (word intro) — 1 words → builds ``
+14. `visualMatch` — visual match (hear → tap the tile) — 1 round(s)
+15. `receipt` — receipt (proof card) — "🛒 Supermarket sprint · 🔎 Find ✅ · 📍 Aisle 3 ⬅️ ✅ · 🧾 Checkout ✅ · 🛍️ Bag ✅ · 💳 Pay ✅ · Found it, understood where, checked out, asked for a bag, paid." / "🛒 ספרינט בסופר · 🔎 למצוא ✅ · 📍 מעבר 3 ⬅️ ✅ · 🧾 קופה ✅ · 🛍️ שקית ✅ · 💳 לשלם ✅ · מצאת, הבנת איפה, עברת קופה, ביקשת שקית ושילמת."
+16. `dialogue` — dialogue (choose your line) — scene `supermarket`
+17. `receipt` — receipt (proof card) — "The whole trip — from the shelf to the checkout, on your own." / "כל הקנייה — מהמדף ועד הקופה, לבד."
+18. `quickReply` — quick reply (hear → pick your response) — 3 round(s) · speed challenge
+19. `receipt` — receipt (proof card) — "No help — find it, finish at the checkout, ask for a bag." / "בלי עזרה — למצוא, לסיים בקופה, לבקש שקית."
+20. `video` — video — mode again
+21. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+22. `visualMatch` — visual match (hear → tap the tile) — 1 round(s)
+23. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+24. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+25. `visualMatch` — visual match (hear → tap the tile) — 1 round(s)
+26. `receipt` — receipt (proof card) — "🛒 QUICK SHOP COMPLETE · 🔎 Find ✅ · 📍 Aisle 3 ⬅️ ✅ · 🧾 Checkout ✅ · 🛍️ Bag ✅ · 💳 Pay ✅ · You found it, understood where, checked out, asked for a bag and paid." / "🛒 הקנייה המהירה הושלמה · 🔎 למצוא ✅ · 📍 מעבר 3 ⬅️ ✅ · 🧾 קופה ✅ · 🛍️ שקית ✅ · 💳 לשלם ✅ · מצאת, הבנת איפה, עברת קופה, ביקשת שקית ושילמת."
+27. `summary` — victory screen
 
 Step sequence identical in EN / FR / ES: yes.
 
 ## Before we speak / word intro
 
-No vocabulary pre-step.
+Step 2. Label: "🛒 Shelf scan" / "🛒 סריקת מדף". Intro: "🛒 Supermarket sprint · 🔎 Find ⬜ · 📍 Locate ⬜ · 🧾 Checkout ⬜ · 🛍️ Bag ⬜ · 💳 Pay ⬜ · Six basics. Tap each one to hear it." / "🛒 ספרינט בסופר · 🔎 למצוא ⬜ · 📍 איפה ⬜ · 🧾 קופה ⬜ · 🛍️ שקית ⬜ · 💳 לשלם ⬜ · שישה מוצרים בסיסיים. הקש על כל אחד כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `super.milk` — EN "milk" · FR "le lait" · ES "la leche" — meaning "חלב" / "milk" — icon 🥛 — marked ♻️ review
+2. `super.water` — EN "water" · FR "l’eau" · ES "el agua" — meaning "מים" / "water" — icon 💧 — new
+3. `super.bread` — EN "bread" · FR "le pain" · ES "el pan" — meaning "לחם" / "bread" — icon 🍞 — new
+4. `super.cheese` — EN "cheese" · FR "le fromage" · ES "el queso" — meaning "גבינה" / "cheese" — icon 🧀 — new
+5. `super.eggs` — EN "eggs" · FR "les œufs" · ES "los huevos" — meaning "ביצים" / "eggs" — icon 🥚 — new
+6. `super.apples` — EN "apples" · FR "les pommes" · ES "las manzanas" — meaning "תפוחים" / "apples" — icon 🍎 — new
+
+No build-sentence card.
+
+Step 4. Label: "Find it" / "למצוא". Intro: "🛒 Supermarket sprint · 🔎 Find ⬜ · 📍 Locate ⬜ · 🧾 Checkout ⬜ · 🛍️ Bag ⬜ · 💳 Pay ⬜ · An assistant offers help — and you ask where the milk is. Tap to hear." / "🛒 ספרינט בסופר · 🔎 למצוא ⬜ · 📍 איפה ⬜ · 🧾 קופה ⬜ · 🛍️ שקית ⬜ · 💳 לשלם ⬜ · עובד מציע עזרה — ואתה שואל איפה החלב. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `super.line.help` — EN "Hi there! Can I help you find something?" · FR "Bonjour ! Je peux vous aider à trouver quelque chose ?" · ES "¡Hola! ¿Le ayudo a encontrar algo?" — meaning "היי! לעזור לך למצוא משהו? (צריך עזרה למצוא משהו?)" / "Hi there! Can I help you find something? (need help finding something?)" — icon 🛒 — new
+2. `super.line.where` — EN "Where is the milk?" · FR "Où est le lait ?" · ES "¿Dónde está la leche?" — meaning "איפה החלב? (איפה ה___? — שאלה אחת לכל מוצר)" / "Where is the milk? (where is the ___? — one question for any product)" — icon 🥛 — new
+
+No build-sentence card.
+
+Step 7. Label: "Where it is" / "איפה". Intro: "🛒 Supermarket sprint · 🔎 Find ✅ · 📍 Locate ⬜ · 🧾 Checkout ⬜ · 🛍️ Bag ⬜ · 💳 Pay ⬜ · The assistant says where. Tap to hear." / "🛒 ספרינט בסופר · 🔎 למצוא ✅ · 📍 איפה ⬜ · 🧾 קופה ⬜ · 🛍️ שקית ⬜ · 💳 לשלם ⬜ · העובד אומר איפה. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `super.line.aisle` — EN "The milk is in aisle three, on the left." · FR "Le lait est dans l’allée trois, sur la gauche." · ES "La leche está en el pasillo tres, a la izquierda." — meaning "החלב במעבר שלוש, משמאל. (מעבר 3 · צד שמאל)" / "The milk is in aisle three, on the left. (aisle 3 · left side)" — icon 🛒 — new
+
+No build-sentence card.
+
+Step 9. Label: "At the checkout…" / "בקופה…". Intro: "🛒 Supermarket sprint · 🔎 Find ✅ · 📍 Aisle 3 ⬅️ ✅ · 🧾 Checkout ⬜ · 🛍️ Bag ⬜ · 💳 Pay ⬜ · The cashier asks if that’s everything. Tap to hear." / "🛒 ספרינט בסופר · 🔎 למצוא ✅ · 📍 מעבר 3 ⬅️ ✅ · 🧾 קופה ⬜ · 🛍️ שקית ⬜ · 💳 לשלם ⬜ · הקופאית שואלת אם זה הכל. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `super.line.everything` — EN "Hi! Is that everything?" · FR "Bonjour ! Ce sera tout ?" · ES "¡Hola! ¿Eso es todo?" — meaning "היי! זה הכל? (קונה עוד משהו?)" / "Hi! Is that everything? (are you buying anything else?)" — icon 🧾 — new
+2. `super.line.just-this` — EN "Just this, thanks." · FR "Juste ça, merci." · ES "Solo esto, gracias." — meaning "רק את זה, תודה." / "Just this, thanks." — icon 🧾 — new
+
+No build-sentence card.
+
+Step 11. Label: "A bag" / "שקית". Intro: "🛒 Supermarket sprint · 🔎 Find ✅ · 📍 Aisle 3 ⬅️ ✅ · 🧾 Checkout ✅ · 🛍️ Bag ⬜ · 💳 Pay ⬜ · A bag? Tap to hear." / "🛒 ספרינט בסופר · 🔎 למצוא ✅ · 📍 מעבר 3 ⬅️ ✅ · 🧾 קופה ✅ · 🛍️ שקית ⬜ · 💳 לשלם ⬜ · שקית? הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `super.line.bag-q` — EN "Do you need a bag?" · FR "Vous avez besoin d’un sac ?" · ES "¿Necesita una bolsa?" — meaning "צריך שקית?" / "Do you need a bag?" — icon 🛍️ — new
+2. `super.line.bag` — EN "Could I get a bag?" · FR "Je peux avoir un sac ?" · ES "¿Me da una bolsa?" — meaning "אפשר שקית? (מבקשים שקית)" / "Could I get a bag? (ask for a bag)" — icon 🛍️ — new
+
+No build-sentence card.
+
+Step 13. Label: "Pay" / "לשלם". Intro: "🛒 Supermarket sprint · 🔎 Find ✅ · 📍 Aisle 3 ⬅️ ✅ · 🧾 Checkout ✅ · 🛍️ Bag ✅ · 💳 Pay ⬜ · The card — and you’re done. Tap to hear." / "🛒 ספרינט בסופר · 🔎 למצוא ✅ · 📍 מעבר 3 ⬅️ ✅ · 🧾 קופה ✅ · 🛍️ שקית ✅ · 💳 לשלם ⬜ · הכרטיס — וסיימת. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `super.line.card` — EN "Insert your card here… all done. Have a nice day!" · FR "Insérez votre carte ici… c’est bon. Bonne journée !" · ES "Inserte su tarjeta aquí… listo. ¡Que tenga un buen día!" — meaning "הכנס את הכרטיס כאן… הכל מוכן. שיהיה יום נעים! (כרטיס למכשיר ← שולם ← להתראות)" / "Insert your card here… all done. Have a nice day! (card in the machine → paid → goodbye)" — icon 🧾 — new
+
+No build-sentence card.
 
 ## Every sentence in this mission
 
@@ -17032,18 +17101,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "Template: Where is the ___? — finds any product in any shop." / "התבנית: Where is the ___? — מוצאת כל מוצר בכל חנות."
 - Used in missions: 17, 18
-- Exercised here as: key sentence (step 2); "you said" lead-in of the expected-replies drill (step 6); swap-it frame (step 9, round 1); swap-it frame (step 9, round 2); swap-it frame (step 9, round 3); quick-reply response (step 10, round 1, accepted); quick-reply response (step 10, round 4, wrong option); quick-reply response (step 10, round 5, wrong option); sentence review (step 13); quick-reply response (step 14, round 1, accepted); quick-reply response (step 14, round 3, wrong option); quick-reply response (step 14, round 4, wrong option); dialogue choice supermarket/c1 (accepted); dialogue choice supermarket/c1b (accepted)
-
-### Sentence: `phrase.super.do-you-have`
-
-- EN: Do you have bread?
-- HE: יש לכם לחם?
-- FR: Vous avez du pain ?
-- ES: ¿Tienen pan?
-- Role: learner production
-- Tip / pattern note: "Template: Do you have ___? — checks if it’s in stock." / "התבנית: Do you have ___? — בודקת אם קיים במלאי."
-- Used in missions: 17, 18
-- Exercised here as: key sentence (step 3); quick-reply response (step 10, round 1, accepted); quick-reply response (step 10, round 2, accepted); quick-reply response (step 10, round 4, wrong option); quick-reply response (step 10, round 5, wrong option); sentence review (step 13); quick-reply response (step 14, round 2, wrong option); quick-reply response (step 14, round 3, wrong option); dialogue choice supermarket/c1 (accepted)
+- Exercised here as: quick-reply response (step 5, round 1, accepted); swap-it frame (step 6, round 1); swap-it frame (step 6, round 2); quick-reply response (step 10, round 1, wrong option); quick-reply response (step 12, round 1, wrong option); quick-reply response (step 18, round 1, accepted); quick-reply response (step 18, round 2, wrong option); quick-reply response (step 18, round 3, wrong option); quick-reply response (step 21, round 1, accepted); quick-reply response (step 23, round 1, wrong option); dialogue choice supermarket/c1 (accepted); dialogue choice supermarket/c3 (WRONG option)
 
 ### Sentence: `phrase.super.just-this`
 
@@ -17054,7 +17112,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 17, 18
-- Exercised here as: key sentence (step 4); quick-reply response (step 10, round 1, wrong option); quick-reply response (step 10, round 2, wrong option); quick-reply response (step 10, round 4, accepted); sentence review (step 13); quick-reply response (step 14, round 1, wrong option); quick-reply response (step 14, round 2, wrong option); quick-reply response (step 14, round 3, accepted); quick-reply response (step 14, round 4, wrong option); cold-open wrong option (step 16); dialogue choice supermarket/c3 (accepted); dialogue choice supermarket/c3b (accepted)
+- Exercised here as: quick-reply response (step 10, round 1, accepted); quick-reply response (step 12, round 1, wrong option); quick-reply response (step 18, round 1, wrong option); quick-reply response (step 18, round 2, accepted); quick-reply response (step 18, round 3, wrong option); quick-reply response (step 23, round 1, accepted); quick-reply response (step 24, round 1, wrong option); dialogue choice supermarket/c1 (WRONG option); dialogue choice supermarket/c3 (accepted); dialogue choice supermarket/c4 (WRONG option)
 
 ### Sentence: `phrase.super.need-bag`
 
@@ -17065,29 +17123,51 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 17, 18
-- Exercised here as: key sentence (step 5); quick-reply response (step 10, round 2, wrong option); quick-reply response (step 10, round 3, wrong option); quick-reply response (step 10, round 5, accepted); sentence review (step 13); quick-reply response (step 14, round 1, wrong option); quick-reply response (step 14, round 4, accepted); dialogue choice supermarket/c4 (accepted)
+- Exercised here as: quick-reply response (step 12, round 1, accepted); quick-reply response (step 18, round 1, wrong option); quick-reply response (step 18, round 2, wrong option); quick-reply response (step 18, round 3, accepted); quick-reply response (step 21, round 1, wrong option); quick-reply response (step 23, round 1, wrong option); quick-reply response (step 24, round 1, accepted); dialogue choice supermarket/c2 (WRONG option); dialogue choice supermarket/c4 (accepted)
+
+### Sentence: `phrase.super.do-you-have`
+
+- EN: Do you have bread?
+- HE: יש לכם לחם?
+- FR: Vous avez du pain ?
+- ES: ¿Tienen pan?
+- Role: learner production
+- Tip / pattern note: "Template: Do you have ___? — checks if it’s in stock." / "התבנית: Do you have ___? — בודקת אם קיים במלאי."
+- Used in missions: 17, 18
+- Exercised here as: nothing (listed only)
+
+### Sentence: `reply.super.can-help`
+
+- EN: Hi there! Can I help you find something?
+- HE: היי! לעזור לך למצוא משהו?
+- FR: Bonjour ! Je peux vous aider à trouver quelque chose ?
+- ES: ¡Hola! ¿Le ayudo a encontrar algo?
+- Role: receptive — an expected reply the learner hears
+- Tip / pattern note: none
+- Used in missions: 17
+- Exercised here as: quick-reply prompt (step 5, round 1); quick-reply prompt (step 18, round 1); quick-reply prompt (step 21, round 1)
 
 ### Sentence: `reply.super.aisle-three`
 
-- EN: It's in aisle three.
-- HE: זה במעבר שלוש.
-- FR: C’est dans l’allée trois.
-- ES: Está en el pasillo tres.
+- EN: The milk is in aisle three, on the left.
+- HE: החלב במעבר שלוש, משמאל.
+- FR: Le lait est dans l’allée trois, sur la gauche.
+- ES: La leche está en el pasillo tres, a la izquierda.
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 17
-- Exercised here as: expected-reply audio (step 6); visual-match audio (step 8, round 1); quick-reply prompt (step 10, round 3); sentence review (step 13)
+- Exercised here as: nothing (listed only)
 
-### Sentence: `reply.super.over-there`
+### Sentence: `reply.super.everything`
 
-- EN: Over there, on the left.
-- HE: שם, משמאל.
-- FR: Là-bas, sur la gauche.
-- ES: Allí, a la izquierda.
+- EN: Hi! Is that everything?
+- HE: היי! זה הכל?
+- FR: Bonjour ! Ce sera tout ?
+- ES: ¡Hola! ¿Eso es todo?
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 17
-- Exercised here as: expected-reply audio (step 6); sentence review (step 13)
+- Exercised here as: quick-reply prompt (step 10, round 1); quick-reply prompt (step 18, round 2); quick-reply prompt (step 23, round 1)
 
 ### Sentence: `reply.super.bag-q`
 
@@ -17098,62 +17178,18 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 17
-- Exercised here as: expected-reply audio (step 6); quick-reply prompt (step 10, round 5); sentence review (step 13)
+- Exercised here as: quick-reply prompt (step 12, round 1); quick-reply prompt (step 18, round 3); quick-reply prompt (step 24, round 1)
 
 ### Sentence: `reply.super.card-here`
 
-- EN: Insert your card here.
-- HE: הכנס את הכרטיס כאן.
-- FR: Insérez votre carte ici.
-- ES: Inserte su tarjeta aquí.
+- EN: Insert your card here… all done. Have a nice day!
+- HE: הכנס את הכרטיס כאן… הכל מוכן. שיהיה יום נעים!
+- FR: Insérez votre carte ici… c’est bon. Bonne journée !
+- ES: Inserte su tarjeta aquí… listo. ¡Que tenga un buen día!
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 17
-- Exercised here as: expected-reply audio (step 6); sentence review (step 13)
-
-### Sentence: `reply.super.sold-out`
-
-- EN: Sorry, we're sold out.
-- HE: סליחה, אזל המלאי.
-- FR: Désolé, c’est épuisé.
-- ES: Lo siento, se ha agotado.
-- Role: receptive — an expected reply the learner hears
-- Tip / pattern note: none
-- Used in missions: 17
-- Exercised here as: sentence review (step 13)
-
-### Sentence: `phrase.recovery.repeat`
-
-- EN: Can you repeat that?
-- HE: אפשר לחזור על זה?
-- FR: Vous pouvez répéter ?
-- ES: ¿Puede repetir, por favor?
-- Role: conversation-help tool (global Recovery Toolkit)
-- Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 14, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
-- Exercised here as: quick-reply response (step 10, round 3, accepted); sentence review (step 13); dialogue choice supermarket/c2 (accepted)
-
-### Sentence: `phrase.recovery.slowly`
-
-- EN: Please speak slowly.
-- HE: דבר לאט, בבקשה.
-- FR: Parlez lentement, s’il vous plaît.
-- ES: Más despacio, por favor.
-- Role: conversation-help tool (global Recovery Toolkit)
-- Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: nothing (listed only)
-
-### Sentence: `phrase.recovery.show-me`
-
-- EN: Can you show me?
-- HE: אתה יכול להראות לי?
-- FR: Vous pouvez me montrer ?
-- ES: ¿Me lo puede mostrar?
-- Role: conversation-help tool (global Recovery Toolkit)
-- Tip / pattern note: none
-- Used in missions: 04, 07, 17
-- Exercised here as: sentence review (step 13); cold-open correct option (step 16); dialogue choice supermarket/c3 (accepted)
 
 ### Sentence: `phrase.recovery.thank-you`
 
@@ -17164,64 +17200,11 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: courtesy from the Recovery Toolkit
 - Tip / pattern note: none
 - Used in missions: 03, 05, 06, 07, 10, 14, 15, 17, 18, 19, 25, 26, 30
-- Exercised here as: quick-reply response (step 10, round 3, accepted); quick-reply response (step 14, round 2, accepted); dialogue choice supermarket/c2 (accepted); dialogue choice supermarket/c2b (accepted); dialogue choice supermarket/c4 (accepted)
+- Exercised here as: quick-reply response (step 5, round 1, wrong option); quick-reply response (step 10, round 1, wrong option); quick-reply response (step 21, round 1, wrong option); quick-reply response (step 24, round 1, wrong option); dialogue choice supermarket/c2 (accepted)
 
 ## Expected replies / listening items
 
-Lead-in screen: "You said:" / "אמרת:" — EN "Where is the milk?" · FR "Où est le lait ?" · ES "¿Dónde está la leche?" — then "What might they answer? Learn the replies before they surprise you." / "מה הם עלולים לענות? נלמד את התשובות לפני שהן מפתיעות אותך." — button 👂 "I'm ready" / "אני מוכן".
-Linked learner sentence: `phrase.super.where-is`. Each reply below is played once automatically; the learner picks its MEANING from three buttons. Distractors are always the first two OTHER replies of this same drill, in drill order (runtime rule), so the three choices are shuffled per session.
-
-### M17-Q01 — expected-reply (step 6, reply 1 of 4)
-
-- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (1/4)
-- Audio played: EN "It's in aisle three." · FR "C’est dans l’allée trois." · ES "Está en el pasillo tres."
-- Meaning of the audio (HE): "זה במעבר שלוש."
-- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
-- Choices:
-  1. HE "זה במעבר שלוש." / EN "It's in aisle three." — `reply.super.aisle-three` — ✅ accepted
-  2. HE "שם, משמאל." / EN "Over there, on the left." — `reply.super.over-there` — ❌ wrong
-  3. HE "צריך שקית?" / EN "Do you need a bag?" — `reply.super.bag-q` — ❌ wrong
-- Tests: reply.super.aisle-three
-- Explanation shown after answering: generic: “It's in aisle three.” means “זה במעבר שלוש.”.
-
-### M17-Q02 — expected-reply (step 6, reply 2 of 4)
-
-- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (2/4)
-- Audio played: EN "Over there, on the left." · FR "Là-bas, sur la gauche." · ES "Allí, a la izquierda."
-- Meaning of the audio (HE): "שם, משמאל."
-- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
-- Choices:
-  1. HE "שם, משמאל." / EN "Over there, on the left." — `reply.super.over-there` — ✅ accepted
-  2. HE "זה במעבר שלוש." / EN "It's in aisle three." — `reply.super.aisle-three` — ❌ wrong
-  3. HE "צריך שקית?" / EN "Do you need a bag?" — `reply.super.bag-q` — ❌ wrong
-- Tests: reply.super.over-there
-- Explanation shown after answering: generic: “Over there, on the left.” means “שם, משמאל.”.
-
-### M17-Q03 — expected-reply (step 6, reply 3 of 4)
-
-- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (3/4)
-- Audio played: EN "Do you need a bag?" · FR "Vous avez besoin d’un sac ?" · ES "¿Necesita una bolsa?"
-- Meaning of the audio (HE): "צריך שקית?"
-- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
-- Choices:
-  1. HE "צריך שקית?" / EN "Do you need a bag?" — `reply.super.bag-q` — ✅ accepted
-  2. HE "זה במעבר שלוש." / EN "It's in aisle three." — `reply.super.aisle-three` — ❌ wrong
-  3. HE "שם, משמאל." / EN "Over there, on the left." — `reply.super.over-there` — ❌ wrong
-- Tests: reply.super.bag-q
-- Explanation shown after answering: generic: “Do you need a bag?” means “צריך שקית?”.
-
-### M17-Q04 — expected-reply (step 6, reply 4 of 4)
-
-- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (4/4)
-- Audio played: EN "Insert your card here." · FR "Insérez votre carte ici." · ES "Inserte su tarjeta aquí."
-- Meaning of the audio (HE): "הכנס את הכרטיס כאן."
-- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
-- Choices:
-  1. HE "הכנס את הכרטיס כאן." / EN "Insert your card here." — `reply.super.card-here` — ✅ accepted
-  2. HE "זה במעבר שלוש." / EN "It's in aisle three." — `reply.super.aisle-three` — ❌ wrong
-  3. HE "שם, משמאל." / EN "Over there, on the left." — `reply.super.over-there` — ❌ wrong
-- Tests: reply.super.card-here
-- Explanation shown after answering: generic: “Insert your card here.” means “הכנס את הכרטיס כאן.”.
+No expected-replies drill in this mission.
 
 ## Quizzes
 
@@ -17229,159 +17212,139 @@ No meaning quiz in this mission.
 
 ## Active practice — Quick Reply · Visual Match · Swap It · Mini Map
 
-### M17-Q05 — visual-match (step 8, round 1 of 3)
+### M17-Q01 — visual-match (step 3, round 1 of 3)
 
-- Prompt displayed: "Where is it? Tap the aisle and the side you hear" / "איפה זה? הקש על המעבר והצד ששמעת"
-- Audio played: EN "The milk is in aisle three, on the left." · FR "Le lait est dans l’allée trois, sur la gauche." · ES "La leche está en el pasillo tres, a la izquierda."
-- Meaning of the audio (HE): "החלב במעבר שלוש, משמאל."
-- Buttons show: a 3×3 board of 6 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Prompt displayed: "🛒 Supermarket sprint · 🔎 Find ⬜ · 📍 Locate ⬜ · 🧾 Checkout ⬜ · 🛍️ Bag ⬜ · 💳 Pay ⬜ · Listen — and tap the product." / "🛒 ספרינט בסופר · 🔎 למצוא ⬜ · 📍 איפה ⬜ · 🧾 קופה ⬜ · 🛍️ שקית ⬜ · 💳 לשלם ⬜ · שמע — והקש על המוצר."
+- Audio played: EN "cheese" · FR "le fromage" · ES "el queso"
+- Meaning of the audio (HE): "גבינה"
+- Buttons show: only this round's 3 tiles (the meaning and its contrast), same in every language; the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. "1 ⬅️" — no sentence id — ❌ wrong
-  2. "1 ➡️" — no sentence id — ❌ wrong
-  3. "2 ⬅️" — no sentence id — ❌ wrong
-  4. "2 ➡️" — no sentence id — ❌ wrong
-  5. "3 ⬅️" — `reply.super.aisle-three` — ✅ accepted
-  6. "3 ➡️" — no sentence id — ❌ wrong
-- Tests: reply.super.aisle-three
-- Explanation shown after answering: after the tap: the spoken line and its translation
-
-### M17-Q06 — visual-match (step 8, round 2 of 3)
-
-- Prompt displayed: "Where is it? Tap the aisle and the side you hear" / "איפה זה? הקש על המעבר והצד ששמעת"
-- Audio played: EN "It's in aisle one, on the right." · FR "C’est dans l’allée une, sur la droite." · ES "Está en el pasillo uno, a la derecha."
-- Meaning of the audio (HE): "זה במעבר אחת, מימין."
-- Buttons show: a 3×3 board of 6 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
-- Choices:
-  1. "1 ⬅️" — no sentence id — ❌ wrong
-  2. "1 ➡️" — no sentence id — ✅ accepted
-  3. "2 ⬅️" — no sentence id — ❌ wrong
-  4. "2 ➡️" — no sentence id — ❌ wrong
-  5. "3 ⬅️" — no sentence id — ❌ wrong
-  6. "3 ➡️" — no sentence id — ❌ wrong
+  1. "🍞" — no sentence id — ❌ wrong
+  2. "🧀" — no sentence id — ✅ accepted
+  3. "🥚" — no sentence id — ❌ wrong
 - Tests: (no sentence id — not recorded)
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
-### M17-Q07 — visual-match (step 8, round 3 of 3)
+### M17-Q02 — visual-match (step 3, round 2 of 3)
 
-- Prompt displayed: "Where is it? Tap the aisle and the side you hear" / "איפה זה? הקש על המעבר והצד ששמעת"
-- Audio played: EN "It's in aisle two, on the left." · FR "C’est dans l’allée deux, sur la gauche." · ES "Está en el pasillo dos, a la izquierda."
-- Meaning of the audio (HE): "זה במעבר שתיים, משמאל."
-- Buttons show: a 3×3 board of 6 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Prompt displayed: "🛒 Supermarket sprint · 🔎 Find ⬜ · 📍 Locate ⬜ · 🧾 Checkout ⬜ · 🛍️ Bag ⬜ · 💳 Pay ⬜ · Listen — and tap the product." / "🛒 ספרינט בסופר · 🔎 למצוא ⬜ · 📍 איפה ⬜ · 🧾 קופה ⬜ · 🛍️ שקית ⬜ · 💳 לשלם ⬜ · שמע — והקש על המוצר."
+- Audio played: EN "eggs" · FR "les œufs" · ES "los huevos"
+- Meaning of the audio (HE): "ביצים"
+- Buttons show: only this round's 3 tiles (the meaning and its contrast), same in every language; the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. "1 ⬅️" — no sentence id — ❌ wrong
-  2. "1 ➡️" — no sentence id — ❌ wrong
-  3. "2 ⬅️" — no sentence id — ✅ accepted
-  4. "2 ➡️" — no sentence id — ❌ wrong
-  5. "3 ⬅️" — no sentence id — ❌ wrong
-  6. "3 ➡️" — no sentence id — ❌ wrong
+  1. "🥛" — no sentence id — ❌ wrong
+  2. "🥚" — no sentence id — ✅ accepted
+  3. "🍎" — no sentence id — ❌ wrong
 - Tests: (no sentence id — not recorded)
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
-### M17-Q08 — swap-it (step 9, round 1 of 3)
+### M17-Q03 — visual-match (step 3, round 3 of 3)
 
-- Prompt displayed: "What are you looking for?" / "מה אתה מחפש?" — cue 🥛 "You are looking for milk" / "אתה מחפש חלב" — frame EN "Where is the ___?" · FR "Où est ___ ?" · ES "¿Dónde está ___?"
-- Audio played: EN "(nothing before the tap; the completed sentence is spoken after it)" · FR "(same)" · ES "(same)"
-- Meaning of the audio (HE): —
-- Buttons show: the SLOT VALUES in the target language (shown here as "value → completed sentence"); order shuffled; a "wrong" value still produces and speaks a real sentence, with its translation
+- Prompt displayed: "🛒 Supermarket sprint · 🔎 Find ⬜ · 📍 Locate ⬜ · 🧾 Checkout ⬜ · 🛍️ Bag ⬜ · 💳 Pay ⬜ · Listen — and tap the product." / "🛒 ספרינט בסופר · 🔎 למצוא ⬜ · 📍 איפה ⬜ · 🧾 קופה ⬜ · 🛍️ שקית ⬜ · 💳 לשלם ⬜ · שמע — והקש על המוצר."
+- Audio played: EN "apples" · FR "les pommes" · ES "las manzanas"
+- Meaning of the audio (HE): "תפוחים"
+- Buttons show: only this round's 3 tiles (the meaning and its contrast), same in every language; the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. EN "milk → Where is the milk?" · FR "le lait → Où est le lait ?" · ES "la leche → ¿Dónde está la leche?" · (HE gloss "איפה החלב?") — `phrase.super.where-is` — ✅ accepted
-  2. EN "bread → Where is the bread?" · FR "le pain → Où est le pain ?" · ES "el pan → ¿Dónde está el pan?" · (HE gloss "איפה הלחם?") — no sentence id — ❌ wrong
-  3. EN "water → Where is the water?" · FR "l’eau → Où est l’eau ?" · ES "el agua → ¿Dónde está el agua?" · (HE gloss "איפה המים?") — no sentence id — ❌ wrong
+  1. "💧" — no sentence id — ❌ wrong
+  2. "🍞" — no sentence id — ❌ wrong
+  3. "🍎" — no sentence id — ✅ accepted
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M17-Q04 — quick-reply (step 5, round 1 of 1)
+
+- Prompt displayed: "🛒 Supermarket sprint · 🔎 Find ⬜ · 📍 Locate ⬜ · 🧾 Checkout ⬜ · 🛍️ Bag ⬜ · 💳 Pay ⬜ · What do you ask?" / "🛒 ספרינט בסופר · 🔎 למצוא ⬜ · 📍 איפה ⬜ · 🧾 קופה ⬜ · 🛍️ שקית ⬜ · 💳 לשלם ⬜ · מה אתה שואל?"
+- Audio played: EN "Hi there! Can I help you find something?" · FR "Bonjour ! Je peux vous aider à trouver quelque chose ?" · ES "¡Hola! ¿Le ayudo a encontrar algo?"
+- Meaning of the audio (HE): "היי! לעזור לך למצוא משהו?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Where is the milk?" · FR "Où est le lait ?" · ES "¿Dónde está la leche?" · (HE gloss "איפה החלב?") — `phrase.super.where-is` — ✅ accepted
+  2. EN "Thank you!" · FR "Merci !" · ES "¡Gracias!" · (HE gloss "תודה!") — `phrase.recovery.thank-you` — ❌ wrong
 - Tests: phrase.super.where-is
-- Explanation shown after answering: after the tap: the completed sentence, spoken, with its translation
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M17-Q09 — swap-it (step 9, round 2 of 3)
+### M17-Q05 — swap-it (step 6, round 1 of 2)
 
-- Prompt displayed: "What are you looking for?" / "מה אתה מחפש?" — cue 🍞 "You are looking for bread" / "אתה מחפש לחם" — frame EN "Where is the ___?" · FR "Où est ___ ?" · ES "¿Dónde está ___?"
+- Prompt displayed: "🛒 Supermarket sprint · 🔎 Find ✅ · 📍 Locate ⬜ · 🧾 Checkout ⬜ · 🛍️ Bag ⬜ · 💳 Pay ⬜ · The same question — another product." / "🛒 ספרינט בסופר · 🔎 למצוא ✅ · 📍 איפה ⬜ · 🧾 קופה ⬜ · 🛍️ שקית ⬜ · 💳 לשלם ⬜ · אותה שאלה — מוצר אחר." — cue 🍞 "You are looking for bread" / "אתה מחפש לחם" — frame EN "Where is the ___?" · FR "Où est ___ ?" · ES "¿Dónde está ___?"
 - Audio played: EN "(nothing before the tap; the completed sentence is spoken after it)" · FR "(same)" · ES "(same)"
 - Meaning of the audio (HE): —
 - Buttons show: the SLOT VALUES in the target language (shown here as "value → completed sentence"); order shuffled; a "wrong" value still produces and speaks a real sentence, with its translation
 - Choices:
   1. EN "milk → Where is the milk?" · FR "le lait → Où est le lait ?" · ES "la leche → ¿Dónde está la leche?" · (HE gloss "איפה החלב?") — no sentence id — ❌ wrong
   2. EN "bread → Where is the bread?" · FR "le pain → Où est le pain ?" · ES "el pan → ¿Dónde está el pan?" · (HE gloss "איפה הלחם?") — `phrase.super.where-is` — ✅ accepted
-  3. EN "water → Where is the water?" · FR "l’eau → Où est l’eau ?" · ES "el agua → ¿Dónde está el agua?" · (HE gloss "איפה המים?") — no sentence id — ❌ wrong
+  3. EN "cheese → Where is the cheese?" · FR "le fromage → Où est le fromage ?" · ES "el queso → ¿Dónde está el queso?" · (HE gloss "איפה הגבינה?") — no sentence id — ❌ wrong
 - Tests: phrase.super.where-is
 - Explanation shown after answering: after the tap: the completed sentence, spoken, with its translation
 
-### M17-Q10 — swap-it (step 9, round 3 of 3)
+### M17-Q06 — swap-it (step 6, round 2 of 2)
 
-- Prompt displayed: "What are you looking for?" / "מה אתה מחפש?" — cue 💧 "You are looking for water" / "אתה מחפש מים" — frame EN "Where is the ___?" · FR "Où est ___ ?" · ES "¿Dónde está ___?"
+- Prompt displayed: "🛒 Supermarket sprint · 🔎 Find ✅ · 📍 Locate ⬜ · 🧾 Checkout ⬜ · 🛍️ Bag ⬜ · 💳 Pay ⬜ · The same question — another product." / "🛒 ספרינט בסופר · 🔎 למצוא ✅ · 📍 איפה ⬜ · 🧾 קופה ⬜ · 🛍️ שקית ⬜ · 💳 לשלם ⬜ · אותה שאלה — מוצר אחר." — cue 🧀 "You are looking for cheese" / "אתה מחפש גבינה" — frame EN "Where is the ___?" · FR "Où est ___ ?" · ES "¿Dónde está ___?"
 - Audio played: EN "(nothing before the tap; the completed sentence is spoken after it)" · FR "(same)" · ES "(same)"
 - Meaning of the audio (HE): —
 - Buttons show: the SLOT VALUES in the target language (shown here as "value → completed sentence"); order shuffled; a "wrong" value still produces and speaks a real sentence, with its translation
 - Choices:
   1. EN "milk → Where is the milk?" · FR "le lait → Où est le lait ?" · ES "la leche → ¿Dónde está la leche?" · (HE gloss "איפה החלב?") — no sentence id — ❌ wrong
   2. EN "bread → Where is the bread?" · FR "le pain → Où est le pain ?" · ES "el pan → ¿Dónde está el pan?" · (HE gloss "איפה הלחם?") — no sentence id — ❌ wrong
-  3. EN "water → Where is the water?" · FR "l’eau → Où est l’eau ?" · ES "el agua → ¿Dónde está el agua?" · (HE gloss "איפה המים?") — `phrase.super.where-is` — ✅ accepted
+  3. EN "cheese → Where is the cheese?" · FR "le fromage → Où est le fromage ?" · ES "el queso → ¿Dónde está el queso?" · (HE gloss "איפה הגבינה?") — `phrase.super.where-is` — ✅ accepted
 - Tests: phrase.super.where-is
 - Explanation shown after answering: after the tap: the completed sentence, spoken, with its translation
 
-### M17-Q11 — quick-reply (step 10, round 1 of 5)
+### M17-Q07 — visual-match (step 8, round 1 of 1)
 
-- Prompt displayed: "In the supermarket — what do you say?" / "בסופר — מה אומרים?"
-- Audio played: EN "Hi there! Can I help you find something?" · FR "Bonjour ! Je peux vous aider à trouver quelque chose ?" · ES "¡Hola! ¿Le ayudo a encontrar algo?"
-- Meaning of the audio (HE): "היי! לעזור לך למצוא משהו?"
-- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Prompt displayed: "🛒 Supermarket sprint · 🔎 Find ✅ · 📍 Locate ⬜ · 🧾 Checkout ⬜ · 🛍️ Bag ⬜ · 💳 Pay ⬜ · Where is the milk? Tap the aisle and the side." / "🛒 ספרינט בסופר · 🔎 למצוא ✅ · 📍 איפה ⬜ · 🧾 קופה ⬜ · 🛍️ שקית ⬜ · 💳 לשלם ⬜ · איפה החלב? הקש על המעבר והצד."
+- Audio played: EN "The milk is in aisle three, on the left." · FR "Le lait est dans l’allée trois, sur la gauche." · ES "La leche está en el pasillo tres, a la izquierda."
+- Meaning of the audio (HE): "החלב במעבר שלוש, משמאל."
+- Buttons show: a 3×3 board of 6 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. EN "Where is the milk?" · FR "Où est le lait ?" · ES "¿Dónde está la leche?" · (HE gloss "איפה החלב?") — `phrase.super.where-is` — ✅ accepted
-  2. EN "Do you have bread?" · FR "Vous avez du pain ?" · ES "¿Tienen pan?" · (HE gloss "יש לכם לחם?") — `phrase.super.do-you-have` — ✅ accepted
-  3. EN "Just this, thanks." · FR "Juste ça, merci." · ES "Solo esto, gracias." · (HE gloss "רק את זה, תודה.") — `phrase.super.just-this` — ❌ wrong
-- Tests: phrase.super.where-is, phrase.super.do-you-have
-- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+  1. "1 ⬅️" — no sentence id — ❌ wrong
+  2. "2 ⬅️" — no sentence id — ❌ wrong
+  3. "3 ⬅️" — no sentence id — ✅ accepted
+  4. "1 ➡️" — no sentence id — ❌ wrong
+  5. "2 ➡️" — no sentence id — ❌ wrong
+  6. "3 ➡️" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
 
-### M17-Q12 — quick-reply (step 10, round 2 of 5)
+### M17-Q08 — quick-reply (step 10, round 1 of 1)
 
-- Prompt displayed: "In the supermarket — what do you say?" / "בסופר — מה אומרים?" — situation shown: "You cannot find any bread. Ask whether they have it." / "אתה לא מוצא לחם. שואלים אם יש."
-- Audio played: EN "(nothing is played — a situation is shown)" · FR "(nothing is played — a situation is shown)" · ES "(nothing is played — a situation is shown)"
-- Meaning of the audio (HE): —
-- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
-- Choices:
-  1. EN "Do you have bread?" · FR "Vous avez du pain ?" · ES "¿Tienen pan?" · (HE gloss "יש לכם לחם?") — `phrase.super.do-you-have` — ✅ accepted
-  2. EN "Could I get a bag?" · FR "Je peux avoir un sac ?" · ES "¿Me da una bolsa?" · (HE gloss "אפשר שקית?") — `phrase.super.need-bag` — ❌ wrong
-  3. EN "Just this, thanks." · FR "Juste ça, merci." · ES "Solo esto, gracias." · (HE gloss "רק את זה, תודה.") — `phrase.super.just-this` — ❌ wrong
-- Tests: phrase.super.do-you-have
-- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
-
-### M17-Q13 — quick-reply (step 10, round 3 of 5)
-
-- Prompt displayed: "In the supermarket — what do you say?" / "בסופר — מה אומרים?"
-- Audio played: EN "It's in aisle three." · FR "C’est dans l’allée trois." · ES "Está en el pasillo tres."
-- Meaning of the audio (HE): "זה במעבר שלוש."
-- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
-- Choices:
-  1. EN "Thank you!" · FR "Merci !" · ES "¡Gracias!" · (HE gloss "תודה!") — `phrase.recovery.thank-you` — ✅ accepted
-  2. EN "Can you repeat that?" · FR "Vous pouvez répéter ?" · ES "¿Puede repetir, por favor?" · (HE gloss "אפשר לחזור על זה?") — `phrase.recovery.repeat` — ✅ accepted
-  3. EN "Could I get a bag?" · FR "Je peux avoir un sac ?" · ES "¿Me da una bolsa?" · (HE gloss "אפשר שקית?") — `phrase.super.need-bag` — ❌ wrong
-- Tests: phrase.recovery.thank-you, phrase.recovery.repeat
-- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
-
-### M17-Q14 — quick-reply (step 10, round 4 of 5)
-
-- Prompt displayed: "In the supermarket — what do you say?" / "בסופר — מה אומרים?"
+- Prompt displayed: "🛒 Supermarket sprint · 🔎 Find ✅ · 📍 Aisle 3 ⬅️ ✅ · 🧾 Checkout ⬜ · 🛍️ Bag ⬜ · 💳 Pay ⬜ · What do you answer?" / "🛒 ספרינט בסופר · 🔎 למצוא ✅ · 📍 מעבר 3 ⬅️ ✅ · 🧾 קופה ⬜ · 🛍️ שקית ⬜ · 💳 לשלם ⬜ · מה אתה עונה?"
 - Audio played: EN "Hi! Is that everything?" · FR "Bonjour ! Ce sera tout ?" · ES "¡Hola! ¿Eso es todo?"
 - Meaning of the audio (HE): "היי! זה הכל?"
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
   1. EN "Just this, thanks." · FR "Juste ça, merci." · ES "Solo esto, gracias." · (HE gloss "רק את זה, תודה.") — `phrase.super.just-this` — ✅ accepted
   2. EN "Where is the milk?" · FR "Où est le lait ?" · ES "¿Dónde está la leche?" · (HE gloss "איפה החלב?") — `phrase.super.where-is` — ❌ wrong
-  3. EN "Do you have bread?" · FR "Vous avez du pain ?" · ES "¿Tienen pan?" · (HE gloss "יש לכם לחם?") — `phrase.super.do-you-have` — ❌ wrong
+  3. EN "Thank you!" · FR "Merci !" · ES "¡Gracias!" · (HE gloss "תודה!") — `phrase.recovery.thank-you` — ❌ wrong
 - Tests: phrase.super.just-this
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M17-Q15 — quick-reply (step 10, round 5 of 5)
+### M17-Q09 — quick-reply (step 12, round 1 of 1)
 
-- Prompt displayed: "In the supermarket — what do you say?" / "בסופר — מה אומרים?"
+- Prompt displayed: "🛒 Supermarket sprint · 🔎 Find ✅ · 📍 Aisle 3 ⬅️ ✅ · 🧾 Checkout ✅ · 🛍️ Bag ⬜ · 💳 Pay ⬜ · What do you answer?" / "🛒 ספרינט בסופר · 🔎 למצוא ✅ · 📍 מעבר 3 ⬅️ ✅ · 🧾 קופה ✅ · 🛍️ שקית ⬜ · 💳 לשלם ⬜ · מה אתה עונה?"
 - Audio played: EN "Do you need a bag?" · FR "Vous avez besoin d’un sac ?" · ES "¿Necesita una bolsa?"
 - Meaning of the audio (HE): "צריך שקית?"
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
   1. EN "Could I get a bag?" · FR "Je peux avoir un sac ?" · ES "¿Me da una bolsa?" · (HE gloss "אפשר שקית?") — `phrase.super.need-bag` — ✅ accepted
-  2. EN "Where is the milk?" · FR "Où est le lait ?" · ES "¿Dónde está la leche?" · (HE gloss "איפה החלב?") — `phrase.super.where-is` — ❌ wrong
-  3. EN "Do you have bread?" · FR "Vous avez du pain ?" · ES "¿Tienen pan?" · (HE gloss "יש לכם לחם?") — `phrase.super.do-you-have` — ❌ wrong
+  2. EN "Just this, thanks." · FR "Juste ça, merci." · ES "Solo esto, gracias." · (HE gloss "רק את זה, תודה.") — `phrase.super.just-this` — ❌ wrong
+  3. EN "Where is the milk?" · FR "Où est le lait ?" · ES "¿Dónde está la leche?" · (HE gloss "איפה החלב?") — `phrase.super.where-is` — ❌ wrong
 - Tests: phrase.super.need-bag
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M17-Q23 — quick-reply (step 14, round 1 of 4 · SPEED CHALLENGE (spoken at rate 1.12))
+### M17-Q10 — visual-match (step 14, round 1 of 1)
+
+- Prompt displayed: "🛒 Supermarket sprint · 🔎 Find ✅ · 📍 Aisle 3 ⬅️ ✅ · 🧾 Checkout ✅ · 🛍️ Bag ✅ · 💳 Pay ⬜ · What is the cashier telling you?" / "🛒 ספרינט בסופר · 🔎 למצוא ✅ · 📍 מעבר 3 ⬅️ ✅ · 🧾 קופה ✅ · 🛍️ שקית ✅ · 💳 לשלם ⬜ · מה הקופאי אומר?"
+- Audio played: EN "Insert your card here… all done. Have a nice day!" · FR "Insérez votre carte ici… c’est bon. Bonne journée !" · ES "Inserte su tarjeta aquí… listo. ¡Que tenga un buen día!"
+- Meaning of the audio (HE): "הכנס את הכרטיס כאן… הכל מוכן. שיהיה יום נעים!"
+- Buttons show: a 3×3 board of 3 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "🧾 “Asking if that’s everything” / “שואלים אם זה הכל”" — no sentence id — ❌ wrong
+  2. "🛍️ “Asking if you need a bag” / “שואלים אם צריך שקית”" — no sentence id — ❌ wrong
+  3. "💳 “Card in the machine — paid” / “כרטיס במכשיר — ושילמת”" — no sentence id — ✅ accepted
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M17-Q15 — quick-reply (step 18, round 1 of 3 · SPEED CHALLENGE (spoken at rate 1.12))
 
 - Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio played: EN "Hi there! Can I help you find something?" · FR "Bonjour ! Je peux vous aider à trouver quelque chose ?" · ES "¡Hola! ¿Le ayudo a encontrar algo?"
@@ -17394,20 +17357,7 @@ No meaning quiz in this mission.
 - Tests: phrase.super.where-is
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M17-Q24 — quick-reply (step 14, round 2 of 4 · SPEED CHALLENGE (spoken at rate 1.12))
-
-- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
-- Audio played: EN "The milk is in aisle three, on the left." · FR "Le lait est dans l’allée trois, sur la gauche." · ES "La leche está en el pasillo tres, a la izquierda."
-- Meaning of the audio (HE): "החלב במעבר שלוש, משמאל."
-- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
-- Choices:
-  1. EN "Thank you!" · FR "Merci !" · ES "¡Gracias!" · (HE gloss "תודה!") — `phrase.recovery.thank-you` — ✅ accepted
-  2. EN "Just this, thanks." · FR "Juste ça, merci." · ES "Solo esto, gracias." · (HE gloss "רק את זה, תודה.") — `phrase.super.just-this` — ❌ wrong
-  3. EN "Do you have bread?" · FR "Vous avez du pain ?" · ES "¿Tienen pan?" · (HE gloss "יש לכם לחם?") — `phrase.super.do-you-have` — ❌ wrong
-- Tests: phrase.recovery.thank-you
-- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
-
-### M17-Q25 — quick-reply (step 14, round 3 of 4 · SPEED CHALLENGE (spoken at rate 1.12))
+### M17-Q16 — quick-reply (step 18, round 2 of 3 · SPEED CHALLENGE (spoken at rate 1.12))
 
 - Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio played: EN "Hi! Is that everything?" · FR "Bonjour ! Ce sera tout ?" · ES "¡Hola! ¿Eso es todo?"
@@ -17416,11 +17366,11 @@ No meaning quiz in this mission.
 - Choices:
   1. EN "Just this, thanks." · FR "Juste ça, merci." · ES "Solo esto, gracias." · (HE gloss "רק את זה, תודה.") — `phrase.super.just-this` — ✅ accepted
   2. EN "Where is the milk?" · FR "Où est le lait ?" · ES "¿Dónde está la leche?" · (HE gloss "איפה החלב?") — `phrase.super.where-is` — ❌ wrong
-  3. EN "Do you have bread?" · FR "Vous avez du pain ?" · ES "¿Tienen pan?" · (HE gloss "יש לכם לחם?") — `phrase.super.do-you-have` — ❌ wrong
+  3. EN "Could I get a bag?" · FR "Je peux avoir un sac ?" · ES "¿Me da una bolsa?" · (HE gloss "אפשר שקית?") — `phrase.super.need-bag` — ❌ wrong
 - Tests: phrase.super.just-this
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M17-Q26 — quick-reply (step 14, round 4 of 4 · SPEED CHALLENGE (spoken at rate 1.12))
+### M17-Q17 — quick-reply (step 18, round 3 of 3 · SPEED CHALLENGE (spoken at rate 1.12))
 
 - Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio played: EN "Do you need a bag?" · FR "Vous avez besoin d’un sac ?" · ES "¿Necesita una bolsa?"
@@ -17428,10 +17378,78 @@ No meaning quiz in this mission.
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
   1. EN "Could I get a bag?" · FR "Je peux avoir un sac ?" · ES "¿Me da una bolsa?" · (HE gloss "אפשר שקית?") — `phrase.super.need-bag` — ✅ accepted
-  2. EN "Where is the milk?" · FR "Où est le lait ?" · ES "¿Dónde está la leche?" · (HE gloss "איפה החלב?") — `phrase.super.where-is` — ❌ wrong
+  2. EN "Just this, thanks." · FR "Juste ça, merci." · ES "Solo esto, gracias." · (HE gloss "רק את זה, תודה.") — `phrase.super.just-this` — ❌ wrong
+  3. EN "Where is the milk?" · FR "Où est le lait ?" · ES "¿Dónde está la leche?" · (HE gloss "איפה החלב?") — `phrase.super.where-is` — ❌ wrong
+- Tests: phrase.super.need-bag
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M17-Q18 — quick-reply (step 21, round 1 of 1)
+
+- Prompt displayed: "🛒 Supermarket sprint · 🔎 Find ⬜ · 📍 Locate ⬜ · 🧾 Checkout ⬜ · 🛍️ Bag ⬜ · 💳 Pay ⬜ · One quick purchase. Go." / "🛒 ספרינט בסופר · 🔎 למצוא ⬜ · 📍 איפה ⬜ · 🧾 קופה ⬜ · 🛍️ שקית ⬜ · 💳 לשלם ⬜ · קנייה מהירה אחת. קדימה."
+- Audio played: EN "Hi there! Can I help you find something?" · FR "Bonjour ! Je peux vous aider à trouver quelque chose ?" · ES "¡Hola! ¿Le ayudo a encontrar algo?"
+- Meaning of the audio (HE): "היי! לעזור לך למצוא משהו?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Where is the milk?" · FR "Où est le lait ?" · ES "¿Dónde está la leche?" · (HE gloss "איפה החלב?") — `phrase.super.where-is` — ✅ accepted
+  2. EN "Could I get a bag?" · FR "Je peux avoir un sac ?" · ES "¿Me da una bolsa?" · (HE gloss "אפשר שקית?") — `phrase.super.need-bag` — ❌ wrong
+  3. EN "Thank you!" · FR "Merci !" · ES "¡Gracias!" · (HE gloss "תודה!") — `phrase.recovery.thank-you` — ❌ wrong
+- Tests: phrase.super.where-is
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M17-Q19 — visual-match (step 22, round 1 of 1)
+
+- Prompt displayed: "🛒 Supermarket sprint · 🔎 Find ✅ · 📍 Locate ⬜ · 🧾 Checkout ⬜ · 🛍️ Bag ⬜ · 💳 Pay ⬜ · Where is the milk? Tap the aisle and the side." / "🛒 ספרינט בסופר · 🔎 למצוא ✅ · 📍 איפה ⬜ · 🧾 קופה ⬜ · 🛍️ שקית ⬜ · 💳 לשלם ⬜ · איפה החלב? הקש על המעבר והצד."
+- Audio played: EN "The milk is in aisle three, on the left." · FR "Le lait est dans l’allée trois, sur la gauche." · ES "La leche está en el pasillo tres, a la izquierda."
+- Meaning of the audio (HE): "החלב במעבר שלוש, משמאל."
+- Buttons show: a 3×3 board of 6 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "1 ⬅️" — no sentence id — ❌ wrong
+  2. "2 ⬅️" — no sentence id — ❌ wrong
+  3. "3 ⬅️" — no sentence id — ✅ accepted
+  4. "1 ➡️" — no sentence id — ❌ wrong
+  5. "2 ➡️" — no sentence id — ❌ wrong
+  6. "3 ➡️" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M17-Q20 — quick-reply (step 23, round 1 of 1)
+
+- Prompt displayed: "🛒 Supermarket sprint · 🔎 Find ✅ · 📍 Aisle 3 ⬅️ ✅ · 🧾 Checkout ⬜ · 🛍️ Bag ⬜ · 💳 Pay ⬜" / "🛒 ספרינט בסופר · 🔎 למצוא ✅ · 📍 מעבר 3 ⬅️ ✅ · 🧾 קופה ⬜ · 🛍️ שקית ⬜ · 💳 לשלם ⬜"
+- Audio played: EN "Hi! Is that everything?" · FR "Bonjour ! Ce sera tout ?" · ES "¡Hola! ¿Eso es todo?"
+- Meaning of the audio (HE): "היי! זה הכל?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Just this, thanks." · FR "Juste ça, merci." · ES "Solo esto, gracias." · (HE gloss "רק את זה, תודה.") — `phrase.super.just-this` — ✅ accepted
+  2. EN "Could I get a bag?" · FR "Je peux avoir un sac ?" · ES "¿Me da una bolsa?" · (HE gloss "אפשר שקית?") — `phrase.super.need-bag` — ❌ wrong
+  3. EN "Where is the milk?" · FR "Où est le lait ?" · ES "¿Dónde está la leche?" · (HE gloss "איפה החלב?") — `phrase.super.where-is` — ❌ wrong
+- Tests: phrase.super.just-this
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M17-Q21 — quick-reply (step 24, round 1 of 1)
+
+- Prompt displayed: "🛒 Supermarket sprint · 🔎 Find ✅ · 📍 Aisle 3 ⬅️ ✅ · 🧾 Checkout ✅ · 🛍️ Bag ⬜ · 💳 Pay ⬜" / "🛒 ספרינט בסופר · 🔎 למצוא ✅ · 📍 מעבר 3 ⬅️ ✅ · 🧾 קופה ✅ · 🛍️ שקית ⬜ · 💳 לשלם ⬜"
+- Audio played: EN "Do you need a bag?" · FR "Vous avez besoin d’un sac ?" · ES "¿Necesita una bolsa?"
+- Meaning of the audio (HE): "צריך שקית?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Could I get a bag?" · FR "Je peux avoir un sac ?" · ES "¿Me da una bolsa?" · (HE gloss "אפשר שקית?") — `phrase.super.need-bag` — ✅ accepted
+  2. EN "Thank you!" · FR "Merci !" · ES "¡Gracias!" · (HE gloss "תודה!") — `phrase.recovery.thank-you` — ❌ wrong
   3. EN "Just this, thanks." · FR "Juste ça, merci." · ES "Solo esto, gracias." · (HE gloss "רק את זה, תודה.") — `phrase.super.just-this` — ❌ wrong
 - Tests: phrase.super.need-bag
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M17-Q22 — visual-match (step 25, round 1 of 1)
+
+- Prompt displayed: "🛒 Supermarket sprint · 🔎 Find ✅ · 📍 Aisle 3 ⬅️ ✅ · 🧾 Checkout ✅ · 🛍️ Bag ✅ · 💳 Pay ⬜ · What is the cashier telling you?" / "🛒 ספרינט בסופר · 🔎 למצוא ✅ · 📍 מעבר 3 ⬅️ ✅ · 🧾 קופה ✅ · 🛍️ שקית ✅ · 💳 לשלם ⬜ · מה הקופאי אומר?"
+- Audio played: EN "Insert your card here… all done. Have a nice day!" · FR "Insérez votre carte ici… c’est bon. Bonne journée !" · ES "Inserte su tarjeta aquí… listo. ¡Que tenga un buen día!"
+- Meaning of the audio (HE): "הכנס את הכרטיס כאן… הכל מוכן. שיהיה יום נעים!"
+- Buttons show: a 3×3 board of 3 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "🧾 “Asking if that’s everything” / “שואלים אם זה הכל”" — no sentence id — ❌ wrong
+  2. "🛍️ “Asking if you need a bag” / “שואלים אם צריך שקית”" — no sentence id — ❌ wrong
+  3. "💳 “Card in the machine — paid” / “כרטיס במכשיר — ושילמת”" — no sentence id — ✅ accepted
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
 
 ## Dialogue — full tree
 
@@ -17448,22 +17466,16 @@ No meaning quiz in this mission.
     - FR: Où est le lait ?
     - ES: ¿Dónde está la leche?
     - HE: איפה החלב?
-  - choice 2 — ✅ accepted → n1b — `phrase.super.do-you-have`
-    - EN: Do you have bread?
-    - FR: Vous avez du pain ?
-    - ES: ¿Tienen pan?
-    - HE: יש לכם לחם?
-- **n1b** · NPC · normal (TTS rate 0.95) · off the happy path → c1b
-  - EN: Bread? Yes — fresh this morning, in aisle one.
-  - FR: Du pain ? Oui — frais de ce matin, dans l’allée une.
-  - ES: ¿Pan? Sí — recién hecho esta mañana, en el pasillo uno.
-  - HE: לחם? כן — טרי מהבוקר, במעבר אחת.
-- **c1b** · LEARNER choice screen · off the happy path
-  - choice 1 — ✅ accepted → n2 — `phrase.super.where-is`
-    - EN: Where is the milk?
-    - FR: Où est le lait ?
-    - ES: ¿Dónde está la leche?
-    - HE: איפה החלב?
+  - choice 2 — ❌ WRONG → m1 — `phrase.super.just-this`
+    - EN: Just this, thanks.
+    - FR: Juste ça, merci.
+    - ES: Solo esto, gracias.
+    - HE: רק את זה, תודה.
+- **m1** · NPC · slow (TTS rate 0.75) · off the happy path → c1
+  - EN: Hi there! Can I help you find something?
+  - FR: Bonjour ! Je peux vous aider à trouver quelque chose ?
+  - ES: ¡Hola! ¿Le ayudo a encontrar algo?
+  - HE: היי! לעזור לך למצוא משהו?
 - **n2** · NPC · normal (TTS rate 0.95) → c2
   - EN: The milk is in aisle three, on the left.
   - FR: Le lait est dans l’allée trois, sur la gauche.
@@ -17475,49 +17487,37 @@ No meaning quiz in this mission.
     - FR: Merci !
     - ES: ¡Gracias!
     - HE: תודה!
-  - choice 2 — 🛟 accepted — conversation-help tool → r2 — `phrase.recovery.repeat`
-    - EN: Can you repeat that?
-    - FR: Vous pouvez répéter ?
-    - ES: ¿Puede repetir, por favor?
-    - HE: אפשר לחזור על זה?
-- **r2** · NPC · slow (TTS rate 0.75) · off the happy path → c2b
-  - EN: Aisle — three — on the left.
-  - FR: Allée — trois — sur la gauche.
-  - ES: Pasillo — tres — a la izquierda.
-  - HE: מעבר — שלוש — משמאל.
-- **c2b** · LEARNER choice screen · off the happy path
-  - choice 1 — ✅ accepted → n3 — `phrase.recovery.thank-you`
-    - EN: Thank you!
-    - FR: Merci !
-    - ES: ¡Gracias!
-    - HE: תודה!
+  - choice 2 — ❌ WRONG → m2 — `phrase.super.need-bag`
+    - EN: Could I get a bag?
+    - FR: Je peux avoir un sac ?
+    - ES: ¿Me da una bolsa?
+    - HE: אפשר שקית?
+- **m2** · NPC · slow (TTS rate 0.75) · off the happy path → c2
+  - EN: The milk is in aisle three, on the left.
+  - FR: Le lait est dans l’allée trois, sur la gauche.
+  - ES: La leche está en el pasillo tres, a la izquierda.
+  - HE: החלב במעבר שלוש, משמאל.
 - **n3** · NPC · normal (TTS rate 0.95) → c3
   - EN: Hi! Is that everything?
   - FR: Bonjour ! Ce sera tout ?
   - ES: ¡Hola! ¿Eso es todo?
   - HE: היי! זה הכל?
 - **c3** · LEARNER choice screen
-  - choice 1 — 🛟 accepted — conversation-help tool → r3 — `phrase.recovery.show-me`
-    - EN: Can you show me?
-    - FR: Vous pouvez me montrer ?
-    - ES: ¿Me lo puede mostrar?
-    - HE: אתה יכול להראות לי? (כלי — כשמילים לא מספיקות)
-  - choice 2 — ✅ accepted → n4 — `phrase.super.just-this`
-    - EN: Just this, thanks.
-    - FR: Juste ça, merci.
-    - ES: Solo esto, gracias.
-    - HE: רק את זה, תודה.
-- **r3** · NPC · slow (TTS rate 0.75) · off the happy path → c3b
-  - EN: Of course — put it here, press the picture, done.
-  - FR: Bien sûr — posez-le ici, appuyez sur l’image, voilà.
-  - ES: Claro — póngalo aquí, pulse la imagen, listo.
-  - HE: בטח — שים כאן, לחץ על התמונה, גמרנו.
-- **c3b** · LEARNER choice screen · off the happy path
   - choice 1 — ✅ accepted → n4 — `phrase.super.just-this`
     - EN: Just this, thanks.
     - FR: Juste ça, merci.
     - ES: Solo esto, gracias.
     - HE: רק את זה, תודה.
+  - choice 2 — ❌ WRONG → m3 — `phrase.super.where-is`
+    - EN: Where is the milk?
+    - FR: Où est le lait ?
+    - ES: ¿Dónde está la leche?
+    - HE: איפה החלב?
+- **m3** · NPC · slow (TTS rate 0.75) · off the happy path → c3
+  - EN: Hi! Is that everything?
+  - FR: Bonjour ! Ce sera tout ?
+  - ES: ¡Hola! ¿Eso es todo?
+  - HE: היי! זה הכל?
 - **n4** · NPC · normal (TTS rate 0.95) → c4
   - EN: Do you need a bag?
   - FR: Vous avez besoin d’un sac ?
@@ -17529,11 +17529,16 @@ No meaning quiz in this mission.
     - FR: Je peux avoir un sac ?
     - ES: ¿Me da una bolsa?
     - HE: אפשר שקית?
-  - choice 2 — ✅ accepted → n5 — `phrase.recovery.thank-you`
-    - EN: Thank you!
-    - FR: Merci !
-    - ES: ¡Gracias!
-    - HE: תודה!
+  - choice 2 — ❌ WRONG → m4 — `phrase.super.just-this`
+    - EN: Just this, thanks.
+    - FR: Juste ça, merci.
+    - ES: Solo esto, gracias.
+    - HE: רק את זה, תודה.
+- **m4** · NPC · slow (TTS rate 0.75) · off the happy path → c4
+  - EN: Do you need a bag?
+  - FR: Vous avez besoin d’un sac ?
+  - ES: ¿Necesita una bolsa?
+  - HE: צריך שקית?
 - **n5** · NPC · normal (TTS rate 0.95) · END of scene
   - EN: Insert your card here… all done. Have a nice day!
   - FR: Insérez votre carte ici… c’est bon. Bonne journée !
@@ -17565,7 +17570,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 
 ## Learner choice screens
 
-### M17-Q16 — dialogue-choice (step 11, scene "supermarket" · node c1)
+### M17-Q11 — dialogue-choice (step 16, scene "supermarket" · node c1)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Hi there! Can I help you find something?" · FR "Bonjour ! Je peux vous aider à trouver quelque chose ?" · ES "¡Hola! ¿Le ayudo a encontrar algo?"
@@ -17573,22 +17578,11 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
   1. EN "Where is the milk?" · FR "Où est le lait ?" · ES "¿Dónde está la leche?" · (HE gloss "איפה החלב?") — `phrase.super.where-is` — ✅ accepted → n2
-  2. EN "Do you have bread?" · FR "Vous avez du pain ?" · ES "¿Tienen pan?" · (HE gloss "יש לכם לחם?") — `phrase.super.do-you-have` — ✅ accepted → n1b
-- Tests: phrase.super.where-is, phrase.super.do-you-have
+  2. EN "Just this, thanks." · FR "Juste ça, merci." · ES "Solo esto, gracias." · (HE gloss "רק את זה, תודה.") — `phrase.super.just-this` — ❌ wrong → m1
+- Tests: phrase.super.where-is, phrase.super.just-this
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M17-Q17 — dialogue-choice (step 11, scene "supermarket" · node c1b)
-
-- Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio played: EN "Bread? Yes — fresh this morning, in aisle one." · FR "Du pain ? Oui — frais de ce matin, dans l’allée une." · ES "¿Pan? Sí — recién hecho esta mañana, en el pasillo uno."
-- Meaning of the audio (HE): "לחם? כן — טרי מהבוקר, במעבר אחת."
-- Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
-- Choices:
-  1. EN "Where is the milk?" · FR "Où est le lait ?" · ES "¿Dónde está la leche?" · (HE gloss "איפה החלב?") — `phrase.super.where-is` — ✅ accepted → n2
-- Tests: phrase.super.where-is
-- Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
-
-### M17-Q18 — dialogue-choice (step 11, scene "supermarket" · node c2)
+### M17-Q12 — dialogue-choice (step 16, scene "supermarket" · node c2)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "The milk is in aisle three, on the left." · FR "Le lait est dans l’allée trois, sur la gauche." · ES "La leche está en el pasillo tres, a la izquierda."
@@ -17596,45 +17590,23 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
   1. EN "Thank you!" · FR "Merci !" · ES "¡Gracias!" · (HE gloss "תודה!") — `phrase.recovery.thank-you` — ✅ accepted → n3
-  2. EN "Can you repeat that?" · FR "Vous pouvez répéter ?" · ES "¿Puede repetir, por favor?" · (HE gloss "אפשר לחזור על זה?") — `phrase.recovery.repeat` — ✅ accepted → r2
-- Tests: phrase.recovery.thank-you, phrase.recovery.repeat
+  2. EN "Could I get a bag?" · FR "Je peux avoir un sac ?" · ES "¿Me da una bolsa?" · (HE gloss "אפשר שקית?") — `phrase.super.need-bag` — ❌ wrong → m2
+- Tests: phrase.recovery.thank-you, phrase.super.need-bag
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M17-Q19 — dialogue-choice (step 11, scene "supermarket" · node c2b)
-
-- Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio played: EN "Aisle — three — on the left." · FR "Allée — trois — sur la gauche." · ES "Pasillo — tres — a la izquierda."
-- Meaning of the audio (HE): "מעבר — שלוש — משמאל."
-- Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
-- Choices:
-  1. EN "Thank you!" · FR "Merci !" · ES "¡Gracias!" · (HE gloss "תודה!") — `phrase.recovery.thank-you` — ✅ accepted → n3
-- Tests: phrase.recovery.thank-you
-- Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
-
-### M17-Q20 — dialogue-choice (step 11, scene "supermarket" · node c3)
+### M17-Q13 — dialogue-choice (step 16, scene "supermarket" · node c3)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Hi! Is that everything?" · FR "Bonjour ! Ce sera tout ?" · ES "¡Hola! ¿Eso es todo?"
 - Meaning of the audio (HE): "היי! זה הכל?"
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
-  1. EN "Can you show me?" · FR "Vous pouvez me montrer ?" · ES "¿Me lo puede mostrar?" · (HE gloss "אתה יכול להראות לי? (כלי — כשמילים לא מספיקות)") — `phrase.recovery.show-me` — ✅ accepted → r3
-  2. EN "Just this, thanks." · FR "Juste ça, merci." · ES "Solo esto, gracias." · (HE gloss "רק את זה, תודה.") — `phrase.super.just-this` — ✅ accepted → n4
-- Tests: phrase.recovery.show-me, phrase.super.just-this
-- Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
-
-### M17-Q21 — dialogue-choice (step 11, scene "supermarket" · node c3b)
-
-- Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio played: EN "Of course — put it here, press the picture, done." · FR "Bien sûr — posez-le ici, appuyez sur l’image, voilà." · ES "Claro — póngalo aquí, pulse la imagen, listo."
-- Meaning of the audio (HE): "בטח — שים כאן, לחץ על התמונה, גמרנו."
-- Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
-- Choices:
   1. EN "Just this, thanks." · FR "Juste ça, merci." · ES "Solo esto, gracias." · (HE gloss "רק את זה, תודה.") — `phrase.super.just-this` — ✅ accepted → n4
-- Tests: phrase.super.just-this
+  2. EN "Where is the milk?" · FR "Où est le lait ?" · ES "¿Dónde está la leche?" · (HE gloss "איפה החלב?") — `phrase.super.where-is` — ❌ wrong → m3
+- Tests: phrase.super.just-this, phrase.super.where-is
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M17-Q22 — dialogue-choice (step 11, scene "supermarket" · node c4)
+### M17-Q14 — dialogue-choice (step 16, scene "supermarket" · node c4)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Do you need a bag?" · FR "Vous avez besoin d’un sac ?" · ES "¿Necesita una bolsa?"
@@ -17642,110 +17614,93 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
   1. EN "Could I get a bag?" · FR "Je peux avoir un sac ?" · ES "¿Me da una bolsa?" · (HE gloss "אפשר שקית?") — `phrase.super.need-bag` — ✅ accepted → n5
-  2. EN "Thank you!" · FR "Merci !" · ES "¡Gracias!" · (HE gloss "תודה!") — `phrase.recovery.thank-you` — ✅ accepted → n5
-- Tests: phrase.super.need-bag, phrase.recovery.thank-you
+  2. EN "Just this, thanks." · FR "Juste ça, merci." · ES "Solo esto, gracias." · (HE gloss "רק את זה, תודה.") — `phrase.super.just-this` — ❌ wrong → m4
+- Tests: phrase.super.need-bag, phrase.super.just-this
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
 ## Recovery tools in this mission
 
-Toolkit phrases bundled into this mission's sentence list: `phrase.recovery.repeat` "Can you repeat that?" · `phrase.recovery.slowly` "Please speak slowly." · `phrase.recovery.show-me` "Can you show me?" · `phrase.recovery.thank-you` "Thank you!".
+Toolkit phrases bundled into this mission's sentence list: `phrase.recovery.thank-you` "Thank you!".
 
-Where a conversation-help tool can be selected, and what happens:
+No conversation-help tool is selectable in this mission's dialogues.
 
-- Scene `supermarket`, c2 — `phrase.recovery.repeat` "Can you repeat that?" ("אפשר לחזור על זה?") — after NPC "The milk is in aisle three, on the left." → r2: NPC "Aisle — three — on the left." (slow) → r2 → c2b → rejoins the happy path at n3. Counts as success (recorded as "pass"); no feedback card — the dialogue simply continues.
-- Scene `supermarket`, c3 — `phrase.recovery.show-me` "Can you show me?" ("אתה יכול להראות לי? (כלי — כשמילים לא מספיקות)") — after NPC "Hi! Is that everything?" → r3: NPC "Of course — put it here, press the picture, done." (slow) → r3 → c3b → rejoins the happy path at n4. Counts as success (recorded as "pass"); no feedback card — the dialogue simply continues.
 
 ## Wrong answer branches
 
-None — no choice in this mission is marked wrong.
+4 reachable wrong-answer branch(es):
 
+- Scene `supermarket`, c1 — after NPC "Hi there! Can I help you find something?"
+  - Wrong choice: "Just this, thanks." ("רק את זה, תודה.") — `phrase.super.just-this`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("Where is the milk?"), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m1): "Hi there! Can I help you find something?" — HE "היי! לעזור לך למצוא משהו?"
+  - Then: m1 → rejoins the happy path at c1. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
+- Scene `supermarket`, c2 — after NPC "The milk is in aisle three, on the left."
+  - Wrong choice: "Could I get a bag?" ("אפשר שקית?") — `phrase.super.need-bag`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("Thank you!"), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m2): "The milk is in aisle three, on the left." — HE "החלב במעבר שלוש, משמאל."
+  - Then: m2 → rejoins the happy path at c2. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
+- Scene `supermarket`, c3 — after NPC "Hi! Is that everything?"
+  - Wrong choice: "Where is the milk?" ("איפה החלב?") — `phrase.super.where-is`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("Just this, thanks."), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m3): "Hi! Is that everything?" — HE "היי! זה הכל?"
+  - Then: m3 → rejoins the happy path at c3. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
+- Scene `supermarket`, c4 — after NPC "Do you need a bag?"
+  - Wrong choice: "Just this, thanks." ("רק את זה, תודה.") — `phrase.super.just-this`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("Could I get a bag?"), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m4): "Do you need a bag?" — HE "צריך שקית?"
+  - Then: m4 → rejoins the happy path at c4. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
 
 ## Sentence review
 
-Step 13. 11 sentences, in this fixed order. Each is played automatically (TTS), shown with its translation and tip; buttons: 🔊 "Hear again" / "לשמוע שוב" and Next. No speaking prompt, no grading, no scoring; nothing is recorded.
-
-1. `phrase.super.where-is` — Where is the milk? — איפה החלב?
-2. `phrase.super.do-you-have` — Do you have bread? — יש לכם לחם?
-3. `phrase.super.just-this` — Just this, thanks. — רק את זה, תודה.
-4. `phrase.super.need-bag` — Could I get a bag? — אפשר שקית?
-5. `reply.super.aisle-three` — It's in aisle three. — זה במעבר שלוש.
-6. `reply.super.over-there` — Over there, on the left. — שם, משמאל.
-7. `reply.super.bag-q` — Do you need a bag? — צריך שקית?
-8. `reply.super.card-here` — Insert your card here. — הכנס את הכרטיס כאן.
-9. `reply.super.sold-out` — Sorry, we're sold out. — סליחה, אזל המלאי.
-10. `phrase.recovery.repeat` — Can you repeat that? — אפשר לחזור על זה?
-11. `phrase.recovery.show-me` — Can you show me? — אתה יכול להראות לי?
+No sentence-review step in this mission.
 
 ## Cold open / ambush
 
-### M17-Q27 — cold-open (step 16, single prompt · mode: recovery)
-
-- Prompt displayed: "Heads up: a fast one is coming. Use a tool." / "שים לב: מגיע משפט מהיר. השתמש בכלי."
-- Audio played: EN "Unexpected item in the bagging area — please wait for assistance." · FR "Article inattendu dans la zone d’emballage — veuillez attendre de l’aide." · ES "Artículo inesperado en la zona de embolsado — espere asistencia, por favor."
-- Meaning of the audio (HE): "פריט לא צפוי באזור האריזה — אנא המתן לסיוע."
-- Buttons show: TARGET-LANGUAGE text of the two sentences; only the conversation-help tool carries 🛟; order shuffled
-- Choices:
-  1. EN "Can you show me?" · FR "Vous pouvez me montrer ?" · ES "¿Me lo puede mostrar?" · (HE gloss "אתה יכול להראות לי?") — `phrase.recovery.show-me` — ✅ accepted
-  2. EN "Just this, thanks." · FR "Juste ça, merci." · ES "Solo esto, gracias." · (HE gloss "רק את זה, תודה.") — `phrase.super.just-this` — ❌ wrong
-- Tests: phrase.recovery.show-me
-- Explanation shown after answering: generic: “Can you show me?” means “אתה יכול להראות לי?”.
-
-- Flow: screen shows ⚡ and "Heads up: a fast one is coming. Use a tool." / "שים לב: מגיע משפט מהיר. השתמש בכלי." with one button 👂 "I'm ready" / "אני מוכן"; on tap the line is spoken at TTS rate 1.12 and printed small; two shuffled buttons appear; 🔊 "Hear again" / "לשמוע שוב" replays at 0.85.
-- Success criterion: picking the accepted sentence. A wrong pick shows the feedback card (what you heard + translation, your answer, the sentence that fit) with Try again / Continue; Continue proceeds either way. Response time is recorded.
-- Recovery options offered: yes (see choices)
-- Receipt shown next: "The self-checkout jammed — and you knew to ask someone to show you, instead of panicking." / "הקופה האוטומטית נתקעה — וידעת לבקש שיראו לך במקום להיכנס ללחץ."
-- Potential new-language exposure: YES — English words not met in any sentence or dialogue line of Missions 01–17: unexpected, item, bagging, area, wait, assistance
+No cold open in this mission.
 
 ## Swap-in / variable content
 
 The runtime has NO slot-substitution mechanism: no sentence is generated with a different word. "Variants" exist only as (a) alternative accepted lines on one choice screen and (b) extra sentences taught beside the dialogue. Templates are mentioned only in tips.
 
-Alternative accepted lines:
+No choice screen offers two accepted non-toolkit lines.
 
-- Scene `supermarket`, c1: "Where is the milk?" OR "Do you have bread?" — all accepted, same continuation unless the routes above differ.
 
-Every learner sentence of this mission is a line in a scene.
+Learner sentences taught beside the dialogue (not a line in any scene):
 
+- `phrase.super.do-you-have` — Do you have bread?
 
 ## Receipts (proof cards)
 
-- Step 7: "You recognize what an assistant and a checkout say — aisle, direction, bag, card." / "אתה מזהה תשובות של עובד וקופה — מעבר, כיוון, שקית, כרטיס."
-- Step 12: "You found a product, understood which aisle it is in, and got through the checkout — on your own." / "מצאת מוצר, הבנת באיזה מעבר הוא, ועברת קופה — לבד."
-- Step 15: "From shelf to checkout at normal pace — you found it, understood where, and paid." / "מהמדף ועד הקופה, בקצב רגיל — מצאת, הבנת איפה, ושילמת."
-- Step 17: "The self-checkout jammed — and you knew to ask someone to show you, instead of panicking." / "הקופה האוטומטית נתקעה — וידעת לבקש שיראו לך במקום להיכנס ללחץ."
+- Step 15: "🛒 Supermarket sprint · 🔎 Find ✅ · 📍 Aisle 3 ⬅️ ✅ · 🧾 Checkout ✅ · 🛍️ Bag ✅ · 💳 Pay ✅ · Found it, understood where, checked out, asked for a bag, paid." / "🛒 ספרינט בסופר · 🔎 למצוא ✅ · 📍 מעבר 3 ⬅️ ✅ · 🧾 קופה ✅ · 🛍️ שקית ✅ · 💳 לשלם ✅ · מצאת, הבנת איפה, עברת קופה, ביקשת שקית ושילמת."
+- Step 17: "The whole trip — from the shelf to the checkout, on your own." / "כל הקנייה — מהמדף ועד הקופה, לבד."
+- Step 19: "No help — find it, finish at the checkout, ask for a bag." / "בלי עזרה — למצוא, לסיים בקופה, לבקש שקית."
+- Step 26: "🛒 QUICK SHOP COMPLETE · 🔎 Find ✅ · 📍 Aisle 3 ⬅️ ✅ · 🧾 Checkout ✅ · 🛍️ Bag ✅ · 💳 Pay ✅ · You found it, understood where, checked out, asked for a bag and paid." / "🛒 הקנייה המהירה הושלמה · 🔎 למצוא ✅ · 📍 מעבר 3 ⬅️ ✅ · 🧾 קופה ✅ · 🛍️ שקית ✅ · 💳 לשלם ✅ · מצאת, הבנת איפה, עברת קופה, ביקשת שקית ושילמת."
 
 ## Audit Metadata — DO NOT FIX YET
 
 - Learner-production sentences: 4
 - Receptive (expected-reply) sentences: 5
-- Toolkit phrases bundled: 4
-- Key-sentence steps: 4
-- Expected-reply/listening items: 4
+- Toolkit phrases bundled: 1
+- Key-sentence steps: 0
+- Expected-reply/listening items: 0
 - Questions/quizzes (meaning quiz): 0
-- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 15
-- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 16
-- One-button dialogue screens: 3
-- Learner sentences never actively retrieved: 0
-- Dialogue learner choices (screens): 7
-- Wrong-answer branches: 0
-- Cold-open prompts: 1
-- Recovery opportunities: 2
-- Vocabulary pre-items: 0
-- Swap variants (extra accepted lines): 1
-- Sentences in review: 11
-- Total interactive questions: 27 (answer choices: 79)
-- Approximate total learner interactions: 42 (questions + key sentences + review cards + word-intro screen)
+- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 18
+- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 15
+- One-button dialogue screens: 0
+- Learner sentences never actively retrieved: 1
+- Dialogue learner choices (screens): 4
+- Wrong-answer branches: 4
+- Cold-open prompts: 0
+- Recovery opportunities: 0
+- Vocabulary pre-items: 14
+- Swap variants (extra accepted lines): 0
+- Sentences in review: 0
+- Total interactive questions: 22 (answer choices: 67)
+- Approximate total learner interactions: 23 (questions + key sentences + review cards + word-intro screen)
 
-### AUTO-FLAG — requires human review (8)
+### AUTO-FLAG — requires human review (1)
 
-- AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "supermarket" n1 — “Hi there! Can I help you find something?”
-- AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "supermarket" n3 — “Hi! Is that everything?”
-- AUTO-FLAG — Practice item wording not in this mission's dialogue: `reply.super.aisle-three` “It's in aisle three.” (drilled as an expected reply / distractor, but no NPC line here says it).
-- AUTO-FLAG — Practice item wording not in this mission's dialogue: `reply.super.over-there` “Over there, on the left.” (drilled as an expected reply / distractor, but no NPC line here says it).
-- AUTO-FLAG — Practice item wording not in this mission's dialogue: `reply.super.sold-out` “Sorry, we're sold out.” (drilled as an expected reply / distractor, but no NPC line here says it).
-- AUTO-FLAG — Toolkit phrase listed in the mission but never offered in it: `phrase.recovery.slowly` “Please speak slowly.” (sentence review only).
-- AUTO-FLAG — 7 of 7 choice screens have NO wrong option (every button is accepted): supermarket/c1, supermarket/c1b, supermarket/c2, supermarket/c2b, supermarket/c3, supermarket/c3b, supermarket/c4.
-- AUTO-FLAG — 3 choice screens offer exactly ONE button (no decision): supermarket/c1b, supermarket/c2b, supermarket/c3b.
+- AUTO-FLAG — Learner sentence never actively retrieved in this mission (0 choice screens, 0 quick-reply / swap / match / builder rounds, 0 cold-open options): `phrase.super.do-you-have` “Do you have bread?” — appears in sentence review only (orphan in this mission).
 
 ---
 
@@ -18072,7 +18027,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: dialogue choice cold-morning/c6 (accepted)
 
 ### Sentence: `phrase.recovery.repeat`
@@ -18083,7 +18038,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 14, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: dialogue choice cold-plans/c2 (accepted); dialogue choice cold-shop/c4 (accepted)
 
 ## Expected replies / listening items
@@ -19110,7 +19065,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 14, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: quick-reply response (step 9, round 6, accepted); sentence review (step 13); cold-open correct option (step 16); dialogue choice transport/c1 (accepted); dialogue choice transport/c5 (accepted)
 
 ### Sentence: `phrase.recovery.slowly`
@@ -19121,7 +19076,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: dialogue choice transport/c2 (accepted)
 
 ### Sentence: `phrase.recovery.thank-you`
@@ -20056,7 +20011,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 14, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: sentence review (step 15); dialogue choice what-did-you-do/c10 (accepted)
 
 ## Expected replies / listening items
@@ -20893,7 +20848,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: sentence review (step 14); dialogue choice where-next/c4 (accepted)
 
 ## Expected replies / listening items
@@ -21786,7 +21741,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: quick-reply response (step 12, round 4, accepted); sentence review (step 18); dialogue choice room-problem/c8 (accepted)
 
 ## Expected replies / listening items
@@ -22786,7 +22741,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 14, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: sentence review (step 16); dialogue choice choosing-a-tour/c10 (accepted)
 
 ## Expected replies / listening items
@@ -23781,7 +23736,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: dialogue choice cold-transport/c4 (accepted); dialogue choice cold-hostel/c2 (accepted)
 
 ### Sentence: `phrase.recovery.repeat`
@@ -23792,7 +23747,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 14, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: dialogue choice cold-problem/c2 (accepted)
 
 ## Expected replies / listening items
@@ -24919,7 +24874,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: cold-open correct option (step 19)
 
 ## Expected replies / listening items
@@ -25751,7 +25706,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 14, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: dialogue choice pharmacy/c3 (accepted)
 
 ### Sentence: `phrase.recovery.slowly`
@@ -25762,7 +25717,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: cold-open correct option (step 16); dialogue choice pharmacy/c1 (accepted)
 
 ### Sentence: `phrase.recovery.thank-you`
@@ -26585,7 +26540,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: dialogue choice emergency/c8 (accepted)
 
 ## Expected replies / listening items
@@ -27339,7 +27294,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 14, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: dialogue choice ns-transit/c8 (accepted)
 
 ### Sentence: `phrase.recovery.slowly`
@@ -27350,7 +27305,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: dialogue choice ns-diner/c4 (accepted)
 
 ## Expected replies / listening items
@@ -28276,7 +28231,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 14, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: dialogue choice dr-problem/c2 (accepted)
 
 ### Sentence: `phrase.recovery.slowly`
@@ -28287,7 +28242,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: dialogue choice dr-pay/c4 (accepted)
 
 ## Expected replies / listening items
@@ -29472,7 +29427,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: dialogue choice fin-taxi/c6 (accepted); dialogue choice fin-evening/c2 (accepted)
 
 ### Sentence: `phrase.recovery.repeat`
@@ -29483,7 +29438,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 14, 17, 18, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 18, 19, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: dialogue choice fin-lunch/c6 (accepted)
 
 ## Expected replies / listening items
@@ -30619,7 +30574,7 @@ Every learner sentence of this mission is a line in a scene.
 | 14 Restaurant Meal | 20 (9 / 6 / 5) | 0 | 0 | 0 | 26 | 6 | 1 | 1 | 0 | 11 words | 0 | 32 | 24 |
 | 15 Food Preferences & Allergies | 11 (4 / 6 / 1) | 0 | 0 | 0 | 20 | 6 | 1 | 0 | 0 | 9 words | 0 | 26 | 2 |
 | 16 Hobbies & Free Time | 17 (8 / 9 / 0) | 0 | 0 | 0 | 22 | 8 | 0 | 0 | 0 | 16 words | 0 | 30 | 0 |
-| 17 Supermarket & Everyday Shopping | 13 (4 / 5 / 4) | 4 | 4 | 0 | 15 | 7 | 3 | 2 | 1 | no | 1 | 27 | 8 |
+| 17 Supermarket & Everyday Shopping | 10 (4 / 5 / 1) | 0 | 0 | 0 | 18 | 4 | 0 | 0 | 0 | 14 words | 0 | 22 | 1 |
 | 18 CHECKPOINT: Everyday Day | 25 (20 / 2 / 3) | 0 | 0 | 0 | 0 | 15 | 0 | 3 | 1 | no | 0 | 16 | 11 |
 | 19 Public Transport | 14 (5 / 6 / 3) | 4 | 4 | 0 | 17 | 10 | 5 | 3 | 1 | no | 1 | 32 | 6 |
 | 20 Past & Recent Events | 15 (8 / 6 / 1) | 4 | 4 | 0 | 19 | 7 | 5 | 1 | 0 | no | 1 | 30 | 3 |
@@ -30737,10 +30692,10 @@ Every learner-production sentence id of the Core, in order of first appearance. 
 | `phrase.hobby.i-usually` | I usually draw in the evening. | 16 | 18 | 0 | 1 / 2 | 5 | 0 | 0 | yes | no |  |
 | `phrase.hobby.like-to-listen` | I like to listen to music. | 16 | — | 0 | 1 / 0 | 3 | 0 | 0 | no | no |  |
 | `phrase.hobby.dont-like-running` | I don't like running. | 16 | — | 0 | 1 / 1 | 4 | 0 | 0 | no | no |  |
-| `phrase.super.where-is` | Where is the milk? | 17 | 18 | 1 | 3 / 1 | 9 | 0 | 1 | yes | no |  |
-| `phrase.super.do-you-have` | Do you have bread? | 17 | 18 | 1 | 1 / 1 | 6 | 0 | 1 | yes | no |  |
-| `phrase.super.just-this` | Just this, thanks. | 17 | 18 | 1 | 3 / 1 | 7 | 1 | 1 | yes | no |  |
-| `phrase.super.need-bag` | Could I get a bag? | 17 | 18 | 1 | 2 / 1 | 5 | 0 | 1 | yes | no |  |
+| `phrase.super.where-is` | Where is the milk? | 17 | 18 | 0 | 2 / 2 | 10 | 0 | 0 | yes | no |  |
+| `phrase.super.just-this` | Just this, thanks. | 17 | 18 | 0 | 2 / 3 | 7 | 0 | 0 | yes | no |  |
+| `phrase.super.need-bag` | Could I get a bag? | 17 | 18 | 0 | 2 / 2 | 7 | 0 | 0 | yes | no |  |
+| `phrase.super.do-you-have` | Do you have bread? | 17 | 18 | 0 | 0 / 1 | 0 | 0 | 0 | yes | no |  |
 | `phrase.trans.one-ticket` | One ticket to the centre, please. | 19 | 24, 28, 30 | 1 | 4 / 2 | 12 | 0 | 1 | yes | no |  |
 | `phrase.trans.which-platform` | Which platform? | 19 | 24, 28 | 1 | 2 / 2 | 6 | 0 | 1 | yes | no |  |
 | `phrase.trans.does-stop` | Does this stop at the museum? | 19 | 24, 28 | 1 | 4 / 1 | 5 | 1 | 1 | yes | no |  |
@@ -30934,11 +30889,11 @@ Every expected-reply sentence id. "Quick response" does not exist as an exercise
 | `reply.hobby.want-to-try-q` | Me neither! Is there something you want to try here? | 16 | — | no | 0 / 0 | 0 / 0 | no | yes |
 | `reply.hobby.diving-school` | Good idea! There's a diving school near the beach. | 16 | — | no | 0 / 0 | 0 / 0 | no | yes |
 | `reply.hobby.go-together` | I love it! Let's go together tomorrow. | 16 | — | no | 0 / 0 | 0 / 0 | no | yes |
-| `reply.super.aisle-three` | It's in aisle three. | 17 | — | yes (1) | 0 / 0 | 0 / 0 | no | **no** |
-| `reply.super.over-there` | Over there, on the left. | 17 | — | yes (1) | 0 / 0 | 0 / 0 | no | **no** |
-| `reply.super.bag-q` | Do you need a bag? | 17 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
-| `reply.super.card-here` | Insert your card here. | 17 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
-| `reply.super.sold-out` | Sorry, we're sold out. | 17 | — | no | 0 / 0 | 0 / 0 | no | **no** |
+| `reply.super.can-help` | Hi there! Can I help you find something? | 17 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.super.aisle-three` | The milk is in aisle three, on the left. | 17 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.super.everything` | Hi! Is that everything? | 17 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.super.bag-q` | Do you need a bag? | 17 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.super.card-here` | Insert your card here… all done. Have a nice day! | 17 | — | no | 0 / 0 | 0 / 0 | no | yes |
 | `reply.trans.single-return` | Single or return? | 19 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
 | `reply.trans.platform-two` | Platform two. | 19 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
 | `reply.trans.every-ten` | Every ten minutes. | 19 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
@@ -31002,8 +30957,6 @@ Happy-path NPC lines containing a question, for which the mission has no expecte
 | 10 | cold-taxi / n1 | Hello! Where to? |
 | 10 | cold-taxi / n5 | …We are almost there. Is here okay? |
 | 10 | cold-hotel / n1 | Good evening! How can I help you? |
-| 17 | supermarket / n1 | Hi there! Can I help you find something? |
-| 17 | supermarket / n3 | Hi! Is that everything? |
 | 18 | cold-morning / n1 | Good morning! What can I get you? |
 | 18 | cold-morning / n3 | Sure. Anything to eat? |
 | 18 | cold-morning / n5 | No problem. Cash or card? |
@@ -31075,7 +31028,7 @@ Happy-path NPC lines containing a question, for which the mission has no expecte
 | 30 | fin-evening / n1 | Good evening! Is everything okay with your room? And breakfast tomorrow — is seven okay for you? |
 | 30 | fin-evening / n3 | Perfect. And how was your day? |
 
-Total: 80.
+Total: 78.
 
 # Complete Existing Question Bank
 
@@ -36498,204 +36451,131 @@ No questions.
 
 ## Mission 17 — Supermarket & Everyday Shopping
 
-**M17-Q01** — expected-reply
-- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (1/4)
-- Audio: It's in aisle three. — (זה במעבר שלוש.)
-- A: זה במעבר שלוש. / It's in aisle three. ✅
-- B: שם, משמאל. / Over there, on the left.
-- C: צריך שקית? / Do you need a bag?
-- Correct: It's in aisle three.
-- Tests: reply.super.aisle-three
-
-**M17-Q02** — expected-reply
-- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (2/4)
-- Audio: Over there, on the left. — (שם, משמאל.)
-- A: שם, משמאל. / Over there, on the left. ✅
-- B: זה במעבר שלוש. / It's in aisle three.
-- C: צריך שקית? / Do you need a bag?
-- Correct: Over there, on the left.
-- Tests: reply.super.over-there
-
-**M17-Q03** — expected-reply
-- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (3/4)
-- Audio: Do you need a bag? — (צריך שקית?)
-- A: צריך שקית? / Do you need a bag? ✅
-- B: זה במעבר שלוש. / It's in aisle three.
-- C: שם, משמאל. / Over there, on the left.
-- Correct: Do you need a bag?
-- Tests: reply.super.bag-q
-
-**M17-Q04** — expected-reply
-- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (4/4)
-- Audio: Insert your card here. — (הכנס את הכרטיס כאן.)
-- A: הכנס את הכרטיס כאן. / Insert your card here. ✅
-- B: זה במעבר שלוש. / It's in aisle three.
-- C: שם, משמאל. / Over there, on the left.
-- Correct: Insert your card here.
-- Tests: reply.super.card-here
-
-**M17-Q05** — visual-match
-- Prompt: "Where is it? Tap the aisle and the side you hear" / "איפה זה? הקש על המעבר והצד ששמעת"
-- Audio: The milk is in aisle three, on the left. — (החלב במעבר שלוש, משמאל.)
-- A: 1 ⬅️
-- B: 1 ➡️
-- C: 2 ⬅️
-- D: 2 ➡️
-- E: 3 ⬅️ ✅
-- F: 3 ➡️
-- Correct: 3 ⬅️
-- Tests: reply.super.aisle-three
-
-**M17-Q06** — visual-match
-- Prompt: "Where is it? Tap the aisle and the side you hear" / "איפה זה? הקש על המעבר והצד ששמעת"
-- Audio: It's in aisle one, on the right. — (זה במעבר אחת, מימין.)
-- A: 1 ⬅️
-- B: 1 ➡️ ✅
-- C: 2 ⬅️
-- D: 2 ➡️
-- E: 3 ⬅️
-- F: 3 ➡️
-- Correct: 1 ➡️
+**M17-Q01** — visual-match
+- Prompt: "🛒 Supermarket sprint · 🔎 Find ⬜ · 📍 Locate ⬜ · 🧾 Checkout ⬜ · 🛍️ Bag ⬜ · 💳 Pay ⬜ · Listen — and tap the product." / "🛒 ספרינט בסופר · 🔎 למצוא ⬜ · 📍 איפה ⬜ · 🧾 קופה ⬜ · 🛍️ שקית ⬜ · 💳 לשלם ⬜ · שמע — והקש על המוצר."
+- Audio: cheese — (גבינה)
+- A: 🍞
+- B: 🧀 ✅
+- C: 🥚
+- Correct: 🧀
 - Tests: (no sentence id — not recorded)
 
-**M17-Q07** — visual-match
-- Prompt: "Where is it? Tap the aisle and the side you hear" / "איפה זה? הקש על המעבר והצד ששמעת"
-- Audio: It's in aisle two, on the left. — (זה במעבר שתיים, משמאל.)
-- A: 1 ⬅️
-- B: 1 ➡️
-- C: 2 ⬅️ ✅
-- D: 2 ➡️
-- E: 3 ⬅️
-- F: 3 ➡️
-- Correct: 2 ⬅️
+**M17-Q02** — visual-match
+- Prompt: "🛒 Supermarket sprint · 🔎 Find ⬜ · 📍 Locate ⬜ · 🧾 Checkout ⬜ · 🛍️ Bag ⬜ · 💳 Pay ⬜ · Listen — and tap the product." / "🛒 ספרינט בסופר · 🔎 למצוא ⬜ · 📍 איפה ⬜ · 🧾 קופה ⬜ · 🛍️ שקית ⬜ · 💳 לשלם ⬜ · שמע — והקש על המוצר."
+- Audio: eggs — (ביצים)
+- A: 🥛
+- B: 🥚 ✅
+- C: 🍎
+- Correct: 🥚
 - Tests: (no sentence id — not recorded)
 
-**M17-Q08** — swap-it
-- Prompt: "What are you looking for?" / "מה אתה מחפש?" — cue 🥛 "You are looking for milk" / "אתה מחפש חלב" — frame EN "Where is the ___?" · FR "Où est ___ ?" · ES "¿Dónde está ___?"
-- Audio: (nothing before the tap; the completed sentence is spoken after it) — ()
-- A: milk → Where is the milk? ✅
-- B: bread → Where is the bread?
-- C: water → Where is the water?
-- Correct: milk → Where is the milk?
+**M17-Q03** — visual-match
+- Prompt: "🛒 Supermarket sprint · 🔎 Find ⬜ · 📍 Locate ⬜ · 🧾 Checkout ⬜ · 🛍️ Bag ⬜ · 💳 Pay ⬜ · Listen — and tap the product." / "🛒 ספרינט בסופר · 🔎 למצוא ⬜ · 📍 איפה ⬜ · 🧾 קופה ⬜ · 🛍️ שקית ⬜ · 💳 לשלם ⬜ · שמע — והקש על המוצר."
+- Audio: apples — (תפוחים)
+- A: 💧
+- B: 🍞
+- C: 🍎 ✅
+- Correct: 🍎
+- Tests: (no sentence id — not recorded)
+
+**M17-Q04** — quick-reply
+- Prompt: "🛒 Supermarket sprint · 🔎 Find ⬜ · 📍 Locate ⬜ · 🧾 Checkout ⬜ · 🛍️ Bag ⬜ · 💳 Pay ⬜ · What do you ask?" / "🛒 ספרינט בסופר · 🔎 למצוא ⬜ · 📍 איפה ⬜ · 🧾 קופה ⬜ · 🛍️ שקית ⬜ · 💳 לשלם ⬜ · מה אתה שואל?"
+- Audio: Hi there! Can I help you find something? — (היי! לעזור לך למצוא משהו?)
+- A: Where is the milk? ✅
+- B: Thank you!
+- Correct: Where is the milk?
 - Tests: phrase.super.where-is
 
-**M17-Q09** — swap-it
-- Prompt: "What are you looking for?" / "מה אתה מחפש?" — cue 🍞 "You are looking for bread" / "אתה מחפש לחם" — frame EN "Where is the ___?" · FR "Où est ___ ?" · ES "¿Dónde está ___?"
+**M17-Q05** — swap-it
+- Prompt: "🛒 Supermarket sprint · 🔎 Find ✅ · 📍 Locate ⬜ · 🧾 Checkout ⬜ · 🛍️ Bag ⬜ · 💳 Pay ⬜ · The same question — another product." / "🛒 ספרינט בסופר · 🔎 למצוא ✅ · 📍 איפה ⬜ · 🧾 קופה ⬜ · 🛍️ שקית ⬜ · 💳 לשלם ⬜ · אותה שאלה — מוצר אחר." — cue 🍞 "You are looking for bread" / "אתה מחפש לחם" — frame EN "Where is the ___?" · FR "Où est ___ ?" · ES "¿Dónde está ___?"
 - Audio: (nothing before the tap; the completed sentence is spoken after it) — ()
 - A: milk → Where is the milk?
 - B: bread → Where is the bread? ✅
-- C: water → Where is the water?
+- C: cheese → Where is the cheese?
 - Correct: bread → Where is the bread?
 - Tests: phrase.super.where-is
 
-**M17-Q10** — swap-it
-- Prompt: "What are you looking for?" / "מה אתה מחפש?" — cue 💧 "You are looking for water" / "אתה מחפש מים" — frame EN "Where is the ___?" · FR "Où est ___ ?" · ES "¿Dónde está ___?"
+**M17-Q06** — swap-it
+- Prompt: "🛒 Supermarket sprint · 🔎 Find ✅ · 📍 Locate ⬜ · 🧾 Checkout ⬜ · 🛍️ Bag ⬜ · 💳 Pay ⬜ · The same question — another product." / "🛒 ספרינט בסופר · 🔎 למצוא ✅ · 📍 איפה ⬜ · 🧾 קופה ⬜ · 🛍️ שקית ⬜ · 💳 לשלם ⬜ · אותה שאלה — מוצר אחר." — cue 🧀 "You are looking for cheese" / "אתה מחפש גבינה" — frame EN "Where is the ___?" · FR "Où est ___ ?" · ES "¿Dónde está ___?"
 - Audio: (nothing before the tap; the completed sentence is spoken after it) — ()
 - A: milk → Where is the milk?
 - B: bread → Where is the bread?
-- C: water → Where is the water? ✅
-- Correct: water → Where is the water?
+- C: cheese → Where is the cheese? ✅
+- Correct: cheese → Where is the cheese?
 - Tests: phrase.super.where-is
 
-**M17-Q11** — quick-reply
-- Prompt: "In the supermarket — what do you say?" / "בסופר — מה אומרים?"
-- Audio: Hi there! Can I help you find something? — (היי! לעזור לך למצוא משהו?)
-- A: Where is the milk? ✅
-- B: Do you have bread? ✅
-- C: Just this, thanks.
-- Correct: Where is the milk? | Do you have bread?
-- Tests: phrase.super.where-is, phrase.super.do-you-have
+**M17-Q07** — visual-match
+- Prompt: "🛒 Supermarket sprint · 🔎 Find ✅ · 📍 Locate ⬜ · 🧾 Checkout ⬜ · 🛍️ Bag ⬜ · 💳 Pay ⬜ · Where is the milk? Tap the aisle and the side." / "🛒 ספרינט בסופר · 🔎 למצוא ✅ · 📍 איפה ⬜ · 🧾 קופה ⬜ · 🛍️ שקית ⬜ · 💳 לשלם ⬜ · איפה החלב? הקש על המעבר והצד."
+- Audio: The milk is in aisle three, on the left. — (החלב במעבר שלוש, משמאל.)
+- A: 1 ⬅️
+- B: 2 ⬅️
+- C: 3 ⬅️ ✅
+- D: 1 ➡️
+- E: 2 ➡️
+- F: 3 ➡️
+- Correct: 3 ⬅️
+- Tests: (no sentence id — not recorded)
 
-**M17-Q12** — quick-reply
-- Prompt: "In the supermarket — what do you say?" / "בסופר — מה אומרים?" — situation shown: "You cannot find any bread. Ask whether they have it." / "אתה לא מוצא לחם. שואלים אם יש."
-- Audio: (nothing is played — a situation is shown) — ()
-- A: Do you have bread? ✅
-- B: Could I get a bag?
-- C: Just this, thanks.
-- Correct: Do you have bread?
-- Tests: phrase.super.do-you-have
-
-**M17-Q13** — quick-reply
-- Prompt: "In the supermarket — what do you say?" / "בסופר — מה אומרים?"
-- Audio: It's in aisle three. — (זה במעבר שלוש.)
-- A: Thank you! ✅
-- B: Can you repeat that? ✅
-- C: Could I get a bag?
-- Correct: Thank you! | Can you repeat that?
-- Tests: phrase.recovery.thank-you, phrase.recovery.repeat
-
-**M17-Q14** — quick-reply
-- Prompt: "In the supermarket — what do you say?" / "בסופר — מה אומרים?"
+**M17-Q08** — quick-reply
+- Prompt: "🛒 Supermarket sprint · 🔎 Find ✅ · 📍 Aisle 3 ⬅️ ✅ · 🧾 Checkout ⬜ · 🛍️ Bag ⬜ · 💳 Pay ⬜ · What do you answer?" / "🛒 ספרינט בסופר · 🔎 למצוא ✅ · 📍 מעבר 3 ⬅️ ✅ · 🧾 קופה ⬜ · 🛍️ שקית ⬜ · 💳 לשלם ⬜ · מה אתה עונה?"
 - Audio: Hi! Is that everything? — (היי! זה הכל?)
 - A: Just this, thanks. ✅
 - B: Where is the milk?
-- C: Do you have bread?
+- C: Thank you!
 - Correct: Just this, thanks.
 - Tests: phrase.super.just-this
+
+**M17-Q09** — quick-reply
+- Prompt: "🛒 Supermarket sprint · 🔎 Find ✅ · 📍 Aisle 3 ⬅️ ✅ · 🧾 Checkout ✅ · 🛍️ Bag ⬜ · 💳 Pay ⬜ · What do you answer?" / "🛒 ספרינט בסופר · 🔎 למצוא ✅ · 📍 מעבר 3 ⬅️ ✅ · 🧾 קופה ✅ · 🛍️ שקית ⬜ · 💳 לשלם ⬜ · מה אתה עונה?"
+- Audio: Do you need a bag? — (צריך שקית?)
+- A: Could I get a bag? ✅
+- B: Just this, thanks.
+- C: Where is the milk?
+- Correct: Could I get a bag?
+- Tests: phrase.super.need-bag
+
+**M17-Q10** — visual-match
+- Prompt: "🛒 Supermarket sprint · 🔎 Find ✅ · 📍 Aisle 3 ⬅️ ✅ · 🧾 Checkout ✅ · 🛍️ Bag ✅ · 💳 Pay ⬜ · What is the cashier telling you?" / "🛒 ספרינט בסופר · 🔎 למצוא ✅ · 📍 מעבר 3 ⬅️ ✅ · 🧾 קופה ✅ · 🛍️ שקית ✅ · 💳 לשלם ⬜ · מה הקופאי אומר?"
+- Audio: Insert your card here… all done. Have a nice day! — (הכנס את הכרטיס כאן… הכל מוכן. שיהיה יום נעים!)
+- A: 🧾 “Asking if that’s everything” / “שואלים אם זה הכל”
+- B: 🛍️ “Asking if you need a bag” / “שואלים אם צריך שקית”
+- C: 💳 “Card in the machine — paid” / “כרטיס במכשיר — ושילמת” ✅
+- Correct: 💳 “Card in the machine — paid” / “כרטיס במכשיר — ושילמת”
+- Tests: (no sentence id — not recorded)
+
+**M17-Q11** — dialogue-choice
+- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
+- Audio: Hi there! Can I help you find something? — (היי! לעזור לך למצוא משהו?)
+- A: Where is the milk? ✅
+- B: Just this, thanks.
+- Correct: Where is the milk?
+- Tests: phrase.super.where-is, phrase.super.just-this
+
+**M17-Q12** — dialogue-choice
+- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
+- Audio: The milk is in aisle three, on the left. — (החלב במעבר שלוש, משמאל.)
+- A: Thank you! ✅
+- B: Could I get a bag?
+- Correct: Thank you!
+- Tests: phrase.recovery.thank-you, phrase.super.need-bag
+
+**M17-Q13** — dialogue-choice
+- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
+- Audio: Hi! Is that everything? — (היי! זה הכל?)
+- A: Just this, thanks. ✅
+- B: Where is the milk?
+- Correct: Just this, thanks.
+- Tests: phrase.super.just-this, phrase.super.where-is
+
+**M17-Q14** — dialogue-choice
+- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
+- Audio: Do you need a bag? — (צריך שקית?)
+- A: Could I get a bag? ✅
+- B: Just this, thanks.
+- Correct: Could I get a bag?
+- Tests: phrase.super.need-bag, phrase.super.just-this
 
 **M17-Q15** — quick-reply
-- Prompt: "In the supermarket — what do you say?" / "בסופר — מה אומרים?"
-- Audio: Do you need a bag? — (צריך שקית?)
-- A: Could I get a bag? ✅
-- B: Where is the milk?
-- C: Do you have bread?
-- Correct: Could I get a bag?
-- Tests: phrase.super.need-bag
-
-**M17-Q16** — dialogue-choice
-- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio: Hi there! Can I help you find something? — (היי! לעזור לך למצוא משהו?)
-- A: Where is the milk? ✅
-- B: Do you have bread? ✅
-- Correct: Where is the milk? | Do you have bread?
-- Tests: phrase.super.where-is, phrase.super.do-you-have
-
-**M17-Q17** — dialogue-choice
-- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio: Bread? Yes — fresh this morning, in aisle one. — (לחם? כן — טרי מהבוקר, במעבר אחת.)
-- A: Where is the milk? ✅
-- Correct: Where is the milk?
-- Tests: phrase.super.where-is
-
-**M17-Q18** — dialogue-choice
-- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio: The milk is in aisle three, on the left. — (החלב במעבר שלוש, משמאל.)
-- A: Thank you! ✅
-- B: Can you repeat that? ✅
-- Correct: Thank you! | Can you repeat that?
-- Tests: phrase.recovery.thank-you, phrase.recovery.repeat
-
-**M17-Q19** — dialogue-choice
-- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio: Aisle — three — on the left. — (מעבר — שלוש — משמאל.)
-- A: Thank you! ✅
-- Correct: Thank you!
-- Tests: phrase.recovery.thank-you
-
-**M17-Q20** — dialogue-choice
-- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio: Hi! Is that everything? — (היי! זה הכל?)
-- A: Can you show me? ✅
-- B: Just this, thanks. ✅
-- Correct: Can you show me? | Just this, thanks.
-- Tests: phrase.recovery.show-me, phrase.super.just-this
-
-**M17-Q21** — dialogue-choice
-- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio: Of course — put it here, press the picture, done. — (בטח — שים כאן, לחץ על התמונה, גמרנו.)
-- A: Just this, thanks. ✅
-- Correct: Just this, thanks.
-- Tests: phrase.super.just-this
-
-**M17-Q22** — dialogue-choice
-- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio: Do you need a bag? — (צריך שקית?)
-- A: Could I get a bag? ✅
-- B: Thank you! ✅
-- Correct: Could I get a bag? | Thank you!
-- Tests: phrase.super.need-bag, phrase.recovery.thank-you
-
-**M17-Q23** — quick-reply
 - Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio: Hi there! Can I help you find something? — (היי! לעזור לך למצוא משהו?)
 - A: Where is the milk? ✅
@@ -36704,40 +36584,71 @@ No questions.
 - Correct: Where is the milk?
 - Tests: phrase.super.where-is
 
-**M17-Q24** — quick-reply
-- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
-- Audio: The milk is in aisle three, on the left. — (החלב במעבר שלוש, משמאל.)
-- A: Thank you! ✅
-- B: Just this, thanks.
-- C: Do you have bread?
-- Correct: Thank you!
-- Tests: phrase.recovery.thank-you
-
-**M17-Q25** — quick-reply
+**M17-Q16** — quick-reply
 - Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio: Hi! Is that everything? — (היי! זה הכל?)
 - A: Just this, thanks. ✅
 - B: Where is the milk?
-- C: Do you have bread?
+- C: Could I get a bag?
 - Correct: Just this, thanks.
 - Tests: phrase.super.just-this
 
-**M17-Q26** — quick-reply
+**M17-Q17** — quick-reply
 - Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio: Do you need a bag? — (צריך שקית?)
 - A: Could I get a bag? ✅
-- B: Where is the milk?
+- B: Just this, thanks.
+- C: Where is the milk?
+- Correct: Could I get a bag?
+- Tests: phrase.super.need-bag
+
+**M17-Q18** — quick-reply
+- Prompt: "🛒 Supermarket sprint · 🔎 Find ⬜ · 📍 Locate ⬜ · 🧾 Checkout ⬜ · 🛍️ Bag ⬜ · 💳 Pay ⬜ · One quick purchase. Go." / "🛒 ספרינט בסופר · 🔎 למצוא ⬜ · 📍 איפה ⬜ · 🧾 קופה ⬜ · 🛍️ שקית ⬜ · 💳 לשלם ⬜ · קנייה מהירה אחת. קדימה."
+- Audio: Hi there! Can I help you find something? — (היי! לעזור לך למצוא משהו?)
+- A: Where is the milk? ✅
+- B: Could I get a bag?
+- C: Thank you!
+- Correct: Where is the milk?
+- Tests: phrase.super.where-is
+
+**M17-Q19** — visual-match
+- Prompt: "🛒 Supermarket sprint · 🔎 Find ✅ · 📍 Locate ⬜ · 🧾 Checkout ⬜ · 🛍️ Bag ⬜ · 💳 Pay ⬜ · Where is the milk? Tap the aisle and the side." / "🛒 ספרינט בסופר · 🔎 למצוא ✅ · 📍 איפה ⬜ · 🧾 קופה ⬜ · 🛍️ שקית ⬜ · 💳 לשלם ⬜ · איפה החלב? הקש על המעבר והצד."
+- Audio: The milk is in aisle three, on the left. — (החלב במעבר שלוש, משמאל.)
+- A: 1 ⬅️
+- B: 2 ⬅️
+- C: 3 ⬅️ ✅
+- D: 1 ➡️
+- E: 2 ➡️
+- F: 3 ➡️
+- Correct: 3 ⬅️
+- Tests: (no sentence id — not recorded)
+
+**M17-Q20** — quick-reply
+- Prompt: "🛒 Supermarket sprint · 🔎 Find ✅ · 📍 Aisle 3 ⬅️ ✅ · 🧾 Checkout ⬜ · 🛍️ Bag ⬜ · 💳 Pay ⬜" / "🛒 ספרינט בסופר · 🔎 למצוא ✅ · 📍 מעבר 3 ⬅️ ✅ · 🧾 קופה ⬜ · 🛍️ שקית ⬜ · 💳 לשלם ⬜"
+- Audio: Hi! Is that everything? — (היי! זה הכל?)
+- A: Just this, thanks. ✅
+- B: Could I get a bag?
+- C: Where is the milk?
+- Correct: Just this, thanks.
+- Tests: phrase.super.just-this
+
+**M17-Q21** — quick-reply
+- Prompt: "🛒 Supermarket sprint · 🔎 Find ✅ · 📍 Aisle 3 ⬅️ ✅ · 🧾 Checkout ✅ · 🛍️ Bag ⬜ · 💳 Pay ⬜" / "🛒 ספרינט בסופר · 🔎 למצוא ✅ · 📍 מעבר 3 ⬅️ ✅ · 🧾 קופה ✅ · 🛍️ שקית ⬜ · 💳 לשלם ⬜"
+- Audio: Do you need a bag? — (צריך שקית?)
+- A: Could I get a bag? ✅
+- B: Thank you!
 - C: Just this, thanks.
 - Correct: Could I get a bag?
 - Tests: phrase.super.need-bag
 
-**M17-Q27** — cold-open
-- Prompt: "Heads up: a fast one is coming. Use a tool." / "שים לב: מגיע משפט מהיר. השתמש בכלי."
-- Audio: Unexpected item in the bagging area — please wait for assistance. — (פריט לא צפוי באזור האריזה — אנא המתן לסיוע.)
-- A: Can you show me? ✅
-- B: Just this, thanks.
-- Correct: Can you show me?
-- Tests: phrase.recovery.show-me
+**M17-Q22** — visual-match
+- Prompt: "🛒 Supermarket sprint · 🔎 Find ✅ · 📍 Aisle 3 ⬅️ ✅ · 🧾 Checkout ✅ · 🛍️ Bag ✅ · 💳 Pay ⬜ · What is the cashier telling you?" / "🛒 ספרינט בסופר · 🔎 למצוא ✅ · 📍 מעבר 3 ⬅️ ✅ · 🧾 קופה ✅ · 🛍️ שקית ✅ · 💳 לשלם ⬜ · מה הקופאי אומר?"
+- Audio: Insert your card here… all done. Have a nice day! — (הכנס את הכרטיס כאן… הכל מוכן. שיהיה יום נעים!)
+- A: 🧾 “Asking if that’s everything” / “שואלים אם זה הכל”
+- B: 🛍️ “Asking if you need a bag” / “שואלים אם צריך שקית”
+- C: 💳 “Card in the machine — paid” / “כרטיס במכשיר — ושילמת” ✅
+- Correct: 💳 “Card in the machine — paid” / “כרטיס במכשיר — ושילמת”
+- Tests: (no sentence id — not recorded)
 
 ## Mission 18 — CHECKPOINT: Everyday Day
 
@@ -39431,15 +39342,15 @@ No questions.
 - Missions exported: 30
 - Learner-production sentence ids: 163
 - Expected-reply (receptive) sentence ids: 171
-- Sentence listings across missions (with reuse): 527
-- Expected-reply questions: 71
+- Sentence listings across missions (with reuse): 524
+- Expected-reply questions: 67
 - Meaning quizzes: 7
-- Active-practice questions: 611
-- Dialogue choice screens: 252
-- Cold opens: 7
-- Total interactive questions: 948
-- Total answer choices: 2595
-- Wrong-answer branches: 121
-- Recovery opportunities: 45
+- Active-practice questions: 614
+- Dialogue choice screens: 249
+- Cold opens: 6
+- Total interactive questions: 943
+- Total answer choices: 2583
+- Wrong-answer branches: 125
+- Recovery opportunities: 43
 - Learner sentences with 0 active retrieval opportunities: 1
-- Auto-flags: 205
+- Auto-flags: 198
