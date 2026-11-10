@@ -82,6 +82,11 @@ real prime word in that mission. **Counts: 29 audited · 7 primed · 22 explicit
 > No earlier mission guarantees "should" — an optional branch never counts — so the checkpoint shows it once, on a
 > card, before the chat. Everything else in the checkpoint stays proof.
 
+> **2026-11-10 — Mission 19 (Public Transport, registry key 18) is now primed** with whole-line cards, never a
+> transport word list: *One ticket to the centre, please.*, *Single, please.*, *Which platform?*, *Does this stop at
+> the museum?* and the staff's whole lines. "Thank you!", "the centre", 2 / 3 / 10 and "straight ahead" are verified
+> prior. The price, frequency, platform, direction, stop count and "next" are UI, never word cards.
+
 > **2026-11-10 — Mission 17 (Supermarket, registry key 16) is now primed** with ONE shelf of exactly six
 > essentials (*milk, water, bread, cheese, eggs, apples* — recognition only; bread is just "bread") and whole-line
 > cards: *Where is the milk?*, *Just this, thanks.*, *Could I get a bag?* and the staff's lines. "Thank you!" is

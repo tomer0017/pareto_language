@@ -55,10 +55,10 @@ describe('French missions — content integrity (no English leaks)', () => {
     expect(report.covered).toBe(builtDays.length);
   });
 
-  it('French missions name no video file (videos are found by convention); only Missions 1–9 and 11–17 have video steps', () => {
+  it('French missions name no video file (videos are found by convention); only Missions 1–9, 11–17 and 19 have video steps', () => {
     for (const d of builtDays) {
       expect(JSON.stringify(DAYS_FR[d]!)).not.toMatch(/\.mp4|introVideo/);
-      expect(DAYS_FR[d]!.steps.some((s) => s.kind === 'video')).toBe((d >= 1 && d <= 3) || d === 5 || d === 6 || d === 7 || d === 8 || d === 10 || d === 22 || d === 30 || d === 31 || d === 32 || d === 4 || d === 13 || d === 33 || d === 16); // Mission 04's key is 30, Mission 05's is 5, Mission 06's is 10, Mission 07's is 6, Mission 08's is 7, Mission 09's is 8, Mission 11's is 22, Mission 12's is 31, Mission 13's is 32, Mission 14's is 4, Mission 15's is 13, Mission 16's is 33, Mission 17's is 16
+      expect(DAYS_FR[d]!.steps.some((s) => s.kind === 'video')).toBe((d >= 1 && d <= 3) || d === 5 || d === 6 || d === 7 || d === 8 || d === 10 || d === 22 || d === 30 || d === 31 || d === 32 || d === 4 || d === 13 || d === 33 || d === 16 || d === 18); // Mission 04's key is 30, Mission 05's is 5, Mission 06's is 10, Mission 07's is 6, Mission 08's is 7, Mission 09's is 8, Mission 11's is 22, Mission 12's is 31, Mission 13's is 32, Mission 14's is 4, Mission 15's is 13, Mission 16's is 33, Mission 17's is 16, Mission 19's is 18
     }
   });
 });

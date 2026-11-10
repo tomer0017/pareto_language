@@ -70,6 +70,8 @@ export const MISSION_GAME_INTRO: Record<string, Record<string, LocalizedText>> =
   'hobbies-free-time': { visualMatch: T('שמע — והקש לאן התחביב שייך.', 'Listen — and tap where the hobby goes.') },
   // The supermarket's first board is the Shelf Scan: a product word → its picture, never a price.
   'supermarket': { visualMatch: T('שמע — והקש על המוצר.', 'Listen — and tap the product.') },
+  // The train ride's first board is the ticket type: what "single" means, never a price.
+  'public-transport': { visualMatch: T('שמע — והקש על סוג הכרטיס.', 'Listen — and tap the ticket type.') },
 };
 
 export interface CoachLine {

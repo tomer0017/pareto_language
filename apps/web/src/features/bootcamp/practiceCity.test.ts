@@ -17,7 +17,7 @@ const M15_PASS_RETIRED = ['phrase.diet.is-spicy', 'reply.diet.let-me-check', 're
  * like a phrasebook: tell a small story, say what comes next, complain politely, give an opinion and
  * a reason. What each mission must now train is pinned; the checkpoint proves instead of teaching;
  * and everything this pass was NOT allowed to touch — Missions 01–18, Missions 25–30, the dialogues
- * of 19–23 — is fingerprinted.
+ * of 19–23 — is fingerprinted. (Mission 19 has its own pass since — the train ride: mission19.test.ts.)
  */
 const LANGS = ['en', 'fr', 'es'] as const;
 type Lang = (typeof LANGS)[number];
@@ -82,12 +82,12 @@ describe('scope: only the Practice of Missions 19–24 changed', () => {
   const slice = (lang: Lang, a: number, b: number): BootcampDayContent[] => BOOTCAMP_PLAN.slice(a, b).map((m) => beforeCueFreeze(MISSIONS_BY_LANG[lang]![m.day]!, lang));
   const print = (f: (lang: Lang) => unknown): Record<Lang, string> => ({ en: fnv(JSON.stringify(f('en'))), fr: fnv(JSON.stringify(f('fr'))), es: fnv(JSON.stringify(f('es'))) });
 
-  it('Missions 01–18 have their own passes (mission01.test.ts … mission18.test.ts)', async () => {
+  it('Missions 01–19 have their own passes (mission01.test.ts … mission19.test.ts)', async () => {
     const { existsSync } = await import('node:fs');
-    for (let n = 1; n <= 18; n++) expect(existsSync(fileURLToPath(new URL(`./mission${String(n).padStart(2, '0')}.test.ts`, import.meta.url))), `M${n}`).toBe(true);
+    for (let n = 1; n <= 19; n++) expect(existsSync(fileURLToPath(new URL(`./mission${String(n).padStart(2, '0')}.test.ts`, import.meta.url))), `M${n}`).toBe(true);
   });
-  it('the locked dialogues of Missions 19–23 are byte-for-byte unchanged', () => {
-    expect(print((l) => slice(l, 18, 23).map((d) => d.dialogues))).toEqual({ en: '594ead2b', fr: '63803269', es: '55c7bd8f' });
+  it('the locked dialogues of Missions 20–23 are byte-for-byte unchanged (Mission 19 has its own pass since: mission19.test.ts)', () => {
+    expect(print((l) => slice(l, 19, 23).map((d) => d.dialogues))).toEqual({ en: '7b8f0e05', fr: 'eec22f5a', es: 'aa25a06d' });
   });
   it('the intro cards and titles of Missions 20–23 are unchanged (Mission 19\'s intro was corrected — see its own test)', () => {
     expect(print((l) => slice(l, 19, 23).map((d) => [d.day, d.title, d.steps[0]]))).toEqual({ en: 'b59d67b6', fr: 'b59d67b6', es: 'b59d67b6' });
@@ -96,8 +96,7 @@ describe('scope: only the Practice of Missions 19–24 changed', () => {
     const d = (l: Lang, n: number): BootcampDayContent => beforeCueFreeze(MISSIONS_BY_LANG[l]![BOOTCAMP_PLAN[n - 1]!.day]!, l);
     // Missions 20, 21 and 23, whole (Mission 24 since its "should" card: tested below).
     expect(print((l) => [20, 21, 23].map((n) => d(l, n)))).toEqual({ en: '13fc5213', fr: 'f573dc14', es: '26e70bd0' });
-    // Mission 19 apart from its intro card; Mission 22 apart from the removed builder and the shortened speed chain.
-    expect(print((l) => [d(l, 19).items, d(l, 19).dialogues, d(l, 19).steps.filter((s) => s.kind !== 'talk')])).toEqual({ en: 'f31e051c', fr: '4daed3c6', es: 'b9009e74' });
+    // Mission 22 apart from the removed builder and the shortened speed chain (Mission 19 has its own pass since).
     // Mission 22: with the proof card after the speed chain put back to its approved wording (it was
     // reworded to match the four decisions), everything else hashes to the approved build.
     const approvedCard = { he: 'מנה שגויה, חיוב כפול, מזגן, חדר רועש — אמרת מה הבעיה, ביקשת פתרון, וקיבלת אותו. בנימוס.', en: 'A wrong dish, a double charge, the AC, a noisy room — you said what was wrong, asked for a fix, and got one. Politely.' };
@@ -109,19 +108,12 @@ describe('scope: only the Practice of Missions 19–24 changed', () => {
     };
     expect(print(m22)).toEqual({ en: '0f2900a2', fr: 'b026802a', es: 'c2c94737' });
   });
-  it('sentences: nothing was deleted or reworded; exactly ONE id was added — the answer to "Single or return?"', () => {
-    // Without the new sentence, the sentence lists of 19–23 hash to what they were.
-    expect(print((l) => slice(l, 18, 23).map((d) => d.items.filter((i) => strip(i.id) !== 'phrase.trans.single')))).toEqual({ en: '14b156dc', fr: '7b380b48', es: '6ff0d873' });
-    for (const lang of LANGS) {
-      const d = mission(19, lang);
-      const said = Object.values(d.dialogues)[0]!.nodes.find((n) => n.id === 'c2')!.choices![0]!.en;
-      expect(text(d, 'phrase.trans.single'), lang).toBe(said); // it IS the line the conversation already uses
-    }
-    expect(text(mission(19), 'phrase.trans.single')).toBe('Single, please.');
+  it('sentences of Missions 20–23: nothing was deleted or reworded (Mission 19 has its own pass since: mission19.test.ts)', () => {
+    expect(print((l) => slice(l, 19, 23).map((d) => d.items))).toEqual({ en: '159fd3fd', fr: '1e15a861', es: '92fa5a6c' });
   });
   it('nothing was retired in this pass: the archive still holds the same seven sentences (plus those the later Mission 03, 05 and 06 passes retired)', () => {
-    for (const lang of LANGS) expect(RETIRED_SENTENCES[lang].filter((r) => !M15_PASS_RETIRED.includes(r.id.slice(3)) && r.retiredFrom !== 'coffee-shop' && r.retiredFrom !== 'directions' && r.retiredFrom !== 'airport-border' && r.retiredFrom !== 'taxi' && r.retiredFrom !== 'shopping' && r.retiredFrom !== 'hobbies-free-time' && !['reply.super.over-there', 'reply.super.sold-out'].includes(r.id.slice(3)) && !['reply.hotel.sign-here', 'reply.hotel.second-floor'].includes(r.id.slice(3))), lang).toHaveLength(7);
-    expect(RETIRED_SENTENCES.en.some((r) => /trans\.|past\.|future\.|fix\.|opin\./.test(r.id))).toBe(false);
+    for (const lang of LANGS) expect(RETIRED_SENTENCES[lang].filter((r) => !M15_PASS_RETIRED.includes(r.id.slice(3)) && r.retiredFrom !== 'coffee-shop' && r.retiredFrom !== 'directions' && r.retiredFrom !== 'airport-border' && r.retiredFrom !== 'taxi' && r.retiredFrom !== 'shopping' && r.retiredFrom !== 'hobbies-free-time' && r.retiredFrom !== 'public-transport' && !['reply.super.over-there', 'reply.super.sold-out'].includes(r.id.slice(3)) && !['reply.hotel.sign-here', 'reply.hotel.second-floor'].includes(r.id.slice(3))), lang).toHaveLength(7);
+    expect(RETIRED_SENTENCES.en.some((r) => r.retiredFrom !== 'public-transport' && /trans\.|past\.|future\.|fix\.|opin\./.test(r.id))).toBe(false); // (the Mission 19 pass archived four: mission19.test.ts)
   });
   it('mission order, ids and registry keys are unchanged', () => {
     expect(BOOTCAMP_PLAN.slice(18, 24).map((m) => `${m.id}:${m.day}`)).toEqual(['public-transport:18', 'past-events:34', 'future-plans:35', 'fixing-problems:24', 'opinions-reactions:36', 'city-day-checkpoint:23']);
@@ -187,8 +179,8 @@ describe('all three languages get the same practice, each in its own words', () 
       expect(said(n, 'es').filter((w) => ['usted'].includes(w)), `es M${n}`).toEqual([]);
     }
   });
-  it('the closing review is selective: at most 12 cards, everything taught is in it, nothing twice', () => {
-    for (let n = 19; n <= 23; n++) {
+  it('the closing review is selective: at most 12 cards, everything taught is in it, nothing twice (Mission 19 has no review deck since its own pass)', () => {
+    for (let n = 20; n <= 23; n++) {
       const day = mission(n);
       const review = reviewed(day);
       expect(review.length, `M${n}`).toBeLessThanOrEqual(12);
@@ -199,20 +191,20 @@ describe('all three languages get the same practice, each in its own words', () 
   });
   it('no meaning quiz is left: every line that was tested twice is now drilled once and then USED', () => {
     for (let n = 19; n <= 23; n++) for (const lang of LANGS) expect(stepsOf(mission(n, lang), 'quiz'), `${lang} M${n}`).toHaveLength(0);
+    // (Mission 19 has its own pass since — no listening drill: its staff lines are cards and boards, mission19.test.ts.)
     // The lines that used to be re-tested are now prompts the learner answers.
     const prompts = (n: number): string[] => stepsOf(mission(n), 'quickReply').flatMap((s) => s.rounds.map((r) => strip(r.promptItemId) || r.npc?.en || ''));
-    expect(prompts(19)).toContain('reply.trans.single-return');
     expect(prompts(20)).toContain('reply.past.where-did-you-stay');
     expect(prompts(21)).toContain('reply.future.how-long');
     expect(prompts(22)).toContain('reply.fix.refund-now');
     expect(prompts(23)).toContain('reply.opin.why');
     // …and each is in the listening drill exactly once.
-    for (const [n, id] of [[19, 'reply.trans.single-return'], [20, 'reply.past.where-did-you-stay'], [21, 'reply.future.how-long'], [22, 'reply.fix.refund-now'], [23, 'reply.opin.why']] as const) {
+    for (const [n, id] of [[20, 'reply.past.where-did-you-stay'], [21, 'reply.future.how-long'], [22, 'reply.fix.refund-now'], [23, 'reply.opin.why']] as const) {
       expect(stepsOf(mission(n), 'replies')[0]!.replyIds.map(strip).filter((x) => x === id), `M${n}`).toHaveLength(1);
     }
   });
-  it('every teaching mission ends on a chain at natural speed made ONLY of its own conversation\'s lines', () => {
-    for (let n = 19; n <= 23; n++) for (const lang of LANGS) {
+  it('every teaching mission ends on a chain at natural speed made ONLY of its own conversation\'s lines (Mission 19\'s no-help run: mission19.test.ts)', () => {
+    for (let n = 20; n <= 23; n++) for (const lang of LANGS) {
       const day = mission(n, lang);
       const speed = rush(day);
       expect(speed.label, `${lang} M${n}`).toBeUndefined();
@@ -228,79 +220,6 @@ describe('all three languages get the same practice, each in its own words', () 
       const copy = JSON.stringify(mission(n).steps.filter((s) => s.kind !== 'tool' && s.kind !== 'talk').map((s) => ('label' in s ? s.label : s.kind === 'receipt' ? s.text : s.kind === 'swap' ? s.rounds.map((r) => r.cue) : s.kind === 'quickReply' ? s.rounds.map((r) => r.situation) : null)));
       expect(copy, `M${n}`).not.toMatch(/\b(verb|noun|tense|past simple|future tense|conjugat|adjective|adverb|grammar)\b|פועל|דקדוק|זמן עבר|זמן עתיד|שם תואר/i);
     }
-  });
-});
-
-/* ── Mission 19 — Public Transport ───────────────────────────────────────────────────────────── */
-
-describe('Mission 19 — Public Transport', () => {
-  const day = mission(19);
-  it('flow: learn → recognize → station board → at the station → any destination → conversation → at speed → the fast correction', () => {
-    expect(kinds(day)).toEqual(['talk', 'tool', 'tool', 'tool', 'tool', 'replies', 'receipt', 'visualMatch', 'quickReply', 'swap', 'dialogue', 'receipt', 'swipe', 'quickReply:speed', 'receipt', 'ambush:recovery', 'receipt', 'summary']);
-  });
-  it('the intro promises what the mission trains — numbers by ear and one fast correction, not announcements', () => {
-    const intro = day.steps[0]!;
-    const said = intro.kind === 'talk' ? intro.body.map((b) => `${b.en} ${b.he}`).join(' ') : '';
-    expect(said).toMatch(/Ticket, platform, direction, the right stop/);
-    expect(said).toMatch(/the platform number, how many stops, how often it leaves — and one fast correction at the end/);
-    expect(said).not.toMatch(/announcement|הכרז/i);
-    for (const lang of ['fr', 'es'] as const) expect(mission(19, lang).steps[0], lang).toEqual(intro); // app-language copy, same in every language
-    // No proof card claims an announcement either.
-    expect(JSON.stringify(stepsOf(day, 'receipt'))).not.toMatch(/announcement|הכרז|הודעת/i);
-  });
-  it('station listening: platform, stops, frequency — by ear, with numbers already known', () => {
-    const board = stepsOf(day, 'visualMatch')[0]!;
-    expect(board.tiles.map((t) => `${t.emoji}${t.label}`)).toEqual(['🚉2', '🚉3', '🛑2', '🛑3', '⏱️5', '⏱️10']);
-    expect(board.rounds.map((r) => [r.audio.en, r.correct])).toEqual([['Platform two.', 'p2'], ["It's three stops.", 's3'], ['Every ten minutes.', 'm10'], ['Platform three.', 'p3']]);
-    for (const lang of LANGS) expect(unknownIn(stepsOf(mission(19, lang), 'visualMatch')[0]!.rounds.map((r) => r.audio.en), new Set([...vocabulary(lang, 18), ...mission(19, lang).items.flatMap((i) => words(i.text))])), lang).toEqual([]);
-  });
-  it('ticket → single → platform → stop → the next one are all retrieved; "Single, please." finally can be', () => {
-    expect(mapOf(chats(day)[0]!)).toEqual([
-      ['Hello! Where are you headed?', ['phrase.trans.one-ticket']],
-      ['reply.trans.single-return', ['phrase.trans.single']],
-      ["That's three euros. It leaves every ten minutes.", ['phrase.trans.which-platform', 'phrase.recovery.thank-you']],
-      ["The train's right here. Hop on.", ['phrase.trans.does-stop', 'phrase.trans.next-one']],
-      ['situation', ['phrase.trans.next-one']],
-      ['reply.trans.wrong-way', ['phrase.trans.which-platform', 'phrase.recovery.repeat']],
-    ]);
-    const r = retrieved(day);
-    for (const id of ['phrase.trans.one-ticket', 'phrase.trans.single', 'phrase.trans.which-platform', 'phrase.trans.does-stop', 'phrase.trans.next-one']) expect(r.get(id) ?? 0, id).toBeGreaterThanOrEqual(2);
-  });
-  it('route flexibility: one ticket to three places the learner already has words for', () => {
-    expect(swapAll(day)[0]).toEqual(['One ticket to the centre, please.', 'One ticket to the museum, please.', 'One ticket to the airport, please.']);
-    expect(swapAll(mission(19, 'fr'))[0]).toEqual(['Un billet pour le centre, s’il vous plaît.', 'Un billet pour le musée, s’il vous plaît.', 'Un billet pour l’aéroport, s’il vous plaît.']);
-    expect(swapAll(mission(19, 'es'))[0]).toEqual(['Un billete para el centro, por favor.', 'Un billete para el museo, por favor.', 'Un billete para el aeropuerto, por favor.']);
-    for (const lang of LANGS) {
-      expect(swapAll(mission(19, lang))[0]![0], lang).toBe(text(mission(19, lang), 'phrase.trans.one-ticket'));
-      // The destinations are words from earlier missions or from this mission's own sentences and conversation.
-      const d = mission(19, lang);
-      const known = new Set([...vocabulary(lang, 18), ...d.items.flatMap((i) => words(i.text)), ...Object.values(d.dialogues).flatMap((dl) => dl.nodes.flatMap((x) => words(x.en)))]);
-      expect(unknownIn(swapAll(d).flat(), known), lang).toEqual([]);
-    }
-  });
-  it('es-ES: the ticket is a "billete" everywhere — there is no "boleto" in the Spanish runtime', () => {
-    const all = BOOTCAMP_PLAN.map((m) => JSON.stringify(MISSIONS_BY_LANG.es![m.day])).join(' ');
-    expect(all).not.toMatch(/boleto/i);
-    expect(JSON.stringify(mission(19, 'es'))).toMatch(/billete/);
-    expect([text(mission(19, 'es'), 'phrase.trans.which-platform'), text(mission(19, 'es'), 'reply.trans.three-stops')]).toEqual(['¿Qué andén?', 'Son tres paradas.']);
-  });
-  it('recovery: the final correction is fast and dense but made ONLY of known words — and asking again is the answer', () => {
-    for (const lang of LANGS) {
-      const d = mission(19, lang);
-      const [ambush] = stepsOf(d, 'ambush');
-      expect([ambush!.mode, strip(ambush!.correctItemId)], lang).toEqual(['recovery', 'phrase.recovery.repeat']);
-      // difficulty = pace, not vocabulary. KNOWN GAP (flagged, not hidden): French "celui(-là)" is met only in
-      // this mission's own optional branch ("…mais celui-là est bien, montez."), which the learner can skip — so
-      // since the optional-exposure rule it is not guaranteed. The answer here is "Can you repeat?" anyway.
-      expect(unknownIn([ambush!.npc.en], vocabulary(lang, 19)), lang).toEqual({ en: [], es: [], fr: ['celui'] }[lang]);
-      expect(words(ambush!.npc.en).length, lang).toBeGreaterThanOrEqual(18);
-    }
-    expect(JSON.stringify(day.steps)).not.toMatch(/delayed|replacement bus|stand C/); // the old untaught disruption is gone
-    // Recovery also counts inside the practice: being told you are going the wrong way.
-    expect(chats(day)[0]!.rounds[5]!.options.find((o) => isHelpToolId(o.itemId))!.correct).toBe(true);
-  });
-  it('final challenge: ticket → single → platform → stop', () => {
-    expect(mapOf(rush(day)).map(([, ok]) => ok)).toEqual([['phrase.trans.one-ticket'], ['phrase.trans.single'], ['phrase.trans.which-platform'], ['phrase.trans.does-stop']]);
   });
 });
 

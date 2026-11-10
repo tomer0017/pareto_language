@@ -1102,26 +1102,21 @@ _Reply-training drill:_ “Hi there! Can I help you find anything?” · “Of c
 - **One ticket to the centre, please.** · כרטיס אחד למרכז, בבקשה. — _התבנית: One ticket to ___ — קונה כרטיס לכל יעד._
 - **Which platform?** · איזה רציף? — _שתי מילים שמונעות עלייה לרכבת הלא נכונה._
 - **Does this stop at the museum?** · זה עוצר במוזיאון? — _התבנית: Does this stop at ___? — מוודאת שאתה יורד נכון._
-- **When's the next one?** · מתי הבא?
 - **Single, please.** · הלוך, בבקשה.
 
 ### Expected replies (you hear)
+- **Hello! Where are you headed?** · שלום! לאן אתה נוסע?
 - **Single or return?** · הלוך או הלוך-חזור?
-- **Platform two.** · רציף שתיים.
-- **Every ten minutes.** · כל עשר דקות.
+- **That's three euros. It leaves every ten minutes.** · זה שלושה יורו. יוצא כל עשר דקות.
+- **Platform two. Straight ahead.** · רציף שתיים. ישר קדימה.
+- **The train's right here. Hop on.** · הרכבת ממש כאן. עלה.
+- **Yes — it's three stops. I'll tell you when.** · כן — זה שלוש תחנות. אני אגיד לך מתי.
+- **Here we are — your stop is next. Enjoy the museum!** · הגענו — התחנה שלך הבאה. תיהנה במוזיאון!
 - **It's three stops.** · זה שלוש תחנות.
 - **You're going the wrong way.** · אתה בכיוון הלא נכון.
-- **Your stop is next.** · התחנה שלך הבאה.
-
-_Reply-training drill:_ “Single or return?” · “Platform two.” · “Every ten minutes.” · “It's three stops.”
 
 ### Recovery tools reused
-`Can you repeat that?` · `Please speak slowly.` · `Thank you!`
-
-### Cold open (ambush)
-- 🧑 (fast) “You're going the wrong way. Not this one — platform two. The next one is in ten minutes, and your stop is three stops.” · אתה בכיוון הלא נכון. לא זה — רציף שתיים. הבא בעוד עשר דקות, והתחנה שלך בעוד שלוש תחנות.
-  - ✅ best move: **Can you repeat that?** · אפשר לחזור על זה?
-  - ✗ distractor: Does this stop at the museum?
+`Thank you!`
 
 ### Dialogue: `transport` — happy path
 - **🧑 Them:** “Hello! Where are you headed?” · שלום! לאן אתה נוסע?
@@ -1137,6 +1132,14 @@ _Reply-training drill:_ “Single or return?” · “Platform two.” · “Eve
 - **🧑 Them:** “Yes — it's three stops. I'll tell you when.” · כן — זה שלוש תחנות. אני אגיד לך מתי.
 - **🫵 You:** “Thank you!” · תודה!
 - **🧑 Them:** “Here we are — your stop is next. Enjoy the museum!” · הגענו — התחנה שלך הבאה. תיהנה במוזיאון!
+
+#### Wrong / recovery branches
+- ⚠︎ less useful: 🫵 “Does this stop at the museum?” → 🧑 “Hello! Where are you headed?” · שלום! לאן אתה נוסע?
+- ⚠︎ less useful: 🫵 “Which platform?” → 🧑 “Single or return?” · הלוך או הלוך-חזור?
+- ⚠︎ less useful: 🫵 “Single, please.” → 🧑 “That's three euros. It leaves every ten minutes.” · זה שלושה יורו. יוצא כל עשר דקות.
+- ⚠︎ less useful: 🫵 “One ticket to the centre, please.” → 🧑 “Platform two. Straight ahead.” · רציף שתיים. ישר קדימה.
+- ⚠︎ less useful: 🫵 “Which platform?” → 🧑 “The train's right here. Hop on.” · הרכבת ממש כאן. עלה.
+- ⚠︎ less useful: 🫵 “Single, please.” → 🧑 “Yes — it's three stops. I'll tell you when.” · כן — זה שלוש תחנות. אני אגיד לך מתי.
 
 ### Review status
 - 🤖 AI-drafted (English + Hebrew) — **pending human / native-Hebrew review**

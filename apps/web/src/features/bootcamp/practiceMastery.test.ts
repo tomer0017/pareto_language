@@ -106,8 +106,8 @@ describe('scope: only Missions 25–30 changed', () => {
   const print = (f: (lang: Lang) => unknown): Record<Lang, string> => ({ en: fnv(JSON.stringify(f('en'))), fr: fnv(JSON.stringify(f('fr'))), es: fnv(JSON.stringify(f('es'))) });
 
   it('Missions 08–24 are byte-for-byte unchanged, in every language (Missions 01–07 have their own passes — mission01.test.ts … mission07.test.ts)', () => {
-    // Missions 19–23 (Missions 10–18 have their own passes; Mission 24 its "should" card — practiceCity.test.ts)
-    expect(print((l) => slice(l, 18, 23))).toEqual({ en: 'c041b1a2', fr: 'eac0ce45', es: 'c337ad61' });
+    // Missions 20–23 (Missions 10–19 have their own passes; Mission 24 its "should" card — practiceCity.test.ts)
+    expect(print((l) => slice(l, 19, 23))).toEqual({ en: '6ebda410', fr: '43feb7b5', es: '1490cc85' });
   });
   it('the conversations of Missions 25–27 are byte-for-byte unchanged', () => {
     expect(print((l) => slice(l, 24, 27).map((d) => d.dialogues))).toEqual({ en: '11c6f921', fr: 'e9d141b0', es: '8531d080' });
@@ -131,7 +131,7 @@ describe('scope: only Missions 25–30 changed', () => {
   });
   it('archived sentences stay archived: the archive still holds the same seven (plus the Mission 03 pass\'s three), none of them back in a mission', () => {
     for (const lang of LANGS) {
-      expect(RETIRED_SENTENCES[lang].filter((r) => !M15_PASS_RETIRED.includes(r.id.slice(3)) && r.retiredFrom !== 'coffee-shop' && r.retiredFrom !== 'directions' && r.retiredFrom !== 'airport-border' && r.retiredFrom !== 'taxi' && r.retiredFrom !== 'shopping' && r.retiredFrom !== 'hobbies-free-time' && !['reply.super.over-there', 'reply.super.sold-out'].includes(r.id.slice(3)) && !['reply.hotel.sign-here', 'reply.hotel.second-floor'].includes(r.id.slice(3))), lang).toHaveLength(7);
+      expect(RETIRED_SENTENCES[lang].filter((r) => !M15_PASS_RETIRED.includes(r.id.slice(3)) && r.retiredFrom !== 'coffee-shop' && r.retiredFrom !== 'directions' && r.retiredFrom !== 'airport-border' && r.retiredFrom !== 'taxi' && r.retiredFrom !== 'public-transport' && r.retiredFrom !== 'shopping' && r.retiredFrom !== 'hobbies-free-time' && !['reply.super.over-there', 'reply.super.sold-out'].includes(r.id.slice(3)) && !['reply.hotel.sign-here', 'reply.hotel.second-floor'].includes(r.id.slice(3))), lang).toHaveLength(7);
       expect(RETIRED_SENTENCES[lang].filter((r) => r.retiredFrom === 'airport-border').map((r) => r.id.slice(3)), lang).toEqual(['reply.border.passport-please']);
       expect(RETIRED_SENTENCES[lang].filter((r) => r.retiredFrom === 'taxi').map((r) => r.id.slice(3)), lang).toEqual(['reply.taxi.first-visit']);
       expect(RETIRED_SENTENCES[lang].filter((r) => r.retiredFrom === 'shopping').map((r) => r.id.slice(3)), lang).toEqual(['reply.shop.out-of-stock', 'reply.shop.on-sale', 'reply.shop.anything-else']);

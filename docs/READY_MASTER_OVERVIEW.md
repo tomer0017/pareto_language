@@ -730,3 +730,34 @@ card — Mission 02 (its market conversation: five, two, eight) never taught it;
 have bread?" (never taught) left the checkpoint: "Where is the milk?" is the wrong option at the bag question;
 the sentence stays an untaught Mission 17 item. New spec file `core/everydayDay.ts`. Tests: `mission18.test.ts`
 (52); Missions 01–17 and 19–30 byte-for-byte unchanged (the old "18–30" pins now pin 19–30).
+
+**Mission 19 — Public Transport: Catch Your Train (registry key 18), 2026-11-10.** One train journey, not a
+transport vocabulary lesson: 20 interactions (8 teaching · 4 no help · 8 final) plus the conversation, run ONCE
+(supported). The locked dialogue is unchanged word for word (transcript fingerprint identical); the tree changed
+on purpose: the "When's the next one?" and repeat / slowly branches are gone, "Thank you!" no longer skips the
+platform question, and every turn is a real decision (a line from another moment, re-asked slowly). Journey
+(`practiceTransport.ts`, shared by EN / ES / FR; the day files keep the sentences and the dialogue): briefing
+(the centre, the museum — nothing the station will say) → "Where are you headed?" + "One ticket to the centre,
+please." (one whole line, one retrieval) → "Single or return?" + "Single, please." (a ➡️ one-way / ↔️ there-and-back
+board, then the answer) → "€3 · every 10 min" (ONE combined fare board) → "Which platform?" → "Platform two.
+Straight ahead." (the Platform Finder: six ordered tiles, platforms 1–3 × ⬆️ / ⬅️) → "Hop on" + "Does this stop at
+the museum?" → "three stops" (the stops board, 🛑 1 · 2 · 3) → "your stop is next" (card only) → the conversation
+→ no help (the four tools) → video (none recorded: safe skip) → the final ride (4 said · 4 understood: ticket,
+single, fare, platform, find it, museum check, three stops, get off) → 🚆 RIDE COMPLETE. The **🚆 Your ride**
+travel ticket is the two-column board (Destination · Ticket · Price · Every ‖ Platform · Museum · Get off), "?"
+until a line has said it, plus a 🧭 route strip (Start → 1 → 2 → 🏛️) once the stop count is heard; reveal tests
+pin that no fact appears before its line, in teaching and again in the final. Serialisable `rideState`. Prior
+audit (verified, per language): 2 / 3 / 10 are prior everywhere (Missions 02, 17, 08 — "three" only through
+Mission 17's aisle), "straight ahead / todo recto / tout droit" is prior (Mission 05), "Thank you!", "Hello" and
+"the centre" are prior; ticket, platform, single, return, every, train and museum are not — and "airport" is not,
+so there is no transfer round. French "prochain" is not prior (Mission 06 said "suivant"). "Thank you!" is the
+toolkit's: no card, no drill. No transport deck, no other ticket type, no money drill, no Flex, no builder, no
+grammar. Archived: "When's the next one?", "Platform two.", "Every ten minutes.", "Your stop is next." (the whole
+staff lines replace the fragments). KNOWN GAP (flagged, not fixed — Missions 20–30 untouched): "It's three
+stops." and "You're going the wrong way." stay untaught Mission 19 sentences because the City checkpoint
+(Mission 24) reuses them; the old Mission 19 listening drill that taught "wrong way" is gone, so Mission 24's
+speed correction now rests on a line no earlier mission teaches as guaranteed learning. Removed:
+`practiceCity.ts` (the old Mission 19 flow). Coverage: `mission19Coverage.ts`, registered as prior for later
+missions. Artwork: 6 slots + 1 prop, emoji PLACEHOLDERS — VISUAL PRODUCTION REQUIRED (Astra pass):
+`MISSION19_ASSET_MANIFEST.md`. Tests: `mission19.test.ts` (66); Missions 01–18 and 20–30 byte-for-byte unchanged
+(the old "19–30" pins now pin 20–30).

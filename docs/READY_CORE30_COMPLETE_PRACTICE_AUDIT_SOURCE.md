@@ -59,8 +59,8 @@ Not present in the runtime (so not exported): free sentence construction, typing
 Not a mission. Eight phrases shared by all missions; a mission bundles the ones it uses. Selecting one in a dialogue is always accepted.
 
 - `phrase.recovery.dont-understand` — EN "Sorry, I don't understand." · FR "Désolé, je ne comprends pas." · ES "Perdón, no entiendo." · HE "סליחה, אני לא מבין." — help tool — bundled in missions: 14
-- `phrase.recovery.repeat` — EN "Can you repeat that?" · FR "Vous pouvez répéter ?" · ES "¿Puede repetir, por favor?" · HE "אפשר לחזור על זה?" — help tool — bundled in missions: 01, 03, 05, 06, 08, 14, 19, 20, 23, 24, 26, 28, 29, 30
-- `phrase.recovery.slowly` — EN "Please speak slowly." · FR "Parlez lentement, s’il vous plaît." · ES "Más despacio, por favor." · HE "דבר לאט, בבקשה." — help tool — bundled in missions: 01, 02, 03, 04, 06, 07, 09, 14, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- `phrase.recovery.repeat` — EN "Can you repeat that?" · FR "Vous pouvez répéter ?" · ES "¿Puede repetir, por favor?" · HE "אפשר לחזור על זה?" — help tool — bundled in missions: 01, 03, 05, 06, 08, 14, 20, 23, 24, 26, 28, 29, 30
+- `phrase.recovery.slowly` — EN "Please speak slowly." · FR "Parlez lentement, s’il vous plaît." · ES "Más despacio, por favor." · HE "דבר לאט, בבקשה." — help tool — bundled in missions: 01, 02, 03, 04, 06, 07, 09, 14, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - `phrase.recovery.show-me` — EN "Can you show me?" · FR "Vous pouvez me montrer ?" · ES "¿Me lo puede mostrar?" · HE "אתה יכול להראות לי?" — help tool — bundled in missions: 04, 07
 - `phrase.recovery.one-moment` — EN "One moment, please." · FR "Un instant, s’il vous plaît." · ES "Un momento, por favor." · HE "רגע אחד, בבקשה." — help tool — bundled in missions: 02, 03, 06, 08, 14
 - `phrase.recovery.what-mean` — EN "What does that mean?" · FR "Qu’est-ce que ça veut dire ?" · ES "¿Qué significa eso?" · HE "מה זה אומר?" — help tool — bundled in missions: 25
@@ -300,7 +300,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 14, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: sentence review (step 17); cold-open correct option (step 20); dialogue choice meeting-host/c1 (accepted)
 
 ### Sentence: `phrase.recovery.slowly`
@@ -311,7 +311,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: dialogue choice meeting-host/c3 (accepted)
 
 ## Expected replies / listening items
@@ -1271,7 +1271,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: sentence review (step 17); dialogue choice market-stall/c2 (accepted)
 
 ### Sentence: `phrase.recovery.one-moment`
@@ -2525,7 +2525,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 14, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: sentence review (step 20); dialogue choice breakfast-order/c2 (accepted)
 
 ### Sentence: `phrase.recovery.slowly`
@@ -2536,7 +2536,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: dialogue choice breakfast-order/c6 (accepted)
 
 ### Sentence: `phrase.recovery.thank-you`
@@ -3956,7 +3956,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: dialogue choice coffee-with-a-friend/c4 (accepted)
 
 ## Expected replies / listening items
@@ -5122,7 +5122,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 14, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: dialogue choice lost-in-town/c1 (accepted)
 
 ### Sentence: `phrase.recovery.thank-you`
@@ -6086,7 +6086,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 14, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: dialogue choice border-control/c2 (accepted)
 
 ### Sentence: `phrase.recovery.slowly`
@@ -6097,7 +6097,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: dialogue choice border-control/c4 (accepted)
 
 ### Sentence: `phrase.recovery.one-moment`
@@ -7339,7 +7339,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: dialogue choice taxi-ride/c3 (accepted)
 
 ### Sentence: `phrase.recovery.show-me`
@@ -8417,7 +8417,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 14, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: dialogue choice hotel-checkin/c1 (accepted)
 
 ### Sentence: `phrase.recovery.one-moment`
@@ -9387,7 +9387,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: dialogue choice clothing-shop/c2 (accepted)
 
 ## Expected replies / listening items
@@ -14288,7 +14288,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 14, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: nothing (listed only)
 
 ### Sentence: `phrase.recovery.slowly`
@@ -14299,7 +14299,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: nothing (listed only)
 
 ### Sentence: `phrase.recovery.thank-you`
@@ -18302,7 +18302,7 @@ Every learner sentence of this mission is a line in a scene.
 - Phase: 4 — City & Conversation / עיר ושיחה 🏙️
 - Source runtime file(s): `apps/web/src/features/bootcamp/day18.ts` · `apps/web/src/features/bootcamp/fr/day18.ts` · `apps/web/src/features/bootcamp/es/day18.ts`
 - Video: found by convention, never written into mission content — EN `videos/en/en_19.mp4` · FR `videos/fr/fr_19.mp4` · ES `videos/es/es_19.mp4`. Played only where that file exists (inventory: `docs/CORE30_FINAL_VIDEO_ACTION_MAP.md`).
-- Video steps inside the Practice flow: no
+- Video steps inside the Practice flow: yes (see flow)
 
 ## Learning goal / intro screen
 
@@ -18322,38 +18322,126 @@ Mission card (plan metadata, shown on Home / Path / mission overview):
 
 Intro screen (first Practice step; identical in the English, French and Spanish missions unless flagged):
 
-- Icon: 🚇
+- Icon: 🚆
 - Title: "Mission 19: Public Transport" / "משימה 19: תחבורה ציבורית"
-- Text 1: "The city moves for you — cheaply. Ticket, platform, direction, the right stop." / "העיר זזה בשבילך — בזול. כרטיס, רציף, כיוון, והתחנה הנכונה."
-- Text 2: "Half of this mission is listening: the platform number, how many stops, how often it leaves — and one fast correction at the end." / "חצי מהמשימה הזאת היא האזנה: מספר הרציף, כמה תחנות, כל כמה דקות — ותיקון מהיר אחד בסוף."
+- Text 1: "You are going to the centre and want to reach the museum." / "אתה נוסע למרכז ורוצה להגיע למוזיאון."
+- Text 2: "Buy a ticket, find the platform and make sure you get off at the right place." / "קנה כרטיס, מצא את הרציף וודא שאתה יורד במקום הנכון."
 - Button: "Step up to the ticket desk" / "לגשת לדלפק הכרטיסים"
 
 ## Current Practice flow
 
 1. `talk` — intro screen — "Mission 19: Public Transport"
-2. `tool` — key sentence (listen → reveal → say aloud) — `phrase.trans.one-ticket` “One ticket to the centre, please.” · label "Buy a ticket" / "לקנות כרטיס" (1/4)
-3. `tool` — key sentence (listen → reveal → say aloud) — `phrase.trans.which-platform` “Which platform?” · label "Find the platform" / "לאתר רציף" (2/4)
-4. `tool` — key sentence (listen → reveal → say aloud) — `phrase.trans.does-stop` “Does this stop at the museum?” · label "Confirm the stop" / "לוודא יעד" (3/4)
-5. `tool` — key sentence (listen → reveal → say aloud) — `phrase.trans.next-one` “When's the next one?” · label "Ask about the next one" / "לשאול על הבא" (4/4)
-6. `replies` — expected replies (listening drill) — after `phrase.trans.one-ticket`: 4 replies
-7. `receipt` — receipt (proof card) — "You recognize the booth and platform answers — single/return, platform number, frequency." / "אתה מזהה את תשובות הדלפק והרציף — הלוך/חזור, מספר רציף, תדירות."
-8. `visualMatch` — visual match (hear → tap the tile) — 4 round(s)
-9. `quickReply` — quick reply (hear → pick your response) — 6 round(s)
-10. `swap` — swap it (one frame, several endings) — 3 round(s)
-11. `dialogue` — dialogue (choose your line) — scene `transport`
-12. `receipt` — receipt (proof card) — "You bought a ticket, found the platform, and confirmed the train stops at your destination." / "קנית כרטיס, מצאת רציף, ווידאת שהרכבת עוצרת ביעד שלך."
-13. `swipe` — sentence review — 12 sentences
-14. `quickReply` — quick reply (hear → pick your response) — 4 round(s) · speed challenge
-15. `receipt` — receipt (proof card) — "Ticket, platform and stop — at the pace of a real station." / "כרטיס, רציף ותחנה — בקצב של תחנה אמיתית."
-16. `ambush` — cold open (fast line) — mode recovery · correct `phrase.recovery.repeat`, wrong `phrase.trans.does-stop`
-17. `receipt` — receipt (proof card) — "A fast correction on the platform — and you asked them to repeat instead of boarding the wrong train." / "תיקון מהיר על הרציף — וביקשת שיחזרו במקום לעלות לרכבת הלא נכונה."
-18. `summary` — victory screen
+2. `prime` — before-we-speak (word intro) — 2 words → builds ``
+3. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+4. `prime` — before-we-speak (word intro) — 2 words → builds ``
+5. `visualMatch` — visual match (hear → tap the tile) — 1 round(s)
+6. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+7. `prime` — before-we-speak (word intro) — 1 words → builds ``
+8. `visualMatch` — visual match (hear → tap the tile) — 1 round(s)
+9. `prime` — before-we-speak (word intro) — 1 words → builds ``
+10. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+11. `prime` — before-we-speak (word intro) — 1 words → builds ``
+12. `visualMatch` — visual match (hear → tap the tile) — 1 round(s)
+13. `prime` — before-we-speak (word intro) — 2 words → builds ``
+14. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+15. `prime` — before-we-speak (word intro) — 1 words → builds ``
+16. `visualMatch` — visual match (hear → tap the tile) — 1 round(s)
+17. `prime` — before-we-speak (word intro) — 1 words → builds ``
+18. `receipt` — receipt (proof card) — "🚆 Your ride ¦ 🧭 🚉 Start → 🛑 1 → 🛑 2 ● → 🏛️ Next: Museum ¦ 🎫 Ticket: Destination: Centre / Ticket: Single ➡️ / Price: €3 / Every: 10 min ‖ 🚆 On board: Platform: 2 ⬆️ straight / Museum: 3 stops / Get off: Next stop ¦ Ticket, platform, destination — and you know when to get off." / "🚆 הנסיעה שלך ¦ 🧭 🚉 יציאה → 🛑 1 → 🛑 2 ● → 🏛️ הבאה: מוזיאון ¦ 🎫 כרטיס: יעד: מרכז / סוג: הלוך ➡️ / מחיר: €3 / תדירות: כל 10 דק׳ ‖ 🚆 ברכבת: רציף: 2 ⬆️ ישר / מוזיאון: 3 תחנות / ירידה: בתחנה הבאה ¦ כרטיס, רציף, יעד — ואתה יודע מתי לרדת."
+19. `dialogue` — dialogue (choose your line) — scene `transport`
+20. `receipt` — receipt (proof card) — "The whole ride — from the desk to your stop, on your own." / "כל הנסיעה — מהדלפק ועד התחנה שלך, לבד."
+21. `quickReply` — quick reply (hear → pick your response) — 4 round(s) · speed challenge
+22. `receipt` — receipt (proof card) — "No help — ticket, single, platform and destination." / "בלי עזרה — כרטיס, הלוך, רציף ויעד."
+23. `video` — video — mode again
+24. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+25. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+26. `visualMatch` — visual match (hear → tap the tile) — 1 round(s)
+27. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+28. `visualMatch` — visual match (hear → tap the tile) — 1 round(s)
+29. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+30. `visualMatch` — visual match (hear → tap the tile) — 1 round(s)
+31. `visualMatch` — visual match (hear → tap the tile) — 1 round(s)
+32. `receipt` — receipt (proof card) — "🚆 RIDE COMPLETE ¦ 🎫 Ticket: Destination: Centre / Ticket: Single ➡️ / Price: €3 / Every: 10 min ‖ 🚆 On board: Platform: 2 ⬆️ straight / Museum: 3 stops / Got off: ✅ the right stop ¦ You bought the ticket, found the platform, checked the train and got off at the right stop." / "🚆 הנסיעה הושלמה ¦ 🎫 כרטיס: יעד: מרכז / סוג: הלוך ➡️ / מחיר: €3 / תדירות: כל 10 דק׳ ‖ 🚆 ברכבת: רציף: 2 ⬆️ ישר / מוזיאון: 3 תחנות / ירידה: ✅ בתחנה הנכונה ¦ קנית כרטיס, מצאת את הרציף, וידאת את היעד וירדת בתחנה הנכונה."
+33. `summary` — victory screen
 
 Step sequence identical in EN / FR / ES: yes.
 
 ## Before we speak / word intro
 
-No vocabulary pre-step.
+Step 2. Label: "Buy a ticket" / "לקנות כרטיס". Intro: "🚆 Your ride ¦ 🎫 Ticket: Destination: Centre / Ticket: ? / Price: ? / Every: ? ‖ 🚉 Ride: Platform: ? / Museum: ? / Get off: ? ¦ At the desk they ask where to — and you buy a ticket. Tap to hear." / "🚆 הנסיעה שלך ¦ 🎫 כרטיס: יעד: מרכז / סוג: ? / מחיר: ? / תדירות: ? ‖ 🚉 נסיעה: רציף: ? / מוזיאון: ? / ירידה: ? ¦ בדלפק שואלים לאן — ואתה קונה כרטיס. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `trans.line.where` — EN "Hello! Where are you headed?" · FR "Bonjour ! Vous allez où ?" · ES "¡Hola! ¿A dónde va?" — meaning "שלום! לאן אתה נוסע?" / "Hello! Where are you headed?" — icon 🎫 — new
+2. `trans.line.ticket` — EN "One ticket to the centre, please." · FR "Un billet pour le centre, s’il vous plaît." · ES "Un billete para el centro, por favor." — meaning "כרטיס אחד למרכז, בבקשה. (כרטיס אחד ל___ — קונה כרטיס לכל יעד)" / "One ticket to the centre, please. (one ticket to ___ — buys a ticket to anywhere)" — icon 🎫 — new
+
+No build-sentence card.
+
+Step 4. Label: "Single or return" / "הלוך או הלוך-חזור". Intro: "🚆 Your ride ¦ 🎫 Ticket: Destination: Centre / Ticket: ? / Price: ? / Every: ? ‖ 🚉 Ride: Platform: ? / Museum: ? / Get off: ? ¦ The clerk asks which ticket. Tap to hear." / "🚆 הנסיעה שלך ¦ 🎫 כרטיס: יעד: מרכז / סוג: ? / מחיר: ? / תדירות: ? ‖ 🚉 נסיעה: רציף: ? / מוזיאון: ? / ירידה: ? ¦ הקופאי שואל איזה כרטיס. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `trans.line.type` — EN "Single or return?" · FR "Aller simple ou aller-retour ?" · ES "¿Solo ida o ida y vuelta?" — meaning "הלוך או הלוך-חזור? (➡️ הלוך: לכיוון אחד · ↔️ הלוך-חזור: לשם ובחזרה)" / "Single or return? (➡️ single: one way · ↔️ return: there and back)" — icon 🎟️ — new
+2. `trans.line.single` — EN "Single, please." · FR "Aller simple, s’il vous plaît." · ES "Solo ida, por favor." — meaning "הלוך, בבקשה. (➡️ רק לשם)" / "Single, please. (➡️ there only)" — icon 🎟️ — new
+
+No build-sentence card.
+
+Step 7. Label: "Price and frequency" / "מחיר ותדירות". Intro: "🚆 Your ride ¦ 🎫 Ticket: Destination: Centre / Ticket: Single ➡️ / Price: ? / Every: ? ‖ 🚉 Ride: Platform: ? / Museum: ? / Get off: ? ¦ Two facts in one line. Tap to hear." / "🚆 הנסיעה שלך ¦ 🎫 כרטיס: יעד: מרכז / סוג: הלוך ➡️ / מחיר: ? / תדירות: ? ‖ 🚉 נסיעה: רציף: ? / מוזיאון: ? / ירידה: ? ¦ שתי עובדות במשפט אחד. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `trans.line.fare` — EN "That's three euros. It leaves every ten minutes." · FR "Ça fait trois euros. Ça part toutes les dix minutes." · ES "Son tres euros. Sale cada diez minutos." — meaning "זה שלושה יורו. יוצא כל עשר דקות. (💶 €3 · 🕒 כל 10 דקות)" / "That's three euros. It leaves every ten minutes. (💶 €3 · 🕒 every 10 min)" — icon 🎫 — new
+
+No build-sentence card.
+
+Step 9. Label: "Which platform" / "איזה רציף". Intro: "🚆 Your ride ¦ 🎫 Ticket: Destination: Centre / Ticket: Single ➡️ / Price: €3 / Every: 10 min ‖ 🚉 Ride: Platform: ? / Museum: ? / Get off: ? ¦ One question before you board. Tap to hear." / "🚆 הנסיעה שלך ¦ 🎫 כרטיס: יעד: מרכז / סוג: הלוך ➡️ / מחיר: €3 / תדירות: כל 10 דק׳ ‖ 🚉 נסיעה: רציף: ? / מוזיאון: ? / ירידה: ? ¦ שאלה אחת לפני שעולים. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `trans.line.which` — EN "Which platform?" · FR "Quel quai ?" · ES "¿Qué andén?" — meaning "איזה רציף? (מאיפה הרכבת שלך יוצאת)" / "Which platform? (where your train leaves from)" — icon 🚉 — new
+
+No build-sentence card.
+
+Step 11. Label: "Find the platform" / "למצוא את הרציף". Intro: "🚆 Your ride ¦ 🎫 Ticket: Destination: Centre / Ticket: Single ➡️ / Price: €3 / Every: 10 min ‖ 🚉 Ride: Platform: ? / Museum: ? / Get off: ? ¦ Where is the platform? Tap to hear." / "🚆 הנסיעה שלך ¦ 🎫 כרטיס: יעד: מרכז / סוג: הלוך ➡️ / מחיר: €3 / תדירות: כל 10 דק׳ ‖ 🚉 נסיעה: רציף: ? / מוזיאון: ? / ירידה: ? ¦ איפה הרציף? הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `trans.line.platform` — EN "Platform two. Straight ahead." · FR "Quai numéro deux. Tout droit." · ES "Andén número dos. Todo recto." — meaning "רציף שתיים. ישר קדימה. (🚉 2 · ⬆️ ישר)" / "Platform two. Straight ahead. (🚉 2 · ⬆️ straight)" — icon 🚉 — new
+
+No build-sentence card.
+
+Step 13. Label: "Board and check" / "לעלות ולוודא". Intro: "🚆 Your ride ¦ 🎫 Ticket: Destination: Centre / Ticket: Single ➡️ / Price: €3 / Every: 10 min ‖ 🚉 Ride: Platform: 2 ⬆️ straight / Museum: ? / Get off: ? ¦ The train is here. Before the ride — check. Tap to hear." / "🚆 הנסיעה שלך ¦ 🎫 כרטיס: יעד: מרכז / סוג: הלוך ➡️ / מחיר: €3 / תדירות: כל 10 דק׳ ‖ 🚉 נסיעה: רציף: 2 ⬆️ ישר / מוזיאון: ? / ירידה: ? ¦ הרכבת כאן. לפני הנסיעה — לוודא. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `trans.line.hop` — EN "The train's right here. Hop on." · FR "Le train est juste là. Montez." · ES "El tren está justo ahí. Suba." — meaning "הרכבת ממש כאן. עלה. (הרכבת כאן ← עולים)" / "The train's right here. Hop on. (the train is here → get on)" — icon 🚆 — new
+2. `trans.line.stop` — EN "Does this stop at the museum?" · FR "Ça s’arrête au musée ?" · ES "¿Para en el museo?" — meaning "זה עוצר במוזיאון? (זה עוצר ב___? — בודקים שהרכבת מגיעה ליעד)" / "Does this stop at the museum? (does this stop at ___? — check the train reaches your stop)" — icon 🏛️ — new
+
+No build-sentence card.
+
+Step 15. Label: "How many stops" / "כמה תחנות". Intro: "🚆 Your ride ¦ 🎫 Ticket: Destination: Centre / Ticket: Single ➡️ / Price: €3 / Every: 10 min ‖ 🚆 On board: Platform: 2 ⬆️ straight / Museum: ? / Get off: ? ¦ How far is the museum? Tap to hear." / "🚆 הנסיעה שלך ¦ 🎫 כרטיס: יעד: מרכז / סוג: הלוך ➡️ / מחיר: €3 / תדירות: כל 10 דק׳ ‖ 🚆 ברכבת: רציף: 2 ⬆️ ישר / מוזיאון: ? / ירידה: ? ¦ כמה רחוק המוזיאון? הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `trans.line.stops` — EN "Yes — it's three stops. I'll tell you when." · FR "Oui — c’est à trois arrêts. Je vous dirai quand." · ES "Sí — son tres paradas. Le aviso cuándo." — meaning "כן — זה שלוש תחנות. אני אגיד לך מתי. (🏛️ בעוד 3 תחנות · יגידו לך)" / "Yes — it's three stops. I'll tell you when. (🏛️ 3 stops away · they'll tell you)" — icon 💺 — new
+
+No build-sentence card.
+
+Step 17. Label: "Your stop" / "התחנה שלך". Intro: "🚆 Your ride ¦ 🧭 🚉 Start ● → 🛑 1 → 🛑 2 → 🏛️ 3 · Museum ¦ 🎫 Ticket: Destination: Centre / Ticket: Single ➡️ / Price: €3 / Every: 10 min ‖ 🚆 On board: Platform: 2 ⬆️ straight / Museum: 3 stops / Get off: ? ¦ Nearly there. Tap to hear." / "🚆 הנסיעה שלך ¦ 🧭 🚉 יציאה ● → 🛑 1 → 🛑 2 → 🏛️ 3 · מוזיאון ¦ 🎫 כרטיס: יעד: מרכז / סוג: הלוך ➡️ / מחיר: €3 / תדירות: כל 10 דק׳ ‖ 🚆 ברכבת: רציף: 2 ⬆️ ישר / מוזיאון: 3 תחנות / ירידה: ? ¦ עוד מעט מגיעים. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `trans.line.next` — EN "Here we are — your stop is next. Enjoy the museum!" · FR "Nous voilà — votre arrêt est le prochain. Bonne visite du musée !" · ES "Ya llegamos — su parada es la siguiente. ¡Que disfrute del museo!" — meaning "הגענו — התחנה שלך הבאה. תיהנה במוזיאון! (🏛️ התחנה הבאה היא שלך)" / "Here we are — your stop is next. Enjoy the museum! (🏛️ the next stop is yours)" — icon 🏛️ — new
+
+No build-sentence card.
 
 ## Every sentence in this mission
 
@@ -18368,7 +18456,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "Template: One ticket to ___ — buys a ticket to anywhere." / "התבנית: One ticket to ___ — קונה כרטיס לכל יעד."
 - Used in missions: 19, 24, 28, 30
-- Exercised here as: key sentence (step 2); "you said" lead-in of the expected-replies drill (step 6); quick-reply response (step 9, round 1, accepted); quick-reply response (step 9, round 2, wrong option); quick-reply response (step 9, round 3, wrong option); quick-reply response (step 9, round 4, wrong option); quick-reply response (step 9, round 6, wrong option); swap-it frame (step 10, round 1); swap-it frame (step 10, round 2); swap-it frame (step 10, round 3); sentence review (step 13); quick-reply response (step 14, round 1, accepted); quick-reply response (step 14, round 2, wrong option); quick-reply response (step 14, round 3, wrong option); quick-reply response (step 14, round 4, wrong option); dialogue choice transport/c1 (accepted); dialogue choice transport/c1b (accepted)
+- Exercised here as: quick-reply response (step 3, round 1, accepted); quick-reply response (step 6, round 1, wrong option); quick-reply response (step 10, round 1, wrong option); quick-reply response (step 21, round 1, accepted); quick-reply response (step 21, round 2, wrong option); quick-reply response (step 21, round 4, wrong option); quick-reply response (step 24, round 1, accepted); quick-reply response (step 25, round 1, wrong option); quick-reply response (step 27, round 1, wrong option); dialogue choice transport/c1 (accepted); dialogue choice transport/c4 (WRONG option)
 
 ### Sentence: `phrase.trans.which-platform`
 
@@ -18379,7 +18467,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "Two words that stop you boarding the wrong train." / "שתי מילים שמונעות עלייה לרכבת הלא נכונה."
 - Used in missions: 19, 24, 28
-- Exercised here as: key sentence (step 3); quick-reply response (step 9, round 1, wrong option); quick-reply response (step 9, round 3, accepted); quick-reply response (step 9, round 5, wrong option); quick-reply response (step 9, round 6, accepted); sentence review (step 13); quick-reply response (step 14, round 2, wrong option); quick-reply response (step 14, round 3, accepted); dialogue choice transport/c3 (accepted)
+- Exercised here as: quick-reply response (step 10, round 1, accepted); quick-reply response (step 14, round 1, wrong option); quick-reply response (step 21, round 1, wrong option); quick-reply response (step 21, round 2, wrong option); quick-reply response (step 21, round 3, accepted); quick-reply response (step 21, round 4, wrong option); quick-reply response (step 24, round 1, wrong option); quick-reply response (step 27, round 1, accepted); quick-reply response (step 29, round 1, wrong option); dialogue choice transport/c2 (WRONG option); dialogue choice transport/c3 (accepted); dialogue choice transport/c5 (WRONG option)
 
 ### Sentence: `phrase.trans.does-stop`
 
@@ -18390,18 +18478,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "Template: Does this stop at ___? — makes sure you get off in the right place." / "התבנית: Does this stop at ___? — מוודאת שאתה יורד נכון."
 - Used in missions: 19, 24, 28
-- Exercised here as: key sentence (step 4); quick-reply response (step 9, round 2, wrong option); quick-reply response (step 9, round 4, accepted); quick-reply response (step 9, round 5, wrong option); sentence review (step 13); quick-reply response (step 14, round 1, wrong option); quick-reply response (step 14, round 4, accepted); cold-open wrong option (step 16); dialogue choice transport/c4 (accepted); dialogue choice transport/c4b (accepted)
-
-### Sentence: `phrase.trans.next-one`
-
-- EN: When's the next one?
-- HE: מתי הבא?
-- FR: Le prochain, c’est quand ?
-- ES: ¿Cuándo es el próximo?
-- Role: learner production
-- Tip / pattern note: none
-- Used in missions: 19
-- Exercised here as: key sentence (step 5); quick-reply response (step 9, round 1, wrong option); quick-reply response (step 9, round 4, accepted); quick-reply response (step 9, round 5, accepted); sentence review (step 13); quick-reply response (step 14, round 1, wrong option); dialogue choice transport/c4 (accepted)
+- Exercised here as: quick-reply response (step 14, round 1, accepted); quick-reply response (step 21, round 1, wrong option); quick-reply response (step 21, round 3, wrong option); quick-reply response (step 21, round 4, accepted); quick-reply response (step 24, round 1, wrong option); quick-reply response (step 25, round 1, wrong option); quick-reply response (step 29, round 1, accepted); dialogue choice transport/c1 (WRONG option); dialogue choice transport/c5 (accepted)
 
 ### Sentence: `phrase.trans.single`
 
@@ -18412,7 +18489,18 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 19, 24, 28
-- Exercised here as: quick-reply response (step 9, round 2, accepted); sentence review (step 13); quick-reply response (step 14, round 2, accepted); quick-reply response (step 14, round 3, wrong option); quick-reply response (step 14, round 4, wrong option)
+- Exercised here as: quick-reply response (step 6, round 1, accepted); quick-reply response (step 10, round 1, wrong option); quick-reply response (step 14, round 1, wrong option); quick-reply response (step 21, round 2, accepted); quick-reply response (step 21, round 3, wrong option); quick-reply response (step 25, round 1, accepted); quick-reply response (step 27, round 1, wrong option); quick-reply response (step 29, round 1, wrong option); dialogue choice transport/c2 (accepted); dialogue choice transport/c3 (WRONG option); dialogue choice transport/c6 (WRONG option)
+
+### Sentence: `reply.trans.where-headed`
+
+- EN: Hello! Where are you headed?
+- HE: שלום! לאן אתה נוסע?
+- FR: Bonjour ! Vous allez où ?
+- ES: ¡Hola! ¿A dónde va?
+- Role: receptive — an expected reply the learner hears
+- Tip / pattern note: none
+- Used in missions: 19
+- Exercised here as: quick-reply prompt (step 3, round 1); quick-reply prompt (step 21, round 1); quick-reply prompt (step 24, round 1)
 
 ### Sentence: `reply.trans.single-return`
 
@@ -18423,29 +18511,62 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 19
-- Exercised here as: expected-reply audio (step 6); quick-reply prompt (step 9, round 2); sentence review (step 13)
+- Exercised here as: quick-reply prompt (step 6, round 1); quick-reply prompt (step 21, round 2); quick-reply prompt (step 25, round 1)
 
-### Sentence: `reply.trans.platform-two`
+### Sentence: `reply.trans.fare`
 
-- EN: Platform two.
-- HE: רציף שתיים.
-- FR: Quai numéro deux.
-- ES: Andén número dos.
+- EN: That's three euros. It leaves every ten minutes.
+- HE: זה שלושה יורו. יוצא כל עשר דקות.
+- FR: Ça fait trois euros. Ça part toutes les dix minutes.
+- ES: Son tres euros. Sale cada diez minutos.
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 19
-- Exercised here as: expected-reply audio (step 6); visual-match audio (step 8, round 1); sentence review (step 13)
+- Exercised here as: quick-reply prompt (step 10, round 1); quick-reply prompt (step 21, round 3); quick-reply prompt (step 27, round 1)
 
-### Sentence: `reply.trans.every-ten`
+### Sentence: `reply.trans.platform-straight`
 
-- EN: Every ten minutes.
-- HE: כל עשר דקות.
-- FR: Toutes les dix minutes.
-- ES: Cada diez minutos.
+- EN: Platform two. Straight ahead.
+- HE: רציף שתיים. ישר קדימה.
+- FR: Quai numéro deux. Tout droit.
+- ES: Andén número dos. Todo recto.
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 19
-- Exercised here as: expected-reply audio (step 6); visual-match audio (step 8, round 3); sentence review (step 13)
+- Exercised here as: nothing (listed only)
+
+### Sentence: `reply.trans.hop-on`
+
+- EN: The train's right here. Hop on.
+- HE: הרכבת ממש כאן. עלה.
+- FR: Le train est juste là. Montez.
+- ES: El tren está justo ahí. Suba.
+- Role: receptive — an expected reply the learner hears
+- Tip / pattern note: none
+- Used in missions: 19
+- Exercised here as: quick-reply prompt (step 14, round 1); quick-reply prompt (step 21, round 4); quick-reply prompt (step 29, round 1)
+
+### Sentence: `reply.trans.stops-tell`
+
+- EN: Yes — it's three stops. I'll tell you when.
+- HE: כן — זה שלוש תחנות. אני אגיד לך מתי.
+- FR: Oui — c’est à trois arrêts. Je vous dirai quand.
+- ES: Sí — son tres paradas. Le aviso cuándo.
+- Role: receptive — an expected reply the learner hears
+- Tip / pattern note: none
+- Used in missions: 19
+- Exercised here as: nothing (listed only)
+
+### Sentence: `reply.trans.stop-is-next`
+
+- EN: Here we are — your stop is next. Enjoy the museum!
+- HE: הגענו — התחנה שלך הבאה. תיהנה במוזיאון!
+- FR: Nous voilà — votre arrêt est le prochain. Bonne visite du musée !
+- ES: Ya llegamos — su parada es la siguiente. ¡Que disfrute del museo!
+- Role: receptive — an expected reply the learner hears
+- Tip / pattern note: none
+- Used in missions: 19
+- Exercised here as: nothing (listed only)
 
 ### Sentence: `reply.trans.three-stops`
 
@@ -18456,7 +18577,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 19, 24
-- Exercised here as: expected-reply audio (step 6); visual-match audio (step 8, round 2); sentence review (step 13)
+- Exercised here as: nothing (listed only)
 
 ### Sentence: `reply.trans.wrong-way`
 
@@ -18467,40 +18588,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 19, 24
-- Exercised here as: quick-reply prompt (step 9, round 6); sentence review (step 13)
-
-### Sentence: `reply.trans.stop-next`
-
-- EN: Your stop is next.
-- HE: התחנה שלך הבאה.
-- FR: Votre arrêt est le prochain.
-- ES: Su parada es la siguiente.
-- Role: receptive — an expected reply the learner hears
-- Tip / pattern note: none
-- Used in missions: 19
-- Exercised here as: sentence review (step 13)
-
-### Sentence: `phrase.recovery.repeat`
-
-- EN: Can you repeat that?
-- HE: אפשר לחזור על זה?
-- FR: Vous pouvez répéter ?
-- ES: ¿Puede repetir, por favor?
-- Role: conversation-help tool (global Recovery Toolkit)
-- Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 14, 19, 20, 23, 24, 26, 28, 29, 30
-- Exercised here as: quick-reply response (step 9, round 6, accepted); sentence review (step 13); cold-open correct option (step 16); dialogue choice transport/c1 (accepted); dialogue choice transport/c5 (accepted)
-
-### Sentence: `phrase.recovery.slowly`
-
-- EN: Please speak slowly.
-- HE: דבר לאט, בבקשה.
-- FR: Parlez lentement, s’il vous plaît.
-- ES: Más despacio, por favor.
-- Role: conversation-help tool (global Recovery Toolkit)
-- Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
-- Exercised here as: dialogue choice transport/c2 (accepted)
+- Exercised here as: nothing (listed only)
 
 ### Sentence: `phrase.recovery.thank-you`
 
@@ -18511,64 +18599,11 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: courtesy from the Recovery Toolkit
 - Tip / pattern note: none
 - Used in missions: 03, 05, 06, 07, 10, 14, 15, 17, 18, 19, 25, 26, 30
-- Exercised here as: quick-reply response (step 9, round 3, accepted); dialogue choice transport/c3 (accepted); dialogue choice transport/c3b (accepted); dialogue choice transport/c5 (accepted); dialogue choice transport/c5b (accepted)
+- Exercised here as: quick-reply response (step 3, round 1, wrong option); quick-reply response (step 6, round 1, wrong option); dialogue choice transport/c4 (accepted); dialogue choice transport/c6 (accepted)
 
 ## Expected replies / listening items
 
-Lead-in screen: "You said:" / "אמרת:" — EN "One ticket to the centre, please." · FR "Un billet pour le centre, s’il vous plaît." · ES "Un billete para el centro, por favor." — then "What might they answer? Learn the replies before they surprise you." / "מה הם עלולים לענות? נלמד את התשובות לפני שהן מפתיעות אותך." — button 👂 "I'm ready" / "אני מוכן".
-Linked learner sentence: `phrase.trans.one-ticket`. Each reply below is played once automatically; the learner picks its MEANING from three buttons. Distractors are always the first two OTHER replies of this same drill, in drill order (runtime rule), so the three choices are shuffled per session.
-
-### M19-Q01 — expected-reply (step 6, reply 1 of 4)
-
-- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (1/4)
-- Audio played: EN "Single or return?" · FR "Aller simple ou aller-retour ?" · ES "¿Solo ida o ida y vuelta?"
-- Meaning of the audio (HE): "הלוך או הלוך-חזור?"
-- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
-- Choices:
-  1. HE "הלוך או הלוך-חזור?" / EN "Single or return?" — `reply.trans.single-return` — ✅ accepted
-  2. HE "רציף שתיים." / EN "Platform two." — `reply.trans.platform-two` — ❌ wrong
-  3. HE "כל עשר דקות." / EN "Every ten minutes." — `reply.trans.every-ten` — ❌ wrong
-- Tests: reply.trans.single-return
-- Explanation shown after answering: generic: “Single or return?” means “הלוך או הלוך-חזור?”.
-
-### M19-Q02 — expected-reply (step 6, reply 2 of 4)
-
-- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (2/4)
-- Audio played: EN "Platform two." · FR "Quai numéro deux." · ES "Andén número dos."
-- Meaning of the audio (HE): "רציף שתיים."
-- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
-- Choices:
-  1. HE "רציף שתיים." / EN "Platform two." — `reply.trans.platform-two` — ✅ accepted
-  2. HE "הלוך או הלוך-חזור?" / EN "Single or return?" — `reply.trans.single-return` — ❌ wrong
-  3. HE "כל עשר דקות." / EN "Every ten minutes." — `reply.trans.every-ten` — ❌ wrong
-- Tests: reply.trans.platform-two
-- Explanation shown after answering: generic: “Platform two.” means “רציף שתיים.”.
-
-### M19-Q03 — expected-reply (step 6, reply 3 of 4)
-
-- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (3/4)
-- Audio played: EN "Every ten minutes." · FR "Toutes les dix minutes." · ES "Cada diez minutos."
-- Meaning of the audio (HE): "כל עשר דקות."
-- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
-- Choices:
-  1. HE "כל עשר דקות." / EN "Every ten minutes." — `reply.trans.every-ten` — ✅ accepted
-  2. HE "הלוך או הלוך-חזור?" / EN "Single or return?" — `reply.trans.single-return` — ❌ wrong
-  3. HE "רציף שתיים." / EN "Platform two." — `reply.trans.platform-two` — ❌ wrong
-- Tests: reply.trans.every-ten
-- Explanation shown after answering: generic: “Every ten minutes.” means “כל עשר דקות.”.
-
-### M19-Q04 — expected-reply (step 6, reply 4 of 4)
-
-- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (4/4)
-- Audio played: EN "It's three stops." · FR "C’est à trois arrêts." · ES "Son tres paradas."
-- Meaning of the audio (HE): "זה שלוש תחנות."
-- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
-- Choices:
-  1. HE "זה שלוש תחנות." / EN "It's three stops." — `reply.trans.three-stops` — ✅ accepted
-  2. HE "הלוך או הלוך-חזור?" / EN "Single or return?" — `reply.trans.single-return` — ❌ wrong
-  3. HE "רציף שתיים." / EN "Platform two." — `reply.trans.platform-two` — ❌ wrong
-- Tests: reply.trans.three-stops
-- Explanation shown after answering: generic: “It's three stops.” means “זה שלוש תחנות.”.
+No expected-replies drill in this mission.
 
 ## Quizzes
 
@@ -18576,188 +18611,113 @@ No meaning quiz in this mission.
 
 ## Active practice — Quick Reply · Visual Match · Swap It · Mini Map
 
-### M19-Q05 — visual-match (step 8, round 1 of 4)
+### M19-Q01 — quick-reply (step 3, round 1 of 1)
 
-- Prompt displayed: "Platform, stops or minutes? Tap what you hear" / "רציף, תחנות או דקות? הקש על מה ששמעת"
-- Audio played: EN "Platform two." · FR "Quai numéro deux." · ES "Andén número dos."
-- Meaning of the audio (HE): "רציף שתיים."
-- Buttons show: a 3×3 board of 6 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
-- Choices:
-  1. "🚉2" — `reply.trans.platform-two` — ✅ accepted
-  2. "🚉3" — no sentence id — ❌ wrong
-  3. "🛑2" — no sentence id — ❌ wrong
-  4. "🛑3" — no sentence id — ❌ wrong
-  5. "⏱️5" — no sentence id — ❌ wrong
-  6. "⏱️10" — no sentence id — ❌ wrong
-- Tests: reply.trans.platform-two
-- Explanation shown after answering: after the tap: the spoken line and its translation
-
-### M19-Q06 — visual-match (step 8, round 2 of 4)
-
-- Prompt displayed: "Platform, stops or minutes? Tap what you hear" / "רציף, תחנות או דקות? הקש על מה ששמעת"
-- Audio played: EN "It's three stops." · FR "C’est à trois arrêts." · ES "Son tres paradas."
-- Meaning of the audio (HE): "זה שלוש תחנות."
-- Buttons show: a 3×3 board of 6 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
-- Choices:
-  1. "🚉2" — no sentence id — ❌ wrong
-  2. "🚉3" — no sentence id — ❌ wrong
-  3. "🛑2" — no sentence id — ❌ wrong
-  4. "🛑3" — `reply.trans.three-stops` — ✅ accepted
-  5. "⏱️5" — no sentence id — ❌ wrong
-  6. "⏱️10" — no sentence id — ❌ wrong
-- Tests: reply.trans.three-stops
-- Explanation shown after answering: after the tap: the spoken line and its translation
-
-### M19-Q07 — visual-match (step 8, round 3 of 4)
-
-- Prompt displayed: "Platform, stops or minutes? Tap what you hear" / "רציף, תחנות או דקות? הקש על מה ששמעת"
-- Audio played: EN "Every ten minutes." · FR "Toutes les dix minutes." · ES "Cada diez minutos."
-- Meaning of the audio (HE): "כל עשר דקות."
-- Buttons show: a 3×3 board of 6 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
-- Choices:
-  1. "🚉2" — no sentence id — ❌ wrong
-  2. "🚉3" — no sentence id — ❌ wrong
-  3. "🛑2" — no sentence id — ❌ wrong
-  4. "🛑3" — no sentence id — ❌ wrong
-  5. "⏱️5" — no sentence id — ❌ wrong
-  6. "⏱️10" — `reply.trans.every-ten` — ✅ accepted
-- Tests: reply.trans.every-ten
-- Explanation shown after answering: after the tap: the spoken line and its translation
-
-### M19-Q08 — visual-match (step 8, round 4 of 4)
-
-- Prompt displayed: "Platform, stops or minutes? Tap what you hear" / "רציף, תחנות או דקות? הקש על מה ששמעת"
-- Audio played: EN "Platform three." · FR "Quai numéro trois." · ES "Andén número tres."
-- Meaning of the audio (HE): "רציף שלוש."
-- Buttons show: a 3×3 board of 6 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
-- Choices:
-  1. "🚉2" — no sentence id — ❌ wrong
-  2. "🚉3" — no sentence id — ✅ accepted
-  3. "🛑2" — no sentence id — ❌ wrong
-  4. "🛑3" — no sentence id — ❌ wrong
-  5. "⏱️5" — no sentence id — ❌ wrong
-  6. "⏱️10" — no sentence id — ❌ wrong
-- Tests: (no sentence id — not recorded)
-- Explanation shown after answering: after the tap: the spoken line and its translation
-
-### M19-Q09 — quick-reply (step 9, round 1 of 6)
-
-- Prompt displayed: "At the station — what do you say?" / "בתחנה — מה אומרים?"
+- Prompt displayed: "🚆 Your ride ¦ 🎫 Ticket: Destination: Centre / Ticket: ? / Price: ? / Every: ? ‖ 🚉 Ride: Platform: ? / Museum: ? / Get off: ? ¦ What do you say?" / "🚆 הנסיעה שלך ¦ 🎫 כרטיס: יעד: מרכז / סוג: ? / מחיר: ? / תדירות: ? ‖ 🚉 נסיעה: רציף: ? / מוזיאון: ? / ירידה: ? ¦ מה אתה אומר?"
 - Audio played: EN "Hello! Where are you headed?" · FR "Bonjour ! Vous allez où ?" · ES "¡Hola! ¿A dónde va?"
 - Meaning of the audio (HE): "שלום! לאן אתה נוסע?"
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
   1. EN "One ticket to the centre, please." · FR "Un billet pour le centre, s’il vous plaît." · ES "Un billete para el centro, por favor." · (HE gloss "כרטיס אחד למרכז, בבקשה.") — `phrase.trans.one-ticket` — ✅ accepted
-  2. EN "Which platform?" · FR "Quel quai ?" · ES "¿Qué andén?" · (HE gloss "איזה רציף?") — `phrase.trans.which-platform` — ❌ wrong
-  3. EN "When's the next one?" · FR "Le prochain, c’est quand ?" · ES "¿Cuándo es el próximo?" · (HE gloss "מתי הבא?") — `phrase.trans.next-one` — ❌ wrong
+  2. EN "Thank you!" · FR "Merci !" · ES "¡Gracias!" · (HE gloss "תודה!") — `phrase.recovery.thank-you` — ❌ wrong
 - Tests: phrase.trans.one-ticket
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M19-Q10 — quick-reply (step 9, round 2 of 6)
+### M19-Q02 — visual-match (step 5, round 1 of 1)
 
-- Prompt displayed: "At the station — what do you say?" / "בתחנה — מה אומרים?"
+- Prompt displayed: "🚆 Your ride ¦ 🎫 Ticket: Destination: Centre / Ticket: ? / Price: ? / Every: ? ‖ 🚉 Ride: Platform: ? / Museum: ? / Get off: ? ¦ Which ticket is this? Tap it." / "🚆 הנסיעה שלך ¦ 🎫 כרטיס: יעד: מרכז / סוג: ? / מחיר: ? / תדירות: ? ‖ 🚉 נסיעה: רציף: ? / מוזיאון: ? / ירידה: ? ¦ איזה כרטיס זה? הקש."
+- Audio played: EN "Single, please." · FR "Aller simple, s’il vous plaît." · ES "Solo ida, por favor."
+- Meaning of the audio (HE): "הלוך, בבקשה."
+- Buttons show: a 3×3 board of 2 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "➡️ “One way — there only” / “לכיוון אחד — רק לשם”" — no sentence id — ✅ accepted
+  2. "↔️ “There and back” / “לשם ובחזרה”" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M19-Q03 — quick-reply (step 6, round 1 of 1)
+
+- Prompt displayed: "🚆 Your ride ¦ 🎫 Ticket: Destination: Centre / Ticket: ? / Price: ? / Every: ? ‖ 🚉 Ride: Platform: ? / Museum: ? / Get off: ? ¦ What do you answer?" / "🚆 הנסיעה שלך ¦ 🎫 כרטיס: יעד: מרכז / סוג: ? / מחיר: ? / תדירות: ? ‖ 🚉 נסיעה: רציף: ? / מוזיאון: ? / ירידה: ? ¦ מה אתה עונה?"
 - Audio played: EN "Single or return?" · FR "Aller simple ou aller-retour ?" · ES "¿Solo ida o ida y vuelta?"
 - Meaning of the audio (HE): "הלוך או הלוך-חזור?"
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
   1. EN "Single, please." · FR "Aller simple, s’il vous plaît." · ES "Solo ida, por favor." · (HE gloss "הלוך, בבקשה.") — `phrase.trans.single` — ✅ accepted
-  2. EN "Does this stop at the museum?" · FR "Ça s’arrête au musée ?" · ES "¿Para en el museo?" · (HE gloss "זה עוצר במוזיאון?") — `phrase.trans.does-stop` — ❌ wrong
-  3. EN "One ticket to the centre, please." · FR "Un billet pour le centre, s’il vous plaît." · ES "Un billete para el centro, por favor." · (HE gloss "כרטיס אחד למרכז, בבקשה.") — `phrase.trans.one-ticket` — ❌ wrong
+  2. EN "One ticket to the centre, please." · FR "Un billet pour le centre, s’il vous plaît." · ES "Un billete para el centro, por favor." · (HE gloss "כרטיס אחד למרכז, בבקשה.") — `phrase.trans.one-ticket` — ❌ wrong
+  3. EN "Thank you!" · FR "Merci !" · ES "¡Gracias!" · (HE gloss "תודה!") — `phrase.recovery.thank-you` — ❌ wrong
 - Tests: phrase.trans.single
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M19-Q11 — quick-reply (step 9, round 3 of 6)
+### M19-Q04 — visual-match (step 8, round 1 of 1)
 
-- Prompt displayed: "At the station — what do you say?" / "בתחנה — מה אומרים?"
+- Prompt displayed: "🚆 Your ride ¦ 🎫 Ticket: Destination: Centre / Ticket: Single ➡️ / Price: ? / Every: ? ‖ 🚉 Ride: Platform: ? / Museum: ? / Get off: ? ¦ The fare, and how often it leaves? Tap it." / "🚆 הנסיעה שלך ¦ 🎫 כרטיס: יעד: מרכז / סוג: הלוך ➡️ / מחיר: ? / תדירות: ? ‖ 🚉 נסיעה: רציף: ? / מוזיאון: ? / ירידה: ? ¦ מה המחיר, וכל כמה זמן יוצאת הרכבת? הקש."
+- Audio played: EN "That's three euros. It leaves every ten minutes." · FR "Ça fait trois euros. Ça part toutes les dix minutes." · ES "Son tres euros. Sale cada diez minutos."
+- Meaning of the audio (HE): "זה שלושה יורו. יוצא כל עשר דקות."
+- Buttons show: a 3×3 board of 4 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "💶 €3 · 🕒 10 min" — no sentence id — ✅ accepted
+  2. "💶 €10 · 🕒 3 min" — no sentence id — ❌ wrong
+  3. "💶 €3 · 🕒 2 min" — no sentence id — ❌ wrong
+  4. "💶 €2 · 🕒 10 min" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M19-Q05 — quick-reply (step 10, round 1 of 1)
+
+- Prompt displayed: "🚆 Your ride ¦ 🎫 Ticket: Destination: Centre / Ticket: Single ➡️ / Price: €3 / Every: 10 min ‖ 🚉 Ride: Platform: ? / Museum: ? / Get off: ? ¦ What do you ask?" / "🚆 הנסיעה שלך ¦ 🎫 כרטיס: יעד: מרכז / סוג: הלוך ➡️ / מחיר: €3 / תדירות: כל 10 דק׳ ‖ 🚉 נסיעה: רציף: ? / מוזיאון: ? / ירידה: ? ¦ מה אתה שואל?"
 - Audio played: EN "That's three euros. It leaves every ten minutes." · FR "Ça fait trois euros. Ça part toutes les dix minutes." · ES "Son tres euros. Sale cada diez minutos."
 - Meaning of the audio (HE): "זה שלושה יורו. יוצא כל עשר דקות."
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
   1. EN "Which platform?" · FR "Quel quai ?" · ES "¿Qué andén?" · (HE gloss "איזה רציף?") — `phrase.trans.which-platform` — ✅ accepted
-  2. EN "Thank you!" · FR "Merci !" · ES "¡Gracias!" · (HE gloss "תודה!") — `phrase.recovery.thank-you` — ✅ accepted
+  2. EN "Single, please." · FR "Aller simple, s’il vous plaît." · ES "Solo ida, por favor." · (HE gloss "הלוך, בבקשה.") — `phrase.trans.single` — ❌ wrong
   3. EN "One ticket to the centre, please." · FR "Un billet pour le centre, s’il vous plaît." · ES "Un billete para el centro, por favor." · (HE gloss "כרטיס אחד למרכז, בבקשה.") — `phrase.trans.one-ticket` — ❌ wrong
-- Tests: phrase.trans.which-platform, phrase.recovery.thank-you
+- Tests: phrase.trans.which-platform
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M19-Q12 — quick-reply (step 9, round 4 of 6)
+### M19-Q06 — visual-match (step 12, round 1 of 1)
 
-- Prompt displayed: "At the station — what do you say?" / "בתחנה — מה אומרים?"
+- Prompt displayed: "🚆 Your ride ¦ 🎫 Ticket: Destination: Centre / Ticket: Single ➡️ / Price: €3 / Every: 10 min ‖ 🚉 Ride: Platform: ? / Museum: ? / Get off: ? ¦ Which platform, and which way? Tap it." / "🚆 הנסיעה שלך ¦ 🎫 כרטיס: יעד: מרכז / סוג: הלוך ➡️ / מחיר: €3 / תדירות: כל 10 דק׳ ‖ 🚉 נסיעה: רציף: ? / מוזיאון: ? / ירידה: ? ¦ איזה רציף, ולאיזה כיוון? הקש."
+- Audio played: EN "Platform two. Straight ahead." · FR "Quai numéro deux. Tout droit." · ES "Andén número dos. Todo recto."
+- Meaning of the audio (HE): "רציף שתיים. ישר קדימה."
+- Buttons show: a 3×3 board of 6 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "🚉 1 ⬆️" — no sentence id — ❌ wrong
+  2. "🚉 2 ⬆️" — no sentence id — ✅ accepted
+  3. "🚉 3 ⬆️" — no sentence id — ❌ wrong
+  4. "🚉 1 ⬅️" — no sentence id — ❌ wrong
+  5. "🚉 2 ⬅️" — no sentence id — ❌ wrong
+  6. "🚉 3 ⬅️" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M19-Q07 — quick-reply (step 14, round 1 of 1)
+
+- Prompt displayed: "🚆 Your ride ¦ 🎫 Ticket: Destination: Centre / Ticket: Single ➡️ / Price: €3 / Every: 10 min ‖ 🚉 Ride: Platform: 2 ⬆️ straight / Museum: ? / Get off: ? ¦ What do you ask?" / "🚆 הנסיעה שלך ¦ 🎫 כרטיס: יעד: מרכז / סוג: הלוך ➡️ / מחיר: €3 / תדירות: כל 10 דק׳ ‖ 🚉 נסיעה: רציף: 2 ⬆️ ישר / מוזיאון: ? / ירידה: ? ¦ מה אתה שואל?"
 - Audio played: EN "The train's right here. Hop on." · FR "Le train est juste là. Montez." · ES "El tren está justo ahí. Suba."
 - Meaning of the audio (HE): "הרכבת ממש כאן. עלה."
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
   1. EN "Does this stop at the museum?" · FR "Ça s’arrête au musée ?" · ES "¿Para en el museo?" · (HE gloss "זה עוצר במוזיאון?") — `phrase.trans.does-stop` — ✅ accepted
-  2. EN "When's the next one?" · FR "Le prochain, c’est quand ?" · ES "¿Cuándo es el próximo?" · (HE gloss "מתי הבא?") — `phrase.trans.next-one` — ✅ accepted
-  3. EN "One ticket to the centre, please." · FR "Un billet pour le centre, s’il vous plaît." · ES "Un billete para el centro, por favor." · (HE gloss "כרטיס אחד למרכז, בבקשה.") — `phrase.trans.one-ticket` — ❌ wrong
-- Tests: phrase.trans.does-stop, phrase.trans.next-one
-- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
-
-### M19-Q13 — quick-reply (step 9, round 5 of 6)
-
-- Prompt displayed: "At the station — what do you say?" / "בתחנה — מה אומרים?" — situation shown: "You just missed the train. You want to know when the next one is." / "פספסת את הרכבת. אתה רוצה לדעת מתי הבאה."
-- Audio played: EN "(nothing is played — a situation is shown)" · FR "(nothing is played — a situation is shown)" · ES "(nothing is played — a situation is shown)"
-- Meaning of the audio (HE): —
-- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
-- Choices:
-  1. EN "When's the next one?" · FR "Le prochain, c’est quand ?" · ES "¿Cuándo es el próximo?" · (HE gloss "מתי הבא?") — `phrase.trans.next-one` — ✅ accepted
   2. EN "Which platform?" · FR "Quel quai ?" · ES "¿Qué andén?" · (HE gloss "איזה רציף?") — `phrase.trans.which-platform` — ❌ wrong
-  3. EN "Does this stop at the museum?" · FR "Ça s’arrête au musée ?" · ES "¿Para en el museo?" · (HE gloss "זה עוצר במוזיאון?") — `phrase.trans.does-stop` — ❌ wrong
-- Tests: phrase.trans.next-one
+  3. EN "Single, please." · FR "Aller simple, s’il vous plaît." · ES "Solo ida, por favor." · (HE gloss "הלוך, בבקשה.") — `phrase.trans.single` — ❌ wrong
+- Tests: phrase.trans.does-stop
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M19-Q14 — quick-reply (step 9, round 6 of 6)
+### M19-Q08 — visual-match (step 16, round 1 of 1)
 
-- Prompt displayed: "At the station — what do you say?" / "בתחנה — מה אומרים?"
-- Audio played: EN "You're going the wrong way." · FR "Vous allez dans le mauvais sens." · ES "Va en dirección contraria."
-- Meaning of the audio (HE): "אתה בכיוון הלא נכון."
-- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Prompt displayed: "🚆 Your ride ¦ 🎫 Ticket: Destination: Centre / Ticket: Single ➡️ / Price: €3 / Every: 10 min ‖ 🚆 On board: Platform: 2 ⬆️ straight / Museum: ? / Get off: ? ¦ Where is the museum? Tap its stop." / "🚆 הנסיעה שלך ¦ 🎫 כרטיס: יעד: מרכז / סוג: הלוך ➡️ / מחיר: €3 / תדירות: כל 10 דק׳ ‖ 🚆 ברכבת: רציף: 2 ⬆️ ישר / מוזיאון: ? / ירידה: ? ¦ איפה המוזיאון? הקש על התחנה."
+- Audio played: EN "Yes — it's three stops. I'll tell you when." · FR "Oui — c’est à trois arrêts. Je vous dirai quand." · ES "Sí — son tres paradas. Le aviso cuándo."
+- Meaning of the audio (HE): "כן — זה שלוש תחנות. אני אגיד לך מתי."
+- Buttons show: a 3×3 board of 3 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. EN "Which platform?" · FR "Quel quai ?" · ES "¿Qué andén?" · (HE gloss "איזה רציף?") — `phrase.trans.which-platform` — ✅ accepted
-  2. EN "Can you repeat that?" · FR "Vous pouvez répéter ?" · ES "¿Puede repetir, por favor?" · (HE gloss "אפשר לחזור על זה?") — `phrase.recovery.repeat` — ✅ accepted
-  3. EN "One ticket to the centre, please." · FR "Un billet pour le centre, s’il vous plaît." · ES "Un billete para el centro, por favor." · (HE gloss "כרטיס אחד למרכז, בבקשה.") — `phrase.trans.one-ticket` — ❌ wrong
-- Tests: phrase.trans.which-platform, phrase.recovery.repeat
-- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+  1. "🛑 1" — no sentence id — ❌ wrong
+  2. "🛑 2" — no sentence id — ❌ wrong
+  3. "🛑 3" — no sentence id — ✅ accepted
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
 
-### M19-Q15 — swap-it (step 10, round 1 of 3)
-
-- Prompt displayed: "A ticket to where?" / "לאן הכרטיס?" — cue 🏛️ "You are going to the museum" / "אתה נוסע למוזיאון" — frame EN "One ticket to ___, please." · FR "Un billet pour ___, s’il vous plaît." · ES "Un billete para ___, por favor."
-- Audio played: EN "(nothing before the tap; the completed sentence is spoken after it)" · FR "(same)" · ES "(same)"
-- Meaning of the audio (HE): —
-- Buttons show: the SLOT VALUES in the target language (shown here as "value → completed sentence"); order shuffled; a "wrong" value still produces and speaks a real sentence, with its translation
-- Choices:
-  1. EN "the centre → One ticket to the centre, please." · FR "le centre → Un billet pour le centre, s’il vous plaît." · ES "el centro → Un billete para el centro, por favor." · (HE gloss "כרטיס אחד למרכז, בבקשה.") — no sentence id — ❌ wrong
-  2. EN "the museum → One ticket to the museum, please." · FR "le musée → Un billet pour le musée, s’il vous plaît." · ES "el museo → Un billete para el museo, por favor." · (HE gloss "כרטיס אחד למוזיאון, בבקשה.") — `phrase.trans.one-ticket` — ✅ accepted
-  3. EN "the airport → One ticket to the airport, please." · FR "l’aéroport → Un billet pour l’aéroport, s’il vous plaît." · ES "el aeropuerto → Un billete para el aeropuerto, por favor." · (HE gloss "כרטיס אחד לשדה התעופה, בבקשה.") — no sentence id — ❌ wrong
-- Tests: phrase.trans.one-ticket
-- Explanation shown after answering: after the tap: the completed sentence, spoken, with its translation
-
-### M19-Q16 — swap-it (step 10, round 2 of 3)
-
-- Prompt displayed: "A ticket to where?" / "לאן הכרטיס?" — cue ✈️ "You are going to the airport" / "אתה נוסע לשדה התעופה" — frame EN "One ticket to ___, please." · FR "Un billet pour ___, s’il vous plaît." · ES "Un billete para ___, por favor."
-- Audio played: EN "(nothing before the tap; the completed sentence is spoken after it)" · FR "(same)" · ES "(same)"
-- Meaning of the audio (HE): —
-- Buttons show: the SLOT VALUES in the target language (shown here as "value → completed sentence"); order shuffled; a "wrong" value still produces and speaks a real sentence, with its translation
-- Choices:
-  1. EN "the centre → One ticket to the centre, please." · FR "le centre → Un billet pour le centre, s’il vous plaît." · ES "el centro → Un billete para el centro, por favor." · (HE gloss "כרטיס אחד למרכז, בבקשה.") — no sentence id — ❌ wrong
-  2. EN "the museum → One ticket to the museum, please." · FR "le musée → Un billet pour le musée, s’il vous plaît." · ES "el museo → Un billete para el museo, por favor." · (HE gloss "כרטיס אחד למוזיאון, בבקשה.") — no sentence id — ❌ wrong
-  3. EN "the airport → One ticket to the airport, please." · FR "l’aéroport → Un billet pour l’aéroport, s’il vous plaît." · ES "el aeropuerto → Un billete para el aeropuerto, por favor." · (HE gloss "כרטיס אחד לשדה התעופה, בבקשה.") — `phrase.trans.one-ticket` — ✅ accepted
-- Tests: phrase.trans.one-ticket
-- Explanation shown after answering: after the tap: the completed sentence, spoken, with its translation
-
-### M19-Q17 — swap-it (step 10, round 3 of 3)
-
-- Prompt displayed: "A ticket to where?" / "לאן הכרטיס?" — cue 🏙️ "You are going to the centre" / "אתה נוסע למרכז" — frame EN "One ticket to ___, please." · FR "Un billet pour ___, s’il vous plaît." · ES "Un billete para ___, por favor."
-- Audio played: EN "(nothing before the tap; the completed sentence is spoken after it)" · FR "(same)" · ES "(same)"
-- Meaning of the audio (HE): —
-- Buttons show: the SLOT VALUES in the target language (shown here as "value → completed sentence"); order shuffled; a "wrong" value still produces and speaks a real sentence, with its translation
-- Choices:
-  1. EN "the centre → One ticket to the centre, please." · FR "le centre → Un billet pour le centre, s’il vous plaît." · ES "el centro → Un billete para el centro, por favor." · (HE gloss "כרטיס אחד למרכז, בבקשה.") — `phrase.trans.one-ticket` — ✅ accepted
-  2. EN "the museum → One ticket to the museum, please." · FR "le musée → Un billet pour le musée, s’il vous plaît." · ES "el museo → Un billete para el museo, por favor." · (HE gloss "כרטיס אחד למוזיאון, בבקשה.") — no sentence id — ❌ wrong
-  3. EN "the airport → One ticket to the airport, please." · FR "l’aéroport → Un billet pour l’aéroport, s’il vous plaît." · ES "el aeropuerto → Un billete para el aeropuerto, por favor." · (HE gloss "כרטיס אחד לשדה התעופה, בבקשה.") — no sentence id — ❌ wrong
-- Tests: phrase.trans.one-ticket
-- Explanation shown after answering: after the tap: the completed sentence, spoken, with its translation
-
-### M19-Q28 — quick-reply (step 14, round 1 of 4 · SPEED CHALLENGE (spoken at rate 1.12))
+### M19-Q15 — quick-reply (step 21, round 1 of 4 · SPEED CHALLENGE (spoken at rate 1.12))
 
 - Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio played: EN "Hello! Where are you headed?" · FR "Bonjour ! Vous allez où ?" · ES "¡Hola! ¿A dónde va?"
@@ -18766,11 +18726,11 @@ No meaning quiz in this mission.
 - Choices:
   1. EN "One ticket to the centre, please." · FR "Un billet pour le centre, s’il vous plaît." · ES "Un billete para el centro, por favor." · (HE gloss "כרטיס אחד למרכז, בבקשה.") — `phrase.trans.one-ticket` — ✅ accepted
   2. EN "Does this stop at the museum?" · FR "Ça s’arrête au musée ?" · ES "¿Para en el museo?" · (HE gloss "זה עוצר במוזיאון?") — `phrase.trans.does-stop` — ❌ wrong
-  3. EN "When's the next one?" · FR "Le prochain, c’est quand ?" · ES "¿Cuándo es el próximo?" · (HE gloss "מתי הבא?") — `phrase.trans.next-one` — ❌ wrong
+  3. EN "Which platform?" · FR "Quel quai ?" · ES "¿Qué andén?" · (HE gloss "איזה רציף?") — `phrase.trans.which-platform` — ❌ wrong
 - Tests: phrase.trans.one-ticket
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M19-Q29 — quick-reply (step 14, round 2 of 4 · SPEED CHALLENGE (spoken at rate 1.12))
+### M19-Q16 — quick-reply (step 21, round 2 of 4 · SPEED CHALLENGE (spoken at rate 1.12))
 
 - Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio played: EN "Single or return?" · FR "Aller simple ou aller-retour ?" · ES "¿Solo ida o ida y vuelta?"
@@ -18783,9 +18743,75 @@ No meaning quiz in this mission.
 - Tests: phrase.trans.single
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M19-Q30 — quick-reply (step 14, round 3 of 4 · SPEED CHALLENGE (spoken at rate 1.12))
+### M19-Q17 — quick-reply (step 21, round 3 of 4 · SPEED CHALLENGE (spoken at rate 1.12))
 
 - Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "That's three euros. It leaves every ten minutes." · FR "Ça fait trois euros. Ça part toutes les dix minutes." · ES "Son tres euros. Sale cada diez minutos."
+- Meaning of the audio (HE): "זה שלושה יורו. יוצא כל עשר דקות."
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Which platform?" · FR "Quel quai ?" · ES "¿Qué andén?" · (HE gloss "איזה רציף?") — `phrase.trans.which-platform` — ✅ accepted
+  2. EN "Single, please." · FR "Aller simple, s’il vous plaît." · ES "Solo ida, por favor." · (HE gloss "הלוך, בבקשה.") — `phrase.trans.single` — ❌ wrong
+  3. EN "Does this stop at the museum?" · FR "Ça s’arrête au musée ?" · ES "¿Para en el museo?" · (HE gloss "זה עוצר במוזיאון?") — `phrase.trans.does-stop` — ❌ wrong
+- Tests: phrase.trans.which-platform
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M19-Q18 — quick-reply (step 21, round 4 of 4 · SPEED CHALLENGE (spoken at rate 1.12))
+
+- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "The train's right here. Hop on." · FR "Le train est juste là. Montez." · ES "El tren está justo ahí. Suba."
+- Meaning of the audio (HE): "הרכבת ממש כאן. עלה."
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Does this stop at the museum?" · FR "Ça s’arrête au musée ?" · ES "¿Para en el museo?" · (HE gloss "זה עוצר במוזיאון?") — `phrase.trans.does-stop` — ✅ accepted
+  2. EN "One ticket to the centre, please." · FR "Un billet pour le centre, s’il vous plaît." · ES "Un billete para el centro, por favor." · (HE gloss "כרטיס אחד למרכז, בבקשה.") — `phrase.trans.one-ticket` — ❌ wrong
+  3. EN "Which platform?" · FR "Quel quai ?" · ES "¿Qué andén?" · (HE gloss "איזה רציף?") — `phrase.trans.which-platform` — ❌ wrong
+- Tests: phrase.trans.does-stop
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M19-Q19 — quick-reply (step 24, round 1 of 1)
+
+- Prompt displayed: "🚆 Your ride ¦ 🎫 Ticket: Destination: Centre / Ticket: ? / Price: ? / Every: ? ‖ 🚉 Ride: Platform: ? / Museum: ? / Get off: ? ¦ One ride. Go." / "🚆 הנסיעה שלך ¦ 🎫 כרטיס: יעד: מרכז / סוג: ? / מחיר: ? / תדירות: ? ‖ 🚉 נסיעה: רציף: ? / מוזיאון: ? / ירידה: ? ¦ נסיעה אחת. קדימה."
+- Audio played: EN "Hello! Where are you headed?" · FR "Bonjour ! Vous allez où ?" · ES "¡Hola! ¿A dónde va?"
+- Meaning of the audio (HE): "שלום! לאן אתה נוסע?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "One ticket to the centre, please." · FR "Un billet pour le centre, s’il vous plaît." · ES "Un billete para el centro, por favor." · (HE gloss "כרטיס אחד למרכז, בבקשה.") — `phrase.trans.one-ticket` — ✅ accepted
+  2. EN "Which platform?" · FR "Quel quai ?" · ES "¿Qué andén?" · (HE gloss "איזה רציף?") — `phrase.trans.which-platform` — ❌ wrong
+  3. EN "Does this stop at the museum?" · FR "Ça s’arrête au musée ?" · ES "¿Para en el museo?" · (HE gloss "זה עוצר במוזיאון?") — `phrase.trans.does-stop` — ❌ wrong
+- Tests: phrase.trans.one-ticket
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M19-Q20 — quick-reply (step 25, round 1 of 1)
+
+- Prompt displayed: "🚆 Your ride ¦ 🎫 Ticket: Destination: Centre / Ticket: ? / Price: ? / Every: ? ‖ 🚉 Ride: Platform: ? / Museum: ? / Get off: ?" / "🚆 הנסיעה שלך ¦ 🎫 כרטיס: יעד: מרכז / סוג: ? / מחיר: ? / תדירות: ? ‖ 🚉 נסיעה: רציף: ? / מוזיאון: ? / ירידה: ?"
+- Audio played: EN "Single or return?" · FR "Aller simple ou aller-retour ?" · ES "¿Solo ida o ida y vuelta?"
+- Meaning of the audio (HE): "הלוך או הלוך-חזור?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Single, please." · FR "Aller simple, s’il vous plaît." · ES "Solo ida, por favor." · (HE gloss "הלוך, בבקשה.") — `phrase.trans.single` — ✅ accepted
+  2. EN "One ticket to the centre, please." · FR "Un billet pour le centre, s’il vous plaît." · ES "Un billete para el centro, por favor." · (HE gloss "כרטיס אחד למרכז, בבקשה.") — `phrase.trans.one-ticket` — ❌ wrong
+  3. EN "Does this stop at the museum?" · FR "Ça s’arrête au musée ?" · ES "¿Para en el museo?" · (HE gloss "זה עוצר במוזיאון?") — `phrase.trans.does-stop` — ❌ wrong
+- Tests: phrase.trans.single
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M19-Q21 — visual-match (step 26, round 1 of 1)
+
+- Prompt displayed: "🚆 Your ride ¦ 🎫 Ticket: Destination: Centre / Ticket: Single ➡️ / Price: ? / Every: ? ‖ 🚉 Ride: Platform: ? / Museum: ? / Get off: ? ¦ The fare, and how often it leaves? Tap it." / "🚆 הנסיעה שלך ¦ 🎫 כרטיס: יעד: מרכז / סוג: הלוך ➡️ / מחיר: ? / תדירות: ? ‖ 🚉 נסיעה: רציף: ? / מוזיאון: ? / ירידה: ? ¦ מה המחיר, וכל כמה זמן יוצאת הרכבת? הקש."
+- Audio played: EN "That's three euros. It leaves every ten minutes." · FR "Ça fait trois euros. Ça part toutes les dix minutes." · ES "Son tres euros. Sale cada diez minutos."
+- Meaning of the audio (HE): "זה שלושה יורו. יוצא כל עשר דקות."
+- Buttons show: a 3×3 board of 4 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "💶 €3 · 🕒 10 min" — no sentence id — ✅ accepted
+  2. "💶 €10 · 🕒 3 min" — no sentence id — ❌ wrong
+  3. "💶 €3 · 🕒 2 min" — no sentence id — ❌ wrong
+  4. "💶 €2 · 🕒 10 min" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M19-Q22 — quick-reply (step 27, round 1 of 1)
+
+- Prompt displayed: "🚆 Your ride ¦ 🎫 Ticket: Destination: Centre / Ticket: Single ➡️ / Price: €3 / Every: 10 min ‖ 🚉 Ride: Platform: ? / Museum: ? / Get off: ?" / "🚆 הנסיעה שלך ¦ 🎫 כרטיס: יעד: מרכז / סוג: הלוך ➡️ / מחיר: €3 / תדירות: כל 10 דק׳ ‖ 🚉 נסיעה: רציף: ? / מוזיאון: ? / ירידה: ?"
 - Audio played: EN "That's three euros. It leaves every ten minutes." · FR "Ça fait trois euros. Ça part toutes les dix minutes." · ES "Son tres euros. Sale cada diez minutos."
 - Meaning of the audio (HE): "זה שלושה יורו. יוצא כל עשר דקות."
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
@@ -18796,18 +18822,60 @@ No meaning quiz in this mission.
 - Tests: phrase.trans.which-platform
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M19-Q31 — quick-reply (step 14, round 4 of 4 · SPEED CHALLENGE (spoken at rate 1.12))
+### M19-Q23 — visual-match (step 28, round 1 of 1)
 
-- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Prompt displayed: "🚆 Your ride ¦ 🎫 Ticket: Destination: Centre / Ticket: Single ➡️ / Price: €3 / Every: 10 min ‖ 🚉 Ride: Platform: ? / Museum: ? / Get off: ? ¦ Which platform, and which way? Tap it." / "🚆 הנסיעה שלך ¦ 🎫 כרטיס: יעד: מרכז / סוג: הלוך ➡️ / מחיר: €3 / תדירות: כל 10 דק׳ ‖ 🚉 נסיעה: רציף: ? / מוזיאון: ? / ירידה: ? ¦ איזה רציף, ולאיזה כיוון? הקש."
+- Audio played: EN "Platform two. Straight ahead." · FR "Quai numéro deux. Tout droit." · ES "Andén número dos. Todo recto."
+- Meaning of the audio (HE): "רציף שתיים. ישר קדימה."
+- Buttons show: a 3×3 board of 6 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "🚉 1 ⬆️" — no sentence id — ❌ wrong
+  2. "🚉 2 ⬆️" — no sentence id — ✅ accepted
+  3. "🚉 3 ⬆️" — no sentence id — ❌ wrong
+  4. "🚉 1 ⬅️" — no sentence id — ❌ wrong
+  5. "🚉 2 ⬅️" — no sentence id — ❌ wrong
+  6. "🚉 3 ⬅️" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M19-Q24 — quick-reply (step 29, round 1 of 1)
+
+- Prompt displayed: "🚆 Your ride ¦ 🎫 Ticket: Destination: Centre / Ticket: Single ➡️ / Price: €3 / Every: 10 min ‖ 🚉 Ride: Platform: 2 ⬆️ straight / Museum: ? / Get off: ?" / "🚆 הנסיעה שלך ¦ 🎫 כרטיס: יעד: מרכז / סוג: הלוך ➡️ / מחיר: €3 / תדירות: כל 10 דק׳ ‖ 🚉 נסיעה: רציף: 2 ⬆️ ישר / מוזיאון: ? / ירידה: ?"
 - Audio played: EN "The train's right here. Hop on." · FR "Le train est juste là. Montez." · ES "El tren está justo ahí. Suba."
 - Meaning of the audio (HE): "הרכבת ממש כאן. עלה."
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
   1. EN "Does this stop at the museum?" · FR "Ça s’arrête au musée ?" · ES "¿Para en el museo?" · (HE gloss "זה עוצר במוזיאון?") — `phrase.trans.does-stop` — ✅ accepted
-  2. EN "One ticket to the centre, please." · FR "Un billet pour le centre, s’il vous plaît." · ES "Un billete para el centro, por favor." · (HE gloss "כרטיס אחד למרכז, בבקשה.") — `phrase.trans.one-ticket` — ❌ wrong
-  3. EN "Single, please." · FR "Aller simple, s’il vous plaît." · ES "Solo ida, por favor." · (HE gloss "הלוך, בבקשה.") — `phrase.trans.single` — ❌ wrong
+  2. EN "Single, please." · FR "Aller simple, s’il vous plaît." · ES "Solo ida, por favor." · (HE gloss "הלוך, בבקשה.") — `phrase.trans.single` — ❌ wrong
+  3. EN "Which platform?" · FR "Quel quai ?" · ES "¿Qué andén?" · (HE gloss "איזה רציף?") — `phrase.trans.which-platform` — ❌ wrong
 - Tests: phrase.trans.does-stop
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M19-Q25 — visual-match (step 30, round 1 of 1)
+
+- Prompt displayed: "🚆 Your ride ¦ 🎫 Ticket: Destination: Centre / Ticket: Single ➡️ / Price: €3 / Every: 10 min ‖ 🚆 On board: Platform: 2 ⬆️ straight / Museum: ? / Get off: ? ¦ Where is the museum? Tap its stop." / "🚆 הנסיעה שלך ¦ 🎫 כרטיס: יעד: מרכז / סוג: הלוך ➡️ / מחיר: €3 / תדירות: כל 10 דק׳ ‖ 🚆 ברכבת: רציף: 2 ⬆️ ישר / מוזיאון: ? / ירידה: ? ¦ איפה המוזיאון? הקש על התחנה."
+- Audio played: EN "Yes — it's three stops. I'll tell you when." · FR "Oui — c’est à trois arrêts. Je vous dirai quand." · ES "Sí — son tres paradas. Le aviso cuándo."
+- Meaning of the audio (HE): "כן — זה שלוש תחנות. אני אגיד לך מתי."
+- Buttons show: a 3×3 board of 3 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "🛑 1" — no sentence id — ❌ wrong
+  2. "🛑 2" — no sentence id — ❌ wrong
+  3. "🛑 3" — no sentence id — ✅ accepted
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M19-Q26 — visual-match (step 31, round 1 of 1)
+
+- Prompt displayed: "🚆 Your ride ¦ 🧭 🚉 Start ● → 🛑 1 → 🛑 2 → 🏛️ 3 · Museum ¦ 🎫 Ticket: Destination: Centre / Ticket: Single ➡️ / Price: €3 / Every: 10 min ‖ 🚆 On board: Platform: 2 ⬆️ straight / Museum: 3 stops / Get off: ? ¦ What do you do now?" / "🚆 הנסיעה שלך ¦ 🧭 🚉 יציאה ● → 🛑 1 → 🛑 2 → 🏛️ 3 · מוזיאון ¦ 🎫 כרטיס: יעד: מרכז / סוג: הלוך ➡️ / מחיר: €3 / תדירות: כל 10 דק׳ ‖ 🚆 ברכבת: רציף: 2 ⬆️ ישר / מוזיאון: 3 תחנות / ירידה: ? ¦ מה עושים עכשיו?"
+- Audio played: EN "Here we are — your stop is next. Enjoy the museum!" · FR "Nous voilà — votre arrêt est le prochain. Bonne visite du musée !" · ES "Ya llegamos — su parada es la siguiente. ¡Que disfrute del museo!"
+- Meaning of the audio (HE): "הגענו — התחנה שלך הבאה. תיהנה במוזיאון!"
+- Buttons show: a 3×3 board of 3 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "🚪 “Get off at the next stop” / “יורדים בתחנה הבאה”" — no sentence id — ✅ accepted
+  2. "🛑 “Three more stops” / “עוד שלוש תחנות”" — no sentence id — ❌ wrong
+  3. "↩️ “You missed your stop” / “פספסת את התחנה”" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
 
 ## Dialogue — full tree
 
@@ -18824,131 +18892,122 @@ No meaning quiz in this mission.
     - FR: Un billet pour le centre, s’il vous plaît.
     - ES: Un billete para el centro, por favor.
     - HE: כרטיס אחד למרכז, בבקשה.
-  - choice 2 — 🛟 accepted — conversation-help tool → r1 — `phrase.recovery.repeat`
-    - EN: Can you repeat that?
-    - FR: Vous pouvez répéter ?
-    - ES: ¿Puede repetir, por favor?
-    - HE: אפשר לחזור על זה?
-- **r1** · NPC · slow (TTS rate 0.75) · off the happy path → c1b
-  - EN: Where — are you — going?
-  - FR: Vous — allez — où ?
-  - ES: ¿A — dónde — va?
-  - HE: לאן — אתה — נוסע?
-- **c1b** · LEARNER choice screen · off the happy path
-  - choice 1 — ✅ accepted → n2 — `phrase.trans.one-ticket`
-    - EN: One ticket to the centre, please.
-    - FR: Un billet pour le centre, s’il vous plaît.
-    - ES: Un billete para el centro, por favor.
-    - HE: כרטיס אחד למרכז, בבקשה.
+  - choice 2 — ❌ WRONG → m1 — `phrase.trans.does-stop`
+    - EN: Does this stop at the museum?
+    - FR: Ça s’arrête au musée ?
+    - ES: ¿Para en el museo?
+    - HE: זה עוצר במוזיאון?
+- **m1** · NPC · slow (TTS rate 0.75) · off the happy path → c1
+  - EN: Hello! Where are you headed?
+  - FR: Bonjour ! Vous allez où ?
+  - ES: ¡Hola! ¿A dónde va?
+  - HE: שלום! לאן אתה נוסע?
 - **n2** · NPC · normal (TTS rate 0.95) → c2
   - EN: Single or return?
   - FR: Aller simple ou aller-retour ?
   - ES: ¿Solo ida o ida y vuelta?
   - HE: הלוך או הלוך-חזור?
 - **c2** · LEARNER choice screen
-  - choice 1 — ✅ accepted → n3 — no sentence id
+  - choice 1 — ✅ accepted → n3 — `phrase.trans.single`
     - EN: Single, please.
     - FR: Aller simple, s’il vous plaît.
     - ES: Solo ida, por favor.
     - HE: הלוך, בבקשה.
-  - choice 2 — 🛟 accepted — conversation-help tool → r2 — `phrase.recovery.slowly`
-    - EN: Please speak slowly.
-    - FR: Parlez lentement, s’il vous plaît.
-    - ES: Más despacio, por favor.
-    - HE: דבר לאט, בבקשה.
-- **r2** · NPC · slow (TTS rate 0.75) · off the happy path → c2b
-  - EN: Single — or — return?
-  - FR: Aller simple — ou — aller-retour ?
-  - ES: ¿Solo ida — o — ida y vuelta?
-  - HE: הלוך — או — הלוך-חזור?
-- **c2b** · LEARNER choice screen · off the happy path
-  - choice 1 — ✅ accepted → n3 — no sentence id
-    - EN: Single, please.
-    - FR: Aller simple, s’il vous plaît.
-    - ES: Solo ida, por favor.
-    - HE: הלוך, בבקשה.
-- **n3** · NPC · fast (TTS rate 1.08) → c3
+  - choice 2 — ❌ WRONG → m2 — `phrase.trans.which-platform`
+    - EN: Which platform?
+    - FR: Quel quai ?
+    - ES: ¿Qué andén?
+    - HE: איזה רציף?
+- **m2** · NPC · slow (TTS rate 0.75) · off the happy path → c2
+  - EN: Single or return?
+  - FR: Aller simple ou aller-retour ?
+  - ES: ¿Solo ida o ida y vuelta?
+  - HE: הלוך או הלוך-חזור?
+- **n3** · NPC · normal (TTS rate 0.95) → c3
   - EN: That's three euros. It leaves every ten minutes.
   - FR: Ça fait trois euros. Ça part toutes les dix minutes.
   - ES: Son tres euros. Sale cada diez minutos.
   - HE: זה שלושה יורו. יוצא כל עשר דקות.
 - **c3** · LEARNER choice screen
-  - choice 1 — ✅ accepted → n3b — `phrase.trans.which-platform`
+  - choice 1 — ✅ accepted → n4 — `phrase.trans.which-platform`
     - EN: Which platform?
     - FR: Quel quai ?
     - ES: ¿Qué andén?
     - HE: איזה רציף?
-  - choice 2 — ✅ accepted → n4 — `phrase.recovery.thank-you`
-    - EN: Thank you!
-    - FR: Merci !
-    - ES: ¡Gracias!
-    - HE: תודה!
-- **n3b** · NPC · normal (TTS rate 0.95) → c3b
+  - choice 2 — ❌ WRONG → m3 — `phrase.trans.single`
+    - EN: Single, please.
+    - FR: Aller simple, s’il vous plaît.
+    - ES: Solo ida, por favor.
+    - HE: הלוך, בבקשה.
+- **m3** · NPC · slow (TTS rate 0.75) · off the happy path → c3
+  - EN: That's three euros. It leaves every ten minutes.
+  - FR: Ça fait trois euros. Ça part toutes les dix minutes.
+  - ES: Son tres euros. Sale cada diez minutos.
+  - HE: זה שלושה יורו. יוצא כל עשר דקות.
+- **n4** · NPC · normal (TTS rate 0.95) → c4
   - EN: Platform two. Straight ahead.
   - FR: Quai numéro deux. Tout droit.
   - ES: Andén número dos. Todo recto.
   - HE: רציף שתיים. ישר קדימה.
-- **c3b** · LEARNER choice screen
-  - choice 1 — ✅ accepted → n4 — `phrase.recovery.thank-you`
+- **c4** · LEARNER choice screen
+  - choice 1 — ✅ accepted → n5 — `phrase.recovery.thank-you`
     - EN: Thank you!
     - FR: Merci !
     - ES: ¡Gracias!
     - HE: תודה!
-- **n4** · NPC · normal (TTS rate 0.95) → c4
+  - choice 2 — ❌ WRONG → m4 — `phrase.trans.one-ticket`
+    - EN: One ticket to the centre, please.
+    - FR: Un billet pour le centre, s’il vous plaît.
+    - ES: Un billete para el centro, por favor.
+    - HE: כרטיס אחד למרכז, בבקשה.
+- **m4** · NPC · slow (TTS rate 0.75) · off the happy path → c4
+  - EN: Platform two. Straight ahead.
+  - FR: Quai numéro deux. Tout droit.
+  - ES: Andén número dos. Todo recto.
+  - HE: רציף שתיים. ישר קדימה.
+- **n5** · NPC · normal (TTS rate 0.95) → c5
   - EN: The train's right here. Hop on.
   - FR: Le train est juste là. Montez.
   - ES: El tren está justo ahí. Suba.
   - HE: הרכבת ממש כאן. עלה.
-- **c4** · LEARNER choice screen
-  - choice 1 — ✅ accepted → n5 — `phrase.trans.does-stop`
+- **c5** · LEARNER choice screen
+  - choice 1 — ✅ accepted → n6 — `phrase.trans.does-stop`
     - EN: Does this stop at the museum?
     - FR: Ça s’arrête au musée ?
     - ES: ¿Para en el museo?
     - HE: זה עוצר במוזיאון?
-  - choice 2 — ✅ accepted → n4b — `phrase.trans.next-one`
-    - EN: When's the next one?
-    - FR: Le prochain, c’est quand ?
-    - ES: ¿Cuándo es el próximo?
-    - HE: מתי הבא?
-- **n4b** · NPC · normal (TTS rate 0.95) · off the happy path → c4b
-  - EN: The next one? Every ten minutes — but this one is fine, hop on.
-  - FR: Le prochain ? Toutes les dix minutes — mais celui-là est bien, montez.
-  - ES: ¿El próximo? Cada diez minutos — pero este va bien, suba.
-  - HE: הבא? כל עשר דקות — אבל זה בסדר, עלה.
-- **c4b** · LEARNER choice screen · off the happy path
-  - choice 1 — ✅ accepted → n5 — `phrase.trans.does-stop`
-    - EN: Does this stop at the museum?
-    - FR: Ça s’arrête au musée ?
-    - ES: ¿Para en el museo?
-    - HE: זה עוצר במוזיאון?
-- **n5** · NPC · normal (TTS rate 0.95) → c5
+  - choice 2 — ❌ WRONG → m5 — `phrase.trans.which-platform`
+    - EN: Which platform?
+    - FR: Quel quai ?
+    - ES: ¿Qué andén?
+    - HE: איזה רציף?
+- **m5** · NPC · slow (TTS rate 0.75) · off the happy path → c5
+  - EN: The train's right here. Hop on.
+  - FR: Le train est juste là. Montez.
+  - ES: El tren está justo ahí. Suba.
+  - HE: הרכבת ממש כאן. עלה.
+- **n6** · NPC · normal (TTS rate 0.95) → c6
   - EN: Yes — it's three stops. I'll tell you when.
   - FR: Oui — c’est à trois arrêts. Je vous dirai quand.
   - ES: Sí — son tres paradas. Le aviso cuándo.
   - HE: כן — זה שלוש תחנות. אני אגיד לך מתי.
-- **c5** · LEARNER choice screen
-  - choice 1 — ✅ accepted → n6 — `phrase.recovery.thank-you`
+- **c6** · LEARNER choice screen
+  - choice 1 — ✅ accepted → n7 — `phrase.recovery.thank-you`
     - EN: Thank you!
     - FR: Merci !
     - ES: ¡Gracias!
     - HE: תודה!
-  - choice 2 — 🛟 accepted — conversation-help tool → r5 — `phrase.recovery.repeat`
-    - EN: Can you repeat that?
-    - FR: Vous pouvez répéter ?
-    - ES: ¿Puede repetir, por favor?
-    - HE: אפשר לחזור על זה?
-- **r5** · NPC · slow (TTS rate 0.75) · off the happy path → c5b
-  - EN: It's — three — stops.
-  - FR: C’est — trois — arrêts.
-  - ES: Son — tres — paradas.
-  - HE: זה — שלוש — תחנות.
-- **c5b** · LEARNER choice screen · off the happy path
-  - choice 1 — ✅ accepted → n6 — `phrase.recovery.thank-you`
-    - EN: Thank you!
-    - FR: Merci !
-    - ES: ¡Gracias!
-    - HE: תודה!
-- **n6** · NPC · normal (TTS rate 0.95) · END of scene
+  - choice 2 — ❌ WRONG → m6 — `phrase.trans.single`
+    - EN: Single, please.
+    - FR: Aller simple, s’il vous plaît.
+    - ES: Solo ida, por favor.
+    - HE: הלוך, בבקשה.
+- **m6** · NPC · slow (TTS rate 0.75) · off the happy path → c6
+  - EN: Yes — it's three stops. I'll tell you when.
+  - FR: Oui — c’est à trois arrêts. Je vous dirai quand.
+  - ES: Sí — son tres paradas. Le aviso cuándo.
+  - HE: כן — זה שלוש תחנות. אני אגיד לך מתי.
+- **n7** · NPC · normal (TTS rate 0.95) · END of scene
   - EN: Here we are — your stop is next. Enjoy the museum!
   - FR: Nous voilà — votre arrêt est le prochain. Bonne visite du musée !
   - ES: Ya llegamos — su parada es la siguiente. ¡Que disfrute del museo!
@@ -18987,7 +19046,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 
 ## Learner choice screens
 
-### M19-Q18 — dialogue-choice (step 11, scene "transport" · node c1)
+### M19-Q09 — dialogue-choice (step 19, scene "transport" · node c1)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Hello! Where are you headed?" · FR "Bonjour ! Vous allez où ?" · ES "¡Hola! ¿A dónde va?"
@@ -18995,214 +19054,162 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
   1. EN "One ticket to the centre, please." · FR "Un billet pour le centre, s’il vous plaît." · ES "Un billete para el centro, por favor." · (HE gloss "כרטיס אחד למרכז, בבקשה.") — `phrase.trans.one-ticket` — ✅ accepted → n2
-  2. EN "Can you repeat that?" · FR "Vous pouvez répéter ?" · ES "¿Puede repetir, por favor?" · (HE gloss "אפשר לחזור על זה?") — `phrase.recovery.repeat` — ✅ accepted → r1
-- Tests: phrase.trans.one-ticket, phrase.recovery.repeat
+  2. EN "Does this stop at the museum?" · FR "Ça s’arrête au musée ?" · ES "¿Para en el museo?" · (HE gloss "זה עוצר במוזיאון?") — `phrase.trans.does-stop` — ❌ wrong → m1
+- Tests: phrase.trans.one-ticket, phrase.trans.does-stop
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M19-Q19 — dialogue-choice (step 11, scene "transport" · node c1b)
-
-- Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio played: EN "Where — are you — going?" · FR "Vous — allez — où ?" · ES "¿A — dónde — va?"
-- Meaning of the audio (HE): "לאן — אתה — נוסע?"
-- Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
-- Choices:
-  1. EN "One ticket to the centre, please." · FR "Un billet pour le centre, s’il vous plaît." · ES "Un billete para el centro, por favor." · (HE gloss "כרטיס אחד למרכז, בבקשה.") — `phrase.trans.one-ticket` — ✅ accepted → n2
-- Tests: phrase.trans.one-ticket
-- Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
-
-### M19-Q20 — dialogue-choice (step 11, scene "transport" · node c2)
+### M19-Q10 — dialogue-choice (step 19, scene "transport" · node c2)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Single or return?" · FR "Aller simple ou aller-retour ?" · ES "¿Solo ida o ida y vuelta?"
 - Meaning of the audio (HE): "הלוך או הלוך-חזור?"
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
-  1. EN "Single, please." · FR "Aller simple, s’il vous plaît." · ES "Solo ida, por favor." · (HE gloss "הלוך, בבקשה.") — no sentence id — ✅ accepted → n3
-  2. EN "Please speak slowly." · FR "Parlez lentement, s’il vous plaît." · ES "Más despacio, por favor." · (HE gloss "דבר לאט, בבקשה.") — `phrase.recovery.slowly` — ✅ accepted → r2
-- Tests: phrase.recovery.slowly
+  1. EN "Single, please." · FR "Aller simple, s’il vous plaît." · ES "Solo ida, por favor." · (HE gloss "הלוך, בבקשה.") — `phrase.trans.single` — ✅ accepted → n3
+  2. EN "Which platform?" · FR "Quel quai ?" · ES "¿Qué andén?" · (HE gloss "איזה רציף?") — `phrase.trans.which-platform` — ❌ wrong → m2
+- Tests: phrase.trans.single, phrase.trans.which-platform
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M19-Q21 — dialogue-choice (step 11, scene "transport" · node c2b)
-
-- Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio played: EN "Single — or — return?" · FR "Aller simple — ou — aller-retour ?" · ES "¿Solo ida — o — ida y vuelta?"
-- Meaning of the audio (HE): "הלוך — או — הלוך-חזור?"
-- Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
-- Choices:
-  1. EN "Single, please." · FR "Aller simple, s’il vous plaît." · ES "Solo ida, por favor." · (HE gloss "הלוך, בבקשה.") — no sentence id — ✅ accepted → n3
-- Tests: (no sentence id — not recorded)
-- Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
-
-### M19-Q22 — dialogue-choice (step 11, scene "transport" · node c3)
+### M19-Q11 — dialogue-choice (step 19, scene "transport" · node c3)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "That's three euros. It leaves every ten minutes." · FR "Ça fait trois euros. Ça part toutes les dix minutes." · ES "Son tres euros. Sale cada diez minutos."
 - Meaning of the audio (HE): "זה שלושה יורו. יוצא כל עשר דקות."
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
-  1. EN "Which platform?" · FR "Quel quai ?" · ES "¿Qué andén?" · (HE gloss "איזה רציף?") — `phrase.trans.which-platform` — ✅ accepted → n3b
-  2. EN "Thank you!" · FR "Merci !" · ES "¡Gracias!" · (HE gloss "תודה!") — `phrase.recovery.thank-you` — ✅ accepted → n4
-- Tests: phrase.trans.which-platform, phrase.recovery.thank-you
+  1. EN "Which platform?" · FR "Quel quai ?" · ES "¿Qué andén?" · (HE gloss "איזה רציף?") — `phrase.trans.which-platform` — ✅ accepted → n4
+  2. EN "Single, please." · FR "Aller simple, s’il vous plaît." · ES "Solo ida, por favor." · (HE gloss "הלוך, בבקשה.") — `phrase.trans.single` — ❌ wrong → m3
+- Tests: phrase.trans.which-platform, phrase.trans.single
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M19-Q23 — dialogue-choice (step 11, scene "transport" · node c3b)
+### M19-Q12 — dialogue-choice (step 19, scene "transport" · node c4)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Platform two. Straight ahead." · FR "Quai numéro deux. Tout droit." · ES "Andén número dos. Todo recto."
 - Meaning of the audio (HE): "רציף שתיים. ישר קדימה."
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
-  1. EN "Thank you!" · FR "Merci !" · ES "¡Gracias!" · (HE gloss "תודה!") — `phrase.recovery.thank-you` — ✅ accepted → n4
-- Tests: phrase.recovery.thank-you
+  1. EN "Thank you!" · FR "Merci !" · ES "¡Gracias!" · (HE gloss "תודה!") — `phrase.recovery.thank-you` — ✅ accepted → n5
+  2. EN "One ticket to the centre, please." · FR "Un billet pour le centre, s’il vous plaît." · ES "Un billete para el centro, por favor." · (HE gloss "כרטיס אחד למרכז, בבקשה.") — `phrase.trans.one-ticket` — ❌ wrong → m4
+- Tests: phrase.recovery.thank-you, phrase.trans.one-ticket
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M19-Q24 — dialogue-choice (step 11, scene "transport" · node c4)
+### M19-Q13 — dialogue-choice (step 19, scene "transport" · node c5)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "The train's right here. Hop on." · FR "Le train est juste là. Montez." · ES "El tren está justo ahí. Suba."
 - Meaning of the audio (HE): "הרכבת ממש כאן. עלה."
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
-  1. EN "Does this stop at the museum?" · FR "Ça s’arrête au musée ?" · ES "¿Para en el museo?" · (HE gloss "זה עוצר במוזיאון?") — `phrase.trans.does-stop` — ✅ accepted → n5
-  2. EN "When's the next one?" · FR "Le prochain, c’est quand ?" · ES "¿Cuándo es el próximo?" · (HE gloss "מתי הבא?") — `phrase.trans.next-one` — ✅ accepted → n4b
-- Tests: phrase.trans.does-stop, phrase.trans.next-one
+  1. EN "Does this stop at the museum?" · FR "Ça s’arrête au musée ?" · ES "¿Para en el museo?" · (HE gloss "זה עוצר במוזיאון?") — `phrase.trans.does-stop` — ✅ accepted → n6
+  2. EN "Which platform?" · FR "Quel quai ?" · ES "¿Qué andén?" · (HE gloss "איזה רציף?") — `phrase.trans.which-platform` — ❌ wrong → m5
+- Tests: phrase.trans.does-stop, phrase.trans.which-platform
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M19-Q25 — dialogue-choice (step 11, scene "transport" · node c4b)
-
-- Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio played: EN "The next one? Every ten minutes — but this one is fine, hop on." · FR "Le prochain ? Toutes les dix minutes — mais celui-là est bien, montez." · ES "¿El próximo? Cada diez minutos — pero este va bien, suba."
-- Meaning of the audio (HE): "הבא? כל עשר דקות — אבל זה בסדר, עלה."
-- Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
-- Choices:
-  1. EN "Does this stop at the museum?" · FR "Ça s’arrête au musée ?" · ES "¿Para en el museo?" · (HE gloss "זה עוצר במוזיאון?") — `phrase.trans.does-stop` — ✅ accepted → n5
-- Tests: phrase.trans.does-stop
-- Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
-
-### M19-Q26 — dialogue-choice (step 11, scene "transport" · node c5)
+### M19-Q14 — dialogue-choice (step 19, scene "transport" · node c6)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Yes — it's three stops. I'll tell you when." · FR "Oui — c’est à trois arrêts. Je vous dirai quand." · ES "Sí — son tres paradas. Le aviso cuándo."
 - Meaning of the audio (HE): "כן — זה שלוש תחנות. אני אגיד לך מתי."
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
-  1. EN "Thank you!" · FR "Merci !" · ES "¡Gracias!" · (HE gloss "תודה!") — `phrase.recovery.thank-you` — ✅ accepted → n6
-  2. EN "Can you repeat that?" · FR "Vous pouvez répéter ?" · ES "¿Puede repetir, por favor?" · (HE gloss "אפשר לחזור על זה?") — `phrase.recovery.repeat` — ✅ accepted → r5
-- Tests: phrase.recovery.thank-you, phrase.recovery.repeat
-- Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
-
-### M19-Q27 — dialogue-choice (step 11, scene "transport" · node c5b)
-
-- Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio played: EN "It's — three — stops." · FR "C’est — trois — arrêts." · ES "Son — tres — paradas."
-- Meaning of the audio (HE): "זה — שלוש — תחנות."
-- Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
-- Choices:
-  1. EN "Thank you!" · FR "Merci !" · ES "¡Gracias!" · (HE gloss "תודה!") — `phrase.recovery.thank-you` — ✅ accepted → n6
-- Tests: phrase.recovery.thank-you
+  1. EN "Thank you!" · FR "Merci !" · ES "¡Gracias!" · (HE gloss "תודה!") — `phrase.recovery.thank-you` — ✅ accepted → n7
+  2. EN "Single, please." · FR "Aller simple, s’il vous plaît." · ES "Solo ida, por favor." · (HE gloss "הלוך, בבקשה.") — `phrase.trans.single` — ❌ wrong → m6
+- Tests: phrase.recovery.thank-you, phrase.trans.single
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
 ## Recovery tools in this mission
 
-Toolkit phrases bundled into this mission's sentence list: `phrase.recovery.repeat` "Can you repeat that?" · `phrase.recovery.slowly` "Please speak slowly." · `phrase.recovery.thank-you` "Thank you!".
+Toolkit phrases bundled into this mission's sentence list: `phrase.recovery.thank-you` "Thank you!".
 
-Where a conversation-help tool can be selected, and what happens:
+No conversation-help tool is selectable in this mission's dialogues.
 
-- Scene `transport`, c1 — `phrase.recovery.repeat` "Can you repeat that?" ("אפשר לחזור על זה?") — after NPC "Hello! Where are you headed?" → r1: NPC "Where — are you — going?" (slow) → r1 → c1b → rejoins the happy path at n2. Counts as success (recorded as "pass"); no feedback card — the dialogue simply continues.
-- Scene `transport`, c2 — `phrase.recovery.slowly` "Please speak slowly." ("דבר לאט, בבקשה.") — after NPC "Single or return?" → r2: NPC "Single — or — return?" (slow) → r2 → c2b → rejoins the happy path at n3. Counts as success (recorded as "pass"); no feedback card — the dialogue simply continues.
-- Scene `transport`, c5 — `phrase.recovery.repeat` "Can you repeat that?" ("אפשר לחזור על זה?") — after NPC "Yes — it's three stops. I'll tell you when." → r5: NPC "It's — three — stops." (slow) → r5 → c5b → rejoins the happy path at n6. Counts as success (recorded as "pass"); no feedback card — the dialogue simply continues.
 
 ## Wrong answer branches
 
-None — no choice in this mission is marked wrong.
+6 reachable wrong-answer branch(es):
 
+- Scene `transport`, c1 — after NPC "Hello! Where are you headed?"
+  - Wrong choice: "Does this stop at the museum?" ("זה עוצר במוזיאון?") — `phrase.trans.does-stop`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("One ticket to the centre, please."), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m1): "Hello! Where are you headed?" — HE "שלום! לאן אתה נוסע?"
+  - Then: m1 → rejoins the happy path at c1. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
+- Scene `transport`, c2 — after NPC "Single or return?"
+  - Wrong choice: "Which platform?" ("איזה רציף?") — `phrase.trans.which-platform`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("Single, please."), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m2): "Single or return?" — HE "הלוך או הלוך-חזור?"
+  - Then: m2 → rejoins the happy path at c2. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
+- Scene `transport`, c3 — after NPC "That's three euros. It leaves every ten minutes."
+  - Wrong choice: "Single, please." ("הלוך, בבקשה.") — `phrase.trans.single`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("Which platform?"), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m3): "That's three euros. It leaves every ten minutes." — HE "זה שלושה יורו. יוצא כל עשר דקות."
+  - Then: m3 → rejoins the happy path at c3. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
+- Scene `transport`, c4 — after NPC "Platform two. Straight ahead."
+  - Wrong choice: "One ticket to the centre, please." ("כרטיס אחד למרכז, בבקשה.") — `phrase.trans.one-ticket`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("Thank you!"), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m4): "Platform two. Straight ahead." — HE "רציף שתיים. ישר קדימה."
+  - Then: m4 → rejoins the happy path at c4. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
+- Scene `transport`, c5 — after NPC "The train's right here. Hop on."
+  - Wrong choice: "Which platform?" ("איזה רציף?") — `phrase.trans.which-platform`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("Does this stop at the museum?"), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m5): "The train's right here. Hop on." — HE "הרכבת ממש כאן. עלה."
+  - Then: m5 → rejoins the happy path at c5. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
+- Scene `transport`, c6 — after NPC "Yes — it's three stops. I'll tell you when."
+  - Wrong choice: "Single, please." ("הלוך, בבקשה.") — `phrase.trans.single`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("Thank you!"), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m6): "Yes — it's three stops. I'll tell you when." — HE "כן — זה שלוש תחנות. אני אגיד לך מתי."
+  - Then: m6 → rejoins the happy path at c6. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
 
 ## Sentence review
 
-Step 13. 12 sentences, in this fixed order. Each is played automatically (TTS), shown with its translation and tip; buttons: 🔊 "Hear again" / "לשמוע שוב" and Next. No speaking prompt, no grading, no scoring; nothing is recorded.
-
-1. `phrase.trans.one-ticket` — One ticket to the centre, please. — כרטיס אחד למרכז, בבקשה.
-2. `phrase.trans.single` — Single, please. — הלוך, בבקשה.
-3. `phrase.trans.which-platform` — Which platform? — איזה רציף?
-4. `phrase.trans.does-stop` — Does this stop at the museum? — זה עוצר במוזיאון?
-5. `phrase.trans.next-one` — When's the next one? — מתי הבא?
-6. `reply.trans.single-return` — Single or return? — הלוך או הלוך-חזור?
-7. `reply.trans.platform-two` — Platform two. — רציף שתיים.
-8. `reply.trans.every-ten` — Every ten minutes. — כל עשר דקות.
-9. `reply.trans.three-stops` — It's three stops. — זה שלוש תחנות.
-10. `reply.trans.wrong-way` — You're going the wrong way. — אתה בכיוון הלא נכון.
-11. `reply.trans.stop-next` — Your stop is next. — התחנה שלך הבאה.
-12. `phrase.recovery.repeat` — Can you repeat that? — אפשר לחזור על זה?
+No sentence-review step in this mission.
 
 ## Cold open / ambush
 
-### M19-Q32 — cold-open (step 16, single prompt · mode: recovery)
-
-- Prompt displayed: "Heads up: a fast one is coming. Use a tool." / "שים לב: מגיע משפט מהיר. השתמש בכלי."
-- Audio played: EN "You're going the wrong way. Not this one — platform two. The next one is in ten minutes, and your stop is three stops." · FR "Vous allez dans le mauvais sens. Pas celui-là — quai numéro deux. Le prochain est dans dix minutes, et votre arrêt est à trois arrêts." · ES "Va en dirección contraria. Este no — andén número dos. El próximo sale en diez minutos, y su parada está a tres paradas."
-- Meaning of the audio (HE): "אתה בכיוון הלא נכון. לא זה — רציף שתיים. הבא בעוד עשר דקות, והתחנה שלך בעוד שלוש תחנות."
-- Buttons show: TARGET-LANGUAGE text of the two sentences; only the conversation-help tool carries 🛟; order shuffled
-- Choices:
-  1. EN "Can you repeat that?" · FR "Vous pouvez répéter ?" · ES "¿Puede repetir, por favor?" · (HE gloss "אפשר לחזור על זה?") — `phrase.recovery.repeat` — ✅ accepted
-  2. EN "Does this stop at the museum?" · FR "Ça s’arrête au musée ?" · ES "¿Para en el museo?" · (HE gloss "זה עוצר במוזיאון?") — `phrase.trans.does-stop` — ❌ wrong
-- Tests: phrase.recovery.repeat
-- Explanation shown after answering: generic: “Can you repeat that?” means “אפשר לחזור על זה?”.
-
-- Flow: screen shows ⚡ and "Heads up: a fast one is coming. Use a tool." / "שים לב: מגיע משפט מהיר. השתמש בכלי." with one button 👂 "I'm ready" / "אני מוכן"; on tap the line is spoken at TTS rate 1.12 and printed small; two shuffled buttons appear; 🔊 "Hear again" / "לשמוע שוב" replays at 0.85.
-- Success criterion: picking the accepted sentence. A wrong pick shows the feedback card (what you heard + translation, your answer, the sentence that fit) with Try again / Continue; Continue proceeds either way. Response time is recorded.
-- Recovery options offered: yes (see choices)
-- Receipt shown next: "A fast correction on the platform — and you asked them to repeat instead of boarding the wrong train." / "תיקון מהיר על הרציף — וביקשת שיחזרו במקום לעלות לרכבת הלא נכונה."
-- Potential new-language exposure: NO — every English word of the line appears in a sentence or dialogue line of Missions 01–19
+No cold open in this mission.
 
 ## Swap-in / variable content
 
 The runtime has NO slot-substitution mechanism: no sentence is generated with a different word. "Variants" exist only as (a) alternative accepted lines on one choice screen and (b) extra sentences taught beside the dialogue. Templates are mentioned only in tips.
 
-Alternative accepted lines:
+No choice screen offers two accepted non-toolkit lines.
 
-- Scene `transport`, c4: "Does this stop at the museum?" OR "When's the next one?" — all accepted, same continuation unless the routes above differ.
 
-Learner sentences taught beside the dialogue (not a line in any scene):
+Every learner sentence of this mission is a line in a scene.
 
-- `phrase.trans.single` — Single, please.
 
 ## Receipts (proof cards)
 
-- Step 7: "You recognize the booth and platform answers — single/return, platform number, frequency." / "אתה מזהה את תשובות הדלפק והרציף — הלוך/חזור, מספר רציף, תדירות."
-- Step 12: "You bought a ticket, found the platform, and confirmed the train stops at your destination." / "קנית כרטיס, מצאת רציף, ווידאת שהרכבת עוצרת ביעד שלך."
-- Step 15: "Ticket, platform and stop — at the pace of a real station." / "כרטיס, רציף ותחנה — בקצב של תחנה אמיתית."
-- Step 17: "A fast correction on the platform — and you asked them to repeat instead of boarding the wrong train." / "תיקון מהיר על הרציף — וביקשת שיחזרו במקום לעלות לרכבת הלא נכונה."
+- Step 18: "🚆 Your ride ¦ 🧭 🚉 Start → 🛑 1 → 🛑 2 ● → 🏛️ Next: Museum ¦ 🎫 Ticket: Destination: Centre / Ticket: Single ➡️ / Price: €3 / Every: 10 min ‖ 🚆 On board: Platform: 2 ⬆️ straight / Museum: 3 stops / Get off: Next stop ¦ Ticket, platform, destination — and you know when to get off." / "🚆 הנסיעה שלך ¦ 🧭 🚉 יציאה → 🛑 1 → 🛑 2 ● → 🏛️ הבאה: מוזיאון ¦ 🎫 כרטיס: יעד: מרכז / סוג: הלוך ➡️ / מחיר: €3 / תדירות: כל 10 דק׳ ‖ 🚆 ברכבת: רציף: 2 ⬆️ ישר / מוזיאון: 3 תחנות / ירידה: בתחנה הבאה ¦ כרטיס, רציף, יעד — ואתה יודע מתי לרדת."
+- Step 20: "The whole ride — from the desk to your stop, on your own." / "כל הנסיעה — מהדלפק ועד התחנה שלך, לבד."
+- Step 22: "No help — ticket, single, platform and destination." / "בלי עזרה — כרטיס, הלוך, רציף ויעד."
+- Step 32: "🚆 RIDE COMPLETE ¦ 🎫 Ticket: Destination: Centre / Ticket: Single ➡️ / Price: €3 / Every: 10 min ‖ 🚆 On board: Platform: 2 ⬆️ straight / Museum: 3 stops / Got off: ✅ the right stop ¦ You bought the ticket, found the platform, checked the train and got off at the right stop." / "🚆 הנסיעה הושלמה ¦ 🎫 כרטיס: יעד: מרכז / סוג: הלוך ➡️ / מחיר: €3 / תדירות: כל 10 דק׳ ‖ 🚆 ברכבת: רציף: 2 ⬆️ ישר / מוזיאון: 3 תחנות / ירידה: ✅ בתחנה הנכונה ¦ קנית כרטיס, מצאת את הרציף, וידאת את היעד וירדת בתחנה הנכונה."
 
 ## Audit Metadata — DO NOT FIX YET
 
-- Learner-production sentences: 5
-- Receptive (expected-reply) sentences: 6
-- Toolkit phrases bundled: 3
-- Key-sentence steps: 4
-- Expected-reply/listening items: 4
+- Learner-production sentences: 4
+- Receptive (expected-reply) sentences: 9
+- Toolkit phrases bundled: 1
+- Key-sentence steps: 0
+- Expected-reply/listening items: 0
 - Questions/quizzes (meaning quiz): 0
-- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 17
+- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 20
 - Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 18
-- One-button dialogue screens: 5
+- One-button dialogue screens: 0
 - Learner sentences never actively retrieved: 0
-- Dialogue learner choices (screens): 10
-- Wrong-answer branches: 0
-- Cold-open prompts: 1
-- Recovery opportunities: 3
-- Vocabulary pre-items: 0
-- Swap variants (extra accepted lines): 1
-- Sentences in review: 12
-- Total interactive questions: 32 (answer choices: 92)
-- Approximate total learner interactions: 48 (questions + key sentences + review cards + word-intro screen)
+- Dialogue learner choices (screens): 6
+- Wrong-answer branches: 6
+- Cold-open prompts: 0
+- Recovery opportunities: 0
+- Vocabulary pre-items: 11
+- Swap variants (extra accepted lines): 0
+- Sentences in review: 0
+- Total interactive questions: 26 (answer choices: 78)
+- Approximate total learner interactions: 27 (questions + key sentences + review cards + word-intro screen)
 
-### AUTO-FLAG — requires human review (6)
+### AUTO-FLAG — requires human review (1)
 
-- AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "transport" n1 — “Hello! Where are you headed?”
 - AUTO-FLAG — Practice item wording not in this mission's dialogue: `reply.trans.wrong-way` “You're going the wrong way.” (drilled as an expected reply / distractor, but no NPC line here says it).
-- AUTO-FLAG — Choice with no sentence id (not recorded, not scored): scene "transport" c2 — “Single, please.”
-- AUTO-FLAG — Choice with no sentence id (not recorded, not scored): scene "transport" c2b — “Single, please.”
-- AUTO-FLAG — 10 of 10 choice screens have NO wrong option (every button is accepted): transport/c1, transport/c1b, transport/c2, transport/c2b, transport/c3, transport/c3b, transport/c4, transport/c4b, transport/c5, transport/c5b.
-- AUTO-FLAG — 5 choice screens offer exactly ONE button (no decision): transport/c1b, transport/c2b, transport/c3b, transport/c4b, transport/c5b.
 
 ---
 
@@ -19434,7 +19441,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 14, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: sentence review (step 15); dialogue choice what-did-you-do/c10 (accepted)
 
 ## Expected replies / listening items
@@ -20271,7 +20278,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: sentence review (step 14); dialogue choice where-next/c4 (accepted)
 
 ## Expected replies / listening items
@@ -21164,7 +21171,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: quick-reply response (step 12, round 4, accepted); sentence review (step 18); dialogue choice room-problem/c8 (accepted)
 
 ## Expected replies / listening items
@@ -22164,7 +22171,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 14, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: sentence review (step 16); dialogue choice choosing-a-tour/c10 (accepted)
 
 ## Expected replies / listening items
@@ -23159,7 +23166,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: dialogue choice cold-transport/c4 (accepted); dialogue choice cold-hostel/c2 (accepted)
 
 ### Sentence: `phrase.recovery.repeat`
@@ -23170,7 +23177,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 14, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: dialogue choice cold-problem/c2 (accepted)
 
 ## Expected replies / listening items
@@ -24297,7 +24304,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: cold-open correct option (step 19)
 
 ## Expected replies / listening items
@@ -25129,7 +25136,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 14, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: dialogue choice pharmacy/c3 (accepted)
 
 ### Sentence: `phrase.recovery.slowly`
@@ -25140,7 +25147,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: cold-open correct option (step 16); dialogue choice pharmacy/c1 (accepted)
 
 ### Sentence: `phrase.recovery.thank-you`
@@ -25963,7 +25970,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: dialogue choice emergency/c8 (accepted)
 
 ## Expected replies / listening items
@@ -26717,7 +26724,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 14, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: dialogue choice ns-transit/c8 (accepted)
 
 ### Sentence: `phrase.recovery.slowly`
@@ -26728,7 +26735,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: dialogue choice ns-diner/c4 (accepted)
 
 ## Expected replies / listening items
@@ -27654,7 +27661,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 14, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: dialogue choice dr-problem/c2 (accepted)
 
 ### Sentence: `phrase.recovery.slowly`
@@ -27665,7 +27672,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: dialogue choice dr-pay/c4 (accepted)
 
 ## Expected replies / listening items
@@ -28850,7 +28857,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: dialogue choice fin-taxi/c6 (accepted); dialogue choice fin-evening/c2 (accepted)
 
 ### Sentence: `phrase.recovery.repeat`
@@ -28861,7 +28868,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 14, 19, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 20, 23, 24, 26, 28, 29, 30
 - Exercised here as: dialogue choice fin-lunch/c6 (accepted)
 
 ## Expected replies / listening items
@@ -29999,7 +30006,7 @@ Every learner sentence of this mission is a line in a scene.
 | 16 Hobbies & Free Time | 17 (8 / 9 / 0) | 0 | 0 | 0 | 22 | 8 | 0 | 0 | 0 | 16 words | 0 | 30 | 0 |
 | 17 Supermarket & Everyday Shopping | 10 (4 / 5 / 1) | 0 | 0 | 0 | 18 | 4 | 0 | 0 | 0 | 14 words | 0 | 22 | 1 |
 | 18 CHECKPOINT: Everyday Day | 15 (14 / 0 / 1) | 0 | 0 | 0 | 0 | 0 | 15 | 0 | 0 | no | 0 | 0 | 15 |
-| 19 Public Transport | 14 (5 / 6 / 3) | 4 | 4 | 0 | 17 | 10 | 5 | 3 | 1 | no | 1 | 32 | 6 |
+| 19 Public Transport | 14 (4 / 9 / 1) | 0 | 0 | 0 | 20 | 6 | 0 | 0 | 0 | 11 words | 0 | 26 | 1 |
 | 20 Past & Recent Events | 15 (8 / 6 / 1) | 4 | 4 | 0 | 19 | 7 | 5 | 1 | 0 | no | 1 | 30 | 3 |
 | 21 Future Travel & Plans | 16 (9 / 6 / 1) | 4 | 4 | 0 | 18 | 8 | 5 | 1 | 0 | no | 2 | 30 | 4 |
 | 22 Fixing Problems | 19 (11 / 7 / 1) | 5 | 5 | 0 | 20 | 11 | 9 | 1 | 0 | no | 1 | 36 | 7 |
@@ -30119,11 +30126,10 @@ Every learner-production sentence id of the Core, in order of first appearance. 
 | `phrase.super.just-this` | Just this, thanks. | 17 | 18 | 0 | 2 / 2 | 7 | 0 | 0 | yes | no |  |
 | `phrase.super.need-bag` | Could I get a bag? | 17 | 18 | 0 | 2 / 1 | 7 | 0 | 0 | yes | no |  |
 | `phrase.super.do-you-have` | Do you have bread? | 17 | — | 0 | 0 / 0 | 0 | 0 | 0 | no | no | **0 active retrieval opportunities** |
-| `phrase.trans.one-ticket` | One ticket to the centre, please. | 19 | 24, 28, 30 | 1 | 4 / 2 | 12 | 0 | 1 | yes | no |  |
-| `phrase.trans.which-platform` | Which platform? | 19 | 24, 28 | 1 | 2 / 2 | 6 | 0 | 1 | yes | no |  |
-| `phrase.trans.does-stop` | Does this stop at the museum? | 19 | 24, 28 | 1 | 4 / 1 | 5 | 1 | 1 | yes | no |  |
-| `phrase.trans.next-one` | When's the next one? | 19 | — | 1 | 1 / 0 | 4 | 0 | 1 | no | no |  |
-| `phrase.trans.single` | Single, please. | 19 | 24, 28 | 0 | 2 / 2 | 4 | 0 | 1 | yes | no |  |
+| `phrase.trans.one-ticket` | One ticket to the centre, please. | 19 | 24, 28, 30 | 0 | 3 / 3 | 9 | 0 | 0 | yes | no |  |
+| `phrase.trans.which-platform` | Which platform? | 19 | 24, 28 | 0 | 2 / 4 | 9 | 0 | 0 | yes | no |  |
+| `phrase.trans.does-stop` | Does this stop at the museum? | 19 | 24, 28 | 0 | 3 / 2 | 7 | 0 | 0 | yes | no |  |
+| `phrase.trans.single` | Single, please. | 19 | 24, 28 | 0 | 3 / 4 | 8 | 0 | 0 | yes | no |  |
 | `phrase.past.i-went` | I went to the old town. | 20 | 24, 30 | 1 | 3 / 2 | 11 | 0 | 1 | yes | no |  |
 | `phrase.past.i-saw` | I saw the market. | 20 | — | 1 | 1 / 0 | 6 | 0 | 1 | no | no |  |
 | `phrase.past.i-ate` | Yes, I ate fish. | 20 | — | 1 | 1 / 0 | 7 | 0 | 1 | no | no |  |
@@ -30184,7 +30190,7 @@ Every learner-production sentence id of the Core, in order of first appearance. 
 | `phrase.emerg.call-police` | Call the police! | 27 | — | 1 | 0 / 0 | 4 | 0 | 1 | no | no |  |
 | `phrase.emerg.where-hospital` | Where is the hospital? | 27 | — | 0 | 0 / 0 | 2 | 0 | 0 | no | no |  |
 
-Learner-production sentence ids: 163. With 0 active retrieval opportunities: 2.
+Learner-production sentence ids: 162. With 0 active retrieval opportunities: 2.
 
 # NPC Comprehension Coverage
 
@@ -30317,12 +30323,15 @@ Every expected-reply sentence id. "Quick response" does not exist as an exercise
 | `reply.super.everything` | Hi! Is that everything? | 17 | — | no | 0 / 0 | 0 / 0 | no | yes |
 | `reply.super.bag-q` | Do you need a bag? | 17 | — | no | 0 / 0 | 0 / 0 | no | yes |
 | `reply.super.card-here` | Insert your card here… all done. Have a nice day! | 17 | — | no | 0 / 0 | 0 / 0 | no | yes |
-| `reply.trans.single-return` | Single or return? | 19 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
-| `reply.trans.platform-two` | Platform two. | 19 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
-| `reply.trans.every-ten` | Every ten minutes. | 19 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
-| `reply.trans.three-stops` | It's three stops. | 19 | 24 | yes (1) | 0 / 0 | 0 / 1 | yes | yes |
+| `reply.trans.where-headed` | Hello! Where are you headed? | 19 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.trans.single-return` | Single or return? | 19 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.trans.fare` | That's three euros. It leaves every ten minutes. | 19 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.trans.platform-straight` | Platform two. Straight ahead. | 19 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.trans.hop-on` | The train's right here. Hop on. | 19 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.trans.stops-tell` | Yes — it's three stops. I'll tell you when. | 19 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.trans.stop-is-next` | Here we are — your stop is next. Enjoy the museum! | 19 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.trans.three-stops` | It's three stops. | 19 | 24 | no | 0 / 0 | 0 / 1 | yes | yes |
 | `reply.trans.wrong-way` | You're going the wrong way. | 19 | 24 | no | 0 / 0 | 1 / 0 | yes | **no** |
-| `reply.trans.stop-next` | Your stop is next. | 19 | — | no | 0 / 0 | 0 / 0 | no | yes |
 | `reply.past.where-were-you` | Where were you yesterday? | 20 | — | no | 0 / 0 | 0 / 0 | no | yes |
 | `reply.past.what-did-you-see` | What did you see? | 20 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
 | `reply.past.did-you-eat` | Did you eat there? | 20 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
@@ -30393,7 +30402,6 @@ Happy-path NPC lines containing a question, for which the mission has no expecte
 | 18 | cold-dinner / n3 | Are you ready to order? |
 | 18 | cold-dinner / n5 | Of course. Anything to drink? |
 | 18 | cold-dinner / n7 | Is everything okay? |
-| 19 | transport / n1 | Hello! Where are you headed? |
 | 20 | what-did-you-do / n13 | Me? Nothing! I was tired. I slept all day. |
 | 21 | where-next / n1 | So, where are you going next? |
 | 21 | where-next / n7 | Nice. Anything else? |
@@ -30453,7 +30461,7 @@ Happy-path NPC lines containing a question, for which the mission has no expecte
 | 30 | fin-evening / n1 | Good evening! Is everything okay with your room? And breakfast tomorrow — is seven okay for you? |
 | 30 | fin-evening / n3 | Perfect. And how was your day? |
 
-Total: 80.
+Total: 79.
 
 # Complete Existing Question Bank
 
@@ -36081,256 +36089,138 @@ No questions.
 
 ## Mission 19 — Public Transport
 
-**M19-Q01** — expected-reply
-- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (1/4)
-- Audio: Single or return? — (הלוך או הלוך-חזור?)
-- A: הלוך או הלוך-חזור? / Single or return? ✅
-- B: רציף שתיים. / Platform two.
-- C: כל עשר דקות. / Every ten minutes.
-- Correct: Single or return?
-- Tests: reply.trans.single-return
-
-**M19-Q02** — expected-reply
-- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (2/4)
-- Audio: Platform two. — (רציף שתיים.)
-- A: רציף שתיים. / Platform two. ✅
-- B: הלוך או הלוך-חזור? / Single or return?
-- C: כל עשר דקות. / Every ten minutes.
-- Correct: Platform two.
-- Tests: reply.trans.platform-two
-
-**M19-Q03** — expected-reply
-- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (3/4)
-- Audio: Every ten minutes. — (כל עשר דקות.)
-- A: כל עשר דקות. / Every ten minutes. ✅
-- B: הלוך או הלוך-חזור? / Single or return?
-- C: רציף שתיים. / Platform two.
-- Correct: Every ten minutes.
-- Tests: reply.trans.every-ten
-
-**M19-Q04** — expected-reply
-- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (4/4)
-- Audio: It's three stops. — (זה שלוש תחנות.)
-- A: זה שלוש תחנות. / It's three stops. ✅
-- B: הלוך או הלוך-חזור? / Single or return?
-- C: רציף שתיים. / Platform two.
-- Correct: It's three stops.
-- Tests: reply.trans.three-stops
-
-**M19-Q05** — visual-match
-- Prompt: "Platform, stops or minutes? Tap what you hear" / "רציף, תחנות או דקות? הקש על מה ששמעת"
-- Audio: Platform two. — (רציף שתיים.)
-- A: 🚉2 ✅
-- B: 🚉3
-- C: 🛑2
-- D: 🛑3
-- E: ⏱️5
-- F: ⏱️10
-- Correct: 🚉2
-- Tests: reply.trans.platform-two
-
-**M19-Q06** — visual-match
-- Prompt: "Platform, stops or minutes? Tap what you hear" / "רציף, תחנות או דקות? הקש על מה ששמעת"
-- Audio: It's three stops. — (זה שלוש תחנות.)
-- A: 🚉2
-- B: 🚉3
-- C: 🛑2
-- D: 🛑3 ✅
-- E: ⏱️5
-- F: ⏱️10
-- Correct: 🛑3
-- Tests: reply.trans.three-stops
-
-**M19-Q07** — visual-match
-- Prompt: "Platform, stops or minutes? Tap what you hear" / "רציף, תחנות או דקות? הקש על מה ששמעת"
-- Audio: Every ten minutes. — (כל עשר דקות.)
-- A: 🚉2
-- B: 🚉3
-- C: 🛑2
-- D: 🛑3
-- E: ⏱️5
-- F: ⏱️10 ✅
-- Correct: ⏱️10
-- Tests: reply.trans.every-ten
-
-**M19-Q08** — visual-match
-- Prompt: "Platform, stops or minutes? Tap what you hear" / "רציף, תחנות או דקות? הקש על מה ששמעת"
-- Audio: Platform three. — (רציף שלוש.)
-- A: 🚉2
-- B: 🚉3 ✅
-- C: 🛑2
-- D: 🛑3
-- E: ⏱️5
-- F: ⏱️10
-- Correct: 🚉3
-- Tests: (no sentence id — not recorded)
-
-**M19-Q09** — quick-reply
-- Prompt: "At the station — what do you say?" / "בתחנה — מה אומרים?"
+**M19-Q01** — quick-reply
+- Prompt: "🚆 Your ride ¦ 🎫 Ticket: Destination: Centre / Ticket: ? / Price: ? / Every: ? ‖ 🚉 Ride: Platform: ? / Museum: ? / Get off: ? ¦ What do you say?" / "🚆 הנסיעה שלך ¦ 🎫 כרטיס: יעד: מרכז / סוג: ? / מחיר: ? / תדירות: ? ‖ 🚉 נסיעה: רציף: ? / מוזיאון: ? / ירידה: ? ¦ מה אתה אומר?"
 - Audio: Hello! Where are you headed? — (שלום! לאן אתה נוסע?)
 - A: One ticket to the centre, please. ✅
-- B: Which platform?
-- C: When's the next one?
+- B: Thank you!
 - Correct: One ticket to the centre, please.
 - Tests: phrase.trans.one-ticket
 
-**M19-Q10** — quick-reply
-- Prompt: "At the station — what do you say?" / "בתחנה — מה אומרים?"
+**M19-Q02** — visual-match
+- Prompt: "🚆 Your ride ¦ 🎫 Ticket: Destination: Centre / Ticket: ? / Price: ? / Every: ? ‖ 🚉 Ride: Platform: ? / Museum: ? / Get off: ? ¦ Which ticket is this? Tap it." / "🚆 הנסיעה שלך ¦ 🎫 כרטיס: יעד: מרכז / סוג: ? / מחיר: ? / תדירות: ? ‖ 🚉 נסיעה: רציף: ? / מוזיאון: ? / ירידה: ? ¦ איזה כרטיס זה? הקש."
+- Audio: Single, please. — (הלוך, בבקשה.)
+- A: ➡️ “One way — there only” / “לכיוון אחד — רק לשם” ✅
+- B: ↔️ “There and back” / “לשם ובחזרה”
+- Correct: ➡️ “One way — there only” / “לכיוון אחד — רק לשם”
+- Tests: (no sentence id — not recorded)
+
+**M19-Q03** — quick-reply
+- Prompt: "🚆 Your ride ¦ 🎫 Ticket: Destination: Centre / Ticket: ? / Price: ? / Every: ? ‖ 🚉 Ride: Platform: ? / Museum: ? / Get off: ? ¦ What do you answer?" / "🚆 הנסיעה שלך ¦ 🎫 כרטיס: יעד: מרכז / סוג: ? / מחיר: ? / תדירות: ? ‖ 🚉 נסיעה: רציף: ? / מוזיאון: ? / ירידה: ? ¦ מה אתה עונה?"
 - Audio: Single or return? — (הלוך או הלוך-חזור?)
 - A: Single, please. ✅
-- B: Does this stop at the museum?
-- C: One ticket to the centre, please.
+- B: One ticket to the centre, please.
+- C: Thank you!
 - Correct: Single, please.
 - Tests: phrase.trans.single
 
-**M19-Q11** — quick-reply
-- Prompt: "At the station — what do you say?" / "בתחנה — מה אומרים?"
+**M19-Q04** — visual-match
+- Prompt: "🚆 Your ride ¦ 🎫 Ticket: Destination: Centre / Ticket: Single ➡️ / Price: ? / Every: ? ‖ 🚉 Ride: Platform: ? / Museum: ? / Get off: ? ¦ The fare, and how often it leaves? Tap it." / "🚆 הנסיעה שלך ¦ 🎫 כרטיס: יעד: מרכז / סוג: הלוך ➡️ / מחיר: ? / תדירות: ? ‖ 🚉 נסיעה: רציף: ? / מוזיאון: ? / ירידה: ? ¦ מה המחיר, וכל כמה זמן יוצאת הרכבת? הקש."
 - Audio: That's three euros. It leaves every ten minutes. — (זה שלושה יורו. יוצא כל עשר דקות.)
-- A: Which platform? ✅
-- B: Thank you! ✅
-- C: One ticket to the centre, please.
-- Correct: Which platform? | Thank you!
-- Tests: phrase.trans.which-platform, phrase.recovery.thank-you
-
-**M19-Q12** — quick-reply
-- Prompt: "At the station — what do you say?" / "בתחנה — מה אומרים?"
-- Audio: The train's right here. Hop on. — (הרכבת ממש כאן. עלה.)
-- A: Does this stop at the museum? ✅
-- B: When's the next one? ✅
-- C: One ticket to the centre, please.
-- Correct: Does this stop at the museum? | When's the next one?
-- Tests: phrase.trans.does-stop, phrase.trans.next-one
-
-**M19-Q13** — quick-reply
-- Prompt: "At the station — what do you say?" / "בתחנה — מה אומרים?" — situation shown: "You just missed the train. You want to know when the next one is." / "פספסת את הרכבת. אתה רוצה לדעת מתי הבאה."
-- Audio: (nothing is played — a situation is shown) — ()
-- A: When's the next one? ✅
-- B: Which platform?
-- C: Does this stop at the museum?
-- Correct: When's the next one?
-- Tests: phrase.trans.next-one
-
-**M19-Q14** — quick-reply
-- Prompt: "At the station — what do you say?" / "בתחנה — מה אומרים?"
-- Audio: You're going the wrong way. — (אתה בכיוון הלא נכון.)
-- A: Which platform? ✅
-- B: Can you repeat that? ✅
-- C: One ticket to the centre, please.
-- Correct: Which platform? | Can you repeat that?
-- Tests: phrase.trans.which-platform, phrase.recovery.repeat
-
-**M19-Q15** — swap-it
-- Prompt: "A ticket to where?" / "לאן הכרטיס?" — cue 🏛️ "You are going to the museum" / "אתה נוסע למוזיאון" — frame EN "One ticket to ___, please." · FR "Un billet pour ___, s’il vous plaît." · ES "Un billete para ___, por favor."
-- Audio: (nothing before the tap; the completed sentence is spoken after it) — ()
-- A: the centre → One ticket to the centre, please.
-- B: the museum → One ticket to the museum, please. ✅
-- C: the airport → One ticket to the airport, please.
-- Correct: the museum → One ticket to the museum, please.
-- Tests: phrase.trans.one-ticket
-
-**M19-Q16** — swap-it
-- Prompt: "A ticket to where?" / "לאן הכרטיס?" — cue ✈️ "You are going to the airport" / "אתה נוסע לשדה התעופה" — frame EN "One ticket to ___, please." · FR "Un billet pour ___, s’il vous plaît." · ES "Un billete para ___, por favor."
-- Audio: (nothing before the tap; the completed sentence is spoken after it) — ()
-- A: the centre → One ticket to the centre, please.
-- B: the museum → One ticket to the museum, please.
-- C: the airport → One ticket to the airport, please. ✅
-- Correct: the airport → One ticket to the airport, please.
-- Tests: phrase.trans.one-ticket
-
-**M19-Q17** — swap-it
-- Prompt: "A ticket to where?" / "לאן הכרטיס?" — cue 🏙️ "You are going to the centre" / "אתה נוסע למרכז" — frame EN "One ticket to ___, please." · FR "Un billet pour ___, s’il vous plaît." · ES "Un billete para ___, por favor."
-- Audio: (nothing before the tap; the completed sentence is spoken after it) — ()
-- A: the centre → One ticket to the centre, please. ✅
-- B: the museum → One ticket to the museum, please.
-- C: the airport → One ticket to the airport, please.
-- Correct: the centre → One ticket to the centre, please.
-- Tests: phrase.trans.one-ticket
-
-**M19-Q18** — dialogue-choice
-- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio: Hello! Where are you headed? — (שלום! לאן אתה נוסע?)
-- A: One ticket to the centre, please. ✅
-- B: Can you repeat that? ✅
-- Correct: One ticket to the centre, please. | Can you repeat that?
-- Tests: phrase.trans.one-ticket, phrase.recovery.repeat
-
-**M19-Q19** — dialogue-choice
-- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio: Where — are you — going? — (לאן — אתה — נוסע?)
-- A: One ticket to the centre, please. ✅
-- Correct: One ticket to the centre, please.
-- Tests: phrase.trans.one-ticket
-
-**M19-Q20** — dialogue-choice
-- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio: Single or return? — (הלוך או הלוך-חזור?)
-- A: Single, please. ✅
-- B: Please speak slowly. ✅
-- Correct: Single, please. | Please speak slowly.
-- Tests: phrase.recovery.slowly
-
-**M19-Q21** — dialogue-choice
-- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio: Single — or — return? — (הלוך — או — הלוך-חזור?)
-- A: Single, please. ✅
-- Correct: Single, please.
+- A: 💶 €3 · 🕒 10 min ✅
+- B: 💶 €10 · 🕒 3 min
+- C: 💶 €3 · 🕒 2 min
+- D: 💶 €2 · 🕒 10 min
+- Correct: 💶 €3 · 🕒 10 min
 - Tests: (no sentence id — not recorded)
 
-**M19-Q22** — dialogue-choice
-- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
+**M19-Q05** — quick-reply
+- Prompt: "🚆 Your ride ¦ 🎫 Ticket: Destination: Centre / Ticket: Single ➡️ / Price: €3 / Every: 10 min ‖ 🚉 Ride: Platform: ? / Museum: ? / Get off: ? ¦ What do you ask?" / "🚆 הנסיעה שלך ¦ 🎫 כרטיס: יעד: מרכז / סוג: הלוך ➡️ / מחיר: €3 / תדירות: כל 10 דק׳ ‖ 🚉 נסיעה: רציף: ? / מוזיאון: ? / ירידה: ? ¦ מה אתה שואל?"
 - Audio: That's three euros. It leaves every ten minutes. — (זה שלושה יורו. יוצא כל עשר דקות.)
 - A: Which platform? ✅
-- B: Thank you! ✅
-- Correct: Which platform? | Thank you!
-- Tests: phrase.trans.which-platform, phrase.recovery.thank-you
+- B: Single, please.
+- C: One ticket to the centre, please.
+- Correct: Which platform?
+- Tests: phrase.trans.which-platform
 
-**M19-Q23** — dialogue-choice
-- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
+**M19-Q06** — visual-match
+- Prompt: "🚆 Your ride ¦ 🎫 Ticket: Destination: Centre / Ticket: Single ➡️ / Price: €3 / Every: 10 min ‖ 🚉 Ride: Platform: ? / Museum: ? / Get off: ? ¦ Which platform, and which way? Tap it." / "🚆 הנסיעה שלך ¦ 🎫 כרטיס: יעד: מרכז / סוג: הלוך ➡️ / מחיר: €3 / תדירות: כל 10 דק׳ ‖ 🚉 נסיעה: רציף: ? / מוזיאון: ? / ירידה: ? ¦ איזה רציף, ולאיזה כיוון? הקש."
 - Audio: Platform two. Straight ahead. — (רציף שתיים. ישר קדימה.)
-- A: Thank you! ✅
-- Correct: Thank you!
-- Tests: phrase.recovery.thank-you
+- A: 🚉 1 ⬆️
+- B: 🚉 2 ⬆️ ✅
+- C: 🚉 3 ⬆️
+- D: 🚉 1 ⬅️
+- E: 🚉 2 ⬅️
+- F: 🚉 3 ⬅️
+- Correct: 🚉 2 ⬆️
+- Tests: (no sentence id — not recorded)
 
-**M19-Q24** — dialogue-choice
-- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
+**M19-Q07** — quick-reply
+- Prompt: "🚆 Your ride ¦ 🎫 Ticket: Destination: Centre / Ticket: Single ➡️ / Price: €3 / Every: 10 min ‖ 🚉 Ride: Platform: 2 ⬆️ straight / Museum: ? / Get off: ? ¦ What do you ask?" / "🚆 הנסיעה שלך ¦ 🎫 כרטיס: יעד: מרכז / סוג: הלוך ➡️ / מחיר: €3 / תדירות: כל 10 דק׳ ‖ 🚉 נסיעה: רציף: 2 ⬆️ ישר / מוזיאון: ? / ירידה: ? ¦ מה אתה שואל?"
 - Audio: The train's right here. Hop on. — (הרכבת ממש כאן. עלה.)
 - A: Does this stop at the museum? ✅
-- B: When's the next one? ✅
-- Correct: Does this stop at the museum? | When's the next one?
-- Tests: phrase.trans.does-stop, phrase.trans.next-one
-
-**M19-Q25** — dialogue-choice
-- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio: The next one? Every ten minutes — but this one is fine, hop on. — (הבא? כל עשר דקות — אבל זה בסדר, עלה.)
-- A: Does this stop at the museum? ✅
+- B: Which platform?
+- C: Single, please.
 - Correct: Does this stop at the museum?
 - Tests: phrase.trans.does-stop
 
-**M19-Q26** — dialogue-choice
+**M19-Q08** — visual-match
+- Prompt: "🚆 Your ride ¦ 🎫 Ticket: Destination: Centre / Ticket: Single ➡️ / Price: €3 / Every: 10 min ‖ 🚆 On board: Platform: 2 ⬆️ straight / Museum: ? / Get off: ? ¦ Where is the museum? Tap its stop." / "🚆 הנסיעה שלך ¦ 🎫 כרטיס: יעד: מרכז / סוג: הלוך ➡️ / מחיר: €3 / תדירות: כל 10 דק׳ ‖ 🚆 ברכבת: רציף: 2 ⬆️ ישר / מוזיאון: ? / ירידה: ? ¦ איפה המוזיאון? הקש על התחנה."
+- Audio: Yes — it's three stops. I'll tell you when. — (כן — זה שלוש תחנות. אני אגיד לך מתי.)
+- A: 🛑 1
+- B: 🛑 2
+- C: 🛑 3 ✅
+- Correct: 🛑 3
+- Tests: (no sentence id — not recorded)
+
+**M19-Q09** — dialogue-choice
+- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
+- Audio: Hello! Where are you headed? — (שלום! לאן אתה נוסע?)
+- A: One ticket to the centre, please. ✅
+- B: Does this stop at the museum?
+- Correct: One ticket to the centre, please.
+- Tests: phrase.trans.one-ticket, phrase.trans.does-stop
+
+**M19-Q10** — dialogue-choice
+- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
+- Audio: Single or return? — (הלוך או הלוך-חזור?)
+- A: Single, please. ✅
+- B: Which platform?
+- Correct: Single, please.
+- Tests: phrase.trans.single, phrase.trans.which-platform
+
+**M19-Q11** — dialogue-choice
+- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
+- Audio: That's three euros. It leaves every ten minutes. — (זה שלושה יורו. יוצא כל עשר דקות.)
+- A: Which platform? ✅
+- B: Single, please.
+- Correct: Which platform?
+- Tests: phrase.trans.which-platform, phrase.trans.single
+
+**M19-Q12** — dialogue-choice
+- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
+- Audio: Platform two. Straight ahead. — (רציף שתיים. ישר קדימה.)
+- A: Thank you! ✅
+- B: One ticket to the centre, please.
+- Correct: Thank you!
+- Tests: phrase.recovery.thank-you, phrase.trans.one-ticket
+
+**M19-Q13** — dialogue-choice
+- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
+- Audio: The train's right here. Hop on. — (הרכבת ממש כאן. עלה.)
+- A: Does this stop at the museum? ✅
+- B: Which platform?
+- Correct: Does this stop at the museum?
+- Tests: phrase.trans.does-stop, phrase.trans.which-platform
+
+**M19-Q14** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Yes — it's three stops. I'll tell you when. — (כן — זה שלוש תחנות. אני אגיד לך מתי.)
 - A: Thank you! ✅
-- B: Can you repeat that? ✅
-- Correct: Thank you! | Can you repeat that?
-- Tests: phrase.recovery.thank-you, phrase.recovery.repeat
-
-**M19-Q27** — dialogue-choice
-- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio: It's — three — stops. — (זה — שלוש — תחנות.)
-- A: Thank you! ✅
+- B: Single, please.
 - Correct: Thank you!
-- Tests: phrase.recovery.thank-you
+- Tests: phrase.recovery.thank-you, phrase.trans.single
 
-**M19-Q28** — quick-reply
+**M19-Q15** — quick-reply
 - Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio: Hello! Where are you headed? — (שלום! לאן אתה נוסע?)
 - A: One ticket to the centre, please. ✅
 - B: Does this stop at the museum?
-- C: When's the next one?
+- C: Which platform?
 - Correct: One ticket to the centre, please.
 - Tests: phrase.trans.one-ticket
 
-**M19-Q29** — quick-reply
+**M19-Q16** — quick-reply
 - Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio: Single or return? — (הלוך או הלוך-חזור?)
 - A: Single, please. ✅
@@ -36339,8 +36229,54 @@ No questions.
 - Correct: Single, please.
 - Tests: phrase.trans.single
 
-**M19-Q30** — quick-reply
+**M19-Q17** — quick-reply
 - Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: That's three euros. It leaves every ten minutes. — (זה שלושה יורו. יוצא כל עשר דקות.)
+- A: Which platform? ✅
+- B: Single, please.
+- C: Does this stop at the museum?
+- Correct: Which platform?
+- Tests: phrase.trans.which-platform
+
+**M19-Q18** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: The train's right here. Hop on. — (הרכבת ממש כאן. עלה.)
+- A: Does this stop at the museum? ✅
+- B: One ticket to the centre, please.
+- C: Which platform?
+- Correct: Does this stop at the museum?
+- Tests: phrase.trans.does-stop
+
+**M19-Q19** — quick-reply
+- Prompt: "🚆 Your ride ¦ 🎫 Ticket: Destination: Centre / Ticket: ? / Price: ? / Every: ? ‖ 🚉 Ride: Platform: ? / Museum: ? / Get off: ? ¦ One ride. Go." / "🚆 הנסיעה שלך ¦ 🎫 כרטיס: יעד: מרכז / סוג: ? / מחיר: ? / תדירות: ? ‖ 🚉 נסיעה: רציף: ? / מוזיאון: ? / ירידה: ? ¦ נסיעה אחת. קדימה."
+- Audio: Hello! Where are you headed? — (שלום! לאן אתה נוסע?)
+- A: One ticket to the centre, please. ✅
+- B: Which platform?
+- C: Does this stop at the museum?
+- Correct: One ticket to the centre, please.
+- Tests: phrase.trans.one-ticket
+
+**M19-Q20** — quick-reply
+- Prompt: "🚆 Your ride ¦ 🎫 Ticket: Destination: Centre / Ticket: ? / Price: ? / Every: ? ‖ 🚉 Ride: Platform: ? / Museum: ? / Get off: ?" / "🚆 הנסיעה שלך ¦ 🎫 כרטיס: יעד: מרכז / סוג: ? / מחיר: ? / תדירות: ? ‖ 🚉 נסיעה: רציף: ? / מוזיאון: ? / ירידה: ?"
+- Audio: Single or return? — (הלוך או הלוך-חזור?)
+- A: Single, please. ✅
+- B: One ticket to the centre, please.
+- C: Does this stop at the museum?
+- Correct: Single, please.
+- Tests: phrase.trans.single
+
+**M19-Q21** — visual-match
+- Prompt: "🚆 Your ride ¦ 🎫 Ticket: Destination: Centre / Ticket: Single ➡️ / Price: ? / Every: ? ‖ 🚉 Ride: Platform: ? / Museum: ? / Get off: ? ¦ The fare, and how often it leaves? Tap it." / "🚆 הנסיעה שלך ¦ 🎫 כרטיס: יעד: מרכז / סוג: הלוך ➡️ / מחיר: ? / תדירות: ? ‖ 🚉 נסיעה: רציף: ? / מוזיאון: ? / ירידה: ? ¦ מה המחיר, וכל כמה זמן יוצאת הרכבת? הקש."
+- Audio: That's three euros. It leaves every ten minutes. — (זה שלושה יורו. יוצא כל עשר דקות.)
+- A: 💶 €3 · 🕒 10 min ✅
+- B: 💶 €10 · 🕒 3 min
+- C: 💶 €3 · 🕒 2 min
+- D: 💶 €2 · 🕒 10 min
+- Correct: 💶 €3 · 🕒 10 min
+- Tests: (no sentence id — not recorded)
+
+**M19-Q22** — quick-reply
+- Prompt: "🚆 Your ride ¦ 🎫 Ticket: Destination: Centre / Ticket: Single ➡️ / Price: €3 / Every: 10 min ‖ 🚉 Ride: Platform: ? / Museum: ? / Get off: ?" / "🚆 הנסיעה שלך ¦ 🎫 כרטיס: יעד: מרכז / סוג: הלוך ➡️ / מחיר: €3 / תדירות: כל 10 דק׳ ‖ 🚉 נסיעה: רציף: ? / מוזיאון: ? / ירידה: ?"
 - Audio: That's three euros. It leaves every ten minutes. — (זה שלושה יורו. יוצא כל עשר דקות.)
 - A: Which platform? ✅
 - B: One ticket to the centre, please.
@@ -36348,22 +36284,44 @@ No questions.
 - Correct: Which platform?
 - Tests: phrase.trans.which-platform
 
-**M19-Q31** — quick-reply
-- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+**M19-Q23** — visual-match
+- Prompt: "🚆 Your ride ¦ 🎫 Ticket: Destination: Centre / Ticket: Single ➡️ / Price: €3 / Every: 10 min ‖ 🚉 Ride: Platform: ? / Museum: ? / Get off: ? ¦ Which platform, and which way? Tap it." / "🚆 הנסיעה שלך ¦ 🎫 כרטיס: יעד: מרכז / סוג: הלוך ➡️ / מחיר: €3 / תדירות: כל 10 דק׳ ‖ 🚉 נסיעה: רציף: ? / מוזיאון: ? / ירידה: ? ¦ איזה רציף, ולאיזה כיוון? הקש."
+- Audio: Platform two. Straight ahead. — (רציף שתיים. ישר קדימה.)
+- A: 🚉 1 ⬆️
+- B: 🚉 2 ⬆️ ✅
+- C: 🚉 3 ⬆️
+- D: 🚉 1 ⬅️
+- E: 🚉 2 ⬅️
+- F: 🚉 3 ⬅️
+- Correct: 🚉 2 ⬆️
+- Tests: (no sentence id — not recorded)
+
+**M19-Q24** — quick-reply
+- Prompt: "🚆 Your ride ¦ 🎫 Ticket: Destination: Centre / Ticket: Single ➡️ / Price: €3 / Every: 10 min ‖ 🚉 Ride: Platform: 2 ⬆️ straight / Museum: ? / Get off: ?" / "🚆 הנסיעה שלך ¦ 🎫 כרטיס: יעד: מרכז / סוג: הלוך ➡️ / מחיר: €3 / תדירות: כל 10 דק׳ ‖ 🚉 נסיעה: רציף: 2 ⬆️ ישר / מוזיאון: ? / ירידה: ?"
 - Audio: The train's right here. Hop on. — (הרכבת ממש כאן. עלה.)
 - A: Does this stop at the museum? ✅
-- B: One ticket to the centre, please.
-- C: Single, please.
+- B: Single, please.
+- C: Which platform?
 - Correct: Does this stop at the museum?
 - Tests: phrase.trans.does-stop
 
-**M19-Q32** — cold-open
-- Prompt: "Heads up: a fast one is coming. Use a tool." / "שים לב: מגיע משפט מהיר. השתמש בכלי."
-- Audio: You're going the wrong way. Not this one — platform two. The next one is in ten minutes, and your stop is three stops. — (אתה בכיוון הלא נכון. לא זה — רציף שתיים. הבא בעוד עשר דקות, והתחנה שלך בעוד שלוש תחנות.)
-- A: Can you repeat that? ✅
-- B: Does this stop at the museum?
-- Correct: Can you repeat that?
-- Tests: phrase.recovery.repeat
+**M19-Q25** — visual-match
+- Prompt: "🚆 Your ride ¦ 🎫 Ticket: Destination: Centre / Ticket: Single ➡️ / Price: €3 / Every: 10 min ‖ 🚆 On board: Platform: 2 ⬆️ straight / Museum: ? / Get off: ? ¦ Where is the museum? Tap its stop." / "🚆 הנסיעה שלך ¦ 🎫 כרטיס: יעד: מרכז / סוג: הלוך ➡️ / מחיר: €3 / תדירות: כל 10 דק׳ ‖ 🚆 ברכבת: רציף: 2 ⬆️ ישר / מוזיאון: ? / ירידה: ? ¦ איפה המוזיאון? הקש על התחנה."
+- Audio: Yes — it's three stops. I'll tell you when. — (כן — זה שלוש תחנות. אני אגיד לך מתי.)
+- A: 🛑 1
+- B: 🛑 2
+- C: 🛑 3 ✅
+- Correct: 🛑 3
+- Tests: (no sentence id — not recorded)
+
+**M19-Q26** — visual-match
+- Prompt: "🚆 Your ride ¦ 🧭 🚉 Start ● → 🛑 1 → 🛑 2 → 🏛️ 3 · Museum ¦ 🎫 Ticket: Destination: Centre / Ticket: Single ➡️ / Price: €3 / Every: 10 min ‖ 🚆 On board: Platform: 2 ⬆️ straight / Museum: 3 stops / Get off: ? ¦ What do you do now?" / "🚆 הנסיעה שלך ¦ 🧭 🚉 יציאה ● → 🛑 1 → 🛑 2 → 🏛️ 3 · מוזיאון ¦ 🎫 כרטיס: יעד: מרכז / סוג: הלוך ➡️ / מחיר: €3 / תדירות: כל 10 דק׳ ‖ 🚆 ברכבת: רציף: 2 ⬆️ ישר / מוזיאון: 3 תחנות / ירידה: ? ¦ מה עושים עכשיו?"
+- Audio: Here we are — your stop is next. Enjoy the museum! — (הגענו — התחנה שלך הבאה. תיהנה במוזיאון!)
+- A: 🚪 “Get off at the next stop” / “יורדים בתחנה הבאה” ✅
+- B: 🛑 “Three more stops” / “עוד שלוש תחנות”
+- C: ↩️ “You missed your stop” / “פספסת את התחנה”
+- Correct: 🚪 “Get off at the next stop” / “יורדים בתחנה הבאה”
+- Tests: (no sentence id — not recorded)
 
 ## Mission 20 — Past & Recent Events
 
@@ -38636,17 +38594,17 @@ No questions.
 # Totals
 
 - Missions exported: 30
-- Learner-production sentence ids: 163
-- Expected-reply (receptive) sentence ids: 171
+- Learner-production sentence ids: 162
+- Expected-reply (receptive) sentence ids: 174
 - Sentence listings across missions (with reuse): 514
-- Expected-reply questions: 67
+- Expected-reply questions: 63
 - Meaning quizzes: 7
-- Active-practice questions: 614
-- Dialogue choice screens: 234
-- Cold opens: 5
-- Total interactive questions: 927
-- Total answer choices: 2548
-- Wrong-answer branches: 110
-- Recovery opportunities: 40
+- Active-practice questions: 617
+- Dialogue choice screens: 230
+- Cold opens: 4
+- Total interactive questions: 921
+- Total answer choices: 2534
+- Wrong-answer branches: 116
+- Recovery opportunities: 37
 - Learner sentences with 0 active retrieval opportunities: 2
-- Auto-flags: 202
+- Auto-flags: 197
