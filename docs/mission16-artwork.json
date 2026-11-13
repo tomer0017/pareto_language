@@ -1,0 +1,98 @@
+[
+  {
+    "name": "friends",
+    "width": 1672,
+    "height": 941,
+    "bytes": 658403,
+    "sha256": "40a65e43c55382a11c6136d565b39764566a91365d6e2f8c4c09a4d9838174d2",
+    "review": {
+      "meaning": "Two consistent young adult male travelers chatting at a sunny coastal cafe; no hobby gear, school or plan.",
+      "text": false,
+      "preferenceCue": false
+    }
+  },
+  {
+    "name": "surfing",
+    "width": 1672,
+    "height": 941,
+    "bytes": 739444,
+    "sha256": "6ccd498bf9b48a64b556db3cd47ba08a43b14856e984a8c2fde72ef85d06e6ad",
+    "review": {
+      "meaning": "Primary traveler actively riding a wave; full board visible, focused neutral expression, no preference symbols.",
+      "text": false,
+      "preferenceCue": false
+    }
+  },
+  {
+    "name": "drawing",
+    "width": 1672,
+    "height": 941,
+    "bytes": 654416,
+    "sha256": "ba9d8ce67a859953d69b16441cef9ba969d32b01567ed5de50ce3e2dbfc9c482",
+    "review": {
+      "meaning": "Primary traveler drawing with pencil touching sketchbook in neutral daylight; no evening or preference cue.",
+      "text": false,
+      "preferenceCue": false
+    }
+  },
+  {
+    "name": "music",
+    "width": 1672,
+    "height": 941,
+    "bytes": 632454,
+    "sha256": "ae204d95db99c1ada53de0c7af2cd728557fc7d87807210978d5f26e8282a2c7",
+    "review": {
+      "meaning": "Primary traveler listening through visible over-ear headphones; no instrument, performance or preference symbols.",
+      "text": false,
+      "preferenceCue": false
+    }
+  },
+  {
+    "name": "running",
+    "width": 1672,
+    "height": 941,
+    "bytes": 683137,
+    "sha256": "9ad021f7854dde35af232727a5026409591c263434b47f9e1b7b6490c2386928",
+    "review": {
+      "meaning": "Primary traveler jogging with whole body and both feet visible; neutral expression, no dislike or exhaustion cue.",
+      "text": false,
+      "preferenceCue": false
+    }
+  },
+  {
+    "name": "diving",
+    "width": 1672,
+    "height": 941,
+    "bytes": 696627,
+    "sha256": "b2de3138d37a8377efb379318e25ab9620ab8116362837984530ffd31b9bbdc9",
+    "review": {
+      "meaning": "Primary traveler underwater with mask, tank, regulator and fins; no school, friend or future-plan information.",
+      "text": false,
+      "preferenceCue": false
+    }
+  },
+  {
+    "name": "diving-school",
+    "width": 1672,
+    "height": 940,
+    "bytes": 852104,
+    "sha256": "b1c3ad6f8ec00c0a9c835c226ba6b36f24b18fd9c9bf5c833039b2d58c9ce0d2",
+    "review": {
+      "meaning": "Small coastal dive center beside sand and sea, tanks masks fins visible; no text, travelers or tomorrow plan.",
+      "text": false,
+      "preferenceCue": false
+    }
+  },
+  {
+    "name": "free-time-match",
+    "width": 1672,
+    "height": 941,
+    "bytes": 736835,
+    "sha256": "76632a1a92f92652adb253d9625c0b5674da997fd3b980b711c4795561065840",
+    "review": {
+      "meaning": "Same two friends holding scuba masks outside the same dive center; result-only shared activity reinforcement.",
+      "text": false,
+      "preferenceCue": false
+    }
+  }
+]

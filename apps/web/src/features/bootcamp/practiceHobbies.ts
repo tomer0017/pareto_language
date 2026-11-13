@@ -28,25 +28,25 @@ import type { BootcampStep, MatchTile } from './types.js';
  */
 
 /**
- * PLACEHOLDERS — VISUAL PRODUCTION REQUIRED (Astra pass): one friend, one beach town, one style.
- * Each slot is an emoji until its artwork exists (`image` set): docs/MISSION16_ASSET_MANIFEST.md.
+ * Production artwork: one friend, one beach town, one style.
+ * Images are primary; semantic emoji remain the slot fallback. See docs/MISSION16_ASSET_MANIFEST.md.
  * The five hobbies get EQUAL treatment (same frame, same size, same style). Pictures are on cards and
  * as the subject of a sorting round — never an answer.
  */
 export type M16Hobby = 'surfing' | 'drawing' | 'music' | 'running' | 'diving';
 type M16Slot = 'friends' | M16Hobby | 'diving-school';
 export const M16_SLOTS: Record<M16Slot, { emoji: string; image?: string }> = {
-  friends: { emoji: '🙂' },
-  surfing: { emoji: '🏄' },
-  drawing: { emoji: '🎨' },
-  music: { emoji: '🎵' },
-  running: { emoji: '🏃' },
-  diving: { emoji: '🤿' },
-  'diving-school': { emoji: '🏖️' },
+  friends: { emoji: '🙂', image: 'images/mission16/friends.jpg' },
+  surfing: { emoji: '🏄', image: 'images/mission16/surfing.jpg' },
+  drawing: { emoji: '🎨', image: 'images/mission16/drawing.jpg' },
+  music: { emoji: '🎵', image: 'images/mission16/music.jpg' },
+  running: { emoji: '🏃', image: 'images/mission16/running.jpg' },
+  diving: { emoji: '🤿', image: 'images/mission16/diving.jpg' },
+  'diving-school': { emoji: '🏖️', image: 'images/mission16/diving-school.jpg' },
 };
 /** Result picture only — never a choice, never a card. */
 export const M16_PROPS: Record<'free-time-match', { emoji: string; image?: string }> = {
-  'free-time-match': { emoji: '🤝' },
+  'free-time-match': { emoji: '🤝', image: 'images/mission16/free-time-match.jpg' },
 };
 const look16 = (x: { emoji: string; image?: string }): { emoji: string } | { image: string } => (x.image ? { image: x.image } : { emoji: x.emoji });
 

@@ -68,7 +68,7 @@ export function QuickReplyStep({ step, itemsById, onDone }: { step: StepOf<'quic
   const prompt = quickReplyPrompt(round, itemsById);
   const options = useMemo(() => shuffle(round.options, mulberry32(seed + i)), [round, seed, i]);
   const npc = useNpc();
-  const situationText = round.situation ? L(round.situation).replace(round.situationImage ? /^[🥛🥜🧅🌱]\s*/u : /$^/, '') : undefined;
+  const situationText = round.situation ? L(round.situation).replace(round.situationImage ? /^[🥛🥜🧅🌱🏄🏃🤿]\s*/u : /$^/, '') : undefined;
 
   // A speed challenge is the same game at natural pace; the replay is slower, as on the board and map.
   // A line with its own pace (the fast first answer, the slowed repeat) is said at that pace.

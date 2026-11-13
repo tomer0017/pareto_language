@@ -1,3 +1,4 @@
+import { beforeMission16Artwork } from './mission16Artwork.testSupport.js';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { existsSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
@@ -143,9 +144,9 @@ describe('the conversation is locked, and Mission 19 is in its place', () => {
     expect(BOOTCAMP_PLAN[18]!.video).toBeUndefined(); // a normal mission: the standard video resolver
     for (const lang of LANGS) expect(day(lang).title.en).toBe('Public Transport');
   });
-  const raw = (a: number, b?: number) => Object.fromEntries(LANGS.map((l) => [l, fnv(JSON.stringify(BOOTCAMP_PLAN.slice(a, b).map((m) => MISSIONS_BY_LANG[l]![m.day]!)))]));
-  it('Missions 01–18 are byte-for-byte unchanged by this pass (the Mission 18 checkpoint included)', () => { expect(raw(0, 18)).toEqual({ en: '31ca8ea9', es: 'a73b81d5', fr: 'd029bf2e' }); });
-  it('Missions 20–30 are byte-for-byte unchanged by this pass — and the City checkpoint (Mission 24) reuses the four tools and its two transport lines, same id and wording', () => {
+  const raw = (a: number, b?: number) => Object.fromEntries(LANGS.map((l) => [l, fnv(JSON.stringify(beforeMission16Artwork(BOOTCAMP_PLAN.slice(a, b).map((m) => MISSIONS_BY_LANG[l]![m.day]!))))]));
+  it('Missions 01–18 are unchanged by this pass (normalizing only the later Mission 16 artwork) (the Mission 18 checkpoint included)', () => { expect(raw(0, 18)).toEqual({ en: '31ca8ea9', es: 'a73b81d5', fr: 'd029bf2e' }); });
+  it('Missions 20–30 are unchanged by this pass (normalizing only the later Mission 16 artwork) — and the City checkpoint (Mission 24) reuses the four tools and its two transport lines, same id and wording', () => {
     expect(raw(19)).toEqual({ en: '7ebcbddb', es: '1dc1ec3a', fr: 'a7f0fbd8' });
     for (const lang of LANGS) for (const id of [...TOOLS, 'reply.trans.three-stops', 'reply.trans.wrong-way']) {
       const later = day(lang, 24).items.find((i) => strip(i.id) === id);

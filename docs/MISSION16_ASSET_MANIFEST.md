@@ -1,10 +1,9 @@
 # Mission 16 — Hobbies & Free Time: artwork manifest
 
-**Status: PLACEHOLDERS — VISUAL PRODUCTION REQUIRED IN ASTRA PASS.** No image generation was available in
-the build pass, and no stock art is used. Every slot below is an emoji placeholder in code
-(`M16_SLOTS` / `M16_PROPS` in `apps/web/src/features/bootcamp/practiceHobbies.ts`) until its artwork
-exists. To integrate a picture, set `image: 'images/mission16/<slot>.jpg'` on the slot. Nothing else
-changes: cards, sorting rounds, the final's situations and the result all read from the slot.
+**Status: VISUAL PRODUCTION COMPLETE.** Eight independently generated, optimized JPEG assets are
+integrated in `M16_SLOTS` / `M16_PROPS`. Cards, sorting rounds, final situations and the result read
+the same canonical `images/mission16/<slot>.jpg` mapping in EN, ES and FR. Emoji remain fallback
+metadata; production pictures are primary. See `MISSION16_VISUAL_REPORT.md` for validation.
 
 This mission is deliberately visual but small: **five hobby pictures are the priority**. The two
 friends, the diving school and the result picture are supporting slots.
@@ -71,12 +70,31 @@ subject of a "Sort your hobbies" round, above the same four category tiles. They
   independently produced image (never crop one asset into two).
 - Missions 11–15 supply the traveller's identity; no earlier file is reused directly.
 
-## Integration notes
+## Completed integration
 
-- The final's three situations ("🏄 Surfing — you love it…") start with the hobby emoji. Once a slot has
-  an `image`, the situation shows the picture (`situationImage`). The emoji prefix is then removed by
-  the Quick Reply screen only for the emojis it already knows (Mission 15's). Extend that list with
-  🏄 🏃 🤿, or drop the prefix, in the art pass.
-- Placeholder rendering: a sorting round shows its emoji in the same 16:9 card frame
-  (`.pmatch-picture-emoji`) that a picture fills (`.pmatch-picture .situation-image`), so the layout
-  does not change when the art arrives.
+All eight assets were generated independently with the built-in image generator; prompts are in
+`MISSION16_IMAGE_PROMPTS.json`. Exact reviewed pixels, dimensions and byte sizes are recorded in
+`mission16-artwork.json`. No contact sheet or derived crop was used. Each image is 1672 × 941,
+approximately 16:9, optimized as JPEG quality 85 without resizing. Prime cards wrap full-width;
+sorting and final situations use `object-fit: contain`. No defining action is cropped.
+
+The traveler retains curly dark hair, light olive skin, teal clothing and a natural average build.
+The friend has medium brown skin, swept straight dark hair, a rust shirt and sand trousers. Practical
+teal sports/scuba clothes replace the overshirt for those activities. Both return in the final prop.
+
+The Quick Reply renderer removes 🏄 / 🏃 / 🤿 prefixes only when artwork is present. Text-only rounds
+retain their original cues. Category, time and plan tiles remain deterministic UI. Emoji slot
+metadata remains available to the existing fallback contract, but production cards use images.
+
+## Final files
+
+| Canonical public path | Dimensions | Bytes |
+|---|---|---:|
+| `images/mission16/friends.jpg` | 1672 × 941 | 658403 |
+| `images/mission16/surfing.jpg` | 1672 × 941 | 739444 |
+| `images/mission16/drawing.jpg` | 1672 × 941 | 654416 |
+| `images/mission16/music.jpg` | 1672 × 941 | 632454 |
+| `images/mission16/running.jpg` | 1672 × 941 | 683137 |
+| `images/mission16/diving.jpg` | 1672 × 941 | 696627 |
+| `images/mission16/diving-school.jpg` | 1672 × 940 | 852104 |
+| `images/mission16/free-time-match.jpg` | 1672 × 941 | 736835 |

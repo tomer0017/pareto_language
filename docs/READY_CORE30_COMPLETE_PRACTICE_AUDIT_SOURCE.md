@@ -15964,8 +15964,8 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `hobby.line.free` — EN "Hi! Are you free today?" · FR "Salut ! Tu es libre aujourd’hui ?" · ES "¡Hola! ¿Estás libre hoy?" — meaning "היי! אתה פנוי היום?" / "Hi! Are you free today?" — icon 🙂 — new
-2. `hobby.line.for-fun` — EN "Yes! What do you do for fun?" · FR "Oui ! Qu’est-ce que tu aimes faire ?" · ES "¡Sí! ¿Qué te gusta hacer?" — meaning "כן! מה אתה אוהב לעשות בזמן הפנוי? (שואלים מה מישהו עושה בשביל הכיף)" / "Yes! What do you do for fun? (ask what someone likes doing in their free time)" — icon 🙂 — new
+1. `hobby.line.free` — EN "Hi! Are you free today?" · FR "Salut ! Tu es libre aujourd’hui ?" · ES "¡Hola! ¿Estás libre hoy?" — meaning "היי! אתה פנוי היום?" / "Hi! Are you free today?" — icon none — new
+2. `hobby.line.for-fun` — EN "Yes! What do you do for fun?" · FR "Oui ! Qu’est-ce que tu aimes faire ?" · ES "¡Sí! ¿Qué te gusta hacer?" — meaning "כן! מה אתה אוהב לעשות בזמן הפנוי? (שואלים מה מישהו עושה בשביל הכיף)" / "Yes! What do you do for fun? (ask what someone likes doing in their free time)" — icon none — new
 
 No build-sentence card.
 
@@ -15974,8 +15974,8 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `hobby.line.surf` — EN "I surf a lot. Do you like surfing?" · FR "Je fais beaucoup de surf. Tu aimes le surf ?" · ES "Hago mucho surf. ¿Te gusta el surf?" — meaning "אני גולש הרבה. אתה אוהב לגלוש?" / "I surf a lot. Do you like surfing?" — icon 🏄 — new
-2. `hobby.line.love` — EN "I love surfing!" · FR "J’adore le surf !" · ES "¡Me encanta el surf!" — meaning "אני מאוד אוהב לגלוש! (אוהב מאוד — ה"כן" הכי חזק)" / "I love surfing! (love — the strongest “yes”)" — icon 🏄 — new
+1. `hobby.line.surf` — EN "I surf a lot. Do you like surfing?" · FR "Je fais beaucoup de surf. Tu aimes le surf ?" · ES "Hago mucho surf. ¿Te gusta el surf?" — meaning "אני גולש הרבה. אתה אוהב לגלוש?" / "I surf a lot. Do you like surfing?" — icon none — new
+2. `hobby.line.love` — EN "I love surfing!" · FR "J’adore le surf !" · ES "¡Me encanta el surf!" — meaning "אני מאוד אוהב לגלוש! (אוהב מאוד — ה"כן" הכי חזק)" / "I love surfing! (love — the strongest “yes”)" — icon none — new
 
 No build-sentence card.
 
@@ -15984,8 +15984,8 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `hobby.line.what-else` — EN "Great! And what else do you like?" · FR "Super ! Et tu aimes quoi d’autre ?" · ES "¡Genial! ¿Y qué más te gusta?" — meaning "מעולה! ומה עוד אתה אוהב?" / "Great! And what else do you like?" — icon 🙂 — new
-2. `hobby.line.like` — EN "I like drawing." · FR "J’aime dessiner." · ES "Me gusta dibujar." — meaning "אני אוהב לצייר. (אוהב — "כן" רגיל)" / "I like drawing. (like — a normal “yes”)" — icon 🎨 — new
+1. `hobby.line.what-else` — EN "Great! And what else do you like?" · FR "Super ! Et tu aimes quoi d’autre ?" · ES "¡Genial! ¿Y qué más te gusta?" — meaning "מעולה! ומה עוד אתה אוהב?" / "Great! And what else do you like?" — icon none — new
+2. `hobby.line.like` — EN "I like drawing." · FR "J’aime dessiner." · ES "Me gusta dibujar." — meaning "אני אוהב לצייר. (אוהב — "כן" רגיל)" / "I like drawing. (like — a normal “yes”)" — icon none — new
 
 No build-sentence card.
 
@@ -15994,8 +15994,8 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `hobby.line.when` — EN "Nice! When do you draw?" · FR "Sympa ! Tu dessines quand ?" · ES "¡Qué bien! ¿Cuándo dibujas?" — meaning "יפה! מתי אתה מצייר?" / "Nice! When do you draw?" — icon 🎨 — new
-2. `hobby.line.usually` — EN "I usually draw in the evening." · FR "D’habitude, je dessine le soir." · ES "Normalmente dibujo por la noche." — meaning "בדרך כלל אני מצייר בערב. (בדרך כלל = מה שאני עושה בדרך כלל · בערב)" / "I usually draw in the evening. (usually = what I normally do · in the evening)" — icon 🎨 — new
+1. `hobby.line.when` — EN "Nice! When do you draw?" · FR "Sympa ! Tu dessines quand ?" · ES "¡Qué bien! ¿Cuándo dibujas?" — meaning "יפה! מתי אתה מצייר?" / "Nice! When do you draw?" — icon none — new
+2. `hobby.line.usually` — EN "I usually draw in the evening." · FR "D’habitude, je dessine le soir." · ES "Normalmente dibujo por la noche." — meaning "בדרך כלל אני מצייר בערב. (בדרך כלל = מה שאני עושה בדרך כלל · בערב)" / "I usually draw in the evening. (usually = what I normally do · in the evening)" — icon none — new
 
 No build-sentence card.
 
@@ -16004,8 +16004,8 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `hobby.line.music` — EN "In the evening I like to listen to music. Do you like music?" · FR "Le soir, j’aime écouter de la musique. Tu aimes la musique ?" · ES "Por la noche me gusta escuchar música. ¿Te gusta la música?" — meaning "בערב אני אוהב לשמוע מוזיקה. אתה אוהב מוזיקה?" / "In the evening I like to listen to music. Do you like music?" — icon 🎵 — new
-2. `hobby.line.too` — EN "Yes, I like to listen to music too." · FR "Oui, moi aussi j’aime écouter de la musique." · ES "Sí, a mí también me gusta escuchar música." — meaning "כן, גם אני אוהב לשמוע מוזיקה. (גם אני — שנינו אוהבים)" / "Yes, I like to listen to music too. (too — we both like it)" — icon 🎵 — new
+1. `hobby.line.music` — EN "In the evening I like to listen to music. Do you like music?" · FR "Le soir, j’aime écouter de la musique. Tu aimes la musique ?" · ES "Por la noche me gusta escuchar música. ¿Te gusta la música?" — meaning "בערב אני אוהב לשמוע מוזיקה. אתה אוהב מוזיקה?" / "In the evening I like to listen to music. Do you like music?" — icon none — new
+2. `hobby.line.too` — EN "Yes, I like to listen to music too." · FR "Oui, moi aussi j’aime écouter de la musique." · ES "Sí, a mí también me gusta escuchar música." — meaning "כן, גם אני אוהב לשמוע מוזיקה. (גם אני — שנינו אוהבים)" / "Yes, I like to listen to music too. (too — we both like it)" — icon none — new
 
 No build-sentence card.
 
@@ -16014,8 +16014,8 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `hobby.line.sport` — EN "And sport? Do you like running?" · FR "Et le sport ? Tu aimes courir ?" · ES "¿Y el deporte? ¿Te gusta correr?" — meaning "וספורט? אתה אוהב לרוץ?" / "And sport? Do you like running?" — icon 🏃 — new
-2. `hobby.line.dont-like` — EN "No, I don't like running." · FR "Non, je n’aime pas courir." · ES "No, no me gusta correr." — meaning "לא, אני לא אוהב לרוץ. (לא אוהב — זה לא בשבילי)" / "No, I don't like running. (don't like — not for me)" — icon 🏃 — new
+1. `hobby.line.sport` — EN "And sport? Do you like running?" · FR "Et le sport ? Tu aimes courir ?" · ES "¿Y el deporte? ¿Te gusta correr?" — meaning "וספורט? אתה אוהב לרוץ?" / "And sport? Do you like running?" — icon none — new
+2. `hobby.line.dont-like` — EN "No, I don't like running." · FR "Non, je n’aime pas courir." · ES "No, no me gusta correr." — meaning "לא, אני לא אוהב לרוץ. (לא אוהב — זה לא בשבילי)" / "No, I don't like running. (don't like — not for me)" — icon none — new
 
 No build-sentence card.
 
@@ -16024,8 +16024,8 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `hobby.line.try-q` — EN "Me neither! Is there something you want to try here?" · FR "Moi non plus ! Il y a quelque chose que tu veux essayer ici ?" · ES "¡Yo tampoco! ¿Hay algo que quieras probar aquí?" — meaning "גם אני לא! יש משהו שאתה רוצה לנסות כאן? (גם אני לא = גם הוא לא אוהב לרוץ)" / "Me neither! Is there something you want to try here? (me neither = your friend doesn’t like it either)" — icon 🙂 — new
-2. `hobby.line.want-to-try` — EN "I want to try diving." · FR "Je veux essayer la plongée." · ES "Quiero probar el buceo." — meaning "אני רוצה לנסות צלילה. (רוצה לנסות = משהו חדש שבא לי לעשות)" / "I want to try diving. (want to try = something new I’d like to do)" — icon 🤿 — new
+1. `hobby.line.try-q` — EN "Me neither! Is there something you want to try here?" · FR "Moi non plus ! Il y a quelque chose que tu veux essayer ici ?" · ES "¡Yo tampoco! ¿Hay algo que quieras probar aquí?" — meaning "גם אני לא! יש משהו שאתה רוצה לנסות כאן? (גם אני לא = גם הוא לא אוהב לרוץ)" / "Me neither! Is there something you want to try here? (me neither = your friend doesn’t like it either)" — icon none — new
+2. `hobby.line.want-to-try` — EN "I want to try diving." · FR "Je veux essayer la plongée." · ES "Quiero probar el buceo." — meaning "אני רוצה לנסות צלילה. (רוצה לנסות = משהו חדש שבא לי לעשות)" / "I want to try diving. (want to try = something new I’d like to do)" — icon none — new
 
 No build-sentence card.
 
@@ -16034,7 +16034,7 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `hobby.line.school` — EN "Good idea! There's a diving school near the beach." · FR "Bonne idée ! Il y a une école de plongée près de la plage." · ES "¡Buena idea! Hay una escuela de buceo cerca de la playa." — meaning "רעיון טוב! יש בית ספר לצלילה ליד החוף. (בית ספר לצלילה ← ליד החוף)" / "Good idea! There’s a diving school near the beach. (diving school → near the beach)" — icon 🏖️ — new
+1. `hobby.line.school` — EN "Good idea! There's a diving school near the beach." · FR "Bonne idée ! Il y a une école de plongée près de la plage." · ES "¡Buena idea! Hay una escuela de buceo cerca de la playa." — meaning "רעיון טוב! יש בית ספר לצלילה ליד החוף. (בית ספר לצלילה ← ליד החוף)" / "Good idea! There’s a diving school near the beach. (diving school → near the beach)" — icon none — new
 
 No build-sentence card.
 
@@ -16043,7 +16043,7 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `hobby.line.tomorrow` — EN "I love it! Let's go together tomorrow." · FR "J’adore ! On y va ensemble demain." · ES "¡Me encanta! Vamos juntos mañana." — meaning "מאוד! בוא נלך יחד מחר. (גם הוא אוהב צלילה · התוכנית: מחר, יחד)" / "I love it! Let’s go together tomorrow. (your friend loves diving · the plan: tomorrow, together)" — icon 🙂 — new
+1. `hobby.line.tomorrow` — EN "I love it! Let's go together tomorrow." · FR "J’adore ! On y va ensemble demain." · ES "¡Me encanta! Vamos juntos mañana." — meaning "מאוד! בוא נלך יחד מחר. (גם הוא אוהב צלילה · התוכנית: מחר, יחד)" / "I love it! Let’s go together tomorrow. (your friend loves diving · the plan: tomorrow, together)" — icon none — new
 
 No build-sentence card.
 

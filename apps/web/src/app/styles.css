@@ -1845,3 +1845,9 @@ div.jstep { box-shadow: none; border-color: var(--line); }
 .pmatch-picture-emoji { display: flex; align-items: center; justify-content: center; width: 100%; aspect-ratio: 16 / 9; max-height: 200px; border-radius: 16px; background: var(--card); box-shadow: var(--shadow-card); font-size: 4rem; line-height: 1; }
 /* Three translated answer buttons can be taller than the shared single-CTA clearance. */
 .mission-step-body:has(.situation-image[src*="/images/mission15/"]) { padding-bottom: calc(env(safe-area-inset-bottom) + 280px); }
+
+/* Mission 16: preserve the complete activity silhouette and drawing hand on phone cards. */
+.list-row:has(> .prime-img[src*="/images/mission16/"]) { flex-wrap: wrap; }
+.prime-img.is-scene[src*="/images/mission16/"] { flex-basis: 100%; width: 100%; height: auto; }
+
+.mission-step-body:has(.situation-image[src*="/images/mission16/"]) { padding-bottom: calc(env(safe-area-inset-bottom) + 280px); }

@@ -1,3 +1,4 @@
+import { beforeMission16Artwork } from './mission16Artwork.testSupport.js';
 import { beforeAll, describe, expect, it, vi } from 'vitest';
 import { createElement } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
@@ -107,8 +108,8 @@ describe('the conversation is locked, and Mission 18 is in its place', () => {
   it('Mission 18 is "CHECKPOINT: Everyday Day", eighteenth on the journey (registry key 17), a checkpoint with no video', () => {
     expect([BOOTCAMP_PLAN[17]!.id, BOOTCAMP_PLAN[17]!.day, missionNumber(17), BOOTCAMP_PLAN[17]!.checkpoint, BOOTCAMP_PLAN[17]!.video]).toEqual(['food-day-checkpoint', 17, 18, true, false]);
   });
-  const raw = (a: number, b?: number) => Object.fromEntries(LANGS.map((l) => [l, fnv(JSON.stringify(BOOTCAMP_PLAN.slice(a, b).map((m) => MISSIONS_BY_LANG[l]![m.day]!)))]));
-  it('Missions 01–17 and 20–30 are byte-for-byte unchanged by this pass (Mission 19 has its own pass since: mission19.test.ts)', () => {
+  const raw = (a: number, b?: number) => Object.fromEntries(LANGS.map((l) => [l, fnv(JSON.stringify(beforeMission16Artwork(BOOTCAMP_PLAN.slice(a, b).map((m) => MISSIONS_BY_LANG[l]![m.day]!))))]));
+  it('Missions 01–17 and 20–30 are unchanged by this pass (normalizing only the later Mission 16 artwork) (Mission 19 has its own pass since: mission19.test.ts)', () => {
     expect(raw(0, 17)).toEqual({ en: '920ae8f5', es: 'a24f698d', fr: 'e56da638' });
     expect(raw(19)).toEqual({ en: '7ebcbddb', es: '1dc1ec3a', fr: 'a7f0fbd8' });
   });

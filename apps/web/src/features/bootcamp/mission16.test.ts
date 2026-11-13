@@ -704,12 +704,12 @@ describe('visuals, the companion and video', () => {
       'quickReply', 'receipt', 'summary',
     ]);
   });
-  it('visual slots: the two friends, five hobbies, the diving school, one result prop — placeholders, listed in the asset manifest (VISUAL PRODUCTION REQUIRED)', () => {
+  it('visual slots: the two friends, five hobbies, the diving school, one result prop — production images, listed in the asset manifest', () => {
     expect(Object.keys(M16_SLOTS)).toEqual(['friends', 'surfing', 'drawing', 'music', 'running', 'diving', 'diving-school']);
     expect(Object.keys(M16_PROPS)).toEqual(['free-time-match']);
-    for (const s of [...Object.values(M16_SLOTS), ...Object.values(M16_PROPS)]) { expect(s.emoji).toBeTruthy(); if (s.image) expect(s.image).toMatch(/^images\/mission16\/[a-z-]+\.jpg$/); }
+    for (const s of [...Object.values(M16_SLOTS), ...Object.values(M16_PROPS)]) { expect(s.emoji).toBeTruthy(); expect(s.image).toMatch(/^images\/mission16\/[a-z-]+\.jpg$/); }
     const manifest = readFileSync(fileURLToPath(new URL('../../../../../docs/MISSION16_ASSET_MANIFEST.md', import.meta.url)), 'utf8');
-    expect(manifest).toMatch(/VISUAL PRODUCTION REQUIRED/);
+    expect(manifest).toMatch(/VISUAL PRODUCTION COMPLETE/);
     for (const key of [...Object.keys(M16_SLOTS), ...Object.keys(M16_PROPS)]) expect(manifest, key).toContain(`\`${key}\``);
   });
   it('every card picture comes from a slot, the same in every language; tiles are captioned meanings, never pictures', () => {
@@ -725,12 +725,13 @@ describe('visuals, the companion and video', () => {
     const coach = coachFor(d.steps, d.steps.findIndex((s) => s.kind === 'visualMatch'), BOOTCAMP_PLAN[15]!.id)!;
     expect(coach.line.en).toBe('Listen — and tap where the hobby goes.');
   });
-  it('the round picture renders above the tiles — the placeholder now, the artwork once it exists — and never as a tile', async () => {
+  it('the round picture renders above the tiles — production artwork — and never as a tile', async () => {
     const { VisualMatchStep } = await import('./PracticeSteps.js');
     const step = sorts(day('en'))[0]!;
     const html = renderToStaticMarkup(createElement(VisualMatchStep, { step, onDone: () => undefined }));
     expect(html).toContain('class="pmatch-picture"');
-    expect(html).toContain('🏄');
+    expect(html).toContain('images/mission16/surfing.jpg');
+    expect(html).not.toContain('pmatch-picture-emoji');
     const withArt = { ...step, rounds: [{ ...step.rounds[0]!, picture: { emoji: '🏄', image: 'images/mission16/surfing.jpg' } }] };
     expect(renderToStaticMarkup(createElement(VisualMatchStep, { step: withArt, onDone: () => undefined }))).toMatch(/pmatch-picture[^]*images\/mission16\/surfing\.jpg/);
     expect((html.match(/class="ptile /g) ?? []).length).toBe(4);
