@@ -52,7 +52,7 @@ An added SHA-256 check compares all nonvisual Mission 16 data against the pre-ed
 Historical raw snapshots in Mission 17–19 include Mission 16 visual fields. A test-only helper
 reconstructs just the former Mission 16 presentation for those snapshots, preserving every original
 expected hash. It does not modify runtime data or omit nonvisual fields. The generated practice audit
-was refreshed; only the Mission 16 image references changed.
+was refreshed; only the Mission 16 icon metadata changed as images replaced emoji.
 
 | Gate | Result |
 |---|---|
@@ -104,8 +104,32 @@ Production verification is recorded separately below when complete.
 - `mission16.test.ts`, `mission16Artwork.test.ts`, `mission16Artwork.testSupport.ts` in the same bootcamp directory.
 - `mission17.test.ts`, `mission18.test.ts`, `mission19.test.ts`: historical visual normalization only.
 - `docs/MISSION16_ASSET_MANIFEST.md`, `MISSION16_IMAGE_PROMPTS.json`, `mission16-artwork.json`, this report.
-- `docs/READY_CORE30_COMPLETE_PRACTICE_AUDIT_SOURCE.md`: regenerated Mission 16 image references.
+- `docs/READY_CORE30_COMPLETE_PRACTICE_AUDIT_SOURCE.md`: regenerated Mission 16 icon metadata.
 
 No other mission artwork, curriculum or video changed. Remaining visual limitation: the school gear
 is smaller than the activity subjects at 360px, but tanks and beach remain readable. Static QA does
 not certify every device or browser.
+
+## Release and live verification — 2026-11-13
+
+- Implementation commit: `8afbb723885be0f23c82e90eb461da34133690bc`; pushed successfully to `origin/main`.
+- gh-pages commit: `f8fb81c43be1a20407b0d4c428dfca6108be37cb`.
+- GitHub Pages deployment [43439501206](https://github.com/tomer0017/pareto_language/actions/runs/43439501206): completed successfully.
+- Live site: https://tomer0017.github.io/pareto_language/
+- Live JS: `assets/index-C83QJjAH.js`; live CSS: `assets/index-Dh2Cgk3T.css`.
+- All eight images and both bundles returned HTTP 200 and matched the tested build byte-for-byte.
+  Exact responses/hashes are recorded in `mission16-production-verification.json`.
+- Real production click-through, English: all five hobby sorting rounds; evening choice; return
+  question; tomorrow choice; complete supported dialogue; all five No Help rounds; all seven Final
+  rounds; FREE TIME MATCH and summary. Progressive profile state and final shared plan were observed.
+- Real production Spanish and French: mission loads, transcript/briefing, image cards, opening reply,
+  surfing sorting and earned profile update. Full translated journeys were covered by local state
+  rendering and regression, not full production click-through.
+- No-video flow visibly skipped from the No Help receipt directly to Final. No network trace was
+  captured; absence of an M16 video request is established by the unchanged resolver and tests,
+  rather than a claimed browser network recording.
+- An initially open Safari tab still had the previous cached application. Reloading after successful
+  deployment loaded the new artwork and approved current-main Mission 16 flow; no cache configuration
+  change was needed.
+- Working tree was clean after the implementation commit. This documentation-only follow-up records
+  the production evidence; final cleanliness is checked after its commit/push.

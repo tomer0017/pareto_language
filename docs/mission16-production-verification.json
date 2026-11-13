@@ -1,0 +1,72 @@
+[
+  {
+    "path": "images/mission16/friends.jpg",
+    "status": 200,
+    "bytes": 658403,
+    "sha256": "40a65e43c55382a11c6136d565b39764566a91365d6e2f8c4c09a4d9838174d2",
+    "matchesBuild": true
+  },
+  {
+    "path": "images/mission16/surfing.jpg",
+    "status": 200,
+    "bytes": 739444,
+    "sha256": "6ccd498bf9b48a64b556db3cd47ba08a43b14856e984a8c2fde72ef85d06e6ad",
+    "matchesBuild": true
+  },
+  {
+    "path": "images/mission16/drawing.jpg",
+    "status": 200,
+    "bytes": 654416,
+    "sha256": "ba9d8ce67a859953d69b16441cef9ba969d32b01567ed5de50ce3e2dbfc9c482",
+    "matchesBuild": true
+  },
+  {
+    "path": "images/mission16/music.jpg",
+    "status": 200,
+    "bytes": 632454,
+    "sha256": "ae204d95db99c1ada53de0c7af2cd728557fc7d87807210978d5f26e8282a2c7",
+    "matchesBuild": true
+  },
+  {
+    "path": "images/mission16/running.jpg",
+    "status": 200,
+    "bytes": 683137,
+    "sha256": "9ad021f7854dde35af232727a5026409591c263434b47f9e1b7b6490c2386928",
+    "matchesBuild": true
+  },
+  {
+    "path": "images/mission16/diving.jpg",
+    "status": 200,
+    "bytes": 696627,
+    "sha256": "b2de3138d37a8377efb379318e25ab9620ab8116362837984530ffd31b9bbdc9",
+    "matchesBuild": true
+  },
+  {
+    "path": "images/mission16/diving-school.jpg",
+    "status": 200,
+    "bytes": 852104,
+    "sha256": "b1c3ad6f8ec00c0a9c835c226ba6b36f24b18fd9c9bf5c833039b2d58c9ce0d2",
+    "matchesBuild": true
+  },
+  {
+    "path": "images/mission16/free-time-match.jpg",
+    "status": 200,
+    "bytes": 736835,
+    "sha256": "76632a1a92f92652adb253d9625c0b5674da997fd3b980b711c4795561065840",
+    "matchesBuild": true
+  },
+  {
+    "path": "assets/index-C83QJjAH.js",
+    "status": 200,
+    "bytes": 1323411,
+    "sha256": "b041355f0d03c7d14ef8f17296d5c92fa66a2d2e860e7bdb5958ab2331fd3f80",
+    "matchesBuild": true
+  },
+  {
+    "path": "assets/index-Dh2Cgk3T.css",
+    "status": 200,
+    "bytes": 96280,
+    "sha256": "8b9c2c6e0f3a33633d8eb4d7a88e042bcaa2415dfac9b52840e2724bd69665d3",
+    "matchesBuild": true
+  }
+]
