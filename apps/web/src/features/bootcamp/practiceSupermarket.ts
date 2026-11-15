@@ -27,26 +27,26 @@ import type { BootcampStep, MatchTile } from './types.js';
  */
 
 /**
- * PLACEHOLDERS — VISUAL PRODUCTION REQUIRED (Astra pass): one supermarket, one style. Each slot is an
- * emoji until its artwork exists (`image` set): docs/MISSION17_ASSET_MANIFEST.md. The six products get
+ * Production artwork: one supermarket, one style; emoji remains fallback metadata only.
+ * See docs/MISSION17_ASSET_MANIFEST.md. The six products get
  * EQUAL treatment (same frame, same size). Pictures never carry an aisle number or a side.
  */
 export type M17Product = 'milk' | 'water' | 'bread' | 'cheese' | 'eggs' | 'apples';
 type M17Slot = M17Product | 'shop' | 'checkout' | 'bag';
 export const M17_SLOTS: Record<M17Slot, { emoji: string; image?: string }> = {
-  milk: { emoji: '🥛' },
-  water: { emoji: '💧' },
-  bread: { emoji: '🍞' },
-  cheese: { emoji: '🧀' },
-  eggs: { emoji: '🥚' },
-  apples: { emoji: '🍎' },
-  shop: { emoji: '🛒' },
-  checkout: { emoji: '🧾' },
-  bag: { emoji: '🛍️' },
+  milk: { emoji: '🥛', image: 'images/mission17/milk.jpg' },
+  water: { emoji: '💧', image: 'images/mission17/water.jpg' },
+  bread: { emoji: '🍞', image: 'images/mission17/bread.jpg' },
+  cheese: { emoji: '🧀', image: 'images/mission17/cheese.jpg' },
+  eggs: { emoji: '🥚', image: 'images/mission17/eggs.jpg' },
+  apples: { emoji: '🍎', image: 'images/mission17/apples.jpg' },
+  shop: { emoji: '🛒', image: 'images/mission17/shop.jpg' },
+  checkout: { emoji: '🧾', image: 'images/mission17/checkout.jpg' },
+  bag: { emoji: '🛍️', image: 'images/mission17/bag.jpg' },
 };
 /** Result picture only — never a choice, never a card. */
 export const M17_PROPS: Record<'quick-shop-complete', { emoji: string; image?: string }> = {
-  'quick-shop-complete': { emoji: '🛒' },
+  'quick-shop-complete': { emoji: '🛒', image: 'images/mission17/quick-shop-complete.jpg' },
 };
 const look17 = (x: { emoji: string; image?: string }): { emoji: string } | { image: string } => (x.image ? { image: x.image } : { emoji: x.emoji });
 

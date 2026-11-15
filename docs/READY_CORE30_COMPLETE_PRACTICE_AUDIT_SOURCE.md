@@ -17031,12 +17031,12 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `super.milk` — EN "milk" · FR "le lait" · ES "la leche" — meaning "חלב" / "milk" — icon 🥛 — marked ♻️ review
-2. `super.water` — EN "water" · FR "l’eau" · ES "el agua" — meaning "מים" / "water" — icon 💧 — new
-3. `super.bread` — EN "bread" · FR "le pain" · ES "el pan" — meaning "לחם" / "bread" — icon 🍞 — new
-4. `super.cheese` — EN "cheese" · FR "le fromage" · ES "el queso" — meaning "גבינה" / "cheese" — icon 🧀 — new
-5. `super.eggs` — EN "eggs" · FR "les œufs" · ES "los huevos" — meaning "ביצים" / "eggs" — icon 🥚 — new
-6. `super.apples` — EN "apples" · FR "les pommes" · ES "las manzanas" — meaning "תפוחים" / "apples" — icon 🍎 — new
+1. `super.milk` — EN "milk" · FR "le lait" · ES "la leche" — meaning "חלב" / "milk" — icon none — marked ♻️ review
+2. `super.water` — EN "water" · FR "l’eau" · ES "el agua" — meaning "מים" / "water" — icon none — new
+3. `super.bread` — EN "bread" · FR "le pain" · ES "el pan" — meaning "לחם" / "bread" — icon none — new
+4. `super.cheese` — EN "cheese" · FR "le fromage" · ES "el queso" — meaning "גבינה" / "cheese" — icon none — new
+5. `super.eggs` — EN "eggs" · FR "les œufs" · ES "los huevos" — meaning "ביצים" / "eggs" — icon none — new
+6. `super.apples` — EN "apples" · FR "les pommes" · ES "las manzanas" — meaning "תפוחים" / "apples" — icon none — new
 
 No build-sentence card.
 
@@ -17045,8 +17045,8 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `super.line.help` — EN "Hi there! Can I help you find something?" · FR "Bonjour ! Je peux vous aider à trouver quelque chose ?" · ES "¡Hola! ¿Le ayudo a encontrar algo?" — meaning "היי! לעזור לך למצוא משהו? (צריך עזרה למצוא משהו?)" / "Hi there! Can I help you find something? (need help finding something?)" — icon 🛒 — new
-2. `super.line.where` — EN "Where is the milk?" · FR "Où est le lait ?" · ES "¿Dónde está la leche?" — meaning "איפה החלב? (איפה ה___? — שאלה אחת לכל מוצר)" / "Where is the milk? (where is the ___? — one question for any product)" — icon 🥛 — new
+1. `super.line.help` — EN "Hi there! Can I help you find something?" · FR "Bonjour ! Je peux vous aider à trouver quelque chose ?" · ES "¡Hola! ¿Le ayudo a encontrar algo?" — meaning "היי! לעזור לך למצוא משהו? (צריך עזרה למצוא משהו?)" / "Hi there! Can I help you find something? (need help finding something?)" — icon none — new
+2. `super.line.where` — EN "Where is the milk?" · FR "Où est le lait ?" · ES "¿Dónde está la leche?" — meaning "איפה החלב? (איפה ה___? — שאלה אחת לכל מוצר)" / "Where is the milk? (where is the ___? — one question for any product)" — icon none — new
 
 No build-sentence card.
 
@@ -17055,7 +17055,7 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `super.line.aisle` — EN "The milk is in aisle three, on the left." · FR "Le lait est dans l’allée trois, sur la gauche." · ES "La leche está en el pasillo tres, a la izquierda." — meaning "החלב במעבר שלוש, משמאל. (מעבר 3 · צד שמאל)" / "The milk is in aisle three, on the left. (aisle 3 · left side)" — icon 🛒 — new
+1. `super.line.aisle` — EN "The milk is in aisle three, on the left." · FR "Le lait est dans l’allée trois, sur la gauche." · ES "La leche está en el pasillo tres, a la izquierda." — meaning "החלב במעבר שלוש, משמאל. (מעבר 3 · צד שמאל)" / "The milk is in aisle three, on the left. (aisle 3 · left side)" — icon none — new
 
 No build-sentence card.
 
@@ -17064,8 +17064,8 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `super.line.everything` — EN "Hi! Is that everything?" · FR "Bonjour ! Ce sera tout ?" · ES "¡Hola! ¿Eso es todo?" — meaning "היי! זה הכל? (קונה עוד משהו?)" / "Hi! Is that everything? (are you buying anything else?)" — icon 🧾 — new
-2. `super.line.just-this` — EN "Just this, thanks." · FR "Juste ça, merci." · ES "Solo esto, gracias." — meaning "רק את זה, תודה." / "Just this, thanks." — icon 🧾 — new
+1. `super.line.everything` — EN "Hi! Is that everything?" · FR "Bonjour ! Ce sera tout ?" · ES "¡Hola! ¿Eso es todo?" — meaning "היי! זה הכל? (קונה עוד משהו?)" / "Hi! Is that everything? (are you buying anything else?)" — icon none — new
+2. `super.line.just-this` — EN "Just this, thanks." · FR "Juste ça, merci." · ES "Solo esto, gracias." — meaning "רק את זה, תודה." / "Just this, thanks." — icon none — new
 
 No build-sentence card.
 
@@ -17074,8 +17074,8 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `super.line.bag-q` — EN "Do you need a bag?" · FR "Vous avez besoin d’un sac ?" · ES "¿Necesita una bolsa?" — meaning "צריך שקית?" / "Do you need a bag?" — icon 🛍️ — new
-2. `super.line.bag` — EN "Could I get a bag?" · FR "Je peux avoir un sac ?" · ES "¿Me da una bolsa?" — meaning "אפשר שקית? (מבקשים שקית)" / "Could I get a bag? (ask for a bag)" — icon 🛍️ — new
+1. `super.line.bag-q` — EN "Do you need a bag?" · FR "Vous avez besoin d’un sac ?" · ES "¿Necesita una bolsa?" — meaning "צריך שקית?" / "Do you need a bag?" — icon none — new
+2. `super.line.bag` — EN "Could I get a bag?" · FR "Je peux avoir un sac ?" · ES "¿Me da una bolsa?" — meaning "אפשר שקית? (מבקשים שקית)" / "Could I get a bag? (ask for a bag)" — icon none — new
 
 No build-sentence card.
 
@@ -17084,7 +17084,7 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `super.line.card` — EN "Insert your card here… all done. Have a nice day!" · FR "Insérez votre carte ici… c’est bon. Bonne journée !" · ES "Inserte su tarjeta aquí… listo. ¡Que tenga un buen día!" — meaning "הכנס את הכרטיס כאן… הכל מוכן. שיהיה יום נעים! (כרטיס למכשיר ← שולם ← להתראות)" / "Insert your card here… all done. Have a nice day! (card in the machine → paid → goodbye)" — icon 🧾 — new
+1. `super.line.card` — EN "Insert your card here… all done. Have a nice day!" · FR "Insérez votre carte ici… c’est bon. Bonne journée !" · ES "Inserte su tarjeta aquí… listo. ¡Que tenga un buen día!" — meaning "הכנס את הכרטיס כאן… הכל מוכן. שיהיה יום נעים! (כרטיס למכשיר ← שולם ← להתראות)" / "Insert your card here… all done. Have a nice day! (card in the machine → paid → goodbye)" — icon none — new
 
 No build-sentence card.
 
@@ -17219,9 +17219,9 @@ No meaning quiz in this mission.
 - Meaning of the audio (HE): "גבינה"
 - Buttons show: only this round's 3 tiles (the meaning and its contrast), same in every language; the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. "🍞" — no sentence id — ❌ wrong
-  2. "🧀" — no sentence id — ✅ accepted
-  3. "🥚" — no sentence id — ❌ wrong
+  1. "[picture bread.jpg]" — no sentence id — ❌ wrong
+  2. "[picture cheese.jpg]" — no sentence id — ✅ accepted
+  3. "[picture eggs.jpg]" — no sentence id — ❌ wrong
 - Tests: (no sentence id — not recorded)
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
@@ -17232,9 +17232,9 @@ No meaning quiz in this mission.
 - Meaning of the audio (HE): "ביצים"
 - Buttons show: only this round's 3 tiles (the meaning and its contrast), same in every language; the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. "🥛" — no sentence id — ❌ wrong
-  2. "🥚" — no sentence id — ✅ accepted
-  3. "🍎" — no sentence id — ❌ wrong
+  1. "[picture milk.jpg]" — no sentence id — ❌ wrong
+  2. "[picture eggs.jpg]" — no sentence id — ✅ accepted
+  3. "[picture apples.jpg]" — no sentence id — ❌ wrong
 - Tests: (no sentence id — not recorded)
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
@@ -17245,9 +17245,9 @@ No meaning quiz in this mission.
 - Meaning of the audio (HE): "תפוחים"
 - Buttons show: only this round's 3 tiles (the meaning and its contrast), same in every language; the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. "💧" — no sentence id — ❌ wrong
-  2. "🍞" — no sentence id — ❌ wrong
-  3. "🍎" — no sentence id — ✅ accepted
+  1. "[picture water.jpg]" — no sentence id — ❌ wrong
+  2. "[picture bread.jpg]" — no sentence id — ❌ wrong
+  3. "[picture apples.jpg]" — no sentence id — ✅ accepted
 - Tests: (no sentence id — not recorded)
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
@@ -35887,28 +35887,28 @@ No questions.
 **M17-Q01** — visual-match
 - Prompt: "🛒 Supermarket sprint · 🔎 Find ⬜ · 📍 Locate ⬜ · 🧾 Checkout ⬜ · 🛍️ Bag ⬜ · 💳 Pay ⬜ · Listen — and tap the product." / "🛒 ספרינט בסופר · 🔎 למצוא ⬜ · 📍 איפה ⬜ · 🧾 קופה ⬜ · 🛍️ שקית ⬜ · 💳 לשלם ⬜ · שמע — והקש על המוצר."
 - Audio: cheese — (גבינה)
-- A: 🍞
-- B: 🧀 ✅
-- C: 🥚
-- Correct: 🧀
+- A: [picture bread.jpg]
+- B: [picture cheese.jpg] ✅
+- C: [picture eggs.jpg]
+- Correct: [picture cheese.jpg]
 - Tests: (no sentence id — not recorded)
 
 **M17-Q02** — visual-match
 - Prompt: "🛒 Supermarket sprint · 🔎 Find ⬜ · 📍 Locate ⬜ · 🧾 Checkout ⬜ · 🛍️ Bag ⬜ · 💳 Pay ⬜ · Listen — and tap the product." / "🛒 ספרינט בסופר · 🔎 למצוא ⬜ · 📍 איפה ⬜ · 🧾 קופה ⬜ · 🛍️ שקית ⬜ · 💳 לשלם ⬜ · שמע — והקש על המוצר."
 - Audio: eggs — (ביצים)
-- A: 🥛
-- B: 🥚 ✅
-- C: 🍎
-- Correct: 🥚
+- A: [picture milk.jpg]
+- B: [picture eggs.jpg] ✅
+- C: [picture apples.jpg]
+- Correct: [picture eggs.jpg]
 - Tests: (no sentence id — not recorded)
 
 **M17-Q03** — visual-match
 - Prompt: "🛒 Supermarket sprint · 🔎 Find ⬜ · 📍 Locate ⬜ · 🧾 Checkout ⬜ · 🛍️ Bag ⬜ · 💳 Pay ⬜ · Listen — and tap the product." / "🛒 ספרינט בסופר · 🔎 למצוא ⬜ · 📍 איפה ⬜ · 🧾 קופה ⬜ · 🛍️ שקית ⬜ · 💳 לשלם ⬜ · שמע — והקש על המוצר."
 - Audio: apples — (תפוחים)
-- A: 💧
-- B: 🍞
-- C: 🍎 ✅
-- Correct: 🍎
+- A: [picture water.jpg]
+- B: [picture bread.jpg]
+- C: [picture apples.jpg] ✅
+- Correct: [picture apples.jpg]
 - Tests: (no sentence id — not recorded)
 
 **M17-Q04** — quick-reply

@@ -1,0 +1,142 @@
+[
+  {
+    "name": "milk",
+    "path": "images/mission17/milk.jpg",
+    "width": 1024,
+    "height": 1024,
+    "bytes": 134909,
+    "sha256": "66893176d06461d266307dbfbc7601de9b84792bb9a1b3b254ce9f31903512d3",
+    "review": {
+      "meaning": "One white unlabelled carton with blue cap and lower band, entirely visible on ivory background.",
+      "text": false,
+      "locationCue": false,
+      "paymentAction": false
+    }
+  },
+  {
+    "name": "water",
+    "path": "images/mission17/water.jpg",
+    "width": 1024,
+    "height": 1024,
+    "bytes": 123580,
+    "sha256": "915773360c8de189017feef57deabca068ae8f3efe43009117cd6512290285dd",
+    "review": {
+      "meaning": "One clear water bottle with pale blue cap, no soda branding or label, entirely visible.",
+      "text": false,
+      "locationCue": false,
+      "paymentAction": false
+    }
+  },
+  {
+    "name": "bread",
+    "path": "images/mission17/bread.jpg",
+    "width": 1024,
+    "height": 1024,
+    "bytes": 234551,
+    "sha256": "1cec961e9f9764613624df7c428d3fa92ca5a712428733b8247db93e3a0e3538",
+    "review": {
+      "meaning": "One short plump whole golden loaf, generic bread without baguette or sliced-bread cues.",
+      "text": false,
+      "locationCue": false,
+      "paymentAction": false
+    }
+  },
+  {
+    "name": "cheese",
+    "path": "images/mission17/cheese.jpg",
+    "width": 1024,
+    "height": 1024,
+    "bytes": 115090,
+    "sha256": "cf4efbba98ad08f55a59acd2d48960c9eb935366fa65b6cca1caa8e4b0cd09d8",
+    "review": {
+      "meaning": "One plain yellow wedge with round holes, no garnish or other food, entirely visible.",
+      "text": false,
+      "locationCue": false,
+      "paymentAction": false
+    }
+  },
+  {
+    "name": "eggs",
+    "path": "images/mission17/eggs.jpg",
+    "width": 1024,
+    "height": 1024,
+    "bytes": 198458,
+    "sha256": "e81e02fb799964fad41e734ba2bef3fefa520cdeaabf98dc4f8282858d611374",
+    "review": {
+      "meaning": "Six whole uncooked eggs in a small open cardboard tray, no cooked breakfast context.",
+      "text": false,
+      "locationCue": false,
+      "paymentAction": false
+    }
+  },
+  {
+    "name": "apples",
+    "path": "images/mission17/apples.jpg",
+    "width": 1024,
+    "height": 1024,
+    "bytes": 257126,
+    "sha256": "14aea19f836f01f24f8fe4163c7a6d48bf79c9e9de32ce91b69cadc262fbdfd4",
+    "review": {
+      "meaning": "Three red apples grouped alone with stems, no mixed fruit or juice, entirely visible.",
+      "text": false,
+      "locationCue": false,
+      "paymentAction": false
+    }
+  },
+  {
+    "name": "shop",
+    "path": "images/mission17/shop.jpg",
+    "width": 1672,
+    "height": 941,
+    "bytes": 597021,
+    "sha256": "c4bc1ac5ea6fbc2cc4af355ace2293a826c61b846a46b0bb85c83c7264696b1d",
+    "review": {
+      "meaning": "Consistent traveler and floor assistant inside generic supermarket; no aisle number, arrows, checkout or location cue.",
+      "text": false,
+      "locationCue": false,
+      "paymentAction": false
+    }
+  },
+  {
+    "name": "checkout",
+    "path": "images/mission17/checkout.jpg",
+    "width": 1672,
+    "height": 941,
+    "bytes": 466587,
+    "sha256": "5f695eed9d6fd0a861f193f0eb59956fdfcebc8fa25422c827931df6e2d552a9",
+    "review": {
+      "meaning": "Consistent traveler and cashier with exactly one milk carton and inactive blank-screen terminal; no payment action, bag, price or receipt.",
+      "text": false,
+      "locationCue": false,
+      "paymentAction": false
+    }
+  },
+  {
+    "name": "bag",
+    "path": "images/mission17/bag.jpg",
+    "width": 1672,
+    "height": 941,
+    "bytes": 460979,
+    "sha256": "45c5f9788a2e06b11ab63312539c297cf7d435ca21361829eef1df384f6fb38d",
+    "review": {
+      "meaning": "Same cashier holds one ordinary plain paper bag with intact handles; same traveler and supermarket background.",
+      "text": false,
+      "locationCue": false,
+      "paymentAction": false
+    }
+  },
+  {
+    "name": "quick-shop-complete",
+    "path": "images/mission17/quick-shop-complete.jpg",
+    "width": 1672,
+    "height": 941,
+    "bytes": 508850,
+    "sha256": "4bb840f20ed0168b60dcf59df96869d9062e656377434e39c2fedd2ba027b826",
+    "review": {
+      "meaning": "Same traveler leaves supermarket carrying one small plain bag; same cashier waves; no exact mission data or text.",
+      "text": false,
+      "locationCue": false,
+      "paymentAction": false
+    }
+  }
+]

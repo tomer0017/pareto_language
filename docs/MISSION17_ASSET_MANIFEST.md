@@ -1,10 +1,9 @@
 # Mission 17 — Supermarket & Everyday Shopping: artwork manifest
 
-**Status: PLACEHOLDERS — VISUAL PRODUCTION REQUIRED IN ASTRA PASS.** No image generation was available in
-the build pass, and no stock photography is used. Every slot below is an emoji placeholder in code
-(`M17_SLOTS` / `M17_PROPS` in `apps/web/src/features/bootcamp/practiceSupermarket.ts`) until its artwork
-exists. To integrate a picture, set `image: 'images/mission17/<slot>.jpg'` on the slot. Cards, the Shelf
-Scan tiles, the briefing and the result all read from the slot.
+**Status: PRODUCTION COMPLETE.** All nine slots and the result use independent generated JPEGs at
+`images/mission17/<slot>.jpg`. Emoji metadata remains available as fallback; Shelf Scan uses images only.
+See [visual report](MISSION17_VISUAL_REPORT.md), [pixel review and sizes](mission17-artwork.json),
+and [generation prompts](MISSION17_IMAGE_PROMPTS.json). Built-in imagegen; no stock images or collages.
 
 Asset-light on purpose: **six product pictures are the priority**, plus three context pictures and one
 result picture. Ten files in all, never fifteen or more.
@@ -25,7 +24,7 @@ numbers, no signs, no labels on packages, no prices, no brand names. The same ar
 The six product pictures appear **as Shelf Scan tiles (the answers)** and as word cards. They must be
 interchangeable in treatment:
 
-- **1:1 square**, at least 1024 × 1024 px, JPEG at full quality; the product centred with ~12% margin
+- **1:1 square**, at least 1024 × 1024 px, production JPEG quality 85; the product centred with ~12% margin
   (the tile crops nothing: `object-fit: contain`);
 - the same neutral light background, the same camera angle (slight top-down three-quarter), the same
   scale on screen, one product per picture;

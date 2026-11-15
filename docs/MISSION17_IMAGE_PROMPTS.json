@@ -1,0 +1,45 @@
+{
+  "tool": "built-in imagegen",
+  "prompts": [
+    {
+      "name": "milk",
+      "prompt": "Use case: stylized-concept. ONE standalone square 1024x1024 premium polished adult supermarket product-recognition illustration. Single plain white milk carton with a small blue cap and minimal unprinted blue lower band, unmistakable MILK. Centered slight top-down three-quarter view, whole carton visible with 12-15% margins, occupies 72% canvas height. Matte warm ivory seamless shelf/background and subtle soft contact shadow, diffuse bright upper-left daylight. Natural paper texture, cinematic animated-film realism, not glossy emoji, not stock photo. No words, letters, numbers, brands, logos, price labels, icons, patterns, arrows, hands, neighboring products, collage, panels or borders. Keep generous clean background and crisp recognizable silhouette at 95px tile size."
+    },
+    {
+      "name": "water",
+      "prompt": "Use case: stylized-concept. Create ONE standalone square product recognition illustration: a single transparent unlabelled water bottle filled with clear water, simple pale blue cap. Reference image is ONLY the style/background/lighting standard; do not include its milk carton. Match warm ivory seamless background, soft contact shadow, bright diffuse upper-left light, slightly top-down three-quarter camera, premium realistic polished illustration. Entire bottle centered occupying 82% height with safe margins, recognizable at 95px. No text, labels, logos, numbers, neighboring objects, collage, borders. Water not soda. Square 1024x1024."
+    },
+    {
+      "name": "bread",
+      "prompt": "Use case: stylized-concept. ONE square standalone generic BREAD recognition illustration. A simple plump short oval golden brown whole loaf, a few natural shallow crust scores; NOT baguette, not sliced bread, not toast, no slices. Reference milk image ONLY for warm ivory seamless background, soft shadow, premium realistic polished illustration and diffuse upper-left light. Slight top-down three-quarter view, whole loaf centered with 10% margins, 80% canvas width, strong recognizable silhouette at 95px. No milk carton, extra products, utensils, plates, text, labels, logos, collage or borders. Square 1024x1024."
+    },
+    {
+      "name": "cheese",
+      "prompt": "Use case: stylized-concept. ONE square standalone CHEESE product recognition illustration. One simple pale golden-yellow cheese wedge with a few round holes, whole wedge centered occupying 80% canvas width, generous clear margins. Reference image ONLY for warm ivory seamless background, soft contact shadow, premium realistic polished illustration style, diffuse upper-left lighting and slight top-down three-quarter camera. No milk, no plate, knife, garnish, other products, text, labels, logos, numbers, panels or borders. Clear silhouette recognizable at 95px. Square 1024x1024."
+    },
+    {
+      "name": "eggs",
+      "prompt": "Use case: stylized-concept. ONE square standalone EGGS recognition illustration. Six whole raw ivory/light brown eggs in a plain small open molded cardboard egg tray, no lid needed. Group centered occupying 80% canvas width, whole tray visible with margins. Reference ONLY for warm ivory seamless background, soft contact shadow, premium realistic polished illustration style, diffuse upper-left light, slight top-down three-quarter view. No milk, cooked food, utensils, chickens, labels, text, logos, prices, collage or borders. Clear recognizable at 95px. Square 1024x1024."
+    },
+    {
+      "name": "apples",
+      "prompt": "Use case: stylized-concept. ONE square standalone APPLES recognition illustration. Three red apples grouped naturally, subtle real skin texture, small brown stems, no leaves needed. Centered whole group occupying 80% canvas width, clear margins. Reference ONLY for warm ivory seamless background, soft contact shadow, premium realistic polished illustration style, diffuse upper-left light, slight top-down three-quarter camera. No milk, other fruit, bowl, basket, text, labels, logos, numbers, collage or borders. Instantly recognizable at 95px. Square 1024x1024."
+    },
+    {
+      "name": "shop",
+      "prompt": "Use case: stylized-concept. ONE landscape 16:9 illustration at least1536px wide, premium cinematic animated-film polished realism matching reference. Reference LEFT man is our traveler: adult olive skin, curly dark hair, clean shaven, teal overshirt over cream tee, charcoal pants, mustard backpack. Put him in a bright clean modern neighborhood supermarket entrance chatting with a friendly adult male floor assistant in simple green apron. Mid-shot central70% safe framing, shelves of generic unlabelled packages softly behind. This establishes shopping ONLY. No checkout counter, bags, terminal, milk location, pointing directions, aisle numbers, arrows, signs, readable text, logos, price tags. No friend from reference, no cafe. Warm daylight, natural adult proportions, welcoming restrained scene."
+    },
+    {
+      "name": "checkout",
+      "prompt": "Use case: stylized-concept. ONE landscape16:9 supermarket CHECKOUT scene at least1536px wide. Premium polished cinematic animated-film illustration matching reference. Same traveler as LEFT reference: olive adult curly dark hair clean shaven teal overshirt cream tee charcoal pants mustard backpack. At plain checkout counter with ONE white milk carton blue cap/blue lower band, no printing. Friendly adult woman cashier warm medium skin straight dark bob, forest-green apron cream shirt. Both central70%, waist-up, counter/conveyor establishes checkout. Small inactive card terminal with blank dark screen only contextual, nobody touching it. NO shopping bag, card, cash, payment action, receipt, price, logos, text, signage, aisle numbers, arrows, cart/basket or other purchase. Bright warm daylight, uncluttered generic softly blurred grocery shelves."
+    },
+    {
+      "name": "bag",
+      "prompt": "Use case: stylized-concept. New ONE landscape16:9 supermarket BAG scene at least1536px wide. Reference is identity/style/location guide: SAME dark-bob woman cashier green apron cream shirt, SAME curly-haired teal-shirt traveler and supermarket checkout. Cashier holding up ONE plain brown paper shopping bag with two intact loop handles, bag unmistakable central foreground and fully visible, traveler attentive. Premium polished cinematic animated illustration, bright warm daylight, central70% mobile safe area. No milk outside bag necessary, no card terminal needed. No text, logos, brands, prices, receipt, cash, payment action, signage, numbers, arrows, extra bags. Not luxury shopping or trash bag. Preserve adult faces/clothing."
+    },
+    {
+      "name": "quick-shop-complete",
+      "prompt": "Use case: stylized-concept. ONE new landscape16:9 at least1536px wide successful quick supermarket trip illustration. SAME traveler from reference: curly dark hair olive skin clean shaven teal overshirt cream tee charcoal pants mustard backpack, now walking out of a bright neighborhood supermarket with ONE small plain brown paper grocery bag with loop handles, milk inside invisible. Relaxed satisfied smile. SAME dark-bob woman cashier green apron cream shirt gives a small wave from shop doorway/background. Premium cinematic polished animated illustration, warm sunny travel lifestyle, central70% mobile safe composition, full bag and handles visible. No captions, symbols, checkmarks, numbers, arrows, signs, logos, brands, prices, receipts, payment objects, panels. Emotional completion only, no mission data."
+    }
+  ]
+}

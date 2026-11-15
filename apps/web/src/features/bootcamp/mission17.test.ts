@@ -607,12 +607,12 @@ describe('visuals, the companion and video', () => {
       'quickReply', 'visualMatch', 'quickReply', 'quickReply', 'visualMatch', 'receipt', 'summary',
     ]);
   });
-  it('visual slots: six products, the shop, the checkout, the bag, one result prop — placeholders, listed in the asset manifest (VISUAL PRODUCTION REQUIRED)', () => {
+  it('visual slots: six products, the shop, the checkout, the bag, one result prop — production artwork listed in the asset manifest', () => {
     expect(Object.keys(M17_SLOTS)).toEqual(['milk', 'water', 'bread', 'cheese', 'eggs', 'apples', 'shop', 'checkout', 'bag']);
     expect(Object.keys(M17_PROPS)).toEqual(['quick-shop-complete']);
-    for (const s of [...Object.values(M17_SLOTS), ...Object.values(M17_PROPS)]) { expect(s.emoji).toBeTruthy(); if (s.image) expect(s.image).toMatch(/^images\/mission17\/[a-z-]+\.jpg$/); }
+    for (const s of [...Object.values(M17_SLOTS), ...Object.values(M17_PROPS)]) { expect(s.emoji).toBeTruthy(); expect(s.image).toMatch(/^images\/mission17\/[a-z-]+\.jpg$/); }
     const manifest = readFileSync(fileURLToPath(new URL('../../../../../docs/MISSION17_ASSET_MANIFEST.md', import.meta.url)), 'utf8');
-    expect(manifest).toMatch(/VISUAL PRODUCTION REQUIRED/);
+    expect(manifest).toMatch(/PRODUCTION COMPLETE/);
     for (const key of [...Object.keys(M17_SLOTS), ...Object.keys(M17_PROPS)]) expect(manifest, key).toContain(`\`${key}\``);
   });
   it('every card picture comes from a slot, the same in every language', () => {

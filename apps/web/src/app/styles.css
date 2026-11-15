@@ -1851,3 +1851,7 @@ div.jstep { box-shadow: none; border-color: var(--line); }
 .prime-img.is-scene[src*="/images/mission16/"] { flex-basis: 100%; width: 100%; height: auto; }
 
 .mission-step-body:has(.situation-image[src*="/images/mission16/"]) { padding-bottom: calc(env(safe-area-inset-bottom) + 280px); }
+
+/* Mission 17 context scenes stay wide; the six recognition products retain equal square tiles. */
+.list-row:has(> .prime-img[src*="/images/mission17/"]:is([src$="/shop.jpg"], [src$="/checkout.jpg"], [src$="/bag.jpg"])) { flex-wrap: wrap; }
+.prime-img.is-scene[src*="/images/mission17/"]:is([src$="/shop.jpg"], [src$="/checkout.jpg"], [src$="/bag.jpg"]) { flex-basis: 100%; width: 100%; height: auto; }
