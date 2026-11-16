@@ -49,6 +49,7 @@ describe('Mission 18 presentation without changing the checkpoint engine', () =>
     const folder = new URL('../../../public/images/mission18', import.meta.url);
     expect(existsSync(folder) ? readdirSync(folder).length : 0).toBe(0);
     for (const lang of ['en', 'es', 'fr']) expect(existsSync(new URL(`../../../public/videos/${lang}/${lang}_18.mp4`, import.meta.url))).toBe(false);
+    expect(readFileSync(new URL('./Bootcamp.tsx', import.meta.url), 'utf8')).toContain('!video && number !== 18');
     const css = readFileSync(new URL('../../app/styles.css', import.meta.url), 'utf8');
     expect(css).toContain('.checkpoint-replay { min-height: 44px; min-width: 44px;');
     expect(css).toContain('.checkpoint[data-checkpoint="everyday-day"] .checkpoint-replay { min-width: 44px; min-height: 44px; }');

@@ -179,7 +179,7 @@ function MissionHub() {
             <button className="btn-link" onClick={() => { tap(); bc.enterPractice(afterWatch); }}>{t('resumeRestart')}</button>
           )}
         </div>
-        {!video && <p className="faint small center" style={{ marginTop: 8 }}>{t('videoComingSoonDesc')}</p>}
+        {!video && number !== 18 && <p className="faint small center" style={{ marginTop: 8 }}>{t('videoComingSoonDesc')}</p>}
       </div>
 
       <div className="action-zone">

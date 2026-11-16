@@ -22,7 +22,9 @@ Readiness has a large title, one supporting line and five consistent capability 
 
 ## Scope
 
-Runtime files: `apps/web/src/app/styles.css`, `apps/web/src/features/bootcamp/CheckpointStep.tsx`.
+Mission 18’s existing hub video-coming-soon placeholder is suppressed, with no video resolver changes.
+
+Runtime files: `apps/web/src/features/bootcamp/Bootcamp.tsx`, `apps/web/src/app/styles.css`, `apps/web/src/features/bootcamp/CheckpointStep.tsx`.
 Test files: `apps/web/src/features/bootcamp/mission18Visual.test.ts`, `apps/web/src/features/bootcamp/mission18Visual.testSupport.ts`.
 Documentation: this report and production verification evidence.
 
