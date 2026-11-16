@@ -1856,6 +1856,10 @@ div.jstep { box-shadow: none; border-color: var(--line); }
 .list-row:has(> .prime-img[src*="/images/mission17/"]:is([src$="/shop.jpg"], [src$="/checkout.jpg"], [src$="/bag.jpg"])) { flex-wrap: wrap; }
 .prime-img.is-scene[src*="/images/mission17/"]:is([src$="/shop.jpg"], [src$="/checkout.jpg"], [src$="/bag.jpg"]) { flex-basis: 100%; width: 100%; height: auto; }
 
+/* Mission 19: full landscape context, with exact transport data still in UI. */
+.list-row:has(> .prime-img[src*="/images/mission19/"]) { flex-wrap: wrap; }
+.prime-img.is-scene[src*="/images/mission19/"] { flex-basis: 100%; width: 100%; height: auto; }
+
 /* Mission 18: presentation only. Other checkpoint plans keep their existing layout. */
 .checkpoint-content { display: contents; }
 .checkpoint[data-checkpoint="everyday-day"] { --checkpoint-accent: #315d50; gap: 12px; max-width: 680px; margin-inline: auto; }

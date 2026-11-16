@@ -407,7 +407,7 @@ describe('PLATFORM FINDER — platform 2, straight ahead', () => {
     expect(PLATFORM_TILES.map((t) => [t.id, t.label])).toEqual([['p1s', '🚉 1 ⬆️'], ['p2s', '🚉 2 ⬆️'], ['p3s', '🚉 3 ⬆️'], ['p1l', '🚉 1 ⬅️'], ['p2l', '🚉 2 ⬅️'], ['p3l', '🚉 3 ⬅️']]);
     for (const t of [...PLATFORM_TILES, ...FARE_TILES, ...STOP_TILES]) { expect(t.image).toBeUndefined(); expect(t.emoji).toBeUndefined(); }
     for (const lang of LANGS) for (const s of day(lang).steps.filter((x) => isPlatform(x) || isStops(x))) expect(s.ordered, lang).toBe(true);
-    expect(JSON.stringify([M19_SLOTS, M19_PROPS])).not.toMatch(/\d|⬆️|⬅️|➡️|€/);
+    expect(JSON.stringify([M19_SLOTS, M19_PROPS]).replaceAll('images/mission19/', '')).not.toMatch(/\d|⬆️|⬅️|➡️|€/);
   });
 });
 
@@ -638,12 +638,12 @@ describe('visuals, the companion and video', () => {
       'quickReply', 'quickReply', 'visualMatch', 'quickReply', 'visualMatch', 'quickReply', 'visualMatch', 'visualMatch', 'receipt', 'summary',
     ]);
   });
-  it('34–35. visual slots: the desk, the tickets, the platform, the train, on board, the museum, one result prop — placeholders, listed in the asset manifest (VISUAL PRODUCTION REQUIRED)', () => {
+  it('34–35. visual slots: the desk, the tickets, the platform, the train, on board, the museum, one result prop — production artwork, listed in the completed asset manifest', () => {
     expect(Object.keys(M19_SLOTS)).toEqual(['desk', 'tickets', 'platform', 'train', 'onboard', 'museum']);
     expect(Object.keys(M19_PROPS)).toEqual(['ride-complete']);
     for (const s of [...Object.values(M19_SLOTS), ...Object.values(M19_PROPS)]) { expect(s.emoji).toBeTruthy(); if (s.image) expect(s.image).toMatch(/^images\/mission19\/[a-z-]+\.jpg$/); }
     const manifest = readFileSync(fileURLToPath(new URL('../../../../../docs/MISSION19_ASSET_MANIFEST.md', import.meta.url)), 'utf8');
-    expect(manifest).toMatch(/VISUAL PRODUCTION REQUIRED/);
+    expect(manifest).toMatch(/Status: COMPLETED/);
     for (const key of [...Object.keys(M19_SLOTS), ...Object.keys(M19_PROPS)]) expect(manifest, key).toContain(`\`${key}\``);
   });
   it('every card picture comes from a slot, the same in every language', () => {

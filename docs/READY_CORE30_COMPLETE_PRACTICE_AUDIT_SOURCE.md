@@ -18373,8 +18373,8 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `trans.line.where` — EN "Hello! Where are you headed?" · FR "Bonjour ! Vous allez où ?" · ES "¡Hola! ¿A dónde va?" — meaning "שלום! לאן אתה נוסע?" / "Hello! Where are you headed?" — icon 🎫 — new
-2. `trans.line.ticket` — EN "One ticket to the centre, please." · FR "Un billet pour le centre, s’il vous plaît." · ES "Un billete para el centro, por favor." — meaning "כרטיס אחד למרכז, בבקשה. (כרטיס אחד ל___ — קונה כרטיס לכל יעד)" / "One ticket to the centre, please. (one ticket to ___ — buys a ticket to anywhere)" — icon 🎫 — new
+1. `trans.line.where` — EN "Hello! Where are you headed?" · FR "Bonjour ! Vous allez où ?" · ES "¡Hola! ¿A dónde va?" — meaning "שלום! לאן אתה נוסע?" / "Hello! Where are you headed?" — icon none — new
+2. `trans.line.ticket` — EN "One ticket to the centre, please." · FR "Un billet pour le centre, s’il vous plaît." · ES "Un billete para el centro, por favor." — meaning "כרטיס אחד למרכז, בבקשה. (כרטיס אחד ל___ — קונה כרטיס לכל יעד)" / "One ticket to the centre, please. (one ticket to ___ — buys a ticket to anywhere)" — icon none — new
 
 No build-sentence card.
 
@@ -18383,8 +18383,8 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `trans.line.type` — EN "Single or return?" · FR "Aller simple ou aller-retour ?" · ES "¿Solo ida o ida y vuelta?" — meaning "הלוך או הלוך-חזור? (➡️ הלוך: לכיוון אחד · ↔️ הלוך-חזור: לשם ובחזרה)" / "Single or return? (➡️ single: one way · ↔️ return: there and back)" — icon 🎟️ — new
-2. `trans.line.single` — EN "Single, please." · FR "Aller simple, s’il vous plaît." · ES "Solo ida, por favor." — meaning "הלוך, בבקשה. (➡️ רק לשם)" / "Single, please. (➡️ there only)" — icon 🎟️ — new
+1. `trans.line.type` — EN "Single or return?" · FR "Aller simple ou aller-retour ?" · ES "¿Solo ida o ida y vuelta?" — meaning "הלוך או הלוך-חזור? (➡️ הלוך: לכיוון אחד · ↔️ הלוך-חזור: לשם ובחזרה)" / "Single or return? (➡️ single: one way · ↔️ return: there and back)" — icon none — new
+2. `trans.line.single` — EN "Single, please." · FR "Aller simple, s’il vous plaît." · ES "Solo ida, por favor." — meaning "הלוך, בבקשה. (➡️ רק לשם)" / "Single, please. (➡️ there only)" — icon none — new
 
 No build-sentence card.
 
@@ -18393,7 +18393,7 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `trans.line.fare` — EN "That's three euros. It leaves every ten minutes." · FR "Ça fait trois euros. Ça part toutes les dix minutes." · ES "Son tres euros. Sale cada diez minutos." — meaning "זה שלושה יורו. יוצא כל עשר דקות. (💶 €3 · 🕒 כל 10 דקות)" / "That's three euros. It leaves every ten minutes. (💶 €3 · 🕒 every 10 min)" — icon 🎫 — new
+1. `trans.line.fare` — EN "That's three euros. It leaves every ten minutes." · FR "Ça fait trois euros. Ça part toutes les dix minutes." · ES "Son tres euros. Sale cada diez minutos." — meaning "זה שלושה יורו. יוצא כל עשר דקות. (💶 €3 · 🕒 כל 10 דקות)" / "That's three euros. It leaves every ten minutes. (💶 €3 · 🕒 every 10 min)" — icon none — new
 
 No build-sentence card.
 
@@ -18402,7 +18402,7 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `trans.line.which` — EN "Which platform?" · FR "Quel quai ?" · ES "¿Qué andén?" — meaning "איזה רציף? (מאיפה הרכבת שלך יוצאת)" / "Which platform? (where your train leaves from)" — icon 🚉 — new
+1. `trans.line.which` — EN "Which platform?" · FR "Quel quai ?" · ES "¿Qué andén?" — meaning "איזה רציף? (מאיפה הרכבת שלך יוצאת)" / "Which platform? (where your train leaves from)" — icon none — new
 
 No build-sentence card.
 
@@ -18411,7 +18411,7 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `trans.line.platform` — EN "Platform two. Straight ahead." · FR "Quai numéro deux. Tout droit." · ES "Andén número dos. Todo recto." — meaning "רציף שתיים. ישר קדימה. (🚉 2 · ⬆️ ישר)" / "Platform two. Straight ahead. (🚉 2 · ⬆️ straight)" — icon 🚉 — new
+1. `trans.line.platform` — EN "Platform two. Straight ahead." · FR "Quai numéro deux. Tout droit." · ES "Andén número dos. Todo recto." — meaning "רציף שתיים. ישר קדימה. (🚉 2 · ⬆️ ישר)" / "Platform two. Straight ahead. (🚉 2 · ⬆️ straight)" — icon none — new
 
 No build-sentence card.
 
@@ -18420,8 +18420,8 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `trans.line.hop` — EN "The train's right here. Hop on." · FR "Le train est juste là. Montez." · ES "El tren está justo ahí. Suba." — meaning "הרכבת ממש כאן. עלה. (הרכבת כאן ← עולים)" / "The train's right here. Hop on. (the train is here → get on)" — icon 🚆 — new
-2. `trans.line.stop` — EN "Does this stop at the museum?" · FR "Ça s’arrête au musée ?" · ES "¿Para en el museo?" — meaning "זה עוצר במוזיאון? (זה עוצר ב___? — בודקים שהרכבת מגיעה ליעד)" / "Does this stop at the museum? (does this stop at ___? — check the train reaches your stop)" — icon 🏛️ — new
+1. `trans.line.hop` — EN "The train's right here. Hop on." · FR "Le train est juste là. Montez." · ES "El tren está justo ahí. Suba." — meaning "הרכבת ממש כאן. עלה. (הרכבת כאן ← עולים)" / "The train's right here. Hop on. (the train is here → get on)" — icon none — new
+2. `trans.line.stop` — EN "Does this stop at the museum?" · FR "Ça s’arrête au musée ?" · ES "¿Para en el museo?" — meaning "זה עוצר במוזיאון? (זה עוצר ב___? — בודקים שהרכבת מגיעה ליעד)" / "Does this stop at the museum? (does this stop at ___? — check the train reaches your stop)" — icon none — new
 
 No build-sentence card.
 
@@ -18430,7 +18430,7 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `trans.line.stops` — EN "Yes — it's three stops. I'll tell you when." · FR "Oui — c’est à trois arrêts. Je vous dirai quand." · ES "Sí — son tres paradas. Le aviso cuándo." — meaning "כן — זה שלוש תחנות. אני אגיד לך מתי. (🏛️ בעוד 3 תחנות · יגידו לך)" / "Yes — it's three stops. I'll tell you when. (🏛️ 3 stops away · they'll tell you)" — icon 💺 — new
+1. `trans.line.stops` — EN "Yes — it's three stops. I'll tell you when." · FR "Oui — c’est à trois arrêts. Je vous dirai quand." · ES "Sí — son tres paradas. Le aviso cuándo." — meaning "כן — זה שלוש תחנות. אני אגיד לך מתי. (🏛️ בעוד 3 תחנות · יגידו לך)" / "Yes — it's three stops. I'll tell you when. (🏛️ 3 stops away · they'll tell you)" — icon none — new
 
 No build-sentence card.
 
@@ -18439,7 +18439,7 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `trans.line.next` — EN "Here we are — your stop is next. Enjoy the museum!" · FR "Nous voilà — votre arrêt est le prochain. Bonne visite du musée !" · ES "Ya llegamos — su parada es la siguiente. ¡Que disfrute del museo!" — meaning "הגענו — התחנה שלך הבאה. תיהנה במוזיאון! (🏛️ התחנה הבאה היא שלך)" / "Here we are — your stop is next. Enjoy the museum! (🏛️ the next stop is yours)" — icon 🏛️ — new
+1. `trans.line.next` — EN "Here we are — your stop is next. Enjoy the museum!" · FR "Nous voilà — votre arrêt est le prochain. Bonne visite du musée !" · ES "Ya llegamos — su parada es la siguiente. ¡Que disfrute del museo!" — meaning "הגענו — התחנה שלך הבאה. תיהנה במוזיאון! (🏛️ התחנה הבאה היא שלך)" / "Here we are — your stop is next. Enjoy the museum! (🏛️ the next stop is yours)" — icon none — new
 
 No build-sentence card.
 

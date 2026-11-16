@@ -25,22 +25,21 @@ import type { BootcampStep, MatchTile } from './types.js';
  */
 
 /**
- * PLACEHOLDERS — VISUAL PRODUCTION REQUIRED (Astra pass): one station, one train, one style. Each slot is
- * an emoji until its artwork exists (`image` set): docs/MISSION19_ASSET_MANIFEST.md. No picture carries a
+ * Production artwork: one station, one train, one traveler. See docs/MISSION19_ASSET_MANIFEST.md. No picture carries a
  * platform number, a price, a time, an arrow or a stop count: those are UI.
  */
 type M19Slot = 'desk' | 'tickets' | 'platform' | 'train' | 'onboard' | 'museum';
 export const M19_SLOTS: Record<M19Slot, { emoji: string; image?: string }> = {
-  desk: { emoji: '🎫' },
-  tickets: { emoji: '🎟️' },
-  platform: { emoji: '🚉' },
-  train: { emoji: '🚆' },
-  onboard: { emoji: '💺' },
-  museum: { emoji: '🏛️' },
+  desk: { emoji: '🎫', image: 'images/mission19/desk.jpg' },
+  tickets: { emoji: '🎟️', image: 'images/mission19/tickets.jpg' },
+  platform: { emoji: '🚉', image: 'images/mission19/platform.jpg' },
+  train: { emoji: '🚆', image: 'images/mission19/train.jpg' },
+  onboard: { emoji: '💺', image: 'images/mission19/onboard.jpg' },
+  museum: { emoji: '🏛️', image: 'images/mission19/museum.jpg' },
 };
 /** Result picture only — never a choice, never a card. */
 export const M19_PROPS: Record<'ride-complete', { emoji: string; image?: string }> = {
-  'ride-complete': { emoji: '🚆' },
+  'ride-complete': { emoji: '🚆', image: 'images/mission19/ride-complete.jpg' },
 };
 const look19 = (x: { emoji: string; image?: string }): { emoji: string } | { image: string } => (x.image ? { image: x.image } : { emoji: x.emoji });
 
