@@ -86,3 +86,12 @@ All seven generated outputs visually reviewed. Desk has small decorative ticket 
 - Static browser render QA: desk, tickets, ticket-type, fare, platform, train, onboard, museum, route and result at 360/390/430 in EN/ES/FR: 90 viewport renders. No horizontal overflow; measured controls >=44px. French/Spanish wrapping and full landscape crops reviewed. Long two-card screens scroll vertically as before. No ticket/route redesign.
 - QA rendered existing production components in a temporary harness (removed before build), not a claim of complete adaptive click-through or physical-device testing. Initial incomplete frame measurements were repeated successfully.
 - Contract-test maintenance only: strip the literal `images/mission19/` path prefix before checking for answer digits, and require completed manifest status. Dialogue hashes and interaction expectations unchanged. Generated practice audit updated for the visual references.
+
+## Production release
+
+- Implementation: `f722f69`, pushed to main.
+- gh-pages: `c827bfd730901136c89635ffbffb2d6a765905c9`; workflow `43891335093` completed successfully.
+- Live bundle: `index-DyqSDpAa.js`; CSS: `index-CqAew0b1.css`.
+- All seven images and JS/CSS returned HTTP 200 and matched build bytes exactly; see `mission19-production-verification.json`.
+- Production entry was clicked through the existing conversation reader into the briefing and Buy a ticket card. Concealed ride fields remained `?`; controls and text appeared in the accessibility tree. Full live mission completion was not rerun for this artwork-only pass.
+- Limitation: native Safari capture showed an unpainted content area during production animation despite working accessibility controls. Therefore production pixel validation is not claimed; all requested mobile image/layout screenshots were inspected in the local production-component harness. Physical-device QA remains manual.
