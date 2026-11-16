@@ -1,0 +1,85 @@
+{
+  "release": "13377fe",
+  "deploy": "702482bc16d8d479793ee65882bbdfa50e061ec5",
+  "workflow": 43720331014,
+  "checks": [
+    {
+      "path": "images/mission17/milk.jpg",
+      "status": 200,
+      "bytes": 134909,
+      "matchesBuild": true
+    },
+    {
+      "path": "images/mission17/water.jpg",
+      "status": 200,
+      "bytes": 123580,
+      "matchesBuild": true
+    },
+    {
+      "path": "images/mission17/bread.jpg",
+      "status": 200,
+      "bytes": 234551,
+      "matchesBuild": true
+    },
+    {
+      "path": "images/mission17/cheese.jpg",
+      "status": 200,
+      "bytes": 115090,
+      "matchesBuild": true
+    },
+    {
+      "path": "images/mission17/eggs.jpg",
+      "status": 200,
+      "bytes": 198458,
+      "matchesBuild": true
+    },
+    {
+      "path": "images/mission17/apples.jpg",
+      "status": 200,
+      "bytes": 257126,
+      "matchesBuild": true
+    },
+    {
+      "path": "images/mission17/shop.jpg",
+      "status": 200,
+      "bytes": 597021,
+      "matchesBuild": true
+    },
+    {
+      "path": "images/mission17/checkout.jpg",
+      "status": 200,
+      "bytes": 466587,
+      "matchesBuild": true
+    },
+    {
+      "path": "images/mission17/bag.jpg",
+      "status": 200,
+      "bytes": 460979,
+      "matchesBuild": true
+    },
+    {
+      "path": "images/mission17/quick-shop-complete.jpg",
+      "status": 200,
+      "bytes": 508850,
+      "matchesBuild": true
+    },
+    {
+      "path": "assets/index--d_IWbJs.js",
+      "status": 200,
+      "bytes": 1323774,
+      "matchesBuild": true
+    },
+    {
+      "path": "assets/index-CWqFF6BS.css",
+      "status": 200,
+      "bytes": 96563,
+      "matchesBuild": true
+    },
+    {
+      "path": "images/mission16/friends.jpg",
+      "status": 200,
+      "bytes": 658403,
+      "matchesBuild": true
+    }
+  ]
+}
