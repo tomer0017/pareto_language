@@ -52,6 +52,7 @@ export function CheckpointView({ plan, state, onChange, onAnswer, onDone }: {
   plan: CheckpointPlan; state: CheckpointState; onChange: (next: CheckpointState) => void; onAnswer?: (itemId: string, ok: boolean) => void; onDone: () => void;
 }) {
   const screen = checkpointScreen(plan, state);
+  const everyday = plan.id === 'everyday-day';
   const scene = plan.scenes.find((s) => s.id === state.scene)!;
   const go = onChange;
   // The conversation keeps going: what you just said stays on screen as the other person answers.
@@ -60,54 +61,64 @@ export function CheckpointView({ plan, state, onChange, onAnswer, onDone }: {
   const youSaid = state.beat === 'ask' && last?.correct && last.phase === state.phase && lastTurn?.kind === 'say' && lastTurn.scene === state.scene ? lastTurn.answer.text : undefined;
 
   return (
-    <div className="pcanvas checkpoint" data-engine="checkpoint" data-phase={state.phase}>
-      <DayProgress plan={plan} state={state} />
-      {screen.kind === 'intro' && <IntroBeat text={L(screen.text)} onNext={() => go(proceed(plan, state))} />}
-      {youSaid && (screen.kind === 'say' || screen.kind === 'capture') && <YouLine><TargetText text={youSaid} /></YouLine>}
-      {screen.kind === 'say' && (
-        <SayBeat
-          key={`${state.phase}.${state.cursor}.${state.attempts.length}`}
-          cast={scene.cast} cue={screen.turn.cue} heard={(screen.turn.heard ?? false) && (state.phase === 'diagnostic' || state.phase === 'one-take') && !state.slow} situation={screen.situation ? L(screen.situation) : undefined}
-          sceneCue={screen.turn.sceneCue ? L(screen.turn.sceneCue) : undefined} slow={state.slow ?? false}
-          options={screen.options.map((o) => ({ id: o.conceptId, text: o.text }))}
-          onReveal={screen.concealed ? () => { tap(); go(revealOptions(plan, state)); } : undefined}
-          onHelp={screen.concealed && plan.adaptive && state.phase === 'diagnostic' ? () => { tap(); go(requestHelp(plan, state)); } : undefined}
-          onPick={(id) => {
-            const right = id === screen.turn.conceptId;
-            tap();
-            if (right) { success(); softChime(); } else feedbackWrong();
-            onAnswer?.(screen.turn.answer.itemId, right);
-            if (right) void speakL(screen.turn.answer.text, 0.95);
-            go(respond(plan, state, { kind: 'say', conceptId: id }));
-          }}
-        />
-      )}
-      {screen.kind === 'capture' && (
-        <CaptureBeat
-          key={`${state.phase}.${state.cursor}.${state.attempts.length}`}
-          cast={scene.cast} cue={screen.turn.cue} groups={screen.groups} sceneCue={screen.turn.sceneCue ? L(screen.turn.sceneCue) : undefined}
-          onConfirm={(picks) => {
-            const right = screen.groups.every((g) => picks[g.conceptId] === g.correct);
-            tap();
-            if (right) { success(); softChime(); } else feedbackWrong();
-            go(respond(plan, state, { kind: 'capture', picks }));
-          }}
-        />
-      )}
-      {(screen.kind === 'reveal' || screen.kind === 'card') && (
-        <ShownBeat
-          key={`${state.phase}.${state.cursor}.${screen.kind}`}
-          card={screen.kind === 'card'} text={screen.line.text} meaning={L(screen.line.meaning)} spoken={screen.line.spoken}
-          values={screen.values.map((v) => ({ id: v.conceptId, label: L(v.label), choice: v.choice }))}
-          onNext={() => go(proceed(plan, state))}
-        />
-      )}
-      {screen.kind === 'scene-end' && (
-        <SceneEndBeat key={`${state.phase}.${screen.scene.id}`} cast={screen.scene.cast} closing={screen.scene.closing} stamp={L(screen.scene.stamp)} onNext={() => go(proceed(plan, state))} />
-      )}
-      {screen.kind === 'complete' && (
-        <CompleteBeat plan={plan} report={screen.report} onNext={onDone} />
-      )}
+    <div className="pcanvas checkpoint" data-engine="checkpoint" data-phase={state.phase} data-checkpoint={plan.id} data-helped={state.helped || undefined}>
+      {everyday && state.phase !== 'complete' && <p className="checkpoint-eyebrow">{t('checkpointTag')}</p>}
+      {(!everyday || state.phase !== 'complete') && <DayProgress plan={plan} state={state} />}
+      <div className="checkpoint-content">
+        {everyday && state.phase !== 'complete' && state.beat !== 'intro' && (
+          <div className="checkpoint-context">
+            <span aria-hidden>{state.phase === 'diagnostic' ? ({ 'coffee.order': '☕', 'plans.surf': '🏄', 'plans.meet': '🕒', 'shop.where': '🛒', 'shop.bag': '🛍️', 'dinner.order': '🍽️' } as Record<string, string>)[state.agenda[state.cursor]?.concepts[0] ?? ''] : scene.icon}</span>
+            {state.phase !== 'diagnostic' && <span>{L(scene.label)}</span>}
+            {state.slow && <span className="checkpoint-slow" aria-label={t('playSlow')}>🐢</span>}
+          </div>
+        )}
+        {screen.kind === 'intro' && <IntroBeat text={L(screen.text)} onNext={() => go(proceed(plan, state))} />}
+        {youSaid && (screen.kind === 'say' || screen.kind === 'capture') && <YouLine><TargetText text={youSaid} /></YouLine>}
+        {screen.kind === 'say' && (
+          <SayBeat
+            key={`${state.phase}.${state.cursor}.${state.attempts.length}`}
+            cast={scene.cast} cue={screen.turn.cue} heard={(screen.turn.heard ?? false) && (state.phase === 'diagnostic' || state.phase === 'one-take') && !state.slow} situation={screen.situation ? L(screen.situation) : undefined}
+            sceneCue={screen.turn.sceneCue ? L(screen.turn.sceneCue) : undefined} slow={state.slow ?? false}
+            options={screen.options.map((o) => ({ id: o.conceptId, text: o.text }))}
+            onReveal={screen.concealed ? () => { tap(); go(revealOptions(plan, state)); } : undefined}
+            onHelp={screen.concealed && plan.adaptive && state.phase === 'diagnostic' ? () => { tap(); go(requestHelp(plan, state)); } : undefined}
+            onPick={(id) => {
+              const right = id === screen.turn.conceptId;
+              tap();
+              if (right) { success(); softChime(); } else feedbackWrong();
+              onAnswer?.(screen.turn.answer.itemId, right);
+              if (right) void speakL(screen.turn.answer.text, 0.95);
+              go(respond(plan, state, { kind: 'say', conceptId: id }));
+            }}
+          />
+        )}
+        {screen.kind === 'capture' && (
+          <CaptureBeat
+            key={`${state.phase}.${state.cursor}.${state.attempts.length}`}
+            cast={scene.cast} cue={screen.turn.cue} groups={screen.groups} sceneCue={screen.turn.sceneCue ? L(screen.turn.sceneCue) : undefined}
+            onConfirm={(picks) => {
+              const right = screen.groups.every((g) => picks[g.conceptId] === g.correct);
+              tap();
+              if (right) { success(); softChime(); } else feedbackWrong();
+              go(respond(plan, state, { kind: 'capture', picks }));
+            }}
+          />
+        )}
+        {(screen.kind === 'reveal' || screen.kind === 'card') && (
+          <ShownBeat
+            key={`${state.phase}.${state.cursor}.${screen.kind}`}
+            gentle={everyday} card={screen.kind === 'card'} text={screen.line.text} meaning={L(screen.line.meaning)} spoken={screen.line.spoken}
+            values={screen.values.map((v) => ({ id: v.conceptId, label: L(v.label), choice: v.choice }))}
+            onNext={() => go(proceed(plan, state))}
+          />
+        )}
+        {screen.kind === 'scene-end' && (
+          <SceneEndBeat key={`${state.phase}.${screen.scene.id}`} cast={screen.scene.cast} closing={screen.scene.closing} stamp={L(screen.scene.stamp)} onNext={() => go(proceed(plan, state))} />
+        )}
+        {screen.kind === 'complete' && (
+          <CompleteBeat plan={plan} report={screen.report} onNext={onDone} />
+        )}
+      </div>
     </div>
   );
 }
@@ -229,8 +240,8 @@ function Choice({ choice }: { choice: CaptureChoice }) {
 }
 
 /** A miss, quietly corrected — or a final-repair card: the line, what it means, its sound. */
-function ShownBeat({ card, text, meaning, spoken, values, onNext }: {
-  card: boolean; text: string; meaning: string; spoken?: SpokenLine; values: { id: string; label: string; choice: CaptureChoice }[]; onNext: () => void;
+function ShownBeat({ card, text, meaning, spoken, values, onNext, gentle = false }: {
+  gentle?: boolean; card: boolean; text: string; meaning: string; spoken?: SpokenLine; values: { id: string; label: string; choice: CaptureChoice }[]; onNext: () => void;
 }) {
   useEffect(() => {
     void speakL(text, spoken ? rateOf(spoken) : 0.92);
@@ -239,7 +250,7 @@ function ShownBeat({ card, text, meaning, spoken, values, onNext }: {
   return (
     <>
       <div className="checkpoint-shown fade-in">
-        {!card && <span className="feedback-head bad">✕</span>}
+        {!card && (gentle ? <span className="checkpoint-support-icon" aria-hidden>💡</span> : <span className="feedback-head bad">✕</span>)}
         <p className="drill-phrase"><TargetText text={text} /></p>
         <p className="drill-meaning">{meaning}</p>
         {values.length > 0 && (
@@ -247,7 +258,7 @@ function ShownBeat({ card, text, meaning, spoken, values, onNext }: {
             {values.map((v) => <div key={v.id}><dt>{v.label}</dt><dd dir="ltr"><Choice choice={v.choice} /></dd></div>)}
           </dl>
         )}
-        <button className="btn-ghost" onClick={() => void speakL(text, 0.9)} aria-label={t('replayAudio')}>🔊</button>
+        <button className="btn-ghost checkpoint-replay" onClick={() => void speakL(text, 0.9)} aria-label={t('replayAudio')}>🔊</button>
       </div>
       <div className="action-zone">
         <button className="btn-primary" onClick={onNext}>{t('continue')}</button>
@@ -286,7 +297,7 @@ function CompleteBeat({ plan, report, onNext }: { plan: CheckpointPlan; report?:
       <div className="checkpoint-complete pop-in">
         <h2>{L(plan.copy.completeTitle)}</h2>
         <p>{L(plan.copy.completeBody)}</p>
-        <ul>{plan.scenes.map((s) => <li key={s.id}><span aria-hidden>{s.icon}</span> {L(s.label)} ✅</li>)}</ul>
+        {plan.id !== 'everyday-day' && <ul>{plan.scenes.map((s) => <li key={s.id}><span aria-hidden>{s.icon}</span> {L(s.label)} ✅</li>)}</ul>}
         {/* The honest part: a level and what each part of the day took — never a score. */}
         {report && level && (
           <div className="checkpoint-readiness" data-level={report.readinessLevel}>
@@ -295,7 +306,7 @@ function CompleteBeat({ plan, report, onNext }: { plan: CheckpointPlan; report?:
             <dl className="checkpoint-report">
               {plan.adaptive!.report.map((g) => {
                 const outcome = report.groups.find((x) => x.id === g.id)!.outcome;
-                return <div key={g.id} data-outcome={outcome}><dt><span aria-hidden>{g.icon}</span> {L(g.label)}</dt><dd>{plan.copy.outcome ? L(plan.copy.outcome[outcome]) : outcome}</dd></div>;
+                return <div key={g.id} data-outcome={outcome}><dt><span aria-hidden>{g.icon}</span> {L(g.label)}</dt><dd>{plan.id === 'everyday-day' && <span className="checkpoint-outcome-icon" aria-hidden>{{ independent: '✓', 'needed-help': '💡', recovered: '↻', 'needs-review': '↗' }[outcome]}</span>}{plan.copy.outcome ? L(plan.copy.outcome[outcome]) : outcome}</dd></div>;
               })}
             </dl>
           </div>
