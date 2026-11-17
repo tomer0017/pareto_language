@@ -1,0 +1,60 @@
+/* ── Daily Goal — the floating timer (features/dailyGoal) ───────────────────────────────────────
+   Small, global, never in the way. It sits in the inline-end bottom corner (bottom-right in
+   English, bottom-left in Hebrew) and floats just above any fixed bottom bar that shares that
+   corner — the navigation bar, a flow's action zone, the reader's transport — measured live into
+   --dg-clear. Above learning surfaces (the reader is z 80), below sheets, modals and coach-marks. */
+:root { --dg-done: #15803d; --dg-done-ink: #15803d; }
+:root[data-theme='dark'] { --dg-done-ink: #4ade80; }
+
+.dg-root {
+  position: fixed; z-index: 85;
+  inset-inline-end: 12px;
+  bottom: max(calc(env(safe-area-inset-bottom) + 14px), calc(var(--dg-clear, 0px) + 10px));
+}
+@media (min-width: 1100px) { .dg-root { inset-inline-end: 24px; } }
+
+.dg-bubble {
+  display: inline-flex; align-items: center; gap: 6px;
+  min-height: 46px; min-width: 46px; padding: 0 14px;
+  border-radius: 999px; border: 1px solid var(--line);
+  background: var(--card); color: var(--ink); box-shadow: var(--shadow-pop);
+  font-size: 0.88rem; font-weight: 800; line-height: 1; white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+/* Today's timer is on: the brand colour. Goal reached: green AND a ✓ (never colour alone). No red, ever. */
+.dg-bubble[data-status='running'] { background: var(--brand); border-color: var(--brand); color: #fff; }
+.dg-bubble[data-status='done'] { background: var(--dg-done); border-color: var(--dg-done); color: #fff; }
+.dg-bubble:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+.dg-icon { font-size: 1rem; }
+.dg-bubble[data-status='paused'] .dg-icon { opacity: 0.7; }
+.dg-of { font-weight: 700; opacity: 0.85; }
+
+.dg-scrim { position: fixed; inset: 0; }
+.dg-panel {
+  position: absolute; inset-inline-end: 0; bottom: calc(100% + 10px);
+  width: min(300px, calc(100vw - 24px));
+  padding: 16px; border-radius: var(--r-lg); border: 1px solid var(--line);
+  background: var(--card); color: var(--ink); box-shadow: var(--shadow-pop);
+  display: flex; flex-direction: column; gap: 12px;
+}
+.dg-panel-title { font-size: 1rem; font-weight: 800; line-height: 1.35; }
+.dg-panel-eyebrow { font-size: 0.82rem; font-weight: 700; color: var(--ink-dim); }
+.dg-panel-time { font-size: 1.9rem; font-weight: 900; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.dg-options { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.dg-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.dg-option, .dg-action {
+  min-height: 44px; padding: 8px 10px; border-radius: var(--r-sm);
+  border: 1.5px solid var(--line); background: var(--card-sunken); box-shadow: none;
+  font-size: 0.92rem; font-weight: 800; line-height: 1.2;
+}
+.dg-option[aria-pressed='true'] { border-color: var(--brand); background: var(--brand-soft); color: var(--brand-ink); }
+.dg-action.is-primary { border-color: var(--brand); background: var(--brand); color: #fff; }
+.dg-option:focus-visible, .dg-action:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+.dg-progress { height: 8px; border-radius: 999px; background: var(--ring-track); overflow: hidden; }
+.dg-progress-fill { display: block; height: 100%; border-radius: inherit; background: var(--brand); }
+.dg-root[data-status='done'] .dg-progress-fill { background: var(--dg-done); }
+.dg-done { font-weight: 800; color: var(--dg-done-ink); }
+.dg-live { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+/* The goal's confetti reuses the app's `.confetti` fall — about one second. Reduced motion: none at all. */
+@media (prefers-reduced-motion: reduce) { .dg-confetti { display: none; } }

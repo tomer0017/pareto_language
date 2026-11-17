@@ -687,6 +687,22 @@ const en = {
   journeyListen: 'Listen to the conversation',
   journeyToPractice: 'Continue to practice',
   journeySteps: 'The steps of this situation',
+  // Daily Goal — the floating timer (features/dailyGoal)
+  dailyGoal: 'Daily goal',
+  dailyGoalQuestion: 'How long do you want to practice today?',
+  dailyGoalMinutes: '{n} min',
+  dailyGoalShort: '{n}m',
+  dailyGoalToday: "Today's goal",
+  dailyGoalProgress: 'Goal progress',
+  dailyGoalStart: 'Start',
+  dailyGoalResume: 'Resume',
+  dailyGoalPause: 'Pause',
+  dailyGoalChange: 'Change goal',
+  dailyGoalDone: 'Goal complete ✓',
+  dailyGoalAriaUnset: 'Daily goal: choose how long to practice today',
+  dailyGoalAriaRunning: 'Daily goal {goal} minutes: {time} practiced, timer on',
+  dailyGoalAriaPaused: 'Daily goal {goal} minutes: {time} practiced, timer paused',
+  dailyGoalAriaDone: 'Daily goal complete: {time} practiced today',
 } as const;
 
 const he: Partial<Record<StringKey, string>> = {
@@ -1302,6 +1318,21 @@ const he: Partial<Record<StringKey, string>> = {
   journeyListen: 'האזן לשיחה',
   journeyToPractice: 'המשך לתרגול',
   journeySteps: 'שלבי המצב',
+  dailyGoal: 'יעד יומי',
+  dailyGoalQuestion: 'כמה זמן תרצה לתרגל היום?',
+  dailyGoalMinutes: '{n} דקות',
+  dailyGoalShort: '{n} דק׳',
+  dailyGoalToday: 'היעד להיום',
+  dailyGoalProgress: 'התקדמות ליעד',
+  dailyGoalStart: 'התחל',
+  dailyGoalResume: 'המשך',
+  dailyGoalPause: 'השהה',
+  dailyGoalChange: 'שנה יעד',
+  dailyGoalDone: 'היעד הושלם ✓',
+  dailyGoalAriaUnset: 'יעד יומי: בחר כמה זמן לתרגל היום',
+  dailyGoalAriaRunning: 'יעד יומי {goal} דקות: {time} תרגול, הטיימר פועל',
+  dailyGoalAriaPaused: 'יעד יומי {goal} דקות: {time} תרגול, הטיימר מושהה',
+  dailyGoalAriaDone: 'היעד היומי הושלם: {time} תרגול היום',
 };
 
 const DICTS: Record<string, Partial<Record<StringKey, string>>> = { en, he };

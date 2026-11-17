@@ -609,3 +609,34 @@ speed correction now rests on a line no earlier mission teaches as guaranteed le
 missions. Artwork: 6 slots + 1 prop, emoji PLACEHOLDERS — VISUAL PRODUCTION REQUIRED (Astra pass):
 `MISSION19_ASSET_MANIFEST.md`. Tests: `mission19.test.ts` (66); Missions 01–18 and 20–30 byte-for-byte unchanged
 (the old "19–30" pins now pin 20–30).
+
+**Daily Goal — the global practice timer (`features/dailyGoal/`), 2026-11-17.** A small floating timer for the
+whole app, owned by NO mission: mounted once at the app shell (`App.tsx`, outside the screen switch), so no
+route, tab, mission, checkpoint or tool resets or pauses it. Tap "⏱ Daily goal" → pick 5 / 10 / 15 minutes →
+it starts at once ("⏱ 4:21 / 10m", brand colour) → at the goal ~1 s of confetti (the app's own `.confetti`)
+and it turns green "✓ 12:48" — and keeps counting. Never red, no streak, XP or score. Layers:
+`dailyGoalTime.ts` (local-date key — the learner's LOCAL calendar day, never UTC; `M:SS` / `H:MM:SS`),
+`dailyGoalStorage.ts` (the versioned record `ready.dailyGoal.v1` = `{ v, date, goalMinutes, activeMs,
+celebratedForDate, updatedAt }`, validated on read — corrupt, foreign-version or impossible values fall back to a
+clean day; `ready.dailyGoal.owner.v1` = the counting tab; per-tab `sessionStorage` flag
+`ready.dailyGoal.session.v1`; behind interfaces so an account sync can replace localStorage later),
+`dailyGoalEngine.ts` (the ONE place that decides what counts — no DOM, no React), `useDailyGoalTimer.ts` (the
+page wiring + `useSyncExternalStore`, so the 1 s update re-renders the bubble only) and `DailyGoalTimer.tsx`
+(bubble, panel, confetti; its own error boundary renders nothing on a crash). Active time is never a tick
+counter: stored `activeMs` + (end − countingSince) for the one running interval, where `end` is now but never
+later than 2 min after the last activity (pointerdown / keydown / touchstart / wheel / scroll on the document,
+capture phase — mouse movement does not count) and never later than the last moment the page was seen alive (a
+sleeping device or frozen tab is excluded: >10 s of silence). Counting needs a goal, today's session switched on,
+a visible page, recent activity and being the counting tab (the last READY tab the learner used — another tab
+stops at once via the `storage` event; never double-counts). Checkpoints every ~12 s plus a flush on hidden,
+idle, pause, goal change, `pagehide`, day change. A refresh within 2 min continues the open session; a tab opened
+later (or the same day, hours later) shows the stored time PAUSED and never starts by itself ("Resume"). At local
+midnight: time, completion and celebration reset, the goal stays, nothing starts. Confetti once per day
+(`celebratedForDate`), only in the tab that counted; `prefers-reduced-motion` → no confetti, just green ✓.
+Placement: the inline-end bottom corner (bottom-right in English, bottom-left in Hebrew), 12 px from the edge
+(24 px on desktop), floating just above whichever fixed bottom bar shares that corner — nav bar, an action zone's
+CTA (measured from layout, so an entry animation can never leave it on the CTA), the reader transport — and in
+the free corner beside a centred CTA on wide screens. z 85: above learning surfaces, below sheets / modals.
+Tests: `dailyGoal.test.ts` (46). Real-Chrome QA (CDP, real taps / tabs / reloads, accelerated clock): a 44-check
+click-through of every behaviour and a 54-screen placement matrix (360 / 390 / 430 × HE / EN) — never on a bar,
+nothing under it at full scroll; at rest, scrolling content passes beneath it as it does beneath the fixed bars.

@@ -31,6 +31,7 @@ import { ZeroStart } from '../features/zerostart/ZeroStart.js';
 import { FoundationSheet } from '../features/foundation/FoundationSheet.js';
 import { CompanionHost, CompanionPage } from '../features/companion/Companion.js';
 import { useBootcampStore } from '../features/bootcamp/bootcampStore.js';
+import { DailyGoalBoundary, DailyGoalTimer } from '../features/dailyGoal/DailyGoalTimer.js';
 
 
 // LEGACY content-pack screens (the pre-Bootcamp trip-plan product: daily Mission, Words, Phrases,
@@ -149,6 +150,13 @@ export function App() {
         <ErrorBoundary feature="Companion">
           <CompanionHost />
         </ErrorBoundary>
+      )}
+      {/* The Daily Goal timer is global: one instance at the shell, so no screen, route or mission
+          resets it. It owns its state (features/dailyGoal) — nothing here manages it. */}
+      {shell && (
+        <DailyGoalBoundary>
+          <DailyGoalTimer />
+        </DailyGoalBoundary>
       )}
       {shell && <AppNav barHidden={!showNav} />}
       {showDebug && (
