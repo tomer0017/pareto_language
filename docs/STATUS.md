@@ -2240,3 +2240,35 @@ before/after screens at 360 / 390 / 430 × HE / EN + desktop: text in Home's fir
 208 characters and EN 386 / 460 / 533 → 243; Situation 1 from y≈595–628 (behind a first-visit pop-up) to y=229 at
 every width; Listen's landing shows four modes and no player (it opened on the tabs, a 25-topic queue and the
 player together).
+
+## Responsive pass — phone, iPad, desktop — 2026-11-18
+
+**Why.** Phones were approved; on iPads and desktops the same screens read as a phone column floating in a large,
+empty canvas (Home used ~40% of a 768×1024 iPad and 42% of a 1280×800 laptop; 316px-wide Situations cards broke
+titles mid-word; a square story cover was cropped into a 708×304 strip; the 9:16 video was 264×470 on a laptop).
+
+**What.** Presentation only — `apps/web/src/app/responsive.css` (new, imported after `styles.css` in `main.tsx`;
+every rule inside a `min-width ≥ 768px` query): 2×2 tiles on the launch pages (Home · Basic words · the Listening
+hub) on a centred `--launch-max` stage; Situations and the listening lists two-up, three-up on wide desktops (cards
+≥ 360px); Games & stories two-up / three-up with a centred last row; the library's review cards in one row; the
+listening player in one column with its title; the story cover whole, beside its title; on landscape screens the
+situation video beside its controls (374×664 at 1280×800); mission tile pairs ≤ 540px, grids ≤ 640px, pictures ≤
+560px on desktops; sheets as centred dialogs (the Foundation's categories 4–5 across); desktop pages' first row
+level with the rail's READY; hover shadows for pointers. One phone-visible fix in `styles.css`: `.reading-gear {
+width: auto }` — the story player's ⚙ (also `.btn-secondary`, width 100%) pushed "✓ Quiz" off-screen at every width.
+
+**Unchanged.** Content, copy, markup, routes, navigation, stores and progress; Daily Goal logic, storage and CSS;
+Missions 01–30, dialogues, interaction counts, prior learning, checkpoints, the Mission 16–19 visual work (its
+scoped CSS untouched); video sequencing; audio.
+
+**Verification.** `app/responsive.test.ts` (18): the stylesheet cannot reach a phone, is loaded last, uses logical
+properties only, generates no content and hides nothing, and the rendered screens still have the markup its
+selectors rely on. Typecheck ✓, lint 0 errors (2 pre-existing warnings), 3,658 tests / 111 files ✓ (UI + nav 75,
+listening 119, Daily Goal 46, Missions 16 / 17 / 18 / 19: 80 / 80 / 56 / 70, the mission suite 2,968), build ✓,
+smoke ✓. Real Chrome (CDP, real taps): 23 screens × 360 / 390 / 430 / 768 / 820 / 1024 / 1280 / 1440 × HE / EN
+(368 captures) — no horizontal overflow, nothing on the rail, the Daily Goal never on a CTA / transport / bar / rail
+and nothing under it at the end of any scroll; an interaction check (24 at tablet / desktop sizes, 23 on phones:
+Home tiles, the Foundation dialog's ✕ / scrim / Escape, the quiz button, the video run's prev / next / practice, the
+rail) passes at 360, 390, 768, 1024, 1280 and 1440. Phones: 104 of 138 captures byte-identical to before; the
+other 34 are the story player (the fix) and live content (video frames, shuffled answer tiles, a pulsing CTA, audio
+icons) that differs just as much between two captures of the unchanged build — none unexplained.

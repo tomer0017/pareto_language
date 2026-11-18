@@ -616,7 +616,8 @@ input:focus, select:focus { outline: 2px solid var(--brand); border-color: trans
 .reader-controls .parrot-transport { flex: 0 0 auto; margin: 0; gap: 8px; }
 .reader-controls .parrot-play { width: 58px; height: 58px; font-size: 1.3rem; }
 .reader-controls .parrot-step { width: 44px; height: 44px; font-size: 1.3rem; }
-.reading-gear { flex: 0 0 auto; min-width: 44px; padding: 10px 12px; font-size: 1.1rem; }
+/* `width: auto` — the gear also carries .btn-secondary (width: 100%), which pushed the quiz button off-screen. */
+.reading-gear { flex: 0 0 auto; width: auto; min-width: 44px; padding: 10px 12px; font-size: 1.1rem; }
 .reading-quiz-btn { flex: 1; }
 /* Light, breathing sentence cards — generous padding + line-height invites slow, per-sentence reading. */
 .rline { padding: 18px 18px; margin-bottom: 14px; border: 1px solid transparent; border-radius: var(--r-lg); background: var(--card); box-shadow: var(--shadow-card); transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s; }

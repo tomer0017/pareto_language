@@ -77,11 +77,18 @@ stable across re-renders. **Narrative dialogue order is never shuffled** — onl
   open mission, clears the library category and resets the Listening hub (`listenPage = null`), so a tab always
   lands on its area's first screen. Every primary choice (Home's four ways in, Basic words, the hub's four
   modes) is the one shared `shared/ui/ChoiceCard`.
-- **Layout tokens (`app/styles.css`)** — `--page-max` (browse pages, `.screen.screen-wide`),
-  `--focus-max` (focused flows, plain `.screen`; also the width of the fixed `.action-zone`,
-  readers and transports), `--rail-w` and `--gutter`, each stepped at 768px and 1100px.
+- **Layout tokens (`app/styles.css`, refined by `app/responsive.css`)** — `--page-max` (browse pages,
+  `.screen.screen-wide`), `--launch-max` (launch pages: a `.screen-wide` whose content is one `.choice-list`),
+  `--focus-max` (focused flows, plain `.screen`; also the width of the fixed `.action-zone`, readers and
+  transports), `--tile-gap`, `--rail-w` and `--gutter`, stepped at 768px, 1100px and 1400px.
   `.app-shell.has-rail` reserves the rail and exposes `--shell-start` so fixed bars centre over the
   content. Logical properties throughout (RTL/LTR mirror without per-direction rules).
+- **Responsive layer (`app/responsive.css`, imported after `styles.css` in `main.tsx`)** — tablets and desktops
+  only: every rule sits in a `min-width ≥ 768px` query (keyframes aside), so phones are untouched by
+  construction (`app/responsive.test.ts`). It changes presentation only — no markup, content or behaviour — and
+  reaches screens through classes they already render, a few via `:has()` (`.screen-wide:has(> .screen-scroll >
+  .choice-list)` = a launch page, `.screen-wide:has(.listen-player)` = the player page, `.screen:has(>
+  .videos-stage)` = the videos run); the test renders those screens and fails if that markup changes.
 - **Shared primitives (`shared/ui`)** — `Icon` (inline SVG set; `flip` = direction-aware),
   `AppNav`, `PageHeader` + `BackButton`, `ProgressRing`, plus CSS building blocks (`.icon-tile`,
   `.link-row`, `.tabs`, `.stat-row`, `.mcard`, `.jstep`). Arrows are icons owned by components —
@@ -677,3 +684,23 @@ nothing under it at full scroll; at rest, scrolling content passes beneath it as
 - **Tests**: `app/uxSimplification.test.ts` renders the real screens and follows taps by wrapping `ChoiceCard` /
   `PageHeader` (handlers recorded, markup unchanged); a static render reads a zustand store's initial state, so
   the test sets state in both places (`put`).
+
+## Responsive layer — tablets and desktops (2026-11-18)
+
+- **`app/responsive.css`** (imported in `main.tsx` after `styles.css`, so it refines rather than competes): tokens
+  (`--page-max` clamp 760→900px on tablets, 1160 desktop, 1240 from 1400px; `--launch-max` 1040; `--tile-gap`),
+  then one section per surface — shell (title sizes; desktop `.screen` top padding 18px so the first row aligns
+  with the rail's READY), choice tiles (CSS grid on the existing `ChoiceCard` markup: icon row 1 col 1, chevron row
+  1 col 2, body row 2 — placed explicitly, auto-placement would drop the chevron), Home, Situations
+  (`repeat(auto-fill, minmax(360px, 1fr))` ≥ 1100px), Games & stories (flex-wrap + centred last row), listening
+  (lists two-up; the player page `.screen-wide:has(.listen-player)` narrows to `--focus-max`), the reader (hero as
+  a grid: square cover spanning the title / translation / meta rows), videos (`@media (min-width: 1000px) and
+  (orientation: landscape)`: `.screen:has(> .videos-stage)` becomes a two-column grid, `.videos-stage` is `display:
+  contents`, the action zone is `position: static` — `useDailyGoalTimer.restingBar` ignores a non-fixed action zone,
+  so the bubble stays in its corner), missions (tile pair ≤ 540px, grids ≤ 640px, pictures ≤ 560px), sheets
+  (centred dialog, `sheetPop`), hover shadows (`hover: hover`).
+- **Guards** — `app/responsive.test.ts` (18): every top-level block is a `min-width ≥ 768px` media query (or
+  keyframes) with no `max-width`; loaded after `styles.css`; logical properties only; no generated content,
+  nothing hidden, no `.dg-` / Mission 18 rules; the real screens rendered (react-dom/server + a tiny element tree)
+  still have the shapes the selectors depend on (launch list, mission grid, free grid, player page, videos stage,
+  reader hero order); the key layout decisions.

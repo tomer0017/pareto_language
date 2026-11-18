@@ -1,0 +1,248 @@
+/* ══════════════════════════════════════════════════════════════════════════
+   READY responsive shell — tablets and desktops (presentation only).
+
+   Phones are approved and frozen: EVERY rule in this file sits inside a
+   `min-width: 768px` media query (or a wider one), so nothing here can reach
+   a phone (app/responsive.test.ts guards it). It is loaded after styles.css
+   and changes no content, no copy and no behaviour — the same screens, laid
+   out for the space a tablet or a desktop actually has.
+
+   Breakpoints are the app's own (styles.css):
+     tablet   768–1099px   floating bottom bar · portrait keeps the 760px
+                           browse column, a landscape tablet grows it to 900px
+     desktop  ≥ 1100px     the side rail
+     wide     ≥ 1400px     a wider browse column (three-up lists)
+
+   Three kinds of screen:
+     launch pages   Home · Basic words · the Listening hub — a few large
+                    choices, two-up, on a centred stage (--launch-max)
+     browse pages   Situations · the listening lists · Games & stories —
+                    they use the width: two- and three-up grids (--page-max)
+     focused flows  a mission step, the player, the reader, the videos — one
+                    comfortable centred column (--focus-max): artwork larger
+                    and whole, text never stretched across a desktop
+
+   Logical properties only, so every rule mirrors in Hebrew.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* ── 1. Tokens ─────────────────────────────────────────────────────────── */
+@media (min-width: 768px) {
+  :root {
+    /* 760px on a portrait tablet (unchanged); up to 900px on a landscape one. */
+    --page-max: clamp(760px, calc(100vw - 124px), 900px);
+    --launch-max: var(--page-max);
+    --tile-gap: 16px;
+  }
+}
+@media (min-width: 1100px) {
+  :root { --page-max: 1160px; --launch-max: 1040px; --tile-gap: 20px; }
+}
+@media (min-width: 1400px) {
+  :root { --page-max: 1240px; }
+}
+
+/* ── 2. The shell: one title hierarchy, columns that line up ──────────── */
+@media (min-width: 768px) {
+  h1 { font-size: 1.85rem; }
+  .page-header { padding-bottom: 18px; }
+  .page-sub { font-size: 1.02rem; }
+  /* Launch pages (Home, Basic words, the Listening hub: a screen whose content is one list of
+     choices) sit on a slightly narrower, centred stage than the long browse lists. */
+  .screen-wide:has(> .screen-scroll > .choice-list) { max-width: var(--launch-max); }
+}
+@media (min-width: 1100px) {
+  /* Every page's first row — its title, a flow's top bar, Home's language row — sits level with the
+     rail's READY, so the page reads as part of the shell, not a column dropped beside it. */
+  .screen { padding-top: 18px; }
+  h1 { font-size: 2.05rem; }
+  .page-header { padding-bottom: 22px; }
+}
+
+/* ── 3. Choice cards → tiles ───────────────────────────────────────────── */
+/* The same card (icon · title · one line · chevron), set as a tile: the icon and the chevron on
+   top, the words below. Two-up from tablets; a lone last tile sits centred under the pair. */
+@media (min-width: 768px) {
+  .choice-list { gap: var(--tile-gap); }
+  .choice-card {
+    display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-rows: auto 1fr;
+    align-items: start; gap: 16px 12px;
+    min-height: clamp(160px, 20vh, 220px);
+    padding-block: 22px; padding-inline: 24px 20px;
+  }
+  .choice-icon { grid-row: 1; grid-column: 1; width: 64px; height: 64px; border-radius: 19px; font-size: 2.1rem; }
+  .choice-body { grid-row: 2; grid-column: 1 / -1; align-self: end; gap: 6px; }
+  .choice-title { font-size: 1.3rem; }
+  .choice-sub { font-size: 0.95rem; line-height: 1.4; }
+  /* The chevron: top corner, level with the icon (placed explicitly — auto-placement would drop it below). */
+  .choice-card > .icon { grid-row: 1; grid-column: 2; align-self: center; }
+  .choice-list > .choice-card:last-child:nth-child(odd) {
+    grid-column: 1 / -1; justify-self: center; width: calc((100% - var(--tile-gap)) / 2);
+  }
+}
+@media (min-width: 1100px) {
+  .choice-card {
+    min-height: clamp(170px, 22vh, 210px);
+    padding-block: 22px; padding-inline: 28px 24px; gap: 16px 14px;
+  }
+  .choice-icon { width: 72px; height: 72px; border-radius: 21px; font-size: 2.4rem; }
+  .choice-title { font-size: 1.42rem; }
+  .choice-sub { font-size: 1rem; }
+}
+
+/* ── 4. Home ───────────────────────────────────────────────────────────── */
+@media (min-width: 768px) {
+  /* The language row is a pill sized to its words, centred — not a bar across the page. */
+  .home-screen .lang-strip { width: auto; align-self: center; padding-block: 9px; padding-inline: 22px; font-size: 0.9rem; margin-bottom: 16px; }
+  .home-screen .choice-list { gap: var(--tile-gap); }
+  .home-screen .choice-card { min-height: clamp(160px, 21vh, 236px); padding-block: 22px; }
+  .home-progress { gap: 20px; padding-block: 12px; padding-inline: 24px 14px; margin-bottom: var(--tile-gap); }
+  .home-progress-text { font-size: 1.05rem; }
+  .home-progress-value { font-size: 1.95rem; }
+  .home-progress .progress-track { height: 12px; }
+  /* The buddy grows with the room it has (its size is set inline for the phone). */
+  .home-progress .cmp-fig { width: 72px !important; height: 72px !important; }
+}
+@media (min-width: 1100px) {
+  .home-screen .lang-strip { margin-bottom: 20px; }
+  .home-screen .choice-card { min-height: clamp(170px, 22vh, 212px); padding-block: 22px; }
+  .home-progress { padding-block: 14px; padding-inline: 28px 18px; }
+  .home-progress-value { font-size: 2.25rem; }
+  .home-progress .cmp-fig { width: 80px !important; height: 80px !important; }
+}
+
+/* ── 5. Situations: the 30 cards, two-up, three-up when there is room ── */
+@media (min-width: 768px) {
+  .situations-progress { padding-block: 18px 20px; padding-inline: 24px; }
+  .situations-progress-text { font-size: 1.12rem; }
+  .situations-progress .progress-track { height: 11px; }
+  .mission-grid { gap: 14px; }
+  .mcard { min-height: 96px; padding-block: 14px; padding-inline: 16px; gap: 14px; }
+  /* Whole words: a title only breaks inside a word when the word alone is wider than the card. */
+  .mcard-title, .mcard-sub { overflow-wrap: break-word; }
+}
+@media (min-width: 1100px) {
+  /* Two columns on a laptop; three once each card keeps ≥ 360px (wide desktops). */
+  .mission-grid { grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 16px; }
+  .mcard { min-height: 104px; padding-block: 16px; padding-inline: 18px; }
+}
+
+/* ── 6. Games & stories: a balanced grid of the same cards ─────────────── */
+/* Two-up on a tablet, three-up on a desktop; a short last row is centred, never left hanging. */
+@media (min-width: 768px) {
+  .free-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--tile-gap); }
+  .free-grid > .free-card { flex: 0 0 calc((100% - var(--tile-gap)) / 2); min-width: 0; min-height: 152px; padding: 20px; gap: 6px; }
+  .free-card .action-icon { width: 56px; height: 56px; border-radius: 16px; font-size: 1.9rem; margin-bottom: 6px; }
+  .free-card .action-title { font-size: 1.16rem; }
+  .free-card .action-sub { font-size: 0.88rem; line-height: 1.4; }
+}
+@media (min-width: 1100px) {
+  .free-grid > .free-card { flex-basis: calc((100% - 2 * var(--tile-gap)) / 3); min-height: 170px; padding: 24px; }
+  .free-card .action-icon { width: 64px; height: 64px; border-radius: 18px; font-size: 2.2rem; }
+  .free-card .action-title { font-size: 1.24rem; }
+  .free-card .action-sub { font-size: 0.93rem; }
+}
+
+/* The library's "how do you want to review sentences?" cards: three in one row. */
+@media (min-width: 768px) {
+  .home-actions:has(> .action-card:nth-child(3):last-child) { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+/* ── 7. Listening: the lists two-up, the player one centred column ────── */
+@media (min-width: 768px) {
+  .topic-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 14px; }
+  .topic-row { min-height: 76px; padding-block: 12px; padding-inline: 16px 14px; }
+  .topic-row .icon-tile { width: 46px; height: 46px; font-size: 1.35rem; }
+  .story-thumb { width: 60px; height: 60px; }
+
+  /* The player page is a focused flow: its title and the player share one column. */
+  .screen-wide:has(.listen-player) { max-width: var(--focus-max); }
+  .listen-player { max-width: none; gap: 16px; }
+  .now-card { padding: 28px; gap: 16px; }
+  .now-target { font-size: 2.1rem; }
+  .transport .parrot-play { width: 82px; height: 82px; }
+}
+@media (min-width: 1100px) {
+  .topic-list { grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 14px 16px; }
+  .now-card { padding-block: 34px 28px; padding-inline: 40px; gap: 18px; }
+  .now-target { font-size: 2.5rem; }
+  .now-translation { font-size: 1.35rem; }
+}
+
+/* ── 8. The story reader: the cover whole, beside its title ────────────── */
+/* Covers are square: a full-width strip cropped most of the picture away on a wide column. */
+@media (min-width: 768px) {
+  .reader-hero {
+    display: grid; grid-template-columns: auto minmax(0, 1fr); grid-template-rows: 1fr auto auto auto 1fr;
+    column-gap: 24px; align-items: center; text-align: start; margin-bottom: 22px;
+  }
+  .reader-hero-frame { grid-row: 1 / -1; width: clamp(220px, 30vw, 300px); }
+  .reader-hero-img { width: 100%; height: auto; max-height: none; aspect-ratio: 1 / 1; }
+  .reader-hero-title { grid-row: 2; margin-top: 0; font-size: 1.75rem; }
+  .reader-hero-sub { grid-row: 3; }
+  .reader-hero-meta { grid-row: 4; justify-self: start; }
+  .rline { padding-block: 20px; padding-inline: 22px; }
+  .rline-target { font-size: 1.28rem; }
+}
+
+/* ── 9. Situation videos in a row: on a landscape screen, the clip beside its controls ── */
+/* A 9:16 clip is limited by the screen's HEIGHT: stacked over its controls it stayed small on a
+   wide screen. Side by side, the clip takes the full height and the title + controls sit beside
+   it. Same elements, same order for assistive technology. */
+@media (min-width: 1000px) and (orientation: landscape) {
+  .screen:has(> .videos-stage) {
+    /* The clip's column is exactly the clip: as tall as the screen allows (minus the top bar), 9:16. */
+    --video-col: min(calc((100dvh - 136px) * 9 / 16), 560px);
+    max-width: var(--page-max);
+    display: grid; grid-template-columns: var(--video-col) minmax(240px, 340px); grid-template-rows: auto 1fr auto auto 1fr;
+    column-gap: 44px; justify-content: center;
+  }
+  .screen:has(> .videos-stage) > .topbar { grid-column: 1 / -1; }
+  .screen:has(> .videos-stage) > .videos-stage { display: contents; }
+  .videos-stage .video-frame { grid-column: 1; grid-row: 2 / -1; width: var(--video-col); max-height: none; margin-block: 0 24px; }
+  .videos-now { grid-column: 2; grid-row: 3; align-self: end; text-align: start; font-size: 1.35rem; line-height: 1.3; }
+  /* The run's controls sit beside the clip, in the flow (a static action zone: the Daily Goal keeps
+     to its corner — it only rises above FIXED bottom bars). */
+  .screen:has(> .videos-stage) > .action-zone {
+    position: static; grid-column: 2; grid-row: 4; align-self: start;
+    max-width: none; margin: 18px 0 0; padding: 0; background: none; align-items: flex-start;
+  }
+}
+
+/* ── 10. Missions: a focused column, artwork larger, nothing ballooning ── */
+@media (min-width: 768px) {
+  /* Two answer tiles are a pair, not two half-screens. */
+  .pgrid.is-two { max-width: 540px; margin-inline: auto; }
+}
+@media (min-width: 1100px) {
+  /* Where am I: the mission's name in the top bar reads as a title, not a footnote. */
+  .screen > .topbar .chip { font-size: 0.92rem; padding-block: 8px; padding-inline: 15px; }
+  .pgrid:not(.pmap):not(.is-two):not(.is-one) { max-width: 640px; margin-inline: auto; }
+  .situation-image, .pmatch-picture { max-width: 560px; }
+  .drill-phrase { font-size: 1.95rem; }
+  .convo-text { font-size: 1.32rem; }
+}
+
+/* ── 11. Sheets → a centred dialog ─────────────────────────────────────── */
+/* A bottom sheet belongs to a phone; on a tablet or a desktop the same panel opens as a centred
+   dialog, wide enough for its grid. Same panel, same closing (✕, the scrim, Escape). */
+@media (min-width: 768px) {
+  .sheet-scrim { align-items: center; padding: 24px; }
+  .sheet-panel {
+    max-width: 640px; max-height: min(86vh, 860px); border-radius: 24px;
+    padding-block: 10px 22px; padding-inline: 24px;
+  }
+  .sheet-in { animation: sheetPop 0.24s cubic-bezier(0.22, 1, 0.36, 1); }
+  .foundation-cats, .foundation-tiles { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+@media (min-width: 1100px) {
+  .sheet-panel { max-width: 760px; }
+  .foundation-cats { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+}
+@keyframes sheetPop { from { opacity: 0; transform: translateY(14px) scale(0.985); } to { opacity: 1; transform: none; } }
+
+/* ── 12. Pointer devices: a quiet hover on everything tappable ─────────── */
+@media (min-width: 1100px) and (hover: hover) {
+  .choice-card:hover, .mcard:hover, .topic-row:hover, .free-card:hover, .action-card:hover, .jstep:is(button):hover {
+    box-shadow: var(--shadow-pop);
+  }
+}

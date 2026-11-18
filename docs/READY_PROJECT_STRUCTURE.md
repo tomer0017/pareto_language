@@ -56,7 +56,7 @@ bottom bar hides inside a focused flow (an active mission, a game); the desktop 
 READY is used in two modes over the SAME content: **active learning** (Situations) and **passive listening**
 (Listen). Every main screen answers "where am I?" and "what can I do here?" in about two seconds: a title, at
 most one short line, then the choices — the shared `shared/ui/ChoiceCard` (icon, strong title, one short line,
-chevron; ≥ 76 px; one column on phones, two from tablets up).
+chevron; ≥ 76 px; a row on phones, a two-up tile from tablets up — `app/responsive.css`).
 
 - **Home** (`features/home/Home.tsx`) — READY ✈️ · ONE language row (`LangStrip`: "אני דובר: עברית · אני לומד:
   ספרדית", the real app / learning languages, tap → Languages) · ONE progress ("X% למידה" = situations completed ÷
@@ -71,7 +71,7 @@ chevron; ≥ 76 px; one column on phones, two from tablets up).
   סיטואציות מתוך 30" + ONE bar, the buddy's ONE progress-aware line (`CompanionPresence compact`; tiers 0 ·
   1–25% · 26–50% · 51–75% · 76–99% · 100% from `presenceFor`), then the 30 mission cards in plan order, exactly
   ONE marked "your next step". No phase headings, Foundations card, first-visit pop-up or "More practice" rows.
-  One column on phones, two on tablets, three on desktop.
+  One column on phones, two on tablets, two or three on desktops by width (cards ≥ 360px).
 - **Basic words (מילים בסיסיות)** (`features/basics/BasicWords.tsx`, the `basics` view, under Home) — 🛟 the
   Foundation sheet · 💬 the sentence library ("Introduce myself, Numbers & money, Coffee shop and more", read from
   the plan) · 📝 the words library · 🌱 Start from zero. Existing surfaces and stores only; Back returns here
@@ -653,3 +653,16 @@ Situations phase headings / Foundations card / `FoundationOnboarding` pop-up / "
 tabs + queue beside the player, the random-video popup. No mission, curriculum, progress-store or engine change.
 New shared pieces: `ChoiceCard`, `ListenPage` / `ReadingIntent` (app store), `startIndexFor` / `resumeTopicId`
 (playlists), `stepVideo` (videos), `VideoPlayer`'s optional `autoPlay` / `onFailed`, `presenceTier`.
+
+## Responsive pass — phone, iPad, desktop — 2026-11-18
+
+Presentation only, phones untouched: `app/responsive.css` (imported after `styles.css`; every rule `min-width ≥
+768px`). Launch pages (Home, Basic words, the Listening hub) = 2×2 `ChoiceCard` tiles on a centred
+`--launch-max` stage; Situations and the listening lists two-up, three-up on wide desktops (cards ≥ 360px); Games &
+stories two-up / three-up, a short last row centred; the listening player one column with its title; the story
+cover whole beside its title; a situation video beside its controls on landscape screens (the action zone becomes
+static there, so the Daily Goal keeps to its corner); sheets as centred dialogs; mission tile pairs / grids capped
+on desktops. Rule for future work: **phone layout lives in `styles.css`; tablet / desktop refinements go in
+`responsive.css` inside a `min-width ≥ 768px` query** — `app/responsive.test.ts` enforces it and checks the markup
+its selectors rely on. One fix in `styles.css` reaches phones: `.reading-gear { width: auto }` (the story player's
+quiz button was pushed off-screen).
