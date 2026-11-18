@@ -1,14 +1,7 @@
 import { useAppStore } from '../../shared/stores/appStore.js';
-import { L, t } from '../../shared/i18n/strings.js';
-import { tap } from '../../shared/ui/haptics.js';
-import { Icon } from '../../shared/ui/Icon.js';
-import { LangStrip } from '../../shared/ui/LangStrip.js';
+import { t } from '../../shared/i18n/strings.js';
 import { PageHeader } from '../../shared/ui/PageHeader.js';
-import { ProgressRing } from '../../shared/ui/ProgressRing.js';
-import { useFoundationStore } from '../foundation/foundationStore.js';
-import { FoundationOnboarding } from '../foundation/FoundationOnboarding.js';
-import { ZERO_LANGS } from '../zerostart/types.js';
-import { BOOTCAMP_PLAN, PHASES } from './plan.js';
+import { BOOTCAMP_PLAN } from './plan.js';
 import { missionsFor, useBootcampStore } from './bootcampStore.js';
 import { missionIcon } from './missionFlow.js';
 import { MissionCard } from './MissionCard.js';
@@ -16,103 +9,50 @@ import { useTravelReadiness } from './useReadiness.js';
 import { CompanionPresence } from '../companion/Companion.js';
 
 /**
- * Learn — the real-world travel curriculum, and the ONE route to it. The plan's missions grouped by
- * its phases, with a small readiness summary and exactly one mission highlighted as the next step,
- * so a glance answers: where am I, what have I finished, what comes next.
+ * Situations — the 30-situation learning path, and the ONE route to it (internally the `bootcamp`
+ * view). It answers two questions at a glance and then gets out of the way:
  *
- * The Foundation building blocks are the one supporting tool that belongs BEFORE Mission 01: a real
- * card at the top of Phase 1 (the phase heading above it is a section title, not a control). The
- * other supporting practice (the zero-beginner path, words, the sentence library) sits below the
- * curriculum in ordinary rows — useful, but never competing with it and never floating over it.
+ *   How far am I?    "You've learned X of 30 situations" + one bar (completed ÷ the plan)
+ *   Where do I go?   the situations themselves, 1 → 30, with exactly one marked as the next step
+ *
+ * The buddy adds ONE short, progress-aware line. Nothing stands between the learner and Situation
+ * 1: the fundamentals (building blocks, words, the sentence library, start-from-zero) live under
+ * Basic words on Home, not here.
  */
 export function Learn() {
-  const app = useAppStore();
-  const bc = useBootcampStore();
+  const learningLang = useAppStore((s) => s.learningLang);
+  const startDay = useBootcampStore((s) => s.startDay);
   const readiness = useTravelReadiness();
-  const missions = missionsFor(app.learningLang);
-  const openFoundation = useFoundationStore((s) => s.openSheet);
+  const missions = missionsFor(learningLang);
   const nextDay = readiness.allDone ? undefined : readiness.next?.day;
-  const open = (view: 'zerostart' | 'core', category?: string): void => {
-    tap();
-    if (category) app.setCoreCategory(category);
-    app.navigate(view);
-  };
+  const { ready, total, pct } = readiness;
+  const progressLine = ready === 1 ? t('situationsProgressOne', { total }) : t('situationsProgress', { done: ready, total });
 
   return (
     <div className="screen screen-wide">
-      <div className="brand-top"><span className="brand-mark">READY <Icon name="plane" size={22} /></span></div>
-      <LangStrip />
-      <PageHeader title={t('learnTitle')} sub={t('learnSub', { n: BOOTCAMP_PLAN.length })} />
+      <PageHeader title={t('learnTitle')} />
       <div className="screen-scroll">
-        <button className="card card-press summary-card" onClick={() => { tap(); app.navigate('readiness'); }} aria-label={t('readinessOpen')}>
-          <ProgressRing pct={readiness.pct} size={68} stroke={8} label={`${t('readinessTitle')} ${readiness.pct}%`}>
-            <span className="ring-value small">{readiness.pct}%</span>
-          </ProgressRing>
-          <span>
-            <strong style={{ display: 'block', fontSize: '1.15rem' }}>{t('readinessTitle')}</strong>
-            <span className="dim">{t('readinessSituations', { done: readiness.ready, total: readiness.total })}</span>
+        <div className="card situations-progress">
+          <p className="situations-progress-text">{progressLine}</p>
+          <span className="progress-track" role="progressbar" aria-valuenow={ready} aria-valuemin={0} aria-valuemax={total} aria-label={progressLine}>
+            <span className="progress-fill brand" style={{ width: `${pct}%` }} />
           </span>
-          <Icon name="chevron" size={20} flip />
-        </button>
-        {/* The learner's buddy lives on the Route: a character beside the path, not another statistic. */}
-        <CompanionPresence />
-        {/* Once per language: where the Foundation building blocks are (and a way to open them now). */}
-        <FoundationOnboarding />
+        </div>
 
-        {PHASES.map((phase) => {
-          const inPhase = BOOTCAMP_PLAN.filter((m) => m.phase === phase.n);
-          if (inPhase.length === 0) return null;
-          const done = inPhase.filter((m) => readiness.statusOf(m.day) === 'ready').length;
-          return (
-            <section key={phase.n} className="phase" aria-label={L(phase.title)}>
-              <div className="phase-head" role="presentation">
-                <span className="icon-tile icon-tile-brand" aria-hidden>{phase.icon}</span>
-                <h2 className="phase-title">{L(phase.title)}</h2>
-                <span className="phase-count">{t('phaseCount', { done, total: inPhase.length })}</span>
-              </div>
-              {/* The building blocks come first — the real Foundations entry, before Mission 01. */}
-              {phase.n === 1 && (
-                <button className="link-row card-press foundation-entry" onClick={() => { tap(); openFoundation(); }} aria-label={t('foundationEntryTitle')}>
-                  <span className="icon-tile icon-tile-brand" aria-hidden>🛟</span>
-                  <span className="link-row-body"><span className="link-row-title">{t('foundationEntryTitle')}</span><span className="link-row-sub">{t('foundationEntryBody')}</span></span>
-                  <Icon name="chevron" size={20} flip />
-                </button>
-              )}
-              <div className="mission-grid">
-                {inPhase.map((m) => (
-                  <MissionCard
-                    key={m.id}
-                    mission={m}
-                    icon={missionIcon(missions[m.day])}
-                    status={readiness.statusOf(m.day)}
-                    isNext={m.day === nextDay}
-                    onOpen={() => bc.startDay(m.day)}
-                  />
-                ))}
-              </div>
-            </section>
-          );
-        })}
+        {/* The buddy: one short line about how far the learner has come — a note, not a chat box. */}
+        <CompanionPresence compact />
 
-        <div className="section-head"><h2>{t('morePractice')}</h2></div>
-        <div className="support-grid">
-          {(ZERO_LANGS as readonly string[]).includes(app.learningLang) && (
-            <button className="link-row card-press" onClick={() => open('zerostart')}>
-              <span className="icon-tile" aria-hidden>🌱</span>
-              <span className="link-row-body"><span className="link-row-title">{t('homeZeroStart')}</span><span className="link-row-sub">{t('homeZeroStartSub')}</span></span>
-              <Icon name="chevron" size={20} flip />
-            </button>
-          )}
-          <button className="link-row card-press" onClick={() => open('core', 'words')}>
-            <span className="icon-tile" aria-hidden>📝</span>
-            <span className="link-row-body"><span className="link-row-title">{t('homeLearnWords')}</span><span className="link-row-sub">{t('homeLearnWordsSub')}</span></span>
-            <Icon name="chevron" size={20} flip />
-          </button>
-          <button className="link-row card-press" onClick={() => open('core', 'phrases')}>
-            <span className="icon-tile" aria-hidden>💬</span>
-            <span className="link-row-body"><span className="link-row-title">{t('phraseLibrary')}</span><span className="link-row-sub">{t('phraseLibrarySub')}</span></span>
-            <Icon name="chevron" size={20} flip />
-          </button>
+        <div className="mission-grid situation-list">
+          {BOOTCAMP_PLAN.map((m) => (
+            <MissionCard
+              key={m.id}
+              mission={m}
+              icon={missionIcon(missions[m.day])}
+              status={readiness.statusOf(m.day)}
+              isNext={m.day === nextDay}
+              onOpen={() => startDay(m.day)}
+            />
+          ))}
         </div>
       </div>
     </div>

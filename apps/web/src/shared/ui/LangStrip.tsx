@@ -4,11 +4,10 @@ import { t } from '../i18n/strings.js';
 import { tap } from './haptics.js';
 
 /**
- * Global language strip — a compact, always-honest indicator of the two languages in play:
- * the trip/learning language and the app/UI language. Reads appStore (uiLang + learningLang) —
- * no duplicate state. Tapping opens the existing Languages screen, where English is selectable
- * and the other trip languages appear as "coming soon". Shown on the main surfaces, never inside
- * an active mission (focus).
+ * The language row — one compact, always-honest line naming the two languages in play, in the
+ * learner's own words: "I speak: Hebrew · I'm learning: Spanish" (the app language, then the
+ * learning language). Reads appStore (uiLang + learningLang) — no duplicate state. Tapping opens the
+ * existing Languages screen. Shown on Home and in Profile, never inside an active mission (focus).
  */
 export function LangStrip() {
   const uiLang = useAppStore((s) => s.uiLang);
@@ -18,10 +17,9 @@ export function LangStrip() {
   const ui = UI_LANGUAGES.find((l) => l.code === uiLang);
   return (
     <button className="lang-strip card-press" onClick={() => { tap(); navigate('languages'); }} aria-label={t('stripAria')}>
-      <span className="lang-strip-seg"><span className="dim">{t('stripLearnPrefix')}</span> {learn.flag} {languageName(learningLang)}</span>
-      <span className="lang-strip-sep">·</span>
+      {/* Two self-labelled halves: on a narrow phone they simply stack, each one whole. */}
       <span className="lang-strip-seg"><span className="dim">{t('stripAppPrefix')}</span> {ui?.nativeName ?? uiLang}</span>
-      <span className="lang-strip-globe" aria-hidden>🌐</span>
+      <span className="lang-strip-seg"><span className="dim">{t('stripLearnPrefix')}</span> {learn.flag} {languageName(learningLang)} <span className="lang-strip-globe" aria-hidden>🌐</span></span>
     </button>
   );
 }

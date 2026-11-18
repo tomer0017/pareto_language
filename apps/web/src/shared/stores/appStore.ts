@@ -25,7 +25,8 @@ export type View =
   | 'listen'
   | 'profile'
   // Secondary screens
-  | 'free'        // Free learning — every self-directed tool, one tap from Home (features/free)
+  | 'basics'      // Basic words — the fundamentals (building blocks, words, phrases, start from zero), from Home
+  | 'free'        // Games & stories (Free learning) — every self-directed tool, one tap from Home (features/free)
   | 'core'
   | 'readiness'
   | 'review'
@@ -44,9 +45,22 @@ export type View =
   | 'reading'
   | 'zerostart';
 
-export type ListenIntent = 'quick' | 'phrases' | 'dialogues';
+/**
+ * Where the Listening hub is: its landing (no page), or one listening mode's content list, or that
+ * mode's player — choose a mode → choose what to hear → listen. `play` is the topic (a situation's
+ * dialogue, a sentence group) the player started from (stories play in the story reader, so theirs
+ * stays null); `returnTo` is where Back from the content list goes when another screen opened the
+ * mode directly (Games & stories, the sentence library). The fourth mode, the situation videos, is
+ * its own screen (`videos`).
+ */
+export type ListenModeId = 'stories' | 'situations' | 'sentences';
+export interface ListenPage { mode: ListenModeId; play: string | null; returnTo?: View }
 export type CoreMode = 'wordCards' | 'wordPlayer' | 'sentenceCards' | 'sentenceList';
-export interface CoreIntent { mode: CoreMode; returnTo: View }
+/** Open the library on one tool (`mode`), or on its ordinary menu (no mode); Back returns to `returnTo`. */
+export interface CoreIntent { mode?: CoreMode; returnTo: View }
+/** Open the reading surface on one story (or its list), with Back returning to `returnTo`; `play`
+ *  starts the story's audio at once (the Listening hub: choosing a story to hear IS pressing play). */
+export interface ReadingIntent { story?: string; returnTo: View; play?: boolean }
 
 export interface OnboardingInput {
   departureAt: string;
@@ -85,20 +99,21 @@ interface AppState {
    *  is reachable instead of being covered by the higher-z nav — the same focused-flow rule an
    *  active Bootcamp mission already uses. Purely navigational; never persisted. */
   coreGameActive: boolean;
-  /** A one-shot request handed to the Listen screen by another surface — Home's Quick Listen, or
-   *  Free learning asking for the sentence player / the dialogues: consumed and cleared by Listen on
-   *  arrival. Navigational only; never persisted. */
-  listenIntent: ListenIntent | null;
+  /** Where the Listening hub is (null = its landing with the four modes). Set by the hub itself and
+   *  by Games & stories (the sentence player / the dialogues); a tab tap on the navigation clears it,
+   *  so the tab always lands on the hub's landing. Navigational only; never persisted. */
+  listenPage: ListenPage | null;
   /** A one-shot request handed to the Core library by Free learning: which tool to open straight
    *  away (swipe cards, a player) and where its Back returns. Consumed on arrival; never persisted. */
   coreIntent: CoreIntent | null;
-  /** A one-shot request to open a specific story (Listen's story card): consumed by Reading. */
-  readingIntent: string | null;
+  /** A one-shot request to the reading surface: a story to open straight away (Listen's stories) and
+   *  where Back returns. Consumed by Reading on arrival; never persisted. */
+  readingIntent: ReadingIntent | null;
 
   navigate(view: View): void;
-  setListenIntent(intent: ListenIntent | null): void;
+  setListenPage(page: ListenPage | null): void;
   setCoreIntent(intent: CoreIntent | null): void;
-  setReadingIntent(storyId: string | null): void;
+  setReadingIntent(intent: ReadingIntent | null): void;
   setUiLang(lang: string): void;
   setLearningLang(lang: string): Promise<void>;
   setTheme(theme: 'light' | 'dark'): void;
@@ -175,20 +190,20 @@ export const useAppStore = create<AppState>((set, get) => ({
   theme: storedTheme,
   coreCategory: null,
   coreGameActive: false,
-  listenIntent: null,
+  listenPage: null,
   coreIntent: null,
   readingIntent: null,
 
-  setListenIntent(intent) {
-    set({ listenIntent: intent });
+  setListenPage(page) {
+    set({ listenPage: page });
   },
 
   setCoreIntent(intent) {
     set({ coreIntent: intent });
   },
 
-  setReadingIntent(storyId) {
-    set({ readingIntent: storyId });
+  setReadingIntent(intent) {
+    set({ readingIntent: intent });
   },
 
   navigate(view) {

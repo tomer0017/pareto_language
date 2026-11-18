@@ -13,10 +13,11 @@ import { BackButton } from '../../shared/ui/PageHeader.js';
 import { buildPhraseGroups } from './phraseGroups.js';
 
 /**
- * The library — a SECONDARY surface under Learn: the words and the sentences the missions teach, to
- * browse, hear and review. It is not a destination of its own (the missions are the product; this is
- * support). Sentences are grouped exactly as `buildPhraseGroups` orders them — mission by mission,
- * with the shared conversation-help phrases last. Passive listening lives in the Listen tab.
+ * The library — a SECONDARY surface under Basic words (and Games & stories): the words and the
+ * sentences the situations teach, to browse, hear and review. It is not a destination of its own
+ * (the situations are the product; this is support). Sentences are grouped exactly as
+ * `buildPhraseGroups` orders them — situation by situation, with the shared conversation-help
+ * phrases last. Passive listening lives in the Listen tab.
  */
 interface Group { title: string; items: BootcampItem[] }
 
@@ -40,10 +41,10 @@ function buildGroups(lang: string): Group[] {
 
 export function Core() {
   const app = useAppStore();
-  // Opened from Learn with a category; defaults to the sentences.
+  // Opened from Basic words / Games & stories with a category; defaults to the sentences.
   const category = (app.coreCategory as CoreTab | null) ?? 'phrases';
   const groups = useMemo(() => buildGroups(app.learningLang), [app.learningLang]);
-  // Free learning may ask for one tool straight away (and where Back returns); read once, then cleared.
+  // The opener may ask for one tool straight away, and says where Back returns; read once, then cleared.
   const [intent] = useState(() => useAppStore.getState().coreIntent);
   useEffect(() => { if (useAppStore.getState().coreIntent) app.setCoreIntent(null); }, []); // eslint-disable-line react-hooks/exhaustive-deps
   // Sentences entry: three cards (Listen · Flashcards · View All). 'entry' is the default landing.
@@ -52,7 +53,7 @@ export function Core() {
 
   // One canonical display model per phrase (target + app-gloss + audio + directions + review id).
   const model = (item: BootcampItem) => resolveLearningItem({ id: item.id, target: item.text, meaning: item.meaning }, app.uiLang, app.learningLang);
-  const backToLearn = (): void => { app.setCoreCategory(null); app.navigate(intent?.returnTo ?? 'bootcamp'); };
+  const backToLearn = (): void => { app.setCoreCategory(null); app.navigate(intent?.returnTo ?? 'basics'); };
 
   return (
     <div className="screen">
@@ -86,7 +87,7 @@ export function Core() {
           ) : phrasesView === 'entry' ? (
             // Square cards — pick how to review sentences.
             <div className="home-actions stagger" style={{ marginTop: 8 }}>
-              <button className="action-card card-press" onClick={() => { tap(); app.navigate('listen'); }}>
+              <button className="action-card card-press" onClick={() => { tap(); app.setListenPage({ mode: 'sentences', play: null, returnTo: 'core' }); app.navigate('listen'); }}>
                 <span className="action-icon">🎧</span>
                 <span className="action-title">{t('listenMode')}</span>
               </button>

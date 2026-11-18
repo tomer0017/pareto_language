@@ -2201,3 +2201,42 @@ the free corner beside a centred CTA on wide screens. z 85: above learning surfa
 Tests: `dailyGoal.test.ts` (46). Real-Chrome QA (CDP, real taps / tabs / reloads, accelerated clock): a 44-check
 click-through of every behaviour and a 54-screen placement matrix (360 / 390 / 430 × HE / EN) — never on a bar,
 nothing under it at full scroll; at rest, scrolling content passes beneath it as it does beneath the fixed bars.
+
+## UX simplification pass — Home · Situations · Basic words · Listening hub — 2026-11-18
+
+**Why.** Real users did not immediately understand what to do. Every main screen now answers "where am I?" and
+"what can I do here?" in about two seconds; the visual identity (cards, lavender, purple, mascot, bottom
+navigation) is unchanged.
+
+**Home.** READY ✈️ · "אני דובר: עברית · אני לומד: ספרדית" · ONE progress ("X% למידה") · four large choices —
+🔤 מילים בסיסיות · 🎬 סיטואציות · 🎮 משחקים וסיפורים · 🎧 האזנה מהירה. Removed from Home: the readiness ring +
+"X of 30 ready" + "X of N sentences practiced", the next-step card, the zero-start link, the Quick-review and
+Quick-listen cards, the Free-learning promo, the "N situations left" line, the desktop greeting.
+
+**Situations** (tab renamed from מסלול / Path; route id `bootcamp` unchanged). Title · "למדת X סיטואציות מתוך
+30" + one bar · the buddy's one line by progress (0 / 1–25% / 26–50% / 51–75% / 76–99% / 100%) · Situation 1.
+Gone from it: the readiness summary card, the subtitle, the phase headings ("יסודות" first), the "יסודות בשפה"
+card, the first-visit Foundations pop-up (component removed), the "More practice" rows.
+
+**Basic words** (new screen): the Foundation sheet, the sentence library (by topic), the words library, Start from
+zero — the same surfaces and progress stores, moved off the Situations screen. **Games & stories** (Free
+learning): the same seven tools; title matches its Home card, a Back, shorter copy, and Quick Review's door (only
+once something was practiced). **Listen** (tab and title האזנה): four modes → content → player; stories open in
+the reader already reading aloud; situations / sentences keep the existing player (transport, repeats,
+continuous, shuffle, three listening modes, quick listen) and resume inside a topic; **situation videos in a row**
+plays the manifest's videos in journey order, auto-advancing in one player, skipping a clip that fails.
+
+**Unchanged.** Missions 01–30 content, dialogues, prior learning, coverage, interaction counts, checkpoints, FSRS,
+video resolution, sentences, translations, audio engine, Missions 16–19 visuals; progress (`ready.bootcamp.v2.*`,
+`ready.foundation.v2`, `ready.zerostart.v1`, listening bookmarks) — no store added, moved or reset. The Daily Goal
+stays the one global floating timer; Home is laid out so it never covers a choice (checked at 360 / 390 / 430).
+The `readiness` detail view is kept but no longer linked.
+
+**Verification.** `app/uxSimplification.test.ts` (30 tests) + updated nav / copy / free-learning / companion /
+review / listen / foundation-tiles / video / Daily Goal / Mission 18 tests; typecheck, lint, the full suite, build
+and smoke green. Real Chrome (CDP, real taps): a 63-check click-through (routing, Back targets, player controls,
+translation modes, story autoplay, video auto-advance + safe-skip, saved progress intact, no console errors) and
+before/after screens at 360 / 390 / 430 × HE / EN + desktop: text in Home's first screen HE 283 / 422 / 440 →
+208 characters and EN 386 / 460 / 533 → 243; Situation 1 from y≈595–628 (behind a first-visit pop-up) to y=229 at
+every width; Listen's landing shows four modes and no player (it opened on the tabs, a 25-topic queue and the
+player together).

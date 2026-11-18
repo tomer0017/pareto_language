@@ -88,8 +88,14 @@
 .cmp-presence-body { flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
 .cmp-whose { font-size: 0.8rem; font-weight: 700; color: var(--ink-dim); padding-inline-start: 4px; }
 
+/* compact, above the situations: a small figure and its one line — a note, not a chat box */
+.cmp-presence.is-compact { min-height: 0; gap: 10px; margin: 8px 0 4px; padding: 0 2px; }
+.cmp-presence.is-compact .cmp-bubble { font-size: 0.94rem; padding: 8px 13px; }
+
 /* on Home: peeking over the next-step card */
 .cmp-peek { position: absolute; inset-block-start: -34px; inset-inline-end: 10px; padding: 0; background: transparent; border: 0; box-shadow: none; min-height: 0; line-height: 0; z-index: 1; }
+/* …or small, in the flow of the progress row */
+.cmp-peek.is-inline { position: static; flex-shrink: 0; }
 
 /* its own page */
 .cmp-hero { position: relative; isolation: isolate; display: flex; flex-direction: column; align-items: center; gap: 18px; text-align: center; padding: 14px 8px 10px; }

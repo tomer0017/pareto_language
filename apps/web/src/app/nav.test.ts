@@ -7,8 +7,8 @@ import * as navModule from './nav.js';
  * READY's navigation model: four primary destinations, one source of truth for both presentations
  * (bottom bar on phones/tablets, side rail on desktop).
  */
-describe('primary navigation — Home · Learn · Listen · Profile', () => {
-  it('has exactly the four destinations, in order (Learn is the `bootcamp` view)', () => {
+describe('primary navigation — Home · Situations · Listen · Profile', () => {
+  it('has exactly the four destinations, in order (Situations is the `bootcamp` view)', () => {
     expect(PRIMARY_TABS).toEqual(['home', 'bootcamp', 'listen', 'profile']);
   });
 
@@ -20,9 +20,13 @@ describe('primary navigation — Home · Learn · Listen · Profile', () => {
     expect(navTabOf('home')).toBe('home');
     expect(navTabOf('readiness')).toBe('home');
     expect(navTabOf('review')).toBe('home');
+    // Home's four ways in: Basic words, Games & stories and the fundamentals behind them stay under Home.
+    expect(navTabOf('basics')).toBe('home');
+    expect(navTabOf('free')).toBe('home');
+    expect(navTabOf('core')).toBe('home');
+    expect(navTabOf('zerostart')).toBe('home');
     expect(navTabOf('bootcamp')).toBe('bootcamp');
-    expect(navTabOf('core')).toBe('bootcamp');
-    expect(navTabOf('zerostart')).toBe('bootcamp');
+    expect(navTabOf('companion')).toBe('bootcamp');
     expect(navTabOf('listen')).toBe('listen');
     expect(navTabOf('reading')).toBe('listen');
     expect(navTabOf('videos')).toBe('listen');
@@ -33,7 +37,7 @@ describe('primary navigation — Home · Learn · Listen · Profile', () => {
 
   it('the app shell (and the desktop rail) exists everywhere except the first-run welcome', () => {
     expect(hasAppShell('onboarding')).toBe(false);
-    for (const view of [...PRIMARY_TABS, 'core', 'reading', 'readiness', 'languages'] as const) expect(hasAppShell(view)).toBe(true);
+    for (const view of [...PRIMARY_TABS, 'basics', 'core', 'reading', 'readiness', 'languages'] as const) expect(hasAppShell(view)).toBe(true);
   });
 });
 
@@ -53,9 +57,11 @@ describe('shouldShowNav — the bottom bar never covers a focused flow', () => {
     expect(shouldShowNav('core', false, true)).toBe(false);
   });
 
-  it('shows the bar on the library screen (no active game) and on Travel Readiness', () => {
+  it('shows the bar on the browse screens: the library (no active game), Basic words, Games & stories', () => {
     expect(shouldShowNav('core', false, false)).toBe(true);
     expect(shouldShowNav('readiness', false, false)).toBe(true);
+    expect(shouldShowNav('basics', false, false)).toBe(true);
+    expect(shouldShowNav('free', false, false)).toBe(true);
   });
 
   it('hides the bar inside an active mission', () => {
@@ -70,16 +76,16 @@ describe('shouldShowNav — the bottom bar never covers a focused flow', () => {
 });
 
 describe('primary navigation stays at four destinations', () => {
-  it('has no fifth tab — Stories live inside Listen, the library under the Path', () => {
+  it('has no fifth tab — Stories and the videos live inside Listen, the fundamentals under Basic words', () => {
     expect(PRIMARY_TABS).toHaveLength(4);
-    for (const view of ['reading', 'videos', 'core', 'zerostart', 'readiness', 'review'] as const) {
+    for (const view of ['reading', 'videos', 'core', 'zerostart', 'readiness', 'review', 'basics', 'free'] as const) {
       expect(PRIMARY_TABS).not.toContain(view);
     }
     expect(navTabOf('reading')).toBe('listen');
   });
 });
 
-describe('the Foundation building blocks no longer float over the mission list', () => {
+describe('the Foundation building blocks: never floating, never in front of the situations', () => {
   const read = (p: string): string => readFileSync(new URL(p, import.meta.url), 'utf8');
 
   it('there is no floating-button rule in the navigation model or the app shell', () => {
@@ -91,12 +97,11 @@ describe('the Foundation building blocks no longer float over the mission list',
     expect(read('./styles.css')).not.toMatch(/foundation-fab/);
   });
 
-  it('Foundation is ONE ordinary card at the top of Phase 1 of the Path — before Mission 01, never floating, never duplicated below', () => {
+  it('Foundation is ONE ordinary card under Basic words — and the Situations screen has no Foundations entry at all', () => {
+    const basics = read('../features/basics/BasicWords.tsx');
+    expect(basics.match(/openFoundation\(\)/g)).toHaveLength(1); // exactly one Basic words entry
+    expect(basics).toContain("t('foundationEntryTitle')");
     const learn = read('../features/bootcamp/Learn.tsx');
-    expect(learn.match(/openFoundation\(\)/g)).toHaveLength(1); // exactly one Journey entry
-    expect(learn).toContain("t('foundationEntryTitle')");
-    expect(learn.indexOf("t('foundationEntryTitle')")).toBeGreaterThan(learn.indexOf('PHASES.map')); // inside the phase list…
-    expect(learn.indexOf("t('foundationEntryTitle')")).toBeLessThan(learn.indexOf('<MissionCard')); // …before the first mission card
-    expect(learn.slice(learn.indexOf("t('morePractice')"))).not.toContain('openFoundation'); // no duplicate under More practice
+    expect(learn).not.toMatch(/openFoundation|foundationEntryTitle|PHASES|morePractice/); // the list is the situations, only
   });
 });

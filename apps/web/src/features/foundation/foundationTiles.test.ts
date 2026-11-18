@@ -89,18 +89,16 @@ describe('the tiles', () => {
   });
 });
 
-describe('Listen: tabs and content are one module', () => {
-  it('the tabs are the header of the same card whose panel they switch; the story card lives in the Stories tab', () => {
+describe('Listen: one level at a time — mode, then content, then the player', () => {
+  it('the landing holds the four modes only; the content lists and the player are pages of their own', () => {
     const listen = src('../listen/Listen.tsx');
-    const module = listen.slice(listen.indexOf('<section className="card listen-module"'), listen.indexOf('</section>', listen.indexOf('listen-module')));
-    expect(module).toContain('className="tabs listen-tabs" role="tablist"');
-    expect(module).toContain('aria-controls="listen-panel"');
-    expect(module).toContain('id="listen-panel" role="tabpanel"');
-    expect(module).toContain("category === 'stories' && stories && stories.length > 0 && <StoryCard");
-    expect(module).toContain('<ListenPlayer');
+    const landing = listen.slice(listen.indexOf('function ListenLanding'), listen.indexOf('function StoriesPage'));
+    expect(landing).toContain('LISTEN_HUB_MODES.map');
+    expect(landing).not.toMatch(/ListenPlayer|topic-row|StoryThumb|useParrotPlayback/);
+    expect(listen).not.toMatch(/listen-tabs|role="tablist"|queue-row/); // no tabs, no catalogue beside a player
     const css = src('../../app/styles.css');
-    expect(css).toContain('.listen-tabs { margin: 0 0 10px; box-shadow: none;');
-    expect(css).toContain('.listen-panel .listen-layout > .card { box-shadow: none; border: 1px solid var(--line)');
+    expect(css).not.toMatch(/\.listen-tabs|\.queue-row|\.listen-module/);
+    expect(css).toContain('.listen-player {');
   });
 });
 

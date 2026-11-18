@@ -122,7 +122,8 @@ describe('global — the same timer everywhere in READY', () => {
       for (const name of readdirSync(dir)) {
         const p = join(dir, name);
         if (statSync(p).isDirectory()) { if (name !== 'dailyGoal') walk(p); continue; }
-        if (!/\.(ts|tsx)$/.test(name) || p.endsWith(join('app', 'App.tsx')) || p.endsWith(join('i18n', 'strings.ts'))) continue;
+        // (Tests elsewhere may name it — to check, for instance, that it is still global and not a Home card.)
+        if (!/\.(ts|tsx)$/.test(name) || /\.test\.tsx?$/.test(name) || p.endsWith(join('app', 'App.tsx')) || p.endsWith(join('i18n', 'strings.ts'))) continue;
         if (/dailyGoal|DailyGoal/.test(readFileSync(p, 'utf8'))) offenders.push(p.slice(src.length));
       }
     };

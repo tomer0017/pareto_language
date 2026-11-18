@@ -46,6 +46,25 @@ export function topicOfIndex(playlist: ListenPlaylist, index: number): ListenTop
   return playlist.topics.find((tp) => index >= tp.start && index < tp.start + tp.count);
 }
 
+/** The topic the learner was listening to (from the saved listening bookmark's item id), or null. */
+export function resumeTopicId(playlist: ListenPlaylist, savedItemId: string | null): string | null {
+  if (!savedItemId) return null;
+  const index = playlist.items.findIndex((item) => item.id === savedItemId);
+  return index < 0 ? null : topicOfIndex(playlist, index)?.id ?? null;
+}
+
+/**
+ * Where the player starts when the learner picks a topic: back where they left it inside that topic
+ * (the saved bookmark), unless they had reached its last line — then, like any other topic, from its
+ * first line. An unknown topic starts the playlist from the top.
+ */
+export function startIndexFor(playlist: ListenPlaylist, topicId: string, savedItemId: string | null): number {
+  const topic = playlist.topics.find((tp) => tp.id === topicId);
+  if (!topic) return 0;
+  const saved = savedItemId ? playlist.items.findIndex((item) => item.id === savedItemId) : -1;
+  return saved >= topic.start && saved < topic.start + topic.count - 1 ? saved : topic.start;
+}
+
 /** Core sentences, mission by mission in journey order; shared conversation-help phrases last. */
 export function buildPhrasePlaylist(learningLang: string, appLang: string): ListenPlaylist {
   const missions = missionsFor(learningLang);

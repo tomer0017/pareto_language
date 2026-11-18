@@ -53,7 +53,7 @@ export function ZeroStart() {
   if (!lang) {
     return (
       <div className="screen">
-        <TopBar title={t('zeroStartTitle')} backTo="bootcamp" />
+        <TopBar title={t('zeroStartTitle')} backTo="basics" />
         <div className="screen-scroll">
           <div className="drill-card center pop-in" style={{ marginTop: 24 }}>
             <p style={{ fontSize: '2.4rem' }}>🌱</p>
@@ -157,7 +157,7 @@ function Path({ lang }: { lang: ZeroLang }) {
   // ── Hub ──
   return (
     <div className="screen">
-      <TopBar title={t('zeroStartTitle')} backTo="bootcamp" />
+      <TopBar title={t('zeroStartTitle')} backTo="basics" />
       <div className="screen-scroll">
         <p className="dim small" style={{ marginBottom: 4 }}>{t('zeroStartSubtitle')}</p>
         <p className="dim small" style={{ marginBottom: 12 }}>{t('zeroStartDesc')}</p>

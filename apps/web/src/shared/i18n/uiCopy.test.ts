@@ -10,23 +10,31 @@ import { BOOTCAMP_PLAN } from '../../features/bootcamp/plan.js';
 const NEW_KEYS: StringKey[] = [
   'homeTab', 'bootcampTab', 'listenTab', 'profileTab', 'readinessTitle', 'readinessSituations', 'readinessPhrases',
   'nextStepTitle', 'situationOf', 'continueLearning', 'startLearning', 'quickReviewTitle', 'quickListenTitle',
-  'learnTitle', 'learnSub', 'stepWatch', 'stepListen', 'stepLearn', 'stepPractice', 'stepWatchAgain',
+  'learnTitle', 'stepWatch', 'stepListen', 'stepLearn', 'stepPractice', 'stepWatchAgain',
   'listenTitle', 'listenRepeats', 'listenModeLabel', 'survivalKit', 'nextMission', 'phraseLibrary',
+  // the UX simplification pass: Home's four ways in, Basic words, Situations' progress, the Listening hub
+  'homeProgressLabel', 'basicsTitle', 'basicsSub', 'homeSituationsSub', 'homeListenTitle', 'homeListenSub',
+  'situationsProgress', 'listenModeStories', 'listenModeSituations', 'listenModeSentences', 'listenModeVideos',
+  'listenModeStoriesSub', 'listenModeSituationsSub', 'listenModeSentencesSub', 'listenModeVideosSub',
 ];
 const read = (lang: string, key: StringKey, vars?: Record<string, string | number>): string => { setUiLangDict(lang); return t(key, vars); };
 
 describe('navigation labels', () => {
-  it('English: Home · Path · Listen · Profile', () => {
-    expect((['homeTab', 'bootcampTab', 'listenTab', 'profileTab'] as StringKey[]).map((k) => read('en', k))).toEqual(['Home', 'Path', 'Listen', 'Profile']);
+  it('English: Home · Situations · Listen · Profile', () => {
+    expect((['homeTab', 'bootcampTab', 'listenTab', 'profileTab'] as StringKey[]).map((k) => read('en', k))).toEqual(['Home', 'Situations', 'Listen', 'Profile']);
   });
-  it('Hebrew: בית · מסלול · להאזין · פרופיל', () => {
-    expect((['homeTab', 'bootcampTab', 'listenTab', 'profileTab'] as StringKey[]).map((k) => read('he', k))).toEqual(['בית', 'מסלול', 'להאזין', 'פרופיל']);
+  it('Hebrew: בית · סיטואציות · האזנה · פרופיל', () => {
+    expect((['homeTab', 'bootcampTab', 'listenTab', 'profileTab'] as StringKey[]).map((k) => read('he', k))).toEqual(['בית', 'סיטואציות', 'האזנה', 'פרופיל']);
   });
-  it('the Path screen is titled like its tab (מסלול / Path), not the generic "Learn"', () => {
+  it('each tab\'s screen is titled like its tab: סיטואציות / Situations, האזנה / Listen', () => {
     expect(read('he', 'learnTitle')).toBe(read('he', 'bootcampTab'));
     expect(read('en', 'learnTitle')).toBe(read('en', 'bootcampTab'));
-    expect(read('he', 'learnTitle')).toBe('מסלול');
-    expect(read('he', 'learnSub', { n: 30 })).toBe('30 מצבים אמיתיים — לומדים רק מה שצריך לטיול');
+    expect(read('he', 'learnTitle')).toBe('סיטואציות');
+    expect(read('he', 'listenTitle')).toBe(read('he', 'listenTab'));
+    expect(read('en', 'listenTitle')).toBe(read('en', 'listenTab'));
+    // Home's choices name the screens they open.
+    expect(read('he', 'basicsTitle')).toBe('מילים בסיסיות');
+    expect(read('he', 'freeLearningTitle')).toBe('משחקים וסיפורים');
   });
 });
 
@@ -45,8 +53,9 @@ describe('copy rules', () => {
 
   it('the mission count and position come from the plan, never from copy', () => {
     for (const lang of ['en', 'he']) {
-      expect(read(lang, 'learnSub', { n: BOOTCAMP_PLAN.length })).toContain('30');
-      expect(read(lang, 'learnSub', { n: 7 })).not.toContain('30');
+      expect(read(lang, 'situationsProgress', { done: 0, total: BOOTCAMP_PLAN.length })).toMatch(/0.*30/);
+      expect(read(lang, 'situationsProgress', { done: 2, total: 7 })).not.toContain('30');
+      expect(read(lang, 'situationsProgressOne', { total: BOOTCAMP_PLAN.length })).toContain('30');
       expect(read(lang, 'situationOf', { n: 3, total: BOOTCAMP_PLAN.length })).toMatch(/3.*30/);
       expect(read(lang, 'readinessSituations', { done: 8, total: BOOTCAMP_PLAN.length })).toMatch(/8.*30/);
     }
@@ -68,9 +77,9 @@ describe('copy rules', () => {
     expect(read('he', 'readinessPhrases', { done: 3, total: 10 })).toContain('תורגלו');
   });
 
-  it('the old Home heading is gone; the supporting section is "more ways to practice"', () => {
-    expect(read('he', 'homeGreeting')).not.toBe('האימון שלך');
-    expect(read('he', 'listenMore')).toBe('עוד דרכים לתרגל');
+  it('the language row says it in the learner\'s words: I speak … · I\'m learning …', () => {
+    expect([read('he', 'stripAppPrefix'), read('he', 'stripLearnPrefix')]).toEqual(['אני דובר:', 'אני לומד:']);
+    expect([read('en', 'stripAppPrefix'), read('en', 'stripLearnPrefix')]).toEqual(['I speak:', 'I’m learning:']);
   });
 
   it('continuous play is named as a mode, not as one more repeat count', () => {

@@ -5,20 +5,23 @@ import type { View } from '../shared/stores/appStore.js';
  * destinations render as a bottom bar on phones/tablets and as a side rail on desktop; only the
  * presentation differs (see `AppNav` + styles), never the model.
  *
- *   Home    — what to do next (the coach), and the door to Free learning (every self-directed tool)
- *   Learn   — the real-world missions (active learning); internally the `bootcamp` view
- *   Listen  — passive listening over the same content
- *   Profile — language, voice, appearance
+ *   Home       — the four ways to learn: Basic words · Situations · Games & stories · Quick listening
+ *   Situations — the 30 real-world situations (active learning); internally the `bootcamp` view
+ *   Listen     — the listening hub: stories · situations · sentences · situation videos
+ *   Profile    — language, voice, appearance
  */
 export const PRIMARY_TABS: View[] = ['home', 'bootcamp', 'listen', 'profile'];
 
 /** Secondary screens belong to a primary destination — it stays highlighted while they are open. */
 const PARENT_TAB: Partial<Record<View, View>> = {
   readiness: 'home',
+  basics: 'home',
   free: 'home',
   review: 'home',
-  core: 'bootcamp',
-  zerostart: 'bootcamp',
+  // The fundamentals (the words / sentence library and the zero-beginner path) open from Basic words
+  // and Games & stories — both under Home — so Home stays highlighted while they are open.
+  core: 'home',
+  zerostart: 'home',
   companion: 'bootcamp',
   reading: 'listen',
   videos: 'listen',
@@ -33,7 +36,7 @@ export function navTabOf(view: View): View | null {
 
 /** Views that keep the bottom bar on small screens: the four tabs plus the two browse-only
  *  secondary screens. Everything else is a focused flow with its own back control. */
-const BAR_VIEWS: View[] = [...PRIMARY_TABS, 'core', 'readiness', 'companion', 'free'];
+const BAR_VIEWS: View[] = [...PRIMARY_TABS, 'core', 'readiness', 'companion', 'free', 'basics'];
 
 /**
  * Whether the BOTTOM BAR (phone/tablet presentation) is shown.

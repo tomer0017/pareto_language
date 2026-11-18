@@ -1,7 +1,7 @@
 import { beforeAll, describe, expect, it, vi } from 'vitest';
 import { createElement } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { PRIMARY_TABS, hasAppShell, navTabOf, shouldShowNav } from '../../app/nav.js';
 import { UI_DICTIONARIES, setUiLangDict, t } from '../../shared/i18n/strings.js';
@@ -13,21 +13,21 @@ import type * as CoreWordsModule from '../core/CoreWords.js';
 import type * as FlashModule from '../core/SentenceFlashcards.js';
 import type * as RecallModule from '../games/swipeRecall/SwipeRecall.js';
 import type * as LearnModule from '../bootcamp/Learn.js';
-import type * as OnboardModule from '../foundation/FoundationOnboarding.js';
-import type * as CoachModule from '../foundation/foundationCoach.js';
+import type * as BasicsModule from '../basics/BasicWords.js';
 import type * as FoundationStoreModule from '../foundation/foundationStore.js';
 import type * as CompanionModule from '../companion/Companion.js';
 
 /**
- * Free learning — the regression-recovery pass. Every self-directed tool already existed (the swipe
- * word cards, the sentence cards, both players, Stories, the dialogues, the Foundation sheet); what
- * was lost was a visible way in. These tests pin the way in: Home → "למידה באופן חופשי" → one card
- * per tool, each opening the EXISTING surface; the Journey's Foundations row; the one-time Foundation
- * introduction; and the mission intro's mascot pose.
+ * Games & stories (Free learning). Every self-directed tool already existed (the swipe word cards,
+ * the sentence cards, both players, Stories, the dialogues, the Foundation sheet); these tests pin
+ * the way in: Home → "משחקים וסיפורים" → one card per tool, each opening the EXISTING surface and
+ * coming back here; the Foundations, now reached from Basic words (never from the top of the
+ * situations); and the mission intro's mascot pose.
  */
 const src = (p: string): string => readFileSync(fileURLToPath(new URL(p, import.meta.url)), 'utf8');
 const html = (el: Parameters<typeof renderToStaticMarkup>[0]): string => renderToStaticMarkup(el);
 const HUB = ['כרטיסיות מילים', 'כרטיסיות משפטים', 'נגן מילים', 'נגן משפטים', 'סיפורים', 'דיאלוגים', 'יסודות'];
+const MISSION_01 = 'להציג את עצמי'; // Situation 1's title
 
 describe('Free learning', () => {
   const disk = new Map<string, string>();
@@ -39,8 +39,7 @@ describe('Free learning', () => {
   let flash: typeof FlashModule;
   let recall: typeof RecallModule;
   let learn: typeof LearnModule;
-  let onboard: typeof OnboardModule;
-  let coach: typeof CoachModule;
+  let basics: typeof BasicsModule;
   let foundation: typeof FoundationStoreModule;
   let companion: typeof CompanionModule;
 
@@ -54,8 +53,7 @@ describe('Free learning', () => {
     flash = await import('../core/SentenceFlashcards.js');
     recall = await import('../games/swipeRecall/SwipeRecall.js');
     learn = await import('../bootcamp/Learn.js');
-    onboard = await import('../foundation/FoundationOnboarding.js');
-    coach = await import('../foundation/foundationCoach.js');
+    basics = await import('../basics/BasicWords.js');
     foundation = await import('../foundation/foundationStore.js');
     companion = await import('../companion/Companion.js');
     app.useAppStore.setState({ learningLang: 'en', uiLang: 'he' });
@@ -64,14 +62,14 @@ describe('Free learning', () => {
 
   /* ── 1–2. Home → the hub ─────────────────────────────────────────────────────────────────── */
 
-  it('Home shows "למידה באופן חופשי" as a real card — not a text link — that opens the hub', () => {
+  it('Home shows "משחקים וסיפורים" as one of its four large cards — not a text link — that opens the hub', () => {
     const page = html(createElement(home.Home));
-    expect(page).toContain('למידה באופן חופשי');
-    expect(page).toMatch(/<button class="card card-press summary-card free-entry span-2"/); // a full card, large touch target
-    expect(page).not.toMatch(/btn-link[^>]*>[^<]*למידה באופן חופשי/); // never a text link
-    expect(src('../home/Home.tsx')).toContain("app.navigate('free')");
-    // It is secondary: the next step (the Journey) still comes first on the page.
-    expect(page.indexOf('home-next')).toBeLessThan(page.indexOf('free-entry'));
+    expect(page).toContain('משחקים וסיפורים');
+    expect(page).toMatch(/<button type="button" class="choice-card card-press tone-warn" data-choice="games">/); // a full card, large touch target
+    expect(page).not.toMatch(/btn-link[^>]*>[^<]*משחקים וסיפורים/); // never a text link
+    expect(src('../home/Home.tsx')).toContain("onSelect={() => go('free')}");
+    // Third of the four ways to learn: after Basic words and Situations, before Quick listening.
+    expect([...page.matchAll(/data-choice="([a-z]+)"/g)].map((m) => m[1])).toEqual(['basics', 'situations', 'games', 'listen']);
   });
   it('the hub is a screen of its own, under Home in the navigation, with the bottom bar kept', () => {
     expect(navTabOf('free')).toBe('home');
@@ -85,7 +83,8 @@ describe('Free learning', () => {
 
   it('the hub exposes exactly the seven tools, with their Hebrew labels, in order', () => {
     const page = html(createElement(free.FreeLearning));
-    expect(page).toContain('למידה באופן חופשי');
+    expect(page).toContain('משחקים וסיפורים');
+    expect(page).toContain('תרגול חופשי ומהנה');
     const labels = [...page.matchAll(/data-free="([a-zA-Z]+)"[^>]*>.*?<span class="action-title">([^<]+)<\/span>/g)].map((m) => [m[1], m[2]]);
     expect(labels).toEqual([
       ['wordCards', 'כרטיסיות מילים'], ['sentenceCards', 'כרטיסיות משפטים'], ['wordPlayer', 'נגן מילים'], ['sentencePlayer', 'נגן משפטים'],
@@ -108,16 +107,20 @@ describe('Free learning', () => {
     expect(hub).toContain("go: () => core('words', 'wordCards')");       // Core Words → Swipe Recall
     expect(hub).toContain("go: () => core('phrases', 'sentenceCards')"); // Core Sentences → Sentence Flashcards
     expect(hub).toContain("go: () => core('words', 'wordPlayer')");      // Core Words → Listen panel
-    expect(hub).toContain("go: () => listen('phrases')");                // Listen → sentence playlist
-    expect(hub).toContain("go: () => app.navigate('reading')");          // Reading (Stories)
-    expect(hub).toContain("go: () => listen('dialogues')");              // Listen → dialogue playlist
+    expect(hub).toContain("go: () => listen('sentences')");              // the Listening hub → sentences
+    expect(hub).toContain('go: stories');                                // Reading (Stories)
+    expect(hub).toContain("go: () => listen('situations')");             // the Listening hub → the situations' dialogues
     expect(hub).toContain('go: () => openFoundation()');                 // the Foundation sheet
     expect(hub).not.toMatch(/ComingSoon|coming soon|TODO/i);
+    // …and each one comes back here.
+    expect(hub).toContain("app.setListenPage({ mode, play: null, returnTo: 'free' })");
+    expect(hub).toContain("app.setReadingIntent({ returnTo: 'free' })");
     // The receiving surfaces honour the intent.
     expect(src('../core/Core.tsx')).toContain("intent?.mode === 'sentenceCards' ? 'flashcards'");
     expect(src('../core/Core.tsx')).toContain("<CoreWords start={intent?.mode === 'wordCards' ? 'recall' : intent?.mode === 'wordPlayer' ? 'listen' : 'menu'} />");
     expect(src('../core/CoreWords.tsx')).toContain('useState<Mode>(start)');
-    expect(src('../listen/Listen.tsx')).toContain("useState<ListenCategory>(intent === 'dialogues' ? 'dialogues' : 'phrases')");
+    expect(src('../listen/Listen.tsx')).toContain('const leaveMode = (returnTo?: View): void =>');
+    expect(src('../reading/Reading.tsx')).toContain("const backTo = requested?.returnTo ?? 'listen';");
   });
   it('the intents live in the one app store, next to the ones that already existed', () => {
     const s = app.useAppStore.getState();
@@ -125,10 +128,10 @@ describe('Free learning', () => {
     expect(app.useAppStore.getState().coreIntent).toEqual({ mode: 'wordCards', returnTo: 'free' });
     s.setCoreIntent(null);
     expect(app.useAppStore.getState().coreIntent).toBeNull();
-    s.setListenIntent('dialogues');
-    expect(app.useAppStore.getState().listenIntent).toBe('dialogues');
-    s.setListenIntent(null);
-    expect(src('../../shared/stores/appStore.ts')).not.toMatch(/localStorage\.setItem\('ready\.(core|listen)Intent/); // never persisted
+    s.setListenPage({ mode: 'situations', play: null, returnTo: 'free' });
+    expect(app.useAppStore.getState().listenPage).toEqual({ mode: 'situations', play: null, returnTo: 'free' });
+    s.setListenPage(null);
+    expect(src('../../shared/stores/appStore.ts')).not.toMatch(/localStorage\.setItem\('ready\.(core|listen|reading)/); // never persisted
   });
 
   /* ── 5–8. the tools themselves still work, and open straight from the hub ────────────────── */
@@ -157,7 +160,7 @@ describe('Free learning', () => {
     expect(html(createElement(core.Core))).toContain('gesture-card'); // flashcards at once, not the three-card entry
     app.useAppStore.setState({ coreCategory: 'phrases', coreIntent: null });
     expect(html(createElement(core.Core))).not.toContain('gesture-card'); // the ordinary entry
-    expect(src('../core/Core.tsx')).toContain("app.navigate(intent?.returnTo ?? 'bootcamp')");
+    expect(src('../core/Core.tsx')).toContain("app.navigate(intent?.returnTo ?? 'basics')");
     // Core Words opens the player / the cards straight away when asked.
     expect(html(createElement(coreWords.CoreWords, { start: 'listen' }))).not.toContain('game-card'); // no menu first
     expect(html(createElement(coreWords.CoreWords, { start: 'recall' }))).not.toContain('game-card');
@@ -172,12 +175,13 @@ describe('Free learning', () => {
 
   /* ── 9–12. Foundations ────────────────────────────────────────────────────────────────────── */
 
-  it('Foundations opens from the hub AND from the Journey, through the same store action', () => {
+  it('Foundations opens from the hub AND from Basic words, through the same store action', () => {
     expect(src('./FreeLearning.tsx')).toContain('useFoundationStore((s) => s.openSheet)');
-    const journey = src('../bootcamp/Learn.tsx');
-    expect(journey).toContain('useFoundationStore((s) => s.openSheet)');
-    expect(journey).toContain("t('foundationEntryTitle')");
-    expect(journey).toContain('openFoundation()');
+    const fundamentals = src('../basics/BasicWords.tsx');
+    expect(fundamentals).toContain('useFoundationStore((s) => s.openSheet)');
+    expect(fundamentals).toContain("t('foundationEntryTitle')");
+    expect(fundamentals).toContain('openFoundation()');
+    expect(html(createElement(basics.BasicWords))).toContain('יסודות בשפה');
     // The row is a real button that opens the sheet (not dead): the action is the store's.
     foundation.useFoundationStore.getState().close();
     foundation.useFoundationStore.getState().openSheet();
@@ -186,42 +190,26 @@ describe('Free learning', () => {
     expect(foundation.useFoundationStore.getState().open).toBe(false);
     // The sheet itself is mounted by the app shell on every screen, so both openers reach it.
     expect(src('../../app/App.tsx')).toContain('<FoundationSheet />');
-    expect(html(createElement(learn.Learn))).toContain('יסודות');
   });
-  it('Journey: the Phase 1 heading "יסודות" is a section title; the one real entry "יסודות בשפה" is a card before Mission 01', () => {
+  it('Situations: no Foundations section, card or heading before Situation 1 — the list starts with the situations', () => {
     const page = html(createElement(learn.Learn));
-    const heading = page.indexOf('class="phase-title">יסודות<');
-    const entry = page.indexOf('foundation-entry');
-    const mission1 = page.indexOf('להציג את עצמי'); // Mission 01's title
-    expect(heading).toBeGreaterThan(-1);
-    expect(entry).toBeGreaterThan(heading);
-    expect(mission1).toBeGreaterThan(entry);
-    // The heading is not a control; the entry is a real button with the card affordance and a chevron.
-    expect(page.slice(heading - 300, heading)).not.toContain('<button');
-    expect(page).toMatch(/<button class="link-row card-press foundation-entry"[^>]*aria-label="יסודות בשפה"/);
-    expect(page).toContain('יסודות בשפה');
-    expect(page).toContain('אני, אתה, שאלות, צבעים, מספרים, זמן ועוד');
-    expect(page.match(/foundation-entry/g)).toHaveLength(1); // exactly one persistent Journey card
+    const mission1 = page.indexOf(MISSION_01);
+    expect(mission1).toBeGreaterThan(-1);
+    const top = page.slice(0, mission1);
+    expect(top).not.toContain('יסודות');           // neither the Phase 1 heading nor "יסודות בשפה"
+    expect(top).not.toMatch(/foundation|phase-title|link-row/);
+    expect(page).not.toContain('foundation-entry');
+    expect(src('../bootcamp/Learn.tsx')).not.toMatch(/openFoundation|FoundationOnboarding|useFoundationStore/);
     // Mission order is untouched: the 30 cards still come in plan order.
     const order = [...page.matchAll(/class="mcard-num"[^>]*>(\d+)</g)].map((m) => Number(m[1]));
     expect(order).toEqual(Array.from({ length: 30 }, (_, i) => i + 1));
   });
-  it('the first-time Foundations introduction: shown once per language, dismissable, persisted, and never the only way in', () => {
-    disk.delete('ready.foundation.onboarded.en');
-    expect(coach.hasOnboardedFoundation('en')).toBe(false);
-    // (Static rendering runs no effects: the component decides inside an effect, so it is checked
-    //  through its bookkeeping and its source.)
-    const text = src('../foundation/FoundationOnboarding.tsx');
-    expect(text).toContain('setShow(!hasOnboardedFoundation(learningLang))');
-    expect(text).toContain('markOnboardedFoundation(learningLang)');
-    expect(text).toContain('if (open) openSheet();');
-    expect(text).toContain("t('foundationOnboardLater')");
-    coach.markOnboardedFoundation('en');
-    expect(coach.hasOnboardedFoundation('en')).toBe(true); // dismissal persists…
-    expect(disk.get('ready.foundation.onboarded.en')).toBe('1');
-    expect(coach.hasOnboardedFoundation('fr')).toBe(false); // …per learning language
-    expect(src('../bootcamp/Learn.tsx')).toContain('<FoundationOnboarding />'); // on the Journey, where the row is
-    expect(html(createElement(onboard.FoundationOnboarding))).toBe(''); // renders nothing until its effect says so
+  it('no first-visit pop-up stands between a learner and the situations any more', () => {
+    expect(existsSync(fileURLToPath(new URL('../foundation/FoundationOnboarding.tsx', import.meta.url)))).toBe(false);
+    expect(src('../bootcamp/Learn.tsx')).not.toMatch(/Modal|Onboarding/);
+    // The Foundations stay one tap from Basic words (and from this hub), so nothing was lost.
+    expect(html(createElement(basics.BasicWords))).toMatch(/data-choice="foundations"/);
+    expect(html(createElement(free.FreeLearning))).toMatch(/data-free="foundations"/);
   });
 
   /* ── 15–16. the mascot ────────────────────────────────────────────────────────────────────── */
@@ -241,15 +229,18 @@ describe('Free learning', () => {
 
   /* ── 17. RTL ──────────────────────────────────────────────────────────────────────────────── */
 
-  it('the hub and the Home card use direction-aware layout (no hard-coded left/right)', () => {
-    for (const f of ['./FreeLearning.tsx', '../home/Home.tsx']) {
+  it('the hub and the Home cards use direction-aware layout (no hard-coded left/right)', () => {
+    for (const f of ['./FreeLearning.tsx', '../home/Home.tsx', '../../shared/ui/ChoiceCard.tsx']) {
       const text = src(f);
       expect(text, f).not.toMatch(/marginLeft|marginRight|paddingLeft|paddingRight|textAlign: 'left'|textAlign: 'right'/);
     }
     const css = src('../../app/styles.css');
     const block = css.slice(css.indexOf('.free-grid'), css.indexOf('.ac-words .action-icon'));
     expect(block).not.toMatch(/margin-left|margin-right|padding-left|padding-right/);
-    expect(block).toContain('margin-inline-start');
+    const ux = css.slice(css.indexOf('UX simplification pass'), css.indexOf('end of the UX simplification pass'));
+    expect(ux.length).toBeGreaterThan(1000);
+    expect(ux).not.toMatch(/margin-left|margin-right|padding-left|padding-right|text-align: (left|right)|[^-]left:|[^-]right:/);
+    expect(ux).toContain('padding-inline-end');
     // Target-language text inside the hub's destinations keeps its own direction (unchanged components).
     expect(src('../core/SentenceFlashcards.tsx')).toMatch(/dir=/);
   });

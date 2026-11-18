@@ -535,8 +535,6 @@ input:focus, select:focus { outline: 2px solid var(--brand); border-color: trans
 .free-grid { margin-top: 4px; }
 .free-card { min-height: 132px; }
 .free-card .action-title { font-size: 1.08rem; }
-.free-entry { background: linear-gradient(160deg, var(--brand-soft), var(--card) 70%); }
-.free-entry .icon-dir { color: var(--ink-faint); margin-inline-start: auto; }
 .ac-words .action-icon { background: var(--good-soft); }
 .ac-phrases .action-icon { background: var(--accent-soft); }
 .ac-videos .action-icon { background: #dbeafe; }
@@ -718,13 +716,12 @@ input:focus, select:focus { outline: 2px solid var(--brand); border-color: trans
 
 /* ── Global language strip (UI lang + learning lang, always honest) ───── */
 .lang-strip {
-  width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px;
+  width: 100%; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 2px 18px;
   background: var(--card); border: 1px solid var(--line); box-shadow: none;
   border-radius: 999px; padding: 8px 14px; min-height: 0;
   font-size: 0.82rem; font-weight: 700; margin-bottom: 12px;
 }
 .lang-strip .dim { font-weight: 600; }
-.lang-strip-sep { color: var(--ink-faint); }
 .lang-strip-globe { margin-inline-start: 2px; opacity: 0.65; }
 
 /* ── Core (practical phrases) ─────────────────────────────────────────── */
@@ -1132,7 +1129,7 @@ input:focus, select:focus { outline: 2px solid var(--brand); border-color: trans
 .app-nav.is-bar-hidden { display: none; }
 .nav-label { line-height: 1.1; }
 .nav-item:focus-visible, .back-btn:focus-visible, .mcard:focus-visible, .jstep:focus-visible,
-.queue-row:focus-visible, .mode-card:focus-visible, .link-row:focus-visible, .tab:focus-visible {
+.mode-card:focus-visible, .link-row:focus-visible, .tab:focus-visible {
   outline: 2px solid var(--brand); outline-offset: 2px;
 }
 @media (min-width: 1100px) {
@@ -1234,20 +1231,7 @@ input:focus, select:focus { outline: 2px solid var(--brand); border-color: trans
 .ring-caption { font-size: 0.74rem; color: var(--ink-dim); font-weight: 600; margin-top: 2px; }
 .progress-ring-center .icon { color: var(--brand); margin-top: 4px; opacity: 0.75; }
 
-/* ── Home ─────────────────────────────────────────────────────────────── */
-.home-grid { display: grid; gap: 14px; grid-template-columns: minmax(0, 1fr); }
-.home-grid > .card { margin-bottom: 0; }
-@media (min-width: 768px) {
-  .home-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
-  .home-grid > .span-2 { grid-column: 1 / -1; }
-}
-@media (min-width: 1100px) {
-  .home-grid { grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 20px; }
-  .home-grid > .next-card { grid-column: span 7; order: -1; }
-  .home-grid > .readiness-card { grid-column: span 5; }
-  .home-grid > .quick-card { grid-column: span 6; }
-  .home-grid > .span-2, .home-grid > .quick-card.span-2 { grid-column: 1 / -1; }
-}
+/* ── Travel readiness detail ──────────────────────────────────────────── */
 .readiness-card { display: flex; align-items: center; gap: 18px; text-align: start; width: 100%; }
 /* The ring trails the text (inline-end) on a row; on a narrow phone it still fits beside it. */
 .readiness-card .progress-ring { order: 2; }
@@ -1260,31 +1244,8 @@ input:focus, select:focus { outline: 2px solid var(--brand); border-color: trans
 .stat-row b { color: var(--ink); font-weight: 800; }
 .stat-row .icon { color: var(--brand); }
 .stat-row.good .icon { color: var(--good); }
-.next-card { display: flex; flex-direction: column; gap: 12px; }
-.next-head { display: flex; align-items: center; gap: 14px; }
-.next-title { font-size: 1.45rem; font-weight: 800; letter-spacing: -0.01em; overflow-wrap: anywhere; }
-.quick-card { display: flex; flex-direction: column; gap: 12px; }
-.quick-card.listen { background: linear-gradient(160deg, var(--good-soft), var(--card) 70%); }
-.quick-head { display: flex; align-items: flex-start; gap: 14px; }
-.quick-head h2 { font-size: 1.12rem; }
-.quick-card button { margin-top: auto; }
-.encourage {
-  display: flex; align-items: center; justify-content: center; gap: 10px; text-align: center;
-  padding: 16px; border-radius: var(--r-lg); background: var(--card-sunken); border: 1px solid var(--line);
-  color: var(--ink-dim); font-weight: 600;
-}
-.encourage b { color: var(--brand); font-weight: 900; }
-.encourage .icon { color: var(--brand); }
 
-/* ── Learn: phases + mission cards ────────────────────────────────────── */
-.summary-card { display: flex; align-items: center; gap: 16px; width: 100%; text-align: start; }
-.summary-card .icon-dir { color: var(--ink-faint); margin-inline-start: auto; }
-.phase { margin-top: 20px; }
-.phase-head { display: flex; align-items: center; gap: 12px; margin: 0 2px 10px; }
-.phase-title { font-size: 1.15rem; font-weight: 800; flex: 1; min-width: 0; }
-.phase-count { color: var(--ink-dim); font-size: 0.86rem; font-weight: 600; white-space: nowrap; }
-/* The Foundations entry at the top of Phase 1: a card like the missions', clearly a control. */
-.foundation-entry { margin: 0 0 10px; min-height: 72px; }
+/* ── Situations: the mission cards ────────────────────────────────────── */
 .mission-grid { display: grid; gap: 10px; grid-template-columns: minmax(0, 1fr); }
 @media (min-width: 768px) { .mission-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; } }
 @media (min-width: 1100px) { .mission-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; } }
@@ -1341,31 +1302,10 @@ div.jstep { box-shadow: none; border-color: var(--line); }
 .phase-steps .sep { width: 18px; height: 2px; border-radius: 2px; background: var(--line); }
 
 /* ── Listen ───────────────────────────────────────────────────────────── */
-/* The Listen module: tabs are the header of ONE card, the panel is its body; inner cards sit flat. */
-.listen-module { padding: 10px 10px 12px; }
-.listen-tabs { margin: 0 0 10px; box-shadow: none; background: var(--card-sunken); border-radius: 999px; }
+/* The shared Parrot panel (the Core words player): its entry animation, inner cards flat. */
 .listen-panel { display: flex; flex-direction: column; gap: 12px; animation: fadeUp 0.28s cubic-bezier(0.22, 1, 0.36, 1); }
-.listen-panel > .card, .listen-panel .listen-layout > .card { box-shadow: none; border: 1px solid var(--line); margin-bottom: 0; }
-.listen-panel .story-card { padding: 10px; }
-.listen-layout { display: grid; gap: 14px; grid-template-columns: minmax(0, 1fr); align-items: start; }
-.listen-layout > .card { margin-bottom: 0; }
-@media (min-width: 1100px) {
-  .listen-layout { grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); gap: 20px; }
-  .listen-layout > .now-card { order: -1; }
-}
-.queue-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; margin-bottom: 10px; }
-.queue-list { display: flex; flex-direction: column; gap: 6px; max-height: 268px; overflow-y: auto; padding: 2px; }
-@media (min-width: 1100px) { .queue-list { max-height: 440px; } }
-.queue-row {
-  width: 100%; display: flex; align-items: center; gap: 12px; text-align: start;
-  min-height: 56px; padding: 8px 10px; border-radius: var(--r-md);
-  background: transparent; box-shadow: none; border: 1px solid var(--line);
-}
-.queue-row .icon-tile { width: 38px; height: 38px; border-radius: 11px; font-size: 1.15rem; }
-.queue-row-num { width: 26px; text-align: center; color: var(--ink-faint); font-weight: 800; font-size: 0.85rem; flex-shrink: 0; }
-.queue-row.active { background: var(--brand-soft); border-color: transparent; }
-.queue-row.active .link-row-title, .queue-row.active .queue-row-num { color: var(--brand-ink); }
-.queue-row .icon { color: var(--brand); }
+.listen-panel > .card { box-shadow: none; border: 1px solid var(--line); margin-bottom: 0; }
+/* The Listening hub's player (Listen → a mode → a topic): the line, the transport, the options. */
 .now-card { display: flex; flex-direction: column; gap: 14px; text-align: center; }
 .now-meta { color: var(--ink-dim); font-size: 0.86rem; font-weight: 600; }
 .now-target { font-size: 1.8rem; font-weight: 800; line-height: 1.25; letter-spacing: -0.01em; overflow-wrap: anywhere; }
@@ -1389,19 +1329,6 @@ div.jstep { box-shadow: none; border-color: var(--line); }
 .mode-card span { font-size: 0.72rem; color: var(--ink-dim); line-height: 1.25; }
 .mode-card.active { border-color: var(--brand); background: var(--brand-soft); }
 .mode-card.active b { color: var(--brand-ink); }
-/* The one visual entry to Stories: a real cover beside a short description. */
-.story-card { display: flex; align-items: stretch; gap: 16px; padding: 14px; }
-.story-card-cover {
-  flex: 0 0 38%; max-width: 220px; min-height: 0; padding: 0; overflow: hidden;
-  border-radius: var(--r-md); background: var(--card-sunken); box-shadow: none;
-}
-.story-card-cover img, .story-card-cover .story-img-fallback { display: block; width: 100%; height: 100%; min-height: 132px; object-fit: cover; }
-.story-card-body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; justify-content: center; }
-.story-card-body .eyebrow { margin-bottom: 2px; font-size: 0.82rem; }
-.story-card-title { font-size: 1.2rem; font-weight: 800; line-height: 1.25; overflow-wrap: anywhere; text-align: start; }
-.story-card-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 4px 10px; margin-top: 8px; }
-.story-card-actions .btn-primary { width: auto; min-height: 46px; padding: 10px 18px; font-size: 0.95rem; }
-@media (min-width: 1100px) { .story-card-cover { flex-basis: 220px; } .story-card { padding: 16px; gap: 22px; } }
 
 /* A two-state switch that reads as on/off (not as one more value in a numeric scale). */
 .toggle-pill {
@@ -1446,10 +1373,6 @@ div.jstep { box-shadow: none; border-color: var(--line); }
   .screen-wide .screen-scroll { padding-bottom: 64px; }
 }
 
-/* Shown only where there is room for it (desktop). */
-.only-desktop { display: none; }
-@media (min-width: 1100px) { .only-desktop { display: block; } }
-.next-title { display: block; }
 
 /* ── Active-practice engines (Quick Reply · Visual Match · Swap It · Mini Map) ──────────────── */
 .pgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; width: 100%; }
@@ -1633,8 +1556,6 @@ div.jstep { box-shadow: none; border-color: var(--line); }
 .victory-buddy .cmp-bubble[data-voice='thought']::before { inset-inline-start: calc(50% - 4px); bottom: -12px; }
 .victory-buddy .cmp-bubble[data-voice='thought']::after { inset-inline-start: calc(50% + 6px); bottom: -20px; }
 
-/* Home: the buddy peeks over the next-step card */
-.next-card { position: relative; }
 
 /* video: the clip is the screen, with a READY poster until its first frame is there */
 .video-step { display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center; width: 100%; }
@@ -1859,6 +1780,87 @@ div.jstep { box-shadow: none; border-color: var(--line); }
 /* Mission 19: full landscape context, with exact transport data still in UI. */
 .list-row:has(> .prime-img[src*="/images/mission19/"]) { flex-wrap: wrap; }
 .prime-img.is-scene[src*="/images/mission19/"] { flex-basis: 100%; width: 100%; height: auto; }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   UX simplification pass — every main screen answers "where am I?" and
+   "what can I do here?" in about two seconds: a title, at most one short
+   line, then the choices. Same tokens, cards and mascot; logical properties
+   only, so every rule mirrors in RTL.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Choice cards: the large, obviously tappable ways in ─────────────────
+   Home's four ways to learn, Basic words' fundamentals, the Listening hub's
+   four modes. Whole-card touch target, icon + strong title + one short line
+   + a chevron along the reading direction. One column on phones, two from
+   tablets up. */
+.choice-list { display: grid; gap: 12px; grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 768px) { .choice-list { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; } }
+.choice-card {
+  width: 100%; display: flex; align-items: center; gap: 14px; text-align: start;
+  min-height: 84px; padding: 14px 16px;
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--r-lg); box-shadow: var(--shadow-card);
+}
+.choice-icon {
+  width: 56px; height: 56px; border-radius: 17px; flex-shrink: 0;
+  display: grid; place-items: center; font-size: 1.8rem; line-height: 1; background: var(--brand-soft);
+}
+.choice-card.tone-accent .choice-icon { background: var(--accent-soft); }
+.choice-card.tone-good .choice-icon { background: var(--good-soft); }
+.choice-card.tone-warn .choice-icon { background: var(--warn-soft); }
+.choice-body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+.choice-title { font-weight: 800; font-size: 1.14rem; line-height: 1.25; color: var(--ink); overflow-wrap: anywhere; }
+.choice-sub { font-size: 0.86rem; line-height: 1.35; color: var(--ink-dim); overflow-wrap: anywhere; }
+.choice-card .icon-dir { color: var(--ink-faint); }
+.choice-card:focus-visible { outline: 3px solid var(--brand); outline-offset: 2px; }
+
+/* ── Home: the language row, ONE progress, the four choices ──────────── */
+/* Sized so all four choices sit in the first screen of a 360×740 phone, clear of the floating
+   Daily Goal above the bottom bar (cards stay ≥ 76px tall). */
+.home-screen .brand-top { padding-bottom: 6px; }
+.home-screen .lang-strip { margin-bottom: 10px; }
+.home-screen .choice-list { gap: 10px; }
+.home-screen .choice-card { min-height: 76px; padding-block: 12px; }
+.home-progress {
+  display: flex; align-items: center; gap: 14px; margin-bottom: 12px;
+  padding: 6px 18px; padding-inline-end: 8px;
+}
+.home-progress-text { display: inline-flex; align-items: baseline; gap: 6px; font-weight: 700; color: var(--ink-dim); white-space: nowrap; }
+.home-progress-value { font-size: 1.45rem; font-weight: 900; color: var(--ink); letter-spacing: -0.02em; }
+.home-progress-track { flex: 1; min-width: 40px; }
+.home-progress .progress-fill { display: block; height: 100%; }
+
+/* ── Situations: how far am I, then the situations ───────────────────── */
+.situations-progress { padding: 14px 18px 16px; margin-bottom: 4px; }
+.situations-progress-text { font-weight: 800; font-size: 1.05rem; margin-bottom: 10px; }
+.situations-progress .progress-track { display: block; }
+.situations-progress .progress-fill { display: block; height: 100%; }
+.situation-list { margin-top: 10px; }
+
+/* ── Listening hub: content lists + the player ───────────────────────── */
+.topic-list { display: flex; flex-direction: column; gap: 10px; }
+.topic-row { margin-bottom: 0; min-height: 68px; padding: 10px 14px; gap: 12px; }
+.topic-row .icon-tile { width: 42px; height: 42px; border-radius: 12px; font-size: 1.25rem; }
+.topic-num { width: 22px; flex-shrink: 0; text-align: center; color: var(--ink-faint); font-weight: 800; font-size: 0.85rem; }
+.topic-play {
+  width: 36px; height: 36px; border-radius: 999px; flex-shrink: 0;
+  display: grid; place-items: center; background: var(--brand-soft); color: var(--brand);
+}
+.topic-row .badge { flex-shrink: 0; }
+.story-thumb { width: 54px; height: 54px; border-radius: 14px; flex-shrink: 0; object-fit: cover; background: var(--card-sunken); }
+.listen-player { max-width: 680px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
+.listen-player > .card { margin-bottom: 0; }
+
+/* ── Situation videos in a row ───────────────────────────────────────── */
+/* The clip leaves room for the title above it and the two-row control bar below it. */
+.videos-stage { display: flex; flex-direction: column; justify-content: center; gap: 12px; }
+.videos-stage .video-frame { --video-chrome: 330px; }
+.videos-now { text-align: center; font-weight: 800; font-size: 1.05rem; overflow-wrap: anywhere; }
+.videos-controls { display: flex; align-items: center; justify-content: center; gap: 18px; }
+.videos-controls .parrot-step { display: grid; place-items: center; }
+.videos-controls .parrot-step:disabled { opacity: 0.35; }
+.videos-controls .icon-prev { transform: scaleX(-1); }
+.videos-pos { min-width: 72px; text-align: center; color: var(--ink-dim); font-weight: 700; font-size: 0.9rem; }
+/* ── end of the UX simplification pass ── */
 
 /* Mission 18: presentation only. Other checkpoint plans keep their existing layout. */
 .checkpoint-content { display: contents; }

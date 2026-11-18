@@ -6,7 +6,7 @@ import { Icon, type IconName } from './Icon.js';
 import { tap } from './haptics.js';
 
 /**
- * READY's primary navigation — Home · Learn · Listen · Profile. ONE component and ONE model
+ * READY's primary navigation — Home · Situations · Listen · Profile. ONE component and ONE model
  * (`app/nav.ts`) for every screen size: a floating bottom bar on phones/tablets, a side rail on
  * desktop (the rail sits on the inline-start edge, so it is on the right in Hebrew and on the left
  * in English). Only CSS differs between the two presentations.
@@ -25,6 +25,7 @@ export function AppNav({ barHidden }: { barHidden: boolean }) {
   const view = useAppStore((s) => s.view);
   const navigate = useAppStore((s) => s.navigate);
   const setCoreCategory = useAppStore((s) => s.setCoreCategory);
+  const setListenPage = useAppStore((s) => s.setListenPage);
   const exitMission = useBootcampStore((s) => s.exit);
   const current = navTabOf(view);
 
@@ -34,6 +35,7 @@ export function AppNav({ barHidden }: { barHidden: boolean }) {
     // mid-mission and never deep inside a secondary screen.
     exitMission();
     setCoreCategory(null);
+    setListenPage(null); // Listen lands on its four modes, never inside a player
     navigate(tab);
   };
 

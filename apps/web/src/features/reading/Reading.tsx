@@ -48,24 +48,31 @@ export function Reading() {
   const completed = useReadingStore((s) => s.completedCount());
   const streak = useReadingStore((s) => s.streak.count);
 
-  // Opened from Listen's story card with a specific story: load its collection and go straight in.
-  // The request is captured once on arrival and cleared from the store, so it never replays.
+  // Opened by another screen (the Listening hub's stories, Games & stories): a story to go straight
+  // into, and where Back returns. Captured once on arrival and cleared from the store, so it never replays.
   const [requested] = useState(() => useAppStore.getState().readingIntent);
+  const [pending, setPending] = useState(Boolean(requested?.story));
   useEffect(() => {
     if (!requested) return;
     useAppStore.getState().setReadingIntent(null);
+    if (!requested.story) return;
     let live = true;
     void Promise.all(READING_COLLECTIONS.map((c) => c.load())).then((cols) => {
       if (!live) return;
       for (const col of cols) {
-        const hit = col.stories.find((st) => st.id === requested);
-        if (hit) { setCollection(col); setStory(hit); return; }
+        const hit = col.stories.find((st) => st.id === requested.story);
+        if (hit) { setCollection(col); setStory(hit); break; }
       }
-    }).catch((err) => console.warn('[reading] story unavailable', err));
+      setPending(false);
+    }).catch((err) => { console.warn('[reading] story unavailable', err); if (live) setPending(false); });
     return () => { live = false; };
   }, [requested]);
+  const backTo = requested?.returnTo ?? 'listen';
+  // A story opened from elsewhere returns there when the learner leaves it (its list lives there).
+  const leaveStory = (): void => { if (requested?.story) useAppStore.getState().navigate(backTo); else setStory(null); };
 
-  if (story) return <StoryReader story={story} siblings={collection?.stories ?? [story]} onNavigate={(st) => { tap(); setStory(st); }} onExit={() => setStory(null)} />;
+  if (story) return <StoryReader story={story} siblings={collection?.stories ?? [story]} onNavigate={(st) => { tap(); setStory(st); }} onExit={leaveStory} autoPlay={Boolean(requested?.play)} />;
+  if (pending) return <div className="screen" aria-busy="true"><p className="dim center" style={{ padding: '48px 0' }}>{t('listenStoriesLoading')}</p></div>;
 
   const openCollection = async (id: string): Promise<void> => {
     const meta = READING_COLLECTIONS.find((c) => c.id === id);
@@ -97,7 +104,7 @@ export function Reading() {
   // ── Collection browse (top level) — a warm, image-first landing ──
   return (
     <div className="screen">
-      <TopBar title={t('readingTitle')} backTo="listen" />
+      <TopBar title={t('readingTitle')} backTo={backTo} />
       <div className="screen-scroll">
         <p className="dim small" style={{ marginBottom: 10 }}>{t('readingHeroSub')}</p>
         <div className="reading-stats" style={{ marginBottom: 4 }}>
@@ -168,7 +175,13 @@ function StoryCard({ story, rl, onOpen }: { story: Story; rl: ReadingLang; onOpe
 }
 
 /** The full-screen story reader: modes, per-sentence audio (shared engine), Universal Tap, transport. */
-function StoryReader({ story, siblings, onNavigate, onExit }: { story: Story; /** the stories of the open collection, for previous / next */ siblings: Story[]; onNavigate: (story: Story) => void; onExit: () => void }) {
+function StoryReader({ story, siblings, onNavigate, onExit, autoPlay = false }: {
+  story: Story;
+  /** the stories of the open collection, for previous / next */ siblings: Story[];
+  onNavigate: (story: Story) => void;
+  onExit: () => void;
+  /** start reading aloud on arrival (a story chosen in the Listening hub) */ autoPlay?: boolean;
+}) {
   const rl = useReadingLang();
   const uiLang = useAppStore((s) => s.uiLang);
   const mode = useReadingStore((s) => s.mode);
@@ -207,6 +220,9 @@ function StoryReader({ story, siblings, onNavigate, onExit }: { story: Story; /*
     { id: 'target-tr', key: 'readingPlayTargetTr' },
     { id: 'tr-target', key: 'readingPlayTrTarget' },
   ] as const;
+
+  // Chosen to be HEARD (the Listening hub): the story starts reading itself aloud right away.
+  useEffect(() => { if (autoPlay) pb.play(); }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Persist the read position for "resume reading" (store guards forward-only).
   useEffect(() => { savePosition(story.id, current); }, [current, story.id, savePosition]);

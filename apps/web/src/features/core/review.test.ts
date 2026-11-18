@@ -52,14 +52,17 @@ describe('pickReviewCards — the few sentences worth a refresh', () => {
   });
 });
 
-describe('Home does not show an empty Quick Review', () => {
-  it('with nothing practiced there is nothing to review — and Home renders no review card', async () => {
+describe('Quick Review: its door is in Games & stories, and never an empty card', () => {
+  it('with nothing practiced there is nothing to review — and the hub renders no review card', async () => {
     const { readFileSync } = await import('node:fs');
     expect(pickReviewCards(deck, [], 5)).toEqual([]);
-    const home = readFileSync(new URL('../home/Home.tsx', import.meta.url), 'utf8');
-    const review = home.slice(home.indexOf('Quick review:'), home.indexOf('Quick listen */'));
-    expect(review).toContain('{reviewCount > 0 && (');
-    expect(review).not.toContain('disabled=');
-    expect(home).not.toContain("t('quickReviewEmpty')"); // no placeholder card on Home either
+    const free = readFileSync(new URL('../free/FreeLearning.tsx', import.meta.url), 'utf8');
+    expect(free).toContain("...(reviewCount > 0 ? [{ id: 'review'");
+    expect(free).toContain("go: () => app.navigate('review')");
+    expect(free).not.toContain('disabled=');
+    expect(free).not.toContain("t('quickReviewEmpty')"); // no placeholder card either
+    // Its Back returns to the hub it was opened from; Home holds the four ways to learn and nothing else.
+    expect(readFileSync(new URL('./QuickReview.tsx', import.meta.url), 'utf8')).toContain("navigate('free')");
+    expect(readFileSync(new URL('../home/Home.tsx', import.meta.url), 'utf8')).not.toMatch(/quickReview|'review'/);
   });
 });

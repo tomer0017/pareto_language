@@ -19,6 +19,7 @@ import { PlanSettings } from '../features/plan/PlanSettings.js';
 import { LanguageSelect } from '../features/languages/LanguageSelect.js';
 import { Bootcamp } from '../features/bootcamp/Bootcamp.js';
 import { Home } from '../features/home/Home.js';
+import { BasicWords } from '../features/basics/BasicWords.js';
 import { FreeLearning } from '../features/free/FreeLearning.js';
 import { Core } from '../features/core/Core.js';
 import { Profile } from '../features/profile/Profile.js';
@@ -36,8 +37,8 @@ import { DailyGoalBoundary, DailyGoalTimer } from '../features/dailyGoal/DailyGo
 
 // LEGACY content-pack screens (the pre-Bootcamp trip-plan product: daily Mission, Words, Phrases,
 // Situations, Practice, Session, Emergency, Plan). No shipped learning language carries a content
-// pack, and nothing in the Home / Learn / Listen / Profile journey links to them — the missions
-// under Learn are the ONE route to the curriculum. They stay only so the content-pack systems
+// pack, and nothing in the Home / Situations / Listen / Profile journey links to them — the 30
+// situations (the `bootcamp` view) are the ONE route to the curriculum. They stay only so the content-pack systems
 // keep compiling; if one is ever reached without a pack it shows an honest notice and a way back
 // to Learn instead of crashing on a null pack.
 const PACK_GATED: View[] = ['mission', 'words', 'phrases', 'situations', 'practice', 'session', 'emergency', 'plan'];
@@ -66,6 +67,7 @@ const showDebug = resolveDebugOverlay(import.meta.env.DEV);
 const SCREENS: Partial<Record<View, { feature: string; el: () => JSX.Element | null }>> = {
   onboarding: { feature: 'Onboarding', el: Onboarding },
   home: { feature: 'Home', el: Home },
+  basics: { feature: 'BasicWords', el: BasicWords },
   free: { feature: 'FreeLearning', el: FreeLearning },
   listen: { feature: 'Listen', el: Listen },
   readiness: { feature: 'Readiness', el: Readiness },

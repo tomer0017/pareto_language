@@ -7,7 +7,7 @@ import { ART_POSES, COMPANION_ART, artPath, artUrl, preloadStageArt, stageArtUrl
 import { GAME_INTRO, MISSION_INTRO, coachFor } from './companionCoach.js';
 import { COPY, STAGE_COPY } from './companionCopy.js';
 import { BASE_MOODS, MOOD_ANIMATION, MOOD_POSE, PARROT_MOODS, resolveMood } from './companionMood.js';
-import { presenceFor } from './companionCoach.js';
+import { presenceFor, presenceTier } from './companionCoach.js';
 import { setUiLangDict } from '../../shared/i18n/strings.js';
 import { learnedMaterial } from './companionLearned.js';
 import {
@@ -295,11 +295,27 @@ describe('moods — how the buddy feels, never written on screen', () => {
     for (const m of ['idle', 'resting', 'attentive', 'listening', 'curious'] as const) expect(pose(m)).toBe('idle');
     for (const s of STAGES) for (const m of ALL) expect(ART_POSES).toContain(pose(m, s));
   });
-  it('on the Route it waves hello — to a new learner and to one coming back — and rests when all is done', () => {
-    expect(presenceFor({ done: 0, resume: false, allDone: false })).toEqual({ line: COPY.presence.fresh, mood: 'greeting' });
-    expect(presenceFor({ done: 0, resume: true, allDone: false })).toEqual({ line: COPY.presence.resume, mood: 'greeting' });
-    expect(presenceFor({ done: 4, resume: false, allDone: false })).toEqual({ line: COPY.presence.next, mood: 'greeting' });
-    expect(presenceFor({ done: 30, resume: false, allDone: true })).toEqual({ line: COPY.presence.allDone, mood: 'resting' });
+  it('above the situations it says ONE progress-aware line: starting · 1–25% · 26–50% · 51–75% · 76–99% · all done', () => {
+    const total = BOOTCAMP_PLAN.length;
+    const at = (done: number) => presenceFor({ done, total });
+    expect(at(0)).toEqual({ line: COPY.presence.start, mood: 'greeting' });
+    for (const done of [1, 7]) expect(at(done), `${done}/${total}`).toEqual({ line: COPY.presence.early, mood: 'greeting' });   //  3% … 23%
+    for (const done of [8, 15]) expect(at(done), `${done}/${total}`).toEqual({ line: COPY.presence.base, mood: 'greeting' });   // 27% … 50%
+    for (const done of [16, 22]) expect(at(done), `${done}/${total}`).toEqual({ line: COPY.presence.many, mood: 'greeting' });  // 53% … 73%
+    for (const done of [23, 29]) expect(at(done), `${done}/${total}`).toEqual({ line: COPY.presence.almost, mood: 'greeting' }); // 77% … 97%
+    expect(at(total)).toEqual({ line: COPY.presence.allDone(total), mood: 'proud' });
+    // The boundaries are the brief's own (25 / 50 / 75 % belong to the lower band), on any plan length.
+    expect([presenceTier(1, 4), presenceTier(2, 4), presenceTier(3, 4), presenceTier(4, 4)]).toEqual(['early', 'base', 'many', 'allDone']);
+    expect(presenceTier(0, 0)).toBe('start');
+    // The brief's Hebrew copy, word for word, and short English equivalents; the count is the plan's.
+    expect(COPY.presence.start.he).toBe('איזה כיף שמתחילים! בוא נלמד את הסיטואציה הראשונה שלך.');
+    expect(COPY.presence.early.he).toBe('התחלה מעולה — ממשיכים!');
+    expect(COPY.presence.base.he).toBe('כבר יש לך בסיס טוב.');
+    expect(COPY.presence.many.he).toBe('אתה כבר מסתדר בהרבה סיטואציות.');
+    expect(COPY.presence.almost.he).toBe('כמעט מוכנים לטיול!');
+    expect(COPY.presence.allDone(total).he).toBe(`סיימת את כל ${total} הסיטואציות!`);
+    expect(COPY.presence.allDone(total).en).toBe(`You’ve finished all ${total} situations!`);
+    for (const tier of ['start', 'early', 'base', 'many', 'almost'] as const) expect(COPY.presence[tier].en!.length, tier).toBeLessThanOrEqual(60);
   });
 });
 
@@ -389,7 +405,7 @@ describe('companion store — per language, persisted, evolution fires once', ()
   /** The buddy on the Route, exactly as the Route renders it. */
   const card = (): string => {
     const a = active();
-    const presence = presenceFor({ done: bootcamp.useBootcampStore.getState().completedDays.length, resume: false, allDone: false });
+    const presence = presenceFor({ done: bootcamp.useBootcampStore.getState().completedDays.length, total: BOOTCAMP_PLAN.length });
     return renderToStaticMarkup(createElement(ui.CompanionPresenceView, { stage: a.stage, language: ui.languageLabel(a.lang), line: presence.line.en!, mood: presence.mood }));
   };
   /** What the app-shell host shows: the evolution, if one is owed for the active language. */
@@ -588,7 +604,8 @@ describe('companion store — per language, persisted, evolution fires once', ()
       expect(renderToStaticMarkup(createElement(ui.CompanionIntroView, { stage, line: 'x' })), 'mission intro').toContain(`s${stage}-hello.png`); // greets — never the pom-poms
       expect(renderToStaticMarkup(createElement(ui.CompanionPeekView, { stage })), 'home, beside the start button').toContain(`s${stage}-cheer.png`);
       expect(renderToStaticMarkup(createElement(ui.CompanionCoachView, { stage, line: 'x' })), 'explaining').toContain(`s${stage}-learning.png`);
-      expect(renderToStaticMarkup(createElement(ui.CompanionPresenceView, { stage, language: 'x', line: 'x', mood: 'resting' })), 'all done').toContain(`s${stage}-idle.png`);
+      expect(renderToStaticMarkup(createElement(ui.CompanionPresenceView, { stage, language: 'x', line: 'x', mood: 'proud' })), 'all done').toContain(`s${stage}-${MOOD_POSE[resolveMood(stage, 'proud')]}.png`);
+      expect(renderToStaticMarkup(createElement(ui.CompanionPresenceView, { stage, language: 'x', line: 'x', compact: true })), 'compact, above the situations').toContain(`s${stage}-hello.png`);
     }
     const intro = renderToStaticMarkup(createElement(ui.CompanionIntroView, { stage: 1, line: 'x' }));
     expect(intro.match(/<img /g)).toHaveLength(1);

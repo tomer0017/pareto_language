@@ -94,7 +94,9 @@ describe('the resolver: one answer to "is there a video, and where?"', () => {
     // Every call site passes the app's learning language and nothing else.
     const player = readFileSync(join(SRC, 'features/bootcamp/Bootcamp.tsx'), 'utf8');
     expect(player.match(/missionVideo\(useAppStore\.getState\(\)\.learningLang, day\.day\)/g)).toHaveLength(3);
-    expect(readFileSync(join(SRC, 'features/videos/Videos.tsx'), 'utf8')).toContain('allVideos(app.learningLang)');
+    const videos = readFileSync(join(SRC, 'features/videos/Videos.tsx'), 'utf8');
+    expect(videos).toContain('const learningLang = useAppStore((s) => s.learningLang);');
+    expect(videos).toContain('missionVideos(learningLang)');
     for (const f of ['features/bootcamp/Bootcamp.tsx', 'features/videos/Videos.tsx', 'features/videos/missionVideo.ts']) expect(readFileSync(join(SRC, f), 'utf8'), f).not.toMatch(/uiLang[^\n]*[vV]ideo|[vV]ideo[^\n]*uiLang/);
   });
   it('the URL respects the site base (GitHub Pages serves the app under /pareto_language/)', () => {

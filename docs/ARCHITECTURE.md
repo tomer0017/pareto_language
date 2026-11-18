@@ -68,12 +68,15 @@ stable across re-renders. **Narrative dialogue order is never shuffled** — onl
 
 ## Product IA & responsive shell
 
-- **Destinations** — `app/nav.ts` is the single navigation model: `PRIMARY_TABS` = Home · Path
-  (`bootcamp` view; labelled "מסלול" / "Path") · Listen · Profile; `navTabOf(view)` maps every secondary screen to the
-  destination that stays highlighted (readiness/review → Home, core/zerostart → Learn,
+- **Destinations** — `app/nav.ts` is the single navigation model: `PRIMARY_TABS` = Home · Situations
+  (`bootcamp` view; labelled "סיטואציות" / "Situations") · Listen · Profile; `navTabOf(view)` maps every secondary screen to the
+  destination that stays highlighted (readiness/review/basics/free/core/zerostart → Home, companion → Situations,
   reading/videos → Listen, languages → Profile); `shouldShowNav` decides the phone/tablet bottom
   bar (hidden in focused flows); `hasAppShell` decides whether the shell + desktop rail exist.
-  `shared/ui/AppNav` renders it once — CSS alone turns the bar into a rail at ≥ 1100px.
+  `shared/ui/AppNav` renders it once — CSS alone turns the bar into a rail at ≥ 1100px. A tab tap leaves any
+  open mission, clears the library category and resets the Listening hub (`listenPage = null`), so a tab always
+  lands on its area's first screen. Every primary choice (Home's four ways in, Basic words, the hub's four
+  modes) is the one shared `shared/ui/ChoiceCard`.
 - **Layout tokens (`app/styles.css`)** — `--page-max` (browse pages, `.screen.screen-wide`),
   `--focus-max` (focused flows, plain `.screen`; also the width of the fixed `.action-zone`,
   readers and transports), `--rail-w` and `--gutter`, each stepped at 768px and 1100px.
@@ -89,10 +92,14 @@ stable across re-renders. **Narrative dialogue order is never shuffled** — onl
   unchanged step list into Learn / Practice; `bootcampStore.enterPractice(at?)` enters the flow at a
   chosen step and makes it the resume point. No pedagogy-engine change.
 - **Listen** — `features/listen/`: `playlists.ts` (pure; sentences via `core/phraseGroups.ts`,
-  dialogues via `transcript.ts`, stories via `reading/readingCore.ts`), `listenMode.ts` (modes →
-  the engine's speak-order override), `Listen.tsx` (queue + now playing + the story card). Playback
-  is the shared `useParrotPlayback` in the `listen` scope. Quick Listen = the engine's sleep timer
-  (10 min), cleared when it ends or the screen is left.
+  dialogues via `transcript.ts`, stories via `reading/readingCore.ts`; `resumeTopicId` / `startIndexFor`
+  decide which topic is "continue" and where a chosen topic starts), `listenMode.ts` (modes → the engine's
+  speak-order override), `Listen.tsx` (the hub: `ListenLanding` four modes → `StoriesPage` / `TopicsPage` →
+  `ListenPlayer`, driven by the app store's `listenPage`). Stories open in `Reading` via
+  `readingIntent { story, returnTo, play }` (the reader autoplays and returns); the fourth mode is the `videos`
+  view. Playback is the shared `useParrotPlayback` in the `listen` scope (bookmarks `listen:phrases:<lang>` /
+  `listen:dialogues:<lang>`, unchanged). Quick Listen = the engine's sleep timer (10 min), cleared when it ends
+  or the screen is left.
 - **Sentence catalog** — `features/core/phraseGroups.ts` `sentenceCatalog(lang)` is the one source
   for the sentence library, the flashcard deck, Listen and every "N core sentences" count. One id
   never means two sentences (`sentenceIdConflicts` must be empty — tested); one wording is one
@@ -222,7 +229,7 @@ The 🛟 "building blocks" surface — a **data-driven VIEW over the Core Corpus
 | `FoundationHint.tsx` | **Smart Detection**: the non-blocking "Missing Foundation Brick" nudge for the first unviewed building block in the current mission text (Learn now / Dismiss). |
 | `foundationProgress.ts` (pure, tested) | Per-category + overall completion from the viewed set — motivational only, never gates. |
 | `missionFoundationWords` + store `session` | The mission "Learn now" **guided session** (Word X of N, progress, Prev/Next/Back to Mission) over exactly the mission's Foundation words. |
-| `FoundationOnboarding.tsx` / `TapCoachmark.tsx` / `foundationCoach.ts` | One-time discovery: first-arrival intro dialog (+ FAB pulse) and the first tappable-word tooltip, each shown once and persisted. |
+| `TapCoachmark.tsx` / `foundationCoach.ts` | One-time discovery: the first tappable-word tooltip, shown once and persisted. (The first-arrival Foundations dialog on the Situations screen was removed on 2026-11-18: the Foundations now live under Basic words.) |
 
 Reusable primitives: `shared/ui/Sheet.tsx` (bottom sheet) and `shared/ui/SpeakerButton.tsx` (one
 tap-to-hear button). There is exactly ONE word sheet and ONE tap entry point app-wide — dialogue,
@@ -242,8 +249,8 @@ same survival concepts, never a parallel engine. Data-driven and split into laye
 | `zeroStartStore.ts` | Per-language persisted progress (`ready.zerostart.v1`) + saved learner name; "current step" is derived, never stored. |
 | `ZeroStart.tsx` | The renderer (hub → lesson steps → module outcome → graduation). Audio via the shared `tts` engine; learning a chunk calls `foundationStore.markViewed(conceptId)` (idempotent progress sync). Graduates into the first real Bootcamp mission (never auto-completes it). |
 
-Routed as the `zerostart` view (not a pilot tab, so the bottom nav auto-hides during lessons). Home
-shows the entry card + a first-use recommendation for a new learner in a supported language.
+Routed as the `zerostart` view (not a pilot tab, so the bottom nav auto-hides during lessons), opened from
+Basic words (`features/basics`), whose screen its Back returns to.
 
 ## Audio preference ownership
 
@@ -645,3 +652,28 @@ the free corner beside a centred CTA on wide screens. z 85: above learning surfa
 Tests: `dailyGoal.test.ts` (46). Real-Chrome QA (CDP, real taps / tabs / reloads, accelerated clock): a 44-check
 click-through of every behaviour and a 54-screen placement matrix (360 / 390 / 430 × HE / EN) — never on a bar,
 nothing under it at full scroll; at rest, scrolling content passes beneath it as it does beneath the fixed bars.
+
+## UX simplification pass — screens and navigation (2026-11-18)
+
+- **Home** (`features/home/Home.tsx`) renders `LangStrip`, ONE progress (the `useTravelReadiness` pct + a 52 px
+  `CompanionPeek inline`) and four `ChoiceCard`s → `basics` / `bootcamp` (after `exit()` of any open mission) /
+  `free` / `listen` (after `setListenPage(null)`). It reads no other store.
+- **Basic words** (`features/basics/BasicWords.tsx`, view `basics`, nav parent Home, bottom bar shown): the
+  Foundation sheet (`foundationStore.openSheet`), the library (`setCoreCategory` + `setCoreIntent({ returnTo:
+  'basics' })` — `CoreIntent.mode` is now optional: no mode = the library's own menu), Zero Start.
+- **Situations** (`features/bootcamp/Learn.tsx`): `PageHeader`, a `role="progressbar"` (ready / total),
+  `CompanionPresence compact` (tiers from the pure `presenceTier` / `presenceFor({ done, total })` in
+  `companionCoach.ts`), the 30 `MissionCard`s. No phase grouping; no Foundation / Zero Start / library entries.
+- **App store** (`shared/stores/appStore.ts`): `listenIntent` was replaced by `listenPage: ListenPage | null`
+  (`{ mode: 'stories' | 'situations' | 'sentences'; play: topicId | null; returnTo?: View }`); `readingIntent` is a
+  `ReadingIntent { story?, returnTo, play? }` (Back targets for Reading; `play` autoplays the story reader). Both
+  navigational, never persisted.
+- **Videos** (`features/videos/Videos.tsx`): `missionVideos(learningLang)` in journey order, one index, a set of
+  failed days; `stepVideo(pool, from, dir, failed)` (pure) picks the next playable clip; the shared
+  `VideoPlayer` (`Bootcamp.tsx`) gained `autoPlay` (play on each new `src`, same element) and `onFailed`.
+- **Copy**: `bootcampTab` / `learnTitle` = סיטואציות / Situations, `listenTab` / `listenTitle` = האזנה (HE),
+  `stripAppPrefix` / `stripLearnPrefix` = "אני דובר:" / "אני לומד:"; new keys for Basic words, the Home choices,
+  the Situations progress and the hub's modes; keys made dead by the change were removed.
+- **Tests**: `app/uxSimplification.test.ts` renders the real screens and follows taps by wrapping `ChoiceCard` /
+  `PageHeader` (handlers recorded, markup unchanged); a static render reads a zustand store's initial state, so
+  the test sets state in both places (`put`).

@@ -79,11 +79,15 @@ export const COPY = {
   },
   /** The very first hello, before the first mission. */
   welcome: T('היי! אני החבר שלך למסע הזה.', 'Hi! I’m your buddy for this journey.'),
-  /** What the buddy says on the Route, by where the learner stands. */
+  /** What the buddy says above the situations: ONE short line from how far the learner has come
+   *  (situations completed ÷ the plan) — starting · 1–25% · 26–50% · 51–75% · 76–99% · all done. */
   presence: {
-    fresh: T('נעים מאוד. מתחילים?', 'Nice to meet you. Shall we start?'),
-    resume: T('טוב שחזרת! עצרנו באמצע — ממשיכים?', 'Good to see you! We stopped halfway — carry on?'),
-    next: T('טוב שחזרת! המשימה הבאה מחכה לנו.', 'Welcome back! The next mission is waiting for us.'),
-    allDone: T('עברנו את הכול. רוצה לחזור על משהו?', 'We have done it all. Fancy going over something?'),
+    start: T('איזה כיף שמתחילים! בוא נלמד את הסיטואציה הראשונה שלך.', 'So glad you’re starting! Let’s learn your first situation.'),
+    early: T('התחלה מעולה — ממשיכים!', 'Great start — keep going!'),
+    base: T('כבר יש לך בסיס טוב.', 'You already have a solid base.'),
+    many: T('אתה כבר מסתדר בהרבה סיטואציות.', 'You can already handle lots of situations.'),
+    almost: T('כמעט מוכנים לטיול!', 'Almost ready for your trip!'),
+    /** The count comes from the plan, never from copy. */
+    allDone: (total: number): LocalizedText => T(`סיימת את כל ${total} הסיטואציות!`, `You’ve finished all ${total} situations!`),
   },
 } as const;

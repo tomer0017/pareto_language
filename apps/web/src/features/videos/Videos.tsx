@@ -1,59 +1,78 @@
 import { useMemo, useState } from 'react';
 import { useAppStore } from '../../shared/stores/appStore.js';
 import { L, t } from '../../shared/i18n/strings.js';
-import { success, tap } from '../../shared/ui/haptics.js';
-import { useBootcampStore } from '../bootcamp/bootcampStore.js';
+import { tap } from '../../shared/ui/haptics.js';
+import { useBootcampStore, missionsFor } from '../bootcamp/bootcampStore.js';
 import { BackButton } from '../../shared/ui/PageHeader.js';
 import { Icon } from '../../shared/ui/Icon.js';
 import { VideoPlayer } from '../bootcamp/Bootcamp.js';
-import type { BootcampVideo } from '../bootcamp/types.js';
-import { pickOne } from '../../shared/util/shuffle.js';
+import { BOOTCAMP_PLAN } from '../bootcamp/plan.js';
+import { missionIcon } from '../bootcamp/missionFlow.js';
 import { missionVideos } from './missionVideo.js';
 
 /**
- * Videos — an experience, not a list (Task 2). Play a random available mission video; when it
- * ends (or the learner says so), ask "Did you understand everything?" → either load another random
- * video, or drop into the exact Mission Hub that owns this video (Practice / Transcript / Video,
- * unchanged). The videos are whatever exists for the ACTIVE learning language (the central resolver,
- * `missionVideo.ts`), so a language with no videos shows the honest empty state instead of leaking
- * another language's.
+ * Situation videos in a row — the Listening hub's fourth mode. Every situation that HAS a video in
+ * the learning language (the central resolver, `missionVideo.ts`, reads the build-time manifest, so a
+ * situation without a file is simply not in the list — nothing is probed, nothing is invented) plays
+ * in journey order, one after another: when a clip ends the next one starts by itself. Previous /
+ * next skip around; "practice this situation" opens the exact situation the clip belongs to.
+ *
+ * A clip that fails to load is skipped (safe-skip), never shown as a dead end; when the last clip
+ * ends there is one calm "watched them all" screen. A language with no videos says so honestly.
  */
-interface VideoEntry { day: number; video: BootcampVideo }
+export interface QueuedVideo { day: number; missionNumber: number }
 
-const allVideos = (lang: string): VideoEntry[] => missionVideos(lang).map(({ day, video }) => ({ day, video }));
-
-function pickRandom(pool: VideoEntry[], exclude: Set<number>): VideoEntry | null {
-  return pickOne(pool.filter((v) => !exclude.has(v.day))) ?? null;
+/** The next playable position after `from` in `dir`, skipping clips that failed; null past either end. */
+export function stepVideo<T extends QueuedVideo>(pool: readonly T[], from: number, dir: 1 | -1, failed: ReadonlySet<number>): number | null {
+  for (let i = from + dir; i >= 0 && i < pool.length; i += dir) if (!failed.has(pool[i]!.day)) return i;
+  return null;
 }
 
 export function Videos() {
-  const app = useAppStore();
-  const bc = useBootcampStore();
-  const pool = useMemo(() => allVideos(app.learningLang), [app.learningLang]);
-  const [watched, setWatched] = useState<Set<number>>(new Set());
-  const [current, setCurrent] = useState<VideoEntry | null>(() => pickRandom(pool, new Set()));
+  const learningLang = useAppStore((s) => s.learningLang);
+  const navigate = useAppStore((s) => s.navigate);
+  const startDay = useBootcampStore((s) => s.startDay);
+  const pool = useMemo(() => missionVideos(learningLang), [learningLang]);
+  const missions = useMemo(() => missionsFor(learningLang), [learningLang]);
+  const [index, setIndex] = useState(0);
+  const [failed, setFailed] = useState<Set<number>>(() => new Set());
+  const [finished, setFinished] = useState(false);
+  const current = finished ? undefined : pool[index];
 
-  const next = (): void => {
-    const nw = new Set(watched);
-    if (current) nw.add(current.day);
-    setWatched(nw);
-    setCurrent(pickRandom(pool, nw)); // null → the all-done empty state below
+  const back = (): void => navigate('listen');
+  const go = (dir: 1 | -1, skipped: ReadonlySet<number> = failed): void => {
+    const to = stepVideo(pool, index, dir, skipped);
+    if (to !== null) setIndex(to);
+    else if (dir === 1) setFinished(true); // past the last clip: the calm end
   };
-
+  // The clip could not be played: remember it and move on, as if it had ended.
+  const skip = (): void => {
+    if (!current) return;
+    const next = new Set(failed).add(current.day);
+    setFailed(next);
+    go(1, next);
+  };
+  const restart = (): void => {
+    tap();
+    const first = stepVideo(pool, -1, 1, failed);
+    if (first === null) return;
+    setIndex(first);
+    setFinished(false);
+  };
   const practice = (): void => {
     if (!current) return;
     tap();
-    bc.startDay(current.day); // opens the existing Mission Hub that owns this video
-    app.navigate('bootcamp');
+    startDay(current.day); // opens the Mission Hub that owns this video
+    navigate('bootcamp');
   };
 
-  // Empty state — no videos exist yet, or every available one has been watched this session.
+  // No video in this language — or every clip has been watched: one honest, calm screen.
   if (!current) {
-    const none = pool.length === 0;
+    const none = pool.length === 0 || failed.size >= pool.length;
     return (
       <div className="screen">
         <div className="topbar">
-          <BackButton onBack={() => app.navigate('listen')} />
+          <BackButton onBack={back} />
           <span className="chip">🎬 {t('videosTitle')}</span>
           <span style={{ width: 44 }} />
         </div>
@@ -65,28 +84,36 @@ export function Videos() {
           </div>
         </div>
         <div className="action-zone">
-          <button className="btn-primary" onClick={() => app.navigate('listen')}>{t('back')}</button>
+          {!none && <button className="btn-primary" onClick={restart}>{t('videosRestart')}</button>}
+          <button className={none ? 'btn-primary' : 'btn-ghost'} onClick={() => { tap(); back(); }}>{t('back')}</button>
         </div>
       </div>
     );
   }
 
+  const mission = BOOTCAMP_PLAN.find((m) => m.day === current.day);
+  const prev = stepVideo(pool, index, -1, failed);
+  const next = stepVideo(pool, index, 1, failed);
   return (
     <div className="screen">
       <div className="topbar">
-        <BackButton onBack={() => app.navigate('listen')} />
-        <span className="chip">🎬 {current.video.title ? L(current.video.title) : t('videosTitle')}</span>
+        <BackButton onBack={back} />
+        <span className="chip">🎬 {t('videosTitle')}</span>
         <span style={{ width: 44 }} />
       </div>
-      <div className="screen-scroll no-nav" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-        <p className="dim center" style={{ marginBottom: 12 }}>{t('videosWatchHint')}</p>
-        <VideoPlayer key={current.day} video={current.video} onEnded={() => success()} />
+      <div className="screen-scroll no-nav videos-stage">
+        <p className="videos-now">{t('videosSituation', { n: current.missionNumber, title: mission ? L(mission.title) : '' })}</p>
+        {/* ONE player for the whole run: each clip arrives in the same video element and starts itself. */}
+        <VideoPlayer video={current.video} icon={missionIcon(missions[current.day])} autoPlay onEnded={() => go(1)} onFailed={skip} />
       </div>
-      {/* One guided next step (practice the situation this conversation belongs to); another video
-          is a quiet alternative. The learner is never asked to certify "I understood everything". */}
+      {/* The run's controls live in the fixed bar, so nothing floating (the Daily Goal) ever sits on them. */}
       <div className="action-zone">
-        <button className="btn-primary btn-icon" onClick={practice}>{t('videoWantPractice')}<Icon name="arrow" size={18} flip /></button>
-        <button className="btn-ghost" style={{ alignSelf: 'center' }} onClick={() => { tap(); next(); }}>{t('videoAnother')}</button>
+        <div className="videos-controls" dir="ltr">
+          <button type="button" className="parrot-step" disabled={prev === null} onClick={() => { tap(); go(-1); }} aria-label={t('videosPrev')}><Icon name="skip" size={24} className="icon-prev" /></button>
+          <span className="videos-pos" dir="auto">{t('listenPosition', { i: index + 1, n: pool.length })}</span>
+          <button type="button" className="parrot-step" disabled={next === null} onClick={() => { tap(); go(1); }} aria-label={t('videosNext')}><Icon name="skip" size={24} /></button>
+        </div>
+        <button className="btn-ghost btn-icon" onClick={practice}>{t('videosPracticeThis')}<Icon name="arrow" size={18} flip /></button>
       </div>
     </div>
   );

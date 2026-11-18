@@ -194,11 +194,12 @@ describe('Stories are discoverable from Listen (and stay under it)', () => {
     expect(featuredStory([], {})).toBeNull();
   });
 
-  it('Listen shows the story card and opens the reader on that story; there is still no Stories tab', () => {
+  it('Listen → stories lists the real stories (their own covers) and opens the reader, reading aloud, on the one chosen; still no Stories tab', () => {
     const listen = read('./Listen.tsx');
-    expect(listen).toContain('<StoryCard');
-    expect(listen).toContain("open('reading', id)");
+    expect(listen).toContain('READING_COLLECTIONS.map((c) => c.load())');
+    expect(listen).toContain("setReadingIntent({ story: story.id, returnTo: 'listen', play: true })");
     expect(listen).toContain('storyImageUrl(story)');
+    expect(read('../reading/Reading.tsx')).toContain('useEffect(() => { if (autoPlay) pb.play(); }, [])');
     expect(PRIMARY_TABS).toEqual(['home', 'bootcamp', 'listen', 'profile']);
     expect(navTabOf('reading')).toBe('listen');
   });

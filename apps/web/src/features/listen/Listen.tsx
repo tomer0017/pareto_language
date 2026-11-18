@@ -1,165 +1,231 @@
 import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
-import { useAppStore } from '../../shared/stores/appStore.js';
+import { useAppStore, type ListenPage, type View } from '../../shared/stores/appStore.js';
 import { L, t, type StringKey } from '../../shared/i18n/strings.js';
 import { languageDirection, languageName, UI_LANGUAGES } from '../../shared/i18n/languages.js';
 import { tap } from '../../shared/ui/haptics.js';
-import { Icon, type IconName } from '../../shared/ui/Icon.js';
-import { LangStrip } from '../../shared/ui/LangStrip.js';
+import { ChoiceCard } from '../../shared/ui/ChoiceCard.js';
+import { Icon } from '../../shared/ui/Icon.js';
 import { PageHeader } from '../../shared/ui/PageHeader.js';
 import { Pair } from '../../shared/ui/Pair.js';
 import { Seg, formatDuration, useParrotPlayback, type RepeatCount } from '../../shared/playback/index.js';
-import { loadSettings, persistSettings } from '../../shared/playback/preferences.js';
+import { loadBookmark, loadSettings, persistSettings } from '../../shared/playback/preferences.js';
+import { BOOTCAMP_PLAN } from '../bootcamp/plan.js';
 import { READING_COLLECTIONS } from '../reading/collections.js';
-import { LEVEL_BAND, featuredStory, readingTimeMin } from '../reading/readingCore.js';
+import { LEVEL_BAND, readingTimeMin } from '../reading/readingCore.js';
 import { useReadingStore } from '../reading/readingStore.js';
 import { storyImageUrl } from '../reading/storyImages.js';
 import { READING_LANGS, type ReadingLang, type Story } from '../reading/types.js';
-import { buildDialoguePlaylist, buildPhrasePlaylist, buildStoryPlaylist, topicOfIndex, type ListenCategory, type ListenPlaylist } from './playlists.js';
+import { buildDialoguePlaylist, buildPhrasePlaylist, resumeTopicId, startIndexFor, topicOfIndex, type ListenCategory, type ListenPlaylist } from './playlists.js';
 import { LISTEN_MODES, loadListenMode, saveListenMode, speakOrderFor, type ListenMode } from './listenMode.js';
 
 /** Minutes of one Quick Listen session (a sleep-timer value the shared engine supports). */
 const QUICK_MINUTES = 10;
 const REPEATS: RepeatCount[] = [1, 2, 3];
 
-const CATEGORIES: { id: ListenCategory; key: StringKey; icon: IconName }[] = [
-  { id: 'phrases', key: 'listenCatPhrases', icon: 'chat' },
-  { id: 'dialogues', key: 'listenCatDialogues', icon: 'volume' },
-  { id: 'stories', key: 'listenCatStories', icon: 'learn' },
-];
-
 /**
- * Listen — READY's passive mode: press Play and keep learning while driving, walking or cooking.
+ * Listen — READY's listening hub. Three levels, never more than one at a time:
  *
- * It owns NO content and NO playback logic. Playlists are built from what the missions and stories
- * already contain (`playlists.ts`), and everything audible runs through the one shared playback
- * engine (`useParrotPlayback`). This screen only arranges a queue, a now-playing card and a few
- * strategies (listening mode, repeats, continuous play) — the same sentences, heard a different way.
+ *   1. CHOOSE A MODE     📖 stories · 💬 situations · 🔊 sentences · 🎬 situation videos in a row
+ *   2. CHOOSE CONTENT    a story · a situation's dialogue · a group of sentences
+ *   3. LISTEN            the player (or the story reader, or the video player)
  *
- * Stories are the third thing to do here, and the warmest: besides the Stories category in the
- * player, one real story (the learner's next unfinished one) is shown as a visual card that opens
- * the story reader. Browsing tools (cards, the library, foundations) are not here: they live under
- * Free learning, so this screen stays about listening.
+ * It owns NO content and NO playback logic. Playlists are built from what the situations already
+ * contain (`playlists.ts`), stories open in the existing story reader, the videos in the existing
+ * Videos screen, and everything audible runs through the one shared playback engine
+ * (`useParrotPlayback`). Where the hub is lives in the app store (`listenPage`), so a tap on the
+ * Listen tab always lands back on the four modes.
  */
+export const LISTEN_HUB_MODES = ['stories', 'situations', 'sentences', 'videos'] as const;
+export type ListenHubMode = (typeof LISTEN_HUB_MODES)[number];
+
+const MODE: Record<ListenHubMode, { icon: string; title: StringKey; sub: StringKey; tone: 'brand' | 'accent' | 'good' | 'warn' }> = {
+  stories: { icon: '📖', title: 'listenModeStories', sub: 'listenModeStoriesSub', tone: 'warn' },
+  situations: { icon: '💬', title: 'listenModeSituations', sub: 'listenModeSituationsSub', tone: 'accent' },
+  sentences: { icon: '🔊', title: 'listenModeSentences', sub: 'listenModeSentencesSub', tone: 'brand' },
+  videos: { icon: '🎬', title: 'listenModeVideos', sub: 'listenModeVideosSub', tone: 'good' },
+};
+
+type AudioMode = 'situations' | 'sentences';
+/** The playlist each audio mode plays (the categories keep their stored bookmarks / preferences). */
+const CATEGORY: Record<AudioMode, ListenCategory> = { situations: 'dialogues', sentences: 'phrases' };
+const bookmarkKeyFor = (mode: AudioMode, lang: string): string => `listen:${CATEGORY[mode]}:${lang}`;
+
 export function Listen() {
-  const app = useAppStore();
-  const intent = useAppStore((s) => s.listenIntent);
-  // Free learning may ask for a category (the sentence player, the dialogues); Quick Listen plays the sentences.
-  const [category, setCategory] = useState<ListenCategory>(intent === 'dialogues' ? 'dialogues' : 'phrases');
-  const [stories, setStories] = useState<Story[] | null>(null);
-  // Capture a one-shot Quick Listen request from Home, then clear it (it must not replay on revisit).
-  const [quick] = useState(intent === 'quick');
-  useEffect(() => { if (intent) app.setListenIntent(null); }, [intent]); // eslint-disable-line react-hooks/exhaustive-deps
+  const page = useAppStore((s) => s.listenPage);
+  const setPage = useAppStore((s) => s.setListenPage);
+  const navigate = useAppStore((s) => s.navigate);
 
-  // Story bodies are code-split; load them once (they feed both the story card and the category).
-  useEffect(() => {
-    if (stories !== null) return;
-    let live = true;
-    Promise.all(READING_COLLECTIONS.map((c) => c.load()))
-      .then((cols) => { if (live) setStories(cols.flatMap((c) => c.stories)); })
-      .catch((err) => { console.warn('[listen] stories unavailable', err); if (live) setStories([]); });
-    return () => { live = false; };
-  }, [stories]);
-
-  const readingLang: ReadingLang = (READING_LANGS as readonly string[]).includes(app.learningLang) ? (app.learningLang as ReadingLang) : 'en';
-  const playlist = useMemo<ListenPlaylist | null>(() => {
-    if (category === 'phrases') return buildPhrasePlaylist(app.learningLang, app.uiLang);
-    if (category === 'dialogues') return buildDialoguePlaylist(app.learningLang, app.uiLang);
-    return stories ? buildStoryPlaylist(stories, readingLang, app.uiLang) : null;
-  }, [category, stories, app.learningLang, app.uiLang, readingLang]);
-
-  const open = (view: 'reading' | 'videos', storyId?: string): void => {
-    tap();
-    if (storyId) app.setReadingIntent(storyId);
-    app.navigate(view);
+  // Back from a mode's first page: to the screen that opened it directly, else to the four modes.
+  const leaveMode = (returnTo?: View): void => {
+    setPage(null);
+    if (returnTo) navigate(returnTo);
   };
 
+  if (!page) {
+    return <ListenLanding onMode={(mode) => (mode === 'videos' ? navigate('videos') : setPage({ mode, play: null }))} />;
+  }
+  if (page.mode === 'stories') return <StoriesPage onBack={() => leaveMode(page.returnTo)} />;
+  return <AudioModePage page={page} mode={page.mode} onLeave={() => leaveMode(page.returnTo)} onPage={setPage} />;
+}
+
+/** Level 1 — the four ways to listen, and nothing else. */
+function ListenLanding({ onMode }: { onMode: (mode: ListenHubMode) => void }) {
   return (
     <div className="screen screen-wide">
-      <div className="brand-top"><span className="brand-mark">READY <Icon name="plane" size={22} /></span></div>
-      <LangStrip />
       <PageHeader title={t('listenTitle')} sub={t('listenSub')} icon={<Icon name="listen" />} />
       <div className="screen-scroll">
-        {/* ONE module: the tabs are its header, what plays is its body — switching a tab visibly
-            swaps the body of the same card, so the relationship never has to be guessed. */}
-        <section className="card listen-module" aria-label={t('listenTitle')}>
-          <div className="tabs listen-tabs" role="tablist" aria-label={t('listenTitle')}>
-            {CATEGORIES.map((c) => (
-              <button key={c.id} role="tab" aria-selected={category === c.id} aria-controls="listen-panel" className={`tab ${category === c.id ? 'active' : ''}`} onClick={() => { tap(); setCategory(c.id); }}>
-                <Icon name={c.icon} size={17} />{t(c.key)}
-              </button>
-            ))}
-          </div>
-          <div id="listen-panel" role="tabpanel" className="listen-panel" key={category}>
-            {/* The Stories tab leads with the story itself (its cover, read or listen); the player below plays them. */}
-            {category === 'stories' && stories && stories.length > 0 && <StoryCard stories={stories} lang={readingLang} onOpen={(id) => open('reading', id)} onAll={() => open('reading')} />}
-
-            {playlist === null ? (
-              <p className="dim center" style={{ padding: '32px 0' }}>{t('listenStoriesLoading')}</p>
-            ) : playlist.items.length === 0 ? (
-              <div className="card center"><p className="dim">{t('listenEmpty')}</p></div>
-            ) : (
-              // Keyed by category + languages: switching any of them is a clean new session.
-              <ListenPlayer
-                key={`${category}:${app.learningLang}:${app.uiLang}`}
-                playlist={playlist}
-                bookmarkKey={`listen:${category}:${app.learningLang}`}
-                autoQuick={quick && category === 'phrases'}
-              />
-            )}
-          </div>
-        </section>
-
-        <div className="section-head"><h2>{t('listenMore')}</h2></div>
-        <div className="support-grid">
-          <button className="link-row card-press" onClick={() => open('videos')}>
-            <span className="icon-tile" aria-hidden>🎬</span>
-            <span className="link-row-body"><span className="link-row-title">{t('listenWatchVideos')}</span><span className="link-row-sub">{t('homeVideosSub')}</span></span>
-            <Icon name="chevron" size={20} flip />
-          </button>
+        <div className="choice-list listen-modes" role="group" aria-label={t('listenSub')}>
+          {LISTEN_HUB_MODES.map((mode) => (
+            <ChoiceCard key={mode} id={mode} icon={MODE[mode].icon} tone={MODE[mode].tone} title={t(MODE[mode].title)} sub={t(MODE[mode].sub)} onSelect={() => onMode(mode)} />
+          ))}
         </div>
       </div>
     </div>
   );
 }
 
-/**
- * The visual way into Stories: ONE real story with its own cover — the one the learner is reading,
- * else the first they have not finished (stored reading progress only; no invented progress).
- */
-function StoryCard({ stories, lang, onOpen, onAll }: { stories: Story[]; lang: ReadingLang; onOpen: (storyId: string) => void; onAll: () => void }) {
+/** Level 2 for stories — the stories themselves; a tap opens one in the story reader (its player),
+ *  already reading aloud. Stored reading progress marks the one under way and the ones finished. */
+function StoriesPage({ onBack }: { onBack: () => void }) {
+  const learningLang = useAppStore((s) => s.learningLang);
+  const navigate = useAppStore((s) => s.navigate);
+  const setReadingIntent = useAppStore((s) => s.setReadingIntent);
   const progress = useReadingStore((s) => s.stories);
-  const pick = useMemo(() => featuredStory(stories, progress), [stories, progress]);
-  const [imageFailed, setImageFailed] = useState(false);
-  if (!pick) return null;
-  const { story } = pick;
+  const [stories, setStories] = useState<Story[] | null>(null);
+  const lang: ReadingLang = (READING_LANGS as readonly string[]).includes(learningLang) ? (learningLang as ReadingLang) : 'en';
+
+  // Story bodies are code-split; load them once on arrival.
+  useEffect(() => {
+    let live = true;
+    Promise.all(READING_COLLECTIONS.map((c) => c.load()))
+      .then((cols) => { if (live) setStories(cols.flatMap((c) => c.stories)); })
+      .catch((err) => { console.warn('[listen] stories unavailable', err); if (live) setStories([]); });
+    return () => { live = false; };
+  }, []);
+
+  const open = (story: Story): void => {
+    tap();
+    // The reader is the story's player; leaving it comes back to this list.
+    setReadingIntent({ story: story.id, returnTo: 'listen', play: true });
+    navigate('reading');
+  };
+
   return (
-    <section className="card story-card" aria-label={t('listenStoryEyebrow')}>
-      <button className="story-card-cover card-press" onClick={() => onOpen(story.id)} aria-label={story.title.target[lang]}>
-        {imageFailed
-          ? <span className="story-img-fallback" aria-hidden>📖</span>
-          : <img src={storyImageUrl(story)} alt="" loading="lazy" onError={() => setImageFailed(true)} />}
-      </button>
-      <div className="story-card-body">
-        <p className="eyebrow"><Icon name="learn" size={16} />{t('listenStoryEyebrow')}</p>
-        <p className="story-card-title"><span className="target-text" dir={languageDirection(lang)} lang={lang}>{story.title.target[lang]}</span></p>
-        <p className="dim small">{L(story.title.tr)} · {t('listenStorySub')}</p>
-        <p className="meta-row">
-          <span className="badge badge-notStarted">{LEVEL_BAND[story.level]}</span>
-          <span><Icon name="clock" size={15} />{t('readingMinN', { n: readingTimeMin(story, lang) })}</span>
-        </p>
-        <div className="story-card-actions">
-          <button className="btn-primary btn-icon" onClick={() => onOpen(story.id)}>
-            {pick.inProgress ? t('continue') : pick.allDone ? t('readingReadAgain') : t('readingStartReading')}
-            <Icon name="arrow" size={18} flip />
-          </button>
-          <button className="btn-link" onClick={onAll}>{t('listenAllStories')}</button>
-        </div>
+    <div className="screen screen-wide">
+      <PageHeader title={t('listenModeStories')} sub={t('listenChooseStory')} onBack={onBack} />
+      <div className="screen-scroll">
+        {stories === null ? (
+          <p className="dim center" style={{ padding: '32px 0' }}>{t('listenStoriesLoading')}</p>
+        ) : stories.length === 0 ? (
+          <div className="card center"><p className="dim">{t('listenEmpty')}</p></div>
+        ) : (
+          <div className="topic-list">
+            {stories.map((story) => {
+              const at = progress[story.id];
+              return (
+                <button key={story.id} type="button" className="link-row card-press topic-row story-row" data-story={story.id} onClick={() => open(story)}>
+                  <StoryThumb story={story} />
+                  <span className="link-row-body">
+                    <span className="link-row-title target-text" dir={languageDirection(lang)} lang={lang}>{story.title.target[lang]}</span>
+                    <span className="link-row-sub">{L(story.title.tr)} · {LEVEL_BAND[story.level]} · {t('readingMinN', { n: readingTimeMin(story, lang) })}</span>
+                  </span>
+                  {at?.done ? <span className="badge badge-ready">✓</span> : (at?.pos ?? 0) > 0 ? <span className="badge badge-inProgress">{t('continue')}</span> : null}
+                  <span className="topic-play" aria-hidden><Icon name="play" size={16} /></span>
+                </button>
+              );
+            })}
+          </div>
+        )}
       </div>
-    </section>
+    </div>
   );
 }
 
-function ListenPlayer({ playlist, bookmarkKey, autoQuick }: { playlist: ListenPlaylist; bookmarkKey: string; autoQuick: boolean }) {
+/** A story's own cover, small; a soft 📖 tile if the picture cannot load. */
+function StoryThumb({ story }: { story: Story }) {
+  const [failed, setFailed] = useState(false);
+  return failed
+    ? <span className="icon-tile story-thumb" aria-hidden>📖</span>
+    : <img className="story-thumb" src={storyImageUrl(story)} alt="" loading="lazy" onError={() => setFailed(true)} />;
+}
+
+/** Levels 2 and 3 for the audio modes: choose a situation / a sentence group, then listen. */
+function AudioModePage({ page, mode, onLeave, onPage }: { page: ListenPage; mode: AudioMode; onLeave: () => void; onPage: (page: ListenPage) => void }) {
+  const learningLang = useAppStore((s) => s.learningLang);
+  const uiLang = useAppStore((s) => s.uiLang);
+  const playlist = useMemo<ListenPlaylist>(
+    () => (mode === 'situations' ? buildDialoguePlaylist(learningLang, uiLang) : buildPhrasePlaylist(learningLang, uiLang)),
+    [mode, learningLang, uiLang],
+  );
+  const bookmarkKey = bookmarkKeyFor(mode, learningLang);
+  const title = t(MODE[mode].title);
+
+  if (page.play === null) {
+    return <TopicsPage mode={mode} title={title} playlist={playlist} bookmarkKey={bookmarkKey} onBack={onLeave} onPlay={(topic) => onPage({ ...page, play: topic })} />;
+  }
+  return (
+    <div className="screen screen-wide">
+      <PageHeader title={title} onBack={() => onPage({ ...page, play: null })} />
+      <div className="screen-scroll">
+        {playlist.items.length === 0 ? (
+          <div className="card center"><p className="dim">{t('listenEmpty')}</p></div>
+        ) : (
+          // Keyed by mode + topic + languages: each choice is a clean new session.
+          <ListenPlayer
+            key={`${mode}:${page.play}:${learningLang}:${uiLang}`}
+            playlist={playlist}
+            bookmarkKey={bookmarkKey}
+            startIndex={startIndexFor(playlist, page.play, loadBookmark(bookmarkKey))}
+          />
+        )}
+      </div>
+    </div>
+  );
+}
+
+/** The displayed number of a situation (1–30) for a topic that is one, else null. */
+const situationNumber = (topicId: string): number | null => {
+  const i = BOOTCAMP_PLAN.findIndex((m) => m.id === topicId);
+  return i < 0 ? null : i + 1;
+};
+
+/** Level 2 for the audio modes — what to listen to. A tap starts it; the topic the learner was in is marked. */
+function TopicsPage({ mode, title, playlist, bookmarkKey, onBack, onPlay }: {
+  mode: AudioMode; title: string; playlist: ListenPlaylist; bookmarkKey: string; onBack: () => void; onPlay: (topicId: string) => void;
+}) {
+  const resume = useMemo(() => resumeTopicId(playlist, loadBookmark(bookmarkKey)), [playlist, bookmarkKey]);
+  return (
+    <div className="screen screen-wide">
+      <PageHeader title={title} sub={t(mode === 'situations' ? 'listenChooseSituation' : 'listenChooseTopic')} onBack={onBack} />
+      <div className="screen-scroll">
+        {playlist.topics.length === 0 ? (
+          <div className="card center"><p className="dim">{t('listenEmpty')}</p></div>
+        ) : (
+          <div className="topic-list">
+            {playlist.topics.map((tp) => {
+              const n = situationNumber(tp.id);
+              return (
+                <button key={tp.id} type="button" className="link-row card-press topic-row" data-topic={tp.id} onClick={() => { tap(); onPlay(tp.id); }}>
+                  <span className="topic-num" aria-hidden>{n ?? ''}</span>
+                  <span className="icon-tile" aria-hidden>{tp.icon}</span>
+                  <span className="link-row-body">
+                    <span className="link-row-title">{tp.title ?? t('survivalKit')}</span>
+                    <span className="link-row-sub">{t(mode === 'situations' ? 'topicLines' : 'topicSentences', { n: tp.count })}</span>
+                  </span>
+                  {resume === tp.id && <span className="badge badge-inProgress">{t('continue')}</span>}
+                  <span className="topic-play" aria-hidden><Icon name="play" size={16} /></span>
+                </button>
+              );
+            })}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+/** Level 3 — the player: what is being said now, the transport, and the few listening options. */
+function ListenPlayer({ playlist, bookmarkKey, startIndex }: { playlist: ListenPlaylist; bookmarkKey: string; startIndex: number }) {
   const uiLang = useAppStore((s) => s.uiLang);
   const learningLang = useAppStore((s) => s.learningLang);
   const [storedMode, setMode] = useState<ListenMode>(loadListenMode);
@@ -174,10 +240,12 @@ function ListenPlayer({ playlist, bookmarkKey, autoQuick }: { playlist: ListenPl
   const item = playlist.items[pb.currentIndex];
   const topic = topicOfIndex(playlist, pb.currentIndex);
   const playing = pb.status === 'playing';
-  const listRef = useRef<HTMLDivElement>(null);
+
+  // The learner chose what to hear a moment ago (a tap): start there at once.
+  useEffect(() => { pb.jumpTo(startIndex, { play: true }); }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Quick Listen = the engine's own sleep timer for QUICK_MINUTES, then it stops by itself.
-  const [quick, setQuick] = useState<'off' | 'arming' | 'running' | 'done'>(autoQuick ? 'arming' : 'off');
+  const [quick, setQuick] = useState<'off' | 'arming' | 'running' | 'done'>('off');
   const startQuick = (): void => { tap(); setQuick('arming'); };
   useEffect(() => {
     if (quick !== 'arming') return;
@@ -197,13 +265,6 @@ function ListenPlayer({ playlist, bookmarkKey, autoQuick }: { playlist: ListenPl
     if (quickRef.current === 'running' || quickRef.current === 'arming') persistSettings('listen', { ...loadSettings('listen'), sleepTimer: 0 });
   }, []);
 
-  // Keep the playing topic visible inside the queue (scrolls the list only, never the page).
-  useEffect(() => {
-    const list = listRef.current;
-    const row = list?.querySelector<HTMLElement>('.queue-row.active');
-    if (list && row) list.scrollTop = row.offsetTop - list.offsetTop - list.clientHeight / 2 + row.clientHeight / 2;
-  }, [topic?.id]);
-
   const chooseMode = (m: ListenMode): void => { tap(); setMode(m); saveListenMode(m); };
   const appName = UI_LANGUAGES.find((l) => l.code === uiLang)?.nativeName ?? uiLang;
   const targetName = languageName(learningLang);
@@ -218,91 +279,63 @@ function ListenPlayer({ playlist, bookmarkKey, autoQuick }: { playlist: ListenPl
   const random = pb.settings.order === 'random';
 
   return (
-    <>
-      <div className="listen-layout">
-        {/* Queue — the topics of this playlist; tapping one starts it. */}
-        <section className="card" aria-label={t('listenQueue')}>
-          <div className="queue-head">
-            <span>
-              <h2>{t('listenQueue')}</h2>
-              <p className="dim small">{t('listenQueueMeta', { topics: playlist.topics.length, n: playlist.items.length })}</p>
-            </span>
-            <button className="btn-link btn-icon" aria-pressed={random} onClick={() => { tap(); pb.setOrder(random ? 'sequential' : 'random'); }}>
-              <Icon name="shuffle" size={18} />{random ? t('listenInOrder') : t('listenShuffle')}
-            </button>
-          </div>
-          <div className="queue-list" ref={listRef}>
-            {playlist.topics.map((tp, i) => {
-              const active = tp.id === topic?.id;
+    <div className="listen-player">
+      {/* Now playing — the line itself is the screen; the transport sits right under it. */}
+      <section className="card now-card" aria-label={t('nowPlaying')}>
+        <p className="now-meta">{topic ? `${topicTitle(topic.title)} · ${t('listenPosition', { i: within, n: topic.count })}` : ''}</p>
+        <p className="now-target target-text" dir={item ? languageDirection(item.targetLang) : 'ltr'} lang={item?.targetLang}>{item?.target}</p>
+        <p className="now-translation" dir={languageDirection(uiLang)}>{mode !== 'target-only' ? item?.translation : ''}</p>
+        <div className="now-progress" aria-hidden><span style={{ width: `${topic ? (within / topic.count) * 100 : 0}%` }} /></div>
+
+        <span className="sr-only" role="status" aria-live="polite">{playing ? t('parrotStatusPlaying') : pb.status === 'paused' ? t('parrotStatusPaused') : ''}</span>
+        {/* A media transport reads the same in every interface direction. */}
+        <div className="transport">
+          <button type="button" className="parrot-step" onClick={() => { tap(); pb.prev(); }} aria-label={t('parrotPrev')}><Icon name="skip" size={26} className="icon-prev" /></button>
+          <button type="button" className="parrot-play" onClick={() => { tap(); pb.toggle(); }} aria-label={playing ? t('parrotPause') : t('parrotPlay')}>
+            <Icon name={playing ? 'pause' : 'play'} size={30} />
+          </button>
+          <button type="button" className="parrot-step" onClick={() => { tap(); pb.next(); }} aria-label={t('parrotNext')}><Icon name="skip" size={26} /></button>
+        </div>
+
+        {/* Repeats = how many TIMES each sentence is said (1× once, 2× twice, 3× three times).
+            It is not speed — speech speed is the one global preference in Profile. Continuous
+            play is a separate switch: it restarts the list when it ends. */}
+        <div className="control-row">
+          <Seg
+            label={t('listenRepeats')}
+            value={pb.settings.repeat}
+            options={REPEATS.map((r) => ({ v: r, label: `${r}×`, aria: t('listenRepeatsAria', { n: r }) }))}
+            onChange={pb.setRepeat}
+          />
+          <button type="button" className={`toggle-pill ${pb.settings.loop ? 'on' : ''}`} aria-pressed={pb.settings.loop} aria-label={t('listenContinuousAria')} onClick={() => { tap(); pb.setLoop(!pb.settings.loop); }}>
+            <Icon name="repeat" size={16} />{t('listenContinuous')}
+          </button>
+          <button type="button" className={`toggle-pill ${random ? 'on' : ''}`} aria-pressed={random} onClick={() => { tap(); pb.setOrder(random ? 'sequential' : 'random'); }}>
+            <Icon name="shuffle" size={16} />{t('listenShuffle')}
+          </button>
+        </div>
+
+        {hasTranslation && (
+        <div>
+          <p className="control-label" style={{ textAlign: 'start', marginBottom: 8 }}>{t('listenModeLabel')}</p>
+          <div className="mode-grid" role="group" aria-label={t('listenModeLabel')}>
+            {LISTEN_MODES.map((m) => {
+              const label = modeLabel(m);
               return (
-                <button key={tp.id} className={`queue-row ${active ? 'active' : ''}`} aria-current={active ? 'true' : undefined} onClick={() => { tap(); pb.jumpTo(tp.start, { play: true }); }}>
-                  <span className="queue-row-num" aria-hidden>{i + 1}</span>
-                  <span className="icon-tile" aria-hidden>{tp.icon}</span>
-                  <span className="link-row-body">
-                    <span className="link-row-title">{topicTitle(tp.title)}</span>
-                    <span className="link-row-sub">{t('topicSentences', { n: tp.count })}</span>
-                  </span>
-                  {active && playing && <Icon name="volume" size={18} />}
+                <button key={m} type="button" className={`mode-card ${mode === m ? 'active' : ''}`} aria-pressed={mode === m} onClick={() => chooseMode(m)}>
+                  <b>{label.title}</b>
+                  <span>{label.sub}</span>
                 </button>
               );
             })}
           </div>
-        </section>
-
-        {/* Now playing */}
-        <section className="card now-card" aria-label={t('nowPlaying')}>
-          <p className="now-meta">{topic ? `${t('listenPosition', { i: within, n: topic.count })} · ${topicTitle(topic.title)}` : ''}</p>
-          <p className="now-target target-text" dir={item ? languageDirection(item.targetLang) : 'ltr'} lang={item?.targetLang}>{item?.target}</p>
-          <p className="now-translation" dir={languageDirection(uiLang)}>{mode !== 'target-only' ? item?.translation : ''}</p>
-          <div className="now-progress" aria-hidden><span style={{ width: `${topic ? (within / topic.count) * 100 : 0}%` }} /></div>
-
-          <span className="sr-only" role="status" aria-live="polite">{playing ? t('parrotStatusPlaying') : pb.status === 'paused' ? t('parrotStatusPaused') : ''}</span>
-          {/* A media transport reads the same in every interface direction. */}
-          <div className="transport">
-            <button type="button" className="parrot-step" onClick={() => { tap(); pb.prev(); }} aria-label={t('parrotPrev')}><Icon name="skip" size={26} className="icon-prev" /></button>
-            <button type="button" className="parrot-play" onClick={() => { tap(); pb.toggle(); }} aria-label={playing ? t('parrotPause') : t('parrotPlay')}>
-              <Icon name={playing ? 'pause' : 'play'} size={30} />
-            </button>
-            <button type="button" className="parrot-step" onClick={() => { tap(); pb.next(); }} aria-label={t('parrotNext')}><Icon name="skip" size={26} /></button>
-          </div>
-
-          {/* Repeats = how many TIMES each sentence is said (1× once, 2× twice, 3× three times).
-              It is not speed — speech speed is the one global preference in Profile. Continuous
-              play is a separate switch: it restarts the list when it ends. */}
-          <div className="control-row">
-            <Seg
-              label={t('listenRepeats')}
-              value={pb.settings.repeat}
-              options={REPEATS.map((r) => ({ v: r, label: `${r}×`, aria: t('listenRepeatsAria', { n: r }) }))}
-              onChange={pb.setRepeat}
-            />
-            <button type="button" className={`toggle-pill ${pb.settings.loop ? 'on' : ''}`} aria-pressed={pb.settings.loop} aria-label={t('listenContinuousAria')} onClick={() => { tap(); pb.setLoop(!pb.settings.loop); }}>
-              <Icon name="repeat" size={16} />{t('listenContinuous')}
-            </button>
-          </div>
-
-          {hasTranslation && (
-          <div>
-            <p className="control-label" style={{ textAlign: 'start', marginBottom: 8 }}>{t('listenModeLabel')}</p>
-            <div className="mode-grid" role="group" aria-label={t('listenModeLabel')}>
-              {LISTEN_MODES.map((m) => {
-                const label = modeLabel(m);
-                return (
-                  <button key={m} type="button" className={`mode-card ${mode === m ? 'active' : ''}`} aria-pressed={mode === m} onClick={() => chooseMode(m)}>
-                    <b>{label.title}</b>
-                    <span>{label.sub}</span>
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-          )}
-          <p className="faint small">{t('listenSpeedNote')}</p>
-        </section>
-      </div>
+        </div>
+        )}
+        <p className="faint small">{t('listenSpeedNote')}</p>
+      </section>
 
       {/* Quick Listen — ten hands-free minutes, then it stops by itself. */}
-      <section className="card quick-strip" style={{ marginTop: 14 }} aria-label={t('quickListenTitle')}>
+      <section className="card quick-strip" aria-label={t('quickListenTitle')}>
         <span className="icon-tile icon-tile-good" aria-hidden><Icon name="listen" /></span>
         <span className="link-row-body">
           <span className="link-row-title">{t('quickListenTitle')}</span>
@@ -316,6 +349,6 @@ function ListenPlayer({ playlist, bookmarkKey, autoQuick }: { playlist: ListenPl
           <button className="btn-outline good btn-icon" onClick={startQuick}><Icon name="play" size={18} />{t('quickListenCta')}</button>
         )}
       </section>
-    </>
+    </div>
   );
 }

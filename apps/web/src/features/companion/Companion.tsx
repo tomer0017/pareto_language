@@ -188,43 +188,46 @@ export function CompanionHello() {
 
 function usePresence(): Presence {
   const readiness = useTravelReadiness();
-  return presenceFor({ done: readiness.ready, resume: readiness.nextIsResume, allDone: readiness.allDone });
+  return presenceFor({ done: readiness.ready, total: readiness.total });
 }
 
-/** The buddy on the Route: floating beside the path, saying one thing about where you are. It is a
- *  character, not a statistic — no name, no number, no bar. Tapping it opens its own page. */
-export function CompanionPresence() {
+/** The buddy above the situations, saying ONE progress-aware thing about where you are. It is a
+ *  character, not a statistic — no name, no number, no bar. Tapping it opens its own page.
+ *  `compact`: a small figure and the line only — a note beside the list, never a chat box. */
+export function CompanionPresence({ compact = false }: { compact?: boolean }) {
   const navigate = useAppStore((s) => s.navigate);
   const { lang, stage } = useCompanion();
   const language = useLanguageName(lang);
   const presence = usePresence();
-  return <CompanionPresenceView stage={stage} language={language} line={L(presence.line)} mood={presence.mood} onOpen={() => { tap(); navigate('companion'); }} />;
+  return <CompanionPresenceView stage={stage} language={language} line={L(presence.line)} mood={presence.mood} compact={compact} onOpen={() => { tap(); navigate('companion'); }} />;
 }
 
-export function CompanionPresenceView({ stage, language, line, mood = 'greeting', onOpen }: { stage: CompanionStage; language: string; line: string; mood?: CompanionMood; onOpen?: () => void }) {
+export function CompanionPresenceView({ stage, language, line, mood = 'greeting', compact = false, onOpen }: { stage: CompanionStage; language: string; line: string; mood?: CompanionMood; compact?: boolean; onOpen?: () => void }) {
   return (
-    <button className="cmp-presence card-press" onClick={onOpen} aria-label={L(COPY.open)}>
-      <CompanionFigure stage={stage} size={112} mood={mood} />
+    // The line is the content, so it is part of the button's name (a screen reader hears it too).
+    <button className={`cmp-presence card-press ${compact ? 'is-compact' : ''}`} onClick={onOpen} aria-label={`${line} — ${L(COPY.open)}`}>
+      <CompanionFigure stage={stage} size={compact ? 60 : 112} mood={mood} />
       <span className="cmp-presence-body">
         <Bubble stage={stage}>{line}</Bubble>
-        <span className="cmp-whose">{L(COPY.buddyFor(language))}</span>
+        {!compact && <span className="cmp-whose">{L(COPY.buddyFor(language))}</span>}
       </span>
     </button>
   );
 }
 
-/** The same buddy on Home, peeking over the "next step" card. No line, no card of its own. */
-export function CompanionPeek() {
+/** The same buddy on Home: a small figure beside the progress. No line, no card of its own.
+ *  `inline` sits in the flow of its row; otherwise it peeks over the top edge of its card. */
+export function CompanionPeek({ size = 84, inline = false }: { size?: number; inline?: boolean }) {
   const navigate = useAppStore((s) => s.navigate);
   const { stage } = useCompanion();
   const presence = usePresence();
-  // Beside the "start" button it cheers you on; with everything done it simply rests.
-  return <CompanionPeekView stage={stage} mood={presence.mood === 'resting' ? 'resting' : 'cheering'} onOpen={() => { tap(); navigate('companion'); }} />;
+  // While there is a way to go it cheers you on; with everything done it is proud of you.
+  return <CompanionPeekView stage={stage} mood={presence.mood === 'greeting' ? 'cheering' : presence.mood} size={size} inline={inline} onOpen={() => { tap(); navigate('companion'); }} />;
 }
-export function CompanionPeekView({ stage, mood = 'cheering', onOpen }: { stage: CompanionStage; mood?: CompanionMood; onOpen?: () => void }) {
+export function CompanionPeekView({ stage, mood = 'cheering', size = 84, inline = false, onOpen }: { stage: CompanionStage; mood?: CompanionMood; size?: number; inline?: boolean; onOpen?: () => void }) {
   return (
-    <button className="cmp-peek" onClick={onOpen} aria-label={L(COPY.open)}>
-      <CompanionFigure stage={stage} size={84} mood={mood} />
+    <button className={`cmp-peek ${inline ? 'is-inline' : ''}`} onClick={onOpen} aria-label={L(COPY.open)}>
+      <CompanionFigure stage={stage} size={size} mood={mood} />
     </button>
   );
 }

@@ -7,12 +7,13 @@ import { useSentenceProgress } from './useSentenceProgress.js';
 /**
  * Quick Review — a short flashcard refresh of sentences the learner has actually practiced, chosen
  * from their real review log (`useSentenceProgress`). It reuses the sentence flashcards as-is; there
- * is no second review engine and no content of its own.
+ * is no second review engine and no content of its own. Its door is the first card of Games & stories
+ * (shown only when something was practiced), so Back returns there.
  */
 export function QuickReview() {
   const navigate = useAppStore((s) => s.navigate);
   const { reviewCards, ready } = useSentenceProgress();
-  const back = (): void => navigate('home');
+  const back = (): void => navigate('free');
 
   return (
     <div className="screen">

@@ -1190,12 +1190,29 @@ function DialogueReader({ dialogue, onClose, onFinish }: { dialogue: BootcampDia
 /** Custom video player — NO native controls: no seek bar, no ±10s, no fullscreen, no menu, no dark
  *  overlay, no letterbox bars. One tap toggles play/pause; a centered ▶︎ shows while paused. The
  *  video stays fully visible (frame == video box). A missing/broken file degrades to a friendly
- *  note — never crashes. Videos are short (20–35s), so play/pause is the only control needed. */
-export function VideoPlayer({ video, icon, onEnded }: { video: BootcampVideo; /** shown on the poster until the first frame is ready */ icon?: string; onEnded?: () => void }) {
+ *  note — never crashes. Videos are short (20–35s), so play/pause is the only control needed.
+ *
+ *  For back-to-back viewing (the Listening hub's situation videos) the same player is handed one
+ *  clip after another: `autoPlay` starts each one as it arrives (the SAME video element, so a browser
+ *  that wanted a tap for the first clip allows the next ones; where it still refuses, the ▶︎ shows),
+ *  and `onFailed` lets the caller skip a clip that cannot be played. Missions use neither. */
+export function VideoPlayer({ video, icon, onEnded, autoPlay = false, onFailed }: {
+  video: BootcampVideo;
+  /** shown on the poster until the first frame is ready */ icon?: string;
+  onEnded?: () => void;
+  autoPlay?: boolean;
+  onFailed?: () => void;
+}) {
   const [failed, setFailed] = useState(false);
   const [playing, setPlaying] = useState(false);
   const [ready, setReady] = useState(false);
   const ref = useRef<HTMLVideoElement>(null);
+  // A new clip in the same player starts fresh — its own poster — and plays at once when asked.
+  useEffect(() => {
+    setFailed(false);
+    setReady(false);
+    if (autoPlay) void ref.current?.play().catch(() => undefined);
+  }, [video.src]); // eslint-disable-line react-hooks/exhaustive-deps
   if (failed || !video.src) return <p className="dim small" style={{ padding: '20px 0' }}>{t('videoUnavailable')}</p>;
   const toggle = (): void => {
     const v = ref.current;
@@ -1220,11 +1237,12 @@ export function VideoPlayer({ video, icon, onEnded }: { video: BootcampVideo; /*
         onLoadedData={() => setReady(true)}
         playsInline
         preload="metadata"
+        autoPlay={autoPlay}
         disablePictureInPicture
         controlsList="nodownload noplaybackrate nofullscreen"
         onPlay={() => { setPlaying(true); setReady(true); }}
         onPause={() => setPlaying(false)}
-        onError={() => setFailed(true)}
+        onError={() => { setFailed(true); onFailed?.(); }}
         onEnded={() => { setPlaying(false); onEnded?.(); }}
       />
       {!playing && <span className="video-play-overlay" aria-hidden />}

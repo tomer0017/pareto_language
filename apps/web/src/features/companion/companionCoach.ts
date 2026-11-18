@@ -101,13 +101,26 @@ export const GAME_MOOD: Record<string, CompanionMood> = {
 };
 
 export interface Presence { line: LocalizedText; mood: CompanionMood }
+export type PresenceTier = 'start' | 'early' | 'base' | 'many' | 'almost' | 'allDone';
 /**
- * The buddy on the Route and on Home: one contextual line and a mood, from where the learner stands.
- * It waves hello — to a new learner and to one coming back — and rests when everything is done.
+ * How far along the learner is, as the buddy's one line reads it — from the share of the plan's
+ * situations completed: none · 1–25% · 26–50% · 51–75% · 76–99% · every one of them.
  */
-export function presenceFor(at: { done: number; resume: boolean; allDone: boolean }): Presence {
-  if (at.allDone) return { line: COPY.presence.allDone, mood: 'resting' };
-  if (at.resume) return { line: COPY.presence.resume, mood: 'greeting' };
-  if (at.done === 0) return { line: COPY.presence.fresh, mood: 'greeting' };
-  return { line: COPY.presence.next, mood: 'greeting' };
+export function presenceTier(done: number, total: number): PresenceTier {
+  if (total <= 0 || done <= 0) return 'start';
+  if (done >= total) return 'allDone';
+  const pct = (done / total) * 100;
+  if (pct <= 25) return 'early';
+  if (pct <= 50) return 'base';
+  if (pct <= 75) return 'many';
+  return 'almost';
+}
+/**
+ * The buddy above the situations (and, small, on Home): one progress-aware line and a mood. It waves
+ * hello while there is a way to go, and is proud of the learner once every situation is done.
+ */
+export function presenceFor(at: { done: number; total: number }): Presence {
+  const tier = presenceTier(at.done, at.total);
+  if (tier === 'allDone') return { line: COPY.presence.allDone(at.total), mood: 'proud' };
+  return { line: COPY.presence[tier], mood: 'greeting' };
 }
