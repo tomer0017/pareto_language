@@ -1,3 +1,4 @@
+import { CardVisual } from './CardVisual.js';
 import { Icon } from './Icon.js';
 import { tap } from './haptics.js';
 
@@ -20,7 +21,7 @@ export function ChoiceCard({ id, icon, title, sub, tone = 'brand', onSelect }: {
 }) {
   return (
     <button type="button" className={`choice-card card-press tone-${tone}`} data-choice={id} onClick={() => { tap(); onSelect(); }}>
-      <span className="choice-icon" aria-hidden>{icon}</span>
+      <span className="choice-icon" aria-hidden><CardVisual id={id} fallback={icon} /></span>
       <span className="choice-body">
         <span className="choice-title">{title}</span>
         <span className="choice-sub">{sub}</span>

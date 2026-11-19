@@ -1,3 +1,4 @@
+import { CardVisual } from '../../shared/ui/CardVisual.js';
 import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { useAppStore, type ListenPage, type View } from '../../shared/stores/appStore.js';
 import { L, t, type StringKey } from '../../shared/i18n/strings.js';
@@ -207,7 +208,7 @@ function TopicsPage({ mode, title, playlist, bookmarkKey, onBack, onPlay }: {
               return (
                 <button key={tp.id} type="button" className="link-row card-press topic-row" data-topic={tp.id} onClick={() => { tap(); onPlay(tp.id); }}>
                   <span className="topic-num" aria-hidden>{n ?? ''}</span>
-                  <span className="icon-tile" aria-hidden>{tp.icon}</span>
+                  <span className="icon-tile" aria-hidden><CardVisual id={`mission:${tp.id}`} fallback={tp.icon} /></span>
                   <span className="link-row-body">
                     <span className="link-row-title">{tp.title ?? t('survivalKit')}</span>
                     <span className="link-row-sub">{t(mode === 'situations' ? 'topicLines' : 'topicSentences', { n: tp.count })}</span>

@@ -1,3 +1,4 @@
+import { CardVisual } from '../../shared/ui/CardVisual.js';
 import { L, t } from '../../shared/i18n/strings.js';
 import { Icon } from '../../shared/ui/Icon.js';
 import { tap } from '../../shared/ui/haptics.js';
@@ -25,7 +26,7 @@ export function MissionCard({ mission, icon, status, isNext = false, onOpen }: {
       onClick={() => { tap(); onOpen(); }}
     >
       <span className="mcard-num" aria-hidden>{done ? <Icon name="check" size={18} /> : missionNumber(mission.day)}</span>
-      <span className="icon-tile" aria-hidden>{icon}</span>
+      <span className="icon-tile" aria-hidden><CardVisual id={`mission:${mission.id}`} fallback={icon} /></span>
       <span className="mcard-body">
         <span className="mcard-title">{L(mission.title)}</span>
         <span className="mcard-sub">{unavailable ? t('comingSoon') : L(mission.objective)}</span>

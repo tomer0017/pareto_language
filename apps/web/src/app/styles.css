@@ -1908,3 +1908,8 @@ div.jstep { box-shadow: none; border-color: var(--line); }
 .checkpoint[data-checkpoint="everyday-day"] .checkpoint-report dd { white-space: normal; text-align: end; font-size: .8rem; line-height: 1.4; }
 .checkpoint[data-checkpoint="everyday-day"] .checkpoint-outcome-icon { display: inline-block; margin-inline-end: 5px; font-size: .95rem; }
 .checkpoint[data-checkpoint="everyday-day"] .checkpoint-replay { min-width: 44px; min-height: 44px; }
+
+/* Primary card artwork only: preserve the approved containers and grid dimensions. */
+.card-visual { display: block; width: 100%; height: 100%; object-fit: contain; border-radius: inherit; pointer-events: none; }
+.foundation-cat-icon:has(> .card-visual) { display: inline-grid; width: 32px; height: 32px; }
+.icon-tile > .card-visual { border-radius: 12px; }

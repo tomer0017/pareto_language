@@ -1,3 +1,4 @@
+import { CardVisual } from '../../shared/ui/CardVisual.js';
 import { useEffect, useMemo, useState } from 'react';
 import { t } from '../../shared/i18n/strings.js';
 import { cancelSpeech, speak } from '../../shared/audio/tts.js';
@@ -213,7 +214,7 @@ export function FoundationSheet() {
                       const p = progress.byCategory[c.id] ?? { id: c.id, viewed: 0, total: c.words.length, pct: 0 };
                       return (
                         <button key={c.id} className={`foundation-cat card-press ${p.pct === 100 ? 'is-done' : ''}`} onClick={() => openCategory(c)} aria-label={`${t(c.titleKey)} · ${p.viewed}/${p.total}`}>
-                          <span className="foundation-cat-icon" aria-hidden>{c.icon}</span>
+                          <span className="foundation-cat-icon" aria-hidden><CardVisual id={`foundation:${c.id}`} fallback={c.icon} /></span>
                           <span className="foundation-cat-title">{t(c.titleKey)}</span>
                           <span className="foundation-cat-count dim">{p.pct === 100 ? '✓' : `${p.viewed}/${p.total}`}</span>
                           <Bar pct={p.pct} />

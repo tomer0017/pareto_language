@@ -1,3 +1,4 @@
+import { CardVisual } from '../../shared/ui/CardVisual.js';
 import { useAppStore } from '../../shared/stores/appStore.js';
 import { t } from '../../shared/i18n/strings.js';
 import { tap } from '../../shared/ui/haptics.js';
@@ -55,7 +56,7 @@ export function FreeLearning() {
         <div className="home-actions free-grid stagger" role="list">
           {entries.map((e) => (
             <button key={e.id} role="listitem" className={`action-card card-press free-card free-${e.id}`} data-free={e.id} onClick={() => { tap(); e.go(); }}>
-              <span className="action-icon" aria-hidden>{e.icon}</span>
+              <span className="action-icon" aria-hidden><CardVisual id={e.id} fallback={e.icon} /></span>
               <span className="action-title">{e.title}</span>
               <span className="action-sub">{e.sub}</span>
             </button>
