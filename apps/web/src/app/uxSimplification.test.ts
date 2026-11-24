@@ -131,9 +131,11 @@ describe('Home — the languages, ONE progress, exactly four ways to learn', () 
     expect(choicesOf(page)).toEqual(['basics', 'situations', 'games', 'listen']);
     const order = ['אני דובר', '10%', 'מילים בסיסיות', 'סיטואציות', 'משחקים וסיפורים', 'האזנה מהירה'].map((w) => words.indexOf(w));
     expect(order).toEqual([...order].sort((a, b) => a - b));
-    for (const line of ['🔤', 'המילים והביטויים שחייבים לדעת', '🎬', 'לומדים דרך מצבים אמיתיים מהטיול', '🎮', 'תרגול חופשי ומהנה', '🎧', 'לומדים גם בלי להסתכל על המסך']) {
+    for (const line of ['המילים והביטויים שחייבים לדעת', 'לומדים דרך מצבים אמיתיים מהטיול', 'תרגול חופשי ומהנה', 'לומדים גם בלי להסתכל על המסך']) {
       expect(words, line).toContain(line);
     }
+    // Each card carries its own artwork (the shared card visuals; the emoji stays as the fallback).
+    for (const art of ['blocks.svg', 'journey.svg', 'games.svg', 'headphones.svg']) expect(page, art).toContain(`images/cards/${art}`);
   });
 
   it('no clutter above (or below) the choices: no second metric, no next-step card, no promos, no paragraphs', () => {
@@ -322,7 +324,8 @@ describe('Listen — choose a mode, then what to hear, then listen', () => {
     expect(page.match(/class="link-row card-press topic-row"/g)).toHaveLength(dialogues.topics.length);
     expect(dialogues.topics.length).toBeGreaterThanOrEqual(25);
     expect(page).toMatch(/data-topic="introduce-myself"/);
-    expect(words).toMatch(/1 👋 להציג את עצמי \d+ שורות/);
+    expect(words).toMatch(/1 להציג את עצמי \d+ שורות/);
+    expect(page).toContain('images/cards/people.svg'); // the situation's own card artwork beside its number
     expect(page).not.toMatch(/now-card|parrot-play/);
     back();
     expect(app.useAppStore.getState()).toMatchObject({ view: 'listen', listenPage: null }); // back to the four modes
