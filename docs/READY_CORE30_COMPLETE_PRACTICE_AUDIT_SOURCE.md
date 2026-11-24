@@ -19338,7 +19338,7 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 Words are paired across languages by their concept KEY (not by position).
 
 1. `past.line.good` — EN "A hostel! Was it good?" · FR "Une auberge ! C’était bien ?" · ES "¡Un hostal! ¿Estuvo bien?" — meaning "הוסטל! היה טוב? (איך היה שם?)" / "A hostel! Was it good? (how was it there?)" — icon 🛏️ — new
-2. `past.line.back` — EN "It was good. And you? What did you do yesterday?" · FR "C’était bien. Et toi ? Tu as fait quoi hier ?" · ES "Estuvo bien. ¿Y tú? ¿Qué hiciste ayer?" — meaning "היה טוב. ואתה? מה עשית אתמול? (ענית — ועכשיו אתה שואל אותו בחזרה)" / "It was good. And you? What did you do yesterday? (you answered — now you turn the question back)" — icon 💬 — new
+2. `past.line.back` — EN "It was good. And you? What did you do yesterday?" · FR "C’était bien. Et toi ? Tu as fait quoi hier ?" · ES "Estuvo bien. ¿Y tú? ¿Qué hiciste ayer?" — meaning "היה טוב. ואתה? מה עשית אתמול? (ענית — ועכשיו שואלים בחזרה: „מה עשית אתמול?” — שאלה לכל אחד)" / "It was good. And you? What did you do yesterday? (you answered — now ask back: “What did you do yesterday?” works with anyone)" — icon 💬 — new
 
 No build-sentence card.
 
@@ -19364,7 +19364,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "I went to ___ — the answer to "where were you?"" / "I went to ___ — התשובה ל"איפה היית?""
 - Used in missions: 20, 24, 30
-- Exercised here as: quick-reply response (step 5, round 1, accepted); quick-reply response (step 5, round 2, wrong option); swap-it frame (step 6, round 1); quick-reply response (step 8, round 1, wrong option); quick-reply response (step 22, round 1, accepted); quick-reply response (step 22, round 2, wrong option); quick-reply response (step 22, round 4, wrong option); quick-reply response (step 25, round 1, accepted); quick-reply response (step 25, round 2, wrong option); quick-reply response (step 25, round 4, wrong option); quick-reply response (step 25, round 5, wrong option); dialogue choice what-did-you-do/c2 (accepted); dialogue choice what-did-you-do/c10 (WRONG option)
+- Exercised here as: quick-reply response (step 5, round 1, accepted); quick-reply response (step 5, round 2, wrong option); swap-it frame (step 6, round 1); quick-reply response (step 8, round 1, wrong option); quick-reply response (step 22, round 1, accepted); quick-reply response (step 22, round 2, wrong option); quick-reply response (step 22, round 4, wrong option); quick-reply response (step 25, round 1, accepted); quick-reply response (step 25, round 2, wrong option); quick-reply response (step 25, round 4, wrong option); quick-reply response (step 25, round 5, wrong option); quick-reply response (step 25, round 6, wrong option); dialogue choice what-did-you-do/c2 (accepted); dialogue choice what-did-you-do/c10 (WRONG option)
 
 ### Sentence: `phrase.past.i-saw`
 
@@ -19375,7 +19375,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 20
-- Exercised here as: quick-reply response (step 5, round 1, wrong option); quick-reply response (step 5, round 2, accepted); quick-reply response (step 8, round 1, wrong option); quick-reply response (step 22, round 1, wrong option); quick-reply response (step 22, round 2, accepted); quick-reply response (step 22, round 3, wrong option); quick-reply response (step 25, round 1, wrong option); quick-reply response (step 25, round 2, accepted); quick-reply response (step 25, round 3, wrong option); quick-reply response (step 25, round 6, wrong option); dialogue choice what-did-you-do/c2 (WRONG option); dialogue choice what-did-you-do/c4 (accepted); dialogue choice what-did-you-do/c6 (WRONG option)
+- Exercised here as: quick-reply response (step 5, round 1, wrong option); quick-reply response (step 5, round 2, accepted); quick-reply response (step 8, round 1, wrong option); quick-reply response (step 16, round 1, wrong option); quick-reply response (step 22, round 1, wrong option); quick-reply response (step 22, round 2, accepted); quick-reply response (step 22, round 3, wrong option); quick-reply response (step 22, round 4, wrong option); quick-reply response (step 25, round 1, wrong option); quick-reply response (step 25, round 2, accepted); quick-reply response (step 25, round 3, wrong option); quick-reply response (step 25, round 6, wrong option); dialogue choice what-did-you-do/c2 (WRONG option); dialogue choice what-did-you-do/c4 (accepted); dialogue choice what-did-you-do/c6 (WRONG option)
 
 ### Sentence: `phrase.past.i-ate`
 
@@ -19386,7 +19386,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 20
-- Exercised here as: quick-reply response (step 8, round 1, accepted); swap-it frame (step 9, round 1); quick-reply response (step 16, round 1, wrong option); quick-reply response (step 22, round 2, wrong option); quick-reply response (step 22, round 3, accepted); quick-reply response (step 22, round 4, wrong option); quick-reply response (step 25, round 2, wrong option); quick-reply response (step 25, round 3, accepted); quick-reply response (step 25, round 4, wrong option); quick-reply response (step 25, round 5, wrong option); quick-reply response (step 25, round 6, wrong option); dialogue choice what-did-you-do/c4 (WRONG option); dialogue choice what-did-you-do/c6 (accepted); dialogue choice what-did-you-do/c12 (WRONG option)
+- Exercised here as: quick-reply response (step 8, round 1, accepted); swap-it frame (step 9, round 1); quick-reply response (step 22, round 2, wrong option); quick-reply response (step 22, round 3, accepted); quick-reply response (step 25, round 2, wrong option); quick-reply response (step 25, round 3, accepted); quick-reply response (step 25, round 4, wrong option); quick-reply response (step 25, round 5, wrong option); dialogue choice what-did-you-do/c4 (WRONG option); dialogue choice what-did-you-do/c6 (accepted); dialogue choice what-did-you-do/c12 (WRONG option)
 
 ### Sentence: `phrase.past.it-was-great`
 
@@ -19625,13 +19625,13 @@ No meaning quiz in this mission.
 
 ### M20-Q10 — quick-reply (step 16, round 1 of 1)
 
-- Prompt displayed: "🗓️ Yesterday: 📍 Went → Old Town / 👀 Saw → Market / 🍽️ Ate → Fish / ⭐ It was → Great ‖ 📅 Last month: 🛏️ Stayed → Hostel ¦ Your friend asks — answer, and ask back." / "🗓️ אתמול: 📍 הלכתי → העיר העתיקה / 👀 ראיתי → השוק / 🍽️ אכלתי → דג / ⭐ היה → מעולה ‖ 📅 חודש שעבר: 🛏️ התארחתי → הוסטל ¦ החבר שואל — ענה, ושאל אותו בחזרה."
+- Prompt displayed: "🗓️ Yesterday: 📍 Went → Old Town / 👀 Saw → Market / 🍽️ Ate → Fish / ⭐ It was → Great ‖ 📅 Last month: 🛏️ Stayed → Hostel ¦ It was good — now your turn: ask your friend about their yesterday." / "🗓️ אתמול: 📍 הלכתי → העיר העתיקה / 👀 ראיתי → השוק / 🍽️ אכלתי → דג / ⭐ היה → מעולה ‖ 📅 חודש שעבר: 🛏️ התארחתי → הוסטל ¦ היה טוב — ועכשיו תורך: שאל את החבר על האתמול שלו."
 - Audio played: EN "Was it good?" · FR "C’était bien ?" · ES "¿Estuvo bien?"
 - Meaning of the audio (HE): "היה טוב?"
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
-  1. EN "It was good. And you? What did you do yesterday?" · FR "C’était bien. Et toi ? Tu as fait quoi hier ?" · ES "Estuvo bien. ¿Y tú? ¿Qué hiciste ayer?" · (HE gloss "מה עשית אתמול?") — `phrase.past.what-did-you-do` — ✅ accepted
-  2. EN "Yes, I ate fish." · FR "Oui, j’ai mangé du poisson." · ES "Sí, comí pescado." · (HE gloss "כן, אכלתי דג.") — `phrase.past.i-ate` — ❌ wrong
+  1. EN "What did you do yesterday?" · FR "Tu as fait quoi hier ?" · ES "¿Qué hiciste ayer?" · (HE gloss "מה עשית אתמול?") — `phrase.past.what-did-you-do` — ✅ accepted
+  2. EN "I saw the market." · FR "J’ai vu le marché." · ES "Vi el mercado." · (HE gloss "ראיתי את השוק.") — `phrase.past.i-saw` — ❌ wrong
   3. EN "I stayed in a hostel." · FR "J’ai logé dans une auberge." · ES "Me quedé en un hostal." · (HE gloss "ישנתי בהוסטל.") — `phrase.past.i-stayed` — ❌ wrong
 - Tests: phrase.past.what-did-you-do
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
@@ -19695,8 +19695,8 @@ No meaning quiz in this mission.
 - Meaning of the audio (HE): "היה טוב?"
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
-  1. EN "It was good. And you? What did you do yesterday?" · FR "C’était bien. Et toi ? Tu as fait quoi hier ?" · ES "Estuvo bien. ¿Y tú? ¿Qué hiciste ayer?" · (HE gloss "מה עשית אתמול?") — `phrase.past.what-did-you-do` — ✅ accepted
-  2. EN "Yes, I ate fish." · FR "Oui, j’ai mangé du poisson." · ES "Sí, comí pescado." · (HE gloss "כן, אכלתי דג.") — `phrase.past.i-ate` — ❌ wrong
+  1. EN "What did you do yesterday?" · FR "Tu as fait quoi hier ?" · ES "¿Qué hiciste ayer?" · (HE gloss "מה עשית אתמול?") — `phrase.past.what-did-you-do` — ✅ accepted
+  2. EN "I saw the market." · FR "J’ai vu le marché." · ES "Vi el mercado." · (HE gloss "ראיתי את השוק.") — `phrase.past.i-saw` — ❌ wrong
   3. EN "I went to the old town." · FR "Je suis allé dans la vieille ville." · ES "Fui al casco antiguo." · (HE gloss "הלכתי לעיר העתיקה.") — `phrase.past.i-went` — ❌ wrong
 - Tests: phrase.past.what-did-you-do
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
@@ -19773,9 +19773,9 @@ No meaning quiz in this mission.
 - Meaning of the audio (HE): "מלון! היה טוב?"
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
-  1. EN "It was good. And you? What did you do yesterday?" · FR "C’était bien. Et toi ? Tu as fait quoi hier ?" · ES "Estuvo bien. ¿Y tú? ¿Qué hiciste ayer?" · (HE gloss "מה עשית אתמול?") — `phrase.past.what-did-you-do` — ✅ accepted
+  1. EN "What did you do yesterday?" · FR "Tu as fait quoi hier ?" · ES "¿Qué hiciste ayer?" · (HE gloss "מה עשית אתמול?") — `phrase.past.what-did-you-do` — ✅ accepted
   2. EN "I saw the museum." · FR "J’ai vu le musée." · ES "Vi el museo." · (HE gloss "ראיתי את השוק.") — `phrase.past.i-saw` — ❌ wrong
-  3. EN "Yes, I ate chicken." · FR "Oui, j’ai mangé du poulet." · ES "Sí, comí pollo." · (HE gloss "כן, אכלתי דג.") — `phrase.past.i-ate` — ❌ wrong
+  3. EN "I went to the centre." · FR "Je suis allé au centre." · ES "Fui al centro." · (HE gloss "הלכתי לעיר העתיקה.") — `phrase.past.i-went` — ❌ wrong
 - Tests: phrase.past.what-did-you-do
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
@@ -30207,9 +30207,9 @@ Every learner-production sentence id of the Core, in order of first appearance. 
 | `phrase.trans.which-platform` | Which platform? | 19 | 24, 28 | 0 | 2 / 4 | 9 | 0 | 0 | yes | no |  |
 | `phrase.trans.does-stop` | Does this stop at the museum? | 19 | 24, 28 | 0 | 3 / 2 | 7 | 0 | 0 | yes | no |  |
 | `phrase.trans.single` | Single, please. | 19 | 24, 28 | 0 | 3 / 4 | 8 | 0 | 0 | yes | no |  |
-| `phrase.past.i-went` | I went to the old town. | 20 | 24, 30 | 0 | 3 / 3 | 11 | 0 | 0 | yes | no |  |
-| `phrase.past.i-saw` | I saw the market. | 20 | — | 0 | 1 / 2 | 10 | 0 | 0 | no | no |  |
-| `phrase.past.i-ate` | Yes, I ate fish. | 20 | — | 0 | 1 / 2 | 11 | 0 | 0 | no | no |  |
+| `phrase.past.i-went` | I went to the old town. | 20 | 24, 30 | 0 | 3 / 3 | 12 | 0 | 0 | yes | no |  |
+| `phrase.past.i-saw` | I saw the market. | 20 | — | 0 | 1 / 2 | 12 | 0 | 0 | no | no |  |
+| `phrase.past.i-ate` | Yes, I ate fish. | 20 | — | 0 | 1 / 2 | 8 | 0 | 0 | no | no |  |
 | `phrase.past.it-was-great` | Yes, it was great! | 20 | 24, 30 | 0 | 3 / 0 | 1 | 0 | 0 | yes | no |  |
 | `phrase.past.i-stayed` | I stayed in a hostel. | 20 | 24, 30 | 0 | 1 / 3 | 7 | 0 | 0 | yes | no |  |
 | `phrase.past.what-did-you-do` | What did you do yesterday? | 20 | — | 0 | 1 / 0 | 3 | 0 | 0 | no | no |  |
@@ -36481,12 +36481,12 @@ No questions.
 - Tests: phrase.past.i-stayed
 
 **M20-Q10** — quick-reply
-- Prompt: "🗓️ Yesterday: 📍 Went → Old Town / 👀 Saw → Market / 🍽️ Ate → Fish / ⭐ It was → Great ‖ 📅 Last month: 🛏️ Stayed → Hostel ¦ Your friend asks — answer, and ask back." / "🗓️ אתמול: 📍 הלכתי → העיר העתיקה / 👀 ראיתי → השוק / 🍽️ אכלתי → דג / ⭐ היה → מעולה ‖ 📅 חודש שעבר: 🛏️ התארחתי → הוסטל ¦ החבר שואל — ענה, ושאל אותו בחזרה."
+- Prompt: "🗓️ Yesterday: 📍 Went → Old Town / 👀 Saw → Market / 🍽️ Ate → Fish / ⭐ It was → Great ‖ 📅 Last month: 🛏️ Stayed → Hostel ¦ It was good — now your turn: ask your friend about their yesterday." / "🗓️ אתמול: 📍 הלכתי → העיר העתיקה / 👀 ראיתי → השוק / 🍽️ אכלתי → דג / ⭐ היה → מעולה ‖ 📅 חודש שעבר: 🛏️ התארחתי → הוסטל ¦ היה טוב — ועכשיו תורך: שאל את החבר על האתמול שלו."
 - Audio: Was it good? — (היה טוב?)
-- A: It was good. And you? What did you do yesterday? ✅
-- B: Yes, I ate fish.
+- A: What did you do yesterday? ✅
+- B: I saw the market.
 - C: I stayed in a hostel.
-- Correct: It was good. And you? What did you do yesterday?
+- Correct: What did you do yesterday?
 - Tests: phrase.past.what-did-you-do
 
 **M20-Q11** — visual-match
@@ -36576,10 +36576,10 @@ No questions.
 **M20-Q21** — quick-reply
 - Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio: Was it good? — (היה טוב?)
-- A: It was good. And you? What did you do yesterday? ✅
-- B: Yes, I ate fish.
+- A: What did you do yesterday? ✅
+- B: I saw the market.
 - C: I went to the old town.
-- Correct: It was good. And you? What did you do yesterday?
+- Correct: What did you do yesterday?
 - Tests: phrase.past.what-did-you-do
 
 **M20-Q22** — quick-reply
@@ -36630,10 +36630,10 @@ No questions.
 **M20-Q27** — quick-reply
 - Prompt: "🗓️ Another day: 📍 Went → 🏙️ Centre / 👀 Saw → 🏛️ Museum / 🍽️ Ate → 🍗 Chicken / ⭐ It was → Great ‖ 📅 Last month: 🛏️ Stayed → 🏨 Hotel ¦ 🎯 Another day — the same questions. Tell your friend." / "🗓️ יום אחר: 📍 הלכתי → 🏙️ המרכז / 👀 ראיתי → 🏛️ המוזיאון / 🍽️ אכלתי → 🍗 עוף / ⭐ היה → מעולה ‖ 📅 חודש שעבר: 🛏️ התארחתי → 🏨 מלון ¦ 🎯 יום אחר — אותן שאלות. ספר לחבר."
 - Audio: A hotel! Was it good? — (מלון! היה טוב?)
-- A: It was good. And you? What did you do yesterday? ✅
+- A: What did you do yesterday? ✅
 - B: I saw the museum.
-- C: Yes, I ate chicken.
-- Correct: It was good. And you? What did you do yesterday?
+- C: I went to the centre.
+- Correct: What did you do yesterday?
 - Tests: phrase.past.what-did-you-do
 
 ## Mission 21 — Future Travel & Plans

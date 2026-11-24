@@ -10,6 +10,10 @@ import type { CoverageConcept } from './mission01Coverage.js';
  * are FRAMES — "I went to", "I saw", "I ate", "What did you do yesterday?" — so a line that uses a frame with
  * another (verified-prior) detail practises the same chunk. "a hostel" is a detail the friend echoes ("A
  * hostel!"), never drilled — there is no hostel vocabulary lesson — so it is a `hear` chunk.
+ * "It was good" and "And you?" are the lead-in of the locked ask-back line: the learner says them inside that
+ * line in the supported conversation, but they are NOT production targets — teaching, No Help and the final
+ * retrieve the fourth tool ALONE ("What did you do yesterday?"). So they are held to the comprehension
+ * standard (`hear`: met with its meaning, understood), never asked for on their own.
  *
  * A chunk is accounted for in one of two ways (mission20.test.ts):
  *   - VERIFIED PRIOR — Missions 01–19 really taught it (`learnedBefore(lang, 20)`): used, not re-taught;
@@ -35,8 +39,8 @@ export const M20_CONCEPTS: readonly CoverageConcept[] = [
   { id: 'stayed-in', label: 'I stayed in ___', role: 'say', chunk: { en: 'I stayed in', es: 'Me quedé en', fr: 'J’ai logé dans' } },
   { id: 'hostel', label: 'A hostel', role: 'hear', chunk: { en: 'a hostel', es: 'un hostal', fr: 'une auberge' } },
   { id: 'was-it-good', label: 'Was it good?', role: 'hear', chunk: { en: 'Was it good?', es: '¿Estuvo bien?', fr: 'C’était bien ?' } },
-  { id: 'it-was-good', label: 'It was good', role: 'say', chunk: { en: 'It was good', es: 'Estuvo bien', fr: 'C’était bien' } },
-  { id: 'and-you', label: 'And you?', role: 'say', chunk: { en: 'And you?', es: '¿Y tú?', fr: 'Et toi ?' } },
+  { id: 'it-was-good', label: 'It was good', role: 'hear', chunk: { en: 'It was good', es: 'Estuvo bien', fr: 'C’était bien' } },
+  { id: 'and-you', label: 'And you?', role: 'hear', chunk: { en: 'And you?', es: '¿Y tú?', fr: 'Et toi ?' } },
   { id: 'what-did-you-do', label: 'What did you do yesterday?', role: 'say', chunk: { en: 'What did you do yesterday?', es: '¿Qué hiciste ayer?', fr: 'Tu as fait quoi hier ?' } },
   { id: 'me', label: 'Me?', role: 'hear', chunk: { en: 'Me?', es: '¿Yo?', fr: 'Moi ?' } },
   { id: 'nothing', label: 'Nothing!', role: 'hear', chunk: { en: 'Nothing!', es: '¡Nada!', fr: 'Rien !' } },

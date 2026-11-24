@@ -869,8 +869,9 @@ it at the end of any scroll; phone screens pixel-identical to before except the 
 
 The learner does not study a tense: they understand what a friend asks about their yesterday (and last month), answer
 it, and turn the question back. The conversation is locked word for word (EN / ES / FR; Hebrew support from the brief).
-- **Four production tools** — I went to ___ · I saw ___ · I ate ___ · What did you do yesterday? (asked back, wrapped
-  in "It was good. And you?"). "It was great" and "I stayed in ___" are secondary: one card, one small check, the
+- **Four production tools** — I went to ___ · I saw ___ · I ate ___ · What did you do yesterday? (the ask-back: the
+  conversation keeps the locked line "It was good. And you? What did you do yesterday?", but teaching, no help and the
+  final retrieve the question ALONE — a reusable tool, not a memorised line). "It was great" and "I stayed in ___" are secondary: one card, one small check, the
   conversation and one final answer each. The friend's own day ("Me? Nothing! I was tired. I slept all day.") is one
   comprehension moment.
 - **The Yesterday Story** — the one game object: a compact two-column story (🗓️ yesterday: 📍 went · 👀 saw · 🍽️ ate ·

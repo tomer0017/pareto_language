@@ -719,4 +719,6 @@ nothing under it at full scroll; at rest, scrolling content passes beneath it as
   story's information gap, no help = the four tools, the final's changed verified-prior details, 21 interactions,
   no grammar / builder / Flex / score, audio never blocking, Missions 01–19 and 21–30 pinned. Earlier tests' "later
   missions unchanged" pins now start at Mission 21 (the established narrowing when a mission gets its own pass).
+  The ask-back is retrieved ALONE outside the conversation (`ask()` in `m20Steps`: the tool's item id with no `text`
+  override, so the button says "What did you do yesterday?" itself); only the dialogue's turn says the locked line.
 - **Companion** — `companionCoach` introduces the first board: "Listen — and tap which part of your story they ask about."

@@ -187,6 +187,10 @@ export function m20Steps(lang: MissionLang): BootcampStep[] {
   // Every option is one of the learner's own locked lines, said whole — or, in the final, the same line with the final's details.
   const say = (id: string, ok: boolean) => [id, ok, l3(SAID[id]!)] as const;
   const fin = (id: keyof typeof FINAL_SAID, ok: boolean) => [id, ok, FINAL_SAID[id]] as const;
+  // The fourth tool, retrieved ALONE: "What did you do yesterday?" — the reusable question, not the whole locked line
+  // (no text override: the button says the sentence itself). Only the conversation keeps "It was good. And you? …".
+  // Its wrong options never start with "Yes": the right answer no longer answers "Was it good?", so a "Yes, …" line would be a trap.
+  const ask = (ok: boolean) => [BACK, ok] as const;
   // WHICH PART OF YOUR STORY? — a question is played; the learner taps the part it asks about.
   // A set of meanings, not a scale: the tiles are shuffled and follow the page's direction (a left-to-right
   // "ordered" row would put the story's first part on the far left of a Hebrew screen).
@@ -242,10 +246,10 @@ export function m20Steps(lang: MissionLang): BootcampStep[] {
     // WAS IT GOOD? — answer, and turn the conversation back.
     cards(['ואתה?', 'And you?'], board(5, ['ענית על הכל. עכשיו — לשאול בחזרה. הקש כדי לשמוע.', 'You have answered it all. Now — ask back. Tap to hear.']), [
       card('past.line.good', N_GOOD, ['הוסטל! היה טוב? (איך היה שם?)', 'A hostel! Was it good? (how was it there?)'], 'hostel'),
-      card('past.line.back', Y_BACK, ['היה טוב. ואתה? מה עשית אתמול? (ענית — ועכשיו אתה שואל אותו בחזרה)', 'It was good. And you? What did you do yesterday? (you answered — now you turn the question back)'], 'chat'),
+      card('past.line.back', Y_BACK, ['היה טוב. ואתה? מה עשית אתמול? (ענית — ועכשיו שואלים בחזרה: „מה עשית אתמול?” — שאלה לכל אחד)', 'It was good. And you? What did you do yesterday? (you answered — now ask back: “What did you do yesterday?” works with anyone)'], 'chat'),
     ]),
-    k.practice({ kind: 'quickReply', label: board(5, ['החבר שואל — ענה, ושאל אותו בחזרה.', 'Your friend asks — answer, and ask back.']), rounds: [
-      { prompt: 'reply.past.was-it-good', options: [say(BACK, true), say(ATE, false), say(STAYED, false)] },
+    k.practice({ kind: 'quickReply', label: board(5, ['היה טוב — ועכשיו תורך: שאל את החבר על האתמול שלו.', 'It was good — now your turn: ask your friend about their yesterday.']), rounds: [
+      { prompt: 'reply.past.was-it-good', options: [ask(true), say(SAW, false), say(STAYED, false)] },
     ] }),
     // THE FRIEND'S DAY — one comprehension moment, no deck.
     cards(['והחבר?', 'And your friend?'], board(5, ['עכשיו החבר מספר. הקש כדי לשמוע.', 'Now your friend tells. Tap to hear.']), [
@@ -261,7 +265,7 @@ export function m20Steps(lang: MissionLang): BootcampStep[] {
       { prompt: 'reply.past.where-were-you', options: [say(WENT, true), say(SAW, false), say(STAYED, false)] },
       { prompt: 'reply.past.what-did-you-see', options: [say(SAW, true), say(WENT, false), say(ATE, false)] },
       { prompt: 'reply.past.did-you-eat', options: [say(ATE, true), say(SAW, false), say(STAYED, false)] },
-      { prompt: 'reply.past.was-it-good', options: [say(BACK, true), say(ATE, false), say(WENT, false)] },
+      { prompt: 'reply.past.was-it-good', options: [ask(true), say(SAW, false), say(WENT, false)] },
     ] }),
     k.receipt(['בלי עזרה — לאן הלכת, מה ראית, מה אכלת, ושאלת בחזרה.', 'No help — where you went, what you saw, what you ate, and you asked back.']),
     // THE PAYOFF — the whole scene (the video, where one exists)…
@@ -273,7 +277,7 @@ export function m20Steps(lang: MissionLang): BootcampStep[] {
       { prompt: 'reply.past.did-you-eat', options: [fin(ATE, true), fin(SAW, false), fin(STAYED, false)] },
       { prompt: 'reply.past.did-you-like', options: [say(GREAT, true), fin(WENT, false), fin(ATE, false)] },
       { prompt: 'reply.past.where-did-you-stay', options: [fin(STAYED, true), fin(WENT, false), fin(ATE, false)] },
-      { npc: N_GOOD_FINAL, options: [say(BACK, true), fin(SAW, false), fin(ATE, false)] },
+      { npc: N_GOOD_FINAL, options: [ask(true), fin(SAW, false), fin(WENT, false)] },
     ] }),
     k.receipt(YESTERDAY_STORY),
     { kind: 'summary' },

@@ -2295,6 +2295,14 @@ answer, one deliberate miss): 18 runs — 360 / 390 / 430 × EN / ES / FR × HE 
 mission to the victory screen, the slow re-ask, the story only grows, no overflow, the Daily Goal never on a control,
 no console errors). Video: no `{lang}_20.mp4` yet — the step is skipped. Artwork: pending (manifest).
 
+**Patch — the ask-back, owned alone (2026-11-24).** The fourth tool was retrieved as the whole locked line ("It was
+good. And you? What did you do yesterday?"). Teaching, no help and the final now ask for the standalone question —
+EN "What did you do yesterday?" · ES "¿Qué hiciste ayer?" · FR "Tu as fait quoi hier ?" (the sentence itself, no
+wrapping text); the conversation keeps the long line exactly. The friend still asks "Was it good?" — and since the
+right answer no longer answers it, no wrong option there starts with "Yes" (I ate → I saw / I went). "It was good" and
+"And you?" are held to the comprehension standard (`hear`) — understood, never asked for alone; prior learning handed
+to Missions 21+ is identical (diffed). Still 21 interactions; Missions 01–19 / 21–30 pins unchanged; 69 Mission 20 tests.
+
 **Also fixed (from 646a4c5, card visuals):** the three `.card-visual` rules sat after the Mission 18 scoped block and
 broke its guard — moved above it (rendering unchanged); two UX tests now check the card artwork instead of the emoji it
 replaced.

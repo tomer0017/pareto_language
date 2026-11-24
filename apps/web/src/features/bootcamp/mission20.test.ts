@@ -14,7 +14,7 @@ import { missionPhases, practiceReplay } from './missionFlow.js';
 import { BOOTCAMP_PLAN, missionNumber } from './plan.js';
 import {
   FINAL_SAID, FRIEND_TILES, HOW_TILES, M20_PROPS, M20_SLOTS, M20_STAGES, N_END, N_GOOD, N_GOOD_FINAL, N_STAY, N_WHERE, SAID, STORY_TILES, TOOLS, TRANSFER,
-  YESTERDAY_STORY, Y_GREAT, Y_STAYED, anotherDayStory, yesterdayState, yesterdayStory, type StoryStage,
+  YESTERDAY_STORY, Y_BACK, Y_GREAT, Y_STAYED, anotherDayStory, yesterdayState, yesterdayStory, type StoryStage,
 } from './practicePast.js';
 import { validatePracticeStep } from './practiceEngines.js';
 import { learnedBefore, missionContent, teachingEncounters, unpreparedChunks, unpreparedWords } from './priorLearning.js';
@@ -81,6 +81,10 @@ const [WENT, SAW, ATE, BACK] = TOOLS;
 const GREAT = 'phrase.past.it-was-great';
 const STAYED = 'phrase.past.i-stayed';
 const LEARNER = [WENT, SAW, ATE, GREAT, STAYED, BACK];
+/** The fourth tool on its own — the reusable question, exactly (the brief's target-language forms). */
+const STANDALONE: Record<CoverageLang, string> = { en: 'What did you do yesterday?', es: '¿Qué hiciste ayer?', fr: 'Tu as fait quoi hier ?' };
+/** The locked line's lead-in — part of the conversation, never required on its own outside it. */
+const LEAD_IN: Record<CoverageLang, string[]> = { en: ['It was good', 'And you?'], es: ['Estuvo bien', '¿Y tú?'], fr: ['C’était bien', 'Et toi ?'] };
 /** Grammar the mission must never show (EN / HE): tense names, verb lists, "did", was / were tables, conjugation. */
 const GRAMMAR = /grammar|tense|past simple|simple past|conjugat|infinitive|irregular|regular verb|\bverbs?\b|participle|\bdid\b \+|go → went|see → saw|eat → ate|stay → stayed|was \/ were|דקדוק|זמן עבר|פועל|פעלים|נטייה|הטיה/i;
 const SCOREBOARD = /score|points|\bXP\b|streak|timer|seconds|%|\d+\s*\/\s*\d+|ניקוד|נקודות|רצף|טיימר|שניות/i;
@@ -305,11 +309,11 @@ describe('production — four tools, taught whole, then retrieved', () => {
       for (const s of stepsOf(d, 'swap')) expect(s.transferOnly, lang).toBeUndefined(); // a part of the mission, not a separate Flex Round
     }
   });
-  it('29. every option anywhere is one of the learner\'s own locked lines said whole — or, in the final, the same line with the final\'s details; a friend\'s line is never an answer', () => {
+  it('29. every option anywhere is one of the learner\'s own locked lines said whole — or the fourth tool asked ALONE, or, in the final, the same line with the final\'s details; a friend\'s line is never an answer', () => {
     const FRIEND = LOCKED.en.filter((l) => l.startsWith('NPC: ')).map((l) => l.slice(5));
     for (const lang of LANGS) {
       const d = day(lang);
-      const allowed = [...LEARNER.map((id) => at(SAID[id]!, lang)), ...Object.values(FINAL_SAID).map((x) => x[IX[lang]])];
+      const allowed = [...LEARNER.map((id) => at(SAID[id]!, lang)), STANDALONE[lang], ...Object.values(FINAL_SAID).map((x) => x[IX[lang]])];
       for (const [, r] of quickRounds(d)) for (const o of r.options) expect(allowed, `${lang} ${said(d, o)}`).toContain(said(d, o));
       if (lang === 'en') for (const [, r] of quickRounds(d)) for (const o of r.options) expect(FRIEND).not.toContain(said(d, o));
       for (const id of LEARNER) expect(SAID[id]![IX[lang]], lang).toBe(id === STAYED || id === BACK ? SAID[id]![IX[lang]] : text(d, `${lang}.${id}`));
@@ -461,9 +465,73 @@ describe('NO HELP — exactly the four tools (21)', () => {
       expect(qr.label, lang).toBeUndefined();
       for (const r of qr.rounds) { expect(r.situation, lang).toBeUndefined(); expect(r.npc, lang).toBeUndefined(); }
       expect(qr.rounds.map((r) => [strip(r.promptItemId), accepted(r)]), lang).toEqual([['reply.past.where-were-you', WENT], ['reply.past.what-did-you-see', SAW], ['reply.past.did-you-eat', ATE], ['reply.past.was-it-good', BACK]]);
-      for (const r of qr.rounds) for (const o of r.options) expect(LEARNER.map((id) => at(SAID[id]!, lang)), lang).toContain(said(d, o)); // the canonical lines — no final details
+      // the canonical lines — no final details — and the fourth tool asked alone
+      for (const r of qr.rounds) for (const o of r.options) expect([...LEARNER.map((id) => at(SAID[id]!, lang)), STANDALONE[lang]], lang).toContain(said(d, o));
       // "Yes, it was great!" would answer "Was it good?" — so it is never a wrong option there.
       for (const r of qr.rounds) if (strip(r.promptItemId) === 'reply.past.was-it-good') expect(r.options.map((o) => strip(o.itemId)), lang).not.toContain(GREAT);
+    }
+  });
+});
+
+describe('THE FOURTH TOOL — "What did you do yesterday?", owned ALONE (the conversation keeps the whole locked line)', () => {
+  /** The rounds whose accepted answer is the fourth tool, by phase. */
+  const askRounds = (d: BootcampDayContent) => quickRounds(d).filter(([, r]) => accepted(r) === BACK)
+    .map(([i, r]) => [i < dialogueAt(d) ? 'teaching' : i < videoAt(d) ? 'no help' : 'final', r] as const);
+  it('1. the canonical conversation still says the full long line, exactly — and only there', () => {
+    for (const lang of LANGS) {
+      const d = day(lang);
+      const full = LOCKED[lang][11]!.slice(5);
+      expect(at(Y_BACK, lang), lang).toBe(full);
+      expect(script(lang)[11], lang).toBe(`YOU: ${full}`);
+      // the conversation's ask-back turn accepts the whole line (and its slow re-ask, the same line)
+      const turns = scene(d).nodes.flatMap((n) => (n.choices ?? []).filter((c) => c.correct && c.itemId === `${lang}.${BACK}`));
+      expect(turns.length, lang).toBeGreaterThan(0);
+      for (const c of turns) expect(c.en, lang).toBe(full);
+      // the card teaches the locked line whole, and points at the question on its own
+      const card = cardsOf(d).find((w) => w.key === 'past.line.back')!;
+      expect(card.text, lang).toBe(full);
+      expect(card.meaning.en, lang).toContain('“What did you do yesterday?” works with anyone');
+      expect(card.meaning.he, lang).toContain('„מה עשית אתמול?”');
+    }
+  });
+  it('2. the fourth core tool IS the standalone question (EN / ES / FR exact)', () => {
+    for (const lang of LANGS) expect(text(day(lang), `${lang}.${TOOLS[3]}`), lang).toBe(STANDALONE[lang]);
+  });
+  it('3–5. teaching retrieval, No Help and the final each ask for the standalone question — the button says it alone, nothing else to pass', () => {
+    for (const lang of LANGS) {
+      const d = day(lang);
+      const rounds = askRounds(d);
+      expect(rounds.map(([where]) => where), lang).toEqual(['teaching', 'no help', 'final']);
+      for (const [where, r] of rounds) {
+        const ok = r.options.find((o) => o.correct)!;
+        expect(ok.text, `${lang} ${where}`).toBeUndefined(); // no wrapping line: the sentence itself
+        expect(said(d, ok), `${lang} ${where}`).toBe(STANDALONE[lang]);
+        for (const lead of LEAD_IN[lang]) expect(said(d, ok), `${lang} ${where}`).not.toContain(lead);
+        expect(said(d, ok), `${lang} ${where}`).not.toBe(at(Y_BACK, lang));
+        // the friend still asks "Was it good?" — the moment to ask back; the final's friend follows the hotel
+        expect(heardIn(d, r), `${lang} ${where}`).toBe(where === 'final' ? at(N_GOOD_FINAL, lang) : text(d, `${lang}.reply.past.was-it-good`));
+        // the right answer no longer answers "Was it good?" — so no wrong option starts with "Yes" (a trap)
+        for (const o of r.options.filter((x) => !x.correct)) expect(said(d, o), `${lang} ${where}`).not.toMatch(/^(Yes|Sí|Oui)\b/);
+      }
+      // the long line is never an option outside the conversation
+      for (const [, r] of quickRounds(d)) for (const o of r.options) expect(said(d, o), lang).not.toBe(at(Y_BACK, lang));
+    }
+  });
+  it('the teaching round names the move (your turn — ask about their yesterday), without requiring the lead-in', () => {
+    for (const lang of LANGS) {
+      const d = day(lang);
+      const [i] = quickRounds(d).find(([, r]) => accepted(r) === BACK)!;
+      const [he, en] = boardText(d.steps[i]!);
+      expect(en, lang).toContain('now your turn: ask your friend about their yesterday');
+      expect(he, lang).toContain('עכשיו תורך: שאל את החבר על האתמול שלו');
+    }
+  });
+  it('"It was good" and "And you?" stay understood (comprehension), never a production target', () => {
+    for (const id of ['it-was-good', 'and-you']) expect(M20_CONCEPTS.find((c) => c.id === id)!.role, id).toBe('hear');
+    expect(M20_CONCEPTS.find((c) => c.id === 'what-did-you-do')!.role).toBe('say');
+    for (const lang of LANGS) {
+      const rows = coverageOf(day(lang), lang, M20_CONCEPTS);
+      for (const id of ['it-was-good', 'and-you', 'what-did-you-do']) expect(rows.find((r) => r.id === id)!.covered, `${lang} ${id}`).toBe(true);
     }
   });
 });
