@@ -864,3 +864,23 @@ phone can change through it. No content, copy, route, navigation, store, Daily G
 QA in real Chrome at 360 / 390 / 430 / 768 / 820 / 1024 / 1280 / 1440 × HE / EN, 23 screens each: no horizontal
 overflow, nothing on the rail, the Daily Goal never on a fixed control (CTA, transport, bar, rail) and nothing under
 it at the end of any scroll; phone screens pixel-identical to before except the story player.
+
+## Mission 20 — Past & Recent Events: tell your yesterday (2026-11-24)
+
+The learner does not study a tense: they understand what a friend asks about their yesterday (and last month), answer
+it, and turn the question back. The conversation is locked word for word (EN / ES / FR; Hebrew support from the brief).
+- **Four production tools** — I went to ___ · I saw ___ · I ate ___ · What did you do yesterday? (asked back, wrapped
+  in "It was good. And you?"). "It was great" and "I stayed in ___" are secondary: one card, one small check, the
+  conversation and one final answer each. The friend's own day ("Me? Nothing! I was tired. I slept all day.") is one
+  comprehension moment.
+- **The Yesterday Story** — the one game object: a compact two-column story (🗓️ yesterday: 📍 went · 👀 saw · 🍽️ ate ·
+  ⭐ it was ‖ 📅 last month: 🛏️ stayed), "?" until the learner has heard and answered the line that says it. The
+  friend's questions are played and the learner taps WHICH PART of the story is asked about — the question's function,
+  never its grammar ("Where were you?" → 📍, "Where did you stay?" → 🛏️).
+- **Transfer, verified prior** (`learnedBefore(lang, 20)`): one small swap each for went (the beach), ate (chicken) and
+  stayed (a hotel); the final is ANOTHER day — the same questions with the centre, the museum, chicken and a hotel —
+  every detail met in Missions 01–19 in every language. No grammar, no builder, no Flex Round, no vocabulary deck.
+- **21 interactions** (the hard ceiling): 8 teaching / comprehension · 3 transfer · 4 no help · 6 final. The video
+  step uses the standard resolver (`{lang}_20.mp4`; none exists yet — safely skipped). Artwork: semantic emoji slots;
+  production art pending (docs/MISSION20_ASSET_MANIFEST.md). Missions 01–19 and 21–30 are byte-for-byte unchanged — the
+  four Mission 20 sentences later missions reuse keep their id and wording.

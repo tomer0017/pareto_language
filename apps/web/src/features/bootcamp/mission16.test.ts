@@ -177,7 +177,7 @@ describe('the conversation is locked, and Mission 16 is in its place', () => {
   });
   const raw = (a: number, b?: number) => Object.fromEntries(LANGS.map((l) => [l, fnv(JSON.stringify(BOOTCAMP_PLAN.slice(a, b).map((m) => MISSIONS_BY_LANG[l]![m.day]!)))]));
   it('Missions 01–15 are byte-for-byte unchanged by this pass', () => { expect(raw(0, 15)).toEqual({ en: 'dd4a7cca', es: '6a50181c', fr: 'd49d989c' }); });
-  it('Missions 20–30 are byte-for-byte unchanged by this pass (Missions 17–19 have their own passes since: mission17.test.ts … mission19.test.ts)', () => { expect(raw(19)).toEqual({ en: '7ebcbddb', es: '1dc1ec3a', fr: 'a7f0fbd8' }); });
+  it('Missions 21–30 are byte-for-byte unchanged by this pass (Missions 17–20 have their own passes since: mission17.test.ts … mission20.test.ts)', () => { expect(raw(20)).toEqual({ en: 'ff68024a', es: '6e772a30', fr: '6a40024a' }); });
   it('the Everyday checkpoint still reuses the same two sentences, word for word', () => {
     for (const lang of LANGS) {
       expect(text(day(lang), `${lang}.phrase.hobby.i-love-surfing`)).toBe(at(Y_LOVE, lang));

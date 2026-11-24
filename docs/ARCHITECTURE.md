@@ -704,3 +704,19 @@ nothing under it at full scroll; at rest, scrolling content passes beneath it as
   nothing hidden, no `.dg-` / Mission 18 rules; the real screens rendered (react-dom/server + a tiny element tree)
   still have the shapes the selectors depend on (launch list, mission grid, free grid, player page, videos stage,
   reader hero order); the key layout decisions.
+
+## Mission 20 — Past & Recent Events (2026-11-24)
+
+- **Content** — `features/bootcamp/core/pastEvents.ts` (spec; `steps: m20Steps`, `numbered: true`) and
+  `features/bootcamp/practicePast.ts`. The Yesterday Story is the existing two-column board (`HotelStaySummary` /
+  `splitTimeBoard`): `🗓️ Yesterday: 📍 Went → ? / … ‖ 📅 Last month: 🛏️ Stayed → ?`; `yesterdayStory(n)` and the
+  serialisable `yesterdayState(n)` (stages `nothing → went → saw → ate → how → stayed`). Question-type boards are
+  `visualMatch` rounds over `STORY_TILES` (shuffled — a set of meanings, not a scale); good → great is an ordered pair.
+  The final's options reuse the tools' item ids with `text` overrides (`FINAL_SAID`), so a changed-detail answer is
+  logged under the function it practises and adds no course sentence.
+- **Guards** — `mission20.test.ts` (64): locked EN / ES / FR transcript (exact), the dialogue tree, prior audit per
+  language, strict teach-before-test (`unpreparedWords` / `unpreparedChunks`, wrong options included), coverage, the
+  story's information gap, no help = the four tools, the final's changed verified-prior details, 21 interactions,
+  no grammar / builder / Flex / score, audio never blocking, Missions 01–19 and 21–30 pinned. Earlier tests' "later
+  missions unchanged" pins now start at Mission 21 (the established narrowing when a mission gets its own pass).
+- **Companion** — `companionCoach` introduces the first board: "Listen — and tap which part of your story they ask about."

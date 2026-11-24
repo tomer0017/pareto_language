@@ -1164,23 +1164,17 @@ _Reply-training drill:_ “Hi there! Can I help you find anything?” · “Of c
 - **I saw the market.** · ראיתי את השוק.
 - **Yes, I ate fish.** · כן, אכלתי דג.
 - **Yes, it was great!** · כן, היה מעולה!
-- **It was good.** · היה טוב.
 - **I stayed in a hostel.** · ישנתי בהוסטל. — _I stayed in ___ — hostel, hotel, apartment._
 - **What did you do yesterday?** · מה עשית אתמול?
-- **It was bad.** · היה רע.
+- **It was good.** · היה טוב.
 
 ### Expected replies (you hear)
 - **Where were you yesterday?** · איפה היית אתמול?
 - **What did you see?** · מה ראית?
 - **Did you eat there?** · אכלת שם?
 - **Did you like it?** · אהבת?
-- **Where did you stay?** · איפה ישנת?
+- **Where did you stay?** · איפה התארחת?
 - **Was it good?** · היה טוב?
-
-_Reply-training drill:_ “What did you see?” · “Did you eat there?” · “Did you like it?” · “Where did you stay?”
-
-### Recovery tools reused
-`Can you repeat that?`
 
 ### Dialogue: `what-did-you-do` — happy path
 - **🧑 Them:** “Hey! Where were you yesterday?” · היי! איפה היית אתמול?
@@ -1191,11 +1185,19 @@ _Reply-training drill:_ “What did you see?” · “Did you eat there?” · �
 - **🫵 You:** “Yes, I ate fish.” · כן, אכלתי דג.
 - **🧑 Them:** “Did you like it?” · אהבת?
 - **🫵 You:** “Yes, it was great!” · כן, היה מעולה!
-- **🧑 Them:** “You were in Argentina last month, right? Where did you stay?” · היית בארגנטינה בחודש שעבר, נכון? איפה ישנת?
-- **🫵 You:** “I stayed in a hostel.” · ישנתי בהוסטל.
+- **🧑 Them:** “You were in Argentina last month, right? Where did you stay?” · היית בארגנטינה בחודש שעבר, נכון? איפה התארחת?
+- **🫵 You:** “I stayed in a hostel.” · התארחתי בהוסטל.
 - **🧑 Them:** “A hostel! Was it good?” · הוסטל! היה טוב?
 - **🫵 You:** “It was good. And you? What did you do yesterday?” · היה טוב. ואתה? מה עשית אתמול?
 - **🧑 Them:** “Me? Nothing! I was tired. I slept all day.” · אני? כלום! הייתי עייף. ישנתי כל היום.
+
+#### Wrong / recovery branches
+- ⚠︎ less useful: 🫵 “I saw the market.” → 🧑 “Hey! Where were you yesterday?” · היי! איפה היית אתמול?
+- ⚠︎ less useful: 🫵 “Yes, I ate fish.” → 🧑 “Nice! What did you see?” · יפה! מה ראית?
+- ⚠︎ less useful: 🫵 “I saw the market.” → 🧑 “Did you eat there?” · אכלת שם?
+- ⚠︎ less useful: 🫵 “I stayed in a hostel.” → 🧑 “Did you like it?” · אהבת?
+- ⚠︎ less useful: 🫵 “I went to the old town.” → 🧑 “You were in Argentina last month, right? Where did you stay?” · היית בארגנטינה בחודש שעבר, נכון? איפה התארחת?
+- ⚠︎ less useful: 🫵 “Yes, I ate fish.” → 🧑 “A hostel! Was it good?” · הוסטל! היה טוב?
 
 ### Review status
 - 🤖 AI-drafted (English + Hebrew) — **pending human / native-Hebrew review**

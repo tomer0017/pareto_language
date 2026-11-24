@@ -666,3 +666,13 @@ on desktops. Rule for future work: **phone layout lives in `styles.css`; tablet 
 `responsive.css` inside a `min-width ≥ 768px` query** — `app/responsive.test.ts` enforces it and checks the markup
 its selectors rely on. One fix in `styles.css` reaches phones: `.reading-gear { width: auto }` (the story player's
 quiz button was pushed off-screen).
+
+## Mission 20 — Past & Recent Events — 2026-11-24
+
+`core/pastEvents.ts` (the locked conversation; each learner turn has one wrong line of this chat → the friend asks again
+slowly) + `practicePast.ts` (`m20Steps`: whole-line cards, the Yesterday Story board, "which part of your story?" boards,
+three verified-prior swaps, the conversation once, no help (4), the video, the final's other day (6), the 🗓️ YESTERDAY
+STORY result) + `mission20Coverage.ts` (chunks as frames: "I went to", "I saw", "I ate", "I stayed in"), registered in
+`priorLearning.MISSION_CONCEPTS`. Rules kept for later missions: the four sentences reused by the City checkpoint and the
+last missions ("I went…", "Yes, it was great!", "I stayed in a hostel.", "It was good.") are byte-identical; "It was bad."
+is archived (`retired.ts`, `past-events`); the shared "Can you repeat that?" is no longer bundled with Mission 20.

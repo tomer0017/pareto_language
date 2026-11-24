@@ -72,6 +72,8 @@ export const MISSION_GAME_INTRO: Record<string, Record<string, LocalizedText>> =
   'supermarket': { visualMatch: T('שמע — והקש על המוצר.', 'Listen — and tap the product.') },
   // The train ride's first board is the ticket type: what "single" means, never a price.
   'public-transport': { visualMatch: T('שמע — והקש על סוג הכרטיס.', 'Listen — and tap the ticket type.') },
+  // Yesterday's first board is the story itself: which part of it does the question ask about — never the answer.
+  'past-events': { visualMatch: T('שמע — והקש על איזה חלק בסיפור שואלים.', 'Listen — and tap which part of your story they ask about.') },
 };
 
 export interface CoachLine {

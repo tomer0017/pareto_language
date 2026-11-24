@@ -162,7 +162,7 @@ describe('the conversation is locked, and Mission 15 is in its place', () => {
   });
   const raw = (a: number, b?: number) => Object.fromEntries(LANGS.map((l) => [l, fnv(JSON.stringify(BOOTCAMP_PLAN.slice(a, b).map((m) => MISSIONS_BY_LANG[l]![m.day]!)))]));
   it('Missions 01–14 are byte-for-byte unchanged by this pass', () => { expect(raw(0, 14)).toEqual({ en: 'ff40b97d', es: '81eb2485', fr: '18e0f495' }); });
-  it('Missions 20–30 (Missions 16–19 have their own passes since: mission16.test.ts … mission19.test.ts) are byte-for-byte unchanged by this pass', () => { expect(raw(19, 23)).toEqual({ en: '6cfe3964', es: 'f8f97e32', fr: 'a90c0a1a' }); expect(raw(24)).toEqual({ en: 'aee7fe64', es: '4b9c9cd9', fr: '6af8deb0' }); }); // Mission 24 left out: its own correction since (the "should" card — practiceCity.test.ts)
+  it('Missions 21–30 (Missions 16–20 have their own passes since: mission16.test.ts … mission20.test.ts) are byte-for-byte unchanged by this pass', () => { expect(raw(20, 23)).toEqual({ en: 'c4f9e38d', es: '2141ba3c', fr: 'cd5f44f8' }); expect(raw(24)).toEqual({ en: 'aee7fe64', es: '4b9c9cd9', fr: '6af8deb0' }); }); // Mission 20 left out: its own pass since (mission20.test.ts). // Mission 24 left out: its own correction since (the "should" card — practiceCity.test.ts)
   it('EN / ES / FR parity: the same journey, step for step, each in its own words', () => {
     const shape = (d: BootcampDayContent): unknown => d.steps.map((s) => {
       if (s.kind === 'quickReply') return [s.kind, s.challenge ?? false, s.transferOnly ?? false, s.label, s.rounds.map((r) => [strip(r.promptItemId), Boolean(r.npc), r.situation, r.options.map((o) => [strip(o.itemId), o.correct, Boolean(o.text)])])];

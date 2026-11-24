@@ -53,6 +53,7 @@ export const RETIRED_SENTENCES: Record<'en' | 'fr' | 'es', RetiredSentence[]> = 
     { id: 'en.reply.trans.platform-two', text: 'Platform two.', meaning: T('רציף שתיים.', 'Platform two.'), retiredFrom: 'public-transport', reason: "The staff's whole line is the sentence now (reply.trans.platform-straight): “Platform two.” is heard inside it." },
     { id: 'en.reply.trans.every-ten', text: 'Every ten minutes.', meaning: T('כל עשר דקות.', 'Every ten minutes.'), retiredFrom: 'public-transport', reason: "The staff's whole line is the sentence now (reply.trans.fare): “every ten minutes” is heard inside it." },
     { id: 'en.reply.trans.stop-next', text: 'Your stop is next.', meaning: T('התחנה שלך הבאה.', 'Your stop is next.'), retiredFrom: 'public-transport', reason: "The staff's whole line is the sentence now (reply.trans.stop-is-next): “your stop is next” is heard inside it." },
+    { id: 'en.phrase.past.it-was-bad', text: 'It was bad.', meaning: T('היה רע.', 'It was bad.'), retiredFrom: 'past-events', reason: 'Not in the locked conversation; the Mission 20 pass keeps “how was it?” to great and good — no extra adjective.' },
   ],
   fr: [
     { id: 'fr.phrase.hotel.two-nights', text: 'Pour deux nuits.', meaning: T('לשני לילות.', 'For two nights.'), tip: T('תבנית: Pour ___ nuits — משך השהות.', 'Template: Pour ___ nuits — the length of your stay.'), retiredFrom: 'hotel-check-in', reason: "Not part of the check-in conversation; no longer taught or practised." },
@@ -88,6 +89,7 @@ export const RETIRED_SENTENCES: Record<'en' | 'fr' | 'es', RetiredSentence[]> = 
     { id: 'fr.reply.trans.platform-two', text: 'Quai numéro deux.', meaning: T('רציף שתיים.', 'Platform two.'), retiredFrom: 'public-transport', reason: "The staff's whole line is the sentence now (reply.trans.platform-straight): “Platform two.” is heard inside it." },
     { id: 'fr.reply.trans.every-ten', text: 'Toutes les dix minutes.', meaning: T('כל עשר דקות.', 'Every ten minutes.'), retiredFrom: 'public-transport', reason: "The staff's whole line is the sentence now (reply.trans.fare): “every ten minutes” is heard inside it." },
     { id: 'fr.reply.trans.stop-next', text: 'Votre arrêt est le prochain.', meaning: T('התחנה שלך הבאה.', 'Your stop is next.'), retiredFrom: 'public-transport', reason: "The staff's whole line is the sentence now (reply.trans.stop-is-next): “your stop is next” is heard inside it." },
+    { id: 'fr.phrase.past.it-was-bad', text: 'C’était mauvais.', meaning: T('היה רע.', 'It was bad.'), retiredFrom: 'past-events', reason: 'Not in the locked conversation; the Mission 20 pass keeps “how was it?” to great and good — no extra adjective.' },
   ],
   es: [
     { id: 'es.phrase.hotel.two-nights', text: 'Para dos noches.', meaning: T('לשני לילות.', 'For two nights.'), tip: T('תבנית: Para ___ noches — משך השהות.', 'Template: Para ___ noches — the length of your stay.'), retiredFrom: 'hotel-check-in', reason: "Not part of the check-in conversation; no longer taught or practised." },
@@ -123,5 +125,6 @@ export const RETIRED_SENTENCES: Record<'en' | 'fr' | 'es', RetiredSentence[]> = 
     { id: 'es.reply.trans.platform-two', text: 'Andén número dos.', meaning: T('רציף שתיים.', 'Platform two.'), retiredFrom: 'public-transport', reason: "The staff's whole line is the sentence now (reply.trans.platform-straight): “Platform two.” is heard inside it." },
     { id: 'es.reply.trans.every-ten', text: 'Cada diez minutos.', meaning: T('כל עשר דקות.', 'Every ten minutes.'), retiredFrom: 'public-transport', reason: "The staff's whole line is the sentence now (reply.trans.fare): “every ten minutes” is heard inside it." },
     { id: 'es.reply.trans.stop-next', text: 'Su parada es la siguiente.', meaning: T('התחנה שלך הבאה.', 'Your stop is next.'), retiredFrom: 'public-transport', reason: "The staff's whole line is the sentence now (reply.trans.stop-is-next): “your stop is next” is heard inside it." },
+    { id: 'es.phrase.past.it-was-bad', text: 'Estuvo mal.', meaning: T('היה רע.', 'It was bad.'), retiredFrom: 'past-events', reason: 'Not in the locked conversation; the Mission 20 pass keeps “how was it?” to great and good — no extra adjective.' },
   ],
 };

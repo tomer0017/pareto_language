@@ -59,7 +59,7 @@ Not present in the runtime (so not exported): free sentence construction, typing
 Not a mission. Eight phrases shared by all missions; a mission bundles the ones it uses. Selecting one in a dialogue is always accepted.
 
 - `phrase.recovery.dont-understand` — EN "Sorry, I don't understand." · FR "Désolé, je ne comprends pas." · ES "Perdón, no entiendo." · HE "סליחה, אני לא מבין." — help tool — bundled in missions: 14
-- `phrase.recovery.repeat` — EN "Can you repeat that?" · FR "Vous pouvez répéter ?" · ES "¿Puede repetir, por favor?" · HE "אפשר לחזור על זה?" — help tool — bundled in missions: 01, 03, 05, 06, 08, 14, 20, 23, 24, 26, 28, 29, 30
+- `phrase.recovery.repeat` — EN "Can you repeat that?" · FR "Vous pouvez répéter ?" · ES "¿Puede repetir, por favor?" · HE "אפשר לחזור על זה?" — help tool — bundled in missions: 01, 03, 05, 06, 08, 14, 23, 24, 26, 28, 29, 30
 - `phrase.recovery.slowly` — EN "Please speak slowly." · FR "Parlez lentement, s’il vous plaît." · ES "Más despacio, por favor." · HE "דבר לאט, בבקשה." — help tool — bundled in missions: 01, 02, 03, 04, 06, 07, 09, 14, 21, 22, 24, 25, 26, 27, 28, 29, 30
 - `phrase.recovery.show-me` — EN "Can you show me?" · FR "Vous pouvez me montrer ?" · ES "¿Me lo puede mostrar?" · HE "אתה יכול להראות לי?" — help tool — bundled in missions: 04, 07
 - `phrase.recovery.one-moment` — EN "One moment, please." · FR "Un instant, s’il vous plaît." · ES "Un momento, por favor." · HE "רגע אחד, בבקשה." — help tool — bundled in missions: 02, 03, 06, 08, 14
@@ -300,7 +300,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 14, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 23, 24, 26, 28, 29, 30
 - Exercised here as: sentence review (step 17); cold-open correct option (step 20); dialogue choice meeting-host/c1 (accepted)
 
 ### Sentence: `phrase.recovery.slowly`
@@ -2525,7 +2525,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 14, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 23, 24, 26, 28, 29, 30
 - Exercised here as: sentence review (step 20); dialogue choice breakfast-order/c2 (accepted)
 
 ### Sentence: `phrase.recovery.slowly`
@@ -5122,7 +5122,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 14, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 23, 24, 26, 28, 29, 30
 - Exercised here as: dialogue choice lost-in-town/c1 (accepted)
 
 ### Sentence: `phrase.recovery.thank-you`
@@ -6086,7 +6086,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 14, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 23, 24, 26, 28, 29, 30
 - Exercised here as: dialogue choice border-control/c2 (accepted)
 
 ### Sentence: `phrase.recovery.slowly`
@@ -8417,7 +8417,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 14, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 23, 24, 26, 28, 29, 30
 - Exercised here as: dialogue choice hotel-checkin/c1 (accepted)
 
 ### Sentence: `phrase.recovery.one-moment`
@@ -14288,7 +14288,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 14, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 23, 24, 26, 28, 29, 30
 - Exercised here as: nothing (listed only)
 
 ### Sentence: `phrase.recovery.slowly`
@@ -19222,7 +19222,7 @@ Every learner sentence of this mission is a line in a scene.
 - Phase: 4 — City & Conversation / עיר ושיחה 🏙️
 - Source runtime file(s): `apps/web/src/features/bootcamp/core/pastEvents.ts` — one multilingual spec, built per language by `apps/web/src/features/bootcamp/author.ts`
 - Video: found by convention, never written into mission content — EN `videos/en/en_20.mp4` · FR `videos/fr/fr_20.mp4` · ES `videos/es/es_20.mp4`. Played only where that file exists (inventory: `docs/CORE30_FINAL_VIDEO_ACTION_MAP.md`).
-- Video steps inside the Practice flow: no
+- Video steps inside the Practice flow: yes (see flow)
 
 ## Learning goal / intro screen
 
@@ -19244,36 +19244,112 @@ Intro screen (first Practice step; identical in the English, French and Spanish 
 
 - Icon: ⏪
 - Title: "Mission 20: Past & Recent Events" / "משימה 20: עבר: מה עשיתי"
-- Text 1: ""Where were you?" "What did you do?" — every traveler is asked this, every day." / ""איפה היית?" "מה עשית?" — שואלים את זה כל מטייל, כל יום."
-- Text 2: "Five past verbs are enough: went, saw, ate, stayed, was." / "חמישה פעלים בעבר מספיקים: הלכתי, ראיתי, אכלתי, ישנתי, היה."
-- Button: "Tell what I did" / "לספר מה עשיתי"
+- Text 1: "Yesterday you spent the day out in the city." / "אתמול טיילת בעיר."
+- Text 2: "Tell your friend what you did." / "ספר לחבר מה עשית."
+- Button: "Tell about yesterday" / "לספר על אתמול"
 
 ## Current Practice flow
 
 1. `talk` — intro screen — "Mission 20: Past & Recent Events"
-2. `tool` — key sentence (listen → reveal → say aloud) — `phrase.past.i-went` “I went to the old town.” · label "I went" / "הלכתי" (1/6)
-3. `tool` — key sentence (listen → reveal → say aloud) — `phrase.past.i-saw` “I saw the market.” · label "I saw" / "ראיתי" (2/6)
-4. `tool` — key sentence (listen → reveal → say aloud) — `phrase.past.i-ate` “Yes, I ate fish.” · label "I ate" / "אכלתי" (3/6)
-5. `tool` — key sentence (listen → reveal → say aloud) — `phrase.past.i-stayed` “I stayed in a hostel.” · label "I stayed" / "ישנתי / התארחתי" (4/6)
-6. `tool` — key sentence (listen → reveal → say aloud) — `phrase.past.it-was-great` “Yes, it was great!” · label "How it was" / "איך היה" (5/6)
-7. `tool` — key sentence (listen → reveal → say aloud) — `phrase.past.what-did-you-do` “What did you do yesterday?” · label "Ask back" / "לשאול בחזרה" (6/6)
-8. `replies` — expected replies (listening drill) — after `phrase.past.i-went`: 4 replies
-9. `receipt` — receipt (proof card) — "You recognize a question about yesterday — even without catching every word." / "אתה מזהה שאלה על אתמול — גם בלי להבין כל מילה."
-10. `quickReply` — quick reply (hear → pick your response) — 6 round(s)
-11. `swap` — swap it (one frame, several endings) — 5 round(s)
-12. `sentenceBuilder` — sentence builder (put the chunks in order) — 2 round(s)
-13. `dialogue` — dialogue (choose your line) — scene `what-did-you-do`
-14. `receipt` — receipt (proof card) — "You said where you were, what you saw, what you ate and where you stayed — in the past." / "סיפרת איפה היית, מה ראית, מה אכלת ואיפה ישנת — בעבר."
-15. `swipe` — sentence review — 12 sentences
-16. `quickReply` — quick reply (hear → pick your response) — 6 round(s) · speed challenge
-17. `receipt` — receipt (proof card) — "You told a small story about yesterday — where you went, what you saw, what you ate, where you stayed and how it was — and asked back." / "סיפרת סיפור קטן על אתמול — לאן הלכת, מה ראית, מה אכלת, איפה ישנת ואיך היה — ושאלת בחזרה."
-18. `summary` — victory screen
+2. `prime` — before-we-speak (word intro) — 2 words → builds ``
+3. `visualMatch` — visual match (hear → tap the tile) — 1 round(s)
+4. `prime` — before-we-speak (word intro) — 2 words → builds ``
+5. `quickReply` — quick reply (hear → pick your response) — 2 round(s)
+6. `swap` — swap it (one frame, several endings) — 1 round(s)
+7. `prime` — before-we-speak (word intro) — 2 words → builds ``
+8. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+9. `swap` — swap it (one frame, several endings) — 1 round(s)
+10. `prime` — before-we-speak (word intro) — 2 words → builds ``
+11. `visualMatch` — visual match (hear → tap the tile) — 1 round(s)
+12. `prime` — before-we-speak (word intro) — 2 words → builds ``
+13. `visualMatch` — visual match (hear → tap the tile) — 1 round(s)
+14. `swap` — swap it (one frame, several endings) — 1 round(s)
+15. `prime` — before-we-speak (word intro) — 2 words → builds ``
+16. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+17. `prime` — before-we-speak (word intro) — 1 words → builds ``
+18. `visualMatch` — visual match (hear → tap the tile) — 1 round(s)
+19. `receipt` — receipt (proof card) — "🗓️ Yesterday: 📍 Went → Old Town / 👀 Saw → Market / 🍽️ Ate → Fish / ⭐ It was → Great ‖ 📅 Last month: 🛏️ Stayed → Hostel ¦ Your yesterday story — and you asked back." / "🗓️ אתמול: 📍 הלכתי → העיר העתיקה / 👀 ראיתי → השוק / 🍽️ אכלתי → דג / ⭐ היה → מעולה ‖ 📅 חודש שעבר: 🛏️ התארחתי → הוסטל ¦ הסיפור שלך מאתמול — ושאלת בחזרה."
+20. `dialogue` — dialogue (choose your line) — scene `what-did-you-do`
+21. `receipt` — receipt (proof card) — "The whole conversation — yesterday, last month, and you asked back." / "כל השיחה — אתמול, חודש שעבר, ושאלת בחזרה."
+22. `quickReply` — quick reply (hear → pick your response) — 4 round(s) · speed challenge
+23. `receipt` — receipt (proof card) — "No help — where you went, what you saw, what you ate, and you asked back." / "בלי עזרה — לאן הלכת, מה ראית, מה אכלת, ושאלת בחזרה."
+24. `video` — video — mode again
+25. `quickReply` — quick reply (hear → pick your response) — 6 round(s)
+26. `receipt` — receipt (proof card) — "🗓️ YESTERDAY STORY ¦ 🗓️ Yesterday: 📍 Went → Old Town / 👀 Saw → Market / 🍽️ Ate → Fish / ⭐ It was → Great ‖ 📅 Last month: 🛏️ Stayed → Hostel ¦ You told your yesterday — and another day — and asked back. 😴 Your friend? Slept all day." / "🗓️ סיפור של אתמול ¦ 🗓️ אתמול: 📍 הלכתי → העיר העתיקה / 👀 ראיתי → השוק / 🍽️ אכלתי → דג / ⭐ היה → מעולה ‖ 📅 חודש שעבר: 🛏️ התארחתי → הוסטל ¦ סיפרת את האתמול שלך — וגם יום אחר — ושאלת בחזרה. 😴 והחבר? ישן כל היום."
+27. `summary` — victory screen
 
 Step sequence identical in EN / FR / ES: yes.
 
 ## Before we speak / word intro
 
-No vocabulary pre-step.
+Step 2. Label: "Where were you?" / "איפה היית?". Intro: "🗓️ Yesterday: 📍 Went → ? / 👀 Saw → ? / 🍽️ Ate → ? / ⭐ It was → ? ‖ 📅 Last month: 🛏️ Stayed → ? ¦ Your friend asks about yesterday. Tap to hear." / "🗓️ אתמול: 📍 הלכתי → ? / 👀 ראיתי → ? / 🍽️ אכלתי → ? / ⭐ היה → ? ‖ 📅 חודש שעבר: 🛏️ התארחתי → ? ¦ החבר שואל על אתמול. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `past.line.where` — EN "Hey! Where were you yesterday?" · FR "Salut ! Tu étais où hier ?" · ES "¡Hola! ¿Dónde estuviste ayer?" — meaning "היי! איפה היית אתמול? (📍 שואלים על מקום — לאן הלכת)" / "Hey! Where were you yesterday? (📍 a question about a place — where you went)" — icon 💬 — new
+2. `past.line.went` — EN "I went to the old town." · FR "Je suis allé dans la vieille ville." · ES "Fui al casco antiguo." — meaning "הלכתי לעיר העתיקה. (הלכתי ל___ — המקום שהלכת אליו)" / "I went to the old town. (I went to ___ — the place you went to)" — icon 🏘️ — new
+
+No build-sentence card.
+
+Step 4. Label: "What did you see?" / "מה ראית?". Intro: "🗓️ Yesterday: 📍 Went → Old Town / 👀 Saw → ? / 🍽️ Ate → ? / ⭐ It was → ? ‖ 📅 Last month: 🛏️ Stayed → ? ¦ And what did you see there? Tap to hear." / "🗓️ אתמול: 📍 הלכתי → העיר העתיקה / 👀 ראיתי → ? / 🍽️ אכלתי → ? / ⭐ היה → ? ‖ 📅 חודש שעבר: 🛏️ התארחתי → ? ¦ ומה ראית שם? הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `past.line.see` — EN "Nice! What did you see?" · FR "Sympa ! Tu as vu quoi ?" · ES "¡Qué bien! ¿Qué viste?" — meaning "יפה! מה ראית? (👀 שואלים מה ראית)" / "Nice! What did you see? (👀 a question about what you saw)" — icon 💬 — new
+2. `past.line.saw` — EN "I saw the market." · FR "J’ai vu le marché." · ES "Vi el mercado." — meaning "ראיתי את השוק. (ראיתי ___ — מה שראית)" / "I saw the market. (I saw ___ — what you saw)" — icon 🧺 — new
+
+No build-sentence card.
+
+Step 7. Label: "Did you eat there?" / "אכלת שם?". Intro: "🗓️ Yesterday: 📍 Went → Old Town / 👀 Saw → Market / 🍽️ Ate → ? / ⭐ It was → ? ‖ 📅 Last month: 🛏️ Stayed → ? ¦ And food? Tap to hear." / "🗓️ אתמול: 📍 הלכתי → העיר העתיקה / 👀 ראיתי → השוק / 🍽️ אכלתי → ? / ⭐ היה → ? ‖ 📅 חודש שעבר: 🛏️ התארחתי → ? ¦ ואוכל? הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `past.line.eat` — EN "Did you eat there?" · FR "Tu as mangé là-bas ?" · ES "¿Comiste allí?" — meaning "אכלת שם? (🍽️ אוכל — באותו מקום)" / "Did you eat there? (🍽️ food — at that place)" — icon 🍽️ — new
+2. `past.line.ate` — EN "Yes, I ate fish." · FR "Oui, j’ai mangé du poisson." · ES "Sí, comí pescado." — meaning "כן, אכלתי דג. (אכלתי ___ — מה שאכלת)" / "Yes, I ate fish. (I ate ___ — what you ate)" — icon 🍽️ — new
+
+No build-sentence card.
+
+Step 10. Label: "How was it?" / "איך היה?". Intro: "🗓️ Yesterday: 📍 Went → Old Town / 👀 Saw → Market / 🍽️ Ate → Fish / ⭐ It was → ? ‖ 📅 Last month: 🛏️ Stayed → ? ¦ Your friend asks how it was. Tap to hear." / "🗓️ אתמול: 📍 הלכתי → העיר העתיקה / 👀 ראיתי → השוק / 🍽️ אכלתי → דג / ⭐ היה → ? ‖ 📅 חודש שעבר: 🛏️ התארחתי → ? ¦ החבר שואל איך היה. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `past.line.like` — EN "Did you like it?" · FR "Tu as aimé ?" · ES "¿Te gustó?" — meaning "אהבת? (⭐ איך היה?)" / "Did you like it? (⭐ how was it?)" — icon 💬 — new
+2. `past.line.great` — EN "Yes, it was great!" · FR "Oui, c’était super !" · ES "¡Sí, estuvo genial!" — meaning "כן, היה מעולה! (🤩 מעולה — יותר מטוב)" / "Yes, it was great! (🤩 great — better than good)" — icon 💬 — new
+
+No build-sentence card.
+
+Step 12. Label: "Last month" / "חודש שעבר". Intro: "🗓️ Yesterday: 📍 Went → Old Town / 👀 Saw → Market / 🍽️ Ate → Fish / ⭐ It was → Great ‖ 📅 Last month: 🛏️ Stayed → ? ¦ Now your friend asks about last month. Tap to hear." / "🗓️ אתמול: 📍 הלכתי → העיר העתיקה / 👀 ראיתי → השוק / 🍽️ אכלתי → דג / ⭐ היה → מעולה ‖ 📅 חודש שעבר: 🛏️ התארחתי → ? ¦ עכשיו החבר שואל על חודש שעבר. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `past.line.stay` — EN "You were in Argentina last month, right? Where did you stay?" · FR "Tu étais en Argentine le mois dernier, non ? Tu as logé où ?" · ES "Estuviste en Argentina el mes pasado, ¿no? ¿Dónde te quedaste?" — meaning "היית בארגנטינה בחודש שעבר, נכון? איפה התארחת? (📅 חודש שעבר · 🛏️ המקום שבו התארחת בטיול — לא לאן הלכת)" / "You were in Argentina last month, right? Where did you stay? (📅 last month · 🛏️ your place on that trip — not where you went)" — icon 🛏️ — new
+2. `past.line.stayed` — EN "I stayed in a hostel." · FR "J’ai logé dans une auberge." · ES "Me quedé en un hostal." — meaning "התארחתי בהוסטל. (התארחתי ב___ — המקום שלך בטיול)" / "I stayed in a hostel. (I stayed in ___ — your place on that trip)" — icon 🛏️ — new
+
+No build-sentence card.
+
+Step 15. Label: "And you?" / "ואתה?". Intro: "🗓️ Yesterday: 📍 Went → Old Town / 👀 Saw → Market / 🍽️ Ate → Fish / ⭐ It was → Great ‖ 📅 Last month: 🛏️ Stayed → Hostel ¦ You have answered it all. Now — ask back. Tap to hear." / "🗓️ אתמול: 📍 הלכתי → העיר העתיקה / 👀 ראיתי → השוק / 🍽️ אכלתי → דג / ⭐ היה → מעולה ‖ 📅 חודש שעבר: 🛏️ התארחתי → הוסטל ¦ ענית על הכל. עכשיו — לשאול בחזרה. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `past.line.good` — EN "A hostel! Was it good?" · FR "Une auberge ! C’était bien ?" · ES "¡Un hostal! ¿Estuvo bien?" — meaning "הוסטל! היה טוב? (איך היה שם?)" / "A hostel! Was it good? (how was it there?)" — icon 🛏️ — new
+2. `past.line.back` — EN "It was good. And you? What did you do yesterday?" · FR "C’était bien. Et toi ? Tu as fait quoi hier ?" · ES "Estuvo bien. ¿Y tú? ¿Qué hiciste ayer?" — meaning "היה טוב. ואתה? מה עשית אתמול? (ענית — ועכשיו אתה שואל אותו בחזרה)" / "It was good. And you? What did you do yesterday? (you answered — now you turn the question back)" — icon 💬 — new
+
+No build-sentence card.
+
+Step 17. Label: "And your friend?" / "והחבר?". Intro: "🗓️ Yesterday: 📍 Went → Old Town / 👀 Saw → Market / 🍽️ Ate → Fish / ⭐ It was → Great ‖ 📅 Last month: 🛏️ Stayed → Hostel ¦ Now your friend tells. Tap to hear." / "🗓️ אתמול: 📍 הלכתי → העיר העתיקה / 👀 ראיתי → השוק / 🍽️ אכלתי → דג / ⭐ היה → מעולה ‖ 📅 חודש שעבר: 🛏️ התארחתי → הוסטל ¦ עכשיו החבר מספר. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `past.line.end` — EN "Me? Nothing! I was tired. I slept all day." · FR "Moi ? Rien ! J’étais fatigué. J’ai dormi toute la journée." · ES "¿Yo? ¡Nada! Estaba cansado. Dormí todo el día." — meaning "אני? כלום! הייתי עייף. ישנתי כל היום. (😴 לא עשה כלום — היה עייף וישן)" / "Me? Nothing! I was tired. I slept all day. (😴 did nothing — tired, slept all day)" — icon 😴 — new
+
+No build-sentence card.
 
 ## Every sentence in this mission
 
@@ -19288,7 +19364,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "I went to ___ — the answer to "where were you?"" / "I went to ___ — התשובה ל"איפה היית?""
 - Used in missions: 20, 24, 30
-- Exercised here as: key sentence (step 2); "you said" lead-in of the expected-replies drill (step 8); quick-reply response (step 10, round 2, wrong option); quick-reply response (step 10, round 4, wrong option); quick-reply response (step 10, round 5, wrong option); quick-reply response (step 10, round 6, wrong option); swap-it frame (step 11, round 1); swap-it frame (step 11, round 2); sentence-builder target (step 12, round 1); sentence review (step 15); quick-reply response (step 16, round 1, accepted); quick-reply response (step 16, round 2, wrong option); quick-reply response (step 16, round 4, wrong option); quick-reply response (step 16, round 5, wrong option); dialogue choice what-did-you-do/c2 (accepted)
+- Exercised here as: quick-reply response (step 5, round 1, accepted); quick-reply response (step 5, round 2, wrong option); swap-it frame (step 6, round 1); quick-reply response (step 8, round 1, wrong option); quick-reply response (step 22, round 1, accepted); quick-reply response (step 22, round 2, wrong option); quick-reply response (step 22, round 4, wrong option); quick-reply response (step 25, round 1, accepted); quick-reply response (step 25, round 2, wrong option); quick-reply response (step 25, round 4, wrong option); quick-reply response (step 25, round 5, wrong option); dialogue choice what-did-you-do/c2 (accepted); dialogue choice what-did-you-do/c10 (WRONG option)
 
 ### Sentence: `phrase.past.i-saw`
 
@@ -19299,7 +19375,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 20
-- Exercised here as: key sentence (step 3); quick-reply response (step 10, round 1, accepted); quick-reply response (step 10, round 2, wrong option); quick-reply response (step 10, round 5, wrong option); sentence review (step 15); quick-reply response (step 16, round 2, accepted); quick-reply response (step 16, round 3, wrong option); quick-reply response (step 16, round 6, wrong option); dialogue choice what-did-you-do/c4 (accepted)
+- Exercised here as: quick-reply response (step 5, round 1, wrong option); quick-reply response (step 5, round 2, accepted); quick-reply response (step 8, round 1, wrong option); quick-reply response (step 22, round 1, wrong option); quick-reply response (step 22, round 2, accepted); quick-reply response (step 22, round 3, wrong option); quick-reply response (step 25, round 1, wrong option); quick-reply response (step 25, round 2, accepted); quick-reply response (step 25, round 3, wrong option); quick-reply response (step 25, round 6, wrong option); dialogue choice what-did-you-do/c2 (WRONG option); dialogue choice what-did-you-do/c4 (accepted); dialogue choice what-did-you-do/c6 (WRONG option)
 
 ### Sentence: `phrase.past.i-ate`
 
@@ -19310,7 +19386,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 20
-- Exercised here as: key sentence (step 4); quick-reply response (step 10, round 1, wrong option); quick-reply response (step 10, round 2, accepted); quick-reply response (step 10, round 4, wrong option); sentence review (step 15); quick-reply response (step 16, round 2, wrong option); quick-reply response (step 16, round 3, accepted); quick-reply response (step 16, round 5, wrong option); quick-reply response (step 16, round 6, wrong option); dialogue choice what-did-you-do/c6 (accepted)
+- Exercised here as: quick-reply response (step 8, round 1, accepted); swap-it frame (step 9, round 1); quick-reply response (step 16, round 1, wrong option); quick-reply response (step 22, round 2, wrong option); quick-reply response (step 22, round 3, accepted); quick-reply response (step 22, round 4, wrong option); quick-reply response (step 25, round 2, wrong option); quick-reply response (step 25, round 3, accepted); quick-reply response (step 25, round 4, wrong option); quick-reply response (step 25, round 5, wrong option); quick-reply response (step 25, round 6, wrong option); dialogue choice what-did-you-do/c4 (WRONG option); dialogue choice what-did-you-do/c6 (accepted); dialogue choice what-did-you-do/c12 (WRONG option)
 
 ### Sentence: `phrase.past.it-was-great`
 
@@ -19321,18 +19397,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 20, 24, 30
-- Exercised here as: key sentence (step 6); quick-reply response (step 10, round 3, accepted); sentence review (step 15); quick-reply response (step 16, round 1, wrong option); quick-reply response (step 16, round 4, accepted); dialogue choice what-did-you-do/c8 (accepted)
-
-### Sentence: `phrase.past.it-was-good`
-
-- EN: It was good.
-- HE: היה טוב.
-- FR: C’était bien.
-- ES: Estuvo bien.
-- Role: learner production
-- Tip / pattern note: none
-- Used in missions: 20, 24, 30
-- Exercised here as: quick-reply response (step 10, round 3, accepted); quick-reply response (step 10, round 6, wrong option); swap-it frame (step 11, round 4); sentence review (step 15); dialogue choice what-did-you-do/c8 (accepted)
+- Exercised here as: quick-reply response (step 25, round 4, accepted); dialogue choice what-did-you-do/c8 (accepted)
 
 ### Sentence: `phrase.past.i-stayed`
 
@@ -19343,7 +19408,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "I stayed in ___ — a hostel, a hotel, an apartment." / "I stayed in ___ — hostel, hotel, apartment."
 - Used in missions: 20, 24, 30
-- Exercised here as: key sentence (step 5); quick-reply response (step 10, round 1, wrong option); quick-reply response (step 10, round 3, wrong option); quick-reply response (step 10, round 4, accepted); swap-it frame (step 11, round 3); sentence review (step 15); quick-reply response (step 16, round 1, wrong option); quick-reply response (step 16, round 3, wrong option); quick-reply response (step 16, round 5, accepted); dialogue choice what-did-you-do/c10 (accepted); dialogue choice what-did-you-do/c10b (accepted)
+- Exercised here as: swap-it frame (step 14, round 1); quick-reply response (step 16, round 1, wrong option); quick-reply response (step 22, round 1, wrong option); quick-reply response (step 22, round 3, wrong option); quick-reply response (step 25, round 1, wrong option); quick-reply response (step 25, round 3, wrong option); quick-reply response (step 25, round 5, accepted); dialogue choice what-did-you-do/c8 (WRONG option); dialogue choice what-did-you-do/c10 (accepted)
 
 ### Sentence: `phrase.past.what-did-you-do`
 
@@ -19354,18 +19419,18 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 20
-- Exercised here as: key sentence (step 7); quick-reply response (step 10, round 5, accepted); quick-reply response (step 10, round 6, accepted); sentence-builder target (step 12, round 2); sentence review (step 15); quick-reply response (step 16, round 4, wrong option); quick-reply response (step 16, round 6, accepted); dialogue choice what-did-you-do/c12 (accepted)
+- Exercised here as: quick-reply response (step 16, round 1, accepted); quick-reply response (step 22, round 4, accepted); quick-reply response (step 25, round 6, accepted); dialogue choice what-did-you-do/c12 (accepted)
 
-### Sentence: `phrase.past.it-was-bad`
+### Sentence: `phrase.past.it-was-good`
 
-- EN: It was bad.
-- HE: היה רע.
-- FR: C’était mauvais.
-- ES: Estuvo mal.
+- EN: It was good.
+- HE: היה טוב.
+- FR: C’était bien.
+- ES: Estuvo bien.
 - Role: learner production
 - Tip / pattern note: none
-- Used in missions: 20
-- Exercised here as: swap-it frame (step 11, round 5)
+- Used in missions: 20, 24, 30
+- Exercised here as: nothing (listed only)
 
 ### Sentence: `reply.past.where-were-you`
 
@@ -19376,7 +19441,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 20
-- Exercised here as: sentence review (step 15)
+- Exercised here as: quick-reply prompt (step 5, round 1); quick-reply prompt (step 22, round 1); quick-reply prompt (step 25, round 1)
 
 ### Sentence: `reply.past.what-did-you-see`
 
@@ -19387,7 +19452,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 20
-- Exercised here as: expected-reply audio (step 8); quick-reply prompt (step 10, round 1); sentence review (step 15)
+- Exercised here as: quick-reply prompt (step 5, round 2); quick-reply prompt (step 22, round 2); quick-reply prompt (step 25, round 2)
 
 ### Sentence: `reply.past.did-you-eat`
 
@@ -19398,7 +19463,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 20
-- Exercised here as: expected-reply audio (step 8); quick-reply prompt (step 10, round 2); sentence review (step 15)
+- Exercised here as: quick-reply prompt (step 8, round 1); quick-reply prompt (step 22, round 3); quick-reply prompt (step 25, round 3)
 
 ### Sentence: `reply.past.did-you-like`
 
@@ -19409,18 +19474,18 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 20
-- Exercised here as: expected-reply audio (step 8); quick-reply prompt (step 10, round 3)
+- Exercised here as: quick-reply prompt (step 25, round 4)
 
 ### Sentence: `reply.past.where-did-you-stay`
 
 - EN: Where did you stay?
-- HE: איפה ישנת?
+- HE: איפה התארחת?
 - FR: Tu as logé où ?
 - ES: ¿Dónde te quedaste?
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 20
-- Exercised here as: expected-reply audio (step 8); quick-reply prompt (step 10, round 4); sentence review (step 15)
+- Exercised here as: quick-reply prompt (step 25, round 5)
 
 ### Sentence: `reply.past.was-it-good`
 
@@ -19431,75 +19496,11 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 20
-- Exercised here as: quick-reply prompt (step 10, round 5)
-
-### Sentence: `phrase.recovery.repeat`
-
-- EN: Can you repeat that?
-- HE: אפשר לחזור על זה?
-- FR: Vous pouvez répéter ?
-- ES: ¿Puede repetir, por favor?
-- Role: conversation-help tool (global Recovery Toolkit)
-- Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 14, 20, 23, 24, 26, 28, 29, 30
-- Exercised here as: sentence review (step 15); dialogue choice what-did-you-do/c10 (accepted)
+- Exercised here as: quick-reply prompt (step 16, round 1); quick-reply prompt (step 22, round 4)
 
 ## Expected replies / listening items
 
-Lead-in screen: "You said:" / "אמרת:" — EN "I went to the old town." · FR "Je suis allé dans la vieille ville." · ES "Fui al casco antiguo." — then "What might they answer? Learn the replies before they surprise you." / "מה הם עלולים לענות? נלמד את התשובות לפני שהן מפתיעות אותך." — button 👂 "I'm ready" / "אני מוכן".
-Linked learner sentence: `phrase.past.i-went`. Each reply below is played once automatically; the learner picks its MEANING from three buttons. Distractors are always the first two OTHER replies of this same drill, in drill order (runtime rule), so the three choices are shuffled per session.
-
-### M20-Q01 — expected-reply (step 8, reply 1 of 4)
-
-- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (1/4)
-- Audio played: EN "What did you see?" · FR "Tu as vu quoi ?" · ES "¿Qué viste?"
-- Meaning of the audio (HE): "מה ראית?"
-- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
-- Choices:
-  1. HE "מה ראית?" / EN "What did you see?" — `reply.past.what-did-you-see` — ✅ accepted
-  2. HE "אכלת שם?" / EN "Did you eat there?" — `reply.past.did-you-eat` — ❌ wrong
-  3. HE "אהבת?" / EN "Did you like it?" — `reply.past.did-you-like` — ❌ wrong
-- Tests: reply.past.what-did-you-see
-- Explanation shown after answering: generic: “What did you see?” means “מה ראית?”.
-
-### M20-Q02 — expected-reply (step 8, reply 2 of 4)
-
-- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (2/4)
-- Audio played: EN "Did you eat there?" · FR "Tu as mangé là-bas ?" · ES "¿Comiste allí?"
-- Meaning of the audio (HE): "אכלת שם?"
-- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
-- Choices:
-  1. HE "אכלת שם?" / EN "Did you eat there?" — `reply.past.did-you-eat` — ✅ accepted
-  2. HE "מה ראית?" / EN "What did you see?" — `reply.past.what-did-you-see` — ❌ wrong
-  3. HE "אהבת?" / EN "Did you like it?" — `reply.past.did-you-like` — ❌ wrong
-- Tests: reply.past.did-you-eat
-- Explanation shown after answering: generic: “Did you eat there?” means “אכלת שם?”.
-
-### M20-Q03 — expected-reply (step 8, reply 3 of 4)
-
-- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (3/4)
-- Audio played: EN "Did you like it?" · FR "Tu as aimé ?" · ES "¿Te gustó?"
-- Meaning of the audio (HE): "אהבת?"
-- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
-- Choices:
-  1. HE "אהבת?" / EN "Did you like it?" — `reply.past.did-you-like` — ✅ accepted
-  2. HE "מה ראית?" / EN "What did you see?" — `reply.past.what-did-you-see` — ❌ wrong
-  3. HE "אכלת שם?" / EN "Did you eat there?" — `reply.past.did-you-eat` — ❌ wrong
-- Tests: reply.past.did-you-like
-- Explanation shown after answering: generic: “Did you like it?” means “אהבת?”.
-
-### M20-Q04 — expected-reply (step 8, reply 4 of 4)
-
-- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (4/4)
-- Audio played: EN "Where did you stay?" · FR "Tu as logé où ?" · ES "¿Dónde te quedaste?"
-- Meaning of the audio (HE): "איפה ישנת?"
-- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
-- Choices:
-  1. HE "איפה ישנת?" / EN "Where did you stay?" — `reply.past.where-did-you-stay` — ✅ accepted
-  2. HE "מה ראית?" / EN "What did you see?" — `reply.past.what-did-you-see` — ❌ wrong
-  3. HE "אכלת שם?" / EN "Did you eat there?" — `reply.past.did-you-eat` — ❌ wrong
-- Tests: reply.past.where-did-you-stay
-- Explanation shown after answering: generic: “Where did you stay?” means “איפה ישנת?”.
+No expected-replies drill in this mission.
 
 ## Quizzes
 
@@ -19507,22 +19508,60 @@ No meaning quiz in this mission.
 
 ## Active practice — Quick Reply · Visual Match · Swap It · Mini Map
 
-### M20-Q05 — quick-reply (step 10, round 1 of 6)
+### M20-Q01 — visual-match (step 3, round 1 of 1)
 
-- Prompt displayed: "They ask about yesterday — what do you say?" / "שואלים אותך על אתמול — מה עונים?"
+- Prompt displayed: "🗓️ Yesterday: 📍 Went → ? / 👀 Saw → ? / 🍽️ Ate → ? / ⭐ It was → ? ‖ 📅 Last month: 🛏️ Stayed → ? ¦ 🧩 Which part of your story is your friend asking about? Listen — and tap." / "🗓️ אתמול: 📍 הלכתי → ? / 👀 ראיתי → ? / 🍽️ אכלתי → ? / ⭐ היה → ? ‖ 📅 חודש שעבר: 🛏️ התארחתי → ? ¦ 🧩 על איזה חלק בסיפור החבר שואל? שמע — והקש."
+- Audio played: EN "Hey! Where were you yesterday?" · FR "Salut ! Tu étais où hier ?" · ES "¡Hola! ¿Dónde estuviste ayer?"
+- Meaning of the audio (HE): "היי! איפה היית אתמול?"
+- Buttons show: a 3×3 board of 5 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "📍 “Where you went” / “לאן הלכת”" — no sentence id — ✅ accepted
+  2. "👀 “What you saw” / “מה ראית”" — no sentence id — ❌ wrong
+  3. "🍽️ “What you ate” / “מה אכלת”" — no sentence id — ❌ wrong
+  4. "⭐ “How it was” / “איך היה”" — no sentence id — ❌ wrong
+  5. "🛏️ “Where you stayed” / “איפה התארחת”" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M20-Q02 — quick-reply (step 5, round 1 of 2)
+
+- Prompt displayed: "🗓️ Yesterday: 📍 Went → Old Town / 👀 Saw → ? / 🍽️ Ate → ? / ⭐ It was → ? ‖ 📅 Last month: 🛏️ Stayed → ? ¦ Your friend asks — what do you answer?" / "🗓️ אתמול: 📍 הלכתי → העיר העתיקה / 👀 ראיתי → ? / 🍽️ אכלתי → ? / ⭐ היה → ? ‖ 📅 חודש שעבר: 🛏️ התארחתי → ? ¦ החבר שואל — מה אתה עונה?"
+- Audio played: EN "Where were you yesterday?" · FR "Tu étais où hier ?" · ES "¿Dónde estuviste ayer?"
+- Meaning of the audio (HE): "איפה היית אתמול?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "I went to the old town." · FR "Je suis allé dans la vieille ville." · ES "Fui al casco antiguo." · (HE gloss "הלכתי לעיר העתיקה.") — `phrase.past.i-went` — ✅ accepted
+  2. EN "I saw the market." · FR "J’ai vu le marché." · ES "Vi el mercado." · (HE gloss "ראיתי את השוק.") — `phrase.past.i-saw` — ❌ wrong
+- Tests: phrase.past.i-went
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M20-Q03 — quick-reply (step 5, round 2 of 2)
+
+- Prompt displayed: "🗓️ Yesterday: 📍 Went → Old Town / 👀 Saw → ? / 🍽️ Ate → ? / ⭐ It was → ? ‖ 📅 Last month: 🛏️ Stayed → ? ¦ Your friend asks — what do you answer?" / "🗓️ אתמול: 📍 הלכתי → העיר העתיקה / 👀 ראיתי → ? / 🍽️ אכלתי → ? / ⭐ היה → ? ‖ 📅 חודש שעבר: 🛏️ התארחתי → ? ¦ החבר שואל — מה אתה עונה?"
 - Audio played: EN "What did you see?" · FR "Tu as vu quoi ?" · ES "¿Qué viste?"
 - Meaning of the audio (HE): "מה ראית?"
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
   1. EN "I saw the market." · FR "J’ai vu le marché." · ES "Vi el mercado." · (HE gloss "ראיתי את השוק.") — `phrase.past.i-saw` — ✅ accepted
-  2. EN "Yes, I ate fish." · FR "Oui, j’ai mangé du poisson." · ES "Sí, comí pescado." · (HE gloss "כן, אכלתי דג.") — `phrase.past.i-ate` — ❌ wrong
-  3. EN "I stayed in a hostel." · FR "J’ai logé dans une auberge." · ES "Me quedé en un hostal." · (HE gloss "ישנתי בהוסטל.") — `phrase.past.i-stayed` — ❌ wrong
+  2. EN "I went to the old town." · FR "Je suis allé dans la vieille ville." · ES "Fui al casco antiguo." · (HE gloss "הלכתי לעיר העתיקה.") — `phrase.past.i-went` — ❌ wrong
 - Tests: phrase.past.i-saw
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M20-Q06 — quick-reply (step 10, round 2 of 6)
+### M20-Q04 — swap-it (step 6, round 1 of 1)
 
-- Prompt displayed: "They ask about yesterday — what do you say?" / "שואלים אותך על אתמול — מה עונים?"
+- Prompt displayed: "The same sentence — another place." / "אותו משפט — מקום אחר." — cue 🏖️ "This time you were at the beach" / "הפעם היית בים" — frame EN "I went to ___." · FR "Je suis allé ___." · ES "Fui ___."
+- Audio played: EN "(nothing before the tap; the completed sentence is spoken after it)" · FR "(same)" · ES "(same)"
+- Meaning of the audio (HE): —
+- Buttons show: the SLOT VALUES in the target language (shown here as "value → completed sentence"); order shuffled; a "wrong" value still produces and speaks a real sentence, with its translation
+- Choices:
+  1. EN "the old town → I went to the old town." · FR "dans la vieille ville → Je suis allé dans la vieille ville." · ES "al casco antiguo → Fui al casco antiguo." · (HE gloss "הלכתי לעיר העתיקה.") — no sentence id — ❌ wrong
+  2. EN "the beach → I went to the beach." · FR "à la plage → Je suis allé à la plage." · ES "a la playa → Fui a la playa." · (HE gloss "הלכתי לים.") — `phrase.past.i-went` — ✅ accepted
+- Tests: phrase.past.i-went
+- Explanation shown after answering: after the tap: the completed sentence, spoken, with its translation
+
+### M20-Q05 — quick-reply (step 8, round 1 of 1)
+
+- Prompt displayed: "🗓️ Yesterday: 📍 Went → Old Town / 👀 Saw → Market / 🍽️ Ate → ? / ⭐ It was → ? ‖ 📅 Last month: 🛏️ Stayed → ? ¦ What do you answer?" / "🗓️ אתמול: 📍 הלכתי → העיר העתיקה / 👀 ראיתי → השוק / 🍽️ אכלתי → ? / ⭐ היה → ? ‖ 📅 חודש שעבר: 🛏️ התארחתי → ? ¦ מה אתה עונה?"
 - Audio played: EN "Did you eat there?" · FR "Tu as mangé là-bas ?" · ES "¿Comiste allí?"
 - Meaning of the audio (HE): "אכלת שם?"
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
@@ -19533,171 +19572,110 @@ No meaning quiz in this mission.
 - Tests: phrase.past.i-ate
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M20-Q07 — quick-reply (step 10, round 3 of 6)
+### M20-Q06 — swap-it (step 9, round 1 of 1)
 
-- Prompt displayed: "They ask about yesterday — what do you say?" / "שואלים אותך על אתמול — מה עונים?"
-- Audio played: EN "Did you like it?" · FR "Tu as aimé ?" · ES "¿Te gustó?"
-- Meaning of the audio (HE): "אהבת?"
-- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Prompt displayed: "The same sentence — other food." / "אותו משפט — אוכל אחר." — cue 🍗 "This time you ate chicken" / "הפעם אכלת עוף" — frame EN "Yes, I ate ___." · FR "Oui, j’ai mangé ___." · ES "Sí, comí ___."
+- Audio played: EN "(nothing before the tap; the completed sentence is spoken after it)" · FR "(same)" · ES "(same)"
+- Meaning of the audio (HE): —
+- Buttons show: the SLOT VALUES in the target language (shown here as "value → completed sentence"); order shuffled; a "wrong" value still produces and speaks a real sentence, with its translation
 - Choices:
-  1. EN "Yes, it was great!" · FR "Oui, c’était super !" · ES "¡Sí, estuvo genial!" · (HE gloss "כן, היה מעולה!") — `phrase.past.it-was-great` — ✅ accepted
-  2. EN "It was good." · FR "C’était bien." · ES "Estuvo bien." · (HE gloss "היה טוב.") — `phrase.past.it-was-good` — ✅ accepted
-  3. EN "I stayed in a hostel." · FR "J’ai logé dans une auberge." · ES "Me quedé en un hostal." · (HE gloss "ישנתי בהוסטל.") — `phrase.past.i-stayed` — ❌ wrong
-- Tests: phrase.past.it-was-great, phrase.past.it-was-good
-- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+  1. EN "fish → Yes, I ate fish." · FR "du poisson → Oui, j’ai mangé du poisson." · ES "pescado → Sí, comí pescado." · (HE gloss "כן, אכלתי דג.") — no sentence id — ❌ wrong
+  2. EN "chicken → Yes, I ate chicken." · FR "du poulet → Oui, j’ai mangé du poulet." · ES "pollo → Sí, comí pollo." · (HE gloss "כן, אכלתי עוף.") — `phrase.past.i-ate` — ✅ accepted
+- Tests: phrase.past.i-ate
+- Explanation shown after answering: after the tap: the completed sentence, spoken, with its translation
 
-### M20-Q08 — quick-reply (step 10, round 4 of 6)
+### M20-Q07 — visual-match (step 11, round 1 of 1)
 
-- Prompt displayed: "They ask about yesterday — what do you say?" / "שואלים אותך על אתמול — מה עונים?"
-- Audio played: EN "Where did you stay?" · FR "Tu as logé où ?" · ES "¿Dónde te quedaste?"
-- Meaning of the audio (HE): "איפה ישנת?"
-- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Prompt displayed: "🗓️ Yesterday: 📍 Went → Old Town / 👀 Saw → Market / 🍽️ Ate → Fish / ⭐ It was → ? ‖ 📅 Last month: 🛏️ Stayed → ? ¦ How was it? Listen — and tap." / "🗓️ אתמול: 📍 הלכתי → העיר העתיקה / 👀 ראיתי → השוק / 🍽️ אכלתי → דג / ⭐ היה → ? ‖ 📅 חודש שעבר: 🛏️ התארחתי → ? ¦ איך היה? שמע — והקש."
+- Audio played: EN "Yes, it was great!" · FR "Oui, c’était super !" · ES "¡Sí, estuvo genial!"
+- Meaning of the audio (HE): "כן, היה מעולה!"
+- Buttons show: a 3×3 board of 2 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. EN "I stayed in a hostel." · FR "J’ai logé dans une auberge." · ES "Me quedé en un hostal." · (HE gloss "ישנתי בהוסטל.") — `phrase.past.i-stayed` — ✅ accepted
-  2. EN "I went to the old town." · FR "Je suis allé dans la vieille ville." · ES "Fui al casco antiguo." · (HE gloss "הלכתי לעיר העתיקה.") — `phrase.past.i-went` — ❌ wrong
-  3. EN "Yes, I ate fish." · FR "Oui, j’ai mangé du poisson." · ES "Sí, comí pescado." · (HE gloss "כן, אכלתי דג.") — `phrase.past.i-ate` — ❌ wrong
+  1. "🙂 “Good” / “טוב”" — no sentence id — ❌ wrong
+  2. "🤩 “Great” / “מעולה”" — no sentence id — ✅ accepted
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M20-Q08 — visual-match (step 13, round 1 of 1)
+
+- Prompt displayed: "🗓️ Yesterday: 📍 Went → Old Town / 👀 Saw → Market / 🍽️ Ate → Fish / ⭐ It was → Great ‖ 📅 Last month: 🛏️ Stayed → ? ¦ 🧩 Which part of your story is your friend asking about? Listen — and tap." / "🗓️ אתמול: 📍 הלכתי → העיר העתיקה / 👀 ראיתי → השוק / 🍽️ אכלתי → דג / ⭐ היה → מעולה ‖ 📅 חודש שעבר: 🛏️ התארחתי → ? ¦ 🧩 על איזה חלק בסיפור החבר שואל? שמע — והקש."
+- Audio played: EN "You were in Argentina last month, right? Where did you stay?" · FR "Tu étais en Argentine le mois dernier, non ? Tu as logé où ?" · ES "Estuviste en Argentina el mes pasado, ¿no? ¿Dónde te quedaste?"
+- Meaning of the audio (HE): "היית בארגנטינה בחודש שעבר, נכון? איפה התארחת?"
+- Buttons show: a 3×3 board of 5 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "📍 “Where you went” / “לאן הלכת”" — no sentence id — ❌ wrong
+  2. "👀 “What you saw” / “מה ראית”" — no sentence id — ❌ wrong
+  3. "🍽️ “What you ate” / “מה אכלת”" — no sentence id — ❌ wrong
+  4. "⭐ “How it was” / “איך היה”" — no sentence id — ❌ wrong
+  5. "🛏️ “Where you stayed” / “איפה התארחת”" — no sentence id — ✅ accepted
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M20-Q09 — swap-it (step 14, round 1 of 1)
+
+- Prompt displayed: "The same sentence — another place to stay." / "אותו משפט — מקום לינה אחר." — cue 🏨 "This time you stayed in a hotel" / "הפעם התארחת במלון" — frame EN "I stayed in ___." · FR "J’ai logé dans ___." · ES "Me quedé en ___."
+- Audio played: EN "(nothing before the tap; the completed sentence is spoken after it)" · FR "(same)" · ES "(same)"
+- Meaning of the audio (HE): —
+- Buttons show: the SLOT VALUES in the target language (shown here as "value → completed sentence"); order shuffled; a "wrong" value still produces and speaks a real sentence, with its translation
+- Choices:
+  1. EN "a hostel → I stayed in a hostel." · FR "une auberge → J’ai logé dans une auberge." · ES "un hostal → Me quedé en un hostal." · (HE gloss "התארחתי בהוסטל.") — no sentence id — ❌ wrong
+  2. EN "a hotel → I stayed in a hotel." · FR "un hôtel → J’ai logé dans un hôtel." · ES "un hotel → Me quedé en un hotel." · (HE gloss "התארחתי במלון.") — `phrase.past.i-stayed` — ✅ accepted
 - Tests: phrase.past.i-stayed
-- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+- Explanation shown after answering: after the tap: the completed sentence, spoken, with its translation
 
-### M20-Q09 — quick-reply (step 10, round 5 of 6)
+### M20-Q10 — quick-reply (step 16, round 1 of 1)
 
-- Prompt displayed: "They ask about yesterday — what do you say?" / "שואלים אותך על אתמול — מה עונים?"
+- Prompt displayed: "🗓️ Yesterday: 📍 Went → Old Town / 👀 Saw → Market / 🍽️ Ate → Fish / ⭐ It was → Great ‖ 📅 Last month: 🛏️ Stayed → Hostel ¦ Your friend asks — answer, and ask back." / "🗓️ אתמול: 📍 הלכתי → העיר העתיקה / 👀 ראיתי → השוק / 🍽️ אכלתי → דג / ⭐ היה → מעולה ‖ 📅 חודש שעבר: 🛏️ התארחתי → הוסטל ¦ החבר שואל — ענה, ושאל אותו בחזרה."
 - Audio played: EN "Was it good?" · FR "C’était bien ?" · ES "¿Estuvo bien?"
 - Meaning of the audio (HE): "היה טוב?"
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
   1. EN "It was good. And you? What did you do yesterday?" · FR "C’était bien. Et toi ? Tu as fait quoi hier ?" · ES "Estuvo bien. ¿Y tú? ¿Qué hiciste ayer?" · (HE gloss "מה עשית אתמול?") — `phrase.past.what-did-you-do` — ✅ accepted
-  2. EN "I saw the market." · FR "J’ai vu le marché." · ES "Vi el mercado." · (HE gloss "ראיתי את השוק.") — `phrase.past.i-saw` — ❌ wrong
-  3. EN "I went to the old town." · FR "Je suis allé dans la vieille ville." · ES "Fui al casco antiguo." · (HE gloss "הלכתי לעיר העתיקה.") — `phrase.past.i-went` — ❌ wrong
+  2. EN "Yes, I ate fish." · FR "Oui, j’ai mangé du poisson." · ES "Sí, comí pescado." · (HE gloss "כן, אכלתי דג.") — `phrase.past.i-ate` — ❌ wrong
+  3. EN "I stayed in a hostel." · FR "J’ai logé dans une auberge." · ES "Me quedé en un hostal." · (HE gloss "ישנתי בהוסטל.") — `phrase.past.i-stayed` — ❌ wrong
 - Tests: phrase.past.what-did-you-do
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M20-Q10 — quick-reply (step 10, round 6 of 6)
+### M20-Q11 — visual-match (step 18, round 1 of 1)
 
-- Prompt displayed: "They ask about yesterday — what do you say?" / "שואלים אותך על אתמול — מה עונים?" — situation shown: "You have told them about your day. Now it is your turn to ask." / "סיפרת על אתמול שלך. עכשיו תורך לשאול אותו."
-- Audio played: EN "(nothing is played — a situation is shown)" · FR "(nothing is played — a situation is shown)" · ES "(nothing is played — a situation is shown)"
-- Meaning of the audio (HE): —
-- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Prompt displayed: "🗓️ Yesterday: 📍 Went → Old Town / 👀 Saw → Market / 🍽️ Ate → Fish / ⭐ It was → Great ‖ 📅 Last month: 🛏️ Stayed → Hostel ¦ What did your friend do yesterday? Listen — and tap." / "🗓️ אתמול: 📍 הלכתי → העיר העתיקה / 👀 ראיתי → השוק / 🍽️ אכלתי → דג / ⭐ היה → מעולה ‖ 📅 חודש שעבר: 🛏️ התארחתי → הוסטל ¦ מה החבר עשה אתמול? שמע — והקש."
+- Audio played: EN "Me? Nothing! I was tired. I slept all day." · FR "Moi ? Rien ! J’étais fatigué. J’ai dormi toute la journée." · ES "¿Yo? ¡Nada! Estaba cansado. Dormí todo el día."
+- Meaning of the audio (HE): "אני? כלום! הייתי עייף. ישנתי כל היום."
+- Buttons show: a 3×3 board of 3 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. EN "What did you do yesterday?" · FR "Tu as fait quoi hier ?" · ES "¿Qué hiciste ayer?" · (HE gloss "מה עשית אתמול?") — `phrase.past.what-did-you-do` — ✅ accepted
-  2. EN "It was good." · FR "C’était bien." · ES "Estuvo bien." · (HE gloss "היה טוב.") — `phrase.past.it-was-good` — ❌ wrong
-  3. EN "I went to the old town." · FR "Je suis allé dans la vieille ville." · ES "Fui al casco antiguo." · (HE gloss "הלכתי לעיר העתיקה.") — `phrase.past.i-went` — ❌ wrong
-- Tests: phrase.past.what-did-you-do
-- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+  1. "😴 “Nothing — slept all day” / “כלום — ישן כל היום”" — no sentence id — ✅ accepted
+  2. "🧺 “Saw the market” / “ראה את השוק”" — no sentence id — ❌ wrong
+  3. "🐟 “Ate fish” / “אכל דג”" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
 
-### M20-Q11 — swap-it (step 11, round 1 of 5)
-
-- Prompt displayed: "How was yesterday?" / "איך היה אתמול?" — cue 🧺 "Yesterday you were at the market" / "אתמול היית בשוק" — frame EN "I went to ___." · FR "Je suis allé ___." · ES "Fui ___."
-- Audio played: EN "(nothing before the tap; the completed sentence is spoken after it)" · FR "(same)" · ES "(same)"
-- Meaning of the audio (HE): —
-- Buttons show: the SLOT VALUES in the target language (shown here as "value → completed sentence"); order shuffled; a "wrong" value still produces and speaks a real sentence, with its translation
-- Choices:
-  1. EN "the old town → I went to the old town." · FR "dans la vieille ville → Je suis allé dans la vieille ville." · ES "al casco antiguo → Fui al casco antiguo." · (HE gloss "הלכתי לעיר העתיקה.") — no sentence id — ❌ wrong
-  2. EN "the market → I went to the market." · FR "au marché → Je suis allé au marché." · ES "al mercado → Fui al mercado." · (HE gloss "הלכתי לשוק.") — `phrase.past.i-went` — ✅ accepted
-  3. EN "the beach → I went to the beach." · FR "à la plage → Je suis allé à la plage." · ES "a la playa → Fui a la playa." · (HE gloss "הלכתי לים.") — no sentence id — ❌ wrong
-- Tests: phrase.past.i-went
-- Explanation shown after answering: after the tap: the completed sentence, spoken, with its translation
-
-### M20-Q12 — swap-it (step 11, round 2 of 5)
-
-- Prompt displayed: "How was yesterday?" / "איך היה אתמול?" — cue 🏖️ "Yesterday you were at the beach" / "אתמול היית בים" — frame EN "I went to ___." · FR "Je suis allé ___." · ES "Fui ___."
-- Audio played: EN "(nothing before the tap; the completed sentence is spoken after it)" · FR "(same)" · ES "(same)"
-- Meaning of the audio (HE): —
-- Buttons show: the SLOT VALUES in the target language (shown here as "value → completed sentence"); order shuffled; a "wrong" value still produces and speaks a real sentence, with its translation
-- Choices:
-  1. EN "the old town → I went to the old town." · FR "dans la vieille ville → Je suis allé dans la vieille ville." · ES "al casco antiguo → Fui al casco antiguo." · (HE gloss "הלכתי לעיר העתיקה.") — no sentence id — ❌ wrong
-  2. EN "the market → I went to the market." · FR "au marché → Je suis allé au marché." · ES "al mercado → Fui al mercado." · (HE gloss "הלכתי לשוק.") — no sentence id — ❌ wrong
-  3. EN "the beach → I went to the beach." · FR "à la plage → Je suis allé à la plage." · ES "a la playa → Fui a la playa." · (HE gloss "הלכתי לים.") — `phrase.past.i-went` — ✅ accepted
-- Tests: phrase.past.i-went
-- Explanation shown after answering: after the tap: the completed sentence, spoken, with its translation
-
-### M20-Q13 — swap-it (step 11, round 3 of 5)
-
-- Prompt displayed: "How was yesterday?" / "איך היה אתמול?" — cue 🏨 "You stayed in a hotel" / "ישנת במלון" — frame EN "I stayed in ___." · FR "J’ai logé dans ___." · ES "Me quedé en ___."
-- Audio played: EN "(nothing before the tap; the completed sentence is spoken after it)" · FR "(same)" · ES "(same)"
-- Meaning of the audio (HE): —
-- Buttons show: the SLOT VALUES in the target language (shown here as "value → completed sentence"); order shuffled; a "wrong" value still produces and speaks a real sentence, with its translation
-- Choices:
-  1. EN "a hostel → I stayed in a hostel." · FR "une auberge → J’ai logé dans une auberge." · ES "un hostal → Me quedé en un hostal." · (HE gloss "ישנתי בהוסטל.") — no sentence id — ❌ wrong
-  2. EN "a hotel → I stayed in a hotel." · FR "un hôtel → J’ai logé dans un hôtel." · ES "un hotel → Me quedé en un hotel." · (HE gloss "ישנתי במלון.") — `phrase.past.i-stayed` — ✅ accepted
-- Tests: phrase.past.i-stayed
-- Explanation shown after answering: after the tap: the completed sentence, spoken, with its translation
-
-### M20-Q14 — swap-it (step 11, round 4 of 5)
-
-- Prompt displayed: "How was yesterday?" / "איך היה אתמול?" — cue 🙂 "It was fine — good" / "היה בסדר, טוב" — frame EN "It was ___." · FR "C’était ___." · ES "Estuvo ___."
-- Audio played: EN "(nothing before the tap; the completed sentence is spoken after it)" · FR "(same)" · ES "(same)"
-- Meaning of the audio (HE): —
-- Buttons show: the SLOT VALUES in the target language (shown here as "value → completed sentence"); order shuffled; a "wrong" value still produces and speaks a real sentence, with its translation
-- Choices:
-  1. EN "great → It was great." · FR "super → C’était super." · ES "genial → Estuvo genial." · (HE gloss "היה מעולה.") — no sentence id — ❌ wrong
-  2. EN "good → It was good." · FR "bien → C’était bien." · ES "bien → Estuvo bien." · (HE gloss "היה טוב.") — `phrase.past.it-was-good` — ✅ accepted
-  3. EN "bad → It was bad." · FR "mauvais → C’était mauvais." · ES "mal → Estuvo mal." · (HE gloss "היה רע.") — no sentence id — ❌ wrong
-- Tests: phrase.past.it-was-good
-- Explanation shown after answering: after the tap: the completed sentence, spoken, with its translation
-
-### M20-Q15 — swap-it (step 11, round 5 of 5)
-
-- Prompt displayed: "How was yesterday?" / "איך היה אתמול?" — cue 😕 "It was not good" / "לא היה טוב" — frame EN "It was ___." · FR "C’était ___." · ES "Estuvo ___."
-- Audio played: EN "(nothing before the tap; the completed sentence is spoken after it)" · FR "(same)" · ES "(same)"
-- Meaning of the audio (HE): —
-- Buttons show: the SLOT VALUES in the target language (shown here as "value → completed sentence"); order shuffled; a "wrong" value still produces and speaks a real sentence, with its translation
-- Choices:
-  1. EN "great → It was great." · FR "super → C’était super." · ES "genial → Estuvo genial." · (HE gloss "היה מעולה.") — no sentence id — ❌ wrong
-  2. EN "good → It was good." · FR "bien → C’était bien." · ES "bien → Estuvo bien." · (HE gloss "היה טוב.") — no sentence id — ❌ wrong
-  3. EN "bad → It was bad." · FR "mauvais → C’était mauvais." · ES "mal → Estuvo mal." · (HE gloss "היה רע.") — `phrase.past.it-was-bad` — ✅ accepted
-- Tests: phrase.past.it-was-bad
-- Explanation shown after answering: after the tap: the completed sentence, spoken, with its translation
-
-### M20-Q16 — sentence-builder (step 12, round 1 of 2)
-
-- Prompt displayed: "Build the sentence" / "בנה את המשפט" — cue shown: the sentence's MEANING in the app language ("הלכתי לעיר העתיקה.")
-- Audio played: EN "(nothing before Check; the built sentence is spoken once it is right)" · FR "(same)" · ES "(same)"
-- Meaning of the audio (HE): —
-- Buttons show: the authored CHUNKS of the sentence as tiles (listed here in the correct order, separated by "|"), shuffled; each language has its own chunks; Check unlocks when every tile is placed
-- Choices:
-  1. EN "I went  |  to  |  the old town." · FR "Je suis allé  |  dans  |  la vieille ville." · ES "Fui  |  al  |  casco antiguo." · (HE gloss "הלכתי לעיר העתיקה.") — `phrase.past.i-went` — ✅ accepted
-- Tests: phrase.past.i-went
-- Explanation shown after answering: right: the sentence is spoken and its translation shown. Wrong: "not yet" — the tiles stay, the answer is NOT shown; after one miss a hint marks the start; after two misses the learner may reveal it
-
-### M20-Q17 — sentence-builder (step 12, round 2 of 2)
-
-- Prompt displayed: "Build the sentence" / "בנה את המשפט" — cue shown: the sentence's MEANING in the app language ("מה עשית אתמול?")
-- Audio played: EN "(nothing before Check; the built sentence is spoken once it is right)" · FR "(same)" · ES "(same)"
-- Meaning of the audio (HE): —
-- Buttons show: the authored CHUNKS of the sentence as tiles (listed here in the correct order, separated by "|"), shuffled; each language has its own chunks; Check unlocks when every tile is placed
-- Choices:
-  1. EN "What  |  did you do  |  yesterday?" · FR "Tu as fait  |  quoi  |  hier ?" · ES "¿Qué  |  hiciste  |  ayer?" · (HE gloss "מה עשית אתמול?") — `phrase.past.what-did-you-do` — ✅ accepted
-- Tests: phrase.past.what-did-you-do
-- Explanation shown after answering: right: the sentence is spoken and its translation shown. Wrong: "not yet" — the tiles stay, the answer is NOT shown; after one miss a hint marks the start; after two misses the learner may reveal it
-
-### M20-Q25 — quick-reply (step 16, round 1 of 6 · SPEED CHALLENGE (spoken at rate 1.12))
+### M20-Q18 — quick-reply (step 22, round 1 of 4 · SPEED CHALLENGE (spoken at rate 1.12))
 
 - Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
-- Audio played: EN "Hey! Where were you yesterday?" · FR "Salut ! Tu étais où hier ?" · ES "¡Hola! ¿Dónde estuviste ayer?"
-- Meaning of the audio (HE): "היי! איפה היית אתמול?"
+- Audio played: EN "Where were you yesterday?" · FR "Tu étais où hier ?" · ES "¿Dónde estuviste ayer?"
+- Meaning of the audio (HE): "איפה היית אתמול?"
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
   1. EN "I went to the old town." · FR "Je suis allé dans la vieille ville." · ES "Fui al casco antiguo." · (HE gloss "הלכתי לעיר העתיקה.") — `phrase.past.i-went` — ✅ accepted
-  2. EN "I stayed in a hostel." · FR "J’ai logé dans une auberge." · ES "Me quedé en un hostal." · (HE gloss "ישנתי בהוסטל.") — `phrase.past.i-stayed` — ❌ wrong
-  3. EN "Yes, it was great!" · FR "Oui, c’était super !" · ES "¡Sí, estuvo genial!" · (HE gloss "כן, היה מעולה!") — `phrase.past.it-was-great` — ❌ wrong
+  2. EN "I saw the market." · FR "J’ai vu le marché." · ES "Vi el mercado." · (HE gloss "ראיתי את השוק.") — `phrase.past.i-saw` — ❌ wrong
+  3. EN "I stayed in a hostel." · FR "J’ai logé dans une auberge." · ES "Me quedé en un hostal." · (HE gloss "ישנתי בהוסטל.") — `phrase.past.i-stayed` — ❌ wrong
 - Tests: phrase.past.i-went
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M20-Q26 — quick-reply (step 16, round 2 of 6 · SPEED CHALLENGE (spoken at rate 1.12))
+### M20-Q19 — quick-reply (step 22, round 2 of 4 · SPEED CHALLENGE (spoken at rate 1.12))
 
 - Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
-- Audio played: EN "Nice! What did you see?" · FR "Sympa ! Tu as vu quoi ?" · ES "¡Qué bien! ¿Qué viste?"
-- Meaning of the audio (HE): "יפה! מה ראית?"
+- Audio played: EN "What did you see?" · FR "Tu as vu quoi ?" · ES "¿Qué viste?"
+- Meaning of the audio (HE): "מה ראית?"
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
   1. EN "I saw the market." · FR "J’ai vu le marché." · ES "Vi el mercado." · (HE gloss "ראיתי את השוק.") — `phrase.past.i-saw` — ✅ accepted
-  2. EN "Yes, I ate fish." · FR "Oui, j’ai mangé du poisson." · ES "Sí, comí pescado." · (HE gloss "כן, אכלתי דג.") — `phrase.past.i-ate` — ❌ wrong
-  3. EN "I went to the old town." · FR "Je suis allé dans la vieille ville." · ES "Fui al casco antiguo." · (HE gloss "הלכתי לעיר העתיקה.") — `phrase.past.i-went` — ❌ wrong
+  2. EN "I went to the old town." · FR "Je suis allé dans la vieille ville." · ES "Fui al casco antiguo." · (HE gloss "הלכתי לעיר העתיקה.") — `phrase.past.i-went` — ❌ wrong
+  3. EN "Yes, I ate fish." · FR "Oui, j’ai mangé du poisson." · ES "Sí, comí pescado." · (HE gloss "כן, אכלתי דג.") — `phrase.past.i-ate` — ❌ wrong
 - Tests: phrase.past.i-saw
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M20-Q27 — quick-reply (step 16, round 3 of 6 · SPEED CHALLENGE (spoken at rate 1.12))
+### M20-Q20 — quick-reply (step 22, round 3 of 4 · SPEED CHALLENGE (spoken at rate 1.12))
 
 - Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio played: EN "Did you eat there?" · FR "Tu as mangé là-bas ?" · ES "¿Comiste allí?"
@@ -19710,42 +19688,94 @@ No meaning quiz in this mission.
 - Tests: phrase.past.i-ate
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M20-Q28 — quick-reply (step 16, round 4 of 6 · SPEED CHALLENGE (spoken at rate 1.12))
+### M20-Q21 — quick-reply (step 22, round 4 of 4 · SPEED CHALLENGE (spoken at rate 1.12))
 
 - Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio played: EN "Was it good?" · FR "C’était bien ?" · ES "¿Estuvo bien?"
+- Meaning of the audio (HE): "היה טוב?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "It was good. And you? What did you do yesterday?" · FR "C’était bien. Et toi ? Tu as fait quoi hier ?" · ES "Estuvo bien. ¿Y tú? ¿Qué hiciste ayer?" · (HE gloss "מה עשית אתמול?") — `phrase.past.what-did-you-do` — ✅ accepted
+  2. EN "Yes, I ate fish." · FR "Oui, j’ai mangé du poisson." · ES "Sí, comí pescado." · (HE gloss "כן, אכלתי דג.") — `phrase.past.i-ate` — ❌ wrong
+  3. EN "I went to the old town." · FR "Je suis allé dans la vieille ville." · ES "Fui al casco antiguo." · (HE gloss "הלכתי לעיר העתיקה.") — `phrase.past.i-went` — ❌ wrong
+- Tests: phrase.past.what-did-you-do
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M20-Q22 — quick-reply (step 25, round 1 of 6)
+
+- Prompt displayed: "🗓️ Another day: 📍 Went → 🏙️ Centre / 👀 Saw → 🏛️ Museum / 🍽️ Ate → 🍗 Chicken / ⭐ It was → Great ‖ 📅 Last month: 🛏️ Stayed → 🏨 Hotel ¦ 🎯 Another day — the same questions. Tell your friend." / "🗓️ יום אחר: 📍 הלכתי → 🏙️ המרכז / 👀 ראיתי → 🏛️ המוזיאון / 🍽️ אכלתי → 🍗 עוף / ⭐ היה → מעולה ‖ 📅 חודש שעבר: 🛏️ התארחתי → 🏨 מלון ¦ 🎯 יום אחר — אותן שאלות. ספר לחבר."
+- Audio played: EN "Where were you yesterday?" · FR "Tu étais où hier ?" · ES "¿Dónde estuviste ayer?"
+- Meaning of the audio (HE): "איפה היית אתמול?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "I went to the centre." · FR "Je suis allé au centre." · ES "Fui al centro." · (HE gloss "הלכתי לעיר העתיקה.") — `phrase.past.i-went` — ✅ accepted
+  2. EN "I saw the museum." · FR "J’ai vu le musée." · ES "Vi el museo." · (HE gloss "ראיתי את השוק.") — `phrase.past.i-saw` — ❌ wrong
+  3. EN "I stayed in a hotel." · FR "J’ai logé dans un hôtel." · ES "Me quedé en un hotel." · (HE gloss "ישנתי בהוסטל.") — `phrase.past.i-stayed` — ❌ wrong
+- Tests: phrase.past.i-went
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M20-Q23 — quick-reply (step 25, round 2 of 6)
+
+- Prompt displayed: "🗓️ Another day: 📍 Went → 🏙️ Centre / 👀 Saw → 🏛️ Museum / 🍽️ Ate → 🍗 Chicken / ⭐ It was → Great ‖ 📅 Last month: 🛏️ Stayed → 🏨 Hotel ¦ 🎯 Another day — the same questions. Tell your friend." / "🗓️ יום אחר: 📍 הלכתי → 🏙️ המרכז / 👀 ראיתי → 🏛️ המוזיאון / 🍽️ אכלתי → 🍗 עוף / ⭐ היה → מעולה ‖ 📅 חודש שעבר: 🛏️ התארחתי → 🏨 מלון ¦ 🎯 יום אחר — אותן שאלות. ספר לחבר."
+- Audio played: EN "What did you see?" · FR "Tu as vu quoi ?" · ES "¿Qué viste?"
+- Meaning of the audio (HE): "מה ראית?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "I saw the museum." · FR "J’ai vu le musée." · ES "Vi el museo." · (HE gloss "ראיתי את השוק.") — `phrase.past.i-saw` — ✅ accepted
+  2. EN "I went to the centre." · FR "Je suis allé au centre." · ES "Fui al centro." · (HE gloss "הלכתי לעיר העתיקה.") — `phrase.past.i-went` — ❌ wrong
+  3. EN "Yes, I ate chicken." · FR "Oui, j’ai mangé du poulet." · ES "Sí, comí pollo." · (HE gloss "כן, אכלתי דג.") — `phrase.past.i-ate` — ❌ wrong
+- Tests: phrase.past.i-saw
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M20-Q24 — quick-reply (step 25, round 3 of 6)
+
+- Prompt displayed: "🗓️ Another day: 📍 Went → 🏙️ Centre / 👀 Saw → 🏛️ Museum / 🍽️ Ate → 🍗 Chicken / ⭐ It was → Great ‖ 📅 Last month: 🛏️ Stayed → 🏨 Hotel ¦ 🎯 Another day — the same questions. Tell your friend." / "🗓️ יום אחר: 📍 הלכתי → 🏙️ המרכז / 👀 ראיתי → 🏛️ המוזיאון / 🍽️ אכלתי → 🍗 עוף / ⭐ היה → מעולה ‖ 📅 חודש שעבר: 🛏️ התארחתי → 🏨 מלון ¦ 🎯 יום אחר — אותן שאלות. ספר לחבר."
+- Audio played: EN "Did you eat there?" · FR "Tu as mangé là-bas ?" · ES "¿Comiste allí?"
+- Meaning of the audio (HE): "אכלת שם?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Yes, I ate chicken." · FR "Oui, j’ai mangé du poulet." · ES "Sí, comí pollo." · (HE gloss "כן, אכלתי דג.") — `phrase.past.i-ate` — ✅ accepted
+  2. EN "I saw the museum." · FR "J’ai vu le musée." · ES "Vi el museo." · (HE gloss "ראיתי את השוק.") — `phrase.past.i-saw` — ❌ wrong
+  3. EN "I stayed in a hotel." · FR "J’ai logé dans un hôtel." · ES "Me quedé en un hotel." · (HE gloss "ישנתי בהוסטל.") — `phrase.past.i-stayed` — ❌ wrong
+- Tests: phrase.past.i-ate
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M20-Q25 — quick-reply (step 25, round 4 of 6)
+
+- Prompt displayed: "🗓️ Another day: 📍 Went → 🏙️ Centre / 👀 Saw → 🏛️ Museum / 🍽️ Ate → 🍗 Chicken / ⭐ It was → Great ‖ 📅 Last month: 🛏️ Stayed → 🏨 Hotel ¦ 🎯 Another day — the same questions. Tell your friend." / "🗓️ יום אחר: 📍 הלכתי → 🏙️ המרכז / 👀 ראיתי → 🏛️ המוזיאון / 🍽️ אכלתי → 🍗 עוף / ⭐ היה → מעולה ‖ 📅 חודש שעבר: 🛏️ התארחתי → 🏨 מלון ¦ 🎯 יום אחר — אותן שאלות. ספר לחבר."
 - Audio played: EN "Did you like it?" · FR "Tu as aimé ?" · ES "¿Te gustó?"
 - Meaning of the audio (HE): "אהבת?"
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
   1. EN "Yes, it was great!" · FR "Oui, c’était super !" · ES "¡Sí, estuvo genial!" · (HE gloss "כן, היה מעולה!") — `phrase.past.it-was-great` — ✅ accepted
-  2. EN "I went to the old town." · FR "Je suis allé dans la vieille ville." · ES "Fui al casco antiguo." · (HE gloss "הלכתי לעיר העתיקה.") — `phrase.past.i-went` — ❌ wrong
-  3. EN "What did you do yesterday?" · FR "Tu as fait quoi hier ?" · ES "¿Qué hiciste ayer?" · (HE gloss "מה עשית אתמול?") — `phrase.past.what-did-you-do` — ❌ wrong
+  2. EN "I went to the centre." · FR "Je suis allé au centre." · ES "Fui al centro." · (HE gloss "הלכתי לעיר העתיקה.") — `phrase.past.i-went` — ❌ wrong
+  3. EN "Yes, I ate chicken." · FR "Oui, j’ai mangé du poulet." · ES "Sí, comí pollo." · (HE gloss "כן, אכלתי דג.") — `phrase.past.i-ate` — ❌ wrong
 - Tests: phrase.past.it-was-great
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M20-Q29 — quick-reply (step 16, round 5 of 6 · SPEED CHALLENGE (spoken at rate 1.12))
+### M20-Q26 — quick-reply (step 25, round 5 of 6)
 
-- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
-- Audio played: EN "You were in Argentina last month, right? Where did you stay?" · FR "Tu étais en Argentine le mois dernier, non ? Tu as logé où ?" · ES "Estuviste en Argentina el mes pasado, ¿no? ¿Dónde te quedaste?"
-- Meaning of the audio (HE): "היית בארגנטינה בחודש שעבר, נכון? איפה ישנת?"
+- Prompt displayed: "🗓️ Another day: 📍 Went → 🏙️ Centre / 👀 Saw → 🏛️ Museum / 🍽️ Ate → 🍗 Chicken / ⭐ It was → Great ‖ 📅 Last month: 🛏️ Stayed → 🏨 Hotel ¦ 🎯 Another day — the same questions. Tell your friend." / "🗓️ יום אחר: 📍 הלכתי → 🏙️ המרכז / 👀 ראיתי → 🏛️ המוזיאון / 🍽️ אכלתי → 🍗 עוף / ⭐ היה → מעולה ‖ 📅 חודש שעבר: 🛏️ התארחתי → 🏨 מלון ¦ 🎯 יום אחר — אותן שאלות. ספר לחבר."
+- Audio played: EN "Where did you stay?" · FR "Tu as logé où ?" · ES "¿Dónde te quedaste?"
+- Meaning of the audio (HE): "איפה התארחת?"
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
-  1. EN "I stayed in a hostel." · FR "J’ai logé dans une auberge." · ES "Me quedé en un hostal." · (HE gloss "ישנתי בהוסטל.") — `phrase.past.i-stayed` — ✅ accepted
-  2. EN "I went to the old town." · FR "Je suis allé dans la vieille ville." · ES "Fui al casco antiguo." · (HE gloss "הלכתי לעיר העתיקה.") — `phrase.past.i-went` — ❌ wrong
-  3. EN "Yes, I ate fish." · FR "Oui, j’ai mangé du poisson." · ES "Sí, comí pescado." · (HE gloss "כן, אכלתי דג.") — `phrase.past.i-ate` — ❌ wrong
+  1. EN "I stayed in a hotel." · FR "J’ai logé dans un hôtel." · ES "Me quedé en un hotel." · (HE gloss "ישנתי בהוסטל.") — `phrase.past.i-stayed` — ✅ accepted
+  2. EN "I went to the centre." · FR "Je suis allé au centre." · ES "Fui al centro." · (HE gloss "הלכתי לעיר העתיקה.") — `phrase.past.i-went` — ❌ wrong
+  3. EN "Yes, I ate chicken." · FR "Oui, j’ai mangé du poulet." · ES "Sí, comí pollo." · (HE gloss "כן, אכלתי דג.") — `phrase.past.i-ate` — ❌ wrong
 - Tests: phrase.past.i-stayed
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M20-Q30 — quick-reply (step 16, round 6 of 6 · SPEED CHALLENGE (spoken at rate 1.12))
+### M20-Q27 — quick-reply (step 25, round 6 of 6)
 
-- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
-- Audio played: EN "A hostel! Was it good?" · FR "Une auberge ! C’était bien ?" · ES "¡Un hostal! ¿Estuvo bien?"
-- Meaning of the audio (HE): "הוסטל! היה טוב?"
+- Prompt displayed: "🗓️ Another day: 📍 Went → 🏙️ Centre / 👀 Saw → 🏛️ Museum / 🍽️ Ate → 🍗 Chicken / ⭐ It was → Great ‖ 📅 Last month: 🛏️ Stayed → 🏨 Hotel ¦ 🎯 Another day — the same questions. Tell your friend." / "🗓️ יום אחר: 📍 הלכתי → 🏙️ המרכז / 👀 ראיתי → 🏛️ המוזיאון / 🍽️ אכלתי → 🍗 עוף / ⭐ היה → מעולה ‖ 📅 חודש שעבר: 🛏️ התארחתי → 🏨 מלון ¦ 🎯 יום אחר — אותן שאלות. ספר לחבר."
+- Audio played: EN "A hotel! Was it good?" · FR "Un hôtel ! C’était bien ?" · ES "¡Un hotel! ¿Estuvo bien?"
+- Meaning of the audio (HE): "מלון! היה טוב?"
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
   1. EN "It was good. And you? What did you do yesterday?" · FR "C’était bien. Et toi ? Tu as fait quoi hier ?" · ES "Estuvo bien. ¿Y tú? ¿Qué hiciste ayer?" · (HE gloss "מה עשית אתמול?") — `phrase.past.what-did-you-do` — ✅ accepted
-  2. EN "I saw the market." · FR "J’ai vu le marché." · ES "Vi el mercado." · (HE gloss "ראיתי את השוק.") — `phrase.past.i-saw` — ❌ wrong
-  3. EN "Yes, I ate fish." · FR "Oui, j’ai mangé du poisson." · ES "Sí, comí pescado." · (HE gloss "כן, אכלתי דג.") — `phrase.past.i-ate` — ❌ wrong
+  2. EN "I saw the museum." · FR "J’ai vu le musée." · ES "Vi el museo." · (HE gloss "ראיתי את השוק.") — `phrase.past.i-saw` — ❌ wrong
+  3. EN "Yes, I ate chicken." · FR "Oui, j’ai mangé du poulet." · ES "Sí, comí pollo." · (HE gloss "כן, אכלתי דג.") — `phrase.past.i-ate` — ❌ wrong
 - Tests: phrase.past.what-did-you-do
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
@@ -19764,6 +19794,16 @@ No meaning quiz in this mission.
     - FR: Je suis allé dans la vieille ville.
     - ES: Fui al casco antiguo.
     - HE: הלכתי לעיר העתיקה.
+  - choice 2 — ❌ WRONG → m2 — `phrase.past.i-saw`
+    - EN: I saw the market.
+    - FR: J’ai vu le marché.
+    - ES: Vi el mercado.
+    - HE: ראיתי את השוק.
+- **m2** · NPC · slow (TTS rate 0.75) · off the happy path → c2
+  - EN: Hey! Where were you yesterday?
+  - FR: Salut ! Tu étais où hier ?
+  - ES: ¡Hola! ¿Dónde estuviste ayer?
+  - HE: היי! איפה היית אתמול?
 - **n3** · NPC · normal (TTS rate 0.95) → c4
   - EN: Nice! What did you see?
   - FR: Sympa ! Tu as vu quoi ?
@@ -19775,6 +19815,16 @@ No meaning quiz in this mission.
     - FR: J’ai vu le marché.
     - ES: Vi el mercado.
     - HE: ראיתי את השוק.
+  - choice 2 — ❌ WRONG → m4 — `phrase.past.i-ate`
+    - EN: Yes, I ate fish.
+    - FR: Oui, j’ai mangé du poisson.
+    - ES: Sí, comí pescado.
+    - HE: כן, אכלתי דג.
+- **m4** · NPC · slow (TTS rate 0.75) · off the happy path → c4
+  - EN: Nice! What did you see?
+  - FR: Sympa ! Tu as vu quoi ?
+  - ES: ¡Qué bien! ¿Qué viste?
+  - HE: יפה! מה ראית?
 - **n5** · NPC · normal (TTS rate 0.95) → c6
   - EN: Did you eat there?
   - FR: Tu as mangé là-bas ?
@@ -19786,6 +19836,16 @@ No meaning quiz in this mission.
     - FR: Oui, j’ai mangé du poisson.
     - ES: Sí, comí pescado.
     - HE: כן, אכלתי דג.
+  - choice 2 — ❌ WRONG → m6 — `phrase.past.i-saw`
+    - EN: I saw the market.
+    - FR: J’ai vu le marché.
+    - ES: Vi el mercado.
+    - HE: ראיתי את השוק.
+- **m6** · NPC · slow (TTS rate 0.75) · off the happy path → c6
+  - EN: Did you eat there?
+  - FR: Tu as mangé là-bas ?
+  - ES: ¿Comiste allí?
+  - HE: אכלת שם?
 - **n7** · NPC · normal (TTS rate 0.95) → c8
   - EN: Did you like it?
   - FR: Tu as aimé ?
@@ -19797,38 +19857,37 @@ No meaning quiz in this mission.
     - FR: Oui, c’était super !
     - ES: ¡Sí, estuvo genial!
     - HE: כן, היה מעולה!
-  - choice 2 — ✅ accepted → n9 — `phrase.past.it-was-good`
-    - EN: It was good.
-    - FR: C’était bien.
-    - ES: Estuvo bien.
-    - HE: היה טוב.
+  - choice 2 — ❌ WRONG → m8 — `phrase.past.i-stayed`
+    - EN: I stayed in a hostel.
+    - FR: J’ai logé dans une auberge.
+    - ES: Me quedé en un hostal.
+    - HE: ישנתי בהוסטל.
+- **m8** · NPC · slow (TTS rate 0.75) · off the happy path → c8
+  - EN: Did you like it?
+  - FR: Tu as aimé ?
+  - ES: ¿Te gustó?
+  - HE: אהבת?
 - **n9** · NPC · fast (TTS rate 1.08) → c10
   - EN: You were in Argentina last month, right? Where did you stay?
   - FR: Tu étais en Argentine le mois dernier, non ? Tu as logé où ?
   - ES: Estuviste en Argentina el mes pasado, ¿no? ¿Dónde te quedaste?
-  - HE: היית בארגנטינה בחודש שעבר, נכון? איפה ישנת?
+  - HE: היית בארגנטינה בחודש שעבר, נכון? איפה התארחת?
 - **c10** · LEARNER choice screen
   - choice 1 — ✅ accepted → n11 — `phrase.past.i-stayed`
     - EN: I stayed in a hostel.
     - FR: J’ai logé dans une auberge.
     - ES: Me quedé en un hostal.
-    - HE: ישנתי בהוסטל.
-  - choice 2 — 🛟 accepted — conversation-help tool → r10 — `phrase.recovery.repeat`
-    - EN: Can you repeat that?
-    - FR: Vous pouvez répéter ?
-    - ES: ¿Puede repetir, por favor?
-    - HE: אפשר לחזור על זה?
-- **r10** · NPC · slow (TTS rate 0.75) · off the happy path → c10b
-  - EN: In Argentina. Where — did you stay?
-  - FR: En Argentine. Tu as logé — où ?
-  - ES: En Argentina. ¿Dónde — te quedaste?
-  - HE: בארגנטינה. איפה — ישנת?
-- **c10b** · LEARNER choice screen · off the happy path
-  - choice 1 — ✅ accepted → n11 — `phrase.past.i-stayed`
-    - EN: I stayed in a hostel.
-    - FR: J’ai logé dans une auberge.
-    - ES: Me quedé en un hostal.
-    - HE: ישנתי בהוסטל.
+    - HE: התארחתי בהוסטל.
+  - choice 2 — ❌ WRONG → m10 — `phrase.past.i-went`
+    - EN: I went to the old town.
+    - FR: Je suis allé dans la vieille ville.
+    - ES: Fui al casco antiguo.
+    - HE: הלכתי לעיר העתיקה.
+- **m10** · NPC · slow (TTS rate 0.75) · off the happy path → c10
+  - EN: You were in Argentina last month, right? Where did you stay?
+  - FR: Tu étais en Argentine le mois dernier, non ? Tu as logé où ?
+  - ES: Estuviste en Argentina el mes pasado, ¿no? ¿Dónde te quedaste?
+  - HE: היית בארגנטינה בחודש שעבר, נכון? איפה התארחת?
 - **n11** · NPC · normal (TTS rate 0.95) → c12
   - EN: A hostel! Was it good?
   - FR: Une auberge ! C’était bien ?
@@ -19840,6 +19899,16 @@ No meaning quiz in this mission.
     - FR: C’était bien. Et toi ? Tu as fait quoi hier ?
     - ES: Estuvo bien. ¿Y tú? ¿Qué hiciste ayer?
     - HE: היה טוב. ואתה? מה עשית אתמול?
+  - choice 2 — ❌ WRONG → m12 — `phrase.past.i-ate`
+    - EN: Yes, I ate fish.
+    - FR: Oui, j’ai mangé du poisson.
+    - ES: Sí, comí pescado.
+    - HE: כן, אכלתי דג.
+- **m12** · NPC · slow (TTS rate 0.75) · off the happy path → c12
+  - EN: A hostel! Was it good?
+  - FR: Une auberge ! C’était bien ?
+  - ES: ¡Un hostal! ¿Estuvo bien?
+  - HE: הוסטל! היה טוב?
 - **n13** · NPC · normal (TTS rate 0.95) · END of scene
   - EN: Me? Nothing! I was tired. I slept all day.
   - FR: Moi ? Rien ! J’étais fatigué. J’ai dormi toute la journée.
@@ -19865,9 +19934,9 @@ No meaning quiz in this mission.
 - **You:** Yes, it was great!
   - FR: Oui, c’était super ! · ES: ¡Sí, estuvo genial! · HE: כן, היה מעולה!
 - **NPC:** You were in Argentina last month, right? Where did you stay?
-  - FR: Tu étais en Argentine le mois dernier, non ? Tu as logé où ? · ES: Estuviste en Argentina el mes pasado, ¿no? ¿Dónde te quedaste? · HE: היית בארגנטינה בחודש שעבר, נכון? איפה ישנת?
+  - FR: Tu étais en Argentine le mois dernier, non ? Tu as logé où ? · ES: Estuviste en Argentina el mes pasado, ¿no? ¿Dónde te quedaste? · HE: היית בארגנטינה בחודש שעבר, נכון? איפה התארחת?
 - **You:** I stayed in a hostel.
-  - FR: J’ai logé dans une auberge. · ES: Me quedé en un hostal. · HE: ישנתי בהוסטל.
+  - FR: J’ai logé dans une auberge. · ES: Me quedé en un hostal. · HE: התארחתי בהוסטל.
 - **NPC:** A hostel! Was it good?
   - FR: Une auberge ! C’était bien ? · ES: ¡Un hostal! ¿Estuvo bien? · HE: הוסטל! היה טוב?
 - **You:** It was good. And you? What did you do yesterday?
@@ -19879,7 +19948,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 
 ## Learner choice screens
 
-### M20-Q18 — dialogue-choice (step 13, scene "what-did-you-do" · node c2)
+### M20-Q12 — dialogue-choice (step 20, scene "what-did-you-do" · node c2)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Hey! Where were you yesterday?" · FR "Salut ! Tu étais où hier ?" · ES "¡Hola! ¿Dónde estuviste ayer?"
@@ -19887,10 +19956,11 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
   1. EN "I went to the old town." · FR "Je suis allé dans la vieille ville." · ES "Fui al casco antiguo." · (HE gloss "הלכתי לעיר העתיקה.") — `phrase.past.i-went` — ✅ accepted → n3
-- Tests: phrase.past.i-went
+  2. EN "I saw the market." · FR "J’ai vu le marché." · ES "Vi el mercado." · (HE gloss "ראיתי את השוק.") — `phrase.past.i-saw` — ❌ wrong → m2
+- Tests: phrase.past.i-went, phrase.past.i-saw
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M20-Q19 — dialogue-choice (step 13, scene "what-did-you-do" · node c4)
+### M20-Q13 — dialogue-choice (step 20, scene "what-did-you-do" · node c4)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Nice! What did you see?" · FR "Sympa ! Tu as vu quoi ?" · ES "¡Qué bien! ¿Qué viste?"
@@ -19898,10 +19968,11 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
   1. EN "I saw the market." · FR "J’ai vu le marché." · ES "Vi el mercado." · (HE gloss "ראיתי את השוק.") — `phrase.past.i-saw` — ✅ accepted → n5
-- Tests: phrase.past.i-saw
+  2. EN "Yes, I ate fish." · FR "Oui, j’ai mangé du poisson." · ES "Sí, comí pescado." · (HE gloss "כן, אכלתי דג.") — `phrase.past.i-ate` — ❌ wrong → m4
+- Tests: phrase.past.i-saw, phrase.past.i-ate
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M20-Q20 — dialogue-choice (step 13, scene "what-did-you-do" · node c6)
+### M20-Q14 — dialogue-choice (step 20, scene "what-did-you-do" · node c6)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Did you eat there?" · FR "Tu as mangé là-bas ?" · ES "¿Comiste allí?"
@@ -19909,10 +19980,11 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
   1. EN "Yes, I ate fish." · FR "Oui, j’ai mangé du poisson." · ES "Sí, comí pescado." · (HE gloss "כן, אכלתי דג.") — `phrase.past.i-ate` — ✅ accepted → n7
-- Tests: phrase.past.i-ate
+  2. EN "I saw the market." · FR "J’ai vu le marché." · ES "Vi el mercado." · (HE gloss "ראיתי את השוק.") — `phrase.past.i-saw` — ❌ wrong → m6
+- Tests: phrase.past.i-ate, phrase.past.i-saw
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M20-Q21 — dialogue-choice (step 13, scene "what-did-you-do" · node c8)
+### M20-Q15 — dialogue-choice (step 20, scene "what-did-you-do" · node c8)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Did you like it?" · FR "Tu as aimé ?" · ES "¿Te gustó?"
@@ -19920,34 +19992,23 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
   1. EN "Yes, it was great!" · FR "Oui, c’était super !" · ES "¡Sí, estuvo genial!" · (HE gloss "כן, היה מעולה!") — `phrase.past.it-was-great` — ✅ accepted → n9
-  2. EN "It was good." · FR "C’était bien." · ES "Estuvo bien." · (HE gloss "היה טוב.") — `phrase.past.it-was-good` — ✅ accepted → n9
-- Tests: phrase.past.it-was-great, phrase.past.it-was-good
+  2. EN "I stayed in a hostel." · FR "J’ai logé dans une auberge." · ES "Me quedé en un hostal." · (HE gloss "ישנתי בהוסטל.") — `phrase.past.i-stayed` — ❌ wrong → m8
+- Tests: phrase.past.it-was-great, phrase.past.i-stayed
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M20-Q22 — dialogue-choice (step 13, scene "what-did-you-do" · node c10)
+### M20-Q16 — dialogue-choice (step 20, scene "what-did-you-do" · node c10)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "You were in Argentina last month, right? Where did you stay?" · FR "Tu étais en Argentine le mois dernier, non ? Tu as logé où ?" · ES "Estuviste en Argentina el mes pasado, ¿no? ¿Dónde te quedaste?"
-- Meaning of the audio (HE): "היית בארגנטינה בחודש שעבר, נכון? איפה ישנת?"
+- Meaning of the audio (HE): "היית בארגנטינה בחודש שעבר, נכון? איפה התארחת?"
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
-  1. EN "I stayed in a hostel." · FR "J’ai logé dans une auberge." · ES "Me quedé en un hostal." · (HE gloss "ישנתי בהוסטל.") — `phrase.past.i-stayed` — ✅ accepted → n11
-  2. EN "Can you repeat that?" · FR "Vous pouvez répéter ?" · ES "¿Puede repetir, por favor?" · (HE gloss "אפשר לחזור על זה?") — `phrase.recovery.repeat` — ✅ accepted → r10
-- Tests: phrase.past.i-stayed, phrase.recovery.repeat
+  1. EN "I stayed in a hostel." · FR "J’ai logé dans une auberge." · ES "Me quedé en un hostal." · (HE gloss "התארחתי בהוסטל.") — `phrase.past.i-stayed` — ✅ accepted → n11
+  2. EN "I went to the old town." · FR "Je suis allé dans la vieille ville." · ES "Fui al casco antiguo." · (HE gloss "הלכתי לעיר העתיקה.") — `phrase.past.i-went` — ❌ wrong → m10
+- Tests: phrase.past.i-stayed, phrase.past.i-went
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M20-Q23 — dialogue-choice (step 13, scene "what-did-you-do" · node c10b)
-
-- Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio played: EN "In Argentina. Where — did you stay?" · FR "En Argentine. Tu as logé — où ?" · ES "En Argentina. ¿Dónde — te quedaste?"
-- Meaning of the audio (HE): "בארגנטינה. איפה — ישנת?"
-- Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
-- Choices:
-  1. EN "I stayed in a hostel." · FR "J’ai logé dans une auberge." · ES "Me quedé en un hostal." · (HE gloss "ישנתי בהוסטל.") — `phrase.past.i-stayed` — ✅ accepted → n11
-- Tests: phrase.past.i-stayed
-- Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
-
-### M20-Q24 — dialogue-choice (step 13, scene "what-did-you-do" · node c12)
+### M20-Q17 — dialogue-choice (step 20, scene "what-did-you-do" · node c12)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "A hostel! Was it good?" · FR "Une auberge ! C’était bien ?" · ES "¡Un hostal! ¿Estuvo bien?"
@@ -19955,38 +20016,55 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
   1. EN "It was good. And you? What did you do yesterday?" · FR "C’était bien. Et toi ? Tu as fait quoi hier ?" · ES "Estuvo bien. ¿Y tú? ¿Qué hiciste ayer?" · (HE gloss "היה טוב. ואתה? מה עשית אתמול?") — `phrase.past.what-did-you-do` — ✅ accepted → n13
-- Tests: phrase.past.what-did-you-do
+  2. EN "Yes, I ate fish." · FR "Oui, j’ai mangé du poisson." · ES "Sí, comí pescado." · (HE gloss "כן, אכלתי דג.") — `phrase.past.i-ate` — ❌ wrong → m12
+- Tests: phrase.past.what-did-you-do, phrase.past.i-ate
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
 ## Recovery tools in this mission
 
-Toolkit phrases bundled into this mission's sentence list: `phrase.recovery.repeat` "Can you repeat that?".
+No toolkit phrase is bundled into this mission.
 
-Where a conversation-help tool can be selected, and what happens:
+No conversation-help tool is selectable in this mission's dialogues.
 
-- Scene `what-did-you-do`, c10 — `phrase.recovery.repeat` "Can you repeat that?" ("אפשר לחזור על זה?") — after NPC "You were in Argentina last month, right? Where did you stay?" → r10: NPC "In Argentina. Where — did you stay?" (slow) → r10 → c10b → rejoins the happy path at n11. Counts as success (recorded as "pass"); no feedback card — the dialogue simply continues.
 
 ## Wrong answer branches
 
-None — no choice in this mission is marked wrong.
+6 reachable wrong-answer branch(es):
 
+- Scene `what-did-you-do`, c2 — after NPC "Hey! Where were you yesterday?"
+  - Wrong choice: "I saw the market." ("ראיתי את השוק.") — `phrase.past.i-saw`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("I went to the old town."), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m2): "Hey! Where were you yesterday?" — HE "היי! איפה היית אתמול?"
+  - Then: m2 → rejoins the happy path at c2. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
+- Scene `what-did-you-do`, c4 — after NPC "Nice! What did you see?"
+  - Wrong choice: "Yes, I ate fish." ("כן, אכלתי דג.") — `phrase.past.i-ate`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("I saw the market."), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m4): "Nice! What did you see?" — HE "יפה! מה ראית?"
+  - Then: m4 → rejoins the happy path at c4. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
+- Scene `what-did-you-do`, c6 — after NPC "Did you eat there?"
+  - Wrong choice: "I saw the market." ("ראיתי את השוק.") — `phrase.past.i-saw`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("Yes, I ate fish."), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m6): "Did you eat there?" — HE "אכלת שם?"
+  - Then: m6 → rejoins the happy path at c6. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
+- Scene `what-did-you-do`, c8 — after NPC "Did you like it?"
+  - Wrong choice: "I stayed in a hostel." ("ישנתי בהוסטל.") — `phrase.past.i-stayed`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("Yes, it was great!"), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m8): "Did you like it?" — HE "אהבת?"
+  - Then: m8 → rejoins the happy path at c8. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
+- Scene `what-did-you-do`, c10 — after NPC "You were in Argentina last month, right? Where did you stay?"
+  - Wrong choice: "I went to the old town." ("הלכתי לעיר העתיקה.") — `phrase.past.i-went`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("I stayed in a hostel."), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m10): "You were in Argentina last month, right? Where did you stay?" — HE "היית בארגנטינה בחודש שעבר, נכון? איפה התארחת?"
+  - Then: m10 → rejoins the happy path at c10. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
+- Scene `what-did-you-do`, c12 — after NPC "A hostel! Was it good?"
+  - Wrong choice: "Yes, I ate fish." ("כן, אכלתי דג.") — `phrase.past.i-ate`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("It was good. And you? What did you do yesterday?"), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m12): "A hostel! Was it good?" — HE "הוסטל! היה טוב?"
+  - Then: m12 → rejoins the happy path at c12. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
 
 ## Sentence review
 
-Step 15. 12 sentences, in this fixed order. Each is played automatically (TTS), shown with its translation and tip; buttons: 🔊 "Hear again" / "לשמוע שוב" and Next. No speaking prompt, no grading, no scoring; nothing is recorded.
-
-1. `phrase.past.i-went` — I went to the old town. — הלכתי לעיר העתיקה.
-2. `phrase.past.i-saw` — I saw the market. — ראיתי את השוק.
-3. `phrase.past.i-ate` — Yes, I ate fish. — כן, אכלתי דג.
-4. `phrase.past.i-stayed` — I stayed in a hostel. — ישנתי בהוסטל.
-5. `phrase.past.it-was-great` — Yes, it was great! — כן, היה מעולה!
-6. `phrase.past.it-was-good` — It was good. — היה טוב.
-7. `phrase.past.what-did-you-do` — What did you do yesterday? — מה עשית אתמול?
-8. `reply.past.where-were-you` — Where were you yesterday? — איפה היית אתמול?
-9. `reply.past.what-did-you-see` — What did you see? — מה ראית?
-10. `reply.past.did-you-eat` — Did you eat there? — אכלת שם?
-11. `reply.past.where-did-you-stay` — Where did you stay? — איפה ישנת?
-12. `phrase.recovery.repeat` — Can you repeat that? — אפשר לחזור על זה?
+No sentence-review step in this mission.
 
 ## Cold open / ambush
 
@@ -19996,47 +20074,46 @@ No cold open in this mission.
 
 The runtime has NO slot-substitution mechanism: no sentence is generated with a different word. "Variants" exist only as (a) alternative accepted lines on one choice screen and (b) extra sentences taught beside the dialogue. Templates are mentioned only in tips.
 
-Alternative accepted lines:
+No choice screen offers two accepted non-toolkit lines.
 
-- Scene `what-did-you-do`, c8: "Yes, it was great!" OR "It was good." — all accepted, same continuation unless the routes above differ.
 
 Learner sentences taught beside the dialogue (not a line in any scene):
 
-- `phrase.past.it-was-bad` — It was bad.
+- `phrase.past.it-was-good` — It was good.
 
 ## Receipts (proof cards)
 
-- Step 9: "You recognize a question about yesterday — even without catching every word." / "אתה מזהה שאלה על אתמול — גם בלי להבין כל מילה."
-- Step 14: "You said where you were, what you saw, what you ate and where you stayed — in the past." / "סיפרת איפה היית, מה ראית, מה אכלת ואיפה ישנת — בעבר."
-- Step 17: "You told a small story about yesterday — where you went, what you saw, what you ate, where you stayed and how it was — and asked back." / "סיפרת סיפור קטן על אתמול — לאן הלכת, מה ראית, מה אכלת, איפה ישנת ואיך היה — ושאלת בחזרה."
+- Step 19: "🗓️ Yesterday: 📍 Went → Old Town / 👀 Saw → Market / 🍽️ Ate → Fish / ⭐ It was → Great ‖ 📅 Last month: 🛏️ Stayed → Hostel ¦ Your yesterday story — and you asked back." / "🗓️ אתמול: 📍 הלכתי → העיר העתיקה / 👀 ראיתי → השוק / 🍽️ אכלתי → דג / ⭐ היה → מעולה ‖ 📅 חודש שעבר: 🛏️ התארחתי → הוסטל ¦ הסיפור שלך מאתמול — ושאלת בחזרה."
+- Step 21: "The whole conversation — yesterday, last month, and you asked back." / "כל השיחה — אתמול, חודש שעבר, ושאלת בחזרה."
+- Step 23: "No help — where you went, what you saw, what you ate, and you asked back." / "בלי עזרה — לאן הלכת, מה ראית, מה אכלת, ושאלת בחזרה."
+- Step 26: "🗓️ YESTERDAY STORY ¦ 🗓️ Yesterday: 📍 Went → Old Town / 👀 Saw → Market / 🍽️ Ate → Fish / ⭐ It was → Great ‖ 📅 Last month: 🛏️ Stayed → Hostel ¦ You told your yesterday — and another day — and asked back. 😴 Your friend? Slept all day." / "🗓️ סיפור של אתמול ¦ 🗓️ אתמול: 📍 הלכתי → העיר העתיקה / 👀 ראיתי → השוק / 🍽️ אכלתי → דג / ⭐ היה → מעולה ‖ 📅 חודש שעבר: 🛏️ התארחתי → הוסטל ¦ סיפרת את האתמול שלך — וגם יום אחר — ושאלת בחזרה. 😴 והחבר? ישן כל היום."
 
 ## Audit Metadata — DO NOT FIX YET
 
-- Learner-production sentences: 8
+- Learner-production sentences: 7
 - Receptive (expected-reply) sentences: 6
-- Toolkit phrases bundled: 1
-- Key-sentence steps: 6
-- Expected-reply/listening items: 4
+- Toolkit phrases bundled: 0
+- Key-sentence steps: 0
+- Expected-reply/listening items: 0
 - Questions/quizzes (meaning quiz): 0
-- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 19
-- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 21
-- One-button dialogue screens: 5
-- Learner sentences never actively retrieved: 0
-- Dialogue learner choices (screens): 7
-- Wrong-answer branches: 0
+- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 21
+- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 23
+- One-button dialogue screens: 0
+- Learner sentences never actively retrieved: 1
+- Dialogue learner choices (screens): 6
+- Wrong-answer branches: 6
 - Cold-open prompts: 0
-- Recovery opportunities: 1
-- Vocabulary pre-items: 0
-- Swap variants (extra accepted lines): 1
-- Sentences in review: 12
-- Total interactive questions: 30 (answer choices: 73)
-- Approximate total learner interactions: 48 (questions + key sentences + review cards + word-intro screen)
+- Recovery opportunities: 0
+- Vocabulary pre-items: 13
+- Swap variants (extra accepted lines): 0
+- Sentences in review: 0
+- Total interactive questions: 27 (answer choices: 73)
+- Approximate total learner interactions: 28 (questions + key sentences + review cards + word-intro screen)
 
-### AUTO-FLAG — requires human review (3)
+### AUTO-FLAG — requires human review (2)
 
 - AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "what-did-you-do" n13 — “Me? Nothing! I was tired. I slept all day.”
-- AUTO-FLAG — 7 of 7 choice screens have NO wrong option (every button is accepted): what-did-you-do/c2, what-did-you-do/c4, what-did-you-do/c6, what-did-you-do/c8, what-did-you-do/c10, what-did-you-do/c10b, what-did-you-do/c12.
-- AUTO-FLAG — 5 choice screens offer exactly ONE button (no decision): what-did-you-do/c2, what-did-you-do/c4, what-did-you-do/c6, what-did-you-do/c10b, what-did-you-do/c12.
+- AUTO-FLAG — Learner sentence never actively retrieved in this mission (0 choice screens, 0 quick-reply / swap / match / builder rounds, 0 cold-open options): `phrase.past.it-was-good` “It was good.” — appears in sentence review only (orphan in this mission).
 
 ---
 
@@ -22171,7 +22248,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 14, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 23, 24, 26, 28, 29, 30
 - Exercised here as: sentence review (step 16); dialogue choice choosing-a-tour/c10 (accepted)
 
 ## Expected replies / listening items
@@ -23177,7 +23254,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 14, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 23, 24, 26, 28, 29, 30
 - Exercised here as: dialogue choice cold-problem/c2 (accepted)
 
 ## Expected replies / listening items
@@ -25136,7 +25213,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 14, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 23, 24, 26, 28, 29, 30
 - Exercised here as: dialogue choice pharmacy/c3 (accepted)
 
 ### Sentence: `phrase.recovery.slowly`
@@ -26724,7 +26801,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 14, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 23, 24, 26, 28, 29, 30
 - Exercised here as: dialogue choice ns-transit/c8 (accepted)
 
 ### Sentence: `phrase.recovery.slowly`
@@ -27661,7 +27738,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 14, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 23, 24, 26, 28, 29, 30
 - Exercised here as: dialogue choice dr-problem/c2 (accepted)
 
 ### Sentence: `phrase.recovery.slowly`
@@ -28868,7 +28945,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: ¿Puede repetir, por favor?
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 03, 05, 06, 08, 14, 20, 23, 24, 26, 28, 29, 30
+- Used in missions: 01, 03, 05, 06, 08, 14, 23, 24, 26, 28, 29, 30
 - Exercised here as: dialogue choice fin-lunch/c6 (accepted)
 
 ## Expected replies / listening items
@@ -30007,7 +30084,7 @@ Every learner sentence of this mission is a line in a scene.
 | 17 Supermarket & Everyday Shopping | 10 (4 / 5 / 1) | 0 | 0 | 0 | 18 | 4 | 0 | 0 | 0 | 14 words | 0 | 22 | 1 |
 | 18 CHECKPOINT: Everyday Day | 15 (14 / 0 / 1) | 0 | 0 | 0 | 0 | 0 | 15 | 0 | 0 | no | 0 | 0 | 15 |
 | 19 Public Transport | 14 (4 / 9 / 1) | 0 | 0 | 0 | 20 | 6 | 0 | 0 | 0 | 11 words | 0 | 26 | 1 |
-| 20 Past & Recent Events | 15 (8 / 6 / 1) | 4 | 4 | 0 | 19 | 7 | 5 | 1 | 0 | no | 1 | 30 | 3 |
+| 20 Past & Recent Events | 13 (7 / 6 / 0) | 0 | 0 | 0 | 21 | 6 | 0 | 0 | 0 | 13 words | 0 | 27 | 2 |
 | 21 Future Travel & Plans | 16 (9 / 6 / 1) | 4 | 4 | 0 | 18 | 8 | 5 | 1 | 0 | no | 2 | 30 | 4 |
 | 22 Fixing Problems | 19 (11 / 7 / 1) | 5 | 5 | 0 | 20 | 11 | 9 | 1 | 0 | no | 1 | 36 | 7 |
 | 23 Opinions, Feelings & Reactions | 16 (9 / 6 / 1) | 4 | 4 | 0 | 20 | 8 | 7 | 1 | 0 | no | 0 | 32 | 2 |
@@ -30130,14 +30207,13 @@ Every learner-production sentence id of the Core, in order of first appearance. 
 | `phrase.trans.which-platform` | Which platform? | 19 | 24, 28 | 0 | 2 / 4 | 9 | 0 | 0 | yes | no |  |
 | `phrase.trans.does-stop` | Does this stop at the museum? | 19 | 24, 28 | 0 | 3 / 2 | 7 | 0 | 0 | yes | no |  |
 | `phrase.trans.single` | Single, please. | 19 | 24, 28 | 0 | 3 / 4 | 8 | 0 | 0 | yes | no |  |
-| `phrase.past.i-went` | I went to the old town. | 20 | 24, 30 | 1 | 3 / 2 | 11 | 0 | 1 | yes | no |  |
-| `phrase.past.i-saw` | I saw the market. | 20 | — | 1 | 1 / 0 | 6 | 0 | 1 | no | no |  |
-| `phrase.past.i-ate` | Yes, I ate fish. | 20 | — | 1 | 1 / 0 | 7 | 0 | 1 | no | no |  |
-| `phrase.past.it-was-great` | Yes, it was great! | 20 | 24, 30 | 1 | 3 / 0 | 3 | 0 | 1 | yes | no |  |
-| `phrase.past.it-was-good` | It was good. | 20 | 24, 30 | 0 | 2 / 1 | 3 | 0 | 1 | yes | no |  |
-| `phrase.past.i-stayed` | I stayed in a hostel. | 20 | 24, 30 | 1 | 2 / 2 | 7 | 0 | 1 | yes | no |  |
-| `phrase.past.what-did-you-do` | What did you do yesterday? | 20 | — | 1 | 1 / 0 | 5 | 0 | 1 | no | no |  |
-| `phrase.past.it-was-bad` | It was bad. | 20 | — | 0 | 0 / 0 | 1 | 0 | 0 | no | no |  |
+| `phrase.past.i-went` | I went to the old town. | 20 | 24, 30 | 0 | 3 / 3 | 11 | 0 | 0 | yes | no |  |
+| `phrase.past.i-saw` | I saw the market. | 20 | — | 0 | 1 / 2 | 10 | 0 | 0 | no | no |  |
+| `phrase.past.i-ate` | Yes, I ate fish. | 20 | — | 0 | 1 / 2 | 11 | 0 | 0 | no | no |  |
+| `phrase.past.it-was-great` | Yes, it was great! | 20 | 24, 30 | 0 | 3 / 0 | 1 | 0 | 0 | yes | no |  |
+| `phrase.past.i-stayed` | I stayed in a hostel. | 20 | 24, 30 | 0 | 1 / 3 | 7 | 0 | 0 | yes | no |  |
+| `phrase.past.what-did-you-do` | What did you do yesterday? | 20 | — | 0 | 1 / 0 | 3 | 0 | 0 | no | no |  |
+| `phrase.past.it-was-good` | It was good. | 20 | 24, 30 | 0 | 1 / 1 | 0 | 0 | 0 | yes | no |  |
 | `phrase.future.going-to-vietnam` | I'm going to Vietnam. | 21 | 24, 30 | 1 | 3 / 2 | 7 | 0 | 1 | yes | no |  |
 | `phrase.future.ill-be-there` | I'll be there for two weeks. | 21 | 24, 30 | 1 | 4 / 0 | 11 | 0 | 1 | yes | no |  |
 | `phrase.future.want-to-visit` | I want to visit Hanoi. | 21 | — | 1 | 1 / 0 | 7 | 0 | 1 | no | no |  |
@@ -30190,7 +30266,7 @@ Every learner-production sentence id of the Core, in order of first appearance. 
 | `phrase.emerg.call-police` | Call the police! | 27 | — | 1 | 0 / 0 | 4 | 0 | 1 | no | no |  |
 | `phrase.emerg.where-hospital` | Where is the hospital? | 27 | — | 0 | 0 / 0 | 2 | 0 | 0 | no | no |  |
 
-Learner-production sentence ids: 162. With 0 active retrieval opportunities: 2.
+Learner-production sentence ids: 161. With 0 active retrieval opportunities: 2.
 
 # NPC Comprehension Coverage
 
@@ -30333,10 +30409,10 @@ Every expected-reply sentence id. "Quick response" does not exist as an exercise
 | `reply.trans.three-stops` | It's three stops. | 19 | 24 | no | 0 / 0 | 0 / 1 | yes | yes |
 | `reply.trans.wrong-way` | You're going the wrong way. | 19 | 24 | no | 0 / 0 | 1 / 0 | yes | **no** |
 | `reply.past.where-were-you` | Where were you yesterday? | 20 | — | no | 0 / 0 | 0 / 0 | no | yes |
-| `reply.past.what-did-you-see` | What did you see? | 20 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
-| `reply.past.did-you-eat` | Did you eat there? | 20 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
-| `reply.past.did-you-like` | Did you like it? | 20 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
-| `reply.past.where-did-you-stay` | Where did you stay? | 20 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
+| `reply.past.what-did-you-see` | What did you see? | 20 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.past.did-you-eat` | Did you eat there? | 20 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.past.did-you-like` | Did you like it? | 20 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.past.where-did-you-stay` | Where did you stay? | 20 | — | no | 0 / 0 | 0 / 0 | no | yes |
 | `reply.past.was-it-good` | Was it good? | 20 | — | no | 0 / 0 | 0 / 0 | no | yes |
 | `reply.future.how-long` | How long will you be there? | 21 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
 | `reply.future.what-do-there` | What do you want to do there? | 21 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
@@ -36325,53 +36401,43 @@ No questions.
 
 ## Mission 20 — Past & Recent Events
 
-**M20-Q01** — expected-reply
-- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (1/4)
-- Audio: What did you see? — (מה ראית?)
-- A: מה ראית? / What did you see? ✅
-- B: אכלת שם? / Did you eat there?
-- C: אהבת? / Did you like it?
-- Correct: What did you see?
-- Tests: reply.past.what-did-you-see
+**M20-Q01** — visual-match
+- Prompt: "🗓️ Yesterday: 📍 Went → ? / 👀 Saw → ? / 🍽️ Ate → ? / ⭐ It was → ? ‖ 📅 Last month: 🛏️ Stayed → ? ¦ 🧩 Which part of your story is your friend asking about? Listen — and tap." / "🗓️ אתמול: 📍 הלכתי → ? / 👀 ראיתי → ? / 🍽️ אכלתי → ? / ⭐ היה → ? ‖ 📅 חודש שעבר: 🛏️ התארחתי → ? ¦ 🧩 על איזה חלק בסיפור החבר שואל? שמע — והקש."
+- Audio: Hey! Where were you yesterday? — (היי! איפה היית אתמול?)
+- A: 📍 “Where you went” / “לאן הלכת” ✅
+- B: 👀 “What you saw” / “מה ראית”
+- C: 🍽️ “What you ate” / “מה אכלת”
+- D: ⭐ “How it was” / “איך היה”
+- E: 🛏️ “Where you stayed” / “איפה התארחת”
+- Correct: 📍 “Where you went” / “לאן הלכת”
+- Tests: (no sentence id — not recorded)
 
-**M20-Q02** — expected-reply
-- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (2/4)
-- Audio: Did you eat there? — (אכלת שם?)
-- A: אכלת שם? / Did you eat there? ✅
-- B: מה ראית? / What did you see?
-- C: אהבת? / Did you like it?
-- Correct: Did you eat there?
-- Tests: reply.past.did-you-eat
+**M20-Q02** — quick-reply
+- Prompt: "🗓️ Yesterday: 📍 Went → Old Town / 👀 Saw → ? / 🍽️ Ate → ? / ⭐ It was → ? ‖ 📅 Last month: 🛏️ Stayed → ? ¦ Your friend asks — what do you answer?" / "🗓️ אתמול: 📍 הלכתי → העיר העתיקה / 👀 ראיתי → ? / 🍽️ אכלתי → ? / ⭐ היה → ? ‖ 📅 חודש שעבר: 🛏️ התארחתי → ? ¦ החבר שואל — מה אתה עונה?"
+- Audio: Where were you yesterday? — (איפה היית אתמול?)
+- A: I went to the old town. ✅
+- B: I saw the market.
+- Correct: I went to the old town.
+- Tests: phrase.past.i-went
 
-**M20-Q03** — expected-reply
-- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (3/4)
-- Audio: Did you like it? — (אהבת?)
-- A: אהבת? / Did you like it? ✅
-- B: מה ראית? / What did you see?
-- C: אכלת שם? / Did you eat there?
-- Correct: Did you like it?
-- Tests: reply.past.did-you-like
-
-**M20-Q04** — expected-reply
-- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (4/4)
-- Audio: Where did you stay? — (איפה ישנת?)
-- A: איפה ישנת? / Where did you stay? ✅
-- B: מה ראית? / What did you see?
-- C: אכלת שם? / Did you eat there?
-- Correct: Where did you stay?
-- Tests: reply.past.where-did-you-stay
-
-**M20-Q05** — quick-reply
-- Prompt: "They ask about yesterday — what do you say?" / "שואלים אותך על אתמול — מה עונים?"
+**M20-Q03** — quick-reply
+- Prompt: "🗓️ Yesterday: 📍 Went → Old Town / 👀 Saw → ? / 🍽️ Ate → ? / ⭐ It was → ? ‖ 📅 Last month: 🛏️ Stayed → ? ¦ Your friend asks — what do you answer?" / "🗓️ אתמול: 📍 הלכתי → העיר העתיקה / 👀 ראיתי → ? / 🍽️ אכלתי → ? / ⭐ היה → ? ‖ 📅 חודש שעבר: 🛏️ התארחתי → ? ¦ החבר שואל — מה אתה עונה?"
 - Audio: What did you see? — (מה ראית?)
 - A: I saw the market. ✅
-- B: Yes, I ate fish.
-- C: I stayed in a hostel.
+- B: I went to the old town.
 - Correct: I saw the market.
 - Tests: phrase.past.i-saw
 
-**M20-Q06** — quick-reply
-- Prompt: "They ask about yesterday — what do you say?" / "שואלים אותך על אתמול — מה עונים?"
+**M20-Q04** — swap-it
+- Prompt: "The same sentence — another place." / "אותו משפט — מקום אחר." — cue 🏖️ "This time you were at the beach" / "הפעם היית בים" — frame EN "I went to ___." · FR "Je suis allé ___." · ES "Fui ___."
+- Audio: (nothing before the tap; the completed sentence is spoken after it) — ()
+- A: the old town → I went to the old town.
+- B: the beach → I went to the beach. ✅
+- Correct: the beach → I went to the beach.
+- Tests: phrase.past.i-went
+
+**M20-Q05** — quick-reply
+- Prompt: "🗓️ Yesterday: 📍 Went → Old Town / 👀 Saw → Market / 🍽️ Ate → ? / ⭐ It was → ? ‖ 📅 Last month: 🛏️ Stayed → ? ¦ What do you answer?" / "🗓️ אתמול: 📍 הלכתי → העיר העתיקה / 👀 ראיתי → השוק / 🍽️ אכלתי → ? / ⭐ היה → ? ‖ 📅 חודש שעבר: 🛏️ התארחתי → ? ¦ מה אתה עונה?"
 - Audio: Did you eat there? — (אכלת שם?)
 - A: Yes, I ate fish. ✅
 - B: I saw the market.
@@ -36379,170 +36445,126 @@ No questions.
 - Correct: Yes, I ate fish.
 - Tests: phrase.past.i-ate
 
-**M20-Q07** — quick-reply
-- Prompt: "They ask about yesterday — what do you say?" / "שואלים אותך על אתמול — מה עונים?"
-- Audio: Did you like it? — (אהבת?)
-- A: Yes, it was great! ✅
-- B: It was good. ✅
-- C: I stayed in a hostel.
-- Correct: Yes, it was great! | It was good.
-- Tests: phrase.past.it-was-great, phrase.past.it-was-good
-
-**M20-Q08** — quick-reply
-- Prompt: "They ask about yesterday — what do you say?" / "שואלים אותך על אתמול — מה עונים?"
-- Audio: Where did you stay? — (איפה ישנת?)
-- A: I stayed in a hostel. ✅
-- B: I went to the old town.
-- C: Yes, I ate fish.
-- Correct: I stayed in a hostel.
-- Tests: phrase.past.i-stayed
-
-**M20-Q09** — quick-reply
-- Prompt: "They ask about yesterday — what do you say?" / "שואלים אותך על אתמול — מה עונים?"
-- Audio: Was it good? — (היה טוב?)
-- A: It was good. And you? What did you do yesterday? ✅
-- B: I saw the market.
-- C: I went to the old town.
-- Correct: It was good. And you? What did you do yesterday?
-- Tests: phrase.past.what-did-you-do
-
-**M20-Q10** — quick-reply
-- Prompt: "They ask about yesterday — what do you say?" / "שואלים אותך על אתמול — מה עונים?" — situation shown: "You have told them about your day. Now it is your turn to ask." / "סיפרת על אתמול שלך. עכשיו תורך לשאול אותו."
-- Audio: (nothing is played — a situation is shown) — ()
-- A: What did you do yesterday? ✅
-- B: It was good.
-- C: I went to the old town.
-- Correct: What did you do yesterday?
-- Tests: phrase.past.what-did-you-do
-
-**M20-Q11** — swap-it
-- Prompt: "How was yesterday?" / "איך היה אתמול?" — cue 🧺 "Yesterday you were at the market" / "אתמול היית בשוק" — frame EN "I went to ___." · FR "Je suis allé ___." · ES "Fui ___."
+**M20-Q06** — swap-it
+- Prompt: "The same sentence — other food." / "אותו משפט — אוכל אחר." — cue 🍗 "This time you ate chicken" / "הפעם אכלת עוף" — frame EN "Yes, I ate ___." · FR "Oui, j’ai mangé ___." · ES "Sí, comí ___."
 - Audio: (nothing before the tap; the completed sentence is spoken after it) — ()
-- A: the old town → I went to the old town.
-- B: the market → I went to the market. ✅
-- C: the beach → I went to the beach.
-- Correct: the market → I went to the market.
-- Tests: phrase.past.i-went
+- A: fish → Yes, I ate fish.
+- B: chicken → Yes, I ate chicken. ✅
+- Correct: chicken → Yes, I ate chicken.
+- Tests: phrase.past.i-ate
 
-**M20-Q12** — swap-it
-- Prompt: "How was yesterday?" / "איך היה אתמול?" — cue 🏖️ "Yesterday you were at the beach" / "אתמול היית בים" — frame EN "I went to ___." · FR "Je suis allé ___." · ES "Fui ___."
-- Audio: (nothing before the tap; the completed sentence is spoken after it) — ()
-- A: the old town → I went to the old town.
-- B: the market → I went to the market.
-- C: the beach → I went to the beach. ✅
-- Correct: the beach → I went to the beach.
-- Tests: phrase.past.i-went
+**M20-Q07** — visual-match
+- Prompt: "🗓️ Yesterday: 📍 Went → Old Town / 👀 Saw → Market / 🍽️ Ate → Fish / ⭐ It was → ? ‖ 📅 Last month: 🛏️ Stayed → ? ¦ How was it? Listen — and tap." / "🗓️ אתמול: 📍 הלכתי → העיר העתיקה / 👀 ראיתי → השוק / 🍽️ אכלתי → דג / ⭐ היה → ? ‖ 📅 חודש שעבר: 🛏️ התארחתי → ? ¦ איך היה? שמע — והקש."
+- Audio: Yes, it was great! — (כן, היה מעולה!)
+- A: 🙂 “Good” / “טוב”
+- B: 🤩 “Great” / “מעולה” ✅
+- Correct: 🤩 “Great” / “מעולה”
+- Tests: (no sentence id — not recorded)
 
-**M20-Q13** — swap-it
-- Prompt: "How was yesterday?" / "איך היה אתמול?" — cue 🏨 "You stayed in a hotel" / "ישנת במלון" — frame EN "I stayed in ___." · FR "J’ai logé dans ___." · ES "Me quedé en ___."
+**M20-Q08** — visual-match
+- Prompt: "🗓️ Yesterday: 📍 Went → Old Town / 👀 Saw → Market / 🍽️ Ate → Fish / ⭐ It was → Great ‖ 📅 Last month: 🛏️ Stayed → ? ¦ 🧩 Which part of your story is your friend asking about? Listen — and tap." / "🗓️ אתמול: 📍 הלכתי → העיר העתיקה / 👀 ראיתי → השוק / 🍽️ אכלתי → דג / ⭐ היה → מעולה ‖ 📅 חודש שעבר: 🛏️ התארחתי → ? ¦ 🧩 על איזה חלק בסיפור החבר שואל? שמע — והקש."
+- Audio: You were in Argentina last month, right? Where did you stay? — (היית בארגנטינה בחודש שעבר, נכון? איפה התארחת?)
+- A: 📍 “Where you went” / “לאן הלכת”
+- B: 👀 “What you saw” / “מה ראית”
+- C: 🍽️ “What you ate” / “מה אכלת”
+- D: ⭐ “How it was” / “איך היה”
+- E: 🛏️ “Where you stayed” / “איפה התארחת” ✅
+- Correct: 🛏️ “Where you stayed” / “איפה התארחת”
+- Tests: (no sentence id — not recorded)
+
+**M20-Q09** — swap-it
+- Prompt: "The same sentence — another place to stay." / "אותו משפט — מקום לינה אחר." — cue 🏨 "This time you stayed in a hotel" / "הפעם התארחת במלון" — frame EN "I stayed in ___." · FR "J’ai logé dans ___." · ES "Me quedé en ___."
 - Audio: (nothing before the tap; the completed sentence is spoken after it) — ()
 - A: a hostel → I stayed in a hostel.
 - B: a hotel → I stayed in a hotel. ✅
 - Correct: a hotel → I stayed in a hotel.
 - Tests: phrase.past.i-stayed
 
-**M20-Q14** — swap-it
-- Prompt: "How was yesterday?" / "איך היה אתמול?" — cue 🙂 "It was fine — good" / "היה בסדר, טוב" — frame EN "It was ___." · FR "C’était ___." · ES "Estuvo ___."
-- Audio: (nothing before the tap; the completed sentence is spoken after it) — ()
-- A: great → It was great.
-- B: good → It was good. ✅
-- C: bad → It was bad.
-- Correct: good → It was good.
-- Tests: phrase.past.it-was-good
-
-**M20-Q15** — swap-it
-- Prompt: "How was yesterday?" / "איך היה אתמול?" — cue 😕 "It was not good" / "לא היה טוב" — frame EN "It was ___." · FR "C’était ___." · ES "Estuvo ___."
-- Audio: (nothing before the tap; the completed sentence is spoken after it) — ()
-- A: great → It was great.
-- B: good → It was good.
-- C: bad → It was bad. ✅
-- Correct: bad → It was bad.
-- Tests: phrase.past.it-was-bad
-
-**M20-Q16** — sentence-builder
-- Prompt: "Build the sentence" / "בנה את המשפט" — cue shown: the sentence's MEANING in the app language ("הלכתי לעיר העתיקה.")
-- Audio: (nothing before Check; the built sentence is spoken once it is right) — ()
-- A: I went  |  to  |  the old town. ✅
-- Correct: I went  |  to  |  the old town.
-- Tests: phrase.past.i-went
-
-**M20-Q17** — sentence-builder
-- Prompt: "Build the sentence" / "בנה את המשפט" — cue shown: the sentence's MEANING in the app language ("מה עשית אתמול?")
-- Audio: (nothing before Check; the built sentence is spoken once it is right) — ()
-- A: What  |  did you do  |  yesterday? ✅
-- Correct: What  |  did you do  |  yesterday?
-- Tests: phrase.past.what-did-you-do
-
-**M20-Q18** — dialogue-choice
-- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio: Hey! Where were you yesterday? — (היי! איפה היית אתמול?)
-- A: I went to the old town. ✅
-- Correct: I went to the old town.
-- Tests: phrase.past.i-went
-
-**M20-Q19** — dialogue-choice
-- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio: Nice! What did you see? — (יפה! מה ראית?)
-- A: I saw the market. ✅
-- Correct: I saw the market.
-- Tests: phrase.past.i-saw
-
-**M20-Q20** — dialogue-choice
-- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio: Did you eat there? — (אכלת שם?)
-- A: Yes, I ate fish. ✅
-- Correct: Yes, I ate fish.
-- Tests: phrase.past.i-ate
-
-**M20-Q21** — dialogue-choice
-- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio: Did you like it? — (אהבת?)
-- A: Yes, it was great! ✅
-- B: It was good. ✅
-- Correct: Yes, it was great! | It was good.
-- Tests: phrase.past.it-was-great, phrase.past.it-was-good
-
-**M20-Q22** — dialogue-choice
-- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio: You were in Argentina last month, right? Where did you stay? — (היית בארגנטינה בחודש שעבר, נכון? איפה ישנת?)
-- A: I stayed in a hostel. ✅
-- B: Can you repeat that? ✅
-- Correct: I stayed in a hostel. | Can you repeat that?
-- Tests: phrase.past.i-stayed, phrase.recovery.repeat
-
-**M20-Q23** — dialogue-choice
-- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio: In Argentina. Where — did you stay? — (בארגנטינה. איפה — ישנת?)
-- A: I stayed in a hostel. ✅
-- Correct: I stayed in a hostel.
-- Tests: phrase.past.i-stayed
-
-**M20-Q24** — dialogue-choice
-- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio: A hostel! Was it good? — (הוסטל! היה טוב?)
+**M20-Q10** — quick-reply
+- Prompt: "🗓️ Yesterday: 📍 Went → Old Town / 👀 Saw → Market / 🍽️ Ate → Fish / ⭐ It was → Great ‖ 📅 Last month: 🛏️ Stayed → Hostel ¦ Your friend asks — answer, and ask back." / "🗓️ אתמול: 📍 הלכתי → העיר העתיקה / 👀 ראיתי → השוק / 🍽️ אכלתי → דג / ⭐ היה → מעולה ‖ 📅 חודש שעבר: 🛏️ התארחתי → הוסטל ¦ החבר שואל — ענה, ושאל אותו בחזרה."
+- Audio: Was it good? — (היה טוב?)
 - A: It was good. And you? What did you do yesterday? ✅
+- B: Yes, I ate fish.
+- C: I stayed in a hostel.
 - Correct: It was good. And you? What did you do yesterday?
 - Tests: phrase.past.what-did-you-do
 
-**M20-Q25** — quick-reply
-- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+**M20-Q11** — visual-match
+- Prompt: "🗓️ Yesterday: 📍 Went → Old Town / 👀 Saw → Market / 🍽️ Ate → Fish / ⭐ It was → Great ‖ 📅 Last month: 🛏️ Stayed → Hostel ¦ What did your friend do yesterday? Listen — and tap." / "🗓️ אתמול: 📍 הלכתי → העיר העתיקה / 👀 ראיתי → השוק / 🍽️ אכלתי → דג / ⭐ היה → מעולה ‖ 📅 חודש שעבר: 🛏️ התארחתי → הוסטל ¦ מה החבר עשה אתמול? שמע — והקש."
+- Audio: Me? Nothing! I was tired. I slept all day. — (אני? כלום! הייתי עייף. ישנתי כל היום.)
+- A: 😴 “Nothing — slept all day” / “כלום — ישן כל היום” ✅
+- B: 🧺 “Saw the market” / “ראה את השוק”
+- C: 🐟 “Ate fish” / “אכל דג”
+- Correct: 😴 “Nothing — slept all day” / “כלום — ישן כל היום”
+- Tests: (no sentence id — not recorded)
+
+**M20-Q12** — dialogue-choice
+- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Hey! Where were you yesterday? — (היי! איפה היית אתמול?)
 - A: I went to the old town. ✅
-- B: I stayed in a hostel.
-- C: Yes, it was great!
+- B: I saw the market.
 - Correct: I went to the old town.
-- Tests: phrase.past.i-went
+- Tests: phrase.past.i-went, phrase.past.i-saw
 
-**M20-Q26** — quick-reply
-- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+**M20-Q13** — dialogue-choice
+- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Nice! What did you see? — (יפה! מה ראית?)
 - A: I saw the market. ✅
 - B: Yes, I ate fish.
-- C: I went to the old town.
+- Correct: I saw the market.
+- Tests: phrase.past.i-saw, phrase.past.i-ate
+
+**M20-Q14** — dialogue-choice
+- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
+- Audio: Did you eat there? — (אכלת שם?)
+- A: Yes, I ate fish. ✅
+- B: I saw the market.
+- Correct: Yes, I ate fish.
+- Tests: phrase.past.i-ate, phrase.past.i-saw
+
+**M20-Q15** — dialogue-choice
+- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
+- Audio: Did you like it? — (אהבת?)
+- A: Yes, it was great! ✅
+- B: I stayed in a hostel.
+- Correct: Yes, it was great!
+- Tests: phrase.past.it-was-great, phrase.past.i-stayed
+
+**M20-Q16** — dialogue-choice
+- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
+- Audio: You were in Argentina last month, right? Where did you stay? — (היית בארגנטינה בחודש שעבר, נכון? איפה התארחת?)
+- A: I stayed in a hostel. ✅
+- B: I went to the old town.
+- Correct: I stayed in a hostel.
+- Tests: phrase.past.i-stayed, phrase.past.i-went
+
+**M20-Q17** — dialogue-choice
+- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
+- Audio: A hostel! Was it good? — (הוסטל! היה טוב?)
+- A: It was good. And you? What did you do yesterday? ✅
+- B: Yes, I ate fish.
+- Correct: It was good. And you? What did you do yesterday?
+- Tests: phrase.past.what-did-you-do, phrase.past.i-ate
+
+**M20-Q18** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Where were you yesterday? — (איפה היית אתמול?)
+- A: I went to the old town. ✅
+- B: I saw the market.
+- C: I stayed in a hostel.
+- Correct: I went to the old town.
+- Tests: phrase.past.i-went
+
+**M20-Q19** — quick-reply
+- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: What did you see? — (מה ראית?)
+- A: I saw the market. ✅
+- B: I went to the old town.
+- C: Yes, I ate fish.
 - Correct: I saw the market.
 - Tests: phrase.past.i-saw
 
-**M20-Q27** — quick-reply
+**M20-Q20** — quick-reply
 - Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio: Did you eat there? — (אכלת שם?)
 - A: Yes, I ate fish. ✅
@@ -36551,30 +36573,66 @@ No questions.
 - Correct: Yes, I ate fish.
 - Tests: phrase.past.i-ate
 
-**M20-Q28** — quick-reply
+**M20-Q21** — quick-reply
 - Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
+- Audio: Was it good? — (היה טוב?)
+- A: It was good. And you? What did you do yesterday? ✅
+- B: Yes, I ate fish.
+- C: I went to the old town.
+- Correct: It was good. And you? What did you do yesterday?
+- Tests: phrase.past.what-did-you-do
+
+**M20-Q22** — quick-reply
+- Prompt: "🗓️ Another day: 📍 Went → 🏙️ Centre / 👀 Saw → 🏛️ Museum / 🍽️ Ate → 🍗 Chicken / ⭐ It was → Great ‖ 📅 Last month: 🛏️ Stayed → 🏨 Hotel ¦ 🎯 Another day — the same questions. Tell your friend." / "🗓️ יום אחר: 📍 הלכתי → 🏙️ המרכז / 👀 ראיתי → 🏛️ המוזיאון / 🍽️ אכלתי → 🍗 עוף / ⭐ היה → מעולה ‖ 📅 חודש שעבר: 🛏️ התארחתי → 🏨 מלון ¦ 🎯 יום אחר — אותן שאלות. ספר לחבר."
+- Audio: Where were you yesterday? — (איפה היית אתמול?)
+- A: I went to the centre. ✅
+- B: I saw the museum.
+- C: I stayed in a hotel.
+- Correct: I went to the centre.
+- Tests: phrase.past.i-went
+
+**M20-Q23** — quick-reply
+- Prompt: "🗓️ Another day: 📍 Went → 🏙️ Centre / 👀 Saw → 🏛️ Museum / 🍽️ Ate → 🍗 Chicken / ⭐ It was → Great ‖ 📅 Last month: 🛏️ Stayed → 🏨 Hotel ¦ 🎯 Another day — the same questions. Tell your friend." / "🗓️ יום אחר: 📍 הלכתי → 🏙️ המרכז / 👀 ראיתי → 🏛️ המוזיאון / 🍽️ אכלתי → 🍗 עוף / ⭐ היה → מעולה ‖ 📅 חודש שעבר: 🛏️ התארחתי → 🏨 מלון ¦ 🎯 יום אחר — אותן שאלות. ספר לחבר."
+- Audio: What did you see? — (מה ראית?)
+- A: I saw the museum. ✅
+- B: I went to the centre.
+- C: Yes, I ate chicken.
+- Correct: I saw the museum.
+- Tests: phrase.past.i-saw
+
+**M20-Q24** — quick-reply
+- Prompt: "🗓️ Another day: 📍 Went → 🏙️ Centre / 👀 Saw → 🏛️ Museum / 🍽️ Ate → 🍗 Chicken / ⭐ It was → Great ‖ 📅 Last month: 🛏️ Stayed → 🏨 Hotel ¦ 🎯 Another day — the same questions. Tell your friend." / "🗓️ יום אחר: 📍 הלכתי → 🏙️ המרכז / 👀 ראיתי → 🏛️ המוזיאון / 🍽️ אכלתי → 🍗 עוף / ⭐ היה → מעולה ‖ 📅 חודש שעבר: 🛏️ התארחתי → 🏨 מלון ¦ 🎯 יום אחר — אותן שאלות. ספר לחבר."
+- Audio: Did you eat there? — (אכלת שם?)
+- A: Yes, I ate chicken. ✅
+- B: I saw the museum.
+- C: I stayed in a hotel.
+- Correct: Yes, I ate chicken.
+- Tests: phrase.past.i-ate
+
+**M20-Q25** — quick-reply
+- Prompt: "🗓️ Another day: 📍 Went → 🏙️ Centre / 👀 Saw → 🏛️ Museum / 🍽️ Ate → 🍗 Chicken / ⭐ It was → Great ‖ 📅 Last month: 🛏️ Stayed → 🏨 Hotel ¦ 🎯 Another day — the same questions. Tell your friend." / "🗓️ יום אחר: 📍 הלכתי → 🏙️ המרכז / 👀 ראיתי → 🏛️ המוזיאון / 🍽️ אכלתי → 🍗 עוף / ⭐ היה → מעולה ‖ 📅 חודש שעבר: 🛏️ התארחתי → 🏨 מלון ¦ 🎯 יום אחר — אותן שאלות. ספר לחבר."
 - Audio: Did you like it? — (אהבת?)
 - A: Yes, it was great! ✅
-- B: I went to the old town.
-- C: What did you do yesterday?
+- B: I went to the centre.
+- C: Yes, I ate chicken.
 - Correct: Yes, it was great!
 - Tests: phrase.past.it-was-great
 
-**M20-Q29** — quick-reply
-- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
-- Audio: You were in Argentina last month, right? Where did you stay? — (היית בארגנטינה בחודש שעבר, נכון? איפה ישנת?)
-- A: I stayed in a hostel. ✅
-- B: I went to the old town.
-- C: Yes, I ate fish.
-- Correct: I stayed in a hostel.
+**M20-Q26** — quick-reply
+- Prompt: "🗓️ Another day: 📍 Went → 🏙️ Centre / 👀 Saw → 🏛️ Museum / 🍽️ Ate → 🍗 Chicken / ⭐ It was → Great ‖ 📅 Last month: 🛏️ Stayed → 🏨 Hotel ¦ 🎯 Another day — the same questions. Tell your friend." / "🗓️ יום אחר: 📍 הלכתי → 🏙️ המרכז / 👀 ראיתי → 🏛️ המוזיאון / 🍽️ אכלתי → 🍗 עוף / ⭐ היה → מעולה ‖ 📅 חודש שעבר: 🛏️ התארחתי → 🏨 מלון ¦ 🎯 יום אחר — אותן שאלות. ספר לחבר."
+- Audio: Where did you stay? — (איפה התארחת?)
+- A: I stayed in a hotel. ✅
+- B: I went to the centre.
+- C: Yes, I ate chicken.
+- Correct: I stayed in a hotel.
 - Tests: phrase.past.i-stayed
 
-**M20-Q30** — quick-reply
-- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
-- Audio: A hostel! Was it good? — (הוסטל! היה טוב?)
+**M20-Q27** — quick-reply
+- Prompt: "🗓️ Another day: 📍 Went → 🏙️ Centre / 👀 Saw → 🏛️ Museum / 🍽️ Ate → 🍗 Chicken / ⭐ It was → Great ‖ 📅 Last month: 🛏️ Stayed → 🏨 Hotel ¦ 🎯 Another day — the same questions. Tell your friend." / "🗓️ יום אחר: 📍 הלכתי → 🏙️ המרכז / 👀 ראיתי → 🏛️ המוזיאון / 🍽️ אכלתי → 🍗 עוף / ⭐ היה → מעולה ‖ 📅 חודש שעבר: 🛏️ התארחתי → 🏨 מלון ¦ 🎯 יום אחר — אותן שאלות. ספר לחבר."
+- Audio: A hotel! Was it good? — (מלון! היה טוב?)
 - A: It was good. And you? What did you do yesterday? ✅
-- B: I saw the market.
-- C: Yes, I ate fish.
+- B: I saw the museum.
+- C: Yes, I ate chicken.
 - Correct: It was good. And you? What did you do yesterday?
 - Tests: phrase.past.what-did-you-do
 
@@ -38594,17 +38652,17 @@ No questions.
 # Totals
 
 - Missions exported: 30
-- Learner-production sentence ids: 162
+- Learner-production sentence ids: 161
 - Expected-reply (receptive) sentence ids: 174
-- Sentence listings across missions (with reuse): 514
-- Expected-reply questions: 63
+- Sentence listings across missions (with reuse): 512
+- Expected-reply questions: 59
 - Meaning quizzes: 7
-- Active-practice questions: 617
-- Dialogue choice screens: 230
+- Active-practice questions: 619
+- Dialogue choice screens: 229
 - Cold opens: 4
-- Total interactive questions: 921
+- Total interactive questions: 918
 - Total answer choices: 2534
-- Wrong-answer branches: 116
-- Recovery opportunities: 37
+- Wrong-answer branches: 122
+- Recovery opportunities: 36
 - Learner sentences with 0 active retrieval opportunities: 2
-- Auto-flags: 197
+- Auto-flags: 196

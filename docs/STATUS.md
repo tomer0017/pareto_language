@@ -2272,3 +2272,29 @@ Home tiles, the Foundation dialog's ✕ / scrim / Escape, the quiz button, the v
 rail) passes at 360, 390, 768, 1024, 1280 and 1440. Phones: 104 of 138 captures byte-identical to before; the
 other 34 are the story player (the fix) and live content (video frames, shuffled answer tiles, a pulsing CTA, audio
 icons) that differs just as much between two captures of the unchanged build — none unexplained.
+
+## Mission 20 — Past & Recent Events — 2026-11-24
+
+**What.** Mission 20 rebuilt as a short, practical, game-like conversation about yesterday — no tense lesson. Locked
+dialogue (EN / ES / FR exact; the brief's Hebrew support). Four production tools (I went to ___ · I saw ___ · I ate ___ ·
+What did you do yesterday?), "It was great" and "I stayed in ___" kept minimal, the friend's day as one comprehension
+moment, the Yesterday Story (📍 / 👀 / 🍽️ / ⭐ ‖ 🛏️) filling only after each answer, three verified-prior transfers
+(the beach · chicken · a hotel) and a final on another day (the centre · the museum · chicken · a hotel). 21
+interactions (8 teaching · 3 transfer · 4 no help · 6 final). Removed from the old Mission 20: the six tool cards, the
+listening drill, the six-round quick reply, the five-round swap with "It was bad.", the sentence builder, the review deck
+and the canonical speed replay. "It was bad." archived; the recovery "repeat" branch dropped.
+
+**Prior audit** (`learnedBefore(lang, 20)`): verified prior in EN / ES / FR — the old town, the market, great, good,
+tired, the beach, the museum, a hotel, chicken, nothing (+ "Hi" / "Nice" / "Yes" / "Me?"); new and taught here —
+yesterday, fish, Argentina, last month, hostel, all day, every past form.
+
+**Verification.** `mission20.test.ts` (64) + narrowed "later missions unchanged" pins in Missions 06–19 / Everyday /
+Mastery / City tests (Missions 21–30 re-pinned from untouched content); typecheck, lint (0 errors), 3,758 tests / 112
+files, build, smoke, content validation and the parity gate green. Real Chrome click-through (CDP, real taps, every
+answer, one deliberate miss): 18 runs — 360 / 390 / 430 × EN / ES / FR × HE / EN UI — 9 / 9 checks each (the whole
+mission to the victory screen, the slow re-ask, the story only grows, no overflow, the Daily Goal never on a control,
+no console errors). Video: no `{lang}_20.mp4` yet — the step is skipped. Artwork: pending (manifest).
+
+**Also fixed (from 646a4c5, card visuals):** the three `.card-visual` rules sat after the Mission 18 scoped block and
+broke its guard — moved above it (rendering unchanged); two UX tests now check the card artwork instead of the emoji it
+replaced.
