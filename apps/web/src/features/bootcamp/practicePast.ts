@@ -31,18 +31,18 @@ import type { BootcampStep, MatchTile } from './types.js';
  */
 
 /**
- * Artwork: none yet — VISUAL PRODUCTION REQUIRED (docs/MISSION20_ASSET_MANIFEST.md). Every slot has a semantic
- * emoji, which is what the cards show until production artwork exists. No picture may carry an answer:
+ * Artwork: six compact Mission 20 illustrations; semantic emoji remain available as fallbacks.
+ * The existing card slots preserve the reveal order. No picture may carry an early answer:
  * the story's exact data (the place, the thing, the food, how it was, where you stayed) is UI.
  */
 type M20Slot = 'chat' | 'old-town' | 'market' | 'meal' | 'hostel' | 'friend-day';
 export const M20_SLOTS: Record<M20Slot, { emoji: string; image?: string }> = {
-  chat: { emoji: '💬' },
-  'old-town': { emoji: '🏘️' },
-  market: { emoji: '🧺' },
-  meal: { emoji: '🍽️' },
-  hostel: { emoji: '🛏️' },
-  'friend-day': { emoji: '😴' },
+  chat: { emoji: '💬', image: 'images/mission20/chat.jpg' },
+  'old-town': { emoji: '🏘️', image: 'images/mission20/old-town.jpg' },
+  market: { emoji: '🧺', image: 'images/mission20/market.jpg' },
+  meal: { emoji: '🍽️', image: 'images/mission20/meal.jpg' },
+  hostel: { emoji: '🛏️', image: 'images/mission20/hostel.jpg' },
+  'friend-day': { emoji: '😴', image: 'images/mission20/friend-day.jpg' },
 };
 /** Result picture only — never a choice, never a card. */
 export const M20_PROPS: Record<'yesterday-story', { emoji: string; image?: string }> = {

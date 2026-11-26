@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { existsSync, readFileSync } from 'node:fs';
+import { existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { createElement } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
@@ -428,7 +428,7 @@ describe('🗓️ THE YESTERDAY STORY — fills progressively, never shows the f
       const d = day(lang);
       for (const [card, fact] of FACTS) for (const s of d.steps.slice(0, primeAt(d, card))) expect(JSON.stringify(s), `${lang} ${card}`).not.toMatch(fact);
     }
-    for (const slot of Object.values(M20_SLOTS)) expect(slot.image).toBeUndefined(); // no artwork yet — so no picture can leak an answer
+    // Artwork stays on the existing line cards; the fact checks above also cover image paths.
   });
   it('19. the story fills part by part — "?" until known — and the board renders it as two columns (yesterday ‖ last month)', () => {
     const known = (n: StoryStage) => splitTimeBoard(yesterdayStory(n)[1])!.plan!.flatMap((c) => c.rows.filter((r) => r.known).map((r) => r.text));
@@ -729,14 +729,15 @@ describe('visuals, the companion and video', () => {
       'quickReply', 'receipt', 'summary',
     ]);
   });
-  it('visual slots: semantic emoji now; production artwork pending, listed in the asset manifest (VISUAL PRODUCTION REQUIRED)', () => {
+  it('visual slots: six production images; Yesterday Story stays deterministic UI', () => {
     expect(Object.keys(M20_SLOTS)).toEqual(['chat', 'old-town', 'market', 'meal', 'hostel', 'friend-day']);
     expect(Object.keys(M20_PROPS)).toEqual(['yesterday-story']);
-    for (const s of [...Object.values(M20_SLOTS), ...Object.values(M20_PROPS)]) { expect(s.emoji).toBeTruthy(); expect(s.image).toBeUndefined(); }
-    expect(existsSync(fileURLToPath(new URL('../../../public/images/mission20', import.meta.url)))).toBe(false); // no image generated in this pass
-    const manifest = readFileSync(fileURLToPath(new URL('../../../../../docs/MISSION20_ASSET_MANIFEST.md', import.meta.url)), 'utf8');
-    expect(manifest).toMatch(/VISUAL PRODUCTION REQUIRED IN ASTRA PASS/);
-    for (const key of [...Object.keys(M20_SLOTS), ...Object.keys(M20_PROPS)]) expect(manifest, key).toContain(`\`${key}\``);
+    for (const [key, slot] of Object.entries(M20_SLOTS)) {
+      expect(slot.emoji).toBeTruthy();
+      expect(slot.image).toBe(`images/mission20/${key}.jpg`);
+      expect(existsSync(fileURLToPath(new URL(`../../../public/${slot.image}`, import.meta.url)))).toBe(true);
+    }
+    expect(M20_PROPS['yesterday-story'].image).toBeUndefined();
   });
   it('every card picture comes from a slot, the same in every language', () => {
     const looks = new Set(Object.values(M20_SLOTS).map((s) => s.image ?? s.emoji));
