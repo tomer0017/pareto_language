@@ -885,3 +885,29 @@ it, and turn the question back. The conversation is locked word for word (EN / E
   step uses the standard resolver (`{lang}_20.mp4`; none exists yet — safely skipped). Artwork: semantic emoji slots;
   production art pending (docs/MISSION20_ASSET_MANIFEST.md). Missions 01–19 and 21–30 are byte-for-byte unchanged — the
   four Mission 20 sentences later missions reuse keep their id and wording.
+
+## Mission 21 — Future Travel & Plans: talk about what happens next (2026-11-27)
+
+The learner does not study a future tense: they already know their next trip, and learn to understand what a friend
+asks about it, say the right part, and ask back. The conversation is locked word for word (EN / ES / FR; Hebrew
+support from the brief).
+- **Four production tools** — I'm going to ___ · I'll be there for ___ · I want to ___ · Where are you going next? (the
+  ask-back: the conversation keeps "And you? Where are you going next?", but teaching and no help retrieve the question
+  ALONE). "After that I'm going to ___", "Tomorrow morning I'm going to ___" and "I want to travel by ___" are the same
+  tools reused — never tools of their own. The friend's own plan ("Me? I'm going home. Have a great trip!") is one
+  comprehension moment.
+- **✈️ MY NEXT TRIP** — the one game object: the learner's OWN plan (📍 next · ⏳ for · 🎯 want to · 🏍️ also ‖ 🗓️ ➡️ after ·
+  🌅 tomorrow morning), so it is shown from the start (not an information gap); a part is ticked ✓ once the learner has
+  said it. The friend's questions are matched to WHICH PART of the plan they ask about ("Where are you going next?" →
+  📍, "What are you doing tomorrow morning?" → 🌅 — not 🎯). What the friend says is never shown before it is heard.
+- **Verified prior, used — not re-taught** (`learnedBefore(lang, 21)`): "I'm going to ___" (Missions 12–13), "I want to
+  ___" (Mission 16), "how long" / "two weeks" (Mission 06), "Anything else?" (Mission 03), "tomorrow morning" (Mission
+  12), "I'm going home" (Mission 13). Same form ≠ same meaning: "we'll miss you" is new (Mission 05's "you can't miss
+  it" is another sense — registered in `WORD_SENSES`).
+- **The final is ANOTHER TRIP** — the same questions, a new plan, every detail verified prior in every language:
+  Argentina · a week · the museum · trying diving · the beach · the station. No grammar, no builder, no Flex Round,
+  no swap, no vocabulary deck.
+- **20 interactions** (the hard ceiling; Mission 20 used 21): 10 teaching / comprehension · 4 no help · 6 final. The
+  video step uses the standard resolver (`{lang}_21.mp4`; none exists yet — safely skipped). Artwork: semantic emoji
+  slots; production art pending (docs/MISSION21_ASSET_MANIFEST.md). Missions 01–20 and 22–30 are byte-for-byte
+  unchanged — the five Mission 21 sentences Missions 24 and 30 reuse keep their id and wording.

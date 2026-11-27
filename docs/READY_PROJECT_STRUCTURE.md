@@ -676,3 +676,16 @@ STORY result) + `mission20Coverage.ts` (chunks as frames: "I went to", "I saw", 
 `priorLearning.MISSION_CONCEPTS`. Rules kept for later missions: the four sentences reused by the City checkpoint and the
 last missions ("I went…", "Yes, it was great!", "I stayed in a hostel.", "It was good.") are byte-identical; "It was bad."
 is archived (`retired.ts`, `past-events`); the shared "Can you repeat that?" is no longer bundled with Mission 20.
+
+## Mission 21 — Future Travel & Plans — 2026-11-27
+
+`core/futurePlans.ts` (the locked conversation; each learner turn has one wrong line of this chat → the friend asks
+again slowly; no alternative answer, no recovery branch) + `practiceFuture.ts` (`m21Steps`: whole-line cards, the ✈️ MY
+NEXT TRIP plan board, two "which part of your plan?" boards, the conversation once, no help (4), the video, the final's
+ANOTHER TRIP (6), the ✈️ MY NEXT TRIP result) + `mission21Coverage.ts` (chunks as frames: "I'm going to", "I'll be there
+for", "I want to", "Where are you going next?"), registered in `priorLearning.MISSION_CONCEPTS`. Rules kept for later
+missions: the five sentences reused by the City checkpoint and the last mission ("I'm going to Vietnam.", "I'll be there
+for two weeks.", "After that I'm going to Thailand.", "Tomorrow morning I'm going to the airport.", "Where are you going
+next?") are byte-identical; the two alternatives ("I want to try the food.", "I want to ride horses there.") and five
+short friend lines are archived (`retired.ts`, `future-plans`) — the friend's whole lines are the sentences now; the
+shared "Please speak slowly." is no longer bundled with Mission 21.

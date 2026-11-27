@@ -151,8 +151,8 @@ describe('the conversation is locked, and Mission 13 is in its place', () => {
   });
   const raw = (a: number, b?: number) => Object.fromEntries(LANGS.map((l) => [l, fnv(JSON.stringify(BOOTCAMP_PLAN.slice(a, b).map((m) => MISSIONS_BY_LANG[l]![m.day]!)))]));
   it('5. Missions 01–12 are byte-for-byte unchanged by this pass', () => { expect(raw(0, 12)).toEqual({ en: '3653c2a7', es: '1fb40bdf', fr: 'a82d32df' }); });
-  it('6. Missions 21–30 (Missions 16–20 have their own passes since: mission16.test.ts … mission20.test.ts) are byte-for-byte unchanged by this pass — Missions 14 and 15 have their own passes since (mission14.test.ts, mission15.test.ts); the Everyday checkpoint still reuses the same sentences', () => {
-    expect(raw(20, 23)).toEqual({ en: 'c4f9e38d', es: '2141ba3c', fr: 'cd5f44f8' }); expect(raw(24)).toEqual({ en: 'aee7fe64', es: '4b9c9cd9', fr: '6af8deb0' }); // Mission 20 left out: its own pass since (mission20.test.ts). // Mission 24 left out: its own correction since (the "should" card — practiceCity.test.ts)
+  it('6. Missions 22–30 (Missions 16–21 have their own passes since: mission16.test.ts … mission21.test.ts) are byte-for-byte unchanged by this pass — Missions 14 and 15 have their own passes since (mission14.test.ts, mission15.test.ts); the Everyday checkpoint still reuses the same sentences', () => {
+    expect(raw(21, 23)).toEqual({ en: '3ee6c20c', es: '2274e125', fr: '0cb618e7' }); expect(raw(24)).toEqual({ en: 'aee7fe64', es: '4b9c9cd9', fr: '6af8deb0' }); // Missions 20 and 21 left out: their own passes since (mission20.test.ts, mission21.test.ts). // Mission 24 left out: its own correction since (the "should" card — practiceCity.test.ts)
     for (const lang of LANGS) for (const id of ['phrase.home.going-home', 'phrase.home.where-family']) expect(day(lang).items.map((i) => strip(i.id)), `${lang} ${id}`).toContain(id);
   });
   it('7. EN / ES / FR parity: the same journey, step for step, each in its own words', () => {

@@ -1221,25 +1221,19 @@ _Reply-training drill:_ “Hi there! Can I help you find anything?” · “Of c
 - **I'm going to Vietnam.** · אני נוסע לווייטנאם. — _I’m going to ___ — מדינה, עיר, או המקום הבא._
 - **I'll be there for two weeks.** · אני אהיה שם שבועיים.
 - **I want to visit Hanoi.** · אני רוצה לבקר בהאנוי.
-- **I want to try the food.** · אני רוצה לנסות את האוכל.
 - **I want to travel by motorbike.** · אני רוצה לטייל באופנוע.
-- **I want to ride horses there.** · אני רוצה לרכוב שם על סוסים.
 - **After that I'm going to Thailand.** · אחרי זה אני נוסע לתאילנד.
 - **Tomorrow morning I'm going to the airport.** · מחר בבוקר אני נוסע לשדה התעופה.
 - **Where are you going next?** · לאן אתה נוסע אחרי זה?
 
 ### Expected replies (you hear)
-- **How long will you be there?** · כמה זמן תהיה שם?
+- **So, where are you going next?** · אז לאן אתה נוסע אחרי זה?
+- **Wow! How long will you be there?** · וואו! כמה זמן תהיה שם?
 - **What do you want to do there?** · מה אתה רוצה לעשות שם?
-- **And after that?** · ואחרי זה?
-- **What are you doing tomorrow morning?** · מה אתה עושה מחר בבוקר?
-- **Be careful.** · תיזהר.
-- **Have a great trip!** · נסיעה טובה!
-
-_Reply-training drill:_ “How long will you be there?” · “What do you want to do there?” · “And after that?” · “Be careful.”
-
-### Recovery tools reused
-`Please speak slowly.`
+- **Nice. Anything else?** · יפה. עוד משהו?
+- **Sounds amazing! Be careful. And after that?** · נשמע מדהים! תיזהר. ואחרי זה?
+- **Great plan. And what are you doing tomorrow morning?** · תוכנית מעולה. ומה אתה עושה מחר בבוקר?
+- **Already! We'll miss you.** · כבר! נתגעגע אליך.
 
 ### Dialogue: `where-next` — happy path
 - **🧑 Them:** “So, where are you going next?” · אז לאן אתה נוסע אחרי זה?
@@ -1257,6 +1251,15 @@ _Reply-training drill:_ “How long will you be there?” · “What do you want
 - **🧑 Them:** “Already! We'll miss you.” · כבר! נתגעגע אליך.
 - **🫵 You:** “And you? Where are you going next?” · ואתה? לאן אתה נוסע אחרי זה?
 - **🧑 Them:** “Me? I'm going home. Have a great trip!” · אני? אני חוזר הביתה. נסיעה טובה!
+
+#### Wrong / recovery branches
+- ⚠︎ less useful: 🫵 “I'll be there for two weeks.” → 🧑 “So, where are you going next?” · אז לאן אתה נוסע אחרי זה?
+- ⚠︎ less useful: 🫵 “I'm going to Vietnam.” → 🧑 “Wow! How long will you be there?” · וואו! כמה זמן תהיה שם?
+- ⚠︎ less useful: 🫵 “I'll be there for two weeks.” → 🧑 “What do you want to do there?” · מה אתה רוצה לעשות שם?
+- ⚠︎ less useful: 🫵 “I want to visit Hanoi.” → 🧑 “Nice. Anything else?” · יפה. עוד משהו?
+- ⚠︎ less useful: 🫵 “I'm going to Vietnam.” → 🧑 “Sounds amazing! Be careful. And after that?” · נשמע מדהים! תיזהר. ואחרי זה?
+- ⚠︎ less useful: 🫵 “After that I'm going to Thailand.” → 🧑 “Great plan. And what are you doing tomorrow morning?” · תוכנית מעולה. ומה אתה עושה מחר בבוקר?
+- ⚠︎ less useful: 🫵 “I want to visit Hanoi.” → 🧑 “Already! We'll miss you.” · כבר! נתגעגע אליך.
 
 ### Review status
 - 🤖 AI-drafted (English + Hebrew) — **pending human / native-Hebrew review**

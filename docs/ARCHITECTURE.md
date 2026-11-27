@@ -722,3 +722,23 @@ nothing under it at full scroll; at rest, scrolling content passes beneath it as
   The ask-back is retrieved ALONE outside the conversation (`ask()` in `m20Steps`: the tool's item id with no `text`
   override, so the button says "What did you do yesterday?" itself); only the dialogue's turn says the locked line.
 - **Companion** — `companionCoach` introduces the first board: "Listen — and tap which part of your story they ask about."
+
+## Mission 21 — Future Travel & Plans (2026-11-27)
+
+- **Content** — `features/bootcamp/core/futurePlans.ts` (spec; `steps: m21Steps`, `numbered: true`) and
+  `features/bootcamp/practiceFuture.ts`. MY NEXT TRIP is the existing two-column board (`HotelStaySummary` /
+  `splitTimeBoard`): `✈️ My next trip: 📍 Next → Vietnam / … ‖ 🗓️ When: ➡️ After → Thailand / 🌅 Tomorrow morning → Airport`
+  — every row known from the start (the learner's own plan), a ` ✓` once said; `myNextTrip(n)` and the serialisable
+  `nextTripState(n)`. Question-type boards are `visualMatch` rounds over `PLAN_TILES` (shuffled — a set of meanings).
+  The friend's lines are the hear items, WHOLE (`reply.future.*`), so every comprehension chunk is really listened to.
+  The final's options reuse the tools' item ids with `text` overrides (`FINAL_SAID`); the ask-back is `ask()` — the
+  tool's item id with no override, so the button says "Where are you going next?" itself.
+- **Senses** — `WORD_SENSES` registers EN "miss" and FR "manquer" (not-notice ≠ feel-absence), so Mission 05's "you
+  can't miss it" never counts as prior for "we'll miss you".
+- **Guards** — `mission21.test.ts`: locked EN / ES / FR transcript (exact), the dialogue tree, prior audit per language
+  (with senses), strict teach-before-test (`unpreparedWords` / `unpreparedChunks`, wrong options included), coverage
+  (every chunk covered), the plan's information rule (learner-owned visible, the friend's plan never early), the four
+  tools, the standalone ask-back, no help = the four tools, ANOTHER TRIP's six verified-prior details, 20 interactions,
+  no grammar / builder / Flex / swap / score, audio never blocking, Missions 01–20 and 22–30 pinned. Earlier tests'
+  "later missions unchanged" pins now start at Mission 22 (the established narrowing).
+- **Companion** — `companionCoach` introduces the first board: "Listen — and tap which part of your plan they ask about."

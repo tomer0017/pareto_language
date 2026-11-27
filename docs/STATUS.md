@@ -2306,3 +2306,32 @@ to Missions 21+ is identical (diffed). Still 21 interactions; Missions 01–19 /
 **Also fixed (from 646a4c5, card visuals):** the three `.card-visual` rules sat after the Mission 18 scoped block and
 broke its guard — moved above it (rendering unchanged); two UX tests now check the card artwork instead of the emoji it
 replaced.
+
+## Mission 21 — Future Travel & Plans — 2026-11-27
+
+**What.** Mission 21 rebuilt as a short, practical conversation about the NEXT TRIP — no future-tense lesson. Locked
+dialogue (EN / ES / FR exact; the brief's Hebrew support). Four production tools (I'm going to ___ · I'll be there for
+___ · I want to ___ · Where are you going next? — asked back ALONE outside the conversation), ✈️ MY NEXT TRIP (the
+learner's own plan, shown from the start, ticked ✓ as it is told), two "which part of your plan?" boards (📍 where next
+· 🌅 tomorrow morning — not 🎯), the friend's plan (🏠 going home) as one comprehension moment, and a final on ANOTHER
+TRIP (Argentina · a week · the museum · trying diving · the beach · the station). 20 interactions (10 teaching /
+comprehension · 4 no help · 6 final). Removed from the old Mission 21: the five tool cards, the listening drill, the
+six-round quick reply, the five-round swap ("three days", Vietnam / Thailand), the sentence builder, the review deck and
+the canonical speed replay; the two alternative answers and five short friend lines archived; "Please speak slowly."
+no longer bundled.
+
+**Prior audit** (`learnedBefore(lang, 21)`): verified prior in EN / ES / FR — "I'm going to" (Missions 12–13), "I want
+to" (Mission 16), "how long", "two weeks", "week" (Mission 06), "Anything else?" (Mission 03), "tomorrow morning" (Mission
+12), "I'm going home" (Mission 13), plus "¡Buen viaje!" / "Bon voyage !" and "el tren" / "le train" (ES, FR). New and
+taught here: Vietnam, Hanoi, Thailand, the airport, the motorbike, "I'll be there", "after that", "be careful", "we'll
+miss you" (EN "miss" / FR "manquer" registered as two senses — Mission 05's "you can't miss it" is not prior). English
+"train" is NOT a prior word ("The train's right here"), so the final's second activity is Mission 16's "try diving".
+
+**Verification.** `mission21.test.ts` (71) + narrowed "later missions unchanged" pins (Missions 06–20, City, Mastery,
+Everyday: Missions 22–30 re-pinned from untouched content); typecheck, lint (0 errors), 3,876 tests / 113 files, build,
+smoke, content validation and the parity gate green. Real Chrome click-through (CDP, real taps, every answer, one
+deliberate miss) on the deploy-identical build: 18 runs — 360 / 390 / 430 × EN / ES / FR × HE / EN UI — 12 / 12 checks
+each (the whole mission to the victory screen, the slow re-ask, MY NEXT TRIP visible from the first card and ticks only
+growing, the friend's plan never on screen early, the ask-back offered alone, ANOTHER TRIP shown, no overflow, the Daily
+Goal never on a control, no console errors). Video: no `{lang}_21.mp4` yet — the step is skipped. Artwork: pending
+(manifest). The practice-audit doc was regenerated — it also picks up the Mission 20 artwork commit's card icons.

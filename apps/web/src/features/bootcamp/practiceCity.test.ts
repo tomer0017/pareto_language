@@ -83,20 +83,20 @@ describe('scope: only the Practice of Missions 19–24 changed', () => {
   const slice = (lang: Lang, a: number, b: number): BootcampDayContent[] => BOOTCAMP_PLAN.slice(a, b).map((m) => beforeCueFreeze(MISSIONS_BY_LANG[lang]![m.day]!, lang));
   const print = (f: (lang: Lang) => unknown): Record<Lang, string> => ({ en: fnv(JSON.stringify(f('en'))), fr: fnv(JSON.stringify(f('fr'))), es: fnv(JSON.stringify(f('es'))) });
 
-  it('Missions 01–20 have their own passes (mission01.test.ts … mission20.test.ts)', async () => {
+  it('Missions 01–21 have their own passes (mission01.test.ts … mission21.test.ts)', async () => {
     const { existsSync } = await import('node:fs');
-    for (let n = 1; n <= 20; n++) expect(existsSync(fileURLToPath(new URL(`./mission${String(n).padStart(2, '0')}.test.ts`, import.meta.url))), `M${n}`).toBe(true);
+    for (let n = 1; n <= 21; n++) expect(existsSync(fileURLToPath(new URL(`./mission${String(n).padStart(2, '0')}.test.ts`, import.meta.url))), `M${n}`).toBe(true);
   });
-  it('the locked dialogues of Missions 21–23 are byte-for-byte unchanged (Missions 19 and 20 have their own passes since: mission19.test.ts, mission20.test.ts)', () => {
-    expect(print((l) => slice(l, 20, 23).map((d) => d.dialogues))).toEqual({ en: '6c1aa90d', fr: '07c8b18a', es: '97c48a96' });
+  it('the locked dialogues of Missions 22–23 are byte-for-byte unchanged (Missions 19–21 have their own passes since: mission19.test.ts … mission21.test.ts)', () => {
+    expect(print((l) => slice(l, 21, 23).map((d) => d.dialogues))).toEqual({ en: 'd0dfa3c2', fr: '1f44f7e1', es: '8ee3a03e' });
   });
-  it('the intro cards and titles of Missions 21–23 are unchanged (Missions 19 and 20 have their own passes since — see their own tests)', () => {
-    expect(print((l) => slice(l, 20, 23).map((d) => [d.day, d.title, d.steps[0]]))).toEqual({ en: 'c7e4f684', fr: 'c7e4f684', es: 'c7e4f684' });
+  it('the intro cards and titles of Missions 22–23 are unchanged (Missions 19–21 have their own passes since — see their own tests)', () => {
+    expect(print((l) => slice(l, 21, 23).map((d) => [d.day, d.title, d.steps[0]]))).toEqual({ en: 'bff8812d', fr: 'bff8812d', es: 'bff8812d' });
   });
   it('after the final micro-pass the approved practice is otherwise exactly as approved', () => {
     const d = (l: Lang, n: number): BootcampDayContent => beforeCueFreeze(MISSIONS_BY_LANG[l]![BOOTCAMP_PLAN[n - 1]!.day]!, l);
-    // Missions 21 and 23, whole (Mission 20 has its own pass since: mission20.test.ts; Mission 24 since its "should" card: tested below).
-    expect(print((l) => [21, 23].map((n) => d(l, n)))).toEqual({ en: '02afaea4', fr: '615687e2', es: 'b7395d72' });
+    // Mission 23, whole (Missions 20 and 21 have their own passes since: mission20.test.ts, mission21.test.ts; Mission 24 since its "should" card: tested below).
+    expect(print((l) => [23].map((n) => d(l, n)))).toEqual({ en: '78d524cb', fr: '4d602c8b', es: '24aadf53' });
     // Mission 22 apart from the removed builder and the shortened speed chain (Mission 19 has its own pass since).
     // Mission 22: with the proof card after the speed chain put back to its approved wording (it was
     // reworded to match the four decisions), everything else hashes to the approved build.
@@ -109,12 +109,12 @@ describe('scope: only the Practice of Missions 19–24 changed', () => {
     };
     expect(print(m22)).toEqual({ en: '0f2900a2', fr: 'b026802a', es: 'c2c94737' });
   });
-  it('sentences of Missions 21–23: nothing was deleted or reworded (Missions 19 and 20 have their own passes since: mission19.test.ts, mission20.test.ts)', () => {
-    expect(print((l) => slice(l, 20, 23).map((d) => d.items))).toEqual({ en: '73f5d02d', fr: '4de09fc6', es: 'b1a2136b' });
+  it('sentences of Missions 22–23: nothing was deleted or reworded (Missions 19–21 have their own passes since: mission19.test.ts … mission21.test.ts)', () => {
+    expect(print((l) => slice(l, 21, 23).map((d) => d.items))).toEqual({ en: 'e026ee87', fr: '7b0e818a', es: '3ef6b761' });
   });
   it('nothing was retired in this pass: the archive still holds the same seven sentences (plus those the later Mission 03, 05 and 06 passes retired)', () => {
-    for (const lang of LANGS) expect(RETIRED_SENTENCES[lang].filter((r) => !M15_PASS_RETIRED.includes(r.id.slice(3)) && r.retiredFrom !== 'coffee-shop' && r.retiredFrom !== 'directions' && r.retiredFrom !== 'airport-border' && r.retiredFrom !== 'taxi' && r.retiredFrom !== 'shopping' && r.retiredFrom !== 'hobbies-free-time' && r.retiredFrom !== 'public-transport' && r.retiredFrom !== 'past-events' && !['reply.super.over-there', 'reply.super.sold-out'].includes(r.id.slice(3)) && !['reply.hotel.sign-here', 'reply.hotel.second-floor'].includes(r.id.slice(3))), lang).toHaveLength(7);
-    expect(RETIRED_SENTENCES.en.some((r) => r.retiredFrom !== 'public-transport' && r.retiredFrom !== 'past-events' && /trans\.|past\.|future\.|fix\.|opin\./.test(r.id))).toBe(false); // (the Mission 19 pass archived four: mission19.test.ts; the Mission 20 pass one: mission20.test.ts)
+    for (const lang of LANGS) expect(RETIRED_SENTENCES[lang].filter((r) => !M15_PASS_RETIRED.includes(r.id.slice(3)) && r.retiredFrom !== 'coffee-shop' && r.retiredFrom !== 'directions' && r.retiredFrom !== 'airport-border' && r.retiredFrom !== 'taxi' && r.retiredFrom !== 'shopping' && r.retiredFrom !== 'hobbies-free-time' && r.retiredFrom !== 'public-transport' && r.retiredFrom !== 'past-events' && r.retiredFrom !== 'future-plans' && !['reply.super.over-there', 'reply.super.sold-out'].includes(r.id.slice(3)) && !['reply.hotel.sign-here', 'reply.hotel.second-floor'].includes(r.id.slice(3))), lang).toHaveLength(7);
+    expect(RETIRED_SENTENCES.en.some((r) => r.retiredFrom !== 'public-transport' && r.retiredFrom !== 'past-events' && r.retiredFrom !== 'future-plans' && /trans\.|past\.|future\.|fix\.|opin\./.test(r.id))).toBe(false); // (the Mission 19 pass archived four: mission19.test.ts; the Mission 20 pass one: mission20.test.ts; the Mission 21 pass seven: mission21.test.ts)
   });
   it('mission order, ids and registry keys are unchanged', () => {
     expect(BOOTCAMP_PLAN.slice(18, 24).map((m) => `${m.id}:${m.day}`)).toEqual(['public-transport:18', 'past-events:34', 'future-plans:35', 'fixing-problems:24', 'opinions-reactions:36', 'city-day-checkpoint:23']);
@@ -177,8 +177,8 @@ describe('all three languages get the same practice, each in its own words', () 
       expect(said(n, 'es').filter((w) => ['usted'].includes(w)), `es M${n}`).toEqual([]);
     }
   });
-  it('the closing review is selective: at most 12 cards, everything taught is in it, nothing twice (Missions 19 and 20 have no review deck since their own passes)', () => {
-    for (let n = 21; n <= 23; n++) {
+  it('the closing review is selective: at most 12 cards, everything taught is in it, nothing twice (Missions 19–21 have no review deck since their own passes)', () => {
+    for (let n = 22; n <= 23; n++) {
       const day = mission(n);
       const review = reviewed(day);
       expect(review.length, `M${n}`).toBeLessThanOrEqual(12);
@@ -192,16 +192,15 @@ describe('all three languages get the same practice, each in its own words', () 
     // (Mission 19 has its own pass since — no listening drill: its staff lines are cards and boards, mission19.test.ts.)
     // The lines that used to be re-tested are now prompts the learner answers.
     const prompts = (n: number): string[] => stepsOf(mission(n), 'quickReply').flatMap((s) => s.rounds.map((r) => strip(r.promptItemId) || r.npc?.en || ''));
-    expect(prompts(21)).toContain('reply.future.how-long');
     expect(prompts(22)).toContain('reply.fix.refund-now');
     expect(prompts(23)).toContain('reply.opin.why');
     // …and each is in the listening drill exactly once.
-    for (const [n, id] of [[21, 'reply.future.how-long'], [22, 'reply.fix.refund-now'], [23, 'reply.opin.why']] as const) { // (Mission 20 has no listening drill since its own pass: mission20.test.ts)
+    for (const [n, id] of [[22, 'reply.fix.refund-now'], [23, 'reply.opin.why']] as const) { // (Missions 20 and 21 have no listening drill since their own passes: mission20.test.ts, mission21.test.ts)
       expect(stepsOf(mission(n), 'replies')[0]!.replyIds.map(strip).filter((x) => x === id), `M${n}`).toHaveLength(1);
     }
   });
-  it('every teaching mission ends on a chain at natural speed made ONLY of its own conversation\'s lines (Missions 19 and 20: their no-help runs, mission19.test.ts and mission20.test.ts)', () => {
-    for (let n = 21; n <= 23; n++) for (const lang of LANGS) {
+  it('every teaching mission ends on a chain at natural speed made ONLY of its own conversation\'s lines (Missions 19–21: their no-help runs, mission19.test.ts … mission21.test.ts)', () => {
+    for (let n = 22; n <= 23; n++) for (const lang of LANGS) {
       const day = mission(n, lang);
       const speed = rush(day);
       expect(speed.label, `${lang} M${n}`).toBeUndefined();
@@ -222,54 +221,7 @@ describe('all three languages get the same practice, each in its own words', () 
 
 /* ── Mission 20 — Past & Recent Events: its own pass since (yesterday's story) — mission20.test.ts ── */
 
-/* ── Mission 21 — Future Travel & Plans ──────────────────────────────────────────────────────── */
-
-describe('Mission 21 — Future Travel & Plans', () => {
-  const day = mission(21);
-  it('flow: learn → recognize → answering about your plans → variations → build → conversation → the itinerary at speed', () => {
-    expect(kinds(day)).toEqual(['talk', 'tool', 'tool', 'tool', 'tool', 'tool', 'replies', 'receipt', 'quickReply', 'swap', 'sentenceBuilder', 'dialogue', 'receipt', 'swipe', 'quickReply:speed', 'receipt', 'summary']);
-  });
-  it('destination → duration → intention → after that → tomorrow → ask back', () => {
-    expect(mapOf(chats(day)[0]!)).toEqual([
-      ['So, where are you going next?', ['phrase.future.going-to-vietnam']],
-      ['reply.future.how-long', ['phrase.future.ill-be-there']],
-      ['reply.future.what-do-there', ['phrase.future.want-to-visit', 'phrase.future.want-to-try-food']],
-      ['reply.future.and-after', ['phrase.future.after-that']],
-      ['reply.future.tomorrow-morning-q', ['phrase.future.tomorrow-morning']],
-      ['situation', ['phrase.future.where-next']],
-    ]);
-    const r = retrieved(day);
-    for (const id of ['phrase.future.going-to-vietnam', 'phrase.future.ill-be-there', 'phrase.future.want-to-visit', 'phrase.future.after-that']) expect(r.get(id) ?? 0, id).toBeGreaterThanOrEqual(2);
-    expect(r.get('phrase.future.where-next')).toBe(3); // alone, built, at speed
-  });
-  it('duration: three days / a week / two weeks, in each language\'s own frame — "two weeks" is Mission 06\'s', () => {
-    expect(swapAll(day)[0]).toEqual(["I'll be there for three days.", "I'll be there for a week.", "I'll be there for two weeks."]);
-    expect(swapAll(mission(21, 'fr'))[0]).toEqual(['Je vais rester trois jours.', 'Je vais rester une semaine.', 'Je vais rester deux semaines.']);
-    expect(swapAll(mission(21, 'es'))[0]).toEqual(['Voy a estar allí tres días.', 'Voy a estar allí una semana.', 'Voy a estar allí dos semanas.']);
-    for (const lang of LANGS) {
-      const d = mission(21, lang);
-      expect(swapAll(d)[0]![2], lang).toBe(text(d, 'phrase.future.ill-be-there'));
-      // Mission 06 now teaches one stay only — the traveller's two weeks (and the calendar's "week");
-      // its old three-length swap is gone, so "three days" is Mission 21's own (see docs/STATUS.md).
-      expect(stepsOf(d, 'swap')[0]!.rounds[0]!.options.map((o) => o.slot.toLowerCase()), lang).toEqual(
-        { en: ['three days', 'a week', 'two weeks'], fr: ['trois jours', 'une semaine', 'deux semaines'], es: ['tres días', 'una semana', 'dos semanas'] }[lang]);
-      expect(text(mission(6, lang), 'phrase.border.two-weeks').toLowerCase(), lang).toContain(swapAll(d)[0]![2]!.toLowerCase().match(/two weeks|deux semaines|dos semanas/)![0]);
-    }
-  });
-  it('destinations stay the two the mission already has — no geography lesson', () => {
-    expect(swapAll(day)[3]).toEqual(["I'm going to Vietnam.", "I'm going to Thailand."]);
-    expect(swapAll(mission(21, 'fr'))[3]).toEqual(['Je vais au Vietnam.', 'Je vais en Thaïlande.']); // au / en
-    expect(swapAll(mission(21, 'es'))[3]).toEqual(['Voy a Vietnam.', 'Voy a Tailandia.']);
-    expect(stepsOf(day, 'swap')[0]!.rounds).toHaveLength(5);
-  });
-  it('"How long will you be there?" is drilled once and then answered — not re-tested', () => {
-    expect(stepsOf(day, 'ambush')).toHaveLength(0);
-    expect(stepsOf(day, 'replies')[0]!.replyIds.map(strip).filter((x) => x === 'reply.future.how-long')).toHaveLength(1);
-  });
-  it('final itinerary chat: where next → how long → what will you do → after that → asks back', () => {
-    expect(mapOf(rush(day)).map(([, ok]) => ok)).toEqual([['phrase.future.going-to-vietnam'], ['phrase.future.ill-be-there'], ['phrase.future.want-to-visit'], ['phrase.future.after-that'], ['phrase.future.where-next']]);
-  });
-});
+/* ── Mission 21 — Future Travel & Plans: its own pass since (the next trip, MY NEXT TRIP) — mission21.test.ts ── */
 
 /* ── Mission 22 — Fixing Problems ────────────────────────────────────────────────────────────── */
 

@@ -17,6 +17,7 @@ import { M16_CONCEPTS } from './mission16Coverage.js';
 import { M17_CONCEPTS } from './mission17Coverage.js';
 import { M19_CONCEPTS } from './mission19Coverage.js';
 import { M20_CONCEPTS } from './mission20Coverage.js';
+import { M21_CONCEPTS } from './mission21Coverage.js';
 import { BOOTCAMP_PLAN } from './plan.js';
 import { fillFrame } from './practiceEngines.js';
 import { MISSIONS_BY_LANG } from './registry.js';
@@ -68,7 +69,7 @@ export function teachingEncounters(day: BootcampDayContent): TeachingEncounter[]
 }
 
 /** The coverage concepts of each mission that has its own coverage specification (by mission number). */
-export const MISSION_CONCEPTS: Readonly<Record<number, readonly CoverageConcept[]>> = { 1: M01_CONCEPTS, 2: M02_CONCEPTS, 3: M03_CONCEPTS, 4: M04_CONCEPTS, 5: M05_CONCEPTS, 6: M06_CONCEPTS, 7: M07_CONCEPTS, 8: M08_CONCEPTS, 9: M09_CONCEPTS, 11: M11_CONCEPTS, 12: M12_CONCEPTS, 13: M13_CONCEPTS, 14: M14_CONCEPTS, 15: M15_CONCEPTS, 16: M16_CONCEPTS, 17: M17_CONCEPTS, 19: M19_CONCEPTS, 20: M20_CONCEPTS };
+export const MISSION_CONCEPTS: Readonly<Record<number, readonly CoverageConcept[]>> = { 1: M01_CONCEPTS, 2: M02_CONCEPTS, 3: M03_CONCEPTS, 4: M04_CONCEPTS, 5: M05_CONCEPTS, 6: M06_CONCEPTS, 7: M07_CONCEPTS, 8: M08_CONCEPTS, 9: M09_CONCEPTS, 11: M11_CONCEPTS, 12: M12_CONCEPTS, 13: M13_CONCEPTS, 14: M14_CONCEPTS, 15: M15_CONCEPTS, 16: M16_CONCEPTS, 17: M17_CONCEPTS, 19: M19_CONCEPTS, 20: M20_CONCEPTS, 21: M21_CONCEPTS };
 
 /** A mission's runtime content, by its number on the journey (1-based). */
 export const missionContent = (lang: CoverageLang, n: number): BootcampDayContent => MISSIONS_BY_LANG[lang]![BOOTCAMP_PLAN[n - 1]!.day]!;
@@ -89,11 +90,23 @@ export type SenseRegistry = Readonly<Partial<Record<CoverageLang, Readonly<Recor
 
 /** The polysemous forms the curriculum actually uses, per language (checked against every mission's text by test). */
 export const WORD_SENSES: SenseRegistry = {
+  en: {
+    // Mission 05 "You can't miss it" (fail to notice) ≠ Mission 21 "We'll miss you" (feel someone's absence).
+    miss: [
+      { sense: 'not-notice', cues: ["can't miss", 'can’t miss'] },
+      { sense: 'feel-absence', cues: ['miss you'] },
+    ],
+  },
   fr: {
     // Mission 11 "la cuisine ici est excellente" (food) ≠ Mission 13 "dans la cuisine" (the room).
     cuisine: [
       { sense: 'food', cues: ['la cuisine ici', 'essayer la cuisine'] },
       { sense: 'kitchen', cues: ['dans la cuisine', 'avec la cuisine', 'préviens la cuisine'] },
+    ],
+    // Mission 05 "Vous ne pouvez pas la manquer" (fail to notice) ≠ Mission 21 "Tu vas nous manquer" (feel someone's absence).
+    manquer: [
+      { sense: 'not-notice', cues: ['pouvez pas la manquer'] },
+      { sense: 'feel-absence', cues: ['nous manquer'] },
     ],
   },
 };

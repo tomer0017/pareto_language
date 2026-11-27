@@ -71,8 +71,8 @@ describe('the conversation is locked, and Mission 06 is in its place', () => {
     expect(print(5)).toEqual({ en: '50fa4cd1', es: '8d7d290d', fr: 'e539a4f6' });
   });
   it('Missions 08–30 are byte-for-byte unchanged by this pass (Mission 07 has its own pass since: mission07.test.ts)', () => {
-    expect(Object.fromEntries(LANGS.map((l) => [l, fnv(JSON.stringify(BOOTCAMP_PLAN.slice(20, 23).map((m) => MISSIONS_BY_LANG[l]![m.day]!)))]))).toEqual({ en: 'c4f9e38d', es: '2141ba3c', fr: 'cd5f44f8' });
-    expect(Object.fromEntries(LANGS.map((l) => [l, fnv(JSON.stringify(BOOTCAMP_PLAN.slice(24).map((m) => MISSIONS_BY_LANG[l]![m.day]!)))]))).toEqual({ en: 'aee7fe64', es: '4b9c9cd9', fr: '6af8deb0' }); // Mission 20 left out: its own pass since (mission20.test.ts). // Mission 24 left out: its own correction since (the "should" card — practiceCity.test.ts) // Missions 17–30 (Missions 14 and 15 have their own passes since: mission14.test.ts, mission15.test.ts) (Missions 08, 09, 10, 11, 12 and 13 have their own passes since)
+    expect(Object.fromEntries(LANGS.map((l) => [l, fnv(JSON.stringify(BOOTCAMP_PLAN.slice(21, 23).map((m) => MISSIONS_BY_LANG[l]![m.day]!)))]))).toEqual({ en: '3ee6c20c', es: '2274e125', fr: '0cb618e7' });
+    expect(Object.fromEntries(LANGS.map((l) => [l, fnv(JSON.stringify(BOOTCAMP_PLAN.slice(24).map((m) => MISSIONS_BY_LANG[l]![m.day]!)))]))).toEqual({ en: 'aee7fe64', es: '4b9c9cd9', fr: '6af8deb0' }); // Missions 20 and 21 left out: their own passes since (mission20.test.ts, mission21.test.ts). // Mission 24 left out: its own correction since (the "should" card — practiceCity.test.ts) // Missions 17–30 (Missions 14 and 15 have their own passes since: mission14.test.ts, mission15.test.ts) (Missions 08, 09, 10, 11, 12 and 13 have their own passes since)
   });
 });
 

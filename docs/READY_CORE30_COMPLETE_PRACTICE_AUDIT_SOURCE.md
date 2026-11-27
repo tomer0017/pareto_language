@@ -60,7 +60,7 @@ Not a mission. Eight phrases shared by all missions; a mission bundles the ones 
 
 - `phrase.recovery.dont-understand` — EN "Sorry, I don't understand." · FR "Désolé, je ne comprends pas." · ES "Perdón, no entiendo." · HE "סליחה, אני לא מבין." — help tool — bundled in missions: 14
 - `phrase.recovery.repeat` — EN "Can you repeat that?" · FR "Vous pouvez répéter ?" · ES "¿Puede repetir, por favor?" · HE "אפשר לחזור על זה?" — help tool — bundled in missions: 01, 03, 05, 06, 08, 14, 23, 24, 26, 28, 29, 30
-- `phrase.recovery.slowly` — EN "Please speak slowly." · FR "Parlez lentement, s’il vous plaît." · ES "Más despacio, por favor." · HE "דבר לאט, בבקשה." — help tool — bundled in missions: 01, 02, 03, 04, 06, 07, 09, 14, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- `phrase.recovery.slowly` — EN "Please speak slowly." · FR "Parlez lentement, s’il vous plaît." · ES "Más despacio, por favor." · HE "דבר לאט, בבקשה." — help tool — bundled in missions: 01, 02, 03, 04, 06, 07, 09, 14, 22, 24, 25, 26, 27, 28, 29, 30
 - `phrase.recovery.show-me` — EN "Can you show me?" · FR "Vous pouvez me montrer ?" · ES "¿Me lo puede mostrar?" · HE "אתה יכול להראות לי?" — help tool — bundled in missions: 04, 07
 - `phrase.recovery.one-moment` — EN "One moment, please." · FR "Un instant, s’il vous plaît." · ES "Un momento, por favor." · HE "רגע אחד, בבקשה." — help tool — bundled in missions: 02, 03, 06, 08, 14
 - `phrase.recovery.what-mean` — EN "What does that mean?" · FR "Qu’est-ce que ça veut dire ?" · ES "¿Qué significa eso?" · HE "מה זה אומר?" — help tool — bundled in missions: 25
@@ -311,7 +311,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: dialogue choice meeting-host/c3 (accepted)
 
 ## Expected replies / listening items
@@ -1271,7 +1271,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: sentence review (step 17); dialogue choice market-stall/c2 (accepted)
 
 ### Sentence: `phrase.recovery.one-moment`
@@ -2536,7 +2536,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: dialogue choice breakfast-order/c6 (accepted)
 
 ### Sentence: `phrase.recovery.thank-you`
@@ -3956,7 +3956,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: dialogue choice coffee-with-a-friend/c4 (accepted)
 
 ## Expected replies / listening items
@@ -6097,7 +6097,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: dialogue choice border-control/c4 (accepted)
 
 ### Sentence: `phrase.recovery.one-moment`
@@ -7339,7 +7339,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: dialogue choice taxi-ride/c3 (accepted)
 
 ### Sentence: `phrase.recovery.show-me`
@@ -9387,7 +9387,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: dialogue choice clothing-shop/c2 (accepted)
 
 ## Expected replies / listening items
@@ -14299,7 +14299,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: nothing (listed only)
 
 ### Sentence: `phrase.recovery.thank-you`
@@ -19287,8 +19287,8 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `past.line.where` — EN "Hey! Where were you yesterday?" · FR "Salut ! Tu étais où hier ?" · ES "¡Hola! ¿Dónde estuviste ayer?" — meaning "היי! איפה היית אתמול? (📍 שואלים על מקום — לאן הלכת)" / "Hey! Where were you yesterday? (📍 a question about a place — where you went)" — icon 💬 — new
-2. `past.line.went` — EN "I went to the old town." · FR "Je suis allé dans la vieille ville." · ES "Fui al casco antiguo." — meaning "הלכתי לעיר העתיקה. (הלכתי ל___ — המקום שהלכת אליו)" / "I went to the old town. (I went to ___ — the place you went to)" — icon 🏘️ — new
+1. `past.line.where` — EN "Hey! Where were you yesterday?" · FR "Salut ! Tu étais où hier ?" · ES "¡Hola! ¿Dónde estuviste ayer?" — meaning "היי! איפה היית אתמול? (📍 שואלים על מקום — לאן הלכת)" / "Hey! Where were you yesterday? (📍 a question about a place — where you went)" — icon none — new
+2. `past.line.went` — EN "I went to the old town." · FR "Je suis allé dans la vieille ville." · ES "Fui al casco antiguo." — meaning "הלכתי לעיר העתיקה. (הלכתי ל___ — המקום שהלכת אליו)" / "I went to the old town. (I went to ___ — the place you went to)" — icon none — new
 
 No build-sentence card.
 
@@ -19297,8 +19297,8 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `past.line.see` — EN "Nice! What did you see?" · FR "Sympa ! Tu as vu quoi ?" · ES "¡Qué bien! ¿Qué viste?" — meaning "יפה! מה ראית? (👀 שואלים מה ראית)" / "Nice! What did you see? (👀 a question about what you saw)" — icon 💬 — new
-2. `past.line.saw` — EN "I saw the market." · FR "J’ai vu le marché." · ES "Vi el mercado." — meaning "ראיתי את השוק. (ראיתי ___ — מה שראית)" / "I saw the market. (I saw ___ — what you saw)" — icon 🧺 — new
+1. `past.line.see` — EN "Nice! What did you see?" · FR "Sympa ! Tu as vu quoi ?" · ES "¡Qué bien! ¿Qué viste?" — meaning "יפה! מה ראית? (👀 שואלים מה ראית)" / "Nice! What did you see? (👀 a question about what you saw)" — icon none — new
+2. `past.line.saw` — EN "I saw the market." · FR "J’ai vu le marché." · ES "Vi el mercado." — meaning "ראיתי את השוק. (ראיתי ___ — מה שראית)" / "I saw the market. (I saw ___ — what you saw)" — icon none — new
 
 No build-sentence card.
 
@@ -19307,8 +19307,8 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `past.line.eat` — EN "Did you eat there?" · FR "Tu as mangé là-bas ?" · ES "¿Comiste allí?" — meaning "אכלת שם? (🍽️ אוכל — באותו מקום)" / "Did you eat there? (🍽️ food — at that place)" — icon 🍽️ — new
-2. `past.line.ate` — EN "Yes, I ate fish." · FR "Oui, j’ai mangé du poisson." · ES "Sí, comí pescado." — meaning "כן, אכלתי דג. (אכלתי ___ — מה שאכלת)" / "Yes, I ate fish. (I ate ___ — what you ate)" — icon 🍽️ — new
+1. `past.line.eat` — EN "Did you eat there?" · FR "Tu as mangé là-bas ?" · ES "¿Comiste allí?" — meaning "אכלת שם? (🍽️ אוכל — באותו מקום)" / "Did you eat there? (🍽️ food — at that place)" — icon none — new
+2. `past.line.ate` — EN "Yes, I ate fish." · FR "Oui, j’ai mangé du poisson." · ES "Sí, comí pescado." — meaning "כן, אכלתי דג. (אכלתי ___ — מה שאכלת)" / "Yes, I ate fish. (I ate ___ — what you ate)" — icon none — new
 
 No build-sentence card.
 
@@ -19317,8 +19317,8 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `past.line.like` — EN "Did you like it?" · FR "Tu as aimé ?" · ES "¿Te gustó?" — meaning "אהבת? (⭐ איך היה?)" / "Did you like it? (⭐ how was it?)" — icon 💬 — new
-2. `past.line.great` — EN "Yes, it was great!" · FR "Oui, c’était super !" · ES "¡Sí, estuvo genial!" — meaning "כן, היה מעולה! (🤩 מעולה — יותר מטוב)" / "Yes, it was great! (🤩 great — better than good)" — icon 💬 — new
+1. `past.line.like` — EN "Did you like it?" · FR "Tu as aimé ?" · ES "¿Te gustó?" — meaning "אהבת? (⭐ איך היה?)" / "Did you like it? (⭐ how was it?)" — icon none — new
+2. `past.line.great` — EN "Yes, it was great!" · FR "Oui, c’était super !" · ES "¡Sí, estuvo genial!" — meaning "כן, היה מעולה! (🤩 מעולה — יותר מטוב)" / "Yes, it was great! (🤩 great — better than good)" — icon none — new
 
 No build-sentence card.
 
@@ -19327,8 +19327,8 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `past.line.stay` — EN "You were in Argentina last month, right? Where did you stay?" · FR "Tu étais en Argentine le mois dernier, non ? Tu as logé où ?" · ES "Estuviste en Argentina el mes pasado, ¿no? ¿Dónde te quedaste?" — meaning "היית בארגנטינה בחודש שעבר, נכון? איפה התארחת? (📅 חודש שעבר · 🛏️ המקום שבו התארחת בטיול — לא לאן הלכת)" / "You were in Argentina last month, right? Where did you stay? (📅 last month · 🛏️ your place on that trip — not where you went)" — icon 🛏️ — new
-2. `past.line.stayed` — EN "I stayed in a hostel." · FR "J’ai logé dans une auberge." · ES "Me quedé en un hostal." — meaning "התארחתי בהוסטל. (התארחתי ב___ — המקום שלך בטיול)" / "I stayed in a hostel. (I stayed in ___ — your place on that trip)" — icon 🛏️ — new
+1. `past.line.stay` — EN "You were in Argentina last month, right? Where did you stay?" · FR "Tu étais en Argentine le mois dernier, non ? Tu as logé où ?" · ES "Estuviste en Argentina el mes pasado, ¿no? ¿Dónde te quedaste?" — meaning "היית בארגנטינה בחודש שעבר, נכון? איפה התארחת? (📅 חודש שעבר · 🛏️ המקום שבו התארחת בטיול — לא לאן הלכת)" / "You were in Argentina last month, right? Where did you stay? (📅 last month · 🛏️ your place on that trip — not where you went)" — icon none — new
+2. `past.line.stayed` — EN "I stayed in a hostel." · FR "J’ai logé dans une auberge." · ES "Me quedé en un hostal." — meaning "התארחתי בהוסטל. (התארחתי ב___ — המקום שלך בטיול)" / "I stayed in a hostel. (I stayed in ___ — your place on that trip)" — icon none — new
 
 No build-sentence card.
 
@@ -19337,8 +19337,8 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `past.line.good` — EN "A hostel! Was it good?" · FR "Une auberge ! C’était bien ?" · ES "¡Un hostal! ¿Estuvo bien?" — meaning "הוסטל! היה טוב? (איך היה שם?)" / "A hostel! Was it good? (how was it there?)" — icon 🛏️ — new
-2. `past.line.back` — EN "It was good. And you? What did you do yesterday?" · FR "C’était bien. Et toi ? Tu as fait quoi hier ?" · ES "Estuvo bien. ¿Y tú? ¿Qué hiciste ayer?" — meaning "היה טוב. ואתה? מה עשית אתמול? (ענית — ועכשיו שואלים בחזרה: „מה עשית אתמול?” — שאלה לכל אחד)" / "It was good. And you? What did you do yesterday? (you answered — now ask back: “What did you do yesterday?” works with anyone)" — icon 💬 — new
+1. `past.line.good` — EN "A hostel! Was it good?" · FR "Une auberge ! C’était bien ?" · ES "¡Un hostal! ¿Estuvo bien?" — meaning "הוסטל! היה טוב? (איך היה שם?)" / "A hostel! Was it good? (how was it there?)" — icon none — new
+2. `past.line.back` — EN "It was good. And you? What did you do yesterday?" · FR "C’était bien. Et toi ? Tu as fait quoi hier ?" · ES "Estuvo bien. ¿Y tú? ¿Qué hiciste ayer?" — meaning "היה טוב. ואתה? מה עשית אתמול? (ענית — ועכשיו שואלים בחזרה: „מה עשית אתמול?” — שאלה לכל אחד)" / "It was good. And you? What did you do yesterday? (you answered — now ask back: “What did you do yesterday?” works with anyone)" — icon none — new
 
 No build-sentence card.
 
@@ -19347,7 +19347,7 @@ The learner READS each word with its meaning always visible and may TAP it to HE
 
 Words are paired across languages by their concept KEY (not by position).
 
-1. `past.line.end` — EN "Me? Nothing! I was tired. I slept all day." · FR "Moi ? Rien ! J’étais fatigué. J’ai dormi toute la journée." · ES "¿Yo? ¡Nada! Estaba cansado. Dormí todo el día." — meaning "אני? כלום! הייתי עייף. ישנתי כל היום. (😴 לא עשה כלום — היה עייף וישן)" / "Me? Nothing! I was tired. I slept all day. (😴 did nothing — tired, slept all day)" — icon 😴 — new
+1. `past.line.end` — EN "Me? Nothing! I was tired. I slept all day." · FR "Moi ? Rien ! J’étais fatigué. J’ai dormi toute la journée." · ES "¿Yo? ¡Nada! Estaba cansado. Dormí todo el día." — meaning "אני? כלום! הייתי עייף. ישנתי כל היום. (😴 לא עשה כלום — היה עייף וישן)" / "Me? Nothing! I was tired. I slept all day. (😴 did nothing — tired, slept all day)" — icon none — new
 
 No build-sentence card.
 
@@ -20126,7 +20126,7 @@ Learner sentences taught beside the dialogue (not a line in any scene):
 - Phase: 4 — City & Conversation / עיר ושיחה 🏙️
 - Source runtime file(s): `apps/web/src/features/bootcamp/core/futurePlans.ts` — one multilingual spec, built per language by `apps/web/src/features/bootcamp/author.ts`
 - Video: found by convention, never written into mission content — EN `videos/en/en_21.mp4` · FR `videos/fr/fr_21.mp4` · ES `videos/es/es_21.mp4`. Played only where that file exists (inventory: `docs/CORE30_FINAL_VIDEO_ACTION_MAP.md`).
-- Video steps inside the Practice flow: no
+- Video steps inside the Practice flow: yes (see flow)
 
 ## Learning goal / intro screen
 
@@ -20148,35 +20148,122 @@ Intro screen (first Practice step; identical in the English, French and Spanish 
 
 - Icon: 🧭
 - Title: "Mission 21: Future Travel & Plans" / "משימה 21: לאן ממשיכים: תוכניות"
-- Text 1: ""Where are you going next?" — the most common question between travelers." / ""לאן אתה ממשיך?" — השאלה הכי נפוצה בין מטיילים."
-- Text 2: "Four frames answer it: I’m going to…, I’ll be there for…, I want to…, after that…." / "ארבע תבניות עונות עליה: אני נוסע ל…, אהיה שם…, אני רוצה…, אחרי זה…."
-- Button: "Say where I am going" / "לספר לאן אני נוסע"
+- Text 1: "You have a plan for the rest of your trip." / "יש לך תוכנית להמשך הטיול."
+- Text 2: "Tell your friend about it." / "ספר עליה לחבר."
+- Button: "Tell my plan" / "לספר על התוכנית"
 
 ## Current Practice flow
 
 1. `talk` — intro screen — "Mission 21: Future Travel & Plans"
-2. `tool` — key sentence (listen → reveal → say aloud) — `phrase.future.going-to-vietnam` “I'm going to Vietnam.” · label "Where to" / "לאן" (1/5)
-3. `tool` — key sentence (listen → reveal → say aloud) — `phrase.future.ill-be-there` “I'll be there for two weeks.” · label "For how long" / "לכמה זמן" (2/5)
-4. `tool` — key sentence (listen → reveal → say aloud) — `phrase.future.want-to-visit` “I want to visit Hanoi.” · label "What I want" / "מה אני רוצה" (3/5)
-5. `tool` — key sentence (listen → reveal → say aloud) — `phrase.future.after-that` “After that I'm going to Thailand.” · label "After that" / "אחרי זה" (4/5)
-6. `tool` — key sentence (listen → reveal → say aloud) — `phrase.future.where-next` “Where are you going next?” · label "Ask back" / "לשאול בחזרה" (5/5)
-7. `replies` — expected replies (listening drill) — after `phrase.future.going-to-vietnam`: 4 replies
-8. `receipt` — receipt (proof card) — "You recognize the follow-ups: how long, what will you do, and what next." / "אתה מזהה את שאלות ההמשך: לכמה זמן, מה תעשה, ומה אחר כך."
-9. `quickReply` — quick reply (hear → pick your response) — 6 round(s)
-10. `swap` — swap it (one frame, several endings) — 5 round(s)
-11. `sentenceBuilder` — sentence builder (put the chunks in order) — 2 round(s)
-12. `dialogue` — dialogue (choose your line) — scene `where-next`
-13. `receipt` — receipt (proof card) — "You said where you are going, for how long and what you want to do — and asked back." / "סיפרת לאן אתה נוסע, לכמה זמן ומה אתה רוצה לעשות — ושאלת בחזרה."
-14. `swipe` — sentence review — 12 sentences
-15. `quickReply` — quick reply (hear → pick your response) — 5 round(s) · speed challenge
-16. `receipt` — receipt (proof card) — "Where, how long, what you will do and what comes after — you told your plan at normal pace, and asked back." / "לאן, לכמה זמן, מה תעשה ומה אחר כך — סיפרת את התוכנית שלך בקצב רגיל, ושאלת בחזרה."
-17. `summary` — victory screen
+2. `prime` — before-we-speak (word intro) — 2 words → builds ``
+3. `visualMatch` — visual match (hear → tap the tile) — 1 round(s)
+4. `prime` — before-we-speak (word intro) — 2 words → builds ``
+5. `quickReply` — quick reply (hear → pick your response) — 2 round(s)
+6. `prime` — before-we-speak (word intro) — 2 words → builds ``
+7. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+8. `prime` — before-we-speak (word intro) — 2 words → builds ``
+9. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+10. `prime` — before-we-speak (word intro) — 2 words → builds ``
+11. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+12. `prime` — before-we-speak (word intro) — 2 words → builds ``
+13. `visualMatch` — visual match (hear → tap the tile) — 1 round(s)
+14. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+15. `prime` — before-we-speak (word intro) — 2 words → builds ``
+16. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
+17. `prime` — before-we-speak (word intro) — 1 words → builds ``
+18. `visualMatch` — visual match (hear → tap the tile) — 1 round(s)
+19. `receipt` — receipt (proof card) — "✈️ My next trip: 📍 Next → Vietnam ✓ / ⏳ For → Two weeks ✓ / 🎯 Want to → Visit Hanoi ✓ / 🏍️ Also → Travel by motorbike ✓ ‖ 🗓️ When: ➡️ After → Thailand ✓ / 🌅 Tomorrow morning → Airport ✓ ¦ Your plan — and you asked back." / "✈️ הטיול הבא שלי: 📍 הבא → וייטנאם ✓ / ⏳ לכמה זמן → שבועיים ✓ / 🎯 רוצה → לבקר בהאנוי ✓ / 🏍️ וגם → לטייל באופנוע ✓ ‖ 🗓️ מתי: ➡️ אחרי זה → תאילנד ✓ / 🌅 מחר בבוקר → שדה התעופה ✓ ¦ התוכנית שלך — ושאלת בחזרה."
+20. `dialogue` — dialogue (choose your line) — scene `where-next`
+21. `receipt` — receipt (proof card) — "The whole conversation — where, how long, what you will do, what comes after — and you asked back." / "כל השיחה — לאן, לכמה זמן, מה תעשה, מה אחר כך — ושאלת בחזרה."
+22. `quickReply` — quick reply (hear → pick your response) — 4 round(s) · speed challenge
+23. `receipt` — receipt (proof card) — "No help — where, how long, what you want to do, and you asked back." / "בלי עזרה — לאן, לכמה זמן, מה אתה רוצה לעשות, ושאלת בחזרה."
+24. `video` — video — mode again
+25. `quickReply` — quick reply (hear → pick your response) — 6 round(s)
+26. `receipt` — receipt (proof card) — "✈️ MY NEXT TRIP ¦ ✈️ My next trip: 📍 Next → Vietnam ✓ / ⏳ For → Two weeks ✓ / 🎯 Want to → Visit Hanoi ✓ / 🏍️ Also → Travel by motorbike ✓ ‖ 🗓️ When: ➡️ After → Thailand ✓ / 🌅 Tomorrow morning → Airport ✓ ¦ You told your plan — and another trip — and asked back. 🏠 Your friend? Going home." / "✈️ הטיול הבא שלי ¦ ✈️ הטיול הבא שלי: 📍 הבא → וייטנאם ✓ / ⏳ לכמה זמן → שבועיים ✓ / 🎯 רוצה → לבקר בהאנוי ✓ / 🏍️ וגם → לטייל באופנוע ✓ ‖ 🗓️ מתי: ➡️ אחרי זה → תאילנד ✓ / 🌅 מחר בבוקר → שדה התעופה ✓ ¦ סיפרת את התוכנית — וגם טיול אחר — ושאלת בחזרה. 🏠 והחבר? חוזר הביתה."
+27. `summary` — victory screen
 
 Step sequence identical in EN / FR / ES: yes.
 
 ## Before we speak / word intro
 
-No vocabulary pre-step.
+Step 2. Label: "Where next?" / "לאן עכשיו?". Intro: "✈️ My next trip: 📍 Next → Vietnam / ⏳ For → Two weeks / 🎯 Want to → Visit Hanoi / 🏍️ Also → Travel by motorbike ‖ 🗓️ When: ➡️ After → Thailand / 🌅 Tomorrow morning → Airport ¦ This is your plan. Your friend asks about it — tap to hear." / "✈️ הטיול הבא שלי: 📍 הבא → וייטנאם / ⏳ לכמה זמן → שבועיים / 🎯 רוצה → לבקר בהאנוי / 🏍️ וגם → לטייל באופנוע ‖ 🗓️ מתי: ➡️ אחרי זה → תאילנד / 🌅 מחר בבוקר → שדה התעופה ¦ זו התוכנית שלך. החבר שואל עליה — הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `future.line.where` — EN "So, where are you going next?" · FR "Alors, tu vas où après ?" · ES "Bueno, ¿a dónde vas después?" — meaning "אז לאן אתה נוסע אחרי זה? (📍 שואלים על היעד הבא שלך)" / "So, where are you going next? (📍 a question about your next destination)" — icon 💬 — new
+2. `future.line.going` — EN "I'm going to Vietnam." · FR "Je vais au Vietnam." · ES "Voy a Vietnam." — meaning "אני נוסע לווייטנאם. (אני נוסע ל___ — אתה כבר מכיר: „מחר בבוקר אני הולך לים”)" / "I’m going to Vietnam. (I’m going to ___ — you know it already: “Tomorrow morning I’m going to the beach”)" — icon 🧭 — new
+
+No build-sentence card.
+
+Step 4. Label: "How long?" / "לכמה זמן?". Intro: "✈️ My next trip: 📍 Next → Vietnam / ⏳ For → Two weeks / 🎯 Want to → Visit Hanoi / 🏍️ Also → Travel by motorbike ‖ 🗓️ When: ➡️ After → Thailand / 🌅 Tomorrow morning → Airport ¦ Now — how long. Tap to hear." / "✈️ הטיול הבא שלי: 📍 הבא → וייטנאם / ⏳ לכמה זמן → שבועיים / 🎯 רוצה → לבקר בהאנוי / 🏍️ וגם → לטייל באופנוע ‖ 🗓️ מתי: ➡️ אחרי זה → תאילנד / 🌅 מחר בבוקר → שדה התעופה ¦ ועכשיו — כמה זמן. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `future.line.how-long` — EN "Wow! How long will you be there?" · FR "Waouh ! Tu restes combien de temps ?" · ES "¡Guau! ¿Cuánto tiempo vas a estar allí?" — meaning "וואו! כמה זמן תהיה שם? (⏳ שואלים לכמה זמן)" / "Wow! How long will you be there? (⏳ a question about how long)" — icon 💬 — new
+2. `future.line.be-there` — EN "I'll be there for two weeks." · FR "Je vais rester deux semaines." · ES "Voy a estar allí dos semanas." — meaning "אני אהיה שם שבועיים. (אהיה שם ___ — לכמה זמן)" / "I’ll be there for two weeks. (I’ll be there for ___ — how long you stay)" — icon 🧭 — new
+
+No build-sentence card.
+
+Step 6. Label: "What do you want to do?" / "מה תעשה שם?". Intro: "✈️ My next trip: 📍 Next → Vietnam ✓ / ⏳ For → Two weeks ✓ / 🎯 Want to → Visit Hanoi / 🏍️ Also → Travel by motorbike ‖ 🗓️ When: ➡️ After → Thailand / 🌅 Tomorrow morning → Airport ¦ And what do you want to do there? Tap to hear." / "✈️ הטיול הבא שלי: 📍 הבא → וייטנאם ✓ / ⏳ לכמה זמן → שבועיים ✓ / 🎯 רוצה → לבקר בהאנוי / 🏍️ וגם → לטייל באופנוע ‖ 🗓️ מתי: ➡️ אחרי זה → תאילנד / 🌅 מחר בבוקר → שדה התעופה ¦ ומה אתה רוצה לעשות שם? הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `future.line.what-do` — EN "What do you want to do there?" · FR "Tu veux faire quoi là-bas ?" · ES "¿Qué quieres hacer allí?" — meaning "מה אתה רוצה לעשות שם? (🎯 שואלים מה אתה רוצה לעשות)" / "What do you want to do there? (🎯 a question about what you want to do)" — icon 💬 — new
+2. `future.line.visit` — EN "I want to visit Hanoi." · FR "Je veux visiter Hanoï." · ES "Quiero visitar Hanói." — meaning "אני רוצה לבקר בהאנוי. (אני רוצה ___ — אתה כבר מכיר: „אני רוצה לנסות צלילה”)" / "I want to visit Hanoi. (I want to ___ — you know it already: “I want to try diving”)" — icon 🏯 — new
+
+No build-sentence card.
+
+Step 8. Label: "Anything else?" / "עוד משהו?". Intro: "✈️ My next trip: 📍 Next → Vietnam ✓ / ⏳ For → Two weeks ✓ / 🎯 Want to → Visit Hanoi ✓ / 🏍️ Also → Travel by motorbike ‖ 🗓️ When: ➡️ After → Thailand / 🌅 Tomorrow morning → Airport ¦ The same “I want to ___” — another plan. Tap to hear." / "✈️ הטיול הבא שלי: 📍 הבא → וייטנאם ✓ / ⏳ לכמה זמן → שבועיים ✓ / 🎯 רוצה → לבקר בהאנוי ✓ / 🏍️ וגם → לטייל באופנוע ‖ 🗓️ מתי: ➡️ אחרי זה → תאילנד / 🌅 מחר בבוקר → שדה התעופה ¦ אותו „אני רוצה ___” — תוכנית אחרת. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `future.line.else` — EN "Nice. Anything else?" · FR "Sympa. Autre chose ?" · ES "Qué bien. ¿Algo más?" — meaning "יפה. עוד משהו? (עוד משהו שאתה רוצה לעשות — לא אותו דבר)" / "Nice. Anything else? (something else you want to do — not the same thing)" — icon 💬 — new
+2. `future.line.motorbike` — EN "I want to travel by motorbike." · FR "Je veux voyager à moto." · ES "Quiero viajar en moto." — meaning "אני רוצה לטייל באופנוע. (אותו „אני רוצה ___” — תוכנית אחרת)" / "I want to travel by motorbike. (the same “I want to ___” — another plan)" — icon 🏍️ — new
+
+No build-sentence card.
+
+Step 10. Label: "And after that?" / "ואחרי זה?". Intro: "✈️ My next trip: 📍 Next → Vietnam ✓ / ⏳ For → Two weeks ✓ / 🎯 Want to → Visit Hanoi ✓ / 🏍️ Also → Travel by motorbike ✓ ‖ 🗓️ When: ➡️ After → Thailand / 🌅 Tomorrow morning → Airport ¦ Your friend asks what comes after. Tap to hear." / "✈️ הטיול הבא שלי: 📍 הבא → וייטנאם ✓ / ⏳ לכמה זמן → שבועיים ✓ / 🎯 רוצה → לבקר בהאנוי ✓ / 🏍️ וגם → לטייל באופנוע ✓ ‖ 🗓️ מתי: ➡️ אחרי זה → תאילנד / 🌅 מחר בבוקר → שדה התעופה ¦ החבר שואל מה אחרי זה. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `future.line.after` — EN "Sounds amazing! Be careful. And after that?" · FR "Ça a l’air génial ! Fais attention. Et après ça ?" · ES "¡Suena increíble! Ten cuidado. ¿Y después de eso?" — meaning "נשמע מדהים! תיזהר. ואחרי זה? (➡️ שואלים מה אחרי זה)" / "Sounds amazing! Be careful. And after that? (➡️ a question about what comes after)" — icon 💬 — new
+2. `future.line.after-that` — EN "After that I'm going to Thailand." · FR "Après ça, je vais en Thaïlande." · ES "Después de eso voy a Tailandia." — meaning "אחרי זה אני נוסע לתאילנד. (אחרי זה + אני נוסע ל___)" / "After that I’m going to Thailand. (after that + I’m going to ___)" — icon 🧭 — new
+
+No build-sentence card.
+
+Step 12. Label: "Tomorrow morning" / "מחר בבוקר". Intro: "✈️ My next trip: 📍 Next → Vietnam ✓ / ⏳ For → Two weeks ✓ / 🎯 Want to → Visit Hanoi ✓ / 🏍️ Also → Travel by motorbike ✓ ‖ 🗓️ When: ➡️ After → Thailand ✓ / 🌅 Tomorrow morning → Airport ¦ Now — tomorrow morning. Tap to hear." / "✈️ הטיול הבא שלי: 📍 הבא → וייטנאם ✓ / ⏳ לכמה זמן → שבועיים ✓ / 🎯 רוצה → לבקר בהאנוי ✓ / 🏍️ וגם → לטייל באופנוע ✓ ‖ 🗓️ מתי: ➡️ אחרי זה → תאילנד ✓ / 🌅 מחר בבוקר → שדה התעופה ¦ ועכשיו — מחר בבוקר. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `future.line.tomorrow` — EN "Great plan. And what are you doing tomorrow morning?" · FR "Super programme. Et tu fais quoi demain matin ?" · ES "Buen plan. ¿Y qué haces mañana por la mañana?" — meaning "תוכנית מעולה. ומה אתה עושה מחר בבוקר? (🌅 שואלים מה התוכנית שלך מחר בבוקר)" / "Great plan. And what are you doing tomorrow morning? (🌅 a question about your plan tomorrow morning)" — icon 💬 — new
+2. `future.line.tomorrow-airport` — EN "Tomorrow morning I'm going to the airport." · FR "Demain matin, je vais à l’aéroport." · ES "Mañana por la mañana voy al aeropuerto." — meaning "מחר בבוקר אני נוסע לשדה התעופה. (מחר בבוקר + אני נוסע ל___)" / "Tomorrow morning I’m going to the airport. (tomorrow morning + I’m going to ___)" — icon 🛫 — new
+
+No build-sentence card.
+
+Step 15. Label: "And you?" / "ואתה?". Intro: "✈️ My next trip: 📍 Next → Vietnam ✓ / ⏳ For → Two weeks ✓ / 🎯 Want to → Visit Hanoi ✓ / 🏍️ Also → Travel by motorbike ✓ ‖ 🗓️ When: ➡️ After → Thailand ✓ / 🌅 Tomorrow morning → Airport ✓ ¦ You have told your whole plan. Now — ask back. Tap to hear." / "✈️ הטיול הבא שלי: 📍 הבא → וייטנאם ✓ / ⏳ לכמה זמן → שבועיים ✓ / 🎯 רוצה → לבקר בהאנוי ✓ / 🏍️ וגם → לטייל באופנוע ✓ ‖ 🗓️ מתי: ➡️ אחרי זה → תאילנד ✓ / 🌅 מחר בבוקר → שדה התעופה ✓ ¦ סיפרת את כל התוכנית. עכשיו — לשאול בחזרה. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `future.line.miss` — EN "Already! We'll miss you." · FR "Déjà ! Tu vas nous manquer." · ES "¡Ya! Te vamos a echar de menos." — meaning "כבר! נתגעגע אליך. (החבר עצוב שאתה נוסע — עכשיו תורך)" / "Already! We’ll miss you. (your friend is sad you are leaving — now it is your turn)" — icon 💬 — new
+2. `future.line.back` — EN "And you? Where are you going next?" · FR "Et toi ? Tu vas où après ?" · ES "¿Y tú? ¿A dónde vas después?" — meaning "ואתה? לאן אתה נוסע אחרי זה? (סיפרת את התוכנית שלך — עכשיו שואלים על שלו: „לאן אתה נוסע אחרי זה?” — שאלה לכל אחד)" / "And you? Where are you going next? (you told your plan — now ask about theirs: “Where are you going next?” works with anyone)" — icon 💬 — new
+
+No build-sentence card.
+
+Step 17. Label: "And your friend?" / "והחבר?". Intro: "✈️ My next trip: 📍 Next → Vietnam ✓ / ⏳ For → Two weeks ✓ / 🎯 Want to → Visit Hanoi ✓ / 🏍️ Also → Travel by motorbike ✓ ‖ 🗓️ When: ➡️ After → Thailand ✓ / 🌅 Tomorrow morning → Airport ✓ ¦ Now your friend tells their plan. Tap to hear." / "✈️ הטיול הבא שלי: 📍 הבא → וייטנאם ✓ / ⏳ לכמה זמן → שבועיים ✓ / 🎯 רוצה → לבקר בהאנוי ✓ / 🏍️ וגם → לטייל באופנוע ✓ ‖ 🗓️ מתי: ➡️ אחרי זה → תאילנד ✓ / 🌅 מחר בבוקר → שדה התעופה ✓ ¦ עכשיו החבר מספר על התוכנית שלו. הקש כדי לשמוע.".
+The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
+
+Words are paired across languages by their concept KEY (not by position).
+
+1. `future.line.end` — EN "Me? I'm going home. Have a great trip!" · FR "Moi ? Je rentre chez moi. Bon voyage !" · ES "¿Yo? Me voy a casa. ¡Buen viaje!" — meaning "אני? אני חוזר הביתה. נסיעה טובה! (🏠 החבר חוזר הביתה — ומאחל לך נסיעה טובה)" / "Me? I’m going home. Have a great trip! (🏠 your friend is going home — and wishes you a good trip)" — icon 🏠 — new
+
+No build-sentence card.
 
 ## Every sentence in this mission
 
@@ -20191,7 +20278,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "I’m going to ___ — a country, a city, the next place." / "I’m going to ___ — מדינה, עיר, או המקום הבא."
 - Used in missions: 21, 24, 30
-- Exercised here as: key sentence (step 2); "you said" lead-in of the expected-replies drill (step 7); quick-reply response (step 9, round 1, accepted); quick-reply response (step 9, round 2, wrong option); quick-reply response (step 9, round 6, wrong option); swap-it frame (step 10, round 4); swap-it frame (step 10, round 5); sentence review (step 14); quick-reply response (step 15, round 1, accepted); quick-reply response (step 15, round 4, wrong option); dialogue choice where-next/c2 (accepted)
+- Exercised here as: quick-reply response (step 5, round 1, accepted); quick-reply response (step 5, round 2, wrong option); quick-reply response (step 7, round 1, wrong option); quick-reply response (step 11, round 1, wrong option); quick-reply response (step 22, round 1, accepted); quick-reply response (step 22, round 2, wrong option); quick-reply response (step 25, round 1, accepted); quick-reply response (step 25, round 2, wrong option); quick-reply response (step 25, round 3, wrong option); quick-reply response (step 25, round 5, wrong option); dialogue choice where-next/c2 (accepted); dialogue choice where-next/c4 (WRONG option); dialogue choice where-next/c10 (WRONG option)
 
 ### Sentence: `phrase.future.ill-be-there`
 
@@ -20202,7 +20289,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 21, 24, 30
-- Exercised here as: key sentence (step 3); quick-reply response (step 9, round 1, wrong option); quick-reply response (step 9, round 2, accepted); quick-reply response (step 9, round 3, wrong option); quick-reply response (step 9, round 4, wrong option); quick-reply response (step 9, round 5, wrong option); swap-it frame (step 10, round 1); swap-it frame (step 10, round 2); swap-it frame (step 10, round 3); sentence review (step 14); quick-reply response (step 15, round 2, accepted); quick-reply response (step 15, round 3, wrong option); quick-reply response (step 15, round 5, wrong option); dialogue choice where-next/c4 (accepted); dialogue choice where-next/c4b (accepted)
+- Exercised here as: quick-reply response (step 5, round 1, wrong option); quick-reply response (step 5, round 2, accepted); quick-reply response (step 7, round 1, wrong option); quick-reply response (step 9, round 1, wrong option); quick-reply response (step 22, round 1, wrong option); quick-reply response (step 22, round 2, accepted); quick-reply response (step 22, round 3, wrong option); quick-reply response (step 22, round 4, wrong option); quick-reply response (step 25, round 1, wrong option); quick-reply response (step 25, round 2, accepted); quick-reply response (step 25, round 3, wrong option); quick-reply response (step 25, round 4, wrong option); dialogue choice where-next/c2 (WRONG option); dialogue choice where-next/c4 (accepted); dialogue choice where-next/c6 (WRONG option)
 
 ### Sentence: `phrase.future.want-to-visit`
 
@@ -20213,18 +20300,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 21
-- Exercised here as: key sentence (step 4); quick-reply response (step 9, round 1, wrong option); quick-reply response (step 9, round 3, accepted); quick-reply response (step 9, round 4, wrong option); sentence review (step 14); quick-reply response (step 15, round 2, wrong option); quick-reply response (step 15, round 3, accepted); quick-reply response (step 15, round 4, wrong option); quick-reply response (step 15, round 5, wrong option); dialogue choice where-next/c6 (accepted)
-
-### Sentence: `phrase.future.want-to-try-food`
-
-- EN: I want to try the food.
-- HE: אני רוצה לנסות את האוכל.
-- FR: Je veux essayer la cuisine.
-- ES: Quiero probar la comida.
-- Role: learner production
-- Tip / pattern note: none
-- Used in missions: 21
-- Exercised here as: quick-reply response (step 9, round 3, accepted); dialogue choice where-next/c6 (accepted)
+- Exercised here as: quick-reply response (step 7, round 1, accepted); quick-reply response (step 9, round 1, wrong option); quick-reply response (step 14, round 1, wrong option); quick-reply response (step 16, round 1, wrong option); quick-reply response (step 22, round 3, accepted); quick-reply response (step 22, round 4, wrong option); quick-reply response (step 25, round 1, wrong option); quick-reply response (step 25, round 3, accepted); quick-reply response (step 25, round 4, wrong option); quick-reply response (step 25, round 6, wrong option); dialogue choice where-next/c6 (accepted); dialogue choice where-next/c8 (WRONG option); dialogue choice where-next/c14 (WRONG option)
 
 ### Sentence: `phrase.future.by-motorbike`
 
@@ -20235,18 +20311,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 21
-- Exercised here as: sentence review (step 14); dialogue choice where-next/c8 (accepted)
-
-### Sentence: `phrase.future.ride-horses`
-
-- EN: I want to ride horses there.
-- HE: אני רוצה לרכוב שם על סוסים.
-- FR: Je veux faire du cheval là-bas.
-- ES: Quiero montar a caballo allí.
-- Role: learner production
-- Tip / pattern note: none
-- Used in missions: 21
-- Exercised here as: dialogue choice where-next/c8 (accepted)
+- Exercised here as: quick-reply response (step 9, round 1, accepted); quick-reply response (step 11, round 1, wrong option); quick-reply response (step 22, round 1, wrong option); quick-reply response (step 25, round 4, accepted); quick-reply response (step 25, round 5, wrong option); dialogue choice where-next/c8 (accepted)
 
 ### Sentence: `phrase.future.after-that`
 
@@ -20257,7 +20322,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 21, 24, 30
-- Exercised here as: key sentence (step 5); quick-reply response (step 9, round 4, accepted); quick-reply response (step 9, round 5, wrong option); quick-reply response (step 9, round 6, wrong option); sentence-builder target (step 11, round 1); sentence review (step 14); quick-reply response (step 15, round 1, wrong option); quick-reply response (step 15, round 3, wrong option); quick-reply response (step 15, round 4, accepted); dialogue choice where-next/c10 (accepted)
+- Exercised here as: quick-reply response (step 11, round 1, accepted); quick-reply response (step 14, round 1, wrong option); quick-reply response (step 22, round 3, wrong option); quick-reply response (step 25, round 5, accepted); quick-reply response (step 25, round 6, wrong option); dialogue choice where-next/c10 (accepted); dialogue choice where-next/c12 (WRONG option)
 
 ### Sentence: `phrase.future.tomorrow-morning`
 
@@ -20268,7 +20333,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 21, 30
-- Exercised here as: quick-reply response (step 9, round 2, wrong option); quick-reply response (step 9, round 5, accepted); sentence review (step 14); quick-reply response (step 15, round 2, wrong option); dialogue choice where-next/c12 (accepted)
+- Exercised here as: quick-reply response (step 14, round 1, accepted); quick-reply response (step 16, round 1, wrong option); quick-reply response (step 22, round 2, wrong option); quick-reply response (step 25, round 2, wrong option); quick-reply response (step 25, round 6, accepted); dialogue choice where-next/c12 (accepted)
 
 ### Sentence: `phrase.future.where-next`
 
@@ -20279,18 +20344,29 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 21, 24, 30
-- Exercised here as: key sentence (step 6); quick-reply response (step 9, round 6, accepted); sentence-builder target (step 11, round 2); sentence review (step 14); quick-reply response (step 15, round 1, wrong option); quick-reply response (step 15, round 5, accepted); dialogue choice where-next/c14 (accepted)
+- Exercised here as: quick-reply response (step 16, round 1, accepted); quick-reply response (step 22, round 4, accepted); dialogue choice where-next/c14 (accepted)
 
-### Sentence: `reply.future.how-long`
+### Sentence: `reply.future.where-next`
 
-- EN: How long will you be there?
-- HE: כמה זמן תהיה שם?
-- FR: Tu restes combien de temps ?
-- ES: ¿Cuánto tiempo vas a estar allí?
+- EN: So, where are you going next?
+- HE: אז לאן אתה נוסע אחרי זה?
+- FR: Alors, tu vas où après ?
+- ES: Bueno, ¿a dónde vas después?
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 21
-- Exercised here as: expected-reply audio (step 7); quick-reply prompt (step 9, round 2); sentence review (step 14)
+- Exercised here as: quick-reply prompt (step 5, round 1); quick-reply prompt (step 22, round 1); quick-reply prompt (step 25, round 1)
+
+### Sentence: `reply.future.wow-how-long`
+
+- EN: Wow! How long will you be there?
+- HE: וואו! כמה זמן תהיה שם?
+- FR: Waouh ! Tu restes combien de temps ?
+- ES: ¡Guau! ¿Cuánto tiempo vas a estar allí?
+- Role: receptive — an expected reply the learner hears
+- Tip / pattern note: none
+- Used in missions: 21
+- Exercised here as: quick-reply prompt (step 5, round 2); quick-reply prompt (step 22, round 2); quick-reply prompt (step 25, round 2)
 
 ### Sentence: `reply.future.what-do-there`
 
@@ -20301,119 +20377,55 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 21
-- Exercised here as: expected-reply audio (step 7); quick-reply prompt (step 9, round 3); sentence review (step 14)
+- Exercised here as: quick-reply prompt (step 7, round 1); quick-reply prompt (step 22, round 3); quick-reply prompt (step 25, round 3)
 
-### Sentence: `reply.future.and-after`
+### Sentence: `reply.future.anything-else`
 
-- EN: And after that?
-- HE: ואחרי זה?
-- FR: Et après ça ?
-- ES: ¿Y después de eso?
+- EN: Nice. Anything else?
+- HE: יפה. עוד משהו?
+- FR: Sympa. Autre chose ?
+- ES: Qué bien. ¿Algo más?
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 21
-- Exercised here as: expected-reply audio (step 7); quick-reply prompt (step 9, round 4); sentence review (step 14)
+- Exercised here as: quick-reply prompt (step 9, round 1); quick-reply prompt (step 25, round 4)
 
-### Sentence: `reply.future.tomorrow-morning-q`
+### Sentence: `reply.future.after-that-q`
 
-- EN: What are you doing tomorrow morning?
-- HE: מה אתה עושה מחר בבוקר?
-- FR: Tu fais quoi demain matin ?
-- ES: ¿Qué haces mañana por la mañana?
+- EN: Sounds amazing! Be careful. And after that?
+- HE: נשמע מדהים! תיזהר. ואחרי זה?
+- FR: Ça a l’air génial ! Fais attention. Et après ça ?
+- ES: ¡Suena increíble! Ten cuidado. ¿Y después de eso?
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 21
-- Exercised here as: quick-reply prompt (step 9, round 5); sentence review (step 14)
+- Exercised here as: quick-reply prompt (step 11, round 1); quick-reply prompt (step 25, round 5)
 
-### Sentence: `reply.future.be-careful`
+### Sentence: `reply.future.tomorrow-plan-q`
 
-- EN: Be careful.
-- HE: תיזהר.
-- FR: Fais attention.
-- ES: Ten cuidado.
+- EN: Great plan. And what are you doing tomorrow morning?
+- HE: תוכנית מעולה. ומה אתה עושה מחר בבוקר?
+- FR: Super programme. Et tu fais quoi demain matin ?
+- ES: Buen plan. ¿Y qué haces mañana por la mañana?
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 21
-- Exercised here as: expected-reply audio (step 7)
+- Exercised here as: quick-reply prompt (step 14, round 1); quick-reply prompt (step 25, round 6)
 
-### Sentence: `reply.future.great-trip`
+### Sentence: `reply.future.miss-you`
 
-- EN: Have a great trip!
-- HE: נסיעה טובה!
-- FR: Bon voyage !
-- ES: ¡Buen viaje!
+- EN: Already! We'll miss you.
+- HE: כבר! נתגעגע אליך.
+- FR: Déjà ! Tu vas nous manquer.
+- ES: ¡Ya! Te vamos a echar de menos.
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 21
-- Exercised here as: nothing (listed only)
-
-### Sentence: `phrase.recovery.slowly`
-
-- EN: Please speak slowly.
-- HE: דבר לאט, בבקשה.
-- FR: Parlez lentement, s’il vous plaît.
-- ES: Más despacio, por favor.
-- Role: conversation-help tool (global Recovery Toolkit)
-- Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 21, 22, 24, 25, 26, 27, 28, 29, 30
-- Exercised here as: sentence review (step 14); dialogue choice where-next/c4 (accepted)
+- Exercised here as: quick-reply prompt (step 16, round 1); quick-reply prompt (step 22, round 4)
 
 ## Expected replies / listening items
 
-Lead-in screen: "You said:" / "אמרת:" — EN "I'm going to Vietnam." · FR "Je vais au Vietnam." · ES "Voy a Vietnam." — then "What might they answer? Learn the replies before they surprise you." / "מה הם עלולים לענות? נלמד את התשובות לפני שהן מפתיעות אותך." — button 👂 "I'm ready" / "אני מוכן".
-Linked learner sentence: `phrase.future.going-to-vietnam`. Each reply below is played once automatically; the learner picks its MEANING from three buttons. Distractors are always the first two OTHER replies of this same drill, in drill order (runtime rule), so the three choices are shuffled per session.
-
-### M21-Q01 — expected-reply (step 7, reply 1 of 4)
-
-- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (1/4)
-- Audio played: EN "How long will you be there?" · FR "Tu restes combien de temps ?" · ES "¿Cuánto tiempo vas a estar allí?"
-- Meaning of the audio (HE): "כמה זמן תהיה שם?"
-- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
-- Choices:
-  1. HE "כמה זמן תהיה שם?" / EN "How long will you be there?" — `reply.future.how-long` — ✅ accepted
-  2. HE "מה אתה רוצה לעשות שם?" / EN "What do you want to do there?" — `reply.future.what-do-there` — ❌ wrong
-  3. HE "ואחרי זה?" / EN "And after that?" — `reply.future.and-after` — ❌ wrong
-- Tests: reply.future.how-long
-- Explanation shown after answering: generic: “How long will you be there?” means “כמה זמן תהיה שם?”.
-
-### M21-Q02 — expected-reply (step 7, reply 2 of 4)
-
-- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (2/4)
-- Audio played: EN "What do you want to do there?" · FR "Tu veux faire quoi là-bas ?" · ES "¿Qué quieres hacer allí?"
-- Meaning of the audio (HE): "מה אתה רוצה לעשות שם?"
-- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
-- Choices:
-  1. HE "מה אתה רוצה לעשות שם?" / EN "What do you want to do there?" — `reply.future.what-do-there` — ✅ accepted
-  2. HE "כמה זמן תהיה שם?" / EN "How long will you be there?" — `reply.future.how-long` — ❌ wrong
-  3. HE "ואחרי זה?" / EN "And after that?" — `reply.future.and-after` — ❌ wrong
-- Tests: reply.future.what-do-there
-- Explanation shown after answering: generic: “What do you want to do there?” means “מה אתה רוצה לעשות שם?”.
-
-### M21-Q03 — expected-reply (step 7, reply 3 of 4)
-
-- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (3/4)
-- Audio played: EN "And after that?" · FR "Et après ça ?" · ES "¿Y después de eso?"
-- Meaning of the audio (HE): "ואחרי זה?"
-- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
-- Choices:
-  1. HE "ואחרי זה?" / EN "And after that?" — `reply.future.and-after` — ✅ accepted
-  2. HE "כמה זמן תהיה שם?" / EN "How long will you be there?" — `reply.future.how-long` — ❌ wrong
-  3. HE "מה אתה רוצה לעשות שם?" / EN "What do you want to do there?" — `reply.future.what-do-there` — ❌ wrong
-- Tests: reply.future.and-after
-- Explanation shown after answering: generic: “And after that?” means “ואחרי זה?”.
-
-### M21-Q04 — expected-reply (step 7, reply 4 of 4)
-
-- Prompt displayed: "What did they just say?" / "מה הוא אמר עכשיו?" (4/4)
-- Audio played: EN "Be careful." · FR "Fais attention." · ES "Ten cuidado."
-- Meaning of the audio (HE): "תיזהר."
-- Buttons show: MEANING in the app language (Hebrew or English UI) — not the target-language text
-- Choices:
-  1. HE "תיזהר." / EN "Be careful." — `reply.future.be-careful` — ✅ accepted
-  2. HE "כמה זמן תהיה שם?" / EN "How long will you be there?" — `reply.future.how-long` — ❌ wrong
-  3. HE "מה אתה רוצה לעשות שם?" / EN "What do you want to do there?" — `reply.future.what-do-there` — ❌ wrong
-- Tests: reply.future.be-careful
-- Explanation shown after answering: generic: “Be careful.” means “תיזהר.”.
+No expected-replies drill in this mission.
 
 ## Quizzes
 
@@ -20421,170 +20433,139 @@ No meaning quiz in this mission.
 
 ## Active practice — Quick Reply · Visual Match · Swap It · Mini Map
 
-### M21-Q05 — quick-reply (step 9, round 1 of 6)
+### M21-Q01 — visual-match (step 3, round 1 of 1)
 
-- Prompt displayed: "They ask about your plans — what do you say?" / "שואלים על התוכניות שלך — מה עונים?"
+- Prompt displayed: "✈️ My next trip: 📍 Next → Vietnam / ⏳ For → Two weeks / 🎯 Want to → Visit Hanoi / 🏍️ Also → Travel by motorbike ‖ 🗓️ When: ➡️ After → Thailand / 🌅 Tomorrow morning → Airport ¦ 🧩 Which part of your plan is your friend asking about? Listen — and tap." / "✈️ הטיול הבא שלי: 📍 הבא → וייטנאם / ⏳ לכמה זמן → שבועיים / 🎯 רוצה → לבקר בהאנוי / 🏍️ וגם → לטייל באופנוע ‖ 🗓️ מתי: ➡️ אחרי זה → תאילנד / 🌅 מחר בבוקר → שדה התעופה ¦ 🧩 על איזה חלק בתוכנית החבר שואל? שמע — והקש."
+- Audio played: EN "So, where are you going next?" · FR "Alors, tu vas où après ?" · ES "Bueno, ¿a dónde vas después?"
+- Meaning of the audio (HE): "אז לאן אתה נוסע אחרי זה?"
+- Buttons show: a 3×3 board of 5 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "📍 “Where you are going” / “לאן אתה נוסע”" — no sentence id — ✅ accepted
+  2. "⏳ “How long” / “לכמה זמן”" — no sentence id — ❌ wrong
+  3. "🎯 “What you want to do” / “מה אתה רוצה לעשות”" — no sentence id — ❌ wrong
+  4. "➡️ “What comes after” / “מה אחרי זה”" — no sentence id — ❌ wrong
+  5. "🌅 “Tomorrow morning” / “מחר בבוקר”" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M21-Q02 — quick-reply (step 5, round 1 of 2)
+
+- Prompt displayed: "✈️ My next trip: 📍 Next → Vietnam / ⏳ For → Two weeks / 🎯 Want to → Visit Hanoi / 🏍️ Also → Travel by motorbike ‖ 🗓️ When: ➡️ After → Thailand / 🌅 Tomorrow morning → Airport ¦ Your friend asks — what do you answer?" / "✈️ הטיול הבא שלי: 📍 הבא → וייטנאם / ⏳ לכמה זמן → שבועיים / 🎯 רוצה → לבקר בהאנוי / 🏍️ וגם → לטייל באופנוע ‖ 🗓️ מתי: ➡️ אחרי זה → תאילנד / 🌅 מחר בבוקר → שדה התעופה ¦ החבר שואל — מה אתה עונה?"
 - Audio played: EN "So, where are you going next?" · FR "Alors, tu vas où après ?" · ES "Bueno, ¿a dónde vas después?"
 - Meaning of the audio (HE): "אז לאן אתה נוסע אחרי זה?"
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
   1. EN "I'm going to Vietnam." · FR "Je vais au Vietnam." · ES "Voy a Vietnam." · (HE gloss "אני נוסע לווייטנאם.") — `phrase.future.going-to-vietnam` — ✅ accepted
   2. EN "I'll be there for two weeks." · FR "Je vais rester deux semaines." · ES "Voy a estar allí dos semanas." · (HE gloss "אני אהיה שם שבועיים.") — `phrase.future.ill-be-there` — ❌ wrong
-  3. EN "I want to visit Hanoi." · FR "Je veux visiter Hanoï." · ES "Quiero visitar Hanói." · (HE gloss "אני רוצה לבקר בהאנוי.") — `phrase.future.want-to-visit` — ❌ wrong
 - Tests: phrase.future.going-to-vietnam
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M21-Q06 — quick-reply (step 9, round 2 of 6)
+### M21-Q03 — quick-reply (step 5, round 2 of 2)
 
-- Prompt displayed: "They ask about your plans — what do you say?" / "שואלים על התוכניות שלך — מה עונים?"
-- Audio played: EN "How long will you be there?" · FR "Tu restes combien de temps ?" · ES "¿Cuánto tiempo vas a estar allí?"
-- Meaning of the audio (HE): "כמה זמן תהיה שם?"
+- Prompt displayed: "✈️ My next trip: 📍 Next → Vietnam / ⏳ For → Two weeks / 🎯 Want to → Visit Hanoi / 🏍️ Also → Travel by motorbike ‖ 🗓️ When: ➡️ After → Thailand / 🌅 Tomorrow morning → Airport ¦ Your friend asks — what do you answer?" / "✈️ הטיול הבא שלי: 📍 הבא → וייטנאם / ⏳ לכמה זמן → שבועיים / 🎯 רוצה → לבקר בהאנוי / 🏍️ וגם → לטייל באופנוע ‖ 🗓️ מתי: ➡️ אחרי זה → תאילנד / 🌅 מחר בבוקר → שדה התעופה ¦ החבר שואל — מה אתה עונה?"
+- Audio played: EN "Wow! How long will you be there?" · FR "Waouh ! Tu restes combien de temps ?" · ES "¡Guau! ¿Cuánto tiempo vas a estar allí?"
+- Meaning of the audio (HE): "וואו! כמה זמן תהיה שם?"
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
   1. EN "I'll be there for two weeks." · FR "Je vais rester deux semaines." · ES "Voy a estar allí dos semanas." · (HE gloss "אני אהיה שם שבועיים.") — `phrase.future.ill-be-there` — ✅ accepted
-  2. EN "Tomorrow morning I'm going to the airport." · FR "Demain matin, je vais à l’aéroport." · ES "Mañana por la mañana voy al aeropuerto." · (HE gloss "מחר בבוקר אני נוסע לשדה התעופה.") — `phrase.future.tomorrow-morning` — ❌ wrong
-  3. EN "I'm going to Vietnam." · FR "Je vais au Vietnam." · ES "Voy a Vietnam." · (HE gloss "אני נוסע לווייטנאם.") — `phrase.future.going-to-vietnam` — ❌ wrong
+  2. EN "I'm going to Vietnam." · FR "Je vais au Vietnam." · ES "Voy a Vietnam." · (HE gloss "אני נוסע לווייטנאם.") — `phrase.future.going-to-vietnam` — ❌ wrong
 - Tests: phrase.future.ill-be-there
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M21-Q07 — quick-reply (step 9, round 3 of 6)
+### M21-Q04 — quick-reply (step 7, round 1 of 1)
 
-- Prompt displayed: "They ask about your plans — what do you say?" / "שואלים על התוכניות שלך — מה עונים?"
+- Prompt displayed: "✈️ My next trip: 📍 Next → Vietnam ✓ / ⏳ For → Two weeks ✓ / 🎯 Want to → Visit Hanoi / 🏍️ Also → Travel by motorbike ‖ 🗓️ When: ➡️ After → Thailand / 🌅 Tomorrow morning → Airport ¦ What do you answer?" / "✈️ הטיול הבא שלי: 📍 הבא → וייטנאם ✓ / ⏳ לכמה זמן → שבועיים ✓ / 🎯 רוצה → לבקר בהאנוי / 🏍️ וגם → לטייל באופנוע ‖ 🗓️ מתי: ➡️ אחרי זה → תאילנד / 🌅 מחר בבוקר → שדה התעופה ¦ מה אתה עונה?"
 - Audio played: EN "What do you want to do there?" · FR "Tu veux faire quoi là-bas ?" · ES "¿Qué quieres hacer allí?"
 - Meaning of the audio (HE): "מה אתה רוצה לעשות שם?"
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
   1. EN "I want to visit Hanoi." · FR "Je veux visiter Hanoï." · ES "Quiero visitar Hanói." · (HE gloss "אני רוצה לבקר בהאנוי.") — `phrase.future.want-to-visit` — ✅ accepted
-  2. EN "I want to try the food." · FR "Je veux essayer la cuisine." · ES "Quiero probar la comida." · (HE gloss "אני רוצה לנסות את האוכל.") — `phrase.future.want-to-try-food` — ✅ accepted
-  3. EN "I'll be there for two weeks." · FR "Je vais rester deux semaines." · ES "Voy a estar allí dos semanas." · (HE gloss "אני אהיה שם שבועיים.") — `phrase.future.ill-be-there` — ❌ wrong
-- Tests: phrase.future.want-to-visit, phrase.future.want-to-try-food
+  2. EN "I'll be there for two weeks." · FR "Je vais rester deux semaines." · ES "Voy a estar allí dos semanas." · (HE gloss "אני אהיה שם שבועיים.") — `phrase.future.ill-be-there` — ❌ wrong
+  3. EN "I'm going to Vietnam." · FR "Je vais au Vietnam." · ES "Voy a Vietnam." · (HE gloss "אני נוסע לווייטנאם.") — `phrase.future.going-to-vietnam` — ❌ wrong
+- Tests: phrase.future.want-to-visit
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M21-Q08 — quick-reply (step 9, round 4 of 6)
+### M21-Q05 — quick-reply (step 9, round 1 of 1)
 
-- Prompt displayed: "They ask about your plans — what do you say?" / "שואלים על התוכניות שלך — מה עונים?"
-- Audio played: EN "And after that?" · FR "Et après ça ?" · ES "¿Y después de eso?"
-- Meaning of the audio (HE): "ואחרי זה?"
+- Prompt displayed: "✈️ My next trip: 📍 Next → Vietnam ✓ / ⏳ For → Two weeks ✓ / 🎯 Want to → Visit Hanoi ✓ / 🏍️ Also → Travel by motorbike ‖ 🗓️ When: ➡️ After → Thailand / 🌅 Tomorrow morning → Airport ¦ Something else — not what you already said." / "✈️ הטיול הבא שלי: 📍 הבא → וייטנאם ✓ / ⏳ לכמה זמן → שבועיים ✓ / 🎯 רוצה → לבקר בהאנוי ✓ / 🏍️ וגם → לטייל באופנוע ‖ 🗓️ מתי: ➡️ אחרי זה → תאילנד / 🌅 מחר בבוקר → שדה התעופה ¦ עוד משהו — לא מה שכבר אמרת."
+- Audio played: EN "Nice. Anything else?" · FR "Sympa. Autre chose ?" · ES "Qué bien. ¿Algo más?"
+- Meaning of the audio (HE): "יפה. עוד משהו?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "I want to travel by motorbike." · FR "Je veux voyager à moto." · ES "Quiero viajar en moto." · (HE gloss "אני רוצה לטייל באופנוע.") — `phrase.future.by-motorbike` — ✅ accepted
+  2. EN "I want to visit Hanoi." · FR "Je veux visiter Hanoï." · ES "Quiero visitar Hanói." · (HE gloss "אני רוצה לבקר בהאנוי.") — `phrase.future.want-to-visit` — ❌ wrong
+  3. EN "I'll be there for two weeks." · FR "Je vais rester deux semaines." · ES "Voy a estar allí dos semanas." · (HE gloss "אני אהיה שם שבועיים.") — `phrase.future.ill-be-there` — ❌ wrong
+- Tests: phrase.future.by-motorbike
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M21-Q06 — quick-reply (step 11, round 1 of 1)
+
+- Prompt displayed: "✈️ My next trip: 📍 Next → Vietnam ✓ / ⏳ For → Two weeks ✓ / 🎯 Want to → Visit Hanoi ✓ / 🏍️ Also → Travel by motorbike ✓ ‖ 🗓️ When: ➡️ After → Thailand / 🌅 Tomorrow morning → Airport ¦ What do you answer?" / "✈️ הטיול הבא שלי: 📍 הבא → וייטנאם ✓ / ⏳ לכמה זמן → שבועיים ✓ / 🎯 רוצה → לבקר בהאנוי ✓ / 🏍️ וגם → לטייל באופנוע ✓ ‖ 🗓️ מתי: ➡️ אחרי זה → תאילנד / 🌅 מחר בבוקר → שדה התעופה ¦ מה אתה עונה?"
+- Audio played: EN "Sounds amazing! Be careful. And after that?" · FR "Ça a l’air génial ! Fais attention. Et après ça ?" · ES "¡Suena increíble! Ten cuidado. ¿Y después de eso?"
+- Meaning of the audio (HE): "נשמע מדהים! תיזהר. ואחרי זה?"
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
   1. EN "After that I'm going to Thailand." · FR "Après ça, je vais en Thaïlande." · ES "Después de eso voy a Tailandia." · (HE gloss "אחרי זה אני נוסע לתאילנד.") — `phrase.future.after-that` — ✅ accepted
-  2. EN "I want to visit Hanoi." · FR "Je veux visiter Hanoï." · ES "Quiero visitar Hanói." · (HE gloss "אני רוצה לבקר בהאנוי.") — `phrase.future.want-to-visit` — ❌ wrong
-  3. EN "I'll be there for two weeks." · FR "Je vais rester deux semaines." · ES "Voy a estar allí dos semanas." · (HE gloss "אני אהיה שם שבועיים.") — `phrase.future.ill-be-there` — ❌ wrong
+  2. EN "I'm going to Vietnam." · FR "Je vais au Vietnam." · ES "Voy a Vietnam." · (HE gloss "אני נוסע לווייטנאם.") — `phrase.future.going-to-vietnam` — ❌ wrong
+  3. EN "I want to travel by motorbike." · FR "Je veux voyager à moto." · ES "Quiero viajar en moto." · (HE gloss "אני רוצה לטייל באופנוע.") — `phrase.future.by-motorbike` — ❌ wrong
 - Tests: phrase.future.after-that
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M21-Q09 — quick-reply (step 9, round 5 of 6)
+### M21-Q07 — visual-match (step 13, round 1 of 1)
 
-- Prompt displayed: "They ask about your plans — what do you say?" / "שואלים על התוכניות שלך — מה עונים?"
-- Audio played: EN "What are you doing tomorrow morning?" · FR "Tu fais quoi demain matin ?" · ES "¿Qué haces mañana por la mañana?"
-- Meaning of the audio (HE): "מה אתה עושה מחר בבוקר?"
+- Prompt displayed: "✈️ My next trip: 📍 Next → Vietnam ✓ / ⏳ For → Two weeks ✓ / 🎯 Want to → Visit Hanoi ✓ / 🏍️ Also → Travel by motorbike ✓ ‖ 🗓️ When: ➡️ After → Thailand ✓ / 🌅 Tomorrow morning → Airport ¦ 🧩 Which part of your plan is your friend asking about? Listen — and tap." / "✈️ הטיול הבא שלי: 📍 הבא → וייטנאם ✓ / ⏳ לכמה זמן → שבועיים ✓ / 🎯 רוצה → לבקר בהאנוי ✓ / 🏍️ וגם → לטייל באופנוע ✓ ‖ 🗓️ מתי: ➡️ אחרי זה → תאילנד ✓ / 🌅 מחר בבוקר → שדה התעופה ¦ 🧩 על איזה חלק בתוכנית החבר שואל? שמע — והקש."
+- Audio played: EN "Great plan. And what are you doing tomorrow morning?" · FR "Super programme. Et tu fais quoi demain matin ?" · ES "Buen plan. ¿Y qué haces mañana por la mañana?"
+- Meaning of the audio (HE): "תוכנית מעולה. ומה אתה עושה מחר בבוקר?"
+- Buttons show: a 3×3 board of 5 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Choices:
+  1. "📍 “Where you are going” / “לאן אתה נוסע”" — no sentence id — ❌ wrong
+  2. "⏳ “How long” / “לכמה זמן”" — no sentence id — ❌ wrong
+  3. "🎯 “What you want to do” / “מה אתה רוצה לעשות”" — no sentence id — ❌ wrong
+  4. "➡️ “What comes after” / “מה אחרי זה”" — no sentence id — ❌ wrong
+  5. "🌅 “Tomorrow morning” / “מחר בבוקר”" — no sentence id — ✅ accepted
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
+
+### M21-Q08 — quick-reply (step 14, round 1 of 1)
+
+- Prompt displayed: "✈️ My next trip: 📍 Next → Vietnam ✓ / ⏳ For → Two weeks ✓ / 🎯 Want to → Visit Hanoi ✓ / 🏍️ Also → Travel by motorbike ✓ ‖ 🗓️ When: ➡️ After → Thailand ✓ / 🌅 Tomorrow morning → Airport ¦ What do you answer?" / "✈️ הטיול הבא שלי: 📍 הבא → וייטנאם ✓ / ⏳ לכמה זמן → שבועיים ✓ / 🎯 רוצה → לבקר בהאנוי ✓ / 🏍️ וגם → לטייל באופנוע ✓ ‖ 🗓️ מתי: ➡️ אחרי זה → תאילנד ✓ / 🌅 מחר בבוקר → שדה התעופה ¦ מה אתה עונה?"
+- Audio played: EN "Great plan. And what are you doing tomorrow morning?" · FR "Super programme. Et tu fais quoi demain matin ?" · ES "Buen plan. ¿Y qué haces mañana por la mañana?"
+- Meaning of the audio (HE): "תוכנית מעולה. ומה אתה עושה מחר בבוקר?"
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
   1. EN "Tomorrow morning I'm going to the airport." · FR "Demain matin, je vais à l’aéroport." · ES "Mañana por la mañana voy al aeropuerto." · (HE gloss "מחר בבוקר אני נוסע לשדה התעופה.") — `phrase.future.tomorrow-morning` — ✅ accepted
   2. EN "After that I'm going to Thailand." · FR "Après ça, je vais en Thaïlande." · ES "Después de eso voy a Tailandia." · (HE gloss "אחרי זה אני נוסע לתאילנד.") — `phrase.future.after-that` — ❌ wrong
-  3. EN "I'll be there for two weeks." · FR "Je vais rester deux semaines." · ES "Voy a estar allí dos semanas." · (HE gloss "אני אהיה שם שבועיים.") — `phrase.future.ill-be-there` — ❌ wrong
+  3. EN "I want to visit Hanoi." · FR "Je veux visiter Hanoï." · ES "Quiero visitar Hanói." · (HE gloss "אני רוצה לבקר בהאנוי.") — `phrase.future.want-to-visit` — ❌ wrong
 - Tests: phrase.future.tomorrow-morning
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M21-Q10 — quick-reply (step 9, round 6 of 6)
+### M21-Q09 — quick-reply (step 16, round 1 of 1)
 
-- Prompt displayed: "They ask about your plans — what do you say?" / "שואלים על התוכניות שלך — מה עונים?" — situation shown: "You have said where you are going. Now ask where they are going." / "סיפרת לאן אתה נוסע. עכשיו תשאל אותו לאן הוא ממשיך."
-- Audio played: EN "(nothing is played — a situation is shown)" · FR "(nothing is played — a situation is shown)" · ES "(nothing is played — a situation is shown)"
-- Meaning of the audio (HE): —
+- Prompt displayed: "✈️ My next trip: 📍 Next → Vietnam ✓ / ⏳ For → Two weeks ✓ / 🎯 Want to → Visit Hanoi ✓ / 🏍️ Also → Travel by motorbike ✓ ‖ 🗓️ When: ➡️ After → Thailand ✓ / 🌅 Tomorrow morning → Airport ✓ ¦ You told your plan — now your turn: ask about theirs." / "✈️ הטיול הבא שלי: 📍 הבא → וייטנאם ✓ / ⏳ לכמה זמן → שבועיים ✓ / 🎯 רוצה → לבקר בהאנוי ✓ / 🏍️ וגם → לטייל באופנוע ✓ ‖ 🗓️ מתי: ➡️ אחרי זה → תאילנד ✓ / 🌅 מחר בבוקר → שדה התעופה ✓ ¦ סיפרת את התוכנית שלך — עכשיו תורך: שאל על שלו."
+- Audio played: EN "Already! We'll miss you." · FR "Déjà ! Tu vas nous manquer." · ES "¡Ya! Te vamos a echar de menos."
+- Meaning of the audio (HE): "כבר! נתגעגע אליך."
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
   1. EN "Where are you going next?" · FR "Tu vas où après ?" · ES "¿A dónde vas después?" · (HE gloss "לאן אתה נוסע אחרי זה?") — `phrase.future.where-next` — ✅ accepted
-  2. EN "I'm going to Vietnam." · FR "Je vais au Vietnam." · ES "Voy a Vietnam." · (HE gloss "אני נוסע לווייטנאם.") — `phrase.future.going-to-vietnam` — ❌ wrong
-  3. EN "After that I'm going to Thailand." · FR "Après ça, je vais en Thaïlande." · ES "Después de eso voy a Tailandia." · (HE gloss "אחרי זה אני נוסע לתאילנד.") — `phrase.future.after-that` — ❌ wrong
+  2. EN "I want to visit Hanoi." · FR "Je veux visiter Hanoï." · ES "Quiero visitar Hanói." · (HE gloss "אני רוצה לבקר בהאנוי.") — `phrase.future.want-to-visit` — ❌ wrong
+  3. EN "Tomorrow morning I'm going to the airport." · FR "Demain matin, je vais à l’aéroport." · ES "Mañana por la mañana voy al aeropuerto." · (HE gloss "מחר בבוקר אני נוסע לשדה התעופה.") — `phrase.future.tomorrow-morning` — ❌ wrong
 - Tests: phrase.future.where-next
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M21-Q11 — swap-it (step 10, round 1 of 5)
+### M21-Q10 — visual-match (step 18, round 1 of 1)
 
-- Prompt displayed: "Your plan" / "התוכנית שלך" — cue 📅 "You will stay three days" / "אתה נשאר שם שלושה ימים" — frame EN "I'll be there for ___." · FR "Je vais rester ___." · ES "Voy a estar allí ___."
-- Audio played: EN "(nothing before the tap; the completed sentence is spoken after it)" · FR "(same)" · ES "(same)"
-- Meaning of the audio (HE): —
-- Buttons show: the SLOT VALUES in the target language (shown here as "value → completed sentence"); order shuffled; a "wrong" value still produces and speaks a real sentence, with its translation
+- Prompt displayed: "✈️ My next trip: 📍 Next → Vietnam ✓ / ⏳ For → Two weeks ✓ / 🎯 Want to → Visit Hanoi ✓ / 🏍️ Also → Travel by motorbike ✓ ‖ 🗓️ When: ➡️ After → Thailand ✓ / 🌅 Tomorrow morning → Airport ✓ ¦ And your friend’s plan? Listen — and tap." / "✈️ הטיול הבא שלי: 📍 הבא → וייטנאם ✓ / ⏳ לכמה זמן → שבועיים ✓ / 🎯 רוצה → לבקר בהאנוי ✓ / 🏍️ וגם → לטייל באופנוע ✓ ‖ 🗓️ מתי: ➡️ אחרי זה → תאילנד ✓ / 🌅 מחר בבוקר → שדה התעופה ✓ ¦ ומה התוכנית של החבר? שמע — והקש."
+- Audio played: EN "Me? I'm going home. Have a great trip!" · FR "Moi ? Je rentre chez moi. Bon voyage !" · ES "¿Yo? Me voy a casa. ¡Buen viaje!"
+- Meaning of the audio (HE): "אני? אני חוזר הביתה. נסיעה טובה!"
+- Buttons show: a 3×3 board of 3 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. EN "three days → I'll be there for three days." · FR "trois jours → Je vais rester trois jours." · ES "tres días → Voy a estar allí tres días." · (HE gloss "אני אהיה שם שלושה ימים.") — `phrase.future.ill-be-there` — ✅ accepted
-  2. EN "a week → I'll be there for a week." · FR "une semaine → Je vais rester une semaine." · ES "una semana → Voy a estar allí una semana." · (HE gloss "אני אהיה שם שבוע.") — no sentence id — ❌ wrong
-  3. EN "two weeks → I'll be there for two weeks." · FR "deux semaines → Je vais rester deux semaines." · ES "dos semanas → Voy a estar allí dos semanas." · (HE gloss "אני אהיה שם שבועיים.") — no sentence id — ❌ wrong
-- Tests: phrase.future.ill-be-there
-- Explanation shown after answering: after the tap: the completed sentence, spoken, with its translation
+  1. "🏠 “Going home” / “חוזר הביתה”" — no sentence id — ✅ accepted
+  2. "🏝️ “Going to Thailand” / “נוסע לתאילנד”" — no sentence id — ❌ wrong
+  3. "🛫 “Going to the airport” / “נוסע לשדה התעופה”" — no sentence id — ❌ wrong
+- Tests: (no sentence id — not recorded)
+- Explanation shown after answering: after the tap: the spoken line and its translation
 
-### M21-Q12 — swap-it (step 10, round 2 of 5)
-
-- Prompt displayed: "Your plan" / "התוכנית שלך" — cue 📅 "You will stay a week" / "אתה נשאר שם שבוע" — frame EN "I'll be there for ___." · FR "Je vais rester ___." · ES "Voy a estar allí ___."
-- Audio played: EN "(nothing before the tap; the completed sentence is spoken after it)" · FR "(same)" · ES "(same)"
-- Meaning of the audio (HE): —
-- Buttons show: the SLOT VALUES in the target language (shown here as "value → completed sentence"); order shuffled; a "wrong" value still produces and speaks a real sentence, with its translation
-- Choices:
-  1. EN "three days → I'll be there for three days." · FR "trois jours → Je vais rester trois jours." · ES "tres días → Voy a estar allí tres días." · (HE gloss "אני אהיה שם שלושה ימים.") — no sentence id — ❌ wrong
-  2. EN "a week → I'll be there for a week." · FR "une semaine → Je vais rester une semaine." · ES "una semana → Voy a estar allí una semana." · (HE gloss "אני אהיה שם שבוע.") — `phrase.future.ill-be-there` — ✅ accepted
-  3. EN "two weeks → I'll be there for two weeks." · FR "deux semaines → Je vais rester deux semaines." · ES "dos semanas → Voy a estar allí dos semanas." · (HE gloss "אני אהיה שם שבועיים.") — no sentence id — ❌ wrong
-- Tests: phrase.future.ill-be-there
-- Explanation shown after answering: after the tap: the completed sentence, spoken, with its translation
-
-### M21-Q13 — swap-it (step 10, round 3 of 5)
-
-- Prompt displayed: "Your plan" / "התוכנית שלך" — cue 📅 "You will stay two weeks" / "אתה נשאר שם שבועיים" — frame EN "I'll be there for ___." · FR "Je vais rester ___." · ES "Voy a estar allí ___."
-- Audio played: EN "(nothing before the tap; the completed sentence is spoken after it)" · FR "(same)" · ES "(same)"
-- Meaning of the audio (HE): —
-- Buttons show: the SLOT VALUES in the target language (shown here as "value → completed sentence"); order shuffled; a "wrong" value still produces and speaks a real sentence, with its translation
-- Choices:
-  1. EN "three days → I'll be there for three days." · FR "trois jours → Je vais rester trois jours." · ES "tres días → Voy a estar allí tres días." · (HE gloss "אני אהיה שם שלושה ימים.") — no sentence id — ❌ wrong
-  2. EN "a week → I'll be there for a week." · FR "une semaine → Je vais rester une semaine." · ES "una semana → Voy a estar allí una semana." · (HE gloss "אני אהיה שם שבוע.") — no sentence id — ❌ wrong
-  3. EN "two weeks → I'll be there for two weeks." · FR "deux semaines → Je vais rester deux semaines." · ES "dos semanas → Voy a estar allí dos semanas." · (HE gloss "אני אהיה שם שבועיים.") — `phrase.future.ill-be-there` — ✅ accepted
-- Tests: phrase.future.ill-be-there
-- Explanation shown after answering: after the tap: the completed sentence, spoken, with its translation
-
-### M21-Q14 — swap-it (step 10, round 4 of 5)
-
-- Prompt displayed: "Your plan" / "התוכנית שלך" — cue 🇻🇳 "You are going to Vietnam" / "אתה נוסע לווייטנאם" — frame EN "I'm going to ___." · FR "Je vais ___." · ES "Voy a ___."
-- Audio played: EN "(nothing before the tap; the completed sentence is spoken after it)" · FR "(same)" · ES "(same)"
-- Meaning of the audio (HE): —
-- Buttons show: the SLOT VALUES in the target language (shown here as "value → completed sentence"); order shuffled; a "wrong" value still produces and speaks a real sentence, with its translation
-- Choices:
-  1. EN "Vietnam → I'm going to Vietnam." · FR "au Vietnam → Je vais au Vietnam." · ES "Vietnam → Voy a Vietnam." · (HE gloss "אני נוסע לווייטנאם.") — `phrase.future.going-to-vietnam` — ✅ accepted
-  2. EN "Thailand → I'm going to Thailand." · FR "en Thaïlande → Je vais en Thaïlande." · ES "Tailandia → Voy a Tailandia." · (HE gloss "אני נוסע לתאילנד.") — no sentence id — ❌ wrong
-- Tests: phrase.future.going-to-vietnam
-- Explanation shown after answering: after the tap: the completed sentence, spoken, with its translation
-
-### M21-Q15 — swap-it (step 10, round 5 of 5)
-
-- Prompt displayed: "Your plan" / "התוכנית שלך" — cue 🇹🇭 "You are going to Thailand" / "אתה נוסע לתאילנד" — frame EN "I'm going to ___." · FR "Je vais ___." · ES "Voy a ___."
-- Audio played: EN "(nothing before the tap; the completed sentence is spoken after it)" · FR "(same)" · ES "(same)"
-- Meaning of the audio (HE): —
-- Buttons show: the SLOT VALUES in the target language (shown here as "value → completed sentence"); order shuffled; a "wrong" value still produces and speaks a real sentence, with its translation
-- Choices:
-  1. EN "Vietnam → I'm going to Vietnam." · FR "au Vietnam → Je vais au Vietnam." · ES "Vietnam → Voy a Vietnam." · (HE gloss "אני נוסע לווייטנאם.") — no sentence id — ❌ wrong
-  2. EN "Thailand → I'm going to Thailand." · FR "en Thaïlande → Je vais en Thaïlande." · ES "Tailandia → Voy a Tailandia." · (HE gloss "אני נוסע לתאילנד.") — `phrase.future.going-to-vietnam` — ✅ accepted
-- Tests: phrase.future.going-to-vietnam
-- Explanation shown after answering: after the tap: the completed sentence, spoken, with its translation
-
-### M21-Q16 — sentence-builder (step 11, round 1 of 2)
-
-- Prompt displayed: "Build the sentence" / "בנה את המשפט" — cue shown: the sentence's MEANING in the app language ("אחרי זה אני נוסע לתאילנד.")
-- Audio played: EN "(nothing before Check; the built sentence is spoken once it is right)" · FR "(same)" · ES "(same)"
-- Meaning of the audio (HE): —
-- Buttons show: the authored CHUNKS of the sentence as tiles (listed here in the correct order, separated by "|"), shuffled; each language has its own chunks; Check unlocks when every tile is placed
-- Choices:
-  1. EN "After that  |  I'm going  |  to Thailand." · FR "Après ça,  |  je vais  |  en Thaïlande." · ES "Después de eso  |  voy  |  a Tailandia." · (HE gloss "אחרי זה אני נוסע לתאילנד.") — `phrase.future.after-that` — ✅ accepted
-- Tests: phrase.future.after-that
-- Explanation shown after answering: right: the sentence is spoken and its translation shown. Wrong: "not yet" — the tiles stay, the answer is NOT shown; after one miss a hint marks the start; after two misses the learner may reveal it
-
-### M21-Q17 — sentence-builder (step 11, round 2 of 2)
-
-- Prompt displayed: "Build the sentence" / "בנה את המשפט" — cue shown: the sentence's MEANING in the app language ("לאן אתה נוסע אחרי זה?")
-- Audio played: EN "(nothing before Check; the built sentence is spoken once it is right)" · FR "(same)" · ES "(same)"
-- Meaning of the audio (HE): —
-- Buttons show: the authored CHUNKS of the sentence as tiles (listed here in the correct order, separated by "|"), shuffled; each language has its own chunks; Check unlocks when every tile is placed
-- Choices:
-  1. EN "Where  |  are you going  |  next?" · FR "Tu vas  |  où  |  après ?" · ES "¿A dónde  |  vas  |  después?" · (HE gloss "לאן אתה נוסע אחרי זה?") — `phrase.future.where-next` — ✅ accepted
-- Tests: phrase.future.where-next
-- Explanation shown after answering: right: the sentence is spoken and its translation shown. Wrong: "not yet" — the tiles stay, the answer is NOT shown; after one miss a hint marks the start; after two misses the learner may reveal it
-
-### M21-Q26 — quick-reply (step 15, round 1 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
+### M21-Q18 — quick-reply (step 22, round 1 of 4 · SPEED CHALLENGE (spoken at rate 1.12))
 
 - Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio played: EN "So, where are you going next?" · FR "Alors, tu vas où après ?" · ES "Bueno, ¿a dónde vas después?"
@@ -20592,12 +20573,12 @@ No meaning quiz in this mission.
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
   1. EN "I'm going to Vietnam." · FR "Je vais au Vietnam." · ES "Voy a Vietnam." · (HE gloss "אני נוסע לווייטנאם.") — `phrase.future.going-to-vietnam` — ✅ accepted
-  2. EN "After that I'm going to Thailand." · FR "Après ça, je vais en Thaïlande." · ES "Después de eso voy a Tailandia." · (HE gloss "אחרי זה אני נוסע לתאילנד.") — `phrase.future.after-that` — ❌ wrong
-  3. EN "Where are you going next?" · FR "Tu vas où après ?" · ES "¿A dónde vas después?" · (HE gloss "לאן אתה נוסע אחרי זה?") — `phrase.future.where-next` — ❌ wrong
+  2. EN "I'll be there for two weeks." · FR "Je vais rester deux semaines." · ES "Voy a estar allí dos semanas." · (HE gloss "אני אהיה שם שבועיים.") — `phrase.future.ill-be-there` — ❌ wrong
+  3. EN "I want to travel by motorbike." · FR "Je veux voyager à moto." · ES "Quiero viajar en moto." · (HE gloss "אני רוצה לטייל באופנוע.") — `phrase.future.by-motorbike` — ❌ wrong
 - Tests: phrase.future.going-to-vietnam
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M21-Q27 — quick-reply (step 15, round 2 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
+### M21-Q19 — quick-reply (step 22, round 2 of 4 · SPEED CHALLENGE (spoken at rate 1.12))
 
 - Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio played: EN "Wow! How long will you be there?" · FR "Waouh ! Tu restes combien de temps ?" · ES "¡Guau! ¿Cuánto tiempo vas a estar allí?"
@@ -20605,12 +20586,12 @@ No meaning quiz in this mission.
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
   1. EN "I'll be there for two weeks." · FR "Je vais rester deux semaines." · ES "Voy a estar allí dos semanas." · (HE gloss "אני אהיה שם שבועיים.") — `phrase.future.ill-be-there` — ✅ accepted
-  2. EN "Tomorrow morning I'm going to the airport." · FR "Demain matin, je vais à l’aéroport." · ES "Mañana por la mañana voy al aeropuerto." · (HE gloss "מחר בבוקר אני נוסע לשדה התעופה.") — `phrase.future.tomorrow-morning` — ❌ wrong
-  3. EN "I want to visit Hanoi." · FR "Je veux visiter Hanoï." · ES "Quiero visitar Hanói." · (HE gloss "אני רוצה לבקר בהאנוי.") — `phrase.future.want-to-visit` — ❌ wrong
+  2. EN "I'm going to Vietnam." · FR "Je vais au Vietnam." · ES "Voy a Vietnam." · (HE gloss "אני נוסע לווייטנאם.") — `phrase.future.going-to-vietnam` — ❌ wrong
+  3. EN "Tomorrow morning I'm going to the airport." · FR "Demain matin, je vais à l’aéroport." · ES "Mañana por la mañana voy al aeropuerto." · (HE gloss "מחר בבוקר אני נוסע לשדה התעופה.") — `phrase.future.tomorrow-morning` — ❌ wrong
 - Tests: phrase.future.ill-be-there
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M21-Q28 — quick-reply (step 15, round 3 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
+### M21-Q20 — quick-reply (step 22, round 3 of 4 · SPEED CHALLENGE (spoken at rate 1.12))
 
 - Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio played: EN "What do you want to do there?" · FR "Tu veux faire quoi là-bas ?" · ES "¿Qué quieres hacer allí?"
@@ -20623,30 +20604,95 @@ No meaning quiz in this mission.
 - Tests: phrase.future.want-to-visit
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M21-Q29 — quick-reply (step 15, round 4 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
-
-- Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
-- Audio played: EN "Sounds amazing! Be careful. And after that?" · FR "Ça a l’air génial ! Fais attention. Et après ça ?" · ES "¡Suena increíble! Ten cuidado. ¿Y después de eso?"
-- Meaning of the audio (HE): "נשמע מדהים! תיזהר. ואחרי זה?"
-- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
-- Choices:
-  1. EN "After that I'm going to Thailand." · FR "Après ça, je vais en Thaïlande." · ES "Después de eso voy a Tailandia." · (HE gloss "אחרי זה אני נוסע לתאילנד.") — `phrase.future.after-that` — ✅ accepted
-  2. EN "I'm going to Vietnam." · FR "Je vais au Vietnam." · ES "Voy a Vietnam." · (HE gloss "אני נוסע לווייטנאם.") — `phrase.future.going-to-vietnam` — ❌ wrong
-  3. EN "I want to visit Hanoi." · FR "Je veux visiter Hanoï." · ES "Quiero visitar Hanói." · (HE gloss "אני רוצה לבקר בהאנוי.") — `phrase.future.want-to-visit` — ❌ wrong
-- Tests: phrase.future.after-that
-- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
-
-### M21-Q30 — quick-reply (step 15, round 5 of 5 · SPEED CHALLENGE (spoken at rate 1.12))
+### M21-Q21 — quick-reply (step 22, round 4 of 4 · SPEED CHALLENGE (spoken at rate 1.12))
 
 - Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio played: EN "Already! We'll miss you." · FR "Déjà ! Tu vas nous manquer." · ES "¡Ya! Te vamos a echar de menos."
 - Meaning of the audio (HE): "כבר! נתגעגע אליך."
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
-  1. EN "And you? Where are you going next?" · FR "Et toi ? Tu vas où après ?" · ES "¿Y tú? ¿A dónde vas después?" · (HE gloss "לאן אתה נוסע אחרי זה?") — `phrase.future.where-next` — ✅ accepted
-  2. EN "I'll be there for two weeks." · FR "Je vais rester deux semaines." · ES "Voy a estar allí dos semanas." · (HE gloss "אני אהיה שם שבועיים.") — `phrase.future.ill-be-there` — ❌ wrong
-  3. EN "I want to visit Hanoi." · FR "Je veux visiter Hanoï." · ES "Quiero visitar Hanói." · (HE gloss "אני רוצה לבקר בהאנוי.") — `phrase.future.want-to-visit` — ❌ wrong
+  1. EN "Where are you going next?" · FR "Tu vas où après ?" · ES "¿A dónde vas después?" · (HE gloss "לאן אתה נוסע אחרי זה?") — `phrase.future.where-next` — ✅ accepted
+  2. EN "I want to visit Hanoi." · FR "Je veux visiter Hanoï." · ES "Quiero visitar Hanói." · (HE gloss "אני רוצה לבקר בהאנוי.") — `phrase.future.want-to-visit` — ❌ wrong
+  3. EN "I'll be there for two weeks." · FR "Je vais rester deux semaines." · ES "Voy a estar allí dos semanas." · (HE gloss "אני אהיה שם שבועיים.") — `phrase.future.ill-be-there` — ❌ wrong
 - Tests: phrase.future.where-next
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M21-Q22 — quick-reply (step 25, round 1 of 6)
+
+- Prompt displayed: "✈️ Another trip: 📍 Next → 🌎 Argentina / ⏳ For → A week / 🎯 Want to → 🏛️ Visit the museum / 🤿 Also → Try diving ‖ 🗓️ When: ➡️ After → 🏖️ The beach / 🌅 Tomorrow morning → 🚉 The station ¦ 🎯 Another trip — the same questions. Tell your friend." / "✈️ טיול אחר: 📍 הבא → 🌎 ארגנטינה / ⏳ לכמה זמן → שבוע / 🎯 רוצה → 🏛️ לבקר במוזיאון / 🤿 וגם → לנסות צלילה ‖ 🗓️ מתי: ➡️ אחרי זה → 🏖️ הים / 🌅 מחר בבוקר → 🚉 התחנה ¦ 🎯 טיול אחר — אותן שאלות. ספר לחבר."
+- Audio played: EN "So, where are you going next?" · FR "Alors, tu vas où après ?" · ES "Bueno, ¿a dónde vas después?"
+- Meaning of the audio (HE): "אז לאן אתה נוסע אחרי זה?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "I'm going to Argentina." · FR "Je vais en Argentine." · ES "Voy a Argentina." · (HE gloss "אני נוסע לווייטנאם.") — `phrase.future.going-to-vietnam` — ✅ accepted
+  2. EN "I'll be there for a week." · FR "Je vais rester une semaine." · ES "Voy a estar allí una semana." · (HE gloss "אני אהיה שם שבועיים.") — `phrase.future.ill-be-there` — ❌ wrong
+  3. EN "I want to visit the museum." · FR "Je veux visiter le musée." · ES "Quiero visitar el museo." · (HE gloss "אני רוצה לבקר בהאנוי.") — `phrase.future.want-to-visit` — ❌ wrong
+- Tests: phrase.future.going-to-vietnam
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M21-Q23 — quick-reply (step 25, round 2 of 6)
+
+- Prompt displayed: "✈️ Another trip: 📍 Next → 🌎 Argentina / ⏳ For → A week / 🎯 Want to → 🏛️ Visit the museum / 🤿 Also → Try diving ‖ 🗓️ When: ➡️ After → 🏖️ The beach / 🌅 Tomorrow morning → 🚉 The station ¦ 🎯 Another trip — the same questions. Tell your friend." / "✈️ טיול אחר: 📍 הבא → 🌎 ארגנטינה / ⏳ לכמה זמן → שבוע / 🎯 רוצה → 🏛️ לבקר במוזיאון / 🤿 וגם → לנסות צלילה ‖ 🗓️ מתי: ➡️ אחרי זה → 🏖️ הים / 🌅 מחר בבוקר → 🚉 התחנה ¦ 🎯 טיול אחר — אותן שאלות. ספר לחבר."
+- Audio played: EN "Wow! How long will you be there?" · FR "Waouh ! Tu restes combien de temps ?" · ES "¡Guau! ¿Cuánto tiempo vas a estar allí?"
+- Meaning of the audio (HE): "וואו! כמה זמן תהיה שם?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "I'll be there for a week." · FR "Je vais rester une semaine." · ES "Voy a estar allí una semana." · (HE gloss "אני אהיה שם שבועיים.") — `phrase.future.ill-be-there` — ✅ accepted
+  2. EN "I'm going to Argentina." · FR "Je vais en Argentine." · ES "Voy a Argentina." · (HE gloss "אני נוסע לווייטנאם.") — `phrase.future.going-to-vietnam` — ❌ wrong
+  3. EN "Tomorrow morning I'm going to the station." · FR "Demain matin, je vais à la gare." · ES "Mañana por la mañana voy a la estación." · (HE gloss "מחר בבוקר אני נוסע לשדה התעופה.") — `phrase.future.tomorrow-morning` — ❌ wrong
+- Tests: phrase.future.ill-be-there
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M21-Q24 — quick-reply (step 25, round 3 of 6)
+
+- Prompt displayed: "✈️ Another trip: 📍 Next → 🌎 Argentina / ⏳ For → A week / 🎯 Want to → 🏛️ Visit the museum / 🤿 Also → Try diving ‖ 🗓️ When: ➡️ After → 🏖️ The beach / 🌅 Tomorrow morning → 🚉 The station ¦ 🎯 Another trip — the same questions. Tell your friend." / "✈️ טיול אחר: 📍 הבא → 🌎 ארגנטינה / ⏳ לכמה זמן → שבוע / 🎯 רוצה → 🏛️ לבקר במוזיאון / 🤿 וגם → לנסות צלילה ‖ 🗓️ מתי: ➡️ אחרי זה → 🏖️ הים / 🌅 מחר בבוקר → 🚉 התחנה ¦ 🎯 טיול אחר — אותן שאלות. ספר לחבר."
+- Audio played: EN "What do you want to do there?" · FR "Tu veux faire quoi là-bas ?" · ES "¿Qué quieres hacer allí?"
+- Meaning of the audio (HE): "מה אתה רוצה לעשות שם?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "I want to visit the museum." · FR "Je veux visiter le musée." · ES "Quiero visitar el museo." · (HE gloss "אני רוצה לבקר בהאנוי.") — `phrase.future.want-to-visit` — ✅ accepted
+  2. EN "I'll be there for a week." · FR "Je vais rester une semaine." · ES "Voy a estar allí una semana." · (HE gloss "אני אהיה שם שבועיים.") — `phrase.future.ill-be-there` — ❌ wrong
+  3. EN "I'm going to Argentina." · FR "Je vais en Argentine." · ES "Voy a Argentina." · (HE gloss "אני נוסע לווייטנאם.") — `phrase.future.going-to-vietnam` — ❌ wrong
+- Tests: phrase.future.want-to-visit
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M21-Q25 — quick-reply (step 25, round 4 of 6)
+
+- Prompt displayed: "✈️ Another trip: 📍 Next → 🌎 Argentina / ⏳ For → A week / 🎯 Want to → 🏛️ Visit the museum / 🤿 Also → Try diving ‖ 🗓️ When: ➡️ After → 🏖️ The beach / 🌅 Tomorrow morning → 🚉 The station ¦ 🎯 Another trip — the same questions. Tell your friend." / "✈️ טיול אחר: 📍 הבא → 🌎 ארגנטינה / ⏳ לכמה זמן → שבוע / 🎯 רוצה → 🏛️ לבקר במוזיאון / 🤿 וגם → לנסות צלילה ‖ 🗓️ מתי: ➡️ אחרי זה → 🏖️ הים / 🌅 מחר בבוקר → 🚉 התחנה ¦ 🎯 טיול אחר — אותן שאלות. ספר לחבר."
+- Audio played: EN "Nice. Anything else?" · FR "Sympa. Autre chose ?" · ES "Qué bien. ¿Algo más?"
+- Meaning of the audio (HE): "יפה. עוד משהו?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "I want to try diving." · FR "Je veux essayer la plongée." · ES "Quiero probar el buceo." · (HE gloss "אני רוצה לטייל באופנוע.") — `phrase.future.by-motorbike` — ✅ accepted
+  2. EN "I want to visit the museum." · FR "Je veux visiter le musée." · ES "Quiero visitar el museo." · (HE gloss "אני רוצה לבקר בהאנוי.") — `phrase.future.want-to-visit` — ❌ wrong
+  3. EN "I'll be there for a week." · FR "Je vais rester une semaine." · ES "Voy a estar allí una semana." · (HE gloss "אני אהיה שם שבועיים.") — `phrase.future.ill-be-there` — ❌ wrong
+- Tests: phrase.future.by-motorbike
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M21-Q26 — quick-reply (step 25, round 5 of 6)
+
+- Prompt displayed: "✈️ Another trip: 📍 Next → 🌎 Argentina / ⏳ For → A week / 🎯 Want to → 🏛️ Visit the museum / 🤿 Also → Try diving ‖ 🗓️ When: ➡️ After → 🏖️ The beach / 🌅 Tomorrow morning → 🚉 The station ¦ 🎯 Another trip — the same questions. Tell your friend." / "✈️ טיול אחר: 📍 הבא → 🌎 ארגנטינה / ⏳ לכמה זמן → שבוע / 🎯 רוצה → 🏛️ לבקר במוזיאון / 🤿 וגם → לנסות צלילה ‖ 🗓️ מתי: ➡️ אחרי זה → 🏖️ הים / 🌅 מחר בבוקר → 🚉 התחנה ¦ 🎯 טיול אחר — אותן שאלות. ספר לחבר."
+- Audio played: EN "Sounds amazing! Be careful. And after that?" · FR "Ça a l’air génial ! Fais attention. Et après ça ?" · ES "¡Suena increíble! Ten cuidado. ¿Y después de eso?"
+- Meaning of the audio (HE): "נשמע מדהים! תיזהר. ואחרי זה?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "After that I'm going to the beach." · FR "Après ça, je vais à la plage." · ES "Después de eso voy a la playa." · (HE gloss "אחרי זה אני נוסע לתאילנד.") — `phrase.future.after-that` — ✅ accepted
+  2. EN "I'm going to Argentina." · FR "Je vais en Argentine." · ES "Voy a Argentina." · (HE gloss "אני נוסע לווייטנאם.") — `phrase.future.going-to-vietnam` — ❌ wrong
+  3. EN "I want to try diving." · FR "Je veux essayer la plongée." · ES "Quiero probar el buceo." · (HE gloss "אני רוצה לטייל באופנוע.") — `phrase.future.by-motorbike` — ❌ wrong
+- Tests: phrase.future.after-that
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M21-Q27 — quick-reply (step 25, round 6 of 6)
+
+- Prompt displayed: "✈️ Another trip: 📍 Next → 🌎 Argentina / ⏳ For → A week / 🎯 Want to → 🏛️ Visit the museum / 🤿 Also → Try diving ‖ 🗓️ When: ➡️ After → 🏖️ The beach / 🌅 Tomorrow morning → 🚉 The station ¦ 🎯 Another trip — the same questions. Tell your friend." / "✈️ טיול אחר: 📍 הבא → 🌎 ארגנטינה / ⏳ לכמה זמן → שבוע / 🎯 רוצה → 🏛️ לבקר במוזיאון / 🤿 וגם → לנסות צלילה ‖ 🗓️ מתי: ➡️ אחרי זה → 🏖️ הים / 🌅 מחר בבוקר → 🚉 התחנה ¦ 🎯 טיול אחר — אותן שאלות. ספר לחבר."
+- Audio played: EN "Great plan. And what are you doing tomorrow morning?" · FR "Super programme. Et tu fais quoi demain matin ?" · ES "Buen plan. ¿Y qué haces mañana por la mañana?"
+- Meaning of the audio (HE): "תוכנית מעולה. ומה אתה עושה מחר בבוקר?"
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Tomorrow morning I'm going to the station." · FR "Demain matin, je vais à la gare." · ES "Mañana por la mañana voy a la estación." · (HE gloss "מחר בבוקר אני נוסע לשדה התעופה.") — `phrase.future.tomorrow-morning` — ✅ accepted
+  2. EN "After that I'm going to the beach." · FR "Après ça, je vais à la plage." · ES "Después de eso voy a la playa." · (HE gloss "אחרי זה אני נוסע לתאילנד.") — `phrase.future.after-that` — ❌ wrong
+  3. EN "I want to visit the museum." · FR "Je veux visiter le musée." · ES "Quiero visitar el museo." · (HE gloss "אני רוצה לבקר בהאנוי.") — `phrase.future.want-to-visit` — ❌ wrong
+- Tests: phrase.future.tomorrow-morning
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
 ## Dialogue — full tree
@@ -20664,6 +20710,16 @@ No meaning quiz in this mission.
     - FR: Je vais au Vietnam.
     - ES: Voy a Vietnam.
     - HE: אני נוסע לווייטנאם.
+  - choice 2 — ❌ WRONG → m2 — `phrase.future.ill-be-there`
+    - EN: I'll be there for two weeks.
+    - FR: Je vais rester deux semaines.
+    - ES: Voy a estar allí dos semanas.
+    - HE: אני אהיה שם שבועיים.
+- **m2** · NPC · slow (TTS rate 0.75) · off the happy path → c2
+  - EN: So, where are you going next?
+  - FR: Alors, tu vas où après ?
+  - ES: Bueno, ¿a dónde vas después?
+  - HE: אז לאן אתה נוסע אחרי זה?
 - **n3** · NPC · fast (TTS rate 1.08) → c4
   - EN: Wow! How long will you be there?
   - FR: Waouh ! Tu restes combien de temps ?
@@ -20675,22 +20731,16 @@ No meaning quiz in this mission.
     - FR: Je vais rester deux semaines.
     - ES: Voy a estar allí dos semanas.
     - HE: אני אהיה שם שבועיים.
-  - choice 2 — 🛟 accepted — conversation-help tool → r4 — `phrase.recovery.slowly`
-    - EN: Please speak slowly.
-    - FR: Parlez lentement, s’il vous plaît.
-    - ES: Más despacio, por favor.
-    - HE: דבר לאט, בבקשה.
-- **r4** · NPC · slow (TTS rate 0.75) · off the happy path → c4b
-  - EN: How long? One week? Two weeks?
-  - FR: Combien de temps ? Une semaine ? Deux semaines ?
-  - ES: ¿Cuánto tiempo? ¿Una semana? ¿Dos semanas?
-  - HE: כמה זמן? שבוע? שבועיים?
-- **c4b** · LEARNER choice screen · off the happy path
-  - choice 1 — ✅ accepted → n5 — `phrase.future.ill-be-there`
-    - EN: I'll be there for two weeks.
-    - FR: Je vais rester deux semaines.
-    - ES: Voy a estar allí dos semanas.
-    - HE: אני אהיה שם שבועיים.
+  - choice 2 — ❌ WRONG → m4 — `phrase.future.going-to-vietnam`
+    - EN: I'm going to Vietnam.
+    - FR: Je vais au Vietnam.
+    - ES: Voy a Vietnam.
+    - HE: אני נוסע לווייטנאם.
+- **m4** · NPC · slow (TTS rate 0.75) · off the happy path → c4
+  - EN: Wow! How long will you be there?
+  - FR: Waouh ! Tu restes combien de temps ?
+  - ES: ¡Guau! ¿Cuánto tiempo vas a estar allí?
+  - HE: וואו! כמה זמן תהיה שם?
 - **n5** · NPC · normal (TTS rate 0.95) → c6
   - EN: What do you want to do there?
   - FR: Tu veux faire quoi là-bas ?
@@ -20702,11 +20752,16 @@ No meaning quiz in this mission.
     - FR: Je veux visiter Hanoï.
     - ES: Quiero visitar Hanói.
     - HE: אני רוצה לבקר בהאנוי.
-  - choice 2 — ✅ accepted → n7 — `phrase.future.want-to-try-food`
-    - EN: I want to try the food.
-    - FR: Je veux essayer la cuisine.
-    - ES: Quiero probar la comida.
-    - HE: אני רוצה לנסות את האוכל.
+  - choice 2 — ❌ WRONG → m6 — `phrase.future.ill-be-there`
+    - EN: I'll be there for two weeks.
+    - FR: Je vais rester deux semaines.
+    - ES: Voy a estar allí dos semanas.
+    - HE: אני אהיה שם שבועיים.
+- **m6** · NPC · slow (TTS rate 0.75) · off the happy path → c6
+  - EN: What do you want to do there?
+  - FR: Tu veux faire quoi là-bas ?
+  - ES: ¿Qué quieres hacer allí?
+  - HE: מה אתה רוצה לעשות שם?
 - **n7** · NPC · normal (TTS rate 0.95) → c8
   - EN: Nice. Anything else?
   - FR: Sympa. Autre chose ?
@@ -20718,11 +20773,16 @@ No meaning quiz in this mission.
     - FR: Je veux voyager à moto.
     - ES: Quiero viajar en moto.
     - HE: אני רוצה לטייל באופנוע.
-  - choice 2 — ✅ accepted → n9 — `phrase.future.ride-horses`
-    - EN: I want to ride horses there.
-    - FR: Je veux faire du cheval là-bas.
-    - ES: Quiero montar a caballo allí.
-    - HE: אני רוצה לרכוב שם על סוסים.
+  - choice 2 — ❌ WRONG → m8 — `phrase.future.want-to-visit`
+    - EN: I want to visit Hanoi.
+    - FR: Je veux visiter Hanoï.
+    - ES: Quiero visitar Hanói.
+    - HE: אני רוצה לבקר בהאנוי.
+- **m8** · NPC · slow (TTS rate 0.75) · off the happy path → c8
+  - EN: Nice. Anything else?
+  - FR: Sympa. Autre chose ?
+  - ES: Qué bien. ¿Algo más?
+  - HE: יפה. עוד משהו?
 - **n9** · NPC · normal (TTS rate 0.95) → c10
   - EN: Sounds amazing! Be careful. And after that?
   - FR: Ça a l’air génial ! Fais attention. Et après ça ?
@@ -20734,6 +20794,16 @@ No meaning quiz in this mission.
     - FR: Après ça, je vais en Thaïlande.
     - ES: Después de eso voy a Tailandia.
     - HE: אחרי זה אני נוסע לתאילנד.
+  - choice 2 — ❌ WRONG → m10 — `phrase.future.going-to-vietnam`
+    - EN: I'm going to Vietnam.
+    - FR: Je vais au Vietnam.
+    - ES: Voy a Vietnam.
+    - HE: אני נוסע לווייטנאם.
+- **m10** · NPC · slow (TTS rate 0.75) · off the happy path → c10
+  - EN: Sounds amazing! Be careful. And after that?
+  - FR: Ça a l’air génial ! Fais attention. Et après ça ?
+  - ES: ¡Suena increíble! Ten cuidado. ¿Y después de eso?
+  - HE: נשמע מדהים! תיזהר. ואחרי זה?
 - **n11** · NPC · normal (TTS rate 0.95) → c12
   - EN: Great plan. And what are you doing tomorrow morning?
   - FR: Super programme. Et tu fais quoi demain matin ?
@@ -20745,6 +20815,16 @@ No meaning quiz in this mission.
     - FR: Demain matin, je vais à l’aéroport.
     - ES: Mañana por la mañana voy al aeropuerto.
     - HE: מחר בבוקר אני נוסע לשדה התעופה.
+  - choice 2 — ❌ WRONG → m12 — `phrase.future.after-that`
+    - EN: After that I'm going to Thailand.
+    - FR: Après ça, je vais en Thaïlande.
+    - ES: Después de eso voy a Tailandia.
+    - HE: אחרי זה אני נוסע לתאילנד.
+- **m12** · NPC · slow (TTS rate 0.75) · off the happy path → c12
+  - EN: Great plan. And what are you doing tomorrow morning?
+  - FR: Super programme. Et tu fais quoi demain matin ?
+  - ES: Buen plan. ¿Y qué haces mañana por la mañana?
+  - HE: תוכנית מעולה. ומה אתה עושה מחר בבוקר?
 - **n13** · NPC · normal (TTS rate 0.95) → c14
   - EN: Already! We'll miss you.
   - FR: Déjà ! Tu vas nous manquer.
@@ -20756,6 +20836,16 @@ No meaning quiz in this mission.
     - FR: Et toi ? Tu vas où après ?
     - ES: ¿Y tú? ¿A dónde vas después?
     - HE: ואתה? לאן אתה נוסע אחרי זה?
+  - choice 2 — ❌ WRONG → m14 — `phrase.future.want-to-visit`
+    - EN: I want to visit Hanoi.
+    - FR: Je veux visiter Hanoï.
+    - ES: Quiero visitar Hanói.
+    - HE: אני רוצה לבקר בהאנוי.
+- **m14** · NPC · slow (TTS rate 0.75) · off the happy path → c14
+  - EN: Already! We'll miss you.
+  - FR: Déjà ! Tu vas nous manquer.
+  - ES: ¡Ya! Te vamos a echar de menos.
+  - HE: כבר! נתגעגע אליך.
 - **n15** · NPC · normal (TTS rate 0.95) · END of scene
   - EN: Me? I'm going home. Have a great trip!
   - FR: Moi ? Je rentre chez moi. Bon voyage !
@@ -20799,7 +20889,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 
 ## Learner choice screens
 
-### M21-Q18 — dialogue-choice (step 12, scene "where-next" · node c2)
+### M21-Q11 — dialogue-choice (step 20, scene "where-next" · node c2)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "So, where are you going next?" · FR "Alors, tu vas où après ?" · ES "Bueno, ¿a dónde vas después?"
@@ -20807,10 +20897,11 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
   1. EN "I'm going to Vietnam." · FR "Je vais au Vietnam." · ES "Voy a Vietnam." · (HE gloss "אני נוסע לווייטנאם.") — `phrase.future.going-to-vietnam` — ✅ accepted → n3
-- Tests: phrase.future.going-to-vietnam
+  2. EN "I'll be there for two weeks." · FR "Je vais rester deux semaines." · ES "Voy a estar allí dos semanas." · (HE gloss "אני אהיה שם שבועיים.") — `phrase.future.ill-be-there` — ❌ wrong → m2
+- Tests: phrase.future.going-to-vietnam, phrase.future.ill-be-there
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M21-Q19 — dialogue-choice (step 12, scene "where-next" · node c4)
+### M21-Q12 — dialogue-choice (step 20, scene "where-next" · node c4)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Wow! How long will you be there?" · FR "Waouh ! Tu restes combien de temps ?" · ES "¡Guau! ¿Cuánto tiempo vas a estar allí?"
@@ -20818,22 +20909,11 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
   1. EN "I'll be there for two weeks." · FR "Je vais rester deux semaines." · ES "Voy a estar allí dos semanas." · (HE gloss "אני אהיה שם שבועיים.") — `phrase.future.ill-be-there` — ✅ accepted → n5
-  2. EN "Please speak slowly." · FR "Parlez lentement, s’il vous plaît." · ES "Más despacio, por favor." · (HE gloss "דבר לאט, בבקשה.") — `phrase.recovery.slowly` — ✅ accepted → r4
-- Tests: phrase.future.ill-be-there, phrase.recovery.slowly
+  2. EN "I'm going to Vietnam." · FR "Je vais au Vietnam." · ES "Voy a Vietnam." · (HE gloss "אני נוסע לווייטנאם.") — `phrase.future.going-to-vietnam` — ❌ wrong → m4
+- Tests: phrase.future.ill-be-there, phrase.future.going-to-vietnam
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M21-Q20 — dialogue-choice (step 12, scene "where-next" · node c4b)
-
-- Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio played: EN "How long? One week? Two weeks?" · FR "Combien de temps ? Une semaine ? Deux semaines ?" · ES "¿Cuánto tiempo? ¿Una semana? ¿Dos semanas?"
-- Meaning of the audio (HE): "כמה זמן? שבוע? שבועיים?"
-- Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
-- Choices:
-  1. EN "I'll be there for two weeks." · FR "Je vais rester deux semaines." · ES "Voy a estar allí dos semanas." · (HE gloss "אני אהיה שם שבועיים.") — `phrase.future.ill-be-there` — ✅ accepted → n5
-- Tests: phrase.future.ill-be-there
-- Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
-
-### M21-Q21 — dialogue-choice (step 12, scene "where-next" · node c6)
+### M21-Q13 — dialogue-choice (step 20, scene "where-next" · node c6)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "What do you want to do there?" · FR "Tu veux faire quoi là-bas ?" · ES "¿Qué quieres hacer allí?"
@@ -20841,11 +20921,11 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
   1. EN "I want to visit Hanoi." · FR "Je veux visiter Hanoï." · ES "Quiero visitar Hanói." · (HE gloss "אני רוצה לבקר בהאנוי.") — `phrase.future.want-to-visit` — ✅ accepted → n7
-  2. EN "I want to try the food." · FR "Je veux essayer la cuisine." · ES "Quiero probar la comida." · (HE gloss "אני רוצה לנסות את האוכל.") — `phrase.future.want-to-try-food` — ✅ accepted → n7
-- Tests: phrase.future.want-to-visit, phrase.future.want-to-try-food
+  2. EN "I'll be there for two weeks." · FR "Je vais rester deux semaines." · ES "Voy a estar allí dos semanas." · (HE gloss "אני אהיה שם שבועיים.") — `phrase.future.ill-be-there` — ❌ wrong → m6
+- Tests: phrase.future.want-to-visit, phrase.future.ill-be-there
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M21-Q22 — dialogue-choice (step 12, scene "where-next" · node c8)
+### M21-Q14 — dialogue-choice (step 20, scene "where-next" · node c8)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Nice. Anything else?" · FR "Sympa. Autre chose ?" · ES "Qué bien. ¿Algo más?"
@@ -20853,11 +20933,11 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
   1. EN "I want to travel by motorbike." · FR "Je veux voyager à moto." · ES "Quiero viajar en moto." · (HE gloss "אני רוצה לטייל באופנוע.") — `phrase.future.by-motorbike` — ✅ accepted → n9
-  2. EN "I want to ride horses there." · FR "Je veux faire du cheval là-bas." · ES "Quiero montar a caballo allí." · (HE gloss "אני רוצה לרכוב שם על סוסים.") — `phrase.future.ride-horses` — ✅ accepted → n9
-- Tests: phrase.future.by-motorbike, phrase.future.ride-horses
+  2. EN "I want to visit Hanoi." · FR "Je veux visiter Hanoï." · ES "Quiero visitar Hanói." · (HE gloss "אני רוצה לבקר בהאנוי.") — `phrase.future.want-to-visit` — ❌ wrong → m8
+- Tests: phrase.future.by-motorbike, phrase.future.want-to-visit
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M21-Q23 — dialogue-choice (step 12, scene "where-next" · node c10)
+### M21-Q15 — dialogue-choice (step 20, scene "where-next" · node c10)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Sounds amazing! Be careful. And after that?" · FR "Ça a l’air génial ! Fais attention. Et après ça ?" · ES "¡Suena increíble! Ten cuidado. ¿Y después de eso?"
@@ -20865,10 +20945,11 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
   1. EN "After that I'm going to Thailand." · FR "Après ça, je vais en Thaïlande." · ES "Después de eso voy a Tailandia." · (HE gloss "אחרי זה אני נוסע לתאילנד.") — `phrase.future.after-that` — ✅ accepted → n11
-- Tests: phrase.future.after-that
+  2. EN "I'm going to Vietnam." · FR "Je vais au Vietnam." · ES "Voy a Vietnam." · (HE gloss "אני נוסע לווייטנאם.") — `phrase.future.going-to-vietnam` — ❌ wrong → m10
+- Tests: phrase.future.after-that, phrase.future.going-to-vietnam
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M21-Q24 — dialogue-choice (step 12, scene "where-next" · node c12)
+### M21-Q16 — dialogue-choice (step 20, scene "where-next" · node c12)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Great plan. And what are you doing tomorrow morning?" · FR "Super programme. Et tu fais quoi demain matin ?" · ES "Buen plan. ¿Y qué haces mañana por la mañana?"
@@ -20876,10 +20957,11 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
   1. EN "Tomorrow morning I'm going to the airport." · FR "Demain matin, je vais à l’aéroport." · ES "Mañana por la mañana voy al aeropuerto." · (HE gloss "מחר בבוקר אני נוסע לשדה התעופה.") — `phrase.future.tomorrow-morning` — ✅ accepted → n13
-- Tests: phrase.future.tomorrow-morning
+  2. EN "After that I'm going to Thailand." · FR "Après ça, je vais en Thaïlande." · ES "Después de eso voy a Tailandia." · (HE gloss "אחרי זה אני נוסע לתאילנד.") — `phrase.future.after-that` — ❌ wrong → m12
+- Tests: phrase.future.tomorrow-morning, phrase.future.after-that
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M21-Q25 — dialogue-choice (step 12, scene "where-next" · node c14)
+### M21-Q17 — dialogue-choice (step 20, scene "where-next" · node c14)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Already! We'll miss you." · FR "Déjà ! Tu vas nous manquer." · ES "¡Ya! Te vamos a echar de menos."
@@ -20887,38 +20969,60 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Buttons show: TARGET-LANGUAGE text only (no translation on the buttons); order is fixed as authored — NOT shuffled
 - Choices:
   1. EN "And you? Where are you going next?" · FR "Et toi ? Tu vas où après ?" · ES "¿Y tú? ¿A dónde vas después?" · (HE gloss "ואתה? לאן אתה נוסע אחרי זה?") — `phrase.future.where-next` — ✅ accepted → n15
-- Tests: phrase.future.where-next
+  2. EN "I want to visit Hanoi." · FR "Je veux visiter Hanoï." · ES "Quiero visitar Hanói." · (HE gloss "אני רוצה לבקר בהאנוי.") — `phrase.future.want-to-visit` — ❌ wrong → m14
+- Tests: phrase.future.where-next, phrase.future.want-to-visit
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
 ## Recovery tools in this mission
 
-Toolkit phrases bundled into this mission's sentence list: `phrase.recovery.slowly` "Please speak slowly.".
+No toolkit phrase is bundled into this mission.
 
-Where a conversation-help tool can be selected, and what happens:
+No conversation-help tool is selectable in this mission's dialogues.
 
-- Scene `where-next`, c4 — `phrase.recovery.slowly` "Please speak slowly." ("דבר לאט, בבקשה.") — after NPC "Wow! How long will you be there?" → r4: NPC "How long? One week? Two weeks?" (slow) → r4 → c4b → rejoins the happy path at n5. Counts as success (recorded as "pass"); no feedback card — the dialogue simply continues.
 
 ## Wrong answer branches
 
-None — no choice in this mission is marked wrong.
+7 reachable wrong-answer branch(es):
 
+- Scene `where-next`, c2 — after NPC "So, where are you going next?"
+  - Wrong choice: "I'll be there for two weeks." ("אני אהיה שם שבועיים.") — `phrase.future.ill-be-there`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("I'm going to Vietnam."), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m2): "So, where are you going next?" — HE "אז לאן אתה נוסע אחרי זה?"
+  - Then: m2 → rejoins the happy path at c2. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
+- Scene `where-next`, c4 — after NPC "Wow! How long will you be there?"
+  - Wrong choice: "I'm going to Vietnam." ("אני נוסע לווייטנאם.") — `phrase.future.going-to-vietnam`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("I'll be there for two weeks."), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m4): "Wow! How long will you be there?" — HE "וואו! כמה זמן תהיה שם?"
+  - Then: m4 → rejoins the happy path at c4. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
+- Scene `where-next`, c6 — after NPC "What do you want to do there?"
+  - Wrong choice: "I'll be there for two weeks." ("אני אהיה שם שבועיים.") — `phrase.future.ill-be-there`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("I want to visit Hanoi."), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m6): "What do you want to do there?" — HE "מה אתה רוצה לעשות שם?"
+  - Then: m6 → rejoins the happy path at c6. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
+- Scene `where-next`, c8 — after NPC "Nice. Anything else?"
+  - Wrong choice: "I want to visit Hanoi." ("אני רוצה לבקר בהאנוי.") — `phrase.future.want-to-visit`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("I want to travel by motorbike."), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m8): "Nice. Anything else?" — HE "יפה. עוד משהו?"
+  - Then: m8 → rejoins the happy path at c8. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
+- Scene `where-next`, c10 — after NPC "Sounds amazing! Be careful. And after that?"
+  - Wrong choice: "I'm going to Vietnam." ("אני נוסע לווייטנאם.") — `phrase.future.going-to-vietnam`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("After that I'm going to Thailand."), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m10): "Sounds amazing! Be careful. And after that?" — HE "נשמע מדהים! תיזהר. ואחרי זה?"
+  - Then: m10 → rejoins the happy path at c10. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
+- Scene `where-next`, c12 — after NPC "Great plan. And what are you doing tomorrow morning?"
+  - Wrong choice: "After that I'm going to Thailand." ("אחרי זה אני נוסע לתאילנד.") — `phrase.future.after-that`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("Tomorrow morning I'm going to the airport."), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m12): "Great plan. And what are you doing tomorrow morning?" — HE "תוכנית מעולה. ומה אתה עושה מחר בבוקר?"
+  - Then: m12 → rejoins the happy path at c12. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
+- Scene `where-next`, c14 — after NPC "Already! We'll miss you."
+  - Wrong choice: "I want to visit Hanoi." ("אני רוצה לבקר בהאנוי.") — `phrase.future.want-to-visit`
+  - Feedback card: ❌ header, what you heard, your answer, what you should answer ("And you? Where are you going next?"), "Why": "That's not what they asked — watch how they respond." / "זה לא מה ששאלו — שים לב איך הם מגיבים.". Buttons: Try again (returns to this screen) · Continue (plays the branch).
+  - NPC response (m14): "Already! We'll miss you." — HE "כבר! נתגעגע אליך."
+  - Then: m14 → rejoins the happy path at c14. The line "Nice recovery — the conversation continues." / "התאוששות יפה — השיחה ממשיכה." is shown on the following choice screens.
 
 ## Sentence review
 
-Step 14. 12 sentences, in this fixed order. Each is played automatically (TTS), shown with its translation and tip; buttons: 🔊 "Hear again" / "לשמוע שוב" and Next. No speaking prompt, no grading, no scoring; nothing is recorded.
-
-1. `phrase.future.going-to-vietnam` — I'm going to Vietnam. — אני נוסע לווייטנאם.
-2. `phrase.future.ill-be-there` — I'll be there for two weeks. — אני אהיה שם שבועיים.
-3. `phrase.future.want-to-visit` — I want to visit Hanoi. — אני רוצה לבקר בהאנוי.
-4. `phrase.future.by-motorbike` — I want to travel by motorbike. — אני רוצה לטייל באופנוע.
-5. `phrase.future.after-that` — After that I'm going to Thailand. — אחרי זה אני נוסע לתאילנד.
-6. `phrase.future.tomorrow-morning` — Tomorrow morning I'm going to the airport. — מחר בבוקר אני נוסע לשדה התעופה.
-7. `phrase.future.where-next` — Where are you going next? — לאן אתה נוסע אחרי זה?
-8. `reply.future.how-long` — How long will you be there? — כמה זמן תהיה שם?
-9. `reply.future.what-do-there` — What do you want to do there? — מה אתה רוצה לעשות שם?
-10. `reply.future.and-after` — And after that? — ואחרי זה?
-11. `reply.future.tomorrow-morning-q` — What are you doing tomorrow morning? — מה אתה עושה מחר בבוקר?
-12. `phrase.recovery.slowly` — Please speak slowly. — דבר לאט, בבקשה.
+No sentence-review step in this mission.
 
 ## Cold open / ambush
 
@@ -20928,48 +21032,44 @@ No cold open in this mission.
 
 The runtime has NO slot-substitution mechanism: no sentence is generated with a different word. "Variants" exist only as (a) alternative accepted lines on one choice screen and (b) extra sentences taught beside the dialogue. Templates are mentioned only in tips.
 
-Alternative accepted lines:
+No choice screen offers two accepted non-toolkit lines.
 
-- Scene `where-next`, c6: "I want to visit Hanoi." OR "I want to try the food." — all accepted, same continuation unless the routes above differ.
-- Scene `where-next`, c8: "I want to travel by motorbike." OR "I want to ride horses there." — all accepted, same continuation unless the routes above differ.
 
 Every learner sentence of this mission is a line in a scene.
 
 
 ## Receipts (proof cards)
 
-- Step 8: "You recognize the follow-ups: how long, what will you do, and what next." / "אתה מזהה את שאלות ההמשך: לכמה זמן, מה תעשה, ומה אחר כך."
-- Step 13: "You said where you are going, for how long and what you want to do — and asked back." / "סיפרת לאן אתה נוסע, לכמה זמן ומה אתה רוצה לעשות — ושאלת בחזרה."
-- Step 16: "Where, how long, what you will do and what comes after — you told your plan at normal pace, and asked back." / "לאן, לכמה זמן, מה תעשה ומה אחר כך — סיפרת את התוכנית שלך בקצב רגיל, ושאלת בחזרה."
+- Step 19: "✈️ My next trip: 📍 Next → Vietnam ✓ / ⏳ For → Two weeks ✓ / 🎯 Want to → Visit Hanoi ✓ / 🏍️ Also → Travel by motorbike ✓ ‖ 🗓️ When: ➡️ After → Thailand ✓ / 🌅 Tomorrow morning → Airport ✓ ¦ Your plan — and you asked back." / "✈️ הטיול הבא שלי: 📍 הבא → וייטנאם ✓ / ⏳ לכמה זמן → שבועיים ✓ / 🎯 רוצה → לבקר בהאנוי ✓ / 🏍️ וגם → לטייל באופנוע ✓ ‖ 🗓️ מתי: ➡️ אחרי זה → תאילנד ✓ / 🌅 מחר בבוקר → שדה התעופה ✓ ¦ התוכנית שלך — ושאלת בחזרה."
+- Step 21: "The whole conversation — where, how long, what you will do, what comes after — and you asked back." / "כל השיחה — לאן, לכמה זמן, מה תעשה, מה אחר כך — ושאלת בחזרה."
+- Step 23: "No help — where, how long, what you want to do, and you asked back." / "בלי עזרה — לאן, לכמה זמן, מה אתה רוצה לעשות, ושאלת בחזרה."
+- Step 26: "✈️ MY NEXT TRIP ¦ ✈️ My next trip: 📍 Next → Vietnam ✓ / ⏳ For → Two weeks ✓ / 🎯 Want to → Visit Hanoi ✓ / 🏍️ Also → Travel by motorbike ✓ ‖ 🗓️ When: ➡️ After → Thailand ✓ / 🌅 Tomorrow morning → Airport ✓ ¦ You told your plan — and another trip — and asked back. 🏠 Your friend? Going home." / "✈️ הטיול הבא שלי ¦ ✈️ הטיול הבא שלי: 📍 הבא → וייטנאם ✓ / ⏳ לכמה זמן → שבועיים ✓ / 🎯 רוצה → לבקר בהאנוי ✓ / 🏍️ וגם → לטייל באופנוע ✓ ‖ 🗓️ מתי: ➡️ אחרי זה → תאילנד ✓ / 🌅 מחר בבוקר → שדה התעופה ✓ ¦ סיפרת את התוכנית — וגם טיול אחר — ושאלת בחזרה. 🏠 והחבר? חוזר הביתה."
 
 ## Audit Metadata — DO NOT FIX YET
 
-- Learner-production sentences: 9
-- Receptive (expected-reply) sentences: 6
-- Toolkit phrases bundled: 1
-- Key-sentence steps: 5
-- Expected-reply/listening items: 4
+- Learner-production sentences: 7
+- Receptive (expected-reply) sentences: 7
+- Toolkit phrases bundled: 0
+- Key-sentence steps: 0
+- Expected-reply/listening items: 0
 - Questions/quizzes (meaning quiz): 0
-- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 18
-- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 21
-- One-button dialogue screens: 5
+- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 20
+- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 24
+- One-button dialogue screens: 0
 - Learner sentences never actively retrieved: 0
-- Dialogue learner choices (screens): 8
-- Wrong-answer branches: 0
+- Dialogue learner choices (screens): 7
+- Wrong-answer branches: 7
 - Cold-open prompts: 0
-- Recovery opportunities: 1
-- Vocabulary pre-items: 0
-- Swap variants (extra accepted lines): 2
-- Sentences in review: 12
-- Total interactive questions: 30 (answer choices: 71)
-- Approximate total learner interactions: 47 (questions + key sentences + review cards + word-intro screen)
+- Recovery opportunities: 0
+- Vocabulary pre-items: 15
+- Swap variants (extra accepted lines): 0
+- Sentences in review: 0
+- Total interactive questions: 27 (answer choices: 76)
+- Approximate total learner interactions: 28 (questions + key sentences + review cards + word-intro screen)
 
-### AUTO-FLAG — requires human review (4)
+### AUTO-FLAG — requires human review (1)
 
-- AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "where-next" n1 — “So, where are you going next?”
-- AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "where-next" n7 — “Nice. Anything else?”
-- AUTO-FLAG — 8 of 8 choice screens have NO wrong option (every button is accepted): where-next/c2, where-next/c4, where-next/c4b, where-next/c6, where-next/c8, where-next/c10, where-next/c12, where-next/c14.
-- AUTO-FLAG — 5 choice screens offer exactly ONE button (no decision): where-next/c2, where-next/c4b, where-next/c10, where-next/c12, where-next/c14.
+- AUTO-FLAG — NPC question never trained for comprehension (no expected-reply sentence matches it): scene "where-next" n15 — “Me? I'm going home. Have a great trip!”
 
 ---
 
@@ -21248,7 +21348,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: quick-reply response (step 12, round 4, accepted); sentence review (step 18); dialogue choice room-problem/c8 (accepted)
 
 ## Expected replies / listening items
@@ -23243,7 +23343,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: dialogue choice cold-transport/c4 (accepted); dialogue choice cold-hostel/c2 (accepted)
 
 ### Sentence: `phrase.recovery.repeat`
@@ -24381,7 +24481,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: cold-open correct option (step 19)
 
 ## Expected replies / listening items
@@ -25224,7 +25324,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: cold-open correct option (step 16); dialogue choice pharmacy/c1 (accepted)
 
 ### Sentence: `phrase.recovery.thank-you`
@@ -26047,7 +26147,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: dialogue choice emergency/c8 (accepted)
 
 ## Expected replies / listening items
@@ -26812,7 +26912,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: dialogue choice ns-diner/c4 (accepted)
 
 ## Expected replies / listening items
@@ -27749,7 +27849,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: dialogue choice dr-pay/c4 (accepted)
 
 ## Expected replies / listening items
@@ -28934,7 +29034,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - ES: Más despacio, por favor.
 - Role: conversation-help tool (global Recovery Toolkit)
 - Tip / pattern note: none
-- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 21, 22, 24, 25, 26, 27, 28, 29, 30
+- Used in missions: 01, 02, 03, 04, 06, 07, 09, 14, 22, 24, 25, 26, 27, 28, 29, 30
 - Exercised here as: dialogue choice fin-taxi/c6 (accepted); dialogue choice fin-evening/c2 (accepted)
 
 ### Sentence: `phrase.recovery.repeat`
@@ -30085,7 +30185,7 @@ Every learner sentence of this mission is a line in a scene.
 | 18 CHECKPOINT: Everyday Day | 15 (14 / 0 / 1) | 0 | 0 | 0 | 0 | 0 | 15 | 0 | 0 | no | 0 | 0 | 15 |
 | 19 Public Transport | 14 (4 / 9 / 1) | 0 | 0 | 0 | 20 | 6 | 0 | 0 | 0 | 11 words | 0 | 26 | 1 |
 | 20 Past & Recent Events | 13 (7 / 6 / 0) | 0 | 0 | 0 | 21 | 6 | 0 | 0 | 0 | 13 words | 0 | 27 | 2 |
-| 21 Future Travel & Plans | 16 (9 / 6 / 1) | 4 | 4 | 0 | 18 | 8 | 5 | 1 | 0 | no | 2 | 30 | 4 |
+| 21 Future Travel & Plans | 14 (7 / 7 / 0) | 0 | 0 | 0 | 20 | 7 | 0 | 0 | 0 | 15 words | 0 | 27 | 1 |
 | 22 Fixing Problems | 19 (11 / 7 / 1) | 5 | 5 | 0 | 20 | 11 | 9 | 1 | 0 | no | 1 | 36 | 7 |
 | 23 Opinions, Feelings & Reactions | 16 (9 / 6 / 1) | 4 | 4 | 0 | 20 | 8 | 7 | 1 | 0 | no | 0 | 32 | 2 |
 | 24 CHECKPOINT: City & Conversation | 28 (24 / 2 / 2) | 0 | 0 | 0 | 0 | 16 | 0 | 3 | 1 | 1 words | 0 | 17 | 11 |
@@ -30214,15 +30314,13 @@ Every learner-production sentence id of the Core, in order of first appearance. 
 | `phrase.past.i-stayed` | I stayed in a hostel. | 20 | 24, 30 | 0 | 1 / 3 | 7 | 0 | 0 | yes | no |  |
 | `phrase.past.what-did-you-do` | What did you do yesterday? | 20 | — | 0 | 1 / 0 | 3 | 0 | 0 | no | no |  |
 | `phrase.past.it-was-good` | It was good. | 20 | 24, 30 | 0 | 1 / 1 | 0 | 0 | 0 | yes | no |  |
-| `phrase.future.going-to-vietnam` | I'm going to Vietnam. | 21 | 24, 30 | 1 | 3 / 2 | 7 | 0 | 1 | yes | no |  |
-| `phrase.future.ill-be-there` | I'll be there for two weeks. | 21 | 24, 30 | 1 | 4 / 0 | 11 | 0 | 1 | yes | no |  |
-| `phrase.future.want-to-visit` | I want to visit Hanoi. | 21 | — | 1 | 1 / 0 | 7 | 0 | 1 | no | no |  |
-| `phrase.future.want-to-try-food` | I want to try the food. | 21 | — | 0 | 1 / 0 | 1 | 0 | 0 | no | no |  |
-| `phrase.future.by-motorbike` | I want to travel by motorbike. | 21 | — | 0 | 1 / 0 | 0 | 0 | 1 | no | no |  |
-| `phrase.future.ride-horses` | I want to ride horses there. | 21 | — | 0 | 1 / 0 | 0 | 0 | 0 | no | no |  |
-| `phrase.future.after-that` | After that I'm going to Thailand. | 21 | 24, 30 | 1 | 1 / 2 | 7 | 0 | 1 | yes | no |  |
-| `phrase.future.tomorrow-morning` | Tomorrow morning I'm going to the airport. | 21 | 30 | 0 | 1 / 1 | 3 | 0 | 1 | yes | no |  |
-| `phrase.future.where-next` | Where are you going next? | 21 | 24, 30 | 1 | 3 / 0 | 4 | 0 | 1 | yes | no |  |
+| `phrase.future.going-to-vietnam` | I'm going to Vietnam. | 21 | 24, 30 | 0 | 3 / 4 | 10 | 0 | 0 | yes | no |  |
+| `phrase.future.ill-be-there` | I'll be there for two weeks. | 21 | 24, 30 | 0 | 3 / 2 | 12 | 0 | 0 | yes | no |  |
+| `phrase.future.want-to-visit` | I want to visit Hanoi. | 21 | — | 0 | 1 / 2 | 10 | 0 | 0 | no | no |  |
+| `phrase.future.by-motorbike` | I want to travel by motorbike. | 21 | — | 0 | 1 / 0 | 5 | 0 | 0 | no | no |  |
+| `phrase.future.after-that` | After that I'm going to Thailand. | 21 | 24, 30 | 0 | 1 / 3 | 5 | 0 | 0 | yes | no |  |
+| `phrase.future.tomorrow-morning` | Tomorrow morning I'm going to the airport. | 21 | 30 | 0 | 1 / 1 | 5 | 0 | 0 | yes | no |  |
+| `phrase.future.where-next` | Where are you going next? | 21 | 24, 30 | 0 | 3 / 0 | 2 | 0 | 0 | yes | no |  |
 | `phrase.fix.not-ordered` | This isn't what I ordered. | 22 | 24, 29, 30 | 1 | 4 / 0 | 6 | 0 | 1 | yes | no |  |
 | `phrase.fix.i-ordered` | I ordered the pasta. | 22 | 24, 29, 30 | 0 | 3 / 1 | 10 | 0 | 0 | yes | no |  |
 | `phrase.fix.theres-mistake` | I think there's a mistake. | 22 | — | 0 | 1 / 0 | 1 | 0 | 1 | no | no |  |
@@ -30266,7 +30364,7 @@ Every learner-production sentence id of the Core, in order of first appearance. 
 | `phrase.emerg.call-police` | Call the police! | 27 | — | 1 | 0 / 0 | 4 | 0 | 1 | no | no |  |
 | `phrase.emerg.where-hospital` | Where is the hospital? | 27 | — | 0 | 0 / 0 | 2 | 0 | 0 | no | no |  |
 
-Learner-production sentence ids: 161. With 0 active retrieval opportunities: 2.
+Learner-production sentence ids: 159. With 0 active retrieval opportunities: 2.
 
 # NPC Comprehension Coverage
 
@@ -30414,12 +30512,13 @@ Every expected-reply sentence id. "Quick response" does not exist as an exercise
 | `reply.past.did-you-like` | Did you like it? | 20 | — | no | 0 / 0 | 0 / 0 | no | yes |
 | `reply.past.where-did-you-stay` | Where did you stay? | 20 | — | no | 0 / 0 | 0 / 0 | no | yes |
 | `reply.past.was-it-good` | Was it good? | 20 | — | no | 0 / 0 | 0 / 0 | no | yes |
-| `reply.future.how-long` | How long will you be there? | 21 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
-| `reply.future.what-do-there` | What do you want to do there? | 21 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
-| `reply.future.and-after` | And after that? | 21 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
-| `reply.future.tomorrow-morning-q` | What are you doing tomorrow morning? | 21 | — | no | 0 / 0 | 0 / 0 | no | yes |
-| `reply.future.be-careful` | Be careful. | 21 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
-| `reply.future.great-trip` | Have a great trip! | 21 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.future.where-next` | So, where are you going next? | 21 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.future.wow-how-long` | Wow! How long will you be there? | 21 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.future.what-do-there` | What do you want to do there? | 21 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.future.anything-else` | Nice. Anything else? | 21 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.future.after-that-q` | Sounds amazing! Be careful. And after that? | 21 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.future.tomorrow-plan-q` | Great plan. And what are you doing tomorrow morning? | 21 | — | no | 0 / 0 | 0 / 0 | no | yes |
+| `reply.future.miss-you` | Already! We'll miss you. | 21 | — | no | 0 / 0 | 0 / 0 | no | yes |
 | `reply.fix.so-sorry` | I'm so sorry about that. | 22 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
 | `reply.fix.whats-problem` | What's the problem? | 22 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
 | `reply.fix.bring-right` | I'll bring the right one. | 22 | — | yes (1) | 0 / 0 | 0 / 0 | no | yes |
@@ -30479,8 +30578,7 @@ Happy-path NPC lines containing a question, for which the mission has no expecte
 | 18 | cold-dinner / n5 | Of course. Anything to drink? |
 | 18 | cold-dinner / n7 | Is everything okay? |
 | 20 | what-did-you-do / n13 | Me? Nothing! I was tired. I slept all day. |
-| 21 | where-next / n1 | So, where are you going next? |
-| 21 | where-next / n7 | Nice. Anything else? |
+| 21 | where-next / n15 | Me? I'm going home. Have a great trip! |
 | 22 | fixing-problems / n3 | Oh no, I'm so sorry! What did you order? |
 | 22 | room-problem / n1 | Good evening! How can I help you? |
 | 22 | room-problem / n7 | Yes, I'll send someone right away. Is everything else okay? |
@@ -30537,7 +30635,7 @@ Happy-path NPC lines containing a question, for which the mission has no expecte
 | 30 | fin-evening / n1 | Good evening! Is everything okay with your room? And breakfast tomorrow — is seven okay for you? |
 | 30 | fin-evening / n3 | Perfect. And how was your day? |
 
-Total: 79.
+Total: 78.
 
 # Complete Existing Question Bank
 
@@ -36638,231 +36736,173 @@ No questions.
 
 ## Mission 21 — Future Travel & Plans
 
-**M21-Q01** — expected-reply
-- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (1/4)
-- Audio: How long will you be there? — (כמה זמן תהיה שם?)
-- A: כמה זמן תהיה שם? / How long will you be there? ✅
-- B: מה אתה רוצה לעשות שם? / What do you want to do there?
-- C: ואחרי זה? / And after that?
-- Correct: How long will you be there?
-- Tests: reply.future.how-long
+**M21-Q01** — visual-match
+- Prompt: "✈️ My next trip: 📍 Next → Vietnam / ⏳ For → Two weeks / 🎯 Want to → Visit Hanoi / 🏍️ Also → Travel by motorbike ‖ 🗓️ When: ➡️ After → Thailand / 🌅 Tomorrow morning → Airport ¦ 🧩 Which part of your plan is your friend asking about? Listen — and tap." / "✈️ הטיול הבא שלי: 📍 הבא → וייטנאם / ⏳ לכמה זמן → שבועיים / 🎯 רוצה → לבקר בהאנוי / 🏍️ וגם → לטייל באופנוע ‖ 🗓️ מתי: ➡️ אחרי זה → תאילנד / 🌅 מחר בבוקר → שדה התעופה ¦ 🧩 על איזה חלק בתוכנית החבר שואל? שמע — והקש."
+- Audio: So, where are you going next? — (אז לאן אתה נוסע אחרי זה?)
+- A: 📍 “Where you are going” / “לאן אתה נוסע” ✅
+- B: ⏳ “How long” / “לכמה זמן”
+- C: 🎯 “What you want to do” / “מה אתה רוצה לעשות”
+- D: ➡️ “What comes after” / “מה אחרי זה”
+- E: 🌅 “Tomorrow morning” / “מחר בבוקר”
+- Correct: 📍 “Where you are going” / “לאן אתה נוסע”
+- Tests: (no sentence id — not recorded)
 
-**M21-Q02** — expected-reply
-- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (2/4)
-- Audio: What do you want to do there? — (מה אתה רוצה לעשות שם?)
-- A: מה אתה רוצה לעשות שם? / What do you want to do there? ✅
-- B: כמה זמן תהיה שם? / How long will you be there?
-- C: ואחרי זה? / And after that?
-- Correct: What do you want to do there?
-- Tests: reply.future.what-do-there
-
-**M21-Q03** — expected-reply
-- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (3/4)
-- Audio: And after that? — (ואחרי זה?)
-- A: ואחרי זה? / And after that? ✅
-- B: כמה זמן תהיה שם? / How long will you be there?
-- C: מה אתה רוצה לעשות שם? / What do you want to do there?
-- Correct: And after that?
-- Tests: reply.future.and-after
-
-**M21-Q04** — expected-reply
-- Prompt: "What did they just say?" / "מה הוא אמר עכשיו?" (4/4)
-- Audio: Be careful. — (תיזהר.)
-- A: תיזהר. / Be careful. ✅
-- B: כמה זמן תהיה שם? / How long will you be there?
-- C: מה אתה רוצה לעשות שם? / What do you want to do there?
-- Correct: Be careful.
-- Tests: reply.future.be-careful
-
-**M21-Q05** — quick-reply
-- Prompt: "They ask about your plans — what do you say?" / "שואלים על התוכניות שלך — מה עונים?"
+**M21-Q02** — quick-reply
+- Prompt: "✈️ My next trip: 📍 Next → Vietnam / ⏳ For → Two weeks / 🎯 Want to → Visit Hanoi / 🏍️ Also → Travel by motorbike ‖ 🗓️ When: ➡️ After → Thailand / 🌅 Tomorrow morning → Airport ¦ Your friend asks — what do you answer?" / "✈️ הטיול הבא שלי: 📍 הבא → וייטנאם / ⏳ לכמה זמן → שבועיים / 🎯 רוצה → לבקר בהאנוי / 🏍️ וגם → לטייל באופנוע ‖ 🗓️ מתי: ➡️ אחרי זה → תאילנד / 🌅 מחר בבוקר → שדה התעופה ¦ החבר שואל — מה אתה עונה?"
 - Audio: So, where are you going next? — (אז לאן אתה נוסע אחרי זה?)
 - A: I'm going to Vietnam. ✅
 - B: I'll be there for two weeks.
-- C: I want to visit Hanoi.
 - Correct: I'm going to Vietnam.
 - Tests: phrase.future.going-to-vietnam
 
-**M21-Q06** — quick-reply
-- Prompt: "They ask about your plans — what do you say?" / "שואלים על התוכניות שלך — מה עונים?"
-- Audio: How long will you be there? — (כמה זמן תהיה שם?)
+**M21-Q03** — quick-reply
+- Prompt: "✈️ My next trip: 📍 Next → Vietnam / ⏳ For → Two weeks / 🎯 Want to → Visit Hanoi / 🏍️ Also → Travel by motorbike ‖ 🗓️ When: ➡️ After → Thailand / 🌅 Tomorrow morning → Airport ¦ Your friend asks — what do you answer?" / "✈️ הטיול הבא שלי: 📍 הבא → וייטנאם / ⏳ לכמה זמן → שבועיים / 🎯 רוצה → לבקר בהאנוי / 🏍️ וגם → לטייל באופנוע ‖ 🗓️ מתי: ➡️ אחרי זה → תאילנד / 🌅 מחר בבוקר → שדה התעופה ¦ החבר שואל — מה אתה עונה?"
+- Audio: Wow! How long will you be there? — (וואו! כמה זמן תהיה שם?)
 - A: I'll be there for two weeks. ✅
-- B: Tomorrow morning I'm going to the airport.
-- C: I'm going to Vietnam.
+- B: I'm going to Vietnam.
 - Correct: I'll be there for two weeks.
 - Tests: phrase.future.ill-be-there
 
-**M21-Q07** — quick-reply
-- Prompt: "They ask about your plans — what do you say?" / "שואלים על התוכניות שלך — מה עונים?"
+**M21-Q04** — quick-reply
+- Prompt: "✈️ My next trip: 📍 Next → Vietnam ✓ / ⏳ For → Two weeks ✓ / 🎯 Want to → Visit Hanoi / 🏍️ Also → Travel by motorbike ‖ 🗓️ When: ➡️ After → Thailand / 🌅 Tomorrow morning → Airport ¦ What do you answer?" / "✈️ הטיול הבא שלי: 📍 הבא → וייטנאם ✓ / ⏳ לכמה זמן → שבועיים ✓ / 🎯 רוצה → לבקר בהאנוי / 🏍️ וגם → לטייל באופנוע ‖ 🗓️ מתי: ➡️ אחרי זה → תאילנד / 🌅 מחר בבוקר → שדה התעופה ¦ מה אתה עונה?"
 - Audio: What do you want to do there? — (מה אתה רוצה לעשות שם?)
 - A: I want to visit Hanoi. ✅
-- B: I want to try the food. ✅
-- C: I'll be there for two weeks.
-- Correct: I want to visit Hanoi. | I want to try the food.
-- Tests: phrase.future.want-to-visit, phrase.future.want-to-try-food
+- B: I'll be there for two weeks.
+- C: I'm going to Vietnam.
+- Correct: I want to visit Hanoi.
+- Tests: phrase.future.want-to-visit
 
-**M21-Q08** — quick-reply
-- Prompt: "They ask about your plans — what do you say?" / "שואלים על התוכניות שלך — מה עונים?"
-- Audio: And after that? — (ואחרי זה?)
-- A: After that I'm going to Thailand. ✅
+**M21-Q05** — quick-reply
+- Prompt: "✈️ My next trip: 📍 Next → Vietnam ✓ / ⏳ For → Two weeks ✓ / 🎯 Want to → Visit Hanoi ✓ / 🏍️ Also → Travel by motorbike ‖ 🗓️ When: ➡️ After → Thailand / 🌅 Tomorrow morning → Airport ¦ Something else — not what you already said." / "✈️ הטיול הבא שלי: 📍 הבא → וייטנאם ✓ / ⏳ לכמה זמן → שבועיים ✓ / 🎯 רוצה → לבקר בהאנוי ✓ / 🏍️ וגם → לטייל באופנוע ‖ 🗓️ מתי: ➡️ אחרי זה → תאילנד / 🌅 מחר בבוקר → שדה התעופה ¦ עוד משהו — לא מה שכבר אמרת."
+- Audio: Nice. Anything else? — (יפה. עוד משהו?)
+- A: I want to travel by motorbike. ✅
 - B: I want to visit Hanoi.
 - C: I'll be there for two weeks.
+- Correct: I want to travel by motorbike.
+- Tests: phrase.future.by-motorbike
+
+**M21-Q06** — quick-reply
+- Prompt: "✈️ My next trip: 📍 Next → Vietnam ✓ / ⏳ For → Two weeks ✓ / 🎯 Want to → Visit Hanoi ✓ / 🏍️ Also → Travel by motorbike ✓ ‖ 🗓️ When: ➡️ After → Thailand / 🌅 Tomorrow morning → Airport ¦ What do you answer?" / "✈️ הטיול הבא שלי: 📍 הבא → וייטנאם ✓ / ⏳ לכמה זמן → שבועיים ✓ / 🎯 רוצה → לבקר בהאנוי ✓ / 🏍️ וגם → לטייל באופנוע ✓ ‖ 🗓️ מתי: ➡️ אחרי זה → תאילנד / 🌅 מחר בבוקר → שדה התעופה ¦ מה אתה עונה?"
+- Audio: Sounds amazing! Be careful. And after that? — (נשמע מדהים! תיזהר. ואחרי זה?)
+- A: After that I'm going to Thailand. ✅
+- B: I'm going to Vietnam.
+- C: I want to travel by motorbike.
 - Correct: After that I'm going to Thailand.
 - Tests: phrase.future.after-that
 
-**M21-Q09** — quick-reply
-- Prompt: "They ask about your plans — what do you say?" / "שואלים על התוכניות שלך — מה עונים?"
-- Audio: What are you doing tomorrow morning? — (מה אתה עושה מחר בבוקר?)
+**M21-Q07** — visual-match
+- Prompt: "✈️ My next trip: 📍 Next → Vietnam ✓ / ⏳ For → Two weeks ✓ / 🎯 Want to → Visit Hanoi ✓ / 🏍️ Also → Travel by motorbike ✓ ‖ 🗓️ When: ➡️ After → Thailand ✓ / 🌅 Tomorrow morning → Airport ¦ 🧩 Which part of your plan is your friend asking about? Listen — and tap." / "✈️ הטיול הבא שלי: 📍 הבא → וייטנאם ✓ / ⏳ לכמה זמן → שבועיים ✓ / 🎯 רוצה → לבקר בהאנוי ✓ / 🏍️ וגם → לטייל באופנוע ✓ ‖ 🗓️ מתי: ➡️ אחרי זה → תאילנד ✓ / 🌅 מחר בבוקר → שדה התעופה ¦ 🧩 על איזה חלק בתוכנית החבר שואל? שמע — והקש."
+- Audio: Great plan. And what are you doing tomorrow morning? — (תוכנית מעולה. ומה אתה עושה מחר בבוקר?)
+- A: 📍 “Where you are going” / “לאן אתה נוסע”
+- B: ⏳ “How long” / “לכמה זמן”
+- C: 🎯 “What you want to do” / “מה אתה רוצה לעשות”
+- D: ➡️ “What comes after” / “מה אחרי זה”
+- E: 🌅 “Tomorrow morning” / “מחר בבוקר” ✅
+- Correct: 🌅 “Tomorrow morning” / “מחר בבוקר”
+- Tests: (no sentence id — not recorded)
+
+**M21-Q08** — quick-reply
+- Prompt: "✈️ My next trip: 📍 Next → Vietnam ✓ / ⏳ For → Two weeks ✓ / 🎯 Want to → Visit Hanoi ✓ / 🏍️ Also → Travel by motorbike ✓ ‖ 🗓️ When: ➡️ After → Thailand ✓ / 🌅 Tomorrow morning → Airport ¦ What do you answer?" / "✈️ הטיול הבא שלי: 📍 הבא → וייטנאם ✓ / ⏳ לכמה זמן → שבועיים ✓ / 🎯 רוצה → לבקר בהאנוי ✓ / 🏍️ וגם → לטייל באופנוע ✓ ‖ 🗓️ מתי: ➡️ אחרי זה → תאילנד ✓ / 🌅 מחר בבוקר → שדה התעופה ¦ מה אתה עונה?"
+- Audio: Great plan. And what are you doing tomorrow morning? — (תוכנית מעולה. ומה אתה עושה מחר בבוקר?)
 - A: Tomorrow morning I'm going to the airport. ✅
 - B: After that I'm going to Thailand.
-- C: I'll be there for two weeks.
+- C: I want to visit Hanoi.
 - Correct: Tomorrow morning I'm going to the airport.
 - Tests: phrase.future.tomorrow-morning
 
-**M21-Q10** — quick-reply
-- Prompt: "They ask about your plans — what do you say?" / "שואלים על התוכניות שלך — מה עונים?" — situation shown: "You have said where you are going. Now ask where they are going." / "סיפרת לאן אתה נוסע. עכשיו תשאל אותו לאן הוא ממשיך."
-- Audio: (nothing is played — a situation is shown) — ()
+**M21-Q09** — quick-reply
+- Prompt: "✈️ My next trip: 📍 Next → Vietnam ✓ / ⏳ For → Two weeks ✓ / 🎯 Want to → Visit Hanoi ✓ / 🏍️ Also → Travel by motorbike ✓ ‖ 🗓️ When: ➡️ After → Thailand ✓ / 🌅 Tomorrow morning → Airport ✓ ¦ You told your plan — now your turn: ask about theirs." / "✈️ הטיול הבא שלי: 📍 הבא → וייטנאם ✓ / ⏳ לכמה זמן → שבועיים ✓ / 🎯 רוצה → לבקר בהאנוי ✓ / 🏍️ וגם → לטייל באופנוע ✓ ‖ 🗓️ מתי: ➡️ אחרי זה → תאילנד ✓ / 🌅 מחר בבוקר → שדה התעופה ✓ ¦ סיפרת את התוכנית שלך — עכשיו תורך: שאל על שלו."
+- Audio: Already! We'll miss you. — (כבר! נתגעגע אליך.)
 - A: Where are you going next? ✅
-- B: I'm going to Vietnam.
-- C: After that I'm going to Thailand.
+- B: I want to visit Hanoi.
+- C: Tomorrow morning I'm going to the airport.
 - Correct: Where are you going next?
 - Tests: phrase.future.where-next
 
-**M21-Q11** — swap-it
-- Prompt: "Your plan" / "התוכנית שלך" — cue 📅 "You will stay three days" / "אתה נשאר שם שלושה ימים" — frame EN "I'll be there for ___." · FR "Je vais rester ___." · ES "Voy a estar allí ___."
-- Audio: (nothing before the tap; the completed sentence is spoken after it) — ()
-- A: three days → I'll be there for three days. ✅
-- B: a week → I'll be there for a week.
-- C: two weeks → I'll be there for two weeks.
-- Correct: three days → I'll be there for three days.
-- Tests: phrase.future.ill-be-there
+**M21-Q10** — visual-match
+- Prompt: "✈️ My next trip: 📍 Next → Vietnam ✓ / ⏳ For → Two weeks ✓ / 🎯 Want to → Visit Hanoi ✓ / 🏍️ Also → Travel by motorbike ✓ ‖ 🗓️ When: ➡️ After → Thailand ✓ / 🌅 Tomorrow morning → Airport ✓ ¦ And your friend’s plan? Listen — and tap." / "✈️ הטיול הבא שלי: 📍 הבא → וייטנאם ✓ / ⏳ לכמה זמן → שבועיים ✓ / 🎯 רוצה → לבקר בהאנוי ✓ / 🏍️ וגם → לטייל באופנוע ✓ ‖ 🗓️ מתי: ➡️ אחרי זה → תאילנד ✓ / 🌅 מחר בבוקר → שדה התעופה ✓ ¦ ומה התוכנית של החבר? שמע — והקש."
+- Audio: Me? I'm going home. Have a great trip! — (אני? אני חוזר הביתה. נסיעה טובה!)
+- A: 🏠 “Going home” / “חוזר הביתה” ✅
+- B: 🏝️ “Going to Thailand” / “נוסע לתאילנד”
+- C: 🛫 “Going to the airport” / “נוסע לשדה התעופה”
+- Correct: 🏠 “Going home” / “חוזר הביתה”
+- Tests: (no sentence id — not recorded)
 
-**M21-Q12** — swap-it
-- Prompt: "Your plan" / "התוכנית שלך" — cue 📅 "You will stay a week" / "אתה נשאר שם שבוע" — frame EN "I'll be there for ___." · FR "Je vais rester ___." · ES "Voy a estar allí ___."
-- Audio: (nothing before the tap; the completed sentence is spoken after it) — ()
-- A: three days → I'll be there for three days.
-- B: a week → I'll be there for a week. ✅
-- C: two weeks → I'll be there for two weeks.
-- Correct: a week → I'll be there for a week.
-- Tests: phrase.future.ill-be-there
-
-**M21-Q13** — swap-it
-- Prompt: "Your plan" / "התוכנית שלך" — cue 📅 "You will stay two weeks" / "אתה נשאר שם שבועיים" — frame EN "I'll be there for ___." · FR "Je vais rester ___." · ES "Voy a estar allí ___."
-- Audio: (nothing before the tap; the completed sentence is spoken after it) — ()
-- A: three days → I'll be there for three days.
-- B: a week → I'll be there for a week.
-- C: two weeks → I'll be there for two weeks. ✅
-- Correct: two weeks → I'll be there for two weeks.
-- Tests: phrase.future.ill-be-there
-
-**M21-Q14** — swap-it
-- Prompt: "Your plan" / "התוכנית שלך" — cue 🇻🇳 "You are going to Vietnam" / "אתה נוסע לווייטנאם" — frame EN "I'm going to ___." · FR "Je vais ___." · ES "Voy a ___."
-- Audio: (nothing before the tap; the completed sentence is spoken after it) — ()
-- A: Vietnam → I'm going to Vietnam. ✅
-- B: Thailand → I'm going to Thailand.
-- Correct: Vietnam → I'm going to Vietnam.
-- Tests: phrase.future.going-to-vietnam
-
-**M21-Q15** — swap-it
-- Prompt: "Your plan" / "התוכנית שלך" — cue 🇹🇭 "You are going to Thailand" / "אתה נוסע לתאילנד" — frame EN "I'm going to ___." · FR "Je vais ___." · ES "Voy a ___."
-- Audio: (nothing before the tap; the completed sentence is spoken after it) — ()
-- A: Vietnam → I'm going to Vietnam.
-- B: Thailand → I'm going to Thailand. ✅
-- Correct: Thailand → I'm going to Thailand.
-- Tests: phrase.future.going-to-vietnam
-
-**M21-Q16** — sentence-builder
-- Prompt: "Build the sentence" / "בנה את המשפט" — cue shown: the sentence's MEANING in the app language ("אחרי זה אני נוסע לתאילנד.")
-- Audio: (nothing before Check; the built sentence is spoken once it is right) — ()
-- A: After that  |  I'm going  |  to Thailand. ✅
-- Correct: After that  |  I'm going  |  to Thailand.
-- Tests: phrase.future.after-that
-
-**M21-Q17** — sentence-builder
-- Prompt: "Build the sentence" / "בנה את המשפט" — cue shown: the sentence's MEANING in the app language ("לאן אתה נוסע אחרי זה?")
-- Audio: (nothing before Check; the built sentence is spoken once it is right) — ()
-- A: Where  |  are you going  |  next? ✅
-- Correct: Where  |  are you going  |  next?
-- Tests: phrase.future.where-next
-
-**M21-Q18** — dialogue-choice
+**M21-Q11** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: So, where are you going next? — (אז לאן אתה נוסע אחרי זה?)
 - A: I'm going to Vietnam. ✅
+- B: I'll be there for two weeks.
 - Correct: I'm going to Vietnam.
-- Tests: phrase.future.going-to-vietnam
+- Tests: phrase.future.going-to-vietnam, phrase.future.ill-be-there
 
-**M21-Q19** — dialogue-choice
+**M21-Q12** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Wow! How long will you be there? — (וואו! כמה זמן תהיה שם?)
 - A: I'll be there for two weeks. ✅
-- B: Please speak slowly. ✅
-- Correct: I'll be there for two weeks. | Please speak slowly.
-- Tests: phrase.future.ill-be-there, phrase.recovery.slowly
-
-**M21-Q20** — dialogue-choice
-- Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
-- Audio: How long? One week? Two weeks? — (כמה זמן? שבוע? שבועיים?)
-- A: I'll be there for two weeks. ✅
+- B: I'm going to Vietnam.
 - Correct: I'll be there for two weeks.
-- Tests: phrase.future.ill-be-there
+- Tests: phrase.future.ill-be-there, phrase.future.going-to-vietnam
 
-**M21-Q21** — dialogue-choice
+**M21-Q13** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: What do you want to do there? — (מה אתה רוצה לעשות שם?)
 - A: I want to visit Hanoi. ✅
-- B: I want to try the food. ✅
-- Correct: I want to visit Hanoi. | I want to try the food.
-- Tests: phrase.future.want-to-visit, phrase.future.want-to-try-food
+- B: I'll be there for two weeks.
+- Correct: I want to visit Hanoi.
+- Tests: phrase.future.want-to-visit, phrase.future.ill-be-there
 
-**M21-Q22** — dialogue-choice
+**M21-Q14** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Nice. Anything else? — (יפה. עוד משהו?)
 - A: I want to travel by motorbike. ✅
-- B: I want to ride horses there. ✅
-- Correct: I want to travel by motorbike. | I want to ride horses there.
-- Tests: phrase.future.by-motorbike, phrase.future.ride-horses
+- B: I want to visit Hanoi.
+- Correct: I want to travel by motorbike.
+- Tests: phrase.future.by-motorbike, phrase.future.want-to-visit
 
-**M21-Q23** — dialogue-choice
+**M21-Q15** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Sounds amazing! Be careful. And after that? — (נשמע מדהים! תיזהר. ואחרי זה?)
 - A: After that I'm going to Thailand. ✅
+- B: I'm going to Vietnam.
 - Correct: After that I'm going to Thailand.
-- Tests: phrase.future.after-that
+- Tests: phrase.future.after-that, phrase.future.going-to-vietnam
 
-**M21-Q24** — dialogue-choice
+**M21-Q16** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Great plan. And what are you doing tomorrow morning? — (תוכנית מעולה. ומה אתה עושה מחר בבוקר?)
 - A: Tomorrow morning I'm going to the airport. ✅
+- B: After that I'm going to Thailand.
 - Correct: Tomorrow morning I'm going to the airport.
-- Tests: phrase.future.tomorrow-morning
+- Tests: phrase.future.tomorrow-morning, phrase.future.after-that
 
-**M21-Q25** — dialogue-choice
+**M21-Q17** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Already! We'll miss you. — (כבר! נתגעגע אליך.)
 - A: And you? Where are you going next? ✅
+- B: I want to visit Hanoi.
 - Correct: And you? Where are you going next?
-- Tests: phrase.future.where-next
+- Tests: phrase.future.where-next, phrase.future.want-to-visit
 
-**M21-Q26** — quick-reply
+**M21-Q18** — quick-reply
 - Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio: So, where are you going next? — (אז לאן אתה נוסע אחרי זה?)
 - A: I'm going to Vietnam. ✅
-- B: After that I'm going to Thailand.
-- C: Where are you going next?
+- B: I'll be there for two weeks.
+- C: I want to travel by motorbike.
 - Correct: I'm going to Vietnam.
 - Tests: phrase.future.going-to-vietnam
 
-**M21-Q27** — quick-reply
+**M21-Q19** — quick-reply
 - Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio: Wow! How long will you be there? — (וואו! כמה זמן תהיה שם?)
 - A: I'll be there for two weeks. ✅
-- B: Tomorrow morning I'm going to the airport.
-- C: I want to visit Hanoi.
+- B: I'm going to Vietnam.
+- C: Tomorrow morning I'm going to the airport.
 - Correct: I'll be there for two weeks.
 - Tests: phrase.future.ill-be-there
 
-**M21-Q28** — quick-reply
+**M21-Q20** — quick-reply
 - Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio: What do you want to do there? — (מה אתה רוצה לעשות שם?)
 - A: I want to visit Hanoi. ✅
@@ -36871,23 +36911,68 @@ No questions.
 - Correct: I want to visit Hanoi.
 - Tests: phrase.future.want-to-visit
 
-**M21-Q29** — quick-reply
-- Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
-- Audio: Sounds amazing! Be careful. And after that? — (נשמע מדהים! תיזהר. ואחרי זה?)
-- A: After that I'm going to Thailand. ✅
-- B: I'm going to Vietnam.
-- C: I want to visit Hanoi.
-- Correct: After that I'm going to Thailand.
-- Tests: phrase.future.after-that
-
-**M21-Q30** — quick-reply
+**M21-Q21** — quick-reply
 - Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio: Already! We'll miss you. — (כבר! נתגעגע אליך.)
-- A: And you? Where are you going next? ✅
-- B: I'll be there for two weeks.
-- C: I want to visit Hanoi.
-- Correct: And you? Where are you going next?
+- A: Where are you going next? ✅
+- B: I want to visit Hanoi.
+- C: I'll be there for two weeks.
+- Correct: Where are you going next?
 - Tests: phrase.future.where-next
+
+**M21-Q22** — quick-reply
+- Prompt: "✈️ Another trip: 📍 Next → 🌎 Argentina / ⏳ For → A week / 🎯 Want to → 🏛️ Visit the museum / 🤿 Also → Try diving ‖ 🗓️ When: ➡️ After → 🏖️ The beach / 🌅 Tomorrow morning → 🚉 The station ¦ 🎯 Another trip — the same questions. Tell your friend." / "✈️ טיול אחר: 📍 הבא → 🌎 ארגנטינה / ⏳ לכמה זמן → שבוע / 🎯 רוצה → 🏛️ לבקר במוזיאון / 🤿 וגם → לנסות צלילה ‖ 🗓️ מתי: ➡️ אחרי זה → 🏖️ הים / 🌅 מחר בבוקר → 🚉 התחנה ¦ 🎯 טיול אחר — אותן שאלות. ספר לחבר."
+- Audio: So, where are you going next? — (אז לאן אתה נוסע אחרי זה?)
+- A: I'm going to Argentina. ✅
+- B: I'll be there for a week.
+- C: I want to visit the museum.
+- Correct: I'm going to Argentina.
+- Tests: phrase.future.going-to-vietnam
+
+**M21-Q23** — quick-reply
+- Prompt: "✈️ Another trip: 📍 Next → 🌎 Argentina / ⏳ For → A week / 🎯 Want to → 🏛️ Visit the museum / 🤿 Also → Try diving ‖ 🗓️ When: ➡️ After → 🏖️ The beach / 🌅 Tomorrow morning → 🚉 The station ¦ 🎯 Another trip — the same questions. Tell your friend." / "✈️ טיול אחר: 📍 הבא → 🌎 ארגנטינה / ⏳ לכמה זמן → שבוע / 🎯 רוצה → 🏛️ לבקר במוזיאון / 🤿 וגם → לנסות צלילה ‖ 🗓️ מתי: ➡️ אחרי זה → 🏖️ הים / 🌅 מחר בבוקר → 🚉 התחנה ¦ 🎯 טיול אחר — אותן שאלות. ספר לחבר."
+- Audio: Wow! How long will you be there? — (וואו! כמה זמן תהיה שם?)
+- A: I'll be there for a week. ✅
+- B: I'm going to Argentina.
+- C: Tomorrow morning I'm going to the station.
+- Correct: I'll be there for a week.
+- Tests: phrase.future.ill-be-there
+
+**M21-Q24** — quick-reply
+- Prompt: "✈️ Another trip: 📍 Next → 🌎 Argentina / ⏳ For → A week / 🎯 Want to → 🏛️ Visit the museum / 🤿 Also → Try diving ‖ 🗓️ When: ➡️ After → 🏖️ The beach / 🌅 Tomorrow morning → 🚉 The station ¦ 🎯 Another trip — the same questions. Tell your friend." / "✈️ טיול אחר: 📍 הבא → 🌎 ארגנטינה / ⏳ לכמה זמן → שבוע / 🎯 רוצה → 🏛️ לבקר במוזיאון / 🤿 וגם → לנסות צלילה ‖ 🗓️ מתי: ➡️ אחרי זה → 🏖️ הים / 🌅 מחר בבוקר → 🚉 התחנה ¦ 🎯 טיול אחר — אותן שאלות. ספר לחבר."
+- Audio: What do you want to do there? — (מה אתה רוצה לעשות שם?)
+- A: I want to visit the museum. ✅
+- B: I'll be there for a week.
+- C: I'm going to Argentina.
+- Correct: I want to visit the museum.
+- Tests: phrase.future.want-to-visit
+
+**M21-Q25** — quick-reply
+- Prompt: "✈️ Another trip: 📍 Next → 🌎 Argentina / ⏳ For → A week / 🎯 Want to → 🏛️ Visit the museum / 🤿 Also → Try diving ‖ 🗓️ When: ➡️ After → 🏖️ The beach / 🌅 Tomorrow morning → 🚉 The station ¦ 🎯 Another trip — the same questions. Tell your friend." / "✈️ טיול אחר: 📍 הבא → 🌎 ארגנטינה / ⏳ לכמה זמן → שבוע / 🎯 רוצה → 🏛️ לבקר במוזיאון / 🤿 וגם → לנסות צלילה ‖ 🗓️ מתי: ➡️ אחרי זה → 🏖️ הים / 🌅 מחר בבוקר → 🚉 התחנה ¦ 🎯 טיול אחר — אותן שאלות. ספר לחבר."
+- Audio: Nice. Anything else? — (יפה. עוד משהו?)
+- A: I want to try diving. ✅
+- B: I want to visit the museum.
+- C: I'll be there for a week.
+- Correct: I want to try diving.
+- Tests: phrase.future.by-motorbike
+
+**M21-Q26** — quick-reply
+- Prompt: "✈️ Another trip: 📍 Next → 🌎 Argentina / ⏳ For → A week / 🎯 Want to → 🏛️ Visit the museum / 🤿 Also → Try diving ‖ 🗓️ When: ➡️ After → 🏖️ The beach / 🌅 Tomorrow morning → 🚉 The station ¦ 🎯 Another trip — the same questions. Tell your friend." / "✈️ טיול אחר: 📍 הבא → 🌎 ארגנטינה / ⏳ לכמה זמן → שבוע / 🎯 רוצה → 🏛️ לבקר במוזיאון / 🤿 וגם → לנסות צלילה ‖ 🗓️ מתי: ➡️ אחרי זה → 🏖️ הים / 🌅 מחר בבוקר → 🚉 התחנה ¦ 🎯 טיול אחר — אותן שאלות. ספר לחבר."
+- Audio: Sounds amazing! Be careful. And after that? — (נשמע מדהים! תיזהר. ואחרי זה?)
+- A: After that I'm going to the beach. ✅
+- B: I'm going to Argentina.
+- C: I want to try diving.
+- Correct: After that I'm going to the beach.
+- Tests: phrase.future.after-that
+
+**M21-Q27** — quick-reply
+- Prompt: "✈️ Another trip: 📍 Next → 🌎 Argentina / ⏳ For → A week / 🎯 Want to → 🏛️ Visit the museum / 🤿 Also → Try diving ‖ 🗓️ When: ➡️ After → 🏖️ The beach / 🌅 Tomorrow morning → 🚉 The station ¦ 🎯 Another trip — the same questions. Tell your friend." / "✈️ טיול אחר: 📍 הבא → 🌎 ארגנטינה / ⏳ לכמה זמן → שבוע / 🎯 רוצה → 🏛️ לבקר במוזיאון / 🤿 וגם → לנסות צלילה ‖ 🗓️ מתי: ➡️ אחרי זה → 🏖️ הים / 🌅 מחר בבוקר → 🚉 התחנה ¦ 🎯 טיול אחר — אותן שאלות. ספר לחבר."
+- Audio: Great plan. And what are you doing tomorrow morning? — (תוכנית מעולה. ומה אתה עושה מחר בבוקר?)
+- A: Tomorrow morning I'm going to the station. ✅
+- B: After that I'm going to the beach.
+- C: I want to visit the museum.
+- Correct: Tomorrow morning I'm going to the station.
+- Tests: phrase.future.tomorrow-morning
 
 ## Mission 22 — Fixing Problems
 
@@ -38652,17 +38737,17 @@ No questions.
 # Totals
 
 - Missions exported: 30
-- Learner-production sentence ids: 161
-- Expected-reply (receptive) sentence ids: 174
-- Sentence listings across missions (with reuse): 512
-- Expected-reply questions: 59
+- Learner-production sentence ids: 159
+- Expected-reply (receptive) sentence ids: 175
+- Sentence listings across missions (with reuse): 510
+- Expected-reply questions: 55
 - Meaning quizzes: 7
-- Active-practice questions: 619
-- Dialogue choice screens: 229
+- Active-practice questions: 621
+- Dialogue choice screens: 228
 - Cold opens: 4
-- Total interactive questions: 918
-- Total answer choices: 2534
-- Wrong-answer branches: 122
-- Recovery opportunities: 36
+- Total interactive questions: 915
+- Total answer choices: 2539
+- Wrong-answer branches: 129
+- Recovery opportunities: 35
 - Learner sentences with 0 active retrieval opportunities: 2
-- Auto-flags: 196
+- Auto-flags: 193
