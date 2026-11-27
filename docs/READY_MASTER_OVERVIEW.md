@@ -911,3 +911,25 @@ support from the brief).
   video step uses the standard resolver (`{lang}_21.mp4`; none exists yet — safely skipped). Artwork: semantic emoji
   slots; production art pending (docs/MISSION21_ASSET_MANIFEST.md). Missions 01–20 and 22–30 are byte-for-byte
   unchanged — the five Mission 21 sentences Missions 24 and 30 reuse keep their id and wording.
+
+## Mission 22 — Fixing Problems: notice → explain → ask for a fix (2026-11-27)
+
+Two locked scenes, ONE skill. The learner meets four problems — the wrong meal, charged twice, the air conditioning,
+a noisy room — as four examples of the same system: ⚠️ notice · 🗣️ explain · 🛠️ ask for a fix. The conversations are
+locked word for word (EN / ES / FR; Hebrew support from the brief; the "Later…" cue is shown, never spoken).
+- **Four production tools** — This isn't what I ordered. · I think there's a mistake. · ___ isn't working. · Can you fix
+  it? "Can I change rooms?" gets ONE meaningful retrieval (sometimes the fix is an alternative); "I ordered the pasta",
+  "I was charged twice", "There's a problem with my room", "My room is very noisy" are secondary — a card and the
+  conversation; "No problem, thank you." is verified prior — the conversation carries it.
+- **🧰 FIX IT** — the one game object: the learner's own problems (ordered 🍝, got 🥩 · charged twice · AC · noisy),
+  shown from the start; each moves ⚠️ → 🗣️ (said) → ✅ the staff's solution, and a solution reaches the board only once
+  it has been heard AND understood ("what did they do?": 🍝 the right meal · 💰 money back · 🍰 dessert · 👨‍🔧 someone
+  comes · 🔑 another room). The hotel is a marked transition: another place, the same skill.
+- **Transfer, verified prior** (`learnedBefore(lang, 22)`): one not-working swap — the KEY (Missions 04, 08); the final
+  is NEW PROBLEMS — you got fish (Mission 20) though you ordered chicken (Mission 14), the key isn't working, the new key
+  is for room 204 (Mission 08) though yours is 305. Same form ≠ same meaning: "right", "change" (money) and ES "cuenta"
+  (the bill ≠ "por cuenta de la casa") are audited; "working" was never met before.
+- **21 interactions** (ceiling 22): 12 teaching / comprehension · 4 no help · 5 final; never two card screens in a row.
+  The video step uses the standard resolver (`{lang}_22.mp4`; none exists yet — safely skipped). Artwork: semantic emoji
+  slots; production art pending (docs/MISSION22_ASSET_MANIFEST.md). Missions 01–21 and 23–30 are byte-for-byte
+  unchanged — every Mission 22 learner sentence the checkpoints reuse keeps its id and wording.

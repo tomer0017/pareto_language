@@ -110,9 +110,9 @@ describe('the conversation is locked, and Mission 18 is in its place', () => {
     expect([BOOTCAMP_PLAN[17]!.id, BOOTCAMP_PLAN[17]!.day, missionNumber(17), BOOTCAMP_PLAN[17]!.checkpoint, BOOTCAMP_PLAN[17]!.video]).toEqual(['food-day-checkpoint', 17, 18, true, false]);
   });
   const raw = (a: number, b?: number) => Object.fromEntries(LANGS.map((l) => [l, fnv(JSON.stringify(beforeMission17Artwork(beforeMission16Artwork(BOOTCAMP_PLAN.slice(a, b).map((m) => MISSIONS_BY_LANG[l]![m.day]!)))))]));
-  it('Missions 01–17 and 22–30 are unchanged by this pass (normalizing only the later Mission 16 artwork) (Missions 19–21 have their own passes since: mission19.test.ts … mission21.test.ts)', () => {
+  it('Missions 01–17 and 23–30 are unchanged by this pass (normalizing only the later Mission 16 artwork) (Missions 19–22 have their own passes since: mission19.test.ts … mission22.test.ts)', () => {
     expect(raw(0, 17)).toEqual({ en: '920ae8f5', es: 'a24f698d', fr: 'e56da638' });
-    expect(raw(21)).toEqual({ en: '086da723', es: '3c30ed8f', fr: '12218be7' });
+    expect(raw(22)).toEqual({ en: 'c136fa2c', es: '1abda9c1', fr: '9332620b' });
   });
 });
 

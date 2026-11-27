@@ -689,3 +689,14 @@ for two weeks.", "After that I'm going to Thailand.", "Tomorrow morning I'm goin
 next?") are byte-identical; the two alternatives ("I want to try the food.", "I want to ride horses there.") and five
 short friend lines are archived (`retired.ts`, `future-plans`) — the friend's whole lines are the sentences now; the
 shared "Please speak slowly." is no longer bundled with Mission 21.
+
+## Mission 22 — Fixing Problems — 2026-11-27
+
+`core/fixingProblems.ts` (two locked scenes; each learner turn has one wrong line → the staff ask again slowly; no
+alternative answer, no recovery branch; the "Later…" cue on the bill line) + `practiceFix.ts` (`m22Steps`: whole-line
+cards in pairs, the 🧰 FIX IT board, three "what did they do?" boards, one not-working swap (the key), both conversations
+once, no help (4), the video, NEW PROBLEMS (5), the 🧰 FIX IT result) + `mission22Coverage.ts`, registered in
+`priorLearning.MISSION_CONCEPTS`. Rules kept for later missions: every learner sentence (the checkpoints reuse "This
+isn't what I ordered.", "I ordered the pasta.", "I was charged twice.", "No problem, thank you.", "Can you fix it?") is
+byte-identical; six short staff lines are archived (`retired.ts`, `fixing-problems`) — the staff's whole lines are the
+sentences now; "Can you help me?" and "Please speak slowly." are no longer bundled with Mission 22.

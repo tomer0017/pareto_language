@@ -2335,3 +2335,32 @@ each (the whole mission to the victory screen, the slow re-ask, MY NEXT TRIP vis
 growing, the friend's plan never on screen early, the ask-back offered alone, ANOTHER TRIP shown, no overflow, the Daily
 Goal never on a control, no console errors). Video: no `{lang}_21.mp4` yet — the step is skipped. Artwork: pending
 (manifest). The practice-audit doc was regenerated — it also picks up the Mission 20 artwork commit's card icons.
+
+## Mission 22 — Fixing Problems — 2026-11-27
+
+**What.** Mission 22 rebuilt as ONE practical skill in two locked scenes: notice → explain → ask for a fix. Locked
+dialogue (EN / ES / FR exact; the brief's Hebrew support; the "Later…" cue shown, never spoken). Four production tools
+(This isn't what I ordered. · I think there's a mistake. · ___ isn't working. · Can you fix it?), "Can I change rooms?"
+with one meaningful retrieval (fix ≠ alternative), the secondary lines as a card and the conversation, "No problem, thank
+you." carried by the conversation (verified prior). 🧰 FIX IT: the learner's own problems shown from the start, each ⚠️ →
+🗣️ → ✅, a solution on the board only once heard and understood ("what did they do?" right after each fix). One
+not-working swap (the key) and a final of NEW PROBLEMS (fish though you ordered chicken · the key isn't working · Can you
+fix it? · a new key for room 204 though yours is 305). 21 interactions (12 teaching / comprehension · 4 no help · 5
+final); never two card screens in a row. Removed from the old Mission 22: the six tool cards, the listening drill, the
+match game, the ten-round chains, the "There's a problem with ___" swap, the review deck and the canonical speed replay;
+six short staff lines archived; "Can you help me?" and "Please speak slowly." no longer bundled.
+
+**Prior audit** (`learnedBefore(lang, 22)`): verified prior in EN / ES / FR — the bill (Mission 14), room and key
+(Missions 04, 08 — the hotel sense), "No problem" (Mission 04), "thank you", "How can I help you?" (Mission 08), "Good
+night", chicken (Mission 14), fish (Mission 20), Wi-Fi (not used); EN "order" (the restaurant sense, Missions 14–15); ES
+"enseguida" / FR "tout de suite". New and taught here: ordered, pasta, steak, mistake, twice, charged, refund, the air
+conditioning, working, fix, noisy, quieter, change rooms, the right one, right away (EN), dessert, on the house, send
+someone. Senses: ES "cuenta" registered (the bill ≠ "por cuenta de la casa"); EN "right" (one line holds two senses) and
+"change" (a bare Mission 07 card) are guaranteed at chunk level; "working" was never met before.
+
+**Verification.** `mission22.test.ts` (66) + narrowed "later missions unchanged" pins (Missions 06–21, City, Mastery,
+Everyday: Missions 23–30 re-pinned from untouched content); typecheck, lint (0 errors), the full suite, build, smoke,
+content validation and the parity gate green. Real Chrome click-through on the deploy-identical build: 18 runs — 360 /
+390 / 430 × EN / ES / FR × HE / EN UI — every answer tapped, one deliberate miss, both conversations, the key swap, the
+final and the result (no solution on screen before its line, FIX IT only accumulating, no overflow, no console errors).
+Video: no `{lang}_22.mp4` yet — the step is skipped. Artwork: pending (manifest).

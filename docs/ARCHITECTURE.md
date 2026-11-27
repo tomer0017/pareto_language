@@ -742,3 +742,21 @@ nothing under it at full scroll; at rest, scrolling content passes beneath it as
   no grammar / builder / Flex / swap / score, audio never blocking, Missions 01–20 and 22–30 pinned. Earlier tests'
   "later missions unchanged" pins now start at Mission 22 (the established narrowing).
 - **Companion** — `companionCoach` introduces the first board: "Listen — and tap which part of your plan they ask about."
+
+## Mission 22 — Fixing Problems (2026-11-27)
+
+- **Content** — `features/bootcamp/core/fixingProblems.ts` (spec; `steps: m22Steps`, `numbered: true`) and
+  `features/bootcamp/practiceFix.ts`. 🧰 FIX IT is the existing two-column board (`splitTimeBoard`): `🍽️ Restaurant: …
+  ‖ 🏨 Hotel: …`, each row `<the learner's problem> → ⚠️ ? | 🗣️ ? | ✅ <solution>` — "?" keeps a row unknown until the
+  solution is understood; `fixIt(state)`, `FIX_STAGES` and the serialisable `fixState(state)`. "What did they do?" is a
+  `visualMatch` over semantic solution tiles (`MEAL_TILES`, `RESTAURANT_TILES`, `HOTEL_TILES`) — each shown only after
+  the lines it asks about. The staff's lines are the hear items, WHOLE (`reply.fix.*`).
+- **Senses** — `WORD_SENSES` registers ES "cuenta" (the bill ≠ "por cuenta de la casa"). EN "right" and "change" cannot
+  be registered (a locked line holds two senses of "right"; Mission 07 has a bare "change" card), so their guarantee is
+  chunk-level: "the right one", "right away", "change rooms" are concepts the cards must teach before any test.
+- **Guards** — `mission22.test.ts`: both locked scenes exact (EN / ES / FR), the silent cue, the dialogue trees, prior
+  audit per language with the sense findings, strict teach-before-test, coverage, the board's information rule, the four
+  tools, the secondary lines' minimal support, the solutions as comprehension, no help = the four tools, NEW PROBLEMS'
+  four changed details, 21 interactions, no grammar / builder / Flex / score, audio never blocking, Missions 01–21 and
+  23–30 pinned. Earlier tests' "later missions unchanged" pins now start at Mission 23.
+- **Companion** — `companionCoach` introduces the first board: "Listen — and tap what they did to fix it."

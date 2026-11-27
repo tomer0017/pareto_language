@@ -162,8 +162,8 @@ describe('the conversation is locked, and Mission 21 is in its place', () => {
   });
   const raw = (a: number, b?: number) => Object.fromEntries(LANGS.map((l) => [l, fnv(JSON.stringify(BOOTCAMP_PLAN.slice(a, b).map((m) => MISSIONS_BY_LANG[l]![m.day]!)))]));
   it('43. Missions 01–20 are byte-for-byte unchanged by this pass', () => { expect(raw(0, 20)).toEqual({ en: 'b7b5ea7a', es: '8deff1ad', fr: '227325ca' }); });
-  it('44. Missions 22–30 are byte-for-byte unchanged — the five sentences Missions 24 and 30 reuse keep their id and wording (all four languages)', () => {
-    expect(raw(21)).toEqual({ en: '086da723', es: '3c30ed8f', fr: '12218be7' });
+  it('44. Missions 23–30 are byte-for-byte unchanged (Mission 22 has its own pass since: mission22.test.ts) — the five sentences Missions 24 and 30 reuse keep their id and wording (all four languages)', () => {
+    expect(raw(22)).toEqual({ en: 'c136fa2c', es: '1abda9c1', fr: '9332620b' });
     for (const lang of LANGS) for (const n of [24, 30]) for (const id of [GOING, BE_THERE, AFTER, BACK, TOMORROW]) {
       const later = day(lang, n).items.find((i) => strip(i.id) === id);
       if (!later) continue;

@@ -139,8 +139,8 @@ describe('the conversation is locked, and Mission 17 is in its place', () => {
   });
   const raw = (a: number, b?: number) => Object.fromEntries(LANGS.map((l) => [l, fnv(JSON.stringify(beforeMission16Artwork(BOOTCAMP_PLAN.slice(a, b).map((m) => MISSIONS_BY_LANG[l]![m.day]!))))]));
   it('Missions 01–16 are unchanged by this pass (normalizing only the later Mission 16 artwork)', () => { expect(raw(0, 16)).toEqual({ en: '56e5cb39', es: 'f204ca09', fr: 'aab4fee6' }); });
-  it('Missions 22–30 are unchanged by this pass (normalizing only the later Mission 16 artwork) (Missions 18–21 have their own passes since: mission18.test.ts … mission21.test.ts) — and the Everyday checkpoint reuses the three tools, same wording', () => {
-    expect(raw(21)).toEqual({ en: '086da723', es: '3c30ed8f', fr: '12218be7' });
+  it('Missions 23–30 are unchanged by this pass (normalizing only the later Mission 16 artwork) (Missions 18–22 have their own passes since: mission18.test.ts … mission22.test.ts) — and the Everyday checkpoint reuses the three tools, same wording', () => {
+    expect(raw(22)).toEqual({ en: 'c136fa2c', es: '1abda9c1', fr: '9332620b' });
     for (const lang of LANGS) for (const id of TOOLS) expect(text(day(lang, 18), `${lang}.${id}`), `${lang} ${id}`).toBe(text(day(lang), `${lang}.${id}`));
   });
   it('EN / ES / FR parity: the same journey, step for step, each in its own words', () => {

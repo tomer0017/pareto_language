@@ -147,8 +147,8 @@ describe('the conversation is locked, and Mission 19 is in its place', () => {
   });
   const raw = (a: number, b?: number) => Object.fromEntries(LANGS.map((l) => [l, fnv(JSON.stringify(beforeMission17Artwork(beforeMission16Artwork(BOOTCAMP_PLAN.slice(a, b).map((m) => MISSIONS_BY_LANG[l]![m.day]!)))))]));
   it('Missions 01–18 are unchanged by this pass (normalizing only the later Mission 16 artwork) (the Mission 18 checkpoint included)', () => { expect(raw(0, 18)).toEqual({ en: '31ca8ea9', es: 'a73b81d5', fr: 'd029bf2e' }); });
-  it('Missions 22–30 are unchanged by this pass (normalizing only the later Mission 16 artwork; Missions 20 and 21 have their own passes since: mission20.test.ts, mission21.test.ts) — and the City checkpoint (Mission 24) reuses the four tools and its two transport lines, same id and wording', () => {
-    expect(raw(21)).toEqual({ en: '086da723', es: '3c30ed8f', fr: '12218be7' });
+  it('Missions 23–30 are unchanged by this pass (normalizing only the later Mission 16 artwork; Missions 20–22 have their own passes since: mission20.test.ts … mission22.test.ts) — and the City checkpoint (Mission 24) reuses the four tools and its two transport lines, same id and wording', () => {
+    expect(raw(22)).toEqual({ en: 'c136fa2c', es: '1abda9c1', fr: '9332620b' });
     for (const lang of LANGS) for (const id of [...TOOLS, 'reply.trans.three-stops', 'reply.trans.wrong-way']) {
       const later = day(lang, 24).items.find((i) => strip(i.id) === id);
       expect(later?.text, `${lang} ${id}`).toBe(text(day(lang), `${lang}.${id}`));

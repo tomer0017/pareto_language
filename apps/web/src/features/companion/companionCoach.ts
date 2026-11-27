@@ -76,6 +76,8 @@ export const MISSION_GAME_INTRO: Record<string, Record<string, LocalizedText>> =
   'past-events': { visualMatch: T('שמע — והקש על איזה חלק בסיפור שואלים.', 'Listen — and tap which part of your story they ask about.') },
   // The next trip's first board is the learner's own plan: which part of it does the question ask about — never the answer.
   'future-plans': { visualMatch: T('שמע — והקש על איזה חלק בתוכנית שואלים.', 'Listen — and tap which part of your plan they ask about.') },
+  // The problems' first board is the staff's solution: what did they do — never a production drill.
+  'fixing-problems': { visualMatch: T('שמע — והקש מה הם עשו כדי לתקן.', 'Listen — and tap what they did to fix it.') },
 };
 
 export interface CoachLine {

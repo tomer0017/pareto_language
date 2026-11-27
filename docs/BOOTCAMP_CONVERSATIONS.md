@@ -1281,30 +1281,25 @@ _Reply-training drill:_ “Hi there! Can I help you find anything?” · “Of c
 
 ### Core phrases (you say)
 - **This isn't what I ordered.** · זה לא מה שהזמנתי. — _רגוע וברור. לא צריך להתנצל._
+- **No problem, thank you.** · אין בעיה, תודה.
 - **I ordered the pasta.** · הזמנתי את הפסטה.
 - **I think there's a mistake.** · אני חושב שיש טעות.
 - **I was charged twice.** · חייבו אותי פעמיים.
-- **No problem, thank you.** · אין בעיה, תודה.
 - **There's a problem with my room.** · יש בעיה בחדר שלי. — _There’s a problem with ___ — פותח כל תלונה בנימוס._
-- **Can you help me?** · אתה יכול לעזור לי? — _Can you ___? — הדרך לבקש כל דבר._
 - **The air conditioning isn't working.** · המזגן לא עובד. — _התבנית: The ___ isn’t working. עובדת על כל דבר שהתקלקל._
 - **Can you fix it?** · אפשר לתקן את זה?
 - **My room is very noisy.** · החדר שלי מאוד רועש. — _לתאר בעיה זה לא להתלונן. זה לתת להם לתקן._
 - **Can I change rooms?** · אפשר להחליף חדר?
 
 ### Expected replies (you hear)
+- **Here's your meal — one steak!** · הנה הארוחה שלך — סטייק אחד!
+- **Oh no, I'm so sorry! What did you order?** · אוי לא, אני מצטער מאוד! מה הזמנת?
+- **Here's your bill.** · הנה החשבון.
+- **Let me check the bill. What's the problem?** · תן לי לבדוק את החשבון. מה הבעיה?
+- **Good evening! How can I help you?** · ערב טוב! איך אפשר לעזור?
+- **I'm sorry to hear that. What's the problem?** · אני מצטער לשמוע. מה הבעיה?
 - **I'm so sorry about that.** · אני מצטער על זה מאוד.
-- **What's the problem?** · מה הבעיה?
-- **I'll bring the right one.** · אביא את הנכון.
-- **Let me check the bill.** · תן לי לבדוק את החשבון.
-- **I'll refund it now.** · אחזיר לך את הכסף עכשיו.
-- **It's on the house.** · זה על חשבון הבית.
-- **Is there anything else?** · יש עוד משהו?
-
-_Reply-training drill:_ “I'm so sorry about that.” · “What's the problem?” · “I'll bring the right one.” · “I'll refund it now.” · “Is there anything else?”
-
-### Recovery tools reused
-`Please speak slowly.`
+- **I understand. We have a quieter room.** · אני מבין. יש לנו חדר שקט יותר.
 
 ### Dialogue: `fixing-problems` — happy path
 - **🧑 Them:** “Here's your meal — one steak!” · הנה הארוחה שלך — סטייק אחד!
@@ -1320,6 +1315,13 @@ _Reply-training drill:_ “I'm so sorry about that.” · “What's the problem?
 - **🫵 You:** “No problem, thank you.” · אין בעיה, תודה.
 - **🧑 Them:** “Thank you for your patience. Dessert is on the house!” · תודה על הסבלנות. הקינוח על חשבון הבית!
 
+#### Wrong / recovery branches
+- ⚠︎ less useful: 🫵 “No problem, thank you.” → 🧑 “Here's your meal — one steak!” · הנה הארוחה שלך — סטייק אחד!
+- ⚠︎ less useful: 🫵 “This isn't what I ordered.” → 🧑 “Oh no, I'm so sorry! What did you order?” · אוי לא, אני מצטער מאוד! מה הזמנת?
+- ⚠︎ less useful: 🫵 “No problem, thank you.” → 🧑 “Here's your bill.” · הנה החשבון.
+- ⚠︎ less useful: 🫵 “I ordered the pasta.” → 🧑 “Let me check the bill. What's the problem?” · תן לי לבדוק את החשבון. מה הבעיה?
+- ⚠︎ less useful: 🫵 “I was charged twice.” → 🧑 “You're right — my mistake. I'll refund it now.” · אתה צודק — הטעות שלי. אחזיר לך עכשיו.
+
 ### Dialogue: `room-problem` — happy path
 - **🧑 Them:** “Good evening! How can I help you?” · ערב טוב! איך אפשר לעזור?
 - **🫵 You:** “There's a problem with my room.” · יש בעיה בחדר שלי.
@@ -1332,6 +1334,13 @@ _Reply-training drill:_ “I'm so sorry about that.” · “What's the problem?
 - **🧑 Them:** “I understand. We have a quieter room.” · אני מבין. יש לנו חדר שקט יותר.
 - **🫵 You:** “Can I change rooms?” · אפשר להחליף חדר?
 - **🧑 Them:** “Of course — room 305. Here is your new key. Good night!” · כמובן — חדר 305. הנה המפתח החדש. לילה טוב!
+
+#### Wrong / recovery branches
+- ⚠︎ less useful: 🫵 “No problem, thank you.” → 🧑 “Good evening! How can I help you?” · ערב טוב! איך אפשר לעזור?
+- ⚠︎ less useful: 🫵 “I was charged twice.” → 🧑 “I'm sorry to hear that. What's the problem?” · אני מצטער לשמוע. מה הבעיה?
+- ⚠︎ less useful: 🫵 “I ordered the pasta.” → 🧑 “I'm so sorry about that.” · אני מצטער על זה מאוד.
+- ⚠︎ less useful: 🫵 “The air conditioning isn't working.” → 🧑 “Yes, I'll send someone right away. Is everything else okay?” · כן, אשלח מישהו מיד. כל השאר בסדר?
+- ⚠︎ less useful: 🫵 “Can you fix it?” → 🧑 “I understand. We have a quieter room.” · אני מבין. יש לנו חדר שקט יותר.
 
 ### Review status
 - 🤖 AI-drafted (English + Hebrew) — **pending human / native-Hebrew review**
