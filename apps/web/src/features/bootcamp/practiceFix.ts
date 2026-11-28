@@ -88,7 +88,7 @@ const HEAD = { restaurant: ['🍽️ מסעדה', '🍽️ Restaurant'], hotel: 
 /** The problem itself — the learner's own fact (app language), shown from the start. */
 const WHAT: Record<Problem, Copy> = { meal: ['הזמנת 🍝, קיבלת 🥩', 'Ordered 🍝, got 🥩'], bill: ['💳 חויבת פעמיים', '💳 Charged twice'], ac: ['❄️ המזגן לא עובד', '❄️ AC not working'], noise: ['🔊 החדר רועש', '🔊 Noisy room'] };
 /** The staff's solution — only ever on the board once it has been heard AND understood. */
-const SOLVED: Record<Problem, Copy> = { meal: ['✅ המנה הנכונה', '✅ The right meal'], bill: ['✅ הכסף חזר + 🍰', '✅ Money back + 🍰'], ac: ['✅ מישהו בא לתקן', '✅ Someone is coming'], noise: ['✅ חדר 305', '✅ Room 305'] };
+const SOLVED: Record<Problem, Copy> = { meal: ['✅ המנה הנכונה', '✅ The right meal'], bill: ['✅ הכסף חזר', '✅ Money back'], ac: ['✅ מישהו בא לתקן', '✅ Someone is coming'], noise: ['✅ חדר 305', '✅ Room 305'] };
 const STATE: Record<Exclude<ProblemState, 'solved'>, Copy> = { open: ['⚠️ ?', '⚠️ ?'], explained: ['🗣️ ?', '🗣️ ?'] };
 
 /** The board as plain serialisable data — the solutions null until understood. */
@@ -97,7 +97,7 @@ export const fixState = (s: FixState) => ({
   state: { ...s },
   solutions: {
     meal: s.meal === 'solved' ? ('right-meal' as const) : null,
-    bill: s.bill === 'solved' ? ('refund+dessert' as const) : null,
+    bill: s.bill === 'solved' ? ('refund' as const) : null,
     ac: s.ac === 'solved' ? ('someone-coming' as const) : null,
     noise: s.noise === 'solved' ? ('room-305' as const) : null,
   },
@@ -146,21 +146,20 @@ export const FIX_IT: Copy = [
 
 /* ── The tiles — semantic (the id is the meaning), captioned in the app language ────────────────── */
 
-/** WHAT DID THEY DO? — the first fix, right after it is heard: the right meal, or you keep the steak (nothing later shown). */
+/** WHAT DID THEY DO? — the meal, right after its fix is heard (nothing later shown). */
 export const MEAL_TILES: MatchTile[] = [
   { id: 'right-meal', emoji: '🍝', caption: { he: 'מביאים את המנה הנכונה', en: 'They bring the right meal' } },
   { id: 'keep', emoji: '🥩', caption: { he: 'נשארים עם הסטייק', en: 'You keep the steak' } },
 ];
-/** WHAT DID THEY DO? — at the restaurant: only the restaurant's outcomes (no hotel solution shown early). */
-export const RESTAURANT_TILES: MatchTile[] = [
-  { id: 'right-meal', emoji: '🍝', caption: { he: 'מביאים את המנה הנכונה', en: 'They bring the right meal' } },
+/** WHAT DID THEY DO? — the bill, right after its fix is heard. */
+export const BILL_TILES: MatchTile[] = [
   { id: 'refund', emoji: '💰', caption: { he: 'מחזירים את הכסף', en: 'You get the money back' } },
-  { id: 'dessert', emoji: '🍰', caption: { he: 'קינוח בחינם', en: 'A free dessert' } },
+  { id: 'pay-twice', emoji: '💳', caption: { he: 'משלמים פעמיים בכל זאת', en: 'You pay twice anyway' } },
 ];
 /** WHAT DID THEY DO? — at the hotel (with the restaurant's money back as the known other kind of fix). */
 export const HOTEL_TILES: MatchTile[] = [
   { id: 'someone', emoji: '👨‍🔧', caption: { he: 'שולחים מישהו לתקן', en: 'Someone comes to fix it' } },
-  { id: 'new-room', emoji: '🔑', caption: { he: 'חדר אחר ומפתח חדש', en: 'Another room, a new key' } },
+  { id: 'new-room', emoji: '🔑', caption: { he: 'חדר אחר', en: 'Another room' } },
   { id: 'refund', emoji: '💰', caption: { he: 'מחזירים את הכסף', en: 'You get the money back' } },
 ];
 
@@ -215,80 +214,53 @@ export function m22Steps(lang: MissionLang): BootcampStep[] {
   });
   const S = FIX_STAGES;
   return [
-    // 🍽️ THE WRONG MEAL — you ordered pasta, you got steak (your own facts, on the board).
-    cards(['מנה לא נכונה', 'The wrong meal'], board(S.start, ['🍽️ במסעדה. המנה מגיעה — הקש כדי לשמוע.', '🍽️ At the restaurant. Your meal arrives — tap to hear.']), [
+    // 🍽️ THE WRONG MEAL — one screen: the problem, what you ordered, the fix; then what did they do?
+    cards(['🍽️ מנה לא נכונה', '🍽️ The wrong meal'], board(S.start, ['🍽️ במסעדה. המנה מגיעה — הקש כדי לשמוע.', '🍽️ At the restaurant. Your meal arrives — tap to hear.']), [
       card('fix.line.meal', N_MEAL, ['הנה הארוחה שלך — סטייק אחד! (🥩 — אבל הזמנת פסטה)', 'Here’s your meal — one steak! (🥩 — but you ordered pasta)'], 'wrong-meal'),
       card('fix.line.not-ordered', Y_NOT_ORDERED, ['זה לא מה שהזמנתי. (קיבלת משהו אחר — לכל דבר: מנה, משקה, כרטיס)', 'This isn’t what I ordered. (you got something else — any thing: a meal, a drink, a ticket)'], 'restaurant-problem'),
-    ]),
-    k.practice({ kind: 'quickReply', label: board(S.start, ['מה אתה אומר?', 'What do you say?']), rounds: [
-      { prompt: 'reply.fix.meal', options: [say(NOT_ORDERED, true), say(NO_PROBLEM, false)] },
-    ] }),
-    // What did you order? — the pasta (secondary: a card and the conversation) — and the fix, heard.
-    cards(['מה הזמנת?', 'What did you order?'], board(S.meal, ['המלצר שואל — ומתקן. הקש כדי לשמוע.', 'The waiter asks — and fixes it. Tap to hear.']), [
       card('fix.line.what-order', N_WHAT_ORDER, ['אוי לא, אני מצטער מאוד! מה הזמנת? (שואלים מה ביקשת)', 'Oh no, I’m so sorry! What did you order? (a question about what you asked for)'], 'restaurant-problem'),
       card('fix.line.i-ordered', Y_I_ORDERED, ['הזמנתי את הפסטה. (מה שביקשת)', 'I ordered the pasta. (what you asked for)'], 'restaurant-problem'),
       card('fix.line.bring', N_BRING, ['כמובן — אביא את הנכון מיד. (🍝 מביאים את המנה הנכונה)', 'Of course — I’ll bring the right one right away. (🍝 they bring the right meal)'], 'solution'),
     ]),
     solved(S.meal, MEAL_TILES, [{ audio: N_BRING, correct: 'right-meal' }]),
-    // THE BILL — "Later…": something is wrong here too — and what's the problem? Charged twice (secondary).
-    cards(['החשבון', 'The bill'], board(S.meal, ['מאוחר יותר… החשבון. הקש כדי לשמוע.', 'Later… the bill. Tap to hear.']), [
+    // 🧾 THE BILL — one screen: the mistake, charged twice, the fix; then what did they do?
+    cards(['🧾 החשבון', '🧾 The bill'], board(S.meal, ['מאוחר יותר… החשבון. הקש כדי לשמוע.', 'Later… the bill. Tap to hear.']), [
       card('fix.line.bill', N_BILL, ['הנה החשבון. (💳 — אבל חייבו אותך פעמיים)', 'Here’s your bill. (💳 — but you were charged twice)'], 'bill-error'),
       card('fix.line.mistake', Y_MISTAKE, ['אני חושב שיש טעות. (משהו לא נכון כאן — בחשבון, בכרטיס, בחדר)', 'I think there’s a mistake. (something is wrong here — a bill, a ticket, a room)'], 'bill-error'),
-      card('fix.line.check', N_CHECK, ['תן לי לבדוק את החשבון. מה הבעיה? (שואלים מה לא בסדר)', 'Let me check the bill. What’s the problem? (a question about what is wrong)'], 'bill-error'),
       card('fix.line.charged', Y_CHARGED, ['חייבו אותי פעמיים. (💳💳 שילמת פעמיים)', 'I was charged twice. (💳💳 you paid two times)'], 'bill-error'),
-    ]),
-    k.practice({ kind: 'quickReply', label: board(S.meal, ['מה אתה אומר?', 'What do you say?']), rounds: [
-      { prompt: 'reply.fix.bill', options: [say(MISTAKE, true), say(NO_PROBLEM, false), say(I_ORDERED, false)] },
-      { prompt: 'reply.fix.check-the-bill', options: [say(CHARGED, true), say(I_ORDERED, false), say(NOT_ORDERED, false)] },
-    ] }),
-    // …and the fix, heard.
-    cards(['הפתרון', 'The fix'], board(S.bill, ['המלצר מתקן. הקש כדי לשמוע.', 'The waiter fixes it. Tap to hear.']), [
       card('fix.line.refund', N_REFUND, ['אתה צודק — הטעות שלי. אחזיר לך עכשיו. (💰 הכסף חוזר אליך)', 'You’re right — my mistake. I’ll refund it now. (💰 you get the money back)'], 'solution'),
-      card('fix.line.dessert', N_DESSERT, ['תודה על הסבלנות. הקינוח על חשבון הבית! (🍰 קינוח בחינם)', 'Thank you for your patience. Dessert is on the house! (🍰 a free dessert)'], 'solution'),
     ]),
-    solved(S.bill, RESTAURANT_TILES, [{ audio: N_REFUND, correct: 'refund' }, { audio: N_DESSERT, correct: 'dessert' }]),
-    // 🏨 THE HOTEL — another place, the same skill.
+    solved(S.bill, BILL_TILES, [{ audio: N_REFUND, correct: 'refund' }]),
+    // 🏨 THE HOTEL — another place, the same skill: the opener, the problem, the fix.
     cards(['🏨 מלון — אותה מיומנות', '🏨 The hotel — the same skill'], board(S.restaurant, ['🏨 מקום אחר — אותה מיומנות: אומרים מה הבעיה ומבקשים פתרון. הקש כדי לשמוע.', '🏨 Another place — the same skill: say what’s wrong, ask for a fix. Tap to hear.']), [
       card('fix.line.room-problem', Y_ROOM_PROBLEM, ['יש בעיה בחדר שלי. (פותח — לפני שמסבירים)', 'There’s a problem with my room. (an opener — before you explain)'], 'hotel-problem'),
       card('fix.line.whats-problem', N_WHATS_PROBLEM, ['אני מצטער לשמוע. מה הבעיה? (שואלים מה לא בסדר)', 'I’m sorry to hear that. What’s the problem? (a question about what is wrong)'], 'hotel-problem'),
       card('fix.line.ac', Y_AC, ['המזגן לא עובד. (___ לא עובד — כל דבר שמתקלקל)', 'The air conditioning isn’t working. (___ isn’t working — anything that breaks)'], 'ac-not-working'),
+      card('fix.line.so-sorry', N_SO_SORRY, ['אני מצטער על זה מאוד. (התנצלות — אבל עוד לא פתרון)', 'I’m so sorry about that. (an apology — not a fix yet)'], 'hotel-problem'),
+      card('fix.line.fix', Y_FIX, ['אפשר לתקן את זה? (מבקשים פתרון — לכל דבר שלא עובד)', 'Can you fix it? (asking for a fix — for anything that isn’t working)'], 'solution'),
+      card('fix.line.send', N_SEND, ['כן, אשלח מישהו מיד. כל השאר בסדר? (👨‍🔧 מישהו בא לתקן)', 'Yes, I’ll send someone right away. Is everything else okay? (👨‍🔧 someone is coming to fix it)'], 'solution'),
     ]),
     k.practice({ kind: 'quickReply', label: board(S.restaurant, ['מה אתה אומר?', 'What do you say?']), rounds: [
       { prompt: 'reply.fix.whats-the-problem', options: [say(AC, true), say(CHARGED, false), say(I_ORDERED, false)] },
+      { prompt: 'reply.fix.so-sorry', options: [say(FIX, true), say(CHARGED, false), say(I_ORDERED, false)] },
     ] }),
     // ___ isn't working — the same tool, another thing: the key.
     k.practice({
       kind: 'swap', label: board(S.ac, ['אותו משפט — דבר אחר.', 'The same sentence — another thing.']),
       rounds: [{ frame: NOT_WORKING.frame, itemId: AC, cue: NOT_WORKING.cue, options: [[NOT_WORKING.canon, NOT_WORKING.he[0], false], [NOT_WORKING.other, NOT_WORKING.he[1], true]] }],
     }),
-    // CAN YOU FIX IT? — ask for the solution.
-    cards(['אפשר לתקן?', 'Can you fix it?'], board(S.ac, ['ועכשיו — מבקשים פתרון. הקש כדי לשמוע.', 'Now — ask for a fix. Tap to hear.']), [
-      card('fix.line.so-sorry', N_SO_SORRY, ['אני מצטער על זה מאוד. (התנצלות — אבל עוד לא פתרון)', 'I’m so sorry about that. (an apology — not a fix yet)'], 'hotel-problem'),
-      card('fix.line.fix', Y_FIX, ['אפשר לתקן את זה? (מבקשים פתרון — לכל דבר שלא עובד)', 'Can you fix it? (asking for a fix — for anything that isn’t working)'], 'solution'),
-      card('fix.line.send', N_SEND, ['כן, אשלח מישהו מיד. כל השאר בסדר? (👨‍🔧 מישהו בא לתקן)', 'Yes, I’ll send someone right away. Is everything else okay? (👨‍🔧 someone is coming to fix it)'], 'solution'),
-    ]),
-    k.practice({ kind: 'quickReply', label: board(S.ac, ['התנצלו — אבל המזגן עדיין לא עובד. מה אתה אומר?', 'They apologise — but the AC still isn’t working. What do you say?']), rounds: [
-      { prompt: 'reply.fix.so-sorry', options: [say(FIX, true), say(CHARGED, false), say(I_ORDERED, false)] },
-    ] }),
-    // NOISY — and sometimes the fix is an alternative: "Can I change rooms?"
-    cards(['חדר רועש', 'A noisy room'], board(S.ac, ['ועוד בעיה. הקש כדי לשמוע.', 'One more problem. Tap to hear.']), [
+    // 🔊 NOISY — and sometimes the fix is an alternative; then what did they do?
+    cards(['🔊 חדר רועש', '🔊 A noisy room'], board(S.ac, ['ועוד בעיה. הקש כדי לשמוע.', 'One more problem. Tap to hear.']), [
       card('fix.line.noisy', Y_NOISY, ['לא. החדר שלי מאוד רועש. (🔊 — אי אפשר לישון)', 'No. My room is very noisy. (🔊 — you can’t sleep)'], 'noisy-room'),
       card('fix.line.quieter', N_QUIETER, ['אני מבין. יש לנו חדר שקט יותר. (מציעים חדר אחר)', 'I understand. We have a quieter room. (they offer another room)'], 'noisy-room'),
       card('fix.line.change', Y_CHANGE, ['אפשר להחליף חדר? (לפעמים הפתרון הוא חלופה — לא תיקון)', 'Can I change rooms? (sometimes the fix is an alternative — not a repair)'], 'solution'),
-    ]),
-    k.practice({ kind: 'quickReply', label: board(S.noise, ['תיקון — או חלופה? מה אתה אומר?', 'A repair — or an alternative? What do you say?']), rounds: [
-      { prompt: 'reply.fix.quieter-room', options: [say(CHANGE, true), say(FIX, false), say(MISTAKE, false)] },
-    ] }),
-    cards(['החדר החדש', 'The new room'], board(S.noise, ['והפתרון. הקש כדי לשמוע.', 'And the fix. Tap to hear.']), [
       card('fix.line.new-key', N_NEW_KEY, ['כמובן — חדר 305. הנה המפתח החדש. לילה טוב! (🔑 חדר אחר ומפתח חדש)', 'Of course — room 305. Here is your new key. Good night! (🔑 another room, a new key)'], 'solution'),
     ]),
-    solved(S.noise, HOTEL_TILES, [{ audio: N_SEND, correct: 'someone' }, { audio: N_NEW_KEY, correct: 'new-room' }]),
+    solved(S.noise, HOTEL_TILES, [{ audio: N_SEND, correct: 'someone' }, { audio: N_QUIETER, correct: 'new-room' }]),
     k.receipt(board(S.done, ['ארבע בעיות — אמרת מה הבעיה וביקשת פתרון.', 'Four problems — you said what was wrong and asked for a fix.'])),
     // THE CONVERSATIONS — once each, supported (translations on).
     k.dialogue('fixing-problems'),
-    k.receipt(['🍽️ המסעדה — מנה שגויה וחיוב כפול, ושניהם תוקנו.', '🍽️ The restaurant — a wrong meal and a double charge, both fixed.']),
     k.dialogue('room-problem'),
-    k.receipt(['🏨 המלון — מזגן, רעש, וחדר חדש.', '🏨 The hotel — the AC, the noise, and a new room.']),
     // NO HELP — the four tools at the staff's pace: no meaning, no cards, no board.
     k.practice({ kind: 'quickReply', challenge: true, rounds: [
       { prompt: 'reply.fix.meal', options: [say(NOT_ORDERED, true), say(NO_PROBLEM, false), say(CHANGE, false)] },
@@ -296,7 +268,6 @@ export function m22Steps(lang: MissionLang): BootcampStep[] {
       { prompt: 'reply.fix.whats-the-problem', options: [say(AC, true), say(CHARGED, false), say(NOT_ORDERED, false)] },
       { prompt: 'reply.fix.so-sorry', options: [say(FIX, true), say(I_ORDERED, false), say(CHARGED, false)] },
     ] }),
-    k.receipt(['בלי עזרה — מנה שגויה, טעות, משהו לא עובד, ובקשה לתקן.', 'No help — the wrong thing, a mistake, something not working, and asking for a fix.']),
     // THE PAYOFF — the scenes (the video, where one exists)…
     { kind: 'video', mode: 'again' },
     // …then THE FINAL: NEW PROBLEMS — the same functions, new details. Not the conversations again.

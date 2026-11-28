@@ -9,12 +9,12 @@ import { coachFor } from '../companion/companionCoach.js';
 import { answersFollow, runNpcBeat } from './dialogueBeat.js';
 import { cinematicTranscript } from './exportDialogue.js';
 import { coverageOf, hasChunk, plain, type CoverageLang } from './mission01Coverage.js';
-import { M22_CONCEPTS } from './mission22Coverage.js';
+import { M22_CONCEPTS, M22_CONTEXT_ONLY } from './mission22Coverage.js';
 import { missionPhases, practiceReplay } from './missionFlow.js';
 import { BOOTCAMP_PLAN, missionNumber } from './plan.js';
 import {
-  FINAL_SAID, FIX_IT, FIX_STAGES, HOTEL_TILES, M22_PROPS, M22_SLOTS, NOT_WORKING, N_BILL, N_BRING, N_DESSERT, N_FISH, N_KEY_204, N_NEW_KEY, N_REFUND, N_SEND,
-  MEAL_TILES, N_SO_SORRY, RESTAURANT_TILES, SAID, TOOLS, fixIt, fixState, newProblems,
+  FINAL_SAID, FIX_IT, FIX_STAGES, HOTEL_TILES, M22_PROPS, M22_SLOTS, NOT_WORKING, N_BILL, N_BRING, N_DESSERT, N_FISH, N_KEY_204, N_NEW_KEY, N_QUIETER, N_REFUND, N_SEND,
+  N_SO_SORRY, MEAL_TILES, BILL_TILES, SAID, TOOLS, fixIt, fixState, newProblems,
 } from './practiceFix.js';
 import { validatePracticeStep } from './practiceEngines.js';
 import { WORD_SENSES, learnedBefore, missionContent, senseWords, teachingEncounters, unpreparedChunks, unpreparedWords } from './priorLearning.js';
@@ -54,7 +54,7 @@ const lastDialogueAt = (d: BootcampDayContent): number => d.steps.map((s) => s.k
 const at = (x: L4, lang: CoverageLang): string => x[IX[lang]];
 const boardOf = (tiles: { id: string }[]) => (s: BootcampStep): s is VM => s.kind === 'visualMatch' && s.tiles.length === tiles.length && s.tiles.every((t, i) => t.id === tiles[i]!.id);
 const isMealCheck = boardOf(MEAL_TILES);
-const isRestaurantCheck = boardOf(RESTAURANT_TILES);
+const isBillCheck = boardOf(BILL_TILES);
 const isHotelCheck = boardOf(HOTEL_TILES);
 const interactions = (d: BootcampDayContent): number => d.steps.reduce((k, s) => k + (s.kind === 'quickReply' || s.kind === 'miniMap' || s.kind === 'visualMatch' || s.kind === 'sentenceBuilder' || s.kind === 'swap' ? s.rounds.length
   : s.kind === 'replies' ? s.replyIds.length : s.kind === 'matchPairs' ? s.pairs.length : s.kind === 'quiz' ? 1 : 0), 0);
@@ -189,7 +189,7 @@ describe('the conversations are locked, and Mission 22 is in its place', () => {
     for (const lang of LANGS) expect(day(lang).title.en).toBe('Fixing Problems');
   });
   const raw = (a: number, b?: number) => Object.fromEntries(LANGS.map((l) => [l, fnv(JSON.stringify(BOOTCAMP_PLAN.slice(a, b).map((m) => MISSIONS_BY_LANG[l]![m.day]!)))]));
-  it('54. Missions 01–21 are byte-for-byte unchanged by this pass', () => { expect(raw(0, 21)).toEqual({ en: '0805f717', es: '1d47a41c', fr: '77ce788c' }); });
+  it('54. Missions 01–20 are byte-for-byte unchanged by this pass (Mission 21 has its own pass: mission21.test.ts)', () => { expect(raw(0, 20)).toEqual({ en: 'b7b5ea7a', es: '8deff1ad', fr: '227325ca' }); });
   it('55. Missions 23–30 are byte-for-byte unchanged — the learner sentences the checkpoints reuse keep their id and wording (all four languages)', () => {
     expect(raw(22)).toEqual({ en: 'c136fa2c', es: '1abda9c1', fr: '9332620b' });
     let reused = 0;
@@ -238,7 +238,7 @@ describe('PRIOR LEARNING — verified per language, not assumed (learnedBefore(l
   for (const lang of LANGS) it(`${lang}: every audited item classified — VERIFIED GUARANTEED PRIOR, or NEW (taught here, on a card)`, () => {
     const verified = Object.entries(AUDIT[lang]).filter(([, c]) => known(lang, c)).map(([k]) => k).sort();
     expect(verified).toEqual([...VERIFIED[lang]].sort());
-    for (const k of Object.keys(AUDIT[lang]).filter((x) => !verified.includes(x) && !['chicken', 'fish', 'wifi', 'shower'].includes(x))) {
+    for (const k of Object.keys(AUDIT[lang]).filter((x) => !verified.includes(x) && !['chicken', 'fish', 'wifi', 'shower', 'dessert', 'on the house'].includes(x))) {
       const c = AUDIT[lang][k]!.split('#')[0]!.replace(/^¿|\?$/g, '');
       expect(cardsOf(day(lang)).some((w) => hasChunk(w.text, c === 'cuenta' ? 'por cuenta de la casa' : c)), `${lang} ${k}`).toBe(true);
     }
@@ -256,15 +256,15 @@ describe('PRIOR LEARNING — verified per language, not assumed (learnedBefore(l
     expect(unprepared).toEqual([]);
     expect(unpreparedChunks({ ...d, steps: d.steps.map((s) => (s.kind === 'prime' ? { ...s, words: s.words.filter((w) => w.key !== 'fix.line.bring') } : s)) }, 'en', M22_CONCEPTS.filter((c) => c.id === 'bring-the-right-one')).join(' ')).toMatch(/bring-the-right-one/);
   });
-  it('39. SAME FORM ≠ SAME MEANING — "change": English only had money change ("Here\'s your change", "Keep the change"); "change rooms" is NOT prior — taught on its card before its one retrieval', () => {
+  it('39. SAME FORM ≠ SAME MEANING — "change": English only had money change ("Here\'s your change", "Keep the change"); "change rooms" is NOT prior — taught on its card before it is chosen', () => {
     const taught = Array.from({ length: 21 }, (_, m) => m + 1).flatMap((m) => teachingEncounters(missionContent('en', m)).map((e) => e.text)).filter((t) => plain(t).split(' ').includes('change'));
     expect(taught.length).toBeGreaterThan(0);
     for (const t of taught) expect(t).not.toMatch(/change rooms/i);
     expect(prior('en').knowsChunk('change rooms')).toBe(false);
     for (const lang of LANGS) {
       const d = day(lang);
-      const first = quickRounds(d).find(([, r]) => accepted(r) === CHANGE)![0];
-      expect(primeAt(d, 'fix.line.change'), lang).toBeLessThan(first);
+      expect(primeAt(d, 'fix.line.change'), lang).toBeGreaterThan(0);
+      expect(primeAt(d, 'fix.line.change'), lang).toBeLessThan(dialogueAt(d));
     }
     expect(prior('es').words.has('cambiar')).toBe(false);
     expect(prior('fr').words.has('changer')).toBe(false);
@@ -320,9 +320,10 @@ describe('PRIOR LEARNING — verified per language, not assumed (learnedBefore(l
     for (const lang of LANGS) {
       const d = day(lang);
       const without = (key: string): BootcampDayContent => ({ ...d, steps: d.steps.map((s) => (s.kind === 'prime' ? { ...s, words: s.words.filter((w) => w.key !== key) } : s)) });
-      for (const [key, id] of [['fix.line.meal', 'heres-your-meal'], ['fix.line.not-ordered', 'not-ordered'], ['fix.line.mistake', 'mistake'], ['fix.line.check', 'let-me-check'], ['fix.line.charged', 'charged-twice'],
-        ...(lang === 'en' ? [['fix.line.whats-problem', 'sorry-to-hear'] as const] : []), ['fix.line.ac', 'the-air-conditioning'], ['fix.line.fix', 'can-you-fix'], ['fix.line.quieter', 'quieter-room'], ['fix.line.change', 'change-rooms'],
-        ['fix.line.refund', 'refund'], ['fix.line.send', 'send-someone'], ['fix.line.new-key', 'new-key']] as const) {
+      // (the restaurant tools are first tested after the conversation, which teaches them too; their cards give the meaning — coverage below)
+      for (const [key, id] of [
+        ...(lang === 'en' ? [['fix.line.whats-problem', 'sorry-to-hear'] as const] : []), ['fix.line.ac', 'the-air-conditioning'], ['fix.line.fix', 'can-you-fix'], ['fix.line.quieter', 'quieter-room'],
+        ['fix.line.bring', 'bring-the-right-one'], ['fix.line.refund', 'refund'], ['fix.line.send', 'send-someone']] as const) {
         expect(`${unprepared(without(key), lang).join(' ')} ${unpreparedWords(without(key), prior(lang).words, lang).join(' ')}`, `${lang} ${key}`).toMatch(new RegExp(`${id}|“`));
       }
     }
@@ -346,29 +347,31 @@ describe('production — four tools, taught whole, then retrieved (10, 19–22)'
       const d = day(lang);
       const rounds = quickRounds(d);
       for (const id of TOOLS) {
-        const first = rounds.find(([, r]) => accepted(r) === id)![0];
+        const first = Math.min(rounds.find(([, r]) => accepted(r) === id)![0], dialogueAt(d));
         expect(primeAt(d, cardOf[id]!), `${lang} ${id}`).toBeGreaterThan(-1);
         expect(primeAt(d, cardOf[id]!), `${lang} ${id}`).toBeLessThan(first);
         expect(cardsOf(d).find((w) => w.key === cardOf[id])!.text, `${lang} ${id}`).toBe(SAID[id]![IX[lang]]);
-        expect(new Set(rounds.filter(([, r]) => accepted(r) === id).map(([i]) => phaseOf(d, i))), `${lang} ${id}`).toEqual(new Set(['teaching', 'no help', 'final']));
+        // AC and "Can you fix it?" are practised before the conversations; the restaurant tools are first chosen IN the conversation (supported), then No Help and the final
+        expect(new Set(rounds.filter(([, r]) => accepted(r) === id).map(([i]) => phaseOf(d, i))), `${lang} ${id}`).toEqual(new Set(id === AC || id === FIX ? ['teaching', 'no help', 'final'] : ['no help', 'final']));
+        expect(d.dialogues[id === NOT_ORDERED || id === MISTAKE ? 'fixing-problems' : 'room-problem']!.nodes.some((n) => n.choices?.some((c) => c.correct && strip(c.itemId) === id)), `${lang} ${id}`).toBe(true);
       }
       const lines = [0, 1].flatMap((i) => script(lang, i as 0 | 1).map((l) => l.slice(5)));
       for (const w of cardsOf(d)) { expect(w.line, `${lang} ${w.key}`).toBe(true); expect(lines, `${lang} ${w.key}`).toContain(w.text); }
     }
   });
-  it('23–28. the secondary lines get minimal valid support: a card and the conversation; "I was charged twice" one light round, "Can I change rooms?" ONE meaningful retrieval; "No problem, thank you." no card, no drill', () => {
+  it('23–28. the secondary lines get minimal valid support: ONE card and the conversation (where each is chosen against a real alternative) — no screen of their own; "No problem, thank you." no card, no drill', () => {
     for (const lang of LANGS) {
       const d = day(lang);
       const cards = (t: string) => cardsOf(d).filter((w) => w.text === t).length;
       const teach = (id: string) => quickRounds(d, 0, dialogueAt(d)).filter(([, r]) => accepted(r) === id).length;
       for (const id of [I_ORDERED, CHARGED, ROOM_PROBLEM, NOISY, CHANGE]) expect(cards(at(SAID[id]!, lang)), `${lang} ${id}`).toBe(1);
-      expect([teach(I_ORDERED), teach(CHARGED), teach(ROOM_PROBLEM), teach(NOISY), teach(CHANGE), teach(NO_PROBLEM)], lang).toEqual([0, 1, 0, 0, 1, 0]);
+      expect([teach(I_ORDERED), teach(CHARGED), teach(ROOM_PROBLEM), teach(NOISY), teach(CHANGE), teach(NO_PROBLEM)], lang).toEqual([0, 0, 0, 0, 0, 0]);
       expect(cards(at(SAID[NO_PROBLEM]!, lang)), lang).toBe(0); // verified prior — the conversation carries it
       expect(quickRounds(d).filter(([, r]) => accepted(r) === NO_PROBLEM), lang).toHaveLength(0);
       for (const id of [ROOM_PROBLEM, NOISY]) expect(quickRounds(d).filter(([, r]) => accepted(r) === id), `${lang} ${id}`).toHaveLength(0);
-      // the change of room is the alternative, not the fix: its round puts "Can you fix it?" against it
-      const [, change] = quickRounds(d).find(([, r]) => accepted(r) === CHANGE)!;
-      expect(change.options.map((o) => strip(o.itemId)), lang).toContain(FIX);
+      // the change of room is the alternative, not the fix: in the conversation, "Can you fix it?" is the other choice
+      const turn = d.dialogues['room-problem']!.nodes.find((n) => n.choices?.some((c) => c.correct && strip(c.itemId) === CHANGE))!;
+      expect(turn.choices!.filter((c) => !c.correct).map((c) => strip(c.itemId)), lang).toEqual([FIX]);
       for (const id of ['no-problem', 'thank-you']) expect(learnedBefore(lang, 22).knowsChunk(M22_CONCEPTS.find((c) => c.id === id)!.chunk[lang]), `${lang} ${id}`).toBe(true);
     }
   });
@@ -437,7 +440,7 @@ describe('the opening and 🧰 FIX IT — the learner\'s own problems, never the
   it('17. the learner\'s own problem facts are on the board from the start (ordered 🍝, got 🥩 · charged twice · AC not working · noisy) — every solution "?"', () => {
     expect(splitTimeBoard(fixIt(FIX_STAGES.start)[1])!.plan!.flatMap((c) => c.rows.map((r) => r.text))).toEqual(['🍽️ Ordered 🍝, got 🥩 → ⚠️ ?', '💳 Charged twice → ⚠️ ?', '❄️ AC not working → ⚠️ ?', '🔊 Noisy room → ⚠️ ?']);
     expect(splitTimeBoard(fixIt(FIX_STAGES.start)[1])!.plan!.map((c) => c.day)).toEqual(['🍽️ Restaurant', '🏨 Hotel']);
-    expect(splitTimeBoard(fixIt(FIX_STAGES.done)[1])!.plan!.flatMap((c) => c.rows.map((r) => r.text))).toEqual(['🍽️ Ordered 🍝, got 🥩 → ✅ The right meal', '💳 Charged twice → ✅ Money back + 🍰', '❄️ AC not working → ✅ Someone is coming', '🔊 Noisy room → ✅ Room 305']);
+    expect(splitTimeBoard(fixIt(FIX_STAGES.done)[1])!.plan!.flatMap((c) => c.rows.map((r) => r.text))).toEqual(['🍽️ Ordered 🍝, got 🥩 → ✅ The right meal', '💳 Charged twice → ✅ Money back', '❄️ AC not working → ✅ Someone is coming', '🔊 Noisy room → ✅ Room 305']);
     for (const lang of LANGS) {
       const first = day(lang).steps[1] as Extract<BootcampStep, { kind: 'prime' }>;
       expect(first.intro!.en, lang).toContain(fixIt(FIX_STAGES.start)[1]);
@@ -462,7 +465,6 @@ describe('the opening and 🧰 FIX IT — the learner\'s own problems, never the
     const FACTS: [string, RegExp][] = [
       ['fix.line.bring', /right meal|right one|המנה הנכונה|el correcto|le bon/i],
       ['fix.line.refund', /refund|money back|הכסף חוזר|reembolso|rembourse|💰/i],
-      ['fix.line.dessert', /dessert|postre|קינוח|🍰/i],
       ['fix.line.send', /send someone|someone is coming|someone comes|מישהו|alguien|quelqu’un|👨‍🔧/i],
       ['fix.line.quieter', /quieter|שקט יותר|tranquila|plus calme/i],
       ['fix.line.new-key', /305|new key|nueva llave|nouvelle clé|המפתח החדש/i],
@@ -470,7 +472,10 @@ describe('the opening and 🧰 FIX IT — the learner\'s own problems, never the
     for (const lang of LANGS) {
       const d = day(lang);
       for (const [card, fact] of FACTS) for (const s of d.steps.slice(0, primeAt(d, card))) expect(JSON.stringify(s), `${lang} ${card}`).not.toMatch(fact);
-      expect(d.steps.findIndex(isRestaurantCheck), lang).toBeGreaterThan(primeAt(d, 'fix.line.dessert'));
+      expect(d.steps.findIndex(isMealCheck), lang).toBeGreaterThan(primeAt(d, 'fix.line.bring'));
+      expect(d.steps.findIndex(isBillCheck), lang).toBeGreaterThan(primeAt(d, 'fix.line.refund'));
+      // the dessert is nice to know: never on a card, a tile or the board — only the conversation says it
+      for (const s of d.steps.slice(0, dialogueAt(d))) expect(JSON.stringify(s), lang).not.toMatch(/dessert|postre|קינוח|🍰/i);
       expect(d.steps.findIndex(isHotelCheck), lang).toBeGreaterThan(primeAt(d, 'fix.line.new-key'));
     }
   });
@@ -480,28 +485,30 @@ describe('the opening and 🧰 FIX IT — the learner\'s own problems, never the
       const p = d.steps[primeAt(d, 'fix.line.room-problem')] as Extract<BootcampStep, { kind: 'prime' }>;
       expect(p.label?.en, lang).toBe('🏨 The hotel — the same skill');
       expect(p.intro!.en, lang).toContain('🏨 Another place — the same skill');
-      expect(primeAt(d, 'fix.line.room-problem'), lang).toBeGreaterThan(d.steps.findIndex(isRestaurantCheck));
+      expect(primeAt(d, 'fix.line.room-problem'), lang).toBeGreaterThan(d.steps.findIndex(isBillCheck));
     }
   });
 });
 
 describe('THE STAFF\'S SOLUTIONS — comprehension: what did they do? (29–32)', () => {
-  it('29–32. "what did they do?" right after each fix is heard: the right meal (not keep the steak) · the money back · a free dessert — then someone comes · another room', () => {
+  it('29–32. "what did they do?" — four practical outcomes, four taps: 🍝 the right meal · 💰 the money back · 👨‍🔧 someone comes · 🔑 another room; never the dessert, never room 305', () => {
     expect(MEAL_TILES.map((t) => [t.id, t.emoji])).toEqual([['right-meal', '🍝'], ['keep', '🥩']]);
-    expect(RESTAURANT_TILES.map((t) => [t.id, t.emoji])).toEqual([['right-meal', '🍝'], ['refund', '💰'], ['dessert', '🍰']]);
+    expect(BILL_TILES.map((t) => [t.id, t.emoji])).toEqual([['refund', '💰'], ['pay-twice', '💳']]);
     expect(HOTEL_TILES.map((t) => [t.id, t.emoji])).toEqual([['someone', '👨‍🔧'], ['new-room', '🔑'], ['refund', '💰']]);
     for (const lang of LANGS) {
       const d = day(lang);
       expect(d.steps.filter(isMealCheck).flatMap((s) => s.rounds.map((r) => [r.audio.en, r.correct])), lang).toEqual([[at(N_BRING, lang), 'right-meal']]);
-      expect(d.steps.filter(isRestaurantCheck).flatMap((s) => s.rounds.map((r) => [r.audio.en, r.correct])), lang).toEqual([[at(N_REFUND, lang), 'refund'], [at(N_DESSERT, lang), 'dessert']]);
-      expect(d.steps.filter(isHotelCheck).flatMap((s) => s.rounds.map((r) => [r.audio.en, r.correct])), lang).toEqual([[at(N_SEND, lang), 'someone'], [at(N_NEW_KEY, lang), 'new-room']]);
+      expect(d.steps.filter(isBillCheck).flatMap((s) => s.rounds.map((r) => [r.audio.en, r.correct])), lang).toEqual([[at(N_REFUND, lang), 'refund']]);
+      expect(d.steps.filter(isHotelCheck).flatMap((s) => s.rounds.map((r) => [r.audio.en, r.correct])), lang).toEqual([[at(N_SEND, lang), 'someone'], [at(N_QUIETER, lang), 'new-room']]);
+      const audios = d.steps.flatMap((s) => (s.kind === 'visualMatch' ? s.rounds.map((r) => r.audio.en) : []));
+      expect(audios, lang).not.toContain(at(N_DESSERT, lang));
+      expect(audios, lang).not.toContain(at(N_NEW_KEY, lang));
       // never a production target: no solution line is ever an option or a sentence to learn
       for (const line of [N_BRING, N_REFUND, N_DESSERT, N_SEND, N_NEW_KEY]) {
         for (const [, r] of quickRounds(d)) for (const o of r.options) expect(said(d, o), lang).not.toBe(at(line, lang));
         expect(d.items.some((i) => i.text === at(line, lang)), lang).toBe(false);
       }
-      for (const s of [...d.steps.filter(isMealCheck), ...d.steps.filter(isRestaurantCheck), ...d.steps.filter(isHotelCheck)]) expect(s.quiet, lang).toBe(true);
-      expect(d.steps.findIndex(isMealCheck), lang).toBeGreaterThan(primeAt(d, 'fix.line.bring'));
+      for (const s of [...d.steps.filter(isMealCheck), ...d.steps.filter(isBillCheck), ...d.steps.filter(isHotelCheck)]) expect(s.quiet, lang).toBe(true);
     }
   });
   it('the companion introduces the first board as the solution — never "the future"', () => {
@@ -515,8 +522,8 @@ describe('NO HELP — exactly the four tools (33)', () => {
     for (const lang of LANGS) {
       const d = day(lang);
       const run = d.steps.slice(lastDialogueAt(d) + 1, videoAt(d));
-      expect(run.map((s) => s.kind), lang).toEqual(['receipt', 'quickReply', 'receipt']);
-      const qr = run[1] as QR;
+      expect(run.map((s) => s.kind), lang).toEqual(['quickReply']);
+      const qr = run[0] as QR; // straight after the conversations — no progress card
       expect(qr.challenge, lang).toBe(true);
       expect(qr.label, lang).toBeUndefined();
       for (const r of qr.rounds) { expect(r.situation, lang).toBeUndefined(); expect(r.npc, lang).toBeUndefined(); }
@@ -564,17 +571,17 @@ describe('THE FINAL — NEW PROBLEMS: the same functions, new details (34–37)'
 });
 
 describe('bloat guards — one skill, not two lessons (11–15, 48–51)', () => {
-  it('14–15. INTERACTION BUDGET: 21 meaningful interactions (hard ceiling 22): 12 teaching / comprehension · 4 no help · 5 final', () => {
+  it('14–15. INTERACTION BUDGET: 16 meaningful interactions (hard ceiling 22): 7 teaching / comprehension · 4 no help · 5 final', () => {
     for (const lang of LANGS) {
       const d = day(lang);
-      expect(interactions(d), lang).toBe(21);
+      expect(interactions(d), lang).toBe(16);
       expect(interactions(d), lang).toBeLessThanOrEqual(22);
-      expect(interactions({ ...d, steps: d.steps.slice(0, dialogueAt(d)) }), lang).toBe(12);
+      expect(interactions({ ...d, steps: d.steps.slice(0, dialogueAt(d)) }), lang).toBe(7);
       expect(interactions({ ...d, steps: d.steps.slice(lastDialogueAt(d) + 1, videoAt(d)) }), lang).toBe(4);
       expect(interactions({ ...d, steps: d.steps.slice(videoAt(d) + 1) }), lang).toBe(5);
       // no passive card chain: never two card screens in a row, and every card screen holds a pair or more of lines (one solution card excepted)
       d.steps.forEach((s, i) => { if (s.kind === 'prime' && i > 0) expect(d.steps[i - 1]!.kind, `${lang} step ${i}`).not.toBe('prime'); });
-      expect(stepsOf(d, 'prime').length, lang).toBeLessThanOrEqual(9);
+      expect(stepsOf(d, 'prime').length, lang).toBe(4); // four card screens (at most eight lines each), each followed by an action
     }
   });
   it('11. no grammar lesson: no past tense, no passive, no "can", no comparative, no "I\'ll" — anywhere the learner reads', () => {
@@ -582,6 +589,17 @@ describe('bloat guards — one skill, not two lessons (11–15, 48–51)', () =>
       const d = day(lang);
       expect(appCopy(d), lang).not.toMatch(GRAMMAR);
       expect(stepsOf(d, 'tool').length + stepsOf(d, 'replies').length + stepsOf(d, 'quiz').length + stepsOf(d, 'swipe').length + stepsOf(d, 'matchPairs').length + stepsOf(d, 'ambush').length + stepsOf(d, 'miniMap').length, lang).toBe(0);
+    }
+  });
+  it('a successful run costs at most 60 taps (measured in Chrome: 59, was ~77) — one tap per screen, two per answer', () => {
+    for (const lang of LANGS) {
+      const d = day(lang);
+      const rounds = interactions(d);
+      const turns = SCENES.reduce((k, id) => k + cinematicTranscript(d.dialogues[id]!).filter((l) => l.who === 'you').length, 0);
+      const screens = d.steps.filter((s) => s.kind === 'talk' || s.kind === 'prime' || s.kind === 'receipt').length;
+      expect(screens + 2 * rounds + 2 * turns, lang).toBe(59);
+      expect(screens + 2 * rounds + 2 * turns, lang).toBeLessThanOrEqual(60);
+      expect(stepsOf(d, 'receipt'), lang).toHaveLength(2); // the board before the conversations, and the result — no other passive cards
     }
   });
   it('12. no sentence builder', () => { for (const lang of LANGS) expect(stepsOf(day(lang), 'sentenceBuilder'), lang).toHaveLength(0); });
@@ -610,7 +628,7 @@ describe('bloat guards — one skill, not two lessons (11–15, 48–51)', () =>
 
 describe('the result — 🧰 FIX IT', () => {
   it('every problem fixed — and new ones handled — no score', () => {
-    expect(FIX_IT[1]).toBe('🧰 FIX IT ¦ 🍽️ Restaurant: 🍽️ Ordered 🍝, got 🥩 → ✅ The right meal / 💳 Charged twice → ✅ Money back + 🍰 ‖ 🏨 Hotel: ❄️ AC not working → ✅ Someone is coming / 🔊 Noisy room → ✅ Room 305 ¦ Four problems — you said what was wrong, asked for a fix, and understood what they did. New ones too.');
+    expect(FIX_IT[1]).toBe('🧰 FIX IT ¦ 🍽️ Restaurant: 🍽️ Ordered 🍝, got 🥩 → ✅ The right meal / 💳 Charged twice → ✅ Money back ‖ 🏨 Hotel: ❄️ AC not working → ✅ Someone is coming / 🔊 Noisy room → ✅ Room 305 ¦ Four problems — you said what was wrong, asked for a fix, and understood what they did. New ones too.');
     for (const lang of LANGS) {
       const d = day(lang);
       expect(d.steps.at(-2)!.kind, lang).toBe('receipt');
@@ -690,8 +708,10 @@ describe('coverage: every meaningful chunk, accounted for (45)', () => {
   for (const lang of LANGS) it(`45. ${lang}: every chunk is COVERED here or VERIFIED PRIOR — the four tools and the staff's solutions always covered`, () => {
     const prior = learnedBefore(lang, 22);
     const rows = coverageOf(day(lang), lang, M22_CONCEPTS);
-    for (const row of rows) if (!prior.knowsChunk(M22_CONCEPTS.find((x) => x.id === row.id)!.chunk[lang])) expect(row.covered, `${lang} ${row.id}: ${row.why}`).toBe(true);
-    for (const id of ['not-ordered', 'mistake', 'the-air-conditioning', 'not-working', 'can-you-fix', 'bring-the-right-one', 'refund', 'dessert-on-the-house', 'send-someone', 'quieter-room', 'new-key', 'change-rooms', 'what-did-you-order', 'whats-the-problem']) {
+    for (const row of rows) if (!prior.knowsChunk(M22_CONCEPTS.find((x) => x.id === row.id)!.chunk[lang]) && !M22_CONTEXT_ONLY.includes(row.id)) expect(row.covered, `${lang} ${row.id}: ${row.why}`).toBe(true);
+    expect([...M22_CONTEXT_ONLY]).toEqual(['let-me-check', 'patience', 'dessert-on-the-house', 'room-305', 'new-key']);
+    for (const id of M22_CONTEXT_ONLY) expect(rows.find((r) => r.id === id)!.total, `${lang} ${id} still met`).toBeGreaterThanOrEqual(1);
+    for (const id of ['not-ordered', 'mistake', 'the-air-conditioning', 'not-working', 'can-you-fix', 'bring-the-right-one', 'refund', 'send-someone', 'quieter-room', 'change-rooms', 'what-did-you-order', 'whats-the-problem']) {
       expect(rows.find((r) => r.id === id)!.covered, `${lang} ${id}`).toBe(true);
     }
   });
@@ -708,16 +728,12 @@ describe('visuals, the companion and video', () => {
     const kinds = day('en').steps.map((s) => (s.kind === 'video' ? `video:${s.mode}` : (s.kind === 'quickReply' || s.kind === 'visualMatch') && s.challenge ? `${s.kind}:speed` : s.kind));
     expect(kinds).toEqual([
       'talk',
-      'prime', 'quickReply', // the wrong meal
-      'prime', 'visualMatch', // what did you order? — the fix, heard: what did they do?
-      'prime', 'quickReply', // the bill: a mistake · charged twice
-      'prime', 'visualMatch', // the fix, heard — what did they do?
-      'prime', 'quickReply', 'swap', // 🏨 the AC isn't working — the key
-      'prime', 'quickReply', // can you fix it?
-      'prime', 'quickReply', // noisy — can I change rooms?
-      'prime', 'visualMatch', 'receipt', // the new key — what did they do?
-      'dialogue', 'receipt', 'dialogue', 'receipt',
-      'quickReply:speed', 'receipt',
+      'prime', 'visualMatch', // 🍽️ the wrong meal — what did they do?
+      'prime', 'visualMatch', // 🧾 the bill — what did they do?
+      'prime', 'quickReply', 'swap', // 🏨 the AC, can you fix it? · the key
+      'prime', 'visualMatch', 'receipt', // 🔊 noisy, change rooms — what did they do?
+      'dialogue', 'dialogue',
+      'quickReply:speed',
       'video:again',
       'quickReply', 'receipt', 'summary',
     ]);

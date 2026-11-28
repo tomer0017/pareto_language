@@ -2364,3 +2364,13 @@ content validation and the parity gate green. Real Chrome click-through on the d
 390 / 430 × EN / ES / FR × HE / EN UI — every answer tapped, one deliberate miss, both conversations, the key swap, the
 final and the result (no solution on screen before its line, FIX IT only accumulating, no overflow, no console errors).
 Video: no `{lang}_22.mp4` yet — the step is skipped. Artwork: pending (manifest).
+
+**Patch — Missions 21–22 (2026-11-28).** Mission 21's final now has all four tools: the "I want to try diving" round
+is replaced by the ask-back, asked alone ("Where are you going next?" · "¿A dónde vas después?" · "Tu vas où après ?");
+still 20 interactions. Mission 22 compressed from ~77 to 59 measured taps (16 interactions): four card screens instead of
+nine (each followed by an action), four "what did they do?" taps (🍝 · 💰 · 👨‍🔧 · 🔑) instead of five, the restaurant
+tools first chosen in the conversation (the hotel's AC and "Can you fix it?" keep their practice round), and only two
+receipts (the board before the conversations, the result). The dessert, "Let me check the bill." and room 305 / the new
+key are context only (never tested); "I was charged twice" and "Can I change rooms?" are practised in the conversations,
+each against a real alternative. Four tools, No Help, the key transfer and the final are unchanged; both conversations
+exact.

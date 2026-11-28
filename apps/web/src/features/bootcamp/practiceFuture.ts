@@ -161,11 +161,10 @@ export const SAID: Record<string, L4> = { [GOING]: Y_GOING, [BE_THERE]: Y_BE_THE
 export const TOOLS = [GOING, BE_THERE, VISIT, BACK] as const;
 
 /** The final's trip, said — the same sentences with the new details (each answers the same question). */
-export const FINAL_SAID: Record<typeof GOING | typeof BE_THERE | typeof VISIT | typeof MOTO | typeof AFTER | typeof TOMORROW, L3> = {
+export const FINAL_SAID: Record<typeof GOING | typeof BE_THERE | typeof VISIT | typeof AFTER | typeof TOMORROW, L3> = {
   [GOING]: ["I'm going to Argentina.", 'Je vais en Argentine.', 'Voy a Argentina.'],
   [BE_THERE]: ["I'll be there for a week.", 'Je vais rester une semaine.', 'Voy a estar allí una semana.'],
   [VISIT]: ['I want to visit the museum.', 'Je veux visiter le musée.', 'Quiero visitar el museo.'],
-  [MOTO]: ['I want to try diving.', 'Je veux essayer la plongée.', 'Quiero probar el buceo.'],
   [AFTER]: ["After that I'm going to the beach.", 'Après ça, je vais à la plage.', 'Después de eso voy a la playa.'],
   [TOMORROW]: ["Tomorrow morning I'm going to the station.", 'Demain matin, je vais à la gare.', 'Mañana por la mañana voy a la estación.'],
 };
@@ -268,9 +267,10 @@ export function m21Steps(lang: MissionLang): BootcampStep[] {
       { prompt: 'reply.future.where-next', options: [fin(GOING, true), fin(BE_THERE, false), fin(VISIT, false)] },
       { prompt: 'reply.future.wow-how-long', options: [fin(BE_THERE, true), fin(GOING, false), fin(TOMORROW, false)] },
       { prompt: 'reply.future.what-do-there', options: [fin(VISIT, true), fin(BE_THERE, false), fin(GOING, false)] },
-      { prompt: 'reply.future.anything-else', options: [fin(MOTO, true), fin(VISIT, false), fin(BE_THERE, false)] },
-      { prompt: 'reply.future.after-that-q', options: [fin(AFTER, true), fin(GOING, false), fin(MOTO, false)] },
+      { prompt: 'reply.future.after-that-q', options: [fin(AFTER, true), fin(GOING, false), fin(BE_THERE, false)] },
       { prompt: 'reply.future.tomorrow-plan-q', options: [fin(TOMORROW, true), fin(AFTER, false), fin(VISIT, false)] },
+      // …and the fourth tool, asked ALONE: the plan changed, the question back does not.
+      { prompt: 'reply.future.miss-you', options: [ask(true), fin(VISIT, false), fin(BE_THERE, false)] },
     ] }),
     k.receipt(MY_NEXT_TRIP),
     { kind: 'summary' },

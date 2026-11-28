@@ -20278,7 +20278,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "I’m going to ___ — a country, a city, the next place." / "I’m going to ___ — מדינה, עיר, או המקום הבא."
 - Used in missions: 21, 24, 30
-- Exercised here as: quick-reply response (step 5, round 1, accepted); quick-reply response (step 5, round 2, wrong option); quick-reply response (step 7, round 1, wrong option); quick-reply response (step 11, round 1, wrong option); quick-reply response (step 22, round 1, accepted); quick-reply response (step 22, round 2, wrong option); quick-reply response (step 25, round 1, accepted); quick-reply response (step 25, round 2, wrong option); quick-reply response (step 25, round 3, wrong option); quick-reply response (step 25, round 5, wrong option); dialogue choice where-next/c2 (accepted); dialogue choice where-next/c4 (WRONG option); dialogue choice where-next/c10 (WRONG option)
+- Exercised here as: quick-reply response (step 5, round 1, accepted); quick-reply response (step 5, round 2, wrong option); quick-reply response (step 7, round 1, wrong option); quick-reply response (step 11, round 1, wrong option); quick-reply response (step 22, round 1, accepted); quick-reply response (step 22, round 2, wrong option); quick-reply response (step 25, round 1, accepted); quick-reply response (step 25, round 2, wrong option); quick-reply response (step 25, round 3, wrong option); quick-reply response (step 25, round 4, wrong option); dialogue choice where-next/c2 (accepted); dialogue choice where-next/c4 (WRONG option); dialogue choice where-next/c10 (WRONG option)
 
 ### Sentence: `phrase.future.ill-be-there`
 
@@ -20289,7 +20289,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 21, 24, 30
-- Exercised here as: quick-reply response (step 5, round 1, wrong option); quick-reply response (step 5, round 2, accepted); quick-reply response (step 7, round 1, wrong option); quick-reply response (step 9, round 1, wrong option); quick-reply response (step 22, round 1, wrong option); quick-reply response (step 22, round 2, accepted); quick-reply response (step 22, round 3, wrong option); quick-reply response (step 22, round 4, wrong option); quick-reply response (step 25, round 1, wrong option); quick-reply response (step 25, round 2, accepted); quick-reply response (step 25, round 3, wrong option); quick-reply response (step 25, round 4, wrong option); dialogue choice where-next/c2 (WRONG option); dialogue choice where-next/c4 (accepted); dialogue choice where-next/c6 (WRONG option)
+- Exercised here as: quick-reply response (step 5, round 1, wrong option); quick-reply response (step 5, round 2, accepted); quick-reply response (step 7, round 1, wrong option); quick-reply response (step 9, round 1, wrong option); quick-reply response (step 22, round 1, wrong option); quick-reply response (step 22, round 2, accepted); quick-reply response (step 22, round 3, wrong option); quick-reply response (step 22, round 4, wrong option); quick-reply response (step 25, round 1, wrong option); quick-reply response (step 25, round 2, accepted); quick-reply response (step 25, round 3, wrong option); quick-reply response (step 25, round 4, wrong option); quick-reply response (step 25, round 6, wrong option); dialogue choice where-next/c2 (WRONG option); dialogue choice where-next/c4 (accepted); dialogue choice where-next/c6 (WRONG option)
 
 ### Sentence: `phrase.future.want-to-visit`
 
@@ -20300,7 +20300,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 21
-- Exercised here as: quick-reply response (step 7, round 1, accepted); quick-reply response (step 9, round 1, wrong option); quick-reply response (step 14, round 1, wrong option); quick-reply response (step 16, round 1, wrong option); quick-reply response (step 22, round 3, accepted); quick-reply response (step 22, round 4, wrong option); quick-reply response (step 25, round 1, wrong option); quick-reply response (step 25, round 3, accepted); quick-reply response (step 25, round 4, wrong option); quick-reply response (step 25, round 6, wrong option); dialogue choice where-next/c6 (accepted); dialogue choice where-next/c8 (WRONG option); dialogue choice where-next/c14 (WRONG option)
+- Exercised here as: quick-reply response (step 7, round 1, accepted); quick-reply response (step 9, round 1, wrong option); quick-reply response (step 14, round 1, wrong option); quick-reply response (step 16, round 1, wrong option); quick-reply response (step 22, round 3, accepted); quick-reply response (step 22, round 4, wrong option); quick-reply response (step 25, round 1, wrong option); quick-reply response (step 25, round 3, accepted); quick-reply response (step 25, round 5, wrong option); quick-reply response (step 25, round 6, wrong option); dialogue choice where-next/c6 (accepted); dialogue choice where-next/c8 (WRONG option); dialogue choice where-next/c14 (WRONG option)
 
 ### Sentence: `phrase.future.by-motorbike`
 
@@ -20311,7 +20311,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 21
-- Exercised here as: quick-reply response (step 9, round 1, accepted); quick-reply response (step 11, round 1, wrong option); quick-reply response (step 22, round 1, wrong option); quick-reply response (step 25, round 4, accepted); quick-reply response (step 25, round 5, wrong option); dialogue choice where-next/c8 (accepted)
+- Exercised here as: quick-reply response (step 9, round 1, accepted); quick-reply response (step 11, round 1, wrong option); quick-reply response (step 22, round 1, wrong option); dialogue choice where-next/c8 (accepted)
 
 ### Sentence: `phrase.future.after-that`
 
@@ -20322,7 +20322,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 21, 24, 30
-- Exercised here as: quick-reply response (step 11, round 1, accepted); quick-reply response (step 14, round 1, wrong option); quick-reply response (step 22, round 3, wrong option); quick-reply response (step 25, round 5, accepted); quick-reply response (step 25, round 6, wrong option); dialogue choice where-next/c10 (accepted); dialogue choice where-next/c12 (WRONG option)
+- Exercised here as: quick-reply response (step 11, round 1, accepted); quick-reply response (step 14, round 1, wrong option); quick-reply response (step 22, round 3, wrong option); quick-reply response (step 25, round 4, accepted); quick-reply response (step 25, round 5, wrong option); dialogue choice where-next/c10 (accepted); dialogue choice where-next/c12 (WRONG option)
 
 ### Sentence: `phrase.future.tomorrow-morning`
 
@@ -20333,7 +20333,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 21, 30
-- Exercised here as: quick-reply response (step 14, round 1, accepted); quick-reply response (step 16, round 1, wrong option); quick-reply response (step 22, round 2, wrong option); quick-reply response (step 25, round 2, wrong option); quick-reply response (step 25, round 6, accepted); dialogue choice where-next/c12 (accepted)
+- Exercised here as: quick-reply response (step 14, round 1, accepted); quick-reply response (step 16, round 1, wrong option); quick-reply response (step 22, round 2, wrong option); quick-reply response (step 25, round 2, wrong option); quick-reply response (step 25, round 5, accepted); dialogue choice where-next/c12 (accepted)
 
 ### Sentence: `phrase.future.where-next`
 
@@ -20344,7 +20344,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 21, 24, 30
-- Exercised here as: quick-reply response (step 16, round 1, accepted); quick-reply response (step 22, round 4, accepted); dialogue choice where-next/c14 (accepted)
+- Exercised here as: quick-reply response (step 16, round 1, accepted); quick-reply response (step 22, round 4, accepted); quick-reply response (step 25, round 6, accepted); dialogue choice where-next/c14 (accepted)
 
 ### Sentence: `reply.future.where-next`
 
@@ -20388,7 +20388,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 21
-- Exercised here as: quick-reply prompt (step 9, round 1); quick-reply prompt (step 25, round 4)
+- Exercised here as: quick-reply prompt (step 9, round 1)
 
 ### Sentence: `reply.future.after-that-q`
 
@@ -20399,7 +20399,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 21
-- Exercised here as: quick-reply prompt (step 11, round 1); quick-reply prompt (step 25, round 5)
+- Exercised here as: quick-reply prompt (step 11, round 1); quick-reply prompt (step 25, round 4)
 
 ### Sentence: `reply.future.tomorrow-plan-q`
 
@@ -20410,7 +20410,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 21
-- Exercised here as: quick-reply prompt (step 14, round 1); quick-reply prompt (step 25, round 6)
+- Exercised here as: quick-reply prompt (step 14, round 1); quick-reply prompt (step 25, round 5)
 
 ### Sentence: `reply.future.miss-you`
 
@@ -20421,7 +20421,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 21
-- Exercised here as: quick-reply prompt (step 16, round 1); quick-reply prompt (step 22, round 4)
+- Exercised here as: quick-reply prompt (step 16, round 1); quick-reply prompt (step 22, round 4); quick-reply prompt (step 25, round 6)
 
 ## Expected replies / listening items
 
@@ -20659,30 +20659,17 @@ No meaning quiz in this mission.
 ### M21-Q25 — quick-reply (step 25, round 4 of 6)
 
 - Prompt displayed: "✈️ Another trip: 📍 Next → 🌎 Argentina / ⏳ For → A week / 🎯 Want to → 🏛️ Visit the museum / 🤿 Also → Try diving ‖ 🗓️ When: ➡️ After → 🏖️ The beach / 🌅 Tomorrow morning → 🚉 The station ¦ 🎯 Another trip — the same questions. Tell your friend." / "✈️ טיול אחר: 📍 הבא → 🌎 ארגנטינה / ⏳ לכמה זמן → שבוע / 🎯 רוצה → 🏛️ לבקר במוזיאון / 🤿 וגם → לנסות צלילה ‖ 🗓️ מתי: ➡️ אחרי זה → 🏖️ הים / 🌅 מחר בבוקר → 🚉 התחנה ¦ 🎯 טיול אחר — אותן שאלות. ספר לחבר."
-- Audio played: EN "Nice. Anything else?" · FR "Sympa. Autre chose ?" · ES "Qué bien. ¿Algo más?"
-- Meaning of the audio (HE): "יפה. עוד משהו?"
-- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
-- Choices:
-  1. EN "I want to try diving." · FR "Je veux essayer la plongée." · ES "Quiero probar el buceo." · (HE gloss "אני רוצה לטייל באופנוע.") — `phrase.future.by-motorbike` — ✅ accepted
-  2. EN "I want to visit the museum." · FR "Je veux visiter le musée." · ES "Quiero visitar el museo." · (HE gloss "אני רוצה לבקר בהאנוי.") — `phrase.future.want-to-visit` — ❌ wrong
-  3. EN "I'll be there for a week." · FR "Je vais rester une semaine." · ES "Voy a estar allí una semana." · (HE gloss "אני אהיה שם שבועיים.") — `phrase.future.ill-be-there` — ❌ wrong
-- Tests: phrase.future.by-motorbike
-- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
-
-### M21-Q26 — quick-reply (step 25, round 5 of 6)
-
-- Prompt displayed: "✈️ Another trip: 📍 Next → 🌎 Argentina / ⏳ For → A week / 🎯 Want to → 🏛️ Visit the museum / 🤿 Also → Try diving ‖ 🗓️ When: ➡️ After → 🏖️ The beach / 🌅 Tomorrow morning → 🚉 The station ¦ 🎯 Another trip — the same questions. Tell your friend." / "✈️ טיול אחר: 📍 הבא → 🌎 ארגנטינה / ⏳ לכמה זמן → שבוע / 🎯 רוצה → 🏛️ לבקר במוזיאון / 🤿 וגם → לנסות צלילה ‖ 🗓️ מתי: ➡️ אחרי זה → 🏖️ הים / 🌅 מחר בבוקר → 🚉 התחנה ¦ 🎯 טיול אחר — אותן שאלות. ספר לחבר."
 - Audio played: EN "Sounds amazing! Be careful. And after that?" · FR "Ça a l’air génial ! Fais attention. Et après ça ?" · ES "¡Suena increíble! Ten cuidado. ¿Y después de eso?"
 - Meaning of the audio (HE): "נשמע מדהים! תיזהר. ואחרי זה?"
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
 - Choices:
   1. EN "After that I'm going to the beach." · FR "Après ça, je vais à la plage." · ES "Después de eso voy a la playa." · (HE gloss "אחרי זה אני נוסע לתאילנד.") — `phrase.future.after-that` — ✅ accepted
   2. EN "I'm going to Argentina." · FR "Je vais en Argentine." · ES "Voy a Argentina." · (HE gloss "אני נוסע לווייטנאם.") — `phrase.future.going-to-vietnam` — ❌ wrong
-  3. EN "I want to try diving." · FR "Je veux essayer la plongée." · ES "Quiero probar el buceo." · (HE gloss "אני רוצה לטייל באופנוע.") — `phrase.future.by-motorbike` — ❌ wrong
+  3. EN "I'll be there for a week." · FR "Je vais rester une semaine." · ES "Voy a estar allí una semana." · (HE gloss "אני אהיה שם שבועיים.") — `phrase.future.ill-be-there` — ❌ wrong
 - Tests: phrase.future.after-that
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M21-Q27 — quick-reply (step 25, round 6 of 6)
+### M21-Q26 — quick-reply (step 25, round 5 of 6)
 
 - Prompt displayed: "✈️ Another trip: 📍 Next → 🌎 Argentina / ⏳ For → A week / 🎯 Want to → 🏛️ Visit the museum / 🤿 Also → Try diving ‖ 🗓️ When: ➡️ After → 🏖️ The beach / 🌅 Tomorrow morning → 🚉 The station ¦ 🎯 Another trip — the same questions. Tell your friend." / "✈️ טיול אחר: 📍 הבא → 🌎 ארגנטינה / ⏳ לכמה זמן → שבוע / 🎯 רוצה → 🏛️ לבקר במוזיאון / 🤿 וגם → לנסות צלילה ‖ 🗓️ מתי: ➡️ אחרי זה → 🏖️ הים / 🌅 מחר בבוקר → 🚉 התחנה ¦ 🎯 טיול אחר — אותן שאלות. ספר לחבר."
 - Audio played: EN "Great plan. And what are you doing tomorrow morning?" · FR "Super programme. Et tu fais quoi demain matin ?" · ES "Buen plan. ¿Y qué haces mañana por la mañana?"
@@ -20693,6 +20680,19 @@ No meaning quiz in this mission.
   2. EN "After that I'm going to the beach." · FR "Après ça, je vais à la plage." · ES "Después de eso voy a la playa." · (HE gloss "אחרי זה אני נוסע לתאילנד.") — `phrase.future.after-that` — ❌ wrong
   3. EN "I want to visit the museum." · FR "Je veux visiter le musée." · ES "Quiero visitar el museo." · (HE gloss "אני רוצה לבקר בהאנוי.") — `phrase.future.want-to-visit` — ❌ wrong
 - Tests: phrase.future.tomorrow-morning
+- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+
+### M21-Q27 — quick-reply (step 25, round 6 of 6)
+
+- Prompt displayed: "✈️ Another trip: 📍 Next → 🌎 Argentina / ⏳ For → A week / 🎯 Want to → 🏛️ Visit the museum / 🤿 Also → Try diving ‖ 🗓️ When: ➡️ After → 🏖️ The beach / 🌅 Tomorrow morning → 🚉 The station ¦ 🎯 Another trip — the same questions. Tell your friend." / "✈️ טיול אחר: 📍 הבא → 🌎 ארגנטינה / ⏳ לכמה זמן → שבוע / 🎯 רוצה → 🏛️ לבקר במוזיאון / 🤿 וגם → לנסות צלילה ‖ 🗓️ מתי: ➡️ אחרי זה → 🏖️ הים / 🌅 מחר בבוקר → 🚉 התחנה ¦ 🎯 טיול אחר — אותן שאלות. ספר לחבר."
+- Audio played: EN "Already! We'll miss you." · FR "Déjà ! Tu vas nous manquer." · ES "¡Ya! Te vamos a echar de menos."
+- Meaning of the audio (HE): "כבר! נתגעגע אליך."
+- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Choices:
+  1. EN "Where are you going next?" · FR "Tu vas où après ?" · ES "¿A dónde vas después?" · (HE gloss "לאן אתה נוסע אחרי זה?") — `phrase.future.where-next` — ✅ accepted
+  2. EN "I want to visit the museum." · FR "Je veux visiter le musée." · ES "Quiero visitar el museo." · (HE gloss "אני רוצה לבקר בהאנוי.") — `phrase.future.want-to-visit` — ❌ wrong
+  3. EN "I'll be there for a week." · FR "Je vais rester une semaine." · ES "Voy a estar allí una semana." · (HE gloss "אני אהיה שם שבועיים.") — `phrase.future.ill-be-there` — ❌ wrong
+- Tests: phrase.future.where-next
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
 ## Dialogue — full tree
@@ -21111,83 +21111,54 @@ Intro screen (first Practice step; identical in the English, French and Spanish 
 ## Current Practice flow
 
 1. `talk` — intro screen — "Mission 22: Fixing Problems"
-2. `prime` — before-we-speak (word intro) — 2 words → builds ``
-3. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
-4. `prime` — before-we-speak (word intro) — 3 words → builds ``
+2. `prime` — before-we-speak (word intro) — 5 words → builds ``
+3. `visualMatch` — visual match (hear → tap the tile) — 1 round(s)
+4. `prime` — before-we-speak (word intro) — 4 words → builds ``
 5. `visualMatch` — visual match (hear → tap the tile) — 1 round(s)
-6. `prime` — before-we-speak (word intro) — 4 words → builds ``
+6. `prime` — before-we-speak (word intro) — 6 words → builds ``
 7. `quickReply` — quick reply (hear → pick your response) — 2 round(s)
-8. `prime` — before-we-speak (word intro) — 2 words → builds ``
-9. `visualMatch` — visual match (hear → tap the tile) — 2 round(s)
-10. `prime` — before-we-speak (word intro) — 3 words → builds ``
-11. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
-12. `swap` — swap it (one frame, several endings) — 1 round(s)
-13. `prime` — before-we-speak (word intro) — 3 words → builds ``
-14. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
-15. `prime` — before-we-speak (word intro) — 3 words → builds ``
-16. `quickReply` — quick reply (hear → pick your response) — 1 round(s)
-17. `prime` — before-we-speak (word intro) — 1 words → builds ``
-18. `visualMatch` — visual match (hear → tap the tile) — 2 round(s)
-19. `receipt` — receipt (proof card) — "🧰 FIX IT ¦ 🍽️ Restaurant: 🍽️ Ordered 🍝, got 🥩 → ✅ The right meal / 💳 Charged twice → ✅ Money back + 🍰 ‖ 🏨 Hotel: ❄️ AC not working → ✅ Someone is coming / 🔊 Noisy room → ✅ Room 305 ¦ Four problems — you said what was wrong and asked for a fix." / "🧰 לתקן את זה ¦ 🍽️ מסעדה: 🍽️ הזמנת 🍝, קיבלת 🥩 → ✅ המנה הנכונה / 💳 חויבת פעמיים → ✅ הכסף חזר + 🍰 ‖ 🏨 מלון: ❄️ המזגן לא עובד → ✅ מישהו בא לתקן / 🔊 החדר רועש → ✅ חדר 305 ¦ ארבע בעיות — אמרת מה הבעיה וביקשת פתרון."
-20. `dialogue` — dialogue (choose your line) — scene `fixing-problems`
-21. `receipt` — receipt (proof card) — "🍽️ The restaurant — a wrong meal and a double charge, both fixed." / "🍽️ המסעדה — מנה שגויה וחיוב כפול, ושניהם תוקנו."
-22. `dialogue` — dialogue (choose your line) — scene `room-problem`
-23. `receipt` — receipt (proof card) — "🏨 The hotel — the AC, the noise, and a new room." / "🏨 המלון — מזגן, רעש, וחדר חדש."
-24. `quickReply` — quick reply (hear → pick your response) — 4 round(s) · speed challenge
-25. `receipt` — receipt (proof card) — "No help — the wrong thing, a mistake, something not working, and asking for a fix." / "בלי עזרה — מנה שגויה, טעות, משהו לא עובד, ובקשה לתקן."
-26. `video` — video — mode again
-27. `quickReply` — quick reply (hear → pick your response) — 5 round(s)
-28. `receipt` — receipt (proof card) — "🧰 FIX IT ¦ 🍽️ Restaurant: 🍽️ Ordered 🍝, got 🥩 → ✅ The right meal / 💳 Charged twice → ✅ Money back + 🍰 ‖ 🏨 Hotel: ❄️ AC not working → ✅ Someone is coming / 🔊 Noisy room → ✅ Room 305 ¦ Four problems — you said what was wrong, asked for a fix, and understood what they did. New ones too." / "🧰 לתקן את זה ¦ 🍽️ מסעדה: 🍽️ הזמנת 🍝, קיבלת 🥩 → ✅ המנה הנכונה / 💳 חויבת פעמיים → ✅ הכסף חזר + 🍰 ‖ 🏨 מלון: ❄️ המזגן לא עובד → ✅ מישהו בא לתקן / 🔊 החדר רועש → ✅ חדר 305 ¦ ארבע בעיות — אמרת מה הבעיה, ביקשת פתרון, והבנת מה עשו. וגם בעיות חדשות."
-29. `summary` — victory screen
+8. `swap` — swap it (one frame, several endings) — 1 round(s)
+9. `prime` — before-we-speak (word intro) — 4 words → builds ``
+10. `visualMatch` — visual match (hear → tap the tile) — 2 round(s)
+11. `receipt` — receipt (proof card) — "🧰 FIX IT ¦ 🍽️ Restaurant: 🍽️ Ordered 🍝, got 🥩 → ✅ The right meal / 💳 Charged twice → ✅ Money back ‖ 🏨 Hotel: ❄️ AC not working → ✅ Someone is coming / 🔊 Noisy room → ✅ Room 305 ¦ Four problems — you said what was wrong and asked for a fix." / "🧰 לתקן את זה ¦ 🍽️ מסעדה: 🍽️ הזמנת 🍝, קיבלת 🥩 → ✅ המנה הנכונה / 💳 חויבת פעמיים → ✅ הכסף חזר ‖ 🏨 מלון: ❄️ המזגן לא עובד → ✅ מישהו בא לתקן / 🔊 החדר רועש → ✅ חדר 305 ¦ ארבע בעיות — אמרת מה הבעיה וביקשת פתרון."
+12. `dialogue` — dialogue (choose your line) — scene `fixing-problems`
+13. `dialogue` — dialogue (choose your line) — scene `room-problem`
+14. `quickReply` — quick reply (hear → pick your response) — 4 round(s) · speed challenge
+15. `video` — video — mode again
+16. `quickReply` — quick reply (hear → pick your response) — 5 round(s)
+17. `receipt` — receipt (proof card) — "🧰 FIX IT ¦ 🍽️ Restaurant: 🍽️ Ordered 🍝, got 🥩 → ✅ The right meal / 💳 Charged twice → ✅ Money back ‖ 🏨 Hotel: ❄️ AC not working → ✅ Someone is coming / 🔊 Noisy room → ✅ Room 305 ¦ Four problems — you said what was wrong, asked for a fix, and understood what they did. New ones too." / "🧰 לתקן את זה ¦ 🍽️ מסעדה: 🍽️ הזמנת 🍝, קיבלת 🥩 → ✅ המנה הנכונה / 💳 חויבת פעמיים → ✅ הכסף חזר ‖ 🏨 מלון: ❄️ המזגן לא עובד → ✅ מישהו בא לתקן / 🔊 החדר רועש → ✅ חדר 305 ¦ ארבע בעיות — אמרת מה הבעיה, ביקשת פתרון, והבנת מה עשו. וגם בעיות חדשות."
+18. `summary` — victory screen
 
 Step sequence identical in EN / FR / ES: yes.
 
 ## Before we speak / word intro
 
-Step 2. Label: "The wrong meal" / "מנה לא נכונה". Intro: "🧰 FIX IT ¦ 🍽️ Restaurant: 🍽️ Ordered 🍝, got 🥩 → ⚠️ ? / 💳 Charged twice → ⚠️ ? ‖ 🏨 Hotel: ❄️ AC not working → ⚠️ ? / 🔊 Noisy room → ⚠️ ? ¦ 🍽️ At the restaurant. Your meal arrives — tap to hear." / "🧰 לתקן את זה ¦ 🍽️ מסעדה: 🍽️ הזמנת 🍝, קיבלת 🥩 → ⚠️ ? / 💳 חויבת פעמיים → ⚠️ ? ‖ 🏨 מלון: ❄️ המזגן לא עובד → ⚠️ ? / 🔊 החדר רועש → ⚠️ ? ¦ 🍽️ במסעדה. המנה מגיעה — הקש כדי לשמוע.".
+Step 2. Label: "🍽️ The wrong meal" / "🍽️ מנה לא נכונה". Intro: "🧰 FIX IT ¦ 🍽️ Restaurant: 🍽️ Ordered 🍝, got 🥩 → ⚠️ ? / 💳 Charged twice → ⚠️ ? ‖ 🏨 Hotel: ❄️ AC not working → ⚠️ ? / 🔊 Noisy room → ⚠️ ? ¦ 🍽️ At the restaurant. Your meal arrives — tap to hear." / "🧰 לתקן את זה ¦ 🍽️ מסעדה: 🍽️ הזמנת 🍝, קיבלת 🥩 → ⚠️ ? / 💳 חויבת פעמיים → ⚠️ ? ‖ 🏨 מלון: ❄️ המזגן לא עובד → ⚠️ ? / 🔊 החדר רועש → ⚠️ ? ¦ 🍽️ במסעדה. המנה מגיעה — הקש כדי לשמוע.".
 The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
 
 Words are paired across languages by their concept KEY (not by position).
 
 1. `fix.line.meal` — EN "Here's your meal — one steak!" · FR "Voici votre plat — un steak !" · ES "Aquí tiene su plato — ¡un filete!" — meaning "הנה הארוחה שלך — סטייק אחד! (🥩 — אבל הזמנת פסטה)" / "Here’s your meal — one steak! (🥩 — but you ordered pasta)" — icon 🥩 — new
 2. `fix.line.not-ordered` — EN "This isn't what I ordered." · FR "Ce n’est pas ce que j’ai commandé." · ES "Esto no es lo que pedí." — meaning "זה לא מה שהזמנתי. (קיבלת משהו אחר — לכל דבר: מנה, משקה, כרטיס)" / "This isn’t what I ordered. (you got something else — any thing: a meal, a drink, a ticket)" — icon 🍽️ — new
+3. `fix.line.what-order` — EN "Oh no, I'm so sorry! What did you order?" · FR "Oh non, je suis vraiment désolé ! Qu’avez-vous commandé ?" · ES "¡Ay, lo siento muchísimo! ¿Qué pidió?" — meaning "אוי לא, אני מצטער מאוד! מה הזמנת? (שואלים מה ביקשת)" / "Oh no, I’m so sorry! What did you order? (a question about what you asked for)" — icon 🍽️ — new
+4. `fix.line.i-ordered` — EN "I ordered the pasta." · FR "J’ai commandé les pâtes." · ES "Pedí la pasta." — meaning "הזמנתי את הפסטה. (מה שביקשת)" / "I ordered the pasta. (what you asked for)" — icon 🍽️ — new
+5. `fix.line.bring` — EN "Of course — I'll bring the right one right away." · FR "Bien sûr — je vous apporte le bon tout de suite." · ES "Claro — le traigo el correcto enseguida." — meaning "כמובן — אביא את הנכון מיד. (🍝 מביאים את המנה הנכונה)" / "Of course — I’ll bring the right one right away. (🍝 they bring the right meal)" — icon 🛠️ — new
 
 No build-sentence card.
 
-Step 4. Label: "What did you order?" / "מה הזמנת?". Intro: "🧰 FIX IT ¦ 🍽️ Restaurant: 🍽️ Ordered 🍝, got 🥩 → 🗣️ ? / 💳 Charged twice → ⚠️ ? ‖ 🏨 Hotel: ❄️ AC not working → ⚠️ ? / 🔊 Noisy room → ⚠️ ? ¦ The waiter asks — and fixes it. Tap to hear." / "🧰 לתקן את זה ¦ 🍽️ מסעדה: 🍽️ הזמנת 🍝, קיבלת 🥩 → 🗣️ ? / 💳 חויבת פעמיים → ⚠️ ? ‖ 🏨 מלון: ❄️ המזגן לא עובד → ⚠️ ? / 🔊 החדר רועש → ⚠️ ? ¦ המלצר שואל — ומתקן. הקש כדי לשמוע.".
-The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
-
-Words are paired across languages by their concept KEY (not by position).
-
-1. `fix.line.what-order` — EN "Oh no, I'm so sorry! What did you order?" · FR "Oh non, je suis vraiment désolé ! Qu’avez-vous commandé ?" · ES "¡Ay, lo siento muchísimo! ¿Qué pidió?" — meaning "אוי לא, אני מצטער מאוד! מה הזמנת? (שואלים מה ביקשת)" / "Oh no, I’m so sorry! What did you order? (a question about what you asked for)" — icon 🍽️ — new
-2. `fix.line.i-ordered` — EN "I ordered the pasta." · FR "J’ai commandé les pâtes." · ES "Pedí la pasta." — meaning "הזמנתי את הפסטה. (מה שביקשת)" / "I ordered the pasta. (what you asked for)" — icon 🍽️ — new
-3. `fix.line.bring` — EN "Of course — I'll bring the right one right away." · FR "Bien sûr — je vous apporte le bon tout de suite." · ES "Claro — le traigo el correcto enseguida." — meaning "כמובן — אביא את הנכון מיד. (🍝 מביאים את המנה הנכונה)" / "Of course — I’ll bring the right one right away. (🍝 they bring the right meal)" — icon 🛠️ — new
-
-No build-sentence card.
-
-Step 6. Label: "The bill" / "החשבון". Intro: "🧰 FIX IT ¦ 🍽️ Restaurant: 🍽️ Ordered 🍝, got 🥩 → 🗣️ ? / 💳 Charged twice → ⚠️ ? ‖ 🏨 Hotel: ❄️ AC not working → ⚠️ ? / 🔊 Noisy room → ⚠️ ? ¦ Later… the bill. Tap to hear." / "🧰 לתקן את זה ¦ 🍽️ מסעדה: 🍽️ הזמנת 🍝, קיבלת 🥩 → 🗣️ ? / 💳 חויבת פעמיים → ⚠️ ? ‖ 🏨 מלון: ❄️ המזגן לא עובד → ⚠️ ? / 🔊 החדר רועש → ⚠️ ? ¦ מאוחר יותר… החשבון. הקש כדי לשמוע.".
+Step 4. Label: "🧾 The bill" / "🧾 החשבון". Intro: "🧰 FIX IT ¦ 🍽️ Restaurant: 🍽️ Ordered 🍝, got 🥩 → 🗣️ ? / 💳 Charged twice → ⚠️ ? ‖ 🏨 Hotel: ❄️ AC not working → ⚠️ ? / 🔊 Noisy room → ⚠️ ? ¦ Later… the bill. Tap to hear." / "🧰 לתקן את זה ¦ 🍽️ מסעדה: 🍽️ הזמנת 🍝, קיבלת 🥩 → 🗣️ ? / 💳 חויבת פעמיים → ⚠️ ? ‖ 🏨 מלון: ❄️ המזגן לא עובד → ⚠️ ? / 🔊 החדר רועש → ⚠️ ? ¦ מאוחר יותר… החשבון. הקש כדי לשמוע.".
 The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
 
 Words are paired across languages by their concept KEY (not by position).
 
 1. `fix.line.bill` — EN "Here's your bill." · FR "Voici l’addition." · ES "Aquí tiene la cuenta." — meaning "הנה החשבון. (💳 — אבל חייבו אותך פעמיים)" / "Here’s your bill. (💳 — but you were charged twice)" — icon 🧾 — new
 2. `fix.line.mistake` — EN "I think there's a mistake." · FR "Je crois qu’il y a une erreur." · ES "Creo que hay un error." — meaning "אני חושב שיש טעות. (משהו לא נכון כאן — בחשבון, בכרטיס, בחדר)" / "I think there’s a mistake. (something is wrong here — a bill, a ticket, a room)" — icon 🧾 — new
-3. `fix.line.check` — EN "Let me check the bill. What's the problem?" · FR "Laissez-moi vérifier l’addition. Quel est le problème ?" · ES "Déjeme revisar la cuenta. ¿Cuál es el problema?" — meaning "תן לי לבדוק את החשבון. מה הבעיה? (שואלים מה לא בסדר)" / "Let me check the bill. What’s the problem? (a question about what is wrong)" — icon 🧾 — new
-4. `fix.line.charged` — EN "I was charged twice." · FR "On m’a facturé deux fois." · ES "Me han cobrado dos veces." — meaning "חייבו אותי פעמיים. (💳💳 שילמת פעמיים)" / "I was charged twice. (💳💳 you paid two times)" — icon 🧾 — new
+3. `fix.line.charged` — EN "I was charged twice." · FR "On m’a facturé deux fois." · ES "Me han cobrado dos veces." — meaning "חייבו אותי פעמיים. (💳💳 שילמת פעמיים)" / "I was charged twice. (💳💳 you paid two times)" — icon 🧾 — new
+4. `fix.line.refund` — EN "You're right — my mistake. I'll refund it now." · FR "Vous avez raison — c’est ma faute. Je vous rembourse tout de suite." · ES "Tiene razón — es culpa mía. Le hago el reembolso ahora mismo." — meaning "אתה צודק — הטעות שלי. אחזיר לך עכשיו. (💰 הכסף חוזר אליך)" / "You’re right — my mistake. I’ll refund it now. (💰 you get the money back)" — icon 🛠️ — new
 
 No build-sentence card.
 
-Step 8. Label: "The fix" / "הפתרון". Intro: "🧰 FIX IT ¦ 🍽️ Restaurant: 🍽️ Ordered 🍝, got 🥩 → 🗣️ ? / 💳 Charged twice → 🗣️ ? ‖ 🏨 Hotel: ❄️ AC not working → ⚠️ ? / 🔊 Noisy room → ⚠️ ? ¦ The waiter fixes it. Tap to hear." / "🧰 לתקן את זה ¦ 🍽️ מסעדה: 🍽️ הזמנת 🍝, קיבלת 🥩 → 🗣️ ? / 💳 חויבת פעמיים → 🗣️ ? ‖ 🏨 מלון: ❄️ המזגן לא עובד → ⚠️ ? / 🔊 החדר רועש → ⚠️ ? ¦ המלצר מתקן. הקש כדי לשמוע.".
-The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
-
-Words are paired across languages by their concept KEY (not by position).
-
-1. `fix.line.refund` — EN "You're right — my mistake. I'll refund it now." · FR "Vous avez raison — c’est ma faute. Je vous rembourse tout de suite." · ES "Tiene razón — es culpa mía. Le hago el reembolso ahora mismo." — meaning "אתה צודק — הטעות שלי. אחזיר לך עכשיו. (💰 הכסף חוזר אליך)" / "You’re right — my mistake. I’ll refund it now. (💰 you get the money back)" — icon 🛠️ — new
-2. `fix.line.dessert` — EN "Thank you for your patience. Dessert is on the house!" · FR "Merci de votre patience. Le dessert est offert par la maison !" · ES "Gracias por su paciencia. ¡El postre corre por cuenta de la casa!" — meaning "תודה על הסבלנות. הקינוח על חשבון הבית! (🍰 קינוח בחינם)" / "Thank you for your patience. Dessert is on the house! (🍰 a free dessert)" — icon 🛠️ — new
-
-No build-sentence card.
-
-Step 10. Label: "🏨 The hotel — the same skill" / "🏨 מלון — אותה מיומנות". Intro: "🧰 FIX IT ¦ 🍽️ Restaurant: 🍽️ Ordered 🍝, got 🥩 → ✅ The right meal / 💳 Charged twice → ✅ Money back + 🍰 ‖ 🏨 Hotel: ❄️ AC not working → ⚠️ ? / 🔊 Noisy room → ⚠️ ? ¦ 🏨 Another place — the same skill: say what’s wrong, ask for a fix. Tap to hear." / "🧰 לתקן את זה ¦ 🍽️ מסעדה: 🍽️ הזמנת 🍝, קיבלת 🥩 → ✅ המנה הנכונה / 💳 חויבת פעמיים → ✅ הכסף חזר + 🍰 ‖ 🏨 מלון: ❄️ המזגן לא עובד → ⚠️ ? / 🔊 החדר רועש → ⚠️ ? ¦ 🏨 מקום אחר — אותה מיומנות: אומרים מה הבעיה ומבקשים פתרון. הקש כדי לשמוע.".
+Step 6. Label: "🏨 The hotel — the same skill" / "🏨 מלון — אותה מיומנות". Intro: "🧰 FIX IT ¦ 🍽️ Restaurant: 🍽️ Ordered 🍝, got 🥩 → ✅ The right meal / 💳 Charged twice → ✅ Money back ‖ 🏨 Hotel: ❄️ AC not working → ⚠️ ? / 🔊 Noisy room → ⚠️ ? ¦ 🏨 Another place — the same skill: say what’s wrong, ask for a fix. Tap to hear." / "🧰 לתקן את זה ¦ 🍽️ מסעדה: 🍽️ הזמנת 🍝, קיבלת 🥩 → ✅ המנה הנכונה / 💳 חויבת פעמיים → ✅ הכסף חזר ‖ 🏨 מלון: ❄️ המזגן לא עובד → ⚠️ ? / 🔊 החדר רועש → ⚠️ ? ¦ 🏨 מקום אחר — אותה מיומנות: אומרים מה הבעיה ומבקשים פתרון. הקש כדי לשמוע.".
 The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
 
 Words are paired across languages by their concept KEY (not by position).
@@ -21195,21 +21166,13 @@ Words are paired across languages by their concept KEY (not by position).
 1. `fix.line.room-problem` — EN "There's a problem with my room." · FR "Il y a un problème avec ma chambre." · ES "Hay un problema con mi habitación." — meaning "יש בעיה בחדר שלי. (פותח — לפני שמסבירים)" / "There’s a problem with my room. (an opener — before you explain)" — icon 🏨 — new
 2. `fix.line.whats-problem` — EN "I'm sorry to hear that. What's the problem?" · FR "Je suis désolé. Quel est le problème ?" · ES "Lo siento. ¿Cuál es el problema?" — meaning "אני מצטער לשמוע. מה הבעיה? (שואלים מה לא בסדר)" / "I’m sorry to hear that. What’s the problem? (a question about what is wrong)" — icon 🏨 — new
 3. `fix.line.ac` — EN "The air conditioning isn't working." · FR "La climatisation ne marche pas." · ES "El aire acondicionado no funciona." — meaning "המזגן לא עובד. (___ לא עובד — כל דבר שמתקלקל)" / "The air conditioning isn’t working. (___ isn’t working — anything that breaks)" — icon ❄️ — new
+4. `fix.line.so-sorry` — EN "I'm so sorry about that." · FR "Je suis vraiment désolé." · ES "Lo siento muchísimo." — meaning "אני מצטער על זה מאוד. (התנצלות — אבל עוד לא פתרון)" / "I’m so sorry about that. (an apology — not a fix yet)" — icon 🏨 — new
+5. `fix.line.fix` — EN "Can you fix it?" · FR "Vous pouvez arranger ça ?" · ES "¿Lo puede arreglar?" — meaning "אפשר לתקן את זה? (מבקשים פתרון — לכל דבר שלא עובד)" / "Can you fix it? (asking for a fix — for anything that isn’t working)" — icon 🛠️ — new
+6. `fix.line.send` — EN "Yes, I'll send someone right away. Is everything else okay?" · FR "Oui, j’envoie quelqu’un tout de suite. Tout le reste va bien ?" · ES "Sí, mando a alguien ahora mismo. ¿Todo lo demás está bien?" — meaning "כן, אשלח מישהו מיד. כל השאר בסדר? (👨‍🔧 מישהו בא לתקן)" / "Yes, I’ll send someone right away. Is everything else okay? (👨‍🔧 someone is coming to fix it)" — icon 🛠️ — new
 
 No build-sentence card.
 
-Step 13. Label: "Can you fix it?" / "אפשר לתקן?". Intro: "🧰 FIX IT ¦ 🍽️ Restaurant: 🍽️ Ordered 🍝, got 🥩 → ✅ The right meal / 💳 Charged twice → ✅ Money back + 🍰 ‖ 🏨 Hotel: ❄️ AC not working → 🗣️ ? / 🔊 Noisy room → ⚠️ ? ¦ Now — ask for a fix. Tap to hear." / "🧰 לתקן את זה ¦ 🍽️ מסעדה: 🍽️ הזמנת 🍝, קיבלת 🥩 → ✅ המנה הנכונה / 💳 חויבת פעמיים → ✅ הכסף חזר + 🍰 ‖ 🏨 מלון: ❄️ המזגן לא עובד → 🗣️ ? / 🔊 החדר רועש → ⚠️ ? ¦ ועכשיו — מבקשים פתרון. הקש כדי לשמוע.".
-The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
-
-Words are paired across languages by their concept KEY (not by position).
-
-1. `fix.line.so-sorry` — EN "I'm so sorry about that." · FR "Je suis vraiment désolé." · ES "Lo siento muchísimo." — meaning "אני מצטער על זה מאוד. (התנצלות — אבל עוד לא פתרון)" / "I’m so sorry about that. (an apology — not a fix yet)" — icon 🏨 — new
-2. `fix.line.fix` — EN "Can you fix it?" · FR "Vous pouvez arranger ça ?" · ES "¿Lo puede arreglar?" — meaning "אפשר לתקן את זה? (מבקשים פתרון — לכל דבר שלא עובד)" / "Can you fix it? (asking for a fix — for anything that isn’t working)" — icon 🛠️ — new
-3. `fix.line.send` — EN "Yes, I'll send someone right away. Is everything else okay?" · FR "Oui, j’envoie quelqu’un tout de suite. Tout le reste va bien ?" · ES "Sí, mando a alguien ahora mismo. ¿Todo lo demás está bien?" — meaning "כן, אשלח מישהו מיד. כל השאר בסדר? (👨‍🔧 מישהו בא לתקן)" / "Yes, I’ll send someone right away. Is everything else okay? (👨‍🔧 someone is coming to fix it)" — icon 🛠️ — new
-
-No build-sentence card.
-
-Step 15. Label: "A noisy room" / "חדר רועש". Intro: "🧰 FIX IT ¦ 🍽️ Restaurant: 🍽️ Ordered 🍝, got 🥩 → ✅ The right meal / 💳 Charged twice → ✅ Money back + 🍰 ‖ 🏨 Hotel: ❄️ AC not working → 🗣️ ? / 🔊 Noisy room → ⚠️ ? ¦ One more problem. Tap to hear." / "🧰 לתקן את זה ¦ 🍽️ מסעדה: 🍽️ הזמנת 🍝, קיבלת 🥩 → ✅ המנה הנכונה / 💳 חויבת פעמיים → ✅ הכסף חזר + 🍰 ‖ 🏨 מלון: ❄️ המזגן לא עובד → 🗣️ ? / 🔊 החדר רועש → ⚠️ ? ¦ ועוד בעיה. הקש כדי לשמוע.".
+Step 9. Label: "🔊 A noisy room" / "🔊 חדר רועש". Intro: "🧰 FIX IT ¦ 🍽️ Restaurant: 🍽️ Ordered 🍝, got 🥩 → ✅ The right meal / 💳 Charged twice → ✅ Money back ‖ 🏨 Hotel: ❄️ AC not working → 🗣️ ? / 🔊 Noisy room → ⚠️ ? ¦ One more problem. Tap to hear." / "🧰 לתקן את זה ¦ 🍽️ מסעדה: 🍽️ הזמנת 🍝, קיבלת 🥩 → ✅ המנה הנכונה / 💳 חויבת פעמיים → ✅ הכסף חזר ‖ 🏨 מלון: ❄️ המזגן לא עובד → 🗣️ ? / 🔊 החדר רועש → ⚠️ ? ¦ ועוד בעיה. הקש כדי לשמוע.".
 The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
 
 Words are paired across languages by their concept KEY (not by position).
@@ -21217,15 +21180,7 @@ Words are paired across languages by their concept KEY (not by position).
 1. `fix.line.noisy` — EN "No. My room is very noisy." · FR "Non. Ma chambre est très bruyante." · ES "No. Mi habitación es muy ruidosa." — meaning "לא. החדר שלי מאוד רועש. (🔊 — אי אפשר לישון)" / "No. My room is very noisy. (🔊 — you can’t sleep)" — icon 🔊 — new
 2. `fix.line.quieter` — EN "I understand. We have a quieter room." · FR "Je comprends. Nous avons une chambre plus calme." · ES "Lo entiendo. Tenemos una habitación más tranquila." — meaning "אני מבין. יש לנו חדר שקט יותר. (מציעים חדר אחר)" / "I understand. We have a quieter room. (they offer another room)" — icon 🔊 — new
 3. `fix.line.change` — EN "Can I change rooms?" · FR "Je peux changer de chambre ?" · ES "¿Puedo cambiar de habitación?" — meaning "אפשר להחליף חדר? (לפעמים הפתרון הוא חלופה — לא תיקון)" / "Can I change rooms? (sometimes the fix is an alternative — not a repair)" — icon 🛠️ — new
-
-No build-sentence card.
-
-Step 17. Label: "The new room" / "החדר החדש". Intro: "🧰 FIX IT ¦ 🍽️ Restaurant: 🍽️ Ordered 🍝, got 🥩 → ✅ The right meal / 💳 Charged twice → ✅ Money back + 🍰 ‖ 🏨 Hotel: ❄️ AC not working → 🗣️ ? / 🔊 Noisy room → 🗣️ ? ¦ And the fix. Tap to hear." / "🧰 לתקן את זה ¦ 🍽️ מסעדה: 🍽️ הזמנת 🍝, קיבלת 🥩 → ✅ המנה הנכונה / 💳 חויבת פעמיים → ✅ הכסף חזר + 🍰 ‖ 🏨 מלון: ❄️ המזגן לא עובד → 🗣️ ? / 🔊 החדר רועש → 🗣️ ? ¦ והפתרון. הקש כדי לשמוע.".
-The learner READS each word with its meaning always visible and may TAP it to HEAR it (TTS). Nothing is selected or scored. No internal ids exist for these words.
-
-Words are paired across languages by their concept KEY (not by position).
-
-1. `fix.line.new-key` — EN "Of course — room 305. Here is your new key. Good night!" · FR "Bien sûr — chambre 305. Voici votre nouvelle clé. Bonne nuit !" · ES "Claro — habitación 305. Aquí tiene su nueva llave. ¡Buenas noches!" — meaning "כמובן — חדר 305. הנה המפתח החדש. לילה טוב! (🔑 חדר אחר ומפתח חדש)" / "Of course — room 305. Here is your new key. Good night! (🔑 another room, a new key)" — icon 🛠️ — new
+4. `fix.line.new-key` — EN "Of course — room 305. Here is your new key. Good night!" · FR "Bien sûr — chambre 305. Voici votre nouvelle clé. Bonne nuit !" · ES "Claro — habitación 305. Aquí tiene su nueva llave. ¡Buenas noches!" — meaning "כמובן — חדר 305. הנה המפתח החדש. לילה טוב! (🔑 חדר אחר ומפתח חדש)" / "Of course — room 305. Here is your new key. Good night! (🔑 another room, a new key)" — icon 🛠️ — new
 
 No build-sentence card.
 
@@ -21242,7 +21197,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "Calm and clear. No need to apologize." / "רגוע וברור. לא צריך להתנצל."
 - Used in missions: 22, 24, 29, 30
-- Exercised here as: quick-reply response (step 3, round 1, accepted); quick-reply response (step 7, round 2, wrong option); quick-reply response (step 24, round 1, accepted); quick-reply response (step 24, round 3, wrong option); quick-reply response (step 27, round 1, accepted); quick-reply response (step 27, round 2, wrong option); quick-reply response (step 27, round 3, wrong option); dialogue choice fixing-problems/c2 (accepted); dialogue choice fixing-problems/c4 (WRONG option)
+- Exercised here as: quick-reply response (step 14, round 1, accepted); quick-reply response (step 14, round 3, wrong option); quick-reply response (step 16, round 1, accepted); quick-reply response (step 16, round 2, wrong option); quick-reply response (step 16, round 3, wrong option); dialogue choice fixing-problems/c2 (accepted); dialogue choice fixing-problems/c4 (WRONG option)
 
 ### Sentence: `phrase.fix.no-problem-thanks`
 
@@ -21253,7 +21208,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 22, 24, 29, 30
-- Exercised here as: quick-reply response (step 3, round 1, wrong option); quick-reply response (step 7, round 1, wrong option); quick-reply response (step 24, round 1, wrong option); quick-reply response (step 24, round 2, wrong option); quick-reply response (step 27, round 1, wrong option); quick-reply response (step 27, round 5, wrong option); dialogue choice fixing-problems/c2 (WRONG option); dialogue choice fixing-problems/c6 (WRONG option); dialogue choice fixing-problems/c10 (accepted); dialogue choice room-problem/c2 (WRONG option)
+- Exercised here as: quick-reply response (step 14, round 1, wrong option); quick-reply response (step 14, round 2, wrong option); quick-reply response (step 16, round 1, wrong option); quick-reply response (step 16, round 5, wrong option); dialogue choice fixing-problems/c2 (WRONG option); dialogue choice fixing-problems/c6 (WRONG option); dialogue choice fixing-problems/c10 (accepted); dialogue choice room-problem/c2 (WRONG option)
 
 ### Sentence: `phrase.fix.i-ordered`
 
@@ -21264,7 +21219,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 22, 24, 29, 30
-- Exercised here as: quick-reply response (step 7, round 1, wrong option); quick-reply response (step 7, round 2, wrong option); quick-reply response (step 11, round 1, wrong option); quick-reply response (step 14, round 1, wrong option); quick-reply response (step 24, round 4, wrong option); quick-reply response (step 27, round 2, accepted); quick-reply response (step 27, round 4, wrong option); dialogue choice fixing-problems/c4 (accepted); dialogue choice fixing-problems/c8 (WRONG option); dialogue choice room-problem/c6 (WRONG option)
+- Exercised here as: quick-reply response (step 7, round 1, wrong option); quick-reply response (step 7, round 2, wrong option); quick-reply response (step 14, round 4, wrong option); quick-reply response (step 16, round 2, accepted); quick-reply response (step 16, round 4, wrong option); dialogue choice fixing-problems/c4 (accepted); dialogue choice fixing-problems/c8 (WRONG option); dialogue choice room-problem/c6 (WRONG option)
 
 ### Sentence: `phrase.fix.theres-mistake`
 
@@ -21275,7 +21230,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 22
-- Exercised here as: quick-reply response (step 7, round 1, accepted); quick-reply response (step 16, round 1, wrong option); quick-reply response (step 24, round 2, accepted); quick-reply response (step 27, round 2, wrong option); quick-reply response (step 27, round 5, accepted); dialogue choice fixing-problems/c6 (accepted)
+- Exercised here as: quick-reply response (step 14, round 2, accepted); quick-reply response (step 16, round 2, wrong option); quick-reply response (step 16, round 5, accepted); dialogue choice fixing-problems/c6 (accepted)
 
 ### Sentence: `phrase.fix.charged-twice`
 
@@ -21286,7 +21241,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 22, 24, 30
-- Exercised here as: quick-reply response (step 7, round 2, accepted); quick-reply response (step 11, round 1, wrong option); quick-reply response (step 14, round 1, wrong option); quick-reply response (step 24, round 3, wrong option); quick-reply response (step 24, round 4, wrong option); quick-reply response (step 27, round 3, wrong option); quick-reply response (step 27, round 4, wrong option); dialogue choice fixing-problems/c8 (accepted); dialogue choice fixing-problems/c10 (WRONG option); dialogue choice room-problem/c4 (WRONG option)
+- Exercised here as: quick-reply response (step 7, round 1, wrong option); quick-reply response (step 7, round 2, wrong option); quick-reply response (step 14, round 3, wrong option); quick-reply response (step 14, round 4, wrong option); quick-reply response (step 16, round 3, wrong option); quick-reply response (step 16, round 4, wrong option); dialogue choice fixing-problems/c8 (accepted); dialogue choice fixing-problems/c10 (WRONG option); dialogue choice room-problem/c4 (WRONG option)
 
 ### Sentence: `phrase.fix.theres-problem`
 
@@ -21308,7 +21263,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: "Template: The ___ isn’t working. Works for anything broken." / "התבנית: The ___ isn’t working. עובדת על כל דבר שהתקלקל."
 - Used in missions: 22
-- Exercised here as: quick-reply response (step 11, round 1, accepted); swap-it frame (step 12, round 1); quick-reply response (step 24, round 3, accepted); quick-reply response (step 27, round 3, accepted); dialogue choice room-problem/c4 (accepted); dialogue choice room-problem/c8 (WRONG option)
+- Exercised here as: quick-reply response (step 7, round 1, accepted); swap-it frame (step 8, round 1); quick-reply response (step 14, round 3, accepted); quick-reply response (step 16, round 3, accepted); dialogue choice room-problem/c4 (accepted); dialogue choice room-problem/c8 (WRONG option)
 
 ### Sentence: `phrase.fix.can-you-fix`
 
@@ -21319,7 +21274,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 22, 24, 29
-- Exercised here as: quick-reply response (step 14, round 1, accepted); quick-reply response (step 16, round 1, wrong option); quick-reply response (step 24, round 4, accepted); quick-reply response (step 27, round 4, accepted); dialogue choice room-problem/c6 (accepted); dialogue choice room-problem/c10 (WRONG option)
+- Exercised here as: quick-reply response (step 7, round 2, accepted); quick-reply response (step 14, round 4, accepted); quick-reply response (step 16, round 4, accepted); dialogue choice room-problem/c6 (accepted); dialogue choice room-problem/c10 (WRONG option)
 
 ### Sentence: `phrase.hotelreq.room-noisy`
 
@@ -21341,7 +21296,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: learner production
 - Tip / pattern note: none
 - Used in missions: 22
-- Exercised here as: quick-reply response (step 16, round 1, accepted); quick-reply response (step 24, round 1, wrong option); quick-reply response (step 24, round 2, wrong option); quick-reply response (step 27, round 1, wrong option); quick-reply response (step 27, round 5, wrong option); dialogue choice room-problem/c10 (accepted)
+- Exercised here as: quick-reply response (step 14, round 1, wrong option); quick-reply response (step 14, round 2, wrong option); quick-reply response (step 16, round 1, wrong option); quick-reply response (step 16, round 5, wrong option); dialogue choice room-problem/c10 (accepted)
 
 ### Sentence: `reply.fix.meal`
 
@@ -21352,7 +21307,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 22
-- Exercised here as: quick-reply prompt (step 3, round 1); quick-reply prompt (step 24, round 1)
+- Exercised here as: quick-reply prompt (step 14, round 1)
 
 ### Sentence: `reply.fix.what-did-you-order`
 
@@ -21363,7 +21318,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 22
-- Exercised here as: quick-reply prompt (step 27, round 2)
+- Exercised here as: quick-reply prompt (step 16, round 2)
 
 ### Sentence: `reply.fix.bill`
 
@@ -21374,7 +21329,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 22
-- Exercised here as: quick-reply prompt (step 7, round 1); quick-reply prompt (step 24, round 2)
+- Exercised here as: quick-reply prompt (step 14, round 2)
 
 ### Sentence: `reply.fix.check-the-bill`
 
@@ -21385,7 +21340,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 22
-- Exercised here as: quick-reply prompt (step 7, round 2)
+- Exercised here as: nothing (listed only)
 
 ### Sentence: `reply.fix.how-can-i-help`
 
@@ -21396,7 +21351,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 22
-- Exercised here as: quick-reply prompt (step 27, round 3)
+- Exercised here as: quick-reply prompt (step 16, round 3)
 
 ### Sentence: `reply.fix.whats-the-problem`
 
@@ -21407,7 +21362,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 22
-- Exercised here as: quick-reply prompt (step 11, round 1); quick-reply prompt (step 24, round 3)
+- Exercised here as: quick-reply prompt (step 7, round 1); quick-reply prompt (step 14, round 3)
 
 ### Sentence: `reply.fix.so-sorry`
 
@@ -21418,7 +21373,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 22
-- Exercised here as: quick-reply prompt (step 14, round 1); quick-reply prompt (step 24, round 4); quick-reply prompt (step 27, round 4)
+- Exercised here as: quick-reply prompt (step 7, round 2); quick-reply prompt (step 14, round 4); quick-reply prompt (step 16, round 4)
 
 ### Sentence: `reply.fix.quieter-room`
 
@@ -21429,7 +21384,7 @@ Audio for every sentence: asset-first, Web Speech TTS fallback (see "Audio / spe
 - Role: receptive — an expected reply the learner hears
 - Tip / pattern note: none
 - Used in missions: 22
-- Exercised here as: quick-reply prompt (step 16, round 1)
+- Exercised here as: nothing (listed only)
 
 ## Expected replies / listening items
 
@@ -21441,19 +21396,7 @@ No meaning quiz in this mission.
 
 ## Active practice — Quick Reply · Visual Match · Swap It · Mini Map
 
-### M22-Q01 — quick-reply (step 3, round 1 of 1)
-
-- Prompt displayed: "🧰 FIX IT ¦ 🍽️ Restaurant: 🍽️ Ordered 🍝, got 🥩 → ⚠️ ? / 💳 Charged twice → ⚠️ ? ‖ 🏨 Hotel: ❄️ AC not working → ⚠️ ? / 🔊 Noisy room → ⚠️ ? ¦ What do you say?" / "🧰 לתקן את זה ¦ 🍽️ מסעדה: 🍽️ הזמנת 🍝, קיבלת 🥩 → ⚠️ ? / 💳 חויבת פעמיים → ⚠️ ? ‖ 🏨 מלון: ❄️ המזגן לא עובד → ⚠️ ? / 🔊 החדר רועש → ⚠️ ? ¦ מה אתה אומר?"
-- Audio played: EN "Here's your meal — one steak!" · FR "Voici votre plat — un steak !" · ES "Aquí tiene su plato — ¡un filete!"
-- Meaning of the audio (HE): "הנה הארוחה שלך — סטייק אחד!"
-- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
-- Choices:
-  1. EN "This isn't what I ordered." · FR "Ce n’est pas ce que j’ai commandé." · ES "Esto no es lo que pedí." · (HE gloss "זה לא מה שהזמנתי.") — `phrase.fix.not-ordered` — ✅ accepted
-  2. EN "No problem, thank you." · FR "Pas de problème, merci." · ES "No pasa nada, gracias." · (HE gloss "אין בעיה, תודה.") — `phrase.fix.no-problem-thanks` — ❌ wrong
-- Tests: phrase.fix.not-ordered
-- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
-
-### M22-Q02 — visual-match (step 5, round 1 of 1)
+### M22-Q01 — visual-match (step 3, round 1 of 1)
 
 - Prompt displayed: "🧰 FIX IT ¦ 🍽️ Restaurant: 🍽️ Ordered 🍝, got 🥩 → 🗣️ ? / 💳 Charged twice → ⚠️ ? ‖ 🏨 Hotel: ❄️ AC not working → ⚠️ ? / 🔊 Noisy room → ⚠️ ? ¦ 🛠️ What did they do? Listen — and tap." / "🧰 לתקן את זה ¦ 🍽️ מסעדה: 🍽️ הזמנת 🍝, קיבלת 🥩 → 🗣️ ? / 💳 חויבת פעמיים → ⚠️ ? ‖ 🏨 מלון: ❄️ המזגן לא עובד → ⚠️ ? / 🔊 החדר רועש → ⚠️ ? ¦ 🛠️ מה הם עשו? שמע — והקש."
 - Audio played: EN "Of course — I'll bring the right one right away." · FR "Bien sûr — je vous apporte le bon tout de suite." · ES "Claro — le traigo el correcto enseguida."
@@ -21465,61 +21408,21 @@ No meaning quiz in this mission.
 - Tests: (no sentence id — not recorded)
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
-### M22-Q03 — quick-reply (step 7, round 1 of 2)
-
-- Prompt displayed: "🧰 FIX IT ¦ 🍽️ Restaurant: 🍽️ Ordered 🍝, got 🥩 → 🗣️ ? / 💳 Charged twice → ⚠️ ? ‖ 🏨 Hotel: ❄️ AC not working → ⚠️ ? / 🔊 Noisy room → ⚠️ ? ¦ What do you say?" / "🧰 לתקן את זה ¦ 🍽️ מסעדה: 🍽️ הזמנת 🍝, קיבלת 🥩 → 🗣️ ? / 💳 חויבת פעמיים → ⚠️ ? ‖ 🏨 מלון: ❄️ המזגן לא עובד → ⚠️ ? / 🔊 החדר רועש → ⚠️ ? ¦ מה אתה אומר?"
-- Audio played: EN "Here's your bill." · FR "Voici l’addition." · ES "Aquí tiene la cuenta."
-- Meaning of the audio (HE): "הנה החשבון."
-- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
-- Choices:
-  1. EN "I think there's a mistake." · FR "Je crois qu’il y a une erreur." · ES "Creo que hay un error." · (HE gloss "אני חושב שיש טעות.") — `phrase.fix.theres-mistake` — ✅ accepted
-  2. EN "No problem, thank you." · FR "Pas de problème, merci." · ES "No pasa nada, gracias." · (HE gloss "אין בעיה, תודה.") — `phrase.fix.no-problem-thanks` — ❌ wrong
-  3. EN "I ordered the pasta." · FR "J’ai commandé les pâtes." · ES "Pedí la pasta." · (HE gloss "הזמנתי את הפסטה.") — `phrase.fix.i-ordered` — ❌ wrong
-- Tests: phrase.fix.theres-mistake
-- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
-
-### M22-Q04 — quick-reply (step 7, round 2 of 2)
-
-- Prompt displayed: "🧰 FIX IT ¦ 🍽️ Restaurant: 🍽️ Ordered 🍝, got 🥩 → 🗣️ ? / 💳 Charged twice → ⚠️ ? ‖ 🏨 Hotel: ❄️ AC not working → ⚠️ ? / 🔊 Noisy room → ⚠️ ? ¦ What do you say?" / "🧰 לתקן את זה ¦ 🍽️ מסעדה: 🍽️ הזמנת 🍝, קיבלת 🥩 → 🗣️ ? / 💳 חויבת פעמיים → ⚠️ ? ‖ 🏨 מלון: ❄️ המזגן לא עובד → ⚠️ ? / 🔊 החדר רועש → ⚠️ ? ¦ מה אתה אומר?"
-- Audio played: EN "Let me check the bill. What's the problem?" · FR "Laissez-moi vérifier l’addition. Quel est le problème ?" · ES "Déjeme revisar la cuenta. ¿Cuál es el problema?"
-- Meaning of the audio (HE): "תן לי לבדוק את החשבון. מה הבעיה?"
-- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
-- Choices:
-  1. EN "I was charged twice." · FR "On m’a facturé deux fois." · ES "Me han cobrado dos veces." · (HE gloss "חייבו אותי פעמיים.") — `phrase.fix.charged-twice` — ✅ accepted
-  2. EN "I ordered the pasta." · FR "J’ai commandé les pâtes." · ES "Pedí la pasta." · (HE gloss "הזמנתי את הפסטה.") — `phrase.fix.i-ordered` — ❌ wrong
-  3. EN "This isn't what I ordered." · FR "Ce n’est pas ce que j’ai commandé." · ES "Esto no es lo que pedí." · (HE gloss "זה לא מה שהזמנתי.") — `phrase.fix.not-ordered` — ❌ wrong
-- Tests: phrase.fix.charged-twice
-- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
-
-### M22-Q05 — visual-match (step 9, round 1 of 2)
+### M22-Q02 — visual-match (step 5, round 1 of 1)
 
 - Prompt displayed: "🧰 FIX IT ¦ 🍽️ Restaurant: 🍽️ Ordered 🍝, got 🥩 → 🗣️ ? / 💳 Charged twice → 🗣️ ? ‖ 🏨 Hotel: ❄️ AC not working → ⚠️ ? / 🔊 Noisy room → ⚠️ ? ¦ 🛠️ What did they do? Listen — and tap." / "🧰 לתקן את זה ¦ 🍽️ מסעדה: 🍽️ הזמנת 🍝, קיבלת 🥩 → 🗣️ ? / 💳 חויבת פעמיים → 🗣️ ? ‖ 🏨 מלון: ❄️ המזגן לא עובד → ⚠️ ? / 🔊 החדר רועש → ⚠️ ? ¦ 🛠️ מה הם עשו? שמע — והקש."
 - Audio played: EN "You're right — my mistake. I'll refund it now." · FR "Vous avez raison — c’est ma faute. Je vous rembourse tout de suite." · ES "Tiene razón — es culpa mía. Le hago el reembolso ahora mismo."
 - Meaning of the audio (HE): "אתה צודק — הטעות שלי. אחזיר לך עכשיו."
-- Buttons show: a 3×3 board of 3 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
+- Buttons show: a 3×3 board of 2 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
 - Choices:
-  1. "🍝 “They bring the right meal” / “מביאים את המנה הנכונה”" — no sentence id — ❌ wrong
-  2. "💰 “You get the money back” / “מחזירים את הכסף”" — no sentence id — ✅ accepted
-  3. "🍰 “A free dessert” / “קינוח בחינם”" — no sentence id — ❌ wrong
+  1. "💰 “You get the money back” / “מחזירים את הכסף”" — no sentence id — ✅ accepted
+  2. "💳 “You pay twice anyway” / “משלמים פעמיים בכל זאת”" — no sentence id — ❌ wrong
 - Tests: (no sentence id — not recorded)
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
-### M22-Q06 — visual-match (step 9, round 2 of 2)
+### M22-Q03 — quick-reply (step 7, round 1 of 2)
 
-- Prompt displayed: "🧰 FIX IT ¦ 🍽️ Restaurant: 🍽️ Ordered 🍝, got 🥩 → 🗣️ ? / 💳 Charged twice → 🗣️ ? ‖ 🏨 Hotel: ❄️ AC not working → ⚠️ ? / 🔊 Noisy room → ⚠️ ? ¦ 🛠️ What did they do? Listen — and tap." / "🧰 לתקן את זה ¦ 🍽️ מסעדה: 🍽️ הזמנת 🍝, קיבלת 🥩 → 🗣️ ? / 💳 חויבת פעמיים → 🗣️ ? ‖ 🏨 מלון: ❄️ המזגן לא עובד → ⚠️ ? / 🔊 החדר רועש → ⚠️ ? ¦ 🛠️ מה הם עשו? שמע — והקש."
-- Audio played: EN "Thank you for your patience. Dessert is on the house!" · FR "Merci de votre patience. Le dessert est offert par la maison !" · ES "Gracias por su paciencia. ¡El postre corre por cuenta de la casa!"
-- Meaning of the audio (HE): "תודה על הסבלנות. הקינוח על חשבון הבית!"
-- Buttons show: a 3×3 board of 3 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
-- Choices:
-  1. "🍝 “They bring the right meal” / “מביאים את המנה הנכונה”" — no sentence id — ❌ wrong
-  2. "💰 “You get the money back” / “מחזירים את הכסף”" — no sentence id — ❌ wrong
-  3. "🍰 “A free dessert” / “קינוח בחינם”" — no sentence id — ✅ accepted
-- Tests: (no sentence id — not recorded)
-- Explanation shown after answering: after the tap: the spoken line and its translation
-
-### M22-Q07 — quick-reply (step 11, round 1 of 1)
-
-- Prompt displayed: "🧰 FIX IT ¦ 🍽️ Restaurant: 🍽️ Ordered 🍝, got 🥩 → ✅ The right meal / 💳 Charged twice → ✅ Money back + 🍰 ‖ 🏨 Hotel: ❄️ AC not working → ⚠️ ? / 🔊 Noisy room → ⚠️ ? ¦ What do you say?" / "🧰 לתקן את זה ¦ 🍽️ מסעדה: 🍽️ הזמנת 🍝, קיבלת 🥩 → ✅ המנה הנכונה / 💳 חויבת פעמיים → ✅ הכסף חזר + 🍰 ‖ 🏨 מלון: ❄️ המזגן לא עובד → ⚠️ ? / 🔊 החדר רועש → ⚠️ ? ¦ מה אתה אומר?"
+- Prompt displayed: "🧰 FIX IT ¦ 🍽️ Restaurant: 🍽️ Ordered 🍝, got 🥩 → ✅ The right meal / 💳 Charged twice → ✅ Money back ‖ 🏨 Hotel: ❄️ AC not working → ⚠️ ? / 🔊 Noisy room → ⚠️ ? ¦ What do you say?" / "🧰 לתקן את זה ¦ 🍽️ מסעדה: 🍽️ הזמנת 🍝, קיבלת 🥩 → ✅ המנה הנכונה / 💳 חויבת פעמיים → ✅ הכסף חזר ‖ 🏨 מלון: ❄️ המזגן לא עובד → ⚠️ ? / 🔊 החדר רועש → ⚠️ ? ¦ מה אתה אומר?"
 - Audio played: EN "I'm sorry to hear that. What's the problem?" · FR "Je suis désolé. Quel est le problème ?" · ES "Lo siento. ¿Cuál es el problema?"
 - Meaning of the audio (HE): "אני מצטער לשמוע. מה הבעיה?"
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
@@ -21530,21 +21433,9 @@ No meaning quiz in this mission.
 - Tests: phrase.hotelreq.ac-not-working
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M22-Q08 — swap-it (step 12, round 1 of 1)
+### M22-Q04 — quick-reply (step 7, round 2 of 2)
 
-- Prompt displayed: "🧰 FIX IT ¦ 🍽️ Restaurant: 🍽️ Ordered 🍝, got 🥩 → ✅ The right meal / 💳 Charged twice → ✅ Money back + 🍰 ‖ 🏨 Hotel: ❄️ AC not working → 🗣️ ? / 🔊 Noisy room → ⚠️ ? ¦ The same sentence — another thing." / "🧰 לתקן את זה ¦ 🍽️ מסעדה: 🍽️ הזמנת 🍝, קיבלת 🥩 → ✅ המנה הנכונה / 💳 חויבת פעמיים → ✅ הכסף חזר + 🍰 ‖ 🏨 מלון: ❄️ המזגן לא עובד → 🗣️ ? / 🔊 החדר רועש → ⚠️ ? ¦ אותו משפט — דבר אחר." — cue 🔑 "This time: the key" / "הפעם: המפתח" — frame EN "___ isn't working." · FR "___ ne marche pas." · ES "___ no funciona."
-- Audio played: EN "(nothing before the tap; the completed sentence is spoken after it)" · FR "(same)" · ES "(same)"
-- Meaning of the audio (HE): —
-- Buttons show: the SLOT VALUES in the target language (shown here as "value → completed sentence"); order shuffled; a "wrong" value still produces and speaks a real sentence, with its translation
-- Choices:
-  1. EN "The air conditioning → The air conditioning isn't working." · FR "La climatisation → La climatisation ne marche pas." · ES "El aire acondicionado → El aire acondicionado no funciona." · (HE gloss "המזגן לא עובד.") — no sentence id — ❌ wrong
-  2. EN "The key → The key isn't working." · FR "La clé → La clé ne marche pas." · ES "La llave → La llave no funciona." · (HE gloss "המפתח לא עובד.") — `phrase.hotelreq.ac-not-working` — ✅ accepted
-- Tests: phrase.hotelreq.ac-not-working
-- Explanation shown after answering: after the tap: the completed sentence, spoken, with its translation
-
-### M22-Q09 — quick-reply (step 14, round 1 of 1)
-
-- Prompt displayed: "🧰 FIX IT ¦ 🍽️ Restaurant: 🍽️ Ordered 🍝, got 🥩 → ✅ The right meal / 💳 Charged twice → ✅ Money back + 🍰 ‖ 🏨 Hotel: ❄️ AC not working → 🗣️ ? / 🔊 Noisy room → ⚠️ ? ¦ They apologise — but the AC still isn’t working. What do you say?" / "🧰 לתקן את זה ¦ 🍽️ מסעדה: 🍽️ הזמנת 🍝, קיבלת 🥩 → ✅ המנה הנכונה / 💳 חויבת פעמיים → ✅ הכסף חזר + 🍰 ‖ 🏨 מלון: ❄️ המזגן לא עובד → 🗣️ ? / 🔊 החדר רועש → ⚠️ ? ¦ התנצלו — אבל המזגן עדיין לא עובד. מה אתה אומר?"
+- Prompt displayed: "🧰 FIX IT ¦ 🍽️ Restaurant: 🍽️ Ordered 🍝, got 🥩 → ✅ The right meal / 💳 Charged twice → ✅ Money back ‖ 🏨 Hotel: ❄️ AC not working → ⚠️ ? / 🔊 Noisy room → ⚠️ ? ¦ What do you say?" / "🧰 לתקן את זה ¦ 🍽️ מסעדה: 🍽️ הזמנת 🍝, קיבלת 🥩 → ✅ המנה הנכונה / 💳 חויבת פעמיים → ✅ הכסף חזר ‖ 🏨 מלון: ❄️ המזגן לא עובד → ⚠️ ? / 🔊 החדר רועש → ⚠️ ? ¦ מה אתה אומר?"
 - Audio played: EN "I'm so sorry about that." · FR "Je suis vraiment désolé." · ES "Lo siento muchísimo."
 - Meaning of the audio (HE): "אני מצטער על זה מאוד."
 - Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
@@ -21555,46 +21446,45 @@ No meaning quiz in this mission.
 - Tests: phrase.fix.can-you-fix
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M22-Q10 — quick-reply (step 16, round 1 of 1)
+### M22-Q05 — swap-it (step 8, round 1 of 1)
 
-- Prompt displayed: "🧰 FIX IT ¦ 🍽️ Restaurant: 🍽️ Ordered 🍝, got 🥩 → ✅ The right meal / 💳 Charged twice → ✅ Money back + 🍰 ‖ 🏨 Hotel: ❄️ AC not working → 🗣️ ? / 🔊 Noisy room → 🗣️ ? ¦ A repair — or an alternative? What do you say?" / "🧰 לתקן את זה ¦ 🍽️ מסעדה: 🍽️ הזמנת 🍝, קיבלת 🥩 → ✅ המנה הנכונה / 💳 חויבת פעמיים → ✅ הכסף חזר + 🍰 ‖ 🏨 מלון: ❄️ המזגן לא עובד → 🗣️ ? / 🔊 החדר רועש → 🗣️ ? ¦ תיקון — או חלופה? מה אתה אומר?"
-- Audio played: EN "I understand. We have a quieter room." · FR "Je comprends. Nous avons une chambre plus calme." · ES "Lo entiendo. Tenemos una habitación más tranquila."
-- Meaning of the audio (HE): "אני מבין. יש לנו חדר שקט יותר."
-- Buttons show: TARGET-LANGUAGE learner responses only (no translation on the buttons); order shuffled
+- Prompt displayed: "🧰 FIX IT ¦ 🍽️ Restaurant: 🍽️ Ordered 🍝, got 🥩 → ✅ The right meal / 💳 Charged twice → ✅ Money back ‖ 🏨 Hotel: ❄️ AC not working → 🗣️ ? / 🔊 Noisy room → ⚠️ ? ¦ The same sentence — another thing." / "🧰 לתקן את זה ¦ 🍽️ מסעדה: 🍽️ הזמנת 🍝, קיבלת 🥩 → ✅ המנה הנכונה / 💳 חויבת פעמיים → ✅ הכסף חזר ‖ 🏨 מלון: ❄️ המזגן לא עובד → 🗣️ ? / 🔊 החדר רועש → ⚠️ ? ¦ אותו משפט — דבר אחר." — cue 🔑 "This time: the key" / "הפעם: המפתח" — frame EN "___ isn't working." · FR "___ ne marche pas." · ES "___ no funciona."
+- Audio played: EN "(nothing before the tap; the completed sentence is spoken after it)" · FR "(same)" · ES "(same)"
+- Meaning of the audio (HE): —
+- Buttons show: the SLOT VALUES in the target language (shown here as "value → completed sentence"); order shuffled; a "wrong" value still produces and speaks a real sentence, with its translation
 - Choices:
-  1. EN "Can I change rooms?" · FR "Je peux changer de chambre ?" · ES "¿Puedo cambiar de habitación?" · (HE gloss "אפשר להחליף חדר?") — `phrase.fix.change-rooms` — ✅ accepted
-  2. EN "Can you fix it?" · FR "Vous pouvez arranger ça ?" · ES "¿Lo puede arreglar?" · (HE gloss "אפשר לתקן את זה?") — `phrase.fix.can-you-fix` — ❌ wrong
-  3. EN "I think there's a mistake." · FR "Je crois qu’il y a une erreur." · ES "Creo que hay un error." · (HE gloss "אני חושב שיש טעות.") — `phrase.fix.theres-mistake` — ❌ wrong
-- Tests: phrase.fix.change-rooms
-- Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
+  1. EN "The air conditioning → The air conditioning isn't working." · FR "La climatisation → La climatisation ne marche pas." · ES "El aire acondicionado → El aire acondicionado no funciona." · (HE gloss "המזגן לא עובד.") — no sentence id — ❌ wrong
+  2. EN "The key → The key isn't working." · FR "La clé → La clé ne marche pas." · ES "La llave → La llave no funciona." · (HE gloss "המפתח לא עובד.") — `phrase.hotelreq.ac-not-working` — ✅ accepted
+- Tests: phrase.hotelreq.ac-not-working
+- Explanation shown after answering: after the tap: the completed sentence, spoken, with its translation
 
-### M22-Q11 — visual-match (step 18, round 1 of 2)
+### M22-Q06 — visual-match (step 10, round 1 of 2)
 
-- Prompt displayed: "🧰 FIX IT ¦ 🍽️ Restaurant: 🍽️ Ordered 🍝, got 🥩 → ✅ The right meal / 💳 Charged twice → ✅ Money back + 🍰 ‖ 🏨 Hotel: ❄️ AC not working → 🗣️ ? / 🔊 Noisy room → 🗣️ ? ¦ 🛠️ What did they do? Listen — and tap." / "🧰 לתקן את זה ¦ 🍽️ מסעדה: 🍽️ הזמנת 🍝, קיבלת 🥩 → ✅ המנה הנכונה / 💳 חויבת פעמיים → ✅ הכסף חזר + 🍰 ‖ 🏨 מלון: ❄️ המזגן לא עובד → 🗣️ ? / 🔊 החדר רועש → 🗣️ ? ¦ 🛠️ מה הם עשו? שמע — והקש."
+- Prompt displayed: "🧰 FIX IT ¦ 🍽️ Restaurant: 🍽️ Ordered 🍝, got 🥩 → ✅ The right meal / 💳 Charged twice → ✅ Money back ‖ 🏨 Hotel: ❄️ AC not working → 🗣️ ? / 🔊 Noisy room → 🗣️ ? ¦ 🛠️ What did they do? Listen — and tap." / "🧰 לתקן את זה ¦ 🍽️ מסעדה: 🍽️ הזמנת 🍝, קיבלת 🥩 → ✅ המנה הנכונה / 💳 חויבת פעמיים → ✅ הכסף חזר ‖ 🏨 מלון: ❄️ המזגן לא עובד → 🗣️ ? / 🔊 החדר רועש → 🗣️ ? ¦ 🛠️ מה הם עשו? שמע — והקש."
 - Audio played: EN "Yes, I'll send someone right away. Is everything else okay?" · FR "Oui, j’envoie quelqu’un tout de suite. Tout le reste va bien ?" · ES "Sí, mando a alguien ahora mismo. ¿Todo lo demás está bien?"
 - Meaning of the audio (HE): "כן, אשלח מישהו מיד. כל השאר בסדר?"
 - Buttons show: a 3×3 board of 3 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
 - Choices:
   1. "👨‍🔧 “Someone comes to fix it” / “שולחים מישהו לתקן”" — no sentence id — ✅ accepted
-  2. "🔑 “Another room, a new key” / “חדר אחר ומפתח חדש”" — no sentence id — ❌ wrong
+  2. "🔑 “Another room” / “חדר אחר”" — no sentence id — ❌ wrong
   3. "💰 “You get the money back” / “מחזירים את הכסף”" — no sentence id — ❌ wrong
 - Tests: (no sentence id — not recorded)
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
-### M22-Q12 — visual-match (step 18, round 2 of 2)
+### M22-Q07 — visual-match (step 10, round 2 of 2)
 
-- Prompt displayed: "🧰 FIX IT ¦ 🍽️ Restaurant: 🍽️ Ordered 🍝, got 🥩 → ✅ The right meal / 💳 Charged twice → ✅ Money back + 🍰 ‖ 🏨 Hotel: ❄️ AC not working → 🗣️ ? / 🔊 Noisy room → 🗣️ ? ¦ 🛠️ What did they do? Listen — and tap." / "🧰 לתקן את זה ¦ 🍽️ מסעדה: 🍽️ הזמנת 🍝, קיבלת 🥩 → ✅ המנה הנכונה / 💳 חויבת פעמיים → ✅ הכסף חזר + 🍰 ‖ 🏨 מלון: ❄️ המזגן לא עובד → 🗣️ ? / 🔊 החדר רועש → 🗣️ ? ¦ 🛠️ מה הם עשו? שמע — והקש."
-- Audio played: EN "Of course — room 305. Here is your new key. Good night!" · FR "Bien sûr — chambre 305. Voici votre nouvelle clé. Bonne nuit !" · ES "Claro — habitación 305. Aquí tiene su nueva llave. ¡Buenas noches!"
-- Meaning of the audio (HE): "כמובן — חדר 305. הנה המפתח החדש. לילה טוב!"
+- Prompt displayed: "🧰 FIX IT ¦ 🍽️ Restaurant: 🍽️ Ordered 🍝, got 🥩 → ✅ The right meal / 💳 Charged twice → ✅ Money back ‖ 🏨 Hotel: ❄️ AC not working → 🗣️ ? / 🔊 Noisy room → 🗣️ ? ¦ 🛠️ What did they do? Listen — and tap." / "🧰 לתקן את זה ¦ 🍽️ מסעדה: 🍽️ הזמנת 🍝, קיבלת 🥩 → ✅ המנה הנכונה / 💳 חויבת פעמיים → ✅ הכסף חזר ‖ 🏨 מלון: ❄️ המזגן לא עובד → 🗣️ ? / 🔊 החדר רועש → 🗣️ ? ¦ 🛠️ מה הם עשו? שמע — והקש."
+- Audio played: EN "I understand. We have a quieter room." · FR "Je comprends. Nous avons une chambre plus calme." · ES "Lo entiendo. Tenemos una habitación más tranquila."
+- Meaning of the audio (HE): "אני מבין. יש לנו חדר שקט יותר."
 - Buttons show: a 3×3 board of 3 tiles (same in every language); positions shuffled once per step; the sentence and its translation appear only AFTER the tap
 - Choices:
   1. "👨‍🔧 “Someone comes to fix it” / “שולחים מישהו לתקן”" — no sentence id — ❌ wrong
-  2. "🔑 “Another room, a new key” / “חדר אחר ומפתח חדש”" — no sentence id — ✅ accepted
+  2. "🔑 “Another room” / “חדר אחר”" — no sentence id — ✅ accepted
   3. "💰 “You get the money back” / “מחזירים את הכסף”" — no sentence id — ❌ wrong
 - Tests: (no sentence id — not recorded)
 - Explanation shown after answering: after the tap: the spoken line and its translation
 
-### M22-Q23 — quick-reply (step 24, round 1 of 4 · SPEED CHALLENGE (spoken at rate 1.12))
+### M22-Q18 — quick-reply (step 14, round 1 of 4 · SPEED CHALLENGE (spoken at rate 1.12))
 
 - Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio played: EN "Here's your meal — one steak!" · FR "Voici votre plat — un steak !" · ES "Aquí tiene su plato — ¡un filete!"
@@ -21607,7 +21497,7 @@ No meaning quiz in this mission.
 - Tests: phrase.fix.not-ordered
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M22-Q24 — quick-reply (step 24, round 2 of 4 · SPEED CHALLENGE (spoken at rate 1.12))
+### M22-Q19 — quick-reply (step 14, round 2 of 4 · SPEED CHALLENGE (spoken at rate 1.12))
 
 - Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio played: EN "Here's your bill." · FR "Voici l’addition." · ES "Aquí tiene la cuenta."
@@ -21620,7 +21510,7 @@ No meaning quiz in this mission.
 - Tests: phrase.fix.theres-mistake
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M22-Q25 — quick-reply (step 24, round 3 of 4 · SPEED CHALLENGE (spoken at rate 1.12))
+### M22-Q20 — quick-reply (step 14, round 3 of 4 · SPEED CHALLENGE (spoken at rate 1.12))
 
 - Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio played: EN "I'm sorry to hear that. What's the problem?" · FR "Je suis désolé. Quel est le problème ?" · ES "Lo siento. ¿Cuál es el problema?"
@@ -21633,7 +21523,7 @@ No meaning quiz in this mission.
 - Tests: phrase.hotelreq.ac-not-working
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M22-Q26 — quick-reply (step 24, round 4 of 4 · SPEED CHALLENGE (spoken at rate 1.12))
+### M22-Q21 — quick-reply (step 14, round 4 of 4 · SPEED CHALLENGE (spoken at rate 1.12))
 
 - Prompt displayed: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio played: EN "I'm so sorry about that." · FR "Je suis vraiment désolé." · ES "Lo siento muchísimo."
@@ -21646,7 +21536,7 @@ No meaning quiz in this mission.
 - Tests: phrase.fix.can-you-fix
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M22-Q27 — quick-reply (step 27, round 1 of 5)
+### M22-Q22 — quick-reply (step 16, round 1 of 5)
 
 - Prompt displayed: "🧰 NEW PROBLEMS ¦ 🍽️ Restaurant: 🍽️ Ordered 🍗, got 🐟 → ⚠️ ? ‖ 🏨 Hotel: 🔑 Key not working → ⚠️ ? / 🚪 Your room → 305 ¦ 🎯 Another evening — new problems. Say what’s wrong." / "🧰 בעיות חדשות ¦ 🍽️ מסעדה: 🍽️ הזמנת 🍗, קיבלת 🐟 → ⚠️ ? ‖ 🏨 מלון: 🔑 המפתח לא עובד → ⚠️ ? / 🚪 החדר שלך → 305 ¦ 🎯 ערב אחר — בעיות חדשות. אמור מה לא בסדר."
 - Audio played: EN "Here's your fish!" · FR "Voici votre poisson !" · ES "Aquí tiene su pescado."
@@ -21659,7 +21549,7 @@ No meaning quiz in this mission.
 - Tests: phrase.fix.not-ordered
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M22-Q28 — quick-reply (step 27, round 2 of 5)
+### M22-Q23 — quick-reply (step 16, round 2 of 5)
 
 - Prompt displayed: "🧰 NEW PROBLEMS ¦ 🍽️ Restaurant: 🍽️ Ordered 🍗, got 🐟 → ⚠️ ? ‖ 🏨 Hotel: 🔑 Key not working → ⚠️ ? / 🚪 Your room → 305 ¦ 🎯 Another evening — new problems. Say what’s wrong." / "🧰 בעיות חדשות ¦ 🍽️ מסעדה: 🍽️ הזמנת 🍗, קיבלת 🐟 → ⚠️ ? ‖ 🏨 מלון: 🔑 המפתח לא עובד → ⚠️ ? / 🚪 החדר שלך → 305 ¦ 🎯 ערב אחר — בעיות חדשות. אמור מה לא בסדר."
 - Audio played: EN "Oh no, I'm so sorry! What did you order?" · FR "Oh non, je suis vraiment désolé ! Qu’avez-vous commandé ?" · ES "¡Ay, lo siento muchísimo! ¿Qué pidió?"
@@ -21672,7 +21562,7 @@ No meaning quiz in this mission.
 - Tests: phrase.fix.i-ordered
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M22-Q29 — quick-reply (step 27, round 3 of 5)
+### M22-Q24 — quick-reply (step 16, round 3 of 5)
 
 - Prompt displayed: "🧰 NEW PROBLEMS ¦ 🍽️ Restaurant: 🍽️ Ordered 🍗, got 🐟 → ⚠️ ? ‖ 🏨 Hotel: 🔑 Key not working → ⚠️ ? / 🚪 Your room → 305 ¦ 🎯 Another evening — new problems. Say what’s wrong." / "🧰 בעיות חדשות ¦ 🍽️ מסעדה: 🍽️ הזמנת 🍗, קיבלת 🐟 → ⚠️ ? ‖ 🏨 מלון: 🔑 המפתח לא עובד → ⚠️ ? / 🚪 החדר שלך → 305 ¦ 🎯 ערב אחר — בעיות חדשות. אמור מה לא בסדר."
 - Audio played: EN "Good evening! How can I help you?" · FR "Bonsoir ! Comment puis-je vous aider ?" · ES "¡Buenas noches! ¿En qué puedo ayudarle?"
@@ -21685,7 +21575,7 @@ No meaning quiz in this mission.
 - Tests: phrase.hotelreq.ac-not-working
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M22-Q30 — quick-reply (step 27, round 4 of 5)
+### M22-Q25 — quick-reply (step 16, round 4 of 5)
 
 - Prompt displayed: "🧰 NEW PROBLEMS ¦ 🍽️ Restaurant: 🍽️ Ordered 🍗, got 🐟 → ⚠️ ? ‖ 🏨 Hotel: 🔑 Key not working → ⚠️ ? / 🚪 Your room → 305 ¦ 🎯 Another evening — new problems. Say what’s wrong." / "🧰 בעיות חדשות ¦ 🍽️ מסעדה: 🍽️ הזמנת 🍗, קיבלת 🐟 → ⚠️ ? ‖ 🏨 מלון: 🔑 המפתח לא עובד → ⚠️ ? / 🚪 החדר שלך → 305 ¦ 🎯 ערב אחר — בעיות חדשות. אמור מה לא בסדר."
 - Audio played: EN "I'm so sorry about that." · FR "Je suis vraiment désolé." · ES "Lo siento muchísimo."
@@ -21698,7 +21588,7 @@ No meaning quiz in this mission.
 - Tests: phrase.fix.can-you-fix
 - Explanation shown after answering: tip of the accepted sentence, or the generic “X means Y” line
 
-### M22-Q31 — quick-reply (step 27, round 5 of 5)
+### M22-Q26 — quick-reply (step 16, round 5 of 5)
 
 - Prompt displayed: "🧰 NEW PROBLEMS ¦ 🍽️ Restaurant: 🍽️ Ordered 🍗, got 🐟 → ⚠️ ? ‖ 🏨 Hotel: 🔑 Key not working → ⚠️ ? / 🚪 Your room → 305 ¦ 🎯 Another evening — new problems. Say what’s wrong." / "🧰 בעיות חדשות ¦ 🍽️ מסעדה: 🍽️ הזמנת 🍗, קיבלת 🐟 → ⚠️ ? ‖ 🏨 מלון: 🔑 המפתח לא עובד → ⚠️ ? / 🚪 החדר שלך → 305 ¦ 🎯 ערב אחר — בעיות חדשות. אמור מה לא בסדר."
 - Audio played: EN "Here is your new key — room two-oh-four." · FR "Voici votre nouvelle clé — chambre deux cent quatre." · ES "Aquí tiene su nueva llave — habitación doscientos cuatro."
@@ -22000,7 +21890,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 
 ## Learner choice screens
 
-### M22-Q13 — dialogue-choice (step 20, scene "fixing-problems" · node c2)
+### M22-Q08 — dialogue-choice (step 12, scene "fixing-problems" · node c2)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Here's your meal — one steak!" · FR "Voici votre plat — un steak !" · ES "Aquí tiene su plato — ¡un filete!"
@@ -22012,7 +21902,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.fix.not-ordered, phrase.fix.no-problem-thanks
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M22-Q14 — dialogue-choice (step 20, scene "fixing-problems" · node c4)
+### M22-Q09 — dialogue-choice (step 12, scene "fixing-problems" · node c4)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Oh no, I'm so sorry! What did you order?" · FR "Oh non, je suis vraiment désolé ! Qu’avez-vous commandé ?" · ES "¡Ay, lo siento muchísimo! ¿Qué pidió?"
@@ -22024,7 +21914,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.fix.i-ordered, phrase.fix.not-ordered
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M22-Q15 — dialogue-choice (step 20, scene "fixing-problems" · node c6)
+### M22-Q10 — dialogue-choice (step 12, scene "fixing-problems" · node c6)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Here's your bill." · FR "Voici l’addition." · ES "Aquí tiene la cuenta."
@@ -22036,7 +21926,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.fix.theres-mistake, phrase.fix.no-problem-thanks
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M22-Q16 — dialogue-choice (step 20, scene "fixing-problems" · node c8)
+### M22-Q11 — dialogue-choice (step 12, scene "fixing-problems" · node c8)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Let me check the bill. What's the problem?" · FR "Laissez-moi vérifier l’addition. Quel est le problème ?" · ES "Déjeme revisar la cuenta. ¿Cuál es el problema?"
@@ -22048,7 +21938,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.fix.charged-twice, phrase.fix.i-ordered
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M22-Q17 — dialogue-choice (step 20, scene "fixing-problems" · node c10)
+### M22-Q12 — dialogue-choice (step 12, scene "fixing-problems" · node c10)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "You're right — my mistake. I'll refund it now." · FR "Vous avez raison — c’est ma faute. Je vous rembourse tout de suite." · ES "Tiene razón — es culpa mía. Le hago el reembolso ahora mismo."
@@ -22060,7 +21950,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.fix.no-problem-thanks, phrase.fix.charged-twice
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M22-Q18 — dialogue-choice (step 22, scene "room-problem" · node c2)
+### M22-Q13 — dialogue-choice (step 13, scene "room-problem" · node c2)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Good evening! How can I help you?" · FR "Bonsoir ! Comment puis-je vous aider ?" · ES "¡Buenas noches! ¿En qué puedo ayudarle?"
@@ -22072,7 +21962,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.fix.theres-problem, phrase.fix.no-problem-thanks
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M22-Q19 — dialogue-choice (step 22, scene "room-problem" · node c4)
+### M22-Q14 — dialogue-choice (step 13, scene "room-problem" · node c4)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "I'm sorry to hear that. What's the problem?" · FR "Je suis désolé. Quel est le problème ?" · ES "Lo siento. ¿Cuál es el problema?"
@@ -22084,7 +21974,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.hotelreq.ac-not-working, phrase.fix.charged-twice
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M22-Q20 — dialogue-choice (step 22, scene "room-problem" · node c6)
+### M22-Q15 — dialogue-choice (step 13, scene "room-problem" · node c6)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "I'm so sorry about that." · FR "Je suis vraiment désolé." · ES "Lo siento muchísimo."
@@ -22096,7 +21986,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.fix.can-you-fix, phrase.fix.i-ordered
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M22-Q21 — dialogue-choice (step 22, scene "room-problem" · node c8)
+### M22-Q16 — dialogue-choice (step 13, scene "room-problem" · node c8)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "Yes, I'll send someone right away. Is everything else okay?" · FR "Oui, j’envoie quelqu’un tout de suite. Tout le reste va bien ?" · ES "Sí, mando a alguien ahora mismo. ¿Todo lo demás está bien?"
@@ -22108,7 +21998,7 @@ Happy-path rule: at each choice screen the first accepted line that is not a too
 - Tests: phrase.hotelreq.room-noisy, phrase.hotelreq.ac-not-working
 - Explanation shown after answering: none per choice; a wrong pick shows the generic line (see "Wrong answer branches")
 
-### M22-Q22 — dialogue-choice (step 22, scene "room-problem" · node c10)
+### M22-Q17 — dialogue-choice (step 13, scene "room-problem" · node c10)
 
 - Prompt displayed: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio played: EN "I understand. We have a quieter room." · FR "Je comprends. Nous avons une chambre plus calme." · ES "Lo entiendo. Tenemos una habitación más tranquila."
@@ -22202,11 +22092,8 @@ Every learner sentence of this mission is a line in a scene.
 
 ## Receipts (proof cards)
 
-- Step 19: "🧰 FIX IT ¦ 🍽️ Restaurant: 🍽️ Ordered 🍝, got 🥩 → ✅ The right meal / 💳 Charged twice → ✅ Money back + 🍰 ‖ 🏨 Hotel: ❄️ AC not working → ✅ Someone is coming / 🔊 Noisy room → ✅ Room 305 ¦ Four problems — you said what was wrong and asked for a fix." / "🧰 לתקן את זה ¦ 🍽️ מסעדה: 🍽️ הזמנת 🍝, קיבלת 🥩 → ✅ המנה הנכונה / 💳 חויבת פעמיים → ✅ הכסף חזר + 🍰 ‖ 🏨 מלון: ❄️ המזגן לא עובד → ✅ מישהו בא לתקן / 🔊 החדר רועש → ✅ חדר 305 ¦ ארבע בעיות — אמרת מה הבעיה וביקשת פתרון."
-- Step 21: "🍽️ The restaurant — a wrong meal and a double charge, both fixed." / "🍽️ המסעדה — מנה שגויה וחיוב כפול, ושניהם תוקנו."
-- Step 23: "🏨 The hotel — the AC, the noise, and a new room." / "🏨 המלון — מזגן, רעש, וחדר חדש."
-- Step 25: "No help — the wrong thing, a mistake, something not working, and asking for a fix." / "בלי עזרה — מנה שגויה, טעות, משהו לא עובד, ובקשה לתקן."
-- Step 28: "🧰 FIX IT ¦ 🍽️ Restaurant: 🍽️ Ordered 🍝, got 🥩 → ✅ The right meal / 💳 Charged twice → ✅ Money back + 🍰 ‖ 🏨 Hotel: ❄️ AC not working → ✅ Someone is coming / 🔊 Noisy room → ✅ Room 305 ¦ Four problems — you said what was wrong, asked for a fix, and understood what they did. New ones too." / "🧰 לתקן את זה ¦ 🍽️ מסעדה: 🍽️ הזמנת 🍝, קיבלת 🥩 → ✅ המנה הנכונה / 💳 חויבת פעמיים → ✅ הכסף חזר + 🍰 ‖ 🏨 מלון: ❄️ המזגן לא עובד → ✅ מישהו בא לתקן / 🔊 החדר רועש → ✅ חדר 305 ¦ ארבע בעיות — אמרת מה הבעיה, ביקשת פתרון, והבנת מה עשו. וגם בעיות חדשות."
+- Step 11: "🧰 FIX IT ¦ 🍽️ Restaurant: 🍽️ Ordered 🍝, got 🥩 → ✅ The right meal / 💳 Charged twice → ✅ Money back ‖ 🏨 Hotel: ❄️ AC not working → ✅ Someone is coming / 🔊 Noisy room → ✅ Room 305 ¦ Four problems — you said what was wrong and asked for a fix." / "🧰 לתקן את זה ¦ 🍽️ מסעדה: 🍽️ הזמנת 🍝, קיבלת 🥩 → ✅ המנה הנכונה / 💳 חויבת פעמיים → ✅ הכסף חזר ‖ 🏨 מלון: ❄️ המזגן לא עובד → ✅ מישהו בא לתקן / 🔊 החדר רועש → ✅ חדר 305 ¦ ארבע בעיות — אמרת מה הבעיה וביקשת פתרון."
+- Step 17: "🧰 FIX IT ¦ 🍽️ Restaurant: 🍽️ Ordered 🍝, got 🥩 → ✅ The right meal / 💳 Charged twice → ✅ Money back ‖ 🏨 Hotel: ❄️ AC not working → ✅ Someone is coming / 🔊 Noisy room → ✅ Room 305 ¦ Four problems — you said what was wrong, asked for a fix, and understood what they did. New ones too." / "🧰 לתקן את זה ¦ 🍽️ מסעדה: 🍽️ הזמנת 🍝, קיבלת 🥩 → ✅ המנה הנכונה / 💳 חויבת פעמיים → ✅ הכסף חזר ‖ 🏨 מלון: ❄️ המזגן לא עובד → ✅ מישהו בא לתקן / 🔊 החדר רועש → ✅ חדר 305 ¦ ארבע בעיות — אמרת מה הבעיה, ביקשת פתרון, והבנת מה עשו. וגם בעיות חדשות."
 
 ## Audit Metadata — DO NOT FIX YET
 
@@ -22216,19 +22103,19 @@ Every learner sentence of this mission is a line in a scene.
 - Key-sentence steps: 0
 - Expected-reply/listening items: 0
 - Questions/quizzes (meaning quiz): 0
-- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 21
-- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 26
+- Active-practice questions (quick reply / visual match / swap it / mini map / match pairs / sentence builder): 16
+- Active retrieval opportunities (quick-reply rounds + swap rounds + match pairs + sentence-builder rounds + dialogue screens with a real choice): 22
 - One-button dialogue screens: 0
 - Learner sentences never actively retrieved: 0
 - Dialogue learner choices (screens): 10
 - Wrong-answer branches: 10
 - Cold-open prompts: 0
 - Recovery opportunities: 0
-- Vocabulary pre-items: 21
+- Vocabulary pre-items: 19
 - Swap variants (extra accepted lines): 0
 - Sentences in review: 0
-- Total interactive questions: 31 (answer choices: 80)
-- Approximate total learner interactions: 32 (questions + key sentences + review cards + word-intro screen)
+- Total interactive questions: 26 (answer choices: 65)
+- Approximate total learner interactions: 27 (questions + key sentences + review cards + word-intro screen)
 
 ### AUTO-FLAG — requires human review (1)
 
@@ -30314,7 +30201,7 @@ Every learner sentence of this mission is a line in a scene.
 | 19 Public Transport | 14 (4 / 9 / 1) | 0 | 0 | 0 | 20 | 6 | 0 | 0 | 0 | 11 words | 0 | 26 | 1 |
 | 20 Past & Recent Events | 13 (7 / 6 / 0) | 0 | 0 | 0 | 21 | 6 | 0 | 0 | 0 | 13 words | 0 | 27 | 2 |
 | 21 Future Travel & Plans | 14 (7 / 7 / 0) | 0 | 0 | 0 | 20 | 7 | 0 | 0 | 0 | 15 words | 0 | 27 | 1 |
-| 22 Fixing Problems | 18 (10 / 8 / 0) | 0 | 0 | 0 | 21 | 10 | 0 | 0 | 0 | 21 words | 0 | 31 | 1 |
+| 22 Fixing Problems | 18 (10 / 8 / 0) | 0 | 0 | 0 | 16 | 10 | 0 | 0 | 0 | 19 words | 0 | 26 | 1 |
 | 23 Opinions, Feelings & Reactions | 16 (9 / 6 / 1) | 4 | 4 | 0 | 20 | 8 | 7 | 1 | 0 | no | 0 | 32 | 2 |
 | 24 CHECKPOINT: City & Conversation | 28 (24 / 2 / 2) | 0 | 0 | 0 | 0 | 16 | 0 | 3 | 1 | 1 words | 0 | 17 | 11 |
 | 25 Lost / Stolen / Police | 17 (9 / 5 / 3) | 4 | 4 | 0 | 15 | 9 | 8 | 1 | 1 | no | 0 | 29 | 4 |
@@ -30443,22 +30330,22 @@ Every learner-production sentence id of the Core, in order of first appearance. 
 | `phrase.past.what-did-you-do` | What did you do yesterday? | 20 | — | 0 | 1 / 0 | 3 | 0 | 0 | no | no |  |
 | `phrase.past.it-was-good` | It was good. | 20 | 24, 30 | 0 | 1 / 1 | 0 | 0 | 0 | yes | no |  |
 | `phrase.future.going-to-vietnam` | I'm going to Vietnam. | 21 | 24, 30 | 0 | 3 / 4 | 10 | 0 | 0 | yes | no |  |
-| `phrase.future.ill-be-there` | I'll be there for two weeks. | 21 | 24, 30 | 0 | 3 / 2 | 12 | 0 | 0 | yes | no |  |
+| `phrase.future.ill-be-there` | I'll be there for two weeks. | 21 | 24, 30 | 0 | 3 / 2 | 13 | 0 | 0 | yes | no |  |
 | `phrase.future.want-to-visit` | I want to visit Hanoi. | 21 | — | 0 | 1 / 2 | 10 | 0 | 0 | no | no |  |
-| `phrase.future.by-motorbike` | I want to travel by motorbike. | 21 | — | 0 | 1 / 0 | 5 | 0 | 0 | no | no |  |
+| `phrase.future.by-motorbike` | I want to travel by motorbike. | 21 | — | 0 | 1 / 0 | 3 | 0 | 0 | no | no |  |
 | `phrase.future.after-that` | After that I'm going to Thailand. | 21 | 24, 30 | 0 | 1 / 3 | 5 | 0 | 0 | yes | no |  |
 | `phrase.future.tomorrow-morning` | Tomorrow morning I'm going to the airport. | 21 | 30 | 0 | 1 / 1 | 5 | 0 | 0 | yes | no |  |
-| `phrase.future.where-next` | Where are you going next? | 21 | 24, 30 | 0 | 3 / 0 | 2 | 0 | 0 | yes | no |  |
-| `phrase.fix.not-ordered` | This isn't what I ordered. | 22 | 24, 29, 30 | 0 | 4 / 1 | 7 | 0 | 0 | yes | no |  |
-| `phrase.fix.no-problem-thanks` | No problem, thank you. | 22 | 24, 29, 30 | 0 | 4 / 4 | 6 | 0 | 0 | yes | no |  |
-| `phrase.fix.i-ordered` | I ordered the pasta. | 22 | 24, 29, 30 | 0 | 3 / 3 | 7 | 0 | 0 | yes | no |  |
-| `phrase.fix.theres-mistake` | I think there's a mistake. | 22 | — | 0 | 1 / 0 | 5 | 0 | 0 | no | no |  |
-| `phrase.fix.charged-twice` | I was charged twice. | 22 | 24, 30 | 0 | 1 / 4 | 7 | 0 | 0 | yes | no |  |
+| `phrase.future.where-next` | Where are you going next? | 21 | 24, 30 | 0 | 3 / 0 | 3 | 0 | 0 | yes | no |  |
+| `phrase.fix.not-ordered` | This isn't what I ordered. | 22 | 24, 29, 30 | 0 | 4 / 1 | 5 | 0 | 0 | yes | no |  |
+| `phrase.fix.no-problem-thanks` | No problem, thank you. | 22 | 24, 29, 30 | 0 | 4 / 4 | 4 | 0 | 0 | yes | no |  |
+| `phrase.fix.i-ordered` | I ordered the pasta. | 22 | 24, 29, 30 | 0 | 3 / 3 | 5 | 0 | 0 | yes | no |  |
+| `phrase.fix.theres-mistake` | I think there's a mistake. | 22 | — | 0 | 1 / 0 | 3 | 0 | 0 | no | no |  |
+| `phrase.fix.charged-twice` | I was charged twice. | 22 | 24, 30 | 0 | 1 / 4 | 6 | 0 | 0 | yes | no |  |
 | `phrase.fix.theres-problem` | There's a problem with my room. | 22 | — | 0 | 1 / 0 | 0 | 0 | 0 | no | no |  |
 | `phrase.hotelreq.ac-not-working` | The air conditioning isn't working. | 22 | — | 0 | 1 / 1 | 4 | 0 | 0 | no | no |  |
-| `phrase.fix.can-you-fix` | Can you fix it? | 22 | 24, 29 | 0 | 1 / 3 | 4 | 0 | 0 | yes | no |  |
+| `phrase.fix.can-you-fix` | Can you fix it? | 22 | 24, 29 | 0 | 1 / 3 | 3 | 0 | 0 | yes | no |  |
 | `phrase.hotelreq.room-noisy` | My room is very noisy. | 22 | — | 0 | 1 / 0 | 0 | 0 | 0 | no | no |  |
-| `phrase.fix.change-rooms` | Can I change rooms? | 22 | — | 0 | 1 / 0 | 5 | 0 | 0 | no | no |  |
+| `phrase.fix.change-rooms` | Can I change rooms? | 22 | — | 0 | 1 / 0 | 4 | 0 | 0 | no | no |  |
 | `phrase.opin.i-think-expensive` | I think it's too expensive. | 23 | 24 | 1 | 2 / 0 | 9 | 0 | 1 | yes | no |  |
 | `phrase.opin.dont-think-so` | I don't think so. | 23 | 24, 30 | 1 | 2 / 1 | 5 | 0 | 1 | yes | no |  |
 | `phrase.opin.because` | Because it's only one hour. | 23 | 24 | 1 | 1 / 2 | 13 | 0 | 1 | yes | no |  |
@@ -37076,23 +36963,14 @@ No questions.
 
 **M21-Q25** — quick-reply
 - Prompt: "✈️ Another trip: 📍 Next → 🌎 Argentina / ⏳ For → A week / 🎯 Want to → 🏛️ Visit the museum / 🤿 Also → Try diving ‖ 🗓️ When: ➡️ After → 🏖️ The beach / 🌅 Tomorrow morning → 🚉 The station ¦ 🎯 Another trip — the same questions. Tell your friend." / "✈️ טיול אחר: 📍 הבא → 🌎 ארגנטינה / ⏳ לכמה זמן → שבוע / 🎯 רוצה → 🏛️ לבקר במוזיאון / 🤿 וגם → לנסות צלילה ‖ 🗓️ מתי: ➡️ אחרי זה → 🏖️ הים / 🌅 מחר בבוקר → 🚉 התחנה ¦ 🎯 טיול אחר — אותן שאלות. ספר לחבר."
-- Audio: Nice. Anything else? — (יפה. עוד משהו?)
-- A: I want to try diving. ✅
-- B: I want to visit the museum.
-- C: I'll be there for a week.
-- Correct: I want to try diving.
-- Tests: phrase.future.by-motorbike
-
-**M21-Q26** — quick-reply
-- Prompt: "✈️ Another trip: 📍 Next → 🌎 Argentina / ⏳ For → A week / 🎯 Want to → 🏛️ Visit the museum / 🤿 Also → Try diving ‖ 🗓️ When: ➡️ After → 🏖️ The beach / 🌅 Tomorrow morning → 🚉 The station ¦ 🎯 Another trip — the same questions. Tell your friend." / "✈️ טיול אחר: 📍 הבא → 🌎 ארגנטינה / ⏳ לכמה זמן → שבוע / 🎯 רוצה → 🏛️ לבקר במוזיאון / 🤿 וגם → לנסות צלילה ‖ 🗓️ מתי: ➡️ אחרי זה → 🏖️ הים / 🌅 מחר בבוקר → 🚉 התחנה ¦ 🎯 טיול אחר — אותן שאלות. ספר לחבר."
 - Audio: Sounds amazing! Be careful. And after that? — (נשמע מדהים! תיזהר. ואחרי זה?)
 - A: After that I'm going to the beach. ✅
 - B: I'm going to Argentina.
-- C: I want to try diving.
+- C: I'll be there for a week.
 - Correct: After that I'm going to the beach.
 - Tests: phrase.future.after-that
 
-**M21-Q27** — quick-reply
+**M21-Q26** — quick-reply
 - Prompt: "✈️ Another trip: 📍 Next → 🌎 Argentina / ⏳ For → A week / 🎯 Want to → 🏛️ Visit the museum / 🤿 Also → Try diving ‖ 🗓️ When: ➡️ After → 🏖️ The beach / 🌅 Tomorrow morning → 🚉 The station ¦ 🎯 Another trip — the same questions. Tell your friend." / "✈️ טיול אחר: 📍 הבא → 🌎 ארגנטינה / ⏳ לכמה זמן → שבוע / 🎯 רוצה → 🏛️ לבקר במוזיאון / 🤿 וגם → לנסות צלילה ‖ 🗓️ מתי: ➡️ אחרי זה → 🏖️ הים / 🌅 מחר בבוקר → 🚉 התחנה ¦ 🎯 טיול אחר — אותן שאלות. ספר לחבר."
 - Audio: Great plan. And what are you doing tomorrow morning? — (תוכנית מעולה. ומה אתה עושה מחר בבוקר?)
 - A: Tomorrow morning I'm going to the station. ✅
@@ -37101,17 +36979,18 @@ No questions.
 - Correct: Tomorrow morning I'm going to the station.
 - Tests: phrase.future.tomorrow-morning
 
+**M21-Q27** — quick-reply
+- Prompt: "✈️ Another trip: 📍 Next → 🌎 Argentina / ⏳ For → A week / 🎯 Want to → 🏛️ Visit the museum / 🤿 Also → Try diving ‖ 🗓️ When: ➡️ After → 🏖️ The beach / 🌅 Tomorrow morning → 🚉 The station ¦ 🎯 Another trip — the same questions. Tell your friend." / "✈️ טיול אחר: 📍 הבא → 🌎 ארגנטינה / ⏳ לכמה זמן → שבוע / 🎯 רוצה → 🏛️ לבקר במוזיאון / 🤿 וגם → לנסות צלילה ‖ 🗓️ מתי: ➡️ אחרי זה → 🏖️ הים / 🌅 מחר בבוקר → 🚉 התחנה ¦ 🎯 טיול אחר — אותן שאלות. ספר לחבר."
+- Audio: Already! We'll miss you. — (כבר! נתגעגע אליך.)
+- A: Where are you going next? ✅
+- B: I want to visit the museum.
+- C: I'll be there for a week.
+- Correct: Where are you going next?
+- Tests: phrase.future.where-next
+
 ## Mission 22 — Fixing Problems
 
-**M22-Q01** — quick-reply
-- Prompt: "🧰 FIX IT ¦ 🍽️ Restaurant: 🍽️ Ordered 🍝, got 🥩 → ⚠️ ? / 💳 Charged twice → ⚠️ ? ‖ 🏨 Hotel: ❄️ AC not working → ⚠️ ? / 🔊 Noisy room → ⚠️ ? ¦ What do you say?" / "🧰 לתקן את זה ¦ 🍽️ מסעדה: 🍽️ הזמנת 🍝, קיבלת 🥩 → ⚠️ ? / 💳 חויבת פעמיים → ⚠️ ? ‖ 🏨 מלון: ❄️ המזגן לא עובד → ⚠️ ? / 🔊 החדר רועש → ⚠️ ? ¦ מה אתה אומר?"
-- Audio: Here's your meal — one steak! — (הנה הארוחה שלך — סטייק אחד!)
-- A: This isn't what I ordered. ✅
-- B: No problem, thank you.
-- Correct: This isn't what I ordered.
-- Tests: phrase.fix.not-ordered
-
-**M22-Q02** — visual-match
+**M22-Q01** — visual-match
 - Prompt: "🧰 FIX IT ¦ 🍽️ Restaurant: 🍽️ Ordered 🍝, got 🥩 → 🗣️ ? / 💳 Charged twice → ⚠️ ? ‖ 🏨 Hotel: ❄️ AC not working → ⚠️ ? / 🔊 Noisy room → ⚠️ ? ¦ 🛠️ What did they do? Listen — and tap." / "🧰 לתקן את זה ¦ 🍽️ מסעדה: 🍽️ הזמנת 🍝, קיבלת 🥩 → 🗣️ ? / 💳 חויבת פעמיים → ⚠️ ? ‖ 🏨 מלון: ❄️ המזגן לא עובד → ⚠️ ? / 🔊 החדר רועש → ⚠️ ? ¦ 🛠️ מה הם עשו? שמע — והקש."
 - Audio: Of course — I'll bring the right one right away. — (כמובן — אביא את הנכון מיד.)
 - A: 🍝 “They bring the right meal” / “מביאים את המנה הנכונה” ✅
@@ -37119,44 +36998,16 @@ No questions.
 - Correct: 🍝 “They bring the right meal” / “מביאים את המנה הנכונה”
 - Tests: (no sentence id — not recorded)
 
-**M22-Q03** — quick-reply
-- Prompt: "🧰 FIX IT ¦ 🍽️ Restaurant: 🍽️ Ordered 🍝, got 🥩 → 🗣️ ? / 💳 Charged twice → ⚠️ ? ‖ 🏨 Hotel: ❄️ AC not working → ⚠️ ? / 🔊 Noisy room → ⚠️ ? ¦ What do you say?" / "🧰 לתקן את זה ¦ 🍽️ מסעדה: 🍽️ הזמנת 🍝, קיבלת 🥩 → 🗣️ ? / 💳 חויבת פעמיים → ⚠️ ? ‖ 🏨 מלון: ❄️ המזגן לא עובד → ⚠️ ? / 🔊 החדר רועש → ⚠️ ? ¦ מה אתה אומר?"
-- Audio: Here's your bill. — (הנה החשבון.)
-- A: I think there's a mistake. ✅
-- B: No problem, thank you.
-- C: I ordered the pasta.
-- Correct: I think there's a mistake.
-- Tests: phrase.fix.theres-mistake
-
-**M22-Q04** — quick-reply
-- Prompt: "🧰 FIX IT ¦ 🍽️ Restaurant: 🍽️ Ordered 🍝, got 🥩 → 🗣️ ? / 💳 Charged twice → ⚠️ ? ‖ 🏨 Hotel: ❄️ AC not working → ⚠️ ? / 🔊 Noisy room → ⚠️ ? ¦ What do you say?" / "🧰 לתקן את זה ¦ 🍽️ מסעדה: 🍽️ הזמנת 🍝, קיבלת 🥩 → 🗣️ ? / 💳 חויבת פעמיים → ⚠️ ? ‖ 🏨 מלון: ❄️ המזגן לא עובד → ⚠️ ? / 🔊 החדר רועש → ⚠️ ? ¦ מה אתה אומר?"
-- Audio: Let me check the bill. What's the problem? — (תן לי לבדוק את החשבון. מה הבעיה?)
-- A: I was charged twice. ✅
-- B: I ordered the pasta.
-- C: This isn't what I ordered.
-- Correct: I was charged twice.
-- Tests: phrase.fix.charged-twice
-
-**M22-Q05** — visual-match
+**M22-Q02** — visual-match
 - Prompt: "🧰 FIX IT ¦ 🍽️ Restaurant: 🍽️ Ordered 🍝, got 🥩 → 🗣️ ? / 💳 Charged twice → 🗣️ ? ‖ 🏨 Hotel: ❄️ AC not working → ⚠️ ? / 🔊 Noisy room → ⚠️ ? ¦ 🛠️ What did they do? Listen — and tap." / "🧰 לתקן את זה ¦ 🍽️ מסעדה: 🍽️ הזמנת 🍝, קיבלת 🥩 → 🗣️ ? / 💳 חויבת פעמיים → 🗣️ ? ‖ 🏨 מלון: ❄️ המזגן לא עובד → ⚠️ ? / 🔊 החדר רועש → ⚠️ ? ¦ 🛠️ מה הם עשו? שמע — והקש."
 - Audio: You're right — my mistake. I'll refund it now. — (אתה צודק — הטעות שלי. אחזיר לך עכשיו.)
-- A: 🍝 “They bring the right meal” / “מביאים את המנה הנכונה”
-- B: 💰 “You get the money back” / “מחזירים את הכסף” ✅
-- C: 🍰 “A free dessert” / “קינוח בחינם”
+- A: 💰 “You get the money back” / “מחזירים את הכסף” ✅
+- B: 💳 “You pay twice anyway” / “משלמים פעמיים בכל זאת”
 - Correct: 💰 “You get the money back” / “מחזירים את הכסף”
 - Tests: (no sentence id — not recorded)
 
-**M22-Q06** — visual-match
-- Prompt: "🧰 FIX IT ¦ 🍽️ Restaurant: 🍽️ Ordered 🍝, got 🥩 → 🗣️ ? / 💳 Charged twice → 🗣️ ? ‖ 🏨 Hotel: ❄️ AC not working → ⚠️ ? / 🔊 Noisy room → ⚠️ ? ¦ 🛠️ What did they do? Listen — and tap." / "🧰 לתקן את זה ¦ 🍽️ מסעדה: 🍽️ הזמנת 🍝, קיבלת 🥩 → 🗣️ ? / 💳 חויבת פעמיים → 🗣️ ? ‖ 🏨 מלון: ❄️ המזגן לא עובד → ⚠️ ? / 🔊 החדר רועש → ⚠️ ? ¦ 🛠️ מה הם עשו? שמע — והקש."
-- Audio: Thank you for your patience. Dessert is on the house! — (תודה על הסבלנות. הקינוח על חשבון הבית!)
-- A: 🍝 “They bring the right meal” / “מביאים את המנה הנכונה”
-- B: 💰 “You get the money back” / “מחזירים את הכסף”
-- C: 🍰 “A free dessert” / “קינוח בחינם” ✅
-- Correct: 🍰 “A free dessert” / “קינוח בחינם”
-- Tests: (no sentence id — not recorded)
-
-**M22-Q07** — quick-reply
-- Prompt: "🧰 FIX IT ¦ 🍽️ Restaurant: 🍽️ Ordered 🍝, got 🥩 → ✅ The right meal / 💳 Charged twice → ✅ Money back + 🍰 ‖ 🏨 Hotel: ❄️ AC not working → ⚠️ ? / 🔊 Noisy room → ⚠️ ? ¦ What do you say?" / "🧰 לתקן את זה ¦ 🍽️ מסעדה: 🍽️ הזמנת 🍝, קיבלת 🥩 → ✅ המנה הנכונה / 💳 חויבת פעמיים → ✅ הכסף חזר + 🍰 ‖ 🏨 מלון: ❄️ המזגן לא עובד → ⚠️ ? / 🔊 החדר רועש → ⚠️ ? ¦ מה אתה אומר?"
+**M22-Q03** — quick-reply
+- Prompt: "🧰 FIX IT ¦ 🍽️ Restaurant: 🍽️ Ordered 🍝, got 🥩 → ✅ The right meal / 💳 Charged twice → ✅ Money back ‖ 🏨 Hotel: ❄️ AC not working → ⚠️ ? / 🔊 Noisy room → ⚠️ ? ¦ What do you say?" / "🧰 לתקן את זה ¦ 🍽️ מסעדה: 🍽️ הזמנת 🍝, קיבלת 🥩 → ✅ המנה הנכונה / 💳 חויבת פעמיים → ✅ הכסף חזר ‖ 🏨 מלון: ❄️ המזגן לא עובד → ⚠️ ? / 🔊 החדר רועש → ⚠️ ? ¦ מה אתה אומר?"
 - Audio: I'm sorry to hear that. What's the problem? — (אני מצטער לשמוע. מה הבעיה?)
 - A: The air conditioning isn't working. ✅
 - B: I was charged twice.
@@ -37164,16 +37015,8 @@ No questions.
 - Correct: The air conditioning isn't working.
 - Tests: phrase.hotelreq.ac-not-working
 
-**M22-Q08** — swap-it
-- Prompt: "🧰 FIX IT ¦ 🍽️ Restaurant: 🍽️ Ordered 🍝, got 🥩 → ✅ The right meal / 💳 Charged twice → ✅ Money back + 🍰 ‖ 🏨 Hotel: ❄️ AC not working → 🗣️ ? / 🔊 Noisy room → ⚠️ ? ¦ The same sentence — another thing." / "🧰 לתקן את זה ¦ 🍽️ מסעדה: 🍽️ הזמנת 🍝, קיבלת 🥩 → ✅ המנה הנכונה / 💳 חויבת פעמיים → ✅ הכסף חזר + 🍰 ‖ 🏨 מלון: ❄️ המזגן לא עובד → 🗣️ ? / 🔊 החדר רועש → ⚠️ ? ¦ אותו משפט — דבר אחר." — cue 🔑 "This time: the key" / "הפעם: המפתח" — frame EN "___ isn't working." · FR "___ ne marche pas." · ES "___ no funciona."
-- Audio: (nothing before the tap; the completed sentence is spoken after it) — ()
-- A: The air conditioning → The air conditioning isn't working.
-- B: The key → The key isn't working. ✅
-- Correct: The key → The key isn't working.
-- Tests: phrase.hotelreq.ac-not-working
-
-**M22-Q09** — quick-reply
-- Prompt: "🧰 FIX IT ¦ 🍽️ Restaurant: 🍽️ Ordered 🍝, got 🥩 → ✅ The right meal / 💳 Charged twice → ✅ Money back + 🍰 ‖ 🏨 Hotel: ❄️ AC not working → 🗣️ ? / 🔊 Noisy room → ⚠️ ? ¦ They apologise — but the AC still isn’t working. What do you say?" / "🧰 לתקן את זה ¦ 🍽️ מסעדה: 🍽️ הזמנת 🍝, קיבלת 🥩 → ✅ המנה הנכונה / 💳 חויבת פעמיים → ✅ הכסף חזר + 🍰 ‖ 🏨 מלון: ❄️ המזגן לא עובד → 🗣️ ? / 🔊 החדר רועש → ⚠️ ? ¦ התנצלו — אבל המזגן עדיין לא עובד. מה אתה אומר?"
+**M22-Q04** — quick-reply
+- Prompt: "🧰 FIX IT ¦ 🍽️ Restaurant: 🍽️ Ordered 🍝, got 🥩 → ✅ The right meal / 💳 Charged twice → ✅ Money back ‖ 🏨 Hotel: ❄️ AC not working → ⚠️ ? / 🔊 Noisy room → ⚠️ ? ¦ What do you say?" / "🧰 לתקן את זה ¦ 🍽️ מסעדה: 🍽️ הזמנת 🍝, קיבלת 🥩 → ✅ המנה הנכונה / 💳 חויבת פעמיים → ✅ הכסף חזר ‖ 🏨 מלון: ❄️ המזגן לא עובד → ⚠️ ? / 🔊 החדר רועש → ⚠️ ? ¦ מה אתה אומר?"
 - Audio: I'm so sorry about that. — (אני מצטער על זה מאוד.)
 - A: Can you fix it? ✅
 - B: I was charged twice.
@@ -37181,34 +37024,33 @@ No questions.
 - Correct: Can you fix it?
 - Tests: phrase.fix.can-you-fix
 
-**M22-Q10** — quick-reply
-- Prompt: "🧰 FIX IT ¦ 🍽️ Restaurant: 🍽️ Ordered 🍝, got 🥩 → ✅ The right meal / 💳 Charged twice → ✅ Money back + 🍰 ‖ 🏨 Hotel: ❄️ AC not working → 🗣️ ? / 🔊 Noisy room → 🗣️ ? ¦ A repair — or an alternative? What do you say?" / "🧰 לתקן את זה ¦ 🍽️ מסעדה: 🍽️ הזמנת 🍝, קיבלת 🥩 → ✅ המנה הנכונה / 💳 חויבת פעמיים → ✅ הכסף חזר + 🍰 ‖ 🏨 מלון: ❄️ המזגן לא עובד → 🗣️ ? / 🔊 החדר רועש → 🗣️ ? ¦ תיקון — או חלופה? מה אתה אומר?"
-- Audio: I understand. We have a quieter room. — (אני מבין. יש לנו חדר שקט יותר.)
-- A: Can I change rooms? ✅
-- B: Can you fix it?
-- C: I think there's a mistake.
-- Correct: Can I change rooms?
-- Tests: phrase.fix.change-rooms
+**M22-Q05** — swap-it
+- Prompt: "🧰 FIX IT ¦ 🍽️ Restaurant: 🍽️ Ordered 🍝, got 🥩 → ✅ The right meal / 💳 Charged twice → ✅ Money back ‖ 🏨 Hotel: ❄️ AC not working → 🗣️ ? / 🔊 Noisy room → ⚠️ ? ¦ The same sentence — another thing." / "🧰 לתקן את זה ¦ 🍽️ מסעדה: 🍽️ הזמנת 🍝, קיבלת 🥩 → ✅ המנה הנכונה / 💳 חויבת פעמיים → ✅ הכסף חזר ‖ 🏨 מלון: ❄️ המזגן לא עובד → 🗣️ ? / 🔊 החדר רועש → ⚠️ ? ¦ אותו משפט — דבר אחר." — cue 🔑 "This time: the key" / "הפעם: המפתח" — frame EN "___ isn't working." · FR "___ ne marche pas." · ES "___ no funciona."
+- Audio: (nothing before the tap; the completed sentence is spoken after it) — ()
+- A: The air conditioning → The air conditioning isn't working.
+- B: The key → The key isn't working. ✅
+- Correct: The key → The key isn't working.
+- Tests: phrase.hotelreq.ac-not-working
 
-**M22-Q11** — visual-match
-- Prompt: "🧰 FIX IT ¦ 🍽️ Restaurant: 🍽️ Ordered 🍝, got 🥩 → ✅ The right meal / 💳 Charged twice → ✅ Money back + 🍰 ‖ 🏨 Hotel: ❄️ AC not working → 🗣️ ? / 🔊 Noisy room → 🗣️ ? ¦ 🛠️ What did they do? Listen — and tap." / "🧰 לתקן את זה ¦ 🍽️ מסעדה: 🍽️ הזמנת 🍝, קיבלת 🥩 → ✅ המנה הנכונה / 💳 חויבת פעמיים → ✅ הכסף חזר + 🍰 ‖ 🏨 מלון: ❄️ המזגן לא עובד → 🗣️ ? / 🔊 החדר רועש → 🗣️ ? ¦ 🛠️ מה הם עשו? שמע — והקש."
+**M22-Q06** — visual-match
+- Prompt: "🧰 FIX IT ¦ 🍽️ Restaurant: 🍽️ Ordered 🍝, got 🥩 → ✅ The right meal / 💳 Charged twice → ✅ Money back ‖ 🏨 Hotel: ❄️ AC not working → 🗣️ ? / 🔊 Noisy room → 🗣️ ? ¦ 🛠️ What did they do? Listen — and tap." / "🧰 לתקן את זה ¦ 🍽️ מסעדה: 🍽️ הזמנת 🍝, קיבלת 🥩 → ✅ המנה הנכונה / 💳 חויבת פעמיים → ✅ הכסף חזר ‖ 🏨 מלון: ❄️ המזגן לא עובד → 🗣️ ? / 🔊 החדר רועש → 🗣️ ? ¦ 🛠️ מה הם עשו? שמע — והקש."
 - Audio: Yes, I'll send someone right away. Is everything else okay? — (כן, אשלח מישהו מיד. כל השאר בסדר?)
 - A: 👨‍🔧 “Someone comes to fix it” / “שולחים מישהו לתקן” ✅
-- B: 🔑 “Another room, a new key” / “חדר אחר ומפתח חדש”
+- B: 🔑 “Another room” / “חדר אחר”
 - C: 💰 “You get the money back” / “מחזירים את הכסף”
 - Correct: 👨‍🔧 “Someone comes to fix it” / “שולחים מישהו לתקן”
 - Tests: (no sentence id — not recorded)
 
-**M22-Q12** — visual-match
-- Prompt: "🧰 FIX IT ¦ 🍽️ Restaurant: 🍽️ Ordered 🍝, got 🥩 → ✅ The right meal / 💳 Charged twice → ✅ Money back + 🍰 ‖ 🏨 Hotel: ❄️ AC not working → 🗣️ ? / 🔊 Noisy room → 🗣️ ? ¦ 🛠️ What did they do? Listen — and tap." / "🧰 לתקן את זה ¦ 🍽️ מסעדה: 🍽️ הזמנת 🍝, קיבלת 🥩 → ✅ המנה הנכונה / 💳 חויבת פעמיים → ✅ הכסף חזר + 🍰 ‖ 🏨 מלון: ❄️ המזגן לא עובד → 🗣️ ? / 🔊 החדר רועש → 🗣️ ? ¦ 🛠️ מה הם עשו? שמע — והקש."
-- Audio: Of course — room 305. Here is your new key. Good night! — (כמובן — חדר 305. הנה המפתח החדש. לילה טוב!)
+**M22-Q07** — visual-match
+- Prompt: "🧰 FIX IT ¦ 🍽️ Restaurant: 🍽️ Ordered 🍝, got 🥩 → ✅ The right meal / 💳 Charged twice → ✅ Money back ‖ 🏨 Hotel: ❄️ AC not working → 🗣️ ? / 🔊 Noisy room → 🗣️ ? ¦ 🛠️ What did they do? Listen — and tap." / "🧰 לתקן את זה ¦ 🍽️ מסעדה: 🍽️ הזמנת 🍝, קיבלת 🥩 → ✅ המנה הנכונה / 💳 חויבת פעמיים → ✅ הכסף חזר ‖ 🏨 מלון: ❄️ המזגן לא עובד → 🗣️ ? / 🔊 החדר רועש → 🗣️ ? ¦ 🛠️ מה הם עשו? שמע — והקש."
+- Audio: I understand. We have a quieter room. — (אני מבין. יש לנו חדר שקט יותר.)
 - A: 👨‍🔧 “Someone comes to fix it” / “שולחים מישהו לתקן”
-- B: 🔑 “Another room, a new key” / “חדר אחר ומפתח חדש” ✅
+- B: 🔑 “Another room” / “חדר אחר” ✅
 - C: 💰 “You get the money back” / “מחזירים את הכסף”
-- Correct: 🔑 “Another room, a new key” / “חדר אחר ומפתח חדש”
+- Correct: 🔑 “Another room” / “חדר אחר”
 - Tests: (no sentence id — not recorded)
 
-**M22-Q13** — dialogue-choice
+**M22-Q08** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Here's your meal — one steak! — (הנה הארוחה שלך — סטייק אחד!)
 - A: This isn't what I ordered. ✅
@@ -37216,7 +37058,7 @@ No questions.
 - Correct: This isn't what I ordered.
 - Tests: phrase.fix.not-ordered, phrase.fix.no-problem-thanks
 
-**M22-Q14** — dialogue-choice
+**M22-Q09** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Oh no, I'm so sorry! What did you order? — (אוי לא, אני מצטער מאוד! מה הזמנת?)
 - A: I ordered the pasta. ✅
@@ -37224,7 +37066,7 @@ No questions.
 - Correct: I ordered the pasta.
 - Tests: phrase.fix.i-ordered, phrase.fix.not-ordered
 
-**M22-Q15** — dialogue-choice
+**M22-Q10** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Here's your bill. — (הנה החשבון.)
 - A: I think there's a mistake. ✅
@@ -37232,7 +37074,7 @@ No questions.
 - Correct: I think there's a mistake.
 - Tests: phrase.fix.theres-mistake, phrase.fix.no-problem-thanks
 
-**M22-Q16** — dialogue-choice
+**M22-Q11** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Let me check the bill. What's the problem? — (תן לי לבדוק את החשבון. מה הבעיה?)
 - A: I was charged twice. ✅
@@ -37240,7 +37082,7 @@ No questions.
 - Correct: I was charged twice.
 - Tests: phrase.fix.charged-twice, phrase.fix.i-ordered
 
-**M22-Q17** — dialogue-choice
+**M22-Q12** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: You're right — my mistake. I'll refund it now. — (אתה צודק — הטעות שלי. אחזיר לך עכשיו.)
 - A: No problem, thank you. ✅
@@ -37248,7 +37090,7 @@ No questions.
 - Correct: No problem, thank you.
 - Tests: phrase.fix.no-problem-thanks, phrase.fix.charged-twice
 
-**M22-Q18** — dialogue-choice
+**M22-Q13** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Good evening! How can I help you? — (ערב טוב! איך אפשר לעזור?)
 - A: There's a problem with my room. ✅
@@ -37256,7 +37098,7 @@ No questions.
 - Correct: There's a problem with my room.
 - Tests: phrase.fix.theres-problem, phrase.fix.no-problem-thanks
 
-**M22-Q19** — dialogue-choice
+**M22-Q14** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: I'm sorry to hear that. What's the problem? — (אני מצטער לשמוע. מה הבעיה?)
 - A: The air conditioning isn't working. ✅
@@ -37264,7 +37106,7 @@ No questions.
 - Correct: The air conditioning isn't working.
 - Tests: phrase.hotelreq.ac-not-working, phrase.fix.charged-twice
 
-**M22-Q20** — dialogue-choice
+**M22-Q15** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: I'm so sorry about that. — (אני מצטער על זה מאוד.)
 - A: Can you fix it? ✅
@@ -37272,7 +37114,7 @@ No questions.
 - Correct: Can you fix it?
 - Tests: phrase.fix.can-you-fix, phrase.fix.i-ordered
 
-**M22-Q21** — dialogue-choice
+**M22-Q16** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: Yes, I'll send someone right away. Is everything else okay? — (כן, אשלח מישהו מיד. כל השאר בסדר?)
 - A: No. My room is very noisy. ✅
@@ -37280,7 +37122,7 @@ No questions.
 - Correct: No. My room is very noisy.
 - Tests: phrase.hotelreq.room-noisy, phrase.hotelreq.ac-not-working
 
-**M22-Q22** — dialogue-choice
+**M22-Q17** — dialogue-choice
 - Prompt: "Your turn — pick your line" / "תורך — בחר את השורה שלך"
 - Audio: I understand. We have a quieter room. — (אני מבין. יש לנו חדר שקט יותר.)
 - A: Can I change rooms? ✅
@@ -37288,7 +37130,7 @@ No questions.
 - Correct: Can I change rooms?
 - Tests: phrase.fix.change-rooms, phrase.fix.can-you-fix
 
-**M22-Q23** — quick-reply
+**M22-Q18** — quick-reply
 - Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio: Here's your meal — one steak! — (הנה הארוחה שלך — סטייק אחד!)
 - A: This isn't what I ordered. ✅
@@ -37297,7 +37139,7 @@ No questions.
 - Correct: This isn't what I ordered.
 - Tests: phrase.fix.not-ordered
 
-**M22-Q24** — quick-reply
+**M22-Q19** — quick-reply
 - Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio: Here's your bill. — (הנה החשבון.)
 - A: I think there's a mistake. ✅
@@ -37306,7 +37148,7 @@ No questions.
 - Correct: I think there's a mistake.
 - Tests: phrase.fix.theres-mistake
 
-**M22-Q25** — quick-reply
+**M22-Q20** — quick-reply
 - Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio: I'm sorry to hear that. What's the problem? — (אני מצטער לשמוע. מה הבעיה?)
 - A: The air conditioning isn't working. ✅
@@ -37315,7 +37157,7 @@ No questions.
 - Correct: The air conditioning isn't working.
 - Tests: phrase.hotelreq.ac-not-working
 
-**M22-Q26** — quick-reply
+**M22-Q21** — quick-reply
 - Prompt: ⚡ "A fast one is coming. Listen for the answer." / "מגיע משפט מהיר. תקשיב לתשובה."
 - Audio: I'm so sorry about that. — (אני מצטער על זה מאוד.)
 - A: Can you fix it? ✅
@@ -37324,7 +37166,7 @@ No questions.
 - Correct: Can you fix it?
 - Tests: phrase.fix.can-you-fix
 
-**M22-Q27** — quick-reply
+**M22-Q22** — quick-reply
 - Prompt: "🧰 NEW PROBLEMS ¦ 🍽️ Restaurant: 🍽️ Ordered 🍗, got 🐟 → ⚠️ ? ‖ 🏨 Hotel: 🔑 Key not working → ⚠️ ? / 🚪 Your room → 305 ¦ 🎯 Another evening — new problems. Say what’s wrong." / "🧰 בעיות חדשות ¦ 🍽️ מסעדה: 🍽️ הזמנת 🍗, קיבלת 🐟 → ⚠️ ? ‖ 🏨 מלון: 🔑 המפתח לא עובד → ⚠️ ? / 🚪 החדר שלך → 305 ¦ 🎯 ערב אחר — בעיות חדשות. אמור מה לא בסדר."
 - Audio: Here's your fish! — (הנה הדג שלך!)
 - A: This isn't what I ordered. ✅
@@ -37333,7 +37175,7 @@ No questions.
 - Correct: This isn't what I ordered.
 - Tests: phrase.fix.not-ordered
 
-**M22-Q28** — quick-reply
+**M22-Q23** — quick-reply
 - Prompt: "🧰 NEW PROBLEMS ¦ 🍽️ Restaurant: 🍽️ Ordered 🍗, got 🐟 → ⚠️ ? ‖ 🏨 Hotel: 🔑 Key not working → ⚠️ ? / 🚪 Your room → 305 ¦ 🎯 Another evening — new problems. Say what’s wrong." / "🧰 בעיות חדשות ¦ 🍽️ מסעדה: 🍽️ הזמנת 🍗, קיבלת 🐟 → ⚠️ ? ‖ 🏨 מלון: 🔑 המפתח לא עובד → ⚠️ ? / 🚪 החדר שלך → 305 ¦ 🎯 ערב אחר — בעיות חדשות. אמור מה לא בסדר."
 - Audio: Oh no, I'm so sorry! What did you order? — (אוי לא, אני מצטער מאוד! מה הזמנת?)
 - A: I ordered the chicken. ✅
@@ -37342,7 +37184,7 @@ No questions.
 - Correct: I ordered the chicken.
 - Tests: phrase.fix.i-ordered
 
-**M22-Q29** — quick-reply
+**M22-Q24** — quick-reply
 - Prompt: "🧰 NEW PROBLEMS ¦ 🍽️ Restaurant: 🍽️ Ordered 🍗, got 🐟 → ⚠️ ? ‖ 🏨 Hotel: 🔑 Key not working → ⚠️ ? / 🚪 Your room → 305 ¦ 🎯 Another evening — new problems. Say what’s wrong." / "🧰 בעיות חדשות ¦ 🍽️ מסעדה: 🍽️ הזמנת 🍗, קיבלת 🐟 → ⚠️ ? ‖ 🏨 מלון: 🔑 המפתח לא עובד → ⚠️ ? / 🚪 החדר שלך → 305 ¦ 🎯 ערב אחר — בעיות חדשות. אמור מה לא בסדר."
 - Audio: Good evening! How can I help you? — (ערב טוב! איך אפשר לעזור?)
 - A: The key isn't working. ✅
@@ -37351,7 +37193,7 @@ No questions.
 - Correct: The key isn't working.
 - Tests: phrase.hotelreq.ac-not-working
 
-**M22-Q30** — quick-reply
+**M22-Q25** — quick-reply
 - Prompt: "🧰 NEW PROBLEMS ¦ 🍽️ Restaurant: 🍽️ Ordered 🍗, got 🐟 → ⚠️ ? ‖ 🏨 Hotel: 🔑 Key not working → ⚠️ ? / 🚪 Your room → 305 ¦ 🎯 Another evening — new problems. Say what’s wrong." / "🧰 בעיות חדשות ¦ 🍽️ מסעדה: 🍽️ הזמנת 🍗, קיבלת 🐟 → ⚠️ ? ‖ 🏨 מלון: 🔑 המפתח לא עובד → ⚠️ ? / 🚪 החדר שלך → 305 ¦ 🎯 ערב אחר — בעיות חדשות. אמור מה לא בסדר."
 - Audio: I'm so sorry about that. — (אני מצטער על זה מאוד.)
 - A: Can you fix it? ✅
@@ -37360,7 +37202,7 @@ No questions.
 - Correct: Can you fix it?
 - Tests: phrase.fix.can-you-fix
 
-**M22-Q31** — quick-reply
+**M22-Q26** — quick-reply
 - Prompt: "🧰 NEW PROBLEMS ¦ 🍽️ Restaurant: 🍽️ Ordered 🍗, got 🐟 → ⚠️ ? ‖ 🏨 Hotel: 🔑 Key not working → ⚠️ ? / 🚪 Your room → 305 ¦ 🎯 Another evening — new problems. Say what’s wrong." / "🧰 בעיות חדשות ¦ 🍽️ מסעדה: 🍽️ הזמנת 🍗, קיבלת 🐟 → ⚠️ ? ‖ 🏨 מלון: 🔑 המפתח לא עובד → ⚠️ ? / 🚪 החדר שלך → 305 ¦ 🎯 ערב אחר — בעיות חדשות. אמור מה לא בסדר."
 - Audio: Here is your new key — room two-oh-four. — (הנה המפתח החדש שלך — חדר מאתיים וארבע.)
 - A: I think there's a mistake. ✅
@@ -38829,11 +38671,11 @@ No questions.
 - Sentence listings across missions (with reuse): 509
 - Expected-reply questions: 50
 - Meaning quizzes: 7
-- Active-practice questions: 622
+- Active-practice questions: 617
 - Dialogue choice screens: 227
 - Cold opens: 4
-- Total interactive questions: 910
-- Total answer choices: 2529
+- Total interactive questions: 905
+- Total answer choices: 2514
 - Wrong-answer branches: 139
 - Recovery opportunities: 34
 - Learner sentences with 0 active retrieval opportunities: 2

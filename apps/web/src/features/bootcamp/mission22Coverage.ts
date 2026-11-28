@@ -63,3 +63,13 @@ export const M22_CONCEPTS: readonly CoverageConcept[] = [
   { id: 'new-key', label: 'Here is your new key.', role: 'hear', chunk: { en: 'Here is your new key.', es: 'Aquí tiene su nueva llave.', fr: 'Voici votre nouvelle clé.' } },
   { id: 'good-night', label: 'Good night!', role: 'hear', chunk: { en: 'Good night!', es: '¡Buenas noches!', fr: 'Bonne nuit !' } },
 ];
+
+/**
+ * Context only — met with their meaning (a card, or the conversation's translation) but deliberately never TESTED
+ * (the compression brief: not survival-critical, no exercise of their own): the waiter's "Let me check the bill."
+ * (the question that follows, "What's the problem?", is covered), the dessert line ("Thank you for your patience.
+ * Dessert is on the house!" — nice to know, understood from the conversation), and room 305 / the new key (the
+ * outcome "another room" is understood on the hotel board; the number stays UI). Every other chunk is covered or
+ * verified prior.
+ */
+export const M22_CONTEXT_ONLY: readonly string[] = ['let-me-check', 'patience', 'dessert-on-the-house', 'room-305', 'new-key'];

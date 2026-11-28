@@ -253,9 +253,9 @@ describe('PRIOR LEARNING — verified per language, not assumed (learnedBefore(l
       expect([...new Set(prior(lang).concepts.filter((c) => hasChunk(c.chunk, going)).map((c) => c.mission))].sort((a, b) => a - b).slice(0, 2), lang).toEqual([12, 13]);
     }
   });
-  it('30. ANOTHER TRIP — every changed detail is VERIFIED PRIOR in every language, taught in an earlier mission (Argentina · a week · the museum · diving · the beach · the station)', () => {
-    const DETAIL: Record<CoverageLang, string[]> = { en: ['argentina', 'week', 'museum', 'diving', 'beach', 'station'], es: ['argentina', 'semana', 'museo', 'buceo', 'playa', 'estación'], fr: ['argentine', 'semaine', 'musée', 'plongée', 'plage', 'gare'] };
-    const FROM = [20, 6, 19, 16, 12, 5];
+  it('30. ANOTHER TRIP — every changed detail is VERIFIED PRIOR in every language, taught in an earlier mission (Argentina · a week · the museum · the beach · the station)', () => {
+    const DETAIL: Record<CoverageLang, string[]> = { en: ['argentina', 'week', 'museum', 'beach', 'station'], es: ['argentina', 'semana', 'museo', 'playa', 'estación'], fr: ['argentine', 'semaine', 'musée', 'plage', 'gare'] };
+    const FROM = [20, 6, 19, 12, 5];
     for (const lang of LANGS) DETAIL[lang].forEach((w, i) => {
       expect(prior(lang).words.has(w), `${lang} ${w}`).toBe(true);
       const taughtIn = Array.from({ length: 20 }, (_, m) => m + 1).filter((m) => teachingEncounters(missionContent(lang, m)).some((e) => plain(e.text).split(' ').includes(w)));
@@ -497,10 +497,10 @@ describe('the reuse lines — the same tools, never tools of their own (24–26)
       for (const t of speakable(d)) expect(t, lang).not.toMatch(/monday|tuesday|weekend|afternoon|evening|tonight|next week|next month|lundi|après-midi|ce soir|lunes|tarde|esta noche/i);
     }
   });
-  it('"I want to travel by motorbike" is the "I want to" tool again ("Anything else?") — one card, one answer, never No Help', () => {
+  it('"I want to travel by motorbike" is the "I want to" tool again ("Anything else?") — one card, one answer in teaching, never No Help, not the final', () => {
     for (const lang of LANGS) {
       const d = day(lang);
-      expect(quickRounds(d).filter(([, r]) => accepted(r) === MOTO).map(([i]) => phaseOf(d, i)), lang).toEqual(['teaching', 'final']);
+      expect(quickRounds(d).filter(([, r]) => accepted(r) === MOTO).map(([i]) => phaseOf(d, i)), lang).toEqual(['teaching']);
       expect(cardsOf(d).find((w) => w.key === 'future.line.motorbike')!.meaning.en).toContain('the same “I want to ___” — another plan');
     }
   });
@@ -554,10 +554,10 @@ describe('THE FOURTH TOOL — "Where are you going next?", owned ALONE (the conv
       expect(hasChunk(at(N_WHERE, lang), STANDALONE[lang]), lang).toBe(true);
     }
   });
-  it('23. teaching retrieval and No Help ask for the standalone question — the button says it alone, "And you?" is never required', () => {
+  it('23. teaching retrieval, No Help and the final ask for the standalone question — the button says it alone, "And you?" is never required', () => {
     for (const lang of LANGS) {
       const d = day(lang);
-      expect(askRounds(d).map(([where]) => where), lang).toEqual(['teaching', 'no help']);
+      expect(askRounds(d).map(([where]) => where), lang).toEqual(['teaching', 'no help', 'final']);
       for (const [where, r] of askRounds(d)) {
         const ok = r.options.find((o) => o.correct)!;
         expect(ok.text, `${lang} ${where}`).toBeUndefined(); // no wrapping line: the sentence itself
@@ -607,21 +607,26 @@ describe('THE FINAL — ANOTHER TRIP: the same questions, a new plan (28–30)',
       expect(after.map((s) => s.kind), lang).toEqual(['quickReply', 'receipt', 'summary']);
       const qr = after[0] as QR;
       expect(qr.challenge, lang).toBeUndefined();
-      expect(qr.rounds.map(accepted), lang).toEqual([GOING, BE_THERE, VISIT, MOTO, AFTER, TOMORROW]);
-      expect(qr.rounds.map((r) => strip(r.promptItemId)), lang).toEqual(['reply.future.where-next', 'reply.future.wow-how-long', 'reply.future.what-do-there', 'reply.future.anything-else', 'reply.future.after-that-q', 'reply.future.tomorrow-plan-q']);
+      // all four tools: where · how long · what · (after that · tomorrow morning: the destination tool reused) · the ask-back
+      expect(qr.rounds.map(accepted), lang).toEqual([GOING, BE_THERE, VISIT, AFTER, TOMORROW, BACK]);
+      expect(qr.rounds.map((r) => strip(r.promptItemId)), lang).toEqual(['reply.future.where-next', 'reply.future.wow-how-long', 'reply.future.what-do-there', 'reply.future.after-that-q', 'reply.future.tomorrow-plan-q', 'reply.future.miss-you']);
+      for (const id of TOOLS) expect(qr.rounds.map(accepted), `${lang} ${id}`).toContain(id);
+      expect(qr.rounds.map(accepted), lang).not.toContain(MOTO); // no second "I want to" round
       // Not a replay: no option of the final is a line of the conversation.
       for (const r of qr.rounds) for (const o of r.options) expect(LOCKED[lang].map((l) => l.slice(5)), lang).not.toContain(said(d, o));
     }
   });
-  it('29. every one of the six answers carries a CHANGED detail: Argentina · a week · the museum · diving · the beach · the station', () => {
+  it('29. five answers carry a CHANGED detail — Argentina · a week · the museum · the beach · the station — and the sixth is the ask-back, alone', () => {
     for (const lang of LANGS) {
       const d = day(lang);
       const qr = d.steps[videoAt(d) + 1] as QR;
       const changed = qr.rounds.map((r) => r.options.find((o) => o.correct)!).filter((o) => o.text && o.text !== text(d, o.itemId));
-      expect(changed.map((o) => o.text), lang).toEqual([GOING, BE_THERE, VISIT, MOTO, AFTER, TOMORROW].map((id) => FINAL_SAID[id as keyof typeof FINAL_SAID][IX[lang]]));
+      expect(changed.map((o) => o.text), lang).toEqual([GOING, BE_THERE, VISIT, AFTER, TOMORROW].map((id) => FINAL_SAID[id as keyof typeof FINAL_SAID][IX[lang]]));
+      const ask = qr.rounds.at(-1)!.options.find((o) => o.correct)!;
+      expect([ask.text, said(d, ask)], lang).toEqual([undefined, STANDALONE[lang]]);
       expect(changed.length, lang).toBeGreaterThanOrEqual(3);
     }
-    expect(Object.values(FINAL_SAID).map((x) => x[0])).toEqual(["I'm going to Argentina.", "I'll be there for a week.", 'I want to visit the museum.', 'I want to try diving.', "After that I'm going to the beach.", "Tomorrow morning I'm going to the station."]);
+    expect(Object.values(FINAL_SAID).map((x) => x[0])).toEqual(["I'm going to Argentina.", "I'll be there for a week.", 'I want to visit the museum.', "After that I'm going to the beach.", "Tomorrow morning I'm going to the station."]);
   });
   it('the final\'s trip is the learner\'s own plan, shown whole as UI (deterministic, app language, icons) — the job is to SAY it', () => {
     expect(splitTimeBoard(anotherTrip[1])!.plan!.flatMap((c) => c.rows.map((r) => r.text))).toEqual(['📍 Next → 🌎 Argentina', '⏳ For → A week', '🎯 Want to → 🏛️ Visit the museum', '🤿 Also → Try diving', '➡️ After → 🏖️ The beach', '🌅 Tomorrow morning → 🚉 The station']);
